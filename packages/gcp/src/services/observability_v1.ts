@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelFoldersLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend((
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -98,7 +98,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -119,7 +119,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -143,7 +143,7 @@ export interface CmekSettings {
   /** Output only. The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION] For example: projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1 This read-only field is used to convey the specific configured CryptoKeyVersion of the `kms_key` that has been configured. It is populated when the CMEK settings are bound to a single key version. */
   kmsKeyVersion?: string;
 }
-export const CmekSettings = /*@__PURE__*/ S.suspend(() =>
+const CmekSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.optional(S.String),
     kmsKey: S.optional(S.String),
@@ -170,7 +170,7 @@ export interface Bucket {
   /** Optional. Description of the bucket. */
   description?: string;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purgeTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -191,7 +191,7 @@ export interface CreateProjectsLocationsBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
-export const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -208,15 +208,10 @@ export const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectsLocationsBucketsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -227,7 +222,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -248,7 +243,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -269,7 +264,7 @@ export interface Link {
   /** Optional. Description of the link. */
   description?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -286,7 +281,7 @@ export interface CreateProjectsLocationsBucketsDatasetsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     linkId: S.optional(S.String.pipe(T.Query())),
@@ -303,7 +298,7 @@ export const CreateProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ 
 }) as any as S.Schema<CreateProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A trace scope is a collection of resources whose traces are queried together. */
 export interface TraceScope {
@@ -318,7 +313,7 @@ export interface TraceScope {
   /** Output only. The last update timestamp of the trace scope. */
   updateTime?: string;
 }
-export const TraceScope = /*@__PURE__*/ S.suspend(() =>
+const TraceScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -336,7 +331,7 @@ export interface CreateProjectsLocationsTraceScopesRequest {
   /** Request body */
   body?: TraceScope;
 }
-export const CreateProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceScopeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -356,7 +351,7 @@ export interface DeleteFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -374,7 +369,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -392,7 +387,7 @@ export interface DeleteProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the link to delete. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
 }
-export const DeleteProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -410,7 +405,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -428,7 +423,7 @@ export interface DeleteProjectsLocationsTraceScopesRequest {
   /** Required. The full resource name of the trace scope to delete: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
 }
-export const DeleteProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -446,7 +441,7 @@ export interface GetFoldersLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -457,7 +452,7 @@ export const GetFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFoldersLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -472,7 +467,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -486,7 +481,7 @@ export interface GetFoldersLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -500,7 +495,7 @@ export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -514,7 +509,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -528,7 +523,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -542,7 +537,7 @@ export interface GetProjectsLocationsBucketsRequest {
   /** Required. Name of the bucket to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -556,7 +551,7 @@ export interface GetProjectsLocationsBucketsDatasetsRequest {
   /** Required. Name of the dataset to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -581,7 +576,7 @@ export interface Dataset {
   /** Identifier. Name of the dataset. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   name?: string;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     purgeTime: S.optional(S.String),
@@ -596,7 +591,7 @@ export interface GetProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the link to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -610,7 +605,7 @@ export interface GetProjectsLocationsBucketsDatasetsViewsRequest {
   /** Required. Name of the view to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/views/[VIEW_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -633,7 +628,7 @@ export interface View {
   /** Optional. Description of the view. */
   description?: string;
 }
-export const View = /*@__PURE__*/ S.suspend(() =>
+const View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -647,7 +642,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -661,7 +656,7 @@ export interface GetProjectsLocationsScopesRequest {
   /** Required. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`. */
   name: string;
 }
-export const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -682,7 +677,7 @@ export interface Scope {
   /** Required. The resource name of the `TraceScope`. For example: projects/myproject/locations/global/traceScopes/my-trace-scope */
   traceScope?: string;
 }
-export const Scope = /*@__PURE__*/ S.suspend(() =>
+const Scope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logScope: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -695,7 +690,7 @@ export interface GetProjectsLocationsTraceScopesRequest {
   /** Required. The resource name of the trace scope: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
 }
-export const GetProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -709,7 +704,7 @@ export interface GetSettingsFoldersLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
-export const GetSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -730,7 +725,7 @@ export interface Settings {
   /** Optional. The resource name for the configured Cloud KMS key. KMS key name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For example: `"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"` */
   kmsKeyName?: string;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     serviceAccountId: S.optional(S.String),
@@ -743,7 +738,7 @@ export interface GetSettingsOrganizationsLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
-export const GetSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -757,7 +752,7 @@ export interface GetSettingsProjectsLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
-export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -779,7 +774,7 @@ export interface ListFoldersLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -798,7 +793,7 @@ export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -807,7 +802,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -826,7 +821,7 @@ export interface ListFoldersLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -845,7 +840,7 @@ export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -856,7 +851,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -876,7 +871,7 @@ export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -906,7 +901,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -936,7 +931,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -964,7 +959,7 @@ export interface ListProjectsLocationsBucketsRequest {
   /** Optional. A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -982,7 +977,7 @@ export const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsBucketsRequest>;
 
 export type BucketList = Array<Bucket>;
-export const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
+const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
 
 /** Response for listing buckets. */
 export interface ListBucketsResponse {
@@ -991,7 +986,7 @@ export interface ListBucketsResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(BucketList),
     nextPageToken: S.optional(S.String),
@@ -1008,7 +1003,7 @@ export interface ListProjectsLocationsBucketsDatasetsRequest {
   /** Optional. A page token, received from a previous `ListDatasets` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1026,7 +1021,7 @@ export const ListProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsRequest>;
 
 export type DatasetList = Array<Dataset>;
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
+const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
 
 /** Response for listing datasets. */
 export interface ListDatasetsResponse {
@@ -1035,7 +1030,7 @@ export interface ListDatasetsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(DatasetList),
     nextPageToken: S.optional(S.String),
@@ -1050,7 +1045,7 @@ export interface ListProjectsLocationsBucketsDatasetsLinksRequest {
   /** Optional. The maximum number of links to return. If unspecified, then at most 100 links are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1067,7 +1062,7 @@ export const ListProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export type LinkList = Array<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
+const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
 
 /** Response for listing links. */
 export interface ListLinksResponse {
@@ -1076,7 +1071,7 @@ export interface ListLinksResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: S.optional(LinkList),
     nextPageToken: S.optional(S.String),
@@ -1091,7 +1086,7 @@ export interface ListProjectsLocationsBucketsDatasetsViewsRequest {
   /** Required. Dataset whose views are to be listed. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   parent: string;
 }
-export const ListProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1108,7 +1103,7 @@ export const ListProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsViewsRequest>;
 
 export type ViewList = Array<View>;
-export const ViewList = /*@__PURE__*/ S.Array(View) as any as S.Schema<ViewList>;
+const ViewList = /*@__PURE__*/ S.Array(View) as any as S.Schema<ViewList>;
 
 /** Response for listing views. */
 export interface ListViewsResponse {
@@ -1117,7 +1112,7 @@ export interface ListViewsResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     views: S.optional(ViewList),
     nextPageToken: S.optional(S.String),
@@ -1136,7 +1131,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1162,7 +1157,7 @@ export interface ListProjectsLocationsTraceScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1179,7 +1174,7 @@ export const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsTraceScopesRequest>;
 
 export type TraceScopeList = Array<TraceScope>;
-export const TraceScopeList = /*@__PURE__*/ S.Array(TraceScope) as any as S.Schema<TraceScopeList>;
+const TraceScopeList = /*@__PURE__*/ S.Array(TraceScope) as any as S.Schema<TraceScopeList>;
 
 /** Response for listing TraceScopes. */
 export interface ListTraceScopesResponse {
@@ -1188,7 +1183,7 @@ export interface ListTraceScopesResponse {
   /** Optional. If there might be more results than appear in this response, then `next_page_token` is included. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const ListTraceScopesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTraceScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceScopes: S.optional(TraceScopeList),
     nextPageToken: S.optional(S.String),
@@ -1203,7 +1198,7 @@ export interface PatchProjectsLocationsBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
-export const PatchProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1227,7 +1222,7 @@ export interface PatchProjectsLocationsBucketsDatasetsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const PatchProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1251,7 +1246,7 @@ export interface PatchProjectsLocationsScopesRequest {
   /** Request body */
   body?: Scope;
 }
-export const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1275,7 +1270,7 @@ export interface PatchProjectsLocationsTraceScopesRequest {
   /** Request body */
   body?: TraceScope;
 }
-export const PatchProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1299,7 +1294,7 @@ export interface UpdateSettingsFoldersLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1323,7 +1318,7 @@ export interface UpdateSettingsOrganizationsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1347,7 +1342,7 @@ export interface UpdateSettingsProjectsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

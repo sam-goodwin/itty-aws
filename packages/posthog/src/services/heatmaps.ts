@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type GetHeatmapsEventRequestAggregation = "unique_visitors" | "total_count";
-export const GetHeatmapsEventRequestAggregation = S.String;
+const GetHeatmapsEventRequestAggregation = S.String;
 
 export interface GetHeatmapsEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -72,7 +72,7 @@ export interface GetHeatmapsEventRequest {
   /** Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile). */
   viewport_width_min?: number;
 }
-export const GetHeatmapsEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHeatmapsEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     aggregation: S.optional(GetHeatmapsEventRequestAggregation.pipe(T.Query())),
@@ -102,7 +102,7 @@ export interface HeatmapEventItem {
   current_url: string;
   type: string;
 }
-export const HeatmapEventItem = /*@__PURE__*/ S.suspend(() =>
+const HeatmapEventItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.optional(S.NullOr(S.String)),
     distinct_id: S.String,
@@ -115,7 +115,7 @@ export const HeatmapEventItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeatmapEventItem" }) as any as S.Schema<HeatmapEventItem>;
 
 export type HeatmapEventsResponseResultsList = Array<HeatmapEventItem>;
-export const HeatmapEventsResponseResultsList = /*@__PURE__*/ S.Array(
+const HeatmapEventsResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapEventItem,
 ) as any as S.Schema<HeatmapEventsResponseResultsList>;
 
@@ -124,7 +124,7 @@ export interface HeatmapEventsResponse {
   total_count: number;
   has_more: boolean;
 }
-export const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: HeatmapEventsResponseResultsList,
     total_count: S.Number,
@@ -133,7 +133,7 @@ export const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeatmapEventsResponse" }) as any as S.Schema<HeatmapEventsResponse>;
 
 export type ListHeatmapsRequestAggregation = "unique_visitors" | "total_count";
-export const ListHeatmapsRequestAggregation = S.String;
+const ListHeatmapsRequestAggregation = S.String;
 
 export interface ListHeatmapsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -167,7 +167,7 @@ export interface ListHeatmapsRequest {
   /** Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile). */
   viewport_width_min?: number;
 }
-export const ListHeatmapsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHeatmapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     aggregation: S.optional(ListHeatmapsRequestAggregation.pipe(T.Query())),
@@ -193,7 +193,7 @@ export interface HeatmapResponseItem {
   pointer_relative_x?: number;
   pointer_target_fixed?: boolean;
 }
-export const HeatmapResponseItem = /*@__PURE__*/ S.suspend(() =>
+const HeatmapResponseItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     pointer_y: S.optional(S.Number),
@@ -203,7 +203,7 @@ export const HeatmapResponseItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeatmapResponseItem" }) as any as S.Schema<HeatmapResponseItem>;
 
 export type HeatmapsResponseResultsList = Array<HeatmapResponseItem>;
-export const HeatmapsResponseResultsList = /*@__PURE__*/ S.Array(
+const HeatmapsResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapResponseItem,
 ) as any as S.Schema<HeatmapsResponseResultsList>;
 
@@ -217,7 +217,7 @@ export interface HeatmapFoldSummary {
   /** Median viewport height in CSS pixels across the matched interactions -- the typical fold line to recommend against. Null when there are no interactions. */
   median_viewport_height: number | null;
 }
-export const HeatmapFoldSummary = /*@__PURE__*/ S.suspend(() =>
+const HeatmapFoldSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     below_fold_count: S.Number,
@@ -233,7 +233,7 @@ export interface HeatmapsResponse {
   /** True when more coordinate points exist beyond the returned page. Raise 'limit' or page with 'offset' to fetch them. Always false for scrolldepth, which returns every bucket. */
   has_more?: boolean;
 }
-export const HeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
+const HeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(HeatmapsResponseResultsList),
     fold: S.optional(S.NullOr(HeatmapFoldSummary)),
@@ -242,12 +242,12 @@ export const HeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeatmapsResponse" }) as any as S.Schema<HeatmapsResponse>;
 
 export type ListHeatmapsResponseBodyList = Array<HeatmapsResponse>;
-export const ListHeatmapsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHeatmapsResponseBodyList = /*@__PURE__*/ S.Array(
   HeatmapsResponse,
 ) as any as S.Schema<ListHeatmapsResponseBodyList>;
 
 export type ListHeatmapsResponse = ListHeatmapsResponseBodyList;
-export const ListHeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
   ListHeatmapsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListHeatmapsResponse" }) as any as S.Schema<ListHeatmapsResponse>;
 

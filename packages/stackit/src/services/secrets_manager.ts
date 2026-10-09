@@ -45,7 +45,7 @@ export interface CreateACLRequest {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
 }
-export const CreateACLRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -66,7 +66,7 @@ export interface ACL {
   /** A auto generated unique id which identifies the acl. */
   id: string;
 }
-export const ACL = /*@__PURE__*/ S.suspend(() =>
+const ACL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.String,
     id: S.String,
@@ -86,7 +86,7 @@ export interface CreateApproleRequest {
   /** Is true if the approle has write access to the secrets engine. Is false for a read-only approle. */
   write?: boolean;
 }
-export const CreateApproleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApproleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -115,7 +115,7 @@ export interface Approle {
   /** Is true if the approle has write access to the secrets engine. Is false for a read-only approle. */
   write: boolean;
 }
-export const Approle = /*@__PURE__*/ S.suspend(() =>
+const Approle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     role_id: S.String,
@@ -135,7 +135,7 @@ export interface CreateApproleSecretIdRequest {
   /** A user chosen description to differentiate between multiple approle secrets. */
   description?: string;
 }
-export const CreateApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -164,7 +164,7 @@ export interface ApproleSecret {
   /** Accessor used for handling secrets */
   version: number;
 }
-export const ApproleSecret = /*@__PURE__*/ S.suspend(() =>
+const ApproleSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     num_uses: S.Number,
@@ -185,7 +185,7 @@ export interface KmsKeyPayload {
   /** The Service account email that will consume the key. Must be in the same project as the Secrets Manager instance. */
   serviceAccountEmail: string;
 }
-export const KmsKeyPayload = /*@__PURE__*/ S.suspend(() =>
+const KmsKeyPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyId: S.String,
     keyRingId: S.String,
@@ -201,7 +201,7 @@ export interface CreateInstanceRequest {
   /** A user chosen name to distinguish multiple secrets manager instances. */
   name: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     kmsKey: S.optional(KmsKeyPayload),
@@ -237,7 +237,7 @@ export interface Instance {
   updateFinishedDate?: string;
   updateStartDate?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiUrl: S.String,
     creationFinishedDate: S.optional(S.String),
@@ -263,7 +263,7 @@ export interface CreateUserRequest {
   /** Is true if the user has write access to the secrets engine. Is false for a read-only user. */
   write: boolean;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -291,7 +291,7 @@ export interface User {
   /** Is true if the user has write access to the secrets engine. Is false for a read-only user. */
   write: boolean;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     id: S.String,
@@ -309,7 +309,7 @@ export interface DeleteACLRequest {
   /** The acl UUID of the Secrets Manager instance. */
   aclId: string;
 }
-export const DeleteACLRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -325,7 +325,7 @@ export const DeleteACLRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteACLRequest" }) as any as S.Schema<DeleteACLRequest>;
 
 export interface DeleteACLResponse {}
-export const DeleteACLResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteACLResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteACLResponse",
 }) as any as S.Schema<DeleteACLResponse>;
 
@@ -337,7 +337,7 @@ export interface DeleteApproleRequest {
   /** The approle with permissions on the Secrets Manager instance. */
   roleId: string;
 }
-export const DeleteApproleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApproleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -353,7 +353,7 @@ export const DeleteApproleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApproleRequest" }) as any as S.Schema<DeleteApproleRequest>;
 
 export interface DeleteApproleResponse {}
-export const DeleteApproleResponse = DeleteACLResponse as any as S.Schema<DeleteApproleResponse>;
+const DeleteApproleResponse = DeleteACLResponse as any as S.Schema<DeleteApproleResponse>;
 
 export interface DeleteApproleSecretIdRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -365,7 +365,7 @@ export interface DeleteApproleSecretIdRequest {
   /** The version of the secret id. */
   secretIdVersion: number;
 }
-export const DeleteApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -384,7 +384,7 @@ export const DeleteApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApproleSecretIdRequest>;
 
 export interface DeleteApproleSecretIdResponse {}
-export const DeleteApproleSecretIdResponse =
+const DeleteApproleSecretIdResponse =
   DeleteACLResponse as any as S.Schema<DeleteApproleSecretIdResponse>;
 
 export interface DeleteInstanceRequest {
@@ -393,7 +393,7 @@ export interface DeleteInstanceRequest {
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -408,7 +408,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = DeleteACLResponse as any as S.Schema<DeleteInstanceResponse>;
+const DeleteInstanceResponse = DeleteACLResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeleteUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -418,7 +418,7 @@ export interface DeleteUserRequest {
   /** The user UUID with permissions on the Secrets Manager instance. */
   userId: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -434,7 +434,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = DeleteACLResponse as any as S.Schema<DeleteUserResponse>;
+const DeleteUserResponse = DeleteACLResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface GetACLRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -444,7 +444,7 @@ export interface GetACLRequest {
   /** The acl UUID of the Secrets Manager instance. */
   aclId: string;
 }
-export const GetACLRequest = /*@__PURE__*/ S.suspend(() =>
+const GetACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -467,7 +467,7 @@ export interface GetApproleRequest {
   /** The approle with permissions on the Secrets Manager instance. */
   roleId: string;
 }
-export const GetApproleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApproleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -488,7 +488,7 @@ export interface GetApprolesRequest {
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-export const GetApprolesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -503,14 +503,14 @@ export const GetApprolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApprolesRequest" }) as any as S.Schema<GetApprolesRequest>;
 
 export type ApproleListApprolesList = Array<Approle>;
-export const ApproleListApprolesList = /*@__PURE__*/ S.Array(
+const ApproleListApprolesList = /*@__PURE__*/ S.Array(
   Approle,
 ) as any as S.Schema<ApproleListApprolesList>;
 
 export interface ApproleList {
   approles: ApproleListApprolesList;
 }
-export const ApproleList = /*@__PURE__*/ S.suspend(() =>
+const ApproleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approles: ApproleListApprolesList,
   }),
@@ -526,7 +526,7 @@ export interface GetApproleSecretIdRequest {
   /** The version of the secret id. */
   secretIdVersion: number;
 }
-export const GetApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -550,7 +550,7 @@ export interface GetInstanceRequest {
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -572,7 +572,7 @@ export interface GetUserRequest {
   /** The user UUID with permissions on the Secrets Manager instance. */
   userId: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -593,7 +593,7 @@ export interface ListACLsRequest {
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-export const ListACLsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListACLsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -608,14 +608,14 @@ export const ListACLsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListACLsRequest" }) as any as S.Schema<ListACLsRequest>;
 
 export type ListACLsResponseAclsList = Array<ACL>;
-export const ListACLsResponseAclsList = /*@__PURE__*/ S.Array(
+const ListACLsResponseAclsList = /*@__PURE__*/ S.Array(
   ACL,
 ) as any as S.Schema<ListACLsResponseAclsList>;
 
 export interface ListACLsResponse {
   acls: ListACLsResponseAclsList;
 }
-export const ListACLsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListACLsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acls: ListACLsResponseAclsList,
   }),
@@ -629,7 +629,7 @@ export interface ListApproleSecretIdsRequest {
   /** The approle with permissions on the Secrets Manager instance. */
   roleId: string;
 }
-export const ListApproleSecretIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApproleSecretIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -647,14 +647,14 @@ export const ListApproleSecretIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApproleSecretIdsRequest>;
 
 export type ApproleSecretListSecretIdsList = Array<ApproleSecret>;
-export const ApproleSecretListSecretIdsList = /*@__PURE__*/ S.Array(
+const ApproleSecretListSecretIdsList = /*@__PURE__*/ S.Array(
   ApproleSecret,
 ) as any as S.Schema<ApproleSecretListSecretIdsList>;
 
 export interface ApproleSecretList {
   secretIds: ApproleSecretListSecretIdsList;
 }
-export const ApproleSecretList = /*@__PURE__*/ S.suspend(() =>
+const ApproleSecretList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretIds: ApproleSecretListSecretIdsList,
   }),
@@ -664,7 +664,7 @@ export interface ListInstancesRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -678,14 +678,14 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 
 export type ListInstancesResponseInstancesList = Array<Instance>;
-export const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
+const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<ListInstancesResponseInstancesList>;
 
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: ListInstancesResponseInstancesList,
   }),
@@ -697,7 +697,7 @@ export interface ListUsersRequest {
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -712,14 +712,14 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseUsersList = Array<User>;
-export const ListUsersResponseUsersList = /*@__PURE__*/ S.Array(
+const ListUsersResponseUsersList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<ListUsersResponseUsersList>;
 
 export interface ListUsersResponse {
   users: ListUsersResponseUsersList;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: ListUsersResponseUsersList,
   }),
@@ -735,7 +735,7 @@ export interface UpdateACLRequest {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
 }
-export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -752,20 +752,20 @@ export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateACLRequest" }) as any as S.Schema<UpdateACLRequest>;
 
 export interface UpdateACLResponse {}
-export const UpdateACLResponse = DeleteACLResponse as any as S.Schema<UpdateACLResponse>;
+const UpdateACLResponse = DeleteACLResponse as any as S.Schema<UpdateACLResponse>;
 
 export interface UpdateACLPayload {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
 }
-export const UpdateACLPayload = /*@__PURE__*/ S.suspend(() =>
+const UpdateACLPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.String,
   }),
 ).annotate({ identifier: "UpdateACLPayload" }) as any as S.Schema<UpdateACLPayload>;
 
 export type UpdateACLsRequestCidrsList = Array<UpdateACLPayload>;
-export const UpdateACLsRequestCidrsList = /*@__PURE__*/ S.Array(
+const UpdateACLsRequestCidrsList = /*@__PURE__*/ S.Array(
   UpdateACLPayload,
 ) as any as S.Schema<UpdateACLsRequestCidrsList>;
 
@@ -776,7 +776,7 @@ export interface UpdateACLsRequest {
   instanceId: string;
   cidrs?: UpdateACLsRequestCidrsList;
 }
-export const UpdateACLsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateACLsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -792,7 +792,7 @@ export const UpdateACLsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateACLsRequest" }) as any as S.Schema<UpdateACLsRequest>;
 
 export interface UpdateACLsResponse {}
-export const UpdateACLsResponse = DeleteACLResponse as any as S.Schema<UpdateACLsResponse>;
+const UpdateACLsResponse = DeleteACLResponse as any as S.Schema<UpdateACLsResponse>;
 
 export interface UpdateApproleRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -809,7 +809,7 @@ export interface UpdateApproleRequest {
   /** Is true if the approle has write access to the secrets engine. Is false for a read-only approle. */
   write?: boolean;
 }
-export const UpdateApproleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApproleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -840,7 +840,7 @@ export interface UpdateApproleSecretIdRequest {
   /** A user chosen description to differentiate between multiple approle secrets. */
   description?: string;
 }
-export const UpdateApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -868,7 +868,7 @@ export interface UpdateInstanceRequest {
   /** A user chosen name to distinguish multiple secrets manager instances. */
   name: string;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -885,7 +885,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = DeleteACLResponse as any as S.Schema<UpdateInstanceResponse>;
+const UpdateInstanceResponse = DeleteACLResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export interface UpdateUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -899,7 +899,7 @@ export interface UpdateUserRequest {
   /** Is true if the user has write access to the secrets engine. Is false for a read-only user. */
   write?: boolean;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -917,7 +917,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = DeleteACLResponse as any as S.Schema<UpdateUserResponse>;
+const UpdateUserResponse = DeleteACLResponse as any as S.Schema<UpdateUserResponse>;
 
 export type CreateACLError = BadRequest | NotFound | Conflict | StackitOpError;
 /** Creates a new Secrets Manager acl within the project. */

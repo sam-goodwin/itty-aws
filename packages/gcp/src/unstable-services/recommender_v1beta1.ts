@@ -65,7 +65,7 @@ export interface GetBillingAccountsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -80,34 +80,29 @@ export const GetBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE_
 }) as any as S.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Reference to an associated recommendation. */
 export interface GoogleCloudRecommenderV1beta1InsightRecommendationReference {
   /** Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID] */
   recommendation?: string;
 }
-export const GoogleCloudRecommenderV1beta1InsightRecommendationReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      recommendation: S.optional(S.String),
-    }),
+const GoogleCloudRecommenderV1beta1InsightRecommendationReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recommendation: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudRecommenderV1beta1InsightRecommendationReference",
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
 
 export type GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList =
   Array<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
-export const GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecommenderV1beta1InsightRecommendationReference,
-  ) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList>;
+const GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList = /*@__PURE__*/ S.Array(
+  GoogleCloudRecommenderV1beta1InsightRecommendationReference,
+) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GoogleCloudRecommenderV1beta1InsightCategoryEnum =
   | "CATEGORY_UNSPECIFIED"
@@ -117,7 +112,7 @@ export type GoogleCloudRecommenderV1beta1InsightCategoryEnum =
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
   | "RELIABILITY";
-export const GoogleCloudRecommenderV1beta1InsightCategoryEnum = S.String;
+const GoogleCloudRecommenderV1beta1InsightCategoryEnum = S.String;
 
 export type GoogleCloudRecommenderV1beta1InsightSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
@@ -125,17 +120,17 @@ export type GoogleCloudRecommenderV1beta1InsightSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const GoogleCloudRecommenderV1beta1InsightSeverityEnum = S.String;
+const GoogleCloudRecommenderV1beta1InsightSeverityEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ACCEPTED"
   | "DISMISSED";
-export const GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum = S.String;
+const GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum = S.String;
 
 /** Information related to insight state. */
 export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
@@ -144,7 +139,7 @@ export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
   /** Insight state. */
   state?: GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum;
 }
-export const GoogleCloudRecommenderV1beta1InsightStateInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1InsightStateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateMetadata: S.optional(StringMap),
     state: S.optional(GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum),
@@ -180,7 +175,7 @@ export interface GoogleCloudRecommenderV1beta1Insight {
   /** Fingerprint of the Insight. Provides optimistic locking when updating states. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1Insight = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1Insight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(DocumentMap),
     associatedRecommendations: S.optional(
@@ -205,20 +200,19 @@ export interface GetBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetBillingAccountsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
+const GetBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBillingAccountsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
@@ -226,14 +220,14 @@ export type GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
   | "P3"
   | "P2"
   | "P1";
-export const GoogleCloudRecommenderV1beta1RecommendationPriorityEnum = S.String;
+const GoogleCloudRecommenderV1beta1RecommendationPriorityEnum = S.String;
 
 /** Contains various matching options for values for a GCP resource field. */
 export interface GoogleCloudRecommenderV1beta1ValueMatcher {
   /** To be used for full regex matching. The regular expression is using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be used with RE2::FullMatch */
   matchesPattern?: string;
 }
-export const GoogleCloudRecommenderV1beta1ValueMatcher = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1ValueMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchesPattern: S.optional(S.String),
   }),
@@ -244,7 +238,7 @@ export const GoogleCloudRecommenderV1beta1ValueMatcher = /*@__PURE__*/ S.suspend
 export type GoogleCloudRecommenderV1beta1ValueMatcherMap = {
   [key: string]: GoogleCloudRecommenderV1beta1ValueMatcher | undefined;
 };
-export const GoogleCloudRecommenderV1beta1ValueMatcherMap = /*@__PURE__*/ S.Record(
+const GoogleCloudRecommenderV1beta1ValueMatcherMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudRecommenderV1beta1ValueMatcher,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1ValueMatcherMap>;
@@ -272,7 +266,7 @@ export interface GoogleCloudRecommenderV1beta1Operation {
   /** Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or `value` will be set for 'test' operation. */
   valueMatcher?: GoogleCloudRecommenderV1beta1ValueMatcher;
 }
-export const GoogleCloudRecommenderV1beta1Operation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pathValueMatchers: S.optional(GoogleCloudRecommenderV1beta1ValueMatcherMap),
     pathFilters: S.optional(DocumentMap),
@@ -291,7 +285,7 @@ export const GoogleCloudRecommenderV1beta1Operation = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudRecommenderV1beta1OperationList =
   Array<GoogleCloudRecommenderV1beta1Operation>;
-export const GoogleCloudRecommenderV1beta1OperationList = /*@__PURE__*/ S.Array(
+const GoogleCloudRecommenderV1beta1OperationList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Operation,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationList>;
 
@@ -300,7 +294,7 @@ export interface GoogleCloudRecommenderV1beta1OperationGroup {
   /** List of operations across one or more resources that belong to this group. Loosely based on RFC6902 and should be performed in the order they appear. */
   operations?: GoogleCloudRecommenderV1beta1OperationList;
 }
-export const GoogleCloudRecommenderV1beta1OperationGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1OperationGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(GoogleCloudRecommenderV1beta1OperationList),
   }),
@@ -310,7 +304,7 @@ export const GoogleCloudRecommenderV1beta1OperationGroup = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudRecommenderV1beta1OperationGroupList =
   Array<GoogleCloudRecommenderV1beta1OperationGroup>;
-export const GoogleCloudRecommenderV1beta1OperationGroupList = /*@__PURE__*/ S.Array(
+const GoogleCloudRecommenderV1beta1OperationGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1OperationGroup,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationGroupList>;
 
@@ -321,7 +315,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationContent {
   /** Condensed overview information about the recommendation. */
   overview?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommendationContent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1RecommendationContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationGroups: S.optional(GoogleCloudRecommenderV1beta1OperationGroupList),
     overview: S.optional(DocumentMap),
@@ -339,7 +333,7 @@ export interface GoogleTypeMoney {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     units: S.optional(S.String),
@@ -351,7 +345,7 @@ export type GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum =
   | "PRICING_TYPE_UNSPECIFIED"
   | "LIST_PRICE"
   | "CUSTOM_PRICE";
-export const GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum = S.String;
+const GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum = S.String;
 
 /** Contains metadata about how much money a recommendation can save or incur. */
 export interface GoogleCloudRecommenderV1beta1CostProjection {
@@ -364,7 +358,7 @@ export interface GoogleCloudRecommenderV1beta1CostProjection {
   /** How the cost is calculated. */
   pricingType?: GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum;
 }
-export const GoogleCloudRecommenderV1beta1CostProjection = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1CostProjection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costInLocalCurrency: S.optional(GoogleTypeMoney),
     cost: S.optional(GoogleTypeMoney),
@@ -383,21 +377,20 @@ export type GoogleCloudRecommenderV1beta1ImpactCategoryEnum =
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
   | "RELIABILITY";
-export const GoogleCloudRecommenderV1beta1ImpactCategoryEnum = S.String;
+const GoogleCloudRecommenderV1beta1ImpactCategoryEnum = S.String;
 
 export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum =
   | "RISK_TYPE_UNSPECIFIED"
   | "SERVICE_DISRUPTION"
   | "DATA_LOSS"
   | "ACCESS_DENY";
-export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum = S.String;
+const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum = S.String;
 
 export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList =
   Array<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum>;
-export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum,
-  ) as any as S.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList>;
+const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList = /*@__PURE__*/ S.Array(
+  GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum,
+) as any as S.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList>;
 
 /** Contains information on the impact of a reliability recommendation. */
 export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
@@ -406,7 +399,7 @@ export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
   /** Per-recommender projection. */
   details?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1ReliabilityProjection = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1ReliabilityProjection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     risks: S.optional(GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList),
     details: S.optional(DocumentMap),
@@ -422,7 +415,7 @@ export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
   /** Carbon Footprint generated in kg of CO2 equivalent. Chose kg_c_o2e so that the name renders correctly in camelCase (kgCO2e). */
   kgCO2e?: number;
 }
-export const GoogleCloudRecommenderV1beta1SustainabilityProjection = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1SustainabilityProjection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
     kgCO2e: S.optional(S.Number),
@@ -436,7 +429,7 @@ export interface GoogleCloudRecommenderV1beta1SecurityProjection {
   /** This field can be used by the recommender to define details specific to security impact. */
   details?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1SecurityProjection = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1SecurityProjection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMap),
   }),
@@ -459,7 +452,7 @@ export interface GoogleCloudRecommenderV1beta1Impact {
   /** Use with CategoryType.SECURITY */
   securityProjection?: GoogleCloudRecommenderV1beta1SecurityProjection;
 }
-export const GoogleCloudRecommenderV1beta1Impact = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1Impact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costProjection: S.optional(GoogleCloudRecommenderV1beta1CostProjection),
     category: S.optional(GoogleCloudRecommenderV1beta1ImpactCategoryEnum),
@@ -473,7 +466,7 @@ export const GoogleCloudRecommenderV1beta1Impact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1Impact>;
 
 export type GoogleCloudRecommenderV1beta1ImpactList = Array<GoogleCloudRecommenderV1beta1Impact>;
-export const GoogleCloudRecommenderV1beta1ImpactList = /*@__PURE__*/ S.Array(
+const GoogleCloudRecommenderV1beta1ImpactList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Impact,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1ImpactList>;
 
@@ -484,7 +477,7 @@ export type GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "DISMISSED";
-export const GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum = S.String;
+const GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum = S.String;
 
 /** Information for state. Contains state and metadata. */
 export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
@@ -493,7 +486,7 @@ export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
   /** A map of metadata for the state, provided by user or automations systems. */
   stateMetadata?: StringMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommendationStateInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1RecommendationStateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum),
     stateMetadata: S.optional(StringMap),
@@ -507,21 +500,19 @@ export interface GoogleCloudRecommenderV1beta1RecommendationInsightReference {
   /** Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID] */
   insight?: string;
 }
-export const GoogleCloudRecommenderV1beta1RecommendationInsightReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      insight: S.optional(S.String),
-    }),
+const GoogleCloudRecommenderV1beta1RecommendationInsightReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    insight: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudRecommenderV1beta1RecommendationInsightReference",
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
 
 export type GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList =
   Array<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
-export const GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRecommenderV1beta1RecommendationInsightReference,
-  ) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList>;
+const GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList = /*@__PURE__*/ S.Array(
+  GoogleCloudRecommenderV1beta1RecommendationInsightReference,
+) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList>;
 
 /** A recommendation along with a suggested action. E.g., a rightsizing recommendation for an underutilized VM, IAM role recommendations, etc */
 export interface GoogleCloudRecommenderV1beta1Recommendation {
@@ -552,7 +543,7 @@ export interface GoogleCloudRecommenderV1beta1Recommendation {
   /** The primary impact that this recommendation can have while trying to optimize for one category. */
   primaryImpact?: GoogleCloudRecommenderV1beta1Impact;
 }
-export const GoogleCloudRecommenderV1beta1Recommendation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1Recommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.optional(GoogleCloudRecommenderV1beta1RecommendationPriorityEnum),
     lastRefreshTime: S.optional(S.String),
@@ -576,7 +567,7 @@ export interface GetConfigBillingAccountsLocationsInsightTypesRequest {
   /** Required. Name of the InsightTypeConfig to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` */
   name: string;
 }
-export const GetConfigBillingAccountsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigBillingAccountsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -595,11 +586,10 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig {
   /** Parameters for this InsightTypeGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      params: S.optional(DocumentMap),
-    }),
+const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    params: S.optional(DocumentMap),
+  }),
 ).annotate({
   identifier: "GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig",
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig>;
@@ -621,7 +611,7 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
   /** Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config */
   name?: string;
 }
-export const GoogleCloudRecommenderV1beta1InsightTypeConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1InsightTypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     etag: S.optional(S.String),
@@ -641,7 +631,7 @@ export interface GetConfigBillingAccountsLocationsRecommendersRequest {
   /** Required. Name of the Recommendation Config to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` */
   name: string;
 }
-export const GetConfigBillingAccountsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigBillingAccountsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -660,7 +650,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderGenerationConfig {
   /** Parameters for this RecommenderGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig =
+const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig =
   GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig>;
 
 /** Configuration for a Recommender. */
@@ -680,7 +670,7 @@ export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
   /** Allows clients to store small amounts of arbitrary data. Annotations must follow the Kubernetes syntax. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. */
   annotations?: StringMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.optional(S.String),
     name: S.optional(S.String),
@@ -700,7 +690,7 @@ export interface GetConfigOrganizationsLocationsInsightTypesRequest {
   /** Required. Name of the InsightTypeConfig to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` */
   name: string;
 }
-export const GetConfigOrganizationsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigOrganizationsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -718,7 +708,7 @@ export interface GetConfigOrganizationsLocationsRecommendersRequest {
   /** Required. Name of the Recommendation Config to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` */
   name: string;
 }
-export const GetConfigOrganizationsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigOrganizationsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -736,7 +726,7 @@ export interface GetConfigProjectsLocationsInsightTypesRequest {
   /** Required. Name of the InsightTypeConfig to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` */
   name: string;
 }
-export const GetConfigProjectsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -754,7 +744,7 @@ export interface GetConfigProjectsLocationsRecommendersRequest {
   /** Required. Name of the Recommendation Config to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` */
   name: string;
 }
-export const GetConfigProjectsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -772,7 +762,7 @@ export interface GetFoldersLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -790,7 +780,7 @@ export interface GetFoldersLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -808,7 +798,7 @@ export interface GetOrganizationsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -826,17 +816,16 @@ export interface GetOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
+const GetOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetOrganizationsLocationsRecommendersRecommendationsRequest",
 }) as any as S.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
@@ -845,7 +834,7 @@ export interface GetProjectsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -863,7 +852,7 @@ export interface GetProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -889,7 +878,7 @@ export interface ListBillingAccountsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -920,7 +909,7 @@ export interface GoogleCloudLocationLocation {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -933,7 +922,7 @@ export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudLocationLocation>;
 
 export type GoogleCloudLocationLocationList = Array<GoogleCloudLocationLocation>;
-export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
+const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
 
@@ -944,7 +933,7 @@ export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: GoogleCloudLocationLocationList;
 }
-export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(GoogleCloudLocationLocationList),
@@ -963,7 +952,7 @@ export interface ListBillingAccountsLocationsInsightTypesInsightsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return. */
   pageSize?: number;
 }
-export const ListBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -981,7 +970,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE
 }) as any as S.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type GoogleCloudRecommenderV1beta1InsightList = Array<GoogleCloudRecommenderV1beta1Insight>;
-export const GoogleCloudRecommenderV1beta1InsightList = /*@__PURE__*/ S.Array(
+const GoogleCloudRecommenderV1beta1InsightList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Insight,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightList>;
 
@@ -992,7 +981,7 @@ export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
   /** A token that can be used to request the next page of results. This field is empty if there are no additional results. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecommenderV1beta1ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insights: S.optional(GoogleCloudRecommenderV1beta1InsightList),
     nextPageToken: S.optional(S.String),
@@ -1011,27 +1000,26 @@ export interface ListBillingAccountsLocationsRecommendersRecommendationsRequest 
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return. */
   pageSize?: number;
 }
-export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/recommendations",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListBillingAccountsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
+const ListBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/recommendations",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListBillingAccountsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type GoogleCloudRecommenderV1beta1RecommendationList =
   Array<GoogleCloudRecommenderV1beta1Recommendation>;
-export const GoogleCloudRecommenderV1beta1RecommendationList = /*@__PURE__*/ S.Array(
+const GoogleCloudRecommenderV1beta1RecommendationList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1Recommendation,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationList>;
 
@@ -1042,12 +1030,11 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
   /** The set of recommendations for the `parent` resource. */
   recommendations?: GoogleCloudRecommenderV1beta1RecommendationList;
 }
-export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      recommendations: S.optional(GoogleCloudRecommenderV1beta1RecommendationList),
-    }),
+const GoogleCloudRecommenderV1beta1ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    recommendations: S.optional(GoogleCloudRecommenderV1beta1RecommendationList),
+  }),
 ).annotate({
   identifier: "GoogleCloudRecommenderV1beta1ListRecommendationsResponse",
 }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListRecommendationsResponse>;
@@ -1064,7 +1051,7 @@ export interface ListFoldersLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1092,7 +1079,7 @@ export interface ListFoldersLocationsInsightTypesInsightsRequest {
   /** Optional. Filter expression to restrict the insights returned. Supported filter fields: * `stateInfo.state` * `insightSubtype` * `severity` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL OR severity = HIGH` * `targetResources : //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1` * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)` The max allowed filter length is 500 characters. (These expressions are based on the filter language described at https://google.aip.dev/160) */
   filter?: string;
 }
-export const ListFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1119,7 +1106,7 @@ export interface ListFoldersLocationsRecommendersRecommendationsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1142,7 +1129,7 @@ export interface ListInsightTypesRequest {
   /** Optional. A page token, received from a previous `ListRecommenders` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1160,7 +1147,7 @@ export interface GoogleCloudRecommenderV1beta1InsightType {
   /** The insight_type's name in format insightTypes/{insight_type} eg: insightTypes/google.iam.policy.Insight */
   name?: string;
 }
-export const GoogleCloudRecommenderV1beta1InsightType = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1InsightType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1170,7 +1157,7 @@ export const GoogleCloudRecommenderV1beta1InsightType = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudRecommenderV1beta1InsightTypeList =
   Array<GoogleCloudRecommenderV1beta1InsightType>;
-export const GoogleCloudRecommenderV1beta1InsightTypeList = /*@__PURE__*/ S.Array(
+const GoogleCloudRecommenderV1beta1InsightTypeList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1beta1InsightType,
 ) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeList>;
 
@@ -1181,7 +1168,7 @@ export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1ListInsightTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insightTypes: S.optional(GoogleCloudRecommenderV1beta1InsightTypeList),
     nextPageToken: S.optional(S.String),
@@ -1202,7 +1189,7 @@ export interface ListOrganizationsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1230,7 +1217,7 @@ export interface ListOrganizationsLocationsInsightTypesInsightsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1257,20 +1244,19 @@ export interface ListOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/recommendations",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
+const ListOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/recommendations",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListOrganizationsLocationsRecommendersRecommendationsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
@@ -1287,7 +1273,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1315,7 +1301,7 @@ export interface ListProjectsLocationsInsightTypesInsightsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1342,7 +1328,7 @@ export interface ListProjectsLocationsRecommendersRecommendationsRequest {
   /** Filter expression to restrict the recommendations returned. Supported filter fields: * `state_info.state` * `recommenderSubtype` * `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` * `targetResources : //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1` * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max allowed filter length is 500 characters. (These expressions are based on the filter language described at https://google.aip.dev/160) */
   filter?: string;
 }
-export const ListProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1365,7 +1351,7 @@ export interface ListRecommendersRequest {
   /** Optional. A page token, received from a previous `ListRecommenders` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1383,12 +1369,9 @@ export interface GoogleCloudRecommenderV1beta1RecommenderType {
   /** The recommender's name in format RecommenderTypes/{recommender_type} eg: recommenderTypes/google.iam.policy.Recommender */
   name?: string;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderType =
-  GoogleCloudRecommenderV1beta1InsightType as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
-
 export type GoogleCloudRecommenderV1beta1RecommenderTypeList =
   Array<GoogleCloudRecommenderV1beta1RecommenderType>;
-export const GoogleCloudRecommenderV1beta1RecommenderTypeList =
+const GoogleCloudRecommenderV1beta1RecommenderTypeList =
   GoogleCloudRecommenderV1beta1InsightTypeList as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderTypeList>;
 
 /** Response for the `ListRecommender` method. Next ID: 3 */
@@ -1398,7 +1381,7 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecommenderV1beta1ListRecommendersResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1ListRecommendersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommenders: S.optional(GoogleCloudRecommenderV1beta1RecommenderTypeList),
     nextPageToken: S.optional(S.String),
@@ -1414,7 +1397,7 @@ export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
   /** Required. Fingerprint of the Insight. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateMetadata: S.optional(StringMap),
     etag: S.optional(S.String),
@@ -1429,8 +1412,8 @@ export interface MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
@@ -1441,9 +1424,9 @@ export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
         baseUrl: "https://recommender.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest",
-  }) as any as S.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
+).annotate({
+  identifier: "MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest",
+}) as any as S.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export interface MarkAcceptedFoldersLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
@@ -1451,7 +1434,7 @@ export interface MarkAcceptedFoldersLocationsInsightTypesInsightsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
@@ -1472,21 +1455,20 @@ export interface MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:markAccepted",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest",
-  }) as any as S.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
+const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:markAccepted",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest",
+}) as any as S.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export interface MarkAcceptedProjectsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
@@ -1494,18 +1476,17 @@ export interface MarkAcceptedProjectsLocationsInsightTypesInsightsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:markAccepted",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
+const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:markAccepted",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "MarkAcceptedProjectsLocationsInsightTypesInsightsRequest",
 }) as any as S.Schema<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>;
@@ -1517,15 +1498,14 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
   /** State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`. */
   stateMetadata?: StringMap;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      etag: S.optional(S.String),
-      stateMetadata: S.optional(StringMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest",
-  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest>;
+const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    etag: S.optional(S.String),
+    stateMetadata: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest>;
 
 export interface MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1533,7 +1513,7 @@ export interface MarkClaimedBillingAccountsLocationsRecommendersRecommendationsR
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest =
+const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1557,23 +1537,22 @@ export interface MarkClaimedFoldersLocationsRecommendersRecommendationsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:markClaimed",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
+const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
     ),
-  ).annotate({
-    identifier: "MarkClaimedFoldersLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:markClaimed",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MarkClaimedFoldersLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1581,8 +1560,8 @@ export interface MarkClaimedOrganizationsLocationsRecommendersRecommendationsReq
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -1595,9 +1574,9 @@ export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest
         baseUrl: "https://recommender.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
+).annotate({
+  identifier: "MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkClaimedProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1605,37 +1584,36 @@ export interface MarkClaimedProjectsLocationsRecommendersRecommendationsRequest 
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:markClaimed",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
+const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
     ),
-  ).annotate({
-    identifier: "MarkClaimedProjectsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:markClaimed",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MarkClaimedProjectsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
 
 /** Request for the `MarkRecommendationDismissed` Method. */
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest {
   /** Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       etag: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest",
-  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest>;
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest>;
 
 export interface MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1643,7 +1621,7 @@ export interface MarkDismissedBillingAccountsLocationsRecommendersRecommendation
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest =
+const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1667,8 +1645,8 @@ export interface MarkDismissedFoldersLocationsRecommendersRecommendationsRequest
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -1681,9 +1659,9 @@ export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
         baseUrl: "https://recommender.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MarkDismissedFoldersLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
+).annotate({
+  identifier: "MarkDismissedFoldersLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1691,7 +1669,7 @@ export interface MarkDismissedOrganizationsLocationsRecommendersRecommendationsR
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest =
+const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1715,8 +1693,8 @@ export interface MarkDismissedProjectsLocationsRecommendersRecommendationsReques
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -1729,23 +1707,20 @@ export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
         baseUrl: "https://recommender.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MarkDismissedProjectsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
+).annotate({
+  identifier: "MarkDismissedProjectsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
 
 /** Request for the `MarkRecommendationFailed` Method. */
 export type GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest =
   GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
-export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest =
-  GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
-
 export interface MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest =
+const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1769,7 +1744,30 @@ export interface MarkFailedFoldersLocationsRecommendersRecommendationsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
+const MarkFailedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:markFailed",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MarkFailedFoldersLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
+
+export interface MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest {
+  /** Required. Name of the recommendation. */
+  name: string;
+  /** Request body */
+  body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
+}
+const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1784,32 +1782,8 @@ export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest = /*@_
       }),
     ),
 ).annotate({
-  identifier: "MarkFailedFoldersLocationsRecommendersRecommendationsRequest",
-}) as any as S.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
-
-export interface MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest {
-  /** Required. Name of the recommendation. */
-  name: string;
-  /** Request body */
-  body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
-}
-export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:markFailed",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
+  identifier: "MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkFailedProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1817,23 +1791,22 @@ export interface MarkFailedProjectsLocationsRecommendersRecommendationsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+name}:markFailed",
-        baseUrl: "https://recommender.googleapis.com/",
-      }),
+const MarkFailedProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody()),
     ),
-  ).annotate({
-    identifier: "MarkFailedProjectsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:markFailed",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MarkFailedProjectsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
 
 /** Request for the `MarkRecommendationSucceeded` Method. */
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest {
@@ -1842,15 +1815,15 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest
   /** Required. Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       stateMetadata: S.optional(StringMap),
       etag: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest",
-  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest>;
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest>;
 
 export interface MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1858,7 +1831,7 @@ export interface MarkSucceededBillingAccountsLocationsRecommendersRecommendation
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest =
+const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1882,8 +1855,8 @@ export interface MarkSucceededFoldersLocationsRecommendersRecommendationsRequest
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -1896,9 +1869,9 @@ export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
         baseUrl: "https://recommender.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MarkSucceededFoldersLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
+).annotate({
+  identifier: "MarkSucceededFoldersLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1906,7 +1879,7 @@ export interface MarkSucceededOrganizationsLocationsRecommendersRecommendationsR
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest =
+const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1930,8 +1903,8 @@ export interface MarkSucceededProjectsLocationsRecommendersRecommendationsReques
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -1944,9 +1917,9 @@ export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
         baseUrl: "https://recommender.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MarkSucceededProjectsLocationsRecommendersRecommendationsRequest",
-  }) as any as S.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
+).annotate({
+  identifier: "MarkSucceededProjectsLocationsRecommendersRecommendationsRequest",
+}) as any as S.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
 
 export interface UpdateConfigBillingAccountsLocationsInsightTypesRequest {
   /** If true, validate the request and preview the change, but do not actually update it. */
@@ -1958,7 +1931,7 @@ export interface UpdateConfigBillingAccountsLocationsInsightTypesRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1InsightTypeConfig;
 }
-export const UpdateConfigBillingAccountsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigBillingAccountsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1985,7 +1958,7 @@ export interface UpdateConfigBillingAccountsLocationsRecommendersRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1RecommenderConfig;
 }
-export const UpdateConfigBillingAccountsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigBillingAccountsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2012,7 +1985,7 @@ export interface UpdateConfigOrganizationsLocationsInsightTypesRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1InsightTypeConfig;
 }
-export const UpdateConfigOrganizationsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigOrganizationsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2039,7 +2012,7 @@ export interface UpdateConfigOrganizationsLocationsRecommendersRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1RecommenderConfig;
 }
-export const UpdateConfigOrganizationsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigOrganizationsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2066,7 +2039,7 @@ export interface UpdateConfigProjectsLocationsInsightTypesRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1InsightTypeConfig;
 }
-export const UpdateConfigProjectsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigProjectsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2093,7 +2066,7 @@ export interface UpdateConfigProjectsLocationsRecommendersRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1RecommenderConfig;
 }
-export const UpdateConfigProjectsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigProjectsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

@@ -12,14 +12,14 @@ export interface DeleteWebhookRequest {
   /** The ID of the webhook for which to list subscriptions. */
   webhook_id: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/notifications/webhooks/{webhook_id}", code: 200 })),
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWebhookResponse",
 }) as any as S.Schema<DeleteWebhookResponse>;
 
@@ -27,7 +27,7 @@ export interface DeleteWebhooksLookupRequest {
   /** The ID of the webhook lookup to delete. */
   webhook_lookup_id: string;
 }
-export const DeleteWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_lookup_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -42,14 +42,14 @@ export const DeleteWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhooksLookupRequest>;
 
 export interface DeleteWebhooksLookupResponse {}
-export const DeleteWebhooksLookupResponse =
+const DeleteWebhooksLookupResponse =
   DeleteWebhookResponse as any as S.Schema<DeleteWebhooksLookupResponse>;
 
 export interface GetWebhookRequest {
   /** The ID of the webhook for which to list subscriptions. */
   webhook_id: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/notifications/webhooks/{webhook_id}", code: 200 })),
@@ -57,7 +57,7 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifier for the event type example: 1.0/2.0 etc. */
 export type ResourceVersionsList = Array<string>;
-export const ResourceVersionsList = /*@__PURE__*/ S.Array(
+const ResourceVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceVersionsList>;
 
@@ -71,7 +71,7 @@ export interface EventType {
   status?: string;
   resource_versions?: ResourceVersionsList;
 }
-export const EventType = /*@__PURE__*/ S.suspend(() =>
+const EventType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -82,7 +82,7 @@ export const EventType = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of events to which to subscribe your webhook. To subscribe to all events, including events as they are added, specify the asterisk wild card. To replace the `event_types` array, specify the asterisk wild card. To list all supported events, <a href="#event-type_list">list available events</a>. */
 export type DefinitionsEventTypeList = Array<EventType>;
-export const DefinitionsEventTypeList = /*@__PURE__*/ S.Array(
+const DefinitionsEventTypeList = /*@__PURE__*/ S.Array(
   EventType,
 ) as any as S.Schema<DefinitionsEventTypeList>;
 
@@ -96,7 +96,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -107,7 +107,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -117,7 +117,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links/). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
+const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<DefinitionsLinkDescriptionList>;
 
@@ -130,7 +130,7 @@ export interface Webhook {
   event_types: DefinitionsEventTypeList;
   links?: DefinitionsLinkDescriptionList;
 }
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
+const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     url: S.String,
@@ -143,7 +143,7 @@ export interface GetWebhooksEventRequest {
   /** The ID of the webhook event notification to resend. */
   event_id: string;
 }
-export const GetWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -153,12 +153,11 @@ export const GetWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource that triggered the webhook event notification. */
 export type Resource = { [key: string]: unknown | undefined };
-export const Resource = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<Resource>;
+const Resource = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<Resource>;
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList =
-  DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
+const LinkDescriptionList = DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
 
 /** A webhook event notification. */
 export interface Event {
@@ -177,7 +176,7 @@ export interface Event {
   resource?: Resource;
   links?: LinkDescriptionList;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     create_time: S.optional(S.String),
@@ -195,7 +194,7 @@ export interface GetWebhooksLookupRequest {
   /** The ID of the webhook lookup to delete. */
   webhook_lookup_id: string;
 }
-export const GetWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_lookup_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -215,7 +214,7 @@ export interface WebhooksLookup {
   client_id?: string;
   links?: DefinitionsLinkDescriptionList;
 }
-export const WebhooksLookup = /*@__PURE__*/ S.suspend(() =>
+const WebhooksLookup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     client_id: S.optional(S.String),
@@ -227,7 +226,7 @@ export interface ListEventTypesRequest {
   /** The ID of the webhook for which to list subscriptions. */
   webhook_id: string;
 }
-export const ListEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -241,26 +240,26 @@ export const ListEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of webhook events. */
 export type EventTypeList2 = Array<EventType>;
-export const EventTypeList2 = /*@__PURE__*/ S.Array(EventType) as any as S.Schema<EventTypeList2>;
+const EventTypeList2 = /*@__PURE__*/ S.Array(EventType) as any as S.Schema<EventTypeList2>;
 
 /** A list of webhook events. */
 export interface EventTypeList {
   event_types?: EventTypeList2;
 }
-export const EventTypeList = /*@__PURE__*/ S.suspend(() =>
+const EventTypeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_types: S.optional(EventTypeList2),
   }),
 ).annotate({ identifier: "EventTypeList" }) as any as S.Schema<EventTypeList>;
 
 export type ListWebhooksRequestAnchorType = "APPLICATION" | "ACCOUNT";
-export const ListWebhooksRequestAnchorType = S.String;
+const ListWebhooksRequestAnchorType = S.String;
 
 export interface ListWebhooksRequest {
   /** Filters the webhooks in the response by an `anchor_id` entity type. */
   anchor_type?: ListWebhooksRequestAnchorType | (string & {});
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anchor_type: S.optional(ListWebhooksRequestAnchorType.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/notifications/webhooks", code: 200 })),
@@ -268,13 +267,13 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of webhooks. */
 export type WebhookList2 = Array<Webhook>;
-export const WebhookList2 = /*@__PURE__*/ S.Array(Webhook) as any as S.Schema<WebhookList2>;
+const WebhookList2 = /*@__PURE__*/ S.Array(Webhook) as any as S.Schema<WebhookList2>;
 
 /** A list of webhooks. */
 export interface WebhookList {
   webhooks?: WebhookList2;
 }
-export const WebhookList = /*@__PURE__*/ S.suspend(() =>
+const WebhookList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhooks: S.optional(WebhookList2),
   }),
@@ -292,7 +291,7 @@ export interface ListWebhooksEventsRequest {
   /** Filters the response to a single event. */
   event_type?: string;
 }
-export const ListWebhooksEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page_size: S.optional(S.Number.pipe(T.Query())),
     start_time: S.optional(S.String.pipe(T.Query())),
@@ -306,7 +305,7 @@ export const ListWebhooksEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of webhooks events. */
 export type EventList2 = Array<Event>;
-export const EventList2 = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList2>;
+const EventList2 = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList2>;
 
 /** A list of webhooks events. */
 export interface EventList {
@@ -315,7 +314,7 @@ export interface EventList {
   count?: number;
   links?: LinkDescriptionList;
 }
-export const EventList = /*@__PURE__*/ S.suspend(() =>
+const EventList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(EventList2),
     count: S.optional(S.Number),
@@ -324,7 +323,7 @@ export const EventList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventList" }) as any as S.Schema<EventList>;
 
 export interface ListWebhooksEventTypesRequest {}
-export const ListWebhooksEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v1/notifications/webhooks-event-types", code: 200 }),
   ),
@@ -333,7 +332,7 @@ export const ListWebhooksEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebhooksEventTypesRequest>;
 
 export interface ListWebhooksLookupRequest {}
-export const ListWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/notifications/webhooks-lookup", code: 200 })),
 ).annotate({
   identifier: "ListWebhooksLookupRequest",
@@ -341,7 +340,7 @@ export const ListWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of webhook lookups. */
 export type WebhooksLookupList = Array<WebhooksLookup>;
-export const WebhooksLookupList = /*@__PURE__*/ S.Array(
+const WebhooksLookupList = /*@__PURE__*/ S.Array(
   WebhooksLookup,
 ) as any as S.Schema<WebhooksLookupList>;
 
@@ -349,7 +348,7 @@ export const WebhooksLookupList = /*@__PURE__*/ S.Array(
 export interface WebhookLookupList {
   webhooks_lookups?: WebhooksLookupList;
 }
-export const WebhookLookupList = /*@__PURE__*/ S.suspend(() =>
+const WebhookLookupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhooks_lookups: S.optional(WebhooksLookupList),
   }),
@@ -365,7 +364,7 @@ export interface PostSimulateEventRequest {
   /** The identifier for event type ex: 1.0/2.0 etc. */
   resource_version?: string;
 }
-export const PostSimulateEventRequest = /*@__PURE__*/ S.suspend(() =>
+const PostSimulateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_id: S.optional(S.String),
     url: S.optional(S.String),
@@ -375,7 +374,7 @@ export const PostSimulateEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostSimulateEventRequest" }) as any as S.Schema<PostSimulateEventRequest>;
 
 export interface PostSimulateEventResponse {}
-export const PostSimulateEventResponse =
+const PostSimulateEventResponse =
   DeleteWebhookResponse as any as S.Schema<PostSimulateEventResponse>;
 
 /** An event type. */
@@ -383,7 +382,7 @@ export interface EventTypeInput {
   /** The unique event name.<blockquote><strong>Note:</strong> To subscribe to all events, including events as they are added, specify an `*` as the value to represent a wildcard.</blockquote> */
   name: string;
 }
-export const EventTypeInput = /*@__PURE__*/ S.suspend(() =>
+const EventTypeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -391,7 +390,7 @@ export const EventTypeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of events to which to subscribe your webhook. To subscribe to all events, including events as they are added, specify the asterisk wild card. To replace the `event_types` array, specify the asterisk wild card. To list all supported events, <a href="#event-type_list">list available events</a>. */
 export type DefinitionsEventTypeListInput = Array<EventTypeInput>;
-export const DefinitionsEventTypeListInput = /*@__PURE__*/ S.Array(
+const DefinitionsEventTypeListInput = /*@__PURE__*/ S.Array(
   EventTypeInput,
 ) as any as S.Schema<DefinitionsEventTypeListInput>;
 
@@ -400,7 +399,7 @@ export interface PostWebhookRequest {
   url: string;
   event_types: DefinitionsEventTypeListInput;
 }
-export const PostWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const PostWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     event_types: DefinitionsEventTypeListInput,
@@ -408,7 +407,7 @@ export const PostWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostWebhookRequest" }) as any as S.Schema<PostWebhookRequest>;
 
 export interface PostWebhooksLookupRequest {}
-export const PostWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
+const PostWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/v1/notifications/webhooks-lookup", code: 200 }),
   ),
@@ -418,14 +417,14 @@ export const PostWebhooksLookupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of webhook account IDs. */
 export type WebhookIdsList = Array<string>;
-export const WebhookIdsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<WebhookIdsList>;
+const WebhookIdsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<WebhookIdsList>;
 
 export interface ResendWebhooksEventRequest {
   /** The ID of the webhook event notification to resend. */
   event_id: string;
   webhook_ids?: WebhookIdsList;
 }
-export const ResendWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
+const ResendWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_id: S.String.pipe(T.Label()),
     webhook_ids: S.optional(WebhookIdsList),
@@ -441,12 +440,12 @@ export const ResendWebhooksEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResendWebhooksEventRequest>;
 
 export interface ResendWebhooksEventResponse {}
-export const ResendWebhooksEventResponse =
+const ResendWebhooksEventResponse =
   DeleteWebhookResponse as any as S.Schema<ResendWebhooksEventResponse>;
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-export const PatchOp = S.String;
+const PatchOp = S.String;
 
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
@@ -459,7 +458,7 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-export const Patch = /*@__PURE__*/ S.suspend(() =>
+const Patch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: PatchOp,
     path: S.optional(S.String),
@@ -470,14 +469,14 @@ export const Patch = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-export const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
+const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
 
 export interface UpdateWebhookRequest {
   /** The ID of the webhook for which to list subscriptions. */
   webhook_id: string;
   body?: PatchRequest;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_id: S.String.pipe(T.Label()),
     body: S.optional(PatchRequest.pipe(T.HttpBody())),
@@ -489,7 +488,7 @@ export interface EventInput {
   event_version?: string;
   resource_version?: string;
 }
-export const EventInput = /*@__PURE__*/ S.suspend(() =>
+const EventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_version: S.optional(S.String),
     resource_version: S.optional(S.String),
@@ -511,7 +510,7 @@ export interface VerifyWebhookSignaturePostRequest {
   webhook_id: string;
   webhook_event: EventInput;
 }
-export const VerifyWebhookSignaturePostRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyWebhookSignaturePostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth_algo: S.String,
     cert_url: S.String,
@@ -527,14 +526,14 @@ export const VerifyWebhookSignaturePostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the signature verification. */
 export type VerifyWebhookSignatureResponseVerificationStatus = "SUCCESS" | "FAILURE";
-export const VerifyWebhookSignatureResponseVerificationStatus = S.String;
+const VerifyWebhookSignatureResponseVerificationStatus = S.String;
 
 /** The verify webhook signature response. */
 export interface VerifyWebhookSignatureResponse {
   /** The status of the signature verification. */
   verification_status: VerifyWebhookSignatureResponseVerificationStatus;
 }
-export const VerifyWebhookSignatureResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyWebhookSignatureResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verification_status: VerifyWebhookSignatureResponseVerificationStatus,
   }),

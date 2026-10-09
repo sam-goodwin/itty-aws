@@ -43,7 +43,7 @@ export interface CreateRepositorySnapshotRequestJob {
   /** The url for the job. */
   html_url?: string;
 }
-export const CreateRepositorySnapshotRequestJob = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositorySnapshotRequestJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     correlator: S.String,
@@ -62,7 +62,7 @@ export interface CreateRepositorySnapshotRequestDetector {
   /** The url of the detector used. */
   url: string;
 }
-export const CreateRepositorySnapshotRequestDetector = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositorySnapshotRequestDetector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version: S.String,
@@ -73,11 +73,11 @@ export const CreateRepositorySnapshotRequestDetector = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateRepositorySnapshotRequestDetector>;
 
 export type MetadataValue = string | number | boolean;
-export const MetadataValue = S.Unknown as any as S.Schema<MetadataValue>;
+const MetadataValue = S.Unknown as any as S.Schema<MetadataValue>;
 
 /** User-defined metadata to store domain-specific information limited to 8 keys with scalar values. */
 export type Metadata = { [key: string]: MetadataValue | null | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(
+const Metadata = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(MetadataValue),
 ) as any as S.Schema<Metadata>;
@@ -86,7 +86,7 @@ export interface ManifestFile {
   /** The path of the manifest file relative to the root of the Git repository. */
   source_location?: string;
 }
-export const ManifestFile = /*@__PURE__*/ S.suspend(() =>
+const ManifestFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_location: S.optional(S.String),
   }),
@@ -94,15 +94,15 @@ export const ManifestFile = /*@__PURE__*/ S.suspend(() =>
 
 /** A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency. */
 export type DependencyRelationship = "direct" | "indirect";
-export const DependencyRelationship = S.String;
+const DependencyRelationship = S.String;
 
 /** A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes. */
 export type DependencyScope = "runtime" | "development";
-export const DependencyScope = S.String;
+const DependencyScope = S.String;
 
 /** Array of package-url (PURLs) of direct child dependencies. */
 export type DependencyDependenciesList = Array<string>;
-export const DependencyDependenciesList = /*@__PURE__*/ S.Array(
+const DependencyDependenciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DependencyDependenciesList>;
 
@@ -117,7 +117,7 @@ export interface Dependency {
   /** Array of package-url (PURLs) of direct child dependencies. */
   dependencies?: DependencyDependenciesList;
 }
-export const Dependency = /*@__PURE__*/ S.suspend(() =>
+const Dependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_url: S.optional(S.String),
     metadata: S.optional(Metadata),
@@ -129,7 +129,7 @@ export const Dependency = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of resolved package dependencies. */
 export type ManifestResolvedMap = { [key: string]: Dependency | undefined };
-export const ManifestResolvedMap = /*@__PURE__*/ S.Record(
+const ManifestResolvedMap = /*@__PURE__*/ S.Record(
   S.String,
   Dependency,
 ) as any as S.Schema<ManifestResolvedMap>;
@@ -142,7 +142,7 @@ export interface Manifest {
   /** A collection of resolved package dependencies. */
   resolved?: ManifestResolvedMap;
 }
-export const Manifest = /*@__PURE__*/ S.suspend(() =>
+const Manifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     file: S.optional(ManifestFile),
@@ -153,7 +153,7 @@ export const Manifest = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies. */
 export type CreateRepositorySnapshotRequestManifestsMap = { [key: string]: Manifest | undefined };
-export const CreateRepositorySnapshotRequestManifestsMap = /*@__PURE__*/ S.Record(
+const CreateRepositorySnapshotRequestManifestsMap = /*@__PURE__*/ S.Record(
   S.String,
   Manifest,
 ) as any as S.Schema<CreateRepositorySnapshotRequestManifestsMap>;
@@ -178,7 +178,7 @@ export interface CreateRepositorySnapshotRequest {
   /** The time at which the snapshot was scanned. */
   scanned: string;
 }
-export const CreateRepositorySnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositorySnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -207,7 +207,7 @@ export interface CreateRepositorySnapshotResponse {
   /** A message providing further details about the result, such as why the dependencies were not updated. */
   message: string;
 }
-export const CreateRepositorySnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositorySnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     created_at: S.String,
@@ -228,7 +228,7 @@ export interface DiffRangeRequest {
   /** The full path, relative to the repository root, of the dependency manifest file. */
   name?: string;
 }
-export const DiffRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const DiffRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -244,7 +244,7 @@ export const DiffRangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiffRangeRequest" }) as any as S.Schema<DiffRangeRequest>;
 
 export type DependencyGraphDiffItemChangeType = "added" | "removed";
-export const DependencyGraphDiffItemChangeType = S.String;
+const DependencyGraphDiffItemChangeType = S.String;
 
 export interface DependencyGraphDiffItemVulnerabilitiesItem {
   severity: string;
@@ -252,7 +252,7 @@ export interface DependencyGraphDiffItemVulnerabilitiesItem {
   advisory_summary: string;
   advisory_url: string;
 }
-export const DependencyGraphDiffItemVulnerabilitiesItem = /*@__PURE__*/ S.suspend(() =>
+const DependencyGraphDiffItemVulnerabilitiesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.String,
     advisory_ghsa_id: S.String,
@@ -265,13 +265,13 @@ export const DependencyGraphDiffItemVulnerabilitiesItem = /*@__PURE__*/ S.suspen
 
 export type DependencyGraphDiffItemVulnerabilitiesList =
   Array<DependencyGraphDiffItemVulnerabilitiesItem>;
-export const DependencyGraphDiffItemVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const DependencyGraphDiffItemVulnerabilitiesList = /*@__PURE__*/ S.Array(
   DependencyGraphDiffItemVulnerabilitiesItem,
 ) as any as S.Schema<DependencyGraphDiffItemVulnerabilitiesList>;
 
 /** Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment. */
 export type DependencyGraphDiffItemScope = "unknown" | "runtime" | "development";
-export const DependencyGraphDiffItemScope = S.String;
+const DependencyGraphDiffItemScope = S.String;
 
 export interface DependencyGraphDiffItem {
   change_type: DependencyGraphDiffItemChangeType;
@@ -286,7 +286,7 @@ export interface DependencyGraphDiffItem {
   /** Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment. */
   scope: DependencyGraphDiffItemScope;
 }
-export const DependencyGraphDiffItem = /*@__PURE__*/ S.suspend(() =>
+const DependencyGraphDiffItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     change_type: DependencyGraphDiffItemChangeType,
     manifest: S.String,
@@ -303,12 +303,12 @@ export const DependencyGraphDiffItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A diff of the dependencies between two commits. */
 export type DependencyGraphDiff = Array<DependencyGraphDiffItem>;
-export const DependencyGraphDiff = /*@__PURE__*/ S.Array(
+const DependencyGraphDiff = /*@__PURE__*/ S.Array(
   DependencyGraphDiffItem,
 ) as any as S.Schema<DependencyGraphDiff>;
 
 export type DiffRangeResponse = DependencyGraphDiff;
-export const DiffRangeResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffRangeResponse = /*@__PURE__*/ S.suspend(() =>
   DependencyGraphDiff.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DiffRangeResponse" }) as any as S.Schema<DiffRangeResponse>;
 
@@ -320,7 +320,7 @@ export interface FetchSbomReportRequest {
   /** The unique identifier of the SBOM export. */
   sbom_uuid: string;
 }
-export const FetchSbomReportRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchSbomReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -335,7 +335,7 @@ export const FetchSbomReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FetchSbomReportRequest" }) as any as S.Schema<FetchSbomReportRequest>;
 
 export interface FetchSbomReportResponse {}
-export const FetchSbomReportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const FetchSbomReportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FetchSbomReportResponse",
 }) as any as S.Schema<FetchSbomReportResponse>;
 
@@ -345,7 +345,7 @@ export interface GenerateSbomReportRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GenerateSbomReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSbomReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -364,7 +364,7 @@ export interface GenerateSbomReportResponse {
   /** URL to poll for the SBOM export result. */
   sbom_url?: string;
 }
-export const GenerateSbomReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateSbomReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sbom_url: S.optional(S.String),
   }),

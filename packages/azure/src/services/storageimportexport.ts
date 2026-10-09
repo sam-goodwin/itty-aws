@@ -29,7 +29,7 @@ export interface ReturnAddress {
   /** Email address of the recipient of the returned drives. */
   email: string;
 }
-export const ReturnAddress = /*@__PURE__*/ S.suspend(() =>
+const ReturnAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientName: S.String,
     streetAddress1: S.String,
@@ -50,7 +50,7 @@ export interface ReturnShipping {
   /** The customer's account number with the carrier. */
   carrierAccountNumber: string;
 }
-export const ReturnShipping = /*@__PURE__*/ S.suspend(() =>
+const ReturnShipping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.String,
     carrierAccountNumber: S.String,
@@ -76,7 +76,7 @@ export interface ShippingInformationInput {
   /** Phone number of the recipient of the returned drives. */
   phone?: string;
 }
-export const ShippingInformationInput = /*@__PURE__*/ S.suspend(() =>
+const ShippingInformationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientName: S.optional(S.String),
     streetAddress1: S.optional(S.String),
@@ -100,7 +100,7 @@ export interface DeliveryPackageInformation {
   /** The date when the package is shipped. */
   shipDate?: string;
 }
-export const DeliveryPackageInformation = /*@__PURE__*/ S.suspend(() =>
+const DeliveryPackageInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.String,
     trackingNumber: S.String,
@@ -122,7 +122,7 @@ export interface PackageInformation {
   /** The date when the package is shipped. */
   shipDate: string;
 }
-export const PackageInformation = /*@__PURE__*/ S.suspend(() =>
+const PackageInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.String,
     trackingNumber: S.String,
@@ -140,7 +140,7 @@ export type DriveStatusState =
   | "Completed"
   | "CompletedMoreInfo"
   | "ShippedBack";
-export const DriveStatusState = S.String;
+const DriveStatusState = S.String;
 
 /** Provides information about the drive's status */
 export interface DriveStatus {
@@ -169,7 +169,7 @@ export interface DriveStatus {
   /** Bytes successfully transferred for the drive. */
   bytesSucceeded?: number;
 }
-export const DriveStatus = /*@__PURE__*/ S.suspend(() =>
+const DriveStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveId: S.optional(S.String),
     bitLockerKey: S.optional(S.String),
@@ -188,19 +188,19 @@ export const DriveStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
 export type JobDetailsInputDriveListList = Array<DriveStatus>;
-export const JobDetailsInputDriveListList = /*@__PURE__*/ S.Array(
+const JobDetailsInputDriveListList = /*@__PURE__*/ S.Array(
   DriveStatus,
 ) as any as S.Schema<JobDetailsInputDriveListList>;
 
 /** A collection of blob-path strings. */
 export type ExportBlobListBlobPathList = Array<string>;
-export const ExportBlobListBlobPathList = /*@__PURE__*/ S.Array(
+const ExportBlobListBlobPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExportBlobListBlobPathList>;
 
 /** A collection of blob-prefix strings. */
 export type ExportBlobListBlobPathPrefixList = Array<string>;
-export const ExportBlobListBlobPathPrefixList =
+const ExportBlobListBlobPathPrefixList =
   ExportBlobListBlobPathList as any as S.Schema<ExportBlobListBlobPathPrefixList>;
 
 /** A list of the blobs to be exported. */
@@ -210,7 +210,7 @@ export interface ExportBlobList {
   /** A collection of blob-prefix strings. */
   blobPathPrefix?: ExportBlobListBlobPathPrefixList;
 }
-export const ExportBlobList = /*@__PURE__*/ S.suspend(() =>
+const ExportBlobList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobPath: S.optional(ExportBlobListBlobPathList),
     blobPathPrefix: S.optional(ExportBlobListBlobPathPrefixList),
@@ -224,7 +224,7 @@ export interface Export {
   /** The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. */
   blobListBlobPath?: string;
 }
-export const Export = /*@__PURE__*/ S.suspend(() =>
+const Export = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobList: S.optional(ExportBlobList),
     blobListBlobPath: S.optional(S.String),
@@ -233,7 +233,7 @@ export const Export = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of kek encryption key */
 export type EncryptionKeyDetailsKekType = "MicrosoftManaged" | "CustomerManaged";
-export const EncryptionKeyDetailsKekType = S.String;
+const EncryptionKeyDetailsKekType = S.String;
 
 /** Specifies the encryption key properties */
 export interface EncryptionKeyDetails {
@@ -244,7 +244,7 @@ export interface EncryptionKeyDetails {
   /** Specifies the keyvault resource id for kek encryption key. */
   kekVaultResourceID?: string;
 }
-export const EncryptionKeyDetails = /*@__PURE__*/ S.suspend(() =>
+const EncryptionKeyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kekType: S.optional(EncryptionKeyDetailsKekType),
     kekUrl: S.optional(S.String),
@@ -291,7 +291,7 @@ export interface JobDetailsInput {
   /** Contains information about the encryption key. */
   encryptionKey?: EncryptionKeyDetails;
 }
-export const JobDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const JobDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountId: S.optional(S.String),
     jobType: S.optional(S.String),
@@ -328,7 +328,7 @@ export interface CreateJobRequest {
   /** Specifies the job properties */
   properties?: JobDetailsInput;
 }
-export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -348,7 +348,7 @@ export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type JobResponseSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const JobResponseSystemDataCreatedByType = S.String;
+const JobResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type JobResponseSystemDataLastModifiedByType =
@@ -356,7 +356,7 @@ export type JobResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const JobResponseSystemDataLastModifiedByType = S.String;
+const JobResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface JobResponseSystemData {
@@ -373,7 +373,7 @@ export interface JobResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const JobResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const JobResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(JobResponseSystemDataCreatedByType),
@@ -405,7 +405,7 @@ export interface ShippingInformation {
   /** Additional shipping information for customer, specific to datacenter to which customer should send their disks. */
   additionalInformation?: string;
 }
-export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
+const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientName: S.optional(S.String),
     streetAddress1: S.optional(S.String),
@@ -421,7 +421,7 @@ export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
 export type JobDetailsDriveListList = Array<DriveStatus>;
-export const JobDetailsDriveListList =
+const JobDetailsDriveListList =
   JobDetailsInputDriveListList as any as S.Schema<JobDetailsDriveListList>;
 
 /** Specifies the job properties */
@@ -463,7 +463,7 @@ export interface JobDetails {
   /** Contains information about the encryption key. */
   encryptionKey?: EncryptionKeyDetails;
 }
-export const JobDetails = /*@__PURE__*/ S.suspend(() =>
+const JobDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountId: S.optional(S.String),
     jobType: S.optional(S.String),
@@ -488,7 +488,7 @@ export const JobDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity */
 export type IdentityDetailsType = "None" | "SystemAssigned" | "UserAssigned";
-export const IdentityDetailsType = S.String;
+const IdentityDetailsType = S.String;
 
 /** Specifies the identity properties. */
 export interface IdentityDetails {
@@ -499,7 +499,7 @@ export interface IdentityDetails {
   /** Specifies the tenant id for the identity for the job. */
   tenantId?: string;
 }
-export const IdentityDetails = /*@__PURE__*/ S.suspend(() =>
+const IdentityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(IdentityDetailsType),
     principalId: S.optional(S.String),
@@ -526,7 +526,7 @@ export interface JobResponse {
   /** Specifies the job identity details */
   identity?: IdentityDetails;
 }
-export const JobResponse = /*@__PURE__*/ S.suspend(() =>
+const JobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemData: S.optional(JobResponseSystemData),
     id: S.optional(S.String),
@@ -547,7 +547,7 @@ export interface DeleteJobRequest {
   /** The name of the import/export job. */
   jobName: string;
 }
-export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -563,7 +563,7 @@ export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJobRequest" }) as any as S.Schema<DeleteJobRequest>;
 
 export interface DeleteJobResponse {}
-export const DeleteJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteJobResponse",
 }) as any as S.Schema<DeleteJobResponse>;
 
@@ -575,7 +575,7 @@ export interface GetJobRequest {
   /** The name of the import/export job. */
   jobName: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -594,7 +594,7 @@ export interface GetLocationRequest {
   /** The name of the location. For example, West US or westus. */
   locationName: string;
 }
-export const GetLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationName: S.String.pipe(T.Label()),
   }).pipe(
@@ -609,12 +609,12 @@ export const GetLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of carriers that are supported at this location. */
 export type LocationPropertiesSupportedCarriersList = Array<string>;
-export const LocationPropertiesSupportedCarriersList =
+const LocationPropertiesSupportedCarriersList =
   ExportBlobListBlobPathList as any as S.Schema<LocationPropertiesSupportedCarriersList>;
 
 /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
 export type LocationPropertiesAlternateLocationsList = Array<string>;
-export const LocationPropertiesAlternateLocationsList =
+const LocationPropertiesAlternateLocationsList =
   ExportBlobListBlobPathList as any as S.Schema<LocationPropertiesAlternateLocationsList>;
 
 /** location properties */
@@ -642,7 +642,7 @@ export interface LocationProperties {
   /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
   alternateLocations?: LocationPropertiesAlternateLocationsList;
 }
-export const LocationProperties = /*@__PURE__*/ S.suspend(() =>
+const LocationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientName: S.optional(S.String),
     streetAddress1: S.optional(S.String),
@@ -669,7 +669,7 @@ export interface Location {
   /** location properties */
   properties?: LocationProperties;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -686,7 +686,7 @@ export interface ListBitLockerKeysRequest {
   /** The name of the import/export job. */
   jobName: string;
 }
-export const ListBitLockerKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBitLockerKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -708,7 +708,7 @@ export interface DriveBitLockerKey {
   /** Drive ID */
   driveId?: string;
 }
-export const DriveBitLockerKey = /*@__PURE__*/ S.suspend(() =>
+const DriveBitLockerKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bitLockerKey: S.optional(S.String),
     driveId: S.optional(S.String),
@@ -717,7 +717,7 @@ export const DriveBitLockerKey = /*@__PURE__*/ S.suspend(() =>
 
 /** drive status */
 export type GetBitLockerKeysResponseValueList = Array<DriveBitLockerKey>;
-export const GetBitLockerKeysResponseValueList = /*@__PURE__*/ S.Array(
+const GetBitLockerKeysResponseValueList = /*@__PURE__*/ S.Array(
   DriveBitLockerKey,
 ) as any as S.Schema<GetBitLockerKeysResponseValueList>;
 
@@ -726,7 +726,7 @@ export interface GetBitLockerKeysResponse {
   /** drive status */
   value?: GetBitLockerKeysResponseValueList;
 }
-export const GetBitLockerKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBitLockerKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GetBitLockerKeysResponseValueList),
   }),
@@ -742,7 +742,7 @@ export interface ListJobByResourceGroupRequest {
   /** Can be used to restrict the results to certain conditions. */
   _filter?: string;
 }
-export const ListJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -762,7 +762,7 @@ export const ListJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Job list */
 export type ListJobsResponseValueList = Array<JobResponse>;
-export const ListJobsResponseValueList = /*@__PURE__*/ S.Array(
+const ListJobsResponseValueList = /*@__PURE__*/ S.Array(
   JobResponse,
 ) as any as S.Schema<ListJobsResponseValueList>;
 
@@ -773,7 +773,7 @@ export interface ListJobsResponse {
   /** Job list */
   value?: ListJobsResponseValueList;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListJobsResponseValueList),
@@ -788,7 +788,7 @@ export interface ListJobBySubscriptionRequest {
   /** Can be used to restrict the results to certain conditions. */
   _filter?: string;
 }
-export const ListJobBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -806,7 +806,7 @@ export const ListJobBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListJobBySubscriptionRequest>;
 
 export interface ListLocationsRequest {}
-export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -819,7 +819,7 @@ export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** locations */
 export type LocationsResponseValueList = Array<Location>;
-export const LocationsResponseValueList = /*@__PURE__*/ S.Array(
+const LocationsResponseValueList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationsResponseValueList>;
 
@@ -828,14 +828,14 @@ export interface LocationsResponse {
   /** locations */
   value?: LocationsResponseValueList;
 }
-export const LocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const LocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(LocationsResponseValueList),
   }),
 ).annotate({ identifier: "LocationsResponse" }) as any as S.Schema<LocationsResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -857,7 +857,7 @@ export interface OperationDisplay {
   /** Short description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -873,7 +873,7 @@ export interface Operation {
   /** operation display properties */
   display: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     display: OperationDisplay,
@@ -882,7 +882,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** operations */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -891,7 +891,7 @@ export interface ListOperationsResponse {
   /** operations */
   value?: ListOperationsResponseValueList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
   }),
@@ -899,7 +899,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of drives that comprise the job. */
 export type UpdateJobRequestPropertiesDriveListList = Array<DriveStatus>;
-export const UpdateJobRequestPropertiesDriveListList =
+const UpdateJobRequestPropertiesDriveListList =
   JobDetailsInputDriveListList as any as S.Schema<UpdateJobRequestPropertiesDriveListList>;
 
 /** Specifies the properties of a UpdateJob. */
@@ -921,7 +921,7 @@ export interface UpdateJobRequestProperties {
   /** List of drives that comprise the job. */
   driveList?: UpdateJobRequestPropertiesDriveListList;
 }
-export const UpdateJobRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelRequested: S.optional(S.Boolean),
     state: S.optional(S.String),
@@ -948,7 +948,7 @@ export interface UpdateJobRequest {
   /** Specifies the properties of a UpdateJob. */
   properties?: UpdateJobRequestProperties;
 }
-export const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

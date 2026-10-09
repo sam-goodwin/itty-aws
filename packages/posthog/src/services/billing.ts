@@ -11,7 +11,7 @@ export interface BillingActivateAuthorizeCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingActivateAuthorizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingActivateAuthorizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -21,17 +21,17 @@ export const BillingActivateAuthorizeCreateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<BillingActivateAuthorizeCreateRequest>;
 
 export interface BillingActivateAuthorizeCreateResponse {}
-export const BillingActivateAuthorizeCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingActivateAuthorizeCreateResponse",
-}) as any as S.Schema<BillingActivateAuthorizeCreateResponse>;
+const BillingActivateAuthorizeCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "BillingActivateAuthorizeCreateResponse",
+  },
+) as any as S.Schema<BillingActivateAuthorizeCreateResponse>;
 
 export interface BillingActivateAuthorizeStatusCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingActivateAuthorizeStatusCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingActivateAuthorizeStatusCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -41,14 +41,14 @@ export const BillingActivateAuthorizeStatusCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<BillingActivateAuthorizeStatusCreateRequest>;
 
 export interface BillingActivateAuthorizeStatusCreateResponse {}
-export const BillingActivateAuthorizeStatusCreateResponse =
+const BillingActivateAuthorizeStatusCreateResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>;
 
 export interface BillingActivateCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -58,13 +58,13 @@ export const BillingActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingActivateCreateRequest>;
 
 export interface BillingActivateCreateResponse {}
-export const BillingActivateCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const BillingActivateCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BillingActivateCreateResponse",
 }) as any as S.Schema<BillingActivateCreateResponse>;
 
 /** HogFunction IDs to delete as one atomic destination group. */
 export type BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-export const BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ S.Array(
+const BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
 
@@ -76,7 +76,7 @@ export interface BillingAlertsDestinationsDeleteCreateRequest {
   /** HogFunction IDs to delete as one atomic destination group. */
   hog_function_ids: BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList;
 }
-export const BillingAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -93,7 +93,7 @@ export const BillingAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequest>;
 
 export interface BillingAlertsDestinationsDeleteCreateResponse {}
-export const BillingAlertsDestinationsDeleteCreateResponse =
+const BillingAlertsDestinationsDeleteCreateResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>;
 
 export interface BillingAlertsDestroyRequest {
@@ -102,7 +102,7 @@ export interface BillingAlertsDestroyRequest {
   /** A UUID string identifying this billing alert configuration. */
   id: string;
 }
-export const BillingAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -118,14 +118,14 @@ export const BillingAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingAlertsDestroyRequest>;
 
 export interface BillingAlertsDestroyResponse {}
-export const BillingAlertsDestroyResponse =
+const BillingAlertsDestroyResponse =
   BillingActivateCreateResponse as any as S.Schema<BillingAlertsDestroyResponse>;
 
 export interface BillingDeactivateCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingDeactivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingDeactivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -135,19 +135,19 @@ export const BillingDeactivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingDeactivateCreateRequest>;
 
 export interface BillingDeactivateCreateResponse {}
-export const BillingDeactivateCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "BillingDeactivateCreateResponse" },
-) as any as S.Schema<BillingDeactivateCreateResponse>;
+const BillingDeactivateCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "BillingDeactivateCreateResponse",
+}) as any as S.Schema<BillingDeactivateCreateResponse>;
 
 export interface BillingGetInvoicesRetrieveRequest {}
-export const BillingGetInvoicesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingGetInvoicesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/get_invoices/", code: 200 })),
 ).annotate({
   identifier: "BillingGetInvoicesRetrieveRequest",
 }) as any as S.Schema<BillingGetInvoicesRetrieveRequest>;
 
 export interface BillingGetInvoicesRetrieveResponse {}
-export const BillingGetInvoicesRetrieveResponse =
+const BillingGetInvoicesRetrieveResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingGetInvoicesRetrieveResponse>;
 
 export interface BillingSpendExportRetrieveRequest {
@@ -169,7 +169,7 @@ export interface BillingSpendExportRetrieveRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-export const BillingSpendExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingSpendExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     breakdowns: S.optional(S.String.pipe(T.Query())),
@@ -186,14 +186,14 @@ export const BillingSpendExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendExportRetrieveRequest>;
 
 export interface BillingSpendExportRetrieveResponse {}
-export const BillingSpendExportRetrieveResponse =
+const BillingSpendExportRetrieveResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingSpendExportRetrieveResponse>;
 
 export interface BillingStartupsApplyCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingStartupsApplyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingStartupsApplyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -203,14 +203,14 @@ export const BillingStartupsApplyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingStartupsApplyCreateRequest>;
 
 export interface BillingStartupsApplyCreateResponse {}
-export const BillingStartupsApplyCreateResponse =
+const BillingStartupsApplyCreateResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingStartupsApplyCreateResponse>;
 
 export interface BillingTrialsActivateCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingTrialsActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingTrialsActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -220,14 +220,14 @@ export const BillingTrialsActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTrialsActivateCreateRequest>;
 
 export interface BillingTrialsActivateCreateResponse {}
-export const BillingTrialsActivateCreateResponse =
+const BillingTrialsActivateCreateResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingTrialsActivateCreateResponse>;
 
 export interface BillingTrialsCancelCreateRequest {
   plan: string;
   billing_limit: number;
 }
-export const BillingTrialsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingTrialsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -237,7 +237,7 @@ export const BillingTrialsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTrialsCancelCreateRequest>;
 
 export interface BillingTrialsCancelCreateResponse {}
-export const BillingTrialsCancelCreateResponse =
+const BillingTrialsCancelCreateResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingTrialsCancelCreateResponse>;
 
 export interface BillingUsageExportRetrieveRequest {
@@ -259,7 +259,7 @@ export interface BillingUsageExportRetrieveRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-export const BillingUsageExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     breakdowns: S.optional(S.String.pipe(T.Query())),
@@ -276,33 +276,33 @@ export const BillingUsageExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingUsageExportRetrieveRequest>;
 
 export interface BillingUsageExportRetrieveResponse {}
-export const BillingUsageExportRetrieveResponse =
+const BillingUsageExportRetrieveResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingUsageExportRetrieveResponse>;
 
 /** * `spend` - Spend * `projected_spend` - Projected spend */
 export type BillingAlertConfigurationMetricEnum = "spend" | "projected_spend";
-export const BillingAlertConfigurationMetricEnum = S.String;
+const BillingAlertConfigurationMetricEnum = S.String;
 
 /** * `relative_increase` - Relative increase * `absolute_value` - Absolute value * `absolute_increase` - Absolute increase */
 export type BillingAlertConfigurationThresholdTypeEnum =
   | "relative_increase"
   | "absolute_value"
   | "absolute_increase";
-export const BillingAlertConfigurationThresholdTypeEnum = S.String;
+const BillingAlertConfigurationThresholdTypeEnum = S.String;
 
 export type BillingAlertDestinationChangesDeleteItemList = Array<string>;
-export const BillingAlertDestinationChangesDeleteItemList =
+const BillingAlertDestinationChangesDeleteItemList =
   BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationChangesDeleteItemList>;
 
 export type BillingAlertDestinationChangesDeleteList =
   Array<BillingAlertDestinationChangesDeleteItemList>;
-export const BillingAlertDestinationChangesDeleteList = /*@__PURE__*/ S.Array(
+const BillingAlertDestinationChangesDeleteList = /*@__PURE__*/ S.Array(
   BillingAlertDestinationChangesDeleteItemList,
 ) as any as S.Schema<BillingAlertDestinationChangesDeleteList>;
 
 /** * `slack` - slack * `webhook` - webhook * `teams` - teams */
 export type NotificationDestinationTypeEnum = "slack" | "webhook" | "teams";
-export const NotificationDestinationTypeEnum = S.String;
+const NotificationDestinationTypeEnum = S.String;
 
 export interface BillingAlertDestinationCreateData {
   /** Destination type. * `slack` - slack * `webhook` - webhook * `teams` - teams */
@@ -316,7 +316,7 @@ export interface BillingAlertDestinationCreateData {
   /** HTTPS webhook URL for webhook or Microsoft Teams delivery. */
   webhook_url?: string;
 }
-export const BillingAlertDestinationCreateData = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertDestinationCreateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: NotificationDestinationTypeEnum,
     slack_workspace_id: S.optional(S.Number),
@@ -329,7 +329,7 @@ export const BillingAlertDestinationCreateData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingAlertDestinationCreateData>;
 
 export type BillingAlertDestinationChangesCreateList = Array<BillingAlertDestinationCreateData>;
-export const BillingAlertDestinationChangesCreateList = /*@__PURE__*/ S.Array(
+const BillingAlertDestinationChangesCreateList = /*@__PURE__*/ S.Array(
   BillingAlertDestinationCreateData,
 ) as any as S.Schema<BillingAlertDestinationChangesCreateList>;
 
@@ -337,7 +337,7 @@ export interface BillingAlertDestinationChanges {
   delete?: BillingAlertDestinationChangesDeleteList;
   create?: BillingAlertDestinationChangesCreateList;
 }
-export const BillingAlertDestinationChanges = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertDestinationChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.optional(BillingAlertDestinationChangesDeleteList),
     create: S.optional(BillingAlertDestinationChangesCreateList),
@@ -376,7 +376,7 @@ export interface CreateBillingAlertRequest {
   /** Destination groups to create or delete in the same transaction as this configuration write. */
   destination_changes?: BillingAlertDestinationChanges;
 }
-export const CreateBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -405,7 +405,7 @@ export const CreateBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `USD` - USD */
 export type CurrencyEnum = "USD";
-export const CurrencyEnum = S.String;
+const CurrencyEnum = S.String;
 
 /** * `not_firing` - Not firing * `firing` - Firing * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
 export type BillingAlertConfigurationStateEnum =
@@ -414,17 +414,17 @@ export type BillingAlertConfigurationStateEnum =
   | "errored"
   | "snoozed"
   | "broken";
-export const BillingAlertConfigurationStateEnum = S.String;
+const BillingAlertConfigurationStateEnum = S.String;
 
 export type BillingAlertDestinationSummaryHogFunctionIdsList = Array<string>;
-export const BillingAlertDestinationSummaryHogFunctionIdsList =
+const BillingAlertDestinationSummaryHogFunctionIdsList =
   BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationSummaryHogFunctionIdsList>;
 
 export interface BillingAlertDestinationSummary {
   type: NotificationDestinationTypeEnum;
   hog_function_ids: BillingAlertDestinationSummaryHogFunctionIdsList;
 }
-export const BillingAlertDestinationSummary = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertDestinationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: NotificationDestinationTypeEnum,
     hog_function_ids: BillingAlertDestinationSummaryHogFunctionIdsList,
@@ -435,7 +435,7 @@ export const BillingAlertDestinationSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Notification destination groups configured for this alert, including their shared HogFunctions. */
 export type BillingAlertConfigurationOutputDestinationsList = Array<BillingAlertDestinationSummary>;
-export const BillingAlertConfigurationOutputDestinationsList = /*@__PURE__*/ S.Array(
+const BillingAlertConfigurationOutputDestinationsList = /*@__PURE__*/ S.Array(
   BillingAlertDestinationSummary,
 ) as any as S.Schema<BillingAlertConfigurationOutputDestinationsList>;
 
@@ -495,7 +495,7 @@ export interface BillingAlertConfigurationOutput {
   /** When this alert was last updated. */
   updated_at: string | null;
 }
-export const BillingAlertConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organization_id: S.String,
@@ -535,7 +535,7 @@ export interface CreateBillingAlertsCheckNowRequest {
   /** A UUID string identifying this billing alert configuration. */
   id: string;
 }
-export const CreateBillingAlertsCheckNowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAlertsCheckNowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -557,11 +557,11 @@ export type BillingAlertEventKindEnum =
   | "resolved"
   | "errored"
   | "broken_config";
-export const BillingAlertEventKindEnum = S.String;
+const BillingAlertEventKindEnum = S.String;
 
 /** * `scheduled` - Scheduled * `manual` - Manual */
 export type BillingAlertEventSourceEnum = "scheduled" | "manual";
-export const BillingAlertEventSourceEnum = S.String;
+const BillingAlertEventSourceEnum = S.String;
 
 export interface BillingAlertEvent {
   /** Unique identifier for this billing alert event. */
@@ -611,7 +611,7 @@ export interface BillingAlertEvent {
   /** Human-readable explanation of the evaluation outcome. */
   reason: string;
 }
-export const BillingAlertEvent = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: BillingAlertEventKindEnum,
@@ -651,7 +651,7 @@ export interface BillingAlertCheckNowResponse {
   /** Evaluated billing-period total, or null when billing data was not available. */
   current_value?: string | null;
 }
-export const BillingAlertCheckNowResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertCheckNowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(S.NullOr(BillingAlertEvent)),
     dispatched_destinations: S.Number,
@@ -679,7 +679,7 @@ export interface CreateBillingAlertsDestinationRequest {
   /** HTTPS webhook URL for webhook or Microsoft Teams delivery. */
   webhook_url?: string;
 }
-export const CreateBillingAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -700,13 +700,13 @@ export const CreateBillingAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateBillingAlertsDestinationRequest>;
 
 export type BillingAlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const BillingAlertDestinationResponseHogFunctionIdsList =
+const BillingAlertDestinationResponseHogFunctionIdsList =
   BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationResponseHogFunctionIdsList>;
 
 export interface BillingAlertDestinationResponse {
   hog_function_ids: BillingAlertDestinationResponseHogFunctionIdsList;
 }
-export const BillingAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_ids: BillingAlertDestinationResponseHogFunctionIdsList,
   }),
@@ -718,7 +718,7 @@ export interface CreateBillingCouponsClaimRequest {
   plan: string;
   billing_limit: number;
 }
-export const CreateBillingCouponsClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingCouponsClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -728,14 +728,14 @@ export const CreateBillingCouponsClaimRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBillingCouponsClaimRequest>;
 
 export interface CreateBillingCouponsClaimResponse {}
-export const CreateBillingCouponsClaimResponse =
+const CreateBillingCouponsClaimResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingCouponsClaimResponse>;
 
 export interface CreateBillingCreditsPurchaseRequest {
   plan: string;
   billing_limit: number;
 }
-export const CreateBillingCreditsPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingCreditsPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -745,14 +745,14 @@ export const CreateBillingCreditsPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBillingCreditsPurchaseRequest>;
 
 export interface CreateBillingCreditsPurchaseResponse {}
-export const CreateBillingCreditsPurchaseResponse =
+const CreateBillingCreditsPurchaseResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingCreditsPurchaseResponse>;
 
 export interface CreateBillingSubscriptionSwitchPlanRequest {
   plan: string;
   billing_limit: number;
 }
-export const CreateBillingSubscriptionSwitchPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingSubscriptionSwitchPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.String,
     billing_limit: S.Number,
@@ -762,7 +762,7 @@ export const CreateBillingSubscriptionSwitchPlanRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateBillingSubscriptionSwitchPlanRequest>;
 
 export interface CreateBillingSubscriptionSwitchPlanResponse {}
-export const CreateBillingSubscriptionSwitchPlanResponse =
+const CreateBillingSubscriptionSwitchPlanResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>;
 
 export interface GetBillingAlertRequest {
@@ -771,7 +771,7 @@ export interface GetBillingAlertRequest {
   /** A UUID string identifying this billing alert configuration. */
   id: string;
 }
-export const GetBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -785,29 +785,29 @@ export const GetBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBillingAlertRequest" }) as any as S.Schema<GetBillingAlertRequest>;
 
 export interface GetBillingCouponsOverviewRequest {}
-export const GetBillingCouponsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingCouponsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/coupons/overview/", code: 200 })),
 ).annotate({
   identifier: "GetBillingCouponsOverviewRequest",
 }) as any as S.Schema<GetBillingCouponsOverviewRequest>;
 
 export interface GetBillingCouponsOverviewResponse {}
-export const GetBillingCouponsOverviewResponse =
+const GetBillingCouponsOverviewResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<GetBillingCouponsOverviewResponse>;
 
 export interface GetBillingCreditsOverviewRequest {}
-export const GetBillingCreditsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingCreditsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/credits/overview/", code: 200 })),
 ).annotate({
   identifier: "GetBillingCreditsOverviewRequest",
 }) as any as S.Schema<GetBillingCreditsOverviewRequest>;
 
 export interface GetBillingCreditsOverviewResponse {}
-export const GetBillingCreditsOverviewResponse =
+const GetBillingCreditsOverviewResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<GetBillingCreditsOverviewResponse>;
 
 export interface GetBillingPeriodRequest {}
-export const GetBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/period/", code: 200 })),
 ).annotate({ identifier: "GetBillingPeriodRequest" }) as any as S.Schema<GetBillingPeriodRequest>;
 
@@ -817,7 +817,7 @@ export interface BillingPeriodResponse {
   /** End of the organization's current billing period, or null when billing has not synced a period. */
   current_period_end: string | null;
 }
-export const BillingPeriodResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingPeriodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_period_start: S.NullOr(S.String),
     current_period_end: S.NullOr(S.String),
@@ -825,12 +825,12 @@ export const BillingPeriodResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingPeriodResponse" }) as any as S.Schema<BillingPeriodResponse>;
 
 export interface GetBillingPortalRequest {}
-export const GetBillingPortalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingPortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/portal/", code: 200 })),
 ).annotate({ identifier: "GetBillingPortalRequest" }) as any as S.Schema<GetBillingPortalRequest>;
 
 export interface GetBillingPortalResponse {}
-export const GetBillingPortalResponse =
+const GetBillingPortalResponse =
   BillingActivateCreateResponse as any as S.Schema<GetBillingPortalResponse>;
 
 export interface GetBillingSpendRequest {
@@ -852,7 +852,7 @@ export interface GetBillingSpendRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-export const GetBillingSpendRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingSpendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     breakdowns: S.optional(S.String.pipe(T.Query())),
@@ -867,17 +867,17 @@ export const GetBillingSpendRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBillingSpendRequest" }) as any as S.Schema<GetBillingSpendRequest>;
 
 export type BillingTimeSeriesPointDataList = Array<number>;
-export const BillingTimeSeriesPointDataList = /*@__PURE__*/ S.Array(
+const BillingTimeSeriesPointDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BillingTimeSeriesPointDataList>;
 
 export type BillingTimeSeriesPointDatesList = Array<string>;
-export const BillingTimeSeriesPointDatesList =
+const BillingTimeSeriesPointDatesList =
   BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingTimeSeriesPointDatesList>;
 
 /** * `type` - type * `team` - team * `multiple` - multiple */
 export type BreakdownTypeEnum = "type" | "team" | "multiple";
-export const BreakdownTypeEnum = S.String;
+const BreakdownTypeEnum = S.String;
 
 export interface BillingTimeSeriesPoint {
   id?: number;
@@ -887,7 +887,7 @@ export interface BillingTimeSeriesPoint {
   breakdown_type?: BreakdownTypeEnum | null;
   breakdown_value?: unknown;
 }
-export const BillingTimeSeriesPoint = /*@__PURE__*/ S.suspend(() =>
+const BillingTimeSeriesPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     label: S.optional(S.String),
@@ -899,12 +899,12 @@ export const BillingTimeSeriesPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingTimeSeriesPoint" }) as any as S.Schema<BillingTimeSeriesPoint>;
 
 export type BillingTimeSeriesResponseResultsList = Array<BillingTimeSeriesPoint>;
-export const BillingTimeSeriesResponseResultsList = /*@__PURE__*/ S.Array(
+const BillingTimeSeriesResponseResultsList = /*@__PURE__*/ S.Array(
   BillingTimeSeriesPoint,
 ) as any as S.Schema<BillingTimeSeriesResponseResultsList>;
 
 export type BillingTimeSeriesResponseTeamIdOptionsList = Array<number>;
-export const BillingTimeSeriesResponseTeamIdOptionsList =
+const BillingTimeSeriesResponseTeamIdOptionsList =
   BillingTimeSeriesPointDataList as any as S.Schema<BillingTimeSeriesResponseTeamIdOptionsList>;
 
 export interface BillingTimeSeriesResponse {
@@ -916,7 +916,7 @@ export interface BillingTimeSeriesResponse {
   next?: string;
   total_count?: number;
 }
-export const BillingTimeSeriesResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingTimeSeriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     type: S.optional(S.String),
@@ -949,7 +949,7 @@ export interface GetBillingUsageRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
-export const GetBillingUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     breakdowns: S.optional(S.String.pipe(T.Query())),
@@ -964,7 +964,7 @@ export const GetBillingUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBillingUsageRequest" }) as any as S.Schema<GetBillingUsageRequest>;
 
 export interface GetBillingUsageTeamOptionRequest {}
-export const GetBillingUsageTeamOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingUsageTeamOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/usage/team_options/", code: 200 })),
 ).annotate({
   identifier: "GetBillingUsageTeamOptionRequest",
@@ -972,14 +972,14 @@ export const GetBillingUsageTeamOptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project ids that appear in the organization's usage reports. */
 export type BillingTeamOptionsResponseTeamIdOptionsList = Array<number>;
-export const BillingTeamOptionsResponseTeamIdOptionsList =
+const BillingTeamOptionsResponseTeamIdOptionsList =
   BillingTimeSeriesPointDataList as any as S.Schema<BillingTeamOptionsResponseTeamIdOptionsList>;
 
 export interface BillingTeamOptionsResponse {
   /** Project ids that appear in the organization's usage reports. */
   team_id_options: BillingTeamOptionsResponseTeamIdOptionsList;
 }
-export const BillingTeamOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingTeamOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id_options: BillingTeamOptionsResponseTeamIdOptionsList,
   }),
@@ -988,31 +988,31 @@ export const BillingTeamOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTeamOptionsResponse>;
 
 export interface ListBillingRequest {}
-export const ListBillingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/", code: 200 })),
 ).annotate({ identifier: "ListBillingRequest" }) as any as S.Schema<ListBillingRequest>;
 
 export type BillingOverviewResponseProductsItemMap = { [key: string]: unknown | undefined };
-export const BillingOverviewResponseProductsItemMap = /*@__PURE__*/ S.Record(
+const BillingOverviewResponseProductsItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<BillingOverviewResponseProductsItemMap>;
 
 /** Subscribed and available products/addons with pricing, plan, limit, usage, and entitlement metadata. */
 export type BillingOverviewResponseProductsList = Array<BillingOverviewResponseProductsItemMap>;
-export const BillingOverviewResponseProductsList = /*@__PURE__*/ S.Array(
+const BillingOverviewResponseProductsList = /*@__PURE__*/ S.Array(
   BillingOverviewResponseProductsItemMap,
 ) as any as S.Schema<BillingOverviewResponseProductsList>;
 
 export type BillingOverviewResponseAvailableProductFeaturesList = Array<string>;
-export const BillingOverviewResponseAvailableProductFeaturesList =
+const BillingOverviewResponseAvailableProductFeaturesList =
   BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingOverviewResponseAvailableProductFeaturesList>;
 
 export interface BillingManagedByPartner {
   /** Name of the partner that pays for this organization. Can be empty. */
   partner_name: string;
 }
-export const BillingManagedByPartner = /*@__PURE__*/ S.suspend(() =>
+const BillingManagedByPartner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partner_name: S.String,
   }),
@@ -1054,7 +1054,7 @@ export interface BillingOverviewResponse {
   /** Set when a provisioning partner pays for this organization and the organization has no Stripe customer of its own. Self-serve subscription and payment changes are refused while it is set. Null otherwise. */
   billing_managed_by_partner: BillingManagedByPartner | null;
 }
-export const BillingOverviewResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingOverviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_id: S.optional(S.NullOr(S.String)),
     billing_plan: S.optional(S.NullOr(S.String)),
@@ -1099,7 +1099,7 @@ export interface ListBillingAlertsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListBillingAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1115,7 +1115,7 @@ export const ListBillingAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedBillingAlertConfigurationListOutputResultsList =
   Array<BillingAlertConfigurationOutput>;
-export const PaginatedBillingAlertConfigurationListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedBillingAlertConfigurationListOutputResultsList = /*@__PURE__*/ S.Array(
   BillingAlertConfigurationOutput,
 ) as any as S.Schema<PaginatedBillingAlertConfigurationListOutputResultsList>;
 
@@ -1125,7 +1125,7 @@ export interface PaginatedBillingAlertConfigurationListOutput {
   previous?: string | null;
   results: PaginatedBillingAlertConfigurationListOutputResultsList;
 }
-export const PaginatedBillingAlertConfigurationListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBillingAlertConfigurationListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1146,7 +1146,7 @@ export interface ListBillingAlertsEventsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListBillingAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1164,7 +1164,7 @@ export const ListBillingAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAlertsEventsRequest>;
 
 export type PaginatedBillingAlertEventListResultsList = Array<BillingAlertEvent>;
-export const PaginatedBillingAlertEventListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedBillingAlertEventListResultsList = /*@__PURE__*/ S.Array(
   BillingAlertEvent,
 ) as any as S.Schema<PaginatedBillingAlertEventListResultsList>;
 
@@ -1174,7 +1174,7 @@ export interface PaginatedBillingAlertEventList {
   previous?: string | null;
   results: PaginatedBillingAlertEventListResultsList;
 }
-export const PaginatedBillingAlertEventList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBillingAlertEventList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1217,7 +1217,7 @@ export interface UpdateBillingAlertRequest {
   /** Destination groups to create or delete in the same transaction as this configuration write. */
   destination_changes?: BillingAlertDestinationChanges;
 }
-export const UpdateBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBillingAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1277,7 +1277,7 @@ export interface UpdateBillingAlertsPartialRequest {
   /** Destination groups to create or delete in the same transaction as this configuration write. */
   destination_changes?: BillingAlertDestinationChanges;
 }
-export const UpdateBillingAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBillingAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1309,7 +1309,7 @@ export interface UpdateBillingLicensePartialRequest {
   plan?: string;
   billing_limit?: number;
 }
-export const UpdateBillingLicensePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBillingLicensePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.optional(S.String),
     billing_limit: S.optional(S.Number),
@@ -1319,7 +1319,7 @@ export const UpdateBillingLicensePartialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBillingLicensePartialRequest>;
 
 export interface UpdateBillingLicensePartialResponse {}
-export const UpdateBillingLicensePartialResponse =
+const UpdateBillingLicensePartialResponse =
   BillingActivateAuthorizeCreateResponse as any as S.Schema<UpdateBillingLicensePartialResponse>;
 
 export type BillingActivateAuthorizeCreateError = PosthogOpError;

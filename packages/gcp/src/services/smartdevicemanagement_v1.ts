@@ -62,10 +62,7 @@ export class NotFound
   ) {}
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Request message for SmartDeviceManagementService.ExecuteDeviceCommand */
 export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
@@ -74,7 +71,7 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   /** The command message to execute, represented as a Struct. */
   params?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(S.String),
     params: S.optional(DocumentMap),
@@ -89,7 +86,7 @@ export interface ExecuteCommandEnterprisesDevicesRequest {
   /** Request body */
   body?: GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest;
 }
-export const ExecuteCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.pipe(T.HttpBody())),
@@ -109,7 +106,7 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   /** The results of executing the command. */
   results?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(DocumentMap),
   }),
@@ -121,7 +118,7 @@ export interface GetEnterprisesDevicesRequest {
   /** The name of the device requested. For example: "enterprises/XYZ/devices/123" */
   name: string;
 }
-export const GetEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -142,7 +139,7 @@ export interface GoogleHomeEnterpriseSdmV1ParentRelation {
   /** Output only. The name of the relation -- e.g., structure/room where the device is assigned to. For example: "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/ABC/rooms/123" */
   parent?: string;
 }
-export const GoogleHomeEnterpriseSdmV1ParentRelation = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1ParentRelation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     parent: S.optional(S.String),
@@ -153,7 +150,7 @@ export const GoogleHomeEnterpriseSdmV1ParentRelation = /*@__PURE__*/ S.suspend((
 
 export type GoogleHomeEnterpriseSdmV1ParentRelationList =
   Array<GoogleHomeEnterpriseSdmV1ParentRelation>;
-export const GoogleHomeEnterpriseSdmV1ParentRelationList = /*@__PURE__*/ S.Array(
+const GoogleHomeEnterpriseSdmV1ParentRelationList = /*@__PURE__*/ S.Array(
   GoogleHomeEnterpriseSdmV1ParentRelation,
 ) as any as S.Schema<GoogleHomeEnterpriseSdmV1ParentRelationList>;
 
@@ -168,7 +165,7 @@ export interface GoogleHomeEnterpriseSdmV1Device {
   /** Assignee details of the device. */
   parentRelations?: GoogleHomeEnterpriseSdmV1ParentRelationList;
 }
-export const GoogleHomeEnterpriseSdmV1Device = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traits: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -183,7 +180,7 @@ export interface GetEnterprisesStructuresRequest {
   /** The name of the structure requested. For example: "enterprises/XYZ/structures/ABC". */
   name: string;
 }
-export const GetEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -204,7 +201,7 @@ export interface GoogleHomeEnterpriseSdmV1Structure {
   /** Structure traits. */
   traits?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1Structure = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1Structure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     traits: S.optional(DocumentMap),
@@ -217,7 +214,7 @@ export interface GetEnterprisesStructuresRoomsRequest {
   /** The name of the room requested. For example: "enterprises/XYZ/structures/ABC/rooms/123". */
   name: string;
 }
-export const GetEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -238,7 +235,7 @@ export interface GoogleHomeEnterpriseSdmV1Room {
   /** Room traits. */
   traits?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1Room =
+const GoogleHomeEnterpriseSdmV1Room =
   GoogleHomeEnterpriseSdmV1Structure as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>;
 
 export interface ListEnterprisesDevicesRequest {
@@ -247,7 +244,7 @@ export interface ListEnterprisesDevicesRequest {
   /** Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing' */
   filter?: string;
 }
-export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -263,7 +260,7 @@ export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesDevicesRequest>;
 
 export type GoogleHomeEnterpriseSdmV1DeviceList = Array<GoogleHomeEnterpriseSdmV1Device>;
-export const GoogleHomeEnterpriseSdmV1DeviceList = /*@__PURE__*/ S.Array(
+const GoogleHomeEnterpriseSdmV1DeviceList = /*@__PURE__*/ S.Array(
   GoogleHomeEnterpriseSdmV1Device,
 ) as any as S.Schema<GoogleHomeEnterpriseSdmV1DeviceList>;
 
@@ -272,7 +269,7 @@ export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /** The list of devices. */
   devices?: GoogleHomeEnterpriseSdmV1DeviceList;
 }
-export const GoogleHomeEnterpriseSdmV1ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devices: S.optional(GoogleHomeEnterpriseSdmV1DeviceList),
   }),
@@ -286,7 +283,7 @@ export interface ListEnterprisesStructuresRequest {
   /** Optional filter to list structures. */
   filter?: string;
 }
-export const ListEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -302,7 +299,7 @@ export const ListEnterprisesStructuresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesStructuresRequest>;
 
 export type GoogleHomeEnterpriseSdmV1StructureList = Array<GoogleHomeEnterpriseSdmV1Structure>;
-export const GoogleHomeEnterpriseSdmV1StructureList = /*@__PURE__*/ S.Array(
+const GoogleHomeEnterpriseSdmV1StructureList = /*@__PURE__*/ S.Array(
   GoogleHomeEnterpriseSdmV1Structure,
 ) as any as S.Schema<GoogleHomeEnterpriseSdmV1StructureList>;
 
@@ -311,7 +308,7 @@ export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /** The list of structures. */
   structures?: GoogleHomeEnterpriseSdmV1StructureList;
 }
-export const GoogleHomeEnterpriseSdmV1ListStructuresResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1ListStructuresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structures: S.optional(GoogleHomeEnterpriseSdmV1StructureList),
   }),
@@ -323,7 +320,7 @@ export interface ListEnterprisesStructuresRoomsRequest {
   /** The parent resource name of the rooms requested. For example: "enterprises/XYZ/structures/ABC". */
   parent: string;
 }
-export const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -338,7 +335,7 @@ export const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>;
 
 export type GoogleHomeEnterpriseSdmV1RoomList = Array<GoogleHomeEnterpriseSdmV1Room>;
-export const GoogleHomeEnterpriseSdmV1RoomList =
+const GoogleHomeEnterpriseSdmV1RoomList =
   GoogleHomeEnterpriseSdmV1StructureList as any as S.Schema<GoogleHomeEnterpriseSdmV1RoomList>;
 
 /** Response message for SmartDeviceManagementService.ListRooms */
@@ -346,7 +343,7 @@ export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /** The list of rooms. */
   rooms?: GoogleHomeEnterpriseSdmV1RoomList;
 }
-export const GoogleHomeEnterpriseSdmV1ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleHomeEnterpriseSdmV1ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rooms: S.optional(GoogleHomeEnterpriseSdmV1RoomList),
   }),

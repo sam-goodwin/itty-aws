@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,14 +90,14 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Details of an infrastructure-as-code (IaC) configuration. */
 export interface IaC {
   /** Optional. A Terraform plan file, formatted as a stringified JSON object. To learn how to generate a Terraform plan file in JSON format, see [JSON output format](https://developer.hashicorp.com/terraform/internals/json-format) in the Terraform documentation. */
   tfPlan?: string;
 }
-export const IaC = /*@__PURE__*/ S.suspend(() =>
+const IaC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tfPlan: S.optional(S.String),
   }),
@@ -108,7 +108,7 @@ export interface CreateIaCValidationReportRequest {
   /** Required. The infrastructure-as-code (IaC) configuration to validate. */
   iac?: IaC;
 }
-export const CreateIaCValidationReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIaCValidationReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iac: S.optional(IaC),
   }),
@@ -122,32 +122,26 @@ export interface CreateIaCValidationReportOrganizationsLocationsReportsRequest {
   /** Request body */
   body?: CreateIaCValidationReportRequest;
 }
-export const CreateIaCValidationReportOrganizationsLocationsReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateIaCValidationReportRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/reports:createIaCValidationReport",
-        baseUrl: "https://securityposture.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateIaCValidationReportOrganizationsLocationsReportsRequest",
-  }) as any as S.Schema<CreateIaCValidationReportOrganizationsLocationsReportsRequest>;
+const CreateIaCValidationReportOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateIaCValidationReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/reports:createIaCValidationReport",
+      baseUrl: "https://securityposture.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateIaCValidationReportOrganizationsLocationsReportsRequest",
+}) as any as S.Schema<CreateIaCValidationReportOrganizationsLocationsReportsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -158,7 +152,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -179,7 +173,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     metadata: S.optional(DocumentMap),
@@ -198,7 +192,7 @@ export type PostureDeploymentStateEnum =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | "DELETE_FAILED";
-export const PostureDeploymentStateEnum = S.String;
+const PostureDeploymentStateEnum = S.String;
 
 export type PostureDeploymentCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
@@ -206,17 +200,17 @@ export type PostureDeploymentCategoriesItemEnum =
   | "AWS"
   | "GCP"
   | "AZURE";
-export const PostureDeploymentCategoriesItemEnum = S.String;
+const PostureDeploymentCategoriesItemEnum = S.String;
 
 export type PostureDeploymentCategoriesItemEnumList = Array<
   PostureDeploymentCategoriesItemEnum | (string & {})
 >;
-export const PostureDeploymentCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+const PostureDeploymentCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   PostureDeploymentCategoriesItemEnum,
 ) as any as S.Schema<PostureDeploymentCategoriesItemEnumList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Details for a Posture deployment on an organization, folder, or project. You can deploy at most one posture to each organization, folder, or project. The parent resource for a posture deployment is always the organization, even if the deployment applies to a folder or project. */
 export interface PostureDeployment {
@@ -251,7 +245,7 @@ export interface PostureDeployment {
   /** Optional. The user-specified annotations for the posture deployment. For details about the values you can use in an annotation, see [AIP-148: Standard fields](https://google.aip.dev/148#annotations). */
   annotations?: StringMap;
 }
-export const PostureDeployment = /*@__PURE__*/ S.suspend(() =>
+const PostureDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postureRevisionId: S.optional(S.String),
     etag: S.optional(S.String),
@@ -279,7 +273,7 @@ export interface CreateOrganizationsLocationsPostureDeploymentsRequest {
   /** Request body */
   body?: PostureDeployment;
 }
-export const CreateOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postureDeploymentId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -296,14 +290,12 @@ export const CreateOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__
 }) as any as S.Schema<CreateOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type PostureCategoriesItemEnum = "CATEGORY_UNSPECIFIED" | "AI" | "AWS" | "GCP" | "AZURE";
-export const PostureCategoriesItemEnum = S.String;
-
 export type PostureCategoriesItemEnumList = Array<PostureCategoriesItemEnum | (string & {})>;
-export const PostureCategoriesItemEnumList =
+const PostureCategoriesItemEnumList =
   PostureDeploymentCategoriesItemEnumList as any as S.Schema<PostureCategoriesItemEnumList>;
 
 export type PostureStateEnum = "STATE_UNSPECIFIED" | "DEPRECATED" | "DRAFT" | "ACTIVE";
-export const PostureStateEnum = S.String;
+const PostureStateEnum = S.String;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -316,7 +308,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     expression: S.optional(S.String),
@@ -326,14 +318,14 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Set multiple resource types for one policy, for example: ``` resourceTypes: included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk ``` Constraint definition contains an empty resource type in order to support multiple resource types in the policy. Only supports managed constraints. Method type is `GOVERN_TAGS`. */
 export interface ResourceTypes {
   /** Optional. The resource types we support. */
   included?: StringList;
 }
-export const ResourceTypes = /*@__PURE__*/ S.suspend(() =>
+const ResourceTypes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     included: S.optional(StringList),
   }),
@@ -346,7 +338,7 @@ export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   /** The denied values for the constraint. */
   deniedValues?: StringList;
 }
-export const GoogleCloudSecuritypostureV1PolicyRuleStringValues = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudSecuritypostureV1PolicyRuleStringValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedValues: S.optional(StringList),
     deniedValues: S.optional(StringList),
@@ -372,7 +364,7 @@ export interface GoogleCloudSecuritypostureV1PolicyRule {
   /** The allowed and denied values for a list constraint. Valid only for list constraints. */
   values?: GoogleCloudSecuritypostureV1PolicyRuleStringValues;
 }
-export const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     parameters: S.optional(DocumentMap),
@@ -388,7 +380,7 @@ export const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudSecuritypostureV1PolicyRuleList =
   Array<GoogleCloudSecuritypostureV1PolicyRule>;
-export const GoogleCloudSecuritypostureV1PolicyRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudSecuritypostureV1PolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudSecuritypostureV1PolicyRule,
 ) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleList>;
 
@@ -399,7 +391,7 @@ export interface OrgPolicyConstraint {
   /** Required. The rules enforced by the constraint. */
   policyRules?: GoogleCloudSecuritypostureV1PolicyRuleList;
 }
-export const OrgPolicyConstraint = /*@__PURE__*/ S.suspend(() =>
+const OrgPolicyConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cannedConstraintId: S.optional(S.String),
     policyRules: S.optional(GoogleCloudSecuritypostureV1PolicyRuleList),
@@ -410,22 +402,21 @@ export type GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum = S.String;
+const GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum = S.String;
 
 export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-export const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum = S.String;
+const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum = S.String;
 
 export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList = Array<
   GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum | (string & {})
 >;
-export const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList>;
+const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ S.Array(
+  GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum,
+) as any as S.Schema<GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList>;
 
 /** A custom, user-defined constraint. You can apply the constraint only to the resource types specified in the constraint, and only within the organization where the constraint is defined. _When you create a custom constraint, it is not enforced automatically._ You must use an organization policy to [enforce the constraint](https://cloud.google.com/resource-manager/help/organization-policy/constraints/enforce). */
 export interface GoogleCloudSecuritypostureV1CustomConstraint {
@@ -446,7 +437,7 @@ export interface GoogleCloudSecuritypostureV1CustomConstraint {
   /** Immutable. The resource type that the constraint applies to, in the format `{canonical_service_name}/{resource_type_name}`. For example, `compute.googleapis.com/Instance`. */
   resourceTypes?: StringList;
 }
-export const GoogleCloudSecuritypostureV1CustomConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudSecuritypostureV1CustomConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     actionType: S.optional(GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum),
@@ -468,7 +459,7 @@ export interface OrgPolicyConstraintCustom {
   /** Required. Metadata for the constraint. */
   customConstraint?: GoogleCloudSecuritypostureV1CustomConstraint;
 }
-export const OrgPolicyConstraintCustom = /*@__PURE__*/ S.suspend(() =>
+const OrgPolicyConstraintCustom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyRules: S.optional(GoogleCloudSecuritypostureV1PolicyRuleList),
     customConstraint: S.optional(GoogleCloudSecuritypostureV1CustomConstraint),
@@ -481,14 +472,14 @@ export type SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
-export const SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum = S.String;
+const SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum = S.String;
 
 /** A selector for the resource types to run the detector on. */
 export interface ResourceSelector {
   /** Required. The resource types to run the detector on. Each custom module can specify up to 5 resource types. */
   resourceTypes?: StringList;
 }
-export const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
+const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceTypes: S.optional(StringList),
   }),
@@ -501,7 +492,7 @@ export interface Property {
   /** Optional. The CEL expression for the value of the custom source property. For resource properties, you can return the value of the property or a string enclosed in quotation marks. */
   valueExpression?: Expr;
 }
-export const Property = /*@__PURE__*/ S.suspend(() =>
+const Property = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     valueExpression: S.optional(Expr),
@@ -509,14 +500,14 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
 export type PropertyList = Array<Property>;
-export const PropertyList = /*@__PURE__*/ S.Array(Property) as any as S.Schema<PropertyList>;
+const PropertyList = /*@__PURE__*/ S.Array(Property) as any as S.Schema<PropertyList>;
 
 /** Definitions of custom source properties that can appear in findings. */
 export interface CustomOutputSpec {
   /** Optional. The custom source properties that can appear in findings. */
   properties?: PropertyList;
 }
-export const CustomOutputSpec = /*@__PURE__*/ S.suspend(() =>
+const CustomOutputSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PropertyList),
   }),
@@ -528,7 +519,7 @@ export type CustomConfigSeverityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW";
-export const CustomConfigSeverityEnum = S.String;
+const CustomConfigSeverityEnum = S.String;
 
 /** A custom module configuration for Security Health Analytics. Use `CustomConfig` to create custom detectors that generate custom findings for resources that you specify. */
 export interface CustomConfig {
@@ -545,7 +536,7 @@ export interface CustomConfig {
   /** Optional. A description of the vulnerability or misconfiguration that the custom module detects. The description appears in each finding. Provide enough information to help an investigator understand the finding. The value must be enclosed in quotation marks. */
   description?: string;
 }
-export const CustomConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceSelector: S.optional(ResourceSelector),
     customOutput: S.optional(CustomOutputSpec),
@@ -569,7 +560,7 @@ export interface SecurityHealthAnalyticsCustomModule {
   /** Required. Configuration settings for the custom module. */
   config?: CustomConfig;
 }
-export const SecurityHealthAnalyticsCustomModule = /*@__PURE__*/ S.suspend(() =>
+const SecurityHealthAnalyticsCustomModule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     id: S.optional(S.String),
@@ -584,7 +575,7 @@ export type SecurityHealthAnalyticsModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
-export const SecurityHealthAnalyticsModuleModuleEnablementStateEnum = S.String;
+const SecurityHealthAnalyticsModuleModuleEnablementStateEnum = S.String;
 
 /** A built-in detector for Security Health Analytics. */
 export interface SecurityHealthAnalyticsModule {
@@ -593,7 +584,7 @@ export interface SecurityHealthAnalyticsModule {
   /** Whether the detector is enabled at a specified level of the resource hierarchy. */
   moduleEnablementState?: SecurityHealthAnalyticsModuleModuleEnablementStateEnum | (string & {});
 }
-export const SecurityHealthAnalyticsModule = /*@__PURE__*/ S.suspend(() =>
+const SecurityHealthAnalyticsModule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleName: S.optional(S.String),
     moduleEnablementState: S.optional(SecurityHealthAnalyticsModuleModuleEnablementStateEnum),
@@ -613,7 +604,7 @@ export interface Constraint {
   /** Optional. A built-in detector for Security Health Analytics. */
   securityHealthAnalyticsModule?: SecurityHealthAnalyticsModule;
 }
-export const Constraint = /*@__PURE__*/ S.suspend(() =>
+const Constraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgPolicyConstraint: S.optional(OrgPolicyConstraint),
     orgPolicyConstraintCustom: S.optional(OrgPolicyConstraintCustom),
@@ -629,7 +620,7 @@ export interface ComplianceStandard {
   /** Optional. The compliance standard that the policy helps enforce. For example, `NIST SP 800-53`. */
   standard?: string;
 }
-export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
+const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     control: S.optional(S.String),
     standard: S.optional(S.String),
@@ -637,7 +628,7 @@ export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComplianceStandard" }) as any as S.Schema<ComplianceStandard>;
 
 export type ComplianceStandardList = Array<ComplianceStandard>;
-export const ComplianceStandardList = /*@__PURE__*/ S.Array(
+const ComplianceStandardList = /*@__PURE__*/ S.Array(
   ComplianceStandard,
 ) as any as S.Schema<ComplianceStandardList>;
 
@@ -652,7 +643,7 @@ export interface Policy {
   /** Optional. The compliance standards that the policy helps enforce. */
   complianceStandards?: ComplianceStandardList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(Constraint),
     policyId: S.optional(S.String),
@@ -662,7 +653,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export type PolicyList = Array<Policy>;
-export const PolicyList = /*@__PURE__*/ S.Array(Policy) as any as S.Schema<PolicyList>;
+const PolicyList = /*@__PURE__*/ S.Array(Policy) as any as S.Schema<PolicyList>;
 
 /** A group of one or more Policy resources. */
 export interface PolicySet {
@@ -673,7 +664,7 @@ export interface PolicySet {
   /** Required. The Policy resources in the policy set. Each policy must have a policy_id that's unique within the policy set. */
   policies?: PolicyList;
 }
-export const PolicySet = /*@__PURE__*/ S.suspend(() =>
+const PolicySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policySetId: S.optional(S.String),
     description: S.optional(S.String),
@@ -682,7 +673,7 @@ export const PolicySet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicySet" }) as any as S.Schema<PolicySet>;
 
 export type PolicySetList = Array<PolicySet>;
-export const PolicySetList = /*@__PURE__*/ S.Array(PolicySet) as any as S.Schema<PolicySetList>;
+const PolicySetList = /*@__PURE__*/ S.Array(PolicySet) as any as S.Schema<PolicySetList>;
 
 /** The details of a posture. */
 export interface Posture {
@@ -709,7 +700,7 @@ export interface Posture {
   /** Required. The PolicySet resources that the posture includes. */
   policySets?: PolicySetList;
 }
-export const Posture = /*@__PURE__*/ S.suspend(() =>
+const Posture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reconciling: S.optional(S.Boolean),
     updateTime: S.optional(S.String),
@@ -733,7 +724,7 @@ export interface CreateOrganizationsLocationsPosturesRequest {
   /** Request body */
   body?: Posture;
 }
-export const CreateOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     postureId: S.optional(S.String.pipe(T.Query())),
@@ -753,7 +744,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -773,7 +764,7 @@ export interface DeleteOrganizationsLocationsPostureDeploymentsRequest {
   /** Optional. An opaque identifier for the current version of the posture deployment. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture deployment is deleted regardless of its current `etag` value. */
   etag?: string;
 }
-export const DeleteOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -794,7 +785,7 @@ export interface DeleteOrganizationsLocationsPosturesRequest {
   /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
 }
-export const DeleteOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -816,7 +807,7 @@ export interface ExtractPostureRequest {
   /** Required. The organization, folder, or project from which policies are extracted. Must be within the organization defined in parent. Use one of the following formats: * `organization/{organization_number}` * `folder/{folder_number}` * `project/{project_number}` */
   workload?: string;
 }
-export const ExtractPostureRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtractPostureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postureId: S.optional(S.String),
     workload: S.optional(S.String),
@@ -829,7 +820,7 @@ export interface ExtractOrganizationsLocationsPosturesRequest {
   /** Request body */
   body?: ExtractPostureRequest;
 }
-export const ExtractOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtractOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExtractPostureRequest.pipe(T.HttpBody())),
@@ -848,7 +839,7 @@ export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -875,7 +866,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     displayName: S.optional(S.String),
@@ -889,7 +880,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -907,7 +898,7 @@ export interface GetOrganizationsLocationsPostureDeploymentsRequest {
   /** Required. The name of the PostureDeployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_deployment_id}`. */
   name: string;
 }
-export const GetOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -927,7 +918,7 @@ export interface GetOrganizationsLocationsPosturesRequest {
   /** Optional. The posture revision to retrieve. If not specified, the most recently updated revision is retrieved. */
   revisionId?: string;
 }
-export const GetOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     revisionId: S.optional(S.String.pipe(T.Query())),
@@ -948,7 +939,7 @@ export interface GetOrganizationsLocationsPostureTemplatesRequest {
   /** Required. The name of the PostureTemplate, in the format `organizations/{organization}/locations/global/postureTemplates/{posture_template}`. */
   name: string;
 }
-export const GetOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -969,14 +960,12 @@ export type PostureTemplateCategoriesItemEnum =
   | "AWS"
   | "GCP"
   | "AZURE";
-export const PostureTemplateCategoriesItemEnum = S.String;
-
 export type PostureTemplateCategoriesItemEnumList = Array<PostureTemplateCategoriesItemEnum>;
-export const PostureTemplateCategoriesItemEnumList =
+const PostureTemplateCategoriesItemEnumList =
   PostureDeploymentCategoriesItemEnumList as any as S.Schema<PostureTemplateCategoriesItemEnumList>;
 
 export type PostureTemplateStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
-export const PostureTemplateStateEnum = S.String;
+const PostureTemplateStateEnum = S.String;
 
 /** The details of a posture template. */
 export interface PostureTemplate {
@@ -993,7 +982,7 @@ export interface PostureTemplate {
   /** Output only. The state of the posture template at the specified `revision_id`. */
   state?: PostureTemplateStateEnum;
 }
-export const PostureTemplate = /*@__PURE__*/ S.suspend(() =>
+const PostureTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.optional(S.String),
     policySets: S.optional(PolicySetList),
@@ -1008,7 +997,7 @@ export interface GetOrganizationsLocationsReportsRequest {
   /** Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. */
   name: string;
 }
-export const GetOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1029,7 +1018,7 @@ export type PolicyDetailsConstraintTypeEnum =
   | "SECURITY_HEALTH_ANALYTICS_MODULE"
   | "ORG_POLICY"
   | "REGO_POLICY";
-export const PolicyDetailsConstraintTypeEnum = S.String;
+const PolicyDetailsConstraintTypeEnum = S.String;
 
 /** Details of a policy that was violated. */
 export interface PolicyDetails {
@@ -1042,7 +1031,7 @@ export interface PolicyDetails {
   /** Information about the constraint that was violated. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
   constraint?: string;
 }
-export const PolicyDetails = /*@__PURE__*/ S.suspend(() =>
+const PolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraintType: S.optional(PolicyDetailsConstraintTypeEnum),
     description: S.optional(S.String),
@@ -1058,7 +1047,7 @@ export interface AssetDetails {
   /** Information about the Cloud Asset Inventory asset that violated a policy. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
   asset?: string;
 }
-export const AssetDetails = /*@__PURE__*/ S.suspend(() =>
+const AssetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetType: S.optional(S.String),
     asset: S.optional(S.String),
@@ -1066,7 +1055,7 @@ export const AssetDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssetDetails" }) as any as S.Schema<AssetDetails>;
 
 export type ViolationSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
-export const ViolationSeverityEnum = S.String;
+const ViolationSeverityEnum = S.String;
 
 /** Details of a posture deployment. */
 export interface PostureDetails {
@@ -1081,7 +1070,7 @@ export interface PostureDetails {
   /** The organization, folder, or project where the posture is deployed. Uses one of the following formats: * `organizations/{organization_number}` * `folders/{folder_number}` * `projects/{project_number}` */
   postureDeploymentTargetResource?: string;
 }
-export const PostureDetails = /*@__PURE__*/ S.suspend(() =>
+const PostureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policySet: S.optional(S.String),
     postureRevisionId: S.optional(S.String),
@@ -1108,7 +1097,7 @@ export interface Violation {
   /** The policy that was violated. */
   policyId?: string;
 }
-export const Violation = /*@__PURE__*/ S.suspend(() =>
+const Violation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     violatedPolicy: S.optional(PolicyDetails),
     violatedAsset: S.optional(AssetDetails),
@@ -1121,7 +1110,7 @@ export const Violation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Violation" }) as any as S.Schema<Violation>;
 
 export type ViolationList = Array<Violation>;
-export const ViolationList = /*@__PURE__*/ S.Array(Violation) as any as S.Schema<ViolationList>;
+const ViolationList = /*@__PURE__*/ S.Array(Violation) as any as S.Schema<ViolationList>;
 
 /** Details of an infrastructure-as-code (IaC) validation report. */
 export interface IaCValidationReport {
@@ -1130,7 +1119,7 @@ export interface IaCValidationReport {
   /** Additional information about the report. */
   note?: string;
 }
-export const IaCValidationReport = /*@__PURE__*/ S.suspend(() =>
+const IaCValidationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     violations: S.optional(ViolationList),
     note: S.optional(S.String),
@@ -1148,7 +1137,7 @@ export interface Report {
   /** Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. */
   name?: string;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     iacValidationReport: S.optional(IaCValidationReport),
@@ -1169,7 +1158,7 @@ export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1188,7 +1177,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1197,7 +1186,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1216,7 +1205,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1235,7 +1224,7 @@ export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1246,7 +1235,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -1264,7 +1253,7 @@ export interface ListOrganizationsLocationsPostureDeploymentsRequest {
   /** Optional. A pagination token returned from a previous request to list posture deployments. Provide this token to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1282,7 +1271,7 @@ export const ListOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/
 }) as any as S.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>;
 
 export type PostureDeploymentList = Array<PostureDeployment>;
-export const PostureDeploymentList = /*@__PURE__*/ S.Array(
+const PostureDeploymentList = /*@__PURE__*/ S.Array(
   PostureDeployment,
 ) as any as S.Schema<PostureDeploymentList>;
 
@@ -1295,7 +1284,7 @@ export interface ListPostureDeploymentsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
-export const ListPostureDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostureDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postureDeployments: S.optional(PostureDeploymentList),
     unreachable: S.optional(StringList),
@@ -1315,7 +1304,7 @@ export interface ListOrganizationsLocationsPosturesRequest {
   /** A pagination token returned from a previous request to list postures. Provide this token to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1333,7 +1322,7 @@ export const ListOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListOrganizationsLocationsPosturesRequest>;
 
 export type PostureList = Array<Posture>;
-export const PostureList = /*@__PURE__*/ S.Array(Posture) as any as S.Schema<PostureList>;
+const PostureList = /*@__PURE__*/ S.Array(Posture) as any as S.Schema<PostureList>;
 
 /** Response message for ListPostures. */
 export interface ListPosturesResponse {
@@ -1344,7 +1333,7 @@ export interface ListPosturesResponse {
   /** Locations that were temporarily unavailable and could not be reached. */
   unreachable?: StringList;
 }
-export const ListPosturesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPosturesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     postures: S.optional(PostureList),
@@ -1362,7 +1351,7 @@ export interface ListOrganizationsLocationsPostureTemplatesRequest {
   /** Optional. A pagination token returned from a previous request to list posture templates. Provide this token to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1380,7 +1369,7 @@ export const ListOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListOrganizationsLocationsPostureTemplatesRequest>;
 
 export type PostureTemplateList = Array<PostureTemplate>;
-export const PostureTemplateList = /*@__PURE__*/ S.Array(
+const PostureTemplateList = /*@__PURE__*/ S.Array(
   PostureTemplate,
 ) as any as S.Schema<PostureTemplateList>;
 
@@ -1391,7 +1380,7 @@ export interface ListPostureTemplatesResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
-export const ListPostureTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostureTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postureTemplates: S.optional(PostureTemplateList),
     nextPageToken: S.optional(S.String),
@@ -1410,7 +1399,7 @@ export interface ListOrganizationsLocationsReportsRequest {
   /** Optional. A filter to apply to the list of reports, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1428,7 +1417,7 @@ export const ListOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsLocationsReportsRequest>;
 
 export type ReportList = Array<Report>;
-export const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
+const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
 
 /** Response message for ListReports. */
 export interface ListReportsResponse {
@@ -1439,7 +1428,7 @@ export interface ListReportsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
-export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: S.optional(ReportList),
     unreachable: S.optional(StringList),
@@ -1455,7 +1444,7 @@ export interface ListRevisionsOrganizationsLocationsPosturesRequest {
   /** Optional. The maximum number of posture revisions to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
 }
-export const ListRevisionsOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRevisionsOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1478,7 +1467,7 @@ export interface ListPostureRevisionsResponse {
   /** The list of revisions for the Posture. */
   revisions?: PostureList;
 }
-export const ListPostureRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostureRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     revisions: S.optional(PostureList),
@@ -1495,7 +1484,7 @@ export interface PatchOrganizationsLocationsPostureDeploymentsRequest {
   /** Request body */
   body?: PostureDeployment;
 }
-export const PatchOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1521,7 +1510,7 @@ export interface PatchOrganizationsLocationsPosturesRequest {
   /** Request body */
   body?: Posture;
 }
-export const PatchOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

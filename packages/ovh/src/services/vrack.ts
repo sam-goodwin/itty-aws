@@ -15,7 +15,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -33,7 +33,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmVrackTerminationRequest {
   /** The internal name of your vrack */
@@ -47,7 +47,7 @@ export interface ConfirmVrackTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmVrackTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmVrackTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -60,7 +60,7 @@ export const ConfirmVrackTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfirmVrackTerminationRequest>;
 
 export type ConfirmVrackTerminationResponse = string;
-export const ConfirmVrackTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmVrackTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmVrackTerminationResponse",
@@ -76,7 +76,7 @@ export interface CreateVrackChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateVrackChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -88,12 +88,12 @@ export const CreateVrackChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVrackChangeContactRequest>;
 
 export type CreateVrackChangeContactResponseBodyList = Array<number>;
-export const CreateVrackChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateVrackChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateVrackChangeContactResponseBodyList>;
 
 export type CreateVrackChangeContactResponse = CreateVrackChangeContactResponseBodyList;
-export const CreateVrackChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateVrackChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateVrackChangeContactResponse",
@@ -105,7 +105,7 @@ export interface CreateVrackCloudProjectRequest {
   /** publicCloud project to add */
   project: string;
 }
-export const CreateVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     project: S.String,
@@ -116,7 +116,7 @@ export const CreateVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All states a vRack Task can be in */
 export type VrackTaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo";
-export const VrackTaskStatusEnum = S.String;
+const VrackTaskStatusEnum = S.String;
 
 /** vrack tasks */
 export interface VrackTask {
@@ -130,7 +130,7 @@ export interface VrackTask {
   targetDomain?: string | null;
   todoDate?: string | null;
 }
-export const VrackTask = /*@__PURE__*/ S.suspend(() =>
+const VrackTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(S.String),
     id: S.optional(S.Number),
@@ -148,7 +148,7 @@ export interface CreateVrackDedicatedCloudRequest {
   serviceName: string;
   dedicatedCloud: string;
 }
-export const CreateVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedCloud: S.String,
@@ -167,7 +167,7 @@ export interface CreateVrackDedicatedConnectRequest {
   /** Vlan id of the dedicated link on OVH's G5 router */
   vlanId: number;
 }
-export const CreateVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     entryPointSwitch: S.String,
@@ -184,7 +184,7 @@ export interface CreateVrackDedicatedServerRequest {
   /** Dedicated server to add */
   dedicatedServer: string;
 }
-export const CreateVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedServer: S.String,
@@ -199,7 +199,7 @@ export interface CreateVrackDedicatedServerInterfaceRequest {
   /** Dedicated server interface to add */
   dedicatedServerInterface: string;
 }
-export const CreateVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedServerInterface: S.String,
@@ -218,7 +218,7 @@ export interface CreateVrackIpRequest {
   /** Choose the region in which to route the block */
   region?: string;
 }
-export const CreateVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     block: S.String,
@@ -232,7 +232,7 @@ export interface CreateVrackIpLoadbalancingRequest {
   /** Your ipLoadbalancing */
   ipLoadbalancing: string;
 }
-export const CreateVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipLoadbalancing: S.String,
@@ -247,7 +247,7 @@ export interface CreateVrackIpv6Request {
   /** Your IP v6 block */
   block: string;
 }
-export const CreateVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     block: S.String,
@@ -264,7 +264,7 @@ export interface CreateVrackIpv6RoutedSubrangeRequest {
   /** subrange to route into your vrack */
   routedSubrange: string;
 }
-export const CreateVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -282,7 +282,7 @@ export interface CreateVrackLegacyVrackRequest {
   serviceName: string;
   legacyVrack: string;
 }
-export const CreateVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     legacyVrack: S.String,
@@ -297,7 +297,7 @@ export interface CreateVrackOvhCloudConnectRequest {
   /** ovhCloudConnect service name */
   ovhCloudConnect: string;
 }
-export const CreateVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ovhCloudConnect: S.String,
@@ -312,7 +312,7 @@ export interface CreateVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** vmwareCloudDirectorVirtualDataCenter service name */
   vmwareCloudDirectorVirtualDataCenter: string;
 }
-export const CreateVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vmwareCloudDirectorVirtualDataCenter: S.String,
@@ -333,7 +333,7 @@ export interface CreateVrackVrackServiceRequest {
   /** vrackServices service name */
   vrackServices: string;
 }
-export const CreateVrackVrackServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVrackVrackServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackServices: S.String,
@@ -348,7 +348,7 @@ export interface DeleteVrackCloudProjectRequest {
   /** publicCloud project */
   project: string;
 }
-export const DeleteVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -365,7 +365,7 @@ export interface DeleteVrackDedicatedCloudRequest {
   /** your dedicated cloud service */
   dedicatedCloud: string;
 }
-export const DeleteVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedCloud: S.String.pipe(T.Label()),
@@ -386,7 +386,7 @@ export interface DeleteVrackDedicatedConnectRequest {
   /** A name for your dedicatedConnect link */
   name: string;
 }
-export const DeleteVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -403,7 +403,7 @@ export interface DeleteVrackDedicatedServerRequest {
   /** Dedicated Server */
   dedicatedServer: string;
 }
-export const DeleteVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedServer: S.String.pipe(T.Label()),
@@ -424,7 +424,7 @@ export interface DeleteVrackDedicatedServerInterfaceRequest {
   /** Dedicated Server Interface */
   dedicatedServerInterface: string;
 }
-export const DeleteVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedServerInterface: S.String.pipe(T.Label()),
@@ -445,7 +445,7 @@ export interface DeleteVrackIpRequest {
   /** Your IP block */
   ip: string;
 }
-export const DeleteVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -458,7 +458,7 @@ export interface DeleteVrackIpLoadbalancingRequest {
   /** Your ipLoadbalancing */
   ipLoadbalancing: string;
 }
-export const DeleteVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipLoadbalancing: S.String.pipe(T.Label()),
@@ -479,7 +479,7 @@ export interface DeleteVrackIpv6Request {
   /** Your IP v6 block */
   ipv6: string;
 }
-export const DeleteVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -494,7 +494,7 @@ export interface DeleteVrackIpv6RoutedSubrangeRequest {
   /** subrange routed into your vrack */
   routedSubrange: string;
 }
-export const DeleteVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -516,7 +516,7 @@ export interface DeleteVrackLegacyVrackRequest {
   /** your legacy vrack service */
   legacyVrack: string;
 }
-export const DeleteVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     legacyVrack: S.String.pipe(T.Label()),
@@ -533,7 +533,7 @@ export interface DeleteVrackOvhCloudConnectRequest {
   /** ovhCloudConnect service name */
   ovhCloudConnect: string;
 }
-export const DeleteVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ovhCloudConnect: S.String.pipe(T.Label()),
@@ -554,7 +554,7 @@ export interface DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** vmwareCloudDirectorVirtualDataCenter service name */
   vmwareCloudDirectorVirtualDataCenter: string;
 }
-export const DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vmwareCloudDirectorVirtualDataCenter: S.String.pipe(T.Label()),
@@ -575,7 +575,7 @@ export interface DeleteVrackVrackServiceRequest {
   /** vrackServices service name */
   vrackServices: string;
 }
-export const DeleteVrackVrackServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVrackVrackServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackServices: S.String.pipe(T.Label()),
@@ -594,7 +594,7 @@ export interface GetVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const GetVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}", code: 200 })),
@@ -602,7 +602,7 @@ export const GetVrackRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -618,7 +618,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -638,7 +638,7 @@ export interface VrackVrackWithIAM {
   /** Service name of your vRack on OVHcloud */
   serviceName?: string;
 }
-export const VrackVrackWithIAM = /*@__PURE__*/ S.suspend(() =>
+const VrackVrackWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     iam: S.optional(S.NullOr(IamResourceMetadata)),
@@ -653,7 +653,7 @@ export interface GetVrackCloudProjectRequest {
   /** publicCloud project */
   project: string;
 }
-export const GetVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -669,7 +669,7 @@ export interface VrackCloudProject {
   /** vrack name */
   vrack?: string;
 }
-export const VrackCloudProject = /*@__PURE__*/ S.suspend(() =>
+const VrackCloudProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -682,7 +682,7 @@ export interface GetVrackDedicatedCloudRequest {
   /** your dedicated cloud service */
   dedicatedCloud: string;
 }
-export const GetVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedCloud: S.String.pipe(T.Label()),
@@ -706,7 +706,7 @@ export interface VrackDedicatedCloud {
   /** vrack name */
   vrack?: string;
 }
-export const VrackDedicatedCloud = /*@__PURE__*/ S.suspend(() =>
+const VrackDedicatedCloud = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedCloud: S.optional(S.String),
     vlanId: S.optional(S.NullOr(S.Number)),
@@ -720,7 +720,7 @@ export interface GetVrackDedicatedCloudDatacenterRequest {
   /** Your dedicatedCloud datacenter name */
   datacenter: string;
 }
-export const GetVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     datacenter: S.String.pipe(T.Label()),
@@ -744,7 +744,7 @@ export interface VrackPccDatacenter {
   /** vrack name */
   vrack?: string;
 }
-export const VrackPccDatacenter = /*@__PURE__*/ S.suspend(() =>
+const VrackPccDatacenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenter: S.optional(S.String),
     dedicatedCloud: S.optional(S.String),
@@ -758,7 +758,7 @@ export interface GetVrackDedicatedConnectRequest {
   /** A name for your dedicatedConnect link */
   name: string;
 }
-export const GetVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -774,7 +774,7 @@ export interface VrackDedicatedConnect {
   /** A name for your dedicatedConnect link */
   name?: string;
 }
-export const VrackDedicatedConnect = /*@__PURE__*/ S.suspend(() =>
+const VrackDedicatedConnect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -786,7 +786,7 @@ export interface GetVrackDedicatedServerRequest {
   /** Dedicated Server */
   dedicatedServer: string;
 }
-export const GetVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedServer: S.String.pipe(T.Label()),
@@ -808,7 +808,7 @@ export interface VrackDedicatedServer {
   /** vrack name */
   vrack?: string;
 }
-export const VrackDedicatedServer = /*@__PURE__*/ S.suspend(() =>
+const VrackDedicatedServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedServer: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -821,7 +821,7 @@ export interface GetVrackDedicatedServerInterfaceRequest {
   /** Dedicated Server Interface */
   dedicatedServerInterface: string;
 }
-export const GetVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedServerInterface: S.String.pipe(T.Label()),
@@ -843,7 +843,7 @@ export interface VrackDedicatedServerInterface {
   /** vrack name */
   vrack?: string;
 }
-export const VrackDedicatedServerInterface = /*@__PURE__*/ S.suspend(() =>
+const VrackDedicatedServerInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedServerInterface: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -858,7 +858,7 @@ export interface GetVrackIpRequest {
   /** Your IP block */
   ip: string;
 }
-export const GetVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -881,7 +881,7 @@ export type VrackVrackZoneEnum =
   | "was1"
   | "waw"
   | "yyz";
-export const VrackVrackZoneEnum = S.String;
+const VrackVrackZoneEnum = S.String;
 
 /** IP block in vrack */
 export interface VrackIp {
@@ -894,7 +894,7 @@ export interface VrackIp {
   /** Where you want your block announced on the network */
   zone?: VrackVrackZoneEnum | null;
 }
-export const VrackIp = /*@__PURE__*/ S.suspend(() =>
+const VrackIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateway: S.optional(S.NullOr(S.String)),
     ip: S.optional(S.String),
@@ -909,7 +909,7 @@ export interface GetVrackIpLoadbalancingRequest {
   /** Your ipLoadbalancing */
   ipLoadbalancing: string;
 }
-export const GetVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipLoadbalancing: S.String.pipe(T.Label()),
@@ -931,7 +931,7 @@ export interface VrackIplb {
   /** vrack name */
   vrack?: string;
 }
-export const VrackIplb = /*@__PURE__*/ S.suspend(() =>
+const VrackIplb = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipLoadbalancing: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -944,7 +944,7 @@ export interface GetVrackIpv6Request {
   /** Your IP v6 block */
   ipv6: string;
 }
-export const GetVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
+const GetVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -958,7 +958,7 @@ export interface VrackIpv6 {
   /** Where you want your block announced on the network */
   region?: string | null;
 }
-export const VrackIpv6 = /*@__PURE__*/ S.suspend(() =>
+const VrackIpv6 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipv6: S.optional(S.String),
     region: S.optional(S.NullOr(S.String)),
@@ -973,7 +973,7 @@ export interface GetVrackIpv6BridgedSubrangeRequest {
   /** subrange bridged into your vrack */
   bridgedSubrange: string;
 }
-export const GetVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -991,7 +991,7 @@ export const GetVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for slaac */
 export type VrackSlaacEnum = "disabled" | "enabled";
-export const VrackSlaacEnum = S.String;
+const VrackSlaacEnum = S.String;
 
 /** Bridged subrange within your IP v6 block */
 export interface VrackBridgedSubrange {
@@ -1002,7 +1002,7 @@ export interface VrackBridgedSubrange {
   /** Slaac status */
   slaac?: VrackSlaacEnum;
 }
-export const VrackBridgedSubrange = /*@__PURE__*/ S.suspend(() =>
+const VrackBridgedSubrange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bridgedSubrange: S.optional(S.String),
     gateway: S.optional(S.String),
@@ -1018,7 +1018,7 @@ export interface GetVrackIpv6RoutedSubrangeRequest {
   /** subrange routed into your vrack */
   routedSubrange: string;
 }
-export const GetVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -1041,7 +1041,7 @@ export interface VrackRoutedSubrange {
   /** subrange routed into your vrack */
   routedSubrange?: string;
 }
-export const VrackRoutedSubrange = /*@__PURE__*/ S.suspend(() =>
+const VrackRoutedSubrange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nexthop: S.optional(S.String),
     routedSubrange: S.optional(S.String),
@@ -1054,7 +1054,7 @@ export interface GetVrackLegacyVrackRequest {
   /** your legacy vrack service */
   legacyVrack: string;
 }
-export const GetVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     legacyVrack: S.String.pipe(T.Label()),
@@ -1072,7 +1072,7 @@ export interface VrackLegacyVrack {
   /** vlan to set on legacy vrack equipments */
   vlanId?: number;
 }
-export const VrackLegacyVrack = /*@__PURE__*/ S.suspend(() =>
+const VrackLegacyVrack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legacyVrack: S.optional(S.String),
     vlanId: S.optional(S.Number),
@@ -1085,7 +1085,7 @@ export interface GetVrackOvhCloudConnectRequest {
   /** ovhCloudConnect service name */
   ovhCloudConnect: string;
 }
-export const GetVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ovhCloudConnect: S.String.pipe(T.Label()),
@@ -1107,7 +1107,7 @@ export interface VrackOvhCloudConnect {
   /** vrack name */
   vrack?: string;
 }
-export const VrackOvhCloudConnect = /*@__PURE__*/ S.suspend(() =>
+const VrackOvhCloudConnect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhCloudConnect: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -1118,7 +1118,7 @@ export interface GetVrackPublicRoutingOptionRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const GetVrackPublicRoutingOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackPublicRoutingOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/publicRoutingOption", code: 200 })),
@@ -1131,7 +1131,7 @@ export interface VrackPublicRoutingOption {
   /** Global bandwidth for blocks in your vrack (in Mbps) */
   bandwidth?: number | null;
 }
-export const VrackPublicRoutingOption = /*@__PURE__*/ S.suspend(() =>
+const VrackPublicRoutingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidth: S.optional(S.NullOr(S.Number)),
   }),
@@ -1141,7 +1141,7 @@ export interface GetVrackServiceInfosRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const GetVrackServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/serviceInfos", code: 200 })),
@@ -1156,7 +1156,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a non-expiring Service */
 export interface ServicesNonExpiringService {
@@ -1168,7 +1168,7 @@ export interface ServicesNonExpiringService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesNonExpiringService = /*@__PURE__*/ S.suspend(() =>
+const ServicesNonExpiringService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactAdmin: S.optional(S.String),
     contactBilling: S.optional(S.String),
@@ -1187,7 +1187,7 @@ export interface GetVrackTaskRequest {
   serviceName: string;
   taskId: number;
 }
-export const GetVrackTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -1200,7 +1200,7 @@ export interface GetVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** vmwareCloudDirectorVirtualDataCenter service name */
   vmwareCloudDirectorVirtualDataCenter: string;
 }
-export const GetVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vmwareCloudDirectorVirtualDataCenter: S.String.pipe(T.Label()),
@@ -1222,7 +1222,7 @@ export interface VrackVmwareCloudDirectorVirtualDataCenter {
   /** vrack name */
   vrack?: string;
 }
-export const VrackVmwareCloudDirectorVirtualDataCenter = /*@__PURE__*/ S.suspend(() =>
+const VrackVmwareCloudDirectorVirtualDataCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmwareCloudDirectorVirtualDataCenter: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -1237,7 +1237,7 @@ export interface GetVrackVrackServiceRequest {
   /** vrackServices service name */
   vrackServices: string;
 }
-export const GetVrackVrackServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackVrackServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackServices: S.String.pipe(T.Label()),
@@ -1255,7 +1255,7 @@ export interface VrackVrackServices {
   /** vrackServices service name */
   vrackServices?: string;
 }
-export const VrackVrackServices = /*@__PURE__*/ S.suspend(() =>
+const VrackVrackServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vrack: S.optional(S.String),
     vrackServices: S.optional(S.String),
@@ -1264,19 +1264,19 @@ export const VrackVrackServices = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListVrackRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListVrackRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListVrackRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListVrackRequestIamTagsValueList>;
 
 export type ListVrackRequestIamTagsMap = {
   [key: string]: ListVrackRequestIamTagsValueList | undefined;
 };
-export const ListVrackRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListVrackRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListVrackRequestIamTagsValueList,
 ) as any as S.Schema<ListVrackRequestIamTagsMap>;
@@ -1285,19 +1285,19 @@ export interface ListVrackRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListVrackRequestIamTagsMap;
 }
-export const ListVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListVrackRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/vrack", code: 200 })),
 ).annotate({ identifier: "ListVrackRequest" }) as any as S.Schema<ListVrackRequest>;
 
 export type ListVrackResponseBodyList = Array<string>;
-export const ListVrackResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVrackResponseBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListVrackResponseBodyList>;
 
 export type ListVrackResponse = ListVrackResponseBodyList;
-export const ListVrackResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVrackResponse" }) as any as S.Schema<ListVrackResponse>;
 
@@ -1316,7 +1316,7 @@ export type VrackAllowedServiceEnum =
   | "ovhCloudConnect"
   | "vmwareCloudDirectorVirtualDataCenter"
   | "vrackServices";
-export const VrackAllowedServiceEnum = S.String;
+const VrackAllowedServiceEnum = S.String;
 
 export interface ListVrackAllowedServicesRequest {
   /** The internal name of your vrack */
@@ -1324,7 +1324,7 @@ export interface ListVrackAllowedServicesRequest {
   /** Filter on a specific service family */
   serviceFamily?: VrackAllowedServiceEnum | (string & {});
 }
-export const ListVrackAllowedServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackAllowedServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceFamily: S.optional(VrackAllowedServiceEnum.pipe(T.Query())),
@@ -1335,27 +1335,27 @@ export const ListVrackAllowedServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** list of publicCloud projects allowed to be connected to vrack */
 export type VrackAllowedServicesCloudProjectList = Array<string>;
-export const VrackAllowedServicesCloudProjectList =
+const VrackAllowedServicesCloudProjectList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesCloudProjectList>;
 
 /** list of dedicated cloud allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedCloudList = Array<string>;
-export const VrackAllowedServicesDedicatedCloudList =
+const VrackAllowedServicesDedicatedCloudList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedCloudList>;
 
 /** list of dedicated cloud datacenters allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedCloudDatacenterList = Array<string>;
-export const VrackAllowedServicesDedicatedCloudDatacenterList =
+const VrackAllowedServicesDedicatedCloudDatacenterList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedCloudDatacenterList>;
 
 /** list of dedicated connect links allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedConnectList = Array<string>;
-export const VrackAllowedServicesDedicatedConnectList =
+const VrackAllowedServicesDedicatedConnectList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedConnectList>;
 
 /** list of dedicated servers allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedServerList = Array<string>;
-export const VrackAllowedServicesDedicatedServerList =
+const VrackAllowedServicesDedicatedServerList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedServerList>;
 
 /** A structure giving all dedicated server interfaces allowed for this vrack */
@@ -1367,7 +1367,7 @@ export interface VrackAllowedDedicatedServerInterfaces {
   /** the name of dedicatedServerInterface */
   name?: string;
 }
-export const VrackAllowedDedicatedServerInterfaces = /*@__PURE__*/ S.suspend(() =>
+const VrackAllowedDedicatedServerInterfaces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedServer: S.optional(S.String),
     dedicatedServerInterface: S.optional(S.String),
@@ -1380,43 +1380,43 @@ export const VrackAllowedDedicatedServerInterfaces = /*@__PURE__*/ S.suspend(() 
 /** list of dedicated server interfaces allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedServerInterfaceList =
   Array<VrackAllowedDedicatedServerInterfaces>;
-export const VrackAllowedServicesDedicatedServerInterfaceList = /*@__PURE__*/ S.Array(
+const VrackAllowedServicesDedicatedServerInterfaceList = /*@__PURE__*/ S.Array(
   VrackAllowedDedicatedServerInterfaces,
 ) as any as S.Schema<VrackAllowedServicesDedicatedServerInterfaceList>;
 
 /** list of blocks allowed to be connected to vrack */
 export type VrackAllowedServicesIpList = Array<string>;
-export const VrackAllowedServicesIpList =
+const VrackAllowedServicesIpList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesIpList>;
 
 /** list of ipLoadbalancing allowed to be connected to vrack */
 export type VrackAllowedServicesIpLoadbalancingList = Array<string>;
-export const VrackAllowedServicesIpLoadbalancingList =
+const VrackAllowedServicesIpLoadbalancingList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesIpLoadbalancingList>;
 
 /** list of ipv6 blocks allowed to be connected to vrack */
 export type VrackAllowedServicesIpv6List = Array<string>;
-export const VrackAllowedServicesIpv6List =
+const VrackAllowedServicesIpv6List =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesIpv6List>;
 
 /** list of legacy vrack (1.0) allowed to be connected to vrack */
 export type VrackAllowedServicesLegacyVrackList = Array<string>;
-export const VrackAllowedServicesLegacyVrackList =
+const VrackAllowedServicesLegacyVrackList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesLegacyVrackList>;
 
 /** List of the ovhCloudConnect services allowed to be connected to vrack */
 export type VrackAllowedServicesOvhCloudConnectList = Array<string>;
-export const VrackAllowedServicesOvhCloudConnectList =
+const VrackAllowedServicesOvhCloudConnectList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesOvhCloudConnectList>;
 
 /** List of the vmwareCloudDirectorVirtualDataCenter allowed to be connected to vrack */
 export type VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList = Array<string>;
-export const VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList =
+const VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList>;
 
 /** List of the vrackServices allowed to be connected to vrack */
 export type VrackAllowedServicesVrackServicesList = Array<string>;
-export const VrackAllowedServicesVrackServicesList =
+const VrackAllowedServicesVrackServicesList =
   ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesVrackServicesList>;
 
 /** A structure given all service allowed for this vrack */
@@ -1448,7 +1448,7 @@ export interface VrackAllowedServices {
   /** List of the vrackServices allowed to be connected to vrack */
   vrackServices?: VrackAllowedServicesVrackServicesList | null;
 }
-export const VrackAllowedServices = /*@__PURE__*/ S.suspend(() =>
+const VrackAllowedServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudProject: S.optional(S.NullOr(VrackAllowedServicesCloudProjectList)),
     dedicatedCloud: S.optional(S.NullOr(VrackAllowedServicesDedicatedCloudList)),
@@ -1476,7 +1476,7 @@ export interface ListVrackCloudProjectRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/cloudProject", code: 200 })),
@@ -1485,11 +1485,11 @@ export const ListVrackCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackCloudProjectRequest>;
 
 export type ListVrackCloudProjectResponseBodyList = Array<string>;
-export const ListVrackCloudProjectResponseBodyList =
+const ListVrackCloudProjectResponseBodyList =
   ListVrackResponseBodyList as any as S.Schema<ListVrackCloudProjectResponseBodyList>;
 
 export type ListVrackCloudProjectResponse = ListVrackCloudProjectResponseBodyList;
-export const ListVrackCloudProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackCloudProjectResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackCloudProjectResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVrackCloudProjectResponse",
@@ -1499,7 +1499,7 @@ export interface ListVrackDedicatedCloudRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/dedicatedCloud", code: 200 })),
@@ -1508,18 +1508,15 @@ export const ListVrackDedicatedCloudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackDedicatedCloudRequest>;
 
 export type ListVrackDedicatedCloudResponseBodyList = Array<string>;
-export const ListVrackDedicatedCloudResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackDedicatedCloudResponseBodyList>;
-
 export type ListVrackDedicatedCloudResponse = ListVrackDedicatedCloudResponseBodyList;
-export const ListVrackDedicatedCloudResponse =
+const ListVrackDedicatedCloudResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedCloudResponse>;
 
 export interface ListVrackDedicatedCloudDatacenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1530,12 +1527,9 @@ export const ListVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListVrackDedicatedCloudDatacenterRequest>;
 
 export type ListVrackDedicatedCloudDatacenterResponseBodyList = Array<string>;
-export const ListVrackDedicatedCloudDatacenterResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackDedicatedCloudDatacenterResponseBodyList>;
-
 export type ListVrackDedicatedCloudDatacenterResponse =
   ListVrackDedicatedCloudDatacenterResponseBodyList;
-export const ListVrackDedicatedCloudDatacenterResponse =
+const ListVrackDedicatedCloudDatacenterResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedCloudDatacenterResponse>;
 
 export interface ListVrackDedicatedCloudDatacenterAllowedVrackRequest {
@@ -1544,7 +1538,7 @@ export interface ListVrackDedicatedCloudDatacenterAllowedVrackRequest {
   /** Your dedicatedCloud datacenter name */
   datacenter: string;
 }
-export const ListVrackDedicatedCloudDatacenterAllowedVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedCloudDatacenterAllowedVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     datacenter: S.String.pipe(T.Label()),
@@ -1560,19 +1554,16 @@ export const ListVrackDedicatedCloudDatacenterAllowedVrackRequest = /*@__PURE__*
 }) as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackRequest>;
 
 export type ListVrackDedicatedCloudDatacenterAllowedVrackResponseBodyList = Array<string>;
-export const ListVrackDedicatedCloudDatacenterAllowedVrackResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackResponseBodyList>;
-
 export type ListVrackDedicatedCloudDatacenterAllowedVrackResponse =
   ListVrackDedicatedCloudDatacenterAllowedVrackResponseBodyList;
-export const ListVrackDedicatedCloudDatacenterAllowedVrackResponse =
+const ListVrackDedicatedCloudDatacenterAllowedVrackResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackResponse>;
 
 export interface ListVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/dedicatedConnect", code: 200 })),
@@ -1581,18 +1572,15 @@ export const ListVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackDedicatedConnectRequest>;
 
 export type ListVrackDedicatedConnectResponseBodyList = Array<string>;
-export const ListVrackDedicatedConnectResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackDedicatedConnectResponseBodyList>;
-
 export type ListVrackDedicatedConnectResponse = ListVrackDedicatedConnectResponseBodyList;
-export const ListVrackDedicatedConnectResponse =
+const ListVrackDedicatedConnectResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedConnectResponse>;
 
 export interface ListVrackDedicatedServerRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/dedicatedServer", code: 200 })),
@@ -1601,18 +1589,15 @@ export const ListVrackDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackDedicatedServerRequest>;
 
 export type ListVrackDedicatedServerResponseBodyList = Array<string>;
-export const ListVrackDedicatedServerResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackDedicatedServerResponseBodyList>;
-
 export type ListVrackDedicatedServerResponse = ListVrackDedicatedServerResponseBodyList;
-export const ListVrackDedicatedServerResponse =
+const ListVrackDedicatedServerResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedServerResponse>;
 
 export interface ListVrackDedicatedServerInterfaceRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1623,19 +1608,16 @@ export const ListVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListVrackDedicatedServerInterfaceRequest>;
 
 export type ListVrackDedicatedServerInterfaceResponseBodyList = Array<string>;
-export const ListVrackDedicatedServerInterfaceResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackDedicatedServerInterfaceResponseBodyList>;
-
 export type ListVrackDedicatedServerInterfaceResponse =
   ListVrackDedicatedServerInterfaceResponseBodyList;
-export const ListVrackDedicatedServerInterfaceResponse =
+const ListVrackDedicatedServerInterfaceResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedServerInterfaceResponse>;
 
 export interface ListVrackDedicatedServerInterfaceDetailsRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackDedicatedServerInterfaceDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedServerInterfaceDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1651,12 +1633,12 @@ export const ListVrackDedicatedServerInterfaceDetailsRequest = /*@__PURE__*/ S.s
 
 export type ListVrackDedicatedServerInterfaceDetailsResponseBodyList =
   Array<VrackAllowedDedicatedServerInterfaces>;
-export const ListVrackDedicatedServerInterfaceDetailsResponseBodyList =
+const ListVrackDedicatedServerInterfaceDetailsResponseBodyList =
   VrackAllowedServicesDedicatedServerInterfaceList as any as S.Schema<ListVrackDedicatedServerInterfaceDetailsResponseBodyList>;
 
 export type ListVrackDedicatedServerInterfaceDetailsResponse =
   ListVrackDedicatedServerInterfaceDetailsResponseBodyList;
-export const ListVrackDedicatedServerInterfaceDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackDedicatedServerInterfaceDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackDedicatedServerInterfaceDetailsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVrackDedicatedServerInterfaceDetailsResponse",
@@ -1666,7 +1648,7 @@ export interface ListVrackEligibleServicesRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackEligibleServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackEligibleServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/eligibleServices", code: 200 })),
@@ -1676,34 +1658,19 @@ export const ListVrackEligibleServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of services where an error has been encountered */
 export type VrackEligibleServicesResponseErrorsList = Array<string>;
-export const VrackEligibleServicesResponseErrorsList =
+const VrackEligibleServicesResponseErrorsList =
   ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesResponseErrorsList>;
 
 /** List of publicCloud projects allowed to be connected to this vRack */
 export type VrackEligibleServicesCloudProjectList = Array<string>;
-export const VrackEligibleServicesCloudProjectList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesCloudProjectList>;
-
 /** List of dedicated cloud allowed to be connected to this vRack */
 export type VrackEligibleServicesDedicatedCloudList = Array<string>;
-export const VrackEligibleServicesDedicatedCloudList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesDedicatedCloudList>;
-
 /** List of dedicated cloud datacenters allowed to be connected to this vRack */
 export type VrackEligibleServicesDedicatedCloudDatacenterList = Array<string>;
-export const VrackEligibleServicesDedicatedCloudDatacenterList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesDedicatedCloudDatacenterList>;
-
 /** List of dedicated connect links allowed to be connected to this vRack */
 export type VrackEligibleServicesDedicatedConnectList = Array<string>;
-export const VrackEligibleServicesDedicatedConnectList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesDedicatedConnectList>;
-
 /** List of dedicated servers allowed to be connected to this vRack */
 export type VrackEligibleServicesDedicatedServerList = Array<string>;
-export const VrackEligibleServicesDedicatedServerList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesDedicatedServerList>;
-
 /** Dedicated server interfaces allowed for this vRack */
 export interface VrackEligibleDedicatedServerInterfaces {
   /** The name of the dedicatedServer */
@@ -1713,50 +1680,23 @@ export interface VrackEligibleDedicatedServerInterfaces {
   /** The name of the dedicatedServerInterface */
   name?: string;
 }
-export const VrackEligibleDedicatedServerInterfaces =
-  VrackAllowedDedicatedServerInterfaces as any as S.Schema<VrackEligibleDedicatedServerInterfaces>;
-
 /** List of dedicated server interfaces allowed to be connected to this vRack */
 export type VrackEligibleServicesDedicatedServerInterfaceList =
   Array<VrackEligibleDedicatedServerInterfaces>;
-export const VrackEligibleServicesDedicatedServerInterfaceList =
-  VrackAllowedServicesDedicatedServerInterfaceList as any as S.Schema<VrackEligibleServicesDedicatedServerInterfaceList>;
-
 /** List of blocks allowed to be connected to this vRack */
 export type VrackEligibleServicesIpList = Array<string>;
-export const VrackEligibleServicesIpList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesIpList>;
-
 /** List of ipLoadbalancing allowed to be connected to this vRack */
 export type VrackEligibleServicesIpLoadbalancingList = Array<string>;
-export const VrackEligibleServicesIpLoadbalancingList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesIpLoadbalancingList>;
-
 /** List of ipv6 blocks allowed to be connected to this vRack */
 export type VrackEligibleServicesIpv6List = Array<string>;
-export const VrackEligibleServicesIpv6List =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesIpv6List>;
-
 /** List of legacy vRack (1.0) allowed to be connected to this vRack */
 export type VrackEligibleServicesLegacyVrackList = Array<string>;
-export const VrackEligibleServicesLegacyVrackList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesLegacyVrackList>;
-
 /** List of the ovhCloudConnect services allowed to be connected to this vRack */
 export type VrackEligibleServicesOvhCloudConnectList = Array<string>;
-export const VrackEligibleServicesOvhCloudConnectList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesOvhCloudConnectList>;
-
 /** List of the VMwareCloudDirectorVirtualDatacenter allowed to be connected to this vRack */
 export type VrackEligibleServicesVmwareCloudDirectorVirtualDataCenterList = Array<string>;
-export const VrackEligibleServicesVmwareCloudDirectorVirtualDataCenterList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesVmwareCloudDirectorVirtualDataCenterList>;
-
 /** List of the vrackServices allowed to be connected to this vRack */
 export type VrackEligibleServicesVrackServicesList = Array<string>;
-export const VrackEligibleServicesVrackServicesList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesVrackServicesList>;
-
 /** Eligible services for this vRack */
 export interface VrackEligibleServices {
   /** List of publicCloud projects allowed to be connected to this vRack */
@@ -1786,7 +1726,7 @@ export interface VrackEligibleServices {
   /** List of the vrackServices allowed to be connected to this vRack */
   vrackServices?: VrackEligibleServicesVrackServicesList | null;
 }
-export const VrackEligibleServices = VrackAllowedServices as any as S.Schema<VrackEligibleServices>;
+const VrackEligibleServices = VrackAllowedServices as any as S.Schema<VrackEligibleServices>;
 
 /** Eligible services call response */
 export interface VrackEligibleServicesResponse {
@@ -1799,7 +1739,7 @@ export interface VrackEligibleServicesResponse {
   /** Status of the call */
   status?: string;
 }
-export const VrackEligibleServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const VrackEligibleServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     errors: S.optional(VrackEligibleServicesResponseErrorsList),
@@ -1814,24 +1754,21 @@ export interface ListVrackIpRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/ip", code: 200 })),
 ).annotate({ identifier: "ListVrackIpRequest" }) as any as S.Schema<ListVrackIpRequest>;
 
 export type ListVrackIpResponseBodyList = Array<string>;
-export const ListVrackIpResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackIpResponseBodyList>;
-
 export type ListVrackIpResponse = ListVrackIpResponseBodyList;
-export const ListVrackIpResponse = ListVrackResponse as any as S.Schema<ListVrackIpResponse>;
+const ListVrackIpResponse = ListVrackResponse as any as S.Schema<ListVrackIpResponse>;
 
 export interface ListVrackIpLoadbalancingRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/ipLoadbalancing", code: 200 })),
@@ -1840,29 +1777,23 @@ export const ListVrackIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackIpLoadbalancingRequest>;
 
 export type ListVrackIpLoadbalancingResponseBodyList = Array<string>;
-export const ListVrackIpLoadbalancingResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackIpLoadbalancingResponseBodyList>;
-
 export type ListVrackIpLoadbalancingResponse = ListVrackIpLoadbalancingResponseBodyList;
-export const ListVrackIpLoadbalancingResponse =
+const ListVrackIpLoadbalancingResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackIpLoadbalancingResponse>;
 
 export interface ListVrackIpv6Request {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
+const ListVrackIpv6Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/ipv6", code: 200 })),
 ).annotate({ identifier: "ListVrackIpv6Request" }) as any as S.Schema<ListVrackIpv6Request>;
 
 export type ListVrackIpv6ResponseBodyList = Array<string>;
-export const ListVrackIpv6ResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackIpv6ResponseBodyList>;
-
 export type ListVrackIpv6Response = ListVrackIpv6ResponseBodyList;
-export const ListVrackIpv6Response = ListVrackResponse as any as S.Schema<ListVrackIpv6Response>;
+const ListVrackIpv6Response = ListVrackResponse as any as S.Schema<ListVrackIpv6Response>;
 
 export interface ListVrackIpv6BridgedSubrangeRequest {
   /** The internal name of your vrack */
@@ -1870,7 +1801,7 @@ export interface ListVrackIpv6BridgedSubrangeRequest {
   /** Your IP v6 block */
   ipv6: string;
 }
-export const ListVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -1882,11 +1813,8 @@ export const ListVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackIpv6BridgedSubrangeRequest>;
 
 export type ListVrackIpv6BridgedSubrangeResponseBodyList = Array<string>;
-export const ListVrackIpv6BridgedSubrangeResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackIpv6BridgedSubrangeResponseBodyList>;
-
 export type ListVrackIpv6BridgedSubrangeResponse = ListVrackIpv6BridgedSubrangeResponseBodyList;
-export const ListVrackIpv6BridgedSubrangeResponse =
+const ListVrackIpv6BridgedSubrangeResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackIpv6BridgedSubrangeResponse>;
 
 export interface ListVrackIpv6RoutedSubrangeRequest {
@@ -1895,7 +1823,7 @@ export interface ListVrackIpv6RoutedSubrangeRequest {
   /** Your IP v6 block */
   ipv6: string;
 }
-export const ListVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -1907,18 +1835,15 @@ export const ListVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackIpv6RoutedSubrangeRequest>;
 
 export type ListVrackIpv6RoutedSubrangeResponseBodyList = Array<string>;
-export const ListVrackIpv6RoutedSubrangeResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackIpv6RoutedSubrangeResponseBodyList>;
-
 export type ListVrackIpv6RoutedSubrangeResponse = ListVrackIpv6RoutedSubrangeResponseBodyList;
-export const ListVrackIpv6RoutedSubrangeResponse =
+const ListVrackIpv6RoutedSubrangeResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackIpv6RoutedSubrangeResponse>;
 
 export interface ListVrackLegacyVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/legacyVrack", code: 200 })),
@@ -1927,18 +1852,15 @@ export const ListVrackLegacyVrackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackLegacyVrackRequest>;
 
 export type ListVrackLegacyVrackResponseBodyList = Array<string>;
-export const ListVrackLegacyVrackResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackLegacyVrackResponseBodyList>;
-
 export type ListVrackLegacyVrackResponse = ListVrackLegacyVrackResponseBodyList;
-export const ListVrackLegacyVrackResponse =
+const ListVrackLegacyVrackResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackLegacyVrackResponse>;
 
 export interface ListVrackOvhCloudConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/ovhCloudConnect", code: 200 })),
@@ -1947,29 +1869,26 @@ export const ListVrackOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackOvhCloudConnectRequest>;
 
 export type ListVrackOvhCloudConnectResponseBodyList = Array<string>;
-export const ListVrackOvhCloudConnectResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackOvhCloudConnectResponseBodyList>;
-
 export type ListVrackOvhCloudConnectResponse = ListVrackOvhCloudConnectResponseBodyList;
-export const ListVrackOvhCloudConnectResponse =
+const ListVrackOvhCloudConnectResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackOvhCloudConnectResponse>;
 
 export interface ListVrackTaskRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/task", code: 200 })),
 ).annotate({ identifier: "ListVrackTaskRequest" }) as any as S.Schema<ListVrackTaskRequest>;
 
 export type ListVrackTaskResponseBodyList = Array<number>;
-export const ListVrackTaskResponseBodyList =
+const ListVrackTaskResponseBodyList =
   CreateVrackChangeContactResponseBodyList as any as S.Schema<ListVrackTaskResponseBodyList>;
 
 export type ListVrackTaskResponse = ListVrackTaskResponseBodyList;
-export const ListVrackTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackTaskResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackTaskResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVrackTaskResponse" }) as any as S.Schema<ListVrackTaskResponse>;
 
@@ -1977,7 +1896,7 @@ export interface ListVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1992,19 +1911,16 @@ export const ListVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*
 }) as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterRequest>;
 
 export type ListVrackVmwareCloudDirectorVirtualDataCenterResponseBodyList = Array<string>;
-export const ListVrackVmwareCloudDirectorVirtualDataCenterResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterResponseBodyList>;
-
 export type ListVrackVmwareCloudDirectorVirtualDataCenterResponse =
   ListVrackVmwareCloudDirectorVirtualDataCenterResponseBodyList;
-export const ListVrackVmwareCloudDirectorVirtualDataCenterResponse =
+const ListVrackVmwareCloudDirectorVirtualDataCenterResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterResponse>;
 
 export interface ListVrackVrackServicesRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const ListVrackVrackServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackVrackServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/vrackServices", code: 200 })),
@@ -2013,11 +1929,8 @@ export const ListVrackVrackServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackVrackServicesRequest>;
 
 export type ListVrackVrackServicesResponseBodyList = Array<string>;
-export const ListVrackVrackServicesResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackVrackServicesResponseBodyList>;
-
 export type ListVrackVrackServicesResponse = ListVrackVrackServicesResponseBodyList;
-export const ListVrackVrackServicesResponse =
+const ListVrackVrackServicesResponse =
   ListVrackCloudProjectResponse as any as S.Schema<ListVrackVrackServicesResponse>;
 
 export interface MoveVrackDedicatedCloudDatacenterRequest {
@@ -2028,7 +1941,7 @@ export interface MoveVrackDedicatedCloudDatacenterRequest {
   /** The internal name of your target vrack */
   targetServiceName: string;
 }
-export const MoveVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     datacenter: S.String.pipe(T.Label()),
@@ -2052,7 +1965,7 @@ export interface PutVrackRequest {
   /** Name of the vRack */
   name?: string;
 }
-export const PutVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -2061,7 +1974,7 @@ export const PutVrackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVrackRequest" }) as any as S.Schema<PutVrackRequest>;
 
 export interface PutVrackResponse {}
-export const PutVrackResponse = IamResourceTagFilterInput as any as S.Schema<PutVrackResponse>;
+const PutVrackResponse = IamResourceTagFilterInput as any as S.Schema<PutVrackResponse>;
 
 export interface PutVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
@@ -2069,7 +1982,7 @@ export interface PutVrackDedicatedConnectRequest {
   /** A name for your dedicatedConnect link */
   name: string;
 }
-export const PutVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2081,9 +1994,7 @@ export const PutVrackDedicatedConnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVrackDedicatedConnectRequest>;
 
 export interface PutVrackDedicatedConnectResponse {}
-export const PutVrackDedicatedConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const PutVrackDedicatedConnectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PutVrackDedicatedConnectResponse",
 }) as any as S.Schema<PutVrackDedicatedConnectResponse>;
 
@@ -2097,7 +2008,7 @@ export interface PutVrackIpv6BridgedSubrangeRequest {
   /** Slaac status */
   slaac?: VrackSlaacEnum | (string & {});
 }
-export const PutVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipv6: S.String.pipe(T.Label()),
@@ -2118,14 +2029,14 @@ export interface TerminateVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-export const TerminateVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vrack/{serviceName}/terminate", code: 200 })),
 ).annotate({ identifier: "TerminateVrackRequest" }) as any as S.Schema<TerminateVrackRequest>;
 
 export type TerminateVrackResponse = string;
-export const TerminateVrackResponse = /*@__PURE__*/ S.suspend(() =>
+const TerminateVrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "TerminateVrackResponse" }) as any as S.Schema<TerminateVrackResponse>;
 

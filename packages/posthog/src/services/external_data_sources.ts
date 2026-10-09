@@ -1402,26 +1402,26 @@ export type ExternalDataSourceTypeEnum =
   | "ExactOnline"
   | "LettrLabs"
   | "GrafanaIRM";
-export const ExternalDataSourceTypeEnum = S.String;
+const ExternalDataSourceTypeEnum = S.String;
 
 /** Connection credentials. Keys depend on source_type. Add a 'schemas' array to pick which tables sync; omit it and every discovered table syncs with default settings. */
 export type CreateExternalDataSourceRequestPayloadMap = { [key: string]: unknown | undefined };
-export const CreateExternalDataSourceRequestPayloadMap = /*@__PURE__*/ S.Record(
+const CreateExternalDataSourceRequestPayloadMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateExternalDataSourceRequestPayloadMap>;
 
 /** * `warehouse` - warehouse * `direct` - direct */
 export type ExternalDataSourceAccessMethodEnum = "warehouse" | "direct";
-export const ExternalDataSourceAccessMethodEnum = S.String;
+const ExternalDataSourceAccessMethodEnum = S.String;
 
 /** * `web` - web * `api` - api * `mcp` - mcp */
 export type ExternalDataSourceCreateCreatedViaEnum = "web" | "api" | "mcp";
-export const ExternalDataSourceCreateCreatedViaEnum = S.String;
+const ExternalDataSourceCreateCreatedViaEnum = S.String;
 
 /** Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the PostHog warehouse only. */
 export type CreateExternalDataSourceRequestDestinationIdsList = Array<string>;
-export const CreateExternalDataSourceRequestDestinationIdsList = /*@__PURE__*/ S.Array(
+const CreateExternalDataSourceRequestDestinationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateExternalDataSourceRequestDestinationIdsList>;
 
@@ -1445,7 +1445,7 @@ export interface CreateExternalDataSourceRequest {
   /** Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the PostHog warehouse only. */
   destination_ids?: CreateExternalDataSourceRequestDestinationIdsList;
 }
-export const CreateExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: S.optional(ExternalDataSourceTypeEnum),
@@ -1467,7 +1467,7 @@ export interface ExternalDataSourceCreateResponse {
   /** ID of the created external data source. */
   id: string;
 }
-export const ExternalDataSourceCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -1479,7 +1479,7 @@ export interface CreateExternalDataSourcesCheckCdcPrerequisiteRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateExternalDataSourcesCheckCdcPrerequisiteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesCheckCdcPrerequisiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1495,7 +1495,7 @@ export const CreateExternalDataSourcesCheckCdcPrerequisiteRequest = /*@__PURE__*
 
 /** Unmet prerequisites, empty when valid is true. */
 export type CdcPrerequisitesResponseErrorsList = Array<string>;
-export const CdcPrerequisitesResponseErrorsList =
+const CdcPrerequisitesResponseErrorsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CdcPrerequisitesResponseErrorsList>;
 
 export interface CdcPrerequisitesResponse {
@@ -1504,7 +1504,7 @@ export interface CdcPrerequisitesResponse {
   /** Unmet prerequisites, empty when valid is true. */
   errors: CdcPrerequisitesResponseErrorsList;
 }
-export const CdcPrerequisitesResponse = /*@__PURE__*/ S.suspend(() =>
+const CdcPrerequisitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
     errors: CdcPrerequisitesResponseErrorsList,
@@ -1513,12 +1513,12 @@ export const CdcPrerequisitesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `web` - web * `api` - api * `mcp` - mcp * `wizard` - wizard * `self_driving` - self_driving */
 export type ExternalDataSourceCreatedViaEnum = "web" | "api" | "mcp" | "wizard" | "self_driving";
-export const ExternalDataSourceCreatedViaEnum = S.String;
+const ExternalDataSourceCreatedViaEnum = S.String;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList =
   Array<string>;
-export const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList =
+const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList>;
@@ -1542,50 +1542,49 @@ export interface CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest 
   auto_sync_schema_patterns?: CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
-      client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      account_id: S.optional(S.String),
-      prefix: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      direct_query_enabled: S.optional(S.Boolean),
-      auto_sync_new_schemas: S.optional(S.Boolean),
-      auto_sync_schema_patterns: S.optional(
-        S.NullOr(
-          CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList,
-        ),
+const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
+    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    account_id: S.optional(S.String),
+    prefix: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    direct_query_enabled: S.optional(S.Boolean),
+    auto_sync_new_schemas: S.optional(S.Boolean),
+    auto_sync_schema_patterns: S.optional(
+      S.NullOr(
+        CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList,
       ),
-      job_inputs: S.optional(S.Unknown),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/external_data_sources/{id}/check_cdc_prerequisites_for_source/",
-        code: 200,
-      }),
     ),
-  ).annotate({
-    identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest",
-  }) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest>;
+    job_inputs: S.optional(S.Unknown),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/external_data_sources/{id}/check_cdc_prerequisites_for_source/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest",
+}) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest>;
 
 export interface CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse {}
-export const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse",
-  }) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse>;
+const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse",
+}) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse>;
 
 /** Values of the sibling fields named by the picker's `credentialFields`. Any other key is rejected. */
 export type CreateExternalDataSourcesCredentialAccountRequestCredentialsMap = {
   [key: string]: string | undefined;
 };
-export const CreateExternalDataSourcesCredentialAccountRequestCredentialsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequestCredentialsMap>;
+const CreateExternalDataSourcesCredentialAccountRequestCredentialsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequestCredentialsMap>;
 
 export interface CreateExternalDataSourcesCredentialAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1597,7 +1596,7 @@ export interface CreateExternalDataSourcesCredentialAccountRequest {
   /** Vendor API version the source is pinned to. Defaults to the source's current default. */
   api_version?: string | null;
 }
-export const CreateExternalDataSourcesCredentialAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesCredentialAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: S.String,
@@ -1616,7 +1615,7 @@ export const CreateExternalDataSourcesCredentialAccountRequest = /*@__PURE__*/ S
 
 /** Short status chips for the account, e.g. ['Active'] or ['Pause']. */
 export type IntegrationAccountBadgesList = Array<string>;
-export const IntegrationAccountBadgesList =
+const IntegrationAccountBadgesList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<IntegrationAccountBadgesList>;
 
 /** A selectable account/resource exposed by an OAuth integration, in the shared shape every ad platform produces (see ``IntegrationAccount`` in the data-imports common module). One serializer and one frontend selector work across all platforms. */
@@ -1634,7 +1633,7 @@ export interface IntegrationAccount {
   /** Extra identifier shown in parentheses and searchable, e.g. the alphanumeric account number. */
   secondary_text: string | null;
 }
-export const IntegrationAccount = /*@__PURE__*/ S.suspend(() =>
+const IntegrationAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     display_name: S.String,
@@ -1647,7 +1646,7 @@ export const IntegrationAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** All accounts the connected integration can access. */
 export type IntegrationAccountsResponseAccountsList = Array<IntegrationAccount>;
-export const IntegrationAccountsResponseAccountsList = /*@__PURE__*/ S.Array(
+const IntegrationAccountsResponseAccountsList = /*@__PURE__*/ S.Array(
   IntegrationAccount,
 ) as any as S.Schema<IntegrationAccountsResponseAccountsList>;
 
@@ -1655,7 +1654,7 @@ export interface IntegrationAccountsResponse {
   /** All accounts the connected integration can access. */
   accounts: IntegrationAccountsResponseAccountsList;
 }
-export const IntegrationAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: IntegrationAccountsResponseAccountsList,
   }),
@@ -1669,7 +1668,7 @@ export interface CreateExternalDataSourcesDatabaseSchemaRequest {
   /** The source type to validate against. * `Ashby` - Ashby * `Supabase` - Supabase * `CustomerIO` - CustomerIO * `Github` - Github * `Stripe` - Stripe * `Hubspot` - Hubspot * `Postgres` - Postgres * `Zendesk` - Zendesk * `Snowflake` - Snowflake * `Salesforce` - Salesforce * `MySQL` - MySQL * `MongoDB` - MongoDB * `MSSQL` - MSSQL * `Vitally` - Vitally * `BigQuery` - BigQuery * `Chargebee` - Chargebee * `Clerk` - Clerk * `GoogleAds` - GoogleAds * `GoogleSearchConsole` - GoogleSearchConsole * `TemporalIO` - TemporalIO * `DoIt` - DoIt * `GoogleSheets` - GoogleSheets * `MetaAds` - MetaAds * `Klaviyo` - Klaviyo * `Mailchimp` - Mailchimp * `Braze` - Braze * `Mailjet` - Mailjet * `Redshift` - Redshift * `Polar` - Polar * `RevenueCat` - RevenueCat * `LinkedinAds` - LinkedinAds * `RedditAds` - RedditAds * `TikTokAds` - TikTokAds * `BingAds` - BingAds * `Shopify` - Shopify * `Attio` - Attio * `SnapchatAds` - SnapchatAds * `Linear` - Linear * `Intercom` - Intercom * `Amplitude` - Amplitude * `Mixpanel` - Mixpanel * `Jira` - Jira * `ActiveCampaign` - ActiveCampaign * `Marketo` - Marketo * `Adjust` - Adjust * `AppsFlyer` - AppsFlyer * `Freshdesk` - Freshdesk * `GoogleAnalytics` - GoogleAnalytics * `Pipedrive` - Pipedrive * `SendGrid` - SendGrid * `Slack` - Slack * `PagerDuty` - PagerDuty * `Asana` - Asana * `Notion` - Notion * `Airtable` - Airtable * `Greenhouse` - Greenhouse * `BambooHR` - BambooHR * `Lever` - Lever * `GitLab` - GitLab * `Datadog` - Datadog * `Sentry` - Sentry * `Pendo` - Pendo * `FullStory` - FullStory * `AmazonAds` - AmazonAds * `PinterestAds` - PinterestAds * `AppleSearchAds` - AppleSearchAds * `QuickBooks` - QuickBooks * `Xero` - Xero * `NetSuite` - NetSuite * `WooCommerce` - WooCommerce * `BigCommerce` - BigCommerce * `PayPal` - PayPal * `Square` - Square * `Zoom` - Zoom * `Trello` - Trello * `Monday` - Monday * `ClickUp` - ClickUp * `Confluence` - Confluence * `Recurly` - Recurly * `SalesLoft` - SalesLoft * `Outreach` - Outreach * `Gong` - Gong * `Calendly` - Calendly * `Typeform` - Typeform * `Iterable` - Iterable * `ZohoCRM` - ZohoCRM * `Close` - Close * `Oracle` - Oracle * `DynamoDB` - DynamoDB * `Elasticsearch` - Elasticsearch * `Kafka` - Kafka * `LaunchDarkly` - LaunchDarkly * `Braintree` - Braintree * `Recharge` - Recharge * `HelpScout` - HelpScout * `Gorgias` - Gorgias * `Instagram` - Instagram * `YouTubeAnalytics` - YouTubeAnalytics * `FacebookPages` - FacebookPages * `TwitterAds` - TwitterAds * `Workday` - Workday * `ServiceNow` - ServiceNow * `Pardot` - Pardot * `Copper` - Copper * `Front` - Front * `ChartMogul` - ChartMogul * `Zuora` - Zuora * `Paddle` - Paddle * `CircleCI` - CircleCI * `CockroachDB` - CockroachDB * `Firebase` - Firebase * `AzureBlob` - AzureBlob * `GoogleDrive` - GoogleDrive * `OneDrive` - OneDrive * `SharePoint` - SharePoint * `Box` - Box * `SFTP` - SFTP * `MicrosoftTeams` - MicrosoftTeams * `Aircall` - Aircall * `Webflow` - Webflow * `Okta` - Okta * `Auth0` - Auth0 * `Productboard` - Productboard * `Smartsheet` - Smartsheet * `Wrike` - Wrike * `Plaid` - Plaid * `SurveyMonkey` - SurveyMonkey * `Eventbrite` - Eventbrite * `RingCentral` - RingCentral * `Twilio` - Twilio * `Freshsales` - Freshsales * `Shortcut` - Shortcut * `ConvertKit` - ConvertKit * `Drip` - Drip * `CampaignMonitor` - CampaignMonitor * `MailerLite` - MailerLite * `Omnisend` - Omnisend * `Brevo` - Brevo * `Postmark` - Postmark * `Granola` - Granola * `BuildBetter` - BuildBetter * `Convex` - Convex * `ClickHouse` - ClickHouse * `Plain` - Plain * `Resend` - Resend * `PgAnalyze` - PgAnalyze * `WorkOS` - WorkOS * `AmazonS3` - AmazonS3 * `GoogleCloudStorage` - GoogleCloudStorage * `Databricks` - Databricks * `Dynamics365` - Dynamics365 * `SalesforceMarketingCloud` - SalesforceMarketingCloud * `Db2` - Db2 * `Heap` - Heap * `AdobeAnalytics` - AdobeAnalytics * `Matomo` - Matomo * `Optimizely` - Optimizely * `Adyen` - Adyen * `GoCardless` - GoCardless * `Mollie` - Mollie * `CheckoutCom` - CheckoutCom * `Branch` - Branch * `Criteo` - Criteo * `Outbrain` - Outbrain * `Taboola` - Taboola * `AdRoll` - AdRoll * `DisplayVideo360` - DisplayVideo360 * `GoogleAdManager` - GoogleAdManager * `CampaignManager360` - CampaignManager360 * `SearchAds360` - SearchAds360 * `AdobeCommerce` - AdobeCommerce * `AmazonSellingPartner` - AmazonSellingPartner * `Ebay` - Ebay * `Commercetools` - Commercetools * `LightspeedRetail` - LightspeedRetail * `Shipmail` - Shipmail * `ShipStation` - ShipStation * `ConstantContact` - ConstantContact * `Mailgun` - Mailgun * `Eloqua` - Eloqua * `Sailthru` - Sailthru * `Ortto` - Ortto * `Attentive` - Attentive * `Kustomer` - Kustomer * `Dixa` - Dixa * `Gladly` - Gladly * `Qualtrics` - Qualtrics * `AzureDevOps` - AzureDevOps * `RoktAds` - RoktAds * `Rollbar` - Rollbar * `Opsgenie` - Opsgenie * `IncidentIo` - IncidentIo * `Pingdom` - Pingdom * `Cloudflare` - Cloudflare * `CosmosDB` - CosmosDB * `PlanetScaleMySQL` - PlanetScaleMySQL * `PlanetScalePostgres` - PlanetScalePostgres * `SapHana` - SapHana * `Rippling` - Rippling * `HiBob` - HiBob * `Personio` - Personio * `Deel` - Deel * `AdpWorkforceNow` - AdpWorkforceNow * `Paylocity` - Paylocity * `Gusto` - Gusto * `CultureAmp` - CultureAmp * `Lattice` - Lattice * `SageIntacct` - SageIntacct * `FreshBooks` - FreshBooks * `Expensify` - Expensify * `Ramp` - Ramp * `Brex` - Brex * `Coupa` - Coupa * `SapConcur` - SapConcur * `Apollo` - Apollo * `Crunchbase` - Crunchbase * `ZoomInfo` - ZoomInfo * `Clari` - Clari * `Chorus` - Chorus * `Coda` - Coda * `Guru` - Guru * `Dropbox` - Dropbox * `Docusign` - Docusign * `PandaDoc` - PandaDoc * `SapErp` - SapErp * `SapSuccessFactors` - SapSuccessFactors * `OracleEbs` - OracleEbs * `OracleFusion` - OracleFusion * `AmazonSNS` - AmazonSNS * `AmazonEventBridge` - AmazonEventBridge * `AmazonSQS` - AmazonSQS * `AmazonKinesis` - AmazonKinesis * `AmazonCloudWatch` - AmazonCloudWatch * `OpenAIAds` - OpenAIAds * `OneHundredMs` - OneHundredMs * `SevenShifts` - SevenShifts * `AcuityScheduling` - AcuityScheduling * `AgileCRM` - AgileCRM * `Aha` - Aha * `Airbyte` - Airbyte * `Akeneo` - Akeneo * `Algolia` - Algolia * `AlpacaBrokerAPI` - AlpacaBrokerAPI * `ApifyDataset` - ApifyDataset * `Appcues` - Appcues * `Appfigures` - Appfigures * `Appfollow` - Appfollow * `Apptivo` - Apptivo * `AssemblyAI` - AssemblyAI * `Awin` - Awin * `AwsCloudTrail` - AwsCloudTrail * `AzureTableStorage` - AzureTableStorage * `Babelforce` - Babelforce * `Basecamp` - Basecamp * `Beamer` - Beamer * `BigMailer` - BigMailer * `Bluetally` - Bluetally * `BoldSign` - BoldSign * `BreezyHR` - BreezyHR * `Bugsnag` - Bugsnag * `Buildkite` - Buildkite * `Bunny` - Bunny * `Buzzsprout` - Buzzsprout * `CalCom` - CalCom * `CallRail` - CallRail * `Campayn` - Campayn * `Canny` - Canny * `CapsuleCRM` - CapsuleCRM * `CaptainData` - CaptainData * `CartCom` - CartCom * `CastorEDC` - CastorEDC * `Chameleon` - Chameleon * `Chargedesk` - Chargedesk * `Chargify` - Chargify * `Chift` - Chift * `Churnkey` - Churnkey * `Cin7` - Cin7 * `CiscoMeraki` - CiscoMeraki * `Clazar` - Clazar * `Clockify` - Clockify * `Clockodo` - Clockodo * `Cloudbeds` - Cloudbeds * `Coassemble` - Coassemble * `Codefresh` - Codefresh * `Concord` - Concord * `ConfigCat` - ConfigCat * `Couchbase` - Couchbase * `Curve` - Curve * `Customerly` - Customerly * `Datascope` - Datascope * `Dbt` - Dbt * `Demodesk` - Demodesk * `Deputy` - Deputy * `DevinAI` - DevinAI * `Docuseal` - Docuseal * `Dolibarr` - Dolibarr * `Dremio` - Dremio * `DropboxSign` - DropboxSign * `Dwolla` - Dwolla * `EConomic` - EConomic * `Easypost` - Easypost * `Easypromos` - Easypromos * `Elasticemail` - Elasticemail * `EmailOctopus` - EmailOctopus * `EmploymentHero` - EmploymentHero * `Encharge` - Encharge * `Eventee` - Eventee * `Eventzilla` - Eventzilla * `Everhour` - Everhour * `EZOfficeInventory` - EZOfficeInventory * `Factorial` - Factorial * `Fastbill` - Fastbill * `Fastly` - Fastly * `Fauna` - Fauna * `Feishu` - Feishu * `Fillout` - Fillout * `Finage` - Finage * `Firebolt` - Firebolt * `FireHydrant` - FireHydrant * `Fleetio` - Fleetio * `Flexmail` - Flexmail * `Flexport` - Flexport * `FloatApp` - FloatApp * `Flowlu` - Flowlu * `Formbricks` - Formbricks * `Framer` - Framer * `FreeAgent` - FreeAgent * `Freightview` - Freightview * `Freshcaller` - Freshcaller * `Freshchat` - Freshchat * `Freshservice` - Freshservice * `Fulcrum` - Fulcrum * `GainsightCs` - GainsightCs * `GainsightPx` - GainsightPx * `GitBook` - GitBook * `Glassfrog` - Glassfrog * `Goldcast` - Goldcast * `GoLogin` - GoLogin * `Grafana` - Grafana * `GreytHr` - GreytHr * `Gridly` - Gridly * `Harness` - Harness * `Height` - Height * `Hellobaton` - Hellobaton * `HighLevel` - HighLevel * `HoorayHR` - HoorayHR * `Hubplanner` - Hubplanner * `Humanitix` - Humanitix * `Huntr` - Huntr * `Inflowinventory` - Inflowinventory * `InforNexus` - InforNexus * `Insightful` - Insightful * `Insightly` - Insightly * `Instantly` - Instantly * `Instatus` - Instatus * `Intruder` - Intruder * `Invoiced` - Invoiced * `Invoiceninja` - Invoiceninja * `JamfPro` - JamfPro * `JobNimbus` - JobNimbus * `Jotform` - Jotform * `JudgeMeReviews` - JudgeMeReviews * `JustCall` - JustCall * `JustSift` - JustSift * `K6Cloud` - K6Cloud * `Katana` - Katana * `Keka` - Keka * `Kisi` - Kisi * `Kissmetrics` - Kissmetrics * `Klarna` - Klarna * `Klaus` - Klaus * `Lago` - Lago * `Leadfeeder` - Leadfeeder * `Lemlist` - Lemlist * `LessAnnoyingCRM` - LessAnnoyingCRM * `LinkedinPages` - LinkedinPages * `Linkrunner` - Linkrunner * `Linnworks` - Linnworks * `Lob` - Lob * `Lokalise` - Lokalise * `Looker` - Looker * `Luma` - Luma * `MailerSend` - MailerSend * `Mailosaur` - Mailosaur * `Mailtrap` - Mailtrap * `Mantle` - Mantle * `Mention` - Mention * `MercadoAds` - MercadoAds * `Merge` - Merge * `Metabase` - Metabase * `Metricool` - Metricool * `MicrosoftDataverse` - MicrosoftDataverse * `MicrosoftEntraId` - MicrosoftEntraId * `MicrosoftLists` - MicrosoftLists * `Miro` - Miro * `Missive` - Missive * `MixMax` - MixMax * `Mode` - Mode * `Mux` - Mux * `MyHours` - MyHours * `N8n` - N8n * `Navan` - Navan * `NebiusAI` - NebiusAI * `Nexiopay` - Nexiopay * `NinjaOneRMM` - NinjaOneRMM * `NoCRM` - NoCRM * `NorthpassLMS` - NorthpassLMS * `Nutshell` - Nutshell * `Nylas` - Nylas * `Oncehub` - Oncehub * `Onepagecrm` - Onepagecrm * `OneSignal` - OneSignal * `Onfleet` - Onfleet * `OpinionStage` - OpinionStage * `OPUSWatch` - OPUSWatch * `Orb` - Orb * `Orbit` - Orbit * `Oura` - Oura * `Oveit` - Oveit * `PabblySubscriptionsBilling` - PabblySubscriptionsBilling * `Paperform` - Paperform * `Papersign` - Papersign * `Partnerize` - Partnerize * `PartnerStack` - PartnerStack * `PayFit` - PayFit * `Paystack` - Paystack * `Pennylane` - Pennylane * `Perk` - Perk * `PersistIq` - PersistIq * `Persona` - Persona * `Phyllo` - Phyllo * `Picqer` - Picqer * `Pipeliner` - Pipeliner * `PivotalTracker` - PivotalTracker * `Piwik` - Piwik * `Planhat` - Planhat * `Plausible` - Plausible * `Poplar` - Poplar * `PrestaShop` - PrestaShop * `Pretix` - Pretix * `Primetric` - Primetric * `Printavo` - Printavo * `Printify` - Printify * `Productive` - Productive * `Pylon` - Pylon * `Qonto` - Qonto * `Qualaroo` - Qualaroo * `Railz` - Railz * `RDStationMarketing` - RDStationMarketing * `Recruitee` - Recruitee * `Reddit` - Reddit * `ReferralHero` - ReferralHero * `RentCast` - RentCast * `Repairshopr` - Repairshopr * `ReplyIo` - ReplyIo * `RetailExpress` - RetailExpress * `Retently` - Retently * `RevolutMerchant` - RevolutMerchant * `RocketChat` - RocketChat * `Rocketlane` - Rocketlane * `Rootly` - Rootly * `Ruddr` - Ruddr * `SafetyCulture` - SafetyCulture * `SageHR` - SageHR * `Salesflare` - Salesflare * `SAPFieldglass` - SAPFieldglass * `SavvyCal` - SavvyCal * `Secoda` - Secoda * `Segment` - Segment * `Sendowl` - Sendowl * `SendPulse` - SendPulse * `Senseforce` - Senseforce * `Serpstat` - Serpstat * `Sharetribe` - Sharetribe * `Shippo` - Shippo * `ShopWired` - ShopWired * `Shortio` - Shortio * `Shutterstock` - Shutterstock * `SigmaComputing` - SigmaComputing * `SignNow` - SignNow * `SimpleCast` - SimpleCast * `Simplesat` - Simplesat * `Smaily` - Smaily * `SmartEngage` - SmartEngage * `Smartreach` - Smartreach * `Smartwaiver` - Smartwaiver * `SolarwindsServiceDesk` - SolarwindsServiceDesk * `SonarCloud` - SonarCloud * `SparkPost` - SparkPost * `SplitIo` - SplitIo * `SpotifyAds` - SpotifyAds * `SpotlerCRM` - SpotlerCRM * `Squarespace` - Squarespace * `Statsig` - Statsig * `Statuspage` - Statuspage * `Stigg` - Stigg * `Strava` - Strava * `SurveySparrow` - SurveySparrow * `Survicate` - Survicate * `Svix` - Svix * `Systeme` - Systeme * `Tavus` - Tavus * `Teamtailor` - Teamtailor * `Teamwork` - Teamwork * `Tempo` - Tempo * `Testrail` - Testrail * `Thinkific` - Thinkific * `ThinkificCourses` - ThinkificCourses * `ThriveLearning` - ThriveLearning * `Ticketmaster` - Ticketmaster * `TicketTailor` - TicketTailor * `TickTick` - TickTick * `Timely` - Timely * `Tinyemail` - Tinyemail * `Todoist` - Todoist * `Toggl` - Toggl * `TrackPMS` - TrackPMS * `Tremendous` - Tremendous * `TrustPilot` - TrustPilot * `Twitter` - Twitter * `TyntecSMS` - TyntecSMS * `Unleash` - Unleash * `UpPromote` - UpPromote * `Uptick` - Uptick * `Uservoice` - Uservoice * `Vantage` - Vantage * `Veeqo` - Veeqo * `Vercel` - Vercel * `VismaEconomic` - VismaEconomic * `VWO` - VWO * `Waiteraid` - Waiteraid * `Wasabi` - Wasabi * `WhenIWork` - WhenIWork * `Wordpress` - Wordpress * `Workable` - Workable * `Workflowmax` - Workflowmax * `Workramp` - Workramp * `Wufoo` - Wufoo * `Xsolla` - Xsolla * `YandexMetrica` - YandexMetrica * `Yotpo` - Yotpo * `Ynab` - Ynab * `Younium` - Younium * `YouSign` - YouSign * `YoutubeData` - YoutubeData * `ZapierSupportedStorage` - ZapierSupportedStorage * `ZapSign` - ZapSign * `ZendeskSell` - ZendeskSell * `ZendeskSunshine` - ZendeskSunshine * `Zenefits` - Zenefits * `Zenloop` - Zenloop * `ZohoAnalytics` - ZohoAnalytics * `ZohoBigin` - ZohoBigin * `ZohoBilling` - ZohoBilling * `ZohoBooks` - ZohoBooks * `ZohoCampaign` - ZohoCampaign * `ZohoDesk` - ZohoDesk * `ZohoExpense` - ZohoExpense * `ZohoInventory` - ZohoInventory * `ZohoInvoice` - ZohoInvoice * `ZonkaFeedback` - ZonkaFeedback * `AlphaVantage` - AlphaVantage * `Aviationstack` - Aviationstack * `Bitly` - Bitly * `Blogger` - Blogger * `Breezometer` - Breezometer * `CareQualityCommission` - CareQualityCommission * `Cimis` - Cimis * `CoinApi` - CoinApi * `CoinGecko` - CoinGecko * `CoinMarketCap` - CoinMarketCap * `DingConnect` - DingConnect * `Dockerhub` - Dockerhub * `ExchangeRatesApi` - ExchangeRatesApi * `FinancialModelling` - FinancialModelling * `Finnhub` - Finnhub * `Finnworlds` - Finnworlds * `Giphy` - Giphy * `Gmail` - Gmail * `GNews` - GNews * `GoogleCalendar` - GoogleCalendar * `GoogleClassroom` - GoogleClassroom * `GoogleDirectory` - GoogleDirectory * `GoogleForms` - GoogleForms * `GooglePageSpeedInsights` - GooglePageSpeedInsights * `GoogleTasks` - GoogleTasks * `GoogleWebfonts` - GoogleWebfonts * `GoogleWorkspaceAdminReports` - GoogleWorkspaceAdminReports * `HuggingFace` - HuggingFace * `IlluminaBasespace` - IlluminaBasespace * `Imagga` - Imagga * `Interzoid` - Interzoid * `IP2Whois` - IP2Whois * `KYVE` - KYVE * `Marketstack` - Marketstack * `Mendeley` - Mendeley * `Nasa` - Nasa * `NewYorkTimes` - NewYorkTimes * `NewsApi` - NewsApi * `NewsData` - NewsData * `OpenDataDc` - OpenDataDc * `OpenExchangeRates` - OpenExchangeRates * `OpenAQ` - OpenAQ * `OpenFDA` - OpenFDA * `OpenWeather` - OpenWeather * `Outlook` - Outlook * `Perigon` - Perigon * `Pexels` - Pexels * `Pocket` - Pocket * `Polygon` - Polygon * `PyPI` - PyPI * `Recreation` - Recreation * `RKICovid` - RKICovid * `Rss` - Rss * `SimFin` - SimFin * `StockData` - StockData * `Guardian` - Guardian * `TMDb` - TMDb * `TVMaze` - TVMaze * `TwelveData` - TwelveData * `Ubidots` - Ubidots * `USCensus` - USCensus * `Watchmode` - Watchmode * `WikipediaPageviews` - WikipediaPageviews * `YahooFinance` - YahooFinance * `Clarifai` - Clarifai * `Adapty` - Adapty * `Braintrust` - Braintrust * `StreamElements` - StreamElements * `Streamlabs` - Streamlabs * `Datorama` - Datorama * `Ahrefs` - Ahrefs * `Lightfield` - Lightfield * `Appstack` - Appstack * `Razorpay` - Razorpay * `Neon` - Neon * `NewRelic` - NewRelic * `Custom` - Custom * `Tile38` - Tile38 * `Chatwoot` - Chatwoot * `Sanity` - Sanity * `Metronome` - Metronome * `Jobber` - Jobber * `Knock` - Knock * `Leexi` - Leexi * `RB2B` - RB2B * `Superwall` - Superwall * `Liana` - Liana * `TawkTo` - TawkTo * `Hightouch` - Hightouch * `LemonSqueezy` - LemonSqueezy * `Ikas` - Ikas * `Talkwalker` - Talkwalker * `NextdoorAds` - NextdoorAds * `AppLovin` - AppLovin * `Baserow` - Baserow * `Plunk` - Plunk * `Dub` - Dub * `AirOps` - AirOps * `Podium` - Podium * `Loops` - Loops * `Redis` - Redis * `Mercury` - Mercury * `Gojiberry` - Gojiberry * `Teachable` - Teachable * `PeecAI` - PeecAI * `Healthchecks` - Healthchecks * `Impact` - Impact * `AikidoSecurity` - AikidoSecurity * `Alguna` - Alguna * `Anthropic` - Anthropic * `Appwrite` - Appwrite * `BlandAI` - BlandAI * `BrowseAI` - BrowseAI * `BrowserUse` - BrowserUse * `ChartHop` - ChartHop * `Cody` - Cody * `Cursor` - Cursor * `Decagon` - Decagon * `Deepgram` - Deepgram * `ElevenLabs` - ElevenLabs * `Harvey` - Harvey * `Hyperspell` - Hyperspell * `Langfuse` - Langfuse * `LingoDev` - LingoDev * `M3ter` - M3ter * `Maxio` - Maxio * `Metorial` - Metorial * `OpenRouter` - OpenRouter * `TogetherAI` - TogetherAI * `Vapi` - Vapi * `Vespa` - Vespa * `Writesonic` - Writesonic * `Aiven` - Aiven * `Aviator` - Aviator * `Backblaze` - Backblaze * `Baseten` - Baseten * `Browserbase` - Browserbase * `Cohere` - Cohere * `DenoDeploy` - DenoDeploy * `DigitalOcean` - DigitalOcean * `E2B` - E2B * `Fintoc` - Fintoc * `Firecrawl` - Firecrawl * `FireworksAI` - FireworksAI * `FlyIo` - FlyIo * `Groq` - Groq * `GrowthBook` - GrowthBook * `Gumloop` - Gumloop * `Hatchet` - Hatchet * `Helicone` - Helicone * `Heroku` - Heroku * `Hetzner` - Hetzner * `HeyGen` - HeyGen * `Infisical` - Infisical * `Inngest` - Inngest * `KapaAI` - KapaAI * `Kernel` - Kernel * `Koyeb` - Koyeb * `LambdaLabs` - LambdaLabs * `LangSmith` - LangSmith * `Linode` - Linode * `LlamaCloud` - LlamaCloud * `Mem0` - Mem0 * `Metriport` - Metriport * `Mintlify` - Mintlify * `MistralAI` - MistralAI * `Mono` - Mono * `Netlify` - Netlify * `Northflank` - Northflank * `OpenAI` - OpenAI * `Pinecone` - Pinecone * `PlatformSh` - PlatformSh * `PromptingCompany` - PromptingCompany * `Qdrant` - Qdrant * `Render` - Render * `Replicate` - Replicate * `RetellAI` - RetellAI * `Roark` - Roark * `RunPod` - RunPod * `ScaleAI` - ScaleAI * `Scaleway` - Scaleway * `SigNoz` - SigNoz * `Sim` - Sim * `Skyvern` - Skyvern * `Slash` - Slash * `Synthesia` - Synthesia * `Telli` - Telli * `TerraApi` - TerraApi * `TriggerDev` - TriggerDev * `Turso` - Turso * `Singular` - Singular * `Swonkie` - Swonkie * `TwelveLabs` - TwelveLabs * `Twenty` - Twenty * `Unstructured` - Unstructured * `Upstash` - Upstash * `Vellum` - Vellum * `Vultr` - Vultr * `Windmill` - Windmill * `Zep` - Zep * `Hex` - Hex * `Sumsub` - Sumsub * `GoogleChat` - GoogleChat * `Kickscale` - Kickscale * `Zellify` - Zellify * `RudderStack` - RudderStack * `DodoPayments` - DodoPayments * `Salestrics` - Salestrics * `Doppler` - Doppler * `Usersnap` - Usersnap * `Asknicely` - Asknicely * `Featurebase` - Featurebase * `Frill` - Frill * `Bettermode` - Bettermode * `Dynatrace` - Dynatrace * `Honeycomb` - Honeycomb * `SumoLogic` - SumoLogic * `LogzIO` - LogzIO * `Coralogix` - Coralogix * `BetterStack` - BetterStack * `Raygun` - Raygun * `Honeybadger` - Honeybadger * `Airbrake` - Airbrake * `Appsignal` - Appsignal * `Appdynamics` - Appdynamics * `Instana` - Instana * `SplunkObservabilityCloud` - SplunkObservabilityCloud * `Uptimerobot` - Uptimerobot * `Statuscake` - Statuscake * `Tailscale` - Tailscale * `Flagsmith` - Flagsmith * `Xmatters` - Xmatters * `Squadcast` - Squadcast * `Zenduty` - Zenduty * `Cronitor` - Cronitor * `Jenkins` - Jenkins * `Bitbucket` - Bitbucket * `Gitea` - Gitea * `Teamcity` - Teamcity * `TravisCI` - TravisCI * `Semaphore` - Semaphore * `CircleciInsights` - CircleciInsights * `OctopusDeploy` - OctopusDeploy * `Sourcegraph` - Sourcegraph * `Bitrise` - Bitrise * `Gerrit` - Gerrit * `TerraformCloud` - TerraformCloud * `PulumiCloud` - PulumiCloud * `Spacelift` - Spacelift * `Railway` - Railway * `Argocd` - Argocd * `PrefectCloud` - PrefectCloud * `DagsterCloud` - DagsterCloud * `Env0` - Env0 * `Kubecost` - Kubecost * `Snyk` - Snyk * `Semgrep` - Semgrep * `Veracode` - Veracode * `Checkmarx` - Checkmarx * `Gitguardian` - Gitguardian * `QualysVmdr` - QualysVmdr * `Rapid7Insightvm` - Rapid7Insightvm * `TenableVulnerabilityManagement` - TenableVulnerabilityManagement * `Sentinelone` - Sentinelone * `Lacework` - Lacework * `OrcaSecurity` - OrcaSecurity * `Drata` - Drata * `Secureframe` - Secureframe * `CiscoDuo` - CiscoDuo * `Jumpcloud` - Jumpcloud * `OnePassword` - OnePassword * `Stytch` - Stytch * `Sonarqube` - Sonarqube * `Codecov` - Codecov * `Coveralls` - Coveralls * `Codacy` - Codacy * `Deepsource` - Deepsource * `Linearb` - Linearb * `Jellyfish` - Jellyfish * `Swarmia` - Swarmia * `Packagist` - Packagist * `Nuget` - Nuget * `CratesIO` - CratesIO * `SonatypeNexus` - SonatypeNexus * `JfrogArtifactory` - JfrogArtifactory * `Snowplow` - Snowplow * `WeightsAndBiases` - WeightsAndBiases * `MonteCarlo` - MonteCarlo * `Metaplane` - Metaplane * `Datahub` - Datahub * `ClickhouseCloud` - ClickhouseCloud * `ConfluentCloud` - ConfluentCloud * `KongKonnect` - KongKonnect * `Kandji` - Kandji * `Automox` - Automox * `Autumn` - Autumn * `GetStream` - GetStream * `Octolens` - Octolens * `Kajabi` - Kajabi * `Shopware` - Shopware * `Dubsado` - Dubsado * `Campfire` - Campfire * `PromptWatch` - PromptWatch * `Crisp` - Crisp * `Kommo` - Kommo * `Axiom` - Axiom * `Plivo` - Plivo * `DataForSEO` - DataForSEO * `Sleekplan` - Sleekplan * `AbTasty` - AbTasty * `Ably` - Ably * `AbnormalSecurity` - AbnormalSecurity * `Acast` - Acast * `Acculynx` - Acculynx * `Actionstep` - Actionstep * `Aftership` - Aftership * `AhaIdeas` - AhaIdeas * `AkamaiReporting` - AkamaiReporting * `Alation` - Alation * `Alegra` - Alegra * `Allegro` - Allegro * `AnodotCost` - AnodotCost * `Anomalo` - Anomalo * `Apaleo` - Apaleo * `Apitally` - Apitally * `AppStoreConnect` - AppStoreConnect * `Appdirect` - Appdirect * `Appfolio` - Appfolio * `Arxiv` - Arxiv * `Asaas` - Asaas * `Astronomer` - Astronomer * `Athenahealth` - Athenahealth * `Atlan` - Atlan * `AutodeskConstructionCloud` - AutodeskConstructionCloud * `Avalara` - Avalara * `AwsAthena` - AwsAthena * `AwsBatch` - AwsBatch * `AwsBudgets` - AwsBudgets * `AwsCloudformation` - AwsCloudformation * `AwsComputeOptimizer` - AwsComputeOptimizer * `AwsConfig` - AwsConfig * `AwsConnect` - AwsConnect * `AwsCostAndUsageReport` - AwsCostAndUsageReport * `AwsCostAnomalyDetection` - AwsCostAnomalyDetection * `AwsCostExplorer` - AwsCostExplorer * `AwsGlueDataCatalog` - AwsGlueDataCatalog * `AwsGuardduty` - AwsGuardduty * `AwsHealth` - AwsHealth * `AwsIamAccessAnalyzer` - AwsIamAccessAnalyzer * `AwsInspector` - AwsInspector * `AwsMacie` - AwsMacie * `AwsOrganizations` - AwsOrganizations * `AwsRdsPerformanceInsights` - AwsRdsPerformanceInsights * `AwsSagemaker` - AwsSagemaker * `AwsSavingsPlans` - AwsSavingsPlans * `AwsSecurityHub` - AwsSecurityHub * `AwsSes` - AwsSes * `AwsStepFunctions` - AwsStepFunctions * `AwsSupport` - AwsSupport * `AwsSystemsManager` - AwsSystemsManager * `AwsTrustedAdvisor` - AwsTrustedAdvisor * `AwsWaf` - AwsWaf * `AwsXray` - AwsXray * `AzureActivityLog` - AzureActivityLog * `AzureAdvisor` - AzureAdvisor * `AzureApiManagement` - AzureApiManagement * `AzureApplicationInsights` - AzureApplicationInsights * `AzureCostManagement` - AzureCostManagement * `AzureDataExplorer` - AzureDataExplorer * `AzureDataFactory` - AzureDataFactory * `AzureLogAnalytics` - AzureLogAnalytics * `AzureMonitorAlerts` - AzureMonitorAlerts * `AzureMonitorMetrics` - AzureMonitorMetrics * `AzureOpenaiUsage` - AzureOpenaiUsage * `AzurePolicyInsights` - AzurePolicyInsights * `AzureReservations` - AzureReservations * `AzureResourceGraph` - AzureResourceGraph * `AzureResourceHealth` - AzureResourceHealth * `AzureServiceHealth` - AzureServiceHealth * `AzureSynapse` - AzureSynapse * `BackMarket` - BackMarket * `Beehiiv` - Beehiiv * `Bigeye` - Bigeye * `BillCom` - BillCom * `Billomat` - Billomat * `BingWebmasterTools` - BingWebmasterTools * `Bitwarden` - Bitwarden * `BlackbaudRaisersEdgeNxt` - BlackbaudRaisersEdgeNxt * `BlackboardLearn` - BlackboardLearn * `Bling` - Bling * `Bloomerang` - Bloomerang * `Bluesky` - Bluesky * `BolRetailer` - BolRetailer * `Boulevard` - Boulevard * `Buffer` - Buffer * `Bugherd` - Bugherd * `Buildium` - Buildium * `Buttondown` - Buttondown * `BuyMeACoffee` - BuyMeACoffee * `Calendarific` - Calendarific * `Calibre` - Calibre * `CanvasLms` - CanvasLms * `Captivate` - Captivate * `Cashfree` - Cashfree * `CastAi` - CastAi * `Catchpoint` - Catchpoint * `CdcOpenData` - CdcOpenData * `Census` - Census * `Checkly` - Checkly * `CircleSo` - CircleSo * `Classy` - Classy * `Cleartax` - Cleartax * `Clever` - Clever * `Clevertap` - Clevertap * `Cliniko` - Cliniko * `Clio` - Clio * `Clip` - Clip * `Cloudability` - Cloudability * `Cloudsmith` - Cloudsmith * `Cloudzero` - Cloudzero * `Clover` - Clover * `Codemagic` - Codemagic * `Codescene` - Codescene * `Collibra` - Collibra * `Companycam` - Companycam * `Conekta` - Conekta * `ContaAzul` - ContaAzul * `Contentsquare` - Contentsquare * `Cortex` - Cortex * `Courier` - Courier * `Crossref` - Crossref * `CrowdstrikeFalcon` - CrowdstrikeFalcon * `CubeCloud` - CubeCloud * `D2lBrightspace` - D2lBrightspace * `Dayforce` - Dayforce * `Debugbear` - Debugbear * `Descope` - Descope * `Develocity` - Develocity * `Dialpad` - Dialpad * `Discord` - Discord * `Discourse` - Discourse * `Donorbox` - Donorbox * `Doorloop` - Doorloop * `Dovetail` - Dovetail * `Dragonboat` - Dragonboat * `Drchrono` - Drchrono * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral * `EcbDataPortal` - EcbDataPortal * `Emarsys` - Emarsys * `Embrace` - Embrace * `Entsoe` - Entsoe * `Eppo` - Eppo * `Etsy` - Etsy * `Eurostat` - Eurostat * `Faire` - Faire * `FarosAi` - FarosAi * `Fieldpulse` - Fieldpulse * `Fieldwire` - Fieldwire * `Filevine` - Filevine * `Finout` - Finout * `Five9` - Five9 * `FlexeraCloudCost` - FlexeraCloudCost * `Flutterwave` - Flutterwave * `Fortnox` - Fortnox * `Fourthwall` - Fourthwall * `Fred` - Fred * `Frontegg` - Frontegg * `FusionAuth` - FusionAuth * `G2` - G2 * `Gcore` - Gcore * `GcpApigee` - GcpApigee * `GcpArtifactRegistry` - GcpArtifactRegistry * `GcpBigtable` - GcpBigtable * `GcpChronicle` - GcpChronicle * `GcpCloudAssetInventory` - GcpCloudAssetInventory * `GcpCloudBilling` - GcpCloudBilling * `GcpCloudBuild` - GcpCloudBuild * `GcpCloudDeploy` - GcpCloudDeploy * `GcpCloudDns` - GcpCloudDns * `GcpCloudFunctions` - GcpCloudFunctions * `GcpCloudLogging` - GcpCloudLogging * `GcpCloudMonitoring` - GcpCloudMonitoring * `GcpCloudRun` - GcpCloudRun * `GcpCloudSpanner` - GcpCloudSpanner * `GcpCloudSql` - GcpCloudSql * `GcpCloudTrace` - GcpCloudTrace * `GcpCloudWorkflows` - GcpCloudWorkflows * `GcpComputeEngine` - GcpComputeEngine * `GcpContainerAnalysis` - GcpContainerAnalysis * `GcpDataflow` - GcpDataflow * `GcpDataplex` - GcpDataplex * `GcpDataproc` - GcpDataproc * `GcpErrorReporting` - GcpErrorReporting * `GcpGke` - GcpGke * `GcpPubsub` - GcpPubsub * `GcpRecaptchaEnterprise` - GcpRecaptchaEnterprise * `GcpRecommender` - GcpRecommender * `GcpSecurityCommandCenter` - GcpSecurityCommandCenter * `Gdelt` - Gdelt * `GenesysCloud` - GenesysCloud * `Getdx` - Getdx * `Ghost` - Ghost * `Givebutter` - Givebutter * `Gleif` - Gleif * `GooglePlayConsole` - GooglePlayConsole * `Guesty` - Guesty * `Gumroad` - Gumroad * `HarnessCcm` - HarnessCcm * `HarnessSei` - HarnessSei * `Harvest` - Harvest * `Healthie` - Healthie * `Hitpay` - Hitpay * `Hivebrite` - Hivebrite * `Holded` - Holded * `Hostaway` - Hostaway * `HousecallPro` - HousecallPro * `Humanitec` - Humanitec * `ImfData` - ImfData * `Imperva` - Imperva * `InfluxdbCloud` - InfluxdbCloud * `Iyzico` - Iyzico * `Jobtread` - Jobtread * `Kameleoon` - Kameleoon * `KauflandMarketplace` - KauflandMarketplace * `Kestra` - Kestra * `Kick` - Kick * `Kinde` - Kinde * `Kion` - Kion * `Knowbe4` - Knowbe4 * `Komodor` - Komodor * `Labelbox` - Labelbox * `Lawmatics` - Lawmatics * `Learnworlds` - Learnworlds * `LexwareOffice` - LexwareOffice * `Lightdash` - Lightdash * `Lodgify` - Lodgify * `Logicmonitor` - Logicmonitor * `Logrocket` - Logrocket * `LoopReturns` - LoopReturns * `Mastodon` - Mastodon * `Meetup` - Meetup * `Memberful` - Memberful * `MercadoPago` - MercadoPago * `Meteostat` - Meteostat * `Mews` - Mews * `Mezmo` - Mezmo * `Microsoft365UsageReports` - Microsoft365UsageReports * `MicrosoftAdvertising` - MicrosoftAdvertising * `MicrosoftClarity` - MicrosoftClarity * `MicrosoftDefenderCloudApps` - MicrosoftDefenderCloudApps * `MicrosoftDefenderEndpoint` - MicrosoftDefenderEndpoint * `MicrosoftDefenderForCloud` - MicrosoftDefenderForCloud * `MicrosoftIntune` - MicrosoftIntune * `MicrosoftPurview` - MicrosoftPurview * `MicrosoftPurviewAudit` - MicrosoftPurviewAudit * `MicrosoftSentinel` - MicrosoftSentinel * `MicrosoftTeamsCallRecords` - MicrosoftTeamsCallRecords * `Midtrans` - Midtrans * `MightyNetworks` - MightyNetworks * `Mindbody` - Mindbody * `Mirakl` - Mirakl * `Moesif` - Moesif * `Moneybird` - Moneybird * `Moodle` - Moodle * `Motherduck` - Motherduck * `Mycase` - Mycase * `NagerDate` - NagerDate * `NeonCrm` - NeonCrm * `Nexhealth` - Nexhealth * `NoaaCdo` - NoaaCdo * `Nobl9` - Nobl9 * `Nolt` - Nolt * `Nops` - Nops * `NpmRegistry` - NpmRegistry * `Oecd` - Oecd * `Okendo` - Okendo * `Omni` - Omni * `Onelogin` - Onelogin * `OpenDental` - OpenDental * `OpenMeteo` - OpenMeteo * `Openalex` - Openalex * `Opencorporates` - Opencorporates * `Openfec` - Openfec * `OpnPayments` - OpnPayments * `Opslevel` - Opslevel * `OttoMarket` - OttoMarket * `Ownerrez` - Ownerrez * `Pagbank` - Pagbank * `Patreon` - Patreon * `Pax8` - Pax8 * `Paychex` - Paychex * `Paymob` - Paymob * `Paymongo` - Paymongo * `Phonepe` - Phonepe * `Pike13` - Pike13 * `Pingone` - Pingone * `PinterestOrganic` - PinterestOrganic * `PlanningCenter` - PlanningCenter * `PluralsightFlow` - PluralsightFlow * `Podbean` - Podbean * `Postscript` - Postscript * `PowerBiAdmin` - PowerBiAdmin * `Practicepanther` - Practicepanther * `Preset` - Preset * `Procore` - Procore * `Productiv` - Productiv * `ProofpointTap` - ProofpointTap * `Propertyware` - Propertyware * `Pubnub` - Pubnub * `Quay` - Quay * `Raken` - Raken * `RedpandaCloud` - RedpandaCloud * `RentManager` - RentManager * `Reverb` - Reverb * `RocketMatter` - RocketMatter * `Rubygems` - Rubygems * `Scalr` - Scalr * `SecEdgar` - SecEdgar * `SelectStar` - SelectStar * `SemanticScholar` - SemanticScholar * `Semrush` - Semrush * `ServiceFusion` - ServiceFusion * `Servicem8` - Servicem8 * `Servicetitan` - Servicetitan * `Servicetrade` - Servicetrade * `Sevdesk` - Sevdesk * `Similarweb` - Similarweb * `Simpro` - Simpro * `Sinch` - Sinch * `Singlestore` - Singlestore * `Site24x7` - Site24x7 * `Sleuth` - Sleuth * `Smartlook` - Smartlook * `Smartrecruiters` - Smartrecruiters * `Smokeball` - Smokeball * `SodaCloud` - SodaCloud * `Speedcurve` - Speedcurve * `SpotIo` - SpotIo * `Sprig` - Sprig * `Sprinklr` - Sprinklr * `SproutSocial` - SproutSocial * `StackOverflowForTeams` - StackOverflowForTeams * `Stockx` - Stockx * `TackleIo` - TackleIo * `Talkdesk` - Talkdesk * `TeamupFitness` - TeamupFitness * `Tebra` - Tebra * `Telnyx` - Telnyx * `Ternary` - Ternary * `Thoughtspot` - Thoughtspot * `Thousandeyes` - Thousandeyes * `Threads` - Threads * `TiktokShop` - TiktokShop * `TinyErp` - TinyErp * `Tinybird` - Tinybird * `Tipalti` - Tipalti * `Toast` - Toast * `Torii` - Torii * `Transistor` - Transistor * `TrunkIo` - TrunkIo * `Trustradius` - Trustradius * `Twitch` - Twitch * `TwoC2p` - TwoC2p * `UkCompaniesHouse` - UkCompaniesHouse * `UkOns` - UkOns * `UnComtrade` - UnComtrade * `UsBea` - UsBea * `UsBls` - UsBls * `UsEia` - UsEia * `UsTreasuryFiscalData` - UsTreasuryFiscalData * `Vanta` - Vanta * `Vendr` - Vendr * `Virtuous` - Virtuous * `Vonage` - Vonage * `WalmartMarketplace` - WalmartMarketplace * `Waydev` - Waydev * `Wayfair` - Wayfair * `WhatsappBusinessManagement` - WhatsappBusinessManagement * `WhoGho` - WhoGho * `Whop` - Whop * `Wiz` - Wiz * `Wompi` - Wompi * `Workiz` - Workiz * `WorldBank` - WorldBank * `Xendit` - Xendit * `Yoco` - Yoco * `ZalandoZdirect` - ZalandoZdirect * `Zluri` - Zluri * `Zylo` - Zylo * `Tally` - Tally * `Nuntly` - Nuntly * `Vturb` - Vturb * `Meltwater` - Meltwater * `UserCom` - UserCom * `Latitude` - Latitude * `Workato` - Workato * `SideShift` - SideShift * `DuckLake` - DuckLake * `Starburst` - Starburst * `Trino` - Trino * `Easybill` - Easybill * `Bexio` - Bexio * `Umami` - Umami * `Manychat` - Manychat * `Kickstarter` - Kickstarter * `Typesense` - Typesense * `FirstPromoter` - FirstPromoter * `Zero` - Zero * `Inth` - Inth * `BCMS` - BCMS * `Convonite` - Convonite * `Hookdeck` - Hookdeck * `Billit` - Billit * `Moxie` - Moxie * `TripleWhale` - TripleWhale * `Directus` - Directus * `Clay` - Clay * `TradableBits` - TradableBits * `Swan` - Swan * `Hyros` - Hyros * `Odoo` - Odoo * `Airbridge` - Airbridge * `Snovio` - Snovio * `GoogleMerchantCenter` - GoogleMerchantCenter * `Raisely` - Raisely * `RakutenAdvertising` - RakutenAdvertising * `Zitadel` - Zitadel * `DeelFlows` - DeelFlows * `WindsorAi` - WindsorAi * `Wix` - Wix * `Sevalla` - Sevalla * `Motion` - Motion * `ImpactPartner` - ImpactPartner * `Cloudinary` - Cloudinary * `Uploadcare` - Uploadcare * `WHMCS` - WHMCS * `MSG91` - MSG91 * `Depot` - Depot * `Schematic` - Schematic * `Dokploy` - Dokploy * `Hootsuite` - Hootsuite * `WisprFlow` - WisprFlow * `SamCart` - SamCart * `IronSourceAds` - IronSourceAds * `MicrosoftExcel` - MicrosoftExcel * `Profound` - Profound * `Airwallex` - Airwallex * `Polymarket` - Polymarket * `Kalshi` - Kalshi * `Capterra` - Capterra * `GooglePostmasterTools` - GooglePostmasterTools * `Growi` - Growi * `Clarify` - Clarify * `DatoCMS` - DatoCMS * `WPSOffice` - WPSOffice * `TeraBox` - TeraBox * `SimonData` - SimonData * `CommissionJunction` - CommissionJunction * `Liveblocks` - Liveblocks * `NationBuilder` - NationBuilder * `Tana` - Tana * `Zenchef` - Zenchef * `Lovable` - Lovable * `Anvil` - Anvil * `Coolify` - Coolify * `SocialPilot` - SocialPilot * `Strato` - Strato * `Medusa` - Medusa * `Membrain` - Membrain * `RecallAI` - RecallAI * `Tenjin` - Tenjin * `Folk` - Folk * `Cybersource` - Cybersource * `GoogleAdSense` - GoogleAdSense * `Sequenzy` - Sequenzy * `Skio` - Skio * `Smartlead` - Smartlead * `Substack` - Substack * `ElectricityMaps` - ElectricityMaps * `Amplemarket` - Amplemarket * `Quo` - Quo * `HeyReach` - HeyReach * `MoEngage` - MoEngage * `Monaco` - Monaco * `Oneleet` - Oneleet * `Expo` - Expo * `PostNord` - PostNord * `Commslayer` - Commslayer * `Sprinto` - Sprinto * `Gem` - Gem * `AudioGO` - AudioGO * `ExactOnline` - ExactOnline * `LettrLabs` - LettrLabs * `GrafanaIRM` - GrafanaIRM */
   source_type?: ExternalDataSourceTypeEnum | (string & {});
 }
-export const CreateExternalDataSourcesDatabaseSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesDatabaseSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: S.optional(ExternalDataSourceTypeEnum),
@@ -1685,7 +1684,7 @@ export const CreateExternalDataSourcesDatabaseSchemaRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaRequest>;
 
 export interface CreateExternalDataSourcesDatabaseSchemaResponse {}
-export const CreateExternalDataSourcesDatabaseSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesDatabaseSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateExternalDataSourcesDatabaseSchemaResponse",
@@ -1701,7 +1700,7 @@ export interface CreateExternalDataSourcesDraftCustomManifestRequest {
   /** Raw API documentation or an OpenAPI/Swagger spec, pasted directly. Provide this or docs_url. */
   docs_text?: string;
 }
-export const CreateExternalDataSourcesDraftCustomManifestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesDraftCustomManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_name: S.optional(S.String),
@@ -1720,11 +1719,11 @@ export const CreateExternalDataSourcesDraftCustomManifestRequest = /*@__PURE__*/
 
 /** * `ok` - ok * `invalid` - invalid * `model_error` - model_error */
 export type DraftStatusEnum = "ok" | "invalid" | "model_error";
-export const DraftStatusEnum = S.String;
+const DraftStatusEnum = S.String;
 
 /** Names of the resources (tables) the validated manifest exposes. Empty unless draft_status is 'ok'. */
 export type DraftCustomManifestResponseResourceNamesList = Array<string>;
-export const DraftCustomManifestResponseResourceNamesList =
+const DraftCustomManifestResponseResourceNamesList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<DraftCustomManifestResponseResourceNamesList>;
 
 export interface DraftCustomManifestResponse {
@@ -1739,7 +1738,7 @@ export interface DraftCustomManifestResponse {
   /** The last validation error when draft_status is not 'ok'; null on success. */
   error: string | null;
 }
-export const DraftCustomManifestResponse = /*@__PURE__*/ S.suspend(() =>
+const DraftCustomManifestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     draft_status: DraftStatusEnum,
     manifest_json: S.NullOr(S.String),
@@ -1755,7 +1754,7 @@ export const DraftCustomManifestResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateExternalDataSourcesPreviewResourceRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExternalDataSourcesPreviewResourceRequestPayloadMap =
+const CreateExternalDataSourcesPreviewResourceRequestPayloadMap =
   CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequestPayloadMap>;
 
 export interface CreateExternalDataSourcesPreviewResourceRequest {
@@ -1770,7 +1769,7 @@ export interface CreateExternalDataSourcesPreviewResourceRequest {
   /** Maximum sample rows to return (1-50). Defaults to 10. */
   limit?: number;
 }
-export const CreateExternalDataSourcesPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: ExternalDataSourceTypeEnum,
@@ -1789,12 +1788,12 @@ export const CreateExternalDataSourcesPreviewResourceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequest>;
 
 export type SourcePreviewResponseRowsItemMap = { [key: string]: unknown | undefined };
-export const SourcePreviewResponseRowsItemMap =
+const SourcePreviewResponseRowsItemMap =
   CreateExternalDataSourceRequestPayloadMap as any as S.Schema<SourcePreviewResponseRowsItemMap>;
 
 /** Up to `limit` sample rows, after data_selector extraction -- the raw records the sync would ingest. */
 export type SourcePreviewResponseRowsList = Array<SourcePreviewResponseRowsItemMap>;
-export const SourcePreviewResponseRowsList = /*@__PURE__*/ S.Array(
+const SourcePreviewResponseRowsList = /*@__PURE__*/ S.Array(
   SourcePreviewResponseRowsItemMap,
 ) as any as S.Schema<SourcePreviewResponseRowsList>;
 
@@ -1804,7 +1803,7 @@ export interface SourcePreviewColumn {
   /** JSON type inferred from the first non-null value: string, integer, number, boolean, object, array, or null. */
   type: string;
 }
-export const SourcePreviewColumn = /*@__PURE__*/ S.suspend(() =>
+const SourcePreviewColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -1813,7 +1812,7 @@ export const SourcePreviewColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns observed across the sample rows, each with an inferred JSON type. */
 export type SourcePreviewResponseColumnsList = Array<SourcePreviewColumn>;
-export const SourcePreviewResponseColumnsList = /*@__PURE__*/ S.Array(
+const SourcePreviewResponseColumnsList = /*@__PURE__*/ S.Array(
   SourcePreviewColumn,
 ) as any as S.Schema<SourcePreviewResponseColumnsList>;
 
@@ -1827,7 +1826,7 @@ export interface SourcePreviewResponse {
   /** Set when the live read failed (e.g. the host was unreachable or returned an auth error); rows is then empty. Manifest, validation, and SSRF problems return HTTP 400 instead of populating this field. */
   error: string | null;
 }
-export const SourcePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+const SourcePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: SourcePreviewResponseRowsList,
     row_count: S.Number,
@@ -1838,7 +1837,7 @@ export const SourcePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList = Array<string>;
-export const CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList =
+const CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList>;
 
 export interface CreateExternalDataSourcesReloadRequest {
@@ -1860,7 +1859,7 @@ export interface CreateExternalDataSourcesReloadRequest {
   auto_sync_schema_patterns?: CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const CreateExternalDataSourcesReloadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesReloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1887,7 +1886,7 @@ export const CreateExternalDataSourcesReloadRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateExternalDataSourcesReloadRequest>;
 
 export interface CreateExternalDataSourcesReloadResponse {}
-export const CreateExternalDataSourcesReloadResponse =
+const CreateExternalDataSourcesReloadResponse =
   CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<CreateExternalDataSourcesReloadResponse>;
 
 export interface CreateExternalDataSourcesRepairCdcRequest {
@@ -1896,7 +1895,7 @@ export interface CreateExternalDataSourcesRepairCdcRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const CreateExternalDataSourcesRepairCdcRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesRepairCdcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1915,7 +1914,7 @@ export interface CreateExternalDataSourcesRepairCdcResponse {
   success?: boolean;
   schemas_reset?: number;
 }
-export const CreateExternalDataSourcesRepairCdcResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesRepairCdcResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
     schemas_reset: S.optional(S.Number),
@@ -1928,7 +1927,7 @@ export const CreateExternalDataSourcesRepairCdcResponse = /*@__PURE__*/ S.suspen
 export type CreateExternalDataSourcesSetupRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExternalDataSourcesSetupRequestPayloadMap =
+const CreateExternalDataSourcesSetupRequestPayloadMap =
   CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesSetupRequestPayloadMap>;
 
 export interface CreateExternalDataSourcesSetupRequest {
@@ -1945,7 +1944,7 @@ export interface CreateExternalDataSourcesSetupRequest {
   /** Whether a synced source should also be live-queryable via direct connection. Defaults to false; ignored for pure direct-query sources. */
   direct_query_enabled?: boolean;
 }
-export const CreateExternalDataSourcesSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: ExternalDataSourceTypeEnum,
@@ -1966,7 +1965,7 @@ export const CreateExternalDataSourcesSetupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Webhook input names the user still needs to provide (e.g. a signing secret the external API did not return on create). Submit them via the update_webhook_inputs endpoint. */
 export type SourceSetupWebhookPendingInputsList = Array<string>;
-export const SourceSetupWebhookPendingInputsList =
+const SourceSetupWebhookPendingInputsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceSetupWebhookPendingInputsList>;
 
 export interface SourceSetupWebhook {
@@ -1979,7 +1978,7 @@ export interface SourceSetupWebhook {
   /** Webhook input names the user still needs to provide (e.g. a signing secret the external API did not return on create). Submit them via the update_webhook_inputs endpoint. */
   pending_inputs: SourceSetupWebhookPendingInputsList;
 }
-export const SourceSetupWebhook = /*@__PURE__*/ S.suspend(() =>
+const SourceSetupWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     webhook_url: S.NullOr(S.String),
@@ -1994,7 +1993,7 @@ export interface SourceSetupResponse {
   /** Outcome of automatic webhook registration. Only present for sources that support webhooks (e.g. Stripe) and have webhook-capable tables. */
   webhook?: SourceSetupWebhook;
 }
-export const SourceSetupResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceSetupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     webhook: S.optional(SourceSetupWebhook),
@@ -2003,7 +2002,7 @@ export const SourceSetupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList = Array<string>;
-export const CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList =
+const CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList>;
 
 export interface CreateExternalDataSourcesSourcePrefixRequest {
@@ -2023,7 +2022,7 @@ export interface CreateExternalDataSourcesSourcePrefixRequest {
   auto_sync_schema_patterns?: CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const CreateExternalDataSourcesSourcePrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesSourcePrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
@@ -2049,14 +2048,14 @@ export const CreateExternalDataSourcesSourcePrefixRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequest>;
 
 export interface CreateExternalDataSourcesSourcePrefixResponse {}
-export const CreateExternalDataSourcesSourcePrefixResponse =
+const CreateExternalDataSourcesSourcePrefixResponse =
   CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>;
 
 /** Connection details as flat keys for the source_type -- the same fields the create flow accepts (host, port, password, API key, ...). Checked against a live connection before being stored. */
 export type CreateExternalDataSourcesStoreCredentialsRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExternalDataSourcesStoreCredentialsRequestPayloadMap =
+const CreateExternalDataSourcesStoreCredentialsRequestPayloadMap =
   CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequestPayloadMap>;
 
 export interface CreateExternalDataSourcesStoreCredentialsRequest {
@@ -2067,7 +2066,7 @@ export interface CreateExternalDataSourcesStoreCredentialsRequest {
   /** Connection details as flat keys for the source_type -- the same fields the create flow accepts (host, port, password, API key, ...). Checked against a live connection before being stored. */
   payload: CreateExternalDataSourcesStoreCredentialsRequestPayloadMap;
 }
-export const CreateExternalDataSourcesStoreCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSourcesStoreCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: ExternalDataSourceTypeEnum,
@@ -2093,7 +2092,7 @@ export interface SourceCredential {
   /** When the stored credentials expire. Unconsumed credentials are unusable past this time. */
   expires_at: string;
 }
-export const SourceCredential = /*@__PURE__*/ S.suspend(() =>
+const SourceCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credential_id: S.String,
     source_type: S.String,
@@ -2110,20 +2109,20 @@ export type ExternalDataSchemaSyncTypeEnum =
   | "webhook"
   | "cdc"
   | "xmin";
-export const ExternalDataSchemaSyncTypeEnum = S.String;
+const ExternalDataSchemaSyncTypeEnum = S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList = Array<string>;
-export const ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList =
+const ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList>;
 
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
 export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
-export const CdcTableModeEnum = S.String;
+const CdcTableModeEnum = S.String;
 
 /** Columns to sync. Null means sync all columns. */
 export type ExternalDataSourceBulkUpdateSchemaEnabledColumnsList = Array<string>;
-export const ExternalDataSourceBulkUpdateSchemaEnabledColumnsList =
+const ExternalDataSourceBulkUpdateSchemaEnabledColumnsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceBulkUpdateSchemaEnabledColumnsList>;
 
 export interface ExternalDataSourceBulkUpdateSchemaRowFiltersItem {
@@ -2133,7 +2132,7 @@ export interface ExternalDataSourceBulkUpdateSchemaRowFiltersItem {
   /** Comparison value; must match the column's type. For `IN` / `NOT IN`, a comma-separated list (e.g. `1, 2, 3` or `'a','b'`). */
   value: unknown;
 }
-export const ExternalDataSourceBulkUpdateSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceBulkUpdateSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.String,
     operator: S.String,
@@ -2146,7 +2145,7 @@ export const ExternalDataSourceBulkUpdateSchemaRowFiltersItem = /*@__PURE__*/ S.
 /** Row-filter predicates ANDed onto the source query. Null/empty means sync all rows. */
 export type ExternalDataSourceBulkUpdateSchemaRowFiltersList =
   Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
-export const ExternalDataSourceBulkUpdateSchemaRowFiltersList = /*@__PURE__*/ S.Array(
+const ExternalDataSourceBulkUpdateSchemaRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSourceBulkUpdateSchemaRowFiltersItem,
 ) as any as S.Schema<ExternalDataSourceBulkUpdateSchemaRowFiltersList>;
 
@@ -2180,7 +2179,7 @@ export interface ExternalDataSourceBulkUpdateSchema {
   /** When true and the schema has no sync method configured yet (and this update does not set one), discover the table on the source and fill in default sync settings: incremental sync with an auto-selected tracking column where supported, otherwise append, otherwise full refresh. Ignored for schemas that already have a sync method. */
   apply_sync_defaults?: boolean;
 }
-export const ExternalDataSourceBulkUpdateSchema = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceBulkUpdateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     should_sync: S.optional(S.Boolean),
@@ -2206,10 +2205,9 @@ export const ExternalDataSourceBulkUpdateSchema = /*@__PURE__*/ S.suspend(() =>
 /** Schema updates to apply in a single batch. */
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList =
   Array<ExternalDataSourceBulkUpdateSchema>;
-export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSourceBulkUpdateSchema,
-  ) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList>;
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList = /*@__PURE__*/ S.Array(
+  ExternalDataSourceBulkUpdateSchema,
+) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList>;
 
 export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2219,25 +2217,24 @@ export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest {
   /** Schema updates to apply in a single batch. */
   schemas: ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList;
 }
-export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      schemas: ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList,
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/external_data_sources/{id}/bulk_update_schemas/",
-        code: 200,
-      }),
-    ),
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    schemas: ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/external_data_sources/{id}/bulk_update_schemas/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest",
 }) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest>;
 
 export type ExternalDataSchemaTableMap = { [key: string]: unknown | undefined };
-export const ExternalDataSchemaTableMap =
+const ExternalDataSchemaTableMap =
   CreateExternalDataSourceRequestPayloadMap as any as S.Schema<ExternalDataSchemaTableMap>;
 
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
@@ -2249,7 +2246,7 @@ export type IncrementalFieldTypeEnum =
   | "timestamp"
   | "objectid"
   | "xid";
-export const IncrementalFieldTypeEnum = S.String;
+const IncrementalFieldTypeEnum = S.String;
 
 /** * `never` - never * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
 export type ExternalDataSchemaSyncFrequencyEnum =
@@ -2263,29 +2260,27 @@ export type ExternalDataSchemaSyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
-export const ExternalDataSchemaSyncFrequencyEnum = S.String;
+const ExternalDataSchemaSyncFrequencyEnum = S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemaPrimaryKeyColumnsList = Array<string>;
-export const ExternalDataSchemaPrimaryKeyColumnsList =
+const ExternalDataSchemaPrimaryKeyColumnsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
 
 /** * `missing_primary_key` - Missing primary key * `duplicate_primary_key` - Duplicate primary key */
 export type IncrementalSyncBlockedReasonEnum = "missing_primary_key" | "duplicate_primary_key";
-export const IncrementalSyncBlockedReasonEnum = S.String;
+const IncrementalSyncBlockedReasonEnum = S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemaEnabledColumnsList = Array<string>;
-export const ExternalDataSchemaEnabledColumnsList =
+const ExternalDataSchemaEnabledColumnsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
 
 export type ExternalDataSchemaRowFiltersItem = ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
-export const ExternalDataSchemaRowFiltersItem = ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
-
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
   Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
-export const ExternalDataSchemaRowFiltersList =
+const ExternalDataSchemaRowFiltersList =
   ExternalDataSourceBulkUpdateSchemaRowFiltersList as any as S.Schema<ExternalDataSchemaRowFiltersList>;
 
 export interface ExternalDataSchemaAvailableColumnsItem {
@@ -2293,7 +2288,7 @@ export interface ExternalDataSchemaAvailableColumnsItem {
   data_type?: string;
   is_nullable?: boolean;
 }
-export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     data_type: S.optional(S.String),
@@ -2305,12 +2300,12 @@ export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(()
 
 /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
 export type ExternalDataSchemaAvailableColumnsList = Array<ExternalDataSchemaAvailableColumnsItem>;
-export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
+const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaAvailableColumnsItem,
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
 export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
-export const ExternalDataSchemaSourceSupportedApiVersionsList =
+const ExternalDataSchemaSourceSupportedApiVersionsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
 
 /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
@@ -2325,7 +2320,7 @@ export interface ExternalDataSchemaSource {
   api_version?: string | null;
   supported_api_versions?: ExternalDataSchemaSourceSupportedApiVersionsList;
 }
-export const ExternalDataSchemaSource = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemaSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     source_type: S.optional(S.String),
@@ -2347,7 +2342,7 @@ export interface ExternalDataSourceApiVersionDeprecation {
   /** The source's current default vendor API version -- the migration target. */
   default_version: string;
 }
-export const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     sunset_at: S.NullOr(S.String),
@@ -2411,7 +2406,7 @@ export interface ExternalDataSchema {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2448,15 +2443,14 @@ export const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
 
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList =
   Array<ExternalDataSchema>;
-export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSchema,
-  ) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList>;
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList = /*@__PURE__*/ S.Array(
+  ExternalDataSchema,
+) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList>;
 
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse =
   ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList;
-export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse = /*@__PURE__*/ S.suspend(
-  () => ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList.pipe(T.RawResponseRoot()),
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse",
 }) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse>;
@@ -2467,7 +2461,7 @@ export interface ExternalDataSourcesConnectLinkRetrieveRequest {
   /** The source type to generate a connect link for (e.g. 'Stripe', 'Postgres', 'Hubspot'). */
   source_type: string;
 }
-export const ExternalDataSourcesConnectLinkRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesConnectLinkRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: S.String.pipe(T.Query()),
@@ -2484,7 +2478,7 @@ export const ExternalDataSourcesConnectLinkRetrieveRequest = /*@__PURE__*/ S.sus
 
 /** * `oauth` - oauth * `credentials` - credentials */
 export type AuthMethodEnum = "oauth" | "credentials";
-export const AuthMethodEnum = S.String;
+const AuthMethodEnum = S.String;
 
 export interface SourceConnectLink {
   /** The source type the link is for. */
@@ -2496,7 +2490,7 @@ export interface SourceConnectLink {
   /** Next steps for the agent to relay to the user. */
   instructions: string;
 }
-export const SourceConnectLink = /*@__PURE__*/ S.suspend(() =>
+const SourceConnectLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_type: S.String,
     auth_method: AuthMethodEnum,
@@ -2507,7 +2501,7 @@ export const SourceConnectLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList = Array<string>;
-export const ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesCreateWebhookCreateRequest {
@@ -2529,7 +2523,7 @@ export interface ExternalDataSourcesCreateWebhookCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesCreateWebhookCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesCreateWebhookCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2557,9 +2551,6 @@ export const ExternalDataSourcesCreateWebhookCreateRequest = /*@__PURE__*/ S.sus
 
 /** Inputs the external service needs before delivery works. Submit via update_webhook_inputs. */
 export type CreateWebhookResponsePendingInputsList = Array<string>;
-export const CreateWebhookResponsePendingInputsList =
-  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CreateWebhookResponsePendingInputsList>;
-
 export interface CreateWebhookResponse {
   /** Whether the webhook was created and registered with the source. */
   success: boolean;
@@ -2570,11 +2561,11 @@ export interface CreateWebhookResponse {
   /** Inputs the external service needs before delivery works. Submit via update_webhook_inputs. */
   pending_inputs: CreateWebhookResponsePendingInputsList;
 }
-export const CreateWebhookResponse = SourceSetupWebhook as any as S.Schema<CreateWebhookResponse>;
+const CreateWebhookResponse = SourceSetupWebhook as any as S.Schema<CreateWebhookResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList = Array<string>;
-export const ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesDeleteWebhookCreateRequest {
@@ -2596,7 +2587,7 @@ export interface ExternalDataSourcesDeleteWebhookCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesDeleteWebhookCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesDeleteWebhookCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2630,7 +2621,7 @@ export interface DeleteWebhookResponse {
   /** Why the external deletion failed, when external_deleted is false. */
   error: string | null;
 }
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     external_deleted: S.Boolean,
@@ -2644,7 +2635,7 @@ export interface ExternalDataSourcesDestroyRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const ExternalDataSourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2660,12 +2651,12 @@ export const ExternalDataSourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSourcesDestroyRequest>;
 
 export interface ExternalDataSourcesDestroyResponse {}
-export const ExternalDataSourcesDestroyResponse =
+const ExternalDataSourcesDestroyResponse =
   CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesDestroyResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList = Array<string>;
-export const ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesDisableCdcCreateRequest {
@@ -2687,7 +2678,7 @@ export interface ExternalDataSourcesDisableCdcCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesDisableCdcCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesDisableCdcCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2714,12 +2705,12 @@ export const ExternalDataSourcesDisableCdcCreateRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequest>;
 
 export interface ExternalDataSourcesDisableCdcCreateResponse {}
-export const ExternalDataSourcesDisableCdcCreateResponse =
+const ExternalDataSourcesDisableCdcCreateResponse =
   CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList = Array<string>;
-export const ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesEnableCdcCreateRequest {
@@ -2741,7 +2732,7 @@ export interface ExternalDataSourcesEnableCdcCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesEnableCdcCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesEnableCdcCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2773,7 +2764,7 @@ export interface CdcEnableResponse {
   /** Whether the extraction and cleanup schedules could be created. False means CDC is enabled but scheduling failed; the schedule self-heals on the first CDC schema toggle. */
   schedules_ready: boolean;
 }
-export const CdcEnableResponse = /*@__PURE__*/ S.suspend(() =>
+const CdcEnableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     schedules_ready: S.Boolean,
@@ -2783,7 +2774,7 @@ export const CdcEnableResponse = /*@__PURE__*/ S.suspend(() =>
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
-export const ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesRefreshSchemasCreateRequest {
@@ -2805,7 +2796,7 @@ export interface ExternalDataSourcesRefreshSchemasCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesRefreshSchemasCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesRefreshSchemasCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2832,7 +2823,7 @@ export const ExternalDataSourcesRefreshSchemasCreateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequest>;
 
 export interface ExternalDataSourcesRefreshSchemasCreateResponse {}
-export const ExternalDataSourcesRefreshSchemasCreateResponse =
+const ExternalDataSourcesRefreshSchemasCreateResponse =
   CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>;
 
 export interface ExternalDataSourcesResumeCdcCreateRequest {
@@ -2841,7 +2832,7 @@ export interface ExternalDataSourcesResumeCdcCreateRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const ExternalDataSourcesResumeCdcCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesResumeCdcCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2859,7 +2850,7 @@ export const ExternalDataSourcesResumeCdcCreateRequest = /*@__PURE__*/ S.suspend
 export interface ExternalDataSourcesResumeCdcCreateResponse {
   success?: boolean;
 }
-export const ExternalDataSourcesResumeCdcCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesResumeCdcCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
   }),
@@ -2870,7 +2861,7 @@ export const ExternalDataSourcesResumeCdcCreateResponse = /*@__PURE__*/ S.suspen
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
-export const ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesUpdateCdcSettingsCreateRequest {
@@ -2892,7 +2883,7 @@ export interface ExternalDataSourcesUpdateCdcSettingsCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesUpdateCdcSettingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesUpdateCdcSettingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2919,13 +2910,13 @@ export const ExternalDataSourcesUpdateCdcSettingsCreateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequest>;
 
 export interface ExternalDataSourcesUpdateCdcSettingsCreateResponse {}
-export const ExternalDataSourcesUpdateCdcSettingsCreateResponse =
+const ExternalDataSourcesUpdateCdcSettingsCreateResponse =
   CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
-export const ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
+const ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesUpdateWebhookInputsCreateRequest {
@@ -2947,7 +2938,7 @@ export interface ExternalDataSourcesUpdateWebhookInputsCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const ExternalDataSourcesUpdateWebhookInputsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourcesUpdateWebhookInputsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2977,7 +2968,7 @@ export interface UpdateWebhookInputsResponse {
   /** Whether the inputs were saved and pushed to the external service. */
   success: boolean;
 }
-export const UpdateWebhookInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -2991,7 +2982,7 @@ export interface GetExternalDataSourceRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const GetExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3008,7 +2999,7 @@ export const GetExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList = Array<string>;
-export const ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList =
+const ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList>;
 
 /** * `duckdb` - duckdb * `postgres` - postgres * `mysql` - mysql * `snowflake` - snowflake * `redshift` - redshift * `clickhouse` - clickhouse * `motherduck` - motherduck * `trino` - trino */
@@ -3021,24 +3012,21 @@ export type EngineEnum =
   | "clickhouse"
   | "motherduck"
   | "trino";
-export const EngineEnum = S.String;
+const EngineEnum = S.String;
 
 export type ExternalDataSourceSerializersOutputSchemasItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ExternalDataSourceSerializersOutputSchemasItemMap =
-  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<ExternalDataSourceSerializersOutputSchemasItemMap>;
-
 export type ExternalDataSourceSerializersOutputSchemasList =
   Array<ExternalDataSourceSerializersOutputSchemasItemMap>;
-export const ExternalDataSourceSerializersOutputSchemasList =
+const ExternalDataSourceSerializersOutputSchemasList =
   SourcePreviewResponseRowsList as any as S.Schema<ExternalDataSourceSerializersOutputSchemasList>;
 
 export interface ExternalDataSourceRevenueAnalyticsConfig {
   enabled?: boolean;
   include_invoiceless_charges?: boolean;
 }
-export const ExternalDataSourceRevenueAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceRevenueAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     include_invoiceless_charges: S.optional(S.Boolean),
@@ -3082,7 +3070,7 @@ export interface ExternalDataSourceSerializersOutput {
   /** Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning. */
   api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
-export const ExternalDataSourceSerializersOutput = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceSerializersOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -3120,7 +3108,7 @@ export interface GetExternalDataSourcesCdcStatusRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const GetExternalDataSourcesCdcStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourcesCdcStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3137,11 +3125,11 @@ export const GetExternalDataSourcesCdcStatusRequest = /*@__PURE__*/ S.suspend(()
 
 /** * `posthog` - posthog * `self_managed` - self_managed */
 export type ManagementModeEnum = "posthog" | "self_managed";
-export const ManagementModeEnum = S.String;
+const ManagementModeEnum = S.String;
 
 /** Tables in the publication, when the source was reachable and a publication exists. */
 export type CdcStatusPublishedTablesList = Array<string>;
-export const CdcStatusPublishedTablesList =
+const CdcStatusPublishedTablesList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CdcStatusPublishedTablesList>;
 
 export interface CdcStatus {
@@ -3168,7 +3156,7 @@ export interface CdcStatus {
   /** Tables in the publication, when the source was reachable and a publication exists. */
   published_tables?: CdcStatusPublishedTablesList;
 }
-export const CdcStatus = /*@__PURE__*/ S.suspend(() =>
+const CdcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     management_mode: S.optional(ManagementModeEnum),
@@ -3190,7 +3178,7 @@ export interface GetExternalDataSourcesDestinationRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const GetExternalDataSourcesDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourcesDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3207,7 +3195,7 @@ export const GetExternalDataSourcesDestinationRequest = /*@__PURE__*/ S.suspend(
 
 /** Destinations every table on this source syncs to. */
 export type SourceDestinationsDestinationIdsList = Array<string>;
-export const SourceDestinationsDestinationIdsList =
+const SourceDestinationsDestinationIdsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDestinationsDestinationIdsList>;
 
 /** Response shape for a source's destination set. */
@@ -3215,7 +3203,7 @@ export interface SourceDestinations {
   /** Destinations every table on this source syncs to. */
   destination_ids: SourceDestinationsDestinationIdsList;
 }
-export const SourceDestinations = /*@__PURE__*/ S.suspend(() =>
+const SourceDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination_ids: SourceDestinationsDestinationIdsList,
   }),
@@ -3231,7 +3219,7 @@ export interface GetExternalDataSourcesOauthAccountRequest {
   /** The data warehouse source type (e.g. 'BingAds', 'GoogleSearchConsole'). */
   source_type: string;
 }
-export const GetExternalDataSourcesOauthAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourcesOauthAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     integration_id: S.Number.pipe(T.Query()),
@@ -3254,7 +3242,7 @@ export interface GetExternalDataSourcesWebhookInfoRequest {
   /** A UUID string identifying this external data source. */
   id: string;
 }
-export const GetExternalDataSourcesWebhookInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourcesWebhookInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3271,7 +3259,7 @@ export const GetExternalDataSourcesWebhookInfoRequest = /*@__PURE__*/ S.suspend(
 
 /** Delivery health reported by the pipeline: `state` and `tokens` counters. */
 export type WebhookHogFunctionStatusMap = { [key: string]: unknown | undefined };
-export const WebhookHogFunctionStatusMap =
+const WebhookHogFunctionStatusMap =
   CreateExternalDataSourceRequestPayloadMap as any as S.Schema<WebhookHogFunctionStatusMap>;
 
 export interface WebhookHogFunction {
@@ -3286,7 +3274,7 @@ export interface WebhookHogFunction {
   /** Delivery health reported by the pipeline: `state` and `tokens` counters. */
   status: WebhookHogFunctionStatusMap;
 }
-export const WebhookHogFunction = /*@__PURE__*/ S.suspend(() =>
+const WebhookHogFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3298,17 +3286,17 @@ export const WebhookHogFunction = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource name to external schema id, as configured on the webhook function. */
 export type WebhookInfoResponseSchemaMappingMap = { [key: string]: string | undefined };
-export const WebhookInfoResponseSchemaMappingMap = /*@__PURE__*/ S.Record(
+const WebhookInfoResponseSchemaMappingMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<WebhookInfoResponseSchemaMappingMap>;
 
 /** * `hog` - hog * `liquid` - liquid */
 export type HogFunctionTemplatingEnum = "hog" | "liquid";
-export const HogFunctionTemplatingEnum = S.String;
+const HogFunctionTemplatingEnum = S.String;
 
 export type InputsItemBytecodeList = Array<unknown>;
-export const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
+const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InputsItemBytecodeList>;
 
@@ -3320,7 +3308,7 @@ export interface InputsItem {
   order?: number;
   transpiled?: unknown;
 }
-export const InputsItem = /*@__PURE__*/ S.suspend(() =>
+const InputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     templating: S.optional(HogFunctionTemplatingEnum),
@@ -3333,14 +3321,14 @@ export const InputsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Current webhook function inputs keyed by the source's declared webhook field names. */
 export type WebhookInfoResponseInputsMap = { [key: string]: InputsItem | undefined };
-export const WebhookInfoResponseInputsMap = /*@__PURE__*/ S.Record(
+const WebhookInfoResponseInputsMap = /*@__PURE__*/ S.Record(
   S.String,
   InputsItem,
 ) as any as S.Schema<WebhookInfoResponseInputsMap>;
 
 /** Events the external webhook is subscribed to. */
 export type WebhookExternalStatusEnabledEventsList = Array<string>;
-export const WebhookExternalStatusEnabledEventsList =
+const WebhookExternalStatusEnabledEventsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookExternalStatusEnabledEventsList>;
 
 export interface WebhookExternalStatus {
@@ -3361,7 +3349,7 @@ export interface WebhookExternalStatus {
   /** Read error the external service returned, if any. */
   error: string | null;
 }
-export const WebhookExternalStatus = /*@__PURE__*/ S.suspend(() =>
+const WebhookExternalStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.Boolean,
     url: S.NullOr(S.String),
@@ -3376,12 +3364,12 @@ export const WebhookExternalStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Desired provider events not yet on the webhook (manual setup, or created before a new table). */
 export type WebhookInfoResponseMissingEventsList = Array<string>;
-export const WebhookInfoResponseMissingEventsList =
+const WebhookInfoResponseMissingEventsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookInfoResponseMissingEventsList>;
 
 /** Required webhook field names with no value yet. Deliveries are dropped while any is missing. */
 export type WebhookInfoResponseMissingInputsList = Array<string>;
-export const WebhookInfoResponseMissingInputsList =
+const WebhookInfoResponseMissingInputsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookInfoResponseMissingInputsList>;
 
 export interface WebhookInfoResponse {
@@ -3406,7 +3394,7 @@ export interface WebhookInfoResponse {
   /** Required webhook field names with no value yet. Deliveries are dropped while any is missing. */
   missing_inputs?: WebhookInfoResponseMissingInputsList;
 }
-export const WebhookInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supports_webhooks: S.Boolean,
     exists: S.Boolean,
@@ -3427,7 +3415,7 @@ export interface GetExternalDataSourcesWizardRequest {
   /** Comma-separated source type(s) to return config for, e.g. 'Postgres' or 'Postgres,Stripe'. Strongly recommended: the unfiltered response describes every supported source and is very large. Omit only to enumerate the available types. */
   source_type?: string;
 }
-export const GetExternalDataSourcesWizardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourcesWizardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: S.optional(S.String.pipe(T.Query())),
@@ -3458,7 +3446,7 @@ export type DataWarehouseSourceCategory =
   | "HR & recruiting"
   | "Communication"
   | "E-commerce";
-export const DataWarehouseSourceCategory = S.String;
+const DataWarehouseSourceCategory = S.String;
 
 export type SourceFieldInputConfigTypeEnum =
   | "text"
@@ -3469,8 +3457,6 @@ export type SourceFieldInputConfigTypeEnum =
   | "time"
   | "number"
   | "textarea";
-export const SourceFieldInputConfigTypeEnum = S.String;
-
 export interface SourceFieldInputConfig {
   caption?: string | null;
   label: string;
@@ -3481,25 +3467,8 @@ export interface SourceFieldInputConfig {
   secret: boolean;
   type: SourceFieldInputConfigTypeEnum;
 }
-export const SourceFieldInputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caption: S.optional(S.NullOr(S.String)),
-    label: S.String,
-    name: S.String,
-    placeholder: S.String,
-    required: S.Boolean,
-    secret: S.Boolean,
-    type: SourceFieldInputConfigTypeEnum,
-  }),
-).annotate({ identifier: "SourceFieldInputConfig" }) as any as S.Schema<SourceFieldInputConfig>;
-
 export type SourceFieldSwitchGroupConfigDefault = string | number | boolean;
-export const SourceFieldSwitchGroupConfigDefault =
-  S.Unknown as any as S.Schema<SourceFieldSwitchGroupConfigDefault>;
-
 export type SourceFieldSelectConfigConverter = "str_to_int" | "str_to_bool" | "str_to_optional_int";
-export const SourceFieldSelectConfigConverter = S.String;
-
 export interface SourceFieldOauthConfig {
   kind: string;
   label: string;
@@ -3508,17 +3477,6 @@ export interface SourceFieldOauthConfig {
   requiredScopes?: string | null;
   type: string;
 }
-export const SourceFieldOauthConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    label: S.String,
-    name: S.String,
-    required: S.Boolean,
-    requiredScopes: S.optional(S.NullOr(S.String)),
-    type: S.String,
-  }),
-).annotate({ identifier: "SourceFieldOauthConfig" }) as any as S.Schema<SourceFieldOauthConfig>;
-
 export interface SourceFieldOauthAccountSelectConfig {
   caption?: string | null;
   /** Keep the field in the config tree (so its value parses and survives job_inputs redaction) without rendering it in the source form. Used for legacy fields that a newer field supersedes. */
@@ -3535,28 +3493,8 @@ export interface SourceFieldOauthAccountSelectConfig {
   required?: boolean | null;
   type: string;
 }
-export const SourceFieldOauthAccountSelectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caption: S.optional(S.NullOr(S.String)),
-    hidden: S.optional(S.NullOr(S.Boolean)),
-    integrationField: S.String,
-    integrationKind: S.String,
-    label: S.String,
-    multiple: S.optional(S.NullOr(S.Boolean)),
-    name: S.String,
-    placeholder: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "SourceFieldOauthAccountSelectConfig",
-}) as any as S.Schema<SourceFieldOauthAccountSelectConfig>;
-
 /** Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these. */
 export type SourceFieldCredentialAccountSelectConfigCredentialFieldsList = Array<string>;
-export const SourceFieldCredentialAccountSelectConfigCredentialFieldsList =
-  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceFieldCredentialAccountSelectConfigCredentialFieldsList>;
-
 /** Account picker for a source whose credentials are typed into the form, not held by an `Integration` row. Same `IntegrationAccount` shape and same picker as `oauth-account-select`; only where the credentials come from differs. `credentialFields` is the security boundary. The listing endpoint accepts those field names and no others, so the picker cannot be used to push arbitrary connection details into a source's client. */
 export interface SourceFieldCredentialAccountSelectConfig {
   caption?: string | null;
@@ -3568,43 +3506,14 @@ export interface SourceFieldCredentialAccountSelectConfig {
   required?: boolean | null;
   type: string;
 }
-export const SourceFieldCredentialAccountSelectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caption: S.optional(S.NullOr(S.String)),
-    credentialFields: SourceFieldCredentialAccountSelectConfigCredentialFieldsList,
-    label: S.String,
-    name: S.String,
-    placeholder: S.optional(S.NullOr(S.String)),
-    required: S.optional(S.NullOr(S.Boolean)),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "SourceFieldCredentialAccountSelectConfig",
-}) as any as S.Schema<SourceFieldCredentialAccountSelectConfig>;
-
 export type SourceFieldFileUploadJsonFormatConfigKeysCase1List = Array<string>;
-export const SourceFieldFileUploadJsonFormatConfigKeysCase1List =
-  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceFieldFileUploadJsonFormatConfigKeysCase1List>;
-
 export type SourceFieldFileUploadJsonFormatConfigKeys =
   | string
   | SourceFieldFileUploadJsonFormatConfigKeysCase1List;
-export const SourceFieldFileUploadJsonFormatConfigKeys =
-  S.Unknown as any as S.Schema<SourceFieldFileUploadJsonFormatConfigKeys>;
-
 export interface SourceFieldFileUploadJsonFormatConfig {
   format?: string;
   keys: SourceFieldFileUploadJsonFormatConfigKeys;
 }
-export const SourceFieldFileUploadJsonFormatConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(S.String),
-    keys: SourceFieldFileUploadJsonFormatConfigKeys,
-  }),
-).annotate({
-  identifier: "SourceFieldFileUploadJsonFormatConfig",
-}) as any as S.Schema<SourceFieldFileUploadJsonFormatConfig>;
-
 export interface SourceFieldFileUploadConfig {
   fileFormat: SourceFieldFileUploadJsonFormatConfig;
   label: string;
@@ -3612,33 +3521,11 @@ export interface SourceFieldFileUploadConfig {
   required: boolean;
   type: string;
 }
-export const SourceFieldFileUploadConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileFormat: SourceFieldFileUploadJsonFormatConfig,
-    label: S.String,
-    name: S.String,
-    required: S.Boolean,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "SourceFieldFileUploadConfig",
-}) as any as S.Schema<SourceFieldFileUploadConfig>;
-
 export interface SourceFieldSSHTunnelConfig {
   label: string;
   name: string;
   type: string;
 }
-export const SourceFieldSSHTunnelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.String,
-    name: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "SourceFieldSSHTunnelConfig",
-}) as any as S.Schema<SourceFieldSSHTunnelConfig>;
-
 export type SourceFieldSelectConfigOptionFieldsItem =
   | SourceFieldInputConfig
   | SourceFieldSwitchGroupConfig
@@ -3648,35 +3535,14 @@ export type SourceFieldSelectConfigOptionFieldsItem =
   | SourceFieldCredentialAccountSelectConfig
   | SourceFieldFileUploadConfig
   | SourceFieldSSHTunnelConfig;
-export const SourceFieldSelectConfigOptionFieldsItem =
-  S.Unknown as any as S.Schema<SourceFieldSelectConfigOptionFieldsItem>;
-
 export type SourceFieldSelectConfigOptionFieldsList =
   Array<SourceFieldSelectConfigOptionFieldsItem>;
-export const SourceFieldSelectConfigOptionFieldsList = /*@__PURE__*/ S.Array(
-  SourceFieldSelectConfigOptionFieldsItem,
-) as any as S.Schema<SourceFieldSelectConfigOptionFieldsList>;
-
 export interface SourceFieldSelectConfigOption {
   fields?: SourceFieldSelectConfigOptionFieldsList | null;
   label: string;
   value: string;
 }
-export const SourceFieldSelectConfigOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(S.NullOr(SourceFieldSelectConfigOptionFieldsList)),
-    label: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "SourceFieldSelectConfigOption",
-}) as any as S.Schema<SourceFieldSelectConfigOption>;
-
 export type SourceFieldSelectConfigOptionsList = Array<SourceFieldSelectConfigOption>;
-export const SourceFieldSelectConfigOptionsList = /*@__PURE__*/ S.Array(
-  SourceFieldSelectConfigOption,
-) as any as S.Schema<SourceFieldSelectConfigOptionsList>;
-
 export interface SourceFieldSelectConfig {
   caption?: string | null;
   converter?: SourceFieldSelectConfigConverter | null;
@@ -3689,20 +3555,6 @@ export interface SourceFieldSelectConfig {
   required: boolean;
   type: string;
 }
-export const SourceFieldSelectConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caption: S.optional(S.NullOr(S.String)),
-    converter: S.optional(S.NullOr(SourceFieldSelectConfigConverter)),
-    defaultValue: S.String,
-    label: S.String,
-    multiple: S.optional(S.NullOr(S.Boolean)),
-    name: S.String,
-    options: SourceFieldSelectConfigOptionsList,
-    required: S.Boolean,
-    type: S.String,
-  }),
-).annotate({ identifier: "SourceFieldSelectConfig" }) as any as S.Schema<SourceFieldSelectConfig>;
-
 export type SourceFieldSwitchGroupConfigFieldsItem =
   | SourceFieldInputConfig
   | SourceFieldSwitchGroupConfig
@@ -3712,14 +3564,7 @@ export type SourceFieldSwitchGroupConfigFieldsItem =
   | SourceFieldCredentialAccountSelectConfig
   | SourceFieldFileUploadConfig
   | SourceFieldSSHTunnelConfig;
-export const SourceFieldSwitchGroupConfigFieldsItem =
-  S.Unknown as any as S.Schema<SourceFieldSwitchGroupConfigFieldsItem>;
-
 export type SourceFieldSwitchGroupConfigFieldsList = Array<SourceFieldSwitchGroupConfigFieldsItem>;
-export const SourceFieldSwitchGroupConfigFieldsList = /*@__PURE__*/ S.Array(
-  SourceFieldSwitchGroupConfigFieldsItem,
-) as any as S.Schema<SourceFieldSwitchGroupConfigFieldsList>;
-
 export interface SourceFieldSwitchGroupConfig {
   caption?: string | null;
   default: SourceFieldSwitchGroupConfigDefault;
@@ -3728,19 +3573,6 @@ export interface SourceFieldSwitchGroupConfig {
   name: string;
   type: string;
 }
-export const SourceFieldSwitchGroupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caption: S.optional(S.NullOr(S.String)),
-    default: SourceFieldSwitchGroupConfigDefault,
-    fields: SourceFieldSwitchGroupConfigFieldsList,
-    label: S.String,
-    name: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "SourceFieldSwitchGroupConfig",
-}) as any as S.Schema<SourceFieldSwitchGroupConfig>;
-
 export type SourceConfigResponseFieldsItem =
   | SourceFieldInputConfig
   | SourceFieldSwitchGroupConfig
@@ -3750,26 +3582,25 @@ export type SourceConfigResponseFieldsItem =
   | SourceFieldCredentialAccountSelectConfig
   | SourceFieldFileUploadConfig
   | SourceFieldSSHTunnelConfig;
-export const SourceConfigResponseFieldsItem =
-  S.Unknown as any as S.Schema<SourceConfigResponseFieldsItem>;
+const SourceConfigResponseFieldsItem = S.Unknown as any as S.Schema<SourceConfigResponseFieldsItem>;
 
 export type SourceConfigResponseFieldsList = Array<SourceConfigResponseFieldsItem>;
-export const SourceConfigResponseFieldsList = /*@__PURE__*/ S.Array(
+const SourceConfigResponseFieldsList = /*@__PURE__*/ S.Array(
   SourceConfigResponseFieldsItem,
 ) as any as S.Schema<SourceConfigResponseFieldsList>;
 
 export type SourceConfigResponseKeywordsList = Array<string>;
-export const SourceConfigResponseKeywordsList =
+const SourceConfigResponseKeywordsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceConfigResponseKeywordsList>;
 
 export type ReleaseStatus = "alpha" | "beta" | "ga";
-export const ReleaseStatus = S.String;
+const ReleaseStatus = S.String;
 
 export interface SuggestedTable {
   table: string;
   tooltip?: string | null;
 }
-export const SuggestedTable = /*@__PURE__*/ S.suspend(() =>
+const SuggestedTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     table: S.String,
     tooltip: S.optional(S.NullOr(S.String)),
@@ -3777,7 +3608,7 @@ export const SuggestedTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedTable" }) as any as S.Schema<SuggestedTable>;
 
 export type SourceConfigResponseSuggestedTablesList = Array<SuggestedTable>;
-export const SourceConfigResponseSuggestedTablesList = /*@__PURE__*/ S.Array(
+const SourceConfigResponseSuggestedTablesList = /*@__PURE__*/ S.Array(
   SuggestedTable,
 ) as any as S.Schema<SourceConfigResponseSuggestedTablesList>;
 
@@ -3790,17 +3621,17 @@ export type SourceConfigResponseWebhookFieldsItem =
   | SourceFieldCredentialAccountSelectConfig
   | SourceFieldFileUploadConfig
   | SourceFieldSSHTunnelConfig;
-export const SourceConfigResponseWebhookFieldsItem =
+const SourceConfigResponseWebhookFieldsItem =
   S.Unknown as any as S.Schema<SourceConfigResponseWebhookFieldsItem>;
 
 export type SourceConfigResponseWebhookFieldsList = Array<SourceConfigResponseWebhookFieldsItem>;
-export const SourceConfigResponseWebhookFieldsList = /*@__PURE__*/ S.Array(
+const SourceConfigResponseWebhookFieldsList = /*@__PURE__*/ S.Array(
   SourceConfigResponseWebhookFieldsItem,
 ) as any as S.Schema<SourceConfigResponseWebhookFieldsList>;
 
 /** Vendor API version labels this source supports. */
 export type SourceConfigResponseVersionsList = Array<string>;
-export const SourceConfigResponseVersionsList =
+const SourceConfigResponseVersionsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceConfigResponseVersionsList>;
 
 export interface SourceVersionDeprecation {
@@ -3808,7 +3639,7 @@ export interface SourceVersionDeprecation {
   /** ISO date the vendor stops serving this version, or null when no date is announced. */
   sunsetAt?: string | null;
 }
-export const SourceVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
+const SourceVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     sunsetAt: S.optional(S.NullOr(S.String)),
@@ -3816,20 +3647,20 @@ export const SourceVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceVersionDeprecation" }) as any as S.Schema<SourceVersionDeprecation>;
 
 export type SourceConfigResponseDeprecatedVersionsList = Array<SourceVersionDeprecation>;
-export const SourceConfigResponseDeprecatedVersionsList = /*@__PURE__*/ S.Array(
+const SourceConfigResponseDeprecatedVersionsList = /*@__PURE__*/ S.Array(
   SourceVersionDeprecation,
 ) as any as S.Schema<SourceConfigResponseDeprecatedVersionsList>;
 
 export type SourceDocumentedTableSyncMethodsList = Array<string>;
-export const SourceDocumentedTableSyncMethodsList =
+const SourceDocumentedTableSyncMethodsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTableSyncMethodsList>;
 
 export type SourceDocumentedTableIncrementalFieldsList = Array<string>;
-export const SourceDocumentedTableIncrementalFieldsList =
+const SourceDocumentedTableIncrementalFieldsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTableIncrementalFieldsList>;
 
 export type SourceDocumentedTablePrimaryKeysList = Array<string>;
-export const SourceDocumentedTablePrimaryKeysList =
+const SourceDocumentedTablePrimaryKeysList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTablePrimaryKeysList>;
 
 export interface SourceDocumentedTable {
@@ -3840,7 +3671,7 @@ export interface SourceDocumentedTable {
   incremental_fields: SourceDocumentedTableIncrementalFieldsList;
   primary_keys: SourceDocumentedTablePrimaryKeysList;
 }
-export const SourceDocumentedTable = /*@__PURE__*/ S.suspend(() =>
+const SourceDocumentedTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     label: S.String,
@@ -3852,7 +3683,7 @@ export const SourceDocumentedTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceDocumentedTable" }) as any as S.Schema<SourceDocumentedTable>;
 
 export type SourceConfigResponseTablesList = Array<SourceDocumentedTable>;
-export const SourceConfigResponseTablesList = /*@__PURE__*/ S.Array(
+const SourceConfigResponseTablesList = /*@__PURE__*/ S.Array(
   SourceDocumentedTable,
 ) as any as S.Schema<SourceConfigResponseTablesList>;
 
@@ -3895,7 +3726,7 @@ export interface SourceConfigResponse {
   /** Credential-free documented table catalog, empty for SQL and file sources with user-defined schemas. The public endpoint sets it; the wizard omits it to keep its payload small. */
   tables?: SourceConfigResponseTablesList | null;
 }
-export const SourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caption: S.optional(S.NullOr(S.String)),
     category: S.optional(S.NullOr(DataWarehouseSourceCategory)),
@@ -3928,13 +3759,13 @@ export const SourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of source type identifier to its config, as both catalog endpoints return it. */
 export type SourceConfigMapResponse = { [key: string]: SourceConfigResponse | undefined };
-export const SourceConfigMapResponse = /*@__PURE__*/ S.Record(
+const SourceConfigMapResponse = /*@__PURE__*/ S.Record(
   S.String,
   SourceConfigResponse,
 ) as any as S.Schema<SourceConfigMapResponse>;
 
 export type GetExternalDataSourcesWizardResponse = SourceConfigMapResponse;
-export const GetExternalDataSourcesWizardResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSourcesWizardResponse = /*@__PURE__*/ S.suspend(() =>
   SourceConfigMapResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetExternalDataSourcesWizardResponse",
@@ -3950,7 +3781,7 @@ export interface ListExternalDataSourcesRequest {
   /** A search term. */
   search?: string;
 }
-export const ListExternalDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3965,7 +3796,7 @@ export const ListExternalDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedExternalDataSourceSerializersListOutputResultsList =
   Array<ExternalDataSourceSerializersOutput>;
-export const PaginatedExternalDataSourceSerializersListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExternalDataSourceSerializersListOutputResultsList = /*@__PURE__*/ S.Array(
   ExternalDataSourceSerializersOutput,
 ) as any as S.Schema<PaginatedExternalDataSourceSerializersListOutputResultsList>;
 
@@ -3975,7 +3806,7 @@ export interface PaginatedExternalDataSourceSerializersListOutput {
   previous?: string | null;
   results?: PaginatedExternalDataSourceSerializersListOutputResultsList;
 }
-export const PaginatedExternalDataSourceSerializersListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExternalDataSourceSerializersListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -3990,7 +3821,7 @@ export interface ListExternalDataSourcesConnectionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListExternalDataSourcesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -4022,7 +3853,7 @@ export interface ExternalDataSourceConnectionOption {
   /** User-set description of the source, shown as its display name in the connection picker when set. */
   description?: string | null;
 }
-export const ExternalDataSourceConnectionOption = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceConnectionOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     schema_name: S.optional(S.NullOr(S.String)),
@@ -4040,13 +3871,13 @@ export const ExternalDataSourceConnectionOption = /*@__PURE__*/ S.suspend(() =>
 
 export type ListExternalDataSourcesConnectionsResponseBodyList =
   Array<ExternalDataSourceConnectionOption>;
-export const ListExternalDataSourcesConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListExternalDataSourcesConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
   ExternalDataSourceConnectionOption,
 ) as any as S.Schema<ListExternalDataSourcesConnectionsResponseBodyList>;
 
 export type ListExternalDataSourcesConnectionsResponse =
   ListExternalDataSourcesConnectionsResponseBodyList;
-export const ListExternalDataSourcesConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListExternalDataSourcesConnectionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListExternalDataSourcesConnectionsResponse",
@@ -4056,7 +3887,7 @@ export interface ListExternalDataSourcesDirectConnectionOptionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListExternalDataSourcesDirectConnectionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesDirectConnectionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -4079,7 +3910,7 @@ export interface DirectConnectionSourceOption {
   /** Path to the source's icon asset, or null when the source ships no icon. */
   icon_path: string | null;
 }
-export const DirectConnectionSourceOption = /*@__PURE__*/ S.suspend(() =>
+const DirectConnectionSourceOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_type: ExternalDataSourceTypeEnum,
     label: S.String,
@@ -4091,20 +3922,20 @@ export const DirectConnectionSourceOption = /*@__PURE__*/ S.suspend(() =>
 
 export type ListExternalDataSourcesDirectConnectionOptionsResponseBodyList =
   Array<DirectConnectionSourceOption>;
-export const ListExternalDataSourcesDirectConnectionOptionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListExternalDataSourcesDirectConnectionOptionsResponseBodyList = /*@__PURE__*/ S.Array(
   DirectConnectionSourceOption,
 ) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponseBodyList>;
 
 export type ListExternalDataSourcesDirectConnectionOptionsResponse =
   ListExternalDataSourcesDirectConnectionOptionsResponseBodyList;
-export const ListExternalDataSourcesDirectConnectionOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesDirectConnectionOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListExternalDataSourcesDirectConnectionOptionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListExternalDataSourcesDirectConnectionOptionsResponse",
 }) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponse>;
 
 export type ListExternalDataSourcesJobsRequestSchemasList = Array<string>;
-export const ListExternalDataSourcesJobsRequestSchemasList =
+const ListExternalDataSourcesJobsRequestSchemasList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ListExternalDataSourcesJobsRequestSchemasList>;
 
 export interface ListExternalDataSourcesJobsRequest {
@@ -4121,7 +3952,7 @@ export interface ListExternalDataSourcesJobsRequest {
   /** A search term. */
   search?: string;
 }
-export const ListExternalDataSourcesJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4141,10 +3972,8 @@ export const ListExternalDataSourcesJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExternalDataSourcesJobsRequest>;
 
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type SimpleExternalDataSchemaSyncType = ExternalDataSchemaSyncTypeEnum | BlankEnum;
-export const SimpleExternalDataSchemaSyncType =
+const SimpleExternalDataSchemaSyncType =
   S.Unknown as any as S.Schema<SimpleExternalDataSchemaSyncType>;
 
 export interface SimpleExternalDataSchema {
@@ -4155,7 +3984,7 @@ export interface SimpleExternalDataSchema {
   last_synced_at?: string | null;
   sync_type?: SimpleExternalDataSchemaSyncType | null;
 }
-export const SimpleExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
+const SimpleExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4168,7 +3997,7 @@ export const SimpleExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
 export type ExternalDataJobSerializersDestinationIdsList = Array<string>;
-export const ExternalDataJobSerializersDestinationIdsList =
+const ExternalDataJobSerializersDestinationIdsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataJobSerializersDestinationIdsList>;
 
 export interface ExternalDataJobSerializers {
@@ -4189,7 +4018,7 @@ export interface ExternalDataJobSerializers {
   /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
   destination_ids: ExternalDataJobSerializersDestinationIdsList;
 }
-export const ExternalDataJobSerializers = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataJobSerializers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created_at: S.String,
@@ -4209,12 +4038,12 @@ export const ExternalDataJobSerializers = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataJobSerializers>;
 
 export type ListExternalDataSourcesJobsResponseBodyList = Array<ExternalDataJobSerializers>;
-export const ListExternalDataSourcesJobsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListExternalDataSourcesJobsResponseBodyList = /*@__PURE__*/ S.Array(
   ExternalDataJobSerializers,
 ) as any as S.Schema<ListExternalDataSourcesJobsResponseBodyList>;
 
 export type ListExternalDataSourcesJobsResponse = ListExternalDataSourcesJobsResponseBodyList;
-export const ListExternalDataSourcesJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesJobsResponse = /*@__PURE__*/ S.suspend(() =>
   ListExternalDataSourcesJobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListExternalDataSourcesJobsResponse",
@@ -4228,7 +4057,7 @@ export interface ListExternalDataSourcesStoredCredentialsRequest {
   /** Only return stored credentials for this source type (e.g. 'Stripe', 'Postgres'). */
   source_type?: string;
 }
-export const ListExternalDataSourcesStoredCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesStoredCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -4245,13 +4074,13 @@ export const ListExternalDataSourcesStoredCredentialsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListExternalDataSourcesStoredCredentialsRequest>;
 
 export type ListExternalDataSourcesStoredCredentialsResponseBodyList = Array<SourceCredential>;
-export const ListExternalDataSourcesStoredCredentialsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListExternalDataSourcesStoredCredentialsResponseBodyList = /*@__PURE__*/ S.Array(
   SourceCredential,
 ) as any as S.Schema<ListExternalDataSourcesStoredCredentialsResponseBodyList>;
 
 export type ListExternalDataSourcesStoredCredentialsResponse =
   ListExternalDataSourcesStoredCredentialsResponseBodyList;
-export const ListExternalDataSourcesStoredCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSourcesStoredCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   ListExternalDataSourcesStoredCredentialsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListExternalDataSourcesStoredCredentialsResponse",
@@ -4259,7 +4088,7 @@ export const ListExternalDataSourcesStoredCredentialsResponse = /*@__PURE__*/ S.
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList = Array<string>;
-export const UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList =
+const UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList>;
 
 export interface UpdateExternalDataSourceRequest {
@@ -4281,7 +4110,7 @@ export interface UpdateExternalDataSourceRequest {
   auto_sync_schema_patterns?: UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const UpdateExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4309,7 +4138,7 @@ export const UpdateExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
 export type UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList = Array<string>;
-export const UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList =
+const UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList>;
 
 export interface UpdateExternalDataSourcesDestinationsPartialRequest {
@@ -4320,7 +4149,7 @@ export interface UpdateExternalDataSourcesDestinationsPartialRequest {
   /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
   destination_ids?: UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList | null;
 }
-export const UpdateExternalDataSourcesDestinationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataSourcesDestinationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4340,7 +4169,7 @@ export const UpdateExternalDataSourcesDestinationsPartialRequest = /*@__PURE__*/
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList = Array<string>;
-export const UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList =
+const UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList>;
 
 export interface UpdateExternalDataSourcesPartialRequest {
@@ -4362,7 +4191,7 @@ export interface UpdateExternalDataSourcesPartialRequest {
   auto_sync_schema_patterns?: UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const UpdateExternalDataSourcesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataSourcesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4391,7 +4220,7 @@ export const UpdateExternalDataSourcesPartialRequest = /*@__PURE__*/ S.suspend((
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
   Array<string>;
-export const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
+const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList>;
 
 export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest {
@@ -4413,37 +4242,36 @@ export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest {
   auto_sync_schema_patterns?: UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
-export const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
-      client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      account_id: S.optional(S.String),
-      prefix: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      direct_query_enabled: S.optional(S.Boolean),
-      auto_sync_new_schemas: S.optional(S.Boolean),
-      auto_sync_schema_patterns: S.optional(
-        S.NullOr(
-          UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList,
-        ),
+const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
+    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    account_id: S.optional(S.String),
+    prefix: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    direct_query_enabled: S.optional(S.Boolean),
+    auto_sync_new_schemas: S.optional(S.Boolean),
+    auto_sync_schema_patterns: S.optional(
+      S.NullOr(
+        UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList,
       ),
-      job_inputs: S.optional(S.Unknown),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/external_data_sources/{id}/revenue_analytics_config/",
-        code: 200,
-      }),
     ),
-  ).annotate({
-    identifier: "UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest",
-  }) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest>;
+    job_inputs: S.optional(S.Unknown),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/external_data_sources/{id}/revenue_analytics_config/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest",
+}) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest>;
 
 export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse {}
-export const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse =
+const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse =
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse>;
 
 export type CreateExternalDataSourceError = BadRequest | Forbidden | NotFound | PosthogOpError;

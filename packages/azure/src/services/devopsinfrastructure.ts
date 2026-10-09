@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of resource. */
 export type DevOpsInfrastructureResourceType = "Microsoft.DevOpsInfrastructure/pools";
-export const DevOpsInfrastructureResourceType = S.String;
+const DevOpsInfrastructureResourceType = S.String;
 
 export interface CheckPoolNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20,7 +20,7 @@ export interface CheckPoolNameAvailabilityRequest {
   /** The type of resource that is used as the scope of the availability check. */
   type: DevOpsInfrastructureResourceType | (string & {});
 }
-export const CheckPoolNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckPoolNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -39,11 +39,11 @@ export const CheckPoolNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** AvailabilityStatus of a name. */
 export type AvailabilityStatus = "Available" | "Unavailable";
-export const AvailabilityStatus = S.String;
+const AvailabilityStatus = S.String;
 
 /** The reason code explaining why the name is unavailable. Will be null if the name is available. */
 export type CheckNameAvailabilityReason = "Invalid" | "AlreadyExists";
-export const CheckNameAvailabilityReason = S.String;
+const CheckNameAvailabilityReason = S.String;
 
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
@@ -56,7 +56,7 @@ export interface CheckNameAvailabilityResult {
   /** The reason code explaining why the name is unavailable. Will be null if the name is available. */
   reason: CheckNameAvailabilityReason;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: AvailabilityStatus,
     message: S.String,
@@ -75,7 +75,7 @@ export interface DeletePoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
-export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -91,13 +91,13 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePoolRequest" }) as any as S.Schema<DeletePoolRequest>;
 
 export interface DeletePoolResponse {}
-export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePoolResponse",
 }) as any as S.Schema<DeletePoolResponse>;
 
 /** List of resource IDs to delete. */
 export type DeletePoolResourcesRequestResourceIdsList = Array<string>;
-export const DeletePoolResourcesRequestResourceIdsList = /*@__PURE__*/ S.Array(
+const DeletePoolResourcesRequestResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeletePoolResourcesRequestResourceIdsList>;
 
@@ -111,7 +111,7 @@ export interface DeletePoolResourcesRequest {
   /** List of resource IDs to delete. */
   resourceIds: DeletePoolResourcesRequestResourceIdsList;
 }
-export const DeletePoolResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePoolResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -130,7 +130,7 @@ export const DeletePoolResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePoolResourcesRequest>;
 
 export interface DeletePoolResourcesResponse {}
-export const DeletePoolResourcesResponse =
+const DeletePoolResourcesResponse =
   DeletePoolResponse as any as S.Schema<DeletePoolResourcesResponse>;
 
 export interface GetPoolRequest {
@@ -141,7 +141,7 @@ export interface GetPoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
-export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -158,11 +158,11 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -179,7 +179,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -192,7 +192,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetPoolResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetPoolResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetPoolResponseTagsMap>;
@@ -206,11 +206,11 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** A list of strings. */
 export type PoolStringList = Array<string>;
-export const PoolStringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<PoolStringList>;
+const PoolStringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<PoolStringList>;
 
 /** Defines the type of Azure DevOps pool permission. */
 export interface AzureDevOpsPermissionProfile {
@@ -221,7 +221,7 @@ export interface AzureDevOpsPermissionProfile {
   /** Group email addresses. */
   groups?: PoolStringList;
 }
-export const AzureDevOpsPermissionProfile = /*@__PURE__*/ S.suspend(() =>
+const AzureDevOpsPermissionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     users: S.optional(PoolStringList),
@@ -242,7 +242,7 @@ export interface OrganizationProfile {
   /** AzureDevOps only: an alias to reference the pool by. */
   alias?: string;
 }
-export const OrganizationProfile = /*@__PURE__*/ S.suspend(() =>
+const OrganizationProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     organizations: S.optional(S.Unknown),
@@ -253,7 +253,7 @@ export const OrganizationProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines how the stand-by scheme should be provided. */
 export type ResourcePredictionsProfileType = "Manual" | "Automatic";
-export const ResourcePredictionsProfileType = S.String;
+const ResourcePredictionsProfileType = S.String;
 
 /** Determines how the stand-by scheme should be provided. */
 export interface ResourcePredictionsProfile {
@@ -262,7 +262,7 @@ export interface ResourcePredictionsProfile {
   /** Automatic only: determines the balance between cost and performance (Balanced, MostCostEffective, MoreCostEffective, MorePerformance, BestPerformance). */
   predictionPreference?: string;
 }
-export const ResourcePredictionsProfile = /*@__PURE__*/ S.suspend(() =>
+const ResourcePredictionsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: ResourcePredictionsProfileType,
     predictionPreference: S.optional(S.String),
@@ -284,7 +284,7 @@ export interface AgentProfile {
   /** Stateful only: how long should the machine be kept around after it ran a workload when there are no stand-by agents. */
   gracePeriodTimeSpan?: string;
 }
-export const AgentProfile = /*@__PURE__*/ S.suspend(() =>
+const AgentProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     resourcePredictions: S.optional(S.Unknown),
@@ -299,7 +299,7 @@ export interface DevOpsAzureSku {
   /** The Azure SKU name of the machines in the pool. */
   name: string;
 }
-export const DevOpsAzureSku = /*@__PURE__*/ S.suspend(() =>
+const DevOpsAzureSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -318,7 +318,7 @@ export interface PoolImage {
   /** The ephemeral type of the image (Automatic, CacheDisk, ResourceDisk). */
   ephemeralType?: string;
 }
-export const PoolImage = /*@__PURE__*/ S.suspend(() =>
+const PoolImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     wellKnownImageName: S.optional(S.String),
@@ -330,7 +330,7 @@ export const PoolImage = /*@__PURE__*/ S.suspend(() =>
 
 /** The VM images of the machines in the pool. */
 export type PoolImageList = Array<PoolImage>;
-export const PoolImageList = /*@__PURE__*/ S.Array(PoolImage) as any as S.Schema<PoolImageList>;
+const PoolImageList = /*@__PURE__*/ S.Array(PoolImage) as any as S.Schema<PoolImageList>;
 
 /** The secret management settings of the machines in the pool. */
 export interface SecretsManagementSettings {
@@ -343,7 +343,7 @@ export interface SecretsManagementSettings {
   /** Defines if the key of installed certificates should be exportable. */
   keyExportable: boolean;
 }
-export const SecretsManagementSettings = /*@__PURE__*/ S.suspend(() =>
+const SecretsManagementSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateStoreLocation: S.optional(S.String),
     certificateStoreName: S.optional(S.String),
@@ -361,7 +361,7 @@ export interface OsProfile {
   /** Determines how the service should be run (Service, Interactive). */
   logonType?: string;
 }
-export const OsProfile = /*@__PURE__*/ S.suspend(() =>
+const OsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretsManagementSettings: S.optional(SecretsManagementSettings),
     logonType: S.optional(S.String),
@@ -379,7 +379,7 @@ export interface DataDisk {
   /** The drive letter for the empty data disk. */
   driveLetter?: string;
 }
-export const DataDisk = /*@__PURE__*/ S.suspend(() =>
+const DataDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caching: S.optional(S.String),
     diskSizeGiB: S.optional(S.Number),
@@ -390,7 +390,7 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of empty data disks to attach. */
 export type DataDiskList = Array<DataDisk>;
-export const DataDiskList = /*@__PURE__*/ S.Array(DataDisk) as any as S.Schema<DataDiskList>;
+const DataDiskList = /*@__PURE__*/ S.Array(DataDisk) as any as S.Schema<DataDiskList>;
 
 /** The storage profile of the VMSS. */
 export interface StorageProfile {
@@ -399,7 +399,7 @@ export interface StorageProfile {
   /** A list of empty data disks to attach. */
   dataDisks?: DataDiskList;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osDiskStorageAccountType: S.optional(S.String),
     dataDisks: S.optional(DataDiskList),
@@ -413,7 +413,7 @@ export interface NetworkProfile {
   /** The number of static public IP addresses for machines in the pool. */
   staticIpAddressCount?: number;
 }
-export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.optional(S.String),
     staticIpAddressCount: S.optional(S.Number),
@@ -435,7 +435,7 @@ export interface FabricProfile {
   /** Vmss only: the network profile of the machines in the pool. */
   networkProfile?: NetworkProfile;
 }
-export const FabricProfile = /*@__PURE__*/ S.suspend(() =>
+const FabricProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     sku: S.optional(DevOpsAzureSku),
@@ -451,7 +451,7 @@ export interface RuntimeConfiguration {
   /** The target work folder of the task agent on the machine. */
   workFolder?: string;
 }
-export const RuntimeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RuntimeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workFolder: S.optional(S.String),
   }),
@@ -474,7 +474,7 @@ export interface PoolProperties {
   /** The runtime configuration of the pool. */
   runtimeConfiguration?: RuntimeConfiguration;
 }
-export const PoolProperties = /*@__PURE__*/ S.suspend(() =>
+const PoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     maximumConcurrency: S.Number,
@@ -492,7 +492,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -501,7 +501,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -512,7 +512,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type GetPoolResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetPoolResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const GetPoolResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<GetPoolResponseIdentityUserAssignedIdentitiesMap>;
@@ -527,7 +527,7 @@ export interface GetPoolResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetPoolResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetPoolResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetPoolResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -554,7 +554,7 @@ export interface GetPoolResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetPoolResponseIdentity;
 }
-export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -575,7 +575,7 @@ export interface ListImageVersionByImageRequest {
   /** Name of the image. */
   imageName: string;
 }
-export const ListImageVersionByImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageVersionByImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -597,7 +597,7 @@ export interface ImageVersionProperties {
   /** Version of the image. */
   version: string;
 }
-export const ImageVersionProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
   }),
@@ -616,7 +616,7 @@ export interface ImageVersion {
   /** The resource-specific properties for this resource. */
   properties?: ImageVersionProperties;
 }
-export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
+const ImageVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -628,7 +628,7 @@ export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The ImageVersion items on this page */
 export type ImageVersionListResultValueList = Array<ImageVersion>;
-export const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
+const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionListResultValueList>;
 
@@ -639,7 +639,7 @@ export interface ImageVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ImageVersionListResult = /*@__PURE__*/ S.suspend(() =>
+const ImageVersionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ImageVersionListResultValueList,
     nextLink: S.optional(S.String),
@@ -647,7 +647,7 @@ export const ImageVersionListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageVersionListResult" }) as any as S.Schema<ImageVersionListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -669,7 +669,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -680,11 +680,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -699,7 +699,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -711,7 +711,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -721,7 +721,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -734,7 +734,7 @@ export interface ListPoolByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -752,15 +752,10 @@ export const ListPoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolTagsMap = { [key: string]: string | undefined };
-export const PoolTagsMap = GetPoolResponseTagsMap as any as S.Schema<PoolTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type PoolIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const PoolIdentityUserAssignedIdentitiesMap =
-  GetPoolResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<PoolIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface PoolIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -771,8 +766,6 @@ export interface PoolIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolIdentityUserAssignedIdentitiesMap;
 }
-export const PoolIdentity = GetPoolResponseIdentity as any as S.Schema<PoolIdentity>;
-
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface Pool {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -792,11 +785,11 @@ export interface Pool {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolIdentity;
 }
-export const Pool = GetPoolResponse as any as S.Schema<Pool>;
+const Pool = GetPoolResponse as any as S.Schema<Pool>;
 
 /** The Pool items on this page */
 export type PoolListResultValueList = Array<Pool>;
-export const PoolListResultValueList = /*@__PURE__*/ S.Array(
+const PoolListResultValueList = /*@__PURE__*/ S.Array(
   Pool,
 ) as any as S.Schema<PoolListResultValueList>;
 
@@ -807,7 +800,7 @@ export interface PoolListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PoolListResult = /*@__PURE__*/ S.suspend(() =>
+const PoolListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PoolListResultValueList,
     nextLink: S.optional(S.String),
@@ -818,7 +811,7 @@ export interface ListPoolBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListPoolBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoolBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -841,7 +834,7 @@ export interface ListResourceDetailByPoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
-export const ListResourceDetailByPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceDetailByPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -871,7 +864,7 @@ export type ResourceStatus =
   | "Starting"
   | "PendingReimage"
   | "Reimaging";
-export const ResourceStatus = S.String;
+const ResourceStatus = S.String;
 
 /** Details of the ResourceDetailsObject. */
 export interface ResourceDetailsObjectProperties {
@@ -882,7 +875,7 @@ export interface ResourceDetailsObjectProperties {
   /** The version of the image running on the resource. */
   imageVersion: string;
 }
-export const ResourceDetailsObjectProperties = /*@__PURE__*/ S.suspend(() =>
+const ResourceDetailsObjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ResourceStatus,
     image: S.String,
@@ -905,7 +898,7 @@ export interface ResourceDetailsObject {
   /** The resource-specific properties for this resource. */
   properties?: ResourceDetailsObjectProperties;
 }
-export const ResourceDetailsObject = /*@__PURE__*/ S.suspend(() =>
+const ResourceDetailsObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -917,7 +910,7 @@ export const ResourceDetailsObject = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceDetailsObject items on this page */
 export type ResourceDetailsObjectListResultValueList = Array<ResourceDetailsObject>;
-export const ResourceDetailsObjectListResultValueList = /*@__PURE__*/ S.Array(
+const ResourceDetailsObjectListResultValueList = /*@__PURE__*/ S.Array(
   ResourceDetailsObject,
 ) as any as S.Schema<ResourceDetailsObjectListResultValueList>;
 
@@ -928,7 +921,7 @@ export interface ResourceDetailsObjectListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ResourceDetailsObjectListResult = /*@__PURE__*/ S.suspend(() =>
+const ResourceDetailsObjectListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ResourceDetailsObjectListResultValueList,
     nextLink: S.optional(S.String),
@@ -943,7 +936,7 @@ export interface ListSkuByLocationRequest {
   /** Name of the location. */
   locationName: string;
 }
-export const ListSkuByLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkuByLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -959,17 +952,17 @@ export const ListSkuByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available. */
 export type ResourceSkuPropertiesLocationsList = Array<string>;
-export const ResourceSkuPropertiesLocationsList =
+const ResourceSkuPropertiesLocationsList =
   DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuPropertiesLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
-export const ResourceSkuLocationInfoZonesList =
+const ResourceSkuLocationInfoZonesList =
   DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
-export const ResourceSkuZoneDetailsNameList =
+const ResourceSkuZoneDetailsNameList =
   DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
 
 /** Describes The SKU capabilities object. */
@@ -979,7 +972,7 @@ export interface ResourceSkuCapabilities {
   /** The value of the SKU capability. */
   value: string;
 }
-export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -988,7 +981,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
+const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
 
@@ -999,7 +992,7 @@ export interface ResourceSkuZoneDetails {
   /** A list of capabilities that are available for the SKU in the specified list of zones. */
   capabilities: ResourceSkuZoneDetailsCapabilitiesList;
 }
-export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: ResourceSkuZoneDetailsNameList,
     capabilities: ResourceSkuZoneDetailsCapabilitiesList,
@@ -1008,7 +1001,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList = Array<ResourceSkuZoneDetails>;
-export const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
+const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
 
@@ -1021,7 +1014,7 @@ export interface ResourceSkuLocationInfo {
   /** Gets details of capabilities available to a SKU in specific zones. */
   zoneDetails: ResourceSkuLocationInfoZoneDetailsList;
 }
-export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     zones: ResourceSkuLocationInfoZonesList,
@@ -1031,32 +1024,32 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of locations and availability zones in those locations where the SKU is available */
 export type ResourceSkuPropertiesLocationInfoList = Array<ResourceSkuLocationInfo>;
-export const ResourceSkuPropertiesLocationInfoList = /*@__PURE__*/ S.Array(
+const ResourceSkuPropertiesLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuPropertiesLocationInfoList>;
 
 /** Name value pairs to describe the capability. */
 export type ResourceSkuPropertiesCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuPropertiesCapabilitiesList =
+const ResourceSkuPropertiesCapabilitiesList =
   ResourceSkuZoneDetailsCapabilitiesList as any as S.Schema<ResourceSkuPropertiesCapabilitiesList>;
 
 /** Describes the kind of SKU restrictions that can exist */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
-export const ResourceSkuRestrictionsType = S.String;
+const ResourceSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList =
+const ResourceSkuRestrictionsValuesList =
   DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
-export const ResourceSkuRestrictionInfoLocationsList =
+const ResourceSkuRestrictionInfoLocationsList =
   DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
-export const ResourceSkuRestrictionInfoZonesList =
+const ResourceSkuRestrictionInfoZonesList =
   DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
 
 /** Describes an available Compute SKU Restriction Information. */
@@ -1066,7 +1059,7 @@ export interface ResourceSkuRestrictionInfo {
   /** List of availability zones where the SKU is restricted. */
   zones?: ResourceSkuRestrictionInfoZonesList;
 }
-export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(ResourceSkuRestrictionInfoLocationsList),
     zones: S.optional(ResourceSkuRestrictionInfoZonesList),
@@ -1077,7 +1070,7 @@ export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the reason for SKU restriction. */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
-export const ResourceSkuRestrictionsReasonCode = S.String;
+const ResourceSkuRestrictionsReasonCode = S.String;
 
 /** The restrictions of the SKU. */
 export interface ResourceSkuRestrictions {
@@ -1090,7 +1083,7 @@ export interface ResourceSkuRestrictions {
   /** the reason for restriction. */
   reasonCode?: ResourceSkuRestrictionsReasonCode;
 }
-export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ResourceSkuRestrictionsType),
     values: ResourceSkuRestrictionsValuesList,
@@ -1101,7 +1094,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** The restrictions of the SKU. */
 export type ResourceSkuPropertiesRestrictionsList = Array<ResourceSkuRestrictions>;
-export const ResourceSkuPropertiesRestrictionsList = /*@__PURE__*/ S.Array(
+const ResourceSkuPropertiesRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuPropertiesRestrictionsList>;
 
@@ -1124,7 +1117,7 @@ export interface ResourceSkuProperties {
   /** The restrictions of the SKU. */
   restrictions: ResourceSkuPropertiesRestrictionsList;
 }
-export const ResourceSkuProperties = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String,
     tier: S.String,
@@ -1150,7 +1143,7 @@ export interface ResourceSku {
   /** The resource-specific properties for this resource. */
   properties?: ResourceSkuProperties;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1162,7 +1155,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceSku items on this page */
 export type ResourceSkuListResultValueList = Array<ResourceSku>;
-export const ResourceSkuListResultValueList = /*@__PURE__*/ S.Array(
+const ResourceSkuListResultValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkuListResultValueList>;
 
@@ -1173,7 +1166,7 @@ export interface ResourceSkuListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ResourceSkuListResult = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ResourceSkuListResultValueList,
     nextLink: S.optional(S.String),
@@ -1182,19 +1175,18 @@ export const ResourceSkuListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateRequestTagsMap =
+const PoolsCreateOrUpdateRequestTagsMap =
   GetPoolResponseTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput =
-  DeletePoolResponse as any as S.Schema<UserAssignedIdentityInput>;
+const UserAssignedIdentityInput = DeletePoolResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
@@ -1205,7 +1197,7 @@ export interface PoolsCreateOrUpdateRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
-export const PoolsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const PoolsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap),
@@ -1230,7 +1222,7 @@ export interface PoolsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolsCreateOrUpdateRequestIdentity;
 }
-export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1253,14 +1245,14 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateResponseTagsMap =
+const PoolsCreateOrUpdateResponseTagsMap =
   GetPoolResponseTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
+const PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
   GetPoolResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1273,7 +1265,7 @@ export interface PoolsCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const PoolsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const PoolsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1304,7 +1296,7 @@ export interface PoolsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolsCreateOrUpdateResponseIdentity;
 }
-export const PoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1325,7 +1317,7 @@ export interface SubscriptionUsagesUsagesRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const SubscriptionUsagesUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionUsagesUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1348,7 +1340,7 @@ export interface QuotaName {
   /** The localized name of the resource. */
   localizedValue?: string;
 }
-export const QuotaName = /*@__PURE__*/ S.suspend(() =>
+const QuotaName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -1368,7 +1360,7 @@ export interface Quota {
   /** The maximum permitted usage of the resource. */
   limit: number;
 }
-export const Quota = /*@__PURE__*/ S.suspend(() =>
+const Quota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(QuotaName),
     id: S.String,
@@ -1380,9 +1372,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 
 /** The Quota items on this page */
 export type PagedQuotaValueList = Array<Quota>;
-export const PagedQuotaValueList = /*@__PURE__*/ S.Array(
-  Quota,
-) as any as S.Schema<PagedQuotaValueList>;
+const PagedQuotaValueList = /*@__PURE__*/ S.Array(Quota) as any as S.Schema<PagedQuotaValueList>;
 
 /** Paged collection of Quota items */
 export interface PagedQuota {
@@ -1391,7 +1381,7 @@ export interface PagedQuota {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PagedQuota = /*@__PURE__*/ S.suspend(() =>
+const PagedQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PagedQuotaValueList,
     nextLink: S.optional(S.String),
@@ -1402,21 +1392,18 @@ export const PagedQuota = /*@__PURE__*/ S.suspend(() =>
 export type UpdatePoolRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UpdatePoolRequestIdentityUserAssignedIdentitiesMap =
-  PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdatePoolRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdatePoolRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdatePoolRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdatePoolRequestIdentity =
+const UpdatePoolRequestIdentity =
   PoolsCreateOrUpdateRequestIdentity as any as S.Schema<UpdatePoolRequestIdentity>;
 
 /** Resource tags. */
 export type UpdatePoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolRequestTagsMap =
+const UpdatePoolRequestTagsMap =
   GetPoolResponseTagsMap as any as S.Schema<UpdatePoolRequestTagsMap>;
 
 /** The updatable properties of the Pool. */
@@ -1436,7 +1423,7 @@ export interface PoolUpdateProperties {
   /** The runtime configuration of the pool. */
   runtimeConfiguration?: RuntimeConfiguration;
 }
-export const PoolUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const PoolUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     maximumConcurrency: S.optional(S.Number),
@@ -1462,7 +1449,7 @@ export interface UpdatePoolRequest {
   /** The resource-specific properties for this resource. */
   properties?: PoolUpdateProperties;
 }
-export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1482,14 +1469,14 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolResponseTagsMap =
+const UpdatePoolResponseTagsMap =
   GetPoolResponseTagsMap as any as S.Schema<UpdatePoolResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdatePoolResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdatePoolResponseIdentityUserAssignedIdentitiesMap =
+const UpdatePoolResponseIdentityUserAssignedIdentitiesMap =
   GetPoolResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdatePoolResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1502,7 +1489,7 @@ export interface UpdatePoolResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdatePoolResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdatePoolResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const UpdatePoolResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1531,7 +1518,7 @@ export interface UpdatePoolResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdatePoolResponseIdentity;
 }
-export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

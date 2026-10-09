@@ -62,7 +62,7 @@ export class InvalidHealthcheckEndpoint
   ) {}
 
 export type EndpointHealthchecksCreateRequestCheckType = "icmp";
-export const EndpointHealthchecksCreateRequestCheckType = S.String;
+const EndpointHealthchecksCreateRequestCheckType = S.String;
 
 export interface CreateEndpointHealthcheckRequest {
   /** Identifier */
@@ -74,7 +74,7 @@ export interface CreateEndpointHealthcheckRequest {
   /** Optional name associated with this check */
   name?: string;
 }
-export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     checkType: EndpointHealthchecksCreateRequestCheckType.pipe(T.Body("check_type")),
@@ -94,7 +94,7 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEndpointHealthcheckRequest>;
 
 export type EndpointHealthchecksCreateResponseCheckType = "icmp";
-export const EndpointHealthchecksCreateResponseCheckType = S.String;
+const EndpointHealthchecksCreateResponseCheckType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEndpointHealthcheckResponse {
@@ -107,7 +107,7 @@ export interface CreateEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
-export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkType: EndpointHealthchecksCreateResponseCheckType.pipe(T.Body("check_type")),
     endpoint: S.String,
@@ -119,16 +119,16 @@ export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEndpointHealthcheckResponse>;
 
 export type TraceroutesCreateRequestTargetsList = Array<string>;
-export const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ S.Array(
+const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceroutesCreateRequestTargetsList>;
 
 export type TraceroutesCreateRequestColosList = Array<string>;
-export const TraceroutesCreateRequestColosList =
+const TraceroutesCreateRequestColosList =
   TraceroutesCreateRequestTargetsList as any as S.Schema<TraceroutesCreateRequestColosList>;
 
 export type TraceroutesCreateRequestOptionsPacketType = "icmp" | "tcp" | "udp" | "gre" | "gre+icmp";
-export const TraceroutesCreateRequestOptionsPacketType = S.String;
+const TraceroutesCreateRequestOptionsPacketType = S.String;
 
 export interface TraceroutesCreateRequestOptions {
   /** Max TTL. */
@@ -142,7 +142,7 @@ export interface TraceroutesCreateRequestOptions {
   /** Set the time (in seconds) to wait for a response to a probe. */
   waitTime?: number;
 }
-export const TraceroutesCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
+const TraceroutesCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxTtl: S.optional(S.Number.pipe(T.Body("max_ttl"))),
     packetType: S.optional(TraceroutesCreateRequestOptionsPacketType.pipe(T.Body("packet_type"))),
@@ -162,7 +162,7 @@ export interface CreateTracerouteRequest {
   colos?: TraceroutesCreateRequestColosList;
   options?: TraceroutesCreateRequestOptions;
 }
-export const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     targets: TraceroutesCreateRequestTargetsList,
@@ -181,7 +181,7 @@ export interface TraceroutesCreateResultItemColosItemColo {
   /** Source colo name. */
   name?: string | null;
 }
-export const TraceroutesCreateResultItemColosItemColo = /*@__PURE__*/ S.suspend(() =>
+const TraceroutesCreateResultItemColosItemColo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -196,13 +196,12 @@ export type TraceroutesCreateResultItemColosItemError =
   | "Could not gather traceroute data: Code 2"
   | "Could not gather traceroute data: Code 3"
   | "Could not gather traceroute data: Code 4";
-export const TraceroutesCreateResultItemColosItemError = S.String;
+const TraceroutesCreateResultItemColosItemError = S.String;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList = Array<string>;
-export const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList>;
+const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList>;
 
 export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   /** AS number associated with the node object. */
@@ -224,7 +223,7 @@ export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   /** Standard deviation of the RTTs in ms. */
   stdDevRttMs?: number | null;
 }
-export const TraceroutesCreateResultItemColosItemHopsItemNodesItem = /*@__PURE__*/ S.suspend(() =>
+const TraceroutesCreateResultItemColosItemHopsItemNodesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.optional(S.NullOr(S.String)),
     ip: S.optional(S.NullOr(S.String)),
@@ -242,7 +241,7 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesItem = /*@__PURE__
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesList =
   Array<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
-export const TraceroutesCreateResultItemColosItemHopsItemNodesList = /*@__PURE__*/ S.Array(
+const TraceroutesCreateResultItemColosItemHopsItemNodesList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItemColosItemHopsItemNodesItem,
 ) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesList>;
 
@@ -256,7 +255,7 @@ export interface TraceroutesCreateResultItemColosItemHopsItem {
   /** The time to live (TTL). */
   packetsTtl?: number | null;
 }
-export const TraceroutesCreateResultItemColosItemHopsItem = /*@__PURE__*/ S.suspend(() =>
+const TraceroutesCreateResultItemColosItemHopsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodes: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemHopsItemNodesList)),
     packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
@@ -269,7 +268,7 @@ export const TraceroutesCreateResultItemColosItemHopsItem = /*@__PURE__*/ S.susp
 
 export type TraceroutesCreateResultItemColosItemHopsList =
   Array<TraceroutesCreateResultItemColosItemHopsItem>;
-export const TraceroutesCreateResultItemColosItemHopsList = /*@__PURE__*/ S.Array(
+const TraceroutesCreateResultItemColosItemHopsList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItemColosItemHopsItem,
 ) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsList>;
 
@@ -283,7 +282,7 @@ export interface TraceroutesCreateResultItemColosItem {
   /** Total time of traceroute in ms. */
   tracerouteTimeMs?: number | null;
 }
-export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(() =>
+const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colo: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemColo)),
     error: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemError)),
@@ -296,7 +295,7 @@ export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<TraceroutesCreateResultItemColosItem>;
 
 export type TraceroutesCreateResultItemColosList = Array<TraceroutesCreateResultItemColosItem>;
-export const TraceroutesCreateResultItemColosList = /*@__PURE__*/ S.Array(
+const TraceroutesCreateResultItemColosList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItemColosItem,
 ) as any as S.Schema<TraceroutesCreateResultItemColosList>;
 
@@ -305,7 +304,7 @@ export interface TraceroutesCreateResultItem {
   /** The target hostname, IPv6, or IPv6 address. */
   target?: string | null;
 }
-export const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colos: S.optional(S.NullOr(TraceroutesCreateResultItemColosList)),
     target: S.optional(S.NullOr(S.String)),
@@ -315,7 +314,7 @@ export const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TraceroutesCreateResultItem>;
 
 export type TraceroutesCreateResultList = Array<TraceroutesCreateResultItem>;
-export const TraceroutesCreateResultList = /*@__PURE__*/ S.Array(
+const TraceroutesCreateResultList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItem,
 ) as any as S.Schema<TraceroutesCreateResultList>;
 
@@ -325,7 +324,7 @@ export interface CreateTracerouteResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreateTracerouteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTracerouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: TraceroutesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -338,7 +337,7 @@ export interface DeleteEndpointHealthcheckRequest {
   /** UUID. */
   id: string;
 }
-export const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -356,7 +355,7 @@ export const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEndpointHealthcheckRequest>;
 
 export interface DeleteEndpointHealthcheckResponse {}
-export const DeleteEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteEndpointHealthcheckResponse",
@@ -368,7 +367,7 @@ export interface GetEndpointHealthcheckRequest {
   /** UUID. */
   id: string;
 }
-export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -386,8 +385,6 @@ export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEndpointHealthcheckRequest>;
 
 export type EndpointHealthchecksGetResponseCheckType = "icmp";
-export const EndpointHealthchecksGetResponseCheckType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEndpointHealthcheckResponse {
   /** type of check to perform */
@@ -399,14 +396,14 @@ export interface GetEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
-export const GetEndpointHealthcheckResponse =
+const GetEndpointHealthcheckResponse =
   CreateEndpointHealthcheckResponse as any as S.Schema<GetEndpointHealthcheckResponse>;
 
 export interface ListEndpointHealthchecksRequest {
   /** Identifier */
   accountId: string;
 }
-export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -423,7 +420,7 @@ export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEndpointHealthchecksRequest>;
 
 export type EndpointHealthchecksListResponseCheckType = "icmp";
-export const EndpointHealthchecksListResponseCheckType = S.String;
+const EndpointHealthchecksListResponseCheckType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListEndpointHealthchecksItem {
@@ -436,7 +433,7 @@ export interface ListEndpointHealthchecksItem {
   /** Optional name associated with this check */
   name?: string | null;
 }
-export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkType: EndpointHealthchecksListResponseCheckType.pipe(T.Body("check_type")),
     endpoint: S.String,
@@ -448,19 +445,19 @@ export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEndpointHealthchecksItem>;
 
 export type ListEndpointHealthchecksItemsList = Array<ListEndpointHealthchecksItem>;
-export const ListEndpointHealthchecksItemsList = /*@__PURE__*/ S.Array(
+const ListEndpointHealthchecksItemsList = /*@__PURE__*/ S.Array(
   ListEndpointHealthchecksItem,
 ) as any as S.Schema<ListEndpointHealthchecksItemsList>;
 
 export type ListEndpointHealthchecksResponse = ListEndpointHealthchecksItemsList;
-export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   ListEndpointHealthchecksItemsList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;
 
 export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
-export const EndpointHealthchecksUpdateRequestCheckType = S.String;
+const EndpointHealthchecksUpdateRequestCheckType = S.String;
 
 export interface UpdateEndpointHealthcheckRequest {
   /** Identifier */
@@ -474,7 +471,7 @@ export interface UpdateEndpointHealthcheckRequest {
   /** Optional name associated with this check */
   name?: string;
 }
-export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -495,8 +492,6 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
 
 export type EndpointHealthchecksUpdateResponseCheckType = "icmp";
-export const EndpointHealthchecksUpdateResponseCheckType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateEndpointHealthcheckResponse {
   /** type of check to perform */
@@ -508,7 +503,7 @@ export interface UpdateEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
-export const UpdateEndpointHealthcheckResponse =
+const UpdateEndpointHealthcheckResponse =
   CreateEndpointHealthcheckResponse as any as S.Schema<UpdateEndpointHealthcheckResponse>;
 
 export type CreateEndpointHealthcheckError =

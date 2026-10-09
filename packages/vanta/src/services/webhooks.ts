@@ -14,7 +14,7 @@ export interface V1ControlCommentCreatedRequestControl {
   /** The unique identifier of the audit the control belongs to. */
   auditId: string;
 }
-export const V1ControlCommentCreatedRequestControl = /*@__PURE__*/ S.suspend(() =>
+const V1ControlCommentCreatedRequestControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     auditId: S.String,
@@ -27,7 +27,7 @@ export interface V1ControlCommentCreatedRequestComment {
   /** The unique identifier of the comment. */
   id: string;
 }
-export const V1ControlCommentCreatedRequestComment = /*@__PURE__*/ S.suspend(() =>
+const V1ControlCommentCreatedRequestComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -39,7 +39,7 @@ export interface V1ControlCommentCreatedRequest {
   control: V1ControlCommentCreatedRequestControl;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1ControlCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1ControlCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     control: V1ControlCommentCreatedRequestControl,
     comment: V1ControlCommentCreatedRequestComment,
@@ -49,9 +49,9 @@ export const V1ControlCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ControlCommentCreatedRequest>;
 
 export interface V1ControlCommentCreatedResponse {}
-export const V1ControlCommentCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V1ControlCommentCreatedResponse" },
-) as any as S.Schema<V1ControlCommentCreatedResponse>;
+const V1ControlCommentCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "V1ControlCommentCreatedResponse",
+}) as any as S.Schema<V1ControlCommentCreatedResponse>;
 
 export interface V1ControlCommentDeletedRequestControl {
   /** The unique identifier of the control the comment was deleted from. */
@@ -59,17 +59,15 @@ export interface V1ControlCommentDeletedRequestControl {
   /** The unique identifier of the audit the control belongs to. */
   auditId: string;
 }
-export const V1ControlCommentDeletedRequestControl =
+const V1ControlCommentDeletedRequestControl =
   V1ControlCommentCreatedRequestControl as any as S.Schema<V1ControlCommentDeletedRequestControl>;
 
 export type V1ControlCommentDeletedRequestComment = V1ControlCommentCreatedRequestComment;
-export const V1ControlCommentDeletedRequestComment = V1ControlCommentCreatedRequestComment;
-
 export interface V1ControlCommentDeletedRequest {
   control: V1ControlCommentDeletedRequestControl;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1ControlCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1ControlCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     control: V1ControlCommentDeletedRequestControl,
     comment: V1ControlCommentCreatedRequestComment,
@@ -79,7 +77,7 @@ export const V1ControlCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ControlCommentDeletedRequest>;
 
 export interface V1ControlCommentDeletedResponse {}
-export const V1ControlCommentDeletedResponse =
+const V1ControlCommentDeletedResponse =
   V1ControlCommentCreatedResponse as any as S.Schema<V1ControlCommentDeletedResponse>;
 
 export interface V1ControlCommentUpdatedRequestControl {
@@ -88,17 +86,15 @@ export interface V1ControlCommentUpdatedRequestControl {
   /** The unique identifier of the audit the control belongs to. */
   auditId: string;
 }
-export const V1ControlCommentUpdatedRequestControl =
+const V1ControlCommentUpdatedRequestControl =
   V1ControlCommentCreatedRequestControl as any as S.Schema<V1ControlCommentUpdatedRequestControl>;
 
 export type V1ControlCommentUpdatedRequestComment = V1ControlCommentCreatedRequestComment;
-export const V1ControlCommentUpdatedRequestComment = V1ControlCommentCreatedRequestComment;
-
 export interface V1ControlCommentUpdatedRequest {
   control: V1ControlCommentUpdatedRequestControl;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1ControlCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1ControlCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     control: V1ControlCommentUpdatedRequestControl,
     comment: V1ControlCommentCreatedRequestComment,
@@ -108,7 +104,7 @@ export const V1ControlCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ControlCommentUpdatedRequest>;
 
 export interface V1ControlCommentUpdatedResponse {}
-export const V1ControlCommentUpdatedResponse =
+const V1ControlCommentUpdatedResponse =
   V1ControlCommentCreatedResponse as any as S.Schema<V1ControlCommentUpdatedResponse>;
 
 export interface V1EvidenceCommentCreatedRequestEvidence {
@@ -117,17 +113,15 @@ export interface V1EvidenceCommentCreatedRequestEvidence {
   /** The unique identifier of the audit the evidence belongs to. */
   auditId: string;
 }
-export const V1EvidenceCommentCreatedRequestEvidence =
+const V1EvidenceCommentCreatedRequestEvidence =
   V1ControlCommentCreatedRequestControl as any as S.Schema<V1EvidenceCommentCreatedRequestEvidence>;
 
 export type V1EvidenceCommentCreatedRequestComment = V1ControlCommentCreatedRequestComment;
-export const V1EvidenceCommentCreatedRequestComment = V1ControlCommentCreatedRequestComment;
-
 export interface V1EvidenceCommentCreatedRequest {
   evidence: V1EvidenceCommentCreatedRequestEvidence;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1EvidenceCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence: V1EvidenceCommentCreatedRequestEvidence,
     comment: V1ControlCommentCreatedRequestComment,
@@ -137,23 +131,17 @@ export const V1EvidenceCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceCommentCreatedRequest>;
 
 export interface V1EvidenceCommentCreatedResponse {}
-export const V1EvidenceCommentCreatedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const V1EvidenceCommentCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "V1EvidenceCommentCreatedResponse",
 }) as any as S.Schema<V1EvidenceCommentCreatedResponse>;
 
 export type V1EvidenceCommentDeletedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-export const V1EvidenceCommentDeletedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-
 export type V1EvidenceCommentDeletedRequestComment = V1ControlCommentCreatedRequestComment;
-export const V1EvidenceCommentDeletedRequestComment = V1ControlCommentCreatedRequestComment;
-
 export interface V1EvidenceCommentDeletedRequest {
   evidence: V1EvidenceCommentCreatedRequestEvidence;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1EvidenceCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence: V1EvidenceCommentCreatedRequestEvidence,
     comment: V1ControlCommentCreatedRequestComment,
@@ -163,20 +151,16 @@ export const V1EvidenceCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceCommentDeletedRequest>;
 
 export interface V1EvidenceCommentDeletedResponse {}
-export const V1EvidenceCommentDeletedResponse =
+const V1EvidenceCommentDeletedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1EvidenceCommentDeletedResponse>;
 
 export type V1EvidenceCommentUpdatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-export const V1EvidenceCommentUpdatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-
 export type V1EvidenceCommentUpdatedRequestComment = V1ControlCommentCreatedRequestComment;
-export const V1EvidenceCommentUpdatedRequestComment = V1ControlCommentCreatedRequestComment;
-
 export interface V1EvidenceCommentUpdatedRequest {
   evidence: V1EvidenceCommentCreatedRequestEvidence;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1EvidenceCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence: V1EvidenceCommentCreatedRequestEvidence,
     comment: V1ControlCommentCreatedRequestComment,
@@ -186,44 +170,40 @@ export const V1EvidenceCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceCommentUpdatedRequest>;
 
 export interface V1EvidenceCommentUpdatedResponse {}
-export const V1EvidenceCommentUpdatedResponse =
+const V1EvidenceCommentUpdatedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1EvidenceCommentUpdatedResponse>;
 
 /** The evidence item that came into scope for the audit. */
 export type V1EvidenceCreatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-export const V1EvidenceCreatedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-
 export interface V1EvidenceCreatedRequest {
   /** The evidence item that came into scope for the audit. */
   evidence: V1EvidenceCommentCreatedRequestEvidence;
 }
-export const V1EvidenceCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence: V1EvidenceCommentCreatedRequestEvidence,
   }).pipe(T.Http({ method: "POST", uri: "/v1.evidence.created", code: 200 })),
 ).annotate({ identifier: "V1EvidenceCreatedRequest" }) as any as S.Schema<V1EvidenceCreatedRequest>;
 
 export interface V1EvidenceCreatedResponse {}
-export const V1EvidenceCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const V1EvidenceCreatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "V1EvidenceCreatedResponse",
 }) as any as S.Schema<V1EvidenceCreatedResponse>;
 
 /** The evidence item that left scope for the audit. */
 export type V1EvidenceDeletedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-export const V1EvidenceDeletedRequestEvidence = V1EvidenceCommentCreatedRequestEvidence;
-
 export interface V1EvidenceDeletedRequest {
   /** The evidence item that left scope for the audit. */
   evidence: V1EvidenceCommentCreatedRequestEvidence;
 }
-export const V1EvidenceDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceDeletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence: V1EvidenceCommentCreatedRequestEvidence,
   }).pipe(T.Http({ method: "POST", uri: "/v1.evidence.deleted", code: 200 })),
 ).annotate({ identifier: "V1EvidenceDeletedRequest" }) as any as S.Schema<V1EvidenceDeletedRequest>;
 
 export interface V1EvidenceDeletedResponse {}
-export const V1EvidenceDeletedResponse =
+const V1EvidenceDeletedResponse =
   V1EvidenceCreatedResponse as any as S.Schema<V1EvidenceDeletedResponse>;
 
 /** The status the evidence item was in before the change. `INITIALIZED` is an internal status and is never delivered. */
@@ -234,7 +214,7 @@ export type V1EvidenceStatusChangedRequestEvidenceOldStatus =
   | "NA"
   | "NOT_READY_FOR_AUDIT"
   | "READY_FOR_AUDIT";
-export const V1EvidenceStatusChangedRequestEvidenceOldStatus = S.String;
+const V1EvidenceStatusChangedRequestEvidenceOldStatus = S.String;
 
 /** The status the evidence item is in after the change. A value of `READY_FOR_AUDIT` means the customer has provided evidence for the item and it is ready for the auditor to review. `INITIALIZED` is an internal status and is never delivered. */
 export type V1EvidenceStatusChangedRequestEvidenceNewStatus =
@@ -244,7 +224,7 @@ export type V1EvidenceStatusChangedRequestEvidenceNewStatus =
   | "NA"
   | "NOT_READY_FOR_AUDIT"
   | "READY_FOR_AUDIT";
-export const V1EvidenceStatusChangedRequestEvidenceNewStatus = S.String;
+const V1EvidenceStatusChangedRequestEvidenceNewStatus = S.String;
 
 export interface V1EvidenceStatusChangedRequestEvidence {
   /** The unique identifier of the evidence. */
@@ -256,7 +236,7 @@ export interface V1EvidenceStatusChangedRequestEvidence {
   /** The status the evidence item is in after the change. A value of `READY_FOR_AUDIT` means the customer has provided evidence for the item and it is ready for the auditor to review. `INITIALIZED` is an internal status and is never delivered. */
   newStatus: V1EvidenceStatusChangedRequestEvidenceNewStatus | (string & {});
 }
-export const V1EvidenceStatusChangedRequestEvidence = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceStatusChangedRequestEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     auditId: S.String,
@@ -270,7 +250,7 @@ export const V1EvidenceStatusChangedRequestEvidence = /*@__PURE__*/ S.suspend(()
 export interface V1EvidenceStatusChangedRequest {
   evidence: V1EvidenceStatusChangedRequestEvidence;
 }
-export const V1EvidenceStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1EvidenceStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence: V1EvidenceStatusChangedRequestEvidence,
   }).pipe(T.Http({ method: "POST", uri: "/v1.evidence.status-changed", code: 200 })),
@@ -279,7 +259,7 @@ export const V1EvidenceStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1EvidenceStatusChangedRequest>;
 
 export interface V1EvidenceStatusChangedResponse {}
-export const V1EvidenceStatusChangedResponse =
+const V1EvidenceStatusChangedResponse =
   V1ControlCommentCreatedResponse as any as S.Schema<V1EvidenceStatusChangedResponse>;
 
 export interface V1InformationRequestCommentCreatedRequestInformationRequest {
@@ -288,26 +268,22 @@ export interface V1InformationRequestCommentCreatedRequestInformationRequest {
   /** The unique identifier of the audit the information request belongs to. */
   auditId: string;
 }
-export const V1InformationRequestCommentCreatedRequestInformationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      auditId: S.String,
-    }),
+const V1InformationRequestCommentCreatedRequestInformationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    auditId: S.String,
+  }),
 ).annotate({
   identifier: "V1InformationRequestCommentCreatedRequestInformationRequest",
 }) as any as S.Schema<V1InformationRequestCommentCreatedRequestInformationRequest>;
 
 export type V1InformationRequestCommentCreatedRequestComment =
   V1ControlCommentCreatedRequestComment;
-export const V1InformationRequestCommentCreatedRequestComment =
-  V1ControlCommentCreatedRequestComment;
-
 export interface V1InformationRequestCommentCreatedRequest {
   informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1InformationRequestCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1InformationRequestCommentCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest,
     comment: V1ControlCommentCreatedRequestComment,
@@ -317,24 +293,18 @@ export const V1InformationRequestCommentCreatedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1InformationRequestCommentCreatedRequest>;
 
 export interface V1InformationRequestCommentCreatedResponse {}
-export const V1InformationRequestCommentCreatedResponse =
+const V1InformationRequestCommentCreatedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestCommentCreatedResponse>;
 
 export type V1InformationRequestCommentDeletedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
-export const V1InformationRequestCommentDeletedRequestInformationRequest =
-  V1InformationRequestCommentCreatedRequestInformationRequest;
-
 export type V1InformationRequestCommentDeletedRequestComment =
   V1ControlCommentCreatedRequestComment;
-export const V1InformationRequestCommentDeletedRequestComment =
-  V1ControlCommentCreatedRequestComment;
-
 export interface V1InformationRequestCommentDeletedRequest {
   informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1InformationRequestCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1InformationRequestCommentDeletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest,
     comment: V1ControlCommentCreatedRequestComment,
@@ -344,24 +314,18 @@ export const V1InformationRequestCommentDeletedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1InformationRequestCommentDeletedRequest>;
 
 export interface V1InformationRequestCommentDeletedResponse {}
-export const V1InformationRequestCommentDeletedResponse =
+const V1InformationRequestCommentDeletedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestCommentDeletedResponse>;
 
 export type V1InformationRequestCommentUpdatedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
-export const V1InformationRequestCommentUpdatedRequestInformationRequest =
-  V1InformationRequestCommentCreatedRequestInformationRequest;
-
 export type V1InformationRequestCommentUpdatedRequestComment =
   V1ControlCommentCreatedRequestComment;
-export const V1InformationRequestCommentUpdatedRequestComment =
-  V1ControlCommentCreatedRequestComment;
-
 export interface V1InformationRequestCommentUpdatedRequest {
   informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest;
   comment: V1ControlCommentCreatedRequestComment;
 }
-export const V1InformationRequestCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1InformationRequestCommentUpdatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest,
     comment: V1ControlCommentCreatedRequestComment,
@@ -371,26 +335,23 @@ export const V1InformationRequestCommentUpdatedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1InformationRequestCommentUpdatedRequest>;
 
 export interface V1InformationRequestCommentUpdatedResponse {}
-export const V1InformationRequestCommentUpdatedResponse =
+const V1InformationRequestCommentUpdatedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestCommentUpdatedResponse>;
 
 export type V1InformationRequestEvidenceCreatedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
-export const V1InformationRequestEvidenceCreatedRequestInformationRequest =
-  V1InformationRequestCommentCreatedRequestInformationRequest;
-
 export interface V1InformationRequestEvidenceCreatedRequestEvidence {
   /** The unique identifier of the evidence. */
   id: string;
 }
-export const V1InformationRequestEvidenceCreatedRequestEvidence =
+const V1InformationRequestEvidenceCreatedRequestEvidence =
   V1ControlCommentCreatedRequestComment as any as S.Schema<V1InformationRequestEvidenceCreatedRequestEvidence>;
 
 export interface V1InformationRequestEvidenceCreatedRequest {
   informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest;
   evidence: V1InformationRequestEvidenceCreatedRequestEvidence;
 }
-export const V1InformationRequestEvidenceCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1InformationRequestEvidenceCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest,
     evidence: V1InformationRequestEvidenceCreatedRequestEvidence,
@@ -400,24 +361,18 @@ export const V1InformationRequestEvidenceCreatedRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<V1InformationRequestEvidenceCreatedRequest>;
 
 export interface V1InformationRequestEvidenceCreatedResponse {}
-export const V1InformationRequestEvidenceCreatedResponse =
+const V1InformationRequestEvidenceCreatedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestEvidenceCreatedResponse>;
 
 export type V1InformationRequestEvidenceDeletedRequestInformationRequest =
   V1InformationRequestCommentCreatedRequestInformationRequest;
-export const V1InformationRequestEvidenceDeletedRequestInformationRequest =
-  V1InformationRequestCommentCreatedRequestInformationRequest;
-
 export type V1InformationRequestEvidenceDeletedRequestEvidence =
   V1InformationRequestEvidenceCreatedRequestEvidence;
-export const V1InformationRequestEvidenceDeletedRequestEvidence =
-  V1InformationRequestEvidenceCreatedRequestEvidence;
-
 export interface V1InformationRequestEvidenceDeletedRequest {
   informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest;
   evidence: V1InformationRequestEvidenceCreatedRequestEvidence;
 }
-export const V1InformationRequestEvidenceDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1InformationRequestEvidenceDeletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informationRequest: V1InformationRequestCommentCreatedRequestInformationRequest,
     evidence: V1InformationRequestEvidenceCreatedRequestEvidence,
@@ -427,7 +382,7 @@ export const V1InformationRequestEvidenceDeletedRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<V1InformationRequestEvidenceDeletedRequest>;
 
 export interface V1InformationRequestEvidenceDeletedResponse {}
-export const V1InformationRequestEvidenceDeletedResponse =
+const V1InformationRequestEvidenceDeletedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestEvidenceDeletedResponse>;
 
 /** The status the information request was in before the change. */
@@ -436,7 +391,7 @@ export type V1InformationRequestStatusChangedRequestInformationRequestOldStatus 
   | "READY_FOR_AUDIT"
   | "AUDITOR_APPROVED"
   | "AUDITOR_FLAGGED";
-export const V1InformationRequestStatusChangedRequestInformationRequestOldStatus = S.String;
+const V1InformationRequestStatusChangedRequestInformationRequestOldStatus = S.String;
 
 /** The status the information request is in after the change. A value of `READY_FOR_AUDIT` means the customer has submitted the request and it is ready for the auditor to review. */
 export type V1InformationRequestStatusChangedRequestInformationRequestNewStatus =
@@ -444,7 +399,7 @@ export type V1InformationRequestStatusChangedRequestInformationRequestNewStatus 
   | "READY_FOR_AUDIT"
   | "AUDITOR_APPROVED"
   | "AUDITOR_FLAGGED";
-export const V1InformationRequestStatusChangedRequestInformationRequestNewStatus = S.String;
+const V1InformationRequestStatusChangedRequestInformationRequestNewStatus = S.String;
 
 export interface V1InformationRequestStatusChangedRequestInformationRequest {
   /** The unique identifier of the information request. */
@@ -456,14 +411,13 @@ export interface V1InformationRequestStatusChangedRequestInformationRequest {
   /** The status the information request is in after the change. A value of `READY_FOR_AUDIT` means the customer has submitted the request and it is ready for the auditor to review. */
   newStatus: V1InformationRequestStatusChangedRequestInformationRequestNewStatus | (string & {});
 }
-export const V1InformationRequestStatusChangedRequestInformationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      auditId: S.String,
-      oldStatus: V1InformationRequestStatusChangedRequestInformationRequestOldStatus,
-      newStatus: V1InformationRequestStatusChangedRequestInformationRequestNewStatus,
-    }),
+const V1InformationRequestStatusChangedRequestInformationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    auditId: S.String,
+    oldStatus: V1InformationRequestStatusChangedRequestInformationRequestOldStatus,
+    newStatus: V1InformationRequestStatusChangedRequestInformationRequestNewStatus,
+  }),
 ).annotate({
   identifier: "V1InformationRequestStatusChangedRequestInformationRequest",
 }) as any as S.Schema<V1InformationRequestStatusChangedRequestInformationRequest>;
@@ -471,7 +425,7 @@ export const V1InformationRequestStatusChangedRequestInformationRequest = /*@__P
 export interface V1InformationRequestStatusChangedRequest {
   informationRequest: V1InformationRequestStatusChangedRequestInformationRequest;
 }
-export const V1InformationRequestStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1InformationRequestStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informationRequest: V1InformationRequestStatusChangedRequestInformationRequest,
   }).pipe(T.Http({ method: "POST", uri: "/v1.information-request.status-changed", code: 200 })),
@@ -480,20 +434,20 @@ export const V1InformationRequestStatusChangedRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1InformationRequestStatusChangedRequest>;
 
 export interface V1InformationRequestStatusChangedResponse {}
-export const V1InformationRequestStatusChangedResponse =
+const V1InformationRequestStatusChangedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1InformationRequestStatusChangedResponse>;
 
 export interface V1QuestionnaireCreatedRequestQuestionnaire {
   /** The questionnaire ID. */
   id: string;
 }
-export const V1QuestionnaireCreatedRequestQuestionnaire =
+const V1QuestionnaireCreatedRequestQuestionnaire =
   V1ControlCommentCreatedRequestComment as any as S.Schema<V1QuestionnaireCreatedRequestQuestionnaire>;
 
 export interface V1QuestionnaireCreatedRequest {
   questionnaire: V1QuestionnaireCreatedRequestQuestionnaire;
 }
-export const V1QuestionnaireCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaire: V1QuestionnaireCreatedRequestQuestionnaire,
   }).pipe(T.Http({ method: "POST", uri: "/v1.questionnaire.created", code: 200 })),
@@ -502,17 +456,14 @@ export const V1QuestionnaireCreatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireCreatedRequest>;
 
 export interface V1QuestionnaireCreatedResponse {}
-export const V1QuestionnaireCreatedResponse =
+const V1QuestionnaireCreatedResponse =
   V1EvidenceCreatedResponse as any as S.Schema<V1QuestionnaireCreatedResponse>;
 
 export type V1QuestionnaireDeletedRequestQuestionnaire = V1QuestionnaireCreatedRequestQuestionnaire;
-export const V1QuestionnaireDeletedRequestQuestionnaire =
-  V1QuestionnaireCreatedRequestQuestionnaire;
-
 export interface V1QuestionnaireDeletedRequest {
   questionnaire: V1QuestionnaireCreatedRequestQuestionnaire;
 }
-export const V1QuestionnaireDeletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireDeletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaire: V1QuestionnaireCreatedRequestQuestionnaire,
   }).pipe(T.Http({ method: "POST", uri: "/v1.questionnaire.deleted", code: 200 })),
@@ -521,19 +472,19 @@ export const V1QuestionnaireDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireDeletedRequest>;
 
 export interface V1QuestionnaireDeletedResponse {}
-export const V1QuestionnaireDeletedResponse =
+const V1QuestionnaireDeletedResponse =
   V1EvidenceCreatedResponse as any as S.Schema<V1QuestionnaireDeletedResponse>;
 
 export interface V1QuestionnaireExportCompletedRequestQuestionnaire {
   /** The unique identifier of the questionnaire. */
   id: string;
 }
-export const V1QuestionnaireExportCompletedRequestQuestionnaire =
+const V1QuestionnaireExportCompletedRequestQuestionnaire =
   V1ControlCommentCreatedRequestComment as any as S.Schema<V1QuestionnaireExportCompletedRequestQuestionnaire>;
 
 /** The export format. */
 export type V1QuestionnaireExportCompletedRequestExportFormat = "original" | "csv";
-export const V1QuestionnaireExportCompletedRequestExportFormat = S.String;
+const V1QuestionnaireExportCompletedRequestExportFormat = S.String;
 
 export interface V1QuestionnaireExportCompletedRequestExport {
   /** The unique identifier of the export job. */
@@ -545,7 +496,7 @@ export interface V1QuestionnaireExportCompletedRequestExport {
   /** When the export finished (ISO 8601). */
   completedAt: string;
 }
-export const V1QuestionnaireExportCompletedRequestExport = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireExportCompletedRequestExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     format: V1QuestionnaireExportCompletedRequestExportFormat,
@@ -560,7 +511,7 @@ export interface V1QuestionnaireExportCompletedRequest {
   questionnaire: V1QuestionnaireExportCompletedRequestQuestionnaire;
   export: V1QuestionnaireExportCompletedRequestExport;
 }
-export const V1QuestionnaireExportCompletedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireExportCompletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaire: V1QuestionnaireExportCompletedRequestQuestionnaire,
     export: V1QuestionnaireExportCompletedRequestExport,
@@ -570,17 +521,14 @@ export const V1QuestionnaireExportCompletedRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<V1QuestionnaireExportCompletedRequest>;
 
 export interface V1QuestionnaireExportCompletedResponse {}
-export const V1QuestionnaireExportCompletedResponse =
+const V1QuestionnaireExportCompletedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1QuestionnaireExportCompletedResponse>;
 
 export type V1QuestionnaireExportFailedRequestQuestionnaire =
   V1QuestionnaireExportCompletedRequestQuestionnaire;
-export const V1QuestionnaireExportFailedRequestQuestionnaire =
-  V1QuestionnaireExportCompletedRequestQuestionnaire;
-
 /** The export format. */
 export type V1QuestionnaireExportFailedRequestExportFormat = "original" | "csv";
-export const V1QuestionnaireExportFailedRequestExportFormat = S.String;
+const V1QuestionnaireExportFailedRequestExportFormat = S.String;
 
 export interface V1QuestionnaireExportFailedRequestExport {
   /** The unique identifier of the export job. */
@@ -594,7 +542,7 @@ export interface V1QuestionnaireExportFailedRequestExport {
   /** The reason for the export failure. */
   reason: string;
 }
-export const V1QuestionnaireExportFailedRequestExport = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireExportFailedRequestExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     format: V1QuestionnaireExportFailedRequestExportFormat,
@@ -610,7 +558,7 @@ export interface V1QuestionnaireExportFailedRequest {
   questionnaire: V1QuestionnaireExportCompletedRequestQuestionnaire;
   export: V1QuestionnaireExportFailedRequestExport;
 }
-export const V1QuestionnaireExportFailedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireExportFailedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaire: V1QuestionnaireExportCompletedRequestQuestionnaire,
     export: V1QuestionnaireExportFailedRequestExport,
@@ -620,7 +568,7 @@ export const V1QuestionnaireExportFailedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireExportFailedRequest>;
 
 export interface V1QuestionnaireExportFailedResponse {}
-export const V1QuestionnaireExportFailedResponse =
+const V1QuestionnaireExportFailedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1QuestionnaireExportFailedResponse>;
 
 /** The new questionnaire status. */
@@ -642,7 +590,7 @@ export type V1QuestionnaireStatusChangedRequestQuestionnaireStatus =
   | "DETECTING_COLUMNS"
   | "ON_HOLD"
   | "NO_LONGER_NEEDED";
-export const V1QuestionnaireStatusChangedRequestQuestionnaireStatus = S.String;
+const V1QuestionnaireStatusChangedRequestQuestionnaireStatus = S.String;
 
 export interface V1QuestionnaireStatusChangedRequestQuestionnaire {
   /** The questionnaire ID. */
@@ -650,7 +598,7 @@ export interface V1QuestionnaireStatusChangedRequestQuestionnaire {
   /** The new questionnaire status. */
   status: V1QuestionnaireStatusChangedRequestQuestionnaireStatus | (string & {});
 }
-export const V1QuestionnaireStatusChangedRequestQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireStatusChangedRequestQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: V1QuestionnaireStatusChangedRequestQuestionnaireStatus,
@@ -662,7 +610,7 @@ export const V1QuestionnaireStatusChangedRequestQuestionnaire = /*@__PURE__*/ S.
 export interface V1QuestionnaireStatusChangedRequest {
   questionnaire: V1QuestionnaireStatusChangedRequestQuestionnaire;
 }
-export const V1QuestionnaireStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1QuestionnaireStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaire: V1QuestionnaireStatusChangedRequestQuestionnaire,
   }).pipe(T.Http({ method: "POST", uri: "/v1.questionnaire.status-changed", code: 200 })),
@@ -671,14 +619,14 @@ export const V1QuestionnaireStatusChangedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1QuestionnaireStatusChangedRequest>;
 
 export interface V1QuestionnaireStatusChangedResponse {}
-export const V1QuestionnaireStatusChangedResponse =
+const V1QuestionnaireStatusChangedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1QuestionnaireStatusChangedResponse>;
 
 export interface V1TrustCenterAccessRequestApprovedRequestTrustCenter {
   /** The Trust Center slug ID. */
   slugId: string;
 }
-export const V1TrustCenterAccessRequestApprovedRequestTrustCenter = /*@__PURE__*/ S.suspend(() =>
+const V1TrustCenterAccessRequestApprovedRequestTrustCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String,
   }),
@@ -690,14 +638,14 @@ export interface V1TrustCenterAccessRequestApprovedRequestAccessRequest {
   /** The access request ID. */
   id: string;
 }
-export const V1TrustCenterAccessRequestApprovedRequestAccessRequest =
+const V1TrustCenterAccessRequestApprovedRequestAccessRequest =
   V1ControlCommentCreatedRequestComment as any as S.Schema<V1TrustCenterAccessRequestApprovedRequestAccessRequest>;
 
 export interface V1TrustCenterAccessRequestApprovedRequestViewer {
   /** The viewer ID granted access. */
   id: string;
 }
-export const V1TrustCenterAccessRequestApprovedRequestViewer =
+const V1TrustCenterAccessRequestApprovedRequestViewer =
   V1ControlCommentCreatedRequestComment as any as S.Schema<V1TrustCenterAccessRequestApprovedRequestViewer>;
 
 export interface V1TrustCenterAccessRequestApprovedRequest {
@@ -705,7 +653,7 @@ export interface V1TrustCenterAccessRequestApprovedRequest {
   accessRequest: V1TrustCenterAccessRequestApprovedRequestAccessRequest;
   viewer: V1TrustCenterAccessRequestApprovedRequestViewer;
 }
-export const V1TrustCenterAccessRequestApprovedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1TrustCenterAccessRequestApprovedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trustCenter: V1TrustCenterAccessRequestApprovedRequestTrustCenter,
     accessRequest: V1TrustCenterAccessRequestApprovedRequestAccessRequest,
@@ -716,24 +664,18 @@ export const V1TrustCenterAccessRequestApprovedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1TrustCenterAccessRequestApprovedRequest>;
 
 export interface V1TrustCenterAccessRequestApprovedResponse {}
-export const V1TrustCenterAccessRequestApprovedResponse =
+const V1TrustCenterAccessRequestApprovedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1TrustCenterAccessRequestApprovedResponse>;
 
 export type V1TrustCenterAccessRequestDeniedRequestTrustCenter =
   V1TrustCenterAccessRequestApprovedRequestTrustCenter;
-export const V1TrustCenterAccessRequestDeniedRequestTrustCenter =
-  V1TrustCenterAccessRequestApprovedRequestTrustCenter;
-
 export type V1TrustCenterAccessRequestDeniedRequestAccessRequest =
   V1TrustCenterAccessRequestApprovedRequestAccessRequest;
-export const V1TrustCenterAccessRequestDeniedRequestAccessRequest =
-  V1TrustCenterAccessRequestApprovedRequestAccessRequest;
-
 export interface V1TrustCenterAccessRequestDeniedRequest {
   trustCenter: V1TrustCenterAccessRequestApprovedRequestTrustCenter;
   accessRequest: V1TrustCenterAccessRequestApprovedRequestAccessRequest;
 }
-export const V1TrustCenterAccessRequestDeniedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1TrustCenterAccessRequestDeniedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trustCenter: V1TrustCenterAccessRequestApprovedRequestTrustCenter,
     accessRequest: V1TrustCenterAccessRequestApprovedRequestAccessRequest,
@@ -743,24 +685,18 @@ export const V1TrustCenterAccessRequestDeniedRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<V1TrustCenterAccessRequestDeniedRequest>;
 
 export interface V1TrustCenterAccessRequestDeniedResponse {}
-export const V1TrustCenterAccessRequestDeniedResponse =
+const V1TrustCenterAccessRequestDeniedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1TrustCenterAccessRequestDeniedResponse>;
 
 export type V1TrustCenterAccessRequestReceivedRequestTrustCenter =
   V1TrustCenterAccessRequestApprovedRequestTrustCenter;
-export const V1TrustCenterAccessRequestReceivedRequestTrustCenter =
-  V1TrustCenterAccessRequestApprovedRequestTrustCenter;
-
 export type V1TrustCenterAccessRequestReceivedRequestAccessRequest =
   V1TrustCenterAccessRequestApprovedRequestAccessRequest;
-export const V1TrustCenterAccessRequestReceivedRequestAccessRequest =
-  V1TrustCenterAccessRequestApprovedRequestAccessRequest;
-
 export interface V1TrustCenterAccessRequestReceivedRequest {
   trustCenter: V1TrustCenterAccessRequestApprovedRequestTrustCenter;
   accessRequest: V1TrustCenterAccessRequestApprovedRequestAccessRequest;
 }
-export const V1TrustCenterAccessRequestReceivedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1TrustCenterAccessRequestReceivedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trustCenter: V1TrustCenterAccessRequestApprovedRequestTrustCenter,
     accessRequest: V1TrustCenterAccessRequestApprovedRequestAccessRequest,
@@ -770,7 +706,7 @@ export const V1TrustCenterAccessRequestReceivedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<V1TrustCenterAccessRequestReceivedRequest>;
 
 export interface V1TrustCenterAccessRequestReceivedResponse {}
-export const V1TrustCenterAccessRequestReceivedResponse =
+const V1TrustCenterAccessRequestReceivedResponse =
   V1EvidenceCommentCreatedResponse as any as S.Schema<V1TrustCenterAccessRequestReceivedResponse>;
 
 /** The vendor decision status. */
@@ -778,7 +714,7 @@ export type V1VendorDecisionCreatedRequestVendorDecisionStatus =
   | "APPROVED"
   | "CONDITIONALLY_APPROVED"
   | "NOT_APPROVED";
-export const V1VendorDecisionCreatedRequestVendorDecisionStatus = S.String;
+const V1VendorDecisionCreatedRequestVendorDecisionStatus = S.String;
 
 export interface V1VendorDecisionCreatedRequestVendorDecision {
   /** The vendor decision status. */
@@ -788,7 +724,7 @@ export interface V1VendorDecisionCreatedRequestVendorDecision {
   /** Optional comments on the decision. */
   comments?: string;
 }
-export const V1VendorDecisionCreatedRequestVendorDecision = /*@__PURE__*/ S.suspend(() =>
+const V1VendorDecisionCreatedRequestVendorDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: V1VendorDecisionCreatedRequestVendorDecisionStatus,
     lastUpdatedAt: S.String,
@@ -803,7 +739,7 @@ export interface V1VendorDecisionCreatedRequestVendor {
   id: string;
   decision: V1VendorDecisionCreatedRequestVendorDecision;
 }
-export const V1VendorDecisionCreatedRequestVendor = /*@__PURE__*/ S.suspend(() =>
+const V1VendorDecisionCreatedRequestVendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     decision: V1VendorDecisionCreatedRequestVendorDecision,
@@ -815,7 +751,7 @@ export const V1VendorDecisionCreatedRequestVendor = /*@__PURE__*/ S.suspend(() =
 export interface V1VendorDecisionCreatedRequest {
   vendor: V1VendorDecisionCreatedRequestVendor;
 }
-export const V1VendorDecisionCreatedRequest = /*@__PURE__*/ S.suspend(() =>
+const V1VendorDecisionCreatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendor: V1VendorDecisionCreatedRequestVendor,
   }).pipe(T.Http({ method: "POST", uri: "/v1.vendor.decision.created", code: 200 })),
@@ -824,7 +760,7 @@ export const V1VendorDecisionCreatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VendorDecisionCreatedRequest>;
 
 export interface V1VendorDecisionCreatedResponse {}
-export const V1VendorDecisionCreatedResponse =
+const V1VendorDecisionCreatedResponse =
   V1ControlCommentCreatedResponse as any as S.Schema<V1VendorDecisionCreatedResponse>;
 
 export type V1ControlCommentCreatedError = VantaOpError;

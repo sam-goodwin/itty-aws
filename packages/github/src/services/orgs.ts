@@ -62,7 +62,7 @@ export interface AssignTeamToOrgRoleRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-export const AssignTeamToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignTeamToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -79,7 +79,7 @@ export const AssignTeamToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignTeamToOrgRoleRequest>;
 
 export interface AssignTeamToOrgRoleResponse {}
-export const AssignTeamToOrgRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AssignTeamToOrgRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AssignTeamToOrgRoleResponse",
 }) as any as S.Schema<AssignTeamToOrgRoleResponse>;
 
@@ -91,7 +91,7 @@ export interface AssignUserToOrgRoleRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-export const AssignUserToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignUserToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -108,7 +108,7 @@ export const AssignUserToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignUserToOrgRoleRequest>;
 
 export interface AssignUserToOrgRoleResponse {}
-export const AssignUserToOrgRoleResponse =
+const AssignUserToOrgRoleResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<AssignUserToOrgRoleResponse>;
 
 export interface BlockUserRequest {
@@ -117,7 +117,7 @@ export interface BlockUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const BlockUserRequest = /*@__PURE__*/ S.suspend(() =>
+const BlockUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -125,17 +125,17 @@ export const BlockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockUserRequest" }) as any as S.Schema<BlockUserRequest>;
 
 export interface BlockUserResponse {}
-export const BlockUserResponse = AssignTeamToOrgRoleResponse as any as S.Schema<BlockUserResponse>;
+const BlockUserResponse = AssignTeamToOrgRoleResponse as any as S.Schema<BlockUserResponse>;
 
 /** Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values. */
 export type BulkReviewPatGrantRequestsInRequestPatRequestIdsList = Array<number>;
-export const BulkReviewPatGrantRequestsInRequestPatRequestIdsList = /*@__PURE__*/ S.Array(
+const BulkReviewPatGrantRequestsInRequestPatRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BulkReviewPatGrantRequestsInRequestPatRequestIdsList>;
 
 /** Action to apply to the requests. */
 export type BulkReviewPatGrantRequestsInRequestAction = "approve" | "deny";
-export const BulkReviewPatGrantRequestsInRequestAction = S.String;
+const BulkReviewPatGrantRequestsInRequestAction = S.String;
 
 export interface BulkReviewPatGrantRequestsInRequest {
   /** The organization name. The name is not case sensitive. */
@@ -147,7 +147,7 @@ export interface BulkReviewPatGrantRequestsInRequest {
   /** Reason for approving or denying the requests. Max 1024 characters. */
   reason?: string | null;
 }
-export const BulkReviewPatGrantRequestsInRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkReviewPatGrantRequestsInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pat_request_ids: S.optional(BulkReviewPatGrantRequestsInRequestPatRequestIdsList),
@@ -159,9 +159,7 @@ export const BulkReviewPatGrantRequestsInRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkReviewPatGrantRequestsInRequest>;
 
 export interface BulkReviewPatGrantRequestsInResponse {}
-export const BulkReviewPatGrantRequestsInResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const BulkReviewPatGrantRequestsInResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BulkReviewPatGrantRequestsInResponse",
 }) as any as S.Schema<BulkReviewPatGrantRequestsInResponse>;
 
@@ -171,7 +169,7 @@ export interface CancelInvitationRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-export const CancelInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     invitation_id: S.Number.pipe(T.Label()),
@@ -179,7 +177,7 @@ export const CancelInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelInvitationRequest" }) as any as S.Schema<CancelInvitationRequest>;
 
 export interface CancelInvitationResponse {}
-export const CancelInvitationResponse =
+const CancelInvitationResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<CancelInvitationResponse>;
 
 export interface CheckBlockedUserRequest {
@@ -188,7 +186,7 @@ export interface CheckBlockedUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const CheckBlockedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckBlockedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -196,7 +194,7 @@ export const CheckBlockedUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckBlockedUserRequest" }) as any as S.Schema<CheckBlockedUserRequest>;
 
 export interface CheckBlockedUserResponse {}
-export const CheckBlockedUserResponse =
+const CheckBlockedUserResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<CheckBlockedUserResponse>;
 
 export interface CheckMembershipForUserRequest {
@@ -205,7 +203,7 @@ export interface CheckMembershipForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const CheckMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -215,7 +213,7 @@ export const CheckMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckMembershipForUserRequest>;
 
 export interface CheckMembershipForUserResponse {}
-export const CheckMembershipForUserResponse =
+const CheckMembershipForUserResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<CheckMembershipForUserResponse>;
 
 export interface CheckPublicMembershipForUserRequest {
@@ -224,7 +222,7 @@ export interface CheckPublicMembershipForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const CheckPublicMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckPublicMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -234,7 +232,7 @@ export const CheckPublicMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckPublicMembershipForUserRequest>;
 
 export interface CheckPublicMembershipForUserResponse {}
-export const CheckPublicMembershipForUserResponse =
+const CheckPublicMembershipForUserResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<CheckPublicMembershipForUserResponse>;
 
 export interface ConvertMemberToOutsideCollaboratorRequest {
@@ -245,7 +243,7 @@ export interface ConvertMemberToOutsideCollaboratorRequest {
   /** When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued. */
   async?: boolean;
 }
-export const ConvertMemberToOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertMemberToOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -258,16 +256,16 @@ export const ConvertMemberToOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ConvertMemberToOutsideCollaboratorRequest>;
 
 export interface ConvertMemberToOutsideCollaboratorResponse {}
-export const ConvertMemberToOutsideCollaboratorResponse =
+const ConvertMemberToOutsideCollaboratorResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<ConvertMemberToOutsideCollaboratorResponse>;
 
 /** The status of the artifact. Can be either deployed or decommissioned. */
 export type CreateArtifactDeploymentRecordRequestStatus = "deployed" | "decommissioned";
-export const CreateArtifactDeploymentRecordRequestStatus = S.String;
+const CreateArtifactDeploymentRecordRequestStatus = S.String;
 
 /** The tags associated with the deployment. */
 export type CreateArtifactDeploymentRecordRequestTagsMap = { [key: string]: string | undefined };
-export const CreateArtifactDeploymentRecordRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateArtifactDeploymentRecordRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateArtifactDeploymentRecordRequestTagsMap>;
@@ -277,13 +275,13 @@ export type CreateArtifactDeploymentRecordRequestRuntimeRisksItem =
   | "internet-exposed"
   | "lateral-movement"
   | "sensitive-data";
-export const CreateArtifactDeploymentRecordRequestRuntimeRisksItem = S.String;
+const CreateArtifactDeploymentRecordRequestRuntimeRisksItem = S.String;
 
 /** A list of runtime risks associated with the deployment. */
 export type CreateArtifactDeploymentRecordRequestRuntimeRisksList = Array<
   CreateArtifactDeploymentRecordRequestRuntimeRisksItem | (string & {})
 >;
-export const CreateArtifactDeploymentRecordRequestRuntimeRisksList = /*@__PURE__*/ S.Array(
+const CreateArtifactDeploymentRecordRequestRuntimeRisksList = /*@__PURE__*/ S.Array(
   CreateArtifactDeploymentRecordRequestRuntimeRisksItem,
 ) as any as S.Schema<CreateArtifactDeploymentRecordRequestRuntimeRisksList>;
 
@@ -315,7 +313,7 @@ export interface CreateArtifactDeploymentRecordRequest {
   /** If true, the endpoint will return the created or updated record in the response body. */
   return_records?: boolean;
 }
-export const CreateArtifactDeploymentRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateArtifactDeploymentRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -338,7 +336,7 @@ export const CreateArtifactDeploymentRecordRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateArtifactDeploymentRecordRequest>;
 
 export type ArtifactDeploymentRecordTagsMap = { [key: string]: string | undefined };
-export const ArtifactDeploymentRecordTagsMap =
+const ArtifactDeploymentRecordTagsMap =
   CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<ArtifactDeploymentRecordTagsMap>;
 
 export type ArtifactDeploymentRecordRuntimeRisksItem =
@@ -346,12 +344,10 @@ export type ArtifactDeploymentRecordRuntimeRisksItem =
   | "internet-exposed"
   | "lateral-movement"
   | "sensitive-data";
-export const ArtifactDeploymentRecordRuntimeRisksItem = S.String;
-
 /** A list of runtime risks associated with the deployment. */
 export type ArtifactDeploymentRecordRuntimeRisksList =
   Array<ArtifactDeploymentRecordRuntimeRisksItem>;
-export const ArtifactDeploymentRecordRuntimeRisksList =
+const ArtifactDeploymentRecordRuntimeRisksList =
   CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<ArtifactDeploymentRecordRuntimeRisksList>;
 
 /** Artifact Metadata Deployment Record */
@@ -370,7 +366,7 @@ export interface ArtifactDeploymentRecord {
   /** The ID of the provenance attestation associated with the deployment record. */
   attestation_id?: number | null;
 }
-export const ArtifactDeploymentRecord = /*@__PURE__*/ S.suspend(() =>
+const ArtifactDeploymentRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     digest: S.optional(S.String),
@@ -388,7 +384,7 @@ export const ArtifactDeploymentRecord = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateArtifactDeploymentRecordResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-export const CreateArtifactDeploymentRecordResponseDeploymentRecordsList = /*@__PURE__*/ S.Array(
+const CreateArtifactDeploymentRecordResponseDeploymentRecordsList = /*@__PURE__*/ S.Array(
   ArtifactDeploymentRecord,
 ) as any as S.Schema<CreateArtifactDeploymentRecordResponseDeploymentRecordsList>;
 
@@ -397,7 +393,7 @@ export interface CreateArtifactDeploymentRecordResponse {
   total_count: number;
   deployment_records?: CreateArtifactDeploymentRecordResponseDeploymentRecordsList;
 }
-export const CreateArtifactDeploymentRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateArtifactDeploymentRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     deployment_records: S.optional(CreateArtifactDeploymentRecordResponseDeploymentRecordsList),
@@ -408,7 +404,7 @@ export const CreateArtifactDeploymentRecordResponse = /*@__PURE__*/ S.suspend(()
 
 /** The status of the artifact (e.g., active, inactive). */
 export type CreateArtifactStorageRecordRequestStatus = "active" | "eol" | "deleted";
-export const CreateArtifactStorageRecordRequestStatus = S.String;
+const CreateArtifactStorageRecordRequestStatus = S.String;
 
 export interface CreateArtifactStorageRecordRequest {
   /** The organization name. The name is not case sensitive. */
@@ -434,7 +430,7 @@ export interface CreateArtifactStorageRecordRequest {
   /** If true, the endpoint will return the created record in the response body. */
   return_records?: boolean;
 }
-export const CreateArtifactStorageRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateArtifactStorageRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -465,7 +461,7 @@ export interface CreateArtifactStorageRecordResponseStorageRecordsItem {
   created_at?: string;
   updated_at?: string;
 }
-export const CreateArtifactStorageRecordResponseStorageRecordsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateArtifactStorageRecordResponseStorageRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -483,7 +479,7 @@ export const CreateArtifactStorageRecordResponseStorageRecordsItem = /*@__PURE__
 
 export type CreateArtifactStorageRecordResponseStorageRecordsList =
   Array<CreateArtifactStorageRecordResponseStorageRecordsItem>;
-export const CreateArtifactStorageRecordResponseStorageRecordsList = /*@__PURE__*/ S.Array(
+const CreateArtifactStorageRecordResponseStorageRecordsList = /*@__PURE__*/ S.Array(
   CreateArtifactStorageRecordResponseStorageRecordsItem,
 ) as any as S.Schema<CreateArtifactStorageRecordResponseStorageRecordsList>;
 
@@ -491,7 +487,7 @@ export interface CreateArtifactStorageRecordResponse {
   total_count: number;
   storage_records?: CreateArtifactStorageRecordResponseStorageRecordsList;
 }
-export const CreateArtifactStorageRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateArtifactStorageRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     storage_records: S.optional(CreateArtifactStorageRecordResponseStorageRecordsList),
@@ -504,30 +500,29 @@ export const CreateArtifactStorageRecordResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemStatus =
   | "deployed"
   | "decommissioned";
-export const CreateClusterDeploymentRecordsJobRequestDeploymentsItemStatus = S.String;
+const CreateClusterDeploymentRecordsJobRequestDeploymentsItemStatus = S.String;
 
 /** Key-value pairs to tag the deployment record. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap>;
+const CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap>;
 
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem =
   | "critical-resource"
   | "internet-exposed"
   | "lateral-movement"
   | "sensitive-data";
-export const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem = S.String;
+const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem = S.String;
 
 /** A list of runtime risks associated with the deployment. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList = Array<
   CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem | (string & {})
 >;
-export const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList =
+const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList =
   /*@__PURE__*/ S.Array(
     CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem,
   ) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList>;
@@ -550,7 +545,7 @@ export interface CreateClusterDeploymentRecordsJobRequestDeploymentsItem {
   /** A list of runtime risks associated with the deployment. */
   runtime_risks?: CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList;
 }
-export const CreateClusterDeploymentRecordsJobRequestDeploymentsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterDeploymentRecordsJobRequestDeploymentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     digest: S.String,
@@ -570,7 +565,7 @@ export const CreateClusterDeploymentRecordsJobRequestDeploymentsItem = /*@__PURE
 /** The list of deployments to record. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsList =
   Array<CreateClusterDeploymentRecordsJobRequestDeploymentsItem>;
-export const CreateClusterDeploymentRecordsJobRequestDeploymentsList = /*@__PURE__*/ S.Array(
+const CreateClusterDeploymentRecordsJobRequestDeploymentsList = /*@__PURE__*/ S.Array(
   CreateClusterDeploymentRecordsJobRequestDeploymentsItem,
 ) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsList>;
 
@@ -586,7 +581,7 @@ export interface CreateClusterDeploymentRecordsJobRequest {
   /** The list of deployments to record. */
   deployments: CreateClusterDeploymentRecordsJobRequestDeploymentsList;
 }
-export const CreateClusterDeploymentRecordsJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterDeploymentRecordsJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     cluster: S.String.pipe(T.Label()),
@@ -605,7 +600,7 @@ export const CreateClusterDeploymentRecordsJobRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateClusterDeploymentRecordsJobRequest>;
 
 export interface CreateClusterDeploymentRecordsJobResponse {}
-export const CreateClusterDeploymentRecordsJobResponse =
+const CreateClusterDeploymentRecordsJobResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<CreateClusterDeploymentRecordsJobResponse>;
 
 /** The role for the new member. * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams. * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation. * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization. */
@@ -614,11 +609,11 @@ export type CreateInvitationRequestRole =
   | "direct_member"
   | "billing_manager"
   | "reinstate";
-export const CreateInvitationRequestRole = S.String;
+const CreateInvitationRequestRole = S.String;
 
 /** Specify IDs for the teams you want to invite new members to. */
 export type CreateInvitationRequestTeamIdsList = Array<number>;
-export const CreateInvitationRequestTeamIdsList =
+const CreateInvitationRequestTeamIdsList =
   BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<CreateInvitationRequestTeamIdsList>;
 
 export interface CreateInvitationRequest {
@@ -633,7 +628,7 @@ export interface CreateInvitationRequest {
   /** Specify IDs for the teams you want to invite new members to. */
   team_ids?: CreateInvitationRequestTeamIdsList;
 }
-export const CreateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     invitee_id: S.optional(S.Number),
@@ -668,7 +663,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -710,7 +705,7 @@ export interface OrganizationInvitation {
   invitation_teams_url: string;
   invitation_source?: string;
 }
-export const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     login: S.NullOr(S.String),
@@ -734,11 +729,11 @@ export type CreateIssueFieldRequestDataType =
   | "single_select"
   | "multi_select"
   | "number";
-export const CreateIssueFieldRequestDataType = S.String;
+const CreateIssueFieldRequestDataType = S.String;
 
 /** The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`. */
 export type CreateIssueFieldRequestVisibility = "organization_members_only" | "all";
-export const CreateIssueFieldRequestVisibility = S.String;
+const CreateIssueFieldRequestVisibility = S.String;
 
 /** Color for the option. */
 export type CreateIssueFieldRequestOptionsItemColor =
@@ -750,7 +745,7 @@ export type CreateIssueFieldRequestOptionsItemColor =
   | "red"
   | "pink"
   | "purple";
-export const CreateIssueFieldRequestOptionsItemColor = S.String;
+const CreateIssueFieldRequestOptionsItemColor = S.String;
 
 export interface CreateIssueFieldRequestOptionsItem {
   /** Name of the option. */
@@ -762,7 +757,7 @@ export interface CreateIssueFieldRequestOptionsItem {
   /** Priority of the option for ordering. */
   priority: number;
 }
-export const CreateIssueFieldRequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueFieldRequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -775,7 +770,7 @@ export const CreateIssueFieldRequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Options for select fields. Required when data_type is 'single_select' or 'multi_select'. */
 export type CreateIssueFieldRequestOptionsList = Array<CreateIssueFieldRequestOptionsItem>;
-export const CreateIssueFieldRequestOptionsList = /*@__PURE__*/ S.Array(
+const CreateIssueFieldRequestOptionsList = /*@__PURE__*/ S.Array(
   CreateIssueFieldRequestOptionsItem,
 ) as any as S.Schema<CreateIssueFieldRequestOptionsList>;
 
@@ -793,7 +788,7 @@ export interface CreateIssueFieldRequest {
   /** Options for select fields. Required when data_type is 'single_select' or 'multi_select'. */
   options?: CreateIssueFieldRequestOptionsList | null;
 }
-export const CreateIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -806,11 +801,11 @@ export const CreateIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The data type of the issue field. */
 export type IssueFieldDataType = "text" | "date" | "single_select" | "multi_select" | "number";
-export const IssueFieldDataType = S.String;
+const IssueFieldDataType = S.String;
 
 /** The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). */
 export type IssueFieldVisibility = "organization_members_only" | "all";
-export const IssueFieldVisibility = S.String;
+const IssueFieldVisibility = S.String;
 
 /** The color of the option. */
 export type IssueFieldOptionsItemColor =
@@ -822,7 +817,7 @@ export type IssueFieldOptionsItemColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueFieldOptionsItemColor = S.String;
+const IssueFieldOptionsItemColor = S.String;
 
 export interface IssueFieldOptionsItem {
   /** The unique identifier of the option. */
@@ -840,7 +835,7 @@ export interface IssueFieldOptionsItem {
   /** The time the option was last updated. */
   updated_at?: string;
 }
-export const IssueFieldOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const IssueFieldOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -854,7 +849,7 @@ export const IssueFieldOptionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Available options for single select and multi select fields. */
 export type IssueFieldOptionsList = Array<IssueFieldOptionsItem>;
-export const IssueFieldOptionsList = /*@__PURE__*/ S.Array(
+const IssueFieldOptionsList = /*@__PURE__*/ S.Array(
   IssueFieldOptionsItem,
 ) as any as S.Schema<IssueFieldOptionsList>;
 
@@ -879,7 +874,7 @@ export interface IssueField {
   /** The time the issue field was last updated. */
   updated_at?: string;
 }
-export const IssueField = /*@__PURE__*/ S.suspend(() =>
+const IssueField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -903,7 +898,7 @@ export type CreateIssueTypeRequestColor =
   | "red"
   | "pink"
   | "purple";
-export const CreateIssueTypeRequestColor = S.String;
+const CreateIssueTypeRequestColor = S.String;
 
 export interface CreateIssueTypeRequest {
   /** The organization name. The name is not case sensitive. */
@@ -917,7 +912,7 @@ export interface CreateIssueTypeRequest {
   /** Color for the issue type. */
   color?: CreateIssueTypeRequestColor | (string & {}) | null;
 }
-export const CreateIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -937,7 +932,7 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeColor = S.String;
+const IssueTypeColor = S.String;
 
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
@@ -958,7 +953,7 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-export const IssueType = /*@__PURE__*/ S.suspend(() =>
+const IssueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -972,7 +967,7 @@ export const IssueType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueType" }) as any as S.Schema<IssueType>;
 
 export type WebhookConfigInsecureSsl = string | number;
-export const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
+const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
 
 /** Key/value pairs to provide settings for this webhook. */
 export interface CreateWebhookRequestConfig {
@@ -983,7 +978,7 @@ export interface CreateWebhookRequestConfig {
   username?: string;
   password?: string | Redacted.Redacted<string>;
 }
-export const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     content_type: S.optional(S.String),
@@ -998,7 +993,7 @@ export const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events. */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateWebhookRequestEventsList>;
 
@@ -1014,7 +1009,7 @@ export interface CreateWebhookRequest {
   /** Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications. */
   active?: boolean;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -1025,8 +1020,7 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateWebhookRequest" }) as any as S.Schema<CreateWebhookRequest>;
 
 export type OrgHookEventsList = Array<string>;
-export const OrgHookEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<OrgHookEventsList>;
+const OrgHookEventsList = CreateWebhookRequestEventsList as any as S.Schema<OrgHookEventsList>;
 
 export interface OrgHookConfig {
   url?: string;
@@ -1034,7 +1028,7 @@ export interface OrgHookConfig {
   content_type?: string;
   secret?: string | Redacted.Redacted<string>;
 }
-export const OrgHookConfig = /*@__PURE__*/ S.suspend(() =>
+const OrgHookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     insecure_ssl: S.optional(S.String),
@@ -1057,7 +1051,7 @@ export interface OrgHook {
   created_at: string;
   type: string;
 }
-export const OrgHook = /*@__PURE__*/ S.suspend(() =>
+const OrgHook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     url: S.String,
@@ -1080,12 +1074,11 @@ export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestV
   | "multi_select"
   | "true_false"
   | "url";
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType =
-  S.String;
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType = S.String;
 
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List =
   Array<string>;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List>;
@@ -1094,20 +1087,20 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
   | string
   | CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
   S.Unknown as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue>;
 
 /** An ordered list of the allowed values of the property. The property can have up to 200 allowed values. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
   Array<string>;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList>;
 
 /** Who can edit the values of the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
   | "org_actors"
   | "org_and_repo_actors";
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
   S.String;
 
 export interface CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest {
@@ -1135,8 +1128,8 @@ export interface CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionReq
   /** Whether setting properties values is mandatory */
   require_explicit_values?: boolean;
 }
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       org: S.String.pipe(T.Label()),
       custom_property_name: S.String.pipe(T.Label()),
@@ -1164,13 +1157,13 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest",
-  }) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest>;
+).annotate({
+  identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest",
+}) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest>;
 
 /** The source type of the property */
 export type CustomPropertySourceType = "organization" | "enterprise";
-export const CustomPropertySourceType = S.String;
+const CustomPropertySourceType = S.String;
 
 /** The type of the value for the property */
 export type CustomPropertyValueType =
@@ -1179,24 +1172,21 @@ export type CustomPropertyValueType =
   | "multi_select"
   | "true_false"
   | "url";
-export const CustomPropertyValueType = S.String;
+const CustomPropertyValueType = S.String;
 
 export type CustomPropertyDefaultValueCase1List = Array<string>;
-export const CustomPropertyDefaultValueCase1List =
-  CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyDefaultValueCase1List>;
-
 /** Default value of the property */
 export type CustomPropertyDefaultValue = string | CustomPropertyDefaultValueCase1List;
-export const CustomPropertyDefaultValue = S.Unknown as any as S.Schema<CustomPropertyDefaultValue>;
+const CustomPropertyDefaultValue = S.Unknown as any as S.Schema<CustomPropertyDefaultValue>;
 
 /** An ordered list of the allowed values of the property. The property can have up to 200 allowed values. */
 export type CustomPropertyAllowedValuesList = Array<string>;
-export const CustomPropertyAllowedValuesList =
+const CustomPropertyAllowedValuesList =
   CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyAllowedValuesList>;
 
 /** Who can edit the values of the property */
 export type CustomPropertyValuesEditableBy = "org_actors" | "org_and_repo_actors";
-export const CustomPropertyValuesEditableBy = S.String;
+const CustomPropertyValuesEditableBy = S.String;
 
 /** Custom property defined on an organization */
 export interface CustomProperty {
@@ -1221,7 +1211,7 @@ export interface CustomProperty {
   /** Whether setting properties values is mandatory */
   require_explicit_values?: boolean;
 }
-export const CustomProperty = /*@__PURE__*/ S.suspend(() =>
+const CustomProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property_name: S.String,
     url: S.optional(S.String),
@@ -1239,7 +1229,7 @@ export const CustomProperty = /*@__PURE__*/ S.suspend(() =>
 /** The array of custom properties to create or update. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList =
   Array<CustomProperty>;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     CustomProperty,
   ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList>;
@@ -1250,7 +1240,7 @@ export interface CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRe
   /** The array of custom properties to create or update. */
   properties: CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList;
 }
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       org: S.String.pipe(T.Label()),
@@ -1263,12 +1253,12 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsReques
 
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
   Array<CustomProperty>;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList>;
 
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse =
+const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList.pipe(
       T.RawResponseRoot(),
@@ -1280,16 +1270,13 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRespon
 /** The names of repositories that the custom property values will be applied to. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   Array<string>;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
+const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
 
 export type CustomPropertyValueValueCase1List = Array<string>;
-export const CustomPropertyValueValueCase1List =
-  CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyValueValueCase1List>;
-
 /** The value assigned to the property */
 export type CustomPropertyValueValue = string | CustomPropertyValueValueCase1List;
-export const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
+const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
 
 /** Custom property name and associated value */
 export interface CustomPropertyValue {
@@ -1298,7 +1285,7 @@ export interface CustomPropertyValue {
   /** The value assigned to the property */
   value: CustomPropertyValueValue | null;
 }
-export const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property_name: S.String,
     value: S.NullOr(CustomPropertyValueValue),
@@ -1308,7 +1295,7 @@ export const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
 /** List of custom property names and associated values to apply to the repositories. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
-export const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
+const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     CustomPropertyValue,
   ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList>;
@@ -1321,23 +1308,24 @@ export interface CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest
   /** List of custom property names and associated values to apply to the repositories. */
   properties: CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList;
 }
-export const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       org: S.String.pipe(T.Label()),
       repository_names:
         CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList,
       properties: CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList,
     }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/properties/values", code: 200 })),
-  ).annotate({
-    identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest",
-  }) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest>;
+).annotate({
+  identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest",
+}) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest>;
 
 export interface CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse {}
-export const CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse",
-  }) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
+const CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse",
+}) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
 
 export interface CustomPropertiesForReposDeleteOrganizationDefinitionRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1345,25 +1333,24 @@ export interface CustomPropertiesForReposDeleteOrganizationDefinitionRequest {
   /** The custom property name */
   custom_property_name: string;
 }
-export const CustomPropertiesForReposDeleteOrganizationDefinitionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      custom_property_name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/orgs/{org}/properties/schema/{custom_property_name}",
-        code: 200,
-      }),
-    ),
+const CustomPropertiesForReposDeleteOrganizationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    custom_property_name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/orgs/{org}/properties/schema/{custom_property_name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CustomPropertiesForReposDeleteOrganizationDefinitionRequest",
 }) as any as S.Schema<CustomPropertiesForReposDeleteOrganizationDefinitionRequest>;
 
 export interface CustomPropertiesForReposDeleteOrganizationDefinitionResponse {}
-export const CustomPropertiesForReposDeleteOrganizationDefinitionResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const CustomPropertiesForReposDeleteOrganizationDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CustomPropertiesForReposDeleteOrganizationDefinitionResponse",
 }) as any as S.Schema<CustomPropertiesForReposDeleteOrganizationDefinitionResponse>;
@@ -1374,18 +1361,17 @@ export interface CustomPropertiesForReposGetOrganizationDefinitionRequest {
   /** The custom property name */
   custom_property_name: string;
 }
-export const CustomPropertiesForReposGetOrganizationDefinitionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      custom_property_name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/orgs/{org}/properties/schema/{custom_property_name}",
-        code: 200,
-      }),
-    ),
+const CustomPropertiesForReposGetOrganizationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    custom_property_name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/orgs/{org}/properties/schema/{custom_property_name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CustomPropertiesForReposGetOrganizationDefinitionRequest",
 }) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionRequest>;
@@ -1394,25 +1380,23 @@ export interface CustomPropertiesForReposGetOrganizationDefinitionsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const CustomPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-    }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/properties/schema", code: 200 })),
+const CustomPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/properties/schema", code: 200 })),
 ).annotate({
   identifier: "CustomPropertiesForReposGetOrganizationDefinitionsRequest",
 }) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsRequest>;
 
 export type CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
   Array<CustomProperty>;
-export const CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
+const CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
 
 export type CustomPropertiesForReposGetOrganizationDefinitionsResponse =
   CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList;
-export const CustomPropertiesForReposGetOrganizationDefinitionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList.pipe(T.RawResponseRoot()),
+const CustomPropertiesForReposGetOrganizationDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
+  CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CustomPropertiesForReposGetOrganizationDefinitionsResponse",
 }) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponse>;
@@ -1427,7 +1411,7 @@ export interface CustomPropertiesForReposGetOrganizationValuesRequest {
   /** Finds repositories in the organization with a query containing one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching for repositories](https://docs.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers. */
   repository_query?: string;
 }
-export const CustomPropertiesForReposGetOrganizationValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertiesForReposGetOrganizationValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1440,7 +1424,7 @@ export const CustomPropertiesForReposGetOrganizationValuesRequest = /*@__PURE__*
 
 /** List of custom property names and associated values */
 export type OrgRepoCustomPropertyValuesPropertiesList = Array<CustomPropertyValue>;
-export const OrgRepoCustomPropertyValuesPropertiesList = /*@__PURE__*/ S.Array(
+const OrgRepoCustomPropertyValuesPropertiesList = /*@__PURE__*/ S.Array(
   CustomPropertyValue,
 ) as any as S.Schema<OrgRepoCustomPropertyValuesPropertiesList>;
 
@@ -1452,7 +1436,7 @@ export interface OrgRepoCustomPropertyValues {
   /** List of custom property names and associated values */
   properties: OrgRepoCustomPropertyValuesPropertiesList;
 }
-export const OrgRepoCustomPropertyValues = /*@__PURE__*/ S.suspend(() =>
+const OrgRepoCustomPropertyValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_id: S.Number,
     repository_name: S.String,
@@ -1465,13 +1449,13 @@ export const OrgRepoCustomPropertyValues = /*@__PURE__*/ S.suspend(() =>
 
 export type CustomPropertiesForReposGetOrganizationValuesResponseBodyList =
   Array<OrgRepoCustomPropertyValues>;
-export const CustomPropertiesForReposGetOrganizationValuesResponseBodyList = /*@__PURE__*/ S.Array(
+const CustomPropertiesForReposGetOrganizationValuesResponseBodyList = /*@__PURE__*/ S.Array(
   OrgRepoCustomPropertyValues,
 ) as any as S.Schema<CustomPropertiesForReposGetOrganizationValuesResponseBodyList>;
 
 export type CustomPropertiesForReposGetOrganizationValuesResponse =
   CustomPropertiesForReposGetOrganizationValuesResponseBodyList;
-export const CustomPropertiesForReposGetOrganizationValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertiesForReposGetOrganizationValuesResponse = /*@__PURE__*/ S.suspend(() =>
   CustomPropertiesForReposGetOrganizationValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CustomPropertiesForReposGetOrganizationValuesResponse",
@@ -1481,54 +1465,32 @@ export interface DeleteRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}", code: 200 })),
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponse {}
-export const DeleteResponse = AssignTeamToOrgRoleResponse as any as S.Schema<DeleteResponse>;
+const DeleteResponse = AssignTeamToOrgRoleResponse as any as S.Schema<DeleteResponse>;
 
 /** List of subject digests associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList = Array<string>;
-export const DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList =
-  CreateWebhookRequestEventsList as any as S.Schema<DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList>;
-
 export interface DeleteAttestationsBulkRequestBodyCase0 {
   /** List of subject digests associated with the artifact attestations to delete. */
   subject_digests: DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList;
 }
-export const DeleteAttestationsBulkRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject_digests: DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList,
-  }),
-).annotate({
-  identifier: "DeleteAttestationsBulkRequestBodyCase0",
-}) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase0>;
-
 /** List of unique IDs associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase1AttestationIdsList = Array<number>;
-export const DeleteAttestationsBulkRequestBodyCase1AttestationIdsList =
-  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<DeleteAttestationsBulkRequestBodyCase1AttestationIdsList>;
-
 export interface DeleteAttestationsBulkRequestBodyCase1 {
   /** List of unique IDs associated with the artifact attestations to delete. */
   attestation_ids: DeleteAttestationsBulkRequestBodyCase1AttestationIdsList;
 }
-export const DeleteAttestationsBulkRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attestation_ids: DeleteAttestationsBulkRequestBodyCase1AttestationIdsList,
-  }),
-).annotate({
-  identifier: "DeleteAttestationsBulkRequestBodyCase1",
-}) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase1>;
-
 /** The request body must include either `subject_digests` or `attestation_ids`, but not both. */
 export type DeleteAttestationsBulkRequestBody =
   | DeleteAttestationsBulkRequestBodyCase0
   | DeleteAttestationsBulkRequestBodyCase1;
-export const DeleteAttestationsBulkRequestBody =
+const DeleteAttestationsBulkRequestBody =
   S.Unknown as any as S.Schema<DeleteAttestationsBulkRequestBody>;
 
 export interface DeleteAttestationsBulkRequest {
@@ -1536,7 +1498,7 @@ export interface DeleteAttestationsBulkRequest {
   org: string;
   body: DeleteAttestationsBulkRequestBody;
 }
-export const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     body: DeleteAttestationsBulkRequestBody.pipe(T.HttpBody()),
@@ -1546,7 +1508,7 @@ export const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttestationsBulkRequest>;
 
 export interface DeleteAttestationsBulkResponse {}
-export const DeleteAttestationsBulkResponse =
+const DeleteAttestationsBulkResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<DeleteAttestationsBulkResponse>;
 
 export interface DeleteAttestationsByIdRequest {
@@ -1555,7 +1517,7 @@ export interface DeleteAttestationsByIdRequest {
   /** Attestation ID */
   attestation_id: number;
 }
-export const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     attestation_id: S.Number.pipe(T.Label()),
@@ -1567,7 +1529,7 @@ export const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttestationsByIdRequest>;
 
 export interface DeleteAttestationsByIdResponse {}
-export const DeleteAttestationsByIdResponse =
+const DeleteAttestationsByIdResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<DeleteAttestationsByIdResponse>;
 
 export interface DeleteAttestationsBySubjectDigestRequest {
@@ -1576,7 +1538,7 @@ export interface DeleteAttestationsBySubjectDigestRequest {
   /** Subject Digest */
   subject_digest: string;
 }
-export const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     subject_digest: S.String.pipe(T.Label()),
@@ -1592,7 +1554,7 @@ export const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>;
 
 export interface DeleteAttestationsBySubjectDigestResponse {}
-export const DeleteAttestationsBySubjectDigestResponse =
+const DeleteAttestationsBySubjectDigestResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>;
 
 export interface DeleteIssueFieldRequest {
@@ -1601,7 +1563,7 @@ export interface DeleteIssueFieldRequest {
   /** The unique identifier of the issue field. */
   issue_field_id: number;
 }
-export const DeleteIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     issue_field_id: S.Number.pipe(T.Label()),
@@ -1611,7 +1573,7 @@ export const DeleteIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIssueFieldRequest" }) as any as S.Schema<DeleteIssueFieldRequest>;
 
 export interface DeleteIssueFieldResponse {}
-export const DeleteIssueFieldResponse =
+const DeleteIssueFieldResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<DeleteIssueFieldResponse>;
 
 export interface DeleteIssueTypeRequest {
@@ -1620,7 +1582,7 @@ export interface DeleteIssueTypeRequest {
   /** The unique identifier of the issue type. */
   issue_type_id: number;
 }
-export const DeleteIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     issue_type_id: S.Number.pipe(T.Label()),
@@ -1628,7 +1590,7 @@ export const DeleteIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIssueTypeRequest" }) as any as S.Schema<DeleteIssueTypeRequest>;
 
 export interface DeleteIssueTypeResponse {}
-export const DeleteIssueTypeResponse =
+const DeleteIssueTypeResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<DeleteIssueTypeResponse>;
 
 export interface DeleteWebhookRequest {
@@ -1637,7 +1599,7 @@ export interface DeleteWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -1645,8 +1607,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = AssignTeamToOrgRoleResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DisableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1654,24 +1615,23 @@ export interface DisableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-export const DisableSelectedRepositoryImmutableReleasesOrganizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      repository_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DisableSelectedRepositoryImmutableReleasesOrganizationRequest",
-  }) as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationRequest>;
+const DisableSelectedRepositoryImmutableReleasesOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    repository_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DisableSelectedRepositoryImmutableReleasesOrganizationRequest",
+}) as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationRequest>;
 
 export interface DisableSelectedRepositoryImmutableReleasesOrganizationResponse {}
-export const DisableSelectedRepositoryImmutableReleasesOrganizationResponse =
+const DisableSelectedRepositoryImmutableReleasesOrganizationResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationResponse>;
 
 export interface EnableSelectedRepositoryImmutableReleasesOrganizationRequest {
@@ -1680,36 +1640,35 @@ export interface EnableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-export const EnableSelectedRepositoryImmutableReleasesOrganizationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      repository_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}",
-        code: 200,
-      }),
-    ),
+const EnableSelectedRepositoryImmutableReleasesOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    repository_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "EnableSelectedRepositoryImmutableReleasesOrganizationRequest",
 }) as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationRequest>;
 
 export interface EnableSelectedRepositoryImmutableReleasesOrganizationResponse {}
-export const EnableSelectedRepositoryImmutableReleasesOrganizationResponse =
+const EnableSelectedRepositoryImmutableReleasesOrganizationResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationResponse>;
 
 /** The names of repositories that the external custom property values will be applied to. */
 export type ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   Array<string>;
-export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
+const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
 
 /** List of external custom property names and associated values to apply to the repositories. */
 export type ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
-export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
+const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList>;
 
 export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest {
@@ -1720,8 +1679,8 @@ export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesReque
   /** List of external custom property names and associated values to apply to the repositories. */
   properties: ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList;
 }
-export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       org: S.String.pipe(T.Label()),
       repository_names:
@@ -1730,12 +1689,12 @@ export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest =
     }).pipe(
       T.Http({ method: "PATCH", uri: "/orgs/{org}/properties/installations/values", code: 200 }),
     ),
-  ).annotate({
-    identifier: "ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest",
-  }) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest>;
+).annotate({
+  identifier: "ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest",
+}) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest>;
 
 export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse {}
-export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse =
+const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
 
 /** Repository name and associated external custom property value */
@@ -1745,7 +1704,7 @@ export interface RepositoryExternalPropertyPayload {
   /** The value assigned to the repository. Set to `null` to unset the value for this repository. */
   value: string | null;
 }
-export const RepositoryExternalPropertyPayload = /*@__PURE__*/ S.suspend(() =>
+const RepositoryExternalPropertyPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_name: S.String,
     value: S.NullOr(S.String),
@@ -1757,7 +1716,7 @@ export const RepositoryExternalPropertyPayload = /*@__PURE__*/ S.suspend(() =>
 /** The names of repositories and the values that the named external custom property will be set to. */
 export type ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList =
   Array<RepositoryExternalPropertyPayload>;
-export const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList =
+const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList =
   /*@__PURE__*/ S.Array(
     RepositoryExternalPropertyPayload,
   ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList>;
@@ -1770,7 +1729,7 @@ export interface ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPr
   /** The names of repositories and the values that the named external custom property will be set to. */
   repository_values: ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList;
 }
-export const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest =
+const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       org: S.String.pipe(T.Label()),
@@ -1789,7 +1748,7 @@ export const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationProper
   }) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest>;
 
 export interface ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse {}
-export const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse =
+const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse>;
 
 export interface ExternalPropertiesForReposDeleteOrganizationValuesRequest {
@@ -1798,45 +1757,44 @@ export interface ExternalPropertiesForReposDeleteOrganizationValuesRequest {
   /** The name of the external custom property */
   property_name: string;
 }
-export const ExternalPropertiesForReposDeleteOrganizationValuesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      property_name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/orgs/{org}/properties/installations/values/{property_name}",
-        code: 200,
-      }),
-    ),
+const ExternalPropertiesForReposDeleteOrganizationValuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    property_name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/orgs/{org}/properties/installations/values/{property_name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ExternalPropertiesForReposDeleteOrganizationValuesRequest",
 }) as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesRequest>;
 
 export interface ExternalPropertiesForReposDeleteOrganizationValuesResponse {}
-export const ExternalPropertiesForReposDeleteOrganizationValuesResponse =
+const ExternalPropertiesForReposDeleteOrganizationValuesResponse =
   CustomPropertiesForReposDeleteOrganizationDefinitionResponse as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesResponse>;
 
 export interface ExternalPropertiesForReposGetOrganizationAppInstallationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ExternalPropertiesForReposGetOrganizationAppInstallationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ExternalPropertiesForReposGetOrganizationAppInstallationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       org: S.String.pipe(T.Label()),
     }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/properties/installations", code: 200 })),
-  ).annotate({
-    identifier: "ExternalPropertiesForReposGetOrganizationAppInstallationsRequest",
-  }) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsRequest>;
+).annotate({
+  identifier: "ExternalPropertiesForReposGetOrganizationAppInstallationsRequest",
+}) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsRequest>;
 
 /** The GitHub App installation that was registered. */
 export interface OrganizationExternalPropertyInstallationInstallation {
   /** The unique identifier of the GitHub App installation. */
   id: number;
 }
-export const OrganizationExternalPropertyInstallationInstallation = /*@__PURE__*/ S.suspend(() =>
+const OrganizationExternalPropertyInstallationInstallation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }),
@@ -1851,7 +1809,7 @@ export interface OrganizationExternalPropertyInstallation {
   /** The GitHub App installation that was registered. */
   installation: OrganizationExternalPropertyInstallationInstallation;
 }
-export const OrganizationExternalPropertyInstallation = /*@__PURE__*/ S.suspend(() =>
+const OrganizationExternalPropertyInstallation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display_name: S.String,
     installation: OrganizationExternalPropertyInstallationInstallation,
@@ -1862,33 +1820,30 @@ export const OrganizationExternalPropertyInstallation = /*@__PURE__*/ S.suspend(
 
 export type ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList =
   Array<OrganizationExternalPropertyInstallation>;
-export const ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList =
+const ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList =
   /*@__PURE__*/ S.Array(
     OrganizationExternalPropertyInstallation,
   ) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList>;
 
 export type ExternalPropertiesForReposGetOrganizationAppInstallationsResponse =
   ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList;
-export const ExternalPropertiesForReposGetOrganizationAppInstallationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ExternalPropertiesForReposGetOrganizationAppInstallationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "ExternalPropertiesForReposGetOrganizationAppInstallationsResponse",
-  }) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsResponse>;
+).annotate({
+  identifier: "ExternalPropertiesForReposGetOrganizationAppInstallationsResponse",
+}) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsResponse>;
 
 export interface ExternalPropertiesForReposGetOrganizationDefinitionsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ExternalPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/orgs/{org}/properties/installations/schema", code: 200 }),
-    ),
+const ExternalPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/properties/installations/schema", code: 200 })),
 ).annotate({
   identifier: "ExternalPropertiesForReposGetOrganizationDefinitionsRequest",
 }) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsRequest>;
@@ -1898,7 +1853,7 @@ export interface ExternalProperty {
   /** The name of the external property */
   property_name: string;
 }
-export const ExternalProperty = /*@__PURE__*/ S.suspend(() =>
+const ExternalProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property_name: S.String,
   }),
@@ -1906,16 +1861,14 @@ export const ExternalProperty = /*@__PURE__*/ S.suspend(() =>
 
 export type ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
   Array<ExternalProperty>;
-export const ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    ExternalProperty,
-  ) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
+const ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList = /*@__PURE__*/ S.Array(
+  ExternalProperty,
+) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
 
 export type ExternalPropertiesForReposGetOrganizationDefinitionsResponse =
   ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList;
-export const ExternalPropertiesForReposGetOrganizationDefinitionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList.pipe(T.RawResponseRoot()),
+const ExternalPropertiesForReposGetOrganizationDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
+  ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ExternalPropertiesForReposGetOrganizationDefinitionsResponse",
 }) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsResponse>;
@@ -1928,7 +1881,7 @@ export interface ExternalPropertiesForReposRegisterOrganizationAppInstallationRe
   /** The display name for this app installation's external custom properties in the organization. Must be 1 to 15 characters and contain only letters and numbers. Capitalization is preserved as entered. This can't be changed after the app installation is registered. */
   display_name: string;
 }
-export const ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest =
+const ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       org: S.String.pipe(T.Label()),
@@ -1943,7 +1896,7 @@ export interface GetRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}", code: 200 })),
@@ -1956,7 +1909,7 @@ export interface OrganizationFullPlan {
   filled_seats?: number;
   seats?: number;
 }
-export const OrganizationFullPlan = /*@__PURE__*/ S.suspend(() =>
+const OrganizationFullPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     space: S.Number,
@@ -2047,7 +2000,7 @@ export interface OrganizationFull {
   /** Controls whether or not deploy keys may be added and used for repositories in the organization. */
   deploy_keys_enabled_for_repositories?: boolean;
 }
-export const OrganizationFull = /*@__PURE__*/ S.suspend(() =>
+const OrganizationFull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -2125,10 +2078,10 @@ export type GetApiInsightRouteStatsByActorRequestActorType =
   | "fine_grained_pat"
   | "oauth_app"
   | "github_app_user_to_server";
-export const GetApiInsightRouteStatsByActorRequestActorType = S.String;
+const GetApiInsightRouteStatsByActorRequestActorType = S.String;
 
 export type GetApiInsightRouteStatsByActorRequestDirection = "asc" | "desc";
-export const GetApiInsightRouteStatsByActorRequestDirection = S.String;
+const GetApiInsightRouteStatsByActorRequestDirection = S.String;
 
 export type GetApiInsightRouteStatsByActorRequestSortItem =
   | "last_rate_limited_timestamp"
@@ -2137,12 +2090,10 @@ export type GetApiInsightRouteStatsByActorRequestSortItem =
   | "http_method"
   | "api_route"
   | "total_request_count";
-export const GetApiInsightRouteStatsByActorRequestSortItem = S.String;
-
 export type GetApiInsightRouteStatsByActorRequestSortList = Array<
   GetApiInsightRouteStatsByActorRequestSortItem | (string & {})
 >;
-export const GetApiInsightRouteStatsByActorRequestSortList =
+const GetApiInsightRouteStatsByActorRequestSortList =
   CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<GetApiInsightRouteStatsByActorRequestSortList>;
 
 export interface GetApiInsightRouteStatsByActorRequest {
@@ -2167,7 +2118,7 @@ export interface GetApiInsightRouteStatsByActorRequest {
   /** Providing a substring will filter results where the API route contains the substring. This is a case-insensitive search. */
   api_route_substring?: string;
 }
-export const GetApiInsightRouteStatsByActorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightRouteStatsByActorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     actor_type: GetApiInsightRouteStatsByActorRequestActorType.pipe(T.Label()),
@@ -2202,7 +2153,7 @@ export interface ApiInsightsRouteStatsItem {
   last_rate_limited_timestamp?: string | null;
   last_request_timestamp?: string;
 }
-export const ApiInsightsRouteStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ApiInsightsRouteStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     http_method: S.optional(S.String),
     api_route: S.optional(S.String),
@@ -2217,19 +2168,19 @@ export const ApiInsightsRouteStatsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** API Insights usage route stats for an actor */
 export type ApiInsightsRouteStats = Array<ApiInsightsRouteStatsItem>;
-export const ApiInsightsRouteStats = /*@__PURE__*/ S.Array(
+const ApiInsightsRouteStats = /*@__PURE__*/ S.Array(
   ApiInsightsRouteStatsItem,
 ) as any as S.Schema<ApiInsightsRouteStats>;
 
 export type GetApiInsightRouteStatsByActorResponse = ApiInsightsRouteStats;
-export const GetApiInsightRouteStatsByActorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightRouteStatsByActorResponse = /*@__PURE__*/ S.suspend(() =>
   ApiInsightsRouteStats.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetApiInsightRouteStatsByActorResponse",
 }) as any as S.Schema<GetApiInsightRouteStatsByActorResponse>;
 
 export type GetApiInsightSubjectStatsRequestDirection = "asc" | "desc";
-export const GetApiInsightSubjectStatsRequestDirection = S.String;
+const GetApiInsightSubjectStatsRequestDirection = S.String;
 
 export type GetApiInsightSubjectStatsRequestSortItem =
   | "last_rate_limited_timestamp"
@@ -2237,12 +2188,10 @@ export type GetApiInsightSubjectStatsRequestSortItem =
   | "rate_limited_request_count"
   | "subject_name"
   | "total_request_count";
-export const GetApiInsightSubjectStatsRequestSortItem = S.String;
-
 export type GetApiInsightSubjectStatsRequestSortList = Array<
   GetApiInsightSubjectStatsRequestSortItem | (string & {})
 >;
-export const GetApiInsightSubjectStatsRequestSortList =
+const GetApiInsightSubjectStatsRequestSortList =
   CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<GetApiInsightSubjectStatsRequestSortList>;
 
 export interface GetApiInsightSubjectStatsRequest {
@@ -2263,7 +2212,7 @@ export interface GetApiInsightSubjectStatsRequest {
   /** Providing a substring will filter results where the subject name contains the substring. This is a case-insensitive search. */
   subject_name_substring?: string;
 }
-export const GetApiInsightSubjectStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightSubjectStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     min_timestamp: S.String.pipe(T.Query()),
@@ -2287,7 +2236,7 @@ export interface ApiInsightsSubjectStatsItem {
   last_rate_limited_timestamp?: string | null;
   last_request_timestamp?: string;
 }
-export const ApiInsightsSubjectStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ApiInsightsSubjectStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject_type: S.optional(S.String),
     subject_name: S.optional(S.String),
@@ -2303,12 +2252,12 @@ export const ApiInsightsSubjectStatsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** API Insights usage subject stats for an organization */
 export type ApiInsightsSubjectStats = Array<ApiInsightsSubjectStatsItem>;
-export const ApiInsightsSubjectStats = /*@__PURE__*/ S.Array(
+const ApiInsightsSubjectStats = /*@__PURE__*/ S.Array(
   ApiInsightsSubjectStatsItem,
 ) as any as S.Schema<ApiInsightsSubjectStats>;
 
 export type GetApiInsightSubjectStatsResponse = ApiInsightsSubjectStats;
-export const GetApiInsightSubjectStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightSubjectStatsResponse = /*@__PURE__*/ S.suspend(() =>
   ApiInsightsSubjectStats.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetApiInsightSubjectStatsResponse",
@@ -2322,7 +2271,7 @@ export interface GetApiInsightSummaryStatsRequest {
   /** The maximum timestamp to query for stats. Defaults to the time 30 days ago. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   max_timestamp?: string;
 }
-export const GetApiInsightSummaryStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightSummaryStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     min_timestamp: S.String.pipe(T.Query()),
@@ -2339,7 +2288,7 @@ export interface ApiInsightsSummaryStats {
   /** The total number of requests that were rate limited within the queried time period */
   rate_limited_request_count?: number;
 }
-export const ApiInsightsSummaryStats = /*@__PURE__*/ S.suspend(() =>
+const ApiInsightsSummaryStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_request_count: S.optional(S.Number),
     rate_limited_request_count: S.optional(S.Number),
@@ -2352,7 +2301,7 @@ export type GetApiInsightSummaryStatsByActorRequestActorType =
   | "fine_grained_pat"
   | "oauth_app"
   | "github_app_user_to_server";
-export const GetApiInsightSummaryStatsByActorRequestActorType = S.String;
+const GetApiInsightSummaryStatsByActorRequestActorType = S.String;
 
 export interface GetApiInsightSummaryStatsByActorRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2366,7 +2315,7 @@ export interface GetApiInsightSummaryStatsByActorRequest {
   /** The maximum timestamp to query for stats. Defaults to the time 30 days ago. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   max_timestamp?: string;
 }
-export const GetApiInsightSummaryStatsByActorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightSummaryStatsByActorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     actor_type: GetApiInsightSummaryStatsByActorRequestActorType.pipe(T.Label()),
@@ -2394,7 +2343,7 @@ export interface GetApiInsightSummaryStatsByUserRequest {
   /** The maximum timestamp to query for stats. Defaults to the time 30 days ago. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   max_timestamp?: string;
 }
-export const GetApiInsightSummaryStatsByUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightSummaryStatsByUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     user_id: S.String.pipe(T.Label()),
@@ -2421,7 +2370,7 @@ export interface GetApiInsightTimeStatsRequest {
   /** The increment of time used to breakdown the query results (5m, 10m, 1h, etc.) */
   timestamp_increment: string;
 }
-export const GetApiInsightTimeStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightTimeStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     min_timestamp: S.String.pipe(T.Query()),
@@ -2437,7 +2386,7 @@ export interface ApiInsightsTimeStatsItem {
   total_request_count?: number;
   rate_limited_request_count?: number;
 }
-export const ApiInsightsTimeStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ApiInsightsTimeStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     total_request_count: S.optional(S.Number),
@@ -2447,12 +2396,12 @@ export const ApiInsightsTimeStatsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** API Insights usage time stats for an organization */
 export type ApiInsightsTimeStats = Array<ApiInsightsTimeStatsItem>;
-export const ApiInsightsTimeStats = /*@__PURE__*/ S.Array(
+const ApiInsightsTimeStats = /*@__PURE__*/ S.Array(
   ApiInsightsTimeStatsItem,
 ) as any as S.Schema<ApiInsightsTimeStats>;
 
 export type GetApiInsightTimeStatsResponse = ApiInsightsTimeStats;
-export const GetApiInsightTimeStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightTimeStatsResponse = /*@__PURE__*/ S.suspend(() =>
   ApiInsightsTimeStats.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetApiInsightTimeStatsResponse",
@@ -2464,7 +2413,7 @@ export type GetApiInsightTimeStatsByActorRequestActorType =
   | "fine_grained_pat"
   | "oauth_app"
   | "github_app_user_to_server";
-export const GetApiInsightTimeStatsByActorRequestActorType = S.String;
+const GetApiInsightTimeStatsByActorRequestActorType = S.String;
 
 export interface GetApiInsightTimeStatsByActorRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2480,7 +2429,7 @@ export interface GetApiInsightTimeStatsByActorRequest {
   /** The increment of time used to breakdown the query results (5m, 10m, 1h, etc.) */
   timestamp_increment: string;
 }
-export const GetApiInsightTimeStatsByActorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightTimeStatsByActorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     actor_type: GetApiInsightTimeStatsByActorRequestActorType.pipe(T.Label()),
@@ -2500,7 +2449,7 @@ export const GetApiInsightTimeStatsByActorRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetApiInsightTimeStatsByActorRequest>;
 
 export type GetApiInsightTimeStatsByActorResponse = ApiInsightsTimeStats;
-export const GetApiInsightTimeStatsByActorResponse =
+const GetApiInsightTimeStatsByActorResponse =
   GetApiInsightTimeStatsResponse as any as S.Schema<GetApiInsightTimeStatsByActorResponse>;
 
 export interface GetApiInsightTimeStatsByUserRequest {
@@ -2515,7 +2464,7 @@ export interface GetApiInsightTimeStatsByUserRequest {
   /** The increment of time used to breakdown the query results (5m, 10m, 1h, etc.) */
   timestamp_increment: string;
 }
-export const GetApiInsightTimeStatsByUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightTimeStatsByUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     user_id: S.String.pipe(T.Label()),
@@ -2534,11 +2483,11 @@ export const GetApiInsightTimeStatsByUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApiInsightTimeStatsByUserRequest>;
 
 export type GetApiInsightTimeStatsByUserResponse = ApiInsightsTimeStats;
-export const GetApiInsightTimeStatsByUserResponse =
+const GetApiInsightTimeStatsByUserResponse =
   GetApiInsightTimeStatsResponse as any as S.Schema<GetApiInsightTimeStatsByUserResponse>;
 
 export type GetApiInsightUserStatsRequestDirection = "asc" | "desc";
-export const GetApiInsightUserStatsRequestDirection = S.String;
+const GetApiInsightUserStatsRequestDirection = S.String;
 
 export type GetApiInsightUserStatsRequestSortItem =
   | "last_rate_limited_timestamp"
@@ -2546,12 +2495,10 @@ export type GetApiInsightUserStatsRequestSortItem =
   | "rate_limited_request_count"
   | "subject_name"
   | "total_request_count";
-export const GetApiInsightUserStatsRequestSortItem = S.String;
-
 export type GetApiInsightUserStatsRequestSortList = Array<
   GetApiInsightUserStatsRequestSortItem | (string & {})
 >;
-export const GetApiInsightUserStatsRequestSortList =
+const GetApiInsightUserStatsRequestSortList =
   CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<GetApiInsightUserStatsRequestSortList>;
 
 export interface GetApiInsightUserStatsRequest {
@@ -2574,7 +2521,7 @@ export interface GetApiInsightUserStatsRequest {
   /** Providing a substring will filter results where the actor name contains the substring. This is a case-insensitive search. */
   actor_name_substring?: string;
 }
-export const GetApiInsightUserStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightUserStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     user_id: S.String.pipe(T.Label()),
@@ -2603,7 +2550,7 @@ export interface ApiInsightsUserStatsItem {
   last_rate_limited_timestamp?: string | null;
   last_request_timestamp?: string;
 }
-export const ApiInsightsUserStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ApiInsightsUserStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actor_type: S.optional(S.String),
     actor_name: S.optional(S.String),
@@ -2619,12 +2566,12 @@ export const ApiInsightsUserStatsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** API Insights usage stats for a user */
 export type ApiInsightsUserStats = Array<ApiInsightsUserStatsItem>;
-export const ApiInsightsUserStats = /*@__PURE__*/ S.Array(
+const ApiInsightsUserStats = /*@__PURE__*/ S.Array(
   ApiInsightsUserStatsItem,
 ) as any as S.Schema<ApiInsightsUserStats>;
 
 export type GetApiInsightUserStatsResponse = ApiInsightsUserStats;
-export const GetApiInsightUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiInsightUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
   ApiInsightsUserStats.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetApiInsightUserStatsResponse",
@@ -2638,7 +2585,7 @@ export interface GetClusterDeploymentRecordsJobRequest {
   /** The ID of the job. */
   job_id: number;
 }
-export const GetClusterDeploymentRecordsJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterDeploymentRecordsJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     cluster: S.String.pipe(T.Label()),
@@ -2660,11 +2607,11 @@ export type GetClusterDeploymentRecordsJobResponseStatus =
   | "processing"
   | "completed"
   | "failed";
-export const GetClusterDeploymentRecordsJobResponseStatus = S.String;
+const GetClusterDeploymentRecordsJobResponseStatus = S.String;
 
 /** Processing errors (only present when completed or failed). */
 export type GetClusterDeploymentRecordsJobResponseErrorsList = Array<unknown>;
-export const GetClusterDeploymentRecordsJobResponseErrorsList = /*@__PURE__*/ S.Array(
+const GetClusterDeploymentRecordsJobResponseErrorsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetClusterDeploymentRecordsJobResponseErrorsList>;
 
@@ -2680,7 +2627,7 @@ export interface GetClusterDeploymentRecordsJobResponse {
   /** Processing errors (only present when completed or failed). */
   errors?: GetClusterDeploymentRecordsJobResponseErrorsList;
 }
-export const GetClusterDeploymentRecordsJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterDeploymentRecordsJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_id: S.Number,
     status: GetClusterDeploymentRecordsJobResponseStatus,
@@ -2696,7 +2643,7 @@ export interface GetImmutableReleasesSettingsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/settings/immutable-releases", code: 200 })),
@@ -2706,7 +2653,7 @@ export const GetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The policy that controls how immutable releases are enforced in the organization. */
 export type ImmutableReleasesOrganizationSettingsEnforcedRepositories = "all" | "none" | "selected";
-export const ImmutableReleasesOrganizationSettingsEnforcedRepositories = S.String;
+const ImmutableReleasesOrganizationSettingsEnforcedRepositories = S.String;
 
 /** Check immutable releases settings for an organization. */
 export interface ImmutableReleasesOrganizationSettings {
@@ -2715,7 +2662,7 @@ export interface ImmutableReleasesOrganizationSettings {
   /** The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`. */
   selected_repositories_url?: string;
 }
-export const ImmutableReleasesOrganizationSettings = /*@__PURE__*/ S.suspend(() =>
+const ImmutableReleasesOrganizationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforced_repositories: ImmutableReleasesOrganizationSettingsEnforcedRepositories,
     selected_repositories_url: S.optional(S.String),
@@ -2732,7 +2679,7 @@ export interface GetImmutableReleasesSettingsRepositoriesRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const GetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2749,12 +2696,12 @@ export const GetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList =
+const MinimalRepositoryTopicsList =
   CreateWebhookRequestEventsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -2763,7 +2710,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -2783,7 +2730,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -2800,7 +2747,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -2811,13 +2758,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -2826,98 +2773,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -2927,7 +2858,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -2942,16 +2873,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -2973,7 +2903,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -2996,7 +2926,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -3097,7 +3027,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -3194,16 +3124,15 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 
 export type GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList =
   Array<MinimalRepository>;
-export const GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList =
-  /*@__PURE__*/ S.Array(
-    MinimalRepository,
-  ) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList>;
+const GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList = /*@__PURE__*/ S.Array(
+  MinimalRepository,
+) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList>;
 
 export interface GetImmutableReleasesSettingsRepositoriesResponse {
   total_count: number;
   repositories: GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList;
 }
-export const GetImmutableReleasesSettingsRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImmutableReleasesSettingsRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repositories: GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList,
@@ -3216,7 +3145,7 @@ export interface GetMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/memberships/orgs/{org}", code: 200 })),
@@ -3226,15 +3155,15 @@ export const GetMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
 
 /** The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation. */
 export type OrgMembershipState = "active" | "pending";
-export const OrgMembershipState = S.String;
+const OrgMembershipState = S.String;
 
 /** The user's membership type in the organization. */
 export type OrgMembershipRole = "admin" | "member" | "billing_manager";
-export const OrgMembershipRole = S.String;
+const OrgMembershipRole = S.String;
 
 /** The slugs of the enterprise teams providing the user with indirect membership in the organization. A limit of 100 enterprise team slugs is returned. */
 export type OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList = Array<string>;
-export const OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList =
+const OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList =
   CreateWebhookRequestEventsList as any as S.Schema<OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList>;
 
 /** A GitHub organization. */
@@ -3252,7 +3181,7 @@ export interface OrganizationSimple {
   avatar_url: string;
   description: string | null;
 }
-export const OrganizationSimple = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -3271,12 +3200,10 @@ export const OrganizationSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
-export const NullableSimpleUser = SimpleUser;
-
 export interface OrgMembershipPermissions {
   can_create_repository: boolean;
 }
-export const OrgMembershipPermissions = /*@__PURE__*/ S.suspend(() =>
+const OrgMembershipPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_repository: S.Boolean,
   }),
@@ -3298,7 +3225,7 @@ export interface OrgMembership {
   user: SimpleUser | null;
   permissions?: OrgMembershipPermissions;
 }
-export const OrgMembership = /*@__PURE__*/ S.suspend(() =>
+const OrgMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     state: OrgMembershipState,
@@ -3320,7 +3247,7 @@ export interface GetMembershipForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const GetMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -3335,7 +3262,7 @@ export interface GetOrgRoleRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-export const GetOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     role_id: S.Number.pipe(T.Label()),
@@ -3344,15 +3271,15 @@ export const GetOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The system role from which this role inherits permissions. */
 export type OrganizationRoleBaseRole = "read" | "triage" | "write" | "maintain" | "admin";
-export const OrganizationRoleBaseRole = S.String;
+const OrganizationRoleBaseRole = S.String;
 
 /** Source answers the question, "where did this role come from?" */
 export type OrganizationRoleSource = "Organization" | "Enterprise" | "Predefined";
-export const OrganizationRoleSource = S.String;
+const OrganizationRoleSource = S.String;
 
 /** A list of permissions included in this role. */
 export type OrganizationRolePermissionsList = Array<string>;
-export const OrganizationRolePermissionsList =
+const OrganizationRolePermissionsList =
   CreateWebhookRequestEventsList as any as S.Schema<OrganizationRolePermissionsList>;
 
 /** Organization roles */
@@ -3375,7 +3302,7 @@ export interface OrganizationRole {
   /** The date and time the role was last updated. */
   updated_at: string;
 }
-export const OrganizationRole = /*@__PURE__*/ S.suspend(() =>
+const OrganizationRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -3399,7 +3326,7 @@ export interface GetOrgRulesetHistoryRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetOrgRulesetHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     ruleset_id: S.Number.pipe(T.Label()),
@@ -3415,7 +3342,7 @@ export interface RulesetVersionActor {
   id?: number;
   type?: string;
 }
-export const RulesetVersionActor = /*@__PURE__*/ S.suspend(() =>
+const RulesetVersionActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     type: S.optional(S.String),
@@ -3430,7 +3357,7 @@ export interface RulesetVersion {
   actor: RulesetVersionActor;
   updated_at: string;
 }
-export const RulesetVersion = /*@__PURE__*/ S.suspend(() =>
+const RulesetVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number,
     actor: RulesetVersionActor,
@@ -3439,12 +3366,12 @@ export const RulesetVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesetVersion" }) as any as S.Schema<RulesetVersion>;
 
 export type GetOrgRulesetHistoryResponseBodyList = Array<RulesetVersion>;
-export const GetOrgRulesetHistoryResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOrgRulesetHistoryResponseBodyList = /*@__PURE__*/ S.Array(
   RulesetVersion,
 ) as any as S.Schema<GetOrgRulesetHistoryResponseBodyList>;
 
 export type GetOrgRulesetHistoryResponse = GetOrgRulesetHistoryResponseBodyList;
-export const GetOrgRulesetHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgRulesetHistoryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetOrgRulesetHistoryResponse",
@@ -3458,7 +3385,7 @@ export interface GetOrgRulesetVersionRequest {
   /** The ID of the version */
   version_id: number;
 }
-export const GetOrgRulesetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     ruleset_id: S.Number.pipe(T.Label()),
@@ -3476,8 +3403,6 @@ export const GetOrgRulesetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor who updated the ruleset */
 export type GetOrgRulesetVersionResponseActor = RulesetVersionActor;
-export const GetOrgRulesetVersionResponseActor = RulesetVersionActor;
-
 export interface GetOrgRulesetVersionResponse {
   /** The ID of the previous version of the ruleset */
   version_id: number;
@@ -3487,7 +3412,7 @@ export interface GetOrgRulesetVersionResponse {
   /** The state of the ruleset version */
   state: unknown;
 }
-export const GetOrgRulesetVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number,
     actor: RulesetVersionActor,
@@ -3504,7 +3429,7 @@ export interface GetWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -3517,7 +3442,7 @@ export interface GetWebhookConfigForOrgRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const GetWebhookConfigForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookConfigForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -3533,7 +3458,7 @@ export interface WebhookConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     content_type: S.optional(S.String),
@@ -3549,7 +3474,7 @@ export interface GetWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -3567,12 +3492,12 @@ export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestHeadersMap =
+const HookDeliveryRequestHeadersMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestHeadersMap>;
 
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestPayloadMap =
+const HookDeliveryRequestPayloadMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
 
 export interface HookDeliveryRequest {
@@ -3581,7 +3506,7 @@ export interface HookDeliveryRequest {
   /** The webhook payload. */
   payload: HookDeliveryRequestPayloadMap | null;
 }
-export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.NullOr(HookDeliveryRequestHeadersMap),
     payload: S.NullOr(HookDeliveryRequestPayloadMap),
@@ -3590,21 +3515,15 @@ export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponseHeadersMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponseHeadersMap>;
-
 /** The response payload received. */
 export type HookDeliveryResponsePayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponsePayloadMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponsePayloadMap>;
-
 export interface HookDeliveryResponse {
   /** The response headers received when the delivery was made. */
   headers: HookDeliveryResponseHeadersMap | null;
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-export const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
+const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
 
 /** Delivery made by a webhook. */
 export interface HookDelivery {
@@ -3637,7 +3556,7 @@ export interface HookDelivery {
   request: HookDeliveryRequest;
   response: HookDeliveryResponse;
 }
-export const HookDelivery = /*@__PURE__*/ S.suspend(() =>
+const HookDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     guid: S.String,
@@ -3663,7 +3582,7 @@ export interface ListRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     since: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3671,12 +3590,12 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export type ListResponseBodyList = Array<OrganizationSimple>;
-export const ListResponseBodyList = /*@__PURE__*/ S.Array(
+const ListResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationSimple,
 ) as any as S.Schema<ListResponseBodyList>;
 
 export type ListResponse = ListResponseBodyList;
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResponse = /*@__PURE__*/ S.suspend(() =>
   ListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
@@ -3688,7 +3607,7 @@ export interface ListAppInstallationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListAppInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3716,251 +3635,236 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type InstallationAccount = SimpleUser | Enterprise;
-export const InstallationAccount = S.Unknown as any as S.Schema<InstallationAccount>;
+const InstallationAccount = S.Unknown as any as S.Schema<InstallationAccount>;
 
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type InstallationRepositorySelection = "all" | "selected";
-export const InstallationRepositorySelection = S.String;
+const InstallationRepositorySelection = S.String;
 
 /** The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts. */
 export type AppPermissionsActions = "read" | "write";
-export const AppPermissionsActions = S.String;
+const AppPermissionsActions = S.String;
 
 /** The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation. */
 export type AppPermissionsAdministration = "read" | "write";
-export const AppPermissionsAdministration = S.String;
+const AppPermissionsAdministration = S.String;
 
 /** The level of permission to grant the access token to create and retrieve build artifact metadata records. */
 export type AppPermissionsArtifactMetadata = "read" | "write";
-export const AppPermissionsArtifactMetadata = S.String;
+const AppPermissionsArtifactMetadata = S.String;
 
 /** The level of permission to create and retrieve the access token for repository attestations. */
 export type AppPermissionsAttestations = "read" | "write";
-export const AppPermissionsAttestations = S.String;
+const AppPermissionsAttestations = S.String;
 
 /** The level of permission to grant the access token for checks on code. */
 export type AppPermissionsChecks = "read" | "write";
-export const AppPermissionsChecks = S.String;
+const AppPermissionsChecks = S.String;
 
 /** The level of permission to grant the access token to view and manage code quality data. */
 export type AppPermissionsCodeQuality = "read" | "write";
-export const AppPermissionsCodeQuality = S.String;
+const AppPermissionsCodeQuality = S.String;
 
 /** The level of permission to grant the access token to create, edit, delete, and list Codespaces. */
 export type AppPermissionsCodespaces = "read" | "write";
-export const AppPermissionsCodespaces = S.String;
+const AppPermissionsCodespaces = S.String;
 
 /** The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges. */
 export type AppPermissionsContents = "read" | "write";
-export const AppPermissionsContents = S.String;
+const AppPermissionsContents = S.String;
 
 /** The level of permission to grant the access token to manage Dependabot secrets. */
 export type AppPermissionsDependabotSecrets = "read" | "write";
-export const AppPermissionsDependabotSecrets = S.String;
+const AppPermissionsDependabotSecrets = S.String;
 
 /** The level of permission to grant the access token for deployments and deployment statuses. */
 export type AppPermissionsDeployments = "read" | "write";
-export const AppPermissionsDeployments = S.String;
+const AppPermissionsDeployments = S.String;
 
 /** The level of permission to grant the access token for discussions and related comments and labels. */
 export type AppPermissionsDiscussions = "read" | "write";
-export const AppPermissionsDiscussions = S.String;
+const AppPermissionsDiscussions = S.String;
 
 /** The level of permission to grant the access token for managing repository environments. */
 export type AppPermissionsEnvironments = "read" | "write";
-export const AppPermissionsEnvironments = S.String;
+const AppPermissionsEnvironments = S.String;
 
 /** The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones. */
 export type AppPermissionsIssues = "read" | "write";
-export const AppPermissionsIssues = S.String;
+const AppPermissionsIssues = S.String;
 
 /** The level of permission to grant the access token to manage the merge queues for a repository. */
 export type AppPermissionsMergeQueues = "read" | "write";
-export const AppPermissionsMergeQueues = S.String;
+const AppPermissionsMergeQueues = S.String;
 
 /** The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata. */
 export type AppPermissionsMetadata = "read" | "write";
-export const AppPermissionsMetadata = S.String;
+const AppPermissionsMetadata = S.String;
 
 /** The level of permission to grant the access token for packages published to GitHub Packages. */
 export type AppPermissionsPackages = "read" | "write";
-export const AppPermissionsPackages = S.String;
+const AppPermissionsPackages = S.String;
 
 /** The level of permission to grant the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds. */
 export type AppPermissionsPages = "read" | "write";
-export const AppPermissionsPages = S.String;
+const AppPermissionsPages = S.String;
 
 /** The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges. */
 export type AppPermissionsPullRequests = "read" | "write";
-export const AppPermissionsPullRequests = S.String;
+const AppPermissionsPullRequests = S.String;
 
 /** The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property. */
 export type AppPermissionsRepositoryCustomProperties = "read" | "write";
-export const AppPermissionsRepositoryCustomProperties = S.String;
+const AppPermissionsRepositoryCustomProperties = S.String;
 
 /** The level of permission to grant the access token to manage the post-receive hooks for a repository. */
 export type AppPermissionsRepositoryHooks = "read" | "write";
-export const AppPermissionsRepositoryHooks = S.String;
+const AppPermissionsRepositoryHooks = S.String;
 
 /** The level of permission to grant the access token to manage repository projects, columns, and cards. */
 export type AppPermissionsRepositoryProjects = "read" | "write" | "admin";
-export const AppPermissionsRepositoryProjects = S.String;
+const AppPermissionsRepositoryProjects = S.String;
 
 /** The level of permission to grant the access token to view and manage secret scanning alerts. */
 export type AppPermissionsSecretScanningAlerts = "read" | "write";
-export const AppPermissionsSecretScanningAlerts = S.String;
+const AppPermissionsSecretScanningAlerts = S.String;
 
 /** The level of permission to grant the access token to manage repository secrets. */
 export type AppPermissionsSecrets = "read" | "write";
-export const AppPermissionsSecrets = S.String;
+const AppPermissionsSecrets = S.String;
 
 /** The level of permission to grant the access token to view and manage security events like code scanning alerts. */
 export type AppPermissionsSecurityEvents = "read" | "write";
-export const AppPermissionsSecurityEvents = S.String;
+const AppPermissionsSecurityEvents = S.String;
 
 /** The level of permission to grant the access token to manage just a single file. */
 export type AppPermissionsSingleFile = "read" | "write";
-export const AppPermissionsSingleFile = S.String;
+const AppPermissionsSingleFile = S.String;
 
 /** The level of permission to grant the access token for commit statuses. */
 export type AppPermissionsStatuses = "read" | "write";
-export const AppPermissionsStatuses = S.String;
+const AppPermissionsStatuses = S.String;
 
 /** The level of permission to grant the access token to manage Dependabot alerts. */
 export type AppPermissionsVulnerabilityAlerts = "read" | "write";
-export const AppPermissionsVulnerabilityAlerts = S.String;
+const AppPermissionsVulnerabilityAlerts = S.String;
 
 /** The level of permission to grant the access token to update GitHub Actions workflow files. */
 export type AppPermissionsWorkflows = "write";
-export const AppPermissionsWorkflows = S.String;
+const AppPermissionsWorkflows = S.String;
 
 /** The level of permission to grant the access token to view and edit custom properties for an organization, when allowed by the property. */
 export type AppPermissionsCustomPropertiesForOrganizations = "read" | "write";
-export const AppPermissionsCustomPropertiesForOrganizations = S.String;
+const AppPermissionsCustomPropertiesForOrganizations = S.String;
 
 /** The level of permission to grant the access token for organization teams and members. */
 export type AppPermissionsMembers = "read" | "write";
-export const AppPermissionsMembers = S.String;
+const AppPermissionsMembers = S.String;
 
 /** The level of permission to grant the access token to manage access to an organization. */
 export type AppPermissionsOrganizationAdministration = "read" | "write";
-export const AppPermissionsOrganizationAdministration = S.String;
+const AppPermissionsOrganizationAdministration = S.String;
 
 /** The level of permission to grant the access token for custom repository roles management. */
 export type AppPermissionsOrganizationCustomRoles = "read" | "write";
-export const AppPermissionsOrganizationCustomRoles = S.String;
+const AppPermissionsOrganizationCustomRoles = S.String;
 
 /** The level of permission to grant the access token for custom organization roles management. */
 export type AppPermissionsOrganizationCustomOrgRoles = "read" | "write";
-export const AppPermissionsOrganizationCustomOrgRoles = S.String;
+const AppPermissionsOrganizationCustomOrgRoles = S.String;
 
 /** The level of permission to grant the access token for repository custom properties management at the organization level. */
 export type AppPermissionsOrganizationCustomProperties = "read" | "write" | "admin";
-export const AppPermissionsOrganizationCustomProperties = S.String;
+const AppPermissionsOrganizationCustomProperties = S.String;
 
 /** The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change. */
 export type AppPermissionsOrganizationCopilotSeatManagement = "read" | "write";
-export const AppPermissionsOrganizationCopilotSeatManagement = S.String;
+const AppPermissionsOrganizationCopilotSeatManagement = S.String;
 
 /** The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization. */
 export type AppPermissionsOrganizationCopilotAgentSettings = "read" | "write";
-export const AppPermissionsOrganizationCopilotAgentSettings = S.String;
+const AppPermissionsOrganizationCopilotAgentSettings = S.String;
 
 /** The level of permission to grant the access token for managing external custom properties for repositories in an organization. */
 export type AppPermissionsOrganizationExternalPropertiesForRepos = "read" | "write" | "admin";
-export const AppPermissionsOrganizationExternalPropertiesForRepos = S.String;
+const AppPermissionsOrganizationExternalPropertiesForRepos = S.String;
 
 /** The level of permission to grant the access token to view and manage announcement banners for an organization. */
 export type AppPermissionsOrganizationAnnouncementBanners = "read" | "write";
-export const AppPermissionsOrganizationAnnouncementBanners = S.String;
+const AppPermissionsOrganizationAnnouncementBanners = S.String;
 
 /** The level of permission to grant the access token to view events triggered by an activity in an organization. */
 export type AppPermissionsOrganizationEvents = "read";
-export const AppPermissionsOrganizationEvents = S.String;
+const AppPermissionsOrganizationEvents = S.String;
 
 /** The level of permission to grant the access token to manage the post-receive hooks for an organization. */
 export type AppPermissionsOrganizationHooks = "read" | "write";
-export const AppPermissionsOrganizationHooks = S.String;
+const AppPermissionsOrganizationHooks = S.String;
 
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokens = "read" | "write";
-export const AppPermissionsOrganizationPersonalAccessTokens = S.String;
+const AppPermissionsOrganizationPersonalAccessTokens = S.String;
 
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokenRequests = "read" | "write";
-export const AppPermissionsOrganizationPersonalAccessTokenRequests = S.String;
+const AppPermissionsOrganizationPersonalAccessTokenRequests = S.String;
 
 /** The level of permission to grant the access token for viewing an organization's plan. */
 export type AppPermissionsOrganizationPlan = "read";
-export const AppPermissionsOrganizationPlan = S.String;
+const AppPermissionsOrganizationPlan = S.String;
 
 /** The level of permission to grant the access token to manage organization projects and projects public preview (where available). */
 export type AppPermissionsOrganizationProjects = "read" | "write" | "admin";
-export const AppPermissionsOrganizationProjects = S.String;
+const AppPermissionsOrganizationProjects = S.String;
 
 /** The level of permission to grant the access token for organization packages published to GitHub Packages. */
 export type AppPermissionsOrganizationPackages = "read" | "write";
-export const AppPermissionsOrganizationPackages = S.String;
+const AppPermissionsOrganizationPackages = S.String;
 
 /** The level of permission to grant the access token to manage organization secrets. */
 export type AppPermissionsOrganizationSecrets = "read" | "write";
-export const AppPermissionsOrganizationSecrets = S.String;
+const AppPermissionsOrganizationSecrets = S.String;
 
 /** The level of permission to grant the access token to view and manage GitHub Actions self-hosted runners available to an organization. */
 export type AppPermissionsOrganizationSelfHostedRunners = "read" | "write";
-export const AppPermissionsOrganizationSelfHostedRunners = S.String;
+const AppPermissionsOrganizationSelfHostedRunners = S.String;
 
 /** The level of permission to grant the access token to view and manage users blocked by the organization. */
 export type AppPermissionsOrganizationUserBlocking = "read" | "write";
-export const AppPermissionsOrganizationUserBlocking = S.String;
+const AppPermissionsOrganizationUserBlocking = S.String;
 
 /** The level of permission to grant the access token to manage the email addresses belonging to a user. */
 export type AppPermissionsEmailAddresses = "read" | "write";
-export const AppPermissionsEmailAddresses = S.String;
+const AppPermissionsEmailAddresses = S.String;
 
 /** The level of permission to grant the access token to manage the followers belonging to a user. */
 export type AppPermissionsFollowers = "read" | "write";
-export const AppPermissionsFollowers = S.String;
+const AppPermissionsFollowers = S.String;
 
 /** The level of permission to grant the access token to manage git SSH keys. */
 export type AppPermissionsGitSshKeys = "read" | "write";
-export const AppPermissionsGitSshKeys = S.String;
+const AppPermissionsGitSshKeys = S.String;
 
 /** The level of permission to grant the access token to view and manage GPG keys belonging to a user. */
 export type AppPermissionsGpgKeys = "read" | "write";
-export const AppPermissionsGpgKeys = S.String;
+const AppPermissionsGpgKeys = S.String;
 
 /** The level of permission to grant the access token to view and manage interaction limits on a repository. */
 export type AppPermissionsInteractionLimits = "read" | "write";
-export const AppPermissionsInteractionLimits = S.String;
+const AppPermissionsInteractionLimits = S.String;
 
 /** The level of permission to grant the access token to manage the profile settings belonging to a user. */
 export type AppPermissionsProfile = "write";
-export const AppPermissionsProfile = S.String;
+const AppPermissionsProfile = S.String;
 
 /** The level of permission to grant the access token to list and manage repositories a user is starring. */
 export type AppPermissionsStarring = "read" | "write";
-export const AppPermissionsStarring = S.String;
+const AppPermissionsStarring = S.String;
 
 /** The level of permission to grant the access token for organization custom properties management at the enterprise level. */
 export type AppPermissionsEnterpriseCustomPropertiesForOrganizations = "read" | "write" | "admin";
-export const AppPermissionsEnterpriseCustomPropertiesForOrganizations = S.String;
+const AppPermissionsEnterpriseCustomPropertiesForOrganizations = S.String;
 
 /** The permissions granted to the fine-grained access token. */
 export interface AppPermissions {
@@ -4077,7 +3981,7 @@ export interface AppPermissions {
   /** The level of permission to grant the access token for organization custom properties management at the enterprise level. */
   enterprise_custom_properties_for_organizations?: AppPermissionsEnterpriseCustomPropertiesForOrganizations;
 }
-export const AppPermissions = /*@__PURE__*/ S.suspend(() =>
+const AppPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(AppPermissionsActions),
     administration: S.optional(AppPermissionsAdministration),
@@ -4147,11 +4051,11 @@ export const AppPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppPermissions" }) as any as S.Schema<AppPermissions>;
 
 export type InstallationEventsList = Array<string>;
-export const InstallationEventsList =
+const InstallationEventsList =
   CreateWebhookRequestEventsList as any as S.Schema<InstallationEventsList>;
 
 export type InstallationSingleFilePathsList = Array<string>;
-export const InstallationSingleFilePathsList =
+const InstallationSingleFilePathsList =
   CreateWebhookRequestEventsList as any as S.Schema<InstallationSingleFilePathsList>;
 
 /** Installation */
@@ -4181,7 +4085,7 @@ export interface Installation {
   suspended_at: string | null;
   contact_email?: string | null;
 }
-export const Installation = /*@__PURE__*/ S.suspend(() =>
+const Installation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     account: S.NullOr(InstallationAccount),
@@ -4208,7 +4112,7 @@ export const Installation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Installation" }) as any as S.Schema<Installation>;
 
 export type ListAppInstallationsResponseInstallationsList = Array<Installation>;
-export const ListAppInstallationsResponseInstallationsList = /*@__PURE__*/ S.Array(
+const ListAppInstallationsResponseInstallationsList = /*@__PURE__*/ S.Array(
   Installation,
 ) as any as S.Schema<ListAppInstallationsResponseInstallationsList>;
 
@@ -4216,7 +4120,7 @@ export interface ListAppInstallationsResponse {
   total_count: number;
   installations: ListAppInstallationsResponseInstallationsList;
 }
-export const ListAppInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     installations: ListAppInstallationsResponseInstallationsList,
@@ -4231,7 +4135,7 @@ export interface ListArtifactDeploymentRecordsRequest {
   /** The SHA256 digest of the artifact, in the form `sha256:HEX_DIGEST`. */
   subject_digest: string;
 }
-export const ListArtifactDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     subject_digest: S.String.pipe(T.Label()),
@@ -4248,7 +4152,7 @@ export const ListArtifactDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =
 
 export type ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-export const ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
+const ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
   CreateArtifactDeploymentRecordResponseDeploymentRecordsList as any as S.Schema<ListArtifactDeploymentRecordsResponseDeploymentRecordsList>;
 
 export interface ListArtifactDeploymentRecordsResponse {
@@ -4256,7 +4160,7 @@ export interface ListArtifactDeploymentRecordsResponse {
   total_count?: number;
   deployment_records?: ListArtifactDeploymentRecordsResponseDeploymentRecordsList;
 }
-export const ListArtifactDeploymentRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactDeploymentRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     deployment_records: S.optional(ListArtifactDeploymentRecordsResponseDeploymentRecordsList),
@@ -4271,7 +4175,7 @@ export interface ListArtifactStorageRecordsRequest {
   /** The parameter should be set to the attestation's subject's SHA256 digest, in the form `sha256:HEX_DIGEST`. */
   subject_digest: string;
 }
-export const ListArtifactStorageRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactStorageRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     subject_digest: S.String.pipe(T.Label()),
@@ -4297,7 +4201,7 @@ export interface ListArtifactStorageRecordsResponseStorageRecordsItem {
   created_at?: string;
   updated_at?: string;
 }
-export const ListArtifactStorageRecordsResponseStorageRecordsItem = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactStorageRecordsResponseStorageRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -4315,7 +4219,7 @@ export const ListArtifactStorageRecordsResponseStorageRecordsItem = /*@__PURE__*
 
 export type ListArtifactStorageRecordsResponseStorageRecordsList =
   Array<ListArtifactStorageRecordsResponseStorageRecordsItem>;
-export const ListArtifactStorageRecordsResponseStorageRecordsList = /*@__PURE__*/ S.Array(
+const ListArtifactStorageRecordsResponseStorageRecordsList = /*@__PURE__*/ S.Array(
   ListArtifactStorageRecordsResponseStorageRecordsItem,
 ) as any as S.Schema<ListArtifactStorageRecordsResponseStorageRecordsList>;
 
@@ -4324,7 +4228,7 @@ export interface ListArtifactStorageRecordsResponse {
   total_count?: number;
   storage_records?: ListArtifactStorageRecordsResponseStorageRecordsList;
 }
-export const ListArtifactStorageRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactStorageRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     storage_records: S.optional(ListArtifactStorageRecordsResponseStorageRecordsList),
@@ -4345,7 +4249,7 @@ export interface ListAttestationRepositoriesRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-export const ListAttestationRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -4361,7 +4265,7 @@ export interface ListAttestationRepositoriesResponseBodyItem {
   id?: number;
   name?: string;
 }
-export const ListAttestationRepositoriesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationRepositoriesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -4372,12 +4276,12 @@ export const ListAttestationRepositoriesResponseBodyItem = /*@__PURE__*/ S.suspe
 
 export type ListAttestationRepositoriesResponseBodyList =
   Array<ListAttestationRepositoriesResponseBodyItem>;
-export const ListAttestationRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAttestationRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
   ListAttestationRepositoriesResponseBodyItem,
 ) as any as S.Schema<ListAttestationRepositoriesResponseBodyList>;
 
 export type ListAttestationRepositoriesResponse = ListAttestationRepositoriesResponseBodyList;
-export const ListAttestationRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListAttestationRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAttestationRepositoriesResponse",
@@ -4397,7 +4301,7 @@ export interface ListAttestationsRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-export const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     subject_digest: S.String.pipe(T.Label()),
@@ -4411,7 +4315,7 @@ export const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap =
+const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -4420,7 +4324,7 @@ export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialM
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
+const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
 
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
@@ -4429,7 +4333,7 @@ export interface ListAttestationsResponseAttestationsItemBundle {
   verificationMaterial?: ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap;
 }
-export const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaType: S.optional(S.String),
     verificationMaterial: S.optional(
@@ -4448,7 +4352,7 @@ export interface ListAttestationsResponseAttestationsItem {
   bundle_url?: string;
   initiator?: string;
 }
-export const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundle: S.optional(S.NullOr(ListAttestationsResponseAttestationsItemBundle)),
     repository_id: S.optional(S.Number),
@@ -4461,14 +4365,14 @@ export const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(
 
 export type ListAttestationsResponseAttestationsList =
   Array<ListAttestationsResponseAttestationsItem>;
-export const ListAttestationsResponseAttestationsList = /*@__PURE__*/ S.Array(
+const ListAttestationsResponseAttestationsList = /*@__PURE__*/ S.Array(
   ListAttestationsResponseAttestationsItem,
 ) as any as S.Schema<ListAttestationsResponseAttestationsList>;
 
 export interface ListAttestationsResponse {
   attestations?: ListAttestationsResponseAttestationsList;
 }
-export const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestations: S.optional(ListAttestationsResponseAttestationsList),
   }),
@@ -4476,7 +4380,7 @@ export const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subject digests to fetch attestations for. */
 export type ListAttestationsBulkRequestSubjectDigestsList = Array<string>;
-export const ListAttestationsBulkRequestSubjectDigestsList =
+const ListAttestationsBulkRequestSubjectDigestsList =
   CreateWebhookRequestEventsList as any as S.Schema<ListAttestationsBulkRequestSubjectDigestsList>;
 
 export interface ListAttestationsBulkRequest {
@@ -4493,7 +4397,7 @@ export interface ListAttestationsBulkRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-export const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -4508,13 +4412,13 @@ export const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   { [key: string]: unknown | undefined };
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap>;
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
   ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap>;
 
 /** The bundle of the attestation. */
@@ -4523,7 +4427,7 @@ export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem
   verificationMaterial?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap;
 }
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle =
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mediaType: S.optional(S.String),
@@ -4544,29 +4448,28 @@ export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem
   repository_id?: number;
   bundle_url?: string;
 }
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       bundle: S.optional(ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle),
       repository_id: S.optional(S.Number),
       bundle_url: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
-  }) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
+).annotate({
+  identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
+}) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueList =
   Array<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueList =
-  /*@__PURE__*/ S.Array(
-    ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem,
-  ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueList>;
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueList = /*@__PURE__*/ S.Array(
+  ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem,
+) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueList>;
 
 /** Mapping of subject digest to bundles. */
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsMap = {
   [key: string]: ListAttestationsBulkResponseAttestationsSubjectDigestsValueList | null | undefined;
 };
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ S.Record(
+const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(ListAttestationsBulkResponseAttestationsSubjectDigestsValueList),
 ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsMap>;
@@ -4582,7 +4485,7 @@ export interface ListAttestationsBulkResponsePageInfo {
   /** The cursor to the previous page. */
   previous?: string;
 }
-export const ListAttestationsBulkResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_next: S.optional(S.Boolean),
     has_previous: S.optional(S.Boolean),
@@ -4599,7 +4502,7 @@ export interface ListAttestationsBulkResponse {
   /** Information about the current page. */
   page_info?: ListAttestationsBulkResponsePageInfo;
 }
-export const ListAttestationsBulkResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestations_subject_digests: S.optional(
       ListAttestationsBulkResponseAttestationsSubjectDigestsMap,
@@ -4618,7 +4521,7 @@ export interface ListBlockedUsersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListBlockedUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlockedUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -4627,12 +4530,12 @@ export const ListBlockedUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBlockedUsersRequest" }) as any as S.Schema<ListBlockedUsersRequest>;
 
 export type ListBlockedUsersResponseBodyList = Array<SimpleUser>;
-export const ListBlockedUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBlockedUsersResponseBodyList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<ListBlockedUsersResponseBodyList>;
 
 export type ListBlockedUsersResponse = ListBlockedUsersResponseBodyList;
-export const ListBlockedUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBlockedUsersResponse = /*@__PURE__*/ S.suspend(() =>
   ListBlockedUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListBlockedUsersResponse" }) as any as S.Schema<ListBlockedUsersResponse>;
 
@@ -4644,7 +4547,7 @@ export interface ListFailedInvitationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListFailedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFailedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -4655,12 +4558,12 @@ export const ListFailedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFailedInvitationsRequest>;
 
 export type ListFailedInvitationsResponseBodyList = Array<OrganizationInvitation>;
-export const ListFailedInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFailedInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationInvitation,
 ) as any as S.Schema<ListFailedInvitationsResponseBodyList>;
 
 export type ListFailedInvitationsResponse = ListFailedInvitationsResponseBodyList;
-export const ListFailedInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFailedInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListFailedInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFailedInvitationsResponse",
@@ -4672,7 +4575,7 @@ export interface ListForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -4682,11 +4585,11 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseBodyList = Array<OrganizationSimple>;
-export const ListForAuthenticatedUserResponseBodyList =
+const ListForAuthenticatedUserResponseBodyList =
   ListResponseBodyList as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
 
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListForAuthenticatedUserResponse",
@@ -4700,7 +4603,7 @@ export interface ListForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -4709,11 +4612,8 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<OrganizationSimple>;
-export const ListForUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
-
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = ListResponse as any as S.Schema<ListForUserResponse>;
+const ListForUserResponse = ListResponse as any as S.Schema<ListForUserResponse>;
 
 export interface ListInvitationTeamsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -4725,7 +4625,7 @@ export interface ListInvitationTeamsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInvitationTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     invitation_id: S.Number.pipe(T.Label()),
@@ -4745,7 +4645,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -4757,15 +4657,15 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -4797,7 +4697,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -4843,7 +4743,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -4867,12 +4767,12 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type ListInvitationTeamsResponseBodyList = Array<Team>;
-export const ListInvitationTeamsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListInvitationTeamsResponseBodyList = /*@__PURE__*/ S.Array(
   Team,
 ) as any as S.Schema<ListInvitationTeamsResponseBodyList>;
 
 export type ListInvitationTeamsResponse = ListInvitationTeamsResponseBodyList;
-export const ListInvitationTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   ListInvitationTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListInvitationTeamsResponse",
@@ -4882,19 +4782,19 @@ export interface ListIssueFieldsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ListIssueFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/issue-fields", code: 200 })),
 ).annotate({ identifier: "ListIssueFieldsRequest" }) as any as S.Schema<ListIssueFieldsRequest>;
 
 export type ListIssueFieldsResponseBodyList = Array<IssueField | null>;
-export const ListIssueFieldsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIssueFieldsResponseBodyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(IssueField),
 ) as any as S.Schema<ListIssueFieldsResponseBodyList>;
 
 export type ListIssueFieldsResponse = ListIssueFieldsResponseBodyList;
-export const ListIssueFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIssueFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   ListIssueFieldsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListIssueFieldsResponse" }) as any as S.Schema<ListIssueFieldsResponse>;
 
@@ -4902,27 +4802,27 @@ export interface ListIssueTypesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ListIssueTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/issue-types", code: 200 })),
 ).annotate({ identifier: "ListIssueTypesRequest" }) as any as S.Schema<ListIssueTypesRequest>;
 
 export type ListIssueTypesResponseBodyList = Array<IssueType | null>;
-export const ListIssueTypesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIssueTypesResponseBodyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(IssueType),
 ) as any as S.Schema<ListIssueTypesResponseBodyList>;
 
 export type ListIssueTypesResponse = ListIssueTypesResponseBodyList;
-export const ListIssueTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIssueTypesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIssueTypesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListIssueTypesResponse" }) as any as S.Schema<ListIssueTypesResponse>;
 
 export type ListMembersRequestFilter = "2fa_disabled" | "2fa_insecure" | "all";
-export const ListMembersRequestFilter = S.String;
+const ListMembersRequestFilter = S.String;
 
 export type ListMembersRequestRole = "all" | "admin" | "member";
-export const ListMembersRequestRole = S.String;
+const ListMembersRequestRole = S.String;
 
 export interface ListMembersRequest {
   /** The organization name. The name is not case sensitive. */
@@ -4936,7 +4836,7 @@ export interface ListMembersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     filter: S.optional(ListMembersRequestFilter.pipe(T.Query())),
@@ -4947,14 +4847,11 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type ListMembersResponseBodyList = Array<SimpleUser>;
-export const ListMembersResponseBodyList =
-  ListBlockedUsersResponseBodyList as any as S.Schema<ListMembersResponseBodyList>;
-
 export type ListMembersResponse = ListMembersResponseBodyList;
-export const ListMembersResponse = ListBlockedUsersResponse as any as S.Schema<ListMembersResponse>;
+const ListMembersResponse = ListBlockedUsersResponse as any as S.Schema<ListMembersResponse>;
 
 export type ListMembershipsForAuthenticatedUserRequestState = "active" | "pending";
-export const ListMembershipsForAuthenticatedUserRequestState = S.String;
+const ListMembershipsForAuthenticatedUserRequestState = S.String;
 
 export interface ListMembershipsForAuthenticatedUserRequest {
   /** Indicates the state of the memberships to return. If not specified, the API returns both active and pending memberships. */
@@ -4964,7 +4861,7 @@ export interface ListMembershipsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListMembershipsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ListMembershipsForAuthenticatedUserRequestState.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -4975,13 +4872,13 @@ export const ListMembershipsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListMembershipsForAuthenticatedUserRequest>;
 
 export type ListMembershipsForAuthenticatedUserResponseBodyList = Array<OrgMembership>;
-export const ListMembershipsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMembershipsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   OrgMembership,
 ) as any as S.Schema<ListMembershipsForAuthenticatedUserResponseBodyList>;
 
 export type ListMembershipsForAuthenticatedUserResponse =
   ListMembershipsForAuthenticatedUserResponseBodyList;
-export const ListMembershipsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListMembershipsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMembershipsForAuthenticatedUserResponse",
@@ -4991,7 +4888,7 @@ export interface ListOrgRolesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ListOrgRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/organization-roles", code: 200 })),
@@ -4999,7 +4896,7 @@ export const ListOrgRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of organization roles available to the organization. */
 export type ListOrgRolesResponseRolesList = Array<OrganizationRole>;
-export const ListOrgRolesResponseRolesList = /*@__PURE__*/ S.Array(
+const ListOrgRolesResponseRolesList = /*@__PURE__*/ S.Array(
   OrganizationRole,
 ) as any as S.Schema<ListOrgRolesResponseRolesList>;
 
@@ -5009,7 +4906,7 @@ export interface ListOrgRolesResponse {
   /** The list of organization roles available to the organization. */
   roles?: ListOrgRolesResponseRolesList;
 }
-export const ListOrgRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     roles: S.optional(ListOrgRolesResponseRolesList),
@@ -5026,7 +4923,7 @@ export interface ListOrgRoleTeamsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgRoleTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRoleTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     role_id: S.Number.pipe(T.Label()),
@@ -5039,14 +4936,12 @@ export const ListOrgRoleTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines if the team has a direct, indirect, or mixed relationship to a role */
 export type TeamRoleAssignmentAssignment = "direct" | "indirect" | "mixed";
-export const TeamRoleAssignmentAssignment = S.String;
+const TeamRoleAssignmentAssignment = S.String;
 
 export type TeamRoleAssignmentPermissions = TeamPermissions;
-export const TeamRoleAssignmentPermissions = TeamPermissions;
-
 /** The ownership type of the team */
 export type TeamRoleAssignmentType = "enterprise" | "organization";
-export const TeamRoleAssignmentType = S.String;
+const TeamRoleAssignmentType = S.String;
 
 /** The Relationship a Team has with a role. */
 export interface TeamRoleAssignment {
@@ -5073,7 +4968,7 @@ export interface TeamRoleAssignment {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const TeamRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const TeamRoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignment: S.optional(TeamRoleAssignmentAssignment),
     id: S.Number,
@@ -5098,12 +4993,12 @@ export const TeamRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of teams assigned to the organization role */
 export type ListOrgRoleTeamsResponseBodyList = Array<TeamRoleAssignment>;
-export const ListOrgRoleTeamsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrgRoleTeamsResponseBodyList = /*@__PURE__*/ S.Array(
   TeamRoleAssignment,
 ) as any as S.Schema<ListOrgRoleTeamsResponseBodyList>;
 
 export type ListOrgRoleTeamsResponse = ListOrgRoleTeamsResponseBodyList;
-export const ListOrgRoleTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRoleTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrgRoleTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListOrgRoleTeamsResponse" }) as any as S.Schema<ListOrgRoleTeamsResponse>;
 
@@ -5117,7 +5012,7 @@ export interface ListOrgRoleUsersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgRoleUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRoleUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     role_id: S.Number.pipe(T.Label()),
@@ -5130,12 +5025,10 @@ export const ListOrgRoleUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines if the user has a direct, indirect, or mixed relationship to a role */
 export type UserRoleAssignmentAssignment = "direct" | "indirect" | "mixed";
-export const UserRoleAssignmentAssignment = S.String;
+const UserRoleAssignmentAssignment = S.String;
 
 /** The ownership type of the team */
 export type TeamSimpleType = "enterprise" | "organization";
-export const TeamSimpleType = S.String;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface TeamSimple {
   /** Unique identifier of the team */
@@ -5166,11 +5059,11 @@ export interface TeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const TeamSimple = NullableTeamSimple as any as S.Schema<TeamSimple>;
+const TeamSimple = NullableTeamSimple as any as S.Schema<TeamSimple>;
 
 /** Team the user has gotten the role through */
 export type UserRoleAssignmentInheritedFromList = Array<TeamSimple>;
-export const UserRoleAssignmentInheritedFromList = /*@__PURE__*/ S.Array(
+const UserRoleAssignmentInheritedFromList = /*@__PURE__*/ S.Array(
   TeamSimple,
 ) as any as S.Schema<UserRoleAssignmentInheritedFromList>;
 
@@ -5203,7 +5096,7 @@ export interface UserRoleAssignment {
   starred_at?: string;
   user_view_type?: string;
 }
-export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignment: S.optional(UserRoleAssignmentAssignment),
     inherited_from: S.optional(UserRoleAssignmentInheritedFromList),
@@ -5234,17 +5127,17 @@ export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of users assigned to the organization role */
 export type ListOrgRoleUsersResponseBodyList = Array<UserRoleAssignment>;
-export const ListOrgRoleUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrgRoleUsersResponseBodyList = /*@__PURE__*/ S.Array(
   UserRoleAssignment,
 ) as any as S.Schema<ListOrgRoleUsersResponseBodyList>;
 
 export type ListOrgRoleUsersResponse = ListOrgRoleUsersResponseBodyList;
-export const ListOrgRoleUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRoleUsersResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrgRoleUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListOrgRoleUsersResponse" }) as any as S.Schema<ListOrgRoleUsersResponse>;
 
 export type ListOutsideCollaboratorsRequestFilter = "2fa_disabled" | "2fa_insecure" | "all";
-export const ListOutsideCollaboratorsRequestFilter = S.String;
+const ListOutsideCollaboratorsRequestFilter = S.String;
 
 export interface ListOutsideCollaboratorsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5256,7 +5149,7 @@ export interface ListOutsideCollaboratorsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOutsideCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOutsideCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     filter: S.optional(ListOutsideCollaboratorsRequestFilter.pipe(T.Query())),
@@ -5268,11 +5161,11 @@ export const ListOutsideCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOutsideCollaboratorsRequest>;
 
 export type ListOutsideCollaboratorsResponseBodyList = Array<SimpleUser>;
-export const ListOutsideCollaboratorsResponseBodyList =
+const ListOutsideCollaboratorsResponseBodyList =
   ListBlockedUsersResponseBodyList as any as S.Schema<ListOutsideCollaboratorsResponseBodyList>;
 
 export type ListOutsideCollaboratorsResponse = ListOutsideCollaboratorsResponseBodyList;
-export const ListOutsideCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOutsideCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOutsideCollaboratorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOutsideCollaboratorsResponse",
@@ -5288,7 +5181,7 @@ export interface ListPatGrantRepositoriesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPatGrantRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pat_id: S.Number.pipe(T.Label()),
@@ -5306,12 +5199,12 @@ export const ListPatGrantRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPatGrantRepositoriesRequest>;
 
 export type ListPatGrantRepositoriesResponseBodyList = Array<MinimalRepository>;
-export const ListPatGrantRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPatGrantRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListPatGrantRepositoriesResponseBodyList>;
 
 export type ListPatGrantRepositoriesResponse = ListPatGrantRepositoriesResponseBodyList;
-export const ListPatGrantRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListPatGrantRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPatGrantRepositoriesResponse",
@@ -5327,7 +5220,7 @@ export interface ListPatGrantRequestRepositoriesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPatGrantRequestRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantRequestRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pat_request_id: S.Number.pipe(T.Label()),
@@ -5345,26 +5238,23 @@ export const ListPatGrantRequestRepositoriesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListPatGrantRequestRepositoriesRequest>;
 
 export type ListPatGrantRequestRepositoriesResponseBodyList = Array<MinimalRepository>;
-export const ListPatGrantRequestRepositoriesResponseBodyList =
-  ListPatGrantRepositoriesResponseBodyList as any as S.Schema<ListPatGrantRequestRepositoriesResponseBodyList>;
-
 export type ListPatGrantRequestRepositoriesResponse =
   ListPatGrantRequestRepositoriesResponseBodyList;
-export const ListPatGrantRequestRepositoriesResponse =
+const ListPatGrantRequestRepositoriesResponse =
   ListPatGrantRepositoriesResponse as any as S.Schema<ListPatGrantRequestRepositoriesResponse>;
 
 export type ListPatGrantRequestsRequestSort = "created_at";
-export const ListPatGrantRequestsRequestSort = S.String;
+const ListPatGrantRequestsRequestSort = S.String;
 
 export type ListPatGrantRequestsRequestDirection = "asc" | "desc";
-export const ListPatGrantRequestsRequestDirection = S.String;
+const ListPatGrantRequestsRequestDirection = S.String;
 
 export type ListPatGrantRequestsRequestOwnerList = Array<string>;
-export const ListPatGrantRequestsRequestOwnerList =
+const ListPatGrantRequestsRequestOwnerList =
   CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantRequestsRequestOwnerList>;
 
 export type ListPatGrantRequestsRequestTokenIdList = Array<string>;
-export const ListPatGrantRequestsRequestTokenIdList =
+const ListPatGrantRequestsRequestTokenIdList =
   CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantRequestsRequestTokenIdList>;
 
 export interface ListPatGrantRequestsRequest {
@@ -5391,7 +5281,7 @@ export interface ListPatGrantRequestsRequest {
   /** The ID of the token */
   token_id?: ListPatGrantRequestsRequestTokenIdList;
 }
-export const ListPatGrantRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -5414,24 +5304,24 @@ export type OrganizationProgrammaticAccessGrantRequestRepositorySelection =
   | "none"
   | "all"
   | "subset";
-export const OrganizationProgrammaticAccessGrantRequestRepositorySelection = S.String;
+const OrganizationProgrammaticAccessGrantRequestRepositorySelection = S.String;
 
 export type OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap =
+const OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap =
   CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap>;
 
 export type OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap =
+const OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap =
   CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap>;
 
 export type OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap =
+const OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap =
   CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap>;
 
 /** Permissions requested, categorized by type of permission. */
@@ -5440,7 +5330,7 @@ export interface OrganizationProgrammaticAccessGrantRequestPermissions {
   repository?: OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap;
   other?: OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap;
 }
-export const OrganizationProgrammaticAccessGrantRequestPermissions = /*@__PURE__*/ S.suspend(() =>
+const OrganizationProgrammaticAccessGrantRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.optional(OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap),
     repository: S.optional(OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap),
@@ -5476,7 +5366,7 @@ export interface OrganizationProgrammaticAccessGrantRequest {
   /** Date and time when the associated fine-grained personal access token was last used for authentication. */
   token_last_used_at: string | null;
 }
-export const OrganizationProgrammaticAccessGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const OrganizationProgrammaticAccessGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     reason: S.NullOr(S.String),
@@ -5497,29 +5387,29 @@ export const OrganizationProgrammaticAccessGrantRequest = /*@__PURE__*/ S.suspen
 
 export type ListPatGrantRequestsResponseBodyList =
   Array<OrganizationProgrammaticAccessGrantRequest>;
-export const ListPatGrantRequestsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPatGrantRequestsResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationProgrammaticAccessGrantRequest,
 ) as any as S.Schema<ListPatGrantRequestsResponseBodyList>;
 
 export type ListPatGrantRequestsResponse = ListPatGrantRequestsResponseBodyList;
-export const ListPatGrantRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   ListPatGrantRequestsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPatGrantRequestsResponse",
 }) as any as S.Schema<ListPatGrantRequestsResponse>;
 
 export type ListPatGrantsRequestSort = "created_at";
-export const ListPatGrantsRequestSort = S.String;
+const ListPatGrantsRequestSort = S.String;
 
 export type ListPatGrantsRequestDirection = "asc" | "desc";
-export const ListPatGrantsRequestDirection = S.String;
+const ListPatGrantsRequestDirection = S.String;
 
 export type ListPatGrantsRequestOwnerList = Array<string>;
-export const ListPatGrantsRequestOwnerList =
+const ListPatGrantsRequestOwnerList =
   CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantsRequestOwnerList>;
 
 export type ListPatGrantsRequestTokenIdList = Array<string>;
-export const ListPatGrantsRequestTokenIdList =
+const ListPatGrantsRequestTokenIdList =
   CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantsRequestTokenIdList>;
 
 export interface ListPatGrantsRequest {
@@ -5546,7 +5436,7 @@ export interface ListPatGrantsRequest {
   /** The ID of the token */
   token_id?: ListPatGrantsRequestTokenIdList;
 }
-export const ListPatGrantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -5564,24 +5454,24 @@ export const ListPatGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of repository selection requested. */
 export type OrganizationProgrammaticAccessGrantRepositorySelection = "none" | "all" | "subset";
-export const OrganizationProgrammaticAccessGrantRepositorySelection = S.String;
+const OrganizationProgrammaticAccessGrantRepositorySelection = S.String;
 
 export type OrganizationProgrammaticAccessGrantPermissionsOrganizationMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantPermissionsOrganizationMap =
+const OrganizationProgrammaticAccessGrantPermissionsOrganizationMap =
   CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOrganizationMap>;
 
 export type OrganizationProgrammaticAccessGrantPermissionsRepositoryMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantPermissionsRepositoryMap =
+const OrganizationProgrammaticAccessGrantPermissionsRepositoryMap =
   CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsRepositoryMap>;
 
 export type OrganizationProgrammaticAccessGrantPermissionsOtherMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantPermissionsOtherMap =
+const OrganizationProgrammaticAccessGrantPermissionsOtherMap =
   CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOtherMap>;
 
 /** Permissions requested, categorized by type of permission. */
@@ -5590,7 +5480,7 @@ export interface OrganizationProgrammaticAccessGrantPermissions {
   repository?: OrganizationProgrammaticAccessGrantPermissionsRepositoryMap;
   other?: OrganizationProgrammaticAccessGrantPermissionsOtherMap;
 }
-export const OrganizationProgrammaticAccessGrantPermissions = /*@__PURE__*/ S.suspend(() =>
+const OrganizationProgrammaticAccessGrantPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.optional(OrganizationProgrammaticAccessGrantPermissionsOrganizationMap),
     repository: S.optional(OrganizationProgrammaticAccessGrantPermissionsRepositoryMap),
@@ -5624,7 +5514,7 @@ export interface OrganizationProgrammaticAccessGrant {
   /** Date and time when the associated fine-grained personal access token was last used for authentication. */
   token_last_used_at: string | null;
 }
-export const OrganizationProgrammaticAccessGrant = /*@__PURE__*/ S.suspend(() =>
+const OrganizationProgrammaticAccessGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     owner: SimpleUser,
@@ -5643,12 +5533,12 @@ export const OrganizationProgrammaticAccessGrant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationProgrammaticAccessGrant>;
 
 export type ListPatGrantsResponseBodyList = Array<OrganizationProgrammaticAccessGrant>;
-export const ListPatGrantsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPatGrantsResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationProgrammaticAccessGrant,
 ) as any as S.Schema<ListPatGrantsResponseBodyList>;
 
 export type ListPatGrantsResponse = ListPatGrantsResponseBodyList;
-export const ListPatGrantsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPatGrantsResponse = /*@__PURE__*/ S.suspend(() =>
   ListPatGrantsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPatGrantsResponse" }) as any as S.Schema<ListPatGrantsResponse>;
 
@@ -5658,10 +5548,10 @@ export type ListPendingInvitationsRequestRole =
   | "direct_member"
   | "billing_manager"
   | "hiring_manager";
-export const ListPendingInvitationsRequestRole = S.String;
+const ListPendingInvitationsRequestRole = S.String;
 
 export type ListPendingInvitationsRequestInvitationSource = "all" | "member" | "scim";
-export const ListPendingInvitationsRequestInvitationSource = S.String;
+const ListPendingInvitationsRequestInvitationSource = S.String;
 
 export interface ListPendingInvitationsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5675,7 +5565,7 @@ export interface ListPendingInvitationsRequest {
   /** Filter invitations by their invitation source. */
   invitation_source?: ListPendingInvitationsRequestInvitationSource | (string & {});
 }
-export const ListPendingInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPendingInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -5688,11 +5578,8 @@ export const ListPendingInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPendingInvitationsRequest>;
 
 export type ListPendingInvitationsResponseBodyList = Array<OrganizationInvitation>;
-export const ListPendingInvitationsResponseBodyList =
-  ListFailedInvitationsResponseBodyList as any as S.Schema<ListPendingInvitationsResponseBodyList>;
-
 export type ListPendingInvitationsResponse = ListPendingInvitationsResponseBodyList;
-export const ListPendingInvitationsResponse =
+const ListPendingInvitationsResponse =
   ListFailedInvitationsResponse as any as S.Schema<ListPendingInvitationsResponse>;
 
 export interface ListPublicMembersRequest {
@@ -5703,7 +5590,7 @@ export interface ListPublicMembersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -5712,15 +5599,12 @@ export const ListPublicMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPublicMembersRequest" }) as any as S.Schema<ListPublicMembersRequest>;
 
 export type ListPublicMembersResponseBodyList = Array<SimpleUser>;
-export const ListPublicMembersResponseBodyList =
-  ListBlockedUsersResponseBodyList as any as S.Schema<ListPublicMembersResponseBodyList>;
-
 export type ListPublicMembersResponse = ListPublicMembersResponseBodyList;
-export const ListPublicMembersResponse =
+const ListPublicMembersResponse =
   ListOutsideCollaboratorsResponse as any as S.Schema<ListPublicMembersResponse>;
 
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
-export const ListWebhookDeliveriesRequestStatus = S.String;
+const ListWebhookDeliveriesRequestStatus = S.String;
 
 export interface ListWebhookDeliveriesRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5734,7 +5618,7 @@ export interface ListWebhookDeliveriesRequest {
   /** Returns webhook deliveries filtered by delivery outcome classification based on `status_code` range. A `status` of `success` returns deliveries with a `status_code` in the 200-399 range (inclusive). A `status` of `failure` returns deliveries with a `status_code` in the 400-599 range (inclusive). */
   status?: ListWebhookDeliveriesRequestStatus | (string & {});
 }
-export const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -5773,7 +5657,7 @@ export interface HookDeliveryItem {
   /** Time when the webhook delivery was throttled. */
   throttled_at?: string | null;
 }
-export const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
+const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     guid: S.String,
@@ -5791,12 +5675,12 @@ export const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HookDeliveryItem" }) as any as S.Schema<HookDeliveryItem>;
 
 export type ListWebhookDeliveriesResponseBodyList = Array<HookDeliveryItem>;
-export const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ S.Array(
   HookDeliveryItem,
 ) as any as S.Schema<ListWebhookDeliveriesResponseBodyList>;
 
 export type ListWebhookDeliveriesResponse = ListWebhookDeliveriesResponseBodyList;
-export const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhookDeliveriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWebhookDeliveriesResponse",
@@ -5810,7 +5694,7 @@ export interface ListWebhooksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -5819,12 +5703,12 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWebhooksRequest" }) as any as S.Schema<ListWebhooksRequest>;
 
 export type ListWebhooksResponseBodyList = Array<OrgHook>;
-export const ListWebhooksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhooksResponseBodyList = /*@__PURE__*/ S.Array(
   OrgHook,
 ) as any as S.Schema<ListWebhooksResponseBodyList>;
 
 export type ListWebhooksResponse = ListWebhooksResponseBodyList;
-export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhooksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListWebhooksResponse" }) as any as S.Schema<ListWebhooksResponse>;
 
@@ -5834,7 +5718,7 @@ export interface PingWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -5842,8 +5726,7 @@ export const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PingWebhookRequest" }) as any as S.Schema<PingWebhookRequest>;
 
 export interface PingWebhookResponse {}
-export const PingWebhookResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<PingWebhookResponse>;
+const PingWebhookResponse = AssignTeamToOrgRoleResponse as any as S.Schema<PingWebhookResponse>;
 
 export interface RedeliverWebhookDeliveryRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5852,7 +5735,7 @@ export interface RedeliverWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -5869,7 +5752,7 @@ export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
 
 export interface RedeliverWebhookDeliveryResponse {}
-export const RedeliverWebhookDeliveryResponse =
+const RedeliverWebhookDeliveryResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
 
 export interface RemoveMemberRequest {
@@ -5878,7 +5761,7 @@ export interface RemoveMemberRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RemoveMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -5886,8 +5769,7 @@ export const RemoveMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveMemberRequest" }) as any as S.Schema<RemoveMemberRequest>;
 
 export interface RemoveMemberResponse {}
-export const RemoveMemberResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<RemoveMemberResponse>;
+const RemoveMemberResponse = AssignTeamToOrgRoleResponse as any as S.Schema<RemoveMemberResponse>;
 
 export interface RemoveMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5895,7 +5777,7 @@ export interface RemoveMembershipForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RemoveMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -5905,9 +5787,9 @@ export const RemoveMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveMembershipForUserRequest>;
 
 export interface RemoveMembershipForUserResponse {}
-export const RemoveMembershipForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RemoveMembershipForUserResponse" },
-) as any as S.Schema<RemoveMembershipForUserResponse>;
+const RemoveMembershipForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "RemoveMembershipForUserResponse",
+}) as any as S.Schema<RemoveMembershipForUserResponse>;
 
 export interface RemoveOutsideCollaboratorRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5915,7 +5797,7 @@ export interface RemoveOutsideCollaboratorRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RemoveOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -5927,7 +5809,7 @@ export const RemoveOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveOutsideCollaboratorRequest>;
 
 export interface RemoveOutsideCollaboratorResponse {}
-export const RemoveOutsideCollaboratorResponse =
+const RemoveOutsideCollaboratorResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<RemoveOutsideCollaboratorResponse>;
 
 export interface RemovePublicMembershipForAuthenticatedUserRequest {
@@ -5936,7 +5818,7 @@ export interface RemovePublicMembershipForAuthenticatedUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RemovePublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -5946,12 +5828,12 @@ export const RemovePublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S
 }) as any as S.Schema<RemovePublicMembershipForAuthenticatedUserRequest>;
 
 export interface RemovePublicMembershipForAuthenticatedUserResponse {}
-export const RemovePublicMembershipForAuthenticatedUserResponse =
+const RemovePublicMembershipForAuthenticatedUserResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<RemovePublicMembershipForAuthenticatedUserResponse>;
 
 /** Action to apply to the request. */
 export type ReviewPatGrantRequestRequestAction = "approve" | "deny";
-export const ReviewPatGrantRequestRequestAction = S.String;
+const ReviewPatGrantRequestRequestAction = S.String;
 
 export interface ReviewPatGrantRequestRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5963,7 +5845,7 @@ export interface ReviewPatGrantRequestRequest {
   /** Reason for approving or denying the request. Max 1024 characters. */
   reason?: string | null;
 }
-export const ReviewPatGrantRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewPatGrantRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pat_request_id: S.Number.pipe(T.Label()),
@@ -5981,7 +5863,7 @@ export const ReviewPatGrantRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewPatGrantRequestRequest>;
 
 export interface ReviewPatGrantRequestResponse {}
-export const ReviewPatGrantRequestResponse =
+const ReviewPatGrantRequestResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<ReviewPatGrantRequestResponse>;
 
 export interface RevokeAllOrgRolesTeamRequest {
@@ -5990,7 +5872,7 @@ export interface RevokeAllOrgRolesTeamRequest {
   /** The slug of the team name. */
   team_slug: string;
 }
-export const RevokeAllOrgRolesTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAllOrgRolesTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -6006,7 +5888,7 @@ export const RevokeAllOrgRolesTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeAllOrgRolesTeamRequest>;
 
 export interface RevokeAllOrgRolesTeamResponse {}
-export const RevokeAllOrgRolesTeamResponse =
+const RevokeAllOrgRolesTeamResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<RevokeAllOrgRolesTeamResponse>;
 
 export interface RevokeAllOrgRolesUserRequest {
@@ -6015,7 +5897,7 @@ export interface RevokeAllOrgRolesUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RevokeAllOrgRolesUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAllOrgRolesUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -6027,7 +5909,7 @@ export const RevokeAllOrgRolesUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeAllOrgRolesUserRequest>;
 
 export interface RevokeAllOrgRolesUserResponse {}
-export const RevokeAllOrgRolesUserResponse =
+const RevokeAllOrgRolesUserResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<RevokeAllOrgRolesUserResponse>;
 
 export interface RevokeOrgRoleTeamRequest {
@@ -6038,7 +5920,7 @@ export interface RevokeOrgRoleTeamRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-export const RevokeOrgRoleTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeOrgRoleTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -6053,7 +5935,7 @@ export const RevokeOrgRoleTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeOrgRoleTeamRequest" }) as any as S.Schema<RevokeOrgRoleTeamRequest>;
 
 export interface RevokeOrgRoleTeamResponse {}
-export const RevokeOrgRoleTeamResponse =
+const RevokeOrgRoleTeamResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<RevokeOrgRoleTeamResponse>;
 
 export interface RevokeOrgRoleUserRequest {
@@ -6064,7 +5946,7 @@ export interface RevokeOrgRoleUserRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-export const RevokeOrgRoleUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeOrgRoleUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -6079,18 +5961,18 @@ export const RevokeOrgRoleUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeOrgRoleUserRequest" }) as any as S.Schema<RevokeOrgRoleUserRequest>;
 
 export interface RevokeOrgRoleUserResponse {}
-export const RevokeOrgRoleUserResponse =
+const RevokeOrgRoleUserResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<RevokeOrgRoleUserResponse>;
 
 /** The deployment status of the artifact. */
 export type SetClusterDeploymentRecordsRequestDeploymentsItemStatus = "deployed" | "decommissioned";
-export const SetClusterDeploymentRecordsRequestDeploymentsItemStatus = S.String;
+const SetClusterDeploymentRecordsRequestDeploymentsItemStatus = S.String;
 
 /** Key-value pairs to tag the deployment record. */
 export type SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap = {
   [key: string]: string | undefined;
 };
-export const SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap =
+const SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap =
   CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap>;
 
 export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem =
@@ -6098,13 +5980,11 @@ export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem =
   | "internet-exposed"
   | "lateral-movement"
   | "sensitive-data";
-export const SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem = S.String;
-
 /** A list of runtime risks associated with the deployment. */
 export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList = Array<
   SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem | (string & {})
 >;
-export const SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList =
+const SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList =
   CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList>;
 
 export interface SetClusterDeploymentRecordsRequestDeploymentsItem {
@@ -6125,7 +6005,7 @@ export interface SetClusterDeploymentRecordsRequestDeploymentsItem {
   /** A list of runtime risks associated with the deployment. */
   runtime_risks?: SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList;
 }
-export const SetClusterDeploymentRecordsRequestDeploymentsItem = /*@__PURE__*/ S.suspend(() =>
+const SetClusterDeploymentRecordsRequestDeploymentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     digest: S.String,
@@ -6143,7 +6023,7 @@ export const SetClusterDeploymentRecordsRequestDeploymentsItem = /*@__PURE__*/ S
 /** The list of deployments to record. */
 export type SetClusterDeploymentRecordsRequestDeploymentsList =
   Array<SetClusterDeploymentRecordsRequestDeploymentsItem>;
-export const SetClusterDeploymentRecordsRequestDeploymentsList = /*@__PURE__*/ S.Array(
+const SetClusterDeploymentRecordsRequestDeploymentsList = /*@__PURE__*/ S.Array(
   SetClusterDeploymentRecordsRequestDeploymentsItem,
 ) as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsList>;
 
@@ -6163,7 +6043,7 @@ export interface SetClusterDeploymentRecordsRequest {
   /** If true, the endpoint will return the set records in the response body */
   return_records?: boolean;
 }
-export const SetClusterDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetClusterDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     cluster: S.String.pipe(T.Label()),
@@ -6185,24 +6065,21 @@ export const SetClusterDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SetClusterDeploymentRecordsResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-export const SetClusterDeploymentRecordsResponseDeploymentRecordsList =
-  CreateArtifactDeploymentRecordResponseDeploymentRecordsList as any as S.Schema<SetClusterDeploymentRecordsResponseDeploymentRecordsList>;
-
 export interface SetClusterDeploymentRecordsResponse {
   /** The number of deployment records created */
   total_count: number;
   deployment_records?: SetClusterDeploymentRecordsResponseDeploymentRecordsList;
 }
-export const SetClusterDeploymentRecordsResponse =
+const SetClusterDeploymentRecordsResponse =
   CreateArtifactDeploymentRecordResponse as any as S.Schema<SetClusterDeploymentRecordsResponse>;
 
 /** The policy that controls how immutable releases are enforced in the organization. */
 export type SetImmutableReleasesSettingsRequestEnforcedRepositories = "all" | "none" | "selected";
-export const SetImmutableReleasesSettingsRequestEnforcedRepositories = S.String;
+const SetImmutableReleasesSettingsRequestEnforcedRepositories = S.String;
 
 /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
 export type SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList = Array<number>;
-export const SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList =
+const SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList =
   BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList>;
 
 export interface SetImmutableReleasesSettingsRequest {
@@ -6213,7 +6090,7 @@ export interface SetImmutableReleasesSettingsRequest {
   /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
   selected_repository_ids?: SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList;
 }
-export const SetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     enforced_repositories: SetImmutableReleasesSettingsRequestEnforcedRepositories,
@@ -6226,13 +6103,13 @@ export const SetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetImmutableReleasesSettingsRequest>;
 
 export interface SetImmutableReleasesSettingsResponse {}
-export const SetImmutableReleasesSettingsResponse =
+const SetImmutableReleasesSettingsResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetImmutableReleasesSettingsResponse>;
 
 /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
 export type SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList =
   Array<number>;
-export const SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList =
+const SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList>;
@@ -6243,7 +6120,7 @@ export interface SetImmutableReleasesSettingsRepositoriesRequest {
   /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
   selected_repository_ids: SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList;
 }
-export const SetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     selected_repository_ids:
@@ -6260,12 +6137,12 @@ export const SetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesRequest>;
 
 export interface SetImmutableReleasesSettingsRepositoriesResponse {}
-export const SetImmutableReleasesSettingsRepositoriesResponse =
+const SetImmutableReleasesSettingsRepositoriesResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetImmutableReleasesSettingsRepositoriesResponse>;
 
 /** The role to give the user in the organization. Can be one of: * `admin` - The user will become an owner of the organization. * `member` - The user will become a non-owner member of the organization. */
 export type SetMembershipForUserRequestRole = "admin" | "member";
-export const SetMembershipForUserRequestRole = S.String;
+const SetMembershipForUserRequestRole = S.String;
 
 export interface SetMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6275,7 +6152,7 @@ export interface SetMembershipForUserRequest {
   /** The role to give the user in the organization. Can be one of: * `admin` - The user will become an owner of the organization. * `member` - The user will become a non-owner member of the organization. */
   role?: SetMembershipForUserRequestRole | (string & {});
 }
-export const SetMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const SetMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -6291,7 +6168,7 @@ export interface SetPublicMembershipForAuthenticatedUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const SetPublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -6301,7 +6178,7 @@ export const SetPublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<SetPublicMembershipForAuthenticatedUserRequest>;
 
 export interface SetPublicMembershipForAuthenticatedUserResponse {}
-export const SetPublicMembershipForAuthenticatedUserResponse =
+const SetPublicMembershipForAuthenticatedUserResponse =
   BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetPublicMembershipForAuthenticatedUserResponse>;
 
 export interface UnblockUserRequest {
@@ -6310,7 +6187,7 @@ export interface UnblockUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -6318,16 +6195,15 @@ export const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnblockUserRequest" }) as any as S.Schema<UnblockUserRequest>;
 
 export interface UnblockUserResponse {}
-export const UnblockUserResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<UnblockUserResponse>;
+const UnblockUserResponse = AssignTeamToOrgRoleResponse as any as S.Schema<UnblockUserResponse>;
 
 /** Default permission level members have for organization repositories. */
 export type UpdateRequestDefaultRepositoryPermission = "read" | "write" | "admin" | "none";
-export const UpdateRequestDefaultRepositoryPermission = S.String;
+const UpdateRequestDefaultRepositoryPermission = S.String;
 
 /** Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud. **Note:** This parameter is closing down and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details. */
 export type UpdateRequestMembersAllowedRepositoryCreationType = "all" | "private" | "none";
-export const UpdateRequestMembersAllowedRepositoryCreationType = S.String;
+const UpdateRequestMembersAllowedRepositoryCreationType = S.String;
 
 export interface UpdateRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6394,7 +6270,7 @@ export interface UpdateRequest {
   /** Controls whether or not deploy keys may be added and used for repositories in the organization. */
   deploy_keys_enabled_for_repositories?: boolean;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     billing_email: S.optional(S.String),
@@ -6434,7 +6310,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. */
 export type UpdateIssueFieldRequestVisibility = "organization_members_only" | "all";
-export const UpdateIssueFieldRequestVisibility = S.String;
+const UpdateIssueFieldRequestVisibility = S.String;
 
 /** Color for the option. */
 export type UpdateIssueFieldRequestOptionsItemColor =
@@ -6446,7 +6322,7 @@ export type UpdateIssueFieldRequestOptionsItemColor =
   | "red"
   | "pink"
   | "purple";
-export const UpdateIssueFieldRequestOptionsItemColor = S.String;
+const UpdateIssueFieldRequestOptionsItemColor = S.String;
 
 export interface UpdateIssueFieldRequestOptionsItem {
   /** The id of an existing option to retain or update. Omit this when creating a new option. */
@@ -6460,7 +6336,7 @@ export interface UpdateIssueFieldRequestOptionsItem {
   /** Priority of the option for ordering. */
   priority: number;
 }
-export const UpdateIssueFieldRequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateIssueFieldRequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.String,
@@ -6474,7 +6350,7 @@ export const UpdateIssueFieldRequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated. */
 export type UpdateIssueFieldRequestOptionsList = Array<UpdateIssueFieldRequestOptionsItem>;
-export const UpdateIssueFieldRequestOptionsList = /*@__PURE__*/ S.Array(
+const UpdateIssueFieldRequestOptionsList = /*@__PURE__*/ S.Array(
   UpdateIssueFieldRequestOptionsItem,
 ) as any as S.Schema<UpdateIssueFieldRequestOptionsList>;
 
@@ -6492,7 +6368,7 @@ export interface UpdateIssueFieldRequest {
   /** Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated. */
   options?: UpdateIssueFieldRequestOptionsList;
 }
-export const UpdateIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     issue_field_id: S.Number.pipe(T.Label()),
@@ -6513,7 +6389,7 @@ export type UpdateIssueTypeRequestColor =
   | "red"
   | "pink"
   | "purple";
-export const UpdateIssueTypeRequestColor = S.String;
+const UpdateIssueTypeRequestColor = S.String;
 
 export interface UpdateIssueTypeRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6529,7 +6405,7 @@ export interface UpdateIssueTypeRequest {
   /** Color for the issue type. */
   color?: UpdateIssueTypeRequestColor | (string & {}) | null;
 }
-export const UpdateIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     issue_type_id: S.Number.pipe(T.Label()),
@@ -6542,7 +6418,7 @@ export const UpdateIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state that the membership should be in. Only `"active"` will be accepted. */
 export type UpdateMembershipForAuthenticatedUserRequestState = "active";
-export const UpdateMembershipForAuthenticatedUserRequestState = S.String;
+const UpdateMembershipForAuthenticatedUserRequestState = S.String;
 
 export interface UpdateMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6550,7 +6426,7 @@ export interface UpdateMembershipForAuthenticatedUserRequest {
   /** The state that the membership should be in. Only `"active"` will be accepted. */
   state: UpdateMembershipForAuthenticatedUserRequestState | (string & {});
 }
-export const UpdateMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     state: UpdateMembershipForAuthenticatedUserRequestState,
@@ -6561,7 +6437,7 @@ export const UpdateMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 
 /** Action to apply to the fine-grained personal access token. */
 export type UpdatePatAccessRequestAction = "revoke";
-export const UpdatePatAccessRequestAction = S.String;
+const UpdatePatAccessRequestAction = S.String;
 
 export interface UpdatePatAccessRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6571,7 +6447,7 @@ export interface UpdatePatAccessRequest {
   /** Action to apply to the fine-grained personal access token. */
   action: UpdatePatAccessRequestAction | (string & {});
 }
-export const UpdatePatAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePatAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pat_id: S.Number.pipe(T.Label()),
@@ -6582,16 +6458,16 @@ export const UpdatePatAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePatAccessRequest" }) as any as S.Schema<UpdatePatAccessRequest>;
 
 export interface UpdatePatAccessResponse {}
-export const UpdatePatAccessResponse =
+const UpdatePatAccessResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<UpdatePatAccessResponse>;
 
 /** Action to apply to the fine-grained personal access token. */
 export type UpdatePatAccessesRequestAction = "revoke";
-export const UpdatePatAccessesRequestAction = S.String;
+const UpdatePatAccessesRequestAction = S.String;
 
 /** The IDs of the fine-grained personal access tokens. */
 export type UpdatePatAccessesRequestPatIdsList = Array<number>;
-export const UpdatePatAccessesRequestPatIdsList =
+const UpdatePatAccessesRequestPatIdsList =
   BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<UpdatePatAccessesRequestPatIdsList>;
 
 export interface UpdatePatAccessesRequest {
@@ -6602,7 +6478,7 @@ export interface UpdatePatAccessesRequest {
   /** The IDs of the fine-grained personal access tokens. */
   pat_ids: UpdatePatAccessesRequestPatIdsList;
 }
-export const UpdatePatAccessesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePatAccessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     action: UpdatePatAccessesRequestAction,
@@ -6611,7 +6487,7 @@ export const UpdatePatAccessesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePatAccessesRequest" }) as any as S.Schema<UpdatePatAccessesRequest>;
 
 export interface UpdatePatAccessesResponse {}
-export const UpdatePatAccessesResponse =
+const UpdatePatAccessesResponse =
   AssignTeamToOrgRoleResponse as any as S.Schema<UpdatePatAccessesResponse>;
 
 /** Key/value pairs to provide settings for this webhook. */
@@ -6621,7 +6497,7 @@ export interface UpdateWebhookRequestConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const UpdateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     content_type: S.optional(S.String),
@@ -6634,7 +6510,7 @@ export const UpdateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList =
+const UpdateWebhookRequestEventsList =
   CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 export interface UpdateWebhookRequest {
@@ -6650,7 +6526,7 @@ export interface UpdateWebhookRequest {
   active?: boolean;
   name?: string;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),
@@ -6671,7 +6547,7 @@ export interface UpdateWebhookConfigForOrgRequest {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const UpdateWebhookConfigForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookConfigForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     hook_id: S.Number.pipe(T.Label()),

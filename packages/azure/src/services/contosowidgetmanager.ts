@@ -16,7 +16,7 @@ export interface DeleteEmployeeRequest {
   /** The name of the Employee */
   employeeName: string;
 }
-export const DeleteEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -32,13 +32,13 @@ export const DeleteEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmployeeRequest" }) as any as S.Schema<DeleteEmployeeRequest>;
 
 export interface DeleteEmployeeResponse {}
-export const DeleteEmployeeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteEmployeeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteEmployeeResponse",
 }) as any as S.Schema<DeleteEmployeeResponse>;
 
 /** Resource tags. */
 export type EmployeesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EmployeesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const EmployeesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<EmployeesCreateOrUpdateRequestTagsMap>;
@@ -52,7 +52,7 @@ export interface EmployeePropertiesInput {
   /** Profile of employee */
   profile?: string;
 }
-export const EmployeePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EmployeePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     age: S.optional(S.Number),
     city: S.optional(S.String),
@@ -74,7 +74,7 @@ export interface EmployeesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EmployeePropertiesInput;
 }
-export const EmployeesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EmployeesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -96,11 +96,11 @@ export const EmployeesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -117,7 +117,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -130,7 +130,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EmployeesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EmployeesCreateOrUpdateResponseTagsMap =
+const EmployeesCreateOrUpdateResponseTagsMap =
   EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<EmployeesCreateOrUpdateResponseTagsMap>;
 
 /** The resource provisioning state. */
@@ -142,7 +142,7 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Employee properties */
 export interface EmployeeProperties {
@@ -155,7 +155,7 @@ export interface EmployeeProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const EmployeeProperties = /*@__PURE__*/ S.suspend(() =>
+const EmployeeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     age: S.optional(S.Number),
     city: S.optional(S.String),
@@ -180,7 +180,7 @@ export interface EmployeesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-export const EmployeesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EmployeesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -202,7 +202,7 @@ export interface GetEmployeeRequest {
   /** The name of the Employee */
   employeeName: string;
 }
-export const GetEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -219,7 +219,7 @@ export const GetEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEmployeeResponseTagsMap = { [key: string]: string | undefined };
-export const GetEmployeeResponseTagsMap =
+const GetEmployeeResponseTagsMap =
   EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEmployeeResponseTagsMap>;
 
 export interface GetEmployeeResponse {
@@ -238,7 +238,7 @@ export interface GetEmployeeResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-export const GetEmployeeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -256,7 +256,7 @@ export interface ListEmployeeByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListEmployeeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmployeeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -274,9 +274,6 @@ export const ListEmployeeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EmployeeTagsMap = { [key: string]: string | undefined };
-export const EmployeeTagsMap =
-  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<EmployeeTagsMap>;
-
 /** Employee resource */
 export interface Employee {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -294,11 +291,11 @@ export interface Employee {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-export const Employee = GetEmployeeResponse as any as S.Schema<Employee>;
+const Employee = GetEmployeeResponse as any as S.Schema<Employee>;
 
 /** The Employee items on this page */
 export type EmployeeListResultValueList = Array<Employee>;
-export const EmployeeListResultValueList = /*@__PURE__*/ S.Array(
+const EmployeeListResultValueList = /*@__PURE__*/ S.Array(
   Employee,
 ) as any as S.Schema<EmployeeListResultValueList>;
 
@@ -309,7 +306,7 @@ export interface EmployeeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EmployeeListResult = /*@__PURE__*/ S.suspend(() =>
+const EmployeeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EmployeeListResultValueList,
     nextLink: S.optional(S.String),
@@ -320,7 +317,7 @@ export interface ListEmployeeBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListEmployeeBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmployeeBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -336,7 +333,7 @@ export const ListEmployeeBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmployeeBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -358,7 +355,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -369,11 +366,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -388,7 +385,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -400,7 +397,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -410,7 +407,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -419,7 +416,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEmployeeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEmployeeRequestTagsMap =
+const UpdateEmployeeRequestTagsMap =
   EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmployeeRequestTagsMap>;
 
 export interface UpdateEmployeeRequest {
@@ -434,7 +431,7 @@ export interface UpdateEmployeeRequest {
   /** The resource-specific properties for this resource. */
   properties?: EmployeePropertiesInput;
 }
-export const UpdateEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -453,9 +450,6 @@ export const UpdateEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEmployeeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEmployeeResponseTagsMap =
-  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmployeeResponseTagsMap>;
-
 export interface UpdateEmployeeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -472,8 +466,7 @@ export interface UpdateEmployeeResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-export const UpdateEmployeeResponse =
-  GetEmployeeResponse as any as S.Schema<UpdateEmployeeResponse>;
+const UpdateEmployeeResponse = GetEmployeeResponse as any as S.Schema<UpdateEmployeeResponse>;
 
 export type DeleteEmployeeError = AzureOpError;
 /** Delete a Employee */

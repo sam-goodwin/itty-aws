@@ -52,7 +52,7 @@ export interface CancelSignalsScoutReportCheckRequest {
   /** The check to stop. Its recorded results stay on the report. */
   check_id: string;
 }
-export const CancelSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -93,7 +93,7 @@ export interface ScoutCheckSummary {
   /** When the coordinator last dispatched a run for the check. Null when no run waits. */
   dispatched_at: string | null;
 }
-export const ScoutCheckSummary = /*@__PURE__*/ S.suspend(() =>
+const ScoutCheckSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_id: S.String,
     report_id: S.String,
@@ -111,7 +111,7 @@ export const ScoutCheckSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** * `passed` - Passed * `failed` - Failed * `errored` - Errored * `inconclusive` - Inconclusive */
 export type SignalReportCheckOutcomeEnum = "passed" | "failed" | "errored" | "inconclusive";
-export const SignalReportCheckOutcomeEnum = S.String;
+const SignalReportCheckOutcomeEnum = S.String;
 
 /** * `awaiting_data` - Awaiting Data * `unmeasurable` - Unmeasurable * `needs_manual_verification` - Needs Manual Verification * `no_fix_to_measure` - No Fix To Measure */
 export type SignalReportCheckInconclusiveReasonEnum =
@@ -119,7 +119,7 @@ export type SignalReportCheckInconclusiveReasonEnum =
   | "unmeasurable"
   | "needs_manual_verification"
   | "no_fix_to_measure";
-export const SignalReportCheckInconclusiveReasonEnum = S.String;
+const SignalReportCheckInconclusiveReasonEnum = S.String;
 
 export interface CheckSignalsScoutRecordResultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -137,7 +137,7 @@ export interface CheckSignalsScoutRecordResultRequest {
   /** The number you measured, when the check came down to one. Leave it out otherwise. */
   observed_value?: number | null;
 }
-export const CheckSignalsScoutRecordResultRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckSignalsScoutRecordResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -168,7 +168,7 @@ export interface RecordCheckResultResponse {
   /** Evaluations the check still owes after this one. */
   runs_remaining: number;
 }
-export const RecordCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
+const RecordCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_id: S.String,
     outcome: S.String,
@@ -181,7 +181,7 @@ export const RecordCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub PR URLs to add to this report's work. Additive and deduplicated; may span repositories. */
 export type ClaimSignalsReportRequestPullRequestsList = Array<string>;
-export const ClaimSignalsReportRequestPullRequestsList = /*@__PURE__*/ S.Array(
+const ClaimSignalsReportRequestPullRequestsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClaimSignalsReportRequestPullRequestsList>;
 
@@ -201,7 +201,7 @@ export interface ClaimSignalsReportRequest {
   /** Release ownership while preserving any attached pull request. */
   release?: boolean;
 }
-export const ClaimSignalsReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ClaimSignalsReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -232,11 +232,11 @@ export type SignalReportStatusEnum =
   | "failed"
   | "deleted"
   | "suppressed";
-export const SignalReportStatusEnum = S.String;
+const SignalReportStatusEnum = S.String;
 
 /** * `small` - small * `medium` - medium * `large` - large */
 export type SizeEnum = "small" | "medium" | "large";
-export const SizeEnum = S.String;
+const SizeEnum = S.String;
 
 /** One chart attached to a report -- rendered in the inbox and referenceable from the summary. */
 export interface ReportChart {
@@ -251,7 +251,7 @@ export interface ReportChart {
   /** How much height the chart gets: `small` for a single number or a short series, `medium` for an ordinary graph, `large` when there are rows or a grid to read (retention, paths, a wide breakdown). Leave it out unless the default looks wrong -- the inbox sizes a chart from its query, and two charts referenced from the same paragraph sit side by side. * `small` - small * `medium` - medium * `large` - large */
   size?: SizeEnum | (string & {}) | null;
 }
-export const ReportChart = /*@__PURE__*/ S.suspend(() =>
+const ReportChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chart_id: S.String,
     title: S.String,
@@ -263,7 +263,7 @@ export const ReportChart = /*@__PURE__*/ S.suspend(() =>
 
 /** Charts the report shows, in the order they were written. The summary places one with a `[label](chart:<chart_id>)` link; the rest render below it. */
 export type SignalReportChartsList = Array<ReportChart>;
-export const SignalReportChartsList = /*@__PURE__*/ S.Array(
+const SignalReportChartsList = /*@__PURE__*/ S.Array(
   ReportChart,
 ) as any as S.Schema<SignalReportChartsList>;
 
@@ -277,15 +277,15 @@ export type ReportMetricKindEnum =
   | "duration"
   | "revenue"
   | "custom";
-export const ReportMetricKindEnum = S.String;
+const ReportMetricKindEnum = S.String;
 
 /** * `primary` - primary * `supporting` - supporting */
 export type RoleEnum = "primary" | "supporting";
-export const RoleEnum = S.String;
+const RoleEnum = S.String;
 
 /** Trailing per-bucket values of the live query, oldest first, saved with the value snapshot so a list row can draw the trend without running the query; at most 14 points. Null when no snapshot series is available to this viewer. */
 export type ReportMetricSeriesList = Array<number>;
-export const ReportMetricSeriesList = /*@__PURE__*/ S.Array(
+const ReportMetricSeriesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ReportMetricSeriesList>;
 
@@ -297,15 +297,15 @@ export type ValueFormatEnum =
   | "percentage_scaled"
   | "duration"
   | "currency";
-export const ValueFormatEnum = S.String;
+const ValueFormatEnum = S.String;
 
 /** * `at_most` - at_most * `at_least` - at_least */
 export type GoalDirectionEnum = "at_most" | "at_least";
-export const GoalDirectionEnum = S.String;
+const GoalDirectionEnum = S.String;
 
 /** * `whole_window` - whole_window * `per_interval` - per_interval */
 export type GoalGrainEnum = "whole_window" | "per_interval";
-export const GoalGrainEnum = S.String;
+const GoalGrainEnum = S.String;
 
 /** One impact measurement shown on a report. */
 export interface ReportMetric {
@@ -342,7 +342,7 @@ export interface ReportMetric {
   /** Optional number of qualifying observations before assessing impact. */
   minimum_data_points?: number | null;
 }
-export const ReportMetric = /*@__PURE__*/ S.suspend(() =>
+const ReportMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_id: S.String,
     title: S.String,
@@ -365,32 +365,32 @@ export const ReportMetric = /*@__PURE__*/ S.suspend(() =>
 
 /** Typed impact measurements in display order. At most one is primary. Live metric values and history come from their query; value/value_at are the latest saved fallback snapshots. */
 export type SignalReportMetricsList = Array<ReportMetric>;
-export const SignalReportMetricsList = /*@__PURE__*/ S.Array(
+const SignalReportMetricsList = /*@__PURE__*/ S.Array(
   ReportMetric,
 ) as any as S.Schema<SignalReportMetricsList>;
 
 /** Follow-up prompts the report's author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the `Ask AI` box; clicking one fills the box with it. */
 export type SignalReportSuggestedPromptsList = Array<string>;
-export const SignalReportSuggestedPromptsList =
+const SignalReportSuggestedPromptsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalReportSuggestedPromptsList>;
 
 /** Distinct source products contributing signals to this report (from ClickHouse). */
 export type SignalReportSourceProductsList = Array<string>;
-export const SignalReportSourceProductsList =
+const SignalReportSourceProductsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalReportSourceProductsList>;
 
 export type SignalReportAssignmentPrStateEnum = "unknown" | "draft" | "open" | "closed" | "merged";
-export const SignalReportAssignmentPrStateEnum = S.String;
+const SignalReportAssignmentPrStateEnum = S.String;
 
 /** * `approved` - Approved * `changes_requested` - Changes requested * `review_required` - Review required */
 export type SignalReportPullRequestReviewDecisionEnum =
   | "approved"
   | "changes_requested"
   | "review_required";
-export const SignalReportPullRequestReviewDecisionEnum = S.String;
+const SignalReportPullRequestReviewDecisionEnum = S.String;
 
 export type SignalActorKindEnum = "user" | "task" | "agent" | "system";
-export const SignalActorKindEnum = S.String;
+const SignalActorKindEnum = S.String;
 
 export interface User {
   id?: number;
@@ -399,7 +399,7 @@ export interface User {
   last_name?: string;
   email?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -419,7 +419,7 @@ export interface SignalReportPullRequestAttachedBy {
   /** Internal task that attached the PR, when recorded. */
   task_id: string | null;
 }
-export const SignalReportPullRequestAttachedBy = /*@__PURE__*/ S.suspend(() =>
+const SignalReportPullRequestAttachedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.NullOr(SignalActorKindEnum),
     user: S.NullOr(User),
@@ -450,7 +450,7 @@ export interface SignalReportPullRequest {
   /** When the first PR link was recorded. For backfilled links this is the import time; null for an unmigrated link. */
   attached_at: string | null;
 }
-export const SignalReportPullRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalReportPullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.NullOr(S.String),
     url: S.String,
@@ -466,12 +466,12 @@ export const SignalReportPullRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All distinct PRs linked to this report across work attempts. */
 export type SignalReportPullRequestsList = Array<SignalReportPullRequest>;
-export const SignalReportPullRequestsList = /*@__PURE__*/ S.Array(
+const SignalReportPullRequestsList = /*@__PURE__*/ S.Array(
   SignalReportPullRequest,
 ) as any as S.Schema<SignalReportPullRequestsList>;
 
 export type SignalReportWorkStateEnum = "unclaimed" | "working" | "in_review" | "done";
-export const SignalReportWorkStateEnum = S.String;
+const SignalReportWorkStateEnum = S.String;
 
 export interface SignalReportAssignee {
   /** Identifier for the active work attempt. */
@@ -482,7 +482,7 @@ export interface SignalReportAssignee {
   agent: string | null;
   claimed_at: string | null;
 }
-export const SignalReportAssignee = /*@__PURE__*/ S.suspend(() =>
+const SignalReportAssignee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claim_id: S.NullOr(S.String),
     kind: SignalActorKindEnum,
@@ -495,11 +495,11 @@ export const SignalReportAssignee = /*@__PURE__*/ S.suspend(() =>
 
 /** * `pr_incorrect` - PR incorrect * `pr_not_useful` - PR not useful * `duplicate` - Duplicate * `other` - Other */
 export type SignalReportRefundReasonEnum = "pr_incorrect" | "pr_not_useful" | "duplicate" | "other";
-export const SignalReportRefundReasonEnum = S.String;
+const SignalReportRefundReasonEnum = S.String;
 
 /** * `excluded` - Excluded * `credited` - Credited */
 export type SignalReportRefundBillingPathEnum = "excluded" | "credited";
-export const SignalReportRefundBillingPathEnum = S.String;
+const SignalReportRefundBillingPathEnum = S.String;
 
 export interface SignalReportRefund {
   id: string;
@@ -522,7 +522,7 @@ export interface SignalReportRefund {
   /** When the refund was created. */
   created_at: string;
 }
-export const SignalReportRefund = /*@__PURE__*/ S.suspend(() =>
+const SignalReportRefund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     reason: SignalReportRefundReasonEnum,
@@ -542,30 +542,29 @@ export type RefundIneligibilityReasonEnum =
   | "billing_exempt"
   | "no_billable_pr"
   | "out_of_period";
-export const RefundIneligibilityReasonEnum = S.String;
+const RefundIneligibilityReasonEnum = S.String;
 
 /** * `posthog_health_check` - PostHog health check * `posthog_onboarding` - PostHog onboarding * `posthog_system` - PostHog system */
 export type SignalReportBillingExemptReasonEnum =
   | "posthog_health_check"
   | "posthog_onboarding"
   | "posthog_system";
-export const SignalReportBillingExemptReasonEnum = S.String;
+const SignalReportBillingExemptReasonEnum = S.String;
 
 /** Outcome head name to its calibrated probability. Empty when the served model skipped the report. */
 export type ReportRankingScoresMap = { [key: string]: number | undefined };
-export const ReportRankingScoresMap = /*@__PURE__*/ S.Record(
+const ReportRankingScoresMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<ReportRankingScoresMap>;
 
 /** Outcome head name to its probability divided by the head's training base rate, e.g. 2.7 means 2.7x as likely as the average report. A head without a saved base rate has no entry. */
 export type ReportRankingLiftsMap = { [key: string]: number | undefined };
-export const ReportRankingLiftsMap =
-  ReportRankingScoresMap as any as S.Schema<ReportRankingLiftsMap>;
+const ReportRankingLiftsMap = ReportRankingScoresMap as any as S.Schema<ReportRankingLiftsMap>;
 
 /** Heads whose holdout AUC the training run could read. Treat scores of other heads with caution. */
 export type ReportRankingReadableHeadsList = Array<string>;
-export const ReportRankingReadableHeadsList =
+const ReportRankingReadableHeadsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ReportRankingReadableHeadsList>;
 
 export interface ReportRanking {
@@ -586,7 +585,7 @@ export interface ReportRanking {
   /** Heads whose holdout AUC the training run could read. Treat scores of other heads with caution. */
   readable_heads: ReportRankingReadableHeadsList;
 }
-export const ReportRanking = /*@__PURE__*/ S.suspend(() =>
+const ReportRanking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     served_key: S.String,
     model_name: S.String,
@@ -666,7 +665,7 @@ export interface SignalReport {
   /** The served model's score from the latest ranking score artefact. Staff only: null for other users, and null when the report has no score. */
   ranking: ReportRanking | null;
 }
-export const SignalReport = /*@__PURE__*/ S.suspend(() =>
+const SignalReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -711,13 +710,13 @@ export const SignalReport = /*@__PURE__*/ S.suspend(() =>
 
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
 export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
-export const AutonomyPriorityEnum = S.String;
+const AutonomyPriorityEnum = S.String;
 
 /** Per-repository base branch overrides for auto-started inbox PRs, keyed by 'organization/repository'. The branch is what the auto-PR targets; omit a repo (or send {}) to keep targeting the repo default branch. */
 export type CreateSignalsConfigRequestAutostartBaseBranchesMap = {
   [key: string]: string | undefined;
 };
-export const CreateSignalsConfigRequestAutostartBaseBranchesMap = /*@__PURE__*/ S.Record(
+const CreateSignalsConfigRequestAutostartBaseBranchesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateSignalsConfigRequestAutostartBaseBranchesMap>;
@@ -726,7 +725,7 @@ export const CreateSignalsConfigRequestAutostartBaseBranchesMap = /*@__PURE__*/ 
 export type CreateSignalsConfigRequestIssueTrackingConfigMap = {
   [key: string]: string | undefined;
 };
-export const CreateSignalsConfigRequestIssueTrackingConfigMap =
+const CreateSignalsConfigRequestIssueTrackingConfigMap =
   CreateSignalsConfigRequestAutostartBaseBranchesMap as any as S.Schema<CreateSignalsConfigRequestIssueTrackingConfigMap>;
 
 export interface CreateSignalsConfigRequest {
@@ -754,7 +753,7 @@ export interface CreateSignalsConfigRequest {
   /** The label name self-driving applies, at most 50 characters. Null or blank means 'self-driving'. The label is created in the repository when it does not exist yet. Only used while pull_request_label_enabled is true. */
   pull_request_label?: string | null;
 }
-export const CreateSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     autostart_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -775,12 +774,12 @@ export const CreateSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-repository base branch overrides for auto-started inbox PRs, keyed by 'organization/repository'. The branch is what the auto-PR targets; omit a repo (or send {}) to keep targeting the repo default branch. */
 export type SignalTeamConfigAutostartBaseBranchesMap = { [key: string]: string | undefined };
-export const SignalTeamConfigAutostartBaseBranchesMap =
+const SignalTeamConfigAutostartBaseBranchesMap =
   CreateSignalsConfigRequestAutostartBaseBranchesMap as any as S.Schema<SignalTeamConfigAutostartBaseBranchesMap>;
 
 /** Where in the tracker the issues land. Required keys depend on the integration kind: github -> {repository}; linear -> {team_id}; jira -> {project_key}; gitlab needs none, because its integration is already bound to one project. An optional 'label' is applied to created GitHub issues. */
 export type SignalTeamConfigIssueTrackingConfigMap = { [key: string]: string | undefined };
-export const SignalTeamConfigIssueTrackingConfigMap =
+const SignalTeamConfigIssueTrackingConfigMap =
   CreateSignalsConfigRequestAutostartBaseBranchesMap as any as S.Schema<SignalTeamConfigIssueTrackingConfigMap>;
 
 export interface SignalTeamConfig {
@@ -813,7 +812,7 @@ export interface SignalTeamConfig {
   created_at: string;
   updated_at: string;
 }
-export const SignalTeamConfig = /*@__PURE__*/ S.suspend(() =>
+const SignalTeamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     autostart_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -846,7 +845,7 @@ export interface CreateSignalsReportArtefactRequest {
   /** The artefact payload as a JSON object or array; shape depends on artefact_type and is validated against its schema. */
   content: unknown;
 }
-export const CreateSignalsReportArtefactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportArtefactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -883,7 +882,7 @@ export interface SignalReportArtefactWriteResponse {
   /** Task the artefact is attributed to, when an agent produced it. Null for user writes. */
   task_id: string | null;
 }
-export const SignalReportArtefactWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportArtefactWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     claim_id: S.NullOr(S.String),
@@ -900,7 +899,7 @@ export const SignalReportArtefactWriteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `LEFT` - LEFT * `RIGHT` - RIGHT */
 export type SideEnum = "LEFT" | "RIGHT";
-export const SideEnum = S.String;
+const SideEnum = S.String;
 
 export interface CreateSignalsReportPrReviewCommentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -920,7 +919,7 @@ export interface CreateSignalsReportPrReviewCommentRequest {
   /** Diff side of the anchor line: 'LEFT' = deletions, 'RIGHT' = additions. Defaults to 'RIGHT'. * `LEFT` - LEFT * `RIGHT` - RIGHT */
   side?: SideEnum | (string & {}) | null;
 }
-export const CreateSignalsReportPrReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportPrReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -943,7 +942,7 @@ export const CreateSignalsReportPrReviewCommentRequest = /*@__PURE__*/ S.suspend
 
 /** * `conversation` - conversation * `review` - review */
 export type CommentTypeEnum = "conversation" | "review";
-export const CommentTypeEnum = S.String;
+const CommentTypeEnum = S.String;
 
 /** One emoji reaction on a review comment, with the reactor so the viewer's own can be toggled. */
 export interface PullRequestCommentReaction {
@@ -954,7 +953,7 @@ export interface PullRequestCommentReaction {
   /** GitHub login of the user who added the reaction. */
   user_login: string | null;
 }
-export const PullRequestCommentReaction = /*@__PURE__*/ S.suspend(() =>
+const PullRequestCommentReaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     content: S.String,
@@ -966,7 +965,7 @@ export const PullRequestCommentReaction = /*@__PURE__*/ S.suspend(() =>
 
 /** Emoji reactions on this review comment, one entry per reactor. */
 export type PullRequestCommentReactionsList = Array<PullRequestCommentReaction>;
-export const PullRequestCommentReactionsList = /*@__PURE__*/ S.Array(
+const PullRequestCommentReactionsList = /*@__PURE__*/ S.Array(
   PullRequestCommentReaction,
 ) as any as S.Schema<PullRequestCommentReactionsList>;
 
@@ -1003,7 +1002,7 @@ export interface PullRequestComment {
   /** Emoji reactions on this review comment, one entry per reactor. */
   reactions: PullRequestCommentReactionsList;
 }
-export const PullRequestComment = /*@__PURE__*/ S.suspend(() =>
+const PullRequestComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     author: S.NullOr(S.String),
@@ -1027,7 +1026,7 @@ export const PullRequestComment = /*@__PURE__*/ S.suspend(() =>
 export interface PullRequestReviewCommentCreateResponse {
   comment: PullRequestComment;
 }
-export const PullRequestReviewCommentCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const PullRequestReviewCommentCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: PullRequestComment,
   }),
@@ -1045,7 +1044,7 @@ export type ContentEnum =
   | "heart"
   | "rocket"
   | "eyes";
-export const ContentEnum = S.String;
+const ContentEnum = S.String;
 
 export interface CreateSignalsReportPrReviewCommentReactionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1058,7 +1057,7 @@ export interface CreateSignalsReportPrReviewCommentReactionRequest {
   /** Reaction to add: one of '+1', '-1', 'laugh', 'hooray', 'confused', 'heart', 'rocket', 'eyes'. * `+1` - +1 * `-1` - -1 * `laugh` - laugh * `hooray` - hooray * `confused` - confused * `heart` - heart * `rocket` - rocket * `eyes` - eyes */
   content: ContentEnum | (string & {});
 }
-export const CreateSignalsReportPrReviewCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportPrReviewCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1080,7 +1079,7 @@ export const CreateSignalsReportPrReviewCommentReactionRequest = /*@__PURE__*/ S
 export interface PullRequestReviewCommentReactionCreateResponse {
   reaction: PullRequestCommentReaction;
 }
-export const PullRequestReviewCommentReactionCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const PullRequestReviewCommentReactionCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: PullRequestCommentReaction,
   }),
@@ -1090,7 +1089,7 @@ export const PullRequestReviewCommentReactionCreateResponse = /*@__PURE__*/ S.su
 
 /** * `positive` - positive * `negative` - negative */
 export type SentimentEnum = "positive" | "negative";
-export const SentimentEnum = S.String;
+const SentimentEnum = S.String;
 
 export interface CreateSignalsReportsFeedbackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1102,7 +1101,7 @@ export interface CreateSignalsReportsFeedbackRequest {
   /** Free-form note explaining the rating. Capped at 4000 characters. Optional -- a bare thumb carries none. When present and the report was authored by a scout, the note is forwarded to that scout as a steering note. */
   note?: string;
 }
-export const CreateSignalsReportsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1123,7 +1122,7 @@ export interface SignalReportFeedbackResponse {
   /** Whether the note was forwarded to the report's authoring scout as a steering note. False when the report has no resolvable authoring scout, or the caller lacks scout-steering access. */
   forwarded: boolean;
 }
-export const SignalReportFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwarded: S.Boolean,
   }),
@@ -1133,7 +1132,7 @@ export const SignalReportFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of the duplicate reports to fold into this one (1-10). Each must be a live report in this project: a resolved, archived or deleted report is rejected with 409, as is the survivor's own id. Duplicates in the list are de-duplicated. The whole merge applies or none of it does. */
 export type CreateSignalsReportsMergeRequestSourceReportIdsList = Array<string>;
-export const CreateSignalsReportsMergeRequestSourceReportIdsList =
+const CreateSignalsReportsMergeRequestSourceReportIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<CreateSignalsReportsMergeRequestSourceReportIdsList>;
 
 export interface CreateSignalsReportsMergeRequest {
@@ -1146,7 +1145,7 @@ export interface CreateSignalsReportsMergeRequest {
   /** Optional one-line explanation of why these reports are the same issue. Recorded on each source's 'duplicate of' link and on the note left on the survivor. Capped at 500 characters. */
   reason?: string;
 }
-export const CreateSignalsReportsMergeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsMergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1173,7 +1172,7 @@ export interface SignalReportMergeSourceResult {
   /** Whether an active work claim held by another actor was released before the move. */
   released_claim: boolean;
 }
-export const SignalReportMergeSourceResult = /*@__PURE__*/ S.suspend(() =>
+const SignalReportMergeSourceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     artefacts_moved: S.Number,
@@ -1186,7 +1185,7 @@ export const SignalReportMergeSourceResult = /*@__PURE__*/ S.suspend(() =>
 
 /** One result per merged source, in request order (after de-duplication). */
 export type SignalReportMergeResponseSourcesList = Array<SignalReportMergeSourceResult>;
-export const SignalReportMergeResponseSourcesList = /*@__PURE__*/ S.Array(
+const SignalReportMergeResponseSourcesList = /*@__PURE__*/ S.Array(
   SignalReportMergeSourceResult,
 ) as any as S.Schema<SignalReportMergeResponseSourcesList>;
 
@@ -1196,7 +1195,7 @@ export interface SignalReportMergeResponse {
   /** One result per merged source, in request order (after de-duplication). */
   sources: SignalReportMergeResponseSourcesList;
 }
-export const SignalReportMergeResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportMergeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report: SignalReport,
     sources: SignalReportMergeResponseSourcesList,
@@ -1215,7 +1214,7 @@ export interface CreateSignalsReportsRefundRequest {
   /** Optional free-form context for the refund; stored on the refund and echoed in the report's dismissal artefact. Capped at 4000 characters. */
   note?: string;
 }
-export const CreateSignalsReportsRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1255,7 +1254,7 @@ export interface SignalReportRefundResponse {
   /** True when the report already had a refund and that existing refund is returned unchanged -- refunds are one-per-report and repeat calls are idempotent. */
   already_refunded: boolean;
 }
-export const SignalReportRefundResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportRefundResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     reason: SignalReportRefundReasonEnum,
@@ -1279,7 +1278,7 @@ export interface CreateSignalsReportsReingestRequest {
   /** A UUID string identifying this signal report. */
   id: string;
 }
-export const CreateSignalsReportsReingestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsReingestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1296,7 +1295,7 @@ export const CreateSignalsReportsReingestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `reingestion_started` - reingestion_started * `already_running` - already_running */
 export type SignalReportReingestionStatusStatusEnum = "reingestion_started" | "already_running";
-export const SignalReportReingestionStatusStatusEnum = S.String;
+const SignalReportReingestionStatusStatusEnum = S.String;
 
 /** Envelope the reingest action returns once it has kicked off the re-ingestion workflow. */
 export interface SignalReportReingestionStatus {
@@ -1305,7 +1304,7 @@ export interface SignalReportReingestionStatus {
   /** Report being re-ingested. */
   report_id: string;
 }
-export const SignalReportReingestionStatus = /*@__PURE__*/ S.suspend(() =>
+const SignalReportReingestionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SignalReportReingestionStatusStatusEnum,
     report_id: S.String,
@@ -1316,7 +1315,7 @@ export const SignalReportReingestionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Reports to describe. At most 100 ids per call. */
 export type CreateSignalsReportsSourceMetadataRequestReportIdsList = Array<string>;
-export const CreateSignalsReportsSourceMetadataRequestReportIdsList =
+const CreateSignalsReportsSourceMetadataRequestReportIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<CreateSignalsReportsSourceMetadataRequestReportIdsList>;
 
 export interface CreateSignalsReportsSourceMetadataRequest {
@@ -1325,7 +1324,7 @@ export interface CreateSignalsReportsSourceMetadataRequest {
   /** Reports to describe. At most 100 ids per call. */
   report_ids: CreateSignalsReportsSourceMetadataRequestReportIdsList;
 }
-export const CreateSignalsReportsSourceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsSourceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_ids: CreateSignalsReportsSourceMetadataRequestReportIdsList,
@@ -1342,7 +1341,7 @@ export const CreateSignalsReportsSourceMetadataRequest = /*@__PURE__*/ S.suspend
 
 /** Distinct source products contributing signals to this report. Empty when it has none yet. */
 export type SignalReportSourceMetadataSourceProductsList = Array<string>;
-export const SignalReportSourceMetadataSourceProductsList =
+const SignalReportSourceMetadataSourceProductsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalReportSourceMetadataSourceProductsList>;
 
 export interface SignalReportSourceMetadata {
@@ -1353,7 +1352,7 @@ export interface SignalReportSourceMetadata {
   /** skill_name slug of the scout that authored this report, when scout-authored; null otherwise. */
   scout_name: string | null;
 }
-export const SignalReportSourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const SignalReportSourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source_products: SignalReportSourceMetadataSourceProductsList,
@@ -1365,7 +1364,7 @@ export const SignalReportSourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per requested id, in request order, duplicates removed. An id with no signals in this project, including one that is not a report here, gets empty values. */
 export type SignalReportSourceMetadataResponseReportsList = Array<SignalReportSourceMetadata>;
-export const SignalReportSourceMetadataResponseReportsList = /*@__PURE__*/ S.Array(
+const SignalReportSourceMetadataResponseReportsList = /*@__PURE__*/ S.Array(
   SignalReportSourceMetadata,
 ) as any as S.Schema<SignalReportSourceMetadataResponseReportsList>;
 
@@ -1373,7 +1372,7 @@ export interface SignalReportSourceMetadataResponse {
   /** One entry per requested id, in request order, duplicates removed. An id with no signals in this project, including one that is not a report here, gets empty values. */
   reports: SignalReportSourceMetadataResponseReportsList;
 }
-export const SignalReportSourceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportSourceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: SignalReportSourceMetadataResponseReportsList,
   }),
@@ -1383,7 +1382,7 @@ export const SignalReportSourceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
 export type SignalReportStateEnum = "suppressed" | "potential" | "resolved";
-export const SignalReportStateEnum = S.String;
+const SignalReportStateEnum = S.String;
 
 /** * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wrong_repo` - Agent picked the wrong repository * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `fixed_outside_posthog` - Fixed outside PostHog * `pr_merged` - PR was merged * `other` - Something else... */
 export type DismissalReasonEnum =
@@ -1396,7 +1395,7 @@ export type DismissalReasonEnum =
   | "fixed_outside_posthog"
   | "pr_merged"
   | "other";
-export const DismissalReasonEnum = S.String;
+const DismissalReasonEnum = S.String;
 
 export interface CreateSignalsReportsStateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1414,7 +1413,7 @@ export interface CreateSignalsReportsStateRequest {
   /** Optional, only honored when state is 'potential'. Number of additional signals the report must accumulate before it is re-promoted into the pipeline -- effectively snoozing it until then. Omit to let the report re-enter the pipeline on the next matching signal. */
   snooze_for?: number;
 }
-export const CreateSignalsReportsStateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1440,7 +1439,7 @@ export interface CreateSignalsReportsViewedRequest {
   /** A UUID string identifying this signal report. */
   id: string;
 }
-export const CreateSignalsReportsViewedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsReportsViewedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1456,9 +1455,7 @@ export const CreateSignalsReportsViewedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSignalsReportsViewedRequest>;
 
 export interface CreateSignalsReportsViewedResponse {}
-export const CreateSignalsReportsViewedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CreateSignalsReportsViewedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateSignalsReportsViewedResponse",
 }) as any as S.Schema<CreateSignalsReportsViewedResponse>;
 
@@ -1470,7 +1467,7 @@ export interface LLMSkillFileInput {
   /** MIME type of the file content. */
   content_type?: string;
 }
-export const LLMSkillFileInput = /*@__PURE__*/ S.suspend(() =>
+const LLMSkillFileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     content: S.optional(S.String),
@@ -1480,42 +1477,42 @@ export const LLMSkillFileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional reference files bundled with the scout prompt. */
 export type CreateSignalsScoutRequestFilesList = Array<LLMSkillFileInput>;
-export const CreateSignalsScoutRequestFilesList = /*@__PURE__*/ S.Array(
+const CreateSignalsScoutRequestFilesList = /*@__PURE__*/ S.Array(
   LLMSkillFileInput,
 ) as any as S.Schema<CreateSignalsScoutRequestFilesList>;
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigOptionsTagsList = Array<string>;
-export const SignalScoutConfigOptionsTagsList =
+const SignalScoutConfigOptionsTagsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigOptionsTagsList>;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigOptionsStructuredOutputSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const SignalScoutConfigOptionsStructuredOutputSchemaMap = /*@__PURE__*/ S.Record(
+const SignalScoutConfigOptionsStructuredOutputSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SignalScoutConfigOptionsStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsMcpGatewayServerIdsList = Array<string>;
-export const SignalScoutConfigOptionsMcpGatewayServerIdsList =
+const SignalScoutConfigOptionsMcpGatewayServerIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigOptionsMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsRepositoriesList = Array<string>;
-export const SignalScoutConfigOptionsRepositoriesList =
+const SignalScoutConfigOptionsRepositoriesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigOptionsRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsWriteScopesList = Array<string>;
-export const SignalScoutConfigOptionsWriteScopesList =
+const SignalScoutConfigOptionsWriteScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigOptionsWriteScopesList>;
 
 /** Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel. */
 export type SignalScoutSlackDestinationUsersList = Array<string>;
-export const SignalScoutSlackDestinationUsersList =
+const SignalScoutSlackDestinationUsersList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutSlackDestinationUsersList>;
 
 export interface SignalScoutSlackDestination {
@@ -1528,7 +1525,7 @@ export interface SignalScoutSlackDestination {
   /** When true, post a report as a thread: a short lead in the channel and the rest split into replies at the summary's section labels, which can be Markdown headings or bold labels. Keeps a long summary from being clipped at Slack's section limit. On by default; set it false to post a single message, which can truncate a long summary. It does not change how findings post. */
   thread_reports?: boolean;
 }
-export const SignalScoutSlackDestination = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutSlackDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_id: S.Number,
     channel: S.optional(S.NullOr(S.String)),
@@ -1543,7 +1540,7 @@ export interface SignalScoutWebhookDestination {
   /** Id of the CDP destination delivering this scout's reports. Set by the product that provisioned it, so it can find that destination again to update or remove it. */
   hog_function_id: string;
 }
-export const SignalScoutWebhookDestination = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutWebhookDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_id: S.String,
   }),
@@ -1557,7 +1554,7 @@ export interface SignalScoutOutputDestinations {
   /** The CDP destination another product provisioned for this scout's reports. Null or omitted means no webhook. Unlike Slack, Signals does not deliver this itself: the reference lives here so the owning product can manage the destination's lifecycle. */
   webhook?: SignalScoutWebhookDestination | null;
 }
-export const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slack: S.optional(S.NullOr(SignalScoutSlackDestination)),
     webhook: S.optional(S.NullOr(SignalScoutWebhookDestination)),
@@ -1568,7 +1565,7 @@ export const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
 
 /** * `trusted` - Trusted domains only * `full` - Full */
 export type SignalScoutConfigNetworkAccessEnum = "trusted" | "full";
-export const SignalScoutConfigNetworkAccessEnum = S.String;
+const SignalScoutConfigNetworkAccessEnum = S.String;
 
 /** Schedule, enablement, and delivery options accepted while creating a scout. */
 export interface SignalScoutConfigOptions {
@@ -1599,7 +1596,7 @@ export interface SignalScoutConfigOptions {
   /** Optional five-field cron expression, e.g. '30 9 * * *' (daily at 09:30), '0 9,17 * * *' (twice daily), or '0 9 * * 1-5' (weekday mornings). Evaluated in the project timezone. Takes precedence over `run_interval_minutes`; occurrences must be at least 30 minutes apart. */
   run_cron_schedule?: string | null;
 }
-export const SignalScoutConfigOptions = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutConfigOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.optional(S.NullOr(S.String)),
     tags: S.optional(SignalScoutConfigOptionsTagsList),
@@ -1637,7 +1634,7 @@ export interface CreateSignalsScoutRequest {
   /** Optional id of the suggestion this scout was created from. The suggestion then stops being offered on this project. An id this project's batch does not hold is ignored. */
   suggestion_id?: string;
 }
-export const CreateSignalsScoutRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     display_name: S.optional(S.String),
@@ -1654,7 +1651,7 @@ export const CreateSignalsScoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Server-managed report tools granted to this scout. */
 export type SignalScoutSkillSummaryAllowedToolsList = Array<string>;
-export const SignalScoutSkillSummaryAllowedToolsList =
+const SignalScoutSkillSummaryAllowedToolsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutSkillSummaryAllowedToolsList>;
 
 export interface SignalScoutSkillSummary {
@@ -1665,7 +1662,7 @@ export interface SignalScoutSkillSummary {
   /** Server-managed report tools granted to this scout. */
   allowed_tools: SignalScoutSkillSummaryAllowedToolsList;
 }
-export const SignalScoutSkillSummary = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutSkillSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1677,14 +1674,14 @@ export const SignalScoutSkillSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** * `canonical` - canonical * `custom` - custom */
 export type ScoutOriginEnum = "canonical" | "custom";
-export const ScoutOriginEnum = S.String;
+const ScoutOriginEnum = S.String;
 
 export type ScoutRoleEnum = "specialist" | "operational";
-export const ScoutRoleEnum = S.String;
+const ScoutRoleEnum = S.String;
 
 /** * `announced` - announced * `retired` - retired */
 export type ScoutDeprecationPhaseEnum = "announced" | "retired";
-export const ScoutDeprecationPhaseEnum = S.String;
+const ScoutDeprecationPhaseEnum = S.String;
 
 /** What PostHog has said about retiring this scout, for the chip and the banner to render. */
 export interface ScoutDeprecation {
@@ -1697,7 +1694,7 @@ export interface ScoutDeprecation {
   /** When the scout stops running. Null means the next fleet reconcile retires it. */
   sunset_at: string | null;
 }
-export const ScoutDeprecation = /*@__PURE__*/ S.suspend(() =>
+const ScoutDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: ScoutDeprecationPhaseEnum,
     reason: S.String,
@@ -1707,7 +1704,7 @@ export const ScoutDeprecation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScoutDeprecation" }) as any as S.Schema<ScoutDeprecation>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -1721,14 +1718,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -1741,7 +1733,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -1757,7 +1749,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** Who answers for this scout, seed-creator first. Ownership is recorded on the scout's skill rather than on this config, so editing the skill or toggling the scout leaves it unchanged. Reports the scout files suggest these people as reviewers. Prefer this over `created_by`-style fields, which only say who last flipped a switch. Empty when nobody owns the scout, when the owners are no longer members with access to the project, or when the caller is a scout sandbox token: owners are member PII, and a scout reads them through the skill API instead. */
 export type SignalScoutConfigOwnersList = Array<UserBasic>;
-export const SignalScoutConfigOwnersList = /*@__PURE__*/ S.Array(
+const SignalScoutConfigOwnersList = /*@__PURE__*/ S.Array(
   UserBasic,
 ) as any as S.Schema<SignalScoutConfigOwnersList>;
 
@@ -1767,7 +1759,7 @@ export type SignalScoutConfigStatusEnum =
   | "pending_pause"
   | "paused_by_system"
   | "paused_by_user";
-export const SignalScoutConfigStatusEnum = S.String;
+const SignalScoutConfigStatusEnum = S.String;
 
 /** * `no_output` - No output * `ignored` - Ignored * `repeated_failures` - Repeated failures * `retired` - Retired * `background_removed` - Background removed */
 export type SignalScoutConfigPauseReasonEnum =
@@ -1776,35 +1768,35 @@ export type SignalScoutConfigPauseReasonEnum =
   | "repeated_failures"
   | "retired"
   | "background_removed";
-export const SignalScoutConfigPauseReasonEnum = S.String;
+const SignalScoutConfigPauseReasonEnum = S.String;
 
 /** * `team` - Team * `background` - Background */
 export type SignalScoutConfigManagedByEnum = "team" | "background";
-export const SignalScoutConfigManagedByEnum = S.String;
+const SignalScoutConfigManagedByEnum = S.String;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigStructuredOutputSchemaMap = { [key: string]: unknown | undefined };
-export const SignalScoutConfigStructuredOutputSchemaMap =
+const SignalScoutConfigStructuredOutputSchemaMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<SignalScoutConfigStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type SignalScoutConfigMcpGatewayServerIdsList = Array<string>;
-export const SignalScoutConfigMcpGatewayServerIdsList =
+const SignalScoutConfigMcpGatewayServerIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type SignalScoutConfigRepositoriesList = Array<string>;
-export const SignalScoutConfigRepositoriesList =
+const SignalScoutConfigRepositoriesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type SignalScoutConfigWriteScopesList = Array<string>;
-export const SignalScoutConfigWriteScopesList =
+const SignalScoutConfigWriteScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigWriteScopesList>;
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigTagsList = Array<string>;
-export const SignalScoutConfigTagsList =
+const SignalScoutConfigTagsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutConfigTagsList>;
 
 /** Read shape for a per-(team, skill) scout config. One row per scout skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
@@ -1872,7 +1864,7 @@ export interface SignalScoutConfig {
   /** When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it -- the coordinator stamps `last_run_at` with a direct write -- so this reads as when the scout was last tuned rather than when it last ran. */
   updated_at: string;
 }
-export const SignalScoutConfig = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     skill_name: S.String,
@@ -1915,7 +1907,7 @@ export interface SignalScoutCreateResponse {
   skill: SignalScoutSkillSummary;
   config: SignalScoutConfig;
 }
-export const SignalScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.Boolean,
     skill: SignalScoutSkillSummary,
@@ -1927,7 +1919,7 @@ export const SignalScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `author_scout` - author_scout * `fleet_overview` - fleet_overview * `recent_signals` - recent_signals */
 export type ChatTypeEnum = "author_scout" | "fleet_overview" | "recent_signals";
-export const ChatTypeEnum = S.String;
+const ChatTypeEnum = S.String;
 
 export interface CreateSignalsScoutChatTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1939,7 +1931,7 @@ export interface CreateSignalsScoutChatTaskRequest {
   /** Optional description, in the user's own words, of what the new scout should watch. The chat then opens on this request instead of asking from scratch. `author_scout` only, and not together with `suggestion_id`. */
   user_prompt?: string;
 }
-export const CreateSignalsScoutChatTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutChatTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     chat_type: ChatTypeEnum,
@@ -1960,7 +1952,7 @@ export interface ScoutChatTask {
   /** The created chat task. Open it on the task detail page to continue. */
   task_id: string;
 }
-export const ScoutChatTask = /*@__PURE__*/ S.suspend(() =>
+const ScoutChatTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
   }),
@@ -1968,29 +1960,29 @@ export const ScoutChatTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type CreateSignalsScoutConfigRequestTagsList = Array<string>;
-export const CreateSignalsScoutConfigRequestTagsList =
+const CreateSignalsScoutConfigRequestTagsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<CreateSignalsScoutConfigRequestTagsList>;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type CreateSignalsScoutConfigRequestStructuredOutputSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateSignalsScoutConfigRequestStructuredOutputSchemaMap =
+const CreateSignalsScoutConfigRequestStructuredOutputSchemaMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<CreateSignalsScoutConfigRequestStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type CreateSignalsScoutConfigRequestMcpGatewayServerIdsList = Array<string>;
-export const CreateSignalsScoutConfigRequestMcpGatewayServerIdsList =
+const CreateSignalsScoutConfigRequestMcpGatewayServerIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<CreateSignalsScoutConfigRequestMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type CreateSignalsScoutConfigRequestRepositoriesList = Array<string>;
-export const CreateSignalsScoutConfigRequestRepositoriesList =
+const CreateSignalsScoutConfigRequestRepositoriesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<CreateSignalsScoutConfigRequestRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type CreateSignalsScoutConfigRequestWriteScopesList = Array<string>;
-export const CreateSignalsScoutConfigRequestWriteScopesList =
+const CreateSignalsScoutConfigRequestWriteScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<CreateSignalsScoutConfigRequestWriteScopesList>;
 
 export interface CreateSignalsScoutConfigRequest {
@@ -2027,7 +2019,7 @@ export interface CreateSignalsScoutConfigRequest {
   /** The skill to register a config for. Any valid skill name works -- the config row is what makes a skill a scout. The skill must already exist on this project -- author it via the skills store first. */
   skill_name: string;
 }
-export const CreateSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     model: S.optional(S.NullOr(S.String)),
@@ -2056,7 +2048,7 @@ export const CreateSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stable run IDs for this variant's repeats. */
 export type ScoutTrialComparisonVariantRequestLaunchIdsList = Array<string>;
-export const ScoutTrialComparisonVariantRequestLaunchIdsList =
+const ScoutTrialComparisonVariantRequestLaunchIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutTrialComparisonVariantRequestLaunchIdsList>;
 
 export interface ScoutTrialComparisonVariantRequest {
@@ -2073,7 +2065,7 @@ export interface ScoutTrialComparisonVariantRequest {
   /** Replacement scout instructions. Omit to use the saved source instructions. */
   skill_body?: string;
 }
-export const ScoutTrialComparisonVariantRequest = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialComparisonVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     label: S.String,
@@ -2089,7 +2081,7 @@ export const ScoutTrialComparisonVariantRequest = /*@__PURE__*/ S.suspend(() =>
 /** Up to 20 variants, each with up to 20 scout runs. */
 export type CreateSignalsScoutConfigTrialComparisonRequestVariantsList =
   Array<ScoutTrialComparisonVariantRequest>;
-export const CreateSignalsScoutConfigTrialComparisonRequestVariantsList = /*@__PURE__*/ S.Array(
+const CreateSignalsScoutConfigTrialComparisonRequestVariantsList = /*@__PURE__*/ S.Array(
   ScoutTrialComparisonVariantRequest,
 ) as any as S.Schema<CreateSignalsScoutConfigTrialComparisonRequestVariantsList>;
 
@@ -2109,7 +2101,7 @@ export interface CreateSignalsScoutConfigTrialComparisonRequest {
   /** Source version shown in the editor. Refuse a new trial if the instructions changed since setup. */
   expected_skill_version?: number;
 }
-export const CreateSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2130,12 +2122,12 @@ export const CreateSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateSignalsScoutConfigTrialComparisonRequest>;
 
 export interface CreateSignalsScoutConfigTrialComparisonResponse {}
-export const CreateSignalsScoutConfigTrialComparisonResponse =
+const CreateSignalsScoutConfigTrialComparisonResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<CreateSignalsScoutConfigTrialComparisonResponse>;
 
 /** Trial launches forming this variant's repeats. */
 export type ScoutTrialEvaluationVariantLaunchIdsList = Array<string>;
-export const ScoutTrialEvaluationVariantLaunchIdsList =
+const ScoutTrialEvaluationVariantLaunchIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutTrialEvaluationVariantLaunchIdsList>;
 
 export interface ScoutTrialEvaluationVariant {
@@ -2146,7 +2138,7 @@ export interface ScoutTrialEvaluationVariant {
   /** Trial launches forming this variant's repeats. */
   launch_ids: ScoutTrialEvaluationVariantLaunchIdsList;
 }
-export const ScoutTrialEvaluationVariant = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialEvaluationVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     label: S.String,
@@ -2159,13 +2151,13 @@ export const ScoutTrialEvaluationVariant = /*@__PURE__*/ S.suspend(() =>
 /** Up to 20 variant groups, each with up to 20 trial runs. */
 export type CreateSignalsScoutConfigTrialEvaluationRequestVariantsList =
   Array<ScoutTrialEvaluationVariant>;
-export const CreateSignalsScoutConfigTrialEvaluationRequestVariantsList = /*@__PURE__*/ S.Array(
+const CreateSignalsScoutConfigTrialEvaluationRequestVariantsList = /*@__PURE__*/ S.Array(
   ScoutTrialEvaluationVariant,
 ) as any as S.Schema<CreateSignalsScoutConfigTrialEvaluationRequestVariantsList>;
 
 /** * `saved` - Saved */
 export type TrialRubricSourceEnum = "saved";
-export const TrialRubricSourceEnum = S.String;
+const TrialRubricSourceEnum = S.String;
 
 export interface CreateSignalsScoutConfigTrialEvaluationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2181,7 +2173,7 @@ export interface CreateSignalsScoutConfigTrialEvaluationRequest {
   /** Judge every run against the scout's saved rubric, frozen when the trial starts. * `saved` - Saved */
   rubric_source: TrialRubricSourceEnum | (string & {});
 }
-export const CreateSignalsScoutConfigTrialEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutConfigTrialEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2201,7 +2193,7 @@ export const CreateSignalsScoutConfigTrialEvaluationRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateSignalsScoutConfigTrialEvaluationRequest>;
 
 export interface CreateSignalsScoutConfigTrialEvaluationResponse {}
-export const CreateSignalsScoutConfigTrialEvaluationResponse =
+const CreateSignalsScoutConfigTrialEvaluationResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<CreateSignalsScoutConfigTrialEvaluationResponse>;
 
 export interface CreateSignalsScoutNoteRequest {
@@ -2214,7 +2206,7 @@ export interface CreateSignalsScoutNoteRequest {
   /** Optional ISO-8601 expiry. After this time the note drops out of the default list view, so time-boxed steering ('watch closely this week') retires itself. Omit for a note that stays active until deleted. Best-effort -- a value that can't be parsed or is already in the past is dropped (the note stays active), not rejected, so the note is never lost. */
   expires_at?: string | null;
 }
-export const CreateSignalsScoutNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     content: S.String,
@@ -2244,7 +2236,7 @@ export interface ScoutNote {
   /** Where the note came from. `human` for one left directly through this API. `report_dismissal` for one forwarded from the note someone typed when they dismissed, snoozed, or restored one or more inbox reports: one reviewer's verdict on the reports its content names, so weigh it as evidence about those reports rather than as fleet-level steering. `report_discussion` for the question someone asked when they opened a discussion on a report: context to weigh, neither a verdict on the report nor a directive. `report_feedback` for the note someone left when rating a report useful or not: one reader's rating of the named report, context to weigh rather than a directive. `report_reviewer_correction` for a suggested reviewer someone added or removed on a report: evidence about who owns that surface, and a prompt to revisit the routing memory it corrects, rather than a directive. */
   origin: string;
 }
-export const ScoutNote = /*@__PURE__*/ S.suspend(() =>
+const ScoutNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     skill_name: S.String,
@@ -2258,20 +2250,20 @@ export const ScoutNote = /*@__PURE__*/ S.suspend(() =>
 
 /** * `metric_threshold` - Metric Threshold * `agent` - Agent */
 export type SignalReportCheckKindEnum = "metric_threshold" | "agent";
-export const SignalReportCheckKindEnum = S.String;
+const SignalReportCheckKindEnum = S.String;
 
 export type MetricThresholdConfigQueryMap = { [key: string]: unknown | undefined };
-export const MetricThresholdConfigQueryMap =
+const MetricThresholdConfigQueryMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<MetricThresholdConfigQueryMap>;
 
 export type CheckComparisonOperatorEnum = "lte" | "gte" | "between";
-export const CheckComparisonOperatorEnum = S.String;
+const CheckComparisonOperatorEnum = S.String;
 
 export interface CheckThresholdBounds {
   lower: number;
   upper: number;
 }
-export const CheckThresholdBounds = /*@__PURE__*/ S.suspend(() =>
+const CheckThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lower: S.Number,
     upper: S.Number,
@@ -2287,7 +2279,7 @@ export interface CheckComparison {
   /** The inclusive range for `between`; unused by `lte` and `gte`. */
   bounds?: CheckThresholdBounds | null;
 }
-export const CheckComparison = /*@__PURE__*/ S.suspend(() =>
+const CheckComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operator: CheckComparisonOperatorEnum,
     value: S.optional(S.NullOr(S.Number)),
@@ -2304,7 +2296,7 @@ export type MetricThresholdConfigMetricKind =
   | "duration"
   | "revenue"
   | "custom";
-export const MetricThresholdConfigMetricKind = S.String;
+const MetricThresholdConfigMetricKind = S.String;
 
 export type MetricThresholdConfigValueFormat =
   | "number"
@@ -2313,7 +2305,7 @@ export type MetricThresholdConfigValueFormat =
   | "percentage_scaled"
   | "duration"
   | "currency";
-export const MetricThresholdConfigValueFormat = S.String;
+const MetricThresholdConfigValueFormat = S.String;
 
 /** A deterministic check: measure one number, compare it, record the verdict. The number comes either from a metric the report already shows (``metric_id``) or from a query the author supplies. Both end up in the same runner, so a supplied query must satisfy the live metric contract -- the node allowlist, the bounded window, and the single-output-series rule. A caller names one source. When it names a metric, the create path copies that metric's query into ``query`` before the row is stored, so the check keeps measuring what its author saw even if the report's metric is later rewritten under the same id; ``metric_id`` stays as provenance. Unknown keys are refused rather than ignored, so a misspelled field name is reported instead of being dropped in silence and stored as it arrived. */
 export interface MetricThresholdConfig {
@@ -2332,7 +2324,7 @@ export interface MetricThresholdConfig {
   /** Optional value suffix. */
   unit?: string | null;
 }
-export const MetricThresholdConfig = /*@__PURE__*/ S.suspend(() =>
+const MetricThresholdConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_id: S.optional(S.NullOr(S.String)),
     query: S.optional(S.NullOr(MetricThresholdConfigQueryMap)),
@@ -2346,9 +2338,6 @@ export const MetricThresholdConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Concrete places to look, such as an issue id, a service name, or a query to repeat. */
 export type AgentCheckConfigProbeHintsList = Array<string>;
-export const AgentCheckConfigProbeHintsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<AgentCheckConfigProbeHintsList>;
-
 /** A check a scout run answers: re-probe the report's claim and record one verdict. The kind for a claim no single number settles. A resolved error-tracking report is the usual case: "did the exception stop?" needs the issue looked up, its recent events read, and the stack compared against what the fix changed, which is a run rather than a comparison. Everything here is prompt material a scout reads, so it is untrusted by construction: it renders in the run block the agent is told to weigh, never in the instructions it is told to follow. The verdict still comes back through `scout-check-record-result`, so instructions cannot widen what a check run may write. ``skill_name`` names the lane. Most reports are pipeline-authored and have no scout behind them, so it is optional: a check that names none runs on the fleet's follow-up scout (see ``report_check_agent.FALLBACK_CHECK_SKILL_NAME``). */
 export interface AgentCheckConfig {
   /** What the run must establish, in the author's own words. */
@@ -2358,16 +2347,8 @@ export interface AgentCheckConfig {
   /** Concrete places to look, such as an issue id, a service name, or a query to repeat. */
   probe_hints?: AgentCheckConfigProbeHintsList;
 }
-export const AgentCheckConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instructions: S.String,
-    skill_name: S.optional(S.NullOr(S.String)),
-    probe_hints: S.optional(AgentCheckConfigProbeHintsList),
-  }),
-).annotate({ identifier: "AgentCheckConfig" }) as any as S.Schema<AgentCheckConfig>;
-
 export type SignalReportCheckConfig = MetricThresholdConfig | AgentCheckConfig;
-export const SignalReportCheckConfig = S.Unknown as any as S.Schema<SignalReportCheckConfig>;
+const SignalReportCheckConfig = S.Unknown as any as S.Schema<SignalReportCheckConfig>;
 
 export interface CreateSignalsScoutReportCheckRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2393,7 +2374,7 @@ export interface CreateSignalsScoutReportCheckRequest {
   /** The report the check attaches to. */
   report_id: string;
 }
-export const CreateSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -2469,7 +2450,7 @@ export type SignalSourceProductEnum =
   | "hubspot"
   | "engineering_analytics"
   | "google_search_console";
-export const SignalSourceProductEnum = S.String;
+const SignalSourceProductEnum = S.String;
 
 /** * `session_analysis_cluster` - Session analysis cluster * `evaluation_report` - Evaluation report * `issue` - Issue * `ticket` - Ticket * `issue_created` - Issue created * `issue_reopened` - Issue reopened * `issue_spiking` - Issue spiking * `cross_source_issue` - Cross source issue * `alert_state_change` - Alert state change * `health_issue` - Health issue * `endpoint_execution_failed` - Endpoint execution failed * `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded * `scanner_finding` - Scanner finding * `anomaly_investigation` - Anomaly investigation * `feedback` - Feedback * `review` - Review * `ci_flaky_check` - CI flaky check * `ci_broken_default_branch` - CI broken default branch * `ci_duration_regression` - CI duration regression * `search_opportunity` - Search opportunity */
 export type SignalSourceConfigSourceTypeEnum =
@@ -2493,11 +2474,11 @@ export type SignalSourceConfigSourceTypeEnum =
   | "ci_broken_default_branch"
   | "ci_duration_regression"
   | "search_opportunity";
-export const SignalSourceConfigSourceTypeEnum = S.String;
+const SignalSourceConfigSourceTypeEnum = S.String;
 
 /** Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration's teams endpoint. */
 export type CreateSignalsSourceConfigRequestConfigMap = { [key: string]: unknown | undefined };
-export const CreateSignalsSourceConfigRequestConfigMap =
+const CreateSignalsSourceConfigRequestConfigMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<CreateSignalsSourceConfigRequestConfigMap>;
 
 export interface CreateSignalsSourceConfigRequest {
@@ -2509,7 +2490,7 @@ export interface CreateSignalsSourceConfigRequest {
   /** Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration's teams endpoint. */
   config?: CreateSignalsSourceConfigRequestConfigMap;
 }
-export const CreateSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_product: S.optional(SignalSourceProductEnum),
@@ -2529,11 +2510,11 @@ export const CreateSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration's teams endpoint. */
 export type SignalSourceConfigConfigMap = { [key: string]: unknown | undefined };
-export const SignalSourceConfigConfigMap =
+const SignalSourceConfigConfigMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<SignalSourceConfigConfigMap>;
 
 export type SignalSourceSyncStatusEnum = "running" | "completed" | "failed";
-export const SignalSourceSyncStatusEnum = S.String;
+const SignalSourceSyncStatusEnum = S.String;
 
 export interface SignalSourceConfig {
   id?: string;
@@ -2547,7 +2528,7 @@ export interface SignalSourceConfig {
   /** Sync state of the warehouse import behind this source: `running`, `failed`, or `completed`. Null for a source that imports nothing from the warehouse, for an import that has never synced, and when the sync state could not be read. */
   status?: SignalSourceSyncStatusEnum | null;
 }
-export const SignalSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const SignalSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     source_product: S.optional(SignalSourceProductEnum),
@@ -2566,7 +2547,7 @@ export interface DismissSignalsScoutSuggestionRequest {
   /** A UUID string identifying this Signal scout suggestion set. */
   id: string;
 }
-export const DismissSignalsScoutSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissSignalsScoutSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2589,7 +2570,7 @@ export interface ScoutSuggestionProposedConfig {
   /** Whether the suggested scout should write to the inbox (false = dry run). */
   emit: boolean;
 }
-export const ScoutSuggestionProposedConfig = /*@__PURE__*/ S.suspend(() =>
+const ScoutSuggestionProposedConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_cron_schedule: S.optional(S.NullOr(S.String)),
     run_interval_minutes: S.optional(S.NullOr(S.Number)),
@@ -2601,7 +2582,7 @@ export const ScoutSuggestionProposedConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** * `low` - low * `medium` - medium * `high` - high */
 export type ConfidenceTierEnum = "low" | "medium" | "high";
-export const ConfidenceTierEnum = S.String;
+const ConfidenceTierEnum = S.String;
 
 export interface ScoutSuggestionItem {
   /** Stable id of this suggestion within the batch; use it to dismiss. */
@@ -2625,7 +2606,7 @@ export interface ScoutSuggestionItem {
   /** The producer's confidence. * `low` - low * `medium` - medium * `high` - high */
   confidence: ConfidenceTierEnum;
 }
-export const ScoutSuggestionItem = /*@__PURE__*/ S.suspend(() =>
+const ScoutSuggestionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: ScoutOriginEnum,
@@ -2647,7 +2628,7 @@ export interface ReportEvidence {
   /** Stable id for this observation within the report (lets a later edit address it). */
   source_id: string;
 }
-export const ReportEvidence = /*@__PURE__*/ S.suspend(() =>
+const ReportEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     source_id: S.String,
@@ -2656,7 +2637,7 @@ export const ReportEvidence = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional observations to add to the report's evidence rail, each becoming a bound signal attributed to this scout -- adds to the report's evidence rather than replacing it. Use this for a new observation a reader should be able to check, and `append_note` for commentary (the owning team knows, a deploy fixed it). The report's signal count and weight move with the appended rows. Emit plus every append share a cap of 50 signals per report. */
 export type EditSignalsScoutReportRequestAppendEvidenceList = Array<ReportEvidence>;
-export const EditSignalsScoutReportRequestAppendEvidenceList = /*@__PURE__*/ S.Array(
+const EditSignalsScoutReportRequestAppendEvidenceList = /*@__PURE__*/ S.Array(
   ReportEvidence,
 ) as any as S.Schema<EditSignalsScoutReportRequestAppendEvidenceList>;
 
@@ -2669,7 +2650,7 @@ export interface SuggestedReviewer {
   /** One sentence of evidence for WHY this person: what ties them to the affected surface (e.g. 'authored 4 of the last 10 commits touching products/tracing/mcp/', 'human correction routed the prior tracing report to them'). Persisted on the report so the routing is auditable -- always set it when you can name the evidence; 'precedent' alone is weak, prefer code-derived ownership. */
   reason?: string | null;
 }
-export const SuggestedReviewer = /*@__PURE__*/ S.suspend(() =>
+const SuggestedReviewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     github_login: S.optional(S.String),
     user_uuid: S.optional(S.String),
@@ -2679,18 +2660,18 @@ export const SuggestedReviewer = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer -- it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared). */
 export type EditSignalsScoutReportRequestSuggestedReviewersList = Array<SuggestedReviewer>;
-export const EditSignalsScoutReportRequestSuggestedReviewersList = /*@__PURE__*/ S.Array(
+const EditSignalsScoutReportRequestSuggestedReviewersList = /*@__PURE__*/ S.Array(
   SuggestedReviewer,
 ) as any as S.Schema<EditSignalsScoutReportRequestSuggestedReviewersList>;
 
 /** The full set of charts the report should show. Replaces the report's charts rather than adding to them, the way `summary` replaces the summary -- so send every chart you want kept. Omit the field (or send null) to leave the report's existing charts untouched, and send an empty list to take them all down. */
 export type EditSignalsScoutReportRequestChartsList = Array<ReportChart>;
-export const EditSignalsScoutReportRequestChartsList =
+const EditSignalsScoutReportRequestChartsList =
   SignalReportChartsList as any as S.Schema<EditSignalsScoutReportRequestChartsList>;
 
 /** Trailing per-bucket values of the live query, oldest first, saved with the value snapshot so a list row can draw the trend without running the query; at most 14 points. Null when no snapshot series is available to this viewer. */
 export type ReportMetricWriteSeriesList = Array<number>;
-export const ReportMetricWriteSeriesList =
+const ReportMetricWriteSeriesList =
   ReportMetricSeriesList as any as S.Schema<ReportMetricWriteSeriesList>;
 
 export interface ReportMetricComparison {
@@ -2699,7 +2680,7 @@ export interface ReportMetricComparison {
   /** Short context for the comparison, such as `Previous period`. */
   label: string;
 }
-export const ReportMetricComparison = /*@__PURE__*/ S.suspend(() =>
+const ReportMetricComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.Number,
     label: S.String,
@@ -2733,7 +2714,7 @@ export interface ReportMetricWrite {
   /** Legacy optional comparison. New report metrics must omit it. */
   comparison?: ReportMetricComparison | null;
 }
-export const ReportMetricWrite = /*@__PURE__*/ S.suspend(() =>
+const ReportMetricWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_id: S.String,
     title: S.String,
@@ -2752,13 +2733,13 @@ export const ReportMetricWrite = /*@__PURE__*/ S.suspend(() =>
 
 /** The report's full impact-metric set. Omit or send null to preserve it; send an empty list to clear it. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes; a snapshot is only an optional cached fallback. Snapshot-only/queryless payloads are invalid, and legacy rows of that shape are always redacted. */
 export type EditSignalsScoutReportRequestMetricsList = Array<ReportMetricWrite>;
-export const EditSignalsScoutReportRequestMetricsList = /*@__PURE__*/ S.Array(
+const EditSignalsScoutReportRequestMetricsList = /*@__PURE__*/ S.Array(
   ReportMetricWrite,
 ) as any as S.Schema<EditSignalsScoutReportRequestMetricsList>;
 
 /** The full set of follow-up prompts (questions or next-step actions) the report should offer above its `Ask AI` box. Replaces the report's prompts rather than adding to them, so send every one you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to take them down, which is what you want once a rewrite has left them pointing at the old report. */
 export type EditSignalsScoutReportRequestSuggestedPromptsList = Array<string>;
-export const EditSignalsScoutReportRequestSuggestedPromptsList =
+const EditSignalsScoutReportRequestSuggestedPromptsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<EditSignalsScoutReportRequestSuggestedPromptsList>;
 
 /** * `depends_on` - Depends on * `part_of` - Part of * `follow_up_of` - Follow-up of * `duplicate_of` - Duplicate of * `recurrence_of` - Recurrence of */
@@ -2768,7 +2749,7 @@ export type ReportLinkKindEnum =
   | "follow_up_of"
   | "duplicate_of"
   | "recurrence_of";
-export const ReportLinkKindEnum = S.String;
+const ReportLinkKindEnum = S.String;
 
 /** One typed, directed link to write on the report being emitted or edited. */
 export interface ReportLinkWrite {
@@ -2779,7 +2760,7 @@ export interface ReportLinkWrite {
   /** Optional one-line note on why the reports are linked this way. */
   reason?: string;
 }
-export const ReportLinkWrite = /*@__PURE__*/ S.suspend(() =>
+const ReportLinkWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: ReportLinkKindEnum,
     report_id: S.String,
@@ -2789,7 +2770,7 @@ export const ReportLinkWrite = /*@__PURE__*/ S.suspend(() =>
 
 /** Typed, directed links from this report to others, recording how the work relates. Use `depends_on` when you split one finding into a stack and the second report's fix cannot land until the first one's does, so the order is recorded rather than left to a reader of the diffs. Additive: links join what the report already has rather than replacing them, and only this report gets a row, so link from the side the sentence starts at. Links of the same kind must stay acyclic and every report must be in this project. */
 export type EditSignalsScoutReportRequestLinksList = Array<ReportLinkWrite>;
-export const EditSignalsScoutReportRequestLinksList = /*@__PURE__*/ S.Array(
+const EditSignalsScoutReportRequestLinksList = /*@__PURE__*/ S.Array(
   ReportLinkWrite,
 ) as any as S.Schema<EditSignalsScoutReportRequestLinksList>;
 
@@ -2798,7 +2779,7 @@ export type ActionabilityEnum =
   | "immediately_actionable"
   | "requires_human_input"
   | "not_actionable";
-export const ActionabilityEnum = S.String;
+const ActionabilityEnum = S.String;
 
 export interface EditSignalsScoutReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2842,7 +2823,7 @@ export interface EditSignalsScoutReportRequest {
   /** 2-3 sentence justification for `priority`. Required when `priority` is set. */
   priority_explanation?: string | null;
 }
-export const EditSignalsScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
+const EditSignalsScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -2877,12 +2858,12 @@ export const EditSignalsScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Which presentation fields changed (e.g. `title`, `summary`); empty if only a note was appended. */
 export type EditReportResponseUpdatedFieldsList = Array<string>;
-export const EditReportResponseUpdatedFieldsList =
+const EditReportResponseUpdatedFieldsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<EditReportResponseUpdatedFieldsList>;
 
 /** Which work decisions the edit replaced (`actionability`, `priority`). Empty when you set none, or re-sent the decisions the report already held. */
 export type EditReportResponseDecisionFieldsSetList = Array<string>;
-export const EditReportResponseDecisionFieldsSetList =
+const EditReportResponseDecisionFieldsSetList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<EditReportResponseDecisionFieldsSetList>;
 
 export interface EditReportWarning {
@@ -2891,7 +2872,7 @@ export interface EditReportWarning {
   /** Why the field was not applied. The rest of the edit landed. */
   message: string;
 }
-export const EditReportWarning = /*@__PURE__*/ S.suspend(() =>
+const EditReportWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.String,
     message: S.String,
@@ -2900,7 +2881,7 @@ export const EditReportWarning = /*@__PURE__*/ S.suspend(() =>
 
 /** Request fields the edit did not apply, each with the reason. Empty when every field applied. */
 export type EditReportResponseWarningsList = Array<EditReportWarning>;
-export const EditReportResponseWarningsList = /*@__PURE__*/ S.Array(
+const EditReportResponseWarningsList = /*@__PURE__*/ S.Array(
   EditReportWarning,
 ) as any as S.Schema<EditReportResponseWarningsList>;
 
@@ -2940,7 +2921,7 @@ export interface EditReportResponse {
   /** Whether your note raised the report's corroboration count instead of landing as its own entry. Only notes marked corroboration_only can collapse; free-form notes remain in the work log. */
   corroboration_collapsed: boolean;
 }
-export const EditReportResponse = /*@__PURE__*/ S.suspend(() =>
+const EditReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_id: S.String,
     updated_fields: EditReportResponseUpdatedFieldsList,
@@ -2970,7 +2951,7 @@ export interface GenerateSignalsScoutRubricRequest {
   /** Optional priorities for this generation. Suggestions still cover the scout's full job. */
   context?: string;
 }
-export const GenerateSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2987,7 +2968,7 @@ export const GenerateSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateSignalsScoutRubricRequest>;
 
 export interface GenerateSignalsScoutRubricResponse {}
-export const GenerateSignalsScoutRubricResponse =
+const GenerateSignalsScoutRubricResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<GenerateSignalsScoutRubricResponse>;
 
 export interface GetSignalsReportRequest {
@@ -2996,7 +2977,7 @@ export interface GetSignalsReportRequest {
   /** A UUID string identifying this signal report. */
   id: string;
 }
-export const GetSignalsReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3013,7 +2994,7 @@ export interface GetSignalsReportArtefactRequest {
   /** A UUID string identifying this signal report artefact. */
   id: string;
 }
-export const GetSignalsReportArtefactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportArtefactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -3063,22 +3044,14 @@ export type SignalReportArtefactArtefactTypeEnum =
   | "implementation_handover"
   | "ranking_score"
   | "impact_measurement_plan";
-export const SignalReportArtefactArtefactTypeEnum = S.String;
+const SignalReportArtefactArtefactTypeEnum = S.String;
 
 export type SignalReportArtefactContentCase0Map = { [key: string]: unknown | undefined };
-export const SignalReportArtefactContentCase0Map =
-  SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<SignalReportArtefactContentCase0Map>;
-
 export type SignalReportArtefactContentCase1List = Array<unknown>;
-export const SignalReportArtefactContentCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SignalReportArtefactContentCase1List>;
-
 export type SignalReportArtefactContent =
   | SignalReportArtefactContentCase0Map
   | SignalReportArtefactContentCase1List;
-export const SignalReportArtefactContent =
-  S.Unknown as any as S.Schema<SignalReportArtefactContent>;
+const SignalReportArtefactContent = S.Unknown as any as S.Schema<SignalReportArtefactContent>;
 
 export interface SignalReportArtefact {
   /** Work claim that produced this artefact. */
@@ -3099,7 +3072,7 @@ export interface SignalReportArtefact {
   /** Internal task the artefact is attributed to. Null for user, external agent, and system writes. */
   task_id: string | null;
 }
-export const SignalReportArtefact = /*@__PURE__*/ S.suspend(() =>
+const SignalReportArtefact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claim_id: S.NullOr(S.String),
     pull_request_id: S.NullOr(S.String),
@@ -3123,7 +3096,7 @@ export interface GetSignalsReportCheckRequest {
   /** A UUID string identifying this Signal report check. */
   id: string;
 }
-export const GetSignalsReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -3149,7 +3122,7 @@ export type SignalReportCheckStatusEnum =
   | "inconclusive"
   | "expired"
   | "cancelled";
-export const SignalReportCheckStatusEnum = S.String;
+const SignalReportCheckStatusEnum = S.String;
 
 export interface SignalReportCheck {
   id: string;
@@ -3185,7 +3158,7 @@ export interface SignalReportCheck {
   created_at: string;
   updated_at: string;
 }
-export const SignalReportCheck = /*@__PURE__*/ S.suspend(() =>
+const SignalReportCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -3214,7 +3187,7 @@ export interface GetSignalsReportsAvailableReviewerRequest {
   /** Case-insensitive filter on name or email. */
   query?: string;
 }
-export const GetSignalsReportsAvailableReviewerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportsAvailableReviewerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(S.String.pipe(T.Query())),
@@ -3235,7 +3208,7 @@ export interface GetSignalsReportsAvailableReviewerResponseBodyValue {
   /** Member's email address. */
   email: string;
 }
-export const GetSignalsReportsAvailableReviewerResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportsAvailableReviewerResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.String,
@@ -3247,14 +3220,14 @@ export const GetSignalsReportsAvailableReviewerResponseBodyValue = /*@__PURE__*/
 export type GetSignalsReportsAvailableReviewerResponseBodyMap = {
   [key: string]: GetSignalsReportsAvailableReviewerResponseBodyValue | undefined;
 };
-export const GetSignalsReportsAvailableReviewerResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetSignalsReportsAvailableReviewerResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   GetSignalsReportsAvailableReviewerResponseBodyValue,
 ) as any as S.Schema<GetSignalsReportsAvailableReviewerResponseBodyMap>;
 
 export type GetSignalsReportsAvailableReviewerResponse =
   GetSignalsReportsAvailableReviewerResponseBodyMap;
-export const GetSignalsReportsAvailableReviewerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportsAvailableReviewerResponse = /*@__PURE__*/ S.suspend(() =>
   GetSignalsReportsAvailableReviewerResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSignalsReportsAvailableReviewerResponse",
@@ -3266,7 +3239,7 @@ export interface GetSignalsReportsForYouRequest {
   /** How many of the top reports to return, 1 to 20. Defaults to 5. */
   limit?: number;
 }
-export const GetSignalsReportsForYouRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportsForYouRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3283,12 +3256,12 @@ export const GetSignalsReportsForYouRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Charts the report shows, in the order they were written. The summary places one with a `[label](chart:<chart_id>)` link; the rest render below it. */
 export type SignalReportListChartsList = Array<ReportChart>;
-export const SignalReportListChartsList =
+const SignalReportListChartsList =
   SignalReportChartsList as any as S.Schema<SignalReportListChartsList>;
 
 /** Trailing per-bucket values of the live query, oldest first, saved with the value snapshot so a list row can draw the trend without running the query; at most 14 points. Null when no snapshot series is available to this viewer. */
 export type ReportMetricListSeriesList = Array<number>;
-export const ReportMetricListSeriesList =
+const ReportMetricListSeriesList =
   ReportMetricSeriesList as any as S.Schema<ReportMetricListSeriesList>;
 
 /** Snapshot-only metric shape for report lists. Omitting query definitions keeps the paginated inbox payload bounded. */
@@ -3324,7 +3297,7 @@ export interface ReportMetricList {
   /** Optional number of qualifying observations before assessing impact. */
   minimum_data_points?: number | null;
 }
-export const ReportMetricList = /*@__PURE__*/ S.suspend(() =>
+const ReportMetricList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_id: S.String,
     title: S.String,
@@ -3346,23 +3319,23 @@ export const ReportMetricList = /*@__PURE__*/ S.suspend(() =>
 
 /** Snapshot-only impact measurements for inbox rows. Live query definitions and authored comparisons are available from the report detail endpoint. */
 export type SignalReportListMetricsList = Array<ReportMetricList>;
-export const SignalReportListMetricsList = /*@__PURE__*/ S.Array(
+const SignalReportListMetricsList = /*@__PURE__*/ S.Array(
   ReportMetricList,
 ) as any as S.Schema<SignalReportListMetricsList>;
 
 /** Follow-up prompts the report's author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the `Ask AI` box; clicking one fills the box with it. */
 export type SignalReportListSuggestedPromptsList = Array<string>;
-export const SignalReportListSuggestedPromptsList =
+const SignalReportListSuggestedPromptsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalReportListSuggestedPromptsList>;
 
 /** Distinct source products contributing signals to this report (from ClickHouse). */
 export type SignalReportListSourceProductsList = Array<string>;
-export const SignalReportListSourceProductsList =
+const SignalReportListSourceProductsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalReportListSourceProductsList>;
 
 /** All distinct PRs linked to this report across work attempts. */
 export type SignalReportListPullRequestsList = Array<SignalReportPullRequest>;
-export const SignalReportListPullRequestsList =
+const SignalReportListPullRequestsList =
   SignalReportPullRequestsList as any as S.Schema<SignalReportListPullRequestsList>;
 
 export interface SignalReportList {
@@ -3432,7 +3405,7 @@ export interface SignalReportList {
   /** The served model's score from the latest ranking score artefact. Staff only: null for other users, and null when the report has no score. */
   ranking: ReportRanking | null;
 }
-export const SignalReportList = /*@__PURE__*/ S.suspend(() =>
+const SignalReportList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -3477,7 +3450,7 @@ export const SignalReportList = /*@__PURE__*/ S.suspend(() =>
 
 /** The open, actionable reports that matter most to the current user, best first: reports waiting for their input, reports they claimed, reports naming them as a reviewer, then P0 reports that nobody owns. The Today briefing ranks reports the same way. */
 export type SignalReportsForYouResponseResultsList = Array<SignalReportList>;
-export const SignalReportsForYouResponseResultsList = /*@__PURE__*/ S.Array(
+const SignalReportsForYouResponseResultsList = /*@__PURE__*/ S.Array(
   SignalReportList,
 ) as any as S.Schema<SignalReportsForYouResponseResultsList>;
 
@@ -3487,7 +3460,7 @@ export interface SignalReportsForYouResponse {
   /** How many open reports are for the current user: the reports in `results`, plus the other open, actionable reports that name them as a reviewer. */
   count: number;
 }
-export const SignalReportsForYouResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportsForYouResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: SignalReportsForYouResponseResultsList,
     count: S.Number,
@@ -3500,7 +3473,7 @@ export interface GetSignalsReportsRefundSummaryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetSignalsReportsRefundSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportsRefundSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3524,7 +3497,7 @@ export interface SignalReportRefundSummaryResponse {
   /** Whether autonomous PR generation is currently paused for this project because the organization is over its self-driving credits quota. Read from the quota limiter, so it reflects the same state the pipeline gates enforce. */
   quota_limited: boolean;
 }
-export const SignalReportRefundSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportRefundSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credited_refund_count: S.Number,
     credited_credits: S.Number,
@@ -3541,7 +3514,7 @@ export interface GetSignalsReportsSignalRequest {
   /** A UUID string identifying this signal report. */
   id: string;
 }
-export const GetSignalsReportsSignalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsReportsSignalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3608,7 +3581,7 @@ export type SignalSourceProduct =
   | "hubspot"
   | "engineering_analytics"
   | "google_search_console";
-export const SignalSourceProduct = S.String;
+const SignalSourceProduct = S.String;
 
 /** * `session_analysis_cluster` - session_analysis_cluster * `session_problem` - session_problem * `evaluation` - evaluation * `evaluation_report` - evaluation_report * `issue` - issue * `ticket` - ticket * `issue_created` - issue_created * `issue_reopened` - issue_reopened * `issue_spiking` - issue_spiking * `endpoint_execution_failed` - endpoint_execution_failed * `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded * `cross_source_issue` - cross_source_issue * `alert_state_change` - alert_state_change * `health_issue` - health_issue * `scanner_finding` - scanner_finding * `anomaly_investigation` - anomaly_investigation * `feedback` - feedback * `review` - review * `ci_flaky_check` - ci_flaky_check * `ci_broken_default_branch` - ci_broken_default_branch * `ci_duration_regression` - ci_duration_regression * `search_opportunity` - search_opportunity * `check_failed` - check_failed */
 export type SignalSourceType =
@@ -3635,7 +3608,7 @@ export type SignalSourceType =
   | "ci_duration_regression"
   | "search_opportunity"
   | "check_failed";
-export const SignalSourceType = S.String;
+const SignalSourceType = S.String;
 
 export type ProblemTypeEnum =
   | "confusion"
@@ -3643,8 +3616,6 @@ export type ProblemTypeEnum =
   | "blocking_exception"
   | "non_blocking_exception"
   | "failure";
-export const ProblemTypeEnum = S.String;
-
 export interface SessionProblemEventEntry {
   event: string;
   timestamp: string;
@@ -3652,21 +3623,7 @@ export interface SessionProblemEventEntry {
   event_type?: string | null;
   interaction_text?: string | null;
 }
-export const SessionProblemEventEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.String,
-    timestamp: S.String,
-    current_url: S.optional(S.NullOr(S.String)),
-    event_type: S.optional(S.NullOr(S.String)),
-    interaction_text: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "SessionProblemEventEntry" }) as any as S.Schema<SessionProblemEventEntry>;
-
 export type SessionProblemSignalExtraEventHistoryList = Array<SessionProblemEventEntry>;
-export const SessionProblemSignalExtraEventHistoryList = /*@__PURE__*/ S.Array(
-  SessionProblemEventEntry,
-) as any as S.Schema<SessionProblemSignalExtraEventHistoryList>;
-
 export interface SessionProblemSignalExtra {
   session_id: string;
   segment_title: string;
@@ -3681,25 +3638,6 @@ export interface SessionProblemSignalExtra {
   exported_asset_id?: number | null;
   event_history?: SessionProblemSignalExtraEventHistoryList | null;
 }
-export const SessionProblemSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_id: S.String,
-    segment_title: S.String,
-    start_time: S.String,
-    end_time: S.String,
-    problem_type: ProblemTypeEnum,
-    distinct_id: S.String,
-    session_start_time: S.optional(S.NullOr(S.String)),
-    session_end_time: S.optional(S.NullOr(S.String)),
-    session_duration: S.optional(S.NullOr(S.Number)),
-    session_active_seconds: S.optional(S.NullOr(S.Number)),
-    exported_asset_id: S.optional(S.NullOr(S.Number)),
-    event_history: S.optional(S.NullOr(SessionProblemSignalExtraEventHistoryList)),
-  }),
-).annotate({
-  identifier: "SessionProblemSignalExtra",
-}) as any as S.Schema<SessionProblemSignalExtra>;
-
 export interface LlmEvalSignalExtra {
   evaluation_id: string;
   target_event_id?: string | null;
@@ -3708,17 +3646,6 @@ export interface LlmEvalSignalExtra {
   model?: string | null;
   provider?: string | null;
 }
-export const LlmEvalSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluation_id: S.String,
-    target_event_id: S.optional(S.NullOr(S.String)),
-    target_event_type: S.optional(S.NullOr(S.String)),
-    trace_id: S.String,
-    model: S.optional(S.NullOr(S.String)),
-    provider: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "LlmEvalSignalExtra" }) as any as S.Schema<LlmEvalSignalExtra>;
-
 export interface LlmEvalReportSignalExtra {
   evaluation_id: string;
   evaluation_name: string;
@@ -3728,22 +3655,7 @@ export interface LlmEvalReportSignalExtra {
   period_start: string;
   period_end: string;
 }
-export const LlmEvalReportSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluation_id: S.String,
-    evaluation_name: S.String,
-    evaluation_description: S.String,
-    report_id: S.String,
-    report_run_id: S.String,
-    period_start: S.String,
-    period_end: S.String,
-  }),
-).annotate({ identifier: "LlmEvalReportSignalExtra" }) as any as S.Schema<LlmEvalReportSignalExtra>;
-
 export type ZendeskTicketSignalExtraTagsList = Array<string>;
-export const ZendeskTicketSignalExtraTagsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ZendeskTicketSignalExtraTagsList>;
-
 export interface ZendeskTicketSignalExtra {
   url: string;
   type: string | null;
@@ -3752,21 +3664,7 @@ export interface ZendeskTicketSignalExtra {
   priority: string | null;
   status: string;
 }
-export const ZendeskTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    type: S.NullOr(S.String),
-    tags: ZendeskTicketSignalExtraTagsList,
-    created_at: S.String,
-    priority: S.NullOr(S.String),
-    status: S.String,
-  }),
-).annotate({ identifier: "ZendeskTicketSignalExtra" }) as any as S.Schema<ZendeskTicketSignalExtra>;
-
 export type GithubIssueSignalExtraLabelsList = Array<string>;
-export const GithubIssueSignalExtraLabelsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<GithubIssueSignalExtraLabelsList>;
-
 export interface GithubIssueSignalExtra {
   html_url: string;
   number: number;
@@ -3778,24 +3676,7 @@ export interface GithubIssueSignalExtra {
   author_login?: string | null;
   author_association?: string | null;
 }
-export const GithubIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html_url: S.String,
-    number: S.Number,
-    labels: GithubIssueSignalExtraLabelsList,
-    created_at: S.String,
-    updated_at: S.String,
-    locked: S.Boolean,
-    state: S.String,
-    author_login: S.optional(S.NullOr(S.String)),
-    author_association: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "GithubIssueSignalExtra" }) as any as S.Schema<GithubIssueSignalExtra>;
-
 export type LinearIssueSignalExtraLabelsList = Array<string>;
-export const LinearIssueSignalExtraLabelsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<LinearIssueSignalExtraLabelsList>;
-
 export interface LinearIssueSignalExtra {
   url: string;
   identifier: string;
@@ -3809,26 +3690,7 @@ export interface LinearIssueSignalExtra {
   created_at: string;
   updated_at: string;
 }
-export const LinearIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    identifier: S.String,
-    number: S.Number,
-    priority: S.Number,
-    priority_label: S.String,
-    labels: LinearIssueSignalExtraLabelsList,
-    state_name: S.NullOr(S.String),
-    state_type: S.NullOr(S.String),
-    team_name: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({ identifier: "LinearIssueSignalExtra" }) as any as S.Schema<LinearIssueSignalExtra>;
-
 export type JiraIssueSignalExtraLabelsList = Array<string>;
-export const JiraIssueSignalExtraLabelsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<JiraIssueSignalExtraLabelsList>;
-
 export interface JiraIssueSignalExtra {
   key: string;
   url: string | null;
@@ -3839,35 +3701,11 @@ export interface JiraIssueSignalExtra {
   created: string | null;
   updated: string | null;
 }
-export const JiraIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    url: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    assignee: S.NullOr(S.String),
-    labels: JiraIssueSignalExtraLabelsList,
-    created: S.NullOr(S.String),
-    updated: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "JiraIssueSignalExtra" }) as any as S.Schema<JiraIssueSignalExtra>;
-
 export interface ConversationsTicketImage {
   url: string;
   author: string;
 }
-export const ConversationsTicketImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    author: S.String,
-  }),
-).annotate({ identifier: "ConversationsTicketImage" }) as any as S.Schema<ConversationsTicketImage>;
-
 export type ConversationsTicketSignalExtraImagesList = Array<ConversationsTicketImage>;
-export const ConversationsTicketSignalExtraImagesList = /*@__PURE__*/ S.Array(
-  ConversationsTicketImage,
-) as any as S.Schema<ConversationsTicketSignalExtraImagesList>;
-
 export interface ConversationsTicketSignalExtra {
   ticket_number: number;
   channel_source: string;
@@ -3878,50 +3716,16 @@ export interface ConversationsTicketSignalExtra {
   email_subject: string | null;
   images?: ConversationsTicketSignalExtraImagesList | null;
 }
-export const ConversationsTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ticket_number: S.Number,
-    channel_source: S.String,
-    channel_detail: S.NullOr(S.String),
-    status: S.String,
-    priority: S.NullOr(S.String),
-    created_at: S.String,
-    email_subject: S.NullOr(S.String),
-    images: S.optional(S.NullOr(ConversationsTicketSignalExtraImagesList)),
-  }),
-).annotate({
-  identifier: "ConversationsTicketSignalExtra",
-}) as any as S.Schema<ConversationsTicketSignalExtra>;
-
 export interface ErrorTrackingSignalExtra {
   fingerprint: string;
 }
-export const ErrorTrackingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fingerprint: S.String,
-  }),
-).annotate({ identifier: "ErrorTrackingSignalExtra" }) as any as S.Schema<ErrorTrackingSignalExtra>;
-
 export interface PgAnalyzeIssueReference {
   kind?: string | null;
   name?: string | null;
   url?: string | null;
   queryText?: string | null;
 }
-export const PgAnalyzeIssueReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
-    queryText: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "PgAnalyzeIssueReference" }) as any as S.Schema<PgAnalyzeIssueReference>;
-
 export type PgAnalyzeIssueSignalExtraReferencesList = Array<PgAnalyzeIssueReference>;
-export const PgAnalyzeIssueSignalExtraReferencesList = /*@__PURE__*/ S.Array(
-  PgAnalyzeIssueReference,
-) as any as S.Schema<PgAnalyzeIssueSignalExtraReferencesList>;
-
 export interface PgAnalyzeIssueSignalExtra {
   severity: string | null;
   references: PgAnalyzeIssueSignalExtraReferencesList;
@@ -3930,19 +3734,6 @@ export interface PgAnalyzeIssueSignalExtra {
   server_name: string | null;
   synced_at: string;
 }
-export const PgAnalyzeIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    references: PgAnalyzeIssueSignalExtraReferencesList,
-    database_id: S.NullOr(S.String),
-    server_human_id: S.NullOr(S.String),
-    server_name: S.NullOr(S.String),
-    synced_at: S.String,
-  }),
-).annotate({
-  identifier: "PgAnalyzeIssueSignalExtra",
-}) as any as S.Schema<PgAnalyzeIssueSignalExtra>;
-
 export interface EndpointExecutionFailedSignalExtra {
   endpoint_name: string;
   endpoint_version: number | null;
@@ -3951,68 +3742,24 @@ export interface EndpointExecutionFailedSignalExtra {
   error_class: string;
   error_message: string;
 }
-export const EndpointExecutionFailedSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint_name: S.String,
-    endpoint_version: S.NullOr(S.Number),
-    materialized: S.Boolean,
-    saved_query_id: S.NullOr(S.String),
-    error_class: S.String,
-    error_message: S.String,
-  }),
-).annotate({
-  identifier: "EndpointExecutionFailedSignalExtra",
-}) as any as S.Schema<EndpointExecutionFailedSignalExtra>;
-
 export interface EndpointBreakdownLimitExceededSignalExtra {
   endpoint_name: string;
   breakdown_limit: number;
 }
-export const EndpointBreakdownLimitExceededSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint_name: S.String,
-    breakdown_limit: S.Number,
-  }),
-).annotate({
-  identifier: "EndpointBreakdownLimitExceededSignalExtra",
-}) as any as S.Schema<EndpointBreakdownLimitExceededSignalExtra>;
-
 export type ReportPriority = "P0" | "P1" | "P2" | "P3" | "P4";
-export const ReportPriority = S.String;
-
 export interface SignalsScoutEvidenceEntry {
   source_product: string;
   entity_id?: string | null;
   summary: string;
 }
-export const SignalsScoutEvidenceEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source_product: S.String,
-    entity_id: S.optional(S.NullOr(S.String)),
-    summary: S.String,
-  }),
-).annotate({
-  identifier: "SignalsScoutEvidenceEntry",
-}) as any as S.Schema<SignalsScoutEvidenceEntry>;
-
 export type SignalsScoutSignalExtraEvidenceList = Array<SignalsScoutEvidenceEntry>;
-export const SignalsScoutSignalExtraEvidenceList = /*@__PURE__*/ S.Array(
-  SignalsScoutEvidenceEntry,
-) as any as S.Schema<SignalsScoutSignalExtraEvidenceList>;
-
 export type SignalsScoutSignalExtraDedupeKeysList = Array<string>;
-export const SignalsScoutSignalExtraDedupeKeysList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsScoutSignalExtraDedupeKeysList>;
-
 export type SignalsScoutSignalExtraTagsList = Array<string>;
-export const SignalsScoutSignalExtraTagsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsScoutSignalExtraTagsList>;
-
 export interface SignalsScoutTimeRange {
   date_from: string;
   date_to: string;
 }
-export const SignalsScoutTimeRange = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.String,
     date_to: S.String,
@@ -4034,24 +3781,6 @@ export interface SignalsScoutSignalExtra {
   time_range?: SignalsScoutTimeRange | null;
   mcp_trace_id?: string | null;
 }
-export const SignalsScoutSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scout_run_id: S.String,
-    task_run_id: S.String,
-    task_id: S.optional(S.NullOr(S.String)),
-    finding_id: S.String,
-    skill_name: S.String,
-    skill_version: S.Number,
-    severity: S.optional(S.NullOr(ReportPriority)),
-    hypothesis: S.optional(S.NullOr(S.String)),
-    evidence: SignalsScoutSignalExtraEvidenceList,
-    dedupe_keys: S.optional(S.NullOr(SignalsScoutSignalExtraDedupeKeysList)),
-    tags: S.optional(S.NullOr(SignalsScoutSignalExtraTagsList)),
-    time_range: S.optional(S.NullOr(SignalsScoutTimeRange)),
-    mcp_trace_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "SignalsScoutSignalExtra" }) as any as S.Schema<SignalsScoutSignalExtra>;
-
 export interface CheckFailedSignalExtra {
   check_id: string;
   report_id: string;
@@ -4061,28 +3790,9 @@ export interface CheckFailedSignalExtra {
   baseline_value?: number | null;
   threshold?: string | null;
 }
-export const CheckFailedSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check_id: S.String,
-    report_id: S.String,
-    check_title: S.String,
-    explanation: S.String,
-    observed_value: S.optional(S.NullOr(S.Number)),
-    baseline_value: S.optional(S.NullOr(S.Number)),
-    threshold: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "CheckFailedSignalExtra" }) as any as S.Schema<CheckFailedSignalExtra>;
-
 export type LogsAlertStateChangeSignalExtraActionEnum = "firing" | "broken";
-export const LogsAlertStateChangeSignalExtraActionEnum = S.String;
-
 export type LogsAlertStateChangeSignalExtraThresholdOperatorEnum = "above" | "below";
-export const LogsAlertStateChangeSignalExtraThresholdOperatorEnum = S.String;
-
 export type LogsAlertStateChangeSignalExtraFiltersMap = { [key: string]: unknown | undefined };
-export const LogsAlertStateChangeSignalExtraFiltersMap =
-  SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<LogsAlertStateChangeSignalExtraFiltersMap>;
-
 export interface LogsAlertStateChangeSignalExtra {
   alert_id: string;
   alert_name: string;
@@ -4095,23 +3805,6 @@ export interface LogsAlertStateChangeSignalExtra {
   filters: LogsAlertStateChangeSignalExtraFiltersMap;
   url: string;
 }
-export const LogsAlertStateChangeSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_id: S.String,
-    alert_name: S.String,
-    action: LogsAlertStateChangeSignalExtraActionEnum,
-    threshold_count: S.Number,
-    threshold_operator: LogsAlertStateChangeSignalExtraThresholdOperatorEnum,
-    window_minutes: S.Number,
-    result_count: S.NullOr(S.Number),
-    consecutive_failures: S.Number,
-    filters: LogsAlertStateChangeSignalExtraFiltersMap,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LogsAlertStateChangeSignalExtra",
-}) as any as S.Schema<LogsAlertStateChangeSignalExtra>;
-
 export interface ReplayVisionScannerFindingSignalExtra {
   scanner_id: string;
   scanner_name: string;
@@ -4130,37 +3823,9 @@ export interface ReplayVisionScannerFindingSignalExtra {
   recording_duration?: number | null;
   recording_active_seconds?: number | null;
 }
-export const ReplayVisionScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scanner_id: S.String,
-    scanner_name: S.String,
-    scanner_type: S.String,
-    observation_id: S.String,
-    session_id: S.String,
-    confidence: S.Number,
-    problem_type: S.String,
-    start_time: S.Number,
-    end_time: S.Number,
-    url: S.String,
-    exported_asset_id: S.Number,
-    distinct_id: S.optional(S.NullOr(S.String)),
-    recording_start_time: S.optional(S.NullOr(S.String)),
-    recording_end_time: S.optional(S.NullOr(S.String)),
-    recording_duration: S.optional(S.NullOr(S.Number)),
-    recording_active_seconds: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ReplayVisionScannerFindingSignalExtra",
-}) as any as S.Schema<ReplayVisionScannerFindingSignalExtra>;
-
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum = "true_positive" | "false_positive" | "inconclusive";
-export const InvestigationVerdictEnum = S.String;
-
 export type AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList = Array<string>;
-export const AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList>;
-
 export interface AnalyticsAnomalyInvestigationSignalExtra {
   alert_id: string;
   alert_name: string;
@@ -4174,33 +3839,8 @@ export interface AnalyticsAnomalyInvestigationSignalExtra {
   triggered_dates?: AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList | null;
   notebook_short_id?: string | null;
 }
-export const AnalyticsAnomalyInvestigationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_id: S.String,
-    alert_name: S.String,
-    alert_check_id: S.String,
-    insight_id: S.String,
-    detector_type: S.String,
-    verdict: InvestigationVerdictEnum,
-    url: S.String,
-    insight_name: S.optional(S.NullOr(S.String)),
-    insight_short_id: S.optional(S.NullOr(S.String)),
-    triggered_dates: S.optional(
-      S.NullOr(AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList),
-    ),
-    notebook_short_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AnalyticsAnomalyInvestigationSignalExtra",
-}) as any as S.Schema<AnalyticsAnomalyInvestigationSignalExtra>;
-
 export type HealthCheckSignalExtraSeverityEnum = "critical" | "warning" | "info";
-export const HealthCheckSignalExtraSeverityEnum = S.String;
-
 export type HealthCheckSignalExtraPayloadMap = { [key: string]: unknown | undefined };
-export const HealthCheckSignalExtraPayloadMap =
-  SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<HealthCheckSignalExtraPayloadMap>;
-
 export interface HealthCheckSignalExtra {
   kind: string;
   severity: HealthCheckSignalExtraSeverityEnum;
@@ -4211,19 +3851,6 @@ export interface HealthCheckSignalExtra {
   url: string;
   payload: HealthCheckSignalExtraPayloadMap;
 }
-export const HealthCheckSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    severity: HealthCheckSignalExtraSeverityEnum,
-    issue_id: S.String,
-    title: S.String,
-    summary: S.String,
-    link: S.String,
-    url: S.String,
-    payload: HealthCheckSignalExtraPayloadMap,
-  }),
-).annotate({ identifier: "HealthCheckSignalExtra" }) as any as S.Schema<HealthCheckSignalExtra>;
-
 /** One immutable flaky observation: failed then passed on a later attempt of the same run, so only non-determinism can explain the flip. */
 export interface EngineeringAnalyticsCIFlakyCheckSignalExtra {
   repo_owner: string;
@@ -4237,23 +3864,6 @@ export interface EngineeringAnalyticsCIFlakyCheckSignalExtra {
   flaky_count: number;
   window_days: number;
 }
-export const EngineeringAnalyticsCIFlakyCheckSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo_owner: S.String,
-    repo_name: S.String,
-    workflow_name: S.String,
-    job_name: S.String,
-    run_id: S.Number,
-    head_sha: S.String,
-    failed_attempt: S.Number,
-    passed_attempt: S.Number,
-    flaky_count: S.Number,
-    window_days: S.Number,
-  }),
-).annotate({
-  identifier: "EngineeringAnalyticsCIFlakyCheckSignalExtra",
-}) as any as S.Schema<EngineeringAnalyticsCIFlakyCheckSignalExtra>;
-
 export interface EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra {
   repo_owner: string;
   repo_name: string;
@@ -4264,21 +3874,6 @@ export interface EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra {
   latest_conclusion: string;
   window_hours: number;
 }
-export const EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo_owner: S.String,
-    repo_name: S.String,
-    workflow_name: S.String,
-    branch: S.String,
-    conclusive_success_rate: S.Number,
-    conclusive_run_count: S.Number,
-    latest_conclusion: S.String,
-    window_hours: S.Number,
-  }),
-).annotate({
-  identifier: "EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra",
-}) as any as S.Schema<EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra>;
-
 export interface EngineeringAnalyticsCIDurationRegressionSignalExtra {
   repo_owner: string;
   repo_name: string;
@@ -4290,26 +3885,7 @@ export interface EngineeringAnalyticsCIDurationRegressionSignalExtra {
   baseline_p50_seconds: number;
   window_days: number;
 }
-export const EngineeringAnalyticsCIDurationRegressionSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo_owner: S.String,
-    repo_name: S.String,
-    workflow_name: S.String,
-    current_p95_seconds: S.Number,
-    baseline_p95_seconds: S.Number,
-    pct_increase: S.Number,
-    current_p50_seconds: S.Number,
-    baseline_p50_seconds: S.Number,
-    window_days: S.Number,
-  }),
-).annotate({
-  identifier: "EngineeringAnalyticsCIDurationRegressionSignalExtra",
-}) as any as S.Schema<EngineeringAnalyticsCIDurationRegressionSignalExtra>;
-
 export type FreshdeskTicketSignalExtraTagsList = Array<unknown>;
-export const FreshdeskTicketSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<FreshdeskTicketSignalExtraTagsList>;
-
 export interface FreshdeskTicketSignalExtra {
   status: string | null;
   priority: string | null;
@@ -4317,22 +3893,7 @@ export interface FreshdeskTicketSignalExtra {
   tags: FreshdeskTicketSignalExtraTagsList;
   created_at: string | null;
 }
-export const FreshdeskTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    tags: FreshdeskTicketSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FreshdeskTicketSignalExtra",
-}) as any as S.Schema<FreshdeskTicketSignalExtra>;
-
 export type FreshserviceTicketSignalExtraTagsList = Array<unknown>;
-export const FreshserviceTicketSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<FreshserviceTicketSignalExtraTagsList>;
-
 export interface FreshserviceTicketSignalExtra {
   status: string | null;
   priority: string | null;
@@ -4341,42 +3902,13 @@ export interface FreshserviceTicketSignalExtra {
   tags: FreshserviceTicketSignalExtraTagsList;
   created_at: string | null;
 }
-export const FreshserviceTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    category: S.NullOr(S.String),
-    tags: FreshserviceTicketSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FreshserviceTicketSignalExtra",
-}) as any as S.Schema<FreshserviceTicketSignalExtra>;
-
 export type FrontConversationSignalExtraTagsList = Array<unknown>;
-export const FrontConversationSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<FrontConversationSignalExtraTagsList>;
-
 export interface FrontConversationSignalExtra {
   status: string | null;
   tags: FrontConversationSignalExtraTagsList;
   created_at: string | null;
 }
-export const FrontConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    tags: FrontConversationSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FrontConversationSignalExtra",
-}) as any as S.Schema<FrontConversationSignalExtra>;
-
 export type GorgiasTicketSignalExtraTagsList = Array<unknown>;
-export const GorgiasTicketSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<GorgiasTicketSignalExtraTagsList>;
-
 export interface GorgiasTicketSignalExtra {
   status: string | null;
   priority: string | null;
@@ -4384,81 +3916,28 @@ export interface GorgiasTicketSignalExtra {
   tags: GorgiasTicketSignalExtraTagsList;
   created_datetime: string | null;
 }
-export const GorgiasTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    channel: S.NullOr(S.String),
-    tags: GorgiasTicketSignalExtraTagsList,
-    created_datetime: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "GorgiasTicketSignalExtra" }) as any as S.Schema<GorgiasTicketSignalExtra>;
-
 export type KustomerConversationSignalExtraTagsList = Array<unknown>;
-export const KustomerConversationSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<KustomerConversationSignalExtraTagsList>;
-
 export interface KustomerConversationSignalExtra {
   status: string | null;
   priority: string | null;
   tags: KustomerConversationSignalExtraTagsList;
   createdAt: string | null;
 }
-export const KustomerConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    tags: KustomerConversationSignalExtraTagsList,
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "KustomerConversationSignalExtra",
-}) as any as S.Schema<KustomerConversationSignalExtra>;
-
 export type DixaConversationSignalExtraTagsList = Array<unknown>;
-export const DixaConversationSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<DixaConversationSignalExtraTagsList>;
-
 export interface DixaConversationSignalExtra {
   status: string | null;
   channel: string | null;
   tags: DixaConversationSignalExtraTagsList;
   created_at: string | null;
 }
-export const DixaConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    channel: S.NullOr(S.String),
-    tags: DixaConversationSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DixaConversationSignalExtra",
-}) as any as S.Schema<DixaConversationSignalExtra>;
-
 export type PlainThreadSignalExtraLabelsList = Array<unknown>;
-export const PlainThreadSignalExtraLabelsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<PlainThreadSignalExtraLabelsList>;
-
 export interface PlainThreadSignalExtra {
   status: string | null;
   priority: string | null;
   labels: PlainThreadSignalExtraLabelsList;
   createdAt: string | null;
 }
-export const PlainThreadSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    labels: PlainThreadSignalExtraLabelsList,
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "PlainThreadSignalExtra" }) as any as S.Schema<PlainThreadSignalExtra>;
-
 export type GitlabIssueSignalExtraLabelsList = Array<unknown>;
-export const GitlabIssueSignalExtraLabelsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<GitlabIssueSignalExtraLabelsList>;
-
 export interface GitlabIssueSignalExtra {
   state: string | null;
   labels: GitlabIssueSignalExtraLabelsList;
@@ -4466,20 +3945,7 @@ export interface GitlabIssueSignalExtra {
   project_id: string | null;
   created_at: string | null;
 }
-export const GitlabIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    labels: GitlabIssueSignalExtraLabelsList,
-    iid: S.NullOr(S.String),
-    project_id: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "GitlabIssueSignalExtra" }) as any as S.Schema<GitlabIssueSignalExtra>;
-
 export type GiteaIssueSignalExtraLabelsList = Array<unknown>;
-export const GiteaIssueSignalExtraLabelsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<GiteaIssueSignalExtraLabelsList>;
-
 export interface GiteaIssueSignalExtra {
   state: string | null;
   labels: GiteaIssueSignalExtraLabelsList;
@@ -4487,35 +3953,13 @@ export interface GiteaIssueSignalExtra {
   number: string | null;
   created_at: string | null;
 }
-export const GiteaIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    labels: GiteaIssueSignalExtraLabelsList,
-    html_url: S.NullOr(S.String),
-    number: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "GiteaIssueSignalExtra" }) as any as S.Schema<GiteaIssueSignalExtra>;
-
 export type ShortcutStorySignalExtraLabelsList = Array<unknown>;
-export const ShortcutStorySignalExtraLabelsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<ShortcutStorySignalExtraLabelsList>;
-
 export interface ShortcutStorySignalExtra {
   story_type: string | null;
   labels: ShortcutStorySignalExtraLabelsList;
   workflow_state_id: string | null;
   created_at: string | null;
 }
-export const ShortcutStorySignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    story_type: S.NullOr(S.String),
-    labels: ShortcutStorySignalExtraLabelsList,
-    workflow_state_id: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "ShortcutStorySignalExtra" }) as any as S.Schema<ShortcutStorySignalExtra>;
-
 export interface SentryIssueSignalExtra {
   level: string | null;
   status: string | null;
@@ -4523,16 +3967,6 @@ export interface SentryIssueSignalExtra {
   shortId: string | null;
   firstSeen: string | null;
 }
-export const SentryIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    permalink: S.NullOr(S.String),
-    shortId: S.NullOr(S.String),
-    firstSeen: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "SentryIssueSignalExtra" }) as any as S.Schema<SentryIssueSignalExtra>;
-
 export interface RollbarItemSignalExtra {
   level: string | null;
   status: string | null;
@@ -4540,16 +3974,6 @@ export interface RollbarItemSignalExtra {
   framework: string | null;
   last_occurrence_timestamp: string | null;
 }
-export const RollbarItemSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    environment: S.NullOr(S.String),
-    framework: S.NullOr(S.String),
-    last_occurrence_timestamp: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "RollbarItemSignalExtra" }) as any as S.Schema<RollbarItemSignalExtra>;
-
 export interface BugsnagErrorSignalExtra {
   severity: string | null;
   status: string | null;
@@ -4557,20 +3981,7 @@ export interface BugsnagErrorSignalExtra {
   first_seen: string | null;
   last_seen: string | null;
 }
-export const BugsnagErrorSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    context: S.NullOr(S.String),
-    first_seen: S.NullOr(S.String),
-    last_seen: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "BugsnagErrorSignalExtra" }) as any as S.Schema<BugsnagErrorSignalExtra>;
-
 export type HoneybadgerFaultSignalExtraTagsList = Array<unknown>;
-export const HoneybadgerFaultSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<HoneybadgerFaultSignalExtraTagsList>;
-
 export interface HoneybadgerFaultSignalExtra {
   environment: string | null;
   component: string | null;
@@ -4579,53 +3990,18 @@ export interface HoneybadgerFaultSignalExtra {
   url: string | null;
   created_at: string | null;
 }
-export const HoneybadgerFaultSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.NullOr(S.String),
-    component: S.NullOr(S.String),
-    action: S.NullOr(S.String),
-    tags: HoneybadgerFaultSignalExtraTagsList,
-    url: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "HoneybadgerFaultSignalExtra",
-}) as any as S.Schema<HoneybadgerFaultSignalExtra>;
-
 export interface RaygunErrorGroupSignalExtra {
   status: string | null;
   applicationUrl: string | null;
   lastOccurredAt: string | null;
   createdAt: string | null;
 }
-export const RaygunErrorGroupSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    applicationUrl: S.NullOr(S.String),
-    lastOccurredAt: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "RaygunErrorGroupSignalExtra",
-}) as any as S.Schema<RaygunErrorGroupSignalExtra>;
-
 export interface SnykScannerFindingSignalExtra {
   effective_severity_level: string | null;
   status: string | null;
   type: string | null;
   created_at: string | null;
 }
-export const SnykScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effective_severity_level: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SnykScannerFindingSignalExtra",
-}) as any as S.Schema<SnykScannerFindingSignalExtra>;
-
 export interface SonarqubeScannerFindingSignalExtra {
   severity: string | null;
   type: string | null;
@@ -4634,19 +4010,6 @@ export interface SonarqubeScannerFindingSignalExtra {
   rule: string | null;
   creationDate: string | null;
 }
-export const SonarqubeScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    component: S.NullOr(S.String),
-    rule: S.NullOr(S.String),
-    creationDate: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SonarqubeScannerFindingSignalExtra",
-}) as any as S.Schema<SonarqubeScannerFindingSignalExtra>;
-
 export interface SemgrepScannerFindingSignalExtra {
   severity: string | null;
   confidence: string | null;
@@ -4654,75 +4017,26 @@ export interface SemgrepScannerFindingSignalExtra {
   state: string | null;
   created_at: string | null;
 }
-export const SemgrepScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    confidence: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    state: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SemgrepScannerFindingSignalExtra",
-}) as any as S.Schema<SemgrepScannerFindingSignalExtra>;
-
 export interface Rapid7InsightvmScannerFindingSignalExtra {
   severity: string | null;
   cvss_v3_score: string | null;
   published: string | null;
   added: string | null;
 }
-export const Rapid7InsightvmScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    cvss_v3_score: S.NullOr(S.String),
-    published: S.NullOr(S.String),
-    added: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "Rapid7InsightvmScannerFindingSignalExtra",
-}) as any as S.Schema<Rapid7InsightvmScannerFindingSignalExtra>;
-
 export type FeaturebaseFeedbackSignalExtraTagsList = Array<unknown>;
-export const FeaturebaseFeedbackSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<FeaturebaseFeedbackSignalExtraTagsList>;
-
 export interface FeaturebaseFeedbackSignalExtra {
   status: string | null;
   tags: FeaturebaseFeedbackSignalExtraTagsList;
   upvotes: string | null;
   createdAt: string | null;
 }
-export const FeaturebaseFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    tags: FeaturebaseFeedbackSignalExtraTagsList,
-    upvotes: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FeaturebaseFeedbackSignalExtra",
-}) as any as S.Schema<FeaturebaseFeedbackSignalExtra>;
-
 export type FrillFeedbackSignalExtraTopicsList = Array<unknown>;
-export const FrillFeedbackSignalExtraTopicsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<FrillFeedbackSignalExtraTopicsList>;
-
 export interface FrillFeedbackSignalExtra {
   status: string | null;
   vote_count: string | null;
   topics: FrillFeedbackSignalExtraTopicsList;
   created_at: string | null;
 }
-export const FrillFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    vote_count: S.NullOr(S.String),
-    topics: FrillFeedbackSignalExtraTopicsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "FrillFeedbackSignalExtra" }) as any as S.Schema<FrillFeedbackSignalExtra>;
-
 export interface AhaFeedbackSignalExtra {
   workflow_status: string | null;
   score: string | null;
@@ -4730,58 +4044,20 @@ export interface AhaFeedbackSignalExtra {
   url: string | null;
   created_at: string | null;
 }
-export const AhaFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflow_status: S.NullOr(S.String),
-    score: S.NullOr(S.String),
-    votes: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "AhaFeedbackSignalExtra" }) as any as S.Schema<AhaFeedbackSignalExtra>;
-
 export interface UservoiceFeedbackSignalExtra {
   state: string | null;
   vote_count: string | null;
   category_name: string | null;
   created_at: string | null;
 }
-export const UservoiceFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    vote_count: S.NullOr(S.String),
-    category_name: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UservoiceFeedbackSignalExtra",
-}) as any as S.Schema<UservoiceFeedbackSignalExtra>;
-
 export type ProductboardFeedbackSignalExtraTagsList = Array<unknown>;
-export const ProductboardFeedbackSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<ProductboardFeedbackSignalExtraTagsList>;
-
 export interface ProductboardFeedbackSignalExtra {
   state: string | null;
   tags: ProductboardFeedbackSignalExtraTagsList;
   displayUrl: string | null;
   createdAt: string | null;
 }
-export const ProductboardFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    tags: ProductboardFeedbackSignalExtraTagsList,
-    displayUrl: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ProductboardFeedbackSignalExtra",
-}) as any as S.Schema<ProductboardFeedbackSignalExtra>;
-
 export type CannyFeedbackSignalExtraTagsList = Array<unknown>;
-export const CannyFeedbackSignalExtraTagsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<CannyFeedbackSignalExtraTagsList>;
-
 export interface CannyFeedbackSignalExtra {
   status: string | null;
   tags: CannyFeedbackSignalExtraTagsList;
@@ -4790,17 +4066,6 @@ export interface CannyFeedbackSignalExtra {
   url: string | null;
   created: string | null;
 }
-export const CannyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    tags: CannyFeedbackSignalExtraTagsList,
-    score: S.NullOr(S.String),
-    voteCount: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-    created: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "CannyFeedbackSignalExtra" }) as any as S.Schema<CannyFeedbackSignalExtra>;
-
 export interface AsknicelyFeedbackSignalExtra {
   score: string | null;
   status: string | null;
@@ -4808,22 +4073,7 @@ export interface AsknicelyFeedbackSignalExtra {
   segment: string | null;
   created: string | null;
 }
-export const AsknicelyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    question_type: S.NullOr(S.String),
-    segment: S.NullOr(S.String),
-    created: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AsknicelyFeedbackSignalExtra",
-}) as any as S.Schema<AsknicelyFeedbackSignalExtra>;
-
 export type RetentlyFeedbackSignalExtraFeedbackTopicsList = Array<unknown>;
-export const RetentlyFeedbackSignalExtraFeedbackTopicsList =
-  SignalReportArtefactContentCase1List as any as S.Schema<RetentlyFeedbackSignalExtraFeedbackTopicsList>;
-
 export interface RetentlyFeedbackSignalExtra {
   score: string | null;
   ratingCategory: string | null;
@@ -4831,101 +4081,36 @@ export interface RetentlyFeedbackSignalExtra {
   resolved: string | null;
   createdDate: string | null;
 }
-export const RetentlyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.NullOr(S.String),
-    ratingCategory: S.NullOr(S.String),
-    feedbackTopics: RetentlyFeedbackSignalExtraFeedbackTopicsList,
-    resolved: S.NullOr(S.String),
-    createdDate: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "RetentlyFeedbackSignalExtra",
-}) as any as S.Schema<RetentlyFeedbackSignalExtra>;
-
 export interface AppfiguresReviewSignalExtra {
   stars: string | null;
   version: string | null;
   product: string | null;
   date: string | null;
 }
-export const AppfiguresReviewSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stars: S.NullOr(S.String),
-    version: S.NullOr(S.String),
-    product: S.NullOr(S.String),
-    date: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AppfiguresReviewSignalExtra",
-}) as any as S.Schema<AppfiguresReviewSignalExtra>;
-
 export interface AppfollowReviewSignalExtra {
   rating: string | null;
   store: string | null;
   app_version: string | null;
   date: string | null;
 }
-export const AppfollowReviewSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rating: S.NullOr(S.String),
-    store: S.NullOr(S.String),
-    app_version: S.NullOr(S.String),
-    date: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AppfollowReviewSignalExtra",
-}) as any as S.Schema<AppfollowReviewSignalExtra>;
-
 export interface JudgemeReviewsReviewSignalExtra {
   rating: string | null;
   product_title: string | null;
   verified: string | null;
   created_at: string | null;
 }
-export const JudgemeReviewsReviewSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rating: S.NullOr(S.String),
-    product_title: S.NullOr(S.String),
-    verified: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "JudgemeReviewsReviewSignalExtra",
-}) as any as S.Schema<JudgemeReviewsReviewSignalExtra>;
-
 export interface IntercomTicketSignalExtra {
   state: string | null;
   priority: string | null;
   admin_assignee_id: string | null;
   created_at: string | null;
 }
-export const IntercomTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    admin_assignee_id: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "IntercomTicketSignalExtra",
-}) as any as S.Schema<IntercomTicketSignalExtra>;
-
 export interface HubspotTicketSignalExtra {
   hs_ticket_priority: string | null;
   hs_pipeline_stage: string | null;
   hs_ticket_category: string | null;
   createdate: string | null;
 }
-export const HubspotTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hs_ticket_priority: S.NullOr(S.String),
-    hs_pipeline_stage: S.NullOr(S.String),
-    hs_ticket_category: S.NullOr(S.String),
-    createdate: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "HubspotTicketSignalExtra" }) as any as S.Schema<HubspotTicketSignalExtra>;
-
 export interface GoogleSearchConsoleSearchOpportunitySignalExtra {
   page: string;
   query: string;
@@ -4935,20 +4120,6 @@ export interface GoogleSearchConsoleSearchOpportunitySignalExtra {
   ctr: number;
   position: number;
 }
-export const GoogleSearchConsoleSearchOpportunitySignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    page: S.String,
-    query: S.String,
-    date: S.String,
-    clicks: S.Number,
-    impressions: S.Number,
-    ctr: S.Number,
-    position: S.Number,
-  }),
-).annotate({
-  identifier: "GoogleSearchConsoleSearchOpportunitySignalExtra",
-}) as any as S.Schema<GoogleSearchConsoleSearchOpportunitySignalExtra>;
-
 export type SignalExtra =
   | SessionProblemSignalExtra
   | LlmEvalSignalExtra
@@ -5004,7 +4175,7 @@ export type SignalExtra =
   | IntercomTicketSignalExtra
   | HubspotTicketSignalExtra
   | GoogleSearchConsoleSearchOpportunitySignalExtra;
-export const SignalExtra = S.Unknown as any as S.Schema<SignalExtra>;
+const SignalExtra = S.Unknown as any as S.Schema<SignalExtra>;
 
 export interface SpecificityMetadata {
   /** Title of the PR the specificity gate evaluated. */
@@ -5014,14 +4185,6 @@ export interface SpecificityMetadata {
   /** The gate's reasoning. */
   reason: string;
 }
-export const SpecificityMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pr_title: S.String,
-    specific_enough: S.Boolean,
-    reason: S.String,
-  }),
-).annotate({ identifier: "SpecificityMetadata" }) as any as S.Schema<SpecificityMetadata>;
-
 export interface MatchedMetadata {
   /** Signal already in the report that this one matched. */
   parent_signal_id: string;
@@ -5032,20 +4195,8 @@ export interface MatchedMetadata {
   /** PR-specificity gate result, when the gate ran. */
   specificity?: SpecificityMetadata | null;
 }
-export const MatchedMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent_signal_id: S.String,
-    match_query: S.String,
-    reason: S.String,
-    specificity: S.optional(S.NullOr(SpecificityMetadata)),
-  }),
-).annotate({ identifier: "MatchedMetadata" }) as any as S.Schema<MatchedMetadata>;
-
 /** Candidate signals that were considered and rejected. */
 export type NoMatchMetadataRejectedSignalIdsList = Array<string>;
-export const NoMatchMetadataRejectedSignalIdsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<NoMatchMetadataRejectedSignalIdsList>;
-
 export interface NoMatchMetadata {
   /** Why no existing report matched. */
   reason: string;
@@ -5054,16 +4205,8 @@ export interface NoMatchMetadata {
   /** PR-specificity gate result that caused a rejection, when present. */
   specificity_rejection?: SpecificityMetadata | null;
 }
-export const NoMatchMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.String,
-    rejected_signal_ids: NoMatchMetadataRejectedSignalIdsList,
-    specificity_rejection: S.optional(S.NullOr(SpecificityMetadata)),
-  }),
-).annotate({ identifier: "NoMatchMetadata" }) as any as S.Schema<NoMatchMetadata>;
-
 export type SignalMatchMetadata = MatchedMetadata | NoMatchMetadata;
-export const SignalMatchMetadata = S.Unknown as any as S.Schema<SignalMatchMetadata>;
+const SignalMatchMetadata = S.Unknown as any as S.Schema<SignalMatchMetadata>;
 
 export interface SignalNode {
   /** ClickHouse document id of the signal. */
@@ -5085,7 +4228,7 @@ export interface SignalNode {
   /** Clustering match/no-match metadata, when present. */
   match_metadata?: SignalMatchMetadata | null;
 }
-export const SignalNode = /*@__PURE__*/ S.suspend(() =>
+const SignalNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signal_id: S.String,
     content: S.String,
@@ -5101,7 +4244,7 @@ export const SignalNode = /*@__PURE__*/ S.suspend(() =>
 
 /** All signals contributing to the report. */
 export type ReportSignalsResponseSignalsList = Array<SignalNode>;
-export const ReportSignalsResponseSignalsList = /*@__PURE__*/ S.Array(
+const ReportSignalsResponseSignalsList = /*@__PURE__*/ S.Array(
   SignalNode,
 ) as any as S.Schema<ReportSignalsResponseSignalsList>;
 
@@ -5112,7 +4255,7 @@ export interface ReportSignalsResponse {
   /** All signals contributing to the report. */
   signals: ReportSignalsResponseSignalsList;
 }
-export const ReportSignalsResponse = /*@__PURE__*/ S.suspend(() =>
+const ReportSignalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report: SignalReport,
     signals: ReportSignalsResponseSignalsList,
@@ -5127,7 +4270,7 @@ export interface GetSignalsScoutConfigTrialComparisonRequest {
   /** Saved comparison identity. */
   comparison_id: string;
 }
-export const GetSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -5145,7 +4288,7 @@ export const GetSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspe
 
 /** Scout runs in this variant. */
 export type ScoutTrialComparisonVariantLaunchIdsList = Array<string>;
-export const ScoutTrialComparisonVariantLaunchIdsList =
+const ScoutTrialComparisonVariantLaunchIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutTrialComparisonVariantLaunchIdsList>;
 
 export interface ScoutTrialComparisonVariant {
@@ -5162,7 +4305,7 @@ export interface ScoutTrialComparisonVariant {
   /** Hash of the saved scout instructions. */
   skill_body_sha256: string;
 }
-export const ScoutTrialComparisonVariant = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialComparisonVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     label: S.String,
@@ -5177,7 +4320,7 @@ export const ScoutTrialComparisonVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Saved variant groups and runtime settings. */
 export type ScoutTrialComparisonVariantsList = Array<ScoutTrialComparisonVariant>;
-export const ScoutTrialComparisonVariantsList = /*@__PURE__*/ S.Array(
+const ScoutTrialComparisonVariantsList = /*@__PURE__*/ S.Array(
   ScoutTrialComparisonVariant,
 ) as any as S.Schema<ScoutTrialComparisonVariantsList>;
 
@@ -5190,11 +4333,11 @@ export type ScoutTrialComparisonStatusEnum =
   | "completed"
   | "failed"
   | "unknown";
-export const ScoutTrialComparisonStatusEnum = S.String;
+const ScoutTrialComparisonStatusEnum = S.String;
 
 /** Up to 20 variant groups, each with up to 20 trial runs. */
 export type ScoutTrialEvaluationRequestVariantsList = Array<ScoutTrialEvaluationVariant>;
-export const ScoutTrialEvaluationRequestVariantsList =
+const ScoutTrialEvaluationRequestVariantsList =
   CreateSignalsScoutConfigTrialEvaluationRequestVariantsList as any as S.Schema<ScoutTrialEvaluationRequestVariantsList>;
 
 export interface ScoutTrialEvaluationRequest {
@@ -5207,7 +4350,7 @@ export interface ScoutTrialEvaluationRequest {
   /** Judge every run against the scout's saved rubric, frozen when the trial starts. * `saved` - Saved */
   rubric_source: TrialRubricSourceEnum;
 }
-export const ScoutTrialEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluation_id: S.String,
     baseline_variant_id: S.String,
@@ -5226,13 +4369,13 @@ export type TrialEvaluationStatusEnum =
   | "failed"
   | "unknown"
   | "not_started";
-export const TrialEvaluationStatusEnum = S.String;
+const TrialEvaluationStatusEnum = S.String;
 
 export type TrialComparisonOutcomeStatusEnum = "winner" | "tie" | "inconclusive";
-export const TrialComparisonOutcomeStatusEnum = S.String;
+const TrialComparisonOutcomeStatusEnum = S.String;
 
 export type TrialComparisonOutcomeVariantIdsList = Array<string>;
-export const TrialComparisonOutcomeVariantIdsList =
+const TrialComparisonOutcomeVariantIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<TrialComparisonOutcomeVariantIdsList>;
 
 export interface TrialComparisonOutcome {
@@ -5240,7 +4383,7 @@ export interface TrialComparisonOutcome {
   variant_ids?: TrialComparisonOutcomeVariantIdsList;
   summary: string;
 }
-export const TrialComparisonOutcome = /*@__PURE__*/ S.suspend(() =>
+const TrialComparisonOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: TrialComparisonOutcomeStatusEnum,
     variant_ids: S.optional(TrialComparisonOutcomeVariantIdsList),
@@ -5249,10 +4392,10 @@ export const TrialComparisonOutcome = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialComparisonOutcome" }) as any as S.Schema<TrialComparisonOutcome>;
 
 export type ScoutRubricReportChannel = "none" | "emit" | "edit" | "both";
-export const ScoutRubricReportChannel = S.String;
+const ScoutRubricReportChannel = S.String;
 
 export type ScoutRubricReferenceContextReferenceFilesList = Array<string>;
-export const ScoutRubricReferenceContextReferenceFilesList =
+const ScoutRubricReferenceContextReferenceFilesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutRubricReferenceContextReferenceFilesList>;
 
 export interface ScoutRubricReferenceText {
@@ -5260,7 +4403,7 @@ export interface ScoutRubricReferenceText {
   content_type: string;
   content: string;
 }
-export const ScoutRubricReferenceText = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricReferenceText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     content_type: S.String,
@@ -5269,19 +4412,19 @@ export const ScoutRubricReferenceText = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScoutRubricReferenceText" }) as any as S.Schema<ScoutRubricReferenceText>;
 
 export type ScoutRubricReferenceContextReferenceTextsList = Array<ScoutRubricReferenceText>;
-export const ScoutRubricReferenceContextReferenceTextsList = /*@__PURE__*/ S.Array(
+const ScoutRubricReferenceContextReferenceTextsList = /*@__PURE__*/ S.Array(
   ScoutRubricReferenceText,
 ) as any as S.Schema<ScoutRubricReferenceContextReferenceTextsList>;
 
 export type ScoutRubricReferenceLimitsTruncatedFilesList = Array<string>;
-export const ScoutRubricReferenceLimitsTruncatedFilesList =
+const ScoutRubricReferenceLimitsTruncatedFilesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutRubricReferenceLimitsTruncatedFilesList>;
 
 export interface ScoutRubricReferenceLimits {
   omitted_files: number;
   truncated_files: ScoutRubricReferenceLimitsTruncatedFilesList;
 }
-export const ScoutRubricReferenceLimits = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricReferenceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     omitted_files: S.Number,
     truncated_files: ScoutRubricReferenceLimitsTruncatedFilesList,
@@ -5305,7 +4448,7 @@ export interface ScoutRubricReferenceContext {
   reference_texts: ScoutRubricReferenceContextReferenceTextsList;
   reference_limits: ScoutRubricReferenceLimits;
 }
-export const ScoutRubricReferenceContext = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricReferenceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema_version: S.optional(S.Number),
     skill_id: S.String,
@@ -5332,7 +4475,7 @@ export interface TrialEvaluationCriterion {
   pass_condition: string;
   applicability: string;
 }
-export const TrialEvaluationCriterion = /*@__PURE__*/ S.suspend(() =>
+const TrialEvaluationCriterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -5343,7 +4486,7 @@ export const TrialEvaluationCriterion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialEvaluationCriterion" }) as any as S.Schema<TrialEvaluationCriterion>;
 
 export type TrialComparisonReportCriteriaList = Array<TrialEvaluationCriterion>;
-export const TrialComparisonReportCriteriaList = /*@__PURE__*/ S.Array(
+const TrialComparisonReportCriteriaList = /*@__PURE__*/ S.Array(
   TrialEvaluationCriterion,
 ) as any as S.Schema<TrialComparisonReportCriteriaList>;
 
@@ -5357,7 +4500,7 @@ export interface TrialCriterionAggregate {
   coverage: number | null;
   baseline_delta?: number | null;
 }
-export const TrialCriterionAggregate = /*@__PURE__*/ S.suspend(() =>
+const TrialCriterionAggregate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criterion_id: S.String,
     passed: S.Number,
@@ -5371,7 +4514,7 @@ export const TrialCriterionAggregate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialCriterionAggregate" }) as any as S.Schema<TrialCriterionAggregate>;
 
 export type TrialVariantAggregateCriteriaList = Array<TrialCriterionAggregate>;
-export const TrialVariantAggregateCriteriaList = /*@__PURE__*/ S.Array(
+const TrialVariantAggregateCriteriaList = /*@__PURE__*/ S.Array(
   TrialCriterionAggregate,
 ) as any as S.Schema<TrialVariantAggregateCriteriaList>;
 
@@ -5388,7 +4531,7 @@ export interface TrialVariantAggregate {
   baseline_delta?: number | null;
   criteria: TrialVariantAggregateCriteriaList;
 }
-export const TrialVariantAggregate = /*@__PURE__*/ S.suspend(() =>
+const TrialVariantAggregate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variant_id: S.String,
     label: S.String,
@@ -5405,21 +4548,21 @@ export const TrialVariantAggregate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialVariantAggregate" }) as any as S.Schema<TrialVariantAggregate>;
 
 export type TrialComparisonReportVariantsList = Array<TrialVariantAggregate>;
-export const TrialComparisonReportVariantsList = /*@__PURE__*/ S.Array(
+const TrialComparisonReportVariantsList = /*@__PURE__*/ S.Array(
   TrialVariantAggregate,
 ) as any as S.Schema<TrialComparisonReportVariantsList>;
 
 export type TrialRunJudgmentStatusEnum = "judged" | "excluded" | "judge_error";
-export const TrialRunJudgmentStatusEnum = S.String;
+const TrialRunJudgmentStatusEnum = S.String;
 
 export type TrialCriterionVerdictVerdictEnum = "pass" | "fail" | "unknown" | "not_applicable";
-export const TrialCriterionVerdictVerdictEnum = S.String;
+const TrialCriterionVerdictVerdictEnum = S.String;
 
 export interface TrialCriterionEvidence {
   source_id: string;
   quote: string;
 }
-export const TrialCriterionEvidence = /*@__PURE__*/ S.suspend(() =>
+const TrialCriterionEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_id: S.String,
     quote: S.String,
@@ -5427,7 +4570,7 @@ export const TrialCriterionEvidence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialCriterionEvidence" }) as any as S.Schema<TrialCriterionEvidence>;
 
 export type TrialCriterionVerdictEvidenceList = Array<TrialCriterionEvidence>;
-export const TrialCriterionVerdictEvidenceList = /*@__PURE__*/ S.Array(
+const TrialCriterionVerdictEvidenceList = /*@__PURE__*/ S.Array(
   TrialCriterionEvidence,
 ) as any as S.Schema<TrialCriterionVerdictEvidenceList>;
 
@@ -5438,7 +4581,7 @@ export interface TrialCriterionVerdict {
   confidence: ConfidenceTierEnum;
   evidence: TrialCriterionVerdictEvidenceList;
 }
-export const TrialCriterionVerdict = /*@__PURE__*/ S.suspend(() =>
+const TrialCriterionVerdict = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criterion_id: S.String,
     verdict: TrialCriterionVerdictVerdictEnum,
@@ -5449,7 +4592,7 @@ export const TrialCriterionVerdict = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialCriterionVerdict" }) as any as S.Schema<TrialCriterionVerdict>;
 
 export type TrialRunJudgmentCriteriaList = Array<TrialCriterionVerdict>;
-export const TrialRunJudgmentCriteriaList = /*@__PURE__*/ S.Array(
+const TrialRunJudgmentCriteriaList = /*@__PURE__*/ S.Array(
   TrialCriterionVerdict,
 ) as any as S.Schema<TrialRunJudgmentCriteriaList>;
 
@@ -5465,7 +4608,7 @@ export interface TrialRunJudgment {
   input_tokens?: number | null;
   output_tokens?: number | null;
 }
-export const TrialRunJudgment = /*@__PURE__*/ S.suspend(() =>
+const TrialRunJudgment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     launch_id: S.String,
     variant_id: S.String,
@@ -5481,13 +4624,13 @@ export const TrialRunJudgment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialRunJudgment" }) as any as S.Schema<TrialRunJudgment>;
 
 export type TrialComparisonReportRunsList = Array<TrialRunJudgment>;
-export const TrialComparisonReportRunsList = /*@__PURE__*/ S.Array(
+const TrialComparisonReportRunsList = /*@__PURE__*/ S.Array(
   TrialRunJudgment,
 ) as any as S.Schema<TrialComparisonReportRunsList>;
 
 /** * `claude` - claude * `codex` - codex */
 export type RuntimeAdapterEnum = "claude" | "codex";
-export const RuntimeAdapterEnum = S.String;
+const RuntimeAdapterEnum = S.String;
 
 export type TrialEvidenceSourceKindEnum =
   | "instructions"
@@ -5496,7 +4639,7 @@ export type TrialEvidenceSourceKindEnum =
   | "report"
   | "memory"
   | "trace";
-export const TrialEvidenceSourceKindEnum = S.String;
+const TrialEvidenceSourceKindEnum = S.String;
 
 export interface TrialEvidenceFile {
   id: string;
@@ -5505,7 +4648,7 @@ export interface TrialEvidenceFile {
   sha256: string;
   size_bytes: number;
 }
-export const TrialEvidenceFile = /*@__PURE__*/ S.suspend(() =>
+const TrialEvidenceFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: TrialEvidenceSourceKindEnum,
@@ -5516,7 +4659,7 @@ export const TrialEvidenceFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialEvidenceFile" }) as any as S.Schema<TrialEvidenceFile>;
 
 export type TrialRunEvidenceFilesList = Array<TrialEvidenceFile>;
-export const TrialRunEvidenceFilesList = /*@__PURE__*/ S.Array(
+const TrialRunEvidenceFilesList = /*@__PURE__*/ S.Array(
   TrialEvidenceFile,
 ) as any as S.Schema<TrialRunEvidenceFilesList>;
 
@@ -5525,7 +4668,7 @@ export interface TrialEvidenceSource {
   kind: TrialEvidenceSourceKindEnum;
   text: string;
 }
-export const TrialEvidenceSource = /*@__PURE__*/ S.suspend(() =>
+const TrialEvidenceSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: TrialEvidenceSourceKindEnum,
@@ -5534,12 +4677,12 @@ export const TrialEvidenceSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialEvidenceSource" }) as any as S.Schema<TrialEvidenceSource>;
 
 export type TrialRunEvidenceSourcesList = Array<TrialEvidenceSource>;
-export const TrialRunEvidenceSourcesList = /*@__PURE__*/ S.Array(
+const TrialRunEvidenceSourcesList = /*@__PURE__*/ S.Array(
   TrialEvidenceSource,
 ) as any as S.Schema<TrialRunEvidenceSourcesList>;
 
 export type TrialRunEvidenceLimitationsList = Array<string>;
-export const TrialRunEvidenceLimitationsList =
+const TrialRunEvidenceLimitationsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<TrialRunEvidenceLimitationsList>;
 
 export interface TrialRunEvidence {
@@ -5561,7 +4704,7 @@ export interface TrialRunEvidence {
   sources?: TrialRunEvidenceSourcesList;
   limitations?: TrialRunEvidenceLimitationsList;
 }
-export const TrialRunEvidence = /*@__PURE__*/ S.suspend(() =>
+const TrialRunEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     launch_id: S.String,
     variant_id: S.String,
@@ -5584,12 +4727,12 @@ export const TrialRunEvidence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrialRunEvidence" }) as any as S.Schema<TrialRunEvidence>;
 
 export type TrialComparisonReportEvidenceList = Array<TrialRunEvidence>;
-export const TrialComparisonReportEvidenceList = /*@__PURE__*/ S.Array(
+const TrialComparisonReportEvidenceList = /*@__PURE__*/ S.Array(
   TrialRunEvidence,
 ) as any as S.Schema<TrialComparisonReportEvidenceList>;
 
 export type TrialComparisonReportLimitationsList = Array<string>;
-export const TrialComparisonReportLimitationsList =
+const TrialComparisonReportLimitationsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<TrialComparisonReportLimitationsList>;
 
 export interface TrialComparisonReport {
@@ -5613,7 +4756,7 @@ export interface TrialComparisonReport {
   evidence: TrialComparisonReportEvidenceList;
   limitations: TrialComparisonReportLimitationsList;
 }
-export const TrialComparisonReport = /*@__PURE__*/ S.suspend(() =>
+const TrialComparisonReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     evaluation_id: S.String,
@@ -5651,7 +4794,7 @@ export interface ScoutTrialEvaluation {
   /** Saved comparison scores and their supporting evidence. */
   report: TrialComparisonReport | null;
 }
-export const ScoutTrialEvaluation = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request: ScoutTrialEvaluationRequest,
     evaluation_id: S.String,
@@ -5684,7 +4827,7 @@ export interface ScoutTrialComparison {
   /** Saved evaluation and report when available. */
   evaluation: ScoutTrialEvaluation | null;
 }
-export const ScoutTrialComparison = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comparison_id: S.String,
     config_id: S.String,
@@ -5707,7 +4850,7 @@ export interface GetSignalsScoutConfigTrialEvaluationRequest {
   /** Saved evaluation identity to inspect without starting a judge. */
   evaluation_id: string;
 }
-export const GetSignalsScoutConfigTrialEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsScoutConfigTrialEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -5727,7 +4870,7 @@ export interface GetSignalsScoutMetadataRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetSignalsScoutMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsScoutMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -5754,7 +4897,7 @@ export interface ScoutLimits {
   /** Most scouts the project can have switched on at once. Enabling another past this is rejected. */
   max_enabled_scouts: number;
 }
-export const ScoutLimits = /*@__PURE__*/ S.suspend(() =>
+const ScoutLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max_runs_per_tick: S.Number,
     max_runs_per_day: S.NullOr(S.Number),
@@ -5773,7 +4916,7 @@ export interface ScoutMetadata {
   /** The team's enforced scout run caps and current usage. */
   limits: ScoutLimits;
 }
-export const ScoutMetadata = /*@__PURE__*/ S.suspend(() =>
+const ScoutMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enrolled: S.Boolean,
     banner_message: S.NullOr(S.String),
@@ -5791,7 +4934,7 @@ export interface GetSignalsScoutProjectProfileRequest {
   /** When true, respond with the cache metadata and the `summary` envelope only, and omit `payload` entirely. Use it when you need the emit gate and the inbox counts but not the full inventory. The full profile runs to tens of kilobytes, which a client can truncate. Costs nothing extra: the profile is read or built the same way either way. */
   summary_only?: boolean;
 }
-export const GetSignalsScoutProjectProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsScoutProjectProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     force_refresh: S.optional(S.Boolean.pipe(T.Query())),
@@ -5823,7 +4966,7 @@ export interface EmitEligibility {
   /** One-line next step to unblock writes when `can_emit` is False; null when writes can flow. */
   remediation: string | null;
 }
-export const EmitEligibility = /*@__PURE__*/ S.suspend(() =>
+const EmitEligibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ai_processing_approved: S.Boolean,
     source_enabled: S.Boolean,
@@ -5841,7 +4984,7 @@ export interface InboxReportStatusBucket {
   /** Number of reports in this status (excludes deleted/suppressed). */
   count: number;
 }
-export const InboxReportStatusBucket = /*@__PURE__*/ S.suspend(() =>
+const InboxReportStatusBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     count: S.Number,
@@ -5850,7 +4993,7 @@ export const InboxReportStatusBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-status breakdown of inbox reports. */
 export type ExistingInboxReportsByStatusList = Array<InboxReportStatusBucket>;
-export const ExistingInboxReportsByStatusList = /*@__PURE__*/ S.Array(
+const ExistingInboxReportsByStatusList = /*@__PURE__*/ S.Array(
   InboxReportStatusBucket,
 ) as any as S.Schema<ExistingInboxReportsByStatusList>;
 
@@ -5861,7 +5004,7 @@ export interface ExistingInboxReports {
   /** Per-status breakdown of inbox reports. */
   by_status: ExistingInboxReportsByStatusList;
 }
-export const ExistingInboxReports = /*@__PURE__*/ S.suspend(() =>
+const ExistingInboxReports = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     by_status: ExistingInboxReportsByStatusList,
@@ -5875,7 +5018,7 @@ export interface ProjectProfileSummary {
   /** Counts of reports already in the inbox, grouped by status, which is what a new finding would be deduped against. Null for a stored profile built before this section existed. */
   existing_inbox_reports: ExistingInboxReports | null;
 }
-export const ProjectProfileSummary = /*@__PURE__*/ S.suspend(() =>
+const ProjectProfileSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emit_eligibility: S.NullOr(EmitEligibility),
     existing_inbox_reports: S.NullOr(ExistingInboxReports),
@@ -5884,7 +5027,7 @@ export const ProjectProfileSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`. */
 export type ProjectContextAppUrlsList = Array<string>;
-export const ProjectContextAppUrlsList =
+const ProjectContextAppUrlsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ProjectContextAppUrlsList>;
 
 /** `inventory.project_context` -- free-form orientation about the project's product. */
@@ -5894,7 +5037,7 @@ export interface ProjectContext {
   /** Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`. */
   app_urls: ProjectContextAppUrlsList;
 }
-export const ProjectContext = /*@__PURE__*/ S.suspend(() =>
+const ProjectContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_description: S.NullOr(S.String),
     app_urls: ProjectContextAppUrlsList,
@@ -5903,7 +5046,7 @@ export const ProjectContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Product keys this team has completed onboarding for, sorted alphabetically. */
 export type ProjectProfileInventoryProductsInUseList = Array<string>;
-export const ProjectProfileInventoryProductsInUseList =
+const ProjectProfileInventoryProductsInUseList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ProjectProfileInventoryProductsInUseList>;
 
 /** One row in `inventory.product_intents`. */
@@ -5915,7 +5058,7 @@ export interface ProductIntentEntry {
   /** ISO-8601 timestamp the intent was first recorded. */
   created_at: string | null;
 }
-export const ProductIntentEntry = /*@__PURE__*/ S.suspend(() =>
+const ProductIntentEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_type: S.String,
     activated_at: S.NullOr(S.String),
@@ -5925,7 +5068,7 @@ export const ProductIntentEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Products the team signaled intent to use; useful for spotting stuck onboardings. */
 export type ProjectProfileInventoryProductIntentsList = Array<ProductIntentEntry>;
-export const ProjectProfileInventoryProductIntentsList = /*@__PURE__*/ S.Array(
+const ProjectProfileInventoryProductIntentsList = /*@__PURE__*/ S.Array(
   ProductIntentEntry,
 ) as any as S.Schema<ProjectProfileInventoryProductIntentsList>;
 
@@ -5936,7 +5079,7 @@ export interface IntegrationEntry {
   /** ISO-8601 timestamp the integration was connected. */
   created_at: string | null;
 }
-export const IntegrationEntry = /*@__PURE__*/ S.suspend(() =>
+const IntegrationEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     created_at: S.NullOr(S.String),
@@ -5945,7 +5088,7 @@ export const IntegrationEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Connected integrations (kind + connection time only -- config never surfaced). */
 export type ProjectProfileInventoryIntegrationsList = Array<IntegrationEntry>;
-export const ProjectProfileInventoryIntegrationsList = /*@__PURE__*/ S.Array(
+const ProjectProfileInventoryIntegrationsList = /*@__PURE__*/ S.Array(
   IntegrationEntry,
 ) as any as S.Schema<ProjectProfileInventoryIntegrationsList>;
 
@@ -5964,7 +5107,7 @@ export interface ExternalDataSourceEntry {
   /** Newest schema-level sync error for this source, or null if no schema is erroring. */
   latest_error: string | null;
 }
-export const ExternalDataSourceEntry = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_type: S.String,
     status: S.String,
@@ -5977,7 +5120,7 @@ export const ExternalDataSourceEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Connected warehouse sources (excludes soft-deleted). */
 export type ProjectProfileInventoryExternalDataSourcesList = Array<ExternalDataSourceEntry>;
-export const ProjectProfileInventoryExternalDataSourcesList = /*@__PURE__*/ S.Array(
+const ProjectProfileInventoryExternalDataSourcesList = /*@__PURE__*/ S.Array(
   ExternalDataSourceEntry,
 ) as any as S.Schema<ProjectProfileInventoryExternalDataSourcesList>;
 
@@ -5988,7 +5131,7 @@ export interface SignalSourceConfigEntry {
   /** Source type within the product. */
   source_type: string;
 }
-export const SignalSourceConfigEntry = /*@__PURE__*/ S.suspend(() =>
+const SignalSourceConfigEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_product: S.String,
     source_type: S.String,
@@ -5997,13 +5140,13 @@ export const SignalSourceConfigEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Source configs the team has explicitly enabled. */
 export type SignalSourceConfigsBucketsEnabledList = Array<SignalSourceConfigEntry>;
-export const SignalSourceConfigsBucketsEnabledList = /*@__PURE__*/ S.Array(
+const SignalSourceConfigsBucketsEnabledList = /*@__PURE__*/ S.Array(
   SignalSourceConfigEntry,
 ) as any as S.Schema<SignalSourceConfigsBucketsEnabledList>;
 
 /** Source configs the team has explicitly disabled (different from never wired up). */
 export type SignalSourceConfigsBucketsDisabledList = Array<SignalSourceConfigEntry>;
-export const SignalSourceConfigsBucketsDisabledList =
+const SignalSourceConfigsBucketsDisabledList =
   SignalSourceConfigsBucketsEnabledList as any as S.Schema<SignalSourceConfigsBucketsDisabledList>;
 
 /** `inventory.signal_source_configs` split into enabled and disabled buckets. */
@@ -6013,7 +5156,7 @@ export interface SignalSourceConfigsBuckets {
   /** Source configs the team has explicitly disabled (different from never wired up). */
   disabled: SignalSourceConfigsBucketsDisabledList;
 }
-export const SignalSourceConfigsBuckets = /*@__PURE__*/ S.suspend(() =>
+const SignalSourceConfigsBuckets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: SignalSourceConfigsBucketsEnabledList,
     disabled: SignalSourceConfigsBucketsDisabledList,
@@ -6041,7 +5184,7 @@ export interface ScoutFleetEntry {
   /** The cause behind an `auto_paused` entry: `no_output`, `ignored`, or `repeated_failures`. Null for every other entry. */
   pause_reason: string | null;
 }
-export const ScoutFleetEntry = /*@__PURE__*/ S.suspend(() =>
+const ScoutFleetEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     run_interval_minutes: S.Number,
@@ -6056,14 +5199,13 @@ export const ScoutFleetEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Scouts that actually run on this team: enabled, with a live skill the coordinator dispatches. */
 export type ScoutFleetEnabledList = Array<ScoutFleetEntry>;
-export const ScoutFleetEnabledList = /*@__PURE__*/ S.Array(
+const ScoutFleetEnabledList = /*@__PURE__*/ S.Array(
   ScoutFleetEntry,
 ) as any as S.Schema<ScoutFleetEnabledList>;
 
 /** Scouts that do not run, each carrying a `not_running_reason` -- turned off, or left on with a skill that can't dispatch. Different from a surface no scout ever covered. */
 export type ScoutFleetDisabledList = Array<ScoutFleetEntry>;
-export const ScoutFleetDisabledList =
-  ScoutFleetEnabledList as any as S.Schema<ScoutFleetDisabledList>;
+const ScoutFleetDisabledList = ScoutFleetEnabledList as any as S.Schema<ScoutFleetDisabledList>;
 
 /** `inventory.scout_fleet` -- the other scouts running on this project, split by enablement. */
 export interface ScoutFleet {
@@ -6074,7 +5216,7 @@ export interface ScoutFleet {
   /** The window `last_emitted_at` was resolved over, so a null reads as 'quiet', not 'never'. */
   emitted_lookback_days: number;
 }
-export const ScoutFleet = /*@__PURE__*/ S.suspend(() =>
+const ScoutFleet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: ScoutFleetEnabledList,
     disabled: ScoutFleetDisabledList,
@@ -6093,7 +5235,7 @@ export interface ScopeActivityEntry {
   /** ISO-8601 timestamp of the most recent edit in the window. */
   last_edit: string | null;
 }
-export const ScopeActivityEntry = /*@__PURE__*/ S.suspend(() =>
+const ScopeActivityEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String,
     edits: S.Number,
@@ -6104,7 +5246,7 @@ export const ScopeActivityEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately. */
 export type RecentActivityByScopeList = Array<ScopeActivityEntry>;
-export const RecentActivityByScopeList = /*@__PURE__*/ S.Array(
+const RecentActivityByScopeList = /*@__PURE__*/ S.Array(
   ScopeActivityEntry,
 ) as any as S.Schema<RecentActivityByScopeList>;
 
@@ -6115,7 +5257,7 @@ export interface RecentActivity {
   /** Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately. */
   by_scope: RecentActivityByScopeList;
 }
-export const RecentActivity = /*@__PURE__*/ S.suspend(() =>
+const RecentActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     by_scope: RecentActivityByScopeList,
@@ -6124,12 +5266,12 @@ export const RecentActivity = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub logins on the report before the human edit (lowercased). */
 export type ReviewerCorrectionEntryBeforeList = Array<string>;
-export const ReviewerCorrectionEntryBeforeList =
+const ReviewerCorrectionEntryBeforeList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ReviewerCorrectionEntryBeforeList>;
 
 /** GitHub logins on the report after the human edit (lowercased). */
 export type ReviewerCorrectionEntryAfterList = Array<string>;
-export const ReviewerCorrectionEntryAfterList =
+const ReviewerCorrectionEntryAfterList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ReviewerCorrectionEntryAfterList>;
 
 /** One row in `inventory.recent_reviewer_corrections.corrections`. */
@@ -6145,7 +5287,7 @@ export interface ReviewerCorrectionEntry {
   /** ISO-8601 timestamp of the edit. */
   at: string | null;
 }
-export const ReviewerCorrectionEntry = /*@__PURE__*/ S.suspend(() =>
+const ReviewerCorrectionEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_id: S.String,
     report_title: S.NullOr(S.String),
@@ -6157,7 +5299,7 @@ export const ReviewerCorrectionEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Human reviewer edits, newest first. A human swapping a report's suggested reviewers is authoritative ownership precedent -- route to who they chose. */
 export type RecentReviewerCorrectionsCorrectionsList = Array<ReviewerCorrectionEntry>;
-export const RecentReviewerCorrectionsCorrectionsList = /*@__PURE__*/ S.Array(
+const RecentReviewerCorrectionsCorrectionsList = /*@__PURE__*/ S.Array(
   ReviewerCorrectionEntry,
 ) as any as S.Schema<RecentReviewerCorrectionsCorrectionsList>;
 
@@ -6168,7 +5310,7 @@ export interface RecentReviewerCorrections {
   /** Human reviewer edits, newest first. A human swapping a report's suggested reviewers is authoritative ownership precedent -- route to who they chose. */
   corrections: RecentReviewerCorrectionsCorrectionsList;
 }
-export const RecentReviewerCorrections = /*@__PURE__*/ S.suspend(() =>
+const RecentReviewerCorrections = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     corrections: RecentReviewerCorrectionsCorrectionsList,
@@ -6190,7 +5332,7 @@ export interface RecentDashboardEntry {
   /** ISO-8601 timestamp the dashboard was created. */
   created_at: string | null;
 }
-export const RecentDashboardEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentDashboardEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -6202,7 +5344,7 @@ export const RecentDashboardEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 20 dashboards on this team sorted by `last_accessed_at` desc -- what the team is currently looking at, not necessarily the most-trafficked. We don't have per-dashboard view counts in Postgres, only the timestamp of the most recent access. */
 export type ProjectProfileInventoryRecentDashboardsList = Array<RecentDashboardEntry>;
-export const ProjectProfileInventoryRecentDashboardsList = /*@__PURE__*/ S.Array(
+const ProjectProfileInventoryRecentDashboardsList = /*@__PURE__*/ S.Array(
   RecentDashboardEntry,
 ) as any as S.Schema<ProjectProfileInventoryRecentDashboardsList>;
 
@@ -6219,7 +5361,7 @@ export interface RecentSurveyEntry {
   /** ISO-8601 last-modified timestamp. */
   updated_at: string | null;
 }
-export const RecentSurveyEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentSurveyEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6231,7 +5373,7 @@ export const RecentSurveyEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently updated surveys. */
 export type RecentSurveysRecentList = Array<RecentSurveyEntry>;
-export const RecentSurveysRecentList = /*@__PURE__*/ S.Array(
+const RecentSurveysRecentList = /*@__PURE__*/ S.Array(
   RecentSurveyEntry,
 ) as any as S.Schema<RecentSurveysRecentList>;
 
@@ -6244,7 +5386,7 @@ export interface RecentSurveys {
   /** The 5 most recently updated surveys. */
   recent: RecentSurveysRecentList;
 }
-export const RecentSurveys = /*@__PURE__*/ S.suspend(() =>
+const RecentSurveys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     active_count: S.Number,
@@ -6265,7 +5407,7 @@ export interface RecentFeatureFlagEntry {
   /** ISO-8601 last-modified timestamp. */
   updated_at: string | null;
 }
-export const RecentFeatureFlagEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentFeatureFlagEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.String,
@@ -6277,7 +5419,7 @@ export const RecentFeatureFlagEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently updated non-deleted flags. */
 export type RecentFeatureFlagsRecentList = Array<RecentFeatureFlagEntry>;
-export const RecentFeatureFlagsRecentList = /*@__PURE__*/ S.Array(
+const RecentFeatureFlagsRecentList = /*@__PURE__*/ S.Array(
   RecentFeatureFlagEntry,
 ) as any as S.Schema<RecentFeatureFlagsRecentList>;
 
@@ -6290,7 +5432,7 @@ export interface RecentFeatureFlags {
   /** The 5 most recently updated non-deleted flags. */
   recent: RecentFeatureFlagsRecentList;
 }
-export const RecentFeatureFlags = /*@__PURE__*/ S.suspend(() =>
+const RecentFeatureFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     active_count: S.Number,
@@ -6311,7 +5453,7 @@ export interface RecentExperimentEntry {
   /** ISO-8601 last-modified timestamp. */
   updated_at: string | null;
 }
-export const RecentExperimentEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentExperimentEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -6323,7 +5465,7 @@ export const RecentExperimentEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently updated experiments. */
 export type RecentExperimentsRecentList = Array<RecentExperimentEntry>;
-export const RecentExperimentsRecentList = /*@__PURE__*/ S.Array(
+const RecentExperimentsRecentList = /*@__PURE__*/ S.Array(
   RecentExperimentEntry,
 ) as any as S.Schema<RecentExperimentsRecentList>;
 
@@ -6336,7 +5478,7 @@ export interface RecentExperiments {
   /** The 5 most recently updated experiments. */
   recent: RecentExperimentsRecentList;
 }
-export const RecentExperiments = /*@__PURE__*/ S.suspend(() =>
+const RecentExperiments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     running_count: S.Number,
@@ -6361,7 +5503,7 @@ export interface RecentAlertEntry {
   /** ISO-8601 creation timestamp. */
   created_at: string | null;
 }
-export const RecentAlertEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentAlertEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6375,7 +5517,7 @@ export const RecentAlertEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently created alerts. */
 export type RecentAlertsRecentList = Array<RecentAlertEntry>;
-export const RecentAlertsRecentList = /*@__PURE__*/ S.Array(
+const RecentAlertsRecentList = /*@__PURE__*/ S.Array(
   RecentAlertEntry,
 ) as any as S.Schema<RecentAlertsRecentList>;
 
@@ -6388,7 +5530,7 @@ export interface RecentAlerts {
   /** The 5 most recently created alerts. */
   recent: RecentAlertsRecentList;
 }
-export const RecentAlerts = /*@__PURE__*/ S.suspend(() =>
+const RecentAlerts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     enabled_count: S.Number,
@@ -6411,7 +5553,7 @@ export interface RecentHogFunctionEntry {
   /** ISO-8601 last-modified timestamp. */
   updated_at: string | null;
 }
-export const RecentHogFunctionEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentHogFunctionEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6424,7 +5566,7 @@ export const RecentHogFunctionEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently updated hog functions. */
 export type RecentHogFunctionsRecentList = Array<RecentHogFunctionEntry>;
-export const RecentHogFunctionsRecentList = /*@__PURE__*/ S.Array(
+const RecentHogFunctionsRecentList = /*@__PURE__*/ S.Array(
   RecentHogFunctionEntry,
 ) as any as S.Schema<RecentHogFunctionsRecentList>;
 
@@ -6437,7 +5579,7 @@ export interface RecentHogFunctions {
   /** The 5 most recently updated hog functions. */
   recent: RecentHogFunctionsRecentList;
 }
-export const RecentHogFunctions = /*@__PURE__*/ S.suspend(() =>
+const RecentHogFunctions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     enabled_count: S.Number,
@@ -6456,7 +5598,7 @@ export interface RecentHogFlowEntry {
   /** ISO-8601 last-modified timestamp. */
   updated_at: string | null;
 }
-export const RecentHogFlowEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentHogFlowEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6467,7 +5609,7 @@ export const RecentHogFlowEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently updated hog flows. */
 export type RecentHogFlowsRecentList = Array<RecentHogFlowEntry>;
-export const RecentHogFlowsRecentList = /*@__PURE__*/ S.Array(
+const RecentHogFlowsRecentList = /*@__PURE__*/ S.Array(
   RecentHogFlowEntry,
 ) as any as S.Schema<RecentHogFlowsRecentList>;
 
@@ -6480,7 +5622,7 @@ export interface RecentHogFlows {
   /** The 5 most recently updated hog flows. */
   recent: RecentHogFlowsRecentList;
 }
-export const RecentHogFlows = /*@__PURE__*/ S.suspend(() =>
+const RecentHogFlows = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     active_count: S.Number,
@@ -6497,7 +5639,7 @@ export interface RecentNotebookEntry {
   /** ISO-8601 last-modified timestamp. */
   last_modified_at: string | null;
 }
-export const RecentNotebookEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentNotebookEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     short_id: S.String,
     title: S.String,
@@ -6507,7 +5649,7 @@ export const RecentNotebookEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently modified notebooks. */
 export type RecentNotebooksRecentList = Array<RecentNotebookEntry>;
-export const RecentNotebooksRecentList = /*@__PURE__*/ S.Array(
+const RecentNotebooksRecentList = /*@__PURE__*/ S.Array(
   RecentNotebookEntry,
 ) as any as S.Schema<RecentNotebooksRecentList>;
 
@@ -6518,7 +5660,7 @@ export interface RecentNotebooks {
   /** The 5 most recently modified notebooks. */
   recent: RecentNotebooksRecentList;
 }
-export const RecentNotebooks = /*@__PURE__*/ S.suspend(() =>
+const RecentNotebooks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     recent: RecentNotebooksRecentList,
@@ -6538,7 +5680,7 @@ export interface RecentCohortEntry {
   /** ISO-8601 creation timestamp. */
   created_at: string | null;
 }
-export const RecentCohortEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentCohortEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -6550,7 +5692,7 @@ export const RecentCohortEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently created cohorts. */
 export type RecentCohortsRecentList = Array<RecentCohortEntry>;
-export const RecentCohortsRecentList = /*@__PURE__*/ S.Array(
+const RecentCohortsRecentList = /*@__PURE__*/ S.Array(
   RecentCohortEntry,
 ) as any as S.Schema<RecentCohortsRecentList>;
 
@@ -6561,7 +5703,7 @@ export interface RecentCohorts {
   /** The 5 most recently created cohorts. */
   recent: RecentCohortsRecentList;
 }
-export const RecentCohorts = /*@__PURE__*/ S.suspend(() =>
+const RecentCohorts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     recent: RecentCohortsRecentList,
@@ -6577,7 +5719,7 @@ export interface RecentActionEntry {
   /** ISO-8601 last-modified timestamp. */
   updated_at: string | null;
 }
-export const RecentActionEntry = /*@__PURE__*/ S.suspend(() =>
+const RecentActionEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -6587,7 +5729,7 @@ export const RecentActionEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The 5 most recently updated actions. */
 export type RecentActionsRecentList = Array<RecentActionEntry>;
-export const RecentActionsRecentList = /*@__PURE__*/ S.Array(
+const RecentActionsRecentList = /*@__PURE__*/ S.Array(
   RecentActionEntry,
 ) as any as S.Schema<RecentActionsRecentList>;
 
@@ -6598,7 +5740,7 @@ export interface RecentActions {
   /** The 5 most recently updated actions. */
   recent: RecentActionsRecentList;
 }
-export const RecentActions = /*@__PURE__*/ S.suspend(() =>
+const RecentActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     recent: RecentActionsRecentList,
@@ -6624,7 +5766,7 @@ export interface TopEventEntry {
   /** ISO-8601 timestamp of the most recent occurrence within the `window_days` window. */
   last_seen_in_window: string | null;
 }
-export const TopEventEntry = /*@__PURE__*/ S.suspend(() =>
+const TopEventEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     event: S.String,
@@ -6639,7 +5781,7 @@ export const TopEventEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project's counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts. */
 export type ProjectProfileInventoryTopEventsList = Array<TopEventEntry>;
-export const ProjectProfileInventoryTopEventsList = /*@__PURE__*/ S.Array(
+const ProjectProfileInventoryTopEventsList = /*@__PURE__*/ S.Array(
   TopEventEntry,
 ) as any as S.Schema<ProjectProfileInventoryTopEventsList>;
 
@@ -6690,7 +5832,7 @@ export interface ProjectProfileInventory {
   /** Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project's counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts. */
   top_events: ProjectProfileInventoryTopEventsList | null;
 }
-export const ProjectProfileInventory = /*@__PURE__*/ S.suspend(() =>
+const ProjectProfileInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_context: ProjectContext,
     products_in_use: ProjectProfileInventoryProductsInUseList,
@@ -6722,7 +5864,7 @@ export interface ProjectProfilePayload {
   /** Deterministic snapshot of what's true about the project. */
   inventory: ProjectProfileInventory;
 }
-export const ProjectProfilePayload = /*@__PURE__*/ S.suspend(() =>
+const ProjectProfilePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventory: ProjectProfileInventory,
   }),
@@ -6743,7 +5885,7 @@ export interface ProjectProfile {
   /** Structured profile content. v1 has `inventory` only. Omitted when `summary_only=true`. */
   payload?: ProjectProfilePayload;
 }
-export const ProjectProfile = /*@__PURE__*/ S.suspend(() =>
+const ProjectProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: ProjectProfileSummary,
     profile_id: S.String,
@@ -6760,7 +5902,7 @@ export interface GetSignalsScoutRubricRequest {
   /** A UUID string identifying this Signal scout config. */
   id: string;
 }
-export const GetSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -6777,7 +5919,7 @@ export const GetSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `default` - Default * `custom` - Custom */
 export type ScoutRubricSourceEnum = "default" | "custom";
-export const ScoutRubricSourceEnum = S.String;
+const ScoutRubricSourceEnum = S.String;
 
 export interface ScoutRubricCriterion {
   /** Stable criterion identifier. */
@@ -6795,7 +5937,7 @@ export interface ScoutRubricCriterion {
   /** Shared default or scout-specific criterion. * `default` - Default * `custom` - Custom */
   source: ScoutRubricSourceEnum | (string & {});
 }
-export const ScoutRubricCriterion = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricCriterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -6809,26 +5951,26 @@ export const ScoutRubricCriterion = /*@__PURE__*/ S.suspend(() =>
 
 /** Saved criteria, or enabled defaults before the first save. */
 export type ScoutRubricDocumentCriteriaList = Array<ScoutRubricCriterion>;
-export const ScoutRubricDocumentCriteriaList = /*@__PURE__*/ S.Array(
+const ScoutRubricDocumentCriteriaList = /*@__PURE__*/ S.Array(
   ScoutRubricCriterion,
 ) as any as S.Schema<ScoutRubricDocumentCriteriaList>;
 
 /** * `queued` - Queued * `running` - Running * `completed` - Completed * `failed` - Failed */
 export type ScoutRubricGenerationStatusEnum = "queued" | "running" | "completed" | "failed";
-export const ScoutRubricGenerationStatusEnum = S.String;
+const ScoutRubricGenerationStatusEnum = S.String;
 
 /** Draft criteria awaiting review and explicit saving. */
 export type ScoutRubricGenerationSuggestionsList = Array<ScoutRubricCriterion>;
-export const ScoutRubricGenerationSuggestionsList =
+const ScoutRubricGenerationSuggestionsList =
   ScoutRubricDocumentCriteriaList as any as S.Schema<ScoutRubricGenerationSuggestionsList>;
 
 /** * `none` - None * `emit` - Emit * `edit` - Edit * `both` - Both */
 export type ScoutRubricReportChannelEnum = "none" | "emit" | "edit" | "both";
-export const ScoutRubricReportChannelEnum = S.String;
+const ScoutRubricReportChannelEnum = S.String;
 
 /** Reference-file inventory supplied to the generator. */
 export type ScoutRubricReferenceContextDocumentReferenceFilesList = Array<string>;
-export const ScoutRubricReferenceContextDocumentReferenceFilesList =
+const ScoutRubricReferenceContextDocumentReferenceFilesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutRubricReferenceContextDocumentReferenceFilesList>;
 
 export interface ScoutRubricReferenceTextDocument {
@@ -6839,7 +5981,7 @@ export interface ScoutRubricReferenceTextDocument {
   /** Exact reference text supplied to the generator. */
   content: string;
 }
-export const ScoutRubricReferenceTextDocument = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricReferenceTextDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     content_type: S.String,
@@ -6852,22 +5994,19 @@ export const ScoutRubricReferenceTextDocument = /*@__PURE__*/ S.suspend(() =>
 /** Reference texts supplied to the generator. */
 export type ScoutRubricReferenceContextDocumentReferenceTextsList =
   Array<ScoutRubricReferenceTextDocument>;
-export const ScoutRubricReferenceContextDocumentReferenceTextsList = /*@__PURE__*/ S.Array(
+const ScoutRubricReferenceContextDocumentReferenceTextsList = /*@__PURE__*/ S.Array(
   ScoutRubricReferenceTextDocument,
 ) as any as S.Schema<ScoutRubricReferenceContextDocumentReferenceTextsList>;
 
 /** Reference paths whose supplied content was truncated. */
 export type ScoutRubricReferenceLimitsDocumentTruncatedFilesList = Array<string>;
-export const ScoutRubricReferenceLimitsDocumentTruncatedFilesList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutRubricReferenceLimitsDocumentTruncatedFilesList>;
-
 export interface ScoutRubricReferenceLimitsDocument {
   /** Number of reference files not supplied. */
   omitted_files: number;
   /** Reference paths whose supplied content was truncated. */
   truncated_files: ScoutRubricReferenceLimitsDocumentTruncatedFilesList;
 }
-export const ScoutRubricReferenceLimitsDocument =
+const ScoutRubricReferenceLimitsDocument =
   ScoutRubricReferenceLimits as any as S.Schema<ScoutRubricReferenceLimitsDocument>;
 
 export interface ScoutRubricReferenceContextDocument {
@@ -6898,7 +6037,7 @@ export interface ScoutRubricReferenceContextDocument {
   /** Limits on the supplied reference texts. */
   reference_limits: ScoutRubricReferenceLimitsDocument;
 }
-export const ScoutRubricReferenceContextDocument = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricReferenceContextDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema_version: S.Number,
     skill_id: S.String,
@@ -6942,7 +6081,7 @@ export interface ScoutRubricGeneration {
   /** Immutable governing source captured for this generation. */
   reference_context: ScoutRubricReferenceContextDocument | null;
 }
-export const ScoutRubricGeneration = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricGeneration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: ScoutRubricGenerationStatusEnum,
@@ -6974,7 +6113,7 @@ export interface ScoutRubricDocument {
   /** Generation whose governing source was adopted for the saved rubric. */
   reference_generation_id: string | null;
 }
-export const ScoutRubricDocument = /*@__PURE__*/ S.suspend(() =>
+const ScoutRubricDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config_id: S.String,
     skill_name: S.String,
@@ -6992,7 +6131,7 @@ export interface GetSignalsScoutRunRequest {
   /** UUID of the `SignalScoutRun` bridge row. */
   run_id: string;
 }
-export const GetSignalsScoutRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsScoutRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -7015,25 +6154,25 @@ export type RunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
-export const RunStatusEnum = S.String;
+const RunStatusEnum = S.String;
 
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
 export type SignalScoutRunDetailEmittedFindingIdsList = Array<string>;
-export const SignalScoutRunDetailEmittedFindingIdsList =
+const SignalScoutRunDetailEmittedFindingIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunDetailEmittedFindingIdsList>;
 
 /** The `SignalReport` ids this run authored directly via the `emit_report` channel, in emit order. Separate from `emitted_finding_ids` (weak `emit_signal` findings) -- a report-authoring scout writes a full report here instead. Empty for runs that authored no report. */
 export type SignalScoutRunDetailEmittedReportIdsList = Array<string>;
-export const SignalScoutRunDetailEmittedReportIdsList =
+const SignalScoutRunDetailEmittedReportIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunDetailEmittedReportIdsList>;
 
 /** The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report. */
 export type SignalScoutRunDetailEditedReportIdsList = Array<string>;
-export const SignalScoutRunDetailEditedReportIdsList =
+const SignalScoutRunDetailEditedReportIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunDetailEditedReportIdsList>;
 
 export type SignalScoutRunDetailMetadataWriteScopesList = Array<string>;
-export const SignalScoutRunDetailMetadataWriteScopesList =
+const SignalScoutRunDetailMetadataWriteScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunDetailMetadataWriteScopesList>;
 
 export interface SignalScoutRunDetailMetadataDerived {
@@ -7044,7 +6183,7 @@ export interface SignalScoutRunDetailMetadataDerived {
   has_self_validation: boolean;
   has_structured_output: boolean;
 }
-export const SignalScoutRunDetailMetadataDerived = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutRunDetailMetadataDerived = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_emit_report: S.Boolean,
     has_edit_report: S.Boolean,
@@ -7074,7 +6213,7 @@ export interface SignalScoutRunDetailMetadata {
   run_note?: string;
   derived?: SignalScoutRunDetailMetadataDerived;
 }
-export const SignalScoutRunDetailMetadata = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutRunDetailMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     harness_prompt_version: S.optional(S.String),
     report_channel: S.optional(S.String),
@@ -7134,7 +6273,7 @@ export interface SignalScoutRunDetail {
   /** Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), `github_guidance` (whether the run got the GitHub evidence section), and `business_knowledge_maintained` (whether the run got the business-knowledge section: the product flag is on and the team's knowledge base looks maintained) -- the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), `network_access` (`full` when the scout's config lifted the trusted-domain network restriction for this run), `write_scopes` (the extra write access the run's token carried, when the scout was granted any), and `triggered_by` (`manual` or `workflow` when the run was fired off-schedule; absent means the run came from the coordinator's schedule). The nested `derived` object is the harness's own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer 'what kind of run was this?' instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else's report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed. */
   metadata: SignalScoutRunDetailMetadata;
 }
-export const SignalScoutRunDetail = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutRunDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     skill_name: S.String,
@@ -7163,7 +6302,7 @@ export interface GetSignalsSourceConfigRequest {
   /** A UUID string identifying this signal source config. */
   id: string;
 }
-export const GetSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -7182,7 +6321,7 @@ export interface ListSignalsConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/signals/config/", code: 200 })),
@@ -7196,7 +6335,7 @@ export interface ListSignalsProcessingRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSignalsProcessingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsProcessingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7212,14 +6351,14 @@ export interface PauseStateResponse {
   /** The timestamp the pipeline is paused until, or null if not paused/not running. */
   paused_until?: string | null;
 }
-export const PauseStateResponse = /*@__PURE__*/ S.suspend(() =>
+const PauseStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paused_until: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "PauseStateResponse" }) as any as S.Schema<PauseStateResponse>;
 
 export type PaginatedPauseStateResponseListResultsList = Array<PauseStateResponse>;
-export const PaginatedPauseStateResponseListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedPauseStateResponseListResultsList = /*@__PURE__*/ S.Array(
   PauseStateResponse,
 ) as any as S.Schema<PaginatedPauseStateResponseListResultsList>;
 
@@ -7229,7 +6368,7 @@ export interface PaginatedPauseStateResponseList {
   previous?: string | null;
   results?: PaginatedPauseStateResponseListResultsList;
 }
-export const PaginatedPauseStateResponseList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedPauseStateResponseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -7250,7 +6389,7 @@ export interface ListSignalsReportArtefactsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSignalsReportArtefactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsReportArtefactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -7268,7 +6407,7 @@ export const ListSignalsReportArtefactsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsReportArtefactsRequest>;
 
 export type PaginatedSignalReportArtefactListResultsList = Array<SignalReportArtefact>;
-export const PaginatedSignalReportArtefactListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSignalReportArtefactListResultsList = /*@__PURE__*/ S.Array(
   SignalReportArtefact,
 ) as any as S.Schema<PaginatedSignalReportArtefactListResultsList>;
 
@@ -7278,7 +6417,7 @@ export interface PaginatedSignalReportArtefactList {
   previous?: string | null;
   results: PaginatedSignalReportArtefactListResultsList;
 }
-export const PaginatedSignalReportArtefactList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSignalReportArtefactList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -7299,7 +6438,7 @@ export interface ListSignalsReportChecksRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSignalsReportChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsReportChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -7317,7 +6456,7 @@ export const ListSignalsReportChecksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsReportChecksRequest>;
 
 export type PaginatedSignalReportCheckListResultsList = Array<SignalReportCheck>;
-export const PaginatedSignalReportCheckListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSignalReportCheckListResultsList = /*@__PURE__*/ S.Array(
   SignalReportCheck,
 ) as any as S.Schema<PaginatedSignalReportCheckListResultsList>;
 
@@ -7327,7 +6466,7 @@ export interface PaginatedSignalReportCheckList {
   previous?: string | null;
   results: PaginatedSignalReportCheckListResultsList;
 }
-export const PaginatedSignalReportCheckList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSignalReportCheckList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -7339,7 +6478,7 @@ export const PaginatedSignalReportCheckList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedSignalReportCheckList>;
 
 export type ListSignalsReportsRequestAssignee = "me";
-export const ListSignalsReportsRequestAssignee = S.String;
+const ListSignalsReportsRequestAssignee = S.String;
 
 export interface ListSignalsReportsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -7401,7 +6540,7 @@ export interface ListSignalsReportsRequest {
   /** Apply an inbox view: actionable, needs_input, needs_decision, monitoring, resolved, dismissed, not_actionable, or all. Each view applies the corresponding status, actionability, and implementation-PR filters. needs_decision also includes failed reports without a judgment. */
   view?: string;
 }
-export const ListSignalsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     actionability: S.optional(S.String.pipe(T.Query())),
@@ -7438,7 +6577,7 @@ export const ListSignalsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsReportsRequest>;
 
 export type PaginatedSignalReportListListResultsList = Array<SignalReportList>;
-export const PaginatedSignalReportListListResultsList =
+const PaginatedSignalReportListListResultsList =
   SignalReportsForYouResponseResultsList as any as S.Schema<PaginatedSignalReportListListResultsList>;
 
 export interface PaginatedSignalReportListList {
@@ -7447,7 +6586,7 @@ export interface PaginatedSignalReportListList {
   previous?: string | null;
   results: PaginatedSignalReportListListResultsList;
 }
-export const PaginatedSignalReportListList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSignalReportListList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -7466,7 +6605,7 @@ export interface ListSignalsScoutConfigRequest {
   /** Comma-separated tags, e.g. `revenue,on-call`. Returns the scouts carrying at least one of them. Values are normalized the same way stored tags are, so `On Call` matches `on-call`. Omit for the whole fleet. */
   tags?: string;
 }
-export const ListSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -7479,12 +6618,12 @@ export const ListSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsScoutConfigRequest>;
 
 export type ListSignalsScoutConfigResponseBodyList = Array<SignalScoutConfig>;
-export const ListSignalsScoutConfigResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSignalsScoutConfigResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutConfig,
 ) as any as S.Schema<ListSignalsScoutConfigResponseBodyList>;
 
 export type ListSignalsScoutConfigResponse = ListSignalsScoutConfigResponseBodyList;
-export const ListSignalsScoutConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutConfigResponse = /*@__PURE__*/ S.suspend(() =>
   ListSignalsScoutConfigResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSignalsScoutConfigResponse",
@@ -7498,7 +6637,7 @@ export interface ListSignalsScoutMembersRequest {
   /** Team slug (case-insensitive, no `@org/` prefix), for example `team-desktop`. Narrows the roster to the members on that team, maintainers first, so a slug from a scout note, CODEOWNERS, or an owners file resolves to people you can route to. Returns an error, not an empty list, when the project has no synced team roster or the roster holds no rows for the slug. */
   team?: string;
 }
-export const ListSignalsScoutMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -7521,7 +6660,7 @@ export interface ScoutMemberTeam {
   /** True when this member maintains the team. Prefer maintainers when you pick reviewers for a team, and treat false as 'not known to maintain it': some rosters sync without roles. */
   is_maintainer: boolean;
 }
-export const ScoutMemberTeam = /*@__PURE__*/ S.suspend(() =>
+const ScoutMemberTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     slug: S.String,
@@ -7532,7 +6671,7 @@ export const ScoutMemberTeam = /*@__PURE__*/ S.suspend(() =>
 
 /** The teams this member is on, from the project's synced team roster. Empty when no roster is synced, or when the member has no linked GitHub account, since the roster is keyed on that login. The roster is a periodic snapshot, so it can lag the live team. */
 export type ScoutMemberTeamsList = Array<ScoutMemberTeam>;
-export const ScoutMemberTeamsList = /*@__PURE__*/ S.Array(
+const ScoutMemberTeamsList = /*@__PURE__*/ S.Array(
   ScoutMemberTeam,
 ) as any as S.Schema<ScoutMemberTeamsList>;
 
@@ -7551,7 +6690,7 @@ export interface ScoutMember {
   /** The teams this member is on, from the project's synced team roster. Empty when no roster is synced, or when the member has no linked GitHub account, since the roster is keyed on that login. The roster is a periodic snapshot, so it can lag the live team. */
   teams: ScoutMemberTeamsList;
 }
-export const ScoutMember = /*@__PURE__*/ S.suspend(() =>
+const ScoutMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_uuid: S.String,
     email: S.String,
@@ -7563,12 +6702,12 @@ export const ScoutMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScoutMember" }) as any as S.Schema<ScoutMember>;
 
 export type ListSignalsScoutMembersResponseBodyList = Array<ScoutMember>;
-export const ListSignalsScoutMembersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSignalsScoutMembersResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutMember,
 ) as any as S.Schema<ListSignalsScoutMembersResponseBodyList>;
 
 export type ListSignalsScoutMembersResponse = ListSignalsScoutMembersResponseBodyList;
-export const ListSignalsScoutMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutMembersResponse = /*@__PURE__*/ S.suspend(() =>
   ListSignalsScoutMembersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSignalsScoutMembersResponse",
@@ -7594,7 +6733,7 @@ export interface ListSignalsScoutNotesRequest {
   /** Return only the notes whose content contains this text, case-insensitively. Pass an entity (an error id, a flag key, a page path, an event name) to find the notes about it, including older ones the newest-first cap would hide. */
   text?: string;
 }
-export const ListSignalsScoutNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     content_max_chars: S.optional(S.Number.pipe(T.Query())),
@@ -7613,12 +6752,12 @@ export const ListSignalsScoutNotesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsScoutNotesRequest>;
 
 export type ListSignalsScoutNotesResponseBodyList = Array<ScoutNote>;
-export const ListSignalsScoutNotesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSignalsScoutNotesResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutNote,
 ) as any as S.Schema<ListSignalsScoutNotesResponseBodyList>;
 
 export type ListSignalsScoutNotesResponse = ListSignalsScoutNotesResponseBodyList;
-export const ListSignalsScoutNotesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutNotesResponse = /*@__PURE__*/ S.suspend(() =>
   ListSignalsScoutNotesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSignalsScoutNotesResponse",
@@ -7630,7 +6769,7 @@ export interface ListSignalsScoutReportCheckRequest {
   /** The report whose checks to list. */
   report_id: string;
 }
-export const ListSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Query()),
@@ -7646,12 +6785,12 @@ export const ListSignalsScoutReportCheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsScoutReportCheckRequest>;
 
 export type ListSignalsScoutReportCheckResponseBodyList = Array<ScoutCheckSummary>;
-export const ListSignalsScoutReportCheckResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSignalsScoutReportCheckResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutCheckSummary,
 ) as any as S.Schema<ListSignalsScoutReportCheckResponseBodyList>;
 
 export type ListSignalsScoutReportCheckResponse = ListSignalsScoutReportCheckResponseBodyList;
-export const ListSignalsScoutReportCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutReportCheckResponse = /*@__PURE__*/ S.suspend(() =>
   ListSignalsScoutReportCheckResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSignalsScoutReportCheckResponse",
@@ -7665,7 +6804,7 @@ export interface ListSignalsScoutReportChecksRequest {
   /** The report whose checks to list. */
   report_id: string;
 }
-export const ListSignalsScoutReportChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutReportChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -7682,11 +6821,8 @@ export const ListSignalsScoutReportChecksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsScoutReportChecksRequest>;
 
 export type ListSignalsScoutReportChecksResponseBodyList = Array<ScoutCheckSummary>;
-export const ListSignalsScoutReportChecksResponseBodyList =
-  ListSignalsScoutReportCheckResponseBodyList as any as S.Schema<ListSignalsScoutReportChecksResponseBodyList>;
-
 export type ListSignalsScoutReportChecksResponse = ListSignalsScoutReportChecksResponseBodyList;
-export const ListSignalsScoutReportChecksResponse =
+const ListSignalsScoutReportChecksResponse =
   ListSignalsScoutReportCheckResponse as any as S.Schema<ListSignalsScoutReportChecksResponse>;
 
 export interface ListSignalsScoutRunsRequest {
@@ -7707,7 +6843,7 @@ export interface ListSignalsScoutRunsRequest {
   /** Case-insensitive substring match on the scout's end-of-run `summary`. Omit to skip the filter. */
   text?: string;
 }
-export const ListSignalsScoutRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -7726,26 +6862,12 @@ export const ListSignalsScoutRunsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
 export type SignalScoutRunSummaryEmittedFindingIdsList = Array<string>;
-export const SignalScoutRunSummaryEmittedFindingIdsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunSummaryEmittedFindingIdsList>;
-
 /** The `SignalReport` ids this run authored directly via the `emit_report` channel, in emit order. Separate from `emitted_finding_ids` (weak `emit_signal` findings) -- a report-authoring scout writes a full report here instead. Empty for runs that authored no report. */
 export type SignalScoutRunSummaryEmittedReportIdsList = Array<string>;
-export const SignalScoutRunSummaryEmittedReportIdsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunSummaryEmittedReportIdsList>;
-
 /** The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report. */
 export type SignalScoutRunSummaryEditedReportIdsList = Array<string>;
-export const SignalScoutRunSummaryEditedReportIdsList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunSummaryEditedReportIdsList>;
-
 export type SignalScoutRunSummaryMetadataWriteScopesList = Array<string>;
-export const SignalScoutRunSummaryMetadataWriteScopesList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutRunSummaryMetadataWriteScopesList>;
-
 export type SignalScoutRunSummaryMetadataDerived = SignalScoutRunDetailMetadataDerived;
-export const SignalScoutRunSummaryMetadataDerived = SignalScoutRunDetailMetadataDerived;
-
 /** Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), `github_guidance` (whether the run got the GitHub evidence section), and `business_knowledge_maintained` (whether the run got the business-knowledge section: the product flag is on and the team's knowledge base looks maintained) -- the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), `network_access` (`full` when the scout's config lifted the trusted-domain network restriction for this run), `write_scopes` (the extra write access the run's token carried, when the scout was granted any), and `triggered_by` (`manual` or `workflow` when the run was fired off-schedule; absent means the run came from the coordinator's schedule). The nested `derived` object is the harness's own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer 'what kind of run was this?' instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else's report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed. */
 export interface SignalScoutRunSummaryMetadata {
   harness_prompt_version?: string;
@@ -7763,9 +6885,6 @@ export interface SignalScoutRunSummaryMetadata {
   run_note?: string;
   derived?: SignalScoutRunDetailMetadataDerived;
 }
-export const SignalScoutRunSummaryMetadata =
-  SignalScoutRunDetailMetadata as any as S.Schema<SignalScoutRunSummaryMetadata>;
-
 /** Lightweight projection of a `SignalScoutRun` row used by `search-recent-runs`. Status and timestamps flow from the linked `tasks.TaskRun`. */
 export interface SignalScoutRunSummary {
   /** UUID of the bridge row. */
@@ -7805,15 +6924,15 @@ export interface SignalScoutRunSummary {
   /** Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), `github_guidance` (whether the run got the GitHub evidence section), and `business_knowledge_maintained` (whether the run got the business-knowledge section: the product flag is on and the team's knowledge base looks maintained) -- the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), `network_access` (`full` when the scout's config lifted the trusted-domain network restriction for this run), `write_scopes` (the extra write access the run's token carried, when the scout was granted any), and `triggered_by` (`manual` or `workflow` when the run was fired off-schedule; absent means the run came from the coordinator's schedule). The nested `derived` object is the harness's own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer 'what kind of run was this?' instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else's report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed. */
   metadata: SignalScoutRunSummaryMetadata;
 }
-export const SignalScoutRunSummary = SignalScoutRunDetail as any as S.Schema<SignalScoutRunSummary>;
+const SignalScoutRunSummary = SignalScoutRunDetail as any as S.Schema<SignalScoutRunSummary>;
 
 export type ListSignalsScoutRunsResponseBodyList = Array<SignalScoutRunSummary>;
-export const ListSignalsScoutRunsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSignalsScoutRunsResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutRunSummary,
 ) as any as S.Schema<ListSignalsScoutRunsResponseBodyList>;
 
 export type ListSignalsScoutRunsResponse = ListSignalsScoutRunsResponseBodyList;
-export const ListSignalsScoutRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutRunsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSignalsScoutRunsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSignalsScoutRunsResponse",
@@ -7823,7 +6942,7 @@ export interface ListSignalsScoutSuggestionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListSignalsScoutSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsScoutSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7844,16 +6963,16 @@ export type SignalScoutSuggestionSetStatusEnum =
   | "failed"
   | "empty"
   | "low_activity";
-export const SignalScoutSuggestionSetStatusEnum = S.String;
+const SignalScoutSuggestionSetStatusEnum = S.String;
 
 /** Skill names that were enabled when the batch was generated. */
 export type ScoutSuggestionSetFleetSnapshotList = Array<string>;
-export const ScoutSuggestionSetFleetSnapshotList =
+const ScoutSuggestionSetFleetSnapshotList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutSuggestionSetFleetSnapshotList>;
 
 /** Suggestions not yet dismissed or created, best first. Up to 5. */
 export type ScoutSuggestionSetItemsList = Array<ScoutSuggestionItem>;
-export const ScoutSuggestionSetItemsList = /*@__PURE__*/ S.Array(
+const ScoutSuggestionSetItemsList = /*@__PURE__*/ S.Array(
   ScoutSuggestionItem,
 ) as any as S.Schema<ScoutSuggestionSetItemsList>;
 
@@ -7869,7 +6988,7 @@ export interface ScoutSuggestionSet {
   /** Suggestions not yet dismissed or created, best first. Up to 5. */
   items: ScoutSuggestionSetItemsList;
 }
-export const ScoutSuggestionSet = /*@__PURE__*/ S.suspend(() =>
+const ScoutSuggestionSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SignalScoutSuggestionSetStatusEnum,
     generated_at: S.NullOr(S.String),
@@ -7887,7 +7006,7 @@ export interface ListSignalsSourceConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSignalsSourceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalsSourceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7900,7 +7019,7 @@ export const ListSignalsSourceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSignalsSourceConfigsRequest>;
 
 export type PaginatedSignalSourceConfigListResultsList = Array<SignalSourceConfig>;
-export const PaginatedSignalSourceConfigListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSignalSourceConfigListResultsList = /*@__PURE__*/ S.Array(
   SignalSourceConfig,
 ) as any as S.Schema<PaginatedSignalSourceConfigListResultsList>;
 
@@ -7910,7 +7029,7 @@ export interface PaginatedSignalSourceConfigList {
   previous?: string | null;
   results?: PaginatedSignalSourceConfigListResultsList;
 }
-export const PaginatedSignalSourceConfigList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSignalSourceConfigList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -7925,7 +7044,7 @@ export interface PauseSignalsProcessingDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const PauseSignalsProcessingDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseSignalsProcessingDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7945,7 +7064,7 @@ export interface PauseResponse {
   /** The timestamp the pipeline is paused until. */
   paused_until?: string;
 }
-export const PauseResponse = /*@__PURE__*/ S.suspend(() =>
+const PauseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     paused_until: S.optional(S.String),
@@ -7956,7 +7075,7 @@ export interface RefreshSignalsScoutSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const RefreshSignalsScoutSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshSignalsScoutSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7971,7 +7090,7 @@ export const RefreshSignalsScoutSuggestionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RefreshSignalsScoutSuggestionRequest>;
 
 export interface RefreshSignalsScoutSuggestionResponse {}
-export const RefreshSignalsScoutSuggestionResponse =
+const RefreshSignalsScoutSuggestionResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<RefreshSignalsScoutSuggestionResponse>;
 
 export interface ResumeSignalsScoutConfigTrialComparisonRequest {
@@ -7982,7 +7101,7 @@ export interface ResumeSignalsScoutConfigTrialComparisonRequest {
   /** Saved comparison identity. */
   comparison_id: string;
 }
-export const ResumeSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -7999,7 +7118,7 @@ export const ResumeSignalsScoutConfigTrialComparisonRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ResumeSignalsScoutConfigTrialComparisonRequest>;
 
 export interface ResumeSignalsScoutConfigTrialComparisonResponse {}
-export const ResumeSignalsScoutConfigTrialComparisonResponse =
+const ResumeSignalsScoutConfigTrialComparisonResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<ResumeSignalsScoutConfigTrialComparisonResponse>;
 
 export interface ReviewSignalsReportPrCommentDestroyRequest {
@@ -8011,7 +7130,7 @@ export interface ReviewSignalsReportPrCommentDestroyRequest {
   /** Select a PR from the report's pull_requests collection. Omit for the compatibility primary PR (unfinished first). */
   pull_request_id?: string;
 }
-export const ReviewSignalsReportPrCommentDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewSignalsReportPrCommentDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8029,7 +7148,7 @@ export const ReviewSignalsReportPrCommentDestroyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ReviewSignalsReportPrCommentDestroyRequest>;
 
 export interface ReviewSignalsReportPrCommentDestroyResponse {}
-export const ReviewSignalsReportPrCommentDestroyResponse =
+const ReviewSignalsReportPrCommentDestroyResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<ReviewSignalsReportPrCommentDestroyResponse>;
 
 export interface ReviewSignalsReportPrCommentReactionDestroyRequest {
@@ -8042,7 +7161,7 @@ export interface ReviewSignalsReportPrCommentReactionDestroyRequest {
   /** Select a PR from the report's pull_requests collection. Omit for the compatibility primary PR (unfinished first). */
   pull_request_id?: string;
 }
-export const ReviewSignalsReportPrCommentReactionDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewSignalsReportPrCommentReactionDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8061,7 +7180,7 @@ export const ReviewSignalsReportPrCommentReactionDestroyRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ReviewSignalsReportPrCommentReactionDestroyRequest>;
 
 export interface ReviewSignalsReportPrCommentReactionDestroyResponse {}
-export const ReviewSignalsReportPrCommentReactionDestroyResponse =
+const ReviewSignalsReportPrCommentReactionDestroyResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<ReviewSignalsReportPrCommentReactionDestroyResponse>;
 
 export interface RunSignalsScoutConfigRequest {
@@ -8072,7 +7191,7 @@ export interface RunSignalsScoutConfigRequest {
   /** Optional steering for this run only, such as 'focus on the checkout regression' or 'skip the staging traffic today'. The agent reads it alongside the scout's durable notes and weighs it the same way: it directs attention, it never forces a finding. Use it instead of leaving a scout note that would also steer every later scheduled run. The note is kept on the run for history and is never read by another run. Because the agent reads it verbatim while holding privileged tools, a run that carries one needs `llm_skill:write` on top of `signal_scout:write`, plus editor access to skills, the same bar as leaving a note. */
   note?: string;
 }
-export const RunSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const RunSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8089,7 +7208,7 @@ export const RunSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunSignalsScoutConfigRequest>;
 
 export interface RunSignalsScoutConfigResponse {}
-export const RunSignalsScoutConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RunSignalsScoutConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RunSignalsScoutConfigResponse",
 }) as any as S.Schema<RunSignalsScoutConfigResponse>;
 
@@ -8113,7 +7232,7 @@ export interface SearchSignalsScoutScratchpadRequest {
   /** ILIKE substring match against `content`. Omit to return the most recent entries. */
   text?: string;
 }
-export const SearchSignalsScoutScratchpadRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchSignalsScoutScratchpadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     content_max_chars: S.optional(S.Number.pipe(T.Query())),
@@ -8154,7 +7273,7 @@ export interface ScratchpadEntry {
   /** Relative Tasks UI deep-link to the run that created this entry, or null if the run linkage isn't captured. */
   created_by_run_url?: string | null;
 }
-export const ScratchpadEntry = /*@__PURE__*/ S.suspend(() =>
+const ScratchpadEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     content: S.String,
@@ -8168,12 +7287,12 @@ export const ScratchpadEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScratchpadEntry" }) as any as S.Schema<ScratchpadEntry>;
 
 export type SearchSignalsScoutScratchpadResponseBodyList = Array<ScratchpadEntry>;
-export const SearchSignalsScoutScratchpadResponseBodyList = /*@__PURE__*/ S.Array(
+const SearchSignalsScoutScratchpadResponseBodyList = /*@__PURE__*/ S.Array(
   ScratchpadEntry,
 ) as any as S.Schema<SearchSignalsScoutScratchpadResponseBodyList>;
 
 export type SearchSignalsScoutScratchpadResponse = SearchSignalsScoutScratchpadResponseBodyList;
-export const SearchSignalsScoutScratchpadResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchSignalsScoutScratchpadResponse = /*@__PURE__*/ S.suspend(() =>
   SearchSignalsScoutScratchpadResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "SearchSignalsScoutScratchpadResponse",
@@ -8188,7 +7307,7 @@ export interface EvidenceEntry {
   /** Optional ID of the cited entity (issue id, recording id, log query id). */
   entity_id?: string | null;
 }
-export const EvidenceEntry = /*@__PURE__*/ S.suspend(() =>
+const EvidenceEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_product: S.String,
     summary: S.String,
@@ -8198,18 +7317,18 @@ export const EvidenceEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Citations supporting the finding. Capped at 20 entries. */
 export type SignalSignalsScoutEmitRequestEvidenceList = Array<EvidenceEntry>;
-export const SignalSignalsScoutEmitRequestEvidenceList = /*@__PURE__*/ S.Array(
+const SignalSignalsScoutEmitRequestEvidenceList = /*@__PURE__*/ S.Array(
   EvidenceEntry,
 ) as any as S.Schema<SignalSignalsScoutEmitRequestEvidenceList>;
 
 /** Optional keys for downstream dedupe (e.g. `error_tracking_issue:<id>`). */
 export type SignalSignalsScoutEmitRequestDedupeKeysList = Array<string>;
-export const SignalSignalsScoutEmitRequestDedupeKeysList =
+const SignalSignalsScoutEmitRequestDedupeKeysList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalSignalsScoutEmitRequestDedupeKeysList>;
 
 /** Optional category tags as lowercase kebab-case slugs (e.g. `cost-spike`, `silent-failure`), max 10. Reuse the vocabulary in your `tags:<domain>:taxonomy` scratchpad entry when a tag fits; coin a new slug when a genuinely new category emerges. Near-miss formats are normalized to slugs; persisted in the signal's `extra.tags` and on the emission row. */
 export type SignalSignalsScoutEmitRequestTagsList = Array<string>;
-export const SignalSignalsScoutEmitRequestTagsList =
+const SignalSignalsScoutEmitRequestTagsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalSignalsScoutEmitRequestTagsList>;
 
 export interface TimeRange {
@@ -8218,7 +7337,7 @@ export interface TimeRange {
   /** ISO-8601 inclusive upper bound for the finding's window. */
   date_to: string;
 }
-export const TimeRange = SignalsScoutTimeRange as any as S.Schema<TimeRange>;
+const TimeRange = SignalsScoutTimeRange as any as S.Schema<TimeRange>;
 
 export interface SignalSignalsScoutEmitRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -8244,7 +7363,7 @@ export interface SignalSignalsScoutEmitRequest {
   /** Stable id for this finding, baked into the signal's source_id for traceability. NOT a dedupe key -- re-emitting the same id creates another signal. */
   finding_id?: string | null;
 }
-export const SignalSignalsScoutEmitRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalSignalsScoutEmitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -8278,7 +7397,7 @@ export interface EmitFindingResponse {
   /** One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when emitted normally or the skip isn't something the scout can act on. */
   remediation: string | null;
 }
-export const EmitFindingResponse = /*@__PURE__*/ S.suspend(() =>
+const EmitFindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finding_id: S.String,
     emitted: S.Boolean,
@@ -8295,7 +7414,7 @@ export interface SignalsReportArtefactsDestroyRequest {
   /** A UUID string identifying this signal report artefact. */
   id: string;
 }
-export const SignalsReportArtefactsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportArtefactsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -8312,7 +7431,7 @@ export const SignalsReportArtefactsDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SignalsReportArtefactsDestroyRequest>;
 
 export interface SignalsReportArtefactsDestroyResponse {}
-export const SignalsReportArtefactsDestroyResponse =
+const SignalsReportArtefactsDestroyResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<SignalsReportArtefactsDestroyResponse>;
 
 export interface SignalsReportArtefactsDiffRequest {
@@ -8323,7 +7442,7 @@ export interface SignalsReportArtefactsDiffRequest {
   /** A UUID string identifying this signal report artefact. */
   id: string;
 }
-export const SignalsReportArtefactsDiffRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportArtefactsDiffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -8346,7 +7465,7 @@ export interface CommitDiffResponse {
   /** True when the diff was too large to return in full and has been truncated. */
   truncated: boolean;
 }
-export const CommitDiffResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitDiffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: S.String,
     truncated: S.Boolean,
@@ -8360,7 +7479,7 @@ export interface SignalsReportChecksApproveCreateRequest {
   /** A UUID string identifying this Signal report check. */
   id: string;
 }
-export const SignalsReportChecksApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportChecksApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -8384,7 +7503,7 @@ export interface SignalsReportChecksDestroyRequest {
   /** A UUID string identifying this Signal report check. */
   id: string;
 }
-export const SignalsReportChecksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportChecksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -8413,7 +7532,7 @@ export interface SignalsReportChecksReplaceCreateRequest {
   /** Metric threshold configuration, including a bounded query and comparison. */
   config: MetricThresholdConfig;
 }
-export const SignalsReportChecksReplaceCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportChecksReplaceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -8440,7 +7559,7 @@ export interface SignalsReportPrChecksRequest {
   /** Select a PR from the report's pull_requests collection. Omit for the compatibility primary PR (unfinished first). */
   pull_request_id?: string;
 }
-export const SignalsReportPrChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportPrChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8467,7 +7586,7 @@ export interface PullRequestCheck {
   /** Link to the check run / status detail on GitHub. */
   url: string | null;
 }
-export const PullRequestCheck = /*@__PURE__*/ S.suspend(() =>
+const PullRequestCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     status: S.NullOr(S.String),
@@ -8477,7 +7596,7 @@ export const PullRequestCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullRequestCheck" }) as any as S.Schema<PullRequestCheck>;
 
 export type PullRequestChecksResponseChecksList = Array<PullRequestCheck>;
-export const PullRequestChecksResponseChecksList = /*@__PURE__*/ S.Array(
+const PullRequestChecksResponseChecksList = /*@__PURE__*/ S.Array(
   PullRequestCheck,
 ) as any as S.Schema<PullRequestChecksResponseChecksList>;
 
@@ -8485,7 +7604,7 @@ export const PullRequestChecksResponseChecksList = /*@__PURE__*/ S.Array(
 export interface PullRequestChecksResponse {
   checks: PullRequestChecksResponseChecksList;
 }
-export const PullRequestChecksResponse = /*@__PURE__*/ S.suspend(() =>
+const PullRequestChecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checks: PullRequestChecksResponseChecksList,
   }),
@@ -8501,7 +7620,7 @@ export interface SignalsReportPrCommentsRequest {
   /** Select a PR from the report's pull_requests collection. Omit for the compatibility primary PR (unfinished first). */
   pull_request_id?: string;
 }
-export const SignalsReportPrCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportPrCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8518,7 +7637,7 @@ export const SignalsReportPrCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsReportPrCommentsRequest>;
 
 export type PullRequestCommentsResponseCommentsList = Array<PullRequestComment>;
-export const PullRequestCommentsResponseCommentsList = /*@__PURE__*/ S.Array(
+const PullRequestCommentsResponseCommentsList = /*@__PURE__*/ S.Array(
   PullRequestComment,
 ) as any as S.Schema<PullRequestCommentsResponseCommentsList>;
 
@@ -8526,7 +7645,7 @@ export const PullRequestCommentsResponseCommentsList = /*@__PURE__*/ S.Array(
 export interface PullRequestCommentsResponse {
   comments: PullRequestCommentsResponseCommentsList;
 }
-export const PullRequestCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const PullRequestCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: PullRequestCommentsResponseCommentsList,
   }),
@@ -8536,7 +7655,7 @@ export const PullRequestCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Report ids to transition to `state` in one call (1-100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note`, `corrected_repository` and `snooze_for` apply to every id. */
 export type SignalsReportsBulkStateCreateRequestIdsList = Array<string>;
-export const SignalsReportsBulkStateCreateRequestIdsList =
+const SignalsReportsBulkStateCreateRequestIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsReportsBulkStateCreateRequestIdsList>;
 
 export interface SignalsReportsBulkStateCreateRequest {
@@ -8555,7 +7674,7 @@ export interface SignalsReportsBulkStateCreateRequest {
   /** Report ids to transition to `state` in one call (1-100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note`, `corrected_repository` and `snooze_for` apply to every id. */
   ids: SignalsReportsBulkStateCreateRequestIdsList;
 }
-export const SignalsReportsBulkStateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportsBulkStateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     state: SignalReportStateEnum,
@@ -8585,7 +7704,7 @@ export interface SignalReportBulkStateResult {
   /** Human-readable explanation for non-transitioned outcomes (skipped / failed / not_found). */
   detail?: string | null;
 }
-export const SignalReportBulkStateResult = /*@__PURE__*/ S.suspend(() =>
+const SignalReportBulkStateResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     outcome: S.String,
@@ -8598,7 +7717,7 @@ export const SignalReportBulkStateResult = /*@__PURE__*/ S.suspend(() =>
 
 /** One result per requested id, in request order (after de-duplication). */
 export type SignalReportBulkStateResponseResultsList = Array<SignalReportBulkStateResult>;
-export const SignalReportBulkStateResponseResultsList = /*@__PURE__*/ S.Array(
+const SignalReportBulkStateResponseResultsList = /*@__PURE__*/ S.Array(
   SignalReportBulkStateResult,
 ) as any as S.Schema<SignalReportBulkStateResponseResultsList>;
 
@@ -8614,7 +7733,7 @@ export interface SignalReportBulkStateResponse {
   /** Number of requested ids not visible to the caller. */
   not_found_count: number;
 }
-export const SignalReportBulkStateResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportBulkStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: SignalReportBulkStateResponseResultsList,
     transitioned_count: S.Number,
@@ -8632,7 +7751,7 @@ export interface SignalsReportsDestroyRequest {
   /** A UUID string identifying this signal report. */
   id: string;
 }
-export const SignalsReportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8649,8 +7768,6 @@ export const SignalsReportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `deletion_started` - deletion_started * `already_running` - already_running */
 export type SignalReportDeletionStatusStatusEnum = "deletion_started" | "already_running";
-export const SignalReportDeletionStatusStatusEnum = S.String;
-
 /** Envelope the report delete returns once it has kicked off the deletion workflow. */
 export interface SignalReportDeletionStatus {
   /** Whether this request started the deletion or found one already running. * `deletion_started` - deletion_started * `already_running` - already_running */
@@ -8658,7 +7775,7 @@ export interface SignalReportDeletionStatus {
   /** Report being deleted. */
   report_id: string;
 }
-export const SignalReportDeletionStatus =
+const SignalReportDeletionStatus =
   SignalReportReingestionStatus as any as S.Schema<SignalReportDeletionStatus>;
 
 export interface SignalsReportsPrCiStatusesRequest {
@@ -8667,7 +7784,7 @@ export interface SignalsReportsPrCiStatusesRequest {
   /** Comma-separated report UUIDs to resolve CI state for, at most 100 per request. */
   report_ids: string;
 }
-export const SignalsReportsPrCiStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportsPrCiStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_ids: S.String.pipe(T.Query()),
@@ -8684,7 +7801,7 @@ export const SignalsReportsPrCiStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `passing` - Passing * `failing` - Failing * `pending` - Pending * `none` - No checks */
 export type PullRequestCiStatusEnum = "passing" | "failing" | "pending" | "none";
-export const PullRequestCiStatusEnum = S.String;
+const PullRequestCiStatusEnum = S.String;
 
 /** The CI rollup of one report's implementation pull request. */
 export interface PullRequestCiStatus {
@@ -8693,7 +7810,7 @@ export interface PullRequestCiStatus {
   /** Rollup of the pull request's checks on its head commit: 'passing' (nothing failed), 'failing', 'pending' (checks are still running), or 'none' (the head commit has no checks). * `passing` - Passing * `failing` - Failing * `pending` - Pending * `none` - No checks */
   ci_status: PullRequestCiStatusEnum;
 }
-export const PullRequestCiStatus = /*@__PURE__*/ S.suspend(() =>
+const PullRequestCiStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_id: S.String,
     ci_status: PullRequestCiStatusEnum,
@@ -8702,7 +7819,7 @@ export const PullRequestCiStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per requested report whose CI state resolved. Reports without an open implementation pull request, and reports GitHub could not answer for, are left out. */
 export type PullRequestCiStatusesResponseStatusesList = Array<PullRequestCiStatus>;
-export const PullRequestCiStatusesResponseStatusesList = /*@__PURE__*/ S.Array(
+const PullRequestCiStatusesResponseStatusesList = /*@__PURE__*/ S.Array(
   PullRequestCiStatus,
 ) as any as S.Schema<PullRequestCiStatusesResponseStatusesList>;
 
@@ -8711,7 +7828,7 @@ export interface PullRequestCiStatusesResponse {
   /** One entry per requested report whose CI state resolved. Reports without an open implementation pull request, and reports GitHub could not answer for, are left out. */
   statuses: PullRequestCiStatusesResponseStatusesList;
 }
-export const PullRequestCiStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const PullRequestCiStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statuses: PullRequestCiStatusesResponseStatusesList,
   }),
@@ -8721,7 +7838,7 @@ export const PullRequestCiStatusesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Reports to read or update, limited to the current project. */
 export type SignalsReportsReadStateCreateRequestReportIdsList = Array<string>;
-export const SignalsReportsReadStateCreateRequestReportIdsList =
+const SignalsReportsReadStateCreateRequestReportIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsReportsReadStateCreateRequestReportIdsList>;
 
 export interface SignalsReportsReadStateCreateRequest {
@@ -8732,7 +7849,7 @@ export interface SignalsReportsReadStateCreateRequest {
   /** Set these reports read or unread for the current user. Omit to read their state. */
   read?: boolean;
 }
-export const SignalsReportsReadStateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportsReadStateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_ids: SignalsReportsReadStateCreateRequestReportIdsList,
@@ -8750,7 +7867,7 @@ export const SignalsReportsReadStateCreateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Read state keyed by report UUID. */
 export type ReportReadStateResponseStatesMap = { [key: string]: boolean | undefined };
-export const ReportReadStateResponseStatesMap = /*@__PURE__*/ S.Record(
+const ReportReadStateResponseStatesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean,
 ) as any as S.Schema<ReportReadStateResponseStatesMap>;
@@ -8759,7 +7876,7 @@ export interface ReportReadStateResponse {
   /** Read state keyed by report UUID. */
   states: ReportReadStateResponseStatesMap;
 }
-export const ReportReadStateResponse = /*@__PURE__*/ S.suspend(() =>
+const ReportReadStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     states: ReportReadStateResponseStatesMap,
   }),
@@ -8767,7 +7884,7 @@ export const ReportReadStateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Reports on screen, in display order. Each report's row metric is refreshed before any report's supporting metrics. At most 20 ids per call. */
 export type SignalsReportsRefreshMetricsCreateRequestReportIdsList = Array<string>;
-export const SignalsReportsRefreshMetricsCreateRequestReportIdsList =
+const SignalsReportsRefreshMetricsCreateRequestReportIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsReportsRefreshMetricsCreateRequestReportIdsList>;
 
 export interface SignalsReportsRefreshMetricsCreateRequest {
@@ -8776,7 +7893,7 @@ export interface SignalsReportsRefreshMetricsCreateRequest {
   /** Reports on screen, in display order. Each report's row metric is refreshed before any report's supporting metrics. At most 20 ids per call. */
   report_ids: SignalsReportsRefreshMetricsCreateRequestReportIdsList;
 }
-export const SignalsReportsRefreshMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsReportsRefreshMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_ids: SignalsReportsRefreshMetricsCreateRequestReportIdsList,
@@ -8793,7 +7910,7 @@ export const SignalsReportsRefreshMetricsCreateRequest = /*@__PURE__*/ S.suspend
 
 /** The report's metrics with their current snapshots, in display order. */
 export type SignalReportMetricSnapshotsMetricsList = Array<ReportMetricList>;
-export const SignalReportMetricSnapshotsMetricsList =
+const SignalReportMetricSnapshotsMetricsList =
   SignalReportListMetricsList as any as S.Schema<SignalReportMetricSnapshotsMetricsList>;
 
 export interface SignalReportMetricSnapshots {
@@ -8802,7 +7919,7 @@ export interface SignalReportMetricSnapshots {
   /** The report's metrics with their current snapshots, in display order. */
   metrics: SignalReportMetricSnapshotsMetricsList;
 }
-export const SignalReportMetricSnapshots = /*@__PURE__*/ S.suspend(() =>
+const SignalReportMetricSnapshots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     metrics: SignalReportMetricSnapshotsMetricsList,
@@ -8813,7 +7930,7 @@ export const SignalReportMetricSnapshots = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per requested report the caller can read whose status is ready or pending_input, in request order. A report in any other status has no entry. A metric whose snapshot was fresh, whose query failed, or whose budget ran out keeps its previous snapshot; merge by metric_id. */
 export type SignalReportMetricRefreshResponseReportsList = Array<SignalReportMetricSnapshots>;
-export const SignalReportMetricRefreshResponseReportsList = /*@__PURE__*/ S.Array(
+const SignalReportMetricRefreshResponseReportsList = /*@__PURE__*/ S.Array(
   SignalReportMetricSnapshots,
 ) as any as S.Schema<SignalReportMetricRefreshResponseReportsList>;
 
@@ -8821,7 +7938,7 @@ export interface SignalReportMetricRefreshResponse {
   /** One entry per requested report the caller can read whose status is ready or pending_input, in request order. A report in any other status has no entry. A metric whose snapshot was fresh, whose query failed, or whose budget ran out keeps its previous snapshot; merge by metric_id. */
   reports: SignalReportMetricRefreshResponseReportsList;
 }
-export const SignalReportMetricRefreshResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalReportMetricRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: SignalReportMetricRefreshResponseReportsList,
   }),
@@ -8835,7 +7952,7 @@ export interface SignalsScoutConfigDestroyRequest {
   /** A UUID string identifying this Signal scout config. */
   id: string;
 }
-export const SignalsScoutConfigDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -8851,14 +7968,14 @@ export const SignalsScoutConfigDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutConfigDestroyRequest>;
 
 export interface SignalsScoutConfigDestroyResponse {}
-export const SignalsScoutConfigDestroyResponse =
+const SignalsScoutConfigDestroyResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<SignalsScoutConfigDestroyResponse>;
 
 export interface SignalsScoutConfigToolCatalogueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const SignalsScoutConfigToolCatalogueRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigToolCatalogueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -8874,12 +7991,12 @@ export const SignalsScoutConfigToolCatalogueRequest = /*@__PURE__*/ S.suspend(()
 
 /** The API scopes a token must carry to call the tool. Empty for a tool that needs none. */
 export type ScoutToolCatalogueEntryRequiredScopesList = Array<string>;
-export const ScoutToolCatalogueEntryRequiredScopesList =
+const ScoutToolCatalogueEntryRequiredScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutToolCatalogueEntryRequiredScopesList>;
 
 /** Required scopes the baseline `signals_scout` preset does not carry. On a holdable tool these are what the scout has to be granted, or the preset it has to opt into. On a tool that is not holdable they include every scope no scout can reach, and can also include scopes a person can grant. Compare them with `grantable_write_scopes` and `presets` to tell the two apart. */
 export type ScoutToolCatalogueEntryMissingScopesList = Array<string>;
-export const ScoutToolCatalogueEntryMissingScopesList =
+const ScoutToolCatalogueEntryMissingScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutToolCatalogueEntryMissingScopesList>;
 
 /** One MCP tool, with what a scout would need to call it. */
@@ -8915,7 +8032,7 @@ export interface ScoutToolCatalogueEntry {
   /** Plan feature the organization must have for the tool to be served, or null when the tool is free. */
   feature_entitlement: string | null;
 }
-export const ScoutToolCatalogueEntry = /*@__PURE__*/ S.suspend(() =>
+const ScoutToolCatalogueEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     title: S.String,
@@ -8937,13 +8054,13 @@ export const ScoutToolCatalogueEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Every catalogued MCP tool, ordered by name. Tools that a successor has replaced are left out. */
 export type ScoutToolCatalogueToolsList = Array<ScoutToolCatalogueEntry>;
-export const ScoutToolCatalogueToolsList = /*@__PURE__*/ S.Array(
+const ScoutToolCatalogueToolsList = /*@__PURE__*/ S.Array(
   ScoutToolCatalogueEntry,
 ) as any as S.Schema<ScoutToolCatalogueToolsList>;
 
 /** Every scope a token minted from this preset carries, including the internal ones. */
 export type ScoutScopePresetScopesList = Array<string>;
-export const ScoutScopePresetScopesList =
+const ScoutScopePresetScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutScopePresetScopesList>;
 
 /** A scope preset a scout run can be dispatched with. */
@@ -8953,7 +8070,7 @@ export interface ScoutScopePreset {
   /** Every scope a token minted from this preset carries, including the internal ones. */
   scopes: ScoutScopePresetScopesList;
 }
-export const ScoutScopePreset = /*@__PURE__*/ S.suspend(() =>
+const ScoutScopePreset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     scopes: ScoutScopePresetScopesList,
@@ -8962,13 +8079,13 @@ export const ScoutScopePreset = /*@__PURE__*/ S.suspend(() =>
 
 /** The scope presets a scout run can be dispatched with, and the scopes each one resolves to. */
 export type ScoutToolCataloguePresetsList = Array<ScoutScopePreset>;
-export const ScoutToolCataloguePresetsList = /*@__PURE__*/ S.Array(
+const ScoutToolCataloguePresetsList = /*@__PURE__*/ S.Array(
   ScoutScopePreset,
 ) as any as S.Schema<ScoutToolCataloguePresetsList>;
 
 /** The write scopes a person can grant to one scout from its settings. A scope outside this set can never be added to a scout's token. */
 export type ScoutToolCatalogueGrantableWriteScopesList = Array<string>;
-export const ScoutToolCatalogueGrantableWriteScopesList =
+const ScoutToolCatalogueGrantableWriteScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutToolCatalogueGrantableWriteScopesList>;
 
 /** The MCP tool catalogue, with the scout scope postures to read it against. */
@@ -8980,7 +8097,7 @@ export interface ScoutToolCatalogue {
   /** The write scopes a person can grant to one scout from its settings. A scope outside this set can never be added to a scout's token. */
   grantable_write_scopes: ScoutToolCatalogueGrantableWriteScopesList;
 }
-export const ScoutToolCatalogue = /*@__PURE__*/ S.suspend(() =>
+const ScoutToolCatalogue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tools: ScoutToolCatalogueToolsList,
     presets: ScoutToolCataloguePresetsList,
@@ -9008,7 +8125,7 @@ export interface SignalsScoutConfigTrialRequest {
   /** Common investigation note, saved before applying any variant overrides. */
   note?: string;
 }
-export const SignalsScoutConfigTrialRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigTrialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -9031,9 +8148,9 @@ export const SignalsScoutConfigTrialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutConfigTrialRequest>;
 
 export interface SignalsScoutConfigTrialResponse {}
-export const SignalsScoutConfigTrialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "SignalsScoutConfigTrialResponse" },
-) as any as S.Schema<SignalsScoutConfigTrialResponse>;
+const SignalsScoutConfigTrialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "SignalsScoutConfigTrialResponse",
+}) as any as S.Schema<SignalsScoutConfigTrialResponse>;
 
 export interface SignalsScoutConfigTrialComparisonHistoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -9043,7 +8160,7 @@ export interface SignalsScoutConfigTrialComparisonHistoryRequest {
   /** Maximum number of recent private runs to return. */
   limit?: number;
 }
-export const SignalsScoutConfigTrialComparisonHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigTrialComparisonHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -9061,7 +8178,7 @@ export const SignalsScoutConfigTrialComparisonHistoryRequest = /*@__PURE__*/ S.s
 
 /** This operator's most recent saved comparisons. */
 export type ScoutTrialComparisonHistoryResultsList = Array<ScoutTrialComparison>;
-export const ScoutTrialComparisonHistoryResultsList = /*@__PURE__*/ S.Array(
+const ScoutTrialComparisonHistoryResultsList = /*@__PURE__*/ S.Array(
   ScoutTrialComparison,
 ) as any as S.Schema<ScoutTrialComparisonHistoryResultsList>;
 
@@ -9071,7 +8188,7 @@ export interface ScoutTrialComparisonHistory {
   /** Whether more comparisons exist than the requested limit. */
   has_more: boolean;
 }
-export const ScoutTrialComparisonHistory = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialComparisonHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ScoutTrialComparisonHistoryResultsList,
     has_more: S.Boolean,
@@ -9088,7 +8205,7 @@ export interface SignalsScoutConfigTrialHistoryRequest {
   /** Maximum number of recent private runs to return. */
   limit?: number;
 }
-export const SignalsScoutConfigTrialHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigTrialHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -9128,7 +8245,7 @@ export interface ScoutTrialHistoryItem {
   /** Task execution identity for logs. */
   task_run_id: string;
 }
-export const ScoutTrialHistoryItem = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialHistoryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     launch_id: S.String,
     context_id: S.String,
@@ -9146,7 +8263,7 @@ export const ScoutTrialHistoryItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Recent private runs started by this operator. */
 export type ScoutTrialHistoryResultsList = Array<ScoutTrialHistoryItem>;
-export const ScoutTrialHistoryResultsList = /*@__PURE__*/ S.Array(
+const ScoutTrialHistoryResultsList = /*@__PURE__*/ S.Array(
   ScoutTrialHistoryItem,
 ) as any as S.Schema<ScoutTrialHistoryResultsList>;
 
@@ -9156,7 +8273,7 @@ export interface ScoutTrialHistory {
   /** Whether additional recent runs exceed the requested limit. */
   has_more: boolean;
 }
-export const ScoutTrialHistory = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ScoutTrialHistoryResultsList,
     has_more: S.Boolean,
@@ -9171,7 +8288,7 @@ export interface SignalsScoutConfigTrialResultRequest {
   /** Launch identity returned by the trial action. */
   launch_id: string;
 }
-export const SignalsScoutConfigTrialResultRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigTrialResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -9188,41 +8305,33 @@ export const SignalsScoutConfigTrialResultRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SignalsScoutConfigTrialResultRequest>;
 
 export type TrialReportDocumentMap = { [key: string]: unknown | undefined };
-export const TrialReportDocumentMap =
+const TrialReportDocumentMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<TrialReportDocumentMap>;
 
 export type TrialReportPayloadMap = { [key: string]: unknown | undefined };
-export const TrialReportPayloadMap =
+const TrialReportPayloadMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<TrialReportPayloadMap>;
 
 export type TrialReportEditsItemMap = { [key: string]: unknown | undefined };
-export const TrialReportEditsItemMap =
+const TrialReportEditsItemMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<TrialReportEditsItemMap>;
 
 export type TrialReportEditsList = Array<TrialReportEditsItemMap>;
-export const TrialReportEditsList = /*@__PURE__*/ S.Array(
+const TrialReportEditsList = /*@__PURE__*/ S.Array(
   TrialReportEditsItemMap,
 ) as any as S.Schema<TrialReportEditsList>;
 
 export type TrialReportOperatorMetadataMap = { [key: string]: unknown | undefined };
-export const TrialReportOperatorMetadataMap =
+const TrialReportOperatorMetadataMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<TrialReportOperatorMetadataMap>;
 
 export type TrialReportEvidenceItemMap = { [key: string]: unknown | undefined };
-export const TrialReportEvidenceItemMap =
-  SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<TrialReportEvidenceItemMap>;
-
 export type TrialReportEvidenceList = Array<TrialReportEvidenceItemMap>;
-export const TrialReportEvidenceList =
-  TrialReportEditsList as any as S.Schema<TrialReportEvidenceList>;
+const TrialReportEvidenceList = TrialReportEditsList as any as S.Schema<TrialReportEvidenceList>;
 
 export type TrialReportArtefactsItemMap = { [key: string]: unknown | undefined };
-export const TrialReportArtefactsItemMap =
-  SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<TrialReportArtefactsItemMap>;
-
 export type TrialReportArtefactsList = Array<TrialReportArtefactsItemMap>;
-export const TrialReportArtefactsList =
-  TrialReportEditsList as any as S.Schema<TrialReportArtefactsList>;
+const TrialReportArtefactsList = TrialReportEditsList as any as S.Schema<TrialReportArtefactsList>;
 
 export interface TrialReport {
   id: string;
@@ -9236,7 +8345,7 @@ export interface TrialReport {
   content_revision_count?: number;
   corroboration_count?: number;
 }
-export const TrialReport = /*@__PURE__*/ S.suspend(() =>
+const TrialReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source_report_id: S.optional(S.NullOr(S.String)),
@@ -9253,13 +8362,13 @@ export const TrialReport = /*@__PURE__*/ S.suspend(() =>
 
 /** Privately captured report creations and edits. */
 export type ScoutTrialResultReportsList = Array<TrialReport>;
-export const ScoutTrialResultReportsList = /*@__PURE__*/ S.Array(
+const ScoutTrialResultReportsList = /*@__PURE__*/ S.Array(
   TrialReport,
 ) as any as S.Schema<ScoutTrialResultReportsList>;
 
 /** Private memory replacements and deleted keys for this run. */
 export type ScoutTrialResultMemoryMap = { [key: string]: ScratchpadEntry | null | undefined };
-export const ScoutTrialResultMemoryMap = /*@__PURE__*/ S.Record(
+const ScoutTrialResultMemoryMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(ScratchpadEntry),
 ) as any as S.Schema<ScoutTrialResultMemoryMap>;
@@ -9310,7 +8419,7 @@ export interface ScoutTrialResult {
   /** Output tokens reported by the agent runtime. */
   output_tokens: number | null;
 }
-export const ScoutTrialResult = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     launch_id: S.String,
     context_id: S.String,
@@ -9345,7 +8454,7 @@ export interface SignalsScoutConfigTrialSetupRequest {
   /** Saved comparison context to inspect instead of the current source skill. */
   context_id?: string;
 }
-export const SignalsScoutConfigTrialSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutConfigTrialSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -9363,7 +8472,7 @@ export const SignalsScoutConfigTrialSetupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Reasoning efforts supported by this model. */
 export type ScoutTrialModelChoiceReasoningEffortsList = Array<string>;
-export const ScoutTrialModelChoiceReasoningEffortsList =
+const ScoutTrialModelChoiceReasoningEffortsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<ScoutTrialModelChoiceReasoningEffortsList>;
 
 export interface ScoutTrialModelChoice {
@@ -9372,7 +8481,7 @@ export interface ScoutTrialModelChoice {
   /** Reasoning efforts supported by this model. */
   reasoning_efforts: ScoutTrialModelChoiceReasoningEffortsList;
 }
-export const ScoutTrialModelChoice = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialModelChoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.String,
     reasoning_efforts: ScoutTrialModelChoiceReasoningEffortsList,
@@ -9381,7 +8490,7 @@ export const ScoutTrialModelChoice = /*@__PURE__*/ S.suspend(() =>
 
 /** Available models and their supported efforts. */
 export type ScoutTrialSetupModelsList = Array<ScoutTrialModelChoice>;
-export const ScoutTrialSetupModelsList = /*@__PURE__*/ S.Array(
+const ScoutTrialSetupModelsList = /*@__PURE__*/ S.Array(
   ScoutTrialModelChoice,
 ) as any as S.Schema<ScoutTrialSetupModelsList>;
 
@@ -9405,7 +8514,7 @@ export interface ScoutTrialSetup {
   /** Available models and their supported efforts. */
   models: ScoutTrialSetupModelsList;
 }
-export const ScoutTrialSetup = /*@__PURE__*/ S.suspend(() =>
+const ScoutTrialSetup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config_id: S.String,
     skill_name: S.String,
@@ -9421,32 +8530,32 @@ export const ScoutTrialSetup = /*@__PURE__*/ S.suspend(() =>
 
 /** The observations backing the report -- each becomes a bound signal. At least one. */
 export type SignalsScoutEmitReportRequestEvidenceList = Array<ReportEvidence>;
-export const SignalsScoutEmitReportRequestEvidenceList =
+const SignalsScoutEmitReportRequestEvidenceList =
   EditSignalsScoutReportRequestAppendEvidenceList as any as S.Schema<SignalsScoutEmitReportRequestEvidenceList>;
 
 /** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human -- the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved -- so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
 export type SignalsScoutEmitReportRequestSuggestedReviewersList = Array<SuggestedReviewer>;
-export const SignalsScoutEmitReportRequestSuggestedReviewersList =
+const SignalsScoutEmitReportRequestSuggestedReviewersList =
   EditSignalsScoutReportRequestSuggestedReviewersList as any as S.Schema<SignalsScoutEmitReportRequestSuggestedReviewersList>;
 
 /** Optional charts to attach to the report -- the inbox renders them inline, so a metric move is something the reader sees rather than a number they take on trust. Attach one whenever the finding rests on a trend, a spike, or a comparison you already queried. */
 export type SignalsScoutEmitReportRequestChartsList = Array<ReportChart>;
-export const SignalsScoutEmitReportRequestChartsList =
+const SignalsScoutEmitReportRequestChartsList =
   SignalReportChartsList as any as S.Schema<SignalsScoutEmitReportRequestChartsList>;
 
 /** Optional typed impact measurements. Use one primary metric for the key observation and supporting metrics for users, sessions, occurrences, conversion, latency, or revenue. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes. A value/value_at snapshot is an optional cached fallback. Affected users must use one series with `math: dau`. Snapshot-only/queryless payloads are invalid; legacy rows of that shape are always redacted. */
 export type SignalsScoutEmitReportRequestMetricsList = Array<ReportMetricWrite>;
-export const SignalsScoutEmitReportRequestMetricsList =
+const SignalsScoutEmitReportRequestMetricsList =
   EditSignalsScoutReportRequestMetricsList as any as S.Schema<SignalsScoutEmitReportRequestMetricsList>;
 
 /** Optional follow-up prompts to offer above the report's `Ask AI` box: questions to ask, or next-step actions to request (e.g. carrying out the report's recommendation). The reader clicks one to fill the box with it, then sends or edits it. Write the prompts your own research left open, phrased as the reader would send them. */
 export type SignalsScoutEmitReportRequestSuggestedPromptsList = Array<string>;
-export const SignalsScoutEmitReportRequestSuggestedPromptsList =
+const SignalsScoutEmitReportRequestSuggestedPromptsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsScoutEmitReportRequestSuggestedPromptsList>;
 
 /** Typed, directed links from the new report to reports that already exist. Send them here, not in a later `edit-report` call, because autostart reads them when the report is created: a `duplicate_of` link to a report that already has a pull request, or a `depends_on` link to a report with no pull request yet, stops a second draft PR. Only the new report gets a row, so link from the side the sentence starts at. Links of the same kind must stay acyclic and every report must be in this project. */
 export type SignalsScoutEmitReportRequestLinksList = Array<ReportLinkWrite>;
-export const SignalsScoutEmitReportRequestLinksList =
+const SignalsScoutEmitReportRequestLinksList =
   EditSignalsScoutReportRequestLinksList as any as S.Schema<SignalsScoutEmitReportRequestLinksList>;
 
 export interface SignalsScoutEmitReportRequest {
@@ -9485,7 +8594,7 @@ export interface SignalsScoutEmitReportRequest {
   /** Optional name for this emission, unique within the run. Reuse it verbatim to retry a call whose outcome you don't know (a timeout, a dropped connection): the retry returns the report the first call authored, with `idempotent_replay` true, instead of a second report. Omit it and the report's own content is the key, which covers a retry of the identical call -- pass one when a retry might reword the report. */
   idempotency_key?: string | null;
 }
-export const SignalsScoutEmitReportRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutEmitReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -9531,7 +8640,7 @@ export interface EmitReportResponse {
   /** True when this call authored nothing because the emission had already landed -- the fields above describe that first report. Expected on a retry; treat the report as filed and don't send it again. */
   idempotent_replay: boolean;
 }
-export const EmitReportResponse = /*@__PURE__*/ S.suspend(() =>
+const EmitReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_id: S.NullOr(S.String),
     report_status: S.NullOr(S.String),
@@ -9545,7 +8654,7 @@ export const EmitReportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `desktop` - desktop * `mobile` - mobile */
 export type FormFactorEnum = "desktop" | "mobile";
-export const FormFactorEnum = S.String;
+const FormFactorEnum = S.String;
 
 export interface SignalsScoutLighthouseAuditRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -9557,7 +8666,7 @@ export interface SignalsScoutLighthouseAuditRequest {
   /** Which device profile to emulate. Desktop and mobile produce different numbers, so audit the one whose field data you are explaining. * `desktop` - desktop * `mobile` - mobile */
   form_factor?: FormFactorEnum | (string & {});
 }
-export const SignalsScoutLighthouseAuditRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutLighthouseAuditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -9576,7 +8685,7 @@ export const SignalsScoutLighthouseAuditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Lab metrics from this run: `lcp_ms`, `fcp_ms`, `cls`, `tbt_ms`, `speed_index_ms`, `tti_ms`. One throttled cold load, not a p75 over real users -- use it to explain a field finding, never to replace one. */
 export type LighthouseAuditResponseMetricsMap = { [key: string]: number | undefined };
-export const LighthouseAuditResponseMetricsMap =
+const LighthouseAuditResponseMetricsMap =
   ReportRankingScoresMap as any as S.Schema<LighthouseAuditResponseMetricsMap>;
 
 /** The element the browser chose as the Largest Contentful Paint. */
@@ -9588,7 +8697,7 @@ export interface LcpElement {
   /** Human-readable label, usually the alt or text. */
   node_label: string | null;
 }
-export const LcpElement = /*@__PURE__*/ S.suspend(() =>
+const LcpElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.NullOr(S.String),
     snippet: S.NullOr(S.String),
@@ -9605,7 +8714,7 @@ export interface LcpPhase {
   /** This subpart's share of the total LCP, e.g. '62%'. */
   percent: string | null;
 }
-export const LcpPhase = /*@__PURE__*/ S.suspend(() =>
+const LcpPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: S.String,
     timing_ms: S.NullOr(S.Number),
@@ -9615,7 +8724,7 @@ export const LcpPhase = /*@__PURE__*/ S.suspend(() =>
 
 /** Where the LCP time went, phase by phase. Empty when the report omits the breakdown. */
 export type LighthouseAuditResponseLcpPhasesList = Array<LcpPhase>;
-export const LighthouseAuditResponseLcpPhasesList = /*@__PURE__*/ S.Array(
+const LighthouseAuditResponseLcpPhasesList = /*@__PURE__*/ S.Array(
   LcpPhase,
 ) as any as S.Schema<LighthouseAuditResponseLcpPhasesList>;
 
@@ -9628,7 +8737,7 @@ export interface AuditOpportunity {
   /** Estimated milliseconds this would save. Null for a pass/fail check with no estimate. */
   savings_ms: number | null;
 }
-export const AuditOpportunity = /*@__PURE__*/ S.suspend(() =>
+const AuditOpportunity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audit_id: S.String,
     title: S.String,
@@ -9638,13 +8747,13 @@ export const AuditOpportunity = /*@__PURE__*/ S.suspend(() =>
 
 /** LCP-specific checks this page failed, such as an unprioritized or lazy-loaded hero image. */
 export type LighthouseAuditResponseLcpChecksFailedList = Array<AuditOpportunity>;
-export const LighthouseAuditResponseLcpChecksFailedList = /*@__PURE__*/ S.Array(
+const LighthouseAuditResponseLcpChecksFailedList = /*@__PURE__*/ S.Array(
   AuditOpportunity,
 ) as any as S.Schema<LighthouseAuditResponseLcpChecksFailedList>;
 
 /** Ranked savings estimates across the whole page, largest first. */
 export type LighthouseAuditResponseOpportunitiesList = Array<AuditOpportunity>;
-export const LighthouseAuditResponseOpportunitiesList =
+const LighthouseAuditResponseOpportunitiesList =
   LighthouseAuditResponseLcpChecksFailedList as any as S.Schema<LighthouseAuditResponseOpportunitiesList>;
 
 /** The audit, reduced to what a web vitals finding cites. The full Lighthouse report runs to a few hundred KB of detail no finding ever quotes, so the response carries the metrics, the LCP element and its phase breakdown, and the ranked opportunities, and drops the rest. */
@@ -9672,7 +8781,7 @@ export interface LighthouseAuditResponse {
   /** How many audits this run may still spend. Each run gets 5. */
   audits_remaining: number;
 }
-export const LighthouseAuditResponse = /*@__PURE__*/ S.suspend(() =>
+const LighthouseAuditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requested_url: S.String,
     final_url: S.NullOr(S.String),
@@ -9693,7 +8802,7 @@ export interface SignalsScoutNotesDestroyRequest {
   project_id: string;
   id: string;
 }
-export const SignalsScoutNotesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutNotesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -9709,12 +8818,12 @@ export const SignalsScoutNotesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsScoutNotesDestroyRequest>;
 
 export interface SignalsScoutNotesDestroyResponse {}
-export const SignalsScoutNotesDestroyResponse =
+const SignalsScoutNotesDestroyResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<SignalsScoutNotesDestroyResponse>;
 
 /** The record itself, as a JSON object. Must validate against the scout config's `structured_output_schema` (shown in the run prompt); any invalid record fails the whole call with nothing written. */
 export type StructuredOutputRecordPayloadMap = { [key: string]: unknown | undefined };
-export const StructuredOutputRecordPayloadMap =
+const StructuredOutputRecordPayloadMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<StructuredOutputRecordPayloadMap>;
 
 /** One record submitted through `scout-record-output`. */
@@ -9724,7 +8833,7 @@ export interface StructuredOutputRecord {
   /** Optional key naming what this record is about -- a report id, URL, account key -- so per-entity lookups don't need to parse `payload`. Omit for a run-level record. */
   subject?: string | null;
 }
-export const StructuredOutputRecord = /*@__PURE__*/ S.suspend(() =>
+const StructuredOutputRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: StructuredOutputRecordPayloadMap,
     subject: S.optional(S.NullOr(S.String)),
@@ -9733,7 +8842,7 @@ export const StructuredOutputRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Records to record, each validated against the scout config's `structured_output_schema`. All-or-nothing: if any record fails validation, nothing is written and the error names the failing records. Capped at 100 per call; batch per-entity judgments rather than calling once per record. */
 export type SignalsScoutRecordOutputRequestRecordsList = Array<StructuredOutputRecord>;
-export const SignalsScoutRecordOutputRequestRecordsList = /*@__PURE__*/ S.Array(
+const SignalsScoutRecordOutputRequestRecordsList = /*@__PURE__*/ S.Array(
   StructuredOutputRecord,
 ) as any as S.Schema<SignalsScoutRecordOutputRequestRecordsList>;
 
@@ -9745,7 +8854,7 @@ export interface SignalsScoutRecordOutputRequest {
   /** Records to record, each validated against the scout config's `structured_output_schema`. All-or-nothing: if any record fails validation, nothing is written and the error names the failing records. Capped at 100 per call; batch per-entity judgments rather than calling once per record. */
   records: SignalsScoutRecordOutputRequestRecordsList;
 }
-export const SignalsScoutRecordOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRecordOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -9763,7 +8872,7 @@ export const SignalsScoutRecordOutputRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deterministic event ids of the recorded `$scout_structured_output` events, in submission order. Stable across a resubmission of the identical batch, which is what makes retrying a failed delivery safe. */
 export type RecordStructuredOutputResponseRecordIdsList = Array<string>;
-export const RecordStructuredOutputResponseRecordIdsList =
+const RecordStructuredOutputResponseRecordIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<RecordStructuredOutputResponseRecordIdsList>;
 
 /** Outcome of an accepted `scout-record-output` call. */
@@ -9773,7 +8882,7 @@ export interface RecordStructuredOutputResponse {
   /** Deterministic event ids of the recorded `$scout_structured_output` events, in submission order. Stable across a resubmission of the identical batch, which is what makes retrying a failed delivery safe. */
   record_ids: RecordStructuredOutputResponseRecordIdsList;
 }
-export const RecordStructuredOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const RecordStructuredOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recorded_count: S.Number,
     record_ids: RecordStructuredOutputResponseRecordIdsList,
@@ -9788,7 +8897,7 @@ export interface SignalsScoutRunsCostsRequest {
   /** Window in days over runs' `created_at` (default 7). Only 7 is accepted today -- it matches the window the roster's fleet headline spans, so every number on the page describes one span. */
   window_days?: number;
 }
-export const SignalsScoutRunsCostsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsCostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     window_days: S.optional(S.Number.pipe(T.Query())),
@@ -9816,7 +8925,7 @@ export interface ScoutCost {
   /** Distinct inbox reports the scout filed or added to in the window. A report it authored in one run and edited in three counts once. Zero means the scout produced no reports, so cost per report has no value rather than a value of zero. */
   reports_touched: number;
 }
-export const ScoutCost = /*@__PURE__*/ S.suspend(() =>
+const ScoutCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     spend_usd: S.Number,
@@ -9828,7 +8937,7 @@ export const ScoutCost = /*@__PURE__*/ S.suspend(() =>
 
 /** One row per scout that started at least one run on this project in the window. */
 export type ScoutCostsScoutsList = Array<ScoutCost>;
-export const ScoutCostsScoutsList = /*@__PURE__*/ S.Array(
+const ScoutCostsScoutsList = /*@__PURE__*/ S.Array(
   ScoutCost,
 ) as any as S.Schema<ScoutCostsScoutsList>;
 
@@ -9841,7 +8950,7 @@ export interface ScoutCosts {
   /** False when this deployment has no internal AI observability project to read the generations from, so `scouts` is empty and every spend is unknown rather than zero. */
   available: boolean;
 }
-export const ScoutCosts = /*@__PURE__*/ S.suspend(() =>
+const ScoutCosts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     scouts: ScoutCostsScoutsList,
@@ -9855,7 +8964,7 @@ export interface SignalsScoutRunsEmissionReportsRequest {
   /** UUID of the `SignalScoutRun` bridge row. */
   run_id: string;
 }
-export const SignalsScoutRunsEmissionReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsEmissionReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -9879,7 +8988,7 @@ export interface LinkedSignalReport {
   /** Current report status (e.g. `potential`, `ready`, `resolved`). */
   status: string;
 }
-export const LinkedSignalReport = /*@__PURE__*/ S.suspend(() =>
+const LinkedSignalReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -9896,7 +9005,7 @@ export interface ScoutEmissionReportLink {
   /** The inbox report this finding linked to, or null if none could be resolved. */
   report: LinkedSignalReport | null;
 }
-export const ScoutEmissionReportLink = /*@__PURE__*/ S.suspend(() =>
+const ScoutEmissionReportLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finding_id: S.String,
     source_id: S.String,
@@ -9905,13 +9014,13 @@ export const ScoutEmissionReportLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScoutEmissionReportLink" }) as any as S.Schema<ScoutEmissionReportLink>;
 
 export type SignalsScoutRunsEmissionReportsResponseBodyList = Array<ScoutEmissionReportLink>;
-export const SignalsScoutRunsEmissionReportsResponseBodyList = /*@__PURE__*/ S.Array(
+const SignalsScoutRunsEmissionReportsResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutEmissionReportLink,
 ) as any as S.Schema<SignalsScoutRunsEmissionReportsResponseBodyList>;
 
 export type SignalsScoutRunsEmissionReportsResponse =
   SignalsScoutRunsEmissionReportsResponseBodyList;
-export const SignalsScoutRunsEmissionReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsEmissionReportsResponse = /*@__PURE__*/ S.suspend(() =>
   SignalsScoutRunsEmissionReportsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "SignalsScoutRunsEmissionReportsResponse",
@@ -9919,7 +9028,7 @@ export const SignalsScoutRunsEmissionReportsResponse = /*@__PURE__*/ S.suspend((
 
 /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
 export type SignalsScoutRunsEmissionReportsBatchRequestRunIdsList = Array<string>;
-export const SignalsScoutRunsEmissionReportsBatchRequestRunIdsList =
+const SignalsScoutRunsEmissionReportsBatchRequestRunIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsScoutRunsEmissionReportsBatchRequestRunIdsList>;
 
 export interface SignalsScoutRunsEmissionReportsBatchRequest {
@@ -9928,7 +9037,7 @@ export interface SignalsScoutRunsEmissionReportsBatchRequest {
   /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
   run_ids: SignalsScoutRunsEmissionReportsBatchRequestRunIdsList;
 }
-export const SignalsScoutRunsEmissionReportsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsEmissionReportsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_ids: SignalsScoutRunsEmissionReportsBatchRequestRunIdsList,
@@ -9944,12 +9053,9 @@ export const SignalsScoutRunsEmissionReportsBatchRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<SignalsScoutRunsEmissionReportsBatchRequest>;
 
 export type SignalsScoutRunsEmissionReportsBatchResponseBodyList = Array<ScoutEmissionReportLink>;
-export const SignalsScoutRunsEmissionReportsBatchResponseBodyList =
-  SignalsScoutRunsEmissionReportsResponseBodyList as any as S.Schema<SignalsScoutRunsEmissionReportsBatchResponseBodyList>;
-
 export type SignalsScoutRunsEmissionReportsBatchResponse =
   SignalsScoutRunsEmissionReportsBatchResponseBodyList;
-export const SignalsScoutRunsEmissionReportsBatchResponse =
+const SignalsScoutRunsEmissionReportsBatchResponse =
   SignalsScoutRunsEmissionReportsResponse as any as S.Schema<SignalsScoutRunsEmissionReportsBatchResponse>;
 
 export interface SignalsScoutRunsEmissionsRequest {
@@ -9958,7 +9064,7 @@ export interface SignalsScoutRunsEmissionsRequest {
   /** UUID of the `SignalScoutRun` bridge row. */
   run_id: string;
 }
-export const SignalsScoutRunsEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -9975,7 +9081,7 @@ export const SignalsScoutRunsEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Slug tags the scout attached to this finding (lowercase kebab-case, e.g. `cost-spike`). Empty list when the run set none. */
 export type SignalScoutEmissionTagsList = Array<string>;
-export const SignalScoutEmissionTagsList =
+const SignalScoutEmissionTagsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutEmissionTagsList>;
 
 /** One finding a scout run emitted to the inbox -- the persisted, queryable record of *what* the run surfaced, returned by `scout-runs-emissions-list`. The emitted text lives in `description`; `source_id` is the join key (`run:<run_id>:finding:<finding_id>`) back into the underlying signal store. */
@@ -9996,7 +9102,7 @@ export interface SignalScoutEmission {
   /** ISO-8601 timestamp the finding was emitted. */
   emitted_at: string;
 }
-export const SignalScoutEmission = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutEmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     run_id: S.String,
@@ -10010,12 +9116,12 @@ export const SignalScoutEmission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalScoutEmission" }) as any as S.Schema<SignalScoutEmission>;
 
 export type SignalsScoutRunsEmissionsResponseBodyList = Array<SignalScoutEmission>;
-export const SignalsScoutRunsEmissionsResponseBodyList = /*@__PURE__*/ S.Array(
+const SignalsScoutRunsEmissionsResponseBodyList = /*@__PURE__*/ S.Array(
   SignalScoutEmission,
 ) as any as S.Schema<SignalsScoutRunsEmissionsResponseBodyList>;
 
 export type SignalsScoutRunsEmissionsResponse = SignalsScoutRunsEmissionsResponseBodyList;
-export const SignalsScoutRunsEmissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsEmissionsResponse = /*@__PURE__*/ S.suspend(() =>
   SignalsScoutRunsEmissionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "SignalsScoutRunsEmissionsResponse",
@@ -10023,7 +9129,7 @@ export const SignalsScoutRunsEmissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
 export type SignalsScoutRunsEmissionsBatchRequestRunIdsList = Array<string>;
-export const SignalsScoutRunsEmissionsBatchRequestRunIdsList =
+const SignalsScoutRunsEmissionsBatchRequestRunIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsScoutRunsEmissionsBatchRequestRunIdsList>;
 
 export interface SignalsScoutRunsEmissionsBatchRequest {
@@ -10032,7 +9138,7 @@ export interface SignalsScoutRunsEmissionsBatchRequest {
   /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
   run_ids: SignalsScoutRunsEmissionsBatchRequestRunIdsList;
 }
-export const SignalsScoutRunsEmissionsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsEmissionsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_ids: SignalsScoutRunsEmissionsBatchRequestRunIdsList,
@@ -10048,11 +9154,8 @@ export const SignalsScoutRunsEmissionsBatchRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SignalsScoutRunsEmissionsBatchRequest>;
 
 export type SignalsScoutRunsEmissionsBatchResponseBodyList = Array<SignalScoutEmission>;
-export const SignalsScoutRunsEmissionsBatchResponseBodyList =
-  SignalsScoutRunsEmissionsResponseBodyList as any as S.Schema<SignalsScoutRunsEmissionsBatchResponseBodyList>;
-
 export type SignalsScoutRunsEmissionsBatchResponse = SignalsScoutRunsEmissionsBatchResponseBodyList;
-export const SignalsScoutRunsEmissionsBatchResponse =
+const SignalsScoutRunsEmissionsBatchResponse =
   SignalsScoutRunsEmissionsResponse as any as S.Schema<SignalsScoutRunsEmissionsBatchResponse>;
 
 export interface SignalsScoutRunsFindingsSummaryRequest {
@@ -10061,7 +9164,7 @@ export interface SignalsScoutRunsFindingsSummaryRequest {
   /** Lookback window in hours over runs' `created_at` (default 72, hard cap 168). */
   window_hours?: number;
 }
-export const SignalsScoutRunsFindingsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsFindingsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     window_hours: S.optional(S.Number.pipe(T.Query())),
@@ -10091,7 +9194,7 @@ export interface FleetFindingsSummary {
   /** ISO-8601 timestamp of the most recent output run (TaskRun completion, falling back to run creation), or null when nothing was produced in the window. */
   latest_at: string | null;
 }
-export const FleetFindingsSummary = /*@__PURE__*/ S.suspend(() =>
+const FleetFindingsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     scout_count: S.Number,
@@ -10114,7 +9217,7 @@ export interface SignalsScoutRunsRecentEmissionsRequest {
   /** Exact-match filter on the emitting scout's skill (e.g. `signals-scout-errors`). Narrows to findings one specialist surfaced; omit to span every scout on the team. */
   skill_name?: string;
 }
-export const SignalsScoutRunsRecentEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsRecentEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -10133,12 +9236,9 @@ export const SignalsScoutRunsRecentEmissionsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SignalsScoutRunsRecentEmissionsRequest>;
 
 export type SignalsScoutRunsRecentEmissionsResponseBodyList = Array<SignalScoutEmission>;
-export const SignalsScoutRunsRecentEmissionsResponseBodyList =
-  SignalsScoutRunsEmissionsResponseBodyList as any as S.Schema<SignalsScoutRunsRecentEmissionsResponseBodyList>;
-
 export type SignalsScoutRunsRecentEmissionsResponse =
   SignalsScoutRunsRecentEmissionsResponseBodyList;
-export const SignalsScoutRunsRecentEmissionsResponse =
+const SignalsScoutRunsRecentEmissionsResponse =
   SignalsScoutRunsEmissionsResponse as any as S.Schema<SignalsScoutRunsRecentEmissionsResponse>;
 
 export interface SignalsScoutRunsRecentPerScoutRequest {
@@ -10149,7 +9249,7 @@ export interface SignalsScoutRunsRecentPerScoutRequest {
   /** How many of each scout's most recent runs to return (default 25, hard cap 100). The count is per scout, so a scout's history depth does not depend on how often the rest of the fleet runs. */
   per_scout_limit?: number;
 }
-export const SignalsScoutRunsRecentPerScoutRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsRecentPerScoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     max_age_days: S.optional(S.Number.pipe(T.Query())),
@@ -10166,16 +9266,13 @@ export const SignalsScoutRunsRecentPerScoutRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SignalsScoutRunsRecentPerScoutRequest>;
 
 export type SignalsScoutRunsRecentPerScoutResponseBodyList = Array<SignalScoutRunSummary>;
-export const SignalsScoutRunsRecentPerScoutResponseBodyList =
-  ListSignalsScoutRunsResponseBodyList as any as S.Schema<SignalsScoutRunsRecentPerScoutResponseBodyList>;
-
 export type SignalsScoutRunsRecentPerScoutResponse = SignalsScoutRunsRecentPerScoutResponseBodyList;
-export const SignalsScoutRunsRecentPerScoutResponse =
+const SignalsScoutRunsRecentPerScoutResponse =
   ListSignalsScoutRunsResponse as any as S.Schema<SignalsScoutRunsRecentPerScoutResponse>;
 
 /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
 export type SignalsScoutRunsTokenCostsRequestRunIdsList = Array<string>;
-export const SignalsScoutRunsTokenCostsRequestRunIdsList =
+const SignalsScoutRunsTokenCostsRequestRunIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalsScoutRunsTokenCostsRequestRunIdsList>;
 
 export interface SignalsScoutRunsTokenCostsRequest {
@@ -10184,7 +9281,7 @@ export interface SignalsScoutRunsTokenCostsRequest {
   /** UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call. */
   run_ids: SignalsScoutRunsTokenCostsRequestRunIdsList;
 }
-export const SignalsScoutRunsTokenCostsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutRunsTokenCostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_ids: SignalsScoutRunsTokenCostsRequestRunIdsList,
@@ -10206,7 +9303,7 @@ export interface ScoutRunTokenCost {
   /** Model spend attributed to the run in US dollars, summed from its `$ai_generation` events. Null when no generation is attributed to the run -- it failed before its first model call, or its events haven't landed yet. A run still in progress reports what it has spent so far. */
   token_cost_usd: number | null;
 }
-export const ScoutRunTokenCost = /*@__PURE__*/ S.suspend(() =>
+const ScoutRunTokenCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     token_cost_usd: S.NullOr(S.Number),
@@ -10215,7 +9312,7 @@ export const ScoutRunTokenCost = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per requested run that exists on this project. Runs from another project, and ids that match no run, are absent. */
 export type ScoutRunTokenCostsCostsList = Array<ScoutRunTokenCost>;
-export const ScoutRunTokenCostsCostsList = /*@__PURE__*/ S.Array(
+const ScoutRunTokenCostsCostsList = /*@__PURE__*/ S.Array(
   ScoutRunTokenCost,
 ) as any as S.Schema<ScoutRunTokenCostsCostsList>;
 
@@ -10226,7 +9323,7 @@ export interface ScoutRunTokenCosts {
   /** False when this deployment has no internal AI observability project to read the generations from, so `costs` is empty and every cost is unknown rather than zero. */
   available: boolean;
 }
-export const ScoutRunTokenCosts = /*@__PURE__*/ S.suspend(() =>
+const ScoutRunTokenCosts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costs: ScoutRunTokenCostsCostsList,
     available: S.Boolean,
@@ -10239,7 +9336,7 @@ export interface SignalsScoutScratchpadForgetRequest {
   /** Memory key to delete. */
   key: string;
 }
-export const SignalsScoutScratchpadForgetRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutScratchpadForgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key: S.String,
@@ -10258,7 +9355,7 @@ export interface ForgetResponse {
   /** Whether a row was actually removed (false if the key didn't exist). */
   deleted: boolean;
 }
-export const ForgetResponse = /*@__PURE__*/ S.suspend(() =>
+const ForgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
   }),
@@ -10276,7 +9373,7 @@ export interface SignalsScoutScratchpadRememberRequest {
   /** Optional ISO-8601 expiry for a memory that's only true for a while (a cooldown, a window you're watching). After this time the entry drops out of searches, so you don't have to come back and forget it. Omit for a durable memory -- every write sets the whole entry, so omitting it on a later write clears an expiry set earlier. Best-effort -- a value that can't be parsed or is already in the past is dropped (the memory stays durable), not rejected, so the memory write is never lost. */
   expires_at?: string | null;
 }
-export const SignalsScoutScratchpadRememberRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsScoutScratchpadRememberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key: S.String,
@@ -10300,7 +9397,7 @@ export interface SignalsSourceConfigsDestroyRequest {
   /** A UUID string identifying this signal source config. */
   id: string;
 }
-export const SignalsSourceConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalsSourceConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10316,11 +9413,11 @@ export const SignalsSourceConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalsSourceConfigsDestroyRequest>;
 
 export interface SignalsSourceConfigsDestroyResponse {}
-export const SignalsSourceConfigsDestroyResponse =
+const SignalsSourceConfigsDestroyResponse =
   CreateSignalsReportsViewedResponse as any as S.Schema<SignalsSourceConfigsDestroyResponse>;
 
 export type SyncSignalsScoutConfigRequestSurface = "roster" | "desktop" | "wizard";
-export const SyncSignalsScoutConfigRequestSurface = S.String;
+const SyncSignalsScoutConfigRequestSurface = S.String;
 
 export interface SyncSignalsScoutConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -10328,7 +9425,7 @@ export interface SyncSignalsScoutConfigRequest {
   /** Which surface asked for the materialization, recorded on the `signals_scout_fleet_synced` analytics event so a fleet a person's tab-open delivered is separable from one the coordinator was going to deliver anyway. Omitted means unknown. * `roster` - roster * `desktop` - desktop * `wizard` - wizard */
   surface?: SyncSignalsScoutConfigRequestSurface | (string & {});
 }
-export const SyncSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     surface: S.optional(SyncSignalsScoutConfigRequestSurface.pipe(T.Query())),
@@ -10344,11 +9441,8 @@ export const SyncSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncSignalsScoutConfigRequest>;
 
 export type SyncSignalsScoutConfigResponseBodyList = Array<SignalScoutConfig>;
-export const SyncSignalsScoutConfigResponseBodyList =
-  ListSignalsScoutConfigResponseBodyList as any as S.Schema<SyncSignalsScoutConfigResponseBodyList>;
-
 export type SyncSignalsScoutConfigResponse = SyncSignalsScoutConfigResponseBodyList;
-export const SyncSignalsScoutConfigResponse =
+const SyncSignalsScoutConfigResponse =
   ListSignalsScoutConfigResponse as any as S.Schema<SyncSignalsScoutConfigResponse>;
 
 export interface UpdateSignalsProcessingPauseRequest {
@@ -10357,7 +9451,7 @@ export interface UpdateSignalsProcessingPauseRequest {
   /** Pause the grouping pipeline until this timestamp (ISO 8601). */
   timestamp?: string;
 }
-export const UpdateSignalsProcessingPauseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsProcessingPauseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     timestamp: S.optional(S.String),
@@ -10382,7 +9476,7 @@ export interface UpdateSignalsReportArtefactsPartialRequest {
   /** The new artefact payload as a JSON object or array, matching the artefact type's schema. */
   content?: unknown;
 }
-export const UpdateSignalsReportArtefactsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsReportArtefactsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     report_id: S.String.pipe(T.Label()),
@@ -10410,7 +9504,7 @@ export interface UpdateSignalsReportPrReviewCommentRequest {
   /** New comment body (GitHub-flavored markdown). */
   body?: string;
 }
-export const UpdateSignalsReportPrReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsReportPrReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10438,7 +9532,7 @@ export interface UpdateSignalsReportsPartialRequest {
   /** New summary (the report's description) explaining what the report is about. Omit to leave the summary unchanged. */
   summary?: string;
 }
-export const UpdateSignalsReportsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsReportsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10462,7 +9556,7 @@ export interface SuggestedReviewerEntryWrite {
   /** Optional short evidence for why this reviewer was chosen. Omitted entries keep the prior reason for reviewers already on the report. */
   reason?: string | null;
 }
-export const SuggestedReviewerEntryWrite = /*@__PURE__*/ S.suspend(() =>
+const SuggestedReviewerEntryWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     github_login: S.optional(S.String),
     user_uuid: S.optional(S.String),
@@ -10475,7 +9569,7 @@ export const SuggestedReviewerEntryWrite = /*@__PURE__*/ S.suspend(() =>
 
 /** Full replacement list of reviewers. Empty list clears the artefact. At most 10 entries. */
 export type UpdateSignalsReportsReviewerRequestContentList = Array<SuggestedReviewerEntryWrite>;
-export const UpdateSignalsReportsReviewerRequestContentList = /*@__PURE__*/ S.Array(
+const UpdateSignalsReportsReviewerRequestContentList = /*@__PURE__*/ S.Array(
   SuggestedReviewerEntryWrite,
 ) as any as S.Schema<UpdateSignalsReportsReviewerRequestContentList>;
 
@@ -10487,7 +9581,7 @@ export interface UpdateSignalsReportsReviewerRequest {
   /** Full replacement list of reviewers. Empty list clears the artefact. At most 10 entries. */
   content: UpdateSignalsReportsReviewerRequestContentList;
 }
-export const UpdateSignalsReportsReviewerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsReportsReviewerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10505,7 +9599,7 @@ export const UpdateSignalsReportsReviewerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `suggested_reviewers` - suggested_reviewers */
 export type SignalReportSuggestedReviewersArtefactTypeEnum = "suggested_reviewers";
-export const SignalReportSuggestedReviewersArtefactTypeEnum = S.String;
+const SignalReportSuggestedReviewersArtefactTypeEnum = S.String;
 
 /** Commit evidence behind a suggested reviewer. */
 export interface SuggestedReviewerCommit {
@@ -10516,7 +9610,7 @@ export interface SuggestedReviewerCommit {
   /** Why the commit makes this reviewer relevant. */
   reason: string;
 }
-export const SuggestedReviewerCommit = /*@__PURE__*/ S.suspend(() =>
+const SuggestedReviewerCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.String,
@@ -10526,7 +9620,7 @@ export const SuggestedReviewerCommit = /*@__PURE__*/ S.suspend(() =>
 
 /** Commits attributed to this reviewer. Empty when the pick came from elsewhere. */
 export type SuggestedReviewerEntryReadRelevantCommitsList = Array<SuggestedReviewerCommit>;
-export const SuggestedReviewerEntryReadRelevantCommitsList = /*@__PURE__*/ S.Array(
+const SuggestedReviewerEntryReadRelevantCommitsList = /*@__PURE__*/ S.Array(
   SuggestedReviewerCommit,
 ) as any as S.Schema<SuggestedReviewerEntryReadRelevantCommitsList>;
 
@@ -10553,7 +9647,7 @@ export interface SuggestedReviewerEntryRead {
   /** Resolved org member. Null when the entry resolves to nobody. */
   user: User | null;
 }
-export const SuggestedReviewerEntryRead = /*@__PURE__*/ S.suspend(() =>
+const SuggestedReviewerEntryRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     github_login: S.NullOr(S.String),
     user_uuid: S.NullOr(S.String),
@@ -10571,7 +9665,7 @@ export const SuggestedReviewerEntryRead = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuggestedReviewerEntryRead>;
 
 export type SignalReportSuggestedReviewersArtefactContentList = Array<SuggestedReviewerEntryRead>;
-export const SignalReportSuggestedReviewersArtefactContentList = /*@__PURE__*/ S.Array(
+const SignalReportSuggestedReviewersArtefactContentList = /*@__PURE__*/ S.Array(
   SuggestedReviewerEntryRead,
 ) as any as S.Schema<SignalReportSuggestedReviewersArtefactContentList>;
 
@@ -10596,7 +9690,7 @@ export interface SignalReportSuggestedReviewersArtefact {
   /** Internal task the artefact is attributed to. Null for user, external agent, and system writes. */
   task_id: string | null;
 }
-export const SignalReportSuggestedReviewersArtefact = /*@__PURE__*/ S.suspend(() =>
+const SignalReportSuggestedReviewersArtefact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claim_id: S.NullOr(S.String),
     pull_request_id: S.NullOr(S.String),
@@ -10616,9 +9710,6 @@ export const SignalReportSuggestedReviewersArtefact = /*@__PURE__*/ S.suspend(()
 
 /** Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel. */
 export type SignalScoutSlackDestinationUpdateUsersList = Array<string>;
-export const SignalScoutSlackDestinationUpdateUsersList =
-  ClaimSignalsReportRequestPullRequestsList as any as S.Schema<SignalScoutSlackDestinationUpdateUsersList>;
-
 export interface SignalScoutSlackDestinationUpdate {
   /** ID of the Slack integration whose bot posts this scout's findings and reports. */
   integration_id: number;
@@ -10629,43 +9720,40 @@ export interface SignalScoutSlackDestinationUpdate {
   /** When true, post a report as a thread: a short lead in the channel and the rest split into replies at the summary's section labels, which can be Markdown headings or bold labels. Keeps a long summary from being clipped at Slack's section limit. On by default; set it false to post a single message, which can truncate a long summary. It does not change how findings post. */
   thread_reports?: boolean;
 }
-export const SignalScoutSlackDestinationUpdate =
-  SignalScoutSlackDestination as any as S.Schema<SignalScoutSlackDestinationUpdate>;
-
 export interface SignalScoutOutputDestinationsUpdate {
   /** Slack destination for each emitted scout finding or report. Null or omitted disables Slack delivery. */
   slack?: SignalScoutSlackDestinationUpdate | null;
   /** The CDP destination another product provisioned for this scout's reports. Null or omitted means no webhook. Unlike Slack, Signals does not deliver this itself: the reference lives here so the owning product can manage the destination's lifecycle. */
   webhook?: SignalScoutWebhookDestination | null;
 }
-export const SignalScoutOutputDestinationsUpdate =
+const SignalScoutOutputDestinationsUpdate =
   SignalScoutOutputDestinations as any as S.Schema<SignalScoutOutputDestinationsUpdate>;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type UpdateSignalsScoutConfigRequestStructuredOutputSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateSignalsScoutConfigRequestStructuredOutputSchemaMap =
+const UpdateSignalsScoutConfigRequestStructuredOutputSchemaMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<UpdateSignalsScoutConfigRequestStructuredOutputSchemaMap>;
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type UpdateSignalsScoutConfigRequestTagsList = Array<string>;
-export const UpdateSignalsScoutConfigRequestTagsList =
+const UpdateSignalsScoutConfigRequestTagsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<UpdateSignalsScoutConfigRequestTagsList>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type UpdateSignalsScoutConfigRequestMcpGatewayServerIdsList = Array<string>;
-export const UpdateSignalsScoutConfigRequestMcpGatewayServerIdsList =
+const UpdateSignalsScoutConfigRequestMcpGatewayServerIdsList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<UpdateSignalsScoutConfigRequestMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type UpdateSignalsScoutConfigRequestRepositoriesList = Array<string>;
-export const UpdateSignalsScoutConfigRequestRepositoriesList =
+const UpdateSignalsScoutConfigRequestRepositoriesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<UpdateSignalsScoutConfigRequestRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type UpdateSignalsScoutConfigRequestWriteScopesList = Array<string>;
-export const UpdateSignalsScoutConfigRequestWriteScopesList =
+const UpdateSignalsScoutConfigRequestWriteScopesList =
   ClaimSignalsReportRequestPullRequestsList as any as S.Schema<UpdateSignalsScoutConfigRequestWriteScopesList>;
 
 export interface UpdateSignalsScoutConfigRequest {
@@ -10704,7 +9792,7 @@ export interface UpdateSignalsScoutConfigRequest {
   /** Optional id of the canonical scout suggestion this request turns on. It records that the scout came from that suggestion. An id this project's batch does not hold is ignored. */
   suggestion_id?: string;
 }
-export const UpdateSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10738,7 +9826,7 @@ export const UpdateSignalsScoutConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete set of criteria to save. */
 export type UpdateSignalsScoutRubricRequestCriteriaList = Array<ScoutRubricCriterion>;
-export const UpdateSignalsScoutRubricRequestCriteriaList =
+const UpdateSignalsScoutRubricRequestCriteriaList =
   ScoutRubricDocumentCriteriaList as any as S.Schema<UpdateSignalsScoutRubricRequestCriteriaList>;
 
 export interface UpdateSignalsScoutRubricRequest {
@@ -10753,7 +9841,7 @@ export interface UpdateSignalsScoutRubricRequest {
   /** Use this completed generation's governing source for the whole saved rubric. Omit to keep its source. */
   adopt_generation_id?: string | null;
 }
-export const UpdateSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10773,7 +9861,7 @@ export const UpdateSignalsScoutRubricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration's teams endpoint. */
 export type UpdateSignalsSourceConfigRequestConfigMap = { [key: string]: unknown | undefined };
-export const UpdateSignalsSourceConfigRequestConfigMap =
+const UpdateSignalsSourceConfigRequestConfigMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<UpdateSignalsSourceConfigRequestConfigMap>;
 
 export interface UpdateSignalsSourceConfigRequest {
@@ -10787,7 +9875,7 @@ export interface UpdateSignalsSourceConfigRequest {
   /** Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration's teams endpoint. */
   config?: UpdateSignalsSourceConfigRequestConfigMap;
 }
-export const UpdateSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10810,7 +9898,7 @@ export const UpdateSignalsSourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSignalsSourceConfigsPartialRequestConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateSignalsSourceConfigsPartialRequestConfigMap =
+const UpdateSignalsSourceConfigsPartialRequestConfigMap =
   SignalScoutConfigOptionsStructuredOutputSchemaMap as any as S.Schema<UpdateSignalsSourceConfigsPartialRequestConfigMap>;
 
 export interface UpdateSignalsSourceConfigsPartialRequest {
@@ -10824,7 +9912,7 @@ export interface UpdateSignalsSourceConfigsPartialRequest {
   /** Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration's teams endpoint. */
   config?: UpdateSignalsSourceConfigsPartialRequestConfigMap;
 }
-export const UpdateSignalsSourceConfigsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalsSourceConfigsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

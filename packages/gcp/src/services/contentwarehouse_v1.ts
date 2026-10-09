@@ -76,7 +76,7 @@ export class ServiceDisabled
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The user information. */
 export interface GoogleCloudContentwarehouseV1UserInfo {
@@ -85,7 +85,7 @@ export interface GoogleCloudContentwarehouseV1UserInfo {
   /** The unique group identifications which the user is belong to. The format is "group:yyyy@example.com"; */
   groupIds?: StringList;
 }
-export const GoogleCloudContentwarehouseV1UserInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     groupIds: S.optional(StringList),
@@ -99,7 +99,7 @@ export interface GoogleCloudContentwarehouseV1RequestMetadata {
   /** Provides user unique identification and groups information. */
   userInfo?: GoogleCloudContentwarehouseV1UserInfo;
 }
-export const GoogleCloudContentwarehouseV1RequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userInfo: S.optional(GoogleCloudContentwarehouseV1UserInfo),
   }),
@@ -108,7 +108,7 @@ export const GoogleCloudContentwarehouseV1RequestMetadata = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GoogleCloudContentwarehouseV1RequestMetadata>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Request Option for processing Cloud AI Document in CW Document. */
 export interface GoogleCloudContentwarehouseV1CloudAIDocumentOption {
@@ -117,7 +117,7 @@ export interface GoogleCloudContentwarehouseV1CloudAIDocumentOption {
   /** Whether to convert all the entities to properties. */
   enableEntitiesConversions?: boolean;
 }
-export const GoogleCloudContentwarehouseV1CloudAIDocumentOption = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1CloudAIDocumentOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customizedEntitiesPropertiesConversions: S.optional(StringMap),
     enableEntitiesConversions: S.optional(S.Boolean),
@@ -135,7 +135,7 @@ export type GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   | "EVAL_REQUESTED"
   | "EVAL_APPROVED"
   | "EVAL_SKIPPED";
-export const GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum = S.String;
+const GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum = S.String;
 
 /** The parent element the current element is based on. Used for referencing/aligning, removal and replacement operations. */
 export interface GoogleCloudDocumentaiV1DocumentProvenanceParent {
@@ -146,7 +146,7 @@ export interface GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /** The id of the parent provenance. */
   id?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentProvenanceParent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentProvenanceParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     revision: S.optional(S.Number),
@@ -158,7 +158,7 @@ export const GoogleCloudDocumentaiV1DocumentProvenanceParent = /*@__PURE__*/ S.s
 
 export type GoogleCloudDocumentaiV1DocumentProvenanceParentList =
   Array<GoogleCloudDocumentaiV1DocumentProvenanceParent>;
-export const GoogleCloudDocumentaiV1DocumentProvenanceParentList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentProvenanceParentList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentProvenanceParent,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentProvenanceParentList>;
 
@@ -173,7 +173,7 @@ export interface GoogleCloudDocumentaiV1DocumentProvenance {
   /** References to the original elements that are replaced. */
   parents?: GoogleCloudDocumentaiV1DocumentProvenanceParentList;
 }
-export const GoogleCloudDocumentaiV1DocumentProvenance = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentProvenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum),
     revision: S.optional(S.Number),
@@ -186,7 +186,7 @@ export const GoogleCloudDocumentaiV1DocumentProvenance = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDocumentaiV1DocumentProvenanceList =
   Array<GoogleCloudDocumentaiV1DocumentProvenance>;
-export const GoogleCloudDocumentaiV1DocumentProvenanceList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentProvenanceList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentProvenance,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentProvenanceList>;
 
@@ -197,7 +197,7 @@ export interface GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
   /** TextSegment half open end UTF-8 char index in the Document.text. */
   endIndex?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.String),
     endIndex: S.optional(S.String),
@@ -208,7 +208,7 @@ export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment = /*@__PURE__*
 
 export type GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList =
   Array<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>;
-export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList>;
 
@@ -219,7 +219,7 @@ export interface GoogleCloudDocumentaiV1DocumentTextAnchor {
   /** Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields. */
   content?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentTextAnchor = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentTextAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textSegments: S.optional(GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList),
     content: S.optional(S.String),
@@ -237,7 +237,7 @@ export interface GoogleCloudDocumentaiV1DocumentTextChange {
   /** Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index. */
   textAnchor?: GoogleCloudDocumentaiV1DocumentTextAnchor;
 }
-export const GoogleCloudDocumentaiV1DocumentTextChange = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentTextChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provenance: S.optional(GoogleCloudDocumentaiV1DocumentProvenanceList),
     changedText: S.optional(S.String),
@@ -249,7 +249,7 @@ export const GoogleCloudDocumentaiV1DocumentTextChange = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDocumentaiV1DocumentTextChangeList =
   Array<GoogleCloudDocumentaiV1DocumentTextChange>;
-export const GoogleCloudDocumentaiV1DocumentTextChangeList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentTextChangeList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentTextChange,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentTextChangeList>;
 
@@ -262,7 +262,7 @@ export interface GoogleCloudDocumentaiV1DocumentShardInfo {
   /** The 0-based index of this shard. */
   shardIndex?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentShardInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textOffset: S.optional(S.String),
     shardCount: S.optional(S.String),
@@ -279,7 +279,7 @@ export interface GoogleCloudDocumentaiV1Vertex {
   /** Y coordinate (starts from the top of the image). */
   y?: number;
 }
-export const GoogleCloudDocumentaiV1Vertex = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1Vertex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -289,7 +289,7 @@ export const GoogleCloudDocumentaiV1Vertex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDocumentaiV1Vertex>;
 
 export type GoogleCloudDocumentaiV1VertexList = Array<GoogleCloudDocumentaiV1Vertex>;
-export const GoogleCloudDocumentaiV1VertexList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1VertexList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1Vertex,
 ) as any as S.Schema<GoogleCloudDocumentaiV1VertexList>;
 
@@ -300,7 +300,7 @@ export interface GoogleCloudDocumentaiV1NormalizedVertex {
   /** X coordinate. */
   x?: number;
 }
-export const GoogleCloudDocumentaiV1NormalizedVertex = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1NormalizedVertex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     y: S.optional(S.Number),
     x: S.optional(S.Number),
@@ -311,7 +311,7 @@ export const GoogleCloudDocumentaiV1NormalizedVertex = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudDocumentaiV1NormalizedVertexList =
   Array<GoogleCloudDocumentaiV1NormalizedVertex>;
-export const GoogleCloudDocumentaiV1NormalizedVertexList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1NormalizedVertexList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1NormalizedVertex,
 ) as any as S.Schema<GoogleCloudDocumentaiV1NormalizedVertexList>;
 
@@ -322,7 +322,7 @@ export interface GoogleCloudDocumentaiV1BoundingPoly {
   /** The bounding polygon normalized vertices. */
   normalizedVertices?: GoogleCloudDocumentaiV1NormalizedVertexList;
 }
-export const GoogleCloudDocumentaiV1BoundingPoly = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1BoundingPoly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vertices: S.optional(GoogleCloudDocumentaiV1VertexList),
     normalizedVertices: S.optional(GoogleCloudDocumentaiV1NormalizedVertexList),
@@ -337,7 +337,7 @@ export type GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   | "PAGE_RIGHT"
   | "PAGE_DOWN"
   | "PAGE_LEFT";
-export const GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum = S.String;
+const GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum = S.String;
 
 /** Visual element describing a layout unit on a page. */
 export interface GoogleCloudDocumentaiV1DocumentPageLayout {
@@ -350,7 +350,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageLayout {
   /** Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`. */
   confidence?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentPageLayout = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boundingPoly: S.optional(GoogleCloudDocumentaiV1BoundingPoly),
     orientation: S.optional(GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum),
@@ -368,7 +368,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
   /** The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`. */
   languageCode?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageDetectedLanguage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidence: S.optional(S.Number),
     languageCode: S.optional(S.String),
@@ -379,7 +379,7 @@ export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguage = /*@__PURE__*/
 
 export type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList =
   Array<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
-export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageDetectedLanguage,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList>;
 
@@ -392,7 +392,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageParagraph {
   /** The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
-export const GoogleCloudDocumentaiV1DocumentPageParagraph = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageParagraph = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
     detectedLanguages: S.optional(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList),
@@ -404,7 +404,7 @@ export const GoogleCloudDocumentaiV1DocumentPageParagraph = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDocumentaiV1DocumentPageParagraphList =
   Array<GoogleCloudDocumentaiV1DocumentPageParagraph>;
-export const GoogleCloudDocumentaiV1DocumentPageParagraphList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageParagraphList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageParagraph,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageParagraphList>;
 
@@ -419,7 +419,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageTableTableCell {
   /** Layout for TableCell. */
   layout?: GoogleCloudDocumentaiV1DocumentPageLayout;
 }
-export const GoogleCloudDocumentaiV1DocumentPageTableTableCell = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageTableTableCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedLanguages: S.optional(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList),
     rowSpan: S.optional(S.Number),
@@ -432,7 +432,7 @@ export const GoogleCloudDocumentaiV1DocumentPageTableTableCell = /*@__PURE__*/ S
 
 export type GoogleCloudDocumentaiV1DocumentPageTableTableCellList =
   Array<GoogleCloudDocumentaiV1DocumentPageTableTableCell>;
-export const GoogleCloudDocumentaiV1DocumentPageTableTableCellList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageTableTableCellList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageTableTableCell,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableCellList>;
 
@@ -441,7 +441,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageTableTableRow {
   /** Cells that make up this row. */
   cells?: GoogleCloudDocumentaiV1DocumentPageTableTableCellList;
 }
-export const GoogleCloudDocumentaiV1DocumentPageTableTableRow = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageTableTableRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cells: S.optional(GoogleCloudDocumentaiV1DocumentPageTableTableCellList),
   }),
@@ -451,7 +451,7 @@ export const GoogleCloudDocumentaiV1DocumentPageTableTableRow = /*@__PURE__*/ S.
 
 export type GoogleCloudDocumentaiV1DocumentPageTableTableRowList =
   Array<GoogleCloudDocumentaiV1DocumentPageTableTableRow>;
-export const GoogleCloudDocumentaiV1DocumentPageTableTableRowList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageTableTableRowList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageTableTableRow,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableRowList>;
 
@@ -468,7 +468,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageTable {
   /** Layout for Table. */
   layout?: GoogleCloudDocumentaiV1DocumentPageLayout;
 }
-export const GoogleCloudDocumentaiV1DocumentPageTable = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerRows: S.optional(GoogleCloudDocumentaiV1DocumentPageTableTableRowList),
     detectedLanguages: S.optional(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList),
@@ -482,7 +482,7 @@ export const GoogleCloudDocumentaiV1DocumentPageTable = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDocumentaiV1DocumentPageTableList =
   Array<GoogleCloudDocumentaiV1DocumentPageTable>;
-export const GoogleCloudDocumentaiV1DocumentPageTableList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageTableList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageTable,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTableList>;
 
@@ -493,19 +493,19 @@ export interface GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDe
   /** Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare` */
   type?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       confidence: S.optional(S.Number),
       type: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect",
-  }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
+).annotate({
+  identifier: "GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect",
+}) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
 
 export type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList =
   Array<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
-export const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList =
+const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect,
   ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList>;
@@ -517,7 +517,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   /** The overall quality score. Range `[0, 1]` where `1` is perfect quality. */
   qualityScore?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentPageImageQualityScores = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageImageQualityScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedDefects: S.optional(
       GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList,
@@ -547,7 +547,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageFormField {
   /** A list of detected languages for name together with confidence. */
   nameDetectedLanguages?: GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList;
 }
-export const GoogleCloudDocumentaiV1DocumentPageFormField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageFormField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueType: S.optional(S.String),
     correctedKeyText: S.optional(S.String),
@@ -564,7 +564,7 @@ export const GoogleCloudDocumentaiV1DocumentPageFormField = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDocumentaiV1DocumentPageFormFieldList =
   Array<GoogleCloudDocumentaiV1DocumentPageFormField>;
-export const GoogleCloudDocumentaiV1DocumentPageFormFieldList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageFormFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageFormField,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageFormFieldList>;
 
@@ -577,7 +577,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageBlock {
   /** A list of detected languages together with confidence. */
   detectedLanguages?: GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList;
 }
-export const GoogleCloudDocumentaiV1DocumentPageBlock = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provenance: S.optional(GoogleCloudDocumentaiV1DocumentProvenance),
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
@@ -589,7 +589,7 @@ export const GoogleCloudDocumentaiV1DocumentPageBlock = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDocumentaiV1DocumentPageBlockList =
   Array<GoogleCloudDocumentaiV1DocumentPageBlock>;
-export const GoogleCloudDocumentaiV1DocumentPageBlockList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageBlockList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageBlock,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageBlockList>;
 
@@ -604,7 +604,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageImage {
   /** Width of the image in pixels. */
   width?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentPageImage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     content: S.optional(S.String),
@@ -620,14 +620,14 @@ export type GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   | "SPACE"
   | "WIDE_SPACE"
   | "HYPHEN";
-export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum = S.String;
+const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum = S.String;
 
 /** Detected break at the end of a Token. */
 export interface GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
   /** Detected break type. */
   type?: GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum | (string & {});
 }
-export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum),
   }),
@@ -646,7 +646,7 @@ export interface GoogleTypeColor {
   /** The amount of green in the color as a value in the interval [0, 1]. */
   green?: number;
 }
-export const GoogleTypeColor = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpha: S.optional(S.Number),
     red: S.optional(S.Number),
@@ -688,7 +688,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /** Whether the text is italic. */
   italic?: boolean;
 }
-export const GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strikeout: S.optional(S.Boolean),
     smallcaps: S.optional(S.Boolean),
@@ -723,7 +723,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageToken {
   /** Text style attributes. */
   styleInfo?: GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo;
 }
-export const GoogleCloudDocumentaiV1DocumentPageToken = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
     provenance: S.optional(GoogleCloudDocumentaiV1DocumentProvenance),
@@ -737,7 +737,7 @@ export const GoogleCloudDocumentaiV1DocumentPageToken = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDocumentaiV1DocumentPageTokenList =
   Array<GoogleCloudDocumentaiV1DocumentPageToken>;
-export const GoogleCloudDocumentaiV1DocumentPageTokenList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageTokenList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageToken,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTokenList>;
 
@@ -748,7 +748,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageSymbol {
   /** A list of detected languages together with confidence. */
   detectedLanguages?: GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList;
 }
-export const GoogleCloudDocumentaiV1DocumentPageSymbol = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageSymbol = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
     detectedLanguages: S.optional(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList),
@@ -759,7 +759,7 @@ export const GoogleCloudDocumentaiV1DocumentPageSymbol = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDocumentaiV1DocumentPageSymbolList =
   Array<GoogleCloudDocumentaiV1DocumentPageSymbol>;
-export const GoogleCloudDocumentaiV1DocumentPageSymbolList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageSymbolList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageSymbol,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageSymbolList>;
 
@@ -772,7 +772,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageDimension {
   /** Page width. */
   width?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentPageDimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     height: S.optional(S.Number),
@@ -791,7 +791,7 @@ export interface GoogleCloudDocumentaiV1Barcode {
   /** Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license. */
   valueFormat?: string;
 }
-export const GoogleCloudDocumentaiV1Barcode = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1Barcode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(S.String),
     rawValue: S.optional(S.String),
@@ -808,7 +808,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   /** Layout for DetectedBarcode. */
   layout?: GoogleCloudDocumentaiV1DocumentPageLayout;
 }
-export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     barcode: S.optional(GoogleCloudDocumentaiV1Barcode),
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
@@ -819,7 +819,7 @@ export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode = /*@__PURE__*/ 
 
 export type GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeList =
   Array<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode>;
-export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageDetectedBarcode,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeList>;
 
@@ -832,7 +832,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageVisualElement {
   /** A list of detected languages together with confidence. */
   detectedLanguages?: GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList;
 }
-export const GoogleCloudDocumentaiV1DocumentPageVisualElement = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageVisualElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
@@ -844,7 +844,7 @@ export const GoogleCloudDocumentaiV1DocumentPageVisualElement = /*@__PURE__*/ S.
 
 export type GoogleCloudDocumentaiV1DocumentPageVisualElementList =
   Array<GoogleCloudDocumentaiV1DocumentPageVisualElement>;
-export const GoogleCloudDocumentaiV1DocumentPageVisualElementList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageVisualElementList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageVisualElement,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageVisualElementList>;
 
@@ -859,7 +859,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageMatrix {
   /** This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html */
   type?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentPageMatrix = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageMatrix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     rows: S.optional(S.Number),
@@ -872,7 +872,7 @@ export const GoogleCloudDocumentaiV1DocumentPageMatrix = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDocumentaiV1DocumentPageMatrixList =
   Array<GoogleCloudDocumentaiV1DocumentPageMatrix>;
-export const GoogleCloudDocumentaiV1DocumentPageMatrixList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageMatrixList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageMatrix,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageMatrixList>;
 
@@ -885,7 +885,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageLine {
   /** The history of this annotation. */
   provenance?: GoogleCloudDocumentaiV1DocumentProvenance;
 }
-export const GoogleCloudDocumentaiV1DocumentPageLine = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedLanguages: S.optional(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList),
     layout: S.optional(GoogleCloudDocumentaiV1DocumentPageLayout),
@@ -897,7 +897,7 @@ export const GoogleCloudDocumentaiV1DocumentPageLine = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudDocumentaiV1DocumentPageLineList =
   Array<GoogleCloudDocumentaiV1DocumentPageLine>;
-export const GoogleCloudDocumentaiV1DocumentPageLineList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageLineList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageLine,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageLineList>;
 
@@ -938,7 +938,7 @@ export interface GoogleCloudDocumentaiV1DocumentPage {
   /** A list of visually detected text lines on the page. A collection of tokens that a human would perceive as a line. */
   lines?: GoogleCloudDocumentaiV1DocumentPageLineList;
 }
-export const GoogleCloudDocumentaiV1DocumentPage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paragraphs: S.optional(GoogleCloudDocumentaiV1DocumentPageParagraphList),
     tables: S.optional(GoogleCloudDocumentaiV1DocumentPageTableList),
@@ -963,7 +963,7 @@ export const GoogleCloudDocumentaiV1DocumentPage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPage>;
 
 export type GoogleCloudDocumentaiV1DocumentPageList = Array<GoogleCloudDocumentaiV1DocumentPage>;
-export const GoogleCloudDocumentaiV1DocumentPageList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPage,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageList>;
 
@@ -974,7 +974,7 @@ export interface GoogleCloudDocumentaiV1DocumentStyleFontSize {
   /** Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`). */
   unit?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentStyleFontSize = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentStyleFontSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -1002,7 +1002,7 @@ export interface GoogleCloudDocumentaiV1DocumentStyle {
   /** Text anchor indexing into the Document.text. */
   textAnchor?: GoogleCloudDocumentaiV1DocumentTextAnchor;
 }
-export const GoogleCloudDocumentaiV1DocumentStyle = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backgroundColor: S.optional(GoogleTypeColor),
     textStyle: S.optional(S.String),
@@ -1018,7 +1018,7 @@ export const GoogleCloudDocumentaiV1DocumentStyle = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentStyle>;
 
 export type GoogleCloudDocumentaiV1DocumentStyleList = Array<GoogleCloudDocumentaiV1DocumentStyle>;
-export const GoogleCloudDocumentaiV1DocumentStyleList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentStyleList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentStyle,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentStyleList>;
 
@@ -1031,7 +1031,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** How many rows this cell spans. */
   rowSpan?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       colSpan: S.optional(S.Number),
@@ -1046,7 +1046,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList =
   Array<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>;
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell,
   ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList>;
@@ -1056,7 +1056,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** A table row is a list of table cells. */
   cells?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cells: S.optional(
@@ -1069,7 +1069,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRowList =
   Array<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRowList =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRowList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow,
   ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRowList>;
@@ -1083,7 +1083,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** Table caption/title. */
   caption?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headerRows: S.optional(
@@ -1105,7 +1105,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** Page where block ends in the document. */
   pageEnd?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageStart: S.optional(S.Number),
@@ -1120,7 +1120,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** A list entry is a list of blocks. Repeated blocks support further hierarchies and nested blocks. */
   blocks?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       blocks: S.optional(
@@ -1133,7 +1133,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList =
   Array<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>;
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry,
   ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList>;
@@ -1145,7 +1145,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** List entries that constitute a list block. */
   listEntries?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(S.String),
@@ -1166,7 +1166,7 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** Type of the text in the block. Available options are: `paragraph`, `subtitle`, `heading-1`, `heading-2`, `heading-3`, `heading-4`, `heading-5`, `header`, `footer`. */
   type?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock =
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       blocks: S.optional(
@@ -1192,8 +1192,8 @@ export interface GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBloc
   /** Block consisting of text content. */
   textBlock?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       tableBlock: S.optional(
         GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock,
@@ -1209,23 +1209,22 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock =
         GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock",
-  }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
+).annotate({
+  identifier: "GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock",
+}) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList =
   Array<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
-export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock,
-  ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList>;
+const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList = /*@__PURE__*/ S.Array(
+  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock,
+) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList>;
 
 /** Represents the parsed layout of a document as a collection of blocks that the document is divided into. */
 export interface GoogleCloudDocumentaiV1DocumentDocumentLayout {
   /** List of blocks in the document. */
   blocks?: GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList;
 }
-export const GoogleCloudDocumentaiV1DocumentDocumentLayout = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentDocumentLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocks: S.optional(GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList),
   }),
@@ -1258,7 +1257,7 @@ export interface GoogleTypePostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
   revision?: number;
 }
-export const GoogleTypePostalAddress = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypePostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressLines: S.optional(StringList),
     languageCode: S.optional(S.String),
@@ -1283,7 +1282,7 @@ export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -1300,7 +1299,7 @@ export interface GoogleTypeMoney {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     units: S.optional(S.String),
@@ -1315,7 +1314,7 @@ export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     id: S.optional(S.String),
@@ -1343,7 +1342,7 @@ export interface GoogleTypeDateTime {
   /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
   nanos?: number;
 }
-export const GoogleTypeDateTime = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     timeZone: S.optional(GoogleTypeTimeZone),
@@ -1376,7 +1375,7 @@ export interface GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
   /** Boolean value. Can be used for entities with binary values, or for checkboxes. */
   booleanValue?: boolean;
 }
-export const GoogleCloudDocumentaiV1DocumentEntityNormalizedValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentEntityNormalizedValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressValue: S.optional(GoogleTypePostalAddress),
     dateValue: S.optional(GoogleTypeDate),
@@ -1400,7 +1399,7 @@ export type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   | "VISUAL_ELEMENT"
   | "TABLE"
   | "FORM_FIELD";
-export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum = S.String;
+const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum = S.String;
 
 /** Represents a weak reference to a page element within a document. */
 export interface GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
@@ -1415,7 +1414,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /** Required. Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json. */
   page?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRef = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageAnchorPageRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layoutId: S.optional(S.String),
     boundingPoly: S.optional(GoogleCloudDocumentaiV1BoundingPoly),
@@ -1429,7 +1428,7 @@ export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRef = /*@__PURE__*/ S.
 
 export type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList =
   Array<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>;
-export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPageAnchorPageRef,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList>;
 
@@ -1438,7 +1437,7 @@ export interface GoogleCloudDocumentaiV1DocumentPageAnchor {
   /** One or more references to visual page elements */
   pageRefs?: GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList;
 }
-export const GoogleCloudDocumentaiV1DocumentPageAnchor = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentPageAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageRefs: S.optional(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList),
   }),
@@ -1471,7 +1470,7 @@ export interface GoogleCloudDocumentaiV1DocumentEntity {
   /** Optional. Canonical id. This will be a unique value in the entity list for this document. */
   id?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentEntity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     normalizedValue: S.optional(GoogleCloudDocumentaiV1DocumentEntityNormalizedValue),
     redacted: S.optional(S.Boolean),
@@ -1491,7 +1490,7 @@ export const GoogleCloudDocumentaiV1DocumentEntity = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudDocumentaiV1DocumentEntityList =
   Array<GoogleCloudDocumentaiV1DocumentEntity>;
-export const GoogleCloudDocumentaiV1DocumentEntityList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentEntityList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentEntity,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentEntityList>;
 
@@ -1504,7 +1503,7 @@ export interface GoogleCloudDocumentaiV1DocumentEntityRelation {
   /** Relationship description. */
   relation?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentEntityRelation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentEntityRelation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     subjectId: S.optional(S.String),
@@ -1516,7 +1515,7 @@ export const GoogleCloudDocumentaiV1DocumentEntityRelation = /*@__PURE__*/ S.sus
 
 export type GoogleCloudDocumentaiV1DocumentEntityRelationList =
   Array<GoogleCloudDocumentaiV1DocumentEntityRelation>;
-export const GoogleCloudDocumentaiV1DocumentEntityRelationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentEntityRelationList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentEntityRelation,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentEntityRelationList>;
 
@@ -1527,15 +1526,15 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpa
   /** Page where chunk starts in the document. */
   pageStart?: number;
 }
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageEnd: S.optional(S.Number),
       pageStart: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan",
-  }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan>;
+).annotate({
+  identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan",
+}) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan>;
 
 /** Represents the page header associated with the chunk. */
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
@@ -1544,19 +1543,19 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHea
   /** Header in text format. */
   text?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSpan: S.optional(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan),
       text: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader",
-  }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
+).annotate({
+  identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader",
+}) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList =
   Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList =
+const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader,
   ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList>;
@@ -1568,12 +1567,9 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFoo
   /** Footer in text format. */
   text?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter =
-  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
-
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
   Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
+const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList>;
 
 /** Represents a chunk. */
@@ -1591,7 +1587,7 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
   /** ID of the chunk. */
   chunkId?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageHeaders: S.optional(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList),
     pageSpan: S.optional(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan),
@@ -1606,7 +1602,7 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk = /*@__PURE__*/
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList =
   Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>;
-export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList>;
 
@@ -1615,7 +1611,7 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocument {
   /** List of chunks. */
   chunks?: GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList;
 }
-export const GoogleCloudDocumentaiV1DocumentChunkedDocument = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentChunkedDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: S.optional(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList),
   }),
@@ -1624,15 +1620,10 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocument = /*@__PURE__*/ S.su
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocument>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -1643,7 +1634,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -1658,7 +1649,7 @@ export interface GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
   /** A message providing more details about the current state of processing. For example, the rejection reason when the state is `rejected`. */
   stateMessage?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentRevisionHumanReview = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentRevisionHumanReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String),
     stateMessage: S.optional(S.String),
@@ -1668,7 +1659,7 @@ export const GoogleCloudDocumentaiV1DocumentRevisionHumanReview = /*@__PURE__*/ 
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentRevisionHumanReview>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Contains past or forward revisions of this document. */
 export interface GoogleCloudDocumentaiV1DocumentRevision {
@@ -1687,7 +1678,7 @@ export interface GoogleCloudDocumentaiV1DocumentRevision {
   /** If the annotation was made by processor identify the processor by its resource name. */
   processor?: string;
 }
-export const GoogleCloudDocumentaiV1DocumentRevision = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1DocumentRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent: S.optional(S.String),
     parentIds: S.optional(StringList),
@@ -1703,7 +1694,7 @@ export const GoogleCloudDocumentaiV1DocumentRevision = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudDocumentaiV1DocumentRevisionList =
   Array<GoogleCloudDocumentaiV1DocumentRevision>;
-export const GoogleCloudDocumentaiV1DocumentRevisionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDocumentaiV1DocumentRevisionList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentRevision,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentRevisionList>;
 
@@ -1738,7 +1729,7 @@ export interface GoogleCloudDocumentaiV1Document {
   /** Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64. */
   content?: string;
 }
-export const GoogleCloudDocumentaiV1Document = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDocumentaiV1Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textChanges: S.optional(GoogleCloudDocumentaiV1DocumentTextChangeList),
     shardInfo: S.optional(GoogleCloudDocumentaiV1DocumentShardInfo),
@@ -1767,14 +1758,14 @@ export type GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum =
   | "RAW_DOCUMENT_FILE_TYPE_PPTX"
   | "RAW_DOCUMENT_FILE_TYPE_TEXT"
   | "RAW_DOCUMENT_FILE_TYPE_TIFF";
-export const GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum = S.String;
 
 /** Represents the string value of the enum field. */
 export interface GoogleCloudContentwarehouseV1EnumValue {
   /** String value of the enum field. This must match defined set of enums in document schema using EnumTypeOptions. */
   value?: string;
 }
-export const GoogleCloudContentwarehouseV1EnumValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1EnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -1789,7 +1780,7 @@ export interface GoogleCloudContentwarehouseV1TimestampValue {
   /** Timestamp value */
   timestampValue?: string;
 }
-export const GoogleCloudContentwarehouseV1TimestampValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1TimestampValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textValue: S.optional(S.String),
     timestampValue: S.optional(S.String),
@@ -1815,7 +1806,7 @@ export interface GoogleCloudContentwarehouseV1Value {
   /** Represents a string value. */
   stringValue?: string;
 }
-export const GoogleCloudContentwarehouseV1Value = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     floatValue: S.optional(S.Number),
     enumValue: S.optional(GoogleCloudContentwarehouseV1EnumValue),
@@ -1832,7 +1823,7 @@ export const GoogleCloudContentwarehouseV1Value = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudContentwarehouseV1ValueMap = {
   [key: string]: GoogleCloudContentwarehouseV1Value | undefined;
 };
-export const GoogleCloudContentwarehouseV1ValueMap = /*@__PURE__*/ S.Record(
+const GoogleCloudContentwarehouseV1ValueMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudContentwarehouseV1Value,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1ValueMap>;
@@ -1842,7 +1833,7 @@ export interface GoogleCloudContentwarehouseV1MapProperty {
   /** Unordered map of dynamically typed values. */
   fields?: GoogleCloudContentwarehouseV1ValueMap;
 }
-export const GoogleCloudContentwarehouseV1MapProperty = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1MapProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GoogleCloudContentwarehouseV1ValueMap),
   }),
@@ -1855,7 +1846,7 @@ export interface GoogleCloudContentwarehouseV1IntegerArray {
   /** List of integer values. */
   values?: IntegerList;
 }
-export const GoogleCloudContentwarehouseV1IntegerArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1IntegerArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(IntegerList),
   }),
@@ -1868,7 +1859,7 @@ export interface GoogleCloudContentwarehouseV1TextArray {
   /** List of text values. */
   values?: StringList;
 }
-export const GoogleCloudContentwarehouseV1TextArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1TextArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
@@ -1877,18 +1868,16 @@ export const GoogleCloudContentwarehouseV1TextArray = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GoogleCloudContentwarehouseV1TextArray>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
-
 /** Float values. */
 export interface GoogleCloudContentwarehouseV1FloatArray {
   /** List of float values. */
   values?: DoubleList;
 }
-export const GoogleCloudContentwarehouseV1FloatArray =
+const GoogleCloudContentwarehouseV1FloatArray =
   GoogleCloudContentwarehouseV1IntegerArray as any as S.Schema<GoogleCloudContentwarehouseV1FloatArray>;
 
 export type GoogleTypeDateTimeList = Array<GoogleTypeDateTime>;
-export const GoogleTypeDateTimeList = /*@__PURE__*/ S.Array(
+const GoogleTypeDateTimeList = /*@__PURE__*/ S.Array(
   GoogleTypeDateTime,
 ) as any as S.Schema<GoogleTypeDateTimeList>;
 
@@ -1897,7 +1886,7 @@ export interface GoogleCloudContentwarehouseV1DateTimeArray {
   /** List of datetime values. Both OffsetDateTime and ZonedDateTime are supported. */
   values?: GoogleTypeDateTimeList;
 }
-export const GoogleCloudContentwarehouseV1DateTimeArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DateTimeArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(GoogleTypeDateTimeList),
   }),
@@ -1910,7 +1899,7 @@ export interface GoogleCloudContentwarehouseV1PropertyArray {
   /** List of property values. */
   properties?: GoogleCloudContentwarehouseV1PropertyList;
 }
-export const GoogleCloudContentwarehouseV1PropertyArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1PropertyArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(S.suspend(() => GoogleCloudContentwarehouseV1PropertyList)),
   }),
@@ -1923,12 +1912,12 @@ export interface GoogleCloudContentwarehouseV1EnumArray {
   /** List of enum values. */
   values?: StringList;
 }
-export const GoogleCloudContentwarehouseV1EnumArray =
+const GoogleCloudContentwarehouseV1EnumArray =
   GoogleCloudContentwarehouseV1TextArray as any as S.Schema<GoogleCloudContentwarehouseV1EnumArray>;
 
 export type GoogleCloudContentwarehouseV1TimestampValueList =
   Array<GoogleCloudContentwarehouseV1TimestampValue>;
-export const GoogleCloudContentwarehouseV1TimestampValueList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1TimestampValueList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1TimestampValue,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1TimestampValueList>;
 
@@ -1937,7 +1926,7 @@ export interface GoogleCloudContentwarehouseV1TimestampArray {
   /** List of timestamp values. */
   values?: GoogleCloudContentwarehouseV1TimestampValueList;
 }
-export const GoogleCloudContentwarehouseV1TimestampArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1TimestampArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(GoogleCloudContentwarehouseV1TimestampValueList),
   }),
@@ -1966,7 +1955,7 @@ export interface GoogleCloudContentwarehouseV1Property {
   /** Timestamp property values. It is not supported by CMEK compliant deployment. */
   timestampValues?: GoogleCloudContentwarehouseV1TimestampArray;
 }
-export const GoogleCloudContentwarehouseV1Property = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1Property = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mapProperty: S.optional(GoogleCloudContentwarehouseV1MapProperty),
     integerValues: S.optional(GoogleCloudContentwarehouseV1IntegerArray),
@@ -1984,7 +1973,7 @@ export const GoogleCloudContentwarehouseV1Property = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudContentwarehouseV1PropertyList =
   Array<GoogleCloudContentwarehouseV1Property>;
-export const GoogleCloudContentwarehouseV1PropertyList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1PropertyList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1Property,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyList>;
 
@@ -1993,7 +1982,7 @@ export type GoogleCloudContentwarehouseV1DocumentContentCategoryEnum =
   | "CONTENT_CATEGORY_IMAGE"
   | "CONTENT_CATEGORY_AUDIO"
   | "CONTENT_CATEGORY_VIDEO";
-export const GoogleCloudContentwarehouseV1DocumentContentCategoryEnum = S.String;
+const GoogleCloudContentwarehouseV1DocumentContentCategoryEnum = S.String;
 
 /** Defines the structure for content warehouse document proto. */
 export interface GoogleCloudContentwarehouseV1Document {
@@ -2042,7 +2031,7 @@ export interface GoogleCloudContentwarehouseV1Document {
   /** Indicates the category (image, audio, video etc.) of the original content. */
   contentCategory?: GoogleCloudContentwarehouseV1DocumentContentCategoryEnum | (string & {});
 }
-export const GoogleCloudContentwarehouseV1Document = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     creator: S.optional(S.String),
@@ -2081,7 +2070,7 @@ export interface GoogleTypeExpr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -2099,7 +2088,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -2108,7 +2097,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -2117,7 +2106,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -2126,7 +2115,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -2136,7 +2125,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -2147,7 +2136,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
     service: S.optional(S.String),
@@ -2155,7 +2144,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -2170,7 +2159,7 @@ export interface GoogleIamV1Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(GoogleIamV1BindingList),
     version: S.optional(S.Number),
@@ -2192,7 +2181,7 @@ export interface GoogleCloudContentwarehouseV1CreateDocumentRequest {
   /** Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. */
   createMask?: string;
 }
-export const GoogleCloudContentwarehouseV1CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
     cloudAiDocumentOption: S.optional(GoogleCloudContentwarehouseV1CloudAIDocumentOption),
@@ -2210,7 +2199,7 @@ export interface CreateProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1CreateDocumentRequest;
 }
-export const CreateProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1CreateDocumentRequest.pipe(T.HttpBody())),
@@ -2230,7 +2219,7 @@ export interface GoogleCloudContentwarehouseV1ResponseMetadata {
   /** A unique id associated with this call. This id is logged for tracking purpose. */
   requestId?: string;
 }
-export const GoogleCloudContentwarehouseV1ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -2251,7 +2240,7 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(GoogleRpcStatus),
     response: S.optional(DocumentMap),
@@ -2264,7 +2253,7 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -2273,7 +2262,7 @@ export type GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum =
   | "ADD_POLICY_BINDING"
   | "REMOVE_POLICY_BINDING"
   | "REPLACE_POLICY_BINDING";
-export const GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum = S.String;
 
 /** Represents the action responsible for access control list management operations. */
 export interface GoogleCloudContentwarehouseV1AccessControlAction {
@@ -2282,7 +2271,7 @@ export interface GoogleCloudContentwarehouseV1AccessControlAction {
   /** Identifies the type of operation. */
   operationType?: GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum | (string & {});
 }
-export const GoogleCloudContentwarehouseV1AccessControlAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1AccessControlAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(GoogleIamV1Policy),
     operationType: S.optional(GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum),
@@ -2296,7 +2285,7 @@ export interface GoogleCloudContentwarehouseV1DataValidationAction {
   /** Map of (K, V) -> (field, string condition to be evaluated on the field) E.g., ("age", "age > 18 && age < 60") entry triggers validation of field age with the given condition. Map entries will be ANDed during validation. */
   conditions?: StringMap;
 }
-export const GoogleCloudContentwarehouseV1DataValidationAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DataValidationAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(StringMap),
   }),
@@ -2309,7 +2298,7 @@ export interface GoogleCloudContentwarehouseV1AddToFolderAction {
   /** Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}. */
   folders?: StringList;
 }
-export const GoogleCloudContentwarehouseV1AddToFolderAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1AddToFolderAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folders: S.optional(StringList),
   }),
@@ -2324,7 +2313,7 @@ export interface GoogleCloudContentwarehouseV1PublishAction {
   /** Messages to be published. */
   messages?: StringList;
 }
-export const GoogleCloudContentwarehouseV1PublishAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1PublishAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicId: S.optional(S.String),
     messages: S.optional(StringList),
@@ -2340,7 +2329,7 @@ export interface GoogleCloudContentwarehouseV1RemoveFromFolderAction {
   /** Condition of the action to be executed. */
   condition?: string;
 }
-export const GoogleCloudContentwarehouseV1RemoveFromFolderAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RemoveFromFolderAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folder: S.optional(S.String),
     condition: S.optional(S.String),
@@ -2354,7 +2343,7 @@ export interface GoogleCloudContentwarehouseV1DataUpdateAction {
   /** Map of (K, V) -> (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types. */
   entries?: StringMap;
 }
-export const GoogleCloudContentwarehouseV1DataUpdateAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DataUpdateAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(StringMap),
   }),
@@ -2367,7 +2356,7 @@ export interface GoogleCloudContentwarehouseV1DeleteDocumentAction {
   /** Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'. */
   enableHardDelete?: boolean;
 }
-export const GoogleCloudContentwarehouseV1DeleteDocumentAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DeleteDocumentAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableHardDelete: S.optional(S.Boolean),
   }),
@@ -2394,7 +2383,7 @@ export interface GoogleCloudContentwarehouseV1Action {
   /** ID of the action. Managed internally. */
   actionId?: string;
 }
-export const GoogleCloudContentwarehouseV1Action = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(GoogleCloudContentwarehouseV1AccessControlAction),
     dataValidation: S.optional(GoogleCloudContentwarehouseV1DataValidationAction),
@@ -2410,7 +2399,7 @@ export const GoogleCloudContentwarehouseV1Action = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudContentwarehouseV1Action>;
 
 export type GoogleCloudContentwarehouseV1ActionList = Array<GoogleCloudContentwarehouseV1Action>;
-export const GoogleCloudContentwarehouseV1ActionList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1ActionList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1Action,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1ActionList>;
 
@@ -2420,7 +2409,7 @@ export type GoogleCloudContentwarehouseV1RuleTriggerTypeEnum =
   | "ON_UPDATE"
   | "ON_CREATE_LINK"
   | "ON_DELETE_LINK";
-export const GoogleCloudContentwarehouseV1RuleTriggerTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1RuleTriggerTypeEnum = S.String;
 
 /** Represents the rule for a content warehouse trigger. */
 export interface GoogleCloudContentwarehouseV1Rule {
@@ -2435,7 +2424,7 @@ export interface GoogleCloudContentwarehouseV1Rule {
   /** Represents the conditional expression to be evaluated. Expression should evaluate to a boolean result. When the condition is true actions are executed. Example: user_role = "hsbc_role_1" AND doc.salary > 20000 */
   condition?: string;
 }
-export const GoogleCloudContentwarehouseV1Rule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1Rule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.optional(S.String),
     description: S.optional(S.String),
@@ -2448,7 +2437,7 @@ export const GoogleCloudContentwarehouseV1Rule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudContentwarehouseV1Rule>;
 
 export type GoogleCloudContentwarehouseV1RuleList = Array<GoogleCloudContentwarehouseV1Rule>;
-export const GoogleCloudContentwarehouseV1RuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1RuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1Rule,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1RuleList>;
 
@@ -2459,7 +2448,7 @@ export interface GoogleCloudContentwarehouseV1InvalidRule {
   /** Triggered rule. */
   rule?: GoogleCloudContentwarehouseV1Rule;
 }
-export const GoogleCloudContentwarehouseV1InvalidRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1InvalidRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
     rule: S.optional(GoogleCloudContentwarehouseV1Rule),
@@ -2470,7 +2459,7 @@ export const GoogleCloudContentwarehouseV1InvalidRule = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudContentwarehouseV1InvalidRuleList =
   Array<GoogleCloudContentwarehouseV1InvalidRule>;
-export const GoogleCloudContentwarehouseV1InvalidRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1InvalidRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1InvalidRule,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1InvalidRuleList>;
 
@@ -2483,7 +2472,7 @@ export interface GoogleCloudContentwarehouseV1RuleEvaluatorOutput {
   /** List of rules fetched from database for the given request trigger type. */
   triggeredRules?: GoogleCloudContentwarehouseV1RuleList;
 }
-export const GoogleCloudContentwarehouseV1RuleEvaluatorOutput = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RuleEvaluatorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchedRules: S.optional(GoogleCloudContentwarehouseV1RuleList),
     invalidRules: S.optional(GoogleCloudContentwarehouseV1InvalidRuleList),
@@ -2499,7 +2488,7 @@ export type GoogleCloudContentwarehouseV1ActionOutputActionStateEnum =
   | "ACTION_FAILED"
   | "ACTION_TIMED_OUT"
   | "ACTION_PENDING";
-export const GoogleCloudContentwarehouseV1ActionOutputActionStateEnum = S.String;
+const GoogleCloudContentwarehouseV1ActionOutputActionStateEnum = S.String;
 
 /** Represents the result of executing an action. */
 export interface GoogleCloudContentwarehouseV1ActionOutput {
@@ -2510,7 +2499,7 @@ export interface GoogleCloudContentwarehouseV1ActionOutput {
   /** ID of the action. */
   actionId?: string;
 }
-export const GoogleCloudContentwarehouseV1ActionOutput = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ActionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputMessage: S.optional(S.String),
     actionState: S.optional(GoogleCloudContentwarehouseV1ActionOutputActionStateEnum),
@@ -2522,7 +2511,7 @@ export const GoogleCloudContentwarehouseV1ActionOutput = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudContentwarehouseV1ActionOutputList =
   Array<GoogleCloudContentwarehouseV1ActionOutput>;
-export const GoogleCloudContentwarehouseV1ActionOutputList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1ActionOutputList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1ActionOutput,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1ActionOutputList>;
 
@@ -2533,7 +2522,7 @@ export interface GoogleCloudContentwarehouseV1RuleActionsPair {
   /** Outputs of executing the actions associated with the above rule. */
   actionOutputs?: GoogleCloudContentwarehouseV1ActionOutputList;
 }
-export const GoogleCloudContentwarehouseV1RuleActionsPair = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RuleActionsPair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(GoogleCloudContentwarehouseV1Rule),
     actionOutputs: S.optional(GoogleCloudContentwarehouseV1ActionOutputList),
@@ -2544,7 +2533,7 @@ export const GoogleCloudContentwarehouseV1RuleActionsPair = /*@__PURE__*/ S.susp
 
 export type GoogleCloudContentwarehouseV1RuleActionsPairList =
   Array<GoogleCloudContentwarehouseV1RuleActionsPair>;
-export const GoogleCloudContentwarehouseV1RuleActionsPairList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1RuleActionsPairList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1RuleActionsPair,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1RuleActionsPairList>;
 
@@ -2553,7 +2542,7 @@ export interface GoogleCloudContentwarehouseV1ActionExecutorOutput {
   /** List of rule and corresponding actions result. */
   ruleActionsPairs?: GoogleCloudContentwarehouseV1RuleActionsPairList;
 }
-export const GoogleCloudContentwarehouseV1ActionExecutorOutput = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ActionExecutorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleActionsPairs: S.optional(GoogleCloudContentwarehouseV1RuleActionsPairList),
   }),
@@ -2570,7 +2559,7 @@ export interface GoogleCloudContentwarehouseV1RuleEngineOutput {
   /** Output from Action Executor containing rule and corresponding actions execution result. */
   actionExecutorOutput?: GoogleCloudContentwarehouseV1ActionExecutorOutput;
 }
-export const GoogleCloudContentwarehouseV1RuleEngineOutput = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RuleEngineOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentName: S.optional(S.String),
     ruleEvaluatorOutput: S.optional(GoogleCloudContentwarehouseV1RuleEvaluatorOutput),
@@ -2591,7 +2580,7 @@ export interface GoogleCloudContentwarehouseV1CreateDocumentResponse {
   /** Output from Rule Engine recording the rule evaluator and action executor's output. Refer format in: google/cloud/contentwarehouse/v1/rule_engine.proto */
   ruleEngineOutput?: GoogleCloudContentwarehouseV1RuleEngineOutput;
 }
-export const GoogleCloudContentwarehouseV1CreateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1CreateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(GoogleCloudContentwarehouseV1ResponseMetadata),
     longRunningOperations: S.optional(GoogleLongrunningOperationList),
@@ -2609,29 +2598,27 @@ export interface GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
   /** The Doc AI processor type name. */
   processorType?: string;
 }
-export const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      processorType: S.optional(S.String),
-    }),
+const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    processorType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource",
 }) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>;
 
 export type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList =
   Array<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>;
-export const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource,
-  ) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList>;
+const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList = /*@__PURE__*/ S.Array(
+  GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource,
+) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList>;
 
 /** Configurations for a nested structured data property. */
 export interface GoogleCloudContentwarehouseV1PropertyTypeOptions {
   /** Required. List of property definitions. */
   propertyDefinitions?: GoogleCloudContentwarehouseV1PropertyDefinitionList;
 }
-export const GoogleCloudContentwarehouseV1PropertyTypeOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1PropertyTypeOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyDefinitions: S.optional(
       S.suspend(() => GoogleCloudContentwarehouseV1PropertyDefinitionList),
@@ -2649,11 +2636,11 @@ export type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEn
   | "MEDIUM"
   | "LOW"
   | "LOWEST";
-export const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEnum = S.String;
+const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEnum = S.String;
 
 /** Configurations for an integer property. */
 export interface GoogleCloudContentwarehouseV1IntegerTypeOptions {}
-export const GoogleCloudContentwarehouseV1IntegerTypeOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1IntegerTypeOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudContentwarehouseV1IntegerTypeOptions",
@@ -2662,9 +2649,6 @@ export const GoogleCloudContentwarehouseV1IntegerTypeOptions = /*@__PURE__*/ S.s
 /** Configurations for a float property. */
 export type GoogleCloudContentwarehouseV1FloatTypeOptions =
   GoogleCloudContentwarehouseV1IntegerTypeOptions;
-export const GoogleCloudContentwarehouseV1FloatTypeOptions =
-  GoogleCloudContentwarehouseV1IntegerTypeOptions;
-
 /** Configurations for an enum/categorical property. */
 export interface GoogleCloudContentwarehouseV1EnumTypeOptions {
   /** Make sure the Enum property value provided in the document is in the possile value list during document creation. The validation check runs by default. */
@@ -2672,7 +2656,7 @@ export interface GoogleCloudContentwarehouseV1EnumTypeOptions {
   /** Required. List of possible enum values. */
   possibleValues?: StringList;
 }
-export const GoogleCloudContentwarehouseV1EnumTypeOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1EnumTypeOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validationCheckDisabled: S.optional(S.Boolean),
     possibleValues: S.optional(StringList),
@@ -2684,27 +2668,15 @@ export const GoogleCloudContentwarehouseV1EnumTypeOptions = /*@__PURE__*/ S.susp
 /** Configurations for a text property. */
 export type GoogleCloudContentwarehouseV1TextTypeOptions =
   GoogleCloudContentwarehouseV1IntegerTypeOptions;
-export const GoogleCloudContentwarehouseV1TextTypeOptions =
-  GoogleCloudContentwarehouseV1IntegerTypeOptions;
-
 /** Configurations for a date time property. */
 export type GoogleCloudContentwarehouseV1DateTimeTypeOptions =
   GoogleCloudContentwarehouseV1IntegerTypeOptions;
-export const GoogleCloudContentwarehouseV1DateTimeTypeOptions =
-  GoogleCloudContentwarehouseV1IntegerTypeOptions;
-
 /** Configurations for a timestamp property. */
 export type GoogleCloudContentwarehouseV1TimestampTypeOptions =
   GoogleCloudContentwarehouseV1IntegerTypeOptions;
-export const GoogleCloudContentwarehouseV1TimestampTypeOptions =
-  GoogleCloudContentwarehouseV1IntegerTypeOptions;
-
 /** Configurations for a Map property. */
 export type GoogleCloudContentwarehouseV1MapTypeOptions =
   GoogleCloudContentwarehouseV1IntegerTypeOptions;
-export const GoogleCloudContentwarehouseV1MapTypeOptions =
-  GoogleCloudContentwarehouseV1IntegerTypeOptions;
-
 /** Defines the metadata for a schema property. */
 export interface GoogleCloudContentwarehouseV1PropertyDefinition {
   /** The mapping information between this property to another schema source. */
@@ -2744,7 +2716,7 @@ export interface GoogleCloudContentwarehouseV1PropertyDefinition {
   /** Map property. */
   mapTypeOptions?: GoogleCloudContentwarehouseV1IntegerTypeOptions;
 }
-export const GoogleCloudContentwarehouseV1PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaSources: S.optional(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList),
     isFilterable: S.optional(S.Boolean),
@@ -2772,7 +2744,7 @@ export const GoogleCloudContentwarehouseV1PropertyDefinition = /*@__PURE__*/ S.s
 
 export type GoogleCloudContentwarehouseV1PropertyDefinitionList =
   Array<GoogleCloudContentwarehouseV1PropertyDefinition>;
-export const GoogleCloudContentwarehouseV1PropertyDefinitionList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1PropertyDefinitionList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1PropertyDefinition,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyDefinitionList>;
 
@@ -2793,7 +2765,7 @@ export interface GoogleCloudContentwarehouseV1DocumentSchema {
   /** Document Type, true refers the document is a folder, otherwise it is a typical document. */
   documentIsFolder?: boolean;
 }
-export const GoogleCloudContentwarehouseV1DocumentSchema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DocumentSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2813,7 +2785,7 @@ export interface CreateProjectsLocationsDocumentSchemasRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DocumentSchema;
 }
-export const CreateProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DocumentSchema.pipe(T.HttpBody())),
@@ -2832,7 +2804,7 @@ export type GoogleCloudContentwarehouseV1DocumentLinkStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "SOFT_DELETED";
-export const GoogleCloudContentwarehouseV1DocumentLinkStateEnum = S.String;
+const GoogleCloudContentwarehouseV1DocumentLinkStateEnum = S.String;
 
 /** References to the documents. */
 export interface GoogleCloudContentwarehouseV1DocumentReference {
@@ -2855,7 +2827,7 @@ export interface GoogleCloudContentwarehouseV1DocumentReference {
   /** Output only. The time when the document is deleted. */
   deleteTime?: string;
 }
-export const GoogleCloudContentwarehouseV1DocumentReference = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DocumentReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentIsRetentionFolder: S.optional(S.Boolean),
     updateTime: S.optional(S.String),
@@ -2888,7 +2860,7 @@ export interface GoogleCloudContentwarehouseV1DocumentLink {
   /** Document references of the target document. */
   targetDocumentReference?: GoogleCloudContentwarehouseV1DocumentReference;
 }
-export const GoogleCloudContentwarehouseV1DocumentLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DocumentLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -2909,7 +2881,7 @@ export interface GoogleCloudContentwarehouseV1CreateDocumentLinkRequest {
   /** Required. Document links associated with the source documents (source_document_id). */
   documentLink?: GoogleCloudContentwarehouseV1DocumentLink;
 }
-export const GoogleCloudContentwarehouseV1CreateDocumentLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1CreateDocumentLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
     documentLink: S.optional(GoogleCloudContentwarehouseV1DocumentLink),
@@ -2924,7 +2896,7 @@ export interface CreateProjectsLocationsDocumentsDocumentLinksRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1CreateDocumentLinkRequest;
 }
-export const CreateProjectsLocationsDocumentsDocumentLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDocumentsDocumentLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1CreateDocumentLinkRequest.pipe(T.HttpBody())),
@@ -2950,7 +2922,7 @@ export interface GoogleCloudContentwarehouseV1RuleSet {
   /** List of rules given by the customer. */
   rules?: GoogleCloudContentwarehouseV1RuleList;
 }
-export const GoogleCloudContentwarehouseV1RuleSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RuleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     source: S.optional(S.String),
@@ -2967,7 +2939,7 @@ export interface CreateProjectsLocationsRuleSetsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1RuleSet;
 }
-export const CreateProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1RuleSet.pipe(T.HttpBody())),
@@ -2987,7 +2959,7 @@ export interface GoogleCloudContentwarehouseV1SynonymSetSynonym {
   /** For example: sale, invoice, bill, order */
   words?: StringList;
 }
-export const GoogleCloudContentwarehouseV1SynonymSetSynonym = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1SynonymSetSynonym = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     words: S.optional(StringList),
   }),
@@ -2997,7 +2969,7 @@ export const GoogleCloudContentwarehouseV1SynonymSetSynonym = /*@__PURE__*/ S.su
 
 export type GoogleCloudContentwarehouseV1SynonymSetSynonymList =
   Array<GoogleCloudContentwarehouseV1SynonymSetSynonym>;
-export const GoogleCloudContentwarehouseV1SynonymSetSynonymList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1SynonymSetSynonymList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1SynonymSetSynonym,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1SynonymSetSynonymList>;
 
@@ -3010,7 +2982,7 @@ export interface GoogleCloudContentwarehouseV1SynonymSet {
   /** List of Synonyms for the context. */
   synonyms?: GoogleCloudContentwarehouseV1SynonymSetSynonymList;
 }
-export const GoogleCloudContentwarehouseV1SynonymSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1SynonymSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     name: S.optional(S.String),
@@ -3026,7 +2998,7 @@ export interface CreateProjectsLocationsSynonymSetsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1SynonymSet;
 }
-export const CreateProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1SynonymSet.pipe(T.HttpBody())),
@@ -3046,7 +3018,7 @@ export interface GoogleCloudContentwarehouseV1DeleteDocumentRequest {
   /** The meta information collected about the end user, used to enforce access control for the service. */
   requestMetadata?: GoogleCloudContentwarehouseV1RequestMetadata;
 }
-export const GoogleCloudContentwarehouseV1DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
   }),
@@ -3060,7 +3032,7 @@ export interface DeleteProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DeleteDocumentRequest;
 }
-export const DeleteProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DeleteDocumentRequest.pipe(T.HttpBody())),
@@ -3077,7 +3049,7 @@ export const DeleteProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend((
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -3085,7 +3057,7 @@ export interface DeleteProjectsLocationsDocumentSchemasRequest {
   /** Required. The name of the document schema to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3104,7 +3076,7 @@ export interface GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest {
   /** The meta information collected about the document creator, used to enforce access control for the service. */
   requestMetadata?: GoogleCloudContentwarehouseV1RequestMetadata;
 }
-export const GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest =
+const GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest =
   GoogleCloudContentwarehouseV1DeleteDocumentRequest as any as S.Schema<GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest>;
 
 export interface DeleteProjectsLocationsDocumentsDocumentLinksRequest {
@@ -3113,7 +3085,7 @@ export interface DeleteProjectsLocationsDocumentsDocumentLinksRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest;
 }
-export const DeleteProjectsLocationsDocumentsDocumentLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDocumentsDocumentLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.pipe(T.HttpBody())),
@@ -3134,7 +3106,7 @@ export interface DeleteProjectsLocationsDocumentsReferenceIdRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DeleteDocumentRequest;
 }
-export const DeleteProjectsLocationsDocumentsReferenceIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDocumentsReferenceIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DeleteDocumentRequest.pipe(T.HttpBody())),
@@ -3153,7 +3125,7 @@ export interface DeleteProjectsLocationsRuleSetsRequest {
   /** Required. The name of the rule set to delete. Format: projects/{project_number}/locations/{location}/ruleSets/{rule_set_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3171,7 +3143,7 @@ export interface DeleteProjectsLocationsSynonymSetsRequest {
   /** Required. The name of the synonymSet to delete Format: projects/{project_number}/locations/{location}/synonymSets/{context}. */
   name: string;
 }
-export const DeleteProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3192,7 +3164,7 @@ export interface GoogleCloudContentwarehouseV1FetchAclRequest {
   /** The meta information collected about the end user, used to enforce access control for the service. */
   requestMetadata?: GoogleCloudContentwarehouseV1RequestMetadata;
 }
-export const GoogleCloudContentwarehouseV1FetchAclRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1FetchAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectOwner: S.optional(S.Boolean),
     requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
@@ -3207,7 +3179,7 @@ export interface FetchAclProjectsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1FetchAclRequest;
 }
-export const FetchAclProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchAclProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1FetchAclRequest.pipe(T.HttpBody())),
@@ -3227,7 +3199,7 @@ export interface GoogleCloudContentwarehouseV1FetchAclResponse {
   /** The IAM policy. */
   policy?: GoogleIamV1Policy;
 }
-export const GoogleCloudContentwarehouseV1FetchAclResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1FetchAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(GoogleCloudContentwarehouseV1ResponseMetadata),
     policy: S.optional(GoogleIamV1Policy),
@@ -3242,7 +3214,7 @@ export interface FetchAclProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1FetchAclRequest;
 }
-export const FetchAclProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchAclProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1FetchAclRequest.pipe(T.HttpBody())),
@@ -3260,16 +3232,13 @@ export const FetchAclProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend
 /** Request message for DocumentService.GetDocument. */
 export type GoogleCloudContentwarehouseV1GetDocumentRequest =
   GoogleCloudContentwarehouseV1DeleteDocumentRequest;
-export const GoogleCloudContentwarehouseV1GetDocumentRequest =
-  GoogleCloudContentwarehouseV1DeleteDocumentRequest;
-
 export interface GetProjectsLocationsDocumentsRequest {
   /** Required. The name of the document to retrieve. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}. */
   name: string;
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DeleteDocumentRequest;
 }
-export const GetProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DeleteDocumentRequest.pipe(T.HttpBody())),
@@ -3288,7 +3257,7 @@ export interface GetProjectsLocationsDocumentSchemasRequest {
   /** Required. The name of the document schema to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3308,7 +3277,7 @@ export interface GetProjectsLocationsDocumentsReferenceIdRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DeleteDocumentRequest;
 }
-export const GetProjectsLocationsDocumentsReferenceIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDocumentsReferenceIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DeleteDocumentRequest.pipe(T.HttpBody())),
@@ -3327,7 +3296,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3345,7 +3314,7 @@ export interface GetProjectsLocationsRuleSetsRequest {
   /** Required. The name of the rule set to retrieve. Format: projects/{project_number}/locations/{location}/ruleSets/{rule_set_id}. */
   name: string;
 }
-export const GetProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3363,7 +3332,7 @@ export interface GetProjectsLocationsSynonymSetsRequest {
   /** Required. The name of the synonymSet to retrieve Format: projects/{project_number}/locations/{location}/synonymSets/{context}. */
   name: string;
 }
-export const GetProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3381,7 +3350,7 @@ export interface GetStatusProjectsLocationsRequest {
   /** Required. The location to be queried Format: projects/{project_number}/locations/{location}. */
   location: string;
 }
-export const GetStatusProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
   }).pipe(
@@ -3399,7 +3368,7 @@ export type GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum =
   | "DB_UNKNOWN"
   | "DB_INFRA_SPANNER"
   | "DB_CLOUD_SQL_POSTGRES";
-export const GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum = S.String;
 
 export type GoogleCloudContentwarehouseV1ProjectStatusStateEnum =
   | "PROJECT_STATE_UNSPECIFIED"
@@ -3410,14 +3379,14 @@ export type GoogleCloudContentwarehouseV1ProjectStatusStateEnum =
   | "PROJECT_STATE_DELETING_FAILED"
   | "PROJECT_STATE_DELETED"
   | "PROJECT_STATE_NOT_FOUND";
-export const GoogleCloudContentwarehouseV1ProjectStatusStateEnum = S.String;
+const GoogleCloudContentwarehouseV1ProjectStatusStateEnum = S.String;
 
 export type GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum =
   | "ACL_MODE_UNKNOWN"
   | "ACL_MODE_UNIVERSAL_ACCESS"
   | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID"
   | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI";
-export const GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum = S.String;
+const GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum = S.String;
 
 /** Status of a project, including the project state, dbType, aclMode and etc. */
 export interface GoogleCloudContentwarehouseV1ProjectStatus {
@@ -3434,7 +3403,7 @@ export interface GoogleCloudContentwarehouseV1ProjectStatus {
   /** Access control mode. */
   accessControlMode?: GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum;
 }
-export const GoogleCloudContentwarehouseV1ProjectStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ProjectStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseType: S.optional(GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum),
     documentCreatorDefaultRole: S.optional(S.String),
@@ -3451,14 +3420,14 @@ export type GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnu
   | "DB_UNKNOWN"
   | "DB_INFRA_SPANNER"
   | "DB_CLOUD_SQL_POSTGRES";
-export const GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum = S.String;
 
 export type GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreatorDefaultRoleEnum =
   | "DOCUMENT_CREATOR_DEFAULT_ROLE_UNSPECIFIED"
   | "DOCUMENT_ADMIN"
   | "DOCUMENT_EDITOR"
   | "DOCUMENT_VIEWER";
-export const GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreatorDefaultRoleEnum =
+const GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreatorDefaultRoleEnum =
   S.String;
 
 export type GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlModeEnum =
@@ -3466,7 +3435,7 @@ export type GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlMo
   | "ACL_MODE_UNIVERSAL_ACCESS"
   | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID"
   | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI";
-export const GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlModeEnum = S.String;
+const GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlModeEnum = S.String;
 
 /** Request message for projectService.InitializeProject */
 export interface GoogleCloudContentwarehouseV1InitializeProjectRequest {
@@ -3487,7 +3456,7 @@ export interface GoogleCloudContentwarehouseV1InitializeProjectRequest {
     | GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlModeEnum
     | (string & {});
 }
-export const GoogleCloudContentwarehouseV1InitializeProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1InitializeProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKey: S.optional(S.String),
     databaseType: S.optional(GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum),
@@ -3509,7 +3478,7 @@ export interface InitializeProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1InitializeProjectRequest;
 }
-export const InitializeProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const InitializeProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1InitializeProjectRequest.pipe(T.HttpBody())),
@@ -3533,7 +3502,7 @@ export interface GoogleCloudContentwarehouseV1ListLinkedSourcesRequest {
   /** The meta information collected about the document creator, used to enforce access control for the service. */
   requestMetadata?: GoogleCloudContentwarehouseV1RequestMetadata;
 }
-export const GoogleCloudContentwarehouseV1ListLinkedSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ListLinkedSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number),
     pageToken: S.optional(S.String),
@@ -3549,7 +3518,7 @@ export interface LinkedSourcesProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1ListLinkedSourcesRequest;
 }
-export const LinkedSourcesProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkedSourcesProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1ListLinkedSourcesRequest.pipe(T.HttpBody())),
@@ -3566,7 +3535,7 @@ export const LinkedSourcesProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.su
 
 export type GoogleCloudContentwarehouseV1DocumentLinkList =
   Array<GoogleCloudContentwarehouseV1DocumentLink>;
-export const GoogleCloudContentwarehouseV1DocumentLinkList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1DocumentLinkList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1DocumentLink,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1DocumentLinkList>;
 
@@ -3577,7 +3546,7 @@ export interface GoogleCloudContentwarehouseV1ListLinkedSourcesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContentwarehouseV1ListLinkedSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ListLinkedSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentLinks: S.optional(GoogleCloudContentwarehouseV1DocumentLinkList),
     nextPageToken: S.optional(S.String),
@@ -3589,16 +3558,13 @@ export const GoogleCloudContentwarehouseV1ListLinkedSourcesResponse = /*@__PURE_
 /** Request message for DocumentLinkService.ListLinkedTargets. */
 export type GoogleCloudContentwarehouseV1ListLinkedTargetsRequest =
   GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest;
-export const GoogleCloudContentwarehouseV1ListLinkedTargetsRequest =
-  GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest;
-
 export interface LinkedTargetsProjectsLocationsDocumentsRequest {
   /** Required. The name of the document, for which all target links are returned. Format: projects/{project_number}/locations/{location}/documents/{target_document_id}. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest;
 }
-export const LinkedTargetsProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkedTargetsProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest.pipe(T.HttpBody())),
@@ -3620,7 +3586,7 @@ export interface GoogleCloudContentwarehouseV1ListLinkedTargetsResponse {
   /** Target document-links. */
   documentLinks?: GoogleCloudContentwarehouseV1DocumentLinkList;
 }
-export const GoogleCloudContentwarehouseV1ListLinkedTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ListLinkedTargetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     documentLinks: S.optional(GoogleCloudContentwarehouseV1DocumentLinkList),
@@ -3637,7 +3603,7 @@ export interface ListProjectsLocationsDocumentSchemasRequest {
   /** The maximum number of document schemas to return. The service may return fewer than this value. If unspecified, at most 50 document schemas will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3655,7 +3621,7 @@ export const ListProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudContentwarehouseV1DocumentSchemaList =
   Array<GoogleCloudContentwarehouseV1DocumentSchema>;
-export const GoogleCloudContentwarehouseV1DocumentSchemaList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1DocumentSchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1DocumentSchema,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1DocumentSchemaList>;
 
@@ -3666,12 +3632,11 @@ export interface GoogleCloudContentwarehouseV1ListDocumentSchemasResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContentwarehouseV1ListDocumentSchemasResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      documentSchemas: S.optional(GoogleCloudContentwarehouseV1DocumentSchemaList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContentwarehouseV1ListDocumentSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentSchemas: S.optional(GoogleCloudContentwarehouseV1DocumentSchemaList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContentwarehouseV1ListDocumentSchemasResponse",
 }) as any as S.Schema<GoogleCloudContentwarehouseV1ListDocumentSchemasResponse>;
@@ -3684,7 +3649,7 @@ export interface ListProjectsLocationsRuleSetsRequest {
   /** Required. The parent, which owns this collection of document. Format: projects/{project_number}/locations/{location}. */
   parent: string;
 }
-export const ListProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3701,7 +3666,7 @@ export const ListProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsRuleSetsRequest>;
 
 export type GoogleCloudContentwarehouseV1RuleSetList = Array<GoogleCloudContentwarehouseV1RuleSet>;
-export const GoogleCloudContentwarehouseV1RuleSetList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1RuleSetList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1RuleSet,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1RuleSetList>;
 
@@ -3712,7 +3677,7 @@ export interface GoogleCloudContentwarehouseV1ListRuleSetsResponse {
   /** The rule sets from the specified parent. */
   ruleSets?: GoogleCloudContentwarehouseV1RuleSetList;
 }
-export const GoogleCloudContentwarehouseV1ListRuleSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ListRuleSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     ruleSets: S.optional(GoogleCloudContentwarehouseV1RuleSetList),
@@ -3729,7 +3694,7 @@ export interface ListProjectsLocationsSynonymSetsRequest {
   /** The maximum number of synonymSets to return. The service may return fewer than this value. If unspecified, at most 50 rule sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3747,7 +3712,7 @@ export const ListProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudContentwarehouseV1SynonymSetList =
   Array<GoogleCloudContentwarehouseV1SynonymSet>;
-export const GoogleCloudContentwarehouseV1SynonymSetList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1SynonymSetList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1SynonymSet,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1SynonymSetList>;
 
@@ -3758,7 +3723,7 @@ export interface GoogleCloudContentwarehouseV1ListSynonymSetsResponse {
   /** A page token, received from a previous `ListSynonymSets` call. Provide this to retrieve the subsequent page. */
   nextPageToken?: string;
 }
-export const GoogleCloudContentwarehouseV1ListSynonymSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ListSynonymSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSets: S.optional(GoogleCloudContentwarehouseV1SynonymSetList),
     nextPageToken: S.optional(S.String),
@@ -3774,7 +3739,7 @@ export interface GoogleCloudContentwarehouseV1LockDocumentRequest {
   /** The user information who locks the document. */
   lockingUser?: GoogleCloudContentwarehouseV1UserInfo;
 }
-export const GoogleCloudContentwarehouseV1LockDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1LockDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.optional(S.String),
     lockingUser: S.optional(GoogleCloudContentwarehouseV1UserInfo),
@@ -3789,7 +3754,7 @@ export interface LockProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1LockDocumentRequest;
 }
-export const LockProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const LockProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1LockDocumentRequest.pipe(T.HttpBody())),
@@ -3812,7 +3777,7 @@ export type GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum =
   | "UPDATE_TYPE_REPLACE_PROPERTIES_BY_NAMES"
   | "UPDATE_TYPE_DELETE_PROPERTIES_BY_NAMES"
   | "UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES";
-export const GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum = S.String;
 
 /** Options for merging updated fields. */
 export interface GoogleCloudContentwarehouseV1MergeFieldsOptions {
@@ -3821,7 +3786,7 @@ export interface GoogleCloudContentwarehouseV1MergeFieldsOptions {
   /** When merging message fields, the default behavior is to merge the content of two message fields together. If you instead want to use the field from the source message to replace the corresponding field in the destination message, set this flag to true. When this flag is set, specified submessage fields that are missing in source will be cleared in destination. */
   replaceMessageFields?: boolean;
 }
-export const GoogleCloudContentwarehouseV1MergeFieldsOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1MergeFieldsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replaceRepeatedFields: S.optional(S.Boolean),
     replaceMessageFields: S.optional(S.Boolean),
@@ -3839,7 +3804,7 @@ export interface GoogleCloudContentwarehouseV1UpdateOptions {
   /** Options for merging. */
   mergeFieldsOptions?: GoogleCloudContentwarehouseV1MergeFieldsOptions;
 }
-export const GoogleCloudContentwarehouseV1UpdateOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1UpdateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     updateType: S.optional(GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum),
@@ -3860,7 +3825,7 @@ export interface GoogleCloudContentwarehouseV1UpdateDocumentRequest {
   /** Required. The document to update. */
   document?: GoogleCloudContentwarehouseV1Document;
 }
-export const GoogleCloudContentwarehouseV1UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
     updateOptions: S.optional(GoogleCloudContentwarehouseV1UpdateOptions),
@@ -3877,7 +3842,7 @@ export interface PatchProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1UpdateDocumentRequest;
 }
-export const PatchProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1UpdateDocumentRequest.pipe(T.HttpBody())),
@@ -3901,7 +3866,7 @@ export interface GoogleCloudContentwarehouseV1UpdateDocumentResponse {
   /** Updated document after executing update request. */
   document?: GoogleCloudContentwarehouseV1Document;
 }
-export const GoogleCloudContentwarehouseV1UpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1UpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(GoogleCloudContentwarehouseV1ResponseMetadata),
     ruleEngineOutput: S.optional(GoogleCloudContentwarehouseV1RuleEngineOutput),
@@ -3916,11 +3881,10 @@ export interface GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest {
   /** Required. The document schema to update with. */
   documentSchema?: GoogleCloudContentwarehouseV1DocumentSchema;
 }
-export const GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      documentSchema: S.optional(GoogleCloudContentwarehouseV1DocumentSchema),
-    }),
+const GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentSchema: S.optional(GoogleCloudContentwarehouseV1DocumentSchema),
+  }),
 ).annotate({
   identifier: "GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest",
 }) as any as S.Schema<GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest>;
@@ -3931,7 +3895,7 @@ export interface PatchProjectsLocationsDocumentSchemasRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest;
 }
-export const PatchProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDocumentSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1UpdateDocumentSchemaRequest.pipe(T.HttpBody())),
@@ -3952,7 +3916,7 @@ export interface PatchProjectsLocationsDocumentsReferenceIdRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1UpdateDocumentRequest;
 }
-export const PatchProjectsLocationsDocumentsReferenceIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDocumentsReferenceIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1UpdateDocumentRequest.pipe(T.HttpBody())),
@@ -3972,7 +3936,7 @@ export interface GoogleCloudContentwarehouseV1UpdateRuleSetRequest {
   /** Required. The rule set to update. */
   ruleSet?: GoogleCloudContentwarehouseV1RuleSet;
 }
-export const GoogleCloudContentwarehouseV1UpdateRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1UpdateRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleSet: S.optional(GoogleCloudContentwarehouseV1RuleSet),
   }),
@@ -3986,7 +3950,7 @@ export interface PatchProjectsLocationsRuleSetsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1UpdateRuleSetRequest;
 }
-export const PatchProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1UpdateRuleSetRequest.pipe(T.HttpBody())),
@@ -4007,7 +3971,7 @@ export interface PatchProjectsLocationsSynonymSetsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1SynonymSet;
 }
-export const PatchProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1SynonymSet.pipe(T.HttpBody())),
@@ -4031,7 +3995,7 @@ export interface GoogleCloudContentwarehouseV1ProcessorInfo {
   /** The processor resource name. Format is `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` */
   processorName?: string;
 }
-export const GoogleCloudContentwarehouseV1ProcessorInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ProcessorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentType: S.optional(S.String),
     schemaName: S.optional(S.String),
@@ -4052,7 +4016,7 @@ export interface GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline {
   /** The CDW processor information. */
   processorInfo?: GoogleCloudContentwarehouseV1ProcessorInfo;
 }
-export const GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exportFolderPath: S.optional(S.String),
     processorResultsFolderPath: S.optional(S.String),
@@ -4074,7 +4038,7 @@ export interface GoogleCloudContentwarehouseV1ExportToCdwPipeline {
   /** Ratio of training dataset split. When importing into Document AI Workbench, documents will be automatically split into training and test split category with the specified ratio. This field is required if doc_ai_dataset is set. */
   trainingSplitRatio?: number;
 }
-export const GoogleCloudContentwarehouseV1ExportToCdwPipeline = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1ExportToCdwPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     docAiDataset: S.optional(S.String),
     documents: S.optional(StringList),
@@ -4096,7 +4060,7 @@ export interface GoogleCloudContentwarehouseV1IngestPipelineConfig {
   /** Optional. The name of the folder to which all ingested documents will be linked during ingestion process. Format is `projects/{project}/locations/{location}/documents/{folder_id}` */
   folder?: string;
 }
-export const GoogleCloudContentwarehouseV1IngestPipelineConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1IngestPipelineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentAclPolicy: S.optional(GoogleIamV1Policy),
     enableDocumentTextExtraction: S.optional(S.Boolean),
@@ -4120,7 +4084,7 @@ export interface GoogleCloudContentwarehouseV1GcsIngestPipeline {
   /** The input Cloud Storage folder. All files under this folder will be imported to Document Warehouse. Format: `gs:///`. */
   inputPath?: string;
 }
-export const GoogleCloudContentwarehouseV1GcsIngestPipeline = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1GcsIngestPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaName: S.optional(S.String),
     pipelineConfig: S.optional(GoogleCloudContentwarehouseV1IngestPipelineConfig),
@@ -4134,7 +4098,7 @@ export const GoogleCloudContentwarehouseV1GcsIngestPipeline = /*@__PURE__*/ S.su
 
 export type GoogleCloudContentwarehouseV1ProcessorInfoList =
   Array<GoogleCloudContentwarehouseV1ProcessorInfo>;
-export const GoogleCloudContentwarehouseV1ProcessorInfoList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1ProcessorInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1ProcessorInfo,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1ProcessorInfoList>;
 
@@ -4153,8 +4117,8 @@ export interface GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeli
   /** The input Cloud Storage folder. All files under this folder will be imported to Document Warehouse. Format: `gs:///`. */
   inputPath?: string;
 }
-export const GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       processorResultsFolderPath: S.optional(S.String),
       splitClassifyProcessorInfo: S.optional(GoogleCloudContentwarehouseV1ProcessorInfo),
@@ -4163,9 +4127,9 @@ export const GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline =
       extractProcessorInfos: S.optional(GoogleCloudContentwarehouseV1ProcessorInfoList),
       inputPath: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline",
-  }) as any as S.Schema<GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline>;
+).annotate({
+  identifier: "GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline",
+}) as any as S.Schema<GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline>;
 
 /** Request message for DocumentService.RunPipeline. */
 export interface GoogleCloudContentwarehouseV1RunPipelineRequest {
@@ -4180,7 +4144,7 @@ export interface GoogleCloudContentwarehouseV1RunPipelineRequest {
   /** The meta information collected about the end user, used to enforce access control for the service. */
   requestMetadata?: GoogleCloudContentwarehouseV1RequestMetadata;
 }
-export const GoogleCloudContentwarehouseV1RunPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1RunPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processWithDocAiPipeline: S.optional(GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline),
     exportCdwPipeline: S.optional(GoogleCloudContentwarehouseV1ExportToCdwPipeline),
@@ -4200,7 +4164,7 @@ export interface RunPipelineProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1RunPipelineRequest;
 }
-export const RunPipelineProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunPipelineProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1RunPipelineRequest.pipe(T.HttpBody())),
@@ -4219,12 +4183,12 @@ export type GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEn
   | "TOTAL_RESULT_SIZE_UNSPECIFIED"
   | "ESTIMATED_SIZE"
   | "ACTUAL_SIZE";
-export const GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEnum = S.String;
+const GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEnum = S.String;
 
 export type GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum =
   | "HISTOGRAM_YAXIS_DOCUMENT"
   | "HISTOGRAM_YAXIS_PROPERTY";
-export const GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum = S.String;
+const GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum = S.String;
 
 export interface GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter {
   /** This filter specifies the exact document schema(s) Document.document_schema_name to run histogram query against. It is optional. It will perform histogram for property names for all the document schemas if it is not set. At most 10 document schema names are allowed. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. */
@@ -4234,16 +4198,15 @@ export interface GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter {
   /** It is optional. It will perform histogram for all the property names if it is not set. The properties need to be defined with the is_filterable flag set to true and the name of the property should be in the format: "schemaId.propertyName". The property needs to be defined in the schema. Example: the schema id is abc. Then the name of property for property MORTGAGE_TYPE will be "abc.MORTGAGE_TYPE". */
   propertyNames?: StringList;
 }
-export const GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      documentSchemas: S.optional(StringList),
-      yAxis: S.optional(GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum),
-      propertyNames: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter",
-  }) as any as S.Schema<GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter>;
+const GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentSchemas: S.optional(StringList),
+    yAxis: S.optional(GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum),
+    propertyNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter",
+}) as any as S.Schema<GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter>;
 
 /** The histogram request. */
 export interface GoogleCloudContentwarehouseV1HistogramQuery {
@@ -4254,7 +4217,7 @@ export interface GoogleCloudContentwarehouseV1HistogramQuery {
   /** Controls if the histogram query requires the return of a precise count. Enable this flag may adversely impact performance. Defaults to true. */
   requirePreciseResultSize?: boolean;
 }
-export const GoogleCloudContentwarehouseV1HistogramQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1HistogramQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     histogramQuery: S.optional(S.String),
     filters: S.optional(GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilter),
@@ -4266,7 +4229,7 @@ export const GoogleCloudContentwarehouseV1HistogramQuery = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudContentwarehouseV1HistogramQueryList =
   Array<GoogleCloudContentwarehouseV1HistogramQuery>;
-export const GoogleCloudContentwarehouseV1HistogramQueryList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1HistogramQueryList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1HistogramQuery,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1HistogramQueryList>;
 
@@ -4276,14 +4239,14 @@ export type GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum =
   | "FOLDER"
   | "DOCUMENT"
   | "ROOT_FOLDER";
-export const GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum = S.String;
+const GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum = S.String;
 
 /** Filter for the specific types of documents returned. */
 export interface GoogleCloudContentwarehouseV1FileTypeFilter {
   /** The type of files to return. */
   fileType?: GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum | (string & {});
 }
-export const GoogleCloudContentwarehouseV1FileTypeFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1FileTypeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum),
   }),
@@ -4297,7 +4260,7 @@ export interface GoogleCloudContentwarehouseV1PropertyFilter {
   /** The Document schema name Document.document_schema_name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. */
   documentSchemaName?: string;
 }
-export const GoogleCloudContentwarehouseV1PropertyFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1PropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(S.String),
     documentSchemaName: S.optional(S.String),
@@ -4308,7 +4271,7 @@ export const GoogleCloudContentwarehouseV1PropertyFilter = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudContentwarehouseV1PropertyFilterList =
   Array<GoogleCloudContentwarehouseV1PropertyFilter>;
-export const GoogleCloudContentwarehouseV1PropertyFilterList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1PropertyFilterList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1PropertyFilter,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyFilterList>;
 
@@ -4319,7 +4282,7 @@ export interface GoogleCloudContentwarehouseV1WeightedSchemaProperty {
   /** The property definition names in the schema. */
   propertyNames?: StringList;
 }
-export const GoogleCloudContentwarehouseV1WeightedSchemaProperty = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1WeightedSchemaProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentSchemaName: S.optional(S.String),
     propertyNames: S.optional(StringList),
@@ -4330,7 +4293,7 @@ export const GoogleCloudContentwarehouseV1WeightedSchemaProperty = /*@__PURE__*/
 
 export type GoogleCloudContentwarehouseV1WeightedSchemaPropertyList =
   Array<GoogleCloudContentwarehouseV1WeightedSchemaProperty>;
-export const GoogleCloudContentwarehouseV1WeightedSchemaPropertyList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1WeightedSchemaPropertyList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1WeightedSchemaProperty,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1WeightedSchemaPropertyList>;
 
@@ -4339,7 +4302,7 @@ export interface GoogleCloudContentwarehouseV1CustomWeightsMetadata {
   /** List of schema and property name. Allows a maximum of 10 schemas to be specified for relevance boosting. */
   weightedSchemaProperties?: GoogleCloudContentwarehouseV1WeightedSchemaPropertyList;
 }
-export const GoogleCloudContentwarehouseV1CustomWeightsMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1CustomWeightsMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weightedSchemaProperties: S.optional(GoogleCloudContentwarehouseV1WeightedSchemaPropertyList),
   }),
@@ -4354,7 +4317,7 @@ export interface GoogleTypeInterval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
-export const GoogleTypeInterval = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -4366,7 +4329,7 @@ export type GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum =
   | "CREATE_TIME"
   | "UPDATE_TIME"
   | "DISPOSITION_TIME";
-export const GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum = S.String;
+const GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum = S.String;
 
 /** Filter on create timestamp or update timestamp of documents. */
 export interface GoogleCloudContentwarehouseV1TimeFilter {
@@ -4374,7 +4337,7 @@ export interface GoogleCloudContentwarehouseV1TimeFilter {
   /** Specifies which time field to filter documents on. Defaults to TimeField.UPLOAD_TIME. */
   timeField?: GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum | (string & {});
 }
-export const GoogleCloudContentwarehouseV1TimeFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1TimeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeRange: S.optional(GoogleTypeInterval),
     timeField: S.optional(GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum),
@@ -4385,7 +4348,7 @@ export const GoogleCloudContentwarehouseV1TimeFilter = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudContentwarehouseV1TimeFilterList =
   Array<GoogleCloudContentwarehouseV1TimeFilter>;
-export const GoogleCloudContentwarehouseV1TimeFilterList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1TimeFilterList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1TimeFilter,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1TimeFilterList>;
 
@@ -4415,7 +4378,7 @@ export interface GoogleCloudContentwarehouseV1DocumentQuery {
   /** Experimental, do not use. If the query is a natural language question. False by default. If true, then the question-answering feature will be used instead of search, and `result_count` in SearchDocumentsRequest must be set. In addition, all other input fields related to search (pagination, histograms, etc.) will be ignored. */
   isNlQuery?: boolean;
 }
-export const GoogleCloudContentwarehouseV1DocumentQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1DocumentQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileTypeFilter: S.optional(GoogleCloudContentwarehouseV1FileTypeFilter),
     documentCreatorFilter: S.optional(StringList),
@@ -4459,7 +4422,7 @@ export interface GoogleCloudContentwarehouseV1SearchDocumentsRequest {
   /** Query used to search against documents (keyword, filters, etc.). */
   documentQuery?: GoogleCloudContentwarehouseV1DocumentQuery;
 }
-export const GoogleCloudContentwarehouseV1SearchDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1SearchDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     requireTotalSize: S.optional(S.Boolean),
@@ -4484,7 +4447,7 @@ export interface SearchProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1SearchDocumentsRequest;
 }
-export const SearchProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1SearchDocumentsRequest.pipe(T.HttpBody())),
@@ -4506,7 +4469,7 @@ export interface GoogleCloudContentwarehouseV1QAResultHighlight {
   /** End index of the highlight, exclusive. */
   endIndex?: number;
 }
-export const GoogleCloudContentwarehouseV1QAResultHighlight = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1QAResultHighlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number),
     endIndex: S.optional(S.Number),
@@ -4517,7 +4480,7 @@ export const GoogleCloudContentwarehouseV1QAResultHighlight = /*@__PURE__*/ S.su
 
 export type GoogleCloudContentwarehouseV1QAResultHighlightList =
   Array<GoogleCloudContentwarehouseV1QAResultHighlight>;
-export const GoogleCloudContentwarehouseV1QAResultHighlightList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1QAResultHighlightList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1QAResultHighlight,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1QAResultHighlightList>;
 
@@ -4528,7 +4491,7 @@ export interface GoogleCloudContentwarehouseV1QAResult {
   /** The calibrated confidence score for this document, in the range [0., 1.]. This represents the confidence level for whether the returned document and snippet answers the user's query. */
   confidenceScore?: number;
 }
-export const GoogleCloudContentwarehouseV1QAResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1QAResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     highlights: S.optional(GoogleCloudContentwarehouseV1QAResultHighlightList),
     confidenceScore: S.optional(S.Number),
@@ -4548,7 +4511,7 @@ export interface GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDoc
   /** Document that matches the specified SearchDocumentsRequest. This document only contains indexed metadata information. */
   document?: GoogleCloudContentwarehouseV1Document;
 }
-export const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument =
+const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       matchedTokenPageIndices: S.optional(StringList),
@@ -4562,7 +4525,7 @@ export const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumen
 
 export type GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumentList =
   Array<GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>;
-export const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumentList =
+const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument,
   ) as any as S.Schema<GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumentList>;
@@ -4574,7 +4537,7 @@ export interface GoogleCloudContentwarehouseV1HistogramQueryResult {
   /** Requested histogram expression. */
   histogramQuery?: string;
 }
-export const GoogleCloudContentwarehouseV1HistogramQueryResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1HistogramQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     histogram: S.optional(StringMap),
     histogramQuery: S.optional(S.String),
@@ -4585,7 +4548,7 @@ export const GoogleCloudContentwarehouseV1HistogramQueryResult = /*@__PURE__*/ S
 
 export type GoogleCloudContentwarehouseV1HistogramQueryResultList =
   Array<GoogleCloudContentwarehouseV1HistogramQueryResult>;
-export const GoogleCloudContentwarehouseV1HistogramQueryResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudContentwarehouseV1HistogramQueryResultList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1HistogramQueryResult,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1HistogramQueryResultList>;
 
@@ -4604,7 +4567,7 @@ export interface GoogleCloudContentwarehouseV1SearchDocumentsResponse {
   /** The token that specifies the starting position of the next page of results. This field is empty if there are no more results. */
   nextPageToken?: string;
 }
-export const GoogleCloudContentwarehouseV1SearchDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1SearchDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionAnswer: S.optional(S.String),
     totalSize: S.optional(S.Number),
@@ -4628,7 +4591,7 @@ export interface GoogleCloudContentwarehouseV1SetAclRequest {
   /** For Set Project ACL only. Authorization check for end user will be ignored when project_owner=true. */
   projectOwner?: boolean;
 }
-export const GoogleCloudContentwarehouseV1SetAclRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1SetAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
     policy: S.optional(GoogleIamV1Policy),
@@ -4644,7 +4607,7 @@ export interface SetAclProjectsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1SetAclRequest;
 }
-export const SetAclProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAclProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1SetAclRequest.pipe(T.HttpBody())),
@@ -4664,7 +4627,7 @@ export interface GoogleCloudContentwarehouseV1SetAclResponse {
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: GoogleCloudContentwarehouseV1ResponseMetadata;
 }
-export const GoogleCloudContentwarehouseV1SetAclResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContentwarehouseV1SetAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(GoogleIamV1Policy),
     metadata: S.optional(GoogleCloudContentwarehouseV1ResponseMetadata),
@@ -4679,7 +4642,7 @@ export interface SetAclProjectsLocationsDocumentsRequest {
   /** Request body */
   body?: GoogleCloudContentwarehouseV1SetAclRequest;
 }
-export const SetAclProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAclProjectsLocationsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContentwarehouseV1SetAclRequest.pipe(T.HttpBody())),

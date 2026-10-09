@@ -66,14 +66,14 @@ export class NotFound
   ) {}
 
 export type PermissionRoleEnum = "ROLE_UNSPECIFIED" | "OWNER" | "WRITER";
-export const PermissionRoleEnum = S.String;
+const PermissionRoleEnum = S.String;
 
 /** Describes a single user. */
 export interface User {
   /** The user's email. */
   email?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
@@ -81,7 +81,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes a single Google Family. */
 export interface Family {}
-export const Family = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Family = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Family",
 }) as any as S.Schema<Family>;
 
@@ -90,7 +90,7 @@ export interface Group {
   /** The group email. */
   email?: string;
 }
-export const Group = User as any as S.Schema<Group>;
+const Group = User as any as S.Schema<Group>;
 
 /** A single permission on the note. Associates a `member` with a `role`. */
 export interface Permission {
@@ -109,7 +109,7 @@ export interface Permission {
   /** Output only. The group to which this role applies. */
   group?: Group;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(PermissionRoleEnum),
     email: S.optional(S.String),
@@ -128,7 +128,7 @@ export interface CreatePermissionRequest {
   /** Required. The parent note where this permission will be created. Format: `notes/{note}` */
   parent?: string;
 }
-export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission: S.optional(Permission),
     parent: S.optional(S.String),
@@ -136,7 +136,7 @@ export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePermissionRequest" }) as any as S.Schema<CreatePermissionRequest>;
 
 export type CreatePermissionRequestList = Array<CreatePermissionRequest>;
-export const CreatePermissionRequestList = /*@__PURE__*/ S.Array(
+const CreatePermissionRequestList = /*@__PURE__*/ S.Array(
   CreatePermissionRequest,
 ) as any as S.Schema<CreatePermissionRequestList>;
 
@@ -145,7 +145,7 @@ export interface BatchCreatePermissionsRequest {
   /** The request message specifying the resources to create. */
   requests?: CreatePermissionRequestList;
 }
-export const BatchCreatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(CreatePermissionRequestList),
   }),
@@ -159,7 +159,7 @@ export interface BatchCreateNotesPermissionsRequest {
   /** Request body */
   body?: BatchCreatePermissionsRequest;
 }
-export const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchCreatePermissionsRequest.pipe(T.HttpBody())),
@@ -175,14 +175,14 @@ export const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchCreateNotesPermissionsRequest>;
 
 export type PermissionList = Array<Permission>;
-export const PermissionList = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList>;
+const PermissionList = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList>;
 
 /** The response for creating permissions on a note. */
 export interface BatchCreatePermissionsResponse {
   /** Permissions created. */
   permissions?: PermissionList;
 }
-export const BatchCreatePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchCreatePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(PermissionList),
   }),
@@ -191,14 +191,14 @@ export const BatchCreatePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchCreatePermissionsResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The request to remove one or more permissions from a note. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
 export interface BatchDeletePermissionsRequest {
   /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
   names?: StringList;
 }
-export const BatchDeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
   }),
@@ -212,7 +212,7 @@ export interface BatchDeleteNotesPermissionsRequest {
   /** Request body */
   body?: BatchDeletePermissionsRequest;
 }
-export const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchDeletePermissionsRequest.pipe(T.HttpBody())),
@@ -229,14 +229,14 @@ export const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = Family as any as S.Schema<Empty>;
+const Empty = Family as any as S.Schema<Empty>;
 
 /** The block of text for a single text section or list item. */
 export interface TextContent {
   /** The text of the note. The limits on this vary with the specific field using this type. */
   text?: string;
 }
-export const TextContent = /*@__PURE__*/ S.suspend(() =>
+const TextContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -251,7 +251,7 @@ export interface ListItem {
   /** The text of this item. Length must be less than 1,000 characters. */
   text?: TextContent;
 }
-export const ListItem = /*@__PURE__*/ S.suspend(() =>
+const ListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checked: S.optional(S.Boolean),
     childListItems: S.optional(S.suspend(() => ListItemList)),
@@ -260,14 +260,14 @@ export const ListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListItem" }) as any as S.Schema<ListItem>;
 
 export type ListItemList = Array<ListItem>;
-export const ListItemList = /*@__PURE__*/ S.Array(ListItem) as any as S.Schema<ListItemList>;
+const ListItemList = /*@__PURE__*/ S.Array(ListItem) as any as S.Schema<ListItemList>;
 
 /** The list of items for a single list note. */
 export interface ListContent {
   /** The items in the list. The number of items must be less than 1,000. */
   listItems?: ListItemList;
 }
-export const ListContent = /*@__PURE__*/ S.suspend(() =>
+const ListContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listItems: S.optional(ListItemList),
   }),
@@ -280,7 +280,7 @@ export interface Section {
   /** Used if this section's content is a list. */
   list?: ListContent;
 }
-export const Section = /*@__PURE__*/ S.suspend(() =>
+const Section = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(TextContent),
     list: S.optional(ListContent),
@@ -294,7 +294,7 @@ export interface Attachment {
   /** The resource name; */
   name?: string;
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(StringList),
     name: S.optional(S.String),
@@ -302,7 +302,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type AttachmentList = Array<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
+const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
 
 /** A single note. */
 export interface Note {
@@ -325,7 +325,7 @@ export interface Note {
   /** The title of the note. Length must be less than 1,000 characters. */
   title?: string;
 }
-export const Note = /*@__PURE__*/ S.suspend(() =>
+const Note = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trashTime: S.optional(S.String),
     trashed: S.optional(S.Boolean),
@@ -343,7 +343,7 @@ export interface CreateNotesRequest {
   /** Request body */
   body?: Note;
 }
-export const CreateNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Note.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "v1/notes", baseUrl: "https://keep.googleapis.com/" })),
@@ -353,7 +353,7 @@ export interface DeleteNotesRequest {
   /** Required. Name of the note to delete. */
   name: string;
 }
-export const DeleteNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://keep.googleapis.com/" })),
@@ -365,7 +365,7 @@ export interface DownloadMediaRequest {
   /** Required. The name of the attachment. */
   name: string;
 }
-export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -376,7 +376,7 @@ export interface GetNotesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://keep.googleapis.com/" })),
@@ -390,7 +390,7 @@ export interface ListNotesRequest {
   /** Filter for list results. If no filter is supplied, the `trashed` filter is applied by default. Valid fields to filter by are: `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax follows the [Google AIP filtering spec](https://aip.dev/160). */
   filter?: string;
 }
-export const ListNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -399,7 +399,7 @@ export const ListNotesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNotesRequest" }) as any as S.Schema<ListNotesRequest>;
 
 export type NoteList = Array<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
+const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
 /** The response when listing a page of notes. */
 export interface ListNotesResponse {
@@ -408,7 +408,7 @@ export interface ListNotesResponse {
   /** Next page's `page_token` field. */
   nextPageToken?: string;
 }
-export const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notes: S.optional(NoteList),
     nextPageToken: S.optional(S.String),

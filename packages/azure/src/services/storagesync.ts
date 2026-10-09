@@ -18,7 +18,7 @@ export interface AbortWorkflowRequest {
   /** workflow Id */
   workflowId: string;
 }
-export const AbortWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const AbortWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -35,12 +35,12 @@ export const AbortWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AbortWorkflowRequest" }) as any as S.Schema<AbortWorkflowRequest>;
 
 export interface AbortWorkflowResponse {}
-export const AbortWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AbortWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AbortWorkflowResponse",
 }) as any as S.Schema<AbortWorkflowResponse>;
 
 export type Type = "Microsoft.StorageSync/storageSyncServices";
-export const Type = S.String;
+const Type = S.String;
 
 export interface CheckStorageSyncServiceNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -52,7 +52,7 @@ export interface CheckStorageSyncServiceNameAvailabilityRequest {
   /** The resource type. Must be set to Microsoft.StorageSync/storageSyncServices */
   type: Type | (string & {});
 }
-export const CheckStorageSyncServiceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckStorageSyncServiceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -72,7 +72,7 @@ export const CheckStorageSyncServiceNameAvailabilityRequest = /*@__PURE__*/ S.su
 
 /** Gets the reason that a Storage Sync Service name could not be used. The Reason element is only returned if NameAvailable is false. */
 export type NameAvailabilityReason = "Invalid" | "AlreadyExists";
-export const NameAvailabilityReason = S.String;
+const NameAvailabilityReason = S.String;
 
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
@@ -83,7 +83,7 @@ export interface CheckNameAvailabilityResult {
   /** Gets an error message explaining the Reason value in more detail. */
   message?: string;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(NameAvailabilityReason),
@@ -105,22 +105,21 @@ export interface CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-export const CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      storageSyncServiceName: S.String.pipe(T.Label()),
-      syncGroupName: S.String.pipe(T.Label()),
-      cloudEndpointName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/afsShareMetadataCertificatePublicKeys",
-        code: 200,
-        apiVersion: "2025-12-01",
-      }),
-    ),
+const CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    storageSyncServiceName: S.String.pipe(T.Label()),
+    syncGroupName: S.String.pipe(T.Label()),
+    cloudEndpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/afsShareMetadataCertificatePublicKeys",
+      code: 200,
+      apiVersion: "2025-12-01",
+    }),
+  ),
 ).annotate({
   identifier: "CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest",
 }) as any as S.Schema<CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest>;
@@ -132,7 +131,7 @@ export interface CloudEndpointAfsShareMetadataCertificatePublicKeys {
   /** The second public key. */
   secondKey?: string;
 }
-export const CloudEndpointAfsShareMetadataCertificatePublicKeys = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointAfsShareMetadataCertificatePublicKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstKey: S.optional(S.String),
     secondKey: S.optional(S.String),
@@ -148,7 +147,7 @@ export interface RestoreFileSpec {
   /** Restore file spec isdir */
   isdir?: boolean;
 }
-export const RestoreFileSpec = /*@__PURE__*/ S.suspend(() =>
+const RestoreFileSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     isdir: S.optional(S.Boolean),
@@ -157,7 +156,7 @@ export const RestoreFileSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Post Restore restore file spec array. */
 export type CloudEndpointsPostRestoreRequestRestoreFileSpecList = Array<RestoreFileSpec>;
-export const CloudEndpointsPostRestoreRequestRestoreFileSpecList = /*@__PURE__*/ S.Array(
+const CloudEndpointsPostRestoreRequestRestoreFileSpecList = /*@__PURE__*/ S.Array(
   RestoreFileSpec,
 ) as any as S.Schema<CloudEndpointsPostRestoreRequestRestoreFileSpecList>;
 
@@ -189,7 +188,7 @@ export interface CloudEndpointsPostRestoreRequest {
   /** Post Restore restore file spec array. */
   restoreFileSpec?: CloudEndpointsPostRestoreRequestRestoreFileSpecList;
 }
-export const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -217,9 +216,7 @@ export const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudEndpointsPostRestoreRequest>;
 
 export interface CloudEndpointsPostRestoreResponse {}
-export const CloudEndpointsPostRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CloudEndpointsPostRestoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CloudEndpointsPostRestoreResponse",
 }) as any as S.Schema<CloudEndpointsPostRestoreResponse>;
 
@@ -237,7 +234,7 @@ export interface CloudEndpointsPreBackupRequest {
   /** Azure File Share. */
   azureFileShare?: string;
 }
-export const CloudEndpointsPreBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointsPreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -258,9 +255,9 @@ export const CloudEndpointsPreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudEndpointsPreBackupRequest>;
 
 export interface CloudEndpointsPreBackupResponse {}
-export const CloudEndpointsPreBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CloudEndpointsPreBackupResponse" },
-) as any as S.Schema<CloudEndpointsPreBackupResponse>;
+const CloudEndpointsPreBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "CloudEndpointsPreBackupResponse",
+}) as any as S.Schema<CloudEndpointsPreBackupResponse>;
 
 export interface CloudEndpointsRestoreheartbeatRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -274,7 +271,7 @@ export interface CloudEndpointsRestoreheartbeatRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-export const CloudEndpointsRestoreheartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointsRestoreheartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -294,7 +291,7 @@ export const CloudEndpointsRestoreheartbeatRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>;
 
 export interface CloudEndpointsRestoreheartbeatResponse {}
-export const CloudEndpointsRestoreheartbeatResponse =
+const CloudEndpointsRestoreheartbeatResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>;
 
 /** CloudEndpoint Properties object. */
@@ -310,7 +307,7 @@ export interface CloudEndpointCreateParametersProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
   changeEnumerationIntervalDays?: number;
 }
-export const CloudEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountResourceId: S.optional(S.String),
     azureFileShareName: S.optional(S.String),
@@ -336,7 +333,7 @@ export interface CreateCloudEndpointRequest {
   /** The parameters used to create the cloud endpoint. */
   properties?: CloudEndpointCreateParametersProperties;
 }
-export const CreateCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -358,11 +355,11 @@ export const CreateCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -379,7 +376,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -405,7 +402,7 @@ export interface CloudEndpointLastChangeEnumerationStatus {
   /** Timestamp of when change enumeration is expected to run again */
   nextRunTimestamp?: string;
 }
-export const CloudEndpointLastChangeEnumerationStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointLastChangeEnumerationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startedTimestamp: S.optional(S.String),
     completedTimestamp: S.optional(S.String),
@@ -422,11 +419,11 @@ export const CloudEndpointLastChangeEnumerationStatus = /*@__PURE__*/ S.suspend(
 export type CloudEndpointChangeEnumerationActivityState =
   | "InitialEnumerationInProgress"
   | "EnumerationInProgress";
-export const CloudEndpointChangeEnumerationActivityState = S.String;
+const CloudEndpointChangeEnumerationActivityState = S.String;
 
 /** State of the total counts of change enumeration activity */
 export type CloudEndpointChangeEnumerationTotalCountsState = "Calculating" | "Final";
-export const CloudEndpointChangeEnumerationTotalCountsState = S.String;
+const CloudEndpointChangeEnumerationTotalCountsState = S.String;
 
 /** Cloud endpoint change enumeration activity object */
 export interface CloudEndpointChangeEnumerationActivity {
@@ -457,7 +454,7 @@ export interface CloudEndpointChangeEnumerationActivity {
   /** Progress percentage for processing deletes. This is done separately from the rest of the enumeration run */
   deletesProgressPercent?: number;
 }
-export const CloudEndpointChangeEnumerationActivity = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointChangeEnumerationActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     operationState: S.optional(CloudEndpointChangeEnumerationActivityState),
@@ -486,7 +483,7 @@ export interface CloudEndpointChangeEnumerationStatus {
   /** Change enumeration activity */
   activity?: CloudEndpointChangeEnumerationActivity;
 }
-export const CloudEndpointChangeEnumerationStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointChangeEnumerationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     lastEnumerationStatus: S.optional(CloudEndpointLastChangeEnumerationStatus),
@@ -521,7 +518,7 @@ export interface CloudEndpointProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
   changeEnumerationIntervalDays?: number;
 }
-export const CloudEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountResourceId: S.optional(S.String),
     azureFileShareName: S.optional(S.String),
@@ -549,7 +546,7 @@ export interface CreateCloudEndpointResponse {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-export const CreateCloudEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCloudEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -563,11 +560,11 @@ export const CreateCloudEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = AbortWorkflowResponse as any as S.Schema<PrivateEndpointInput>;
+const PrivateEndpointInput = AbortWorkflowResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -578,7 +575,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -595,7 +592,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -616,7 +613,7 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -637,7 +634,7 @@ export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
@@ -646,7 +643,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -658,7 +655,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -671,7 +668,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -694,7 +691,7 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -731,7 +728,7 @@ export interface RegisteredServerCreateParametersProperties {
   /** Apply server with newly discovered ApplicationId if available. */
   identity?: boolean;
 }
-export const RegisteredServerCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const RegisteredServerCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverCertificate: S.optional(S.String),
     agentVersion: S.optional(S.String),
@@ -761,7 +758,7 @@ export interface CreateRegisteredServerRequest {
   /** The parameters used to create the registered server. */
   properties?: RegisteredServerCreateParametersProperties;
 }
-export const CreateRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -782,11 +779,11 @@ export const CreateRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the registered server agent version status */
 export type RegisteredServerAgentVersionStatus = "Ok" | "NearExpiry" | "Expired" | "Blocked";
-export const RegisteredServerAgentVersionStatus = S.String;
+const RegisteredServerAgentVersionStatus = S.String;
 
 /** Type of the Server Auth type */
 export type ServerAuthType = "Certificate" | "ManagedIdentity";
-export const ServerAuthType = S.String;
+const ServerAuthType = S.String;
 
 /** RegisteredServer Properties object. */
 export interface RegisteredServerProperties {
@@ -845,7 +842,7 @@ export interface RegisteredServerProperties {
   /** Server auth type. */
   activeAuthType?: ServerAuthType;
 }
-export const RegisteredServerProperties = /*@__PURE__*/ S.suspend(() =>
+const RegisteredServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverCertificate: S.optional(S.String),
     agentVersion: S.optional(S.String),
@@ -891,7 +888,7 @@ export interface CreateRegisteredServerResponse {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-export const CreateRegisteredServerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRegisteredServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -905,26 +902,26 @@ export const CreateRegisteredServerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Feature Status */
 export type FeatureStatus = "on" | "off";
-export const FeatureStatus = S.String;
+const FeatureStatus = S.String;
 
 /** Policy for how namespace and files are recalled during FastDr. */
 export type ServerEndpointCreateParametersPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
   | "AvoidTieredFiles";
-export const ServerEndpointCreateParametersPropertiesInitialDownloadPolicy = S.String;
+const ServerEndpointCreateParametersPropertiesInitialDownloadPolicy = S.String;
 
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointCreateParametersPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
   | "UpdateLocallyCachedFiles";
-export const ServerEndpointCreateParametersPropertiesLocalCacheMode = S.String;
+const ServerEndpointCreateParametersPropertiesLocalCacheMode = S.String;
 
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointCreateParametersPropertiesInitialUploadPolicy =
   | "ServerAuthoritative"
   | "Merge";
-export const ServerEndpointCreateParametersPropertiesInitialUploadPolicy = S.String;
+const ServerEndpointCreateParametersPropertiesInitialUploadPolicy = S.String;
 
 /** ServerEndpoint Properties object. */
 export interface ServerEndpointCreateParametersProperties {
@@ -953,7 +950,7 @@ export interface ServerEndpointCreateParametersProperties {
   /** Policy for how the initial upload sync session is performed. */
   initialUploadPolicy?: ServerEndpointCreateParametersPropertiesInitialUploadPolicy | (string & {});
 }
-export const ServerEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverLocalPath: S.optional(S.String),
     cloudTiering: S.optional(FeatureStatus),
@@ -987,7 +984,7 @@ export interface CreateServerEndpointRequest {
   /** The parameters used to create the server endpoint. */
   properties?: ServerEndpointCreateParametersProperties;
 }
-export const CreateServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1009,11 +1006,11 @@ export const CreateServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the server endpoint health state */
 export type ServerEndpointHealthState = "Unavailable" | "Healthy" | "Error";
-export const ServerEndpointHealthState = S.String;
+const ServerEndpointHealthState = S.String;
 
 /** Type of the sync activity state */
 export type ServerEndpointSyncActivityState = "Upload" | "Download" | "UploadAndDownload";
-export const ServerEndpointSyncActivityState = S.String;
+const ServerEndpointSyncActivityState = S.String;
 
 /** Files not syncing error object */
 export interface ServerEndpointFilesNotSyncingError {
@@ -1024,7 +1021,7 @@ export interface ServerEndpointFilesNotSyncingError {
   /** Count of transient files not syncing with the specified error code */
   transientCount?: number;
 }
-export const ServerEndpointFilesNotSyncingError = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointFilesNotSyncingError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.Number),
     persistentCount: S.optional(S.Number),
@@ -1037,7 +1034,7 @@ export const ServerEndpointFilesNotSyncingError = /*@__PURE__*/ S.suspend(() =>
 /** Array of per-item errors coming from the last sync session. */
 export type ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList =
   Array<ServerEndpointFilesNotSyncingError>;
-export const ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList = /*@__PURE__*/ S.Array(
+const ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList = /*@__PURE__*/ S.Array(
   ServerEndpointFilesNotSyncingError,
 ) as any as S.Schema<ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList>;
 
@@ -1048,7 +1045,7 @@ export type ServerEndpointSyncMode =
   | "InitialUpload"
   | "SnapshotUpload"
   | "InitialFullDownload";
-export const ServerEndpointSyncMode = S.String;
+const ServerEndpointSyncMode = S.String;
 
 /** Sync Session status object. */
 export interface ServerEndpointSyncSessionStatus {
@@ -1069,7 +1066,7 @@ export interface ServerEndpointSyncSessionStatus {
   /** Sync mode */
   lastSyncMode?: ServerEndpointSyncMode;
 }
-export const ServerEndpointSyncSessionStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointSyncSessionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastSyncResult: S.optional(S.Number),
     lastSyncTimestamp: S.optional(S.String),
@@ -1086,7 +1083,7 @@ export const ServerEndpointSyncSessionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Warning types for sync sessions. */
 export type ServerEndpointSyncSessionWarningType = "NoWarning" | "BlockedByLargeFile";
-export const ServerEndpointSyncSessionWarningType = S.String;
+const ServerEndpointSyncSessionWarningType = S.String;
 
 /** Sync Session status object. */
 export interface ServerEndpointSyncActivityStatus {
@@ -1129,7 +1126,7 @@ export interface ServerEndpointSyncActivityStatus {
   /** Warning type (if any) */
   warning?: ServerEndpointSyncSessionWarningType;
 }
-export const ServerEndpointSyncActivityStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointSyncActivityStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     perItemErrorCount: S.optional(S.Number),
@@ -1161,7 +1158,7 @@ export type ServerEndpointOfflineDataTransferState =
   | "Stopping"
   | "NotRunning"
   | "Complete";
-export const ServerEndpointOfflineDataTransferState = S.String;
+const ServerEndpointOfflineDataTransferState = S.String;
 
 /** Background data download activity object */
 export interface ServerEndpointBackgroundDataDownloadActivity {
@@ -1174,7 +1171,7 @@ export interface ServerEndpointBackgroundDataDownloadActivity {
   /** Running count of bytes downloaded */
   downloadedBytes?: number;
 }
-export const ServerEndpointBackgroundDataDownloadActivity = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointBackgroundDataDownloadActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     startedTimestamp: S.optional(S.String),
@@ -1212,7 +1209,7 @@ export interface ServerEndpointSyncStatus {
   /** Background data download activity */
   backgroundDataDownloadActivity?: ServerEndpointBackgroundDataDownloadActivity;
 }
-export const ServerEndpointSyncStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointSyncStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadHealth: S.optional(ServerEndpointHealthState),
     uploadHealth: S.optional(ServerEndpointHealthState),
@@ -1244,7 +1241,7 @@ export interface CloudTieringSpaceSavings {
   /** Count of bytes saved on the server */
   spaceSavingsBytes?: number;
 }
-export const CloudTieringSpaceSavings = /*@__PURE__*/ S.suspend(() =>
+const CloudTieringSpaceSavings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     volumeSizeBytes: S.optional(S.Number),
@@ -1266,7 +1263,7 @@ export interface CloudTieringCachePerformance {
   /** Percentage of total bytes (hit + miss) that were served from the local server */
   cacheHitBytesPercent?: number;
 }
-export const CloudTieringCachePerformance = /*@__PURE__*/ S.suspend(() =>
+const CloudTieringCachePerformance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     cacheHitBytes: S.optional(S.Number),
@@ -1284,7 +1281,7 @@ export interface FilesNotTieringError {
   /** Count of files with this error */
   fileCount?: number;
 }
-export const FilesNotTieringError = /*@__PURE__*/ S.suspend(() =>
+const FilesNotTieringError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.Number),
     fileCount: S.optional(S.Number),
@@ -1293,7 +1290,7 @@ export const FilesNotTieringError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of tiering errors */
 export type CloudTieringFilesNotTieringErrorsList = Array<FilesNotTieringError>;
-export const CloudTieringFilesNotTieringErrorsList = /*@__PURE__*/ S.Array(
+const CloudTieringFilesNotTieringErrorsList = /*@__PURE__*/ S.Array(
   FilesNotTieringError,
 ) as any as S.Schema<CloudTieringFilesNotTieringErrorsList>;
 
@@ -1306,7 +1303,7 @@ export interface CloudTieringFilesNotTiering {
   /** Array of tiering errors */
   errors?: CloudTieringFilesNotTieringErrorsList;
 }
-export const CloudTieringFilesNotTiering = /*@__PURE__*/ S.suspend(() =>
+const CloudTieringFilesNotTiering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     totalFileCount: S.optional(S.Number),
@@ -1325,7 +1322,7 @@ export interface CloudTieringVolumeFreeSpacePolicyStatus {
   /** Current volume free space percentage. */
   currentVolumeFreeSpacePercent?: number;
 }
-export const CloudTieringVolumeFreeSpacePolicyStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudTieringVolumeFreeSpacePolicyStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     effectiveVolumeFreeSpacePolicy: S.optional(S.Number),
@@ -1342,7 +1339,7 @@ export interface CloudTieringDatePolicyStatus {
   /** Most recent access time of tiered files */
   tieredFilesMostRecentAccessTimestamp?: string;
 }
-export const CloudTieringDatePolicyStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudTieringDatePolicyStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     tieredFilesMostRecentAccessTimestamp: S.optional(S.String),
@@ -1353,7 +1350,7 @@ export const CloudTieringDatePolicyStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the cloud tiering low disk mode state */
 export type CloudTieringLowDiskModeState = "Enabled" | "Disabled";
-export const CloudTieringLowDiskModeState = S.String;
+const CloudTieringLowDiskModeState = S.String;
 
 /** Information regarding the low disk mode state */
 export interface CloudTieringLowDiskMode {
@@ -1362,7 +1359,7 @@ export interface CloudTieringLowDiskMode {
   /** Low disk mode state */
   state?: CloudTieringLowDiskModeState;
 }
-export const CloudTieringLowDiskMode = /*@__PURE__*/ S.suspend(() =>
+const CloudTieringLowDiskMode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     state: S.optional(CloudTieringLowDiskModeState),
@@ -1394,7 +1391,7 @@ export interface ServerEndpointCloudTieringStatus {
   /** Information regarding the low disk mode state */
   lowDiskMode?: CloudTieringLowDiskMode;
 }
-export const ServerEndpointCloudTieringStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointCloudTieringStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     health: S.optional(ServerEndpointHealthState),
@@ -1419,7 +1416,7 @@ export interface ServerEndpointRecallError {
   /** Count of occurences of the error */
   count?: number;
 }
-export const ServerEndpointRecallError = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointRecallError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.Number),
     count: S.optional(S.Number),
@@ -1430,7 +1427,7 @@ export const ServerEndpointRecallError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of recall errors */
 export type ServerEndpointRecallStatusRecallErrorsList = Array<ServerEndpointRecallError>;
-export const ServerEndpointRecallStatusRecallErrorsList = /*@__PURE__*/ S.Array(
+const ServerEndpointRecallStatusRecallErrorsList = /*@__PURE__*/ S.Array(
   ServerEndpointRecallError,
 ) as any as S.Schema<ServerEndpointRecallStatusRecallErrorsList>;
 
@@ -1443,7 +1440,7 @@ export interface ServerEndpointRecallStatus {
   /** Array of recall errors */
   recallErrors?: ServerEndpointRecallStatusRecallErrorsList;
 }
-export const ServerEndpointRecallStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointRecallStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimestamp: S.optional(S.String),
     totalRecallErrorsCount: S.optional(S.Number),
@@ -1458,17 +1455,17 @@ export type ServerEndpointPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
   | "AvoidTieredFiles";
-export const ServerEndpointPropertiesInitialDownloadPolicy = S.String;
+const ServerEndpointPropertiesInitialDownloadPolicy = S.String;
 
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
   | "UpdateLocallyCachedFiles";
-export const ServerEndpointPropertiesLocalCacheMode = S.String;
+const ServerEndpointPropertiesLocalCacheMode = S.String;
 
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointPropertiesInitialUploadPolicy = "ServerAuthoritative" | "Merge";
-export const ServerEndpointPropertiesInitialUploadPolicy = S.String;
+const ServerEndpointPropertiesInitialUploadPolicy = S.String;
 
 /** Server provisioning status */
 export type ServerProvisioningStatus =
@@ -1477,13 +1474,13 @@ export type ServerProvisioningStatus =
   | "Ready_SyncNotFunctional"
   | "Ready_SyncFunctional"
   | "Error";
-export const ServerProvisioningStatus = S.String;
+const ServerProvisioningStatus = S.String;
 
 /** Additional information for the provisioning step */
 export type ServerEndpointProvisioningStepStatusAdditionalInformationMap = {
   [key: string]: string | undefined;
 };
-export const ServerEndpointProvisioningStepStatusAdditionalInformationMap = /*@__PURE__*/ S.Record(
+const ServerEndpointProvisioningStepStatusAdditionalInformationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ServerEndpointProvisioningStepStatusAdditionalInformationMap>;
@@ -1507,7 +1504,7 @@ export interface ServerEndpointProvisioningStepStatus {
   /** Additional information for the provisioning step */
   additionalInformation?: ServerEndpointProvisioningStepStatusAdditionalInformationMap;
 }
-export const ServerEndpointProvisioningStepStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointProvisioningStepStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(S.String),
@@ -1525,7 +1522,7 @@ export const ServerEndpointProvisioningStepStatus = /*@__PURE__*/ S.suspend(() =
 /** Provisioning Step status information for each step in the provisioning process */
 export type ServerEndpointProvisioningStatusProvisioningStepStatusesList =
   Array<ServerEndpointProvisioningStepStatus>;
-export const ServerEndpointProvisioningStatusProvisioningStepStatusesList = /*@__PURE__*/ S.Array(
+const ServerEndpointProvisioningStatusProvisioningStepStatusesList = /*@__PURE__*/ S.Array(
   ServerEndpointProvisioningStepStatus,
 ) as any as S.Schema<ServerEndpointProvisioningStatusProvisioningStepStatusesList>;
 
@@ -1538,7 +1535,7 @@ export interface ServerEndpointProvisioningStatus {
   /** Provisioning Step status information for each step in the provisioning process */
   provisioningStepStatuses?: ServerEndpointProvisioningStatusProvisioningStepStatusesList;
 }
-export const ServerEndpointProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningStatus: S.optional(ServerProvisioningStatus),
     provisioningType: S.optional(S.String),
@@ -1595,7 +1592,7 @@ export interface ServerEndpointProperties {
   /** Server Endpoint provisioning status */
   serverEndpointProvisioningStatus?: ServerEndpointProvisioningStatus;
 }
-export const ServerEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverLocalPath: S.optional(S.String),
     cloudTiering: S.optional(FeatureStatus),
@@ -1633,7 +1630,7 @@ export interface CreateServerEndpointResponse {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-export const CreateServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1647,7 +1644,7 @@ export const CreateServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateStorageSyncServiceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateStorageSyncServiceRequestTagsMap =
+const CreateStorageSyncServiceRequestTagsMap =
   ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<CreateStorageSyncServiceRequestTagsMap>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -1656,17 +1653,15 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = PrivateEndpointInput;
-export const UserAssignedIdentityInput = PrivateEndpointInput;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: PrivateEndpointInput | null | undefined;
 };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(PrivateEndpointInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -1676,7 +1671,7 @@ export interface CreateStorageSyncServiceRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const CreateStorageSyncServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageSyncServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -1687,7 +1682,7 @@ export const CreateStorageSyncServiceRequestIdentity = /*@__PURE__*/ S.suspend((
 
 /** Type of the Incoming Traffic Policy */
 export type IncomingTrafficPolicy = "AllowAllTraffic" | "AllowVirtualNetworksOnly";
-export const IncomingTrafficPolicy = S.String;
+const IncomingTrafficPolicy = S.String;
 
 /** StorageSyncService Properties object. */
 export interface StorageSyncServiceCreateParametersProperties {
@@ -1696,7 +1691,7 @@ export interface StorageSyncServiceCreateParametersProperties {
   /** Use Identity authorization when customer have finished setup RBAC permissions. */
   useIdentity?: boolean;
 }
-export const StorageSyncServiceCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncServiceCreateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
     useIdentity: S.optional(S.Boolean),
@@ -1721,7 +1716,7 @@ export interface CreateStorageSyncServiceRequest {
   /** The parameters used to create the storage sync service. */
   properties?: StorageSyncServiceCreateParametersProperties;
 }
-export const CreateStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1744,7 +1739,7 @@ export const CreateStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateStorageSyncServiceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateStorageSyncServiceResponseTagsMap =
+const CreateStorageSyncServiceResponseTagsMap =
   ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<CreateStorageSyncServiceResponseTagsMap>;
 
 /** The private endpoint connection resource. */
@@ -1760,15 +1755,14 @@ export interface StorageSyncServicePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const StorageSyncServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
+const StorageSyncServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
 ).annotate({
   identifier: "StorageSyncServicePropertiesPrivateEndpointConnectionsItem",
 }) as any as S.Schema<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
@@ -1776,7 +1770,7 @@ export const StorageSyncServicePropertiesPrivateEndpointConnectionsItem = /*@__P
 /** List of private endpoint connection associated with the specified storage sync service */
 export type StorageSyncServicePropertiesPrivateEndpointConnectionsList =
   Array<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
-export const StorageSyncServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const StorageSyncServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   StorageSyncServicePropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<StorageSyncServicePropertiesPrivateEndpointConnectionsList>;
 
@@ -1799,7 +1793,7 @@ export interface StorageSyncServiceProperties {
   /** List of private endpoint connection associated with the specified storage sync service */
   privateEndpointConnections?: StorageSyncServicePropertiesPrivateEndpointConnectionsList;
 }
-export const StorageSyncServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
     storageSyncServiceStatus: S.optional(S.Number),
@@ -1823,7 +1817,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1832,7 +1826,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -1846,7 +1840,7 @@ export interface CreateStorageSyncServiceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const CreateStorageSyncServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageSyncServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1875,7 +1869,7 @@ export interface CreateStorageSyncServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-export const CreateStorageSyncServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageSyncServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1902,7 +1896,7 @@ export interface CreateSyncGroupRequest {
   /** The parameters used to create the sync group */
   properties?: unknown;
 }
-export const CreateSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1926,7 +1920,7 @@ export interface SyncGroupProperties {
   /** Sync group status */
   syncGroupStatus?: string;
 }
-export const SyncGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const SyncGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueId: S.optional(S.String),
     syncGroupStatus: S.optional(S.String),
@@ -1945,7 +1939,7 @@ export interface CreateSyncGroupResponse {
   /** SyncGroup properties. */
   properties?: SyncGroupProperties;
 }
-export const CreateSyncGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSyncGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1967,7 +1961,7 @@ export interface DeleteCloudEndpointRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-export const DeleteCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1987,7 +1981,7 @@ export const DeleteCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudEndpointRequest>;
 
 export interface DeleteCloudEndpointResponse {}
-export const DeleteCloudEndpointResponse =
+const DeleteCloudEndpointResponse =
   AbortWorkflowResponse as any as S.Schema<DeleteCloudEndpointResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
@@ -2000,7 +1994,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2019,7 +2013,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteRegisteredServerRequest {
@@ -2032,7 +2026,7 @@ export interface DeleteRegisteredServerRequest {
   /** GUID identifying the on-premises server. */
   serverId: string;
 }
-export const DeleteRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2051,7 +2045,7 @@ export const DeleteRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegisteredServerRequest>;
 
 export interface DeleteRegisteredServerResponse {}
-export const DeleteRegisteredServerResponse =
+const DeleteRegisteredServerResponse =
   AbortWorkflowResponse as any as S.Schema<DeleteRegisteredServerResponse>;
 
 export interface DeleteServerEndpointRequest {
@@ -2066,7 +2060,7 @@ export interface DeleteServerEndpointRequest {
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
 }
-export const DeleteServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2086,7 +2080,7 @@ export const DeleteServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServerEndpointRequest>;
 
 export interface DeleteServerEndpointResponse {}
-export const DeleteServerEndpointResponse =
+const DeleteServerEndpointResponse =
   AbortWorkflowResponse as any as S.Schema<DeleteServerEndpointResponse>;
 
 export interface DeleteStorageSyncServiceRequest {
@@ -2097,7 +2091,7 @@ export interface DeleteStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const DeleteStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2115,7 +2109,7 @@ export const DeleteStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageSyncServiceRequest>;
 
 export interface DeleteStorageSyncServiceResponse {}
-export const DeleteStorageSyncServiceResponse =
+const DeleteStorageSyncServiceResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<DeleteStorageSyncServiceResponse>;
 
 export interface DeleteSyncGroupRequest {
@@ -2128,7 +2122,7 @@ export interface DeleteSyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-export const DeleteSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2145,8 +2139,7 @@ export const DeleteSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSyncGroupRequest" }) as any as S.Schema<DeleteSyncGroupRequest>;
 
 export interface DeleteSyncGroupResponse {}
-export const DeleteSyncGroupResponse =
-  AbortWorkflowResponse as any as S.Schema<DeleteSyncGroupResponse>;
+const DeleteSyncGroupResponse = AbortWorkflowResponse as any as S.Schema<DeleteSyncGroupResponse>;
 
 export interface GetCloudEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2160,7 +2153,7 @@ export interface GetCloudEndpointRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-export const GetCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2189,7 +2182,7 @@ export interface GetCloudEndpointResponse {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-export const GetCloudEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloudEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2211,7 +2204,7 @@ export interface GetOperationStatusRequest {
   /** operation Id */
   operationId: string;
 }
-export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2249,7 +2242,7 @@ export interface StorageSyncErrorDetails {
   /** HTTP error code of the given entry. */
   httpErrorCode?: string;
 }
-export const StorageSyncErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -2273,7 +2266,7 @@ export interface StorageSyncInnerErrorDetails {
   /** Call stack of the inner error. */
   innerExceptionCallStack?: string;
 }
-export const StorageSyncInnerErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncInnerErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callStack: S.optional(S.String),
     message: S.optional(S.String),
@@ -2297,7 +2290,7 @@ export interface StorageSyncApiError {
   /** Inner error details of the given entry. */
   innererror?: StorageSyncInnerErrorDetails;
 }
-export const StorageSyncApiError = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncApiError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -2320,7 +2313,7 @@ export interface OperationStatus {
   /** Error details. */
   error?: StorageSyncApiError;
 }
-export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
+const OperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(S.String),
@@ -2340,7 +2333,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2370,7 +2363,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetRegisteredServerRequest {
@@ -2383,7 +2376,7 @@ export interface GetRegisteredServerRequest {
   /** GUID identifying the on-premises server. */
   serverId: string;
 }
-export const GetRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2413,7 +2406,7 @@ export interface GetRegisteredServerResponse {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-export const GetRegisteredServerResponse =
+const GetRegisteredServerResponse =
   CreateRegisteredServerResponse as any as S.Schema<GetRegisteredServerResponse>;
 
 export interface GetServerEndpointRequest {
@@ -2428,7 +2421,7 @@ export interface GetServerEndpointRequest {
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
 }
-export const GetServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2457,7 +2450,7 @@ export interface GetServerEndpointResponse {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-export const GetServerEndpointResponse =
+const GetServerEndpointResponse =
   CreateServerEndpointResponse as any as S.Schema<GetServerEndpointResponse>;
 
 export interface GetStorageSyncServiceRequest {
@@ -2468,7 +2461,7 @@ export interface GetStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const GetStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2487,13 +2480,8 @@ export const GetStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStorageSyncServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetStorageSyncServiceResponseTagsMap =
-  ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<GetStorageSyncServiceResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetStorageSyncServiceResponseIdentity = CreateStorageSyncServiceResponseIdentity;
-export const GetStorageSyncServiceResponseIdentity = CreateStorageSyncServiceResponseIdentity;
-
 export interface GetStorageSyncServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2512,7 +2500,7 @@ export interface GetStorageSyncServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-export const GetStorageSyncServiceResponse =
+const GetStorageSyncServiceResponse =
   CreateStorageSyncServiceResponse as any as S.Schema<GetStorageSyncServiceResponse>;
 
 export interface GetSyncGroupRequest {
@@ -2525,7 +2513,7 @@ export interface GetSyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-export const GetSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2553,8 +2541,7 @@ export interface GetSyncGroupResponse {
   /** SyncGroup properties. */
   properties?: SyncGroupProperties;
 }
-export const GetSyncGroupResponse =
-  CreateSyncGroupResponse as any as S.Schema<GetSyncGroupResponse>;
+const GetSyncGroupResponse = CreateSyncGroupResponse as any as S.Schema<GetSyncGroupResponse>;
 
 export interface GetWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2566,7 +2553,7 @@ export interface GetWorkflowRequest {
   /** workflow Id */
   workflowId: string;
 }
-export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2584,11 +2571,11 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Workflow Status */
 export type WorkflowStatus = "active" | "expired" | "succeeded" | "aborted" | "failed";
-export const WorkflowStatus = S.String;
+const WorkflowStatus = S.String;
 
 /** Type of the Operation Direction */
 export type OperationDirection = "do" | "undo" | "cancel";
-export const OperationDirection = S.String;
+const OperationDirection = S.String;
 
 /** Workflow Properties object. */
 export interface WorkflowProperties {
@@ -2609,7 +2596,7 @@ export interface WorkflowProperties {
   /** workflow last status timestamp. */
   lastStatusTimestamp?: string;
 }
-export const WorkflowProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkflowProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastStepName: S.optional(S.String),
     status: S.optional(WorkflowStatus),
@@ -2634,7 +2621,7 @@ export interface GetWorkflowResponse {
   /** Workflow properties. */
   properties?: WorkflowProperties;
 }
-export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2654,7 +2641,7 @@ export interface ListCloudEndpointBySyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-export const ListCloudEndpointBySyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudEndpointBySyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2685,11 +2672,11 @@ export interface CloudEndpoint {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-export const CloudEndpoint = GetCloudEndpointResponse as any as S.Schema<CloudEndpoint>;
+const CloudEndpoint = GetCloudEndpointResponse as any as S.Schema<CloudEndpoint>;
 
 /** Collection of CloudEndpoint. */
 export type CloudEndpointArrayValueList = Array<CloudEndpoint>;
-export const CloudEndpointArrayValueList = /*@__PURE__*/ S.Array(
+const CloudEndpointArrayValueList = /*@__PURE__*/ S.Array(
   CloudEndpoint,
 ) as any as S.Schema<CloudEndpointArrayValueList>;
 
@@ -2700,7 +2687,7 @@ export interface CloudEndpointArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const CloudEndpointArray = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CloudEndpointArrayValueList),
     nextLink: S.optional(S.String),
@@ -2708,7 +2695,7 @@ export const CloudEndpointArray = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudEndpointArray" }) as any as S.Schema<CloudEndpointArray>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2730,7 +2717,7 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -2741,10 +2728,9 @@ export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported aggregation types for the metric. */
 export type OperationResourceMetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const OperationResourceMetricSpecificationSupportedAggregationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OperationResourceMetricSpecificationSupportedAggregationTypesList>;
+const OperationResourceMetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OperationResourceMetricSpecificationSupportedAggregationTypesList>;
 
 /** OperationResourceMetricSpecificationDimension object. */
 export interface OperationResourceMetricSpecificationDimension {
@@ -2755,7 +2741,7 @@ export interface OperationResourceMetricSpecificationDimension {
   /** Indicates metric should be exported for Shoebox. */
   toBeExportedForShoebox?: boolean;
 }
-export const OperationResourceMetricSpecificationDimension = /*@__PURE__*/ S.suspend(() =>
+const OperationResourceMetricSpecificationDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2768,7 +2754,7 @@ export const OperationResourceMetricSpecificationDimension = /*@__PURE__*/ S.sus
 /** Dimensions for the metric specification. */
 export type OperationResourceMetricSpecificationDimensionsList =
   Array<OperationResourceMetricSpecificationDimension>;
-export const OperationResourceMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const OperationResourceMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   OperationResourceMetricSpecificationDimension,
 ) as any as S.Schema<OperationResourceMetricSpecificationDimensionsList>;
 
@@ -2793,7 +2779,7 @@ export interface OperationResourceMetricSpecification {
   /** Dimensions for the metric specification. */
   dimensions?: OperationResourceMetricSpecificationDimensionsList;
 }
-export const OperationResourceMetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationResourceMetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2814,7 +2800,7 @@ export const OperationResourceMetricSpecification = /*@__PURE__*/ S.suspend(() =
 /** List of metric specifications. */
 export type OperationResourceServiceSpecificationMetricSpecificationsList =
   Array<OperationResourceMetricSpecification>;
-export const OperationResourceServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const OperationResourceServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   OperationResourceMetricSpecification,
 ) as any as S.Schema<OperationResourceServiceSpecificationMetricSpecificationsList>;
 
@@ -2823,7 +2809,7 @@ export interface OperationResourceServiceSpecification {
   /** List of metric specifications. */
   metricSpecifications?: OperationResourceServiceSpecificationMetricSpecificationsList;
 }
-export const OperationResourceServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationResourceServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(OperationResourceServiceSpecificationMetricSpecificationsList),
   }),
@@ -2836,7 +2822,7 @@ export interface OperationProperties {
   /** Service specification for the operations resource. */
   serviceSpecification?: OperationResourceServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(OperationResourceServiceSpecification),
   }),
@@ -2853,7 +2839,7 @@ export interface OperationEntity {
   /** Properties of the operations resource. */
   properties?: OperationProperties;
 }
-export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
+const OperationEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplayInfo),
@@ -2864,7 +2850,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The OperationEntity items on this page */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
-export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
+const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
 
@@ -2875,7 +2861,7 @@ export interface OperationEntityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationEntityListResultValueList,
     nextLink: S.optional(S.String),
@@ -2892,20 +2878,19 @@ export interface ListPrivateEndpointConnectionByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const ListPrivateEndpointConnectionByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      storageSyncServiceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
-        code: 200,
-        apiVersion: "2025-12-01",
-      }),
-    ),
+const ListPrivateEndpointConnectionByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    storageSyncServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
+      code: 200,
+      apiVersion: "2025-12-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListPrivateEndpointConnectionByStorageSyncServiceRequest",
 }) as any as S.Schema<ListPrivateEndpointConnectionByStorageSyncServiceRequest>;
@@ -2913,13 +2898,10 @@ export const ListPrivateEndpointConnectionByStorageSyncServiceRequest = /*@__PUR
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   StorageSyncServicePropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnectionListResultValueItem =
-  StorageSyncServicePropertiesPrivateEndpointConnectionsItem;
-
 /** List of private endpoint connections associated with the specified resource. */
 export type PrivateEndpointConnectionListResultValueList =
   Array<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   StorageSyncServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** List of private endpoint connections associated with the specified resource. */
@@ -2929,7 +2911,7 @@ export interface PrivateEndpointConnectionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -2946,7 +2928,7 @@ export interface ListPrivateLinkResourceByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const ListPrivateLinkResourceByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2965,12 +2947,12 @@ export const ListPrivateLinkResourceByStorageSyncServiceRequest = /*@__PURE__*/ 
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -2982,7 +2964,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -3005,7 +2987,7 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3018,7 +3000,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 /** Array of private link resources */
 export type ListPrivateLinkResourceByStorageSyncServiceResponseValueList =
   Array<PrivateLinkResource>;
-export const ListPrivateLinkResourceByStorageSyncServiceResponseValueList = /*@__PURE__*/ S.Array(
+const ListPrivateLinkResourceByStorageSyncServiceResponseValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceResponseValueList>;
 
@@ -3026,7 +3008,7 @@ export interface ListPrivateLinkResourceByStorageSyncServiceResponse {
   /** Array of private link resources */
   value?: ListPrivateLinkResourceByStorageSyncServiceResponseValueList;
 }
-export const ListPrivateLinkResourceByStorageSyncServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByStorageSyncServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListPrivateLinkResourceByStorageSyncServiceResponseValueList),
   }),
@@ -3042,7 +3024,7 @@ export interface ListRegisteredServerByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const ListRegisteredServerByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegisteredServerByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3072,7 +3054,7 @@ export interface RegisteredServer {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-export const RegisteredServer = /*@__PURE__*/ S.suspend(() =>
+const RegisteredServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3084,7 +3066,7 @@ export const RegisteredServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of Registered Server. */
 export type RegisteredServerArrayValueList = Array<RegisteredServer>;
-export const RegisteredServerArrayValueList = /*@__PURE__*/ S.Array(
+const RegisteredServerArrayValueList = /*@__PURE__*/ S.Array(
   RegisteredServer,
 ) as any as S.Schema<RegisteredServerArrayValueList>;
 
@@ -3095,7 +3077,7 @@ export interface RegisteredServerArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const RegisteredServerArray = /*@__PURE__*/ S.suspend(() =>
+const RegisteredServerArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RegisteredServerArrayValueList),
     nextLink: S.optional(S.String),
@@ -3112,7 +3094,7 @@ export interface ListServerEndpointBySyncGroupRequest {
   /** Name of Sync Group resource. */
   syncGroupName: string;
 }
-export const ListServerEndpointBySyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerEndpointBySyncGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3143,7 +3125,7 @@ export interface ServerEndpoint {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-export const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3155,7 +3137,7 @@ export const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of ServerEndpoint. */
 export type ServerEndpointArrayValueList = Array<ServerEndpoint>;
-export const ServerEndpointArrayValueList = /*@__PURE__*/ S.Array(
+const ServerEndpointArrayValueList = /*@__PURE__*/ S.Array(
   ServerEndpoint,
 ) as any as S.Schema<ServerEndpointArrayValueList>;
 
@@ -3166,7 +3148,7 @@ export interface ServerEndpointArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ServerEndpointArray = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ServerEndpointArrayValueList),
     nextLink: S.optional(S.String),
@@ -3179,7 +3161,7 @@ export interface ListStorageSyncServiceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStorageSyncServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageSyncServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3197,13 +3179,11 @@ export const ListStorageSyncServiceByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type StorageSyncServiceTagsMap = { [key: string]: string | undefined };
-export const StorageSyncServiceTagsMap =
+const StorageSyncServiceTagsMap =
   ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<StorageSyncServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type StorageSyncServiceIdentity = CreateStorageSyncServiceResponseIdentity;
-export const StorageSyncServiceIdentity = CreateStorageSyncServiceResponseIdentity;
-
 /** Storage Sync Service object. */
 export interface StorageSyncService {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3223,7 +3203,7 @@ export interface StorageSyncService {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-export const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3238,7 +3218,7 @@ export const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of StorageSyncServices. */
 export type StorageSyncServiceArrayValueList = Array<StorageSyncService>;
-export const StorageSyncServiceArrayValueList = /*@__PURE__*/ S.Array(
+const StorageSyncServiceArrayValueList = /*@__PURE__*/ S.Array(
   StorageSyncService,
 ) as any as S.Schema<StorageSyncServiceArrayValueList>;
 
@@ -3249,7 +3229,7 @@ export interface StorageSyncServiceArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const StorageSyncServiceArray = /*@__PURE__*/ S.suspend(() =>
+const StorageSyncServiceArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(StorageSyncServiceArrayValueList),
     nextLink: S.optional(S.String),
@@ -3260,7 +3240,7 @@ export interface ListStorageSyncServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListStorageSyncServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageSyncServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3283,7 +3263,7 @@ export interface ListSyncGroupByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const ListSyncGroupByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSyncGroupByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3313,11 +3293,11 @@ export interface SyncGroup {
   /** SyncGroup properties. */
   properties?: SyncGroupProperties;
 }
-export const SyncGroup = CreateSyncGroupResponse as any as S.Schema<SyncGroup>;
+const SyncGroup = CreateSyncGroupResponse as any as S.Schema<SyncGroup>;
 
 /** Collection of SyncGroup. */
 export type SyncGroupArrayValueList = Array<SyncGroup>;
-export const SyncGroupArrayValueList = /*@__PURE__*/ S.Array(
+const SyncGroupArrayValueList = /*@__PURE__*/ S.Array(
   SyncGroup,
 ) as any as S.Schema<SyncGroupArrayValueList>;
 
@@ -3328,7 +3308,7 @@ export interface SyncGroupArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const SyncGroupArray = /*@__PURE__*/ S.suspend(() =>
+const SyncGroupArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SyncGroupArrayValueList),
     nextLink: S.optional(S.String),
@@ -3343,7 +3323,7 @@ export interface ListWorkflowByStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export const ListWorkflowByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowByStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3373,11 +3353,11 @@ export interface Workflow {
   /** Workflow properties. */
   properties?: WorkflowProperties;
 }
-export const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
+const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
 
 /** Collection of workflow items. */
 export type WorkflowArrayValueList = Array<Workflow>;
-export const WorkflowArrayValueList = /*@__PURE__*/ S.Array(
+const WorkflowArrayValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowArrayValueList>;
 
@@ -3388,7 +3368,7 @@ export interface WorkflowArray {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const WorkflowArray = /*@__PURE__*/ S.suspend(() =>
+const WorkflowArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkflowArrayValueList),
     nextLink: S.optional(S.String),
@@ -3403,7 +3383,7 @@ export interface LocationOperationStatusRequest {
   /** operation Id */
   operationId: string;
 }
-export const LocationOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const LocationOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -3437,7 +3417,7 @@ export interface LocationOperationStatus {
   /** Percent complete. */
   percentComplete?: number;
 }
-export const LocationOperationStatus = /*@__PURE__*/ S.suspend(() =>
+const LocationOperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3463,7 +3443,7 @@ export interface PostCloudEndpointBackupRequest {
   /** Azure File Share. */
   azureFileShare?: string;
 }
-export const PostCloudEndpointBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const PostCloudEndpointBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3488,7 +3468,7 @@ export interface PostBackupResponseProperties {
   /** cloud endpoint Name. */
   cloudEndpointName?: string;
 }
-export const PostBackupResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const PostBackupResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudEndpointName: S.optional(S.String),
   }),
@@ -3501,7 +3481,7 @@ export interface PostBackupResponse {
   /** Post Backup Response Properties */
   backupMetadata?: PostBackupResponseProperties;
 }
-export const PostBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const PostBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupMetadata: S.optional(PostBackupResponseProperties),
   }),
@@ -3509,7 +3489,7 @@ export const PostBackupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre Restore restore file spec array. */
 export type RestoreCloudEndpointsPreRequestRestoreFileSpecList = Array<RestoreFileSpec>;
-export const RestoreCloudEndpointsPreRequestRestoreFileSpecList =
+const RestoreCloudEndpointsPreRequestRestoreFileSpecList =
   CloudEndpointsPostRestoreRequestRestoreFileSpecList as any as S.Schema<RestoreCloudEndpointsPreRequestRestoreFileSpecList>;
 
 export interface RestoreCloudEndpointsPreRequest {
@@ -3542,7 +3522,7 @@ export interface RestoreCloudEndpointsPreRequest {
   /** Pre Restore pause wait for sync drain time period in seconds. */
   pauseWaitForSyncDrainTimePeriodInSeconds?: number;
 }
-export const RestoreCloudEndpointsPreRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreCloudEndpointsPreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3571,7 +3551,7 @@ export const RestoreCloudEndpointsPreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreCloudEndpointsPreRequest>;
 
 export interface RestoreCloudEndpointsPreResponse {}
-export const RestoreCloudEndpointsPreResponse =
+const RestoreCloudEndpointsPreResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<RestoreCloudEndpointsPreResponse>;
 
 export interface ServerEndpointsRecallActionRequest {
@@ -3590,7 +3570,7 @@ export interface ServerEndpointsRecallActionRequest {
   /** Recall path. */
   recallPath?: string;
 }
-export const ServerEndpointsRecallActionRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointsRecallActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3612,16 +3592,16 @@ export const ServerEndpointsRecallActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerEndpointsRecallActionRequest>;
 
 export interface ServerEndpointsRecallActionResponse {}
-export const ServerEndpointsRecallActionResponse =
+const ServerEndpointsRecallActionResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<ServerEndpointsRecallActionResponse>;
 
 /** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
 export type ChangeDetectionMode = "Default" | "Recursive";
-export const ChangeDetectionMode = S.String;
+const ChangeDetectionMode = S.String;
 
 /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
 export type TriggerCloudEndpointChangeDetectionRequestPathsList = Array<string>;
-export const TriggerCloudEndpointChangeDetectionRequestPathsList =
+const TriggerCloudEndpointChangeDetectionRequestPathsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TriggerCloudEndpointChangeDetectionRequestPathsList>;
 
 export interface TriggerCloudEndpointChangeDetectionRequest {
@@ -3642,7 +3622,7 @@ export interface TriggerCloudEndpointChangeDetectionRequest {
   /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
   paths?: TriggerCloudEndpointChangeDetectionRequestPathsList;
 }
-export const TriggerCloudEndpointChangeDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerCloudEndpointChangeDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3665,7 +3645,7 @@ export const TriggerCloudEndpointChangeDetectionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>;
 
 export interface TriggerCloudEndpointChangeDetectionResponse {}
-export const TriggerCloudEndpointChangeDetectionResponse =
+const TriggerCloudEndpointChangeDetectionResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>;
 
 export interface TriggerRegisteredServerRolloverRequest {
@@ -3680,7 +3660,7 @@ export interface TriggerRegisteredServerRolloverRequest {
   /** Certificate Data */
   serverCertificate?: string;
 }
-export const TriggerRegisteredServerRolloverRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRegisteredServerRolloverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3700,7 +3680,7 @@ export const TriggerRegisteredServerRolloverRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<TriggerRegisteredServerRolloverRequest>;
 
 export interface TriggerRegisteredServerRolloverResponse {}
-export const TriggerRegisteredServerRolloverResponse =
+const TriggerRegisteredServerRolloverResponse =
   CloudEndpointsPostRestoreResponse as any as S.Schema<TriggerRegisteredServerRolloverResponse>;
 
 /** CloudEndpoint Update Properties object. */
@@ -3708,7 +3688,7 @@ export interface CloudEndpointUpdateProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
   changeEnumerationIntervalDays?: number;
 }
-export const CloudEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeEnumerationIntervalDays: S.optional(S.Number),
   }),
@@ -3730,7 +3710,7 @@ export interface UpdateCloudEndpointRequest {
   /** The properties of the cloud endpoint. */
   properties?: CloudEndpointUpdateProperties;
 }
-export const UpdateCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCloudEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3762,7 +3742,7 @@ export interface UpdateCloudEndpointResponse {
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
 }
-export const UpdateCloudEndpointResponse =
+const UpdateCloudEndpointResponse =
   CreateCloudEndpointResponse as any as S.Schema<UpdateCloudEndpointResponse>;
 
 /** RegisteredServer Update Properties object. */
@@ -3772,7 +3752,7 @@ export interface RegisteredServerUpdateProperties {
   /** Apply server with new ServicePrincipal Id */
   applicationId?: string;
 }
-export const RegisteredServerUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const RegisteredServerUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.Boolean),
     applicationId: S.optional(S.String),
@@ -3793,7 +3773,7 @@ export interface UpdateRegisteredServerRequest {
   /** The parameters used to update the registered server. */
   properties?: RegisteredServerUpdateProperties;
 }
-export const UpdateRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRegisteredServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3824,14 +3804,14 @@ export interface UpdateRegisteredServerResponse {
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
 }
-export const UpdateRegisteredServerResponse =
+const UpdateRegisteredServerResponse =
   CreateRegisteredServerResponse as any as S.Schema<UpdateRegisteredServerResponse>;
 
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointUpdatePropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
   | "UpdateLocallyCachedFiles";
-export const ServerEndpointUpdatePropertiesLocalCacheMode = S.String;
+const ServerEndpointUpdatePropertiesLocalCacheMode = S.String;
 
 /** ServerEndpoint Update Properties object. */
 export interface ServerEndpointUpdateProperties {
@@ -3848,7 +3828,7 @@ export interface ServerEndpointUpdateProperties {
   /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
   localCacheMode?: ServerEndpointUpdatePropertiesLocalCacheMode | (string & {});
 }
-export const ServerEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudTiering: S.optional(FeatureStatus),
     volumeFreeSpacePercent: S.optional(S.Number),
@@ -3875,7 +3855,7 @@ export interface UpdateServerEndpointRequest {
   /** The properties of the server endpoint. */
   properties?: ServerEndpointUpdateProperties;
 }
-export const UpdateServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3907,22 +3887,18 @@ export interface UpdateServerEndpointResponse {
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
 }
-export const UpdateServerEndpointResponse =
+const UpdateServerEndpointResponse =
   CreateServerEndpointResponse as any as S.Schema<UpdateServerEndpointResponse>;
 
 /** The user-specified tags associated with the storage sync service. */
 export type UpdateStorageSyncServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageSyncServiceRequestTagsMap =
+const UpdateStorageSyncServiceRequestTagsMap =
   ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<UpdateStorageSyncServiceRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateStorageSyncServiceRequestIdentity = CreateStorageSyncServiceRequestIdentity;
-export const UpdateStorageSyncServiceRequestIdentity = CreateStorageSyncServiceRequestIdentity;
-
 /** StorageSyncService Properties object. */
 export type StorageSyncServiceUpdateProperties = StorageSyncServiceCreateParametersProperties;
-export const StorageSyncServiceUpdateProperties = StorageSyncServiceCreateParametersProperties;
-
 export interface UpdateStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3937,7 +3913,7 @@ export interface UpdateStorageSyncServiceRequest {
   /** The properties of the server endpoint. */
   properties?: StorageSyncServiceCreateParametersProperties;
 }
-export const UpdateStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3959,13 +3935,8 @@ export const UpdateStorageSyncServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageSyncServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageSyncServiceResponseTagsMap =
-  ServerEndpointProvisioningStepStatusAdditionalInformationMap as any as S.Schema<UpdateStorageSyncServiceResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateStorageSyncServiceResponseIdentity = CreateStorageSyncServiceResponseIdentity;
-export const UpdateStorageSyncServiceResponseIdentity = CreateStorageSyncServiceResponseIdentity;
-
 export interface UpdateStorageSyncServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3984,7 +3955,7 @@ export interface UpdateStorageSyncServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
 }
-export const UpdateStorageSyncServiceResponse =
+const UpdateStorageSyncServiceResponse =
   CreateStorageSyncServiceResponse as any as S.Schema<UpdateStorageSyncServiceResponse>;
 
 export type AbortWorkflowError = AzureOpError;

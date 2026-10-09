@@ -36,23 +36,19 @@ export class NotFound
   ) {}
 
 export type CreateDashboardTemplateRequestTagsList = Array<string>;
-export const CreateDashboardTemplateRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateDashboardTemplateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDashboardTemplateRequestTagsList>;
 
 /** * `team` - Only team * `organization` - Organization * `global` - Global * `feature_flag` - Feature Flag */
 export type DashboardTemplateScopeEnum = "team" | "organization" | "global" | "feature_flag";
-export const DashboardTemplateScopeEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type CreateDashboardTemplateRequestScope = DashboardTemplateScopeEnum | BlankEnum;
-export const CreateDashboardTemplateRequestScope =
+const CreateDashboardTemplateRequestScope =
   S.Unknown as any as S.Schema<CreateDashboardTemplateRequestScope>;
 
 export type CreateDashboardTemplateRequestAvailabilityContextsList = Array<string>;
-export const CreateDashboardTemplateRequestAvailabilityContextsList =
+const CreateDashboardTemplateRequestAvailabilityContextsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<CreateDashboardTemplateRequestAvailabilityContextsList>;
 
 export interface CreateDashboardTemplateRequest {
@@ -71,7 +67,7 @@ export interface CreateDashboardTemplateRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-export const CreateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     template_name: S.optional(S.NullOr(S.String)),
@@ -95,11 +91,11 @@ export const CreateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardTemplateRequest>;
 
 export type DashboardTemplateTagsList = Array<string>;
-export const DashboardTemplateTagsList =
+const DashboardTemplateTagsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<DashboardTemplateTagsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -115,11 +111,8 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -132,7 +125,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -147,15 +140,15 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
-export const DashboardTemplateScope = S.Unknown as any as S.Schema<DashboardTemplateScope>;
+const DashboardTemplateScope = S.Unknown as any as S.Schema<DashboardTemplateScope>;
 
 export type DashboardTemplateAvailabilityContextsList = Array<string>;
-export const DashboardTemplateAvailabilityContextsList =
+const DashboardTemplateAvailabilityContextsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<DashboardTemplateAvailabilityContextsList>;
 
 /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
 export type NonPortableReferencesWarehouseTablesList = Array<string>;
-export const NonPortableReferencesWarehouseTablesList =
+const NonPortableReferencesWarehouseTablesList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<NonPortableReferencesWarehouseTablesList>;
 
 export interface NonPortableReferences {
@@ -166,7 +159,7 @@ export interface NonPortableReferences {
   /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
   warehouse_tables: NonPortableReferencesWarehouseTablesList;
 }
-export const NonPortableReferences = /*@__PURE__*/ S.suspend(() =>
+const NonPortableReferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.Number,
     cohorts: S.Number,
@@ -194,7 +187,7 @@ export interface DashboardTemplate {
   /** Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here. */
   non_portable_references?: NonPortableReferences;
 }
-export const DashboardTemplate = /*@__PURE__*/ S.suspend(() =>
+const DashboardTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     template_name: S.optional(S.NullOr(S.String)),
@@ -221,7 +214,7 @@ export interface DashboardTemplatesCopyBetweenProjectsCreateRequest {
   /** UUID of a team-scoped template in the same organization. Global and feature-flag templates cannot be copied with this endpoint. */
   source_template_id?: string;
 }
-export const DashboardTemplatesCopyBetweenProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DashboardTemplatesCopyBetweenProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_template_id: S.optional(S.String),
@@ -242,7 +235,7 @@ export interface DashboardTemplatesDestroyRequest {
   /** A UUID string identifying this dashboard template. */
   id: string;
 }
-export const DashboardTemplatesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const DashboardTemplatesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -258,9 +251,7 @@ export const DashboardTemplatesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardTemplatesDestroyRequest>;
 
 export interface DashboardTemplatesDestroyResponse {}
-export const DashboardTemplatesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DashboardTemplatesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DashboardTemplatesDestroyResponse",
 }) as any as S.Schema<DashboardTemplatesDestroyResponse>;
 
@@ -270,7 +261,7 @@ export interface GetDashboardTemplateRequest {
   /** A UUID string identifying this dashboard template. */
   id: string;
 }
-export const GetDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -290,14 +281,14 @@ export type ListDashboardTemplatesRequestOrdering =
   | "-template_name"
   | "created_at"
   | "template_name";
-export const ListDashboardTemplatesRequestOrdering = S.String;
+const ListDashboardTemplatesRequestOrdering = S.String;
 
 export type ListDashboardTemplatesRequestScope =
   | "feature_flag"
   | "global"
   | "organization"
   | "team";
-export const ListDashboardTemplatesRequestScope = S.String;
+const ListDashboardTemplatesRequestScope = S.String;
 
 export interface ListDashboardTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -315,7 +306,7 @@ export interface ListDashboardTemplatesRequest {
   /** Optional. Full-text search across template name, tags, and description, ranked by relevance. Use it to find templates for a topic (e.g. `retention`, `revenue`, `product analytics`). */
   search?: string;
 }
-export const ListDashboardTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     is_featured: S.optional(S.Boolean.pipe(T.Query())),
@@ -332,7 +323,7 @@ export const ListDashboardTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDashboardTemplatesRequest>;
 
 export type PaginatedDashboardTemplateListResultsList = Array<DashboardTemplate>;
-export const PaginatedDashboardTemplateListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDashboardTemplateListResultsList = /*@__PURE__*/ S.Array(
   DashboardTemplate,
 ) as any as S.Schema<PaginatedDashboardTemplateListResultsList>;
 
@@ -342,7 +333,7 @@ export interface PaginatedDashboardTemplateList {
   previous?: string | null;
   results?: PaginatedDashboardTemplateListResultsList;
 }
-export const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -354,15 +345,15 @@ export const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDashboardTemplateList>;
 
 export type UpdateDashboardTemplateRequestTagsList = Array<string>;
-export const UpdateDashboardTemplateRequestTagsList =
+const UpdateDashboardTemplateRequestTagsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplateRequestTagsList>;
 
 export type UpdateDashboardTemplateRequestScope = DashboardTemplateScopeEnum | BlankEnum;
-export const UpdateDashboardTemplateRequestScope =
+const UpdateDashboardTemplateRequestScope =
   S.Unknown as any as S.Schema<UpdateDashboardTemplateRequestScope>;
 
 export type UpdateDashboardTemplateRequestAvailabilityContextsList = Array<string>;
-export const UpdateDashboardTemplateRequestAvailabilityContextsList =
+const UpdateDashboardTemplateRequestAvailabilityContextsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplateRequestAvailabilityContextsList>;
 
 export interface UpdateDashboardTemplateRequest {
@@ -383,7 +374,7 @@ export interface UpdateDashboardTemplateRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-export const UpdateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -412,15 +403,15 @@ export const UpdateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDashboardTemplateRequest>;
 
 export type UpdateDashboardTemplatesPartialRequestTagsList = Array<string>;
-export const UpdateDashboardTemplatesPartialRequestTagsList =
+const UpdateDashboardTemplatesPartialRequestTagsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplatesPartialRequestTagsList>;
 
 export type UpdateDashboardTemplatesPartialRequestScope = DashboardTemplateScopeEnum | BlankEnum;
-export const UpdateDashboardTemplatesPartialRequestScope =
+const UpdateDashboardTemplatesPartialRequestScope =
   S.Unknown as any as S.Schema<UpdateDashboardTemplatesPartialRequestScope>;
 
 export type UpdateDashboardTemplatesPartialRequestAvailabilityContextsList = Array<string>;
-export const UpdateDashboardTemplatesPartialRequestAvailabilityContextsList =
+const UpdateDashboardTemplatesPartialRequestAvailabilityContextsList =
   CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplatesPartialRequestAvailabilityContextsList>;
 
 export interface UpdateDashboardTemplatesPartialRequest {
@@ -441,7 +432,7 @@ export interface UpdateDashboardTemplatesPartialRequest {
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
 }
-export const UpdateDashboardTemplatesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDashboardTemplatesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

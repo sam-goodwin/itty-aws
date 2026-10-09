@@ -50,7 +50,7 @@ export interface CreateForumPostRequestAttachmentsItem {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateForumPostRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateForumPostRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -60,7 +60,7 @@ export const CreateForumPostRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() 
 
 /** A list of file attachments to include with the post, such as images or videos. */
 export type CreateForumPostRequestAttachmentsList = Array<CreateForumPostRequestAttachmentsItem>;
-export const CreateForumPostRequestAttachmentsList = /*@__PURE__*/ S.Array(
+const CreateForumPostRequestAttachmentsList = /*@__PURE__*/ S.Array(
   CreateForumPostRequestAttachmentsItem,
 ) as any as S.Schema<CreateForumPostRequestAttachmentsList>;
 
@@ -156,7 +156,7 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const LegacyCurrencies = S.String;
+const LegacyCurrencies = S.String;
 
 /** Input type for a single poll option */
 export interface CreateForumPostRequestPollOptionsItem {
@@ -165,7 +165,7 @@ export interface CreateForumPostRequestPollOptionsItem {
   /** The text of the poll option */
   text: string;
 }
-export const CreateForumPostRequestPollOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateForumPostRequestPollOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     text: S.String,
@@ -176,7 +176,7 @@ export const CreateForumPostRequestPollOptionsItem = /*@__PURE__*/ S.suspend(() 
 
 /** The options for the poll. Must have sequential IDs starting from 1 */
 export type CreateForumPostRequestPollOptionsList = Array<CreateForumPostRequestPollOptionsItem>;
-export const CreateForumPostRequestPollOptionsList = /*@__PURE__*/ S.Array(
+const CreateForumPostRequestPollOptionsList = /*@__PURE__*/ S.Array(
   CreateForumPostRequestPollOptionsItem,
 ) as any as S.Schema<CreateForumPostRequestPollOptionsList>;
 
@@ -185,7 +185,7 @@ export interface CreateForumPostRequestPoll {
   /** The options for the poll. Must have sequential IDs starting from 1 */
   options: CreateForumPostRequestPollOptionsList;
 }
-export const CreateForumPostRequestPoll = /*@__PURE__*/ S.suspend(() =>
+const CreateForumPostRequestPoll = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: CreateForumPostRequestPollOptionsList,
   }),
@@ -195,7 +195,7 @@ export const CreateForumPostRequestPoll = /*@__PURE__*/ S.suspend(() =>
 
 /** The visibility types for forum posts */
 export type ForumPostVisibilityTypes = "members_only" | "globally_visible";
-export const ForumPostVisibilityTypes = S.String;
+const ForumPostVisibilityTypes = S.String;
 
 export interface CreateForumPostRequest {
   /** The unique identifier of the company whose public forum to post in. Required when experience_id is 'public'. For example, 'biz_xxxxx'. */
@@ -225,7 +225,7 @@ export interface CreateForumPostRequest {
   /** Controls who can see this forum post, such as members only or public. */
   visibility?: ForumPostVisibilityTypes | (string & {}) | null;
 }
-export const CreateForumPostRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForumPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.NullOr(S.String)),
     attachments: S.optional(S.NullOr(CreateForumPostRequestAttachmentsList)),
@@ -254,7 +254,7 @@ export interface ForumPostAttachmentsItem {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const ForumPostAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const ForumPostAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -265,7 +265,7 @@ export const ForumPostAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** All file attachments on this post, such as images, documents, and videos. */
 export type ForumPostAttachmentsList = Array<ForumPostAttachmentsItem>;
-export const ForumPostAttachmentsList = /*@__PURE__*/ S.Array(
+const ForumPostAttachmentsList = /*@__PURE__*/ S.Array(
   ForumPostAttachmentsItem,
 ) as any as S.Schema<ForumPostAttachmentsList>;
 
@@ -278,7 +278,7 @@ export interface ForumPostUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const ForumPostUser = /*@__PURE__*/ S.suspend(() =>
+const ForumPostUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -317,7 +317,7 @@ export interface ForumPost {
   /** The total number of times this post has been viewed by users. */
   view_count: number | null;
 }
-export const ForumPost = /*@__PURE__*/ S.suspend(() =>
+const ForumPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: ForumPostAttachmentsList,
     comment_count: S.Number,
@@ -340,7 +340,7 @@ export interface GetForumPostRequest {
   /** The unique identifier of the forum post to retrieve. */
   id: string;
 }
-export const GetForumPostRequest = /*@__PURE__*/ S.suspend(() =>
+const GetForumPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/forum_posts/{id}", code: 200 })),
@@ -356,7 +356,7 @@ export interface ListForumPostRequest {
   parent_id?: string;
   pinned?: boolean;
 }
-export const ListForumPostRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForumPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -371,17 +371,10 @@ export const ListForumPostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents an image attachment */
 export type ForumPostListItemAttachmentsItem = ForumPostAttachmentsItem;
-export const ForumPostListItemAttachmentsItem = ForumPostAttachmentsItem;
-
 /** All file attachments on this post, such as images, documents, and videos. */
 export type ForumPostListItemAttachmentsList = Array<ForumPostAttachmentsItem>;
-export const ForumPostListItemAttachmentsList =
-  ForumPostAttachmentsList as any as S.Schema<ForumPostListItemAttachmentsList>;
-
 /** The user who authored this forum post. */
 export type ForumPostListItemUser = ForumPostUser;
-export const ForumPostListItemUser = ForumPostUser;
-
 /** A post or comment in a forum feed, supporting rich text, attachments, polls, and reactions. */
 export interface ForumPostListItem {
   /** All file attachments on this post, such as images, documents, and videos. */
@@ -413,11 +406,11 @@ export interface ForumPostListItem {
   /** The total number of times this post has been viewed by users. */
   view_count: number | null;
 }
-export const ForumPostListItem = ForumPost as any as S.Schema<ForumPostListItem>;
+const ForumPostListItem = ForumPost as any as S.Schema<ForumPostListItem>;
 
 /** A list of nodes. */
 export type ListForumPostResponseDataList = Array<ForumPostListItem>;
-export const ListForumPostResponseDataList = /*@__PURE__*/ S.Array(
+const ListForumPostResponseDataList = /*@__PURE__*/ S.Array(
   ForumPostListItem,
 ) as any as S.Schema<ListForumPostResponseDataList>;
 
@@ -432,7 +425,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -447,7 +440,7 @@ export interface ListForumPostResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListForumPostResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForumPostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListForumPostResponseDataList,
     page_info: PageInfo,
@@ -456,11 +449,9 @@ export const ListForumPostResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Input for an attachment */
 export type UpdateForumPostRequestAttachmentsItem = CreateForumPostRequestAttachmentsItem;
-export const UpdateForumPostRequestAttachmentsItem = CreateForumPostRequestAttachmentsItem;
-
 /** A replacement list of file attachments for this post, such as images or videos. */
 export type UpdateForumPostRequestAttachmentsList = Array<CreateForumPostRequestAttachmentsItem>;
-export const UpdateForumPostRequestAttachmentsList =
+const UpdateForumPostRequestAttachmentsList =
   CreateForumPostRequestAttachmentsList as any as S.Schema<UpdateForumPostRequestAttachmentsList>;
 
 export interface UpdateForumPostRequest {
@@ -477,7 +468,7 @@ export interface UpdateForumPostRequest {
   /** Controls who can see this forum post, such as members only or public. */
   visibility?: ForumPostVisibilityTypes | (string & {}) | null;
 }
-export const UpdateForumPostRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateForumPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(S.NullOr(UpdateForumPostRequestAttachmentsList)),

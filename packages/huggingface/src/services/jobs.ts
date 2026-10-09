@@ -25,7 +25,7 @@ export interface CancelJobRequest {
   namespace: string;
   jobId: string;
 }
-export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -33,22 +33,22 @@ export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
 
 export type CancelJobResponseEnvironmentMap = { [key: string]: string | undefined };
-export const CancelJobResponseEnvironmentMap = /*@__PURE__*/ S.Record(
+const CancelJobResponseEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CancelJobResponseEnvironmentMap>;
 
 export type CancelJobResponseCommandList = Array<string>;
-export const CancelJobResponseCommandList = /*@__PURE__*/ S.Array(
+const CancelJobResponseCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CancelJobResponseCommandList>;
 
 export type CancelJobResponseArgumentsList = Array<string>;
-export const CancelJobResponseArgumentsList =
+const CancelJobResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<CancelJobResponseArgumentsList>;
 
 export type CancelJobResponseArch = "amd64" | "arm64";
-export const CancelJobResponseArch = S.String;
+const CancelJobResponseArch = S.String;
 
 export type CancelJobResponseFlavor =
   | "cpu-basic"
@@ -80,13 +80,13 @@ export type CancelJobResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const CancelJobResponseFlavor = S.String;
+const CancelJobResponseFlavor = S.String;
 
 export interface CancelJobResponseCreatedBy {
   id: string;
   name: string;
 }
-export const CancelJobResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -100,7 +100,7 @@ export interface CancelJobResponseDurations {
   runningSecs?: number;
   totalSecs?: number;
 }
-export const CancelJobResponseDurations = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseDurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedulingSecs: S.optional(S.Number),
     runningSecs: S.optional(S.Number),
@@ -118,7 +118,7 @@ export interface CancelJobResponseVolumesItem {
   readOnly?: boolean;
   path?: string;
 }
-export const CancelJobResponseVolumesItem = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseVolumesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     source: S.String,
@@ -132,18 +132,18 @@ export const CancelJobResponseVolumesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelJobResponseVolumesItem>;
 
 export type CancelJobResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const CancelJobResponseVolumesList = /*@__PURE__*/ S.Array(
+const CancelJobResponseVolumesList = /*@__PURE__*/ S.Array(
   CancelJobResponseVolumesItem,
 ) as any as S.Schema<CancelJobResponseVolumesList>;
 
 export type CancelJobResponseExposePortsList = Array<number>;
-export const CancelJobResponseExposePortsList = /*@__PURE__*/ S.Array(
+const CancelJobResponseExposePortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CancelJobResponseExposePortsList>;
 
 /** Subset of `ports` reachable without any authentication. */
 export type CancelJobResponseExposePortsPublicList = Array<number>;
-export const CancelJobResponseExposePortsPublicList =
+const CancelJobResponseExposePortsPublicList =
   CancelJobResponseExposePortsList as any as S.Schema<CancelJobResponseExposePortsPublicList>;
 
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
@@ -152,7 +152,7 @@ export interface CancelJobResponseExpose {
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: CancelJobResponseExposePortsPublicList;
 }
-export const CancelJobResponseExpose = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseExpose = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: CancelJobResponseExposePortsList,
     portsPublic: S.optional(CancelJobResponseExposePortsPublicList),
@@ -161,7 +161,7 @@ export const CancelJobResponseExpose = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type CancelJobResponseNetworkAliasesList = Array<string>;
-export const CancelJobResponseNetworkAliasesList =
+const CancelJobResponseNetworkAliasesList =
   CancelJobResponseCommandList as any as S.Schema<CancelJobResponseNetworkAliasesList>;
 
 /** Network group the job belongs to. */
@@ -171,7 +171,7 @@ export interface CancelJobResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: CancelJobResponseNetworkAliasesList;
 }
-export const CancelJobResponseNetwork = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String,
     aliases: CancelJobResponseNetworkAliasesList,
@@ -179,7 +179,7 @@ export const CancelJobResponseNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelJobResponseNetwork" }) as any as S.Schema<CancelJobResponseNetwork>;
 
 export type CancelJobResponseOwnerType = "user" | "org";
-export const CancelJobResponseOwnerType = S.String;
+const CancelJobResponseOwnerType = S.String;
 
 export interface CancelJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -188,7 +188,7 @@ export interface CancelJobResponseOwner {
   type: CancelJobResponseOwnerType;
   avatarUrl: string;
 }
-export const CancelJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -203,7 +203,7 @@ export interface CancelJobResponseResourceGroup {
   name: string;
   numUsers?: number;
 }
-export const CancelJobResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -214,7 +214,7 @@ export const CancelJobResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelJobResponseResourceGroup>;
 
 export type CancelJobResponseInitiatorCase0Type = "user" | "org";
-export const CancelJobResponseInitiatorCase0Type = S.String;
+const CancelJobResponseInitiatorCase0Type = S.String;
 
 export interface CancelJobResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -223,7 +223,7 @@ export interface CancelJobResponseInitiatorCase0 {
   type: CancelJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const CancelJobResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseInitiatorCase0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -238,27 +238,14 @@ export interface CancelJobResponseInitiatorCase1 {
   type: string;
   id: string;
 }
-export const CancelJobResponseInitiatorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CancelJobResponseInitiatorCase1",
-}) as any as S.Schema<CancelJobResponseInitiatorCase1>;
-
 export type CancelJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const CancelJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type CancelJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const CancelJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type CancelJobResponseInitiator =
   | CancelJobResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const CancelJobResponseInitiator = S.Unknown as any as S.Schema<CancelJobResponseInitiator>;
+const CancelJobResponseInitiator = S.Unknown as any as S.Schema<CancelJobResponseInitiator>;
 
 export type CancelJobResponseStatusStage =
   | "COMPLETED"
@@ -267,22 +254,20 @@ export type CancelJobResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const CancelJobResponseStatusStage = S.String;
+const CancelJobResponseStatusStage = S.String;
 
 export type CancelJobResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const CancelJobResponseStatusCancelReasonCase0 = S.String;
-
 export type CancelJobResponseStatusCancelReason = CancelJobResponseStatusCancelReasonCase0 | string;
-export const CancelJobResponseStatusCancelReason =
+const CancelJobResponseStatusCancelReason =
   S.Unknown as any as S.Schema<CancelJobResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type CancelJobResponseStatusExposeUrlsList = Array<string>;
-export const CancelJobResponseStatusExposeUrlsList =
+const CancelJobResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<CancelJobResponseStatusExposeUrlsList>;
 
 export interface CancelJobResponseStatus {
@@ -295,7 +280,7 @@ export interface CancelJobResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const CancelJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: CancelJobResponseStatusStage,
     message: S.NullOr(S.String),
@@ -307,15 +292,15 @@ export const CancelJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelJobResponseStatus" }) as any as S.Schema<CancelJobResponseStatus>;
 
 export type CancelJobResponseSecretsList = Array<string>;
-export const CancelJobResponseSecretsList =
+const CancelJobResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<CancelJobResponseSecretsList>;
 
 export type CancelJobResponseLabelsMap = { [key: string]: string | undefined };
-export const CancelJobResponseLabelsMap =
+const CancelJobResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<CancelJobResponseLabelsMap>;
 
 export type CancelJobResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const CancelJobResponseHfTokenTokenRole = S.String;
+const CancelJobResponseHfTokenTokenRole = S.String;
 
 export interface CancelJobResponseHfToken {
   ownerName: string;
@@ -325,7 +310,7 @@ export interface CancelJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const CancelJobResponseHfToken = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponseHfToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerName: S.String,
     orgName: S.optional(S.String),
@@ -366,7 +351,7 @@ export interface CancelJobResponse {
   labels?: CancelJobResponseLabelsMap;
   hfToken?: CancelJobResponseHfToken;
 }
-export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -399,14 +384,14 @@ export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelJobResponse" }) as any as S.Schema<CancelJobResponse>;
 
 export type CheckJobAccessRequestPerms = "read" | "write";
-export const CheckJobAccessRequestPerms = S.String;
+const CheckJobAccessRequestPerms = S.String;
 
 export interface CheckJobAccessRequest {
   namespace: string;
   jobId: string;
   perms: CheckJobAccessRequestPerms | (string & {});
 }
-export const CheckJobAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckJobAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -417,16 +402,12 @@ export const CheckJobAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckJobAccessRequest" }) as any as S.Schema<CheckJobAccessRequest>;
 
 export type CheckJobAccessResponseNamespace = CancelJobResponseCreatedBy;
-export const CheckJobAccessResponseNamespace = CancelJobResponseCreatedBy;
-
 export type CheckJobAccessResponseUser = CancelJobResponseCreatedBy;
-export const CheckJobAccessResponseUser = CancelJobResponseCreatedBy;
-
 export interface CheckJobAccessResponse {
   namespace: CancelJobResponseCreatedBy;
   user: CancelJobResponseCreatedBy;
 }
-export const CheckJobAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckJobAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: CancelJobResponseCreatedBy,
     user: CancelJobResponseCreatedBy,
@@ -434,13 +415,13 @@ export const CheckJobAccessResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckJobAccessResponse" }) as any as S.Schema<CheckJobAccessResponse>;
 
 export type CheckNamespaceAccessRequestPerms = "read" | "write";
-export const CheckNamespaceAccessRequestPerms = S.String;
+const CheckNamespaceAccessRequestPerms = S.String;
 
 export interface CheckNamespaceAccessRequest {
   namespace: string;
   perms: CheckNamespaceAccessRequestPerms | (string & {});
 }
-export const CheckNamespaceAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNamespaceAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     perms: CheckNamespaceAccessRequestPerms.pipe(T.Label()),
@@ -450,16 +431,12 @@ export const CheckNamespaceAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNamespaceAccessRequest>;
 
 export type CheckNamespaceAccessResponseNamespace = CancelJobResponseCreatedBy;
-export const CheckNamespaceAccessResponseNamespace = CancelJobResponseCreatedBy;
-
 export type CheckNamespaceAccessResponseUser = CancelJobResponseCreatedBy;
-export const CheckNamespaceAccessResponseUser = CancelJobResponseCreatedBy;
-
 export interface CheckNamespaceAccessResponse {
   namespace: CancelJobResponseCreatedBy;
   user: CancelJobResponseCreatedBy;
 }
-export const CheckNamespaceAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckNamespaceAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: CancelJobResponseCreatedBy,
     user: CancelJobResponseCreatedBy,
@@ -475,8 +452,6 @@ export type CountJobsRequestStageCase0 =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const CountJobsRequestStageCase0 = S.String;
-
 export type CountJobsRequestStageCase1Item =
   | "COMPLETED"
   | "CANCELED"
@@ -484,21 +459,15 @@ export type CountJobsRequestStageCase1Item =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const CountJobsRequestStageCase1Item = S.String;
-
 export type CountJobsRequestStageCase1List = Array<CountJobsRequestStageCase1Item | (string & {})>;
-export const CountJobsRequestStageCase1List = /*@__PURE__*/ S.Array(
-  CountJobsRequestStageCase1Item,
-) as any as S.Schema<CountJobsRequestStageCase1List>;
-
 export type CountJobsRequestStage = CountJobsRequestStageCase0 | CountJobsRequestStageCase1List;
-export const CountJobsRequestStage = S.Unknown as any as S.Schema<CountJobsRequestStage>;
+const CountJobsRequestStage = S.Unknown as any as S.Schema<CountJobsRequestStage>;
 
 export interface CountJobsRequest {
   namespace: string;
   stage?: CountJobsRequestStage;
 }
-export const CountJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CountJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     stage: S.optional(CountJobsRequestStage.pipe(T.Query())),
@@ -508,30 +477,18 @@ export const CountJobsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CountJobsResponse {
   count: number;
 }
-export const CountJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const CountJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
   }),
 ).annotate({ identifier: "CountJobsResponse" }) as any as S.Schema<CountJobsResponse>;
 
 export type CreateScheduledJobRequestJobSpecCase0ArgumentsList = Array<string>;
-export const CreateScheduledJobRequestJobSpecCase0ArgumentsList =
-  CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobRequestJobSpecCase0ArgumentsList>;
-
 export type CreateScheduledJobRequestJobSpecCase0CommandList = Array<string>;
-export const CreateScheduledJobRequestJobSpecCase0CommandList =
-  CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobRequestJobSpecCase0CommandList>;
-
 export type CreateScheduledJobRequestJobSpecCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const CreateScheduledJobRequestJobSpecCase0EnvironmentMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobRequestJobSpecCase0EnvironmentMap>;
-
 export type CreateScheduledJobRequestJobSpecCase0SecretsMap = { [key: string]: string | undefined };
-export const CreateScheduledJobRequestJobSpecCase0SecretsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobRequestJobSpecCase0SecretsMap>;
-
 export type CreateScheduledJobRequestJobSpecCase0Flavor =
   | "cpu-basic"
   | "cpu-upgrade"
@@ -562,23 +519,14 @@ export type CreateScheduledJobRequestJobSpecCase0Flavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const CreateScheduledJobRequestJobSpecCase0Flavor = S.String;
-
 export type CreateScheduledJobRequestJobSpecCase0Arch = "amd64" | "arm64";
-export const CreateScheduledJobRequestJobSpecCase0Arch = S.String;
-
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type CreateScheduledJobRequestJobSpecCase0LabelsMap = { [key: string]: string | undefined };
-export const CreateScheduledJobRequestJobSpecCase0LabelsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobRequestJobSpecCase0LabelsMap>;
-
 export type CreateScheduledJobRequestJobSpecCase0VolumesItemType =
   | "bucket"
   | "model"
   | "dataset"
   | "space";
-export const CreateScheduledJobRequestJobSpecCase0VolumesItemType = S.String;
-
 export interface CreateScheduledJobRequestJobSpecCase0VolumesItem {
   type: CreateScheduledJobRequestJobSpecCase0VolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -592,33 +540,16 @@ export interface CreateScheduledJobRequestJobSpecCase0VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const CreateScheduledJobRequestJobSpecCase0VolumesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateScheduledJobRequestJobSpecCase0VolumesItemType,
-    source: S.String,
-    mountPath: S.String,
-    revision: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateScheduledJobRequestJobSpecCase0VolumesItem",
-}) as any as S.Schema<CreateScheduledJobRequestJobSpecCase0VolumesItem>;
-
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type CreateScheduledJobRequestJobSpecCase0VolumesList =
   Array<CreateScheduledJobRequestJobSpecCase0VolumesItem>;
-export const CreateScheduledJobRequestJobSpecCase0VolumesList = /*@__PURE__*/ S.Array(
-  CreateScheduledJobRequestJobSpecCase0VolumesItem,
-) as any as S.Schema<CreateScheduledJobRequestJobSpecCase0VolumesList>;
-
 export type CreateScheduledJobRequestJobSpecCase0ExposePortsList = Array<number>;
-export const CreateScheduledJobRequestJobSpecCase0ExposePortsList =
+const CreateScheduledJobRequestJobSpecCase0ExposePortsList =
   CancelJobResponseExposePortsList as any as S.Schema<CreateScheduledJobRequestJobSpecCase0ExposePortsList>;
 
 /** Subset of `ports` reachable without any authentication. */
 export type CreateScheduledJobRequestJobSpecCase0ExposePortsPublicList = Array<number>;
-export const CreateScheduledJobRequestJobSpecCase0ExposePortsPublicList =
+const CreateScheduledJobRequestJobSpecCase0ExposePortsPublicList =
   CancelJobResponseExposePortsList as any as S.Schema<CreateScheduledJobRequestJobSpecCase0ExposePortsPublicList>;
 
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
@@ -627,7 +558,7 @@ export interface CreateScheduledJobRequestJobSpecCase0Expose {
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: CreateScheduledJobRequestJobSpecCase0ExposePortsPublicList;
 }
-export const CreateScheduledJobRequestJobSpecCase0Expose = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobRequestJobSpecCase0Expose = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: CreateScheduledJobRequestJobSpecCase0ExposePortsList,
     portsPublic: S.optional(CreateScheduledJobRequestJobSpecCase0ExposePortsPublicList),
@@ -640,19 +571,8 @@ export const CreateScheduledJobRequestJobSpecCase0Expose = /*@__PURE__*/ S.suspe
 export interface CreateScheduledJobRequestJobSpecCase0Ssh {
   enabled?: boolean;
 }
-export const CreateScheduledJobRequestJobSpecCase0Ssh = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateScheduledJobRequestJobSpecCase0Ssh",
-}) as any as S.Schema<CreateScheduledJobRequestJobSpecCase0Ssh>;
-
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type CreateScheduledJobRequestJobSpecCase0NetworkAliasesList = Array<string>;
-export const CreateScheduledJobRequestJobSpecCase0NetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobRequestJobSpecCase0NetworkAliasesList>;
-
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface CreateScheduledJobRequestJobSpecCase0Network {
   /** Group name, scoped to the job's owner and resource group. */
@@ -660,15 +580,6 @@ export interface CreateScheduledJobRequestJobSpecCase0Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: CreateScheduledJobRequestJobSpecCase0NetworkAliasesList;
 }
-export const CreateScheduledJobRequestJobSpecCase0Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.String,
-    aliases: S.optional(CreateScheduledJobRequestJobSpecCase0NetworkAliasesList),
-  }),
-).annotate({
-  identifier: "CreateScheduledJobRequestJobSpecCase0Network",
-}) as any as S.Schema<CreateScheduledJobRequestJobSpecCase0Network>;
-
 export interface CreateScheduledJobRequestJobSpecCase0 {
   spaceId: unknown;
   dockerImage?: string;
@@ -693,47 +604,12 @@ export interface CreateScheduledJobRequestJobSpecCase0 {
   network?: CreateScheduledJobRequestJobSpecCase0Network;
   resourceGroupId?: string;
 }
-export const CreateScheduledJobRequestJobSpecCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.Unknown,
-    dockerImage: S.optional(S.String),
-    arguments: S.optional(CreateScheduledJobRequestJobSpecCase0ArgumentsList),
-    command: S.optional(CreateScheduledJobRequestJobSpecCase0CommandList),
-    environment: S.optional(CreateScheduledJobRequestJobSpecCase0EnvironmentMap),
-    secrets: S.optional(CreateScheduledJobRequestJobSpecCase0SecretsMap),
-    flavor: CreateScheduledJobRequestJobSpecCase0Flavor,
-    arch: S.optional(CreateScheduledJobRequestJobSpecCase0Arch),
-    timeoutSeconds: S.optional(S.NullOr(S.Number)),
-    attempts: S.optional(S.Number),
-    labels: S.optional(CreateScheduledJobRequestJobSpecCase0LabelsMap),
-    volumes: S.optional(CreateScheduledJobRequestJobSpecCase0VolumesList),
-    expose: S.optional(CreateScheduledJobRequestJobSpecCase0Expose),
-    ssh: S.optional(CreateScheduledJobRequestJobSpecCase0Ssh),
-    network: S.optional(CreateScheduledJobRequestJobSpecCase0Network),
-    resourceGroupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateScheduledJobRequestJobSpecCase0",
-}) as any as S.Schema<CreateScheduledJobRequestJobSpecCase0>;
-
 export type CreateScheduledJobRequestJobSpecCase1ArgumentsList = Array<string>;
-export const CreateScheduledJobRequestJobSpecCase1ArgumentsList =
-  CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1ArgumentsList>;
-
 export type CreateScheduledJobRequestJobSpecCase1CommandList = Array<string>;
-export const CreateScheduledJobRequestJobSpecCase1CommandList =
-  CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1CommandList>;
-
 export type CreateScheduledJobRequestJobSpecCase1EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const CreateScheduledJobRequestJobSpecCase1EnvironmentMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobRequestJobSpecCase1EnvironmentMap>;
-
 export type CreateScheduledJobRequestJobSpecCase1SecretsMap = { [key: string]: string | undefined };
-export const CreateScheduledJobRequestJobSpecCase1SecretsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobRequestJobSpecCase1SecretsMap>;
-
 export type CreateScheduledJobRequestJobSpecCase1Flavor =
   | "cpu-basic"
   | "cpu-upgrade"
@@ -764,23 +640,14 @@ export type CreateScheduledJobRequestJobSpecCase1Flavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const CreateScheduledJobRequestJobSpecCase1Flavor = S.String;
-
 export type CreateScheduledJobRequestJobSpecCase1Arch = "amd64" | "arm64";
-export const CreateScheduledJobRequestJobSpecCase1Arch = S.String;
-
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type CreateScheduledJobRequestJobSpecCase1LabelsMap = { [key: string]: string | undefined };
-export const CreateScheduledJobRequestJobSpecCase1LabelsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobRequestJobSpecCase1LabelsMap>;
-
 export type CreateScheduledJobRequestJobSpecCase1VolumesItemType =
   | "bucket"
   | "model"
   | "dataset"
   | "space";
-export const CreateScheduledJobRequestJobSpecCase1VolumesItemType = S.String;
-
 export interface CreateScheduledJobRequestJobSpecCase1VolumesItem {
   type: CreateScheduledJobRequestJobSpecCase1VolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -794,42 +661,22 @@ export interface CreateScheduledJobRequestJobSpecCase1VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const CreateScheduledJobRequestJobSpecCase1VolumesItem =
-  CreateScheduledJobRequestJobSpecCase0VolumesItem as any as S.Schema<CreateScheduledJobRequestJobSpecCase1VolumesItem>;
-
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type CreateScheduledJobRequestJobSpecCase1VolumesList =
   Array<CreateScheduledJobRequestJobSpecCase1VolumesItem>;
-export const CreateScheduledJobRequestJobSpecCase1VolumesList =
-  CreateScheduledJobRequestJobSpecCase0VolumesList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1VolumesList>;
-
 export type CreateScheduledJobRequestJobSpecCase1ExposePortsList = Array<number>;
-export const CreateScheduledJobRequestJobSpecCase1ExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1ExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type CreateScheduledJobRequestJobSpecCase1ExposePortsPublicList = Array<number>;
-export const CreateScheduledJobRequestJobSpecCase1ExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1ExposePortsPublicList>;
-
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface CreateScheduledJobRequestJobSpecCase1Expose {
   ports: CreateScheduledJobRequestJobSpecCase1ExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: CreateScheduledJobRequestJobSpecCase1ExposePortsPublicList;
 }
-export const CreateScheduledJobRequestJobSpecCase1Expose =
-  CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<CreateScheduledJobRequestJobSpecCase1Expose>;
-
 /** When `enabled`, the job's container is reachable over SSH at `ssh <job_id>@ssh.hf.jobs`. Only the job's owner is allowed in, authenticated by an SSH public key registered on the Hub. */
 export type CreateScheduledJobRequestJobSpecCase1Ssh = CreateScheduledJobRequestJobSpecCase0Ssh;
-export const CreateScheduledJobRequestJobSpecCase1Ssh = CreateScheduledJobRequestJobSpecCase0Ssh;
-
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type CreateScheduledJobRequestJobSpecCase1NetworkAliasesList = Array<string>;
-export const CreateScheduledJobRequestJobSpecCase1NetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobRequestJobSpecCase1NetworkAliasesList>;
-
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface CreateScheduledJobRequestJobSpecCase1Network {
   /** Group name, scoped to the job's owner and resource group. */
@@ -837,9 +684,6 @@ export interface CreateScheduledJobRequestJobSpecCase1Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: CreateScheduledJobRequestJobSpecCase1NetworkAliasesList;
 }
-export const CreateScheduledJobRequestJobSpecCase1Network =
-  CreateScheduledJobRequestJobSpecCase0Network as any as S.Schema<CreateScheduledJobRequestJobSpecCase1Network>;
-
 export interface CreateScheduledJobRequestJobSpecCase1 {
   spaceId?: string;
   dockerImage: unknown;
@@ -864,33 +708,10 @@ export interface CreateScheduledJobRequestJobSpecCase1 {
   network?: CreateScheduledJobRequestJobSpecCase1Network;
   resourceGroupId?: string;
 }
-export const CreateScheduledJobRequestJobSpecCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.optional(S.String),
-    dockerImage: S.Unknown,
-    arguments: S.optional(CreateScheduledJobRequestJobSpecCase1ArgumentsList),
-    command: S.optional(CreateScheduledJobRequestJobSpecCase1CommandList),
-    environment: S.optional(CreateScheduledJobRequestJobSpecCase1EnvironmentMap),
-    secrets: S.optional(CreateScheduledJobRequestJobSpecCase1SecretsMap),
-    flavor: CreateScheduledJobRequestJobSpecCase1Flavor,
-    arch: S.optional(CreateScheduledJobRequestJobSpecCase1Arch),
-    timeoutSeconds: S.optional(S.NullOr(S.Number)),
-    attempts: S.optional(S.Number),
-    labels: S.optional(CreateScheduledJobRequestJobSpecCase1LabelsMap),
-    volumes: S.optional(CreateScheduledJobRequestJobSpecCase1VolumesList),
-    expose: S.optional(CreateScheduledJobRequestJobSpecCase1Expose),
-    ssh: S.optional(CreateScheduledJobRequestJobSpecCase0Ssh),
-    network: S.optional(CreateScheduledJobRequestJobSpecCase1Network),
-    resourceGroupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateScheduledJobRequestJobSpecCase1",
-}) as any as S.Schema<CreateScheduledJobRequestJobSpecCase1>;
-
 export type CreateScheduledJobRequestJobSpec =
   | CreateScheduledJobRequestJobSpecCase0
   | CreateScheduledJobRequestJobSpecCase1;
-export const CreateScheduledJobRequestJobSpec =
+const CreateScheduledJobRequestJobSpec =
   S.Unknown as any as S.Schema<CreateScheduledJobRequestJobSpec>;
 
 export interface CreateScheduledJobRequest {
@@ -903,7 +724,7 @@ export interface CreateScheduledJobRequest {
   /** Whether multiple instances of this job can run concurrently */
   concurrency?: boolean;
 }
-export const CreateScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobSpec: CreateScheduledJobRequestJobSpec,
@@ -919,7 +740,7 @@ export interface CreateScheduledJobResponseStatusLastJob {
   id: string;
   at: string;
 }
-export const CreateScheduledJobResponseStatusLastJob = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponseStatusLastJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     at: S.String,
@@ -932,7 +753,7 @@ export interface CreateScheduledJobResponseStatus {
   lastJob: CreateScheduledJobResponseStatusLastJob | null;
   nextJobRunAt: string;
 }
-export const CreateScheduledJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastJob: S.NullOr(CreateScheduledJobResponseStatusLastJob),
     nextJobRunAt: S.String,
@@ -942,7 +763,7 @@ export const CreateScheduledJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScheduledJobResponseStatus>;
 
 export type CreateScheduledJobResponseOwnerType = "user" | "org";
-export const CreateScheduledJobResponseOwnerType = S.String;
+const CreateScheduledJobResponseOwnerType = S.String;
 
 export interface CreateScheduledJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -951,7 +772,7 @@ export interface CreateScheduledJobResponseOwner {
   avatarUrl: string;
   type: CreateScheduledJobResponseOwnerType;
 }
-export const CreateScheduledJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -963,8 +784,6 @@ export const CreateScheduledJobResponseOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScheduledJobResponseOwner>;
 
 export type CreateScheduledJobResponseInitiatorType = "user" | "org";
-export const CreateScheduledJobResponseInitiatorType = S.String;
-
 export interface CreateScheduledJobResponseInitiator {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -972,23 +791,23 @@ export interface CreateScheduledJobResponseInitiator {
   avatarUrl: string;
   type: CreateScheduledJobResponseInitiatorType;
 }
-export const CreateScheduledJobResponseInitiator =
+const CreateScheduledJobResponseInitiator =
   CreateScheduledJobResponseOwner as any as S.Schema<CreateScheduledJobResponseInitiator>;
 
 export type CreateScheduledJobResponseJobSpecEnvironmentMap = { [key: string]: string | undefined };
-export const CreateScheduledJobResponseJobSpecEnvironmentMap =
+const CreateScheduledJobResponseJobSpecEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobResponseJobSpecEnvironmentMap>;
 
 export type CreateScheduledJobResponseJobSpecCommandList = Array<string>;
-export const CreateScheduledJobResponseJobSpecCommandList =
+const CreateScheduledJobResponseJobSpecCommandList =
   CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobResponseJobSpecCommandList>;
 
 export type CreateScheduledJobResponseJobSpecArgumentsList = Array<string>;
-export const CreateScheduledJobResponseJobSpecArgumentsList =
+const CreateScheduledJobResponseJobSpecArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobResponseJobSpecArgumentsList>;
 
 export type CreateScheduledJobResponseJobSpecArch = "amd64" | "arm64";
-export const CreateScheduledJobResponseJobSpecArch = S.String;
+const CreateScheduledJobResponseJobSpecArch = S.String;
 
 export type CreateScheduledJobResponseJobSpecFlavor =
   | "cpu-basic"
@@ -1020,39 +839,29 @@ export type CreateScheduledJobResponseJobSpecFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const CreateScheduledJobResponseJobSpecFlavor = S.String;
+const CreateScheduledJobResponseJobSpecFlavor = S.String;
 
 export type CreateScheduledJobResponseJobSpecDurations = CancelJobResponseDurations;
-export const CreateScheduledJobResponseJobSpecDurations = CancelJobResponseDurations;
-
 export type CreateScheduledJobResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-export const CreateScheduledJobResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-
 export type CreateScheduledJobResponseJobSpecVolumesList = Array<CancelJobResponseVolumesItem>;
-export const CreateScheduledJobResponseJobSpecVolumesList =
+const CreateScheduledJobResponseJobSpecVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<CreateScheduledJobResponseJobSpecVolumesList>;
 
 export type CreateScheduledJobResponseJobSpecExposePortsList = Array<number>;
-export const CreateScheduledJobResponseJobSpecExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<CreateScheduledJobResponseJobSpecExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type CreateScheduledJobResponseJobSpecExposePortsPublicList = Array<number>;
-export const CreateScheduledJobResponseJobSpecExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<CreateScheduledJobResponseJobSpecExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface CreateScheduledJobResponseJobSpecExpose {
   ports: CreateScheduledJobResponseJobSpecExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: CreateScheduledJobResponseJobSpecExposePortsPublicList;
 }
-export const CreateScheduledJobResponseJobSpecExpose =
+const CreateScheduledJobResponseJobSpecExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<CreateScheduledJobResponseJobSpecExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type CreateScheduledJobResponseJobSpecNetworkAliasesList = Array<string>;
-export const CreateScheduledJobResponseJobSpecNetworkAliasesList =
+const CreateScheduledJobResponseJobSpecNetworkAliasesList =
   CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobResponseJobSpecNetworkAliasesList>;
 
 /** Network group the job belongs to. */
@@ -1062,7 +871,7 @@ export interface CreateScheduledJobResponseJobSpecNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: CreateScheduledJobResponseJobSpecNetworkAliasesList;
 }
-export const CreateScheduledJobResponseJobSpecNetwork = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponseJobSpecNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String,
     aliases: CreateScheduledJobResponseJobSpecNetworkAliasesList,
@@ -1072,18 +881,16 @@ export const CreateScheduledJobResponseJobSpecNetwork = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateScheduledJobResponseJobSpecNetwork>;
 
 export type CreateScheduledJobResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-export const CreateScheduledJobResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-
 export type CreateScheduledJobResponseJobSpecSecretsList = Array<string>;
-export const CreateScheduledJobResponseJobSpecSecretsList =
+const CreateScheduledJobResponseJobSpecSecretsList =
   CancelJobResponseCommandList as any as S.Schema<CreateScheduledJobResponseJobSpecSecretsList>;
 
 export type CreateScheduledJobResponseJobSpecLabelsMap = { [key: string]: string | undefined };
-export const CreateScheduledJobResponseJobSpecLabelsMap =
+const CreateScheduledJobResponseJobSpecLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<CreateScheduledJobResponseJobSpecLabelsMap>;
 
 export type CreateScheduledJobResponseJobSpecHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const CreateScheduledJobResponseJobSpecHfTokenTokenRole = S.String;
+const CreateScheduledJobResponseJobSpecHfTokenTokenRole = S.String;
 
 export interface CreateScheduledJobResponseJobSpecHfToken {
   ownerName: string;
@@ -1093,7 +900,7 @@ export interface CreateScheduledJobResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const CreateScheduledJobResponseJobSpecHfToken = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponseJobSpecHfToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerName: S.String,
     orgName: S.optional(S.String),
@@ -1129,7 +936,7 @@ export interface CreateScheduledJobResponseJobSpec {
   labels?: CreateScheduledJobResponseJobSpecLabelsMap;
   hfToken?: CreateScheduledJobResponseJobSpecHfToken;
 }
-export const CreateScheduledJobResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.optional(S.String),
     dockerImage: S.optional(S.String),
@@ -1169,7 +976,7 @@ export interface CreateScheduledJobResponse {
   initiator?: CreateScheduledJobResponseInitiator;
   jobSpec: CreateScheduledJobResponseJobSpec;
 }
-export const CreateScheduledJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1191,7 +998,7 @@ export interface DeleteScheduledJobRequest {
   namespace: string;
   jobId: string;
 }
-export const DeleteScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -1201,7 +1008,7 @@ export const DeleteScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScheduledJobRequest>;
 
 export interface DeleteScheduledJobResponse {}
-export const DeleteScheduledJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteScheduledJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteScheduledJobResponse",
 }) as any as S.Schema<DeleteScheduledJobResponse>;
 
@@ -1209,7 +1016,7 @@ export interface DuplicateJobRequest {
   namespace: string;
   jobId: string;
 }
-export const DuplicateJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -1217,19 +1024,19 @@ export const DuplicateJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DuplicateJobRequest" }) as any as S.Schema<DuplicateJobRequest>;
 
 export type DuplicateJobResponseEnvironmentMap = { [key: string]: string | undefined };
-export const DuplicateJobResponseEnvironmentMap =
+const DuplicateJobResponseEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<DuplicateJobResponseEnvironmentMap>;
 
 export type DuplicateJobResponseCommandList = Array<string>;
-export const DuplicateJobResponseCommandList =
+const DuplicateJobResponseCommandList =
   CancelJobResponseCommandList as any as S.Schema<DuplicateJobResponseCommandList>;
 
 export type DuplicateJobResponseArgumentsList = Array<string>;
-export const DuplicateJobResponseArgumentsList =
+const DuplicateJobResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<DuplicateJobResponseArgumentsList>;
 
 export type DuplicateJobResponseArch = "amd64" | "arm64";
-export const DuplicateJobResponseArch = S.String;
+const DuplicateJobResponseArch = S.String;
 
 export type DuplicateJobResponseFlavor =
   | "cpu-basic"
@@ -1261,44 +1068,29 @@ export type DuplicateJobResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const DuplicateJobResponseFlavor = S.String;
+const DuplicateJobResponseFlavor = S.String;
 
 export type DuplicateJobResponseCreatedBy = CancelJobResponseCreatedBy;
-export const DuplicateJobResponseCreatedBy = CancelJobResponseCreatedBy;
-
 export type DuplicateJobResponseDurations = CancelJobResponseDurations;
-export const DuplicateJobResponseDurations = CancelJobResponseDurations;
-
 export type DuplicateJobResponseVolumesItem = CancelJobResponseVolumesItem;
-export const DuplicateJobResponseVolumesItem = CancelJobResponseVolumesItem;
-
 export type DuplicateJobResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const DuplicateJobResponseVolumesList =
+const DuplicateJobResponseVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<DuplicateJobResponseVolumesList>;
 
 export type DuplicateJobResponseExposePortsList = Array<number>;
-export const DuplicateJobResponseExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<DuplicateJobResponseExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type DuplicateJobResponseExposePortsPublicList = Array<number>;
-export const DuplicateJobResponseExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<DuplicateJobResponseExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface DuplicateJobResponseExpose {
   ports: DuplicateJobResponseExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: DuplicateJobResponseExposePortsPublicList;
 }
-export const DuplicateJobResponseExpose =
+const DuplicateJobResponseExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<DuplicateJobResponseExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type DuplicateJobResponseNetworkAliasesList = Array<string>;
-export const DuplicateJobResponseNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<DuplicateJobResponseNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface DuplicateJobResponseNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -1306,12 +1098,10 @@ export interface DuplicateJobResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: DuplicateJobResponseNetworkAliasesList;
 }
-export const DuplicateJobResponseNetwork =
+const DuplicateJobResponseNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<DuplicateJobResponseNetwork>;
 
 export type DuplicateJobResponseOwnerType = "user" | "org";
-export const DuplicateJobResponseOwnerType = S.String;
-
 export interface DuplicateJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1319,15 +1109,11 @@ export interface DuplicateJobResponseOwner {
   type: DuplicateJobResponseOwnerType;
   avatarUrl: string;
 }
-export const DuplicateJobResponseOwner =
+const DuplicateJobResponseOwner =
   CancelJobResponseInitiatorCase0 as any as S.Schema<DuplicateJobResponseOwner>;
 
 export type DuplicateJobResponseResourceGroup = CancelJobResponseResourceGroup;
-export const DuplicateJobResponseResourceGroup = CancelJobResponseResourceGroup;
-
 export type DuplicateJobResponseInitiatorCase0Type = "user" | "org";
-export const DuplicateJobResponseInitiatorCase0Type = S.String;
-
 export interface DuplicateJobResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1335,25 +1121,15 @@ export interface DuplicateJobResponseInitiatorCase0 {
   type: DuplicateJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const DuplicateJobResponseInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<DuplicateJobResponseInitiatorCase0>;
-
 export type DuplicateJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const DuplicateJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type DuplicateJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const DuplicateJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type DuplicateJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const DuplicateJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type DuplicateJobResponseInitiator =
   | DuplicateJobResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const DuplicateJobResponseInitiator =
-  S.Unknown as any as S.Schema<DuplicateJobResponseInitiator>;
+const DuplicateJobResponseInitiator = S.Unknown as any as S.Schema<DuplicateJobResponseInitiator>;
 
 export type DuplicateJobResponseStatusStage =
   | "COMPLETED"
@@ -1362,24 +1138,22 @@ export type DuplicateJobResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const DuplicateJobResponseStatusStage = S.String;
+const DuplicateJobResponseStatusStage = S.String;
 
 export type DuplicateJobResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const DuplicateJobResponseStatusCancelReasonCase0 = S.String;
-
 export type DuplicateJobResponseStatusCancelReason =
   | DuplicateJobResponseStatusCancelReasonCase0
   | string;
-export const DuplicateJobResponseStatusCancelReason =
+const DuplicateJobResponseStatusCancelReason =
   S.Unknown as any as S.Schema<DuplicateJobResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type DuplicateJobResponseStatusExposeUrlsList = Array<string>;
-export const DuplicateJobResponseStatusExposeUrlsList =
+const DuplicateJobResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<DuplicateJobResponseStatusExposeUrlsList>;
 
 export interface DuplicateJobResponseStatus {
@@ -1392,7 +1166,7 @@ export interface DuplicateJobResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const DuplicateJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const DuplicateJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: DuplicateJobResponseStatusStage,
     message: S.NullOr(S.String),
@@ -1406,16 +1180,14 @@ export const DuplicateJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateJobResponseStatus>;
 
 export type DuplicateJobResponseSecretsList = Array<string>;
-export const DuplicateJobResponseSecretsList =
+const DuplicateJobResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<DuplicateJobResponseSecretsList>;
 
 export type DuplicateJobResponseLabelsMap = { [key: string]: string | undefined };
-export const DuplicateJobResponseLabelsMap =
+const DuplicateJobResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<DuplicateJobResponseLabelsMap>;
 
 export type DuplicateJobResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const DuplicateJobResponseHfTokenTokenRole = S.String;
-
 export interface DuplicateJobResponseHfToken {
   ownerName: string;
   orgName?: string;
@@ -1424,7 +1196,7 @@ export interface DuplicateJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const DuplicateJobResponseHfToken =
+const DuplicateJobResponseHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<DuplicateJobResponseHfToken>;
 
 export interface DuplicateJobResponse {
@@ -1458,7 +1230,7 @@ export interface DuplicateJobResponse {
   labels?: DuplicateJobResponseLabelsMap;
   hfToken?: DuplicateJobResponseHfToken;
 }
-export const DuplicateJobResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1494,7 +1266,7 @@ export interface GetJobRequest {
   namespace: string;
   jobId: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -1502,19 +1274,19 @@ export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobRequest" }) as any as S.Schema<GetJobRequest>;
 
 export type GetJobResponseEnvironmentMap = { [key: string]: string | undefined };
-export const GetJobResponseEnvironmentMap =
+const GetJobResponseEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<GetJobResponseEnvironmentMap>;
 
 export type GetJobResponseCommandList = Array<string>;
-export const GetJobResponseCommandList =
+const GetJobResponseCommandList =
   CancelJobResponseCommandList as any as S.Schema<GetJobResponseCommandList>;
 
 export type GetJobResponseArgumentsList = Array<string>;
-export const GetJobResponseArgumentsList =
+const GetJobResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<GetJobResponseArgumentsList>;
 
 export type GetJobResponseArch = "amd64" | "arm64";
-export const GetJobResponseArch = S.String;
+const GetJobResponseArch = S.String;
 
 export type GetJobResponseFlavor =
   | "cpu-basic"
@@ -1546,44 +1318,28 @@ export type GetJobResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const GetJobResponseFlavor = S.String;
+const GetJobResponseFlavor = S.String;
 
 export type GetJobResponseCreatedBy = CancelJobResponseCreatedBy;
-export const GetJobResponseCreatedBy = CancelJobResponseCreatedBy;
-
 export type GetJobResponseDurations = CancelJobResponseDurations;
-export const GetJobResponseDurations = CancelJobResponseDurations;
-
 export type GetJobResponseVolumesItem = CancelJobResponseVolumesItem;
-export const GetJobResponseVolumesItem = CancelJobResponseVolumesItem;
-
 export type GetJobResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const GetJobResponseVolumesList =
+const GetJobResponseVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<GetJobResponseVolumesList>;
 
 export type GetJobResponseExposePortsList = Array<number>;
-export const GetJobResponseExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<GetJobResponseExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type GetJobResponseExposePortsPublicList = Array<number>;
-export const GetJobResponseExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<GetJobResponseExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface GetJobResponseExpose {
   ports: GetJobResponseExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: GetJobResponseExposePortsPublicList;
 }
-export const GetJobResponseExpose =
-  CancelJobResponseExpose as any as S.Schema<GetJobResponseExpose>;
+const GetJobResponseExpose = CancelJobResponseExpose as any as S.Schema<GetJobResponseExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type GetJobResponseNetworkAliasesList = Array<string>;
-export const GetJobResponseNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<GetJobResponseNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface GetJobResponseNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -1591,12 +1347,9 @@ export interface GetJobResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: GetJobResponseNetworkAliasesList;
 }
-export const GetJobResponseNetwork =
-  CancelJobResponseNetwork as any as S.Schema<GetJobResponseNetwork>;
+const GetJobResponseNetwork = CancelJobResponseNetwork as any as S.Schema<GetJobResponseNetwork>;
 
 export type GetJobResponseOwnerType = "user" | "org";
-export const GetJobResponseOwnerType = S.String;
-
 export interface GetJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1604,14 +1357,10 @@ export interface GetJobResponseOwner {
   type: GetJobResponseOwnerType;
   avatarUrl: string;
 }
-export const GetJobResponseOwner = CancelJobResponseOwner as any as S.Schema<GetJobResponseOwner>;
+const GetJobResponseOwner = CancelJobResponseOwner as any as S.Schema<GetJobResponseOwner>;
 
 export type GetJobResponseResourceGroup = CancelJobResponseResourceGroup;
-export const GetJobResponseResourceGroup = CancelJobResponseResourceGroup;
-
 export type GetJobResponseInitiatorCase0Type = "user" | "org";
-export const GetJobResponseInitiatorCase0Type = S.String;
-
 export interface GetJobResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1619,24 +1368,15 @@ export interface GetJobResponseInitiatorCase0 {
   type: GetJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const GetJobResponseInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<GetJobResponseInitiatorCase0>;
-
 export type GetJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const GetJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type GetJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const GetJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type GetJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const GetJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type GetJobResponseInitiator =
   | GetJobResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const GetJobResponseInitiator = S.Unknown as any as S.Schema<GetJobResponseInitiator>;
+const GetJobResponseInitiator = S.Unknown as any as S.Schema<GetJobResponseInitiator>;
 
 export type GetJobResponseStatusStage =
   | "COMPLETED"
@@ -1645,22 +1385,20 @@ export type GetJobResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const GetJobResponseStatusStage = S.String;
+const GetJobResponseStatusStage = S.String;
 
 export type GetJobResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const GetJobResponseStatusCancelReasonCase0 = S.String;
-
 export type GetJobResponseStatusCancelReason = GetJobResponseStatusCancelReasonCase0 | string;
-export const GetJobResponseStatusCancelReason =
+const GetJobResponseStatusCancelReason =
   S.Unknown as any as S.Schema<GetJobResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type GetJobResponseStatusExposeUrlsList = Array<string>;
-export const GetJobResponseStatusExposeUrlsList =
+const GetJobResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<GetJobResponseStatusExposeUrlsList>;
 
 export interface GetJobResponseStatus {
@@ -1673,7 +1411,7 @@ export interface GetJobResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const GetJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const GetJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: GetJobResponseStatusStage,
     message: S.NullOr(S.String),
@@ -1685,16 +1423,14 @@ export const GetJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobResponseStatus" }) as any as S.Schema<GetJobResponseStatus>;
 
 export type GetJobResponseSecretsList = Array<string>;
-export const GetJobResponseSecretsList =
+const GetJobResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<GetJobResponseSecretsList>;
 
 export type GetJobResponseLabelsMap = { [key: string]: string | undefined };
-export const GetJobResponseLabelsMap =
+const GetJobResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<GetJobResponseLabelsMap>;
 
 export type GetJobResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const GetJobResponseHfTokenTokenRole = S.String;
-
 export interface GetJobResponseHfToken {
   ownerName: string;
   orgName?: string;
@@ -1703,8 +1439,7 @@ export interface GetJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const GetJobResponseHfToken =
-  CancelJobResponseHfToken as any as S.Schema<GetJobResponseHfToken>;
+const GetJobResponseHfToken = CancelJobResponseHfToken as any as S.Schema<GetJobResponseHfToken>;
 
 export interface GetJobResponse {
   id: string;
@@ -1737,7 +1472,7 @@ export interface GetJobResponse {
   labels?: GetJobResponseLabelsMap;
   hfToken?: GetJobResponseHfToken;
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1770,15 +1505,15 @@ export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
 
 export interface GetJobHardwareRequest {}
-export const GetJobHardwareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobHardwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/jobs/hardware", code: 200 })),
 ).annotate({ identifier: "GetJobHardwareRequest" }) as any as S.Schema<GetJobHardwareRequest>;
 
 export type GetJobHardwareResponseBodyItemAcceleratorType = "gpu" | "neuron";
-export const GetJobHardwareResponseBodyItemAcceleratorType = S.String;
+const GetJobHardwareResponseBodyItemAcceleratorType = S.String;
 
 export type GetJobHardwareResponseBodyItemAcceleratorManufacturer = "Nvidia" | "AWS";
-export const GetJobHardwareResponseBodyItemAcceleratorManufacturer = S.String;
+const GetJobHardwareResponseBodyItemAcceleratorManufacturer = S.String;
 
 export interface GetJobHardwareResponseBodyItemAccelerator {
   type: GetJobHardwareResponseBodyItemAcceleratorType;
@@ -1787,7 +1522,7 @@ export interface GetJobHardwareResponseBodyItemAccelerator {
   vram: string;
   manufacturer: GetJobHardwareResponseBodyItemAcceleratorManufacturer;
 }
-export const GetJobHardwareResponseBodyItemAccelerator = /*@__PURE__*/ S.suspend(() =>
+const GetJobHardwareResponseBodyItemAccelerator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: GetJobHardwareResponseBodyItemAcceleratorType,
     model: S.String,
@@ -1810,7 +1545,7 @@ export interface GetJobHardwareResponseBodyItem {
   unitCostUSD: number;
   unitLabel: string;
 }
-export const GetJobHardwareResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetJobHardwareResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     prettyName: S.String,
@@ -1827,12 +1562,12 @@ export const GetJobHardwareResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetJobHardwareResponseBodyItem>;
 
 export type GetJobHardwareResponseBodyList = Array<GetJobHardwareResponseBodyItem>;
-export const GetJobHardwareResponseBodyList = /*@__PURE__*/ S.Array(
+const GetJobHardwareResponseBodyList = /*@__PURE__*/ S.Array(
   GetJobHardwareResponseBodyItem,
 ) as any as S.Schema<GetJobHardwareResponseBodyList>;
 
 export type GetJobHardwareResponse = GetJobHardwareResponseBodyList;
-export const GetJobHardwareResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobHardwareResponse = /*@__PURE__*/ S.suspend(() =>
   GetJobHardwareResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetJobHardwareResponse" }) as any as S.Schema<GetJobHardwareResponse>;
 
@@ -1840,7 +1575,7 @@ export interface GetScheduledJobRequest {
   namespace: string;
   jobId: string;
 }
-export const GetScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -1848,14 +1583,8 @@ export const GetScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScheduledJobRequest" }) as any as S.Schema<GetScheduledJobRequest>;
 
 export type GetScheduledJobResponseStatusLastJob = CreateScheduledJobResponseStatusLastJob;
-export const GetScheduledJobResponseStatusLastJob = CreateScheduledJobResponseStatusLastJob;
-
 export type GetScheduledJobResponseStatus = CreateScheduledJobResponseStatus;
-export const GetScheduledJobResponseStatus = CreateScheduledJobResponseStatus;
-
 export type GetScheduledJobResponseOwnerType = "user" | "org";
-export const GetScheduledJobResponseOwnerType = S.String;
-
 export interface GetScheduledJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1863,12 +1592,10 @@ export interface GetScheduledJobResponseOwner {
   avatarUrl: string;
   type: GetScheduledJobResponseOwnerType;
 }
-export const GetScheduledJobResponseOwner =
+const GetScheduledJobResponseOwner =
   CreateScheduledJobResponseOwner as any as S.Schema<GetScheduledJobResponseOwner>;
 
 export type GetScheduledJobResponseInitiatorType = "user" | "org";
-export const GetScheduledJobResponseInitiatorType = S.String;
-
 export interface GetScheduledJobResponseInitiator {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -1876,23 +1603,23 @@ export interface GetScheduledJobResponseInitiator {
   avatarUrl: string;
   type: GetScheduledJobResponseInitiatorType;
 }
-export const GetScheduledJobResponseInitiator =
+const GetScheduledJobResponseInitiator =
   CreateScheduledJobResponseOwner as any as S.Schema<GetScheduledJobResponseInitiator>;
 
 export type GetScheduledJobResponseJobSpecEnvironmentMap = { [key: string]: string | undefined };
-export const GetScheduledJobResponseJobSpecEnvironmentMap =
+const GetScheduledJobResponseJobSpecEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<GetScheduledJobResponseJobSpecEnvironmentMap>;
 
 export type GetScheduledJobResponseJobSpecCommandList = Array<string>;
-export const GetScheduledJobResponseJobSpecCommandList =
+const GetScheduledJobResponseJobSpecCommandList =
   CancelJobResponseCommandList as any as S.Schema<GetScheduledJobResponseJobSpecCommandList>;
 
 export type GetScheduledJobResponseJobSpecArgumentsList = Array<string>;
-export const GetScheduledJobResponseJobSpecArgumentsList =
+const GetScheduledJobResponseJobSpecArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<GetScheduledJobResponseJobSpecArgumentsList>;
 
 export type GetScheduledJobResponseJobSpecArch = "amd64" | "arm64";
-export const GetScheduledJobResponseJobSpecArch = S.String;
+const GetScheduledJobResponseJobSpecArch = S.String;
 
 export type GetScheduledJobResponseJobSpecFlavor =
   | "cpu-basic"
@@ -1924,41 +1651,28 @@ export type GetScheduledJobResponseJobSpecFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const GetScheduledJobResponseJobSpecFlavor = S.String;
+const GetScheduledJobResponseJobSpecFlavor = S.String;
 
 export type GetScheduledJobResponseJobSpecDurations = CancelJobResponseDurations;
-export const GetScheduledJobResponseJobSpecDurations = CancelJobResponseDurations;
-
 export type GetScheduledJobResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-export const GetScheduledJobResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-
 export type GetScheduledJobResponseJobSpecVolumesList = Array<CancelJobResponseVolumesItem>;
-export const GetScheduledJobResponseJobSpecVolumesList =
+const GetScheduledJobResponseJobSpecVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<GetScheduledJobResponseJobSpecVolumesList>;
 
 export type GetScheduledJobResponseJobSpecExposePortsList = Array<number>;
-export const GetScheduledJobResponseJobSpecExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<GetScheduledJobResponseJobSpecExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type GetScheduledJobResponseJobSpecExposePortsPublicList = Array<number>;
-export const GetScheduledJobResponseJobSpecExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<GetScheduledJobResponseJobSpecExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface GetScheduledJobResponseJobSpecExpose {
   ports: GetScheduledJobResponseJobSpecExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: GetScheduledJobResponseJobSpecExposePortsPublicList;
 }
-export const GetScheduledJobResponseJobSpecExpose =
+const GetScheduledJobResponseJobSpecExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<GetScheduledJobResponseJobSpecExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type GetScheduledJobResponseJobSpecNetworkAliasesList = Array<string>;
-export const GetScheduledJobResponseJobSpecNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<GetScheduledJobResponseJobSpecNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface GetScheduledJobResponseJobSpecNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -1966,23 +1680,19 @@ export interface GetScheduledJobResponseJobSpecNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: GetScheduledJobResponseJobSpecNetworkAliasesList;
 }
-export const GetScheduledJobResponseJobSpecNetwork =
+const GetScheduledJobResponseJobSpecNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<GetScheduledJobResponseJobSpecNetwork>;
 
 export type GetScheduledJobResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-export const GetScheduledJobResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-
 export type GetScheduledJobResponseJobSpecSecretsList = Array<string>;
-export const GetScheduledJobResponseJobSpecSecretsList =
+const GetScheduledJobResponseJobSpecSecretsList =
   CancelJobResponseCommandList as any as S.Schema<GetScheduledJobResponseJobSpecSecretsList>;
 
 export type GetScheduledJobResponseJobSpecLabelsMap = { [key: string]: string | undefined };
-export const GetScheduledJobResponseJobSpecLabelsMap =
+const GetScheduledJobResponseJobSpecLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<GetScheduledJobResponseJobSpecLabelsMap>;
 
 export type GetScheduledJobResponseJobSpecHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const GetScheduledJobResponseJobSpecHfTokenTokenRole = S.String;
-
 export interface GetScheduledJobResponseJobSpecHfToken {
   ownerName: string;
   orgName?: string;
@@ -1991,7 +1701,7 @@ export interface GetScheduledJobResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const GetScheduledJobResponseJobSpecHfToken =
+const GetScheduledJobResponseJobSpecHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<GetScheduledJobResponseJobSpecHfToken>;
 
 export interface GetScheduledJobResponseJobSpec {
@@ -2018,7 +1728,7 @@ export interface GetScheduledJobResponseJobSpec {
   labels?: GetScheduledJobResponseJobSpecLabelsMap;
   hfToken?: GetScheduledJobResponseJobSpecHfToken;
 }
-export const GetScheduledJobResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
+const GetScheduledJobResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.optional(S.String),
     dockerImage: S.optional(S.String),
@@ -2058,7 +1768,7 @@ export interface GetScheduledJobResponse {
   initiator?: GetScheduledJobResponseInitiator;
   jobSpec: GetScheduledJobResponseJobSpec;
 }
-export const GetScheduledJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScheduledJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -2075,12 +1785,9 @@ export const GetScheduledJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScheduledJobResponse" }) as any as S.Schema<GetScheduledJobResponse>;
 
 export type ListJobsRequestLabelCase1List = Array<string>;
-export const ListJobsRequestLabelCase1List =
-  CancelJobResponseCommandList as any as S.Schema<ListJobsRequestLabelCase1List>;
-
 /** Filter jobs by label. Format: 'key=value' (e.g., 'environment=production'). Repeat the parameter to filter by several labels. */
 export type ListJobsRequestLabel = string | ListJobsRequestLabelCase1List;
-export const ListJobsRequestLabel = S.Unknown as any as S.Schema<ListJobsRequestLabel>;
+const ListJobsRequestLabel = S.Unknown as any as S.Schema<ListJobsRequestLabel>;
 
 export type ListJobsRequestStageCase0 =
   | "COMPLETED"
@@ -2089,8 +1796,6 @@ export type ListJobsRequestStageCase0 =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const ListJobsRequestStageCase0 = S.String;
-
 export type ListJobsRequestStageCase1Item =
   | "COMPLETED"
   | "CANCELED"
@@ -2098,15 +1803,10 @@ export type ListJobsRequestStageCase1Item =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const ListJobsRequestStageCase1Item = S.String;
-
 export type ListJobsRequestStageCase1List = Array<ListJobsRequestStageCase1Item | (string & {})>;
-export const ListJobsRequestStageCase1List =
-  CountJobsRequestStageCase1List as any as S.Schema<ListJobsRequestStageCase1List>;
-
 /** Filter jobs by status stage. Repeat the parameter to filter by several stages. */
 export type ListJobsRequestStage = ListJobsRequestStageCase0 | ListJobsRequestStageCase1List;
-export const ListJobsRequestStage = S.Unknown as any as S.Schema<ListJobsRequestStage>;
+const ListJobsRequestStage = S.Unknown as any as S.Schema<ListJobsRequestStage>;
 
 export interface ListJobsRequest {
   namespace: string;
@@ -2114,7 +1814,7 @@ export interface ListJobsRequest {
   stage?: ListJobsRequestStage;
   cursor?: string;
 }
-export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     label: S.optional(ListJobsRequestLabel.pipe(T.Query())),
@@ -2124,19 +1824,19 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobsRequest" }) as any as S.Schema<ListJobsRequest>;
 
 export type ListJobsResponseBodyItemEnvironmentMap = { [key: string]: string | undefined };
-export const ListJobsResponseBodyItemEnvironmentMap =
+const ListJobsResponseBodyItemEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<ListJobsResponseBodyItemEnvironmentMap>;
 
 export type ListJobsResponseBodyItemCommandList = Array<string>;
-export const ListJobsResponseBodyItemCommandList =
+const ListJobsResponseBodyItemCommandList =
   CancelJobResponseCommandList as any as S.Schema<ListJobsResponseBodyItemCommandList>;
 
 export type ListJobsResponseBodyItemArgumentsList = Array<string>;
-export const ListJobsResponseBodyItemArgumentsList =
+const ListJobsResponseBodyItemArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<ListJobsResponseBodyItemArgumentsList>;
 
 export type ListJobsResponseBodyItemArch = "amd64" | "arm64";
-export const ListJobsResponseBodyItemArch = S.String;
+const ListJobsResponseBodyItemArch = S.String;
 
 export type ListJobsResponseBodyItemFlavor =
   | "cpu-basic"
@@ -2168,44 +1868,29 @@ export type ListJobsResponseBodyItemFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const ListJobsResponseBodyItemFlavor = S.String;
+const ListJobsResponseBodyItemFlavor = S.String;
 
 export type ListJobsResponseBodyItemCreatedBy = CancelJobResponseCreatedBy;
-export const ListJobsResponseBodyItemCreatedBy = CancelJobResponseCreatedBy;
-
 export type ListJobsResponseBodyItemDurations = CancelJobResponseDurations;
-export const ListJobsResponseBodyItemDurations = CancelJobResponseDurations;
-
 export type ListJobsResponseBodyItemVolumesItem = CancelJobResponseVolumesItem;
-export const ListJobsResponseBodyItemVolumesItem = CancelJobResponseVolumesItem;
-
 export type ListJobsResponseBodyItemVolumesList = Array<CancelJobResponseVolumesItem>;
-export const ListJobsResponseBodyItemVolumesList =
+const ListJobsResponseBodyItemVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<ListJobsResponseBodyItemVolumesList>;
 
 export type ListJobsResponseBodyItemExposePortsList = Array<number>;
-export const ListJobsResponseBodyItemExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<ListJobsResponseBodyItemExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type ListJobsResponseBodyItemExposePortsPublicList = Array<number>;
-export const ListJobsResponseBodyItemExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<ListJobsResponseBodyItemExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface ListJobsResponseBodyItemExpose {
   ports: ListJobsResponseBodyItemExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: ListJobsResponseBodyItemExposePortsPublicList;
 }
-export const ListJobsResponseBodyItemExpose =
+const ListJobsResponseBodyItemExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<ListJobsResponseBodyItemExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type ListJobsResponseBodyItemNetworkAliasesList = Array<string>;
-export const ListJobsResponseBodyItemNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<ListJobsResponseBodyItemNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface ListJobsResponseBodyItemNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -2213,12 +1898,10 @@ export interface ListJobsResponseBodyItemNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: ListJobsResponseBodyItemNetworkAliasesList;
 }
-export const ListJobsResponseBodyItemNetwork =
+const ListJobsResponseBodyItemNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<ListJobsResponseBodyItemNetwork>;
 
 export type ListJobsResponseBodyItemOwnerType = "user" | "org";
-export const ListJobsResponseBodyItemOwnerType = S.String;
-
 export interface ListJobsResponseBodyItemOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -2226,15 +1909,11 @@ export interface ListJobsResponseBodyItemOwner {
   type: ListJobsResponseBodyItemOwnerType;
   avatarUrl: string;
 }
-export const ListJobsResponseBodyItemOwner =
+const ListJobsResponseBodyItemOwner =
   CancelJobResponseInitiatorCase0 as any as S.Schema<ListJobsResponseBodyItemOwner>;
 
 export type ListJobsResponseBodyItemResourceGroup = CancelJobResponseResourceGroup;
-export const ListJobsResponseBodyItemResourceGroup = CancelJobResponseResourceGroup;
-
 export type ListJobsResponseBodyItemInitiatorCase0Type = "user" | "org";
-export const ListJobsResponseBodyItemInitiatorCase0Type = S.String;
-
 export interface ListJobsResponseBodyItemInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -2242,24 +1921,15 @@ export interface ListJobsResponseBodyItemInitiatorCase0 {
   type: ListJobsResponseBodyItemInitiatorCase0Type;
   avatarUrl: string;
 }
-export const ListJobsResponseBodyItemInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<ListJobsResponseBodyItemInitiatorCase0>;
-
 export type ListJobsResponseBodyItemInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const ListJobsResponseBodyItemInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type ListJobsResponseBodyItemInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const ListJobsResponseBodyItemInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type ListJobsResponseBodyItemInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const ListJobsResponseBodyItemInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type ListJobsResponseBodyItemInitiator =
   | ListJobsResponseBodyItemInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const ListJobsResponseBodyItemInitiator =
+const ListJobsResponseBodyItemInitiator =
   S.Unknown as any as S.Schema<ListJobsResponseBodyItemInitiator>;
 
 export type ListJobsResponseBodyItemStatusStage =
@@ -2269,24 +1939,22 @@ export type ListJobsResponseBodyItemStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const ListJobsResponseBodyItemStatusStage = S.String;
+const ListJobsResponseBodyItemStatusStage = S.String;
 
 export type ListJobsResponseBodyItemStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const ListJobsResponseBodyItemStatusCancelReasonCase0 = S.String;
-
 export type ListJobsResponseBodyItemStatusCancelReason =
   | ListJobsResponseBodyItemStatusCancelReasonCase0
   | string;
-export const ListJobsResponseBodyItemStatusCancelReason =
+const ListJobsResponseBodyItemStatusCancelReason =
   S.Unknown as any as S.Schema<ListJobsResponseBodyItemStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type ListJobsResponseBodyItemStatusExposeUrlsList = Array<string>;
-export const ListJobsResponseBodyItemStatusExposeUrlsList =
+const ListJobsResponseBodyItemStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<ListJobsResponseBodyItemStatusExposeUrlsList>;
 
 export interface ListJobsResponseBodyItemStatus {
@@ -2299,7 +1967,7 @@ export interface ListJobsResponseBodyItemStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const ListJobsResponseBodyItemStatus = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponseBodyItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: ListJobsResponseBodyItemStatusStage,
     message: S.NullOr(S.String),
@@ -2313,16 +1981,14 @@ export const ListJobsResponseBodyItemStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListJobsResponseBodyItemStatus>;
 
 export type ListJobsResponseBodyItemSecretsList = Array<string>;
-export const ListJobsResponseBodyItemSecretsList =
+const ListJobsResponseBodyItemSecretsList =
   CancelJobResponseCommandList as any as S.Schema<ListJobsResponseBodyItemSecretsList>;
 
 export type ListJobsResponseBodyItemLabelsMap = { [key: string]: string | undefined };
-export const ListJobsResponseBodyItemLabelsMap =
+const ListJobsResponseBodyItemLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<ListJobsResponseBodyItemLabelsMap>;
 
 export type ListJobsResponseBodyItemHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const ListJobsResponseBodyItemHfTokenTokenRole = S.String;
-
 export interface ListJobsResponseBodyItemHfToken {
   ownerName: string;
   orgName?: string;
@@ -2331,7 +1997,7 @@ export interface ListJobsResponseBodyItemHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const ListJobsResponseBodyItemHfToken =
+const ListJobsResponseBodyItemHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<ListJobsResponseBodyItemHfToken>;
 
 export interface ListJobsResponseBodyItem {
@@ -2365,7 +2031,7 @@ export interface ListJobsResponseBodyItem {
   labels?: ListJobsResponseBodyItemLabelsMap;
   hfToken?: ListJobsResponseBodyItemHfToken;
 }
-export const ListJobsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -2398,12 +2064,12 @@ export const ListJobsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobsResponseBodyItem" }) as any as S.Schema<ListJobsResponseBodyItem>;
 
 export type ListJobsResponseBodyList = Array<ListJobsResponseBodyItem>;
-export const ListJobsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListJobsResponseBodyList = /*@__PURE__*/ S.Array(
   ListJobsResponseBodyItem,
 ) as any as S.Schema<ListJobsResponseBodyList>;
 
 export type ListJobsResponse = ListJobsResponseBodyList;
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   ListJobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
 
@@ -2411,7 +2077,7 @@ export interface ListScheduledJobsRequest {
   namespace: string;
   label?: string;
 }
-export const ListScheduledJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     label: S.optional(S.String.pipe(T.Query())),
@@ -2420,15 +2086,8 @@ export const ListScheduledJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListScheduledJobsResponseBodyItemStatusLastJob =
   CreateScheduledJobResponseStatusLastJob;
-export const ListScheduledJobsResponseBodyItemStatusLastJob =
-  CreateScheduledJobResponseStatusLastJob;
-
 export type ListScheduledJobsResponseBodyItemStatus = CreateScheduledJobResponseStatus;
-export const ListScheduledJobsResponseBodyItemStatus = CreateScheduledJobResponseStatus;
-
 export type ListScheduledJobsResponseBodyItemOwnerType = "user" | "org";
-export const ListScheduledJobsResponseBodyItemOwnerType = S.String;
-
 export interface ListScheduledJobsResponseBodyItemOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -2436,12 +2095,10 @@ export interface ListScheduledJobsResponseBodyItemOwner {
   avatarUrl: string;
   type: ListScheduledJobsResponseBodyItemOwnerType;
 }
-export const ListScheduledJobsResponseBodyItemOwner =
+const ListScheduledJobsResponseBodyItemOwner =
   CreateScheduledJobResponseOwner as any as S.Schema<ListScheduledJobsResponseBodyItemOwner>;
 
 export type ListScheduledJobsResponseBodyItemInitiatorType = "user" | "org";
-export const ListScheduledJobsResponseBodyItemInitiatorType = S.String;
-
 export interface ListScheduledJobsResponseBodyItemInitiator {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -2449,25 +2106,25 @@ export interface ListScheduledJobsResponseBodyItemInitiator {
   avatarUrl: string;
   type: ListScheduledJobsResponseBodyItemInitiatorType;
 }
-export const ListScheduledJobsResponseBodyItemInitiator =
+const ListScheduledJobsResponseBodyItemInitiator =
   CreateScheduledJobResponseOwner as any as S.Schema<ListScheduledJobsResponseBodyItemInitiator>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecEnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const ListScheduledJobsResponseBodyItemJobSpecEnvironmentMap =
+const ListScheduledJobsResponseBodyItemJobSpecEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecEnvironmentMap>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecCommandList = Array<string>;
-export const ListScheduledJobsResponseBodyItemJobSpecCommandList =
+const ListScheduledJobsResponseBodyItemJobSpecCommandList =
   CancelJobResponseCommandList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecCommandList>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecArgumentsList = Array<string>;
-export const ListScheduledJobsResponseBodyItemJobSpecArgumentsList =
+const ListScheduledJobsResponseBodyItemJobSpecArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecArgumentsList>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecArch = "amd64" | "arm64";
-export const ListScheduledJobsResponseBodyItemJobSpecArch = S.String;
+const ListScheduledJobsResponseBodyItemJobSpecArch = S.String;
 
 export type ListScheduledJobsResponseBodyItemJobSpecFlavor =
   | "cpu-basic"
@@ -2499,42 +2156,29 @@ export type ListScheduledJobsResponseBodyItemJobSpecFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const ListScheduledJobsResponseBodyItemJobSpecFlavor = S.String;
+const ListScheduledJobsResponseBodyItemJobSpecFlavor = S.String;
 
 export type ListScheduledJobsResponseBodyItemJobSpecDurations = CancelJobResponseDurations;
-export const ListScheduledJobsResponseBodyItemJobSpecDurations = CancelJobResponseDurations;
-
 export type ListScheduledJobsResponseBodyItemJobSpecVolumesItem = CancelJobResponseVolumesItem;
-export const ListScheduledJobsResponseBodyItemJobSpecVolumesItem = CancelJobResponseVolumesItem;
-
 export type ListScheduledJobsResponseBodyItemJobSpecVolumesList =
   Array<CancelJobResponseVolumesItem>;
-export const ListScheduledJobsResponseBodyItemJobSpecVolumesList =
+const ListScheduledJobsResponseBodyItemJobSpecVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecVolumesList>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecExposePortsList = Array<number>;
-export const ListScheduledJobsResponseBodyItemJobSpecExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type ListScheduledJobsResponseBodyItemJobSpecExposePortsPublicList = Array<number>;
-export const ListScheduledJobsResponseBodyItemJobSpecExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface ListScheduledJobsResponseBodyItemJobSpecExpose {
   ports: ListScheduledJobsResponseBodyItemJobSpecExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: ListScheduledJobsResponseBodyItemJobSpecExposePortsPublicList;
 }
-export const ListScheduledJobsResponseBodyItemJobSpecExpose =
+const ListScheduledJobsResponseBodyItemJobSpecExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type ListScheduledJobsResponseBodyItemJobSpecNetworkAliasesList = Array<string>;
-export const ListScheduledJobsResponseBodyItemJobSpecNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface ListScheduledJobsResponseBodyItemJobSpecNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -2542,28 +2186,24 @@ export interface ListScheduledJobsResponseBodyItemJobSpecNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: ListScheduledJobsResponseBodyItemJobSpecNetworkAliasesList;
 }
-export const ListScheduledJobsResponseBodyItemJobSpecNetwork =
+const ListScheduledJobsResponseBodyItemJobSpecNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecNetwork>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecResourceGroup = CancelJobResponseResourceGroup;
-export const ListScheduledJobsResponseBodyItemJobSpecResourceGroup = CancelJobResponseResourceGroup;
-
 export type ListScheduledJobsResponseBodyItemJobSpecSecretsList = Array<string>;
-export const ListScheduledJobsResponseBodyItemJobSpecSecretsList =
+const ListScheduledJobsResponseBodyItemJobSpecSecretsList =
   CancelJobResponseCommandList as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecSecretsList>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecLabelsMap = {
   [key: string]: string | undefined;
 };
-export const ListScheduledJobsResponseBodyItemJobSpecLabelsMap =
+const ListScheduledJobsResponseBodyItemJobSpecLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecLabelsMap>;
 
 export type ListScheduledJobsResponseBodyItemJobSpecHfTokenTokenRole =
   | "read"
   | "write"
   | "fineGrained";
-export const ListScheduledJobsResponseBodyItemJobSpecHfTokenTokenRole = S.String;
-
 export interface ListScheduledJobsResponseBodyItemJobSpecHfToken {
   ownerName: string;
   orgName?: string;
@@ -2572,7 +2212,7 @@ export interface ListScheduledJobsResponseBodyItemJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const ListScheduledJobsResponseBodyItemJobSpecHfToken =
+const ListScheduledJobsResponseBodyItemJobSpecHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<ListScheduledJobsResponseBodyItemJobSpecHfToken>;
 
 export interface ListScheduledJobsResponseBodyItemJobSpec {
@@ -2599,7 +2239,7 @@ export interface ListScheduledJobsResponseBodyItemJobSpec {
   labels?: ListScheduledJobsResponseBodyItemJobSpecLabelsMap;
   hfToken?: ListScheduledJobsResponseBodyItemJobSpecHfToken;
 }
-export const ListScheduledJobsResponseBodyItemJobSpec = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledJobsResponseBodyItemJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.optional(S.String),
     dockerImage: S.optional(S.String),
@@ -2639,7 +2279,7 @@ export interface ListScheduledJobsResponseBodyItem {
   initiator?: ListScheduledJobsResponseBodyItemInitiator;
   jobSpec: ListScheduledJobsResponseBodyItemJobSpec;
 }
-export const ListScheduledJobsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledJobsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -2658,12 +2298,12 @@ export const ListScheduledJobsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListScheduledJobsResponseBodyItem>;
 
 export type ListScheduledJobsResponseBodyList = Array<ListScheduledJobsResponseBodyItem>;
-export const ListScheduledJobsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListScheduledJobsResponseBodyList = /*@__PURE__*/ S.Array(
   ListScheduledJobsResponseBodyItem,
 ) as any as S.Schema<ListScheduledJobsResponseBodyList>;
 
 export type ListScheduledJobsResponse = ListScheduledJobsResponseBodyList;
-export const ListScheduledJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledJobsResponse = /*@__PURE__*/ S.suspend(() =>
   ListScheduledJobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListScheduledJobsResponse",
@@ -2673,7 +2313,7 @@ export interface ResumeScheduledJobRequest {
   namespace: string;
   jobId: string;
 }
-export const ResumeScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -2685,14 +2325,14 @@ export const ResumeScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeScheduledJobRequest>;
 
 export interface ResumeScheduledJobResponse {}
-export const ResumeScheduledJobResponse =
+const ResumeScheduledJobResponse =
   DeleteScheduledJobResponse as any as S.Schema<ResumeScheduledJobResponse>;
 
 export interface RunJobRequest {
   namespace: string;
   jobId: string;
 }
-export const RunJobRequest = /*@__PURE__*/ S.suspend(() =>
+const RunJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -2702,19 +2342,19 @@ export const RunJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunJobRequest" }) as any as S.Schema<RunJobRequest>;
 
 export type RunJobResponseEnvironmentMap = { [key: string]: string | undefined };
-export const RunJobResponseEnvironmentMap =
+const RunJobResponseEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<RunJobResponseEnvironmentMap>;
 
 export type RunJobResponseCommandList = Array<string>;
-export const RunJobResponseCommandList =
+const RunJobResponseCommandList =
   CancelJobResponseCommandList as any as S.Schema<RunJobResponseCommandList>;
 
 export type RunJobResponseArgumentsList = Array<string>;
-export const RunJobResponseArgumentsList =
+const RunJobResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<RunJobResponseArgumentsList>;
 
 export type RunJobResponseArch = "amd64" | "arm64";
-export const RunJobResponseArch = S.String;
+const RunJobResponseArch = S.String;
 
 export type RunJobResponseFlavor =
   | "cpu-basic"
@@ -2746,44 +2386,28 @@ export type RunJobResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const RunJobResponseFlavor = S.String;
+const RunJobResponseFlavor = S.String;
 
 export type RunJobResponseCreatedBy = CancelJobResponseCreatedBy;
-export const RunJobResponseCreatedBy = CancelJobResponseCreatedBy;
-
 export type RunJobResponseDurations = CancelJobResponseDurations;
-export const RunJobResponseDurations = CancelJobResponseDurations;
-
 export type RunJobResponseVolumesItem = CancelJobResponseVolumesItem;
-export const RunJobResponseVolumesItem = CancelJobResponseVolumesItem;
-
 export type RunJobResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const RunJobResponseVolumesList =
+const RunJobResponseVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<RunJobResponseVolumesList>;
 
 export type RunJobResponseExposePortsList = Array<number>;
-export const RunJobResponseExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<RunJobResponseExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type RunJobResponseExposePortsPublicList = Array<number>;
-export const RunJobResponseExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<RunJobResponseExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface RunJobResponseExpose {
   ports: RunJobResponseExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: RunJobResponseExposePortsPublicList;
 }
-export const RunJobResponseExpose =
-  CancelJobResponseExpose as any as S.Schema<RunJobResponseExpose>;
+const RunJobResponseExpose = CancelJobResponseExpose as any as S.Schema<RunJobResponseExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type RunJobResponseNetworkAliasesList = Array<string>;
-export const RunJobResponseNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<RunJobResponseNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface RunJobResponseNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -2791,12 +2415,9 @@ export interface RunJobResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: RunJobResponseNetworkAliasesList;
 }
-export const RunJobResponseNetwork =
-  CancelJobResponseNetwork as any as S.Schema<RunJobResponseNetwork>;
+const RunJobResponseNetwork = CancelJobResponseNetwork as any as S.Schema<RunJobResponseNetwork>;
 
 export type RunJobResponseOwnerType = "user" | "org";
-export const RunJobResponseOwnerType = S.String;
-
 export interface RunJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -2804,14 +2425,10 @@ export interface RunJobResponseOwner {
   type: RunJobResponseOwnerType;
   avatarUrl: string;
 }
-export const RunJobResponseOwner = CancelJobResponseOwner as any as S.Schema<RunJobResponseOwner>;
+const RunJobResponseOwner = CancelJobResponseOwner as any as S.Schema<RunJobResponseOwner>;
 
 export type RunJobResponseResourceGroup = CancelJobResponseResourceGroup;
-export const RunJobResponseResourceGroup = CancelJobResponseResourceGroup;
-
 export type RunJobResponseInitiatorCase0Type = "user" | "org";
-export const RunJobResponseInitiatorCase0Type = S.String;
-
 export interface RunJobResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -2819,24 +2436,15 @@ export interface RunJobResponseInitiatorCase0 {
   type: RunJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const RunJobResponseInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<RunJobResponseInitiatorCase0>;
-
 export type RunJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const RunJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type RunJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const RunJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type RunJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const RunJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type RunJobResponseInitiator =
   | RunJobResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const RunJobResponseInitiator = S.Unknown as any as S.Schema<RunJobResponseInitiator>;
+const RunJobResponseInitiator = S.Unknown as any as S.Schema<RunJobResponseInitiator>;
 
 export type RunJobResponseStatusStage =
   | "COMPLETED"
@@ -2845,22 +2453,20 @@ export type RunJobResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const RunJobResponseStatusStage = S.String;
+const RunJobResponseStatusStage = S.String;
 
 export type RunJobResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const RunJobResponseStatusCancelReasonCase0 = S.String;
-
 export type RunJobResponseStatusCancelReason = RunJobResponseStatusCancelReasonCase0 | string;
-export const RunJobResponseStatusCancelReason =
+const RunJobResponseStatusCancelReason =
   S.Unknown as any as S.Schema<RunJobResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type RunJobResponseStatusExposeUrlsList = Array<string>;
-export const RunJobResponseStatusExposeUrlsList =
+const RunJobResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<RunJobResponseStatusExposeUrlsList>;
 
 export interface RunJobResponseStatus {
@@ -2873,7 +2479,7 @@ export interface RunJobResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const RunJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const RunJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: RunJobResponseStatusStage,
     message: S.NullOr(S.String),
@@ -2885,16 +2491,14 @@ export const RunJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunJobResponseStatus" }) as any as S.Schema<RunJobResponseStatus>;
 
 export type RunJobResponseSecretsList = Array<string>;
-export const RunJobResponseSecretsList =
+const RunJobResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<RunJobResponseSecretsList>;
 
 export type RunJobResponseLabelsMap = { [key: string]: string | undefined };
-export const RunJobResponseLabelsMap =
+const RunJobResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<RunJobResponseLabelsMap>;
 
 export type RunJobResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const RunJobResponseHfTokenTokenRole = S.String;
-
 export interface RunJobResponseHfToken {
   ownerName: string;
   orgName?: string;
@@ -2903,8 +2507,7 @@ export interface RunJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const RunJobResponseHfToken =
-  CancelJobResponseHfToken as any as S.Schema<RunJobResponseHfToken>;
+const RunJobResponseHfToken = CancelJobResponseHfToken as any as S.Schema<RunJobResponseHfToken>;
 
 export interface RunJobResponse {
   id: string;
@@ -2937,7 +2540,7 @@ export interface RunJobResponse {
   labels?: RunJobResponseLabelsMap;
   hfToken?: RunJobResponseHfToken;
 }
-export const RunJobResponse = /*@__PURE__*/ S.suspend(() =>
+const RunJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -2970,21 +2573,9 @@ export const RunJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunJobResponse" }) as any as S.Schema<RunJobResponse>;
 
 export type StartJobRequestBodyCase0ArgumentsList = Array<string>;
-export const StartJobRequestBodyCase0ArgumentsList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobRequestBodyCase0ArgumentsList>;
-
 export type StartJobRequestBodyCase0CommandList = Array<string>;
-export const StartJobRequestBodyCase0CommandList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobRequestBodyCase0CommandList>;
-
 export type StartJobRequestBodyCase0EnvironmentMap = { [key: string]: string | undefined };
-export const StartJobRequestBodyCase0EnvironmentMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<StartJobRequestBodyCase0EnvironmentMap>;
-
 export type StartJobRequestBodyCase0SecretsMap = { [key: string]: string | undefined };
-export const StartJobRequestBodyCase0SecretsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<StartJobRequestBodyCase0SecretsMap>;
-
 export type StartJobRequestBodyCase0Flavor =
   | "cpu-basic"
   | "cpu-upgrade"
@@ -3015,19 +2606,10 @@ export type StartJobRequestBodyCase0Flavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const StartJobRequestBodyCase0Flavor = S.String;
-
 export type StartJobRequestBodyCase0Arch = "amd64" | "arm64";
-export const StartJobRequestBodyCase0Arch = S.String;
-
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type StartJobRequestBodyCase0LabelsMap = { [key: string]: string | undefined };
-export const StartJobRequestBodyCase0LabelsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<StartJobRequestBodyCase0LabelsMap>;
-
 export type StartJobRequestBodyCase0VolumesItemType = "bucket" | "model" | "dataset" | "space";
-export const StartJobRequestBodyCase0VolumesItemType = S.String;
-
 export interface StartJobRequestBodyCase0VolumesItem {
   type: StartJobRequestBodyCase0VolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -3041,41 +2623,21 @@ export interface StartJobRequestBodyCase0VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const StartJobRequestBodyCase0VolumesItem =
-  CreateScheduledJobRequestJobSpecCase0VolumesItem as any as S.Schema<StartJobRequestBodyCase0VolumesItem>;
-
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type StartJobRequestBodyCase0VolumesList = Array<StartJobRequestBodyCase0VolumesItem>;
-export const StartJobRequestBodyCase0VolumesList =
-  CreateScheduledJobRequestJobSpecCase0VolumesList as any as S.Schema<StartJobRequestBodyCase0VolumesList>;
-
 export type StartJobRequestBodyCase0ExposePortsList = Array<number>;
-export const StartJobRequestBodyCase0ExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<StartJobRequestBodyCase0ExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type StartJobRequestBodyCase0ExposePortsPublicList = Array<number>;
-export const StartJobRequestBodyCase0ExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<StartJobRequestBodyCase0ExposePortsPublicList>;
-
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface StartJobRequestBodyCase0Expose {
   ports: StartJobRequestBodyCase0ExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: StartJobRequestBodyCase0ExposePortsPublicList;
 }
-export const StartJobRequestBodyCase0Expose =
-  CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<StartJobRequestBodyCase0Expose>;
-
 /** When `enabled`, the job's container is reachable over SSH at `ssh <job_id>@ssh.hf.jobs`. Only the job's owner is allowed in, authenticated by an SSH public key registered on the Hub. */
 export type StartJobRequestBodyCase0Ssh = CreateScheduledJobRequestJobSpecCase0Ssh;
-export const StartJobRequestBodyCase0Ssh = CreateScheduledJobRequestJobSpecCase0Ssh;
-
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type StartJobRequestBodyCase0NetworkAliasesList = Array<string>;
-export const StartJobRequestBodyCase0NetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobRequestBodyCase0NetworkAliasesList>;
-
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface StartJobRequestBodyCase0Network {
   /** Group name, scoped to the job's owner and resource group. */
@@ -3083,9 +2645,6 @@ export interface StartJobRequestBodyCase0Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: StartJobRequestBodyCase0NetworkAliasesList;
 }
-export const StartJobRequestBodyCase0Network =
-  CreateScheduledJobRequestJobSpecCase0Network as any as S.Schema<StartJobRequestBodyCase0Network>;
-
 export interface StartJobRequestBodyCase0 {
   spaceId: unknown;
   dockerImage?: string;
@@ -3110,43 +2669,10 @@ export interface StartJobRequestBodyCase0 {
   network?: StartJobRequestBodyCase0Network;
   resourceGroupId?: string;
 }
-export const StartJobRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.Unknown,
-    dockerImage: S.optional(S.String),
-    arguments: S.optional(StartJobRequestBodyCase0ArgumentsList),
-    command: S.optional(StartJobRequestBodyCase0CommandList),
-    environment: S.optional(StartJobRequestBodyCase0EnvironmentMap),
-    secrets: S.optional(StartJobRequestBodyCase0SecretsMap),
-    flavor: StartJobRequestBodyCase0Flavor,
-    arch: S.optional(StartJobRequestBodyCase0Arch),
-    timeoutSeconds: S.optional(S.NullOr(S.Number)),
-    attempts: S.optional(S.Number),
-    labels: S.optional(StartJobRequestBodyCase0LabelsMap),
-    volumes: S.optional(StartJobRequestBodyCase0VolumesList),
-    expose: S.optional(StartJobRequestBodyCase0Expose),
-    ssh: S.optional(CreateScheduledJobRequestJobSpecCase0Ssh),
-    network: S.optional(StartJobRequestBodyCase0Network),
-    resourceGroupId: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartJobRequestBodyCase0" }) as any as S.Schema<StartJobRequestBodyCase0>;
-
 export type StartJobRequestBodyCase1ArgumentsList = Array<string>;
-export const StartJobRequestBodyCase1ArgumentsList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobRequestBodyCase1ArgumentsList>;
-
 export type StartJobRequestBodyCase1CommandList = Array<string>;
-export const StartJobRequestBodyCase1CommandList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobRequestBodyCase1CommandList>;
-
 export type StartJobRequestBodyCase1EnvironmentMap = { [key: string]: string | undefined };
-export const StartJobRequestBodyCase1EnvironmentMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<StartJobRequestBodyCase1EnvironmentMap>;
-
 export type StartJobRequestBodyCase1SecretsMap = { [key: string]: string | undefined };
-export const StartJobRequestBodyCase1SecretsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<StartJobRequestBodyCase1SecretsMap>;
-
 export type StartJobRequestBodyCase1Flavor =
   | "cpu-basic"
   | "cpu-upgrade"
@@ -3177,19 +2703,10 @@ export type StartJobRequestBodyCase1Flavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const StartJobRequestBodyCase1Flavor = S.String;
-
 export type StartJobRequestBodyCase1Arch = "amd64" | "arm64";
-export const StartJobRequestBodyCase1Arch = S.String;
-
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type StartJobRequestBodyCase1LabelsMap = { [key: string]: string | undefined };
-export const StartJobRequestBodyCase1LabelsMap =
-  CancelJobResponseEnvironmentMap as any as S.Schema<StartJobRequestBodyCase1LabelsMap>;
-
 export type StartJobRequestBodyCase1VolumesItemType = "bucket" | "model" | "dataset" | "space";
-export const StartJobRequestBodyCase1VolumesItemType = S.String;
-
 export interface StartJobRequestBodyCase1VolumesItem {
   type: StartJobRequestBodyCase1VolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -3203,41 +2720,21 @@ export interface StartJobRequestBodyCase1VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const StartJobRequestBodyCase1VolumesItem =
-  CreateScheduledJobRequestJobSpecCase0VolumesItem as any as S.Schema<StartJobRequestBodyCase1VolumesItem>;
-
 /** HuggingFace Buckets or Repos to mount as volumes in the job container. */
 export type StartJobRequestBodyCase1VolumesList = Array<StartJobRequestBodyCase1VolumesItem>;
-export const StartJobRequestBodyCase1VolumesList =
-  CreateScheduledJobRequestJobSpecCase0VolumesList as any as S.Schema<StartJobRequestBodyCase1VolumesList>;
-
 export type StartJobRequestBodyCase1ExposePortsList = Array<number>;
-export const StartJobRequestBodyCase1ExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<StartJobRequestBodyCase1ExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type StartJobRequestBodyCase1ExposePortsPublicList = Array<number>;
-export const StartJobRequestBodyCase1ExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<StartJobRequestBodyCase1ExposePortsPublicList>;
-
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface StartJobRequestBodyCase1Expose {
   ports: StartJobRequestBodyCase1ExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: StartJobRequestBodyCase1ExposePortsPublicList;
 }
-export const StartJobRequestBodyCase1Expose =
-  CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<StartJobRequestBodyCase1Expose>;
-
 /** When `enabled`, the job's container is reachable over SSH at `ssh <job_id>@ssh.hf.jobs`. Only the job's owner is allowed in, authenticated by an SSH public key registered on the Hub. */
 export type StartJobRequestBodyCase1Ssh = CreateScheduledJobRequestJobSpecCase0Ssh;
-export const StartJobRequestBodyCase1Ssh = CreateScheduledJobRequestJobSpecCase0Ssh;
-
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type StartJobRequestBodyCase1NetworkAliasesList = Array<string>;
-export const StartJobRequestBodyCase1NetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobRequestBodyCase1NetworkAliasesList>;
-
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface StartJobRequestBodyCase1Network {
   /** Group name, scoped to the job's owner and resource group. */
@@ -3245,9 +2742,6 @@ export interface StartJobRequestBodyCase1Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: StartJobRequestBodyCase1NetworkAliasesList;
 }
-export const StartJobRequestBodyCase1Network =
-  CreateScheduledJobRequestJobSpecCase0Network as any as S.Schema<StartJobRequestBodyCase1Network>;
-
 export interface StartJobRequestBodyCase1 {
   spaceId?: string;
   dockerImage: unknown;
@@ -3272,35 +2766,14 @@ export interface StartJobRequestBodyCase1 {
   network?: StartJobRequestBodyCase1Network;
   resourceGroupId?: string;
 }
-export const StartJobRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.optional(S.String),
-    dockerImage: S.Unknown,
-    arguments: S.optional(StartJobRequestBodyCase1ArgumentsList),
-    command: S.optional(StartJobRequestBodyCase1CommandList),
-    environment: S.optional(StartJobRequestBodyCase1EnvironmentMap),
-    secrets: S.optional(StartJobRequestBodyCase1SecretsMap),
-    flavor: StartJobRequestBodyCase1Flavor,
-    arch: S.optional(StartJobRequestBodyCase1Arch),
-    timeoutSeconds: S.optional(S.NullOr(S.Number)),
-    attempts: S.optional(S.Number),
-    labels: S.optional(StartJobRequestBodyCase1LabelsMap),
-    volumes: S.optional(StartJobRequestBodyCase1VolumesList),
-    expose: S.optional(StartJobRequestBodyCase1Expose),
-    ssh: S.optional(CreateScheduledJobRequestJobSpecCase0Ssh),
-    network: S.optional(StartJobRequestBodyCase1Network),
-    resourceGroupId: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartJobRequestBodyCase1" }) as any as S.Schema<StartJobRequestBodyCase1>;
-
 export type StartJobRequestBody = StartJobRequestBodyCase0 | StartJobRequestBodyCase1;
-export const StartJobRequestBody = S.Unknown as any as S.Schema<StartJobRequestBody>;
+const StartJobRequestBody = S.Unknown as any as S.Schema<StartJobRequestBody>;
 
 export interface StartJobRequest {
   namespace: string;
   body?: StartJobRequestBody;
 }
-export const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     body: S.optional(StartJobRequestBody.pipe(T.HttpBody())),
@@ -3308,19 +2781,19 @@ export const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartJobRequest" }) as any as S.Schema<StartJobRequest>;
 
 export type StartJobResponseEnvironmentMap = { [key: string]: string | undefined };
-export const StartJobResponseEnvironmentMap =
+const StartJobResponseEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<StartJobResponseEnvironmentMap>;
 
 export type StartJobResponseCommandList = Array<string>;
-export const StartJobResponseCommandList =
+const StartJobResponseCommandList =
   CancelJobResponseCommandList as any as S.Schema<StartJobResponseCommandList>;
 
 export type StartJobResponseArgumentsList = Array<string>;
-export const StartJobResponseArgumentsList =
+const StartJobResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<StartJobResponseArgumentsList>;
 
 export type StartJobResponseArch = "amd64" | "arm64";
-export const StartJobResponseArch = S.String;
+const StartJobResponseArch = S.String;
 
 export type StartJobResponseFlavor =
   | "cpu-basic"
@@ -3352,44 +2825,28 @@ export type StartJobResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const StartJobResponseFlavor = S.String;
+const StartJobResponseFlavor = S.String;
 
 export type StartJobResponseCreatedBy = CancelJobResponseCreatedBy;
-export const StartJobResponseCreatedBy = CancelJobResponseCreatedBy;
-
 export type StartJobResponseDurations = CancelJobResponseDurations;
-export const StartJobResponseDurations = CancelJobResponseDurations;
-
 export type StartJobResponseVolumesItem = CancelJobResponseVolumesItem;
-export const StartJobResponseVolumesItem = CancelJobResponseVolumesItem;
-
 export type StartJobResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const StartJobResponseVolumesList =
+const StartJobResponseVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<StartJobResponseVolumesList>;
 
 export type StartJobResponseExposePortsList = Array<number>;
-export const StartJobResponseExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<StartJobResponseExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type StartJobResponseExposePortsPublicList = Array<number>;
-export const StartJobResponseExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<StartJobResponseExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface StartJobResponseExpose {
   ports: StartJobResponseExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: StartJobResponseExposePortsPublicList;
 }
-export const StartJobResponseExpose =
-  CancelJobResponseExpose as any as S.Schema<StartJobResponseExpose>;
+const StartJobResponseExpose = CancelJobResponseExpose as any as S.Schema<StartJobResponseExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type StartJobResponseNetworkAliasesList = Array<string>;
-export const StartJobResponseNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<StartJobResponseNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface StartJobResponseNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -3397,12 +2854,10 @@ export interface StartJobResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: StartJobResponseNetworkAliasesList;
 }
-export const StartJobResponseNetwork =
+const StartJobResponseNetwork =
   CancelJobResponseNetwork as any as S.Schema<StartJobResponseNetwork>;
 
 export type StartJobResponseOwnerType = "user" | "org";
-export const StartJobResponseOwnerType = S.String;
-
 export interface StartJobResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -3410,15 +2865,10 @@ export interface StartJobResponseOwner {
   type: StartJobResponseOwnerType;
   avatarUrl: string;
 }
-export const StartJobResponseOwner =
-  CancelJobResponseOwner as any as S.Schema<StartJobResponseOwner>;
+const StartJobResponseOwner = CancelJobResponseOwner as any as S.Schema<StartJobResponseOwner>;
 
 export type StartJobResponseResourceGroup = CancelJobResponseResourceGroup;
-export const StartJobResponseResourceGroup = CancelJobResponseResourceGroup;
-
 export type StartJobResponseInitiatorCase0Type = "user" | "org";
-export const StartJobResponseInitiatorCase0Type = S.String;
-
 export interface StartJobResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -3426,24 +2876,15 @@ export interface StartJobResponseInitiatorCase0 {
   type: StartJobResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const StartJobResponseInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<StartJobResponseInitiatorCase0>;
-
 export type StartJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const StartJobResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type StartJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const StartJobResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type StartJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const StartJobResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type StartJobResponseInitiator =
   | StartJobResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const StartJobResponseInitiator = S.Unknown as any as S.Schema<StartJobResponseInitiator>;
+const StartJobResponseInitiator = S.Unknown as any as S.Schema<StartJobResponseInitiator>;
 
 export type StartJobResponseStatusStage =
   | "COMPLETED"
@@ -3452,22 +2893,20 @@ export type StartJobResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const StartJobResponseStatusStage = S.String;
+const StartJobResponseStatusStage = S.String;
 
 export type StartJobResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const StartJobResponseStatusCancelReasonCase0 = S.String;
-
 export type StartJobResponseStatusCancelReason = StartJobResponseStatusCancelReasonCase0 | string;
-export const StartJobResponseStatusCancelReason =
+const StartJobResponseStatusCancelReason =
   S.Unknown as any as S.Schema<StartJobResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type StartJobResponseStatusExposeUrlsList = Array<string>;
-export const StartJobResponseStatusExposeUrlsList =
+const StartJobResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<StartJobResponseStatusExposeUrlsList>;
 
 export interface StartJobResponseStatus {
@@ -3480,7 +2919,7 @@ export interface StartJobResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const StartJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const StartJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: StartJobResponseStatusStage,
     message: S.NullOr(S.String),
@@ -3492,16 +2931,14 @@ export const StartJobResponseStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartJobResponseStatus" }) as any as S.Schema<StartJobResponseStatus>;
 
 export type StartJobResponseSecretsList = Array<string>;
-export const StartJobResponseSecretsList =
+const StartJobResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<StartJobResponseSecretsList>;
 
 export type StartJobResponseLabelsMap = { [key: string]: string | undefined };
-export const StartJobResponseLabelsMap =
+const StartJobResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<StartJobResponseLabelsMap>;
 
 export type StartJobResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const StartJobResponseHfTokenTokenRole = S.String;
-
 export interface StartJobResponseHfToken {
   ownerName: string;
   orgName?: string;
@@ -3510,7 +2947,7 @@ export interface StartJobResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const StartJobResponseHfToken =
+const StartJobResponseHfToken =
   CancelJobResponseHfToken as any as S.Schema<StartJobResponseHfToken>;
 
 export interface StartJobResponse {
@@ -3544,7 +2981,7 @@ export interface StartJobResponse {
   labels?: StartJobResponseLabelsMap;
   hfToken?: StartJobResponseHfToken;
 }
-export const StartJobResponse = /*@__PURE__*/ S.suspend(() =>
+const StartJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -3580,7 +3017,7 @@ export interface StreamJobEventsRequest {
   namespace: string;
   jobId: string;
 }
-export const StreamJobEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamJobEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3588,7 +3025,7 @@ export const StreamJobEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamJobEventsRequest" }) as any as S.Schema<StreamJobEventsRequest>;
 
 export interface StreamJobEventsResponse {}
-export const StreamJobEventsResponse =
+const StreamJobEventsResponse =
   DeleteScheduledJobResponse as any as S.Schema<StreamJobEventsResponse>;
 
 export interface StreamJobLogsRequest {
@@ -3596,7 +3033,7 @@ export interface StreamJobLogsRequest {
   jobId: string;
   tail?: number;
 }
-export const StreamJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3605,14 +3042,13 @@ export const StreamJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamJobLogsRequest" }) as any as S.Schema<StreamJobLogsRequest>;
 
 export interface StreamJobLogsResponse {}
-export const StreamJobLogsResponse =
-  DeleteScheduledJobResponse as any as S.Schema<StreamJobLogsResponse>;
+const StreamJobLogsResponse = DeleteScheduledJobResponse as any as S.Schema<StreamJobLogsResponse>;
 
 export interface StreamJobMetricsRequest {
   namespace: string;
   jobId: string;
 }
-export const StreamJobMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamJobMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3620,14 +3056,14 @@ export const StreamJobMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamJobMetricsRequest" }) as any as S.Schema<StreamJobMetricsRequest>;
 
 export interface StreamJobMetricsResponse {}
-export const StreamJobMetricsResponse =
+const StreamJobMetricsResponse =
   DeleteScheduledJobResponse as any as S.Schema<StreamJobMetricsResponse>;
 
 export interface SuspendScheduledJobRequest {
   namespace: string;
   jobId: string;
 }
-export const SuspendScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3639,16 +3075,16 @@ export const SuspendScheduledJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendScheduledJobRequest>;
 
 export interface SuspendScheduledJobResponse {}
-export const SuspendScheduledJobResponse =
+const SuspendScheduledJobResponse =
   DeleteScheduledJobResponse as any as S.Schema<SuspendScheduledJobResponse>;
 
 export type UpdateJobExposedPortsRequestPortsList = Array<number>;
-export const UpdateJobExposedPortsRequestPortsList =
+const UpdateJobExposedPortsRequestPortsList =
   CancelJobResponseExposePortsList as any as S.Schema<UpdateJobExposedPortsRequestPortsList>;
 
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateJobExposedPortsRequestPortsPublicList = Array<number>;
-export const UpdateJobExposedPortsRequestPortsPublicList =
+const UpdateJobExposedPortsRequestPortsPublicList =
   CancelJobResponseExposePortsList as any as S.Schema<UpdateJobExposedPortsRequestPortsPublicList>;
 
 export interface UpdateJobExposedPortsRequest {
@@ -3658,7 +3094,7 @@ export interface UpdateJobExposedPortsRequest {
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateJobExposedPortsRequestPortsPublicList;
 }
-export const UpdateJobExposedPortsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobExposedPortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3670,19 +3106,19 @@ export const UpdateJobExposedPortsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateJobExposedPortsRequest>;
 
 export type UpdateJobExposedPortsResponseEnvironmentMap = { [key: string]: string | undefined };
-export const UpdateJobExposedPortsResponseEnvironmentMap =
+const UpdateJobExposedPortsResponseEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobExposedPortsResponseEnvironmentMap>;
 
 export type UpdateJobExposedPortsResponseCommandList = Array<string>;
-export const UpdateJobExposedPortsResponseCommandList =
+const UpdateJobExposedPortsResponseCommandList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobExposedPortsResponseCommandList>;
 
 export type UpdateJobExposedPortsResponseArgumentsList = Array<string>;
-export const UpdateJobExposedPortsResponseArgumentsList =
+const UpdateJobExposedPortsResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobExposedPortsResponseArgumentsList>;
 
 export type UpdateJobExposedPortsResponseArch = "amd64" | "arm64";
-export const UpdateJobExposedPortsResponseArch = S.String;
+const UpdateJobExposedPortsResponseArch = S.String;
 
 export type UpdateJobExposedPortsResponseFlavor =
   | "cpu-basic"
@@ -3714,44 +3150,29 @@ export type UpdateJobExposedPortsResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const UpdateJobExposedPortsResponseFlavor = S.String;
+const UpdateJobExposedPortsResponseFlavor = S.String;
 
 export type UpdateJobExposedPortsResponseCreatedBy = CancelJobResponseCreatedBy;
-export const UpdateJobExposedPortsResponseCreatedBy = CancelJobResponseCreatedBy;
-
 export type UpdateJobExposedPortsResponseDurations = CancelJobResponseDurations;
-export const UpdateJobExposedPortsResponseDurations = CancelJobResponseDurations;
-
 export type UpdateJobExposedPortsResponseVolumesItem = CancelJobResponseVolumesItem;
-export const UpdateJobExposedPortsResponseVolumesItem = CancelJobResponseVolumesItem;
-
 export type UpdateJobExposedPortsResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const UpdateJobExposedPortsResponseVolumesList =
+const UpdateJobExposedPortsResponseVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<UpdateJobExposedPortsResponseVolumesList>;
 
 export type UpdateJobExposedPortsResponseExposePortsList = Array<number>;
-export const UpdateJobExposedPortsResponseExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateJobExposedPortsResponseExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateJobExposedPortsResponseExposePortsPublicList = Array<number>;
-export const UpdateJobExposedPortsResponseExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateJobExposedPortsResponseExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface UpdateJobExposedPortsResponseExpose {
   ports: UpdateJobExposedPortsResponseExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateJobExposedPortsResponseExposePortsPublicList;
 }
-export const UpdateJobExposedPortsResponseExpose =
+const UpdateJobExposedPortsResponseExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<UpdateJobExposedPortsResponseExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type UpdateJobExposedPortsResponseNetworkAliasesList = Array<string>;
-export const UpdateJobExposedPortsResponseNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<UpdateJobExposedPortsResponseNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface UpdateJobExposedPortsResponseNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -3759,12 +3180,10 @@ export interface UpdateJobExposedPortsResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: UpdateJobExposedPortsResponseNetworkAliasesList;
 }
-export const UpdateJobExposedPortsResponseNetwork =
+const UpdateJobExposedPortsResponseNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<UpdateJobExposedPortsResponseNetwork>;
 
 export type UpdateJobExposedPortsResponseOwnerType = "user" | "org";
-export const UpdateJobExposedPortsResponseOwnerType = S.String;
-
 export interface UpdateJobExposedPortsResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -3772,15 +3191,11 @@ export interface UpdateJobExposedPortsResponseOwner {
   type: UpdateJobExposedPortsResponseOwnerType;
   avatarUrl: string;
 }
-export const UpdateJobExposedPortsResponseOwner =
+const UpdateJobExposedPortsResponseOwner =
   CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobExposedPortsResponseOwner>;
 
 export type UpdateJobExposedPortsResponseResourceGroup = CancelJobResponseResourceGroup;
-export const UpdateJobExposedPortsResponseResourceGroup = CancelJobResponseResourceGroup;
-
 export type UpdateJobExposedPortsResponseInitiatorCase0Type = "user" | "org";
-export const UpdateJobExposedPortsResponseInitiatorCase0Type = S.String;
-
 export interface UpdateJobExposedPortsResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -3788,24 +3203,15 @@ export interface UpdateJobExposedPortsResponseInitiatorCase0 {
   type: UpdateJobExposedPortsResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const UpdateJobExposedPortsResponseInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobExposedPortsResponseInitiatorCase0>;
-
 export type UpdateJobExposedPortsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const UpdateJobExposedPortsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type UpdateJobExposedPortsResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const UpdateJobExposedPortsResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type UpdateJobExposedPortsResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const UpdateJobExposedPortsResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type UpdateJobExposedPortsResponseInitiator =
   | UpdateJobExposedPortsResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const UpdateJobExposedPortsResponseInitiator =
+const UpdateJobExposedPortsResponseInitiator =
   S.Unknown as any as S.Schema<UpdateJobExposedPortsResponseInitiator>;
 
 export type UpdateJobExposedPortsResponseStatusStage =
@@ -3815,24 +3221,22 @@ export type UpdateJobExposedPortsResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const UpdateJobExposedPortsResponseStatusStage = S.String;
+const UpdateJobExposedPortsResponseStatusStage = S.String;
 
 export type UpdateJobExposedPortsResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const UpdateJobExposedPortsResponseStatusCancelReasonCase0 = S.String;
-
 export type UpdateJobExposedPortsResponseStatusCancelReason =
   | UpdateJobExposedPortsResponseStatusCancelReasonCase0
   | string;
-export const UpdateJobExposedPortsResponseStatusCancelReason =
+const UpdateJobExposedPortsResponseStatusCancelReason =
   S.Unknown as any as S.Schema<UpdateJobExposedPortsResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type UpdateJobExposedPortsResponseStatusExposeUrlsList = Array<string>;
-export const UpdateJobExposedPortsResponseStatusExposeUrlsList =
+const UpdateJobExposedPortsResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobExposedPortsResponseStatusExposeUrlsList>;
 
 export interface UpdateJobExposedPortsResponseStatus {
@@ -3845,7 +3249,7 @@ export interface UpdateJobExposedPortsResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const UpdateJobExposedPortsResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobExposedPortsResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: UpdateJobExposedPortsResponseStatusStage,
     message: S.NullOr(S.String),
@@ -3859,16 +3263,14 @@ export const UpdateJobExposedPortsResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateJobExposedPortsResponseStatus>;
 
 export type UpdateJobExposedPortsResponseSecretsList = Array<string>;
-export const UpdateJobExposedPortsResponseSecretsList =
+const UpdateJobExposedPortsResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobExposedPortsResponseSecretsList>;
 
 export type UpdateJobExposedPortsResponseLabelsMap = { [key: string]: string | undefined };
-export const UpdateJobExposedPortsResponseLabelsMap =
+const UpdateJobExposedPortsResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobExposedPortsResponseLabelsMap>;
 
 export type UpdateJobExposedPortsResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const UpdateJobExposedPortsResponseHfTokenTokenRole = S.String;
-
 export interface UpdateJobExposedPortsResponseHfToken {
   ownerName: string;
   orgName?: string;
@@ -3877,7 +3279,7 @@ export interface UpdateJobExposedPortsResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateJobExposedPortsResponseHfToken =
+const UpdateJobExposedPortsResponseHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateJobExposedPortsResponseHfToken>;
 
 export interface UpdateJobExposedPortsResponse {
@@ -3911,7 +3313,7 @@ export interface UpdateJobExposedPortsResponse {
   labels?: UpdateJobExposedPortsResponseLabelsMap;
   hfToken?: UpdateJobExposedPortsResponseHfToken;
 }
-export const UpdateJobExposedPortsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobExposedPortsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -3947,7 +3349,7 @@ export const UpdateJobExposedPortsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The new labels to set on the job. Replaces all existing labels. */
 export type UpdateJobLabelsRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateJobLabelsRequestLabelsMap =
+const UpdateJobLabelsRequestLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobLabelsRequestLabelsMap>;
 
 export interface UpdateJobLabelsRequest {
@@ -3956,7 +3358,7 @@ export interface UpdateJobLabelsRequest {
   /** The new labels to set on the job. Replaces all existing labels. */
   labels: UpdateJobLabelsRequestLabelsMap;
 }
-export const UpdateJobLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3965,19 +3367,19 @@ export const UpdateJobLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateJobLabelsRequest" }) as any as S.Schema<UpdateJobLabelsRequest>;
 
 export type UpdateJobLabelsResponseEnvironmentMap = { [key: string]: string | undefined };
-export const UpdateJobLabelsResponseEnvironmentMap =
+const UpdateJobLabelsResponseEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobLabelsResponseEnvironmentMap>;
 
 export type UpdateJobLabelsResponseCommandList = Array<string>;
-export const UpdateJobLabelsResponseCommandList =
+const UpdateJobLabelsResponseCommandList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobLabelsResponseCommandList>;
 
 export type UpdateJobLabelsResponseArgumentsList = Array<string>;
-export const UpdateJobLabelsResponseArgumentsList =
+const UpdateJobLabelsResponseArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobLabelsResponseArgumentsList>;
 
 export type UpdateJobLabelsResponseArch = "amd64" | "arm64";
-export const UpdateJobLabelsResponseArch = S.String;
+const UpdateJobLabelsResponseArch = S.String;
 
 export type UpdateJobLabelsResponseFlavor =
   | "cpu-basic"
@@ -4009,44 +3411,29 @@ export type UpdateJobLabelsResponseFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const UpdateJobLabelsResponseFlavor = S.String;
+const UpdateJobLabelsResponseFlavor = S.String;
 
 export type UpdateJobLabelsResponseCreatedBy = CancelJobResponseCreatedBy;
-export const UpdateJobLabelsResponseCreatedBy = CancelJobResponseCreatedBy;
-
 export type UpdateJobLabelsResponseDurations = CancelJobResponseDurations;
-export const UpdateJobLabelsResponseDurations = CancelJobResponseDurations;
-
 export type UpdateJobLabelsResponseVolumesItem = CancelJobResponseVolumesItem;
-export const UpdateJobLabelsResponseVolumesItem = CancelJobResponseVolumesItem;
-
 export type UpdateJobLabelsResponseVolumesList = Array<CancelJobResponseVolumesItem>;
-export const UpdateJobLabelsResponseVolumesList =
+const UpdateJobLabelsResponseVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<UpdateJobLabelsResponseVolumesList>;
 
 export type UpdateJobLabelsResponseExposePortsList = Array<number>;
-export const UpdateJobLabelsResponseExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateJobLabelsResponseExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateJobLabelsResponseExposePortsPublicList = Array<number>;
-export const UpdateJobLabelsResponseExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateJobLabelsResponseExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface UpdateJobLabelsResponseExpose {
   ports: UpdateJobLabelsResponseExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateJobLabelsResponseExposePortsPublicList;
 }
-export const UpdateJobLabelsResponseExpose =
+const UpdateJobLabelsResponseExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<UpdateJobLabelsResponseExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type UpdateJobLabelsResponseNetworkAliasesList = Array<string>;
-export const UpdateJobLabelsResponseNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<UpdateJobLabelsResponseNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface UpdateJobLabelsResponseNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -4054,12 +3441,10 @@ export interface UpdateJobLabelsResponseNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: UpdateJobLabelsResponseNetworkAliasesList;
 }
-export const UpdateJobLabelsResponseNetwork =
+const UpdateJobLabelsResponseNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<UpdateJobLabelsResponseNetwork>;
 
 export type UpdateJobLabelsResponseOwnerType = "user" | "org";
-export const UpdateJobLabelsResponseOwnerType = S.String;
-
 export interface UpdateJobLabelsResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -4067,15 +3452,11 @@ export interface UpdateJobLabelsResponseOwner {
   type: UpdateJobLabelsResponseOwnerType;
   avatarUrl: string;
 }
-export const UpdateJobLabelsResponseOwner =
+const UpdateJobLabelsResponseOwner =
   CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobLabelsResponseOwner>;
 
 export type UpdateJobLabelsResponseResourceGroup = CancelJobResponseResourceGroup;
-export const UpdateJobLabelsResponseResourceGroup = CancelJobResponseResourceGroup;
-
 export type UpdateJobLabelsResponseInitiatorCase0Type = "user" | "org";
-export const UpdateJobLabelsResponseInitiatorCase0Type = S.String;
-
 export interface UpdateJobLabelsResponseInitiatorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -4083,24 +3464,15 @@ export interface UpdateJobLabelsResponseInitiatorCase0 {
   type: UpdateJobLabelsResponseInitiatorCase0Type;
   avatarUrl: string;
 }
-export const UpdateJobLabelsResponseInitiatorCase0 =
-  CancelJobResponseInitiatorCase0 as any as S.Schema<UpdateJobLabelsResponseInitiatorCase0>;
-
 export type UpdateJobLabelsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-export const UpdateJobLabelsResponseInitiatorCase1 = CancelJobResponseInitiatorCase1;
-
 export type UpdateJobLabelsResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-export const UpdateJobLabelsResponseInitiatorCase2 = CancelJobResponseInitiatorCase1;
-
 export type UpdateJobLabelsResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-export const UpdateJobLabelsResponseInitiatorCase3 = CancelJobResponseInitiatorCase1;
-
 export type UpdateJobLabelsResponseInitiator =
   | UpdateJobLabelsResponseInitiatorCase0
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1
   | CancelJobResponseInitiatorCase1;
-export const UpdateJobLabelsResponseInitiator =
+const UpdateJobLabelsResponseInitiator =
   S.Unknown as any as S.Schema<UpdateJobLabelsResponseInitiator>;
 
 export type UpdateJobLabelsResponseStatusStage =
@@ -4110,24 +3482,22 @@ export type UpdateJobLabelsResponseStatusStage =
   | "DELETED"
   | "RUNNING"
   | "SCHEDULING";
-export const UpdateJobLabelsResponseStatusStage = S.String;
+const UpdateJobLabelsResponseStatusStage = S.String;
 
 export type UpdateJobLabelsResponseStatusCancelReasonCase0 =
   | "NO_CREDITS"
   | "NO_SUBSCRIPTION"
   | "RESOURCE_GROUP_LIMIT"
   | "SPEND_LIMIT";
-export const UpdateJobLabelsResponseStatusCancelReasonCase0 = S.String;
-
 export type UpdateJobLabelsResponseStatusCancelReason =
   | UpdateJobLabelsResponseStatusCancelReasonCase0
   | string;
-export const UpdateJobLabelsResponseStatusCancelReason =
+const UpdateJobLabelsResponseStatusCancelReason =
   S.Unknown as any as S.Schema<UpdateJobLabelsResponseStatusCancelReason>;
 
 /** One reachable URL per port declared in `expose.ports`, in the same order (e.g. `https://<job_id>--8000.hf.jobs`). Absent when the job is not exposed. */
 export type UpdateJobLabelsResponseStatusExposeUrlsList = Array<string>;
-export const UpdateJobLabelsResponseStatusExposeUrlsList =
+const UpdateJobLabelsResponseStatusExposeUrlsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobLabelsResponseStatusExposeUrlsList>;
 
 export interface UpdateJobLabelsResponseStatus {
@@ -4140,7 +3510,7 @@ export interface UpdateJobLabelsResponseStatus {
   /** SSH endpoint for the job (e.g. `ssh://<job_id>@ssh.hf.jobs`). Only present when `ssh.enabled`. */
   sshUrl?: string;
 }
-export const UpdateJobLabelsResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobLabelsResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: UpdateJobLabelsResponseStatusStage,
     message: S.NullOr(S.String),
@@ -4154,16 +3524,14 @@ export const UpdateJobLabelsResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateJobLabelsResponseStatus>;
 
 export type UpdateJobLabelsResponseSecretsList = Array<string>;
-export const UpdateJobLabelsResponseSecretsList =
+const UpdateJobLabelsResponseSecretsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobLabelsResponseSecretsList>;
 
 export type UpdateJobLabelsResponseLabelsMap = { [key: string]: string | undefined };
-export const UpdateJobLabelsResponseLabelsMap =
+const UpdateJobLabelsResponseLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobLabelsResponseLabelsMap>;
 
 export type UpdateJobLabelsResponseHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const UpdateJobLabelsResponseHfTokenTokenRole = S.String;
-
 export interface UpdateJobLabelsResponseHfToken {
   ownerName: string;
   orgName?: string;
@@ -4172,7 +3540,7 @@ export interface UpdateJobLabelsResponseHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateJobLabelsResponseHfToken =
+const UpdateJobLabelsResponseHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateJobLabelsResponseHfToken>;
 
 export interface UpdateJobLabelsResponse {
@@ -4206,7 +3574,7 @@ export interface UpdateJobLabelsResponse {
   labels?: UpdateJobLabelsResponseLabelsMap;
   hfToken?: UpdateJobLabelsResponseHfToken;
 }
-export const UpdateJobLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -4244,7 +3612,7 @@ export interface UpdateJobScheduleRequest {
   /** CRON schedule expression (e.g., '0 9 * * 1' for 9 AM every Monday). */
   schedule: string;
 }
-export const UpdateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -4255,14 +3623,8 @@ export const UpdateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateJobScheduleRequest" }) as any as S.Schema<UpdateJobScheduleRequest>;
 
 export type UpdateJobScheduleResponseStatusLastJob = CreateScheduledJobResponseStatusLastJob;
-export const UpdateJobScheduleResponseStatusLastJob = CreateScheduledJobResponseStatusLastJob;
-
 export type UpdateJobScheduleResponseStatus = CreateScheduledJobResponseStatus;
-export const UpdateJobScheduleResponseStatus = CreateScheduledJobResponseStatus;
-
 export type UpdateJobScheduleResponseOwnerType = "user" | "org";
-export const UpdateJobScheduleResponseOwnerType = S.String;
-
 export interface UpdateJobScheduleResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -4270,12 +3632,10 @@ export interface UpdateJobScheduleResponseOwner {
   avatarUrl: string;
   type: UpdateJobScheduleResponseOwnerType;
 }
-export const UpdateJobScheduleResponseOwner =
+const UpdateJobScheduleResponseOwner =
   CreateScheduledJobResponseOwner as any as S.Schema<UpdateJobScheduleResponseOwner>;
 
 export type UpdateJobScheduleResponseInitiatorType = "user" | "org";
-export const UpdateJobScheduleResponseInitiatorType = S.String;
-
 export interface UpdateJobScheduleResponseInitiator {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -4283,23 +3643,23 @@ export interface UpdateJobScheduleResponseInitiator {
   avatarUrl: string;
   type: UpdateJobScheduleResponseInitiatorType;
 }
-export const UpdateJobScheduleResponseInitiator =
+const UpdateJobScheduleResponseInitiator =
   CreateScheduledJobResponseOwner as any as S.Schema<UpdateJobScheduleResponseInitiator>;
 
 export type UpdateJobScheduleResponseJobSpecEnvironmentMap = { [key: string]: string | undefined };
-export const UpdateJobScheduleResponseJobSpecEnvironmentMap =
+const UpdateJobScheduleResponseJobSpecEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobScheduleResponseJobSpecEnvironmentMap>;
 
 export type UpdateJobScheduleResponseJobSpecCommandList = Array<string>;
-export const UpdateJobScheduleResponseJobSpecCommandList =
+const UpdateJobScheduleResponseJobSpecCommandList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobScheduleResponseJobSpecCommandList>;
 
 export type UpdateJobScheduleResponseJobSpecArgumentsList = Array<string>;
-export const UpdateJobScheduleResponseJobSpecArgumentsList =
+const UpdateJobScheduleResponseJobSpecArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobScheduleResponseJobSpecArgumentsList>;
 
 export type UpdateJobScheduleResponseJobSpecArch = "amd64" | "arm64";
-export const UpdateJobScheduleResponseJobSpecArch = S.String;
+const UpdateJobScheduleResponseJobSpecArch = S.String;
 
 export type UpdateJobScheduleResponseJobSpecFlavor =
   | "cpu-basic"
@@ -4331,41 +3691,28 @@ export type UpdateJobScheduleResponseJobSpecFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const UpdateJobScheduleResponseJobSpecFlavor = S.String;
+const UpdateJobScheduleResponseJobSpecFlavor = S.String;
 
 export type UpdateJobScheduleResponseJobSpecDurations = CancelJobResponseDurations;
-export const UpdateJobScheduleResponseJobSpecDurations = CancelJobResponseDurations;
-
 export type UpdateJobScheduleResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-export const UpdateJobScheduleResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-
 export type UpdateJobScheduleResponseJobSpecVolumesList = Array<CancelJobResponseVolumesItem>;
-export const UpdateJobScheduleResponseJobSpecVolumesList =
+const UpdateJobScheduleResponseJobSpecVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<UpdateJobScheduleResponseJobSpecVolumesList>;
 
 export type UpdateJobScheduleResponseJobSpecExposePortsList = Array<number>;
-export const UpdateJobScheduleResponseJobSpecExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateJobScheduleResponseJobSpecExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateJobScheduleResponseJobSpecExposePortsPublicList = Array<number>;
-export const UpdateJobScheduleResponseJobSpecExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateJobScheduleResponseJobSpecExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface UpdateJobScheduleResponseJobSpecExpose {
   ports: UpdateJobScheduleResponseJobSpecExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateJobScheduleResponseJobSpecExposePortsPublicList;
 }
-export const UpdateJobScheduleResponseJobSpecExpose =
+const UpdateJobScheduleResponseJobSpecExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<UpdateJobScheduleResponseJobSpecExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type UpdateJobScheduleResponseJobSpecNetworkAliasesList = Array<string>;
-export const UpdateJobScheduleResponseJobSpecNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<UpdateJobScheduleResponseJobSpecNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface UpdateJobScheduleResponseJobSpecNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -4373,23 +3720,19 @@ export interface UpdateJobScheduleResponseJobSpecNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: UpdateJobScheduleResponseJobSpecNetworkAliasesList;
 }
-export const UpdateJobScheduleResponseJobSpecNetwork =
+const UpdateJobScheduleResponseJobSpecNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<UpdateJobScheduleResponseJobSpecNetwork>;
 
 export type UpdateJobScheduleResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-export const UpdateJobScheduleResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-
 export type UpdateJobScheduleResponseJobSpecSecretsList = Array<string>;
-export const UpdateJobScheduleResponseJobSpecSecretsList =
+const UpdateJobScheduleResponseJobSpecSecretsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateJobScheduleResponseJobSpecSecretsList>;
 
 export type UpdateJobScheduleResponseJobSpecLabelsMap = { [key: string]: string | undefined };
-export const UpdateJobScheduleResponseJobSpecLabelsMap =
+const UpdateJobScheduleResponseJobSpecLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateJobScheduleResponseJobSpecLabelsMap>;
 
 export type UpdateJobScheduleResponseJobSpecHfTokenTokenRole = "read" | "write" | "fineGrained";
-export const UpdateJobScheduleResponseJobSpecHfTokenTokenRole = S.String;
-
 export interface UpdateJobScheduleResponseJobSpecHfToken {
   ownerName: string;
   orgName?: string;
@@ -4398,7 +3741,7 @@ export interface UpdateJobScheduleResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateJobScheduleResponseJobSpecHfToken =
+const UpdateJobScheduleResponseJobSpecHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateJobScheduleResponseJobSpecHfToken>;
 
 export interface UpdateJobScheduleResponseJobSpec {
@@ -4425,7 +3768,7 @@ export interface UpdateJobScheduleResponseJobSpec {
   labels?: UpdateJobScheduleResponseJobSpecLabelsMap;
   hfToken?: UpdateJobScheduleResponseJobSpecHfToken;
 }
-export const UpdateJobScheduleResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobScheduleResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.optional(S.String),
     dockerImage: S.optional(S.String),
@@ -4465,7 +3808,7 @@ export interface UpdateJobScheduleResponse {
   initiator?: UpdateJobScheduleResponseInitiator;
   jobSpec: UpdateJobScheduleResponseJobSpec;
 }
-export const UpdateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -4485,7 +3828,7 @@ export const UpdateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The new labels to set on the job. Replaces all existing labels. */
 export type UpdateScheduledJobLabelsRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateScheduledJobLabelsRequestLabelsMap =
+const UpdateScheduledJobLabelsRequestLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateScheduledJobLabelsRequestLabelsMap>;
 
 export interface UpdateScheduledJobLabelsRequest {
@@ -4494,7 +3837,7 @@ export interface UpdateScheduledJobLabelsRequest {
   /** The new labels to set on the job. Replaces all existing labels. */
   labels: UpdateScheduledJobLabelsRequestLabelsMap;
 }
-export const UpdateScheduledJobLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduledJobLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -4507,15 +3850,8 @@ export const UpdateScheduledJobLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateScheduledJobLabelsRequest>;
 
 export type UpdateScheduledJobLabelsResponseStatusLastJob = CreateScheduledJobResponseStatusLastJob;
-export const UpdateScheduledJobLabelsResponseStatusLastJob =
-  CreateScheduledJobResponseStatusLastJob;
-
 export type UpdateScheduledJobLabelsResponseStatus = CreateScheduledJobResponseStatus;
-export const UpdateScheduledJobLabelsResponseStatus = CreateScheduledJobResponseStatus;
-
 export type UpdateScheduledJobLabelsResponseOwnerType = "user" | "org";
-export const UpdateScheduledJobLabelsResponseOwnerType = S.String;
-
 export interface UpdateScheduledJobLabelsResponseOwner {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -4523,12 +3859,10 @@ export interface UpdateScheduledJobLabelsResponseOwner {
   avatarUrl: string;
   type: UpdateScheduledJobLabelsResponseOwnerType;
 }
-export const UpdateScheduledJobLabelsResponseOwner =
+const UpdateScheduledJobLabelsResponseOwner =
   CreateScheduledJobResponseOwner as any as S.Schema<UpdateScheduledJobLabelsResponseOwner>;
 
 export type UpdateScheduledJobLabelsResponseInitiatorType = "user" | "org";
-export const UpdateScheduledJobLabelsResponseInitiatorType = S.String;
-
 export interface UpdateScheduledJobLabelsResponseInitiator {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -4536,25 +3870,25 @@ export interface UpdateScheduledJobLabelsResponseInitiator {
   avatarUrl: string;
   type: UpdateScheduledJobLabelsResponseInitiatorType;
 }
-export const UpdateScheduledJobLabelsResponseInitiator =
+const UpdateScheduledJobLabelsResponseInitiator =
   CreateScheduledJobResponseOwner as any as S.Schema<UpdateScheduledJobLabelsResponseInitiator>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecEnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const UpdateScheduledJobLabelsResponseJobSpecEnvironmentMap =
+const UpdateScheduledJobLabelsResponseJobSpecEnvironmentMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecEnvironmentMap>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecCommandList = Array<string>;
-export const UpdateScheduledJobLabelsResponseJobSpecCommandList =
+const UpdateScheduledJobLabelsResponseJobSpecCommandList =
   CancelJobResponseCommandList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecCommandList>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecArgumentsList = Array<string>;
-export const UpdateScheduledJobLabelsResponseJobSpecArgumentsList =
+const UpdateScheduledJobLabelsResponseJobSpecArgumentsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecArgumentsList>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecArch = "amd64" | "arm64";
-export const UpdateScheduledJobLabelsResponseJobSpecArch = S.String;
+const UpdateScheduledJobLabelsResponseJobSpecArch = S.String;
 
 export type UpdateScheduledJobLabelsResponseJobSpecFlavor =
   | "cpu-basic"
@@ -4586,42 +3920,29 @@ export type UpdateScheduledJobLabelsResponseJobSpecFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const UpdateScheduledJobLabelsResponseJobSpecFlavor = S.String;
+const UpdateScheduledJobLabelsResponseJobSpecFlavor = S.String;
 
 export type UpdateScheduledJobLabelsResponseJobSpecDurations = CancelJobResponseDurations;
-export const UpdateScheduledJobLabelsResponseJobSpecDurations = CancelJobResponseDurations;
-
 export type UpdateScheduledJobLabelsResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-export const UpdateScheduledJobLabelsResponseJobSpecVolumesItem = CancelJobResponseVolumesItem;
-
 export type UpdateScheduledJobLabelsResponseJobSpecVolumesList =
   Array<CancelJobResponseVolumesItem>;
-export const UpdateScheduledJobLabelsResponseJobSpecVolumesList =
+const UpdateScheduledJobLabelsResponseJobSpecVolumesList =
   CancelJobResponseVolumesList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecVolumesList>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecExposePortsList = Array<number>;
-export const UpdateScheduledJobLabelsResponseJobSpecExposePortsList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecExposePortsList>;
-
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateScheduledJobLabelsResponseJobSpecExposePortsPublicList = Array<number>;
-export const UpdateScheduledJobLabelsResponseJobSpecExposePortsPublicList =
-  CancelJobResponseExposePortsList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecExposePortsPublicList>;
-
 /** Ports exposed through the jobs proxy (see `status.exposeUrls` for the reachable URLs). */
 export interface UpdateScheduledJobLabelsResponseJobSpecExpose {
   ports: UpdateScheduledJobLabelsResponseJobSpecExposePortsList;
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateScheduledJobLabelsResponseJobSpecExposePortsPublicList;
 }
-export const UpdateScheduledJobLabelsResponseJobSpecExpose =
+const UpdateScheduledJobLabelsResponseJobSpecExpose =
   CreateScheduledJobRequestJobSpecCase0Expose as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecExpose>;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type UpdateScheduledJobLabelsResponseJobSpecNetworkAliasesList = Array<string>;
-export const UpdateScheduledJobLabelsResponseJobSpecNetworkAliasesList =
-  CancelJobResponseCommandList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecNetworkAliasesList>;
-
 /** Network group the job belongs to. */
 export interface UpdateScheduledJobLabelsResponseJobSpecNetwork {
   /** Group name, scoped to the job's owner and resource group. */
@@ -4629,28 +3950,24 @@ export interface UpdateScheduledJobLabelsResponseJobSpecNetwork {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases: UpdateScheduledJobLabelsResponseJobSpecNetworkAliasesList;
 }
-export const UpdateScheduledJobLabelsResponseJobSpecNetwork =
+const UpdateScheduledJobLabelsResponseJobSpecNetwork =
   CreateScheduledJobResponseJobSpecNetwork as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecNetwork>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-export const UpdateScheduledJobLabelsResponseJobSpecResourceGroup = CancelJobResponseResourceGroup;
-
 export type UpdateScheduledJobLabelsResponseJobSpecSecretsList = Array<string>;
-export const UpdateScheduledJobLabelsResponseJobSpecSecretsList =
+const UpdateScheduledJobLabelsResponseJobSpecSecretsList =
   CancelJobResponseCommandList as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecSecretsList>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecLabelsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateScheduledJobLabelsResponseJobSpecLabelsMap =
+const UpdateScheduledJobLabelsResponseJobSpecLabelsMap =
   CancelJobResponseEnvironmentMap as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecLabelsMap>;
 
 export type UpdateScheduledJobLabelsResponseJobSpecHfTokenTokenRole =
   | "read"
   | "write"
   | "fineGrained";
-export const UpdateScheduledJobLabelsResponseJobSpecHfTokenTokenRole = S.String;
-
 export interface UpdateScheduledJobLabelsResponseJobSpecHfToken {
   ownerName: string;
   orgName?: string;
@@ -4659,7 +3976,7 @@ export interface UpdateScheduledJobLabelsResponseJobSpecHfToken {
   tokenId?: string;
   settingsUrl?: string;
 }
-export const UpdateScheduledJobLabelsResponseJobSpecHfToken =
+const UpdateScheduledJobLabelsResponseJobSpecHfToken =
   CreateScheduledJobResponseJobSpecHfToken as any as S.Schema<UpdateScheduledJobLabelsResponseJobSpecHfToken>;
 
 export interface UpdateScheduledJobLabelsResponseJobSpec {
@@ -4686,7 +4003,7 @@ export interface UpdateScheduledJobLabelsResponseJobSpec {
   labels?: UpdateScheduledJobLabelsResponseJobSpecLabelsMap;
   hfToken?: UpdateScheduledJobLabelsResponseJobSpecHfToken;
 }
-export const UpdateScheduledJobLabelsResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduledJobLabelsResponseJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.optional(S.String),
     dockerImage: S.optional(S.String),
@@ -4726,7 +4043,7 @@ export interface UpdateScheduledJobLabelsResponse {
   initiator?: UpdateScheduledJobLabelsResponseInitiator;
   jobSpec: UpdateScheduledJobLabelsResponseJobSpec;
 }
-export const UpdateScheduledJobLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduledJobLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,

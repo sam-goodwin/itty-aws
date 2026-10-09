@@ -66,7 +66,7 @@ export interface AddPublicKeyRequest {
   /** Key that should be added to the environment. Supported formats are `ssh-dss` (see RFC4253), `ssh-rsa` (see RFC4253), `ecdsa-sha2-nistp256` (see RFC5656), `ecdsa-sha2-nistp384` (see RFC5656) and `ecdsa-sha2-nistp521` (see RFC5656). It should be structured as <format> <content>, where <content> part is encoded with Base64. */
   key?: string;
 }
-export const AddPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
   }),
@@ -78,7 +78,7 @@ export interface AddPublicKeyUsersEnvironmentsRequest {
   /** Request body */
   body?: AddPublicKeyRequest;
 }
-export const AddPublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.String.pipe(T.Label()),
     body: S.optional(AddPublicKeyRequest.pipe(T.HttpBody())),
@@ -94,15 +94,10 @@ export const AddPublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AddPublicKeyUsersEnvironmentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -113,7 +108,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -134,7 +129,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -153,7 +148,7 @@ export interface AuthorizeEnvironmentRequest {
   /** The time when the credentials expire. If not set, defaults to one hour from when the server received the request. */
   expireTime?: string;
 }
-export const AuthorizeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idToken: S.optional(S.String),
     accessToken: S.optional(S.String),
@@ -169,7 +164,7 @@ export interface AuthorizeUsersEnvironmentsRequest {
   /** Request body */
   body?: AuthorizeEnvironmentRequest;
 }
-export const AuthorizeUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AuthorizeEnvironmentRequest.pipe(T.HttpBody())),
@@ -186,7 +181,7 @@ export const AuthorizeUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -196,7 +191,7 @@ export interface CancelOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -211,13 +206,13 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -233,7 +228,7 @@ export interface GenerateAccessTokenUsersEnvironmentsRequest {
   /** Required. The environment to generate the access token for. */
   environment: string;
 }
-export const GenerateAccessTokenUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessTokenUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String.pipe(T.Query())),
     ttl: S.optional(S.String.pipe(T.Query())),
@@ -254,7 +249,7 @@ export interface GenerateAccessTokenResponse {
   /** The access token. */
   accessToken?: string;
 }
-export const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String),
   }),
@@ -266,7 +261,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -278,7 +273,7 @@ export interface GetUsersEnvironmentsRequest {
   /** Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. */
   name: string;
 }
-export const GetUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -294,10 +289,10 @@ export type EnvironmentStateEnum =
   | "PENDING"
   | "RUNNING"
   | "DELETING";
-export const EnvironmentStateEnum = S.String;
+const EnvironmentStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A Cloud Shell environment, which is defined as the combination of a Docker image specifying what is installed on the environment and a home directory containing the user's data that will remain across sessions. Each user has at least an environment with the ID "default". */
 export interface Environment {
@@ -320,7 +315,7 @@ export interface Environment {
   /** Output only. Host to which clients can connect to initiate HTTPS or WSS connections with the environment. */
   webHost?: string;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshHost: S.optional(S.String),
     id: S.optional(S.String),
@@ -346,7 +341,7 @@ export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -359,7 +354,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -370,7 +365,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
@@ -383,8 +378,7 @@ export interface RemovePublicKeyRequest {
   /** Key that should be removed from the environment. */
   key?: string;
 }
-export const RemovePublicKeyRequest =
-  AddPublicKeyRequest as any as S.Schema<RemovePublicKeyRequest>;
+const RemovePublicKeyRequest = AddPublicKeyRequest as any as S.Schema<RemovePublicKeyRequest>;
 
 export interface RemovePublicKeyUsersEnvironmentsRequest {
   /** Environment this key should be removed from, e.g. `users/me/environments/default`. */
@@ -392,7 +386,7 @@ export interface RemovePublicKeyUsersEnvironmentsRequest {
   /** Request body */
   body?: RemovePublicKeyRequest;
 }
-export const RemovePublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePublicKeyUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.String.pipe(T.Label()),
     body: S.optional(RemovePublicKeyRequest.pipe(T.HttpBody())),
@@ -414,7 +408,7 @@ export interface StartEnvironmentRequest {
   /** Public keys that should be added to the environment before it is started. */
   publicKeys?: StringList;
 }
-export const StartEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const StartEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String),
     publicKeys: S.optional(StringList),
@@ -427,7 +421,7 @@ export interface StartUsersEnvironmentsRequest {
   /** Request body */
   body?: StartEnvironmentRequest;
 }
-export const StartUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartUsersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(StartEnvironmentRequest.pipe(T.HttpBody())),

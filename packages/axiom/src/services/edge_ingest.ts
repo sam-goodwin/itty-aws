@@ -46,7 +46,7 @@ export interface IngestToDatasetRequest {
   csv_delimiter?: string;
   body: string;
 }
-export const IngestToDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestToDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     timestamp_field: S.optional(S.String.pipe(T.Query("timestamp-field"))),
@@ -60,7 +60,7 @@ export interface IngestFailure {
   error: string;
   timestamp: string;
 }
-export const IngestFailure = /*@__PURE__*/ S.suspend(() =>
+const IngestFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.String,
     timestamp: S.String,
@@ -68,7 +68,7 @@ export const IngestFailure = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngestFailure" }) as any as S.Schema<IngestFailure>;
 
 export type IngestStatusFailuresList = Array<IngestFailure>;
-export const IngestStatusFailuresList = /*@__PURE__*/ S.Array(
+const IngestStatusFailuresList = /*@__PURE__*/ S.Array(
   IngestFailure,
 ) as any as S.Schema<IngestStatusFailuresList>;
 
@@ -80,7 +80,7 @@ export interface IngestStatus {
   processedBytes: number;
   walLength: number;
 }
-export const IngestStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocksCreated: S.Number,
     failed: S.Number,

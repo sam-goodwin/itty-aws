@@ -66,13 +66,13 @@ export type ProjectLifecycleStateEnum =
   | "ACTIVE"
   | "DELETE_REQUESTED"
   | "DELETE_IN_PROGRESS";
-export const ProjectLifecycleStateEnum = S.String;
+const ProjectLifecycleStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on. */
 export interface ResourceId {
@@ -81,7 +81,7 @@ export interface ResourceId {
   /** Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization". */
   type?: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
+const ResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface Project {
   /** An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write. */
   parent?: ResourceId;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycleState: S.optional(ProjectLifecycleStateEnum),
     projectNumber: S.optional(S.String),
@@ -129,7 +129,7 @@ export interface CreateProjectsRequest {
   /** Request body */
   body?: Project;
 }
-export const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useLegacyStack: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Project.pipe(T.HttpBody())),
@@ -146,7 +146,7 @@ export interface DeleteProjectsRequest {
   /** The Project ID (for example, `foo-bar-123`). */
   projectId: string;
 }
-export const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -160,13 +160,13 @@ export const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 /** The request sent to the [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetAncestry] method. */
 export interface GetAncestryRequest {}
-export const GetAncestryRequest = Empty as any as S.Schema<GetAncestryRequest>;
+const GetAncestryRequest = Empty as any as S.Schema<GetAncestryRequest>;
 
 export interface GetAncestryProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
@@ -174,7 +174,7 @@ export interface GetAncestryProjectsRequest {
   /** Request body */
   body?: GetAncestryRequest;
 }
-export const GetAncestryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAncestryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(GetAncestryRequest.pipe(T.HttpBody())),
@@ -194,21 +194,21 @@ export interface Ancestor {
   /** Resource id of the ancestor. */
   resourceId?: ResourceId;
 }
-export const Ancestor = /*@__PURE__*/ S.suspend(() =>
+const Ancestor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(ResourceId),
   }),
 ).annotate({ identifier: "Ancestor" }) as any as S.Schema<Ancestor>;
 
 export type AncestorList = Array<Ancestor>;
-export const AncestorList = /*@__PURE__*/ S.Array(Ancestor) as any as S.Schema<AncestorList>;
+const AncestorList = /*@__PURE__*/ S.Array(Ancestor) as any as S.Schema<AncestorList>;
 
 /** Response from the projects.getAncestry method. */
 export interface GetAncestryResponse {
   /** Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the project itself, followed by the project's parent, etc. */
   ancestor?: AncestorList;
 }
-export const GetAncestryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAncestryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ancestor: S.optional(AncestorList),
   }),
@@ -219,7 +219,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -230,7 +230,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -242,7 +242,7 @@ export interface GetIamPolicyOrganizationsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -268,7 +268,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -286,7 +286,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     role: S.optional(S.String),
@@ -295,14 +295,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -311,7 +311,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -319,7 +319,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -330,7 +330,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -338,9 +338,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -353,7 +351,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -368,7 +366,7 @@ export interface GetIamPolicyProjectsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -389,7 +387,7 @@ export interface GetOrganizationsRequest {
   /** The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
   name: string;
 }
-export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -407,7 +405,7 @@ export interface OrganizationOwner {
   /** The G Suite customer id used in the Directory API. */
   directoryCustomerId?: string;
 }
-export const OrganizationOwner = /*@__PURE__*/ S.suspend(() =>
+const OrganizationOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directoryCustomerId: S.optional(S.String),
   }),
@@ -417,7 +415,7 @@ export type OrganizationLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DELETE_REQUESTED";
-export const OrganizationLifecycleStateEnum = S.String;
+const OrganizationLifecycleStateEnum = S.String;
 
 /** The root node in the resource hierarchy to which a particular entity's (e.g., company) resources belong. */
 export interface Organization {
@@ -434,7 +432,7 @@ export interface Organization {
   /** The organization's current lifecycle state. Assigned by the server. */
   lifecycleState?: OrganizationLifecycleStateEnum | (string & {});
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.optional(S.String),
     owner: S.optional(OrganizationOwner),
@@ -449,7 +447,7 @@ export interface GetProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
   projectId: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -469,7 +467,7 @@ export interface ListOrganizationsRequest {
   /** The maximum number of Organizations to return in the response. This field is optional. */
   pageSize?: number;
 }
-export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -484,9 +482,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type OrganizationList = Array<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrganizationList>;
+const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
 
 /** The response returned from the `ListOrganizations` method. */
 export interface ListOrganizationsResponse {
@@ -495,7 +491,7 @@ export interface ListOrganizationsResponse {
   /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
   nextPageToken?: string;
 }
-export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizations: S.optional(OrganizationList),
     nextPageToken: S.optional(S.String),
@@ -512,7 +508,7 @@ export interface ListProjectsRequest {
   /** An expression for filtering the results of the request. Filter rules are case insensitive. If multiple fields are included in a filter query, the query will return results that match any of the fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` Some examples of using labels as filters: | Filter | Description | |------------------|-----------------------------------------------------| | name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red labels.size:big | The project's label `color` has the value `red` or its label `size` has the value `big`. | If no filter is specified, the call will return projects for which the user has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more consistent results. Optional. */
   filter?: string;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -527,7 +523,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectList = Array<Project>;
-export const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
+const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
 
 /** A page of the response received from the ListProjects method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page. */
 export interface ListProjectsResponse {
@@ -536,7 +532,7 @@ export interface ListProjectsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: S.optional(ProjectList),
     nextPageToken: S.optional(S.String),
@@ -550,7 +546,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -563,7 +559,7 @@ export interface SetIamPolicyOrganizationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -584,7 +580,7 @@ export interface SetIamPolicyProjectsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -604,7 +600,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -618,7 +614,7 @@ export interface TestIamPermissionsOrganizationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -638,7 +634,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsRequest {
@@ -647,7 +643,7 @@ export interface TestIamPermissionsProjectsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -664,15 +660,13 @@ export const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request sent to the UndeleteProject method. */
 export type UndeleteProjectRequest = GetAncestryRequest;
-export const UndeleteProjectRequest = GetAncestryRequest;
-
 export interface UndeleteProjectsRequest {
   /** Required. The project ID (for example, `foo-bar-123`). */
   projectId: string;
   /** Request body */
   body?: GetAncestryRequest;
 }
-export const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(GetAncestryRequest.pipe(T.HttpBody())),
@@ -691,7 +685,7 @@ export interface UpdateOrganizationsRequest {
   /** Request body */
   body?: Organization;
 }
-export const UpdateOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Organization.pipe(T.HttpBody())),
@@ -712,7 +706,7 @@ export interface UpdateProjectsRequest {
   /** Request body */
   body?: Project;
 }
-export const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(Project.pipe(T.HttpBody())),

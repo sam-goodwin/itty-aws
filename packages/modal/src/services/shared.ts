@@ -11,7 +11,7 @@ export type { ModalOpError, ModalOpContext };
 export interface DeleteSharedVolumeRequest {
   sharedVolumeId?: string;
 }
-export const DeleteSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
   }).pipe(
@@ -22,14 +22,14 @@ export const DeleteSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSharedVolumeRequest>;
 
 export interface DeleteSharedVolumeResponse {}
-export const DeleteSharedVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSharedVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSharedVolumeResponse",
 }) as any as S.Schema<DeleteSharedVolumeResponse>;
 
 export interface ListSharedVolumeRequest {
   environmentName?: string;
 }
-export const ListSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SharedVolumeList", code: 200 })),
@@ -42,7 +42,7 @@ export type CloudProvider =
   | "CLOUD_PROVIDER_GCP"
   | "CLOUD_PROVIDER_AUTO"
   | "CLOUD_PROVIDER_OCI";
-export const CloudProvider = S.String;
+const CloudProvider = S.String;
 
 export interface SharedVolumeListItem {
   label?: string;
@@ -51,7 +51,7 @@ export interface SharedVolumeListItem {
   createdAt?: number;
   cloudProvider?: CloudProvider;
 }
-export const SharedVolumeListItem = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     sharedVolumeId: S.optional(S.String),
@@ -61,7 +61,7 @@ export const SharedVolumeListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedVolumeListItem" }) as any as S.Schema<SharedVolumeListItem>;
 
 export type SharedVolumeListItemList = Array<SharedVolumeListItem>;
-export const SharedVolumeListItemList = /*@__PURE__*/ S.Array(
+const SharedVolumeListItemList = /*@__PURE__*/ S.Array(
   SharedVolumeListItem,
 ) as any as S.Schema<SharedVolumeListItemList>;
 
@@ -69,7 +69,7 @@ export interface ListSharedVolumeResponse {
   items?: SharedVolumeListItemList;
   environmentName?: string;
 }
-export const ListSharedVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSharedVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(SharedVolumeListItemList),
     environmentName: S.optional(S.String),
@@ -80,7 +80,7 @@ export interface SharedVolumeGetFileRequest {
   sharedVolumeId?: string;
   path?: string;
 }
-export const SharedVolumeGetFileRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeGetFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -95,7 +95,7 @@ export interface SharedVolumeGetFileResponse {
   data?: string;
   dataBlobId?: string;
 }
-export const SharedVolumeGetFileResponse = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeGetFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     dataBlobId: S.optional(S.String),
@@ -111,7 +111,7 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export interface SharedVolumeGetOrCreateRequest {
   deploymentName?: string;
@@ -120,7 +120,7 @@ export interface SharedVolumeGetOrCreateRequest {
   objectCreationType?: ObjectCreationType | (string & {});
   appId?: string;
 }
-export const SharedVolumeGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -136,7 +136,7 @@ export const SharedVolumeGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SharedVolumeGetOrCreateResponse {
   sharedVolumeId?: string;
 }
-export const SharedVolumeGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
   }),
@@ -147,7 +147,7 @@ export const SharedVolumeGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SharedVolumeHeartbeatRequest {
   sharedVolumeId?: string;
 }
-export const SharedVolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
   }).pipe(
@@ -158,14 +158,14 @@ export const SharedVolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedVolumeHeartbeatRequest>;
 
 export interface SharedVolumeHeartbeatResponse {}
-export const SharedVolumeHeartbeatResponse =
+const SharedVolumeHeartbeatResponse =
   DeleteSharedVolumeResponse as any as S.Schema<SharedVolumeHeartbeatResponse>;
 
 export interface SharedVolumeListFilesRequest {
   sharedVolumeId?: string;
   path?: string;
 }
-export const SharedVolumeListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -183,7 +183,7 @@ export type FileEntryFileType =
   | "SYMLINK"
   | "FIFO"
   | "SOCKET";
-export const FileEntryFileType = S.String;
+const FileEntryFileType = S.String;
 
 /** A file entry when listing files in a volume or network file system. */
 export interface FileEntry {
@@ -192,7 +192,7 @@ export interface FileEntry {
   mtime?: string;
   size?: string;
 }
-export const FileEntry = /*@__PURE__*/ S.suspend(() =>
+const FileEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     type: S.optional(FileEntryFileType),
@@ -202,12 +202,12 @@ export const FileEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileEntry" }) as any as S.Schema<FileEntry>;
 
 export type FileEntryList = Array<FileEntry>;
-export const FileEntryList = /*@__PURE__*/ S.Array(FileEntry) as any as S.Schema<FileEntryList>;
+const FileEntryList = /*@__PURE__*/ S.Array(FileEntry) as any as S.Schema<FileEntryList>;
 
 export interface SharedVolumeListFilesResponse {
   entries?: FileEntryList;
 }
-export const SharedVolumeListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(FileEntryList),
   }),
@@ -223,7 +223,7 @@ export interface SharedVolumePutFileRequest {
   dataBlobId?: string;
   resumable?: boolean;
 }
-export const SharedVolumePutFileRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumePutFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -241,7 +241,7 @@ export const SharedVolumePutFileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SharedVolumePutFileResponse {
   exists?: boolean;
 }
-export const SharedVolumePutFileResponse = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumePutFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.optional(S.Boolean),
   }),
@@ -254,7 +254,7 @@ export interface SharedVolumeRemoveFileRequest {
   path?: string;
   recursive?: boolean;
 }
-export const SharedVolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedVolumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -267,7 +267,7 @@ export const SharedVolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedVolumeRemoveFileRequest>;
 
 export interface SharedVolumeRemoveFileResponse {}
-export const SharedVolumeRemoveFileResponse =
+const SharedVolumeRemoveFileResponse =
   DeleteSharedVolumeResponse as any as S.Schema<SharedVolumeRemoveFileResponse>;
 
 export type DeleteSharedVolumeError = ModalOpError;

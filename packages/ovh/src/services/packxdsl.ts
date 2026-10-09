@@ -13,7 +13,7 @@ export interface CancelPackXdslResiliationRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const CancelPackXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPackXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/cancelResiliation", code: 200 })),
@@ -22,9 +22,7 @@ export const CancelPackXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelPackXdslResiliationRequest>;
 
 export interface CancelPackXdslResiliationResponse {}
-export const CancelPackXdslResiliationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelPackXdslResiliationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelPackXdslResiliationResponse",
 }) as any as S.Schema<CancelPackXdslResiliationResponse>;
 
@@ -34,7 +32,7 @@ export interface CreatePackXdslAddressMoveOfferRequest {
   /** Eligibility reference */
   eligibilityReference: string;
 }
-export const CreatePackXdslAddressMoveOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslAddressMoveOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     eligibilityReference: S.String,
@@ -49,7 +47,7 @@ export interface OrderContract {
   name?: string;
   url?: string;
 }
-export const OrderContract = /*@__PURE__*/ S.suspend(() =>
+const OrderContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     name: S.optional(S.String),
@@ -59,7 +57,7 @@ export const OrderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Contracts details for this offer */
 export type PackXdslAddressMoveMoveOfferContractsList = Array<OrderContract>;
-export const PackXdslAddressMoveMoveOfferContractsList = /*@__PURE__*/ S.Array(
+const PackXdslAddressMoveMoveOfferContractsList = /*@__PURE__*/ S.Array(
   OrderContract,
 ) as any as S.Schema<PackXdslAddressMoveMoveOfferContractsList>;
 
@@ -79,7 +77,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Price with it's currency and textual representation */
 export interface OrderPrice {
@@ -87,7 +85,7 @@ export interface OrderPrice {
   text?: string;
   value?: number;
 }
-export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     text: S.optional(S.String),
@@ -102,7 +100,7 @@ export interface PackXdslMigrationOfferModemOption {
   /** Price of for this modem */
   price?: OrderPrice | null;
 }
-export const PackXdslMigrationOfferModemOption = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationOfferModemOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     price: S.optional(S.NullOr(OrderPrice)),
@@ -113,7 +111,7 @@ export const PackXdslMigrationOfferModemOption = /*@__PURE__*/ S.suspend(() =>
 
 /** List of modems for this offer */
 export type PackXdslAddressMoveMoveOfferModemOptionsList = Array<PackXdslMigrationOfferModemOption>;
-export const PackXdslAddressMoveMoveOfferModemOptionsList = /*@__PURE__*/ S.Array(
+const PackXdslAddressMoveMoveOfferModemOptionsList = /*@__PURE__*/ S.Array(
   PackXdslMigrationOfferModemOption,
 ) as any as S.Schema<PackXdslAddressMoveMoveOfferModemOptionsList>;
 
@@ -134,7 +132,7 @@ export type ConnectivityEligibilityOfferProductProviderEnum =
   | "REFERENCE"
   | "SFR"
   | "TF";
-export const ConnectivityEligibilityOfferProductProviderEnum = S.String;
+const ConnectivityEligibilityOfferProductProviderEnum = S.String;
 
 /** Available option for the offer */
 export interface PackXdslMigrationOfferAvailableOption {
@@ -149,7 +147,7 @@ export interface PackXdslMigrationOfferAvailableOption {
   /** Price of an additional slot. You pay this price everytime the duration is expired */
   optionalPrice?: OrderPrice | null;
 }
-export const PackXdslMigrationOfferAvailableOption = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationOfferAvailableOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.Number),
     included: S.optional(S.Number),
@@ -163,7 +161,7 @@ export const PackXdslMigrationOfferAvailableOption = /*@__PURE__*/ S.suspend(() 
 
 /** Available options for the migration */
 export type PackXdslAddressMoveMoveOfferOptionsList = Array<PackXdslMigrationOfferAvailableOption>;
-export const PackXdslAddressMoveMoveOfferOptionsList = /*@__PURE__*/ S.Array(
+const PackXdslAddressMoveMoveOfferOptionsList = /*@__PURE__*/ S.Array(
   PackXdslMigrationOfferAvailableOption,
 ) as any as S.Schema<PackXdslAddressMoveMoveOfferOptionsList>;
 
@@ -174,7 +172,7 @@ export interface PackXdslAddressMovePrice {
   /** Price of the offer */
   price?: OrderPrice | null;
 }
-export const PackXdslAddressMovePrice = /*@__PURE__*/ S.suspend(() =>
+const PackXdslAddressMovePrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     price: S.optional(S.NullOr(OrderPrice)),
@@ -188,7 +186,7 @@ export interface PackXdslMigrationAndAddressMovePromotionDetails {
   /** Duration of the promotion, if applicable (only for recurrent billing) */
   duration?: string | null;
 }
-export const PackXdslMigrationAndAddressMovePromotionDetails = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationAndAddressMovePromotionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discount: S.optional(OrderPrice),
     duration: S.optional(S.NullOr(S.String)),
@@ -210,7 +208,7 @@ export interface PackXdslMigrationAndAddressMovePromotion {
   /** Details of the promotion for the subscription */
   subscription?: PackXdslMigrationAndAddressMovePromotionDetails | null;
 }
-export const PackXdslMigrationAndAddressMovePromotion = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationAndAddressMovePromotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -247,7 +245,7 @@ export interface PackXdslAddressMovePriceOffer {
   /** Subscription price for provider ORANGE additional cost */
   providerOrange?: PackXdslAddressMovePrice | null;
 }
-export const PackXdslAddressMovePriceOffer = /*@__PURE__*/ S.suspend(() =>
+const PackXdslAddressMovePriceOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationLineFees: S.optional(PackXdslAddressMovePrice),
     currentOfferPrice: S.optional(PackXdslAddressMovePrice),
@@ -267,13 +265,13 @@ export const PackXdslAddressMovePriceOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** List of product from provider available for an offer */
 export type PackXdslAddressMoveMoveOfferProductCodesList = Array<string>;
-export const PackXdslAddressMoveMoveOfferProductCodesList = /*@__PURE__*/ S.Array(
+const PackXdslAddressMoveMoveOfferProductCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PackXdslAddressMoveMoveOfferProductCodesList>;
 
 /** List of domains of sub services */
 export type PackXdslMigrationSubServiceToDeleteServicesList = Array<string>;
-export const PackXdslMigrationSubServiceToDeleteServicesList =
+const PackXdslMigrationSubServiceToDeleteServicesList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<PackXdslMigrationSubServiceToDeleteServicesList>;
 
 /** Service name */
@@ -304,7 +302,7 @@ export type PackXdslServiceNameEnum =
   | "voipLine"
   | "voipTrunk"
   | "xdslAccess";
-export const PackXdslServiceNameEnum = S.String;
+const PackXdslServiceNameEnum = S.String;
 
 /** Sub service to delete */
 export interface PackXdslMigrationSubServiceToDelete {
@@ -315,7 +313,7 @@ export interface PackXdslMigrationSubServiceToDelete {
   /** Type of service to be deleted */
   type?: PackXdslServiceNameEnum;
 }
-export const PackXdslMigrationSubServiceToDelete = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationSubServiceToDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberToDelete: S.optional(S.Number),
     services: S.optional(PackXdslMigrationSubServiceToDeleteServicesList),
@@ -328,7 +326,7 @@ export const PackXdslMigrationSubServiceToDelete = /*@__PURE__*/ S.suspend(() =>
 /** List of sub services to delete */
 export type PackXdslAddressMoveMoveOfferSubServicesToDeleteList =
   Array<PackXdslMigrationSubServiceToDelete>;
-export const PackXdslAddressMoveMoveOfferSubServicesToDeleteList = /*@__PURE__*/ S.Array(
+const PackXdslAddressMoveMoveOfferSubServicesToDeleteList = /*@__PURE__*/ S.Array(
   PackXdslMigrationSubServiceToDelete,
 ) as any as S.Schema<PackXdslAddressMoveMoveOfferSubServicesToDeleteList>;
 
@@ -367,7 +365,7 @@ export interface PackXdslAddressMoveMoveOffer {
   /** URL of the offer */
   url?: string;
 }
-export const PackXdslAddressMoveMoveOffer = /*@__PURE__*/ S.suspend(() =>
+const PackXdslAddressMoveMoveOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contracts: S.optional(PackXdslAddressMoveMoveOfferContractsList),
     customOntAddress: S.optional(S.Boolean),
@@ -392,7 +390,7 @@ export const PackXdslAddressMoveMoveOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of offers */
 export type PackXdslAddressMoveMoveOfferResponseOffersList = Array<PackXdslAddressMoveMoveOffer>;
-export const PackXdslAddressMoveMoveOfferResponseOffersList = /*@__PURE__*/ S.Array(
+const PackXdslAddressMoveMoveOfferResponseOffersList = /*@__PURE__*/ S.Array(
   PackXdslAddressMoveMoveOffer,
 ) as any as S.Schema<PackXdslAddressMoveMoveOfferResponseOffersList>;
 
@@ -401,7 +399,7 @@ export interface PackXdslAddressMoveMoveOfferResponse {
   /** Array of offers */
   offers?: PackXdslAddressMoveMoveOfferResponseOffersList;
 }
-export const PackXdslAddressMoveMoveOfferResponse = /*@__PURE__*/ S.suspend(() =>
+const PackXdslAddressMoveMoveOfferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offers: S.optional(PackXdslAddressMoveMoveOfferResponseOffersList),
   }),
@@ -411,7 +409,7 @@ export const PackXdslAddressMoveMoveOfferResponse = /*@__PURE__*/ S.suspend(() =
 
 /** AsyncTask status */
 export type PackXdslAsyncTaskStatusEnum = "error" | "ok" | "pending";
-export const PackXdslAsyncTaskStatusEnum = S.String;
+const PackXdslAsyncTaskStatusEnum = S.String;
 
 /** Async task */
 export interface PackXdslAsyncTaskPackXdslAddressMoveMoveOfferResponse {
@@ -421,7 +419,7 @@ export interface PackXdslAsyncTaskPackXdslAddressMoveMoveOfferResponse {
   /** Status of the call */
   status?: PackXdslAsyncTaskStatusEnum;
 }
-export const PackXdslAsyncTaskPackXdslAddressMoveMoveOfferResponse = /*@__PURE__*/ S.suspend(() =>
+const PackXdslAsyncTaskPackXdslAddressMoveMoveOfferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     result: S.optional(PackXdslAddressMoveMoveOfferResponse),
@@ -438,7 +436,7 @@ export interface PackXdslMigrationOfferOption {
   /** Number of slots, couting included slots */
   quantity?: number;
 }
-export const PackXdslMigrationOfferOption = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationOfferOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     quantity: S.optional(S.Number),
@@ -450,10 +448,9 @@ export const PackXdslMigrationOfferOption = /*@__PURE__*/ S.suspend(() =>
 /** Options wanted in the new offer */
 export type CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList =
   Array<PackXdslMigrationOfferOption>;
-export const CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList =
-  /*@__PURE__*/ S.Array(
-    PackXdslMigrationOfferOption,
-  ) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList>;
+const CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList = /*@__PURE__*/ S.Array(
+  PackXdslMigrationOfferOption,
+) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList>;
 
 export interface CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest {
   /** The internal name of your pack */
@@ -465,20 +462,19 @@ export interface CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest {
   /** Options wanted in the new offer */
   options?: CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList;
 }
-export const CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packName: S.String.pipe(T.Label()),
-      eligibilityReference: S.String,
-      offerName: S.String,
-      options: S.optional(CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms",
-        code: 200,
-      }),
-    ),
+const CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packName: S.String.pipe(T.Label()),
+    eligibilityReference: S.String,
+    offerName: S.String,
+    options: S.optional(CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest",
 }) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest>;
@@ -496,7 +492,7 @@ export interface PackXdslMigrationSubServiceDetails {
   /** sub service name */
   service?: string;
 }
-export const PackXdslMigrationSubServiceDetails = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationSubServiceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAllowed: S.optional(S.Boolean),
     price: S.optional(OrderPrice),
@@ -511,7 +507,7 @@ export const PackXdslMigrationSubServiceDetails = /*@__PURE__*/ S.suspend(() =>
 /** List of domains of sub services with unpack terms */
 export type PackXdslMigrationSubServicesDetailsToDeleteServicesList =
   Array<PackXdslMigrationSubServiceDetails>;
-export const PackXdslMigrationSubServicesDetailsToDeleteServicesList = /*@__PURE__*/ S.Array(
+const PackXdslMigrationSubServicesDetailsToDeleteServicesList = /*@__PURE__*/ S.Array(
   PackXdslMigrationSubServiceDetails,
 ) as any as S.Schema<PackXdslMigrationSubServicesDetailsToDeleteServicesList>;
 
@@ -524,7 +520,7 @@ export interface PackXdslMigrationSubServicesDetailsToDelete {
   /** Type of service to be deleted */
   type?: PackXdslServiceNameEnum;
 }
-export const PackXdslMigrationSubServicesDetailsToDelete = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationSubServicesDetailsToDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberToDelete: S.optional(S.Number),
     services: S.optional(PackXdslMigrationSubServicesDetailsToDeleteServicesList),
@@ -536,16 +532,14 @@ export const PackXdslMigrationSubServicesDetailsToDelete = /*@__PURE__*/ S.suspe
 
 export type CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList =
   Array<PackXdslMigrationSubServicesDetailsToDelete>;
-export const CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    PackXdslMigrationSubServicesDetailsToDelete,
-  ) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList>;
+const CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList = /*@__PURE__*/ S.Array(
+  PackXdslMigrationSubServicesDetailsToDelete,
+) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList>;
 
 export type CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse =
   CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList;
-export const CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList.pipe(T.RawResponseRoot()),
+const CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse = /*@__PURE__*/ S.suspend(() =>
+  CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse",
 }) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse>;
@@ -560,7 +554,7 @@ export interface CreatePackXdslChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreatePackXdslChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -572,12 +566,12 @@ export const CreatePackXdslChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePackXdslChangeContactRequest>;
 
 export type CreatePackXdslChangeContactResponseBodyList = Array<number>;
-export const CreatePackXdslChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreatePackXdslChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreatePackXdslChangeContactResponseBodyList>;
 
 export type CreatePackXdslChangeContactResponse = CreatePackXdslChangeContactResponseBodyList;
-export const CreatePackXdslChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreatePackXdslChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreatePackXdslChangeContactResponse",
@@ -585,7 +579,7 @@ export const CreatePackXdslChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Domain action */
 export type PackXdslDomainActionEnum = "create" | "trade" | "transfer";
-export const PackXdslDomainActionEnum = S.String;
+const PackXdslDomainActionEnum = S.String;
 
 export interface CreatePackXdslDomainServiceRequest {
   /** The internal name of your pack */
@@ -599,7 +593,7 @@ export interface CreatePackXdslDomainServiceRequest {
   /** TLD of the domain */
   tld: string;
 }
-export const CreatePackXdslDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     action: PackXdslDomainActionEnum,
@@ -613,7 +607,7 @@ export const CreatePackXdslDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of a task. */
 export type PackXdslTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo";
-export const PackXdslTaskStatusEnum = S.String;
+const PackXdslTaskStatusEnum = S.String;
 
 /** Describes the current status of a task */
 export interface PackXdslTask {
@@ -622,7 +616,7 @@ export interface PackXdslTask {
   status?: PackXdslTaskStatusEnum;
   updateDate?: string;
 }
-export const PackXdslTask = /*@__PURE__*/ S.suspend(() =>
+const PackXdslTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(S.String),
     id: S.optional(S.Number),
@@ -639,7 +633,7 @@ export interface CreatePackXdslEmailProServiceRequest {
   /** The password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreatePackXdslEmailProServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslEmailProServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     email: S.String,
@@ -657,7 +651,7 @@ export interface CreatePackXdslHostedEmailServiceRequest {
   /** Password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreatePackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     email: S.String,
@@ -674,7 +668,7 @@ export interface CreatePackXdslHostedEmailServiceChangePasswordRequest {
   /** New password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreatePackXdslHostedEmailServiceChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslHostedEmailServiceChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -691,7 +685,7 @@ export const CreatePackXdslHostedEmailServiceChangePasswordRequest = /*@__PURE__
 }) as any as S.Schema<CreatePackXdslHostedEmailServiceChangePasswordRequest>;
 
 export interface CreatePackXdslHostedEmailServiceChangePasswordResponse {}
-export const CreatePackXdslHostedEmailServiceChangePasswordResponse =
+const CreatePackXdslHostedEmailServiceChangePasswordResponse =
   CancelPackXdslResiliationResponse as any as S.Schema<CreatePackXdslHostedEmailServiceChangePasswordResponse>;
 
 export interface CreatePackXdslMigrationOfferRequest {
@@ -700,7 +694,7 @@ export interface CreatePackXdslMigrationOfferRequest {
   /** Building reference for FTTH and FTTE offers */
   buildingReference?: string;
 }
-export const CreatePackXdslMigrationOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslMigrationOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     buildingReference: S.optional(S.String),
@@ -711,7 +705,7 @@ export const CreatePackXdslMigrationOfferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of floor indentifier, "_NA_" if no identifier is available */
 export type ConnectivityEligibilityBuildingStairFloorsList = Array<string>;
-export const ConnectivityEligibilityBuildingStairFloorsList =
+const ConnectivityEligibilityBuildingStairFloorsList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ConnectivityEligibilityBuildingStairFloorsList>;
 
 /** Stair details of a Building */
@@ -721,7 +715,7 @@ export interface ConnectivityEligibilityBuildingStair {
   /** Stair identifier, "_NA_" if no identifier is available */
   stair?: string;
 }
-export const ConnectivityEligibilityBuildingStair = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityEligibilityBuildingStair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     floors: S.optional(ConnectivityEligibilityBuildingStairFloorsList),
     stair: S.optional(S.String),
@@ -732,13 +726,13 @@ export const ConnectivityEligibilityBuildingStair = /*@__PURE__*/ S.suspend(() =
 
 /** Stairs for this building */
 export type ConnectivityEligibilityBuildingStairsList = Array<ConnectivityEligibilityBuildingStair>;
-export const ConnectivityEligibilityBuildingStairsList = /*@__PURE__*/ S.Array(
+const ConnectivityEligibilityBuildingStairsList = /*@__PURE__*/ S.Array(
   ConnectivityEligibilityBuildingStair,
 ) as any as S.Schema<ConnectivityEligibilityBuildingStairsList>;
 
 /** Building type */
 export type ConnectivityEligibilityBuildingTypeEnum = "BUILDING" | "HOUSE";
-export const ConnectivityEligibilityBuildingTypeEnum = S.String;
+const ConnectivityEligibilityBuildingTypeEnum = S.String;
 
 /** Details of a Building */
 export interface ConnectivityEligibilityBuilding {
@@ -753,7 +747,7 @@ export interface ConnectivityEligibilityBuilding {
   /** Building type */
   type?: ConnectivityEligibilityBuildingTypeEnum | null;
 }
-export const ConnectivityEligibilityBuilding = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityEligibilityBuilding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nro: S.optional(S.NullOr(S.String)),
@@ -768,41 +762,41 @@ export const ConnectivityEligibilityBuilding = /*@__PURE__*/ S.suspend(() =>
 /** Array of buildings */
 export type PackXdslMigrationMigrationOfferResponseBuildingsList =
   Array<ConnectivityEligibilityBuilding>;
-export const PackXdslMigrationMigrationOfferResponseBuildingsList = /*@__PURE__*/ S.Array(
+const PackXdslMigrationMigrationOfferResponseBuildingsList = /*@__PURE__*/ S.Array(
   ConnectivityEligibilityBuilding,
 ) as any as S.Schema<PackXdslMigrationMigrationOfferResponseBuildingsList>;
 
 /** DEPRECATED - List of contracts */
 export type PackXdslMigrationMigrationOfferContractListList = Array<string>;
-export const PackXdslMigrationMigrationOfferContractListList =
+const PackXdslMigrationMigrationOfferContractListList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<PackXdslMigrationMigrationOfferContractListList>;
 
 /** List of contracts for this offer */
 export type PackXdslMigrationMigrationOfferContractsList = Array<OrderContract>;
-export const PackXdslMigrationMigrationOfferContractsList =
+const PackXdslMigrationMigrationOfferContractsList =
   PackXdslAddressMoveMoveOfferContractsList as any as S.Schema<PackXdslMigrationMigrationOfferContractsList>;
 
 /** List of number of months possible for engagement */
 export type PackXdslMigrationMigrationOfferEngagementMonthsList = Array<number>;
-export const PackXdslMigrationMigrationOfferEngagementMonthsList =
+const PackXdslMigrationMigrationOfferEngagementMonthsList =
   CreatePackXdslChangeContactResponseBodyList as any as S.Schema<PackXdslMigrationMigrationOfferEngagementMonthsList>;
 
 /** List of modems for this offer */
 export type PackXdslMigrationMigrationOfferModemOptionsList =
   Array<PackXdslMigrationOfferModemOption>;
-export const PackXdslMigrationMigrationOfferModemOptionsList =
+const PackXdslMigrationMigrationOfferModemOptionsList =
   PackXdslAddressMoveMoveOfferModemOptionsList as any as S.Schema<PackXdslMigrationMigrationOfferModemOptionsList>;
 
 /** Available options for the migration */
 export type PackXdslMigrationMigrationOfferOptionsList =
   Array<PackXdslMigrationOfferAvailableOption>;
-export const PackXdslMigrationMigrationOfferOptionsList =
+const PackXdslMigrationMigrationOfferOptionsList =
   PackXdslAddressMoveMoveOfferOptionsList as any as S.Schema<PackXdslMigrationMigrationOfferOptionsList>;
 
 /** List of sub services to delete */
 export type PackXdslMigrationMigrationOfferSubServicesToDeleteList =
   Array<PackXdslMigrationSubServiceToDelete>;
-export const PackXdslMigrationMigrationOfferSubServicesToDeleteList =
+const PackXdslMigrationMigrationOfferSubServicesToDeleteList =
   PackXdslAddressMoveMoveOfferSubServicesToDeleteList as any as S.Schema<PackXdslMigrationMigrationOfferSubServicesToDeleteList>;
 
 /** Migration offer */
@@ -862,7 +856,7 @@ export interface PackXdslMigrationMigrationOffer {
   /** URL of the offer */
   url?: string;
 }
-export const PackXdslMigrationMigrationOffer = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationMigrationOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractList: S.optional(PackXdslMigrationMigrationOfferContractListList),
     contracts: S.optional(PackXdslMigrationMigrationOfferContractsList),
@@ -899,7 +893,7 @@ export const PackXdslMigrationMigrationOffer = /*@__PURE__*/ S.suspend(() =>
 /** Array of offers */
 export type PackXdslMigrationMigrationOfferResponseOffersList =
   Array<PackXdslMigrationMigrationOffer>;
-export const PackXdslMigrationMigrationOfferResponseOffersList = /*@__PURE__*/ S.Array(
+const PackXdslMigrationMigrationOfferResponseOffersList = /*@__PURE__*/ S.Array(
   PackXdslMigrationMigrationOffer,
 ) as any as S.Schema<PackXdslMigrationMigrationOfferResponseOffersList>;
 
@@ -910,7 +904,7 @@ export interface PackXdslMigrationMigrationOfferResponse {
   /** Array of offers */
   offers?: PackXdslMigrationMigrationOfferResponseOffersList;
 }
-export const PackXdslMigrationMigrationOfferResponse = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationMigrationOfferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildings: S.optional(PackXdslMigrationMigrationOfferResponseBuildingsList),
     offers: S.optional(PackXdslMigrationMigrationOfferResponseOffersList),
@@ -927,13 +921,12 @@ export interface PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse {
   /** Status of the call */
   status?: PackXdslAsyncTaskStatusEnum;
 }
-export const PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      error: S.optional(S.NullOr(S.String)),
-      result: S.optional(PackXdslMigrationMigrationOfferResponse),
-      status: S.optional(PackXdslAsyncTaskStatusEnum),
-    }),
+const PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: S.optional(S.NullOr(S.String)),
+    result: S.optional(PackXdslMigrationMigrationOfferResponse),
+    status: S.optional(PackXdslAsyncTaskStatusEnum),
+  }),
 ).annotate({
   identifier: "PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse",
 }) as any as S.Schema<PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse>;
@@ -941,7 +934,7 @@ export const PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse = /*@__PUR
 /** Options wanted in the new offer */
 export type CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList =
   Array<PackXdslMigrationOfferOption>;
-export const CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList =
+const CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList =
   CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequestOptionsList as any as S.Schema<CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList>;
 
 export interface CreatePackXdslMigrationServicesToDeleteUnpackTermRequest {
@@ -952,32 +945,31 @@ export interface CreatePackXdslMigrationServicesToDeleteUnpackTermRequest {
   /** Options wanted in the new offer */
   options?: CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList;
 }
-export const CreatePackXdslMigrationServicesToDeleteUnpackTermRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packName: S.String.pipe(T.Label()),
-      offerName: S.String,
-      options: S.optional(CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms",
-        code: 200,
-      }),
-    ),
+const CreatePackXdslMigrationServicesToDeleteUnpackTermRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packName: S.String.pipe(T.Label()),
+    offerName: S.String,
+    options: S.optional(CreatePackXdslMigrationServicesToDeleteUnpackTermRequestOptionsList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreatePackXdslMigrationServicesToDeleteUnpackTermRequest",
 }) as any as S.Schema<CreatePackXdslMigrationServicesToDeleteUnpackTermRequest>;
 
 export type CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList =
   Array<PackXdslMigrationSubServicesDetailsToDelete>;
-export const CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList =
+const CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList =
   CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponseBodyList as any as S.Schema<CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList>;
 
 export type CreatePackXdslMigrationServicesToDeleteUnpackTermResponse =
   CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList;
-export const CreatePackXdslMigrationServicesToDeleteUnpackTermResponse = /*@__PURE__*/ S.suspend(
-  () => CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList.pipe(T.RawResponseRoot()),
+const CreatePackXdslMigrationServicesToDeleteUnpackTermResponse = /*@__PURE__*/ S.suspend(() =>
+  CreatePackXdslMigrationServicesToDeleteUnpackTermResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreatePackXdslMigrationServicesToDeleteUnpackTermResponse",
 }) as any as S.Schema<CreatePackXdslMigrationServicesToDeleteUnpackTermResponse>;
@@ -995,7 +987,7 @@ export type PackXdslResiliationReasonEnum =
   | "other"
   | "price"
   | "technicalProblems";
-export const PackXdslResiliationReasonEnum = S.String;
+const PackXdslResiliationReasonEnum = S.String;
 
 /** Information about the reason for the resiliation */
 export interface PackXdslResiliationSurvey {
@@ -1006,7 +998,7 @@ export interface PackXdslResiliationSurvey {
   /** Type of reason for the resiliation */
   type?: PackXdslResiliationReasonEnum | (string & {});
 }
-export const PackXdslResiliationSurvey = /*@__PURE__*/ S.suspend(() =>
+const PackXdslResiliationSurvey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     subsidiary: S.optional(S.NullOr(S.String)),
@@ -1018,7 +1010,7 @@ export const PackXdslResiliationSurvey = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of service you will keep on resiliation. (you can get it with /pack/xdsl/{packName}/subServices) */
 export type CreatePackXdslResiliateRequestServicesToKeepList = Array<number>;
-export const CreatePackXdslResiliateRequestServicesToKeepList =
+const CreatePackXdslResiliateRequestServicesToKeepList =
   CreatePackXdslChangeContactResponseBodyList as any as S.Schema<CreatePackXdslResiliateRequestServicesToKeepList>;
 
 export interface CreatePackXdslResiliateRequest {
@@ -1031,7 +1023,7 @@ export interface CreatePackXdslResiliateRequest {
   /** Ids of service you will keep on resiliation. (you can get it with /pack/xdsl/{packName}/subServices) */
   servicesToKeep?: CreatePackXdslResiliateRequestServicesToKeepList;
 }
-export const CreatePackXdslResiliateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslResiliateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     resiliationDate: S.optional(S.String),
@@ -1053,7 +1045,7 @@ export interface PackXdslResiliationFollowUpDetail {
   /** Status of the resiliation */
   status?: string;
 }
-export const PackXdslResiliationFollowUpDetail = /*@__PURE__*/ S.suspend(() =>
+const PackXdslResiliationFollowUpDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateTodo: S.optional(S.String),
     needModemReturn: S.optional(S.Boolean),
@@ -1068,7 +1060,7 @@ export interface CreatePackXdslVoipEcofaxServiceRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const CreatePackXdslVoipEcofaxServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslVoipEcofaxServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/voipEcofax/services", code: 200 })),
@@ -1090,36 +1082,35 @@ export interface CreatePackXdslVoipLineOptionCustomShippingAddressRequest {
   /** Zip code */
   zipCode: string;
 }
-export const CreatePackXdslVoipLineOptionCustomShippingAddressRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packName: S.String.pipe(T.Label()),
-      address: S.String,
-      cityName: S.String,
-      firstName: S.String,
-      lastName: S.String,
-      zipCode: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/pack/xdsl/{packName}/voipLine/options/customShippingAddress",
-        code: 200,
-      }),
-    ),
+const CreatePackXdslVoipLineOptionCustomShippingAddressRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packName: S.String.pipe(T.Label()),
+    address: S.String,
+    cityName: S.String,
+    firstName: S.String,
+    lastName: S.String,
+    zipCode: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/pack/xdsl/{packName}/voipLine/options/customShippingAddress",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreatePackXdslVoipLineOptionCustomShippingAddressRequest",
 }) as any as S.Schema<CreatePackXdslVoipLineOptionCustomShippingAddressRequest>;
 
 export type CreatePackXdslVoipLineOptionCustomShippingAddressResponse = number;
-export const CreatePackXdslVoipLineOptionCustomShippingAddressResponse = /*@__PURE__*/ S.suspend(
-  () => S.Number.pipe(T.RawResponseRoot()),
+const CreatePackXdslVoipLineOptionCustomShippingAddressResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreatePackXdslVoipLineOptionCustomShippingAddressResponse",
 }) as any as S.Schema<CreatePackXdslVoipLineOptionCustomShippingAddressResponse>;
 
 /** List of names from hardwares call */
 export type CreatePackXdslVoipLineServiceRequestHardwareNamesList = Array<string>;
-export const CreatePackXdslVoipLineServiceRequestHardwareNamesList =
+const CreatePackXdslVoipLineServiceRequestHardwareNamesList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<CreatePackXdslVoipLineServiceRequestHardwareNamesList>;
 
 export interface CreatePackXdslVoipLineServiceRequest {
@@ -1132,7 +1123,7 @@ export interface CreatePackXdslVoipLineServiceRequest {
   /** Shipping ID for the order */
   shippingId?: string;
 }
-export const CreatePackXdslVoipLineServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackXdslVoipLineServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     hardwareNames: CreatePackXdslVoipLineServiceRequestHardwareNamesList,
@@ -1144,7 +1135,7 @@ export const CreatePackXdslVoipLineServiceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreatePackXdslVoipLineServiceRequest>;
 
 export type PackXdslVoIPLineOrderTaskIdsList = Array<number>;
-export const PackXdslVoIPLineOrderTaskIdsList =
+const PackXdslVoIPLineOrderTaskIdsList =
   CreatePackXdslChangeContactResponseBodyList as any as S.Schema<PackXdslVoIPLineOrderTaskIdsList>;
 
 /** Represents an order of VoIP lines */
@@ -1155,7 +1146,7 @@ export interface PackXdslVoIPLineOrder {
   orderUrl?: string;
   taskIds?: PackXdslVoIPLineOrderTaskIdsList;
 }
-export const PackXdslVoIPLineOrder = /*@__PURE__*/ S.suspend(() =>
+const PackXdslVoIPLineOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     needPayment: S.optional(S.Boolean),
     orderId: S.optional(S.Number),
@@ -1169,7 +1160,7 @@ export interface DeletePackXdslHostedEmailServiceRequest {
   packName: string;
   domain: string;
 }
-export const DeletePackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1185,14 +1176,14 @@ export const DeletePackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeletePackXdslHostedEmailServiceRequest>;
 
 export interface DeletePackXdslHostedEmailServiceResponse {}
-export const DeletePackXdslHostedEmailServiceResponse =
+const DeletePackXdslHostedEmailServiceResponse =
   CancelPackXdslResiliationResponse as any as S.Schema<DeletePackXdslHostedEmailServiceResponse>;
 
 export interface GeneratePackXdslPromotionCodeRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const GeneratePackXdslPromotionCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GeneratePackXdslPromotionCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1206,7 +1197,7 @@ export interface GetPackXdslRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const GetPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}", code: 200 })),
@@ -1221,7 +1212,7 @@ export interface PackXdslPackCapabilities {
   /** Whether or not this pack is a reseller offer */
   isResellerOffer?: boolean;
 }
-export const PackXdslPackCapabilities = /*@__PURE__*/ S.suspend(() =>
+const PackXdslPackCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canMoveAddress: S.optional(S.Boolean),
     isLegacyOffer: S.optional(S.Boolean),
@@ -1231,7 +1222,7 @@ export const PackXdslPackCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -1247,7 +1238,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -1271,7 +1262,7 @@ export interface PackXdslPackAdslWithIAM {
   /** Name of the xdsl pack */
   packName?: string;
 }
-export const PackXdslPackAdslWithIAM = /*@__PURE__*/ S.suspend(() =>
+const PackXdslPackAdslWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilities: S.optional(PackXdslPackCapabilities),
     description: S.optional(S.NullOr(S.String)),
@@ -1286,7 +1277,7 @@ export interface GetPackXdslCanCancelResiliationRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const GetPackXdslCanCancelResiliationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslCanCancelResiliationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/canCancelResiliation", code: 200 })),
@@ -1295,7 +1286,7 @@ export const GetPackXdslCanCancelResiliationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetPackXdslCanCancelResiliationRequest>;
 
 export type GetPackXdslCanCancelResiliationResponse = boolean;
-export const GetPackXdslCanCancelResiliationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslCanCancelResiliationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetPackXdslCanCancelResiliationResponse",
@@ -1305,7 +1296,7 @@ export interface GetPackXdslContactOwnerRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const GetPackXdslContactOwnerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslContactOwnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/contactOwner", code: 200 })),
@@ -1569,7 +1560,7 @@ export type NichandleCountryEnum =
   | "ZA"
   | "ZM"
   | "ZW";
-export const NichandleCountryEnum = S.String;
+const NichandleCountryEnum = S.String;
 
 /** Information about the contact */
 export interface PackXdslContactInfos {
@@ -1594,7 +1585,7 @@ export interface PackXdslContactInfos {
   /** contact zip */
   zip?: string | null;
 }
-export const PackXdslContactInfos = /*@__PURE__*/ S.suspend(() =>
+const PackXdslContactInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     city: S.optional(S.NullOr(S.String)),
@@ -1615,7 +1606,7 @@ export interface GetPackXdslEmailProOptionIsEmailAvailableRequest {
   /** The email address */
   email: string;
 }
-export const GetPackXdslEmailProOptionIsEmailAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslEmailProOptionIsEmailAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     email: S.String.pipe(T.Query()),
@@ -1631,7 +1622,7 @@ export const GetPackXdslEmailProOptionIsEmailAvailableRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetPackXdslEmailProOptionIsEmailAvailableRequest>;
 
 export type GetPackXdslEmailProOptionIsEmailAvailableResponse = boolean;
-export const GetPackXdslEmailProOptionIsEmailAvailableResponse =
+const GetPackXdslEmailProOptionIsEmailAvailableResponse =
   GetPackXdslCanCancelResiliationResponse as any as S.Schema<GetPackXdslEmailProOptionIsEmailAvailableResponse>;
 
 export interface GetPackXdslExchangeAccountServiceRequest {
@@ -1639,7 +1630,7 @@ export interface GetPackXdslExchangeAccountServiceRequest {
   packName: string;
   domain: string;
 }
-export const GetPackXdslExchangeAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslExchangeAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1660,7 +1651,7 @@ export interface PackXdslExchangeAccountService {
   exchangeService?: string;
   organizationName?: string;
 }
-export const PackXdslExchangeAccountService = /*@__PURE__*/ S.suspend(() =>
+const PackXdslExchangeAccountService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     exchangeService: S.optional(S.String),
@@ -1676,25 +1667,24 @@ export interface GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest {
   /** Email */
   email: string;
 }
-export const GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packName: S.String.pipe(T.Label()),
-      email: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable",
-        code: 200,
-      }),
-    ),
+const GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packName: S.String.pipe(T.Label()),
+    email: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest",
 }) as any as S.Schema<GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest>;
 
 export type GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse = boolean;
-export const GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse = /*@__PURE__*/ S.suspend(
-  () => S.Boolean.pipe(T.RawResponseRoot()),
+const GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse",
 }) as any as S.Schema<GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse>;
@@ -1704,7 +1694,7 @@ export interface GetPackXdslHostedEmailServiceRequest {
   packName: string;
   domain: string;
 }
-export const GetPackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1723,7 +1713,7 @@ export const GetPackXdslHostedEmailServiceRequest = /*@__PURE__*/ S.suspend(() =
 export interface PackXdslHostedEmailService {
   domain?: string;
 }
-export const PackXdslHostedEmailService = /*@__PURE__*/ S.suspend(() =>
+const PackXdslHostedEmailService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
   }),
@@ -1736,7 +1726,7 @@ export interface GetPackXdslHostedEmailServiceAccountRequest {
   packName: string;
   domain: string;
 }
-export const GetPackXdslHostedEmailServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslHostedEmailServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1753,14 +1743,14 @@ export const GetPackXdslHostedEmailServiceAccountRequest = /*@__PURE__*/ S.suspe
 
 /** Available offers */
 export type PackXdslHostedEmailAccountOfferEnum = "individual";
-export const PackXdslHostedEmailAccountOfferEnum = S.String;
+const PackXdslHostedEmailAccountOfferEnum = S.String;
 
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueLong {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -1784,7 +1774,7 @@ export interface PackXdslHostedEmailAccount {
   /** Size of the maibox */
   size?: ComplexTypeUnitAndValueLong;
 }
-export const PackXdslHostedEmailAccount = /*@__PURE__*/ S.suspend(() =>
+const PackXdslHostedEmailAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     antispamEnabled: S.optional(S.Boolean),
     antivirusEnabled: S.optional(S.Boolean),
@@ -1801,7 +1791,7 @@ export interface GetPackXdslResiliationFollowUpRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const GetPackXdslResiliationFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslResiliationFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/resiliationFollowUp", code: 200 })),
@@ -1815,7 +1805,7 @@ export interface GetPackXdslResiliationTermsRequest {
   /** The desired resiliation date */
   resiliationDate?: string;
 }
-export const GetPackXdslResiliationTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslResiliationTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     resiliationDate: S.optional(S.String.pipe(T.Query())),
@@ -1826,7 +1816,7 @@ export const GetPackXdslResiliationTermsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available resiliation reasons */
 export type PackXdslResiliationTermsResiliationReasonsList = Array<PackXdslResiliationReasonEnum>;
-export const PackXdslResiliationTermsResiliationReasonsList = /*@__PURE__*/ S.Array(
+const PackXdslResiliationTermsResiliationReasonsList = /*@__PURE__*/ S.Array(
   PackXdslResiliationReasonEnum,
 ) as any as S.Schema<PackXdslResiliationTermsResiliationReasonsList>;
 
@@ -1843,7 +1833,7 @@ export interface PackXdslResiliationTerms {
   /** List of available resiliation reasons */
   resiliationReasons?: PackXdslResiliationTermsResiliationReasonsList;
 }
-export const PackXdslResiliationTerms = /*@__PURE__*/ S.suspend(() =>
+const PackXdslResiliationTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     due: S.optional(OrderPrice),
     engageDate: S.optional(S.NullOr(S.String)),
@@ -1857,7 +1847,7 @@ export interface GetPackXdslServiceInfosRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const GetPackXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/serviceInfos", code: 200 })),
@@ -1867,7 +1857,7 @@ export const GetPackXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreatePackXdslChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -1883,7 +1873,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -1903,7 +1893,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -1912,7 +1902,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -1933,7 +1923,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -1956,7 +1946,7 @@ export interface GetPackXdslSubServiceRequest {
   packName: string;
   domain: string;
 }
-export const GetPackXdslSubServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslSubServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1971,7 +1961,7 @@ export interface PackXdslService {
   id?: number;
   type?: PackXdslServiceNameEnum;
 }
-export const PackXdslService = /*@__PURE__*/ S.suspend(() =>
+const PackXdslService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1984,7 +1974,7 @@ export interface GetPackXdslSubServiceKeepServiceTermsRequest {
   packName: string;
   domain: string;
 }
-export const GetPackXdslSubServiceKeepServiceTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslSubServiceKeepServiceTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2010,7 +2000,7 @@ export interface PackXdslUnpackTerms {
   /** The price it will cost when it will be renew */
   renewPrice?: OrderPrice;
 }
-export const PackXdslUnpackTerms = /*@__PURE__*/ S.suspend(() =>
+const PackXdslUnpackTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAllowed: S.optional(S.Boolean),
     price: S.optional(OrderPrice),
@@ -2025,7 +2015,7 @@ export interface GetPackXdslTaskRequest {
   /** Id of the object */
   id: number;
 }
-export const GetPackXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2037,7 +2027,7 @@ export interface GetPackXdslVoipLineServiceRequest {
   packName: string;
   domain: string;
 }
-export const GetPackXdslVoipLineServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackXdslVoipLineServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2053,7 +2043,7 @@ export interface PackXdslVoipLineService {
   billingAccount?: string;
   domain?: string;
 }
-export const PackXdslVoipLineService = /*@__PURE__*/ S.suspend(() =>
+const PackXdslVoipLineService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.optional(S.String),
     domain: S.optional(S.String),
@@ -2062,19 +2052,19 @@ export const PackXdslVoipLineService = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListPackXdslRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListPackXdslRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListPackXdslRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListPackXdslRequestIamTagsValueList>;
 
 export type ListPackXdslRequestIamTagsMap = {
   [key: string]: ListPackXdslRequestIamTagsValueList | undefined;
 };
-export const ListPackXdslRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListPackXdslRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListPackXdslRequestIamTagsValueList,
 ) as any as S.Schema<ListPackXdslRequestIamTagsMap>;
@@ -2083,18 +2073,18 @@ export interface ListPackXdslRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListPackXdslRequestIamTagsMap;
 }
-export const ListPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListPackXdslRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl", code: 200 })),
 ).annotate({ identifier: "ListPackXdslRequest" }) as any as S.Schema<ListPackXdslRequest>;
 
 export type ListPackXdslResponseBodyList = Array<string>;
-export const ListPackXdslResponseBodyList =
+const ListPackXdslResponseBodyList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslResponseBodyList>;
 
 export type ListPackXdslResponse = ListPackXdslResponseBodyList;
-export const ListPackXdslResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPackXdslResponse" }) as any as S.Schema<ListPackXdslResponse>;
 
@@ -2102,7 +2092,7 @@ export interface ListPackXdslDomainOptionTldsRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslDomainOptionTldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslDomainOptionTldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/domain/options/tlds", code: 200 })),
@@ -2111,11 +2101,11 @@ export const ListPackXdslDomainOptionTldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackXdslDomainOptionTldsRequest>;
 
 export type ListPackXdslDomainOptionTldsResponseBodyList = Array<string>;
-export const ListPackXdslDomainOptionTldsResponseBodyList =
+const ListPackXdslDomainOptionTldsResponseBodyList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslDomainOptionTldsResponseBodyList>;
 
 export type ListPackXdslDomainOptionTldsResponse = ListPackXdslDomainOptionTldsResponseBodyList;
-export const ListPackXdslDomainOptionTldsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslDomainOptionTldsResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslDomainOptionTldsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPackXdslDomainOptionTldsResponse",
@@ -2125,7 +2115,7 @@ export interface ListPackXdslDomainServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslDomainServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslDomainServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/domain/services", code: 200 })),
@@ -2134,18 +2124,15 @@ export const ListPackXdslDomainServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackXdslDomainServicesRequest>;
 
 export type ListPackXdslDomainServicesResponseBodyList = Array<string>;
-export const ListPackXdslDomainServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslDomainServicesResponseBodyList>;
-
 export type ListPackXdslDomainServicesResponse = ListPackXdslDomainServicesResponseBodyList;
-export const ListPackXdslDomainServicesResponse =
+const ListPackXdslDomainServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslDomainServicesResponse>;
 
 export interface ListPackXdslEmailProOptionDomainsRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslEmailProOptionDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslEmailProOptionDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2156,19 +2143,16 @@ export const ListPackXdslEmailProOptionDomainsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPackXdslEmailProOptionDomainsRequest>;
 
 export type ListPackXdslEmailProOptionDomainsResponseBodyList = Array<string>;
-export const ListPackXdslEmailProOptionDomainsResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslEmailProOptionDomainsResponseBodyList>;
-
 export type ListPackXdslEmailProOptionDomainsResponse =
   ListPackXdslEmailProOptionDomainsResponseBodyList;
-export const ListPackXdslEmailProOptionDomainsResponse =
+const ListPackXdslEmailProOptionDomainsResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslEmailProOptionDomainsResponse>;
 
 export interface ListPackXdslEmailProServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslEmailProServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslEmailProServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/emailPro/services", code: 200 })),
@@ -2177,18 +2161,15 @@ export const ListPackXdslEmailProServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackXdslEmailProServicesRequest>;
 
 export type ListPackXdslEmailProServicesResponseBodyList = Array<string>;
-export const ListPackXdslEmailProServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslEmailProServicesResponseBodyList>;
-
 export type ListPackXdslEmailProServicesResponse = ListPackXdslEmailProServicesResponseBodyList;
-export const ListPackXdslEmailProServicesResponse =
+const ListPackXdslEmailProServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslEmailProServicesResponse>;
 
 export interface ListPackXdslExchangeAccountServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslExchangeAccountServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslExchangeAccountServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2199,19 +2180,16 @@ export const ListPackXdslExchangeAccountServicesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListPackXdslExchangeAccountServicesRequest>;
 
 export type ListPackXdslExchangeAccountServicesResponseBodyList = Array<string>;
-export const ListPackXdslExchangeAccountServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslExchangeAccountServicesResponseBodyList>;
-
 export type ListPackXdslExchangeAccountServicesResponse =
   ListPackXdslExchangeAccountServicesResponseBodyList;
-export const ListPackXdslExchangeAccountServicesResponse =
+const ListPackXdslExchangeAccountServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslExchangeAccountServicesResponse>;
 
 export interface ListPackXdslExchangeIndividualOptionDomainsRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslExchangeIndividualOptionDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslExchangeIndividualOptionDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2226,19 +2204,16 @@ export const ListPackXdslExchangeIndividualOptionDomainsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsRequest>;
 
 export type ListPackXdslExchangeIndividualOptionDomainsResponseBodyList = Array<string>;
-export const ListPackXdslExchangeIndividualOptionDomainsResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsResponseBodyList>;
-
 export type ListPackXdslExchangeIndividualOptionDomainsResponse =
   ListPackXdslExchangeIndividualOptionDomainsResponseBodyList;
-export const ListPackXdslExchangeIndividualOptionDomainsResponse =
+const ListPackXdslExchangeIndividualOptionDomainsResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsResponse>;
 
 export interface ListPackXdslExchangeOrganizationServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslExchangeOrganizationServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslExchangeOrganizationServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2253,19 +2228,16 @@ export const ListPackXdslExchangeOrganizationServicesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListPackXdslExchangeOrganizationServicesRequest>;
 
 export type ListPackXdslExchangeOrganizationServicesResponseBodyList = Array<string>;
-export const ListPackXdslExchangeOrganizationServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslExchangeOrganizationServicesResponseBodyList>;
-
 export type ListPackXdslExchangeOrganizationServicesResponse =
   ListPackXdslExchangeOrganizationServicesResponseBodyList;
-export const ListPackXdslExchangeOrganizationServicesResponse =
+const ListPackXdslExchangeOrganizationServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslExchangeOrganizationServicesResponse>;
 
 export interface ListPackXdslHostedEmailOptionDomainsRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslHostedEmailOptionDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslHostedEmailOptionDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2276,12 +2248,9 @@ export const ListPackXdslHostedEmailOptionDomainsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListPackXdslHostedEmailOptionDomainsRequest>;
 
 export type ListPackXdslHostedEmailOptionDomainsResponseBodyList = Array<string>;
-export const ListPackXdslHostedEmailOptionDomainsResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslHostedEmailOptionDomainsResponseBodyList>;
-
 export type ListPackXdslHostedEmailOptionDomainsResponse =
   ListPackXdslHostedEmailOptionDomainsResponseBodyList;
-export const ListPackXdslHostedEmailOptionDomainsResponse =
+const ListPackXdslHostedEmailOptionDomainsResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslHostedEmailOptionDomainsResponse>;
 
 export interface ListPackXdslHostedEmailServiceConfigurationRequest {
@@ -2289,7 +2258,7 @@ export interface ListPackXdslHostedEmailServiceConfigurationRequest {
   packName: string;
   domain: string;
 }
-export const ListPackXdslHostedEmailServiceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslHostedEmailServiceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2313,7 +2282,7 @@ export type PackXdslHostedEmailConfigurationServiceEnum =
   | "smtp"
   | "smtps"
   | "submission";
-export const PackXdslHostedEmailConfigurationServiceEnum = S.String;
+const PackXdslHostedEmailConfigurationServiceEnum = S.String;
 
 /** HostedEmail configuration service */
 export interface PackXdslHostedEmailConfigurationService {
@@ -2330,7 +2299,7 @@ export interface PackXdslHostedEmailConfigurationService {
   /** Does the service use STARTTLS ? */
   startTls?: boolean;
 }
-export const PackXdslHostedEmailConfigurationService = /*@__PURE__*/ S.suspend(() =>
+const PackXdslHostedEmailConfigurationService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     ip: S.optional(S.String),
@@ -2346,13 +2315,13 @@ export const PackXdslHostedEmailConfigurationService = /*@__PURE__*/ S.suspend((
 /** List of services configurations */
 export type PackXdslHostedEmailConfigurationServicesList =
   Array<PackXdslHostedEmailConfigurationService>;
-export const PackXdslHostedEmailConfigurationServicesList = /*@__PURE__*/ S.Array(
+const PackXdslHostedEmailConfigurationServicesList = /*@__PURE__*/ S.Array(
   PackXdslHostedEmailConfigurationService,
 ) as any as S.Schema<PackXdslHostedEmailConfigurationServicesList>;
 
 /** Available configuration statuses */
 export type PackXdslHostedEmailConfigurationStatusEnum = "active" | "suspended";
-export const PackXdslHostedEmailConfigurationStatusEnum = S.String;
+const PackXdslHostedEmailConfigurationStatusEnum = S.String;
 
 /** HostedEmail configuration */
 export interface PackXdslHostedEmailConfiguration {
@@ -2363,7 +2332,7 @@ export interface PackXdslHostedEmailConfiguration {
   /** Webmail url */
   webmailUrl?: string;
 }
-export const PackXdslHostedEmailConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PackXdslHostedEmailConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(PackXdslHostedEmailConfigurationServicesList),
     status: S.optional(PackXdslHostedEmailConfigurationStatusEnum),
@@ -2377,7 +2346,7 @@ export interface ListPackXdslHostedEmailServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslHostedEmailServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslHostedEmailServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/hostedEmail/services", code: 200 })),
@@ -2386,19 +2355,16 @@ export const ListPackXdslHostedEmailServicesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListPackXdslHostedEmailServicesRequest>;
 
 export type ListPackXdslHostedEmailServicesResponseBodyList = Array<string>;
-export const ListPackXdslHostedEmailServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslHostedEmailServicesResponseBodyList>;
-
 export type ListPackXdslHostedEmailServicesResponse =
   ListPackXdslHostedEmailServicesResponseBodyList;
-export const ListPackXdslHostedEmailServicesResponse =
+const ListPackXdslHostedEmailServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslHostedEmailServicesResponse>;
 
 export interface ListPackXdslOrderFollowUpRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslOrderFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslOrderFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/orderFollowUp", code: 200 })),
@@ -2408,7 +2374,7 @@ export const ListPackXdslOrderFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information about the step */
 export type PackXdslOrderFollowUpStepCommentsList = Array<string>;
-export const PackXdslOrderFollowUpStepCommentsList =
+const PackXdslOrderFollowUpStepCommentsList =
   PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<PackXdslOrderFollowUpStepCommentsList>;
 
 /** Information about order follow up step */
@@ -2426,7 +2392,7 @@ export interface PackXdslOrderFollowUpStep {
   /** Status of the step */
   status?: string;
 }
-export const PackXdslOrderFollowUpStep = /*@__PURE__*/ S.suspend(() =>
+const PackXdslOrderFollowUpStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(PackXdslOrderFollowUpStepCommentsList),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -2440,12 +2406,12 @@ export const PackXdslOrderFollowUpStep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackXdslOrderFollowUpStep>;
 
 export type ListPackXdslOrderFollowUpResponseBodyList = Array<PackXdslOrderFollowUpStep>;
-export const ListPackXdslOrderFollowUpResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackXdslOrderFollowUpResponseBodyList = /*@__PURE__*/ S.Array(
   PackXdslOrderFollowUpStep,
 ) as any as S.Schema<ListPackXdslOrderFollowUpResponseBodyList>;
 
 export type ListPackXdslOrderFollowUpResponse = ListPackXdslOrderFollowUpResponseBodyList;
-export const ListPackXdslOrderFollowUpResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslOrderFollowUpResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslOrderFollowUpResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPackXdslOrderFollowUpResponse",
@@ -2455,7 +2421,7 @@ export interface ListPackXdslPromotionCodeCapabilitiesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslPromotionCodeCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslPromotionCodeCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2472,12 +2438,10 @@ export type PackXdslPromotionCodeReasonCodes =
   | "serviceNotInOkState"
   | "stillEngaged"
   | "taskInProgress";
-export const PackXdslPromotionCodeReasonCodes = S.String;
-
 /** Enum of the possible errors */
 export type PackXdslPromotionCodeCapabilitiesReasonCodesList =
   Array<PackXdslPromotionCodeReasonCodes>;
-export const PackXdslPromotionCodeCapabilitiesReasonCodesList =
+const PackXdslPromotionCodeCapabilitiesReasonCodesList =
   PackXdslResiliationTermsResiliationReasonsList as any as S.Schema<PackXdslPromotionCodeCapabilitiesReasonCodesList>;
 
 /** Informations about a promotion code */
@@ -2491,7 +2455,7 @@ export interface PackXdslPromotionCodeCapabilities {
   /** Enum of the possible errors */
   reasonCodes?: PackXdslPromotionCodeCapabilitiesReasonCodesList;
 }
-export const PackXdslPromotionCodeCapabilities = /*@__PURE__*/ S.suspend(() =>
+const PackXdslPromotionCodeCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     canGenerate: S.optional(S.Boolean),
@@ -2506,7 +2470,7 @@ export interface ListPackXdslSearchRequest {
   /** This parameter could be IP / line number / pack name / access name / order id / mac address */
   pattern: string;
 }
-export const ListPackXdslSearchRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/search", code: 200 })),
@@ -2516,7 +2480,7 @@ export const ListPackXdslSearchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible DSL technologies */
 export type XdslDslTypeEnum = "adsl" | "ftte" | "ftth" | "sdsl" | "vdsl";
-export const XdslDslTypeEnum = S.String;
+const XdslDslTypeEnum = S.String;
 
 /** Information about pack xdsl */
 export interface PackXdslPackDetail {
@@ -2531,7 +2495,7 @@ export interface PackXdslPackDetail {
   /** Type of the access */
   type?: XdslDslTypeEnum;
 }
-export const PackXdslPackDetail = /*@__PURE__*/ S.suspend(() =>
+const PackXdslPackDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessname: S.optional(S.String),
     description: S.optional(S.String),
@@ -2542,12 +2506,12 @@ export const PackXdslPackDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackXdslPackDetail" }) as any as S.Schema<PackXdslPackDetail>;
 
 export type ListPackXdslSearchResponseBodyList = Array<PackXdslPackDetail>;
-export const ListPackXdslSearchResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackXdslSearchResponseBodyList = /*@__PURE__*/ S.Array(
   PackXdslPackDetail,
 ) as any as S.Schema<ListPackXdslSearchResponseBodyList>;
 
 export type ListPackXdslSearchResponse = ListPackXdslSearchResponseBodyList;
-export const ListPackXdslSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslSearchResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslSearchResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPackXdslSearchResponse",
@@ -2557,7 +2521,7 @@ export interface ListPackXdslServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/services", code: 200 })),
@@ -2572,7 +2536,7 @@ export interface PackXdslServiceInformation {
   total?: number;
   used?: number;
 }
-export const PackXdslServiceInformation = /*@__PURE__*/ S.suspend(() =>
+const PackXdslServiceInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inCreation: S.optional(S.Number),
     name: S.optional(PackXdslServiceNameEnum),
@@ -2584,12 +2548,12 @@ export const PackXdslServiceInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackXdslServiceInformation>;
 
 export type ListPackXdslServicesResponseBodyList = Array<PackXdslServiceInformation>;
-export const ListPackXdslServicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackXdslServicesResponseBodyList = /*@__PURE__*/ S.Array(
   PackXdslServiceInformation,
 ) as any as S.Schema<ListPackXdslServicesResponseBodyList>;
 
 export type ListPackXdslServicesResponse = ListPackXdslServicesResponseBodyList;
-export const ListPackXdslServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslServicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslServicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPackXdslServicesResponse",
@@ -2597,7 +2561,7 @@ export const ListPackXdslServicesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed contexts when looking for shipping addresses */
 export type PackXdslShippingAddressContextEnum = "migration" | "voipLine";
-export const PackXdslShippingAddressContextEnum = S.String;
+const PackXdslShippingAddressContextEnum = S.String;
 
 export interface ListPackXdslShippingAddressesRequest {
   /** The internal name of your pack */
@@ -2605,7 +2569,7 @@ export interface ListPackXdslShippingAddressesRequest {
   /** Context */
   context: PackXdslShippingAddressContextEnum | (string & {});
 }
-export const ListPackXdslShippingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslShippingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     context: PackXdslShippingAddressContextEnum.pipe(T.Query()),
@@ -2624,7 +2588,7 @@ export interface PackXdslShippingAddress {
   shippingId?: string;
   zipCode?: string;
 }
-export const PackXdslShippingAddress = /*@__PURE__*/ S.suspend(() =>
+const PackXdslShippingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     cityName: S.optional(S.String),
@@ -2637,12 +2601,12 @@ export const PackXdslShippingAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackXdslShippingAddress" }) as any as S.Schema<PackXdslShippingAddress>;
 
 export type ListPackXdslShippingAddressesResponseBodyList = Array<PackXdslShippingAddress>;
-export const ListPackXdslShippingAddressesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackXdslShippingAddressesResponseBodyList = /*@__PURE__*/ S.Array(
   PackXdslShippingAddress,
 ) as any as S.Schema<ListPackXdslShippingAddressesResponseBodyList>;
 
 export type ListPackXdslShippingAddressesResponse = ListPackXdslShippingAddressesResponseBodyList;
-export const ListPackXdslShippingAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslShippingAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslShippingAddressesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPackXdslShippingAddressesResponse",
@@ -2652,7 +2616,7 @@ export interface ListPackXdslSubServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslSubServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslSubServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/subServices", code: 200 })),
@@ -2661,11 +2625,8 @@ export const ListPackXdslSubServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackXdslSubServicesRequest>;
 
 export type ListPackXdslSubServicesResponseBodyList = Array<string>;
-export const ListPackXdslSubServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslSubServicesResponseBodyList>;
-
 export type ListPackXdslSubServicesResponse = ListPackXdslSubServicesResponseBodyList;
-export const ListPackXdslSubServicesResponse =
+const ListPackXdslSubServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslSubServicesResponse>;
 
 export interface ListPackXdslTasksRequest {
@@ -2676,7 +2637,7 @@ export interface ListPackXdslTasksRequest {
   /** Filter the value of status property (=) */
   status?: PackXdslTaskStatusEnum | (string & {});
 }
-export const ListPackXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     function: S.optional(S.String.pipe(T.Query())),
@@ -2685,18 +2646,15 @@ export const ListPackXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPackXdslTasksRequest" }) as any as S.Schema<ListPackXdslTasksRequest>;
 
 export type ListPackXdslTasksResponseBodyList = Array<number>;
-export const ListPackXdslTasksResponseBodyList =
-  CreatePackXdslChangeContactResponseBodyList as any as S.Schema<ListPackXdslTasksResponseBodyList>;
-
 export type ListPackXdslTasksResponse = ListPackXdslTasksResponseBodyList;
-export const ListPackXdslTasksResponse =
+const ListPackXdslTasksResponse =
   CreatePackXdslChangeContactResponse as any as S.Schema<ListPackXdslTasksResponse>;
 
 export interface ListPackXdslVoipBillingAccountServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslVoipBillingAccountServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslVoipBillingAccountServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2707,19 +2665,16 @@ export const ListPackXdslVoipBillingAccountServicesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListPackXdslVoipBillingAccountServicesRequest>;
 
 export type ListPackXdslVoipBillingAccountServicesResponseBodyList = Array<string>;
-export const ListPackXdslVoipBillingAccountServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslVoipBillingAccountServicesResponseBodyList>;
-
 export type ListPackXdslVoipBillingAccountServicesResponse =
   ListPackXdslVoipBillingAccountServicesResponseBodyList;
-export const ListPackXdslVoipBillingAccountServicesResponse =
+const ListPackXdslVoipBillingAccountServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslVoipBillingAccountServicesResponse>;
 
 export interface ListPackXdslVoipEcofaxServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslVoipEcofaxServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslVoipEcofaxServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/voipEcofax/services", code: 200 })),
@@ -2728,18 +2683,15 @@ export const ListPackXdslVoipEcofaxServicesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListPackXdslVoipEcofaxServicesRequest>;
 
 export type ListPackXdslVoipEcofaxServicesResponseBodyList = Array<string>;
-export const ListPackXdslVoipEcofaxServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslVoipEcofaxServicesResponseBodyList>;
-
 export type ListPackXdslVoipEcofaxServicesResponse = ListPackXdslVoipEcofaxServicesResponseBodyList;
-export const ListPackXdslVoipEcofaxServicesResponse =
+const ListPackXdslVoipEcofaxServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslVoipEcofaxServicesResponse>;
 
 export interface ListPackXdslVoipLineOptionHardwaresRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslVoipLineOptionHardwaresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslVoipLineOptionHardwaresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2760,7 +2712,7 @@ export interface PackXdslVoIPHardware {
   needShipping?: boolean;
   url?: string | null;
 }
-export const PackXdslVoIPHardware = /*@__PURE__*/ S.suspend(() =>
+const PackXdslVoIPHardware = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deposit: S.optional(S.NullOr(OrderPrice)),
     fees: S.optional(S.NullOr(OrderPrice)),
@@ -2774,13 +2726,13 @@ export const PackXdslVoIPHardware = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackXdslVoIPHardware" }) as any as S.Schema<PackXdslVoIPHardware>;
 
 export type ListPackXdslVoipLineOptionHardwaresResponseBodyList = Array<PackXdslVoIPHardware>;
-export const ListPackXdslVoipLineOptionHardwaresResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackXdslVoipLineOptionHardwaresResponseBodyList = /*@__PURE__*/ S.Array(
   PackXdslVoIPHardware,
 ) as any as S.Schema<ListPackXdslVoipLineOptionHardwaresResponseBodyList>;
 
 export type ListPackXdslVoipLineOptionHardwaresResponse =
   ListPackXdslVoipLineOptionHardwaresResponseBodyList;
-export const ListPackXdslVoipLineOptionHardwaresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslVoipLineOptionHardwaresResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackXdslVoipLineOptionHardwaresResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPackXdslVoipLineOptionHardwaresResponse",
@@ -2790,7 +2742,7 @@ export interface ListPackXdslVoipLineOptionShippingAddressesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslVoipLineOptionShippingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslVoipLineOptionShippingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2806,19 +2758,16 @@ export const ListPackXdslVoipLineOptionShippingAddressesRequest = /*@__PURE__*/ 
 
 export type ListPackXdslVoipLineOptionShippingAddressesResponseBodyList =
   Array<PackXdslShippingAddress>;
-export const ListPackXdslVoipLineOptionShippingAddressesResponseBodyList =
-  ListPackXdslShippingAddressesResponseBodyList as any as S.Schema<ListPackXdslVoipLineOptionShippingAddressesResponseBodyList>;
-
 export type ListPackXdslVoipLineOptionShippingAddressesResponse =
   ListPackXdslVoipLineOptionShippingAddressesResponseBodyList;
-export const ListPackXdslVoipLineOptionShippingAddressesResponse =
+const ListPackXdslVoipLineOptionShippingAddressesResponse =
   ListPackXdslShippingAddressesResponse as any as S.Schema<ListPackXdslVoipLineOptionShippingAddressesResponse>;
 
 export interface ListPackXdslVoipLineServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslVoipLineServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslVoipLineServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/voipLine/services", code: 200 })),
@@ -2827,18 +2776,15 @@ export const ListPackXdslVoipLineServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackXdslVoipLineServicesRequest>;
 
 export type ListPackXdslVoipLineServicesResponseBodyList = Array<string>;
-export const ListPackXdslVoipLineServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslVoipLineServicesResponseBodyList>;
-
 export type ListPackXdslVoipLineServicesResponse = ListPackXdslVoipLineServicesResponseBodyList;
-export const ListPackXdslVoipLineServicesResponse =
+const ListPackXdslVoipLineServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslVoipLineServicesResponse>;
 
 export interface ListPackXdslXdslAccessServicesRequest {
   /** The internal name of your pack */
   packName: string;
 }
-export const ListPackXdslXdslAccessServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackXdslXdslAccessServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/xdslAccess/services", code: 200 })),
@@ -2847,11 +2793,8 @@ export const ListPackXdslXdslAccessServicesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListPackXdslXdslAccessServicesRequest>;
 
 export type ListPackXdslXdslAccessServicesResponseBodyList = Array<string>;
-export const ListPackXdslXdslAccessServicesResponseBodyList =
-  PackXdslAddressMoveMoveOfferProductCodesList as any as S.Schema<ListPackXdslXdslAccessServicesResponseBodyList>;
-
 export type ListPackXdslXdslAccessServicesResponse = ListPackXdslXdslAccessServicesResponseBodyList;
-export const ListPackXdslXdslAccessServicesResponse =
+const ListPackXdslXdslAccessServicesResponse =
   ListPackXdslDomainOptionTldsResponse as any as S.Schema<ListPackXdslXdslAccessServicesResponse>;
 
 /** Installation type, for fiber only */
@@ -2860,7 +2803,7 @@ export type ConnectivityEligibilityInstallationTypeEnum =
   | "activate_undefined"
   | "create"
   | "multiOtp";
-export const ConnectivityEligibilityInstallationTypeEnum = S.String;
+const ConnectivityEligibilityInstallationTypeEnum = S.String;
 
 /** Represents a time slot for a meeting */
 export interface XdslEligibilityMeetingSlot {
@@ -2873,7 +2816,7 @@ export interface XdslEligibilityMeetingSlot {
   /** An opaque string that represents an intervention unit */
   uiCode?: string;
 }
-export const XdslEligibilityMeetingSlot = /*@__PURE__*/ S.suspend(() =>
+const XdslEligibilityMeetingSlot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.String),
     slotId: S.optional(S.NullOr(S.String)),
@@ -2893,7 +2836,7 @@ export interface XdslEligibilityBookMeetingSlot {
   /** The name of the customer */
   name?: string | null;
 }
-export const XdslEligibilityBookMeetingSlot = /*@__PURE__*/ S.suspend(() =>
+const XdslEligibilityBookMeetingSlot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fakeMeeting: S.optional(S.Boolean),
     meetingSlot: S.optional(S.NullOr(XdslEligibilityMeetingSlot)),
@@ -2905,11 +2848,11 @@ export const XdslEligibilityBookMeetingSlot = /*@__PURE__*/ S.suspend(() =>
 
 /** modem type */
 export type PackXdslModemOptionEnum = "no" | "recycled" | "yes";
-export const PackXdslModemOptionEnum = S.String;
+const PackXdslModemOptionEnum = S.String;
 
 /** Options wanted in the new offer */
 export type MigratePackXdslMigrationRequestOptionsList = Array<PackXdslMigrationOfferOption>;
-export const MigratePackXdslMigrationRequestOptionsList = /*@__PURE__*/ S.Array(
+const MigratePackXdslMigrationRequestOptionsList = /*@__PURE__*/ S.Array(
   PackXdslMigrationOfferOption,
 ) as any as S.Schema<MigratePackXdslMigrationRequestOptionsList>;
 
@@ -2920,7 +2863,7 @@ export interface PackXdslMigrationOfferServiceToDelete {
   /** Type of the service to delete */
   type?: PackXdslServiceNameEnum | (string & {});
 }
-export const PackXdslMigrationOfferServiceToDelete = /*@__PURE__*/ S.suspend(() =>
+const PackXdslMigrationOfferServiceToDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     type: S.optional(PackXdslServiceNameEnum),
@@ -2932,7 +2875,7 @@ export const PackXdslMigrationOfferServiceToDelete = /*@__PURE__*/ S.suspend(() 
 /** List of domains of services to delete if needed */
 export type MigratePackXdslMigrationRequestSubServicesToDeleteList =
   Array<PackXdslMigrationOfferServiceToDelete>;
-export const MigratePackXdslMigrationRequestSubServicesToDeleteList = /*@__PURE__*/ S.Array(
+const MigratePackXdslMigrationRequestSubServicesToDeleteList = /*@__PURE__*/ S.Array(
   PackXdslMigrationOfferServiceToDelete,
 ) as any as S.Schema<MigratePackXdslMigrationRequestSubServicesToDeleteList>;
 
@@ -2943,13 +2886,10 @@ export interface PackXdslMigrationOfferServiceToKeep {
   /** Type of the service to keep */
   type?: PackXdslServiceNameEnum | (string & {});
 }
-export const PackXdslMigrationOfferServiceToKeep =
-  PackXdslMigrationOfferServiceToDelete as any as S.Schema<PackXdslMigrationOfferServiceToKeep>;
-
 /** List of domains of services to keep if needed */
 export type MigratePackXdslMigrationRequestSubServicesToKeepList =
   Array<PackXdslMigrationOfferServiceToKeep>;
-export const MigratePackXdslMigrationRequestSubServicesToKeepList =
+const MigratePackXdslMigrationRequestSubServicesToKeepList =
   MigratePackXdslMigrationRequestSubServicesToDeleteList as any as S.Schema<MigratePackXdslMigrationRequestSubServicesToKeepList>;
 
 export interface MigratePackXdslMigrationRequest {
@@ -2994,7 +2934,7 @@ export interface MigratePackXdslMigrationRequest {
   /** List of domains of services to keep if needed */
   subServicesToKeep?: MigratePackXdslMigrationRequestSubServicesToKeepList;
 }
-export const MigratePackXdslMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const MigratePackXdslMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     acceptContracts: S.Boolean,
@@ -3023,19 +2963,19 @@ export const MigratePackXdslMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Options wanted in the new offer */
 export type MovePackXdslAddressMoveOfferRequestOptionsList = Array<PackXdslMigrationOfferOption>;
-export const MovePackXdslAddressMoveOfferRequestOptionsList =
+const MovePackXdslAddressMoveOfferRequestOptionsList =
   MigratePackXdslMigrationRequestOptionsList as any as S.Schema<MovePackXdslAddressMoveOfferRequestOptionsList>;
 
 /** List of domains of services to delete if needed */
 export type MovePackXdslAddressMoveOfferRequestSubServicesToDeleteList =
   Array<PackXdslMigrationOfferServiceToDelete>;
-export const MovePackXdslAddressMoveOfferRequestSubServicesToDeleteList =
+const MovePackXdslAddressMoveOfferRequestSubServicesToDeleteList =
   MigratePackXdslMigrationRequestSubServicesToDeleteList as any as S.Schema<MovePackXdslAddressMoveOfferRequestSubServicesToDeleteList>;
 
 /** List of domains of services to keep if needed */
 export type MovePackXdslAddressMoveOfferRequestSubServicesToKeepList =
   Array<PackXdslMigrationOfferServiceToKeep>;
-export const MovePackXdslAddressMoveOfferRequestSubServicesToKeepList =
+const MovePackXdslAddressMoveOfferRequestSubServicesToKeepList =
   MigratePackXdslMigrationRequestSubServicesToDeleteList as any as S.Schema<MovePackXdslAddressMoveOfferRequestSubServicesToKeepList>;
 
 export interface MovePackXdslAddressMoveOfferRequest {
@@ -3092,7 +3032,7 @@ export interface MovePackXdslAddressMoveOfferRequest {
   /** List of domains of services to keep if needed */
   subServicesToKeep?: MovePackXdslAddressMoveOfferRequestSubServicesToKeepList;
 }
-export const MovePackXdslAddressMoveOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const MovePackXdslAddressMoveOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     acceptContracts: S.Boolean,
@@ -3135,7 +3075,7 @@ export interface PackXdslAsyncTaskLong {
   /** Status of the call */
   status?: PackXdslAsyncTaskStatusEnum;
 }
-export const PackXdslAsyncTaskLong = /*@__PURE__*/ S.suspend(() =>
+const PackXdslAsyncTaskLong = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     result: S.optional(S.Number),
@@ -3149,7 +3089,7 @@ export interface PutPackXdslRequest {
   /** Customer pack description */
   description?: string | null;
 }
-export const PutPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -3157,8 +3097,7 @@ export const PutPackXdslRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutPackXdslRequest" }) as any as S.Schema<PutPackXdslRequest>;
 
 export interface PutPackXdslResponse {}
-export const PutPackXdslResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutPackXdslResponse>;
+const PutPackXdslResponse = IamResourceTagFilterInput as any as S.Schema<PutPackXdslResponse>;
 
 export interface PutPackXdslServiceInfosRequest {
   /** The internal name of your pack */
@@ -3166,7 +3105,7 @@ export interface PutPackXdslServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutPackXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPackXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -3176,9 +3115,9 @@ export const PutPackXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutPackXdslServiceInfosRequest>;
 
 export interface PutPackXdslServiceInfosResponse {}
-export const PutPackXdslServiceInfosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutPackXdslServiceInfosResponse" },
-) as any as S.Schema<PutPackXdslServiceInfosResponse>;
+const PutPackXdslServiceInfosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutPackXdslServiceInfosResponse",
+}) as any as S.Schema<PutPackXdslServiceInfosResponse>;
 
 export type CancelPackXdslResiliationError = OvhOpError;
 /** Cancel the ongoing resiliation */

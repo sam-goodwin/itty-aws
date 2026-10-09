@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,30 +90,30 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
+const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
 
 export type InstanceDirectoryStripeLevelEnum =
   | "DIRECTORY_STRIPE_LEVEL_UNSPECIFIED"
   | "DIRECTORY_STRIPE_LEVEL_MIN"
   | "DIRECTORY_STRIPE_LEVEL_BALANCED"
   | "DIRECTORY_STRIPE_LEVEL_MAX";
-export const InstanceDirectoryStripeLevelEnum = S.String;
+const InstanceDirectoryStripeLevelEnum = S.String;
 
 export type InstanceFileStripeLevelEnum =
   | "FILE_STRIPE_LEVEL_UNSPECIFIED"
   | "FILE_STRIPE_LEVEL_MIN"
   | "FILE_STRIPE_LEVEL_BALANCED"
   | "FILE_STRIPE_LEVEL_MAX";
-export const InstanceFileStripeLevelEnum = S.String;
+const InstanceFileStripeLevelEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type InstanceDeploymentTypeEnum = "DEPLOYMENT_TYPE_UNSPECIFIED" | "SCRATCH" | "PERSISTENT";
-export const InstanceDeploymentTypeEnum = S.String;
+const InstanceDeploymentTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
@@ -123,7 +123,7 @@ export type InstanceStateEnum =
   | "FAILED"
   | "UPGRADING"
   | "REPAIRING";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 /** A Parallelstore instance. */
 export interface Instance {
@@ -158,7 +158,7 @@ export interface Instance {
   /** Required. Immutable. The instance's storage capacity in Gibibytes (GiB). Allowed values are between 12000 and 100000, in multiples of 4000; e.g., 12000, 16000, 20000, ... */
   capacityGib?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     directoryStripeLevel: S.optional(InstanceDirectoryStripeLevelEnum),
@@ -188,7 +188,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     instanceId: S.optional(S.String.pipe(T.Query())),
@@ -206,15 +206,10 @@ export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -225,7 +220,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -246,7 +241,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -262,7 +257,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -281,7 +276,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -296,13 +291,13 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export type TransferMetadataOptionsGidEnum = "GID_UNSPECIFIED" | "GID_SKIP" | "GID_NUMBER_PRESERVE";
-export const TransferMetadataOptionsGidEnum = S.String;
+const TransferMetadataOptionsGidEnum = S.String;
 
 export type TransferMetadataOptionsModeEnum = "MODE_UNSPECIFIED" | "MODE_SKIP" | "MODE_PRESERVE";
-export const TransferMetadataOptionsModeEnum = S.String;
+const TransferMetadataOptionsModeEnum = S.String;
 
 export type TransferMetadataOptionsUidEnum = "UID_UNSPECIFIED" | "UID_SKIP" | "UID_NUMBER_PRESERVE";
-export const TransferMetadataOptionsUidEnum = S.String;
+const TransferMetadataOptionsUidEnum = S.String;
 
 /** Transfer metadata options for the instance. */
 export interface TransferMetadataOptions {
@@ -313,7 +308,7 @@ export interface TransferMetadataOptions {
   /** Optional. The UID preservation behavior. */
   uid?: TransferMetadataOptionsUidEnum | (string & {});
 }
-export const TransferMetadataOptions = /*@__PURE__*/ S.suspend(() =>
+const TransferMetadataOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gid: S.optional(TransferMetadataOptionsGidEnum),
     mode: S.optional(TransferMetadataOptionsModeEnum),
@@ -326,7 +321,7 @@ export interface SourceParallelstore {
   /** Optional. Root directory path to the Paralellstore filesystem, starting with `/`. Defaults to `/` if unset. */
   path?: string;
 }
-export const SourceParallelstore = /*@__PURE__*/ S.suspend(() =>
+const SourceParallelstore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -337,7 +332,7 @@ export interface DestinationGcsBucket {
   /** Required. URI to a Cloud Storage bucket in the format: `gs:///`. The path inside the bucket is optional. */
   uri?: string;
 }
-export const DestinationGcsBucket = /*@__PURE__*/ S.suspend(() =>
+const DestinationGcsBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -356,7 +351,7 @@ export interface ExportDataRequest {
   /** Optional. User-specified Service Account (SA) credentials to be used when performing the transfer. Use one of the following formats: * `{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/{PROJECT_ID_OR_NUMBER}/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/-/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` If unspecified, the Parallelstore service agent is used: `service-@gcp-sa-parallelstore.iam.gserviceaccount.com` */
   serviceAccount?: string;
 }
-export const ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     metadataOptions: S.optional(TransferMetadataOptions),
@@ -372,7 +367,7 @@ export interface ExportDataProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ExportDataRequest;
 }
-export const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportDataRequest.pipe(T.HttpBody())),
@@ -391,7 +386,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -414,7 +409,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -428,7 +423,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -442,7 +437,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -454,12 +449,8 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Cloud Storage as the source of a data transfer. */
 export type SourceGcsBucket = DestinationGcsBucket;
-export const SourceGcsBucket = DestinationGcsBucket;
-
 /** Parallelstore as the destination of a data transfer. */
 export type DestinationParallelstore = SourceParallelstore;
-export const DestinationParallelstore = SourceParallelstore;
-
 /** Import data from Cloud Storage into a Parallelstore instance. */
 export interface ImportDataRequest {
   /** The Cloud Storage source bucket and, optionally, path inside the bucket. */
@@ -473,7 +464,7 @@ export interface ImportDataRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceGcsBucket: S.optional(DestinationGcsBucket),
     destinationParallelstore: S.optional(SourceParallelstore),
@@ -489,7 +480,7 @@ export interface ImportDataProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ImportDataRequest;
 }
-export const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ImportDataRequest.pipe(T.HttpBody())),
@@ -516,7 +507,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -535,7 +526,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -544,7 +535,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -563,7 +554,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -582,7 +573,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response from ListInstances. */
 export interface ListInstancesResponse {
@@ -593,7 +584,7 @@ export interface ListInstancesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     instances: S.optional(InstanceList),
@@ -613,7 +604,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -632,7 +623,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -643,7 +634,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -661,7 +652,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),

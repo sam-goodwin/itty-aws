@@ -39,31 +39,25 @@ export interface GetFoldersLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
+const GetFoldersLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://policysimulator.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetFoldersLocationsAccessPolicySimulationsOperationsRequest",
 }) as any as S.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -74,7 +68,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -95,7 +89,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     error: S.optional(GoogleRpcStatus),
@@ -111,8 +105,8 @@ export interface GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -122,15 +116,15 @@ export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
         baseUrl: "https://policysimulator.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-  }) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+).annotate({
+  identifier: "GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest",
+}) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export interface GetFoldersLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -148,7 +142,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -164,8 +158,8 @@ export interface GetOrganizationsLocationsAccessPolicySimulationsOperationsReque
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -175,15 +169,15 @@ export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
         baseUrl: "https://policysimulator.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest",
-  }) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
+).annotate({
+  identifier: "GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest",
+}) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
 
 export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
+const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -202,7 +196,7 @@ export interface GetOrganizationsLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -220,7 +214,25 @@ export interface GetProjectsLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(
+const GetProjectsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://policysimulator.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsAccessPolicySimulationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
+
+export interface GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -232,33 +244,14 @@ export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest = /*@_
       }),
     ),
 ).annotate({
-  identifier: "GetProjectsLocationsAccessPolicySimulationsOperationsRequest",
-}) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
-
-export interface GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://policysimulator.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+  identifier: "GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
 export interface GetProjectsLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -284,7 +277,7 @@ export interface ListFoldersLocationsReplaysOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -303,10 +296,10 @@ export const ListFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -319,7 +312,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -341,7 +334,7 @@ export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -369,7 +362,7 @@ export interface ListOrganizationsLocationsReplaysOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -399,7 +392,7 @@ export interface ListProjectsLocationsReplaysOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),

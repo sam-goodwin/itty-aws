@@ -57,11 +57,11 @@ export type AIEventPropertyEnum =
   | "$ai_input_state"
   | "$ai_output_state"
   | "$ai_tools";
-export const AIEventPropertyEnum = S.String;
+const AIEventPropertyEnum = S.String;
 
 /** * `read_write` - read_write * `read` - read * `none` - none */
 export type AccessLevelEnum = "read_write" | "read" | "none";
-export const AccessLevelEnum = S.String;
+const AccessLevelEnum = S.String;
 
 export interface CreatePropertyAccessControlRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -77,7 +77,7 @@ export interface CreatePropertyAccessControlRequest {
   /** The role UUID to set an override for. */
   role?: string | null;
 }
-export const CreatePropertyAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertyAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     property_definition_id: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface PropertyAccessControlRule {
   created_at: string;
   updated_at: string;
 }
-export const PropertyAccessControlRule = /*@__PURE__*/ S.suspend(() =>
+const PropertyAccessControlRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     access_level: AccessLevelEnum,
@@ -129,7 +129,7 @@ export interface GetPropertyAccessControlRequest {
   /** The property definition ID to fetch access control rules for. */
   property_definition_id: string;
 }
-export const GetPropertyAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertyAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     property_definition_id: S.String.pipe(T.Query()),
@@ -146,13 +146,13 @@ export const GetPropertyAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all access control rules for this property definition. */
 export type PropertyAccessControlStateAccessControlsList = Array<PropertyAccessControlRule>;
-export const PropertyAccessControlStateAccessControlsList = /*@__PURE__*/ S.Array(
+const PropertyAccessControlStateAccessControlsList = /*@__PURE__*/ S.Array(
   PropertyAccessControlRule,
 ) as any as S.Schema<PropertyAccessControlStateAccessControlsList>;
 
 /** Available access levels that can be assigned. */
 export type PropertyAccessControlStateAvailableAccessLevelsList = Array<string>;
-export const PropertyAccessControlStateAvailableAccessLevelsList = /*@__PURE__*/ S.Array(
+const PropertyAccessControlStateAvailableAccessLevelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PropertyAccessControlStateAvailableAccessLevelsList>;
 
@@ -165,7 +165,7 @@ export interface PropertyAccessControlState {
   /** The default access level when no rules match. */
   default_access_level: string;
 }
-export const PropertyAccessControlState = /*@__PURE__*/ S.suspend(() =>
+const PropertyAccessControlState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_controls: PropertyAccessControlStateAccessControlsList,
     available_access_levels: PropertyAccessControlStateAvailableAccessLevelsList,
@@ -185,7 +185,7 @@ export interface PropertyAccessControlsDestroyRequest {
   /** The role UUID whose override should be deleted. */
   role?: string;
 }
-export const PropertyAccessControlsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const PropertyAccessControlsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     organization_member: S.optional(S.String.pipe(T.Query())),
@@ -203,9 +203,7 @@ export const PropertyAccessControlsDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PropertyAccessControlsDestroyRequest>;
 
 export interface PropertyAccessControlsDestroyResponse {}
-export const PropertyAccessControlsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const PropertyAccessControlsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PropertyAccessControlsDestroyResponse",
 }) as any as S.Schema<PropertyAccessControlsDestroyResponse>;
 

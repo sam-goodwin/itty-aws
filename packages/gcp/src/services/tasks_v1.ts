@@ -65,7 +65,7 @@ export interface ClearTasksRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-export const ClearTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
   }).pipe(
@@ -78,7 +78,7 @@ export const ClearTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClearTasksRequest" }) as any as S.Schema<ClearTasksRequest>;
 
 export interface ClearTasksResponse {}
-export const ClearTasksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ClearTasksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ClearTasksResponse",
 }) as any as S.Schema<ClearTasksResponse>;
 
@@ -86,7 +86,7 @@ export interface DeleteTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-export const DeleteTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
   }).pipe(
@@ -99,8 +99,7 @@ export const DeleteTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTasklistsRequest" }) as any as S.Schema<DeleteTasklistsRequest>;
 
 export interface DeleteTasklistsResponse {}
-export const DeleteTasklistsResponse =
-  ClearTasksResponse as any as S.Schema<DeleteTasklistsResponse>;
+const DeleteTasklistsResponse = ClearTasksResponse as any as S.Schema<DeleteTasklistsResponse>;
 
 export interface DeleteTasksRequest {
   /** Task identifier. */
@@ -108,7 +107,7 @@ export interface DeleteTasksRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-export const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: S.String.pipe(T.Label()),
     tasklist: S.String.pipe(T.Label()),
@@ -122,13 +121,13 @@ export const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTasksRequest" }) as any as S.Schema<DeleteTasksRequest>;
 
 export interface DeleteTasksResponse {}
-export const DeleteTasksResponse = ClearTasksResponse as any as S.Schema<DeleteTasksResponse>;
+const DeleteTasksResponse = ClearTasksResponse as any as S.Schema<DeleteTasksResponse>;
 
 export interface GetTasklistsRequest {
   /** Task list identifier. */
   tasklist: string;
 }
-export const GetTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
   }).pipe(
@@ -154,7 +153,7 @@ export interface TaskList {
   /** Task list identifier. */
   id?: string;
 }
-export const TaskList = /*@__PURE__*/ S.suspend(() =>
+const TaskList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     kind: S.optional(S.String),
@@ -171,7 +170,7 @@ export interface GetTasksRequest {
   /** Task identifier. */
   task: string;
 }
-export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
     task: S.String.pipe(T.Label()),
@@ -191,7 +190,7 @@ export interface DriveResourceInfo {
   /** Output only. Resource key required to access files shared via a shared link. Not required for all files. See also developers.google.com/drive/api/guides/resource-keys. */
   resourceKey?: string;
 }
-export const DriveResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const DriveResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveFileId: S.optional(S.String),
     resourceKey: S.optional(S.String),
@@ -203,7 +202,7 @@ export interface SpaceInfo {
   /** Output only. The Chat space where this task originates from. The format is "spaces/{space}". */
   space?: string;
 }
-export const SpaceInfo = /*@__PURE__*/ S.suspend(() =>
+const SpaceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     space: S.optional(S.String),
   }),
@@ -214,7 +213,7 @@ export type AssignmentInfoSurfaceTypeEnum =
   | "GMAIL"
   | "DOCUMENT"
   | "SPACE";
-export const AssignmentInfoSurfaceTypeEnum = S.String;
+const AssignmentInfoSurfaceTypeEnum = S.String;
 
 /** Information about the source of the task assignment (Document, Chat Space). */
 export interface AssignmentInfo {
@@ -227,7 +226,7 @@ export interface AssignmentInfo {
   /** Output only. The type of surface this assigned task originates from. Currently limited to DOCUMENT or SPACE. */
   surfaceType?: AssignmentInfoSurfaceTypeEnum | (string & {});
 }
-export const AssignmentInfo = /*@__PURE__*/ S.suspend(() =>
+const AssignmentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveResourceInfo: S.optional(DriveResourceInfo),
     linkToTask: S.optional(S.String),
@@ -244,7 +243,7 @@ export interface TaskLinksItem {
   /** The URL. */
   link?: string;
 }
-export const TaskLinksItem = /*@__PURE__*/ S.suspend(() =>
+const TaskLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     description: S.optional(S.String),
@@ -253,7 +252,7 @@ export const TaskLinksItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskLinksItem" }) as any as S.Schema<TaskLinksItem>;
 
 export type TaskLinksItemList = Array<TaskLinksItem>;
-export const TaskLinksItemList = /*@__PURE__*/ S.Array(
+const TaskLinksItemList = /*@__PURE__*/ S.Array(
   TaskLinksItem,
 ) as any as S.Schema<TaskLinksItemList>;
 
@@ -293,7 +292,7 @@ export interface Task {
   /** Flag indicating whether the task is hidden. This is the case if the task had been marked completed when the task list was last cleared. The default is False. This field is read-only. */
   hidden?: boolean;
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
+const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.optional(S.String),
     parent: S.optional(S.String),
@@ -319,7 +318,7 @@ export interface InsertTasklistsRequest {
   /** Request body */
   body?: TaskList;
 }
-export const InsertTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(TaskList.pipe(T.HttpBody())),
   }).pipe(
@@ -341,7 +340,7 @@ export interface InsertTasksRequest {
   /** Request body */
   body?: Task;
 }
-export const InsertTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     tasklist: S.String.pipe(T.Label()),
@@ -362,7 +361,7 @@ export interface ListTasklistsRequest {
   /** Token specifying the result page to return. Optional. */
   pageToken?: string;
 }
-export const ListTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -376,7 +375,7 @@ export const ListTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTasklistsRequest" }) as any as S.Schema<ListTasklistsRequest>;
 
 export type TaskListList = Array<TaskList>;
-export const TaskListList = /*@__PURE__*/ S.Array(TaskList) as any as S.Schema<TaskListList>;
+const TaskListList = /*@__PURE__*/ S.Array(TaskList) as any as S.Schema<TaskListList>;
 
 export interface TaskLists {
   /** Type of the resource. This is always "tasks#taskLists". */
@@ -388,7 +387,7 @@ export interface TaskLists {
   /** Token that can be used to request the next page of this result. */
   nextPageToken?: string;
 }
-export const TaskLists = /*@__PURE__*/ S.suspend(() =>
+const TaskLists = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: TaskListList,
@@ -423,7 +422,7 @@ export interface ListTasksRequest {
   /** Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by due date. */
   dueMin?: string;
 }
-export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showAssigned: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -447,7 +446,7 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTasksRequest" }) as any as S.Schema<ListTasksRequest>;
 
 export type TaskList_ = Array<Task>;
-export const TaskList_ = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList_>;
+const TaskList_ = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList_>;
 
 export interface Tasks {
   /** ETag of the resource. */
@@ -459,7 +458,7 @@ export interface Tasks {
   /** Token used to access the next page of this result. */
   nextPageToken?: string;
 }
-export const Tasks = /*@__PURE__*/ S.suspend(() =>
+const Tasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     items: TaskList_,
@@ -480,7 +479,7 @@ export interface MoveTasksRequest {
   /** Task identifier. */
   task: string;
 }
-export const MoveTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationTasklist: S.optional(S.String.pipe(T.Query())),
     tasklist: S.String.pipe(T.Label()),
@@ -502,7 +501,7 @@ export interface PatchTasklistsRequest {
   /** Request body */
   body?: TaskList;
 }
-export const PatchTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
     body: S.optional(TaskList.pipe(T.HttpBody())),
@@ -523,7 +522,7 @@ export interface PatchTasksRequest {
   /** Request body */
   body?: Task;
 }
-export const PatchTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
     task: S.String.pipe(T.Label()),
@@ -543,7 +542,7 @@ export interface UpdateTasklistsRequest {
   /** Request body */
   body?: TaskList;
 }
-export const UpdateTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
     body: S.optional(TaskList.pipe(T.HttpBody())),
@@ -564,7 +563,7 @@ export interface UpdateTasksRequest {
   /** Request body */
   body?: Task;
 }
-export const UpdateTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasklist: S.String.pipe(T.Label()),
     task: S.String.pipe(T.Label()),

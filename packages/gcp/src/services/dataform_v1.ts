@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,52 +90,45 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** `CancelWorkflowInvocation` request message. */
 export type CancelWorkflowInvocationRequest = CancelOperationRequest;
-export const CancelWorkflowInvocationRequest = CancelOperationRequest;
-
 export interface CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+const CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 /** `CancelWorkflowInvocation` response message. */
 export interface CancelWorkflowInvocationResponse {}
-export const CancelWorkflowInvocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelWorkflowInvocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelWorkflowInvocationResponse",
 }) as any as S.Schema<CancelWorkflowInvocationResponse>;
 
 /** Represents the delete file operation. */
 export type DeleteFile = CancelOperationRequest;
-export const DeleteFile = CancelOperationRequest;
-
 /** Represents the write file operation (for files added or modified). */
 export interface WriteFile {
   /** The file's contents. */
   contents?: string;
 }
-export const WriteFile = /*@__PURE__*/ S.suspend(() =>
+const WriteFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contents: S.optional(S.String),
   }),
@@ -148,7 +141,7 @@ export interface FileOperation {
   /** Represents the write operation. */
   writeFile?: WriteFile;
 }
-export const FileOperation = /*@__PURE__*/ S.suspend(() =>
+const FileOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteFile: S.optional(CancelOperationRequest),
     writeFile: S.optional(WriteFile),
@@ -156,7 +149,7 @@ export const FileOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileOperation" }) as any as S.Schema<FileOperation>;
 
 export type FileOperationMap = { [key: string]: FileOperation | undefined };
-export const FileOperationMap = /*@__PURE__*/ S.Record(
+const FileOperationMap = /*@__PURE__*/ S.Record(
   S.String,
   FileOperation,
 ) as any as S.Schema<FileOperationMap>;
@@ -168,7 +161,7 @@ export interface CommitAuthor {
   /** Required. The commit author's name. */
   name?: string;
 }
-export const CommitAuthor = /*@__PURE__*/ S.suspend(() =>
+const CommitAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(S.String),
     name: S.optional(S.String),
@@ -182,7 +175,7 @@ export interface CommitMetadata {
   /** Required. The commit's author. */
   author?: CommitAuthor;
 }
-export const CommitMetadata = /*@__PURE__*/ S.suspend(() =>
+const CommitMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitMessage: S.optional(S.String),
     author: S.optional(CommitAuthor),
@@ -198,7 +191,7 @@ export interface CommitRepositoryChangesRequest {
   /** Required. The changes to commit to the repository. */
   commitMetadata?: CommitMetadata;
 }
-export const CommitRepositoryChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitRepositoryChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredHeadCommitSha: S.optional(S.String),
     fileOperations: S.optional(FileOperationMap),
@@ -214,7 +207,7 @@ export interface CommitProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: CommitRepositoryChangesRequest;
 }
-export const CommitProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CommitRepositoryChangesRequest.pipe(T.HttpBody())),
@@ -234,7 +227,7 @@ export interface CommitRepositoryChangesResponse {
   /** The commit SHA of the current commit. */
   commitSha?: string;
 }
-export const CommitRepositoryChangesResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitRepositoryChangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitSha: S.optional(S.String),
   }),
@@ -243,7 +236,7 @@ export const CommitRepositoryChangesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitRepositoryChangesResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** `CommitWorkspaceChanges` request message. */
 export interface CommitWorkspaceChangesRequest {
@@ -254,7 +247,7 @@ export interface CommitWorkspaceChangesRequest {
   /** Optional. The commit's message. */
   commitMessage?: string;
 }
-export const CommitWorkspaceChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitWorkspaceChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(CommitAuthor),
     paths: S.optional(StringList),
@@ -270,7 +263,7 @@ export interface CommitProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: CommitWorkspaceChangesRequest;
 }
-export const CommitProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CommitWorkspaceChangesRequest.pipe(T.HttpBody())),
@@ -287,24 +280,23 @@ export const CommitProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*
 
 /** `CommitWorkspaceChanges` response message. */
 export interface CommitWorkspaceChangesResponse {}
-export const CommitWorkspaceChangesResponse =
+const CommitWorkspaceChangesResponse =
   CancelOperationRequest as any as S.Schema<CommitWorkspaceChangesResponse>;
 
 export interface ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:computeAccessTokenStatus",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:computeAccessTokenStatus",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>;
@@ -315,14 +307,14 @@ export type ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum =
   | "INVALID"
   | "VALID"
   | "PERMISSION_DENIED";
-export const ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum = S.String;
+const ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum = S.String;
 
 /** `ComputeRepositoryAccessTokenStatus` response message. */
 export interface ComputeRepositoryAccessTokenStatusResponse {
   /** Indicates the status of the Git access token. */
   tokenStatus?: ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum;
 }
-export const ComputeRepositoryAccessTokenStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ComputeRepositoryAccessTokenStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenStatus: S.optional(ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum),
   }),
@@ -349,7 +341,7 @@ export interface Folder {
   /** Required. The Folder's user-friendly name. */
   displayName?: string;
 }
-export const Folder = /*@__PURE__*/ S.suspend(() =>
+const Folder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -368,7 +360,7 @@ export interface CreateProjectsLocationsFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const CreateProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Folder.pipe(T.HttpBody())),
@@ -392,7 +384,7 @@ export interface WorkspaceCompilationOverrides {
   /** Optional. The prefix that should be prepended to all table names. */
   tablePrefix?: string;
 }
-export const WorkspaceCompilationOverrides = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceCompilationOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaSuffix: S.optional(S.String),
     defaultDatabase: S.optional(S.String),
@@ -403,14 +395,14 @@ export const WorkspaceCompilationOverrides = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceCompilationOverrides>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type GitRemoteSettingsTokenStatusEnum =
   | "TOKEN_STATUS_UNSPECIFIED"
   | "NOT_FOUND"
   | "INVALID"
   | "VALID";
-export const GitRemoteSettingsTokenStatusEnum = S.String;
+const GitRemoteSettingsTokenStatusEnum = S.String;
 
 /** Configures fields for performing SSH authentication. */
 export interface SshAuthenticationConfig {
@@ -419,7 +411,7 @@ export interface SshAuthenticationConfig {
   /** Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*\/secrets/*\/versions/*`. */
   userPrivateKeySecretVersion?: string;
 }
-export const SshAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
+const SshAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostPublicKey: S.optional(S.String),
     userPrivateKeySecretVersion: S.optional(S.String),
@@ -443,7 +435,7 @@ export interface GitRemoteSettings {
   /** Required. The Git remote's URL. */
   url?: string;
 }
-export const GitRemoteSettings = /*@__PURE__*/ S.suspend(() =>
+const GitRemoteSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveDefaultBranch: S.optional(S.String),
     tokenStatus: S.optional(GitRemoteSettingsTokenStatusEnum),
@@ -460,7 +452,7 @@ export interface DataEncryptionState {
   /** Required. The KMS key version name with which data of a resource is encrypted. */
   kmsKeyVersionName?: string;
 }
-export const DataEncryptionState = /*@__PURE__*/ S.suspend(() =>
+const DataEncryptionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyVersionName: S.optional(S.String),
   }),
@@ -471,7 +463,7 @@ export interface OAuthConfig {
   /** Optional. Additional OAuth scopes to use for BigQuery executions. Scopes always in use: `https://www.googleapis.com/auth/bigquery` */
   additionalOauthScopes?: StringList;
 }
-export const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalOauthScopes: S.optional(StringList),
   }),
@@ -482,7 +474,7 @@ export interface EndUserAuthConfig {
   /** Optional. OAuth configuration for repository end user authentication. */
   oauthConfig?: OAuthConfig;
 }
-export const EndUserAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const EndUserAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthConfig: S.optional(OAuthConfig),
   }),
@@ -521,7 +513,7 @@ export interface Repository {
   /** Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. */
   setAuthenticatedUserAdmin?: boolean;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceCompilationOverrides: S.optional(WorkspaceCompilationOverrides),
     labels: S.optional(StringMap),
@@ -549,7 +541,7 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     repositoryId: S.optional(S.String.pipe(T.Query())),
@@ -570,7 +562,7 @@ export interface PrivateResourceMetadata {
   /** Output only. If true, this resource is user-scoped, meaning it is either a workspace or sourced from a workspace. */
   userScoped?: boolean;
 }
-export const PrivateResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const PrivateResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userScoped: S.optional(S.Boolean),
   }),
@@ -581,7 +573,7 @@ export interface GcsRepositorySnapshotDestination {
   /** Optional. The Google Cloud Storage destination to upload the repository snapshot to. Format: `gs://bucket-name/path/`. */
   repositorySnapshotUri?: string;
 }
-export const GcsRepositorySnapshotDestination = /*@__PURE__*/ S.suspend(() =>
+const GcsRepositorySnapshotDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositorySnapshotUri: S.optional(S.String),
   }),
@@ -598,7 +590,7 @@ export interface NotebookRuntimeOptions {
   /** Optional. The resource name of the [Colab runtime template] (https://cloud.google.com/colab/docs/runtimes), from which a runtime is created for notebook executions. If not specified, a runtime is created with Colab's default specifications. */
   aiPlatformNotebookRuntimeTemplate?: string;
 }
-export const NotebookRuntimeOptions = /*@__PURE__*/ S.suspend(() =>
+const NotebookRuntimeOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsOutputBucket: S.optional(S.String),
     gcsRepositorySnapshotDestination: S.optional(GcsRepositorySnapshotDestination),
@@ -611,7 +603,7 @@ export type PipelineConfigPipelineTypeEnum =
   | "DATAFORM"
   | "SQL"
   | "NOTEBOOK";
-export const PipelineConfigPipelineTypeEnum = S.String;
+const PipelineConfigPipelineTypeEnum = S.String;
 
 /** Defines the pipeline type and path within the Git repository. */
 export interface PipelineConfig {
@@ -620,7 +612,7 @@ export interface PipelineConfig {
   /** Required. The type of the pipeline. */
   pipelineType?: PipelineConfigPipelineTypeEnum | (string & {});
 }
-export const PipelineConfig = /*@__PURE__*/ S.suspend(() =>
+const PipelineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     pipelineType: S.optional(PipelineConfigPipelineTypeEnum),
@@ -652,7 +644,7 @@ export interface CodeCompilationConfig {
   /** Optional. The default database (Google Cloud project ID). */
   defaultDatabase?: string;
 }
-export const CodeCompilationConfig = /*@__PURE__*/ S.suspend(() =>
+const CodeCompilationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertionSchema: S.optional(S.String),
     defaultSchema: S.optional(S.String),
@@ -677,7 +669,7 @@ export interface Target {
   /** Optional. The action's name, within `database` and `schema`. */
   name?: string;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(S.String),
     database: S.optional(S.String),
@@ -696,7 +688,7 @@ export interface CompilationError {
   /** Output only. The path of the file where this error occurred, if available, relative to the project root. */
   path?: string;
 }
-export const CompilationError = /*@__PURE__*/ S.suspend(() =>
+const CompilationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stack: S.optional(S.String),
     actionTarget: S.optional(Target),
@@ -706,7 +698,7 @@ export const CompilationError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompilationError" }) as any as S.Schema<CompilationError>;
 
 export type CompilationErrorList = Array<CompilationError>;
-export const CompilationErrorList = /*@__PURE__*/ S.Array(
+const CompilationErrorList = /*@__PURE__*/ S.Array(
   CompilationError,
 ) as any as S.Schema<CompilationErrorList>;
 
@@ -719,7 +711,7 @@ export interface GcsRepositorySnapshotMetadata {
   /** Output only. The crc32c checksum of the repository snapshot, big-endian base64 encoded. */
   crc32cChecksum?: string;
 }
-export const GcsRepositorySnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
+const GcsRepositorySnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation: S.optional(S.String),
     repositorySnapshotUri: S.optional(S.String),
@@ -758,7 +750,7 @@ export interface CompilationResult {
   /** Output only. Only set if the repository has a KMS Key. */
   dataEncryptionState?: DataEncryptionState;
 }
-export const CompilationResult = /*@__PURE__*/ S.suspend(() =>
+const CompilationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateResourceMetadata: S.optional(PrivateResourceMetadata),
     dataformCoreVersion: S.optional(S.String),
@@ -782,32 +774,26 @@ export interface CreateProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Request body */
   body?: CompilationResult;
 }
-export const CreateProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CompilationResult.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/compilationResults",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CompilationResult.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/compilationResults",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsRepositoriesCompilationResultsRequest",
 }) as any as S.Schema<CreateProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -818,7 +804,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -835,7 +821,7 @@ export interface ScheduledReleaseRecord {
   /** The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful. */
   errorStatus?: Status;
 }
-export const ScheduledReleaseRecord = /*@__PURE__*/ S.suspend(() =>
+const ScheduledReleaseRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseTime: S.optional(S.String),
     compilationResult: S.optional(S.String),
@@ -844,7 +830,7 @@ export const ScheduledReleaseRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduledReleaseRecord" }) as any as S.Schema<ScheduledReleaseRecord>;
 
 export type ScheduledReleaseRecordList = Array<ScheduledReleaseRecord>;
-export const ScheduledReleaseRecordList = /*@__PURE__*/ S.Array(
+const ScheduledReleaseRecordList = /*@__PURE__*/ S.Array(
   ScheduledReleaseRecord,
 ) as any as S.Schema<ScheduledReleaseRecordList>;
 
@@ -869,7 +855,7 @@ export interface ReleaseConfig {
   /** Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json. */
   codeCompilationConfig?: CodeCompilationConfig;
 }
-export const ReleaseConfig = /*@__PURE__*/ S.suspend(() =>
+const ReleaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitCommitish: S.optional(S.String),
     recentScheduledReleaseRecords: S.optional(ScheduledReleaseRecordList),
@@ -891,19 +877,18 @@ export interface CreateProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Request body */
   body?: ReleaseConfig;
 }
-export const CreateProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      releaseConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ReleaseConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/releaseConfigs",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    releaseConfigId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ReleaseConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/releaseConfigs",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsRepositoriesReleaseConfigsRequest",
 }) as any as S.Schema<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>;
@@ -913,16 +898,16 @@ export type InvocationConfigExecutionModeEnum =
   | "DEFAULT"
   | "ALL_EXCEPT_UNIT_TESTS"
   | "UNIT_TESTS_ONLY";
-export const InvocationConfigExecutionModeEnum = S.String;
+const InvocationConfigExecutionModeEnum = S.String;
 
 export type InvocationConfigQueryPriorityEnum =
   | "QUERY_PRIORITY_UNSPECIFIED"
   | "INTERACTIVE"
   | "BATCH";
-export const InvocationConfigQueryPriorityEnum = S.String;
+const InvocationConfigQueryPriorityEnum = S.String;
 
 export type TargetList = Array<Target>;
-export const TargetList = /*@__PURE__*/ S.Array(Target) as any as S.Schema<TargetList>;
+const TargetList = /*@__PURE__*/ S.Array(Target) as any as S.Schema<TargetList>;
 
 /** Includes configuration options for end user authentication. */
 export interface EndUserAuthenticationConfig {
@@ -931,7 +916,7 @@ export interface EndUserAuthenticationConfig {
   /** Optional. OAuth configuration for end user authentication. */
   oauthConfig?: OAuthConfig;
 }
-export const EndUserAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
+const EndUserAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmail: S.optional(S.String),
     oauthConfig: S.optional(OAuthConfig),
@@ -961,7 +946,7 @@ export interface InvocationConfig {
   /** Optional. Configuration for end user authentication. Note that this should not be set when `service_account` is used. */
   endUserAuthConfig?: EndUserAuthenticationConfig;
 }
-export const InvocationConfig = /*@__PURE__*/ S.suspend(() =>
+const InvocationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transitiveDependentsIncluded: S.optional(S.Boolean),
     executionMode: S.optional(InvocationConfigExecutionModeEnum),
@@ -984,7 +969,7 @@ export interface ScheduledExecutionRecord {
   /** The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful. */
   errorStatus?: Status;
 }
-export const ScheduledExecutionRecord = /*@__PURE__*/ S.suspend(() =>
+const ScheduledExecutionRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowInvocation: S.optional(S.String),
     executionTime: S.optional(S.String),
@@ -993,7 +978,7 @@ export const ScheduledExecutionRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduledExecutionRecord" }) as any as S.Schema<ScheduledExecutionRecord>;
 
 export type ScheduledExecutionRecordList = Array<ScheduledExecutionRecord>;
-export const ScheduledExecutionRecordList = /*@__PURE__*/ S.Array(
+const ScheduledExecutionRecordList = /*@__PURE__*/ S.Array(
   ScheduledExecutionRecord,
 ) as any as S.Schema<ScheduledExecutionRecordList>;
 
@@ -1020,7 +1005,7 @@ export interface WorkflowConfig {
   /** Output only. The timestamp of when the WorkflowConfig was last updated. */
   updateTime?: string;
 }
-export const WorkflowConfig = /*@__PURE__*/ S.suspend(() =>
+const WorkflowConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     disabled: S.optional(S.Boolean),
@@ -1043,19 +1028,18 @@ export interface CreateProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Request body */
   body?: WorkflowConfig;
 }
-export const CreateProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      workflowConfigId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workflowConfigs",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    workflowConfigId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/workflowConfigs",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsRepositoriesWorkflowConfigsRequest",
 }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>;
@@ -1067,7 +1051,7 @@ export type WorkflowInvocationStateEnum =
   | "CANCELLED"
   | "FAILED"
   | "CANCELING";
-export const WorkflowInvocationStateEnum = S.String;
+const WorkflowInvocationStateEnum = S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -1076,7 +1060,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -1108,7 +1092,7 @@ export interface WorkflowInvocation {
   /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
   internalMetadata?: string;
 }
-export const WorkflowInvocation = /*@__PURE__*/ S.suspend(() =>
+const WorkflowInvocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(WorkflowInvocationStateEnum),
     invocationConfig: S.optional(InvocationConfig),
@@ -1130,21 +1114,20 @@ export interface CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Request body */
   body?: WorkflowInvocation;
 }
-export const CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowInvocation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/workflowInvocations",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+const CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(WorkflowInvocation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/workflowInvocations",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest",
+}) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 /** Represents a Dataform Git workspace. */
 export interface Workspace {
@@ -1161,7 +1144,7 @@ export interface Workspace {
   /** Output only. The timestamp of when the workspace was created. */
   createTime?: string;
 }
-export const Workspace = /*@__PURE__*/ S.suspend(() =>
+const Workspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dataEncryptionState: S.optional(DataEncryptionState),
@@ -1180,7 +1163,7 @@ export interface CreateProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: Workspace;
 }
-export const CreateProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     workspaceId: S.optional(S.String.pipe(T.Query())),
@@ -1211,7 +1194,7 @@ export interface TeamFolder {
   /** Output only. The IAM principal identifier of the creator of the TeamFolder. */
   creatorIamPrincipal?: string;
 }
-export const TeamFolder = /*@__PURE__*/ S.suspend(() =>
+const TeamFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1228,7 +1211,7 @@ export interface CreateProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TeamFolder;
 }
-export const CreateProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(TeamFolder.pipe(T.HttpBody())),
@@ -1247,7 +1230,7 @@ export interface DeleteProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. */
   name: string;
 }
-export const DeleteProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1261,7 +1244,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1277,7 +1260,7 @@ export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Optional. If set to true, child resources of this repository (compilation results and workflow invocations) will also be deleted. Otherwise, the request will only succeed if the repository has no child resources. **Note:** *This flag doesn't support deletion of workspaces, release configs or workflow configs. If any of such resources exists in the repository, the request will fail.*. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -1292,13 +1275,12 @@ export interface DeleteProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The release config's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
-    ),
+const DeleteProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsRepositoriesReleaseConfigsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>;
@@ -1307,13 +1289,12 @@ export interface DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The workflow config's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
-    ),
+const DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>;
@@ -1322,22 +1303,21 @@ export interface DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
+const DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export interface DeleteProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource's name. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1351,7 +1331,7 @@ export interface DeleteProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. */
   name: string;
 }
-export const DeleteProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1366,7 +1346,7 @@ export interface DeleteFolderTreeRequest {
   /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
   force?: boolean;
 }
-export const DeleteFolderTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFolderTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean),
   }),
@@ -1378,7 +1358,7 @@ export interface DeleteTreeProjectsLocationsFoldersRequest {
   /** Request body */
   body?: DeleteFolderTreeRequest;
 }
-export const DeleteTreeProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTreeProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DeleteFolderTreeRequest.pipe(T.HttpBody())),
@@ -1406,7 +1386,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     metadata: S.optional(DocumentMap),
@@ -1418,15 +1398,13 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** `DeleteTeamFolderTree` request message. */
 export type DeleteTeamFolderTreeRequest = DeleteFolderTreeRequest;
-export const DeleteTeamFolderTreeRequest = DeleteFolderTreeRequest;
-
 export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} */
   name: string;
   /** Request body */
   body?: DeleteFolderTreeRequest;
 }
-export const DeleteTreeProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTreeProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DeleteFolderTreeRequest.pipe(T.HttpBody())),
@@ -1447,18 +1425,17 @@ export interface FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
 }
-export const FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      path: S.optional(S.String.pipe(T.Query())),
-      workspace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+workspace}:fetchFileDiff",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String.pipe(T.Query())),
+    workspace: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+workspace}:fetchFileDiff",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>;
@@ -1468,7 +1445,7 @@ export interface FetchFileDiffResponse {
   /** The raw formatted Git diff for the file. */
   formattedDiff?: string;
 }
-export const FetchFileDiffResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchFileDiffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formattedDiff: S.optional(S.String),
   }),
@@ -1478,8 +1455,8 @@ export interface FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequ
   /** Required. The workspace's name. */
   name: string;
 }
-export const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -1489,9 +1466,9 @@ export const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest 
         baseUrl: "https://dataform.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
+).annotate({
+  identifier: "FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest",
+}) as any as S.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type UncommittedFileChangeStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1499,7 +1476,7 @@ export type UncommittedFileChangeStateEnum =
   | "DELETED"
   | "MODIFIED"
   | "HAS_CONFLICTS";
-export const UncommittedFileChangeStateEnum = S.String;
+const UncommittedFileChangeStateEnum = S.String;
 
 /** Represents the Git state of a file with uncommitted changes. */
 export interface UncommittedFileChange {
@@ -1508,7 +1485,7 @@ export interface UncommittedFileChange {
   /** Output only. Indicates the status of the file. */
   state?: UncommittedFileChangeStateEnum;
 }
-export const UncommittedFileChange = /*@__PURE__*/ S.suspend(() =>
+const UncommittedFileChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     state: S.optional(UncommittedFileChangeStateEnum),
@@ -1516,7 +1493,7 @@ export const UncommittedFileChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UncommittedFileChange" }) as any as S.Schema<UncommittedFileChange>;
 
 export type UncommittedFileChangeList = Array<UncommittedFileChange>;
-export const UncommittedFileChangeList = /*@__PURE__*/ S.Array(
+const UncommittedFileChangeList = /*@__PURE__*/ S.Array(
   UncommittedFileChange,
 ) as any as S.Schema<UncommittedFileChangeList>;
 
@@ -1525,7 +1502,7 @@ export interface FetchFileGitStatusesResponse {
   /** A list of all files which have uncommitted Git changes. There will only be a single entry for any given file. */
   uncommittedFileChanges?: UncommittedFileChangeList;
 }
-export const FetchFileGitStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchFileGitStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uncommittedFileChanges: S.optional(UncommittedFileChangeList),
   }),
@@ -1539,8 +1516,8 @@ export interface FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesReque
   /** Required. The workspace's name. */
   name: string;
 }
-export const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       remoteBranch: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -1551,9 +1528,9 @@ export const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest =
         baseUrl: "https://dataform.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
+).annotate({
+  identifier: "FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest",
+}) as any as S.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `FetchGitAheadBehind` response message. */
 export interface FetchGitAheadBehindResponse {
@@ -1562,7 +1539,7 @@ export interface FetchGitAheadBehindResponse {
   /** The number of commits in the workspace that are not in the remote branch. */
   commitsBehind?: number;
 }
-export const FetchGitAheadBehindResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchGitAheadBehindResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitsAhead: S.optional(S.Number),
     commitsBehind: S.optional(S.Number),
@@ -1579,7 +1556,7 @@ export interface FetchHistoryProjectsLocationsRepositoriesRequest {
   /** Optional. Page token received from a previous `FetchRepositoryHistory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchRepositoryHistory`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const FetchHistoryProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchHistoryProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1606,7 +1583,7 @@ export interface CommitLogEntry {
   /** The commit author for this commit log entry. */
   author?: CommitAuthor;
 }
-export const CommitLogEntry = /*@__PURE__*/ S.suspend(() =>
+const CommitLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitTime: S.optional(S.String),
     commitSha: S.optional(S.String),
@@ -1616,7 +1593,7 @@ export const CommitLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitLogEntry" }) as any as S.Schema<CommitLogEntry>;
 
 export type CommitLogEntryList = Array<CommitLogEntry>;
-export const CommitLogEntryList = /*@__PURE__*/ S.Array(
+const CommitLogEntryList = /*@__PURE__*/ S.Array(
   CommitLogEntry,
 ) as any as S.Schema<CommitLogEntryList>;
 
@@ -1627,7 +1604,7 @@ export interface FetchRepositoryHistoryResponse {
   /** A list of commit logs, ordered by 'git log' default order. */
   commits?: CommitLogEntryList;
 }
-export const FetchRepositoryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchRepositoryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     commits: S.optional(CommitLogEntryList),
@@ -1640,7 +1617,7 @@ export interface FetchRemoteBranchesProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const FetchRemoteBranchesProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchRemoteBranchesProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1659,7 +1636,7 @@ export interface FetchRemoteBranchesResponse {
   /** The remote repository's branch names. */
   branches?: StringList;
 }
-export const FetchRemoteBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchRemoteBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branches: S.optional(StringList),
   }),
@@ -1671,7 +1648,7 @@ export interface GetConfigProjectsLocationsRequest {
   /** Required. The config name. */
   name: string;
 }
-export const GetConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1690,7 +1667,7 @@ export interface Config {
   /** Optional. The default KMS key that is used if no encryption key is provided when a repository is created. */
   defaultKmsKeyName?: string;
 }
-export const Config = /*@__PURE__*/ S.suspend(() =>
+const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     internalMetadata: S.optional(S.String),
@@ -1704,7 +1681,7 @@ export interface GetIamPolicyProjectsLocationsFoldersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1730,7 +1707,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -1748,7 +1725,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -1757,7 +1734,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1768,7 +1745,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -1782,7 +1759,7 @@ export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1803,18 +1780,17 @@ export interface GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
@@ -1825,7 +1801,7 @@ export interface GetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1844,7 +1820,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1867,7 +1843,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -1881,7 +1857,7 @@ export interface GetProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. */
   name: string;
 }
-export const GetProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1895,7 +1871,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1909,7 +1885,7 @@ export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1923,13 +1899,12 @@ export interface GetProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The compilation result's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
-    ),
+const GetProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsRepositoriesCompilationResultsRequest",
 }) as any as S.Schema<GetProjectsLocationsRepositoriesCompilationResultsRequest>;
@@ -1938,7 +1913,7 @@ export interface GetProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The release config's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1952,7 +1927,7 @@ export interface GetProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The workflow config's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1966,13 +1941,12 @@ export interface GetProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
-    ),
+const GetProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsRepositoriesWorkflowInvocationsRequest",
 }) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
@@ -1981,7 +1955,7 @@ export interface GetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1995,7 +1969,7 @@ export interface GetProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. */
   name: string;
 }
-export const GetProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2010,7 +1984,7 @@ export interface InstallNpmPackagesRequest {
   /** Optional. The pipeline options which defines the pipeline type and path within the Git repository. */
   pipelineConfig?: PipelineConfig;
 }
-export const InstallNpmPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const InstallNpmPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineConfig: S.optional(PipelineConfig),
   }),
@@ -2024,8 +1998,8 @@ export interface InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesReques
   /** Request body */
   body?: InstallNpmPackagesRequest;
 }
-export const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       workspace: S.String.pipe(T.Label()),
       body: S.optional(InstallNpmPackagesRequest.pipe(T.HttpBody())),
@@ -2036,13 +2010,13 @@ export const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest =
         baseUrl: "https://dataform.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
+).annotate({
+  identifier: "InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest",
+}) as any as S.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `InstallNpmPackages` response message. */
 export interface InstallNpmPackagesResponse {}
-export const InstallNpmPackagesResponse =
+const InstallNpmPackagesResponse =
   CancelOperationRequest as any as S.Schema<InstallNpmPackagesResponse>;
 
 export interface ListProjectsLocationsRequest {
@@ -2057,7 +2031,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -2076,7 +2050,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2085,7 +2059,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -2104,7 +2078,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2123,7 +2097,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2134,7 +2108,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -2154,7 +2128,7 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** Optional. Maximum number of repositories to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2173,7 +2147,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
 export type RepositoryList = Array<Repository>;
-export const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
+const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
 
 /** `ListRepositories` response message. */
 export interface ListRepositoriesResponse {
@@ -2184,7 +2158,7 @@ export interface ListRepositoriesResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(RepositoryList),
     unreachable: S.optional(StringList),
@@ -2204,27 +2178,26 @@ export interface ListProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Page token received from a previous `ListCompilationResults` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCompilationResults`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/compilationResults",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/compilationResults",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsRepositoriesCompilationResultsRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
 
 export type CompilationResultList = Array<CompilationResult>;
-export const CompilationResultList = /*@__PURE__*/ S.Array(
+const CompilationResultList = /*@__PURE__*/ S.Array(
   CompilationResult,
 ) as any as S.Schema<CompilationResultList>;
 
@@ -2237,7 +2210,7 @@ export interface ListCompilationResultsResponse {
   /** List of compilation results. */
   compilationResults?: CompilationResultList;
 }
-export const ListCompilationResultsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompilationResultsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -2255,7 +2228,7 @@ export interface ListProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The repository in which to list release configs. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
 }
-export const ListProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2272,7 +2245,7 @@ export const ListProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE_
 }) as any as S.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
 
 export type ReleaseConfigList = Array<ReleaseConfig>;
-export const ReleaseConfigList = /*@__PURE__*/ S.Array(
+const ReleaseConfigList = /*@__PURE__*/ S.Array(
   ReleaseConfig,
 ) as any as S.Schema<ReleaseConfigList>;
 
@@ -2285,7 +2258,7 @@ export interface ListReleaseConfigsResponse {
   /** List of release configs. */
   releaseConfigs?: ReleaseConfigList;
 }
-export const ListReleaseConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleaseConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -2303,7 +2276,7 @@ export interface ListProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Optional. Maximum number of workflow configs to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2320,7 +2293,7 @@ export const ListProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
 
 export type WorkflowConfigList = Array<WorkflowConfig>;
-export const WorkflowConfigList = /*@__PURE__*/ S.Array(
+const WorkflowConfigList = /*@__PURE__*/ S.Array(
   WorkflowConfig,
 ) as any as S.Schema<WorkflowConfigList>;
 
@@ -2333,7 +2306,7 @@ export interface ListWorkflowConfigsResponse {
   /** Locations which could not be reached. */
   unreachable?: StringList;
 }
-export const ListWorkflowConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowConfigs: S.optional(WorkflowConfigList),
     nextPageToken: S.optional(S.String),
@@ -2355,27 +2328,26 @@ export interface ListProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The parent resource of the WorkflowInvocation type. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
 }
-export const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/workflowInvocations",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/workflowInvocations",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsRepositoriesWorkflowInvocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
 
 export type WorkflowInvocationList = Array<WorkflowInvocation>;
-export const WorkflowInvocationList = /*@__PURE__*/ S.Array(
+const WorkflowInvocationList = /*@__PURE__*/ S.Array(
   WorkflowInvocation,
 ) as any as S.Schema<WorkflowInvocationList>;
 
@@ -2388,7 +2360,7 @@ export interface ListWorkflowInvocationsResponse {
   /** Locations which could not be reached. */
   unreachable?: StringList;
 }
-export const ListWorkflowInvocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowInvocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowInvocations: S.optional(WorkflowInvocationList),
     nextPageToken: S.optional(S.String),
@@ -2410,7 +2382,7 @@ export interface ListProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. This field only supports ordering by `name`. If unspecified, the server will choose the ordering. If specified, the default order is ascending for the `name` field. */
   orderBy?: string;
 }
-export const ListProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2429,7 +2401,7 @@ export const ListProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export type WorkspaceList = Array<Workspace>;
-export const WorkspaceList = /*@__PURE__*/ S.Array(Workspace) as any as S.Schema<WorkspaceList>;
+const WorkspaceList = /*@__PURE__*/ S.Array(Workspace) as any as S.Schema<WorkspaceList>;
 
 /** `ListWorkspaces` response message. */
 export interface ListWorkspacesResponse {
@@ -2440,7 +2412,7 @@ export interface ListWorkspacesResponse {
   /** Locations which could not be reached. */
   unreachable?: StringList;
 }
-export const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     workspaces: S.optional(WorkspaceList),
@@ -2453,7 +2425,7 @@ export interface MakeDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
   path?: string;
 }
-export const MakeDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const MakeDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -2465,26 +2437,24 @@ export interface MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MakeDirectoryRequest;
 }
-export const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+workspace}:makeDirectory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspace: S.String.pipe(T.Label()),
+    body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+workspace}:makeDirectory",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `MakeDirectory` response message. */
 export interface MakeDirectoryResponse {}
-export const MakeDirectoryResponse =
-  CancelOperationRequest as any as S.Schema<MakeDirectoryResponse>;
+const MakeDirectoryResponse = CancelOperationRequest as any as S.Schema<MakeDirectoryResponse>;
 
 /** `MoveDirectory` request message. */
 export interface MoveDirectoryRequest {
@@ -2493,7 +2463,7 @@ export interface MoveDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
   path?: string;
 }
-export const MoveDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newPath: S.optional(S.String),
     path: S.optional(S.String),
@@ -2506,26 +2476,24 @@ export interface MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MoveDirectoryRequest;
 }
-export const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(MoveDirectoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+workspace}:moveDirectory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspace: S.String.pipe(T.Label()),
+    body: S.optional(MoveDirectoryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+workspace}:moveDirectory",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `MoveDirectory` response message. */
 export interface MoveDirectoryResponse {}
-export const MoveDirectoryResponse =
-  CancelOperationRequest as any as S.Schema<MoveDirectoryResponse>;
+const MoveDirectoryResponse = CancelOperationRequest as any as S.Schema<MoveDirectoryResponse>;
 
 /** `MoveFile` request message. */
 export interface MoveFileRequest {
@@ -2534,7 +2502,7 @@ export interface MoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-export const MoveFileRequest = MoveDirectoryRequest as any as S.Schema<MoveFileRequest>;
+const MoveFileRequest = MoveDirectoryRequest as any as S.Schema<MoveFileRequest>;
 
 export interface MoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -2542,7 +2510,7 @@ export interface MoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MoveFileRequest;
 }
-export const MoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace: S.String.pipe(T.Label()),
     body: S.optional(MoveFileRequest.pipe(T.HttpBody())),
@@ -2559,14 +2527,14 @@ export const MoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE_
 
 /** `MoveFile` response message. */
 export interface MoveFileResponse {}
-export const MoveFileResponse = CancelOperationRequest as any as S.Schema<MoveFileResponse>;
+const MoveFileResponse = CancelOperationRequest as any as S.Schema<MoveFileResponse>;
 
 /** `MoveFolder` request message. */
 export interface MoveFolderRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format of: "" to move into the root User folder, `projects/*\/locations/*\/folders/*`, `projects/*\/locations/*\/teamFolders/*` */
   destinationContainingFolder?: string;
 }
-export const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationContainingFolder: S.optional(S.String),
   }),
@@ -2578,7 +2546,7 @@ export interface MoveProjectsLocationsFoldersRequest {
   /** Request body */
   body?: MoveFolderRequest;
 }
-export const MoveProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveFolderRequest.pipe(T.HttpBody())),
@@ -2594,7 +2562,7 @@ export interface MoveRepositoryRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the format of: "" to move into the root User folder, `projects/*\/locations/*\/folders/*`, `projects/*\/locations/*\/teamFolders/*` */
   destinationContainingFolder?: string;
 }
-export const MoveRepositoryRequest = MoveFolderRequest as any as S.Schema<MoveRepositoryRequest>;
+const MoveRepositoryRequest = MoveFolderRequest as any as S.Schema<MoveRepositoryRequest>;
 
 export interface MoveProjectsLocationsRepositoriesRequest {
   /** Required. The full resource name of the repository to move. */
@@ -2602,7 +2570,7 @@ export interface MoveProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: MoveRepositoryRequest;
 }
-export const MoveProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveRepositoryRequest.pipe(T.HttpBody())),
@@ -2621,7 +2589,7 @@ export interface PatchProjectsLocationsFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const PatchProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2641,7 +2609,7 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2661,7 +2629,7 @@ export interface PatchProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Request body */
   body?: ReleaseConfig;
 }
-export const PatchProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2681,15 +2649,14 @@ export interface PatchProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Request body */
   body?: WorkflowConfig;
 }
-export const PatchProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
-    ),
+const PatchProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://dataform.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsRepositoriesWorkflowConfigsRequest",
 }) as any as S.Schema<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>;
@@ -2702,7 +2669,7 @@ export interface PatchProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TeamFolder;
 }
-export const PatchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2721,7 +2688,7 @@ export interface PullGitCommitsRequest {
   /** Required. The author of any merge commit which may be created as a result of merging fetched Git commits into this workspace. */
   author?: CommitAuthor;
 }
-export const PullGitCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const PullGitCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteBranch: S.optional(S.String),
     author: S.optional(CommitAuthor),
@@ -2734,7 +2701,7 @@ export interface PullProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: PullGitCommitsRequest;
 }
-export const PullProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const PullProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PullGitCommitsRequest.pipe(T.HttpBody())),
@@ -2747,15 +2714,14 @@ export const PullProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ 
 
 /** `PullGitCommits` response message. */
 export interface PullGitCommitsResponse {}
-export const PullGitCommitsResponse =
-  CancelOperationRequest as any as S.Schema<PullGitCommitsResponse>;
+const PullGitCommitsResponse = CancelOperationRequest as any as S.Schema<PullGitCommitsResponse>;
 
 /** `PushGitCommits` request message. */
 export interface PushGitCommitsRequest {
   /** Optional. The name of the branch in the Git remote to which commits should be pushed. If left unset, the repository's default branch name will be used. */
   remoteBranch?: string;
 }
-export const PushGitCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const PushGitCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteBranch: S.optional(S.String),
   }),
@@ -2767,7 +2733,7 @@ export interface PushProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: PushGitCommitsRequest;
 }
-export const PushProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const PushProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PushGitCommitsRequest.pipe(T.HttpBody())),
@@ -2780,8 +2746,7 @@ export const PushProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ 
 
 /** `PushGitCommits` response message. */
 export interface PushGitCommitsResponse {}
-export const PushGitCommitsResponse =
-  CancelOperationRequest as any as S.Schema<PushGitCommitsResponse>;
+const PushGitCommitsResponse = CancelOperationRequest as any as S.Schema<PushGitCommitsResponse>;
 
 export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Page token received from a previous `QueryTeamFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryTeamFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
@@ -2795,7 +2760,7 @@ export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const QueryContentsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryContentsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     teamFolder: S.String.pipe(T.Label()),
@@ -2820,7 +2785,7 @@ export interface TeamFolderContentsEntry {
   /** A repository. */
   repository?: Repository;
 }
-export const TeamFolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
+const TeamFolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folder: S.optional(Folder),
     repository: S.optional(Repository),
@@ -2828,7 +2793,7 @@ export const TeamFolderContentsEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamFolderContentsEntry" }) as any as S.Schema<TeamFolderContentsEntry>;
 
 export type TeamFolderContentsEntryList = Array<TeamFolderContentsEntry>;
-export const TeamFolderContentsEntryList = /*@__PURE__*/ S.Array(
+const TeamFolderContentsEntryList = /*@__PURE__*/ S.Array(
   TeamFolderContentsEntry,
 ) as any as S.Schema<TeamFolderContentsEntryList>;
 
@@ -2839,7 +2804,7 @@ export interface QueryTeamFolderContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryTeamFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryTeamFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(TeamFolderContentsEntryList),
     nextPageToken: S.optional(S.String),
@@ -2860,21 +2825,20 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesRequest {
   /** Optional. The Commit SHA for the commit to query from. If unset, the directory will be queried from HEAD. */
   commitSha?: string;
 }
-export const QueryDirectoryContentsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      path: S.optional(S.String.pipe(T.Query())),
-      commitSha: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:queryDirectoryContents",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const QueryDirectoryContentsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    path: S.optional(S.String.pipe(T.Query())),
+    commitSha: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:queryDirectoryContents",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "QueryDirectoryContentsProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>;
@@ -2886,7 +2850,7 @@ export interface FilesystemEntryMetadata {
   /** Output only. Provides the size of the entry in bytes. For directories, this will be 0. */
   sizeBytes?: string;
 }
-export const FilesystemEntryMetadata = /*@__PURE__*/ S.suspend(() =>
+const FilesystemEntryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     sizeBytes: S.optional(S.String),
@@ -2902,7 +2866,7 @@ export interface DirectoryEntry {
   /** A child directory in the directory. The path is returned including the full folder structure from the root. */
   directory?: string;
 }
-export const DirectoryEntry = /*@__PURE__*/ S.suspend(() =>
+const DirectoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(FilesystemEntryMetadata),
     file: S.optional(S.String),
@@ -2911,7 +2875,7 @@ export const DirectoryEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DirectoryEntry" }) as any as S.Schema<DirectoryEntry>;
 
 export type DirectoryEntryList = Array<DirectoryEntry>;
-export const DirectoryEntryList = /*@__PURE__*/ S.Array(
+const DirectoryEntryList = /*@__PURE__*/ S.Array(
   DirectoryEntry,
 ) as any as S.Schema<DirectoryEntryList>;
 
@@ -2922,7 +2886,7 @@ export interface QueryRepositoryDirectoryContentsResponse {
   /** List of entries in the directory. */
   directoryEntries?: DirectoryEntryList;
 }
-export const QueryRepositoryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryRepositoryDirectoryContentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     directoryEntries: S.optional(DirectoryEntryList),
@@ -2935,7 +2899,7 @@ export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnu
   | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
   | "DIRECTORY_CONTENTS_VIEW_BASIC"
   | "DIRECTORY_CONTENTS_VIEW_METADATA";
-export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum = S.String;
+const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum = S.String;
 
 export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. */
@@ -2949,7 +2913,7 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRe
   /** Required. The workspace's name. */
   workspace: string;
 }
-export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest =
+const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       view: S.optional(
@@ -2977,7 +2941,7 @@ export interface QueryDirectoryContentsResponse {
   /** List of entries in the directory. */
   directoryEntries?: DirectoryEntryList;
 }
-export const QueryDirectoryContentsResponse =
+const QueryDirectoryContentsResponse =
   QueryRepositoryDirectoryContentsResponse as any as S.Schema<QueryDirectoryContentsResponse>;
 
 export interface QueryFolderContentsProjectsLocationsFoldersRequest {
@@ -2992,7 +2956,7 @@ export interface QueryFolderContentsProjectsLocationsFoldersRequest {
   /** Optional. Page token received from a previous `QueryFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const QueryFolderContentsProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryFolderContentsProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3012,10 +2976,8 @@ export const QueryFolderContentsProjectsLocationsFoldersRequest = /*@__PURE__*/ 
 
 /** Represents a single content entry. */
 export type FolderContentsEntry = TeamFolderContentsEntry;
-export const FolderContentsEntry = TeamFolderContentsEntry;
-
 export type FolderContentsEntryList = Array<TeamFolderContentsEntry>;
-export const FolderContentsEntryList =
+const FolderContentsEntryList =
   TeamFolderContentsEntryList as any as S.Schema<FolderContentsEntryList>;
 
 /** `QueryFolderContents` response message. */
@@ -3025,7 +2987,7 @@ export interface QueryFolderContentsResponse {
   /** List of entries in the folder. */
   entries?: FolderContentsEntryList;
 }
-export const QueryFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     entries: S.optional(FolderContentsEntryList),
@@ -3044,20 +3006,19 @@ export interface QueryProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The compilation result's name. */
   name: string;
 }
-export const QueryProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:query",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const QueryProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:query",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "QueryProjectsLocationsRepositoriesCompilationResultsRequest",
 }) as any as S.Schema<QueryProjectsLocationsRepositoriesCompilationResultsRequest>;
@@ -3071,7 +3032,7 @@ export interface ColumnDescriptor {
   /** A textual description of the column. */
   description?: string;
 }
-export const ColumnDescriptor = /*@__PURE__*/ S.suspend(() =>
+const ColumnDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryPolicyTags: S.optional(StringList),
     path: S.optional(StringList),
@@ -3080,7 +3041,7 @@ export const ColumnDescriptor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColumnDescriptor" }) as any as S.Schema<ColumnDescriptor>;
 
 export type ColumnDescriptorList = Array<ColumnDescriptor>;
-export const ColumnDescriptorList = /*@__PURE__*/ S.Array(
+const ColumnDescriptorList = /*@__PURE__*/ S.Array(
   ColumnDescriptor,
 ) as any as S.Schema<ColumnDescriptorList>;
 
@@ -3093,7 +3054,7 @@ export interface RelationDescriptor {
   /** A set of BigQuery labels that should be applied to the relation. */
   bigqueryLabels?: StringMap;
 }
-export const RelationDescriptor = /*@__PURE__*/ S.suspend(() =>
+const RelationDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     columns: S.optional(ColumnDescriptorList),
@@ -3106,7 +3067,7 @@ export interface Declaration {
   /** Descriptor for the relation and its columns. Used as documentation only, i.e. values here will result in no changes to the relation's metadata. */
   relationDescriptor?: RelationDescriptor;
 }
-export const Declaration = /*@__PURE__*/ S.suspend(() =>
+const Declaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationDescriptor: S.optional(RelationDescriptor),
   }),
@@ -3127,7 +3088,7 @@ export interface IncrementalTableConfig {
   /** A set of columns or SQL expressions used to define row uniqueness. If any duplicates are discovered (as defined by `unique_key_parts`), only the newly selected rows (as defined by `incremental_select_query`) will be included in the relation. */
   uniqueKeyParts?: StringList;
 }
-export const IncrementalTableConfig = /*@__PURE__*/ S.suspend(() =>
+const IncrementalTableConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incrementalPreOperations: S.optional(StringList),
     incrementalPostOperations: S.optional(StringList),
@@ -3144,13 +3105,13 @@ export type RelationRelationTypeEnum =
   | "VIEW"
   | "INCREMENTAL_TABLE"
   | "MATERIALIZED_VIEW";
-export const RelationRelationTypeEnum = S.String;
+const RelationRelationTypeEnum = S.String;
 
 export type RelationTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
-export const RelationTableFormatEnum = S.String;
+const RelationTableFormatEnum = S.String;
 
 export type RelationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
-export const RelationFileFormatEnum = S.String;
+const RelationFileFormatEnum = S.String;
 
 /** Represents a database relation. */
 export interface Relation {
@@ -3191,7 +3152,7 @@ export interface Relation {
   /** A list of columns or SQL expressions used to cluster the table. */
   clusterExpressions?: StringList;
 }
-export const Relation = /*@__PURE__*/ S.suspend(() =>
+const Relation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencyTargets: S.optional(TargetList),
     tags: S.optional(StringList),
@@ -3229,7 +3190,7 @@ export interface BigQueryUnitTest {
   /** Expected output query to compare against the test query. */
   expectedOutputQuery?: string;
 }
-export const BigQueryUnitTest = /*@__PURE__*/ S.suspend(() =>
+const BigQueryUnitTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     testQuery: S.optional(S.String),
@@ -3247,7 +3208,7 @@ export interface ErrorTable {
   /** Error Table target. */
   target?: Target;
 }
-export const ErrorTable = /*@__PURE__*/ S.suspend(() =>
+const ErrorTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionDays: S.optional(S.Number),
     target: S.optional(Target),
@@ -3256,14 +3217,12 @@ export const ErrorTable = /*@__PURE__*/ S.suspend(() =>
 
 /** Simple load definition */
 export type SimpleLoadMode = CancelOperationRequest;
-export const SimpleLoadMode = CancelOperationRequest;
-
 /** Load definition for incremental load modes */
 export interface IncrementalLoadMode {
   /** Column name for incremental load modes */
   column?: string;
 }
-export const IncrementalLoadMode = /*@__PURE__*/ S.suspend(() =>
+const IncrementalLoadMode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.optional(S.String),
   }),
@@ -3280,7 +3239,7 @@ export interface LoadConfig {
   /** Insert records where the value of a column is not already present in the destination table */
   unique?: IncrementalLoadMode;
 }
-export const LoadConfig = /*@__PURE__*/ S.suspend(() =>
+const LoadConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replace: S.optional(CancelOperationRequest),
     maximum: S.optional(IncrementalLoadMode),
@@ -3298,7 +3257,7 @@ export interface SqlDefinition {
   /** Load configuration. */
   load?: LoadConfig;
 }
-export const SqlDefinition = /*@__PURE__*/ S.suspend(() =>
+const SqlDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     errorTable: S.optional(ErrorTable),
@@ -3319,7 +3278,7 @@ export interface DataPreparation {
   /** Whether this action is disabled (i.e. should not be run). */
   disabled?: boolean;
 }
-export const DataPreparation = /*@__PURE__*/ S.suspend(() =>
+const DataPreparation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentsYaml: S.optional(S.String),
     dependencyTargets: S.optional(TargetList),
@@ -3344,7 +3303,7 @@ export interface Operations {
   /** A list of actions that this action depends on. */
   dependencyTargets?: TargetList;
 }
-export const Operations = /*@__PURE__*/ S.suspend(() =>
+const Operations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     tags: S.optional(StringList),
@@ -3366,7 +3325,7 @@ export interface Notebook {
   /** Arbitrary, user-defined tags on this action. */
   tags?: StringList;
 }
-export const Notebook = /*@__PURE__*/ S.suspend(() =>
+const Notebook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencyTargets: S.optional(TargetList),
     disabled: S.optional(S.Boolean),
@@ -3390,7 +3349,7 @@ export interface Assertion {
   /** The SELECT query which must return zero rows in order for this assertion to succeed. */
   selectQuery?: string;
 }
-export const Assertion = /*@__PURE__*/ S.suspend(() =>
+const Assertion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationDescriptor: S.optional(RelationDescriptor),
     dependencyTargets: S.optional(TargetList),
@@ -3426,7 +3385,7 @@ export interface CompilationResultAction {
   /** The assertion executed by this action. */
   assertion?: Assertion;
 }
-export const CompilationResultAction = /*@__PURE__*/ S.suspend(() =>
+const CompilationResultAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     declaration: S.optional(Declaration),
     relation: S.optional(Relation),
@@ -3443,7 +3402,7 @@ export const CompilationResultAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompilationResultAction" }) as any as S.Schema<CompilationResultAction>;
 
 export type CompilationResultActionList = Array<CompilationResultAction>;
-export const CompilationResultActionList = /*@__PURE__*/ S.Array(
+const CompilationResultActionList = /*@__PURE__*/ S.Array(
   CompilationResultAction,
 ) as any as S.Schema<CompilationResultActionList>;
 
@@ -3454,7 +3413,7 @@ export interface QueryCompilationResultActionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryCompilationResultActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryCompilationResultActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compilationResultActions: S.optional(CompilationResultActionList),
     nextPageToken: S.optional(S.String),
@@ -3471,19 +3430,18 @@ export interface QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Page token received from a previous `QueryWorkflowInvocationActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryWorkflowInvocationActions`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:query",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:query",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest",
 }) as any as S.Schema<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
@@ -3496,16 +3454,12 @@ export type WorkflowInvocationActionStateEnum =
   | "SUCCEEDED"
   | "CANCELLED"
   | "FAILED";
-export const WorkflowInvocationActionStateEnum = S.String;
+const WorkflowInvocationActionStateEnum = S.String;
 
 /** Simple load definition */
 export type ActionSimpleLoadMode = CancelOperationRequest;
-export const ActionSimpleLoadMode = CancelOperationRequest;
-
 /** Load definition for incremental load modes */
 export type ActionIncrementalLoadMode = IncrementalLoadMode;
-export const ActionIncrementalLoadMode = IncrementalLoadMode;
-
 /** Simplified load configuration for actions */
 export interface ActionLoadConfig {
   /** Replace destination table */
@@ -3517,7 +3471,7 @@ export interface ActionLoadConfig {
   /** Insert records where the value exceeds the previous maximum value for a column in the destination table */
   maximum?: IncrementalLoadMode;
 }
-export const ActionLoadConfig = /*@__PURE__*/ S.suspend(() =>
+const ActionLoadConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replace: S.optional(CancelOperationRequest),
     append: S.optional(CancelOperationRequest),
@@ -3533,7 +3487,7 @@ export interface ActionErrorTable {
   /** Error table partition expiration in days. Only positive values are allowed. */
   retentionDays?: number;
 }
-export const ActionErrorTable = /*@__PURE__*/ S.suspend(() =>
+const ActionErrorTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(Target),
     retentionDays: S.optional(S.Number),
@@ -3549,7 +3503,7 @@ export interface ActionSqlDefinition {
   /** The SQL query representing the data preparation steps. Formatted as a Pipe SQL query statement. */
   query?: string;
 }
-export const ActionSqlDefinition = /*@__PURE__*/ S.suspend(() =>
+const ActionSqlDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadConfig: S.optional(ActionLoadConfig),
     errorTable: S.optional(ActionErrorTable),
@@ -3568,7 +3522,7 @@ export interface DataPreparationAction {
   /** Output only. The generated BigQuery SQL script that will be executed. For reference only. */
   generatedSql?: string;
 }
-export const DataPreparationAction = /*@__PURE__*/ S.suspend(() =>
+const DataPreparationAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     contentsSql: S.optional(ActionSqlDefinition),
@@ -3592,7 +3546,7 @@ export interface BigQueryUnitTestAction {
   /** Output only. Job ID for the actual results. */
   actualResultsJobId?: string;
 }
-export const BigQueryUnitTestAction = /*@__PURE__*/ S.suspend(() =>
+const BigQueryUnitTestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actualResultsSqlScript: S.optional(S.String),
     totalProcessedBytes: S.optional(S.String),
@@ -3610,7 +3564,7 @@ export interface BigQueryAction {
   /** Output only. The ID of the BigQuery job that executed the SQL in sql_script. Only set once the job has started to run. */
   jobId?: string;
 }
-export const BigQueryAction = /*@__PURE__*/ S.suspend(() =>
+const BigQueryAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlScript: S.optional(S.String),
     jobId: S.optional(S.String),
@@ -3626,7 +3580,7 @@ export interface NotebookAction {
   /** Output only. The code contents of a Notebook to be run. */
   contents?: string;
 }
-export const NotebookAction = /*@__PURE__*/ S.suspend(() =>
+const NotebookAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filePath: S.optional(S.String),
     jobId: S.optional(S.String),
@@ -3657,7 +3611,7 @@ export interface WorkflowInvocationAction {
   /** Output only. The workflow action's notebook action details. */
   notebookAction?: NotebookAction;
 }
-export const WorkflowInvocationAction = /*@__PURE__*/ S.suspend(() =>
+const WorkflowInvocationAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invocationTiming: S.optional(Interval),
     canonicalTarget: S.optional(Target),
@@ -3673,7 +3627,7 @@ export const WorkflowInvocationAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowInvocationAction" }) as any as S.Schema<WorkflowInvocationAction>;
 
 export type WorkflowInvocationActionList = Array<WorkflowInvocationAction>;
-export const WorkflowInvocationActionList = /*@__PURE__*/ S.Array(
+const WorkflowInvocationActionList = /*@__PURE__*/ S.Array(
   WorkflowInvocationAction,
 ) as any as S.Schema<WorkflowInvocationActionList>;
 
@@ -3684,7 +3638,7 @@ export interface QueryWorkflowInvocationActionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryWorkflowInvocationActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryWorkflowInvocationActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowInvocationActions: S.optional(WorkflowInvocationActionList),
     nextPageToken: S.optional(S.String),
@@ -3705,7 +3659,7 @@ export interface QueryUserRootContentsProjectsLocationsRequest {
   /** Required. Location of the user root folder to list contents for. Format: projects/*\/locations/* */
   location: string;
 }
-export const QueryUserRootContentsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryUserRootContentsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3725,12 +3679,7 @@ export const QueryUserRootContentsProjectsLocationsRequest = /*@__PURE__*/ S.sus
 
 /** Represents a single content entry. */
 export type RootContentsEntry = TeamFolderContentsEntry;
-export const RootContentsEntry = TeamFolderContentsEntry;
-
 export type RootContentsEntryList = Array<TeamFolderContentsEntry>;
-export const RootContentsEntryList =
-  TeamFolderContentsEntryList as any as S.Schema<RootContentsEntryList>;
-
 /** `QueryUserRootContents` response message. */
 export interface QueryUserRootContentsResponse {
   /** List of entries in the folder. */
@@ -3738,7 +3687,7 @@ export interface QueryUserRootContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryUserRootContentsResponse =
+const QueryUserRootContentsResponse =
   QueryTeamFolderContentsResponse as any as S.Schema<QueryUserRootContentsResponse>;
 
 export interface ReadFileProjectsLocationsRepositoriesRequest {
@@ -3749,7 +3698,7 @@ export interface ReadFileProjectsLocationsRepositoriesRequest {
   /** Required. Full file path to read including filename, from repository root. */
   path?: string;
 }
-export const ReadFileProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadFileProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitSha: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3770,7 +3719,7 @@ export interface ReadRepositoryFileResponse {
   /** The file's contents. */
   contents?: string;
 }
-export const ReadRepositoryFileResponse = /*@__PURE__*/ S.suspend(() =>
+const ReadRepositoryFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contents: S.optional(S.String),
   }),
@@ -3786,7 +3735,7 @@ export interface ReadFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-export const ReadFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace: S.String.pipe(T.Label()),
     revision: S.optional(S.String.pipe(T.Query())),
@@ -3807,7 +3756,7 @@ export interface ReadFileResponse {
   /** The file's contents. */
   fileContents?: string;
 }
-export const ReadFileResponse = /*@__PURE__*/ S.suspend(() =>
+const ReadFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileContents: S.optional(S.String),
   }),
@@ -3815,41 +3764,37 @@ export const ReadFileResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** `RemoveDirectory` request message. */
 export type RemoveDirectoryRequest = MakeDirectoryRequest;
-export const RemoveDirectoryRequest = MakeDirectoryRequest;
-
 export interface RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: MakeDirectoryRequest;
 }
-export const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+workspace}:removeDirectory",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
+const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspace: S.String.pipe(T.Label()),
+    body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+workspace}:removeDirectory",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest",
+}) as any as S.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `RemoveDirectory` response message. */
 export interface RemoveDirectoryResponse {}
-export const RemoveDirectoryResponse =
-  CancelOperationRequest as any as S.Schema<RemoveDirectoryResponse>;
+const RemoveDirectoryResponse = CancelOperationRequest as any as S.Schema<RemoveDirectoryResponse>;
 
 /** `RemoveFile` request message. */
 export interface RemoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-export const RemoveFileRequest = MakeDirectoryRequest as any as S.Schema<RemoveFileRequest>;
+const RemoveFileRequest = MakeDirectoryRequest as any as S.Schema<RemoveFileRequest>;
 
 export interface RemoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
@@ -3857,25 +3802,24 @@ export interface RemoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: RemoveFileRequest;
 }
-export const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      body: S.optional(RemoveFileRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+workspace}:removeFile",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspace: S.String.pipe(T.Label()),
+    body: S.optional(RemoveFileRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+workspace}:removeFile",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "RemoveFileProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
 
 /** `RemoveFile` response message. */
 export interface RemoveFileResponse {}
-export const RemoveFileResponse = CancelOperationRequest as any as S.Schema<RemoveFileResponse>;
+const RemoveFileResponse = CancelOperationRequest as any as S.Schema<RemoveFileResponse>;
 
 /** `ResetWorkspaceChanges` request message. */
 export interface ResetWorkspaceChangesRequest {
@@ -3884,7 +3828,7 @@ export interface ResetWorkspaceChangesRequest {
   /** Optional. If set to true, untracked files will be deleted. */
   clean?: boolean;
 }
-export const ResetWorkspaceChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetWorkspaceChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: S.optional(StringList),
     clean: S.optional(S.Boolean),
@@ -3899,7 +3843,7 @@ export interface ResetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: ResetWorkspaceChangesRequest;
 }
-export const ResetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResetWorkspaceChangesRequest.pipe(T.HttpBody())),
@@ -3916,7 +3860,7 @@ export const ResetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/
 
 /** `ResetWorkspaceChanges` response message. */
 export interface ResetWorkspaceChangesResponse {}
-export const ResetWorkspaceChangesResponse =
+const ResetWorkspaceChangesResponse =
   CancelOperationRequest as any as S.Schema<ResetWorkspaceChangesResponse>;
 
 export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
@@ -3929,20 +3873,19 @@ export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Page token received from a previous `SearchFilesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchFilesRequest`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const SearchFilesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workspace: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+workspace}:searchFiles",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const SearchFilesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspace: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+workspace}:searchFiles",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SearchFilesProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>;
@@ -3952,14 +3895,14 @@ export interface DirectorySearchResult {
   /** File system path relative to the workspace root. */
   path?: string;
 }
-export const DirectorySearchResult = MakeDirectoryRequest as any as S.Schema<DirectorySearchResult>;
+const DirectorySearchResult = MakeDirectoryRequest as any as S.Schema<DirectorySearchResult>;
 
 /** Client-facing representation of a file entry in search results. */
 export interface FileSearchResult {
   /** File system path relative to the file tree root. */
   path?: string;
 }
-export const FileSearchResult = MakeDirectoryRequest as any as S.Schema<FileSearchResult>;
+const FileSearchResult = MakeDirectoryRequest as any as S.Schema<FileSearchResult>;
 
 /** Client-facing representation of a search result entry. */
 export interface SearchResult {
@@ -3968,7 +3911,7 @@ export interface SearchResult {
   /** Details when search result is a file. */
   file?: FileSearchResult;
 }
-export const SearchResult = /*@__PURE__*/ S.suspend(() =>
+const SearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory: S.optional(DirectorySearchResult),
     file: S.optional(FileSearchResult),
@@ -3976,9 +3919,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
 export type SearchResultList = Array<SearchResult>;
-export const SearchResultList = /*@__PURE__*/ S.Array(
-  SearchResult,
-) as any as S.Schema<SearchResultList>;
+const SearchResultList = /*@__PURE__*/ S.Array(SearchResult) as any as S.Schema<SearchResultList>;
 
 /** Client-facing representation of a file search response. */
 export interface SearchFilesResponse {
@@ -3987,7 +3928,7 @@ export interface SearchFilesResponse {
   /** Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchResults: S.optional(SearchResultList),
     nextPageToken: S.optional(S.String),
@@ -4006,7 +3947,7 @@ export interface SearchProjectsLocationsTeamFoldersRequest {
   /** Required. Location in which to query TeamFolders. Format: `projects/*\/locations/*`. */
   location: string;
 }
-export const SearchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4029,14 +3970,14 @@ export interface TeamFolderSearchResult {
   /** A TeamFolder resource that is in the project / location. */
   teamFolder?: TeamFolder;
 }
-export const TeamFolderSearchResult = /*@__PURE__*/ S.suspend(() =>
+const TeamFolderSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamFolder: S.optional(TeamFolder),
   }),
 ).annotate({ identifier: "TeamFolderSearchResult" }) as any as S.Schema<TeamFolderSearchResult>;
 
 export type TeamFolderSearchResultList = Array<TeamFolderSearchResult>;
-export const TeamFolderSearchResultList = /*@__PURE__*/ S.Array(
+const TeamFolderSearchResultList = /*@__PURE__*/ S.Array(
   TeamFolderSearchResult,
 ) as any as S.Schema<TeamFolderSearchResultList>;
 
@@ -4047,7 +3988,7 @@ export interface SearchTeamFoldersResponse {
   /** List of TeamFolders that match the search query. */
   results?: TeamFolderSearchResultList;
 }
-export const SearchTeamFoldersResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchTeamFoldersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     results: S.optional(TeamFolderSearchResultList),
@@ -4061,7 +4002,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -4073,7 +4014,7 @@ export interface SetIamPolicyProjectsLocationsFoldersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4094,7 +4035,7 @@ export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4115,18 +4056,17 @@ export interface SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataform.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://dataform.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
@@ -4137,7 +4077,7 @@ export interface SetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4157,7 +4097,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -4171,7 +4111,7 @@ export interface TestIamPermissionsProjectsLocationsFoldersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4191,7 +4131,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
@@ -4200,7 +4140,7 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4221,8 +4161,8 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesWorkspacesReques
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4233,9 +4173,9 @@ export const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest =
         baseUrl: "https://dataform.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4243,7 +4183,7 @@ export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4266,7 +4206,7 @@ export interface UpdateConfigProjectsLocationsRequest {
   /** Request body */
   body?: Config;
 }
-export const UpdateConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4285,7 +4225,7 @@ export interface WriteFileRequest {
   /** Required. The file. */
   path?: string;
 }
-export const WriteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contents: S.optional(S.String),
     path: S.optional(S.String),
@@ -4298,7 +4238,7 @@ export interface WriteFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: WriteFileRequest;
 }
-export const WriteFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace: S.String.pipe(T.Label()),
     body: S.optional(WriteFileRequest.pipe(T.HttpBody())),
@@ -4315,7 +4255,7 @@ export const WriteFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE
 
 /** `WriteFile` response message. */
 export interface WriteFileResponse {}
-export const WriteFileResponse = CancelOperationRequest as any as S.Schema<WriteFileResponse>;
+const WriteFileResponse = CancelOperationRequest as any as S.Schema<WriteFileResponse>;
 
 export type CancelProjectsLocationsOperationsError =
   | NotFound

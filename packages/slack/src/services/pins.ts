@@ -14,7 +14,7 @@ export interface AddPinRequest {
   /** Timestamp of the message to pin. You must also include the `channel`. */
   timestamp?: string;
 }
-export const AddPinRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     timestamp: S.optional(S.String),
@@ -25,7 +25,7 @@ export interface AddPinResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AddPinResponse = /*@__PURE__*/ S.suspend(() =>
+const AddPinResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -35,14 +35,14 @@ export interface ListPinsRequest {
   /** Channel to get pinned items for. */
   channel: string;
 }
-export const ListPinsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPinsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/pins.list", code: 200 })),
 ).annotate({ identifier: "ListPinsRequest" }) as any as S.Schema<ListPinsRequest>;
 
 export type ListPinsResponseItemsItemType = "file" | "message" | "file_comment";
-export const ListPinsResponseItemsItemType = S.String;
+const ListPinsResponseItemsItemType = S.String;
 
 export interface ListPinsResponseItemsItem {
   type: ListPinsResponseItemsItemType;
@@ -53,7 +53,7 @@ export interface ListPinsResponseItemsItem {
   file?: unknown;
   comment?: string;
 }
-export const ListPinsResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ListPinsResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ListPinsResponseItemsItemType,
     created: S.Number,
@@ -68,7 +68,7 @@ export const ListPinsResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPinsResponseItemsItem>;
 
 export type ListPinsResponseItemsList = Array<ListPinsResponseItemsItem>;
-export const ListPinsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListPinsResponseItemsList = /*@__PURE__*/ S.Array(
   ListPinsResponseItemsItem,
 ) as any as S.Schema<ListPinsResponseItemsList>;
 
@@ -78,7 +78,7 @@ export interface ListPinsResponse {
   items?: ListPinsResponseItemsList;
   count?: number;
 }
-export const ListPinsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPinsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     items: S.optional(ListPinsResponseItemsList),
@@ -92,7 +92,7 @@ export interface RemovePinRequest {
   /** Timestamp of the message to un-pin. */
   timestamp?: string;
 }
-export const RemovePinRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     timestamp: S.optional(S.String),
@@ -103,7 +103,7 @@ export interface RemovePinResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemovePinResponse = AddPinResponse as any as S.Schema<RemovePinResponse>;
+const RemovePinResponse = AddPinResponse as any as S.Schema<RemovePinResponse>;
 
 export type AddPinError = SlackOpError;
 /** Pins an item to a channel. Required scopes -- bot: `pins:write`; user: `pins:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_pinned` -- The specified item is already pinned to the channel. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- The `channel` argument was not specified or was invalid - `external_channel_migrating` -- Channel is undergoing an active migration. - `file_not_found` -- File not found. - `file_not_shared` -- File specified by `file` is not public nor shared to the channel. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- One of `file`, `file_comment`, or `timestamp` was not specified. - `not_in_channel` -- Item is not in channel. - `not_pinnable` -- This message type is not pinnable. - `restricted_action` -- The user does not have permission to add pins to the channel. - `too_many_pins` -- Too many pins in channel. See https://docs.slack.dev/reference/methods/pins.add */

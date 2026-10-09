@@ -17,44 +17,43 @@ export interface AbortStorageAccountHierarchicalNamespaceMigrationRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const AbortStorageAccountHierarchicalNamespaceMigrationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
-        code: 200,
-        apiVersion: "2026-09-01",
-      }),
-    ),
+const AbortStorageAccountHierarchicalNamespaceMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
+      code: 200,
+      apiVersion: "2026-09-01",
+    }),
+  ),
 ).annotate({
   identifier: "AbortStorageAccountHierarchicalNamespaceMigrationRequest",
 }) as any as S.Schema<AbortStorageAccountHierarchicalNamespaceMigrationRequest>;
 
 export interface AbortStorageAccountHierarchicalNamespaceMigrationResponse {}
-export const AbortStorageAccountHierarchicalNamespaceMigrationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const AbortStorageAccountHierarchicalNamespaceMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "AbortStorageAccountHierarchicalNamespaceMigrationResponse",
 }) as any as S.Schema<AbortStorageAccountHierarchicalNamespaceMigrationResponse>;
 
 export type AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType =
   "ContainerLevelCapacityMetrics";
-export const AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType = S.String;
+const AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType = S.String;
 
 /** The metrics emitted by the advanced platform metrics rule. */
 export type MetricsEmitted = "ContainerBlobCount" | "ContainerUsedSize";
-export const MetricsEmitted = S.String;
+const MetricsEmitted = S.String;
 
 /** The metrics requested by the caller. If omitted in a create or update request, the service enables all metrics supported by the selected rule type. */
 export type AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList = Array<
   MetricsEmitted | (string & {})
 >;
-export const AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList = /*@__PURE__*/ S.Array(
+const AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList = /*@__PURE__*/ S.Array(
   MetricsEmitted,
 ) as any as S.Schema<AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList>;
 
@@ -63,11 +62,11 @@ export type AdvancedPlatformMetricsFilterType =
   | "AllContainersFilter"
   | "ContainerPrefixFilter"
   | "ContainerListFilter";
-export const AdvancedPlatformMetricsFilterType = S.String;
+const AdvancedPlatformMetricsFilterType = S.String;
 
 /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
 export type AdvancedPlatformMetricsRuleConfigFilterValuesList = Array<string>;
-export const AdvancedPlatformMetricsRuleConfigFilterValuesList = /*@__PURE__*/ S.Array(
+const AdvancedPlatformMetricsRuleConfigFilterValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedPlatformMetricsRuleConfigFilterValuesList>;
 
@@ -78,7 +77,7 @@ export interface AdvancedPlatformMetricsRuleConfig {
   /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
   filterValues?: AdvancedPlatformMetricsRuleConfigFilterValuesList;
 }
-export const AdvancedPlatformMetricsRuleConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvancedPlatformMetricsRuleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterType: S.optional(AdvancedPlatformMetricsFilterType),
     filterValues: S.optional(AdvancedPlatformMetricsRuleConfigFilterValuesList),
@@ -96,7 +95,7 @@ export interface AdvancedPlatformMetricsRulePropertiesInput {
   /** Configuration for the advanced platform metrics rule. */
   ruleConfig: AdvancedPlatformMetricsRuleConfig;
 }
-export const AdvancedPlatformMetricsRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AdvancedPlatformMetricsRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     metricsToEmit: S.optional(AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList),
@@ -120,7 +119,7 @@ export interface AdvancedPlatformMetricsCreateOrUpdateRequest {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRulePropertiesInput;
 }
-export const AdvancedPlatformMetricsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AdvancedPlatformMetricsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -142,11 +141,11 @@ export const AdvancedPlatformMetricsCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -163,7 +162,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -176,16 +175,16 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the advanced platform metrics rule. */
 export type AdvancedPlatformMetricsRuleType = "ContainerLevelCapacityMetrics";
-export const AdvancedPlatformMetricsRuleType = S.String;
+const AdvancedPlatformMetricsRuleType = S.String;
 
 /** The metrics requested by the caller. If omitted in a create or update request, the service enables all metrics supported by the selected rule type. */
 export type AdvancedPlatformMetricsRulePropertiesMetricsToEmitList = Array<MetricsEmitted>;
-export const AdvancedPlatformMetricsRulePropertiesMetricsToEmitList =
+const AdvancedPlatformMetricsRulePropertiesMetricsToEmitList =
   AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<AdvancedPlatformMetricsRulePropertiesMetricsToEmitList>;
 
 /** The metrics emitted by the rule. Metrics are mapped according to the rule type from RuleTypeProperty. Rule type to metrics mapping: ContainerLevelCapacityMetrics => {ContainerUsedSize, ContainerBlobCount}. */
 export type AdvancedPlatformMetricsRulePropertiesMetricsEmittedList = Array<MetricsEmitted>;
-export const AdvancedPlatformMetricsRulePropertiesMetricsEmittedList =
+const AdvancedPlatformMetricsRulePropertiesMetricsEmittedList =
   AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<AdvancedPlatformMetricsRulePropertiesMetricsEmittedList>;
 
 /** An object that defines the advanced platform metrics rule. */
@@ -203,7 +202,7 @@ export interface AdvancedPlatformMetricsRuleProperties {
   /** Configuration for the advanced platform metrics rule. */
   ruleConfig: AdvancedPlatformMetricsRuleConfig;
 }
-export const AdvancedPlatformMetricsRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const AdvancedPlatformMetricsRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleType: S.optional(AdvancedPlatformMetricsRuleType),
     enabled: S.Boolean,
@@ -228,7 +227,7 @@ export interface AdvancedPlatformMetricsCreateOrUpdateResponse {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRuleProperties;
 }
-export const AdvancedPlatformMetricsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AdvancedPlatformMetricsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -242,7 +241,7 @@ export const AdvancedPlatformMetricsCreateOrUpdateResponse = /*@__PURE__*/ S.sus
 
 /** The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked. */
 export type ImmutabilityPolicyState = "Locked" | "Unlocked";
-export const ImmutabilityPolicyState = S.String;
+const ImmutabilityPolicyState = S.String;
 
 /** The properties of an ImmutabilityPolicy of a blob container. */
 export interface ImmutabilityPolicyProperty {
@@ -255,7 +254,7 @@ export interface ImmutabilityPolicyProperty {
   /** This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive. */
   allowProtectedAppendWritesAll?: boolean;
 }
-export const ImmutabilityPolicyProperty = /*@__PURE__*/ S.suspend(() =>
+const ImmutabilityPolicyProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
     state: S.optional(ImmutabilityPolicyState),
@@ -278,7 +277,7 @@ export interface BlobContainersCreateOrUpdateImmutabilityPolicyRequest {
   /** The properties of an ImmutabilityPolicy of a blob container. */
   properties: ImmutabilityPolicyProperty;
 }
-export const BlobContainersCreateOrUpdateImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const BlobContainersCreateOrUpdateImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -311,7 +310,7 @@ export interface BlobContainersCreateOrUpdateImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const BlobContainersCreateOrUpdateImmutabilityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const BlobContainersCreateOrUpdateImmutabilityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -326,7 +325,7 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicyResponse = /*@__PURE_
 
 /** Specifies the lease action. Can be one of the available actions. */
 export type LeaseContainerRequestAction = "Acquire" | "Renew" | "Change" | "Release" | "Break";
-export const LeaseContainerRequestAction = S.String;
+const LeaseContainerRequestAction = S.String;
 
 export interface BlobContainersLeaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -348,7 +347,7 @@ export interface BlobContainersLeaseRequest {
   /** Optional for acquire, required for change. Proposed lease ID, in a GUID string format. */
   proposedLeaseId?: string;
 }
-export const BlobContainersLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const BlobContainersLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -378,7 +377,7 @@ export interface LeaseContainerResponse {
   /** Approximate time remaining in the lease period, in seconds. */
   leaseTimeSeconds?: string;
 }
-export const LeaseContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const LeaseContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leaseId: S.optional(S.String),
     leaseTimeSeconds: S.optional(S.String),
@@ -395,7 +394,7 @@ export interface BlobContainersObjectLevelWormRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
-export const BlobContainersObjectLevelWormRequest = /*@__PURE__*/ S.suspend(() =>
+const BlobContainersObjectLevelWormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -414,32 +413,30 @@ export const BlobContainersObjectLevelWormRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BlobContainersObjectLevelWormRequest>;
 
 export interface BlobContainersObjectLevelWormResponse {}
-export const BlobContainersObjectLevelWormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const BlobContainersObjectLevelWormResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BlobContainersObjectLevelWormResponse",
 }) as any as S.Schema<BlobContainersObjectLevelWormResponse>;
 
 export type BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName = "default";
-export const BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName = S.String;
+const BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName = S.String;
 
 /** The valid value is Inventory */
 export type InventoryRuleType = "Inventory";
-export const InventoryRuleType = S.String;
+const InventoryRuleType = S.String;
 
 /** An array of strings with maximum 10 blob prefixes to be included in the inventory. */
 export type BlobInventoryPolicyFilterPrefixMatchList = Array<string>;
-export const BlobInventoryPolicyFilterPrefixMatchList =
+const BlobInventoryPolicyFilterPrefixMatchList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyFilterPrefixMatchList>;
 
 /** An array of strings with maximum 10 blob prefixes to be excluded from the inventory. */
 export type BlobInventoryPolicyFilterExcludePrefixList = Array<string>;
-export const BlobInventoryPolicyFilterExcludePrefixList =
+const BlobInventoryPolicyFilterExcludePrefixList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyFilterExcludePrefixList>;
 
 /** An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'. */
 export type BlobInventoryPolicyFilterBlobTypesList = Array<string>;
-export const BlobInventoryPolicyFilterBlobTypesList =
+const BlobInventoryPolicyFilterBlobTypesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyFilterBlobTypesList>;
 
 /** This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter. */
@@ -447,7 +444,7 @@ export interface BlobInventoryCreationTime {
   /** When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500. */
   lastNDays?: number;
 }
-export const BlobInventoryCreationTime = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryCreationTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastNDays: S.optional(S.Number),
   }),
@@ -472,7 +469,7 @@ export interface BlobInventoryPolicyFilter {
   /** This property is used to filter objects based on the object creation time */
   creationTime?: BlobInventoryCreationTime;
 }
-export const BlobInventoryPolicyFilter = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixMatch: S.optional(BlobInventoryPolicyFilterPrefixMatchList),
     excludePrefix: S.optional(BlobInventoryPolicyFilterExcludePrefixList),
@@ -488,19 +485,19 @@ export const BlobInventoryPolicyFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** This is a required field, it specifies the format for the inventory files. */
 export type Format = "Csv" | "Parquet";
-export const Format = S.String;
+const Format = S.String;
 
 /** This is a required field. This field is used to schedule an inventory formation. */
 export type Schedule = "Daily" | "Weekly";
-export const Schedule = S.String;
+const Schedule = S.String;
 
 /** This is a required field. This field specifies the scope of the inventory created either at the blob or container level. */
 export type ObjectType = "Blob" | "Container";
-export const ObjectType = S.String;
+const ObjectType = S.String;
 
 /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
 export type BlobInventoryPolicyDefinitionSchemaFieldsList = Array<string>;
-export const BlobInventoryPolicyDefinitionSchemaFieldsList =
+const BlobInventoryPolicyDefinitionSchemaFieldsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyDefinitionSchemaFieldsList>;
 
 /** An object that defines the blob inventory rule. */
@@ -516,7 +513,7 @@ export interface BlobInventoryPolicyDefinition {
   /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
   schemaFields: BlobInventoryPolicyDefinitionSchemaFieldsList;
 }
-export const BlobInventoryPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(BlobInventoryPolicyFilter),
     format: Format,
@@ -539,7 +536,7 @@ export interface BlobInventoryPolicyRule {
   /** An object that defines the blob inventory policy rule. */
   definition: BlobInventoryPolicyDefinition;
 }
-export const BlobInventoryPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
@@ -550,7 +547,7 @@ export const BlobInventoryPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
 export type BlobInventoryPolicySchemaInputRulesList = Array<BlobInventoryPolicyRule>;
-export const BlobInventoryPolicySchemaInputRulesList = /*@__PURE__*/ S.Array(
+const BlobInventoryPolicySchemaInputRulesList = /*@__PURE__*/ S.Array(
   BlobInventoryPolicyRule,
 ) as any as S.Schema<BlobInventoryPolicySchemaInputRulesList>;
 
@@ -563,7 +560,7 @@ export interface BlobInventoryPolicySchemaInput {
   /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
   rules: BlobInventoryPolicySchemaInputRulesList;
 }
-export const BlobInventoryPolicySchemaInput = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicySchemaInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     type: InventoryRuleType,
@@ -578,7 +575,7 @@ export interface BlobInventoryPolicyPropertiesInput {
   /** The storage account blob inventory policy object. It is composed of policy rules. */
   policy: BlobInventoryPolicySchemaInput;
 }
-export const BlobInventoryPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: BlobInventoryPolicySchemaInput,
   }),
@@ -600,7 +597,7 @@ export interface BlobInventoryPoliciesCreateOrUpdateRequest {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyPropertiesInput;
 }
-export const BlobInventoryPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -623,7 +620,7 @@ export const BlobInventoryPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 
 /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
 export type BlobInventoryPolicySchemaRulesList = Array<BlobInventoryPolicyRule>;
-export const BlobInventoryPolicySchemaRulesList =
+const BlobInventoryPolicySchemaRulesList =
   BlobInventoryPolicySchemaInputRulesList as any as S.Schema<BlobInventoryPolicySchemaRulesList>;
 
 /** The storage account blob inventory policy rules. */
@@ -637,7 +634,7 @@ export interface BlobInventoryPolicySchema {
   /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
   rules: BlobInventoryPolicySchemaRulesList;
 }
-export const BlobInventoryPolicySchema = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicySchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     destination: S.optional(S.String),
@@ -655,7 +652,7 @@ export interface BlobInventoryPolicyProperties {
   /** The storage account blob inventory policy object. It is composed of policy rules. */
   policy: BlobInventoryPolicySchema;
 }
-export const BlobInventoryPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModifiedTime: S.optional(S.String),
     policy: BlobInventoryPolicySchema,
@@ -676,7 +673,7 @@ export interface BlobInventoryPoliciesCreateOrUpdateResponse {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyProperties;
 }
-export const BlobInventoryPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -690,7 +687,7 @@ export const BlobInventoryPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspe
 
 /** The type of the context cache resource to check for availability. */
 export type CheckContextCachNameAvailabilityRequestType = "Microsoft.Storage/contextCaches";
-export const CheckContextCachNameAvailabilityRequestType = S.String;
+const CheckContextCachNameAvailabilityRequestType = S.String;
 
 export interface CheckContextCachNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -700,7 +697,7 @@ export interface CheckContextCachNameAvailabilityRequest {
   /** The type of the context cache resource to check for availability. */
   type: CheckContextCachNameAvailabilityRequestType | (string & {});
 }
-export const CheckContextCachNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckContextCachNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -721,7 +718,7 @@ export const CheckContextCachNameAvailabilityRequest = /*@__PURE__*/ S.suspend((
 export type ContextCacheCheckNameAvailabilityFailureReason =
   | "AlreadyExists"
   | "ContextCacheNameInvalid";
-export const ContextCacheCheckNameAvailabilityFailureReason = S.String;
+const ContextCacheCheckNameAvailabilityFailureReason = S.String;
 
 /** The result of the context cache name availability check. */
 export interface ContextCacheCheckNameAvailabilityResult {
@@ -732,7 +729,7 @@ export interface ContextCacheCheckNameAvailabilityResult {
   /** The error message providing additional information about the context cache name availability check failure. */
   message?: string;
 }
-export const ContextCacheCheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheCheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.Boolean,
     reason: S.optional(ContextCacheCheckNameAvailabilityFailureReason),
@@ -744,7 +741,7 @@ export const ContextCacheCheckNameAvailabilityResult = /*@__PURE__*/ S.suspend((
 
 /** The type of resource, Microsoft.Storage/storageAccounts */
 export type CheckStorageAccountNameAvailabilityRequestType = "Microsoft.Storage/storageAccounts";
-export const CheckStorageAccountNameAvailabilityRequestType = S.String;
+const CheckStorageAccountNameAvailabilityRequestType = S.String;
 
 export interface CheckStorageAccountNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -754,7 +751,7 @@ export interface CheckStorageAccountNameAvailabilityRequest {
   /** The type of resource, Microsoft.Storage/storageAccounts */
   type: CheckStorageAccountNameAvailabilityRequestType | (string & {});
 }
-export const CheckStorageAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckStorageAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -773,7 +770,7 @@ export const CheckStorageAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspen
 
 /** Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is false. */
 export type Reason = "AccountNameInvalid" | "AlreadyExists";
-export const Reason = S.String;
+const Reason = S.String;
 
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
@@ -784,7 +781,7 @@ export interface CheckNameAvailabilityResult {
   /** Gets an error message explaining the Reason value in more detail. */
   message?: string;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(Reason),
@@ -796,7 +793,7 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
 export type ClearBlobContainerLegalHoldRequestTagsList = Array<string>;
-export const ClearBlobContainerLegalHoldRequestTagsList =
+const ClearBlobContainerLegalHoldRequestTagsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ClearBlobContainerLegalHoldRequestTagsList>;
 
 export interface ClearBlobContainerLegalHoldRequest {
@@ -813,7 +810,7 @@ export interface ClearBlobContainerLegalHoldRequest {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWritesAll?: boolean;
 }
-export const ClearBlobContainerLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearBlobContainerLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -835,7 +832,7 @@ export const ClearBlobContainerLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
 export type LegalHoldTagsList = Array<string>;
-export const LegalHoldTagsList =
+const LegalHoldTagsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<LegalHoldTagsList>;
 
 /** The LegalHold property of a blob container. */
@@ -847,7 +844,7 @@ export interface LegalHold {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWritesAll?: boolean;
 }
-export const LegalHold = /*@__PURE__*/ S.suspend(() =>
+const LegalHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasLegalHold: S.optional(S.Boolean),
     tags: LegalHoldTagsList,
@@ -857,7 +854,7 @@ export const LegalHold = /*@__PURE__*/ S.suspend(() =>
 
 /** The AI provider associated with a container. */
 export type AiProvider = "OpenAI";
-export const AiProvider = S.String;
+const AiProvider = S.String;
 
 /** Details of a container within a Context Cache. */
 export interface ContextCacheContainerPropertiesInput {
@@ -870,7 +867,7 @@ export interface ContextCacheContainerPropertiesInput {
   /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
   timeToLive?: number;
 }
-export const ContextCacheContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     modelName: S.String,
@@ -893,7 +890,7 @@ export interface ContextCacheContainersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerPropertiesInput;
 }
-export const ContextCacheContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -921,7 +918,7 @@ export type ContextCacheProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ContextCacheProvisioningState = S.String;
+const ContextCacheProvisioningState = S.String;
 
 /** Details of a container within a Context Cache. */
 export interface ContextCacheContainerProperties {
@@ -936,7 +933,7 @@ export interface ContextCacheContainerProperties {
   /** The status of the last operation. */
   provisioningState?: ContextCacheProvisioningState;
 }
-export const ContextCacheContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     modelName: S.String,
@@ -960,7 +957,7 @@ export interface ContextCacheContainersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
-export const ContextCacheContainersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -974,25 +971,25 @@ export const ContextCacheContainersCreateOrUpdateResponse = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type ContextCachesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ContextCachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ContextCachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ContextCachesCreateOrUpdateRequestTagsMap>;
 
 /** The kind of context cache account, determining storage topology. */
 export type ContextCacheAccountKind = "Regional" | "DataZone" | "Global";
-export const ContextCacheAccountKind = S.String;
+const ContextCacheAccountKind = S.String;
 
 /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
 export type AzureResourceManagerCommonTypesInfrastructureEncryption = "enabled" | "disabled";
-export const AzureResourceManagerCommonTypesInfrastructureEncryption = S.String;
+const AzureResourceManagerCommonTypesInfrastructureEncryption = S.String;
 
 /** The type of identity to use. */
 export type AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType =
   | "systemAssignedIdentity"
   | "userAssignedIdentity"
   | "delegatedResourceIdentity";
-export const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType = S.String;
+const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType = S.String;
 
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity {
@@ -1005,7 +1002,7 @@ export interface AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity {
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
   delegatedIdentityClientId?: string;
 }
-export const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.optional(AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType),
     userAssignedIdentityResourceId: S.optional(S.String),
@@ -1023,12 +1020,11 @@ export interface AzureResourceManagerCommonTypesCustomerManagedKeyEncryption {
   /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyEncryptionKeyUrl?: string;
 }
-export const AzureResourceManagerCommonTypesCustomerManagedKeyEncryption = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      keyEncryptionKeyIdentity: S.optional(AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity),
-      keyEncryptionKeyUrl: S.optional(S.String),
-    }),
+const AzureResourceManagerCommonTypesCustomerManagedKeyEncryption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyEncryptionKeyIdentity: S.optional(AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity),
+    keyEncryptionKeyUrl: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "AzureResourceManagerCommonTypesCustomerManagedKeyEncryption",
 }) as any as S.Schema<AzureResourceManagerCommonTypesCustomerManagedKeyEncryption>;
@@ -1042,7 +1038,7 @@ export interface AzureResourceManagerCommonTypesEncryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: AzureResourceManagerCommonTypesCustomerManagedKeyEncryption;
 }
-export const AzureResourceManagerCommonTypesEncryption = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceManagerCommonTypesEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infrastructureEncryption: S.optional(AzureResourceManagerCommonTypesInfrastructureEncryption),
     customerManagedKeyEncryption: S.optional(
@@ -1062,7 +1058,7 @@ export interface ContextCachePropertiesInput {
   /** Encryption settings for the account. */
   encryption?: AzureResourceManagerCommonTypesEncryption;
 }
-export const ContextCachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContextCachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountKind: ContextCacheAccountKind,
     description: S.optional(S.String),
@@ -1078,11 +1074,11 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** UserAssignedIdentity for the resource. */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
@@ -1090,7 +1086,7 @@ export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct(
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -1100,7 +1096,7 @@ export interface ContextCachesCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const ContextCachesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const ContextCachesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -1125,7 +1121,7 @@ export interface ContextCachesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateRequestIdentity;
 }
-export const ContextCachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContextCachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1148,7 +1144,7 @@ export const ContextCachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ContextCachesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ContextCachesCreateOrUpdateResponseTagsMap =
+const ContextCachesCreateOrUpdateResponseTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextCachesCreateOrUpdateResponseTagsMap>;
 
 /** Details of the Context Cache. */
@@ -1162,7 +1158,7 @@ export interface ContextCacheProperties {
   /** Encryption settings for the account. */
   encryption?: AzureResourceManagerCommonTypesEncryption;
 }
-export const ContextCacheProperties = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountKind: ContextCacheAccountKind,
     description: S.optional(S.String),
@@ -1178,7 +1174,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1187,7 +1183,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -1201,7 +1197,7 @@ export interface ContextCachesCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const ContextCachesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const ContextCachesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1230,7 +1226,7 @@ export interface ContextCachesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
-export const ContextCachesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ContextCachesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1249,12 +1245,12 @@ export const ContextCachesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateBlobAccessPointConfigurationRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBlobAccessPointConfigurationRequestTagsMap =
+const CreateBlobAccessPointConfigurationRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBlobAccessPointConfigurationRequestTagsMap>;
 
 /** The state of a Blob Access Point configuration. */
 export type BlobAccessPointConfigurationState = "Active" | "Inactive";
-export const BlobAccessPointConfigurationState = S.String;
+const BlobAccessPointConfigurationState = S.String;
 
 /** The type of the non-Azure S3-compatible data source exposed through the Blob Access Point. */
 export type BlobAccessPointSourceType =
@@ -1265,14 +1261,14 @@ export type BlobAccessPointSourceType =
   | "Commvault"
   | "Nasuni"
   | "S3Compatible";
-export const BlobAccessPointSourceType = S.String;
+const BlobAccessPointSourceType = S.String;
 
 /** Information about the data source exposed through a Blob Access Point. */
 export interface BlobAccessPointSourceProperties {
   /** The source type. This value determines the remaining shape of the source object. */
   sourceType: BlobAccessPointSourceType | (string & {});
 }
-export const BlobAccessPointSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: BlobAccessPointSourceType,
   }),
@@ -1289,7 +1285,7 @@ export interface BlobAccessPointConfigurationPropertiesInput {
   /** Information about the backing data source. */
   source: BlobAccessPointSourceProperties;
 }
-export const BlobAccessPointConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(BlobAccessPointConfigurationState),
     description: S.optional(S.String),
@@ -1315,7 +1311,7 @@ export interface CreateBlobAccessPointConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationPropertiesInput;
 }
-export const CreateBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1340,16 +1336,16 @@ export const CreateBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend
 export type CreateBlobAccessPointConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateBlobAccessPointConfigurationResponseTagsMap =
+const CreateBlobAccessPointConfigurationResponseTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBlobAccessPointConfigurationResponseTagsMap>;
 
 /** The status of the most recent connection test. */
 export type BlobAccessPointConnectionTestStatus = "Succeeded" | "Failed";
-export const BlobAccessPointConnectionTestStatus = S.String;
+const BlobAccessPointConnectionTestStatus = S.String;
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** Details of a Blob Access Point configuration. */
 export interface BlobAccessPointConfigurationProperties {
@@ -1370,7 +1366,7 @@ export interface BlobAccessPointConfigurationProperties {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const BlobAccessPointConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueId: S.optional(S.String),
     state: S.optional(BlobAccessPointConfigurationState),
@@ -1401,7 +1397,7 @@ export interface CreateBlobAccessPointConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
-export const CreateBlobAccessPointConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBlobAccessPointConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1417,11 +1413,11 @@ export const CreateBlobAccessPointConfigurationResponse = /*@__PURE__*/ S.suspen
 
 /** Specifies whether data in the container may be accessed publicly and the level of access. */
 export type PublicAccess = "Container" | "Blob" | "None";
-export const PublicAccess = S.String;
+const PublicAccess = S.String;
 
 /** A name-value pair to associate with the container as metadata. */
 export type ContainerPropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const ContainerPropertiesInputMetadataMap =
+const ContainerPropertiesInputMetadataMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContainerPropertiesInputMetadataMap>;
 
 /** Object level immutability properties of the container. */
@@ -1429,7 +1425,7 @@ export interface ImmutableStorageWithVersioningInput {
   /** This is an immutable property, when set to true it enables object level immutability at the container level. */
   enabled?: boolean;
 }
-export const ImmutableStorageWithVersioningInput = /*@__PURE__*/ S.suspend(() =>
+const ImmutableStorageWithVersioningInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -1444,7 +1440,7 @@ export interface BlobAccessPointConfigurationConnection {
   /** System-generated unique identifier of the Blob Access Point Configuration to connect to. If not provided on create, the service looks up and persists the current unique id. */
   blobAccessPointConfigurationUniqueId?: string;
 }
-export const BlobAccessPointConfigurationConnection = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointConfigurationConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobAccessPointConfigurationName: S.optional(S.String),
     blobAccessPointConfigurationUniqueId: S.optional(S.String),
@@ -1472,7 +1468,7 @@ export interface ContainerPropertiesInput {
   /** Configuration that attaches this container to a Blob Access Point. If set, the container is a read-only virtual container whose read/list requests are forwarded to the connected backing data store. Cannot be changed, removed, or added after container creation. */
   blobAccessPointConfiguration?: BlobAccessPointConfigurationConnection;
 }
-export const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultEncryptionScope: S.optional(S.String),
     denyEncryptionScopeOverride: S.optional(S.Boolean),
@@ -1497,7 +1493,7 @@ export interface CreateBlobContainerRequest {
   /** Properties of the blob container. */
   properties?: ContainerPropertiesInput;
 }
-export const CreateBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1518,24 +1514,24 @@ export const CreateBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The lease status of the container. */
 export type LeaseStatus = "Locked" | "Unlocked";
-export const LeaseStatus = S.String;
+const LeaseStatus = S.String;
 
 /** Lease state of the container. */
 export type LeaseState = "Available" | "Leased" | "Expired" | "Breaking" | "Broken";
-export const LeaseState = S.String;
+const LeaseState = S.String;
 
 /** Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased. */
 export type LeaseDuration = "Infinite" | "Fixed";
-export const LeaseDuration = S.String;
+const LeaseDuration = S.String;
 
 /** A name-value pair to associate with the container as metadata. */
 export type ContainerPropertiesMetadataMap = { [key: string]: string | undefined };
-export const ContainerPropertiesMetadataMap =
+const ContainerPropertiesMetadataMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContainerPropertiesMetadataMap>;
 
 /** The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend. */
 export type ImmutabilityPolicyUpdateType = "put" | "lock" | "extend";
-export const ImmutabilityPolicyUpdateType = S.String;
+const ImmutabilityPolicyUpdateType = S.String;
 
 /** An update history of the ImmutabilityPolicy of a blob container. */
 export interface UpdateHistoryProperty {
@@ -1556,7 +1552,7 @@ export interface UpdateHistoryProperty {
   /** This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive. */
   allowProtectedAppendWritesAll?: boolean;
 }
-export const UpdateHistoryProperty = /*@__PURE__*/ S.suspend(() =>
+const UpdateHistoryProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     update: S.optional(ImmutabilityPolicyUpdateType),
     immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
@@ -1571,7 +1567,7 @@ export const UpdateHistoryProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The ImmutabilityPolicy update history of the blob container. */
 export type ImmutabilityPolicyPropertiesUpdateHistoryList = Array<UpdateHistoryProperty>;
-export const ImmutabilityPolicyPropertiesUpdateHistoryList = /*@__PURE__*/ S.Array(
+const ImmutabilityPolicyPropertiesUpdateHistoryList = /*@__PURE__*/ S.Array(
   UpdateHistoryProperty,
 ) as any as S.Schema<ImmutabilityPolicyPropertiesUpdateHistoryList>;
 
@@ -1584,7 +1580,7 @@ export interface ImmutabilityPolicyProperties {
   /** The ImmutabilityPolicy update history of the blob container. */
   updateHistory?: ImmutabilityPolicyPropertiesUpdateHistoryList;
 }
-export const ImmutabilityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ImmutabilityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ImmutabilityPolicyProperty),
     etag: S.optional(S.String),
@@ -1607,7 +1603,7 @@ export interface TagProperty {
   /** Returns the User Principal Name of the user who added the tag. */
   upn?: string;
 }
-export const TagProperty = /*@__PURE__*/ S.suspend(() =>
+const TagProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -1619,7 +1615,7 @@ export const TagProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of LegalHold tags of a blob container. */
 export type LegalHoldPropertiesTagsList = Array<TagProperty>;
-export const LegalHoldPropertiesTagsList = /*@__PURE__*/ S.Array(
+const LegalHoldPropertiesTagsList = /*@__PURE__*/ S.Array(
   TagProperty,
 ) as any as S.Schema<LegalHoldPropertiesTagsList>;
 
@@ -1630,7 +1626,7 @@ export interface ProtectedAppendWritesHistory {
   /** Returns the date and time the tag was added. */
   timestamp?: string;
 }
-export const ProtectedAppendWritesHistory = /*@__PURE__*/ S.suspend(() =>
+const ProtectedAppendWritesHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowProtectedAppendWritesAll: S.optional(S.Boolean),
     timestamp: S.optional(S.String),
@@ -1648,7 +1644,7 @@ export interface LegalHoldProperties {
   /** Protected append blob writes history. */
   protectedAppendWritesHistory?: ProtectedAppendWritesHistory;
 }
-export const LegalHoldProperties = /*@__PURE__*/ S.suspend(() =>
+const LegalHoldProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasLegalHold: S.optional(S.Boolean),
     tags: S.optional(LegalHoldPropertiesTagsList),
@@ -1658,7 +1654,7 @@ export const LegalHoldProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** This property denotes the container level immutability to object level immutability migration state. */
 export type MigrationState = "InProgress" | "Completed";
-export const MigrationState = S.String;
+const MigrationState = S.String;
 
 /** Object level immutability properties of the container. */
 export interface ImmutableStorageWithVersioning {
@@ -1669,7 +1665,7 @@ export interface ImmutableStorageWithVersioning {
   /** This property denotes the container level immutability to object level immutability migration state. */
   migrationState?: MigrationState;
 }
-export const ImmutableStorageWithVersioning = /*@__PURE__*/ S.suspend(() =>
+const ImmutableStorageWithVersioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     timeStamp: S.optional(S.String),
@@ -1722,7 +1718,7 @@ export interface ContainerProperties {
   /** Configuration that attaches this container to a Blob Access Point. If set, the container is a read-only virtual container whose read/list requests are forwarded to the connected backing data store. Cannot be changed, removed, or added after container creation. */
   blobAccessPointConfiguration?: BlobAccessPointConfigurationConnection;
 }
-export const ContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const ContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     deleted: S.optional(S.Boolean),
@@ -1761,7 +1757,7 @@ export interface CreateBlobContainerResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const CreateBlobContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBlobContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1776,20 +1772,20 @@ export const CreateBlobContainerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateConnectorRequestTagsMap = { [key: string]: string | undefined };
-export const CreateConnectorRequestTagsMap =
+const CreateConnectorRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateConnectorRequestTagsMap>;
 
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
 export type StorageConnectorPropertiesInputState = "Active" | "Inactive";
-export const StorageConnectorPropertiesInputState = S.String;
+const StorageConnectorPropertiesInputState = S.String;
 
 /** The type of the backing data source for storage connector */
 export type StorageConnectorDataSourceType = "Azure_DataShare";
-export const StorageConnectorDataSourceType = S.String;
+const StorageConnectorDataSourceType = S.String;
 
 /** The type of the backing data source for storage connector */
 export type StorageConnectorSourceType = "DataShare";
-export const StorageConnectorSourceType = S.String;
+const StorageConnectorSourceType = S.String;
 
 /** The connection properties of the backing data source */
 export interface StorageConnectorConnection {
@@ -1798,7 +1794,7 @@ export interface StorageConnectorConnection {
   /** The URI of the backing DataShare, in the format `azds://<region>:<DataShareName>:<DataShareIdentifier>`. */
   dataShareUri?: string;
 }
-export const StorageConnectorConnection = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     dataShareUri: S.optional(S.String),
@@ -1814,7 +1810,7 @@ export interface StorageConnectorAuthProperties {
   /** ARM resource ID of the managed identity used to authenticate to the backing data source. */
   identityResourceId?: string;
 }
-export const StorageConnectorAuthProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorAuthProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     identityResourceId: S.optional(S.String),
@@ -1832,7 +1828,7 @@ export interface StorageConnectorSource {
   /** Details for how to authenticate to the backing data store. */
   authProperties?: StorageConnectorAuthProperties;
 }
-export const StorageConnectorSource = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StorageConnectorSourceType,
     connection: S.optional(StorageConnectorConnection),
@@ -1853,7 +1849,7 @@ export interface StorageConnectorPropertiesInput {
   /** Information about how to communicate with and authenticate to the backing data store. */
   source: StorageConnectorSource;
 }
-export const StorageConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(StorageConnectorPropertiesInputState),
     description: S.optional(S.String),
@@ -1881,7 +1877,7 @@ export interface CreateConnectorRequest {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorPropertiesInput;
 }
-export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1902,12 +1898,12 @@ export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const CreateConnectorResponseTagsMap =
+const CreateConnectorResponseTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateConnectorResponseTagsMap>;
 
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
 export type StorageConnectorPropertiesState = "Active" | "Inactive";
-export const StorageConnectorPropertiesState = S.String;
+const StorageConnectorPropertiesState = S.String;
 
 /** Provisioning state of the resource at the time the operation was called. */
 export type NativeDataSharingProvisioningState =
@@ -1917,7 +1913,7 @@ export type NativeDataSharingProvisioningState =
   | "Deleting"
   | "Canceled"
   | "Failed";
-export const NativeDataSharingProvisioningState = S.String;
+const NativeDataSharingProvisioningState = S.String;
 
 /** The storage connector properties */
 export interface StorageConnectorProperties {
@@ -1938,7 +1934,7 @@ export interface StorageConnectorProperties {
   /** Represents the provisioning state of the storage connector. */
   provisioningState?: NativeDataSharingProvisioningState;
 }
-export const StorageConnectorProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueId: S.optional(S.String),
     state: S.optional(StorageConnectorPropertiesState),
@@ -1969,7 +1965,7 @@ export interface CreateConnectorResponse {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
-export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1983,12 +1979,12 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateDataShareRequestTagsMap = { [key: string]: string | undefined };
-export const CreateDataShareRequestTagsMap =
+const CreateDataShareRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateDataShareRequestTagsMap>;
 
 /** The permissions supported in access policies for storage data share */
 export type StorageDataShareAccessPolicyPermission = "None" | "Read";
-export const StorageDataShareAccessPolicyPermission = S.String;
+const StorageDataShareAccessPolicyPermission = S.String;
 
 /** Policy that specify the permission allowed to a managed identity */
 export interface StorageDataShareAccessPolicy {
@@ -1999,7 +1995,7 @@ export interface StorageDataShareAccessPolicy {
   /** Allowed permissions. Currently, only supported value is Read. */
   permission: StorageDataShareAccessPolicyPermission | (string & {});
 }
-export const StorageDataShareAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const StorageDataShareAccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.String,
     tenantId: S.String,
@@ -2011,7 +2007,7 @@ export const StorageDataShareAccessPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesInputAccessPoliciesList = Array<StorageDataShareAccessPolicy>;
-export const StorageDataSharePropertiesInputAccessPoliciesList = /*@__PURE__*/ S.Array(
+const StorageDataSharePropertiesInputAccessPoliciesList = /*@__PURE__*/ S.Array(
   StorageDataShareAccessPolicy,
 ) as any as S.Schema<StorageDataSharePropertiesInputAccessPoliciesList>;
 
@@ -2022,7 +2018,7 @@ export interface StorageDataShareAsset {
   /** Consumer visible name of the original path. */
   displayName: string;
 }
-export const StorageDataShareAsset = /*@__PURE__*/ S.suspend(() =>
+const StorageDataShareAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetPath: S.String,
     displayName: S.String,
@@ -2031,7 +2027,7 @@ export const StorageDataShareAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesInputAssetsList = Array<StorageDataShareAsset>;
-export const StorageDataSharePropertiesInputAssetsList = /*@__PURE__*/ S.Array(
+const StorageDataSharePropertiesInputAssetsList = /*@__PURE__*/ S.Array(
   StorageDataShareAsset,
 ) as any as S.Schema<StorageDataSharePropertiesInputAssetsList>;
 
@@ -2044,7 +2040,7 @@ export interface StorageDataSharePropertiesInput {
   /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
   assets: StorageDataSharePropertiesInputAssetsList;
 }
-export const StorageDataSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageDataSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     accessPolicies: StorageDataSharePropertiesInputAccessPoliciesList,
@@ -2070,7 +2066,7 @@ export interface CreateDataShareRequest {
   /** The properties of the Storage DataShare. */
   properties: StorageDataSharePropertiesInput;
 }
-export const CreateDataShareRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2091,17 +2087,17 @@ export const CreateDataShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateDataShareResponseTagsMap = { [key: string]: string | undefined };
-export const CreateDataShareResponseTagsMap =
+const CreateDataShareResponseTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateDataShareResponseTagsMap>;
 
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesAccessPoliciesList = Array<StorageDataShareAccessPolicy>;
-export const StorageDataSharePropertiesAccessPoliciesList =
+const StorageDataSharePropertiesAccessPoliciesList =
   StorageDataSharePropertiesInputAccessPoliciesList as any as S.Schema<StorageDataSharePropertiesAccessPoliciesList>;
 
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesAssetsList = Array<StorageDataShareAsset>;
-export const StorageDataSharePropertiesAssetsList =
+const StorageDataSharePropertiesAssetsList =
   StorageDataSharePropertiesInputAssetsList as any as S.Schema<StorageDataSharePropertiesAssetsList>;
 
 /** The storage datashare properties */
@@ -2119,7 +2115,7 @@ export interface StorageDataShareProperties {
   /** Represents the provisioning state of the storage datashare. */
   provisioningState?: NativeDataSharingProvisioningState;
 }
-export const StorageDataShareProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageDataShareProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataShareIdentifier: S.optional(S.String),
     description: S.optional(S.String),
@@ -2148,7 +2144,7 @@ export interface CreateDataShareResponse {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
-export const CreateDataShareResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataShareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2162,20 +2158,20 @@ export const CreateDataShareResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A name-value pair to associate with the share as metadata. */
 export type FileSharePropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const FileSharePropertiesInputMetadataMap =
+const FileSharePropertiesInputMetadataMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<FileSharePropertiesInputMetadataMap>;
 
 /** The authentication protocol that is used for the file share. Can only be specified when creating a share. */
 export type EnabledProtocols = "SMB" | "NFS";
-export const EnabledProtocols = S.String;
+const EnabledProtocols = S.String;
 
 /** The property is for NFS share only. The default is NoRootSquash. */
 export type RootSquashType = "NoRootSquash" | "RootSquash" | "AllSquash";
-export const RootSquashType = S.String;
+const RootSquashType = S.String;
 
 /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. */
 export type ShareAccessTier = "TransactionOptimized" | "Hot" | "Cool" | "Premium";
-export const ShareAccessTier = S.String;
+const ShareAccessTier = S.String;
 
 export interface AccessPolicy {
   /** Start time of the access policy */
@@ -2185,7 +2181,7 @@ export interface AccessPolicy {
   /** List of abbreviated permissions. */
   permission?: string;
 }
-export const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     expiryTime: S.optional(S.String),
@@ -2199,7 +2195,7 @@ export interface SignedIdentifier {
   /** Access policy */
   accessPolicy?: AccessPolicy;
 }
-export const SignedIdentifier = /*@__PURE__*/ S.suspend(() =>
+const SignedIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     accessPolicy: S.optional(AccessPolicy),
@@ -2208,7 +2204,7 @@ export const SignedIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stored access policies specified on the share. */
 export type FileSharePropertiesInputSignedIdentifiersList = Array<SignedIdentifier>;
-export const FileSharePropertiesInputSignedIdentifiersList = /*@__PURE__*/ S.Array(
+const FileSharePropertiesInputSignedIdentifiersList = /*@__PURE__*/ S.Array(
   SignedIdentifier,
 ) as any as S.Schema<FileSharePropertiesInputSignedIdentifiersList>;
 
@@ -2221,7 +2217,7 @@ export interface FileSharePropertiesFileSharePaidBursting {
   /** The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share. */
   paidBurstingMaxBandwidthMibps?: number;
 }
-export const FileSharePropertiesFileSharePaidBursting = /*@__PURE__*/ S.suspend(() =>
+const FileSharePropertiesFileSharePaidBursting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paidBurstingEnabled: S.optional(S.Boolean),
     paidBurstingMaxIops: S.optional(S.Number),
@@ -2252,7 +2248,7 @@ export interface FileSharePropertiesInput {
   /** File Share Paid Bursting properties. */
   fileSharePaidBursting?: FileSharePropertiesFileSharePaidBursting;
 }
-export const FileSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FileSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(FileSharePropertiesInputMetadataMap),
     shareQuota: S.optional(S.Number),
@@ -2280,7 +2276,7 @@ export interface CreateFileShareRequest {
   /** Properties of the file share. */
   properties?: FileSharePropertiesInput;
 }
-export const CreateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2300,12 +2296,12 @@ export const CreateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A name-value pair to associate with the share as metadata. */
 export type FileSharePropertiesMetadataMap = { [key: string]: string | undefined };
-export const FileSharePropertiesMetadataMap =
+const FileSharePropertiesMetadataMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<FileSharePropertiesMetadataMap>;
 
 /** List of stored access policies specified on the share. */
 export type FileSharePropertiesSignedIdentifiersList = Array<SignedIdentifier>;
-export const FileSharePropertiesSignedIdentifiersList =
+const FileSharePropertiesSignedIdentifiersList =
   FileSharePropertiesInputSignedIdentifiersList as any as S.Schema<FileSharePropertiesSignedIdentifiersList>;
 
 /** The properties of the file share. */
@@ -2363,7 +2359,7 @@ export interface FileShareProperties {
   /** File Share Paid Bursting properties. */
   fileSharePaidBursting?: FileSharePropertiesFileSharePaidBursting;
 }
-export const FileShareProperties = /*@__PURE__*/ S.suspend(() =>
+const FileShareProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModifiedTime: S.optional(S.String),
     metadata: S.optional(FileSharePropertiesMetadataMap),
@@ -2408,7 +2404,7 @@ export interface CreateFileShareResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const CreateFileShareResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFileShareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2421,14 +2417,14 @@ export const CreateFileShareResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A name-value pair that represents queue metadata. */
 export type QueuePropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const QueuePropertiesInputMetadataMap =
+const QueuePropertiesInputMetadataMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<QueuePropertiesInputMetadataMap>;
 
 export interface QueuePropertiesInput {
   /** A name-value pair that represents queue metadata. */
   metadata?: QueuePropertiesInputMetadataMap;
 }
-export const QueuePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const QueuePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(QueuePropertiesInputMetadataMap),
   }),
@@ -2446,7 +2442,7 @@ export interface CreateQueueRequest {
   /** Queue resource properties. */
   properties?: QueuePropertiesInput;
 }
-export const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2465,7 +2461,7 @@ export const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A name-value pair that represents queue metadata. */
 export type QueuePropertiesMetadataMap = { [key: string]: string | undefined };
-export const QueuePropertiesMetadataMap =
+const QueuePropertiesMetadataMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<QueuePropertiesMetadataMap>;
 
 export interface QueueProperties {
@@ -2474,7 +2470,7 @@ export interface QueueProperties {
   /** Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher. */
   approximateMessageCount?: number;
 }
-export const QueueProperties = /*@__PURE__*/ S.suspend(() =>
+const QueueProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(QueuePropertiesMetadataMap),
     approximateMessageCount: S.optional(S.Number),
@@ -2493,7 +2489,7 @@ export interface CreateQueueResponse {
   /** Queue resource properties. */
   properties?: QueueProperties;
 }
-export const CreateQueueResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2519,11 +2515,11 @@ export type SkuName =
   | "StandardV2_GZRS"
   | "PremiumV2_LRS"
   | "PremiumV2_ZRS";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The SKU tier. This is based on the SKU name. */
 export type SkuTier = "Standard" | "Premium";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** The SKU of the storage account. */
 export interface Sku {
@@ -2532,7 +2528,7 @@ export interface Sku {
   /** The SKU tier. This is based on the SKU name. */
   tier?: SkuTier | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
     tier: S.optional(SkuTier),
@@ -2541,11 +2537,11 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the type of storage account. */
 export type Kind = "Storage" | "StorageV2" | "BlobStorage" | "FileStorage" | "BlockBlobStorage";
-export const Kind = S.String;
+const Kind = S.String;
 
 /** The type of extendedLocation. */
 export type ExtendedLocationTypes = "EdgeZone";
-export const ExtendedLocationTypes = S.String;
+const ExtendedLocationTypes = S.String;
 
 /** The complex type of the extended location. */
 export interface ExtendedLocation {
@@ -2554,7 +2550,7 @@ export interface ExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationTypes | (string & {});
 }
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ExtendedLocationTypes),
@@ -2563,19 +2559,19 @@ export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Gets or sets the pinned logical availability zone for the storage account. */
 export type CreateStorageAccountRequestZonesList = Array<string>;
-export const CreateStorageAccountRequestZonesList =
+const CreateStorageAccountRequestZonesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CreateStorageAccountRequestZonesList>;
 
 /** The availability zone pinning policy for the storage account. */
 export type ZonePlacementPolicy = "Any" | "None";
-export const ZonePlacementPolicy = S.String;
+const ZonePlacementPolicy = S.String;
 
 /** The complex type of the zonal placement details. */
 export interface Placement {
   /** The availability zone pinning policy for the storage account. */
   zonePlacementPolicy?: ZonePlacementPolicy | (string & {});
 }
-export const Placement = /*@__PURE__*/ S.suspend(() =>
+const Placement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zonePlacementPolicy: S.optional(ZonePlacementPolicy),
   }),
@@ -2583,7 +2579,7 @@ export const Placement = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters. */
 export type CreateStorageAccountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateStorageAccountRequestTagsMap =
+const CreateStorageAccountRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateStorageAccountRequestTagsMap>;
 
 /** The identity type. */
@@ -2592,13 +2588,13 @@ export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const IdentityType = S.String;
+const IdentityType = S.String;
 
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
@@ -2610,7 +2606,7 @@ export interface IdentityInput {
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IdentityType,
     userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
@@ -2619,19 +2615,19 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. */
 export type AllowedCopyScope = "PrivateLink" | "AAD" | "All";
-export const AllowedCopyScope = S.String;
+const AllowedCopyScope = S.String;
 
 /** Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
-export const PublicNetworkAccess = S.String;
+const PublicNetworkAccess = S.String;
 
 /** The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. */
 export type SasPolicyExpirationAction = "Log" | "Block";
-export const SasPolicyExpirationAction = S.String;
+const SasPolicyExpirationAction = S.String;
 
 /** The action to perform when a user delegation SAS (shared access signature) policy requirement is violated. */
 export type PolicyViolationAction = "None" | "Log" | "Block";
-export const PolicyViolationAction = S.String;
+const PolicyViolationAction = S.String;
 
 /** SasPolicy assigned to the storage account. */
 export interface SasPolicy {
@@ -2644,7 +2640,7 @@ export interface SasPolicy {
   /** The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by requireUserBoundUserDelegationSas. */
   requireUserBoundUserDelegationSasAction?: PolicyViolationAction | (string & {});
 }
-export const SasPolicy = /*@__PURE__*/ S.suspend(() =>
+const SasPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasExpirationPeriod: S.String,
     expirationAction: SasPolicyExpirationAction,
@@ -2658,7 +2654,7 @@ export interface KeyPolicy {
   /** The key expiration period in days. */
   keyExpirationPeriodInDays: number;
 }
-export const KeyPolicy = /*@__PURE__*/ S.suspend(() =>
+const KeyPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyExpirationPeriodInDays: S.Number,
   }),
@@ -2671,7 +2667,7 @@ export interface CustomDomain {
   /** Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates. */
   useSubDomainName?: boolean;
 }
-export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
+const CustomDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     useSubDomainName: S.optional(S.Boolean),
@@ -2680,7 +2676,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 
 /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
 export type KeyType = "Service" | "Account";
-export const KeyType = S.String;
+const KeyType = S.String;
 
 /** A service that allows server-side encryption to be used. */
 export interface EncryptionServiceInput {
@@ -2689,7 +2685,7 @@ export interface EncryptionServiceInput {
   /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
   keyType?: KeyType | (string & {});
 }
-export const EncryptionServiceInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionServiceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     keyType: S.optional(KeyType),
@@ -2707,7 +2703,7 @@ export interface EncryptionServicesInput {
   /** The encryption function of the queue storage service. */
   queue?: EncryptionServiceInput;
 }
-export const EncryptionServicesInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionServicesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(EncryptionServiceInput),
     file: S.optional(EncryptionServiceInput),
@@ -2718,7 +2714,7 @@ export const EncryptionServicesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault */
 export type EncryptionInputKeySource = "Microsoft.Storage" | "Microsoft.Keyvault";
-export const EncryptionInputKeySource = S.String;
+const EncryptionInputKeySource = S.String;
 
 /** Properties of key vault. */
 export interface KeyVaultPropertiesInput {
@@ -2729,7 +2725,7 @@ export interface KeyVaultPropertiesInput {
   /** The Uri of KeyVault. */
   keyvaulturi?: string;
 }
-export const KeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyname: S.optional(S.String),
     keyversion: S.optional(S.String),
@@ -2744,7 +2740,7 @@ export interface EncryptionIdentity {
   /** ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account. */
   federatedIdentityClientId?: string;
 }
-export const EncryptionIdentity = /*@__PURE__*/ S.suspend(() =>
+const EncryptionIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentity: S.optional(S.String),
     federatedIdentityClientId: S.optional(S.String),
@@ -2764,7 +2760,7 @@ export interface EncryptionInput {
   /** The identity to be used with service-side encryption at rest. */
   identity?: EncryptionIdentity;
 }
-export const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(EncryptionServicesInput),
     keySource: S.optional(EncryptionInputKeySource),
@@ -2776,7 +2772,7 @@ export const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics. */
 export type NetworkRuleSetInputBypass = "None" | "Logging" | "Metrics" | "AzureServices";
-export const NetworkRuleSetInputBypass = S.String;
+const NetworkRuleSetInputBypass = S.String;
 
 /** Resource Access Rule. */
 export interface ResourceAccessRule {
@@ -2785,7 +2781,7 @@ export interface ResourceAccessRule {
   /** Resource Id */
   resourceId?: string;
 }
-export const ResourceAccessRule = /*@__PURE__*/ S.suspend(() =>
+const ResourceAccessRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -2794,13 +2790,13 @@ export const ResourceAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the resource access rules */
 export type NetworkRuleSetInputResourceAccessRulesList = Array<ResourceAccessRule>;
-export const NetworkRuleSetInputResourceAccessRulesList = /*@__PURE__*/ S.Array(
+const NetworkRuleSetInputResourceAccessRulesList = /*@__PURE__*/ S.Array(
   ResourceAccessRule,
 ) as any as S.Schema<NetworkRuleSetInputResourceAccessRulesList>;
 
 /** The action of virtual network rule. */
 export type VirtualNetworkRuleInputAction = "Allow";
-export const VirtualNetworkRuleInputAction = S.String;
+const VirtualNetworkRuleInputAction = S.String;
 
 /** Virtual Network rule. */
 export interface VirtualNetworkRuleInput {
@@ -2809,7 +2805,7 @@ export interface VirtualNetworkRuleInput {
   /** The action of virtual network rule. */
   action?: VirtualNetworkRuleInputAction | (string & {});
 }
-export const VirtualNetworkRuleInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkRuleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     action: S.optional(VirtualNetworkRuleInputAction),
@@ -2818,13 +2814,13 @@ export const VirtualNetworkRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the virtual network rules */
 export type NetworkRuleSetInputVirtualNetworkRulesList = Array<VirtualNetworkRuleInput>;
-export const NetworkRuleSetInputVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
+const NetworkRuleSetInputVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRuleInput,
 ) as any as S.Schema<NetworkRuleSetInputVirtualNetworkRulesList>;
 
 /** The action of IP ACL rule. */
 export type IPRuleAction = "Allow";
-export const IPRuleAction = S.String;
+const IPRuleAction = S.String;
 
 /** IP rule with specific IP or IP range in CIDR format. */
 export interface IPRule {
@@ -2833,7 +2829,7 @@ export interface IPRule {
   /** The action of IP ACL rule. */
   action?: IPRuleAction | (string & {});
 }
-export const IPRule = /*@__PURE__*/ S.suspend(() =>
+const IPRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     action: S.optional(IPRuleAction),
@@ -2842,18 +2838,18 @@ export const IPRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the IP ACL rules */
 export type NetworkRuleSetInputIpRulesList = Array<IPRule>;
-export const NetworkRuleSetInputIpRulesList = /*@__PURE__*/ S.Array(
+const NetworkRuleSetInputIpRulesList = /*@__PURE__*/ S.Array(
   IPRule,
 ) as any as S.Schema<NetworkRuleSetInputIpRulesList>;
 
 /** Sets the IPv6 ACL rules. */
 export type NetworkRuleSetInputIpv6RulesList = Array<IPRule>;
-export const NetworkRuleSetInputIpv6RulesList =
+const NetworkRuleSetInputIpv6RulesList =
   NetworkRuleSetInputIpRulesList as any as S.Schema<NetworkRuleSetInputIpv6RulesList>;
 
 /** Specifies the default action of allow or deny when no other rules match. */
 export type NetworkRuleSetInputDefaultAction = "Allow" | "Deny";
-export const NetworkRuleSetInputDefaultAction = S.String;
+const NetworkRuleSetInputDefaultAction = S.String;
 
 /** Network rule set */
 export interface NetworkRuleSetInput {
@@ -2870,7 +2866,7 @@ export interface NetworkRuleSetInput {
   /** Specifies the default action of allow or deny when no other rules match. */
   defaultAction: NetworkRuleSetInputDefaultAction | (string & {});
 }
-export const NetworkRuleSetInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkRuleSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bypass: S.optional(NetworkRuleSetInputBypass),
     resourceAccessRules: S.optional(NetworkRuleSetInputResourceAccessRulesList),
@@ -2883,11 +2879,11 @@ export const NetworkRuleSetInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The default access tier for block blobs in the storage account. Required for storage accounts where kind = BlobStorage. See more details in: https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview. */
 export type AccessTier = "Hot" | "Cool" | "Premium" | "Cold" | "Smart";
-export const AccessTier = S.String;
+const AccessTier = S.String;
 
 /** Indicates whether Turbo Tier is enabled or disabled. */
 export type TurboTierStatus = "Enabled" | "Disabled";
-export const TurboTierStatus = S.String;
+const TurboTierStatus = S.String;
 
 /** Configures Turbo Tier for a storage account. */
 export interface TurboTier {
@@ -2896,7 +2892,7 @@ export interface TurboTier {
   /** The target fill percentage used for placement. The valid range is 10 to 100. When status is Enabled and this property is omitted, the default value is 20. */
   targetPercent?: number;
 }
-export const TurboTier = /*@__PURE__*/ S.suspend(() =>
+const TurboTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TurboTierStatus),
     targetPercent: S.optional(S.Number),
@@ -2905,11 +2901,11 @@ export const TurboTier = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the directory service used. Note that this enum may be extended in the future. */
 export type DirectoryServiceOptions = "None" | "AADDS" | "AD" | "AADKERB";
-export const DirectoryServiceOptions = S.String;
+const DirectoryServiceOptions = S.String;
 
 /** Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
 export type AccountType = "User" | "Computer";
-export const AccountType = S.String;
+const AccountType = S.String;
 
 /** Settings properties for Active Directory (AD). */
 export interface ActiveDirectoryProperties {
@@ -2930,7 +2926,7 @@ export interface ActiveDirectoryProperties {
   /** Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
   accountType?: AccountType | (string & {});
 }
-export const ActiveDirectoryProperties = /*@__PURE__*/ S.suspend(() =>
+const ActiveDirectoryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     netBiosDomainName: S.optional(S.String),
@@ -2951,14 +2947,14 @@ export type DefaultSharePermission =
   | "StorageFileDataSmbShareReader"
   | "StorageFileDataSmbShareContributor"
   | "StorageFileDataSmbShareElevatedContributor";
-export const DefaultSharePermission = S.String;
+const DefaultSharePermission = S.String;
 
 /** Setting property for Managed Identity access over SMB using OAuth */
 export interface SmbOAuthSettings {
   /** Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property. */
   isSmbOAuthEnabled?: boolean;
 }
-export const SmbOAuthSettings = /*@__PURE__*/ S.suspend(() =>
+const SmbOAuthSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSmbOAuthEnabled: S.optional(S.Boolean),
   }),
@@ -2975,7 +2971,7 @@ export interface AzureFilesIdentityBasedAuthentication {
   /** Required for Managed Identities access using OAuth over SMB. */
   smbOAuthSettings?: SmbOAuthSettings;
 }
-export const AzureFilesIdentityBasedAuthentication = /*@__PURE__*/ S.suspend(() =>
+const AzureFilesIdentityBasedAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directoryServiceOptions: DirectoryServiceOptions,
     activeDirectoryProperties: S.optional(ActiveDirectoryProperties),
@@ -2988,11 +2984,11 @@ export const AzureFilesIdentityBasedAuthentication = /*@__PURE__*/ S.suspend(() 
 
 /** Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled. */
 export type LargeFileSharesState = "Disabled" | "Enabled";
-export const LargeFileSharesState = S.String;
+const LargeFileSharesState = S.String;
 
 /** Routing Choice defines the kind of network routing opted by the user. */
 export type RoutingChoice = "MicrosoftRouting" | "InternetRouting";
-export const RoutingChoice = S.String;
+const RoutingChoice = S.String;
 
 /** Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing */
 export interface RoutingPreference {
@@ -3003,7 +2999,7 @@ export interface RoutingPreference {
   /** A boolean flag which indicates whether internet routing storage endpoints are to be published */
   publishInternetEndpoints?: boolean;
 }
-export const RoutingPreference = /*@__PURE__*/ S.suspend(() =>
+const RoutingPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routingChoice: S.optional(RoutingChoice),
     publishMicrosoftEndpoints: S.optional(S.Boolean),
@@ -3016,7 +3012,7 @@ export interface DualStackEndpointPreference {
   /** A boolean flag which indicates whether IPv6 storage endpoints are to be published. */
   publishIpv6Endpoint?: boolean;
 }
-export const DualStackEndpointPreference = /*@__PURE__*/ S.suspend(() =>
+const DualStackEndpointPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishIpv6Endpoint: S.optional(S.Boolean),
   }),
@@ -3026,11 +3022,11 @@ export const DualStackEndpointPreference = /*@__PURE__*/ S.suspend(() =>
 
 /** Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported. */
 export type MinimumTlsVersion = "TLS1_0" | "TLS1_1" | "TLS1_2" | "TLS1_3";
-export const MinimumTlsVersion = S.String;
+const MinimumTlsVersion = S.String;
 
 /** The ImmutabilityPolicy state defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. */
 export type AccountImmutabilityPolicyState = "Unlocked" | "Locked" | "Disabled";
-export const AccountImmutabilityPolicyState = S.String;
+const AccountImmutabilityPolicyState = S.String;
 
 /** This defines account-level immutability policy properties. */
 export interface AccountImmutabilityPolicyProperties {
@@ -3041,7 +3037,7 @@ export interface AccountImmutabilityPolicyProperties {
   /** This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWrites?: boolean;
 }
-export const AccountImmutabilityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const AccountImmutabilityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
     state: S.optional(AccountImmutabilityPolicyState),
@@ -3058,7 +3054,7 @@ export interface ImmutableStorageAccount {
   /** Specifies the default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. The object-level immutability policy has higher precedence than the container-level immutability policy, which has a higher precedence than the account-level immutability policy. */
   immutabilityPolicy?: AccountImmutabilityPolicyProperties;
 }
-export const ImmutableStorageAccount = /*@__PURE__*/ S.suspend(() =>
+const ImmutableStorageAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     immutabilityPolicy: S.optional(AccountImmutabilityPolicyProperties),
@@ -3067,14 +3063,14 @@ export const ImmutableStorageAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. */
 export type DnsEndpointType = "Standard" | "AzureDnsZone";
-export const DnsEndpointType = S.String;
+const DnsEndpointType = S.String;
 
 /** Geo Priority Replication enablement status for the storage account. */
 export interface GeoPriorityReplicationStatus {
   /** Indicates whether Blob Geo Priority Replication is enabled for the storage account. */
   isBlobEnabled?: boolean;
 }
-export const GeoPriorityReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+const GeoPriorityReplicationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isBlobEnabled: S.optional(S.Boolean),
   }),
@@ -3087,7 +3083,7 @@ export interface ServiceSharedKeyAccessProperties {
   /** Indicates whether shared key access is enabled for the service. */
   enabled?: boolean;
 }
-export const ServiceSharedKeyAccessProperties =
+const ServiceSharedKeyAccessProperties =
   ImmutableStorageWithVersioningInput as any as S.Schema<ServiceSharedKeyAccessProperties>;
 
 /** Defines shared key access properties for a storage account. */
@@ -3101,7 +3097,7 @@ export interface StorageAccountSharedKeyAccessProperties {
   /** Shared key access settings for Queue service. */
   queue?: ServiceSharedKeyAccessProperties;
 }
-export const StorageAccountSharedKeyAccessProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountSharedKeyAccessProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(ServiceSharedKeyAccessProperties),
     file: S.optional(ServiceSharedKeyAccessProperties),
@@ -3123,7 +3119,7 @@ export interface StorageDataCollaborationPolicyProperties {
   /** Indicates whether cross-entra tenant data sharing is allowed on the storage account. */
   allowCrossTenantDataSharing?: boolean;
 }
-export const StorageDataCollaborationPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageDataCollaborationPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowStorageConnectors: S.optional(S.Boolean),
     allowBlobAccessPoints: S.optional(S.Boolean),
@@ -3197,7 +3193,7 @@ export interface StorageAccountPropertiesCreateParametersInput {
   /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
   allowCrossTenantDelegationSas?: boolean;
 }
-export const StorageAccountPropertiesCreateParametersInput = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountPropertiesCreateParametersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCopyScope: S.optional(AllowedCopyScope),
     publicNetworkAccess: S.optional(PublicNetworkAccess),
@@ -3260,7 +3256,7 @@ export interface CreateStorageAccountRequest {
   /** The parameters used to create the storage account. */
   properties?: StorageAccountPropertiesCreateParametersInput;
 }
-export const CreateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3288,12 +3284,12 @@ export const CreateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateStorageAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateStorageAccountResponseTagsMap =
+const CreateStorageAccountResponseTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateStorageAccountResponseTagsMap>;
 
 /** Gets the status of the storage account at the time the operation was called. */
 export type ProvisioningState = "Creating" | "ResolvingDNS" | "Succeeded";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint. */
 export interface StorageAccountMicrosoftEndpoints {
@@ -3310,7 +3306,7 @@ export interface StorageAccountMicrosoftEndpoints {
   /** Gets the dfs endpoint. */
   dfs?: string;
 }
-export const StorageAccountMicrosoftEndpoints = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountMicrosoftEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(S.String),
     queue: S.optional(S.String),
@@ -3334,7 +3330,7 @@ export interface StorageAccountInternetEndpoints {
   /** Gets the dfs endpoint. */
   dfs?: string;
 }
-export const StorageAccountInternetEndpoints = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountInternetEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(S.String),
     file: S.optional(S.String),
@@ -3364,7 +3360,7 @@ export interface StorageAccountIpv6Endpoints {
   /** Gets the internet routing storage endpoints */
   internetEndpoints?: StorageAccountInternetEndpoints;
 }
-export const StorageAccountIpv6Endpoints = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountIpv6Endpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(S.String),
     queue: S.optional(S.String),
@@ -3400,7 +3396,7 @@ export interface Endpoints {
   /** Gets the IPv6 storage endpoints. */
   ipv6Endpoints?: StorageAccountIpv6Endpoints;
 }
-export const Endpoints = /*@__PURE__*/ S.suspend(() =>
+const Endpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(S.String),
     queue: S.optional(S.String),
@@ -3416,14 +3412,14 @@ export const Endpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the status indicating whether the primary location of the storage account is available or unavailable. */
 export type AccountStatus = "available" | "unavailable";
-export const AccountStatus = S.String;
+const AccountStatus = S.String;
 
 /** Storage account keys creation time. */
 export interface KeyCreationTime {
   key1?: string;
   key2?: string;
 }
-export const KeyCreationTime = /*@__PURE__*/ S.suspend(() =>
+const KeyCreationTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key1: S.optional(S.String),
     key2: S.optional(S.String),
@@ -3439,7 +3435,7 @@ export interface EncryptionService {
   /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
   keyType?: KeyType;
 }
-export const EncryptionService = /*@__PURE__*/ S.suspend(() =>
+const EncryptionService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     lastEnabledTime: S.optional(S.String),
@@ -3458,7 +3454,7 @@ export interface EncryptionServices {
   /** The encryption function of the queue storage service. */
   queue?: EncryptionService;
 }
-export const EncryptionServices = /*@__PURE__*/ S.suspend(() =>
+const EncryptionServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(EncryptionService),
     file: S.optional(EncryptionService),
@@ -3469,7 +3465,7 @@ export const EncryptionServices = /*@__PURE__*/ S.suspend(() =>
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault */
 export type EncryptionKeySource = "Microsoft.Storage" | "Microsoft.Keyvault";
-export const EncryptionKeySource = S.String;
+const EncryptionKeySource = S.String;
 
 /** Properties of key vault. */
 export interface KeyVaultProperties {
@@ -3486,7 +3482,7 @@ export interface KeyVaultProperties {
   /** This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption. */
   currentVersionedKeyExpirationTimestamp?: string;
 }
-export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyname: S.optional(S.String),
     keyversion: S.optional(S.String),
@@ -3510,7 +3506,7 @@ export interface Encryption {
   /** The identity to be used with service-side encryption at rest. */
   identity?: EncryptionIdentity;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(EncryptionServices),
     keySource: S.optional(EncryptionKeySource),
@@ -3522,16 +3518,16 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics. */
 export type NetworkRuleSetBypass = "None" | "Logging" | "Metrics" | "AzureServices";
-export const NetworkRuleSetBypass = S.String;
+const NetworkRuleSetBypass = S.String;
 
 /** Sets the resource access rules */
 export type NetworkRuleSetResourceAccessRulesList = Array<ResourceAccessRule>;
-export const NetworkRuleSetResourceAccessRulesList =
+const NetworkRuleSetResourceAccessRulesList =
   NetworkRuleSetInputResourceAccessRulesList as any as S.Schema<NetworkRuleSetResourceAccessRulesList>;
 
 /** The action of virtual network rule. */
 export type VirtualNetworkRuleAction = "Allow";
-export const VirtualNetworkRuleAction = S.String;
+const VirtualNetworkRuleAction = S.String;
 
 /** Gets the state of virtual network rule. */
 export type State =
@@ -3540,7 +3536,7 @@ export type State =
   | "Succeeded"
   | "Failed"
   | "NetworkSourceDeleted";
-export const State = S.String;
+const State = S.String;
 
 /** Virtual Network rule. */
 export interface VirtualNetworkRule {
@@ -3551,7 +3547,7 @@ export interface VirtualNetworkRule {
   /** Gets the state of virtual network rule. */
   state?: State;
 }
-export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     action: S.optional(VirtualNetworkRuleAction),
@@ -3561,23 +3557,23 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the virtual network rules */
 export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
-export const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
+const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
 
 /** Sets the IP ACL rules */
 export type NetworkRuleSetIpRulesList = Array<IPRule>;
-export const NetworkRuleSetIpRulesList =
+const NetworkRuleSetIpRulesList =
   NetworkRuleSetInputIpRulesList as any as S.Schema<NetworkRuleSetIpRulesList>;
 
 /** Sets the IPv6 ACL rules. */
 export type NetworkRuleSetIpv6RulesList = Array<IPRule>;
-export const NetworkRuleSetIpv6RulesList =
+const NetworkRuleSetIpv6RulesList =
   NetworkRuleSetInputIpRulesList as any as S.Schema<NetworkRuleSetIpv6RulesList>;
 
 /** Specifies the default action of allow or deny when no other rules match. */
 export type NetworkRuleSetDefaultAction = "Allow" | "Deny";
-export const NetworkRuleSetDefaultAction = S.String;
+const NetworkRuleSetDefaultAction = S.String;
 
 /** Network rule set */
 export interface NetworkRuleSet {
@@ -3594,7 +3590,7 @@ export interface NetworkRuleSet {
   /** Specifies the default action of allow or deny when no other rules match. */
   defaultAction: NetworkRuleSetDefaultAction;
 }
-export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
+const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bypass: S.optional(NetworkRuleSetBypass),
     resourceAccessRules: S.optional(NetworkRuleSetResourceAccessRulesList),
@@ -3607,11 +3603,11 @@ export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable. */
 export type GeoReplicationStatus = "Live" | "Bootstrap" | "Unavailable";
-export const GeoReplicationStatus = S.String;
+const GeoReplicationStatus = S.String;
 
 /** The redundancy type of the account after an account failover is performed. */
 export type PostFailoverRedundancy = "Standard_LRS" | "Standard_ZRS";
-export const PostFailoverRedundancy = S.String;
+const PostFailoverRedundancy = S.String;
 
 /** The redundancy type of the account after a planned account failover is performed. */
 export type PostPlannedFailoverRedundancy =
@@ -3619,7 +3615,7 @@ export type PostPlannedFailoverRedundancy =
   | "Standard_GZRS"
   | "Standard_RAGRS"
   | "Standard_RAGZRS";
-export const PostPlannedFailoverRedundancy = S.String;
+const PostPlannedFailoverRedundancy = S.String;
 
 /** Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account. */
 export interface GeoReplicationStats {
@@ -3636,7 +3632,7 @@ export interface GeoReplicationStats {
   /** The redundancy type of the account after a planned account failover is performed. */
   postPlannedFailoverRedundancy?: PostPlannedFailoverRedundancy;
 }
-export const GeoReplicationStats = /*@__PURE__*/ S.suspend(() =>
+const GeoReplicationStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GeoReplicationStatus),
     lastSyncTime: S.optional(S.String),
@@ -3652,7 +3648,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -3660,7 +3656,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -3671,7 +3667,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -3687,7 +3683,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
@@ -3698,7 +3694,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -3721,7 +3717,7 @@ export interface PrivateEndpointConnection {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3736,13 +3732,13 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 /** List of private endpoint connection associated with the specified storage account */
 export type StorageAccountPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
-export const StorageAccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const StorageAccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<StorageAccountPropertiesPrivateEndpointConnectionsList>;
 
 /** The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed. */
 export type BlobRestoreProgressStatus = "InProgress" | "Complete" | "Failed";
-export const BlobRestoreProgressStatus = S.String;
+const BlobRestoreProgressStatus = S.String;
 
 /** Blob range */
 export interface BlobRestoreRange {
@@ -3751,7 +3747,7 @@ export interface BlobRestoreRange {
   /** Blob end range. This is exclusive. Empty means account end. */
   endRange: string;
 }
-export const BlobRestoreRange = /*@__PURE__*/ S.suspend(() =>
+const BlobRestoreRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startRange: S.String,
     endRange: S.String,
@@ -3760,7 +3756,7 @@ export const BlobRestoreRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Blob ranges to restore. */
 export type BlobRestoreParametersBlobRangesList = Array<BlobRestoreRange>;
-export const BlobRestoreParametersBlobRangesList = /*@__PURE__*/ S.Array(
+const BlobRestoreParametersBlobRangesList = /*@__PURE__*/ S.Array(
   BlobRestoreRange,
 ) as any as S.Schema<BlobRestoreParametersBlobRangesList>;
 
@@ -3771,7 +3767,7 @@ export interface BlobRestoreParameters {
   /** Blob ranges to restore. */
   blobRanges: BlobRestoreParametersBlobRangesList;
 }
-export const BlobRestoreParameters = /*@__PURE__*/ S.suspend(() =>
+const BlobRestoreParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeToRestore: S.String,
     blobRanges: BlobRestoreParametersBlobRangesList,
@@ -3789,7 +3785,7 @@ export interface BlobRestoreStatus {
   /** Blob restore request parameters. */
   parameters?: BlobRestoreParameters;
 }
-export const BlobRestoreStatus = /*@__PURE__*/ S.suspend(() =>
+const BlobRestoreStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(BlobRestoreProgressStatus),
     failureReason: S.optional(S.String),
@@ -3800,7 +3796,7 @@ export const BlobRestoreStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates the current sku conversion status. */
 export type SkuConversionStatus = "InProgress" | "Succeeded" | "Failed";
-export const SkuConversionStatus = S.String;
+const SkuConversionStatus = S.String;
 
 /** This defines the sku conversion status object for asynchronous sku conversions. */
 export interface StorageAccountSkuConversionStatus {
@@ -3813,7 +3809,7 @@ export interface StorageAccountSkuConversionStatus {
   /** This property represents the sku conversion end time. */
   endTime?: string;
 }
-export const StorageAccountSkuConversionStatus = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountSkuConversionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuConversionStatus: S.optional(SkuConversionStatus),
     targetSkuName: S.optional(SkuName),
@@ -3921,7 +3917,7 @@ export interface StorageAccountProperties {
   /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
   allowCrossTenantDelegationSas?: boolean;
 }
-export const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     primaryEndpoints: S.optional(Endpoints),
@@ -3975,7 +3971,7 @@ export const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
-export const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
@@ -3991,7 +3987,7 @@ export interface Identity {
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -4002,7 +3998,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type CreateStorageAccountResponseZonesList = Array<string>;
-export const CreateStorageAccountResponseZonesList =
+const CreateStorageAccountResponseZonesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CreateStorageAccountResponseZonesList>;
 
 export interface CreateStorageAccountResponse {
@@ -4033,7 +4029,7 @@ export interface CreateStorageAccountResponse {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
-export const CreateStorageAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4055,12 +4051,12 @@ export const CreateStorageAccountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Required list of object prefixes to be included for task execution */
 export type ExecutionTargetPrefixList = Array<string>;
-export const ExecutionTargetPrefixList =
+const ExecutionTargetPrefixList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ExecutionTargetPrefixList>;
 
 /** List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor */
 export type ExecutionTargetExcludePrefixList = Array<string>;
-export const ExecutionTargetExcludePrefixList =
+const ExecutionTargetExcludePrefixList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ExecutionTargetExcludePrefixList>;
 
 /** Target helps provide filter parameters for the objects in the storage account and forms the execution context for the storage task */
@@ -4070,7 +4066,7 @@ export interface ExecutionTarget {
   /** List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor */
   excludePrefix?: ExecutionTargetExcludePrefixList;
 }
-export const ExecutionTarget = /*@__PURE__*/ S.suspend(() =>
+const ExecutionTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(ExecutionTargetPrefixList),
     excludePrefix: S.optional(ExecutionTargetExcludePrefixList),
@@ -4079,11 +4075,11 @@ export const ExecutionTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** The trigger type of the storage task assignment execution */
 export type TriggerType = "RunOnce" | "OnSchedule" | "MockRun";
-export const TriggerType = S.String;
+const TriggerType = S.String;
 
 /** Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
 export type IntervalUnit = "Days";
-export const IntervalUnit = S.String;
+const IntervalUnit = S.String;
 
 /** The trigger parameters update for the storage task assignment execution */
 export interface TriggerParameters {
@@ -4098,7 +4094,7 @@ export interface TriggerParameters {
   /** When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */
   startOn?: string;
 }
-export const TriggerParameters = /*@__PURE__*/ S.suspend(() =>
+const TriggerParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startFrom: S.optional(S.String),
     interval: S.optional(S.Number),
@@ -4115,7 +4111,7 @@ export interface ExecutionTrigger {
   /** The trigger parameters of the storage task assignment execution */
   parameters: TriggerParameters;
 }
-export const ExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
+const ExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: TriggerType,
     parameters: TriggerParameters,
@@ -4129,7 +4125,7 @@ export interface StorageTaskAssignmentExecutionContext {
   /** Execution trigger of the storage task assignment */
   trigger: ExecutionTrigger;
 }
-export const StorageTaskAssignmentExecutionContext = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentExecutionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(ExecutionTarget),
     trigger: ExecutionTrigger,
@@ -4143,7 +4139,7 @@ export interface StorageTaskAssignmentReport {
   /** The container prefix for the location of storage task assignment report */
   prefix: string;
 }
-export const StorageTaskAssignmentReport = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.String,
   }),
@@ -4153,8 +4149,6 @@ export const StorageTaskAssignmentReport = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage task execution report for a run instance. */
 export type StorageTaskReportPropertiesInput = UserAssignedIdentityInput;
-export const StorageTaskReportPropertiesInput = UserAssignedIdentityInput;
-
 /** Properties of the storage task assignment. */
 export interface StorageTaskAssignmentPropertiesInput {
   /** Id of the corresponding storage task */
@@ -4170,7 +4164,7 @@ export interface StorageTaskAssignmentPropertiesInput {
   /** Run status of storage task assignment */
   runStatus?: UserAssignedIdentityInput;
 }
-export const StorageTaskAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     enabled: S.Boolean,
@@ -4195,7 +4189,7 @@ export interface CreateStorageTaskAssignmentRequest {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentPropertiesInput;
 }
-export const CreateStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4224,15 +4218,15 @@ export type StorageTaskAssignmentProvisioningState =
   | "Deleting"
   | "Canceled"
   | "Failed";
-export const StorageTaskAssignmentProvisioningState = S.String;
+const StorageTaskAssignmentProvisioningState = S.String;
 
 /** Represents the status of the execution. */
 export type RunStatusEnum = "InProgress" | "Finished";
-export const RunStatusEnum = S.String;
+const RunStatusEnum = S.String;
 
 /** Represents the overall result of the execution for the run instance */
 export type RunResult = "Succeeded" | "Failed";
-export const RunResult = S.String;
+const RunResult = S.String;
 
 /** Storage task execution report for a run instance. */
 export interface StorageTaskReportProperties {
@@ -4265,7 +4259,7 @@ export interface StorageTaskReportProperties {
   /** Represents the overall result of the execution for the run instance */
   runResult?: RunResult;
 }
-export const StorageTaskReportProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskReportProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskAssignmentId: S.optional(S.String),
     storageAccountId: S.optional(S.String),
@@ -4303,7 +4297,7 @@ export interface StorageTaskAssignmentProperties {
   /** Run status of storage task assignment */
   runStatus?: StorageTaskReportProperties;
 }
-export const StorageTaskAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     enabled: S.Boolean,
@@ -4329,7 +4323,7 @@ export interface CreateStorageTaskAssignmentResponse {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
-export const CreateStorageTaskAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageTaskAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4350,7 +4344,7 @@ export interface TableAccessPolicy {
   /** Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d' */
   permission: string;
 }
-export const TableAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const TableAccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     expiryTime: S.optional(S.String),
@@ -4365,7 +4359,7 @@ export interface TableSignedIdentifier {
   /** Access policy */
   accessPolicy?: TableAccessPolicy;
 }
-export const TableSignedIdentifier = /*@__PURE__*/ S.suspend(() =>
+const TableSignedIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accessPolicy: S.optional(TableAccessPolicy),
@@ -4374,7 +4368,7 @@ export const TableSignedIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stored access policies specified on the table. */
 export type TablePropertiesInputSignedIdentifiersList = Array<TableSignedIdentifier>;
-export const TablePropertiesInputSignedIdentifiersList = /*@__PURE__*/ S.Array(
+const TablePropertiesInputSignedIdentifiersList = /*@__PURE__*/ S.Array(
   TableSignedIdentifier,
 ) as any as S.Schema<TablePropertiesInputSignedIdentifiersList>;
 
@@ -4382,7 +4376,7 @@ export interface TablePropertiesInput {
   /** List of stored access policies specified on the table. */
   signedIdentifiers?: TablePropertiesInputSignedIdentifiersList;
 }
-export const TablePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TablePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signedIdentifiers: S.optional(TablePropertiesInputSignedIdentifiersList),
   }),
@@ -4400,7 +4394,7 @@ export interface CreateTableRequest {
   /** Table resource properties. */
   properties?: TablePropertiesInput;
 }
-export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4419,7 +4413,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stored access policies specified on the table. */
 export type TablePropertiesSignedIdentifiersList = Array<TableSignedIdentifier>;
-export const TablePropertiesSignedIdentifiersList =
+const TablePropertiesSignedIdentifiersList =
   TablePropertiesInputSignedIdentifiersList as any as S.Schema<TablePropertiesSignedIdentifiersList>;
 
 export interface TableProperties {
@@ -4428,7 +4422,7 @@ export interface TableProperties {
   /** List of stored access policies specified on the table. */
   signedIdentifiers?: TablePropertiesSignedIdentifiersList;
 }
-export const TableProperties = /*@__PURE__*/ S.suspend(() =>
+const TableProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableName: S.optional(S.String),
     signedIdentifiers: S.optional(TablePropertiesSignedIdentifiersList),
@@ -4447,7 +4441,7 @@ export interface CreateTableResponse {
   /** Table resource properties. */
   properties?: TableProperties;
 }
-export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4459,7 +4453,7 @@ export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType =
   "ContainerLevelCapacityMetrics";
-export const DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType = S.String;
+const DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType = S.String;
 
 export interface DeleteAdvancedPlatformMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4473,7 +4467,7 @@ export interface DeleteAdvancedPlatformMetricsRequest {
     | DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType
     | (string & {});
 }
-export const DeleteAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4493,7 +4487,7 @@ export const DeleteAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteAdvancedPlatformMetricsRequest>;
 
 export interface DeleteAdvancedPlatformMetricsResponse {}
-export const DeleteAdvancedPlatformMetricsResponse =
+const DeleteAdvancedPlatformMetricsResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteAdvancedPlatformMetricsResponse>;
 
 export interface DeleteBlobAccessPointConfigurationRequest {
@@ -4506,7 +4500,7 @@ export interface DeleteBlobAccessPointConfigurationRequest {
   /** The name of the Blob Access Point configuration. */
   blobAccessPointConfigurationName: string;
 }
-export const DeleteBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4525,7 +4519,7 @@ export const DeleteBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteBlobAccessPointConfigurationRequest>;
 
 export interface DeleteBlobAccessPointConfigurationResponse {}
-export const DeleteBlobAccessPointConfigurationResponse =
+const DeleteBlobAccessPointConfigurationResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteBlobAccessPointConfigurationResponse>;
 
 export interface DeleteBlobContainerRequest {
@@ -4538,7 +4532,7 @@ export interface DeleteBlobContainerRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
-export const DeleteBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4557,7 +4551,7 @@ export const DeleteBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBlobContainerRequest>;
 
 export interface DeleteBlobContainerResponse {}
-export const DeleteBlobContainerResponse =
+const DeleteBlobContainerResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteBlobContainerResponse>;
 
 export interface DeleteBlobContainerImmutabilityPolicyRequest {
@@ -4572,7 +4566,7 @@ export interface DeleteBlobContainerImmutabilityPolicyRequest {
   /** The entity state (ETag) version of the immutability policy to abort. A value of "*" applies to all. */
   ifMatch: string;
 }
-export const DeleteBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4605,11 +4599,11 @@ export interface DeleteBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const DeleteBlobContainerImmutabilityPolicyResponse =
+const DeleteBlobContainerImmutabilityPolicyResponse =
   BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<DeleteBlobContainerImmutabilityPolicyResponse>;
 
 export type DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName = "default";
-export const DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName = S.String;
+const DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName = S.String;
 
 export interface DeleteBlobInventoryPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4621,7 +4615,7 @@ export interface DeleteBlobInventoryPolicyRequest {
   /** The name of the storage account blob inventory policy. It should always be 'default' */
   blobInventoryPolicyName: DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName | (string & {});
 }
-export const DeleteBlobInventoryPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBlobInventoryPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4642,7 +4636,7 @@ export const DeleteBlobInventoryPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBlobInventoryPolicyRequest>;
 
 export interface DeleteBlobInventoryPolicyResponse {}
-export const DeleteBlobInventoryPolicyResponse =
+const DeleteBlobInventoryPolicyResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteBlobInventoryPolicyResponse>;
 
 export interface DeleteConnectorRequest {
@@ -4655,7 +4649,7 @@ export interface DeleteConnectorRequest {
   /** The name of the Storage Connector. */
   connectorName: string;
 }
-export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4672,7 +4666,7 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse =
+const DeleteConnectorResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteConnectorResponse>;
 
 export interface DeleteContextCachRequest {
@@ -4683,7 +4677,7 @@ export interface DeleteContextCachRequest {
   /** The name of the context cache */
   contextCacheName: string;
 }
-export const DeleteContextCachRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContextCachRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4699,7 +4693,7 @@ export const DeleteContextCachRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContextCachRequest" }) as any as S.Schema<DeleteContextCachRequest>;
 
 export interface DeleteContextCachResponse {}
-export const DeleteContextCachResponse =
+const DeleteContextCachResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteContextCachResponse>;
 
 export interface DeleteContextCacheContainerRequest {
@@ -4712,7 +4706,7 @@ export interface DeleteContextCacheContainerRequest {
   /** The name of the context cache container */
   contextCacheContainerName: string;
 }
-export const DeleteContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4731,7 +4725,7 @@ export const DeleteContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContextCacheContainerRequest>;
 
 export interface DeleteContextCacheContainerResponse {}
-export const DeleteContextCacheContainerResponse =
+const DeleteContextCacheContainerResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteContextCacheContainerResponse>;
 
 export interface DeleteDataShareRequest {
@@ -4744,7 +4738,7 @@ export interface DeleteDataShareRequest {
   /** The name of the Storage DataShare. */
   dataShareName: string;
 }
-export const DeleteDataShareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4761,7 +4755,7 @@ export const DeleteDataShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDataShareRequest" }) as any as S.Schema<DeleteDataShareRequest>;
 
 export interface DeleteDataShareResponse {}
-export const DeleteDataShareResponse =
+const DeleteDataShareResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteDataShareResponse>;
 
 export interface DeleteFileShareRequest {
@@ -4776,7 +4770,7 @@ export interface DeleteFileShareRequest {
   /** Optional. Valid values are: snapshots, leased-snapshots, none. The default value is snapshots. For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased-snapshots, the deletion fails. For 'leased-snapshots', the file share is deleted included all of its file share snapshots (leased/unleased). For 'none', the file share is deleted if it has no share snapshots. If the file share contains any snapshots (leased or unleased), the deletion fails. */
   _include?: string;
 }
-export const DeleteFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4794,7 +4788,7 @@ export const DeleteFileShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileShareRequest" }) as any as S.Schema<DeleteFileShareRequest>;
 
 export interface DeleteFileShareResponse {}
-export const DeleteFileShareResponse =
+const DeleteFileShareResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteFileShareResponse>;
 
 export interface DeleteLocalUserRequest {
@@ -4807,7 +4801,7 @@ export interface DeleteLocalUserRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
-export const DeleteLocalUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocalUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4824,11 +4818,11 @@ export const DeleteLocalUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLocalUserRequest" }) as any as S.Schema<DeleteLocalUserRequest>;
 
 export interface DeleteLocalUserResponse {}
-export const DeleteLocalUserResponse =
+const DeleteLocalUserResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteLocalUserResponse>;
 
 export type DeleteManagementPolicyRequestManagementPolicyName = "default";
-export const DeleteManagementPolicyRequestManagementPolicyName = S.String;
+const DeleteManagementPolicyRequestManagementPolicyName = S.String;
 
 export interface DeleteManagementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4840,7 +4834,7 @@ export interface DeleteManagementPolicyRequest {
   /** The name of the Storage Account Management Policy. It should always be 'default' */
   managementPolicyName: DeleteManagementPolicyRequestManagementPolicyName | (string & {});
 }
-export const DeleteManagementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4859,7 +4853,7 @@ export const DeleteManagementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagementPolicyRequest>;
 
 export interface DeleteManagementPolicyResponse {}
-export const DeleteManagementPolicyResponse =
+const DeleteManagementPolicyResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteManagementPolicyResponse>;
 
 export interface DeleteObjectReplicationPolicyRequest {
@@ -4872,7 +4866,7 @@ export interface DeleteObjectReplicationPolicyRequest {
   /** For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. */
   objectReplicationPolicyId: string;
 }
-export const DeleteObjectReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteObjectReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4891,7 +4885,7 @@ export const DeleteObjectReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteObjectReplicationPolicyRequest>;
 
 export interface DeleteObjectReplicationPolicyResponse {}
-export const DeleteObjectReplicationPolicyResponse =
+const DeleteObjectReplicationPolicyResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteObjectReplicationPolicyResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
@@ -4904,7 +4898,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4923,7 +4917,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteQueueRequest {
@@ -4936,7 +4930,7 @@ export interface DeleteQueueRequest {
   /** A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters. */
   queueName: string;
 }
-export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4953,8 +4947,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteQueueResponse>;
+const DeleteQueueResponse = UserAssignedIdentityInput as any as S.Schema<DeleteQueueResponse>;
 
 export interface DeleteStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4964,7 +4957,7 @@ export interface DeleteStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4982,7 +4975,7 @@ export const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageAccountRequest>;
 
 export interface DeleteStorageAccountResponse {}
-export const DeleteStorageAccountResponse =
+const DeleteStorageAccountResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteStorageAccountResponse>;
 
 export interface DeleteStorageTaskAssignmentRequest {
@@ -4995,7 +4988,7 @@ export interface DeleteStorageTaskAssignmentRequest {
   /** The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   storageTaskAssignmentName: string;
 }
-export const DeleteStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5014,7 +5007,7 @@ export const DeleteStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageTaskAssignmentRequest>;
 
 export interface DeleteStorageTaskAssignmentResponse {}
-export const DeleteStorageTaskAssignmentResponse =
+const DeleteStorageTaskAssignmentResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteStorageTaskAssignmentResponse>;
 
 export interface DeleteTableRequest {
@@ -5027,7 +5020,7 @@ export interface DeleteTableRequest {
   /** A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character. */
   tableName: string;
 }
-export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5044,8 +5037,7 @@ export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
 
 export interface DeleteTableResponse {}
-export const DeleteTableResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteTableResponse>;
+const DeleteTableResponse = UserAssignedIdentityInput as any as S.Schema<DeleteTableResponse>;
 
 export interface ExtendBlobContainerImmutabilityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5059,7 +5051,7 @@ export interface ExtendBlobContainerImmutabilityPolicyRequest {
   /** The properties of an ImmutabilityPolicy of a blob container. */
   properties: ImmutabilityPolicyProperty;
 }
-export const ExtendBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5092,12 +5084,12 @@ export interface ExtendBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const ExtendBlobContainerImmutabilityPolicyResponse =
+const ExtendBlobContainerImmutabilityPolicyResponse =
   BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<ExtendBlobContainerImmutabilityPolicyResponse>;
 
 /** Specifies the lease action. Can be one of the available actions. */
 export type LeaseShareAction = "Acquire" | "Renew" | "Change" | "Release" | "Break";
-export const LeaseShareAction = S.String;
+const LeaseShareAction = S.String;
 
 export interface FileSharesLeaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5119,7 +5111,7 @@ export interface FileSharesLeaseRequest {
   /** Optional for acquire, required for change. Proposed lease ID, in a GUID string format. */
   proposedLeaseId?: string;
 }
-export const FileSharesLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const FileSharesLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5147,11 +5139,11 @@ export interface LeaseShareResponse {
   /** Approximate time remaining in the lease period, in seconds. */
   leaseTimeSeconds?: string;
 }
-export const LeaseShareResponse = LeaseContainerResponse as any as S.Schema<LeaseShareResponse>;
+const LeaseShareResponse = LeaseContainerResponse as any as S.Schema<LeaseShareResponse>;
 
 export type GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType =
   "ContainerLevelCapacityMetrics";
-export const GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType = S.String;
+const GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType = S.String;
 
 export interface GetAdvancedPlatformMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5165,7 +5157,7 @@ export interface GetAdvancedPlatformMetricsRequest {
     | GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType
     | (string & {});
 }
-export const GetAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5196,7 +5188,7 @@ export interface GetAdvancedPlatformMetricsResponse {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRuleProperties;
 }
-export const GetAdvancedPlatformMetricsResponse =
+const GetAdvancedPlatformMetricsResponse =
   AdvancedPlatformMetricsCreateOrUpdateResponse as any as S.Schema<GetAdvancedPlatformMetricsResponse>;
 
 export interface GetBlobAccessPointConfigurationRequest {
@@ -5209,7 +5201,7 @@ export interface GetBlobAccessPointConfigurationRequest {
   /** The name of the Blob Access Point configuration. */
   blobAccessPointConfigurationName: string;
 }
-export const GetBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5229,9 +5221,6 @@ export const GetBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type GetBlobAccessPointConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetBlobAccessPointConfigurationResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBlobAccessPointConfigurationResponseTagsMap>;
-
 export interface GetBlobAccessPointConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5248,7 +5237,7 @@ export interface GetBlobAccessPointConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
-export const GetBlobAccessPointConfigurationResponse =
+const GetBlobAccessPointConfigurationResponse =
   CreateBlobAccessPointConfigurationResponse as any as S.Schema<GetBlobAccessPointConfigurationResponse>;
 
 export interface GetBlobContainerRequest {
@@ -5261,7 +5250,7 @@ export interface GetBlobContainerRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
-export const GetBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5291,7 +5280,7 @@ export interface GetBlobContainerResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const GetBlobContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBlobContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5312,7 +5301,7 @@ export interface GetBlobContainerImmutabilityPolicyRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
-export const GetBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5344,11 +5333,11 @@ export interface GetBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const GetBlobContainerImmutabilityPolicyResponse =
+const GetBlobContainerImmutabilityPolicyResponse =
   BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<GetBlobContainerImmutabilityPolicyResponse>;
 
 export type GetBlobInventoryPolicyRequestBlobInventoryPolicyName = "default";
-export const GetBlobInventoryPolicyRequestBlobInventoryPolicyName = S.String;
+const GetBlobInventoryPolicyRequestBlobInventoryPolicyName = S.String;
 
 export interface GetBlobInventoryPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5360,7 +5349,7 @@ export interface GetBlobInventoryPolicyRequest {
   /** The name of the storage account blob inventory policy. It should always be 'default' */
   blobInventoryPolicyName: GetBlobInventoryPolicyRequestBlobInventoryPolicyName | (string & {});
 }
-export const GetBlobInventoryPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobInventoryPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5390,7 +5379,7 @@ export interface GetBlobInventoryPolicyResponse {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyProperties;
 }
-export const GetBlobInventoryPolicyResponse =
+const GetBlobInventoryPolicyResponse =
   BlobInventoryPoliciesCreateOrUpdateResponse as any as S.Schema<GetBlobInventoryPolicyResponse>;
 
 export interface GetBlobServiceServicePropertiesRequest {
@@ -5401,7 +5390,7 @@ export interface GetBlobServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const GetBlobServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5420,7 +5409,7 @@ export const GetBlobServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(()
 
 /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
 export type CorsRuleAllowedOriginsList = Array<string>;
-export const CorsRuleAllowedOriginsList =
+const CorsRuleAllowedOriginsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CorsRuleAllowedOriginsList>;
 
 export type AllowedMethods =
@@ -5434,21 +5423,19 @@ export type AllowedMethods =
   | "PATCH"
   | "CONNECT"
   | "TRACE";
-export const AllowedMethods = S.String;
-
 /** Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin. */
 export type CorsRuleAllowedMethodsList = Array<AllowedMethods | (string & {})>;
-export const CorsRuleAllowedMethodsList =
+const CorsRuleAllowedMethodsList =
   AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** Required if CorsRule element is present. A list of response headers to expose to CORS clients. */
 export type CorsRuleExposedHeadersList = Array<string>;
-export const CorsRuleExposedHeadersList =
+const CorsRuleExposedHeadersList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CorsRuleExposedHeadersList>;
 
 /** Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request. */
 export type CorsRuleAllowedHeadersList = Array<string>;
-export const CorsRuleAllowedHeadersList =
+const CorsRuleAllowedHeadersList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CorsRuleAllowedHeadersList>;
 
 /** Specifies a CORS rule for the Blob service. */
@@ -5464,7 +5451,7 @@ export interface CorsRule {
   /** Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request. */
   allowedHeaders: CorsRuleAllowedHeadersList;
 }
-export const CorsRule = /*@__PURE__*/ S.suspend(() =>
+const CorsRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: CorsRuleAllowedOriginsList,
     allowedMethods: CorsRuleAllowedMethodsList,
@@ -5476,7 +5463,7 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The List of CORS rules. You can include up to five CorsRule elements in the request. */
 export type CorsRulesCorsRulesList = Array<CorsRule>;
-export const CorsRulesCorsRulesList = /*@__PURE__*/ S.Array(
+const CorsRulesCorsRulesList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsRulesCorsRulesList>;
 
@@ -5485,7 +5472,7 @@ export interface CorsRules {
   /** The List of CORS rules. You can include up to five CorsRule elements in the request. */
   corsRules?: CorsRulesCorsRulesList;
 }
-export const CorsRules = /*@__PURE__*/ S.suspend(() =>
+const CorsRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     corsRules: S.optional(CorsRulesCorsRulesList),
   }),
@@ -5500,7 +5487,7 @@ export interface DeleteRetentionPolicy {
   /** This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share. */
   allowPermanentDelete?: boolean;
 }
-export const DeleteRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
+const DeleteRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     days: S.optional(S.Number),
@@ -5519,7 +5506,7 @@ export interface StaticWebsite {
   /** The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. The contents of the page are returned with HTTP 404 Not Found. Only a single custom 404 page is supported in each static website. */
   errorDocument404Path?: string;
 }
-export const StaticWebsite = /*@__PURE__*/ S.suspend(() =>
+const StaticWebsite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     indexDocument: S.optional(S.String),
@@ -5535,7 +5522,7 @@ export interface ChangeFeed {
   /** Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed. */
   retentionInDays?: number;
 }
-export const ChangeFeed = /*@__PURE__*/ S.suspend(() =>
+const ChangeFeed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     retentionInDays: S.optional(S.Number),
@@ -5553,7 +5540,7 @@ export interface RestorePolicyProperties {
   /** Returns the minimum date and time that the restore can be started. */
   minRestoreTime?: string;
 }
-export const RestorePolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const RestorePolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     days: S.optional(S.Number),
@@ -5564,11 +5551,11 @@ export const RestorePolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the policy. The valid value is AccessTimeTracking. This field is currently read only */
 export type Name = "AccessTimeTracking";
-export const Name = S.String;
+const Name = S.String;
 
 /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
 export type LastAccessTimeTrackingPolicyBlobTypeList = Array<string>;
-export const LastAccessTimeTrackingPolicyBlobTypeList =
+const LastAccessTimeTrackingPolicyBlobTypeList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<LastAccessTimeTrackingPolicyBlobTypeList>;
 
 /** The blob service properties for Last access time based tracking policy. */
@@ -5582,7 +5569,7 @@ export interface LastAccessTimeTrackingPolicy {
   /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
   blobType?: LastAccessTimeTrackingPolicyBlobTypeList;
 }
-export const LastAccessTimeTrackingPolicy = /*@__PURE__*/ S.suspend(() =>
+const LastAccessTimeTrackingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enable: S.Boolean,
     name: S.optional(Name),
@@ -5616,7 +5603,7 @@ export interface BlobServicePropertiesProperties {
   /** The blob service property to configure last access time based tracking policy. */
   lastAccessTimeTrackingPolicy?: LastAccessTimeTrackingPolicy;
 }
-export const BlobServicePropertiesProperties = /*@__PURE__*/ S.suspend(() =>
+const BlobServicePropertiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cors: S.optional(CorsRules),
     defaultServiceVersion: S.optional(S.String),
@@ -5647,7 +5634,7 @@ export interface GetBlobServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
-export const GetBlobServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBlobServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5670,7 +5657,7 @@ export interface GetConnectorRequest {
   /** The name of the Storage Connector. */
   connectorName: string;
 }
-export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5688,9 +5675,6 @@ export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const GetConnectorResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConnectorResponseTagsMap>;
-
 export interface GetConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5707,8 +5691,7 @@ export interface GetConnectorResponse {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
-export const GetConnectorResponse =
-  CreateConnectorResponse as any as S.Schema<GetConnectorResponse>;
+const GetConnectorResponse = CreateConnectorResponse as any as S.Schema<GetConnectorResponse>;
 
 export interface GetContextCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5718,7 +5701,7 @@ export interface GetContextCachRequest {
   /** The name of the context cache */
   contextCacheName: string;
 }
-export const GetContextCachRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextCachRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5735,13 +5718,11 @@ export const GetContextCachRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetContextCachResponseTagsMap = { [key: string]: string | undefined };
-export const GetContextCachResponseTagsMap =
+const GetContextCachResponseTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<GetContextCachResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetContextCachResponseIdentity = ContextCachesCreateOrUpdateResponseIdentity;
-export const GetContextCachResponseIdentity = ContextCachesCreateOrUpdateResponseIdentity;
-
 export interface GetContextCachResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5760,7 +5741,7 @@ export interface GetContextCachResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
-export const GetContextCachResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContextCachResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5783,7 +5764,7 @@ export interface GetContextCacheContainerRequest {
   /** The name of the context cache container */
   contextCacheContainerName: string;
 }
-export const GetContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5813,7 +5794,7 @@ export interface GetContextCacheContainerResponse {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
-export const GetContextCacheContainerResponse =
+const GetContextCacheContainerResponse =
   ContextCacheContainersCreateOrUpdateResponse as any as S.Schema<GetContextCacheContainerResponse>;
 
 export interface GetDataShareRequest {
@@ -5826,7 +5807,7 @@ export interface GetDataShareRequest {
   /** The name of the Storage DataShare. */
   dataShareName: string;
 }
-export const GetDataShareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5844,9 +5825,6 @@ export const GetDataShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDataShareResponseTagsMap = { [key: string]: string | undefined };
-export const GetDataShareResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDataShareResponseTagsMap>;
-
 export interface GetDataShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5863,8 +5841,7 @@ export interface GetDataShareResponse {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
-export const GetDataShareResponse =
-  CreateDataShareResponse as any as S.Schema<GetDataShareResponse>;
+const GetDataShareResponse = CreateDataShareResponse as any as S.Schema<GetDataShareResponse>;
 
 export interface GetDeletedAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5874,7 +5851,7 @@ export interface GetDeletedAccountRequest {
   /** Name of the deleted storage account. */
   deletedAccountName: string;
 }
-export const GetDeletedAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeletedAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -5902,7 +5879,7 @@ export interface DeletedAccountProperties {
   /** Deletion time of the deleted account. */
   deletionTime?: string;
 }
-export const DeletedAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const DeletedAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountResourceId: S.optional(S.String),
     location: S.optional(S.String),
@@ -5924,7 +5901,7 @@ export interface GetDeletedAccountResponse {
   /** Properties of the deleted account. */
   properties?: DeletedAccountProperties;
 }
-export const GetDeletedAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeletedAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5946,7 +5923,7 @@ export interface GetEncryptionScopeRequest {
   /** The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   encryptionScopeName: string;
 }
-export const GetEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5966,11 +5943,11 @@ export const GetEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider for the encryption scope. Possible values (case-insensitive): Microsoft.Storage, Microsoft.KeyVault. */
 export type EncryptionScopeSource = "Microsoft.Storage" | "Microsoft.KeyVault";
-export const EncryptionScopeSource = S.String;
+const EncryptionScopeSource = S.String;
 
 /** The state of the encryption scope. Possible values (case-insensitive): Enabled, Disabled. */
 export type EncryptionScopeState = "Enabled" | "Disabled";
-export const EncryptionScopeState = S.String;
+const EncryptionScopeState = S.String;
 
 /** The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'. */
 export interface EncryptionScopeKeyVaultProperties {
@@ -5981,7 +5958,7 @@ export interface EncryptionScopeKeyVaultProperties {
   /** Timestamp of last rotation of the Key Vault Key. */
   lastKeyRotationTimestamp?: string;
 }
-export const EncryptionScopeKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionScopeKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyUri: S.optional(S.String),
     currentVersionedKeyIdentifier: S.optional(S.String),
@@ -6006,7 +5983,7 @@ export interface EncryptionScopeProperties {
   /** A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest. */
   requireInfrastructureEncryption?: boolean;
 }
-export const EncryptionScopeProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionScopeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(EncryptionScopeSource),
     state: S.optional(EncryptionScopeState),
@@ -6031,7 +6008,7 @@ export interface GetEncryptionScopeResponse {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
-export const GetEncryptionScopeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEncryptionScopeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6051,7 +6028,7 @@ export interface GetFileServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const GetFileServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6073,7 +6050,7 @@ export interface Multichannel {
   /** Indicates whether multichannel is enabled */
   enabled?: boolean;
 }
-export const Multichannel = /*@__PURE__*/ S.suspend(() =>
+const Multichannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -6084,7 +6061,7 @@ export interface EncryptionInTransit {
   /** Indicates whether encryption in transit is required */
   required?: boolean;
 }
-export const EncryptionInTransit = /*@__PURE__*/ S.suspend(() =>
+const EncryptionInTransit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     required: S.optional(S.Boolean),
   }),
@@ -6105,7 +6082,7 @@ export interface SmbSetting {
   /** Encryption in transit setting. */
   encryptionInTransit?: EncryptionInTransit;
 }
-export const SmbSetting = /*@__PURE__*/ S.suspend(() =>
+const SmbSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multichannel: S.optional(Multichannel),
     versions: S.optional(S.String),
@@ -6121,7 +6098,7 @@ export interface NfsSetting {
   /** Encryption in transit setting. */
   encryptionInTransit?: EncryptionInTransit;
 }
-export const NfsSetting = /*@__PURE__*/ S.suspend(() =>
+const NfsSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionInTransit: S.optional(EncryptionInTransit),
   }),
@@ -6134,7 +6111,7 @@ export interface ProtocolSettings {
   /** Setting for NFS protocol */
   nfs?: NfsSetting;
 }
-export const ProtocolSettings = /*@__PURE__*/ S.suspend(() =>
+const ProtocolSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smb: S.optional(SmbSetting),
     nfs: S.optional(NfsSetting),
@@ -6150,7 +6127,7 @@ export interface FileServicePropertiesProperties {
   /** Protocol settings for file service */
   protocolSettings?: ProtocolSettings;
 }
-export const FileServicePropertiesProperties = /*@__PURE__*/ S.suspend(() =>
+const FileServicePropertiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cors: S.optional(CorsRules),
     shareDeleteRetentionPolicy: S.optional(DeleteRetentionPolicy),
@@ -6174,7 +6151,7 @@ export interface GetFileServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
-export const GetFileServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6195,7 +6172,7 @@ export interface GetFileServiceServiceUsageRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const GetFileServiceServiceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileServiceServiceUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6223,7 +6200,7 @@ export interface AccountLimits {
   /** The maximum provisioned bandwidth limit in mebibytes per second for the storage account. */
   maxProvisionedBandwidthMiBPerSec?: number;
 }
-export const AccountLimits = /*@__PURE__*/ S.suspend(() =>
+const AccountLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxFileShares: S.optional(S.Number),
     maxProvisionedStorageGiB: S.optional(S.Number),
@@ -6251,7 +6228,7 @@ export interface FileShareLimits {
   /** The bandwidth scalar used for guardrail calculations for a file share in the storage account. */
   guardrailBandwidthScalar?: number;
 }
-export const FileShareLimits = /*@__PURE__*/ S.suspend(() =>
+const FileShareLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minProvisionedStorageGiB: S.optional(S.Number),
     maxProvisionedStorageGiB: S.optional(S.Number),
@@ -6275,7 +6252,7 @@ export interface FileShareRecommendations {
   /** The scalar for bandwidth in the file share provisioned bandwidth recommendation formula. */
   bandwidthScalar?: number;
 }
-export const FileShareRecommendations = /*@__PURE__*/ S.suspend(() =>
+const FileShareRecommendations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseIOPS: S.optional(S.Number),
     ioScalar: S.optional(S.Number),
@@ -6293,7 +6270,7 @@ export interface BurstingConstants {
   /** The time frame for bursting in seconds in the file share maximum burst credits for IOPS formula. */
   burstTimeframeSeconds?: number;
 }
-export const BurstingConstants = /*@__PURE__*/ S.suspend(() =>
+const BurstingConstants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     burstFloorIOPS: S.optional(S.Number),
     burstIOScalar: S.optional(S.Number),
@@ -6312,7 +6289,7 @@ export interface AccountUsageElements {
   /** The total provisioned bandwidth in mebibytes per second. */
   provisionedBandwidthMiBPerSec?: number;
 }
-export const AccountUsageElements = /*@__PURE__*/ S.suspend(() =>
+const AccountUsageElements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileShareCount: S.optional(S.Number),
     provisionedStorageGiB: S.optional(S.Number),
@@ -6328,7 +6305,7 @@ export interface AccountUsage {
   /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares or soft-deleted shares in the account. */
   softDeletedShares?: AccountUsageElements;
 }
-export const AccountUsage = /*@__PURE__*/ S.suspend(() =>
+const AccountUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liveShares: S.optional(AccountUsageElements),
     softDeletedShares: S.optional(AccountUsageElements),
@@ -6348,7 +6325,7 @@ export interface FileServiceUsageProperties {
   /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares and soft-deleted shares in the account. */
   storageAccountUsage?: AccountUsage;
 }
-export const FileServiceUsageProperties = /*@__PURE__*/ S.suspend(() =>
+const FileServiceUsageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountLimits: S.optional(AccountLimits),
     fileShareLimits: S.optional(FileShareLimits),
@@ -6372,7 +6349,7 @@ export interface GetFileServiceServiceUsageResponse {
   /** File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula. */
   properties?: FileServiceUsageProperties;
 }
-export const GetFileServiceServiceUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileServiceServiceUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6396,7 +6373,7 @@ export interface GetFileShareRequest {
   /** Optional, used to expand the properties within share's properties. Valid values are: stats. Should be passed as a string with delimiter ','. */
   _expand?: string;
 }
-export const GetFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6427,8 +6404,7 @@ export interface GetFileShareResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const GetFileShareResponse =
-  CreateFileShareResponse as any as S.Schema<GetFileShareResponse>;
+const GetFileShareResponse = CreateFileShareResponse as any as S.Schema<GetFileShareResponse>;
 
 export interface GetLocalUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6440,7 +6416,7 @@ export interface GetLocalUserRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
-export const GetLocalUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocalUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6464,7 +6440,7 @@ export interface PermissionScope {
   /** The name of resource, normally the container name or the file share name, used by the local user. */
   resourceName: string;
 }
-export const PermissionScope = /*@__PURE__*/ S.suspend(() =>
+const PermissionScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.String,
     service: S.String,
@@ -6474,7 +6450,7 @@ export const PermissionScope = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission scopes of the local user. */
 export type LocalUserPropertiesPermissionScopesList = Array<PermissionScope>;
-export const LocalUserPropertiesPermissionScopesList = /*@__PURE__*/ S.Array(
+const LocalUserPropertiesPermissionScopesList = /*@__PURE__*/ S.Array(
   PermissionScope,
 ) as any as S.Schema<LocalUserPropertiesPermissionScopesList>;
 
@@ -6484,7 +6460,7 @@ export interface SshPublicKey {
   /** Ssh public key base64 encoded. The format should be: '<keyType> <keyData>', e.g. ssh-rsa AAAABBBB */
   key?: string;
 }
-export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
+const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     key: S.optional(S.String),
@@ -6493,13 +6469,13 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional, local user ssh authorized keys for SFTP. */
 export type LocalUserPropertiesSshAuthorizedKeysList = Array<SshPublicKey>;
-export const LocalUserPropertiesSshAuthorizedKeysList = /*@__PURE__*/ S.Array(
+const LocalUserPropertiesSshAuthorizedKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<LocalUserPropertiesSshAuthorizedKeysList>;
 
 /** Supplementary group membership. Only applicable for local users enabled for NFSv3 access. */
 export type LocalUserPropertiesExtendedGroupsList = Array<number>;
-export const LocalUserPropertiesExtendedGroupsList = /*@__PURE__*/ S.Array(
+const LocalUserPropertiesExtendedGroupsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LocalUserPropertiesExtendedGroupsList>;
 
@@ -6530,7 +6506,7 @@ export interface LocalUserProperties {
   /** Indicates if the local user is enabled for access with NFSv3 protocol. */
   isNFSv3Enabled?: boolean;
 }
-export const LocalUserProperties = /*@__PURE__*/ S.suspend(() =>
+const LocalUserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionScopes: S.optional(LocalUserPropertiesPermissionScopesList),
     homeDirectory: S.optional(S.String),
@@ -6559,7 +6535,7 @@ export interface GetLocalUserResponse {
   /** Storage account local user properties. */
   properties?: LocalUserProperties;
 }
-export const GetLocalUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLocalUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6570,7 +6546,7 @@ export const GetLocalUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLocalUserResponse" }) as any as S.Schema<GetLocalUserResponse>;
 
 export type GetManagementPolicyRequestManagementPolicyName = "default";
-export const GetManagementPolicyRequestManagementPolicyName = S.String;
+const GetManagementPolicyRequestManagementPolicyName = S.String;
 
 export interface GetManagementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6582,7 +6558,7 @@ export interface GetManagementPolicyRequest {
   /** The name of the Storage Account Management Policy. It should always be 'default' */
   managementPolicyName: GetManagementPolicyRequestManagementPolicyName | (string & {});
 }
-export const GetManagementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6602,7 +6578,7 @@ export const GetManagementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The valid value is Lifecycle */
 export type RuleType = "Lifecycle";
-export const RuleType = S.String;
+const RuleType = S.String;
 
 /** Object to define the base blob action conditions. Properties daysAfterModificationGreaterThan, daysAfterLastAccessTimeGreaterThan and daysAfterCreationGreaterThan are mutually exclusive. The daysAfterLastTierChangeGreaterThan property is only applicable for tierToArchive actions which requires daysAfterModificationGreaterThan to be set, also it cannot be used in conjunction with daysAfterLastAccessTimeGreaterThan or daysAfterCreationGreaterThan. */
 export interface DateAfterModification {
@@ -6615,7 +6591,7 @@ export interface DateAfterModification {
   /** Value indicating the age in days after blob creation. */
   daysAfterCreationGreaterThan?: number;
 }
-export const DateAfterModification = /*@__PURE__*/ S.suspend(() =>
+const DateAfterModification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daysAfterModificationGreaterThan: S.optional(S.Number),
     daysAfterLastAccessTimeGreaterThan: S.optional(S.Number),
@@ -6639,7 +6615,7 @@ export interface ManagementPolicyBaseBlob {
   /** This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan. */
   enableAutoTierToHotFromCool?: boolean;
 }
-export const ManagementPolicyBaseBlob = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyBaseBlob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tierToCool: S.optional(DateAfterModification),
     tierToArchive: S.optional(DateAfterModification),
@@ -6657,7 +6633,7 @@ export interface DateAfterCreation {
   /** Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied. */
   daysAfterLastTierChangeGreaterThan?: number;
 }
-export const DateAfterCreation = /*@__PURE__*/ S.suspend(() =>
+const DateAfterCreation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daysAfterCreationGreaterThan: S.Number,
     daysAfterLastTierChangeGreaterThan: S.optional(S.Number),
@@ -6677,7 +6653,7 @@ export interface ManagementPolicySnapShot {
   /** The function to delete the blob snapshot */
   delete?: DateAfterCreation;
 }
-export const ManagementPolicySnapShot = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicySnapShot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tierToCool: S.optional(DateAfterCreation),
     tierToArchive: S.optional(DateAfterCreation),
@@ -6700,7 +6676,7 @@ export interface ManagementPolicyVersion {
   /** The function to delete the blob version */
   delete?: DateAfterCreation;
 }
-export const ManagementPolicyVersion =
+const ManagementPolicyVersion =
   ManagementPolicySnapShot as any as S.Schema<ManagementPolicyVersion>;
 
 /** Actions are applied to the filtered blobs when the execution condition is met. */
@@ -6712,7 +6688,7 @@ export interface ManagementPolicyAction {
   /** The management policy action for version */
   version?: ManagementPolicyVersion;
 }
-export const ManagementPolicyAction = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseBlob: S.optional(ManagementPolicyBaseBlob),
     snapshot: S.optional(ManagementPolicySnapShot),
@@ -6722,12 +6698,12 @@ export const ManagementPolicyAction = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of strings for prefixes to be match. */
 export type ManagementPolicyFilterPrefixMatchList = Array<string>;
-export const ManagementPolicyFilterPrefixMatchList =
+const ManagementPolicyFilterPrefixMatchList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ManagementPolicyFilterPrefixMatchList>;
 
 /** An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob. */
 export type ManagementPolicyFilterBlobTypesList = Array<string>;
-export const ManagementPolicyFilterBlobTypesList =
+const ManagementPolicyFilterBlobTypesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ManagementPolicyFilterBlobTypesList>;
 
 /** Blob index tag based filtering for blob objects */
@@ -6739,7 +6715,7 @@ export interface TagFilter {
   /** This is the filter tag value field used for tag based filtering, it can have 0 - 256 characters */
   value: string;
 }
-export const TagFilter = /*@__PURE__*/ S.suspend(() =>
+const TagFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     op: S.String,
@@ -6749,7 +6725,7 @@ export const TagFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of blob index tag based filters, there can be at most 10 tag filters */
 export type ManagementPolicyFilterBlobIndexMatchList = Array<TagFilter>;
-export const ManagementPolicyFilterBlobIndexMatchList = /*@__PURE__*/ S.Array(
+const ManagementPolicyFilterBlobIndexMatchList = /*@__PURE__*/ S.Array(
   TagFilter,
 ) as any as S.Schema<ManagementPolicyFilterBlobIndexMatchList>;
 
@@ -6762,7 +6738,7 @@ export interface ManagementPolicyFilter {
   /** An array of blob index tag based filters, there can be at most 10 tag filters */
   blobIndexMatch?: ManagementPolicyFilterBlobIndexMatchList;
 }
-export const ManagementPolicyFilter = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixMatch: S.optional(ManagementPolicyFilterPrefixMatchList),
     blobTypes: ManagementPolicyFilterBlobTypesList,
@@ -6777,7 +6753,7 @@ export interface ManagementPolicyDefinition {
   /** An object that defines the filter set. */
   filters?: ManagementPolicyFilter;
 }
-export const ManagementPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ManagementPolicyAction,
     filters: S.optional(ManagementPolicyFilter),
@@ -6797,7 +6773,7 @@ export interface ManagementPolicyRule {
   /** An object that defines the Lifecycle rule. */
   definition: ManagementPolicyDefinition;
 }
-export const ManagementPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     name: S.String,
@@ -6808,7 +6784,7 @@ export const ManagementPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
 export type ManagementPolicySchemaRulesList = Array<ManagementPolicyRule>;
-export const ManagementPolicySchemaRulesList = /*@__PURE__*/ S.Array(
+const ManagementPolicySchemaRulesList = /*@__PURE__*/ S.Array(
   ManagementPolicyRule,
 ) as any as S.Schema<ManagementPolicySchemaRulesList>;
 
@@ -6817,7 +6793,7 @@ export interface ManagementPolicySchema {
   /** The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
   rules: ManagementPolicySchemaRulesList;
 }
-export const ManagementPolicySchema = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicySchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: ManagementPolicySchemaRulesList,
   }),
@@ -6830,7 +6806,7 @@ export interface ManagementPolicyProperties {
   /** The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
   policy: ManagementPolicySchema;
 }
-export const ManagementPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModifiedTime: S.optional(S.String),
     policy: ManagementPolicySchema,
@@ -6851,7 +6827,7 @@ export interface GetManagementPolicyResponse {
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyProperties;
 }
-export const GetManagementPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagementPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6873,7 +6849,7 @@ export interface GetNetworkSecurityPerimeterConfigurationRequest {
   /** The name for Network Security Perimeter configuration */
   networkSecurityPerimeterConfigurationName: string;
 }
-export const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6898,15 +6874,15 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
-export const NetworkSecurityPerimeterConfigurationProvisioningState = S.String;
+const NetworkSecurityPerimeterConfigurationProvisioningState = S.String;
 
 /** Type of issue */
 export type IssueType = "Unknown" | "ConfigurationPropagationFailure";
-export const IssueType = S.String;
+const IssueType = S.String;
 
 /** Severity of the issue. */
 export type Severity = "Warning" | "Error";
-export const Severity = S.String;
+const Severity = S.String;
 
 /** Properties of provisioning issue */
 export interface ProvisioningIssueProperties {
@@ -6917,7 +6893,7 @@ export interface ProvisioningIssueProperties {
   /** Description of the issue */
   description?: string;
 }
-export const ProvisioningIssueProperties = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningIssueProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueType: S.optional(IssueType),
     severity: S.optional(Severity),
@@ -6934,7 +6910,7 @@ export interface ProvisioningIssue {
   /** Properties of provisioning issue */
   properties?: ProvisioningIssueProperties;
 }
-export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(ProvisioningIssueProperties),
@@ -6944,10 +6920,9 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 /** List of Provisioning Issues if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   Array<ProvisioningIssue>;
-export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  /*@__PURE__*/ S.Array(
-    ProvisioningIssue,
-  ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
+const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList = /*@__PURE__*/ S.Array(
+  ProvisioningIssue,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
 
 /** NetworkSecurityPerimeter related information */
 export interface NetworkSecurityPerimeter {
@@ -6958,7 +6933,7 @@ export interface NetworkSecurityPerimeter {
   /** Location of the resource */
   location?: string;
 }
-export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     perimeterGuid: S.optional(S.String),
@@ -6968,7 +6943,7 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** Access Mode of the resource association */
 export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
-export const ResourceAssociationAccessMode = S.String;
+const ResourceAssociationAccessMode = S.String;
 
 /** Information about resource association */
 export interface NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation {
@@ -6977,23 +6952,23 @@ export interface NetworkSecurityPerimeterConfigurationPropertiesResourceAssociat
   /** Access Mode of the resource association */
   accessMode?: ResourceAssociationAccessMode;
 }
-export const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation =
-  /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.optional(S.String),
       accessMode: S.optional(ResourceAssociationAccessMode),
     }),
-  ).annotate({
-    identifier: "NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation",
-  }) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
+).annotate({
+  identifier: "NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation",
+}) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
 
 /** Direction of Access Rule */
 export type NspAccessRuleDirection = "Inbound" | "Outbound";
-export const NspAccessRuleDirection = S.String;
+const NspAccessRuleDirection = S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
 export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
-export const NspAccessRulePropertiesAddressPrefixesList =
+const NspAccessRulePropertiesAddressPrefixesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
 
 /** Subscription for inbound rule */
@@ -7001,7 +6976,7 @@ export interface NspAccessRulePropertiesSubscriptionsItem {
   /** The ARM identifier of subscription */
   id?: string;
 }
-export const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(() =>
+const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -7012,24 +6987,24 @@ export const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 /** Subscriptions for inbound rules */
 export type NspAccessRulePropertiesSubscriptionsList =
   Array<NspAccessRulePropertiesSubscriptionsItem>;
-export const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
+const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   NspAccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<NspAccessRulePropertiesSubscriptionsList>;
 
 /** NetworkSecurityPerimeters for inbound rules */
 export type NspAccessRulePropertiesNetworkSecurityPerimetersList = Array<NetworkSecurityPerimeter>;
-export const NspAccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ S.Array(
+const NspAccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ S.Array(
   NetworkSecurityPerimeter,
 ) as any as S.Schema<NspAccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** FQDN for outbound rules */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
-export const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
+const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<NspAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Service Tags for inbound rules */
 export type NspAccessRulePropertiesServiceTagsList = Array<string>;
-export const NspAccessRulePropertiesServiceTagsList =
+const NspAccessRulePropertiesServiceTagsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<NspAccessRulePropertiesServiceTagsList>;
 
 /** Properties of Access Rule */
@@ -7047,7 +7022,7 @@ export interface NspAccessRuleProperties {
   /** Service Tags for inbound rules */
   serviceTags?: NspAccessRulePropertiesServiceTagsList;
 }
-export const NspAccessRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const NspAccessRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(NspAccessRuleDirection),
     addressPrefixes: S.optional(NspAccessRulePropertiesAddressPrefixesList),
@@ -7065,7 +7040,7 @@ export interface NspAccessRule {
   /** Properties of Access Rule */
   properties?: NspAccessRuleProperties;
 }
-export const NspAccessRule = /*@__PURE__*/ S.suspend(() =>
+const NspAccessRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(NspAccessRuleProperties),
@@ -7075,15 +7050,14 @@ export const NspAccessRule = /*@__PURE__*/ S.suspend(() =>
 /** List of Access Rules */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
   Array<NspAccessRule>;
-export const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
-  /*@__PURE__*/ S.Array(
-    NspAccessRule,
-  ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList>;
+const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList = /*@__PURE__*/ S.Array(
+  NspAccessRule,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList>;
 
 /** Enabled logging categories */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
   Array<string>;
-export const NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
+const NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList>;
@@ -7101,7 +7075,7 @@ export interface NetworkSecurityPerimeterConfigurationPropertiesProfile {
   /** Enabled logging categories */
   enabledLogCategories?: NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList;
 }
-export const NetworkSecurityPerimeterConfigurationPropertiesProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationPropertiesProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     accessRulesVersion: S.optional(S.Number),
@@ -7128,7 +7102,7 @@ export interface NetworkSecurityPerimeterConfigurationProperties {
   /** Network Security Perimeter profile */
   profile?: NetworkSecurityPerimeterConfigurationPropertiesProfile;
 }
-export const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(NetworkSecurityPerimeterConfigurationProvisioningState),
     provisioningIssues: S.optional(
@@ -7156,7 +7130,7 @@ export interface GetNetworkSecurityPerimeterConfigurationResponse {
   /** Properties of the Network Security Perimeter Configuration */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const GetNetworkSecurityPerimeterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkSecurityPerimeterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7178,7 +7152,7 @@ export interface GetObjectReplicationPolicyRequest {
   /** For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. */
   objectReplicationPolicyId: string;
 }
-export const GetObjectReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObjectReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7198,7 +7172,7 @@ export const GetObjectReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Filters the results to replicate only blobs whose names begin with the specified prefix. */
 export type ObjectReplicationPolicyFilterPrefixMatchList = Array<string>;
-export const ObjectReplicationPolicyFilterPrefixMatchList =
+const ObjectReplicationPolicyFilterPrefixMatchList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ObjectReplicationPolicyFilterPrefixMatchList>;
 
 /** Filters limit replication to a subset of blobs within the storage account. A logical OR is performed on values in the filter. If multiple filters are defined, a logical AND is performed on all filters. */
@@ -7208,7 +7182,7 @@ export interface ObjectReplicationPolicyFilter {
   /** Blobs created after the time will be replicated to the destination. It must be in datetime format 'yyyy-MM-ddTHH:mm:ssZ'. Example: 2020-02-19T16:05:00Z */
   minCreationTime?: string;
 }
-export const ObjectReplicationPolicyFilter = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPolicyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixMatch: S.optional(ObjectReplicationPolicyFilterPrefixMatchList),
     minCreationTime: S.optional(S.String),
@@ -7228,7 +7202,7 @@ export interface ObjectReplicationPolicyRule {
   /** Optional. An object that defines the filter set. */
   filters?: ObjectReplicationPolicyFilter;
 }
-export const ObjectReplicationPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.optional(S.String),
     sourceContainer: S.String,
@@ -7241,7 +7215,7 @@ export const ObjectReplicationPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account object replication rules. */
 export type ObjectReplicationPolicyPropertiesRulesList = Array<ObjectReplicationPolicyRule>;
-export const ObjectReplicationPolicyPropertiesRulesList = /*@__PURE__*/ S.Array(
+const ObjectReplicationPolicyPropertiesRulesList = /*@__PURE__*/ S.Array(
   ObjectReplicationPolicyRule,
 ) as any as S.Schema<ObjectReplicationPolicyPropertiesRulesList>;
 
@@ -7250,7 +7224,7 @@ export interface ObjectReplicationPolicyPropertiesMetrics {
   /** Indicates whether object replication metrics feature is enabled for the policy. */
   enabled?: boolean;
 }
-export const ObjectReplicationPolicyPropertiesMetrics =
+const ObjectReplicationPolicyPropertiesMetrics =
   ImmutableStorageWithVersioningInput as any as S.Schema<ObjectReplicationPolicyPropertiesMetrics>;
 
 /** Optional. The object replication policy priority replication feature options. */
@@ -7258,7 +7232,7 @@ export interface ObjectReplicationPolicyPropertiesPriorityReplication {
   /** Indicates whether object replication priority replication feature is enabled for the policy. */
   enabled?: boolean;
 }
-export const ObjectReplicationPolicyPropertiesPriorityReplication =
+const ObjectReplicationPolicyPropertiesPriorityReplication =
   ImmutableStorageWithVersioningInput as any as S.Schema<ObjectReplicationPolicyPropertiesPriorityReplication>;
 
 /** Optional. The object replication policy tags replication feature options. */
@@ -7266,7 +7240,7 @@ export interface ObjectReplicationPolicyPropertiesTagsReplication {
   /** Indicates whether object replication tags replication feature is enabled for the policy. */
   enabled?: boolean;
 }
-export const ObjectReplicationPolicyPropertiesTagsReplication =
+const ObjectReplicationPolicyPropertiesTagsReplication =
   ImmutableStorageWithVersioningInput as any as S.Schema<ObjectReplicationPolicyPropertiesTagsReplication>;
 
 /** The Storage Account ObjectReplicationPolicy properties. */
@@ -7288,7 +7262,7 @@ export interface ObjectReplicationPolicyProperties {
   /** Optional. The object replication policy tags replication feature options. */
   tagsReplication?: ObjectReplicationPolicyPropertiesTagsReplication;
 }
-export const ObjectReplicationPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.optional(S.String),
     enabledTime: S.optional(S.String),
@@ -7315,7 +7289,7 @@ export interface GetObjectReplicationPolicyResponse {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyProperties;
 }
-export const GetObjectReplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetObjectReplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7337,7 +7311,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7367,7 +7341,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetQueueRequest {
@@ -7380,7 +7354,7 @@ export interface GetQueueRequest {
   /** A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters. */
   queueName: string;
 }
-export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7408,7 +7382,7 @@ export interface GetQueueResponse {
   /** Queue resource properties. */
   properties?: QueueProperties;
 }
-export const GetQueueResponse = CreateQueueResponse as any as S.Schema<GetQueueResponse>;
+const GetQueueResponse = CreateQueueResponse as any as S.Schema<GetQueueResponse>;
 
 export interface GetQueueServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7418,7 +7392,7 @@ export interface GetQueueServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const GetQueueServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueueServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7440,7 +7414,7 @@ export interface QueueServicePropertiesProperties {
   /** Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service. */
   cors?: CorsRules;
 }
-export const QueueServicePropertiesProperties = /*@__PURE__*/ S.suspend(() =>
+const QueueServicePropertiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cors: S.optional(CorsRules),
   }),
@@ -7460,7 +7434,7 @@ export interface GetQueueServiceServicePropertiesResponse {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
-export const GetQueueServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQueueServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7473,7 +7447,7 @@ export const GetQueueServiceServicePropertiesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetQueueServiceServicePropertiesResponse>;
 
 export type GetStorageAccountCustomerInitiatedMigrationRequestMigrationName = "default";
-export const GetStorageAccountCustomerInitiatedMigrationRequestMigrationName = S.String;
+const GetStorageAccountCustomerInitiatedMigrationRequestMigrationName = S.String;
 
 export interface GetStorageAccountCustomerInitiatedMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7485,7 +7459,7 @@ export interface GetStorageAccountCustomerInitiatedMigrationRequest {
   /** The name of the Storage Account Migration. It should always be 'default' */
   migrationName: GetStorageAccountCustomerInitiatedMigrationRequestMigrationName | (string & {});
 }
-export const GetStorageAccountCustomerInitiatedMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountCustomerInitiatedMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7510,7 +7484,7 @@ export type MigrationStatus =
   | "InProgress"
   | "Complete"
   | "Failed";
-export const MigrationStatus = S.String;
+const MigrationStatus = S.String;
 
 /** The properties of a storage account's ongoing or enqueued migration. */
 export interface StorageAccountMigrationProperties {
@@ -7523,7 +7497,7 @@ export interface StorageAccountMigrationProperties {
   /** Reason for migration failure */
   migrationFailedDetailedReason?: string;
 }
-export const StorageAccountMigrationProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountMigrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSkuName: SkuName,
     migrationStatus: S.optional(MigrationStatus),
@@ -7546,7 +7520,7 @@ export interface GetStorageAccountCustomerInitiatedMigrationResponse {
   /** The properties of a storage account's ongoing or enqueued migration. */
   properties: StorageAccountMigrationProperties;
 }
-export const GetStorageAccountCustomerInitiatedMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountCustomerInitiatedMigrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7559,7 +7533,7 @@ export const GetStorageAccountCustomerInitiatedMigrationResponse = /*@__PURE__*/
 }) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationResponse>;
 
 export type GetStorageAccountPropertiesRequestExpand = "geoReplicationStats" | "blobRestoreStatus";
-export const GetStorageAccountPropertiesRequestExpand = S.String;
+const GetStorageAccountPropertiesRequestExpand = S.String;
 
 export interface GetStorageAccountPropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7571,7 +7545,7 @@ export interface GetStorageAccountPropertiesRequest {
   /** May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus. */
   _expand?: GetStorageAccountPropertiesRequestExpand | (string & {});
 }
-export const GetStorageAccountPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7591,14 +7565,8 @@ export const GetStorageAccountPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStorageAccountPropertiesResponseTagsMap = { [key: string]: string | undefined };
-export const GetStorageAccountPropertiesResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<GetStorageAccountPropertiesResponseTagsMap>;
-
 /** The availability zones. */
 export type GetStorageAccountPropertiesResponseZonesList = Array<string>;
-export const GetStorageAccountPropertiesResponseZonesList =
-  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<GetStorageAccountPropertiesResponseZonesList>;
-
 export interface GetStorageAccountPropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7627,7 +7595,7 @@ export interface GetStorageAccountPropertiesResponse {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
-export const GetStorageAccountPropertiesResponse =
+const GetStorageAccountPropertiesResponse =
   CreateStorageAccountResponse as any as S.Schema<GetStorageAccountPropertiesResponse>;
 
 export interface GetStorageTaskAssignmentRequest {
@@ -7640,7 +7608,7 @@ export interface GetStorageTaskAssignmentRequest {
   /** The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   storageTaskAssignmentName: string;
 }
-export const GetStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7670,7 +7638,7 @@ export interface GetStorageTaskAssignmentResponse {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
-export const GetStorageTaskAssignmentResponse =
+const GetStorageTaskAssignmentResponse =
   CreateStorageTaskAssignmentResponse as any as S.Schema<GetStorageTaskAssignmentResponse>;
 
 export interface GetTableRequest {
@@ -7683,7 +7651,7 @@ export interface GetTableRequest {
   /** A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character. */
   tableName: string;
 }
-export const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7711,7 +7679,7 @@ export interface GetTableResponse {
   /** Table resource properties. */
   properties?: TableProperties;
 }
-export const GetTableResponse = CreateTableResponse as any as S.Schema<GetTableResponse>;
+const GetTableResponse = CreateTableResponse as any as S.Schema<GetTableResponse>;
 
 export interface GetTableServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7721,7 +7689,7 @@ export interface GetTableServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const GetTableServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTableServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7743,7 +7711,7 @@ export interface TableServicePropertiesProperties {
   /** Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service. */
   cors?: CorsRules;
 }
-export const TableServicePropertiesProperties =
+const TableServicePropertiesProperties =
   QueueServicePropertiesProperties as any as S.Schema<TableServicePropertiesProperties>;
 
 export interface GetTableServiceServicePropertiesResponse {
@@ -7758,7 +7726,7 @@ export interface GetTableServiceServicePropertiesResponse {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
-export const GetTableServiceServicePropertiesResponse =
+const GetTableServiceServicePropertiesResponse =
   GetQueueServiceServicePropertiesResponse as any as S.Schema<GetTableServiceServicePropertiesResponse>;
 
 export interface ListAdvancedPlatformMetricsRequest {
@@ -7769,7 +7737,7 @@ export interface ListAdvancedPlatformMetricsRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvancedPlatformMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7799,12 +7767,12 @@ export interface AdvancedPlatformMetricsRule {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRuleProperties;
 }
-export const AdvancedPlatformMetricsRule =
+const AdvancedPlatformMetricsRule =
   AdvancedPlatformMetricsCreateOrUpdateResponse as any as S.Schema<AdvancedPlatformMetricsRule>;
 
 /** The AdvancedPlatformMetricsRule items on this page */
 export type AdvancedPlatformMetricsRuleListResultValueList = Array<AdvancedPlatformMetricsRule>;
-export const AdvancedPlatformMetricsRuleListResultValueList = /*@__PURE__*/ S.Array(
+const AdvancedPlatformMetricsRuleListResultValueList = /*@__PURE__*/ S.Array(
   AdvancedPlatformMetricsRule,
 ) as any as S.Schema<AdvancedPlatformMetricsRuleListResultValueList>;
 
@@ -7815,7 +7783,7 @@ export interface AdvancedPlatformMetricsRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AdvancedPlatformMetricsRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const AdvancedPlatformMetricsRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AdvancedPlatformMetricsRuleListResultValueList,
     nextLink: S.optional(S.String),
@@ -7832,7 +7800,7 @@ export interface ListBlobAccessPointConfigurationByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListBlobAccessPointConfigurationByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlobAccessPointConfigurationByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7851,9 +7819,6 @@ export const ListBlobAccessPointConfigurationByStorageAccountRequest = /*@__PURE
 
 /** Resource tags. */
 export type BlobAccessPointConfigurationTagsMap = { [key: string]: string | undefined };
-export const BlobAccessPointConfigurationTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<BlobAccessPointConfigurationTagsMap>;
-
 /** A BlobAccessPointConfiguration is a tracked Azure resource modeled as a sub-resource of a Storage Account. */
 export interface BlobAccessPointConfiguration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7871,12 +7836,12 @@ export interface BlobAccessPointConfiguration {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
-export const BlobAccessPointConfiguration =
+const BlobAccessPointConfiguration =
   CreateBlobAccessPointConfigurationResponse as any as S.Schema<BlobAccessPointConfiguration>;
 
 /** The BlobAccessPointConfiguration items on this page */
 export type BlobAccessPointConfigurationListResultValueList = Array<BlobAccessPointConfiguration>;
-export const BlobAccessPointConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const BlobAccessPointConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   BlobAccessPointConfiguration,
 ) as any as S.Schema<BlobAccessPointConfigurationListResultValueList>;
 
@@ -7887,7 +7852,7 @@ export interface BlobAccessPointConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const BlobAccessPointConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: BlobAccessPointConfigurationListResultValueList,
     nextLink: S.optional(S.String),
@@ -7897,7 +7862,7 @@ export const BlobAccessPointConfigurationListResult = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<BlobAccessPointConfigurationListResult>;
 
 export type ListBlobContainersRequestInclude = "deleted";
-export const ListBlobContainersRequestInclude = S.String;
+const ListBlobContainersRequestInclude = S.String;
 
 export interface ListBlobContainersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7913,7 +7878,7 @@ export interface ListBlobContainersRequest {
   /** Optional, used to include the properties for soft deleted blob containers. */
   _include?: ListBlobContainersRequestInclude | (string & {});
 }
-export const ListBlobContainersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlobContainersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7948,7 +7913,7 @@ export interface ListContainerItem {
   /** The blob container properties be listed out. */
   properties?: ContainerProperties;
 }
-export const ListContainerItem = /*@__PURE__*/ S.suspend(() =>
+const ListContainerItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7961,7 +7926,7 @@ export const ListContainerItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The ListContainerItem items on this page */
 export type ListContainerItemsValueList = Array<ListContainerItem>;
-export const ListContainerItemsValueList = /*@__PURE__*/ S.Array(
+const ListContainerItemsValueList = /*@__PURE__*/ S.Array(
   ListContainerItem,
 ) as any as S.Schema<ListContainerItemsValueList>;
 
@@ -7972,7 +7937,7 @@ export interface ListContainerItems {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListContainerItems = /*@__PURE__*/ S.suspend(() =>
+const ListContainerItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListContainerItemsValueList,
     nextLink: S.optional(S.String),
@@ -7987,7 +7952,7 @@ export interface ListBlobInventoryPoliciesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListBlobInventoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlobInventoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8017,7 +7982,7 @@ export interface BlobInventoryPolicy {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyProperties;
 }
-export const BlobInventoryPolicy = /*@__PURE__*/ S.suspend(() =>
+const BlobInventoryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8029,7 +7994,7 @@ export const BlobInventoryPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of blob inventory policies. */
 export type ListBlobInventoryPolicyValueList = Array<BlobInventoryPolicy>;
-export const ListBlobInventoryPolicyValueList = /*@__PURE__*/ S.Array(
+const ListBlobInventoryPolicyValueList = /*@__PURE__*/ S.Array(
   BlobInventoryPolicy,
 ) as any as S.Schema<ListBlobInventoryPolicyValueList>;
 
@@ -8039,7 +8004,7 @@ export interface ListBlobInventoryPolicy {
   value?: ListBlobInventoryPolicyValueList;
   nextLink?: string;
 }
-export const ListBlobInventoryPolicy = /*@__PURE__*/ S.suspend(() =>
+const ListBlobInventoryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListBlobInventoryPolicyValueList),
     nextLink: S.optional(S.String),
@@ -8054,7 +8019,7 @@ export interface ListBlobServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListBlobServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlobServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8084,7 +8049,7 @@ export interface BlobServiceProperties {
   /** Sku name and tier. */
   sku?: Sku;
 }
-export const BlobServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const BlobServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8097,7 +8062,7 @@ export const BlobServiceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of blob services returned. */
 export type BlobServiceItemsValueList = Array<BlobServiceProperties>;
-export const BlobServiceItemsValueList = /*@__PURE__*/ S.Array(
+const BlobServiceItemsValueList = /*@__PURE__*/ S.Array(
   BlobServiceProperties,
 ) as any as S.Schema<BlobServiceItemsValueList>;
 
@@ -8106,7 +8071,7 @@ export interface BlobServiceItems {
   value?: BlobServiceItemsValueList;
   nextLink?: string;
 }
-export const BlobServiceItems = /*@__PURE__*/ S.suspend(() =>
+const BlobServiceItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(BlobServiceItemsValueList),
     nextLink: S.optional(S.String),
@@ -8121,7 +8086,7 @@ export interface ListConnectorByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListConnectorByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8140,9 +8105,6 @@ export const ListConnectorByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ConnectorTagsMap = { [key: string]: string | undefined };
-export const ConnectorTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ConnectorTagsMap>;
-
 /** A Connector is a tracked ARM resource modeled as a sub-resource of a Storage Account. */
 export interface Connector {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8160,11 +8122,11 @@ export interface Connector {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
-export const Connector = CreateConnectorResponse as any as S.Schema<Connector>;
+const Connector = CreateConnectorResponse as any as S.Schema<Connector>;
 
 /** The Connector items on this page */
 export type ConnectorListResultValueList = Array<Connector>;
-export const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
+const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorListResultValueList>;
 
@@ -8175,7 +8137,7 @@ export interface ConnectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectorListResult = /*@__PURE__*/ S.suspend(() =>
+const ConnectorListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectorListResultValueList,
     nextLink: S.optional(S.String),
@@ -8188,7 +8150,7 @@ export interface ListContextCachByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListContextCachByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContextCachByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8206,13 +8168,8 @@ export const ListContextCachByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ContextCacheTagsMap = { [key: string]: string | undefined };
-export const ContextCacheTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextCacheTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ContextCacheIdentity = ContextCachesCreateOrUpdateResponseIdentity;
-export const ContextCacheIdentity = ContextCachesCreateOrUpdateResponseIdentity;
-
 /** A Context Cache resource */
 export interface ContextCache {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8232,11 +8189,11 @@ export interface ContextCache {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
-export const ContextCache = GetContextCachResponse as any as S.Schema<ContextCache>;
+const ContextCache = GetContextCachResponse as any as S.Schema<ContextCache>;
 
 /** The ContextCache items on this page */
 export type ContextCacheListResultValueList = Array<ContextCache>;
-export const ContextCacheListResultValueList = /*@__PURE__*/ S.Array(
+const ContextCacheListResultValueList = /*@__PURE__*/ S.Array(
   ContextCache,
 ) as any as S.Schema<ContextCacheListResultValueList>;
 
@@ -8247,7 +8204,7 @@ export interface ContextCacheListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContextCacheListResult = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContextCacheListResultValueList,
     nextLink: S.optional(S.String),
@@ -8258,7 +8215,7 @@ export interface ListContextCachBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListContextCachBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContextCachBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8281,7 +8238,7 @@ export interface ListContextCacheContainerByContextCacheRequest {
   /** The name of the context cache */
   contextCacheName: string;
 }
-export const ListContextCacheContainerByContextCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContextCacheContainerByContextCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8311,7 +8268,7 @@ export interface ContextCacheContainer {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
-export const ContextCacheContainer = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8323,7 +8280,7 @@ export const ContextCacheContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The ContextCacheContainer items on this page */
 export type ContextCacheContainerListResultValueList = Array<ContextCacheContainer>;
-export const ContextCacheContainerListResultValueList = /*@__PURE__*/ S.Array(
+const ContextCacheContainerListResultValueList = /*@__PURE__*/ S.Array(
   ContextCacheContainer,
 ) as any as S.Schema<ContextCacheContainerListResultValueList>;
 
@@ -8334,7 +8291,7 @@ export interface ContextCacheContainerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContextCacheContainerListResult = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContextCacheContainerListResultValueList,
     nextLink: S.optional(S.String),
@@ -8351,7 +8308,7 @@ export interface ListDataShareByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListDataShareByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataShareByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8370,9 +8327,6 @@ export const ListDataShareByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type DataShareTagsMap = { [key: string]: string | undefined };
-export const DataShareTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<DataShareTagsMap>;
-
 /** A DataShare is a tracked ARM resource modeled as a sub-resource of a Storage Account. */
 export interface DataShare {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8390,11 +8344,11 @@ export interface DataShare {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
-export const DataShare = CreateDataShareResponse as any as S.Schema<DataShare>;
+const DataShare = CreateDataShareResponse as any as S.Schema<DataShare>;
 
 /** The DataShare items on this page */
 export type DataShareListResultValueList = Array<DataShare>;
-export const DataShareListResultValueList = /*@__PURE__*/ S.Array(
+const DataShareListResultValueList = /*@__PURE__*/ S.Array(
   DataShare,
 ) as any as S.Schema<DataShareListResultValueList>;
 
@@ -8405,7 +8359,7 @@ export interface DataShareListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataShareListResult = /*@__PURE__*/ S.suspend(() =>
+const DataShareListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DataShareListResultValueList,
     nextLink: S.optional(S.String),
@@ -8416,7 +8370,7 @@ export interface ListDeletedAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListDeletedAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeletedAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8444,7 +8398,7 @@ export interface DeletedAccount {
   /** Properties of the deleted account. */
   properties?: DeletedAccountProperties;
 }
-export const DeletedAccount = /*@__PURE__*/ S.suspend(() =>
+const DeletedAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8456,7 +8410,7 @@ export const DeletedAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeletedAccount items on this page */
 export type DeletedAccountListResultValueList = Array<DeletedAccount>;
-export const DeletedAccountListResultValueList = /*@__PURE__*/ S.Array(
+const DeletedAccountListResultValueList = /*@__PURE__*/ S.Array(
   DeletedAccount,
 ) as any as S.Schema<DeletedAccountListResultValueList>;
 
@@ -8467,7 +8421,7 @@ export interface DeletedAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DeletedAccountListResult = /*@__PURE__*/ S.suspend(() =>
+const DeletedAccountListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DeletedAccountListResultValueList,
     nextLink: S.optional(S.String),
@@ -8475,7 +8429,7 @@ export const DeletedAccountListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedAccountListResult" }) as any as S.Schema<DeletedAccountListResult>;
 
 export type ListEncryptionScopesRequestInclude = "All" | "Enabled" | "Disabled";
-export const ListEncryptionScopesRequestInclude = S.String;
+const ListEncryptionScopesRequestInclude = S.String;
 
 export interface ListEncryptionScopesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8491,7 +8445,7 @@ export interface ListEncryptionScopesRequest {
   /** Optional, when specified, will list encryption scopes with the specific state. Defaults to All */
   _include?: ListEncryptionScopesRequestInclude | (string & {});
 }
-export const ListEncryptionScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEncryptionScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8524,7 +8478,7 @@ export interface EncryptionScope {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
-export const EncryptionScope = /*@__PURE__*/ S.suspend(() =>
+const EncryptionScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8536,7 +8490,7 @@ export const EncryptionScope = /*@__PURE__*/ S.suspend(() =>
 
 /** The EncryptionScope items on this page */
 export type EncryptionScopeListResultValueList = Array<EncryptionScope>;
-export const EncryptionScopeListResultValueList = /*@__PURE__*/ S.Array(
+const EncryptionScopeListResultValueList = /*@__PURE__*/ S.Array(
   EncryptionScope,
 ) as any as S.Schema<EncryptionScopeListResultValueList>;
 
@@ -8547,7 +8501,7 @@ export interface EncryptionScopeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EncryptionScopeListResult = /*@__PURE__*/ S.suspend(() =>
+const EncryptionScopeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EncryptionScopeListResultValueList,
     nextLink: S.optional(S.String),
@@ -8564,7 +8518,7 @@ export interface ListFileServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListFileServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8594,7 +8548,7 @@ export interface FileServiceProperties {
   /** Sku name and tier. */
   sku?: Sku;
 }
-export const FileServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const FileServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8607,7 +8561,7 @@ export const FileServiceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of file services returned. */
 export type FileServiceItemsValueList = Array<FileServiceProperties>;
-export const FileServiceItemsValueList = /*@__PURE__*/ S.Array(
+const FileServiceItemsValueList = /*@__PURE__*/ S.Array(
   FileServiceProperties,
 ) as any as S.Schema<FileServiceItemsValueList>;
 
@@ -8615,7 +8569,7 @@ export interface FileServiceItems {
   /** List of file services returned. */
   value?: FileServiceItemsValueList;
 }
-export const FileServiceItems = /*@__PURE__*/ S.suspend(() =>
+const FileServiceItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(FileServiceItemsValueList),
   }),
@@ -8631,7 +8585,7 @@ export interface ListFileServiceServiceUsagesRequest {
   /** Optional, specifies the maximum number of file service usages to be included in the list response. */
   _maxpagesize?: number;
 }
-export const ListFileServiceServiceUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileServiceServiceUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8662,7 +8616,7 @@ export interface FileServiceUsage {
   /** File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula. */
   properties?: FileServiceUsageProperties;
 }
-export const FileServiceUsage = /*@__PURE__*/ S.suspend(() =>
+const FileServiceUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8674,7 +8628,7 @@ export const FileServiceUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** The FileServiceUsage items on this page */
 export type FileServiceUsagesValueList = Array<FileServiceUsage>;
-export const FileServiceUsagesValueList = /*@__PURE__*/ S.Array(
+const FileServiceUsagesValueList = /*@__PURE__*/ S.Array(
   FileServiceUsage,
 ) as any as S.Schema<FileServiceUsagesValueList>;
 
@@ -8685,7 +8639,7 @@ export interface FileServiceUsages {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FileServiceUsages = /*@__PURE__*/ S.suspend(() =>
+const FileServiceUsages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FileServiceUsagesValueList,
     nextLink: S.optional(S.String),
@@ -8706,7 +8660,7 @@ export interface ListFileSharesRequest {
   /** Optional, used to expand the properties within share's properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter ',' */
   _expand?: string;
 }
-export const ListFileSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8739,7 +8693,7 @@ export interface FileShareItem {
   /** The file share properties be listed out. */
   properties?: FileShareProperties;
 }
-export const FileShareItem = /*@__PURE__*/ S.suspend(() =>
+const FileShareItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8752,7 +8706,7 @@ export const FileShareItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The FileShareItem items on this page */
 export type FileShareItemsValueList = Array<FileShareItem>;
-export const FileShareItemsValueList = /*@__PURE__*/ S.Array(
+const FileShareItemsValueList = /*@__PURE__*/ S.Array(
   FileShareItem,
 ) as any as S.Schema<FileShareItemsValueList>;
 
@@ -8763,7 +8717,7 @@ export interface FileShareItems {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FileShareItems = /*@__PURE__*/ S.suspend(() =>
+const FileShareItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FileShareItemsValueList,
     nextLink: S.optional(S.String),
@@ -8780,7 +8734,7 @@ export interface ListLocalUserKeysRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
-export const ListLocalUserKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocalUserKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8798,7 +8752,7 @@ export const ListLocalUserKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional, local user ssh authorized keys for SFTP. */
 export type LocalUserKeysSshAuthorizedKeysList = Array<SshPublicKey>;
-export const LocalUserKeysSshAuthorizedKeysList =
+const LocalUserKeysSshAuthorizedKeysList =
   LocalUserPropertiesSshAuthorizedKeysList as any as S.Schema<LocalUserKeysSshAuthorizedKeysList>;
 
 /** The Storage Account Local User keys. */
@@ -8808,7 +8762,7 @@ export interface LocalUserKeys {
   /** Auto generated by the server for SMB authentication. */
   sharedKey?: string;
 }
-export const LocalUserKeys = /*@__PURE__*/ S.suspend(() =>
+const LocalUserKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshAuthorizedKeys: S.optional(LocalUserKeysSshAuthorizedKeysList),
     sharedKey: S.optional(S.String),
@@ -8816,7 +8770,7 @@ export const LocalUserKeys = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalUserKeys" }) as any as S.Schema<LocalUserKeys>;
 
 export type ListLocalUsersRequestInclude = "nfsv3";
-export const ListLocalUsersRequestInclude = S.String;
+const ListLocalUsersRequestInclude = S.String;
 
 export interface ListLocalUsersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8832,7 +8786,7 @@ export interface ListLocalUsersRequest {
   /** Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default. */
   _include?: ListLocalUsersRequestInclude | (string & {});
 }
-export const ListLocalUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocalUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8863,11 +8817,11 @@ export interface LocalUser {
   /** Storage account local user properties. */
   properties?: LocalUserProperties;
 }
-export const LocalUser = GetLocalUserResponse as any as S.Schema<LocalUser>;
+const LocalUser = GetLocalUserResponse as any as S.Schema<LocalUser>;
 
 /** The LocalUser items on this page */
 export type LocalUsersValueList = Array<LocalUser>;
-export const LocalUsersValueList = /*@__PURE__*/ S.Array(
+const LocalUsersValueList = /*@__PURE__*/ S.Array(
   LocalUser,
 ) as any as S.Schema<LocalUsersValueList>;
 
@@ -8878,7 +8832,7 @@ export interface LocalUsers {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const LocalUsers = /*@__PURE__*/ S.suspend(() =>
+const LocalUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LocalUsersValueList,
     nextLink: S.optional(S.String),
@@ -8893,7 +8847,7 @@ export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListNetworkSecurityPerimeterConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkSecurityPerimeterConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8923,13 +8877,13 @@ export interface NetworkSecurityPerimeterConfiguration {
   /** Properties of the Network Security Perimeter Configuration */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const NetworkSecurityPerimeterConfiguration =
+const NetworkSecurityPerimeterConfiguration =
   GetNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListValueList =
   Array<NetworkSecurityPerimeterConfiguration>;
-export const NetworkSecurityPerimeterConfigurationListValueList = /*@__PURE__*/ S.Array(
+const NetworkSecurityPerimeterConfigurationListValueList = /*@__PURE__*/ S.Array(
   NetworkSecurityPerimeterConfiguration,
 ) as any as S.Schema<NetworkSecurityPerimeterConfigurationListValueList>;
 
@@ -8940,7 +8894,7 @@ export interface NetworkSecurityPerimeterConfigurationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const NetworkSecurityPerimeterConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: NetworkSecurityPerimeterConfigurationListValueList,
     nextLink: S.optional(S.String),
@@ -8957,7 +8911,7 @@ export interface ListObjectReplicationPoliciesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListObjectReplicationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListObjectReplicationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8987,7 +8941,7 @@ export interface ObjectReplicationPolicy {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyProperties;
 }
-export const ObjectReplicationPolicy = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8999,7 +8953,7 @@ export const ObjectReplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The replication policy between two storage accounts. */
 export type ObjectReplicationPoliciesValueList = Array<ObjectReplicationPolicy>;
-export const ObjectReplicationPoliciesValueList = /*@__PURE__*/ S.Array(
+const ObjectReplicationPoliciesValueList = /*@__PURE__*/ S.Array(
   ObjectReplicationPolicy,
 ) as any as S.Schema<ObjectReplicationPoliciesValueList>;
 
@@ -9009,7 +8963,7 @@ export interface ObjectReplicationPolicies {
   value?: ObjectReplicationPoliciesValueList;
   nextLink?: string;
 }
-export const ObjectReplicationPolicies = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ObjectReplicationPoliciesValueList),
     nextLink: S.optional(S.String),
@@ -9019,7 +8973,7 @@ export const ObjectReplicationPolicies = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectReplicationPolicies>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -9041,7 +8995,7 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -9057,7 +9011,7 @@ export interface Dimension {
   /** Display name of dimension. */
   displayName?: string;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -9066,7 +9020,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Dimensions of blobs, including blob type and access tier. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -9091,7 +9045,7 @@ export interface MetricSpecification {
   /** Account Resource Id. */
   resourceIdDimensionNameOverride?: string;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -9107,7 +9061,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -9116,7 +9070,7 @@ export interface ServiceSpecification {
   /** Metric specifications of operation. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
   }),
@@ -9127,7 +9081,7 @@ export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -9144,7 +9098,7 @@ export interface Operation {
   /** Properties of operation, include metric specifications. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -9155,7 +9109,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -9165,7 +9119,7 @@ export interface OperationListResult {
   value?: OperationListResultValueList;
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -9180,7 +9134,7 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9199,7 +9153,7 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   StorageAccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** List of private endpoint connection associated with the specified storage account */
@@ -9208,7 +9162,7 @@ export interface PrivateEndpointConnectionListResult {
   value?: PrivateEndpointConnectionListResultValueList;
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -9225,7 +9179,7 @@ export interface ListPrivateLinkResourceByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListPrivateLinkResourceByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9244,12 +9198,12 @@ export const ListPrivateLinkResourceByStorageAccountRequest = /*@__PURE__*/ S.su
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -9261,7 +9215,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -9284,7 +9238,7 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9296,7 +9250,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -9305,7 +9259,7 @@ export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceListResultValueList),
   }),
@@ -9325,7 +9279,7 @@ export interface ListQueueRequest {
   /** Optional, When specified, only the queues with a name starting with the given filter will be listed. */
   _filter?: string;
 }
-export const ListQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9344,14 +9298,11 @@ export const ListQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A name-value pair that represents queue metadata. */
 export type ListQueuePropertiesMetadataMap = { [key: string]: string | undefined };
-export const ListQueuePropertiesMetadataMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ListQueuePropertiesMetadataMap>;
-
 export interface ListQueueProperties {
   /** A name-value pair that represents queue metadata. */
   metadata?: ListQueuePropertiesMetadataMap;
 }
-export const ListQueueProperties = QueuePropertiesInput as any as S.Schema<ListQueueProperties>;
+const ListQueueProperties = QueuePropertiesInput as any as S.Schema<ListQueueProperties>;
 
 export interface ListQueue {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9365,7 +9316,7 @@ export interface ListQueue {
   /** List Queue resource properties. */
   properties?: ListQueueProperties;
 }
-export const ListQueue = /*@__PURE__*/ S.suspend(() =>
+const ListQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9377,7 +9328,7 @@ export const ListQueue = /*@__PURE__*/ S.suspend(() =>
 
 /** The ListQueue items on this page */
 export type ListQueueResourceValueList = Array<ListQueue>;
-export const ListQueueResourceValueList = /*@__PURE__*/ S.Array(
+const ListQueueResourceValueList = /*@__PURE__*/ S.Array(
   ListQueue,
 ) as any as S.Schema<ListQueueResourceValueList>;
 
@@ -9388,7 +9339,7 @@ export interface ListQueueResource {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListQueueResource = /*@__PURE__*/ S.suspend(() =>
+const ListQueueResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListQueueResourceValueList,
     nextLink: S.optional(S.String),
@@ -9403,7 +9354,7 @@ export interface ListQueueServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListQueueServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQueueServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9431,7 +9382,7 @@ export interface QueueServiceProperties {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
-export const QueueServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const QueueServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9443,7 +9394,7 @@ export const QueueServiceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of queue services returned. */
 export type ListQueueServicesValueList = Array<QueueServiceProperties>;
-export const ListQueueServicesValueList = /*@__PURE__*/ S.Array(
+const ListQueueServicesValueList = /*@__PURE__*/ S.Array(
   QueueServiceProperties,
 ) as any as S.Schema<ListQueueServicesValueList>;
 
@@ -9451,7 +9402,7 @@ export interface ListQueueServices {
   /** List of queue services returned. */
   value?: ListQueueServicesValueList;
 }
-export const ListQueueServices = /*@__PURE__*/ S.suspend(() =>
+const ListQueueServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListQueueServicesValueList),
   }),
@@ -9461,7 +9412,7 @@ export interface ListSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9476,12 +9427,12 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
 export type SkuInformationLocationsList = Array<string>;
-export const SkuInformationLocationsList =
+const SkuInformationLocationsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<SkuInformationLocationsList>;
 
 /** Describes the available zones for the product where storage account resource can be created. */
 export type SkuInformationLocationInfoItemZonesList = Array<string>;
-export const SkuInformationLocationInfoItemZonesList =
+const SkuInformationLocationInfoItemZonesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<SkuInformationLocationInfoItemZonesList>;
 
 export interface SkuInformationLocationInfoItem {
@@ -9490,7 +9441,7 @@ export interface SkuInformationLocationInfoItem {
   /** Describes the available zones for the product where storage account resource can be created. */
   zones?: SkuInformationLocationInfoItemZonesList;
 }
-export const SkuInformationLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
+const SkuInformationLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     zones: S.optional(SkuInformationLocationInfoItemZonesList),
@@ -9500,7 +9451,7 @@ export const SkuInformationLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuInformationLocationInfoItem>;
 
 export type SkuInformationLocationInfoList = Array<SkuInformationLocationInfoItem>;
-export const SkuInformationLocationInfoList = /*@__PURE__*/ S.Array(
+const SkuInformationLocationInfoList = /*@__PURE__*/ S.Array(
   SkuInformationLocationInfoItem,
 ) as any as S.Schema<SkuInformationLocationInfoList>;
 
@@ -9511,7 +9462,7 @@ export interface SKUCapability {
   /** A string value to indicate states of given capability. Possibly 'true' or 'false'. */
   value?: string;
 }
-export const SKUCapability = /*@__PURE__*/ S.suspend(() =>
+const SKUCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -9520,18 +9471,18 @@ export const SKUCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc. */
 export type SkuInformationCapabilitiesList = Array<SKUCapability>;
-export const SkuInformationCapabilitiesList = /*@__PURE__*/ S.Array(
+const SkuInformationCapabilitiesList = /*@__PURE__*/ S.Array(
   SKUCapability,
 ) as any as S.Schema<SkuInformationCapabilitiesList>;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type RestrictionValuesList = Array<string>;
-export const RestrictionValuesList =
+const RestrictionValuesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<RestrictionValuesList>;
 
 /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC. */
 export type ReasonCode = "QuotaId" | "NotAvailableForSubscription";
-export const ReasonCode = S.String;
+const ReasonCode = S.String;
 
 /** The restriction because of which SKU cannot be used. */
 export interface Restriction {
@@ -9542,7 +9493,7 @@ export interface Restriction {
   /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC. */
   reasonCode?: ReasonCode;
 }
-export const Restriction = /*@__PURE__*/ S.suspend(() =>
+const Restriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     values: S.optional(RestrictionValuesList),
@@ -9552,7 +9503,7 @@ export const Restriction = /*@__PURE__*/ S.suspend(() =>
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
 export type SkuInformationRestrictionsList = Array<Restriction>;
-export const SkuInformationRestrictionsList = /*@__PURE__*/ S.Array(
+const SkuInformationRestrictionsList = /*@__PURE__*/ S.Array(
   Restriction,
 ) as any as S.Schema<SkuInformationRestrictionsList>;
 
@@ -9574,7 +9525,7 @@ export interface SkuInformation {
   /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
   restrictions?: SkuInformationRestrictionsList;
 }
-export const SkuInformation = /*@__PURE__*/ S.suspend(() =>
+const SkuInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
     tier: S.optional(SkuTier),
@@ -9589,7 +9540,7 @@ export const SkuInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Get the list result of storage SKUs and their properties. */
 export type StorageSkuListResultValueList = Array<SkuInformation>;
-export const StorageSkuListResultValueList = /*@__PURE__*/ S.Array(
+const StorageSkuListResultValueList = /*@__PURE__*/ S.Array(
   SkuInformation,
 ) as any as S.Schema<StorageSkuListResultValueList>;
 
@@ -9599,7 +9550,7 @@ export interface StorageSkuListResult {
   value?: StorageSkuListResultValueList;
   nextLink?: string;
 }
-export const StorageSkuListResult = /*@__PURE__*/ S.suspend(() =>
+const StorageSkuListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(StorageSkuListResultValueList),
     nextLink: S.optional(S.String),
@@ -9608,19 +9559,19 @@ export const StorageSkuListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f). */
 export type Services = "b" | "q" | "t" | "f";
-export const Services = S.String;
+const Services = S.String;
 
 /** The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files. */
 export type SignedResourceTypes = "s" | "c" | "o";
-export const SignedResourceTypes = S.String;
+const SignedResourceTypes = S.String;
 
 /** The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p). */
 export type Permissions = "r" | "d" | "w" | "l" | "a" | "c" | "u" | "p";
-export const Permissions = S.String;
+const Permissions = S.String;
 
 /** The protocol permitted for a request made with the account SAS. */
 export type HttpProtocol = "https,http" | "https";
-export const HttpProtocol = S.String;
+const HttpProtocol = S.String;
 
 export interface ListStorageAccountAccountSASRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9646,7 +9597,7 @@ export interface ListStorageAccountAccountSASRequest {
   /** The key to sign the account SAS token with. */
   keyToSign?: string;
 }
-export const ListStorageAccountAccountSASRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountAccountSASRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9676,7 +9627,7 @@ export interface ListAccountSasResponse {
   /** List SAS credentials of storage account. */
   accountSasToken?: string;
 }
-export const ListAccountSasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountSasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountSasToken: S.optional(S.String),
   }),
@@ -9688,7 +9639,7 @@ export interface ListStorageAccountByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStorageAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9706,12 +9657,12 @@ export const ListStorageAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type StorageAccountTagsMap = { [key: string]: string | undefined };
-export const StorageAccountTagsMap =
+const StorageAccountTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageAccountTagsMap>;
 
 /** The availability zones. */
 export type StorageAccountZonesList = Array<string>;
-export const StorageAccountZonesList =
+const StorageAccountZonesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<StorageAccountZonesList>;
 
 /** The storage account. */
@@ -9743,7 +9694,7 @@ export interface StorageAccount {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
-export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
+const StorageAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9763,7 +9714,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageAccount items on this page */
 export type StorageAccountListResultValueList = Array<StorageAccount>;
-export const StorageAccountListResultValueList = /*@__PURE__*/ S.Array(
+const StorageAccountListResultValueList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageAccountListResultValueList>;
 
@@ -9774,7 +9725,7 @@ export interface StorageAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageAccountListResult = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageAccountListResultValueList,
     nextLink: S.optional(S.String),
@@ -9782,7 +9733,7 @@ export const StorageAccountListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccountListResult" }) as any as S.Schema<StorageAccountListResult>;
 
 export type ListStorageAccountKeysRequestExpand = "kerb";
-export const ListStorageAccountKeysRequestExpand = S.String;
+const ListStorageAccountKeysRequestExpand = S.String;
 
 export interface ListStorageAccountKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9794,7 +9745,7 @@ export interface ListStorageAccountKeysRequest {
   /** Specifies type of the key to be listed. Possible value is kerb. */
   _expand?: ListStorageAccountKeysRequestExpand | (string & {});
 }
-export const ListStorageAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9814,7 +9765,7 @@ export const ListStorageAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Permissions for the key -- read-only or full permissions. */
 export type KeyPermission = "Read" | "Full";
-export const KeyPermission = S.String;
+const KeyPermission = S.String;
 
 /** An access key for the storage account. */
 export interface StorageAccountKey {
@@ -9827,7 +9778,7 @@ export interface StorageAccountKey {
   /** Creation time of the key, in round trip date format. */
   creationTime?: string;
 }
-export const StorageAccountKey = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.optional(S.String),
     value: S.optional(S.String),
@@ -9838,7 +9789,7 @@ export const StorageAccountKey = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of storage account keys and their properties for the specified storage account. */
 export type StorageAccountListKeysResultKeysList = Array<StorageAccountKey>;
-export const StorageAccountListKeysResultKeysList = /*@__PURE__*/ S.Array(
+const StorageAccountListKeysResultKeysList = /*@__PURE__*/ S.Array(
   StorageAccountKey,
 ) as any as S.Schema<StorageAccountListKeysResultKeysList>;
 
@@ -9847,7 +9798,7 @@ export interface StorageAccountListKeysResult {
   /** Gets the list of storage account keys and their properties for the specified storage account. */
   keys?: StorageAccountListKeysResultKeysList;
 }
-export const StorageAccountListKeysResult = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountListKeysResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(StorageAccountListKeysResultKeysList),
   }),
@@ -9859,7 +9810,7 @@ export interface ListStorageAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListStorageAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9876,7 +9827,7 @@ export const ListStorageAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s). */
 export type SignedResource = "b" | "c" | "f" | "s";
-export const SignedResource = S.String;
+const SignedResource = S.String;
 
 export interface ListStorageAccountServiceSASRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9922,7 +9873,7 @@ export interface ListStorageAccountServiceSASRequest {
   /** The response header override for content type. */
   rsct?: string;
 }
-export const ListStorageAccountServiceSASRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountServiceSASRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9962,7 +9913,7 @@ export interface ListServiceSasResponse {
   /** List service SAS credentials of specific resource. */
   serviceSasToken?: string;
 }
-export const ListServiceSasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceSasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSasToken: S.optional(S.String),
   }),
@@ -9982,7 +9933,7 @@ export interface ListStorageTaskAssignmentInstancesReportRequest {
   /** Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details. */
   _filter?: string;
 }
-export const ListStorageTaskAssignmentInstancesReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageTaskAssignmentInstancesReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10015,7 +9966,7 @@ export interface StorageTaskReportInstance {
   /** Storage task execution report for a run instance. */
   properties?: StorageTaskReportProperties;
 }
-export const StorageTaskReportInstance = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskReportInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10029,7 +9980,7 @@ export const StorageTaskReportInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageTaskReportInstance items on this page */
 export type StorageTaskReportSummaryValueList = Array<StorageTaskReportInstance>;
-export const StorageTaskReportSummaryValueList = /*@__PURE__*/ S.Array(
+const StorageTaskReportSummaryValueList = /*@__PURE__*/ S.Array(
   StorageTaskReportInstance,
 ) as any as S.Schema<StorageTaskReportSummaryValueList>;
 
@@ -10040,7 +9991,7 @@ export interface StorageTaskReportSummary {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageTaskReportSummary = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskReportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageTaskReportSummaryValueList,
     nextLink: S.optional(S.String),
@@ -10057,7 +10008,7 @@ export interface ListStorageTaskAssignmentsRequest {
   /** Optional, specifies the maximum number of storage task assignment Ids to be included in the list response. */
   _top?: number;
 }
-export const ListStorageTaskAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageTaskAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10088,7 +10039,7 @@ export interface StorageTaskAssignment {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
-export const StorageTaskAssignment = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10100,7 +10051,7 @@ export const StorageTaskAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageTaskAssignment items on this page */
 export type StorageTaskAssignmentsListValueList = Array<StorageTaskAssignment>;
-export const StorageTaskAssignmentsListValueList = /*@__PURE__*/ S.Array(
+const StorageTaskAssignmentsListValueList = /*@__PURE__*/ S.Array(
   StorageTaskAssignment,
 ) as any as S.Schema<StorageTaskAssignmentsListValueList>;
 
@@ -10111,7 +10062,7 @@ export interface StorageTaskAssignmentsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageTaskAssignmentsList = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageTaskAssignmentsListValueList,
     nextLink: S.optional(S.String),
@@ -10132,7 +10083,7 @@ export interface ListStorageTaskAssignmentsInstancesReportRequest {
   /** Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details. */
   _filter?: string;
 }
-export const ListStorageTaskAssignmentsInstancesReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageTaskAssignmentsInstancesReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10159,7 +10110,7 @@ export interface ListTableRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListTableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10187,11 +10138,11 @@ export interface Table {
   /** Table resource properties. */
   properties?: TableProperties;
 }
-export const Table = CreateTableResponse as any as S.Schema<Table>;
+const Table = CreateTableResponse as any as S.Schema<Table>;
 
 /** The Table items on this page */
 export type ListTableResourceValueList = Array<Table>;
-export const ListTableResourceValueList = /*@__PURE__*/ S.Array(
+const ListTableResourceValueList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<ListTableResourceValueList>;
 
@@ -10202,7 +10153,7 @@ export interface ListTableResource {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListTableResource = /*@__PURE__*/ S.suspend(() =>
+const ListTableResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListTableResourceValueList,
     nextLink: S.optional(S.String),
@@ -10217,7 +10168,7 @@ export interface ListTableServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const ListTableServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTableServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10245,19 +10196,13 @@ export interface TableServiceProperties {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
-export const TableServiceProperties =
-  QueueServiceProperties as any as S.Schema<TableServiceProperties>;
-
 /** List of table services returned. */
 export type ListTableServicesValueList = Array<TableServiceProperties>;
-export const ListTableServicesValueList =
-  ListQueueServicesValueList as any as S.Schema<ListTableServicesValueList>;
-
 export interface ListTableServices {
   /** List of table services returned. */
   value?: ListTableServicesValueList;
 }
-export const ListTableServices = ListQueueServices as any as S.Schema<ListTableServices>;
+const ListTableServices = ListQueueServices as any as S.Schema<ListTableServices>;
 
 export interface ListUsageByLocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10265,7 +10210,7 @@ export interface ListUsageByLocationRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -10289,7 +10234,7 @@ export type UsageUnit =
   | "Percent"
   | "CountsPerSecond"
   | "BytesPerSecond";
-export const UsageUnit = S.String;
+const UsageUnit = S.String;
 
 /** The usage names that can be used; currently limited to StorageAccount. */
 export interface UsageName {
@@ -10298,7 +10243,7 @@ export interface UsageName {
   /** Gets a localized string describing the resource name. */
   localizedValue?: string;
 }
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
+const UsageName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -10316,7 +10261,7 @@ export interface Usage {
   /** Gets the name of the type of usage. */
   name?: UsageName;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(UsageUnit),
     currentValue: S.optional(S.Number),
@@ -10327,7 +10272,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of Storage Resource Usages. */
 export type UsageListResultValueList = Array<Usage>;
-export const UsageListResultValueList = /*@__PURE__*/ S.Array(
+const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
 
@@ -10337,7 +10282,7 @@ export interface UsageListResult {
   value?: UsageListResultValueList;
   nextLink?: string;
 }
-export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
+const UsageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsageListResultValueList),
     nextLink: S.optional(S.String),
@@ -10346,17 +10291,17 @@ export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission scopes of the local user. */
 export type LocalUserPropertiesInputPermissionScopesList = Array<PermissionScope>;
-export const LocalUserPropertiesInputPermissionScopesList =
+const LocalUserPropertiesInputPermissionScopesList =
   LocalUserPropertiesPermissionScopesList as any as S.Schema<LocalUserPropertiesInputPermissionScopesList>;
 
 /** Optional, local user ssh authorized keys for SFTP. */
 export type LocalUserPropertiesInputSshAuthorizedKeysList = Array<SshPublicKey>;
-export const LocalUserPropertiesInputSshAuthorizedKeysList =
+const LocalUserPropertiesInputSshAuthorizedKeysList =
   LocalUserPropertiesSshAuthorizedKeysList as any as S.Schema<LocalUserPropertiesInputSshAuthorizedKeysList>;
 
 /** Supplementary group membership. Only applicable for local users enabled for NFSv3 access. */
 export type LocalUserPropertiesInputExtendedGroupsList = Array<number>;
-export const LocalUserPropertiesInputExtendedGroupsList =
+const LocalUserPropertiesInputExtendedGroupsList =
   LocalUserPropertiesExtendedGroupsList as any as S.Schema<LocalUserPropertiesInputExtendedGroupsList>;
 
 /** The Storage Account Local User properties. */
@@ -10382,7 +10327,7 @@ export interface LocalUserPropertiesInput {
   /** Indicates if the local user is enabled for access with NFSv3 protocol. */
   isNFSv3Enabled?: boolean;
 }
-export const LocalUserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LocalUserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionScopes: S.optional(LocalUserPropertiesInputPermissionScopesList),
     homeDirectory: S.optional(S.String),
@@ -10409,7 +10354,7 @@ export interface LocalUsersCreateOrUpdateRequest {
   /** Storage account local user properties. */
   properties?: LocalUserPropertiesInput;
 }
-export const LocalUsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LocalUsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10440,7 +10385,7 @@ export interface LocalUsersCreateOrUpdateResponse {
   /** Storage account local user properties. */
   properties?: LocalUserProperties;
 }
-export const LocalUsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const LocalUsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10462,7 +10407,7 @@ export interface LockBlobContainerImmutabilityPolicyRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
-export const LockBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const LockBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10494,18 +10439,18 @@ export interface LockBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const LockBlobContainerImmutabilityPolicyResponse =
+const LockBlobContainerImmutabilityPolicyResponse =
   BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<LockBlobContainerImmutabilityPolicyResponse>;
 
 export type ManagementPoliciesCreateOrUpdateRequestManagementPolicyName = "default";
-export const ManagementPoliciesCreateOrUpdateRequestManagementPolicyName = S.String;
+const ManagementPoliciesCreateOrUpdateRequestManagementPolicyName = S.String;
 
 /** The Storage Account ManagementPolicy properties. */
 export interface ManagementPolicyPropertiesInput {
   /** The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
   policy: ManagementPolicySchema;
 }
-export const ManagementPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ManagementPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: ManagementPolicySchema,
   }),
@@ -10525,7 +10470,7 @@ export interface ManagementPoliciesCreateOrUpdateRequest {
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyPropertiesInput;
 }
-export const ManagementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ManagementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10558,7 +10503,7 @@ export interface ManagementPoliciesCreateOrUpdateResponse {
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyProperties;
 }
-export const ManagementPoliciesCreateOrUpdateResponse =
+const ManagementPoliciesCreateOrUpdateResponse =
   GetManagementPolicyResponse as any as S.Schema<ManagementPoliciesCreateOrUpdateResponse>;
 
 export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
@@ -10571,7 +10516,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The name for Network Security Perimeter configuration */
   networkSecurityPerimeterConfigurationName: string;
 }
-export const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10590,12 +10535,12 @@ export const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE_
 }) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>;
 
 export interface NetworkSecurityPerimeterConfigurationsReconcileResponse {}
-export const NetworkSecurityPerimeterConfigurationsReconcileResponse =
+const NetworkSecurityPerimeterConfigurationsReconcileResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
 
 /** The storage account object replication rules. */
 export type ObjectReplicationPolicyPropertiesInputRulesList = Array<ObjectReplicationPolicyRule>;
-export const ObjectReplicationPolicyPropertiesInputRulesList =
+const ObjectReplicationPolicyPropertiesInputRulesList =
   ObjectReplicationPolicyPropertiesRulesList as any as S.Schema<ObjectReplicationPolicyPropertiesInputRulesList>;
 
 /** The Storage Account ObjectReplicationPolicy properties. */
@@ -10613,7 +10558,7 @@ export interface ObjectReplicationPolicyPropertiesInput {
   /** Optional. The object replication policy tags replication feature options. */
   tagsReplication?: ObjectReplicationPolicyPropertiesTagsReplication;
 }
-export const ObjectReplicationPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceAccount: S.String,
     destinationAccount: S.String,
@@ -10638,7 +10583,7 @@ export interface ObjectReplicationPoliciesCreateOrUpdateRequest {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyPropertiesInput;
 }
-export const ObjectReplicationPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ObjectReplicationPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10669,7 +10614,7 @@ export interface ObjectReplicationPoliciesCreateOrUpdateResponse {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyProperties;
 }
-export const ObjectReplicationPoliciesCreateOrUpdateResponse =
+const ObjectReplicationPoliciesCreateOrUpdateResponse =
   GetObjectReplicationPolicyResponse as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateResponse>;
 
 /** The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'. */
@@ -10677,7 +10622,7 @@ export interface EncryptionScopeKeyVaultPropertiesInput {
   /** The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope. */
   keyUri?: string;
 }
-export const EncryptionScopeKeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionScopeKeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyUri: S.optional(S.String),
   }),
@@ -10696,7 +10641,7 @@ export interface EncryptionScopePropertiesInput {
   /** A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest. */
   requireInfrastructureEncryption?: boolean;
 }
-export const EncryptionScopePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionScopePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(EncryptionScopeSource),
     state: S.optional(EncryptionScopeState),
@@ -10719,7 +10664,7 @@ export interface PatchEncryptionScopeRequest {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopePropertiesInput;
 }
-export const PatchEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10750,7 +10695,7 @@ export interface PatchEncryptionScopeResponse {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
-export const PatchEncryptionScopeResponse =
+const PatchEncryptionScopeResponse =
   GetEncryptionScopeResponse as any as S.Schema<PatchEncryptionScopeResponse>;
 
 export interface PutEncryptionScopeRequest {
@@ -10765,7 +10710,7 @@ export interface PutEncryptionScopeRequest {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopePropertiesInput;
 }
-export const PutEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10796,13 +10741,11 @@ export interface PutEncryptionScopeResponse {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
-export const PutEncryptionScopeResponse =
+const PutEncryptionScopeResponse =
   GetEncryptionScopeResponse as any as S.Schema<PutEncryptionScopeResponse>;
 
 /** The Private Endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
-export const PrivateEndpointInput = UserAssignedIdentityInput;
-
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private end point. */
@@ -10810,7 +10753,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(UserAssignedIdentityInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -10831,7 +10774,7 @@ export interface PutPrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10862,7 +10805,7 @@ export interface PutPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PutPrivateEndpointConnectionResponse =
+const PutPrivateEndpointConnectionResponse =
   PrivateEndpointConnection as any as S.Schema<PutPrivateEndpointConnectionResponse>;
 
 export interface RegenerateLocalUserPasswordRequest {
@@ -10875,7 +10818,7 @@ export interface RegenerateLocalUserPasswordRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
-export const RegenerateLocalUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateLocalUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10898,7 +10841,7 @@ export interface LocalUserRegeneratePasswordResult {
   /** Auto generated password by the server for SSH authentication if hasSshPassword is set to true on the creation of local user. */
   sshPassword?: string | Redacted.Redacted<string>;
 }
-export const LocalUserRegeneratePasswordResult = /*@__PURE__*/ S.suspend(() =>
+const LocalUserRegeneratePasswordResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -10916,7 +10859,7 @@ export interface RegenerateStorageAccountKeyRequest {
   /** The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2. */
   keyName: string;
 }
-export const RegenerateStorageAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateStorageAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10948,7 +10891,7 @@ export interface RestoreFileShareRequest {
   /** Required. Identify the version of the deleted share that will be restored. */
   deletedShareVersion: string;
 }
-export const RestoreFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10967,12 +10910,12 @@ export const RestoreFileShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreFileShareRequest" }) as any as S.Schema<RestoreFileShareRequest>;
 
 export interface RestoreFileShareResponse {}
-export const RestoreFileShareResponse =
+const RestoreFileShareResponse =
   UserAssignedIdentityInput as any as S.Schema<RestoreFileShareResponse>;
 
 /** Blob ranges to restore. */
 export type RestoreStorageAccountBlobRangesRequestBlobRangesList = Array<BlobRestoreRange>;
-export const RestoreStorageAccountBlobRangesRequestBlobRangesList =
+const RestoreStorageAccountBlobRangesRequestBlobRangesList =
   BlobRestoreParametersBlobRangesList as any as S.Schema<RestoreStorageAccountBlobRangesRequestBlobRangesList>;
 
 export interface RestoreStorageAccountBlobRangesRequest {
@@ -10987,7 +10930,7 @@ export interface RestoreStorageAccountBlobRangesRequest {
   /** Blob ranges to restore. */
   blobRanges: RestoreStorageAccountBlobRangesRequestBlobRangesList;
 }
-export const RestoreStorageAccountBlobRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreStorageAccountBlobRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11014,7 +10957,7 @@ export interface RevokeStorageAccountUserDelegationKeysRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
-export const RevokeStorageAccountUserDelegationKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeStorageAccountUserDelegationKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11032,12 +10975,12 @@ export const RevokeStorageAccountUserDelegationKeysRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<RevokeStorageAccountUserDelegationKeysRequest>;
 
 export interface RevokeStorageAccountUserDelegationKeysResponse {}
-export const RevokeStorageAccountUserDelegationKeysResponse =
+const RevokeStorageAccountUserDelegationKeysResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<RevokeStorageAccountUserDelegationKeysResponse>;
 
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
 export type SetBlobContainerLegalHoldRequestTagsList = Array<string>;
-export const SetBlobContainerLegalHoldRequestTagsList =
+const SetBlobContainerLegalHoldRequestTagsList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<SetBlobContainerLegalHoldRequestTagsList>;
 
 export interface SetBlobContainerLegalHoldRequest {
@@ -11054,7 +10997,7 @@ export interface SetBlobContainerLegalHoldRequest {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWritesAll?: boolean;
 }
-export const SetBlobContainerLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
+const SetBlobContainerLegalHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11081,7 +11024,7 @@ export interface RestorePolicyPropertiesInput {
   /** how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days. */
   days?: number;
 }
-export const RestorePolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RestorePolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     days: S.optional(S.Number),
@@ -11113,7 +11056,7 @@ export interface BlobServicePropertiesPropertiesInput {
   /** The blob service property to configure last access time based tracking policy. */
   lastAccessTimeTrackingPolicy?: LastAccessTimeTrackingPolicy;
 }
-export const BlobServicePropertiesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BlobServicePropertiesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cors: S.optional(CorsRules),
     defaultServiceVersion: S.optional(S.String),
@@ -11140,7 +11083,7 @@ export interface SetBlobServiceServicePropertiesRequest {
   /** The properties of a storage account's Blob service. */
   properties?: BlobServicePropertiesPropertiesInput;
 }
-export const SetBlobServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetBlobServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11172,7 +11115,7 @@ export interface SetBlobServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
-export const SetBlobServiceServicePropertiesResponse =
+const SetBlobServiceServicePropertiesResponse =
   GetBlobServiceServicePropertiesResponse as any as S.Schema<SetBlobServiceServicePropertiesResponse>;
 
 export interface SetFileServiceServicePropertiesRequest {
@@ -11185,7 +11128,7 @@ export interface SetFileServiceServicePropertiesRequest {
   /** The properties of File services in storage account. */
   properties?: FileServicePropertiesProperties;
 }
-export const SetFileServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFileServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11217,7 +11160,7 @@ export interface SetFileServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
-export const SetFileServiceServicePropertiesResponse =
+const SetFileServiceServicePropertiesResponse =
   GetFileServiceServicePropertiesResponse as any as S.Schema<SetFileServiceServicePropertiesResponse>;
 
 export interface SetQueueServiceServicePropertiesRequest {
@@ -11230,7 +11173,7 @@ export interface SetQueueServiceServicePropertiesRequest {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
-export const SetQueueServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetQueueServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11260,7 +11203,7 @@ export interface SetQueueServiceServicePropertiesResponse {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
-export const SetQueueServiceServicePropertiesResponse =
+const SetQueueServiceServicePropertiesResponse =
   GetQueueServiceServicePropertiesResponse as any as S.Schema<SetQueueServiceServicePropertiesResponse>;
 
 export interface SetTableServiceServicePropertiesRequest {
@@ -11273,7 +11216,7 @@ export interface SetTableServiceServicePropertiesRequest {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
-export const SetTableServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTableServiceServicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11303,7 +11246,7 @@ export interface SetTableServiceServicePropertiesResponse {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
-export const SetTableServiceServicePropertiesResponse =
+const SetTableServiceServicePropertiesResponse =
   GetQueueServiceServicePropertiesResponse as any as S.Schema<SetTableServiceServicePropertiesResponse>;
 
 export interface StopStorageTaskAssignmentAssignmentRequest {
@@ -11316,7 +11259,7 @@ export interface StopStorageTaskAssignmentAssignmentRequest {
   /** The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   storageTaskAssignmentName: string;
 }
-export const StopStorageTaskAssignmentAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const StopStorageTaskAssignmentAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11335,7 +11278,7 @@ export const StopStorageTaskAssignmentAssignmentRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<StopStorageTaskAssignmentAssignmentRequest>;
 
 export interface StopStorageTaskAssignmentAssignmentResponse {}
-export const StopStorageTaskAssignmentAssignmentResponse =
+const StopStorageTaskAssignmentAssignmentResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<StopStorageTaskAssignmentAssignmentResponse>;
 
 /** The properties of a storage account's ongoing or enqueued migration. */
@@ -11343,7 +11286,7 @@ export interface StorageAccountMigrationPropertiesInput {
   /** Target sku name for the account */
   targetSkuName: SkuName | (string & {});
 }
-export const StorageAccountMigrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountMigrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSkuName: SkuName,
   }),
@@ -11361,7 +11304,7 @@ export interface StorageAccountsCustomerInitiatedMigrationRequest {
   /** The properties of a storage account's ongoing or enqueued migration. */
   properties: StorageAccountMigrationPropertiesInput;
 }
-export const StorageAccountsCustomerInitiatedMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountsCustomerInitiatedMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11380,11 +11323,11 @@ export const StorageAccountsCustomerInitiatedMigrationRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationRequest>;
 
 export interface StorageAccountsCustomerInitiatedMigrationResponse {}
-export const StorageAccountsCustomerInitiatedMigrationResponse =
+const StorageAccountsCustomerInitiatedMigrationResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<StorageAccountsCustomerInitiatedMigrationResponse>;
 
 export type StorageAccountsFailoverRequestFailoverType = "Planned";
-export const StorageAccountsFailoverRequestFailoverType = S.String;
+const StorageAccountsFailoverRequestFailoverType = S.String;
 
 export interface StorageAccountsFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11396,7 +11339,7 @@ export interface StorageAccountsFailoverRequest {
   /** The parameter is set to 'Planned' to indicate whether a Planned failover is requested. */
   failoverType?: StorageAccountsFailoverRequestFailoverType | (string & {});
 }
-export const StorageAccountsFailoverRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountsFailoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11415,9 +11358,9 @@ export const StorageAccountsFailoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountsFailoverRequest>;
 
 export interface StorageAccountsFailoverResponse {}
-export const StorageAccountsFailoverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "StorageAccountsFailoverResponse" },
-) as any as S.Schema<StorageAccountsFailoverResponse>;
+const StorageAccountsFailoverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "StorageAccountsFailoverResponse",
+}) as any as S.Schema<StorageAccountsFailoverResponse>;
 
 export interface StorageAccountsHierarchicalNamespaceMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11429,7 +11372,7 @@ export interface StorageAccountsHierarchicalNamespaceMigrationRequest {
   /** Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request 'HnsOnValidationRequest' or a hydration request 'HnsOnHydrationRequest'. The validation request will validate the migration whereas the hydration request will migrate the account. */
   requestType: string;
 }
-export const StorageAccountsHierarchicalNamespaceMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountsHierarchicalNamespaceMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11448,7 +11391,7 @@ export const StorageAccountsHierarchicalNamespaceMigrationRequest = /*@__PURE__*
 }) as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationRequest>;
 
 export interface StorageAccountsHierarchicalNamespaceMigrationResponse {}
-export const StorageAccountsHierarchicalNamespaceMigrationResponse =
+const StorageAccountsHierarchicalNamespaceMigrationResponse =
   BlobContainersObjectLevelWormResponse as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationResponse>;
 
 export interface TestBlobAccessPointConfigurationExistingConnectionRequest {
@@ -11463,22 +11406,21 @@ export interface TestBlobAccessPointConfigurationExistingConnectionRequest {
   /** The system-generated unique identifier of the Blob Access Point configuration, as returned by a read operation. This value must match the configuration named in the request path, and is required so that a configuration which was deleted and recreated under the same name is not tested by mistake. */
   uniqueId: string;
 }
-export const TestBlobAccessPointConfigurationExistingConnectionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-      uniqueId: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}/testExistingConnection",
-        code: 200,
-        apiVersion: "2026-09-01",
-      }),
-    ),
+const TestBlobAccessPointConfigurationExistingConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    blobAccessPointConfigurationName: S.String.pipe(T.Label()),
+    uniqueId: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}/testExistingConnection",
+      code: 200,
+      apiVersion: "2026-09-01",
+    }),
+  ),
 ).annotate({
   identifier: "TestBlobAccessPointConfigurationExistingConnectionRequest",
 }) as any as S.Schema<TestBlobAccessPointConfigurationExistingConnectionRequest>;
@@ -11492,7 +11434,7 @@ export interface BlobAccessPointConnectionTestResponse {
   /** The request ID associated with the request sent to the backing data source for validation. */
   requestId: string;
 }
-export const BlobAccessPointConnectionTestResponse = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointConnectionTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methodName: S.String,
     errorMessage: S.optional(S.String),
@@ -11512,21 +11454,20 @@ export interface TestBlobAccessPointConnectionTestProposedConnectionRequest {
   /** Information about the backing data source whose connection is tested. */
   source: BlobAccessPointSourceProperties;
 }
-export const TestBlobAccessPointConnectionTestProposedConnectionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      source: BlobAccessPointSourceProperties,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/testBlobAccessPointConfigurationProposedConnection",
-        code: 200,
-        apiVersion: "2026-09-01",
-      }),
-    ),
+const TestBlobAccessPointConnectionTestProposedConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    source: BlobAccessPointSourceProperties,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/testBlobAccessPointConfigurationProposedConnection",
+      code: 200,
+      apiVersion: "2026-09-01",
+    }),
+  ),
 ).annotate({
   identifier: "TestBlobAccessPointConnectionTestProposedConnectionRequest",
 }) as any as S.Schema<TestBlobAccessPointConnectionTestProposedConnectionRequest>;
@@ -11543,7 +11484,7 @@ export interface TestConnectorExistingConnectionRequest {
   /** The uniqueId of the storage connector as returned by the server. */
   uniqueId: string;
 }
-export const TestConnectorExistingConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const TestConnectorExistingConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11571,7 +11512,7 @@ export interface TestConnectionResponse {
   /** The request Id associated with the request sent to the backing data store for validation. */
   storageConnectorRequestId: string;
 }
-export const TestConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const TestConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageConnectorMethodName: S.String,
     storageConnectorErrorMessage: S.optional(S.String),
@@ -11583,13 +11524,11 @@ export const TestConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateBlobAccessPointConfigurationRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateBlobAccessPointConfigurationRequestTagsMap =
+const UpdateBlobAccessPointConfigurationRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBlobAccessPointConfigurationRequestTagsMap>;
 
 /** Information about the data source exposed through a Blob Access Point. */
 export type BlobAccessPointSourcePropertiesUpdate = BlobAccessPointSourceProperties;
-export const BlobAccessPointSourcePropertiesUpdate = BlobAccessPointSourceProperties;
-
 /** Details of a Blob Access Point configuration. */
 export interface BlobAccessPointConfigurationPropertiesUpdate {
   /** The configuration state. A configuration is created in the Active state when this value is not specified. */
@@ -11599,7 +11538,7 @@ export interface BlobAccessPointConfigurationPropertiesUpdate {
   /** Information about the backing data source. */
   source?: BlobAccessPointSourceProperties;
 }
-export const BlobAccessPointConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const BlobAccessPointConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(BlobAccessPointConfigurationState),
     description: S.optional(S.String),
@@ -11623,7 +11562,7 @@ export interface UpdateBlobAccessPointConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties?: BlobAccessPointConfigurationPropertiesUpdate;
 }
-export const UpdateBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11647,9 +11586,6 @@ export const UpdateBlobAccessPointConfigurationRequest = /*@__PURE__*/ S.suspend
 export type UpdateBlobAccessPointConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateBlobAccessPointConfigurationResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBlobAccessPointConfigurationResponseTagsMap>;
-
 export interface UpdateBlobAccessPointConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11666,7 +11602,7 @@ export interface UpdateBlobAccessPointConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
-export const UpdateBlobAccessPointConfigurationResponse =
+const UpdateBlobAccessPointConfigurationResponse =
   CreateBlobAccessPointConfigurationResponse as any as S.Schema<UpdateBlobAccessPointConfigurationResponse>;
 
 export interface UpdateBlobContainerRequest {
@@ -11681,7 +11617,7 @@ export interface UpdateBlobContainerRequest {
   /** Properties of the blob container. */
   properties?: ContainerPropertiesInput;
 }
-export const UpdateBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBlobContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11714,17 +11650,17 @@ export interface UpdateBlobContainerResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const UpdateBlobContainerResponse =
+const UpdateBlobContainerResponse =
   CreateBlobContainerResponse as any as S.Schema<UpdateBlobContainerResponse>;
 
 /** Resource tags. */
 export type UpdateConnectorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectorRequestTagsMap =
+const UpdateConnectorRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConnectorRequestTagsMap>;
 
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
 export type StorageConnectorPropertiesUpdateState = "Active" | "Inactive";
-export const StorageConnectorPropertiesUpdateState = S.String;
+const StorageConnectorPropertiesUpdateState = S.String;
 
 /** The storage connector backing data source information */
 export interface StorageConnectorSourceUpdate {
@@ -11733,7 +11669,7 @@ export interface StorageConnectorSourceUpdate {
   /** Details for how to authenticate to the backing data store. */
   authProperties?: StorageConnectorAuthProperties;
 }
-export const StorageConnectorSourceUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorSourceUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StorageConnectorSourceType,
     authProperties: S.optional(StorageConnectorAuthProperties),
@@ -11753,7 +11689,7 @@ export interface StorageConnectorPropertiesUpdate {
   /** Information about how to communicate with and authenticate to the backing data store. */
   source?: StorageConnectorSourceUpdate;
 }
-export const StorageConnectorPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageConnectorPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(StorageConnectorPropertiesUpdateState),
     description: S.optional(S.String),
@@ -11778,7 +11714,7 @@ export interface UpdateConnectorRequest {
   /** The properties of the Storage Connector. */
   properties?: StorageConnectorPropertiesUpdate;
 }
-export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11798,9 +11734,6 @@ export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectorResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConnectorResponseTagsMap>;
-
 export interface UpdateConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11817,18 +11750,15 @@ export interface UpdateConnectorResponse {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
-export const UpdateConnectorResponse =
-  CreateConnectorResponse as any as S.Schema<UpdateConnectorResponse>;
+const UpdateConnectorResponse = CreateConnectorResponse as any as S.Schema<UpdateConnectorResponse>;
 
 /** Resource tags. */
 export type UpdateContextCachRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateContextCachRequestTagsMap =
+const UpdateContextCachRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContextCachRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateContextCachRequestIdentity = ContextCachesCreateOrUpdateRequestIdentity;
-export const UpdateContextCachRequestIdentity = ContextCachesCreateOrUpdateRequestIdentity;
-
 /** Updatable properties of the Context Cache. */
 export interface ContextCachePropertiesUpdate {
   /** Account description. */
@@ -11836,7 +11766,7 @@ export interface ContextCachePropertiesUpdate {
   /** Encryption settings for the account. */
   encryption?: AzureResourceManagerCommonTypesEncryption;
 }
-export const ContextCachePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const ContextCachePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
@@ -11859,7 +11789,7 @@ export interface UpdateContextCachRequest {
   /** The updatable properties of the Context Cache. */
   properties?: ContextCachePropertiesUpdate;
 }
-export const UpdateContextCachRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContextCachRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11879,13 +11809,8 @@ export const UpdateContextCachRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateContextCachResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateContextCachResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContextCachResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateContextCachResponseIdentity = ContextCachesCreateOrUpdateResponseIdentity;
-export const UpdateContextCachResponseIdentity = ContextCachesCreateOrUpdateResponseIdentity;
-
 export interface UpdateContextCachResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11904,7 +11829,7 @@ export interface UpdateContextCachResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
-export const UpdateContextCachResponse =
+const UpdateContextCachResponse =
   ContextCachesCreateOrUpdateResponse as any as S.Schema<UpdateContextCachResponse>;
 
 /** Updatable properties of a container within a Context Cache. */
@@ -11914,7 +11839,7 @@ export interface ContextCacheContainerPropertiesUpdate {
   /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. */
   timeToLive?: number;
 }
-export const ContextCacheContainerPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const ContextCacheContainerPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     timeToLive: S.optional(S.Number),
@@ -11935,7 +11860,7 @@ export interface UpdateContextCacheContainerRequest {
   /** The updatable properties of the Context Cache Container. */
   properties?: ContextCacheContainerPropertiesUpdate;
 }
-export const UpdateContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContextCacheContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11966,23 +11891,23 @@ export interface UpdateContextCacheContainerResponse {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
-export const UpdateContextCacheContainerResponse =
+const UpdateContextCacheContainerResponse =
   ContextCacheContainersCreateOrUpdateResponse as any as S.Schema<UpdateContextCacheContainerResponse>;
 
 /** Resource tags. */
 export type UpdateDataShareRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDataShareRequestTagsMap =
+const UpdateDataShareRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDataShareRequestTagsMap>;
 
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesUpdateAccessPoliciesList =
   Array<StorageDataShareAccessPolicy>;
-export const StorageDataSharePropertiesUpdateAccessPoliciesList =
+const StorageDataSharePropertiesUpdateAccessPoliciesList =
   StorageDataSharePropertiesInputAccessPoliciesList as any as S.Schema<StorageDataSharePropertiesUpdateAccessPoliciesList>;
 
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesUpdateAssetsList = Array<StorageDataShareAsset>;
-export const StorageDataSharePropertiesUpdateAssetsList =
+const StorageDataSharePropertiesUpdateAssetsList =
   StorageDataSharePropertiesInputAssetsList as any as S.Schema<StorageDataSharePropertiesUpdateAssetsList>;
 
 /** The storage datashare properties */
@@ -11994,7 +11919,7 @@ export interface StorageDataSharePropertiesUpdate {
   /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
   assets?: StorageDataSharePropertiesUpdateAssetsList;
 }
-export const StorageDataSharePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageDataSharePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     accessPolicies: S.optional(StorageDataSharePropertiesUpdateAccessPoliciesList),
@@ -12018,7 +11943,7 @@ export interface UpdateDataShareRequest {
   /** The properties of the Storage DataShare. */
   properties?: StorageDataSharePropertiesUpdate;
 }
-export const UpdateDataShareRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12038,9 +11963,6 @@ export const UpdateDataShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDataShareResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDataShareResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDataShareResponseTagsMap>;
-
 export interface UpdateDataShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -12057,8 +11979,7 @@ export interface UpdateDataShareResponse {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
-export const UpdateDataShareResponse =
-  CreateDataShareResponse as any as S.Schema<UpdateDataShareResponse>;
+const UpdateDataShareResponse = CreateDataShareResponse as any as S.Schema<UpdateDataShareResponse>;
 
 export interface UpdateFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12072,7 +11993,7 @@ export interface UpdateFileShareRequest {
   /** Properties of the file share. */
   properties?: FileSharePropertiesInput;
 }
-export const UpdateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12103,8 +12024,7 @@ export interface UpdateFileShareResponse {
   /** Resource Etag. */
   etag?: string;
 }
-export const UpdateFileShareResponse =
-  CreateFileShareResponse as any as S.Schema<UpdateFileShareResponse>;
+const UpdateFileShareResponse = CreateFileShareResponse as any as S.Schema<UpdateFileShareResponse>;
 
 export interface UpdateQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12118,7 +12038,7 @@ export interface UpdateQueueRequest {
   /** Queue resource properties. */
   properties?: QueuePropertiesInput;
 }
-export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12147,11 +12067,11 @@ export interface UpdateQueueResponse {
   /** Queue resource properties. */
   properties?: QueueProperties;
 }
-export const UpdateQueueResponse = CreateQueueResponse as any as S.Schema<UpdateQueueResponse>;
+const UpdateQueueResponse = CreateQueueResponse as any as S.Schema<UpdateQueueResponse>;
 
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
 export type UpdateStorageAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageAccountRequestTagsMap =
+const UpdateStorageAccountRequestTagsMap =
   ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageAccountRequestTagsMap>;
 
 /** The parameters used when updating a storage account. */
@@ -12213,7 +12133,7 @@ export interface StorageAccountPropertiesUpdateParametersInput {
   /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
   allowCrossTenantDelegationSas?: boolean;
 }
-export const StorageAccountPropertiesUpdateParametersInput = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountPropertiesUpdateParametersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomain: S.optional(CustomDomain),
     encryption: S.optional(EncryptionInput),
@@ -12250,7 +12170,7 @@ export const StorageAccountPropertiesUpdateParametersInput = /*@__PURE__*/ S.sus
 
 /** Optional. Gets or sets the pinned logical availability zone for the storage account. */
 export type UpdateStorageAccountRequestZonesList = Array<string>;
-export const UpdateStorageAccountRequestZonesList =
+const UpdateStorageAccountRequestZonesList =
   AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<UpdateStorageAccountRequestZonesList>;
 
 export interface UpdateStorageAccountRequest {
@@ -12275,7 +12195,7 @@ export interface UpdateStorageAccountRequest {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
-export const UpdateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12301,14 +12221,8 @@ export const UpdateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageAccountResponseTagsMap =
-  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageAccountResponseTagsMap>;
-
 /** The availability zones. */
 export type UpdateStorageAccountResponseZonesList = Array<string>;
-export const UpdateStorageAccountResponseZonesList =
-  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<UpdateStorageAccountResponseZonesList>;
-
 export interface UpdateStorageAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -12337,7 +12251,7 @@ export interface UpdateStorageAccountResponse {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
-export const UpdateStorageAccountResponse =
+const UpdateStorageAccountResponse =
   CreateStorageAccountResponse as any as S.Schema<UpdateStorageAccountResponse>;
 
 /** The trigger parameters update for the storage task assignment execution */
@@ -12353,8 +12267,7 @@ export interface TriggerParametersUpdate {
   /** When to start task execution. This is a mutable field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */
   startOn?: string;
 }
-export const TriggerParametersUpdate =
-  TriggerParameters as any as S.Schema<TriggerParametersUpdate>;
+const TriggerParametersUpdate = TriggerParameters as any as S.Schema<TriggerParametersUpdate>;
 
 /** Execution trigger update for storage task assignment */
 export interface ExecutionTriggerUpdate {
@@ -12363,7 +12276,7 @@ export interface ExecutionTriggerUpdate {
   /** The trigger parameters of the storage task assignment execution */
   parameters?: TriggerParametersUpdate;
 }
-export const ExecutionTriggerUpdate = /*@__PURE__*/ S.suspend(() =>
+const ExecutionTriggerUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(TriggerType),
     parameters: S.optional(TriggerParametersUpdate),
@@ -12377,7 +12290,7 @@ export interface StorageTaskAssignmentUpdateExecutionContext {
   /** Execution trigger of the storage task assignment */
   trigger?: ExecutionTriggerUpdate;
 }
-export const StorageTaskAssignmentUpdateExecutionContext = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentUpdateExecutionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(ExecutionTarget),
     trigger: S.optional(ExecutionTriggerUpdate),
@@ -12391,7 +12304,7 @@ export interface StorageTaskAssignmentUpdateReport {
   /** The prefix of the storage task assignment report */
   prefix?: string;
 }
-export const StorageTaskAssignmentUpdateReport = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentUpdateReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
   }),
@@ -12412,7 +12325,7 @@ export interface StorageTaskAssignmentUpdatePropertiesInput {
   /** Run status of storage task assignment */
   runStatus?: UserAssignedIdentityInput;
 }
-export const StorageTaskAssignmentUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageTaskAssignmentUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -12436,7 +12349,7 @@ export interface UpdateStorageTaskAssignmentRequest {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentUpdatePropertiesInput;
 }
-export const UpdateStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageTaskAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12467,7 +12380,7 @@ export interface UpdateStorageTaskAssignmentResponse {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
-export const UpdateStorageTaskAssignmentResponse =
+const UpdateStorageTaskAssignmentResponse =
   CreateStorageTaskAssignmentResponse as any as S.Schema<UpdateStorageTaskAssignmentResponse>;
 
 export interface UpdateTableRequest {
@@ -12482,7 +12395,7 @@ export interface UpdateTableRequest {
   /** Table resource properties. */
   properties?: TablePropertiesInput;
 }
-export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12511,7 +12424,7 @@ export interface UpdateTableResponse {
   /** Table resource properties. */
   properties?: TableProperties;
 }
-export const UpdateTableResponse = CreateTableResponse as any as S.Schema<UpdateTableResponse>;
+const UpdateTableResponse = CreateTableResponse as any as S.Schema<UpdateTableResponse>;
 
 export type AbortStorageAccountHierarchicalNamespaceMigrationError = AzureOpError;
 /** Abort live Migration of storage account to enable Hns */

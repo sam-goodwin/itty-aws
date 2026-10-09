@@ -51,7 +51,7 @@ export interface AddRepoToInstallationForAuthenticatedUserRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-export const AddRepoToInstallationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRepoToInstallationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
     repository_id: S.Number.pipe(T.Label()),
@@ -67,7 +67,7 @@ export const AddRepoToInstallationForAuthenticatedUserRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserRequest>;
 
 export interface AddRepoToInstallationForAuthenticatedUserResponse {}
-export const AddRepoToInstallationForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AddRepoToInstallationForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AddRepoToInstallationForAuthenticatedUserResponse",
@@ -79,7 +79,7 @@ export interface CheckTokenRequest {
   /** The access_token of the OAuth or GitHub application. */
   access_token: string | Redacted.Redacted<string>;
 }
-export const CheckTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Label()),
     access_token: S.String.pipe(T.SensitiveValue({})),
@@ -88,7 +88,7 @@ export const CheckTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of scopes that this authorization is in. */
 export type AuthorizationScopesList = Array<string>;
-export const AuthorizationScopesList = /*@__PURE__*/ S.Array(
+const AuthorizationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AuthorizationScopesList>;
 
@@ -97,7 +97,7 @@ export interface AuthorizationApp {
   name: string;
   url: string;
 }
-export const AuthorizationApp = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
     name: S.String,
@@ -130,7 +130,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -159,227 +159,227 @@ export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts. */
 export type AppPermissionsActions = "read" | "write";
-export const AppPermissionsActions = S.String;
+const AppPermissionsActions = S.String;
 
 /** The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation. */
 export type AppPermissionsAdministration = "read" | "write";
-export const AppPermissionsAdministration = S.String;
+const AppPermissionsAdministration = S.String;
 
 /** The level of permission to grant the access token to create and retrieve build artifact metadata records. */
 export type AppPermissionsArtifactMetadata = "read" | "write";
-export const AppPermissionsArtifactMetadata = S.String;
+const AppPermissionsArtifactMetadata = S.String;
 
 /** The level of permission to create and retrieve the access token for repository attestations. */
 export type AppPermissionsAttestations = "read" | "write";
-export const AppPermissionsAttestations = S.String;
+const AppPermissionsAttestations = S.String;
 
 /** The level of permission to grant the access token for checks on code. */
 export type AppPermissionsChecks = "read" | "write";
-export const AppPermissionsChecks = S.String;
+const AppPermissionsChecks = S.String;
 
 /** The level of permission to grant the access token to view and manage code quality data. */
 export type AppPermissionsCodeQuality = "read" | "write";
-export const AppPermissionsCodeQuality = S.String;
+const AppPermissionsCodeQuality = S.String;
 
 /** The level of permission to grant the access token to create, edit, delete, and list Codespaces. */
 export type AppPermissionsCodespaces = "read" | "write";
-export const AppPermissionsCodespaces = S.String;
+const AppPermissionsCodespaces = S.String;
 
 /** The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges. */
 export type AppPermissionsContents = "read" | "write";
-export const AppPermissionsContents = S.String;
+const AppPermissionsContents = S.String;
 
 /** The level of permission to grant the access token to manage Dependabot secrets. */
 export type AppPermissionsDependabotSecrets = "read" | "write";
-export const AppPermissionsDependabotSecrets = S.String;
+const AppPermissionsDependabotSecrets = S.String;
 
 /** The level of permission to grant the access token for deployments and deployment statuses. */
 export type AppPermissionsDeployments = "read" | "write";
-export const AppPermissionsDeployments = S.String;
+const AppPermissionsDeployments = S.String;
 
 /** The level of permission to grant the access token for discussions and related comments and labels. */
 export type AppPermissionsDiscussions = "read" | "write";
-export const AppPermissionsDiscussions = S.String;
+const AppPermissionsDiscussions = S.String;
 
 /** The level of permission to grant the access token for managing repository environments. */
 export type AppPermissionsEnvironments = "read" | "write";
-export const AppPermissionsEnvironments = S.String;
+const AppPermissionsEnvironments = S.String;
 
 /** The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones. */
 export type AppPermissionsIssues = "read" | "write";
-export const AppPermissionsIssues = S.String;
+const AppPermissionsIssues = S.String;
 
 /** The level of permission to grant the access token to manage the merge queues for a repository. */
 export type AppPermissionsMergeQueues = "read" | "write";
-export const AppPermissionsMergeQueues = S.String;
+const AppPermissionsMergeQueues = S.String;
 
 /** The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata. */
 export type AppPermissionsMetadata = "read" | "write";
-export const AppPermissionsMetadata = S.String;
+const AppPermissionsMetadata = S.String;
 
 /** The level of permission to grant the access token for packages published to GitHub Packages. */
 export type AppPermissionsPackages = "read" | "write";
-export const AppPermissionsPackages = S.String;
+const AppPermissionsPackages = S.String;
 
 /** The level of permission to grant the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds. */
 export type AppPermissionsPages = "read" | "write";
-export const AppPermissionsPages = S.String;
+const AppPermissionsPages = S.String;
 
 /** The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges. */
 export type AppPermissionsPullRequests = "read" | "write";
-export const AppPermissionsPullRequests = S.String;
+const AppPermissionsPullRequests = S.String;
 
 /** The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property. */
 export type AppPermissionsRepositoryCustomProperties = "read" | "write";
-export const AppPermissionsRepositoryCustomProperties = S.String;
+const AppPermissionsRepositoryCustomProperties = S.String;
 
 /** The level of permission to grant the access token to manage the post-receive hooks for a repository. */
 export type AppPermissionsRepositoryHooks = "read" | "write";
-export const AppPermissionsRepositoryHooks = S.String;
+const AppPermissionsRepositoryHooks = S.String;
 
 /** The level of permission to grant the access token to manage repository projects, columns, and cards. */
 export type AppPermissionsRepositoryProjects = "read" | "write" | "admin";
-export const AppPermissionsRepositoryProjects = S.String;
+const AppPermissionsRepositoryProjects = S.String;
 
 /** The level of permission to grant the access token to view and manage secret scanning alerts. */
 export type AppPermissionsSecretScanningAlerts = "read" | "write";
-export const AppPermissionsSecretScanningAlerts = S.String;
+const AppPermissionsSecretScanningAlerts = S.String;
 
 /** The level of permission to grant the access token to manage repository secrets. */
 export type AppPermissionsSecrets = "read" | "write";
-export const AppPermissionsSecrets = S.String;
+const AppPermissionsSecrets = S.String;
 
 /** The level of permission to grant the access token to view and manage security events like code scanning alerts. */
 export type AppPermissionsSecurityEvents = "read" | "write";
-export const AppPermissionsSecurityEvents = S.String;
+const AppPermissionsSecurityEvents = S.String;
 
 /** The level of permission to grant the access token to manage just a single file. */
 export type AppPermissionsSingleFile = "read" | "write";
-export const AppPermissionsSingleFile = S.String;
+const AppPermissionsSingleFile = S.String;
 
 /** The level of permission to grant the access token for commit statuses. */
 export type AppPermissionsStatuses = "read" | "write";
-export const AppPermissionsStatuses = S.String;
+const AppPermissionsStatuses = S.String;
 
 /** The level of permission to grant the access token to manage Dependabot alerts. */
 export type AppPermissionsVulnerabilityAlerts = "read" | "write";
-export const AppPermissionsVulnerabilityAlerts = S.String;
+const AppPermissionsVulnerabilityAlerts = S.String;
 
 /** The level of permission to grant the access token to update GitHub Actions workflow files. */
 export type AppPermissionsWorkflows = "write";
-export const AppPermissionsWorkflows = S.String;
+const AppPermissionsWorkflows = S.String;
 
 /** The level of permission to grant the access token to view and edit custom properties for an organization, when allowed by the property. */
 export type AppPermissionsCustomPropertiesForOrganizations = "read" | "write";
-export const AppPermissionsCustomPropertiesForOrganizations = S.String;
+const AppPermissionsCustomPropertiesForOrganizations = S.String;
 
 /** The level of permission to grant the access token for organization teams and members. */
 export type AppPermissionsMembers = "read" | "write";
-export const AppPermissionsMembers = S.String;
+const AppPermissionsMembers = S.String;
 
 /** The level of permission to grant the access token to manage access to an organization. */
 export type AppPermissionsOrganizationAdministration = "read" | "write";
-export const AppPermissionsOrganizationAdministration = S.String;
+const AppPermissionsOrganizationAdministration = S.String;
 
 /** The level of permission to grant the access token for custom repository roles management. */
 export type AppPermissionsOrganizationCustomRoles = "read" | "write";
-export const AppPermissionsOrganizationCustomRoles = S.String;
+const AppPermissionsOrganizationCustomRoles = S.String;
 
 /** The level of permission to grant the access token for custom organization roles management. */
 export type AppPermissionsOrganizationCustomOrgRoles = "read" | "write";
-export const AppPermissionsOrganizationCustomOrgRoles = S.String;
+const AppPermissionsOrganizationCustomOrgRoles = S.String;
 
 /** The level of permission to grant the access token for repository custom properties management at the organization level. */
 export type AppPermissionsOrganizationCustomProperties = "read" | "write" | "admin";
-export const AppPermissionsOrganizationCustomProperties = S.String;
+const AppPermissionsOrganizationCustomProperties = S.String;
 
 /** The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change. */
 export type AppPermissionsOrganizationCopilotSeatManagement = "read" | "write";
-export const AppPermissionsOrganizationCopilotSeatManagement = S.String;
+const AppPermissionsOrganizationCopilotSeatManagement = S.String;
 
 /** The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization. */
 export type AppPermissionsOrganizationCopilotAgentSettings = "read" | "write";
-export const AppPermissionsOrganizationCopilotAgentSettings = S.String;
+const AppPermissionsOrganizationCopilotAgentSettings = S.String;
 
 /** The level of permission to grant the access token for managing external custom properties for repositories in an organization. */
 export type AppPermissionsOrganizationExternalPropertiesForRepos = "read" | "write" | "admin";
-export const AppPermissionsOrganizationExternalPropertiesForRepos = S.String;
+const AppPermissionsOrganizationExternalPropertiesForRepos = S.String;
 
 /** The level of permission to grant the access token to view and manage announcement banners for an organization. */
 export type AppPermissionsOrganizationAnnouncementBanners = "read" | "write";
-export const AppPermissionsOrganizationAnnouncementBanners = S.String;
+const AppPermissionsOrganizationAnnouncementBanners = S.String;
 
 /** The level of permission to grant the access token to view events triggered by an activity in an organization. */
 export type AppPermissionsOrganizationEvents = "read";
-export const AppPermissionsOrganizationEvents = S.String;
+const AppPermissionsOrganizationEvents = S.String;
 
 /** The level of permission to grant the access token to manage the post-receive hooks for an organization. */
 export type AppPermissionsOrganizationHooks = "read" | "write";
-export const AppPermissionsOrganizationHooks = S.String;
+const AppPermissionsOrganizationHooks = S.String;
 
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokens = "read" | "write";
-export const AppPermissionsOrganizationPersonalAccessTokens = S.String;
+const AppPermissionsOrganizationPersonalAccessTokens = S.String;
 
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokenRequests = "read" | "write";
-export const AppPermissionsOrganizationPersonalAccessTokenRequests = S.String;
+const AppPermissionsOrganizationPersonalAccessTokenRequests = S.String;
 
 /** The level of permission to grant the access token for viewing an organization's plan. */
 export type AppPermissionsOrganizationPlan = "read";
-export const AppPermissionsOrganizationPlan = S.String;
+const AppPermissionsOrganizationPlan = S.String;
 
 /** The level of permission to grant the access token to manage organization projects and projects public preview (where available). */
 export type AppPermissionsOrganizationProjects = "read" | "write" | "admin";
-export const AppPermissionsOrganizationProjects = S.String;
+const AppPermissionsOrganizationProjects = S.String;
 
 /** The level of permission to grant the access token for organization packages published to GitHub Packages. */
 export type AppPermissionsOrganizationPackages = "read" | "write";
-export const AppPermissionsOrganizationPackages = S.String;
+const AppPermissionsOrganizationPackages = S.String;
 
 /** The level of permission to grant the access token to manage organization secrets. */
 export type AppPermissionsOrganizationSecrets = "read" | "write";
-export const AppPermissionsOrganizationSecrets = S.String;
+const AppPermissionsOrganizationSecrets = S.String;
 
 /** The level of permission to grant the access token to view and manage GitHub Actions self-hosted runners available to an organization. */
 export type AppPermissionsOrganizationSelfHostedRunners = "read" | "write";
-export const AppPermissionsOrganizationSelfHostedRunners = S.String;
+const AppPermissionsOrganizationSelfHostedRunners = S.String;
 
 /** The level of permission to grant the access token to view and manage users blocked by the organization. */
 export type AppPermissionsOrganizationUserBlocking = "read" | "write";
-export const AppPermissionsOrganizationUserBlocking = S.String;
+const AppPermissionsOrganizationUserBlocking = S.String;
 
 /** The level of permission to grant the access token to manage the email addresses belonging to a user. */
 export type AppPermissionsEmailAddresses = "read" | "write";
-export const AppPermissionsEmailAddresses = S.String;
+const AppPermissionsEmailAddresses = S.String;
 
 /** The level of permission to grant the access token to manage the followers belonging to a user. */
 export type AppPermissionsFollowers = "read" | "write";
-export const AppPermissionsFollowers = S.String;
+const AppPermissionsFollowers = S.String;
 
 /** The level of permission to grant the access token to manage git SSH keys. */
 export type AppPermissionsGitSshKeys = "read" | "write";
-export const AppPermissionsGitSshKeys = S.String;
+const AppPermissionsGitSshKeys = S.String;
 
 /** The level of permission to grant the access token to view and manage GPG keys belonging to a user. */
 export type AppPermissionsGpgKeys = "read" | "write";
-export const AppPermissionsGpgKeys = S.String;
+const AppPermissionsGpgKeys = S.String;
 
 /** The level of permission to grant the access token to view and manage interaction limits on a repository. */
 export type AppPermissionsInteractionLimits = "read" | "write";
-export const AppPermissionsInteractionLimits = S.String;
+const AppPermissionsInteractionLimits = S.String;
 
 /** The level of permission to grant the access token to manage the profile settings belonging to a user. */
 export type AppPermissionsProfile = "write";
-export const AppPermissionsProfile = S.String;
+const AppPermissionsProfile = S.String;
 
 /** The level of permission to grant the access token to list and manage repositories a user is starring. */
 export type AppPermissionsStarring = "read" | "write";
-export const AppPermissionsStarring = S.String;
+const AppPermissionsStarring = S.String;
 
 /** The level of permission to grant the access token for organization custom properties management at the enterprise level. */
 export type AppPermissionsEnterpriseCustomPropertiesForOrganizations = "read" | "write" | "admin";
-export const AppPermissionsEnterpriseCustomPropertiesForOrganizations = S.String;
+const AppPermissionsEnterpriseCustomPropertiesForOrganizations = S.String;
 
 /** The permissions granted to the fine-grained access token. */
 export interface AppPermissions {
@@ -510,7 +510,7 @@ export interface AppPermissions {
     | AppPermissionsEnterpriseCustomPropertiesForOrganizations
     | (string & {});
 }
-export const AppPermissions = /*@__PURE__*/ S.suspend(() =>
+const AppPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(AppPermissionsActions),
     administration: S.optional(AppPermissionsAdministration),
@@ -581,16 +581,14 @@ export const AppPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type NullableScopedInstallationRepositorySelection = "all" | "selected";
-export const NullableScopedInstallationRepositorySelection = S.String;
+const NullableScopedInstallationRepositorySelection = S.String;
 
 export type NullableScopedInstallationSingleFilePathsList = Array<string>;
-export const NullableScopedInstallationSingleFilePathsList =
+const NullableScopedInstallationSingleFilePathsList =
   AuthorizationScopesList as any as S.Schema<NullableScopedInstallationSingleFilePathsList>;
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 export interface NullableScopedInstallation {
   permissions: AppPermissions;
   /** Describe whether all repositories have been selected or there's a selection involved */
@@ -601,7 +599,7 @@ export interface NullableScopedInstallation {
   repositories_url: string;
   account: NullableSimpleUser;
 }
-export const NullableScopedInstallation = /*@__PURE__*/ S.suspend(() =>
+const NullableScopedInstallation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: AppPermissions,
     repository_selection: NullableScopedInstallationRepositorySelection,
@@ -634,7 +632,7 @@ export interface Authorization {
   installation?: NullableScopedInstallation | null;
   expires_at: string | null;
 }
-export const Authorization = /*@__PURE__*/ S.suspend(() =>
+const Authorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     url: S.String,
@@ -657,7 +655,7 @@ export const Authorization = /*@__PURE__*/ S.suspend(() =>
 export interface CreateFromManifestRequest {
   code: string;
 }
-export const CreateFromManifestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFromManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/app-manifests/{code}/conversions", code: 200 })),
@@ -683,23 +681,8 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type CreateFromManifestResponseOwner = NullableSimpleUser | Enterprise;
-export const CreateFromManifestResponseOwner =
+const CreateFromManifestResponseOwner =
   S.Unknown as any as S.Schema<CreateFromManifestResponseOwner>;
 
 /** The set of permissions for the GitHub app */
@@ -710,7 +693,7 @@ export interface CreateFromManifestResponsePermissions {
   contents?: string;
   deployments?: string;
 }
-export const CreateFromManifestResponsePermissions = /*@__PURE__*/ S.suspend(() =>
+const CreateFromManifestResponsePermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(S.String),
     checks: S.optional(S.String),
@@ -724,7 +707,7 @@ export const CreateFromManifestResponsePermissions = /*@__PURE__*/ S.suspend(() 
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type CreateFromManifestResponseEventsList = Array<string>;
-export const CreateFromManifestResponseEventsList =
+const CreateFromManifestResponseEventsList =
   AuthorizationScopesList as any as S.Schema<CreateFromManifestResponseEventsList>;
 
 export interface CreateFromManifestResponse {
@@ -752,7 +735,7 @@ export interface CreateFromManifestResponse {
   webhook_secret: string | Redacted.Redacted<string> | null;
   pem: string;
 }
-export const CreateFromManifestResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFromManifestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.optional(S.String),
@@ -778,12 +761,12 @@ export const CreateFromManifestResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of repository names that the token should have access to */
 export type CreateInstallationAccessTokenRequestRepositoriesList = Array<string>;
-export const CreateInstallationAccessTokenRequestRepositoriesList =
+const CreateInstallationAccessTokenRequestRepositoriesList =
   AuthorizationScopesList as any as S.Schema<CreateInstallationAccessTokenRequestRepositoriesList>;
 
 /** List of repository IDs that the token should have access to */
 export type CreateInstallationAccessTokenRequestRepositoryIdsList = Array<number>;
-export const CreateInstallationAccessTokenRequestRepositoryIdsList = /*@__PURE__*/ S.Array(
+const CreateInstallationAccessTokenRequestRepositoryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateInstallationAccessTokenRequestRepositoryIdsList>;
 
@@ -796,7 +779,7 @@ export interface CreateInstallationAccessTokenRequest {
   repository_ids?: CreateInstallationAccessTokenRequestRepositoryIdsList;
   permissions?: AppPermissions;
 }
-export const CreateInstallationAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstallationAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
     repositories: S.optional(CreateInstallationAccessTokenRequestRepositoriesList),
@@ -814,7 +797,7 @@ export const CreateInstallationAccessTokenRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateInstallationAccessTokenRequest>;
 
 export type InstallationTokenRepositorySelection = "all" | "selected";
-export const InstallationTokenRepositorySelection = S.String;
+const InstallationTokenRepositorySelection = S.String;
 
 /** License Simple */
 export interface NullableLicenseSimple {
@@ -825,7 +808,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -843,7 +826,7 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -854,35 +837,34 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
-  AuthorizationScopesList as any as S.Schema<RepositoryTopicsList>;
+const RepositoryTopicsList = AuthorizationScopesList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -1023,7 +1005,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1127,12 +1109,12 @@ export const Repository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
 
 export type InstallationTokenRepositoriesList = Array<Repository>;
-export const InstallationTokenRepositoriesList = /*@__PURE__*/ S.Array(
+const InstallationTokenRepositoriesList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<InstallationTokenRepositoriesList>;
 
 export type InstallationTokenSingleFilePathsList = Array<string>;
-export const InstallationTokenSingleFilePathsList =
+const InstallationTokenSingleFilePathsList =
   AuthorizationScopesList as any as S.Schema<InstallationTokenSingleFilePathsList>;
 
 /** Authentication token for a GitHub App installed on a user or org. */
@@ -1146,7 +1128,7 @@ export interface InstallationToken {
   has_multiple_single_files?: boolean;
   single_file_paths?: InstallationTokenSingleFilePathsList;
 }
-export const InstallationToken = /*@__PURE__*/ S.suspend(() =>
+const InstallationToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     expires_at: S.String,
@@ -1165,7 +1147,7 @@ export interface DeleteAuthorizationRequest {
   /** The OAuth access token used to authenticate to the GitHub API. */
   access_token: string | Redacted.Redacted<string>;
 }
-export const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Label()),
     access_token: S.String.pipe(T.SensitiveValue({})),
@@ -1175,7 +1157,7 @@ export const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationRequest>;
 
 export interface DeleteAuthorizationResponse {}
-export const DeleteAuthorizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAuthorizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAuthorizationResponse",
 }) as any as S.Schema<DeleteAuthorizationResponse>;
 
@@ -1183,7 +1165,7 @@ export interface DeleteInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
-export const DeleteInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/app/installations/{installation_id}", code: 200 })),
@@ -1192,7 +1174,7 @@ export const DeleteInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInstallationRequest>;
 
 export interface DeleteInstallationResponse {}
-export const DeleteInstallationResponse =
+const DeleteInstallationResponse =
   DeleteAuthorizationResponse as any as S.Schema<DeleteInstallationResponse>;
 
 export interface DeleteTokenRequest {
@@ -1201,7 +1183,7 @@ export interface DeleteTokenRequest {
   /** The OAuth access token used to authenticate to the GitHub API. */
   access_token: string | Redacted.Redacted<string>;
 }
-export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Label()),
     access_token: S.String.pipe(T.SensitiveValue({})),
@@ -1209,25 +1191,21 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTokenRequest" }) as any as S.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {}
-export const DeleteTokenResponse =
-  DeleteAuthorizationResponse as any as S.Schema<DeleteTokenResponse>;
+const DeleteTokenResponse = DeleteAuthorizationResponse as any as S.Schema<DeleteTokenResponse>;
 
 export interface GetAuthenticatedRequest {}
-export const GetAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/app", code: 200 })),
 ).annotate({ identifier: "GetAuthenticatedRequest" }) as any as S.Schema<GetAuthenticatedRequest>;
 
 export type IntegrationOwner = NullableSimpleUser | Enterprise;
-export const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
+const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
 
 /** The set of permissions for the GitHub app */
 export type IntegrationPermissions = CreateFromManifestResponsePermissions;
-export const IntegrationPermissions = CreateFromManifestResponsePermissions;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
-export const IntegrationEventsList =
-  AuthorizationScopesList as any as S.Schema<IntegrationEventsList>;
+const IntegrationEventsList = AuthorizationScopesList as any as S.Schema<IntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface Integration {
@@ -1252,7 +1230,7 @@ export interface Integration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const Integration = /*@__PURE__*/ S.suspend(() =>
+const Integration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.optional(S.String),
@@ -1274,7 +1252,7 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
 export interface GetBySlugRequest {
   app_slug: string;
 }
-export const GetBySlugRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBySlugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/apps/{app_slug}", code: 200 })),
@@ -1284,25 +1262,24 @@ export interface GetInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
-export const GetInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/app/installations/{installation_id}", code: 200 })),
 ).annotate({ identifier: "GetInstallationRequest" }) as any as S.Schema<GetInstallationRequest>;
 
 export type InstallationAccount = NullableSimpleUser | Enterprise;
-export const InstallationAccount = S.Unknown as any as S.Schema<InstallationAccount>;
+const InstallationAccount = S.Unknown as any as S.Schema<InstallationAccount>;
 
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type InstallationRepositorySelection = "all" | "selected";
-export const InstallationRepositorySelection = S.String;
+const InstallationRepositorySelection = S.String;
 
 export type InstallationEventsList = Array<string>;
-export const InstallationEventsList =
-  AuthorizationScopesList as any as S.Schema<InstallationEventsList>;
+const InstallationEventsList = AuthorizationScopesList as any as S.Schema<InstallationEventsList>;
 
 export type InstallationSingleFilePathsList = Array<string>;
-export const InstallationSingleFilePathsList =
+const InstallationSingleFilePathsList =
   AuthorizationScopesList as any as S.Schema<InstallationSingleFilePathsList>;
 
 /** Installation */
@@ -1332,7 +1309,7 @@ export interface Installation {
   suspended_at: string | null;
   contact_email?: string | null;
 }
-export const Installation = /*@__PURE__*/ S.suspend(() =>
+const Installation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     account: S.NullOr(InstallationAccount),
@@ -1362,7 +1339,7 @@ export interface GetOrgInstallationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetOrgInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/installation", code: 200 })),
@@ -1376,7 +1353,7 @@ export interface GetRepoInstallationRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetRepoInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1389,7 +1366,7 @@ export interface GetSubscriptionPlanForAccountRequest {
   /** account_id parameter */
   account_id: number;
 }
-export const GetSubscriptionPlanForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionPlanForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/marketplace_listing/accounts/{account_id}", code: 200 })),
@@ -1398,10 +1375,10 @@ export const GetSubscriptionPlanForAccountRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetSubscriptionPlanForAccountRequest>;
 
 export type MarketplaceListingPlanPriceModel = "FREE" | "FLAT_RATE" | "PER_UNIT";
-export const MarketplaceListingPlanPriceModel = S.String;
+const MarketplaceListingPlanPriceModel = S.String;
 
 export type MarketplaceListingPlanBulletsList = Array<string>;
-export const MarketplaceListingPlanBulletsList =
+const MarketplaceListingPlanBulletsList =
   AuthorizationScopesList as any as S.Schema<MarketplaceListingPlanBulletsList>;
 
 /** Marketplace Listing Plan */
@@ -1420,7 +1397,7 @@ export interface MarketplaceListingPlan {
   state: string;
   bullets: MarketplaceListingPlanBulletsList;
 }
-export const MarketplaceListingPlan = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceListingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     accounts_url: S.String,
@@ -1445,7 +1422,7 @@ export interface MarketplacePurchaseMarketplacePendingChange {
   id?: number;
   plan?: MarketplaceListingPlan;
 }
-export const MarketplacePurchaseMarketplacePendingChange = /*@__PURE__*/ S.suspend(() =>
+const MarketplacePurchaseMarketplacePendingChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_installed: S.optional(S.Boolean),
     effective_date: S.optional(S.String),
@@ -1467,7 +1444,7 @@ export interface MarketplacePurchaseMarketplacePurchase {
   updated_at?: string;
   plan?: MarketplaceListingPlan;
 }
-export const MarketplacePurchaseMarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
+const MarketplacePurchaseMarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_cycle: S.optional(S.String),
     next_billing_date: S.optional(S.NullOr(S.String)),
@@ -1493,7 +1470,7 @@ export interface MarketplacePurchase {
   marketplace_pending_change?: MarketplacePurchaseMarketplacePendingChange | null;
   marketplace_purchase: MarketplacePurchaseMarketplacePurchase;
 }
-export const MarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
+const MarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     type: S.String,
@@ -1510,7 +1487,7 @@ export interface GetSubscriptionPlanForAccountStubbedRequest {
   /** account_id parameter */
   account_id: number;
 }
-export const GetSubscriptionPlanForAccountStubbedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionPlanForAccountStubbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -1524,7 +1501,7 @@ export interface GetUserInstallationRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const GetUserInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{username}/installation", code: 200 })),
@@ -1533,14 +1510,14 @@ export const GetUserInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserInstallationRequest>;
 
 export interface GetWebhookConfigForAppRequest {}
-export const GetWebhookConfigForAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookConfigForAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/app/hook/config", code: 200 })),
 ).annotate({
   identifier: "GetWebhookConfigForAppRequest",
 }) as any as S.Schema<GetWebhookConfigForAppRequest>;
 
 export type WebhookConfigInsecureSsl = string | number;
-export const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
+const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
 
 /** Configuration object of the webhook */
 export interface WebhookConfig {
@@ -1549,7 +1526,7 @@ export interface WebhookConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     content_type: S.optional(S.String),
@@ -1561,7 +1538,7 @@ export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebhookDeliveryRequest {
   delivery_id: number;
 }
-export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delivery_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/app/hook/deliveries/{delivery_id}", code: 200 })),
@@ -1571,14 +1548,14 @@ export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestHeadersMap = /*@__PURE__*/ S.Record(
+const HookDeliveryRequestHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<HookDeliveryRequestHeadersMap>;
 
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestPayloadMap =
+const HookDeliveryRequestPayloadMap =
   HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
 
 export interface HookDeliveryRequest {
@@ -1587,7 +1564,7 @@ export interface HookDeliveryRequest {
   /** The webhook payload. */
   payload: HookDeliveryRequestPayloadMap | null;
 }
-export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.NullOr(HookDeliveryRequestHeadersMap),
     payload: S.NullOr(HookDeliveryRequestPayloadMap),
@@ -1596,21 +1573,15 @@ export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponseHeadersMap =
-  HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryResponseHeadersMap>;
-
 /** The response payload received. */
 export type HookDeliveryResponsePayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponsePayloadMap =
-  HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryResponsePayloadMap>;
-
 export interface HookDeliveryResponse {
   /** The response headers received when the delivery was made. */
   headers: HookDeliveryResponseHeadersMap | null;
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-export const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
+const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
 
 /** Delivery made by a webhook. */
 export interface HookDelivery {
@@ -1643,7 +1614,7 @@ export interface HookDelivery {
   request: HookDeliveryRequest;
   response: HookDeliveryResponse;
 }
-export const HookDelivery = /*@__PURE__*/ S.suspend(() =>
+const HookDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     guid: S.String,
@@ -1664,10 +1635,10 @@ export const HookDelivery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HookDelivery" }) as any as S.Schema<HookDelivery>;
 
 export type ListAccountsForPlanRequestSort = "created" | "updated";
-export const ListAccountsForPlanRequestSort = S.String;
+const ListAccountsForPlanRequestSort = S.String;
 
 export type ListAccountsForPlanRequestDirection = "asc" | "desc";
-export const ListAccountsForPlanRequestDirection = S.String;
+const ListAccountsForPlanRequestDirection = S.String;
 
 export interface ListAccountsForPlanRequest {
   /** The unique identifier of the plan. */
@@ -1681,7 +1652,7 @@ export interface ListAccountsForPlanRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListAccountsForPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsForPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan_id: S.Number.pipe(T.Label()),
     sort: S.optional(ListAccountsForPlanRequestSort.pipe(T.Query())),
@@ -1696,22 +1667,22 @@ export const ListAccountsForPlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsForPlanRequest>;
 
 export type ListAccountsForPlanResponseBodyList = Array<MarketplacePurchase>;
-export const ListAccountsForPlanResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAccountsForPlanResponseBodyList = /*@__PURE__*/ S.Array(
   MarketplacePurchase,
 ) as any as S.Schema<ListAccountsForPlanResponseBodyList>;
 
 export type ListAccountsForPlanResponse = ListAccountsForPlanResponseBodyList;
-export const ListAccountsForPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsForPlanResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccountsForPlanResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAccountsForPlanResponse",
 }) as any as S.Schema<ListAccountsForPlanResponse>;
 
 export type ListAccountsForPlanStubbedRequestSort = "created" | "updated";
-export const ListAccountsForPlanStubbedRequestSort = S.String;
+const ListAccountsForPlanStubbedRequestSort = S.String;
 
 export type ListAccountsForPlanStubbedRequestDirection = "asc" | "desc";
-export const ListAccountsForPlanStubbedRequestDirection = S.String;
+const ListAccountsForPlanStubbedRequestDirection = S.String;
 
 export interface ListAccountsForPlanStubbedRequest {
   /** The unique identifier of the plan. */
@@ -1725,7 +1696,7 @@ export interface ListAccountsForPlanStubbedRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListAccountsForPlanStubbedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsForPlanStubbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan_id: S.Number.pipe(T.Label()),
     sort: S.optional(ListAccountsForPlanStubbedRequestSort.pipe(T.Query())),
@@ -1744,11 +1715,8 @@ export const ListAccountsForPlanStubbedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsForPlanStubbedRequest>;
 
 export type ListAccountsForPlanStubbedResponseBodyList = Array<MarketplacePurchase>;
-export const ListAccountsForPlanStubbedResponseBodyList =
-  ListAccountsForPlanResponseBodyList as any as S.Schema<ListAccountsForPlanStubbedResponseBodyList>;
-
 export type ListAccountsForPlanStubbedResponse = ListAccountsForPlanStubbedResponseBodyList;
-export const ListAccountsForPlanStubbedResponse =
+const ListAccountsForPlanStubbedResponse =
   ListAccountsForPlanResponse as any as S.Schema<ListAccountsForPlanStubbedResponse>;
 
 export interface ListInstallationReposForAuthenticatedUserRequest {
@@ -1759,7 +1727,7 @@ export interface ListInstallationReposForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInstallationReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1773,12 +1741,9 @@ export const ListInstallationReposForAuthenticatedUserRequest = /*@__PURE__*/ S.
 
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPermissions =
   RepositoryPermissions;
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPermissions =
-  RepositoryPermissions;
-
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList =
   Array<string>;
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList =
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList>;
@@ -1787,14 +1752,14 @@ export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTo
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
   | "all"
   | "collaborators_only";
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
   S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
   | "PR_TITLE"
   | "COMMIT_OR_PR_TITLE";
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
   S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
@@ -1802,35 +1767,31 @@ export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSqu
   | "PR_BODY"
   | "COMMIT_MESSAGES"
   | "BLANK";
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage =
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage =
   S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle =
   | "PR_TITLE"
   | "MERGE_MESSAGE";
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle =
-  S.String;
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
   | "PR_BODY"
   | "PR_TITLE"
   | "BLANK";
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
   S.String;
 
 /** The status of the code search index for this repository */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCodeSearchIndexStatus =
   RepositoryCodeSearchIndexStatus;
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCodeSearchIndexStatus =
-  RepositoryCodeSearchIndexStatus;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap =
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -1969,8 +1930,8 @@ export interface ListInstallationReposForAuthenticatedUserResponseRepositoriesIt
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only. */
   custom_properties?: ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap;
 }
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.Number,
       node_id: S.String,
@@ -2086,23 +2047,22 @@ export const ListInstallationReposForAuthenticatedUserResponseRepositoriesItem =
         ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap,
       ),
     }),
-  ).annotate({
-    identifier: "ListInstallationReposForAuthenticatedUserResponseRepositoriesItem",
-  }) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesItem>;
+).annotate({
+  identifier: "ListInstallationReposForAuthenticatedUserResponseRepositoriesItem",
+}) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesItem>;
 
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesList =
   Array<ListInstallationReposForAuthenticatedUserResponseRepositoriesItem>;
-export const ListInstallationReposForAuthenticatedUserResponseRepositoriesList =
-  /*@__PURE__*/ S.Array(
-    ListInstallationReposForAuthenticatedUserResponseRepositoriesItem,
-  ) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesList>;
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesList = /*@__PURE__*/ S.Array(
+  ListInstallationReposForAuthenticatedUserResponseRepositoriesItem,
+) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesList>;
 
 export interface ListInstallationReposForAuthenticatedUserResponse {
   total_count: number;
   repository_selection?: string;
   repositories: ListInstallationReposForAuthenticatedUserResponseRepositoriesList;
 }
-export const ListInstallationReposForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationReposForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repository_selection: S.optional(S.String),
@@ -2118,7 +2078,7 @@ export interface ListInstallationRequestsForAuthenticatedAppRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInstallationRequestsForAuthenticatedAppRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationRequestsForAuthenticatedAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2128,7 +2088,7 @@ export const ListInstallationRequestsForAuthenticatedAppRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppRequest>;
 
 export type IntegrationInstallationRequestAccount = NullableSimpleUser | Enterprise;
-export const IntegrationInstallationRequestAccount =
+const IntegrationInstallationRequestAccount =
   S.Unknown as any as S.Schema<IntegrationInstallationRequestAccount>;
 
 /** Request to install an integration on a target */
@@ -2140,7 +2100,7 @@ export interface IntegrationInstallationRequest {
   requester: NullableSimpleUser;
   created_at: string;
 }
-export const IntegrationInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.optional(S.String),
@@ -2154,13 +2114,13 @@ export const IntegrationInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListInstallationRequestsForAuthenticatedAppResponseBodyList =
   Array<IntegrationInstallationRequest>;
-export const ListInstallationRequestsForAuthenticatedAppResponseBodyList = /*@__PURE__*/ S.Array(
+const ListInstallationRequestsForAuthenticatedAppResponseBodyList = /*@__PURE__*/ S.Array(
   IntegrationInstallationRequest,
 ) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppResponseBodyList>;
 
 export type ListInstallationRequestsForAuthenticatedAppResponse =
   ListInstallationRequestsForAuthenticatedAppResponseBodyList;
-export const ListInstallationRequestsForAuthenticatedAppResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationRequestsForAuthenticatedAppResponse = /*@__PURE__*/ S.suspend(() =>
   ListInstallationRequestsForAuthenticatedAppResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListInstallationRequestsForAuthenticatedAppResponse",
@@ -2175,7 +2135,7 @@ export interface ListInstallationsRequest {
   since?: string;
   outdated?: string;
 }
-export const ListInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2185,12 +2145,12 @@ export const ListInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstallationsRequest" }) as any as S.Schema<ListInstallationsRequest>;
 
 export type ListInstallationsResponseBodyList = Array<Installation>;
-export const ListInstallationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListInstallationsResponseBodyList = /*@__PURE__*/ S.Array(
   Installation,
 ) as any as S.Schema<ListInstallationsResponseBodyList>;
 
 export type ListInstallationsResponse = ListInstallationsResponseBodyList;
-export const ListInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListInstallationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListInstallationsResponse",
@@ -2202,7 +2162,7 @@ export interface ListInstallationsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInstallationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2212,14 +2172,14 @@ export const ListInstallationsForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListInstallationsForAuthenticatedUserRequest>;
 
 export type ListInstallationsForAuthenticatedUserResponseInstallationsList = Array<Installation>;
-export const ListInstallationsForAuthenticatedUserResponseInstallationsList =
+const ListInstallationsForAuthenticatedUserResponseInstallationsList =
   ListInstallationsResponseBodyList as any as S.Schema<ListInstallationsForAuthenticatedUserResponseInstallationsList>;
 
 export interface ListInstallationsForAuthenticatedUserResponse {
   total_count: number;
   installations: ListInstallationsForAuthenticatedUserResponseInstallationsList;
 }
-export const ListInstallationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstallationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     installations: ListInstallationsForAuthenticatedUserResponseInstallationsList,
@@ -2234,7 +2194,7 @@ export interface ListPlansRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2242,12 +2202,12 @@ export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlansRequest" }) as any as S.Schema<ListPlansRequest>;
 
 export type ListPlansResponseBodyList = Array<MarketplaceListingPlan>;
-export const ListPlansResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPlansResponseBodyList = /*@__PURE__*/ S.Array(
   MarketplaceListingPlan,
 ) as any as S.Schema<ListPlansResponseBodyList>;
 
 export type ListPlansResponse = ListPlansResponseBodyList;
-export const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
   ListPlansResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPlansResponse" }) as any as S.Schema<ListPlansResponse>;
 
@@ -2257,7 +2217,7 @@ export interface ListPlansStubbedRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPlansStubbedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlansStubbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2265,12 +2225,8 @@ export const ListPlansStubbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlansStubbedRequest" }) as any as S.Schema<ListPlansStubbedRequest>;
 
 export type ListPlansStubbedResponseBodyList = Array<MarketplaceListingPlan>;
-export const ListPlansStubbedResponseBodyList =
-  ListPlansResponseBodyList as any as S.Schema<ListPlansStubbedResponseBodyList>;
-
 export type ListPlansStubbedResponse = ListPlansStubbedResponseBodyList;
-export const ListPlansStubbedResponse =
-  ListPlansResponse as any as S.Schema<ListPlansStubbedResponse>;
+const ListPlansStubbedResponse = ListPlansResponse as any as S.Schema<ListPlansStubbedResponse>;
 
 export interface ListReposAccessibleToInstallationRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -2278,7 +2234,7 @@ export interface ListReposAccessibleToInstallationRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposAccessibleToInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposAccessibleToInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2289,59 +2245,50 @@ export const ListReposAccessibleToInstallationRequest = /*@__PURE__*/ S.suspend(
 
 export type ListReposAccessibleToInstallationResponseRepositoriesItemPermissions =
   RepositoryPermissions;
-export const ListReposAccessibleToInstallationResponseRepositoriesItemPermissions =
-  RepositoryPermissions;
-
 export type ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList = Array<string>;
-export const ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList =
+const ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList =
   ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy =
   | "all"
   | "collaborators_only";
-export const ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy =
-  S.String;
+const ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle =
   | "PR_TITLE"
   | "COMMIT_OR_PR_TITLE";
-export const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle =
-  S.String;
+const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage =
   | "PR_BODY"
   | "COMMIT_MESSAGES"
   | "BLANK";
-export const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage =
-  S.String;
+const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle =
   | "PR_TITLE"
   | "MERGE_MESSAGE";
-export const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle = S.String;
+const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage =
   | "PR_BODY"
   | "PR_TITLE"
   | "BLANK";
-export const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage = S.String;
+const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemCodeSearchIndexStatus =
   RepositoryCodeSearchIndexStatus;
-export const ListReposAccessibleToInstallationResponseRepositoriesItemCodeSearchIndexStatus =
-  RepositoryCodeSearchIndexStatus;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap =
+const ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap =
   ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap>;
 
 export interface ListReposAccessibleToInstallationResponseRepositoriesItem {
@@ -2477,128 +2424,127 @@ export interface ListReposAccessibleToInstallationResponseRepositoriesItem {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only. */
   custom_properties?: ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap;
 }
-export const ListReposAccessibleToInstallationResponseRepositoriesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.Number,
-      node_id: S.String,
-      name: S.String,
-      full_name: S.String,
-      license: S.NullOr(NullableLicenseSimple),
-      forks: S.Number,
-      permissions: S.optional(RepositoryPermissions),
-      owner: NullableSimpleUser,
-      private: S.Boolean,
-      html_url: S.String,
-      description: S.NullOr(S.String),
-      fork: S.Boolean,
-      url: S.String,
-      archive_url: S.String,
-      assignees_url: S.String,
-      blobs_url: S.String,
-      branches_url: S.String,
-      collaborators_url: S.String,
-      comments_url: S.String,
-      commits_url: S.String,
-      compare_url: S.String,
-      contents_url: S.String,
-      contributors_url: S.String,
-      deployments_url: S.String,
-      downloads_url: S.String,
-      events_url: S.String,
-      forks_url: S.String,
-      git_commits_url: S.String,
-      git_refs_url: S.String,
-      git_tags_url: S.String,
-      git_url: S.String,
-      issue_comment_url: S.String,
-      issue_events_url: S.String,
-      issues_url: S.String,
-      keys_url: S.String,
-      labels_url: S.String,
-      languages_url: S.String,
-      merges_url: S.String,
-      milestones_url: S.String,
-      notifications_url: S.String,
-      pulls_url: S.String,
-      releases_url: S.String,
-      ssh_url: S.String,
-      stargazers_url: S.String,
-      statuses_url: S.String,
-      subscribers_url: S.String,
-      subscription_url: S.String,
-      tags_url: S.String,
-      teams_url: S.String,
-      trees_url: S.String,
-      clone_url: S.String,
-      mirror_url: S.NullOr(S.String),
-      hooks_url: S.String,
-      svn_url: S.String,
-      homepage: S.NullOr(S.String),
-      language: S.NullOr(S.String),
-      forks_count: S.Number,
-      stargazers_count: S.Number,
-      watchers_count: S.Number,
-      size: S.Number,
-      default_branch: S.String,
-      open_issues_count: S.Number,
-      is_template: S.optional(S.Boolean),
-      topics: S.optional(ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList),
-      has_issues: S.Boolean,
-      has_projects: S.Boolean,
-      has_wiki: S.Boolean,
-      has_pages: S.Boolean,
-      has_downloads: S.Boolean,
-      has_discussions: S.optional(S.Boolean),
-      has_pull_requests: S.optional(S.Boolean),
-      pull_request_creation_policy: S.optional(
-        ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy,
-      ),
-      archived: S.Boolean,
-      disabled: S.Boolean,
-      visibility: S.optional(S.String),
-      pushed_at: S.NullOr(S.String),
-      created_at: S.NullOr(S.String),
-      updated_at: S.NullOr(S.String),
-      allow_rebase_merge: S.optional(S.Boolean),
-      temp_clone_token: S.optional(S.String),
-      allow_squash_merge: S.optional(S.Boolean),
-      allow_auto_merge: S.optional(S.Boolean),
-      delete_branch_on_merge: S.optional(S.Boolean),
-      allow_update_branch: S.optional(S.Boolean),
-      use_squash_pr_title_as_default: S.optional(S.Boolean),
-      squash_merge_commit_title: S.optional(
-        ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle,
-      ),
-      squash_merge_commit_message: S.optional(
-        ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage,
-      ),
-      merge_commit_title: S.optional(
-        ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle,
-      ),
-      merge_commit_message: S.optional(
-        ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage,
-      ),
-      allow_merge_commit: S.optional(S.Boolean),
-      allow_forking: S.optional(S.Boolean),
-      web_commit_signoff_required: S.optional(S.Boolean),
-      open_issues: S.Number,
-      watchers: S.Number,
-      master_branch: S.optional(S.String),
-      starred_at: S.optional(S.String),
-      anonymous_access_enabled: S.optional(S.Boolean),
-      code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
-      custom_properties: S.optional(
-        ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap,
-      ),
-    }),
+const ListReposAccessibleToInstallationResponseRepositoriesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    node_id: S.String,
+    name: S.String,
+    full_name: S.String,
+    license: S.NullOr(NullableLicenseSimple),
+    forks: S.Number,
+    permissions: S.optional(RepositoryPermissions),
+    owner: NullableSimpleUser,
+    private: S.Boolean,
+    html_url: S.String,
+    description: S.NullOr(S.String),
+    fork: S.Boolean,
+    url: S.String,
+    archive_url: S.String,
+    assignees_url: S.String,
+    blobs_url: S.String,
+    branches_url: S.String,
+    collaborators_url: S.String,
+    comments_url: S.String,
+    commits_url: S.String,
+    compare_url: S.String,
+    contents_url: S.String,
+    contributors_url: S.String,
+    deployments_url: S.String,
+    downloads_url: S.String,
+    events_url: S.String,
+    forks_url: S.String,
+    git_commits_url: S.String,
+    git_refs_url: S.String,
+    git_tags_url: S.String,
+    git_url: S.String,
+    issue_comment_url: S.String,
+    issue_events_url: S.String,
+    issues_url: S.String,
+    keys_url: S.String,
+    labels_url: S.String,
+    languages_url: S.String,
+    merges_url: S.String,
+    milestones_url: S.String,
+    notifications_url: S.String,
+    pulls_url: S.String,
+    releases_url: S.String,
+    ssh_url: S.String,
+    stargazers_url: S.String,
+    statuses_url: S.String,
+    subscribers_url: S.String,
+    subscription_url: S.String,
+    tags_url: S.String,
+    teams_url: S.String,
+    trees_url: S.String,
+    clone_url: S.String,
+    mirror_url: S.NullOr(S.String),
+    hooks_url: S.String,
+    svn_url: S.String,
+    homepage: S.NullOr(S.String),
+    language: S.NullOr(S.String),
+    forks_count: S.Number,
+    stargazers_count: S.Number,
+    watchers_count: S.Number,
+    size: S.Number,
+    default_branch: S.String,
+    open_issues_count: S.Number,
+    is_template: S.optional(S.Boolean),
+    topics: S.optional(ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList),
+    has_issues: S.Boolean,
+    has_projects: S.Boolean,
+    has_wiki: S.Boolean,
+    has_pages: S.Boolean,
+    has_downloads: S.Boolean,
+    has_discussions: S.optional(S.Boolean),
+    has_pull_requests: S.optional(S.Boolean),
+    pull_request_creation_policy: S.optional(
+      ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy,
+    ),
+    archived: S.Boolean,
+    disabled: S.Boolean,
+    visibility: S.optional(S.String),
+    pushed_at: S.NullOr(S.String),
+    created_at: S.NullOr(S.String),
+    updated_at: S.NullOr(S.String),
+    allow_rebase_merge: S.optional(S.Boolean),
+    temp_clone_token: S.optional(S.String),
+    allow_squash_merge: S.optional(S.Boolean),
+    allow_auto_merge: S.optional(S.Boolean),
+    delete_branch_on_merge: S.optional(S.Boolean),
+    allow_update_branch: S.optional(S.Boolean),
+    use_squash_pr_title_as_default: S.optional(S.Boolean),
+    squash_merge_commit_title: S.optional(
+      ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle,
+    ),
+    squash_merge_commit_message: S.optional(
+      ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage,
+    ),
+    merge_commit_title: S.optional(
+      ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle,
+    ),
+    merge_commit_message: S.optional(
+      ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage,
+    ),
+    allow_merge_commit: S.optional(S.Boolean),
+    allow_forking: S.optional(S.Boolean),
+    web_commit_signoff_required: S.optional(S.Boolean),
+    open_issues: S.Number,
+    watchers: S.Number,
+    master_branch: S.optional(S.String),
+    starred_at: S.optional(S.String),
+    anonymous_access_enabled: S.optional(S.Boolean),
+    code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
+    custom_properties: S.optional(
+      ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap,
+    ),
+  }),
 ).annotate({
   identifier: "ListReposAccessibleToInstallationResponseRepositoriesItem",
 }) as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItem>;
 
 export type ListReposAccessibleToInstallationResponseRepositoriesList =
   Array<ListReposAccessibleToInstallationResponseRepositoriesItem>;
-export const ListReposAccessibleToInstallationResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const ListReposAccessibleToInstallationResponseRepositoriesList = /*@__PURE__*/ S.Array(
   ListReposAccessibleToInstallationResponseRepositoriesItem,
 ) as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesList>;
 
@@ -2607,7 +2553,7 @@ export interface ListReposAccessibleToInstallationResponse {
   repositories: ListReposAccessibleToInstallationResponseRepositoriesList;
   repository_selection?: string;
 }
-export const ListReposAccessibleToInstallationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposAccessibleToInstallationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repositories: ListReposAccessibleToInstallationResponseRepositoriesList,
@@ -2623,7 +2569,7 @@ export interface ListSubscriptionsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSubscriptionsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2641,7 +2587,7 @@ export interface MarketplaceAccount {
   email?: string | null;
   organization_billing_email?: string | null;
 }
-export const MarketplaceAccount = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     id: S.Number,
@@ -2664,7 +2610,7 @@ export interface UserMarketplacePurchase {
   account: MarketplaceAccount;
   plan: MarketplaceListingPlan;
 }
-export const UserMarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
+const UserMarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_cycle: S.String,
     next_billing_date: S.NullOr(S.String),
@@ -2678,13 +2624,13 @@ export const UserMarketplacePurchase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserMarketplacePurchase" }) as any as S.Schema<UserMarketplacePurchase>;
 
 export type ListSubscriptionsForAuthenticatedUserResponseBodyList = Array<UserMarketplacePurchase>;
-export const ListSubscriptionsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSubscriptionsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   UserMarketplacePurchase,
 ) as any as S.Schema<ListSubscriptionsForAuthenticatedUserResponseBodyList>;
 
 export type ListSubscriptionsForAuthenticatedUserResponse =
   ListSubscriptionsForAuthenticatedUserResponseBodyList;
-export const ListSubscriptionsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListSubscriptionsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSubscriptionsForAuthenticatedUserResponse",
@@ -2696,7 +2642,7 @@ export interface ListSubscriptionsForAuthenticatedUserStubbedRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSubscriptionsForAuthenticatedUserStubbedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsForAuthenticatedUserStubbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2707,16 +2653,13 @@ export const ListSubscriptionsForAuthenticatedUserStubbedRequest = /*@__PURE__*/
 
 export type ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList =
   Array<UserMarketplacePurchase>;
-export const ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList =
-  ListSubscriptionsForAuthenticatedUserResponseBodyList as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList>;
-
 export type ListSubscriptionsForAuthenticatedUserStubbedResponse =
   ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList;
-export const ListSubscriptionsForAuthenticatedUserStubbedResponse =
+const ListSubscriptionsForAuthenticatedUserStubbedResponse =
   ListSubscriptionsForAuthenticatedUserResponse as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>;
 
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
-export const ListWebhookDeliveriesRequestStatus = S.String;
+const ListWebhookDeliveriesRequestStatus = S.String;
 
 export interface ListWebhookDeliveriesRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -2726,7 +2669,7 @@ export interface ListWebhookDeliveriesRequest {
   /** Returns webhook deliveries filtered by delivery outcome classification based on `status_code` range. A `status` of `success` returns deliveries with a `status_code` in the 200-399 range (inclusive). A `status` of `failure` returns deliveries with a `status_code` in the 400-599 range (inclusive). */
   status?: ListWebhookDeliveriesRequestStatus | (string & {});
 }
-export const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -2763,7 +2706,7 @@ export interface HookDeliveryItem {
   /** Time when the webhook delivery was throttled. */
   throttled_at?: string | null;
 }
-export const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
+const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     guid: S.String,
@@ -2781,12 +2724,12 @@ export const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HookDeliveryItem" }) as any as S.Schema<HookDeliveryItem>;
 
 export type ListWebhookDeliveriesResponseBodyList = Array<HookDeliveryItem>;
-export const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ S.Array(
   HookDeliveryItem,
 ) as any as S.Schema<ListWebhookDeliveriesResponseBodyList>;
 
 export type ListWebhookDeliveriesResponse = ListWebhookDeliveriesResponseBodyList;
-export const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhookDeliveriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWebhookDeliveriesResponse",
@@ -2795,7 +2738,7 @@ export const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RedeliverWebhookDeliveryRequest {
   delivery_id: number;
 }
-export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delivery_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -2806,7 +2749,7 @@ export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
 
 export interface RedeliverWebhookDeliveryResponse {}
-export const RedeliverWebhookDeliveryResponse =
+const RedeliverWebhookDeliveryResponse =
   AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
 
 export interface RemoveRepoFromInstallationForAuthenticatedUserRequest {
@@ -2815,7 +2758,7 @@ export interface RemoveRepoFromInstallationForAuthenticatedUserRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-export const RemoveRepoFromInstallationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRepoFromInstallationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
     repository_id: S.Number.pipe(T.Label()),
@@ -2831,7 +2774,7 @@ export const RemoveRepoFromInstallationForAuthenticatedUserRequest = /*@__PURE__
 }) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserRequest>;
 
 export interface RemoveRepoFromInstallationForAuthenticatedUserResponse {}
-export const RemoveRepoFromInstallationForAuthenticatedUserResponse =
+const RemoveRepoFromInstallationForAuthenticatedUserResponse =
   AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserResponse>;
 
 export interface ResetTokenRequest {
@@ -2840,7 +2783,7 @@ export interface ResetTokenRequest {
   /** The access_token of the OAuth or GitHub application. */
   access_token: string | Redacted.Redacted<string>;
 }
-export const ResetTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Label()),
     access_token: S.String.pipe(T.SensitiveValue({})),
@@ -2848,24 +2791,24 @@ export const ResetTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetTokenRequest" }) as any as S.Schema<ResetTokenRequest>;
 
 export interface RevokeInstallationAccessTokenRequest {}
-export const RevokeInstallationAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeInstallationAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/installation/token", code: 200 })),
 ).annotate({
   identifier: "RevokeInstallationAccessTokenRequest",
 }) as any as S.Schema<RevokeInstallationAccessTokenRequest>;
 
 export interface RevokeInstallationAccessTokenResponse {}
-export const RevokeInstallationAccessTokenResponse =
+const RevokeInstallationAccessTokenResponse =
   AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RevokeInstallationAccessTokenResponse>;
 
 /** The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified. */
 export type ScopeTokenRequestRepositoriesList = Array<string>;
-export const ScopeTokenRequestRepositoriesList =
+const ScopeTokenRequestRepositoriesList =
   AuthorizationScopesList as any as S.Schema<ScopeTokenRequestRepositoriesList>;
 
 /** The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified. */
 export type ScopeTokenRequestRepositoryIdsList = Array<number>;
-export const ScopeTokenRequestRepositoryIdsList =
+const ScopeTokenRequestRepositoryIdsList =
   CreateInstallationAccessTokenRequestRepositoryIdsList as any as S.Schema<ScopeTokenRequestRepositoryIdsList>;
 
 export interface ScopeTokenRequest {
@@ -2883,7 +2826,7 @@ export interface ScopeTokenRequest {
   repository_ids?: ScopeTokenRequestRepositoryIdsList;
   permissions?: AppPermissions;
 }
-export const ScopeTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ScopeTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Label()),
     access_token: S.String.pipe(T.SensitiveValue({})),
@@ -2899,7 +2842,7 @@ export interface SuspendInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
-export const SuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -2910,14 +2853,14 @@ export const SuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendInstallationRequest>;
 
 export interface SuspendInstallationResponse {}
-export const SuspendInstallationResponse =
+const SuspendInstallationResponse =
   DeleteAuthorizationResponse as any as S.Schema<SuspendInstallationResponse>;
 
 export interface UnsuspendInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
-export const UnsuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -2928,7 +2871,7 @@ export const UnsuspendInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnsuspendInstallationRequest>;
 
 export interface UnsuspendInstallationResponse {}
-export const UnsuspendInstallationResponse =
+const UnsuspendInstallationResponse =
   DeleteAuthorizationResponse as any as S.Schema<UnsuspendInstallationResponse>;
 
 export interface UpdateWebhookConfigForAppRequest {
@@ -2937,7 +2880,7 @@ export interface UpdateWebhookConfigForAppRequest {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const UpdateWebhookConfigForAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookConfigForAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     content_type: S.optional(S.String),

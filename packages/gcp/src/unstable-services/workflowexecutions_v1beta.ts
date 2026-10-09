@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request for the CancelExecution method. */
 export interface CancelExecutionRequest {}
-export const CancelExecutionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelExecutionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelExecutionRequest",
 }) as any as S.Schema<CancelExecutionRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
   /** Request body */
   body?: CancelExecutionRequest;
 }
-export const CancelProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelExecutionRequest.pipe(T.HttpBody())),
@@ -95,7 +95,7 @@ export interface Step {
   /** Name of a routine within the workflow. */
   routine?: string;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     step: S.optional(S.String),
     routine: S.optional(S.String),
@@ -103,14 +103,14 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export type StepList = Array<Step>;
-export const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
+const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
 
 /** Represents the current status of this execution. */
 export interface Status {
   /** A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step. */
   currentSteps?: StepList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentSteps: S.optional(StepList),
   }),
@@ -120,7 +120,7 @@ export type ExecutionCallLogLevelEnum =
   | "CALL_LOG_LEVEL_UNSPECIFIED"
   | "LOG_ALL_CALLS"
   | "LOG_ERRORS_ONLY";
-export const ExecutionCallLogLevelEnum = S.String;
+const ExecutionCallLogLevelEnum = S.String;
 
 export type ExecutionStateEnum =
   | "STATE_UNSPECIFIED"
@@ -130,7 +130,7 @@ export type ExecutionStateEnum =
   | "CANCELLED"
   | "UNAVAILABLE"
   | "QUEUED";
-export const ExecutionStateEnum = S.String;
+const ExecutionStateEnum = S.String;
 
 /** Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes. */
 export interface Position {
@@ -141,7 +141,7 @@ export interface Position {
   /** The source code column position (of the line) the current instruction was generated from. */
   column?: string;
 }
-export const Position = /*@__PURE__*/ S.suspend(() =>
+const Position = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.optional(S.String),
     length: S.optional(S.String),
@@ -158,7 +158,7 @@ export interface StackTraceElement {
   /** The source position information of the stack trace element. */
   position?: Position;
 }
-export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
+const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     step: S.optional(S.String),
     routine: S.optional(S.String),
@@ -167,7 +167,7 @@ export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StackTraceElement" }) as any as S.Schema<StackTraceElement>;
 
 export type StackTraceElementList = Array<StackTraceElement>;
-export const StackTraceElementList = /*@__PURE__*/ S.Array(
+const StackTraceElementList = /*@__PURE__*/ S.Array(
   StackTraceElement,
 ) as any as S.Schema<StackTraceElementList>;
 
@@ -176,7 +176,7 @@ export interface StackTrace {
   /** An array of stack elements. */
   elements?: StackTraceElementList;
 }
-export const StackTrace = /*@__PURE__*/ S.suspend(() =>
+const StackTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(StackTraceElementList),
   }),
@@ -191,7 +191,7 @@ export interface Workflowexecutions_Error {
   /** Error message and data returned represented as a JSON string. */
   payload?: string;
 }
-export const Workflowexecutions_Error = /*@__PURE__*/ S.suspend(() =>
+const Workflowexecutions_Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     stackTrace: S.optional(StackTrace),
@@ -222,7 +222,7 @@ export interface Execution {
   /** Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`. */
   error?: Workflowexecutions_Error;
 }
-export const Execution = /*@__PURE__*/ S.suspend(() =>
+const Execution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(Status),
     workflowRevisionId: S.optional(S.String),
@@ -243,7 +243,7 @@ export interface CreateProjectsLocationsWorkflowsExecutionsRequest {
   /** Request body */
   body?: Execution;
 }
-export const CreateProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Execution.pipe(T.HttpBody())),
@@ -262,7 +262,7 @@ export type GetProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const GetProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
+const GetProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
 
 export interface GetProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution to be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
@@ -270,7 +270,7 @@ export interface GetProjectsLocationsWorkflowsExecutionsRequest {
   /** Optional. A view defining which fields should be filled in the returned execution. The API will default to the FULL view. */
   view?: GetProjectsLocationsWorkflowsExecutionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsWorkflowsExecutionsViewEnum.pipe(T.Query())),
@@ -289,7 +289,7 @@ export type ListProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const ListProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
+const ListProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
 
 export interface ListProjectsLocationsWorkflowsExecutionsRequest {
   /** Maximum number of executions to return per call. Max supported value depends on the selected Execution view: it's 10000 for BASIC and 100 for FULL. The default value used if the field is not specified is 100, regardless of the selected view. Values greater than the max value will be coerced down to it. */
@@ -301,7 +301,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsRequest {
   /** Optional. A view defining which fields should be filled in the returned executions. The API will default to the BASIC view. */
   view?: ListProjectsLocationsWorkflowsExecutionsViewEnum | (string & {});
 }
-export const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -319,7 +319,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
 export type ExecutionList = Array<Execution>;
-export const ExecutionList = /*@__PURE__*/ S.Array(Execution) as any as S.Schema<ExecutionList>;
+const ExecutionList = /*@__PURE__*/ S.Array(Execution) as any as S.Schema<ExecutionList>;
 
 /** Response for the ListExecutions method. */
 export interface ListExecutionsResponse {
@@ -328,7 +328,7 @@ export interface ListExecutionsResponse {
   /** The executions which match the request. */
   executions?: ExecutionList;
 }
-export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     executions: S.optional(ExecutionList),

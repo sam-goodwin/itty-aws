@@ -8,32 +8,28 @@ import * as T from "../traits.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export type CreateTerminalAiRequestFormat = "json" | "txt";
-export const CreateTerminalAiRequestFormat = S.String;
+const CreateTerminalAiRequestFormat = S.String;
 
 export type TerminalAIModel =
   | "claude-opus-5"
   | "claude-sonnet-5"
   | "claude-sonnet-4-6"
   | "claude-haiku-4-5";
-export const TerminalAIModel = S.String;
+const TerminalAIModel = S.String;
 
 export type TerminalAIMessageRoleEnum = "user" | "assistant";
-export const TerminalAIMessageRoleEnum = S.String;
+const TerminalAIMessageRoleEnum = S.String;
 
 export type TerminalAIMessageContentCase1ItemMap = { [key: string]: unknown | undefined };
-export const TerminalAIMessageContentCase1ItemMap = /*@__PURE__*/ S.Record(
+const TerminalAIMessageContentCase1ItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TerminalAIMessageContentCase1ItemMap>;
 
 export type TerminalAIMessageContentCase1List = Array<TerminalAIMessageContentCase1ItemMap>;
-export const TerminalAIMessageContentCase1List = /*@__PURE__*/ S.Array(
-  TerminalAIMessageContentCase1ItemMap,
-) as any as S.Schema<TerminalAIMessageContentCase1List>;
-
 /** Anthropic text, image, or tool content blocks. */
 export type TerminalAIMessageContent = string | TerminalAIMessageContentCase1List;
-export const TerminalAIMessageContent = S.Unknown as any as S.Schema<TerminalAIMessageContent>;
+const TerminalAIMessageContent = S.Unknown as any as S.Schema<TerminalAIMessageContent>;
 
 export interface TerminalAIMessage {
   /** Author of this conversation message. */
@@ -41,7 +37,7 @@ export interface TerminalAIMessage {
   /** Anthropic text, image, or tool content blocks. */
   content: TerminalAIMessageContent;
 }
-export const TerminalAIMessage = /*@__PURE__*/ S.suspend(() =>
+const TerminalAIMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: TerminalAIMessageRoleEnum,
     content: TerminalAIMessageContent,
@@ -50,31 +46,24 @@ export const TerminalAIMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** Conversation and tool results. */
 export type CreateTerminalAiRequestMessagesList = Array<TerminalAIMessage>;
-export const CreateTerminalAiRequestMessagesList = /*@__PURE__*/ S.Array(
+const CreateTerminalAiRequestMessagesList = /*@__PURE__*/ S.Array(
   TerminalAIMessage,
 ) as any as S.Schema<CreateTerminalAiRequestMessagesList>;
 
 export type CreateTerminalAiRequestSystemCase1ItemMap = { [key: string]: unknown | undefined };
-export const CreateTerminalAiRequestSystemCase1ItemMap =
-  TerminalAIMessageContentCase1ItemMap as any as S.Schema<CreateTerminalAiRequestSystemCase1ItemMap>;
-
 export type CreateTerminalAiRequestSystemCase1List =
   Array<CreateTerminalAiRequestSystemCase1ItemMap>;
-export const CreateTerminalAiRequestSystemCase1List =
-  TerminalAIMessageContentCase1List as any as S.Schema<CreateTerminalAiRequestSystemCase1List>;
-
 /** Agent instructions. */
 export type CreateTerminalAiRequestSystem = string | CreateTerminalAiRequestSystemCase1List;
-export const CreateTerminalAiRequestSystem =
-  S.Unknown as any as S.Schema<CreateTerminalAiRequestSystem>;
+const CreateTerminalAiRequestSystem = S.Unknown as any as S.Schema<CreateTerminalAiRequestSystem>;
 
 /** JSON schema for the tool's arguments. */
 export type TerminalAIToolInputSchemaMap = { [key: string]: unknown | undefined };
-export const TerminalAIToolInputSchemaMap =
+const TerminalAIToolInputSchemaMap =
   TerminalAIMessageContentCase1ItemMap as any as S.Schema<TerminalAIToolInputSchemaMap>;
 
 export type TerminalAIToolCacheControlMap = { [key: string]: string | undefined };
-export const TerminalAIToolCacheControlMap = /*@__PURE__*/ S.Record(
+const TerminalAIToolCacheControlMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TerminalAIToolCacheControlMap>;
@@ -91,7 +80,7 @@ export interface TerminalAITool {
   /** Stream tool arguments as they are generated. */
   eager_input_streaming?: boolean | null;
 }
-export const TerminalAITool = /*@__PURE__*/ S.suspend(() =>
+const TerminalAITool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -103,7 +92,7 @@ export const TerminalAITool = /*@__PURE__*/ S.suspend(() =>
 
 /** Tools executed by pi. */
 export type CreateTerminalAiRequestToolsList = Array<TerminalAITool>;
-export const CreateTerminalAiRequestToolsList = /*@__PURE__*/ S.Array(
+const CreateTerminalAiRequestToolsList = /*@__PURE__*/ S.Array(
   TerminalAITool,
 ) as any as S.Schema<CreateTerminalAiRequestToolsList>;
 
@@ -126,7 +115,7 @@ export interface CreateTerminalAiRequest {
   /** Sampling temperature. */
   temperature?: number | null;
 }
-export const CreateTerminalAiRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTerminalAiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     format: S.optional(CreateTerminalAiRequestFormat.pipe(T.Query())),
@@ -141,7 +130,7 @@ export const CreateTerminalAiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTerminalAiRequest" }) as any as S.Schema<CreateTerminalAiRequest>;
 
 export interface CreateTerminalAiResponse {}
-export const CreateTerminalAiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateTerminalAiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateTerminalAiResponse",
 }) as any as S.Schema<CreateTerminalAiResponse>;
 

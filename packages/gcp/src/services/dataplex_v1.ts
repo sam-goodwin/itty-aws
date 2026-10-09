@@ -68,7 +68,7 @@ export interface GoogleCloudDataplexV1ApproveChangeRequestRequest {
   /** Optional. The comment or reason for approving the ChangeRequest. Maximum length is 1024 characters. */
   comment?: string;
 }
-export const GoogleCloudDataplexV1ApproveChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ApproveChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     comment: S.optional(S.String),
@@ -83,7 +83,7 @@ export interface ApproveProjectsLocationsChangeRequestsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1ApproveChangeRequestRequest;
 }
-export const ApproveProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDataplexV1ApproveChangeRequestRequest.pipe(T.HttpBody())),
@@ -105,10 +105,10 @@ export type GoogleCloudDataplexV1ChangeRequestStateEnum =
   | "REJECTED"
   | "EXPIRED"
   | "REVOKED";
-export const GoogleCloudDataplexV1ChangeRequestStateEnum = S.String;
+const GoogleCloudDataplexV1ChangeRequestStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** GlossaryTerms are the core of Glossary. A GlossaryTerm holds a rich text description that can be attached to Entries or specific columns to enrich them. */
 export interface GoogleCloudDataplexV1GlossaryTerm {
@@ -129,7 +129,7 @@ export interface GoogleCloudDataplexV1GlossaryTerm {
   /** Required. The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a GlossaryCategory. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} OR projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id} */
   parent?: string;
 }
-export const GoogleCloudDataplexV1GlossaryTerm = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1GlossaryTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     uid: S.optional(S.String),
@@ -153,7 +153,7 @@ export interface GoogleCloudDataplexV1CreateGlossaryTermRequest {
   /** Required. The parent resource where the GlossaryTerm will be created. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where location_id refers to a Google Cloud region. */
   parent?: string;
 }
-export const GoogleCloudDataplexV1CreateGlossaryTermRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1CreateGlossaryTermRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     termId: S.optional(S.String),
     term: S.optional(GoogleCloudDataplexV1GlossaryTerm),
@@ -170,7 +170,7 @@ export interface GoogleCloudDataplexV1DeleteGlossaryRequest {
   /** Optional. The etag of the Glossary. If this is provided, it must match the server's etag. If the etag is provided and does not match the server-computed etag, the request must fail with a ABORTED error code. */
   etag?: string;
 }
-export const GoogleCloudDataplexV1DeleteGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DeleteGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     etag: S.optional(S.String),
@@ -180,10 +180,7 @@ export const GoogleCloudDataplexV1DeleteGlossaryRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GoogleCloudDataplexV1DeleteGlossaryRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Information related to the source system of the aspect. */
 export interface GoogleCloudDataplexV1AspectSource {
@@ -194,7 +191,7 @@ export interface GoogleCloudDataplexV1AspectSource {
   /** The version of the data format used to produce this data. This field is used to indicated when the underlying data format changes (e.g., schema modifications, changes to the source URL format definition, etc). */
   dataVersion?: string;
 }
-export const GoogleCloudDataplexV1AspectSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AspectSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -219,7 +216,7 @@ export interface GoogleCloudDataplexV1Aspect {
   /** Optional. Information related to the source system of the aspect. */
   aspectSource?: GoogleCloudDataplexV1AspectSource;
 }
-export const GoogleCloudDataplexV1Aspect = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Aspect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     path: S.optional(S.String),
@@ -235,7 +232,7 @@ export const GoogleCloudDataplexV1Aspect = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudDataplexV1AspectMap = {
   [key: string]: GoogleCloudDataplexV1Aspect | undefined;
 };
-export const GoogleCloudDataplexV1AspectMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDataplexV1AspectMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDataplexV1Aspect,
 ) as any as S.Schema<GoogleCloudDataplexV1AspectMap>;
@@ -247,7 +244,7 @@ export interface GoogleCloudDataplexV1EntrySourceAncestor {
   /** Optional. The type of the ancestor resource. */
   type?: string;
 }
-export const GoogleCloudDataplexV1EntrySourceAncestor = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntrySourceAncestor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -258,7 +255,7 @@ export const GoogleCloudDataplexV1EntrySourceAncestor = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDataplexV1EntrySourceAncestorList =
   Array<GoogleCloudDataplexV1EntrySourceAncestor>;
-export const GoogleCloudDataplexV1EntrySourceAncestorList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntrySourceAncestorList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntrySourceAncestor,
 ) as any as S.Schema<GoogleCloudDataplexV1EntrySourceAncestorList>;
 
@@ -285,7 +282,7 @@ export interface GoogleCloudDataplexV1EntrySource {
   /** A description of the data resource. Maximum length is 2,000 characters. */
   description?: string;
 }
-export const GoogleCloudDataplexV1EntrySource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntrySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -321,7 +318,7 @@ export interface GoogleCloudDataplexV1Entry {
   /** Identifier. The relative resource name of the entry, in the format projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}. */
   name?: string;
 }
-export const GoogleCloudDataplexV1Entry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Entry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentEntry: S.optional(S.String),
     entryType: S.optional(S.String),
@@ -337,7 +334,7 @@ export const GoogleCloudDataplexV1Entry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDataplexV1Entry>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Update Entry request. */
 export interface GoogleCloudDataplexV1UpdateEntryRequest {
@@ -352,7 +349,7 @@ export interface GoogleCloudDataplexV1UpdateEntryRequest {
   /** Optional. The map keys of the Aspects which the service should modify. It supports the following syntaxes: - matches an aspect of the given type and empty path. @path - matches an aspect of the given type and specified path. For example, to attach an aspect to a field that is specified by the schema aspect, the path should have the format Schema.. @* - matches aspects of the given type for all paths. *@path - matches aspects of all types on the given path.The service will not remove existing aspects matching the syntax unless delete_missing_aspects is set to true.If this field is left empty, the service treats it as specifying exactly those Aspects present in the request. */
   aspectKeys?: StringList;
 }
-export const GoogleCloudDataplexV1UpdateEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1UpdateEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entry: S.optional(GoogleCloudDataplexV1Entry),
     deleteMissingAspects: S.optional(S.Boolean),
@@ -387,7 +384,7 @@ export interface GoogleCloudDataplexV1Glossary {
   /** Output only. The time at which the Glossary was created. */
   createTime?: string;
 }
-export const GoogleCloudDataplexV1Glossary = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Glossary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     categoryCount: S.optional(S.Number),
@@ -413,7 +410,7 @@ export interface GoogleCloudDataplexV1UpdateGlossaryRequest {
   /** Optional. Validates the request without actually updating the Glossary. Default: false. */
   validateOnly?: boolean;
 }
-export const GoogleCloudDataplexV1UpdateGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1UpdateGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     glossary: S.optional(GoogleCloudDataplexV1Glossary),
@@ -432,7 +429,7 @@ export interface GoogleCloudDataplexV1CreateEntryRequest {
   /** Required. The resource name of the parent Entry Group: projects/{project}/locations/{location}/entryGroups/{entry_group}. */
   parent?: string;
 }
-export const GoogleCloudDataplexV1CreateEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1CreateEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryId: S.optional(S.String),
     entry: S.optional(GoogleCloudDataplexV1Entry),
@@ -461,7 +458,7 @@ export interface GoogleCloudDataplexV1GlossaryCategory {
   /** Output only. The time at which the GlossaryCategory was last updated. */
   updateTime?: string;
 }
-export const GoogleCloudDataplexV1GlossaryCategory = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1GlossaryCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     parent: S.optional(S.String),
@@ -485,7 +482,7 @@ export interface GoogleCloudDataplexV1CreateGlossaryCategoryRequest {
   /** Required. GlossaryCategory identifier. */
   categoryId?: string;
 }
-export const GoogleCloudDataplexV1CreateGlossaryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1CreateGlossaryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     category: S.optional(GoogleCloudDataplexV1GlossaryCategory),
@@ -500,7 +497,7 @@ export interface GoogleCloudDataplexV1DeleteGlossaryCategoryRequest {
   /** Required. The name of the GlossaryCategory to delete. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteGlossaryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DeleteGlossaryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -519,7 +516,7 @@ export interface GoogleCloudDataplexV1DataProductAccessRequest {
   /** Required. The resource name of the data product. Format: projects/{project_number}/locations/{location_id}/dataProducts/{data_product_id} */
   parent?: string;
 }
-export const GoogleCloudDataplexV1DataProductAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProductAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupId: S.optional(S.String),
     accessGroupDisplayName: S.optional(S.String),
@@ -535,7 +532,7 @@ export interface GoogleCloudDataplexV1DeleteGlossaryTermRequest {
   /** Required. The name of the GlossaryTerm to delete. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteGlossaryTermRequest =
+const GoogleCloudDataplexV1DeleteGlossaryTermRequest =
   GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DeleteGlossaryTermRequest>;
 
 /** Request message for DeleteEntryLink. */
@@ -543,7 +540,7 @@ export interface GoogleCloudDataplexV1DeleteEntryLinkRequest {
   /** Required. The resource name of the Entry Link: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteEntryLinkRequest =
+const GoogleCloudDataplexV1DeleteEntryLinkRequest =
   GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DeleteEntryLinkRequest>;
 
 /** Update GlossaryCategory Request */
@@ -553,7 +550,7 @@ export interface GoogleCloudDataplexV1UpdateGlossaryCategoryRequest {
   /** Required. The GlossaryCategory to update. The GlossaryCategory's name field is used to identify the GlossaryCategory to update. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id} */
   category?: GoogleCloudDataplexV1GlossaryCategory;
 }
-export const GoogleCloudDataplexV1UpdateGlossaryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1UpdateGlossaryCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     category: S.optional(GoogleCloudDataplexV1GlossaryCategory),
@@ -579,7 +576,7 @@ export type GoogleCloudDataplexV1ChangeRequestChangeTypeEnum =
   | "UPDATE_GLOSSARY_TERM"
   | "DELETE_GLOSSARY_TERM"
   | "REQUEST_DATA_PRODUCT_ACCESS";
-export const GoogleCloudDataplexV1ChangeRequestChangeTypeEnum = S.String;
+const GoogleCloudDataplexV1ChangeRequestChangeTypeEnum = S.String;
 
 /** Update GlossaryTerm Request */
 export interface GoogleCloudDataplexV1UpdateGlossaryTermRequest {
@@ -588,7 +585,7 @@ export interface GoogleCloudDataplexV1UpdateGlossaryTermRequest {
   /** Required. The list of fields to update. */
   updateMask?: string;
 }
-export const GoogleCloudDataplexV1UpdateGlossaryTermRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1UpdateGlossaryTermRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     term: S.optional(GoogleCloudDataplexV1GlossaryTerm),
     updateMask: S.optional(S.String),
@@ -601,7 +598,7 @@ export type GoogleCloudDataplexV1EntryLinkEntryReferenceTypeEnum =
   | "UNSPECIFIED"
   | "SOURCE"
   | "TARGET";
-export const GoogleCloudDataplexV1EntryLinkEntryReferenceTypeEnum = S.String;
+const GoogleCloudDataplexV1EntryLinkEntryReferenceTypeEnum = S.String;
 
 /** Reference to the Entry that is linked through the Entry Link. */
 export interface GoogleCloudDataplexV1EntryLinkEntryReference {
@@ -612,7 +609,7 @@ export interface GoogleCloudDataplexV1EntryLinkEntryReference {
   /** Immutable. The path in the Entry that is referenced in the Entry Link. Empty path denotes that the Entry itself is referenced in the Entry Link. */
   path?: string;
 }
-export const GoogleCloudDataplexV1EntryLinkEntryReference = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntryLinkEntryReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudDataplexV1EntryLinkEntryReferenceTypeEnum),
     name: S.optional(S.String),
@@ -624,7 +621,7 @@ export const GoogleCloudDataplexV1EntryLinkEntryReference = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDataplexV1EntryLinkEntryReferenceList =
   Array<GoogleCloudDataplexV1EntryLinkEntryReference>;
-export const GoogleCloudDataplexV1EntryLinkEntryReferenceList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntryLinkEntryReferenceList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryLinkEntryReference,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryLinkEntryReferenceList>;
 
@@ -643,7 +640,7 @@ export interface GoogleCloudDataplexV1EntryLink {
   /** Output only. Immutable. Identifier. The relative resource name of the Entry Link, of the form: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1EntryLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntryLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     aspects: S.optional(GoogleCloudDataplexV1AspectMap),
@@ -665,7 +662,7 @@ export interface GoogleCloudDataplexV1CreateEntryLinkRequest {
   /** Required. Entry Link resource. */
   entryLink?: GoogleCloudDataplexV1EntryLink;
 }
-export const GoogleCloudDataplexV1CreateEntryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1CreateEntryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     entryLinkId: S.optional(S.String),
@@ -686,7 +683,7 @@ export interface GoogleCloudDataplexV1CreateGlossaryRequest {
   /** Optional. Validates the request without actually creating the Glossary. Default: false. */
   validateOnly?: boolean;
 }
-export const GoogleCloudDataplexV1CreateGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1CreateGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     glossary: S.optional(GoogleCloudDataplexV1Glossary),
     glossaryId: S.optional(S.String),
@@ -702,7 +699,7 @@ export interface GoogleCloudDataplexV1DeleteEntryRequest {
   /** Required. The resource name of the Entry: projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteEntryRequest =
+const GoogleCloudDataplexV1DeleteEntryRequest =
   GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DeleteEntryRequest>;
 
 /** Represents a proposed change to a metadata resource. */
@@ -766,7 +763,7 @@ export interface GoogleCloudDataplexV1ChangeRequest {
   /** Payload for deleting an Entry. */
   deleteEntry?: GoogleCloudDataplexV1DeleteEntryRequest;
 }
-export const GoogleCloudDataplexV1ChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewerComment: S.optional(S.String),
     state: S.optional(GoogleCloudDataplexV1ChangeRequestStateEnum),
@@ -804,7 +801,7 @@ export const GoogleCloudDataplexV1ChangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -816,7 +813,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -833,22 +830,19 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 /** Request message for the CancelDataScanJob method. */
 export type GoogleCloudDataplexV1CancelDataScanJobRequest = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1CancelDataScanJobRequest =
-  GoogleLongrunningCancelOperationRequest;
-
 export interface CancelProjectsLocationsDataScansJobsRequest {
   /** Required. The resource name of the DataScanJob: projects/{project_id_or_number}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id} where project_id_or_number refers to a project_id or project_number and location_id refers to a Google Cloud region. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -865,20 +859,18 @@ export const CancelProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspe
 
 /** Response message for the CancelDataScanJob method. */
 export interface GoogleCloudDataplexV1CancelDataScanJobResponse {}
-export const GoogleCloudDataplexV1CancelDataScanJobResponse =
+const GoogleCloudDataplexV1CancelDataScanJobResponse =
   GoogleLongrunningCancelOperationRequest as any as S.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse>;
 
 /** Cancel task jobs. */
 export type GoogleCloudDataplexV1CancelJobRequest = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1CancelJobRequest = GoogleLongrunningCancelOperationRequest;
-
 export interface CancelProjectsLocationsLakesTasksJobsRequest {
   /** Required. The resource name of the job: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}/job/{job_id}. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -895,16 +887,13 @@ export const CancelProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.susp
 
 /** Cancel metadata job request. */
 export type GoogleCloudDataplexV1CancelMetadataJobRequest = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1CancelMetadataJobRequest =
-  GoogleLongrunningCancelOperationRequest;
-
 export interface CancelProjectsLocationsMetadataJobsRequest {
   /** Required. The resource name of the job, in the format projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id} */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -925,7 +914,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -944,7 +933,7 @@ export type GoogleCloudDataplexV1EncryptionConfigFailureDetailsErrorCodeEnum =
   | "UNKNOWN"
   | "INTERNAL_ERROR"
   | "REQUIRE_USER_ACTION";
-export const GoogleCloudDataplexV1EncryptionConfigFailureDetailsErrorCodeEnum = S.String;
+const GoogleCloudDataplexV1EncryptionConfigFailureDetailsErrorCodeEnum = S.String;
 
 /** Details of the failure if anything related to Cmek db fails. */
 export interface GoogleCloudDataplexV1EncryptionConfigFailureDetails {
@@ -953,7 +942,7 @@ export interface GoogleCloudDataplexV1EncryptionConfigFailureDetails {
   /** Output only. The error message will be shown to the user. Set only if the error code is REQUIRE_USER_ACTION. */
   errorMessage?: string;
 }
-export const GoogleCloudDataplexV1EncryptionConfigFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EncryptionConfigFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(GoogleCloudDataplexV1EncryptionConfigFailureDetailsErrorCodeEnum),
     errorMessage: S.optional(S.String),
@@ -967,7 +956,7 @@ export type GoogleCloudDataplexV1EncryptionConfigEncryptionStateEnum =
   | "ENCRYPTING"
   | "COMPLETED"
   | "FAILED";
-export const GoogleCloudDataplexV1EncryptionConfigEncryptionStateEnum = S.String;
+const GoogleCloudDataplexV1EncryptionConfigEncryptionStateEnum = S.String;
 
 /** A Resource designed to manage encryption configurations for customers to support Customer Managed Encryption Keys (CMEK). */
 export interface GoogleCloudDataplexV1EncryptionConfig {
@@ -988,7 +977,7 @@ export interface GoogleCloudDataplexV1EncryptionConfig {
   /** Output only. The time when the Encryption configuration was last updated. */
   updateTime?: string;
 }
-export const GoogleCloudDataplexV1EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureDetails: S.optional(GoogleCloudDataplexV1EncryptionConfigFailureDetails),
     encryptionState: S.optional(GoogleCloudDataplexV1EncryptionConfigEncryptionStateEnum),
@@ -1011,7 +1000,7 @@ export interface CreateOrganizationsLocationsEncryptionConfigsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EncryptionConfig;
 }
-export const CreateOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1028,9 +1017,7 @@ export const CreateOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*
 }) as any as S.Schema<CreateOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -1041,7 +1028,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1062,7 +1049,7 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -1079,18 +1066,17 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
   /** Optional. Marks this field as optional or required. */
   required?: boolean;
 }
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      required: S.optional(S.Boolean),
-    }),
+const GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    required: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints",
 }) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints>;
 
 export type GoogleCloudDataplexV1AspectTypeMetadataTemplateList =
   Array<GoogleCloudDataplexV1AspectTypeMetadataTemplate>;
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1AspectTypeMetadataTemplateList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GoogleCloudDataplexV1AspectTypeMetadataTemplate),
 ) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateList>;
 
@@ -1103,20 +1089,19 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
   /** Required. Name of the enumvalue. This is the actual value that the aspect can contain. */
   name?: string;
 }
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deprecated: S.optional(S.String),
-      index: S.optional(S.Number),
-      name: S.optional(S.String),
-    }),
+const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deprecated: S.optional(S.String),
+    index: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue",
 }) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
 
 export type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList =
   Array<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue,
 ) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList>;
 
@@ -1135,16 +1120,15 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
   /** Optional. You can use String Type annotations to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified URL link. resource: A service qualified resource reference. */
   stringType?: string;
 }
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stringValues: S.optional(StringList),
-      displayOrder: S.optional(S.Number),
-      displayName: S.optional(S.String),
-      description: S.optional(S.String),
-      deprecated: S.optional(S.String),
-      stringType: S.optional(S.String),
-    }),
+const GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stringValues: S.optional(StringList),
+    displayOrder: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    deprecated: S.optional(S.String),
+    stringType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations",
 }) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations>;
@@ -1174,7 +1158,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /** Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions. */
   index?: number;
 }
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AspectTypeMetadataTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraints: S.optional(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints),
     typeRef: S.optional(S.String),
@@ -1197,7 +1181,7 @@ export interface GoogleCloudDataplexV1AspectTypeAuthorization {
   /** Immutable. The IAM permission grantable on the EntryGroup to allow access to instantiate Aspects of Dataplex Universal Catalog owned AspectTypes, only settable for Dataplex Universal Catalog owned Types. */
   alternateUsePermission?: string;
 }
-export const GoogleCloudDataplexV1AspectTypeAuthorization = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AspectTypeAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternateUsePermission: S.optional(S.String),
   }),
@@ -1209,12 +1193,12 @@ export type GoogleCloudDataplexV1AspectTypeTransferStatusEnum =
   | "TRANSFER_STATUS_UNSPECIFIED"
   | "TRANSFER_STATUS_MIGRATED"
   | "TRANSFER_STATUS_TRANSFERRED";
-export const GoogleCloudDataplexV1AspectTypeTransferStatusEnum = S.String;
+const GoogleCloudDataplexV1AspectTypeTransferStatusEnum = S.String;
 
 export type GoogleCloudDataplexV1AspectTypeDataClassificationEnum =
   | "DATA_CLASSIFICATION_UNSPECIFIED"
   | "METADATA_AND_DATA";
-export const GoogleCloudDataplexV1AspectTypeDataClassificationEnum = S.String;
+const GoogleCloudDataplexV1AspectTypeDataClassificationEnum = S.String;
 
 /** AspectType is a template for creating Aspects, and represents the JSON-schema for a given Entry, for example, BigQuery Table Schema. */
 export interface GoogleCloudDataplexV1AspectType {
@@ -1243,7 +1227,7 @@ export interface GoogleCloudDataplexV1AspectType {
   /** Optional. Immutable. Stores data classification of the aspect. */
   dataClassification?: GoogleCloudDataplexV1AspectTypeDataClassificationEnum | (string & {});
 }
-export const GoogleCloudDataplexV1AspectType = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AspectType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     metadataTemplate: S.optional(GoogleCloudDataplexV1AspectTypeMetadataTemplate),
@@ -1272,7 +1256,7 @@ export interface CreateProjectsLocationsAspectTypesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1AspectType;
 }
-export const CreateProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1296,7 +1280,7 @@ export interface GoogleIamV1ResourcePolicyMember {
   /** Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource.Example: principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter */
   iamPolicyNamePrincipal?: string;
 }
-export const GoogleIamV1ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamPolicyUidPrincipal: S.optional(S.String),
     iamPolicyNamePrincipal: S.optional(S.String),
@@ -1314,7 +1298,7 @@ export interface GoogleCloudDataplexV1ContactIdentity {
   /** Required. Designation of the person i.e. Data Steward or Data Analyst. Example values: owner, steward, producer, admin. */
   contactRole?: string;
 }
-export const GoogleCloudDataplexV1ContactIdentity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ContactIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     contactName: S.optional(S.String),
@@ -1325,7 +1309,7 @@ export const GoogleCloudDataplexV1ContactIdentity = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GoogleCloudDataplexV1ContactIdentity>;
 
 export type GoogleCloudDataplexV1ContactIdentityList = Array<GoogleCloudDataplexV1ContactIdentity>;
-export const GoogleCloudDataplexV1ContactIdentityList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1ContactIdentityList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1ContactIdentity,
 ) as any as S.Schema<GoogleCloudDataplexV1ContactIdentityList>;
 
@@ -1334,7 +1318,7 @@ export interface GoogleCloudDataplexV1Contacts {
   /** Required. Identities of the business contacts. */
   identities?: GoogleCloudDataplexV1ContactIdentityList;
 }
-export const GoogleCloudDataplexV1Contacts = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Contacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identities: S.optional(GoogleCloudDataplexV1ContactIdentityList),
   }),
@@ -1365,7 +1349,7 @@ export interface GoogleCloudDataplexV1DataDomain {
   /** Required. User-friendly display name. */
   displayName?: string;
 }
-export const GoogleCloudDataplexV1DataDomain = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     policyMember: S.optional(GoogleIamV1ResourcePolicyMember),
@@ -1392,7 +1376,7 @@ export interface CreateProjectsLocationsDataDomainsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataDomain;
 }
-export const CreateProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDomainId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1420,7 +1404,7 @@ export interface GoogleCloudDataplexV1DataDomainBinding {
   /** Identifier. The relative resource name of the DataDomainBinding. Format: projects/{project_id_or_number}/locations/{location}/dataDomains/{data_domain_id}/bindings/{binding_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1DataDomainBinding = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDomainBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1441,7 +1425,7 @@ export interface CreateProjectsLocationsDataDomainsBindingsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataDomainBinding;
 }
-export const CreateProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDomainBindingId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1463,14 +1447,14 @@ export interface GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig
   /** Optional. The IAM role resource name to be applied as default. Example: "roles/bigquery.dataViewer". */
   role?: string;
 }
-export const GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       role: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig>;
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig",
+}) as any as S.Schema<GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig>;
 
 /** Represents the principal entity associated with an access group, as per https://cloud.google.com/iam/docs/principals-overview. */
 export interface GoogleCloudDataplexV1DataProductPrincipal {
@@ -1479,7 +1463,7 @@ export interface GoogleCloudDataplexV1DataProductPrincipal {
   /** Optional. Email of the Google Group, as per https://cloud.google.com/iam/docs/principals-overview#google-group. */
   googleGroup?: string;
 }
-export const GoogleCloudDataplexV1DataProductPrincipal = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProductPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     googleGroup: S.optional(S.String),
@@ -1501,7 +1485,7 @@ export interface GoogleCloudDataplexV1DataProductAccessGroup {
   /** Required. The principal entity associated with this access group. */
   principal?: GoogleCloudDataplexV1DataProductPrincipal;
 }
-export const GoogleCloudDataplexV1DataProductAccessGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProductAccessGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     defaultIamRoleConfig: S.optional(
@@ -1518,7 +1502,7 @@ export const GoogleCloudDataplexV1DataProductAccessGroup = /*@__PURE__*/ S.suspe
 export type GoogleCloudDataplexV1DataProductAccessGroupMap = {
   [key: string]: GoogleCloudDataplexV1DataProductAccessGroup | undefined;
 };
-export const GoogleCloudDataplexV1DataProductAccessGroupMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDataplexV1DataProductAccessGroupMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDataplexV1DataProductAccessGroup,
 ) as any as S.Schema<GoogleCloudDataplexV1DataProductAccessGroupMap>;
@@ -1528,7 +1512,7 @@ export interface GoogleCloudDataplexV1DataProductAccessApprovalConfig {
   /** Optional. Specifies the email addresses of users who are potential approvers and are notified when an access request is made for the data product. The maximum number of emails allowed is 10. */
   approverEmails?: StringList;
 }
-export const GoogleCloudDataplexV1DataProductAccessApprovalConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProductAccessApprovalConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approverEmails: S.optional(StringList),
   }),
@@ -1565,7 +1549,7 @@ export interface GoogleCloudDataplexV1DataProduct {
   /** Optional. Description of the data product. */
   description?: string;
 }
-export const GoogleCloudDataplexV1DataProduct = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1595,7 +1579,7 @@ export interface CreateProjectsLocationsDataProductsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataProduct;
 }
-export const CreateProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     dataProductId: S.optional(S.String.pipe(T.Query())),
@@ -1618,7 +1602,7 @@ export type GoogleCloudDataplexV1DataAssetAccessGroupConfigStateEnum =
   | "APPLIED"
   | "FAILED"
   | "UNSUPPORTED";
-export const GoogleCloudDataplexV1DataAssetAccessGroupConfigStateEnum = S.String;
+const GoogleCloudDataplexV1DataAssetAccessGroupConfigStateEnum = S.String;
 
 /** Configuration for access group inherited from the parent data product. */
 export interface GoogleCloudDataplexV1DataAssetAccessGroupConfig {
@@ -1627,7 +1611,7 @@ export interface GoogleCloudDataplexV1DataAssetAccessGroupConfig {
   /** Optional. IAM roles granted on the resource to this access group. Role name follows https://cloud.google.com/iam/docs/reference/rest/v1/roles.Example: [ "roles/bigquery.dataViewer" ] */
   iamRoles?: StringList;
 }
-export const GoogleCloudDataplexV1DataAssetAccessGroupConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataAssetAccessGroupConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudDataplexV1DataAssetAccessGroupConfigStateEnum),
     iamRoles: S.optional(StringList),
@@ -1639,7 +1623,7 @@ export const GoogleCloudDataplexV1DataAssetAccessGroupConfig = /*@__PURE__*/ S.s
 export type GoogleCloudDataplexV1DataAssetAccessGroupConfigMap = {
   [key: string]: GoogleCloudDataplexV1DataAssetAccessGroupConfig | undefined;
 };
-export const GoogleCloudDataplexV1DataAssetAccessGroupConfigMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDataplexV1DataAssetAccessGroupConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDataplexV1DataAssetAccessGroupConfig,
 ) as any as S.Schema<GoogleCloudDataplexV1DataAssetAccessGroupConfigMap>;
@@ -1663,7 +1647,7 @@ export interface GoogleCloudDataplexV1DataAsset {
   /** Identifier. Resource name of the data asset. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1DataAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     uid: S.optional(S.String),
@@ -1688,7 +1672,7 @@ export interface CreateProjectsLocationsDataProductsDataAssetsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataAsset;
 }
-export const CreateProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     dataAssetId: S.optional(S.String.pipe(T.Query())),
@@ -1710,7 +1694,7 @@ export interface GoogleCloudDataplexV1ExecutionIdentityServiceAccount {
   /** Required. Service account email. The datascan will execute with this service account's credentials. The user calling this API must have permissions to act as this service account. Dataplex service agent must be granted iam.serviceAccounts.getAccessToken permission on this service account, for example, through the iam.serviceAccountTokenCreator role . */
   email?: string;
 }
-export const GoogleCloudDataplexV1ExecutionIdentityServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ExecutionIdentityServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
@@ -1721,15 +1705,9 @@ export const GoogleCloudDataplexV1ExecutionIdentityServiceAccount = /*@__PURE__*
 /** The credential of the calling user. */
 export type GoogleCloudDataplexV1ExecutionIdentityUserCredential =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1ExecutionIdentityUserCredential =
-  GoogleLongrunningCancelOperationRequest;
-
 /** The Dataplex service agent associated with the user's project. */
 export type GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent =
-  GoogleLongrunningCancelOperationRequest;
-
 /** The identity to run the datascan. */
 export interface GoogleCloudDataplexV1ExecutionIdentity {
   /** Optional. The provided service account. */
@@ -1739,7 +1717,7 @@ export interface GoogleCloudDataplexV1ExecutionIdentity {
   /** Optional. The Dataplex service agent associated with the user's project. */
   dataplexServiceAgent?: GoogleLongrunningCancelOperationRequest;
 }
-export const GoogleCloudDataplexV1ExecutionIdentity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ExecutionIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(GoogleCloudDataplexV1ExecutionIdentityServiceAccount),
     userCredential: S.optional(GoogleLongrunningCancelOperationRequest),
@@ -1755,34 +1733,34 @@ export type GoogleCloudDataplexV1DataScanStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTION_REQUIRED";
-export const GoogleCloudDataplexV1DataScanStateEnum = S.String;
+const GoogleCloudDataplexV1DataScanStateEnum = S.String;
 
 export type GoogleCloudDataplexV1DataProfileSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "STANDARD"
   | "LIGHTWEIGHT";
-export const GoogleCloudDataplexV1DataProfileSpecModeEnum = S.String;
+const GoogleCloudDataplexV1DataProfileSpecModeEnum = S.String;
 
 /** The configuration of BigQuery export post scan action. */
 export interface GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
   /** Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID */
   resultsTable?: string;
 }
-export const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resultsTable: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport>;
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport",
+}) as any as S.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport>;
 
 /** The configuration of post scan actions of DataProfileScan job. */
 export interface GoogleCloudDataplexV1DataProfileSpecPostScanActions {
   /** Optional. If set, results will be exported to the provided BigQuery table. */
   bigqueryExport?: GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport;
 }
-export const GoogleCloudDataplexV1DataProfileSpecPostScanActions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileSpecPostScanActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryExport: S.optional(GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport),
   }),
@@ -1795,7 +1773,7 @@ export interface GoogleCloudDataplexV1DataProfileSpecSelectedFields {
   /** Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'. */
   fieldNames?: StringList;
 }
-export const GoogleCloudDataplexV1DataProfileSpecSelectedFields = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileSpecSelectedFields = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldNames: S.optional(StringList),
   }),
@@ -1820,7 +1798,7 @@ export interface GoogleCloudDataplexV1DataProfileSpec {
   /** Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10 */
   rowFilter?: string;
 }
-export const GoogleCloudDataplexV1DataProfileSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogPublishingEnabled: S.optional(S.Boolean),
     samplingPercent: S.optional(S.Number),
@@ -1836,14 +1814,12 @@ export const GoogleCloudDataplexV1DataProfileSpec = /*@__PURE__*/ S.suspend(() =
 
 /** The scan runs once via RunDataScan API. */
 export type GoogleCloudDataplexV1TriggerOnDemand = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1TriggerOnDemand = GoogleLongrunningCancelOperationRequest;
-
 /** The scan is scheduled to run periodically. */
 export interface GoogleCloudDataplexV1TriggerSchedule {
   /** Required. Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans. */
   cron?: string;
 }
-export const GoogleCloudDataplexV1TriggerSchedule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TriggerSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.optional(S.String),
   }),
@@ -1856,7 +1832,7 @@ export interface GoogleCloudDataplexV1TriggerOneTime {
   /** Optional. Time to live for OneTime scans. default value is 24 hours, minimum value is 0 seconds, and maximum value is 365 days. The time is calculated from the data scan job completion time. If value is set as 0 seconds, the scan will be immediately deleted upon job completion, regardless of whether the job succeeded or failed. */
   ttlAfterScanCompletion?: string;
 }
-export const GoogleCloudDataplexV1TriggerOneTime = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TriggerOneTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttlAfterScanCompletion: S.optional(S.String),
   }),
@@ -1873,7 +1849,7 @@ export interface GoogleCloudDataplexV1Trigger {
   /** The scan runs once, and does not create an associated ScanJob child resource. */
   oneTime?: GoogleCloudDataplexV1TriggerOneTime;
 }
-export const GoogleCloudDataplexV1Trigger = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onDemand: S.optional(GoogleLongrunningCancelOperationRequest),
     schedule: S.optional(GoogleCloudDataplexV1TriggerSchedule),
@@ -1890,7 +1866,7 @@ export interface GoogleCloudDataplexV1DataScanExecutionSpec {
   /** Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table. */
   field?: string;
 }
-export const GoogleCloudDataplexV1DataScanExecutionSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataScanExecutionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trigger: S.optional(GoogleCloudDataplexV1Trigger),
     field: S.optional(S.String),
@@ -1905,13 +1881,13 @@ export type GoogleCloudDataplexV1DataScanTypeEnum =
   | "DATA_PROFILE"
   | "DATA_DISCOVERY"
   | "DATA_DOCUMENTATION";
-export const GoogleCloudDataplexV1DataScanTypeEnum = S.String;
+const GoogleCloudDataplexV1DataScanTypeEnum = S.String;
 
 export type GoogleCloudDataplexV1DataDocumentationSpecSqlDialectEnum =
   | "SQL_DIALECT_UNSPECIFIED"
   | "GOOGLE_SQL"
   | "SPARK_SQL";
-export const GoogleCloudDataplexV1DataDocumentationSpecSqlDialectEnum = S.String;
+const GoogleCloudDataplexV1DataDocumentationSpecSqlDialectEnum = S.String;
 
 export type GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum =
   | "GENERATION_SCOPE_UNSPECIFIED"
@@ -1919,12 +1895,12 @@ export type GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum =
   | "TABLE_AND_COLUMN_DESCRIPTIONS"
   | "SQL_QUERIES"
   | "BUSINESS_GLOSSARY_TERM_ASSOCIATIONS";
-export const GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum = S.String;
+const GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum = S.String;
 
 export type GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList = Array<
   GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum | (string & {})
 >;
-export const GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList =
+const GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum,
   ) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList>;
@@ -1938,7 +1914,7 @@ export interface GoogleCloudDataplexV1DataDocumentationSpec {
   /** Optional. Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated. */
   generationScopes?: GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList;
 }
-export const GoogleCloudDataplexV1DataDocumentationSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDocumentationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogPublishingEnabled: S.optional(S.Boolean),
     sqlDialect: S.optional(GoogleCloudDataplexV1DataDocumentationSpecSqlDialectEnum),
@@ -1955,7 +1931,7 @@ export interface GoogleCloudDataplexV1DataQualityDimension {
   /** Output only. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DataQualityDimension =
+const GoogleCloudDataplexV1DataQualityDimension =
   GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DataQualityDimension>;
 
 /** DataQualityDimensionResult provides a more detailed, per-dimension view of the results. */
@@ -1967,7 +1943,7 @@ export interface GoogleCloudDataplexV1DataQualityDimensionResult {
   /** Output only. The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points). */
   score?: number;
 }
-export const GoogleCloudDataplexV1DataQualityDimensionResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityDimensionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passed: S.optional(S.Boolean),
     dimension: S.optional(GoogleCloudDataplexV1DataQualityDimension),
@@ -1979,7 +1955,7 @@ export const GoogleCloudDataplexV1DataQualityDimensionResult = /*@__PURE__*/ S.s
 
 export type GoogleCloudDataplexV1DataQualityDimensionResultList =
   Array<GoogleCloudDataplexV1DataQualityDimensionResult>;
-export const GoogleCloudDataplexV1DataQualityDimensionResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityDimensionResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityDimensionResult,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityDimensionResultList>;
 
@@ -1994,7 +1970,7 @@ export interface GoogleCloudDataplexV1DataQualityColumnResult {
   /** Output only. The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points). */
   score?: number;
 }
-export const GoogleCloudDataplexV1DataQualityColumnResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityColumnResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.optional(S.String),
     dimensions: S.optional(GoogleCloudDataplexV1DataQualityDimensionResultList),
@@ -2007,7 +1983,7 @@ export const GoogleCloudDataplexV1DataQualityColumnResult = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDataplexV1DataQualityColumnResultList =
   Array<GoogleCloudDataplexV1DataQualityColumnResult>;
-export const GoogleCloudDataplexV1DataQualityColumnResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityColumnResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityColumnResult,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityColumnResultList>;
 
@@ -2020,7 +1996,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEn
   /** Output only. The entry name in the form of: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id} */
   entry?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource =
+const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entryType: S.optional(S.String),
@@ -2038,7 +2014,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEn
   /** Output only. The entry link name in the form of: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id} */
   entryLink?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource =
+const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entryLinkType: S.optional(S.String),
@@ -2055,33 +2031,31 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement {
   /** Output only. Entry link source represents information about the entry link. */
   entryLinkSource?: GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrySource: S.optional(
-        GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource,
-      ),
-      entryLinkSource: S.optional(
-        GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
+const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entrySource: S.optional(
+      GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource,
+    ),
+    entryLinkSource: S.optional(
+      GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement",
+}) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
 
 export type GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList =
   Array<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement,
-  ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList>;
+const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList = /*@__PURE__*/ S.Array(
+  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement,
+) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList>;
 
 /** Represents the rule source information from Catalog. */
 export interface GoogleCloudDataplexV1DataQualityRuleRuleSource {
   /** Output only. Rule path elements represent information about the individual items in the relationship path between the scan resource and rule origin in that order. */
   rulePathElements?: GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRuleSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleRuleSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rulePathElements: S.optional(GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList),
   }),
@@ -2094,7 +2068,7 @@ export type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatist
   | "MEAN"
   | "MIN"
   | "MAX";
-export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticEnum = S.String;
+const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticEnum = S.String;
 
 /** Evaluates whether the column aggregate statistic lies between a specified range. */
 export interface GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
@@ -2111,20 +2085,19 @@ export interface GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /** Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided. */
   minValue?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      strictMinEnabled: S.optional(S.Boolean),
-      maxValue: S.optional(S.String),
-      statistic: S.optional(
-        GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticEnum,
-      ),
-      strictMaxEnabled: S.optional(S.Boolean),
-      minValue: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation>;
+const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    strictMinEnabled: S.optional(S.Boolean),
+    maxValue: S.optional(S.String),
+    statistic: S.optional(
+      GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticEnum,
+    ),
+    strictMaxEnabled: S.optional(S.Boolean),
+    minValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation",
+}) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation>;
 
 /** Specifies a SQL statement that is evaluated to return up to 10 scalar values that are used to debug rules. If the rule fails, the values can help diagnose the cause of the failure.The SQL statement must use GoogleSQL syntax (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax), and must not contain any semicolons.You can use the data reference parameter ${data()} to reference the source table with all of its precondition filters applied. Examples of precondition filters include row filters, incremental data filters, and sampling. For more information, see Data reference parameter (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).You can also name results with an explicit alias using [AS] alias. For more information, see BigQuery explicit aliases (https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#explicit_alias_syntax).Example: SELECT MIN(col1) AS min_col1, MAX(col1) AS max_col1 FROM ${data()} */
 export interface GoogleCloudDataplexV1DataQualityRuleDebugQuery {
@@ -2133,7 +2106,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleDebugQuery {
   /** Required. Specifies the SQL statement to be executed. */
   sqlStatement?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleDebugQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleDebugQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     sqlStatement: S.optional(S.String),
@@ -2144,7 +2117,7 @@ export const GoogleCloudDataplexV1DataQualityRuleDebugQuery = /*@__PURE__*/ S.su
 
 export type GoogleCloudDataplexV1DataQualityRuleDebugQueryList =
   Array<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
-export const GoogleCloudDataplexV1DataQualityRuleDebugQueryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityRuleDebugQueryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityRuleDebugQuery,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleDebugQueryList>;
 
@@ -2153,11 +2126,10 @@ export interface GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
   /** Optional. The SQL expression. */
   sqlExpression?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sqlExpression: S.optional(S.String),
-    }),
+const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sqlExpression: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation",
 }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation>;
@@ -2165,15 +2137,12 @@ export const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation = /*@__
 /** Evaluates whether each column value is null. */
 export type GoogleCloudDataplexV1DataQualityRuleNonNullExpectation =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1DataQualityRuleNonNullExpectation =
-  GoogleLongrunningCancelOperationRequest;
-
 /** Evaluates whether each column value matches a specified regex. */
 export interface GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   /** Optional. A regular expression the column value is expected to match. */
   regex?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRegexExpectation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleRegexExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regex: S.optional(S.String),
   }),
@@ -2192,7 +2161,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   /** Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false. */
   strictMinEnabled?: boolean;
 }
-export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleRangeExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strictMaxEnabled: S.optional(S.Boolean),
     minValue: S.optional(S.String),
@@ -2206,15 +2175,12 @@ export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation = /*@__PURE__*
 /** Evaluates whether the provided expression is true.The SQL expression needs to use GoogleSQL syntax (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) and should produce a scalar boolean result.Example: MIN(col1) >= 0 */
 export type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation =
   GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation;
-export const GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation =
-  GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation;
-
 /** Evaluates whether each column value is contained by a specified set. */
 export interface GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /** Optional. Expected values for the column value. */
   values?: StringList;
 }
-export const GoogleCloudDataplexV1DataQualityRuleSetExpectation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleSetExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
@@ -2227,7 +2193,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateSql {
   /** Output only. Templatized SQL query for data quality rules. */
   query?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleTemplateSql = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleTemplateSql = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
   }),
@@ -2237,7 +2203,7 @@ export const GoogleCloudDataplexV1DataQualityRuleTemplateSql = /*@__PURE__*/ S.s
 
 export type GoogleCloudDataplexV1DataQualityRuleTemplateSqlList =
   Array<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
-export const GoogleCloudDataplexV1DataQualityRuleTemplateSqlList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityRuleTemplateSqlList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityRuleTemplateSql,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateSqlList>;
 
@@ -2248,24 +2214,23 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptio
   /** Output only. Description of the input parameter. It can include the type(s) supported by the parameter and intended usage. It is for information purposes only and does not affect the behavior of the rule template. */
   description?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       defaultValue: S.optional(S.String),
       description: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription>;
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription",
+}) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription>;
 
 export type GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptionMap = {
   [key: string]: GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription | undefined;
 };
-export const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptionMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription,
-  ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptionMap>;
+const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription,
+) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptionMap>;
 
 /** DataQualityRuleTemplate represents a template which can be reused across multiple data quality rules. */
 export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
@@ -2280,7 +2245,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
   /** Output only. The name of the rule template in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleTemplate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlCollection: S.optional(GoogleCloudDataplexV1DataQualityRuleTemplateSqlList),
     dimension: S.optional(S.String),
@@ -2299,19 +2264,19 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterV
   /** Required. Represents the string value of the parameter. */
   value?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       value: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue>;
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue",
+}) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue>;
 
 export type GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValueMap = {
   [key: string]: GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue | undefined;
 };
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValueMap =
+const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue,
@@ -2328,7 +2293,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateReference {
   /** Optional. Provides the map of parameter name and value. The maximum size of the field is 120KB (encoded as UTF-8). */
   values?: GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValueMap;
 }
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReference = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleTemplateReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolvedSql: S.optional(S.String),
     name: S.optional(S.String),
@@ -2342,15 +2307,12 @@ export const GoogleCloudDataplexV1DataQualityRuleTemplateReference = /*@__PURE__
 /** Evaluates whether the column has duplicates. */
 export type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation =
-  GoogleLongrunningCancelOperationRequest;
-
 /** A SQL statement that is evaluated to return rows that match an invalid state. If any rows are are returned, this rule fails.The SQL statement must use GoogleSQL syntax (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax), and must not contain any semicolons.You can use the data reference parameter ${data()} to reference the source table with all of its precondition filters applied. Examples of precondition filters include row filters, incremental data filters, and sampling. For more information, see Data reference parameter (https://cloud.google.com/dataplex/docs/auto-data-quality-overview#data-reference-parameter).Example: SELECT * FROM ${data()} WHERE price < 0 */
 export interface GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
   /** Optional. The SQL statement. */
   sqlStatement?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleSqlAssertion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleSqlAssertion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlStatement: S.optional(S.String),
   }),
@@ -2401,7 +2363,7 @@ export interface GoogleCloudDataplexV1DataQualityRule {
   /** Aggregate rule which evaluates the number of rows returned for the provided statement. If any rows are returned, this rule fails. */
   sqlAssertion?: GoogleCloudDataplexV1DataQualityRuleSqlAssertion;
 }
-export const GoogleCloudDataplexV1DataQualityRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleSource: S.optional(GoogleCloudDataplexV1DataQualityRuleRuleSource),
     statisticRangeExpectation: S.optional(
@@ -2443,20 +2405,19 @@ export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult {
   /** Specifies the name of the result. Available if provided with an explicit alias using [AS] alias. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(S.String),
-      value: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    value: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult",
 }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
 
 export type GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList =
   Array<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList>;
 
@@ -2465,21 +2426,19 @@ export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet {
   /** Output only. Contains all results. Up to 10 results can be returned. */
   results?: GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList;
 }
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
+const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet",
+}) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
 
 export type GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList =
   Array<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet,
-  ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList>;
+const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList = /*@__PURE__*/ S.Array(
+  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet,
+) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList>;
 
 /** DataQualityRuleResult provides a more detailed, per-rule view of the results. */
 export interface GoogleCloudDataplexV1DataQualityRuleResult {
@@ -2502,7 +2461,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleResult {
   /** Output only. The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.This field is not set for rule SqlAssertion. */
   passedCount?: string;
 }
-export const GoogleCloudDataplexV1DataQualityRuleResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityRuleResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passRatio: S.optional(S.Number),
     failingRowsQuery: S.optional(S.String),
@@ -2522,7 +2481,7 @@ export const GoogleCloudDataplexV1DataQualityRuleResult = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudDataplexV1DataQualityRuleResultList =
   Array<GoogleCloudDataplexV1DataQualityRuleResult>;
-export const GoogleCloudDataplexV1DataQualityRuleResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityRuleResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityRuleResult,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultList>;
 
@@ -2537,7 +2496,7 @@ export interface GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGenerated
   /** Output only. The result table for anomaly detection. Format: PROJECT_ID.DATASET_ID.TABLE_ID If the result table is set at AnomalyDetectionAssets, the result table here would be the same as the one set in the AnomalyDetectionAssets.result_table. */
   resultTable?: string;
 }
-export const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets =
+const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataIntermediateTable: S.optional(S.String),
@@ -2554,7 +2513,7 @@ export type GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryE
   | "SUCCEEDED"
   | "FAILED"
   | "SKIPPED";
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultStateEnum =
+const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultStateEnum =
   S.String;
 
 /** The result of BigQuery export post scan action. */
@@ -2566,7 +2525,7 @@ export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQ
     | GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultStateEnum
     | (string & {});
 }
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult =
+const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       message: S.optional(S.String),
@@ -2583,13 +2542,12 @@ export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResult {
   /** Output only. The result of BigQuery export post scan action. */
   bigqueryExportResult?: GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult;
 }
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bigqueryExportResult: S.optional(
-        GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult,
-      ),
-    }),
+const GoogleCloudDataplexV1DataQualityResultPostScanActionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bigqueryExportResult: S.optional(
+      GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1DataQualityResultPostScanActionsResult",
 }) as any as S.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResult>;
@@ -2599,14 +2557,14 @@ export type GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "SKIPPED";
-export const GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum = S.String;
+const GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum = S.String;
 
 /** The status of publishing the data scan result as Dataplex Universal Catalog metadata. Multiple DataScan log events may exist, each with different publishing information depending on the type of publishing triggered. */
 export interface GoogleCloudDataplexV1DataScanCatalogPublishingStatus {
   /** Output only. Execution state for publishing. */
   state?: GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum | (string & {});
 }
-export const GoogleCloudDataplexV1DataScanCatalogPublishingStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataScanCatalogPublishingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum),
   }),
@@ -2623,7 +2581,7 @@ export interface GoogleCloudDataplexV1ScannedDataIncrementalField {
   /** Output only. Value that marks the end of the range. */
   end?: string;
 }
-export const GoogleCloudDataplexV1ScannedDataIncrementalField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ScannedDataIncrementalField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     field: S.optional(S.String),
@@ -2638,7 +2596,7 @@ export interface GoogleCloudDataplexV1ScannedData {
   /** The range denoted by values of an incremental field */
   incrementalField?: GoogleCloudDataplexV1ScannedDataIncrementalField;
 }
-export const GoogleCloudDataplexV1ScannedData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ScannedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incrementalField: S.optional(GoogleCloudDataplexV1ScannedDataIncrementalField),
   }),
@@ -2669,7 +2627,7 @@ export interface GoogleCloudDataplexV1DataQualityResult {
   /** Output only. The data scanned for this result. */
   scannedData?: GoogleCloudDataplexV1ScannedData;
 }
-export const GoogleCloudDataplexV1DataQualityResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(GoogleCloudDataplexV1DataQualityDimensionResultList),
     columns: S.optional(GoogleCloudDataplexV1DataQualityColumnResultList),
@@ -2692,7 +2650,7 @@ export type GoogleCloudDataplexV1DataDocumentationResultQuerySqlDialectEnum =
   | "SQL_DIALECT_UNSPECIFIED"
   | "GOOGLE_SQL"
   | "SPARK_SQL";
-export const GoogleCloudDataplexV1DataDocumentationResultQuerySqlDialectEnum = S.String;
+const GoogleCloudDataplexV1DataDocumentationResultQuerySqlDialectEnum = S.String;
 
 /** A sample SQL query in data documentation. */
 export interface GoogleCloudDataplexV1DataDocumentationResultQuery {
@@ -2703,7 +2661,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultQuery {
   /** Output only. The description for the query. */
   description?: string;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDocumentationResultQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.optional(S.String),
     sqlDialect: S.optional(GoogleCloudDataplexV1DataDocumentationResultQuerySqlDialectEnum),
@@ -2715,7 +2673,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultQuery = /*@__PURE__*/ S
 
 export type GoogleCloudDataplexV1DataDocumentationResultQueryList =
   Array<GoogleCloudDataplexV1DataDocumentationResultQuery>;
-export const GoogleCloudDataplexV1DataDocumentationResultQueryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataDocumentationResultQueryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataDocumentationResultQuery,
 ) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultQueryList>;
 
@@ -2728,7 +2686,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultField {
   /** Output only. Nested fields. */
   fields?: GoogleCloudDataplexV1DataDocumentationResultFieldList;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDocumentationResultField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -2740,7 +2698,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultField = /*@__PURE__*/ S
 
 export type GoogleCloudDataplexV1DataDocumentationResultFieldList =
   Array<GoogleCloudDataplexV1DataDocumentationResultField>;
-export const GoogleCloudDataplexV1DataDocumentationResultFieldList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataDocumentationResultFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataDocumentationResultField,
 ) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultFieldList>;
 
@@ -2749,7 +2707,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchema {
   /** Output only. The list of columns. */
   fields?: GoogleCloudDataplexV1DataDocumentationResultFieldList;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultSchema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDocumentationResultSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GoogleCloudDataplexV1DataDocumentationResultFieldList),
   }),
@@ -2768,7 +2726,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultTableResult {
   /** Output only. Schema of the table with generated metadata of the columns in the schema. */
   schema?: GoogleCloudDataplexV1DataDocumentationResultSchema;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultTableResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDocumentationResultTableResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     overview: S.optional(S.String),
@@ -2782,7 +2740,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultTableResult = /*@__PURE
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "SCHEMA_JOIN";
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum = S.String;
+const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum = S.String;
 
 /** Represents an ordered set of paths within a table's schema. */
 export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths {
@@ -2791,7 +2749,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipS
   /** Output only. The service-qualified full resource name of the table Ex: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID */
   tableFqn?: string;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths =
+const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       paths: S.optional(StringList),
@@ -2806,14 +2764,11 @@ export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSource
   | "AGENT"
   | "QUERY_HISTORY"
   | "TABLE_CONSTRAINTS";
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum =
-  S.String;
-
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList =
   Array<
     GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum | (string & {})
   >;
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList =
+const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList =
   GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList>;
 
 /** Details of the relationship between the schema of two resources. */
@@ -2827,30 +2782,28 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship 
   /** Output only. An ordered list of fields for the join from the second table. The size of this list must be the same as left_schema_paths. Each field at index i in this list must correspond to a field at the same index in the left_schema_paths list. */
   rightSchemaPaths?: GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum),
-      leftSchemaPaths: S.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
-      ),
-      sources: S.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList,
-      ),
-      rightSchemaPaths: S.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
+const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum),
+    leftSchemaPaths: S.optional(
+      GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
+    ),
+    sources: S.optional(
+      GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList,
+    ),
+    rightSchemaPaths: S.optional(
+      GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship",
+}) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
 
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList =
   Array<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship,
-  ) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList>;
+const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList = /*@__PURE__*/ S.Array(
+  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship,
+) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList>;
 
 /** Insights for a dataset resource. */
 export interface GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
@@ -2861,15 +2814,14 @@ export interface GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
   /** Output only. Relationships suggesting how tables in the dataset are related to each other, based on their schema. */
   schemaRelationships?: GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList;
 }
-export const GoogleCloudDataplexV1DataDocumentationResultDatasetResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      queries: S.optional(GoogleCloudDataplexV1DataDocumentationResultQueryList),
-      overview: S.optional(S.String),
-      schemaRelationships: S.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList,
-      ),
-    }),
+const GoogleCloudDataplexV1DataDocumentationResultDatasetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queries: S.optional(GoogleCloudDataplexV1DataDocumentationResultQueryList),
+    overview: S.optional(S.String),
+    schemaRelationships: S.optional(
+      GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1DataDocumentationResultDatasetResult",
 }) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultDatasetResult>;
@@ -2881,7 +2833,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResult {
   /** Output only. Insights for a Dataset resource. */
   datasetResult?: GoogleCloudDataplexV1DataDocumentationResultDatasetResult;
 }
-export const GoogleCloudDataplexV1DataDocumentationResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDocumentationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableResult: S.optional(GoogleCloudDataplexV1DataDocumentationResultTableResult),
     datasetResult: S.optional(GoogleCloudDataplexV1DataDocumentationResultDatasetResult),
@@ -2897,7 +2849,7 @@ export interface GoogleCloudDataplexV1DataSource {
   /** Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could either be: Cloud Storage bucket for DataDiscoveryScan Format: //storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan/DataDocumentationScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or BigQuery dataset for DataDocumentationScan only Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID */
   resource?: string;
 }
-export const GoogleCloudDataplexV1DataSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2915,7 +2867,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoSt
   /** Output only. Average length of non-null values in the scanned data. */
   averageLength?: number;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo =
+const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       minLength: S.optional(S.String),
@@ -2939,7 +2891,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIn
   /** Output only. Maximum of non-null values in the scanned data. NaN, if the field has a NaN. */
   max?: string;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo =
+const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       min: S.optional(S.String),
@@ -2961,7 +2913,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTo
   /** Output only. String value of a top N non-null value. */
   value?: string;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue =
+const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       count: S.optional(S.String),
@@ -2974,13 +2926,13 @@ export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNVa
 
 export type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList =
   Array<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>;
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList =
+const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue,
   ) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** The profile information for a double type field. */
 export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo {
@@ -2995,7 +2947,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDo
   /** Output only. Minimum of non-null values in the scanned data. NaN, if the field has a NaN. */
   min?: number;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo =
+const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       standardDeviation: S.optional(S.Number),
@@ -3023,27 +2975,26 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   /** Double type field information. */
   doubleProfile?: GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      stringProfile: S.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo,
-      ),
-      integerProfile: S.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo,
-      ),
-      topNValues: S.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList,
-      ),
-      nullRatio: S.optional(S.Number),
-      distinctRatio: S.optional(S.Number),
-      doubleProfile: S.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo>;
+const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stringProfile: S.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo,
+    ),
+    integerProfile: S.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo,
+    ),
+    topNValues: S.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList,
+    ),
+    nullRatio: S.optional(S.Number),
+    distinctRatio: S.optional(S.Number),
+    doubleProfile: S.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo",
+}) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo>;
 
 /** A field within a table. */
 export interface GoogleCloudDataplexV1DataProfileResultProfileField {
@@ -3056,7 +3007,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileField {
   /** Output only. The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated field. */
   mode?: string;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfileField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileResultProfileField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     profile: S.optional(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo),
@@ -3069,7 +3020,7 @@ export const GoogleCloudDataplexV1DataProfileResultProfileField = /*@__PURE__*/ 
 
 export type GoogleCloudDataplexV1DataProfileResultProfileFieldList =
   Array<GoogleCloudDataplexV1DataProfileResultProfileField>;
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataProfileResultProfileFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataProfileResultProfileField,
 ) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldList>;
 
@@ -3078,7 +3029,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfile {
   /** Output only. List of fields with structural and profile information for each field. */
   fields?: GoogleCloudDataplexV1DataProfileResultProfileFieldList;
 }
-export const GoogleCloudDataplexV1DataProfileResultProfile = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileResultProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GoogleCloudDataplexV1DataProfileResultProfileFieldList),
   }),
@@ -3091,9 +3042,6 @@ export type GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryE
   | "SUCCEEDED"
   | "FAILED"
   | "SKIPPED";
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultStateEnum =
-  S.String;
-
 /** The result of BigQuery export post scan action. */
 export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult {
   /** Output only. Additional information about the BigQuery exporting. */
@@ -3103,15 +3051,12 @@ export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQ
     | GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultStateEnum
     | (string & {});
 }
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult =
-  GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult as any as S.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult>;
-
 /** The result of post scan actions of DataProfileScan job. */
 export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResult {
   /** Output only. The result of BigQuery export post scan action. */
   bigqueryExportResult?: GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult;
 }
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult =
+const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult =
   GoogleCloudDataplexV1DataQualityResultPostScanActionsResult as any as S.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult>;
 
 /** DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result. */
@@ -3127,7 +3072,7 @@ export interface GoogleCloudDataplexV1DataProfileResult {
   /** Output only. The data scanned for this result. */
   scannedData?: GoogleCloudDataplexV1ScannedData;
 }
-export const GoogleCloudDataplexV1DataProfileResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataProfileResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowCount: S.optional(S.String),
     profile: S.optional(GoogleCloudDataplexV1DataProfileResultProfile),
@@ -3143,7 +3088,7 @@ export type GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableT
   | "TABLE_TYPE_UNSPECIFIED"
   | "EXTERNAL"
   | "BIGLAKE";
-export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableTypeEnum = S.String;
+const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableTypeEnum = S.String;
 
 /** Describes BigQuery publishing configurations. */
 export interface GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
@@ -3158,19 +3103,18 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig 
   /** Optional. The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. 1. If the Cloud Storage bucket is located in a multi-region bucket, then BigQuery dataset can be in the same multi-region bucket or any single region that is included in the same multi-region bucket. The datascan can be created in any single region that is included in the same multi-region bucket 2. If the Cloud Storage bucket is located in a dual-region bucket, then BigQuery dataset can be located in regions that are included in the dual-region bucket, or in a multi-region that includes the dual-region. The datascan can be created in any single region that is included in the same dual-region bucket. 3. If the Cloud Storage bucket is located in a single region, then BigQuery dataset can be in the same single region or any multi-region bucket that includes the same single region. The datascan will be created in the same single region as the bucket. 4. If the BigQuery dataset is in single region, it must be in the same single region as the datascan.For supported values, refer to https://cloud.google.com/bigquery/docs/locations#supported_locations. */
   location?: string;
 }
-export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project: S.optional(S.String),
-      tableType: S.optional(
-        GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableTypeEnum,
-      ),
-      connection: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig>;
+const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project: S.optional(S.String),
+    tableType: S.optional(
+      GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableTypeEnum,
+    ),
+    connection: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig",
+}) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig>;
 
 /** Describes JSON data format. */
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
@@ -3179,15 +3123,14 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions 
   /** Optional. The character encoding of the data. The default is UTF-8. */
   encoding?: string;
 }
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      typeInferenceDisabled: S.optional(S.Boolean),
-      encoding: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions>;
+const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    typeInferenceDisabled: S.optional(S.Boolean),
+    encoding: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions",
+}) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions>;
 
 /** Describes CSV and similar semi-structured data formats. */
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
@@ -3202,18 +3145,17 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
   /** Optional. The delimiter that is used to separate values. The default is , (comma). */
   delimiter?: string;
 }
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      typeInferenceDisabled: S.optional(S.Boolean),
-      quote: S.optional(S.String),
-      encoding: S.optional(S.String),
-      headerRows: S.optional(S.Number),
-      delimiter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions>;
+const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    typeInferenceDisabled: S.optional(S.Boolean),
+    quote: S.optional(S.String),
+    encoding: S.optional(S.String),
+    headerRows: S.optional(S.Number),
+    delimiter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions",
+}) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions>;
 
 /** Configurations related to Cloud Storage as the data source. */
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
@@ -3226,7 +3168,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
   /** Optional. Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names. */
   excludePatterns?: StringList;
 }
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonOptions: S.optional(GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions),
     csvOptions: S.optional(GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions),
@@ -3244,7 +3186,7 @@ export interface GoogleCloudDataplexV1DataDiscoverySpec {
   /** Cloud Storage related configurations. */
   storageConfig?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfig;
 }
-export const GoogleCloudDataplexV1DataDiscoverySpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDiscoverySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryPublishingConfig: S.optional(
       GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig,
@@ -3264,7 +3206,7 @@ export interface GoogleCloudDataplexV1DataScanExecutionStatus {
   /** Optional. The time when the DataScanJob execution was created. */
   latestJobCreateTime?: string;
 }
-export const GoogleCloudDataplexV1DataScanExecutionStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataScanExecutionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestJobEndTime: S.optional(S.String),
     latestJobStartTime: S.optional(S.String),
@@ -3275,7 +3217,7 @@ export const GoogleCloudDataplexV1DataScanExecutionStatus = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GoogleCloudDataplexV1DataScanExecutionStatus>;
 
 export type GoogleCloudDataplexV1DataQualityRuleList = Array<GoogleCloudDataplexV1DataQualityRule>;
-export const GoogleCloudDataplexV1DataQualityRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataQualityRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityRule,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleList>;
 
@@ -3284,7 +3226,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExpo
   /** Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID */
   resultsTable?: string;
 }
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport =
+const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport =
   GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport as any as S.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport>;
 
 /** The individuals or groups who are designated to receive notifications upon triggers. */
@@ -3292,21 +3234,20 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
   /** Optional. The email recipients who will receive the DataQualityScan results report. */
   emails?: StringList;
 }
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      emails: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients>;
+const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    emails: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients",
+}) as any as S.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients>;
 
 /** This trigger is triggered when the DQ score in the job result is less than a specified input score. */
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
   /** Optional. The score range is in 0,100. */
   scoreThreshold?: number;
 }
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger =
+const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scoreThreshold: S.optional(S.Number),
@@ -3318,15 +3259,9 @@ export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTr
 /** This trigger is triggered when the scan job itself fails, regardless of the result. */
 export type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger =
-  GoogleLongrunningCancelOperationRequest;
-
 /** This trigger is triggered whenever a scan job run ends, regardless of the result. */
 export type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger =
-  GoogleLongrunningCancelOperationRequest;
-
 /** The configuration of notification report post scan action. */
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
   /** Required. The recipients who will receive the notification report. */
@@ -3338,7 +3273,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotification
   /** Optional. If set, report will be sent when a scan job ends. */
   jobEndTrigger?: GoogleLongrunningCancelOperationRequest;
 }
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport =
+const GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       recipients: S.optional(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients),
@@ -3359,7 +3294,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActions {
   /** Optional. If set, results will be sent to the provided notification receipts upon triggers. */
   notificationReport?: GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport;
 }
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualitySpecPostScanActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryExport: S.optional(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport),
     notificationReport: S.optional(
@@ -3387,7 +3322,7 @@ export interface GoogleCloudDataplexV1DataQualitySpec {
   /** Optional. If set, the latest DataScan job result will be published as Dataplex Universal Catalog metadata. */
   catalogPublishingEnabled?: boolean;
 }
-export const GoogleCloudDataplexV1DataQualitySpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataQualitySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableCatalogBasedRules: S.optional(S.Boolean),
     samplingPercent: S.optional(S.Number),
@@ -3422,7 +3357,7 @@ export interface GoogleCloudDataplexV1DataDiscoveryResultScanStatistics {
   /** The number of filesets created. */
   filesetsCreated?: number;
 }
-export const GoogleCloudDataplexV1DataDiscoveryResultScanStatistics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDiscoveryResultScanStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filesetsUpdated: S.optional(S.Number),
     tablesCreated: S.optional(S.Number),
@@ -3445,12 +3380,11 @@ export interface GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing {
   /** Output only. The location of the BigQuery publishing dataset. */
   location?: string;
 }
-export const GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataset: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
+const GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataset: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing",
 }) as any as S.Schema<GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing>;
@@ -3462,7 +3396,7 @@ export interface GoogleCloudDataplexV1DataDiscoveryResult {
   /** Output only. Configuration for metadata publishing. */
   bigqueryPublishing?: GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing;
 }
-export const GoogleCloudDataplexV1DataDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanStatistics: S.optional(GoogleCloudDataplexV1DataDiscoveryResultScanStatistics),
     bigqueryPublishing: S.optional(GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing),
@@ -3516,7 +3450,7 @@ export interface GoogleCloudDataplexV1DataScan {
   /** Output only. The result of a data discovery scan. */
   dataDiscoveryResult?: GoogleCloudDataplexV1DataDiscoveryResult;
 }
-export const GoogleCloudDataplexV1DataScan = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataScan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -3554,7 +3488,7 @@ export interface CreateProjectsLocationsDataScansRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataScan;
 }
-export const CreateProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataScanId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -3575,7 +3509,7 @@ export type GoogleCloudDataplexV1EntryGroupTransferStatusEnum =
   | "TRANSFER_STATUS_UNSPECIFIED"
   | "TRANSFER_STATUS_MIGRATED"
   | "TRANSFER_STATUS_TRANSFERRED";
-export const GoogleCloudDataplexV1EntryGroupTransferStatusEnum = S.String;
+const GoogleCloudDataplexV1EntryGroupTransferStatusEnum = S.String;
 
 /** An Entry Group represents a logical grouping of one or more Entries. */
 export interface GoogleCloudDataplexV1EntryGroup {
@@ -3598,7 +3532,7 @@ export interface GoogleCloudDataplexV1EntryGroup {
   /** Optional. Description of the EntryGroup. */
   description?: string;
 }
-export const GoogleCloudDataplexV1EntryGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntryGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     uid: S.optional(S.String),
@@ -3624,7 +3558,7 @@ export interface CreateProjectsLocationsEntryGroupsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EntryGroup;
 }
-export const CreateProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryGroupId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3649,7 +3583,7 @@ export interface CreateProjectsLocationsEntryGroupsEntriesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Entry;
 }
-export const CreateProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3673,7 +3607,7 @@ export interface CreateProjectsLocationsEntryGroupsEntryLinksRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EntryLink;
 }
-export const CreateProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     entryLinkId: S.optional(S.String.pipe(T.Query())),
@@ -3693,7 +3627,7 @@ export interface GoogleCloudDataplexV1EntryTypeAspectInfo {
   /** Required aspect type for the entry type. */
   type?: string;
 }
-export const GoogleCloudDataplexV1EntryTypeAspectInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntryTypeAspectInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -3703,7 +3637,7 @@ export const GoogleCloudDataplexV1EntryTypeAspectInfo = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDataplexV1EntryTypeAspectInfoList =
   Array<GoogleCloudDataplexV1EntryTypeAspectInfo>;
-export const GoogleCloudDataplexV1EntryTypeAspectInfoList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntryTypeAspectInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryTypeAspectInfo,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryTypeAspectInfoList>;
 
@@ -3712,7 +3646,7 @@ export interface GoogleCloudDataplexV1EntryTypeAuthorization {
   /** Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex Universal Catalog owned Entry Types, only settable for Dataplex Universal Catalog owned Types. */
   alternateUsePermission?: string;
 }
-export const GoogleCloudDataplexV1EntryTypeAuthorization =
+const GoogleCloudDataplexV1EntryTypeAuthorization =
   GoogleCloudDataplexV1AspectTypeAuthorization as any as S.Schema<GoogleCloudDataplexV1EntryTypeAuthorization>;
 
 /** Entry Type is a template for creating Entries. */
@@ -3744,7 +3678,7 @@ export interface GoogleCloudDataplexV1EntryType {
   /** Output only. The time when the EntryType was created. */
   createTime?: string;
 }
-export const GoogleCloudDataplexV1EntryType = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntryType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredAspects: S.optional(GoogleCloudDataplexV1EntryTypeAspectInfoList),
     authorization: S.optional(GoogleCloudDataplexV1EntryTypeAuthorization),
@@ -3774,7 +3708,7 @@ export interface CreateProjectsLocationsEntryTypesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EntryType;
 }
-export const CreateProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     entryTypeId: S.optional(S.String.pipe(T.Query())),
@@ -3801,7 +3735,7 @@ export interface CreateProjectsLocationsGlossariesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Glossary;
 }
-export const CreateProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3826,7 +3760,7 @@ export interface CreateProjectsLocationsGlossariesCategoriesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1GlossaryCategory;
 }
-export const CreateProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3850,7 +3784,7 @@ export interface CreateProjectsLocationsGlossariesTermsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1GlossaryTerm;
 }
-export const CreateProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     termId: S.optional(S.String.pipe(T.Query())),
@@ -3875,7 +3809,7 @@ export interface GoogleCloudDataplexV1AssetStatus {
   /** Number of assets that are in process of updating the security policy on attached resources. */
   securityPolicyApplyingAssets?: number;
 }
-export const GoogleCloudDataplexV1AssetStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     activeAssets: S.optional(S.Number),
@@ -3891,14 +3825,14 @@ export type GoogleCloudDataplexV1LakeStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTION_REQUIRED";
-export const GoogleCloudDataplexV1LakeStateEnum = S.String;
+const GoogleCloudDataplexV1LakeStateEnum = S.String;
 
 /** Settings to manage association of Dataproc Metastore with a lake. */
 export interface GoogleCloudDataplexV1LakeMetastore {
   /** Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id} */
   service?: string;
 }
-export const GoogleCloudDataplexV1LakeMetastore = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1LakeMetastore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
   }),
@@ -3912,7 +3846,7 @@ export type GoogleCloudDataplexV1LakeMetastoreStatusStateEnum =
   | "READY"
   | "UPDATING"
   | "ERROR";
-export const GoogleCloudDataplexV1LakeMetastoreStatusStateEnum = S.String;
+const GoogleCloudDataplexV1LakeMetastoreStatusStateEnum = S.String;
 
 /** Status of Lake and Dataproc Metastore service instance association. */
 export interface GoogleCloudDataplexV1LakeMetastoreStatus {
@@ -3925,7 +3859,7 @@ export interface GoogleCloudDataplexV1LakeMetastoreStatus {
   /** Current state of association. */
   state?: GoogleCloudDataplexV1LakeMetastoreStatusStateEnum | (string & {});
 }
-export const GoogleCloudDataplexV1LakeMetastoreStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1LakeMetastoreStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -3963,7 +3897,7 @@ export interface GoogleCloudDataplexV1Lake {
   /** Output only. Metastore status of the lake. */
   metastoreStatus?: GoogleCloudDataplexV1LakeMetastoreStatus;
 }
-export const GoogleCloudDataplexV1Lake = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Lake = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     assetStatus: S.optional(GoogleCloudDataplexV1AssetStatus),
@@ -3992,7 +3926,7 @@ export interface CreateProjectsLocationsLakesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Lake;
 }
-export const CreateProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lakeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4016,15 +3950,15 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResource
   /** Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2 */
   executorsCount?: number;
 }
-export const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxExecutorsCount: S.optional(S.Number),
       executorsCount: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources",
-  }) as any as S.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources>;
+).annotate({
+  identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources",
+}) as any as S.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources>;
 
 /** Container Image Runtime Configuration used with Batch execution. */
 export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime {
@@ -4037,17 +3971,17 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntim
   /** Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar */
   javaJars?: StringList;
 }
-export const GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       image: S.optional(S.String),
       properties: S.optional(StringMap),
       pythonPackages: S.optional(StringList),
       javaJars: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime",
-  }) as any as S.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime>;
+).annotate({
+  identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime",
+}) as any as S.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime>;
 
 /** Cloud VPC Network used to run the infrastructure. */
 export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
@@ -4058,7 +3992,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
   /** Optional. List of network tags to apply to the job. */
   networkTags?: StringList;
 }
-export const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subNetwork: S.optional(S.String),
     network: S.optional(S.String),
@@ -4077,7 +4011,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpec {
   /** Vpc network. */
   vpcNetwork?: GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork;
 }
-export const GoogleCloudDataplexV1TaskInfrastructureSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskInfrastructureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch: S.optional(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources),
     containerImage: S.optional(GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime),
@@ -4098,7 +4032,7 @@ export interface GoogleCloudDataplexV1TaskNotebookTaskConfig {
   /** Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
   archiveUris?: StringList;
 }
-export const GoogleCloudDataplexV1TaskNotebookTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskNotebookTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infrastructureSpec: S.optional(GoogleCloudDataplexV1TaskInfrastructureSpec),
     notebook: S.optional(S.String),
@@ -4122,7 +4056,7 @@ export interface GoogleCloudDataplexV1TaskExecutionSpec {
   /** Required. Service account to use to execute a task. If not provided, the default Compute service account for the project is used. */
   serviceAccount?: string;
 }
-export const GoogleCloudDataplexV1TaskExecutionSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskExecutionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKey: S.optional(S.String),
     maxJobExecutionLifetime: S.optional(S.String),
@@ -4142,16 +4076,16 @@ export type GoogleCloudDataplexV1JobStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "ABORTED";
-export const GoogleCloudDataplexV1JobStateEnum = S.String;
+const GoogleCloudDataplexV1JobStateEnum = S.String;
 
 export type GoogleCloudDataplexV1JobTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "TASK_CONFIG"
   | "RUN_REQUEST";
-export const GoogleCloudDataplexV1JobTriggerEnum = S.String;
+const GoogleCloudDataplexV1JobTriggerEnum = S.String;
 
 export type GoogleCloudDataplexV1JobServiceEnum = "SERVICE_UNSPECIFIED" | "DATAPROC";
-export const GoogleCloudDataplexV1JobServiceEnum = S.String;
+const GoogleCloudDataplexV1JobServiceEnum = S.String;
 
 /** A job represents an instance of a task. */
 export interface GoogleCloudDataplexV1Job {
@@ -4180,7 +4114,7 @@ export interface GoogleCloudDataplexV1Job {
   /** Output only. Additional information about the current state. */
   message?: string;
 }
-export const GoogleCloudDataplexV1Job = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudDataplexV1JobStateEnum),
     uid: S.optional(S.String),
@@ -4204,7 +4138,7 @@ export interface GoogleCloudDataplexV1TaskExecutionStatus {
   /** Output only. Last update time of the status. */
   updateTime?: string;
 }
-export const GoogleCloudDataplexV1TaskExecutionStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskExecutionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestJob: S.optional(GoogleCloudDataplexV1Job),
     updateTime: S.optional(S.String),
@@ -4219,13 +4153,13 @@ export type GoogleCloudDataplexV1TaskStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTION_REQUIRED";
-export const GoogleCloudDataplexV1TaskStateEnum = S.String;
+const GoogleCloudDataplexV1TaskStateEnum = S.String;
 
 export type GoogleCloudDataplexV1TaskTriggerSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ON_DEMAND"
   | "RECURRING";
-export const GoogleCloudDataplexV1TaskTriggerSpecTypeEnum = S.String;
+const GoogleCloudDataplexV1TaskTriggerSpecTypeEnum = S.String;
 
 /** Task scheduling and trigger settings. */
 export interface GoogleCloudDataplexV1TaskTriggerSpec {
@@ -4240,7 +4174,7 @@ export interface GoogleCloudDataplexV1TaskTriggerSpec {
   /** Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks. */
   schedule?: string;
 }
-export const GoogleCloudDataplexV1TaskTriggerSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskTriggerSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxRetries: S.optional(S.Number),
     disabled: S.optional(S.Boolean),
@@ -4271,7 +4205,7 @@ export interface GoogleCloudDataplexV1TaskSparkTaskConfig {
   /** The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value). */
   mainClass?: string;
 }
-export const GoogleCloudDataplexV1TaskSparkTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1TaskSparkTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlScript: S.optional(S.String),
     infrastructureSpec: S.optional(GoogleCloudDataplexV1TaskInfrastructureSpec),
@@ -4315,7 +4249,7 @@ export interface GoogleCloudDataplexV1Task {
   /** Config related to running custom Spark tasks. */
   spark?: GoogleCloudDataplexV1TaskSparkTaskConfig;
 }
-export const GoogleCloudDataplexV1Task = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     notebook: S.optional(GoogleCloudDataplexV1TaskNotebookTaskConfig),
@@ -4345,7 +4279,7 @@ export interface CreateProjectsLocationsLakesTasksRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Task;
 }
-export const CreateProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     taskId: S.optional(S.String.pipe(T.Query())),
@@ -4366,14 +4300,14 @@ export type GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum =
   | "LOCATION_TYPE_UNSPECIFIED"
   | "SINGLE_REGION"
   | "MULTI_REGION";
-export const GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum = S.String;
+const GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum = S.String;
 
 /** Settings for resources attached as assets within a zone. */
 export interface GoogleCloudDataplexV1ZoneResourceSpec {
   /** Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. */
   locationType?: GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum | (string & {});
 }
-export const GoogleCloudDataplexV1ZoneResourceSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ZoneResourceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationType: S.optional(GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum),
   }),
@@ -4382,7 +4316,7 @@ export const GoogleCloudDataplexV1ZoneResourceSpec = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GoogleCloudDataplexV1ZoneResourceSpec>;
 
 export type GoogleCloudDataplexV1ZoneTypeEnum = "TYPE_UNSPECIFIED" | "RAW" | "CURATED";
-export const GoogleCloudDataplexV1ZoneTypeEnum = S.String;
+const GoogleCloudDataplexV1ZoneTypeEnum = S.String;
 
 /** Describe JSON data format. */
 export interface GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
@@ -4391,7 +4325,7 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
   /** Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean). */
   disableTypeInference?: boolean;
 }
-export const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encoding: S.optional(S.String),
     disableTypeInference: S.optional(S.Boolean),
@@ -4411,7 +4345,7 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
   /** Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. */
   headerRows?: number;
 }
-export const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delimiter: S.optional(S.String),
     disableTypeInference: S.optional(S.Boolean),
@@ -4437,7 +4371,7 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpec {
   /** Required. Whether discovery is enabled. */
   enabled?: boolean;
 }
-export const GoogleCloudDataplexV1ZoneDiscoverySpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ZoneDiscoverySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includePatterns: S.optional(StringList),
     jsonOptions: S.optional(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions),
@@ -4456,7 +4390,7 @@ export type GoogleCloudDataplexV1ZoneStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTION_REQUIRED";
-export const GoogleCloudDataplexV1ZoneStateEnum = S.String;
+const GoogleCloudDataplexV1ZoneStateEnum = S.String;
 
 /** A zone represents a logical group of related assets within a lake. A zone can be used to map to organizational structure or represent stages of data readiness from raw to curated. It provides managing behavior that is shared or inherited by all contained assets. */
 export interface GoogleCloudDataplexV1Zone {
@@ -4485,7 +4419,7 @@ export interface GoogleCloudDataplexV1Zone {
   /** Optional. User friendly display name. */
   displayName?: string;
 }
-export const GoogleCloudDataplexV1Zone = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Zone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     resourceSpec: S.optional(GoogleCloudDataplexV1ZoneResourceSpec),
@@ -4514,7 +4448,7 @@ export interface CreateProjectsLocationsLakesZonesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Zone;
 }
-export const CreateProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     zoneId: S.optional(S.String.pipe(T.Query())),
@@ -4542,7 +4476,7 @@ export interface GoogleCloudDataplexV1AssetDiscoveryStatusStats {
   /** The number of stored data bytes within the referenced resource. */
   dataSize?: string;
 }
-export const GoogleCloudDataplexV1AssetDiscoveryStatusStats = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetDiscoveryStatusStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filesets: S.optional(S.String),
     tables: S.optional(S.String),
@@ -4559,7 +4493,7 @@ export type GoogleCloudDataplexV1AssetDiscoveryStatusStateEnum =
   | "IN_PROGRESS"
   | "PAUSED"
   | "DISABLED";
-export const GoogleCloudDataplexV1AssetDiscoveryStatusStateEnum = S.String;
+const GoogleCloudDataplexV1AssetDiscoveryStatusStateEnum = S.String;
 
 /** Status of discovery for an asset. */
 export interface GoogleCloudDataplexV1AssetDiscoveryStatus {
@@ -4576,7 +4510,7 @@ export interface GoogleCloudDataplexV1AssetDiscoveryStatus {
   /** The duration of the last discovery run. */
   lastRunDuration?: string;
 }
-export const GoogleCloudDataplexV1AssetDiscoveryStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetDiscoveryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     stats: S.optional(GoogleCloudDataplexV1AssetDiscoveryStatusStats),
@@ -4600,7 +4534,7 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions {
   /** Optional. The character encoding of the data. The default is UTF-8. */
   encoding?: string;
 }
-export const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerRows: S.optional(S.Number),
     disableTypeInference: S.optional(S.Boolean),
@@ -4614,9 +4548,6 @@ export const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions = /*@__PURE__*/ S
 /** Describe JSON data format. */
 export type GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions =
   GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions;
-export const GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions =
-  GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions;
-
 /** Settings to manage the metadata discovery and publishing for an asset. */
 export interface GoogleCloudDataplexV1AssetDiscoverySpec {
   /** Optional. Configuration for CSV data. */
@@ -4632,7 +4563,7 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpec {
   /** Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names. */
   excludePatterns?: StringList;
 }
-export const GoogleCloudDataplexV1AssetDiscoverySpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetDiscoverySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csvOptions: S.optional(GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions),
     jsonOptions: S.optional(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions),
@@ -4650,7 +4581,7 @@ export type GoogleCloudDataplexV1AssetSecurityStatusStateEnum =
   | "READY"
   | "APPLYING"
   | "ERROR";
-export const GoogleCloudDataplexV1AssetSecurityStatusStateEnum = S.String;
+const GoogleCloudDataplexV1AssetSecurityStatusStateEnum = S.String;
 
 /** Security policy status of the asset. Data security policy, i.e., readers, writers & owners, should be specified in the lake/zone/asset IAM policy. */
 export interface GoogleCloudDataplexV1AssetSecurityStatus {
@@ -4661,7 +4592,7 @@ export interface GoogleCloudDataplexV1AssetSecurityStatus {
   /** Additional information about the current state. */
   message?: string;
 }
-export const GoogleCloudDataplexV1AssetSecurityStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetSecurityStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     state: S.optional(GoogleCloudDataplexV1AssetSecurityStatusStateEnum),
@@ -4675,13 +4606,13 @@ export type GoogleCloudDataplexV1AssetResourceSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "STORAGE_BUCKET"
   | "BIGQUERY_DATASET";
-export const GoogleCloudDataplexV1AssetResourceSpecTypeEnum = S.String;
+const GoogleCloudDataplexV1AssetResourceSpecTypeEnum = S.String;
 
 export type GoogleCloudDataplexV1AssetResourceSpecReadAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "DIRECT"
   | "MANAGED";
-export const GoogleCloudDataplexV1AssetResourceSpecReadAccessModeEnum = S.String;
+const GoogleCloudDataplexV1AssetResourceSpecReadAccessModeEnum = S.String;
 
 /** Identifies the cloud resource that is referenced by this asset. */
 export interface GoogleCloudDataplexV1AssetResourceSpec {
@@ -4692,7 +4623,7 @@ export interface GoogleCloudDataplexV1AssetResourceSpec {
   /** Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1AssetResourceSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetResourceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudDataplexV1AssetResourceSpecTypeEnum),
     readAccessMode: S.optional(GoogleCloudDataplexV1AssetResourceSpecReadAccessModeEnum),
@@ -4708,13 +4639,13 @@ export type GoogleCloudDataplexV1AssetStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTION_REQUIRED";
-export const GoogleCloudDataplexV1AssetStateEnum = S.String;
+const GoogleCloudDataplexV1AssetStateEnum = S.String;
 
 export type GoogleCloudDataplexV1AssetResourceStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
   | "ERROR";
-export const GoogleCloudDataplexV1AssetResourceStatusStateEnum = S.String;
+const GoogleCloudDataplexV1AssetResourceStatusStateEnum = S.String;
 
 /** Status of the resource referenced by an asset. */
 export interface GoogleCloudDataplexV1AssetResourceStatus {
@@ -4727,7 +4658,7 @@ export interface GoogleCloudDataplexV1AssetResourceStatus {
   /** Output only. Service account associated with the BigQuery Connection. */
   managedAccessIdentity?: string;
 }
-export const GoogleCloudDataplexV1AssetResourceStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1AssetResourceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudDataplexV1AssetResourceStatusStateEnum),
     message: S.optional(S.String),
@@ -4767,7 +4698,7 @@ export interface GoogleCloudDataplexV1Asset {
   /** Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name. */
   uid?: string;
 }
-export const GoogleCloudDataplexV1Asset = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     discoveryStatus: S.optional(GoogleCloudDataplexV1AssetDiscoveryStatus),
@@ -4797,7 +4728,7 @@ export interface CreateProjectsLocationsLakesZonesAssetsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Asset;
 }
-export const CreateProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4815,19 +4746,19 @@ export const CreateProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateProjectsLocationsLakesZonesAssetsRequest>;
 
 export type GoogleCloudDataplexV1EntityTypeEnum = "TYPE_UNSPECIFIED" | "TABLE" | "FILESET";
-export const GoogleCloudDataplexV1EntityTypeEnum = S.String;
+const GoogleCloudDataplexV1EntityTypeEnum = S.String;
 
 export type GoogleCloudDataplexV1EntitySystemEnum =
   | "STORAGE_SYSTEM_UNSPECIFIED"
   | "CLOUD_STORAGE"
   | "BIGQUERY";
-export const GoogleCloudDataplexV1EntitySystemEnum = S.String;
+const GoogleCloudDataplexV1EntitySystemEnum = S.String;
 
 export type GoogleCloudDataplexV1StorageFormatCompressionFormatEnum =
   | "COMPRESSION_FORMAT_UNSPECIFIED"
   | "GZIP"
   | "BZIP2";
-export const GoogleCloudDataplexV1StorageFormatCompressionFormatEnum = S.String;
+const GoogleCloudDataplexV1StorageFormatCompressionFormatEnum = S.String;
 
 /** Describes CSV and similar semi-structured data formats. */
 export interface GoogleCloudDataplexV1StorageFormatCsvOptions {
@@ -4840,7 +4771,7 @@ export interface GoogleCloudDataplexV1StorageFormatCsvOptions {
   /** Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified. */
   quote?: string;
 }
-export const GoogleCloudDataplexV1StorageFormatCsvOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1StorageFormatCsvOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delimiter: S.optional(S.String),
     headerRows: S.optional(S.Number),
@@ -4865,14 +4796,14 @@ export type GoogleCloudDataplexV1StorageFormatFormatEnum =
   | "TFRECORD"
   | "OTHER"
   | "UNKNOWN";
-export const GoogleCloudDataplexV1StorageFormatFormatEnum = S.String;
+const GoogleCloudDataplexV1StorageFormatFormatEnum = S.String;
 
 /** Describes Iceberg data format. */
 export interface GoogleCloudDataplexV1StorageFormatIcebergOptions {
   /** Optional. The location of where the iceberg metadata is present, must be within the table path */
   metadataLocation?: string;
 }
-export const GoogleCloudDataplexV1StorageFormatIcebergOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1StorageFormatIcebergOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadataLocation: S.optional(S.String),
   }),
@@ -4885,7 +4816,7 @@ export interface GoogleCloudDataplexV1StorageFormatJsonOptions {
   /** Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified. */
   encoding?: string;
 }
-export const GoogleCloudDataplexV1StorageFormatJsonOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1StorageFormatJsonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encoding: S.optional(S.String),
   }),
@@ -4908,7 +4839,7 @@ export interface GoogleCloudDataplexV1StorageFormat {
   /** Optional. Additional information about CSV formatted data. */
   json?: GoogleCloudDataplexV1StorageFormatJsonOptions;
 }
-export const GoogleCloudDataplexV1StorageFormat = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1StorageFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compressionFormat: S.optional(GoogleCloudDataplexV1StorageFormatCompressionFormatEnum),
     csv: S.optional(GoogleCloudDataplexV1StorageFormatCsvOptions),
@@ -4925,14 +4856,14 @@ export type GoogleCloudDataplexV1StorageAccessReadEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "DIRECT"
   | "MANAGED";
-export const GoogleCloudDataplexV1StorageAccessReadEnum = S.String;
+const GoogleCloudDataplexV1StorageAccessReadEnum = S.String;
 
 /** Describes the access mechanism of the data within its storage location. */
 export interface GoogleCloudDataplexV1StorageAccess {
   /** Output only. Describes the read access mechanism of the data. Not user settable. */
   read?: GoogleCloudDataplexV1StorageAccessReadEnum | (string & {});
 }
-export const GoogleCloudDataplexV1StorageAccess = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1StorageAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     read: S.optional(GoogleCloudDataplexV1StorageAccessReadEnum),
   }),
@@ -4957,14 +4888,14 @@ export type GoogleCloudDataplexV1SchemaSchemaFieldTypeEnum =
   | "TIME"
   | "RECORD"
   | "NULL";
-export const GoogleCloudDataplexV1SchemaSchemaFieldTypeEnum = S.String;
+const GoogleCloudDataplexV1SchemaSchemaFieldTypeEnum = S.String;
 
 export type GoogleCloudDataplexV1SchemaSchemaFieldModeEnum =
   | "MODE_UNSPECIFIED"
   | "REQUIRED"
   | "NULLABLE"
   | "REPEATED";
-export const GoogleCloudDataplexV1SchemaSchemaFieldModeEnum = S.String;
+const GoogleCloudDataplexV1SchemaSchemaFieldModeEnum = S.String;
 
 /** Represents a column field within a table schema. */
 export interface GoogleCloudDataplexV1SchemaSchemaField {
@@ -4979,7 +4910,7 @@ export interface GoogleCloudDataplexV1SchemaSchemaField {
   /** Required. Additional field semantics. */
   mode?: GoogleCloudDataplexV1SchemaSchemaFieldModeEnum | (string & {});
 }
-export const GoogleCloudDataplexV1SchemaSchemaField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1SchemaSchemaField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     type: S.optional(GoogleCloudDataplexV1SchemaSchemaFieldTypeEnum),
@@ -4993,14 +4924,14 @@ export const GoogleCloudDataplexV1SchemaSchemaField = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudDataplexV1SchemaSchemaFieldList =
   Array<GoogleCloudDataplexV1SchemaSchemaField>;
-export const GoogleCloudDataplexV1SchemaSchemaFieldList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1SchemaSchemaFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1SchemaSchemaField,
 ) as any as S.Schema<GoogleCloudDataplexV1SchemaSchemaFieldList>;
 
 export type GoogleCloudDataplexV1SchemaPartitionStyleEnum =
   | "PARTITION_STYLE_UNSPECIFIED"
   | "HIVE_COMPATIBLE";
-export const GoogleCloudDataplexV1SchemaPartitionStyleEnum = S.String;
+const GoogleCloudDataplexV1SchemaPartitionStyleEnum = S.String;
 
 export type GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -5019,7 +4950,7 @@ export type GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum =
   | "TIME"
   | "RECORD"
   | "NULL";
-export const GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum = S.String;
+const GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum = S.String;
 
 /** Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable. */
 export interface GoogleCloudDataplexV1SchemaPartitionField {
@@ -5028,7 +4959,7 @@ export interface GoogleCloudDataplexV1SchemaPartitionField {
   /** Required. Immutable. The type of field. */
   type?: GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum | (string & {});
 }
-export const GoogleCloudDataplexV1SchemaPartitionField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1SchemaPartitionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum),
@@ -5039,7 +4970,7 @@ export const GoogleCloudDataplexV1SchemaPartitionField = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDataplexV1SchemaPartitionFieldList =
   Array<GoogleCloudDataplexV1SchemaPartitionField>;
-export const GoogleCloudDataplexV1SchemaPartitionFieldList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1SchemaPartitionFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1SchemaPartitionField,
 ) as any as S.Schema<GoogleCloudDataplexV1SchemaPartitionFieldList>;
 
@@ -5054,7 +4985,7 @@ export interface GoogleCloudDataplexV1Schema {
   /** Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data. */
   partitionFields?: GoogleCloudDataplexV1SchemaPartitionFieldList;
 }
-export const GoogleCloudDataplexV1Schema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GoogleCloudDataplexV1SchemaSchemaFieldList),
     userManaged: S.optional(S.Boolean),
@@ -5072,12 +5003,11 @@ export interface GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
   /** Output only. Whether the entity is compatible and can be represented in the metadata store. */
   compatible?: boolean;
 }
-export const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      reason: S.optional(S.String),
-      compatible: S.optional(S.Boolean),
-    }),
+const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reason: S.optional(S.String),
+    compatible: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility",
 }) as any as S.Schema<GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility>;
@@ -5089,7 +5019,7 @@ export interface GoogleCloudDataplexV1EntityCompatibilityStatus {
   /** Output only. Whether this entity is compatible with BigQuery. */
   bigquery?: GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility;
 }
-export const GoogleCloudDataplexV1EntityCompatibilityStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1EntityCompatibilityStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiveMetastore: S.optional(GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility),
     bigquery: S.optional(GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility),
@@ -5137,7 +5067,7 @@ export interface GoogleCloudDataplexV1Entity {
   /** Output only. Metadata stores that the entity is compatible with. */
   compatibility?: GoogleCloudDataplexV1EntityCompatibilityStatus;
 }
-export const GoogleCloudDataplexV1Entity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     asset: S.optional(S.String),
@@ -5170,7 +5100,7 @@ export interface CreateProjectsLocationsLakesZonesEntitiesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Entity;
 }
-export const CreateProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -5197,7 +5127,7 @@ export interface GoogleCloudDataplexV1Partition {
   /** Output only. Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format. */
   name?: string;
 }
-export const GoogleCloudDataplexV1Partition = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Partition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     location: S.optional(S.String),
@@ -5216,19 +5146,18 @@ export interface CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Partition;
 }
-export const CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(GoogleCloudDataplexV1Partition.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/partitions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(GoogleCloudDataplexV1Partition.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/partitions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest",
 }) as any as S.Schema<CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
@@ -5238,12 +5167,10 @@ export type GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-export const GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum = S.String;
-
 export type GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList = Array<
   GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum | (string & {})
 >;
-export const GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList =
+const GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList =
   GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList as any as S.Schema<GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList>;
 
 /** Filters defines the type of changes that you want to listen to. You can have multiple entry type filters and multiple aspect type filters. All of the entry type filters are OR'ed together. All of the aspect type filters are OR'ed together. All of the entry type filters and aspect type filters are AND'ed together. */
@@ -5255,7 +5182,7 @@ export interface GoogleCloudDataplexV1MetadataFeedFilters {
   /** Optional. The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}. */
   aspectTypes?: StringList;
 }
-export const GoogleCloudDataplexV1MetadataFeedFilters = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataFeedFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryTypes: S.optional(StringList),
     changeTypes: S.optional(GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList),
@@ -5274,7 +5201,7 @@ export interface GoogleCloudDataplexV1MetadataFeedScope {
   /** Optional. The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. */
   entryGroups?: StringList;
 }
-export const GoogleCloudDataplexV1MetadataFeedScope = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataFeedScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationLevel: S.optional(S.Boolean),
     projects: S.optional(StringList),
@@ -5303,7 +5230,7 @@ export interface GoogleCloudDataplexV1MetadataFeed {
   /** Output only. The time when the feed was created. */
   createTime?: string;
 }
-export const GoogleCloudDataplexV1MetadataFeed = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataFeed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
     uid: S.optional(S.String),
@@ -5328,7 +5255,7 @@ export interface CreateProjectsLocationsMetadataFeedsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1MetadataFeed;
 }
-export const CreateProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     metadataFeedId: S.optional(S.String.pipe(T.Query())),
@@ -5354,7 +5281,7 @@ export type GoogleCloudDataplexV1MetadataJobStatusStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "SUCCEEDED_WITH_ERRORS";
-export const GoogleCloudDataplexV1MetadataJobStatusStateEnum = S.String;
+const GoogleCloudDataplexV1MetadataJobStatusStateEnum = S.String;
 
 /** Metadata job status. */
 export interface GoogleCloudDataplexV1MetadataJobStatus {
@@ -5367,7 +5294,7 @@ export interface GoogleCloudDataplexV1MetadataJobStatus {
   /** Output only. Message relating to the progression of a metadata job. */
   message?: string;
 }
-export const GoogleCloudDataplexV1MetadataJobStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataJobStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completionPercent: S.optional(S.Number),
     state: S.optional(GoogleCloudDataplexV1MetadataJobStatusStateEnum),
@@ -5399,7 +5326,7 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobResult {
   /** Output only. The total number of entries that were recreated. */
   recreatedEntries?: string;
 }
-export const GoogleCloudDataplexV1MetadataJobImportJobResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataJobImportJobResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdEntryLinks: S.optional(S.String),
     deletedEntries: S.optional(S.String),
@@ -5416,7 +5343,7 @@ export const GoogleCloudDataplexV1MetadataJobImportJobResult = /*@__PURE__*/ S.s
 }) as any as S.Schema<GoogleCloudDataplexV1MetadataJobImportJobResult>;
 
 export type GoogleCloudDataplexV1MetadataJobTypeEnum = "TYPE_UNSPECIFIED" | "IMPORT" | "EXPORT";
-export const GoogleCloudDataplexV1MetadataJobTypeEnum = S.String;
+const GoogleCloudDataplexV1MetadataJobTypeEnum = S.String;
 
 /** The scope of the export job. */
 export interface GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope {
@@ -5431,15 +5358,14 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope {
   /** Whether the metadata export job is an organization-level export job. If true, the job exports the entries from the same organization and VPC Service Controls perimeter as the job. The project that the job belongs to determines the VPC Service Controls perimeter. If you set the job scope to be at the organization level, then don't provide a list of projects or entry groups. If false, you must specify a list of projects or a list of entry groups whose entries you want to export.The default is false. */
   organizationLevel?: boolean;
 }
-export const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entryGroups: S.optional(StringList),
-      projects: S.optional(StringList),
-      entryTypes: S.optional(StringList),
-      aspectTypes: S.optional(StringList),
-      organizationLevel: S.optional(S.Boolean),
-    }),
+const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entryGroups: S.optional(StringList),
+    projects: S.optional(StringList),
+    entryTypes: S.optional(StringList),
+    aspectTypes: S.optional(StringList),
+    organizationLevel: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope",
 }) as any as S.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope>;
@@ -5451,7 +5377,7 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobSpec {
   /** Required. The root path of the Cloud Storage bucket to export the metadata to, in the format gs://{bucket}/. You can optionally specify a custom prefix after the bucket name, in the format gs://{bucket}/{prefix}/. The maximum length of the custom prefix is 128 characters. Dataplex Universal Catalog constructs the object path for the exported files by using the bucket name and prefix that you provide, followed by a system-generated path.The bucket must be in the same VPC Service Controls perimeter as the job. */
   outputPath?: string;
 }
-export const GoogleCloudDataplexV1MetadataJobExportJobSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataJobExportJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope),
     outputPath: S.optional(S.String),
@@ -5467,7 +5393,7 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobResult {
   /** Output only. The number of entries that were exported. */
   exportedEntries?: string;
 }
-export const GoogleCloudDataplexV1MetadataJobExportJobResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataJobExportJobResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     exportedEntries: S.optional(S.String),
@@ -5481,13 +5407,13 @@ export type GoogleCloudDataplexV1MetadataJobImportJobSpecEntrySyncModeEnum =
   | "FULL"
   | "INCREMENTAL"
   | "NONE";
-export const GoogleCloudDataplexV1MetadataJobImportJobSpecEntrySyncModeEnum = S.String;
+const GoogleCloudDataplexV1MetadataJobImportJobSpecEntrySyncModeEnum = S.String;
 
 export type GoogleCloudDataplexV1MetadataJobImportJobSpecLogLevelEnum =
   | "LOG_LEVEL_UNSPECIFIED"
   | "DEBUG"
   | "INFO";
-export const GoogleCloudDataplexV1MetadataJobImportJobSpecLogLevelEnum = S.String;
+const GoogleCloudDataplexV1MetadataJobImportJobSpecLogLevelEnum = S.String;
 
 /** A boundary on the scope of impact that the metadata import job can have. */
 export interface GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
@@ -5504,16 +5430,15 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /** Optional. Defines the scope of entries that can be referenced in the entry links.Currently, projects are supported as valid scopes. Format: projects/{project_number_or_id}If the metadata import file attempts to create an entry link which references an entry that is not in the scope, the import job will skip that entry link. */
   referencedEntryScopes?: StringList;
 }
-export const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      aspectTypes: S.optional(StringList),
-      glossaries: S.optional(StringList),
-      entryGroups: S.optional(StringList),
-      entryTypes: S.optional(StringList),
-      entryLinkTypes: S.optional(StringList),
-      referencedEntryScopes: S.optional(StringList),
-    }),
+const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    aspectTypes: S.optional(StringList),
+    glossaries: S.optional(StringList),
+    entryGroups: S.optional(StringList),
+    entryTypes: S.optional(StringList),
+    entryLinkTypes: S.optional(StringList),
+    referencedEntryScopes: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope",
 }) as any as S.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope>;
@@ -5523,7 +5448,7 @@ export type GoogleCloudDataplexV1MetadataJobImportJobSpecAspectSyncModeEnum =
   | "FULL"
   | "INCREMENTAL"
   | "NONE";
-export const GoogleCloudDataplexV1MetadataJobImportJobSpecAspectSyncModeEnum = S.String;
+const GoogleCloudDataplexV1MetadataJobImportJobSpecAspectSyncModeEnum = S.String;
 
 /** Job specification for a metadata import job.You can run the following kinds of metadata import jobs: Full sync of entries with incremental import of their aspects. Supported for custom entries. Incremental import of aspects only. Supported for aspects that belong to custom entries and system entries. For custom entries, you can modify both optional aspects and required aspects. For system entries, you can modify optional aspects. */
 export interface GoogleCloudDataplexV1MetadataJobImportJobSpec {
@@ -5540,7 +5465,7 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobSpec {
   /** Optional. The URI of a Cloud Storage bucket or folder (beginning with gs:// and ending with /) that contains the metadata import files for this job.A metadata import file defines the values to set for each of the entries and aspects in a metadata import job. For more information about how to create a metadata import file and the file requirements, see Metadata import file (https://cloud.google.com/dataplex/docs/import-metadata#metadata-import-file).You can provide multiple metadata import files in the same metadata job. The bucket or folder must contain at least one metadata import file, in JSON Lines format (either .json or .jsonl file extension).In FULL entry sync mode, don't save the metadata import file in a folder named SOURCE_STORAGE_URI/deletions/.Caution: If the metadata import file contains no data, all entries and aspects that belong to the job's scope are deleted. */
   sourceStorageUri?: string;
 }
-export const GoogleCloudDataplexV1MetadataJobImportJobSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataJobImportJobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entrySyncMode: S.optional(GoogleCloudDataplexV1MetadataJobImportJobSpecEntrySyncModeEnum),
     logLevel: S.optional(GoogleCloudDataplexV1MetadataJobImportJobSpecLogLevelEnum),
@@ -5578,7 +5503,7 @@ export interface GoogleCloudDataplexV1MetadataJob {
   /** Output only. The time when the metadata job was updated. */
   updateTime?: string;
 }
-export const GoogleCloudDataplexV1MetadataJob = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1MetadataJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleCloudDataplexV1MetadataJobStatus),
     importResult: S.optional(GoogleCloudDataplexV1MetadataJobImportJobResult),
@@ -5606,7 +5531,7 @@ export interface CreateProjectsLocationsMetadataJobsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1MetadataJob;
 }
-export const CreateProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -5629,7 +5554,7 @@ export interface DeleteOrganizationsLocationsEncryptionConfigsRequest {
   /** Optional. Etag of the EncryptionConfig. This is a strong etag. */
   etag?: string;
 }
-export const DeleteOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5644,7 +5569,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5660,7 +5585,7 @@ export interface DeleteProjectsLocationsAspectTypesRequest {
   /** Optional. If the client provided etag value does not match the current etag value, the DeleteAspectTypeRequest method returns an ABORTED error response. */
   etag?: string;
 }
-export const DeleteProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5677,7 +5602,7 @@ export interface DeleteProjectsLocationsChangeRequestsRequest {
   /** Optional. The etag of the ChangeRequest. */
   etag?: string;
 }
-export const DeleteProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5692,7 +5617,7 @@ export interface DeleteProjectsLocationsDataDomainsRequest {
   /** Required. The resource name of the DataDomain: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id} */
   name: string;
 }
-export const DeleteProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5706,7 +5631,7 @@ export interface DeleteProjectsLocationsDataDomainsBindingsRequest {
   /** Required. The resource name of the DataDomainBinding: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}/bindings/{binding_id} */
   name: string;
 }
-export const DeleteProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5724,7 +5649,7 @@ export interface DeleteProjectsLocationsDataProductsRequest {
   /** Optional. The etag of the data product.If an etag is provided and does not match the current etag of the data product, then the deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -5744,7 +5669,7 @@ export interface DeleteProjectsLocationsDataProductsDataAssetsRequest {
   /** Optional. The etag of the data asset. If this is provided, it must match the server's etag. If the etag is provided and does not match the server-computed etag, the request must fail with a ABORTED error code. */
   etag?: string;
 }
-export const DeleteProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -5762,7 +5687,7 @@ export interface DeleteProjectsLocationsDataScansRequest {
   /** Required. The resource name of the dataScan: projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a project_id or project_number and location_id refers to a Google Cloud region. */
   name: string;
 }
-export const DeleteProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5779,7 +5704,7 @@ export interface DeleteProjectsLocationsEntryGroupsRequest {
   /** Optional. If the client provided etag value does not match the current etag value, the DeleteEntryGroupRequest method returns an ABORTED error response. */
   etag?: string;
 }
-export const DeleteProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5794,7 +5719,7 @@ export interface DeleteProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The resource name of the Entry: projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}. */
   name: string;
 }
-export const DeleteProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5808,7 +5733,7 @@ export interface DeleteProjectsLocationsEntryGroupsEntryLinksRequest {
   /** Required. The resource name of the Entry Link: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5824,7 +5749,7 @@ export interface DeleteProjectsLocationsEntryTypesRequest {
   /** Optional. If the client provided etag value does not match the current etag value, the DeleteEntryTypeRequest method returns an ABORTED error response. */
   etag?: string;
 }
-export const DeleteProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5841,7 +5766,7 @@ export interface DeleteProjectsLocationsGlossariesRequest {
   /** Optional. The etag of the Glossary. If this is provided, it must match the server's etag. If the etag is provided and does not match the server-computed etag, the request must fail with a ABORTED error code. */
   etag?: string;
 }
-export const DeleteProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5856,7 +5781,7 @@ export interface DeleteProjectsLocationsGlossariesCategoriesRequest {
   /** Required. The name of the GlossaryCategory to delete. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id} */
   name: string;
 }
-export const DeleteProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5870,7 +5795,7 @@ export interface DeleteProjectsLocationsGlossariesTermsRequest {
   /** Required. The name of the GlossaryTerm to delete. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id} */
   name: string;
 }
-export const DeleteProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5884,7 +5809,7 @@ export interface DeleteProjectsLocationsLakesRequest {
   /** Required. The resource name of the lake: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5898,7 +5823,7 @@ export interface DeleteProjectsLocationsLakesTasksRequest {
   /** Required. The resource name of the task: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5912,7 +5837,7 @@ export interface DeleteProjectsLocationsLakesZonesRequest {
   /** Required. The resource name of the zone: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5926,7 +5851,7 @@ export interface DeleteProjectsLocationsLakesZonesAssetsRequest {
   /** Required. The resource name of the asset: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5942,7 +5867,7 @@ export interface DeleteProjectsLocationsLakesZonesEntitiesRequest {
   /** Required. The etag associated with the entity, which can be retrieved with a GetEntity request. */
   etag?: string;
 }
-export const DeleteProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -5959,14 +5884,13 @@ export interface DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest {
   /** Optional. The etag associated with the partition. */
   etag?: string;
 }
-export const DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
-    ),
+const DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    etag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://dataplex.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
@@ -5975,7 +5899,7 @@ export interface DeleteProjectsLocationsMetadataFeedsRequest {
   /** Required. The resource name of the metadata feed, in the format projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}. */
   name: string;
 }
-export const DeleteProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5989,7 +5913,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6002,27 +5926,23 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 /** Request details for generating data quality rule recommendations. */
 export type GoogleCloudDataplexV1GenerateDataQualityRulesRequest =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1GenerateDataQualityRulesRequest =
-  GoogleLongrunningCancelOperationRequest;
-
 export interface GenerateDataQualityRulesProjectsLocationsDataScansRequest {
   /** Required. The name must be one of the following: The name of a data scan with at least one successful, completed data profiling job The name of a successful, completed data profiling job (a data scan job where the job type is data profiling) */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const GenerateDataQualityRulesProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:generateDataQualityRules",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const GenerateDataQualityRulesProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:generateDataQualityRules",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GenerateDataQualityRulesProjectsLocationsDataScansRequest",
 }) as any as S.Schema<GenerateDataQualityRulesProjectsLocationsDataScansRequest>;
@@ -6032,7 +5952,7 @@ export interface GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
   /** The data quality rules that Dataplex Universal Catalog generates based on the results of a data profiling scan. */
   rule?: GoogleCloudDataplexV1DataQualityRuleList;
 }
-export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1GenerateDataQualityRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(GoogleCloudDataplexV1DataQualityRuleList),
   }),
@@ -6046,21 +5966,20 @@ export interface GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:generateDataQualityRules",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest",
-  }) as any as S.Schema<GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest>;
+const GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:generateDataQualityRules",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest",
+}) as any as S.Schema<GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest>;
 
 export interface GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -6068,18 +5987,17 @@ export interface GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest",
 }) as any as S.Schema<GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
@@ -6089,7 +6007,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -6098,7 +6016,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -6108,7 +6026,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -6119,7 +6037,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
@@ -6127,7 +6045,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -6142,7 +6060,7 @@ export interface GoogleTypeExpr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -6160,7 +6078,7 @@ export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value. */
   members?: StringList;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(GoogleTypeExpr),
@@ -6169,7 +6087,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -6184,7 +6102,7 @@ export interface GoogleIamV1Policy {
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost. */
   etag?: string;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     auditConfigs: S.optional(GoogleIamV1AuditConfigList),
@@ -6199,7 +6117,7 @@ export interface GetIamPolicyProjectsLocationsAgentTasksRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsAgentTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAgentTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6220,7 +6138,7 @@ export interface GetIamPolicyProjectsLocationsAspectTypesRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6241,7 +6159,7 @@ export interface GetIamPolicyProjectsLocationsChangeRequestsRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6262,18 +6180,17 @@ export interface GetIamPolicyProjectsLocationsDataAttributeBindingsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDataAttributeBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsDataAttributeBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsDataAttributeBindingsRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
@@ -6284,7 +6201,7 @@ export interface GetIamPolicyProjectsLocationsDataDomainsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -6305,7 +6222,7 @@ export interface GetIamPolicyProjectsLocationsDataProductsRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6326,7 +6243,7 @@ export interface GetIamPolicyProjectsLocationsDataScansRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6347,7 +6264,7 @@ export interface GetIamPolicyProjectsLocationsDataTaxonomiesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDataTaxonomiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataTaxonomiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -6368,18 +6285,17 @@ export interface GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
@@ -6390,7 +6306,7 @@ export interface GetIamPolicyProjectsLocationsEntryGroupsRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6411,7 +6327,7 @@ export interface GetIamPolicyProjectsLocationsEntryLinkTypesRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsEntryLinkTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsEntryLinkTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6432,7 +6348,7 @@ export interface GetIamPolicyProjectsLocationsEntryTypesRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6453,7 +6369,7 @@ export interface GetIamPolicyProjectsLocationsGlossariesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -6474,18 +6390,17 @@ export interface GetIamPolicyProjectsLocationsGlossariesCategoriesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsGlossariesCategoriesRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
@@ -6496,7 +6411,7 @@ export interface GetIamPolicyProjectsLocationsGlossariesTermsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -6517,7 +6432,7 @@ export interface GetIamPolicyProjectsLocationsGovernanceRulesRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGovernanceRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGovernanceRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6538,7 +6453,7 @@ export interface GetIamPolicyProjectsLocationsLakesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -6559,7 +6474,7 @@ export interface GetIamPolicyProjectsLocationsLakesTasksRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6580,7 +6495,7 @@ export interface GetIamPolicyProjectsLocationsLakesZonesRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6601,7 +6516,7 @@ export interface GetIamPolicyProjectsLocationsLakesZonesAssetsRequest {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -6620,7 +6535,7 @@ export interface GetOrganizationsLocationsEncryptionConfigsRequest {
   /** Required. The name of the EncryptionConfig to fetch. */
   name: string;
 }
-export const GetOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6634,7 +6549,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6648,7 +6563,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6671,7 +6586,7 @@ export interface GoogleCloudLocationLocation {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     name: S.optional(S.String),
@@ -6687,7 +6602,7 @@ export interface GetProjectsLocationsAspectTypesRequest {
   /** Required. The resource name of the AspectType: projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}. */
   name: string;
 }
-export const GetProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6701,7 +6616,7 @@ export interface GetProjectsLocationsChangeRequestsRequest {
   /** Required. The name of the ChangeRequest to retrieve. Format: projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id} */
   name: string;
 }
-export const GetProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6715,7 +6630,7 @@ export interface GetProjectsLocationsDataDomainsRequest {
   /** Required. The resource name of the DataDomain: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id} */
   name: string;
 }
-export const GetProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6729,7 +6644,7 @@ export interface GetProjectsLocationsDataDomainsBindingsRequest {
   /** Required. The resource name of the DataDomainBinding: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}/bindings/{binding_id} */
   name: string;
 }
-export const GetProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6743,7 +6658,7 @@ export interface GetProjectsLocationsDataProductsRequest {
   /** Required. The name of the data product to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id} */
   name: string;
 }
-export const GetProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6757,7 +6672,7 @@ export interface GetProjectsLocationsDataProductsDataAssetsRequest {
   /** Required. The name of the data asset to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id} */
   name: string;
 }
-export const GetProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6768,7 +6683,7 @@ export const GetProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type GetProjectsLocationsDataScansViewEnum = "DATA_SCAN_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsDataScansViewEnum = S.String;
+const GetProjectsLocationsDataScansViewEnum = S.String;
 
 export interface GetProjectsLocationsDataScansRequest {
   /** Required. The resource name of the dataScan: projects/{project}/locations/{location_id}/dataScans/{data_scan_id} where project refers to a project_id or project_number and location_id refers to a Google Cloud region. */
@@ -6776,7 +6691,7 @@ export interface GetProjectsLocationsDataScansRequest {
   /** Optional. Select the DataScan view to return. Defaults to BASIC. */
   view?: GetProjectsLocationsDataScansViewEnum | (string & {});
 }
-export const GetProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsDataScansViewEnum.pipe(T.Query())),
@@ -6791,7 +6706,7 @@ export type GetProjectsLocationsDataScansJobsViewEnum =
   | "DATA_SCAN_JOB_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const GetProjectsLocationsDataScansJobsViewEnum = S.String;
+const GetProjectsLocationsDataScansJobsViewEnum = S.String;
 
 export interface GetProjectsLocationsDataScansJobsRequest {
   /** Required. The resource name of the DataScanJob: projects/{project}/locations/{location_id}/dataScans/{data_scan_id}/jobs/{data_scan_job_id} where project refers to a project_id or project_number and location_id refers to a Google Cloud region. */
@@ -6799,7 +6714,7 @@ export interface GetProjectsLocationsDataScansJobsRequest {
   /** Optional. Select the DataScanJob view to return. Defaults to BASIC. */
   view?: GetProjectsLocationsDataScansJobsViewEnum | (string & {});
 }
-export const GetProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsDataScansJobsViewEnum.pipe(T.Query())),
@@ -6816,7 +6731,7 @@ export type GoogleCloudDataplexV1DataScanJobTypeEnum =
   | "DATA_PROFILE"
   | "DATA_DISCOVERY"
   | "DATA_DOCUMENTATION";
-export const GoogleCloudDataplexV1DataScanJobTypeEnum = S.String;
+const GoogleCloudDataplexV1DataScanJobTypeEnum = S.String;
 
 export type GoogleCloudDataplexV1DataScanJobStateEnum =
   | "STATE_UNSPECIFIED"
@@ -6827,7 +6742,7 @@ export type GoogleCloudDataplexV1DataScanJobStateEnum =
   | "FAILED"
   | "PENDING"
   | "SUCCEEDED_WITH_ERRORS";
-export const GoogleCloudDataplexV1DataScanJobStateEnum = S.String;
+const GoogleCloudDataplexV1DataScanJobStateEnum = S.String;
 
 /** A DataScanJob represents an instance of DataScan execution. */
 export interface GoogleCloudDataplexV1DataScanJob {
@@ -6866,7 +6781,7 @@ export interface GoogleCloudDataplexV1DataScanJob {
   /** Output only. Additional information about the current state. */
   message?: string;
 }
-export const GoogleCloudDataplexV1DataScanJob = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1DataScanJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataProfileSpec: S.optional(GoogleCloudDataplexV1DataProfileSpec),
     name: S.optional(S.String),
@@ -6894,7 +6809,7 @@ export interface GetProjectsLocationsEntryGroupsRequest {
   /** Required. The resource name of the EntryGroup: projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}. */
   name: string;
 }
-export const GetProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6910,7 +6825,7 @@ export type GetProjectsLocationsEntryGroupsEntriesViewEnum =
   | "FULL"
   | "CUSTOM"
   | "ALL";
-export const GetProjectsLocationsEntryGroupsEntriesViewEnum = S.String;
+const GetProjectsLocationsEntryGroupsEntriesViewEnum = S.String;
 
 export interface GetProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The resource name of the Entry: projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}. */
@@ -6922,7 +6837,7 @@ export interface GetProjectsLocationsEntryGroupsEntriesRequest {
   /** Optional. View to control which parts of an entry the service should return. Please check the limitations on returned aspects in the Entry view documentation. Amount of returned aspects depends on the selected Entry View. */
   view?: GetProjectsLocationsEntryGroupsEntriesViewEnum | (string & {});
 }
-export const GetProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     paths: S.optional(StringList.pipe(T.Query())),
@@ -6939,7 +6854,7 @@ export interface GetProjectsLocationsEntryGroupsEntryLinksRequest {
   /** Required. The resource name of the Entry Link: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}. */
   name: string;
 }
-export const GetProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6953,7 +6868,7 @@ export interface GetProjectsLocationsEntryTypesRequest {
   /** Required. The resource name of the EntryType: projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}. */
   name: string;
 }
-export const GetProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6967,7 +6882,7 @@ export interface GetProjectsLocationsGlossariesRequest {
   /** Required. The name of the Glossary to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} */
   name: string;
 }
-export const GetProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6981,7 +6896,7 @@ export interface GetProjectsLocationsGlossariesCategoriesRequest {
   /** Required. The name of the GlossaryCategory to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id} */
   name: string;
 }
-export const GetProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6995,7 +6910,7 @@ export interface GetProjectsLocationsGlossariesTermsRequest {
   /** Required. The name of the GlossaryTerm to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id} */
   name: string;
 }
-export const GetProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7009,7 +6924,7 @@ export interface GetProjectsLocationsLakesRequest {
   /** Required. The resource name of the lake: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. */
   name: string;
 }
-export const GetProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7023,7 +6938,7 @@ export interface GetProjectsLocationsLakesTasksRequest {
   /** Required. The resource name of the task: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{tasks_id}. */
   name: string;
 }
-export const GetProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7037,7 +6952,7 @@ export interface GetProjectsLocationsLakesTasksJobsRequest {
   /** Required. The resource name of the job: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}. */
   name: string;
 }
-export const GetProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7051,7 +6966,7 @@ export interface GetProjectsLocationsLakesZonesRequest {
   /** Required. The resource name of the zone: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}. */
   name: string;
 }
-export const GetProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7065,7 +6980,7 @@ export interface GetProjectsLocationsLakesZonesAssetsRequest {
   /** Required. The resource name of the asset: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}. */
   name: string;
 }
-export const GetProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7080,7 +6995,7 @@ export type GetProjectsLocationsLakesZonesEntitiesViewEnum =
   | "BASIC"
   | "SCHEMA"
   | "FULL";
-export const GetProjectsLocationsLakesZonesEntitiesViewEnum = S.String;
+const GetProjectsLocationsLakesZonesEntitiesViewEnum = S.String;
 
 export interface GetProjectsLocationsLakesZonesEntitiesRequest {
   /** Required. The resource name of the entity: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}. */
@@ -7088,7 +7003,7 @@ export interface GetProjectsLocationsLakesZonesEntitiesRequest {
   /** Optional. Used to select the subset of entity information to return. Defaults to BASIC. */
   view?: GetProjectsLocationsLakesZonesEntitiesViewEnum | (string & {});
 }
-export const GetProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsLakesZonesEntitiesViewEnum.pipe(T.Query())),
@@ -7103,7 +7018,7 @@ export interface GetProjectsLocationsLakesZonesEntitiesPartitionsRequest {
   /** Required. The resource name of the partition: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}/partitions/{partition_value_path}. The {partition_value_path} segment consists of an ordered sequence of partition values separated by "/". All values must be provided. */
   name: string;
 }
-export const GetProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7117,7 +7032,7 @@ export interface GetProjectsLocationsMetadataFeedsRequest {
   /** Required. The resource name of the metadata feed, in the format projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}. */
   name: string;
 }
-export const GetProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7131,7 +7046,7 @@ export interface GetProjectsLocationsMetadataJobsRequest {
   /** Required. The resource name of the metadata job, in the format projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}. */
   name: string;
 }
-export const GetProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7145,7 +7060,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7167,7 +7082,7 @@ export interface ListOrganizationsLocationsEncryptionConfigsRequest {
   /** Required. The location for which the EncryptionConfig is to be listed. */
   parent: string;
 }
-export const ListOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7187,7 +7102,7 @@ export const ListOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ 
 
 export type GoogleCloudDataplexV1EncryptionConfigList =
   Array<GoogleCloudDataplexV1EncryptionConfig>;
-export const GoogleCloudDataplexV1EncryptionConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EncryptionConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EncryptionConfig,
 ) as any as S.Schema<GoogleCloudDataplexV1EncryptionConfigList>;
 
@@ -7200,7 +7115,7 @@ export interface GoogleCloudDataplexV1ListEncryptionConfigsResponse {
   /** The list of EncryptionConfigs under the given parent location. */
   encryptionConfigs?: GoogleCloudDataplexV1EncryptionConfigList;
 }
-export const GoogleCloudDataplexV1ListEncryptionConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListEncryptionConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachableLocations: S.optional(StringList),
@@ -7222,7 +7137,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7241,7 +7156,7 @@ export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -7254,7 +7169,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -7276,7 +7191,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7295,7 +7210,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type GoogleCloudLocationLocationList = Array<GoogleCloudLocationLocation>;
-export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
+const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
 
@@ -7306,7 +7221,7 @@ export interface GoogleCloudLocationListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(GoogleCloudLocationLocationList),
     nextPageToken: S.optional(S.String),
@@ -7327,7 +7242,7 @@ export interface ListProjectsLocationsAspectTypesRequest {
   /** Optional. Filter request. Filters are case-sensitive. The service supports the following formats: labels.key1 = "value1" labels:key1 name = "value"These restrictions can be conjoined with AND, OR, and NOT conjunctions. */
   filter?: string;
 }
-export const ListProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7346,7 +7261,7 @@ export const ListProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsAspectTypesRequest>;
 
 export type GoogleCloudDataplexV1AspectTypeList = Array<GoogleCloudDataplexV1AspectType>;
-export const GoogleCloudDataplexV1AspectTypeList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1AspectTypeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1AspectType,
 ) as any as S.Schema<GoogleCloudDataplexV1AspectTypeList>;
 
@@ -7359,7 +7274,7 @@ export interface GoogleCloudDataplexV1ListAspectTypesResponse {
   /** AspectTypes under the given parent location. */
   aspectTypes?: GoogleCloudDataplexV1AspectTypeList;
 }
-export const GoogleCloudDataplexV1ListAspectTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListAspectTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachableLocations: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -7381,7 +7296,7 @@ export interface ListProjectsLocationsChangeRequestsRequest {
   /** Optional. Order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7400,7 +7315,7 @@ export const ListProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsChangeRequestsRequest>;
 
 export type GoogleCloudDataplexV1ChangeRequestList = Array<GoogleCloudDataplexV1ChangeRequest>;
-export const GoogleCloudDataplexV1ChangeRequestList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1ChangeRequestList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1ChangeRequest,
 ) as any as S.Schema<GoogleCloudDataplexV1ChangeRequestList>;
 
@@ -7413,7 +7328,7 @@ export interface GoogleCloudDataplexV1ListChangeRequestsResponse {
   /** The ChangeRequests from the specified project and location. */
   changeRequests?: GoogleCloudDataplexV1ChangeRequestList;
 }
-export const GoogleCloudDataplexV1ListChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -7435,7 +7350,7 @@ export interface ListProjectsLocationsDataDomainsRequest {
   /** Optional. Filter request. Supports filter by parent_data_domain. */
   filter?: string;
 }
-export const ListProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7454,7 +7369,7 @@ export const ListProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsDataDomainsRequest>;
 
 export type GoogleCloudDataplexV1DataDomainList = Array<GoogleCloudDataplexV1DataDomain>;
-export const GoogleCloudDataplexV1DataDomainList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataDomainList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataDomain,
 ) as any as S.Schema<GoogleCloudDataplexV1DataDomainList>;
 
@@ -7465,7 +7380,7 @@ export interface GoogleCloudDataplexV1ListDataDomainsResponse {
   /** Token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListDataDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListDataDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDomains: S.optional(GoogleCloudDataplexV1DataDomainList),
     nextPageToken: S.optional(S.String),
@@ -7486,7 +7401,7 @@ export interface ListProjectsLocationsDataDomainsBindingsRequest {
   /** Optional. Maximum number of DataDomainBindings to return. The service may return fewer. If unspecified, at most 50 bindings will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7506,7 +7421,7 @@ export const ListProjectsLocationsDataDomainsBindingsRequest = /*@__PURE__*/ S.s
 
 export type GoogleCloudDataplexV1DataDomainBindingList =
   Array<GoogleCloudDataplexV1DataDomainBinding>;
-export const GoogleCloudDataplexV1DataDomainBindingList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataDomainBindingList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataDomainBinding,
 ) as any as S.Schema<GoogleCloudDataplexV1DataDomainBindingList>;
 
@@ -7517,7 +7432,7 @@ export interface GoogleCloudDataplexV1ListDataDomainBindingsResponse {
   /** DataDomainBindings under the given parent. */
   dataDomainBindings?: GoogleCloudDataplexV1DataDomainBindingList;
 }
-export const GoogleCloudDataplexV1ListDataDomainBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListDataDomainBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataDomainBindings: S.optional(GoogleCloudDataplexV1DataDomainBindingList),
@@ -7538,7 +7453,7 @@ export interface ListProjectsLocationsDataProductsRequest {
   /** Optional. The maximum number of data products to return. The service may return fewer than this value. If unspecified, at most 50 data products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7557,7 +7472,7 @@ export const ListProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDataProductsRequest>;
 
 export type GoogleCloudDataplexV1DataProductList = Array<GoogleCloudDataplexV1DataProduct>;
-export const GoogleCloudDataplexV1DataProductList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataProductList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataProduct,
 ) as any as S.Schema<GoogleCloudDataplexV1DataProductList>;
 
@@ -7570,7 +7485,7 @@ export interface GoogleCloudDataplexV1ListDataProductsResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is empty, then there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListDataProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListDataProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     dataProducts: S.optional(GoogleCloudDataplexV1DataProductList),
@@ -7592,7 +7507,7 @@ export interface ListProjectsLocationsDataProductsDataAssetsRequest {
   /** Optional. The maximum number of data assets to return. The service may return fewer than this value. If unspecified, at most 50 data assets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7611,7 +7526,7 @@ export const ListProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type GoogleCloudDataplexV1DataAssetList = Array<GoogleCloudDataplexV1DataAsset>;
-export const GoogleCloudDataplexV1DataAssetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataAssetList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataAsset,
 ) as any as S.Schema<GoogleCloudDataplexV1DataAssetList>;
 
@@ -7622,7 +7537,7 @@ export interface GoogleCloudDataplexV1ListDataAssetsResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is empty, then there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListDataAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListDataAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataAssets: S.optional(GoogleCloudDataplexV1DataAssetList),
     nextPageToken: S.optional(S.String),
@@ -7643,7 +7558,7 @@ export interface ListProjectsLocationsDataScansRequest {
   /** Required. The resource name of the parent location: projects/{project}/locations/{location_id} where project refers to a project_id or project_number and location_id refers to a Google Cloud region. */
   parent: string;
 }
-export const ListProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7662,7 +7577,7 @@ export const ListProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsDataScansRequest>;
 
 export type GoogleCloudDataplexV1DataScanList = Array<GoogleCloudDataplexV1DataScan>;
-export const GoogleCloudDataplexV1DataScanList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataScanList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataScan,
 ) as any as S.Schema<GoogleCloudDataplexV1DataScanList>;
 
@@ -7675,7 +7590,7 @@ export interface GoogleCloudDataplexV1ListDataScansResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListDataScansResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListDataScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataScans: S.optional(GoogleCloudDataplexV1DataScanList),
     unreachable: S.optional(StringList),
@@ -7695,7 +7610,7 @@ export interface ListProjectsLocationsDataScansJobsRequest {
   /** Optional. An expression for filtering the results of the ListDataScanJobs request.If unspecified, all datascan jobs will be returned. Multiple filters can be applied (with AND, OR logical operators). Filters are case-sensitive.Allowed fields are: start_time end_timestart_time and end_time expect RFC-3339 formatted strings (e.g. 2018-10-08T18:30:00-07:00).For instance, 'start_time > 2018-10-08T00:00:00.123456789Z AND end_time < 2018-10-09T00:00:00.123456789Z' limits results to DataScanJobs between specified start and end times. */
   filter?: string;
 }
-export const ListProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7713,7 +7628,7 @@ export const ListProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsDataScansJobsRequest>;
 
 export type GoogleCloudDataplexV1DataScanJobList = Array<GoogleCloudDataplexV1DataScanJob>;
-export const GoogleCloudDataplexV1DataScanJobList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1DataScanJobList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataScanJob,
 ) as any as S.Schema<GoogleCloudDataplexV1DataScanJobList>;
 
@@ -7724,7 +7639,7 @@ export interface GoogleCloudDataplexV1ListDataScanJobsResponse {
   /** DataScanJobs (BASIC view only) under a given dataScan. */
   dataScanJobs?: GoogleCloudDataplexV1DataScanJobList;
 }
-export const GoogleCloudDataplexV1ListDataScanJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListDataScanJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataScanJobs: S.optional(GoogleCloudDataplexV1DataScanJobList),
@@ -7745,7 +7660,7 @@ export interface ListProjectsLocationsEntryGroupsRequest {
   /** Optional. Filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -7764,7 +7679,7 @@ export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
 export type GoogleCloudDataplexV1EntryGroupList = Array<GoogleCloudDataplexV1EntryGroup>;
-export const GoogleCloudDataplexV1EntryGroupList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntryGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryGroup,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryGroupList>;
 
@@ -7777,7 +7692,7 @@ export interface GoogleCloudDataplexV1ListEntryGroupsResponse {
   /** Entry groups under the given parent location. */
   entryGroups?: GoogleCloudDataplexV1EntryGroupList;
 }
-export const GoogleCloudDataplexV1ListEntryGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListEntryGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachableLocations: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -7797,7 +7712,7 @@ export interface ListProjectsLocationsEntryGroupsEntriesRequest {
   /** Optional. Page token received from a previous ListEntries call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7815,7 +7730,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
 export type GoogleCloudDataplexV1EntryList = Array<GoogleCloudDataplexV1Entry>;
-export const GoogleCloudDataplexV1EntryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Entry,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryList>;
 
@@ -7826,7 +7741,7 @@ export interface GoogleCloudDataplexV1ListEntriesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(GoogleCloudDataplexV1EntryList),
     nextPageToken: S.optional(S.String),
@@ -7847,7 +7762,7 @@ export interface ListProjectsLocationsEntryTypesRequest {
   /** Required. The resource name of the EntryType location, of the form: projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region. */
   parent: string;
 }
-export const ListProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -7866,7 +7781,7 @@ export const ListProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsEntryTypesRequest>;
 
 export type GoogleCloudDataplexV1EntryTypeList = Array<GoogleCloudDataplexV1EntryType>;
-export const GoogleCloudDataplexV1EntryTypeList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntryTypeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryType,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryTypeList>;
 
@@ -7879,7 +7794,7 @@ export interface GoogleCloudDataplexV1ListEntryTypesResponse {
   /** EntryTypes under the given parent location. */
   entryTypes?: GoogleCloudDataplexV1EntryTypeList;
 }
-export const GoogleCloudDataplexV1ListEntryTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListEntryTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachableLocations: S.optional(StringList),
@@ -7901,7 +7816,7 @@ export interface ListProjectsLocationsGlossariesRequest {
   /** Optional. Filter expression that filters Glossaries listed in the response. Filters on proto fields of Glossary are supported. Examples of using a filter are: - display_name="my-glossary" - categoryCount=1 - termCount=0 */
   filter?: string;
 }
-export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -7920,7 +7835,7 @@ export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
 
 export type GoogleCloudDataplexV1GlossaryList = Array<GoogleCloudDataplexV1Glossary>;
-export const GoogleCloudDataplexV1GlossaryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1GlossaryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Glossary,
 ) as any as S.Schema<GoogleCloudDataplexV1GlossaryList>;
 
@@ -7933,7 +7848,7 @@ export interface GoogleCloudDataplexV1ListGlossariesResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListGlossariesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListGlossariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachableLocations: S.optional(StringList),
     glossaries: S.optional(GoogleCloudDataplexV1GlossaryList),
@@ -7955,7 +7870,7 @@ export interface ListProjectsLocationsGlossariesCategoriesRequest {
   /** Required. The parent, which has this collection of GlossaryCategories. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} Location is the Google Cloud region. */
   parent: string;
 }
-export const ListProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -7975,7 +7890,7 @@ export const ListProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.
 
 export type GoogleCloudDataplexV1GlossaryCategoryList =
   Array<GoogleCloudDataplexV1GlossaryCategory>;
-export const GoogleCloudDataplexV1GlossaryCategoryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1GlossaryCategoryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1GlossaryCategory,
 ) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategoryList>;
 
@@ -7988,7 +7903,7 @@ export interface GoogleCloudDataplexV1ListGlossaryCategoriesResponse {
   /** Lists the GlossaryCategories in the specified parent. */
   categories?: GoogleCloudDataplexV1GlossaryCategoryList;
 }
-export const GoogleCloudDataplexV1ListGlossaryCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListGlossaryCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachableLocations: S.optional(StringList),
@@ -8010,7 +7925,7 @@ export interface ListProjectsLocationsGlossariesTermsRequest {
   /** Optional. A page token, received from a previous ListGlossaryTerms call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListGlossaryTerms must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8029,7 +7944,7 @@ export const ListProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsGlossariesTermsRequest>;
 
 export type GoogleCloudDataplexV1GlossaryTermList = Array<GoogleCloudDataplexV1GlossaryTerm>;
-export const GoogleCloudDataplexV1GlossaryTermList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1GlossaryTermList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1GlossaryTerm,
 ) as any as S.Schema<GoogleCloudDataplexV1GlossaryTermList>;
 
@@ -8042,7 +7957,7 @@ export interface GoogleCloudDataplexV1ListGlossaryTermsResponse {
   /** Locations that the service couldn't reach. */
   unreachableLocations?: StringList;
 }
-export const GoogleCloudDataplexV1ListGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     terms: S.optional(GoogleCloudDataplexV1GlossaryTermList),
     nextPageToken: S.optional(S.String),
@@ -8064,7 +7979,7 @@ export interface ListProjectsLocationsLakesRequest {
   /** Optional. Filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8083,7 +7998,7 @@ export const ListProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsLakesRequest>;
 
 export type GoogleCloudDataplexV1LakeList = Array<GoogleCloudDataplexV1Lake>;
-export const GoogleCloudDataplexV1LakeList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1LakeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Lake,
 ) as any as S.Schema<GoogleCloudDataplexV1LakeList>;
 
@@ -8096,7 +8011,7 @@ export interface GoogleCloudDataplexV1ListLakesResponse {
   /** Lakes under the given parent location. */
   lakes?: GoogleCloudDataplexV1LakeList;
 }
-export const GoogleCloudDataplexV1ListLakesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListLakesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachableLocations: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -8114,7 +8029,7 @@ export interface ListProjectsLocationsLakesActionsRequest {
   /** Optional. Maximum number of actions to return. The service may return fewer than this value. If unspecified, at most 10 actions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsLakesActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8135,14 +8050,14 @@ export type GoogleCloudDataplexV1ActionCategoryEnum =
   | "RESOURCE_MANAGEMENT"
   | "SECURITY_POLICY"
   | "DATA_DISCOVERY";
-export const GoogleCloudDataplexV1ActionCategoryEnum = S.String;
+const GoogleCloudDataplexV1ActionCategoryEnum = S.String;
 
 /** Failed to apply security policy to the managed resource(s) under a lake, zone or an asset. For a lake or zone resource, one or more underlying assets has a failure applying security policy to the associated managed resource. */
 export interface GoogleCloudDataplexV1ActionFailedSecurityPolicyApply {
   /** Resource name of one of the assets with failing security policy application. Populated for a lake or zone resource only. */
   asset?: string;
 }
-export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset: S.optional(S.String),
   }),
@@ -8153,31 +8068,23 @@ export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply = /*@__PURE__*
 /** Action details for unauthorized resource issues raised to indicate that the service account associated with the lake instance is not authorized to access or manage the resource associated with an asset. */
 export type GoogleCloudDataplexV1ActionUnauthorizedResource =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1ActionUnauthorizedResource =
-  GoogleLongrunningCancelOperationRequest;
-
 /** Action details for absence of data detected by discovery. */
 export type GoogleCloudDataplexV1ActionMissingData = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1ActionMissingData = GoogleLongrunningCancelOperationRequest;
-
 /** Action details for invalid data arrangement. */
 export type GoogleCloudDataplexV1ActionInvalidDataOrganization =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1ActionInvalidDataOrganization =
-  GoogleLongrunningCancelOperationRequest;
-
 export type GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum =
   | "PARTITION_STRUCTURE_UNSPECIFIED"
   | "CONSISTENT_KEYS"
   | "HIVE_STYLE_KEYS";
-export const GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum = S.String;
+const GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum = S.String;
 
 /** Action details for invalid or unsupported partitions detected by discovery. */
 export interface GoogleCloudDataplexV1ActionInvalidDataPartition {
   /** The issue type of InvalidDataPartition. */
   expectedStructure?: GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum;
 }
-export const GoogleCloudDataplexV1ActionInvalidDataPartition = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ActionInvalidDataPartition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expectedStructure: S.optional(
       GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum,
@@ -8189,13 +8096,11 @@ export const GoogleCloudDataplexV1ActionInvalidDataPartition = /*@__PURE__*/ S.s
 
 /** Action details for resource references in assets that cannot be located. */
 export type GoogleCloudDataplexV1ActionMissingResource = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1ActionMissingResource = GoogleLongrunningCancelOperationRequest;
-
 export type GoogleCloudDataplexV1ActionIncompatibleDataSchemaSchemaChangeEnum =
   | "SCHEMA_CHANGE_UNSPECIFIED"
   | "INCOMPATIBLE"
   | "MODIFIED";
-export const GoogleCloudDataplexV1ActionIncompatibleDataSchemaSchemaChangeEnum = S.String;
+const GoogleCloudDataplexV1ActionIncompatibleDataSchemaSchemaChangeEnum = S.String;
 
 /** Action details for incompatible schemas detected by discovery. */
 export interface GoogleCloudDataplexV1ActionIncompatibleDataSchema {
@@ -8210,7 +8115,7 @@ export interface GoogleCloudDataplexV1ActionIncompatibleDataSchema {
   /** Whether the action relates to a schema that is incompatible or modified. */
   schemaChange?: GoogleCloudDataplexV1ActionIncompatibleDataSchemaSchemaChangeEnum;
 }
-export const GoogleCloudDataplexV1ActionIncompatibleDataSchema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ActionIncompatibleDataSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newSchema: S.optional(S.String),
     table: S.optional(S.String),
@@ -8231,7 +8136,7 @@ export interface GoogleCloudDataplexV1ActionInvalidDataFormat {
   /** The new unexpected data format within the entity. */
   newFormat?: string;
 }
-export const GoogleCloudDataplexV1ActionInvalidDataFormat = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ActionInvalidDataFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sampledDataLocations: S.optional(StringList),
     expectedFormat: S.optional(S.String),
@@ -8276,7 +8181,7 @@ export interface GoogleCloudDataplexV1Action {
   /** Details for issues related to invalid or unsupported data formats. */
   invalidDataFormat?: GoogleCloudDataplexV1ActionInvalidDataFormat;
 }
-export const GoogleCloudDataplexV1Action = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset: S.optional(S.String),
     category: S.optional(GoogleCloudDataplexV1ActionCategoryEnum),
@@ -8300,7 +8205,7 @@ export const GoogleCloudDataplexV1Action = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDataplexV1Action>;
 
 export type GoogleCloudDataplexV1ActionList = Array<GoogleCloudDataplexV1Action>;
-export const GoogleCloudDataplexV1ActionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1ActionList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Action,
 ) as any as S.Schema<GoogleCloudDataplexV1ActionList>;
 
@@ -8311,7 +8216,7 @@ export interface GoogleCloudDataplexV1ListActionsResponse {
   /** Actions under the given parent lake/zone/asset. */
   actions?: GoogleCloudDataplexV1ActionList;
 }
-export const GoogleCloudDataplexV1ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     actions: S.optional(GoogleCloudDataplexV1ActionList),
@@ -8332,7 +8237,7 @@ export interface ListProjectsLocationsLakesTasksRequest {
   /** Optional. Order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8351,7 +8256,7 @@ export const ListProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsLakesTasksRequest>;
 
 export type GoogleCloudDataplexV1TaskList = Array<GoogleCloudDataplexV1Task>;
-export const GoogleCloudDataplexV1TaskList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1TaskList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Task,
 ) as any as S.Schema<GoogleCloudDataplexV1TaskList>;
 
@@ -8364,7 +8269,7 @@ export interface GoogleCloudDataplexV1ListTasksResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachableLocations: S.optional(StringList),
     tasks: S.optional(GoogleCloudDataplexV1TaskList),
@@ -8382,7 +8287,7 @@ export interface ListProjectsLocationsLakesTasksJobsRequest {
   /** Required. The resource name of the parent environment: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}. */
   parent: string;
 }
-export const ListProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8399,7 +8304,7 @@ export const ListProjectsLocationsLakesTasksJobsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsLakesTasksJobsRequest>;
 
 export type GoogleCloudDataplexV1JobList = Array<GoogleCloudDataplexV1Job>;
-export const GoogleCloudDataplexV1JobList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1JobList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Job,
 ) as any as S.Schema<GoogleCloudDataplexV1JobList>;
 
@@ -8410,7 +8315,7 @@ export interface GoogleCloudDataplexV1ListJobsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobs: S.optional(GoogleCloudDataplexV1JobList),
     nextPageToken: S.optional(S.String),
@@ -8431,7 +8336,7 @@ export interface ListProjectsLocationsLakesZonesRequest {
   /** Required. The resource name of the parent lake: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. */
   parent: string;
 }
-export const ListProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8450,7 +8355,7 @@ export const ListProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsLakesZonesRequest>;
 
 export type GoogleCloudDataplexV1ZoneList = Array<GoogleCloudDataplexV1Zone>;
-export const GoogleCloudDataplexV1ZoneList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1ZoneList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Zone,
 ) as any as S.Schema<GoogleCloudDataplexV1ZoneList>;
 
@@ -8461,7 +8366,7 @@ export interface GoogleCloudDataplexV1ListZonesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zones: S.optional(GoogleCloudDataplexV1ZoneList),
     nextPageToken: S.optional(S.String),
@@ -8478,7 +8383,7 @@ export interface ListProjectsLocationsLakesZonesActionsRequest {
   /** Optional. Page token received from a previous ListZoneActions call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListZoneActions must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsLakesZonesActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesZonesActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8506,7 +8411,7 @@ export interface ListProjectsLocationsLakesZonesAssetsRequest {
   /** Optional. Filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -8525,7 +8430,7 @@ export const ListProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsLakesZonesAssetsRequest>;
 
 export type GoogleCloudDataplexV1AssetList = Array<GoogleCloudDataplexV1Asset>;
-export const GoogleCloudDataplexV1AssetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1AssetList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Asset,
 ) as any as S.Schema<GoogleCloudDataplexV1AssetList>;
 
@@ -8536,7 +8441,7 @@ export interface GoogleCloudDataplexV1ListAssetsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(GoogleCloudDataplexV1AssetList),
     nextPageToken: S.optional(S.String),
@@ -8553,7 +8458,7 @@ export interface ListProjectsLocationsLakesZonesAssetsActionsRequest {
   /** Required. The resource name of the parent asset: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}. */
   parent: string;
 }
-export const ListProjectsLocationsLakesZonesAssetsActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesZonesAssetsActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8573,7 +8478,7 @@ export type ListProjectsLocationsLakesZonesEntitiesViewEnum =
   | "ENTITY_VIEW_UNSPECIFIED"
   | "TABLES"
   | "FILESETS";
-export const ListProjectsLocationsLakesZonesEntitiesViewEnum = S.String;
+const ListProjectsLocationsLakesZonesEntitiesViewEnum = S.String;
 
 export interface ListProjectsLocationsLakesZonesEntitiesRequest {
   /** Required. Specify the entity view to make a partial list request. */
@@ -8587,7 +8492,7 @@ export interface ListProjectsLocationsLakesZonesEntitiesRequest {
   /** Optional. Maximum number of entities to return. The service may return fewer than this value. If unspecified, 100 entities will be returned by default. The maximum value is 500; larger values will will be truncated to 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListProjectsLocationsLakesZonesEntitiesViewEnum.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8606,7 +8511,7 @@ export const ListProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesRequest>;
 
 export type GoogleCloudDataplexV1EntityList = Array<GoogleCloudDataplexV1Entity>;
-export const GoogleCloudDataplexV1EntityList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntityList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Entity,
 ) as any as S.Schema<GoogleCloudDataplexV1EntityList>;
 
@@ -8617,7 +8522,7 @@ export interface GoogleCloudDataplexV1ListEntitiesResponse {
   /** Entities in the specified parent zone. */
   entities?: GoogleCloudDataplexV1EntityList;
 }
-export const GoogleCloudDataplexV1ListEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     entities: S.optional(GoogleCloudDataplexV1EntityList),
@@ -8636,26 +8541,25 @@ export interface ListProjectsLocationsLakesZonesEntitiesPartitionsRequest {
   /** Optional. Page token received from a previous ListPartitions call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListPartitions must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/partitions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsLakesZonesEntitiesPartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/partitions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsLakesZonesEntitiesPartitionsRequest",
 }) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
 export type GoogleCloudDataplexV1PartitionList = Array<GoogleCloudDataplexV1Partition>;
-export const GoogleCloudDataplexV1PartitionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1PartitionList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Partition,
 ) as any as S.Schema<GoogleCloudDataplexV1PartitionList>;
 
@@ -8666,7 +8570,7 @@ export interface GoogleCloudDataplexV1ListPartitionsResponse {
   /** Token to retrieve the next page of results, or empty if there are no remaining results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListPartitionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListPartitionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitions: S.optional(GoogleCloudDataplexV1PartitionList),
     nextPageToken: S.optional(S.String),
@@ -8687,7 +8591,7 @@ export interface ListProjectsLocationsMetadataFeedsRequest {
   /** Optional. The maximum number of metadata feeds to return. The service might return fewer feeds than this value. If unspecified, at most 10 feeds are returned. The maximum value is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -8706,7 +8610,7 @@ export const ListProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsMetadataFeedsRequest>;
 
 export type GoogleCloudDataplexV1MetadataFeedList = Array<GoogleCloudDataplexV1MetadataFeed>;
-export const GoogleCloudDataplexV1MetadataFeedList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1MetadataFeedList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1MetadataFeed,
 ) as any as S.Schema<GoogleCloudDataplexV1MetadataFeedList>;
 
@@ -8719,7 +8623,7 @@ export interface GoogleCloudDataplexV1ListMetadataFeedsResponse {
   /** A token to retrieve the next page of results. If there are no more results in the list, the value is empty. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListMetadataFeedsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListMetadataFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     metadataFeeds: S.optional(GoogleCloudDataplexV1MetadataFeedList),
@@ -8741,7 +8645,7 @@ export interface ListProjectsLocationsMetadataJobsRequest {
   /** Optional. Filter request. Filters are case-sensitive. The service supports the following formats: labels.key1 = "value1" labels:key1 name = "value"You can combine filters with AND, OR, and NOT operators. */
   filter?: string;
 }
-export const ListProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8760,7 +8664,7 @@ export const ListProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsMetadataJobsRequest>;
 
 export type GoogleCloudDataplexV1MetadataJobList = Array<GoogleCloudDataplexV1MetadataJob>;
-export const GoogleCloudDataplexV1MetadataJobList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1MetadataJobList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1MetadataJob,
 ) as any as S.Schema<GoogleCloudDataplexV1MetadataJobList>;
 
@@ -8773,7 +8677,7 @@ export interface GoogleCloudDataplexV1ListMetadataJobsResponse {
   /** A token to retrieve the next page of results. If there are no more results in the list, the value is empty. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1ListMetadataJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ListMetadataJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachableLocations: S.optional(StringList),
     metadataJobs: S.optional(GoogleCloudDataplexV1MetadataJobList),
@@ -8795,7 +8699,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8820,7 +8724,7 @@ export interface GoogleCloudDataplexV1LookupContextRequest {
   /** Required. The entry names to look up the context for. The maximum number of resources for a request is limited to 10.Examples:projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry} */
   resources?: StringList;
 }
-export const GoogleCloudDataplexV1LookupContextRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1LookupContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(StringMap),
     resources: S.optional(StringList),
@@ -8835,7 +8739,7 @@ export interface LookupContextProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1LookupContextRequest;
 }
-export const LookupContextProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupContextProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDataplexV1LookupContextRequest.pipe(T.HttpBody())),
@@ -8855,7 +8759,7 @@ export interface GoogleCloudDataplexV1LookupContextResponse {
   /** Pre-formatted block of text containing the context for the requested resources. */
   context?: string;
 }
-export const GoogleCloudDataplexV1LookupContextResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1LookupContextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
   }),
@@ -8867,7 +8771,7 @@ export type LookupEntryLinksProjectsLocationsEntryModeEnum =
   | "ENTRY_MODE_UNSPECIFIED"
   | "SOURCE"
   | "TARGET";
-export const LookupEntryLinksProjectsLocationsEntryModeEnum = S.String;
+const LookupEntryLinksProjectsLocationsEntryModeEnum = S.String;
 
 export interface LookupEntryLinksProjectsLocationsRequest {
   /** Required. The project to which the request should be attributed to Format: projects/{project_id_or_number}/locations/{location_id}. */
@@ -8883,7 +8787,7 @@ export interface LookupEntryLinksProjectsLocationsRequest {
   /** Page token received from a previous LookupEntryLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters that are provided to the LookupEntryLinks request must match the call that provided the page token. */
   pageToken?: string;
 }
-export const LookupEntryLinksProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupEntryLinksProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     entryMode: S.optional(LookupEntryLinksProjectsLocationsEntryModeEnum.pipe(T.Query())),
@@ -8903,7 +8807,7 @@ export const LookupEntryLinksProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LookupEntryLinksProjectsLocationsRequest>;
 
 export type GoogleCloudDataplexV1EntryLinkList = Array<GoogleCloudDataplexV1EntryLink>;
-export const GoogleCloudDataplexV1EntryLinkList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1EntryLinkList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryLink,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryLinkList>;
 
@@ -8914,7 +8818,7 @@ export interface GoogleCloudDataplexV1LookupEntryLinksResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudDataplexV1LookupEntryLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1LookupEntryLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryLinks: S.optional(GoogleCloudDataplexV1EntryLinkList),
     nextPageToken: S.optional(S.String),
@@ -8929,7 +8833,7 @@ export type LookupEntryProjectsLocationsViewEnum =
   | "FULL"
   | "CUSTOM"
   | "ALL";
-export const LookupEntryProjectsLocationsViewEnum = S.String;
+const LookupEntryProjectsLocationsViewEnum = S.String;
 
 export interface LookupEntryProjectsLocationsRequest {
   /** Optional. View to control which parts of an entry the service should return. Please check the limitations on returned aspects in the Entry view documentation. Amount of returned aspects depends on the selected Entry View. */
@@ -8943,7 +8847,7 @@ export interface LookupEntryProjectsLocationsRequest {
   /** Optional. Limits the aspects returned to the provided aspect types. It only works for CUSTOM view. */
   aspectTypes?: StringList;
 }
-export const LookupEntryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupEntryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(LookupEntryProjectsLocationsViewEnum.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -8972,7 +8876,7 @@ export interface GoogleCloudDataplexV1ModifyEntryRequest {
   /** Optional. Mask of fields to update. To update Aspects, the update_mask must contain the value "aspects".If the update_mask is empty, the service will update all modifiable fields present in the request. */
   updateMask?: string;
 }
-export const GoogleCloudDataplexV1ModifyEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1ModifyEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteMissingAspects: S.optional(S.Boolean),
     entry: S.optional(GoogleCloudDataplexV1Entry),
@@ -8989,7 +8893,7 @@ export interface ModifyEntryProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1ModifyEntryRequest;
 }
-export const ModifyEntryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyEntryProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDataplexV1ModifyEntryRequest.pipe(T.HttpBody())),
@@ -9012,7 +8916,7 @@ export interface PatchOrganizationsLocationsEncryptionConfigsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EncryptionConfig;
 }
-export const PatchOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9034,7 +8938,7 @@ export interface PatchProjectsLocationsAspectTypesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1AspectType;
 }
-export const PatchProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -9055,7 +8959,7 @@ export interface PatchProjectsLocationsChangeRequestsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1ChangeRequest;
 }
-export const PatchProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9077,7 +8981,7 @@ export interface PatchProjectsLocationsDataDomainsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataDomain;
 }
-export const PatchProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -9100,7 +9004,7 @@ export interface PatchProjectsLocationsDataProductsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataProduct;
 }
-export const PatchProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9123,7 +9027,7 @@ export interface PatchProjectsLocationsDataProductsDataAssetsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataAsset;
 }
-export const PatchProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataProductsDataAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9146,7 +9050,7 @@ export interface PatchProjectsLocationsDataScansRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1DataScan;
 }
-export const PatchProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9169,7 +9073,7 @@ export interface PatchProjectsLocationsEntryGroupsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EntryGroup;
 }
-export const PatchProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9196,7 +9100,7 @@ export interface PatchProjectsLocationsEntryGroupsEntriesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Entry;
 }
-export const PatchProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     aspectKeys: S.optional(StringList.pipe(T.Query())),
@@ -9221,7 +9125,7 @@ export interface PatchProjectsLocationsEntryGroupsEntryLinksRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EntryLink;
 }
-export const PatchProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsEntryGroupsEntryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     aspectKeys: S.optional(StringList.pipe(T.Query())),
@@ -9244,7 +9148,7 @@ export interface PatchProjectsLocationsEntryTypesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1EntryType;
 }
-export const PatchProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9267,7 +9171,7 @@ export interface PatchProjectsLocationsGlossariesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Glossary;
 }
-export const PatchProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9288,7 +9192,7 @@ export interface PatchProjectsLocationsGlossariesCategoriesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1GlossaryCategory;
 }
-export const PatchProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9308,7 +9212,7 @@ export interface PatchProjectsLocationsGlossariesTermsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1GlossaryTerm;
 }
-export const PatchProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9330,7 +9234,7 @@ export interface PatchProjectsLocationsLakesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Lake;
 }
-export const PatchProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9353,7 +9257,7 @@ export interface PatchProjectsLocationsLakesTasksRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Task;
 }
-export const PatchProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -9376,7 +9280,7 @@ export interface PatchProjectsLocationsLakesZonesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Zone;
 }
-export const PatchProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -9399,7 +9303,7 @@ export interface PatchProjectsLocationsLakesZonesAssetsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Asset;
 }
-export const PatchProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9422,7 +9326,7 @@ export interface PatchProjectsLocationsMetadataFeedsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1MetadataFeed;
 }
-export const PatchProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMetadataFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -9442,7 +9346,7 @@ export interface GoogleCloudDataplexV1RejectChangeRequestRequest {
   /** Optional. The etag of the ChangeRequest. */
   etag?: string;
 }
-export const GoogleCloudDataplexV1RejectChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1RejectChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     etag: S.optional(S.String),
@@ -9457,7 +9361,7 @@ export interface RejectProjectsLocationsChangeRequestsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1RejectChangeRequestRequest;
 }
-export const RejectProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDataplexV1RejectChangeRequestRequest.pipe(T.HttpBody())),
@@ -9479,7 +9383,7 @@ export interface GoogleCloudDataplexV1RequestDataProductAccessRequest {
   /** Optional. Validates the request without actually creating the access change request. Defaults to false. */
   validateOnly?: boolean;
 }
-export const GoogleCloudDataplexV1RequestDataProductAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1RequestDataProductAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeRequest: S.optional(GoogleCloudDataplexV1ChangeRequest),
     validateOnly: S.optional(S.Boolean),
@@ -9494,7 +9398,7 @@ export interface RequestAccessProjectsLocationsDataProductsRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1RequestDataProductAccessRequest;
 }
-export const RequestAccessProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestAccessProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDataplexV1RequestDataProductAccessRequest.pipe(T.HttpBody())),
@@ -9514,7 +9418,7 @@ export interface GoogleCloudDataplexV1RequestDataProductAccessResponse {
   /** The resource name of the created ChangeRequest. Format: projects/{project_number}/locations/{location_id}/changeRequests/{change_request_id} */
   changeRequestName?: string;
 }
-export const GoogleCloudDataplexV1RequestDataProductAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1RequestDataProductAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeRequestName: S.optional(S.String),
   }),
@@ -9524,15 +9428,13 @@ export const GoogleCloudDataplexV1RequestDataProductAccessResponse = /*@__PURE__
 
 /** Run DataScan Request */
 export type GoogleCloudDataplexV1RunDataScanRequest = GoogleLongrunningCancelOperationRequest;
-export const GoogleCloudDataplexV1RunDataScanRequest = GoogleLongrunningCancelOperationRequest;
-
 export interface RunProjectsLocationsDataScansRequest {
   /** Required. The resource name of the DataScan: projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where project refers to a project_id or project_number and location_id refers to a Google Cloud region.Only OnDemand data scans are allowed. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const RunProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const RunProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -9548,7 +9450,7 @@ export interface GoogleCloudDataplexV1RunDataScanResponse {
   /** DataScanJob created by RunDataScan request. */
   job?: GoogleCloudDataplexV1DataScanJob;
 }
-export const GoogleCloudDataplexV1RunDataScanResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1RunDataScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(GoogleCloudDataplexV1DataScanJob),
   }),
@@ -9562,7 +9464,7 @@ export interface GoogleCloudDataplexV1RunTaskRequest {
   /** Optional. User-defined labels for the task. If the map is left empty, the task will run with existing labels from task definition. If the map contains an entry with a new key, the same will be added to existing set of labels. If the map contains an entry with an existing label key in task definition, the task will run with new label value for that entry. Clearing an existing label will require label value to be explicitly set to a hyphen "-". The label value cannot be empty. */
   labels?: StringMap;
 }
-export const GoogleCloudDataplexV1RunTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1RunTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(StringMap),
     labels: S.optional(StringMap),
@@ -9577,7 +9479,7 @@ export interface RunProjectsLocationsLakesTasksRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1RunTaskRequest;
 }
-export const RunProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const RunProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDataplexV1RunTaskRequest.pipe(T.HttpBody())),
@@ -9592,7 +9494,7 @@ export interface GoogleCloudDataplexV1RunTaskResponse {
   /** Jobs created by RunTask API. */
   job?: GoogleCloudDataplexV1Job;
 }
-export const GoogleCloudDataplexV1RunTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1RunTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(GoogleCloudDataplexV1Job),
   }),
@@ -9618,7 +9520,7 @@ export interface SearchEntriesProjectsLocationsRequest {
   /** Optional. Specifies the scope of the context in which the search will be performed. This scope will also be used to perform IAM checks, which if passing, will return all resources in the scope. */
   contexts?: StringList;
 }
-export const SearchEntriesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchEntriesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -9644,7 +9546,7 @@ export interface GoogleCloudDataplexV1SearchEntriesResultSnippets {
   /** Entry */
   dataplexEntry?: GoogleCloudDataplexV1Entry;
 }
-export const GoogleCloudDataplexV1SearchEntriesResultSnippets = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1SearchEntriesResultSnippets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataplexEntry: S.optional(GoogleCloudDataplexV1Entry),
   }),
@@ -9660,7 +9562,7 @@ export interface GoogleCloudDataplexV1SearchEntriesResult {
   /** Linked resource name. */
   linkedResource?: string;
 }
-export const GoogleCloudDataplexV1SearchEntriesResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1SearchEntriesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataplexEntry: S.optional(GoogleCloudDataplexV1Entry),
     snippets: S.optional(GoogleCloudDataplexV1SearchEntriesResultSnippets),
@@ -9672,7 +9574,7 @@ export const GoogleCloudDataplexV1SearchEntriesResult = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDataplexV1SearchEntriesResultList =
   Array<GoogleCloudDataplexV1SearchEntriesResult>;
-export const GoogleCloudDataplexV1SearchEntriesResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDataplexV1SearchEntriesResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1SearchEntriesResult,
 ) as any as S.Schema<GoogleCloudDataplexV1SearchEntriesResultList>;
 
@@ -9686,7 +9588,7 @@ export interface GoogleCloudDataplexV1SearchEntriesResponse {
   /** Locations that the service couldn't reach. Search results don't include data from these locations. */
   unreachable?: StringList;
 }
-export const GoogleCloudDataplexV1SearchEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDataplexV1SearchEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(GoogleCloudDataplexV1SearchEntriesResultList),
     totalSize: S.optional(S.Number),
@@ -9704,7 +9606,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used:paths: "bindings, etag" */
   updateMask?: string;
 }
-export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(GoogleIamV1Policy),
     updateMask: S.optional(S.String),
@@ -9719,18 +9621,17 @@ export interface SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest",
 }) as any as S.Schema<SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
@@ -9741,7 +9642,7 @@ export interface SetIamPolicyProjectsLocationsAgentTasksRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAgentTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAgentTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9762,7 +9663,7 @@ export interface SetIamPolicyProjectsLocationsAspectTypesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9783,7 +9684,7 @@ export interface SetIamPolicyProjectsLocationsChangeRequestsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9804,18 +9705,17 @@ export interface SetIamPolicyProjectsLocationsDataAttributeBindingsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataAttributeBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsDataAttributeBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsDataAttributeBindingsRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
@@ -9826,7 +9726,7 @@ export interface SetIamPolicyProjectsLocationsDataDomainsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9847,7 +9747,7 @@ export interface SetIamPolicyProjectsLocationsDataProductsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9868,7 +9768,7 @@ export interface SetIamPolicyProjectsLocationsDataScansRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9889,7 +9789,7 @@ export interface SetIamPolicyProjectsLocationsDataTaxonomiesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataTaxonomiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataTaxonomiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9910,18 +9810,17 @@ export interface SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
@@ -9932,7 +9831,7 @@ export interface SetIamPolicyProjectsLocationsEntryGroupsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9953,7 +9852,7 @@ export interface SetIamPolicyProjectsLocationsEntryLinkTypesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsEntryLinkTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsEntryLinkTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9974,7 +9873,7 @@ export interface SetIamPolicyProjectsLocationsEntryTypesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -9995,7 +9894,7 @@ export interface SetIamPolicyProjectsLocationsGlossariesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10016,18 +9915,17 @@ export interface SetIamPolicyProjectsLocationsGlossariesCategoriesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsGlossariesCategoriesRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
@@ -10038,7 +9936,7 @@ export interface SetIamPolicyProjectsLocationsGlossariesTermsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10059,7 +9957,7 @@ export interface SetIamPolicyProjectsLocationsGovernanceRulesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGovernanceRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGovernanceRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10080,7 +9978,7 @@ export interface SetIamPolicyProjectsLocationsLakesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10101,7 +9999,7 @@ export interface SetIamPolicyProjectsLocationsLakesTasksRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10122,7 +10020,7 @@ export interface SetIamPolicyProjectsLocationsLakesZonesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10143,7 +10041,7 @@ export interface SetIamPolicyProjectsLocationsLakesZonesAssetsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -10163,7 +10061,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -10177,8 +10075,8 @@ export interface TestIamPermissionsOrganizationsLocationsEncryptionConfigsReques
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10189,16 +10087,16 @@ export const TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest =
         baseUrl: "https://dataplex.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest",
-  }) as any as S.Schema<TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest>;
+).annotate({
+  identifier: "TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest",
+}) as any as S.Schema<TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest>;
 
 /** Response message for TestIamPermissions method. */
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse =
+const GoogleIamV1TestIamPermissionsResponse =
   GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsAgentTasksRequest {
@@ -10207,7 +10105,7 @@ export interface TestIamPermissionsProjectsLocationsAgentTasksRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAgentTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsAgentTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10228,7 +10126,7 @@ export interface TestIamPermissionsProjectsLocationsAspectTypesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10249,7 +10147,28 @@ export interface TestIamPermissionsProjectsLocationsChangeRequestsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(
+const TestIamPermissionsProjectsLocationsChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsChangeRequestsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsChangeRequestsRequest>;
+
+export interface TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1TestIamPermissionsRequest;
+}
+const TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -10262,30 +10181,8 @@ export const TestIamPermissionsProjectsLocationsChangeRequestsRequest = /*@__PUR
       }),
     ),
 ).annotate({
-  identifier: "TestIamPermissionsProjectsLocationsChangeRequestsRequest",
-}) as any as S.Schema<TestIamPermissionsProjectsLocationsChangeRequestsRequest>;
-
-export interface TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1TestIamPermissionsRequest;
-}
-export const TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest>;
+  identifier: "TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsDataDomainsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -10293,7 +10190,7 @@ export interface TestIamPermissionsProjectsLocationsDataDomainsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10314,7 +10211,7 @@ export interface TestIamPermissionsProjectsLocationsDataProductsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10335,7 +10232,7 @@ export interface TestIamPermissionsProjectsLocationsDataScansRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10356,7 +10253,28 @@ export interface TestIamPermissionsProjectsLocationsDataTaxonomiesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataTaxonomiesRequest = /*@__PURE__*/ S.suspend(
+const TestIamPermissionsProjectsLocationsDataTaxonomiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsDataTaxonomiesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesRequest>;
+
+export interface TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GoogleIamV1TestIamPermissionsRequest;
+}
+const TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -10369,30 +10287,8 @@ export const TestIamPermissionsProjectsLocationsDataTaxonomiesRequest = /*@__PUR
       }),
     ),
 ).annotate({
-  identifier: "TestIamPermissionsProjectsLocationsDataTaxonomiesRequest",
-}) as any as S.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesRequest>;
-
-export interface TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GoogleIamV1TestIamPermissionsRequest;
-}
-export const TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest>;
+  identifier: "TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsEntryGroupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -10400,7 +10296,7 @@ export interface TestIamPermissionsProjectsLocationsEntryGroupsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10421,18 +10317,17 @@ export interface TestIamPermissionsProjectsLocationsEntryLinkTypesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsEntryLinkTypesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsEntryLinkTypesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsEntryLinkTypesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryLinkTypesRequest>;
@@ -10443,7 +10338,7 @@ export interface TestIamPermissionsProjectsLocationsEntryTypesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10464,7 +10359,7 @@ export interface TestIamPermissionsProjectsLocationsGlossariesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10485,21 +10380,20 @@ export interface TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest 
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest>;
+const TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsGlossariesTermsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -10507,18 +10401,17 @@ export interface TestIamPermissionsProjectsLocationsGlossariesTermsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsGlossariesTermsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsGlossariesTermsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlossariesTermsRequest>;
@@ -10529,18 +10422,17 @@ export interface TestIamPermissionsProjectsLocationsGovernanceRulesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGovernanceRulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsGovernanceRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsGovernanceRulesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsGovernanceRulesRequest>;
@@ -10551,7 +10443,7 @@ export interface TestIamPermissionsProjectsLocationsLakesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10572,7 +10464,7 @@ export interface TestIamPermissionsProjectsLocationsLakesTasksRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10593,7 +10485,7 @@ export interface TestIamPermissionsProjectsLocationsLakesZonesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -10614,18 +10506,17 @@ export interface TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://dataplex.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://dataplex.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest>;
@@ -10638,7 +10529,7 @@ export interface UpdateProjectsLocationsLakesZonesEntitiesRequest {
   /** Request body */
   body?: GoogleCloudDataplexV1Entity;
 }
-export const UpdateProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsLocationsLakesZonesEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

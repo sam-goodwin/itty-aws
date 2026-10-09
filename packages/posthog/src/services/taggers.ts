@@ -9,7 +9,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm` - LLM * `hog` - Hog */
 export type TaggerTypeEnum = "llm" | "hog";
-export const TaggerTypeEnum = S.String;
+const TaggerTypeEnum = S.String;
 
 export interface TagDefinition {
   /** Tag identifier */
@@ -17,7 +17,7 @@ export interface TagDefinition {
   /** Description to help the LLM classify */
   description?: string;
 }
-export const TagDefinition = /*@__PURE__*/ S.suspend(() =>
+const TagDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -26,7 +26,7 @@ export const TagDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Available tags the LLM can assign */
 export type LLMTaggerConfigTagsList = Array<TagDefinition>;
-export const LLMTaggerConfigTagsList = /*@__PURE__*/ S.Array(
+const LLMTaggerConfigTagsList = /*@__PURE__*/ S.Array(
   TagDefinition,
 ) as any as S.Schema<LLMTaggerConfigTagsList>;
 
@@ -40,45 +40,26 @@ export interface LLMTaggerConfig {
   /** Maximum number of tags to apply (null = no limit) */
   max_tags?: number | null;
 }
-export const LLMTaggerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.String,
-    tags: LLMTaggerConfigTagsList,
-    min_tags: S.optional(S.Number),
-    max_tags: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "LLMTaggerConfig" }) as any as S.Schema<LLMTaggerConfig>;
-
 /** Optional tag whitelist. Leave empty to allow any tag returned by the Hog code. */
 export type HogTaggerConfigTagsList = Array<TagDefinition>;
-export const HogTaggerConfigTagsList =
-  LLMTaggerConfigTagsList as any as S.Schema<HogTaggerConfigTagsList>;
-
 export interface HogTaggerConfig {
   /** Hog source code to classify a generation into tags. */
   source: string;
   /** Optional tag whitelist. Leave empty to allow any tag returned by the Hog code. */
   tags?: HogTaggerConfigTagsList;
 }
-export const HogTaggerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.String,
-    tags: S.optional(HogTaggerConfigTagsList),
-  }),
-).annotate({ identifier: "HogTaggerConfig" }) as any as S.Schema<HogTaggerConfig>;
-
 export type TaggerConfig = LLMTaggerConfig | HogTaggerConfig;
-export const TaggerConfig = S.Unknown as any as S.Schema<TaggerConfig>;
+const TaggerConfig = S.Unknown as any as S.Schema<TaggerConfig>;
 
 export type TaggerConditionPropertiesItemMap = { [key: string]: unknown | undefined };
-export const TaggerConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
+const TaggerConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaggerConditionPropertiesItemMap>;
 
 /** Property filters that scope when this condition fires */
 export type TaggerConditionPropertiesList = Array<TaggerConditionPropertiesItemMap>;
-export const TaggerConditionPropertiesList = /*@__PURE__*/ S.Array(
+const TaggerConditionPropertiesList = /*@__PURE__*/ S.Array(
   TaggerConditionPropertiesItemMap,
 ) as any as S.Schema<TaggerConditionPropertiesList>;
 
@@ -90,7 +71,7 @@ export interface TaggerCondition {
   /** Property filters that scope when this condition fires */
   properties?: TaggerConditionPropertiesList;
 }
-export const TaggerCondition = /*@__PURE__*/ S.suspend(() =>
+const TaggerCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     rollout_percentage: S.optional(S.Number),
@@ -100,7 +81,7 @@ export const TaggerCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** Conditions that scope when the tagger runs */
 export type CreateTaggerRequestConditionsList = Array<TaggerCondition>;
-export const CreateTaggerRequestConditionsList = /*@__PURE__*/ S.Array(
+const CreateTaggerRequestConditionsList = /*@__PURE__*/ S.Array(
   TaggerCondition,
 ) as any as S.Schema<CreateTaggerRequestConditionsList>;
 
@@ -116,7 +97,7 @@ export type LLMCompletionProviderEnum =
   | "minimax"
   | "zeabur"
   | "openai_compatible";
-export const LLMCompletionProviderEnum = S.String;
+const LLMCompletionProviderEnum = S.String;
 
 export interface TaggerModelConfigurationWrite {
   /** LLM provider to use for this tagger. * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `openai_compatible` - OpenAI-compatible */
@@ -126,7 +107,7 @@ export interface TaggerModelConfigurationWrite {
   /** Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned. */
   provider_key_id?: string | null;
 }
-export const TaggerModelConfigurationWrite = /*@__PURE__*/ S.suspend(() =>
+const TaggerModelConfigurationWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: LLMCompletionProviderEnum,
     model: S.String,
@@ -149,7 +130,7 @@ export interface CreateTaggerRequest {
   conditions?: CreateTaggerRequestConditionsList;
   model_configuration?: TaggerModelConfigurationWrite | null;
 }
-export const CreateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -164,7 +145,7 @@ export const CreateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Conditions that scope when the tagger runs */
 export type TaggerConditionsList = Array<TaggerCondition>;
-export const TaggerConditionsList =
+const TaggerConditionsList =
   CreateTaggerRequestConditionsList as any as S.Schema<TaggerConditionsList>;
 
 /** Nested serializer for model configuration. */
@@ -177,7 +158,7 @@ export interface TaggerModelConfiguration {
   provider_key_id?: string | null;
   provider_key_name: string | null;
 }
-export const TaggerModelConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TaggerModelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: LLMCompletionProviderEnum,
     model: S.String,
@@ -187,7 +168,7 @@ export const TaggerModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaggerModelConfiguration" }) as any as S.Schema<TaggerModelConfiguration>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   TaggerConditionPropertiesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -201,14 +182,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -221,7 +197,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -251,7 +227,7 @@ export interface Tagger {
   created_by: UserBasic;
   deleted?: boolean;
 }
-export const Tagger = /*@__PURE__*/ S.suspend(() =>
+const Tagger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -274,11 +250,9 @@ export interface TestHogTaggerTag {
   /** Optional description for the tag. */
   description?: string;
 }
-export const TestHogTaggerTag = TagDefinition as any as S.Schema<TestHogTaggerTag>;
-
 /** Optional tag whitelist. Returned tags outside this list are filtered out. */
 export type CreateTaggersTestHogRequestTagsList = Array<TestHogTaggerTag>;
-export const CreateTaggersTestHogRequestTagsList =
+const CreateTaggersTestHogRequestTagsList =
   LLMTaggerConfigTagsList as any as S.Schema<CreateTaggersTestHogRequestTagsList>;
 
 export interface CreateTaggersTestHogRequest {
@@ -291,7 +265,7 @@ export interface CreateTaggersTestHogRequest {
   /** Optional tag whitelist. Returned tags outside this list are filtered out. */
   tags?: CreateTaggersTestHogRequestTagsList;
 }
-export const CreateTaggersTestHogRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaggersTestHogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source: S.String,
@@ -306,7 +280,7 @@ export const CreateTaggersTestHogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag names returned by the Hog code. */
 export type TestHogTaggerResultItemTagsList = Array<string>;
-export const TestHogTaggerResultItemTagsList = /*@__PURE__*/ S.Array(
+const TestHogTaggerResultItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TestHogTaggerResultItemTagsList>;
 
@@ -326,7 +300,7 @@ export interface TestHogTaggerResultItem {
   /** Error message if the Hog code failed. */
   error?: string | null;
 }
-export const TestHogTaggerResultItem = /*@__PURE__*/ S.suspend(() =>
+const TestHogTaggerResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_uuid: S.String,
     trace_id: S.optional(S.NullOr(S.String)),
@@ -340,7 +314,7 @@ export const TestHogTaggerResultItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-event Hog tagger test results. */
 export type TestHogTaggerResponseResultsList = Array<TestHogTaggerResultItem>;
-export const TestHogTaggerResponseResultsList = /*@__PURE__*/ S.Array(
+const TestHogTaggerResponseResultsList = /*@__PURE__*/ S.Array(
   TestHogTaggerResultItem,
 ) as any as S.Schema<TestHogTaggerResponseResultsList>;
 
@@ -350,7 +324,7 @@ export interface TestHogTaggerResponse {
   /** Optional message, for example when no recent AI events were found. */
   message?: string;
 }
-export const TestHogTaggerResponse = /*@__PURE__*/ S.suspend(() =>
+const TestHogTaggerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: TestHogTaggerResponseResultsList,
     message: S.optional(S.String),
@@ -363,7 +337,7 @@ export interface GetTaggerRequest {
   /** A UUID string identifying this tagger. */
   id: string;
 }
-export const GetTaggerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -371,7 +345,7 @@ export const GetTaggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaggerRequest" }) as any as S.Schema<GetTaggerRequest>;
 
 export type ListTaggersRequestIdInList = Array<string>;
-export const ListTaggersRequestIdInList =
+const ListTaggersRequestIdInList =
   TestHogTaggerResultItemTagsList as any as S.Schema<ListTaggersRequestIdInList>;
 
 export type ListTaggersRequestOrderByItem =
@@ -381,10 +355,10 @@ export type ListTaggersRequestOrderByItem =
   | "created_at"
   | "name"
   | "updated_at";
-export const ListTaggersRequestOrderByItem = S.String;
+const ListTaggersRequestOrderByItem = S.String;
 
 export type ListTaggersRequestOrderByList = Array<ListTaggersRequestOrderByItem | (string & {})>;
-export const ListTaggersRequestOrderByList = /*@__PURE__*/ S.Array(
+const ListTaggersRequestOrderByList = /*@__PURE__*/ S.Array(
   ListTaggersRequestOrderByItem,
 ) as any as S.Schema<ListTaggersRequestOrderByList>;
 
@@ -404,7 +378,7 @@ export interface ListTaggersRequest {
   /** Search in name or description */
   search?: string;
 }
-export const ListTaggersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaggersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     enabled: S.optional(S.Boolean.pipe(T.Query())),
@@ -417,7 +391,7 @@ export const ListTaggersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaggersRequest" }) as any as S.Schema<ListTaggersRequest>;
 
 export type PaginatedTaggerListResultsList = Array<Tagger>;
-export const PaginatedTaggerListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTaggerListResultsList = /*@__PURE__*/ S.Array(
   Tagger,
 ) as any as S.Schema<PaginatedTaggerListResultsList>;
 
@@ -427,7 +401,7 @@ export interface PaginatedTaggerList {
   previous?: string | null;
   results: PaginatedTaggerListResultsList;
 }
-export const PaginatedTaggerList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTaggerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -442,7 +416,7 @@ export interface TaggersDestroyRequest {
   /** A UUID string identifying this tagger. */
   id: string;
 }
-export const TaggersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TaggersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -450,13 +424,13 @@ export const TaggersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaggersDestroyRequest" }) as any as S.Schema<TaggersDestroyRequest>;
 
 export interface TaggersDestroyResponse {}
-export const TaggersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TaggersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TaggersDestroyResponse",
 }) as any as S.Schema<TaggersDestroyResponse>;
 
 /** Conditions that scope when the tagger runs */
 export type UpdateTaggerRequestConditionsList = Array<TaggerCondition>;
-export const UpdateTaggerRequestConditionsList =
+const UpdateTaggerRequestConditionsList =
   CreateTaggerRequestConditionsList as any as S.Schema<UpdateTaggerRequestConditionsList>;
 
 export interface UpdateTaggerRequest {
@@ -475,7 +449,7 @@ export interface UpdateTaggerRequest {
   model_configuration?: TaggerModelConfigurationWrite | null;
   deleted?: boolean;
 }
-export const UpdateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -492,7 +466,7 @@ export const UpdateTaggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Conditions that scope when the tagger runs */
 export type UpdateTaggersPartialRequestConditionsList = Array<TaggerCondition>;
-export const UpdateTaggersPartialRequestConditionsList =
+const UpdateTaggersPartialRequestConditionsList =
   CreateTaggerRequestConditionsList as any as S.Schema<UpdateTaggersPartialRequestConditionsList>;
 
 export interface UpdateTaggersPartialRequest {
@@ -511,7 +485,7 @@ export interface UpdateTaggersPartialRequest {
   model_configuration?: TaggerModelConfigurationWrite | null;
   deleted?: boolean;
 }
-export const UpdateTaggersPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaggersPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

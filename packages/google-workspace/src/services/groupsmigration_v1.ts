@@ -69,7 +69,7 @@ export interface InsertArchiveRequest {
   /** The group ID */
   groupId: string;
 }
-export const InsertArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(
@@ -88,7 +88,7 @@ export interface Groups {
   /** The status of the insert request. */
   responseCode?: string;
 }
-export const Groups = /*@__PURE__*/ S.suspend(() =>
+const Groups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     responseCode: S.optional(S.String),

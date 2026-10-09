@@ -68,7 +68,7 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -96,7 +96,7 @@ export interface DateTime {
   /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-export const DateTime = /*@__PURE__*/ S.suspend(() =>
+const DateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(TimeZone),
     nanos: S.optional(S.Number),
@@ -111,7 +111,7 @@ export const DateTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
 export type ShippingInfoShippingStatusEnum = "SHIPPING_STATE_UNSPECIFIED" | "SHIPPED" | "DELIVERED";
-export const ShippingInfoShippingStatusEnum = S.String;
+const ShippingInfoShippingStatusEnum = S.String;
 
 /** The shipping information for the order. */
 export interface ShippingInfo {
@@ -138,7 +138,7 @@ export interface ShippingInfo {
   /** Optional. The time when the shipment was shipped. Include the year and timezone string, if available. */
   shippedTime?: DateTime;
 }
-export const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
+const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     earliestDeliveryPromiseTime: S.optional(DateTime),
     originRegionCode: S.optional(S.String),
@@ -155,12 +155,10 @@ export const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShippingInfo" }) as any as S.Schema<ShippingInfo>;
 
 export type ShippingInfoList = Array<ShippingInfo>;
-export const ShippingInfoList = /*@__PURE__*/ S.Array(
-  ShippingInfo,
-) as any as S.Schema<ShippingInfoList>;
+const ShippingInfoList = /*@__PURE__*/ S.Array(ShippingInfo) as any as S.Schema<ShippingInfoList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The line items of the order. */
 export interface LineItemDetails {
@@ -179,7 +177,7 @@ export interface LineItemDetails {
   /** Optional. The manufacturer part number. */
   mpn?: string;
 }
-export const LineItemDetails = /*@__PURE__*/ S.suspend(() =>
+const LineItemDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineItemId: S.optional(S.String),
     gtins: S.optional(StringList),
@@ -192,7 +190,7 @@ export const LineItemDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LineItemDetails" }) as any as S.Schema<LineItemDetails>;
 
 export type LineItemDetailsList = Array<LineItemDetails>;
-export const LineItemDetailsList = /*@__PURE__*/ S.Array(
+const LineItemDetailsList = /*@__PURE__*/ S.Array(
   LineItemDetails,
 ) as any as S.Schema<LineItemDetailsList>;
 
@@ -205,7 +203,7 @@ export interface ShipmentLineItemMapping {
   /** Required. The line item ID. */
   lineItemId?: string;
 }
-export const ShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
+const ShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shipmentId: S.optional(S.String),
     quantity: S.optional(S.String),
@@ -214,7 +212,7 @@ export const ShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShipmentLineItemMapping" }) as any as S.Schema<ShipmentLineItemMapping>;
 
 export type ShipmentLineItemMappingList = Array<ShipmentLineItemMapping>;
-export const ShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
+const ShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
   ShipmentLineItemMapping,
 ) as any as S.Schema<ShipmentLineItemMappingList>;
 
@@ -225,7 +223,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -255,7 +253,7 @@ export interface OrderTrackingSignal {
   /** Required. The ID of the order on the businesses side. This field will be hashed in returned OrderTrackingSignal creation response. */
   orderId?: string;
 }
-export const OrderTrackingSignal = /*@__PURE__*/ S.suspend(() =>
+const OrderTrackingSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryRegionCode: S.optional(S.String),
     shippingInfo: S.optional(ShippingInfoList),
@@ -278,7 +276,7 @@ export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Request body */
   body?: OrderTrackingSignal;
 }
-export const CreateAccountsOrderTrackingSignalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsOrderTrackingSignalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderTrackingSignalId: S.optional(S.String.pipe(T.Query())),

@@ -118,7 +118,7 @@ export type Token = string;
 export interface GetLatestConfigurationRequest {
   ConfigurationToken: string;
 }
-export const GetLatestConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/configuration" }), svc, auth, proto, ver, rules),
   ),
@@ -132,7 +132,7 @@ export interface GetLatestConfigurationResponse {
   Configuration?: T.StreamingOutputBody;
   VersionLabel?: string;
 }
-export const GetLatestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLatestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextPollConfigurationToken: S.optional(S.String).pipe(
       T.HttpHeader("Next-Poll-Configuration-Token"),
@@ -155,7 +155,7 @@ export interface StartConfigurationSessionRequest {
   ConfigurationProfileIdentifier: string;
   RequiredMinimumPollIntervalInSeconds?: number;
 }
-export const StartConfigurationSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartConfigurationSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationIdentifier: S.String,
     EnvironmentIdentifier: S.String,
@@ -170,7 +170,7 @@ export const StartConfigurationSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartConfigurationSessionResponse {
   InitialConfigurationToken?: string;
 }
-export const StartConfigurationSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const StartConfigurationSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
 ).annotate({
   identifier: "StartConfigurationSessionResponse",
@@ -180,23 +180,23 @@ export type InvalidParameterProblem = string;
 export interface InvalidParameterDetail {
   Problem?: string;
 }
-export const InvalidParameterDetail = /*@__PURE__*/ S.suspend(() =>
+const InvalidParameterDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Problem: S.optional(S.String) }),
 ).annotate({ identifier: "InvalidParameterDetail" }) as any as S.Schema<InvalidParameterDetail>;
 export type InvalidParameterMap = { [key: string]: InvalidParameterDetail | undefined };
-export const InvalidParameterMap = /*@__PURE__*/ S.Record(
+const InvalidParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ InvalidParameterDetail.pipe(S.optional),
 );
 export type BadRequestDetails = {
   InvalidParameters: { [key: string]: InvalidParameterDetail | undefined };
 };
-export const BadRequestDetails = /*@__PURE__*/ S.Union([
+const BadRequestDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ InvalidParameters: InvalidParameterMap }),
 ]);
 export type ResourceType = string;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type GetLatestConfigurationError =
   | BadRequestException
   | InternalServerException

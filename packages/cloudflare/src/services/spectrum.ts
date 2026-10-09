@@ -62,7 +62,7 @@ export class SpectrumProtocolNotAvailable
   ) {}
 
 export type AppsCreateRequestDnsType = "CNAME" | "ADDRESS";
-export const AppsCreateRequestDnsType = S.String;
+const AppsCreateRequestDnsType = S.String;
 
 export interface AppsCreateRequestDns {
   /** The name of the DNS record associated with the application. */
@@ -70,7 +70,7 @@ export interface AppsCreateRequestDns {
   /** The type of DNS record associated with the application. */
   type?: AppsCreateRequestDnsType | (string & {});
 }
-export const AppsCreateRequestDns = /*@__PURE__*/ S.suspend(() =>
+const AppsCreateRequestDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(AppsCreateRequestDnsType),
@@ -78,56 +78,32 @@ export const AppsCreateRequestDns = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppsCreateRequestDns" }) as any as S.Schema<AppsCreateRequestDns>;
 
 export type AppsCreateRequestTrafficType = "direct" | "http" | "https" | "worker";
-export const AppsCreateRequestTrafficType = S.String;
+const AppsCreateRequestTrafficType = S.String;
 
 export type AppsCreateRequestEdgeIpsDynamicConnectivity = "all" | "ipv4" | "ipv6";
-export const AppsCreateRequestEdgeIpsDynamicConnectivity = S.String;
-
 export type AppsCreateRequestEdgeIpsDynamicType = "dynamic";
-export const AppsCreateRequestEdgeIpsDynamicType = S.String;
-
 export interface AppsCreateRequestEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsCreateRequestEdgeIpsDynamicConnectivity | (string & {});
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsCreateRequestEdgeIpsDynamicType | (string & {});
 }
-export const AppsCreateRequestEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivity: S.optional(AppsCreateRequestEdgeIpsDynamicConnectivity),
-    type: S.optional(AppsCreateRequestEdgeIpsDynamicType),
-  }),
-).annotate({
-  identifier: "AppsCreateRequestEdgeIpsDynamic",
-}) as any as S.Schema<AppsCreateRequestEdgeIpsDynamic>;
-
 export type AppsCreateRequestEdgeIpsStaticIpsList = Array<string>;
-export const AppsCreateRequestEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
+const AppsCreateRequestEdgeIpsStaticIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestEdgeIpsStaticIpsList>;
 
 export type AppsCreateRequestEdgeIpsStaticType = "static";
-export const AppsCreateRequestEdgeIpsStaticType = S.String;
-
 export interface AppsCreateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsCreateRequestEdgeIpsStaticIpsList;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: AppsCreateRequestEdgeIpsStaticType | (string & {});
 }
-export const AppsCreateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(AppsCreateRequestEdgeIpsStaticIpsList),
-    type: S.optional(AppsCreateRequestEdgeIpsStaticType),
-  }),
-).annotate({
-  identifier: "AppsCreateRequestEdgeIpsStatic",
-}) as any as S.Schema<AppsCreateRequestEdgeIpsStatic>;
-
 export type AppsCreateRequestEdgeIps =
   | AppsCreateRequestEdgeIpsDynamic
   | AppsCreateRequestEdgeIpsStatic;
-export const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
+const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
@@ -138,11 +114,11 @@ export const AppsCreateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type AppsCreateRequestOriginDirectList = Array<string>;
-export const AppsCreateRequestOriginDirectList =
+const AppsCreateRequestOriginDirectList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateRequestOriginDirectList>;
 
 export type AppsCreateRequestOriginDnsType = "" | "A" | "AAAA" | "SRV";
-export const AppsCreateRequestOriginDnsType = S.String;
+const AppsCreateRequestOriginDnsType = S.String;
 
 export interface AppsCreateRequestOriginDns {
   /** The name of the DNS record associated with the origin. */
@@ -152,7 +128,7 @@ export interface AppsCreateRequestOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsCreateRequestOriginDnsType | (string & {});
 }
-export const AppsCreateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
+const AppsCreateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     ttl: S.optional(S.Number),
@@ -163,15 +139,15 @@ export const AppsCreateRequestOriginDns = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsCreateRequestOriginDns>;
 
 export type AppsCreateRequestOriginPort = string | number;
-export const AppsCreateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
+const AppsCreateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AppsCreateRequestProxyProtocol = "off" | "v1" | "v2" | "simple";
-export const AppsCreateRequestProxyProtocol = S.String;
+const AppsCreateRequestProxyProtocol = S.String;
 
 export type AppsCreateRequestTls = "off" | "flexible" | "full" | "strict";
-export const AppsCreateRequestTls = S.String;
+const AppsCreateRequestTls = S.String;
 
 export interface CreateAppRequest {
   /** Zone identifier. */
@@ -203,7 +179,7 @@ export interface CreateAppRequest {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string;
 }
-export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dns: AppsCreateRequestDns,
@@ -225,98 +201,41 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAppRequest" }) as any as S.Schema<CreateAppRequest>;
 
 export type AppsCreateResultSpectrumConfigAppConfigDnsType = "CNAME" | "ADDRESS";
-export const AppsCreateResultSpectrumConfigAppConfigDnsType = S.String;
-
 export interface AppsCreateResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsCreateResultSpectrumConfigAppConfigDnsType | null;
 }
-export const AppsCreateResultSpectrumConfigAppConfigDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigDnsType)),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigAppConfigDns",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigDns>;
-
 export type AppsCreateResultSpectrumConfigAppConfigTrafficType =
   | "direct"
   | "http"
   | "https"
   | "worker";
-export const AppsCreateResultSpectrumConfigAppConfigTrafficType = S.String;
-
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity =
   | "all"
   | "ipv4"
   | "ipv6";
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity = S.String;
-
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType = "dynamic";
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType = S.String;
-
 export interface AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivity: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity),
-    ),
-    type: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamicType)),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic>;
-
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
-
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType = "static";
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType = S.String;
-
 export interface AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType | null;
 }
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList)),
-    type: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIpsStaticType)),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic>;
-
 export type AppsCreateResultSpectrumConfigAppConfigEdgeIps =
   | AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic
   | AppsCreateResultSpectrumConfigAppConfigEdgeIpsStatic;
-export const AppsCreateResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases(
-    [
-      ["connectivity", "type"],
-      ["ips", "type"],
-    ],
-    { key: "type", values: ["dynamic", "static"] },
-  ),
-);
-
 export type AppsCreateResultSpectrumConfigAppConfigOriginDirectList = Array<string>;
-export const AppsCreateResultSpectrumConfigAppConfigOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigOriginDirectList>;
-
 export type AppsCreateResultSpectrumConfigAppConfigOriginDnsType = "" | "A" | "AAAA" | "SRV";
-export const AppsCreateResultSpectrumConfigAppConfigOriginDnsType = S.String;
-
 export interface AppsCreateResultSpectrumConfigAppConfigOriginDns {
   /** The name of the DNS record associated with the origin. */
   name?: string | null;
@@ -325,27 +244,9 @@ export interface AppsCreateResultSpectrumConfigAppConfigOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsCreateResultSpectrumConfigAppConfigOriginDnsType | null;
 }
-export const AppsCreateResultSpectrumConfigAppConfigOriginDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginDnsType)),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigAppConfigOriginDns",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfigOriginDns>;
-
 export type AppsCreateResultSpectrumConfigAppConfigOriginPort = string | number;
-export const AppsCreateResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type AppsCreateResultSpectrumConfigAppConfigProxyProtocol = "off" | "v1" | "v2" | "simple";
-export const AppsCreateResultSpectrumConfigAppConfigProxyProtocol = S.String;
-
 export type AppsCreateResultSpectrumConfigAppConfigTls = "off" | "flexible" | "full" | "strict";
-export const AppsCreateResultSpectrumConfigAppConfigTls = S.String;
-
 export interface AppsCreateResultSpectrumConfigAppConfig {
   /** App identifier. */
   id: string;
@@ -380,57 +281,14 @@ export interface AppsCreateResultSpectrumConfigAppConfig {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string | null;
 }
-export const AppsCreateResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsCreateResultSpectrumConfigAppConfigDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    trafficType: AppsCreateResultSpectrumConfigAppConfigTrafficType.pipe(T.Body("traffic_type")),
-    argoSmartRouting: S.optional(S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigAppConfigEdgeIps).pipe(T.Body("edge_ips")),
-    ),
-    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
-    originDirect: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginDirectList).pipe(
-        T.Body("origin_direct"),
-      ),
-    ),
-    originDns: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginDns).pipe(T.Body("origin_dns")),
-    ),
-    originPort: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigAppConfigOriginPort).pipe(T.Body("origin_port")),
-    ),
-    originWorkerId: S.optional(S.NullOr(S.String).pipe(T.Body("origin_worker_id"))),
-    proxyProtocol: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigAppConfigProxyProtocol).pipe(T.Body("proxy_protocol")),
-    ),
-    tls: S.optional(S.NullOr(AppsCreateResultSpectrumConfigAppConfigTls)),
-    virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigAppConfig",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigAppConfig>;
-
 export type AppsCreateResultSpectrumConfigPaygoAppConfigDnsType = "CNAME" | "ADDRESS";
-export const AppsCreateResultSpectrumConfigPaygoAppConfigDnsType = S.String;
-
 export interface AppsCreateResultSpectrumConfigPaygoAppConfigDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsCreateResultSpectrumConfigPaygoAppConfigDnsType | null;
 }
-export const AppsCreateResultSpectrumConfigPaygoAppConfigDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigDns>;
-
 export type AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
-export const AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList>;
-
 export interface AppsCreateResultSpectrumConfigPaygoAppConfig {
   /** App identifier. */
   id: string;
@@ -445,27 +303,10 @@ export interface AppsCreateResultSpectrumConfigPaygoAppConfig {
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList | null;
 }
-export const AppsCreateResultSpectrumConfigPaygoAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsCreateResultSpectrumConfigPaygoAppConfigDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    originDirect: S.optional(
-      S.NullOr(AppsCreateResultSpectrumConfigPaygoAppConfigOriginDirectList).pipe(
-        T.Body("origin_direct"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "AppsCreateResultSpectrumConfigPaygoAppConfig",
-}) as any as S.Schema<AppsCreateResultSpectrumConfigPaygoAppConfig>;
-
 export type AppsCreateResult =
   | AppsCreateResultSpectrumConfigAppConfig
   | AppsCreateResultSpectrumConfigPaygoAppConfig;
-export const AppsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
+const AppsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "id",
@@ -490,7 +331,7 @@ export const AppsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type CreateAppResponse = AppsCreateResult;
-export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
   AppsCreateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateAppResponse" }) as any as S.Schema<CreateAppResponse>;
 
@@ -500,7 +341,7 @@ export interface DeleteAppRequest {
   /** App identifier. */
   appId: string;
 }
-export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -514,7 +355,7 @@ export interface DeleteAppResponse {
   /** Identifier. */
   id: string;
 }
-export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -528,7 +369,7 @@ export interface GetAnalyticAggregateCurrentRequest {
   /** Co-location identifier. */
   coloName?: string;
 }
-export const GetAnalyticAggregateCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticAggregateCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appID: S.optional(S.String.pipe(T.Query())),
@@ -558,7 +399,7 @@ export interface AnalyticsAggregatesCurrentsGetResultItem {
   /** Average duration of connections. */
   durationAvg: number;
 }
-export const AnalyticsAggregatesCurrentsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsAggregatesCurrentsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appID: S.String,
     bytesEgress: S.Number,
@@ -572,12 +413,12 @@ export const AnalyticsAggregatesCurrentsGetResultItem = /*@__PURE__*/ S.suspend(
 
 export type AnalyticsAggregatesCurrentsGetResultList =
   Array<AnalyticsAggregatesCurrentsGetResultItem>;
-export const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ S.Array(
+const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ S.Array(
   AnalyticsAggregatesCurrentsGetResultItem,
 ) as any as S.Schema<AnalyticsAggregatesCurrentsGetResultList>;
 
 export type GetAnalyticAggregateCurrentResponse = AnalyticsAggregatesCurrentsGetResultList;
-export const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ S.suspend(() =>
   AnalyticsAggregatesCurrentsGetResultList.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -595,10 +436,10 @@ export type AnalyticsEventsBytimesGetRequestTimeDelta =
   | "hour"
   | "dekaminute"
   | "minute";
-export const AnalyticsEventsBytimesGetRequestTimeDelta = S.String;
+const AnalyticsEventsBytimesGetRequestTimeDelta = S.String;
 
 export type AnalyticsEventsBytimesGetRequestDimensionsList = Array<string>;
-export const AnalyticsEventsBytimesGetRequestDimensionsList =
+const AnalyticsEventsBytimesGetRequestDimensionsList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetRequestDimensionsList>;
 
 export type AnalyticsEventsBytimesGetRequestMetrics =
@@ -609,17 +450,17 @@ export type AnalyticsEventsBytimesGetRequestMetrics =
   | "durationMedian"
   | "duration90th"
   | "duration99th";
-export const AnalyticsEventsBytimesGetRequestMetrics = S.String;
+const AnalyticsEventsBytimesGetRequestMetrics = S.String;
 
 export type AnalyticsEventsBytimesGetRequestMetricsList = Array<
   AnalyticsEventsBytimesGetRequestMetrics | (string & {})
 >;
-export const AnalyticsEventsBytimesGetRequestMetricsList = /*@__PURE__*/ S.Array(
+const AnalyticsEventsBytimesGetRequestMetricsList = /*@__PURE__*/ S.Array(
   AnalyticsEventsBytimesGetRequestMetrics,
 ) as any as S.Schema<AnalyticsEventsBytimesGetRequestMetricsList>;
 
 export type AnalyticsEventsBytimesGetRequestSortList = Array<string>;
-export const AnalyticsEventsBytimesGetRequestSortList =
+const AnalyticsEventsBytimesGetRequestSortList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetRequestSortList>;
 
 export interface GetAnalyticEventBytimeRequest {
@@ -640,7 +481,7 @@ export interface GetAnalyticEventBytimeRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-export const GetAnalyticEventBytimeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticEventBytimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     timeDelta: AnalyticsEventsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
@@ -664,28 +505,21 @@ export const GetAnalyticEventBytimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticEventBytimeRequest>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemDimensionsList = Array<string>;
-export const AnalyticsEventsBytimesGetResponseDataItemDimensionsList =
+const AnalyticsEventsBytimesGetResponseDataItemDimensionsList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemDimensionsList>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = Array<number>;
-export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = /*@__PURE__*/ S.Array(
+const AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList = Array<number>;
-export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList =
-  AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList>;
-
 export type AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List =
   Array<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList>;
-export const AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List = /*@__PURE__*/ S.Array(
-  AnalyticsEventsBytimesGetResponseDataItemMetricsCase1ItemList,
-) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List>;
-
 export type AnalyticsEventsBytimesGetResponseDataItemMetrics =
   | AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List
   | AnalyticsEventsBytimesGetResponseDataItemMetricsCase1List;
-export const AnalyticsEventsBytimesGetResponseDataItemMetrics = /*@__PURE__*/ S.Unknown.pipe(
+const AnalyticsEventsBytimesGetResponseDataItemMetrics = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -693,7 +527,7 @@ export interface AnalyticsEventsBytimesGetResponseDataItem {
   dimensions?: AnalyticsEventsBytimesGetResponseDataItemDimensionsList | null;
   metrics?: AnalyticsEventsBytimesGetResponseDataItemMetrics | null;
 }
-export const AnalyticsEventsBytimesGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventsBytimesGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseDataItemDimensionsList)),
     metrics: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseDataItemMetrics)),
@@ -704,18 +538,18 @@ export const AnalyticsEventsBytimesGetResponseDataItem = /*@__PURE__*/ S.suspend
 
 export type AnalyticsEventsBytimesGetResponseDataList =
   Array<AnalyticsEventsBytimesGetResponseDataItem>;
-export const AnalyticsEventsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
+const AnalyticsEventsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
   AnalyticsEventsBytimesGetResponseDataItem,
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataList>;
 
 export type AnalyticsEventsBytimesGetResponseMaxMap = { [key: string]: number | undefined };
-export const AnalyticsEventsBytimesGetResponseMaxMap = /*@__PURE__*/ S.Record(
+const AnalyticsEventsBytimesGetResponseMaxMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseMaxMap>;
 
 export type AnalyticsEventsBytimesGetResponseMinMap = { [key: string]: number | undefined };
-export const AnalyticsEventsBytimesGetResponseMinMap =
+const AnalyticsEventsBytimesGetResponseMinMap =
   AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsBytimesGetResponseMinMap>;
 
 export type AnalyticsEventsBytimesGetResponseQueryDimensionsItem =
@@ -723,11 +557,9 @@ export type AnalyticsEventsBytimesGetResponseQueryDimensionsItem =
   | "appID"
   | "coloName"
   | "ipVersion";
-export const AnalyticsEventsBytimesGetResponseQueryDimensionsItem = S.String;
-
 export type AnalyticsEventsBytimesGetResponseQueryDimensionsList =
   Array<AnalyticsEventsBytimesGetResponseQueryDimensionsItem>;
-export const AnalyticsEventsBytimesGetResponseQueryDimensionsList =
+const AnalyticsEventsBytimesGetResponseQueryDimensionsList =
   AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryDimensionsList>;
 
 export type AnalyticsEventsBytimesGetResponseQueryMetricsItem =
@@ -738,15 +570,13 @@ export type AnalyticsEventsBytimesGetResponseQueryMetricsItem =
   | "durationMedian"
   | "duration90th"
   | "duration99th";
-export const AnalyticsEventsBytimesGetResponseQueryMetricsItem = S.String;
-
 export type AnalyticsEventsBytimesGetResponseQueryMetricsList =
   Array<AnalyticsEventsBytimesGetResponseQueryMetricsItem>;
-export const AnalyticsEventsBytimesGetResponseQueryMetricsList =
+const AnalyticsEventsBytimesGetResponseQueryMetricsList =
   AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQueryMetricsList>;
 
 export type AnalyticsEventsBytimesGetResponseQuerySortList = Array<string>;
-export const AnalyticsEventsBytimesGetResponseQuerySortList =
+const AnalyticsEventsBytimesGetResponseQuerySortList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseQuerySortList>;
 
 export interface AnalyticsEventsBytimesGetResponseQuery {
@@ -765,7 +595,7 @@ export interface AnalyticsEventsBytimesGetResponseQuery {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string | null;
 }
-export const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(S.NullOr(AnalyticsEventsBytimesGetResponseQueryDimensionsList)),
     filters: S.optional(S.NullOr(S.String)),
@@ -780,16 +610,16 @@ export const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AnalyticsEventsBytimesGetResponseQuery>;
 
 export type AnalyticsEventsBytimesGetResponseTotalsMap = { [key: string]: number | undefined };
-export const AnalyticsEventsBytimesGetResponseTotalsMap =
+const AnalyticsEventsBytimesGetResponseTotalsMap =
   AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsBytimesGetResponseTotalsMap>;
 
 export type AnalyticsEventsBytimesGetResponseTimeIntervalsItemList = Array<string>;
-export const AnalyticsEventsBytimesGetResponseTimeIntervalsItemList =
+const AnalyticsEventsBytimesGetResponseTimeIntervalsItemList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
 
 export type AnalyticsEventsBytimesGetResponseTimeIntervalsList =
   Array<AnalyticsEventsBytimesGetResponseTimeIntervalsItemList>;
-export const AnalyticsEventsBytimesGetResponseTimeIntervalsList = /*@__PURE__*/ S.Array(
+const AnalyticsEventsBytimesGetResponseTimeIntervalsList = /*@__PURE__*/ S.Array(
   AnalyticsEventsBytimesGetResponseTimeIntervalsItemList,
 ) as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsList>;
 
@@ -811,7 +641,7 @@ export interface GetAnalyticEventBytimeResponse {
   /** List of time interval buckets: [start, end]. */
   timeIntervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList | null;
 }
-export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsEventsBytimesGetResponseDataList,
     dataLag: S.Number.pipe(T.Body("data_lag")),
@@ -829,7 +659,7 @@ export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticEventBytimeResponse>;
 
 export type AnalyticsEventsSummariesGetRequestDimensionsList = Array<string>;
-export const AnalyticsEventsSummariesGetRequestDimensionsList =
+const AnalyticsEventsSummariesGetRequestDimensionsList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetRequestDimensionsList>;
 
 export type AnalyticsEventsSummariesGetRequestMetrics =
@@ -840,16 +670,14 @@ export type AnalyticsEventsSummariesGetRequestMetrics =
   | "durationMedian"
   | "duration90th"
   | "duration99th";
-export const AnalyticsEventsSummariesGetRequestMetrics = S.String;
-
 export type AnalyticsEventsSummariesGetRequestMetricsList = Array<
   AnalyticsEventsSummariesGetRequestMetrics | (string & {})
 >;
-export const AnalyticsEventsSummariesGetRequestMetricsList =
+const AnalyticsEventsSummariesGetRequestMetricsList =
   AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetRequestMetricsList>;
 
 export type AnalyticsEventsSummariesGetRequestSortList = Array<string>;
-export const AnalyticsEventsSummariesGetRequestSortList =
+const AnalyticsEventsSummariesGetRequestSortList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetRequestSortList>;
 
 export interface GetAnalyticEventSummaryRequest {
@@ -868,7 +696,7 @@ export interface GetAnalyticEventSummaryRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-export const GetAnalyticEventSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticEventSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dimensions: S.optional(AnalyticsEventsSummariesGetRequestDimensionsList.pipe(T.Query())),
@@ -891,29 +719,17 @@ export const GetAnalyticEventSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticEventSummaryRequest>;
 
 export type AnalyticsEventsSummariesGetResponseDataItemDimensionsList = Array<string>;
-export const AnalyticsEventsSummariesGetResponseDataItemDimensionsList =
+const AnalyticsEventsSummariesGetResponseDataItemDimensionsList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemDimensionsList>;
 
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List = Array<number>;
-export const AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List =
-  AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List>;
-
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList = Array<number>;
-export const AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList>;
-
 export type AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List =
   Array<AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList>;
-export const AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List = /*@__PURE__*/ S.Array(
-  AnalyticsEventsSummariesGetResponseDataItemMetricsCase1ItemList,
-) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List>;
-
 export type AnalyticsEventsSummariesGetResponseDataItemMetrics =
   | AnalyticsEventsSummariesGetResponseDataItemMetricsCase0List
   | AnalyticsEventsSummariesGetResponseDataItemMetricsCase1List;
-export const AnalyticsEventsSummariesGetResponseDataItemMetrics = /*@__PURE__*/ S.Unknown.pipe(
+const AnalyticsEventsSummariesGetResponseDataItemMetrics = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -921,7 +737,7 @@ export interface AnalyticsEventsSummariesGetResponseDataItem {
   dimensions?: AnalyticsEventsSummariesGetResponseDataItemDimensionsList | null;
   metrics?: AnalyticsEventsSummariesGetResponseDataItemMetrics | null;
 }
-export const AnalyticsEventsSummariesGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventsSummariesGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseDataItemDimensionsList)),
     metrics: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseDataItemMetrics)),
@@ -932,16 +748,16 @@ export const AnalyticsEventsSummariesGetResponseDataItem = /*@__PURE__*/ S.suspe
 
 export type AnalyticsEventsSummariesGetResponseDataList =
   Array<AnalyticsEventsSummariesGetResponseDataItem>;
-export const AnalyticsEventsSummariesGetResponseDataList = /*@__PURE__*/ S.Array(
+const AnalyticsEventsSummariesGetResponseDataList = /*@__PURE__*/ S.Array(
   AnalyticsEventsSummariesGetResponseDataItem,
 ) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataList>;
 
 export type AnalyticsEventsSummariesGetResponseMaxMap = { [key: string]: number | undefined };
-export const AnalyticsEventsSummariesGetResponseMaxMap =
+const AnalyticsEventsSummariesGetResponseMaxMap =
   AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseMaxMap>;
 
 export type AnalyticsEventsSummariesGetResponseMinMap = { [key: string]: number | undefined };
-export const AnalyticsEventsSummariesGetResponseMinMap =
+const AnalyticsEventsSummariesGetResponseMinMap =
   AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseMinMap>;
 
 export type AnalyticsEventsSummariesGetResponseQueryDimensionsItem =
@@ -949,11 +765,9 @@ export type AnalyticsEventsSummariesGetResponseQueryDimensionsItem =
   | "appID"
   | "coloName"
   | "ipVersion";
-export const AnalyticsEventsSummariesGetResponseQueryDimensionsItem = S.String;
-
 export type AnalyticsEventsSummariesGetResponseQueryDimensionsList =
   Array<AnalyticsEventsSummariesGetResponseQueryDimensionsItem>;
-export const AnalyticsEventsSummariesGetResponseQueryDimensionsList =
+const AnalyticsEventsSummariesGetResponseQueryDimensionsList =
   AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryDimensionsList>;
 
 export type AnalyticsEventsSummariesGetResponseQueryMetricsItem =
@@ -964,15 +778,13 @@ export type AnalyticsEventsSummariesGetResponseQueryMetricsItem =
   | "durationMedian"
   | "duration90th"
   | "duration99th";
-export const AnalyticsEventsSummariesGetResponseQueryMetricsItem = S.String;
-
 export type AnalyticsEventsSummariesGetResponseQueryMetricsList =
   Array<AnalyticsEventsSummariesGetResponseQueryMetricsItem>;
-export const AnalyticsEventsSummariesGetResponseQueryMetricsList =
+const AnalyticsEventsSummariesGetResponseQueryMetricsList =
   AnalyticsEventsBytimesGetRequestMetricsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQueryMetricsList>;
 
 export type AnalyticsEventsSummariesGetResponseQuerySortList = Array<string>;
-export const AnalyticsEventsSummariesGetResponseQuerySortList =
+const AnalyticsEventsSummariesGetResponseQuerySortList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseQuerySortList>;
 
 export interface AnalyticsEventsSummariesGetResponseQuery {
@@ -991,7 +803,7 @@ export interface AnalyticsEventsSummariesGetResponseQuery {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string | null;
 }
-export const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(S.NullOr(AnalyticsEventsSummariesGetResponseQueryDimensionsList)),
     filters: S.optional(S.NullOr(S.String)),
@@ -1006,16 +818,13 @@ export const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AnalyticsEventsSummariesGetResponseQuery>;
 
 export type AnalyticsEventsSummariesGetResponseTotalsMap = { [key: string]: number | undefined };
-export const AnalyticsEventsSummariesGetResponseTotalsMap =
+const AnalyticsEventsSummariesGetResponseTotalsMap =
   AnalyticsEventsBytimesGetResponseMaxMap as any as S.Schema<AnalyticsEventsSummariesGetResponseTotalsMap>;
 
 export type AnalyticsEventsSummariesGetResponseTimeIntervalsItemList = Array<string>;
-export const AnalyticsEventsSummariesGetResponseTimeIntervalsItemList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsItemList>;
-
 export type AnalyticsEventsSummariesGetResponseTimeIntervalsList =
   Array<AnalyticsEventsSummariesGetResponseTimeIntervalsItemList>;
-export const AnalyticsEventsSummariesGetResponseTimeIntervalsList =
+const AnalyticsEventsSummariesGetResponseTimeIntervalsList =
   AnalyticsEventsBytimesGetResponseTimeIntervalsList as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1036,7 +845,7 @@ export interface GetAnalyticEventSummaryResponse {
   /** List of time interval buckets: [start, end]. */
   timeIntervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList | null;
 }
-export const GetAnalyticEventSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticEventSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsEventsSummariesGetResponseDataList,
     dataLag: S.Number.pipe(T.Body("data_lag")),
@@ -1059,7 +868,7 @@ export interface GetAppRequest {
   /** App identifier. */
   appId: string;
 }
-export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -1069,84 +878,41 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 export type AppsGetResultSpectrumConfigAppConfigDnsType = "CNAME" | "ADDRESS";
-export const AppsGetResultSpectrumConfigAppConfigDnsType = S.String;
-
 export interface AppsGetResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsGetResultSpectrumConfigAppConfigDnsType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsGetResultSpectrumConfigAppConfigDns>;
-
 export type AppsGetResultSpectrumConfigAppConfigTrafficType =
   | "direct"
   | "http"
   | "https"
   | "worker";
-export const AppsGetResultSpectrumConfigAppConfigTrafficType = S.String;
-
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity =
   | "all"
   | "ipv4"
   | "ipv6";
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity = S.String;
-
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType = "dynamic";
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType = S.String;
-
 export interface AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic =
-  AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic>;
-
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
-
 export type AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType = "static";
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType = S.String;
-
 export interface AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticIpsList)),
-    type: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIpsStaticType)),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic",
-}) as any as S.Schema<AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic>;
-
 export type AppsGetResultSpectrumConfigAppConfigEdgeIps =
   | AppsGetResultSpectrumConfigAppConfigEdgeIpsDynamic
   | AppsGetResultSpectrumConfigAppConfigEdgeIpsStatic;
-export const AppsGetResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases(
-    [
-      ["connectivity", "type"],
-      ["ips", "type"],
-    ],
-    { key: "type", values: ["dynamic", "static"] },
-  ),
-);
-
 export type AppsGetResultSpectrumConfigAppConfigOriginDirectList = Array<string>;
-export const AppsGetResultSpectrumConfigAppConfigOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsGetResultSpectrumConfigAppConfigOriginDirectList>;
-
 export type AppsGetResultSpectrumConfigAppConfigOriginDnsType = "" | "A" | "AAAA" | "SRV";
-export const AppsGetResultSpectrumConfigAppConfigOriginDnsType = S.String;
-
 export interface AppsGetResultSpectrumConfigAppConfigOriginDns {
   /** The name of the DNS record associated with the origin. */
   name?: string | null;
@@ -1155,20 +921,9 @@ export interface AppsGetResultSpectrumConfigAppConfigOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsGetResultSpectrumConfigAppConfigOriginDnsType | null;
 }
-export const AppsGetResultSpectrumConfigAppConfigOriginDns =
-  AppsCreateResultSpectrumConfigAppConfigOriginDns as any as S.Schema<AppsGetResultSpectrumConfigAppConfigOriginDns>;
-
 export type AppsGetResultSpectrumConfigAppConfigOriginPort = string | number;
-export const AppsGetResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type AppsGetResultSpectrumConfigAppConfigProxyProtocol = "off" | "v1" | "v2" | "simple";
-export const AppsGetResultSpectrumConfigAppConfigProxyProtocol = S.String;
-
 export type AppsGetResultSpectrumConfigAppConfigTls = "off" | "flexible" | "full" | "strict";
-export const AppsGetResultSpectrumConfigAppConfigTls = S.String;
-
 export interface AppsGetResultSpectrumConfigAppConfig {
   /** App identifier. */
   id: string;
@@ -1203,55 +958,14 @@ export interface AppsGetResultSpectrumConfigAppConfig {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string | null;
 }
-export const AppsGetResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsGetResultSpectrumConfigAppConfigDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    trafficType: AppsGetResultSpectrumConfigAppConfigTrafficType.pipe(T.Body("traffic_type")),
-    argoSmartRouting: S.optional(S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigAppConfigEdgeIps).pipe(T.Body("edge_ips")),
-    ),
-    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
-    originDirect: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginDirectList).pipe(T.Body("origin_direct")),
-    ),
-    originDns: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginDns).pipe(T.Body("origin_dns")),
-    ),
-    originPort: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigAppConfigOriginPort).pipe(T.Body("origin_port")),
-    ),
-    originWorkerId: S.optional(S.NullOr(S.String).pipe(T.Body("origin_worker_id"))),
-    proxyProtocol: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigAppConfigProxyProtocol).pipe(T.Body("proxy_protocol")),
-    ),
-    tls: S.optional(S.NullOr(AppsGetResultSpectrumConfigAppConfigTls)),
-    virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigAppConfig",
-}) as any as S.Schema<AppsGetResultSpectrumConfigAppConfig>;
-
 export type AppsGetResultSpectrumConfigPaygoAppConfigDnsType = "CNAME" | "ADDRESS";
-export const AppsGetResultSpectrumConfigPaygoAppConfigDnsType = S.String;
-
 export interface AppsGetResultSpectrumConfigPaygoAppConfigDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsGetResultSpectrumConfigPaygoAppConfigDnsType | null;
 }
-export const AppsGetResultSpectrumConfigPaygoAppConfigDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigDns>;
-
 export type AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
-export const AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList>;
-
 export interface AppsGetResultSpectrumConfigPaygoAppConfig {
   /** App identifier. */
   id: string;
@@ -1266,27 +980,10 @@ export interface AppsGetResultSpectrumConfigPaygoAppConfig {
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList | null;
 }
-export const AppsGetResultSpectrumConfigPaygoAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsGetResultSpectrumConfigPaygoAppConfigDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    originDirect: S.optional(
-      S.NullOr(AppsGetResultSpectrumConfigPaygoAppConfigOriginDirectList).pipe(
-        T.Body("origin_direct"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "AppsGetResultSpectrumConfigPaygoAppConfig",
-}) as any as S.Schema<AppsGetResultSpectrumConfigPaygoAppConfig>;
-
 export type AppsGetResult =
   | AppsGetResultSpectrumConfigAppConfig
   | AppsGetResultSpectrumConfigPaygoAppConfig;
-export const AppsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const AppsGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "id",
@@ -1311,15 +1008,15 @@ export const AppsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type GetAppResponse = AppsGetResult;
-export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
   AppsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
 export type AppsListRequestDirection = "asc" | "desc";
-export const AppsListRequestDirection = S.String;
+const AppsListRequestDirection = S.String;
 
 export type AppsListRequestOrder = "protocol" | "app_id" | "created_on" | "modified_on" | "dns";
-export const AppsListRequestOrder = S.String;
+const AppsListRequestOrder = S.String;
 
 export interface ListAppsRequest {
   /** Zone identifier. */
@@ -1333,7 +1030,7 @@ export interface ListAppsRequest {
   /** Sets the maximum number of results per page. */
   perPage?: number;
 }
-export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(AppsListRequestDirection.pipe(T.Query())),
@@ -1346,83 +1043,34 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppsRequest" }) as any as S.Schema<ListAppsRequest>;
 
 export type AppsListResultCase0ItemDnsType = "CNAME" | "ADDRESS";
-export const AppsListResultCase0ItemDnsType = S.String;
-
 export interface AppsListResultCase0ItemDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsListResultCase0ItemDnsType | null;
 }
-export const AppsListResultCase0ItemDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsListResultCase0ItemDns>;
-
 export type AppsListResultCase0ItemTrafficType = "direct" | "http" | "https" | "worker";
-export const AppsListResultCase0ItemTrafficType = S.String;
-
 export type AppsListResultCase0ItemEdgeIpsDynamicConnectivity = "all" | "ipv4" | "ipv6";
-export const AppsListResultCase0ItemEdgeIpsDynamicConnectivity = S.String;
-
 export type AppsListResultCase0ItemEdgeIpsDynamicType = "dynamic";
-export const AppsListResultCase0ItemEdgeIpsDynamicType = S.String;
-
 export interface AppsListResultCase0ItemEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsListResultCase0ItemEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsListResultCase0ItemEdgeIpsDynamicType | null;
 }
-export const AppsListResultCase0ItemEdgeIpsDynamic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivity: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsDynamicConnectivity)),
-    type: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsDynamicType)),
-  }),
-).annotate({
-  identifier: "AppsListResultCase0ItemEdgeIpsDynamic",
-}) as any as S.Schema<AppsListResultCase0ItemEdgeIpsDynamic>;
-
 export type AppsListResultCase0ItemEdgeIpsStaticIpsList = Array<string>;
-export const AppsListResultCase0ItemEdgeIpsStaticIpsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsListResultCase0ItemEdgeIpsStaticIpsList>;
-
 export type AppsListResultCase0ItemEdgeIpsStaticType = "static";
-export const AppsListResultCase0ItemEdgeIpsStaticType = S.String;
-
 export interface AppsListResultCase0ItemEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsListResultCase0ItemEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: AppsListResultCase0ItemEdgeIpsStaticType | null;
 }
-export const AppsListResultCase0ItemEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsStaticIpsList)),
-    type: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIpsStaticType)),
-  }),
-).annotate({
-  identifier: "AppsListResultCase0ItemEdgeIpsStatic",
-}) as any as S.Schema<AppsListResultCase0ItemEdgeIpsStatic>;
-
 export type AppsListResultCase0ItemEdgeIps =
   | AppsListResultCase0ItemEdgeIpsDynamic
   | AppsListResultCase0ItemEdgeIpsStatic;
-export const AppsListResultCase0ItemEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases(
-    [
-      ["connectivity", "type"],
-      ["ips", "type"],
-    ],
-    { key: "type", values: ["dynamic", "static"] },
-  ),
-);
-
 export type AppsListResultCase0ItemOriginDirectList = Array<string>;
-export const AppsListResultCase0ItemOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsListResultCase0ItemOriginDirectList>;
-
 export type AppsListResultCase0ItemOriginDnsType = "" | "A" | "AAAA" | "SRV";
-export const AppsListResultCase0ItemOriginDnsType = S.String;
-
 export interface AppsListResultCase0ItemOriginDns {
   /** The name of the DNS record associated with the origin. */
   name?: string | null;
@@ -1431,20 +1079,9 @@ export interface AppsListResultCase0ItemOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsListResultCase0ItemOriginDnsType | null;
 }
-export const AppsListResultCase0ItemOriginDns =
-  AppsCreateResultSpectrumConfigAppConfigOriginDns as any as S.Schema<AppsListResultCase0ItemOriginDns>;
-
 export type AppsListResultCase0ItemOriginPort = string | number;
-export const AppsListResultCase0ItemOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type AppsListResultCase0ItemProxyProtocol = "off" | "v1" | "v2" | "simple";
-export const AppsListResultCase0ItemProxyProtocol = S.String;
-
 export type AppsListResultCase0ItemTls = "off" | "flexible" | "full" | "strict";
-export const AppsListResultCase0ItemTls = S.String;
-
 export interface AppsListResultCase0Item {
   /** App identifier. */
   id: string;
@@ -1479,52 +1116,15 @@ export interface AppsListResultCase0Item {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string | null;
 }
-export const AppsListResultCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsListResultCase0ItemDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    trafficType: AppsListResultCase0ItemTrafficType.pipe(T.Body("traffic_type")),
-    argoSmartRouting: S.optional(S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(S.NullOr(AppsListResultCase0ItemEdgeIps).pipe(T.Body("edge_ips"))),
-    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
-    originDirect: S.optional(
-      S.NullOr(AppsListResultCase0ItemOriginDirectList).pipe(T.Body("origin_direct")),
-    ),
-    originDns: S.optional(S.NullOr(AppsListResultCase0ItemOriginDns).pipe(T.Body("origin_dns"))),
-    originPort: S.optional(S.NullOr(AppsListResultCase0ItemOriginPort).pipe(T.Body("origin_port"))),
-    originWorkerId: S.optional(S.NullOr(S.String).pipe(T.Body("origin_worker_id"))),
-    proxyProtocol: S.optional(
-      S.NullOr(AppsListResultCase0ItemProxyProtocol).pipe(T.Body("proxy_protocol")),
-    ),
-    tls: S.optional(S.NullOr(AppsListResultCase0ItemTls)),
-    virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
-  }),
-).annotate({ identifier: "AppsListResultCase0Item" }) as any as S.Schema<AppsListResultCase0Item>;
-
 export type AppsListResultCase0List = Array<AppsListResultCase0Item>;
-export const AppsListResultCase0List = /*@__PURE__*/ S.Array(
-  AppsListResultCase0Item,
-) as any as S.Schema<AppsListResultCase0List>;
-
 export type AppsListResultCase1ItemDnsType = "CNAME" | "ADDRESS";
-export const AppsListResultCase1ItemDnsType = S.String;
-
 export interface AppsListResultCase1ItemDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsListResultCase1ItemDnsType | null;
 }
-export const AppsListResultCase1ItemDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsListResultCase1ItemDns>;
-
 export type AppsListResultCase1ItemOriginDirectList = Array<string>;
-export const AppsListResultCase1ItemOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsListResultCase1ItemOriginDirectList>;
-
 export interface AppsListResultCase1Item {
   /** App identifier. */
   id: string;
@@ -1539,26 +1139,9 @@ export interface AppsListResultCase1Item {
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: AppsListResultCase1ItemOriginDirectList | null;
 }
-export const AppsListResultCase1Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsListResultCase1ItemDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    originDirect: S.optional(
-      S.NullOr(AppsListResultCase1ItemOriginDirectList).pipe(T.Body("origin_direct")),
-    ),
-  }),
-).annotate({ identifier: "AppsListResultCase1Item" }) as any as S.Schema<AppsListResultCase1Item>;
-
 export type AppsListResultCase1List = Array<AppsListResultCase1Item>;
-export const AppsListResultCase1List = /*@__PURE__*/ S.Array(
-  AppsListResultCase1Item,
-) as any as S.Schema<AppsListResultCase1List>;
-
 export type AppsListResult = AppsListResultCase0List | AppsListResultCase1List;
-export const AppsListResult = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+const AppsListResult = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1566,7 +1149,7 @@ export interface ListAppsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AppsListResult.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1577,7 +1160,7 @@ export interface ListProtocolsRequest {
   /** Zone identifier. */
   zoneId: string;
 }
-export const ListProtocolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProtocolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1586,7 +1169,7 @@ export const ListProtocolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProtocolsRequest" }) as any as S.Schema<ListProtocolsRequest>;
 
 export type ListProtocolsResultItemPortsList = Array<number>;
-export const ListProtocolsResultItemPortsList =
+const ListProtocolsResultItemPortsList =
   AnalyticsEventsBytimesGetResponseDataItemMetricsCase0List as any as S.Schema<ListProtocolsResultItemPortsList>;
 
 export interface ListProtocolsResultItem {
@@ -1599,7 +1182,7 @@ export interface ListProtocolsResultItem {
   /** The transport layer protocol used by the application protocol */
   transport: string;
 }
-export const ListProtocolsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListProtocolsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     name: S.String,
@@ -1609,70 +1192,47 @@ export const ListProtocolsResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProtocolsResultItem" }) as any as S.Schema<ListProtocolsResultItem>;
 
 export type ListProtocolsResultList = Array<ListProtocolsResultItem>;
-export const ListProtocolsResultList = /*@__PURE__*/ S.Array(
+const ListProtocolsResultList = /*@__PURE__*/ S.Array(
   ListProtocolsResultItem,
 ) as any as S.Schema<ListProtocolsResultList>;
 
 export type ListProtocolsResponse = ListProtocolsResultList;
-export const ListProtocolsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProtocolsResponse = /*@__PURE__*/ S.suspend(() =>
   ListProtocolsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListProtocolsResponse" }) as any as S.Schema<ListProtocolsResponse>;
 
 export type AppsUpdateRequestDnsType = "CNAME" | "ADDRESS";
-export const AppsUpdateRequestDnsType = S.String;
-
 export interface AppsUpdateRequestDns {
   /** The name of the DNS record associated with the application. */
   name?: string;
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateRequestDnsType | (string & {});
 }
-export const AppsUpdateRequestDns = AppsCreateRequestDns as any as S.Schema<AppsUpdateRequestDns>;
+const AppsUpdateRequestDns = AppsCreateRequestDns as any as S.Schema<AppsUpdateRequestDns>;
 
 export type AppsUpdateRequestTrafficType = "direct" | "http" | "https" | "worker";
-export const AppsUpdateRequestTrafficType = S.String;
+const AppsUpdateRequestTrafficType = S.String;
 
 export type AppsUpdateRequestEdgeIpsDynamicConnectivity = "all" | "ipv4" | "ipv6";
-export const AppsUpdateRequestEdgeIpsDynamicConnectivity = S.String;
-
 export type AppsUpdateRequestEdgeIpsDynamicType = "dynamic";
-export const AppsUpdateRequestEdgeIpsDynamicType = S.String;
-
 export interface AppsUpdateRequestEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsUpdateRequestEdgeIpsDynamicConnectivity | (string & {});
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsUpdateRequestEdgeIpsDynamicType | (string & {});
 }
-export const AppsUpdateRequestEdgeIpsDynamic =
-  AppsCreateRequestEdgeIpsDynamic as any as S.Schema<AppsUpdateRequestEdgeIpsDynamic>;
-
 export type AppsUpdateRequestEdgeIpsStaticIpsList = Array<string>;
-export const AppsUpdateRequestEdgeIpsStaticIpsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateRequestEdgeIpsStaticIpsList>;
-
 export type AppsUpdateRequestEdgeIpsStaticType = "static";
-export const AppsUpdateRequestEdgeIpsStaticType = S.String;
-
 export interface AppsUpdateRequestEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsUpdateRequestEdgeIpsStaticIpsList;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: AppsUpdateRequestEdgeIpsStaticType | (string & {});
 }
-export const AppsUpdateRequestEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(AppsUpdateRequestEdgeIpsStaticIpsList),
-    type: S.optional(AppsUpdateRequestEdgeIpsStaticType),
-  }),
-).annotate({
-  identifier: "AppsUpdateRequestEdgeIpsStatic",
-}) as any as S.Schema<AppsUpdateRequestEdgeIpsStatic>;
-
 export type AppsUpdateRequestEdgeIps =
   | AppsUpdateRequestEdgeIpsDynamic
   | AppsUpdateRequestEdgeIpsStatic;
-export const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
+const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["connectivity", "type"],
@@ -1683,12 +1243,10 @@ export const AppsUpdateRequestEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type AppsUpdateRequestOriginDirectList = Array<string>;
-export const AppsUpdateRequestOriginDirectList =
+const AppsUpdateRequestOriginDirectList =
   AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateRequestOriginDirectList>;
 
 export type AppsUpdateRequestOriginDnsType = "" | "A" | "AAAA" | "SRV";
-export const AppsUpdateRequestOriginDnsType = S.String;
-
 export interface AppsUpdateRequestOriginDns {
   /** The name of the DNS record associated with the origin. */
   name?: string;
@@ -1697,19 +1255,19 @@ export interface AppsUpdateRequestOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsUpdateRequestOriginDnsType | (string & {});
 }
-export const AppsUpdateRequestOriginDns =
+const AppsUpdateRequestOriginDns =
   AppsCreateRequestOriginDns as any as S.Schema<AppsUpdateRequestOriginDns>;
 
 export type AppsUpdateRequestOriginPort = string | number;
-export const AppsUpdateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
+const AppsUpdateRequestOriginPort = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type AppsUpdateRequestProxyProtocol = "off" | "v1" | "v2" | "simple";
-export const AppsUpdateRequestProxyProtocol = S.String;
+const AppsUpdateRequestProxyProtocol = S.String;
 
 export type AppsUpdateRequestTls = "off" | "flexible" | "full" | "strict";
-export const AppsUpdateRequestTls = S.String;
+const AppsUpdateRequestTls = S.String;
 
 export interface UpdateAppRequest {
   /** Zone identifier. */
@@ -1743,7 +1301,7 @@ export interface UpdateAppRequest {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string;
 }
-export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -1766,84 +1324,41 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAppRequest" }) as any as S.Schema<UpdateAppRequest>;
 
 export type AppsUpdateResultSpectrumConfigAppConfigDnsType = "CNAME" | "ADDRESS";
-export const AppsUpdateResultSpectrumConfigAppConfigDnsType = S.String;
-
 export interface AppsUpdateResultSpectrumConfigAppConfigDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateResultSpectrumConfigAppConfigDnsType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigDns>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigTrafficType =
   | "direct"
   | "http"
   | "https"
   | "worker";
-export const AppsUpdateResultSpectrumConfigAppConfigTrafficType = S.String;
-
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity =
   | "all"
   | "ipv4"
   | "ipv6";
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity = S.String;
-
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType = "dynamic";
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType = S.String;
-
 export interface AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic {
   /** The IP versions supported for inbound connections on Spectrum anycast IPs. */
   connectivity?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicConnectivity | null;
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamicType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic =
-  AppsCreateResultSpectrumConfigAppConfigEdgeIpsDynamic as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList = Array<string>;
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType = "static";
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType = S.String;
-
 export interface AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList | null;
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ips: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticIpsList)),
-    type: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStaticType)),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigEdgeIps =
   | AppsUpdateResultSpectrumConfigAppConfigEdgeIpsDynamic
   | AppsUpdateResultSpectrumConfigAppConfigEdgeIpsStatic;
-export const AppsUpdateResultSpectrumConfigAppConfigEdgeIps = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases(
-    [
-      ["connectivity", "type"],
-      ["ips", "type"],
-    ],
-    { key: "type", values: ["dynamic", "static"] },
-  ),
-);
-
 export type AppsUpdateResultSpectrumConfigAppConfigOriginDirectList = Array<string>;
-export const AppsUpdateResultSpectrumConfigAppConfigOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigOriginDirectList>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigOriginDnsType = "" | "A" | "AAAA" | "SRV";
-export const AppsUpdateResultSpectrumConfigAppConfigOriginDnsType = S.String;
-
 export interface AppsUpdateResultSpectrumConfigAppConfigOriginDns {
   /** The name of the DNS record associated with the origin. */
   name?: string | null;
@@ -1852,20 +1367,9 @@ export interface AppsUpdateResultSpectrumConfigAppConfigOriginDns {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: AppsUpdateResultSpectrumConfigAppConfigOriginDnsType | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfigOriginDns =
-  AppsCreateResultSpectrumConfigAppConfigOriginDns as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfigOriginDns>;
-
 export type AppsUpdateResultSpectrumConfigAppConfigOriginPort = string | number;
-export const AppsUpdateResultSpectrumConfigAppConfigOriginPort = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type AppsUpdateResultSpectrumConfigAppConfigProxyProtocol = "off" | "v1" | "v2" | "simple";
-export const AppsUpdateResultSpectrumConfigAppConfigProxyProtocol = S.String;
-
 export type AppsUpdateResultSpectrumConfigAppConfigTls = "off" | "flexible" | "full" | "strict";
-export const AppsUpdateResultSpectrumConfigAppConfigTls = S.String;
-
 export interface AppsUpdateResultSpectrumConfigAppConfig {
   /** App identifier. */
   id: string;
@@ -1900,57 +1404,14 @@ export interface AppsUpdateResultSpectrumConfigAppConfig {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string | null;
 }
-export const AppsUpdateResultSpectrumConfigAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsUpdateResultSpectrumConfigAppConfigDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    trafficType: AppsUpdateResultSpectrumConfigAppConfigTrafficType.pipe(T.Body("traffic_type")),
-    argoSmartRouting: S.optional(S.NullOr(S.Boolean).pipe(T.Body("argo_smart_routing"))),
-    edgeIps: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigAppConfigEdgeIps).pipe(T.Body("edge_ips")),
-    ),
-    ipFirewall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ip_firewall"))),
-    originDirect: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginDirectList).pipe(
-        T.Body("origin_direct"),
-      ),
-    ),
-    originDns: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginDns).pipe(T.Body("origin_dns")),
-    ),
-    originPort: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigAppConfigOriginPort).pipe(T.Body("origin_port")),
-    ),
-    originWorkerId: S.optional(S.NullOr(S.String).pipe(T.Body("origin_worker_id"))),
-    proxyProtocol: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigAppConfigProxyProtocol).pipe(T.Body("proxy_protocol")),
-    ),
-    tls: S.optional(S.NullOr(AppsUpdateResultSpectrumConfigAppConfigTls)),
-    virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigAppConfig",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigAppConfig>;
-
 export type AppsUpdateResultSpectrumConfigPaygoAppConfigDnsType = "CNAME" | "ADDRESS";
-export const AppsUpdateResultSpectrumConfigPaygoAppConfigDnsType = S.String;
-
 export interface AppsUpdateResultSpectrumConfigPaygoAppConfigDns {
   /** The name of the DNS record associated with the application. */
   name?: string | null;
   /** The type of DNS record associated with the application. */
   type?: AppsUpdateResultSpectrumConfigPaygoAppConfigDnsType | null;
 }
-export const AppsUpdateResultSpectrumConfigPaygoAppConfigDns =
-  AppsCreateResultSpectrumConfigAppConfigDns as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigDns>;
-
 export type AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList = Array<string>;
-export const AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList =
-  AppsCreateRequestEdgeIpsStaticIpsList as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList>;
-
 export interface AppsUpdateResultSpectrumConfigPaygoAppConfig {
   /** App identifier. */
   id: string;
@@ -1965,27 +1426,10 @@ export interface AppsUpdateResultSpectrumConfigPaygoAppConfig {
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList | null;
 }
-export const AppsUpdateResultSpectrumConfigPaygoAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    dns: AppsUpdateResultSpectrumConfigPaygoAppConfigDns,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    protocol: S.String,
-    originDirect: S.optional(
-      S.NullOr(AppsUpdateResultSpectrumConfigPaygoAppConfigOriginDirectList).pipe(
-        T.Body("origin_direct"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "AppsUpdateResultSpectrumConfigPaygoAppConfig",
-}) as any as S.Schema<AppsUpdateResultSpectrumConfigPaygoAppConfig>;
-
 export type AppsUpdateResult =
   | AppsUpdateResultSpectrumConfigAppConfig
   | AppsUpdateResultSpectrumConfigPaygoAppConfig;
-export const AppsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+const AppsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "id",
@@ -2010,7 +1454,7 @@ export const AppsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type UpdateAppResponse = AppsUpdateResult;
-export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
   AppsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UpdateAppResponse" }) as any as S.Schema<UpdateAppResponse>;
 

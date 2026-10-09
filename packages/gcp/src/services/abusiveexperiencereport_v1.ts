@@ -39,7 +39,7 @@ export interface GetSitesRequest {
   /** Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}` */
   name: string;
 }
-export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -52,10 +52,10 @@ export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSitesRequest" }) as any as S.Schema<GetSitesRequest>;
 
 export type SiteSummaryResponseAbusiveStatusEnum = "UNKNOWN" | "PASSING" | "FAILING";
-export const SiteSummaryResponseAbusiveStatusEnum = S.String;
+const SiteSummaryResponseAbusiveStatusEnum = S.String;
 
 export type SiteSummaryResponseFilterStatusEnum = "UNKNOWN" | "ON" | "OFF" | "PAUSED" | "PENDING";
-export const SiteSummaryResponseFilterStatusEnum = S.String;
+const SiteSummaryResponseFilterStatusEnum = S.String;
 
 /** Response message for GetSiteSummary. */
 export interface SiteSummaryResponse {
@@ -74,7 +74,7 @@ export interface SiteSummaryResponse {
   /** Whether the site is currently under review. */
   underReview?: boolean;
 }
-export const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportUrl: S.optional(S.String),
     enforcementTime: S.optional(S.String),
@@ -87,7 +87,7 @@ export const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteSummaryResponse" }) as any as S.Schema<SiteSummaryResponse>;
 
 export interface ListViolatingSitesRequest {}
-export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -100,7 +100,7 @@ export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViolatingSitesRequest>;
 
 export type SiteSummaryResponseList = Array<SiteSummaryResponse>;
-export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
+const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
   SiteSummaryResponse,
 ) as any as S.Schema<SiteSummaryResponseList>;
 
@@ -109,7 +109,7 @@ export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: SiteSummaryResponseList;
 }
-export const ViolatingSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ViolatingSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     violatingSites: S.optional(SiteSummaryResponseList),
   }),

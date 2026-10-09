@@ -61,7 +61,7 @@ export interface CreateDetectionRequest {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
-export const CreateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     password: S.optional(S.String),
@@ -84,7 +84,7 @@ export interface CreateDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const CreateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     password: S.optional(S.NullOr(S.String)),
@@ -98,7 +98,7 @@ export interface CreateLeakedCredentialCheckRequest {
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean;
 }
-export const CreateLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -112,7 +112,7 @@ export interface CreateLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean | null;
 }
-export const CreateLeakedCredentialCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLeakedCredentialCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
   }),
@@ -126,7 +126,7 @@ export interface DeleteDetectionRequest {
   /** Defines the unique ID for this custom detection. */
   detectionId: string;
 }
-export const DeleteDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     detectionId: S.String.pipe(T.Label("detection_id")),
@@ -140,7 +140,7 @@ export const DeleteDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDetectionRequest" }) as any as S.Schema<DeleteDetectionRequest>;
 
 export type DeleteDetectionResponse = unknown;
-export const DeleteDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDetectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "DeleteDetectionResponse" }) as any as S.Schema<DeleteDetectionResponse>;
 
@@ -150,7 +150,7 @@ export interface GetDetectionRequest {
   /** Defines the unique ID for this custom detection. */
   detectionId: string;
 }
-export const GetDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     detectionId: S.String.pipe(T.Label("detection_id")),
@@ -172,14 +172,13 @@ export interface GetDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const GetDetectionResponse =
-  CreateDetectionResponse as any as S.Schema<GetDetectionResponse>;
+const GetDetectionResponse = CreateDetectionResponse as any as S.Schema<GetDetectionResponse>;
 
 export interface GetLeakedCredentialCheckRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const GetLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/leaked-credential-checks", code: 200 })),
@@ -192,14 +191,14 @@ export interface GetLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean | null;
 }
-export const GetLeakedCredentialCheckResponse =
+const GetLeakedCredentialCheckResponse =
   CreateLeakedCredentialCheckResponse as any as S.Schema<GetLeakedCredentialCheckResponse>;
 
 export interface ListDetectionsRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const ListDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -219,11 +218,11 @@ export interface DetectionsListResultItem {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const DetectionsListResultItem =
+const DetectionsListResultItem =
   CreateDetectionResponse as any as S.Schema<DetectionsListResultItem>;
 
 export type DetectionsListResultList = Array<DetectionsListResultItem>;
-export const DetectionsListResultList = /*@__PURE__*/ S.Array(
+const DetectionsListResultList = /*@__PURE__*/ S.Array(
   DetectionsListResultItem,
 ) as any as S.Schema<DetectionsListResultList>;
 
@@ -233,7 +232,7 @@ export interface ListDetectionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDetectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDetectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DetectionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -250,7 +249,7 @@ export interface UpdateDetectionRequest {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
-export const UpdateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     detectionId: S.String.pipe(T.Label("detection_id")),
@@ -274,8 +273,7 @@ export interface UpdateDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const UpdateDetectionResponse =
-  CreateDetectionResponse as any as S.Schema<UpdateDetectionResponse>;
+const UpdateDetectionResponse = CreateDetectionResponse as any as S.Schema<UpdateDetectionResponse>;
 
 export type CreateDetectionError =
   | DetectionQuotaExceeded

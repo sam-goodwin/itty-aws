@@ -46,27 +46,27 @@ export class UnprocessableEntity
 
 /** Scope the report to these ad campaigns (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adGroupIds`, and `adIds`. */
 export type GetAdReportRequestAdCampaignIdsList = Array<string>;
-export const GetAdReportRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
+const GetAdReportRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAdReportRequestAdCampaignIdsList>;
 
 /** Scope the report to these ad groups (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adCampaignIds`, and `adIds`. */
 export type GetAdReportRequestAdGroupIdsList = Array<string>;
-export const GetAdReportRequestAdGroupIdsList =
+const GetAdReportRequestAdGroupIdsList =
   GetAdReportRequestAdCampaignIdsList as any as S.Schema<GetAdReportRequestAdGroupIdsList>;
 
 /** Scope the report to these ads (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adCampaignIds`, and `adGroupIds`. */
 export type GetAdReportRequestAdIdsList = Array<string>;
-export const GetAdReportRequestAdIdsList =
+const GetAdReportRequestAdIdsList =
   GetAdReportRequestAdCampaignIdsList as any as S.Schema<GetAdReportRequestAdIdsList>;
 
 /** Entity level to group an ad report by. */
 export type AdReportBreakdownLevels = "campaign" | "ad_group" | "ad";
-export const AdReportBreakdownLevels = S.String;
+const AdReportBreakdownLevels = S.String;
 
 /** Bucket size for external ad stat rows. */
 export type Granularities = "hourly" | "daily" | "weekly" | "monthly";
-export const Granularities = S.String;
+const Granularities = S.String;
 
 export interface GetAdReportRequest {
   ad_campaign_ids?: GetAdReportRequestAdCampaignIdsList;
@@ -79,7 +79,7 @@ export interface GetAdReportRequest {
   granularity?: Granularities | (string & {});
   to: string;
 }
-export const GetAdReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ad_campaign_ids: S.optional(GetAdReportRequestAdCampaignIdsList.pipe(T.Query())),
     ad_group_ids: S.optional(GetAdReportRequestAdGroupIdsList.pipe(T.Query())),
@@ -129,7 +129,7 @@ export type ResultLabelKeys =
   | "website_find_locations"
   | "website_product_customizations"
   | "custom";
-export const ResultLabelKeys = S.String;
+const ResultLabelKeys = S.String;
 
 /** The available currencies on the platform */
 export type Currencies =
@@ -223,7 +223,7 @@ export type Currencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const Currencies = S.String;
+const Currencies = S.String;
 
 /** Per-bucket ad performance for an ad campaign, ad group, or ad. Bucket grain is set by the `ad_report` query's `granularity` argument. */
 export interface AdReportBreakdownItemGranularityItem {
@@ -252,7 +252,7 @@ export interface AdReportBreakdownItemGranularityItem {
   /** Hour of the day in the ad account's reporting timezone (0-23). `null` for daily rows. */
   stat_hour: number | null;
 }
-export const AdReportBreakdownItemGranularityItem = /*@__PURE__*/ S.suspend(() =>
+const AdReportBreakdownItemGranularityItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     clicks: S.Number,
@@ -273,7 +273,7 @@ export const AdReportBreakdownItemGranularityItem = /*@__PURE__*/ S.suspend(() =
 
 /** Per-bucket time series for this entity over the date range, ordered ascending by `bucketStart`. `null` when the `granularity` arg on `adReport` is omitted; otherwise contains rows at the requested grain (`daily` or `hourly`). */
 export type AdReportBreakdownItemGranularityList = Array<AdReportBreakdownItemGranularityItem>;
-export const AdReportBreakdownItemGranularityList = /*@__PURE__*/ S.Array(
+const AdReportBreakdownItemGranularityList = /*@__PURE__*/ S.Array(
   AdReportBreakdownItemGranularityItem,
 ) as any as S.Schema<AdReportBreakdownItemGranularityList>;
 
@@ -308,7 +308,7 @@ export interface AdReportBreakdownItemSummary {
   /** Currency of the `spend` value. Matches the requested `currency` when set. */
   spend_currency: Currencies | null;
 }
-export const AdReportBreakdownItemSummary = /*@__PURE__*/ S.suspend(() =>
+const AdReportBreakdownItemSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     click_through_rate: S.Number,
     clicks: S.Number,
@@ -342,7 +342,7 @@ export interface AdReportBreakdownItem {
   /** Aggregate totals and rates for this entity over the date range. */
   summary: AdReportBreakdownItemSummary;
 }
-export const AdReportBreakdownItem = /*@__PURE__*/ S.suspend(() =>
+const AdReportBreakdownItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     granularity: S.NullOr(AdReportBreakdownItemGranularityList),
     id: S.String,
@@ -354,23 +354,19 @@ export const AdReportBreakdownItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-entity rows over the date range. `null` when the `breakdown` arg on `adReport` is omitted; otherwise contains one row per ad campaign, ad group, or ad inside the requested scope at the requested level. */
 export type AdReportBreakdownList = Array<AdReportBreakdownItem>;
-export const AdReportBreakdownList = /*@__PURE__*/ S.Array(
+const AdReportBreakdownList = /*@__PURE__*/ S.Array(
   AdReportBreakdownItem,
 ) as any as S.Schema<AdReportBreakdownList>;
 
 /** Per-bucket ad performance for an ad campaign, ad group, or ad. Bucket grain is set by the `ad_report` query's `granularity` argument. */
 export type AdReportGranularityItem = AdReportBreakdownItemGranularityItem;
-export const AdReportGranularityItem = AdReportBreakdownItemGranularityItem;
-
 /** Per-bucket time series over the date range, ordered ascending by `bucketStart`. `null` when the `granularity` arg on `adReport` is omitted; otherwise contains rows at the requested grain (`daily` or `hourly`). */
 export type AdReportGranularityList = Array<AdReportBreakdownItemGranularityItem>;
-export const AdReportGranularityList =
+const AdReportGranularityList =
   AdReportBreakdownItemGranularityList as any as S.Schema<AdReportGranularityList>;
 
 /** Aggregate totals and rates over the date range. */
 export type AdReportSummary = AdReportBreakdownItemSummary;
-export const AdReportSummary = AdReportBreakdownItemSummary;
-
 /** An ads performance report. Always returns a summary. The `granularity` field contains a per-bucket time series when the `granularity` arg is set; the `breakdown` field contains per-entity rows when the `breakdown` arg is set. */
 export interface AdReport {
   /** Per-entity rows over the date range. `null` when the `breakdown` arg on `adReport` is omitted; otherwise contains one row per ad campaign, ad group, or ad inside the requested scope at the requested level. */
@@ -380,7 +376,7 @@ export interface AdReport {
   /** Aggregate totals and rates over the date range. */
   summary: AdReportBreakdownItemSummary;
 }
-export const AdReport = /*@__PURE__*/ S.suspend(() =>
+const AdReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     breakdown: S.NullOr(AdReportBreakdownList),
     granularity: S.NullOr(AdReportGranularityList),

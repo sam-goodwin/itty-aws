@@ -46,7 +46,7 @@ export class UnprocessableEntity
 
 /** An array of permission scopes to grant to the access token. If empty or omitted, all permissions from the authenticating credential are inherited. Must be a subset of the credential's permissions. */
 export type CreateAccessTokenRequestScopedActionsList = Array<string>;
-export const CreateAccessTokenRequestScopedActionsList = /*@__PURE__*/ S.Array(
+const CreateAccessTokenRequestScopedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAccessTokenRequestScopedActionsList>;
 
@@ -60,7 +60,7 @@ export interface CreateAccessTokenRequest {
   /** The unique identifier of the user to generate the token for, starting with 'user_'. The API key must have permission to access this user. */
   user_id?: string | null;
 }
-export const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.NullOr(S.String)),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -76,7 +76,7 @@ export interface AccessToken {
   /** The signed JWT access token string to include in API request Authorization headers. */
   token: string;
 }
-export const AccessToken = /*@__PURE__*/ S.suspend(() =>
+const AccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expires_at: S.String,
     token: S.String,

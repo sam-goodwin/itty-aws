@@ -37,11 +37,11 @@ export class NotFound
 
 /** * `collection` - Collection * `filters` - Filters */
 export type SessionRecordingPlaylistPlaylistTypeEnum = "collection" | "filters";
-export const SessionRecordingPlaylistPlaylistTypeEnum = S.String;
+const SessionRecordingPlaylistPlaylistTypeEnum = S.String;
 
 /** * `new` - new * `pin` - pin * `duplicate` - duplicate */
 export type SessionRecordingPlaylistCreationMethodEnum = "new" | "pin" | "duplicate";
-export const SessionRecordingPlaylistCreationMethodEnum = S.String;
+const SessionRecordingPlaylistCreationMethodEnum = S.String;
 
 export interface CreateSessionRecordingPlaylistRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -63,7 +63,7 @@ export interface CreateSessionRecordingPlaylistRequest {
   /** How the PostHog app created the playlist, for product analytics. Not stored. * `new` - new * `pin` - pin * `duplicate` - duplicate */
   creation_method?: SessionRecordingPlaylistCreationMethodEnum | (string & {});
 }
-export const CreateSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -87,7 +87,7 @@ export const CreateSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateSessionRecordingPlaylistRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -103,14 +103,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -123,7 +118,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -138,13 +133,13 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type SessionRecordingPlaylistOutputRecordingsCountsValueValue = number | boolean;
-export const SessionRecordingPlaylistOutputRecordingsCountsValueValue =
+const SessionRecordingPlaylistOutputRecordingsCountsValueValue =
   S.Unknown as any as S.Schema<SessionRecordingPlaylistOutputRecordingsCountsValueValue>;
 
 export type SessionRecordingPlaylistOutputRecordingsCountsValueMap = {
   [key: string]: SessionRecordingPlaylistOutputRecordingsCountsValueValue | null | undefined;
 };
-export const SessionRecordingPlaylistOutputRecordingsCountsValueMap = /*@__PURE__*/ S.Record(
+const SessionRecordingPlaylistOutputRecordingsCountsValueMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(SessionRecordingPlaylistOutputRecordingsCountsValueValue),
 ) as any as S.Schema<SessionRecordingPlaylistOutputRecordingsCountsValueMap>;
@@ -152,7 +147,7 @@ export const SessionRecordingPlaylistOutputRecordingsCountsValueMap = /*@__PURE_
 export type SessionRecordingPlaylistOutputRecordingsCountsMap = {
   [key: string]: SessionRecordingPlaylistOutputRecordingsCountsValueMap | undefined;
 };
-export const SessionRecordingPlaylistOutputRecordingsCountsMap = /*@__PURE__*/ S.Record(
+const SessionRecordingPlaylistOutputRecordingsCountsMap = /*@__PURE__*/ S.Record(
   S.String,
   SessionRecordingPlaylistOutputRecordingsCountsValueMap,
 ) as any as S.Schema<SessionRecordingPlaylistOutputRecordingsCountsMap>;
@@ -181,7 +176,7 @@ export interface SessionRecordingPlaylistOutput {
   /** Return whether this is a synthetic playlist */
   is_synthetic?: boolean;
 }
-export const SessionRecordingPlaylistOutput = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingPlaylistOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     short_id: S.optional(S.String),
@@ -225,7 +220,7 @@ export interface CreateSessionRecordingPlaylistsRecordingRequest {
   /** How the PostHog app created the playlist, for product analytics. Not stored. * `new` - new * `pin` - pin * `duplicate` - duplicate */
   creation_method?: SessionRecordingPlaylistCreationMethodEnum | (string & {});
 }
-export const CreateSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -251,7 +246,7 @@ export const CreateSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateSessionRecordingPlaylistsRecordingRequest>;
 
 export interface CreateSessionRecordingPlaylistsRecordingResponse {}
-export const CreateSessionRecordingPlaylistsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRecordingPlaylistsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateSessionRecordingPlaylistsRecordingResponse",
@@ -263,7 +258,7 @@ export interface GetSessionRecordingRequest {
   /** A UUID string identifying this session recording. */
   id: string;
 }
-export const GetSessionRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -279,12 +274,12 @@ export const GetSessionRecordingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSessionRecordingRequest>;
 
 export type SessionRecordingViewersList = Array<string>;
-export const SessionRecordingViewersList = /*@__PURE__*/ S.Array(
+const SessionRecordingViewersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionRecordingViewersList>;
 
 export type MinimalPersonDistinctIdsList = Array<string>;
-export const MinimalPersonDistinctIdsList =
+const MinimalPersonDistinctIdsList =
   SessionRecordingViewersList as any as S.Schema<MinimalPersonDistinctIdsList>;
 
 export interface MinimalPerson {
@@ -302,7 +297,7 @@ export interface MinimalPerson {
   /** Timestamp of the last event from this person, or null. */
   last_seen_at?: string | null;
 }
-export const MinimalPerson = /*@__PURE__*/ S.suspend(() =>
+const MinimalPerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -315,13 +310,13 @@ export const MinimalPerson = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalPerson" }) as any as S.Schema<MinimalPerson>;
 
 export type SessionRecordingExternalReferencesItemMap = { [key: string]: unknown | undefined };
-export const SessionRecordingExternalReferencesItemMap =
+const SessionRecordingExternalReferencesItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<SessionRecordingExternalReferencesItemMap>;
 
 /** Load external references (linked issues) for this recording */
 export type SessionRecordingExternalReferencesList =
   Array<SessionRecordingExternalReferencesItemMap>;
-export const SessionRecordingExternalReferencesList = /*@__PURE__*/ S.Array(
+const SessionRecordingExternalReferencesList = /*@__PURE__*/ S.Array(
   SessionRecordingExternalReferencesItemMap,
 ) as any as S.Schema<SessionRecordingExternalReferencesList>;
 
@@ -359,7 +354,7 @@ export interface SessionRecording {
   /** Number of captured rrweb events in the recording. Only populated when the recording's metadata is loaded, e.g. on retrieve; null in list responses. */
   event_count?: number | null;
 }
-export const SessionRecording = /*@__PURE__*/ S.suspend(() =>
+const SessionRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     distinct_id: S.optional(S.NullOr(S.String)),
@@ -397,7 +392,7 @@ export interface GetSessionRecordingPlaylistRequest {
   project_id: string;
   short_id: string;
 }
-export const GetSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -417,7 +412,7 @@ export interface GetSessionRecordingPlaylistsRecordingRequest {
   project_id: string;
   short_id: string;
 }
-export const GetSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -433,7 +428,7 @@ export const GetSessionRecordingPlaylistsRecordingRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetSessionRecordingPlaylistsRecordingRequest>;
 
 export interface GetSessionRecordingPlaylistsRecordingResponse {}
-export const GetSessionRecordingPlaylistsRecordingResponse =
+const GetSessionRecordingPlaylistsRecordingResponse =
   CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<GetSessionRecordingPlaylistsRecordingResponse>;
 
 export interface ListSessionRecordingPlaylistsRequest {
@@ -446,7 +441,7 @@ export interface ListSessionRecordingPlaylistsRequest {
   offset?: number;
   short_id?: string;
 }
-export const ListSessionRecordingPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionRecordingPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.Number.pipe(T.Query())),
@@ -466,7 +461,7 @@ export const ListSessionRecordingPlaylistsRequest = /*@__PURE__*/ S.suspend(() =
 
 export type PaginatedSessionRecordingPlaylistListOutputResultsList =
   Array<SessionRecordingPlaylistOutput>;
-export const PaginatedSessionRecordingPlaylistListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSessionRecordingPlaylistListOutputResultsList = /*@__PURE__*/ S.Array(
   SessionRecordingPlaylistOutput,
 ) as any as S.Schema<PaginatedSessionRecordingPlaylistListOutputResultsList>;
 
@@ -476,7 +471,7 @@ export interface PaginatedSessionRecordingPlaylistListOutput {
   previous?: string | null;
   results?: PaginatedSessionRecordingPlaylistListOutputResultsList;
 }
-export const PaginatedSessionRecordingPlaylistListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSessionRecordingPlaylistListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -495,7 +490,7 @@ export interface ListSessionRecordingsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSessionRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -508,7 +503,7 @@ export const ListSessionRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSessionRecordingsRequest>;
 
 export type PaginatedSessionRecordingListResultsList = Array<SessionRecording>;
-export const PaginatedSessionRecordingListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSessionRecordingListResultsList = /*@__PURE__*/ S.Array(
   SessionRecording,
 ) as any as S.Schema<PaginatedSessionRecordingListResultsList>;
 
@@ -518,7 +513,7 @@ export interface PaginatedSessionRecordingList {
   previous?: string | null;
   results?: PaginatedSessionRecordingListResultsList;
 }
-export const PaginatedSessionRecordingList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSessionRecordingList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -534,7 +529,7 @@ export interface SessionRecordingPlaylistsDestroyRequest {
   project_id: string;
   short_id: string;
 }
-export const SessionRecordingPlaylistsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingPlaylistsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -550,7 +545,7 @@ export const SessionRecordingPlaylistsDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SessionRecordingPlaylistsDestroyRequest>;
 
 export interface SessionRecordingPlaylistsDestroyResponse {}
-export const SessionRecordingPlaylistsDestroyResponse =
+const SessionRecordingPlaylistsDestroyResponse =
   CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<SessionRecordingPlaylistsDestroyResponse>;
 
 export interface SessionRecordingPlaylistsRecordingsDestroyRequest {
@@ -559,7 +554,7 @@ export interface SessionRecordingPlaylistsRecordingsDestroyRequest {
   short_id: string;
   session_recording_id: string;
 }
-export const SessionRecordingPlaylistsRecordingsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingPlaylistsRecordingsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -576,15 +571,14 @@ export const SessionRecordingPlaylistsRecordingsDestroyRequest = /*@__PURE__*/ S
 }) as any as S.Schema<SessionRecordingPlaylistsRecordingsDestroyRequest>;
 
 export interface SessionRecordingPlaylistsRecordingsDestroyResponse {}
-export const SessionRecordingPlaylistsRecordingsDestroyResponse =
+const SessionRecordingPlaylistsRecordingsDestroyResponse =
   CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<SessionRecordingPlaylistsRecordingsDestroyResponse>;
 
 /** Session IDs of the recordings to delete (max 100 per call). */
 export type SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList = Array<string>;
-export const SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList>;
+const SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList>;
 
 export interface SessionRecordingsBulkDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -594,7 +588,7 @@ export interface SessionRecordingsBulkDeleteCreateRequest {
   /** Earliest start time of the recordings, as an ISO date or a relative offset like '-30d'. Providing this narrows the lookup and speeds up the request; defaults to the project's recording retention period. */
   date_from?: string | null;
 }
-export const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     session_recording_ids: SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList,
@@ -612,7 +606,7 @@ export const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** Session IDs that were found but could not be deleted. These can be retried. */
 export type SessionRecordingBulkDeleteResponseFailedIdsList = Array<string>;
-export const SessionRecordingBulkDeleteResponseFailedIdsList =
+const SessionRecordingBulkDeleteResponseFailedIdsList =
   SessionRecordingViewersList as any as S.Schema<SessionRecordingBulkDeleteResponseFailedIdsList>;
 
 export interface SessionRecordingBulkDeleteResponse {
@@ -625,7 +619,7 @@ export interface SessionRecordingBulkDeleteResponse {
   /** Session IDs that were found but could not be deleted. These can be retried. */
   failed_ids: SessionRecordingBulkDeleteResponseFailedIdsList;
 }
-export const SessionRecordingBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     deleted_count: S.Number,
@@ -642,7 +636,7 @@ export interface SessionRecordingsDestroyRequest {
   /** A UUID string identifying this session recording. */
   id: string;
 }
-export const SessionRecordingsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -658,14 +652,14 @@ export const SessionRecordingsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionRecordingsDestroyRequest>;
 
 export interface SessionRecordingsDestroyResponse {}
-export const SessionRecordingsDestroyResponse =
+const SessionRecordingsDestroyResponse =
   CreateSessionRecordingPlaylistsRecordingResponse as any as S.Schema<SessionRecordingsDestroyResponse>;
 
 export interface MinimalPersonInput {
   /** Key-value map of person properties set via $set and $set_once operations. */
   properties?: unknown;
 }
-export const MinimalPersonInput = /*@__PURE__*/ S.suspend(() =>
+const MinimalPersonInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(S.Unknown),
   }),
@@ -678,7 +672,7 @@ export interface UpdateSessionRecordingRequest {
   id: string;
   person?: MinimalPersonInput;
 }
-export const UpdateSessionRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSessionRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -715,7 +709,7 @@ export interface UpdateSessionRecordingPlaylistRequest {
   /** How the PostHog app created the playlist, for product analytics. Not stored. * `new` - new * `pin` - pin * `duplicate` - duplicate */
   creation_method?: SessionRecordingPlaylistCreationMethodEnum | (string & {});
 }
-export const UpdateSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSessionRecordingPlaylistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -760,7 +754,7 @@ export interface UpdateSessionRecordingPlaylistsPartialRequest {
   /** How the PostHog app created the playlist, for product analytics. Not stored. * `new` - new * `pin` - pin * `duplicate` - duplicate */
   creation_method?: SessionRecordingPlaylistCreationMethodEnum | (string & {});
 }
-export const UpdateSessionRecordingPlaylistsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSessionRecordingPlaylistsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -791,7 +785,7 @@ export interface UpdateSessionRecordingsPartialRequest {
   id: string;
   person?: MinimalPersonInput;
 }
-export const UpdateSessionRecordingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSessionRecordingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

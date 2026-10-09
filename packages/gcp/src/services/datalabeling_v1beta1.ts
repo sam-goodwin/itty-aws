@@ -65,7 +65,7 @@ export interface CancelProjectsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,12 +81,12 @@ export const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`. */
 export interface GoogleCloudDatalabelingV1beta1AnnotationSpec {
@@ -97,7 +97,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /** Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long. */
   description?: string;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotationSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     index: S.optional(S.Number),
@@ -109,7 +109,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotationSpec = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecList =
   Array<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
-export const GoogleCloudDatalabelingV1beta1AnnotationSpecList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1AnnotationSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1AnnotationSpec,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecList>;
 
@@ -126,7 +126,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
   /** Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task. */
   annotationSpecs?: GoogleCloudDatalabelingV1beta1AnnotationSpecList;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotationSpecSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockingResources: S.optional(StringList),
     displayName: S.optional(S.String),
@@ -143,11 +143,10 @@ export interface GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest {
   /** Required. Annotation spec set to create. Annotation specs must be included. Only one annotation spec will be accepted for annotation specs with same display_name. */
   annotationSpecSet?: GoogleCloudDatalabelingV1beta1AnnotationSpecSet;
 }
-export const GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpecSet: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSet),
-    }),
+const GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationSpecSet: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSet),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest>;
@@ -158,7 +157,7 @@ export interface CreateProjectsAnnotationSpecSetsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest;
 }
-export const CreateProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -181,14 +180,14 @@ export type GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum =
   | "VIDEO"
   | "TEXT"
   | "GENERAL_DATA";
-export const GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for the text. */
 export interface GoogleCloudDatalabelingV1beta1TextMetadata {
   /** The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. */
   languageCode?: string;
 }
-export const GoogleCloudDatalabelingV1beta1TextMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1TextMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
   }),
@@ -201,7 +200,7 @@ export interface GoogleCloudDatalabelingV1beta1ClassificationMetadata {
   /** Whether the classification task is multi-label or not. */
   isMultiLabel?: boolean;
 }
-export const GoogleCloudDatalabelingV1beta1ClassificationMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ClassificationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isMultiLabel: S.optional(S.Boolean),
   }),
@@ -214,7 +213,7 @@ export interface GoogleCloudDatalabelingV1beta1BigQuerySource {
   /** Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema). */
   inputUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1BigQuerySource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1BigQuerySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputUri: S.optional(S.String),
   }),
@@ -229,7 +228,7 @@ export interface GoogleCloudDatalabelingV1beta1GcsSource {
   /** Required. The format of the source file. Only "text/csv" is supported. */
   mimeType?: string;
 }
-export const GoogleCloudDatalabelingV1beta1GcsSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1GcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputUri: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -253,7 +252,7 @@ export type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
   | "GENERAL_CLASSIFICATION_ANNOTATION";
-export const GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of input data, including data type, location, etc. */
 export interface GoogleCloudDatalabelingV1beta1InputConfig {
@@ -270,7 +269,7 @@ export interface GoogleCloudDatalabelingV1beta1InputConfig {
   /** Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob. */
   annotationType?: GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum | (string & {});
 }
-export const GoogleCloudDatalabelingV1beta1InputConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1InputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataType: S.optional(GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum),
     textMetadata: S.optional(GoogleCloudDatalabelingV1beta1TextMetadata),
@@ -285,7 +284,7 @@ export const GoogleCloudDatalabelingV1beta1InputConfig = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDatalabelingV1beta1InputConfigList =
   Array<GoogleCloudDatalabelingV1beta1InputConfig>;
-export const GoogleCloudDatalabelingV1beta1InputConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1InputConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1InputConfig,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1InputConfigList>;
 
@@ -308,7 +307,7 @@ export interface GoogleCloudDatalabelingV1beta1Dataset {
   /** Output only. The names of any related resources that are blocking changes to the dataset. */
   blockingResources?: StringList;
 }
-export const GoogleCloudDatalabelingV1beta1Dataset = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     dataItemCount: S.optional(S.String),
@@ -328,7 +327,7 @@ export interface GoogleCloudDatalabelingV1beta1CreateDatasetRequest {
   /** Required. The dataset to be created. */
   dataset?: GoogleCloudDatalabelingV1beta1Dataset;
 }
-export const GoogleCloudDatalabelingV1beta1CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(GoogleCloudDatalabelingV1beta1Dataset),
   }),
@@ -342,7 +341,7 @@ export interface CreateProjectsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateDatasetRequest;
 }
-export const CreateProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1CreateDatasetRequest.pipe(T.HttpBody())),
@@ -359,7 +358,7 @@ export const CreateProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata describing the feedback from the operator. */
 export interface GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {}
-export const GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata",
@@ -368,9 +367,6 @@ export const GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata = /*@__PURE_
 /** Metadata describing the feedback from the labeling task requester. */
 export type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata =
   GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
-export const GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata =
-  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
-
 /** A feedback message inside a feedback thread. */
 export interface GoogleCloudDatalabelingV1beta1FeedbackMessage {
   /** Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}' */
@@ -384,7 +380,7 @@ export interface GoogleCloudDatalabelingV1beta1FeedbackMessage {
   /** String content of the feedback. Maximum of 10000 characters. */
   body?: string;
 }
-export const GoogleCloudDatalabelingV1beta1FeedbackMessage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1FeedbackMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     operatorFeedbackMetadata: S.optional(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata),
@@ -403,7 +399,7 @@ export interface CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackM
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1FeedbackMessage;
 }
-export const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -420,15 +416,10 @@ export const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   }) as any as S.Schema<CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -439,7 +430,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -462,7 +453,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     error: S.optional(GoogleRpcStatus),
@@ -480,10 +471,10 @@ export type GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum =
   | "RUNNING"
   | "PAUSED"
   | "STOPPED";
-export const GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
-export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
+const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
 
@@ -493,7 +484,7 @@ export interface GoogleCloudDatalabelingV1beta1Attempt {
   partialFailures?: GoogleRpcStatusList;
   attemptTime?: string;
 }
-export const GoogleCloudDatalabelingV1beta1Attempt = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Attempt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partialFailures: S.optional(GoogleRpcStatusList),
     attemptTime: S.optional(S.String),
@@ -504,7 +495,7 @@ export const GoogleCloudDatalabelingV1beta1Attempt = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudDatalabelingV1beta1AttemptList =
   Array<GoogleCloudDatalabelingV1beta1Attempt>;
-export const GoogleCloudDatalabelingV1beta1AttemptList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1AttemptList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Attempt,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AttemptList>;
 
@@ -529,7 +520,7 @@ export interface GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
   /** Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`. */
   labelGroup?: string;
 }
-export const GoogleCloudDatalabelingV1beta1HumanAnnotationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1HumanAnnotationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     annotatedDatasetDisplayName: S.optional(S.String),
@@ -546,7 +537,7 @@ export const GoogleCloudDatalabelingV1beta1HumanAnnotationConfig = /*@__PURE__*/
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1HumanAnnotationConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Provides details for how an evaluation job sends email alerts based on the results of a run. */
 export interface GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
@@ -555,7 +546,7 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   /** Required. An email address to send alerts to. */
   email?: string;
 }
-export const GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minAcceptableMeanAveragePrecision: S.optional(S.Number),
     email: S.optional(S.String),
@@ -571,7 +562,7 @@ export interface GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
   /** Optional. Instruction message showed on contributors UI. */
   instructionMessage?: string;
 }
-export const GoogleCloudDatalabelingV1beta1BoundingPolyConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1BoundingPolyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSpecSet: S.optional(S.String),
     instructionMessage: S.optional(S.String),
@@ -585,7 +576,7 @@ export interface GoogleCloudDatalabelingV1beta1SentimentConfig {
   /** If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false. */
   enableLabelSentimentSelection?: boolean;
 }
-export const GoogleCloudDatalabelingV1beta1SentimentConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1SentimentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableLabelSentimentSelection: S.optional(S.Boolean),
   }),
@@ -602,7 +593,7 @@ export interface GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /** Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment. */
   allowMultiLabel?: boolean;
 }
-export const GoogleCloudDatalabelingV1beta1TextClassificationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1TextClassificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sentimentConfig: S.optional(GoogleCloudDatalabelingV1beta1SentimentConfig),
     annotationSpecSet: S.optional(S.String),
@@ -617,7 +608,7 @@ export type GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggrega
   | "MAJORITY_VOTE"
   | "UNANIMOUS_VOTE"
   | "NO_AGGREGATION";
-export const GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum =
+const GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
 /** Config for image classification human labeling task. */
@@ -631,7 +622,7 @@ export interface GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
     | GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum
     | (string & {});
 }
-export const GoogleCloudDatalabelingV1beta1ImageClassificationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ImageClassificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSpecSet: S.optional(S.String),
     allowMultiLabel: S.optional(S.Boolean),
@@ -648,11 +639,10 @@ export interface GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
   /** Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1. */
   iouThreshold?: number;
 }
-export const GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      iouThreshold: S.optional(S.Number),
-    }),
+const GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iouThreshold: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions>;
@@ -662,7 +652,7 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationConfig {
   /** Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes. */
   boundingBoxEvaluationOptions?: GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions;
 }
-export const GoogleCloudDatalabelingV1beta1EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boundingBoxEvaluationOptions: S.optional(
       GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions,
@@ -695,7 +685,7 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
   /** Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration. */
   evaluationConfig?: GoogleCloudDatalabelingV1beta1EvaluationConfig;
 }
-export const GoogleCloudDatalabelingV1beta1EvaluationJobConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1EvaluationJobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     humanAnnotationConfig: S.optional(GoogleCloudDatalabelingV1beta1HumanAnnotationConfig),
     bigqueryImportKeys: S.optional(StringMap),
@@ -735,7 +725,7 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJob {
   /** Output only. Timestamp of when this evaluation job was created. */
   createTime?: string;
 }
-export const GoogleCloudDatalabelingV1beta1EvaluationJob = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1EvaluationJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     state: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum),
@@ -757,11 +747,10 @@ export interface GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest {
   /** Required. The evaluation job to create. */
   job?: GoogleCloudDatalabelingV1beta1EvaluationJob;
 }
-export const GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      job: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJob),
-    }),
+const GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    job: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJob),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest>;
@@ -772,7 +761,7 @@ export interface CreateProjectsEvaluationJobsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest;
 }
-export const CreateProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.pipe(T.HttpBody())),
@@ -792,7 +781,7 @@ export interface GoogleCloudDatalabelingV1beta1CsvInstruction {
   /** CSV file for the instruction. Only gcs path is allowed. */
   gcsFileUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1CsvInstruction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1CsvInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsFileUri: S.optional(S.String),
   }),
@@ -806,14 +795,14 @@ export type GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum =
   | "VIDEO"
   | "TEXT"
   | "GENERAL_DATA";
-export const GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Instruction from a PDF file. */
 export interface GoogleCloudDatalabelingV1beta1PdfInstruction {
   /** PDF file for the instruction. Only gcs path is allowed. */
   gcsFileUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1PdfInstruction =
+const GoogleCloudDatalabelingV1beta1PdfInstruction =
   GoogleCloudDatalabelingV1beta1CsvInstruction as any as S.Schema<GoogleCloudDatalabelingV1beta1PdfInstruction>;
 
 /** Instruction of how to perform the labeling task for human operators. Currently only PDF instruction is supported. */
@@ -837,7 +826,7 @@ export interface GoogleCloudDatalabelingV1beta1Instruction {
   /** Output only. Last update time of instruction. */
   updateTime?: string;
 }
-export const GoogleCloudDatalabelingV1beta1Instruction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Instruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csvInstruction: S.optional(GoogleCloudDatalabelingV1beta1CsvInstruction),
     displayName: S.optional(S.String),
@@ -858,7 +847,7 @@ export interface GoogleCloudDatalabelingV1beta1CreateInstructionRequest {
   /** Required. Instruction of how to perform the labeling task. */
   instruction?: GoogleCloudDatalabelingV1beta1Instruction;
 }
-export const GoogleCloudDatalabelingV1beta1CreateInstructionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1CreateInstructionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instruction: S.optional(GoogleCloudDatalabelingV1beta1Instruction),
   }),
@@ -872,7 +861,7 @@ export interface CreateProjectsInstructionsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateInstructionRequest;
 }
-export const CreateProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1CreateInstructionRequest.pipe(T.HttpBody())),
@@ -891,7 +880,7 @@ export interface DeleteProjectsAnnotationSpecSetsRequest {
   /** Required. AnnotationSpec resource name, format: `projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}`. */
   name: string;
 }
-export const DeleteProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -909,7 +898,7 @@ export interface DeleteProjectsDatasetsRequest {
   /** Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} */
   name: string;
 }
-export const DeleteProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -927,7 +916,7 @@ export interface DeleteProjectsDatasetsAnnotatedDatasetsRequest {
   /** Required. Name of the annotated dataset to delete, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id} */
   name: string;
 }
-export const DeleteProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -945,26 +934,25 @@ export interface DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Required. Name of the FeedbackThread that is going to be deleted. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'. */
   name: string;
 }
-export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datalabeling.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest",
-  }) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
+const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://datalabeling.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest",
+}) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
 
 export interface DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
   /** Required. Name of the FeedbackMessage that is going to be deleted. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'. */
   name: string;
 }
-export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -983,7 +971,7 @@ export interface DeleteProjectsEvaluationJobsRequest {
   /** Required. Name of the evaluation job that is going to be deleted. Format: "projects/{project_id}/evaluationJobs/{evaluation_job_id}" */
   name: string;
 }
-export const DeleteProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1001,7 +989,7 @@ export interface DeleteProjectsInstructionsRequest {
   /** Required. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id} */
   name: string;
 }
-export const DeleteProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1019,7 +1007,7 @@ export interface DeleteProjectsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1040,7 +1028,7 @@ export interface GoogleCloudDatalabelingV1beta1GcsDestination {
   /** Required. The output uri of destination file. */
   outputUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1GcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1GcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     outputUri: S.optional(S.String),
@@ -1054,7 +1042,7 @@ export interface GoogleCloudDatalabelingV1beta1GcsFolderDestination {
   /** Required. Cloud Storage directory to export data to. */
   outputFolderUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1GcsFolderDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1GcsFolderDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputFolderUri: S.optional(S.String),
   }),
@@ -1069,7 +1057,7 @@ export interface GoogleCloudDatalabelingV1beta1OutputConfig {
   /** Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs. */
   gcsFolderDestination?: GoogleCloudDatalabelingV1beta1GcsFolderDestination;
 }
-export const GoogleCloudDatalabelingV1beta1OutputConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1OutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsDestination: S.optional(GoogleCloudDatalabelingV1beta1GcsDestination),
     gcsFolderDestination: S.optional(GoogleCloudDatalabelingV1beta1GcsFolderDestination),
@@ -1089,7 +1077,7 @@ export interface GoogleCloudDatalabelingV1beta1ExportDataRequest {
   /** Required. Specify the output destination. */
   outputConfig?: GoogleCloudDatalabelingV1beta1OutputConfig;
 }
-export const GoogleCloudDatalabelingV1beta1ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmailAddress: S.optional(S.String),
     filter: S.optional(S.String),
@@ -1106,7 +1094,7 @@ export interface ExportDataProjectsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1ExportDataRequest;
 }
-export const ExportDataProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDataProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1ExportDataRequest.pipe(T.HttpBody())),
@@ -1125,7 +1113,7 @@ export interface GetProjectsAnnotationSpecSetsRequest {
   /** Required. AnnotationSpecSet resource name, format: projects/{project_id}/annotationSpecSets/{annotation_spec_set_id} */
   name: string;
 }
-export const GetProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1143,7 +1131,7 @@ export interface GetProjectsDatasetsRequest {
   /** Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} */
   name: string;
 }
-export const GetProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1161,7 +1149,7 @@ export interface GetProjectsDatasetsAnnotatedDatasetsRequest {
   /** Required. Name of the annotated dataset to get, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id} */
   name: string;
 }
-export const GetProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1178,9 +1166,6 @@ export const GetProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspe
 /** Config for image polyline human labeling task. */
 export type GoogleCloudDatalabelingV1beta1PolylineConfig =
   GoogleCloudDatalabelingV1beta1BoundingPolyConfig;
-export const GoogleCloudDatalabelingV1beta1PolylineConfig =
-  GoogleCloudDatalabelingV1beta1BoundingPolyConfig;
-
 /** Config for video event human labeling task. */
 export interface GoogleCloudDatalabelingV1beta1EventConfig {
   /** Videos will be cut to smaller clips to make it easier for labelers to work on. Users can configure is field in seconds, if not set, default value is 60s. */
@@ -1190,7 +1175,7 @@ export interface GoogleCloudDatalabelingV1beta1EventConfig {
   /** Required. The list of annotation spec set resource name. Similar to video classification, we support selecting event from multiple AnnotationSpecSet at the same time. */
   annotationSpecSets?: StringList;
 }
-export const GoogleCloudDatalabelingV1beta1EventConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1EventConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clipLength: S.optional(S.Number),
     overlapLength: S.optional(S.Number),
@@ -1205,11 +1190,10 @@ export interface GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig {
   /** Required. Annotation spec set resource name. */
   annotationSpecSet?: string;
 }
-export const GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpecSet: S.optional(S.String),
-    }),
+const GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationSpecSet: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig>;
@@ -1221,7 +1205,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig {
   /** Optional. If allow_multi_label is true, contributors are able to choose multiple labels from one annotation spec set. */
   allowMultiLabel?: boolean;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSpecSet: S.optional(S.String),
     allowMultiLabel: S.optional(S.Boolean),
@@ -1232,7 +1216,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig = /*@__PURE__
 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList =
   Array<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
-export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList>;
 
@@ -1243,7 +1227,7 @@ export interface GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
   /** Required. The list of annotation spec set configs. Since watching a video clip takes much longer time than an image, we support label with multiple AnnotationSpecSet at the same time. Labels in each AnnotationSpecSet will be shown in a group to contributors. Contributors can select one or more (depending on whether to allow multi label) from each group. */
   annotationSpecSetConfigs?: GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList;
 }
-export const GoogleCloudDatalabelingV1beta1VideoClassificationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1VideoClassificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyShotDetection: S.optional(S.Boolean),
     annotationSpecSetConfigs: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList),
@@ -1261,7 +1245,7 @@ export interface GoogleCloudDatalabelingV1beta1ObjectTrackingConfig {
   /** The overlap length between different video clips. Users can configure is field in seconds, if not set, default value is 0.3s. */
   overlapLength?: number;
 }
-export const GoogleCloudDatalabelingV1beta1ObjectTrackingConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ObjectTrackingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSpecSet: S.optional(S.String),
     clipLength: S.optional(S.Number),
@@ -1278,7 +1262,7 @@ export interface GoogleCloudDatalabelingV1beta1SegmentationConfig {
   /** Instruction message showed on labelers UI. */
   instructionMessage?: string;
 }
-export const GoogleCloudDatalabelingV1beta1SegmentationConfig =
+const GoogleCloudDatalabelingV1beta1SegmentationConfig =
   GoogleCloudDatalabelingV1beta1BoundingPolyConfig as any as S.Schema<GoogleCloudDatalabelingV1beta1SegmentationConfig>;
 
 /** Config for video object detection human labeling task. Object detection will be conducted on the images extracted from the video, and those objects will be labeled with bounding boxes. User need to specify the number of images to be extracted per second as the extraction frame rate. */
@@ -1288,7 +1272,7 @@ export interface GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
   /** Required. Annotation spec set resource name. */
   annotationSpecSet?: string;
 }
-export const GoogleCloudDatalabelingV1beta1ObjectDetectionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ObjectDetectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extractionFrameRate: S.optional(S.Number),
     annotationSpecSet: S.optional(S.String),
@@ -1322,7 +1306,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata {
   /** Configuration for video object detection task. */
   objectDetectionConfig?: GoogleCloudDatalabelingV1beta1ObjectDetectionConfig;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     polylineConfig: S.optional(GoogleCloudDatalabelingV1beta1BoundingPolyConfig),
     textClassificationConfig: S.optional(GoogleCloudDatalabelingV1beta1TextClassificationConfig),
@@ -1345,15 +1329,14 @@ export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata = /*@__PURE_
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
   | "ANNOTATION_SOURCE_UNSPECIFIED"
   | "OPERATOR";
-export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
-  /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum = /*@__PURE__*/ S.String;
 
 /** Statistics about annotation specs. */
 export interface GoogleCloudDatalabelingV1beta1LabelStats {
   /** Map of each annotation spec's example count. Key is the annotation spec name and value is the number of examples for that annotation spec. If the annotated dataset does not have annotation spec, the map will return a pair where the key is empty string and value is the total number of annotations. */
   exampleCount?: StringMap;
 }
-export const GoogleCloudDatalabelingV1beta1LabelStats = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1LabelStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exampleCount: S.optional(StringMap),
   }),
@@ -1376,8 +1359,7 @@ export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
   | "GENERAL_CLASSIFICATION_ANNOTATION";
-export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
-  /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** AnnotatedDataset is a set holding annotations for data in a Dataset. Each labeling task will generate an AnnotatedDataset under the Dataset that the task is requested for. */
 export interface GoogleCloudDatalabelingV1beta1AnnotatedDataset {
@@ -1404,7 +1386,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotatedDataset {
   /** Output only. Time the AnnotatedDataset was created. */
   createTime?: string;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotatedDataset = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotatedDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exampleCount: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1428,7 +1410,7 @@ export interface GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
   /** Required. The name of the data item to get, format: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id} */
   name: string;
 }
-export const GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1449,7 +1431,7 @@ export interface GoogleCloudDatalabelingV1beta1VideoThumbnail {
   /** Time offset relative to the beginning of the video, corresponding to the video frame where the thumbnail has been extracted from. */
   timeOffset?: string;
 }
-export const GoogleCloudDatalabelingV1beta1VideoThumbnail = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1VideoThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thumbnail: S.optional(S.String),
     timeOffset: S.optional(S.String),
@@ -1460,7 +1442,7 @@ export const GoogleCloudDatalabelingV1beta1VideoThumbnail = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDatalabelingV1beta1VideoThumbnailList =
   Array<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
-export const GoogleCloudDatalabelingV1beta1VideoThumbnailList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1VideoThumbnailList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1VideoThumbnail,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoThumbnailList>;
 
@@ -1477,7 +1459,7 @@ export interface GoogleCloudDatalabelingV1beta1VideoPayload {
   /** FPS of the video. */
   frameRate?: number;
 }
-export const GoogleCloudDatalabelingV1beta1VideoPayload = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1VideoPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     videoUri: S.optional(S.String),
@@ -1494,7 +1476,7 @@ export interface GoogleCloudDatalabelingV1beta1TextPayload {
   /** Text content. */
   textContent?: string;
 }
-export const GoogleCloudDatalabelingV1beta1TextPayload = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1TextPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textContent: S.optional(S.String),
   }),
@@ -1513,7 +1495,7 @@ export interface GoogleCloudDatalabelingV1beta1ImagePayload {
   /** Signed uri of the image file in the service bucket. */
   signedUri?: string;
 }
-export const GoogleCloudDatalabelingV1beta1ImagePayload = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ImagePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUri: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -1535,7 +1517,7 @@ export interface GoogleCloudDatalabelingV1beta1DataItem {
   /** The image payload, a container of the image bytes/uri. */
   imagePayload?: GoogleCloudDatalabelingV1beta1ImagePayload;
 }
-export const GoogleCloudDatalabelingV1beta1DataItem = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1DataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     videoPayload: S.optional(GoogleCloudDatalabelingV1beta1VideoPayload),
@@ -1552,7 +1534,7 @@ export interface GetProjectsDatasetsAnnotatedDatasetsExamplesRequest {
   /** Required. Name of example, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}/examples/{example_id} */
   name: string;
 }
-export const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1570,14 +1552,13 @@ export const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum =
   | "ANNOTATION_SOURCE_UNSPECIFIED"
   | "OPERATOR";
-export const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
   | "ANNOTATION_SENTIMENT_UNSPECIFIED"
   | "NEGATIVE"
   | "POSITIVE";
-export const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
-  /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum = /*@__PURE__*/ S.String;
 
 /** General information useful for labels coming from contributors. */
 export interface GoogleCloudDatalabelingV1beta1OperatorMetadata {
@@ -1590,7 +1571,7 @@ export interface GoogleCloudDatalabelingV1beta1OperatorMetadata {
   /** The total number of contributors that choose this label. */
   labelVotes?: number;
 }
-export const GoogleCloudDatalabelingV1beta1OperatorMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1OperatorMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(StringList),
     score: S.optional(S.Number),
@@ -1606,7 +1587,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationMetadata {
   /** Metadata related to human labeling. */
   operatorMetadata?: GoogleCloudDatalabelingV1beta1OperatorMetadata;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotationMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorMetadata: S.optional(GoogleCloudDatalabelingV1beta1OperatorMetadata),
   }),
@@ -1621,7 +1602,7 @@ export interface GoogleCloudDatalabelingV1beta1NormalizedVertex {
   /** X coordinate. */
   x?: number;
 }
-export const GoogleCloudDatalabelingV1beta1NormalizedVertex = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1NormalizedVertex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     y: S.optional(S.Number),
     x: S.optional(S.Number),
@@ -1632,7 +1613,7 @@ export const GoogleCloudDatalabelingV1beta1NormalizedVertex = /*@__PURE__*/ S.su
 
 export type GoogleCloudDatalabelingV1beta1NormalizedVertexList =
   Array<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
-export const GoogleCloudDatalabelingV1beta1NormalizedVertexList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1NormalizedVertexList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1NormalizedVertex,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedVertexList>;
 
@@ -1641,7 +1622,7 @@ export interface GoogleCloudDatalabelingV1beta1NormalizedPolyline {
   /** The normalized polyline vertices. */
   normalizedVertices?: GoogleCloudDatalabelingV1beta1NormalizedVertexList;
 }
-export const GoogleCloudDatalabelingV1beta1NormalizedPolyline = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1NormalizedPolyline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     normalizedVertices: S.optional(GoogleCloudDatalabelingV1beta1NormalizedVertexList),
   }),
@@ -1656,7 +1637,7 @@ export interface GoogleCloudDatalabelingV1beta1Vertex {
   /** Y coordinate. */
   y?: number;
 }
-export const GoogleCloudDatalabelingV1beta1Vertex = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Vertex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -1666,7 +1647,7 @@ export const GoogleCloudDatalabelingV1beta1Vertex = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1Vertex>;
 
 export type GoogleCloudDatalabelingV1beta1VertexList = Array<GoogleCloudDatalabelingV1beta1Vertex>;
-export const GoogleCloudDatalabelingV1beta1VertexList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1VertexList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Vertex,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1VertexList>;
 
@@ -1675,7 +1656,7 @@ export interface GoogleCloudDatalabelingV1beta1Polyline {
   /** The polyline vertices. */
   vertices?: GoogleCloudDatalabelingV1beta1VertexList;
 }
-export const GoogleCloudDatalabelingV1beta1Polyline = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Polyline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vertices: S.optional(GoogleCloudDatalabelingV1beta1VertexList),
   }),
@@ -1690,7 +1671,7 @@ export interface GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation {
   normalizedPolyline?: GoogleCloudDatalabelingV1beta1NormalizedPolyline;
   polyline?: GoogleCloudDatalabelingV1beta1Polyline;
 }
-export const GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
     normalizedPolyline: S.optional(GoogleCloudDatalabelingV1beta1NormalizedPolyline),
@@ -1707,7 +1688,7 @@ export interface GoogleCloudDatalabelingV1beta1TimeSegment {
   /** End of the time segment (exclusive), represented as the duration since the example start. */
   endTimeOffset?: string;
 }
-export const GoogleCloudDatalabelingV1beta1TimeSegment = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1TimeSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimeOffset: S.optional(S.String),
     endTimeOffset: S.optional(S.String),
@@ -1721,7 +1702,7 @@ export interface GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
   /** The bounding polygon normalized vertices. */
   normalizedVertices?: GoogleCloudDatalabelingV1beta1NormalizedVertexList;
 }
-export const GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly =
+const GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly =
   GoogleCloudDatalabelingV1beta1NormalizedPolyline as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly>;
 
 /** A bounding polygon in the image. */
@@ -1729,7 +1710,7 @@ export interface GoogleCloudDatalabelingV1beta1BoundingPoly {
   /** The bounding polygon vertices. */
   vertices?: GoogleCloudDatalabelingV1beta1VertexList;
 }
-export const GoogleCloudDatalabelingV1beta1BoundingPoly =
+const GoogleCloudDatalabelingV1beta1BoundingPoly =
   GoogleCloudDatalabelingV1beta1Polyline as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingPoly>;
 
 /** Video frame level annotation for object detection and tracking. */
@@ -1739,7 +1720,7 @@ export interface GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
   normalizedBoundingPoly?: GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly;
   boundingPoly?: GoogleCloudDatalabelingV1beta1BoundingPoly;
 }
-export const GoogleCloudDatalabelingV1beta1ObjectTrackingFrame = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ObjectTrackingFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeOffset: S.optional(S.String),
     normalizedBoundingPoly: S.optional(GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly),
@@ -1751,7 +1732,7 @@ export const GoogleCloudDatalabelingV1beta1ObjectTrackingFrame = /*@__PURE__*/ S
 
 export type GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList =
   Array<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
-export const GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1ObjectTrackingFrame,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList>;
 
@@ -1764,13 +1745,12 @@ export interface GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
   /** Label of the object tracked in this annotation. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
-      objectTrackingFrames: S.optional(GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList),
-      annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
-    }),
+const GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
+    objectTrackingFrames: S.optional(GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList),
+    annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation>;
@@ -1780,11 +1760,10 @@ export interface GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation {
   /** Label of image. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
-    }),
+const GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation>;
@@ -1794,7 +1773,7 @@ export interface GoogleCloudDatalabelingV1beta1TextClassificationAnnotation {
   /** Label of the text. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1TextClassificationAnnotation =
+const GoogleCloudDatalabelingV1beta1TextClassificationAnnotation =
   GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation as any as S.Schema<GoogleCloudDatalabelingV1beta1TextClassificationAnnotation>;
 
 /** Image bounding poly annotation. It represents a polygon including bounding box in the image. */
@@ -1804,13 +1783,12 @@ export interface GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {
   /** Label of object in this bounding polygon. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      normalizedBoundingPoly: S.optional(GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly),
-      boundingPoly: S.optional(GoogleCloudDatalabelingV1beta1BoundingPoly),
-      annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
-    }),
+const GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    normalizedBoundingPoly: S.optional(GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly),
+    boundingPoly: S.optional(GoogleCloudDatalabelingV1beta1BoundingPoly),
+    annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation>;
@@ -1822,12 +1800,11 @@ export interface GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation {
   /** The time segment of the video to which the annotation applies. */
   timeSegment?: GoogleCloudDatalabelingV1beta1TimeSegment;
 }
-export const GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
-      timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
-    }),
+const GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+    timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation>;
@@ -1839,7 +1816,7 @@ export interface GoogleCloudDatalabelingV1beta1VideoEventAnnotation {
   /** Label of the event in this annotation. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1VideoEventAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1VideoEventAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
     annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
@@ -1851,7 +1828,7 @@ export const GoogleCloudDatalabelingV1beta1VideoEventAnnotation = /*@__PURE__*/ 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecMap = {
   [key: string]: GoogleCloudDatalabelingV1beta1AnnotationSpec | undefined;
 };
-export const GoogleCloudDatalabelingV1beta1AnnotationSpecMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDatalabelingV1beta1AnnotationSpecMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDatalabelingV1beta1AnnotationSpec,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecMap>;
@@ -1865,13 +1842,12 @@ export interface GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   /** Image format. */
   mimeType?: string;
 }
-export const GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationColors: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecMap),
-      imageBytes: S.optional(S.String),
-      mimeType: S.optional(S.String),
-    }),
+const GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationColors: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecMap),
+    imageBytes: S.optional(S.String),
+    mimeType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation>;
@@ -1883,7 +1859,7 @@ export interface GoogleCloudDatalabelingV1beta1SequentialSegment {
   /** Start position (inclusive). */
   start?: number;
 }
-export const GoogleCloudDatalabelingV1beta1SequentialSegment = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1SequentialSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.Number),
     start: S.optional(S.Number),
@@ -1899,12 +1875,11 @@ export interface GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation {
   /** Position of the entity. */
   sequentialSegment?: GoogleCloudDatalabelingV1beta1SequentialSegment;
 }
-export const GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
-      sequentialSegment: S.optional(GoogleCloudDatalabelingV1beta1SequentialSegment),
-    }),
+const GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+    sequentialSegment: S.optional(GoogleCloudDatalabelingV1beta1SequentialSegment),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation>;
@@ -1930,7 +1905,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationValue {
   /** Annotation value for text entity extraction case. */
   textEntityExtractionAnnotation?: GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation;
 }
-export const GoogleCloudDatalabelingV1beta1AnnotationValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1AnnotationValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imagePolylineAnnotation: S.optional(GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation),
     videoObjectTrackingAnnotation: S.optional(
@@ -1973,7 +1948,7 @@ export interface GoogleCloudDatalabelingV1beta1Annotation {
   /** Output only. This is the actual annotation value, e.g classification, bounding box values are stored here. */
   annotationValue?: GoogleCloudDatalabelingV1beta1AnnotationValue;
 }
-export const GoogleCloudDatalabelingV1beta1Annotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSource: S.optional(GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum),
     annotationSentiment: S.optional(
@@ -1989,7 +1964,7 @@ export const GoogleCloudDatalabelingV1beta1Annotation = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDatalabelingV1beta1AnnotationList =
   Array<GoogleCloudDatalabelingV1beta1Annotation>;
-export const GoogleCloudDatalabelingV1beta1AnnotationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1AnnotationList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Annotation,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationList>;
 
@@ -2006,7 +1981,7 @@ export interface GoogleCloudDatalabelingV1beta1Example {
   /** The image payload, a container of the image bytes/uri. */
   imagePayload?: GoogleCloudDatalabelingV1beta1ImagePayload;
 }
-export const GoogleCloudDatalabelingV1beta1Example = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Example = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoPayload: S.optional(GoogleCloudDatalabelingV1beta1VideoPayload),
     annotations: S.optional(GoogleCloudDatalabelingV1beta1AnnotationList),
@@ -2022,17 +1997,16 @@ export interface GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Required. Name of the feedback. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'. */
   name: string;
 }
-export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://datalabeling.googleapis.com/",
-      }),
-    ),
+const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://datalabeling.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest",
 }) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
@@ -2041,8 +2015,7 @@ export type GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
   | "FEEDBACK_THREAD_STATUS_UNSPECIFIED"
   | "NEW"
   | "REPLIED";
-export const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
-  /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum = /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
   /** When the thread is created */
@@ -2053,7 +2026,7 @@ export interface GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
   /** When the thread is last updated. */
   lastUpdateTime?: string;
 }
-export const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     status: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum),
@@ -2071,7 +2044,7 @@ export interface GoogleCloudDatalabelingV1beta1FeedbackThread {
   /** Metadata regarding the feedback thread. */
   feedbackThreadMetadata?: GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata;
 }
-export const GoogleCloudDatalabelingV1beta1FeedbackThread = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1FeedbackThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     feedbackThreadMetadata: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata),
@@ -2084,7 +2057,7 @@ export interface GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMess
   /** Required. Name of the feedback. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'. */
   name: string;
 }
-export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2103,7 +2076,7 @@ export interface GetProjectsDatasetsDataItemsRequest {
   /** Required. The name of the data item to get, format: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id} */
   name: string;
 }
-export const GetProjectsDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2121,7 +2094,7 @@ export interface GetProjectsDatasetsEvaluationsRequest {
   /** Required. Name of the evaluation. Format: "projects/{project_id}/datasets/ {dataset_id}/evaluations/{evaluation_id}' */
   name: string;
 }
-export const GetProjectsDatasetsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatasetsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2150,7 +2123,7 @@ export type GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
   | "GENERAL_CLASSIFICATION_ANNOTATION";
-export const GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
   /** Number of items predicted to have this label. (The ground truth label for these items is the `Row.annotationSpec` of this entry's parent.) */
@@ -2158,7 +2131,7 @@ export interface GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
   /** The annotation spec of a predicted label. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemCount: S.optional(S.Number),
     annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
@@ -2169,7 +2142,7 @@ export const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry = /*@__PURE__*/ 
 
 export type GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList =
   Array<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
-export const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList>;
 
@@ -2180,7 +2153,7 @@ export interface GoogleCloudDatalabelingV1beta1Row {
   /** The annotation spec of the ground truth label for this row. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
-export const GoogleCloudDatalabelingV1beta1Row = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList),
     annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
@@ -2190,7 +2163,7 @@ export const GoogleCloudDatalabelingV1beta1Row = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1Row>;
 
 export type GoogleCloudDatalabelingV1beta1RowList = Array<GoogleCloudDatalabelingV1beta1Row>;
-export const GoogleCloudDatalabelingV1beta1RowList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1RowList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Row,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1RowList>;
 
@@ -2198,7 +2171,7 @@ export const GoogleCloudDatalabelingV1beta1RowList = /*@__PURE__*/ S.Array(
 export interface GoogleCloudDatalabelingV1beta1ConfusionMatrix {
   row?: GoogleCloudDatalabelingV1beta1RowList;
 }
-export const GoogleCloudDatalabelingV1beta1ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     row: S.optional(GoogleCloudDatalabelingV1beta1RowList),
   }),
@@ -2228,7 +2201,7 @@ export interface GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
   /** The harmonic mean of recall_at5 and precision_at5. */
   f1ScoreAt5?: number;
 }
-export const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     precisionAt1: S.optional(S.Number),
     recallAt1: S.optional(S.Number),
@@ -2247,7 +2220,7 @@ export const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry = /*@__PURE__*
 
 export type GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList =
   Array<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
-export const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList>;
 
@@ -2261,7 +2234,7 @@ export interface GoogleCloudDatalabelingV1beta1PrCurve {
   /** Mean average prcision of this curve. */
   meanAveragePrecision?: number;
 }
-export const GoogleCloudDatalabelingV1beta1PrCurve = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1PrCurve = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
     confidenceMetricsEntries: S.optional(GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList),
@@ -2279,7 +2252,7 @@ export interface GoogleCloudDatalabelingV1beta1ClassificationMetrics {
   /** Precision-recall curve based on ground truth labels, predicted labels, and scores for the predicted labels. */
   prCurve?: GoogleCloudDatalabelingV1beta1PrCurve;
 }
-export const GoogleCloudDatalabelingV1beta1ClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confusionMatrix: S.optional(GoogleCloudDatalabelingV1beta1ConfusionMatrix),
     prCurve: S.optional(GoogleCloudDatalabelingV1beta1PrCurve),
@@ -2293,7 +2266,7 @@ export interface GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics {
   /** Precision-recall curve. */
   prCurve?: GoogleCloudDatalabelingV1beta1PrCurve;
 }
-export const GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prCurve: S.optional(GoogleCloudDatalabelingV1beta1PrCurve),
   }),
@@ -2305,7 +2278,7 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationMetrics {
   classificationMetrics?: GoogleCloudDatalabelingV1beta1ClassificationMetrics;
   objectDetectionMetrics?: GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics;
 }
-export const GoogleCloudDatalabelingV1beta1EvaluationMetrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1EvaluationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classificationMetrics: S.optional(GoogleCloudDatalabelingV1beta1ClassificationMetrics),
     objectDetectionMetrics: S.optional(GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics),
@@ -2331,7 +2304,7 @@ export interface GoogleCloudDatalabelingV1beta1Evaluation {
   /** Output only. The number of items in the ground truth dataset that were used for this evaluation. Only populated when the evaulation is for certain AnnotationTypes. */
   evaluatedItemCount?: string;
 }
-export const GoogleCloudDatalabelingV1beta1Evaluation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1Evaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2349,7 +2322,7 @@ export interface GetProjectsEvaluationJobsRequest {
   /** Required. Name of the evaluation job. Format: "projects/{project_id} /evaluationJobs/{evaluation_job_id}" */
   name: string;
 }
-export const GetProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2367,7 +2340,7 @@ export interface GetProjectsInstructionsRequest {
   /** Required. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id} */
   name: string;
 }
-export const GetProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2385,7 +2358,7 @@ export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2406,7 +2379,7 @@ export interface GoogleCloudDatalabelingV1beta1ImportDataRequest {
   /** Required. Specify the input source of the data. */
   inputConfig?: GoogleCloudDatalabelingV1beta1InputConfig;
 }
-export const GoogleCloudDatalabelingV1beta1ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmailAddress: S.optional(S.String),
     inputConfig: S.optional(GoogleCloudDatalabelingV1beta1InputConfig),
@@ -2421,7 +2394,7 @@ export interface ImportDataProjectsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1ImportDataRequest;
 }
-export const ImportDataProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDataProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1ImportDataRequest.pipe(T.HttpBody())),
@@ -2444,7 +2417,7 @@ export type GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   | "BOUNDING_POLY"
   | "POLYLINE"
   | "SEGMENTATION";
-export const GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum = /*@__PURE__*/ S.String;
 
 /** Request message for starting an image labeling task. */
 export interface GoogleCloudDatalabelingV1beta1LabelImageRequest {
@@ -2461,7 +2434,7 @@ export interface GoogleCloudDatalabelingV1beta1LabelImageRequest {
   /** Required. The type of image labeling task. */
   feature?: GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum | (string & {});
 }
-export const GoogleCloudDatalabelingV1beta1LabelImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1LabelImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segmentationConfig: S.optional(GoogleCloudDatalabelingV1beta1SegmentationConfig),
     imageClassificationConfig: S.optional(GoogleCloudDatalabelingV1beta1ImageClassificationConfig),
@@ -2480,7 +2453,7 @@ export interface LabelProjectsDatasetsImageRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1LabelImageRequest;
 }
-export const LabelProjectsDatasetsImageRequest = /*@__PURE__*/ S.suspend(() =>
+const LabelProjectsDatasetsImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1LabelImageRequest.pipe(T.HttpBody())),
@@ -2499,7 +2472,7 @@ export type GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "TEXT_CLASSIFICATION"
   | "TEXT_ENTITY_EXTRACTION";
-export const GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum = /*@__PURE__*/ S.String;
 
 /** Request message for LabelText. */
 export interface GoogleCloudDatalabelingV1beta1LabelTextRequest {
@@ -2512,7 +2485,7 @@ export interface GoogleCloudDatalabelingV1beta1LabelTextRequest {
   /** Required. The type of text labeling task. */
   feature?: GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum | (string & {});
 }
-export const GoogleCloudDatalabelingV1beta1LabelTextRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1LabelTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textClassificationConfig: S.optional(GoogleCloudDatalabelingV1beta1TextClassificationConfig),
     textEntityExtractionConfig: S.optional(
@@ -2531,7 +2504,7 @@ export interface LabelProjectsDatasetsTextRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1LabelTextRequest;
 }
-export const LabelProjectsDatasetsTextRequest = /*@__PURE__*/ S.suspend(() =>
+const LabelProjectsDatasetsTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1LabelTextRequest.pipe(T.HttpBody())),
@@ -2552,7 +2525,7 @@ export type GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum =
   | "OBJECT_DETECTION"
   | "OBJECT_TRACKING"
   | "EVENT";
-export const GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum = /*@__PURE__*/ S.String;
+const GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum = /*@__PURE__*/ S.String;
 
 /** Request message for LabelVideo. */
 export interface GoogleCloudDatalabelingV1beta1LabelVideoRequest {
@@ -2569,7 +2542,7 @@ export interface GoogleCloudDatalabelingV1beta1LabelVideoRequest {
   /** Configuration for video classification task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required. */
   videoClassificationConfig?: GoogleCloudDatalabelingV1beta1VideoClassificationConfig;
 }
-export const GoogleCloudDatalabelingV1beta1LabelVideoRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1LabelVideoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectTrackingConfig: S.optional(GoogleCloudDatalabelingV1beta1ObjectTrackingConfig),
     eventConfig: S.optional(GoogleCloudDatalabelingV1beta1EventConfig),
@@ -2588,7 +2561,7 @@ export interface LabelProjectsDatasetsVideoRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1LabelVideoRequest;
 }
-export const LabelProjectsDatasetsVideoRequest = /*@__PURE__*/ S.suspend(() =>
+const LabelProjectsDatasetsVideoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1LabelVideoRequest.pipe(T.HttpBody())),
@@ -2613,7 +2586,7 @@ export interface ListProjectsAnnotationSpecSetsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
-export const ListProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2632,7 +2605,7 @@ export const ListProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecSetList =
   Array<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
-export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSetList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1AnnotationSpecSet,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSetList>;
 
@@ -2643,12 +2616,11 @@ export interface GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotationSpecSets: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSetList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotationSpecSets: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSetList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse>;
@@ -2663,7 +2635,7 @@ export interface ListProjectsDatasetsRequest {
   /** Optional. Filter on dataset is not supported at this moment. */
   filter?: string;
 }
-export const ListProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2682,7 +2654,7 @@ export const ListProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudDatalabelingV1beta1DatasetList =
   Array<GoogleCloudDatalabelingV1beta1Dataset>;
-export const GoogleCloudDatalabelingV1beta1DatasetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1DatasetList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Dataset,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1DatasetList>;
 
@@ -2693,7 +2665,7 @@ export interface GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatalabelingV1beta1ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(GoogleCloudDatalabelingV1beta1DatasetList),
     nextPageToken: S.optional(S.String),
@@ -2712,7 +2684,7 @@ export interface ListProjectsDatasetsAnnotatedDatasetsRequest {
   /** Required. Name of the dataset to list annotated datasets, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
 }
-export const ListProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2731,7 +2703,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetList =
   Array<GoogleCloudDatalabelingV1beta1AnnotatedDataset>;
-export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1AnnotatedDataset,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDatasetList>;
 
@@ -2742,12 +2714,11 @@ export interface GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
   /** The list of annotated datasets to return. */
   annotatedDatasets?: GoogleCloudDatalabelingV1beta1AnnotatedDatasetList;
 }
-export const GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      annotatedDatasets: S.optional(GoogleCloudDatalabelingV1beta1AnnotatedDatasetList),
-    }),
+const GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    annotatedDatasets: S.optional(GoogleCloudDatalabelingV1beta1AnnotatedDatasetList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse>;
@@ -2762,7 +2733,7 @@ export interface ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
-export const ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2781,7 +2752,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__
 
 export type GoogleCloudDatalabelingV1beta1DataItemList =
   Array<GoogleCloudDatalabelingV1beta1DataItem>;
-export const GoogleCloudDatalabelingV1beta1DataItemList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1DataItemList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1DataItem,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1DataItemList>;
 
@@ -2792,7 +2763,7 @@ export interface GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
   /** The list of data items to return. */
   dataItems?: GoogleCloudDatalabelingV1beta1DataItemList;
 }
-export const GoogleCloudDatalabelingV1beta1ListDataItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ListDataItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataItems: S.optional(GoogleCloudDatalabelingV1beta1DataItemList),
@@ -2811,7 +2782,7 @@ export interface ListProjectsDatasetsAnnotatedDatasetsExamplesRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
-export const ListProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2830,7 +2801,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*
 
 export type GoogleCloudDatalabelingV1beta1ExampleList =
   Array<GoogleCloudDatalabelingV1beta1Example>;
-export const GoogleCloudDatalabelingV1beta1ExampleList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1ExampleList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Example,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleList>;
 
@@ -2841,7 +2812,7 @@ export interface GoogleCloudDatalabelingV1beta1ListExamplesResponse {
   /** The list of examples to return. */
   examples?: GoogleCloudDatalabelingV1beta1ExampleList;
 }
-export const GoogleCloudDatalabelingV1beta1ListExamplesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ListExamplesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     examples: S.optional(GoogleCloudDatalabelingV1beta1ExampleList),
@@ -2858,26 +2829,25 @@ export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
-export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/feedbackThreads",
-        baseUrl: "https://datalabeling.googleapis.com/",
-      }),
-    ),
+const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/feedbackThreads",
+      baseUrl: "https://datalabeling.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest",
 }) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1FeedbackThreadList =
   Array<GoogleCloudDatalabelingV1beta1FeedbackThread>;
-export const GoogleCloudDatalabelingV1beta1FeedbackThreadList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1FeedbackThreadList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1FeedbackThread,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackThreadList>;
 
@@ -2888,12 +2858,11 @@ export interface GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
   /** The list of feedback threads to return. */
   feedbackThreads?: GoogleCloudDatalabelingV1beta1FeedbackThreadList;
 }
-export const GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      feedbackThreads: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadList),
-    }),
+const GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    feedbackThreads: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse>;
@@ -2906,7 +2875,7 @@ export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMes
   /** Required. FeedbackMessage resource parent. Format: "projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}" */
   parent: string;
 }
-export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2925,7 +2894,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
 
 export type GoogleCloudDatalabelingV1beta1FeedbackMessageList =
   Array<GoogleCloudDatalabelingV1beta1FeedbackMessage>;
-export const GoogleCloudDatalabelingV1beta1FeedbackMessageList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1FeedbackMessageList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1FeedbackMessage,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackMessageList>;
 
@@ -2936,12 +2905,11 @@ export interface GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
   /** The list of feedback messages to return. */
   feedbackMessages?: GoogleCloudDatalabelingV1beta1FeedbackMessageList;
 }
-export const GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      feedbackMessages: S.optional(GoogleCloudDatalabelingV1beta1FeedbackMessageList),
-    }),
+const GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    feedbackMessages: S.optional(GoogleCloudDatalabelingV1beta1FeedbackMessageList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse>;
@@ -2956,7 +2924,7 @@ export interface ListProjectsDatasetsDataItemsRequest {
   /** Required. Name of the dataset to list data items, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
 }
-export const ListProjectsDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatasetsDataItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2983,7 +2951,7 @@ export interface ListProjectsEvaluationJobsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
-export const ListProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3002,7 +2970,7 @@ export const ListProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudDatalabelingV1beta1EvaluationJobList =
   Array<GoogleCloudDatalabelingV1beta1EvaluationJob>;
-export const GoogleCloudDatalabelingV1beta1EvaluationJobList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1EvaluationJobList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1EvaluationJob,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJobList>;
 
@@ -3013,12 +2981,11 @@ export interface GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
   /** The list of evaluation jobs to return. */
   evaluationJobs?: GoogleCloudDatalabelingV1beta1EvaluationJobList;
 }
-export const GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      evaluationJobs: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJobList),
-    }),
+const GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    evaluationJobs: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJobList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse",
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse>;
@@ -3033,7 +3000,7 @@ export interface ListProjectsInstructionsRequest {
   /** Optional. Filter is not supported at this moment. */
   filter?: string;
 }
-export const ListProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3052,7 +3019,7 @@ export const ListProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudDatalabelingV1beta1InstructionList =
   Array<GoogleCloudDatalabelingV1beta1Instruction>;
-export const GoogleCloudDatalabelingV1beta1InstructionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1InstructionList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Instruction,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1InstructionList>;
 
@@ -3063,7 +3030,7 @@ export interface GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatalabelingV1beta1ListInstructionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ListInstructionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instructions: S.optional(GoogleCloudDatalabelingV1beta1InstructionList),
     nextPageToken: S.optional(S.String),
@@ -3084,7 +3051,7 @@ export interface ListProjectsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3103,7 +3070,7 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -3116,7 +3083,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(GoogleLongrunningOperationList),
     nextPageToken: S.optional(S.String),
@@ -3134,7 +3101,7 @@ export interface PatchProjectsEvaluationJobsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1EvaluationJob;
 }
-export const PatchProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3153,16 +3120,13 @@ export const PatchProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Request message for PauseEvaluationJob. */
 export type GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest =
   GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
-export const GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest =
-  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
-
 export interface PauseProjectsEvaluationJobsRequest {
   /** Required. Name of the evaluation job that is going to be paused. Format: "projects/{project_id}/evaluationJobs/{evaluation_job_id}" */
   name: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
 }
-export const PauseProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.pipe(T.HttpBody())),
@@ -3180,16 +3144,13 @@ export const PauseProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Request message ResumeEvaluationJob. */
 export type GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest =
   GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
-export const GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest =
-  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
-
 export interface ResumeProjectsEvaluationJobsRequest {
   /** Required. Name of the evaluation job that is going to be resumed. Format: "projects/{project_id}/evaluationJobs/{evaluation_job_id}" */
   name: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
 }
-export const ResumeProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.pipe(T.HttpBody())),
@@ -3211,15 +3172,14 @@ export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained by the nextPageToken of the response to a previous search rquest. If you don't specify this field, the API call requests the first page of the search. */
   pageToken?: string;
 }
-export const GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number),
-      pageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest",
-  }) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest>;
+const GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number),
+    pageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest",
+}) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest>;
 
 export interface SearchProjectsDatasetsEvaluationsExampleComparisonsRequest {
   /** Required. Name of the Evaluation resource to search for example comparisons from. Format: "projects/{project_id}/datasets/{dataset_id}/evaluations/ {evaluation_id}" */
@@ -3227,20 +3187,19 @@ export interface SearchProjectsDatasetsEvaluationsExampleComparisonsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest;
 }
-export const SearchProjectsDatasetsEvaluationsExampleComparisonsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+parent}/exampleComparisons:search",
-        baseUrl: "https://datalabeling.googleapis.com/",
-      }),
+const SearchProjectsDatasetsEvaluationsExampleComparisonsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/exampleComparisons:search",
+      baseUrl: "https://datalabeling.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SearchProjectsDatasetsEvaluationsExampleComparisonsRequest",
 }) as any as S.Schema<SearchProjectsDatasetsEvaluationsExampleComparisonsRequest>;
@@ -3252,7 +3211,7 @@ export interface GoogleCloudDatalabelingV1beta1ExampleComparison {
   /** Predictions by the model for the input. */
   modelCreatedExamples?: GoogleCloudDatalabelingV1beta1ExampleList;
 }
-export const GoogleCloudDatalabelingV1beta1ExampleComparison = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1ExampleComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundTruthExample: S.optional(GoogleCloudDatalabelingV1beta1Example),
     modelCreatedExamples: S.optional(GoogleCloudDatalabelingV1beta1ExampleList),
@@ -3263,7 +3222,7 @@ export const GoogleCloudDatalabelingV1beta1ExampleComparison = /*@__PURE__*/ S.s
 
 export type GoogleCloudDatalabelingV1beta1ExampleComparisonList =
   Array<GoogleCloudDatalabelingV1beta1ExampleComparison>;
-export const GoogleCloudDatalabelingV1beta1ExampleComparisonList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1ExampleComparisonList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1ExampleComparison,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleComparisonList>;
 
@@ -3274,15 +3233,14 @@ export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse 
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exampleComparisons: S.optional(GoogleCloudDatalabelingV1beta1ExampleComparisonList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse",
-  }) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse>;
+const GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exampleComparisons: S.optional(GoogleCloudDatalabelingV1beta1ExampleComparisonList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse",
+}) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse>;
 
 export interface SearchProjectsEvaluationsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
@@ -3294,7 +3252,7 @@ export interface SearchProjectsEvaluationsRequest {
   /** Required. Evaluation search parent (project ID). Format: "projects/ {project_id}" */
   parent: string;
 }
-export const SearchProjectsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3313,7 +3271,7 @@ export const SearchProjectsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudDatalabelingV1beta1EvaluationList =
   Array<GoogleCloudDatalabelingV1beta1Evaluation>;
-export const GoogleCloudDatalabelingV1beta1EvaluationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDatalabelingV1beta1EvaluationList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Evaluation,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationList>;
 
@@ -3324,7 +3282,7 @@ export interface GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
   /** The list of evaluations matching the search. */
   evaluations?: GoogleCloudDatalabelingV1beta1EvaluationList;
 }
-export const GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     evaluations: S.optional(GoogleCloudDatalabelingV1beta1EvaluationList),

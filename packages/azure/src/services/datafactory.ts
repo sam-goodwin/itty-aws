@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** List of tags that can be used for describing the data flow. */
 export type DataFlowAnnotationsList = Array<unknown>;
-export const DataFlowAnnotationsList = /*@__PURE__*/ S.Array(
+const DataFlowAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DataFlowAnnotationsList>;
 
@@ -20,7 +20,7 @@ export interface DataFlowFolder {
   /** The name of the folder that this data flow is in. */
   name?: string;
 }
-export const DataFlowFolder = /*@__PURE__*/ S.suspend(() =>
+const DataFlowFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -39,7 +39,7 @@ export interface DataFlow {
   /** Type-specific data flow properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-export const DataFlow = /*@__PURE__*/ S.suspend(() =>
+const DataFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     description: S.optional(S.String),
@@ -56,7 +56,7 @@ export interface DataFlowDebugResource {
   /** Data flow properties. */
   properties: DataFlow;
 }
-export const DataFlowDebugResource = /*@__PURE__*/ S.suspend(() =>
+const DataFlowDebugResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: DataFlow,
@@ -65,17 +65,17 @@ export const DataFlowDebugResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Data flows */
 export type AddDataFlowDebugSessionDataFlowRequestDataFlowsList = Array<DataFlowDebugResource>;
-export const AddDataFlowDebugSessionDataFlowRequestDataFlowsList = /*@__PURE__*/ S.Array(
+const AddDataFlowDebugSessionDataFlowRequestDataFlowsList = /*@__PURE__*/ S.Array(
   DataFlowDebugResource,
 ) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequestDataFlowsList>;
 
 /** Linked service reference type. */
 export type Type = "LinkedServiceReference";
-export const Type = S.String;
+const Type = S.String;
 
 /** Arguments for LinkedService. */
 export type LinkedServiceReferenceParametersMap = { [key: string]: unknown | undefined };
-export const LinkedServiceReferenceParametersMap = /*@__PURE__*/ S.Record(
+const LinkedServiceReferenceParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<LinkedServiceReferenceParametersMap>;
@@ -89,7 +89,7 @@ export interface LinkedServiceReference {
   /** Arguments for LinkedService. */
   parameters?: LinkedServiceReferenceParametersMap;
 }
-export const LinkedServiceReference = /*@__PURE__*/ S.suspend(() =>
+const LinkedServiceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: Type,
     referenceName: S.String,
@@ -106,7 +106,7 @@ export type ParameterType =
   | "Bool"
   | "Array"
   | "SecureString";
-export const ParameterType = S.String;
+const ParameterType = S.String;
 
 /** Definition of a single parameter for an entity. */
 export interface ParameterSpecification {
@@ -115,7 +115,7 @@ export interface ParameterSpecification {
   /** Default value of parameter. */
   defaultValue?: unknown;
 }
-export const ParameterSpecification = /*@__PURE__*/ S.suspend(() =>
+const ParameterSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ParameterType,
     defaultValue: S.optional(S.Unknown),
@@ -124,22 +124,21 @@ export const ParameterSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters for dataset. */
 export type DatasetParametersMap = { [key: string]: ParameterSpecification | undefined };
-export const DatasetParametersMap = /*@__PURE__*/ S.Record(
+const DatasetParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   ParameterSpecification,
 ) as any as S.Schema<DatasetParametersMap>;
 
 /** List of tags that can be used for describing the Dataset. */
 export type DatasetAnnotationsList = Array<unknown>;
-export const DatasetAnnotationsList =
-  DataFlowAnnotationsList as any as S.Schema<DatasetAnnotationsList>;
+const DatasetAnnotationsList = DataFlowAnnotationsList as any as S.Schema<DatasetAnnotationsList>;
 
 /** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
 export interface DatasetFolder {
   /** The name of the folder that this Dataset is in. */
   name?: string;
 }
-export const DatasetFolder = DataFlowFolder as any as S.Schema<DatasetFolder>;
+const DatasetFolder = DataFlowFolder as any as S.Schema<DatasetFolder>;
 
 /** The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents. */
 export interface Dataset {
@@ -162,7 +161,7 @@ export interface Dataset {
   /** Type-specific dataset properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     description: S.optional(S.String),
@@ -183,7 +182,7 @@ export interface DatasetDebugResource {
   /** Dataset properties. */
   properties: Dataset;
 }
-export const DatasetDebugResource = /*@__PURE__*/ S.suspend(() =>
+const DatasetDebugResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: Dataset,
@@ -192,17 +191,17 @@ export const DatasetDebugResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of datasets. */
 export type AddDataFlowDebugSessionDataFlowRequestDatasetsList = Array<DatasetDebugResource>;
-export const AddDataFlowDebugSessionDataFlowRequestDatasetsList = /*@__PURE__*/ S.Array(
+const AddDataFlowDebugSessionDataFlowRequestDatasetsList = /*@__PURE__*/ S.Array(
   DatasetDebugResource,
 ) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequestDatasetsList>;
 
 /** Type of integration runtime. */
 export type IntegrationRuntimeReferenceType = "IntegrationRuntimeReference";
-export const IntegrationRuntimeReferenceType = S.String;
+const IntegrationRuntimeReferenceType = S.String;
 
 /** Arguments for integration runtime. */
 export type IntegrationRuntimeReferenceParametersMap = { [key: string]: unknown | undefined };
-export const IntegrationRuntimeReferenceParametersMap =
+const IntegrationRuntimeReferenceParametersMap =
   LinkedServiceReferenceParametersMap as any as S.Schema<IntegrationRuntimeReferenceParametersMap>;
 
 /** Integration runtime reference type. */
@@ -214,7 +213,7 @@ export interface IntegrationRuntimeReference {
   /** Arguments for integration runtime. */
   parameters?: IntegrationRuntimeReferenceParametersMap;
 }
-export const IntegrationRuntimeReference = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IntegrationRuntimeReferenceType,
     referenceName: S.String,
@@ -226,12 +225,12 @@ export const IntegrationRuntimeReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters for linked service. */
 export type LinkedServiceParametersMap = { [key: string]: ParameterSpecification | undefined };
-export const LinkedServiceParametersMap =
+const LinkedServiceParametersMap =
   DatasetParametersMap as any as S.Schema<LinkedServiceParametersMap>;
 
 /** List of tags that can be used for describing the linked service. */
 export type LinkedServiceAnnotationsList = Array<unknown>;
-export const LinkedServiceAnnotationsList =
+const LinkedServiceAnnotationsList =
   DataFlowAnnotationsList as any as S.Schema<LinkedServiceAnnotationsList>;
 
 /** The nested object which contains the information and credential which can be used to connect with related store or compute resource. */
@@ -251,7 +250,7 @@ export interface LinkedService {
   /** Type-specific linked service properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-export const LinkedService = /*@__PURE__*/ S.suspend(() =>
+const LinkedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     version: S.optional(S.String),
@@ -270,7 +269,7 @@ export interface LinkedServiceDebugResource {
   /** Properties of linked service. */
   properties: LinkedService;
 }
-export const LinkedServiceDebugResource = /*@__PURE__*/ S.suspend(() =>
+const LinkedServiceDebugResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: LinkedService,
@@ -282,7 +281,7 @@ export const LinkedServiceDebugResource = /*@__PURE__*/ S.suspend(() =>
 /** List of linked services. */
 export type AddDataFlowDebugSessionDataFlowRequestLinkedServicesList =
   Array<LinkedServiceDebugResource>;
-export const AddDataFlowDebugSessionDataFlowRequestLinkedServicesList = /*@__PURE__*/ S.Array(
+const AddDataFlowDebugSessionDataFlowRequestLinkedServicesList = /*@__PURE__*/ S.Array(
   LinkedServiceDebugResource,
 ) as any as S.Schema<AddDataFlowDebugSessionDataFlowRequestLinkedServicesList>;
 
@@ -293,7 +292,7 @@ export interface DataFlowStagingInfo {
   /** Folder path for staging blob. Type: string (or Expression with resultType string) */
   folderPath?: unknown;
 }
-export const DataFlowStagingInfo = /*@__PURE__*/ S.suspend(() =>
+const DataFlowStagingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedService: S.optional(LinkedServiceReference),
     folderPath: S.optional(S.Unknown),
@@ -307,7 +306,7 @@ export interface DataFlowSourceSetting {
   /** Defines the row limit of data flow source in debug. */
   rowLimit?: number;
 }
-export const DataFlowSourceSetting = /*@__PURE__*/ S.suspend(() =>
+const DataFlowSourceSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceName: S.optional(S.String),
     rowLimit: S.optional(S.Number),
@@ -316,13 +315,13 @@ export const DataFlowSourceSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Source setting for data flow debug. */
 export type DataFlowDebugPackageDebugSettingsSourceSettingsList = Array<DataFlowSourceSetting>;
-export const DataFlowDebugPackageDebugSettingsSourceSettingsList = /*@__PURE__*/ S.Array(
+const DataFlowDebugPackageDebugSettingsSourceSettingsList = /*@__PURE__*/ S.Array(
   DataFlowSourceSetting,
 ) as any as S.Schema<DataFlowDebugPackageDebugSettingsSourceSettingsList>;
 
 /** Data flow parameters. */
 export type DataFlowDebugPackageDebugSettingsParametersMap = { [key: string]: unknown | undefined };
-export const DataFlowDebugPackageDebugSettingsParametersMap =
+const DataFlowDebugPackageDebugSettingsParametersMap =
   LinkedServiceReferenceParametersMap as any as S.Schema<DataFlowDebugPackageDebugSettingsParametersMap>;
 
 /** Data flow debug settings. */
@@ -334,7 +333,7 @@ export interface DataFlowDebugPackageDebugSettings {
   /** Parameters for dataset. */
   datasetParameters?: unknown;
 }
-export const DataFlowDebugPackageDebugSettings = /*@__PURE__*/ S.suspend(() =>
+const DataFlowDebugPackageDebugSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceSettings: S.optional(DataFlowDebugPackageDebugSettingsSourceSettingsList),
     parameters: S.optional(DataFlowDebugPackageDebugSettingsParametersMap),
@@ -366,7 +365,7 @@ export interface AddDataFlowDebugSessionDataFlowRequest {
   /** Data flow debug settings. */
   debugSettings?: DataFlowDebugPackageDebugSettings;
 }
-export const AddDataFlowDebugSessionDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDataFlowDebugSessionDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -395,7 +394,7 @@ export interface AddDataFlowToDebugSessionResponse {
   /** The ID of data flow debug job version. */
   jobVersion?: string;
 }
-export const AddDataFlowToDebugSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const AddDataFlowToDebugSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobVersion: S.optional(S.String),
   }),
@@ -414,7 +413,7 @@ export interface CancelPipelineRunRequest {
   /** If true, cancel all the Child pipelines that are triggered by the current pipeline. */
   isRecursive?: boolean;
 }
-export const CancelPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -432,7 +431,7 @@ export const CancelPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelPipelineRunRequest" }) as any as S.Schema<CancelPipelineRunRequest>;
 
 export interface CancelPipelineRunResponse {}
-export const CancelPipelineRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelPipelineRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelPipelineRunResponse",
 }) as any as S.Schema<CancelPipelineRunResponse>;
 
@@ -446,7 +445,7 @@ export interface CancelTriggerRunRequest {
   /** The pipeline run identifier. */
   runId: string;
 }
-export const CancelTriggerRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTriggerRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -464,7 +463,7 @@ export const CancelTriggerRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelTriggerRunRequest" }) as any as S.Schema<CancelTriggerRunRequest>;
 
 export interface CancelTriggerRunResponse {}
-export const CancelTriggerRunResponse =
+const CancelTriggerRunResponse =
   CancelPipelineRunResponse as any as S.Schema<CancelTriggerRunResponse>;
 
 /** The folder that this CDC is in. If not specified, CDC will appear at the root level. */
@@ -472,7 +471,7 @@ export interface ChangeDataCaptureFolder {
   /** The name of the folder that this CDC is in. */
   name?: string;
 }
-export const ChangeDataCaptureFolder = DataFlowFolder as any as S.Schema<ChangeDataCaptureFolder>;
+const ChangeDataCaptureFolder = DataFlowFolder as any as S.Schema<ChangeDataCaptureFolder>;
 
 /** Schema of a CDC table in terms of column names and their corresponding data types. */
 export interface MapperTableSchema {
@@ -481,7 +480,7 @@ export interface MapperTableSchema {
   /** Data type of the column. */
   dataType?: string;
 }
-export const MapperTableSchema = /*@__PURE__*/ S.suspend(() =>
+const MapperTableSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dataType: S.optional(S.String),
@@ -490,7 +489,7 @@ export const MapperTableSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** List of columns for the source table. */
 export type MapperTablePropertiesSchemaList = Array<MapperTableSchema>;
-export const MapperTablePropertiesSchemaList = /*@__PURE__*/ S.Array(
+const MapperTablePropertiesSchemaList = /*@__PURE__*/ S.Array(
   MapperTableSchema,
 ) as any as S.Schema<MapperTablePropertiesSchemaList>;
 
@@ -501,7 +500,7 @@ export interface MapperDslConnectorProperties {
   /** Value of the property. */
   value?: unknown;
 }
-export const MapperDslConnectorProperties = /*@__PURE__*/ S.suspend(() =>
+const MapperDslConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.Unknown),
@@ -512,7 +511,7 @@ export const MapperDslConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of name/value pairs for connection properties. */
 export type MapperTablePropertiesDslConnectorPropertiesList = Array<MapperDslConnectorProperties>;
-export const MapperTablePropertiesDslConnectorPropertiesList = /*@__PURE__*/ S.Array(
+const MapperTablePropertiesDslConnectorPropertiesList = /*@__PURE__*/ S.Array(
   MapperDslConnectorProperties,
 ) as any as S.Schema<MapperTablePropertiesDslConnectorPropertiesList>;
 
@@ -523,7 +522,7 @@ export interface MapperTableProperties {
   /** List of name/value pairs for connection properties. */
   dslConnectorProperties?: MapperTablePropertiesDslConnectorPropertiesList;
 }
-export const MapperTableProperties = /*@__PURE__*/ S.suspend(() =>
+const MapperTableProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(MapperTablePropertiesSchemaList),
     dslConnectorProperties: S.optional(MapperTablePropertiesDslConnectorPropertiesList),
@@ -537,7 +536,7 @@ export interface MapperTable {
   /** Table properties. */
   properties?: MapperTableProperties;
 }
-export const MapperTable = /*@__PURE__*/ S.suspend(() =>
+const MapperTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(MapperTableProperties),
@@ -546,17 +545,17 @@ export const MapperTable = /*@__PURE__*/ S.suspend(() =>
 
 /** List of source tables for a source connection. */
 export type MapperSourceConnectionsInfoSourceEntitiesList = Array<MapperTable>;
-export const MapperSourceConnectionsInfoSourceEntitiesList = /*@__PURE__*/ S.Array(
+const MapperSourceConnectionsInfoSourceEntitiesList = /*@__PURE__*/ S.Array(
   MapperTable,
 ) as any as S.Schema<MapperSourceConnectionsInfoSourceEntitiesList>;
 
 /** Type of connection via linked service or dataset. */
 export type ConnectionType = "linkedservicetype";
-export const ConnectionType = S.String;
+const ConnectionType = S.String;
 
 /** List of name/value pairs for connection properties. */
 export type MapperConnectionCommonDslConnectorPropertiesList = Array<MapperDslConnectorProperties>;
-export const MapperConnectionCommonDslConnectorPropertiesList =
+const MapperConnectionCommonDslConnectorPropertiesList =
   MapperTablePropertiesDslConnectorPropertiesList as any as S.Schema<MapperConnectionCommonDslConnectorPropertiesList>;
 
 /** Source connection details. */
@@ -572,7 +571,7 @@ export interface MapperConnection {
   /** List of name/value pairs for connection properties. */
   commonDslConnectorProperties?: MapperConnectionCommonDslConnectorPropertiesList;
 }
-export const MapperConnection = /*@__PURE__*/ S.suspend(() =>
+const MapperConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedService: S.optional(LinkedServiceReference),
     linkedServiceType: S.optional(S.String),
@@ -589,7 +588,7 @@ export interface MapperSourceConnectionsInfo {
   /** Source connection details. */
   connection?: MapperConnection;
 }
-export const MapperSourceConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
+const MapperSourceConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceEntities: S.optional(MapperSourceConnectionsInfoSourceEntitiesList),
     connection: S.optional(MapperConnection),
@@ -600,13 +599,13 @@ export const MapperSourceConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of sources connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureSourceConnectionsInfoList = Array<MapperSourceConnectionsInfo>;
-export const ChangeDataCaptureSourceConnectionsInfoList = /*@__PURE__*/ S.Array(
+const ChangeDataCaptureSourceConnectionsInfoList = /*@__PURE__*/ S.Array(
   MapperSourceConnectionsInfo,
 ) as any as S.Schema<ChangeDataCaptureSourceConnectionsInfoList>;
 
 /** List of source tables for a target connection. */
 export type MapperTargetConnectionsInfoTargetEntitiesList = Array<MapperTable>;
-export const MapperTargetConnectionsInfoTargetEntitiesList =
+const MapperTargetConnectionsInfoTargetEntitiesList =
   MapperSourceConnectionsInfoSourceEntitiesList as any as S.Schema<MapperTargetConnectionsInfoTargetEntitiesList>;
 
 /** Source or target connection reference details. */
@@ -616,7 +615,7 @@ export interface MapperConnectionReference {
   /** Type of connection via linked service or dataset. */
   type?: ConnectionType | (string & {});
 }
-export const MapperConnectionReference = /*@__PURE__*/ S.suspend(() =>
+const MapperConnectionReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionName: S.optional(S.String),
     type: S.optional(ConnectionType),
@@ -627,7 +626,7 @@ export const MapperConnectionReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'. */
 export type MappingType = "Direct" | "Derived" | "Aggregate";
-export const MappingType = S.String;
+const MappingType = S.String;
 
 /** Attribute reference details for the referred column. */
 export interface MapperAttributeReference {
@@ -638,7 +637,7 @@ export interface MapperAttributeReference {
   /** The connection reference for the connection. */
   entityConnectionReference?: MapperConnectionReference;
 }
-export const MapperAttributeReference = /*@__PURE__*/ S.suspend(() =>
+const MapperAttributeReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     entity: S.optional(S.String),
@@ -648,7 +647,7 @@ export const MapperAttributeReference = /*@__PURE__*/ S.suspend(() =>
 
 /** List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only. */
 export type MapperAttributeMappingAttributeReferencesList = Array<MapperAttributeReference>;
-export const MapperAttributeMappingAttributeReferencesList = /*@__PURE__*/ S.Array(
+const MapperAttributeMappingAttributeReferencesList = /*@__PURE__*/ S.Array(
   MapperAttributeReference,
 ) as any as S.Schema<MapperAttributeMappingAttributeReferencesList>;
 
@@ -667,7 +666,7 @@ export interface MapperAttributeMapping {
   /** List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only. */
   attributeReferences?: MapperAttributeMappingAttributeReferencesList;
 }
-export const MapperAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+const MapperAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(MappingType),
@@ -680,7 +679,7 @@ export const MapperAttributeMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of attribute mappings. */
 export type MapperAttributeMappingsAttributeMappingsList = Array<MapperAttributeMapping>;
-export const MapperAttributeMappingsAttributeMappingsList = /*@__PURE__*/ S.Array(
+const MapperAttributeMappingsAttributeMappingsList = /*@__PURE__*/ S.Array(
   MapperAttributeMapping,
 ) as any as S.Schema<MapperAttributeMappingsAttributeMappingsList>;
 
@@ -689,7 +688,7 @@ export interface MapperAttributeMappings {
   /** List of attribute mappings. */
   attributeMappings?: MapperAttributeMappingsAttributeMappingsList;
 }
-export const MapperAttributeMappings = /*@__PURE__*/ S.suspend(() =>
+const MapperAttributeMappings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeMappings: S.optional(MapperAttributeMappingsAttributeMappingsList),
   }),
@@ -708,7 +707,7 @@ export interface DataMapperMapping {
   /** This holds the source denormalization information used while joining multiple sources. */
   sourceDenormalizeInfo?: unknown;
 }
-export const DataMapperMapping = /*@__PURE__*/ S.suspend(() =>
+const DataMapperMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetEntityName: S.optional(S.String),
     sourceEntityName: S.optional(S.String),
@@ -720,13 +719,13 @@ export const DataMapperMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of table mappings. */
 export type MapperTargetConnectionsInfoDataMapperMappingsList = Array<DataMapperMapping>;
-export const MapperTargetConnectionsInfoDataMapperMappingsList = /*@__PURE__*/ S.Array(
+const MapperTargetConnectionsInfoDataMapperMappingsList = /*@__PURE__*/ S.Array(
   DataMapperMapping,
 ) as any as S.Schema<MapperTargetConnectionsInfoDataMapperMappingsList>;
 
 /** List of relationship info among the tables. */
 export type MapperTargetConnectionsInfoRelationshipsList = Array<unknown>;
-export const MapperTargetConnectionsInfoRelationshipsList =
+const MapperTargetConnectionsInfoRelationshipsList =
   DataFlowAnnotationsList as any as S.Schema<MapperTargetConnectionsInfoRelationshipsList>;
 
 /** A object which contains list of tables and connection details for a target connection. */
@@ -740,7 +739,7 @@ export interface MapperTargetConnectionsInfo {
   /** List of relationship info among the tables. */
   relationships?: MapperTargetConnectionsInfoRelationshipsList;
 }
-export const MapperTargetConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
+const MapperTargetConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetEntities: S.optional(MapperTargetConnectionsInfoTargetEntitiesList),
     connection: S.optional(MapperConnection),
@@ -753,13 +752,13 @@ export const MapperTargetConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of target connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureTargetConnectionsInfoList = Array<MapperTargetConnectionsInfo>;
-export const ChangeDataCaptureTargetConnectionsInfoList = /*@__PURE__*/ S.Array(
+const ChangeDataCaptureTargetConnectionsInfoList = /*@__PURE__*/ S.Array(
   MapperTargetConnectionsInfo,
 ) as any as S.Schema<ChangeDataCaptureTargetConnectionsInfoList>;
 
 /** Frequency of period in terms of 'Hour', 'Minute' or 'Second'. */
 export type FrequencyType = "Hour" | "Minute" | "Second";
-export const FrequencyType = S.String;
+const FrequencyType = S.String;
 
 /** CDC policy recurrence details. */
 export interface MapperPolicyRecurrence {
@@ -768,7 +767,7 @@ export interface MapperPolicyRecurrence {
   /** Actual interval value as per chosen frequency. */
   interval?: number;
 }
-export const MapperPolicyRecurrence = /*@__PURE__*/ S.suspend(() =>
+const MapperPolicyRecurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: S.optional(FrequencyType),
     interval: S.optional(S.Number),
@@ -782,7 +781,7 @@ export interface MapperPolicy {
   /** Defines the frequency and interval for running the CDC for batch mode. */
   recurrence?: MapperPolicyRecurrence;
 }
-export const MapperPolicy = /*@__PURE__*/ S.suspend(() =>
+const MapperPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
     recurrence: S.optional(MapperPolicyRecurrence),
@@ -806,7 +805,7 @@ export interface ChangeDataCapture {
   /** Status of the CDC as to if it is running or stopped. */
   status?: string;
 }
-export const ChangeDataCapture = /*@__PURE__*/ S.suspend(() =>
+const ChangeDataCapture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folder: S.optional(ChangeDataCaptureFolder),
     description: S.optional(S.String),
@@ -830,7 +829,7 @@ export interface ChangeDataCaptureCreateOrUpdateRequest {
   /** Properties of the change data capture. */
   properties: ChangeDataCapture;
 }
-export const ChangeDataCaptureCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeDataCaptureCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -851,11 +850,11 @@ export const ChangeDataCaptureCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -872,7 +871,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -897,7 +896,7 @@ export interface ChangeDataCaptureCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ChangeDataCaptureCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeDataCaptureCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -920,7 +919,7 @@ export interface ChangeDataCaptureStatusRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-export const ChangeDataCaptureStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeDataCaptureStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -939,7 +938,7 @@ export const ChangeDataCaptureStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeDataCaptureStatusRequest>;
 
 export type ChangeDataCaptureStatusResponse = string;
-export const ChangeDataCaptureStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeDataCaptureStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ChangeDataCaptureStatusResponse",
@@ -947,7 +946,7 @@ export const ChangeDataCaptureStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of integration runtime. */
 export type IntegrationRuntimeType = "Managed" | "SelfHosted";
-export const IntegrationRuntimeType = S.String;
+const IntegrationRuntimeType = S.String;
 
 /** Azure Data Factory nested object which serves as a compute resource for activities. */
 export interface IntegrationRuntime {
@@ -960,7 +959,7 @@ export interface IntegrationRuntime {
   /** Managed Virtual Network reference (Managed integration runtimes). */
   managedVirtualNetwork?: unknown;
 }
-export const IntegrationRuntime = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IntegrationRuntimeType,
     description: S.optional(S.String),
@@ -976,7 +975,7 @@ export interface IntegrationRuntimeDebugResource {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const IntegrationRuntimeDebugResource = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeDebugResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: IntegrationRuntime,
@@ -1001,7 +1000,7 @@ export interface CreateDataFlowDebugSessionRequest {
   /** Set to use integration runtime setting for data flow debug session. */
   integrationRuntime?: IntegrationRuntimeDebugResource;
 }
-export const CreateDataFlowDebugSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataFlowDebugSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1029,7 +1028,7 @@ export interface CreateDataFlowDebugSessionResponse {
   /** The ID of data flow debug session. */
   sessionId?: string;
 }
-export const CreateDataFlowDebugSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataFlowDebugSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     sessionId: S.optional(S.String),
@@ -1054,7 +1053,7 @@ export interface CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest {
   /** The location of the data factory that the linked integration runtime belongs to. */
   dataFactoryLocation?: string;
 }
-export const CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1087,7 +1086,7 @@ export type IntegrationRuntimeState =
   | "Limited"
   | "Offline"
   | "AccessDenied";
-export const IntegrationRuntimeState = S.String;
+const IntegrationRuntimeState = S.String;
 
 /** Integration runtime status. */
 export interface IntegrationRuntimeStatus {
@@ -1098,7 +1097,7 @@ export interface IntegrationRuntimeStatus {
   /** The state of integration runtime. */
   state?: IntegrationRuntimeState;
 }
-export const IntegrationRuntimeStatus = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IntegrationRuntimeType,
     dataFactoryName: S.optional(S.String),
@@ -1113,7 +1112,7 @@ export interface IntegrationRuntimeStatusResponse {
   /** Integration runtime properties. */
   properties: IntegrationRuntimeStatus;
 }
-export const IntegrationRuntimeStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: IntegrationRuntimeStatus,
@@ -1123,7 +1122,7 @@ export const IntegrationRuntimeStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationRuntimeStatusResponse>;
 
 export type CreatePipelineRunRequestBodyMap = { [key: string]: unknown | undefined };
-export const CreatePipelineRunRequestBodyMap =
+const CreatePipelineRunRequestBodyMap =
   LinkedServiceReferenceParametersMap as any as S.Schema<CreatePipelineRunRequestBodyMap>;
 
 export interface CreatePipelineRunRequest {
@@ -1145,7 +1144,7 @@ export interface CreatePipelineRunRequest {
   startFromFailure?: boolean;
   body?: CreatePipelineRunRequestBodyMap;
 }
-export const CreatePipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1171,7 +1170,7 @@ export interface CreateRunResponse {
   /** Identifier of a run. */
   runId: string;
 }
-export const CreateRunResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String,
   }),
@@ -1179,7 +1178,7 @@ export const CreateRunResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags that can be used for describing the Credential. */
 export type CredentialAnnotationsList = Array<unknown>;
-export const CredentialAnnotationsList =
+const CredentialAnnotationsList =
   DataFlowAnnotationsList as any as S.Schema<CredentialAnnotationsList>;
 
 /** The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource. */
@@ -1193,7 +1192,7 @@ export interface Credential {
   /** Type-specific credential properties (polymorphic on `type`). */
   typeProperties?: unknown;
 }
-export const Credential = /*@__PURE__*/ S.suspend(() =>
+const Credential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     description: S.optional(S.String),
@@ -1214,7 +1213,7 @@ export interface CredentialOperationsCreateOrUpdateRequest {
   /** Properties of credentials. */
   properties: Credential;
 }
-export const CredentialOperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CredentialOperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1247,7 +1246,7 @@ export interface CredentialOperationsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const CredentialOperationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CredentialOperationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1268,7 +1267,7 @@ export interface DataFlowDebugSessionQueryByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const DataFlowDebugSessionQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DataFlowDebugSessionQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1306,7 +1305,7 @@ export interface DataFlowDebugSessionInfo {
   /** Last activity time of data flow debug session. */
   lastActivityTime?: string;
 }
-export const DataFlowDebugSessionInfo = /*@__PURE__*/ S.suspend(() =>
+const DataFlowDebugSessionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataFlowName: S.optional(S.String),
     computeType: S.optional(S.String),
@@ -1322,7 +1321,7 @@ export const DataFlowDebugSessionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataFlowDebugSessionInfo items on this page */
 export type QueryDataFlowDebugSessionsResponseValueList = Array<DataFlowDebugSessionInfo>;
-export const QueryDataFlowDebugSessionsResponseValueList = /*@__PURE__*/ S.Array(
+const QueryDataFlowDebugSessionsResponseValueList = /*@__PURE__*/ S.Array(
   DataFlowDebugSessionInfo,
 ) as any as S.Schema<QueryDataFlowDebugSessionsResponseValueList>;
 
@@ -1333,7 +1332,7 @@ export interface QueryDataFlowDebugSessionsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const QueryDataFlowDebugSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryDataFlowDebugSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: QueryDataFlowDebugSessionsResponseValueList,
     nextLink: S.optional(S.String),
@@ -1354,7 +1353,7 @@ export interface DataFlowsCreateOrUpdateRequest {
   /** Data flow properties. */
   properties: DataFlow;
 }
-export const DataFlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataFlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1387,7 +1386,7 @@ export interface DataFlowsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DataFlowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataFlowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1412,7 +1411,7 @@ export interface DatasetsCreateOrUpdateRequest {
   /** Dataset properties. */
   properties: Dataset;
 }
-export const DatasetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DatasetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1445,7 +1444,7 @@ export interface DatasetsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DatasetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DatasetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1468,7 +1467,7 @@ export interface DeleteChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-export const DeleteChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1487,9 +1486,9 @@ export const DeleteChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteChangeDataCaptureRequest>;
 
 export interface DeleteChangeDataCaptureResponse {}
-export const DeleteChangeDataCaptureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteChangeDataCaptureResponse" },
-) as any as S.Schema<DeleteChangeDataCaptureResponse>;
+const DeleteChangeDataCaptureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteChangeDataCaptureResponse",
+}) as any as S.Schema<DeleteChangeDataCaptureResponse>;
 
 export interface DeleteCredentialOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1501,7 +1500,7 @@ export interface DeleteCredentialOperationRequest {
   /** Credential name */
   credentialName: string;
 }
-export const DeleteCredentialOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1520,9 +1519,7 @@ export const DeleteCredentialOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCredentialOperationRequest>;
 
 export interface DeleteCredentialOperationResponse {}
-export const DeleteCredentialOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteCredentialOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCredentialOperationResponse",
 }) as any as S.Schema<DeleteCredentialOperationResponse>;
 
@@ -1536,7 +1533,7 @@ export interface DeleteDataFlowRequest {
   /** The data flow name. */
   dataFlowName: string;
 }
-export const DeleteDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1553,8 +1550,7 @@ export const DeleteDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDataFlowRequest" }) as any as S.Schema<DeleteDataFlowRequest>;
 
 export interface DeleteDataFlowResponse {}
-export const DeleteDataFlowResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeleteDataFlowResponse>;
+const DeleteDataFlowResponse = CancelPipelineRunResponse as any as S.Schema<DeleteDataFlowResponse>;
 
 export interface DeleteDataFlowDebugSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1566,7 +1562,7 @@ export interface DeleteDataFlowDebugSessionRequest {
   /** The ID of data flow debug session. */
   sessionId?: string;
 }
-export const DeleteDataFlowDebugSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataFlowDebugSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1585,7 +1581,7 @@ export const DeleteDataFlowDebugSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataFlowDebugSessionRequest>;
 
 export interface DeleteDataFlowDebugSessionResponse {}
-export const DeleteDataFlowDebugSessionResponse =
+const DeleteDataFlowDebugSessionResponse =
   DeleteCredentialOperationResponse as any as S.Schema<DeleteDataFlowDebugSessionResponse>;
 
 export interface DeleteDatasetRequest {
@@ -1598,7 +1594,7 @@ export interface DeleteDatasetRequest {
   /** The dataset name. */
   datasetName: string;
 }
-export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1615,8 +1611,7 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
 
 export interface DeleteDatasetResponse {}
-export const DeleteDatasetResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeleteDatasetResponse>;
+const DeleteDatasetResponse = CancelPipelineRunResponse as any as S.Schema<DeleteDatasetResponse>;
 
 export interface DeleteFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1626,7 +1621,7 @@ export interface DeleteFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const DeleteFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1642,8 +1637,7 @@ export const DeleteFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFactoryRequest" }) as any as S.Schema<DeleteFactoryRequest>;
 
 export interface DeleteFactoryResponse {}
-export const DeleteFactoryResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeleteFactoryResponse>;
+const DeleteFactoryResponse = CancelPipelineRunResponse as any as S.Schema<DeleteFactoryResponse>;
 
 export interface DeleteGlobalParameterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1655,7 +1649,7 @@ export interface DeleteGlobalParameterRequest {
   /** The global parameter name. */
   globalParameterName: string;
 }
-export const DeleteGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1674,7 +1668,7 @@ export const DeleteGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalParameterRequest>;
 
 export interface DeleteGlobalParameterResponse {}
-export const DeleteGlobalParameterResponse =
+const DeleteGlobalParameterResponse =
   CancelPipelineRunResponse as any as S.Schema<DeleteGlobalParameterResponse>;
 
 export interface DeleteIntegrationRuntimeRequest {
@@ -1687,7 +1681,7 @@ export interface DeleteIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1706,7 +1700,7 @@ export const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationRuntimeRequest>;
 
 export interface DeleteIntegrationRuntimeResponse {}
-export const DeleteIntegrationRuntimeResponse =
+const DeleteIntegrationRuntimeResponse =
   DeleteCredentialOperationResponse as any as S.Schema<DeleteIntegrationRuntimeResponse>;
 
 export interface DeleteIntegrationRuntimeNodeRequest {
@@ -1719,7 +1713,7 @@ export interface DeleteIntegrationRuntimeNodeRequest {
   /** The integration runtime node name. */
   nodeName: string;
 }
-export const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1739,7 +1733,7 @@ export const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>;
 
 export interface DeleteIntegrationRuntimeNodeResponse {}
-export const DeleteIntegrationRuntimeNodeResponse =
+const DeleteIntegrationRuntimeNodeResponse =
   DeleteCredentialOperationResponse as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>;
 
 export interface DeleteLinkedServiceRequest {
@@ -1752,7 +1746,7 @@ export interface DeleteLinkedServiceRequest {
   /** The linked service name. */
   linkedServiceName: string;
 }
-export const DeleteLinkedServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkedServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1771,7 +1765,7 @@ export const DeleteLinkedServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkedServiceRequest>;
 
 export interface DeleteLinkedServiceResponse {}
-export const DeleteLinkedServiceResponse =
+const DeleteLinkedServiceResponse =
   CancelPipelineRunResponse as any as S.Schema<DeleteLinkedServiceResponse>;
 
 export interface DeleteManagedPrivateEndpointRequest {
@@ -1786,7 +1780,7 @@ export interface DeleteManagedPrivateEndpointRequest {
   /** Managed private endpoint name */
   managedPrivateEndpointName: string;
 }
-export const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1806,7 +1800,7 @@ export const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedPrivateEndpointRequest>;
 
 export interface DeleteManagedPrivateEndpointResponse {}
-export const DeleteManagedPrivateEndpointResponse =
+const DeleteManagedPrivateEndpointResponse =
   DeleteCredentialOperationResponse as any as S.Schema<DeleteManagedPrivateEndpointResponse>;
 
 export interface DeletePipelineRequest {
@@ -1819,7 +1813,7 @@ export interface DeletePipelineRequest {
   /** The pipeline name. */
   pipelineName: string;
 }
-export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1836,8 +1830,7 @@ export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePipelineRequest" }) as any as S.Schema<DeletePipelineRequest>;
 
 export interface DeletePipelineResponse {}
-export const DeletePipelineResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeletePipelineResponse>;
+const DeletePipelineResponse = CancelPipelineRunResponse as any as S.Schema<DeletePipelineResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1849,7 +1842,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1868,7 +1861,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   DeleteCredentialOperationResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteTriggerRequest {
@@ -1881,7 +1874,7 @@ export interface DeleteTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1898,8 +1891,7 @@ export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTriggerRequest" }) as any as S.Schema<DeleteTriggerRequest>;
 
 export interface DeleteTriggerResponse {}
-export const DeleteTriggerResponse =
-  CancelPipelineRunResponse as any as S.Schema<DeleteTriggerResponse>;
+const DeleteTriggerResponse = CancelPipelineRunResponse as any as S.Schema<DeleteTriggerResponse>;
 
 export interface DisableIntegrationRuntimeInteractiveQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1911,7 +1903,7 @@ export interface DisableIntegrationRuntimeInteractiveQueryRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const DisableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1943,7 +1935,7 @@ export interface DisableIntegrationRuntimeInteractiveQueryResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DisableIntegrationRuntimeInteractiveQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableIntegrationRuntimeInteractiveQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1968,7 +1960,7 @@ export interface EnableIntegrationRuntimeInteractiveQueryRequest {
   /** The allowed idle time for interactive authoring. */
   autoTerminationMinutes?: number;
 }
-export const EnableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2001,7 +1993,7 @@ export interface EnableIntegrationRuntimeInteractiveQueryResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const EnableIntegrationRuntimeInteractiveQueryResponse =
+const EnableIntegrationRuntimeInteractiveQueryResponse =
   DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>;
 
 /** The command type. */
@@ -2009,11 +2001,11 @@ export type DataFlowDebugCommandType =
   | "executePreviewQuery"
   | "executeStatisticsQuery"
   | "executeExpressionQuery";
-export const DataFlowDebugCommandType = S.String;
+const DataFlowDebugCommandType = S.String;
 
 /** Array of column names. */
 export type DataFlowDebugCommandPayloadColumnsList = Array<string>;
-export const DataFlowDebugCommandPayloadColumnsList = /*@__PURE__*/ S.Array(
+const DataFlowDebugCommandPayloadColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataFlowDebugCommandPayloadColumnsList>;
 
@@ -2028,7 +2020,7 @@ export interface DataFlowDebugCommandPayload {
   /** The expression which is used for preview. */
   expression?: string;
 }
-export const DataFlowDebugCommandPayload = /*@__PURE__*/ S.suspend(() =>
+const DataFlowDebugCommandPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamName: S.String,
     rowLimits: S.optional(S.Number),
@@ -2053,7 +2045,7 @@ export interface ExecuteDataFlowDebugSessionCommandRequest {
   /** The command payload object. */
   commandPayload?: DataFlowDebugCommandPayload;
 }
-export const ExecuteDataFlowDebugSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteDataFlowDebugSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2080,7 +2072,7 @@ export interface DataFlowDebugCommandResponse {
   /** The result data of data preview, statistics or expression preview. */
   data?: string;
 }
-export const DataFlowDebugCommandResponse = /*@__PURE__*/ S.suspend(() =>
+const DataFlowDebugCommandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     data: S.optional(S.String),
@@ -2096,7 +2088,7 @@ export interface ExposureControlRequest {
   /** The feature type. */
   featureType?: string;
 }
-export const ExposureControlRequest = /*@__PURE__*/ S.suspend(() =>
+const ExposureControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     featureName: S.optional(S.String),
     featureType: S.optional(S.String),
@@ -2106,7 +2098,7 @@ export const ExposureControlRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of exposure control features. */
 export type ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
   Array<ExposureControlRequest>;
-export const ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
+const ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
   /*@__PURE__*/ S.Array(
     ExposureControlRequest,
   ) as any as S.Schema<ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList>;
@@ -2121,7 +2113,7 @@ export interface ExposureControlQueryFeatureValuesByFactoryRequest {
   /** List of exposure control features. */
   exposureControlRequests: ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList;
 }
-export const ExposureControlQueryFeatureValuesByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ExposureControlQueryFeatureValuesByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2147,7 +2139,7 @@ export interface ExposureControlResponse {
   /** The feature value. */
   value?: string;
 }
-export const ExposureControlResponse = /*@__PURE__*/ S.suspend(() =>
+const ExposureControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     featureName: S.optional(S.String),
     value: S.optional(S.String),
@@ -2157,7 +2149,7 @@ export const ExposureControlResponse = /*@__PURE__*/ S.suspend(() =>
 /** List of exposure control feature values. */
 export type ExposureControlBatchResponseExposureControlResponsesList =
   Array<ExposureControlResponse>;
-export const ExposureControlBatchResponseExposureControlResponsesList = /*@__PURE__*/ S.Array(
+const ExposureControlBatchResponseExposureControlResponsesList = /*@__PURE__*/ S.Array(
   ExposureControlResponse,
 ) as any as S.Schema<ExposureControlBatchResponseExposureControlResponsesList>;
 
@@ -2166,7 +2158,7 @@ export interface ExposureControlBatchResponse {
   /** List of exposure control feature values. */
   exposureControlResponses: ExposureControlBatchResponseExposureControlResponsesList;
 }
-export const ExposureControlBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const ExposureControlBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exposureControlResponses: ExposureControlBatchResponseExposureControlResponsesList,
   }),
@@ -2191,7 +2183,7 @@ export interface FactoryRepoConfiguration {
   /** Disable manual publish operation in ADF studio to favor automated publish. */
   disablePublish?: boolean;
 }
-export const FactoryRepoConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FactoryRepoConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     accountName: S.String,
@@ -2213,7 +2205,7 @@ export interface FactoriesConfigureFactoryRepoRequest {
   /** Git repo information of the factory. */
   repoConfiguration?: FactoryRepoConfiguration;
 }
-export const FactoriesConfigureFactoryRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const FactoriesConfigureFactoryRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationId: S.String.pipe(T.Label()),
@@ -2236,7 +2228,7 @@ export interface PurviewConfiguration {
   /** Purview resource id. */
   purviewResourceId?: string;
 }
-export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purviewResourceId: S.optional(S.String),
   }),
@@ -2244,7 +2236,7 @@ export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Global Parameter type. */
 export type GlobalParameterType = "Object" | "String" | "Int" | "Float" | "Bool" | "Array";
-export const GlobalParameterType = S.String;
+const GlobalParameterType = S.String;
 
 /** Definition of a single parameter for an entity. */
 export interface GlobalParameterSpecification {
@@ -2253,7 +2245,7 @@ export interface GlobalParameterSpecification {
   /** Value of parameter. */
   value: unknown;
 }
-export const GlobalParameterSpecification = /*@__PURE__*/ S.suspend(() =>
+const GlobalParameterSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: GlobalParameterType,
     value: S.Unknown,
@@ -2266,7 +2258,7 @@ export const GlobalParameterSpecification = /*@__PURE__*/ S.suspend(() =>
 export type FactoryPropertiesGlobalParametersMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const FactoryPropertiesGlobalParametersMap = /*@__PURE__*/ S.Record(
+const FactoryPropertiesGlobalParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   GlobalParameterSpecification,
 ) as any as S.Schema<FactoryPropertiesGlobalParametersMap>;
@@ -2276,7 +2268,7 @@ export interface CMKIdentityDefinition {
   /** The resource id of the user assigned identity to authenticate to customer's key vault. */
   userAssignedIdentity?: string;
 }
-export const CMKIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
+const CMKIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentity: S.optional(S.String),
   }),
@@ -2293,7 +2285,7 @@ export interface EncryptionConfiguration {
   /** User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used. */
   identity?: CMKIdentityDefinition;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.String,
     vaultBaseUrl: S.String,
@@ -2304,7 +2296,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether or not public network access is allowed for the data factory. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-export const PublicNetworkAccess = S.String;
+const PublicNetworkAccess = S.String;
 
 /** Factory resource properties. */
 export interface FactoryProperties {
@@ -2325,7 +2317,7 @@ export interface FactoryProperties {
   /** Whether or not public network access is allowed for the data factory. */
   publicNetworkAccess?: PublicNetworkAccess;
 }
-export const FactoryProperties = /*@__PURE__*/ S.suspend(() =>
+const FactoryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2340,11 +2332,11 @@ export const FactoryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type FactoryIdentityType = "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
-export const FactoryIdentityType = S.String;
+const FactoryIdentityType = S.String;
 
 /** List of user assigned identities for the factory. */
 export type FactoryIdentityUserAssignedIdentitiesMap = { [key: string]: unknown | undefined };
-export const FactoryIdentityUserAssignedIdentitiesMap =
+const FactoryIdentityUserAssignedIdentitiesMap =
   LinkedServiceReferenceParametersMap as any as S.Schema<FactoryIdentityUserAssignedIdentitiesMap>;
 
 /** Identity properties of the factory resource. */
@@ -2358,7 +2350,7 @@ export interface FactoryIdentity {
   /** List of user assigned identities for the factory. */
   userAssignedIdentities?: FactoryIdentityUserAssignedIdentitiesMap;
 }
-export const FactoryIdentity = /*@__PURE__*/ S.suspend(() =>
+const FactoryIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: FactoryIdentityType,
     principalId: S.optional(S.String),
@@ -2369,7 +2361,7 @@ export const FactoryIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoriesConfigureFactoryRepoResponseTagsMap = { [key: string]: string | undefined };
-export const FactoriesConfigureFactoryRepoResponseTagsMap = /*@__PURE__*/ S.Record(
+const FactoriesConfigureFactoryRepoResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<FactoriesConfigureFactoryRepoResponseTagsMap>;
@@ -2394,7 +2386,7 @@ export interface FactoriesConfigureFactoryRepoResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const FactoriesConfigureFactoryRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const FactoriesConfigureFactoryRepoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2414,7 +2406,7 @@ export const FactoriesConfigureFactoryRepoResponse = /*@__PURE__*/ S.suspend(() 
 export type FactoryPropertiesInputGlobalParametersMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const FactoryPropertiesInputGlobalParametersMap =
+const FactoryPropertiesInputGlobalParametersMap =
   FactoryPropertiesGlobalParametersMap as any as S.Schema<FactoryPropertiesInputGlobalParametersMap>;
 
 /** Factory resource properties. */
@@ -2430,7 +2422,7 @@ export interface FactoryPropertiesInput {
   /** Whether or not public network access is allowed for the data factory. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const FactoryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FactoryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purviewConfiguration: S.optional(PurviewConfiguration),
     repoConfiguration: S.optional(FactoryRepoConfiguration),
@@ -2442,7 +2434,7 @@ export const FactoryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoriesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FactoriesCreateOrUpdateRequestTagsMap =
+const FactoriesCreateOrUpdateRequestTagsMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoriesCreateOrUpdateRequestTagsMap>;
 
 export interface FactoriesCreateOrUpdateRequest {
@@ -2461,7 +2453,7 @@ export interface FactoriesCreateOrUpdateRequest {
   /** The resource tags. */
   tags?: FactoriesCreateOrUpdateRequestTagsMap;
 }
-export const FactoriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FactoriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2484,9 +2476,6 @@ export const FactoriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoriesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FactoriesCreateOrUpdateResponseTagsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoriesCreateOrUpdateResponseTagsMap>;
-
 export interface FactoriesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2507,7 +2496,7 @@ export interface FactoriesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const FactoriesCreateOrUpdateResponse =
+const FactoriesCreateOrUpdateResponse =
   FactoriesConfigureFactoryRepoResponse as any as S.Schema<FactoriesCreateOrUpdateResponse>;
 
 export interface GetChangeDataCaptureRequest {
@@ -2520,7 +2509,7 @@ export interface GetChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-export const GetChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2552,7 +2541,7 @@ export interface GetChangeDataCaptureResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetChangeDataCaptureResponse =
+const GetChangeDataCaptureResponse =
   ChangeDataCaptureCreateOrUpdateResponse as any as S.Schema<GetChangeDataCaptureResponse>;
 
 export interface GetCredentialOperationRequest {
@@ -2565,7 +2554,7 @@ export interface GetCredentialOperationRequest {
   /** Credential name */
   credentialName: string;
 }
-export const GetCredentialOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2597,7 +2586,7 @@ export interface GetCredentialOperationResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetCredentialOperationResponse =
+const GetCredentialOperationResponse =
   CredentialOperationsCreateOrUpdateResponse as any as S.Schema<GetCredentialOperationResponse>;
 
 export interface GetDataFlowRequest {
@@ -2610,7 +2599,7 @@ export interface GetDataFlowRequest {
   /** The data flow name. */
   dataFlowName: string;
 }
-export const GetDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2640,7 +2629,7 @@ export interface GetDataFlowResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetDataFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2661,7 +2650,7 @@ export interface GetDatasetRequest {
   /** The dataset name. */
   datasetName: string;
 }
-export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2691,7 +2680,7 @@ export interface GetDatasetResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2712,7 +2701,7 @@ export interface GetExposureControlFeatureValueRequest {
   /** The feature type. */
   featureType?: string;
 }
-export const GetExposureControlFeatureValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExposureControlFeatureValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationId: S.String.pipe(T.Label()),
@@ -2742,7 +2731,7 @@ export interface GetExposureControlFeatureValueByFactoryRequest {
   /** The feature type. */
   featureType?: string;
 }
-export const GetExposureControlFeatureValueByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExposureControlFeatureValueByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2769,7 +2758,7 @@ export interface GetFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const GetFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2786,7 +2775,7 @@ export const GetFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetFactoryResponseTagsMap = { [key: string]: string | undefined };
-export const GetFactoryResponseTagsMap =
+const GetFactoryResponseTagsMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<GetFactoryResponseTagsMap>;
 
 export interface GetFactoryResponse {
@@ -2809,7 +2798,7 @@ export interface GetFactoryResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetFactoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFactoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2841,7 +2830,7 @@ export interface GetFactoryDataPlaneAccessRequest {
   /** Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours. */
   expireTime?: string;
 }
-export const GetFactoryDataPlaneAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFactoryDataPlaneAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2876,7 +2865,7 @@ export interface UserAccessPolicy {
   /** Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours. */
   expireTime?: string;
 }
-export const UserAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const UserAccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(S.String),
     accessResourcePath: S.optional(S.String),
@@ -2895,7 +2884,7 @@ export interface AccessPolicyResponse {
   /** Data Plane service base URL. */
   dataPlaneUrl?: string;
 }
-export const AccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(UserAccessPolicy),
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2910,7 +2899,7 @@ export interface GitHubClientSecret {
   /** Bring your own app client secret name in AKV. */
   byoaSecretName?: string;
 }
-export const GitHubClientSecret = /*@__PURE__*/ S.suspend(() =>
+const GitHubClientSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     byoaSecretAkvUrl: S.optional(S.String),
     byoaSecretName: S.optional(S.String),
@@ -2933,7 +2922,7 @@ export interface GetFactoryGitHubAccessTokenRequest {
   /** GitHub access token base URL. */
   gitHubAccessTokenBaseUrl: string;
 }
-export const GetFactoryGitHubAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFactoryGitHubAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2959,7 +2948,7 @@ export interface GitHubAccessTokenResponse {
   /** GitHub access token. */
   gitHubAccessToken?: string;
 }
-export const GitHubAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitHubAccessToken: S.optional(S.String),
   }),
@@ -2977,7 +2966,7 @@ export interface GetGlobalParameterRequest {
   /** The global parameter name. */
   globalParameterName: string;
 }
-export const GetGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2999,7 +2988,7 @@ export const GetGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetGlobalParameterResponsePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GetGlobalParameterResponsePropertiesMap =
+const GetGlobalParameterResponsePropertiesMap =
   FactoryPropertiesGlobalParametersMap as any as S.Schema<GetGlobalParameterResponsePropertiesMap>;
 
 export interface GetGlobalParameterResponse {
@@ -3016,7 +3005,7 @@ export interface GetGlobalParameterResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetGlobalParameterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalParameterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3039,7 +3028,7 @@ export interface GetIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3071,7 +3060,7 @@ export interface GetIntegrationRuntimeResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetIntegrationRuntimeResponse =
+const GetIntegrationRuntimeResponse =
   DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<GetIntegrationRuntimeResponse>;
 
 export interface GetIntegrationRuntimeConnectionInfoRequest {
@@ -3084,7 +3073,7 @@ export interface GetIntegrationRuntimeConnectionInfoRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeConnectionInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeConnectionInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3117,7 +3106,7 @@ export interface IntegrationRuntimeConnectionInfo {
   /** Whether the identity certificate is expired. */
   isIdentityCertExprired?: boolean;
 }
-export const IntegrationRuntimeConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceToken: S.optional(S.String),
     identityCertThumbprint: S.optional(S.String),
@@ -3140,7 +3129,7 @@ export interface GetIntegrationRuntimeMonitoringDataRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeMonitoringDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeMonitoringDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3177,7 +3166,7 @@ export interface IntegrationRuntimeNodeMonitoringData {
   /** Received bytes on the integration runtime node. */
   receivedBytes?: number;
 }
-export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.optional(S.String),
     availableMemoryInMB: S.optional(S.Number),
@@ -3194,7 +3183,7 @@ export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(() =
 
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList = Array<IntegrationRuntimeNodeMonitoringData>;
-export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
+const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeNodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
 
@@ -3205,7 +3194,7 @@ export interface IntegrationRuntimeMonitoringData {
   /** Integration runtime node monitoring data. */
   nodes?: IntegrationRuntimeMonitoringDataNodesList;
 }
-export const IntegrationRuntimeMonitoringData = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeMonitoringData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nodes: S.optional(IntegrationRuntimeMonitoringDataNodesList),
@@ -3224,7 +3213,7 @@ export interface GetIntegrationRuntimeNodeRequest {
   /** The integration runtime node name. */
   nodeName: string;
 }
-export const GetIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3252,16 +3241,16 @@ export type SelfHostedIntegrationRuntimeNodeStatus =
   | "Upgrading"
   | "Initializing"
   | "InitializeFailed";
-export const SelfHostedIntegrationRuntimeNodeStatus = S.String;
+const SelfHostedIntegrationRuntimeNodeStatus = S.String;
 
 /** The integration runtime capabilities dictionary */
 export type SelfHostedIntegrationRuntimeNodeCapabilitiesMap = { [key: string]: string | undefined };
-export const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
+const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<SelfHostedIntegrationRuntimeNodeCapabilitiesMap>;
 
 /** The result of the last integration runtime node update. */
 export type IntegrationRuntimeUpdateResult = "None" | "Succeed" | "Fail";
-export const IntegrationRuntimeUpdateResult = S.String;
+const IntegrationRuntimeUpdateResult = S.String;
 
 /** Properties of Self-hosted integration runtime node. */
 export interface SelfHostedIntegrationRuntimeNode {
@@ -3302,7 +3291,7 @@ export interface SelfHostedIntegrationRuntimeNode {
   /** The maximum concurrent jobs in this integration runtime. */
   maxConcurrentJobs?: number;
 }
-export const SelfHostedIntegrationRuntimeNode = /*@__PURE__*/ S.suspend(() =>
+const SelfHostedIntegrationRuntimeNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.optional(S.String),
     machineName: S.optional(S.String),
@@ -3337,7 +3326,7 @@ export interface GetIntegrationRuntimeNodeIpAddressRequest {
   /** The integration runtime node name. */
   nodeName: string;
 }
-export const GetIntegrationRuntimeNodeIpAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeNodeIpAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3361,7 +3350,7 @@ export interface IntegrationRuntimeNodeIpAddress {
   /** The IP address of self-hosted integration runtime node. */
   ipAddress?: string;
 }
-export const IntegrationRuntimeNodeIpAddress = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeNodeIpAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
   }),
@@ -3381,7 +3370,7 @@ export interface GetIntegrationRuntimeObjectMetadataRequest {
   /** Metadata path. */
   metadataPath?: string;
 }
-export const GetIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3402,7 +3391,7 @@ export const GetIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspen
 
 /** The type of SSIS object metadata. */
 export type SsisObjectMetadataType = "Folder" | "Project" | "Package" | "Environment";
-export const SsisObjectMetadataType = S.String;
+const SsisObjectMetadataType = S.String;
 
 /** SSIS object metadata. */
 export interface SsisObjectMetadata {
@@ -3415,7 +3404,7 @@ export interface SsisObjectMetadata {
   /** Metadata description. */
   description?: string;
 }
-export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
+const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SsisObjectMetadataType,
     id: S.optional(S.Number),
@@ -3426,7 +3415,7 @@ export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The SsisObjectMetadata items on this page */
 export type SsisObjectMetadataListResponseValueList = Array<SsisObjectMetadata>;
-export const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
+const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
   SsisObjectMetadata,
 ) as any as S.Schema<SsisObjectMetadataListResponseValueList>;
 
@@ -3437,7 +3426,7 @@ export interface SsisObjectMetadataListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SsisObjectMetadataListResponse = /*@__PURE__*/ S.suspend(() =>
+const SsisObjectMetadataListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SsisObjectMetadataListResponseValueList,
     nextLink: S.optional(S.String),
@@ -3456,7 +3445,7 @@ export interface GetIntegrationRuntimeStatusRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3484,7 +3473,7 @@ export interface GetLinkedServiceRequest {
   /** The linked service name. */
   linkedServiceName: string;
 }
-export const GetLinkedServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3514,7 +3503,7 @@ export interface GetLinkedServiceResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetLinkedServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3537,7 +3526,7 @@ export interface GetManagedPrivateEndpointRequest {
   /** Managed private endpoint name */
   managedPrivateEndpointName: string;
 }
-export const GetManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3565,7 +3554,7 @@ export interface ConnectionStateProperties {
   /** The approval status */
   status?: string;
 }
-export const ConnectionStateProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionStateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionsRequired: S.optional(S.String),
     description: S.optional(S.String),
@@ -3577,7 +3566,7 @@ export const ConnectionStateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Fully qualified domain names */
 export type ManagedPrivateEndpointFqdnsList = Array<string>;
-export const ManagedPrivateEndpointFqdnsList =
+const ManagedPrivateEndpointFqdnsList =
   DataFlowDebugCommandPayloadColumnsList as any as S.Schema<ManagedPrivateEndpointFqdnsList>;
 
 /** Properties of a managed private endpoint */
@@ -3601,7 +3590,7 @@ export interface ManagedPrivateEndpoint {
   /** Private IP address of the endpoint in the managed virtual network. */
   ipAddress?: string;
 }
-export const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionState: S.optional(ConnectionStateProperties),
     fqdns: S.optional(ManagedPrivateEndpointFqdnsList),
@@ -3629,7 +3618,7 @@ export interface GetManagedPrivateEndpointResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3652,7 +3641,7 @@ export interface GetManagedVirtualNetworkRequest {
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
 }
-export const GetManagedVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3677,7 +3666,7 @@ export interface ManagedVirtualNetwork {
   /** Managed Virtual Network alias. */
   alias?: string;
 }
-export const ManagedVirtualNetwork = /*@__PURE__*/ S.suspend(() =>
+const ManagedVirtualNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vNetId: S.optional(S.String),
     alias: S.optional(S.String),
@@ -3698,7 +3687,7 @@ export interface GetManagedVirtualNetworkResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetManagedVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagedVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3721,7 +3710,7 @@ export interface GetPipelineRequest {
   /** The pipeline name. */
   pipelineName: string;
 }
-export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3739,18 +3728,18 @@ export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Activity state. This is an optional property and if not provided, the state will be Active by default. */
 export type ActivityState = "Active" | "Inactive";
-export const ActivityState = S.String;
+const ActivityState = S.String;
 
 /** Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default. */
 export type ActivityOnInactiveMarkAs = "Succeeded" | "Failed" | "Skipped";
-export const ActivityOnInactiveMarkAs = S.String;
+const ActivityOnInactiveMarkAs = S.String;
 
 export type DependencyCondition = "Succeeded" | "Failed" | "Skipped" | "Completed";
-export const DependencyCondition = S.String;
+const DependencyCondition = S.String;
 
 /** Match-Condition for the dependency. */
 export type ActivityDependencyDependencyConditionsList = Array<DependencyCondition | (string & {})>;
-export const ActivityDependencyDependencyConditionsList = /*@__PURE__*/ S.Array(
+const ActivityDependencyDependencyConditionsList = /*@__PURE__*/ S.Array(
   DependencyCondition,
 ) as any as S.Schema<ActivityDependencyDependencyConditionsList>;
 
@@ -3761,7 +3750,7 @@ export interface ActivityDependency {
   /** Match-Condition for the dependency. */
   dependencyConditions: ActivityDependencyDependencyConditionsList;
 }
-export const ActivityDependency = /*@__PURE__*/ S.suspend(() =>
+const ActivityDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activity: S.String,
     dependencyConditions: ActivityDependencyDependencyConditionsList,
@@ -3770,7 +3759,7 @@ export const ActivityDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Activity depends on condition. */
 export type ActivityDependsOnList = Array<ActivityDependency>;
-export const ActivityDependsOnList = /*@__PURE__*/ S.Array(
+const ActivityDependsOnList = /*@__PURE__*/ S.Array(
   ActivityDependency,
 ) as any as S.Schema<ActivityDependsOnList>;
 
@@ -3781,7 +3770,7 @@ export interface UserProperty {
   /** User property value. Type: string (or Expression with resultType string). */
   value: unknown;
 }
-export const UserProperty = /*@__PURE__*/ S.suspend(() =>
+const UserProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.Unknown,
@@ -3790,7 +3779,7 @@ export const UserProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Activity user properties. */
 export type ActivityUserPropertiesList = Array<UserProperty>;
-export const ActivityUserPropertiesList = /*@__PURE__*/ S.Array(
+const ActivityUserPropertiesList = /*@__PURE__*/ S.Array(
   UserProperty,
 ) as any as S.Schema<ActivityUserPropertiesList>;
 
@@ -3821,7 +3810,7 @@ export interface Activity {
   /** List of outputs for the activity (Copy / data movement activities). */
   outputs?: unknown;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -3840,18 +3829,16 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 
 /** List of activities in pipeline. */
 export type PipelineActivitiesList = Array<Activity>;
-export const PipelineActivitiesList = /*@__PURE__*/ S.Array(
+const PipelineActivitiesList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<PipelineActivitiesList>;
 
 /** List of parameters for pipeline. */
 export type PipelineParametersMap = { [key: string]: ParameterSpecification | undefined };
-export const PipelineParametersMap = DatasetParametersMap as any as S.Schema<PipelineParametersMap>;
+const PipelineParametersMap = DatasetParametersMap as any as S.Schema<PipelineParametersMap>;
 
 /** Variable type. */
 export type VariableType = "String" | "Bool" | "Array";
-export const VariableType = S.String;
-
 /** Definition of a single variable for a Pipeline. */
 export interface VariableSpecification {
   /** Variable type. */
@@ -3859,21 +3846,17 @@ export interface VariableSpecification {
   /** Default value of variable. */
   defaultValue?: unknown;
 }
-export const VariableSpecification =
-  ParameterSpecification as any as S.Schema<VariableSpecification>;
-
 /** List of variables for pipeline. */
 export type PipelineVariablesMap = { [key: string]: VariableSpecification | undefined };
-export const PipelineVariablesMap = DatasetParametersMap as any as S.Schema<PipelineVariablesMap>;
+const PipelineVariablesMap = DatasetParametersMap as any as S.Schema<PipelineVariablesMap>;
 
 /** List of tags that can be used for describing the Pipeline. */
 export type PipelineAnnotationsList = Array<unknown>;
-export const PipelineAnnotationsList =
-  DataFlowAnnotationsList as any as S.Schema<PipelineAnnotationsList>;
+const PipelineAnnotationsList = DataFlowAnnotationsList as any as S.Schema<PipelineAnnotationsList>;
 
 /** Dimensions emitted by Pipeline. */
 export type PipelineRunDimensionsMap = { [key: string]: unknown | undefined };
-export const PipelineRunDimensionsMap =
+const PipelineRunDimensionsMap =
   LinkedServiceReferenceParametersMap as any as S.Schema<PipelineRunDimensionsMap>;
 
 /** The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level. */
@@ -3881,14 +3864,14 @@ export interface PipelineFolder {
   /** The name of the folder that this Pipeline is in. */
   name?: string;
 }
-export const PipelineFolder = DataFlowFolder as any as S.Schema<PipelineFolder>;
+const PipelineFolder = DataFlowFolder as any as S.Schema<PipelineFolder>;
 
 /** Pipeline ElapsedTime Metric Policy. */
 export interface PipelineElapsedTimeMetricPolicy {
   /** TimeSpan value, after which an Azure Monitoring Metric is fired. */
   duration?: unknown;
 }
-export const PipelineElapsedTimeMetricPolicy = /*@__PURE__*/ S.suspend(() =>
+const PipelineElapsedTimeMetricPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.Unknown),
   }),
@@ -3901,7 +3884,7 @@ export interface PipelinePolicy {
   /** Pipeline ElapsedTime Metric Policy. */
   elapsedTimeMetric?: PipelineElapsedTimeMetricPolicy;
 }
-export const PipelinePolicy = /*@__PURE__*/ S.suspend(() =>
+const PipelinePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elapsedTimeMetric: S.optional(PipelineElapsedTimeMetricPolicy),
   }),
@@ -3928,7 +3911,7 @@ export interface Pipeline {
   /** Pipeline Policy. */
   policy?: PipelinePolicy;
 }
-export const Pipeline = /*@__PURE__*/ S.suspend(() =>
+const Pipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     activities: S.optional(PipelineActivitiesList),
@@ -3956,7 +3939,7 @@ export interface GetPipelineResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3976,7 +3959,7 @@ export interface GetPipelineRunRequest {
   /** The pipeline run identifier. */
   runId: string;
 }
-export const GetPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3994,12 +3977,12 @@ export const GetPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The full or partial list of parameter name, value pair used in the pipeline run. */
 export type PipelineRunParametersMap = { [key: string]: string | undefined };
-export const PipelineRunParametersMap =
+const PipelineRunParametersMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<PipelineRunParametersMap>;
 
 /** Run dimensions emitted by Pipeline run. */
 export type PipelineRunRunDimensionsMap = { [key: string]: string | undefined };
-export const PipelineRunRunDimensionsMap =
+const PipelineRunRunDimensionsMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<PipelineRunRunDimensionsMap>;
 
 /** Provides entity name and id that started the pipeline run. */
@@ -4015,7 +3998,7 @@ export interface PipelineRunInvokedBy {
   /** The run id of the pipeline that triggered the run, if any. */
   pipelineRunId?: string;
 }
-export const PipelineRunInvokedBy = /*@__PURE__*/ S.suspend(() =>
+const PipelineRunInvokedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -4054,7 +4037,7 @@ export interface PipelineRun {
   /** The message from a pipeline run. */
   message?: string;
 }
-export const PipelineRun = /*@__PURE__*/ S.suspend(() =>
+const PipelineRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     runGroupId: S.optional(S.String),
@@ -4082,7 +4065,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4104,7 +4087,7 @@ export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ArmIdWrapper {
   id?: string;
 }
-export const ArmIdWrapper = /*@__PURE__*/ S.suspend(() =>
+const ArmIdWrapper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -4119,7 +4102,7 @@ export interface PrivateLinkConnectionState {
   /** ActionsRequired for a private link connection */
   actionsRequired?: string;
 }
-export const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -4137,7 +4120,7 @@ export interface RemotePrivateEndpointConnection {
   /** The state of a private link connection */
   privateLinkServiceConnectionState?: PrivateLinkConnectionState;
 }
-export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     privateEndpoint: S.optional(ArmIdWrapper),
@@ -4161,7 +4144,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4182,7 +4165,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4201,12 +4184,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** RequiredMembers of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   DataFlowDebugCommandPayloadColumnsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** RequiredZoneNames of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   DataFlowDebugCommandPayloadColumnsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource */
@@ -4218,7 +4201,7 @@ export interface PrivateLinkResourceProperties {
   /** RequiredZoneNames of a private link resource */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -4241,7 +4224,7 @@ export interface PrivateLinkResource {
   /** Core resource properties */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4252,7 +4235,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateLinkResource" }) as any as S.Schema<PrivateLinkResource>;
 
 export type PrivateLinkResourcesWrapperValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesWrapperValueList>;
 
@@ -4260,7 +4243,7 @@ export const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ S.Array(
 export interface PrivateLinkResourcesWrapper {
   value: PrivateLinkResourcesWrapperValueList;
 }
-export const PrivateLinkResourcesWrapper = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourcesWrapper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourcesWrapperValueList,
   }),
@@ -4278,7 +4261,7 @@ export interface GetTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4296,12 +4279,11 @@ export const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Enumerates possible state of Triggers. */
 export type TriggerRuntimeState = "Started" | "Stopped" | "Disabled";
-export const TriggerRuntimeState = S.String;
+const TriggerRuntimeState = S.String;
 
 /** List of tags that can be used for describing the trigger. */
 export type TriggerAnnotationsList = Array<unknown>;
-export const TriggerAnnotationsList =
-  DataFlowAnnotationsList as any as S.Schema<TriggerAnnotationsList>;
+const TriggerAnnotationsList = DataFlowAnnotationsList as any as S.Schema<TriggerAnnotationsList>;
 
 /** Azure data factory nested object which contains information about creating pipeline run */
 export interface Trigger {
@@ -4320,7 +4302,7 @@ export interface Trigger {
   /** Pipeline for which runs are created (TumblingWindowTrigger / ChainingTrigger). */
   pipeline?: unknown;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
+const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     description: S.optional(S.String),
@@ -4346,7 +4328,7 @@ export interface GetTriggerResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4367,7 +4349,7 @@ export interface GetTriggerEventSubscriptionStatusRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const GetTriggerEventSubscriptionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTriggerEventSubscriptionStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4392,7 +4374,7 @@ export type EventSubscriptionStatus =
   | "Deprovisioning"
   | "Disabled"
   | "Unknown";
-export const EventSubscriptionStatus = S.String;
+const EventSubscriptionStatus = S.String;
 
 /** Defines the response of a trigger subscription operation. */
 export interface TriggerSubscriptionOperationStatus {
@@ -4401,7 +4383,7 @@ export interface TriggerSubscriptionOperationStatus {
   /** Event Subscription Status. */
   status?: EventSubscriptionStatus;
 }
-export const TriggerSubscriptionOperationStatus = /*@__PURE__*/ S.suspend(() =>
+const TriggerSubscriptionOperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerName: S.optional(S.String),
     status: S.optional(EventSubscriptionStatus),
@@ -4414,7 +4396,7 @@ export const TriggerSubscriptionOperationStatus = /*@__PURE__*/ S.suspend(() =>
 export type GlobalParametersCreateOrUpdateRequestPropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GlobalParametersCreateOrUpdateRequestPropertiesMap =
+const GlobalParametersCreateOrUpdateRequestPropertiesMap =
   FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParametersCreateOrUpdateRequestPropertiesMap>;
 
 export interface GlobalParametersCreateOrUpdateRequest {
@@ -4429,7 +4411,7 @@ export interface GlobalParametersCreateOrUpdateRequest {
   /** Properties of the global parameter. */
   properties: GlobalParametersCreateOrUpdateRequestPropertiesMap;
 }
-export const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4452,9 +4434,6 @@ export const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 export type GlobalParametersCreateOrUpdateResponsePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GlobalParametersCreateOrUpdateResponsePropertiesMap =
-  FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParametersCreateOrUpdateResponsePropertiesMap>;
-
 export interface GlobalParametersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4469,7 +4448,7 @@ export interface GlobalParametersCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GlobalParametersCreateOrUpdateResponse =
+const GlobalParametersCreateOrUpdateResponse =
   GetGlobalParameterResponse as any as S.Schema<GlobalParametersCreateOrUpdateResponse>;
 
 export interface IntegrationRuntimesCreateOrUpdateRequest {
@@ -4484,7 +4463,7 @@ export interface IntegrationRuntimesCreateOrUpdateRequest {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const IntegrationRuntimesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4517,7 +4496,7 @@ export interface IntegrationRuntimesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const IntegrationRuntimesCreateOrUpdateResponse =
+const IntegrationRuntimesCreateOrUpdateResponse =
   DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<IntegrationRuntimesCreateOrUpdateResponse>;
 
 export interface IntegrationRuntimesUpgradeRequest {
@@ -4530,7 +4509,7 @@ export interface IntegrationRuntimesUpgradeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4549,7 +4528,7 @@ export const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationRuntimesUpgradeRequest>;
 
 export interface IntegrationRuntimesUpgradeResponse {}
-export const IntegrationRuntimesUpgradeResponse =
+const IntegrationRuntimesUpgradeResponse =
   DeleteCredentialOperationResponse as any as S.Schema<IntegrationRuntimesUpgradeResponse>;
 
 export interface LinkedServicesCreateOrUpdateRequest {
@@ -4564,7 +4543,7 @@ export interface LinkedServicesCreateOrUpdateRequest {
   /** Properties of linked service. */
   properties: LinkedService;
 }
-export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4597,7 +4576,7 @@ export interface LinkedServicesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const LinkedServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const LinkedServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4618,7 +4597,7 @@ export interface ListChangeDataCaptureByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListChangeDataCaptureByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChangeDataCaptureByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4650,12 +4629,12 @@ export interface ChangeDataCaptureResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ChangeDataCaptureResource =
+const ChangeDataCaptureResource =
   ChangeDataCaptureCreateOrUpdateResponse as any as S.Schema<ChangeDataCaptureResource>;
 
 /** The ChangeDataCaptureResource items on this page */
 export type ChangeDataCaptureListResponseValueList = Array<ChangeDataCaptureResource>;
-export const ChangeDataCaptureListResponseValueList = /*@__PURE__*/ S.Array(
+const ChangeDataCaptureListResponseValueList = /*@__PURE__*/ S.Array(
   ChangeDataCaptureResource,
 ) as any as S.Schema<ChangeDataCaptureListResponseValueList>;
 
@@ -4666,7 +4645,7 @@ export interface ChangeDataCaptureListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ChangeDataCaptureListResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeDataCaptureListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ChangeDataCaptureListResponseValueList,
     nextLink: S.optional(S.String),
@@ -4683,7 +4662,7 @@ export interface ListCredentialOperationByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListCredentialOperationByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialOperationByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4715,7 +4694,7 @@ export interface CredentialResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const CredentialResource = /*@__PURE__*/ S.suspend(() =>
+const CredentialResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4728,7 +4707,7 @@ export const CredentialResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CredentialResource items on this page */
 export type CredentialListResponseValueList = Array<CredentialResource>;
-export const CredentialListResponseValueList = /*@__PURE__*/ S.Array(
+const CredentialListResponseValueList = /*@__PURE__*/ S.Array(
   CredentialResource,
 ) as any as S.Schema<CredentialListResponseValueList>;
 
@@ -4739,7 +4718,7 @@ export interface CredentialListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CredentialListResponse = /*@__PURE__*/ S.suspend(() =>
+const CredentialListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CredentialListResponseValueList,
     nextLink: S.optional(S.String),
@@ -4754,7 +4733,7 @@ export interface ListDataFlowByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListDataFlowByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataFlowByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4786,11 +4765,11 @@ export interface DataFlowResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DataFlowResource = GetDataFlowResponse as any as S.Schema<DataFlowResource>;
+const DataFlowResource = GetDataFlowResponse as any as S.Schema<DataFlowResource>;
 
 /** The DataFlowResource items on this page */
 export type DataFlowListResponseValueList = Array<DataFlowResource>;
-export const DataFlowListResponseValueList = /*@__PURE__*/ S.Array(
+const DataFlowListResponseValueList = /*@__PURE__*/ S.Array(
   DataFlowResource,
 ) as any as S.Schema<DataFlowListResponseValueList>;
 
@@ -4801,7 +4780,7 @@ export interface DataFlowListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataFlowListResponse = /*@__PURE__*/ S.suspend(() =>
+const DataFlowListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DataFlowListResponseValueList,
     nextLink: S.optional(S.String),
@@ -4816,7 +4795,7 @@ export interface ListDatasetByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListDatasetByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4848,11 +4827,11 @@ export interface DatasetResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DatasetResource = GetDatasetResponse as any as S.Schema<DatasetResource>;
+const DatasetResource = GetDatasetResponse as any as S.Schema<DatasetResource>;
 
 /** The DatasetResource items on this page */
 export type DatasetListResponseValueList = Array<DatasetResource>;
-export const DatasetListResponseValueList = /*@__PURE__*/ S.Array(
+const DatasetListResponseValueList = /*@__PURE__*/ S.Array(
   DatasetResource,
 ) as any as S.Schema<DatasetListResponseValueList>;
 
@@ -4863,7 +4842,7 @@ export interface DatasetListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatasetListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatasetListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatasetListResponseValueList,
     nextLink: S.optional(S.String),
@@ -4874,7 +4853,7 @@ export interface ListFactoriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListFactoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFactoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4889,9 +4868,6 @@ export const ListFactoriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoryTagsMap = { [key: string]: string | undefined };
-export const FactoryTagsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoryTagsMap>;
-
 /** Factory resource type. */
 export interface Factory {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4913,11 +4889,11 @@ export interface Factory {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Factory = GetFactoryResponse as any as S.Schema<Factory>;
+const Factory = GetFactoryResponse as any as S.Schema<Factory>;
 
 /** The Factory items on this page */
 export type FactoryListResponseValueList = Array<Factory>;
-export const FactoryListResponseValueList = /*@__PURE__*/ S.Array(
+const FactoryListResponseValueList = /*@__PURE__*/ S.Array(
   Factory,
 ) as any as S.Schema<FactoryListResponseValueList>;
 
@@ -4928,7 +4904,7 @@ export interface FactoryListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FactoryListResponse = /*@__PURE__*/ S.suspend(() =>
+const FactoryListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FactoryListResponseValueList,
     nextLink: S.optional(S.String),
@@ -4941,7 +4917,7 @@ export interface ListFactoryByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListFactoryByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFactoryByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4965,7 +4941,7 @@ export interface ListGlobalParameterByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListGlobalParameterByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGlobalParameterByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4986,7 +4962,7 @@ export const ListGlobalParameterByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 export type GlobalParameterResourcePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GlobalParameterResourcePropertiesMap =
+const GlobalParameterResourcePropertiesMap =
   FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParameterResourcePropertiesMap>;
 
 /** Global parameters resource type. */
@@ -5004,7 +4980,7 @@ export interface GlobalParameterResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GlobalParameterResource = /*@__PURE__*/ S.suspend(() =>
+const GlobalParameterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5017,7 +4993,7 @@ export const GlobalParameterResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The GlobalParameterResource items on this page */
 export type GlobalParameterListResponseValueList = Array<GlobalParameterResource>;
-export const GlobalParameterListResponseValueList = /*@__PURE__*/ S.Array(
+const GlobalParameterListResponseValueList = /*@__PURE__*/ S.Array(
   GlobalParameterResource,
 ) as any as S.Schema<GlobalParameterListResponseValueList>;
 
@@ -5028,7 +5004,7 @@ export interface GlobalParameterListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GlobalParameterListResponse = /*@__PURE__*/ S.suspend(() =>
+const GlobalParameterListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GlobalParameterListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5047,7 +5023,7 @@ export interface ListIntegrationRuntimeAuthKeysRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const ListIntegrationRuntimeAuthKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeAuthKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5072,7 +5048,7 @@ export interface IntegrationRuntimeAuthKeys {
   /** The secondary integration runtime authentication key. */
   authKey2?: string;
 }
-export const IntegrationRuntimeAuthKeys = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeAuthKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authKey1: S.optional(S.String),
     authKey2: S.optional(S.String),
@@ -5089,7 +5065,7 @@ export interface ListIntegrationRuntimeByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListIntegrationRuntimeByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5121,12 +5097,12 @@ export interface IntegrationRuntimeResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const IntegrationRuntimeResource =
+const IntegrationRuntimeResource =
   DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<IntegrationRuntimeResource>;
 
 /** The IntegrationRuntimeResource items on this page */
 export type IntegrationRuntimeListResponseValueList = Array<IntegrationRuntimeResource>;
-export const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
+const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeResource,
 ) as any as S.Schema<IntegrationRuntimeListResponseValueList>;
 
@@ -5137,7 +5113,7 @@ export interface IntegrationRuntimeListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IntegrationRuntimeListResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IntegrationRuntimeListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5156,8 +5132,8 @@ export interface ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsReque
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -5171,20 +5147,19 @@ export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest =
         apiVersion: "2018-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest",
-  }) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>;
+).annotate({
+  identifier: "ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest",
+}) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>;
 
 /** The details of Azure-SSIS integration runtime outbound network dependency endpoint. */
 export interface IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails {
   /** The port of endpoint. */
   port?: number;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      port: S.optional(S.Number),
-    }),
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    port: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails",
 }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
@@ -5192,7 +5167,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@_
 /** The details of endpoint. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList>;
@@ -5204,7 +5179,7 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesEndpoint {
   /** The details of endpoint. */
   endpointDetails?: IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     endpointDetails: S.optional(
@@ -5218,7 +5193,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__
 /** The endpoints for outbound network dependency. */
 export type IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
-export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
+const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpoint,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList>;
@@ -5230,22 +5205,21 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint {
   /** The endpoints for outbound network dependency. */
   endpoints?: IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.optional(S.String),
-      endpoints: S.optional(
-        IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
-  }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
+const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: S.optional(S.String),
+    endpoints: S.optional(
+      IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList,
+    ),
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
+}) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
 
 /** The list of outbound network dependency endpoints. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList>;
@@ -5255,14 +5229,13 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse 
   /** The list of outbound network dependency endpoints. */
   value?: IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList),
-    }),
-  ).annotate({
-    identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
-  }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>;
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList),
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
+}) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>;
 
 export interface ListLinkedServiceByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5272,7 +5245,7 @@ export interface ListLinkedServiceByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListLinkedServiceByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinkedServiceByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5304,12 +5277,11 @@ export interface LinkedServiceResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const LinkedServiceResource =
-  GetLinkedServiceResponse as any as S.Schema<LinkedServiceResource>;
+const LinkedServiceResource = GetLinkedServiceResponse as any as S.Schema<LinkedServiceResource>;
 
 /** The LinkedServiceResource items on this page */
 export type LinkedServiceListResponseValueList = Array<LinkedServiceResource>;
-export const LinkedServiceListResponseValueList = /*@__PURE__*/ S.Array(
+const LinkedServiceListResponseValueList = /*@__PURE__*/ S.Array(
   LinkedServiceResource,
 ) as any as S.Schema<LinkedServiceListResponseValueList>;
 
@@ -5320,7 +5292,7 @@ export interface LinkedServiceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const LinkedServiceListResponse = /*@__PURE__*/ S.suspend(() =>
+const LinkedServiceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LinkedServiceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5339,7 +5311,7 @@ export interface ListManagedPrivateEndpointByFactoryRequest {
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
 }
-export const ListManagedPrivateEndpointByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedPrivateEndpointByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5372,12 +5344,12 @@ export interface ManagedPrivateEndpointResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedPrivateEndpointResource =
+const ManagedPrivateEndpointResource =
   GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointResource>;
 
 /** The ManagedPrivateEndpointResource items on this page */
 export type ManagedPrivateEndpointListResponseValueList = Array<ManagedPrivateEndpointResource>;
-export const ManagedPrivateEndpointListResponseValueList = /*@__PURE__*/ S.Array(
+const ManagedPrivateEndpointListResponseValueList = /*@__PURE__*/ S.Array(
   ManagedPrivateEndpointResource,
 ) as any as S.Schema<ManagedPrivateEndpointListResponseValueList>;
 
@@ -5388,7 +5360,7 @@ export interface ManagedPrivateEndpointListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ManagedPrivateEndpointListResponse = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpointListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ManagedPrivateEndpointListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5405,7 +5377,7 @@ export interface ListManagedVirtualNetworkByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListManagedVirtualNetworkByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedVirtualNetworkByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5437,12 +5409,12 @@ export interface ManagedVirtualNetworkResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedVirtualNetworkResource =
+const ManagedVirtualNetworkResource =
   GetManagedVirtualNetworkResponse as any as S.Schema<ManagedVirtualNetworkResource>;
 
 /** The ManagedVirtualNetworkResource items on this page */
 export type ManagedVirtualNetworkListResponseValueList = Array<ManagedVirtualNetworkResource>;
-export const ManagedVirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
+const ManagedVirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
   ManagedVirtualNetworkResource,
 ) as any as S.Schema<ManagedVirtualNetworkListResponseValueList>;
 
@@ -5453,7 +5425,7 @@ export interface ManagedVirtualNetworkListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ManagedVirtualNetworkListResponse = /*@__PURE__*/ S.suspend(() =>
+const ManagedVirtualNetworkListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ManagedVirtualNetworkListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5463,7 +5435,7 @@ export const ManagedVirtualNetworkListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedVirtualNetworkListResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -5485,7 +5457,7 @@ export interface OperationDisplay {
   /** The type of operation: get, read, delete, etc. */
   operation?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     provider: S.optional(S.String),
@@ -5503,7 +5475,7 @@ export interface OperationLogSpecification {
   /** Blobs created in the customer storage account, per hour. */
   blobDuration?: string;
 }
-export const OperationLogSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationLogSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -5515,7 +5487,7 @@ export const OperationLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to logs. */
 export type OperationServiceSpecificationLogSpecificationsList = Array<OperationLogSpecification>;
-export const OperationServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+const OperationServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   OperationLogSpecification,
 ) as any as S.Schema<OperationServiceSpecificationLogSpecificationsList>;
 
@@ -5526,7 +5498,7 @@ export interface OperationMetricAvailability {
   /** Blob created in the customer storage account, per hour. */
   blobDuration?: string;
 }
-export const OperationMetricAvailability = /*@__PURE__*/ S.suspend(() =>
+const OperationMetricAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeGrain: S.optional(S.String),
     blobDuration: S.optional(S.String),
@@ -5537,7 +5509,7 @@ export const OperationMetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how often data for metrics becomes available. */
 export type OperationMetricSpecificationAvailabilitiesList = Array<OperationMetricAvailability>;
-export const OperationMetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
+const OperationMetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   OperationMetricAvailability,
 ) as any as S.Schema<OperationMetricSpecificationAvailabilitiesList>;
 
@@ -5550,7 +5522,7 @@ export interface OperationMetricDimension {
   /** Whether the dimension should be exported to Azure Monitor. */
   toBeExportedForShoebox?: boolean;
 }
-export const OperationMetricDimension = /*@__PURE__*/ S.suspend(() =>
+const OperationMetricDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -5560,7 +5532,7 @@ export const OperationMetricDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the metric dimension. */
 export type OperationMetricSpecificationDimensionsList = Array<OperationMetricDimension>;
-export const OperationMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const OperationMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   OperationMetricDimension,
 ) as any as S.Schema<OperationMetricSpecificationDimensionsList>;
 
@@ -5587,7 +5559,7 @@ export interface OperationMetricSpecification {
   /** Defines the metric dimension. */
   dimensions?: OperationMetricSpecificationDimensionsList;
 }
-export const OperationMetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationMetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -5607,7 +5579,7 @@ export const OperationMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 /** Details about operations related to metrics. */
 export type OperationServiceSpecificationMetricSpecificationsList =
   Array<OperationMetricSpecification>;
-export const OperationServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const OperationServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   OperationMetricSpecification,
 ) as any as S.Schema<OperationServiceSpecificationMetricSpecificationsList>;
 
@@ -5618,7 +5590,7 @@ export interface OperationServiceSpecification {
   /** Details about operations related to metrics. */
   metricSpecifications?: OperationServiceSpecificationMetricSpecificationsList;
 }
-export const OperationServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logSpecifications: S.optional(OperationServiceSpecificationLogSpecificationsList),
     metricSpecifications: S.optional(OperationServiceSpecificationMetricSpecificationsList),
@@ -5632,7 +5604,7 @@ export interface OperationProperties {
   /** Details about a service operation. */
   serviceSpecification?: OperationServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(OperationServiceSpecification),
   }),
@@ -5649,7 +5621,7 @@ export interface Operation {
   /** Additional details about the operation. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     origin: S.optional(S.String),
@@ -5660,7 +5632,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Data Factory operations supported by the Data Factory resource provider. */
 export type OperationListResponseValueList = Array<Operation>;
-export const OperationListResponseValueList = /*@__PURE__*/ S.Array(
+const OperationListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResponseValueList>;
 
@@ -5671,7 +5643,7 @@ export interface OperationListResponse {
   /** The link to the next page of results, if any remaining results exist. */
   nextLink?: string;
 }
-export const OperationListResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResponseValueList),
     nextLink: S.optional(S.String),
@@ -5686,7 +5658,7 @@ export interface ListPipelineByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListPipelineByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPipelineByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5718,11 +5690,11 @@ export interface PipelineResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PipelineResource = GetPipelineResponse as any as S.Schema<PipelineResource>;
+const PipelineResource = GetPipelineResponse as any as S.Schema<PipelineResource>;
 
 /** The PipelineResource items on this page */
 export type PipelineListResponseValueList = Array<PipelineResource>;
-export const PipelineListResponseValueList = /*@__PURE__*/ S.Array(
+const PipelineListResponseValueList = /*@__PURE__*/ S.Array(
   PipelineResource,
 ) as any as S.Schema<PipelineListResponseValueList>;
 
@@ -5733,7 +5705,7 @@ export interface PipelineListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PipelineListResponse = /*@__PURE__*/ S.suspend(() =>
+const PipelineListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PipelineListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5748,7 +5720,7 @@ export interface ListPrivateEndPointConnectionByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListPrivateEndPointConnectionByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndPointConnectionByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5780,13 +5752,13 @@ export interface PrivateEndpointConnectionResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PrivateEndpointConnectionResource =
+const PrivateEndpointConnectionResource =
   GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionResource>;
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionListResponseValueList =
   Array<PrivateEndpointConnectionResource>;
-export const PrivateEndpointConnectionListResponseValueList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionListResponseValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionResource,
 ) as any as S.Schema<PrivateEndpointConnectionListResponseValueList>;
 
@@ -5797,7 +5769,7 @@ export interface PrivateEndpointConnectionListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResponse = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5814,7 +5786,7 @@ export interface ListTriggerByFactoryRequest {
   /** The factory name. */
   factoryName: string;
 }
-export const ListTriggerByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTriggerByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5846,11 +5818,11 @@ export interface TriggerResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const TriggerResource = GetTriggerResponse as any as S.Schema<TriggerResource>;
+const TriggerResource = GetTriggerResponse as any as S.Schema<TriggerResource>;
 
 /** The TriggerResource items on this page */
 export type TriggerListResponseValueList = Array<TriggerResource>;
-export const TriggerListResponseValueList = /*@__PURE__*/ S.Array(
+const TriggerListResponseValueList = /*@__PURE__*/ S.Array(
   TriggerResource,
 ) as any as S.Schema<TriggerListResponseValueList>;
 
@@ -5861,7 +5833,7 @@ export interface TriggerListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TriggerListResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TriggerListResponseValueList,
     nextLink: S.optional(S.String),
@@ -5870,12 +5842,12 @@ export const TriggerListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The connection state of a managed private endpoint */
 export interface ConnectionStatePropertiesInput {}
-export const ConnectionStatePropertiesInput =
+const ConnectionStatePropertiesInput =
   CancelPipelineRunResponse as any as S.Schema<ConnectionStatePropertiesInput>;
 
 /** Fully qualified domain names */
 export type ManagedPrivateEndpointInputFqdnsList = Array<string>;
-export const ManagedPrivateEndpointInputFqdnsList =
+const ManagedPrivateEndpointInputFqdnsList =
   DataFlowDebugCommandPayloadColumnsList as any as S.Schema<ManagedPrivateEndpointInputFqdnsList>;
 
 /** Properties of a managed private endpoint */
@@ -5889,7 +5861,7 @@ export interface ManagedPrivateEndpointInput {
   /** The ARM resource ID of the resource to which the managed private endpoint is created */
   privateLinkResourceId?: string;
 }
-export const ManagedPrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionState: S.optional(ConnectionStatePropertiesInput),
     fqdns: S.optional(ManagedPrivateEndpointInputFqdnsList),
@@ -5914,7 +5886,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
   /** Managed private endpoint properties. */
   properties: ManagedPrivateEndpointInput;
 }
-export const ManagedPrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5948,13 +5920,11 @@ export interface ManagedPrivateEndpointsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedPrivateEndpointsCreateOrUpdateResponse =
+const ManagedPrivateEndpointsCreateOrUpdateResponse =
   GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>;
 
 /** A managed Virtual Network associated with the Azure Data Factory */
 export type ManagedVirtualNetworkInput = ConnectionStatePropertiesInput;
-export const ManagedVirtualNetworkInput = ConnectionStatePropertiesInput;
-
 export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5967,7 +5937,7 @@ export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   /** Managed Virtual Network properties. */
   properties: ConnectionStatePropertiesInput;
 }
-export const ManagedVirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ManagedVirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6000,7 +5970,7 @@ export interface ManagedVirtualNetworksCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedVirtualNetworksCreateOrUpdateResponse =
+const ManagedVirtualNetworksCreateOrUpdateResponse =
   GetManagedVirtualNetworkResponse as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateResponse>;
 
 /** Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status. */
@@ -6017,15 +5987,15 @@ export type RunQueryFilterOperand =
   | "TriggerRunTimestamp"
   | "RunGroupId"
   | "LatestOnly";
-export const RunQueryFilterOperand = S.String;
+const RunQueryFilterOperand = S.String;
 
 /** Operator to be used for filter. */
 export type RunQueryFilterOperator = "Equals" | "NotEquals" | "In" | "NotIn";
-export const RunQueryFilterOperator = S.String;
+const RunQueryFilterOperator = S.String;
 
 /** List of filter values. */
 export type RunQueryFilterValuesList = Array<string>;
-export const RunQueryFilterValuesList =
+const RunQueryFilterValuesList =
   DataFlowDebugCommandPayloadColumnsList as any as S.Schema<RunQueryFilterValuesList>;
 
 /** Query filter option for listing runs. */
@@ -6037,7 +6007,7 @@ export interface RunQueryFilter {
   /** List of filter values. */
   values: RunQueryFilterValuesList;
 }
-export const RunQueryFilter = /*@__PURE__*/ S.suspend(() =>
+const RunQueryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operand: RunQueryFilterOperand,
     operator: RunQueryFilterOperator,
@@ -6047,7 +6017,7 @@ export const RunQueryFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filters. */
 export type PipelineRunsQueryByFactoryRequestFiltersList = Array<RunQueryFilter>;
-export const PipelineRunsQueryByFactoryRequestFiltersList = /*@__PURE__*/ S.Array(
+const PipelineRunsQueryByFactoryRequestFiltersList = /*@__PURE__*/ S.Array(
   RunQueryFilter,
 ) as any as S.Schema<PipelineRunsQueryByFactoryRequestFiltersList>;
 
@@ -6062,11 +6032,11 @@ export type RunQueryOrderByField =
   | "ActivityRunEnd"
   | "TriggerName"
   | "TriggerRunTimestamp";
-export const RunQueryOrderByField = S.String;
+const RunQueryOrderByField = S.String;
 
 /** Sorting order of the parameter. */
 export type RunQueryOrder = "ASC" | "DESC";
-export const RunQueryOrder = S.String;
+const RunQueryOrder = S.String;
 
 /** An object to provide order by options for listing runs. */
 export interface RunQueryOrderBy {
@@ -6075,7 +6045,7 @@ export interface RunQueryOrderBy {
   /** Sorting order of the parameter. */
   order: RunQueryOrder | (string & {});
 }
-export const RunQueryOrderBy = /*@__PURE__*/ S.suspend(() =>
+const RunQueryOrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: RunQueryOrderByField,
     order: RunQueryOrder,
@@ -6084,7 +6054,7 @@ export const RunQueryOrderBy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of OrderBy option. */
 export type PipelineRunsQueryByFactoryRequestOrderByList = Array<RunQueryOrderBy>;
-export const PipelineRunsQueryByFactoryRequestOrderByList = /*@__PURE__*/ S.Array(
+const PipelineRunsQueryByFactoryRequestOrderByList = /*@__PURE__*/ S.Array(
   RunQueryOrderBy,
 ) as any as S.Schema<PipelineRunsQueryByFactoryRequestOrderByList>;
 
@@ -6106,7 +6076,7 @@ export interface PipelineRunsQueryByFactoryRequest {
   /** List of OrderBy option. */
   orderBy?: PipelineRunsQueryByFactoryRequestOrderByList;
 }
-export const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6130,7 +6100,7 @@ export const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of pipeline runs. */
 export type PipelineRunsQueryResponseValueList = Array<PipelineRun>;
-export const PipelineRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
+const PipelineRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   PipelineRun,
 ) as any as S.Schema<PipelineRunsQueryResponseValueList>;
 
@@ -6141,7 +6111,7 @@ export interface PipelineRunsQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-export const PipelineRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const PipelineRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PipelineRunsQueryResponseValueList,
     continuationToken: S.optional(S.String),
@@ -6162,7 +6132,7 @@ export interface PipelinesCreateOrUpdateRequest {
   /** Properties of the pipeline. */
   properties: Pipeline;
 }
-export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6195,7 +6165,7 @@ export interface PipelinesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PipelinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PipelinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6213,7 +6183,7 @@ export interface PrivateEndpoint {
   /** The resource Id for private endpoint */
   id?: string;
 }
-export const PrivateEndpoint = ArmIdWrapper as any as S.Schema<PrivateEndpoint>;
+const PrivateEndpoint = ArmIdWrapper as any as S.Schema<PrivateEndpoint>;
 
 /** A request to approve or reject a private endpoint connection */
 export interface PrivateLinkConnectionApprovalRequest {
@@ -6222,7 +6192,7 @@ export interface PrivateLinkConnectionApprovalRequest {
   /** The resource of private endpoint. */
   privateEndpoint?: PrivateEndpoint;
 }
-export const PrivateLinkConnectionApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkConnectionApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkServiceConnectionState: S.optional(PrivateLinkConnectionState),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -6243,7 +6213,7 @@ export interface PrivateEndpointConnectionCreateOrUpdateRequest {
   /** Core resource properties */
   properties?: PrivateLinkConnectionApprovalRequest;
 }
-export const PrivateEndpointConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6276,7 +6246,7 @@ export interface PrivateEndpointConnectionCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PrivateEndpointConnectionCreateOrUpdateResponse =
+const PrivateEndpointConnectionCreateOrUpdateResponse =
   GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>;
 
 export interface RefreshIntegrationRuntimeObjectMetadataRequest {
@@ -6289,7 +6259,7 @@ export interface RefreshIntegrationRuntimeObjectMetadataRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const RefreshIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6318,7 +6288,7 @@ export interface SsisObjectMetadataStatusResponse {
   /** The operation error message. */
   error?: string;
 }
-export const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     name: S.optional(S.String),
@@ -6331,7 +6301,7 @@ export const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the authentication key to regenerate. */
 export type IntegrationRuntimeAuthKeyName = "authKey1" | "authKey2";
-export const IntegrationRuntimeAuthKeyName = S.String;
+const IntegrationRuntimeAuthKeyName = S.String;
 
 export interface RegenerateIntegrationRuntimeAuthKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6345,7 +6315,7 @@ export interface RegenerateIntegrationRuntimeAuthKeyRequest {
   /** The name of the authentication key to regenerate. */
   keyName?: IntegrationRuntimeAuthKeyName | (string & {});
 }
-export const RegenerateIntegrationRuntimeAuthKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateIntegrationRuntimeAuthKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6374,7 +6344,7 @@ export interface RemoveIntegrationRuntimeLinksRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const RemoveIntegrationRuntimeLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveIntegrationRuntimeLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6393,17 +6363,17 @@ export const RemoveIntegrationRuntimeLinksRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveIntegrationRuntimeLinksRequest>;
 
 export interface RemoveIntegrationRuntimeLinksResponse {}
-export const RemoveIntegrationRuntimeLinksResponse =
+const RemoveIntegrationRuntimeLinksResponse =
   DeleteCredentialOperationResponse as any as S.Schema<RemoveIntegrationRuntimeLinksResponse>;
 
 /** List of filters. */
 export type RunActivityRunsQueryByPipelineRequestFiltersList = Array<RunQueryFilter>;
-export const RunActivityRunsQueryByPipelineRequestFiltersList =
+const RunActivityRunsQueryByPipelineRequestFiltersList =
   PipelineRunsQueryByFactoryRequestFiltersList as any as S.Schema<RunActivityRunsQueryByPipelineRequestFiltersList>;
 
 /** List of OrderBy option. */
 export type RunActivityRunsQueryByPipelineRequestOrderByList = Array<RunQueryOrderBy>;
-export const RunActivityRunsQueryByPipelineRequestOrderByList =
+const RunActivityRunsQueryByPipelineRequestOrderByList =
   PipelineRunsQueryByFactoryRequestOrderByList as any as S.Schema<RunActivityRunsQueryByPipelineRequestOrderByList>;
 
 export interface RunActivityRunsQueryByPipelineRequest {
@@ -6425,7 +6395,7 @@ export interface RunActivityRunsQueryByPipelineRequest {
   /** List of OrderBy option. */
   orderBy?: RunActivityRunsQueryByPipelineRequestOrderByList;
 }
-export const RunActivityRunsQueryByPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const RunActivityRunsQueryByPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6477,7 +6447,7 @@ export interface ActivityRun {
   /** The error if any from the activity run. */
   error?: unknown;
 }
-export const ActivityRun = /*@__PURE__*/ S.suspend(() =>
+const ActivityRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineName: S.optional(S.String),
     pipelineRunId: S.optional(S.String),
@@ -6497,7 +6467,7 @@ export const ActivityRun = /*@__PURE__*/ S.suspend(() =>
 
 /** List of activity runs. */
 export type ActivityRunsQueryResponseValueList = Array<ActivityRun>;
-export const ActivityRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
+const ActivityRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   ActivityRun,
 ) as any as S.Schema<ActivityRunsQueryResponseValueList>;
 
@@ -6508,7 +6478,7 @@ export interface ActivityRunsQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-export const ActivityRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ActivityRunsQueryResponseValueList,
     continuationToken: S.optional(S.String),
@@ -6527,7 +6497,7 @@ export interface StartChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-export const StartChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
+const StartChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6546,7 +6516,7 @@ export const StartChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartChangeDataCaptureRequest>;
 
 export interface StartChangeDataCaptureResponse {}
-export const StartChangeDataCaptureResponse =
+const StartChangeDataCaptureResponse =
   CancelPipelineRunResponse as any as S.Schema<StartChangeDataCaptureResponse>;
 
 export interface StartIntegrationRuntimeRequest {
@@ -6559,7 +6529,7 @@ export interface StartIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const StartIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const StartIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6587,7 +6557,7 @@ export interface StartTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const StartTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6604,8 +6574,7 @@ export const StartTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartTriggerRequest" }) as any as S.Schema<StartTriggerRequest>;
 
 export interface StartTriggerResponse {}
-export const StartTriggerResponse =
-  CancelPipelineRunResponse as any as S.Schema<StartTriggerResponse>;
+const StartTriggerResponse = CancelPipelineRunResponse as any as S.Schema<StartTriggerResponse>;
 
 export interface StopChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6617,7 +6586,7 @@ export interface StopChangeDataCaptureRequest {
   /** The change data capture name. */
   changeDataCaptureName: string;
 }
-export const StopChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
+const StopChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6636,7 +6605,7 @@ export const StopChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopChangeDataCaptureRequest>;
 
 export interface StopChangeDataCaptureResponse {}
-export const StopChangeDataCaptureResponse =
+const StopChangeDataCaptureResponse =
   CancelPipelineRunResponse as any as S.Schema<StopChangeDataCaptureResponse>;
 
 export interface StopIntegrationRuntimeRequest {
@@ -6649,7 +6618,7 @@ export interface StopIntegrationRuntimeRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6668,7 +6637,7 @@ export const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopIntegrationRuntimeRequest>;
 
 export interface StopIntegrationRuntimeResponse {}
-export const StopIntegrationRuntimeResponse =
+const StopIntegrationRuntimeResponse =
   CancelPipelineRunResponse as any as S.Schema<StopIntegrationRuntimeResponse>;
 
 export interface StopTriggerRequest {
@@ -6681,7 +6650,7 @@ export interface StopTriggerRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const StopTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const StopTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6698,8 +6667,7 @@ export const StopTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopTriggerRequest" }) as any as S.Schema<StopTriggerRequest>;
 
 export interface StopTriggerResponse {}
-export const StopTriggerResponse =
-  CancelPipelineRunResponse as any as S.Schema<StopTriggerResponse>;
+const StopTriggerResponse = CancelPipelineRunResponse as any as S.Schema<StopTriggerResponse>;
 
 export interface SubscribeTriggerToEventsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6711,7 +6679,7 @@ export interface SubscribeTriggerToEventsRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const SubscribeTriggerToEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeTriggerToEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6739,7 +6707,7 @@ export interface SyncIntegrationRuntimeCredentialsRequest {
   /** The integration runtime name. */
   integrationRuntimeName: string;
 }
-export const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6758,17 +6726,17 @@ export const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>;
 
 export interface SyncIntegrationRuntimeCredentialsResponse {}
-export const SyncIntegrationRuntimeCredentialsResponse =
+const SyncIntegrationRuntimeCredentialsResponse =
   DeleteCredentialOperationResponse as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>;
 
 /** List of filters. */
 export type TriggerRunsQueryByFactoryRequestFiltersList = Array<RunQueryFilter>;
-export const TriggerRunsQueryByFactoryRequestFiltersList =
+const TriggerRunsQueryByFactoryRequestFiltersList =
   PipelineRunsQueryByFactoryRequestFiltersList as any as S.Schema<TriggerRunsQueryByFactoryRequestFiltersList>;
 
 /** List of OrderBy option. */
 export type TriggerRunsQueryByFactoryRequestOrderByList = Array<RunQueryOrderBy>;
-export const TriggerRunsQueryByFactoryRequestOrderByList =
+const TriggerRunsQueryByFactoryRequestOrderByList =
   PipelineRunsQueryByFactoryRequestOrderByList as any as S.Schema<TriggerRunsQueryByFactoryRequestOrderByList>;
 
 export interface TriggerRunsQueryByFactoryRequest {
@@ -6789,7 +6757,7 @@ export interface TriggerRunsQueryByFactoryRequest {
   /** List of OrderBy option. */
   orderBy?: TriggerRunsQueryByFactoryRequestOrderByList;
 }
-export const TriggerRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6813,26 +6781,26 @@ export const TriggerRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger run status. */
 export type TriggerRunStatus = "Succeeded" | "Failed" | "Inprogress";
-export const TriggerRunStatus = S.String;
+const TriggerRunStatus = S.String;
 
 /** List of property name and value related to trigger run. Name, value pair depends on type of trigger. */
 export type TriggerRunPropertiesMap = { [key: string]: string | undefined };
-export const TriggerRunPropertiesMap =
+const TriggerRunPropertiesMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunPropertiesMap>;
 
 /** List of pipeline name and run Id triggered by the trigger run. */
 export type TriggerRunTriggeredPipelinesMap = { [key: string]: string | undefined };
-export const TriggerRunTriggeredPipelinesMap =
+const TriggerRunTriggeredPipelinesMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunTriggeredPipelinesMap>;
 
 /** Run dimension for which trigger was fired. */
 export type TriggerRunRunDimensionMap = { [key: string]: string | undefined };
-export const TriggerRunRunDimensionMap =
+const TriggerRunRunDimensionMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunRunDimensionMap>;
 
 /** Status of the upstream pipelines. */
 export type TriggerRunDependencyStatusMap = { [key: string]: unknown | undefined };
-export const TriggerRunDependencyStatusMap =
+const TriggerRunDependencyStatusMap =
   LinkedServiceReferenceParametersMap as any as S.Schema<TriggerRunDependencyStatusMap>;
 
 /** Trigger runs. */
@@ -6858,7 +6826,7 @@ export interface TriggerRun {
   /** Status of the upstream pipelines. */
   dependencyStatus?: TriggerRunDependencyStatusMap;
 }
-export const TriggerRun = /*@__PURE__*/ S.suspend(() =>
+const TriggerRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerRunId: S.optional(S.String),
     triggerName: S.optional(S.String),
@@ -6875,7 +6843,7 @@ export const TriggerRun = /*@__PURE__*/ S.suspend(() =>
 
 /** List of trigger runs. */
 export type TriggerRunsQueryResponseValueList = Array<TriggerRun>;
-export const TriggerRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
+const TriggerRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   TriggerRun,
 ) as any as S.Schema<TriggerRunsQueryResponseValueList>;
 
@@ -6886,7 +6854,7 @@ export interface TriggerRunsQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-export const TriggerRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TriggerRunsQueryResponseValueList,
     continuationToken: S.optional(S.String),
@@ -6903,7 +6871,7 @@ export interface TriggerRunsRerunRequest {
   /** The pipeline run identifier. */
   runId: string;
 }
-export const TriggerRunsRerunRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRunsRerunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6921,7 +6889,7 @@ export const TriggerRunsRerunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerRunsRerunRequest" }) as any as S.Schema<TriggerRunsRerunRequest>;
 
 export interface TriggerRunsRerunResponse {}
-export const TriggerRunsRerunResponse =
+const TriggerRunsRerunResponse =
   CancelPipelineRunResponse as any as S.Schema<TriggerRunsRerunResponse>;
 
 export interface TriggersCreateOrUpdateRequest {
@@ -6936,7 +6904,7 @@ export interface TriggersCreateOrUpdateRequest {
   /** Properties of the trigger. */
   properties: Trigger;
 }
-export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6969,7 +6937,7 @@ export interface TriggersCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const TriggersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6994,7 +6962,7 @@ export interface TriggersQueryByFactoryRequest {
   /** The name of the parent TumblingWindowTrigger to get the child rerun triggers */
   parentTriggerName?: string;
 }
-export const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7015,7 +6983,7 @@ export const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of triggers. */
 export type TriggerQueryResponseValueList = Array<TriggerResource>;
-export const TriggerQueryResponseValueList =
+const TriggerQueryResponseValueList =
   TriggerListResponseValueList as any as S.Schema<TriggerQueryResponseValueList>;
 
 /** A query of triggers. */
@@ -7025,7 +6993,7 @@ export interface TriggerQueryResponse {
   /** The continuation token for getting the next page of results, if any remaining results exist, null otherwise. */
   continuationToken?: string;
 }
-export const TriggerQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TriggerQueryResponseValueList,
     continuationToken: S.optional(S.String),
@@ -7042,7 +7010,7 @@ export interface UnsubscribeTriggerFromEventsRequest {
   /** The trigger name. */
   triggerName: string;
 }
-export const UnsubscribeTriggerFromEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsubscribeTriggerFromEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7062,7 +7030,7 @@ export const UnsubscribeTriggerFromEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateFactoryRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFactoryRequestTagsMap =
+const UpdateFactoryRequestTagsMap =
   FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<UpdateFactoryRequestTagsMap>;
 
 /** Factory update resource properties. */
@@ -7070,7 +7038,7 @@ export interface FactoryUpdateProperties {
   /** Whether or not public network access is allowed for the data factory. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const FactoryUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const FactoryUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(PublicNetworkAccess),
   }),
@@ -7090,7 +7058,7 @@ export interface UpdateFactoryRequest {
   /** Properties of update the factory. */
   properties?: FactoryUpdateProperties;
 }
-export const UpdateFactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7110,9 +7078,6 @@ export const UpdateFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateFactoryResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFactoryResponseTagsMap =
-  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<UpdateFactoryResponseTagsMap>;
-
 export interface UpdateFactoryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7133,11 +7098,11 @@ export interface UpdateFactoryResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateFactoryResponse = GetFactoryResponse as any as S.Schema<UpdateFactoryResponse>;
+const UpdateFactoryResponse = GetFactoryResponse as any as S.Schema<UpdateFactoryResponse>;
 
 /** The state of integration runtime auto update. */
 export type IntegrationRuntimeAutoUpdate = "On" | "Off";
-export const IntegrationRuntimeAutoUpdate = S.String;
+const IntegrationRuntimeAutoUpdate = S.String;
 
 export interface UpdateIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7153,7 +7118,7 @@ export interface UpdateIntegrationRuntimeRequest {
   /** The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time. */
   updateDelayOffset?: string;
 }
-export const UpdateIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7187,7 +7152,7 @@ export interface UpdateIntegrationRuntimeResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdateIntegrationRuntimeResponse =
+const UpdateIntegrationRuntimeResponse =
   DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<UpdateIntegrationRuntimeResponse>;
 
 export interface UpdateIntegrationRuntimeNodeRequest {
@@ -7202,7 +7167,7 @@ export interface UpdateIntegrationRuntimeNodeRequest {
   /** The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs(inclusive) are allowed. */
   concurrentJobsLimit?: number;
 }
-export const UpdateIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

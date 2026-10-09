@@ -62,10 +62,10 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
@@ -78,7 +78,7 @@ export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     location: S.optional(S.String),
@@ -100,7 +100,7 @@ export interface GoogleIamV2DenyRule {
   /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
   exceptionPermissions?: StringList;
 }
-export const GoogleIamV2DenyRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2DenyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exceptionPrincipals: S.optional(StringList),
     denialCondition: S.optional(GoogleTypeExpr),
@@ -117,7 +117,7 @@ export interface GoogleIamV2PolicyRule {
   /** A rule for a deny policy. */
   denyRule?: GoogleIamV2DenyRule;
 }
-export const GoogleIamV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     denyRule: S.optional(GoogleIamV2DenyRule),
@@ -125,7 +125,7 @@ export const GoogleIamV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV2PolicyRule" }) as any as S.Schema<GoogleIamV2PolicyRule>;
 
 export type GoogleIamV2PolicyRuleList = Array<GoogleIamV2PolicyRule>;
-export const GoogleIamV2PolicyRuleList = /*@__PURE__*/ S.Array(
+const GoogleIamV2PolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleIamV2PolicyRule,
 ) as any as S.Schema<GoogleIamV2PolicyRuleList>;
 
@@ -152,7 +152,7 @@ export interface GoogleIamV2Policy {
   /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
   name?: string;
 }
-export const GoogleIamV2Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     kind: S.optional(S.String),
@@ -175,7 +175,7 @@ export interface CreatePolicyPoliciesRequest {
   /** Request body */
   body?: GoogleIamV2Policy;
 }
-export const CreatePolicyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     policyId: S.optional(S.String.pipe(T.Query())),
@@ -186,15 +186,10 @@ export const CreatePolicyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePolicyPoliciesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -205,7 +200,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -226,7 +221,7 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -244,7 +239,7 @@ export interface DeletePoliciesRequest {
   /** Optional. The expected `etag` of the policy to delete. If the value does not match the value that is stored in IAM, the request fails with a `409` error code and `ABORTED` status. If you omit this field, the policy is deleted regardless of its current `etag`. */
   etag?: string;
 }
-export const DeletePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -255,7 +250,7 @@ export interface GetPoliciesRequest {
   /** Required. The resource name of the policy to retrieve. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   name: string;
 }
-export const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://iam.googleapis.com/" })),
@@ -265,7 +260,7 @@ export interface GetPoliciesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetPoliciesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoliciesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://iam.googleapis.com/" })),
@@ -281,7 +276,7 @@ export interface ListPoliciesPoliciesRequest {
   /** Required. The resource that the policy is attached to, along with the kind of policy to list. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   parent: string;
 }
-export const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -292,7 +287,7 @@ export const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPoliciesPoliciesRequest>;
 
 export type GoogleIamV2PolicyList = Array<GoogleIamV2Policy>;
-export const GoogleIamV2PolicyList = /*@__PURE__*/ S.Array(
+const GoogleIamV2PolicyList = /*@__PURE__*/ S.Array(
   GoogleIamV2Policy,
 ) as any as S.Schema<GoogleIamV2PolicyList>;
 
@@ -303,7 +298,7 @@ export interface GoogleIamV2ListPoliciesResponse {
   /** Metadata for the policies that are attached to the resource. */
   policies?: GoogleIamV2PolicyList;
 }
-export const GoogleIamV2ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     policies: S.optional(GoogleIamV2PolicyList),
@@ -318,7 +313,7 @@ export interface UpdatePoliciesRequest {
   /** Request body */
   body?: GoogleIamV2Policy;
 }
-export const UpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV2Policy.pipe(T.HttpBody())),

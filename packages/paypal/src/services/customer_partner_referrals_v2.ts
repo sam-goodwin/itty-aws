@@ -38,7 +38,7 @@ export class UnprocessableEntity
 
 /** The person's name type. */
 export type PersonNameType = "LEGAL";
-export const PersonNameType = S.String;
+const PersonNameType = S.String;
 
 export interface PersonName {
   /** The prefix, or title, to the party's name. */
@@ -56,7 +56,7 @@ export interface PersonName {
   /** The type of name. Currently supported values are: `LEGAL`. */
   type: PersonNameType | (string & {});
 }
-export const PersonName = /*@__PURE__*/ S.suspend(() =>
+const PersonName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     given_name: S.optional(S.String),
@@ -70,7 +70,7 @@ export const PersonName = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the person. */
 export type PersonNameList = Array<PersonName>;
-export const PersonNameList = /*@__PURE__*/ S.Array(PersonName) as any as S.Schema<PersonNameList>;
+const PersonNameList = /*@__PURE__*/ S.Array(PersonName) as any as S.Schema<PersonNameList>;
 
 /** The non-portable additional address details that are sometimes needed for compliance, risk, or other scenarios where fine-grain address information might be needed. Not portable with common third party and open source. Redundant with core fields.<br/>For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export interface AddressDetails {
@@ -87,7 +87,7 @@ export interface AddressDetails {
   /** The first-order entity below a named building or location that represents the sub-premise. Usually a single building within a collection of buildings with a common name. Can be a flat, story, floor, room, or apartment. */
   sub_building?: string;
 }
-export const AddressDetails = /*@__PURE__*/ S.suspend(() =>
+const AddressDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     street_number: S.optional(S.String),
     street_name: S.optional(S.String),
@@ -100,7 +100,7 @@ export const AddressDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The address type under which the provided address is tagged. */
 export type PersonAddressType = "HOME";
-export const PersonAddressType = S.String;
+const PersonAddressType = S.String;
 
 export interface PersonAddressDetail {
   /** The first line of the address. For example, number or street. For example, `173 Drury Lane`. Required for data entry and compliance and risk checks. Must contain the full address. */
@@ -124,7 +124,7 @@ export interface PersonAddressDetail {
   /** The address type under which this is classified. */
   type: PersonAddressType | (string & {});
 }
-export const PersonAddressDetail = /*@__PURE__*/ S.suspend(() =>
+const PersonAddressDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line_1: S.optional(S.String),
     address_line_2: S.optional(S.String),
@@ -142,13 +142,13 @@ export const PersonAddressDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of addresses associated with the person. */
 export type PersonAddressDetailList = Array<PersonAddressDetail>;
-export const PersonAddressDetailList = /*@__PURE__*/ S.Array(
+const PersonAddressDetailList = /*@__PURE__*/ S.Array(
   PersonAddressDetail,
 ) as any as S.Schema<PersonAddressDetailList>;
 
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-export const PhoneType = S.String;
+const PhoneType = S.String;
 
 export interface PersonPhoneDetail {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
@@ -160,7 +160,7 @@ export interface PersonPhoneDetail {
   /** The type of phone number provided. For example, home, work, or mobile. */
   type: PhoneType | (string & {});
 }
-export const PersonPhoneDetail = /*@__PURE__*/ S.suspend(() =>
+const PersonPhoneDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     national_number: S.String,
@@ -171,7 +171,7 @@ export const PersonPhoneDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of phone numbers associated with the person. */
 export type PersonPhoneDetailList = Array<PersonPhoneDetail>;
-export const PersonPhoneDetailList = /*@__PURE__*/ S.Array(
+const PersonPhoneDetailList = /*@__PURE__*/ S.Array(
   PersonPhoneDetail,
 ) as any as S.Schema<PersonPhoneDetailList>;
 
@@ -180,7 +180,7 @@ export interface BirthDetails {
   /** date of birth, fomrat [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   date_of_birth: string;
 }
-export const BirthDetails = /*@__PURE__*/ S.suspend(() =>
+const BirthDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_of_birth: S.String,
   }),
@@ -188,7 +188,7 @@ export const BirthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The document labels. A document could be classfied to multiple categories. For example, a bill document can be classfified as `BILL DOCUMENT` and `UTILITY DOCUMENT`. */
 export type LabelsList = Array<string>;
-export const LabelsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<LabelsList>;
+const LabelsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<LabelsList>;
 
 /** The file reference. Can be a file in PayPal MediaServ, PayPal DMS, or another custom store. */
 export interface FileReference {
@@ -203,7 +203,7 @@ export interface FileReference {
   /** The size of the file, in bytes. */
   size?: string;
 }
-export const FileReference = /*@__PURE__*/ S.suspend(() =>
+const FileReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     reference_url: S.optional(S.String),
@@ -215,7 +215,7 @@ export const FileReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The files contained in the document. For example, a document could be represented by a front page file and a back page file, etc. */
 export type FileReferenceList = Array<FileReference>;
-export const FileReferenceList = /*@__PURE__*/ S.Array(
+const FileReferenceList = /*@__PURE__*/ S.Array(
   FileReference,
 ) as any as S.Schema<FileReferenceList>;
 
@@ -231,7 +231,7 @@ export type PersonDocumentType =
   | "CPF"
   | "PAN"
   | "NATIONAL_ID_CARD";
-export const PersonDocumentType = S.String;
+const PersonDocumentType = S.String;
 
 export interface PersonDocumentInput {
   labels?: LabelsList;
@@ -249,7 +249,7 @@ export interface PersonDocumentInput {
   /** The actual type of the document. It could be `ID_CARD`, `PASSPORT`, etc. */
   type?: PersonDocumentType | (string & {});
 }
-export const PersonDocumentInput = /*@__PURE__*/ S.suspend(() =>
+const PersonDocumentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(LabelsList),
     name: S.optional(S.String),
@@ -264,13 +264,13 @@ export const PersonDocumentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A person's or party's related document data collected from the customer. For example SSN, ITIN, or business registration number collected from the user. <blockquote><strong>Note:</strong> This field is not applicable for POST [/v2/customer/partner-referrals](/docs/api/partner-referrals/v2/#partner-referrals_create) API calls.</blockquote> */
 export type PersonDocumentListInput = Array<PersonDocumentInput>;
-export const PersonDocumentListInput = /*@__PURE__*/ S.Array(
+const PersonDocumentListInput = /*@__PURE__*/ S.Array(
   PersonDocumentInput,
 ) as any as S.Schema<PersonDocumentListInput>;
 
 /** Role of the person party played in the account. */
 export type IndividualOwnerType = "PRIMARY";
-export const IndividualOwnerType = S.String;
+const IndividualOwnerType = S.String;
 
 export interface IndividualOwnerInput {
   names?: PersonNameList;
@@ -284,7 +284,7 @@ export interface IndividualOwnerInput {
   /** The actual role of this user on the account, PRIMARY/SECONDARY. */
   type?: IndividualOwnerType | (string & {});
 }
-export const IndividualOwnerInput = /*@__PURE__*/ S.suspend(() =>
+const IndividualOwnerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(PersonNameList),
     citizenship: S.optional(S.String),
@@ -298,7 +298,7 @@ export const IndividualOwnerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of owners in the account. There should be only one primary account owner which is mentioned in their role_type. */
 export type IndividualOwnerListInput = Array<IndividualOwnerInput>;
-export const IndividualOwnerListInput = /*@__PURE__*/ S.Array(
+const IndividualOwnerListInput = /*@__PURE__*/ S.Array(
   IndividualOwnerInput,
 ) as any as S.Schema<IndividualOwnerListInput>;
 
@@ -328,7 +328,7 @@ export type BusinessType =
   | "PUBLIC_CORPORATION"
   | "PUBLIC_PARTNERSHIP"
   | "REGISTERED_COOPERATIVE";
-export const BusinessType = S.String;
+const BusinessType = S.String;
 
 /** Sub classification of the business type */
 export type BusinessSubType =
@@ -339,7 +339,7 @@ export type BusinessSubType =
   | "GOVT_TYPE_ESTD_COMM"
   | "GOVT_TYPE_ESTD_FC"
   | "GOVT_TYPE_ESTD_ST_TR";
-export const BusinessSubType = S.String;
+const BusinessSubType = S.String;
 
 /** The type and subtype of the business. */
 export interface BusinessTypeInfo {
@@ -348,7 +348,7 @@ export interface BusinessTypeInfo {
   /** The sub classification of the business type. */
   subtype?: BusinessSubType | (string & {});
 }
-export const BusinessTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const BusinessTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BusinessType),
     subtype: S.optional(BusinessSubType),
@@ -364,7 +364,7 @@ export interface BusinessIndustry {
   /** The customer's business subcategory code. PayPal uses industry standard seller subcategory codes. */
   subcategory: string;
 }
-export const BusinessIndustry = /*@__PURE__*/ S.suspend(() =>
+const BusinessIndustry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.String,
     mcc_code: S.String,
@@ -379,7 +379,7 @@ export interface BusinessEntityInputBusinessIncorporation {
   /** date of incorporation */
   incorporation_date?: string;
 }
-export const BusinessEntityInputBusinessIncorporation = /*@__PURE__*/ S.suspend(() =>
+const BusinessEntityInputBusinessIncorporation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incorporation_country_code: S.optional(S.String),
     incorporation_date: S.optional(S.String),
@@ -390,7 +390,7 @@ export const BusinessEntityInputBusinessIncorporation = /*@__PURE__*/ S.suspend(
 
 /** Business name type */
 export type BusinessNameType = "DOING_BUSINESS_AS" | "LEGAL_NAME";
-export const BusinessNameType = S.String;
+const BusinessNameType = S.String;
 
 export interface BusinessNameDetail {
   /** Required. The business name of the party. */
@@ -398,7 +398,7 @@ export interface BusinessNameDetail {
   /** The type of business name. For example, trading name. */
   type: BusinessNameType | (string & {});
 }
-export const BusinessNameDetail = /*@__PURE__*/ S.suspend(() =>
+const BusinessNameDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     business_name: S.optional(S.String),
     type: BusinessNameType,
@@ -407,13 +407,13 @@ export const BusinessNameDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the business. */
 export type BusinessNameDetailList = Array<BusinessNameDetail>;
-export const BusinessNameDetailList = /*@__PURE__*/ S.Array(
+const BusinessNameDetailList = /*@__PURE__*/ S.Array(
   BusinessNameDetail,
 ) as any as S.Schema<BusinessNameDetailList>;
 
 /** The role of the email address. */
 export type EmailType = "CUSTOMER_SERVICE";
-export const EmailType = S.String;
+const EmailType = S.String;
 
 /** An email address at which the person or business can be contacted. */
 export interface Email {
@@ -421,7 +421,7 @@ export interface Email {
   type: EmailType | (string & {});
   email: string;
 }
-export const Email = /*@__PURE__*/ S.suspend(() =>
+const Email = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EmailType,
     email: S.String,
@@ -430,12 +430,10 @@ export const Email = /*@__PURE__*/ S.suspend(() =>
 
 /** Email addresses of the business. */
 export type EmailList = Array<Email>;
-export const EmailList = /*@__PURE__*/ S.Array(Email) as any as S.Schema<EmailList>;
+const EmailList = /*@__PURE__*/ S.Array(Email) as any as S.Schema<EmailList>;
 
 /** Address type under which the provided address is tagged */
 export type BusinessAddressType = "WORK";
-export const BusinessAddressType = S.String;
-
 export interface BusinessAddressDetail {
   /** The first line of the address. For example, number or street. For example, `173 Drury Lane`. Required for data entry and compliance and risk checks. Must contain the full address. */
   address_line_1?: string;
@@ -458,17 +456,13 @@ export interface BusinessAddressDetail {
   /** The address type under which this is classified. For example, shipping or dropoff. */
   type: BusinessAddressType | (string & {});
 }
-export const BusinessAddressDetail = PersonAddressDetail as any as S.Schema<BusinessAddressDetail>;
-
 /** List of addresses associated with the business entity. */
 export type BusinessAddressDetailList = Array<BusinessAddressDetail>;
-export const BusinessAddressDetailList =
+const BusinessAddressDetailList =
   PersonAddressDetailList as any as S.Schema<BusinessAddressDetailList>;
 
 /** The type of phone number provided. For example, home, work, or mobile. */
 export type BusinessPhoneType = "CUSTOMER_SERVICE" | "BUSINESS";
-export const BusinessPhoneType = S.String;
-
 export interface BusinessPhoneDetail {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   country_code: string;
@@ -479,12 +473,9 @@ export interface BusinessPhoneDetail {
   /** The type of phone number provided. For example, home, work, or mobile. */
   type: BusinessPhoneType | (string & {});
 }
-export const BusinessPhoneDetail = PersonPhoneDetail as any as S.Schema<BusinessPhoneDetail>;
-
 /** List of phone number associated with the business. */
 export type BusinessPhoneDetailList = Array<BusinessPhoneDetail>;
-export const BusinessPhoneDetailList =
-  PersonPhoneDetailList as any as S.Schema<BusinessPhoneDetailList>;
+const BusinessPhoneDetailList = PersonPhoneDetailList as any as S.Schema<BusinessPhoneDetailList>;
 
 /** The type of documents. */
 export type BusinessDocumentType =
@@ -498,8 +489,6 @@ export type BusinessDocumentType =
   | "CPF"
   | "PAN"
   | "BUSINESS_REGISTRATION";
-export const BusinessDocumentType = S.String;
-
 export interface BusinessDocumentInput {
   labels?: LabelsList;
   /** The file name. */
@@ -516,11 +505,9 @@ export interface BusinessDocumentInput {
   /** The actual type of the document. */
   type?: BusinessDocumentType | (string & {});
 }
-export const BusinessDocumentInput = PersonDocumentInput as any as S.Schema<BusinessDocumentInput>;
-
 /** Business Party related Document data collected from the customer.. For example SSN, ITIN, Business registration number that were collected from the user. */
 export type BusinessDocumentListInput = Array<BusinessDocumentInput>;
-export const BusinessDocumentListInput =
+const BusinessDocumentListInput =
   PersonDocumentListInput as any as S.Schema<BusinessDocumentListInput>;
 
 export interface IndividualBeneficialOwnerInput {
@@ -535,7 +522,7 @@ export interface IndividualBeneficialOwnerInput {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-export const IndividualBeneficialOwnerInput = /*@__PURE__*/ S.suspend(() =>
+const IndividualBeneficialOwnerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(PersonNameList),
     citizenship: S.optional(S.String),
@@ -551,16 +538,13 @@ export const IndividualBeneficialOwnerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Individual beneficial owners. */
 export type IndividualBeneficialOwnerListInput = Array<IndividualBeneficialOwnerInput>;
-export const IndividualBeneficialOwnerListInput = /*@__PURE__*/ S.Array(
+const IndividualBeneficialOwnerListInput = /*@__PURE__*/ S.Array(
   IndividualBeneficialOwnerInput,
 ) as any as S.Schema<IndividualBeneficialOwnerListInput>;
 
 /** Business incorporation information. */
 export type BusinessBeneficialOwnerInputBusinessIncorporation =
   BusinessEntityInputBusinessIncorporation;
-export const BusinessBeneficialOwnerInputBusinessIncorporation =
-  BusinessEntityInputBusinessIncorporation;
-
 export interface BusinessBeneficialOwnerInput {
   /** Information related to the business like the nature of business, started date etc. */
   business_type?: BusinessTypeInfo;
@@ -578,7 +562,7 @@ export interface BusinessBeneficialOwnerInput {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-export const BusinessBeneficialOwnerInput = /*@__PURE__*/ S.suspend(() =>
+const BusinessBeneficialOwnerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     business_type: S.optional(BusinessTypeInfo),
     business_industry: S.optional(BusinessIndustry),
@@ -597,7 +581,7 @@ export const BusinessBeneficialOwnerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Business beneficial owners. */
 export type BusinessBeneficialOwnerListInput = Array<BusinessBeneficialOwnerInput>;
-export const BusinessBeneficialOwnerListInput = /*@__PURE__*/ S.Array(
+const BusinessBeneficialOwnerListInput = /*@__PURE__*/ S.Array(
   BusinessBeneficialOwnerInput,
 ) as any as S.Schema<BusinessBeneficialOwnerListInput>;
 
@@ -606,7 +590,7 @@ export interface BeneficialOwnersInput {
   individual_beneficial_owners?: IndividualBeneficialOwnerListInput;
   business_beneficial_owners?: BusinessBeneficialOwnerListInput;
 }
-export const BeneficialOwnersInput = /*@__PURE__*/ S.suspend(() =>
+const BeneficialOwnersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     individual_beneficial_owners: S.optional(IndividualBeneficialOwnerListInput),
     business_beneficial_owners: S.optional(BusinessBeneficialOwnerListInput),
@@ -619,7 +603,7 @@ export interface Money {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/). */
   value: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency_code: S.String,
     value: S.String,
@@ -633,7 +617,7 @@ export interface CurrencyRange {
   /** The maximum inclusive amount for the range. */
   maximum_amount?: Money;
 }
-export const CurrencyRange = /*@__PURE__*/ S.suspend(() =>
+const CurrencyRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimum_amount: S.optional(Money),
     maximum_amount: S.optional(Money),
@@ -665,7 +649,7 @@ export interface BusinessEntityInput {
   /** The business goals description. For example, a mission statement. */
   business_description?: string;
 }
-export const BusinessEntityInput = /*@__PURE__*/ S.suspend(() =>
+const BusinessEntityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     business_type: S.optional(BusinessTypeInfo),
     business_industry: S.optional(BusinessIndustry),
@@ -693,7 +677,7 @@ export interface PartnerConfigOverride {
   /** Indicates whether to show an add credit card page. */
   show_add_credit_card?: boolean;
 }
-export const PartnerConfigOverride = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     return_url: S.optional(S.String),
     return_url_description: S.optional(S.String),
@@ -703,7 +687,7 @@ export const PartnerConfigOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of bank account. */
 export type BankAccountType = "CHECKING" | "SAVINGS";
-export const BankAccountType = S.String;
+const BankAccountType = S.String;
 
 /** The bank account ID type. */
 export type IdentifierType =
@@ -720,7 +704,7 @@ export type IdentifierType =
   | "BBAN_ENCRYPTED"
   | "BBAN_HMAC"
   | "AGGREGATOR_YODLEE";
-export const IdentifierType = S.String;
+const IdentifierType = S.String;
 
 /** The bank account ID. An ID with `ROUTING_NUMBER_1` is required. */
 export interface Identifier {
@@ -729,7 +713,7 @@ export interface Identifier {
   /** The value of account identifier. */
   value?: string;
 }
-export const Identifier = /*@__PURE__*/ S.suspend(() =>
+const Identifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(IdentifierType),
     value: S.optional(S.String),
@@ -738,7 +722,7 @@ export const Identifier = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of instrument institute attributes. Used with the account number to uniquely identify the instrument. Value is:<ul><li>For banks with IBAN information, the IBAN number.</li><li>For banks with BBAN information, the BBAN number.</li><li>For banks with both IBAN and BBAN information, the IBAN number.</li></ul> */
 export type IdentifierList = Array<Identifier>;
-export const IdentifierList = /*@__PURE__*/ S.Array(Identifier) as any as S.Schema<IdentifierList>;
+const IdentifierList = /*@__PURE__*/ S.Array(Identifier) as any as S.Schema<IdentifierList>;
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export interface BankBranchLocation {
@@ -754,7 +738,7 @@ export interface BankBranchLocation {
   postal_code?: string;
   country_code: string;
 }
-export const BankBranchLocation = /*@__PURE__*/ S.suspend(() =>
+const BankBranchLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line_1: S.optional(S.String),
     address_line_2: S.optional(S.String),
@@ -770,7 +754,7 @@ export interface Mandate {
   /** Whether mandate was accepted or not. */
   accepted: boolean;
 }
-export const Mandate = /*@__PURE__*/ S.suspend(() =>
+const Mandate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted: S.Boolean,
   }),
@@ -792,7 +776,7 @@ export interface Bank {
   /** Mandate for this bank account. */
   mandate?: Mandate;
 }
-export const Bank = /*@__PURE__*/ S.suspend(() =>
+const Bank = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nick_name: S.optional(S.String),
     account_number: S.String,
@@ -806,13 +790,13 @@ export const Bank = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of banks attached to this managed account. */
 export type BankList = Array<Bank>;
-export const BankList = /*@__PURE__*/ S.Array(Bank) as any as S.Schema<BankList>;
+const BankList = /*@__PURE__*/ S.Array(Bank) as any as S.Schema<BankList>;
 
 /** Financial instruments attached to this account. */
 export interface FinancialInstruments {
   banks?: BankList;
 }
-export const FinancialInstruments = /*@__PURE__*/ S.suspend(() =>
+const FinancialInstruments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     banks: S.optional(BankList),
   }),
@@ -826,15 +810,15 @@ export type OperationOperation =
   | "CONTEXTUAL_MARKETING_CONSENT"
   | "OFFLINE_ONBOARDING"
   | "SALESFORCE_REFERRAL";
-export const OperationOperation = S.String;
+const OperationOperation = S.String;
 
 /** The REST-credential integration method. */
 export type RestApiIntegrationIntegrationMethod = "BRAINTREE" | "PAYPAL" | "SDK";
-export const RestApiIntegrationIntegrationMethod = S.String;
+const RestApiIntegrationIntegrationMethod = S.String;
 
 /** The type of REST-endpoint integration. To integrate with Braintree v.zero for PayPal REST endpoints, specify `third_party_details`. */
 export type RestApiIntegrationIntegrationType = "FIRST_PARTY" | "THIRD_PARTY";
-export const RestApiIntegrationIntegrationType = S.String;
+const RestApiIntegrationIntegrationType = S.String;
 
 /** The REST endpoint. */
 export type RestEndpointFeaturesEnum =
@@ -862,11 +846,11 @@ export type RestEndpointFeaturesEnum =
   | "TRANSACTION_RISK_DATA"
   | "PAYPAL_BALANCE"
   | "EXCHANGE_CURRENCY";
-export const RestEndpointFeaturesEnum = S.String;
+const RestEndpointFeaturesEnum = S.String;
 
 /** An array of features that partner can access, or use, in PayPal on behalf of the seller. The seller grants permission for these features to the partner. */
 export type RestEndpointFeaturesEnumList = Array<RestEndpointFeaturesEnum | (string & {})>;
-export const RestEndpointFeaturesEnumList = /*@__PURE__*/ S.Array(
+const RestEndpointFeaturesEnumList = /*@__PURE__*/ S.Array(
   RestEndpointFeaturesEnum,
 ) as any as S.Schema<RestEndpointFeaturesEnumList>;
 
@@ -876,7 +860,7 @@ export interface FirstPartyDetails {
   /** S256 - The code verifier must be high-entropy cryptographic random string with a byte length of 43-128 range. */
   seller_nonce: string;
 }
-export const FirstPartyDetails = /*@__PURE__*/ S.suspend(() =>
+const FirstPartyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     features: RestEndpointFeaturesEnumList,
     seller_nonce: S.String,
@@ -887,12 +871,12 @@ export const FirstPartyDetails = /*@__PURE__*/ S.suspend(() =>
 export type RestApiIntegrationRestEndpointFeaturesEnumList = Array<
   RestEndpointFeaturesEnum | (string & {})
 >;
-export const RestApiIntegrationRestEndpointFeaturesEnumList =
+const RestApiIntegrationRestEndpointFeaturesEnumList =
   RestEndpointFeaturesEnumList as any as S.Schema<RestApiIntegrationRestEndpointFeaturesEnumList>;
 
 /** Signup Mode to be used for sellers for third party integration. */
 export type SignupMode = "VERIFY_WITH_PAYPAL";
-export const SignupMode = S.String;
+const SignupMode = S.String;
 
 /** The integration details for PayPal REST endpoints. */
 export interface ThirdPartyDetails {
@@ -901,7 +885,7 @@ export interface ThirdPartyDetails {
   /** The organization to which the account will belong in the partner's hierarchy, as a path. */
   organization?: string;
 }
-export const ThirdPartyDetails = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     features: S.optional(RestApiIntegrationRestEndpointFeaturesEnumList),
     signup_mode: S.optional(SignupMode),
@@ -918,7 +902,7 @@ export interface RestApiIntegration {
   first_party_details?: FirstPartyDetails;
   third_party_details?: ThirdPartyDetails;
 }
-export const RestApiIntegration = /*@__PURE__*/ S.suspend(() =>
+const RestApiIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_method: S.optional(RestApiIntegrationIntegrationMethod),
     integration_type: RestApiIntegrationIntegrationType,
@@ -932,7 +916,7 @@ export interface IntegrationDetails {
   classic_api_integration?: unknown;
   rest_api_integration?: RestApiIntegration;
 }
-export const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
+const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classic_api_integration: S.optional(S.Unknown),
     rest_api_integration: S.optional(RestApiIntegration),
@@ -946,7 +930,7 @@ export interface BillingExperiencePreference {
   /** Indicates whether the partner has already displayed the billing context to the seller. */
   billing_context_set?: boolean;
 }
-export const BillingExperiencePreference = /*@__PURE__*/ S.suspend(() =>
+const BillingExperiencePreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experience_id: S.optional(S.String),
     billing_context_set: S.optional(S.Boolean),
@@ -967,7 +951,7 @@ export interface BillingAgreement {
   /** The billing agreement token for the agreement. */
   ec_token?: string;
 }
-export const BillingAgreement = /*@__PURE__*/ S.suspend(() =>
+const BillingAgreement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     billing_experience_preference: S.optional(BillingExperiencePreference),
@@ -985,7 +969,7 @@ export interface Operation {
   offline_onboarding_preference?: unknown;
   billing_agreement?: BillingAgreement;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: OperationOperation,
     api_integration_preference: S.optional(IntegrationDetails),
@@ -996,7 +980,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of operations to perform for the customer while they share their data. */
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The PayPal product for which the customer is onboarded. */
 export type Product =
@@ -1021,11 +1005,11 @@ export type Product =
   | "ZETTLE"
   | "PAYPAL_COMMERCE_PLATFORM_BUSINESS"
   | "HYPERWALLET_PAYOUTS";
-export const Product = S.String;
+const Product = S.String;
 
 /** An array of PayPal products to which the partner wants to onboard the customer. */
 export type ProductList = Array<Product | (string & {})>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** Optional capabilities of the selected PayPal product for which the customer is being onboarded. */
 export type Capabilities =
@@ -1033,21 +1017,19 @@ export type Capabilities =
   | "PAY_UPON_INVOICE"
   | "APPLE_PAY"
   | "GOOGLE_PAY";
-export const Capabilities = S.String;
-
 /** An array of capabilities which the partner wants to enable for the selected products. Supported only when products are specified. */
 export type CapabilitiesList = Array<Capabilities | (string & {})>;
-export const CapabilitiesList = RestEndpointFeaturesEnumList as any as S.Schema<CapabilitiesList>;
+const CapabilitiesList = RestEndpointFeaturesEnumList as any as S.Schema<CapabilitiesList>;
 
 /** An array of dependent processes. */
 export type DependentProcessList = Array<unknown>;
-export const DependentProcessList = /*@__PURE__*/ S.Array(
+const DependentProcessList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DependentProcessList>;
 
 /** The type of consent. `SHARE_DATA_CONSENT` gives consent to you to share your customer's data with PayPal. */
 export type LegalConsentType = "SHARE_DATA_CONSENT";
-export const LegalConsentType = S.String;
+const LegalConsentType = S.String;
 
 /** The customer-provided consent. */
 export interface LegalConsent {
@@ -1056,7 +1038,7 @@ export interface LegalConsent {
   /** Indicates whether the customer agreed to share this type of data. To give consent, specify `true`. To withhold consent, specify `false`. */
   granted: boolean;
 }
-export const LegalConsent = /*@__PURE__*/ S.suspend(() =>
+const LegalConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: LegalConsentType,
     granted: S.Boolean,
@@ -1065,19 +1047,15 @@ export const LegalConsent = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of all consents that the partner has received from this seller. If `SHARE_DATA_CONSENT` is not granted, PayPal does not store customer data. */
 export type LegalConsentList = Array<LegalConsent>;
-export const LegalConsentList = /*@__PURE__*/ S.Array(
-  LegalConsent,
-) as any as S.Schema<LegalConsentList>;
+const LegalConsentList = /*@__PURE__*/ S.Array(LegalConsent) as any as S.Schema<LegalConsentList>;
 
 /** Transfer Method type. */
 export type TransferMethodTransferMethodType = "BANK_ACCOUNT" | "PAYPAL" | "VENMO" | "WIRE_ACCOUNT";
-export const TransferMethodTransferMethodType = S.String;
+const TransferMethodTransferMethodType = S.String;
 
 /** Requested Currencies for a Transfer Method. */
 export type CurrencyCodeList = Array<string>;
-export const CurrencyCodeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CurrencyCodeList>;
+const CurrencyCodeList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<CurrencyCodeList>;
 
 /** Requested transfer method and currency for a country. */
 export interface TransferMethod {
@@ -1085,7 +1063,7 @@ export interface TransferMethod {
   transfer_method_type?: TransferMethodTransferMethodType | (string & {});
   currencies?: CurrencyCodeList;
 }
-export const TransferMethod = /*@__PURE__*/ S.suspend(() =>
+const TransferMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transfer_method_type: S.optional(TransferMethodTransferMethodType),
     currencies: S.optional(CurrencyCodeList),
@@ -1094,7 +1072,7 @@ export const TransferMethod = /*@__PURE__*/ S.suspend(() =>
 
 /** Requested transfer method and currency for a country. */
 export type TransferMethodList = Array<TransferMethod>;
-export const TransferMethodList = /*@__PURE__*/ S.Array(
+const TransferMethodList = /*@__PURE__*/ S.Array(
   TransferMethod,
 ) as any as S.Schema<TransferMethodList>;
 
@@ -1104,7 +1082,7 @@ export interface CountryTransferMethodCurrencySelection {
   country?: string;
   transfer_methods?: TransferMethodList;
 }
-export const CountryTransferMethodCurrencySelection = /*@__PURE__*/ S.suspend(() =>
+const CountryTransferMethodCurrencySelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     transfer_methods: S.optional(TransferMethodList),
@@ -1116,7 +1094,7 @@ export const CountryTransferMethodCurrencySelection = /*@__PURE__*/ S.suspend(()
 /** Requested country, transfer method and currency. */
 export type CountryTransferMethodCurrencySelectionList =
   Array<CountryTransferMethodCurrencySelection>;
-export const CountryTransferMethodCurrencySelectionList = /*@__PURE__*/ S.Array(
+const CountryTransferMethodCurrencySelectionList = /*@__PURE__*/ S.Array(
   CountryTransferMethodCurrencySelection,
 ) as any as S.Schema<CountryTransferMethodCurrencySelectionList>;
 
@@ -1128,7 +1106,7 @@ export interface PayoutAttributes {
   kyc_required?: boolean;
   country_transfer_method_currency_selection?: CountryTransferMethodCurrencySelectionList;
 }
-export const PayoutAttributes = /*@__PURE__*/ S.suspend(() =>
+const PayoutAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplace: S.optional(S.Boolean),
     kyc_required: S.optional(S.Boolean),
@@ -1162,7 +1140,7 @@ export interface CreatePartnerReferralRequest {
   /** Legal Country Code. */
   legal_country_code?: string;
 }
-export const CreatePartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     individual_owners: S.optional(IndividualOwnerListInput),
     business_entity: S.optional(BusinessEntityInput),
@@ -1193,7 +1171,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -1204,7 +1182,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -1214,7 +1192,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
+const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<DefinitionsLinkDescriptionList>;
 
@@ -1222,7 +1200,7 @@ export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
 export interface CreateReferralDataResponse {
   links?: DefinitionsLinkDescriptionList;
 }
-export const CreateReferralDataResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateReferralDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: S.optional(DefinitionsLinkDescriptionList),
   }),
@@ -1234,7 +1212,7 @@ export interface ReadPartnerReferralRequest {
   /** The ID of the partner-referrals data for which to show details. */
   partner_referral_id: string;
 }
-export const ReadPartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadPartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partner_referral_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1250,8 +1228,7 @@ export const ReadPartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The HATEOAS links. */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList =
-  DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
+const LinkDescriptionList = DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
 
 export interface PersonDocument {
   /** The encrypted identifier for the document. */
@@ -1272,7 +1249,7 @@ export interface PersonDocument {
   /** The actual type of the document. It could be `ID_CARD`, `PASSPORT`, etc. */
   type?: PersonDocumentType;
 }
-export const PersonDocument = /*@__PURE__*/ S.suspend(() =>
+const PersonDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     labels: S.optional(LabelsList),
@@ -1289,7 +1266,7 @@ export const PersonDocument = /*@__PURE__*/ S.suspend(() =>
 
 /** A person's or party's related document data collected from the customer. For example SSN, ITIN, or business registration number collected from the user. <blockquote><strong>Note:</strong> This field is not applicable for POST [/v2/customer/partner-referrals](/docs/api/partner-referrals/v2/#partner-referrals_create) API calls.</blockquote> */
 export type PersonDocumentList = Array<PersonDocument>;
-export const PersonDocumentList = /*@__PURE__*/ S.Array(
+const PersonDocumentList = /*@__PURE__*/ S.Array(
   PersonDocument,
 ) as any as S.Schema<PersonDocumentList>;
 
@@ -1307,7 +1284,7 @@ export interface IndividualOwner {
   /** The actual role of this user on the account, PRIMARY/SECONDARY. */
   type?: IndividualOwnerType;
 }
-export const IndividualOwner = /*@__PURE__*/ S.suspend(() =>
+const IndividualOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     names: S.optional(PersonNameList),
@@ -1322,14 +1299,12 @@ export const IndividualOwner = /*@__PURE__*/ S.suspend(() =>
 
 /** List of owners in the account. There should be only one primary account owner which is mentioned in their role_type. */
 export type IndividualOwnerList = Array<IndividualOwner>;
-export const IndividualOwnerList = /*@__PURE__*/ S.Array(
+const IndividualOwnerList = /*@__PURE__*/ S.Array(
   IndividualOwner,
 ) as any as S.Schema<IndividualOwnerList>;
 
 /** Business incorporation information. */
 export type BusinessEntityBusinessIncorporation = BusinessEntityInputBusinessIncorporation;
-export const BusinessEntityBusinessIncorporation = BusinessEntityInputBusinessIncorporation;
-
 export interface BusinessDocument {
   /** The encrypted identifier for the document. */
   id?: string;
@@ -1349,11 +1324,9 @@ export interface BusinessDocument {
   /** The actual type of the document. */
   type?: BusinessDocumentType;
 }
-export const BusinessDocument = PersonDocument as any as S.Schema<BusinessDocument>;
-
 /** Business Party related Document data collected from the customer.. For example SSN, ITIN, Business registration number that were collected from the user. */
 export type BusinessDocumentList = Array<BusinessDocument>;
-export const BusinessDocumentList = PersonDocumentList as any as S.Schema<BusinessDocumentList>;
+const BusinessDocumentList = PersonDocumentList as any as S.Schema<BusinessDocumentList>;
 
 export interface IndividualBeneficialOwner {
   /** The encrypted party ID. */
@@ -1369,7 +1342,7 @@ export interface IndividualBeneficialOwner {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-export const IndividualBeneficialOwner = /*@__PURE__*/ S.suspend(() =>
+const IndividualBeneficialOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     names: S.optional(PersonNameList),
@@ -1386,15 +1359,12 @@ export const IndividualBeneficialOwner = /*@__PURE__*/ S.suspend(() =>
 
 /** Individual beneficial owners. */
 export type IndividualBeneficialOwnerList = Array<IndividualBeneficialOwner>;
-export const IndividualBeneficialOwnerList = /*@__PURE__*/ S.Array(
+const IndividualBeneficialOwnerList = /*@__PURE__*/ S.Array(
   IndividualBeneficialOwner,
 ) as any as S.Schema<IndividualBeneficialOwnerList>;
 
 /** Business incorporation information. */
 export type BusinessBeneficialOwnerBusinessIncorporation = BusinessEntityInputBusinessIncorporation;
-export const BusinessBeneficialOwnerBusinessIncorporation =
-  BusinessEntityInputBusinessIncorporation;
-
 export interface BusinessBeneficialOwner {
   /** Information related to the business like the nature of business, started date etc. */
   business_type?: BusinessTypeInfo;
@@ -1412,7 +1382,7 @@ export interface BusinessBeneficialOwner {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-export const BusinessBeneficialOwner = /*@__PURE__*/ S.suspend(() =>
+const BusinessBeneficialOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     business_type: S.optional(BusinessTypeInfo),
     business_industry: S.optional(BusinessIndustry),
@@ -1429,7 +1399,7 @@ export const BusinessBeneficialOwner = /*@__PURE__*/ S.suspend(() =>
 
 /** Business beneficial owners. */
 export type BusinessBeneficialOwnerList = Array<BusinessBeneficialOwner>;
-export const BusinessBeneficialOwnerList = /*@__PURE__*/ S.Array(
+const BusinessBeneficialOwnerList = /*@__PURE__*/ S.Array(
   BusinessBeneficialOwner,
 ) as any as S.Schema<BusinessBeneficialOwnerList>;
 
@@ -1438,7 +1408,7 @@ export interface BeneficialOwners {
   individual_beneficial_owners?: IndividualBeneficialOwnerList;
   business_beneficial_owners?: BusinessBeneficialOwnerList;
 }
-export const BeneficialOwners = /*@__PURE__*/ S.suspend(() =>
+const BeneficialOwners = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     individual_beneficial_owners: S.optional(IndividualBeneficialOwnerList),
     business_beneficial_owners: S.optional(BusinessBeneficialOwnerList),
@@ -1470,7 +1440,7 @@ export interface BusinessEntity {
   /** The business goals description. For example, a mission statement. */
   business_description?: string;
 }
-export const BusinessEntity = /*@__PURE__*/ S.suspend(() =>
+const BusinessEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     business_type: S.optional(BusinessTypeInfo),
     business_industry: S.optional(BusinessIndustry),
@@ -1514,7 +1484,7 @@ export interface ReferralData {
   /** Legal Country Code. */
   legal_country_code?: string;
 }
-export const ReferralData = /*@__PURE__*/ S.suspend(() =>
+const ReferralData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     individual_owners: S.optional(IndividualOwnerList),
     business_entity: S.optional(BusinessEntity),
@@ -1535,7 +1505,7 @@ export const ReferralData = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type ReferralDataResponseDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const ReferralDataResponseDefinitionsLinkDescriptionList =
+const ReferralDataResponseDefinitionsLinkDescriptionList =
   DefinitionsLinkDescriptionList as any as S.Schema<ReferralDataResponseDefinitionsLinkDescriptionList>;
 
 /** The share referral data response. */
@@ -1549,7 +1519,7 @@ export interface ReferralDataResponse {
   referral_data?: ReferralData;
   links?: ReferralDataResponseDefinitionsLinkDescriptionList;
 }
-export const ReferralDataResponse = /*@__PURE__*/ S.suspend(() =>
+const ReferralDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partner_referral_id: S.optional(S.String),
     submitter_payer_id: S.optional(S.String),

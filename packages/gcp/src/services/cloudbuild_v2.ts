@@ -63,7 +63,7 @@ export class NotFound
 
 /** Message for fetching SCM read token. */
 export interface FetchReadTokenRequest {}
-export const FetchReadTokenRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const FetchReadTokenRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FetchReadTokenRequest",
 }) as any as S.Schema<FetchReadTokenRequest>;
 
@@ -73,21 +73,20 @@ export interface AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest 
   /** Request body */
   body?: FetchReadTokenRequest;
 }
-export const AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.String.pipe(T.Label()),
-      body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+repository}:accessReadToken",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest",
-  }) as any as S.Schema<AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest>;
+const AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repository: S.String.pipe(T.Label()),
+    body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+repository}:accessReadToken",
+      baseUrl: "https://cloudbuild.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest",
+}) as any as S.Schema<AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest>;
 
 /** Message for responding to get read token. */
 export interface FetchReadTokenResponse {
@@ -96,7 +95,7 @@ export interface FetchReadTokenResponse {
   /** The token content. */
   token?: string;
 }
-export const FetchReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.String),
     token: S.optional(S.String),
@@ -105,16 +104,14 @@ export const FetchReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Message for fetching SCM read/write token. */
 export type FetchReadWriteTokenRequest = FetchReadTokenRequest;
-export const FetchReadWriteTokenRequest = FetchReadTokenRequest;
-
 export interface AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The resource name of the repository in the format `projects/*\/locations/*\/connections/*\/repositories/*`. */
   repository: string;
   /** Request body */
   body?: FetchReadTokenRequest;
 }
-export const AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       repository: S.String.pipe(T.Label()),
       body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
@@ -125,9 +122,9 @@ export const AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest
         baseUrl: "https://cloudbuild.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest",
-  }) as any as S.Schema<AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest>;
+).annotate({
+  identifier: "AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest",
+}) as any as S.Schema<AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest>;
 
 /** Message for responding to get read/write token. */
 export interface FetchReadWriteTokenResponse {
@@ -136,7 +133,7 @@ export interface FetchReadWriteTokenResponse {
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
   expirationTime?: string;
 }
-export const FetchReadWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchReadWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     expirationTime: S.optional(S.String),
@@ -146,7 +143,7 @@ export const FetchReadWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchReadWriteTokenResponse>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A repository associated to a parent connection. */
 export interface Repository {
@@ -165,7 +162,7 @@ export interface Repository {
   /** Output only. Server assigned timestamp for when the connection was created. */
   createTime?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.optional(S.String),
     etag: S.optional(S.String),
@@ -186,7 +183,7 @@ export interface CreateRepositoryRequest {
   /** Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. */
   repositoryId?: string;
 }
-export const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository: S.optional(Repository),
     parent: S.optional(S.String),
@@ -195,7 +192,7 @@ export const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRepositoryRequest" }) as any as S.Schema<CreateRepositoryRequest>;
 
 export type CreateRepositoryRequestList = Array<CreateRepositoryRequest>;
-export const CreateRepositoryRequestList = /*@__PURE__*/ S.Array(
+const CreateRepositoryRequestList = /*@__PURE__*/ S.Array(
   CreateRepositoryRequest,
 ) as any as S.Schema<CreateRepositoryRequestList>;
 
@@ -204,7 +201,7 @@ export interface BatchCreateRepositoriesRequest {
   /** Required. The request messages specifying the repositories to create. */
   requests?: CreateRepositoryRequestList;
 }
-export const BatchCreateRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(CreateRepositoryRequestList),
   }),
@@ -218,32 +215,26 @@ export interface BatchCreateProjectsLocationsConnectionsRepositoriesRequest {
   /** Request body */
   body?: BatchCreateRepositoriesRequest;
 }
-export const BatchCreateProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreateRepositoriesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}/repositories:batchCreate",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
+const BatchCreateProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchCreateRepositoriesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+parent}/repositories:batchCreate",
+      baseUrl: "https://cloudbuild.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BatchCreateProjectsLocationsConnectionsRepositoriesRequest",
 }) as any as S.Schema<BatchCreateProjectsLocationsConnectionsRepositoriesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -254,7 +245,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -275,7 +266,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -287,15 +278,13 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = FetchReadTokenRequest;
-export const CancelOperationRequest = FetchReadTokenRequest;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: FetchReadTokenRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
@@ -312,7 +301,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = FetchReadTokenRequest as any as S.Schema<Empty>;
+const Empty = FetchReadTokenRequest as any as S.Schema<Empty>;
 
 /** Represents a personal access token that authorized the Connection, and associated metadata. */
 export interface UserCredential {
@@ -321,7 +310,7 @@ export interface UserCredential {
   /** Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*\/secrets/*\/versions/*`. */
   userTokenSecretVersion?: string;
 }
-export const UserCredential = /*@__PURE__*/ S.suspend(() =>
+const UserCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     userTokenSecretVersion: S.optional(S.String),
@@ -333,7 +322,7 @@ export interface GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
   /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
   service?: string;
 }
-export const GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
   }),
@@ -358,7 +347,7 @@ export interface BitbucketDataCenterConfig {
   /** Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet. */
   serviceDirectoryConfig?: GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig;
 }
-export const BitbucketDataCenterConfig = /*@__PURE__*/ S.suspend(() =>
+const BitbucketDataCenterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookSecretSecretVersion: S.optional(S.String),
     serverVersion: S.optional(S.String),
@@ -389,7 +378,7 @@ export interface GoogleDevtoolsCloudbuildV2GitLabConfig {
   /** Required. A GitLab personal access token with the minimum `read_api` scope access. */
   readAuthorizerCredential?: UserCredential;
 }
-export const GoogleDevtoolsCloudbuildV2GitLabConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsCloudbuildV2GitLabConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizerCredential: S.optional(UserCredential),
     serverVersion: S.optional(S.String),
@@ -426,7 +415,7 @@ export interface GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   /** Optional. Id of the GitHub App created from the manifest. */
   appId?: string;
 }
-export const GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appSlug: S.optional(S.String),
     hostUri: S.optional(S.String),
@@ -449,7 +438,7 @@ export type InstallationStateStageEnum =
   | "PENDING_USER_OAUTH"
   | "PENDING_INSTALL_APP"
   | "COMPLETE";
-export const InstallationStateStageEnum = S.String;
+const InstallationStateStageEnum = S.String;
 
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
 export interface InstallationState {
@@ -460,7 +449,7 @@ export interface InstallationState {
   /** Output only. Current step of the installation process. */
   stage?: InstallationStateStageEnum | (string & {});
 }
-export const InstallationState = /*@__PURE__*/ S.suspend(() =>
+const InstallationState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionUri: S.optional(S.String),
     message: S.optional(S.String),
@@ -479,7 +468,7 @@ export interface BitbucketCloudConfig {
   /** Required. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*\/secrets/*\/versions/*`. */
   webhookSecretSecretVersion?: string;
 }
-export const BitbucketCloudConfig = /*@__PURE__*/ S.suspend(() =>
+const BitbucketCloudConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readAuthorizerCredential: S.optional(UserCredential),
     authorizerCredential: S.optional(UserCredential),
@@ -495,7 +484,7 @@ export interface OAuthCredential {
   /** Optional. A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*\/secrets/*\/versions/*`. */
   oauthTokenSecretVersion?: string;
 }
-export const OAuthCredential = /*@__PURE__*/ S.suspend(() =>
+const OAuthCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     oauthTokenSecretVersion: S.optional(S.String),
@@ -509,7 +498,7 @@ export interface GitHubConfig {
   /** Optional. GitHub App installation id. */
   appInstallationId?: string;
 }
-export const GitHubConfig = /*@__PURE__*/ S.suspend(() =>
+const GitHubConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizerCredential: S.optional(OAuthCredential),
     appInstallationId: S.optional(S.String),
@@ -545,7 +534,7 @@ export interface Connection {
   /** Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled. */
   disabled?: boolean;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bitbucketDataCenterConfig: S.optional(BitbucketDataCenterConfig),
     updateTime: S.optional(S.String),
@@ -571,7 +560,7 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     connectionId: S.optional(S.String.pipe(T.Query())),
@@ -595,7 +584,7 @@ export interface CreateProjectsLocationsConnectionsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const CreateProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     repositoryId: S.optional(S.String.pipe(T.Query())),
@@ -619,7 +608,7 @@ export interface DeleteProjectsLocationsConnectionsRequest {
   /** The current etag of the connection. If an etag is provided and does not match the current etag of the connection, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -639,7 +628,7 @@ export interface DeleteProjectsLocationsConnectionsRepositoriesRequest {
   /** The current etag of the repository. If an etag is provided and does not match the current etag of the repository, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -655,7 +644,7 @@ export type FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "TAG"
   | "BRANCH";
-export const FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum = S.String;
+const FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum = S.String;
 
 export interface FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest {
   /** Optional. Page start. */
@@ -667,28 +656,27 @@ export interface FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The resource name of the repository in the format `projects/*\/locations/*\/connections/*\/repositories/*`. */
   repository: string;
 }
-export const FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      refType: S.optional(
-        FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum.pipe(T.Query()),
-      ),
-      repository: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+repository}:fetchGitRefs",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
+const FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    refType: S.optional(
+      FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum.pipe(T.Query()),
     ),
+    repository: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+repository}:fetchGitRefs",
+      baseUrl: "https://cloudbuild.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest",
 }) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Response for fetching git refs */
 export interface FetchGitRefsResponse {
@@ -697,7 +685,7 @@ export interface FetchGitRefsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const FetchGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refNames: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -712,25 +700,24 @@ export interface FetchLinkableRepositoriesProjectsLocationsConnectionsRequest {
   /** Number of results to return in the list. Default to 20. */
   pageSize?: number;
 }
-export const FetchLinkableRepositoriesProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connection: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+connection}:fetchLinkableRepositories",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
+const FetchLinkableRepositoriesProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connection: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+connection}:fetchLinkableRepositories",
+      baseUrl: "https://cloudbuild.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FetchLinkableRepositoriesProjectsLocationsConnectionsRequest",
 }) as any as S.Schema<FetchLinkableRepositoriesProjectsLocationsConnectionsRequest>;
 
 export type RepositoryList = Array<Repository>;
-export const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
+const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
 
 /** Response message for FetchLinkableRepositories. */
 export interface FetchLinkableRepositoriesResponse {
@@ -739,7 +726,7 @@ export interface FetchLinkableRepositoriesResponse {
   /** repositories ready to be created. */
   repositories?: RepositoryList;
 }
-export const FetchLinkableRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchLinkableRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     repositories: S.optional(RepositoryList),
@@ -754,7 +741,7 @@ export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -780,7 +767,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expression: S.optional(S.String),
@@ -798,7 +785,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -807,14 +794,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -823,7 +810,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -831,7 +818,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -842,7 +829,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -850,9 +837,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -865,7 +850,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -878,7 +863,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -901,7 +886,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     displayName: S.optional(S.String),
@@ -915,7 +900,7 @@ export interface GetProjectsLocationsConnectionsRequest {
   /** Required. The name of the Connection to retrieve. Format: `projects/*\/locations/*\/connections/*`. */
   name: string;
 }
-export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -929,7 +914,7 @@ export interface GetProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The name of the Repository to retrieve. Format: `projects/*\/locations/*\/connections/*\/repositories/*`. */
   name: string;
 }
-export const GetProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -943,7 +928,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -965,7 +950,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -984,7 +969,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -993,7 +978,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1010,7 +995,7 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Number of results to return in the list. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1028,7 +1013,7 @@ export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
 export type ConnectionList = Array<Connection>;
-export const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
+const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
 
 /** Message for response to listing Connections. */
 export interface ListConnectionsResponse {
@@ -1039,7 +1024,7 @@ export interface ListConnectionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     connections: S.optional(ConnectionList),
@@ -1059,7 +1044,7 @@ export interface ListProjectsLocationsConnectionsRepositoriesRequest {
   /** Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1086,7 +1071,7 @@ export interface ListRepositoriesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(RepositoryList),
     nextPageToken: S.optional(S.String),
@@ -1106,7 +1091,7 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1129,7 +1114,7 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(S.String),
     data: S.optional(S.String),
@@ -1145,7 +1130,7 @@ export interface ProcessWebhookProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const ProcessWebhookProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProcessWebhookProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookKey: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1168,7 +1153,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1181,7 +1166,7 @@ export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1201,7 +1186,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1215,7 +1200,7 @@ export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1235,7 +1220,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type AccessReadTokenProjectsLocationsConnectionsRepositoriesError =

@@ -177,13 +177,13 @@ export class VersionMismatchException
   ).pipe(C.withBadRequestError) {}
 export type ChannelName = string;
 export type ChannelType = "SINGLE_MASTER" | "FULL_MESH" | (string & {});
-export const ChannelType = S.String;
+const ChannelType = S.String;
 
 export type MessageTtlSeconds = number;
 export interface SingleMasterConfiguration {
   MessageTtlSeconds?: number;
 }
-export const SingleMasterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SingleMasterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MessageTtlSeconds: S.optional(S.Number) }),
 ).annotate({
   identifier: "SingleMasterConfiguration",
@@ -194,18 +194,18 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagOnCreateList = Tag[];
-export const TagOnCreateList = /*@__PURE__*/ S.Array(Tag);
+const TagOnCreateList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateSignalingChannelInput {
   ChannelName: string;
   ChannelType?: ChannelType;
   SingleMasterConfiguration?: SingleMasterConfiguration;
   Tags?: Tag[];
 }
-export const CreateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelName: S.String,
     ChannelType: S.optional(ChannelType),
@@ -229,7 +229,7 @@ export type ResourceARN = string;
 export interface CreateSignalingChannelOutput {
   ChannelARN?: string;
 }
-export const CreateSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelARN: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "CreateSignalingChannelOutput",
@@ -240,17 +240,14 @@ export type MediaType = string;
 export type KmsKeyId = string;
 export type DataRetentionInHours = number;
 export type ResourceTags = { [key: string]: string | undefined };
-export const ResourceTags = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const ResourceTags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type DefaultStorageTier = "HOT" | "WARM" | (string & {});
-export const DefaultStorageTier = S.String;
+const DefaultStorageTier = S.String;
 
 export interface StreamStorageConfiguration {
   DefaultStorageTier: DefaultStorageTier;
 }
-export const StreamStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const StreamStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DefaultStorageTier: DefaultStorageTier }),
 ).annotate({
   identifier: "StreamStorageConfiguration",
@@ -264,7 +261,7 @@ export interface CreateStreamInput {
   Tags?: { [key: string]: string | undefined };
   StreamStorageConfiguration?: StreamStorageConfiguration;
 }
-export const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeviceName: S.optional(S.String),
     StreamName: S.String,
@@ -280,14 +277,14 @@ export const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateStreamOutput {
   StreamARN?: string;
 }
-export const CreateStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamARN: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "CreateStreamOutput" }) as any as S.Schema<CreateStreamOutput>;
 export interface DeleteEdgeConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
 }
-export const DeleteEdgeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -303,17 +300,17 @@ export const DeleteEdgeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEdgeConfigurationInput",
 }) as any as S.Schema<DeleteEdgeConfigurationInput>;
 export interface DeleteEdgeConfigurationOutput {}
-export const DeleteEdgeConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteEdgeConfigurationOutput",
-}) as any as S.Schema<DeleteEdgeConfigurationOutput>;
+const DeleteEdgeConfigurationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
+  {
+    identifier: "DeleteEdgeConfigurationOutput",
+  },
+) as any as S.Schema<DeleteEdgeConfigurationOutput>;
 export type Version = string;
 export interface DeleteSignalingChannelInput {
   ChannelARN: string;
   CurrentVersion?: string;
 }
-export const DeleteSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelARN: S.String, CurrentVersion: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -329,26 +326,26 @@ export const DeleteSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSignalingChannelInput",
 }) as any as S.Schema<DeleteSignalingChannelInput>;
 export interface DeleteSignalingChannelOutput {}
-export const DeleteSignalingChannelOutput =
+const DeleteSignalingChannelOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<DeleteSignalingChannelOutput>;
 export interface DeleteStreamInput {
   StreamARN: string;
   CurrentVersion?: string;
 }
-export const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamARN: S.String, CurrentVersion: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/deleteStream" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteStreamInput" }) as any as S.Schema<DeleteStreamInput>;
 export interface DeleteStreamOutput {}
-export const DeleteStreamOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const DeleteStreamOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "DeleteStreamOutput",
 }) as any as S.Schema<DeleteStreamOutput>;
 export interface DescribeEdgeConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
 }
-export const DescribeEdgeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeEdgeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -372,19 +369,19 @@ export type SyncStatus =
   | "DELETE_FAILED"
   | "DELETING_ACKNOWLEDGED"
   | (string & {});
-export const SyncStatus = S.String;
+const SyncStatus = S.String;
 
 export type FailedStatusDetails = string;
 export type HubDeviceArn = string;
 export type MediaUriSecretArn = string | redacted.Redacted<string>;
 export type MediaUriType = "RTSP_URI" | "FILE_URI" | (string & {});
-export const MediaUriType = S.String;
+const MediaUriType = S.String;
 
 export interface MediaSourceConfig {
   MediaUriSecretArn: string | redacted.Redacted<string>;
   MediaUriType: MediaUriType;
 }
-export const MediaSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const MediaSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MediaUriSecretArn: SensitiveString, MediaUriType: MediaUriType }),
 ).annotate({ identifier: "MediaSourceConfig" }) as any as S.Schema<MediaSourceConfig>;
 export type ScheduleExpression = string;
@@ -393,32 +390,32 @@ export interface ScheduleConfig {
   ScheduleExpression: string;
   DurationInSeconds: number;
 }
-export const ScheduleConfig = /*@__PURE__*/ S.suspend(() =>
+const ScheduleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduleExpression: S.String, DurationInSeconds: S.Number }),
 ).annotate({ identifier: "ScheduleConfig" }) as any as S.Schema<ScheduleConfig>;
 export interface RecorderConfig {
   MediaSourceConfig: MediaSourceConfig;
   ScheduleConfig?: ScheduleConfig;
 }
-export const RecorderConfig = /*@__PURE__*/ S.suspend(() =>
+const RecorderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MediaSourceConfig: MediaSourceConfig, ScheduleConfig: S.optional(ScheduleConfig) }),
 ).annotate({ identifier: "RecorderConfig" }) as any as S.Schema<RecorderConfig>;
 export interface UploaderConfig {
   ScheduleConfig: ScheduleConfig;
 }
-export const UploaderConfig = /*@__PURE__*/ S.suspend(() =>
+const UploaderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduleConfig: ScheduleConfig }),
 ).annotate({ identifier: "UploaderConfig" }) as any as S.Schema<UploaderConfig>;
 export type EdgeRetentionInHours = number;
 export type MaxLocalMediaSizeInMB = number;
 export type StrategyOnFullSize = "DELETE_OLDEST_MEDIA" | "DENY_NEW_MEDIA" | (string & {});
-export const StrategyOnFullSize = S.String;
+const StrategyOnFullSize = S.String;
 
 export interface LocalSizeConfig {
   MaxLocalMediaSizeInMB?: number;
   StrategyOnFullSize?: StrategyOnFullSize;
 }
-export const LocalSizeConfig = /*@__PURE__*/ S.suspend(() =>
+const LocalSizeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxLocalMediaSizeInMB: S.optional(S.Number),
     StrategyOnFullSize: S.optional(StrategyOnFullSize),
@@ -430,7 +427,7 @@ export interface DeletionConfig {
   LocalSizeConfig?: LocalSizeConfig;
   DeleteAfterUpload?: boolean;
 }
-export const DeletionConfig = /*@__PURE__*/ S.suspend(() =>
+const DeletionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EdgeRetentionInHours: S.optional(S.Number),
     LocalSizeConfig: S.optional(LocalSizeConfig),
@@ -443,7 +440,7 @@ export interface EdgeConfig {
   UploaderConfig?: UploaderConfig;
   DeletionConfig?: DeletionConfig;
 }
-export const EdgeConfig = /*@__PURE__*/ S.suspend(() =>
+const EdgeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HubDeviceArn: S.String,
     RecorderConfig: RecorderConfig,
@@ -453,7 +450,7 @@ export const EdgeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeConfig" }) as any as S.Schema<EdgeConfig>;
 export type JobStatusDetails = string;
 export type RecorderStatus = "SUCCESS" | "USER_ERROR" | "SYSTEM_ERROR" | (string & {});
-export const RecorderStatus = S.String;
+const RecorderStatus = S.String;
 
 export interface LastRecorderStatus {
   JobStatusDetails?: string;
@@ -461,7 +458,7 @@ export interface LastRecorderStatus {
   LastUpdatedTime?: Date;
   RecorderStatus?: RecorderStatus;
 }
-export const LastRecorderStatus = /*@__PURE__*/ S.suspend(() =>
+const LastRecorderStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobStatusDetails: S.optional(S.String),
     LastCollectedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -470,7 +467,7 @@ export const LastRecorderStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LastRecorderStatus" }) as any as S.Schema<LastRecorderStatus>;
 export type UploaderStatus = "SUCCESS" | "USER_ERROR" | "SYSTEM_ERROR" | (string & {});
-export const UploaderStatus = S.String;
+const UploaderStatus = S.String;
 
 export interface LastUploaderStatus {
   JobStatusDetails?: string;
@@ -478,7 +475,7 @@ export interface LastUploaderStatus {
   LastUpdatedTime?: Date;
   UploaderStatus?: UploaderStatus;
 }
-export const LastUploaderStatus = /*@__PURE__*/ S.suspend(() =>
+const LastUploaderStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobStatusDetails: S.optional(S.String),
     LastCollectedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -490,7 +487,7 @@ export interface EdgeAgentStatus {
   LastRecorderStatus?: LastRecorderStatus;
   LastUploaderStatus?: LastUploaderStatus;
 }
-export const EdgeAgentStatus = /*@__PURE__*/ S.suspend(() =>
+const EdgeAgentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LastRecorderStatus: S.optional(LastRecorderStatus),
     LastUploaderStatus: S.optional(LastUploaderStatus),
@@ -506,7 +503,7 @@ export interface DescribeEdgeConfigurationOutput {
   EdgeConfig?: EdgeConfig;
   EdgeAgentStatus?: EdgeAgentStatus;
 }
-export const DescribeEdgeConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeEdgeConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -524,7 +521,7 @@ export interface DescribeImageGenerationConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
 }
-export const DescribeImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -540,10 +537,10 @@ export const DescribeImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend
   identifier: "DescribeImageGenerationConfigurationInput",
 }) as any as S.Schema<DescribeImageGenerationConfigurationInput>;
 export type ConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ConfigurationStatus = S.String;
+const ConfigurationStatus = S.String;
 
 export type ImageSelectorType = "SERVER_TIMESTAMP" | "PRODUCER_TIMESTAMP" | (string & {});
-export const ImageSelectorType = S.String;
+const ImageSelectorType = S.String;
 
 export type DestinationUri = string;
 export type DestinationRegion = string;
@@ -551,21 +548,21 @@ export interface ImageGenerationDestinationConfig {
   Uri: string;
   DestinationRegion: string;
 }
-export const ImageGenerationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const ImageGenerationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Uri: S.String, DestinationRegion: S.String }),
 ).annotate({
   identifier: "ImageGenerationDestinationConfig",
 }) as any as S.Schema<ImageGenerationDestinationConfig>;
 export type SamplingInterval = number;
 export type Format = "JPEG" | "PNG" | (string & {});
-export const Format = S.String;
+const Format = S.String;
 
 export type FormatConfigKey = "JPEGQuality" | (string & {});
-export const FormatConfigKey = S.String;
+const FormatConfigKey = S.String;
 
 export type FormatConfigValue = string;
 export type FormatConfig = { [key in FormatConfigKey]?: string };
-export const FormatConfig = /*@__PURE__*/ S.Record(
+const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -581,7 +578,7 @@ export interface ImageGenerationConfiguration {
   WidthPixels?: number;
   HeightPixels?: number;
 }
-export const ImageGenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ImageGenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: ConfigurationStatus,
     ImageSelectorType: ImageSelectorType,
@@ -598,7 +595,7 @@ export const ImageGenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeImageGenerationConfigurationOutput {
   ImageGenerationConfiguration?: ImageGenerationConfiguration;
 }
-export const DescribeImageGenerationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeImageGenerationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ImageGenerationConfiguration: S.optional(ImageGenerationConfiguration) }).pipe(ns),
 ).annotate({
   identifier: "DescribeImageGenerationConfigurationOutput",
@@ -611,7 +608,7 @@ export interface DescribeMappedResourceConfigurationInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeMappedResourceConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeMappedResourceConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -636,20 +633,18 @@ export interface MappedResourceConfigurationListItem {
   Type?: string;
   ARN?: string;
 }
-export const MappedResourceConfigurationListItem = /*@__PURE__*/ S.suspend(() =>
+const MappedResourceConfigurationListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(S.String), ARN: S.optional(S.String) }),
 ).annotate({
   identifier: "MappedResourceConfigurationListItem",
 }) as any as S.Schema<MappedResourceConfigurationListItem>;
 export type MappedResourceConfigurationList = MappedResourceConfigurationListItem[];
-export const MappedResourceConfigurationList = /*@__PURE__*/ S.Array(
-  MappedResourceConfigurationListItem,
-);
+const MappedResourceConfigurationList = /*@__PURE__*/ S.Array(MappedResourceConfigurationListItem);
 export interface DescribeMappedResourceConfigurationOutput {
   MappedResourceConfigurationList?: MappedResourceConfigurationListItem[];
   NextToken?: string;
 }
-export const DescribeMappedResourceConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeMappedResourceConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MappedResourceConfigurationList: S.optional(MappedResourceConfigurationList),
     NextToken: S.optional(S.String),
@@ -661,7 +656,7 @@ export interface DescribeMediaStorageConfigurationInput {
   ChannelName?: string;
   ChannelARN?: string;
 }
-export const DescribeMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelName: S.optional(S.String), ChannelARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -677,13 +672,13 @@ export const DescribeMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(()
   identifier: "DescribeMediaStorageConfigurationInput",
 }) as any as S.Schema<DescribeMediaStorageConfigurationInput>;
 export type MediaStorageConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
-export const MediaStorageConfigurationStatus = S.String;
+const MediaStorageConfigurationStatus = S.String;
 
 export interface MediaStorageConfiguration {
   StreamARN?: string;
   Status: MediaStorageConfigurationStatus;
 }
-export const MediaStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MediaStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamARN: S.optional(S.String), Status: MediaStorageConfigurationStatus }),
 ).annotate({
   identifier: "MediaStorageConfiguration",
@@ -691,7 +686,7 @@ export const MediaStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeMediaStorageConfigurationOutput {
   MediaStorageConfiguration?: MediaStorageConfiguration;
 }
-export const DescribeMediaStorageConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeMediaStorageConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MediaStorageConfiguration: S.optional(MediaStorageConfiguration) }).pipe(ns),
 ).annotate({
   identifier: "DescribeMediaStorageConfigurationOutput",
@@ -700,7 +695,7 @@ export interface DescribeNotificationConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
 }
-export const DescribeNotificationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeNotificationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -718,7 +713,7 @@ export const DescribeNotificationConfigurationInput = /*@__PURE__*/ S.suspend(()
 export interface NotificationDestinationConfig {
   Uri: string;
 }
-export const NotificationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const NotificationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Uri: S.String }),
 ).annotate({
   identifier: "NotificationDestinationConfig",
@@ -727,7 +722,7 @@ export interface NotificationConfiguration {
   Status: ConfigurationStatus;
   DestinationConfig: NotificationDestinationConfig;
 }
-export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: ConfigurationStatus, DestinationConfig: NotificationDestinationConfig }),
 ).annotate({
   identifier: "NotificationConfiguration",
@@ -735,7 +730,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeNotificationConfigurationOutput {
   NotificationConfiguration?: NotificationConfiguration;
 }
-export const DescribeNotificationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeNotificationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NotificationConfiguration: S.optional(NotificationConfiguration) }).pipe(ns),
 ).annotate({
   identifier: "DescribeNotificationConfigurationOutput",
@@ -744,7 +739,7 @@ export interface DescribeSignalingChannelInput {
   ChannelName?: string;
   ChannelARN?: string;
 }
-export const DescribeSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelName: S.optional(S.String), ChannelARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -760,7 +755,7 @@ export const DescribeSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSignalingChannelInput",
 }) as any as S.Schema<DescribeSignalingChannelInput>;
 export type Status = "CREATING" | "ACTIVE" | "UPDATING" | "DELETING" | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export interface ChannelInfo {
   ChannelName?: string;
@@ -771,7 +766,7 @@ export interface ChannelInfo {
   SingleMasterConfiguration?: SingleMasterConfiguration;
   Version?: string;
 }
-export const ChannelInfo = /*@__PURE__*/ S.suspend(() =>
+const ChannelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelName: S.optional(S.String),
     ChannelARN: S.optional(S.String),
@@ -785,7 +780,7 @@ export const ChannelInfo = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeSignalingChannelOutput {
   ChannelInfo?: ChannelInfo;
 }
-export const DescribeSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelInfo: S.optional(ChannelInfo) }).pipe(ns),
 ).annotate({
   identifier: "DescribeSignalingChannelOutput",
@@ -794,7 +789,7 @@ export interface DescribeStreamInput {
   StreamName?: string;
   StreamARN?: string;
 }
-export const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/describeStream" }), svc, auth, proto, ver, rules),
   ),
@@ -810,7 +805,7 @@ export interface StreamInfo {
   CreationTime?: Date;
   DataRetentionInHours?: number;
 }
-export const StreamInfo = /*@__PURE__*/ S.suspend(() =>
+const StreamInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeviceName: S.optional(S.String),
     StreamName: S.optional(S.String),
@@ -826,14 +821,14 @@ export const StreamInfo = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStreamOutput {
   StreamInfo?: StreamInfo;
 }
-export const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamInfo: S.optional(StreamInfo) }).pipe(ns),
 ).annotate({ identifier: "DescribeStreamOutput" }) as any as S.Schema<DescribeStreamOutput>;
 export interface DescribeStreamStorageConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
 }
-export const DescribeStreamStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamName: S.optional(S.String), StreamARN: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -853,7 +848,7 @@ export interface DescribeStreamStorageConfigurationOutput {
   StreamARN?: string;
   StreamStorageConfiguration?: StreamStorageConfiguration;
 }
-export const DescribeStreamStorageConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamStorageConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -872,14 +867,14 @@ export type APIName =
   | "GET_CLIP"
   | "GET_IMAGES"
   | (string & {});
-export const APIName = S.String;
+const APIName = S.String;
 
 export interface GetDataEndpointInput {
   StreamName?: string;
   StreamARN?: string;
   APIName: APIName;
 }
-export const GetDataEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const GetDataEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -892,22 +887,22 @@ export type DataEndpoint = string;
 export interface GetDataEndpointOutput {
   DataEndpoint?: string;
 }
-export const GetDataEndpointOutput = /*@__PURE__*/ S.suspend(() =>
+const GetDataEndpointOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DataEndpoint: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "GetDataEndpointOutput" }) as any as S.Schema<GetDataEndpointOutput>;
 export type ChannelProtocol = "WSS" | "HTTPS" | "WEBRTC" | (string & {});
-export const ChannelProtocol = S.String;
+const ChannelProtocol = S.String;
 
 export type ListOfProtocols = ChannelProtocol[];
-export const ListOfProtocols = /*@__PURE__*/ S.Array(ChannelProtocol);
+const ListOfProtocols = /*@__PURE__*/ S.Array(ChannelProtocol);
 export type ChannelRole = "MASTER" | "VIEWER" | (string & {});
-export const ChannelRole = S.String;
+const ChannelRole = S.String;
 
 export interface SingleMasterChannelEndpointConfiguration {
   Protocols?: ChannelProtocol[];
   Role?: ChannelRole;
 }
-export const SingleMasterChannelEndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SingleMasterChannelEndpointConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Protocols: S.optional(ListOfProtocols), Role: S.optional(ChannelRole) }),
 ).annotate({
   identifier: "SingleMasterChannelEndpointConfiguration",
@@ -916,7 +911,7 @@ export interface GetSignalingChannelEndpointInput {
   ChannelARN: string;
   SingleMasterChannelEndpointConfiguration?: SingleMasterChannelEndpointConfiguration;
 }
-export const GetSignalingChannelEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const GetSignalingChannelEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelARN: S.String,
     SingleMasterChannelEndpointConfiguration: S.optional(SingleMasterChannelEndpointConfiguration),
@@ -939,15 +934,15 @@ export interface ResourceEndpointListItem {
   Protocol?: ChannelProtocol;
   ResourceEndpoint?: string;
 }
-export const ResourceEndpointListItem = /*@__PURE__*/ S.suspend(() =>
+const ResourceEndpointListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Protocol: S.optional(ChannelProtocol), ResourceEndpoint: S.optional(S.String) }),
 ).annotate({ identifier: "ResourceEndpointListItem" }) as any as S.Schema<ResourceEndpointListItem>;
 export type ResourceEndpointList = ResourceEndpointListItem[];
-export const ResourceEndpointList = /*@__PURE__*/ S.Array(ResourceEndpointListItem);
+const ResourceEndpointList = /*@__PURE__*/ S.Array(ResourceEndpointListItem);
 export interface GetSignalingChannelEndpointOutput {
   ResourceEndpointList?: ResourceEndpointListItem[];
 }
-export const GetSignalingChannelEndpointOutput = /*@__PURE__*/ S.suspend(() =>
+const GetSignalingChannelEndpointOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceEndpointList: S.optional(ResourceEndpointList) }).pipe(ns),
 ).annotate({
   identifier: "GetSignalingChannelEndpointOutput",
@@ -958,7 +953,7 @@ export interface ListEdgeAgentConfigurationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListEdgeAgentConfigurationsInput = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeAgentConfigurationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HubDeviceArn: S.String,
     MaxResults: S.optional(S.Number),
@@ -986,7 +981,7 @@ export interface ListEdgeAgentConfigurationsEdgeConfig {
   FailedStatusDetails?: string;
   EdgeConfig?: EdgeConfig;
 }
-export const ListEdgeAgentConfigurationsEdgeConfig = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeAgentConfigurationsEdgeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1000,14 +995,14 @@ export const ListEdgeAgentConfigurationsEdgeConfig = /*@__PURE__*/ S.suspend(() 
   identifier: "ListEdgeAgentConfigurationsEdgeConfig",
 }) as any as S.Schema<ListEdgeAgentConfigurationsEdgeConfig>;
 export type ListEdgeAgentConfigurationsEdgeConfigList = ListEdgeAgentConfigurationsEdgeConfig[];
-export const ListEdgeAgentConfigurationsEdgeConfigList = /*@__PURE__*/ S.Array(
+const ListEdgeAgentConfigurationsEdgeConfigList = /*@__PURE__*/ S.Array(
   ListEdgeAgentConfigurationsEdgeConfig,
 );
 export interface ListEdgeAgentConfigurationsOutput {
   EdgeConfigs?: ListEdgeAgentConfigurationsEdgeConfig[];
   NextToken?: string;
 }
-export const ListEdgeAgentConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeAgentConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EdgeConfigs: S.optional(ListEdgeAgentConfigurationsEdgeConfigList),
     NextToken: S.optional(S.String),
@@ -1017,13 +1012,13 @@ export const ListEdgeAgentConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEdgeAgentConfigurationsOutput>;
 export type ListStreamsInputLimit = number;
 export type ComparisonOperator = "BEGINS_WITH" | (string & {});
-export const ComparisonOperator = S.String;
+const ComparisonOperator = S.String;
 
 export interface ChannelNameCondition {
   ComparisonOperator?: ComparisonOperator;
   ComparisonValue?: string;
 }
-export const ChannelNameCondition = /*@__PURE__*/ S.suspend(() =>
+const ChannelNameCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ComparisonOperator: S.optional(ComparisonOperator),
     ComparisonValue: S.optional(S.String),
@@ -1034,7 +1029,7 @@ export interface ListSignalingChannelsInput {
   NextToken?: string;
   ChannelNameCondition?: ChannelNameCondition;
 }
-export const ListSignalingChannelsInput = /*@__PURE__*/ S.suspend(() =>
+const ListSignalingChannelsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -1054,12 +1049,12 @@ export const ListSignalingChannelsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSignalingChannelsInput",
 }) as any as S.Schema<ListSignalingChannelsInput>;
 export type ChannelInfoList = ChannelInfo[];
-export const ChannelInfoList = /*@__PURE__*/ S.Array(ChannelInfo);
+const ChannelInfoList = /*@__PURE__*/ S.Array(ChannelInfo);
 export interface ListSignalingChannelsOutput {
   ChannelInfoList?: ChannelInfo[];
   NextToken?: string;
 }
-export const ListSignalingChannelsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListSignalingChannelsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelInfoList: S.optional(ChannelInfoList), NextToken: S.optional(S.String) }).pipe(
     ns,
   ),
@@ -1070,13 +1065,13 @@ export interface StreamNameCondition {
   ComparisonOperator?: ComparisonOperator;
   ComparisonValue?: string;
 }
-export const StreamNameCondition = ChannelNameCondition as any as S.Schema<StreamNameCondition>;
+const StreamNameCondition = ChannelNameCondition as any as S.Schema<StreamNameCondition>;
 export interface ListStreamsInput {
   MaxResults?: number;
   NextToken?: string;
   StreamNameCondition?: StreamNameCondition;
 }
-export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -1084,12 +1079,12 @@ export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/listStreams" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListStreamsInput" }) as any as S.Schema<ListStreamsInput>;
 export type StreamInfoList = StreamInfo[];
-export const StreamInfoList = /*@__PURE__*/ S.Array(StreamInfo);
+const StreamInfoList = /*@__PURE__*/ S.Array(StreamInfo);
 export interface ListStreamsOutput {
   StreamInfoList?: StreamInfo[];
   NextToken?: string;
 }
-export const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamInfoList: S.optional(StreamInfoList), NextToken: S.optional(S.String) }).pipe(
     ns,
   ),
@@ -1098,7 +1093,7 @@ export interface ListTagsForResourceInput {
   NextToken?: string;
   ResourceARN: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), ResourceARN: S.String }).pipe(
     T.all(
       ns,
@@ -1115,7 +1110,7 @@ export interface ListTagsForResourceOutput {
   NextToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), Tags: S.optional(ResourceTags) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
@@ -1125,7 +1120,7 @@ export interface ListTagsForStreamInput {
   StreamARN?: string;
   StreamName?: string;
 }
-export const ListTagsForStreamInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1138,7 +1133,7 @@ export interface ListTagsForStreamOutput {
   NextToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), Tags: S.optional(ResourceTags) }).pipe(ns),
 ).annotate({ identifier: "ListTagsForStreamOutput" }) as any as S.Schema<ListTagsForStreamOutput>;
 export interface StartEdgeConfigurationUpdateInput {
@@ -1146,7 +1141,7 @@ export interface StartEdgeConfigurationUpdateInput {
   StreamARN?: string;
   EdgeConfig: EdgeConfig;
 }
-export const StartEdgeConfigurationUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const StartEdgeConfigurationUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1174,7 +1169,7 @@ export interface StartEdgeConfigurationUpdateOutput {
   FailedStatusDetails?: string;
   EdgeConfig?: EdgeConfig;
 }
-export const StartEdgeConfigurationUpdateOutput = /*@__PURE__*/ S.suspend(() =>
+const StartEdgeConfigurationUpdateOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1188,24 +1183,24 @@ export const StartEdgeConfigurationUpdateOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartEdgeConfigurationUpdateOutput",
 }) as any as S.Schema<StartEdgeConfigurationUpdateOutput>;
 export type TagList = Tag[];
-export const TagList = TagOnCreateList as any as S.Schema<TagList>;
+const TagList = TagOnCreateList as any as S.Schema<TagList>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = DeleteStreamOutput as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = DeleteStreamOutput as any as S.Schema<TagResourceOutput>;
 export interface TagStreamInput {
   StreamARN?: string;
   StreamName?: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagStreamInput = /*@__PURE__*/ S.suspend(() =>
+const TagStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String),
     StreamName: S.optional(S.String),
@@ -1213,26 +1208,26 @@ export const TagStreamInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/tagStream" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "TagStreamInput" }) as any as S.Schema<TagStreamInput>;
 export interface TagStreamOutput {}
-export const TagStreamOutput = DeleteStreamOutput as any as S.Schema<TagStreamOutput>;
+const TagStreamOutput = DeleteStreamOutput as any as S.Schema<TagStreamOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeyList: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeyList: TagKeyList }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = DeleteStreamOutput as any as S.Schema<UntagResourceOutput>;
+const UntagResourceOutput = DeleteStreamOutput as any as S.Schema<UntagResourceOutput>;
 export interface UntagStreamInput {
   StreamARN?: string;
   StreamName?: string;
   TagKeyList: string[];
 }
-export const UntagStreamInput = /*@__PURE__*/ S.suspend(() =>
+const UntagStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String),
     StreamName: S.optional(S.String),
@@ -1240,12 +1235,12 @@ export const UntagStreamInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/untagStream" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagStreamInput" }) as any as S.Schema<UntagStreamInput>;
 export interface UntagStreamOutput {}
-export const UntagStreamOutput = DeleteStreamOutput as any as S.Schema<UntagStreamOutput>;
+const UntagStreamOutput = DeleteStreamOutput as any as S.Schema<UntagStreamOutput>;
 export type UpdateDataRetentionOperation =
   | "INCREASE_DATA_RETENTION"
   | "DECREASE_DATA_RETENTION"
   | (string & {});
-export const UpdateDataRetentionOperation = S.String;
+const UpdateDataRetentionOperation = S.String;
 
 export type DataRetentionChangeInHours = number;
 export interface UpdateDataRetentionInput {
@@ -1255,7 +1250,7 @@ export interface UpdateDataRetentionInput {
   Operation: UpdateDataRetentionOperation;
   DataRetentionChangeInHours: number;
 }
-export const UpdateDataRetentionInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataRetentionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1275,14 +1270,14 @@ export const UpdateDataRetentionInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDataRetentionInput" }) as any as S.Schema<UpdateDataRetentionInput>;
 export interface UpdateDataRetentionOutput {}
-export const UpdateDataRetentionOutput =
+const UpdateDataRetentionOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<UpdateDataRetentionOutput>;
 export interface UpdateImageGenerationConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
   ImageGenerationConfiguration?: ImageGenerationConfiguration;
 }
-export const UpdateImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1302,13 +1297,13 @@ export const UpdateImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend((
   identifier: "UpdateImageGenerationConfigurationInput",
 }) as any as S.Schema<UpdateImageGenerationConfigurationInput>;
 export interface UpdateImageGenerationConfigurationOutput {}
-export const UpdateImageGenerationConfigurationOutput =
+const UpdateImageGenerationConfigurationOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<UpdateImageGenerationConfigurationOutput>;
 export interface UpdateMediaStorageConfigurationInput {
   ChannelARN: string;
   MediaStorageConfiguration: MediaStorageConfiguration;
 }
-export const UpdateMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelARN: S.String, MediaStorageConfiguration: MediaStorageConfiguration }).pipe(
     T.all(
       ns,
@@ -1324,14 +1319,14 @@ export const UpdateMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =
   identifier: "UpdateMediaStorageConfigurationInput",
 }) as any as S.Schema<UpdateMediaStorageConfigurationInput>;
 export interface UpdateMediaStorageConfigurationOutput {}
-export const UpdateMediaStorageConfigurationOutput =
+const UpdateMediaStorageConfigurationOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<UpdateMediaStorageConfigurationOutput>;
 export interface UpdateNotificationConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
   NotificationConfiguration?: NotificationConfiguration;
 }
-export const UpdateNotificationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotificationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1351,14 +1346,14 @@ export const UpdateNotificationConfigurationInput = /*@__PURE__*/ S.suspend(() =
   identifier: "UpdateNotificationConfigurationInput",
 }) as any as S.Schema<UpdateNotificationConfigurationInput>;
 export interface UpdateNotificationConfigurationOutput {}
-export const UpdateNotificationConfigurationOutput =
+const UpdateNotificationConfigurationOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<UpdateNotificationConfigurationOutput>;
 export interface UpdateSignalingChannelInput {
   ChannelARN: string;
   CurrentVersion: string;
   SingleMasterConfiguration?: SingleMasterConfiguration;
 }
-export const UpdateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelARN: S.String,
     CurrentVersion: S.String,
@@ -1378,7 +1373,7 @@ export const UpdateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSignalingChannelInput",
 }) as any as S.Schema<UpdateSignalingChannelInput>;
 export interface UpdateSignalingChannelOutput {}
-export const UpdateSignalingChannelOutput =
+const UpdateSignalingChannelOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<UpdateSignalingChannelOutput>;
 export interface UpdateStreamInput {
   StreamName?: string;
@@ -1387,7 +1382,7 @@ export interface UpdateStreamInput {
   DeviceName?: string;
   MediaType?: string;
 }
-export const UpdateStreamInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1399,14 +1394,14 @@ export const UpdateStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateStreamInput" }) as any as S.Schema<UpdateStreamInput>;
 export interface UpdateStreamOutput {}
-export const UpdateStreamOutput = DeleteStreamOutput as any as S.Schema<UpdateStreamOutput>;
+const UpdateStreamOutput = DeleteStreamOutput as any as S.Schema<UpdateStreamOutput>;
 export interface UpdateStreamStorageConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
   CurrentVersion: string;
   StreamStorageConfiguration: StreamStorageConfiguration;
 }
-export const UpdateStreamStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -1427,7 +1422,7 @@ export const UpdateStreamStorageConfigurationInput = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateStreamStorageConfigurationInput",
 }) as any as S.Schema<UpdateStreamStorageConfigurationInput>;
 export interface UpdateStreamStorageConfigurationOutput {}
-export const UpdateStreamStorageConfigurationOutput =
+const UpdateStreamStorageConfigurationOutput =
   DeleteEdgeConfigurationOutput as any as S.Schema<UpdateStreamStorageConfigurationOutput>;
 export type ErrorMessage = string;
 export type CreateSignalingChannelError =

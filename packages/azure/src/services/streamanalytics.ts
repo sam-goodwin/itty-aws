@@ -10,14 +10,14 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
 
 /** Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests. */
 export type ClusterSkuName = "Default";
-export const ClusterSkuName = S.String;
+const ClusterSkuName = S.String;
 
 /** The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests. */
 export interface ClusterSku {
@@ -26,7 +26,7 @@ export interface ClusterSku {
   /** Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests. */
   capacity?: number;
 }
-export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
+const ClusterSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ClusterSkuName),
     capacity: S.optional(S.Number),
@@ -35,7 +35,7 @@ export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The properties associated with a Stream Analytics cluster. */
 export interface ClusterPropertiesInput {}
-export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ClusterPropertiesInput",
 }) as any as S.Schema<ClusterPropertiesInput>;
 
@@ -54,7 +54,7 @@ export interface ClustersCreateOrUpdateRequest {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterPropertiesInput;
 }
-export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -77,12 +77,12 @@ export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateResponseTagsMap =
+const ClustersCreateOrUpdateResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 /** The status of the cluster provisioning. The three terminal states are: Succeeded, Failed and Canceled */
 export type ClusterProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress";
-export const ClusterProvisioningState = S.String;
+const ClusterProvisioningState = S.String;
 
 /** The properties associated with a Stream Analytics cluster. */
 export interface ClusterProperties {
@@ -96,7 +96,7 @@ export interface ClusterProperties {
   /** Represents the sum of the SUs of all streaming jobs associated with the cluster. If all of the jobs were running, this would be the capacity allocated. */
   capacityAssigned?: number;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdDate: S.optional(S.String),
     clusterId: S.optional(S.String),
@@ -123,7 +123,7 @@ export interface ClustersCreateOrUpdateResponse {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterProperties;
 }
-export const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -146,7 +146,7 @@ export interface DeleteClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -162,8 +162,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse =
-  ClusterPropertiesInput as any as S.Schema<DeleteClusterResponse>;
+const DeleteClusterResponse = ClusterPropertiesInput as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteFunctionRequest {
   /** The ID of the target subscription. */
@@ -175,7 +174,7 @@ export interface DeleteFunctionRequest {
   /** The name of the function. */
   functionName: string;
 }
-export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -192,8 +191,7 @@ export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFunctionRequest" }) as any as S.Schema<DeleteFunctionRequest>;
 
 export interface DeleteFunctionResponse {}
-export const DeleteFunctionResponse =
-  ClusterPropertiesInput as any as S.Schema<DeleteFunctionResponse>;
+const DeleteFunctionResponse = ClusterPropertiesInput as any as S.Schema<DeleteFunctionResponse>;
 
 export interface DeleteInputRequest {
   /** The ID of the target subscription. */
@@ -205,7 +203,7 @@ export interface DeleteInputRequest {
   /** The name of the input. */
   inputName: string;
 }
-export const DeleteInputRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -222,7 +220,7 @@ export const DeleteInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInputRequest" }) as any as S.Schema<DeleteInputRequest>;
 
 export interface DeleteInputResponse {}
-export const DeleteInputResponse = ClusterPropertiesInput as any as S.Schema<DeleteInputResponse>;
+const DeleteInputResponse = ClusterPropertiesInput as any as S.Schema<DeleteInputResponse>;
 
 export interface DeleteOutputRequest {
   /** The ID of the target subscription. */
@@ -234,7 +232,7 @@ export interface DeleteOutputRequest {
   /** The name of the output. */
   outputName: string;
 }
-export const DeleteOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -251,7 +249,7 @@ export const DeleteOutputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOutputRequest" }) as any as S.Schema<DeleteOutputRequest>;
 
 export interface DeleteOutputResponse {}
-export const DeleteOutputResponse = ClusterPropertiesInput as any as S.Schema<DeleteOutputResponse>;
+const DeleteOutputResponse = ClusterPropertiesInput as any as S.Schema<DeleteOutputResponse>;
 
 export interface DeletePrivateEndpointRequest {
   /** The ID of the target subscription. */
@@ -263,7 +261,7 @@ export interface DeletePrivateEndpointRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
-export const DeletePrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -282,7 +280,7 @@ export const DeletePrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateEndpointRequest>;
 
 export interface DeletePrivateEndpointResponse {}
-export const DeletePrivateEndpointResponse =
+const DeletePrivateEndpointResponse =
   ClusterPropertiesInput as any as S.Schema<DeletePrivateEndpointResponse>;
 
 export interface DeleteStreamingJobRequest {
@@ -293,7 +291,7 @@ export interface DeleteStreamingJobRequest {
   /** The name of the streaming job. */
   jobName: string;
 }
-export const DeleteStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -311,7 +309,7 @@ export const DeleteStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStreamingJobRequest>;
 
 export interface DeleteStreamingJobResponse {}
-export const DeleteStreamingJobResponse =
+const DeleteStreamingJobResponse =
   ClusterPropertiesInput as any as S.Schema<DeleteStreamingJobResponse>;
 
 /** Describes one input parameter of a function. */
@@ -321,7 +319,7 @@ export interface FunctionInput {
   /** A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false. */
   isConfigurationParameter?: boolean;
 }
-export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataType: S.optional(S.String),
     isConfigurationParameter: S.optional(S.Boolean),
@@ -329,7 +327,7 @@ export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionInput" }) as any as S.Schema<FunctionInput>;
 
 export type FunctionConfigurationInputsList = Array<FunctionInput>;
-export const FunctionConfigurationInputsList = /*@__PURE__*/ S.Array(
+const FunctionConfigurationInputsList = /*@__PURE__*/ S.Array(
   FunctionInput,
 ) as any as S.Schema<FunctionConfigurationInputsList>;
 
@@ -338,7 +336,7 @@ export interface FunctionOutput {
   /** The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx */
   dataType?: string;
 }
-export const FunctionOutput = /*@__PURE__*/ S.suspend(() =>
+const FunctionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataType: S.optional(S.String),
   }),
@@ -351,7 +349,7 @@ export interface FunctionBinding {
   /** Binding-type-specific properties (e.g. `{ script }` for `Microsoft.StreamAnalytics/JavascriptUdf`). */
   properties?: unknown;
 }
-export const FunctionBinding = /*@__PURE__*/ S.suspend(() =>
+const FunctionBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     properties: S.optional(S.Unknown),
@@ -363,7 +361,7 @@ export interface FunctionConfiguration {
   output?: FunctionOutput;
   binding?: FunctionBinding;
 }
-export const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputs: S.optional(FunctionConfigurationInputsList),
     output: S.optional(FunctionOutput),
@@ -377,7 +375,7 @@ export interface FunctionPropertiesInput {
   type: string;
   properties?: FunctionConfiguration;
 }
-export const FunctionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     properties: S.optional(FunctionConfiguration),
@@ -398,7 +396,7 @@ export interface FunctionsCreateOrReplaceRequest {
   /** The properties that are associated with a function. */
   properties?: FunctionPropertiesInput;
 }
-export const FunctionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -426,7 +424,7 @@ export interface FunctionProperties {
   etag?: string;
   properties?: FunctionConfiguration;
 }
-export const FunctionProperties = /*@__PURE__*/ S.suspend(() =>
+const FunctionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     etag: S.optional(S.String),
@@ -444,7 +442,7 @@ export interface FunctionsCreateOrReplaceResponse {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const FunctionsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -463,7 +461,7 @@ export interface GetClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -480,7 +478,7 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap =
+const GetClusterResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 export interface GetClusterResponse {
@@ -500,7 +498,7 @@ export interface GetClusterResponse {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterProperties;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -523,7 +521,7 @@ export interface GetFunctionRequest {
   /** The name of the function. */
   functionName: string;
 }
-export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -549,7 +547,7 @@ export interface GetFunctionResponse {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -570,7 +568,7 @@ export interface GetFunctionDefaultDefinitionRequest {
   /** Indicates the function binding type. */
   bindingType: string;
 }
-export const GetFunctionDefaultDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionDefaultDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -599,7 +597,7 @@ export interface GetFunctionDefaultDefinitionResponse {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const GetFunctionDefaultDefinitionResponse =
+const GetFunctionDefaultDefinitionResponse =
   FunctionsCreateOrReplaceResponse as any as S.Schema<GetFunctionDefaultDefinitionResponse>;
 
 export interface GetInputRequest {
@@ -612,7 +610,7 @@ export interface GetInputRequest {
   /** The name of the input. */
   inputName: string;
 }
-export const GetInputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -630,7 +628,7 @@ export const GetInputRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests. */
 export type EventSerializationType = "Csv" | "Avro" | "Json" | "Parquet";
-export const EventSerializationType = S.String;
+const EventSerializationType = S.String;
 
 /** Describes how data from an input is serialized or how data is serialized when written to an output. */
 export interface Serialization {
@@ -639,7 +637,7 @@ export interface Serialization {
   /** Serialization-type-specific properties (e.g. `{ encoding: "UTF8", format: "LineSeparated" }` for Json). */
   properties?: unknown;
 }
-export const Serialization = /*@__PURE__*/ S.suspend(() =>
+const Serialization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EventSerializationType,
     properties: S.optional(S.Unknown),
@@ -655,7 +653,7 @@ export interface DiagnosticCondition {
   /** The human-readable message describing the condition in detail. Localized in the Accept-Language of the client request. */
   message?: string;
 }
-export const DiagnosticCondition = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     since: S.optional(S.String),
     code: S.optional(S.String),
@@ -665,7 +663,7 @@ export const DiagnosticCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
 export type DiagnosticsConditionsList = Array<DiagnosticCondition>;
-export const DiagnosticsConditionsList = /*@__PURE__*/ S.Array(
+const DiagnosticsConditionsList = /*@__PURE__*/ S.Array(
   DiagnosticCondition,
 ) as any as S.Schema<DiagnosticsConditionsList>;
 
@@ -674,7 +672,7 @@ export interface Diagnostics {
   /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
   conditions?: DiagnosticsConditionsList;
 }
-export const Diagnostics = /*@__PURE__*/ S.suspend(() =>
+const Diagnostics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(DiagnosticsConditionsList),
   }),
@@ -682,14 +680,14 @@ export const Diagnostics = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests. */
 export type CompressionType = "None" | "GZip" | "Deflate";
-export const CompressionType = S.String;
+const CompressionType = S.String;
 
 /** Describes how input data is compressed */
 export interface Compression {
   /** Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests. */
   type: CompressionType | (string & {});
 }
-export const Compression = /*@__PURE__*/ S.suspend(() =>
+const Compression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CompressionType,
   }),
@@ -712,7 +710,7 @@ export interface InputProperties {
   /** Input data source (polymorphic on `type`, e.g. `Microsoft.Storage/Blob`) with its type-specific `properties`. */
   datasource?: unknown;
 }
-export const InputProperties = /*@__PURE__*/ S.suspend(() =>
+const InputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     serialization: S.optional(Serialization),
@@ -734,7 +732,7 @@ export interface GetInputResponse {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputProperties;
 }
-export const GetInputResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -753,7 +751,7 @@ export interface GetOutputRequest {
   /** The name of the output. */
   outputName: string;
 }
-export const GetOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -776,7 +774,7 @@ export interface OutputDataSource {
   /** Data-source-type-specific properties (e.g. `storageAccounts`, `container`, `pathPattern` for `Microsoft.Storage/Blob`). */
   properties?: unknown;
 }
-export const OutputDataSource = FunctionBinding as any as S.Schema<OutputDataSource>;
+const OutputDataSource = FunctionBinding as any as S.Schema<OutputDataSource>;
 
 /** Describes how data from an input is serialized or how data is serialized when written to an output. */
 export interface OutputPropertiesSerialization {
@@ -785,7 +783,7 @@ export interface OutputPropertiesSerialization {
   /** Serialization-type-specific properties. */
   properties?: unknown;
 }
-export const OutputPropertiesSerialization = /*@__PURE__*/ S.suspend(() =>
+const OutputPropertiesSerialization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EventSerializationType,
     properties: S.optional(S.Unknown),
@@ -796,7 +794,7 @@ export const OutputPropertiesSerialization = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
 export type OutputPropertiesDiagnosticsConditionsList = Array<DiagnosticCondition>;
-export const OutputPropertiesDiagnosticsConditionsList =
+const OutputPropertiesDiagnosticsConditionsList =
   DiagnosticsConditionsList as any as S.Schema<OutputPropertiesDiagnosticsConditionsList>;
 
 /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
@@ -804,7 +802,7 @@ export interface OutputPropertiesDiagnostics {
   /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
   conditions?: OutputPropertiesDiagnosticsConditionsList;
 }
-export const OutputPropertiesDiagnostics = /*@__PURE__*/ S.suspend(() =>
+const OutputPropertiesDiagnostics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(OutputPropertiesDiagnosticsConditionsList),
   }),
@@ -827,7 +825,7 @@ export interface OutputProperties {
   /** The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency. */
   etag?: string;
 }
-export const OutputProperties = /*@__PURE__*/ S.suspend(() =>
+const OutputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource: S.optional(OutputDataSource),
     timeWindow: S.optional(S.String),
@@ -848,7 +846,7 @@ export interface GetOutputResponse {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputProperties;
 }
-export const GetOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -867,7 +865,7 @@ export interface GetPrivateEndpointRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
-export const GetPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -887,7 +885,7 @@ export const GetPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests. */
 export type PrivateLinkServiceConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateLinkServiceConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateLinkServiceConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateLinkServiceConnectionPropertiesGroupIdsList>;
 
@@ -900,7 +898,7 @@ export interface PrivateLinkConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -921,7 +919,7 @@ export interface PrivateLinkServiceConnectionProperties {
   /** A collection of read-only information about the state of the connection to the private remote resource. */
   privateLinkServiceConnectionState?: PrivateLinkConnectionState;
 }
-export const PrivateLinkServiceConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkServiceId: S.optional(S.String),
     groupIds: S.optional(PrivateLinkServiceConnectionPropertiesGroupIdsList),
@@ -937,7 +935,7 @@ export interface PrivateLinkServiceConnection {
   /** Bag of properties defining a privatelinkServiceConnection. */
   properties?: PrivateLinkServiceConnectionProperties;
 }
-export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateLinkServiceConnectionProperties),
   }),
@@ -948,10 +946,9 @@ export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 /** A list of connections to the remote resource. Immutable after it is set. */
 export type PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateLinkServiceConnection,
-  ) as any as S.Schema<PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList>;
+const PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
+  PrivateLinkServiceConnection,
+) as any as S.Schema<PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList>;
 
 /** The properties associated with a private endpoint. */
 export interface PrivateEndpointProperties {
@@ -960,7 +957,7 @@ export interface PrivateEndpointProperties {
   /** A list of connections to the remote resource. Immutable after it is set. */
   manualPrivateLinkServiceConnections?: PrivateEndpointPropertiesManualPrivateLinkServiceConnectionsList;
 }
-export const PrivateEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdDate: S.optional(S.String),
     manualPrivateLinkServiceConnections: S.optional(
@@ -983,7 +980,7 @@ export interface GetPrivateEndpointResponse {
   /** Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests. */
   etag?: string;
 }
-export const GetPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1005,7 +1002,7 @@ export interface GetStreamingJobRequest {
   /** The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'. */
   _expand?: string;
 }
-export const GetStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1023,19 +1020,19 @@ export const GetStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStreamingJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetStreamingJobResponseTagsMap =
+const GetStreamingJobResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetStreamingJobResponseTagsMap>;
 
 /** The name of the SKU. Required on PUT (CreateOrReplace) requests. */
 export type SkuName = "Standard";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The properties that are associated with a SKU. */
 export interface Sku {
   /** The name of the SKU. Required on PUT (CreateOrReplace) requests. */
   name?: SkuName | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SkuName),
   }),
@@ -1043,23 +1040,23 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the type of the job. Valid modes are `Cloud` and 'Edge'. */
 export type StreamingJobPropertiesJobType = "Cloud" | "Edge";
-export const StreamingJobPropertiesJobType = S.String;
+const StreamingJobPropertiesJobType = S.String;
 
 /** Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time. */
 export type OutputStartMode = "JobStartTime" | "CustomTime" | "LastOutputEventTime";
-export const OutputStartMode = S.String;
+const OutputStartMode = S.String;
 
 /** Indicates the policy to apply to events that arrive out of order in the input event stream. */
 export type EventsOutOfOrderPolicy = "Adjust" | "Drop";
-export const EventsOutOfOrderPolicy = S.String;
+const EventsOutOfOrderPolicy = S.String;
 
 /** Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size). */
 export type OutputErrorPolicy = "Stop" | "Drop";
-export const OutputErrorPolicy = S.String;
+const OutputErrorPolicy = S.String;
 
 /** Controls certain runtime behaviors of the streaming job. */
 export type CompatibilityLevel = "1.0" | "1.2";
-export const CompatibilityLevel = S.String;
+const CompatibilityLevel = S.String;
 
 /** An input object, containing all information associated with the named input. All inputs are contained under a streaming job. */
 export interface StreamingJobPropertiesInputsItem {
@@ -1072,7 +1069,7 @@ export interface StreamingJobPropertiesInputsItem {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputProperties;
 }
-export const StreamingJobPropertiesInputsItem = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1085,13 +1082,13 @@ export const StreamingJobPropertiesInputsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input. */
 export type StreamingJobPropertiesInputsList = Array<StreamingJobPropertiesInputsItem>;
-export const StreamingJobPropertiesInputsList = /*@__PURE__*/ S.Array(
+const StreamingJobPropertiesInputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputsList>;
 
 /** Specifies the valid streaming units a streaming job can scale to. */
 export type TransformationPropertiesValidStreamingUnitsList = Array<number>;
-export const TransformationPropertiesValidStreamingUnitsList = /*@__PURE__*/ S.Array(
+const TransformationPropertiesValidStreamingUnitsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TransformationPropertiesValidStreamingUnitsList>;
 
@@ -1106,7 +1103,7 @@ export interface TransformationProperties {
   /** The current entity tag for the transformation. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency. */
   etag?: string;
 }
-export const TransformationProperties = /*@__PURE__*/ S.suspend(() =>
+const TransformationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamingUnits: S.optional(S.Number),
     validStreamingUnits: S.optional(TransformationPropertiesValidStreamingUnitsList),
@@ -1126,7 +1123,7 @@ export interface StreamingJobPropertiesTransformation {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const StreamingJobPropertiesTransformation = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1148,7 +1145,7 @@ export interface StreamingJobPropertiesOutputsItem {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputProperties;
 }
-export const StreamingJobPropertiesOutputsItem = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesOutputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1161,7 +1158,7 @@ export const StreamingJobPropertiesOutputsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output. */
 export type StreamingJobPropertiesOutputsList = Array<StreamingJobPropertiesOutputsItem>;
-export const StreamingJobPropertiesOutputsList = /*@__PURE__*/ S.Array(
+const StreamingJobPropertiesOutputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesOutputsItem,
 ) as any as S.Schema<StreamingJobPropertiesOutputsList>;
 
@@ -1176,18 +1173,18 @@ export interface StreamingJobPropertiesFunctionsItem {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const StreamingJobPropertiesFunctionsItem =
+const StreamingJobPropertiesFunctionsItem =
   FunctionsCreateOrReplaceResponse as any as S.Schema<StreamingJobPropertiesFunctionsItem>;
 
 /** A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation. */
 export type StreamingJobPropertiesFunctionsList = Array<StreamingJobPropertiesFunctionsItem>;
-export const StreamingJobPropertiesFunctionsList = /*@__PURE__*/ S.Array(
+const StreamingJobPropertiesFunctionsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesFunctionsItem,
 ) as any as S.Schema<StreamingJobPropertiesFunctionsList>;
 
 /** Authentication Mode. Valid modes are `ConnectionString`, `Msi` and 'UserToken'. */
 export type JobStorageAccountAuthenticationMode = "Msi" | "UserToken" | "ConnectionString";
-export const JobStorageAccountAuthenticationMode = S.String;
+const JobStorageAccountAuthenticationMode = S.String;
 
 /** The properties that are associated with an Azure Storage account with MSI */
 export interface JobStorageAccount {
@@ -1198,7 +1195,7 @@ export interface JobStorageAccount {
   /** Authentication Mode. Valid modes are `ConnectionString`, `Msi` and 'UserToken'. */
   authenticationMode?: JobStorageAccountAuthenticationMode | (string & {});
 }
-export const JobStorageAccount = /*@__PURE__*/ S.suspend(() =>
+const JobStorageAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountName: S.optional(S.String),
     accountKey: S.optional(S.String),
@@ -1208,14 +1205,14 @@ export const JobStorageAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. . */
 export type StreamingJobPropertiesContentStoragePolicy = "SystemAccount" | "JobStorageAccount";
-export const StreamingJobPropertiesContentStoragePolicy = S.String;
+const StreamingJobPropertiesContentStoragePolicy = S.String;
 
 /** The properties associated with a Stream Analytics cluster. */
 export interface ClusterInfo {
   /** The resource id of cluster. */
   id?: string;
 }
-export const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
+const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -1270,7 +1267,7 @@ export interface StreamingJobProperties {
   /** The cluster which streaming jobs will run on. */
   cluster?: ClusterInfo;
 }
-export const StreamingJobProperties = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(Sku),
     jobId: S.optional(S.String),
@@ -1307,7 +1304,7 @@ export interface Identity {
   /** The identity type */
   type?: string;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     principalId: S.optional(S.String),
@@ -1331,7 +1328,7 @@ export interface GetStreamingJobResponse {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: Identity;
 }
-export const GetStreamingJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStreamingJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1353,7 +1350,7 @@ export interface GetTransformationRequest {
   /** The name of the transformation. */
   transformationName: string;
 }
-export const GetTransformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1379,7 +1376,7 @@ export interface GetTransformationResponse {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const GetTransformationResponse =
+const GetTransformationResponse =
   StreamingJobPropertiesTransformation as any as S.Schema<GetTransformationResponse>;
 
 /** The properties that are associated with an input. */
@@ -1395,7 +1392,7 @@ export interface InputPropertiesInput {
   /** Input data source (polymorphic on `type`, e.g. `Microsoft.Storage/Blob`) with its type-specific `properties`. */
   datasource?: unknown;
 }
-export const InputPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const InputPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     serialization: S.optional(Serialization),
@@ -1419,7 +1416,7 @@ export interface InputsCreateOrReplaceRequest {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputPropertiesInput;
 }
-export const InputsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const InputsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1449,7 +1446,7 @@ export interface InputsCreateOrReplaceResponse {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputProperties;
 }
-export const InputsCreateOrReplaceResponse =
+const InputsCreateOrReplaceResponse =
   StreamingJobPropertiesInputsItem as any as S.Schema<InputsCreateOrReplaceResponse>;
 
 export interface ListClusterByResourceGroupRequest {
@@ -1458,7 +1455,7 @@ export interface ListClusterByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1476,9 +1473,6 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterTagsMap>;
-
 /** A Stream Analytics Cluster object */
 export interface Cluster {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1497,11 +1491,11 @@ export interface Cluster {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterProperties;
 }
-export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
+const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 /** A list of clusters. */
 export type ClusterListResultValueList = Array<Cluster>;
-export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
 
@@ -1512,7 +1506,7 @@ export interface ClusterListResult {
   /** The URL to fetch the next set of clusters. */
   nextLink?: string;
 }
-export const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterListResultValueList),
     nextLink: S.optional(S.String),
@@ -1523,7 +1517,7 @@ export interface ListClusterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1546,7 +1540,7 @@ export interface ListClusterStreamingJobsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListClusterStreamingJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterStreamingJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1575,7 +1569,7 @@ export type JobState =
   | "Degraded"
   | "Restarting"
   | "Scaling";
-export const JobState = S.String;
+const JobState = S.String;
 
 /** A streaming job. */
 export interface ClusterJob {
@@ -1585,7 +1579,7 @@ export interface ClusterJob {
   streamingUnits?: number;
   jobState?: JobState;
 }
-export const ClusterJob = /*@__PURE__*/ S.suspend(() =>
+const ClusterJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     streamingUnits: S.optional(S.Number),
@@ -1595,7 +1589,7 @@ export const ClusterJob = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of streaming jobs. */
 export type ClusterJobListResultValueList = Array<ClusterJob>;
-export const ClusterJobListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterJobListResultValueList = /*@__PURE__*/ S.Array(
   ClusterJob,
 ) as any as S.Schema<ClusterJobListResultValueList>;
 
@@ -1606,7 +1600,7 @@ export interface ClusterJobListResult {
   /** The URL to fetch the next set of streaming jobs. */
   nextLink?: string;
 }
-export const ClusterJobListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterJobListResultValueList),
     nextLink: S.optional(S.String),
@@ -1623,7 +1617,7 @@ export interface ListFunctionByStreamingJobRequest {
   /** The $select OData query parameter. This is a comma-separated list of structural properties to include in the response, or "*" to include all properties. By default, all properties are returned except diagnostics. Currently only accepts '*' as a valid value. */
   _select?: string;
 }
-export const ListFunctionByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1643,11 +1637,9 @@ export const ListFunctionByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A function object, containing all information associated with the named function. All functions are contained under a streaming job. */
 export type Function = StreamingJobPropertiesFunctionsItem;
-export const Function = StreamingJobPropertiesFunctionsItem;
-
 /** A list of functions under a streaming job. Populated by a 'List' operation. */
 export type FunctionListResultValueList = Array<StreamingJobPropertiesFunctionsItem>;
-export const FunctionListResultValueList =
+const FunctionListResultValueList =
   StreamingJobPropertiesFunctionsList as any as S.Schema<FunctionListResultValueList>;
 
 /** Object containing a list of functions under a streaming job. */
@@ -1657,7 +1649,7 @@ export interface FunctionListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const FunctionListResult = /*@__PURE__*/ S.suspend(() =>
+const FunctionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(FunctionListResultValueList),
     nextLink: S.optional(S.String),
@@ -1674,7 +1666,7 @@ export interface ListInputByStreamingJobRequest {
   /** The $select OData query parameter. This is a comma-separated list of structural properties to include in the response, or "*" to include all properties. By default, all properties are returned except diagnostics. Currently only accepts '*' as a valid value. */
   _select?: string;
 }
-export const ListInputByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInputByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1694,11 +1686,9 @@ export const ListInputByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An input object, containing all information associated with the named input. All inputs are contained under a streaming job. */
 export type Input = StreamingJobPropertiesInputsItem;
-export const Input = StreamingJobPropertiesInputsItem;
-
 /** A list of inputs under a streaming job. Populated by a 'List' operation. */
 export type InputListResultValueList = Array<StreamingJobPropertiesInputsItem>;
-export const InputListResultValueList =
+const InputListResultValueList =
   StreamingJobPropertiesInputsList as any as S.Schema<InputListResultValueList>;
 
 /** Object containing a list of inputs under a streaming job. */
@@ -1708,7 +1698,7 @@ export interface InputListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const InputListResult = /*@__PURE__*/ S.suspend(() =>
+const InputListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(InputListResultValueList),
     nextLink: S.optional(S.String),
@@ -1716,7 +1706,7 @@ export const InputListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputListResult" }) as any as S.Schema<InputListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1738,7 +1728,7 @@ export interface OperationDisplay {
   /** The localized friendly description for the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1756,7 +1746,7 @@ export interface Operation {
   /** Contains the localized display information for this particular operation / action. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1766,7 +1756,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Stream Analytics operations supported by the Microsoft.StreamAnalytics resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1777,7 +1767,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1794,7 +1784,7 @@ export interface ListOutputByStreamingJobRequest {
   /** The $select OData query parameter. This is a comma-separated list of structural properties to include in the response, or "*" to include all properties. By default, all properties are returned except diagnostics. Currently only accepts '*' as a valid value. */
   _select?: string;
 }
-export const ListOutputByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOutputByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1814,11 +1804,9 @@ export const ListOutputByStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An output object, containing all information associated with the named output. All outputs are contained under a streaming job. */
 export type Output = StreamingJobPropertiesOutputsItem;
-export const Output = StreamingJobPropertiesOutputsItem;
-
 /** A list of outputs under a streaming job. Populated by a 'List' operation. */
 export type OutputListResultValueList = Array<StreamingJobPropertiesOutputsItem>;
-export const OutputListResultValueList =
+const OutputListResultValueList =
   StreamingJobPropertiesOutputsList as any as S.Schema<OutputListResultValueList>;
 
 /** Object containing a list of outputs under a streaming job. */
@@ -1828,7 +1816,7 @@ export interface OutputListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const OutputListResult = /*@__PURE__*/ S.suspend(() =>
+const OutputListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OutputListResultValueList),
     nextLink: S.optional(S.String),
@@ -1843,7 +1831,7 @@ export interface ListPrivateEndpointByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListPrivateEndpointByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1873,7 +1861,7 @@ export interface PrivateEndpoint {
   /** Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests. */
   etag?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1885,7 +1873,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of private endpoints. */
 export type PrivateEndpointListResultValueList = Array<PrivateEndpoint>;
-export const PrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   PrivateEndpoint,
 ) as any as S.Schema<PrivateEndpointListResultValueList>;
 
@@ -1896,7 +1884,7 @@ export interface PrivateEndpointListResult {
   /** The URL to fetch the next set of private endpoints. */
   nextLink?: string;
 }
-export const PrivateEndpointListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointListResultValueList),
     nextLink: S.optional(S.String),
@@ -1913,7 +1901,7 @@ export interface ListStreamingJobByResourceGroupRequest {
   /** The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'. */
   _expand?: string;
 }
-export const ListStreamingJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStreamingJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1932,9 +1920,6 @@ export const ListStreamingJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type StreamingJobTagsMap = { [key: string]: string | undefined };
-export const StreamingJobTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<StreamingJobTagsMap>;
-
 /** A streaming job object, containing all information associated with the named streaming job. */
 export interface StreamingJob {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1952,11 +1937,11 @@ export interface StreamingJob {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: Identity;
 }
-export const StreamingJob = GetStreamingJobResponse as any as S.Schema<StreamingJob>;
+const StreamingJob = GetStreamingJobResponse as any as S.Schema<StreamingJob>;
 
 /** A list of streaming jobs. Populated by a 'List' operation. */
 export type StreamingJobListResultValueList = Array<StreamingJob>;
-export const StreamingJobListResultValueList = /*@__PURE__*/ S.Array(
+const StreamingJobListResultValueList = /*@__PURE__*/ S.Array(
   StreamingJob,
 ) as any as S.Schema<StreamingJobListResultValueList>;
 
@@ -1967,7 +1952,7 @@ export interface StreamingJobListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const StreamingJobListResult = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(StreamingJobListResultValueList),
     nextLink: S.optional(S.String),
@@ -1980,7 +1965,7 @@ export interface ListStreamingJobsRequest {
   /** The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'. */
   _expand?: string;
 }
-export const ListStreamingJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStreamingJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -2000,7 +1985,7 @@ export interface ListSubscriptionQuotasRequest {
   /** The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/ */
   location: string;
 }
-export const ListSubscriptionQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2023,7 +2008,7 @@ export interface SubscriptionQuotaProperties {
   /** The current usage of this resource. */
   currentCount?: number;
 }
-export const SubscriptionQuotaProperties = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxCount: S.optional(S.Number),
     currentCount: S.optional(S.Number),
@@ -2043,7 +2028,7 @@ export interface SubscriptionQuota {
   /** Describes the properties of the quota. */
   properties?: SubscriptionQuotaProperties;
 }
-export const SubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2054,7 +2039,7 @@ export const SubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** List of quotas for the subscription in a particular region. */
 export type SubscriptionQuotasListResultValueList = Array<SubscriptionQuota>;
-export const SubscriptionQuotasListResultValueList = /*@__PURE__*/ S.Array(
+const SubscriptionQuotasListResultValueList = /*@__PURE__*/ S.Array(
   SubscriptionQuota,
 ) as any as S.Schema<SubscriptionQuotasListResultValueList>;
 
@@ -2063,7 +2048,7 @@ export interface SubscriptionQuotasListResult {
   /** List of quotas for the subscription in a particular region. */
   value?: SubscriptionQuotasListResultValueList;
 }
-export const SubscriptionQuotasListResult = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotasListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SubscriptionQuotasListResultValueList),
   }),
@@ -2078,13 +2063,11 @@ export interface OutputPropertiesInputSerialization {
   /** Serialization-type-specific properties. */
   properties?: unknown;
 }
-export const OutputPropertiesInputSerialization =
+const OutputPropertiesInputSerialization =
   OutputPropertiesSerialization as any as S.Schema<OutputPropertiesInputSerialization>;
 
 /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
 export type OutputPropertiesInputDiagnostics = ClusterPropertiesInput;
-export const OutputPropertiesInputDiagnostics = ClusterPropertiesInput;
-
 /** The properties that are associated with an output. */
 export interface OutputPropertiesInput {
   /** Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests. */
@@ -2098,7 +2081,7 @@ export interface OutputPropertiesInput {
   /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
   diagnostics?: ClusterPropertiesInput;
 }
-export const OutputPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OutputPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource: S.optional(OutputDataSource),
     timeWindow: S.optional(S.String),
@@ -2122,7 +2105,7 @@ export interface OutputsCreateOrReplaceRequest {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputPropertiesInput;
 }
-export const OutputsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const OutputsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2152,18 +2135,16 @@ export interface OutputsCreateOrReplaceResponse {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputProperties;
 }
-export const OutputsCreateOrReplaceResponse =
+const OutputsCreateOrReplaceResponse =
   StreamingJobPropertiesOutputsItem as any as S.Schema<OutputsCreateOrReplaceResponse>;
 
 /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests. */
 export type PrivateLinkServiceConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateLinkServiceConnectionPropertiesInputGroupIdsList =
+const PrivateLinkServiceConnectionPropertiesInputGroupIdsList =
   PrivateLinkServiceConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkServiceConnectionPropertiesInputGroupIdsList>;
 
 /** A collection of read-only information about the state of the connection to the private remote resource. */
 export type PrivateLinkConnectionStateInput = ClusterPropertiesInput;
-export const PrivateLinkConnectionStateInput = ClusterPropertiesInput;
-
 /** Bag of properties defining a privatelinkServiceConnection. */
 export interface PrivateLinkServiceConnectionPropertiesInput {
   /** The resource id of the private link service. Required on PUT (CreateOrUpdate) requests. */
@@ -2173,7 +2154,7 @@ export interface PrivateLinkServiceConnectionPropertiesInput {
   /** A collection of read-only information about the state of the connection to the private remote resource. */
   privateLinkServiceConnectionState?: ClusterPropertiesInput;
 }
-export const PrivateLinkServiceConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkServiceId: S.optional(S.String),
     groupIds: S.optional(PrivateLinkServiceConnectionPropertiesInputGroupIdsList),
@@ -2188,7 +2169,7 @@ export interface PrivateLinkServiceConnectionInput {
   /** Bag of properties defining a privatelinkServiceConnection. */
   properties?: PrivateLinkServiceConnectionPropertiesInput;
 }
-export const PrivateLinkServiceConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateLinkServiceConnectionPropertiesInput),
   }),
@@ -2199,17 +2180,16 @@ export const PrivateLinkServiceConnectionInput = /*@__PURE__*/ S.suspend(() =>
 /** A list of connections to the remote resource. Immutable after it is set. */
 export type PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnectionInput>;
-export const PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateLinkServiceConnectionInput,
-  ) as any as S.Schema<PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList>;
+const PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
+  PrivateLinkServiceConnectionInput,
+) as any as S.Schema<PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList>;
 
 /** The properties associated with a private endpoint. */
 export interface PrivateEndpointPropertiesInput {
   /** A list of connections to the remote resource. Immutable after it is set. */
   manualPrivateLinkServiceConnections?: PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList;
 }
-export const PrivateEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manualPrivateLinkServiceConnections: S.optional(
       PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList,
@@ -2231,7 +2211,7 @@ export interface PrivateEndpointsCreateOrUpdateRequest {
   /** The properties associated with a private endpoint. */
   properties?: PrivateEndpointPropertiesInput;
 }
-export const PrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2262,7 +2242,7 @@ export interface PrivateEndpointsCreateOrUpdateResponse {
   /** Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests. */
   etag?: string;
 }
-export const PrivateEndpointsCreateOrUpdateResponse =
+const PrivateEndpointsCreateOrUpdateResponse =
   GetPrivateEndpointResponse as any as S.Schema<PrivateEndpointsCreateOrUpdateResponse>;
 
 export interface ScaleStreamingJobRequest {
@@ -2275,7 +2255,7 @@ export interface ScaleStreamingJobRequest {
   /** Specifies the number of streaming units that the streaming job will scale to. */
   streamingUnits?: number;
 }
-export const ScaleStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ScaleStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2292,7 +2272,7 @@ export const ScaleStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleStreamingJobRequest" }) as any as S.Schema<ScaleStreamingJobRequest>;
 
 export interface ScaleStreamingJobResponse {}
-export const ScaleStreamingJobResponse =
+const ScaleStreamingJobResponse =
   ClusterPropertiesInput as any as S.Schema<ScaleStreamingJobResponse>;
 
 export interface StartStreamingJobRequest {
@@ -2307,7 +2287,7 @@ export interface StartStreamingJobRequest {
   /** Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime. */
   outputStartTime?: string;
 }
-export const StartStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2325,7 +2305,7 @@ export const StartStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartStreamingJobRequest" }) as any as S.Schema<StartStreamingJobRequest>;
 
 export interface StartStreamingJobResponse {}
-export const StartStreamingJobResponse =
+const StartStreamingJobResponse =
   ClusterPropertiesInput as any as S.Schema<StartStreamingJobResponse>;
 
 export interface StopStreamingJobRequest {
@@ -2336,7 +2316,7 @@ export interface StopStreamingJobRequest {
   /** The name of the streaming job. */
   jobName: string;
 }
-export const StopStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StopStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2352,17 +2332,17 @@ export const StopStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopStreamingJobRequest" }) as any as S.Schema<StopStreamingJobRequest>;
 
 export interface StopStreamingJobResponse {}
-export const StopStreamingJobResponse =
+const StopStreamingJobResponse =
   ClusterPropertiesInput as any as S.Schema<StopStreamingJobResponse>;
 
 /** Resource tags. */
 export type StreamingJobsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const StreamingJobsCreateOrReplaceRequestTagsMap =
+const StreamingJobsCreateOrReplaceRequestTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<StreamingJobsCreateOrReplaceRequestTagsMap>;
 
 /** Describes the type of the job. Valid modes are `Cloud` and 'Edge'. */
 export type StreamingJobPropertiesInputJobType = "Cloud" | "Edge";
-export const StreamingJobPropertiesInputJobType = S.String;
+const StreamingJobPropertiesInputJobType = S.String;
 
 /** An input object, containing all information associated with the named input. All inputs are contained under a streaming job. */
 export interface StreamingJobPropertiesInputInputsItem {
@@ -2371,7 +2351,7 @@ export interface StreamingJobPropertiesInputInputsItem {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputPropertiesInput;
 }
-export const StreamingJobPropertiesInputInputsItem = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesInputInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(InputPropertiesInput),
@@ -2382,13 +2362,13 @@ export const StreamingJobPropertiesInputInputsItem = /*@__PURE__*/ S.suspend(() 
 
 /** A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input. */
 export type StreamingJobPropertiesInputInputsList = Array<StreamingJobPropertiesInputInputsItem>;
-export const StreamingJobPropertiesInputInputsList = /*@__PURE__*/ S.Array(
+const StreamingJobPropertiesInputInputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputInputsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputInputsList>;
 
 /** Specifies the valid streaming units a streaming job can scale to. */
 export type TransformationPropertiesInputValidStreamingUnitsList = Array<number>;
-export const TransformationPropertiesInputValidStreamingUnitsList =
+const TransformationPropertiesInputValidStreamingUnitsList =
   TransformationPropertiesValidStreamingUnitsList as any as S.Schema<TransformationPropertiesInputValidStreamingUnitsList>;
 
 /** The properties that are associated with a transformation. */
@@ -2400,7 +2380,7 @@ export interface TransformationPropertiesInput {
   /** Specifies the query that will be run in the streaming job. You can learn more about the Stream Analytics Query Language (SAQL) here: https://msdn.microsoft.com/library/azure/dn834998 . Required on PUT (CreateOrReplace) requests. */
   query?: string;
 }
-export const TransformationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TransformationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamingUnits: S.optional(S.Number),
     validStreamingUnits: S.optional(TransformationPropertiesInputValidStreamingUnitsList),
@@ -2417,7 +2397,7 @@ export interface StreamingJobPropertiesInputTransformation {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationPropertiesInput;
 }
-export const StreamingJobPropertiesInputTransformation = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesInputTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(TransformationPropertiesInput),
@@ -2433,7 +2413,7 @@ export interface StreamingJobPropertiesInputOutputsItem {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputPropertiesInput;
 }
-export const StreamingJobPropertiesInputOutputsItem = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesInputOutputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(OutputPropertiesInput),
@@ -2444,7 +2424,7 @@ export const StreamingJobPropertiesInputOutputsItem = /*@__PURE__*/ S.suspend(()
 
 /** A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output. */
 export type StreamingJobPropertiesInputOutputsList = Array<StreamingJobPropertiesInputOutputsItem>;
-export const StreamingJobPropertiesInputOutputsList = /*@__PURE__*/ S.Array(
+const StreamingJobPropertiesInputOutputsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputOutputsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputOutputsList>;
 
@@ -2455,7 +2435,7 @@ export interface StreamingJobPropertiesInputFunctionsItem {
   /** The properties that are associated with a function. */
   properties?: FunctionPropertiesInput;
 }
-export const StreamingJobPropertiesInputFunctionsItem = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesInputFunctionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(FunctionPropertiesInput),
@@ -2467,13 +2447,13 @@ export const StreamingJobPropertiesInputFunctionsItem = /*@__PURE__*/ S.suspend(
 /** A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation. */
 export type StreamingJobPropertiesInputFunctionsList =
   Array<StreamingJobPropertiesInputFunctionsItem>;
-export const StreamingJobPropertiesInputFunctionsList = /*@__PURE__*/ S.Array(
+const StreamingJobPropertiesInputFunctionsList = /*@__PURE__*/ S.Array(
   StreamingJobPropertiesInputFunctionsItem,
 ) as any as S.Schema<StreamingJobPropertiesInputFunctionsList>;
 
 /** Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. . */
 export type StreamingJobPropertiesInputContentStoragePolicy = "SystemAccount" | "JobStorageAccount";
-export const StreamingJobPropertiesInputContentStoragePolicy = S.String;
+const StreamingJobPropertiesInputContentStoragePolicy = S.String;
 
 /** The properties that are associated with a streaming job. */
 export interface StreamingJobPropertiesInput {
@@ -2512,7 +2492,7 @@ export interface StreamingJobPropertiesInput {
   /** The cluster which streaming jobs will run on. */
   cluster?: ClusterInfo;
 }
-export const StreamingJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(Sku),
     jobType: S.optional(StreamingJobPropertiesInputJobType),
@@ -2541,7 +2521,7 @@ export interface IdentityInput {
   /** The identity type */
   type?: string;
 }
-export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -2563,7 +2543,7 @@ export interface StreamingJobsCreateOrReplaceRequest {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: IdentityInput;
 }
-export const StreamingJobsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2586,7 +2566,7 @@ export const StreamingJobsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StreamingJobsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const StreamingJobsCreateOrReplaceResponseTagsMap =
+const StreamingJobsCreateOrReplaceResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<StreamingJobsCreateOrReplaceResponseTagsMap>;
 
 export interface StreamingJobsCreateOrReplaceResponse {
@@ -2605,7 +2585,7 @@ export interface StreamingJobsCreateOrReplaceResponse {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: Identity;
 }
-export const StreamingJobsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const StreamingJobsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2633,7 +2613,7 @@ export interface TestFunctionRequest {
   /** The properties that are associated with a function. */
   properties?: FunctionPropertiesInput;
 }
-export const TestFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const TestFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2658,7 +2638,7 @@ export interface ErrorResponse {
   /** Describes the error in detail. */
   message?: string;
 }
-export const ErrorResponse = /*@__PURE__*/ S.suspend(() =>
+const ErrorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -2671,7 +2651,7 @@ export interface TestFunctionResponse {
   /** Describes the error that occurred. */
   error?: ErrorResponse;
 }
-export const TestFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const TestFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     error: S.optional(ErrorResponse),
@@ -2692,7 +2672,7 @@ export interface TestInputRequest {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputPropertiesInput;
 }
-export const TestInputRequest = /*@__PURE__*/ S.suspend(() =>
+const TestInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2717,7 +2697,7 @@ export interface ResourceTestStatus {
   /** Describes the error that occurred. */
   error?: ErrorResponse;
 }
-export const ResourceTestStatus = TestFunctionResponse as any as S.Schema<ResourceTestStatus>;
+const ResourceTestStatus = TestFunctionResponse as any as S.Schema<ResourceTestStatus>;
 
 export interface TestOutputRequest {
   /** The ID of the target subscription. */
@@ -2733,7 +2713,7 @@ export interface TestOutputRequest {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputPropertiesInput;
 }
-export const TestOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const TestOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2757,7 +2737,7 @@ export interface TestOutputResponse {
   /** Describes the error that occurred. */
   error?: ErrorResponse;
 }
-export const TestOutputResponse = TestFunctionResponse as any as S.Schema<TestOutputResponse>;
+const TestOutputResponse = TestFunctionResponse as any as S.Schema<TestOutputResponse>;
 
 export interface TransformationsCreateOrReplaceRequest {
   /** The ID of the target subscription. */
@@ -2773,7 +2753,7 @@ export interface TransformationsCreateOrReplaceRequest {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationPropertiesInput;
 }
-export const TransformationsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const TransformationsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2803,12 +2783,12 @@ export interface TransformationsCreateOrReplaceResponse {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const TransformationsCreateOrReplaceResponse =
+const TransformationsCreateOrReplaceResponse =
   StreamingJobPropertiesTransformation as any as S.Schema<TransformationsCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap =
+const UpdateClusterRequestTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
@@ -2826,7 +2806,7 @@ export interface UpdateClusterRequest {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterPropertiesInput;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2847,9 +2827,6 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
-
 export interface UpdateClusterResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2867,7 +2844,7 @@ export interface UpdateClusterResponse {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterProperties;
 }
-export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
+const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 export interface UpdateFunctionRequest {
   /** The ID of the target subscription. */
@@ -2883,7 +2860,7 @@ export interface UpdateFunctionRequest {
   /** The properties that are associated with a function. */
   properties?: FunctionPropertiesInput;
 }
-export const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2911,8 +2888,7 @@ export interface UpdateFunctionResponse {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const UpdateFunctionResponse =
-  GetFunctionResponse as any as S.Schema<UpdateFunctionResponse>;
+const UpdateFunctionResponse = GetFunctionResponse as any as S.Schema<UpdateFunctionResponse>;
 
 export interface UpdateInputRequest {
   /** The ID of the target subscription. */
@@ -2928,7 +2904,7 @@ export interface UpdateInputRequest {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputPropertiesInput;
 }
-export const UpdateInputRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2956,7 +2932,7 @@ export interface UpdateInputResponse {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputProperties;
 }
-export const UpdateInputResponse = GetInputResponse as any as S.Schema<UpdateInputResponse>;
+const UpdateInputResponse = GetInputResponse as any as S.Schema<UpdateInputResponse>;
 
 export interface UpdateOutputRequest {
   /** The ID of the target subscription. */
@@ -2972,7 +2948,7 @@ export interface UpdateOutputRequest {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputPropertiesInput;
 }
-export const UpdateOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3000,11 +2976,11 @@ export interface UpdateOutputResponse {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputProperties;
 }
-export const UpdateOutputResponse = GetOutputResponse as any as S.Schema<UpdateOutputResponse>;
+const UpdateOutputResponse = GetOutputResponse as any as S.Schema<UpdateOutputResponse>;
 
 /** Resource tags. */
 export type UpdateStreamingJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStreamingJobRequestTagsMap =
+const UpdateStreamingJobRequestTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStreamingJobRequestTagsMap>;
 
 export interface UpdateStreamingJobRequest {
@@ -3023,7 +2999,7 @@ export interface UpdateStreamingJobRequest {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: IdentityInput;
 }
-export const UpdateStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3046,9 +3022,6 @@ export const UpdateStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStreamingJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStreamingJobResponseTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStreamingJobResponseTagsMap>;
-
 export interface UpdateStreamingJobResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3065,7 +3038,7 @@ export interface UpdateStreamingJobResponse {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: Identity;
 }
-export const UpdateStreamingJobResponse =
+const UpdateStreamingJobResponse =
   StreamingJobsCreateOrReplaceResponse as any as S.Schema<UpdateStreamingJobResponse>;
 
 export interface UpdateTransformationRequest {
@@ -3082,7 +3055,7 @@ export interface UpdateTransformationRequest {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationPropertiesInput;
 }
-export const UpdateTransformationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTransformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3112,7 +3085,7 @@ export interface UpdateTransformationResponse {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const UpdateTransformationResponse =
+const UpdateTransformationResponse =
   StreamingJobPropertiesTransformation as any as S.Schema<UpdateTransformationResponse>;
 
 export type ClustersCreateOrUpdateError = AzureOpError;

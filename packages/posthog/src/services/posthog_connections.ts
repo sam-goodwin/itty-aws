@@ -9,11 +9,11 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `GET` - GET * `POST` - POST * `PUT` - PUT * `PATCH` - PATCH * `DELETE` - DELETE */
 export type PostHogConnectionForwardMethodEnum = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-export const PostHogConnectionForwardMethodEnum = S.String;
+const PostHogConnectionForwardMethodEnum = S.String;
 
 /** Query parameters to send to the target. */
 export type CreatePosthogConnectionsForwardRequestQueryMap = { [key: string]: string | undefined };
-export const CreatePosthogConnectionsForwardRequestQueryMap = /*@__PURE__*/ S.Record(
+const CreatePosthogConnectionsForwardRequestQueryMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePosthogConnectionsForwardRequestQueryMap>;
@@ -31,7 +31,7 @@ export interface CreatePosthogConnectionsForwardRequest {
   /** JSON request body for write methods. */
   data?: unknown;
 }
-export const CreatePosthogConnectionsForwardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePosthogConnectionsForwardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -56,7 +56,7 @@ export interface PostHogConnectionForwardResponse {
   /** The target project's response body, passed through. */
   data: unknown;
 }
-export const PostHogConnectionForwardResponse = /*@__PURE__*/ S.suspend(() =>
+const PostHogConnectionForwardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.Number,
     data: S.Unknown,
@@ -70,7 +70,7 @@ export interface GetPosthogConnectionsTargetRequest {
   project_id: string;
   id: string;
 }
-export const GetPosthogConnectionsTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPosthogConnectionsTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -99,7 +99,7 @@ export interface PostHogConnectionTarget {
   /** Base URL requests through this connection are sent to. */
   base_url: string;
 }
-export const PostHogConnectionTarget = /*@__PURE__*/ S.suspend(() =>
+const PostHogConnectionTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.Number,
     project_name: S.String,

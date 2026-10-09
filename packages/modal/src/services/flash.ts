@@ -11,7 +11,7 @@ export type { ModalOpError, ModalOpContext };
 export interface FlashContainerDeregisterRequest {
   serviceName?: string;
 }
-export const FlashContainerDeregisterRequest = /*@__PURE__*/ S.suspend(() =>
+const FlashContainerDeregisterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
   }).pipe(
@@ -26,9 +26,7 @@ export const FlashContainerDeregisterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlashContainerDeregisterRequest>;
 
 export interface FlashContainerDeregisterResponse {}
-export const FlashContainerDeregisterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const FlashContainerDeregisterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FlashContainerDeregisterResponse",
 }) as any as S.Schema<FlashContainerDeregisterResponse>;
 
@@ -37,7 +35,7 @@ export interface FlashSetTargetSlotsMetricsRequest {
   functionId?: string;
   targetSlots?: number;
 }
-export const FlashSetTargetSlotsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const FlashSetTargetSlotsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     targetSlots: S.optional(S.Number),
@@ -53,13 +51,13 @@ export const FlashSetTargetSlotsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlashSetTargetSlotsMetricsRequest>;
 
 export interface FlashSetTargetSlotsMetricsResponse {}
-export const FlashSetTargetSlotsMetricsResponse =
+const FlashSetTargetSlotsMetricsResponse =
   FlashContainerDeregisterResponse as any as S.Schema<FlashSetTargetSlotsMetricsResponse>;
 
 export interface ListFlashContainerRequest {
   functionId?: string;
 }
-export const ListFlashContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlashContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(
@@ -74,7 +72,7 @@ export interface ListFlashContainerResponseContainer {
   host?: string;
   port?: number;
 }
-export const ListFlashContainerResponseContainer = /*@__PURE__*/ S.suspend(() =>
+const ListFlashContainerResponseContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     host: S.optional(S.String),
@@ -85,14 +83,14 @@ export const ListFlashContainerResponseContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFlashContainerResponseContainer>;
 
 export type ListFlashContainerResponseContainerList = Array<ListFlashContainerResponseContainer>;
-export const ListFlashContainerResponseContainerList = /*@__PURE__*/ S.Array(
+const ListFlashContainerResponseContainerList = /*@__PURE__*/ S.Array(
   ListFlashContainerResponseContainer,
 ) as any as S.Schema<ListFlashContainerResponseContainerList>;
 
 export interface ListFlashContainerResponse {
   containers?: ListFlashContainerResponseContainerList;
 }
-export const ListFlashContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFlashContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containers: S.optional(ListFlashContainerResponseContainerList),
   }),
@@ -108,7 +106,7 @@ export interface RegisterFlashContainerRequest {
   host?: string;
   port?: number;
 }
-export const RegisterFlashContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterFlashContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -125,7 +123,7 @@ export const RegisterFlashContainerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterFlashContainerResponse {
   url?: string;
 }
-export const RegisterFlashContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterFlashContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),

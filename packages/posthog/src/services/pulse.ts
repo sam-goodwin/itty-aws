@@ -19,13 +19,13 @@ export class Conflict
 
 /** IDs of the dashboards this brief is anchored on. */
 export type BriefAnchorsDashboardsList = Array<number>;
-export const BriefAnchorsDashboardsList = /*@__PURE__*/ S.Array(
+const BriefAnchorsDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BriefAnchorsDashboardsList>;
 
 /** Short IDs of the insights this brief is anchored on. */
 export type BriefAnchorsInsightsList = Array<string>;
-export const BriefAnchorsInsightsList = /*@__PURE__*/ S.Array(
+const BriefAnchorsInsightsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BriefAnchorsInsightsList>;
 
@@ -35,7 +35,7 @@ export interface BriefAnchors {
   /** Short IDs of the insights this brief is anchored on. */
   insights?: BriefAnchorsInsightsList;
 }
-export const BriefAnchors = /*@__PURE__*/ S.suspend(() =>
+const BriefAnchors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(BriefAnchorsDashboardsList),
     insights: S.optional(BriefAnchorsInsightsList),
@@ -58,7 +58,7 @@ export interface BriefSettings {
   /** Maximum annotations gathered as context per brief. Default 20. */
   max_annotations?: number;
 }
-export const BriefSettings = /*@__PURE__*/ S.suspend(() =>
+const BriefSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min_abs_change_pct: S.optional(S.Number),
     min_baseline_value: S.optional(S.Number),
@@ -86,7 +86,7 @@ export interface CreatePulseBriefConfigRequest {
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
 }
-export const CreatePulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -103,7 +103,7 @@ export const CreatePulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePulseBriefConfigRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -119,14 +119,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -139,7 +134,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -172,7 +167,7 @@ export interface BriefConfig {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
-export const BriefConfig = /*@__PURE__*/ S.suspend(() =>
+const BriefConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -193,7 +188,7 @@ export interface GetPulseBriefRequest {
   /** A UUID string identifying this product brief. */
   id: string;
 }
-export const GetPulseBriefRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPulseBriefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -204,15 +199,15 @@ export const GetPulseBriefRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `generating` - Generating * `ready` - Ready * `quiet` - Quiet * `failed` - Failed */
 export type ProductBriefStatusEnum = "generating" | "ready" | "quiet" | "failed";
-export const ProductBriefStatusEnum = S.String;
+const ProductBriefStatusEnum = S.String;
 
 /** * `on_demand` - On Demand * `scheduled` - Scheduled */
 export type ProductBriefTriggerEnum = "on_demand" | "scheduled";
-export const ProductBriefTriggerEnum = S.String;
+const ProductBriefTriggerEnum = S.String;
 
 /** * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
 export type PeriodTypeEnum = "last_n_days" | "since_last_run";
-export const PeriodTypeEnum = S.String;
+const PeriodTypeEnum = S.String;
 
 export interface Period {
   /** How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief. * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
@@ -220,7 +215,7 @@ export interface Period {
   /** Lookback length in days. Required and used only when period_type is last_n_days. */
   days?: number;
 }
-export const Period = /*@__PURE__*/ S.suspend(() =>
+const Period = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period_type: PeriodTypeEnum,
     days: S.optional(S.Number),
@@ -237,7 +232,7 @@ export interface BriefSectionCitation {
   /** Deep link into the app, or empty when the resource has no navigable target. */
   url: string;
 }
-export const BriefSectionCitation = /*@__PURE__*/ S.suspend(() =>
+const BriefSectionCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     ref: S.String,
@@ -248,7 +243,7 @@ export const BriefSectionCitation = /*@__PURE__*/ S.suspend(() =>
 
 /** PostHog resources this section cites as evidence. */
 export type BriefSectionCitationsList = Array<BriefSectionCitation>;
-export const BriefSectionCitationsList = /*@__PURE__*/ S.Array(
+const BriefSectionCitationsList = /*@__PURE__*/ S.Array(
   BriefSectionCitation,
 ) as any as S.Schema<BriefSectionCitationsList>;
 
@@ -264,7 +259,7 @@ export interface BriefSection {
   /** Model confidence in this section, 0.0-1.0. */
   confidence: number;
 }
-export const BriefSection = /*@__PURE__*/ S.suspend(() =>
+const BriefSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     title: S.String,
@@ -276,13 +271,13 @@ export const BriefSection = /*@__PURE__*/ S.suspend(() =>
 
 /** Generated brief sections, most important first. */
 export type ProductBriefSectionsList = Array<BriefSection>;
-export const ProductBriefSectionsList = /*@__PURE__*/ S.Array(
+const ProductBriefSectionsList = /*@__PURE__*/ S.Array(
   BriefSection,
 ) as any as S.Schema<ProductBriefSectionsList>;
 
 /** Names of the brief sources that contributed items. */
 export type ProductBriefSourcesUsedList = Array<string>;
-export const ProductBriefSourcesUsedList =
+const ProductBriefSourcesUsedList =
   BriefAnchorsInsightsList as any as S.Schema<ProductBriefSourcesUsedList>;
 
 export interface ProductBrief {
@@ -306,7 +301,7 @@ export interface ProductBrief {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
-export const ProductBrief = /*@__PURE__*/ S.suspend(() =>
+const ProductBrief = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     config: S.NullOr(S.String),
@@ -328,7 +323,7 @@ export interface GetPulseBriefConfigRequest {
   /** A UUID string identifying this brief config. */
   id: string;
 }
-export const GetPulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -351,7 +346,7 @@ export interface ListPulseBriefConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListPulseBriefConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPulseBriefConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -364,7 +359,7 @@ export const ListPulseBriefConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPulseBriefConfigsRequest>;
 
 export type PaginatedBriefConfigListResultsList = Array<BriefConfig>;
-export const PaginatedBriefConfigListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedBriefConfigListResultsList = /*@__PURE__*/ S.Array(
   BriefConfig,
 ) as any as S.Schema<PaginatedBriefConfigListResultsList>;
 
@@ -374,7 +369,7 @@ export interface PaginatedBriefConfigList {
   previous?: string | null;
   results: PaginatedBriefConfigListResultsList;
 }
-export const PaginatedBriefConfigList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBriefConfigList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -391,7 +386,7 @@ export interface ListPulseBriefsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListPulseBriefsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPulseBriefsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -401,7 +396,7 @@ export const ListPulseBriefsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the brief sources that contributed items. */
 export type ProductBriefListSourcesUsedList = Array<string>;
-export const ProductBriefListSourcesUsedList =
+const ProductBriefListSourcesUsedList =
   BriefAnchorsInsightsList as any as S.Schema<ProductBriefListSourcesUsedList>;
 
 export interface ProductBriefList {
@@ -423,7 +418,7 @@ export interface ProductBriefList {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
-export const ProductBriefList = /*@__PURE__*/ S.suspend(() =>
+const ProductBriefList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     config: S.NullOr(S.String),
@@ -439,7 +434,7 @@ export const ProductBriefList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductBriefList" }) as any as S.Schema<ProductBriefList>;
 
 export type PaginatedProductBriefListListResultsList = Array<ProductBriefList>;
-export const PaginatedProductBriefListListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedProductBriefListListResultsList = /*@__PURE__*/ S.Array(
   ProductBriefList,
 ) as any as S.Schema<PaginatedProductBriefListListResultsList>;
 
@@ -449,7 +444,7 @@ export interface PaginatedProductBriefListList {
   previous?: string | null;
   results: PaginatedProductBriefListListResultsList;
 }
-export const PaginatedProductBriefListList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedProductBriefListList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -466,7 +461,7 @@ export interface PulseBriefConfigsDestroyRequest {
   /** A UUID string identifying this brief config. */
   id: string;
 }
-export const PulseBriefConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const PulseBriefConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -482,9 +477,7 @@ export const PulseBriefConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PulseBriefConfigsDestroyRequest>;
 
 export interface PulseBriefConfigsDestroyResponse {}
-export const PulseBriefConfigsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const PulseBriefConfigsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PulseBriefConfigsDestroyResponse",
 }) as any as S.Schema<PulseBriefConfigsDestroyResponse>;
 
@@ -496,7 +489,7 @@ export interface PulseBriefsGenerateCreateRequest {
   /** Period the brief should cover. Defaults to the last 7 days. */
   period?: Period;
 }
-export const PulseBriefsGenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const PulseBriefsGenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     config_id: S.optional(S.NullOr(S.String)),
@@ -526,7 +519,7 @@ export interface UpdatePulseBriefConfigRequest {
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
 }
-export const UpdatePulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePulseBriefConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -565,7 +558,7 @@ export interface UpdatePulseBriefConfigsPartialRequest {
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
 }
-export const UpdatePulseBriefConfigsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePulseBriefConfigsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

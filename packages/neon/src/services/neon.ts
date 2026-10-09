@@ -64,7 +64,7 @@ export interface AcceptProjectTransferRequestRequest {
   /** The Neon organization ID to transfer the project to. If not provided, the project will be transferred to the current user or organization account. */
   org_id?: string;
 }
-export const AcceptProjectTransferRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptProjectTransferRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     request_id: S.String.pipe(T.Label()),
@@ -81,14 +81,12 @@ export const AcceptProjectTransferRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<AcceptProjectTransferRequestRequest>;
 
 export interface AcceptProjectTransferRequestResponse {}
-export const AcceptProjectTransferRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AcceptProjectTransferRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptProjectTransferRequestResponse",
 }) as any as S.Codec<AcceptProjectTransferRequestResponse>;
 
 export type NeonAuthOauthProviderId = "google" | "github" | "microsoft" | "vercel";
-export const NeonAuthOauthProviderId = S.String;
+const NeonAuthOauthProviderId = S.String;
 
 export interface AddBranchNeonAuthOauthProviderRequest {
   /** The Neon project ID */
@@ -104,7 +102,7 @@ export interface AddBranchNeonAuthOauthProviderRequest {
   /** Tenant ID for the Microsoft OAuth provider. Only relevant when the OAuth provider is Microsoft; omit or leave blank for other providers. */
   microsoft_tenant_id?: string;
 }
-export const AddBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const AddBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -128,7 +126,7 @@ export const AddBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Codec<AddBranchNeonAuthOauthProviderRequest>;
 
 export type NeonAuthOauthProviderType = "standard" | "shared";
-export const NeonAuthOauthProviderType = S.String;
+const NeonAuthOauthProviderType = S.String;
 
 export interface NeonAuthOauthProvider {
   /** The OAuth provider's ID. */
@@ -140,7 +138,7 @@ export interface NeonAuthOauthProvider {
   /** OAuth client secret for the provider. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-export const NeonAuthOauthProvider = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthOauthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: NeonAuthOauthProviderId,
     type: NeonAuthOauthProviderType,
@@ -155,7 +153,7 @@ export const NeonAuthOauthProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** Authentication provider integrated with this Neon Auth configuration. `better_auth` integrates with Better Auth (the current, recommended provider). `stack` integrates with Stack Auth (deprecated). `mock` is a simulated provider for local development and testing only. */
 export type NeonAuthSupportedAuthProvider = "mock" | "stack" | "better_auth";
-export const NeonAuthSupportedAuthProvider = S.String;
+const NeonAuthSupportedAuthProvider = S.String;
 
 export interface AddBranchNeonAuthTrustedDomainRequest {
   /** The Neon project ID */
@@ -166,7 +164,7 @@ export interface AddBranchNeonAuthTrustedDomainRequest {
   domain: string;
   auth_provider: NeonAuthSupportedAuthProvider | (string & {});
 }
-export const AddBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const AddBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -184,12 +182,12 @@ export const AddBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Codec<AddBranchNeonAuthTrustedDomainRequest>;
 
 export interface AddBranchNeonAuthTrustedDomainResponse {}
-export const AddBranchNeonAuthTrustedDomainResponse =
+const AddBranchNeonAuthTrustedDomainResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<AddBranchNeonAuthTrustedDomainResponse>;
 
 /** Deprecated. The roles the JWKS should be mapped to. By default, the JWKS is mapped to the `authenticator`, `authenticated`, and `anonymous` roles. */
 export type AddProjectJWKSRequestRoleNamesList = Array<string>;
-export const AddProjectJWKSRequestRoleNamesList = /*@__PURE__*/ S.Array(
+const AddProjectJWKSRequestRoleNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Codec<AddProjectJWKSRequestRoleNamesList>;
 
@@ -209,7 +207,7 @@ export interface AddProjectJWKSRequest {
   /** Deprecated. Only used with Neon RLS. If true, role creation is skipped. */
   skip_role_creation?: boolean;
 }
-export const AddProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
+const AddProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     jwks_url: S.String,
@@ -223,8 +221,7 @@ export const AddProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Database role names that are permitted to authenticate using this JWKS configuration. */
 export type JWKSRoleNamesList = Array<string>;
-export const JWKSRoleNamesList =
-  AddProjectJWKSRequestRoleNamesList as any as S.Schema<JWKSRoleNamesList>;
+const JWKSRoleNamesList = AddProjectJWKSRequestRoleNamesList as any as S.Schema<JWKSRoleNamesList>;
 
 export interface JWKS {
   /** The JWKS configuration's ID. */
@@ -246,7 +243,7 @@ export interface JWKS {
   /** Database role names that are permitted to authenticate using this JWKS configuration. */
   role_names?: JWKSRoleNamesList;
 }
-export const JWKS = /*@__PURE__*/ S.suspend(() =>
+const JWKS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     project_id: S.String,
@@ -298,7 +295,7 @@ export type OperationAction =
   | "mark_migration_prepared"
   | "update_catalog"
   | "epc_sync";
-export const OperationAction = S.String;
+const OperationAction = S.String;
 
 /** Lifecycle state of the operation. `scheduling`: queued, not yet started. `running`: actively executing. `finished`: completed successfully. `failed`: ended with a failure. `error`: ended with a terminal error. `cancelling`: cancellation requested but not yet complete. `cancelled`: stopped before completion. `skipped`: bypassed without executing. */
 export type OperationStatus =
@@ -310,7 +307,7 @@ export type OperationStatus =
   | "cancelling"
   | "cancelled"
   | "skipped";
-export const OperationStatus = S.String;
+const OperationStatus = S.String;
 
 /** An asynchronous action Neon performs on your resources (for example, starting a compute or creating a branch). Fields such as `action`, `status`, and `total_duration_ms` describe the operation and its progress. */
 export interface Operation {
@@ -338,7 +335,7 @@ export interface Operation {
   /** The total duration of the operation in milliseconds */
   total_duration_ms: number;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     project_id: S.String,
@@ -356,7 +353,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Codec<Operation>;
 
 export type AddProjectJWKSResponseOperationsList = Array<Operation>;
-export const AddProjectJWKSResponseOperationsList = /*@__PURE__*/ S.Array(
+const AddProjectJWKSResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Codec<AddProjectJWKSResponseOperationsList>;
 
@@ -365,7 +362,7 @@ export interface AddProjectJWKSResponse {
   jwks: JWKS;
   operations: AddProjectJWKSResponseOperationsList;
 }
-export const AddProjectJWKSResponse = /*@__PURE__*/ S.suspend(() =>
+const AddProjectJWKSResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwks: JWKS,
     operations: AddProjectJWKSResponseOperationsList,
@@ -382,7 +379,7 @@ export interface AssignOrganizationVPCEndpointRequest {
   /** Human-readable name for the VPC endpoint assignment, used to identify it within the organization. */
   label: string;
 }
-export const AssignOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     region_id: S.String.pipe(T.Label()),
@@ -400,7 +397,7 @@ export const AssignOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Codec<AssignOrganizationVPCEndpointRequest>;
 
 export interface AssignOrganizationVPCEndpointResponse {}
-export const AssignOrganizationVPCEndpointResponse =
+const AssignOrganizationVPCEndpointResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<AssignOrganizationVPCEndpointResponse>;
 
 export interface AssignProjectVPCEndpointRequest {
@@ -411,7 +408,7 @@ export interface AssignProjectVPCEndpointRequest {
   /** Human-readable name for the VPC endpoint assignment, used to identify it within the organization. */
   label: string;
 }
-export const AssignProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     vpc_endpoint_id: S.String.pipe(T.Label()),
@@ -428,7 +425,7 @@ export const AssignProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<AssignProjectVPCEndpointRequest>;
 
 export interface AssignProjectVPCEndpointResponse {}
-export const AssignProjectVPCEndpointResponse =
+const AssignProjectVPCEndpointResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<AssignProjectVPCEndpointResponse>;
 
 export interface CountProjectBranchesRequest {
@@ -437,7 +434,7 @@ export interface CountProjectBranchesRequest {
   /** Count branches matching the `name` in search query */
   search?: string;
 }
-export const CountProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const CountProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -450,7 +447,7 @@ export interface CountProjectBranchesResponse {
   /** Total number of branches in the project. */
   count: number;
 }
-export const CountProjectBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const CountProjectBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
   }),
@@ -462,7 +459,7 @@ export interface CreateApiKeyRequest {
   /** A user-specified API key name. This value is required when creating an API key. */
   key_name: string;
 }
-export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_name: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api_keys", code: 200 })),
@@ -480,7 +477,7 @@ export interface ApiKeyCreateResponse {
   /** ID of the user who created this API key */
   created_by: string;
 }
-export const ApiKeyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
@@ -502,7 +499,7 @@ export interface CreateBranchNeonAuthNewUserRequest {
   /** Display name for the new user. Optional. Pair with the required email field when creating a new user. */
   name?: string;
 }
-export const CreateBranchNeonAuthNewUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBranchNeonAuthNewUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -523,7 +520,7 @@ export interface NeonAuthCreateNewUserResponse {
   /** ID of newly created user */
   id: string;
 }
-export const NeonAuthCreateNewUserResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthCreateNewUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -537,16 +534,16 @@ export type CredentialScope =
   | "storage:write"
   | "ai_gateway:invoke"
   | "functions:invoke";
-export const CredentialScope = S.String;
+const CredentialScope = S.String;
 
 export type CreateCredentialRequestScopesList = Array<CredentialScope | (string & {})>;
-export const CreateCredentialRequestScopesList = /*@__PURE__*/ S.Array(
+const CreateCredentialRequestScopesList = /*@__PURE__*/ S.Array(
   CredentialScope,
 ) as any as S.Codec<CreateCredentialRequestScopesList>;
 
 /** Principal type for the credential. Only `user` is customer-managed and accepted here. `function` and `system` credentials are platform-internal (e.g. function-serve auto-mint, presign signer) and are never issued through the customer-facing API. */
 export type CreateCredentialRequestPrincipalType = "user";
-export const CreateCredentialRequestPrincipalType = S.String;
+const CreateCredentialRequestPrincipalType = S.String;
 
 export interface CreateCredentialRequest {
   /** The Neon project ID */
@@ -559,7 +556,7 @@ export interface CreateCredentialRequest {
   /** Principal type for the credential. Only `user` is customer-managed and accepted here. `function` and `system` credentials are platform-internal (e.g. function-serve auto-mint, presign signer) and are never issued through the customer-facing API. */
   principal_type: CreateCredentialRequestPrincipalType | (string & {});
 }
-export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -582,10 +579,8 @@ export type GrantedCredentialScope =
   | "ai_gateway:invoke"
   | "telemetry:write"
   | "functions:invoke";
-export const GrantedCredentialScope = S.String;
-
 export type CreateCredentialResponseScopesList = Array<GrantedCredentialScope>;
-export const CreateCredentialResponseScopesList =
+const CreateCredentialResponseScopesList =
   CreateCredentialRequestScopesList as any as S.Schema<CreateCredentialResponseScopesList>;
 
 export interface CreateCredentialResponse {
@@ -605,7 +600,7 @@ export interface CreateCredentialResponse {
   /** When the credential expires; absent means never expires. */
   expires_at?: string;
 }
-export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_id: S.String,
     token_id_short: S.String,
@@ -633,7 +628,7 @@ export interface CreateNeonAuthRequest {
   /** Name of the database to enable Neon Auth on. When omitted, the integration uses the project's default database. */
   database_name?: string;
 }
-export const CreateNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -661,7 +656,7 @@ export interface NeonAuthCreateIntegrationResponse {
   /** Base URL of the Neon Auth service for this integration. Set as the NEON_AUTH_BASE_URL environment variable in your application. */
   base_url?: string;
 }
-export const NeonAuthCreateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthCreateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth_provider: NeonAuthSupportedAuthProvider,
     auth_provider_project_id: S.String,
@@ -681,7 +676,7 @@ export interface CreateNeonAuthProviderSDKKeysRequest {
   project_id: string;
   auth_provider: NeonAuthSupportedAuthProvider | (string & {});
 }
-export const CreateNeonAuthProviderSDKKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNeonAuthProviderSDKKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     auth_provider: NeonAuthSupportedAuthProvider,
@@ -692,14 +687,14 @@ export const CreateNeonAuthProviderSDKKeysRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Organization member's role. `admin`: full administrative access. `editor` (and its legacy alias `member`): standard access governed by project permissions. `viewer` and `collaborator`: additional scoped project roles. Some values may not be available for all organizations. */
 export type MemberRole = "admin" | "member" | "editor" | "viewer" | "collaborator";
-export const MemberRole = S.String;
+const MemberRole = S.String;
 
 export interface OrganizationInviteCreateRequest {
   /** Email address of the person to invite to the organization. */
   email: string;
   role: MemberRole | (string & {});
 }
-export const OrganizationInviteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInviteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     role: MemberRole,
@@ -711,7 +706,7 @@ export const OrganizationInviteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Invitations to create for the organization. */
 export type CreateOrganizationInvitationsRequestInvitationsList =
   Array<OrganizationInviteCreateRequest>;
-export const CreateOrganizationInvitationsRequestInvitationsList = /*@__PURE__*/ S.Array(
+const CreateOrganizationInvitationsRequestInvitationsList = /*@__PURE__*/ S.Array(
   OrganizationInviteCreateRequest,
 ) as any as S.Codec<CreateOrganizationInvitationsRequestInvitationsList>;
 
@@ -721,7 +716,7 @@ export interface CreateOrganizationInvitationsRequest {
   /** Invitations to create for the organization. */
   invitations: CreateOrganizationInvitationsRequestInvitationsList;
 }
-export const CreateOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     invitations: CreateOrganizationInvitationsRequestInvitationsList,
@@ -743,7 +738,7 @@ export interface Invitation {
   invited_at: string;
   role: MemberRole;
 }
-export const Invitation = /*@__PURE__*/ S.suspend(() =>
+const Invitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -756,7 +751,7 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of pending invitations for the organization. */
 export type OrganizationInvitationsResponseInvitationsList = Array<Invitation>;
-export const OrganizationInvitationsResponseInvitationsList = /*@__PURE__*/ S.Array(
+const OrganizationInvitationsResponseInvitationsList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Codec<OrganizationInvitationsResponseInvitationsList>;
 
@@ -764,7 +759,7 @@ export interface OrganizationInvitationsResponse {
   /** List of pending invitations for the organization. */
   invitations: OrganizationInvitationsResponseInvitationsList;
 }
-export const OrganizationInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitations: OrganizationInvitationsResponseInvitationsList,
   }),
@@ -780,7 +775,7 @@ export interface CreateOrgApiKeyRequest {
   /** If set, the API key can access only this project */
   project_id?: string;
 }
-export const CreateOrgApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     key_name: S.String,
@@ -802,7 +797,7 @@ export interface CreateOrgApiKeyResponse {
   /** If set, the API key can access only this project */
   project_id?: string;
 }
-export const CreateOrgApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
@@ -828,7 +823,7 @@ export interface ProjectQuota {
   /** Limit on the logical size of every project's branch. If a branch exceeds its `logical_size_bytes` quota, computes can still be started, but write operations will fail--allowing data to be deleted to free up space. Computes on other branches are not affected. Setting `logical_size_bytes` overrides any lower value set by the `neon.max_cluster_size` Postgres setting. */
   logical_size_bytes?: number;
 }
-export const ProjectQuota = /*@__PURE__*/ S.suspend(() =>
+const ProjectQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_time_seconds: S.optional(S.Number),
     compute_time_seconds: S.optional(S.Number),
@@ -840,8 +835,7 @@ export const ProjectQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IP addresses that are allowed to connect to the endpoint. */
 export type AllowedIpsIpsList = Array<string>;
-export const AllowedIpsIpsList =
-  AddProjectJWKSRequestRoleNamesList as any as S.Schema<AllowedIpsIpsList>;
+const AllowedIpsIpsList = AddProjectJWKSRequestRoleNamesList as any as S.Schema<AllowedIpsIpsList>;
 
 /** A list of IP addresses that are allowed to connect to the compute endpoint. If the list is empty or not set, all IP addresses are allowed. If protected_branches_only is true, the list will be applied only to protected branches. */
 export interface AllowedIps {
@@ -850,7 +844,7 @@ export interface AllowedIps {
   /** If true, the list will be applied only to protected branches. */
   protected_branches_only?: boolean;
 }
-export const AllowedIps = /*@__PURE__*/ S.suspend(() =>
+const AllowedIps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ips: S.optional(AllowedIpsIpsList),
     protected_branches_only: S.optional(S.Boolean),
@@ -859,7 +853,7 @@ export const AllowedIps = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of weekdays when the maintenance window is active. Encoded as ints, where 1 - Monday, and 7 - Sunday. */
 export type MaintenanceWindowWeekdaysList = Array<number>;
-export const MaintenanceWindowWeekdaysList = /*@__PURE__*/ S.Array(
+const MaintenanceWindowWeekdaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Codec<MaintenanceWindowWeekdaysList>;
 
@@ -872,7 +866,7 @@ export interface MaintenanceWindow {
   /** End time of the maintenance window, in the format of "HH:MM". Uses UTC. */
   end_time: string;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weekdays: MaintenanceWindowWeekdaysList,
     start_time: S.String,
@@ -881,11 +875,11 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaintenanceWindow" }) as any as S.Codec<MaintenanceWindow>;
 
 export type ProjectAuditLogLevel = "base" | "extended" | "full";
-export const ProjectAuditLogLevel = S.String;
+const ProjectAuditLogLevel = S.String;
 
 /** Names of shared preload libraries to enable for the project. */
 export type PreloadLibrariesEnabledLibrariesList = Array<string>;
-export const PreloadLibrariesEnabledLibrariesList =
+const PreloadLibrariesEnabledLibrariesList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<PreloadLibrariesEnabledLibrariesList>;
 
 /** The shared libraries to preload into the project's compute instances. */
@@ -895,7 +889,7 @@ export interface PreloadLibraries {
   /** Names of shared preload libraries to enable for the project. */
   enabled_libraries?: PreloadLibrariesEnabledLibrariesList;
 }
-export const PreloadLibraries = /*@__PURE__*/ S.suspend(() =>
+const PreloadLibraries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     use_defaults: S.optional(S.Boolean),
     enabled_libraries: S.optional(PreloadLibrariesEnabledLibrariesList),
@@ -918,7 +912,7 @@ export interface ProjectSettingsData {
   hipaa?: boolean;
   preload_libraries?: PreloadLibraries;
 }
-export const ProjectSettingsData = /*@__PURE__*/ S.suspend(() =>
+const ProjectSettingsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.optional(ProjectQuota),
     allowed_ips: S.optional(AllowedIps),
@@ -934,7 +928,7 @@ export const ProjectSettingsData = /*@__PURE__*/ S.suspend(() =>
 
 /** A free-form map of string key-value pairs for attaching metadata to a resource (for example, a git commit reference). Maximum 50 entries. */
 export type AnnotationValueData = { [key: string]: string | undefined };
-export const AnnotationValueData = /*@__PURE__*/ S.Record(
+const AnnotationValueData = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Codec<AnnotationValueData>;
@@ -950,7 +944,7 @@ export interface CreateProjectRequestProjectBranch {
   /** Arbitrary key-value metadata to attach to the branch. */
   annotations?: AnnotationValueData;
 }
-export const CreateProjectRequestProjectBranch = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequestProjectBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     role_name: S.optional(S.String),
@@ -963,11 +957,11 @@ export const CreateProjectRequestProjectBranch = /*@__PURE__*/ S.suspend(() =>
 
 /** A raw representation of Postgres settings */
 export type PgSettingsData = { [key: string]: string | undefined };
-export const PgSettingsData = AnnotationValueData as any as S.Schema<PgSettingsData>;
+const PgSettingsData = AnnotationValueData as any as S.Schema<PgSettingsData>;
 
 /** Deprecated. A raw representation of PgBouncer settings. Removal scheduled for June 20, 2026. */
 export type PgbouncerSettingsData = { [key: string]: string | undefined };
-export const PgbouncerSettingsData = AnnotationValueData as any as S.Schema<PgbouncerSettingsData>;
+const PgbouncerSettingsData = AnnotationValueData as any as S.Schema<PgbouncerSettingsData>;
 
 /** A collection of settings for a Neon endpoint */
 export interface DefaultEndpointSettings {
@@ -981,7 +975,7 @@ export interface DefaultEndpointSettings {
   /** Scale-to-zero idle timeout, in seconds, before the compute suspends. `0` uses the plan default; `-1` disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value. */
   suspend_timeout_seconds?: number;
 }
-export const DefaultEndpointSettings = /*@__PURE__*/ S.suspend(() =>
+const DefaultEndpointSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pg_settings: S.optional(PgSettingsData),
     pgbouncer_settings: S.optional(PgbouncerSettingsData),
@@ -1016,7 +1010,7 @@ export interface CreateProjectRequestProject {
   /** ID of the organization that will own the project. If omitted when using an organization API key, it is inferred from the key. */
   org_id?: string;
 }
-export const CreateProjectRequestProject = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequestProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(ProjectSettingsData),
     name: S.optional(S.String),
@@ -1039,7 +1033,7 @@ export interface CreateProjectRequest {
   /** Configuration for the new project, including name, region, and Postgres compute and storage settings. */
   project: CreateProjectRequestProject;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: CreateProjectRequestProject,
   }).pipe(T.Http({ method: "POST", uri: "/projects", code: 200 })),
@@ -1059,7 +1053,7 @@ export type BillingSubscriptionType =
   | "scale_v3"
   | "business"
   | "vercel_pg_legacy";
-export const BillingSubscriptionType = S.String;
+const BillingSubscriptionType = S.String;
 
 export interface ProjectOwnerData {
   /** Email address of the project owner. */
@@ -1070,7 +1064,7 @@ export interface ProjectOwnerData {
   branches_limit: number;
   subscription_type: BillingSubscriptionType;
 }
-export const ProjectOwnerData = /*@__PURE__*/ S.suspend(() =>
+const ProjectOwnerData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     name: S.String,
@@ -1081,7 +1075,7 @@ export const ProjectOwnerData = /*@__PURE__*/ S.suspend(() =>
 
 /** The caller's effective permission for a project when per-project permissions are enabled. `VIEWER` grants read access, `EDITOR` adds update access, and `ADMIN` grants full management. Omitted for personal projects, flag-off organizations, and non-user subjects. */
 export type ProjectPermissionLevel = "VIEWER" | "EDITOR" | "ADMIN";
-export const ProjectPermissionLevel = S.String;
+const ProjectPermissionLevel = S.String;
 
 export interface Project {
   /** Deprecated: always returns 0. Use the consumption history v2 endpoints (`/consumption_history/v2/projects`, `/consumption_history/v2/branches`) instead. Bytes-Hour. Project consumed that much Postgres storage hourly during the billing period. The value has some lag. The value is reset at the beginning of each billing period. */
@@ -1150,7 +1144,7 @@ export interface Project {
   hipaa_enabled_at?: string;
   effective_project_permission?: ProjectPermissionLevel | null;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_storage_bytes_hour: S.Number,
     data_transfer_bytes: S.Number,
@@ -1201,7 +1195,7 @@ export interface ConnectionParameters {
   /** PgBouncer (transaction mode) pooled host, the `-pooler` variant of `host`. Connect through it to work around the Postgres `max_connections` limit for serverless or connection-per-request workloads. */
   pooler_host: string;
 }
-export const ConnectionParameters = /*@__PURE__*/ S.suspend(() =>
+const ConnectionParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String,
     password: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
@@ -1219,7 +1213,7 @@ export interface ConnectionDetails {
   /** Individual components of the connection URI (host, port, database, role, and password) as discrete fields, for programmatic use rather than parsing the sibling `connection_uri` string. */
   connection_parameters: ConnectionParameters;
 }
-export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connection_uri: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
       T.SensitiveValue({}),
@@ -1230,7 +1224,7 @@ export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Connection URIs for the project. Each entry contains credentials and should be treated as sensitive. */
 export type CreateProjectResponseConnectionUrisList = Array<ConnectionDetails>;
-export const CreateProjectResponseConnectionUrisList = /*@__PURE__*/ S.Array(
+const CreateProjectResponseConnectionUrisList = /*@__PURE__*/ S.Array(
   ConnectionDetails,
 ) as any as S.Codec<CreateProjectResponseConnectionUrisList>;
 
@@ -1250,7 +1244,7 @@ export interface Role {
   /** A timestamp indicating when the role was last updated */
   updated_at: string;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch_id: S.String,
     name: S.String,
@@ -1268,7 +1262,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type CreateProjectResponseRolesList = Array<Role>;
-export const CreateProjectResponseRolesList = /*@__PURE__*/ S.Array(
+const CreateProjectResponseRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Codec<CreateProjectResponseRolesList>;
 
@@ -1286,7 +1280,7 @@ export interface Database {
   /** A timestamp indicating when the database was last updated */
   updated_at: string;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     branch_id: S.String,
@@ -1299,12 +1293,12 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type CreateProjectResponseDatabasesList = Array<Database>;
-export const CreateProjectResponseDatabasesList = /*@__PURE__*/ S.Array(
+const CreateProjectResponseDatabasesList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Codec<CreateProjectResponseDatabasesList>;
 
 export type CreateProjectResponseOperationsList = Array<Operation>;
-export const CreateProjectResponseOperationsList =
+const CreateProjectResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectResponseOperationsList>;
 
 /** The resolved user model that contains details of the user/org/integration/api_key used for branch creation. This field is filled only in listing/get/create/get/update/delete methods, if it is empty when calling other handlers, it does not mean that it is empty in the system. */
@@ -1314,7 +1308,7 @@ export interface BranchCreatedBy {
   /** The URL to the user's avatar image. */
   image?: string;
 }
-export const BranchCreatedBy = /*@__PURE__*/ S.suspend(() =>
+const BranchCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     image: S.optional(S.String),
@@ -1328,7 +1322,7 @@ export interface BranchRestrictedAction {
   /** A human-readable explanation of why the action is restricted. */
   reason: string;
 }
-export const BranchRestrictedAction = /*@__PURE__*/ S.suspend(() =>
+const BranchRestrictedAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     reason: S.String,
@@ -1337,13 +1331,13 @@ export const BranchRestrictedAction = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of actions that are currently restricted for this branch and the reason why. */
 export type BranchRestrictedActionsList = Array<BranchRestrictedAction>;
-export const BranchRestrictedActionsList = /*@__PURE__*/ S.Array(
+const BranchRestrictedActionsList = /*@__PURE__*/ S.Array(
   BranchRestrictedAction,
 ) as any as S.Codec<BranchRestrictedActionsList>;
 
 /** How the branch was deleted: 'user' for manual deletion, 'ttl' for TTL expiration */
 export type BranchRecoveryInfoDeletionMethod = "user" | "ttl";
-export const BranchRecoveryInfoDeletionMethod = S.String;
+const BranchRecoveryInfoDeletionMethod = S.String;
 
 /** Recovery information for a deleted branch. Only present when listing deleted branches with `include_deleted=true`. This is part of the Branch Recovery feature, which is in preview and not available to all users. */
 export interface BranchRecoveryInfo {
@@ -1354,7 +1348,7 @@ export interface BranchRecoveryInfo {
   /** How the branch was deleted: 'user' for manual deletion, 'ttl' for TTL expiration */
   deletion_method: BranchRecoveryInfoDeletionMethod;
 }
-export const BranchRecoveryInfo = /*@__PURE__*/ S.suspend(() =>
+const BranchRecoveryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_at: S.String,
     recoverable_until: S.String,
@@ -1422,7 +1416,7 @@ export interface Branch {
   restricted_actions?: BranchRestrictedActionsList;
   recovery?: BranchRecoveryInfo;
 }
-export const Branch = /*@__PURE__*/ S.suspend(() =>
+const Branch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     project_id: S.String,
@@ -1460,11 +1454,11 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoint type. `read_write`: the primary read-write endpoint (one per branch). `read_only`: a read replica endpoint (multiple allowed per branch). */
 export type EndpointType = "read_only" | "read_write";
-export const EndpointType = S.String;
+const EndpointType = S.String;
 
 /** Lifecycle state of the compute endpoint. `init`: being initialized. `active`: running and accepting connections. `idle`: suspended (scaled to zero). */
 export type EndpointState = "init" | "active" | "idle";
-export const EndpointState = S.String;
+const EndpointState = S.String;
 
 /** A collection of settings for a compute endpoint */
 export interface EndpointSettingsData {
@@ -1473,7 +1467,7 @@ export interface EndpointSettingsData {
   pgbouncer_settings?: PgbouncerSettingsData;
   preload_libraries?: PreloadLibraries;
 }
-export const EndpointSettingsData = /*@__PURE__*/ S.suspend(() =>
+const EndpointSettingsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pg_settings: S.optional(PgSettingsData),
     pgbouncer_settings: S.optional(PgbouncerSettingsData),
@@ -1483,7 +1477,7 @@ export const EndpointSettingsData = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated. The connection pooler mode. Neon supports PgBouncer in `transaction` mode only. Removal scheduled for June 20, 2026. */
 export type EndpointPoolerMode = "transaction";
-export const EndpointPoolerMode = S.String;
+const EndpointPoolerMode = S.String;
 
 export interface Endpoint {
   /** The hostname of the compute endpoint. This is the hostname specified when connecting to a Neon database. */
@@ -1536,7 +1530,7 @@ export interface Endpoint {
   /** Attached compute's release version number. */
   compute_release_version?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     id: S.String,
@@ -1569,7 +1563,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type CreateProjectResponseEndpointsList = Array<Endpoint>;
-export const CreateProjectResponseEndpointsList = /*@__PURE__*/ S.Array(
+const CreateProjectResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Codec<CreateProjectResponseEndpointsList>;
 
@@ -1588,7 +1582,7 @@ export interface CreateProjectResponse {
   /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
   endpoints: CreateProjectResponseEndpointsList;
 }
-export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: Project,
     connection_uris: CreateProjectResponseConnectionUrisList,
@@ -1613,7 +1607,7 @@ export interface BranchCreateRequestEndpointOptions {
   /** Scale-to-zero idle timeout, in seconds, before the compute suspends. `0` uses the plan default; `-1` disables scale-to-zero (never suspends). Minimum is plan-dependent (Scale: 60); maximum 604800 (one week). Free cannot change it; Launch can only enable or disable; Scale can set any value. */
   suspend_timeout_seconds?: number;
 }
-export const BranchCreateRequestEndpointOptions = /*@__PURE__*/ S.suspend(() =>
+const BranchCreateRequestEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EndpointType,
     settings: S.optional(EndpointSettingsData),
@@ -1628,7 +1622,7 @@ export const BranchCreateRequestEndpointOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints to create together with the branch. If omitted, the branch is created without any compute endpoint. Endpoints can be added to the branch separately after creation. */
 export type CreateProjectBranchRequestEndpointsList = Array<BranchCreateRequestEndpointOptions>;
-export const CreateProjectBranchRequestEndpointsList = /*@__PURE__*/ S.Array(
+const CreateProjectBranchRequestEndpointsList = /*@__PURE__*/ S.Array(
   BranchCreateRequestEndpointOptions,
 ) as any as S.Codec<CreateProjectBranchRequestEndpointsList>;
 
@@ -1651,7 +1645,7 @@ export interface CreateProjectBranchRequestBranch {
   /** The timestamp when the branch is scheduled to expire and be automatically deleted. Must be set by the client following the [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6) format with precision up to seconds (such as 2025-06-09T18:02:16Z). Deletion is performed by a background job and may not occur exactly at the specified time. Access to this feature is currently limited to participants in the Early Access Program. */
   expires_at?: string;
 }
-export const CreateProjectBranchRequestBranch = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchRequestBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent_id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1675,7 +1669,7 @@ export interface CreateProjectBranchRequest {
   branch?: CreateProjectBranchRequestBranch;
   annotation_value?: AnnotationValueData;
 }
-export const CreateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoints: S.optional(CreateProjectBranchRequestEndpointsList),
@@ -1688,26 +1682,26 @@ export const CreateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type CreateProjectBranchResponseEndpointsList = Array<Endpoint>;
-export const CreateProjectBranchResponseEndpointsList =
+const CreateProjectBranchResponseEndpointsList =
   CreateProjectResponseEndpointsList as any as S.Schema<CreateProjectBranchResponseEndpointsList>;
 
 export type CreateProjectBranchResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchResponseOperationsList =
+const CreateProjectBranchResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchResponseOperationsList>;
 
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type CreateProjectBranchResponseRolesList = Array<Role>;
-export const CreateProjectBranchResponseRolesList =
+const CreateProjectBranchResponseRolesList =
   CreateProjectResponseRolesList as any as S.Schema<CreateProjectBranchResponseRolesList>;
 
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type CreateProjectBranchResponseDatabasesList = Array<Database>;
-export const CreateProjectBranchResponseDatabasesList =
+const CreateProjectBranchResponseDatabasesList =
   CreateProjectResponseDatabasesList as any as S.Schema<CreateProjectBranchResponseDatabasesList>;
 
 /** Connection URIs for the compute endpoint, including credentials. */
 export type CreateProjectBranchResponseConnectionUrisList = Array<ConnectionDetails>;
-export const CreateProjectBranchResponseConnectionUrisList =
+const CreateProjectBranchResponseConnectionUrisList =
   CreateProjectResponseConnectionUrisList as any as S.Schema<CreateProjectBranchResponseConnectionUrisList>;
 
 export interface CreateProjectBranchResponse {
@@ -1723,7 +1717,7 @@ export interface CreateProjectBranchResponse {
   /** Connection URIs for the compute endpoint, including credentials. */
   connection_uris?: CreateProjectBranchResponseConnectionUrisList;
 }
-export const CreateProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: Branch,
     endpoints: CreateProjectBranchResponseEndpointsList,
@@ -1738,20 +1732,18 @@ export const CreateProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints to create together with the branch. If omitted, the branch is created without any compute endpoint. Endpoints can be added to the branch separately after creation. */
 export type BranchCreateRequestEndpointsList = Array<BranchCreateRequestEndpointOptions>;
-export const BranchCreateRequestEndpointsList =
+const BranchCreateRequestEndpointsList =
   CreateProjectBranchRequestEndpointsList as any as S.Schema<BranchCreateRequestEndpointsList>;
 
 /** Optional configuration for the new branch, for example `name`, `parent_id` (fork from a branch), `parent_lsn` or `parent_timestamp` (point-in-time branching), and `protected`. */
 export type BranchCreateRequestBranch = CreateProjectBranchRequestBranch;
-export const BranchCreateRequestBranch = CreateProjectBranchRequestBranch;
-
 export interface BranchCreateRequest {
   /** Compute endpoints to create together with the branch. If omitted, the branch is created without any compute endpoint. Endpoints can be added to the branch separately after creation. */
   endpoints?: BranchCreateRequestEndpointsList;
   /** Optional configuration for the new branch, for example `name`, `parent_id` (fork from a branch), `parent_lsn` or `parent_timestamp` (point-in-time branching), and `protected`. */
   branch?: CreateProjectBranchRequestBranch;
 }
-export const BranchCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BranchCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(BranchCreateRequestEndpointsList),
     branch: S.optional(CreateProjectBranchRequestBranch),
@@ -1772,7 +1764,7 @@ export interface MaskingRule {
   /** A literal value to set on the column when masking. */
   masking_value?: string;
 }
-export const MaskingRule = /*@__PURE__*/ S.suspend(() =>
+const MaskingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_name: S.String,
     schema_name: S.String,
@@ -1785,7 +1777,7 @@ export const MaskingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of masking rules to apply to the branch. */
 export type CreateProjectBranchAnonymizedRequestMaskingRulesList = Array<MaskingRule>;
-export const CreateProjectBranchAnonymizedRequestMaskingRulesList = /*@__PURE__*/ S.Array(
+const CreateProjectBranchAnonymizedRequestMaskingRulesList = /*@__PURE__*/ S.Array(
   MaskingRule,
 ) as any as S.Codec<CreateProjectBranchAnonymizedRequestMaskingRulesList>;
 
@@ -1799,7 +1791,7 @@ export interface CreateProjectBranchAnonymizedRequest {
   /** If true, automatically start anonymization after the branch is created. Defaults to false. */
   start_anonymization?: boolean;
 }
-export const CreateProjectBranchAnonymizedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchAnonymizedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     annotation_value: S.optional(AnnotationValueData),
@@ -1813,28 +1805,13 @@ export const CreateProjectBranchAnonymizedRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type CreateProjectBranchAnonymizedResponseEndpointsList = Array<Endpoint>;
-export const CreateProjectBranchAnonymizedResponseEndpointsList =
-  CreateProjectResponseEndpointsList as any as S.Schema<CreateProjectBranchAnonymizedResponseEndpointsList>;
-
 export type CreateProjectBranchAnonymizedResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchAnonymizedResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchAnonymizedResponseOperationsList>;
-
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type CreateProjectBranchAnonymizedResponseRolesList = Array<Role>;
-export const CreateProjectBranchAnonymizedResponseRolesList =
-  CreateProjectResponseRolesList as any as S.Schema<CreateProjectBranchAnonymizedResponseRolesList>;
-
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type CreateProjectBranchAnonymizedResponseDatabasesList = Array<Database>;
-export const CreateProjectBranchAnonymizedResponseDatabasesList =
-  CreateProjectResponseDatabasesList as any as S.Schema<CreateProjectBranchAnonymizedResponseDatabasesList>;
-
 /** Connection URIs for the compute endpoint, including credentials. */
 export type CreateProjectBranchAnonymizedResponseConnectionUrisList = Array<ConnectionDetails>;
-export const CreateProjectBranchAnonymizedResponseConnectionUrisList =
-  CreateProjectResponseConnectionUrisList as any as S.Schema<CreateProjectBranchAnonymizedResponseConnectionUrisList>;
-
 export interface CreateProjectBranchAnonymizedResponse {
   /** Branch returned by the request. */
   branch: Branch;
@@ -1848,12 +1825,12 @@ export interface CreateProjectBranchAnonymizedResponse {
   /** Connection URIs for the compute endpoint, including credentials. */
   connection_uris?: CreateProjectBranchAnonymizedResponseConnectionUrisList;
 }
-export const CreateProjectBranchAnonymizedResponse =
+const CreateProjectBranchAnonymizedResponse =
   CreateProjectBranchResponse as any as S.Schema<CreateProjectBranchAnonymizedResponse>;
 
 /** Access level for the bucket. Defaults to `private`. Set to `public_read` to allow anonymous `GetObject`/`HeadObject` on objects in this bucket. */
 export type CreateProjectBranchBucketRequestAccessLevel = "private" | "public_read";
-export const CreateProjectBranchBucketRequestAccessLevel = S.String;
+const CreateProjectBranchBucketRequestAccessLevel = S.String;
 
 export interface CreateProjectBranchBucketRequest {
   /** The Neon project ID */
@@ -1865,7 +1842,7 @@ export interface CreateProjectBranchBucketRequest {
   /** Access level for the bucket. Defaults to `private`. Set to `public_read` to allow anonymous `GetObject`/`HeadObject` on objects in this bucket. */
   access_level?: CreateProjectBranchBucketRequestAccessLevel | (string & {});
 }
-export const CreateProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -1884,7 +1861,7 @@ export const CreateProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Controls anonymous access to objects in the bucket. - `private`: all reads and writes require authenticated requests (default). - `public_read`: anonymous `GetObject`/`HeadObject` requests succeed; listing, writes, and deletes still require authenticated requests. */
 export type BucketAccessLevel = "private" | "public_read";
-export const BucketAccessLevel = S.String;
+const BucketAccessLevel = S.String;
 
 export interface Bucket {
   /** The bucket name (unique within a branch). */
@@ -1893,7 +1870,7 @@ export interface Bucket {
   /** When the bucket was created. For a bucket inherited from an ancestor branch this is the ancestor's creation time (the branch fork never re-creates the bucket). */
   created_at: string;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     access_level: BucketAccessLevel,
@@ -1904,7 +1881,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
 export interface BucketResponse {
   bucket: Bucket;
 }
-export const BucketResponse = /*@__PURE__*/ S.suspend(() =>
+const BucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: Bucket,
   }),
@@ -1912,11 +1889,11 @@ export const BucketResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Authentication provider for the Neon Data API. `neon_auth`: use Neon's built-in managed authentication (no JWKS configuration required). `external`: use an external JWT provider, which requires `jwks_url`. When omitted, no auth provider is configured (existing setup is kept). */
 export type CreateProjectBranchDataAPIRequestAuthProvider = "neon_auth" | "external";
-export const CreateProjectBranchDataAPIRequestAuthProvider = S.String;
+const CreateProjectBranchDataAPIRequestAuthProvider = S.String;
 
 /** List of schemas to expose via the API. Default: ["public"] */
 export type DataAPISettingsDbSchemasList = Array<string>;
-export const DataAPISettingsDbSchemasList =
+const DataAPISettingsDbSchemasList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<DataAPISettingsDbSchemasList>;
 
 /** Configuration settings for the Neon Data API */
@@ -1942,7 +1919,7 @@ export interface DataAPISettings {
   /** When enabled, the Data API adds `Server-Timing` headers to each response showing database execution and internal processing time. Default: disabled. */
   server_timing_enabled?: boolean;
 }
-export const DataAPISettings = /*@__PURE__*/ S.suspend(() =>
+const DataAPISettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     db_aggregates_enabled: S.optional(S.Boolean),
     db_anon_role: S.optional(S.String),
@@ -1979,7 +1956,7 @@ export interface CreateProjectBranchDataAPIRequest {
   /** Auth and schema configuration for the Data API. */
   settings?: DataAPISettings;
 }
-export const CreateProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2007,7 +1984,7 @@ export interface DataAPICreateResponse {
   /** URL of the created Data API endpoint. */
   url: string;
 }
-export const DataAPICreateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataAPICreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -2020,7 +1997,7 @@ export interface CreateProjectBranchDatabaseRequestDatabase {
   /** The name of the role that owns the database */
   owner_name: string;
 }
-export const CreateProjectBranchDatabaseRequestDatabase = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchDatabaseRequestDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     owner_name: S.String,
@@ -2037,7 +2014,7 @@ export interface CreateProjectBranchDatabaseRequest {
   /** Configuration for the new Postgres database. */
   database: CreateProjectBranchDatabaseRequestDatabase;
 }
-export const CreateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2054,7 +2031,7 @@ export const CreateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectBranchDatabaseRequest>;
 
 export type CreateProjectBranchDatabaseResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchDatabaseResponseOperationsList =
+const CreateProjectBranchDatabaseResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchDatabaseResponseOperationsList>;
 
 export interface CreateProjectBranchDatabaseResponse {
@@ -2062,7 +2039,7 @@ export interface CreateProjectBranchDatabaseResponse {
   database: Database;
   operations: CreateProjectBranchDatabaseResponseOperationsList;
 }
-export const CreateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: Database,
     operations: CreateProjectBranchDatabaseResponseOperationsList,
@@ -2072,7 +2049,7 @@ export const CreateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectBranchDatabaseResponse>;
 
 export type CreateProjectBranchFunctionDeploymentRequestRuntime = "nodejs24";
-export const CreateProjectBranchFunctionDeploymentRequestRuntime = S.String;
+const CreateProjectBranchFunctionDeploymentRequestRuntime = S.String;
 
 export interface CreateProjectBranchFunctionDeploymentRequest {
   /** The Neon project ID */
@@ -2087,7 +2064,7 @@ export interface CreateProjectBranchFunctionDeploymentRequest {
   /** Optional JSON object (a string-to-string map) of environment variables for the deployment, e.g. {"KEY":"VALUE"}. Carried as a JSON-encoded string because multipart form data does not support typed object parts. Values are write-only: they are encrypted at rest, and responses carry only the variable names (the `environment` array), never the values. */
   environment?: string | Redacted.Redacted<string>;
 }
-export const CreateProjectBranchFunctionDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchFunctionDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2115,11 +2092,11 @@ export const CreateProjectBranchFunctionDeploymentRequest = /*@__PURE__*/ S.susp
 
 /** Build lifecycle status of the deployment. */
 export type NeonFunctionDeploymentStatus = "pending" | "building" | "completed" | "failed";
-export const NeonFunctionDeploymentStatus = S.String;
+const NeonFunctionDeploymentStatus = S.String;
 
 /** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned -- they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
 export type NeonFunctionDeploymentEnvironmentList = Array<string>;
-export const NeonFunctionDeploymentEnvironmentList =
+const NeonFunctionDeploymentEnvironmentList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<NeonFunctionDeploymentEnvironmentList>;
 
 export interface NeonFunctionDeployment {
@@ -2135,7 +2112,7 @@ export interface NeonFunctionDeployment {
   /** Human-readable reason the deployment build failed. Present only when `status` is `failed`. */
   error?: string | null;
 }
-export const NeonFunctionDeployment = /*@__PURE__*/ S.suspend(() =>
+const NeonFunctionDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     status: NeonFunctionDeploymentStatus,
@@ -2150,7 +2127,7 @@ export const NeonFunctionDeployment = /*@__PURE__*/ S.suspend(() =>
 export interface NeonFunctionDeploymentResponse {
   deployment: NeonFunctionDeployment;
 }
-export const NeonFunctionDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonFunctionDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment: NeonFunctionDeployment,
   }),
@@ -2165,7 +2142,7 @@ export interface CreateProjectBranchRoleRequestRole {
   /** Whether to create a role that cannot login. */
   no_login?: boolean;
 }
-export const CreateProjectBranchRoleRequestRole = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchRoleRequestRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     no_login: S.optional(S.Boolean),
@@ -2182,7 +2159,7 @@ export interface CreateProjectBranchRoleRequest {
   /** Properties of the role to create. */
   role: CreateProjectBranchRoleRequestRole;
 }
-export const CreateProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2195,7 +2172,7 @@ export const CreateProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectBranchRoleRequest>;
 
 export type CreateProjectBranchRoleResponseOperationsList = Array<Operation>;
-export const CreateProjectBranchRoleResponseOperationsList =
+const CreateProjectBranchRoleResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectBranchRoleResponseOperationsList>;
 
 export interface CreateProjectBranchRoleResponse {
@@ -2203,7 +2180,7 @@ export interface CreateProjectBranchRoleResponse {
   role: Role;
   operations: CreateProjectBranchRoleResponseOperationsList;
 }
-export const CreateProjectBranchRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: Role,
     operations: CreateProjectBranchRoleResponseOperationsList,
@@ -2214,13 +2191,13 @@ export const CreateProjectBranchRoleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type ScheduleTriggerCreateRequestType = "schedule";
-export const ScheduleTriggerCreateRequestType = /*@__PURE__*/ S.Literals(["schedule"]);
+const ScheduleTriggerCreateRequestType = /*@__PURE__*/ S.Literals(["schedule"]);
 /** A numeric five-field cron schedule interpreted in UTC. */
 export interface FunctionTriggerSchedule {
   /** Numeric five-field cron expression (minute through day-of-week), interpreted in UTC. */
   cron: string;
 }
-export const FunctionTriggerSchedule = /*@__PURE__*/ S.suspend(() =>
+const FunctionTriggerSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.String,
   }),
@@ -2239,7 +2216,7 @@ export interface ScheduleTriggerCreateRequest {
   /** Whether future occurrences should be scheduled. */
   enabled?: boolean;
 }
-export const ScheduleTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ScheduleTriggerCreateRequestType,
     function_slug: S.String,
@@ -2254,7 +2231,7 @@ export const ScheduleTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type StorageObjectCreatedTriggerCreateRequestType = "storage_object_created";
-export const StorageObjectCreatedTriggerCreateRequestType = /*@__PURE__*/ S.Literals([
+const StorageObjectCreatedTriggerCreateRequestType = /*@__PURE__*/ S.Literals([
   "storage_object_created",
 ]);
 /** Matches successful uploads to one exact bucket and, when configured, an object-key prefix. The Function receives a JSON request body with `type` set to `storage_object_created` and a `data` object containing exactly `bucket_name` and `object_key`. */
@@ -2264,7 +2241,7 @@ export interface FunctionTriggerStorageObjectCreated {
   /** Optional object-key prefix of at most 1024 UTF-8 bytes. When omitted, every key in the bucket matches. When present, the full object key must start with these exact bytes; matching is case-sensitive and does not normalize paths or require a path-segment boundary. Match-all responses omit this field rather than returning an empty string. */
   prefix?: string;
 }
-export const FunctionTriggerStorageObjectCreated = /*@__PURE__*/ S.suspend(() =>
+const FunctionTriggerStorageObjectCreated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_name: S.String,
     prefix: S.optional(S.String),
@@ -2286,7 +2263,7 @@ export interface StorageObjectCreatedTriggerCreateRequest {
   /** Whether successful matching uploads should invoke the Function. */
   enabled?: boolean;
 }
-export const StorageObjectCreatedTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageObjectCreatedTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StorageObjectCreatedTriggerCreateRequestType,
     function_slug: S.String,
@@ -2303,7 +2280,7 @@ export const StorageObjectCreatedTriggerCreateRequest = /*@__PURE__*/ S.suspend(
 export type TriggerCreateRequest =
   | ScheduleTriggerCreateRequest
   | StorageObjectCreatedTriggerCreateRequest;
-export const TriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Union([ScheduleTriggerCreateRequest, StorageObjectCreatedTriggerCreateRequest]),
 ) as S.Codec<TriggerCreateRequest>;
 
@@ -2314,7 +2291,7 @@ export interface CreateProjectBranchTriggerRequest {
   branch_id: string;
   body: TriggerCreateRequest;
 }
-export const CreateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2332,7 +2309,7 @@ export const CreateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type ScheduleTriggerType = "schedule";
-export const ScheduleTriggerType =
+const ScheduleTriggerType =
   ScheduleTriggerCreateRequestType as any as S.Schema<ScheduleTriggerType>;
 /** A branch-effective schedule trigger for a Function. */
 export interface ScheduleTrigger {
@@ -2354,7 +2331,7 @@ export interface ScheduleTrigger {
   /** True when the effective configuration was authored on an ancestor branch. */
   inherited: boolean;
 }
-export const ScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
+const ScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ScheduleTriggerType,
     trigger_id: S.String,
@@ -2371,7 +2348,7 @@ export const ScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator. */
 export type StorageObjectCreatedTriggerType = "storage_object_created";
-export const StorageObjectCreatedTriggerType = /*@__PURE__*/ S.Literals(["storage_object_created"]);
+const StorageObjectCreatedTriggerType = /*@__PURE__*/ S.Literals(["storage_object_created"]);
 /** A branch-effective trigger that invokes a Function after a successful upload matching its exact bucket and optional object-key prefix. */
 export interface StorageObjectCreatedTrigger {
   /** Trigger type discriminator. */
@@ -2390,7 +2367,7 @@ export interface StorageObjectCreatedTrigger {
   /** True when the effective configuration was authored on an ancestor branch. */
   inherited: boolean;
 }
-export const StorageObjectCreatedTrigger = /*@__PURE__*/ S.suspend(() =>
+const StorageObjectCreatedTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StorageObjectCreatedTriggerType,
     trigger_id: S.String,
@@ -2408,14 +2385,14 @@ export const StorageObjectCreatedTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** A branch-effective trigger discriminated by `type`. The supported trigger types are `schedule` and `storage_object_created`. */
 export type Trigger = ScheduleTrigger | StorageObjectCreatedTrigger;
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
+const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Union([ScheduleTrigger, StorageObjectCreatedTrigger]),
 ) as S.Codec<Trigger>;
 
 export interface TriggerResponse {
   trigger: Trigger;
 }
-export const TriggerResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trigger: Trigger,
   }),
@@ -2448,7 +2425,7 @@ export interface CreateProjectEndpointRequestEndpoint {
   /** Optional name of the compute endpoint */
   name?: string;
 }
-export const CreateProjectEndpointRequestEndpoint = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectEndpointRequestEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch_id: S.String,
     region_id: S.optional(S.String),
@@ -2474,7 +2451,7 @@ export interface CreateProjectEndpointRequest {
   /** Configuration for the compute endpoint to create. */
   endpoint: CreateProjectEndpointRequestEndpoint;
 }
-export const CreateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint: CreateProjectEndpointRequestEndpoint,
@@ -2484,7 +2461,7 @@ export const CreateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<CreateProjectEndpointRequest>;
 
 export type CreateProjectEndpointResponseOperationsList = Array<Operation>;
-export const CreateProjectEndpointResponseOperationsList =
+const CreateProjectEndpointResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<CreateProjectEndpointResponseOperationsList>;
 
 export interface CreateProjectEndpointResponse {
@@ -2492,7 +2469,7 @@ export interface CreateProjectEndpointResponse {
   endpoint: Endpoint;
   operations: CreateProjectEndpointResponseOperationsList;
 }
-export const CreateProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: Endpoint,
     operations: CreateProjectEndpointResponseOperationsList,
@@ -2507,7 +2484,7 @@ export interface CreateProjectTransferRequestRequest {
   /** Number of seconds the transfer request stays valid before it expires. Defaults to 86400 (24 hours). */
   ttl_seconds?: number;
 }
-export const CreateProjectTransferRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectTransferRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ttl_seconds: S.optional(S.Number),
@@ -2526,7 +2503,7 @@ export interface ProjectTransferRequestResponse {
   /** The timestamp when the transfer request will expire */
   expires_at: string;
 }
-export const ProjectTransferRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectTransferRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     project_id: S.String,
@@ -2551,7 +2528,7 @@ export interface CreateSnapshotRequest {
   /** The time at which the snapshot will be automatically deleted. RFC 3339 format. */
   expires_at?: string;
 }
-export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2590,7 +2567,7 @@ export interface Snapshot {
   /** Incremental Postgres storage size in bytes since the previous scheduled snapshot, when the snapshot is billed on incremental (diff) usage. When absent, either the incremental size has not been calculated yet and the snapshot is not being charged, or the snapshot is charged at full logical size (in that case `full_size` is set). */
   diff_size?: number;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2606,14 +2583,14 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Codec<Snapshot>;
 
 export type CreateSnapshotResponseOperationsList = Array<Operation>;
-export const CreateSnapshotResponseOperationsList =
+const CreateSnapshotResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<CreateSnapshotResponseOperationsList>;
 
 export interface CreateSnapshotResponse {
   snapshot: Snapshot;
   operations: CreateSnapshotResponseOperationsList;
 }
-export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot: Snapshot,
     operations: CreateSnapshotResponseOperationsList,
@@ -2625,7 +2602,7 @@ export type DeleteBranchNeonAuthOauthProviderRequestOauthProviderId =
   | "github"
   | "microsoft"
   | "vercel";
-export const DeleteBranchNeonAuthOauthProviderRequestOauthProviderId = S.String;
+const DeleteBranchNeonAuthOauthProviderRequestOauthProviderId = S.String;
 
 export interface DeleteBranchNeonAuthOauthProviderRequest {
   /** The Neon project ID */
@@ -2635,7 +2612,7 @@ export interface DeleteBranchNeonAuthOauthProviderRequest {
   /** The OAuth provider ID */
   oauth_provider_id: DeleteBranchNeonAuthOauthProviderRequestOauthProviderId | (string & {});
 }
-export const DeleteBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2652,14 +2629,14 @@ export const DeleteBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Codec<DeleteBranchNeonAuthOauthProviderRequest>;
 
 export interface DeleteBranchNeonAuthOauthProviderResponse {}
-export const DeleteBranchNeonAuthOauthProviderResponse =
+const DeleteBranchNeonAuthOauthProviderResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteBranchNeonAuthOauthProviderResponse>;
 
 export interface NeonAuthDeleteDomainFromRedirectURIWhitelistItem {
   /** URI to remove from the redirect URI whitelist. */
   domain: string;
 }
-export const NeonAuthDeleteDomainFromRedirectURIWhitelistItem = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthDeleteDomainFromRedirectURIWhitelistItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
   }),
@@ -2670,7 +2647,7 @@ export const NeonAuthDeleteDomainFromRedirectURIWhitelistItem = /*@__PURE__*/ S.
 /** Domain names to remove from the redirect URI whitelist for the specified auth provider. */
 export type DeleteBranchNeonAuthTrustedDomainRequestDomainsList =
   Array<NeonAuthDeleteDomainFromRedirectURIWhitelistItem>;
-export const DeleteBranchNeonAuthTrustedDomainRequestDomainsList = /*@__PURE__*/ S.Array(
+const DeleteBranchNeonAuthTrustedDomainRequestDomainsList = /*@__PURE__*/ S.Array(
   NeonAuthDeleteDomainFromRedirectURIWhitelistItem,
 ) as any as S.Codec<DeleteBranchNeonAuthTrustedDomainRequestDomainsList>;
 
@@ -2683,7 +2660,7 @@ export interface DeleteBranchNeonAuthTrustedDomainRequest {
   /** Domain names to remove from the redirect URI whitelist for the specified auth provider. */
   domains: DeleteBranchNeonAuthTrustedDomainRequestDomainsList;
 }
-export const DeleteBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2701,7 +2678,7 @@ export const DeleteBranchNeonAuthTrustedDomainRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Codec<DeleteBranchNeonAuthTrustedDomainRequest>;
 
 export interface DeleteBranchNeonAuthTrustedDomainResponse {}
-export const DeleteBranchNeonAuthTrustedDomainResponse =
+const DeleteBranchNeonAuthTrustedDomainResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteBranchNeonAuthTrustedDomainResponse>;
 
 export interface DeleteBranchNeonAuthUserRequest {
@@ -2712,7 +2689,7 @@ export interface DeleteBranchNeonAuthUserRequest {
   /** The Neon user ID */
   auth_user_id: string;
 }
-export const DeleteBranchNeonAuthUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchNeonAuthUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2729,14 +2706,14 @@ export const DeleteBranchNeonAuthUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteBranchNeonAuthUserRequest>;
 
 export interface DeleteBranchNeonAuthUserResponse {}
-export const DeleteBranchNeonAuthUserResponse =
+const DeleteBranchNeonAuthUserResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteBranchNeonAuthUserResponse>;
 
 export interface DeleteOrganizationSpendingLimitRequest {
   /** The Neon organization ID */
   org_id: string;
 }
-export const DeleteOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2747,7 +2724,7 @@ export const DeleteOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<DeleteOrganizationSpendingLimitRequest>;
 
 export type DeleteOrganizationSpendingLimitResponse = unknown;
-export const DeleteOrganizationSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteOrganizationSpendingLimitResponse",
@@ -2761,7 +2738,7 @@ export interface DeleteOrganizationVPCEndpointRequest {
   /** The VPC endpoint ID */
   vpc_endpoint_id: string;
 }
-export const DeleteOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     region_id: S.String.pipe(T.Label()),
@@ -2778,14 +2755,14 @@ export const DeleteOrganizationVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Codec<DeleteOrganizationVPCEndpointRequest>;
 
 export interface DeleteOrganizationVPCEndpointResponse {}
-export const DeleteOrganizationVPCEndpointResponse =
+const DeleteOrganizationVPCEndpointResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteOrganizationVPCEndpointResponse>;
 
 export interface DeleteProjectRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/projects/{project_id}", code: 200 })),
@@ -2795,7 +2772,7 @@ export interface ProjectResponse {
   /** Full details of the project, including configuration, consumption metrics, and ownership. */
   project: Project;
 }
-export const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: Project,
   }),
@@ -2809,7 +2786,7 @@ export interface DeleteProjectBranchRequest {
   /** If true, the branch is permanently deleted immediately without a recovery window. If false (default), the branch can be recovered within 7 days via the recover endpoint. This parameter is part of the Branch Recovery feature, which is in preview and not available to all users. Retained for compatibility with the previously published SDK; the refreshed OpenAPI document omits it. */
   hard_delete?: boolean;
 }
-export const DeleteProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2822,7 +2799,7 @@ export const DeleteProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchRequest>;
 
 export type DeleteProjectBranchResponseOperationsList = Array<Operation>;
-export const DeleteProjectBranchResponseOperationsList =
+const DeleteProjectBranchResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectBranchResponseOperationsList>;
 
 export interface DeleteProjectBranchResponse {
@@ -2830,7 +2807,7 @@ export interface DeleteProjectBranchResponse {
   branch: Branch;
   operations: DeleteProjectBranchResponseOperationsList;
 }
-export const DeleteProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: Branch,
     operations: DeleteProjectBranchResponseOperationsList,
@@ -2847,7 +2824,7 @@ export interface DeleteProjectBranchBucketRequest {
   /** The bucket name */
   bucket_name: string;
 }
-export const DeleteProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2864,7 +2841,7 @@ export const DeleteProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchBucketRequest>;
 
 export interface DeleteProjectBranchBucketResponse {}
-export const DeleteProjectBranchBucketResponse =
+const DeleteProjectBranchBucketResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchBucketResponse>;
 
 export interface DeleteProjectBranchBucketObjectRequest {
@@ -2877,7 +2854,7 @@ export interface DeleteProjectBranchBucketObjectRequest {
   /** The object key. Keys may contain `/`; the `/` characters of nested keys must be percent-encoded (`%2F`) in the path segment. */
   object_key: string;
 }
-export const DeleteProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2895,7 +2872,7 @@ export const DeleteProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<DeleteProjectBranchBucketObjectRequest>;
 
 export interface DeleteProjectBranchBucketObjectResponse {}
-export const DeleteProjectBranchBucketObjectResponse =
+const DeleteProjectBranchBucketObjectResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchBucketObjectResponse>;
 
 export interface DeleteProjectBranchBucketObjectsByPrefixRequest {
@@ -2908,7 +2885,7 @@ export interface DeleteProjectBranchBucketObjectsByPrefixRequest {
   /** The key prefix (folder) to delete. Must be non-empty and end with `/`. Every object on this branch whose key starts with this prefix is soft-deleted. */
   prefix: string;
 }
-export const DeleteProjectBranchBucketObjectsByPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchBucketObjectsByPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2929,7 +2906,7 @@ export interface BucketObjectsDeletePrefixResponse {
   /** The number of objects soft-deleted under the prefix. 0 when no live object matched the prefix on this branch. */
   deleted: number;
 }
-export const BucketObjectsDeletePrefixResponse = /*@__PURE__*/ S.suspend(() =>
+const BucketObjectsDeletePrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Number,
   }),
@@ -2945,7 +2922,7 @@ export interface DeleteProjectBranchCustomDomainRequest {
   /** The registered custom domain (case-insensitive). */
   domain: string;
 }
-export const DeleteProjectBranchCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2962,7 +2939,7 @@ export const DeleteProjectBranchCustomDomainRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<DeleteProjectBranchCustomDomainRequest>;
 
 export interface DeleteProjectBranchCustomDomainResponse {}
-export const DeleteProjectBranchCustomDomainResponse =
+const DeleteProjectBranchCustomDomainResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchCustomDomainResponse>;
 
 export interface DeleteProjectBranchDataAPIRequest {
@@ -2973,7 +2950,7 @@ export interface DeleteProjectBranchDataAPIRequest {
   /** The database name */
   database_name: string;
 }
-export const DeleteProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -2990,7 +2967,7 @@ export const DeleteProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchDataAPIRequest>;
 
 export type DeleteProjectBranchDataAPIResponse = unknown;
-export const DeleteProjectBranchDataAPIResponse =
+const DeleteProjectBranchDataAPIResponse =
   DeleteOrganizationSpendingLimitResponse as any as S.Schema<DeleteProjectBranchDataAPIResponse>;
 
 export interface DeleteProjectBranchDatabaseRequest {
@@ -3001,7 +2978,7 @@ export interface DeleteProjectBranchDatabaseRequest {
   /** The database name */
   database_name: string;
 }
-export const DeleteProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3018,15 +2995,12 @@ export const DeleteProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchDatabaseRequest>;
 
 export type DeleteProjectBranchDatabaseResponseOperationsList = Array<Operation>;
-export const DeleteProjectBranchDatabaseResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectBranchDatabaseResponseOperationsList>;
-
 export interface DeleteProjectBranchDatabaseResponse {
   /** Database object returned by the operation. */
   database: Database;
   operations: DeleteProjectBranchDatabaseResponseOperationsList;
 }
-export const DeleteProjectBranchDatabaseResponse =
+const DeleteProjectBranchDatabaseResponse =
   CreateProjectBranchDatabaseResponse as any as S.Schema<DeleteProjectBranchDatabaseResponse>;
 
 export interface DeleteProjectBranchFunctionRequest {
@@ -3037,7 +3011,7 @@ export interface DeleteProjectBranchFunctionRequest {
   /** The function slug */
   slug: string;
 }
-export const DeleteProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3054,7 +3028,7 @@ export const DeleteProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchFunctionRequest>;
 
 export interface DeleteProjectBranchFunctionResponse {}
-export const DeleteProjectBranchFunctionResponse =
+const DeleteProjectBranchFunctionResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchFunctionResponse>;
 
 export interface DeleteProjectBranchRoleRequest {
@@ -3065,7 +3039,7 @@ export interface DeleteProjectBranchRoleRequest {
   /** The role name */
   role_name: string;
 }
-export const DeleteProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3082,15 +3056,12 @@ export const DeleteProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchRoleRequest>;
 
 export type DeleteProjectBranchRoleResponseOperationsList = Array<Operation>;
-export const DeleteProjectBranchRoleResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectBranchRoleResponseOperationsList>;
-
 export interface DeleteProjectBranchRoleResponse {
   /** Role details for the requested database role. The `password` field is included in the response when a role is created or its password is reset, and is not returned in subsequent read requests. Store it securely at that time. */
   role: Role;
   operations: DeleteProjectBranchRoleResponseOperationsList;
 }
-export const DeleteProjectBranchRoleResponse =
+const DeleteProjectBranchRoleResponse =
   CreateProjectBranchRoleResponse as any as S.Schema<DeleteProjectBranchRoleResponse>;
 
 export interface DeleteProjectBranchTriggerRequest {
@@ -3101,7 +3072,7 @@ export interface DeleteProjectBranchTriggerRequest {
   /** The opaque, project-wide trigger ID */
   trigger_id: string;
 }
-export const DeleteProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3118,7 +3089,7 @@ export const DeleteProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectBranchTriggerRequest>;
 
 export interface DeleteProjectBranchTriggerResponse {}
-export const DeleteProjectBranchTriggerResponse =
+const DeleteProjectBranchTriggerResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectBranchTriggerResponse>;
 
 export interface DeleteProjectEndpointRequest {
@@ -3127,7 +3098,7 @@ export interface DeleteProjectEndpointRequest {
   /** The endpoint ID */
   endpoint_id: string;
 }
-export const DeleteProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint_id: S.String.pipe(T.Label()),
@@ -3139,15 +3110,12 @@ export const DeleteProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectEndpointRequest>;
 
 export type DeleteProjectEndpointResponseOperationsList = Array<Operation>;
-export const DeleteProjectEndpointResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<DeleteProjectEndpointResponseOperationsList>;
-
 export interface DeleteProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: DeleteProjectEndpointResponseOperationsList;
 }
-export const DeleteProjectEndpointResponse =
+const DeleteProjectEndpointResponse =
   CreateProjectEndpointResponse as any as S.Schema<DeleteProjectEndpointResponse>;
 
 export interface DeleteProjectJWKSRequest {
@@ -3156,7 +3124,7 @@ export interface DeleteProjectJWKSRequest {
   /** The JWKS ID */
   jwks_id: string;
 }
-export const DeleteProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     jwks_id: S.String.pipe(T.Label()),
@@ -3169,7 +3137,7 @@ export interface DeleteProjectVPCEndpointRequest {
   /** The VPC endpoint ID */
   vpc_endpoint_id: string;
 }
-export const DeleteProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     vpc_endpoint_id: S.String.pipe(T.Label()),
@@ -3185,7 +3153,7 @@ export const DeleteProjectVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<DeleteProjectVPCEndpointRequest>;
 
 export interface DeleteProjectVPCEndpointResponse {}
-export const DeleteProjectVPCEndpointResponse =
+const DeleteProjectVPCEndpointResponse =
   AcceptProjectTransferRequestResponse as any as S.Schema<DeleteProjectVPCEndpointResponse>;
 
 export interface DeleteSnapshotRequest {
@@ -3194,7 +3162,7 @@ export interface DeleteSnapshotRequest {
   /** The snapshot ID */
   snapshot_id: string;
 }
-export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     snapshot_id: S.String.pipe(T.Label()),
@@ -3204,7 +3172,7 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSnapshotRequest" }) as any as S.Codec<DeleteSnapshotRequest>;
 
 export interface DeleteSnapshotResponse {}
-export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSnapshotResponse",
 }) as any as S.Codec<DeleteSnapshotResponse>;
 
@@ -3216,7 +3184,7 @@ export interface DisableNeonAuthRequest {
   /** If true, deletes the `neon_auth` schema from the database */
   delete_data?: boolean;
 }
-export const DisableNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3231,8 +3199,7 @@ export const DisableNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableNeonAuthRequest" }) as any as S.Codec<DisableNeonAuthRequest>;
 
 export interface DisableNeonAuthResponse {}
-export const DisableNeonAuthResponse =
-  DeleteSnapshotResponse as any as S.Schema<DisableNeonAuthResponse>;
+const DisableNeonAuthResponse = DeleteSnapshotResponse as any as S.Schema<DisableNeonAuthResponse>;
 
 export interface FinalizeRestoreBranchRequest {
   /** The Neon project ID */
@@ -3242,7 +3209,7 @@ export interface FinalizeRestoreBranchRequest {
   /** Name for the replaced branch. If omitted, a unique name is generated. */
   name?: string;
 }
-export const FinalizeRestoreBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeRestoreBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3259,13 +3226,13 @@ export const FinalizeRestoreBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<FinalizeRestoreBranchRequest>;
 
 export type OperationsResponseOperationsList = Array<Operation>;
-export const OperationsResponseOperationsList =
+const OperationsResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<OperationsResponseOperationsList>;
 
 export interface OperationsResponse {
   operations: OperationsResponseOperationsList;
 }
-export const OperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: OperationsResponseOperationsList,
   }),
@@ -3275,7 +3242,7 @@ export interface GetActiveRegionsRequest {
   /** Organization ID. When provided, returns only regions available to this organization. Recommended for accurate region availability. */
   org_id?: string;
 }
-export const GetActiveRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/regions", code: 200 })),
@@ -3293,7 +3260,7 @@ export interface RegionResponse {
   /** The geographical longitude (approximate) for the region. Empty if unknown. */
   geo_long: string;
 }
-export const RegionResponse = /*@__PURE__*/ S.suspend(() =>
+const RegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region_id: S.String,
     name: S.String,
@@ -3305,7 +3272,7 @@ export const RegionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of active regions */
 export type ActiveRegionsResponseRegionsList = Array<RegionResponse>;
-export const ActiveRegionsResponseRegionsList = /*@__PURE__*/ S.Array(
+const ActiveRegionsResponseRegionsList = /*@__PURE__*/ S.Array(
   RegionResponse,
 ) as any as S.Codec<ActiveRegionsResponseRegionsList>;
 
@@ -3313,7 +3280,7 @@ export interface ActiveRegionsResponse {
   /** The list of active regions */
   regions: ActiveRegionsResponseRegionsList;
 }
-export const ActiveRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ActiveRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: ActiveRegionsResponseRegionsList,
   }),
@@ -3325,7 +3292,7 @@ export interface GetAnonymizedBranchStatusRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const GetAnonymizedBranchStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnonymizedBranchStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -3353,7 +3320,7 @@ export interface AnonymizationRunMetadata {
   /** Number of columns that had masking rules applied during the attempt. */
   masked_columns?: number;
 }
-export const AnonymizationRunMetadata = /*@__PURE__*/ S.suspend(() =>
+const AnonymizationRunMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     started_at: S.optional(S.String),
     completed_at: S.optional(S.String),
@@ -3380,7 +3347,7 @@ export interface AnonymizedBranchStatusResponse {
   failed_at?: string;
   last_run?: AnonymizationRunMetadata;
 }
-export const AnonymizedBranchStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const AnonymizedBranchStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     branch_id: S.String,
@@ -3396,7 +3363,7 @@ export const AnonymizedBranchStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<AnonymizedBranchStatusResponse>;
 
 export interface GetAuthDetailsRequest {}
-export const GetAuthDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/auth", code: 200 })),
 ).annotate({ identifier: "GetAuthDetailsRequest" }) as any as S.Codec<GetAuthDetailsRequest>;
 
@@ -3407,7 +3374,7 @@ export type AuthDetailsResponseAuthMethod =
   | "api_key_user"
   | "api_key_org"
   | "oauth";
-export const AuthDetailsResponseAuthMethod = S.String;
+const AuthDetailsResponseAuthMethod = S.String;
 
 export interface AuthDetailsResponse {
   /** The ID of the account associated with this authentication record. */
@@ -3416,7 +3383,7 @@ export interface AuthDetailsResponse {
   auth_method: AuthDetailsResponseAuthMethod;
   auth_data?: string;
 }
-export const AuthDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     auth_method: AuthDetailsResponseAuthMethod,
@@ -3427,7 +3394,7 @@ export const AuthDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAvailablePreloadLibrariesRequest {
   project_id: string;
 }
-export const GetAvailablePreloadLibrariesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvailablePreloadLibrariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3449,7 +3416,7 @@ export interface AvailablePreloadLibrary {
   /** Version of the preload library. */
   version: string;
 }
-export const AvailablePreloadLibrary = /*@__PURE__*/ S.suspend(() =>
+const AvailablePreloadLibrary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     library_name: S.String,
     description: S.String,
@@ -3461,7 +3428,7 @@ export const AvailablePreloadLibrary = /*@__PURE__*/ S.suspend(() =>
 
 /** Preload libraries available for the project's Postgres version. Each entry includes `library_name`, `description`, `is_default`, `is_experimental`, and `version`. */
 export type AvailablePreloadLibrariesLibrariesList = Array<AvailablePreloadLibrary>;
-export const AvailablePreloadLibrariesLibrariesList = /*@__PURE__*/ S.Array(
+const AvailablePreloadLibrariesLibrariesList = /*@__PURE__*/ S.Array(
   AvailablePreloadLibrary,
 ) as any as S.Codec<AvailablePreloadLibrariesLibrariesList>;
 
@@ -3469,7 +3436,7 @@ export interface AvailablePreloadLibraries {
   /** Preload libraries available for the project's Postgres version. Each entry includes `library_name`, `description`, `is_default`, `is_experimental`, and `version`. */
   libraries?: AvailablePreloadLibrariesLibrariesList;
 }
-export const AvailablePreloadLibraries = /*@__PURE__*/ S.suspend(() =>
+const AvailablePreloadLibraries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     libraries: S.optional(AvailablePreloadLibrariesLibrariesList),
   }),
@@ -3491,7 +3458,7 @@ export interface GetConnectionURIRequest {
   /** Adds the `-pooler` option to the connection URI when set to `true`, creating a pooled connection URI. */
   pooled?: boolean;
 }
-export const GetConnectionURIRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionURIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.optional(S.String.pipe(T.Query())),
@@ -3506,25 +3473,25 @@ export interface ConnectionURIResponse {
   /** The connection URI. */
   uri: string;
 }
-export const ConnectionURIResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionURIResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.String,
   }),
 ).annotate({ identifier: "ConnectionURIResponse" }) as any as S.Codec<ConnectionURIResponse>;
 
 export type GetConsumptionHistoryPerBranchV2RequestProjectIdsList = Array<string>;
-export const GetConsumptionHistoryPerBranchV2RequestProjectIdsList =
+const GetConsumptionHistoryPerBranchV2RequestProjectIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerBranchV2RequestProjectIdsList>;
 
 export type GetConsumptionHistoryPerBranchV2RequestBranchIdsList = Array<string>;
-export const GetConsumptionHistoryPerBranchV2RequestBranchIdsList =
+const GetConsumptionHistoryPerBranchV2RequestBranchIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerBranchV2RequestBranchIdsList>;
 
 export type ConsumptionHistoryGranularity = "hourly" | "daily" | "monthly";
-export const ConsumptionHistoryGranularity = S.String;
+const ConsumptionHistoryGranularity = S.String;
 
 export type ConsumptionHistoryQueryMetrics = Array<string>;
-export const ConsumptionHistoryQueryMetrics =
+const ConsumptionHistoryQueryMetrics =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<ConsumptionHistoryQueryMetrics>;
 
 export interface GetConsumptionHistoryPerBranchV2Request {
@@ -3547,7 +3514,7 @@ export interface GetConsumptionHistoryPerBranchV2Request {
   /** Required. List the metrics to return. Only these values are supported: - `compute_unit_seconds` - `root_branch_bytes_month` - `child_branch_bytes_month` - `instant_restore_bytes_month` - `public_network_transfer_bytes` - `private_network_transfer_bytes` Not supported on this endpoint: `extra_branches_month`, `snapshot_storage_bytes_month`. Use `GET /consumption_history/v2/projects` for those. Pass multiple values as repeated query parameters or a comma-separated list: - `metrics=compute_unit_seconds&metrics=public_network_transfer_bytes` - `metrics=compute_unit_seconds,public_network_transfer_bytes` */
   metrics: ConsumptionHistoryQueryMetrics;
 }
-export const GetConsumptionHistoryPerBranchV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetConsumptionHistoryPerBranchV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3569,7 +3536,7 @@ export interface ConsumptionMetricValue {
   /** Measured quantity for the metric named by `metric_name`. */
   value: number;
 }
-export const ConsumptionMetricValue = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionMetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_name: S.String,
     value: S.Number,
@@ -3578,7 +3545,7 @@ export const ConsumptionMetricValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Consumption metric values recorded for the timeframe. */
 export type ConsumptionHistoryPerTimeframeV2MetricsList = Array<ConsumptionMetricValue>;
-export const ConsumptionHistoryPerTimeframeV2MetricsList = /*@__PURE__*/ S.Array(
+const ConsumptionHistoryPerTimeframeV2MetricsList = /*@__PURE__*/ S.Array(
   ConsumptionMetricValue,
 ) as any as S.Codec<ConsumptionHistoryPerTimeframeV2MetricsList>;
 
@@ -3590,7 +3557,7 @@ export interface ConsumptionHistoryPerTimeframeV2 {
   /** Consumption metric values recorded for the timeframe. */
   metrics?: ConsumptionHistoryPerTimeframeV2MetricsList;
 }
-export const ConsumptionHistoryPerTimeframeV2 = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerTimeframeV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeframe_start: S.optional(S.String),
     timeframe_end: S.optional(S.String),
@@ -3602,7 +3569,7 @@ export const ConsumptionHistoryPerTimeframeV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Consumption metric records for the billing period. */
 export type ConsumptionHistoryPerPeriodV2ConsumptionList = Array<ConsumptionHistoryPerTimeframeV2>;
-export const ConsumptionHistoryPerPeriodV2ConsumptionList = /*@__PURE__*/ S.Array(
+const ConsumptionHistoryPerPeriodV2ConsumptionList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerTimeframeV2,
 ) as any as S.Codec<ConsumptionHistoryPerPeriodV2ConsumptionList>;
 
@@ -3618,7 +3585,7 @@ export interface ConsumptionHistoryPerPeriodV2 {
   /** Consumption metric records for the billing period. */
   consumption: ConsumptionHistoryPerPeriodV2ConsumptionList;
 }
-export const ConsumptionHistoryPerPeriodV2 = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerPeriodV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period_id: S.String,
     period_plan: S.String,
@@ -3632,7 +3599,7 @@ export const ConsumptionHistoryPerPeriodV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Consumption history records for the branch, grouped by billing period. */
 export type ConsumptionHistoryPerBranchV2PeriodsList = Array<ConsumptionHistoryPerPeriodV2>;
-export const ConsumptionHistoryPerBranchV2PeriodsList = /*@__PURE__*/ S.Array(
+const ConsumptionHistoryPerBranchV2PeriodsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerPeriodV2,
 ) as any as S.Codec<ConsumptionHistoryPerBranchV2PeriodsList>;
 
@@ -3644,7 +3611,7 @@ export interface ConsumptionHistoryPerBranchV2 {
   /** Consumption history records for the branch, grouped by billing period. */
   periods: ConsumptionHistoryPerBranchV2PeriodsList;
 }
-export const ConsumptionHistoryPerBranchV2 = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerBranchV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     branch_id: S.String,
@@ -3657,7 +3624,7 @@ export const ConsumptionHistoryPerBranchV2 = /*@__PURE__*/ S.suspend(() =>
 /** Per-branch consumption history records returned for the requested time range. */
 export type GetConsumptionHistoryPerBranchV2ResponseBranchesList =
   Array<ConsumptionHistoryPerBranchV2>;
-export const GetConsumptionHistoryPerBranchV2ResponseBranchesList = /*@__PURE__*/ S.Array(
+const GetConsumptionHistoryPerBranchV2ResponseBranchesList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerBranchV2,
 ) as any as S.Codec<GetConsumptionHistoryPerBranchV2ResponseBranchesList>;
 
@@ -3666,7 +3633,7 @@ export interface Pagination {
   /** Cursor marking the last item in this response. Pass it unchanged as the `cursor` query parameter to fetch the next page. */
   cursor: string;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
+const Pagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.String,
   }),
@@ -3677,7 +3644,7 @@ export interface GetConsumptionHistoryPerBranchV2Response {
   branches: GetConsumptionHistoryPerBranchV2ResponseBranchesList;
   pagination?: Pagination;
 }
-export const GetConsumptionHistoryPerBranchV2Response = /*@__PURE__*/ S.suspend(() =>
+const GetConsumptionHistoryPerBranchV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branches: GetConsumptionHistoryPerBranchV2ResponseBranchesList,
     pagination: S.optional(Pagination),
@@ -3687,7 +3654,7 @@ export const GetConsumptionHistoryPerBranchV2Response = /*@__PURE__*/ S.suspend(
 }) as any as S.Codec<GetConsumptionHistoryPerBranchV2Response>;
 
 export type GetConsumptionHistoryPerProjectRequestProjectIdsList = Array<string>;
-export const GetConsumptionHistoryPerProjectRequestProjectIdsList =
+const GetConsumptionHistoryPerProjectRequestProjectIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerProjectRequestProjectIdsList>;
 
 export interface GetConsumptionHistoryPerProjectRequest {
@@ -3710,7 +3677,7 @@ export interface GetConsumptionHistoryPerProjectRequest {
   /** Specify a list of metrics to include in the response. If omitted, active_time, compute_time, written_data are returned. Possible values: - `active_time_seconds` - `compute_time_seconds` - `written_data_bytes` - `synthetic_storage_size_bytes` (deprecated: always returns 0; use the consumption history v2 endpoints instead) - `data_storage_bytes_hour` (deprecated: always returns 0; use the consumption history v2 endpoints instead) - `logical_size_bytes` - `logical_size_bytes_hour` A list of metrics can be specified as an array of parameter values or as a comma-separated list in a single parameter value. - As an array of parameter values: `metrics=cpu_seconds&metrics=ram_bytes` - As a comma-separated list in a single parameter value: `metrics=cpu_seconds,ram_bytes` */
   metrics?: ConsumptionHistoryQueryMetrics;
 }
-export const GetConsumptionHistoryPerProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConsumptionHistoryPerProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3746,7 +3713,7 @@ export interface ConsumptionHistoryPerTimeframe {
   /** Bytes-Hour. The amount of logical size consumed hourly. */
   logical_size_bytes_hour?: number;
 }
-export const ConsumptionHistoryPerTimeframe = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerTimeframe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeframe_start: S.String,
     timeframe_end: S.String,
@@ -3764,7 +3731,7 @@ export const ConsumptionHistoryPerTimeframe = /*@__PURE__*/ S.suspend(() =>
 
 /** Consumption metric records for the billing period. */
 export type ConsumptionHistoryPerPeriodConsumptionList = Array<ConsumptionHistoryPerTimeframe>;
-export const ConsumptionHistoryPerPeriodConsumptionList = /*@__PURE__*/ S.Array(
+const ConsumptionHistoryPerPeriodConsumptionList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerTimeframe,
 ) as any as S.Codec<ConsumptionHistoryPerPeriodConsumptionList>;
 
@@ -3780,7 +3747,7 @@ export interface ConsumptionHistoryPerPeriod {
   /** Consumption metric records for the billing period. */
   consumption: ConsumptionHistoryPerPeriodConsumptionList;
 }
-export const ConsumptionHistoryPerPeriod = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period_id: S.String,
     period_plan: S.String,
@@ -3794,7 +3761,7 @@ export const ConsumptionHistoryPerPeriod = /*@__PURE__*/ S.suspend(() =>
 
 /** Consumption periods for the project, each covering a discrete billing interval. */
 export type ConsumptionHistoryPerProjectPeriodsList = Array<ConsumptionHistoryPerPeriod>;
-export const ConsumptionHistoryPerProjectPeriodsList = /*@__PURE__*/ S.Array(
+const ConsumptionHistoryPerProjectPeriodsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerPeriod,
 ) as any as S.Codec<ConsumptionHistoryPerProjectPeriodsList>;
 
@@ -3804,7 +3771,7 @@ export interface ConsumptionHistoryPerProject {
   /** Consumption periods for the project, each covering a discrete billing interval. */
   periods: ConsumptionHistoryPerProjectPeriodsList;
 }
-export const ConsumptionHistoryPerProject = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     periods: ConsumptionHistoryPerProjectPeriodsList,
@@ -3816,7 +3783,7 @@ export const ConsumptionHistoryPerProject = /*@__PURE__*/ S.suspend(() =>
 /** Per-project consumption history records included in the response. */
 export type GetConsumptionHistoryPerProjectResponseProjectsList =
   Array<ConsumptionHistoryPerProject>;
-export const GetConsumptionHistoryPerProjectResponseProjectsList = /*@__PURE__*/ S.Array(
+const GetConsumptionHistoryPerProjectResponseProjectsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerProject,
 ) as any as S.Codec<GetConsumptionHistoryPerProjectResponseProjectsList>;
 
@@ -3825,7 +3792,7 @@ export interface GetConsumptionHistoryPerProjectResponse {
   projects: GetConsumptionHistoryPerProjectResponseProjectsList;
   pagination?: Pagination;
 }
-export const GetConsumptionHistoryPerProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConsumptionHistoryPerProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: GetConsumptionHistoryPerProjectResponseProjectsList,
     pagination: S.optional(Pagination),
@@ -3835,7 +3802,7 @@ export const GetConsumptionHistoryPerProjectResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Codec<GetConsumptionHistoryPerProjectResponse>;
 
 export type GetConsumptionHistoryPerProjectV2RequestProjectIdsList = Array<string>;
-export const GetConsumptionHistoryPerProjectV2RequestProjectIdsList =
+const GetConsumptionHistoryPerProjectV2RequestProjectIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<GetConsumptionHistoryPerProjectV2RequestProjectIdsList>;
 
 export interface GetConsumptionHistoryPerProjectV2Request {
@@ -3856,7 +3823,7 @@ export interface GetConsumptionHistoryPerProjectV2Request {
   /** Required. List the metrics to return. Supported values: - `compute_unit_seconds` - `root_branch_bytes_month` - `child_branch_bytes_month` - `instant_restore_bytes_month` - `public_network_transfer_bytes` - `private_network_transfer_bytes` - `extra_branches_month` - `snapshot_storage_bytes_month` Pass multiple values as repeated query parameters or a comma-separated list: - `metrics=compute_unit_seconds&metrics=extra_branches_month` - `metrics=compute_unit_seconds,extra_branches_month` */
   metrics: ConsumptionHistoryQueryMetrics;
 }
-export const GetConsumptionHistoryPerProjectV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetConsumptionHistoryPerProjectV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3873,7 +3840,7 @@ export const GetConsumptionHistoryPerProjectV2Request = /*@__PURE__*/ S.suspend(
 
 /** Consumption periods recorded for this project. */
 export type ConsumptionHistoryPerProjectV2PeriodsList = Array<ConsumptionHistoryPerPeriodV2>;
-export const ConsumptionHistoryPerProjectV2PeriodsList =
+const ConsumptionHistoryPerProjectV2PeriodsList =
   ConsumptionHistoryPerBranchV2PeriodsList as any as S.Schema<ConsumptionHistoryPerProjectV2PeriodsList>;
 
 export interface ConsumptionHistoryPerProjectV2 {
@@ -3882,7 +3849,7 @@ export interface ConsumptionHistoryPerProjectV2 {
   /** Consumption periods recorded for this project. */
   periods: ConsumptionHistoryPerProjectV2PeriodsList;
 }
-export const ConsumptionHistoryPerProjectV2 = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionHistoryPerProjectV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     periods: ConsumptionHistoryPerProjectV2PeriodsList,
@@ -3894,7 +3861,7 @@ export const ConsumptionHistoryPerProjectV2 = /*@__PURE__*/ S.suspend(() =>
 /** Per-project consumption history entries for the requested time range. */
 export type GetConsumptionHistoryPerProjectV2ResponseProjectsList =
   Array<ConsumptionHistoryPerProjectV2>;
-export const GetConsumptionHistoryPerProjectV2ResponseProjectsList = /*@__PURE__*/ S.Array(
+const GetConsumptionHistoryPerProjectV2ResponseProjectsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerProjectV2,
 ) as any as S.Codec<GetConsumptionHistoryPerProjectV2ResponseProjectsList>;
 
@@ -3903,7 +3870,7 @@ export interface GetConsumptionHistoryPerProjectV2Response {
   projects: GetConsumptionHistoryPerProjectV2ResponseProjectsList;
   pagination?: Pagination;
 }
-export const GetConsumptionHistoryPerProjectV2Response = /*@__PURE__*/ S.suspend(() =>
+const GetConsumptionHistoryPerProjectV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: GetConsumptionHistoryPerProjectV2ResponseProjectsList,
     pagination: S.optional(Pagination),
@@ -3913,7 +3880,7 @@ export const GetConsumptionHistoryPerProjectV2Response = /*@__PURE__*/ S.suspend
 }) as any as S.Codec<GetConsumptionHistoryPerProjectV2Response>;
 
 export interface GetCurrentUserInfoRequest {}
-export const GetCurrentUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me", code: 200 })),
 ).annotate({
   identifier: "GetCurrentUserInfoRequest",
@@ -3921,7 +3888,7 @@ export const GetCurrentUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the billing account. */
 export type BillingAccountState = "UNKNOWN" | "active" | "suspended" | "deactivated" | "deleted";
-export const BillingAccountState = S.String;
+const BillingAccountState = S.String;
 
 /** Card network reported by the payment processor. Set to `unknown` when the network cannot be determined. */
 export type PaymentSourceBankCardBrand =
@@ -3933,7 +3900,7 @@ export type PaymentSourceBankCardBrand =
   | "unionpay"
   | "unknown"
   | "visa";
-export const PaymentSourceBankCardBrand = S.String;
+const PaymentSourceBankCardBrand = S.String;
 
 export interface PaymentSourceBankCard {
   /** Last 4 digits of the card. */
@@ -3945,7 +3912,7 @@ export interface PaymentSourceBankCard {
   /** Credit card expiration year */
   exp_year?: number;
 }
-export const PaymentSourceBankCard = /*@__PURE__*/ S.suspend(() =>
+const PaymentSourceBankCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last4: S.String,
     brand: S.optional(PaymentSourceBankCardBrand),
@@ -3960,7 +3927,7 @@ export interface PaymentSource {
   /** Bank card details for this payment source. */
   card?: PaymentSourceBankCard;
 }
-export const PaymentSource = /*@__PURE__*/ S.suspend(() =>
+const PaymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     card: S.optional(PaymentSourceBankCard),
@@ -3980,13 +3947,13 @@ export type BillingPaymentMethod =
   | "trial"
   | "sponsorship"
   | "shared_payment_token";
-export const BillingPaymentMethod = S.String;
+const BillingPaymentMethod = S.String;
 
 export interface PlanVersion {
   major: number;
   minor: number;
 }
-export const PlanVersion = /*@__PURE__*/ S.suspend(() =>
+const PlanVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     major: S.Number,
     minor: S.Number,
@@ -3999,7 +3966,7 @@ export interface PlanDetails {
   /** Version of the plan, expressed as `major` and `minor` components. */
   version?: PlanVersion;
 }
-export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
+const PlanDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version: S.optional(PlanVersion),
@@ -4044,7 +4011,7 @@ export interface BillingAccount {
   /** Monthly spending cap in cents for V3 paid plans. When set, notifications are sent at 80% and 100% of this limit. `null` means no limit is configured. */
   spending_limit_cents?: number | null;
 }
-export const BillingAccount = /*@__PURE__*/ S.suspend(() =>
+const BillingAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: BillingAccountState,
     payment_source: PaymentSource,
@@ -4077,7 +4044,7 @@ export type IdentityProviderId =
   | "microsoftv2"
   | "vercelmp"
   | "keycloak";
-export const IdentityProviderId = S.String;
+const IdentityProviderId = S.String;
 
 export interface CurrentUserAuthAccount {
   /** Email address associated with this auth account. */
@@ -4090,7 +4057,7 @@ export interface CurrentUserAuthAccount {
   name: string;
   provider: IdentityProviderId;
 }
-export const CurrentUserAuthAccount = /*@__PURE__*/ S.suspend(() =>
+const CurrentUserAuthAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     image: S.String,
@@ -4102,7 +4069,7 @@ export const CurrentUserAuthAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Authentication provider accounts linked to the current user. */
 export type CurrentUserInfoResponseAuthAccountsList = Array<CurrentUserAuthAccount>;
-export const CurrentUserInfoResponseAuthAccountsList = /*@__PURE__*/ S.Array(
+const CurrentUserInfoResponseAuthAccountsList = /*@__PURE__*/ S.Array(
   CurrentUserAuthAccount,
 ) as any as S.Codec<CurrentUserInfoResponseAuthAccountsList>;
 
@@ -4136,7 +4103,7 @@ export interface CurrentUserInfoResponse {
   /** Current billing plan for the user's account. */
   plan: string;
 }
-export const CurrentUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const CurrentUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_seconds_limit: S.Number,
     billing_account: S.optional(BillingAccount),
@@ -4156,7 +4123,7 @@ export const CurrentUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CurrentUserInfoResponse" }) as any as S.Codec<CurrentUserInfoResponse>;
 
 export interface GetCurrentUserOrganizationsRequest {}
-export const GetCurrentUserOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentUserOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me/organizations", code: 200 })),
 ).annotate({
   identifier: "GetCurrentUserOrganizationsRequest",
@@ -4182,7 +4149,7 @@ export interface Organization {
   /** If true, all members must have MFA enabled to access this organization */
   require_mfa?: boolean;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4198,7 +4165,7 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizations returned by the request. Each includes `id`, `name`, `handle`, and `plan`. */
 export type OrganizationsResponseOrganizationsList = Array<Organization>;
-export const OrganizationsResponseOrganizationsList = /*@__PURE__*/ S.Array(
+const OrganizationsResponseOrganizationsList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Codec<OrganizationsResponseOrganizationsList>;
 
@@ -4206,7 +4173,7 @@ export interface OrganizationsResponse {
   /** Organizations returned by the request. Each includes `id`, `name`, `handle`, and `plan`. */
   organizations: OrganizationsResponseOrganizationsList;
 }
-export const OrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizations: OrganizationsResponseOrganizationsList,
   }),
@@ -4218,7 +4185,7 @@ export interface GetMaskingRulesRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const GetMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4233,14 +4200,14 @@ export const GetMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of masking rules for the branch */
 export type MaskingRulesResponseMaskingRulesList = Array<MaskingRule>;
-export const MaskingRulesResponseMaskingRulesList =
+const MaskingRulesResponseMaskingRulesList =
   CreateProjectBranchAnonymizedRequestMaskingRulesList as any as S.Schema<MaskingRulesResponseMaskingRulesList>;
 
 export interface MaskingRulesResponse {
   /** List of masking rules for the branch */
   masking_rules: MaskingRulesResponseMaskingRulesList;
 }
-export const MaskingRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const MaskingRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masking_rules: MaskingRulesResponseMaskingRulesList,
   }),
@@ -4252,7 +4219,7 @@ export interface GetNeonAuthRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4262,10 +4229,10 @@ export const GetNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNeonAuthRequest" }) as any as S.Codec<GetNeonAuthRequest>;
 
 export type NeonAuthProviderProjectOwnedBy = "user" | "neon";
-export const NeonAuthProviderProjectOwnedBy = S.String;
+const NeonAuthProviderProjectOwnedBy = S.String;
 
 export type NeonAuthProviderProjectTransferStatus = "initiated" | "finished";
-export const NeonAuthProviderProjectTransferStatus = S.String;
+const NeonAuthProviderProjectTransferStatus = S.String;
 
 export interface NeonAuthIntegration {
   auth_provider: NeonAuthSupportedAuthProvider;
@@ -4288,7 +4255,7 @@ export interface NeonAuthIntegration {
   /** Application name shown in auth emails and communications. Defaults to the project name. */
   name?: string;
 }
-export const NeonAuthIntegration = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth_provider: NeonAuthSupportedAuthProvider,
     auth_provider_project_id: S.String,
@@ -4309,7 +4276,7 @@ export interface GetNeonAuthAllowLocalhostRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthAllowLocalhostRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthAllowLocalhostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4328,7 +4295,7 @@ export interface NeonAuthAllowLocalhostResponse {
   /** Whether to allow localhost connections */
   allow_localhost: boolean;
 }
-export const NeonAuthAllowLocalhostResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthAllowLocalhostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_localhost: S.Boolean,
   }),
@@ -4342,7 +4309,7 @@ export interface GetNeonAuthEmailAndPasswordConfigRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4359,7 +4326,7 @@ export const GetNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspend(
 
 /** The email verification method to use. - `link`: Sends a verification link via email - `otp`: Sends a one-time password (OTP) via email */
 export type NeonAuthEmailVerificationMethod = "link" | "otp";
-export const NeonAuthEmailVerificationMethod = S.String;
+const NeonAuthEmailVerificationMethod = S.String;
 
 export interface NeonAuthEmailAndPasswordConfig {
   /** Whether email and password authentication is enabled */
@@ -4377,7 +4344,7 @@ export interface NeonAuthEmailAndPasswordConfig {
   /** Whether to disable new user sign ups */
   disable_sign_up: boolean;
 }
-export const NeonAuthEmailAndPasswordConfig = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthEmailAndPasswordConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     email_verification_method: NeonAuthEmailVerificationMethod,
@@ -4397,7 +4364,7 @@ export interface GetNeonAuthEmailProviderRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4414,7 +4381,7 @@ export const GetNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use a custom SMTP server to send authentication emails. */
 export type StandardEmailServerResponseType = "standard";
-export const StandardEmailServerResponseType = /*@__PURE__*/ S.Literals(["standard"]);
+const StandardEmailServerResponseType = /*@__PURE__*/ S.Literals(["standard"]);
 export interface StandardEmailServerResponse {
   /** Hostname of the email server. */
   host: string;
@@ -4431,7 +4398,7 @@ export interface StandardEmailServerResponse {
   /** Use a custom SMTP server to send authentication emails. */
   type: StandardEmailServerResponseType;
 }
-export const StandardEmailServerResponse = /*@__PURE__*/ S.suspend(() =>
+const StandardEmailServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     port: S.Number,
@@ -4449,7 +4416,7 @@ export const StandardEmailServerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use the shared email server to send authentication emails. */
 export type SharedEmailServerType = "shared";
-export const SharedEmailServerType = /*@__PURE__*/ S.Literals(["shared"]);
+const SharedEmailServerType = /*@__PURE__*/ S.Literals(["shared"]);
 export interface SharedEmailServer {
   /** Email address used as the sender for outgoing messages from this shared email server. */
   sender_email?: string;
@@ -4458,7 +4425,7 @@ export interface SharedEmailServer {
   /** Use the shared email server to send authentication emails. */
   type: SharedEmailServerType;
 }
-export const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
+const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sender_email: S.optional(S.String),
     sender_name: S.optional(S.String),
@@ -4467,12 +4434,12 @@ export const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedEmailServer" }) as any as S.Codec<SharedEmailServer>;
 
 export type NeonAuthEmailServerConfigResponse = StandardEmailServerResponse | SharedEmailServer;
-export const NeonAuthEmailServerConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthEmailServerConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Union([StandardEmailServerResponse, SharedEmailServer]),
 ) as S.Codec<NeonAuthEmailServerConfigResponse>;
 
 export type GetNeonAuthEmailProviderResponse = NeonAuthEmailServerConfigResponse;
-export const GetNeonAuthEmailProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthEmailProviderResponse = /*@__PURE__*/ S.suspend(() =>
   NeonAuthEmailServerConfigResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetNeonAuthEmailProviderResponse",
@@ -4484,7 +4451,7 @@ export interface GetNeonAuthPhoneNumberPluginRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4505,7 +4472,7 @@ export interface NeonAuthPhoneNumberConfig {
   /** Time in seconds before the OTP expires */
   otp_expires_in?: number;
 }
-export const NeonAuthPhoneNumberConfig = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthPhoneNumberConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     otp_expires_in: S.optional(S.Number),
@@ -4520,7 +4487,7 @@ export interface GetNeonAuthPluginConfigsRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthPluginConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthPluginConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4537,7 +4504,7 @@ export const GetNeonAuthPluginConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Role of the organization's creator. `owner`: full control, including deleting the org and transferring ownership. `admin`: manage members and settings only. */
 export type NeonAuthOrganizationConfigCreatorRole = "admin" | "owner";
-export const NeonAuthOrganizationConfigCreatorRole = S.String;
+const NeonAuthOrganizationConfigCreatorRole = S.String;
 
 export interface NeonAuthOrganizationConfig {
   /** Whether the organization plugin is enabled. */
@@ -4551,7 +4518,7 @@ export interface NeonAuthOrganizationConfig {
   /** Whether to send invitation emails when inviting members to an organization. */
   send_invitation_email: boolean;
 }
-export const NeonAuthOrganizationConfig = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthOrganizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     organization_limit: S.Number,
@@ -4571,7 +4538,7 @@ export interface NeonAuthMagicLinkConfig {
   /** Whether to disable sign-up via magic link. */
   disable_sign_up: boolean;
 }
-export const NeonAuthMagicLinkConfig = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthMagicLinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     expires_in: S.Number,
@@ -4581,7 +4548,7 @@ export const NeonAuthMagicLinkConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** OAuth provider configurations enabled for this auth setup. */
 export type NeonAuthPluginConfigsOauthProvidersList = Array<NeonAuthOauthProvider>;
-export const NeonAuthPluginConfigsOauthProvidersList = /*@__PURE__*/ S.Array(
+const NeonAuthPluginConfigsOauthProvidersList = /*@__PURE__*/ S.Array(
   NeonAuthOauthProvider,
 ) as any as S.Codec<NeonAuthPluginConfigsOauthProvidersList>;
 
@@ -4602,7 +4569,7 @@ export interface NeonAuthPluginConfigs {
   /** Permits authentication requests from localhost origins when true. Intended for local development; disable in production environments. */
   allow_localhost?: boolean;
 }
-export const NeonAuthPluginConfigs = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthPluginConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.optional(NeonAuthOrganizationConfig),
     magic_link: S.optional(NeonAuthMagicLinkConfig),
@@ -4620,7 +4587,7 @@ export interface GetNeonAuthWebhookConfigRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetNeonAuthWebhookConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNeonAuthWebhookConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -4643,11 +4610,9 @@ export type NeonAuthWebhookConfigEnabledEventsItem =
   | "organization.invitation.created"
   | "organization.invitation.accepted"
   | "phone_number.verified";
-export const NeonAuthWebhookConfigEnabledEventsItem = S.String;
-
 /** Event types that trigger this webhook. Covers user lifecycle, email/OTP delivery, organization invitations, and phone verification events; see the enum for exact values. */
 export type NeonAuthWebhookConfigEnabledEventsList = Array<NeonAuthWebhookConfigEnabledEventsItem>;
-export const NeonAuthWebhookConfigEnabledEventsList =
+const NeonAuthWebhookConfigEnabledEventsList =
   CreateCredentialRequestScopesList as any as S.Schema<NeonAuthWebhookConfigEnabledEventsList>;
 
 export interface NeonAuthWebhookConfig {
@@ -4660,7 +4625,7 @@ export interface NeonAuthWebhookConfig {
   /** Maximum time, in seconds, to wait for a response from the webhook endpoint. */
   timeout_seconds?: number;
 }
-export const NeonAuthWebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthWebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     webhook_url: S.optional(S.String),
@@ -4673,7 +4638,7 @@ export interface GetOrganizationRequest {
   /** The Neon organization ID */
   org_id: string;
 }
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{org_id}", code: 200 })),
@@ -4683,7 +4648,7 @@ export interface GetOrganizationInvitationsRequest {
   /** The Neon organization ID */
   org_id: string;
 }
-export const GetOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{org_id}/invitations", code: 200 })),
@@ -4697,7 +4662,7 @@ export interface GetOrganizationMemberRequest {
   /** The Neon organization member ID */
   member_id: string;
 }
-export const GetOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     member_id: S.String.pipe(T.Label()),
@@ -4717,7 +4682,7 @@ export interface Member {
   /** Timestamp when the user joined the organization. */
   joined_at?: string;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     user_id: S.String,
@@ -4728,10 +4693,10 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Member" }) as any as S.Codec<Member>;
 
 export type GetOrganizationMembersRequestSortBy = "email" | "role" | "joined_at";
-export const GetOrganizationMembersRequestSortBy = S.String;
+const GetOrganizationMembersRequestSortBy = S.String;
 
 export type GetOrganizationMembersRequestSortOrder = "asc" | "desc";
-export const GetOrganizationMembersRequestSortOrder = S.String;
+const GetOrganizationMembersRequestSortOrder = S.String;
 
 export interface GetOrganizationMembersRequest {
   /** The Neon organization ID */
@@ -4745,7 +4710,7 @@ export interface GetOrganizationMembersRequest {
   /** The maximum number of members to return in the response */
   limit?: number;
 }
-export const GetOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     sort_by: S.optional(GetOrganizationMembersRequestSortBy.pipe(T.Query())),
@@ -4765,7 +4730,7 @@ export interface MemberUserInfo {
   /** Timestamp of when the user account was deactivated. Absent for active users. When present, the UI should render a "Deactivated" badge inline next to the member. */
   deactivated_at?: string;
 }
-export const MemberUserInfo = /*@__PURE__*/ S.suspend(() =>
+const MemberUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     has_mfa: S.optional(S.Boolean),
@@ -4779,7 +4744,7 @@ export interface MemberWithUser {
   /** Profile information for the organization member. */
   user: MemberUserInfo;
 }
-export const MemberWithUser = /*@__PURE__*/ S.suspend(() =>
+const MemberWithUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member: Member,
     user: MemberUserInfo,
@@ -4788,7 +4753,7 @@ export const MemberWithUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Members of the organization, each combining membership details (role, status) with the associated user's identity. */
 export type GetOrganizationMembersResponseMembersList = Array<MemberWithUser>;
-export const GetOrganizationMembersResponseMembersList = /*@__PURE__*/ S.Array(
+const GetOrganizationMembersResponseMembersList = /*@__PURE__*/ S.Array(
   MemberWithUser,
 ) as any as S.Codec<GetOrganizationMembersResponseMembersList>;
 
@@ -4801,7 +4766,7 @@ export interface CursorPagination {
   /** Sort order active for this page. Pass back as `sort_order` in the next request to maintain consistent ordering. Valid values are `asc` and `desc`. */
   sort_order?: string;
 }
-export const CursorPagination = /*@__PURE__*/ S.suspend(() =>
+const CursorPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.String),
     sort_by: S.optional(S.String),
@@ -4814,7 +4779,7 @@ export interface GetOrganizationMembersResponse {
   members: GetOrganizationMembersResponseMembersList;
   pagination?: CursorPagination;
 }
-export const GetOrganizationMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: GetOrganizationMembersResponseMembersList,
     pagination: S.optional(CursorPagination),
@@ -4827,7 +4792,7 @@ export interface GetOrganizationSpendingLimitRequest {
   /** The Neon organization ID */
   org_id: string;
 }
-export const GetOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -4841,7 +4806,7 @@ export interface SpendingLimitResponse {
   /** Monthly spending cap in cents. `null` indicates that no limit is currently configured. */
   spending_limit_cents: number | null;
 }
-export const SpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
+const SpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spending_limit_cents: S.NullOr(S.Number),
   }),
@@ -4855,7 +4820,7 @@ export interface GetOrganizationVPCEndpointDetailsRequest {
   /** The VPC endpoint ID */
   vpc_endpoint_id: string;
 }
-export const GetOrganizationVPCEndpointDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationVPCEndpointDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     region_id: S.String.pipe(T.Label()),
@@ -4873,7 +4838,7 @@ export const GetOrganizationVPCEndpointDetailsRequest = /*@__PURE__*/ S.suspend(
 
 /** A list of example projects that are restricted to use this VPC endpoint. There are at most 3 projects in the list, even if more projects are restricted. */
 export type VPCEndpointDetailsExampleRestrictedProjectsList = Array<string>;
-export const VPCEndpointDetailsExampleRestrictedProjectsList =
+const VPCEndpointDetailsExampleRestrictedProjectsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<VPCEndpointDetailsExampleRestrictedProjectsList>;
 
 export interface VPCEndpointDetails {
@@ -4888,7 +4853,7 @@ export interface VPCEndpointDetails {
   /** A list of example projects that are restricted to use this VPC endpoint. There are at most 3 projects in the list, even if more projects are restricted. */
   example_restricted_projects: VPCEndpointDetailsExampleRestrictedProjectsList;
 }
-export const VPCEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+const VPCEndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpc_endpoint_id: S.String,
     label: S.String,
@@ -4902,7 +4867,7 @@ export interface GetProjectRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{project_id}", code: 200 })),
@@ -4910,10 +4875,10 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Category of an advisor issue */
 export type AdvisorCategory = "SECURITY" | "PERFORMANCE";
-export const AdvisorCategory = S.String;
+const AdvisorCategory = S.String;
 
 export type GetProjectAdvisorSecurityIssuesRequestMinSeverity = "INFO" | "WARN" | "ERROR";
-export const GetProjectAdvisorSecurityIssuesRequestMinSeverity = S.String;
+const GetProjectAdvisorSecurityIssuesRequestMinSeverity = S.String;
 
 export interface GetProjectAdvisorSecurityIssuesRequest {
   /** Neon project ID */
@@ -4927,7 +4892,7 @@ export interface GetProjectAdvisorSecurityIssuesRequest {
   /** Minimum severity level to include. For example, WARN returns WARN and ERROR issues, excluding INFO. */
   min_severity?: GetProjectAdvisorSecurityIssuesRequestMinSeverity | (string & {});
 }
-export const GetProjectAdvisorSecurityIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectAdvisorSecurityIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.optional(S.String.pipe(T.Query())),
@@ -4941,16 +4906,16 @@ export const GetProjectAdvisorSecurityIssuesRequest = /*@__PURE__*/ S.suspend(()
 
 /** Whether this issue affects external API exposure or is internal only */
 export type AdvisorIssueFacing = "EXTERNAL" | "INTERNAL";
-export const AdvisorIssueFacing = S.String;
+const AdvisorIssueFacing = S.String;
 
 /** Categories this issue belongs to */
 export type AdvisorIssueCategoriesList = Array<AdvisorCategory>;
-export const AdvisorIssueCategoriesList =
+const AdvisorIssueCategoriesList =
   CreateCredentialRequestScopesList as any as S.Schema<AdvisorIssueCategoriesList>;
 
 /** Additional context-specific metadata */
 export type AdvisorIssueMetadataMap = { [key: string]: unknown | undefined };
-export const AdvisorIssueMetadataMap = /*@__PURE__*/ S.Record(
+const AdvisorIssueMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Codec<AdvisorIssueMetadataMap>;
@@ -4977,7 +4942,7 @@ export interface AdvisorIssue {
   /** Unique key for caching this issue result */
   cache_key: string;
 }
-export const AdvisorIssue = /*@__PURE__*/ S.suspend(() =>
+const AdvisorIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     title: S.String,
@@ -4993,14 +4958,14 @@ export const AdvisorIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdvisorIssue" }) as any as S.Codec<AdvisorIssue>;
 
 export type GetProjectAdvisorSecurityIssuesResponseIssuesList = Array<AdvisorIssue>;
-export const GetProjectAdvisorSecurityIssuesResponseIssuesList = /*@__PURE__*/ S.Array(
+const GetProjectAdvisorSecurityIssuesResponseIssuesList = /*@__PURE__*/ S.Array(
   AdvisorIssue,
 ) as any as S.Codec<GetProjectAdvisorSecurityIssuesResponseIssuesList>;
 
 export interface GetProjectAdvisorSecurityIssuesResponse {
   issues: GetProjectAdvisorSecurityIssuesResponseIssuesList;
 }
-export const GetProjectAdvisorSecurityIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectAdvisorSecurityIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: GetProjectAdvisorSecurityIssuesResponseIssuesList,
   }),
@@ -5014,7 +4979,7 @@ export interface GetProjectBranchRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const GetProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5027,7 +4992,7 @@ export interface AnnotationObjectData {
   /** The annotated object's ID. */
   id: string;
 }
-export const AnnotationObjectData = /*@__PURE__*/ S.suspend(() =>
+const AnnotationObjectData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     id: S.String,
@@ -5043,7 +5008,7 @@ export interface AnnotationData {
   /** Timestamp of the most recent update to the annotation, in RFC 3339 format (UTC). */
   updated_at?: string;
 }
-export const AnnotationData = /*@__PURE__*/ S.suspend(() =>
+const AnnotationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: AnnotationObjectData,
     value: AnnotationValueData,
@@ -5058,7 +5023,7 @@ export interface GetProjectBranchResponse {
   /** Annotation data associated with the annotated object. */
   annotation: AnnotationData;
 }
-export const GetProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: Branch,
     annotation: AnnotationData,
@@ -5071,7 +5036,7 @@ export interface GetProjectBranchAiGatewayRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetProjectBranchAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5092,7 +5057,7 @@ export interface BranchAiGateway {
   /** The AI-gateway endpoint root for this branch -- an OpenAI-compatible base URL. No dialect path is included; clients append the route (e.g. `/ai-gateway/openai/v1/responses`) themselves. */
   base_url: string;
 }
-export const BranchAiGateway = /*@__PURE__*/ S.suspend(() =>
+const BranchAiGateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     base_url: S.String,
@@ -5109,7 +5074,7 @@ export interface GetProjectBranchBucketObjectRequest {
   /** The object key. Keys may contain `/`; the `/` characters of nested keys must be percent-encoded (`%2F`) in the path segment. */
   object_key: string;
 }
-export const GetProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5127,7 +5092,7 @@ export const GetProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<GetProjectBranchBucketObjectRequest>;
 
 export type GetProjectBranchBucketObjectResponse = Uint8Array;
-export const GetProjectBranchBucketObjectResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+const GetProjectBranchBucketObjectResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
   /*@__PURE__*/ T.BinaryResponse(),
 ) as S.Codec<GetProjectBranchBucketObjectResponse>;
 export interface GetProjectBranchDataAPIRequest {
@@ -5138,7 +5103,7 @@ export interface GetProjectBranchDataAPIRequest {
   /** The database name */
   database_name: string;
 }
-export const GetProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5156,7 +5121,7 @@ export const GetProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available database schemas (SubZero only) */
 export type DataAPIReponseAvailableSchemasList = Array<string>;
-export const DataAPIReponseAvailableSchemasList =
+const DataAPIReponseAvailableSchemasList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<DataAPIReponseAvailableSchemasList>;
 
 /** Neon Data API response */
@@ -5170,7 +5135,7 @@ export interface DataAPIReponse {
   /** List of available database schemas (SubZero only) */
   available_schemas?: DataAPIReponseAvailableSchemasList | null;
 }
-export const DataAPIReponse = /*@__PURE__*/ S.suspend(() =>
+const DataAPIReponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     status: S.String,
@@ -5187,7 +5152,7 @@ export interface GetProjectBranchDatabaseRequest {
   /** The database name */
   database_name: string;
 }
-export const GetProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5207,7 +5172,7 @@ export interface DatabaseResponse {
   /** Database object returned by the operation. */
   database: Database;
 }
-export const DatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: Database,
   }),
@@ -5221,7 +5186,7 @@ export interface GetProjectBranchFunctionRequest {
   /** The function slug */
   slug: string;
 }
-export const GetProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5252,7 +5217,7 @@ export interface NeonFunction {
   active_deployment?: NeonFunctionDeployment | null;
   created_at: string;
 }
-export const NeonFunction = /*@__PURE__*/ S.suspend(() =>
+const NeonFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     slug: S.String,
@@ -5267,7 +5232,7 @@ export const NeonFunction = /*@__PURE__*/ S.suspend(() =>
 export interface NeonFunctionResponse {
   function: NeonFunction;
 }
-export const NeonFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: NeonFunction,
   }),
@@ -5281,7 +5246,7 @@ export interface GetProjectBranchRoleRequest {
   /** The role name */
   role_name: string;
 }
-export const GetProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5301,7 +5266,7 @@ export interface RoleResponse {
   /** Role details for the requested database role. The `password` field is included in the response when a role is created or its password is reset, and is not returned in subsequent read requests. Store it securely at that time. */
   role: Role;
 }
-export const RoleResponse = /*@__PURE__*/ S.suspend(() =>
+const RoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: Role,
   }),
@@ -5315,7 +5280,7 @@ export interface GetProjectBranchRolePasswordRequest {
   /** The role name */
   role_name: string;
 }
-export const GetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5335,7 +5300,7 @@ export interface RolePasswordResponse {
   /** The role password */
   password: string | Redacted.Redacted<string>;
 }
-export const RolePasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const RolePasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
       T.SensitiveValue({}),
@@ -5357,7 +5322,7 @@ export interface GetProjectBranchSchemaRequest {
   /** The format of the schema to retrieve. Possible values: - `sql` (default) - `json` */
   format?: string;
 }
-export const GetProjectBranchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5382,7 +5347,7 @@ export interface BranchSchemaJSONTablesItemColumnsItem {
   /** Whether the column is a generated (computed) column */
   generated?: boolean;
 }
-export const BranchSchemaJSONTablesItemColumnsItem = /*@__PURE__*/ S.suspend(() =>
+const BranchSchemaJSONTablesItemColumnsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -5395,21 +5360,20 @@ export const BranchSchemaJSONTablesItemColumnsItem = /*@__PURE__*/ S.suspend(() 
 
 /** Columns belonging to this table, each describing a column's name and attributes. */
 export type BranchSchemaJSONTablesItemColumnsList = Array<BranchSchemaJSONTablesItemColumnsItem>;
-export const BranchSchemaJSONTablesItemColumnsList = /*@__PURE__*/ S.Array(
+const BranchSchemaJSONTablesItemColumnsList = /*@__PURE__*/ S.Array(
   BranchSchemaJSONTablesItemColumnsItem,
 ) as any as S.Codec<BranchSchemaJSONTablesItemColumnsList>;
 
 /** Column names participating in this constraint */
 export type BranchSchemaJSONTablesItemConstraintsItemColumnsList = Array<string>;
-export const BranchSchemaJSONTablesItemConstraintsItemColumnsList =
+const BranchSchemaJSONTablesItemConstraintsItemColumnsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<BranchSchemaJSONTablesItemConstraintsItemColumnsList>;
 
 /** Names of the referenced columns */
 export type BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList = Array<string>;
-export const BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Codec<BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList>;
+const BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Codec<BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList>;
 
 /** For foreign keys - the referenced table information */
 export interface BranchSchemaJSONTablesItemConstraintsItemReferencedTable {
@@ -5420,13 +5384,12 @@ export interface BranchSchemaJSONTablesItemConstraintsItemReferencedTable {
   /** Names of the referenced columns */
   columns: BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList;
 }
-export const BranchSchemaJSONTablesItemConstraintsItemReferencedTable = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      schema: S.String,
-      table: S.String,
-      columns: BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList,
-    }),
+const BranchSchemaJSONTablesItemConstraintsItemReferencedTable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schema: S.String,
+    table: S.String,
+    columns: BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList,
+  }),
 ).annotate({
   identifier: "BranchSchemaJSONTablesItemConstraintsItemReferencedTable",
 }) as any as S.Codec<BranchSchemaJSONTablesItemConstraintsItemReferencedTable>;
@@ -5441,7 +5404,7 @@ export interface BranchSchemaJSONTablesItemConstraintsItem {
   /** For foreign keys - the referenced table information */
   referenced_table?: BranchSchemaJSONTablesItemConstraintsItemReferencedTable;
 }
-export const BranchSchemaJSONTablesItemConstraintsItem = /*@__PURE__*/ S.suspend(() =>
+const BranchSchemaJSONTablesItemConstraintsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     columns: BranchSchemaJSONTablesItemConstraintsItemColumnsList,
@@ -5455,7 +5418,7 @@ export const BranchSchemaJSONTablesItemConstraintsItem = /*@__PURE__*/ S.suspend
 /** Table constraints defined in the branch schema, such as primary key, foreign key, unique, and check constraints. */
 export type BranchSchemaJSONTablesItemConstraintsList =
   Array<BranchSchemaJSONTablesItemConstraintsItem>;
-export const BranchSchemaJSONTablesItemConstraintsList = /*@__PURE__*/ S.Array(
+const BranchSchemaJSONTablesItemConstraintsList = /*@__PURE__*/ S.Array(
   BranchSchemaJSONTablesItemConstraintsItem,
 ) as any as S.Codec<BranchSchemaJSONTablesItemConstraintsList>;
 
@@ -5469,7 +5432,7 @@ export interface BranchSchemaJSONTablesItem {
   /** Table constraints defined in the branch schema, such as primary key, foreign key, unique, and check constraints. */
   constraints?: BranchSchemaJSONTablesItemConstraintsList;
 }
-export const BranchSchemaJSONTablesItem = /*@__PURE__*/ S.suspend(() =>
+const BranchSchemaJSONTablesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.String,
     name: S.String,
@@ -5482,7 +5445,7 @@ export const BranchSchemaJSONTablesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Tables present in the branch schema. */
 export type BranchSchemaJSONTablesList = Array<BranchSchemaJSONTablesItem>;
-export const BranchSchemaJSONTablesList = /*@__PURE__*/ S.Array(
+const BranchSchemaJSONTablesList = /*@__PURE__*/ S.Array(
   BranchSchemaJSONTablesItem,
 ) as any as S.Codec<BranchSchemaJSONTablesList>;
 
@@ -5490,7 +5453,7 @@ export interface BranchSchemaJSON {
   /** Tables present in the branch schema. */
   tables: BranchSchemaJSONTablesList;
 }
-export const BranchSchemaJSON = /*@__PURE__*/ S.suspend(() =>
+const BranchSchemaJSON = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tables: BranchSchemaJSONTablesList,
   }),
@@ -5502,7 +5465,7 @@ export interface BranchSchemaResponse {
   /** Branch schema represented as a structured JSON object, parallel to the SQL DDL in `sql`. */
   json?: BranchSchemaJSON;
 }
-export const BranchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const BranchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.optional(S.String),
     json: S.optional(BranchSchemaJSON),
@@ -5527,7 +5490,7 @@ export interface GetProjectBranchSchemaComparisonRequest {
   /** The point in time for the base branch schema */
   base_timestamp?: string;
 }
-export const GetProjectBranchSchemaComparisonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchSchemaComparisonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5552,7 +5515,7 @@ export interface BranchSchemaCompareResponse {
   /** Unified diff of the SQL schema changes between the compared branches. */
   diff?: string;
 }
-export const BranchSchemaCompareResponse = /*@__PURE__*/ S.suspend(() =>
+const BranchSchemaCompareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: S.optional(S.String),
   }),
@@ -5566,7 +5529,7 @@ export interface GetProjectBranchStorageRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const GetProjectBranchStorageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5591,7 +5554,7 @@ export interface BranchStorage {
   /** Whether the S3 client must use path-style addressing (bucket-in-path rather than virtual-hosted subdomain). Always true: the wildcard TLS cert covers one level of subdomain (*.storage.<suffix>), so the branch ID occupies that label and the bucket name must travel in the request path, not as a further subdomain. Callers must set the S3 SDK's ForcePathStyle (or equivalent) to true. */
   force_path_style: boolean;
 }
-export const BranchStorage = /*@__PURE__*/ S.suspend(() =>
+const BranchStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     s3_endpoint: S.String,
@@ -5608,7 +5571,7 @@ export interface GetProjectBranchTriggerRequest {
   /** The opaque, project-wide trigger ID */
   trigger_id: string;
 }
-export const GetProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5630,7 +5593,7 @@ export interface GetProjectEndpointRequest {
   /** The endpoint ID */
   endpoint_id: string;
 }
-export const GetProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint_id: S.String.pipe(T.Label()),
@@ -5645,7 +5608,7 @@ export interface EndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
 }
-export const EndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: Endpoint,
   }),
@@ -5655,7 +5618,7 @@ export interface GetProjectJWKSRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const GetProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{project_id}/jwks", code: 200 })),
@@ -5663,7 +5626,7 @@ export const GetProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JWKS configurations associated with the project. */
 export type ProjectJWKSResponseJwksList = Array<JWKS>;
-export const ProjectJWKSResponseJwksList = /*@__PURE__*/ S.Array(
+const ProjectJWKSResponseJwksList = /*@__PURE__*/ S.Array(
   JWKS,
 ) as any as S.Codec<ProjectJWKSResponseJwksList>;
 
@@ -5672,7 +5635,7 @@ export interface ProjectJWKSResponse {
   /** JWKS configurations associated with the project. */
   jwks: ProjectJWKSResponseJwksList;
 }
-export const ProjectJWKSResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectJWKSResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwks: ProjectJWKSResponseJwksList,
   }),
@@ -5684,7 +5647,7 @@ export interface GetProjectOperationRequest {
   /** The operation ID */
   operation_id: string;
 }
-export const GetProjectOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     operation_id: S.String.pipe(T.Label()),
@@ -5698,7 +5661,7 @@ export const GetProjectOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OperationResponse {
   operation: Operation;
 }
-export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: Operation,
   }),
@@ -5710,7 +5673,7 @@ export interface GetSnapshotScheduleRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const GetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5737,7 +5700,7 @@ export interface BackupScheduleItem {
   /** How long to keep a scheduled snapshot (in seconds) before it's automatically deleted. The default is 3024000 seconds (35 days), which is also the maximum. Manually created snapshots have no maximum retention: set their `expires_at` instead. */
   retention_seconds?: number;
 }
-export const BackupScheduleItem = /*@__PURE__*/ S.suspend(() =>
+const BackupScheduleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: S.String,
     hour: S.optional(S.Number),
@@ -5749,7 +5712,7 @@ export const BackupScheduleItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of schedule entries defining the backup frequency. At least one entry is required. */
 export type BackupScheduleScheduleList = Array<BackupScheduleItem>;
-export const BackupScheduleScheduleList = /*@__PURE__*/ S.Array(
+const BackupScheduleScheduleList = /*@__PURE__*/ S.Array(
   BackupScheduleItem,
 ) as any as S.Codec<BackupScheduleScheduleList>;
 
@@ -5757,7 +5720,7 @@ export interface BackupSchedule {
   /** List of schedule entries defining the backup frequency. At least one entry is required. */
   schedule: BackupScheduleScheduleList;
 }
-export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: BackupScheduleScheduleList,
   }),
@@ -5768,7 +5731,7 @@ export interface GrantPermissionToProjectRequest {
   /** Email address of the user to grant project access to. */
   email: string;
 }
-export const GrantPermissionToProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GrantPermissionToProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     email: S.String,
@@ -5787,7 +5750,7 @@ export interface ProjectPermission {
   /** Timestamp when the permission was revoked. Null if the permission is still active. */
   revoked_at?: string;
 }
-export const ProjectPermission = /*@__PURE__*/ S.suspend(() =>
+const ProjectPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     granted_to_email: S.String,
@@ -5797,7 +5760,7 @@ export const ProjectPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectPermission" }) as any as S.Codec<ProjectPermission>;
 
 export interface ListApiKeysRequest {}
-export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api_keys", code: 200 })),
 ).annotate({ identifier: "ListApiKeysRequest" }) as any as S.Codec<ListApiKeysRequest>;
 
@@ -5810,7 +5773,7 @@ export interface ApiKeyCreatorData {
   /** The URL to the user's avatar image. */
   image: string;
 }
-export const ApiKeyCreatorData = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyCreatorData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -5831,7 +5794,7 @@ export interface ApiKeysListResponseItem {
   /** The IP address from which the API key was last used */
   last_used_from_addr: string;
 }
-export const ApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
+const ApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -5843,12 +5806,12 @@ export const ApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKeysListResponseItem" }) as any as S.Codec<ApiKeysListResponseItem>;
 
 export type ListApiKeysResponseBodyList = Array<ApiKeysListResponseItem>;
-export const ListApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const ListApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
   ApiKeysListResponseItem,
 ) as any as S.Codec<ListApiKeysResponseBodyList>;
 
 export type ListApiKeysResponse = ListApiKeysResponseBodyList;
-export const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   ListApiKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListApiKeysResponse" }) as any as S.Codec<ListApiKeysResponse>;
 
@@ -5858,7 +5821,7 @@ export interface ListBranchNeonAuthOauthProvidersRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const ListBranchNeonAuthOauthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBranchNeonAuthOauthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5875,14 +5838,14 @@ export const ListBranchNeonAuthOauthProvidersRequest = /*@__PURE__*/ S.suspend((
 
 /** OAuth providers configured for Neon Auth on the project. */
 export type ListNeonAuthOauthProvidersResponseProvidersList = Array<NeonAuthOauthProvider>;
-export const ListNeonAuthOauthProvidersResponseProvidersList =
+const ListNeonAuthOauthProvidersResponseProvidersList =
   NeonAuthPluginConfigsOauthProvidersList as any as S.Schema<ListNeonAuthOauthProvidersResponseProvidersList>;
 
 export interface ListNeonAuthOauthProvidersResponse {
   /** OAuth providers configured for Neon Auth on the project. */
   providers: ListNeonAuthOauthProvidersResponseProvidersList;
 }
-export const ListNeonAuthOauthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNeonAuthOauthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     providers: ListNeonAuthOauthProvidersResponseProvidersList,
   }),
@@ -5896,7 +5859,7 @@ export interface ListBranchNeonAuthTrustedDomainsRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const ListBranchNeonAuthTrustedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBranchNeonAuthTrustedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5916,7 +5879,7 @@ export interface NeonAuthRedirectURIWhitelistDomain {
   domain: string;
   auth_provider: NeonAuthSupportedAuthProvider;
 }
-export const NeonAuthRedirectURIWhitelistDomain = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthRedirectURIWhitelistDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     auth_provider: NeonAuthSupportedAuthProvider,
@@ -5928,7 +5891,7 @@ export const NeonAuthRedirectURIWhitelistDomain = /*@__PURE__*/ S.suspend(() =>
 /** Domains permitted as redirect URI targets in the whitelist. */
 export type NeonAuthRedirectURIWhitelistResponseDomainsList =
   Array<NeonAuthRedirectURIWhitelistDomain>;
-export const NeonAuthRedirectURIWhitelistResponseDomainsList = /*@__PURE__*/ S.Array(
+const NeonAuthRedirectURIWhitelistResponseDomainsList = /*@__PURE__*/ S.Array(
   NeonAuthRedirectURIWhitelistDomain,
 ) as any as S.Codec<NeonAuthRedirectURIWhitelistResponseDomainsList>;
 
@@ -5936,7 +5899,7 @@ export interface NeonAuthRedirectURIWhitelistResponse {
   /** Domains permitted as redirect URI targets in the whitelist. */
   domains: NeonAuthRedirectURIWhitelistResponseDomainsList;
 }
-export const NeonAuthRedirectURIWhitelistResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthRedirectURIWhitelistResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: NeonAuthRedirectURIWhitelistResponseDomainsList,
   }),
@@ -5950,7 +5913,7 @@ export interface ListCredentialsRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -5964,7 +5927,7 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCredentialsRequest" }) as any as S.Codec<ListCredentialsRequest>;
 
 export type CredentialMetaScopesList = Array<GrantedCredentialScope>;
-export const CredentialMetaScopesList =
+const CredentialMetaScopesList =
   CreateCredentialResponseScopesList as any as S.Schema<CredentialMetaScopesList>;
 
 export interface CredentialMeta {
@@ -5983,7 +5946,7 @@ export interface CredentialMeta {
   /** When the credential expires; absent means never expires. The verifier refuses to authenticate after `expires_at <= now()`. */
   expires_at?: string;
 }
-export const CredentialMeta = /*@__PURE__*/ S.suspend(() =>
+const CredentialMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_id: S.String,
     token_id_short: S.String,
@@ -6000,14 +5963,14 @@ export const CredentialMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CredentialMeta" }) as any as S.Codec<CredentialMeta>;
 
 export type ListCredentialsResponseCredentialsList = Array<CredentialMeta>;
-export const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
+const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
   CredentialMeta,
 ) as any as S.Codec<ListCredentialsResponseCredentialsList>;
 
 export interface ListCredentialsResponse {
   credentials: ListCredentialsResponseCredentialsList;
 }
-export const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: ListCredentialsResponseCredentialsList,
   }),
@@ -6019,7 +5982,7 @@ export interface ListOrganizationVPCEndpointsRequest {
   /** The Neon region ID */
   region_id: string;
 }
-export const ListOrganizationVPCEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationVPCEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     region_id: S.String.pipe(T.Label()),
@@ -6040,7 +6003,7 @@ export interface VPCEndpoint {
   /** A descriptive label for the VPC endpoint */
   label: string;
 }
-export const VPCEndpoint = /*@__PURE__*/ S.suspend(() =>
+const VPCEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpc_endpoint_id: S.String,
     label: S.String,
@@ -6049,7 +6012,7 @@ export const VPCEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** List of VPC endpoints returned by the request. */
 export type VPCEndpointsResponseEndpointsList = Array<VPCEndpoint>;
-export const VPCEndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
+const VPCEndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
   VPCEndpoint,
 ) as any as S.Codec<VPCEndpointsResponseEndpointsList>;
 
@@ -6057,7 +6020,7 @@ export interface VPCEndpointsResponse {
   /** List of VPC endpoints returned by the request. */
   endpoints: VPCEndpointsResponseEndpointsList;
 }
-export const VPCEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const VPCEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: VPCEndpointsResponseEndpointsList,
   }),
@@ -6067,7 +6030,7 @@ export interface ListOrganizationVPCEndpointsAllRegionsRequest {
   /** The Neon organization ID */
   org_id: string;
 }
-export const ListOrganizationVPCEndpointsAllRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationVPCEndpointsAllRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{org_id}/vpc/vpc_endpoints", code: 200 })),
@@ -6083,7 +6046,7 @@ export interface VPCEndpointWithRegion {
   /** The region where the VPC endpoint is located */
   region_id: string;
 }
-export const VPCEndpointWithRegion = /*@__PURE__*/ S.suspend(() =>
+const VPCEndpointWithRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpc_endpoint_id: S.String,
     label: S.String,
@@ -6093,7 +6056,7 @@ export const VPCEndpointWithRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** VPC endpoints associated with the region. */
 export type VPCEndpointsWithRegionResponseEndpointsList = Array<VPCEndpointWithRegion>;
-export const VPCEndpointsWithRegionResponseEndpointsList = /*@__PURE__*/ S.Array(
+const VPCEndpointsWithRegionResponseEndpointsList = /*@__PURE__*/ S.Array(
   VPCEndpointWithRegion,
 ) as any as S.Codec<VPCEndpointsWithRegionResponseEndpointsList>;
 
@@ -6101,7 +6064,7 @@ export interface VPCEndpointsWithRegionResponse {
   /** VPC endpoints associated with the region. */
   endpoints: VPCEndpointsWithRegionResponseEndpointsList;
 }
-export const VPCEndpointsWithRegionResponse = /*@__PURE__*/ S.suspend(() =>
+const VPCEndpointsWithRegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: VPCEndpointsWithRegionResponseEndpointsList,
   }),
@@ -6113,7 +6076,7 @@ export interface ListOrgApiKeysRequest {
   /** The Neon organization ID */
   org_id: string;
 }
-export const ListOrgApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{org_id}/api_keys", code: 200 })),
@@ -6134,7 +6097,7 @@ export interface OrgApiKeysListResponseItem {
   /** If set, the API key can access only this project */
   project_id?: string;
 }
-export const OrgApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
+const OrgApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -6149,12 +6112,12 @@ export const OrgApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<OrgApiKeysListResponseItem>;
 
 export type ListOrgApiKeysResponseBodyList = Array<OrgApiKeysListResponseItem>;
-export const ListOrgApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrgApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
   OrgApiKeysListResponseItem,
 ) as any as S.Codec<ListOrgApiKeysResponseBodyList>;
 
 export type ListOrgApiKeysResponse = ListOrgApiKeysResponseBodyList;
-export const ListOrgApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrgApiKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListOrgApiKeysResponse" }) as any as S.Codec<ListOrgApiKeysResponse>;
 
@@ -6174,7 +6137,7 @@ export interface ListProjectBranchBucketObjectsRequest {
   /** Maximum number of items (objects + folders) to return. */
   limit?: number;
 }
-export const ListProjectBranchBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchBucketObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6196,7 +6159,7 @@ export const ListProjectBranchBucketObjectsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Common prefixes (folder names) collapsed under the requested `delimiter`. Empty when no `delimiter` was supplied. */
 export type BucketObjectsListResponseFoldersList = Array<string>;
-export const BucketObjectsListResponseFoldersList =
+const BucketObjectsListResponseFoldersList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<BucketObjectsListResponseFoldersList>;
 
 export interface BucketObject {
@@ -6209,7 +6172,7 @@ export interface BucketObject {
   /** The object's entity tag (content hash). */
   etag: string;
 }
-export const BucketObject = /*@__PURE__*/ S.suspend(() =>
+const BucketObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     size: S.Number,
@@ -6220,7 +6183,7 @@ export const BucketObject = /*@__PURE__*/ S.suspend(() =>
 
 /** Objects whose keys did not collapse into a folder. */
 export type BucketObjectsListResponseObjectsList = Array<BucketObject>;
-export const BucketObjectsListResponseObjectsList = /*@__PURE__*/ S.Array(
+const BucketObjectsListResponseObjectsList = /*@__PURE__*/ S.Array(
   BucketObject,
 ) as any as S.Codec<BucketObjectsListResponseObjectsList>;
 
@@ -6236,7 +6199,7 @@ export interface BucketObjectsListResponse {
   /** True when more results exist beyond this page. */
   is_truncated: boolean;
 }
-export const BucketObjectsListResponse = /*@__PURE__*/ S.suspend(() =>
+const BucketObjectsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folders: BucketObjectsListResponseFoldersList,
     objects: BucketObjectsListResponseObjectsList,
@@ -6254,7 +6217,7 @@ export interface ListProjectBranchBucketsRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const ListProjectBranchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6270,14 +6233,14 @@ export const ListProjectBranchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<ListProjectBranchBucketsRequest>;
 
 export type BucketsListResponseBucketsList = Array<Bucket>;
-export const BucketsListResponseBucketsList = /*@__PURE__*/ S.Array(
+const BucketsListResponseBucketsList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Codec<BucketsListResponseBucketsList>;
 
 export interface BucketsListResponse {
   buckets: BucketsListResponseBucketsList;
 }
-export const BucketsListResponse = /*@__PURE__*/ S.suspend(() =>
+const BucketsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: BucketsListResponseBucketsList,
   }),
@@ -6293,7 +6256,7 @@ export interface ListProjectBranchCustomDomainsRequest {
   /** Specify a value from 1 to 1000 to limit number of domains in the response */
   limit?: number;
 }
-export const ListProjectBranchCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6328,7 +6291,7 @@ export interface CustomDomain {
   /** A short, stable machine-readable reason for a non-active `status` (e.g. `cname-not-pointing-at-edge`, `caa-blocks-lets-encrypt`, `binding-missing`), suitable for keying an actionable hint. Empty when active or pending. */
   status_reason?: string;
 }
-export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
+const CustomDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     entity_type: S.String,
@@ -6342,7 +6305,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Codec<CustomDomain>;
 
 export type ListProjectBranchCustomDomainsResponseCustomDomainsList = Array<CustomDomain>;
-export const ListProjectBranchCustomDomainsResponseCustomDomainsList = /*@__PURE__*/ S.Array(
+const ListProjectBranchCustomDomainsResponseCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Codec<ListProjectBranchCustomDomainsResponseCustomDomainsList>;
 
@@ -6350,7 +6313,7 @@ export interface ListProjectBranchCustomDomainsResponse {
   custom_domains: ListProjectBranchCustomDomainsResponseCustomDomainsList;
   pagination?: CursorPagination;
 }
-export const ListProjectBranchCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_domains: ListProjectBranchCustomDomainsResponseCustomDomainsList,
     pagination: S.optional(CursorPagination),
@@ -6365,7 +6328,7 @@ export interface ListProjectBranchDatabasesRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const ListProjectBranchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6382,14 +6345,14 @@ export const ListProjectBranchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
 export type DatabasesResponseDatabasesList = Array<Database>;
-export const DatabasesResponseDatabasesList =
+const DatabasesResponseDatabasesList =
   CreateProjectResponseDatabasesList as any as S.Schema<DatabasesResponseDatabasesList>;
 
 export interface DatabasesResponse {
   /** Databases on the branch. Each includes `id`, `name`, `owner_name`, and `created_at`. */
   databases: DatabasesResponseDatabasesList;
 }
-export const DatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databases: DatabasesResponseDatabasesList,
   }),
@@ -6401,7 +6364,7 @@ export interface ListProjectBranchEndpointsRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const ListProjectBranchEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6418,24 +6381,24 @@ export const ListProjectBranchEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
 export type EndpointsResponseEndpointsList = Array<Endpoint>;
-export const EndpointsResponseEndpointsList =
+const EndpointsResponseEndpointsList =
   CreateProjectResponseEndpointsList as any as S.Schema<EndpointsResponseEndpointsList>;
 
 export interface EndpointsResponse {
   /** Compute endpoints in the project. Each includes `id`, `branch_id`, `host`, and `type`. */
   endpoints: EndpointsResponseEndpointsList;
 }
-export const EndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: EndpointsResponseEndpointsList,
   }),
 ).annotate({ identifier: "EndpointsResponse" }) as any as S.Codec<EndpointsResponse>;
 
 export type ListProjectBranchesRequestSortBy = "name" | "created_at" | "updated_at";
-export const ListProjectBranchesRequestSortBy = S.String;
+const ListProjectBranchesRequestSortBy = S.String;
 
 export type ListProjectBranchesRequestSortOrder = "asc" | "desc";
-export const ListProjectBranchesRequestSortOrder = S.String;
+const ListProjectBranchesRequestSortOrder = S.String;
 
 export interface ListProjectBranchesRequest {
   /** The Neon project ID */
@@ -6453,7 +6416,7 @@ export interface ListProjectBranchesRequest {
   /** If true, return recoverable deleted branches too (soft-deleted within the recovery window). If false or not provided, return only active (non-deleted) branches. This parameter is part of the Branch Recovery feature, which is in preview and not available to all users. */
   include_deleted?: boolean;
 }
-export const ListProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -6469,7 +6432,7 @@ export const ListProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Branches in the project. Each includes `id`, `name`, `current_state`, and `created_at`. */
 export type ListProjectBranchesResponseBranchesList = Array<Branch>;
-export const ListProjectBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
+const ListProjectBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
   Branch,
 ) as any as S.Codec<ListProjectBranchesResponseBranchesList>;
 
@@ -6477,7 +6440,7 @@ export const ListProjectBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
 export type ListProjectBranchesResponseAnnotationsMap = {
   [key: string]: AnnotationData | undefined;
 };
-export const ListProjectBranchesResponseAnnotationsMap = /*@__PURE__*/ S.Record(
+const ListProjectBranchesResponseAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   AnnotationData,
 ) as any as S.Codec<ListProjectBranchesResponseAnnotationsMap>;
@@ -6489,7 +6452,7 @@ export interface ListProjectBranchesResponse {
   annotations: ListProjectBranchesResponseAnnotationsMap;
   pagination?: CursorPagination;
 }
-export const ListProjectBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branches: ListProjectBranchesResponseBranchesList,
     annotations: ListProjectBranchesResponseAnnotationsMap,
@@ -6509,7 +6472,7 @@ export interface ListProjectBranchFunctionsRequest {
   /** Specify a value from 1 to 1000 to limit number of functions in the response */
   limit?: number;
 }
-export const ListProjectBranchFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6527,7 +6490,7 @@ export const ListProjectBranchFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<ListProjectBranchFunctionsRequest>;
 
 export type ListProjectBranchFunctionsResponseFunctionsList = Array<NeonFunction>;
-export const ListProjectBranchFunctionsResponseFunctionsList = /*@__PURE__*/ S.Array(
+const ListProjectBranchFunctionsResponseFunctionsList = /*@__PURE__*/ S.Array(
   NeonFunction,
 ) as any as S.Codec<ListProjectBranchFunctionsResponseFunctionsList>;
 
@@ -6535,7 +6498,7 @@ export interface ListProjectBranchFunctionsResponse {
   functions: ListProjectBranchFunctionsResponseFunctionsList;
   pagination?: CursorPagination;
 }
-export const ListProjectBranchFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functions: ListProjectBranchFunctionsResponseFunctionsList,
     pagination: S.optional(CursorPagination),
@@ -6550,7 +6513,7 @@ export interface ListProjectBranchLogFieldsRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const ListProjectBranchLogFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchLogFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6567,14 +6530,14 @@ export const ListProjectBranchLogFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Log field names observed on this branch, each usable as `field_name` on the log field-values endpoint. Computed per branch rather than fixed by this specification, so clients should not assume a particular set. */
 export type ProjectBranchLogFieldsResponseFieldsList = Array<string>;
-export const ProjectBranchLogFieldsResponseFieldsList =
+const ProjectBranchLogFieldsResponseFieldsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<ProjectBranchLogFieldsResponseFieldsList>;
 
 export interface ProjectBranchLogFieldsResponse {
   /** Log field names observed on this branch, each usable as `field_name` on the log field-values endpoint. Computed per branch rather than fixed by this specification, so clients should not assume a particular set. */
   fields: ProjectBranchLogFieldsResponseFieldsList;
 }
-export const ProjectBranchLogFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectBranchLogFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: ProjectBranchLogFieldsResponseFieldsList,
   }),
@@ -6584,7 +6547,7 @@ export const ProjectBranchLogFieldsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The Neon service that emitted the log record. */
 export type ProjectBranchLogSource = "function" | "storage" | "pg_endpoint";
-export const ProjectBranchLogSource = S.String;
+const ProjectBranchLogSource = S.String;
 
 export interface ListProjectBranchLogFieldValuesRequest {
   /** The Neon project ID */
@@ -6604,7 +6567,7 @@ export interface ListProjectBranchLogFieldValuesRequest {
   /** Maximum number of distinct values to return. The response sets `is_truncated` when this bound, or the server's own scan cap, cut the list short. */
   limit?: number;
 }
-export const ListProjectBranchLogFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchLogFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6626,7 +6589,7 @@ export const ListProjectBranchLogFieldValuesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Codec<ListProjectBranchLogFieldValuesRequest>;
 
 export type ProjectBranchLogFieldValuesResponseValuesList = Array<string>;
-export const ProjectBranchLogFieldValuesResponseValuesList =
+const ProjectBranchLogFieldValuesResponseValuesList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<ProjectBranchLogFieldValuesResponseValuesList>;
 
 export interface ProjectBranchLogFieldValuesResponse {
@@ -6634,7 +6597,7 @@ export interface ProjectBranchLogFieldValuesResponse {
   /** True when more distinct values exist than were returned, because either the requested `limit` or the server's own scan cap was reached. A caller that filters on a partial list is choosing from an arbitrary subset, so narrow `since` or `source` and ask again when this is `true`. */
   is_truncated: boolean;
 }
-export const ProjectBranchLogFieldValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectBranchLogFieldValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: ProjectBranchLogFieldValuesResponseValuesList,
     is_truncated: S.Boolean,
@@ -6649,7 +6612,7 @@ export interface ListProjectBranchRolesRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const ListProjectBranchRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6662,14 +6625,14 @@ export const ListProjectBranchRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
 export type RolesResponseRolesList = Array<Role>;
-export const RolesResponseRolesList =
+const RolesResponseRolesList =
   CreateProjectResponseRolesList as any as S.Schema<RolesResponseRolesList>;
 
 export interface RolesResponse {
   /** Roles belonging to the branch. Each role includes fields such as `branch_id`, `name`, `protected`, `created_at`, and `updated_at`. */
   roles: RolesResponseRolesList;
 }
-export const RolesResponse = /*@__PURE__*/ S.suspend(() =>
+const RolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: RolesResponseRolesList,
   }),
@@ -6681,7 +6644,7 @@ export interface ListProjectBranchTriggersRequest {
   /** The Neon branch ID */
   branch_id: string;
 }
-export const ListProjectBranchTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBranchTriggersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -6697,14 +6660,14 @@ export const ListProjectBranchTriggersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<ListProjectBranchTriggersRequest>;
 
 export type TriggersListResponseTriggersList = Array<Trigger>;
-export const TriggersListResponseTriggersList = /*@__PURE__*/ S.Array(
+const TriggersListResponseTriggersList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Codec<TriggersListResponseTriggersList>;
 
 export interface TriggersListResponse {
   triggers: TriggersListResponseTriggersList;
 }
-export const TriggersListResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggersListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggers: TriggersListResponseTriggersList,
   }),
@@ -6714,7 +6677,7 @@ export interface ListProjectEndpointsRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const ListProjectEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{project_id}/endpoints", code: 200 })),
@@ -6729,7 +6692,7 @@ export interface ListProjectMembersRequest {
   /** The maximum number of members to return in the response */
   limit?: number;
 }
-export const ListProjectMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -6741,11 +6704,11 @@ export const ListProjectMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organization-level role used by project member role management. */
 export type ProjectMemberOrgRole = "admin" | "member" | "editor" | "viewer" | "collaborator";
-export const ProjectMemberOrgRole = S.String;
+const ProjectMemberOrgRole = S.String;
 
 /** Per-project role. `viewer` maps to `VIEWER`, `editor` maps to `EDITOR`, and `admin` maps to `ADMIN`. */
 export type ProjectRole = "viewer" | "editor" | "admin";
-export const ProjectRole = S.String;
+const ProjectRole = S.String;
 
 /** How a member's project access is granted. */
 export type ProjectMemberGrantSource =
@@ -6753,7 +6716,7 @@ export type ProjectMemberGrantSource =
   | "org_role_default"
   | "org_admin_override"
   | "unassigned";
-export const ProjectMemberGrantSource = S.String;
+const ProjectMemberGrantSource = S.String;
 
 export interface ProjectMember {
   /** The organization member ID. */
@@ -6771,7 +6734,7 @@ export interface ProjectMember {
   effective_project_permission?: ProjectPermissionLevel;
   grant_source?: ProjectMemberGrantSource;
 }
-export const ProjectMember = /*@__PURE__*/ S.suspend(() =>
+const ProjectMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member_id: S.String,
     user_id: S.String,
@@ -6787,7 +6750,7 @@ export const ProjectMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectMember" }) as any as S.Codec<ProjectMember>;
 
 export type ProjectMembersProjectMembersList = Array<ProjectMember>;
-export const ProjectMembersProjectMembersList = /*@__PURE__*/ S.Array(
+const ProjectMembersProjectMembersList = /*@__PURE__*/ S.Array(
   ProjectMember,
 ) as any as S.Codec<ProjectMembersProjectMembersList>;
 
@@ -6795,7 +6758,7 @@ export interface ProjectMembers {
   project_members: ProjectMembersProjectMembersList;
   pagination?: CursorPagination;
 }
-export const ProjectMembers = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_members: ProjectMembersProjectMembersList,
     pagination: S.optional(CursorPagination),
@@ -6810,7 +6773,7 @@ export interface ListProjectOperationsRequest {
   /** Specify a value from 1 to 1000 to limit number of operations in the response */
   limit?: number;
 }
-export const ListProjectOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -6821,14 +6784,14 @@ export const ListProjectOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<ListProjectOperationsRequest>;
 
 export type ListProjectOperationsResponseOperationsList = Array<Operation>;
-export const ListProjectOperationsResponseOperationsList =
+const ListProjectOperationsResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<ListProjectOperationsResponseOperationsList>;
 
 export interface ListProjectOperationsResponse {
   operations: ListProjectOperationsResponseOperationsList;
   pagination?: Pagination;
 }
-export const ListProjectOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: ListProjectOperationsResponseOperationsList,
     pagination: S.optional(Pagination),
@@ -6840,7 +6803,7 @@ export const ListProjectOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectPermissionsRequest {
   project_id: string;
 }
-export const ListProjectPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{project_id}/permissions", code: 200 })),
@@ -6849,14 +6812,14 @@ export const ListProjectPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<ListProjectPermissionsRequest>;
 
 export type ProjectPermissionsProjectPermissionsList = Array<ProjectPermission>;
-export const ProjectPermissionsProjectPermissionsList = /*@__PURE__*/ S.Array(
+const ProjectPermissionsProjectPermissionsList = /*@__PURE__*/ S.Array(
   ProjectPermission,
 ) as any as S.Codec<ProjectPermissionsProjectPermissionsList>;
 
 export interface ProjectPermissions {
   project_permissions: ProjectPermissionsProjectPermissionsList;
 }
-export const ProjectPermissions = /*@__PURE__*/ S.suspend(() =>
+const ProjectPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_permissions: ProjectPermissionsProjectPermissionsList,
   }),
@@ -6876,7 +6839,7 @@ export interface ListProjectsRequest {
   /** Show only deleted projects within the recovery window. */
   recoverable?: boolean;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -6945,7 +6908,7 @@ export interface ProjectListItem {
   recoverable_until?: string;
   effective_project_permission?: ProjectPermissionLevel | null;
 }
-export const ProjectListItem = /*@__PURE__*/ S.suspend(() =>
+const ProjectListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     platform_id: S.String,
@@ -6981,41 +6944,36 @@ export const ProjectListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of projects accessible to the caller. Projects that exist but could not be retrieved are identified in `unavailable_project_ids`. */
 export type ListProjectsResponseProjectsList = Array<ProjectListItem>;
-export const ListProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
+const ListProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   ProjectListItem,
 ) as any as S.Codec<ListProjectsResponseProjectsList>;
 
 /** A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit */
 export type ListProjectsResponseUnavailableProjectIdsList = Array<string>;
-export const ListProjectsResponseUnavailableProjectIdsList =
+const ListProjectsResponseUnavailableProjectIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<ListProjectsResponseUnavailableProjectIdsList>;
 
 /** Type of application integration */
 export type ApplicationType = "vercel" | "github" | "datadog" | "opentelemetry";
-export const ApplicationType = S.String;
-
 export type ListProjectsResponseApplicationsValueList = Array<ApplicationType>;
-export const ListProjectsResponseApplicationsValueList =
+const ListProjectsResponseApplicationsValueList =
   CreateCredentialRequestScopesList as any as S.Schema<ListProjectsResponseApplicationsValueList>;
 
 /** Map of project IDs to their installed applications. Each key is a project ID; each value is an array of application types (for example, `vercel`, `github`). */
 export type ListProjectsResponseApplicationsMap = {
   [key: string]: ListProjectsResponseApplicationsValueList | undefined;
 };
-export const ListProjectsResponseApplicationsMap = /*@__PURE__*/ S.Record(
+const ListProjectsResponseApplicationsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListProjectsResponseApplicationsValueList,
 ) as any as S.Codec<ListProjectsResponseApplicationsMap>;
 
 export type ListProjectsResponseIntegrationsValueList = Array<ApplicationType>;
-export const ListProjectsResponseIntegrationsValueList =
-  ListProjectsResponseApplicationsValueList as any as S.Schema<ListProjectsResponseIntegrationsValueList>;
-
 /** Map of project IDs to their associated integration details. */
 export type ListProjectsResponseIntegrationsMap = {
   [key: string]: ListProjectsResponseIntegrationsValueList | undefined;
 };
-export const ListProjectsResponseIntegrationsMap =
+const ListProjectsResponseIntegrationsMap =
   ListProjectsResponseApplicationsMap as any as S.Schema<ListProjectsResponseIntegrationsMap>;
 
 export interface ListProjectsResponse {
@@ -7029,7 +6987,7 @@ export interface ListProjectsResponse {
   /** Map of project IDs to their associated integration details. */
   integrations: ListProjectsResponseIntegrationsMap;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: ListProjectsResponseProjectsList,
     unavailable_project_ids: S.optional(ListProjectsResponseUnavailableProjectIdsList),
@@ -7043,7 +7001,7 @@ export interface ListProjectVPCEndpointsRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const ListProjectVPCEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectVPCEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{project_id}/vpc_endpoints", code: 200 })),
@@ -7061,7 +7019,7 @@ export interface ListSharedProjectsRequest {
   /** Specify an explicit timeout in milliseconds to limit response delay. After timing out, the incomplete list of project data fetched so far will be returned. Projects still being fetched when the timeout occurred are listed in the "unavailable" attribute of the response. If not specified, an implicit implementation defined timeout is chosen with the same behaviour as above */
   timeout?: number;
 }
-export const ListSharedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7074,12 +7032,12 @@ export const ListSharedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of projects accessible to the caller. Projects that exist but could not be retrieved are identified in `unavailable_project_ids`. */
 export type ListSharedProjectsResponseProjectsList = Array<ProjectListItem>;
-export const ListSharedProjectsResponseProjectsList =
+const ListSharedProjectsResponseProjectsList =
   ListProjectsResponseProjectsList as any as S.Schema<ListSharedProjectsResponseProjectsList>;
 
 /** A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit */
 export type ListSharedProjectsResponseUnavailableProjectIdsList = Array<string>;
-export const ListSharedProjectsResponseUnavailableProjectIdsList =
+const ListSharedProjectsResponseUnavailableProjectIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<ListSharedProjectsResponseUnavailableProjectIdsList>;
 
 export interface ListSharedProjectsResponse {
@@ -7089,7 +7047,7 @@ export interface ListSharedProjectsResponse {
   unavailable_project_ids?: ListSharedProjectsResponseUnavailableProjectIdsList;
   pagination?: Pagination;
 }
-export const ListSharedProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSharedProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: ListSharedProjectsResponseProjectsList,
     unavailable_project_ids: S.optional(ListSharedProjectsResponseUnavailableProjectIdsList),
@@ -7103,21 +7061,21 @@ export interface ListSnapshotsRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{project_id}/snapshots", code: 200 })),
 ).annotate({ identifier: "ListSnapshotsRequest" }) as any as S.Codec<ListSnapshotsRequest>;
 
 export type ListSnapshotsResponseSnapshotsList = Array<Snapshot>;
-export const ListSnapshotsResponseSnapshotsList = /*@__PURE__*/ S.Array(
+const ListSnapshotsResponseSnapshotsList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Codec<ListSnapshotsResponseSnapshotsList>;
 
 export interface ListSnapshotsResponse {
   snapshots: ListSnapshotsResponseSnapshotsList;
 }
-export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshots: ListSnapshotsResponseSnapshotsList,
   }),
@@ -7125,7 +7083,7 @@ export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The transfer direction. `upload` returns a presigned `PUT` URL; `download` returns a presigned `GET` URL. */
 export type PresignProjectBranchBucketObjectRequestOperation = "upload" | "download";
-export const PresignProjectBranchBucketObjectRequestOperation = S.String;
+const PresignProjectBranchBucketObjectRequestOperation = S.String;
 
 export interface PresignProjectBranchBucketObjectRequest {
   /** The Neon project ID */
@@ -7143,7 +7101,7 @@ export interface PresignProjectBranchBucketObjectRequest {
   /** How long the presigned URL stays valid, in seconds. Defaults to 900 (15 minutes); capped at 604800 (7 days). */
   expires_in_seconds?: number;
 }
-export const PresignProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PresignProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7165,8 +7123,7 @@ export const PresignProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend((
 
 /** Headers the caller MUST send verbatim on the request (e.g. `Content-Type` when it was signed on an upload). May be empty. */
 export type PresignResponseHeadersMap = { [key: string]: string | undefined };
-export const PresignResponseHeadersMap =
-  AnnotationValueData as any as S.Schema<PresignResponseHeadersMap>;
+const PresignResponseHeadersMap = AnnotationValueData as any as S.Schema<PresignResponseHeadersMap>;
 
 export interface PresignResponse {
   /** The presigned URL. Transfer the object bytes by issuing `method url` with the returned `headers`. */
@@ -7178,7 +7135,7 @@ export interface PresignResponse {
   /** When the presigned URL stops being valid. */
   expires_at: string;
 }
-export const PresignResponse = /*@__PURE__*/ S.suspend(() =>
+const PresignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
       T.SensitiveValue({}),
@@ -7191,11 +7148,11 @@ export const PresignResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Order matching records by timestamp. `desc`, the default, returns the newest records first. */
 export type QueryProjectBranchLogsRequestSortOrder = "asc" | "desc";
-export const QueryProjectBranchLogsRequestSortOrder = S.String;
+const QueryProjectBranchLogsRequestSortOrder = S.String;
 
 /** An OpenTelemetry severity level. A minimum severity includes every higher level in this order: `trace`, `debug`, `info`, `warn`, `error`, `fatal`. */
 export type ProjectBranchLogSeverity = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
-export const ProjectBranchLogSeverity = S.String;
+const ProjectBranchLogSeverity = S.String;
 
 export interface QueryProjectBranchLogsRequest {
   /** The Neon project ID */
@@ -7229,7 +7186,7 @@ export interface QueryProjectBranchLogsRequest {
   /** Escape hatch for selections the structured filters cannot express: a raw LogQL expression, evaluated against this branch's log stream. Only stream selectors and line filters are accepted -- no aggregations and no parser stages. Supplying this alongside any structured filter is rejected with `conflicting_filters` rather than silently ignoring one of them. `limit`, `sort_order`, and the time window still apply. This field passes the underlying query language through to the caller, so unlike the rest of this contract it may change as that backend changes. Prefer the structured filters where they suffice. */
   logql?: string;
 }
-export const QueryProjectBranchLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryProjectBranchLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7260,7 +7217,7 @@ export const QueryProjectBranchLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Customer-defined OpenTelemetry log and resource attributes. */
 export type ProjectBranchLogRecordAttributesMap = { [key: string]: unknown | undefined };
-export const ProjectBranchLogRecordAttributesMap =
+const ProjectBranchLogRecordAttributesMap =
   AdvisorIssueMetadataMap as any as S.Schema<ProjectBranchLogRecordAttributesMap>;
 
 export interface ProjectBranchLogRecord {
@@ -7286,7 +7243,7 @@ export interface ProjectBranchLogRecord {
   /** Customer-defined OpenTelemetry log and resource attributes. */
   attributes: ProjectBranchLogRecordAttributesMap;
 }
-export const ProjectBranchLogRecord = /*@__PURE__*/ S.suspend(() =>
+const ProjectBranchLogRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.String,
     message: S.String,
@@ -7303,7 +7260,7 @@ export const ProjectBranchLogRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectBranchLogRecord" }) as any as S.Codec<ProjectBranchLogRecord>;
 
 export type ProjectBranchLogsQueryResponseLogsList = Array<ProjectBranchLogRecord>;
-export const ProjectBranchLogsQueryResponseLogsList = /*@__PURE__*/ S.Array(
+const ProjectBranchLogsQueryResponseLogsList = /*@__PURE__*/ S.Array(
   ProjectBranchLogRecord,
 ) as any as S.Codec<ProjectBranchLogsQueryResponseLogsList>;
 
@@ -7314,7 +7271,7 @@ export interface ProjectBranchLogsQueryResponse {
   /** True when more records matched than were returned. */
   is_truncated: boolean;
 }
-export const ProjectBranchLogsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectBranchLogsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: ProjectBranchLogsQueryResponseLogsList,
     next_cursor: S.optional(S.String),
@@ -7328,7 +7285,7 @@ export interface RecoverProjectRequest {
   /** The Neon project ID */
   project_id: string;
 }
-export const RecoverProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const RecoverProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/projects/{project_id}/recover", code: 200 })),
@@ -7336,7 +7293,7 @@ export const RecoverProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Branches in the project. Each includes `id`, `name`, `current_state`, and `created_at`. */
 export type RecoverProjectResponseBranchesList = Array<Branch>;
-export const RecoverProjectResponseBranchesList =
+const RecoverProjectResponseBranchesList =
   ListProjectBranchesResponseBranchesList as any as S.Schema<RecoverProjectResponseBranchesList>;
 
 export interface RecoverProjectResponse {
@@ -7345,7 +7302,7 @@ export interface RecoverProjectResponse {
   /** Branches in the project. Each includes `id`, `name`, `current_state`, and `created_at`. */
   branches: RecoverProjectResponseBranchesList;
 }
-export const RecoverProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const RecoverProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: Project,
     branches: RecoverProjectResponseBranchesList,
@@ -7364,7 +7321,7 @@ export interface RegisterProjectBranchCustomDomainRequest {
   /** The target entity's identifier within the branch. For `function` this is the function slug (which must already exist on the branch). */
   entity_id: string;
 }
-export const RegisterProjectBranchCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterProjectBranchCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7388,7 +7345,7 @@ export interface RemoveOrganizationMemberRequest {
   /** The Neon organization member ID */
   member_id: string;
 }
-export const RemoveOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     member_id: S.String.pipe(T.Label()),
@@ -7400,7 +7357,7 @@ export const RemoveOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<RemoveOrganizationMemberRequest>;
 
 export type RemoveOrganizationMemberResponse = unknown;
-export const RemoveOrganizationMemberResponse =
+const RemoveOrganizationMemberResponse =
   DeleteOrganizationSpendingLimitResponse as any as S.Schema<RemoveOrganizationMemberResponse>;
 
 export interface RemoveProjectMemberRoleRequest {
@@ -7408,7 +7365,7 @@ export interface RemoveProjectMemberRoleRequest {
   member_id: string;
   confirm_self_lockout?: boolean;
 }
-export const RemoveProjectMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     member_id: S.String.pipe(T.Label()),
@@ -7439,7 +7396,7 @@ export interface ProjectMemberRoleResponse {
   /** Hint that project-scoped org API keys created by the target user may need rotation. */
   org_api_key_rotation_recommended?: boolean;
 }
-export const ProjectMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     member_id: S.String,
@@ -7466,7 +7423,7 @@ export interface ResetProjectBranchRolePasswordRequest {
   /** The role name */
   role_name: string;
 }
-export const ResetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7483,15 +7440,12 @@ export const ResetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Codec<ResetProjectBranchRolePasswordRequest>;
 
 export type ResetProjectBranchRolePasswordResponseOperationsList = Array<Operation>;
-export const ResetProjectBranchRolePasswordResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<ResetProjectBranchRolePasswordResponseOperationsList>;
-
 export interface ResetProjectBranchRolePasswordResponse {
   /** Role details for the requested database role. The `password` field is included in the response when a role is created or its password is reset, and is not returned in subsequent read requests. Store it securely at that time. */
   role: Role;
   operations: ResetProjectBranchRolePasswordResponseOperationsList;
 }
-export const ResetProjectBranchRolePasswordResponse =
+const ResetProjectBranchRolePasswordResponse =
   CreateProjectBranchRoleResponse as any as S.Schema<ResetProjectBranchRolePasswordResponse>;
 
 export interface RestartProjectEndpointRequest {
@@ -7500,7 +7454,7 @@ export interface RestartProjectEndpointRequest {
   /** The endpoint ID */
   endpoint_id: string;
 }
-export const RestartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint_id: S.String.pipe(T.Label()),
@@ -7516,15 +7470,12 @@ export const RestartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<RestartProjectEndpointRequest>;
 
 export type RestartProjectEndpointResponseOperationsList = Array<Operation>;
-export const RestartProjectEndpointResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<RestartProjectEndpointResponseOperationsList>;
-
 export interface RestartProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: RestartProjectEndpointResponseOperationsList;
 }
-export const RestartProjectEndpointResponse =
+const RestartProjectEndpointResponse =
   CreateProjectEndpointResponse as any as S.Schema<RestartProjectEndpointResponse>;
 
 export interface RestoreProjectBranchRequest {
@@ -7541,7 +7492,7 @@ export interface RestoreProjectBranchRequest {
   /** Name under which to save the current branch state before restoring. Required when the branch has children or when `source_branch_id` equals the branch being restored; in those cases all existing child branches are moved to the newly created branch. If omitted and not required, the previous state is not preserved. */
   preserve_under_name?: string;
 }
-export const RestoreProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7561,15 +7512,12 @@ export const RestoreProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<RestoreProjectBranchRequest>;
 
 export type RestoreProjectBranchResponseOperationsList = Array<Operation>;
-export const RestoreProjectBranchResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<RestoreProjectBranchResponseOperationsList>;
-
 export interface RestoreProjectBranchResponse {
   /** Branch returned by the request. */
   branch: Branch;
   operations: RestoreProjectBranchResponseOperationsList;
 }
-export const RestoreProjectBranchResponse =
+const RestoreProjectBranchResponse =
   DeleteProjectBranchResponse as any as S.Schema<RestoreProjectBranchResponse>;
 
 export interface RestoreSnapshotRequest {
@@ -7584,7 +7532,7 @@ export interface RestoreSnapshotRequest {
   /** Set to `true` to finalize the restore operation immediately. This will complete the restore and move any associated computes to the new branch, similar to the `finalizeRestoreBranch` operation. Defaults to `false` to allow previewing the restored snapshot data first. */
   finalize_restore?: boolean;
 }
-export const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     snapshot_id: S.String.pipe(T.Label()),
@@ -7602,11 +7550,11 @@ export const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Compute endpoints associated with the project. */
 export type RestoreSnapshotResponseEndpointsList = Array<Endpoint>;
-export const RestoreSnapshotResponseEndpointsList =
+const RestoreSnapshotResponseEndpointsList =
   CreateProjectResponseEndpointsList as any as S.Schema<RestoreSnapshotResponseEndpointsList>;
 
 export type RestoreSnapshotResponseOperationsList = Array<Operation>;
-export const RestoreSnapshotResponseOperationsList =
+const RestoreSnapshotResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<RestoreSnapshotResponseOperationsList>;
 
 export interface RestoreSnapshotResponse {
@@ -7616,7 +7564,7 @@ export interface RestoreSnapshotResponse {
   endpoints?: RestoreSnapshotResponseEndpointsList;
   operations: RestoreSnapshotResponseOperationsList;
 }
-export const RestoreSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const RestoreSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: Branch,
     endpoints: S.optional(RestoreSnapshotResponseEndpointsList),
@@ -7632,7 +7580,7 @@ export interface RevealCredentialRequest {
   /** The opaque credential id (e.g. nak_live_<32hex>). */
   token_id: string;
 }
-export const RevealCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const RevealCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7655,7 +7603,7 @@ export interface CredentialSecret {
   /** nsk_live_<64 hex>; the AWS_SECRET_ACCESS_KEY. */
   s3_secret_access_key: string | Redacted.Redacted<string>;
 }
-export const CredentialSecret = /*@__PURE__*/ S.suspend(() =>
+const CredentialSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_id: S.String,
     api_token: S.Union([S.String, S.Redacted(S.String, { disallowJsonEncode: true })]).pipe(
@@ -7672,7 +7620,7 @@ export interface RevokeApiKeyRequest {
   /** The API key ID */
   key_id: number;
 }
-export const RevokeApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api_keys/{key_id}", code: 200 })),
@@ -7694,7 +7642,7 @@ export interface ApiKeyRevokeResponse {
   /** A `true` or `false` value indicating whether the API key is revoked */
   revoked: boolean;
 }
-export const ApiKeyRevokeResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyRevokeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -7714,7 +7662,7 @@ export interface RevokeCredentialRequest {
   /** The opaque credential id (e.g. nak_live_<32hex>). */
   token_id: string;
 }
-export const RevokeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7729,7 +7677,7 @@ export const RevokeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeCredentialRequest" }) as any as S.Codec<RevokeCredentialRequest>;
 
 export interface RevokeCredentialResponse {}
-export const RevokeCredentialResponse =
+const RevokeCredentialResponse =
   DeleteSnapshotResponse as any as S.Schema<RevokeCredentialResponse>;
 
 export interface RevokeOrgApiKeyRequest {
@@ -7738,7 +7686,7 @@ export interface RevokeOrgApiKeyRequest {
   /** The API key ID */
   key_id: number;
 }
-export const RevokeOrgApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeOrgApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     key_id: S.Number.pipe(T.Label()),
@@ -7765,7 +7713,7 @@ export interface RevokeOrgApiKeyResponse {
   /** If set, the API key can access only this project */
   project_id?: string;
 }
-export const RevokeOrgApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeOrgApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -7782,7 +7730,7 @@ export interface RevokePermissionFromProjectRequest {
   project_id: string;
   permission_id: string;
 }
-export const RevokePermissionFromProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokePermissionFromProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     permission_id: S.String.pipe(T.Label()),
@@ -7805,7 +7753,7 @@ export interface RotateCredentialRequest {
   /** The opaque credential id (e.g. nak_live_<32hex>). */
   token_id: string;
 }
-export const RotateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7820,12 +7768,12 @@ export const RotateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RotateCredentialRequest" }) as any as S.Codec<RotateCredentialRequest>;
 
 export type RotateCredentialResponseScopesList = Array<GrantedCredentialScope>;
-export const RotateCredentialResponseScopesList =
+const RotateCredentialResponseScopesList =
   CreateCredentialResponseScopesList as any as S.Schema<RotateCredentialResponseScopesList>;
 
 /** Always `user`: only customer-managed credentials are rotatable through this endpoint. */
 export type RotateCredentialResponsePrincipalType = "user";
-export const RotateCredentialResponsePrincipalType = S.String;
+const RotateCredentialResponsePrincipalType = S.String;
 
 /** The replacement secret material for an existing credential, returned exactly once. `token_id`, `scopes`, `branch_id` and `created_at` are unchanged by the rotation -- only `api_token` and `s3_secret_access_key` are new. */
 export interface RotateCredentialResponse {
@@ -7848,7 +7796,7 @@ export interface RotateCredentialResponse {
   /** When the credential expires; absent means never expires. Rotation does not extend it. */
   expires_at?: string;
 }
-export const RotateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_id: S.String,
     token_id_short: S.String,
@@ -7876,7 +7824,7 @@ export interface SendNeonAuthEmailProviderTestRequest {
   /** The email address to send the test email to. */
   recipient_email: string;
 }
-export const SendNeonAuthEmailProviderTestRequest = /*@__PURE__*/ S.suspend(() =>
+const SendNeonAuthEmailProviderTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7898,7 +7846,7 @@ export interface SendNeonAuthTestEmailResponse {
   /** The error message from the email server. */
   error_message?: string;
 }
-export const SendNeonAuthTestEmailResponse = /*@__PURE__*/ S.suspend(() =>
+const SendNeonAuthTestEmailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     error_message: S.optional(S.String),
@@ -7913,7 +7861,7 @@ export interface SetDefaultProjectBranchRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const SetDefaultProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const SetDefaultProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -7929,15 +7877,12 @@ export const SetDefaultProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<SetDefaultProjectBranchRequest>;
 
 export type SetDefaultProjectBranchResponseOperationsList = Array<Operation>;
-export const SetDefaultProjectBranchResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<SetDefaultProjectBranchResponseOperationsList>;
-
 export interface SetDefaultProjectBranchResponse {
   /** Branch returned by the request. */
   branch: Branch;
   operations: SetDefaultProjectBranchResponseOperationsList;
 }
-export const SetDefaultProjectBranchResponse =
+const SetDefaultProjectBranchResponse =
   DeleteProjectBranchResponse as any as S.Schema<SetDefaultProjectBranchResponse>;
 
 export interface SetOrganizationSpendingLimitRequest {
@@ -7946,7 +7891,7 @@ export interface SetOrganizationSpendingLimitRequest {
   /** Monthly spending cap in cents. Must be positive. To remove a previously configured limit, send a DELETE request to the spending_limit endpoint -- `0` and `null` are rejected here. The cap is alert-only: notifications fire at 80% and 100%, but computes are not suspended. Setting a cap below the period's already-accrued spend is permitted and will trigger the over-limit notification on the next worker run. */
   spending_limit_cents: number;
 }
-export const SetOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     spending_limit_cents: S.Number,
@@ -7963,7 +7908,7 @@ export interface SetProjectMemberRoleRequest {
   confirm_self_demotion?: boolean;
   role: ProjectRole | (string & {});
 }
-export const SetProjectMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const SetProjectMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     member_id: S.String.pipe(T.Label()),
@@ -7978,7 +7923,7 @@ export const SetProjectMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of schedule entries defining the backup frequency. At least one entry is required. */
 export type SetSnapshotScheduleRequestScheduleList = Array<BackupScheduleItem>;
-export const SetSnapshotScheduleRequestScheduleList =
+const SetSnapshotScheduleRequestScheduleList =
   BackupScheduleScheduleList as any as S.Schema<SetSnapshotScheduleRequestScheduleList>;
 
 export interface SetSnapshotScheduleRequest {
@@ -7989,7 +7934,7 @@ export interface SetSnapshotScheduleRequest {
   /** List of schedule entries defining the backup frequency. At least one entry is required. */
   schedule: SetSnapshotScheduleRequestScheduleList;
 }
-export const SetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8006,7 +7951,7 @@ export const SetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<SetSnapshotScheduleRequest>;
 
 export type SetSnapshotScheduleResponse = unknown;
-export const SetSnapshotScheduleResponse =
+const SetSnapshotScheduleResponse =
   DeleteOrganizationSpendingLimitResponse as any as S.Schema<SetSnapshotScheduleResponse>;
 
 export interface StartAnonymizationRequest {
@@ -8015,7 +7960,7 @@ export interface StartAnonymizationRequest {
   /** The branch ID */
   branch_id: string;
 }
-export const StartAnonymizationRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAnonymizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8036,7 +7981,7 @@ export interface StartProjectEndpointRequest {
   /** The endpoint ID */
   endpoint_id: string;
 }
-export const StartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint_id: S.String.pipe(T.Label()),
@@ -8052,15 +7997,12 @@ export const StartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<StartProjectEndpointRequest>;
 
 export type StartProjectEndpointResponseOperationsList = Array<Operation>;
-export const StartProjectEndpointResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<StartProjectEndpointResponseOperationsList>;
-
 export interface StartProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: StartProjectEndpointResponseOperationsList;
 }
-export const StartProjectEndpointResponse =
+const StartProjectEndpointResponse =
   CreateProjectEndpointResponse as any as S.Schema<StartProjectEndpointResponse>;
 
 export interface SuspendProjectEndpointRequest {
@@ -8069,7 +8011,7 @@ export interface SuspendProjectEndpointRequest {
   /** The endpoint ID */
   endpoint_id: string;
 }
-export const SuspendProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint_id: S.String.pipe(T.Label()),
@@ -8085,15 +8027,12 @@ export const SuspendProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<SuspendProjectEndpointRequest>;
 
 export type SuspendProjectEndpointResponseOperationsList = Array<Operation>;
-export const SuspendProjectEndpointResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<SuspendProjectEndpointResponseOperationsList>;
-
 export interface SuspendProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: SuspendProjectEndpointResponseOperationsList;
 }
-export const SuspendProjectEndpointResponse =
+const SuspendProjectEndpointResponse =
   CreateProjectEndpointResponse as any as S.Schema<SuspendProjectEndpointResponse>;
 
 export interface TransferNeonAuthProviderProjectRequest {
@@ -8101,7 +8040,7 @@ export interface TransferNeonAuthProviderProjectRequest {
   project_id: string;
   auth_provider: NeonAuthSupportedAuthProvider | (string & {});
 }
-export const TransferNeonAuthProviderProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferNeonAuthProviderProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     auth_provider: NeonAuthSupportedAuthProvider,
@@ -8114,7 +8053,7 @@ export interface NeonAuthTransferAuthProviderProjectResponse {
   /** URL for completing the process of ownership transfer */
   url: string;
 }
-export const NeonAuthTransferAuthProviderProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthTransferAuthProviderProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -8124,7 +8063,7 @@ export const NeonAuthTransferAuthProviderProjectResponse = /*@__PURE__*/ S.suspe
 
 /** The list of projects ids to transfer. Maximum of 400 project ids */
 export type TransferProjectsFromOrgToOrgRequestProjectIdsList = Array<string>;
-export const TransferProjectsFromOrgToOrgRequestProjectIdsList =
+const TransferProjectsFromOrgToOrgRequestProjectIdsList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<TransferProjectsFromOrgToOrgRequestProjectIdsList>;
 
 export interface TransferProjectsFromOrgToOrgRequest {
@@ -8135,7 +8074,7 @@ export interface TransferProjectsFromOrgToOrgRequest {
   /** The list of projects ids to transfer. Maximum of 400 project ids */
   project_ids: TransferProjectsFromOrgToOrgRequestProjectIdsList;
 }
-export const TransferProjectsFromOrgToOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferProjectsFromOrgToOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_org_id: S.String.pipe(T.Label()),
     destination_org_id: S.String,
@@ -8148,7 +8087,7 @@ export const TransferProjectsFromOrgToOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<TransferProjectsFromOrgToOrgRequest>;
 
 export type TransferProjectsFromOrgToOrgResponse = unknown;
-export const TransferProjectsFromOrgToOrgResponse =
+const TransferProjectsFromOrgToOrgResponse =
   DeleteOrganizationSpendingLimitResponse as any as S.Schema<TransferProjectsFromOrgToOrgResponse>;
 
 export type UpdateBranchNeonAuthOauthProviderRequestOauthProviderId =
@@ -8156,7 +8095,7 @@ export type UpdateBranchNeonAuthOauthProviderRequestOauthProviderId =
   | "github"
   | "microsoft"
   | "vercel";
-export const UpdateBranchNeonAuthOauthProviderRequestOauthProviderId = S.String;
+const UpdateBranchNeonAuthOauthProviderRequestOauthProviderId = S.String;
 
 export interface UpdateBranchNeonAuthOauthProviderRequest {
   /** The Neon project ID */
@@ -8172,7 +8111,7 @@ export interface UpdateBranchNeonAuthOauthProviderRequest {
   /** The tenant ID scoping the Microsoft OAuth provider. Supply this field when the provider type is microsoft; it has no effect for other provider types. */
   microsoft_tenant_id?: string;
 }
-export const UpdateBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8197,7 +8136,7 @@ export const UpdateBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(
 
 /** List of masking rules to apply to the branch. This will replace all existing masking rules for the branch. */
 export type UpdateMaskingRulesRequestMaskingRulesList = Array<MaskingRule>;
-export const UpdateMaskingRulesRequestMaskingRulesList =
+const UpdateMaskingRulesRequestMaskingRulesList =
   CreateProjectBranchAnonymizedRequestMaskingRulesList as any as S.Schema<UpdateMaskingRulesRequestMaskingRulesList>;
 
 export interface UpdateMaskingRulesRequest {
@@ -8208,7 +8147,7 @@ export interface UpdateMaskingRulesRequest {
   /** List of masking rules to apply to the branch. This will replace all existing masking rules for the branch. */
   masking_rules: UpdateMaskingRulesRequestMaskingRulesList;
 }
-export const UpdateMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8232,7 +8171,7 @@ export interface UpdateNeonAuthAllowLocalhostRequest {
   /** Whether to allow localhost connections */
   allow_localhost: boolean;
 }
-export const UpdateNeonAuthAllowLocalhostRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthAllowLocalhostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8256,7 +8195,7 @@ export interface UpdateNeonAuthConfigRequest {
   /** The application name used in auth emails and communications. */
   name: string;
 }
-export const UpdateNeonAuthConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8276,7 +8215,7 @@ export interface NeonAuthConfigResponse {
   /** The application name used in auth emails and communications. */
   name: string;
 }
-export const NeonAuthConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -8302,7 +8241,7 @@ export interface UpdateNeonAuthEmailAndPasswordConfigRequest {
   /** Whether to disable new user sign ups. When omitted, the current setting is not changed. */
   disable_sign_up?: boolean;
 }
-export const UpdateNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8326,7 +8265,7 @@ export const UpdateNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspe
 
 /** Use a custom SMTP server to send authentication emails. */
 export type StandardEmailServerType = "standard";
-export const StandardEmailServerType =
+const StandardEmailServerType =
   StandardEmailServerResponseType as any as S.Schema<StandardEmailServerType>;
 export interface StandardEmailServer {
   /** Hostname of the email server. */
@@ -8344,7 +8283,7 @@ export interface StandardEmailServer {
   /** Use a custom SMTP server to send authentication emails. */
   type: StandardEmailServerType;
 }
-export const StandardEmailServer = /*@__PURE__*/ S.suspend(() =>
+const StandardEmailServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     port: S.optional(S.Number),
@@ -8361,7 +8300,7 @@ export const StandardEmailServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StandardEmailServer" }) as any as S.Codec<StandardEmailServer>;
 
 export type NeonAuthEmailServerConfig = StandardEmailServer | SharedEmailServer;
-export const NeonAuthEmailServerConfig = /*@__PURE__*/ S.suspend(() =>
+const NeonAuthEmailServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Union([StandardEmailServer, SharedEmailServer]),
 ) as S.Codec<NeonAuthEmailServerConfig>;
 
@@ -8372,7 +8311,7 @@ export interface UpdateNeonAuthEmailProviderRequest {
   branch_id: string;
   body: NeonAuthEmailServerConfig;
 }
-export const UpdateNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8389,7 +8328,7 @@ export const UpdateNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateNeonAuthEmailProviderRequest>;
 
 export type UpdateNeonAuthEmailProviderResponse = NeonAuthEmailServerConfigResponse;
-export const UpdateNeonAuthEmailProviderResponse =
+const UpdateNeonAuthEmailProviderResponse =
   GetNeonAuthEmailProviderResponse as any as S.Schema<UpdateNeonAuthEmailProviderResponse>;
 
 export interface UpdateNeonAuthMagicLinkPluginRequest {
@@ -8404,7 +8343,7 @@ export interface UpdateNeonAuthMagicLinkPluginRequest {
   /** When true, sign-up via magic link is disabled. */
   disable_sign_up?: boolean;
 }
-export const UpdateNeonAuthMagicLinkPluginRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthMagicLinkPluginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8424,7 +8363,7 @@ export const UpdateNeonAuthMagicLinkPluginRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Role of the organization's creator. `owner`: full control, including deleting the org and transferring ownership. `admin`: manage members and settings only. */
 export type UpdateNeonAuthOrganizationPluginRequestCreatorRole = "admin" | "owner";
-export const UpdateNeonAuthOrganizationPluginRequestCreatorRole = S.String;
+const UpdateNeonAuthOrganizationPluginRequestCreatorRole = S.String;
 
 export interface UpdateNeonAuthOrganizationPluginRequest {
   /** The Neon project ID */
@@ -8442,7 +8381,7 @@ export interface UpdateNeonAuthOrganizationPluginRequest {
   /** When true, invited users receive an email containing an accept link. Requires that the invited user has a verified email address. */
   send_invitation_email?: boolean;
 }
-export const UpdateNeonAuthOrganizationPluginRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthOrganizationPluginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8472,7 +8411,7 @@ export interface UpdateNeonAuthPhoneNumberPluginRequest {
   /** Time in seconds before the OTP expires */
   otp_expires_in?: number;
 }
-export const UpdateNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8491,7 +8430,7 @@ export const UpdateNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(()
 
 /** Roles to assign to the user in the Neon Auth (Better Auth) directory. `user` and `admin` are the built-in roles; custom role strings are also supported. */
 export type UpdateNeonAuthUserRoleRequestRolesList = Array<string>;
-export const UpdateNeonAuthUserRoleRequestRolesList =
+const UpdateNeonAuthUserRoleRequestRolesList =
   AddProjectJWKSRequestRoleNamesList as any as S.Schema<UpdateNeonAuthUserRoleRequestRolesList>;
 
 export interface UpdateNeonAuthUserRoleRequest {
@@ -8504,7 +8443,7 @@ export interface UpdateNeonAuthUserRoleRequest {
   /** Roles to assign to the user in the Neon Auth (Better Auth) directory. `user` and `admin` are the built-in roles; custom role strings are also supported. */
   roles: UpdateNeonAuthUserRoleRequestRolesList;
 }
-export const UpdateNeonAuthUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8525,7 +8464,7 @@ export interface UpdateNeonAuthUserRoleResponse {
   /** ID of the updated user */
   id: string;
 }
-export const UpdateNeonAuthUserRoleResponse =
+const UpdateNeonAuthUserRoleResponse =
   NeonAuthCreateNewUserResponse as any as S.Schema<UpdateNeonAuthUserRoleResponse>;
 
 export type UpdateNeonAuthWebhookConfigRequestEnabledEventsItem =
@@ -8536,13 +8475,11 @@ export type UpdateNeonAuthWebhookConfigRequestEnabledEventsItem =
   | "organization.invitation.created"
   | "organization.invitation.accepted"
   | "phone_number.verified";
-export const UpdateNeonAuthWebhookConfigRequestEnabledEventsItem = S.String;
-
 /** Event types that trigger this webhook. Covers user lifecycle, email/OTP delivery, organization invitations, and phone verification events; see the enum for exact values. */
 export type UpdateNeonAuthWebhookConfigRequestEnabledEventsList = Array<
   UpdateNeonAuthWebhookConfigRequestEnabledEventsItem | (string & {})
 >;
-export const UpdateNeonAuthWebhookConfigRequestEnabledEventsList =
+const UpdateNeonAuthWebhookConfigRequestEnabledEventsList =
   CreateCredentialRequestScopesList as any as S.Schema<UpdateNeonAuthWebhookConfigRequestEnabledEventsList>;
 
 export interface UpdateNeonAuthWebhookConfigRequest {
@@ -8559,7 +8496,7 @@ export interface UpdateNeonAuthWebhookConfigRequest {
   /** Maximum time, in seconds, to wait for a response from the webhook endpoint. */
   timeout_seconds?: number;
 }
-export const UpdateNeonAuthWebhookConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNeonAuthWebhookConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8585,7 +8522,7 @@ export interface UpdateOrganizationMemberRequest {
   member_id: string;
   role: MemberRole | (string & {});
 }
-export const UpdateOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.String.pipe(T.Label()),
     member_id: S.String.pipe(T.Label()),
@@ -8606,7 +8543,7 @@ export interface UpdateProjectRequestProject {
   /** History window (point-in-time restore range) for all branches, in seconds. `0` disables it. Default 1 day (Free: 6 hours). Maximum depends on plan: Free 6 hours (21600), Launch 7 days (604800), Scale 30 days (2592000). */
   history_retention_seconds?: number;
 }
-export const UpdateProjectRequestProject = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequestProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(ProjectSettingsData),
     name: S.optional(S.String),
@@ -8622,7 +8559,7 @@ export interface UpdateProjectRequest {
   project_id: string;
   project: UpdateProjectRequestProject;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     project: UpdateProjectRequestProject,
@@ -8630,7 +8567,7 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateProjectRequest" }) as any as S.Codec<UpdateProjectRequest>;
 
 export type UpdateProjectResponseOperationsList = Array<Operation>;
-export const UpdateProjectResponseOperationsList =
+const UpdateProjectResponseOperationsList =
   AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectResponseOperationsList>;
 
 export interface UpdateProjectResponse {
@@ -8638,7 +8575,7 @@ export interface UpdateProjectResponse {
   project: Project;
   operations: UpdateProjectResponseOperationsList;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: Project,
     operations: UpdateProjectResponseOperationsList,
@@ -8654,7 +8591,7 @@ export interface UpdateProjectBranchRequestBranch {
   /** The timestamp when the branch is scheduled to expire and be automatically deleted. Must be set by the client following the [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6) format with precision up to seconds (such as 2025-06-09T18:02:16Z). Deletion is performed by a background job and may not occur exactly at the specified time. If this field is set to null, the expiration timestamp is removed. Access to this feature is currently limited to participants in the Early Access Program. */
   expires_at?: string | null;
 }
-export const UpdateProjectBranchRequestBranch = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchRequestBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     protected: S.optional(S.Boolean),
@@ -8672,7 +8609,7 @@ export interface UpdateProjectBranchRequest {
   /** Branch attributes to update. Supply only the fields you want to change, for example `name` or `protected`. */
   branch: UpdateProjectBranchRequestBranch;
 }
-export const UpdateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8685,15 +8622,12 @@ export const UpdateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectBranchRequest>;
 
 export type UpdateProjectBranchResponseOperationsList = Array<Operation>;
-export const UpdateProjectBranchResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectBranchResponseOperationsList>;
-
 export interface UpdateProjectBranchResponse {
   /** Branch returned by the request. */
   branch: Branch;
   operations: UpdateProjectBranchResponseOperationsList;
 }
-export const UpdateProjectBranchResponse =
+const UpdateProjectBranchResponse =
   DeleteProjectBranchResponse as any as S.Schema<UpdateProjectBranchResponse>;
 
 export interface UpdateProjectBranchDataAPIRequest {
@@ -8706,7 +8640,7 @@ export interface UpdateProjectBranchDataAPIRequest {
   /** Configuration settings for the Neon Data API. */
   settings?: DataAPISettings;
 }
-export const UpdateProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8724,7 +8658,7 @@ export const UpdateProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectBranchDataAPIRequest>;
 
 export type UpdateProjectBranchDataAPIResponse = unknown;
-export const UpdateProjectBranchDataAPIResponse =
+const UpdateProjectBranchDataAPIResponse =
   DeleteOrganizationSpendingLimitResponse as any as S.Schema<UpdateProjectBranchDataAPIResponse>;
 
 /** Properties to update on the database. */
@@ -8734,7 +8668,7 @@ export interface UpdateProjectBranchDatabaseRequestDatabase {
   /** The name of the role that owns the database */
   owner_name?: string;
 }
-export const UpdateProjectBranchDatabaseRequestDatabase = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchDatabaseRequestDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     owner_name: S.optional(S.String),
@@ -8753,7 +8687,7 @@ export interface UpdateProjectBranchDatabaseRequest {
   /** Properties to update on the database. */
   database: UpdateProjectBranchDatabaseRequestDatabase;
 }
-export const UpdateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8771,15 +8705,12 @@ export const UpdateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectBranchDatabaseRequest>;
 
 export type UpdateProjectBranchDatabaseResponseOperationsList = Array<Operation>;
-export const UpdateProjectBranchDatabaseResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectBranchDatabaseResponseOperationsList>;
-
 export interface UpdateProjectBranchDatabaseResponse {
   /** Database object returned by the operation. */
   database: Database;
   operations: UpdateProjectBranchDatabaseResponseOperationsList;
 }
-export const UpdateProjectBranchDatabaseResponse =
+const UpdateProjectBranchDatabaseResponse =
   CreateProjectBranchDatabaseResponse as any as S.Schema<UpdateProjectBranchDatabaseResponse>;
 
 export interface UpdateProjectBranchFunctionRequest {
@@ -8792,7 +8723,7 @@ export interface UpdateProjectBranchFunctionRequest {
   /** New display name for the function. `null` clears the display name; the function's `name` then falls back to its slug. Leading and trailing whitespace is trimmed; a whitespace-only name is rejected. */
   name: string | null;
 }
-export const UpdateProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8811,7 +8742,7 @@ export const UpdateProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator; it does not change the trigger type. */
 export type ScheduleTriggerUpdateRequestType = "schedule";
-export const ScheduleTriggerUpdateRequestType =
+const ScheduleTriggerUpdateRequestType =
   ScheduleTriggerCreateRequestType as any as S.Schema<ScheduleTriggerUpdateRequestType>;
 export interface ScheduleTriggerUpdateRequest {
   /** Trigger type discriminator; it does not change the trigger type. */
@@ -8824,7 +8755,7 @@ export interface ScheduleTriggerUpdateRequest {
   /** True enables and false disables future scheduling. */
   enabled?: boolean;
 }
-export const ScheduleTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ScheduleTriggerUpdateRequestType,
     function_slug: S.optional(S.String),
@@ -8839,7 +8770,7 @@ export const ScheduleTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger type discriminator; it does not change the trigger type. */
 export type StorageObjectCreatedTriggerUpdateRequestType = "storage_object_created";
-export const StorageObjectCreatedTriggerUpdateRequestType =
+const StorageObjectCreatedTriggerUpdateRequestType =
   StorageObjectCreatedTriggerCreateRequestType as any as S.Schema<StorageObjectCreatedTriggerUpdateRequestType>;
 export interface StorageObjectCreatedTriggerUpdateRequest {
   /** Trigger type discriminator; it does not change the trigger type. */
@@ -8852,7 +8783,7 @@ export interface StorageObjectCreatedTriggerUpdateRequest {
   /** True enables and false disables future matching uploads. */
   enabled?: boolean;
 }
-export const StorageObjectCreatedTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageObjectCreatedTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StorageObjectCreatedTriggerUpdateRequestType,
     function_slug: S.optional(S.String),
@@ -8869,7 +8800,7 @@ export const StorageObjectCreatedTriggerUpdateRequest = /*@__PURE__*/ S.suspend(
 export type TriggerUpdateRequest =
   | ScheduleTriggerUpdateRequest
   | StorageObjectCreatedTriggerUpdateRequest;
-export const TriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Union([ScheduleTriggerUpdateRequest, StorageObjectCreatedTriggerUpdateRequest]),
 ) as S.Codec<TriggerUpdateRequest>;
 
@@ -8882,7 +8813,7 @@ export interface UpdateProjectBranchTriggerRequest {
   trigger_id: string;
   body: TriggerUpdateRequest;
 }
-export const UpdateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectBranchTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
@@ -8923,7 +8854,7 @@ export interface UpdateProjectEndpointRequestEndpoint {
   /** Optional name of the compute endpoint */
   name?: string;
 }
-export const UpdateProjectEndpointRequestEndpoint = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectEndpointRequestEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch_id: S.optional(S.String),
     autoscaling_limit_min_cu: S.optional(S.Number),
@@ -8949,7 +8880,7 @@ export interface UpdateProjectEndpointRequest {
   /** Parameters for the compute endpoint update. */
   endpoint: UpdateProjectEndpointRequestEndpoint;
 }
-export const UpdateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     endpoint_id: S.String.pipe(T.Label()),
@@ -8962,15 +8893,12 @@ export const UpdateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Codec<UpdateProjectEndpointRequest>;
 
 export type UpdateProjectEndpointResponseOperationsList = Array<Operation>;
-export const UpdateProjectEndpointResponseOperationsList =
-  AddProjectJWKSResponseOperationsList as any as S.Schema<UpdateProjectEndpointResponseOperationsList>;
-
 export interface UpdateProjectEndpointResponse {
   /** Compute endpoint created or retrieved, including its current lifecycle state. */
   endpoint: Endpoint;
   operations: UpdateProjectEndpointResponseOperationsList;
 }
-export const UpdateProjectEndpointResponse =
+const UpdateProjectEndpointResponse =
   CreateProjectEndpointResponse as any as S.Schema<UpdateProjectEndpointResponse>;
 
 /** Fields to update on the snapshot. Updatable fields include `name` and `expires_at`. */
@@ -8980,7 +8908,7 @@ export interface UpdateSnapshotRequestSnapshot {
   /** The date and time when the snapshot will expire. Omit to leave the current expiration unchanged. Send `null` to clear the expiration so the snapshot never expires. A future timestamp sets the absolute expiration. */
   expires_at?: string | null;
 }
-export const UpdateSnapshotRequestSnapshot = /*@__PURE__*/ S.suspend(() =>
+const UpdateSnapshotRequestSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -8997,7 +8925,7 @@ export interface UpdateSnapshotRequest {
   /** Fields to update on the snapshot. Updatable fields include `name` and `expires_at`. */
   snapshot: UpdateSnapshotRequestSnapshot;
 }
-export const UpdateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     snapshot_id: S.String.pipe(T.Label()),
@@ -9010,7 +8938,7 @@ export const UpdateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSnapshotResponse {
   snapshot: Snapshot;
 }
-export const UpdateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot: Snapshot,
   }),

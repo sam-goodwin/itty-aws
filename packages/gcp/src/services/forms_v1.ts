@@ -66,7 +66,7 @@ export interface Location {
   /** The index of an item in the form. This must be in the range [0..*N*), where *N* is the number of items in the form. */
   index?: number;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
   }),
@@ -79,7 +79,7 @@ export interface MoveItemRequest {
   /** Required. The location of the item to move. */
   originalLocation?: Location;
 }
-export const MoveItemRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newLocation: S.optional(Location),
     originalLocation: S.optional(Location),
@@ -95,7 +95,7 @@ export interface Info {
   /** Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title` may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on create, but cannot be modified by a batchUpdate request. Please use the [Google Drive API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically update `document_title`. */
   documentTitle?: string;
 }
-export const Info = /*@__PURE__*/ S.suspend(() =>
+const Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -110,7 +110,7 @@ export interface UpdateFormInfoRequest {
   /** Required. Only values named in this mask are changed. At least one field must be specified. The root `info` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
   updateMask?: string;
 }
-export const UpdateFormInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFormInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(Info),
     updateMask: S.optional(S.String),
@@ -119,12 +119,12 @@ export const UpdateFormInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A text item. */
 export interface TextItem {}
-export const TextItem = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TextItem = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TextItem",
 }) as any as S.Schema<TextItem>;
 
 export type MediaPropertiesAlignmentEnum = "ALIGNMENT_UNSPECIFIED" | "LEFT" | "RIGHT" | "CENTER";
-export const MediaPropertiesAlignmentEnum = S.String;
+const MediaPropertiesAlignmentEnum = S.String;
 
 /** Properties of the media. */
 export interface MediaProperties {
@@ -133,7 +133,7 @@ export interface MediaProperties {
   /** The width of the media in pixels. When the media is displayed, it is scaled to the smaller of this value or the width of the displayed form. The original aspect ratio of the media is preserved. If a width is not specified when the media is added to the form, it is set to the width of the media source. Width must be between 0 and 740, inclusive. Setting width to 0 or unspecified is only permitted when updating the media source. */
   width?: number;
 }
-export const MediaProperties = /*@__PURE__*/ S.suspend(() =>
+const MediaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alignment: S.optional(MediaPropertiesAlignmentEnum),
     width: S.optional(S.Number),
@@ -147,7 +147,7 @@ export interface Video {
   /** Properties of a video. */
   properties?: MediaProperties;
 }
-export const Video = /*@__PURE__*/ S.suspend(() =>
+const Video = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     youtubeUri: S.optional(S.String),
     properties: S.optional(MediaProperties),
@@ -161,7 +161,7 @@ export interface VideoItem {
   /** The text displayed below the video. */
   caption?: string;
 }
-export const VideoItem = /*@__PURE__*/ S.suspend(() =>
+const VideoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     video: S.optional(Video),
     caption: S.optional(S.String),
@@ -179,7 +179,7 @@ export interface Image {
   /** Input only. The source URI is the URI used to insert the image. The source URI can be empty when fetched. */
   sourceUri?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altText: S.optional(S.String),
     properties: S.optional(MediaProperties),
@@ -193,21 +193,21 @@ export interface ImageItem {
   /** Required. The image displayed in the item. */
   image?: Image;
 }
-export const ImageItem = /*@__PURE__*/ S.suspend(() =>
+const ImageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
   }),
 ).annotate({ identifier: "ImageItem" }) as any as S.Schema<ImageItem>;
 
 export type ChoiceQuestionTypeEnum = "CHOICE_TYPE_UNSPECIFIED" | "RADIO" | "CHECKBOX" | "DROP_DOWN";
-export const ChoiceQuestionTypeEnum = S.String;
+const ChoiceQuestionTypeEnum = S.String;
 
 export type OptionGoToActionEnum =
   | "GO_TO_ACTION_UNSPECIFIED"
   | "NEXT_SECTION"
   | "RESTART_FORM"
   | "SUBMIT_FORM";
-export const OptionGoToActionEnum = S.String;
+const OptionGoToActionEnum = S.String;
 
 /** An option for a Choice question. */
 export interface Option {
@@ -222,7 +222,7 @@ export interface Option {
   /** Item ID of section header to go to. */
   goToSectionId?: string;
 }
-export const Option = /*@__PURE__*/ S.suspend(() =>
+const Option = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
     goToAction: S.optional(OptionGoToActionEnum),
@@ -233,7 +233,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
 export type OptionList = Array<Option>;
-export const OptionList = /*@__PURE__*/ S.Array(Option) as any as S.Schema<OptionList>;
+const OptionList = /*@__PURE__*/ S.Array(Option) as any as S.Schema<OptionList>;
 
 /** A radio/checkbox/dropdown question. */
 export interface ChoiceQuestion {
@@ -244,7 +244,7 @@ export interface ChoiceQuestion {
   /** Required. List of options that a respondent must choose from. */
   options?: OptionList;
 }
-export const ChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
+const ChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shuffle: S.optional(S.Boolean),
     type: S.optional(ChoiceQuestionTypeEnum),
@@ -257,14 +257,14 @@ export interface CorrectAnswer {
   /** Required. The correct answer value. See the documentation for TextAnswer.value for details on how various value types are formatted. */
   value?: string;
 }
-export const CorrectAnswer = /*@__PURE__*/ S.suspend(() =>
+const CorrectAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
 ).annotate({ identifier: "CorrectAnswer" }) as any as S.Schema<CorrectAnswer>;
 
 export type CorrectAnswerList = Array<CorrectAnswer>;
-export const CorrectAnswerList = /*@__PURE__*/ S.Array(
+const CorrectAnswerList = /*@__PURE__*/ S.Array(
   CorrectAnswer,
 ) as any as S.Schema<CorrectAnswerList>;
 
@@ -273,7 +273,7 @@ export interface CorrectAnswers {
   /** A list of correct answers. A quiz response can be automatically graded based on these answers. For single-valued questions, a response is marked correct if it matches any value in this list (in other words, multiple correct answers are possible). For multiple-valued (`CHECKBOX`) questions, a response is marked correct if it contains exactly the values in this list. */
   answers?: CorrectAnswerList;
 }
-export const CorrectAnswers = /*@__PURE__*/ S.suspend(() =>
+const CorrectAnswers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answers: S.optional(CorrectAnswerList),
   }),
@@ -286,7 +286,7 @@ export interface TextLink {
   /** Required. The URI. */
   uri?: string;
 }
-export const TextLink = /*@__PURE__*/ S.suspend(() =>
+const TextLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayText: S.optional(S.String),
     uri: S.optional(S.String),
@@ -300,7 +300,7 @@ export interface VideoLink {
   /** Required. The display text for the link. */
   displayText?: string;
 }
-export const VideoLink = /*@__PURE__*/ S.suspend(() =>
+const VideoLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     youtubeUri: S.optional(S.String),
     displayText: S.optional(S.String),
@@ -314,7 +314,7 @@ export interface ExtraMaterial {
   /** Video feedback. */
   video?: VideoLink;
 }
-export const ExtraMaterial = /*@__PURE__*/ S.suspend(() =>
+const ExtraMaterial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(TextLink),
     video: S.optional(VideoLink),
@@ -322,7 +322,7 @@ export const ExtraMaterial = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExtraMaterial" }) as any as S.Schema<ExtraMaterial>;
 
 export type ExtraMaterialList = Array<ExtraMaterial>;
-export const ExtraMaterialList = /*@__PURE__*/ S.Array(
+const ExtraMaterialList = /*@__PURE__*/ S.Array(
   ExtraMaterial,
 ) as any as S.Schema<ExtraMaterialList>;
 
@@ -333,7 +333,7 @@ export interface Feedback {
   /** Required. The main text of the feedback. */
   text?: string;
 }
-export const Feedback = /*@__PURE__*/ S.suspend(() =>
+const Feedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     material: S.optional(ExtraMaterialList),
     text: S.optional(S.String),
@@ -353,7 +353,7 @@ export interface Grading {
   /** The feedback displayed for incorrect responses. This feedback can only be set for multiple choice questions that have correct answers provided. */
   whenWrong?: Feedback;
 }
-export const Grading = /*@__PURE__*/ S.suspend(() =>
+const Grading = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctAnswers: S.optional(CorrectAnswers),
     whenRight: S.optional(Feedback),
@@ -368,7 +368,7 @@ export interface RowQuestion {
   /** Required. The title for the single row in the QuestionGroupItem. */
   title?: string;
 }
-export const RowQuestion = /*@__PURE__*/ S.suspend(() =>
+const RowQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
   }),
@@ -385,12 +385,12 @@ export type FileUploadQuestionTypesItemEnum =
   | "IMAGE"
   | "VIDEO"
   | "AUDIO";
-export const FileUploadQuestionTypesItemEnum = S.String;
+const FileUploadQuestionTypesItemEnum = S.String;
 
 export type FileUploadQuestionTypesItemEnumList = Array<
   FileUploadQuestionTypesItemEnum | (string & {})
 >;
-export const FileUploadQuestionTypesItemEnumList = /*@__PURE__*/ S.Array(
+const FileUploadQuestionTypesItemEnumList = /*@__PURE__*/ S.Array(
   FileUploadQuestionTypesItemEnum,
 ) as any as S.Schema<FileUploadQuestionTypesItemEnumList>;
 
@@ -405,7 +405,7 @@ export interface FileUploadQuestion {
   /** Maximum number of bytes allowed for any single file uploaded to this question. */
   maxFileSize?: string;
 }
-export const FileUploadQuestion = /*@__PURE__*/ S.suspend(() =>
+const FileUploadQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.optional(S.String),
     maxFiles: S.optional(S.Number),
@@ -419,7 +419,7 @@ export type RatingQuestionIconTypeEnum =
   | "STAR"
   | "HEART"
   | "THUMB_UP";
-export const RatingQuestionIconTypeEnum = S.String;
+const RatingQuestionIconTypeEnum = S.String;
 
 /** A rating question. The user has a range of icons to choose from. */
 export interface RatingQuestion {
@@ -428,7 +428,7 @@ export interface RatingQuestion {
   /** Required. The icon type to use for the rating. */
   iconType?: RatingQuestionIconTypeEnum | (string & {});
 }
-export const RatingQuestion = /*@__PURE__*/ S.suspend(() =>
+const RatingQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ratingScaleLevel: S.optional(S.Number),
     iconType: S.optional(RatingQuestionIconTypeEnum),
@@ -440,7 +440,7 @@ export interface TimeQuestion {
   /** `true` if the question is about an elapsed time. Otherwise it is about a time of day. */
   duration?: boolean;
 }
-export const TimeQuestion = /*@__PURE__*/ S.suspend(() =>
+const TimeQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.Boolean),
   }),
@@ -453,7 +453,7 @@ export interface DateQuestion {
   /** Whether to include the year as part of the question. */
   includeYear?: boolean;
 }
-export const DateQuestion = /*@__PURE__*/ S.suspend(() =>
+const DateQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeTime: S.optional(S.Boolean),
     includeYear: S.optional(S.Boolean),
@@ -471,7 +471,7 @@ export interface ScaleQuestion {
   /** The label to display describing the highest point on the scale. */
   highLabel?: string;
 }
-export const ScaleQuestion = /*@__PURE__*/ S.suspend(() =>
+const ScaleQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     low: S.optional(S.Number),
     lowLabel: S.optional(S.String),
@@ -485,7 +485,7 @@ export interface TextQuestion {
   /** Whether the question is a paragraph question or not. If not, the question is a short text question. */
   paragraph?: boolean;
 }
-export const TextQuestion = /*@__PURE__*/ S.suspend(() =>
+const TextQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paragraph: S.optional(S.Boolean),
   }),
@@ -516,7 +516,7 @@ export interface Question {
   /** A respondent can enter a free text response. */
   textQuestion?: TextQuestion;
 }
-export const Question = /*@__PURE__*/ S.suspend(() =>
+const Question = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     required: S.optional(S.Boolean),
     choiceQuestion: S.optional(ChoiceQuestion),
@@ -539,7 +539,7 @@ export interface QuestionItem {
   /** Required. The displayed question. */
   question?: Question;
 }
-export const QuestionItem = /*@__PURE__*/ S.suspend(() =>
+const QuestionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
     question: S.optional(Question),
@@ -547,7 +547,7 @@ export const QuestionItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuestionItem" }) as any as S.Schema<QuestionItem>;
 
 export type QuestionList = Array<Question>;
-export const QuestionList = /*@__PURE__*/ S.Array(Question) as any as S.Schema<QuestionList>;
+const QuestionList = /*@__PURE__*/ S.Array(Question) as any as S.Schema<QuestionList>;
 
 /** A grid of choices (radio or check boxes) with each row constituting a separate question. Each row has the same choices, which are shown as the columns. */
 export interface Grid {
@@ -556,7 +556,7 @@ export interface Grid {
   /** If `true`, the questions are randomly ordered. In other words, the rows appear in a different order for every respondent. */
   shuffleQuestions?: boolean;
 }
-export const Grid = /*@__PURE__*/ S.suspend(() =>
+const Grid = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(ChoiceQuestion),
     shuffleQuestions: S.optional(S.Boolean),
@@ -572,7 +572,7 @@ export interface QuestionGroupItem {
   /** The question group is a grid with rows of multiple choice questions that share the same options. When `grid` is set, all questions in the group must be of kind `row`. */
   grid?: Grid;
 }
-export const QuestionGroupItem = /*@__PURE__*/ S.suspend(() =>
+const QuestionGroupItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
     questions: S.optional(QuestionList),
@@ -582,8 +582,6 @@ export const QuestionGroupItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A page break. The title and description of this item are shown at the top of the new page. */
 export type PageBreakItem = TextItem;
-export const PageBreakItem = TextItem;
-
 /** A single item of the form. `kind` defines which kind of item it is. */
 export interface Item {
   /** Displays a title and description on the page. */
@@ -605,7 +603,7 @@ export interface Item {
   /** The item ID. On creation, it can be provided but the ID must not be already used in the form. If not provided, a new ID is assigned. */
   itemId?: string;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textItem: S.optional(TextItem),
     description: S.optional(S.String),
@@ -626,7 +624,7 @@ export interface CreateItemRequest {
   /** Required. Where to place the new item. */
   location?: Location;
 }
-export const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item: S.optional(Item),
     location: S.optional(Location),
@@ -642,7 +640,7 @@ export interface UpdateItemRequest {
   /** Required. The location identifying the item to update. */
   location?: Location;
 }
-export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     item: S.optional(Item),
@@ -655,14 +653,14 @@ export type FormSettingsEmailCollectionTypeEnum =
   | "DO_NOT_COLLECT"
   | "VERIFIED"
   | "RESPONDER_INPUT";
-export const FormSettingsEmailCollectionTypeEnum = S.String;
+const FormSettingsEmailCollectionTypeEnum = S.String;
 
 /** Settings related to quiz forms and grading. These must be updated with the UpdateSettingsRequest. */
 export interface QuizSettings {
   /** Whether this form is a quiz or not. When true, responses are graded based on question Grading. Upon setting to false, all question Grading is deleted. */
   isQuiz?: boolean;
 }
-export const QuizSettings = /*@__PURE__*/ S.suspend(() =>
+const QuizSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isQuiz: S.optional(S.Boolean),
   }),
@@ -675,7 +673,7 @@ export interface FormSettings {
   /** Settings related to quiz forms and grading. */
   quizSettings?: QuizSettings;
 }
-export const FormSettings = /*@__PURE__*/ S.suspend(() =>
+const FormSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailCollectionType: S.optional(FormSettingsEmailCollectionTypeEnum),
     quizSettings: S.optional(QuizSettings),
@@ -689,7 +687,7 @@ export interface UpdateSettingsRequest {
   /** Required. The settings to update with. */
   settings?: FormSettings;
 }
-export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     settings: S.optional(FormSettings),
@@ -701,7 +699,7 @@ export interface DeleteItemRequest {
   /** Required. The location of the item to delete. */
   location?: Location;
 }
-export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(Location),
   }),
@@ -722,7 +720,7 @@ export interface Request {
   /** Delete an item. */
   deleteItem?: DeleteItemRequest;
 }
-export const Request = /*@__PURE__*/ S.suspend(() =>
+const Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moveItem: S.optional(MoveItemRequest),
     updateFormInfo: S.optional(UpdateFormInfoRequest),
@@ -734,7 +732,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 export type RequestList = Array<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
+const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
 
 /** Provides control over how write requests are executed. */
 export interface WriteControl {
@@ -743,7 +741,7 @@ export interface WriteControl {
   /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
   requiredRevisionId?: string;
 }
-export const WriteControl = /*@__PURE__*/ S.suspend(() =>
+const WriteControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetRevisionId: S.optional(S.String),
     requiredRevisionId: S.optional(S.String),
@@ -759,7 +757,7 @@ export interface BatchUpdateFormRequest {
   /** Whether to return an updated version of the model in the response. */
   includeFormInResponse?: boolean;
 }
-export const BatchUpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(RequestList),
     writeControl: S.optional(WriteControl),
@@ -773,7 +771,7 @@ export interface BatchUpdateFormsRequest {
   /** Request body */
   body?: BatchUpdateFormRequest;
 }
-export const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdateFormRequest.pipe(T.HttpBody())),
@@ -787,7 +785,7 @@ export const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchUpdateFormsRequest" }) as any as S.Schema<BatchUpdateFormsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The result of creating an item. */
 export interface CreateItemResponse {
@@ -796,7 +794,7 @@ export interface CreateItemResponse {
   /** The ID of the created item. */
   itemId?: string;
 }
-export const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionId: S.optional(StringList),
     itemId: S.optional(S.String),
@@ -808,17 +806,17 @@ export interface Response {
   /** The result of creating an item. */
   createItem?: CreateItemResponse;
 }
-export const Response = /*@__PURE__*/ S.suspend(() =>
+const Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createItem: S.optional(CreateItemResponse),
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 export type ResponseList = Array<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
+const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
 
 export type ItemList = Array<Item>;
-export const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
+const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
 
 /** The publishing state of a form. */
 export interface PublishState {
@@ -827,7 +825,7 @@ export interface PublishState {
   /** Required. Whether the form is published and visible to others. */
   isPublished?: boolean;
 }
-export const PublishState = /*@__PURE__*/ S.suspend(() =>
+const PublishState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAcceptingResponses: S.optional(S.Boolean),
     isPublished: S.optional(S.Boolean),
@@ -839,7 +837,7 @@ export interface PublishSettings {
   /** Optional. The publishing state of a form. When updating `publish_state`, both `is_published` and `is_accepting_responses` must be set. However, setting `is_accepting_responses` to `true` and `is_published` to `false` isn't supported and returns an error. */
   publishState?: PublishState;
 }
-export const PublishSettings = /*@__PURE__*/ S.suspend(() =>
+const PublishSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishState: S.optional(PublishState),
   }),
@@ -864,7 +862,7 @@ export interface Form {
   /** Required. The title and description of the form. */
   info?: Info;
 }
-export const Form = /*@__PURE__*/ S.suspend(() =>
+const Form = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.optional(S.String),
     linkedSheetId: S.optional(S.String),
@@ -886,7 +884,7 @@ export interface BatchUpdateFormResponse {
   /** The updated write control after applying the request. */
   writeControl?: WriteControl;
 }
-export const BatchUpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replies: S.optional(ResponseList),
     form: S.optional(Form),
@@ -900,7 +898,7 @@ export interface CreateFormsRequest {
   /** Request body */
   body?: Form;
 }
-export const CreateFormsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFormsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unpublished: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Form.pipe(T.HttpBody())),
@@ -912,17 +910,17 @@ export type WatchErrorTypeEnum =
   | "PROJECT_NOT_AUTHORIZED"
   | "NO_USER_ACCESS"
   | "OTHER_ERRORS";
-export const WatchErrorTypeEnum = S.String;
+const WatchErrorTypeEnum = S.String;
 
 export type WatchStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
-export const WatchStateEnum = S.String;
+const WatchStateEnum = S.String;
 
 /** A Pub/Sub topic. */
 export interface CloudPubsubTopic {
   /** Required. A fully qualified Pub/Sub topic name to publish the events to. This topic must be owned by the calling project and already exist in Pub/Sub. */
   topicName?: string;
 }
-export const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
+const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
   }),
@@ -933,14 +931,14 @@ export interface WatchTarget {
   /** A Pub/Sub topic. To receive notifications, the topic must grant publish privileges to the Forms service account `serviceAccount:forms-notifications@system.gserviceaccount.com`. Only the project that owns a topic may create a watch with it. Pub/Sub delivery guarantees should be considered. */
   topic?: CloudPubsubTopic;
 }
-export const WatchTarget = /*@__PURE__*/ S.suspend(() =>
+const WatchTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(CloudPubsubTopic),
   }),
 ).annotate({ identifier: "WatchTarget" }) as any as S.Schema<WatchTarget>;
 
 export type WatchEventTypeEnum = "EVENT_TYPE_UNSPECIFIED" | "SCHEMA" | "RESPONSES";
-export const WatchEventTypeEnum = S.String;
+const WatchEventTypeEnum = S.String;
 
 /** A watch for events for a form. When the designated event happens, a notification will be published to the specified target. The notification's attributes will include a `formId` key that has the ID of the watched form and an `eventType` key that has the string of the type. Messages are sent with at-least-once delivery and are only dropped in extraordinary circumstances. Typically all notifications should be reliably delivered within a few seconds; however, in some situations notifications may be delayed. A watch expires seven days after it is created unless it is renewed with watches.renew */
 export interface Watch {
@@ -959,7 +957,7 @@ export interface Watch {
   /** Required. Which event type to watch for. */
   eventType?: WatchEventTypeEnum | (string & {});
 }
-export const Watch = /*@__PURE__*/ S.suspend(() =>
+const Watch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorType: S.optional(WatchErrorTypeEnum),
     expireTime: S.optional(S.String),
@@ -978,7 +976,7 @@ export interface CreateWatchRequest {
   /** Required. The watch object. No ID should be set on this object; use `watch_id` instead. */
   watch?: Watch;
 }
-export const CreateWatchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchId: S.optional(S.String),
     watch: S.optional(Watch),
@@ -991,7 +989,7 @@ export interface CreateFormsWatchesRequest {
   /** Request body */
   body?: CreateWatchRequest;
 }
-export const CreateFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.String.pipe(T.Label()),
     body: S.optional(CreateWatchRequest.pipe(T.HttpBody())),
@@ -1012,7 +1010,7 @@ export interface DeleteFormsWatchesRequest {
   /** Required. The ID of the Form. */
   formId: string;
 }
-export const DeleteFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchId: S.String.pipe(T.Label()),
     formId: S.String.pipe(T.Label()),
@@ -1029,13 +1027,13 @@ export const DeleteFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = TextItem as any as S.Schema<Empty>;
+const Empty = TextItem as any as S.Schema<Empty>;
 
 export interface GetFormsRequest {
   /** Required. The form ID. */
   formId: string;
 }
-export const GetFormsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFormsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1049,7 +1047,7 @@ export interface GetFormsResponsesRequest {
   /** Required. The response ID within the form. */
   responseId: string;
 }
-export const GetFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.String.pipe(T.Label()),
     responseId: S.String.pipe(T.Label()),
@@ -1071,7 +1069,7 @@ export interface Grade {
   /** Output only. Whether the question was answered correctly or not. A zero-point score is not enough to infer incorrectness, since a correctly answered question could be worth zero points. */
   correct?: boolean;
 }
-export const Grade = /*@__PURE__*/ S.suspend(() =>
+const Grade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedback: S.optional(Feedback),
     score: S.optional(S.Number),
@@ -1088,7 +1086,7 @@ export interface FileUploadAnswer {
   /** Output only. The ID of the Google Drive file. */
   fileId?: string;
 }
-export const FileUploadAnswer = /*@__PURE__*/ S.suspend(() =>
+const FileUploadAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileName: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -1097,7 +1095,7 @@ export const FileUploadAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileUploadAnswer" }) as any as S.Schema<FileUploadAnswer>;
 
 export type FileUploadAnswerList = Array<FileUploadAnswer>;
-export const FileUploadAnswerList = /*@__PURE__*/ S.Array(
+const FileUploadAnswerList = /*@__PURE__*/ S.Array(
   FileUploadAnswer,
 ) as any as S.Schema<FileUploadAnswerList>;
 
@@ -1106,7 +1104,7 @@ export interface FileUploadAnswers {
   /** Output only. All submitted files for a FileUpload question. */
   answers?: FileUploadAnswerList;
 }
-export const FileUploadAnswers = /*@__PURE__*/ S.suspend(() =>
+const FileUploadAnswers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answers: S.optional(FileUploadAnswerList),
   }),
@@ -1117,17 +1115,17 @@ export interface TextAnswer {
   /** Output only. The answer value. Formatting used for different kinds of question: * ChoiceQuestion * `RADIO` or `DROP_DOWN`: A single string corresponding to the option that was selected. * `CHECKBOX`: Multiple strings corresponding to each option that was selected. * TextQuestion: The text that the user entered. * ScaleQuestion: A string containing the number that was selected. * DateQuestion * Without time or year: MM-DD e.g. "05-19" * With year: YYYY-MM-DD e.g. "1986-05-19" * With time: MM-DD HH:MM e.g. "05-19 14:51" * With year and time: YYYY-MM-DD HH:MM e.g. "1986-05-19 14:51" * TimeQuestion: String with time or duration in HH:MM format e.g. "14:51" * RowQuestion within QuestionGroupItem: The answer for each row of a QuestionGroupItem is represented as a separate Answer. Each will contain one string for `RADIO`-type choices or multiple strings for `CHECKBOX` choices. */
   value?: string;
 }
-export const TextAnswer = CorrectAnswer as any as S.Schema<TextAnswer>;
+const TextAnswer = CorrectAnswer as any as S.Schema<TextAnswer>;
 
 export type TextAnswerList = Array<TextAnswer>;
-export const TextAnswerList = /*@__PURE__*/ S.Array(TextAnswer) as any as S.Schema<TextAnswerList>;
+const TextAnswerList = /*@__PURE__*/ S.Array(TextAnswer) as any as S.Schema<TextAnswerList>;
 
 /** A question's answers as text. */
 export interface TextAnswers {
   /** Output only. Answers to a question. For multiple-value ChoiceQuestions, each answer is a separate value. */
   answers?: TextAnswerList;
 }
-export const TextAnswers = /*@__PURE__*/ S.suspend(() =>
+const TextAnswers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answers: S.optional(TextAnswerList),
   }),
@@ -1144,7 +1142,7 @@ export interface Answer {
   /** Output only. The question's ID. See also Question.question_id. */
   questionId?: string;
 }
-export const Answer = /*@__PURE__*/ S.suspend(() =>
+const Answer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grade: S.optional(Grade),
     fileUploadAnswers: S.optional(FileUploadAnswers),
@@ -1154,7 +1152,7 @@ export const Answer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
 export type AnswerMap = { [key: string]: Answer | undefined };
-export const AnswerMap = /*@__PURE__*/ S.Record(S.String, Answer) as any as S.Schema<AnswerMap>;
+const AnswerMap = /*@__PURE__*/ S.Record(S.String, Answer) as any as S.Schema<AnswerMap>;
 
 /** A form response. */
 export interface FormResponse {
@@ -1173,7 +1171,7 @@ export interface FormResponse {
   /** Output only. The total number of points the respondent received for their submission Only set if the form was a quiz and the response was graded. This includes points automatically awarded via autograding adjusted by any manual corrections entered by the form owner. */
   totalScore?: number;
 }
-export const FormResponse = /*@__PURE__*/ S.suspend(() =>
+const FormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     respondentEmail: S.optional(S.String),
@@ -1195,7 +1193,7 @@ export interface ListFormsResponsesRequest {
   /** Required. ID of the Form whose responses to list. */
   formId: string;
 }
-export const ListFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1213,9 +1211,7 @@ export const ListFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFormsResponsesRequest>;
 
 export type FormResponseList = Array<FormResponse>;
-export const FormResponseList = /*@__PURE__*/ S.Array(
-  FormResponse,
-) as any as S.Schema<FormResponseList>;
+const FormResponseList = /*@__PURE__*/ S.Array(FormResponse) as any as S.Schema<FormResponseList>;
 
 /** Response to a ListFormResponsesRequest. */
 export interface ListFormResponsesResponse {
@@ -1224,7 +1220,7 @@ export interface ListFormResponsesResponse {
   /** If set, there are more responses. To get the next page of responses, provide this as `page_token` in a future request. */
   nextPageToken?: string;
 }
-export const ListFormResponsesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFormResponsesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responses: S.optional(FormResponseList),
     nextPageToken: S.optional(S.String),
@@ -1237,7 +1233,7 @@ export interface ListFormsWatchesRequest {
   /** Required. ID of the Form whose watches to list. */
   formId: string;
 }
-export const ListFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1250,14 +1246,14 @@ export const ListFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFormsWatchesRequest" }) as any as S.Schema<ListFormsWatchesRequest>;
 
 export type WatchList = Array<Watch>;
-export const WatchList = /*@__PURE__*/ S.Array(Watch) as any as S.Schema<WatchList>;
+const WatchList = /*@__PURE__*/ S.Array(Watch) as any as S.Schema<WatchList>;
 
 /** The response of a ListWatchesRequest. */
 export interface ListWatchesResponse {
   /** The returned watches. */
   watches?: WatchList;
 }
-export const ListWatchesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWatchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watches: S.optional(WatchList),
   }),
@@ -1265,8 +1261,6 @@ export const ListWatchesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Renew an existing Watch for seven days. */
 export type RenewWatchRequest = TextItem;
-export const RenewWatchRequest = TextItem;
-
 export interface RenewFormsWatchesRequest {
   /** Required. The ID of the Watch to renew. */
   watchId: string;
@@ -1275,7 +1269,7 @@ export interface RenewFormsWatchesRequest {
   /** Request body */
   body?: TextItem;
 }
-export const RenewFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchId: S.String.pipe(T.Label()),
     formId: S.String.pipe(T.Label()),
@@ -1296,7 +1290,7 @@ export interface SetPublishSettingsRequest {
   /** Required. The desired publish settings to apply to the form. */
   publishSettings?: PublishSettings;
 }
-export const SetPublishSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPublishSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     publishSettings: S.optional(PublishSettings),
@@ -1311,7 +1305,7 @@ export interface SetPublishSettingsFormsRequest {
   /** Request body */
   body?: SetPublishSettingsRequest;
 }
-export const SetPublishSettingsFormsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPublishSettingsFormsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.String.pipe(T.Label()),
     body: S.optional(SetPublishSettingsRequest.pipe(T.HttpBody())),
@@ -1333,7 +1327,7 @@ export interface SetPublishSettingsResponse {
   /** The publish settings of the form. */
   publishSettings?: PublishSettings;
 }
-export const SetPublishSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const SetPublishSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formId: S.optional(S.String),
     publishSettings: S.optional(PublishSettings),

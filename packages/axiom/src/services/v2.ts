@@ -57,7 +57,7 @@ export class UnprocessableEntity
 
 /** array<string> of dataset names for which the annotation appears on charts */
 export type CreateAnnotationRequestDatasetsList = Array<string>;
-export const CreateAnnotationRequestDatasetsList = /*@__PURE__*/ S.Array(
+const CreateAnnotationRequestDatasetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAnnotationRequestDatasetsList>;
 
@@ -77,7 +77,7 @@ export interface CreateAnnotationRequest {
   /** URL relevant for the event marked by the annotation. For example, link to GitHub pull request. */
   url?: string;
 }
-export const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: CreateAnnotationRequestDatasetsList,
     description: S.optional(S.String),
@@ -91,7 +91,7 @@ export const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** array<string> of dataset names for which the annotation appears on charts */
 export type AnnotationDatasetsList = Array<string>;
-export const AnnotationDatasetsList =
+const AnnotationDatasetsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<AnnotationDatasetsList>;
 
 export interface Annotation {
@@ -111,7 +111,7 @@ export interface Annotation {
   /** URL relevant for the event marked by the annotation. For example, link to GitHub pull request. */
   url?: string;
 }
-export const Annotation = /*@__PURE__*/ S.suspend(() =>
+const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: AnnotationDatasetsList,
     description: S.optional(S.String),
@@ -125,84 +125,70 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export type DatasetCapabilitiesValueDataItem = "delete";
-export const DatasetCapabilitiesValueDataItem = S.String;
+const DatasetCapabilitiesValueDataItem = S.String;
 
 /** Data Management capability */
 export type DatasetCapabilitiesValueDataList = Array<
   DatasetCapabilitiesValueDataItem | (string & {})
 >;
-export const DatasetCapabilitiesValueDataList = /*@__PURE__*/ S.Array(
+const DatasetCapabilitiesValueDataList = /*@__PURE__*/ S.Array(
   DatasetCapabilitiesValueDataItem,
 ) as any as S.Schema<DatasetCapabilitiesValueDataList>;
 
 export type DatasetCapabilitiesValueIngestItem = "create";
-export const DatasetCapabilitiesValueIngestItem = S.String;
-
 /** Ingest capability */
 export type DatasetCapabilitiesValueIngestList = Array<
   DatasetCapabilitiesValueIngestItem | (string & {})
 >;
-export const DatasetCapabilitiesValueIngestList =
+const DatasetCapabilitiesValueIngestList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueIngestList>;
 
 export type DatasetCapabilitiesValueQueryItem = "read";
-export const DatasetCapabilitiesValueQueryItem = S.String;
-
 /** Query capability */
 export type DatasetCapabilitiesValueQueryList = Array<
   DatasetCapabilitiesValueQueryItem | (string & {})
 >;
-export const DatasetCapabilitiesValueQueryList =
+const DatasetCapabilitiesValueQueryList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueQueryList>;
 
 export type DatasetCapabilitiesValueShareItem = "create" | "read" | "delete";
-export const DatasetCapabilitiesValueShareItem = S.String;
-
 /** Sharing dataset capability */
 export type DatasetCapabilitiesValueShareList = Array<
   DatasetCapabilitiesValueShareItem | (string & {})
 >;
-export const DatasetCapabilitiesValueShareList =
+const DatasetCapabilitiesValueShareList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueShareList>;
 
 export type DatasetCapabilitiesValueStarredQueriesItem = "create" | "read" | "update" | "delete";
-export const DatasetCapabilitiesValueStarredQueriesItem = S.String;
-
 /** Starred queries capability */
 export type DatasetCapabilitiesValueStarredQueriesList = Array<
   DatasetCapabilitiesValueStarredQueriesItem | (string & {})
 >;
-export const DatasetCapabilitiesValueStarredQueriesList =
+const DatasetCapabilitiesValueStarredQueriesList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueStarredQueriesList>;
 
 export type DatasetCapabilitiesValueTrimItem = "update";
-export const DatasetCapabilitiesValueTrimItem = S.String;
-
 /** Data Trimming capability */
 export type DatasetCapabilitiesValueTrimList = Array<
   DatasetCapabilitiesValueTrimItem | (string & {})
 >;
-export const DatasetCapabilitiesValueTrimList =
+const DatasetCapabilitiesValueTrimList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueTrimList>;
 
 export type DatasetCapabilitiesValueVacuumItem = "update";
-export const DatasetCapabilitiesValueVacuumItem = S.String;
-
 /** Field Vacuuming capability */
 export type DatasetCapabilitiesValueVacuumList = Array<
   DatasetCapabilitiesValueVacuumItem | (string & {})
 >;
-export const DatasetCapabilitiesValueVacuumList =
+const DatasetCapabilitiesValueVacuumList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueVacuumList>;
 
 export type DatasetCapabilitiesValueVirtualFieldsItem = "create" | "read" | "update" | "delete";
-export const DatasetCapabilitiesValueVirtualFieldsItem = S.String;
-
 /** Virtual fields capability */
 export type DatasetCapabilitiesValueVirtualFieldsList = Array<
   DatasetCapabilitiesValueVirtualFieldsItem | (string & {})
 >;
-export const DatasetCapabilitiesValueVirtualFieldsList =
+const DatasetCapabilitiesValueVirtualFieldsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<DatasetCapabilitiesValueVirtualFieldsList>;
 
 export interface DatasetCapabilitiesValue {
@@ -223,7 +209,7 @@ export interface DatasetCapabilitiesValue {
   /** Virtual fields capability */
   virtualFields?: DatasetCapabilitiesValueVirtualFieldsList;
 }
-export const DatasetCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
+const DatasetCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DatasetCapabilitiesValueDataList),
     ingest: S.optional(DatasetCapabilitiesValueIngestList),
@@ -237,133 +223,103 @@ export const DatasetCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetCapabilitiesValue" }) as any as S.Schema<DatasetCapabilitiesValue>;
 
 export type DatasetCapabilities = { [key: string]: DatasetCapabilitiesValue | undefined };
-export const DatasetCapabilities = /*@__PURE__*/ S.Record(
+const DatasetCapabilities = /*@__PURE__*/ S.Record(
   S.String,
   DatasetCapabilitiesValue,
 ) as any as S.Schema<DatasetCapabilities>;
 
 export type OrgCapabilitiesAnnotationsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesAnnotationsItem = S.String;
-
 /** Annotations capability */
 export type OrgCapabilitiesAnnotationsList = Array<OrgCapabilitiesAnnotationsItem | (string & {})>;
-export const OrgCapabilitiesAnnotationsList =
+const OrgCapabilitiesAnnotationsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesAnnotationsList>;
 
 export type OrgCapabilitiesApiTokensItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesApiTokensItem = S.String;
-
 /** API tokens capability */
 export type OrgCapabilitiesApiTokensList = Array<OrgCapabilitiesApiTokensItem | (string & {})>;
-export const OrgCapabilitiesApiTokensList =
+const OrgCapabilitiesApiTokensList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesApiTokensList>;
 
 export type OrgCapabilitiesAuditLogItem = "read";
-export const OrgCapabilitiesAuditLogItem = S.String;
-
 /** Audit Log capability */
 export type OrgCapabilitiesAuditLogList = Array<OrgCapabilitiesAuditLogItem | (string & {})>;
-export const OrgCapabilitiesAuditLogList =
+const OrgCapabilitiesAuditLogList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesAuditLogList>;
 
 export type OrgCapabilitiesBillingItem = "read" | "update";
-export const OrgCapabilitiesBillingItem = S.String;
-
 /** Billing capability */
 export type OrgCapabilitiesBillingList = Array<OrgCapabilitiesBillingItem | (string & {})>;
-export const OrgCapabilitiesBillingList =
+const OrgCapabilitiesBillingList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesBillingList>;
 
 export type OrgCapabilitiesDashboardsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesDashboardsItem = S.String;
-
 /** Dashboards capability */
 export type OrgCapabilitiesDashboardsList = Array<OrgCapabilitiesDashboardsItem | (string & {})>;
-export const OrgCapabilitiesDashboardsList =
+const OrgCapabilitiesDashboardsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesDashboardsList>;
 
 export type OrgCapabilitiesDatasetsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesDatasetsItem = S.String;
-
 /** Datasets capability */
 export type OrgCapabilitiesDatasetsList = Array<OrgCapabilitiesDatasetsItem | (string & {})>;
-export const OrgCapabilitiesDatasetsList =
+const OrgCapabilitiesDatasetsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesDatasetsList>;
 
 export type OrgCapabilitiesEndpointsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesEndpointsItem = S.String;
-
 /** Endpoints capability */
 export type OrgCapabilitiesEndpointsList = Array<OrgCapabilitiesEndpointsItem | (string & {})>;
-export const OrgCapabilitiesEndpointsList =
+const OrgCapabilitiesEndpointsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesEndpointsList>;
 
 export type OrgCapabilitiesFlowsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesFlowsItem = S.String;
-
 /** Flows capability */
 export type OrgCapabilitiesFlowsList = Array<OrgCapabilitiesFlowsItem | (string & {})>;
-export const OrgCapabilitiesFlowsList =
+const OrgCapabilitiesFlowsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesFlowsList>;
 
 export type OrgCapabilitiesIntegrationsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesIntegrationsItem = S.String;
-
 /** Integrations capability */
 export type OrgCapabilitiesIntegrationsList = Array<
   OrgCapabilitiesIntegrationsItem | (string & {})
 >;
-export const OrgCapabilitiesIntegrationsList =
+const OrgCapabilitiesIntegrationsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesIntegrationsList>;
 
 export type OrgCapabilitiesMonitorsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesMonitorsItem = S.String;
-
 /** Monitors capability */
 export type OrgCapabilitiesMonitorsList = Array<OrgCapabilitiesMonitorsItem | (string & {})>;
-export const OrgCapabilitiesMonitorsList =
+const OrgCapabilitiesMonitorsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesMonitorsList>;
 
 export type OrgCapabilitiesNotifiersItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesNotifiersItem = S.String;
-
 /** Notifiers capability */
 export type OrgCapabilitiesNotifiersList = Array<OrgCapabilitiesNotifiersItem | (string & {})>;
-export const OrgCapabilitiesNotifiersList =
+const OrgCapabilitiesNotifiersList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesNotifiersList>;
 
 export type OrgCapabilitiesRbacItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesRbacItem = S.String;
-
 /** Access control capability */
 export type OrgCapabilitiesRbacList = Array<OrgCapabilitiesRbacItem | (string & {})>;
-export const OrgCapabilitiesRbacList =
+const OrgCapabilitiesRbacList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesRbacList>;
 
 export type OrgCapabilitiesSharedAccessKeysItem = "read" | "update";
-export const OrgCapabilitiesSharedAccessKeysItem = S.String;
-
 /** Shared access keys capability */
 export type OrgCapabilitiesSharedAccessKeysList = Array<
   OrgCapabilitiesSharedAccessKeysItem | (string & {})
 >;
-export const OrgCapabilitiesSharedAccessKeysList =
+const OrgCapabilitiesSharedAccessKeysList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesSharedAccessKeysList>;
 
 export type OrgCapabilitiesUsersItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesUsersItem = S.String;
-
 /** Users capability */
 export type OrgCapabilitiesUsersList = Array<OrgCapabilitiesUsersItem | (string & {})>;
-export const OrgCapabilitiesUsersList =
+const OrgCapabilitiesUsersList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesUsersList>;
 
 export type OrgCapabilitiesViewsItem = "create" | "read" | "update" | "delete";
-export const OrgCapabilitiesViewsItem = S.String;
-
 /** Views capability */
 export type OrgCapabilitiesViewsList = Array<OrgCapabilitiesViewsItem | (string & {})>;
-export const OrgCapabilitiesViewsList =
+const OrgCapabilitiesViewsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<OrgCapabilitiesViewsList>;
 
 export interface OrgCapabilities {
@@ -398,7 +354,7 @@ export interface OrgCapabilities {
   /** Views capability */
   views?: OrgCapabilitiesViewsList;
 }
-export const OrgCapabilities = /*@__PURE__*/ S.suspend(() =>
+const OrgCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(OrgCapabilitiesAnnotationsList),
     apiTokens: S.optional(OrgCapabilitiesApiTokensList),
@@ -419,19 +375,15 @@ export const OrgCapabilities = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgCapabilities" }) as any as S.Schema<OrgCapabilities>;
 
 export type ViewCapabilitiesValueQueryItem = "read";
-export const ViewCapabilitiesValueQueryItem = S.String;
-
 /** Query capability */
 export type ViewCapabilitiesValueQueryList = Array<ViewCapabilitiesValueQueryItem | (string & {})>;
-export const ViewCapabilitiesValueQueryList =
+const ViewCapabilitiesValueQueryList =
   DatasetCapabilitiesValueDataList as any as S.Schema<ViewCapabilitiesValueQueryList>;
 
 export type ViewCapabilitiesValueShareItem = "create" | "read" | "delete";
-export const ViewCapabilitiesValueShareItem = S.String;
-
 /** Sharing view capability */
 export type ViewCapabilitiesValueShareList = Array<ViewCapabilitiesValueShareItem | (string & {})>;
-export const ViewCapabilitiesValueShareList =
+const ViewCapabilitiesValueShareList =
   DatasetCapabilitiesValueDataList as any as S.Schema<ViewCapabilitiesValueShareList>;
 
 export interface ViewCapabilitiesValue {
@@ -440,7 +392,7 @@ export interface ViewCapabilitiesValue {
   /** Sharing view capability */
   share?: ViewCapabilitiesValueShareList;
 }
-export const ViewCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
+const ViewCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(ViewCapabilitiesValueQueryList),
     share: S.optional(ViewCapabilitiesValueShareList),
@@ -448,7 +400,7 @@ export const ViewCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewCapabilitiesValue" }) as any as S.Schema<ViewCapabilitiesValue>;
 
 export type ViewCapabilities = { [key: string]: ViewCapabilitiesValue | undefined };
-export const ViewCapabilities = /*@__PURE__*/ S.Record(
+const ViewCapabilities = /*@__PURE__*/ S.Record(
   S.String,
   ViewCapabilitiesValue,
 ) as any as S.Schema<ViewCapabilities>;
@@ -464,7 +416,7 @@ export interface CreateAPITokenRequest {
   orgCapabilities?: OrgCapabilities;
   viewCapabilities?: ViewCapabilities;
 }
-export const CreateAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: S.optional(DatasetCapabilities),
     description: S.optional(S.String),
@@ -490,7 +442,7 @@ export interface CreateAPITokenResponse {
   viewCapabilities?: ViewCapabilities;
   token?: string;
 }
-export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: DatasetCapabilities,
     description: S.optional(S.String),
@@ -505,25 +457,17 @@ export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAPITokenResponse" }) as any as S.Schema<CreateAPITokenResponse>;
 
 export type TimeSeriesChartType = "TimeSeries";
-export const TimeSeriesChartType = S.String;
-
 /** Controls how empty intervals are rendered in time series charts. `auto` infers from the query, `null` leaves gaps, `span` connects adjacent points, `zero` fills with zero. */
 export type TimeSeriesQueryOptionsDisplayNull = "auto" | "null" | "span" | "zero" | "";
-export const TimeSeriesQueryOptionsDisplayNull = S.String;
-
 export type BooleanString = "true" | "false" | "";
-export const BooleanString = S.String;
+const BooleanString = S.String;
 
 export type TimeSeriesQueryOptionsTimeSeriesVariant = "area" | "bars" | "line" | "lines" | "";
-export const TimeSeriesQueryOptionsTimeSeriesVariant = S.String;
-
 export type TimeSeriesQueryOptionsTimeSeriesView =
   | "charts"
   | "resultsTable"
   | "charts|resultsTable"
   | "";
-export const TimeSeriesQueryOptionsTimeSeriesView = S.String;
-
 export interface TimeSeriesQueryOptions {
   /** Controls how empty intervals are rendered in time series charts. `auto` infers from the query, `null` leaves gaps, `span` connects adjacent points, `zero` fills with zero. */
   displayNull?: TimeSeriesQueryOptionsDisplayNull | (string & {});
@@ -533,162 +477,59 @@ export interface TimeSeriesQueryOptions {
   timeSeriesVariant?: TimeSeriesQueryOptionsTimeSeriesVariant | (string & {});
   timeSeriesView?: TimeSeriesQueryOptionsTimeSeriesView | (string & {});
 }
-export const TimeSeriesQueryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayNull: S.optional(TimeSeriesQueryOptionsDisplayNull),
-    overlayCharts: S.optional(BooleanString),
-    shownColumns: S.optional(S.String),
-    timeSeriesVariant: S.optional(TimeSeriesQueryOptionsTimeSeriesVariant),
-    timeSeriesView: S.optional(TimeSeriesQueryOptionsTimeSeriesView),
-  }),
-).annotate({ identifier: "TimeSeriesQueryOptions" }) as any as S.Schema<TimeSeriesQueryOptions>;
-
 export interface TimeSeriesNonMetricsAplQuery {
   apl: string;
   queryOptions?: TimeSeriesQueryOptions;
 }
-export const TimeSeriesNonMetricsAplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apl: S.String,
-    queryOptions: S.optional(TimeSeriesQueryOptions),
-  }),
-).annotate({
-  identifier: "TimeSeriesNonMetricsAplQuery",
-}) as any as S.Schema<TimeSeriesNonMetricsAplQuery>;
-
 export interface TimeSeriesNativeMplQuery {
   mpl: string;
   queryOptions?: TimeSeriesQueryOptions;
 }
-export const TimeSeriesNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mpl: S.String,
-    queryOptions: S.optional(TimeSeriesQueryOptions),
-  }),
-).annotate({ identifier: "TimeSeriesNativeMplQuery" }) as any as S.Schema<TimeSeriesNativeMplQuery>;
-
 export type TimeSeriesChartQuery = TimeSeriesNonMetricsAplQuery | TimeSeriesNativeMplQuery;
-export const TimeSeriesChartQuery = S.Unknown as any as S.Schema<TimeSeriesChartQuery>;
-
 export interface TimeSeriesChart {
   id: string;
   type: TimeSeriesChartType;
   name?: string;
   query: TimeSeriesChartQuery;
 }
-export const TimeSeriesChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: TimeSeriesChartType,
-    name: S.optional(S.String),
-    query: TimeSeriesChartQuery,
-  }),
-).annotate({ identifier: "TimeSeriesChart" }) as any as S.Schema<TimeSeriesChart>;
-
 export type HeatmapChartType = "Heatmap";
-export const HeatmapChartType = S.String;
-
 export type HeatmapQueryOptionsTimeSeriesView =
   | "charts"
   | "resultsTable"
   | "charts|resultsTable"
   | "";
-export const HeatmapQueryOptionsTimeSeriesView = S.String;
-
 export interface HeatmapQueryOptions {
   timeSeriesView?: HeatmapQueryOptionsTimeSeriesView | (string & {});
 }
-export const HeatmapQueryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeSeriesView: S.optional(HeatmapQueryOptionsTimeSeriesView),
-  }),
-).annotate({ identifier: "HeatmapQueryOptions" }) as any as S.Schema<HeatmapQueryOptions>;
-
 export interface HeatmapNonMetricsAplQuery {
   apl: string;
   queryOptions?: HeatmapQueryOptions;
 }
-export const HeatmapNonMetricsAplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apl: S.String,
-    queryOptions: S.optional(HeatmapQueryOptions),
-  }),
-).annotate({
-  identifier: "HeatmapNonMetricsAplQuery",
-}) as any as S.Schema<HeatmapNonMetricsAplQuery>;
-
 export interface HeatmapNativeMplQuery {
   mpl: string;
   queryOptions?: HeatmapQueryOptions;
 }
-export const HeatmapNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mpl: S.String,
-    queryOptions: S.optional(HeatmapQueryOptions),
-  }),
-).annotate({ identifier: "HeatmapNativeMplQuery" }) as any as S.Schema<HeatmapNativeMplQuery>;
-
 export type HeatmapChartQuery = HeatmapNonMetricsAplQuery | HeatmapNativeMplQuery;
-export const HeatmapChartQuery = S.Unknown as any as S.Schema<HeatmapChartQuery>;
-
 export interface HeatmapChart {
   id: string;
   type: HeatmapChartType;
   name?: string;
   query: HeatmapChartQuery;
 }
-export const HeatmapChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: HeatmapChartType,
-    name: S.optional(S.String),
-    query: HeatmapChartQuery,
-  }),
-).annotate({ identifier: "HeatmapChart" }) as any as S.Schema<HeatmapChart>;
-
 export type LogStreamChartType = "LogStream";
-export const LogStreamChartType = S.String;
-
 export interface SimpleNonMetricsAplQuery {
   apl: string;
 }
-export const SimpleNonMetricsAplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apl: S.String,
-  }),
-).annotate({ identifier: "SimpleNonMetricsAplQuery" }) as any as S.Schema<SimpleNonMetricsAplQuery>;
-
 export interface SimpleNativeMplQuery {
   mpl: string;
 }
-export const SimpleNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mpl: S.String,
-  }),
-).annotate({ identifier: "SimpleNativeMplQuery" }) as any as S.Schema<SimpleNativeMplQuery>;
-
 export type SimpleChartQuery = SimpleNonMetricsAplQuery | SimpleNativeMplQuery;
-export const SimpleChartQuery = S.Unknown as any as S.Schema<SimpleChartQuery>;
-
 export interface AdvancedColumnSetting {
   name: string;
   width?: number;
 }
-export const AdvancedColumnSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    width: S.optional(S.Number),
-  }),
-).annotate({ identifier: "AdvancedColumnSetting" }) as any as S.Schema<AdvancedColumnSetting>;
-
 export type ColumnSetting = string | AdvancedColumnSetting;
-export const ColumnSetting = S.Unknown as any as S.Schema<ColumnSetting>;
-
 export type TableSettingsColumnsList = Array<ColumnSetting>;
-export const TableSettingsColumnsList = /*@__PURE__*/ S.Array(
-  ColumnSetting,
-) as any as S.Schema<TableSettingsColumnsList>;
-
 export interface DatasetStreamSettings {
   fontSize?: string;
   highlightSeverity?: boolean;
@@ -699,30 +540,10 @@ export interface DatasetStreamSettings {
   hideNulls?: boolean;
   fitColumns?: boolean;
 }
-export const DatasetStreamSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fontSize: S.optional(S.String),
-    highlightSeverity: S.optional(S.Boolean),
-    showRaw: S.optional(S.Boolean),
-    showEvent: S.optional(S.Boolean),
-    showTimestamp: S.optional(S.Boolean),
-    wrapLines: S.optional(S.Boolean),
-    hideNulls: S.optional(S.Boolean),
-    fitColumns: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DatasetStreamSettings" }) as any as S.Schema<DatasetStreamSettings>;
-
 export interface TableSettings {
   columns?: TableSettingsColumnsList;
   settings?: DatasetStreamSettings;
 }
-export const TableSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(TableSettingsColumnsList),
-    settings: S.optional(DatasetStreamSettings),
-  }),
-).annotate({ identifier: "TableSettings" }) as any as S.Schema<TableSettings>;
-
 export interface LogStreamChart {
   id: string;
   type: LogStreamChartType;
@@ -730,48 +551,21 @@ export interface LogStreamChart {
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
 }
-export const LogStreamChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: LogStreamChartType,
-    name: S.optional(S.String),
-    query: SimpleChartQuery,
-    tableSettings: S.optional(TableSettings),
-  }),
-).annotate({ identifier: "LogStreamChart" }) as any as S.Schema<LogStreamChart>;
-
 export type PieChartType = "Pie";
-export const PieChartType = S.String;
-
 export interface PieChart {
   id: string;
   type: PieChartType;
   name?: string;
   query: SimpleChartQuery;
 }
-export const PieChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: PieChartType,
-    name: S.optional(S.String),
-    query: SimpleChartQuery,
-  }),
-).annotate({ identifier: "PieChart" }) as any as S.Schema<PieChart>;
-
 export type ScatterChartType = "Scatter";
-export const ScatterChartType = S.String;
-
 export interface ScatterChart {
   id: string;
   type: ScatterChartType;
   name?: string;
   query: SimpleChartQuery;
 }
-export const ScatterChart = PieChart as any as S.Schema<ScatterChart>;
-
 export type TableChartType = "Table";
-export const TableChartType = S.String;
-
 export interface TableChart {
   id: string;
   type: TableChartType;
@@ -779,22 +573,14 @@ export interface TableChart {
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
 }
-export const TableChart = LogStreamChart as any as S.Schema<TableChart>;
-
 export type TopKChartType = "TopK";
-export const TopKChartType = S.String;
-
 export interface TopKChart {
   id: string;
   type: TopKChartType;
   name?: string;
   query: SimpleChartQuery;
 }
-export const TopKChart = PieChart as any as S.Schema<TopKChart>;
-
 export type StatisticChartType = "Statistic";
-export const StatisticChartType = S.String;
-
 export type StatisticChartColorScheme =
   | "Blue"
   | "Orange"
@@ -806,45 +592,26 @@ export type StatisticChartColorScheme =
   | "Pink"
   | "Grey"
   | "Brown";
-export const StatisticChartColorScheme = S.String;
-
 export type StatisticChartShowChart = boolean | string;
-export const StatisticChartShowChart = S.Unknown as any as S.Schema<StatisticChartShowChart>;
-
 export type StatisticChartChartHeight = string | number;
-export const StatisticChartChartHeight = S.Unknown as any as S.Schema<StatisticChartChartHeight>;
-
 export type StatisticChartErrorThreshold =
   | "Above"
   | "AboveOrEqual"
   | "Below"
   | "BelowOrEqual"
   | "AboveOrBelow";
-export const StatisticChartErrorThreshold = S.String;
-
 export type StatisticChartWarningThreshold =
   | "Above"
   | "AboveOrEqual"
   | "Below"
   | "BelowOrEqual"
   | "AboveOrBelow";
-export const StatisticChartWarningThreshold = S.String;
-
 export interface StatisticChartColorProps {
   background?: string;
   chartFillColor?: string;
   labelColor?: string;
   textColor?: string;
 }
-export const StatisticChartColorProps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    background: S.optional(S.String),
-    chartFillColor: S.optional(S.String),
-    labelColor: S.optional(S.String),
-    textColor: S.optional(S.String),
-  }),
-).annotate({ identifier: "StatisticChartColorProps" }) as any as S.Schema<StatisticChartColorProps>;
-
 export interface StatisticChart {
   id: string;
   type: StatisticChartType;
@@ -868,60 +635,16 @@ export interface StatisticChart {
   warningColorProps?: StatisticChartColorProps;
   errorColorProps?: StatisticChartColorProps;
 }
-export const StatisticChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: StatisticChartType,
-    name: S.optional(S.String),
-    query: SimpleChartQuery,
-    colorScheme: S.optional(StatisticChartColorScheme),
-    customUnits: S.optional(S.String),
-    showChart: S.optional(StatisticChartShowChart),
-    hideValue: S.optional(S.Boolean),
-    chartHeight: S.optional(StatisticChartChartHeight),
-    errorThreshold: S.optional(StatisticChartErrorThreshold),
-    errorThresholdValue: S.optional(S.String),
-    warningThreshold: S.optional(StatisticChartWarningThreshold),
-    warningThresholdValue: S.optional(S.String),
-    invertTheme: S.optional(S.Boolean),
-    background: S.optional(S.String),
-    textColor: S.optional(S.String),
-    labelColor: S.optional(S.String),
-    chartFillColor: S.optional(S.String),
-    okColorProps: S.optional(StatisticChartColorProps),
-    warningColorProps: S.optional(StatisticChartColorProps),
-    errorColorProps: S.optional(StatisticChartColorProps),
-  }),
-).annotate({ identifier: "StatisticChart" }) as any as S.Schema<StatisticChart>;
-
 export type NoteChartType = "Note";
-export const NoteChartType = S.String;
-
 export type NoteChartVariant = "default";
-export const NoteChartVariant = S.String;
-
 export interface NoteChart {
   id: string;
   type: NoteChartType;
   text: string;
   variant?: NoteChartVariant | (string & {});
 }
-export const NoteChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: NoteChartType,
-    text: S.String,
-    variant: S.optional(NoteChartVariant),
-  }),
-).annotate({ identifier: "NoteChart" }) as any as S.Schema<NoteChart>;
-
 export type MonitorListChartType = "MonitorList";
-export const MonitorListChartType = S.String;
-
 export type MonitorListChartSelectedMonitorsList = Array<string>;
-export const MonitorListChartSelectedMonitorsList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<MonitorListChartSelectedMonitorsList>;
-
 export interface MonitorListColumns {
   status: boolean;
   history: boolean;
@@ -929,16 +652,6 @@ export interface MonitorListColumns {
   type: boolean;
   notifiers: boolean;
 }
-export const MonitorListColumns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Boolean,
-    history: S.Boolean,
-    dataset: S.Boolean,
-    type: S.Boolean,
-    notifiers: S.Boolean,
-  }),
-).annotate({ identifier: "MonitorListColumns" }) as any as S.Schema<MonitorListColumns>;
-
 export interface MonitorListChart {
   id: string;
   type: MonitorListChartType;
@@ -946,69 +659,25 @@ export interface MonitorListChart {
   selectedMonitors: MonitorListChartSelectedMonitorsList;
   columns: MonitorListColumns;
 }
-export const MonitorListChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: MonitorListChartType,
-    name: S.optional(S.String),
-    selectedMonitors: MonitorListChartSelectedMonitorsList,
-    columns: MonitorListColumns,
-  }),
-).annotate({ identifier: "MonitorListChart" }) as any as S.Schema<MonitorListChart>;
-
 export type SmartFilterChartType = "SmartFilter";
-export const SmartFilterChartType = S.String;
-
 export type SmartFilterSearchType = "search";
-export const SmartFilterSearchType = S.String;
-
 export interface SmartFilterSearch {
   id: string;
   name: string;
   active?: boolean;
   type: SmartFilterSearchType;
 }
-export const SmartFilterSearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    active: S.optional(S.Boolean),
-    type: SmartFilterSearchType,
-  }),
-).annotate({ identifier: "SmartFilterSearch" }) as any as S.Schema<SmartFilterSearch>;
-
 export interface SmartFilterOption {
   key: string;
   value: string;
   default?: boolean;
   unset?: boolean;
 }
-export const SmartFilterOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    value: S.String,
-    default: S.optional(S.Boolean),
-    unset: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SmartFilterOption" }) as any as S.Schema<SmartFilterOption>;
-
 export type SmartFilterOptionsCase0List = Array<SmartFilterOption>;
-export const SmartFilterOptionsCase0List = /*@__PURE__*/ S.Array(
-  SmartFilterOption,
-) as any as S.Schema<SmartFilterOptionsCase0List>;
-
 export type SmartFilterOptionsCase1 = "";
-export const SmartFilterOptionsCase1 = S.String;
-
 export type SmartFilterOptions = SmartFilterOptionsCase0List | SmartFilterOptionsCase1;
-export const SmartFilterOptions = S.Unknown as any as S.Schema<SmartFilterOptions>;
-
 export type SmartFilterSelectListType = "select";
-export const SmartFilterSelectListType = S.String;
-
 export type SmartFilterSelectListSelectType = "list";
-export const SmartFilterSelectListSelectType = S.String;
-
 export interface SmartFilterSelectList {
   id: string;
   name: string;
@@ -1017,57 +686,22 @@ export interface SmartFilterSelectList {
   type: SmartFilterSelectListType;
   selectType: SmartFilterSelectListSelectType;
 }
-export const SmartFilterSelectList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    active: S.optional(S.Boolean),
-    options: S.optional(S.NullOr(SmartFilterOptions)),
-    type: SmartFilterSelectListType,
-    selectType: SmartFilterSelectListSelectType,
-  }),
-).annotate({ identifier: "SmartFilterSelectList" }) as any as S.Schema<SmartFilterSelectList>;
-
 export type SmartFilterSelectQueryOptionsCase0List = Array<SmartFilterOption>;
-export const SmartFilterSelectQueryOptionsCase0List =
-  SmartFilterOptionsCase0List as any as S.Schema<SmartFilterSelectQueryOptionsCase0List>;
-
 export type SmartFilterSelectQueryOptionsCase1 = "";
-export const SmartFilterSelectQueryOptionsCase1 = S.String;
-
 export type SmartFilterSelectQueryOptions =
   | SmartFilterSelectQueryOptionsCase0List
   | SmartFilterSelectQueryOptionsCase1;
-export const SmartFilterSelectQueryOptions =
-  S.Unknown as any as S.Schema<SmartFilterSelectQueryOptions>;
-
 export type SmartFilterSelectQueryType = "select";
-export const SmartFilterSelectQueryType = S.String;
-
 export type SmartFilterSelectQuerySelectType = "query";
-export const SmartFilterSelectQuerySelectType = S.String;
-
 export interface SmartFilterAplQuery {
   /** APL query that returns the list of options for the filter dropdown. The result must contain a `key` column and a `value` column -- Axiom interprets each row as a `{ key, value }` pair for an option. Use `distinct` to collapse the source field to unique values, then `project` to expose the `key` and `value` columns. Example: ``` ['dataset-name'] | distinct field_name | project key=field_name, value=field_name ``` */
   apl: string;
 }
-export const SmartFilterAplQuery = SimpleNonMetricsAplQuery as any as S.Schema<SmartFilterAplQuery>;
-
 export interface SmartFilterNativeMplQuery {
   /** MPL query that returns the list of options for the filter dropdown. The query must group by exactly one tag -- Axiom uses each distinct value of that tag as both the key and the value of an option. Use `align using last` to simplify the query. Example: ``` dataset:metric | align using last | group by tag using count ``` */
   mpl: string;
 }
-export const SmartFilterNativeMplQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mpl: S.String,
-  }),
-).annotate({
-  identifier: "SmartFilterNativeMplQuery",
-}) as any as S.Schema<SmartFilterNativeMplQuery>;
-
 export type SmartFilterQuery = SmartFilterAplQuery | SmartFilterNativeMplQuery;
-export const SmartFilterQuery = S.Unknown as any as S.Schema<SmartFilterQuery>;
-
 export interface SmartFilterSelectQuery {
   id: string;
   name: string;
@@ -1078,29 +712,9 @@ export interface SmartFilterSelectQuery {
   selectType: SmartFilterSelectQuerySelectType;
   query?: SmartFilterQuery;
 }
-export const SmartFilterSelectQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    active: S.optional(S.Boolean),
-    options: S.optional(S.NullOr(SmartFilterSelectQueryOptions)),
-    type: SmartFilterSelectQueryType,
-    selectType: SmartFilterSelectQuerySelectType,
-    query: S.optional(SmartFilterQuery),
-  }),
-).annotate({ identifier: "SmartFilterSelectQuery" }) as any as S.Schema<SmartFilterSelectQuery>;
-
 export type SmartFilterSelect = SmartFilterSelectList | SmartFilterSelectQuery;
-export const SmartFilterSelect = S.Unknown as any as S.Schema<SmartFilterSelect>;
-
 export type SmartFilterConfig = SmartFilterSearch | SmartFilterSelect;
-export const SmartFilterConfig = S.Unknown as any as S.Schema<SmartFilterConfig>;
-
 export type SmartFilterChartFiltersList = Array<SmartFilterConfig>;
-export const SmartFilterChartFiltersList = /*@__PURE__*/ S.Array(
-  SmartFilterConfig,
-) as any as S.Schema<SmartFilterChartFiltersList>;
-
 export interface SmartFilterChart {
   id: string;
   type: SmartFilterChartType;
@@ -1109,33 +723,12 @@ export interface SmartFilterChart {
   logo?: string;
   logoDark?: string;
 }
-export const SmartFilterChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SmartFilterChartType,
-    name: S.optional(S.String),
-    filters: SmartFilterChartFiltersList,
-    logo: S.optional(S.String),
-    logoDark: S.optional(S.String),
-  }),
-).annotate({ identifier: "SmartFilterChart" }) as any as S.Schema<SmartFilterChart>;
-
 export type SpacerChartType = "Spacer";
-export const SpacerChartType = S.String;
-
 export interface SpacerChart {
   id: string;
   type: SpacerChartType;
   name?: string;
 }
-export const SpacerChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SpacerChartType,
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "SpacerChart" }) as any as S.Schema<SpacerChart>;
-
 export type Chart =
   | TimeSeriesChart
   | HeatmapChart
@@ -1149,12 +742,10 @@ export type Chart =
   | MonitorListChart
   | SmartFilterChart
   | SpacerChart;
-export const Chart = S.Unknown as any as S.Schema<Chart>;
+const Chart = S.Unknown as any as S.Schema<Chart>;
 
 export type DashboardChartsList = Array<Chart>;
-export const DashboardChartsList = /*@__PURE__*/ S.Array(
-  Chart,
-) as any as S.Schema<DashboardChartsList>;
+const DashboardChartsList = /*@__PURE__*/ S.Array(Chart) as any as S.Schema<DashboardChartsList>;
 
 export interface LayoutItem {
   i: string;
@@ -1168,7 +759,7 @@ export interface LayoutItem {
   maxH?: number;
   static?: boolean;
 }
-export const LayoutItem = /*@__PURE__*/ S.suspend(() =>
+const LayoutItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     i: S.String,
     x: S.Number,
@@ -1184,15 +775,15 @@ export const LayoutItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LayoutItem" }) as any as S.Schema<LayoutItem>;
 
 export type DashboardLayoutList = Array<LayoutItem>;
-export const DashboardLayoutList = /*@__PURE__*/ S.Array(
+const DashboardLayoutList = /*@__PURE__*/ S.Array(
   LayoutItem,
 ) as any as S.Schema<DashboardLayoutList>;
 
 export type DashboardRefreshTime = 15 | 60 | 300;
-export const DashboardRefreshTime = S.Number;
+const DashboardRefreshTime = S.Number;
 
 export type SchemaVersion = 2;
-export const SchemaVersion = S.Number;
+const SchemaVersion = S.Number;
 
 /** Relative time comparison offset. Compares the current time window against a previous period offset by this duration. Mutually exclusive with `againstTimestamp` -- setting one clears the other. Use an empty string or omit to disable comparison. */
 export type DashboardAgainst =
@@ -1209,7 +800,7 @@ export type DashboardAgainst =
   | "-30d"
   | "-60d"
   | "-90d";
-export const DashboardAgainst = S.String;
+const DashboardAgainst = S.String;
 
 export interface Dashboard {
   name: string;
@@ -1227,7 +818,7 @@ export interface Dashboard {
   timeWindowEnd: string;
   uid?: string;
 }
-export const Dashboard = /*@__PURE__*/ S.suspend(() =>
+const Dashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     owner: S.String,
@@ -1246,8 +837,7 @@ export const Dashboard = /*@__PURE__*/ S.suspend(() =>
 
 /** Required for updates when overwrite is false. Pass back the version value received from the server verbatim (string or number). */
 export type CreateDashboardRequestVersion = string | number;
-export const CreateDashboardRequestVersion =
-  S.Unknown as any as S.Schema<CreateDashboardRequestVersion>;
+const CreateDashboardRequestVersion = S.Unknown as any as S.Schema<CreateDashboardRequestVersion>;
 
 export interface CreateDashboardRequest {
   dashboard: Dashboard;
@@ -1258,7 +848,7 @@ export interface CreateDashboardRequest {
   /** Required for updates when overwrite is false. Pass back the version value received from the server verbatim (string or number). */
   version?: CreateDashboardRequestVersion;
 }
-export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard: Dashboard,
     message: S.optional(S.String),
@@ -1270,7 +860,7 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** 64-bit server-assigned version (hybrid-logical-clock timestamp). Emitted as either JSON number or JSON string, sometimes exceeding JavaScript Number precision. */
 export type DashboardResourceVersion = string | number;
-export const DashboardResourceVersion = S.Unknown as any as S.Schema<DashboardResourceVersion>;
+const DashboardResourceVersion = S.Unknown as any as S.Schema<DashboardResourceVersion>;
 
 export interface DashboardResource {
   createdAt: string;
@@ -1283,7 +873,7 @@ export interface DashboardResource {
   /** 64-bit server-assigned version (hybrid-logical-clock timestamp). Emitted as either JSON number or JSON string, sometimes exceeding JavaScript Number precision. */
   version: DashboardResourceVersion;
 }
-export const DashboardResource = /*@__PURE__*/ S.suspend(() =>
+const DashboardResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     createdBy: S.String,
@@ -1297,14 +887,14 @@ export const DashboardResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardResource" }) as any as S.Schema<DashboardResource>;
 
 export type DashboardWriteResponseStatus = "created" | "updated";
-export const DashboardWriteResponseStatus = S.String;
+const DashboardWriteResponseStatus = S.String;
 
 export interface DashboardWriteResponse {
   dashboard: DashboardResource;
   overwritten?: boolean;
   status: DashboardWriteResponseStatus;
 }
-export const DashboardWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const DashboardWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard: DashboardResource,
     overwritten: S.optional(S.Boolean),
@@ -1318,7 +908,7 @@ export type CreateDatasetRequestKind =
   | "otel:traces:v1"
   | "otel:logs:v1"
   | "axiom:events:v1";
-export const CreateDatasetRequestKind = S.String;
+const CreateDatasetRequestKind = S.String;
 
 export interface CreateDatasetRequest {
   /** Referrer slug */
@@ -1336,7 +926,7 @@ export interface CreateDatasetRequest {
   /** Whether to use the retention period */
   useRetentionPeriod?: boolean;
 }
-export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referrer: S.optional(S.String.pipe(T.Query())),
     description: S.optional(S.String),
@@ -1350,10 +940,10 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of the dataset */
 export type DatasetKind = "otel:metrics:v1" | "otel:traces:v1" | "otel:logs:v1" | "axiom:events:v1";
-export const DatasetKind = S.String;
+const DatasetKind = S.String;
 
 export type DatasetMapFieldsList = Array<string>;
-export const DatasetMapFieldsList =
+const DatasetMapFieldsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<DatasetMapFieldsList>;
 
 export interface Dataset {
@@ -1385,7 +975,7 @@ export interface Dataset {
   /** Name of the dataset creator */
   who: string;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canWrite: S.optional(S.Boolean),
     created: S.String,
@@ -1406,12 +996,12 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this group */
 export type CreateGroupRequestMembersList = Array<string>;
-export const CreateGroupRequestMembersList =
+const CreateGroupRequestMembersList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateGroupRequestMembersList>;
 
 /** List of role IDs that are assigned to this group */
 export type CreateGroupRequestRolesList = Array<string>;
-export const CreateGroupRequestRolesList =
+const CreateGroupRequestRolesList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateGroupRequestRolesList>;
 
 export interface CreateGroupRequest {
@@ -1424,7 +1014,7 @@ export interface CreateGroupRequest {
   /** List of role IDs that are assigned to this group */
   roles?: CreateGroupRequestRolesList;
 }
-export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     members: S.optional(CreateGroupRequestMembersList),
@@ -1435,12 +1025,12 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this group */
 export type CreateGroupResponseMembersList = Array<string>;
-export const CreateGroupResponseMembersList =
+const CreateGroupResponseMembersList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateGroupResponseMembersList>;
 
 /** List of role IDs that are assigned to this group */
 export type CreateGroupResponseRolesList = Array<string>;
-export const CreateGroupResponseRolesList =
+const CreateGroupResponseRolesList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateGroupResponseRolesList>;
 
 export interface CreateGroupResponse {
@@ -1457,7 +1047,7 @@ export interface CreateGroupResponse {
   /** Unique identifier for the group */
   id: string;
 }
-export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     isManaged: S.optional(S.Boolean),
@@ -1472,7 +1062,7 @@ export interface CreateMapFieldRequest {
   dataset_id: string;
   name: string;
 }
-export const CreateMapFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMapFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -1483,7 +1073,7 @@ export const CreateMapFieldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MapField {
   name: string;
 }
-export const MapField = /*@__PURE__*/ S.suspend(() =>
+const MapField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -1491,7 +1081,7 @@ export const MapField = /*@__PURE__*/ S.suspend(() =>
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
 export type CreateMonitorRequestNotifierIdsList = Array<string>;
-export const CreateMonitorRequestNotifierIdsList =
+const CreateMonitorRequestNotifierIdsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateMonitorRequestNotifierIdsList>;
 
 /** Comparison operator for threshold checks: - Below: Trigger when value < threshold - BelowOrEqual: Trigger when value <= threshold - Above: Trigger when value > threshold - AboveOrEqual: Trigger when value >= threshold - AboveOrBelow: Trigger when value is outside a range */
@@ -1501,11 +1091,11 @@ export type CreateMonitorRequestOperator =
   | "Above"
   | "AboveOrEqual"
   | "AboveOrBelow";
-export const CreateMonitorRequestOperator = S.String;
+const CreateMonitorRequestOperator = S.String;
 
 /** Type of monitoring check to perform: - Threshold: Compares a numeric value against a threshold - MatchEvent: Looks for specific events or patterns - AnomalyDetection: Identifies unusual patterns based on historical data */
 export type CreateMonitorRequestType = "Threshold" | "MatchEvent" | "AnomalyDetection";
-export const CreateMonitorRequestType = S.String;
+const CreateMonitorRequestType = S.String;
 
 export interface CreateMonitorRequest {
   /** Whether to alert when no data is received */
@@ -1561,7 +1151,7 @@ export interface CreateMonitorRequest {
   /** Timestamp when the monitor was last updated */
   updatedAt?: string;
 }
-export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertOnNoData: S.optional(S.Boolean),
     aplQuery: S.optional(S.String),
@@ -1594,7 +1184,7 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
 export type CreateMonitorResponseNotifierIdsList = Array<string>;
-export const CreateMonitorResponseNotifierIdsList =
+const CreateMonitorResponseNotifierIdsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateMonitorResponseNotifierIdsList>;
 
 /** Comparison operator for threshold checks: - Below: Trigger when value < threshold - BelowOrEqual: Trigger when value <= threshold - Above: Trigger when value > threshold - AboveOrEqual: Trigger when value >= threshold - AboveOrBelow: Trigger when value is outside a range */
@@ -1604,11 +1194,11 @@ export type CreateMonitorResponseOperator =
   | "Above"
   | "AboveOrEqual"
   | "AboveOrBelow";
-export const CreateMonitorResponseOperator = S.String;
+const CreateMonitorResponseOperator = S.String;
 
 /** Type of monitoring check to perform: - Threshold: Compares a numeric value against a threshold - MatchEvent: Looks for specific events or patterns - AnomalyDetection: Identifies unusual patterns based on historical data */
 export type CreateMonitorResponseType = "Threshold" | "MatchEvent" | "AnomalyDetection";
-export const CreateMonitorResponseType = S.String;
+const CreateMonitorResponseType = S.String;
 
 export interface CreateMonitorResponse {
   /** Whether to alert when no data is received */
@@ -1666,7 +1256,7 @@ export interface CreateMonitorResponse {
   /** Unique identifier for the monitor */
   id: string;
 }
-export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertOnNoData: S.optional(S.Boolean),
     aplQuery: S.optional(S.String),
@@ -1700,14 +1290,14 @@ export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** HTTP headers to include in the request */
 export type CustomNotifierConfigHeadersMap = { [key: string]: string | undefined };
-export const CustomNotifierConfigHeadersMap = /*@__PURE__*/ S.Record(
+const CustomNotifierConfigHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CustomNotifierConfigHeadersMap>;
 
 /** Sensitive HTTP headers (tokens, keys) that should be masked in logs */
 export type CustomNotifierConfigSecretHeadersMap = { [key: string]: string | undefined };
-export const CustomNotifierConfigSecretHeadersMap =
+const CustomNotifierConfigSecretHeadersMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<CustomNotifierConfigSecretHeadersMap>;
 
 /** Configuration for custom webhook notifications with flexible headers and body template. Supports variable substitution in the body template using {{.Variable}} syntax. */
@@ -1721,7 +1311,7 @@ export interface CustomNotifierConfig {
   /** Custom webhook endpoint URL */
   url: string;
 }
-export const CustomNotifierConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomNotifierConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String,
     headers: S.optional(CustomNotifierConfigHeadersMap),
@@ -1737,7 +1327,7 @@ export interface DiscordConfig {
   /** Discord bot token for authentication */
   discordToken?: string;
 }
-export const DiscordConfig = /*@__PURE__*/ S.suspend(() =>
+const DiscordConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discordChannel: S.optional(S.String),
     discordToken: S.optional(S.String),
@@ -1749,7 +1339,7 @@ export interface DiscordWebhookConfig {
   /** Discord webhook URL */
   discordWebhookUrl?: string;
 }
-export const DiscordWebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const DiscordWebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discordWebhookUrl: S.optional(S.String),
   }),
@@ -1757,7 +1347,7 @@ export const DiscordWebhookConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of email addresses to receive notifications */
 export type EmailConfigEmailsList = Array<string>;
-export const EmailConfigEmailsList =
+const EmailConfigEmailsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<EmailConfigEmailsList>;
 
 /** Configuration for email notifications */
@@ -1765,7 +1355,7 @@ export interface EmailConfig {
   /** List of email addresses to receive notifications */
   emails?: EmailConfigEmailsList;
 }
-export const EmailConfig = /*@__PURE__*/ S.suspend(() =>
+const EmailConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(EmailConfigEmailsList),
   }),
@@ -1776,7 +1366,7 @@ export interface MicrosoftTeamsConfig {
   /** Microsoft Teams webhook URL */
   microsoftTeamsUrl?: string;
 }
-export const MicrosoftTeamsConfig = /*@__PURE__*/ S.suspend(() =>
+const MicrosoftTeamsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microsoftTeamsUrl: S.optional(S.String),
   }),
@@ -1789,7 +1379,7 @@ export interface OpsGenieConfig {
   /** Whether to use EU region endpoints */
   isEU?: boolean;
 }
-export const OpsGenieConfig = /*@__PURE__*/ S.suspend(() =>
+const OpsGenieConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
     isEU: S.optional(S.Boolean),
@@ -1803,7 +1393,7 @@ export interface PagerDutyConfig {
   /** PagerDuty API token for additional functionality */
   token?: string;
 }
-export const PagerDutyConfig = /*@__PURE__*/ S.suspend(() =>
+const PagerDutyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routingKey: S.optional(S.String),
     token: S.optional(S.String),
@@ -1815,7 +1405,7 @@ export interface SlackConfig {
   /** Slack incoming webhook URL */
   slackUrl?: string;
 }
-export const SlackConfig = /*@__PURE__*/ S.suspend(() =>
+const SlackConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slackUrl: S.optional(S.String),
   }),
@@ -1826,7 +1416,7 @@ export interface WebhookConfig {
   /** Webhook endpoint URL */
   url?: string;
 }
-export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -1844,7 +1434,7 @@ export interface NotifierProperties {
   slack?: SlackConfig;
   webhook?: WebhookConfig;
 }
-export const NotifierProperties = /*@__PURE__*/ S.suspend(() =>
+const NotifierProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customWebhook: S.optional(CustomNotifierConfig),
     discord: S.optional(DiscordConfig),
@@ -1865,7 +1455,7 @@ export interface CreateNotifierRequest {
   name: string;
   properties: NotifierProperties;
 }
-export const CreateNotifierRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabledUntil: S.optional(S.String),
     name: S.String,
@@ -1888,7 +1478,7 @@ export interface CreateNotifierResponse {
   /** Unique identifier for the notifier */
   id?: string;
 }
-export const CreateNotifierResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNotifierResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     createdBy: S.optional(S.String),
@@ -1905,7 +1495,7 @@ export interface CreateOrgRequest {
   edgeDeployment?: string;
   name: string;
 }
-export const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edgeDeployment: S.optional(S.String),
     name: S.String,
@@ -1913,11 +1503,11 @@ export const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOrgRequest" }) as any as S.Schema<CreateOrgRequest>;
 
 export type LicenseEdgeDeploymentsList = Array<string>;
-export const LicenseEdgeDeploymentsList =
+const LicenseEdgeDeploymentsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<LicenseEdgeDeploymentsList>;
 
 export type LicenseFeaturesMap = { [key: string]: boolean | undefined };
-export const LicenseFeaturesMap = /*@__PURE__*/ S.Record(
+const LicenseFeaturesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean,
 ) as any as S.Schema<LicenseFeaturesMap>;
@@ -1930,10 +1520,10 @@ export type LicenseTier =
   | "enterprise"
   | "comped"
   | "accelerator";
-export const LicenseTier = S.String;
+const LicenseTier = S.String;
 
 export type LicenseWithAuthsList = Array<string>;
-export const LicenseWithAuthsList =
+const LicenseWithAuthsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<LicenseWithAuthsList>;
 
 export interface License {
@@ -1962,7 +1552,7 @@ export interface License {
   validFrom?: string;
   withAuths?: LicenseWithAuthsList;
 }
-export const License = /*@__PURE__*/ S.suspend(() =>
+const License = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiRateLimitPerSecond: S.optional(S.Number),
     billingPeriodEnd: S.optional(S.String),
@@ -1992,7 +1582,7 @@ export const License = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "License" }) as any as S.Schema<License>;
 
 export type OrgPaymentStatus = "na" | "failed" | "success" | "blocked";
-export const OrgPaymentStatus = S.String;
+const OrgPaymentStatus = S.String;
 
 export type OrgPlan =
   | "personal"
@@ -2002,7 +1592,7 @@ export type OrgPlan =
   | "enterprise"
   | "comped"
   | "accelerator";
-export const OrgPlan = S.String;
+const OrgPlan = S.String;
 
 export interface Org {
   defaultEdgeDeployment?: string;
@@ -2020,7 +1610,7 @@ export interface Org {
   primaryEmail: string;
   role?: string;
 }
-export const Org = /*@__PURE__*/ S.suspend(() =>
+const Org = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultEdgeDeployment: S.optional(S.String),
     firstFailedPayment: S.optional(S.String),
@@ -2040,43 +1630,35 @@ export const Org = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Org" }) as any as S.Schema<Org>;
 
 export type RoleDatasetCapabilitiesValueDataItem = "delete";
-export const RoleDatasetCapabilitiesValueDataItem = S.String;
-
 /** Controls data management operations like deletion */
 export type RoleDatasetCapabilitiesValueDataList = Array<
   RoleDatasetCapabilitiesValueDataItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueDataList =
+const RoleDatasetCapabilitiesValueDataList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueDataList>;
 
 export type RoleDatasetCapabilitiesValueIngestItem = "create";
-export const RoleDatasetCapabilitiesValueIngestItem = S.String;
-
 /** Controls the ability to ingest data into datasets */
 export type RoleDatasetCapabilitiesValueIngestList = Array<
   RoleDatasetCapabilitiesValueIngestItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueIngestList =
+const RoleDatasetCapabilitiesValueIngestList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueIngestList>;
 
 export type RoleDatasetCapabilitiesValueQueryItem = "read";
-export const RoleDatasetCapabilitiesValueQueryItem = S.String;
-
 /** Controls the ability to query and read data from datasets */
 export type RoleDatasetCapabilitiesValueQueryList = Array<
   RoleDatasetCapabilitiesValueQueryItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueQueryList =
+const RoleDatasetCapabilitiesValueQueryList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueQueryList>;
 
 export type RoleDatasetCapabilitiesValueShareItem = "create" | "read" | "delete";
-export const RoleDatasetCapabilitiesValueShareItem = S.String;
-
 /** Controls the ability to share datasets with other users */
 export type RoleDatasetCapabilitiesValueShareList = Array<
   RoleDatasetCapabilitiesValueShareItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueShareList =
+const RoleDatasetCapabilitiesValueShareList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueShareList>;
 
 export type RoleDatasetCapabilitiesValueStarredQueriesItem =
@@ -2084,43 +1666,35 @@ export type RoleDatasetCapabilitiesValueStarredQueriesItem =
   | "read"
   | "update"
   | "delete";
-export const RoleDatasetCapabilitiesValueStarredQueriesItem = S.String;
-
 /** Controls the management of starred/saved queries */
 export type RoleDatasetCapabilitiesValueStarredQueriesList = Array<
   RoleDatasetCapabilitiesValueStarredQueriesItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueStarredQueriesList =
+const RoleDatasetCapabilitiesValueStarredQueriesList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueStarredQueriesList>;
 
 export type RoleDatasetCapabilitiesValueTrimItem = "update";
-export const RoleDatasetCapabilitiesValueTrimItem = S.String;
-
 /** Controls data trimming operations for storage optimization */
 export type RoleDatasetCapabilitiesValueTrimList = Array<
   RoleDatasetCapabilitiesValueTrimItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueTrimList =
+const RoleDatasetCapabilitiesValueTrimList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueTrimList>;
 
 export type RoleDatasetCapabilitiesValueVacuumItem = "update";
-export const RoleDatasetCapabilitiesValueVacuumItem = S.String;
-
 /** Controls field vacuuming operations for storage optimization */
 export type RoleDatasetCapabilitiesValueVacuumList = Array<
   RoleDatasetCapabilitiesValueVacuumItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueVacuumList =
+const RoleDatasetCapabilitiesValueVacuumList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueVacuumList>;
 
 export type RoleDatasetCapabilitiesValueVirtualFieldsItem = "create" | "read" | "update" | "delete";
-export const RoleDatasetCapabilitiesValueVirtualFieldsItem = S.String;
-
 /** Controls the management of virtual fields in datasets */
 export type RoleDatasetCapabilitiesValueVirtualFieldsList = Array<
   RoleDatasetCapabilitiesValueVirtualFieldsItem | (string & {})
 >;
-export const RoleDatasetCapabilitiesValueVirtualFieldsList =
+const RoleDatasetCapabilitiesValueVirtualFieldsList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleDatasetCapabilitiesValueVirtualFieldsList>;
 
 export interface RoleDatasetCapabilitiesValue {
@@ -2141,7 +1715,7 @@ export interface RoleDatasetCapabilitiesValue {
   /** Controls the management of virtual fields in datasets */
   virtualFields?: RoleDatasetCapabilitiesValueVirtualFieldsList;
 }
-export const RoleDatasetCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
+const RoleDatasetCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(RoleDatasetCapabilitiesValueDataList),
     ingest: S.optional(RoleDatasetCapabilitiesValueIngestList),
@@ -2158,156 +1732,81 @@ export const RoleDatasetCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the available permissions for dataset operations */
 export type RoleDatasetCapabilities = { [key: string]: RoleDatasetCapabilitiesValue | undefined };
-export const RoleDatasetCapabilities = /*@__PURE__*/ S.Record(
+const RoleDatasetCapabilities = /*@__PURE__*/ S.Record(
   S.String,
   RoleDatasetCapabilitiesValue,
 ) as any as S.Schema<RoleDatasetCapabilities>;
 
 /** List of user IDs that are assigned to this role */
 export type CreateRoleRequestMembersList = Array<string>;
-export const CreateRoleRequestMembersList =
+const CreateRoleRequestMembersList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateRoleRequestMembersList>;
 
 export type RoleOrgCapabilitiesAnnotationsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesAnnotationsItem = S.String;
-
 /** Controls the management of annotations across the organization */
 export type RoleOrgCapabilitiesAnnotationsList = Array<
   RoleOrgCapabilitiesAnnotationsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesAnnotationsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesAnnotationsList>;
-
 export type RoleOrgCapabilitiesApiTokensItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesApiTokensItem = S.String;
-
 /** Controls the management of API tokens for authentication */
 export type RoleOrgCapabilitiesApiTokensList = Array<
   RoleOrgCapabilitiesApiTokensItem | (string & {})
 >;
-export const RoleOrgCapabilitiesApiTokensList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesApiTokensList>;
-
 export type RoleOrgCapabilitiesAuditLogItem = "read";
-export const RoleOrgCapabilitiesAuditLogItem = S.String;
-
 /** Controls access to organization audit logs */
 export type RoleOrgCapabilitiesAuditLogList = Array<
   RoleOrgCapabilitiesAuditLogItem | (string & {})
 >;
-export const RoleOrgCapabilitiesAuditLogList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesAuditLogList>;
-
 export type RoleOrgCapabilitiesBillingItem = "read" | "update";
-export const RoleOrgCapabilitiesBillingItem = S.String;
-
 /** Controls access to billing information and settings */
 export type RoleOrgCapabilitiesBillingList = Array<RoleOrgCapabilitiesBillingItem | (string & {})>;
-export const RoleOrgCapabilitiesBillingList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesBillingList>;
-
 export type RoleOrgCapabilitiesDashboardsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesDashboardsItem = S.String;
-
 /** Controls the management of organization dashboards */
 export type RoleOrgCapabilitiesDashboardsList = Array<
   RoleOrgCapabilitiesDashboardsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesDashboardsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesDashboardsList>;
-
 export type RoleOrgCapabilitiesDatasetsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesDatasetsItem = S.String;
-
 /** Controls the management of organization datasets */
 export type RoleOrgCapabilitiesDatasetsList = Array<
   RoleOrgCapabilitiesDatasetsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesDatasetsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesDatasetsList>;
-
 export type RoleOrgCapabilitiesEndpointsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesEndpointsItem = S.String;
-
 /** Controls the management of API endpoints */
 export type RoleOrgCapabilitiesEndpointsList = Array<
   RoleOrgCapabilitiesEndpointsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesEndpointsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesEndpointsList>;
-
 export type RoleOrgCapabilitiesFlowsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesFlowsItem = S.String;
-
 /** Controls the management of data flows and pipelines */
 export type RoleOrgCapabilitiesFlowsList = Array<RoleOrgCapabilitiesFlowsItem | (string & {})>;
-export const RoleOrgCapabilitiesFlowsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesFlowsList>;
-
 export type RoleOrgCapabilitiesIntegrationsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesIntegrationsItem = S.String;
-
 /** Controls the management of third-party integrations */
 export type RoleOrgCapabilitiesIntegrationsList = Array<
   RoleOrgCapabilitiesIntegrationsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesIntegrationsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesIntegrationsList>;
-
 export type RoleOrgCapabilitiesMonitorsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesMonitorsItem = S.String;
-
 /** Controls the management of monitoring */
 export type RoleOrgCapabilitiesMonitorsList = Array<
   RoleOrgCapabilitiesMonitorsItem | (string & {})
 >;
-export const RoleOrgCapabilitiesMonitorsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesMonitorsList>;
-
 export type RoleOrgCapabilitiesNotifiersItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesNotifiersItem = S.String;
-
 /** Controls the management of notification settings */
 export type RoleOrgCapabilitiesNotifiersList = Array<
   RoleOrgCapabilitiesNotifiersItem | (string & {})
 >;
-export const RoleOrgCapabilitiesNotifiersList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesNotifiersList>;
-
 export type RoleOrgCapabilitiesRbacItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesRbacItem = S.String;
-
 /** Controls access to role-based access control settings */
 export type RoleOrgCapabilitiesRbacList = Array<RoleOrgCapabilitiesRbacItem | (string & {})>;
-export const RoleOrgCapabilitiesRbacList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesRbacList>;
-
 export type RoleOrgCapabilitiesSharedAccessKeysItem = "read" | "update";
-export const RoleOrgCapabilitiesSharedAccessKeysItem = S.String;
-
 /** Controls the management of shared access keys */
 export type RoleOrgCapabilitiesSharedAccessKeysList = Array<
   RoleOrgCapabilitiesSharedAccessKeysItem | (string & {})
 >;
-export const RoleOrgCapabilitiesSharedAccessKeysList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesSharedAccessKeysList>;
-
 export type RoleOrgCapabilitiesUsersItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesUsersItem = S.String;
-
 /** Controls user management within the organization */
 export type RoleOrgCapabilitiesUsersList = Array<RoleOrgCapabilitiesUsersItem | (string & {})>;
-export const RoleOrgCapabilitiesUsersList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesUsersList>;
-
 export type RoleOrgCapabilitiesViewsItem = "create" | "read" | "update" | "delete";
-export const RoleOrgCapabilitiesViewsItem = S.String;
-
 /** Controls the management of data views */
 export type RoleOrgCapabilitiesViewsList = Array<RoleOrgCapabilitiesViewsItem | (string & {})>;
-export const RoleOrgCapabilitiesViewsList =
-  DatasetCapabilitiesValueDataList as any as S.Schema<RoleOrgCapabilitiesViewsList>;
-
 /** Defines organization-wide permissions and capabilities */
 export interface RoleOrgCapabilities {
   /** Controls the management of annotations across the organization */
@@ -2341,26 +1840,22 @@ export interface RoleOrgCapabilities {
   /** Controls the management of data views */
   views?: RoleOrgCapabilitiesViewsList;
 }
-export const RoleOrgCapabilities = OrgCapabilities as any as S.Schema<RoleOrgCapabilities>;
+const RoleOrgCapabilities = OrgCapabilities as any as S.Schema<RoleOrgCapabilities>;
 
 export type RoleViewCapabilitiesValueQueryItem = "read";
-export const RoleViewCapabilitiesValueQueryItem = S.String;
-
 /** Controls the ability to query and read data from views */
 export type RoleViewCapabilitiesValueQueryList = Array<
   RoleViewCapabilitiesValueQueryItem | (string & {})
 >;
-export const RoleViewCapabilitiesValueQueryList =
+const RoleViewCapabilitiesValueQueryList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleViewCapabilitiesValueQueryList>;
 
 export type RoleViewCapabilitiesValueShareItem = "create" | "read" | "delete";
-export const RoleViewCapabilitiesValueShareItem = S.String;
-
 /** Controls the ability to share views with other users */
 export type RoleViewCapabilitiesValueShareList = Array<
   RoleViewCapabilitiesValueShareItem | (string & {})
 >;
-export const RoleViewCapabilitiesValueShareList =
+const RoleViewCapabilitiesValueShareList =
   DatasetCapabilitiesValueDataList as any as S.Schema<RoleViewCapabilitiesValueShareList>;
 
 export interface RoleViewCapabilitiesValue {
@@ -2369,7 +1864,7 @@ export interface RoleViewCapabilitiesValue {
   /** Controls the ability to share views with other users */
   share?: RoleViewCapabilitiesValueShareList;
 }
-export const RoleViewCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
+const RoleViewCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(RoleViewCapabilitiesValueQueryList),
     share: S.optional(RoleViewCapabilitiesValueShareList),
@@ -2380,7 +1875,7 @@ export const RoleViewCapabilitiesValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the available permissions for view operations */
 export type RoleViewCapabilities = { [key: string]: RoleViewCapabilitiesValue | undefined };
-export const RoleViewCapabilities = /*@__PURE__*/ S.Record(
+const RoleViewCapabilities = /*@__PURE__*/ S.Record(
   S.String,
   RoleViewCapabilitiesValue,
 ) as any as S.Schema<RoleViewCapabilities>;
@@ -2396,7 +1891,7 @@ export interface CreateRoleRequest {
   orgCapabilities?: RoleOrgCapabilities;
   viewCapabilities?: RoleViewCapabilities;
 }
-export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: S.optional(RoleDatasetCapabilities),
     description: S.optional(S.String),
@@ -2409,7 +1904,7 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this role */
 export type CreateRoleResponseMembersList = Array<string>;
-export const CreateRoleResponseMembersList =
+const CreateRoleResponseMembersList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateRoleResponseMembersList>;
 
 export interface CreateRoleResponse {
@@ -2425,7 +1920,7 @@ export interface CreateRoleResponse {
   /** Unique identifier for the role */
   id: string;
 }
-export const CreateRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: S.optional(RoleDatasetCapabilities),
     description: S.optional(S.String),
@@ -2438,17 +1933,17 @@ export const CreateRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleResponse" }) as any as S.Schema<CreateRoleResponse>;
 
 export type CreateStarredRequestKind = "apl";
-export const CreateStarredRequestKind = S.String;
+const CreateStarredRequestKind = S.String;
 
 export type CreateStarredRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateStarredRequestMetadataMap =
+const CreateStarredRequestMetadataMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<CreateStarredRequestMetadataMap>;
 
 export interface APLRequestWithOptionsDefaultOrder {
   desc?: boolean;
   field?: string;
 }
-export const APLRequestWithOptionsDefaultOrder = /*@__PURE__*/ S.suspend(() =>
+const APLRequestWithOptionsDefaultOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desc: S.optional(S.Boolean),
     field: S.optional(S.String),
@@ -2458,26 +1953,26 @@ export const APLRequestWithOptionsDefaultOrder = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<APLRequestWithOptionsDefaultOrder>;
 
 export type APLRequestWithOptionsDefaultOrderList = Array<APLRequestWithOptionsDefaultOrder>;
-export const APLRequestWithOptionsDefaultOrderList = /*@__PURE__*/ S.Array(
+const APLRequestWithOptionsDefaultOrderList = /*@__PURE__*/ S.Array(
   APLRequestWithOptionsDefaultOrder,
 ) as any as S.Schema<APLRequestWithOptionsDefaultOrderList>;
 
 export type APLRequestWithOptionsLibrariesList = Array<string>;
-export const APLRequestWithOptionsLibrariesList =
+const APLRequestWithOptionsLibrariesList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<APLRequestWithOptionsLibrariesList>;
 
 export type QueryOptionsPriority = "low" | "medium" | "high";
-export const QueryOptionsPriority = S.String;
+const QueryOptionsPriority = S.String;
 
 /** Controls how empty intervals are rendered in time series charts. `auto` infers from the query, `null` leaves gaps, `span` connects adjacent points, `zero` fills with zero. */
 export type QueryOptionsDisplayNull = "auto" | "null" | "span" | "zero" | "";
-export const QueryOptionsDisplayNull = S.String;
+const QueryOptionsDisplayNull = S.String;
 
 export type QueryOptionsTimeSeriesVariant = "area" | "bars" | "line" | "lines" | "";
-export const QueryOptionsTimeSeriesVariant = S.String;
+const QueryOptionsTimeSeriesVariant = S.String;
 
 export type QueryOptionsTimeSeriesView = "charts" | "resultsTable" | "charts|resultsTable" | "";
-export const QueryOptionsTimeSeriesView = S.String;
+const QueryOptionsTimeSeriesView = S.String;
 
 export interface QueryOptions {
   disableCache?: boolean;
@@ -2498,7 +1993,7 @@ export interface QueryOptions {
   timeSeriesVariant?: QueryOptionsTimeSeriesVariant | (string & {});
   timeSeriesView?: QueryOptionsTimeSeriesView | (string & {});
 }
-export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
+const QueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableCache: S.optional(S.Boolean),
     disableStats: S.optional(S.Boolean),
@@ -2531,7 +2026,7 @@ export interface APLRequestWithOptions {
   startTime?: string;
   variables?: unknown;
 }
-export const APLRequestWithOptions = /*@__PURE__*/ S.suspend(() =>
+const APLRequestWithOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apl: S.String,
     cursor: S.optional(S.String),
@@ -2555,7 +2050,7 @@ export interface CreateStarredRequest {
   query: APLRequestWithOptions;
   who: string;
 }
-export const CreateStarredRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStarredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(S.String),
     kind: CreateStarredRequestKind,
@@ -2567,10 +2062,10 @@ export const CreateStarredRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStarredRequest" }) as any as S.Schema<CreateStarredRequest>;
 
 export type CreateStarredResponseKind = "apl";
-export const CreateStarredResponseKind = S.String;
+const CreateStarredResponseKind = S.String;
 
 export type CreateStarredResponseMetadataMap = { [key: string]: string | undefined };
-export const CreateStarredResponseMetadataMap =
+const CreateStarredResponseMetadataMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<CreateStarredResponseMetadataMap>;
 
 export interface CreateStarredResponse {
@@ -2582,7 +2077,7 @@ export interface CreateStarredResponse {
   who: string;
   id: string;
 }
-export const CreateStarredResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStarredResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(S.String),
     kind: CreateStarredResponseKind,
@@ -2602,7 +2097,7 @@ export interface CreateUserRequest {
   /** Role to assign to the new user */
   role: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     name: S.String,
@@ -2617,7 +2112,7 @@ export interface UserDetailsRole {
   /** Human-readable name of the role */
   name: string;
 }
-export const UserDetailsRole = /*@__PURE__*/ S.suspend(() =>
+const UserDetailsRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2634,7 +2129,7 @@ export interface User {
   name: string;
   role?: UserDetailsRole;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     id: S.String,
@@ -2644,7 +2139,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export type CreateViewRequestDatasetsList = Array<string>;
-export const CreateViewRequestDatasetsList =
+const CreateViewRequestDatasetsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<CreateViewRequestDatasetsList>;
 
 export interface CreateViewRequest {
@@ -2657,7 +2152,7 @@ export interface CreateViewRequest {
   /** The name of the org that shared this resource, if it's shared */
   sharedByOrgName?: string;
 }
-export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aplQuery: S.String,
     datasets: S.optional(CreateViewRequestDatasetsList),
@@ -2669,8 +2164,7 @@ export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateViewRequest" }) as any as S.Schema<CreateViewRequest>;
 
 export type ViewDatasetsList = Array<string>;
-export const ViewDatasetsList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<ViewDatasetsList>;
+const ViewDatasetsList = CreateAnnotationRequestDatasetsList as any as S.Schema<ViewDatasetsList>;
 
 export interface View {
   aplQuery: string;
@@ -2682,7 +2176,7 @@ export interface View {
   /** The name of the org that shared this resource, if it's shared */
   sharedByOrgName?: string;
 }
-export const View = /*@__PURE__*/ S.suspend(() =>
+const View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aplQuery: S.String,
     datasets: S.optional(ViewDatasetsList),
@@ -2701,7 +2195,7 @@ export interface CreateVirtualFieldRequest {
   type?: string;
   unit?: string;
 }
-export const CreateVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.String,
     description: S.optional(S.String),
@@ -2723,7 +2217,7 @@ export interface CreateVirtualFieldResponse {
   unit?: string;
   id: string;
 }
-export const CreateVirtualFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVirtualFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.String,
     description: S.optional(S.String),
@@ -2741,65 +2235,63 @@ export interface DeleteAnnotationRequest {
   /** Unique ID of the annotation */
   id: string;
 }
-export const DeleteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/annotations/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteAnnotationRequest" }) as any as S.Schema<DeleteAnnotationRequest>;
 
 export interface DeleteAnnotationResponse {}
-export const DeleteAnnotationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAnnotationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAnnotationResponse",
 }) as any as S.Schema<DeleteAnnotationResponse>;
 
 export interface DeleteAPITokenRequest {
   id: string;
 }
-export const DeleteAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/tokens/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteAPITokenRequest" }) as any as S.Schema<DeleteAPITokenRequest>;
 
 export interface DeleteAPITokenResponse {}
-export const DeleteAPITokenResponse =
-  DeleteAnnotationResponse as any as S.Schema<DeleteAPITokenResponse>;
+const DeleteAPITokenResponse = DeleteAnnotationResponse as any as S.Schema<DeleteAPITokenResponse>;
 
 export interface DeleteDashboardRequest {
   uid: string;
 }
-export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/dashboards/uid/{uid}", code: 200 })),
 ).annotate({ identifier: "DeleteDashboardRequest" }) as any as S.Schema<DeleteDashboardRequest>;
 
 export interface DeleteDashboardResponse {}
-export const DeleteDashboardResponse =
+const DeleteDashboardResponse =
   DeleteAnnotationResponse as any as S.Schema<DeleteDashboardResponse>;
 
 export interface DeleteDatasetRequest {
   dataset_id: string;
 }
-export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/datasets/{dataset_id}", code: 200 })),
 ).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
 
 export interface DeleteDatasetResponse {}
-export const DeleteDatasetResponse =
-  DeleteAnnotationResponse as any as S.Schema<DeleteDatasetResponse>;
+const DeleteDatasetResponse = DeleteAnnotationResponse as any as S.Schema<DeleteDatasetResponse>;
 
 export type DeleteDatasetFieldsRequestFieldsList = Array<string>;
-export const DeleteDatasetFieldsRequestFieldsList =
+const DeleteDatasetFieldsRequestFieldsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<DeleteDatasetFieldsRequestFieldsList>;
 
 export interface DeleteDatasetFieldsRequest {
   dataset_id: string;
   fields: DeleteDatasetFieldsRequestFieldsList;
 }
-export const DeleteDatasetFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     fields: DeleteDatasetFieldsRequestFieldsList,
@@ -2809,13 +2301,13 @@ export const DeleteDatasetFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatasetFieldsRequest>;
 
 export type DeleteDatasetFieldsResultFieldsList = Array<string>;
-export const DeleteDatasetFieldsResultFieldsList =
+const DeleteDatasetFieldsResultFieldsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<DeleteDatasetFieldsResultFieldsList>;
 
 export interface DeleteDatasetFieldsResult {
   fields?: DeleteDatasetFieldsResultFieldsList;
 }
-export const DeleteDatasetFieldsResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetFieldsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(DeleteDatasetFieldsResultFieldsList),
   }),
@@ -2827,7 +2319,7 @@ export interface DeleteFieldForDatasetRequest {
   dataset_id: string;
   field_id: string;
 }
-export const DeleteFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     field_id: S.String.pipe(T.Label()),
@@ -2842,20 +2334,20 @@ export interface DeleteGroupRequest {
   /** Unique identifier of the group to delete */
   id: string;
 }
-export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/rbac/groups/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = DeleteAnnotationResponse as any as S.Schema<DeleteGroupResponse>;
+const DeleteGroupResponse = DeleteAnnotationResponse as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteMapFieldRequest {
   dataset_id: string;
   map_field_name: string;
 }
-export const DeleteMapFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMapFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     map_field_name: S.String.pipe(T.Label()),
@@ -2869,77 +2361,73 @@ export const DeleteMapFieldRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMapFieldRequest" }) as any as S.Schema<DeleteMapFieldRequest>;
 
 export interface DeleteMapFieldResponse {}
-export const DeleteMapFieldResponse =
-  DeleteAnnotationResponse as any as S.Schema<DeleteMapFieldResponse>;
+const DeleteMapFieldResponse = DeleteAnnotationResponse as any as S.Schema<DeleteMapFieldResponse>;
 
 export interface DeleteMonitorRequest {
   id: string;
 }
-export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/monitors/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteMonitorRequest" }) as any as S.Schema<DeleteMonitorRequest>;
 
 export interface DeleteMonitorResponse {}
-export const DeleteMonitorResponse =
-  DeleteAnnotationResponse as any as S.Schema<DeleteMonitorResponse>;
+const DeleteMonitorResponse = DeleteAnnotationResponse as any as S.Schema<DeleteMonitorResponse>;
 
 export interface DeleteNotifierRequest {
   id: string;
 }
-export const DeleteNotifierRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/notifiers/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteNotifierRequest" }) as any as S.Schema<DeleteNotifierRequest>;
 
 export interface DeleteNotifierResponse {}
-export const DeleteNotifierResponse =
-  DeleteAnnotationResponse as any as S.Schema<DeleteNotifierResponse>;
+const DeleteNotifierResponse = DeleteAnnotationResponse as any as S.Schema<DeleteNotifierResponse>;
 
 export interface DeleteRoleRequest {
   /** Unique identifier of the role to delete */
   id: string;
 }
-export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/rbac/roles/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = DeleteAnnotationResponse as any as S.Schema<DeleteRoleResponse>;
+const DeleteRoleResponse = DeleteAnnotationResponse as any as S.Schema<DeleteRoleResponse>;
 
 export interface DeleteStarredRequest {
   id: string;
 }
-export const DeleteStarredRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStarredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/apl-starred-queries/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteStarredRequest" }) as any as S.Schema<DeleteStarredRequest>;
 
 export interface DeleteStarredResponse {}
-export const DeleteStarredResponse =
-  DeleteAnnotationResponse as any as S.Schema<DeleteStarredResponse>;
+const DeleteStarredResponse = DeleteAnnotationResponse as any as S.Schema<DeleteStarredResponse>;
 
 export interface DeleteViewRequest {
   id: string;
 }
-export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/views/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteViewRequest" }) as any as S.Schema<DeleteViewRequest>;
 
 export interface DeleteViewResponse {}
-export const DeleteViewResponse = DeleteAnnotationResponse as any as S.Schema<DeleteViewResponse>;
+const DeleteViewResponse = DeleteAnnotationResponse as any as S.Schema<DeleteViewResponse>;
 
 export interface DeleteVirtualFieldRequest {
   id: string;
 }
-export const DeleteVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/vfields/{id}", code: 200 })),
@@ -2948,21 +2436,21 @@ export const DeleteVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualFieldRequest>;
 
 export interface DeleteVirtualFieldResponse {}
-export const DeleteVirtualFieldResponse =
+const DeleteVirtualFieldResponse =
   DeleteAnnotationResponse as any as S.Schema<DeleteVirtualFieldResponse>;
 
 export interface GetAnnotationRequest {
   /** Unique ID of the annotation */
   id: string;
 }
-export const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/annotations/{id}", code: 200 })),
 ).annotate({ identifier: "GetAnnotationRequest" }) as any as S.Schema<GetAnnotationRequest>;
 
 export type GetAnnotationsRequestDatasetsList = Array<string>;
-export const GetAnnotationsRequestDatasetsList =
+const GetAnnotationsRequestDatasetsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<GetAnnotationsRequestDatasetsList>;
 
 export interface GetAnnotationsRequest {
@@ -2973,7 +2461,7 @@ export interface GetAnnotationsRequest {
   /** Optional: Filter for events before this date. Use RFC3339 time format. */
   end?: string;
 }
-export const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(GetAnnotationsRequestDatasetsList.pipe(T.Query())),
     start: S.optional(S.String.pipe(T.Query())),
@@ -2982,19 +2470,19 @@ export const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAnnotationsRequest" }) as any as S.Schema<GetAnnotationsRequest>;
 
 export type GetAnnotationsResponseBodyList = Array<Annotation>;
-export const GetAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<GetAnnotationsResponseBodyList>;
 
 export type GetAnnotationsResponse = GetAnnotationsResponseBodyList;
-export const GetAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetAnnotationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetAnnotationsResponse" }) as any as S.Schema<GetAnnotationsResponse>;
 
 export interface GetAPITokenRequest {
   id: string;
 }
-export const GetAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/tokens/{id}", code: 200 })),
@@ -3014,7 +2502,7 @@ export interface APIToken {
   samlAuthenticated?: boolean;
   viewCapabilities?: ViewCapabilities;
 }
-export const APIToken = /*@__PURE__*/ S.suspend(() =>
+const APIToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: DatasetCapabilities,
     description: S.optional(S.String),
@@ -3028,29 +2516,29 @@ export const APIToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "APIToken" }) as any as S.Schema<APIToken>;
 
 export interface GetAPITokensRequest {}
-export const GetAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/tokens", code: 200 })),
 ).annotate({ identifier: "GetAPITokensRequest" }) as any as S.Schema<GetAPITokensRequest>;
 
 export type GetAPITokensResponseBodyList = Array<APIToken>;
-export const GetAPITokensResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAPITokensResponseBodyList = /*@__PURE__*/ S.Array(
   APIToken,
 ) as any as S.Schema<GetAPITokensResponseBodyList>;
 
 export type GetAPITokensResponse = GetAPITokensResponseBodyList;
-export const GetAPITokensResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAPITokensResponse = /*@__PURE__*/ S.suspend(() =>
   GetAPITokensResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetAPITokensResponse" }) as any as S.Schema<GetAPITokensResponse>;
 
 export interface GetCurrentUserRequest {}
-export const GetCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/user", code: 200 })),
 ).annotate({ identifier: "GetCurrentUserRequest" }) as any as S.Schema<GetCurrentUserRequest>;
 
 export interface GetDashboardRequest {
   uid: string;
 }
-export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/dashboards/uid/{uid}", code: 200 })),
@@ -3059,24 +2547,24 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetRequest {
   dataset_id: string;
 }
-export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/datasets/{dataset_id}", code: 200 })),
 ).annotate({ identifier: "GetDatasetRequest" }) as any as S.Schema<GetDatasetRequest>;
 
 export interface GetDatasetsRequest {}
-export const GetDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/datasets", code: 200 })),
 ).annotate({ identifier: "GetDatasetsRequest" }) as any as S.Schema<GetDatasetsRequest>;
 
 export type GetDatasetsResponseBodyList = Array<Dataset>;
-export const GetDatasetsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetDatasetsResponseBodyList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<GetDatasetsResponseBodyList>;
 
 export type GetDatasetsResponse = GetDatasetsResponseBodyList;
-export const GetDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   GetDatasetsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDatasetsResponse" }) as any as S.Schema<GetDatasetsResponse>;
 
@@ -3084,7 +2572,7 @@ export interface GetFieldForDatasetRequest {
   dataset_id: string;
   field_id: string;
 }
-export const GetFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     field_id: S.String.pipe(T.Label()),
@@ -3105,7 +2593,7 @@ export interface DatasetField {
   /** Unit of the field */
   unit?: string;
 }
-export const DatasetField = /*@__PURE__*/ S.suspend(() =>
+const DatasetField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     hidden: S.optional(S.Boolean),
@@ -3118,7 +2606,7 @@ export const DatasetField = /*@__PURE__*/ S.suspend(() =>
 export interface GetFieldsForDatasetRequest {
   dataset_id: string;
 }
-export const GetFieldsForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFieldsForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/datasets/{dataset_id}/fields", code: 200 })),
@@ -3127,12 +2615,12 @@ export const GetFieldsForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFieldsForDatasetRequest>;
 
 export type GetFieldsForDatasetResponseBodyList = Array<DatasetField>;
-export const GetFieldsForDatasetResponseBodyList = /*@__PURE__*/ S.Array(
+const GetFieldsForDatasetResponseBodyList = /*@__PURE__*/ S.Array(
   DatasetField,
 ) as any as S.Schema<GetFieldsForDatasetResponseBodyList>;
 
 export type GetFieldsForDatasetResponse = GetFieldsForDatasetResponseBodyList;
-export const GetFieldsForDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFieldsForDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   GetFieldsForDatasetResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetFieldsForDatasetResponse",
@@ -3142,7 +2630,7 @@ export interface GetGroupByIdRequest {
   /** Unique identifier of the group to retrieve */
   id: string;
 }
-export const GetGroupByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/rbac/groups/{id}", code: 200 })),
@@ -3150,14 +2638,8 @@ export const GetGroupByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this group */
 export type GetGroupByIdResponseMembersList = Array<string>;
-export const GetGroupByIdResponseMembersList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<GetGroupByIdResponseMembersList>;
-
 /** List of role IDs that are assigned to this group */
 export type GetGroupByIdResponseRolesList = Array<string>;
-export const GetGroupByIdResponseRolesList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<GetGroupByIdResponseRolesList>;
-
 export interface GetGroupByIdResponse {
   /** Detailed description of the group's purpose and scope */
   description?: string;
@@ -3172,12 +2654,12 @@ export interface GetGroupByIdResponse {
   /** Unique identifier for the group */
   id: string;
 }
-export const GetGroupByIdResponse = CreateGroupResponse as any as S.Schema<GetGroupByIdResponse>;
+const GetGroupByIdResponse = CreateGroupResponse as any as S.Schema<GetGroupByIdResponse>;
 
 export interface GetMapFieldsRequest {
   dataset_id: string;
 }
-export const GetMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/datasets/{dataset_id}/mapfields", code: 200 })),
@@ -3185,10 +2667,10 @@ export const GetMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of map field names */
 export type MapFields = Array<string>;
-export const MapFields = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MapFields>;
+const MapFields = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MapFields>;
 
 export type GetMapFieldsResponse = MapFields;
-export const GetMapFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMapFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   MapFields.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetMapFieldsResponse" }) as any as S.Schema<GetMapFieldsResponse>;
 
@@ -3196,7 +2678,7 @@ export interface GetMonitorRequest {
   /** Unique identifier of the monitor (format: mon_*) */
   id: string;
 }
-export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/monitors/{id}", code: 200 })),
@@ -3204,7 +2686,7 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
 export type GetMonitorResponseNotifierIdsList = Array<string>;
-export const GetMonitorResponseNotifierIdsList =
+const GetMonitorResponseNotifierIdsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<GetMonitorResponseNotifierIdsList>;
 
 /** Comparison operator for threshold checks: - Below: Trigger when value < threshold - BelowOrEqual: Trigger when value <= threshold - Above: Trigger when value > threshold - AboveOrEqual: Trigger when value >= threshold - AboveOrBelow: Trigger when value is outside a range */
@@ -3214,11 +2696,11 @@ export type GetMonitorResponseOperator =
   | "Above"
   | "AboveOrEqual"
   | "AboveOrBelow";
-export const GetMonitorResponseOperator = S.String;
+const GetMonitorResponseOperator = S.String;
 
 /** Type of monitoring check to perform: - Threshold: Compares a numeric value against a threshold - MatchEvent: Looks for specific events or patterns - AnomalyDetection: Identifies unusual patterns based on historical data */
 export type GetMonitorResponseType = "Threshold" | "MatchEvent" | "AnomalyDetection";
-export const GetMonitorResponseType = S.String;
+const GetMonitorResponseType = S.String;
 
 export interface GetMonitorResponse {
   /** Whether to alert when no data is received */
@@ -3276,7 +2758,7 @@ export interface GetMonitorResponse {
   /** Unique identifier for the monitor */
   id: string;
 }
-export const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertOnNoData: S.optional(S.Boolean),
     aplQuery: S.optional(S.String),
@@ -3315,7 +2797,7 @@ export interface GetMonitorHistoryRequest {
   /** End time (ISO 8601 format) for filtering alert history. */
   endTime: string;
 }
-export const GetMonitorHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     startTime: S.String.pipe(T.Query()),
@@ -3325,7 +2807,7 @@ export const GetMonitorHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current state of the alert */
 export type AlertHistoryState = "open" | "closed";
-export const AlertHistoryState = S.String;
+const AlertHistoryState = S.String;
 
 /** Historical record of an alert's state changes. Tracks when alerts are opened and closed, allowing for incident timeline analysis. */
 export interface AlertHistory {
@@ -3338,7 +2820,7 @@ export interface AlertHistory {
   /** ISO 8601 timestamp when the alert state changed */
   timestamp: string;
 }
-export const AlertHistory = /*@__PURE__*/ S.suspend(() =>
+const AlertHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkId: S.String,
     name: S.String,
@@ -3348,25 +2830,25 @@ export const AlertHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertHistory" }) as any as S.Schema<AlertHistory>;
 
 export type GetMonitorHistoryResponseBodyList = Array<AlertHistory>;
-export const GetMonitorHistoryResponseBodyList = /*@__PURE__*/ S.Array(
+const GetMonitorHistoryResponseBodyList = /*@__PURE__*/ S.Array(
   AlertHistory,
 ) as any as S.Schema<GetMonitorHistoryResponseBodyList>;
 
 export type GetMonitorHistoryResponse = GetMonitorHistoryResponseBodyList;
-export const GetMonitorHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   GetMonitorHistoryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetMonitorHistoryResponse",
 }) as any as S.Schema<GetMonitorHistoryResponse>;
 
 export interface GetMonitorsRequest {}
-export const GetMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/monitors", code: 200 })),
 ).annotate({ identifier: "GetMonitorsRequest" }) as any as S.Schema<GetMonitorsRequest>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
 export type MonitorWithIdNotifierIdsList = Array<string>;
-export const MonitorWithIdNotifierIdsList =
+const MonitorWithIdNotifierIdsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<MonitorWithIdNotifierIdsList>;
 
 /** Comparison operator for threshold checks: - Below: Trigger when value < threshold - BelowOrEqual: Trigger when value <= threshold - Above: Trigger when value > threshold - AboveOrEqual: Trigger when value >= threshold - AboveOrBelow: Trigger when value is outside a range */
@@ -3376,11 +2858,11 @@ export type MonitorWithIdOperator =
   | "Above"
   | "AboveOrEqual"
   | "AboveOrBelow";
-export const MonitorWithIdOperator = S.String;
+const MonitorWithIdOperator = S.String;
 
 /** Type of monitoring check to perform: - Threshold: Compares a numeric value against a threshold - MatchEvent: Looks for specific events or patterns - AnomalyDetection: Identifies unusual patterns based on historical data */
 export type MonitorWithIdType = "Threshold" | "MatchEvent" | "AnomalyDetection";
-export const MonitorWithIdType = S.String;
+const MonitorWithIdType = S.String;
 
 /** Monitor configuration with its unique identifier */
 export interface MonitorWithId {
@@ -3439,7 +2921,7 @@ export interface MonitorWithId {
   /** Unique identifier for the monitor */
   id: string;
 }
-export const MonitorWithId = /*@__PURE__*/ S.suspend(() =>
+const MonitorWithId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertOnNoData: S.optional(S.Boolean),
     aplQuery: S.optional(S.String),
@@ -3472,12 +2954,12 @@ export const MonitorWithId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonitorWithId" }) as any as S.Schema<MonitorWithId>;
 
 export type GetMonitorsResponseBodyList = Array<MonitorWithId>;
-export const GetMonitorsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetMonitorsResponseBodyList = /*@__PURE__*/ S.Array(
   MonitorWithId,
 ) as any as S.Schema<GetMonitorsResponseBodyList>;
 
 export type GetMonitorsResponse = GetMonitorsResponseBodyList;
-export const GetMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
   GetMonitorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetMonitorsResponse" }) as any as S.Schema<GetMonitorsResponse>;
 
@@ -3485,7 +2967,7 @@ export interface GetNotifierRequest {
   /** Unique identifier of the notifier (format: notify_*) */
   id: string;
 }
-export const GetNotifierRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/notifiers/{id}", code: 200 })),
@@ -3506,10 +2988,10 @@ export interface GetNotifierResponse {
   /** Unique identifier for the notifier */
   id?: string;
 }
-export const GetNotifierResponse = CreateNotifierResponse as any as S.Schema<GetNotifierResponse>;
+const GetNotifierResponse = CreateNotifierResponse as any as S.Schema<GetNotifierResponse>;
 
 export interface GetNotifiersRequest {}
-export const GetNotifiersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotifiersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/notifiers", code: 200 })),
 ).annotate({ identifier: "GetNotifiersRequest" }) as any as S.Schema<GetNotifiersRequest>;
 
@@ -3529,39 +3011,39 @@ export interface NotifierWithId {
   /** Unique identifier for the notifier */
   id?: string;
 }
-export const NotifierWithId = CreateNotifierResponse as any as S.Schema<NotifierWithId>;
+const NotifierWithId = CreateNotifierResponse as any as S.Schema<NotifierWithId>;
 
 export type GetNotifiersResponseBodyList = Array<NotifierWithId>;
-export const GetNotifiersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetNotifiersResponseBodyList = /*@__PURE__*/ S.Array(
   NotifierWithId,
 ) as any as S.Schema<GetNotifiersResponseBodyList>;
 
 export type GetNotifiersResponse = GetNotifiersResponseBodyList;
-export const GetNotifiersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNotifiersResponse = /*@__PURE__*/ S.suspend(() =>
   GetNotifiersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetNotifiersResponse" }) as any as S.Schema<GetNotifiersResponse>;
 
 export interface GetOrgRequest {
   id: string;
 }
-export const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/orgs/{id}", code: 200 })),
 ).annotate({ identifier: "GetOrgRequest" }) as any as S.Schema<GetOrgRequest>;
 
 export interface GetOrgsRequest {}
-export const GetOrgsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/orgs", code: 200 })),
 ).annotate({ identifier: "GetOrgsRequest" }) as any as S.Schema<GetOrgsRequest>;
 
 export type GetOrgsResponseBodyList = Array<Org>;
-export const GetOrgsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOrgsResponseBodyList = /*@__PURE__*/ S.Array(
   Org,
 ) as any as S.Schema<GetOrgsResponseBodyList>;
 
 export type GetOrgsResponse = GetOrgsResponseBodyList;
-export const GetOrgsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgsResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOrgsResponse" }) as any as S.Schema<GetOrgsResponse>;
 
@@ -3569,7 +3051,7 @@ export interface GetRoleByIdRequest {
   /** Unique identifier of the role to retrieve */
   id: string;
 }
-export const GetRoleByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/rbac/roles/{id}", code: 200 })),
@@ -3577,9 +3059,6 @@ export const GetRoleByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this role */
 export type GetRoleByIdResponseMembersList = Array<string>;
-export const GetRoleByIdResponseMembersList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<GetRoleByIdResponseMembersList>;
-
 export interface GetRoleByIdResponse {
   datasetCapabilities?: RoleDatasetCapabilities;
   /** Detailed description of the role's purpose and scope */
@@ -3593,22 +3072,22 @@ export interface GetRoleByIdResponse {
   /** Unique identifier for the role */
   id: string;
 }
-export const GetRoleByIdResponse = CreateRoleResponse as any as S.Schema<GetRoleByIdResponse>;
+const GetRoleByIdResponse = CreateRoleResponse as any as S.Schema<GetRoleByIdResponse>;
 
 export interface GetStarredRequest {
   id: string;
 }
-export const GetStarredRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStarredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/apl-starred-queries/{id}", code: 200 })),
 ).annotate({ identifier: "GetStarredRequest" }) as any as S.Schema<GetStarredRequest>;
 
 export type GetStarredResponseKind = "apl";
-export const GetStarredResponseKind = S.String;
+const GetStarredResponseKind = S.String;
 
 export type GetStarredResponseMetadataMap = { [key: string]: string | undefined };
-export const GetStarredResponseMetadataMap =
+const GetStarredResponseMetadataMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<GetStarredResponseMetadataMap>;
 
 export interface GetStarredResponse {
@@ -3620,7 +3099,7 @@ export interface GetStarredResponse {
   who: string;
   id: string;
 }
-export const GetStarredResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStarredResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(S.String),
     kind: GetStarredResponseKind,
@@ -3640,7 +3119,7 @@ export interface GetStarredQueriesRequest {
   who?: string;
   qs?: string;
 }
-export const GetStarredQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStarredQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -3651,10 +3130,10 @@ export const GetStarredQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStarredQueriesRequest" }) as any as S.Schema<GetStarredQueriesRequest>;
 
 export type StarredQueryWithIdKind = "apl";
-export const StarredQueryWithIdKind = S.String;
+const StarredQueryWithIdKind = S.String;
 
 export type StarredQueryWithIdMetadataMap = { [key: string]: string | undefined };
-export const StarredQueryWithIdMetadataMap =
+const StarredQueryWithIdMetadataMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<StarredQueryWithIdMetadataMap>;
 
 export interface StarredQueryWithId {
@@ -3666,7 +3145,7 @@ export interface StarredQueryWithId {
   who: string;
   id: string;
 }
-export const StarredQueryWithId = /*@__PURE__*/ S.suspend(() =>
+const StarredQueryWithId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(S.String),
     kind: StarredQueryWithIdKind,
@@ -3679,12 +3158,12 @@ export const StarredQueryWithId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StarredQueryWithId" }) as any as S.Schema<StarredQueryWithId>;
 
 export type GetStarredQueriesResponseBodyList = Array<StarredQueryWithId>;
-export const GetStarredQueriesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetStarredQueriesResponseBodyList = /*@__PURE__*/ S.Array(
   StarredQueryWithId,
 ) as any as S.Schema<GetStarredQueriesResponseBodyList>;
 
 export type GetStarredQueriesResponse = GetStarredQueriesResponseBodyList;
-export const GetStarredQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStarredQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   GetStarredQueriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetStarredQueriesResponse",
@@ -3693,55 +3172,55 @@ export const GetStarredQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserRequest {
   id: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/users/{id}", code: 200 })),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export interface GetUsersRequest {}
-export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/users", code: 200 })),
 ).annotate({ identifier: "GetUsersRequest" }) as any as S.Schema<GetUsersRequest>;
 
 export type GetUsersResponseBodyList = Array<User>;
-export const GetUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetUsersResponseBodyList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<GetUsersResponseBodyList>;
 
 export type GetUsersResponse = GetUsersResponseBodyList;
-export const GetUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUsersResponse = /*@__PURE__*/ S.suspend(() =>
   GetUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetUsersResponse" }) as any as S.Schema<GetUsersResponse>;
 
 export interface GetViewRequest {
   id: string;
 }
-export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/views/{id}", code: 200 })),
 ).annotate({ identifier: "GetViewRequest" }) as any as S.Schema<GetViewRequest>;
 
 export interface GetViewsRequest {}
-export const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/views", code: 200 })),
 ).annotate({ identifier: "GetViewsRequest" }) as any as S.Schema<GetViewsRequest>;
 
 export type GetViewsResponseBodyList = Array<View>;
-export const GetViewsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetViewsResponseBodyList = /*@__PURE__*/ S.Array(
   View,
 ) as any as S.Schema<GetViewsResponseBodyList>;
 
 export type GetViewsResponse = GetViewsResponseBodyList;
-export const GetViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetViewsResponse = /*@__PURE__*/ S.suspend(() =>
   GetViewsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetViewsResponse" }) as any as S.Schema<GetViewsResponse>;
 
 export interface GetVirtualFieldRequest {
   id: string;
 }
-export const GetVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/vfields/{id}", code: 200 })),
@@ -3756,7 +3235,7 @@ export interface GetVirtualFieldResponse {
   unit?: string;
   id: string;
 }
-export const GetVirtualFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.String,
     description: S.optional(S.String),
@@ -3771,7 +3250,7 @@ export const GetVirtualFieldResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetVirtualFieldsRequest {
   dataset: string;
 }
-export const GetVirtualFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/vfields", code: 200 })),
@@ -3786,15 +3265,15 @@ export interface VirtualFieldWithId {
   unit?: string;
   id: string;
 }
-export const VirtualFieldWithId = GetVirtualFieldResponse as any as S.Schema<VirtualFieldWithId>;
+const VirtualFieldWithId = GetVirtualFieldResponse as any as S.Schema<VirtualFieldWithId>;
 
 export type GetVirtualFieldsResponseBodyList = Array<VirtualFieldWithId>;
-export const GetVirtualFieldsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetVirtualFieldsResponseBodyList = /*@__PURE__*/ S.Array(
   VirtualFieldWithId,
 ) as any as S.Schema<GetVirtualFieldsResponseBodyList>;
 
 export type GetVirtualFieldsResponse = GetVirtualFieldsResponseBodyList;
-export const GetVirtualFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   GetVirtualFieldsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetVirtualFieldsResponse" }) as any as S.Schema<GetVirtualFieldsResponse>;
 
@@ -3802,7 +3281,7 @@ export interface ListDashboardsRequest {
   limit?: number;
   offset?: number;
 }
-export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -3810,30 +3289,24 @@ export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDashboardsRequest" }) as any as S.Schema<ListDashboardsRequest>;
 
 export type ListDashboardsResponseBodyList = Array<DashboardResource>;
-export const ListDashboardsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDashboardsResponseBodyList = /*@__PURE__*/ S.Array(
   DashboardResource,
 ) as any as S.Schema<ListDashboardsResponseBodyList>;
 
 export type ListDashboardsResponse = ListDashboardsResponseBodyList;
-export const ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDashboardsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDashboardsResponse" }) as any as S.Schema<ListDashboardsResponse>;
 
 export interface ListGroupsRequest {}
-export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/rbac/groups", code: 200 })),
 ).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 /** List of user IDs that are assigned to this group */
 export type GroupWithIDMembersList = Array<string>;
-export const GroupWithIDMembersList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<GroupWithIDMembersList>;
-
 /** List of role IDs that are assigned to this group */
 export type GroupWithIDRolesList = Array<string>;
-export const GroupWithIDRolesList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<GroupWithIDRolesList>;
-
 /** Extends the base Group type to include a unique identifier */
 export interface GroupWithID {
   /** Detailed description of the group's purpose and scope */
@@ -3849,28 +3322,25 @@ export interface GroupWithID {
   /** Unique identifier for the group */
   id: string;
 }
-export const GroupWithID = CreateGroupResponse as any as S.Schema<GroupWithID>;
+const GroupWithID = CreateGroupResponse as any as S.Schema<GroupWithID>;
 
 export type ListGroupsResponseBodyList = Array<GroupWithID>;
-export const ListGroupsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListGroupsResponseBodyList = /*@__PURE__*/ S.Array(
   GroupWithID,
 ) as any as S.Schema<ListGroupsResponseBodyList>;
 
 export type ListGroupsResponse = ListGroupsResponseBodyList;
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   ListGroupsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
 
 export interface ListRolesRequest {}
-export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/rbac/roles", code: 200 })),
 ).annotate({ identifier: "ListRolesRequest" }) as any as S.Schema<ListRolesRequest>;
 
 /** List of user IDs that are assigned to this role */
 export type RoleWithIDMembersList = Array<string>;
-export const RoleWithIDMembersList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<RoleWithIDMembersList>;
-
 /** Extends the base Role type to include a unique identifier */
 export interface RoleWithID {
   datasetCapabilities?: RoleDatasetCapabilities;
@@ -3885,20 +3355,20 @@ export interface RoleWithID {
   /** Unique identifier for the role */
   id: string;
 }
-export const RoleWithID = CreateRoleResponse as any as S.Schema<RoleWithID>;
+const RoleWithID = CreateRoleResponse as any as S.Schema<RoleWithID>;
 
 export type ListRolesResponseBodyList = Array<RoleWithID>;
-export const ListRolesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRolesResponseBodyList = /*@__PURE__*/ S.Array(
   RoleWithID,
 ) as any as S.Schema<ListRolesResponseBodyList>;
 
 export type ListRolesResponse = ListRolesResponseBodyList;
-export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
   ListRolesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListRolesResponse" }) as any as S.Schema<ListRolesResponse>;
 
 export type DashboardChartPatchDocument = { [key: string]: unknown | undefined };
-export const DashboardChartPatchDocument = /*@__PURE__*/ S.Record(
+const DashboardChartPatchDocument = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<DashboardChartPatchDocument>;
@@ -3913,7 +3383,7 @@ export interface PatchDashboardChartRequest {
   /** Required when overwrite is false. */
   version?: number;
 }
-export const PatchDashboardChartRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDashboardChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     chartId: S.String.pipe(T.Label()),
@@ -3932,7 +3402,7 @@ export interface ProvisionOrgRequest {
   /** Optional edge deployment (region) the organization is created in. If omitted, the environment's default region is used. */
   edgeDeployment?: string;
 }
-export const ProvisionOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     edgeDeployment: S.optional(S.String),
@@ -3949,7 +3419,7 @@ export interface ProvisionOrgResponse {
   /** Full-permission API token the agent uses to create datasets, ingest, and query. Returned once and never retrievable again. */
   token: string;
 }
-export const ProvisionOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ProvisionOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3971,7 +3441,7 @@ export interface CreateAPIToken2 {
   orgCapabilities?: OrgCapabilities;
   viewCapabilities?: ViewCapabilities;
 }
-export const CreateAPIToken2 = /*@__PURE__*/ S.suspend(() =>
+const CreateAPIToken2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: S.optional(DatasetCapabilities),
     description: S.optional(S.String),
@@ -3990,7 +3460,7 @@ export interface RegenerateAPITokenRequest {
   /** Expiration date of the new token (ISO 8601 format) */
   newTokenExpiresAt?: string | null;
 }
-export const RegenerateAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     existingTokenExpiresAt: S.String,
@@ -4016,7 +3486,7 @@ export interface RegenerateAPITokenResponse {
   viewCapabilities?: ViewCapabilities;
   token?: string;
 }
-export const RegenerateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
+const RegenerateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: DatasetCapabilities,
     description: S.optional(S.String),
@@ -4035,21 +3505,21 @@ export const RegenerateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveUserFromOrgRequest {
   id: string;
 }
-export const RemoveUserFromOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserFromOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/users/{id}", code: 200 })),
 ).annotate({ identifier: "RemoveUserFromOrgRequest" }) as any as S.Schema<RemoveUserFromOrgRequest>;
 
 export interface RemoveUserFromOrgResponse {}
-export const RemoveUserFromOrgResponse =
+const RemoveUserFromOrgResponse =
   DeleteAnnotationResponse as any as S.Schema<RemoveUserFromOrgResponse>;
 
 export interface TrimDatasetRequest {
   dataset_id: string;
   maxDuration: string;
 }
-export const TrimDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const TrimDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     maxDuration: S.String,
@@ -4057,11 +3527,11 @@ export const TrimDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrimDatasetRequest" }) as any as S.Schema<TrimDatasetRequest>;
 
 export interface TrimDatasetResponse {}
-export const TrimDatasetResponse = DeleteAnnotationResponse as any as S.Schema<TrimDatasetResponse>;
+const TrimDatasetResponse = DeleteAnnotationResponse as any as S.Schema<TrimDatasetResponse>;
 
 /** array<string> of dataset names for which the annotation appears on charts */
 export type UpdateAnnotationRequestDatasetsList = Array<string>;
-export const UpdateAnnotationRequestDatasetsList =
+const UpdateAnnotationRequestDatasetsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateAnnotationRequestDatasetsList>;
 
 export interface UpdateAnnotationRequest {
@@ -4082,7 +3552,7 @@ export interface UpdateAnnotationRequest {
   /** URL relevant for the event marked by the annotation. For example, link to GitHub pull request. */
   url?: string;
 }
-export const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     datasets: S.optional(UpdateAnnotationRequestDatasetsList),
@@ -4099,7 +3569,7 @@ export interface UpdateCurrentUserRequest {
   /** New name for the user */
   name: string;
 }
-export const UpdateCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }).pipe(T.Http({ method: "PUT", uri: "/v2/user", code: 200 })),
@@ -4107,8 +3577,7 @@ export const UpdateCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Required for updates when overwrite is false. Pass back the version value received from the server verbatim (string or number). */
 export type UpdateDashboardRequestVersion = string | number;
-export const UpdateDashboardRequestVersion =
-  S.Unknown as any as S.Schema<UpdateDashboardRequestVersion>;
+const UpdateDashboardRequestVersion = S.Unknown as any as S.Schema<UpdateDashboardRequestVersion>;
 
 export interface UpdateDashboardRequest {
   uid: string;
@@ -4118,7 +3587,7 @@ export interface UpdateDashboardRequest {
   /** Required for updates when overwrite is false. Pass back the version value received from the server verbatim (string or number). */
   version?: UpdateDashboardRequestVersion;
 }
-export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     dashboard: Dashboard,
@@ -4136,7 +3605,7 @@ export interface UpdateDatasetRequest {
   /** Whether to use the retention period */
   useRetentionPeriod?: boolean;
 }
-export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -4159,7 +3628,7 @@ export interface UpdateFieldForDatasetRequest {
   /** Unit of the field */
   unit?: string;
 }
-export const UpdateFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     field_id: S.String.pipe(T.Label()),
@@ -4175,12 +3644,12 @@ export const UpdateFieldForDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this group */
 export type UpdateGroupRequestMembersList = Array<string>;
-export const UpdateGroupRequestMembersList =
+const UpdateGroupRequestMembersList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateGroupRequestMembersList>;
 
 /** List of role IDs that are assigned to this group */
 export type UpdateGroupRequestRolesList = Array<string>;
-export const UpdateGroupRequestRolesList =
+const UpdateGroupRequestRolesList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateGroupRequestRolesList>;
 
 export interface UpdateGroupRequest {
@@ -4195,7 +3664,7 @@ export interface UpdateGroupRequest {
   /** List of role IDs that are assigned to this group */
   roles?: UpdateGroupRequestRolesList;
 }
-export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -4207,14 +3676,8 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this group */
 export type UpdateGroupResponseMembersList = Array<string>;
-export const UpdateGroupResponseMembersList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateGroupResponseMembersList>;
-
 /** List of role IDs that are assigned to this group */
 export type UpdateGroupResponseRolesList = Array<string>;
-export const UpdateGroupResponseRolesList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateGroupResponseRolesList>;
-
 export interface UpdateGroupResponse {
   /** Detailed description of the group's purpose and scope */
   description?: string;
@@ -4229,13 +3692,13 @@ export interface UpdateGroupResponse {
   /** Unique identifier for the group */
   id: string;
 }
-export const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
+const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
 
 export interface UpdateMapFieldsRequest {
   dataset_id: string;
   body: MapFields;
 }
-export const UpdateMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
     body: MapFields.pipe(T.HttpBody()),
@@ -4243,12 +3706,11 @@ export const UpdateMapFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMapFieldsRequest" }) as any as S.Schema<UpdateMapFieldsRequest>;
 
 export type UpdateMapFieldsResponse = MapFields;
-export const UpdateMapFieldsResponse =
-  GetMapFieldsResponse as any as S.Schema<UpdateMapFieldsResponse>;
+const UpdateMapFieldsResponse = GetMapFieldsResponse as any as S.Schema<UpdateMapFieldsResponse>;
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
 export type UpdateMonitorRequestNotifierIdsList = Array<string>;
-export const UpdateMonitorRequestNotifierIdsList =
+const UpdateMonitorRequestNotifierIdsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateMonitorRequestNotifierIdsList>;
 
 /** Comparison operator for threshold checks: - Below: Trigger when value < threshold - BelowOrEqual: Trigger when value <= threshold - Above: Trigger when value > threshold - AboveOrEqual: Trigger when value >= threshold - AboveOrBelow: Trigger when value is outside a range */
@@ -4258,11 +3720,11 @@ export type UpdateMonitorRequestOperator =
   | "Above"
   | "AboveOrEqual"
   | "AboveOrBelow";
-export const UpdateMonitorRequestOperator = S.String;
+const UpdateMonitorRequestOperator = S.String;
 
 /** Type of monitoring check to perform: - Threshold: Compares a numeric value against a threshold - MatchEvent: Looks for specific events or patterns - AnomalyDetection: Identifies unusual patterns based on historical data */
 export type UpdateMonitorRequestType = "Threshold" | "MatchEvent" | "AnomalyDetection";
-export const UpdateMonitorRequestType = S.String;
+const UpdateMonitorRequestType = S.String;
 
 export interface UpdateMonitorRequest {
   id: string;
@@ -4319,7 +3781,7 @@ export interface UpdateMonitorRequest {
   /** Timestamp when the monitor was last updated */
   updatedAt?: string;
 }
-export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     alertOnNoData: S.optional(S.Boolean),
@@ -4353,7 +3815,7 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of notifier IDs that will receive alerts. Notifiers can be email, Slack, webhook endpoints, etc. */
 export type UpdateMonitorResponseNotifierIdsList = Array<string>;
-export const UpdateMonitorResponseNotifierIdsList =
+const UpdateMonitorResponseNotifierIdsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateMonitorResponseNotifierIdsList>;
 
 /** Comparison operator for threshold checks: - Below: Trigger when value < threshold - BelowOrEqual: Trigger when value <= threshold - Above: Trigger when value > threshold - AboveOrEqual: Trigger when value >= threshold - AboveOrBelow: Trigger when value is outside a range */
@@ -4363,11 +3825,11 @@ export type UpdateMonitorResponseOperator =
   | "Above"
   | "AboveOrEqual"
   | "AboveOrBelow";
-export const UpdateMonitorResponseOperator = S.String;
+const UpdateMonitorResponseOperator = S.String;
 
 /** Type of monitoring check to perform: - Threshold: Compares a numeric value against a threshold - MatchEvent: Looks for specific events or patterns - AnomalyDetection: Identifies unusual patterns based on historical data */
 export type UpdateMonitorResponseType = "Threshold" | "MatchEvent" | "AnomalyDetection";
-export const UpdateMonitorResponseType = S.String;
+const UpdateMonitorResponseType = S.String;
 
 export interface UpdateMonitorResponse {
   /** Whether to alert when no data is received */
@@ -4425,7 +3887,7 @@ export interface UpdateMonitorResponse {
   /** Unique identifier for the monitor */
   id: string;
 }
-export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertOnNoData: S.optional(S.Boolean),
     aplQuery: S.optional(S.String),
@@ -4465,7 +3927,7 @@ export interface UpdateNotifierRequest {
   name: string;
   properties: NotifierProperties;
 }
-export const UpdateNotifierRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     disabledUntil: S.optional(S.String),
@@ -4489,14 +3951,13 @@ export interface UpdateNotifierResponse {
   /** Unique identifier for the notifier */
   id?: string;
 }
-export const UpdateNotifierResponse =
-  CreateNotifierResponse as any as S.Schema<UpdateNotifierResponse>;
+const UpdateNotifierResponse = CreateNotifierResponse as any as S.Schema<UpdateNotifierResponse>;
 
 export interface UpdateOrgRequest {
   id: string;
   name: string;
 }
-export const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.String,
@@ -4505,7 +3966,7 @@ export const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this role */
 export type UpdateRoleRequestMembersList = Array<string>;
-export const UpdateRoleRequestMembersList =
+const UpdateRoleRequestMembersList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateRoleRequestMembersList>;
 
 export interface UpdateRoleRequest {
@@ -4521,7 +3982,7 @@ export interface UpdateRoleRequest {
   orgCapabilities?: RoleOrgCapabilities;
   viewCapabilities?: RoleViewCapabilities;
 }
-export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     datasetCapabilities: S.optional(RoleDatasetCapabilities),
@@ -4535,9 +3996,6 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs that are assigned to this role */
 export type UpdateRoleResponseMembersList = Array<string>;
-export const UpdateRoleResponseMembersList =
-  CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateRoleResponseMembersList>;
-
 export interface UpdateRoleResponse {
   datasetCapabilities?: RoleDatasetCapabilities;
   /** Detailed description of the role's purpose and scope */
@@ -4551,13 +4009,13 @@ export interface UpdateRoleResponse {
   /** Unique identifier for the role */
   id: string;
 }
-export const UpdateRoleResponse = CreateRoleResponse as any as S.Schema<UpdateRoleResponse>;
+const UpdateRoleResponse = CreateRoleResponse as any as S.Schema<UpdateRoleResponse>;
 
 export type UpdateStarredRequestKind = "apl";
-export const UpdateStarredRequestKind = S.String;
+const UpdateStarredRequestKind = S.String;
 
 export type UpdateStarredRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdateStarredRequestMetadataMap =
+const UpdateStarredRequestMetadataMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<UpdateStarredRequestMetadataMap>;
 
 export interface UpdateStarredRequest {
@@ -4569,7 +4027,7 @@ export interface UpdateStarredRequest {
   query: APLRequestWithOptions;
   who: string;
 }
-export const UpdateStarredRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStarredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     dataset: S.optional(S.String),
@@ -4582,10 +4040,10 @@ export const UpdateStarredRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateStarredRequest" }) as any as S.Schema<UpdateStarredRequest>;
 
 export type UpdateStarredResponseKind = "apl";
-export const UpdateStarredResponseKind = S.String;
+const UpdateStarredResponseKind = S.String;
 
 export type UpdateStarredResponseMetadataMap = { [key: string]: string | undefined };
-export const UpdateStarredResponseMetadataMap =
+const UpdateStarredResponseMetadataMap =
   CustomNotifierConfigHeadersMap as any as S.Schema<UpdateStarredResponseMetadataMap>;
 
 export interface UpdateStarredResponse {
@@ -4597,7 +4055,7 @@ export interface UpdateStarredResponse {
   who: string;
   id: string;
 }
-export const UpdateStarredResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateStarredResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(S.String),
     kind: UpdateStarredResponseKind,
@@ -4614,7 +4072,7 @@ export interface UpdateUserRoleRequest {
   /** Role identifier to assign to the user */
   role: string;
 }
-export const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     role: S.String,
@@ -4622,7 +4080,7 @@ export const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRoleRequest" }) as any as S.Schema<UpdateUserRoleRequest>;
 
 export type UpdateViewRequestDatasetsList = Array<string>;
-export const UpdateViewRequestDatasetsList =
+const UpdateViewRequestDatasetsList =
   CreateAnnotationRequestDatasetsList as any as S.Schema<UpdateViewRequestDatasetsList>;
 
 export interface UpdateViewRequest {
@@ -4636,7 +4094,7 @@ export interface UpdateViewRequest {
   /** The name of the org that shared this resource, if it's shared */
   sharedByOrgName?: string;
 }
-export const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     aplQuery: S.String,
@@ -4657,7 +4115,7 @@ export interface UpdateVirtualFieldRequest {
   type?: string;
   unit?: string;
 }
-export const UpdateVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     dataset: S.String,
@@ -4680,21 +4138,20 @@ export interface UpdateVirtualFieldResponse {
   unit?: string;
   id: string;
 }
-export const UpdateVirtualFieldResponse =
+const UpdateVirtualFieldResponse =
   CreateVirtualFieldResponse as any as S.Schema<UpdateVirtualFieldResponse>;
 
 export interface VacuumDatasetRequest {
   dataset_id: string;
 }
-export const VacuumDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const VacuumDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/v2/datasets/{dataset_id}/vacuum", code: 200 })),
 ).annotate({ identifier: "VacuumDatasetRequest" }) as any as S.Schema<VacuumDatasetRequest>;
 
 export interface VacuumDatasetResponse {}
-export const VacuumDatasetResponse =
-  DeleteAnnotationResponse as any as S.Schema<VacuumDatasetResponse>;
+const VacuumDatasetResponse = DeleteAnnotationResponse as any as S.Schema<VacuumDatasetResponse>;
 
 export type CreateAnnotationError = BadRequest | UnprocessableEntity | AxiomOpError;
 /** Create annotation */

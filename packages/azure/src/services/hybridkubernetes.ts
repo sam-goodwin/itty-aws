@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type ConnectedClusterCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const ConnectedClusterCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
+const ConnectedClusterCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ConnectedClusterCreateOrReplaceRequestTagsMap>;
@@ -24,19 +24,19 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Property which describes the state of private link on a connected cluster resource. */
 export type ConnectedClusterPropertiesInputPrivateLinkState = "Enabled" | "Disabled";
-export const ConnectedClusterPropertiesInputPrivateLinkState = S.String;
+const ConnectedClusterPropertiesInputPrivateLinkState = S.String;
 
 /** Indicates whether Azure Hybrid Benefit is opted in */
 export type ConnectedClusterPropertiesInputAzureHybridBenefit = "True" | "False" | "NotApplicable";
-export const ConnectedClusterPropertiesInputAzureHybridBenefit = S.String;
+const ConnectedClusterPropertiesInputAzureHybridBenefit = S.String;
 
 /** The list of AAD group object IDs that will have admin role of the cluster. */
 export type AadProfileAdminGroupObjectIDsList = Array<string>;
-export const AadProfileAdminGroupObjectIDsList = /*@__PURE__*/ S.Array(
+const AadProfileAdminGroupObjectIDsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AadProfileAdminGroupObjectIDsList>;
 
@@ -49,7 +49,7 @@ export interface AadProfile {
   /** The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription. */
   tenantID?: string;
 }
-export const AadProfile = /*@__PURE__*/ S.suspend(() =>
+const AadProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableAzureRBAC: S.optional(S.Boolean),
     adminGroupObjectIDs: S.optional(AadProfileAdminGroupObjectIDsList),
@@ -59,7 +59,7 @@ export const AadProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled. */
 export type ArcAgentProfileInputAgentAutoUpgrade = "Enabled" | "Disabled";
-export const ArcAgentProfileInputAgentAutoUpgrade = S.String;
+const ArcAgentProfileInputAgentAutoUpgrade = S.String;
 
 /** System extensions and its current versions installed on the cluster resource. */
 export interface SystemComponentInput {
@@ -70,7 +70,7 @@ export interface SystemComponentInput {
   /** Major Version of the system extension that is currently installed on the cluster resource. */
   majorVersion?: number;
 }
-export const SystemComponentInput = /*@__PURE__*/ S.suspend(() =>
+const SystemComponentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     userSpecifiedVersion: S.optional(S.String),
@@ -80,19 +80,19 @@ export const SystemComponentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of system extensions that are installed on the cluster resource. */
 export type ArcAgentProfileInputSystemComponentsList = Array<SystemComponentInput>;
-export const ArcAgentProfileInputSystemComponentsList = /*@__PURE__*/ S.Array(
+const ArcAgentProfileInputSystemComponentsList = /*@__PURE__*/ S.Array(
   SystemComponentInput,
 ) as any as S.Schema<ArcAgentProfileInputSystemComponentsList>;
 
 /** Agent Errors if any during agent or system component upgrade. */
 export interface AgentErrorInput {}
-export const AgentErrorInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AgentErrorInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AgentErrorInput",
 }) as any as S.Schema<AgentErrorInput>;
 
 /** List of arc agentry and system components errors on the cluster resource. */
 export type ArcAgentProfileInputAgentErrorsList = Array<AgentErrorInput>;
-export const ArcAgentProfileInputAgentErrorsList = /*@__PURE__*/ S.Array(
+const ArcAgentProfileInputAgentErrorsList = /*@__PURE__*/ S.Array(
   AgentErrorInput,
 ) as any as S.Schema<ArcAgentProfileInputAgentErrorsList>;
 
@@ -107,7 +107,7 @@ export interface ArcAgentProfileInput {
   /** List of arc agentry and system components errors on the cluster resource. */
   agentErrors?: ArcAgentProfileInputAgentErrorsList;
 }
-export const ArcAgentProfileInput = /*@__PURE__*/ S.suspend(() =>
+const ArcAgentProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desiredAgentVersion: S.optional(S.String),
     agentAutoUpgrade: S.optional(ArcAgentProfileInputAgentAutoUpgrade),
@@ -121,7 +121,7 @@ export interface SecurityProfileWorkloadIdentity {
   /** Whether to enable or disable the workload identity Webhook */
   enabled?: boolean;
 }
-export const SecurityProfileWorkloadIdentity = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfileWorkloadIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -134,7 +134,7 @@ export interface SecurityProfile {
   /** The workload identity feature webhook. */
   workloadIdentity?: SecurityProfileWorkloadIdentity;
 }
-export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadIdentity: S.optional(SecurityProfileWorkloadIdentity),
   }),
@@ -147,7 +147,7 @@ export interface OidcIssuerProfileInput {
   /** The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature. */
   selfHostedIssuerUrl?: string;
 }
-export const OidcIssuerProfileInput = /*@__PURE__*/ S.suspend(() =>
+const OidcIssuerProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     selfHostedIssuerUrl: S.optional(S.String),
@@ -158,7 +158,7 @@ export interface Gateway {
   /** Indicates whether the gateway for arc router connectivity is enabled. */
   enabled?: boolean;
 }
-export const Gateway = /*@__PURE__*/ S.suspend(() =>
+const Gateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -166,12 +166,12 @@ export const Gateway = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration settings for the feature that do not contain any sensitive or secret information. */
 export type ArcAgentryConfigurationsSettingsMap = { [key: string]: string | undefined };
-export const ArcAgentryConfigurationsSettingsMap =
+const ArcAgentryConfigurationsSettingsMap =
   ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ArcAgentryConfigurationsSettingsMap>;
 
 /** The configuration settings for the feature that contain any sensitive or secret information. */
 export type ArcAgentryConfigurationsProtectedSettingsMap = { [key: string]: string | undefined };
-export const ArcAgentryConfigurationsProtectedSettingsMap =
+const ArcAgentryConfigurationsProtectedSettingsMap =
   ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ArcAgentryConfigurationsProtectedSettingsMap>;
 
 export interface ArcAgentryConfigurations {
@@ -182,7 +182,7 @@ export interface ArcAgentryConfigurations {
   /** The configuration settings for the feature that contain any sensitive or secret information. */
   protectedSettings?: ArcAgentryConfigurationsProtectedSettingsMap | null;
 }
-export const ArcAgentryConfigurations = /*@__PURE__*/ S.suspend(() =>
+const ArcAgentryConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feature: S.optional(S.String),
     settings: S.optional(S.NullOr(ArcAgentryConfigurationsSettingsMap)),
@@ -193,7 +193,7 @@ export const ArcAgentryConfigurations = /*@__PURE__*/ S.suspend(() =>
 /** Configuration settings for customizing the behavior of the connected cluster. */
 export type ConnectedClusterPropertiesInputArcAgentryConfigurationsList =
   Array<ArcAgentryConfigurations>;
-export const ConnectedClusterPropertiesInputArcAgentryConfigurationsList = /*@__PURE__*/ S.Array(
+const ConnectedClusterPropertiesInputArcAgentryConfigurationsList = /*@__PURE__*/ S.Array(
   ArcAgentryConfigurations,
 ) as any as S.Schema<ConnectedClusterPropertiesInputArcAgentryConfigurationsList>;
 
@@ -228,7 +228,7 @@ export interface ConnectedClusterPropertiesInput {
   /** Configuration settings for customizing the behavior of the connected cluster. */
   arcAgentryConfigurations?: ConnectedClusterPropertiesInputArcAgentryConfigurationsList | null;
 }
-export const ConnectedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentPublicKeyCertificate: S.String,
     provisioningState: S.optional(ProvisioningState),
@@ -253,14 +253,14 @@ export const ConnectedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster. */
 export type ConnectedClusterIdentityInputType = "None" | "SystemAssigned";
-export const ConnectedClusterIdentityInputType = S.String;
+const ConnectedClusterIdentityInputType = S.String;
 
 /** Identity for the connected cluster. */
 export interface ConnectedClusterIdentityInput {
   /** The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster. */
   type: ConnectedClusterIdentityInputType | (string & {});
 }
-export const ConnectedClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ConnectedClusterIdentityInputType,
   }),
@@ -270,7 +270,7 @@ export const ConnectedClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the kind of Arc connected cluster based on host infrastructure. */
 export type ConnectedClusterKind = "ProvisionedCluster";
-export const ConnectedClusterKind = S.String;
+const ConnectedClusterKind = S.String;
 
 export interface ConnectedClusterCreateOrReplaceRequest {
   /** The ID of the target subscription. */
@@ -290,7 +290,7 @@ export interface ConnectedClusterCreateOrReplaceRequest {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind | (string & {});
 }
-export const ConnectedClusterCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -314,11 +314,11 @@ export const ConnectedClusterCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -335,7 +335,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -348,7 +348,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConnectedClusterCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const ConnectedClusterCreateOrReplaceResponseTagsMap =
+const ConnectedClusterCreateOrReplaceResponseTagsMap =
   ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ConnectedClusterCreateOrReplaceResponseTagsMap>;
 
 /** Represents the connectivity status of the connected cluster. */
@@ -358,19 +358,19 @@ export type ConnectivityStatus =
   | "Offline"
   | "Expired"
   | "AgentNotInstalled";
-export const ConnectivityStatus = S.String;
+const ConnectivityStatus = S.String;
 
 /** Property which describes the state of private link on a connected cluster resource. */
 export type ConnectedClusterPropertiesPrivateLinkState = "Enabled" | "Disabled";
-export const ConnectedClusterPropertiesPrivateLinkState = S.String;
+const ConnectedClusterPropertiesPrivateLinkState = S.String;
 
 /** Indicates whether Azure Hybrid Benefit is opted in */
 export type ConnectedClusterPropertiesAzureHybridBenefit = "True" | "False" | "NotApplicable";
-export const ConnectedClusterPropertiesAzureHybridBenefit = S.String;
+const ConnectedClusterPropertiesAzureHybridBenefit = S.String;
 
 /** Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled. */
 export type ArcAgentProfileAgentAutoUpgrade = "Enabled" | "Disabled";
-export const ArcAgentProfileAgentAutoUpgrade = S.String;
+const ArcAgentProfileAgentAutoUpgrade = S.String;
 
 /** System extensions and its current versions installed on the cluster resource. */
 export interface SystemComponent {
@@ -383,7 +383,7 @@ export interface SystemComponent {
   /** Version of the system extension that is currently installed on the cluster resource. */
   currentVersion?: string;
 }
-export const SystemComponent = /*@__PURE__*/ S.suspend(() =>
+const SystemComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     userSpecifiedVersion: S.optional(S.String),
@@ -394,7 +394,7 @@ export const SystemComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** List of system extensions that are installed on the cluster resource. */
 export type ArcAgentProfileSystemComponentsList = Array<SystemComponent>;
-export const ArcAgentProfileSystemComponentsList = /*@__PURE__*/ S.Array(
+const ArcAgentProfileSystemComponentsList = /*@__PURE__*/ S.Array(
   SystemComponent,
 ) as any as S.Schema<ArcAgentProfileSystemComponentsList>;
 
@@ -409,7 +409,7 @@ export interface AgentError {
   /** The timestamp of error occured (UTC). */
   time?: string;
 }
-export const AgentError = /*@__PURE__*/ S.suspend(() =>
+const AgentError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     severity: S.optional(S.String),
@@ -420,7 +420,7 @@ export const AgentError = /*@__PURE__*/ S.suspend(() =>
 
 /** List of arc agentry and system components errors on the cluster resource. */
 export type ArcAgentProfileAgentErrorsList = Array<AgentError>;
-export const ArcAgentProfileAgentErrorsList = /*@__PURE__*/ S.Array(
+const ArcAgentProfileAgentErrorsList = /*@__PURE__*/ S.Array(
   AgentError,
 ) as any as S.Schema<ArcAgentProfileAgentErrorsList>;
 
@@ -437,7 +437,7 @@ export interface ArcAgentProfile {
   /** Represents the current state of the Arc agentry and its dependent components. */
   agentState?: string;
 }
-export const ArcAgentProfile = /*@__PURE__*/ S.suspend(() =>
+const ArcAgentProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desiredAgentVersion: S.optional(S.String),
     agentAutoUpgrade: S.optional(ArcAgentProfileAgentAutoUpgrade),
@@ -456,7 +456,7 @@ export interface OidcIssuerProfile {
   /** The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature. */
   selfHostedIssuerUrl?: string;
 }
-export const OidcIssuerProfile = /*@__PURE__*/ S.suspend(() =>
+const OidcIssuerProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     issuerUrl: S.optional(S.String),
@@ -467,14 +467,14 @@ export const OidcIssuerProfile = /*@__PURE__*/ S.suspend(() =>
 /** Configuration settings for customizing the behavior of the connected cluster. */
 export type ConnectedClusterPropertiesArcAgentryConfigurationsList =
   Array<ArcAgentryConfigurations>;
-export const ConnectedClusterPropertiesArcAgentryConfigurationsList =
+const ConnectedClusterPropertiesArcAgentryConfigurationsList =
   ConnectedClusterPropertiesInputArcAgentryConfigurationsList as any as S.Schema<ConnectedClusterPropertiesArcAgentryConfigurationsList>;
 
 /** More properties related to the Connected Cluster */
 export type ConnectedClusterPropertiesMiscellaneousPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ConnectedClusterPropertiesMiscellaneousPropertiesMap =
+const ConnectedClusterPropertiesMiscellaneousPropertiesMap =
   ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ConnectedClusterPropertiesMiscellaneousPropertiesMap>;
 
 /** Properties of the connected cluster. */
@@ -526,7 +526,7 @@ export interface ConnectedClusterProperties {
   /** More properties related to the Connected Cluster */
   miscellaneousProperties?: ConnectedClusterPropertiesMiscellaneousPropertiesMap;
 }
-export const ConnectedClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentPublicKeyCertificate: S.String,
     kubernetesVersion: S.optional(S.String),
@@ -560,7 +560,7 @@ export const ConnectedClusterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster. */
 export type ConnectedClusterIdentityType = "None" | "SystemAssigned";
-export const ConnectedClusterIdentityType = S.String;
+const ConnectedClusterIdentityType = S.String;
 
 /** Identity for the connected cluster. */
 export interface ConnectedClusterIdentity {
@@ -571,7 +571,7 @@ export interface ConnectedClusterIdentity {
   /** The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster. */
   type: ConnectedClusterIdentityType;
 }
-export const ConnectedClusterIdentity = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -599,7 +599,7 @@ export interface ConnectedClusterCreateOrReplaceResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const ConnectedClusterCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -623,7 +623,7 @@ export interface DeleteConnectedClusterRequest {
   /** The name of the Kubernetes cluster on which get is called. */
   clusterName: string;
 }
-export const DeleteConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -641,7 +641,7 @@ export const DeleteConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectedClusterRequest>;
 
 export interface DeleteConnectedClusterResponse {}
-export const DeleteConnectedClusterResponse =
+const DeleteConnectedClusterResponse =
   AgentErrorInput as any as S.Schema<DeleteConnectedClusterResponse>;
 
 export interface GetConnectedClusterRequest {
@@ -652,7 +652,7 @@ export interface GetConnectedClusterRequest {
   /** The name of the Kubernetes cluster on which get is called. */
   clusterName: string;
 }
-export const GetConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -671,9 +671,6 @@ export const GetConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConnectedClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetConnectedClusterResponseTagsMap =
-  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<GetConnectedClusterResponseTagsMap>;
-
 export interface GetConnectedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -694,11 +691,11 @@ export interface GetConnectedClusterResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const GetConnectedClusterResponse =
+const GetConnectedClusterResponse =
   ConnectedClusterCreateOrReplaceResponse as any as S.Schema<GetConnectedClusterResponse>;
 
 export interface GetOperationRequest {}
-export const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -720,7 +717,7 @@ export interface OperationListValueItemDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationListValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationListValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -733,11 +730,11 @@ export const OperationListValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationListValueItemOrigin = "user" | "system" | "user,system";
-export const OperationListValueItemOrigin = S.String;
+const OperationListValueItemOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationListValueItemActionType = "Internal";
-export const OperationListValueItemActionType = S.String;
+const OperationListValueItemActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface OperationListValueItem {
@@ -752,7 +749,7 @@ export interface OperationListValueItem {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationListValueItemActionType;
 }
-export const OperationListValueItem = /*@__PURE__*/ S.suspend(() =>
+const OperationListValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -764,7 +761,7 @@ export const OperationListValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of connected cluster API operations. */
 export type OperationListValueList = Array<OperationListValueItem>;
-export const OperationListValueList = /*@__PURE__*/ S.Array(
+const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationListValueItem,
 ) as any as S.Schema<OperationListValueList>;
 
@@ -775,7 +772,7 @@ export interface OperationList {
   /** The link to fetch the next page of connected cluster API operations. */
   nextLink?: string;
 }
-export const OperationList = /*@__PURE__*/ S.suspend(() =>
+const OperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListValueList,
     nextLink: S.optional(S.String),
@@ -788,7 +785,7 @@ export interface ListConnectedClusterByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListConnectedClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectedClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -806,7 +803,7 @@ export const ListConnectedClusterByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type ConnectedClusterTagsMap = { [key: string]: string | undefined };
-export const ConnectedClusterTagsMap =
+const ConnectedClusterTagsMap =
   ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ConnectedClusterTagsMap>;
 
 /** Represents a connected cluster. */
@@ -830,7 +827,7 @@ export interface ConnectedCluster {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const ConnectedCluster = /*@__PURE__*/ S.suspend(() =>
+const ConnectedCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -846,7 +843,7 @@ export const ConnectedCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectedCluster items on this page */
 export type ConnectedClusterListValueList = Array<ConnectedCluster>;
-export const ConnectedClusterListValueList = /*@__PURE__*/ S.Array(
+const ConnectedClusterListValueList = /*@__PURE__*/ S.Array(
   ConnectedCluster,
 ) as any as S.Schema<ConnectedClusterListValueList>;
 
@@ -857,7 +854,7 @@ export interface ConnectedClusterList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectedClusterList = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectedClusterListValueList,
     nextLink: S.optional(S.String),
@@ -868,7 +865,7 @@ export interface ListConnectedClusterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListConnectedClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectedClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -885,7 +882,7 @@ export const ListConnectedClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend
 
 /** The mode of client authentication. */
 export type AuthenticationMethod = "Token" | "AAD";
-export const AuthenticationMethod = S.String;
+const AuthenticationMethod = S.String;
 
 export interface ListConnectedClusterClusterUserCredentialRequest {
   /** The ID of the target subscription. */
@@ -899,7 +896,7 @@ export interface ListConnectedClusterClusterUserCredentialRequest {
   /** Boolean value to indicate whether the request is for client side proxy or not */
   clientProxy: boolean;
 }
-export const ListConnectedClusterClusterUserCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectedClusterClusterUserCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -933,7 +930,7 @@ export interface HybridConnectionConfig {
   /** Type of relay */
   relayType?: string;
 }
-export const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
+const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.Number),
     hybridConnectionName: S.optional(S.String),
@@ -951,7 +948,7 @@ export interface CredentialResult {
   /** Base64-encoded Kubernetes configuration file. */
   value?: string;
 }
-export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
+const CredentialResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -960,7 +957,7 @@ export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Base64-encoded Kubernetes configuration file. */
 export type CredentialResultsKubeconfigsList = Array<CredentialResult>;
-export const CredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
+const CredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   CredentialResult,
 ) as any as S.Schema<CredentialResultsKubeconfigsList>;
 
@@ -971,7 +968,7 @@ export interface CredentialResults {
   /** Base64-encoded Kubernetes configuration file. */
   kubeconfigs?: CredentialResultsKubeconfigsList;
 }
-export const CredentialResults = /*@__PURE__*/ S.suspend(() =>
+const CredentialResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hybridConnectionConfig: S.optional(HybridConnectionConfig),
     kubeconfigs: S.optional(CredentialResultsKubeconfigsList),
@@ -980,12 +977,12 @@ export const CredentialResults = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConnectedClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectedClusterRequestTagsMap =
+const UpdateConnectedClusterRequestTagsMap =
   ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateConnectedClusterRequestTagsMap>;
 
 /** Indicates whether Azure Hybrid Benefit is opted in */
 export type AzureHybridBenefit = "True" | "False" | "NotApplicable";
-export const AzureHybridBenefit = S.String;
+const AzureHybridBenefit = S.String;
 
 /** Properties which can be patched on the connected cluster resource. */
 export interface ConnectedClusterPatchProperties {
@@ -998,7 +995,7 @@ export interface ConnectedClusterPatchProperties {
   /** Indicates whether Gateway is enabled for the connected cluster resource */
   gateway?: Gateway;
 }
-export const ConnectedClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distribution: S.optional(S.String),
     distributionVersion: S.optional(S.String),
@@ -1021,7 +1018,7 @@ export interface UpdateConnectedClusterRequest {
   /** Describes the connected cluster resource properties that can be updated during PATCH operation. */
   properties?: ConnectedClusterPatchProperties;
 }
-export const UpdateConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1042,9 +1039,6 @@ export const UpdateConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConnectedClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectedClusterResponseTagsMap =
-  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateConnectedClusterResponseTagsMap>;
-
 export interface UpdateConnectedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1065,7 +1059,7 @@ export interface UpdateConnectedClusterResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const UpdateConnectedClusterResponse =
+const UpdateConnectedClusterResponse =
   ConnectedClusterCreateOrReplaceResponse as any as S.Schema<UpdateConnectedClusterResponse>;
 
 export type ConnectedClusterCreateOrReplaceError = AzureOpError;

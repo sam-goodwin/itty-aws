@@ -25,7 +25,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmEmailDomainTerminationRequest {
   /** Name of your domain name */
@@ -37,7 +37,7 @@ export interface ConfirmEmailDomainTerminationRequest {
   /** The termination token sent by mail to the admin contact */
   token: string;
 }
-export const ConfirmEmailDomainTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmEmailDomainTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -49,7 +49,7 @@ export const ConfirmEmailDomainTerminationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ConfirmEmailDomainTerminationRequest>;
 
 export type ConfirmEmailDomainTerminationResponse = string;
-export const ConfirmEmailDomainTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmEmailDomainTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmEmailDomainTerminationResponse",
@@ -67,7 +67,7 @@ export interface CreateEmailDomainAccountRequest {
   /** Account size in bytes (default : 5000000000) (possible values : /email/domain/{domain}/allowedAccountSize ) */
   size?: number;
 }
-export const CreateEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String,
@@ -89,7 +89,7 @@ export type DomainDomainPopActionEnum =
   | "migration"
   | "temporaryTask"
   | "unknown";
-export const DomainDomainPopActionEnum = S.String;
+const DomainDomainPopActionEnum = S.String;
 
 /** Task Pop List */
 export interface EmailDomainTaskPop {
@@ -104,7 +104,7 @@ export interface EmailDomainTaskPop {
   /** Account name of task */
   name?: string;
 }
-export const EmailDomainTaskPop = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainTaskPop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(DomainDomainPopActionEnum),
     date: S.optional(S.String),
@@ -122,7 +122,7 @@ export interface CreateEmailDomainAccountChangePasswordRequest {
   /** New password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateEmailDomainAccountChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -146,7 +146,7 @@ export interface CreateEmailDomainAccountDelegationRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
-export const CreateEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -163,16 +163,16 @@ export const CreateEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateEmailDomainAccountDelegationRequest>;
 
 export type CreateEmailDomainAccountDelegationResponse = string;
-export const CreateEmailDomainAccountDelegationResponse =
+const CreateEmailDomainAccountDelegationResponse =
   ConfirmEmailDomainTerminationResponse as any as S.Schema<CreateEmailDomainAccountDelegationResponse>;
 
 /** Possible values for filter action */
 export type DomainDomainFilterActionEnum = "accept" | "account" | "delete" | "redirect";
-export const DomainDomainFilterActionEnum = S.String;
+const DomainDomainFilterActionEnum = S.String;
 
 /** Possible values for filter operation */
 export type DomainDomainFilterOperandEnum = "checkspf" | "contains" | "noContains";
-export const DomainDomainFilterOperandEnum = S.String;
+const DomainDomainFilterOperandEnum = S.String;
 
 export interface CreateEmailDomainAccountFilterRequest {
   /** Name of your domain name */
@@ -196,7 +196,7 @@ export interface CreateEmailDomainAccountFilterRequest {
   /** Rule parameter of filter */
   value: string;
 }
-export const CreateEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -232,7 +232,7 @@ export interface EmailDomainTaskFilter {
   /** Creation date of task */
   timestamp?: string;
 }
-export const EmailDomainTaskFilter = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainTaskFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     action: S.optional(S.String),
@@ -252,7 +252,7 @@ export interface CreateEmailDomainAccountFilterChangeActivityRequest {
   /** New activity */
   activity: boolean;
 }
-export const CreateEmailDomainAccountFilterChangeActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountFilterChangeActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -279,7 +279,7 @@ export interface CreateEmailDomainAccountFilterChangePriorityRequest {
   /** New priority */
   priority: number;
 }
-export const CreateEmailDomainAccountFilterChangePriorityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountFilterChangePriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -310,7 +310,7 @@ export interface CreateEmailDomainAccountFilterRuleRequest {
   /** Rule parameter of filter */
   value: string;
 }
-export const CreateEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -335,7 +335,7 @@ export interface CreateEmailDomainAclRequest {
   /** Deleguates rights to */
   accountId: string;
 }
-export const CreateEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountId: S.String,
@@ -349,7 +349,7 @@ export interface EmailDomainAcl {
   /** OVH customer unique identifier */
   accountId?: string;
 }
-export const EmailDomainAcl = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainAcl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
   }),
@@ -365,7 +365,7 @@ export interface CreateEmailDomainChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateEmailDomainChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -377,12 +377,12 @@ export const CreateEmailDomainChangeContactRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateEmailDomainChangeContactRequest>;
 
 export type CreateEmailDomainChangeContactResponseBodyList = Array<number>;
-export const CreateEmailDomainChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateEmailDomainChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateEmailDomainChangeContactResponseBodyList>;
 
 export type CreateEmailDomainChangeContactResponse = CreateEmailDomainChangeContactResponseBodyList;
-export const CreateEmailDomainChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateEmailDomainChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateEmailDomainChangeContactResponse",
@@ -395,7 +395,7 @@ export type DomainDomainMXFilterEnum =
   | "NO_FILTERING"
   | "REDIRECT"
   | "SIMPLE_FILTERING";
-export const DomainDomainMXFilterEnum = S.String;
+const DomainDomainMXFilterEnum = S.String;
 
 export interface CreateEmailDomainChangeDnsMXFilterRequest {
   /** Name of your domain name */
@@ -407,7 +407,7 @@ export interface CreateEmailDomainChangeDnsMXFilterRequest {
   /** Sub domain */
   subDomain?: string;
 }
-export const CreateEmailDomainChangeDnsMXFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainChangeDnsMXFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     customTarget: S.optional(S.String),
@@ -419,7 +419,7 @@ export const CreateEmailDomainChangeDnsMXFilterRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterRequest>;
 
 export interface CreateEmailDomainChangeDnsMXFilterResponse {}
-export const CreateEmailDomainChangeDnsMXFilterResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainChangeDnsMXFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateEmailDomainChangeDnsMXFilterResponse",
@@ -431,7 +431,7 @@ export interface CreateEmailDomainDelegatedAccountChangePasswordRequest {
   /** New password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateEmailDomainDelegatedAccountChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainDelegatedAccountChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -466,7 +466,7 @@ export interface CreateEmailDomainDelegatedAccountFilterRequest {
   /** Rule parameter of filter */
   value: string;
 }
-export const CreateEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     action: DomainDomainFilterActionEnum,
@@ -492,19 +492,18 @@ export interface CreateEmailDomainDelegatedAccountFilterChangeActivityRequest {
   /** New activity */
   activity: boolean;
 }
-export const CreateEmailDomainDelegatedAccountFilterChangeActivityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      activity: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity",
-        code: 200,
-      }),
-    ),
+const CreateEmailDomainDelegatedAccountFilterChangeActivityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    activity: S.Boolean,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateEmailDomainDelegatedAccountFilterChangeActivityRequest",
 }) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangeActivityRequest>;
@@ -517,19 +516,18 @@ export interface CreateEmailDomainDelegatedAccountFilterChangePriorityRequest {
   /** New priority */
   priority: number;
 }
-export const CreateEmailDomainDelegatedAccountFilterChangePriorityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      priority: S.Number,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/email/domain/delegatedAccount/{email}/filter/{name}/changePriority",
-        code: 200,
-      }),
-    ),
+const CreateEmailDomainDelegatedAccountFilterChangePriorityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    priority: S.Number,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/email/domain/delegatedAccount/{email}/filter/{name}/changePriority",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateEmailDomainDelegatedAccountFilterChangePriorityRequest",
 }) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangePriorityRequest>;
@@ -546,7 +544,7 @@ export interface CreateEmailDomainDelegatedAccountFilterRuleRequest {
   /** Rule parameter of filter */
   value: string;
 }
-export const CreateEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -578,7 +576,7 @@ export interface CreateEmailDomainDelegatedAccountResponderRequest {
   /** Date of end responder */
   to?: string;
 }
-export const CreateEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     content: S.String,
@@ -595,7 +593,7 @@ export const CreateEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S
 
 /** Possible values for pop action task */
 export type DomainDomainSpecialAccountActionEnum = "add" | "change" | "delete";
-export const DomainDomainSpecialAccountActionEnum = S.String;
+const DomainDomainSpecialAccountActionEnum = S.String;
 
 /** Possible type task */
 export type DomainDomainSpecialAccountTypeEnum =
@@ -605,7 +603,7 @@ export type DomainDomainSpecialAccountTypeEnum =
   | "filter"
   | "forward"
   | "responder";
-export const DomainDomainSpecialAccountTypeEnum = S.String;
+const DomainDomainSpecialAccountTypeEnum = S.String;
 
 /** Task special account List */
 export interface EmailDomainTaskSpecialAccount {
@@ -622,7 +620,7 @@ export interface EmailDomainTaskSpecialAccount {
   /** Type of action filter */
   type?: DomainDomainSpecialAccountTypeEnum;
 }
-export const EmailDomainTaskSpecialAccount = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainTaskSpecialAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     action: S.optional(DomainDomainSpecialAccountActionEnum),
@@ -639,7 +637,7 @@ export interface CreateEmailDomainDelegatedAccountUsageRequest {
   /** Email */
   email: string;
 }
-export const CreateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(
@@ -658,7 +656,7 @@ export interface DomainDomainUsageAccountStruct {
   /** Size of mailbox (bytes) */
   quota?: number | null;
 }
-export const DomainDomainUsageAccountStruct = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainUsageAccountStruct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.NullOr(S.String)),
     emailCount: S.optional(S.NullOr(S.Number)),
@@ -670,7 +668,7 @@ export const DomainDomainUsageAccountStruct = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for mailing list language */
 export type DomainDomainMlLanguageEnum = "de" | "en" | "es" | "fr" | "it" | "nl" | "pl" | "pt";
-export const DomainDomainMlLanguageEnum = S.String;
+const DomainDomainMlLanguageEnum = S.String;
 
 /** Structure of imapCopy */
 export interface DomainDomainMlOptionsStruct {
@@ -681,7 +679,7 @@ export interface DomainDomainMlOptionsStruct {
   /** If true, just user can post */
   usersPostOnly?: boolean;
 }
-export const DomainDomainMlOptionsStruct = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainMlOptionsStruct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moderatorMessage: S.optional(S.Boolean),
     subscribeByModerator: S.optional(S.Boolean),
@@ -705,7 +703,7 @@ export interface CreateEmailDomainMailingListRequest {
   /** Email to reply of mailing list */
   replyTo?: string;
 }
-export const CreateEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     language: DomainDomainMlLanguageEnum,
@@ -727,7 +725,7 @@ export interface EmailDomainTaskMl {
   id?: number;
   language?: DomainDomainMlLanguageEnum;
 }
-export const EmailDomainTaskMl = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainTaskMl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     action: S.optional(S.String),
@@ -746,7 +744,7 @@ export interface CreateEmailDomainMailingListChangeOptionRequest {
   /** Options of mailing list */
   options: DomainDomainMlOptionsStruct;
 }
-export const CreateEmailDomainMailingListChangeOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainMailingListChangeOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -770,7 +768,7 @@ export interface CreateEmailDomainMailingListModeratorRequest {
   /** Email of moderator */
   email: string;
 }
-export const CreateEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -794,7 +792,7 @@ export interface CreateEmailDomainMailingListSubscriberRequest {
   /** Email of subscriber */
   email: string;
 }
-export const CreateEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -820,7 +818,7 @@ export interface CreateEmailDomainRedirectionRequest {
   /** Target of account */
   to: string;
 }
-export const CreateEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     from: S.String,
@@ -839,7 +837,7 @@ export interface CreateEmailDomainRedirectionChangeRedirectionRequest {
   /** Target of account */
   to: string;
 }
-export const CreateEmailDomainRedirectionChangeRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainRedirectionChangeRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -871,7 +869,7 @@ export interface CreateEmailDomainResponderRequest {
   /** Date of end responder */
   to?: string;
 }
-export const CreateEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.String,
@@ -891,7 +889,7 @@ export interface DeleteEmailDomainAccountRequest {
   /** Name of account */
   accountName: string;
 }
-export const DeleteEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -910,7 +908,7 @@ export interface DeleteEmailDomainAccountDelegationRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
-export const DeleteEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -927,7 +925,7 @@ export const DeleteEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteEmailDomainAccountDelegationRequest>;
 
 export type DeleteEmailDomainAccountDelegationResponse = string;
-export const DeleteEmailDomainAccountDelegationResponse =
+const DeleteEmailDomainAccountDelegationResponse =
   ConfirmEmailDomainTerminationResponse as any as S.Schema<DeleteEmailDomainAccountDelegationResponse>;
 
 export interface DeleteEmailDomainAccountFilterRequest {
@@ -938,7 +936,7 @@ export interface DeleteEmailDomainAccountFilterRequest {
   /** Filter name */
   name: string;
 }
-export const DeleteEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -955,12 +953,12 @@ export const DeleteEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteEmailDomainAccountFilterRequest>;
 
 export type DeleteEmailDomainAccountFilterResponseBodyList = Array<EmailDomainTaskFilter>;
-export const DeleteEmailDomainAccountFilterResponseBodyList = /*@__PURE__*/ S.Array(
+const DeleteEmailDomainAccountFilterResponseBodyList = /*@__PURE__*/ S.Array(
   EmailDomainTaskFilter,
 ) as any as S.Schema<DeleteEmailDomainAccountFilterResponseBodyList>;
 
 export type DeleteEmailDomainAccountFilterResponse = DeleteEmailDomainAccountFilterResponseBodyList;
-export const DeleteEmailDomainAccountFilterResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainAccountFilterResponse = /*@__PURE__*/ S.suspend(() =>
   DeleteEmailDomainAccountFilterResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteEmailDomainAccountFilterResponse",
@@ -975,7 +973,7 @@ export interface DeleteEmailDomainAccountFilterRuleRequest {
   name: string;
   id: number;
 }
-export const DeleteEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -993,12 +991,9 @@ export const DeleteEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteEmailDomainAccountFilterRuleRequest>;
 
 export type DeleteEmailDomainAccountFilterRuleResponseBodyList = Array<EmailDomainTaskFilter>;
-export const DeleteEmailDomainAccountFilterRuleResponseBodyList =
-  DeleteEmailDomainAccountFilterResponseBodyList as any as S.Schema<DeleteEmailDomainAccountFilterRuleResponseBodyList>;
-
 export type DeleteEmailDomainAccountFilterRuleResponse =
   DeleteEmailDomainAccountFilterRuleResponseBodyList;
-export const DeleteEmailDomainAccountFilterRuleResponse =
+const DeleteEmailDomainAccountFilterRuleResponse =
   DeleteEmailDomainAccountFilterResponse as any as S.Schema<DeleteEmailDomainAccountFilterRuleResponse>;
 
 export interface DeleteEmailDomainAclRequest {
@@ -1007,7 +1002,7 @@ export interface DeleteEmailDomainAclRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
-export const DeleteEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -1017,7 +1012,7 @@ export const DeleteEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmailDomainAclRequest>;
 
 export interface DeleteEmailDomainAclResponse {}
-export const DeleteEmailDomainAclResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteEmailDomainAclResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteEmailDomainAclResponse",
 }) as any as S.Schema<DeleteEmailDomainAclResponse>;
 
@@ -1027,7 +1022,7 @@ export interface DeleteEmailDomainDelegatedAccountFilterRequest {
   /** Filter name */
   name: string;
 }
-export const DeleteEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1043,12 +1038,9 @@ export const DeleteEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRequest>;
 
 export type DeleteEmailDomainDelegatedAccountFilterResponseBodyList = Array<EmailDomainTaskFilter>;
-export const DeleteEmailDomainDelegatedAccountFilterResponseBodyList =
-  DeleteEmailDomainAccountFilterResponseBodyList as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterResponseBodyList>;
-
 export type DeleteEmailDomainDelegatedAccountFilterResponse =
   DeleteEmailDomainDelegatedAccountFilterResponseBodyList;
-export const DeleteEmailDomainDelegatedAccountFilterResponse =
+const DeleteEmailDomainDelegatedAccountFilterResponse =
   DeleteEmailDomainAccountFilterResponse as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterResponse>;
 
 export interface DeleteEmailDomainDelegatedAccountFilterRuleRequest {
@@ -1058,7 +1050,7 @@ export interface DeleteEmailDomainDelegatedAccountFilterRuleRequest {
   name: string;
   id: number;
 }
-export const DeleteEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1076,19 +1068,16 @@ export const DeleteEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ 
 
 export type DeleteEmailDomainDelegatedAccountFilterRuleResponseBodyList =
   Array<EmailDomainTaskFilter>;
-export const DeleteEmailDomainDelegatedAccountFilterRuleResponseBodyList =
-  DeleteEmailDomainAccountFilterResponseBodyList as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleResponseBodyList>;
-
 export type DeleteEmailDomainDelegatedAccountFilterRuleResponse =
   DeleteEmailDomainDelegatedAccountFilterRuleResponseBodyList;
-export const DeleteEmailDomainDelegatedAccountFilterRuleResponse =
+const DeleteEmailDomainDelegatedAccountFilterRuleResponse =
   DeleteEmailDomainAccountFilterResponse as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleResponse>;
 
 export interface DeleteEmailDomainDelegatedAccountResponderRequest {
   /** Email */
   email: string;
 }
-export const DeleteEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(
@@ -1108,7 +1097,7 @@ export interface DeleteEmailDomainMailingListRequest {
   /** Name of mailing list */
   name: string;
 }
-export const DeleteEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1126,7 +1115,7 @@ export interface DeleteEmailDomainMailingListModeratorRequest {
   name: string;
   email: string;
 }
-export const DeleteEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1149,7 +1138,7 @@ export interface DeleteEmailDomainMailingListSubscriberRequest {
   name: string;
   email: string;
 }
-export const DeleteEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1171,7 +1160,7 @@ export interface DeleteEmailDomainRedirectionRequest {
   /** Id */
   id: string;
 }
-export const DeleteEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1186,7 +1175,7 @@ export interface DeleteEmailDomainResponderRequest {
   /** Name of account */
   account: string;
 }
-export const DeleteEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.String.pipe(T.Label()),
@@ -1201,7 +1190,7 @@ export interface GetEmailDomainRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const GetEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}", code: 200 })),
@@ -1209,16 +1198,16 @@ export const GetEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed sizes for this domain in bytes */
 export type EmailDomainDomainServiceWithIAMAllowedAccountSizeList = Array<number>;
-export const EmailDomainDomainServiceWithIAMAllowedAccountSizeList =
+const EmailDomainDomainServiceWithIAMAllowedAccountSizeList =
   CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<EmailDomainDomainServiceWithIAMAllowedAccountSizeList>;
 
 /** Resource state */
 export type IamResourceMetadataStateEnum = "EXPIRED" | "IN_CREATION" | "OK" | "SUSPENDED";
-export const IamResourceMetadataStateEnum = S.String;
+const IamResourceMetadataStateEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -1236,7 +1225,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -1248,11 +1237,11 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Result value for diagnose */
 export type EmailDomainDiagnoseEnum = "checkFail" | "invalid" | "none" | "unknown" | "valid";
-export const EmailDomainDiagnoseEnum = S.String;
+const EmailDomainDiagnoseEnum = S.String;
 
 /** Possible values for status domain */
 export type DomainDomainStatusEnum = "close" | "ok" | "readOnly" | "unknown";
-export const DomainDomainStatusEnum = S.String;
+const DomainDomainStatusEnum = S.String;
 
 /** Domain service */
 export interface EmailDomainDomainServiceWithIAM {
@@ -1279,7 +1268,7 @@ export interface EmailDomainDomainServiceWithIAM {
   /** Domain Status */
   status?: DomainDomainStatusEnum;
 }
-export const EmailDomainDomainServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainDomainServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedAccountSize: S.optional(S.NullOr(EmailDomainDomainServiceWithIAMAllowedAccountSizeList)),
     creationDate: S.optional(S.NullOr(S.String)),
@@ -1303,7 +1292,7 @@ export interface GetEmailDomainAccountRequest {
   /** Name of account */
   accountName: string;
 }
-export const GetEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -1329,7 +1318,7 @@ export interface EmailDomainAccount {
   /** Size of your account in bytes */
   size?: number;
 }
-export const EmailDomainAccount = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountName: S.optional(S.String),
     description: S.optional(S.String),
@@ -1348,7 +1337,7 @@ export interface GetEmailDomainAccountDelegationRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
-export const GetEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -1369,7 +1358,7 @@ export interface EmailDomainDelegation {
   /** OVH customer unique identifier */
   accountId?: string;
 }
-export const EmailDomainDelegation = EmailDomainAcl as any as S.Schema<EmailDomainDelegation>;
+const EmailDomainDelegation = EmailDomainAcl as any as S.Schema<EmailDomainDelegation>;
 
 export interface GetEmailDomainAccountFilterRequest {
   /** Name of your domain name */
@@ -1379,7 +1368,7 @@ export interface GetEmailDomainAccountFilterRequest {
   /** Filter name */
   name: string;
 }
-export const GetEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -1412,7 +1401,7 @@ export interface EmailDomainFilter {
   /** Priority of filter */
   priority?: number;
 }
-export const EmailDomainFilter = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.NullOr(DomainDomainFilterActionEnum)),
     actionParam: S.optional(S.NullOr(S.String)),
@@ -1433,7 +1422,7 @@ export interface GetEmailDomainAccountFilterRuleRequest {
   name: string;
   id: number;
 }
-export const GetEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -1460,7 +1449,7 @@ export interface EmailDomainRule {
   /** Rule parameter of filter */
   value?: string;
 }
-export const EmailDomainRule = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1477,7 +1466,7 @@ export interface GetEmailDomainAccountMigrateRequest {
   /** Service name allowed as migration destination */
   destinationServiceName: string;
 }
-export const GetEmailDomainAccountMigrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAccountMigrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -1499,7 +1488,7 @@ export type EmailDomainMigrationServiceType =
   | "HOSTED EXCHANGE"
   | "PRIVATE EXCHANGE"
   | "PROVIDER EXCHANGE";
-export const EmailDomainMigrationServiceType = S.String;
+const EmailDomainMigrationServiceType = S.String;
 
 /** Migration service */
 export interface EmailDomainMigrationService {
@@ -1518,7 +1507,7 @@ export interface EmailDomainMigrationService {
   /** Offer type of service */
   type?: EmailDomainMigrationServiceType;
 }
-export const EmailDomainMigrationService = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainMigrationService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactAdmin: S.optional(S.String),
     contactBilling: S.optional(S.String),
@@ -1542,20 +1531,19 @@ export interface GetEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Destination account name */
   destinationEmailAddress: string;
 }
-export const GetEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      domain: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      destinationServiceName: S.String.pipe(T.Label()),
-      destinationEmailAddress: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}",
-        code: 200,
-      }),
-    ),
+const GetEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    destinationServiceName: S.String.pipe(T.Label()),
+    destinationEmailAddress: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetEmailDomainAccountMigrateDestinationEmailAddressRequest",
 }) as any as S.Schema<GetEmailDomainAccountMigrateDestinationEmailAddressRequest>;
@@ -1567,7 +1555,7 @@ export interface EmailDomainMigrationAccount {
   /** Account maximum size */
   quota?: number;
 }
-export const EmailDomainMigrationAccount = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainMigrationAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationEmailAddress: S.optional(S.String),
     quota: S.optional(S.Number),
@@ -1582,7 +1570,7 @@ export interface GetEmailDomainAccountUsageRequest {
   /** Name of account */
   accountName: string;
 }
-export const GetEmailDomainAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -1599,7 +1587,7 @@ export interface GetEmailDomainAclRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
-export const GetEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -1610,7 +1598,7 @@ export interface GetEmailDomainDelegatedAccountRequest {
   /** Email */
   email: string;
 }
-export const GetEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/delegatedAccount/{email}", code: 200 })),
@@ -1620,7 +1608,7 @@ export const GetEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of allowed sizes for this account in bytes */
 export type EmailDomainAccountDelegatedAllowedAccountSizeList = Array<number>;
-export const EmailDomainAccountDelegatedAllowedAccountSizeList =
+const EmailDomainAccountDelegatedAllowedAccountSizeList =
   CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<EmailDomainAccountDelegatedAllowedAccountSizeList>;
 
 /** Account List */
@@ -1640,7 +1628,7 @@ export interface EmailDomainAccountDelegated {
   /** Size of your account in bytes */
   size?: number;
 }
-export const EmailDomainAccountDelegated = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainAccountDelegated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountName: S.optional(S.String),
     allowedAccountSize: S.optional(S.NullOr(EmailDomainAccountDelegatedAllowedAccountSizeList)),
@@ -1660,7 +1648,7 @@ export interface GetEmailDomainDelegatedAccountFilterRequest {
   /** Filter name */
   name: string;
 }
-export const GetEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1682,7 +1670,7 @@ export interface GetEmailDomainDelegatedAccountFilterRuleRequest {
   name: string;
   id: number;
 }
-export const GetEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1702,7 +1690,7 @@ export interface GetEmailDomainDelegatedAccountResponderRequest {
   /** Email */
   email: string;
 }
-export const GetEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(
@@ -1727,7 +1715,7 @@ export interface EmailDomainResponderAccount {
   /** Date of end responder */
   to?: string | null;
 }
-export const EmailDomainResponderAccount = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainResponderAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     content: S.optional(S.String),
@@ -1746,7 +1734,7 @@ export interface GetEmailDomainDnsMXFilterRequest {
   /** Sub domain */
   subDomain?: string;
 }
-export const GetEmailDomainDnsMXFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainDnsMXFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     subDomain: S.optional(S.String.pipe(T.Query())),
@@ -1756,7 +1744,7 @@ export const GetEmailDomainDnsMXFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmailDomainDnsMXFilterRequest>;
 
 export type GetEmailDomainDnsMXFilterResponse = DomainDomainMXFilterEnum;
-export const GetEmailDomainDnsMXFilterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainDnsMXFilterResponse = /*@__PURE__*/ S.suspend(() =>
   DomainDomainMXFilterEnum.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetEmailDomainDnsMXFilterResponse",
@@ -1768,7 +1756,7 @@ export interface GetEmailDomainMailingListRequest {
   /** Name of mailing list */
   name: string;
 }
-export const GetEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1796,7 +1784,7 @@ export interface EmailDomainMailingList {
   /** Email to reply of mailing list */
   replyTo?: string;
 }
-export const EmailDomainMailingList = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainMailingList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     language: S.optional(S.NullOr(DomainDomainMlLanguageEnum)),
@@ -1813,7 +1801,7 @@ export interface GetEmailDomainMailingListLimitsRequest {
   /** If true, messages are moderate */
   moderatorMessage: boolean;
 }
-export const GetEmailDomainMailingListLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainMailingListLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moderatorMessage: S.Boolean.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/mailingListLimits", code: 200 })),
@@ -1826,7 +1814,7 @@ export interface DomainDomainMlLimits {
   /** Maximum number of subscribers */
   subscribers?: number;
 }
-export const DomainDomainMlLimits = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainMlLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscribers: S.optional(S.Number),
   }),
@@ -1839,7 +1827,7 @@ export interface GetEmailDomainMailingListModeratorRequest {
   name: string;
   email: string;
 }
-export const GetEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1861,7 +1849,7 @@ export interface EmailDomainModerator {
   email?: string;
   mailinglist?: string;
 }
-export const EmailDomainModerator = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainModerator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     email: S.optional(S.String),
@@ -1876,7 +1864,7 @@ export interface GetEmailDomainMailingListSubscriberRequest {
   name: string;
   email: string;
 }
-export const GetEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1898,13 +1886,13 @@ export interface EmailDomainSubscriber {
   email?: string;
   mailinglist?: string;
 }
-export const EmailDomainSubscriber = EmailDomainModerator as any as S.Schema<EmailDomainSubscriber>;
+const EmailDomainSubscriber = EmailDomainModerator as any as S.Schema<EmailDomainSubscriber>;
 
 export interface GetEmailDomainQuotaRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const GetEmailDomainQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}/quota", code: 200 })),
@@ -1925,7 +1913,7 @@ export interface DomainDomainQuota {
   /** Maximum number of responders */
   responder?: number;
 }
-export const DomainDomainQuota = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.Number),
     alias: S.optional(S.Number),
@@ -1941,7 +1929,7 @@ export interface GetEmailDomainRedirectionRequest {
   /** Id */
   id: string;
 }
-export const GetEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1959,7 +1947,7 @@ export interface EmailDomainRedirectionGlobal {
   /** Target of redirection */
   to?: string;
 }
-export const EmailDomainRedirectionGlobal = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainRedirectionGlobal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String),
     id: S.optional(S.String),
@@ -1975,7 +1963,7 @@ export interface GetEmailDomainResponderRequest {
   /** Name of account */
   account: string;
 }
-export const GetEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.String.pipe(T.Label()),
@@ -1999,7 +1987,7 @@ export interface EmailDomainResponder {
   /** Date of end responder */
   to?: string | null;
 }
-export const EmailDomainResponder = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainResponder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     content: S.optional(S.String),
@@ -2014,7 +2002,7 @@ export interface GetEmailDomainServiceInfosRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const GetEmailDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}/serviceInfos", code: 200 })),
@@ -2024,7 +2012,7 @@ export const GetEmailDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -2040,7 +2028,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -2060,7 +2048,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -2069,7 +2057,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -2090,7 +2078,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -2112,7 +2100,7 @@ export interface GetEmailDomainSummaryRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const GetEmailDomainSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}/summary", code: 200 })),
@@ -2131,7 +2119,7 @@ export interface DomainDomainSummary {
   /** Number of responders */
   responder?: number;
 }
-export const DomainDomainSummary = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.Number),
     mailingList: S.optional(S.Number),
@@ -2146,7 +2134,7 @@ export interface GetEmailDomainTaskAccountRequest {
   /** Id of task */
   id: number;
 }
-export const GetEmailDomainTaskAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainTaskAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2161,7 +2149,7 @@ export interface GetEmailDomainTaskAllRequest {
   /** Id of the task */
   id: number;
 }
-export const GetEmailDomainTaskAllRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainTaskAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2179,7 +2167,7 @@ export type EmailDomainTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-export const EmailDomainTaskStatusEnum = S.String;
+const EmailDomainTaskStatusEnum = S.String;
 
 /** Tasks */
 export interface EmailDomainTask {
@@ -2192,7 +2180,7 @@ export interface EmailDomainTask {
   /** Status of the task */
   status?: EmailDomainTaskStatusEnum;
 }
-export const EmailDomainTask = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     function: S.optional(S.String),
@@ -2207,7 +2195,7 @@ export interface GetEmailDomainTaskFilterRequest {
   /** Id of task */
   id: number;
 }
-export const GetEmailDomainTaskFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainTaskFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2221,7 +2209,7 @@ export interface GetEmailDomainTaskMailinglistRequest {
   domain: string;
   id: number;
 }
-export const GetEmailDomainTaskMailinglistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainTaskMailinglistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2238,7 +2226,7 @@ export interface GetEmailDomainTaskRedirectionRequest {
   /** Id */
   id: string;
 }
-export const GetEmailDomainTaskRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainTaskRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2255,7 +2243,7 @@ export interface GetEmailDomainTaskResponderRequest {
   /** Id of task */
   id: number;
 }
-export const GetEmailDomainTaskResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailDomainTaskResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2266,18 +2254,18 @@ export const GetEmailDomainTaskResponderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput =
+const IamResourceTagFilterInput =
   DeleteEmailDomainAclResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListEmailDomainRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListEmailDomainRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListEmailDomainRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListEmailDomainRequestIamTagsValueList>;
 
 export type ListEmailDomainRequestIamTagsMap = {
   [key: string]: ListEmailDomainRequestIamTagsValueList | undefined;
 };
-export const ListEmailDomainRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListEmailDomainRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListEmailDomainRequestIamTagsValueList,
 ) as any as S.Schema<ListEmailDomainRequestIamTagsMap>;
@@ -2286,19 +2274,19 @@ export interface ListEmailDomainRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListEmailDomainRequestIamTagsMap;
 }
-export const ListEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListEmailDomainRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain", code: 200 })),
 ).annotate({ identifier: "ListEmailDomainRequest" }) as any as S.Schema<ListEmailDomainRequest>;
 
 export type ListEmailDomainResponseBodyList = Array<string>;
-export const ListEmailDomainResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEmailDomainResponseBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListEmailDomainResponseBodyList>;
 
 export type ListEmailDomainResponse = ListEmailDomainResponseBodyList;
-export const ListEmailDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainResponse = /*@__PURE__*/ S.suspend(() =>
   ListEmailDomainResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListEmailDomainResponse" }) as any as S.Schema<ListEmailDomainResponse>;
 
@@ -2310,7 +2298,7 @@ export interface ListEmailDomainAccountRequest {
   /** Account description */
   description?: string;
 }
-export const ListEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.optional(S.String.pipe(T.Query())),
@@ -2321,11 +2309,11 @@ export const ListEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainAccountRequest>;
 
 export type ListEmailDomainAccountResponseBodyList = Array<string>;
-export const ListEmailDomainAccountResponseBodyList =
+const ListEmailDomainAccountResponseBodyList =
   ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainAccountResponseBodyList>;
 
 export type ListEmailDomainAccountResponse = ListEmailDomainAccountResponseBodyList;
-export const ListEmailDomainAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAccountResponse = /*@__PURE__*/ S.suspend(() =>
   ListEmailDomainAccountResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEmailDomainAccountResponse",
@@ -2337,7 +2325,7 @@ export interface ListEmailDomainAccountDelegationRequest {
   /** Name of account */
   accountName: string;
 }
-export const ListEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -2353,12 +2341,9 @@ export const ListEmailDomainAccountDelegationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListEmailDomainAccountDelegationRequest>;
 
 export type ListEmailDomainAccountDelegationResponseBodyList = Array<string>;
-export const ListEmailDomainAccountDelegationResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainAccountDelegationResponseBodyList>;
-
 export type ListEmailDomainAccountDelegationResponse =
   ListEmailDomainAccountDelegationResponseBodyList;
-export const ListEmailDomainAccountDelegationResponse =
+const ListEmailDomainAccountDelegationResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAccountDelegationResponse>;
 
 export interface ListEmailDomainAccountFilterRequest {
@@ -2367,7 +2352,7 @@ export interface ListEmailDomainAccountFilterRequest {
   /** Name of account */
   accountName: string;
 }
-export const ListEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -2383,11 +2368,8 @@ export const ListEmailDomainAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainAccountFilterRequest>;
 
 export type ListEmailDomainAccountFilterResponseBodyList = Array<string>;
-export const ListEmailDomainAccountFilterResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainAccountFilterResponseBodyList>;
-
 export type ListEmailDomainAccountFilterResponse = ListEmailDomainAccountFilterResponseBodyList;
-export const ListEmailDomainAccountFilterResponse =
+const ListEmailDomainAccountFilterResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAccountFilterResponse>;
 
 export interface ListEmailDomainAccountFilterRuleRequest {
@@ -2398,7 +2380,7 @@ export interface ListEmailDomainAccountFilterRuleRequest {
   /** Filter name */
   name: string;
 }
-export const ListEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -2415,12 +2397,9 @@ export const ListEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListEmailDomainAccountFilterRuleRequest>;
 
 export type ListEmailDomainAccountFilterRuleResponseBodyList = Array<number>;
-export const ListEmailDomainAccountFilterRuleResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainAccountFilterRuleResponseBodyList>;
-
 export type ListEmailDomainAccountFilterRuleResponse =
   ListEmailDomainAccountFilterRuleResponseBodyList;
-export const ListEmailDomainAccountFilterRuleResponse =
+const ListEmailDomainAccountFilterRuleResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainAccountFilterRuleResponse>;
 
 export interface ListEmailDomainAccountMigrateRequest {
@@ -2431,7 +2410,7 @@ export interface ListEmailDomainAccountMigrateRequest {
   /** Type of migration service */
   type?: EmailDomainMigrationServiceType | (string & {});
 }
-export const ListEmailDomainAccountMigrateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAccountMigrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -2448,11 +2427,8 @@ export const ListEmailDomainAccountMigrateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListEmailDomainAccountMigrateRequest>;
 
 export type ListEmailDomainAccountMigrateResponseBodyList = Array<string>;
-export const ListEmailDomainAccountMigrateResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainAccountMigrateResponseBodyList>;
-
 export type ListEmailDomainAccountMigrateResponse = ListEmailDomainAccountMigrateResponseBodyList;
-export const ListEmailDomainAccountMigrateResponse =
+const ListEmailDomainAccountMigrateResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAccountMigrateResponse>;
 
 export interface ListEmailDomainAccountMigrateDestinationEmailAddressRequest {
@@ -2465,35 +2441,32 @@ export interface ListEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Account maximum size */
   quota?: number;
 }
-export const ListEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      domain: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      destinationServiceName: S.String.pipe(T.Label()),
-      quota: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress",
-        code: 200,
-      }),
-    ),
+const ListEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    destinationServiceName: S.String.pipe(T.Label()),
+    quota: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListEmailDomainAccountMigrateDestinationEmailAddressRequest",
 }) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressRequest>;
 
 export type ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList = Array<string>;
-export const ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList>;
+const ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList>;
 
 export type ListEmailDomainAccountMigrateDestinationEmailAddressResponse =
   ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList;
-export const ListEmailDomainAccountMigrateDestinationEmailAddressResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList.pipe(T.RawResponseRoot()),
+const ListEmailDomainAccountMigrateDestinationEmailAddressResponse = /*@__PURE__*/ S.suspend(() =>
+  ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEmailDomainAccountMigrateDestinationEmailAddressResponse",
 }) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponse>;
@@ -2508,7 +2481,7 @@ export interface ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrat
   /** Destination account name */
   destinationEmailAddress: string;
 }
-export const ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest =
+const ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       domain: S.String.pipe(T.Label()),
@@ -2528,7 +2501,7 @@ export const ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateReq
 
 /** List of aliases */
 export type EmailDomainMigrationCheckStructAliasList = Array<string>;
-export const EmailDomainMigrationCheckStructAliasList =
+const EmailDomainMigrationCheckStructAliasList =
   ListEmailDomainResponseBodyList as any as S.Schema<EmailDomainMigrationCheckStructAliasList>;
 
 /** Result code of check migration */
@@ -2550,7 +2523,7 @@ export type EmailDomainMigrationCheckCodeEnum =
   | "RESPONDER_EXIST"
   | "RESPONDER_INPROGRESS"
   | "UNKNOW";
-export const EmailDomainMigrationCheckCodeEnum = S.String;
+const EmailDomainMigrationCheckCodeEnum = S.String;
 
 /** Check Migration result */
 export interface EmailDomainMigrationCheckResultStruct {
@@ -2559,7 +2532,7 @@ export interface EmailDomainMigrationCheckResultStruct {
   /** Details of result code */
   details?: string | null;
 }
-export const EmailDomainMigrationCheckResultStruct = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainMigrationCheckResultStruct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(EmailDomainMigrationCheckCodeEnum),
     details: S.optional(S.NullOr(S.String)),
@@ -2570,24 +2543,24 @@ export const EmailDomainMigrationCheckResultStruct = /*@__PURE__*/ S.suspend(() 
 
 /** List of errors */
 export type EmailDomainMigrationCheckStructErrorList = Array<EmailDomainMigrationCheckResultStruct>;
-export const EmailDomainMigrationCheckStructErrorList = /*@__PURE__*/ S.Array(
+const EmailDomainMigrationCheckStructErrorList = /*@__PURE__*/ S.Array(
   EmailDomainMigrationCheckResultStruct,
 ) as any as S.Schema<EmailDomainMigrationCheckStructErrorList>;
 
 /** List of filters */
 export type EmailDomainMigrationCheckStructFilterList = Array<string>;
-export const EmailDomainMigrationCheckStructFilterList =
+const EmailDomainMigrationCheckStructFilterList =
   ListEmailDomainResponseBodyList as any as S.Schema<EmailDomainMigrationCheckStructFilterList>;
 
 /** List of forwards */
 export type EmailDomainMigrationCheckStructForwardList = Array<string>;
-export const EmailDomainMigrationCheckStructForwardList =
+const EmailDomainMigrationCheckStructForwardList =
   ListEmailDomainResponseBodyList as any as S.Schema<EmailDomainMigrationCheckStructForwardList>;
 
 /** List of warnings */
 export type EmailDomainMigrationCheckStructWarningList =
   Array<EmailDomainMigrationCheckResultStruct>;
-export const EmailDomainMigrationCheckStructWarningList =
+const EmailDomainMigrationCheckStructWarningList =
   EmailDomainMigrationCheckStructErrorList as any as S.Schema<EmailDomainMigrationCheckStructWarningList>;
 
 /** Check Migration result */
@@ -2603,7 +2576,7 @@ export interface EmailDomainMigrationCheckStruct {
   /** List of warnings */
   warning?: EmailDomainMigrationCheckStructWarningList | null;
 }
-export const EmailDomainMigrationCheckStruct = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainMigrationCheckStruct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.NullOr(EmailDomainMigrationCheckStructAliasList)),
     error: S.optional(S.NullOr(EmailDomainMigrationCheckStructErrorList)),
@@ -2619,7 +2592,7 @@ export interface ListEmailDomainAclRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const ListEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}/acl", code: 200 })),
@@ -2628,11 +2601,8 @@ export const ListEmailDomainAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainAclRequest>;
 
 export type ListEmailDomainAclResponseBodyList = Array<string>;
-export const ListEmailDomainAclResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainAclResponseBodyList>;
-
 export type ListEmailDomainAclResponse = ListEmailDomainAclResponseBodyList;
-export const ListEmailDomainAclResponse =
+const ListEmailDomainAclResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAclResponse>;
 
 export interface ListEmailDomainDelegatedAccountRequest {
@@ -2641,7 +2611,7 @@ export interface ListEmailDomainDelegatedAccountRequest {
   /** Domain of email address */
   domain?: string;
 }
-export const ListEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountName: S.optional(S.String.pipe(T.Query())),
     domain: S.optional(S.String.pipe(T.Query())),
@@ -2651,19 +2621,16 @@ export const ListEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListEmailDomainDelegatedAccountRequest>;
 
 export type ListEmailDomainDelegatedAccountResponseBodyList = Array<string>;
-export const ListEmailDomainDelegatedAccountResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainDelegatedAccountResponseBodyList>;
-
 export type ListEmailDomainDelegatedAccountResponse =
   ListEmailDomainDelegatedAccountResponseBodyList;
-export const ListEmailDomainDelegatedAccountResponse =
+const ListEmailDomainDelegatedAccountResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainDelegatedAccountResponse>;
 
 export interface ListEmailDomainDelegatedAccountFilterRequest {
   /** Email */
   email: string;
 }
-export const ListEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(
@@ -2674,12 +2641,9 @@ export const ListEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRequest>;
 
 export type ListEmailDomainDelegatedAccountFilterResponseBodyList = Array<string>;
-export const ListEmailDomainDelegatedAccountFilterResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainDelegatedAccountFilterResponseBodyList>;
-
 export type ListEmailDomainDelegatedAccountFilterResponse =
   ListEmailDomainDelegatedAccountFilterResponseBodyList;
-export const ListEmailDomainDelegatedAccountFilterResponse =
+const ListEmailDomainDelegatedAccountFilterResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainDelegatedAccountFilterResponse>;
 
 export interface ListEmailDomainDelegatedAccountFilterRuleRequest {
@@ -2688,7 +2652,7 @@ export interface ListEmailDomainDelegatedAccountFilterRuleRequest {
   /** Filter name */
   name: string;
 }
-export const ListEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2704,19 +2668,16 @@ export const ListEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleRequest>;
 
 export type ListEmailDomainDelegatedAccountFilterRuleResponseBodyList = Array<number>;
-export const ListEmailDomainDelegatedAccountFilterRuleResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleResponseBodyList>;
-
 export type ListEmailDomainDelegatedAccountFilterRuleResponse =
   ListEmailDomainDelegatedAccountFilterRuleResponseBodyList;
-export const ListEmailDomainDelegatedAccountFilterRuleResponse =
+const ListEmailDomainDelegatedAccountFilterRuleResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleResponse>;
 
 export interface ListEmailDomainDkimRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const ListEmailDomainDkimRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainDkimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}/dkim", code: 200 })),
@@ -2726,7 +2687,7 @@ export const ListEmailDomainDkimRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of DKIM selector */
 export type EmailDomainDKIMSelectorStatusEnum = "set" | "toFix" | "toSet";
-export const EmailDomainDKIMSelectorStatusEnum = S.String;
+const EmailDomainDKIMSelectorStatusEnum = S.String;
 
 /** DKIM selector data for a domain */
 export interface EmailDomainDKIMSelector {
@@ -2737,7 +2698,7 @@ export interface EmailDomainDKIMSelector {
   /** Status of selector */
   status?: EmailDomainDKIMSelectorStatusEnum;
 }
-export const EmailDomainDKIMSelector = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainDKIMSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cname: S.optional(S.String),
     selectorName: S.optional(S.String),
@@ -2747,7 +2708,7 @@ export const EmailDomainDKIMSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** DKIM status */
 export type EmailDomainDkimSimplifiedSelectorsList = Array<EmailDomainDKIMSelector>;
-export const EmailDomainDkimSimplifiedSelectorsList = /*@__PURE__*/ S.Array(
+const EmailDomainDkimSimplifiedSelectorsList = /*@__PURE__*/ S.Array(
   EmailDomainDKIMSelector,
 ) as any as S.Schema<EmailDomainDkimSimplifiedSelectorsList>;
 
@@ -2758,7 +2719,7 @@ export type EmailDomainDKIMStatusEnum =
   | "error"
   | "modifying"
   | "toConfigure";
-export const EmailDomainDKIMStatusEnum = S.String;
+const EmailDomainDKIMStatusEnum = S.String;
 
 /** DKIM for a domain */
 export interface EmailDomainDkimSimplified {
@@ -2771,7 +2732,7 @@ export interface EmailDomainDkimSimplified {
   /** DKIM status */
   status?: EmailDomainDKIMStatusEnum;
 }
-export const EmailDomainDkimSimplified = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainDkimSimplified = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeSelector: S.optional(S.NullOr(S.String)),
     autoconfig: S.optional(S.NullOr(S.Boolean)),
@@ -2788,7 +2749,7 @@ export interface ListEmailDomainDnsMXRecordsRequest {
   /** Sub domain */
   subDomain?: string;
 }
-export const ListEmailDomainDnsMXRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainDnsMXRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     subDomain: S.optional(S.String.pipe(T.Query())),
@@ -2798,11 +2759,8 @@ export const ListEmailDomainDnsMXRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainDnsMXRecordsRequest>;
 
 export type ListEmailDomainDnsMXRecordsResponseBodyList = Array<string>;
-export const ListEmailDomainDnsMXRecordsResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainDnsMXRecordsResponseBodyList>;
-
 export type ListEmailDomainDnsMXRecordsResponse = ListEmailDomainDnsMXRecordsResponseBodyList;
-export const ListEmailDomainDnsMXRecordsResponse =
+const ListEmailDomainDnsMXRecordsResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainDnsMXRecordsResponse>;
 
 export interface ListEmailDomainMailingListRequest {
@@ -2811,7 +2769,7 @@ export interface ListEmailDomainMailingListRequest {
   /** Mailing list name */
   name?: string;
 }
-export const ListEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.optional(S.String.pipe(T.Query())),
@@ -2821,11 +2779,8 @@ export const ListEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainMailingListRequest>;
 
 export type ListEmailDomainMailingListResponseBodyList = Array<string>;
-export const ListEmailDomainMailingListResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainMailingListResponseBodyList>;
-
 export type ListEmailDomainMailingListResponse = ListEmailDomainMailingListResponseBodyList;
-export const ListEmailDomainMailingListResponse =
+const ListEmailDomainMailingListResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainMailingListResponse>;
 
 export interface ListEmailDomainMailingListModeratorRequest {
@@ -2836,7 +2791,7 @@ export interface ListEmailDomainMailingListModeratorRequest {
   /** Moderator email */
   email?: string;
 }
-export const ListEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2853,12 +2808,9 @@ export const ListEmailDomainMailingListModeratorRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListEmailDomainMailingListModeratorRequest>;
 
 export type ListEmailDomainMailingListModeratorResponseBodyList = Array<string>;
-export const ListEmailDomainMailingListModeratorResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainMailingListModeratorResponseBodyList>;
-
 export type ListEmailDomainMailingListModeratorResponse =
   ListEmailDomainMailingListModeratorResponseBodyList;
-export const ListEmailDomainMailingListModeratorResponse =
+const ListEmailDomainMailingListModeratorResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainMailingListModeratorResponse>;
 
 export interface ListEmailDomainMailingListSubscriberRequest {
@@ -2869,7 +2821,7 @@ export interface ListEmailDomainMailingListSubscriberRequest {
   /** Subscriber email */
   email?: string;
 }
-export const ListEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2886,19 +2838,16 @@ export const ListEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListEmailDomainMailingListSubscriberRequest>;
 
 export type ListEmailDomainMailingListSubscriberResponseBodyList = Array<string>;
-export const ListEmailDomainMailingListSubscriberResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainMailingListSubscriberResponseBodyList>;
-
 export type ListEmailDomainMailingListSubscriberResponse =
   ListEmailDomainMailingListSubscriberResponseBodyList;
-export const ListEmailDomainMailingListSubscriberResponse =
+const ListEmailDomainMailingListSubscriberResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainMailingListSubscriberResponse>;
 
 export interface ListEmailDomainRecommendedDNSRecordsRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const ListEmailDomainRecommendedDNSRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainRecommendedDNSRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -2927,7 +2876,7 @@ export type EmailDomainDnsRecordTypeEnum =
   | "SSHFP"
   | "TLSA"
   | "TXT";
-export const EmailDomainDnsRecordTypeEnum = S.String;
+const EmailDomainDnsRecordTypeEnum = S.String;
 
 /** DNS record for email services */
 export interface EmailDomainRecord {
@@ -2944,7 +2893,7 @@ export interface EmailDomainRecord {
   /** Name of DNS zone */
   zone?: string;
 }
-export const EmailDomainRecord = /*@__PURE__*/ S.suspend(() =>
+const EmailDomainRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldType: S.optional(EmailDomainDnsRecordTypeEnum),
     id: S.optional(S.Number),
@@ -2956,13 +2905,13 @@ export const EmailDomainRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailDomainRecord" }) as any as S.Schema<EmailDomainRecord>;
 
 export type ListEmailDomainRecommendedDNSRecordsResponseBodyList = Array<EmailDomainRecord>;
-export const ListEmailDomainRecommendedDNSRecordsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEmailDomainRecommendedDNSRecordsResponseBodyList = /*@__PURE__*/ S.Array(
   EmailDomainRecord,
 ) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsResponseBodyList>;
 
 export type ListEmailDomainRecommendedDNSRecordsResponse =
   ListEmailDomainRecommendedDNSRecordsResponseBodyList;
-export const ListEmailDomainRecommendedDNSRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainRecommendedDNSRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   ListEmailDomainRecommendedDNSRecordsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEmailDomainRecommendedDNSRecordsResponse",
@@ -2976,7 +2925,7 @@ export interface ListEmailDomainRedirectionRequest {
   /** Email of redirection target */
   to?: string;
 }
-export const ListEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     from: S.optional(S.String.pipe(T.Query())),
@@ -2987,11 +2936,8 @@ export const ListEmailDomainRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainRedirectionRequest>;
 
 export type ListEmailDomainRedirectionResponseBodyList = Array<string>;
-export const ListEmailDomainRedirectionResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainRedirectionResponseBodyList>;
-
 export type ListEmailDomainRedirectionResponse = ListEmailDomainRedirectionResponseBodyList;
-export const ListEmailDomainRedirectionResponse =
+const ListEmailDomainRedirectionResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainRedirectionResponse>;
 
 export interface ListEmailDomainResponderRequest {
@@ -3000,7 +2946,7 @@ export interface ListEmailDomainResponderRequest {
   /** Responder name */
   account?: string;
 }
-export const ListEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -3010,11 +2956,8 @@ export const ListEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainResponderRequest>;
 
 export type ListEmailDomainResponderResponseBodyList = Array<string>;
-export const ListEmailDomainResponderResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainResponderResponseBodyList>;
-
 export type ListEmailDomainResponderResponse = ListEmailDomainResponderResponseBodyList;
-export const ListEmailDomainResponderResponse =
+const ListEmailDomainResponderResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainResponderResponse>;
 
 export interface ListEmailDomainTaskAccountRequest {
@@ -3023,7 +2966,7 @@ export interface ListEmailDomainTaskAccountRequest {
   /** Account name */
   name?: string;
 }
-export const ListEmailDomainTaskAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainTaskAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.optional(S.String.pipe(T.Query())),
@@ -3033,18 +2976,15 @@ export const ListEmailDomainTaskAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainTaskAccountRequest>;
 
 export type ListEmailDomainTaskAccountResponseBodyList = Array<number>;
-export const ListEmailDomainTaskAccountResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainTaskAccountResponseBodyList>;
-
 export type ListEmailDomainTaskAccountResponse = ListEmailDomainTaskAccountResponseBodyList;
-export const ListEmailDomainTaskAccountResponse =
+const ListEmailDomainTaskAccountResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskAccountResponse>;
 
 export interface ListEmailDomainTaskAllRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const ListEmailDomainTaskAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainTaskAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}/task/all", code: 200 })),
@@ -3053,11 +2993,8 @@ export const ListEmailDomainTaskAllRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainTaskAllRequest>;
 
 export type ListEmailDomainTaskAllResponseBodyList = Array<number>;
-export const ListEmailDomainTaskAllResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainTaskAllResponseBodyList>;
-
 export type ListEmailDomainTaskAllResponse = ListEmailDomainTaskAllResponseBodyList;
-export const ListEmailDomainTaskAllResponse =
+const ListEmailDomainTaskAllResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskAllResponse>;
 
 export interface ListEmailDomainTaskFilterRequest {
@@ -3066,7 +3003,7 @@ export interface ListEmailDomainTaskFilterRequest {
   /** Account name */
   account?: string;
 }
-export const ListEmailDomainTaskFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainTaskFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -3076,11 +3013,8 @@ export const ListEmailDomainTaskFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainTaskFilterRequest>;
 
 export type ListEmailDomainTaskFilterResponseBodyList = Array<number>;
-export const ListEmailDomainTaskFilterResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainTaskFilterResponseBodyList>;
-
 export type ListEmailDomainTaskFilterResponse = ListEmailDomainTaskFilterResponseBodyList;
-export const ListEmailDomainTaskFilterResponse =
+const ListEmailDomainTaskFilterResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskFilterResponse>;
 
 export interface ListEmailDomainTaskMailinglistRequest {
@@ -3089,7 +3023,7 @@ export interface ListEmailDomainTaskMailinglistRequest {
   /** Account name */
   account?: string;
 }
-export const ListEmailDomainTaskMailinglistRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainTaskMailinglistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -3099,11 +3033,8 @@ export const ListEmailDomainTaskMailinglistRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEmailDomainTaskMailinglistRequest>;
 
 export type ListEmailDomainTaskMailinglistResponseBodyList = Array<number>;
-export const ListEmailDomainTaskMailinglistResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainTaskMailinglistResponseBodyList>;
-
 export type ListEmailDomainTaskMailinglistResponse = ListEmailDomainTaskMailinglistResponseBodyList;
-export const ListEmailDomainTaskMailinglistResponse =
+const ListEmailDomainTaskMailinglistResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskMailinglistResponse>;
 
 export interface ListEmailDomainTaskRedirectionRequest {
@@ -3112,7 +3043,7 @@ export interface ListEmailDomainTaskRedirectionRequest {
   /** Account name */
   account?: string;
 }
-export const ListEmailDomainTaskRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainTaskRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -3122,11 +3053,8 @@ export const ListEmailDomainTaskRedirectionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEmailDomainTaskRedirectionRequest>;
 
 export type ListEmailDomainTaskRedirectionResponseBodyList = Array<string>;
-export const ListEmailDomainTaskRedirectionResponseBodyList =
-  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainTaskRedirectionResponseBodyList>;
-
 export type ListEmailDomainTaskRedirectionResponse = ListEmailDomainTaskRedirectionResponseBodyList;
-export const ListEmailDomainTaskRedirectionResponse =
+const ListEmailDomainTaskRedirectionResponse =
   ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainTaskRedirectionResponse>;
 
 export interface ListEmailDomainTaskResponderRequest {
@@ -3135,7 +3063,7 @@ export interface ListEmailDomainTaskResponderRequest {
   /** Name of responder */
   account?: string;
 }
-export const ListEmailDomainTaskResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailDomainTaskResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -3145,11 +3073,8 @@ export const ListEmailDomainTaskResponderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailDomainTaskResponderRequest>;
 
 export type ListEmailDomainTaskResponderResponseBodyList = Array<number>;
-export const ListEmailDomainTaskResponderResponseBodyList =
-  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ListEmailDomainTaskResponderResponseBodyList>;
-
 export type ListEmailDomainTaskResponderResponse = ListEmailDomainTaskResponderResponseBodyList;
-export const ListEmailDomainTaskResponderResponse =
+const ListEmailDomainTaskResponderResponse =
   CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskResponderResponse>;
 
 export interface MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest {
@@ -3164,30 +3089,29 @@ export interface MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest 
   /** New password used for migration */
   password: string | Redacted.Redacted<string>;
 }
-export const MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domain: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      destinationServiceName: S.String.pipe(T.Label()),
-      destinationEmailAddress: S.String.pipe(T.Label()),
-      password: S.String.pipe(T.SensitiveValue({})),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest",
-  }) as any as S.Schema<MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest>;
+const MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    destinationServiceName: S.String.pipe(T.Label()),
+    destinationEmailAddress: S.String.pipe(T.Label()),
+    password: S.String.pipe(T.SensitiveValue({})),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest",
+}) as any as S.Schema<MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest>;
 
 export interface MigrateEmailDomainDelegationV3toV6Request {
   /** Name of your domain name */
   domain: string;
 }
-export const MigrateEmailDomainDelegationV3toV6Request = /*@__PURE__*/ S.suspend(() =>
+const MigrateEmailDomainDelegationV3toV6Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -3198,7 +3122,7 @@ export const MigrateEmailDomainDelegationV3toV6Request = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Request>;
 
 export interface MigrateEmailDomainDelegationV3toV6Response {}
-export const MigrateEmailDomainDelegationV3toV6Response =
+const MigrateEmailDomainDelegationV3toV6Response =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<MigrateEmailDomainDelegationV3toV6Response>;
 
 export interface PutEmailDomainAccountRequest {
@@ -3211,7 +3135,7 @@ export interface PutEmailDomainAccountRequest {
   /** Size of your account in bytes */
   size?: number;
 }
-export const PutEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -3225,7 +3149,7 @@ export const PutEmailDomainAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailDomainAccountRequest>;
 
 export interface PutEmailDomainAccountResponse {}
-export const PutEmailDomainAccountResponse =
+const PutEmailDomainAccountResponse =
   DeleteEmailDomainAclResponse as any as S.Schema<PutEmailDomainAccountResponse>;
 
 export interface PutEmailDomainDelegatedAccountRequest {
@@ -3236,7 +3160,7 @@ export interface PutEmailDomainDelegatedAccountRequest {
   /** Size of your account in bytes */
   size?: number;
 }
-export const PutEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -3247,7 +3171,7 @@ export const PutEmailDomainDelegatedAccountRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutEmailDomainDelegatedAccountRequest>;
 
 export interface PutEmailDomainDelegatedAccountResponse {}
-export const PutEmailDomainDelegatedAccountResponse =
+const PutEmailDomainDelegatedAccountResponse =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainDelegatedAccountResponse>;
 
 export interface PutEmailDomainDelegatedAccountResponderRequest {
@@ -3260,7 +3184,7 @@ export interface PutEmailDomainDelegatedAccountResponderRequest {
   /** Date of end responder */
   to?: string | null;
 }
-export const PutEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     content: S.optional(S.String),
@@ -3274,14 +3198,14 @@ export const PutEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<PutEmailDomainDelegatedAccountResponderRequest>;
 
 export interface PutEmailDomainDelegatedAccountResponderResponse {}
-export const PutEmailDomainDelegatedAccountResponderResponse =
+const PutEmailDomainDelegatedAccountResponderResponse =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainDelegatedAccountResponderResponse>;
 
 export interface PutEmailDomainDkimDisableRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const PutEmailDomainDkimDisableRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainDkimDisableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/email/domain/{domain}/dkim/disable", code: 200 })),
@@ -3293,7 +3217,7 @@ export interface PutEmailDomainDkimEnableRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const PutEmailDomainDkimEnableRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainDkimEnableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/email/domain/{domain}/dkim/enable", code: 200 })),
@@ -3313,7 +3237,7 @@ export interface PutEmailDomainMailingListRequest {
   /** Email to reply of mailing list */
   replyTo?: string;
 }
-export const PutEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3326,7 +3250,7 @@ export const PutEmailDomainMailingListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailDomainMailingListRequest>;
 
 export interface PutEmailDomainMailingListResponse {}
-export const PutEmailDomainMailingListResponse =
+const PutEmailDomainMailingListResponse =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainMailingListResponse>;
 
 export interface PutEmailDomainResponderRequest {
@@ -3341,7 +3265,7 @@ export interface PutEmailDomainResponderRequest {
   /** Date of end responder */
   to?: string | null;
 }
-export const PutEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     account: S.String.pipe(T.Label()),
@@ -3354,9 +3278,9 @@ export const PutEmailDomainResponderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailDomainResponderRequest>;
 
 export interface PutEmailDomainResponderResponse {}
-export const PutEmailDomainResponderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutEmailDomainResponderResponse" },
-) as any as S.Schema<PutEmailDomainResponderResponse>;
+const PutEmailDomainResponderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutEmailDomainResponderResponse",
+}) as any as S.Schema<PutEmailDomainResponderResponse>;
 
 export interface PutEmailDomainServiceInfosRequest {
   /** Name of your domain name */
@@ -3364,7 +3288,7 @@ export interface PutEmailDomainServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutEmailDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmailDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -3374,7 +3298,7 @@ export const PutEmailDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailDomainServiceInfosRequest>;
 
 export interface PutEmailDomainServiceInfosResponse {}
-export const PutEmailDomainServiceInfosResponse =
+const PutEmailDomainServiceInfosResponse =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainServiceInfosResponse>;
 
 export interface SendEmailDomainMailingListListByEmailRequest {
@@ -3385,7 +3309,7 @@ export interface SendEmailDomainMailingListListByEmailRequest {
   /** Email destination */
   email: string;
 }
-export const SendEmailDomainMailingListListByEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const SendEmailDomainMailingListListByEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3405,7 +3329,7 @@ export interface TerminateEmailDomainRequest {
   /** Name of your domain name */
   domain: string;
 }
-export const TerminateEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/terminate", code: 200 })),
@@ -3414,7 +3338,7 @@ export const TerminateEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateEmailDomainRequest>;
 
 export type TerminateEmailDomainResponse = string;
-export const TerminateEmailDomainResponse =
+const TerminateEmailDomainResponse =
   ConfirmEmailDomainTerminationResponse as any as S.Schema<TerminateEmailDomainResponse>;
 
 export interface UpdateEmailDomainAccountUsageRequest {
@@ -3423,7 +3347,7 @@ export interface UpdateEmailDomainAccountUsageRequest {
   /** Name of account */
   accountName: string;
 }
-export const UpdateEmailDomainAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEmailDomainAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
@@ -3439,14 +3363,14 @@ export const UpdateEmailDomainAccountUsageRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateEmailDomainAccountUsageRequest>;
 
 export interface UpdateEmailDomainAccountUsageResponse {}
-export const UpdateEmailDomainAccountUsageResponse =
+const UpdateEmailDomainAccountUsageResponse =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<UpdateEmailDomainAccountUsageResponse>;
 
 export interface UpdateEmailDomainDelegatedAccountUsageRequest {
   /** Email */
   email: string;
 }
-export const UpdateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(
@@ -3461,7 +3385,7 @@ export const UpdateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageRequest>;
 
 export interface UpdateEmailDomainDelegatedAccountUsageResponse {}
-export const UpdateEmailDomainDelegatedAccountUsageResponse =
+const UpdateEmailDomainDelegatedAccountUsageResponse =
   CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageResponse>;
 
 export type ConfirmEmailDomainTerminationError = OvhOpError;

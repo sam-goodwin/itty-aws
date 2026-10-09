@@ -71,15 +71,15 @@ export class HostnameNotAuthorized
   ) {}
 
 export type CreateRequestHostnamesList = Array<string>;
-export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
+const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHostnamesList>;
 
 export type CreateRequestRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-export const CreateRequestRequestType = S.String;
+const CreateRequestRequestType = S.String;
 
 export type CreateRequestRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-export const CreateRequestRequestedValidity = S.Number;
+const CreateRequestRequestedValidity = S.Number;
 
 export interface CreateOriginCaCertificateRequest {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
@@ -91,7 +91,7 @@ export interface CreateOriginCaCertificateRequest {
   /** The number of days for which the certificate should be valid. */
   requestedValidity?: CreateRequestRequestedValidity | (number & {});
 }
-export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateRequestHostnamesList,
@@ -107,14 +107,14 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOriginCaCertificateRequest>;
 
 export type CreateResponseHostnamesList = Array<string>;
-export const CreateResponseHostnamesList =
+const CreateResponseHostnamesList =
   CreateRequestHostnamesList as any as S.Schema<CreateResponseHostnamesList>;
 
 export type CreateResponseRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-export const CreateResponseRequestType = S.String;
+const CreateResponseRequestType = S.String;
 
 export type CreateResponseRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-export const CreateResponseRequestedValidity = S.Number;
+const CreateResponseRequestedValidity = S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginCaCertificateResponse {
@@ -135,7 +135,7 @@ export interface CreateOriginCaCertificateResponse {
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
-export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateResponseHostnamesList,
@@ -154,7 +154,7 @@ export interface DeleteOriginCaCertificateRequest {
   /** The x509 serial number of the Origin CA certificate. */
   certificateId: string;
 }
-export const DeleteOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateId: S.String.pipe(T.Label("certificate_id")),
   })
@@ -171,7 +171,7 @@ export interface DeleteOriginCaCertificateResponse {
   /** When the certificate was revoked. */
   revokedAt?: string | null;
 }
-export const DeleteOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     revokedAt: S.optional(S.NullOr(S.String).pipe(T.Body("revoked_at"))),
@@ -184,7 +184,7 @@ export interface GetOriginCaCertificateRequest {
   /** The x509 serial number of the Origin CA certificate. */
   certificateId: string;
 }
-export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateId: S.String.pipe(T.Label("certificate_id")),
   })
@@ -195,14 +195,14 @@ export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOriginCaCertificateRequest>;
 
 export type GetResponseHostnamesList = Array<string>;
-export const GetResponseHostnamesList =
+const GetResponseHostnamesList =
   CreateRequestHostnamesList as any as S.Schema<GetResponseHostnamesList>;
 
 export type GetResponseRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-export const GetResponseRequestType = S.String;
+const GetResponseRequestType = S.String;
 
 export type GetResponseRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-export const GetResponseRequestedValidity = S.Number;
+const GetResponseRequestedValidity = S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginCaCertificateResponse {
@@ -223,7 +223,7 @@ export interface GetOriginCaCertificateResponse {
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
-export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: GetResponseHostnamesList,
@@ -250,7 +250,7 @@ export interface ListOriginCaCertificatesRequest {
   /** Number of records per page. */
   perPage?: number;
 }
-export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Query("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -265,14 +265,14 @@ export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOriginCaCertificatesRequest>;
 
 export type ListResultItemHostnamesList = Array<string>;
-export const ListResultItemHostnamesList =
+const ListResultItemHostnamesList =
   CreateRequestHostnamesList as any as S.Schema<ListResultItemHostnamesList>;
 
 export type ListResultItemRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-export const ListResultItemRequestType = S.String;
+const ListResultItemRequestType = S.String;
 
 export type ListResultItemRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-export const ListResultItemRequestedValidity = S.Number;
+const ListResultItemRequestedValidity = S.Number;
 
 export interface ListResultItem {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
@@ -292,7 +292,7 @@ export interface ListResultItem {
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: ListResultItemHostnamesList,
@@ -306,9 +306,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListOriginCaCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -316,7 +314,7 @@ export interface ListOriginCaCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListOriginCaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOriginCaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

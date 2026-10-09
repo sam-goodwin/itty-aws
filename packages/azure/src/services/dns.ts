@@ -19,7 +19,7 @@ export type DeleteRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-export const DeleteRecordSetRequestRecordType = S.String;
+const DeleteRecordSetRequestRecordType = S.String;
 
 export interface DeleteRecordSetRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
@@ -33,7 +33,7 @@ export interface DeleteRecordSetRequest {
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
-export const DeleteRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -51,7 +51,7 @@ export const DeleteRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRecordSetRequest" }) as any as S.Schema<DeleteRecordSetRequest>;
 
 export interface DeleteRecordSetResponse {}
-export const DeleteRecordSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRecordSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRecordSetResponse",
 }) as any as S.Schema<DeleteRecordSetResponse>;
 
@@ -63,7 +63,7 @@ export interface DeleteZoneRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
 }
-export const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -79,14 +79,14 @@ export const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteZoneRequest" }) as any as S.Schema<DeleteZoneRequest>;
 
 export interface DeleteZoneResponse {}
-export const DeleteZoneResponse = DeleteRecordSetResponse as any as S.Schema<DeleteZoneResponse>;
+const DeleteZoneResponse = DeleteRecordSetResponse as any as S.Schema<DeleteZoneResponse>;
 
 /** A reference to a another resource */
 export interface SubResource {
   /** Resource Id. */
   id?: string;
 }
-export const SubResource = /*@__PURE__*/ S.suspend(() =>
+const SubResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -94,7 +94,7 @@ export const SubResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of references to azure resources for which referencing dns records need to be queried. */
 export type DnsResourceReferenceRequestPropertiesTargetResourcesList = Array<SubResource>;
-export const DnsResourceReferenceRequestPropertiesTargetResourcesList = /*@__PURE__*/ S.Array(
+const DnsResourceReferenceRequestPropertiesTargetResourcesList = /*@__PURE__*/ S.Array(
   SubResource,
 ) as any as S.Schema<DnsResourceReferenceRequestPropertiesTargetResourcesList>;
 
@@ -103,7 +103,7 @@ export interface DnsResourceReferenceRequestProperties {
   /** A list of references to azure resources for which referencing dns records need to be queried. */
   targetResources?: DnsResourceReferenceRequestPropertiesTargetResourcesList;
 }
-export const DnsResourceReferenceRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const DnsResourceReferenceRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetResources: S.optional(DnsResourceReferenceRequestPropertiesTargetResourcesList),
   }),
@@ -117,7 +117,7 @@ export interface GetDnsResourceReferenceByTargetResourcesRequest {
   /** The properties of the Resource Reference Request. */
   properties?: DnsResourceReferenceRequestProperties;
 }
-export const GetDnsResourceReferenceByTargetResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsResourceReferenceByTargetResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     properties: S.optional(DnsResourceReferenceRequestProperties),
@@ -135,7 +135,7 @@ export const GetDnsResourceReferenceByTargetResourcesRequest = /*@__PURE__*/ S.s
 
 /** A list of dns Records */
 export type DnsResourceReferenceDnsResourcesList = Array<SubResource>;
-export const DnsResourceReferenceDnsResourcesList =
+const DnsResourceReferenceDnsResourcesList =
   DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<DnsResourceReferenceDnsResourcesList>;
 
 /** Represents a single Azure resource and its referencing DNS records. */
@@ -145,7 +145,7 @@ export interface DnsResourceReference {
   /** A reference to an azure resource from where the dns resource value is taken. */
   targetResource?: SubResource;
 }
-export const DnsResourceReference = /*@__PURE__*/ S.suspend(() =>
+const DnsResourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsResources: S.optional(DnsResourceReferenceDnsResourcesList),
     targetResource: S.optional(SubResource),
@@ -155,7 +155,7 @@ export const DnsResourceReference = /*@__PURE__*/ S.suspend(() =>
 /** The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request */
 export type DnsResourceReferenceResultPropertiesDnsResourceReferencesList =
   Array<DnsResourceReference>;
-export const DnsResourceReferenceResultPropertiesDnsResourceReferencesList = /*@__PURE__*/ S.Array(
+const DnsResourceReferenceResultPropertiesDnsResourceReferencesList = /*@__PURE__*/ S.Array(
   DnsResourceReference,
 ) as any as S.Schema<DnsResourceReferenceResultPropertiesDnsResourceReferencesList>;
 
@@ -164,7 +164,7 @@ export interface DnsResourceReferenceResultProperties {
   /** The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request */
   dnsResourceReferences?: DnsResourceReferenceResultPropertiesDnsResourceReferencesList;
 }
-export const DnsResourceReferenceResultProperties = /*@__PURE__*/ S.suspend(() =>
+const DnsResourceReferenceResultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsResourceReferences: S.optional(
       DnsResourceReferenceResultPropertiesDnsResourceReferencesList,
@@ -179,7 +179,7 @@ export interface DnsResourceReferenceResult {
   /** The result of dns resource reference request. Returns a list of dns resource references for each of the azure resource in the request. */
   properties?: DnsResourceReferenceResultProperties;
 }
-export const DnsResourceReferenceResult = /*@__PURE__*/ S.suspend(() =>
+const DnsResourceReferenceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DnsResourceReferenceResultProperties),
   }),
@@ -198,7 +198,7 @@ export type GetRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-export const GetRecordSetRequestRecordType = S.String;
+const GetRecordSetRequestRecordType = S.String;
 
 export interface GetRecordSetRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
@@ -212,7 +212,7 @@ export interface GetRecordSetRequest {
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
-export const GetRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -231,7 +231,7 @@ export const GetRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesMetadataMap = { [key: string]: string | undefined };
-export const RecordSetPropertiesMetadataMap = /*@__PURE__*/ S.Record(
+const RecordSetPropertiesMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<RecordSetPropertiesMetadataMap>;
@@ -241,7 +241,7 @@ export interface ARecord {
   /** The IPv4 address of this A record. */
   ipv4Address?: string;
 }
-export const ARecord = /*@__PURE__*/ S.suspend(() =>
+const ARecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipv4Address: S.optional(S.String),
   }),
@@ -249,7 +249,7 @@ export const ARecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of A records in the record set. */
 export type RecordSetPropertiesARecordsList = Array<ARecord>;
-export const RecordSetPropertiesARecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesARecordsList = /*@__PURE__*/ S.Array(
   ARecord,
 ) as any as S.Schema<RecordSetPropertiesARecordsList>;
 
@@ -258,7 +258,7 @@ export interface AaaaRecord {
   /** The IPv6 address of this AAAA record. */
   ipv6Address?: string;
 }
-export const AaaaRecord = /*@__PURE__*/ S.suspend(() =>
+const AaaaRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipv6Address: S.optional(S.String),
   }),
@@ -266,7 +266,7 @@ export const AaaaRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesAAAARecordsList = Array<AaaaRecord>;
-export const RecordSetPropertiesAAAARecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesAAAARecordsList = /*@__PURE__*/ S.Array(
   AaaaRecord,
 ) as any as S.Schema<RecordSetPropertiesAAAARecordsList>;
 
@@ -277,7 +277,7 @@ export interface MxRecord {
   /** The domain name of the mail host for this MX record. */
   exchange?: string;
 }
-export const MxRecord = /*@__PURE__*/ S.suspend(() =>
+const MxRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preference: S.optional(S.Number),
     exchange: S.optional(S.String),
@@ -286,7 +286,7 @@ export const MxRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesMXRecordsList = Array<MxRecord>;
-export const RecordSetPropertiesMXRecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesMXRecordsList = /*@__PURE__*/ S.Array(
   MxRecord,
 ) as any as S.Schema<RecordSetPropertiesMXRecordsList>;
 
@@ -295,7 +295,7 @@ export interface NsRecord {
   /** The name server name for this NS record. */
   nsdname?: string;
 }
-export const NsRecord = /*@__PURE__*/ S.suspend(() =>
+const NsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nsdname: S.optional(S.String),
   }),
@@ -303,7 +303,7 @@ export const NsRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of NS records in the record set. */
 export type RecordSetPropertiesNSRecordsList = Array<NsRecord>;
-export const RecordSetPropertiesNSRecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesNSRecordsList = /*@__PURE__*/ S.Array(
   NsRecord,
 ) as any as S.Schema<RecordSetPropertiesNSRecordsList>;
 
@@ -312,7 +312,7 @@ export interface PtrRecord {
   /** The PTR target domain name for this PTR record. */
   ptrdname?: string;
 }
-export const PtrRecord = /*@__PURE__*/ S.suspend(() =>
+const PtrRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ptrdname: S.optional(S.String),
   }),
@@ -320,7 +320,7 @@ export const PtrRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesPTRRecordsList = Array<PtrRecord>;
-export const RecordSetPropertiesPTRRecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesPTRRecordsList = /*@__PURE__*/ S.Array(
   PtrRecord,
 ) as any as S.Schema<RecordSetPropertiesPTRRecordsList>;
 
@@ -335,7 +335,7 @@ export interface SrvRecord {
   /** The target domain name for this SRV record. */
   target?: string;
 }
-export const SrvRecord = /*@__PURE__*/ S.suspend(() =>
+const SrvRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.optional(S.Number),
     weight: S.optional(S.Number),
@@ -346,22 +346,20 @@ export const SrvRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesSRVRecordsList = Array<SrvRecord>;
-export const RecordSetPropertiesSRVRecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesSRVRecordsList = /*@__PURE__*/ S.Array(
   SrvRecord,
 ) as any as S.Schema<RecordSetPropertiesSRVRecordsList>;
 
 /** The text value of this TXT record. */
 export type TxtRecordValueList = Array<string>;
-export const TxtRecordValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TxtRecordValueList>;
+const TxtRecordValueList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TxtRecordValueList>;
 
 /** A TXT record. */
 export interface TxtRecord {
   /** The text value of this TXT record. */
   value?: TxtRecordValueList;
 }
-export const TxtRecord = /*@__PURE__*/ S.suspend(() =>
+const TxtRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TxtRecordValueList),
   }),
@@ -369,7 +367,7 @@ export const TxtRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesTXTRecordsList = Array<TxtRecord>;
-export const RecordSetPropertiesTXTRecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesTXTRecordsList = /*@__PURE__*/ S.Array(
   TxtRecord,
 ) as any as S.Schema<RecordSetPropertiesTXTRecordsList>;
 
@@ -378,7 +376,7 @@ export interface CnameRecord {
   /** The canonical name for this CNAME record. */
   cname?: string;
 }
-export const CnameRecord = /*@__PURE__*/ S.suspend(() =>
+const CnameRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cname: S.optional(S.String),
   }),
@@ -401,7 +399,7 @@ export interface SoaRecord {
   /** The minimum value for this SOA record. By convention this is used to determine the negative caching duration. */
   minimumTTL?: number;
 }
-export const SoaRecord = /*@__PURE__*/ S.suspend(() =>
+const SoaRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     email: S.optional(S.String),
@@ -422,7 +420,7 @@ export interface CaaRecord {
   /** The value for this CAA record. */
   value?: string;
 }
-export const CaaRecord = /*@__PURE__*/ S.suspend(() =>
+const CaaRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flags: S.optional(S.Number),
     tag: S.optional(S.String),
@@ -432,7 +430,7 @@ export const CaaRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of CAA records in the record set. */
 export type RecordSetPropertiesCaaRecordsList = Array<CaaRecord>;
-export const RecordSetPropertiesCaaRecordsList = /*@__PURE__*/ S.Array(
+const RecordSetPropertiesCaaRecordsList = /*@__PURE__*/ S.Array(
   CaaRecord,
 ) as any as S.Schema<RecordSetPropertiesCaaRecordsList>;
 
@@ -469,7 +467,7 @@ export interface RecordSetProperties {
   /** The list of CAA records in the record set. */
   caaRecords?: RecordSetPropertiesCaaRecordsList;
 }
-export const RecordSetProperties = /*@__PURE__*/ S.suspend(() =>
+const RecordSetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(RecordSetPropertiesMetadataMap),
     TTL: S.optional(S.Number),
@@ -502,7 +500,7 @@ export interface RecordSet {
   /** The properties of the record set. */
   properties?: RecordSetProperties;
 }
-export const RecordSet = /*@__PURE__*/ S.suspend(() =>
+const RecordSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -520,7 +518,7 @@ export interface GetZoneRequest {
   /** The name of the DNS zone (without a terminating dot). */
   zoneName: string;
 }
-export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -537,26 +535,26 @@ export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetZoneResponseTagsMap = { [key: string]: string | undefined };
-export const GetZoneResponseTagsMap =
+const GetZoneResponseTagsMap =
   RecordSetPropertiesMetadataMap as any as S.Schema<GetZoneResponseTagsMap>;
 
 /** The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored. */
 export type ZonePropertiesNameServersList = Array<string>;
-export const ZonePropertiesNameServersList =
+const ZonePropertiesNameServersList =
   TxtRecordValueList as any as S.Schema<ZonePropertiesNameServersList>;
 
 /** The type of this DNS zone (Public or Private). */
 export type ZonePropertiesZoneType = "Public" | "Private";
-export const ZonePropertiesZoneType = S.String;
+const ZonePropertiesZoneType = S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesRegistrationVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesRegistrationVirtualNetworksList =
+const ZonePropertiesRegistrationVirtualNetworksList =
   DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesRegistrationVirtualNetworksList>;
 
 /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesResolutionVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesResolutionVirtualNetworksList =
+const ZonePropertiesResolutionVirtualNetworksList =
   DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesResolutionVirtualNetworksList>;
 
 /** Represents the properties of the zone. */
@@ -576,7 +574,7 @@ export interface ZoneProperties {
   /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
   resolutionVirtualNetworks?: ZonePropertiesResolutionVirtualNetworksList;
 }
-export const ZoneProperties = /*@__PURE__*/ S.suspend(() =>
+const ZoneProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxNumberOfRecordSets: S.optional(S.Number),
     maxNumberOfRecordsPerRecordSet: S.optional(S.Number),
@@ -604,7 +602,7 @@ export interface GetZoneResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-export const GetZoneResponse = /*@__PURE__*/ S.suspend(() =>
+const GetZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -628,7 +626,7 @@ export interface ListRecordSetAllByDnsZoneRequest {
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
 }
-export const ListRecordSetAllByDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordSetAllByDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -649,7 +647,7 @@ export const ListRecordSetAllByDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about the record sets in the response. */
 export type RecordSetListResultValueList = Array<RecordSet>;
-export const RecordSetListResultValueList = /*@__PURE__*/ S.Array(
+const RecordSetListResultValueList = /*@__PURE__*/ S.Array(
   RecordSet,
 ) as any as S.Schema<RecordSetListResultValueList>;
 
@@ -660,7 +658,7 @@ export interface RecordSetListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export const RecordSetListResult = /*@__PURE__*/ S.suspend(() =>
+const RecordSetListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RecordSetListResultValueList),
     nextLink: S.optional(S.String),
@@ -679,7 +677,7 @@ export interface ListRecordSetByDnsZoneRequest {
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
 }
-export const ListRecordSetByDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordSetByDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -709,7 +707,7 @@ export type ListRecordSetByTypeRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-export const ListRecordSetByTypeRequestRecordType = S.String;
+const ListRecordSetByTypeRequestRecordType = S.String;
 
 export interface ListRecordSetByTypeRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
@@ -725,7 +723,7 @@ export interface ListRecordSetByTypeRequest {
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
 }
-export const ListRecordSetByTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordSetByTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -753,7 +751,7 @@ export interface ListZoneByResourceGroupRequest {
   /** The maximum number of record sets to return. If not specified, returns up to 100 record sets. */
   _top?: number;
 }
-export const ListZoneByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListZoneByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -772,8 +770,6 @@ export const ListZoneByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ZoneTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsMap = RecordSetPropertiesMetadataMap as any as S.Schema<ZoneTagsMap>;
-
 /** Describes a DNS zone. */
 export interface Zone {
   /** Resource ID. */
@@ -791,11 +787,11 @@ export interface Zone {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-export const Zone = GetZoneResponse as any as S.Schema<Zone>;
+const Zone = GetZoneResponse as any as S.Schema<Zone>;
 
 /** Information about the DNS zones. */
 export type ZoneListResultValueList = Array<Zone>;
-export const ZoneListResultValueList = /*@__PURE__*/ S.Array(
+const ZoneListResultValueList = /*@__PURE__*/ S.Array(
   Zone,
 ) as any as S.Schema<ZoneListResultValueList>;
 
@@ -806,7 +802,7 @@ export interface ZoneListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export const ZoneListResult = /*@__PURE__*/ S.suspend(() =>
+const ZoneListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ZoneListResultValueList),
     nextLink: S.optional(S.String),
@@ -819,7 +815,7 @@ export interface ListZonesRequest {
   /** The maximum number of DNS zones to return. If not specified, returns up to 100 zones. */
   _top?: number;
 }
-export const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -844,51 +840,51 @@ export type RecordSetsCreateOrUpdateRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-export const RecordSetsCreateOrUpdateRequestRecordType = S.String;
+const RecordSetsCreateOrUpdateRequestRecordType = S.String;
 
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const RecordSetPropertiesInputMetadataMap =
+const RecordSetPropertiesInputMetadataMap =
   RecordSetPropertiesMetadataMap as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
 
 /** The list of A records in the record set. */
 export type RecordSetPropertiesInputARecordsList = Array<ARecord>;
-export const RecordSetPropertiesInputARecordsList =
+const RecordSetPropertiesInputARecordsList =
   RecordSetPropertiesARecordsList as any as S.Schema<RecordSetPropertiesInputARecordsList>;
 
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesInputAAAARecordsList = Array<AaaaRecord>;
-export const RecordSetPropertiesInputAAAARecordsList =
+const RecordSetPropertiesInputAAAARecordsList =
   RecordSetPropertiesAAAARecordsList as any as S.Schema<RecordSetPropertiesInputAAAARecordsList>;
 
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesInputMXRecordsList = Array<MxRecord>;
-export const RecordSetPropertiesInputMXRecordsList =
+const RecordSetPropertiesInputMXRecordsList =
   RecordSetPropertiesMXRecordsList as any as S.Schema<RecordSetPropertiesInputMXRecordsList>;
 
 /** The list of NS records in the record set. */
 export type RecordSetPropertiesInputNSRecordsList = Array<NsRecord>;
-export const RecordSetPropertiesInputNSRecordsList =
+const RecordSetPropertiesInputNSRecordsList =
   RecordSetPropertiesNSRecordsList as any as S.Schema<RecordSetPropertiesInputNSRecordsList>;
 
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesInputPTRRecordsList = Array<PtrRecord>;
-export const RecordSetPropertiesInputPTRRecordsList =
+const RecordSetPropertiesInputPTRRecordsList =
   RecordSetPropertiesPTRRecordsList as any as S.Schema<RecordSetPropertiesInputPTRRecordsList>;
 
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesInputSRVRecordsList = Array<SrvRecord>;
-export const RecordSetPropertiesInputSRVRecordsList =
+const RecordSetPropertiesInputSRVRecordsList =
   RecordSetPropertiesSRVRecordsList as any as S.Schema<RecordSetPropertiesInputSRVRecordsList>;
 
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesInputTXTRecordsList = Array<TxtRecord>;
-export const RecordSetPropertiesInputTXTRecordsList =
+const RecordSetPropertiesInputTXTRecordsList =
   RecordSetPropertiesTXTRecordsList as any as S.Schema<RecordSetPropertiesInputTXTRecordsList>;
 
 /** The list of CAA records in the record set. */
 export type RecordSetPropertiesInputCaaRecordsList = Array<CaaRecord>;
-export const RecordSetPropertiesInputCaaRecordsList =
+const RecordSetPropertiesInputCaaRecordsList =
   RecordSetPropertiesCaaRecordsList as any as S.Schema<RecordSetPropertiesInputCaaRecordsList>;
 
 /** Represents the properties of the records in the record set. */
@@ -920,7 +916,7 @@ export interface RecordSetPropertiesInput {
   /** The list of CAA records in the record set. */
   caaRecords?: RecordSetPropertiesInputCaaRecordsList;
 }
-export const RecordSetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RecordSetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(RecordSetPropertiesInputMetadataMap),
     TTL: S.optional(S.Number),
@@ -954,7 +950,7 @@ export interface RecordSetsCreateOrUpdateRequest {
   /** The properties of the record set. */
   properties?: RecordSetPropertiesInput;
 }
-export const RecordSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RecordSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -986,7 +982,7 @@ export type UpdateRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
-export const UpdateRecordSetRequestRecordType = S.String;
+const UpdateRecordSetRequestRecordType = S.String;
 
 export interface UpdateRecordSetRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
@@ -1004,7 +1000,7 @@ export interface UpdateRecordSetRequest {
   /** The properties of the record set. */
   properties?: RecordSetPropertiesInput;
 }
-export const UpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1025,7 +1021,7 @@ export const UpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateZoneRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateZoneRequestTagsMap =
+const UpdateZoneRequestTagsMap =
   RecordSetPropertiesMetadataMap as any as S.Schema<UpdateZoneRequestTagsMap>;
 
 export interface UpdateZoneRequest {
@@ -1038,7 +1034,7 @@ export interface UpdateZoneRequest {
   /** Resource tags. */
   tags?: UpdateZoneRequestTagsMap;
 }
-export const UpdateZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1056,9 +1052,6 @@ export const UpdateZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateZoneResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateZoneResponseTagsMap =
-  RecordSetPropertiesMetadataMap as any as S.Schema<UpdateZoneResponseTagsMap>;
-
 export interface UpdateZoneResponse {
   /** Resource ID. */
   id?: string;
@@ -1075,25 +1068,25 @@ export interface UpdateZoneResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-export const UpdateZoneResponse = GetZoneResponse as any as S.Schema<UpdateZoneResponse>;
+const UpdateZoneResponse = GetZoneResponse as any as S.Schema<UpdateZoneResponse>;
 
 /** Resource tags. */
 export type ZonesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ZonesCreateOrUpdateRequestTagsMap =
+const ZonesCreateOrUpdateRequestTagsMap =
   RecordSetPropertiesMetadataMap as any as S.Schema<ZonesCreateOrUpdateRequestTagsMap>;
 
 /** The type of this DNS zone (Public or Private). */
 export type ZonePropertiesInputZoneType = "Public" | "Private";
-export const ZonePropertiesInputZoneType = S.String;
+const ZonePropertiesInputZoneType = S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesInputRegistrationVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesInputRegistrationVirtualNetworksList =
+const ZonePropertiesInputRegistrationVirtualNetworksList =
   DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesInputRegistrationVirtualNetworksList>;
 
 /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesInputResolutionVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesInputResolutionVirtualNetworksList =
+const ZonePropertiesInputResolutionVirtualNetworksList =
   DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesInputResolutionVirtualNetworksList>;
 
 /** Represents the properties of the zone. */
@@ -1105,7 +1098,7 @@ export interface ZonePropertiesInput {
   /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
   resolutionVirtualNetworks?: ZonePropertiesInputResolutionVirtualNetworksList;
 }
-export const ZonePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ZonePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneType: S.optional(ZonePropertiesInputZoneType),
     registrationVirtualNetworks: S.optional(ZonePropertiesInputRegistrationVirtualNetworksList),
@@ -1129,7 +1122,7 @@ export interface ZonesCreateOrUpdateRequest {
   /** The properties of the zone. */
   properties?: ZonePropertiesInput;
 }
-export const ZonesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ZonesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1152,7 +1145,7 @@ export const ZonesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ZonesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ZonesCreateOrUpdateResponseTagsMap =
+const ZonesCreateOrUpdateResponseTagsMap =
   RecordSetPropertiesMetadataMap as any as S.Schema<ZonesCreateOrUpdateResponseTagsMap>;
 
 export interface ZonesCreateOrUpdateResponse {
@@ -1171,7 +1164,7 @@ export interface ZonesCreateOrUpdateResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-export const ZonesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ZonesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

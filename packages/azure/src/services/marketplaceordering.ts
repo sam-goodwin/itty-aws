@@ -18,7 +18,7 @@ export interface CancelMarketplaceAgreementRequest {
   /** Plan identifier string of image being deployed. */
   planId: string;
 }
-export const CancelMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     publisherId: S.String.pipe(T.Label()),
@@ -38,7 +38,7 @@ export const CancelMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the agreement is active or cancelled */
 export type OldAgreementPropertiesState = "Active" | "Canceled";
-export const OldAgreementPropertiesState = S.String;
+const OldAgreementPropertiesState = S.String;
 
 /** Old Agreement Terms definition */
 export interface OldAgreementProperties {
@@ -55,7 +55,7 @@ export interface OldAgreementProperties {
   /** Whether the agreement is active or cancelled */
   state?: OldAgreementPropertiesState;
 }
-export const OldAgreementProperties = /*@__PURE__*/ S.suspend(() =>
+const OldAgreementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     publisher: S.optional(S.String),
@@ -76,7 +76,7 @@ export interface CancelMarketplaceAgreementResponse {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const CancelMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -88,7 +88,7 @@ export const CancelMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelMarketplaceAgreementResponse>;
 
 export type CreateMarketplaceAgreementRequestOfferType = "virtualmachine";
-export const CreateMarketplaceAgreementRequestOfferType = S.String;
+const CreateMarketplaceAgreementRequestOfferType = S.String;
 
 /** Agreement Terms definition */
 export interface AgreementProperties {
@@ -111,7 +111,7 @@ export interface AgreementProperties {
   /** If any version of the terms have been accepted, otherwise false. */
   accepted?: boolean;
 }
-export const AgreementProperties = /*@__PURE__*/ S.suspend(() =>
+const AgreementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisher: S.optional(S.String),
     product: S.optional(S.String),
@@ -139,7 +139,7 @@ export interface CreateMarketplaceAgreementRequest {
   /** Represents the properties of the resource. */
   properties?: AgreementProperties;
 }
-export const CreateMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     offerType: CreateMarketplaceAgreementRequestOfferType.pipe(T.Label()),
@@ -165,7 +165,7 @@ export type CreateMarketplaceAgreementResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateMarketplaceAgreementResponseSystemDataCreatedByType = S.String;
+const CreateMarketplaceAgreementResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type CreateMarketplaceAgreementResponseSystemDataLastModifiedByType =
@@ -173,7 +173,7 @@ export type CreateMarketplaceAgreementResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateMarketplaceAgreementResponseSystemDataLastModifiedByType = S.String;
+const CreateMarketplaceAgreementResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreateMarketplaceAgreementResponseSystemData {
@@ -190,7 +190,7 @@ export interface CreateMarketplaceAgreementResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateMarketplaceAgreementResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const CreateMarketplaceAgreementResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(CreateMarketplaceAgreementResponseSystemDataCreatedByType),
@@ -215,7 +215,7 @@ export interface CreateMarketplaceAgreementResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreateMarketplaceAgreementResponseSystemData;
 }
-export const CreateMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -228,7 +228,7 @@ export const CreateMarketplaceAgreementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMarketplaceAgreementResponse>;
 
 export type GetMarketplaceAgreementRequestOfferType = "virtualmachine";
-export const GetMarketplaceAgreementRequestOfferType = S.String;
+const GetMarketplaceAgreementRequestOfferType = S.String;
 
 export interface GetMarketplaceAgreementRequest {
   /** The subscription ID that identifies an Azure subscription. */
@@ -242,7 +242,7 @@ export interface GetMarketplaceAgreementRequest {
   /** Plan identifier string of image being deployed. */
   planId: string;
 }
-export const GetMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     offerType: GetMarketplaceAgreementRequestOfferType.pipe(T.Label()),
@@ -267,16 +267,12 @@ export type GetMarketplaceAgreementResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetMarketplaceAgreementResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetMarketplaceAgreementResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetMarketplaceAgreementResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetMarketplaceAgreementResponseSystemData {
   /** The identity that created the resource. */
@@ -292,9 +288,6 @@ export interface GetMarketplaceAgreementResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetMarketplaceAgreementResponseSystemData =
-  CreateMarketplaceAgreementResponseSystemData as any as S.Schema<GetMarketplaceAgreementResponseSystemData>;
-
 export interface GetMarketplaceAgreementResponse {
   /** Resource ID. */
   id?: string;
@@ -307,7 +300,7 @@ export interface GetMarketplaceAgreementResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetMarketplaceAgreementResponseSystemData;
 }
-export const GetMarketplaceAgreementResponse =
+const GetMarketplaceAgreementResponse =
   CreateMarketplaceAgreementResponse as any as S.Schema<GetMarketplaceAgreementResponse>;
 
 export interface GetMarketplaceAgreementAgreementRequest {
@@ -320,7 +313,7 @@ export interface GetMarketplaceAgreementAgreementRequest {
   /** Plan identifier string of image being deployed. */
   planId: string;
 }
-export const GetMarketplaceAgreementAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketplaceAgreementAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     publisherId: S.String.pipe(T.Label()),
@@ -348,14 +341,14 @@ export interface GetMarketplaceAgreementAgreementResponse {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const GetMarketplaceAgreementAgreementResponse =
+const GetMarketplaceAgreementAgreementResponse =
   CancelMarketplaceAgreementResponse as any as S.Schema<GetMarketplaceAgreementAgreementResponse>;
 
 export interface ListMarketplaceAgreementsRequest {
   /** The subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
 }
-export const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -381,7 +374,7 @@ export interface OldAgreementTerms {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const OldAgreementTerms = /*@__PURE__*/ S.suspend(() =>
+const OldAgreementTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -391,7 +384,7 @@ export const OldAgreementTerms = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OldAgreementTerms" }) as any as S.Schema<OldAgreementTerms>;
 
 export type OldAgreementTermsListValueList = Array<OldAgreementTerms>;
-export const OldAgreementTermsListValueList = /*@__PURE__*/ S.Array(
+const OldAgreementTermsListValueList = /*@__PURE__*/ S.Array(
   OldAgreementTerms,
 ) as any as S.Schema<OldAgreementTermsListValueList>;
 
@@ -399,14 +392,14 @@ export const OldAgreementTermsListValueList = /*@__PURE__*/ S.Array(
 export interface OldAgreementTermsList {
   value?: OldAgreementTermsListValueList;
 }
-export const OldAgreementTermsList = /*@__PURE__*/ S.suspend(() =>
+const OldAgreementTermsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OldAgreementTermsListValueList),
   }),
 ).annotate({ identifier: "OldAgreementTermsList" }) as any as S.Schema<OldAgreementTermsList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -428,7 +421,7 @@ export interface OperationDisplay {
   /** Operation description. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -444,7 +437,7 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -453,7 +446,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Microsoft.MarketplaceOrdering operations supported by the Microsoft.MarketplaceOrdering resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -464,7 +457,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -481,7 +474,7 @@ export interface SignMarketplaceAgreementRequest {
   /** Plan identifier string of image being deployed. */
   planId: string;
 }
-export const SignMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const SignMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     publisherId: S.String.pipe(T.Label()),
@@ -509,7 +502,7 @@ export interface SignMarketplaceAgreementResponse {
   /** Represents the properties of the resource. */
   properties?: OldAgreementProperties;
 }
-export const SignMarketplaceAgreementResponse =
+const SignMarketplaceAgreementResponse =
   CancelMarketplaceAgreementResponse as any as S.Schema<SignMarketplaceAgreementResponse>;
 
 export type CancelMarketplaceAgreementError = AzureOpError;

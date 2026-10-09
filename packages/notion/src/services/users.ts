@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 export type { NotionOpError, NotionOpContext };
 
 export interface GetSelfRequest {}
-export const GetSelfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSelfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/users/me", code: 200 })),
 ).annotate({ identifier: "GetSelfRequest" }) as any as S.Schema<GetSelfRequest>;
 
@@ -21,7 +21,7 @@ export interface GetSelfResponsePerson {
   /** Whether the person's email is verified. */
   email_verified?: boolean;
 }
-export const GetSelfResponsePerson = /*@__PURE__*/ S.suspend(() =>
+const GetSelfResponsePerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     email_verified: S.optional(S.Boolean),
@@ -30,8 +30,6 @@ export const GetSelfResponsePerson = /*@__PURE__*/ S.suspend(() =>
 
 /** The person info of the user. */
 export type BotInfoResponseOwnerCase0UserCase0Person = GetSelfResponsePerson;
-export const BotInfoResponseOwnerCase0UserCase0Person = GetSelfResponsePerson;
-
 export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The ID of the user. */
   id: string;
@@ -46,88 +44,34 @@ export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The person info of the user. */
   person: GetSelfResponsePerson;
 }
-export const BotInfoResponseOwnerCase0UserCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.String,
-    person: GetSelfResponsePerson,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0UserCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0UserCase0>;
-
 export interface PartialUserObjectResponse {
   id: string;
   /** Always `user` */
   object: string;
 }
-export const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-  }),
-).annotate({
-  identifier: "PartialUserObjectResponse",
-}) as any as S.Schema<PartialUserObjectResponse>;
-
 /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
 export type BotInfoResponseOwnerCase0User =
   | BotInfoResponseOwnerCase0UserCase0
   | PartialUserObjectResponse;
-export const BotInfoResponseOwnerCase0User =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwnerCase0User>;
-
 export interface BotInfoResponseOwnerCase0 {
   /** Always `user` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
   user: BotInfoResponseOwnerCase0User;
 }
-export const BotInfoResponseOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: BotInfoResponseOwnerCase0User,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0>;
-
 export interface BotInfoResponseOwnerCase1 {
   /** Always `workspace` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `workspace`. This means the bot is for an internal integration. */
   workspace: boolean;
 }
-export const BotInfoResponseOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase1",
-}) as any as S.Schema<BotInfoResponseOwnerCase1>;
-
 /** Details about the owner of the bot. */
 export type BotInfoResponseOwner = BotInfoResponseOwnerCase0 | BotInfoResponseOwnerCase1;
-export const BotInfoResponseOwner =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwner>;
-
 /** Limits and restrictions that apply to the bot's workspace */
 export interface BotInfoResponseWorkspaceLimits {
   /** The maximum allowable size of a file upload, in bytes */
   max_file_upload_size_in_bytes: number;
 }
-export const BotInfoResponseWorkspaceLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_file_upload_size_in_bytes: S.Number,
-  }),
-).annotate({
-  identifier: "BotInfoResponseWorkspaceLimits",
-}) as any as S.Schema<BotInfoResponseWorkspaceLimits>;
-
 export interface BotInfoResponse {
   /** Details about the owner of the bot. */
   owner: BotInfoResponseOwner;
@@ -138,18 +82,9 @@ export interface BotInfoResponse {
   /** The name of the bot's workspace. */
   workspace_name: string | null;
 }
-export const BotInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: BotInfoResponseOwner,
-    workspace_id: S.String,
-    workspace_limits: BotInfoResponseWorkspaceLimits,
-    workspace_name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "BotInfoResponse" }) as any as S.Schema<BotInfoResponse>;
-
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type GetSelfResponseBot = unknown | BotInfoResponse;
-export const GetSelfResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<GetSelfResponseBot>;
+const GetSelfResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<GetSelfResponseBot>;
 
 export interface GetSelfResponse {
   /** The ID of the user. */
@@ -167,7 +102,7 @@ export interface GetSelfResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: GetSelfResponseBot;
 }
-export const GetSelfResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSelfResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: S.String,
@@ -182,7 +117,7 @@ export const GetSelfResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserRequest {
   user_id: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/users/{user_id}", code: 200 })),
@@ -190,11 +125,9 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about the person, when the `type` of the user is `person`. */
 export type GetUserResponsePerson = GetSelfResponsePerson;
-export const GetUserResponsePerson = GetSelfResponsePerson;
-
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type GetUserResponseBot = unknown | BotInfoResponse;
-export const GetUserResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<GetUserResponseBot>;
+const GetUserResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<GetUserResponseBot>;
 
 export interface GetUserResponse {
   /** The ID of the user. */
@@ -212,7 +145,7 @@ export interface GetUserResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: GetUserResponseBot;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: S.String,
@@ -228,7 +161,7 @@ export interface ListUsersRequest {
   start_cursor?: string;
   page_size?: number;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_cursor: S.optional(S.String.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -237,12 +170,9 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about the person, when the `type` of the user is `person`. */
 export type UserObjectResponsePerson = GetSelfResponsePerson;
-export const UserObjectResponsePerson = GetSelfResponsePerson;
-
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type UserObjectResponseBot = unknown | BotInfoResponse;
-export const UserObjectResponseBot =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserObjectResponseBot>;
+const UserObjectResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<UserObjectResponseBot>;
 
 export interface UserObjectResponse {
   /** The ID of the user. */
@@ -260,7 +190,7 @@ export interface UserObjectResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: UserObjectResponseBot;
 }
-export const UserObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const UserObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: S.String,
@@ -273,7 +203,7 @@ export const UserObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserObjectResponse" }) as any as S.Schema<UserObjectResponse>;
 
 export type ListUsersResponseResultsList = Array<UserObjectResponse>;
-export const ListUsersResponseResultsList = /*@__PURE__*/ S.Array(
+const ListUsersResponseResultsList = /*@__PURE__*/ S.Array(
   UserObjectResponse,
 ) as any as S.Schema<ListUsersResponseResultsList>;
 
@@ -285,7 +215,7 @@ export interface ListUsersResponse {
   has_more: boolean;
   results: ListUsersResponseResultsList;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     user: S.Unknown,

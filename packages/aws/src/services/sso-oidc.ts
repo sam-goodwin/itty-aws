@@ -234,7 +234,7 @@ export type AuthCode = string;
 export type RefreshToken = string | redacted.Redacted<string>;
 export type Scope = string;
 export type Scopes = string[];
-export const Scopes = /*@__PURE__*/ S.Array(S.String);
+const Scopes = /*@__PURE__*/ S.Array(S.String);
 export type URI = string;
 export type CodeVerifier = string | redacted.Redacted<string>;
 export interface CreateTokenRequest {
@@ -248,7 +248,7 @@ export interface CreateTokenRequest {
   redirectUri?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     clientSecret: SensitiveString,
@@ -272,7 +272,7 @@ export interface CreateTokenResponse {
   refreshToken?: string | redacted.Redacted<string>;
   idToken?: string | redacted.Redacted<string>;
 }
-export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(SensitiveString),
     tokenType: S.optional(S.String),
@@ -297,7 +297,7 @@ export interface CreateTokenWithIAMRequest {
   requestedTokenType?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-export const CreateTokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     grantType: S.String,
@@ -318,7 +318,7 @@ export type IdentityContext = string;
 export interface AwsAdditionalDetails {
   identityContext?: string;
 }
-export const AwsAdditionalDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsAdditionalDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identityContext: S.optional(S.String) }),
 ).annotate({ identifier: "AwsAdditionalDetails" }) as any as S.Schema<AwsAdditionalDetails>;
 export interface CreateTokenWithIAMResponse {
@@ -331,7 +331,7 @@ export interface CreateTokenWithIAMResponse {
   scope?: string[];
   awsAdditionalDetails?: AwsAdditionalDetails;
 }
-export const CreateTokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(SensitiveString),
     tokenType: S.optional(S.String),
@@ -348,9 +348,9 @@ export const CreateTokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
 export type ClientName = string;
 export type ClientType = string;
 export type RedirectUris = string[];
-export const RedirectUris = Scopes as any as S.Schema<RedirectUris>;
+const RedirectUris = Scopes as any as S.Schema<RedirectUris>;
 export type GrantTypes = string[];
-export const GrantTypes = Scopes as any as S.Schema<GrantTypes>;
+const GrantTypes = Scopes as any as S.Schema<GrantTypes>;
 export type ArnType = string;
 export interface RegisterClientRequest {
   clientName: string;
@@ -361,7 +361,7 @@ export interface RegisterClientRequest {
   issuerUrl?: string;
   entitledApplicationArn?: string;
 }
-export const RegisterClientRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientName: S.String,
     clientType: S.String,
@@ -381,7 +381,7 @@ export interface RegisterClientResponse {
   authorizationEndpoint?: string;
   tokenEndpoint?: string;
 }
-export const RegisterClientResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterClientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecret: S.optional(SensitiveString),
@@ -396,7 +396,7 @@ export interface StartDeviceAuthorizationRequest {
   clientSecret: string | redacted.Redacted<string>;
   startUrl: string;
 }
-export const StartDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const StartDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clientId: S.String, clientSecret: SensitiveString, startUrl: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/device_authorization" }), svc, auth, proto, ver, rules),
   ),
@@ -413,7 +413,7 @@ export interface StartDeviceAuthorizationResponse {
   expiresIn?: number;
   interval?: number;
 }
-export const StartDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
+const StartDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceCode: S.optional(S.String),
     userCode: S.optional(S.String),
@@ -426,7 +426,7 @@ export const StartDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartDeviceAuthorizationResponse",
 }) as any as S.Schema<StartDeviceAuthorizationResponse>;
 export type AccessDeniedExceptionReason = "KMS_AccessDeniedException" | (string & {});
-export const AccessDeniedExceptionReason = S.String;
+const AccessDeniedExceptionReason = S.String;
 
 export type ErrorDescription = string;
 export type InvalidRequestExceptionReason =
@@ -435,7 +435,7 @@ export type InvalidRequestExceptionReason =
   | "KMS_InvalidStateException"
   | "KMS_DisabledException"
   | (string & {});
-export const InvalidRequestExceptionReason = S.String;
+const InvalidRequestExceptionReason = S.String;
 
 export type Location = string;
 export type Region = string;

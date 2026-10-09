@@ -62,14 +62,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A representation of filter path. */
 export interface PathFilter {
   /** An array of RegEx values by which to filter. */
   regexes?: StringList;
 }
-export const PathFilter = /*@__PURE__*/ S.suspend(() =>
+const PathFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regexes: S.optional(StringList),
   }),
@@ -85,7 +85,7 @@ export interface CloneVersionRequest {
   /** If true, the call to `CloneVersion` immediately finalizes the version after cloning is complete. If false, the cloned version will have a status of `CREATED`. Use [`UpdateVersion`](patch) to set the status of the version to `FINALIZED`. */
   finalize?: boolean;
 }
-export const CloneVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceVersion: S.optional(S.String),
     include: S.optional(PathFilter),
@@ -100,7 +100,7 @@ export interface CloneProjectsSitesVersionsRequest {
   /** Request body */
   body?: CloneVersionRequest;
 }
-export const CloneProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CloneVersionRequest.pipe(T.HttpBody())),
@@ -116,15 +116,10 @@ export const CloneProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloneProjectsSitesVersionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -135,7 +130,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -156,7 +151,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -172,7 +167,7 @@ export interface CloneSitesVersionsRequest {
   /** Request body */
   body?: CloneVersionRequest;
 }
-export const CloneSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CloneVersionRequest.pipe(T.HttpBody())),
@@ -188,10 +183,10 @@ export const CloneSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloneSitesVersionsRequest>;
 
 export type SiteTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT_SITE" | "USER_SITE";
-export const SiteTypeEnum = S.String;
+const SiteTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A `Site` represents a Firebase Hosting site. */
 export interface Site {
@@ -206,7 +201,7 @@ export interface Site {
   /** Optional. User-specified labels for the Hosting site. */
   labels?: StringMap;
 }
-export const Site = /*@__PURE__*/ S.suspend(() =>
+const Site = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(SiteTypeEnum),
     name: S.optional(S.String),
@@ -226,7 +221,7 @@ export interface CreateProjectsSitesRequest {
   /** Request body */
   body?: Site;
 }
-export const CreateProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -250,7 +245,7 @@ export interface ActingUser {
   /** The email address of the user when the user performed the action. */
   email?: string;
 }
-export const ActingUser = /*@__PURE__*/ S.suspend(() =>
+const ActingUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUrl: S.optional(S.String),
     email: S.optional(S.String),
@@ -261,14 +256,14 @@ export type ServingConfigTrailingSlashBehaviorEnum =
   | "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"
   | "ADD"
   | "REMOVE";
-export const ServingConfigTrailingSlashBehaviorEnum = S.String;
+const ServingConfigTrailingSlashBehaviorEnum = S.String;
 
 /** If provided, i18n rewrites are enabled. */
 export interface I18nConfig {
   /** Required. The user-supplied path where country and language specific content will be looked for within the public directory. */
   root?: string;
 }
-export const I18nConfig = /*@__PURE__*/ S.suspend(() =>
+const I18nConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root: S.optional(S.String),
   }),
@@ -285,7 +280,7 @@ export interface Redirect {
   /** Required. The status HTTP code to return in the response. It must be a valid 3xx status code. */
   statusCode?: number;
 }
-export const Redirect = /*@__PURE__*/ S.suspend(() =>
+const Redirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regex: S.optional(S.String),
     location: S.optional(S.String),
@@ -295,7 +290,7 @@ export const Redirect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Redirect" }) as any as S.Schema<Redirect>;
 
 export type RedirectList = Array<Redirect>;
-export const RedirectList = /*@__PURE__*/ S.Array(Redirect) as any as S.Schema<RedirectList>;
+const RedirectList = /*@__PURE__*/ S.Array(Redirect) as any as S.Schema<RedirectList>;
 
 /** A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers. */
 export interface Header {
@@ -306,7 +301,7 @@ export interface Header {
   /** The user-supplied RE2 regular expression to match against the request URL path. */
   regex?: string;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
+const Header = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(StringMap),
     glob: S.optional(S.String),
@@ -315,7 +310,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = Array<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
+const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
 
 /** A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error). */
 export interface CloudRunRewrite {
@@ -326,7 +321,7 @@ export interface CloudRunRewrite {
   /** Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI */
   tag?: string;
 }
-export const CloudRunRewrite = /*@__PURE__*/ S.suspend(() =>
+const CloudRunRewrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     serviceId: S.optional(S.String),
@@ -351,7 +346,7 @@ export interface Rewrite {
   /** The request will be forwarded to Firebase Dynamic Links. */
   dynamicLinks?: boolean;
 }
-export const Rewrite = /*@__PURE__*/ S.suspend(() =>
+const Rewrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     glob: S.optional(S.String),
     function: S.optional(S.String),
@@ -364,10 +359,10 @@ export const Rewrite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rewrite" }) as any as S.Schema<Rewrite>;
 
 export type RewriteList = Array<Rewrite>;
-export const RewriteList = /*@__PURE__*/ S.Array(Rewrite) as any as S.Schema<RewriteList>;
+const RewriteList = /*@__PURE__*/ S.Array(Rewrite) as any as S.Schema<RewriteList>;
 
 export type ServingConfigAppAssociationEnum = "AUTO" | "NONE";
-export const ServingConfigAppAssociationEnum = S.String;
+const ServingConfigAppAssociationEnum = S.String;
 
 /** The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order). */
 export interface ServingConfig {
@@ -386,7 +381,7 @@ export interface ServingConfig {
   /** Defines whether to drop the file extension from uploaded files. */
   cleanUrls?: boolean;
 }
-export const ServingConfig = /*@__PURE__*/ S.suspend(() =>
+const ServingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trailingSlashBehavior: S.optional(ServingConfigTrailingSlashBehaviorEnum),
     i18n: S.optional(I18nConfig),
@@ -406,7 +401,7 @@ export type VersionStatusEnum =
   | "ABANDONED"
   | "EXPIRED"
   | "CLONING";
-export const VersionStatusEnum = S.String;
+const VersionStatusEnum = S.String;
 
 /** A `Version` is a configuration and a collection of static files which determine how a site is displayed. */
 export interface Version {
@@ -435,7 +430,7 @@ export interface Version {
   /** Output only. Identifies the user who created the version. */
   createUser?: ActingUser;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalizeUser: S.optional(ActingUser),
     createTime: S.optional(S.String),
@@ -453,7 +448,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export type ReleaseTypeEnum = "TYPE_UNSPECIFIED" | "DEPLOY" | "ROLLBACK" | "SITE_DISABLE";
-export const ReleaseTypeEnum = S.String;
+const ReleaseTypeEnum = S.String;
 
 /** A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time. */
 export interface Release {
@@ -470,7 +465,7 @@ export interface Release {
   /** Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create). */
   name?: string;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseTime: S.optional(S.String),
     version: S.optional(Version),
@@ -502,7 +497,7 @@ export interface Channel {
   /** Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request. */
   ttl?: string;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -524,7 +519,7 @@ export interface CreateProjectsSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const CreateProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -548,7 +543,7 @@ export interface CreateProjectsSitesChannelsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     versionName: S.optional(S.String.pipe(T.Query())),
@@ -565,10 +560,10 @@ export const CreateProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>;
 
 export type DnsRecordTypeEnum = "TYPE_UNSPECIFIED" | "A" | "CNAME" | "TXT" | "AAAA" | "CAA";
-export const DnsRecordTypeEnum = S.String;
+const DnsRecordTypeEnum = S.String;
 
 export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
-export const DnsRecordRequiredActionEnum = S.String;
+const DnsRecordRequiredActionEnum = S.String;
 
 /** DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files). */
 export interface DnsRecord {
@@ -581,7 +576,7 @@ export interface DnsRecord {
   /** Output only. The domain name the record pertains to, e.g. `foo.bar.com.`. */
   domainName?: string;
 }
-export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
+const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rdata: S.optional(S.String),
     type: S.optional(DnsRecordTypeEnum),
@@ -591,7 +586,7 @@ export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
 export type DnsRecordList = Array<DnsRecord>;
-export const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord) as any as S.Schema<DnsRecordList>;
+const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord) as any as S.Schema<DnsRecordList>;
 
 /** A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting. */
 export interface DnsRecordSet {
@@ -602,7 +597,7 @@ export interface DnsRecordSet {
   /** Output only. Records on the domain. */
   records?: DnsRecordList;
 }
-export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
+const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     checkError: S.optional(Status),
@@ -611,9 +606,7 @@ export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
 export type DnsRecordSetList = Array<DnsRecordSet>;
-export const DnsRecordSetList = /*@__PURE__*/ S.Array(
-  DnsRecordSet,
-) as any as S.Schema<DnsRecordSetList>;
+const DnsRecordSetList = /*@__PURE__*/ S.Array(DnsRecordSet) as any as S.Schema<DnsRecordSetList>;
 
 /** A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active. */
 export interface DnsUpdates {
@@ -624,7 +617,7 @@ export interface DnsUpdates {
   /** The set of DNS records Hosting needs to serve secure content on the domain. */
   desired?: DnsRecordSetList;
 }
-export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
+const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discovered: S.optional(DnsRecordSetList),
     checkTime: S.optional(S.String),
@@ -633,7 +626,7 @@ export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsUpdates" }) as any as S.Schema<DnsUpdates>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 export type CustomDomainHostStateEnum =
   | "HOST_STATE_UNSPECIFIED"
@@ -642,7 +635,7 @@ export type CustomDomainHostStateEnum =
   | "HOST_MISMATCH"
   | "HOST_CONFLICT"
   | "HOST_ACTIVE";
-export const CustomDomainHostStateEnum = S.String;
+const CustomDomainHostStateEnum = S.String;
 
 export type CustomDomainOwnershipStateEnum =
   | "OWNERSHIP_STATE_UNSPECIFIED"
@@ -652,7 +645,7 @@ export type CustomDomainOwnershipStateEnum =
   | "OWNERSHIP_CONFLICT"
   | "OWNERSHIP_PENDING"
   | "OWNERSHIP_ACTIVE";
-export const CustomDomainOwnershipStateEnum = S.String;
+const CustomDomainOwnershipStateEnum = S.String;
 
 export type CustomDomainCertPreferenceEnum =
   | "TYPE_UNSPECIFIED"
@@ -660,7 +653,7 @@ export type CustomDomainCertPreferenceEnum =
   | "GROUPED"
   | "PROJECT_GROUPED"
   | "DEDICATED";
-export const CustomDomainCertPreferenceEnum = S.String;
+const CustomDomainCertPreferenceEnum = S.String;
 
 export type CertificateStateEnum =
   | "CERT_STATE_UNSPECIFIED"
@@ -670,7 +663,7 @@ export type CertificateStateEnum =
   | "CERT_ACTIVE"
   | "CERT_EXPIRING_SOON"
   | "CERT_EXPIRED";
-export const CertificateStateEnum = S.String;
+const CertificateStateEnum = S.String;
 
 /** A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain. */
 export interface HttpUpdate {
@@ -685,7 +678,7 @@ export interface HttpUpdate {
   /** Output only. Whether Hosting was able to find the required file contents on the specified path during its last check. */
   discovered?: string;
 }
-export const HttpUpdate = /*@__PURE__*/ S.suspend(() =>
+const HttpUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     desired: S.optional(S.String),
@@ -702,7 +695,7 @@ export interface CertVerification {
   /** Output only. A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name. */
   http?: HttpUpdate;
 }
-export const CertVerification = /*@__PURE__*/ S.suspend(() =>
+const CertVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns: S.optional(DnsUpdates),
     http: S.optional(HttpUpdate),
@@ -715,7 +708,7 @@ export type CertificateTypeEnum =
   | "GROUPED"
   | "PROJECT_GROUPED"
   | "DEDICATED";
-export const CertificateTypeEnum = S.String;
+const CertificateTypeEnum = S.String;
 
 /** An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one. */
 export interface Certificate {
@@ -732,7 +725,7 @@ export interface Certificate {
   /** Output only. The certificate's type. */
   type?: CertificateTypeEnum | (string & {});
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(StatusList),
     expireTime: S.optional(S.String),
@@ -778,7 +771,7 @@ export interface CustomDomain {
   /** Output only. The custom domain's create time. */
   createTime?: string;
 }
-export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
+const CustomDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredDnsUpdates: S.optional(DnsUpdates),
     issues: S.optional(StatusList),
@@ -809,7 +802,7 @@ export interface CreateProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: CustomDomain;
 }
-export const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomainId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -832,7 +825,7 @@ export type DomainStatusEnum =
   | "DOMAIN_ACTIVE"
   | "DOMAIN_VERIFICATION_REQUIRED"
   | "DOMAIN_VERIFICATION_LOST";
-export const DomainStatusEnum = S.String;
+const DomainStatusEnum = S.String;
 
 /** Represents an HTTP certificate challenge. */
 export interface CertHttpChallenge {
@@ -841,7 +834,7 @@ export interface CertHttpChallenge {
   /** The token to serve at the specified URL path to satisfy the certificate challenge. */
   token?: string;
 }
-export const CertHttpChallenge = /*@__PURE__*/ S.suspend(() =>
+const CertHttpChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     token: S.optional(S.String),
@@ -856,7 +849,7 @@ export type DomainProvisioningCertStatusEnum =
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
   | "CERT_ERROR";
-export const DomainProvisioningCertStatusEnum = S.String;
+const DomainProvisioningCertStatusEnum = S.String;
 
 /** Represents a DNS certificate challenge. */
 export interface CertDnsChallenge {
@@ -865,7 +858,7 @@ export interface CertDnsChallenge {
   /** The value that must be present as a TXT record on the domain name to satisfy the challenge. */
   token?: string;
 }
-export const CertDnsChallenge = /*@__PURE__*/ S.suspend(() =>
+const CertDnsChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     token: S.optional(S.String),
@@ -879,7 +872,7 @@ export type DomainProvisioningDnsStatusEnum =
   | "DNS_PARTIAL_MATCH"
   | "DNS_MATCH"
   | "DNS_EXTRANEOUS_MATCH";
-export const DomainProvisioningDnsStatusEnum = S.String;
+const DomainProvisioningDnsStatusEnum = S.String;
 
 /** The current certificate provisioning status information for a domain. */
 export interface DomainProvisioning {
@@ -900,7 +893,7 @@ export interface DomainProvisioning {
   /** The TXT records (for the certificate challenge) that were found at the last DNS fetch. */
   certChallengeDiscoveredTxt?: StringList;
 }
-export const DomainProvisioning = /*@__PURE__*/ S.suspend(() =>
+const DomainProvisioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsFetchTime: S.optional(S.String),
     certChallengeHttp: S.optional(CertHttpChallenge),
@@ -914,7 +907,7 @@ export const DomainProvisioning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainProvisioning" }) as any as S.Schema<DomainProvisioning>;
 
 export type DomainRedirectTypeEnum = "REDIRECT_TYPE_UNSPECIFIED" | "MOVED_PERMANENTLY";
-export const DomainRedirectTypeEnum = S.String;
+const DomainRedirectTypeEnum = S.String;
 
 /** Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration. */
 export interface DomainRedirect {
@@ -923,7 +916,7 @@ export interface DomainRedirect {
   /** Required. The redirect status code. */
   type?: DomainRedirectTypeEnum | (string & {});
 }
-export const DomainRedirect = /*@__PURE__*/ S.suspend(() =>
+const DomainRedirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     type: S.optional(DomainRedirectTypeEnum),
@@ -945,7 +938,7 @@ export interface Domain {
   /** Required. The domain name of the association. */
   domainName?: string;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(DomainStatusEnum),
     site: S.optional(S.String),
@@ -962,7 +955,7 @@ export interface CreateProjectsSitesDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const CreateProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Domain.pipe(T.HttpBody())),
@@ -985,7 +978,7 @@ export interface CreateProjectsSitesReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     versionName: S.optional(S.String.pipe(T.Query())),
@@ -1011,7 +1004,7 @@ export interface CreateProjectsSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const CreateProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeBytes: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1036,7 +1029,7 @@ export interface CreateSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const CreateSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     channelId: S.optional(S.String.pipe(T.Query())),
@@ -1060,7 +1053,7 @@ export interface CreateSitesChannelsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionName: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1082,7 +1075,7 @@ export interface CreateSitesDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const CreateSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Domain.pipe(T.HttpBody())),
@@ -1105,7 +1098,7 @@ export interface CreateSitesReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     versionName: S.optional(S.String.pipe(T.Query())),
@@ -1131,7 +1124,7 @@ export interface CreateSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const CreateSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1152,7 +1145,7 @@ export interface DeleteProjectsSitesRequest {
   /** Required. The fully-qualified resource name for the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-export const DeleteProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1168,7 +1161,7 @@ export const DeleteProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -1176,7 +1169,7 @@ export interface DeleteProjectsSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
-export const DeleteProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1200,7 +1193,7 @@ export interface DeleteProjectsSitesCustomDomainsRequest {
   /** A tag that represents the state of the `CustomDomain` as you know it. If present, the supplied tag must match the current value on your `CustomDomain`, or the request fails. */
   etag?: string;
 }
-export const DeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1221,7 +1214,7 @@ export interface DeleteProjectsSitesDomainsRequest {
   /** Required. The name of the domain association to delete. */
   name: string;
 }
-export const DeleteProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1239,7 +1232,7 @@ export interface DeleteProjectsSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
-export const DeleteProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1257,7 +1250,7 @@ export interface DeleteSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
-export const DeleteSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1275,7 +1268,7 @@ export interface DeleteSitesDomainsRequest {
   /** Required. The name of the domain association to delete. */
   name: string;
 }
-export const DeleteSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1293,7 +1286,7 @@ export interface DeleteSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
-export const DeleteSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1311,7 +1304,7 @@ export interface GetConfigProjectsSitesRequest {
   /** Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config */
   name: string;
 }
-export const GetConfigProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1332,7 +1325,7 @@ export interface SiteConfig {
   /** Whether or not web requests made by site visitors are logged via Cloud Logging. */
   cloudLoggingEnabled?: boolean;
 }
-export const SiteConfig = /*@__PURE__*/ S.suspend(() =>
+const SiteConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxVersions: S.optional(S.String),
     cloudLoggingEnabled: S.optional(S.Boolean),
@@ -1343,7 +1336,7 @@ export interface GetConfigSitesRequest {
   /** Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config */
   name: string;
 }
-export const GetConfigSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1359,7 +1352,7 @@ export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1377,7 +1370,7 @@ export interface GetProjectsSitesRequest {
   /** Required. The fully-qualified resource name for the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. Since a SITE_ID is a globally unique identifier, you can also use the unique sub-collection resource access pattern, in the format: projects/-/sites/SITE_ID */
   name: string;
 }
-export const GetProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1393,7 +1386,7 @@ export interface GetProjectsSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
-export const GetProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1411,7 +1404,7 @@ export interface GetProjectsSitesChannelsReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
-export const GetProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1429,7 +1422,7 @@ export interface GetProjectsSitesCustomDomainsRequest {
   /** Required. The name of the `CustomDomain` to get. */
   name: string;
 }
-export const GetProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1447,7 +1440,7 @@ export interface GetProjectsSitesCustomDomainsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1465,7 +1458,7 @@ export interface GetProjectsSitesDomainsRequest {
   /** Required. The name of the domain configuration to get. */
   name: string;
 }
-export const GetProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1483,7 +1476,7 @@ export interface GetProjectsSitesReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
-export const GetProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1501,7 +1494,7 @@ export interface GetProjectsSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
-export const GetProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1519,7 +1512,7 @@ export interface GetSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
-export const GetSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1535,7 +1528,7 @@ export interface GetSitesChannelsReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
-export const GetSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1553,7 +1546,7 @@ export interface GetSitesDomainsRequest {
   /** Required. The name of the domain configuration to get. */
   name: string;
 }
-export const GetSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1569,7 +1562,7 @@ export interface GetSitesReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
-export const GetSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1585,7 +1578,7 @@ export interface GetSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
-export const GetSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1605,7 +1598,7 @@ export interface ListProjectsSitesRequest {
   /** Optional. A token from a previous call to `ListSites` that tells the server where to resume listing. */
   pageToken?: string;
 }
-export const ListProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1620,7 +1613,7 @@ export const ListProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsSitesRequest" }) as any as S.Schema<ListProjectsSitesRequest>;
 
 export type SiteList = Array<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
+const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 export interface ListSitesResponse {
   /** A list of Site objects associated with the specified Firebase project. */
@@ -1628,7 +1621,7 @@ export interface ListSitesResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListSites`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
-export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sites: S.optional(SiteList),
     nextPageToken: S.optional(S.String),
@@ -1643,7 +1636,7 @@ export interface ListProjectsSitesChannelsRequest {
   /** A token from a previous call to `ListChannels` that tells the server where to resume listing. */
   pageToken?: string;
 }
-export const ListProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1660,7 +1653,7 @@ export const ListProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsSitesChannelsRequest>;
 
 export type ChannelList = Array<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
+const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
 
 export interface ListChannelsResponse {
   /** The list of channels. */
@@ -1668,7 +1661,7 @@ export interface ListChannelsResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListChannels`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
-export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(ChannelList),
     nextPageToken: S.optional(S.String),
@@ -1683,7 +1676,7 @@ export interface ListProjectsSitesChannelsReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
   pageSize?: number;
 }
-export const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1700,7 +1693,7 @@ export const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>;
 
 export type ReleaseList = Array<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
 
 export interface ListReleasesResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListReleases`. Page tokens are short-lived and should not be stored. */
@@ -1708,7 +1701,7 @@ export interface ListReleasesResponse {
   /** The list of hashes of files that still need to be uploaded, if any exist. */
   releases?: ReleaseList;
 }
-export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     releases: S.optional(ReleaseList),
@@ -1725,7 +1718,7 @@ export interface ListProjectsSitesCustomDomainsRequest {
   /** The max number of `CustomDomain` entities to return in a request. Defaults to 10. */
   pageSize?: number;
 }
-export const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1743,9 +1736,7 @@ export const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>;
 
 export type CustomDomainList = Array<CustomDomain>;
-export const CustomDomainList = /*@__PURE__*/ S.Array(
-  CustomDomain,
-) as any as S.Schema<CustomDomainList>;
+const CustomDomainList = /*@__PURE__*/ S.Array(CustomDomain) as any as S.Schema<CustomDomainList>;
 
 /** The response from `ListCustomDomains`. */
 export interface ListCustomDomainsResponse {
@@ -1754,7 +1745,7 @@ export interface ListCustomDomainsResponse {
   /** A list of `CustomDomain` entities associated with the specified Firebase `Site`. */
   customDomains?: CustomDomainList;
 }
-export const ListCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     customDomains: S.optional(CustomDomainList),
@@ -1775,7 +1766,7 @@ export interface ListProjectsSitesCustomDomainsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1794,7 +1785,7 @@ export const ListProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1805,7 +1796,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1821,7 +1812,7 @@ export interface ListProjectsSitesDomainsRequest {
   /** The page size to return. Defaults to 50. */
   pageSize?: number;
 }
-export const ListProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1838,7 +1829,7 @@ export const ListProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsSitesDomainsRequest>;
 
 export type DomainList = Array<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** The response to listing Domains. */
 export interface ListDomainsResponse {
@@ -1847,7 +1838,7 @@ export interface ListDomainsResponse {
   /** The pagination token, if more results exist. */
   nextPageToken?: string;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(DomainList),
     nextPageToken: S.optional(S.String),
@@ -1862,7 +1853,7 @@ export interface ListProjectsSitesReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
   pageSize?: number;
 }
-export const ListProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1888,7 +1879,7 @@ export interface ListProjectsSitesVersionsRequest {
   /** A token from a previous call to `ListVersions` that tells the server where to resume listing. */
   pageToken?: string;
 }
-export const ListProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1906,7 +1897,7 @@ export const ListProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsSitesVersionsRequest>;
 
 export type VersionList = Array<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
+const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 export interface ListVersionsResponse {
   /** The list of versions, if any exist. */
@@ -1914,7 +1905,7 @@ export interface ListVersionsResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListVersions`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: S.optional(VersionList),
     nextPageToken: S.optional(S.String),
@@ -1922,7 +1913,7 @@ export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
 
 export type ListProjectsSitesVersionsFilesStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
-export const ListProjectsSitesVersionsFilesStatusEnum = S.String;
+const ListProjectsSitesVersionsFilesStatusEnum = S.String;
 
 export interface ListProjectsSitesVersionsFilesRequest {
   /** A token from a previous call to `ListVersionFiles` that tells the server where to resume listing. */
@@ -1934,7 +1925,7 @@ export interface ListProjectsSitesVersionsFilesRequest {
   /** The maximum number of version files to return. The service may return a lower number if fewer version files exist than this maximum number. If unspecified, defaults to 1000. */
   pageSize?: number;
 }
-export const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1952,7 +1943,7 @@ export const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>;
 
 export type VersionFileStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
-export const VersionFileStatusEnum = S.String;
+const VersionFileStatusEnum = S.String;
 
 /** A static content file that is part of a version. */
 export interface VersionFile {
@@ -1963,7 +1954,7 @@ export interface VersionFile {
   /** Output only. The current status of a particular file in the specified version. The value will be either `pending upload` or `uploaded`. */
   status?: VersionFileStatusEnum;
 }
-export const VersionFile = /*@__PURE__*/ S.suspend(() =>
+const VersionFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     hash: S.optional(S.String),
@@ -1972,9 +1963,7 @@ export const VersionFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionFile" }) as any as S.Schema<VersionFile>;
 
 export type VersionFileList = Array<VersionFile>;
-export const VersionFileList = /*@__PURE__*/ S.Array(
-  VersionFile,
-) as any as S.Schema<VersionFileList>;
+const VersionFileList = /*@__PURE__*/ S.Array(VersionFile) as any as S.Schema<VersionFileList>;
 
 export interface ListVersionFilesResponse {
   /** The list of paths to the hashes of the files in the specified version. */
@@ -1982,7 +1971,7 @@ export interface ListVersionFilesResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListVersionFiles`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
-export const ListVersionFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: S.optional(VersionFileList),
     nextPageToken: S.optional(S.String),
@@ -1997,7 +1986,7 @@ export interface ListSitesChannelsRequest {
   /** The maximum number of channels to return. The service may return a lower number if fewer channels exist than this maximum number. If unspecified, defaults to 10. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2019,7 +2008,7 @@ export interface ListSitesChannelsReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
 }
-export const ListSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2043,7 +2032,7 @@ export interface ListSitesDomainsRequest {
   /** The page size to return. Defaults to 50. */
   pageSize?: number;
 }
-export const ListSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2065,7 +2054,7 @@ export interface ListSitesReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
 }
-export const ListSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2089,7 +2078,7 @@ export interface ListSitesVersionsRequest {
   /** Required. The site or channel for which to list versions, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
 }
-export const ListSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2105,7 +2094,7 @@ export const ListSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSitesVersionsRequest" }) as any as S.Schema<ListSitesVersionsRequest>;
 
 export type ListSitesVersionsFilesStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
-export const ListSitesVersionsFilesStatusEnum = S.String;
+const ListSitesVersionsFilesStatusEnum = S.String;
 
 export interface ListSitesVersionsFilesRequest {
   /** The maximum number of version files to return. The service may return a lower number if fewer version files exist than this maximum number. If unspecified, defaults to 1000. */
@@ -2117,7 +2106,7 @@ export interface ListSitesVersionsFilesRequest {
   /** The type of files that should be listed for the specified version. */
   status?: ListSitesVersionsFilesStatusEnum | (string & {});
 }
-export const ListSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2142,7 +2131,7 @@ export interface PatchProjectsSitesRequest {
   /** Request body */
   body?: Site;
 }
-export const PatchProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2166,7 +2155,7 @@ export interface PatchProjectsSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const PatchProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2194,7 +2183,7 @@ export interface PatchProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: CustomDomain;
 }
-export const PatchProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2220,7 +2209,7 @@ export interface PatchProjectsSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const PatchProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2244,7 +2233,7 @@ export interface PatchSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const PatchSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2268,7 +2257,7 @@ export interface PatchSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const PatchSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2288,7 +2277,7 @@ export interface PopulateVersionFilesRequest {
   /** A set of file paths to the hashes corresponding to assets that should be added to the version. A file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then taking the SHA256 hash of the newly compressed file. */
   files?: StringMap;
 }
-export const PopulateVersionFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const PopulateVersionFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: S.optional(StringMap),
   }),
@@ -2302,7 +2291,7 @@ export interface PopulateFilesProjectsSitesVersionsRequest {
   /** Request body */
   body?: PopulateVersionFilesRequest;
 }
-export const PopulateFilesProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PopulateFilesProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
@@ -2323,7 +2312,7 @@ export interface PopulateVersionFilesResponse {
   /** The content hashes of the specified files that need to be uploaded to the specified URL. */
   uploadRequiredHashes?: StringList;
 }
-export const PopulateVersionFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const PopulateVersionFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uploadUrl: S.optional(S.String),
     uploadRequiredHashes: S.optional(StringList),
@@ -2338,7 +2327,7 @@ export interface PopulateFilesSitesVersionsRequest {
   /** Request body */
   body?: PopulateVersionFilesRequest;
 }
-export const PopulateFilesSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PopulateFilesSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
@@ -2360,7 +2349,7 @@ export interface UndeleteCustomDomainRequest {
   /** A tag that represents the state of the `CustomDomain` as you know it. If present, the supplied tag must match the current value on your `CustomDomain`, or the request fails. */
   etag?: string;
 }
-export const UndeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     etag: S.optional(S.String),
@@ -2375,7 +2364,7 @@ export interface UndeleteProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: UndeleteCustomDomainRequest;
 }
-export const UndeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteCustomDomainRequest.pipe(T.HttpBody())),
@@ -2398,7 +2387,7 @@ export interface UpdateConfigProjectsSitesRequest {
   /** Request body */
   body?: SiteConfig;
 }
-export const UpdateConfigProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2422,7 +2411,7 @@ export interface UpdateConfigSitesRequest {
   /** Request body */
   body?: SiteConfig;
 }
-export const UpdateConfigSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2442,7 +2431,7 @@ export interface UpdateProjectsSitesDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const UpdateProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Domain.pipe(T.HttpBody())),
@@ -2463,7 +2452,7 @@ export interface UpdateSitesDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const UpdateSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Domain.pipe(T.HttpBody())),

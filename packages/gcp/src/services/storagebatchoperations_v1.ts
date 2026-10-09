@@ -66,7 +66,7 @@ export interface CancelJobRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID in case you need to retry your request. Requests with same `request_id` are ignored for at least 60 minutes since the first request. The request ID must be a valid UUID with the exception that zero UUID isn't supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -78,7 +78,7 @@ export interface CancelProjectsLocationsJobsRequest {
   /** Request body */
   body?: CancelJobRequest;
 }
-export const CancelProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelJobRequest.pipe(T.HttpBody())),
@@ -95,13 +95,13 @@ export const CancelProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Message for response to cancel Job. */
 export interface CancelJobResponse {}
-export const CancelJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelJobResponse",
 }) as any as S.Schema<CancelJobResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = CancelJobResponse as any as S.Schema<CancelOperationRequest>;
+const CancelOperationRequest = CancelJobResponse as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -109,7 +109,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -126,13 +126,13 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelJobResponse as any as S.Schema<Empty>;
+const Empty = CancelJobResponse as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ObjectRetentionRetentionModeEnum = "RETENTION_MODE_UNSPECIFIED" | "LOCKED" | "UNLOCKED";
-export const ObjectRetentionRetentionModeEnum = S.String;
+const ObjectRetentionRetentionModeEnum = S.String;
 
 /** Describes options for object retention update. */
 export interface ObjectRetention {
@@ -141,7 +141,7 @@ export interface ObjectRetention {
   /** Required. The object's retention expiration time, during which, the object is protected from being deleted or overwritten. The time must be specified in RFC 3339 format, for example `YYYY-MM-DD'T'HH:MM:SS'Z'` or `YYYY-MM-DD'T'HH:MM:SS.SS'Z'`. To clear an object's retention, both `retentionMode` and `retainUntilTime` must be left unset (omitted). Setting `retentionMode` to `RETENTION_MODE_UNSPECIFIED` is treated as a no-op. Unlike an unset field, it doesn't modify or clear the retention settings. */
   retainUntilTime?: string;
 }
-export const ObjectRetention = /*@__PURE__*/ S.suspend(() =>
+const ObjectRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionMode: S.optional(ObjectRetentionRetentionModeEnum),
     retainUntilTime: S.optional(S.String),
@@ -167,7 +167,7 @@ export interface PutMetadata {
   /** Optional. Updates objects `Content-Type` fixed metadata. Unset values in the request are ignored. To clear the metadata, set an empty value. For details, see [Content-Type](https://cloud.google.com/storage/docs/metadata#content-type). */
   contentType?: string;
 }
-export const PutMetadata = /*@__PURE__*/ S.suspend(() =>
+const PutMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentLanguage: S.optional(S.String),
     customMetadata: S.optional(StringMap),
@@ -187,14 +187,14 @@ export type JobStateEnum =
   | "CANCELED"
   | "FAILED"
   | "QUEUED";
-export const JobStateEnum = S.String;
+const JobStateEnum = S.String;
 
 /** Describes options to delete an object. */
 export interface DeleteObject {
   /** Required. Controls deletion behavior when versioning is enabled for the object's bucket. If true, both live and noncurrent objects will be permanently deleted. Otherwise live objects in versioned buckets will become noncurrent and objects that were already noncurrent will be skipped. This setting doesn't have any impact on the Soft Delete feature. All objects deleted by this service can be be restored for the duration of the Soft Delete retention duration if enabled. If enabled and the manifest doesn't specify an object's generation, a `GetObjectMetadata` call is made to determine the live object generation. */
   permanentObjectDeletionEnabled?: boolean;
 }
-export const DeleteObject = /*@__PURE__*/ S.suspend(() =>
+const DeleteObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permanentObjectDeletionEnabled: S.optional(S.Boolean),
   }),
@@ -206,7 +206,7 @@ export type RewriteObjectStorageClassEnum =
   | "NEARLINE"
   | "COLDLINE"
   | "ARCHIVE";
-export const RewriteObjectStorageClassEnum = S.String;
+const RewriteObjectStorageClassEnum = S.String;
 
 /** Describes options for object rewrite. */
 export interface RewriteObject {
@@ -215,7 +215,7 @@ export interface RewriteObject {
   /** Optional. Resource name of the Cloud KMS key that is used to encrypt the object. The Cloud KMS key must be located in same location as the object. For details, see https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key Format: `projects/{project_id}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` For example: `projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key`. The object will be rewritten and set with the specified KMS key. */
   kmsKey?: string;
 }
-export const RewriteObject = /*@__PURE__*/ S.suspend(() =>
+const RewriteObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageClass: S.optional(RewriteObjectStorageClassEnum),
     kmsKey: S.optional(S.String),
@@ -223,14 +223,14 @@ export const RewriteObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RewriteObject" }) as any as S.Schema<RewriteObject>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Describes the payload of a user-defined object custom context. */
 export interface ObjectCustomContextPayload {
   /** The value of the object custom context. If set, `value` can't be an empty string because it is a required field in custom context. If unset, `value` is ignored and no changes are made to the `value` field of the custom context payload. */
   value?: string;
 }
-export const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
+const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -241,7 +241,7 @@ export const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
 export type ObjectCustomContextPayloadMap = {
   [key: string]: ObjectCustomContextPayload | undefined;
 };
-export const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(
+const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(
   S.String,
   ObjectCustomContextPayload,
 ) as any as S.Schema<ObjectCustomContextPayloadMap>;
@@ -253,7 +253,7 @@ export interface CustomContextUpdates {
   /** Optional. Insert or update the existing custom contexts. */
   updates?: ObjectCustomContextPayloadMap;
 }
-export const CustomContextUpdates = /*@__PURE__*/ S.suspend(() =>
+const CustomContextUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keysToClear: S.optional(StringList),
     updates: S.optional(ObjectCustomContextPayloadMap),
@@ -267,7 +267,7 @@ export interface UpdateObjectCustomContext {
   /** A collection of updates to apply to specific custom contexts. Use this to add, update or delete individual contexts by key. */
   customContextUpdates?: CustomContextUpdates;
 }
-export const UpdateObjectCustomContext = /*@__PURE__*/ S.suspend(() =>
+const UpdateObjectCustomContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clearAll: S.optional(S.Boolean),
     customContextUpdates: S.optional(CustomContextUpdates),
@@ -277,12 +277,12 @@ export const UpdateObjectCustomContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateObjectCustomContext>;
 
 export type LoggingConfigLogActionsItemEnum = "LOGGABLE_ACTION_UNSPECIFIED" | "TRANSFORM";
-export const LoggingConfigLogActionsItemEnum = S.String;
+const LoggingConfigLogActionsItemEnum = S.String;
 
 export type LoggingConfigLogActionsItemEnumList = Array<
   LoggingConfigLogActionsItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
+const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionsItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
 
@@ -290,12 +290,10 @@ export type LoggingConfigLogActionStatesItemEnum =
   | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
-export const LoggingConfigLogActionStatesItemEnum = S.String;
-
 export type LoggingConfigLogActionStatesItemEnumList = Array<
   LoggingConfigLogActionStatesItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionStatesItemEnumList =
+const LoggingConfigLogActionStatesItemEnumList =
   LoggingConfigLogActionsItemEnumList as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
 
 /** Specifies the Cloud Logging behavior. */
@@ -305,7 +303,7 @@ export interface LoggingConfig {
   /** Required. States in which Action are logged.If empty, no logs are generated. */
   logActionStates?: LoggingConfigLogActionStatesItemEnumList;
 }
-export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logActions: S.optional(LoggingConfigLogActionsItemEnumList),
     logActionStates: S.optional(LoggingConfigLogActionStatesItemEnumList),
@@ -313,10 +311,10 @@ export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 export type PutObjectHoldEventBasedHoldEnum = "HOLD_STATUS_UNSPECIFIED" | "SET" | "UNSET";
-export const PutObjectHoldEventBasedHoldEnum = S.String;
+const PutObjectHoldEventBasedHoldEnum = S.String;
 
 export type PutObjectHoldTemporaryHoldEnum = "HOLD_STATUS_UNSPECIFIED" | "SET" | "UNSET";
-export const PutObjectHoldTemporaryHoldEnum = S.String;
+const PutObjectHoldTemporaryHoldEnum = S.String;
 
 /** Describes options to update object hold. */
 export interface PutObjectHold {
@@ -325,7 +323,7 @@ export interface PutObjectHold {
   /** Required. Updates object temporary holds state. When object temporary hold is set, object can't be deleted or replaced. */
   temporaryHold?: PutObjectHoldTemporaryHoldEnum | (string & {});
 }
-export const PutObjectHold = /*@__PURE__*/ S.suspend(() =>
+const PutObjectHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventBasedHold: S.optional(PutObjectHoldEventBasedHoldEnum),
     temporaryHold: S.optional(PutObjectHoldTemporaryHoldEnum),
@@ -339,7 +337,7 @@ export interface ObjectAccessControl {
   /** Required. The role to grant. Acceptable values are: * `READER` - gives read access to the object. * `OWNER` - gives owner access to the object. */
   role?: string;
 }
-export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
+const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(S.String),
     role: S.optional(S.String),
@@ -347,7 +345,7 @@ export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectAccessControl" }) as any as S.Schema<ObjectAccessControl>;
 
 export type ObjectAccessControlList = Array<ObjectAccessControl>;
-export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
+const ObjectAccessControlList = /*@__PURE__*/ S.Array(
   ObjectAccessControl,
 ) as any as S.Schema<ObjectAccessControlList>;
 
@@ -358,7 +356,7 @@ export interface AccessControlsUpdates {
   /** Optional. Entities for which all grants should be removed. An entity can't be in both `grants` and `remove_entities`. */
   removeEntities?: StringList;
 }
-export const AccessControlsUpdates = /*@__PURE__*/ S.suspend(() =>
+const AccessControlsUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grants: S.optional(ObjectAccessControlList),
     removeEntities: S.optional(StringList),
@@ -370,7 +368,7 @@ export interface SetObjectAcls {
   /** Required. Add, update, or remove grants from the object's existing ACLs. */
   accessControlsUpdates?: AccessControlsUpdates;
 }
-export const SetObjectAcls = /*@__PURE__*/ S.suspend(() =>
+const SetObjectAcls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControlsUpdates: S.optional(AccessControlsUpdates),
   }),
@@ -387,7 +385,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     description: S.optional(S.String),
@@ -403,7 +401,7 @@ export interface TargetLocations {
   /** Required. REQUIRED. A list of Cloud Storage locations (e.g., `us-central1`) to include in the job. If `snapshot_time` is omitted, the job automatically defaults to the most recent snapshot timestamp that is successfully populated in BOTH the `object_attributes_view` and `bucket_attributes_view` across ALL specified locations. For details on Storage Insights dataset snapshots and views, see: https://docs.cloud.google.com/storage/docs/insights/dataset-tables-and-schemas#schema */
   locations?: StringList;
 }
-export const TargetLocations = /*@__PURE__*/ S.suspend(() =>
+const TargetLocations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotTime: S.optional(S.String),
     locations: S.optional(StringList),
@@ -427,7 +425,7 @@ export interface ProjectSource {
   /** Output only. The snapshot time used by the job to read the Storage Insights dataset for bucket and object discovery. This field is populated by the service and reflects the exact timestamp of the dataset snapshot used. */
   snapshotTime?: string;
 }
-export const ProjectSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insightsDatasetConfig: S.optional(S.String),
     bucketFilters: S.optional(Expr),
@@ -458,7 +456,7 @@ export interface Counters {
   /** Output only. The total number of bytes affected by the transformation. For example, this counts bytes deleted for `DeleteObject` operations and bytes rewritten for `RewriteObject` operations. */
   totalBytesTransformed?: string;
 }
-export const Counters = /*@__PURE__*/ S.suspend(() =>
+const Counters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectCustomContextsDeleted: S.optional(S.String),
     objectCustomContextsUpdated: S.optional(S.String),
@@ -478,7 +476,7 @@ export interface ErrorLogEntry {
   /** Optional. Output only. At most 5 error log entries are recorded for a given error code for a job. */
   errorDetails?: StringList;
 }
-export const ErrorLogEntry = /*@__PURE__*/ S.suspend(() =>
+const ErrorLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectUri: S.optional(S.String),
     errorDetails: S.optional(StringList),
@@ -486,7 +484,7 @@ export const ErrorLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorLogEntry" }) as any as S.Schema<ErrorLogEntry>;
 
 export type ErrorLogEntryList = Array<ErrorLogEntry>;
-export const ErrorLogEntryList = /*@__PURE__*/ S.Array(
+const ErrorLogEntryList = /*@__PURE__*/ S.Array(
   ErrorLogEntry,
 ) as any as S.Schema<ErrorLogEntryList>;
 
@@ -508,7 +506,7 @@ export type ErrorSummaryErrorCodeEnum =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
-export const ErrorSummaryErrorCodeEnum = S.String;
+const ErrorSummaryErrorCodeEnum = S.String;
 
 /** A summary of errors by error code, plus a count and sample error log entries. */
 export interface ErrorSummary {
@@ -519,7 +517,7 @@ export interface ErrorSummary {
   /** Required. The canonical error code. */
   errorCode?: ErrorSummaryErrorCodeEnum | (string & {});
 }
-export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
+const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorLogEntries: S.optional(ErrorLogEntryList),
     errorCount: S.optional(S.String),
@@ -528,16 +526,14 @@ export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorSummary" }) as any as S.Schema<ErrorSummary>;
 
 export type ErrorSummaryList = Array<ErrorSummary>;
-export const ErrorSummaryList = /*@__PURE__*/ S.Array(
-  ErrorSummary,
-) as any as S.Schema<ErrorSummaryList>;
+const ErrorSummaryList = /*@__PURE__*/ S.Array(ErrorSummary) as any as S.Schema<ErrorSummaryList>;
 
 /** Describes list of objects to be transformed. */
 export interface Manifest {
   /** Required. Specify the manifest file location. The format of manifest location can be an absolute path to the object in the format of `gs://bucket_name/path/object_name`. For example, `gs://bucket_name/path/object_name.csv`. Alternatively, you can specify an absolute path with a single wildcard character in the file name, for example `gs://bucket_name/path/file_name*.csv`. If the manifest location is specified with a wildcard, objects in all manifest files matching the pattern will be acted upon. The manifest is a CSV file, uploaded to Cloud Storage, that contains one object or a list of objects that you want to process. Each row in the manifest must include the `bucket` and `name` of the object. You can optionally specify the `generation` of the object. If you don't specify the `generation`, the current version of the object is used. You can optionally include a header row with the following format: `bucket,name,generation`. For example, bucket,name,generation bucket_1,object_1,generation_1 bucket_1,object_2,generation_2 bucket_1,object_3,generation_3 Note: The manifest file must specify only objects within the bucket provided to the job. Rows referencing objects in other buckets are ignored. */
   manifestLocation?: string;
 }
-export const Manifest = /*@__PURE__*/ S.suspend(() =>
+const Manifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifestLocation: S.optional(S.String),
   }),
@@ -548,7 +544,7 @@ export interface PrefixList {
   /** Optional. Specify one or more object prefixes. For example: * To match one object, use a single prefix, `prefix1`. * To match multiple objects, use comma-separated prefixes, `prefix1, prefix2`. * To match all objects, use an empty prefix, `''` */
   includedObjectPrefixes?: StringList;
 }
-export const PrefixList = /*@__PURE__*/ S.suspend(() =>
+const PrefixList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedObjectPrefixes: S.optional(StringList),
   }),
@@ -563,7 +559,7 @@ export interface Bucket {
   /** Specifies objects matching a prefix set. */
   prefixList?: PrefixList;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifest: S.optional(Manifest),
     bucket: S.optional(S.String),
@@ -572,14 +568,14 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 export type BucketList_ = Array<Bucket>;
-export const BucketList_ = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList_>;
+const BucketList_ = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList_>;
 
 /** Describes list of buckets and their objects to be transformed. */
 export interface BucketList {
   /** Required. List of buckets and their objects to be transformed. You can specify only one bucket per job. If multiple buckets are specified, an error occurs. */
   buckets?: BucketList_;
 }
-export const BucketList = /*@__PURE__*/ S.suspend(() =>
+const BucketList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(BucketList_),
   }),
@@ -626,7 +622,7 @@ export interface Job {
   /** Specifies a list of buckets and their objects to be transformed. */
   bucketList?: BucketList;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     putMetadata: S.optional(PutMetadata),
     state: S.optional(JobStateEnum),
@@ -660,7 +656,7 @@ export interface CreateProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -678,15 +674,10 @@ export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -697,7 +688,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -718,7 +709,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     response: S.optional(DocumentMap),
@@ -736,7 +727,7 @@ export interface DeleteProjectsLocationsJobsRequest {
   /** Optional. If set to true, any child bucket operations of the job are deleted. We recommend setting this to `true`. You can't mutate bucket operations directly, so only the `jobs.delete` permission is required to delete a job (and its child bucket operations). */
   force?: boolean;
 }
-export const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -756,7 +747,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -774,7 +765,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -801,7 +792,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -815,7 +806,7 @@ export interface GetProjectsLocationsJobsRequest {
   /** Required. The `name` of the job to retrieve. Format: `projects/{project_id}/locations/global/jobs/{job_id}`. */
   name: string;
 }
-export const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -833,7 +824,7 @@ export interface GetProjectsLocationsJobsBucketOperationsRequest {
   /** Required. The `name` of the bucket operation to retrieve. Format: `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}`. */
   name: string;
 }
-export const GetProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -854,7 +845,7 @@ export type BucketOperationStateEnum =
   | "SUCCEEDED"
   | "CANCELED"
   | "FAILED";
-export const BucketOperationStateEnum = S.String;
+const BucketOperationStateEnum = S.String;
 
 /** BucketOperation represents a bucket-level breakdown of a Job. */
 export interface BucketOperation {
@@ -893,7 +884,7 @@ export interface BucketOperation {
   /** Output only. State of the BucketOperation. */
   state?: BucketOperationStateEnum;
 }
-export const BucketOperation = /*@__PURE__*/ S.suspend(() =>
+const BucketOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     name: S.optional(S.String),
@@ -919,7 +910,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -945,7 +936,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -964,7 +955,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -973,7 +964,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -992,7 +983,7 @@ export interface ListProjectsLocationsJobsRequest {
   /** Optional. Field to sort by. Supported fields are `name` and `create_time`. */
   orderBy?: string;
 }
-export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1011,7 +1002,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
 export type JobList = Array<Job>;
-export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
+const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Message for response to listing Jobs */
 export interface ListJobsResponse {
@@ -1022,7 +1013,7 @@ export interface ListJobsResponse {
   /** A token identifying a page of results. */
   nextPageToken?: string;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobs: S.optional(JobList),
     unreachable: S.optional(StringList),
@@ -1042,7 +1033,7 @@ export interface ListProjectsLocationsJobsBucketOperationsRequest {
   /** Optional. Filters results as defined by https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1061,7 +1052,7 @@ export const ListProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>;
 
 export type BucketOperationList = Array<BucketOperation>;
-export const BucketOperationList = /*@__PURE__*/ S.Array(
+const BucketOperationList = /*@__PURE__*/ S.Array(
   BucketOperation,
 ) as any as S.Schema<BucketOperationList>;
 
@@ -1074,7 +1065,7 @@ export interface ListBucketOperationsResponse {
   /** A list of storage batch bucket operations. */
   bucketOperations?: BucketOperationList;
 }
-export const ListBucketOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBucketOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1096,7 +1087,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1115,7 +1106,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1126,7 +1117,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),

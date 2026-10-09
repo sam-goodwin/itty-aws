@@ -82,7 +82,7 @@ export interface Schedule {
   /** A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately. */
   scheduleTime?: string;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intervalDurationDays: S.optional(S.Number),
     scheduleTime: S.optional(S.String),
@@ -94,7 +94,7 @@ export type ScanConfigUserAgentEnum =
   | "CHROME_LINUX"
   | "CHROME_ANDROID"
   | "SAFARI_IPHONE";
-export const ScanConfigUserAgentEnum = S.String;
+const ScanConfigUserAgentEnum = S.String;
 
 /** Describes authentication configuration that uses a Google account. */
 export interface GoogleAccount {
@@ -103,7 +103,7 @@ export interface GoogleAccount {
   /** Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
   password?: string;
 }
-export const GoogleAccount = /*@__PURE__*/ S.suspend(() =>
+const GoogleAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String),
@@ -119,7 +119,7 @@ export interface CustomAccount {
   /** Required. The login form URL of the website. */
   loginUrl?: string;
 }
-export const CustomAccount = /*@__PURE__*/ S.suspend(() =>
+const CustomAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String),
     username: S.optional(S.String),
@@ -132,7 +132,7 @@ export interface IapTestServiceAccountInfo {
   /** Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP). */
   targetAudienceClientId?: string;
 }
-export const IapTestServiceAccountInfo = /*@__PURE__*/ S.suspend(() =>
+const IapTestServiceAccountInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetAudienceClientId: S.optional(S.String),
   }),
@@ -145,7 +145,7 @@ export interface IapCredential {
   /** Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies. */
   iapTestServiceAccountInfo?: IapTestServiceAccountInfo;
 }
-export const IapCredential = /*@__PURE__*/ S.suspend(() =>
+const IapCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iapTestServiceAccountInfo: S.optional(IapTestServiceAccountInfo),
   }),
@@ -160,7 +160,7 @@ export interface Authentication {
   /** Authentication using Identity-Aware-Proxy (IAP). */
   iapCredential?: IapCredential;
 }
-export const Authentication = /*@__PURE__*/ S.suspend(() =>
+const Authentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAccount: S.optional(GoogleAccount),
     customAccount: S.optional(CustomAccount),
@@ -174,26 +174,26 @@ export type ScanConfigTargetPlatformsItemEnum =
   | "COMPUTE"
   | "CLOUD_RUN"
   | "CLOUD_FUNCTIONS";
-export const ScanConfigTargetPlatformsItemEnum = S.String;
+const ScanConfigTargetPlatformsItemEnum = S.String;
 
 export type ScanConfigTargetPlatformsItemEnumList = Array<
   ScanConfigTargetPlatformsItemEnum | (string & {})
 >;
-export const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
+const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
   ScanConfigTargetPlatformsItemEnum,
 ) as any as S.Schema<ScanConfigTargetPlatformsItemEnumList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type ScanConfigExportToSecurityCommandCenterEnum =
   | "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
-export const ScanConfigExportToSecurityCommandCenterEnum = S.String;
+const ScanConfigExportToSecurityCommandCenterEnum = S.String;
 
 export type ScanConfigRiskLevelEnum = "RISK_LEVEL_UNSPECIFIED" | "NORMAL" | "LOW";
-export const ScanConfigRiskLevelEnum = S.String;
+const ScanConfigRiskLevelEnum = S.String;
 
 export type ScanConfigErrorCodeEnum =
   | "CODE_UNSPECIFIED"
@@ -239,7 +239,7 @@ export type ScanConfigErrorCodeEnum =
   | "UNSUPPORTED_FINDING_TYPE"
   | "UNSUPPORTED_URL_SCHEME"
   | "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND";
-export const ScanConfigErrorCodeEnum = S.String;
+const ScanConfigErrorCodeEnum = S.String;
 
 /** Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error. */
 export interface ScanConfigError {
@@ -248,7 +248,7 @@ export interface ScanConfigError {
   /** Output only. Indicates the reason code for a configuration failure. */
   code?: ScanConfigErrorCodeEnum | (string & {});
 }
-export const ScanConfigError = /*@__PURE__*/ S.suspend(() =>
+const ScanConfigError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldName: S.optional(S.String),
     code: S.optional(ScanConfigErrorCodeEnum),
@@ -264,7 +264,7 @@ export type ScanRunErrorTraceCodeEnum =
   | "TOO_MANY_REDIRECTS"
   | "TOO_MANY_HTTP_ERRORS"
   | "STARTING_URLS_CRAWL_HTTP_ERRORS";
-export const ScanRunErrorTraceCodeEnum = S.String;
+const ScanRunErrorTraceCodeEnum = S.String;
 
 /** Output only. Defines an error trace message for a ScanRun. */
 export interface ScanRunErrorTrace {
@@ -275,7 +275,7 @@ export interface ScanRunErrorTrace {
   /** Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses. */
   mostCommonHttpErrorCode?: number;
 }
-export const ScanRunErrorTrace = /*@__PURE__*/ S.suspend(() =>
+const ScanRunErrorTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanConfigError: S.optional(ScanConfigError),
     code: S.optional(ScanRunErrorTraceCodeEnum),
@@ -290,33 +290,33 @@ export type ScanRunWarningTraceCodeEnum =
   | "TOO_MANY_FUZZ_TASKS"
   | "BLOCKED_BY_IAP"
   | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN";
-export const ScanRunWarningTraceCodeEnum = S.String;
+const ScanRunWarningTraceCodeEnum = S.String;
 
 /** Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective. */
 export interface ScanRunWarningTrace {
   /** Output only. Indicates the warning code. */
   code?: ScanRunWarningTraceCodeEnum | (string & {});
 }
-export const ScanRunWarningTrace = /*@__PURE__*/ S.suspend(() =>
+const ScanRunWarningTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(ScanRunWarningTraceCodeEnum),
   }),
 ).annotate({ identifier: "ScanRunWarningTrace" }) as any as S.Schema<ScanRunWarningTrace>;
 
 export type ScanRunWarningTraceList = Array<ScanRunWarningTrace>;
-export const ScanRunWarningTraceList = /*@__PURE__*/ S.Array(
+const ScanRunWarningTraceList = /*@__PURE__*/ S.Array(
   ScanRunWarningTrace,
 ) as any as S.Schema<ScanRunWarningTraceList>;
 
 export type ScanRunResultStateEnum = "RESULT_STATE_UNSPECIFIED" | "SUCCESS" | "ERROR" | "KILLED";
-export const ScanRunResultStateEnum = S.String;
+const ScanRunResultStateEnum = S.String;
 
 export type ScanRunExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
   | "SCANNING"
   | "FINISHED";
-export const ScanRunExecutionStateEnum = S.String;
+const ScanRunExecutionStateEnum = S.String;
 
 /** A ScanRun is a output-only resource representing an actual run of the scan. Next id: 12 */
 export interface ScanRun {
@@ -343,7 +343,7 @@ export interface ScanRun {
   /** Output only. The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100. */
   progressPercent?: number;
 }
-export const ScanRun = /*@__PURE__*/ S.suspend(() =>
+const ScanRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     errorTrace: S.optional(ScanRunErrorTrace),
@@ -391,7 +391,7 @@ export interface ScanConfig {
   /** Required. The starting URLs from which the scanner finds site pages. */
   startingUrls?: StringList;
 }
-export const ScanConfig = /*@__PURE__*/ S.suspend(() =>
+const ScanConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.optional(Schedule),
     ignoreHttpStatusErrors: S.optional(S.Boolean),
@@ -417,7 +417,7 @@ export interface CreateProjectsScanConfigsRequest {
   /** Request body */
   body?: ScanConfig;
 }
-export const CreateProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ScanConfig.pipe(T.HttpBody())),
@@ -436,7 +436,7 @@ export interface DeleteProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
-export const DeleteProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -452,7 +452,7 @@ export const DeleteProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -460,7 +460,7 @@ export interface GetProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
-export const GetProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -478,7 +478,7 @@ export interface GetProjectsScanConfigsScanRunsRequest {
   /** Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   name: string;
 }
-export const GetProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -496,7 +496,7 @@ export interface GetProjectsScanConfigsScanRunsFindingsRequest {
   /** Required. The resource name of the Finding to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'. */
   name: string;
 }
-export const GetProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -517,7 +517,7 @@ export interface Form {
   /** ! The names of form fields related to the vulnerability. */
   fields?: StringList;
 }
-export const Form = /*@__PURE__*/ S.suspend(() =>
+const Form = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionUri: S.optional(S.String),
     fields: S.optional(StringList),
@@ -525,7 +525,7 @@ export const Form = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
 
 export type FindingSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
-export const FindingSeverityEnum = S.String;
+const FindingSeverityEnum = S.String;
 
 /** Information reported for an outdated library. */
 export interface OutdatedLibrary {
@@ -536,7 +536,7 @@ export interface OutdatedLibrary {
   /** URLs to learn more information about the vulnerabilities in the library. */
   learnMoreUrls?: StringList;
 }
-export const OutdatedLibrary = /*@__PURE__*/ S.suspend(() =>
+const OutdatedLibrary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     libraryName: S.optional(S.String),
     version: S.optional(S.String),
@@ -551,7 +551,7 @@ export interface Header {
   /** Header value. */
   value?: string;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
+const Header = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -559,7 +559,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = Array<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
+const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
 
 /** Information about vulnerable or missing HTTP Headers. */
 export interface VulnerableHeaders {
@@ -568,7 +568,7 @@ export interface VulnerableHeaders {
   /** List of missing headers. */
   missingHeaders?: HeaderList;
 }
-export const VulnerableHeaders = /*@__PURE__*/ S.suspend(() =>
+const VulnerableHeaders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(HeaderList),
     missingHeaders: S.optional(HeaderList),
@@ -580,14 +580,14 @@ export interface VulnerableParameters {
   /** The vulnerable parameter names. */
   parameterNames?: StringList;
 }
-export const VulnerableParameters = /*@__PURE__*/ S.suspend(() =>
+const VulnerableParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterNames: S.optional(StringList),
   }),
 ).annotate({ identifier: "VulnerableParameters" }) as any as S.Schema<VulnerableParameters>;
 
 export type XxePayloadLocationEnum = "LOCATION_UNSPECIFIED" | "COMPLETE_REQUEST_BODY";
-export const XxePayloadLocationEnum = S.String;
+const XxePayloadLocationEnum = S.String;
 
 /** Information reported for an XXE. */
 export interface Xxe {
@@ -596,7 +596,7 @@ export interface Xxe {
   /** Location within the request where the payload was placed. */
   payloadLocation?: XxePayloadLocationEnum;
 }
-export const Xxe = /*@__PURE__*/ S.suspend(() =>
+const Xxe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payloadValue: S.optional(S.String),
     payloadLocation: S.optional(XxePayloadLocationEnum),
@@ -620,7 +620,7 @@ export type XssAttackVectorEnum =
   | "STORED_XSS"
   | "SAME_ORIGIN"
   | "USER_CONTROLLABLE_URL";
-export const XssAttackVectorEnum = S.String;
+const XssAttackVectorEnum = S.String;
 
 /** Information reported for an XSS. */
 export interface Xss {
@@ -633,7 +633,7 @@ export interface Xss {
   /** The reproduction url for the seeding POST request of a Stored XSS. */
   storedXssSeedingUrl?: string;
 }
-export const Xss = /*@__PURE__*/ S.suspend(() =>
+const Xss = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stackTraces: S.optional(StringList),
     errorMessage: S.optional(S.String),
@@ -649,7 +649,7 @@ export interface ViolatingResource {
   /** URL of this violating resource. */
   resourceUrl?: string;
 }
-export const ViolatingResource = /*@__PURE__*/ S.suspend(() =>
+const ViolatingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(S.String),
     resourceUrl: S.optional(S.String),
@@ -695,7 +695,7 @@ export interface Finding {
   /** Output only. The URL containing human-readable payload that user can leverage to reproduce the vulnerability. */
   reproductionUrl?: string;
 }
-export const Finding = /*@__PURE__*/ S.suspend(() =>
+const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     form: S.optional(Form),
     finalUrl: S.optional(S.String),
@@ -726,7 +726,7 @@ export interface ListProjectsScanConfigsRequest {
   /** The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
-export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -743,7 +743,7 @@ export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsScanConfigsRequest>;
 
 export type ScanConfigList = Array<ScanConfig>;
-export const ScanConfigList = /*@__PURE__*/ S.Array(ScanConfig) as any as S.Schema<ScanConfigList>;
+const ScanConfigList = /*@__PURE__*/ S.Array(ScanConfig) as any as S.Schema<ScanConfigList>;
 
 /** Response for the `ListScanConfigs` method. */
 export interface ListScanConfigsResponse {
@@ -752,7 +752,7 @@ export interface ListScanConfigsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanConfigs: S.optional(ScanConfigList),
     nextPageToken: S.optional(S.String),
@@ -767,7 +767,7 @@ export interface ListProjectsScanConfigsScanRunsRequest {
   /** The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
-export const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -784,7 +784,7 @@ export const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>;
 
 export type ScanRunList = Array<ScanRun>;
-export const ScanRunList = /*@__PURE__*/ S.Array(ScanRun) as any as S.Schema<ScanRunList>;
+const ScanRunList = /*@__PURE__*/ S.Array(ScanRun) as any as S.Schema<ScanRunList>;
 
 /** Response for the `ListScanRuns` method. */
 export interface ListScanRunsResponse {
@@ -793,7 +793,7 @@ export interface ListScanRunsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListScanRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScanRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanRuns: S.optional(ScanRunList),
     nextPageToken: S.optional(S.String),
@@ -808,7 +808,7 @@ export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   parent: string;
 }
-export const ListProjectsScanConfigsScanRunsCrawledUrlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsScanConfigsScanRunsCrawledUrlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -833,7 +833,7 @@ export interface CrawledUrl {
   /** Output only. The URL that was crawled. */
   url?: string;
 }
-export const CrawledUrl = /*@__PURE__*/ S.suspend(() =>
+const CrawledUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpMethod: S.optional(S.String),
     body: S.optional(S.String),
@@ -842,7 +842,7 @@ export const CrawledUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CrawledUrl" }) as any as S.Schema<CrawledUrl>;
 
 export type CrawledUrlList = Array<CrawledUrl>;
-export const CrawledUrlList = /*@__PURE__*/ S.Array(CrawledUrl) as any as S.Schema<CrawledUrlList>;
+const CrawledUrlList = /*@__PURE__*/ S.Array(CrawledUrl) as any as S.Schema<CrawledUrlList>;
 
 /** Response for the `ListCrawledUrls` method. */
 export interface ListCrawledUrlsResponse {
@@ -851,7 +851,7 @@ export interface ListCrawledUrlsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListCrawledUrlsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCrawledUrlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crawledUrls: S.optional(CrawledUrlList),
     nextPageToken: S.optional(S.String),
@@ -868,7 +868,7 @@ export interface ListProjectsScanConfigsScanRunsFindingsRequest {
   /** The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='. */
   filter?: string;
 }
-export const ListProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -886,7 +886,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
 
 export type FindingList = Array<Finding>;
-export const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
+const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
 
 /** Response for the `ListFindings` method. */
 export interface ListFindingsResponse {
@@ -895,7 +895,7 @@ export interface ListFindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findings: S.optional(FindingList),
     nextPageToken: S.optional(S.String),
@@ -906,7 +906,7 @@ export interface ListProjectsScanConfigsScanRunsFindingTypeStatsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   parent: string;
 }
-export const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -927,7 +927,7 @@ export interface FindingTypeStats {
   /** Output only. The finding type associated with the stats. */
   findingType?: string;
 }
-export const FindingTypeStats = /*@__PURE__*/ S.suspend(() =>
+const FindingTypeStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingCount: S.optional(S.Number),
     findingType: S.optional(S.String),
@@ -935,7 +935,7 @@ export const FindingTypeStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FindingTypeStats" }) as any as S.Schema<FindingTypeStats>;
 
 export type FindingTypeStatsList = Array<FindingTypeStats>;
-export const FindingTypeStatsList = /*@__PURE__*/ S.Array(
+const FindingTypeStatsList = /*@__PURE__*/ S.Array(
   FindingTypeStats,
 ) as any as S.Schema<FindingTypeStatsList>;
 
@@ -944,7 +944,7 @@ export interface ListFindingTypeStatsResponse {
   /** The list of FindingTypeStats returned. */
   findingTypeStats?: FindingTypeStatsList;
 }
-export const ListFindingTypeStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingTypeStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingTypeStats: S.optional(FindingTypeStatsList),
   }),
@@ -960,7 +960,7 @@ export interface PatchProjectsScanConfigsRequest {
   /** Request body */
   body?: ScanConfig;
 }
-export const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -978,7 +978,7 @@ export const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for the `StartScanRun` method. */
 export interface StartScanRunRequest {}
-export const StartScanRunRequest = Empty as any as S.Schema<StartScanRunRequest>;
+const StartScanRunRequest = Empty as any as S.Schema<StartScanRunRequest>;
 
 export interface StartProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
@@ -986,7 +986,7 @@ export interface StartProjectsScanConfigsRequest {
   /** Request body */
   body?: StartScanRunRequest;
 }
-export const StartProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(StartScanRunRequest.pipe(T.HttpBody())),
@@ -1003,15 +1003,13 @@ export const StartProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for the `StopScanRun` method. */
 export type StopScanRunRequest = StartScanRunRequest;
-export const StopScanRunRequest = StartScanRunRequest;
-
 export interface StopProjectsScanConfigsScanRunsRequest {
   /** Required. The resource name of the ScanRun to be stopped. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   name: string;
   /** Request body */
   body?: StartScanRunRequest;
 }
-export const StopProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(StartScanRunRequest.pipe(T.HttpBody())),

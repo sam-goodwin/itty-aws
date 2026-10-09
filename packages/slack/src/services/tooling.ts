@@ -13,7 +13,7 @@ export interface RotateTokenRequest {
   /** The `xoxe` refresh token that was issued along with the old app configuration token. */
   refresh_token: string | Redacted.Redacted<string>;
 }
-export const RotateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refresh_token: S.String.pipe(T.SensitiveValue({})),
   }).pipe(
@@ -42,7 +42,7 @@ export interface RotateTokenResponse {
   /** Issued at (iat) identifies the time at which the token was issued. */
   iat: number;
 }
-export const RotateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     token: S.String,

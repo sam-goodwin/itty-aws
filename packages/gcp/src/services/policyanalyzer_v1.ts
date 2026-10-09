@@ -45,7 +45,7 @@ export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
   /** Optional. Filter expression to restrict the activities returned. For serviceAccountLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account. For serviceAccountKeyLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account key. */
   filter?: string;
 }
-export const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -69,7 +69,7 @@ export interface GoogleCloudPolicyanalyzerV1ObservationPeriod {
   /** The observation end time. The time in this timestamp is always `07:00:00Z`. */
   endTime?: string;
 }
-export const GoogleCloudPolicyanalyzerV1ObservationPeriod = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicyanalyzerV1ObservationPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -79,10 +79,7 @@ export const GoogleCloudPolicyanalyzerV1ObservationPeriod = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GoogleCloudPolicyanalyzerV1ObservationPeriod>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Represents Activity on a GCP resource over specific observation period. */
 export interface GoogleCloudPolicyanalyzerV1Activity {
@@ -95,7 +92,7 @@ export interface GoogleCloudPolicyanalyzerV1Activity {
   /** A struct of custom fields to explain the activity. */
   activity?: DocumentMap;
 }
-export const GoogleCloudPolicyanalyzerV1Activity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicyanalyzerV1Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observationPeriod: S.optional(GoogleCloudPolicyanalyzerV1ObservationPeriod),
     activityType: S.optional(S.String),
@@ -107,7 +104,7 @@ export const GoogleCloudPolicyanalyzerV1Activity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudPolicyanalyzerV1Activity>;
 
 export type GoogleCloudPolicyanalyzerV1ActivityList = Array<GoogleCloudPolicyanalyzerV1Activity>;
-export const GoogleCloudPolicyanalyzerV1ActivityList = /*@__PURE__*/ S.Array(
+const GoogleCloudPolicyanalyzerV1ActivityList = /*@__PURE__*/ S.Array(
   GoogleCloudPolicyanalyzerV1Activity,
 ) as any as S.Schema<GoogleCloudPolicyanalyzerV1ActivityList>;
 
@@ -118,7 +115,7 @@ export interface GoogleCloudPolicyanalyzerV1QueryActivityResponse {
   /** The set of activities that match the filter included in the request. */
   activities?: GoogleCloudPolicyanalyzerV1ActivityList;
 }
-export const GoogleCloudPolicyanalyzerV1QueryActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicyanalyzerV1QueryActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     activities: S.optional(GoogleCloudPolicyanalyzerV1ActivityList),
@@ -137,20 +134,19 @@ export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
   /** Optional. Filter expression to restrict the activities returned. For serviceAccountLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account. For serviceAccountKeyLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account key. */
   filter?: string;
 }
-export const QueryOrganizationsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/activities:query",
-        baseUrl: "https://policyanalyzer.googleapis.com/",
-      }),
-    ),
+const QueryOrganizationsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/activities:query",
+      baseUrl: "https://policyanalyzer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "QueryOrganizationsLocationsActivityTypesActivitiesRequest",
 }) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
@@ -165,7 +161,7 @@ export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const QueryProjectsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryProjectsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),

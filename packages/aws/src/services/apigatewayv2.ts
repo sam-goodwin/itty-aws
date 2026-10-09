@@ -111,12 +111,12 @@ export class TooManyRequestsException
   ).pipe(C.withThrottlingError) {}
 export type SelectionExpression = string;
 export type CorsHeaderList = string[];
-export const CorsHeaderList = /*@__PURE__*/ S.Array(S.String);
+const CorsHeaderList = /*@__PURE__*/ S.Array(S.String);
 export type StringWithLengthBetween1And64 = string;
 export type CorsMethodList = string[];
-export const CorsMethodList = CorsHeaderList as any as S.Schema<CorsMethodList>;
+const CorsMethodList = CorsHeaderList as any as S.Schema<CorsMethodList>;
 export type CorsOriginList = string[];
-export const CorsOriginList = CorsHeaderList as any as S.Schema<CorsOriginList>;
+const CorsOriginList = CorsHeaderList as any as S.Schema<CorsOriginList>;
 export type IntegerWithLengthBetweenMinus1And86400 = number;
 export interface Cors {
   AllowCredentials?: boolean;
@@ -126,7 +126,7 @@ export interface Cors {
   ExposeHeaders?: string[];
   MaxAge?: number;
 }
-export const Cors = /*@__PURE__*/ S.suspend(() =>
+const Cors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AllowCredentials: S.optional(S.Boolean),
     AllowHeaders: S.optional(CorsHeaderList),
@@ -148,16 +148,16 @@ export const Cors = /*@__PURE__*/ S.suspend(() =>
 export type Arn = string;
 export type StringWithLengthBetween0And1024 = string;
 export type IpAddressType = "ipv4" | "dualstack" | (string & {});
-export const IpAddressType = S.String;
+const IpAddressType = S.String;
 
 export type StringWithLengthBetween1And128 = string;
 export type ProtocolType = "WEBSOCKET" | "HTTP" | (string & {});
-export const ProtocolType = S.String;
+const ProtocolType = S.String;
 
 export type SelectionKey = string;
 export type StringWithLengthBetween1And1600 = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type UriWithLengthBetween1And2048 = string;
 export interface CreateApiRequest {
   ApiKeySelectionExpression?: string;
@@ -175,7 +175,7 @@ export interface CreateApiRequest {
   Target?: string;
   Version?: string;
 }
-export const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiKeySelectionExpression: S.optional(S.String),
     CorsConfiguration: S.optional(Cors),
@@ -215,7 +215,7 @@ export const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
 export type Id = string;
 export type __timestampIso8601 = Date;
 export type __listOf__string = string[];
-export const __listOf__string = CorsHeaderList as any as S.Schema<__listOf__string>;
+const __listOf__string = CorsHeaderList as any as S.Schema<__listOf__string>;
 export interface CreateApiResponse {
   ApiEndpoint?: string;
   ApiGatewayManaged?: boolean;
@@ -235,7 +235,7 @@ export interface CreateApiResponse {
   Version?: string;
   Warnings?: string[];
 }
-export const CreateApiResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiEndpoint: S.optional(S.String),
     ApiGatewayManaged: S.optional(S.Boolean),
@@ -282,7 +282,7 @@ export interface CreateApiMappingRequest {
   DomainName: string;
   Stage?: string;
 }
-export const CreateApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.optional(S.String),
     ApiMappingKey: S.optional(S.String),
@@ -307,7 +307,7 @@ export interface CreateApiMappingResponse {
   ApiMappingKey?: string;
   Stage?: string;
 }
-export const CreateApiMappingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiMappingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.optional(S.String),
     ApiMappingId: S.optional(S.String),
@@ -324,15 +324,15 @@ export const CreateApiMappingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateApiMappingResponse" }) as any as S.Schema<CreateApiMappingResponse>;
 export type IntegerWithLengthBetween0And3600 = number;
 export type AuthorizerType = "REQUEST" | "JWT" | (string & {});
-export const AuthorizerType = S.String;
+const AuthorizerType = S.String;
 
 export type IdentitySourceList = string[];
-export const IdentitySourceList = CorsHeaderList as any as S.Schema<IdentitySourceList>;
+const IdentitySourceList = CorsHeaderList as any as S.Schema<IdentitySourceList>;
 export interface JWTConfiguration {
   Audience?: string[];
   Issuer?: string;
 }
-export const JWTConfiguration = /*@__PURE__*/ S.suspend(() =>
+const JWTConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Audience: S.optional(__listOf__string), Issuer: S.optional(S.String) }).pipe(
     S.encodeKeys({ Audience: "audience", Issuer: "issuer" }),
   ),
@@ -350,7 +350,7 @@ export interface CreateAuthorizerRequest {
   JwtConfiguration?: JWTConfiguration;
   Name?: string;
 }
-export const CreateAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     AuthorizerCredentialsArn: S.optional(S.String),
@@ -402,7 +402,7 @@ export interface CreateAuthorizerResponse {
   JwtConfiguration?: JWTConfiguration;
   Name?: string;
 }
-export const CreateAuthorizerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthorizerCredentialsArn: S.optional(S.String),
     AuthorizerId: S.optional(S.String),
@@ -436,7 +436,7 @@ export interface CreateDeploymentRequest {
   Description?: string;
   StageName?: string;
 }
-export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     Description: S.optional(S.String),
@@ -455,7 +455,7 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "CreateDeploymentRequest" }) as any as S.Schema<CreateDeploymentRequest>;
 export type DeploymentStatus = "PENDING" | "FAILED" | "DEPLOYED" | (string & {});
-export const DeploymentStatus = S.String;
+const DeploymentStatus = S.String;
 
 export interface CreateDeploymentResponse {
   AutoDeployed?: boolean;
@@ -465,7 +465,7 @@ export interface CreateDeploymentResponse {
   DeploymentStatusMessage?: string;
   Description?: string;
 }
-export const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AutoDeployed: S.optional(S.Boolean),
     CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -491,13 +491,13 @@ export type DomainNameStatus =
   | "PENDING_CERTIFICATE_REIMPORT"
   | "PENDING_OWNERSHIP_VERIFICATION"
   | (string & {});
-export const DomainNameStatus = S.String;
+const DomainNameStatus = S.String;
 
 export type EndpointType = "REGIONAL" | "EDGE" | (string & {});
-export const EndpointType = S.String;
+const EndpointType = S.String;
 
 export type SecurityPolicy = "TLS_1_0" | "TLS_1_2" | (string & {});
-export const SecurityPolicy = S.String;
+const SecurityPolicy = S.String;
 
 export interface DomainNameConfiguration {
   ApiGatewayDomainName?: string;
@@ -512,7 +512,7 @@ export interface DomainNameConfiguration {
   SecurityPolicy?: SecurityPolicy;
   OwnershipVerificationCertificateArn?: string;
 }
-export const DomainNameConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DomainNameConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiGatewayDomainName: S.optional(S.String),
     CertificateArn: S.optional(S.String),
@@ -542,12 +542,12 @@ export const DomainNameConfiguration = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DomainNameConfiguration" }) as any as S.Schema<DomainNameConfiguration>;
 export type DomainNameConfigurations = DomainNameConfiguration[];
-export const DomainNameConfigurations = /*@__PURE__*/ S.Array(DomainNameConfiguration);
+const DomainNameConfigurations = /*@__PURE__*/ S.Array(DomainNameConfiguration);
 export interface MutualTlsAuthenticationInput {
   TruststoreUri?: string;
   TruststoreVersion?: string;
 }
-export const MutualTlsAuthenticationInput = /*@__PURE__*/ S.suspend(() =>
+const MutualTlsAuthenticationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TruststoreUri: S.optional(S.String), TruststoreVersion: S.optional(S.String) }).pipe(
     S.encodeKeys({ TruststoreUri: "truststoreUri", TruststoreVersion: "truststoreVersion" }),
   ),
@@ -559,7 +559,7 @@ export type RoutingMode =
   | "ROUTING_RULE_ONLY"
   | "ROUTING_RULE_THEN_API_MAPPING"
   | (string & {});
-export const RoutingMode = S.String;
+const RoutingMode = S.String;
 
 export interface CreateDomainNameRequest {
   DomainName?: string;
@@ -568,7 +568,7 @@ export interface CreateDomainNameRequest {
   RoutingMode?: RoutingMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     DomainNameConfigurations: S.optional(DomainNameConfigurations),
@@ -592,7 +592,7 @@ export interface MutualTlsAuthentication {
   TruststoreVersion?: string;
   TruststoreWarnings?: string[];
 }
-export const MutualTlsAuthentication = /*@__PURE__*/ S.suspend(() =>
+const MutualTlsAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TruststoreUri: S.optional(S.String),
     TruststoreVersion: S.optional(S.String),
@@ -614,7 +614,7 @@ export interface CreateDomainNameResponse {
   RoutingMode?: RoutingMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiMappingSelectionExpression: S.optional(S.String),
     DomainName: S.optional(S.String),
@@ -637,29 +637,29 @@ export const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDomainNameResponse" }) as any as S.Schema<CreateDomainNameResponse>;
 export type StringWithLengthBetween1And1024 = string;
 export type ConnectionType = "INTERNET" | "VPC_LINK" | (string & {});
-export const ConnectionType = S.String;
+const ConnectionType = S.String;
 
 export type ContentHandlingStrategy = "CONVERT_TO_BINARY" | "CONVERT_TO_TEXT" | (string & {});
-export const ContentHandlingStrategy = S.String;
+const ContentHandlingStrategy = S.String;
 
 export type IntegrationType = "AWS" | "HTTP" | "MOCK" | "HTTP_PROXY" | "AWS_PROXY" | (string & {});
-export const IntegrationType = S.String;
+const IntegrationType = S.String;
 
 export type PassthroughBehavior = "WHEN_NO_MATCH" | "NEVER" | "WHEN_NO_TEMPLATES" | (string & {});
-export const PassthroughBehavior = S.String;
+const PassthroughBehavior = S.String;
 
 export type IntegrationParameters = { [key: string]: string | undefined };
-export const IntegrationParameters = /*@__PURE__*/ S.Record(
+const IntegrationParameters = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type StringWithLengthBetween0And32K = string;
 export type TemplateMap = { [key: string]: string | undefined };
-export const TemplateMap = IntegrationParameters as any as S.Schema<TemplateMap>;
+const TemplateMap = IntegrationParameters as any as S.Schema<TemplateMap>;
 export type ResponseParameters = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
-export const ResponseParameters = /*@__PURE__*/ S.Record(
+const ResponseParameters = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ IntegrationParameters.pipe(S.optional),
 );
@@ -667,7 +667,7 @@ export type IntegerWithLengthBetween50And30000 = number;
 export interface TlsConfigInput {
   ServerNameToVerify?: string;
 }
-export const TlsConfigInput = /*@__PURE__*/ S.suspend(() =>
+const TlsConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServerNameToVerify: S.optional(S.String) }).pipe(
     S.encodeKeys({ ServerNameToVerify: "serverNameToVerify" }),
   ),
@@ -692,7 +692,7 @@ export interface CreateIntegrationRequest {
   TimeoutInMillis?: number;
   TlsConfig?: TlsConfigInput;
 }
-export const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ConnectionId: S.optional(S.String),
@@ -748,7 +748,7 @@ export const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TlsConfig {
   ServerNameToVerify?: string;
 }
-export const TlsConfig = TlsConfigInput as any as S.Schema<TlsConfig>;
+const TlsConfig = TlsConfigInput as any as S.Schema<TlsConfig>;
 export interface CreateIntegrationResult {
   ApiGatewayManaged?: boolean;
   ConnectionId?: string;
@@ -771,7 +771,7 @@ export interface CreateIntegrationResult {
   TimeoutInMillis?: number;
   TlsConfig?: TlsConfig;
 }
-export const CreateIntegrationResult = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiGatewayManaged: S.optional(S.Boolean),
     ConnectionId: S.optional(S.String),
@@ -827,7 +827,7 @@ export interface CreateIntegrationResponseRequest {
   ResponseTemplates?: { [key: string]: string | undefined };
   TemplateSelectionExpression?: string;
 }
-export const CreateIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ContentHandlingStrategy: S.optional(ContentHandlingStrategy),
@@ -870,7 +870,7 @@ export interface CreateIntegrationResponseResponse {
   ResponseTemplates?: { [key: string]: string | undefined };
   TemplateSelectionExpression?: string;
 }
-export const CreateIntegrationResponseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationResponseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentHandlingStrategy: S.optional(ContentHandlingStrategy),
     IntegrationResponseId: S.optional(S.String),
@@ -899,7 +899,7 @@ export interface CreateModelRequest {
   Name?: string;
   Schema?: string;
 }
-export const CreateModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ContentType: S.optional(S.String),
@@ -933,7 +933,7 @@ export interface CreateModelResponse {
   Name?: string;
   Schema?: string;
 }
-export const CreateModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String),
     Description: S.optional(S.String),
@@ -957,7 +957,7 @@ export interface CognitoConfig {
   UserPoolArn?: string;
   UserPoolDomain?: string;
 }
-export const CognitoConfig = /*@__PURE__*/ S.suspend(() =>
+const CognitoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppClientId: S.optional(S.String),
     UserPoolArn: S.optional(S.String),
@@ -971,14 +971,14 @@ export const CognitoConfig = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CognitoConfig" }) as any as S.Schema<CognitoConfig>;
 export interface None {}
-export const None = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const None = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "None",
 }) as any as S.Schema<None>;
 export interface Authorization {
   CognitoConfig?: CognitoConfig;
   None?: None;
 }
-export const Authorization = /*@__PURE__*/ S.suspend(() =>
+const Authorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CognitoConfig: S.optional(CognitoConfig), None: S.optional(None) }).pipe(
     S.encodeKeys({ CognitoConfig: "cognitoConfig", None: "none" }),
   ),
@@ -989,7 +989,7 @@ export interface ACMManaged {
   CertificateArn?: string;
   DomainName?: string;
 }
-export const ACMManaged = /*@__PURE__*/ S.suspend(() =>
+const ACMManaged = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.optional(S.String), DomainName: S.optional(S.String) }).pipe(
     S.encodeKeys({ CertificateArn: "certificateArn", DomainName: "domainName" }),
   ),
@@ -998,7 +998,7 @@ export interface EndpointConfigurationRequest {
   AcmManaged?: ACMManaged;
   None?: None;
 }
-export const EndpointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const EndpointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmManaged: S.optional(ACMManaged), None: S.optional(None) }).pipe(
     S.encodeKeys({ AcmManaged: "acmManaged", None: "none" }),
   ),
@@ -1006,7 +1006,7 @@ export const EndpointConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointConfigurationRequest",
 }) as any as S.Schema<EndpointConfigurationRequest>;
 export type __listOf__stringMin20Max2048 = string[];
-export const __listOf__stringMin20Max2048 =
+const __listOf__stringMin20Max2048 =
   CorsHeaderList as any as S.Schema<__listOf__stringMin20Max2048>;
 export type __stringMin0Max1092 = string;
 export type __stringMin0Max1024 = string;
@@ -1020,7 +1020,7 @@ export interface CustomColors {
   NavigationColor?: string;
   TextColor?: string;
 }
-export const CustomColors = /*@__PURE__*/ S.suspend(() =>
+const CustomColors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccentColor: S.optional(S.String),
     BackgroundColor: S.optional(S.String),
@@ -1043,7 +1043,7 @@ export interface PortalTheme {
   CustomColors?: CustomColors;
   LogoLastUploaded?: Date;
 }
-export const PortalTheme = /*@__PURE__*/ S.suspend(() =>
+const PortalTheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CustomColors: S.optional(CustomColors),
     LogoLastUploaded: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1054,7 +1054,7 @@ export interface PortalContent {
   DisplayName?: string;
   Theme?: PortalTheme;
 }
-export const PortalContent = /*@__PURE__*/ S.suspend(() =>
+const PortalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DisplayName: S.optional(S.String),
@@ -1071,7 +1071,7 @@ export interface CreatePortalRequest {
   RumAppMonitorName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreatePortalRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Authorization: S.optional(Authorization),
     EndpointConfiguration: S.optional(EndpointConfigurationRequest),
@@ -1101,7 +1101,7 @@ export interface EndpointConfigurationResponse {
   PortalDefaultDomainName?: string;
   PortalDomainHostedZoneId?: string;
 }
-export const EndpointConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.optional(S.String),
     DomainName: S.optional(S.String),
@@ -1127,14 +1127,14 @@ export type PublishStatus =
   | "DISABLE_FAILED"
   | "DISABLED"
   | (string & {});
-export const PublishStatus = S.String;
+const PublishStatus = S.String;
 
 export type __stringMin1Max2048 = string;
 export interface StatusException {
   Exception?: string;
   Message?: string;
 }
-export const StatusException = /*@__PURE__*/ S.suspend(() =>
+const StatusException = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Exception: S.optional(S.String), Message: S.optional(S.String) }).pipe(
     S.encodeKeys({ Exception: "exception", Message: "message" }),
   ),
@@ -1175,7 +1175,7 @@ export interface CreatePortalResponse {
   StatusException?: StatusException;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreatePortalResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePortalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Authorization: S.optional(Authorization),
     EndpointConfiguration: S.optional(EndpointConfigurationResponse),
@@ -1214,7 +1214,7 @@ export interface CreatePortalProductRequest {
   DisplayName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreatePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DisplayName: S.optional(S.String),
@@ -1231,7 +1231,7 @@ export interface Section {
   ProductRestEndpointPageArns?: string[];
   SectionName?: string;
 }
-export const Section = /*@__PURE__*/ S.suspend(() =>
+const Section = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProductRestEndpointPageArns: S.optional(__listOf__stringMin20Max2048),
     SectionName: S.optional(S.String),
@@ -1243,13 +1243,13 @@ export const Section = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Section" }) as any as S.Schema<Section>;
 export type __listOfSection = Section[];
-export const __listOfSection = /*@__PURE__*/ S.Array(Section);
+const __listOfSection = /*@__PURE__*/ S.Array(Section);
 export interface DisplayOrder {
   Contents?: Section[];
   OverviewPageArn?: string;
   ProductPageArns?: string[];
 }
-export const DisplayOrder = /*@__PURE__*/ S.suspend(() =>
+const DisplayOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Contents: S.optional(__listOfSection),
     OverviewPageArn: S.optional(S.String),
@@ -1276,7 +1276,7 @@ export interface CreatePortalProductResponse {
   PortalProductId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreatePortalProductResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePortalProductResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DisplayName: S.optional(S.String),
@@ -1304,7 +1304,7 @@ export interface DisplayContent {
   Body?: string;
   Title?: string;
 }
-export const DisplayContent = /*@__PURE__*/ S.suspend(() =>
+const DisplayContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Body: S.optional(S.String), Title: S.optional(S.String) }).pipe(
     S.encodeKeys({ Body: "body", Title: "title" }),
   ),
@@ -1313,7 +1313,7 @@ export interface CreateProductPageRequest {
   DisplayContent?: DisplayContent;
   PortalProductId: string;
 }
-export const CreateProductPageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(DisplayContent),
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
@@ -1336,7 +1336,7 @@ export interface CreateProductPageResponse {
   ProductPageArn?: string;
   ProductPageId?: string;
 }
-export const CreateProductPageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProductPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(DisplayContent),
     LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1359,7 +1359,7 @@ export interface DisplayContentOverrides {
   Endpoint?: string;
   OperationName?: string;
 }
-export const DisplayContentOverrides = /*@__PURE__*/ S.suspend(() =>
+const DisplayContentOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: S.optional(S.String),
     Endpoint: S.optional(S.String),
@@ -1370,7 +1370,7 @@ export interface EndpointDisplayContent {
   None?: None;
   Overrides?: DisplayContentOverrides;
 }
-export const EndpointDisplayContent = /*@__PURE__*/ S.suspend(() =>
+const EndpointDisplayContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ None: S.optional(None), Overrides: S.optional(DisplayContentOverrides) }).pipe(
     S.encodeKeys({ None: "none", Overrides: "overrides" }),
   ),
@@ -1385,7 +1385,7 @@ export interface IdentifierParts {
   RestApiId?: string;
   Stage?: string;
 }
-export const IdentifierParts = /*@__PURE__*/ S.suspend(() =>
+const IdentifierParts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Method: S.optional(S.String),
     Path: S.optional(S.String),
@@ -1396,13 +1396,13 @@ export const IdentifierParts = /*@__PURE__*/ S.suspend(() =>
 export interface RestEndpointIdentifier {
   IdentifierParts?: IdentifierParts;
 }
-export const RestEndpointIdentifier = /*@__PURE__*/ S.suspend(() =>
+const RestEndpointIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentifierParts: S.optional(IdentifierParts) }).pipe(
     S.encodeKeys({ IdentifierParts: "identifierParts" }),
   ),
 ).annotate({ identifier: "RestEndpointIdentifier" }) as any as S.Schema<RestEndpointIdentifier>;
 export type TryItState = "ENABLED" | "DISABLED" | (string & {});
-export const TryItState = S.String;
+const TryItState = S.String;
 
 export interface CreateProductRestEndpointPageRequest {
   DisplayContent?: EndpointDisplayContent;
@@ -1410,7 +1410,7 @@ export interface CreateProductRestEndpointPageRequest {
   RestEndpointIdentifier?: RestEndpointIdentifier;
   TryItState?: TryItState;
 }
-export const CreateProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(EndpointDisplayContent),
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
@@ -1445,7 +1445,7 @@ export interface EndpointDisplayContentResponse {
   Endpoint?: string;
   OperationName?: string;
 }
-export const EndpointDisplayContentResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointDisplayContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: S.optional(S.String),
     Endpoint: S.optional(S.String),
@@ -1455,7 +1455,7 @@ export const EndpointDisplayContentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointDisplayContentResponse",
 }) as any as S.Schema<EndpointDisplayContentResponse>;
 export type Status = "AVAILABLE" | "IN_PROGRESS" | "FAILED" | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export interface CreateProductRestEndpointPageResponse {
   DisplayContent?: EndpointDisplayContentResponse & { Endpoint: __stringMin1Max1024 };
@@ -1474,7 +1474,7 @@ export interface CreateProductRestEndpointPageResponse {
   StatusException?: StatusException;
   TryItState?: TryItState;
 }
-export const CreateProductRestEndpointPageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProductRestEndpointPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(EndpointDisplayContentResponse),
     LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1500,20 +1500,20 @@ export const CreateProductRestEndpointPageResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "CreateProductRestEndpointPageResponse",
 }) as any as S.Schema<CreateProductRestEndpointPageResponse>;
 export type AuthorizationScopes = string[];
-export const AuthorizationScopes = CorsHeaderList as any as S.Schema<AuthorizationScopes>;
+const AuthorizationScopes = CorsHeaderList as any as S.Schema<AuthorizationScopes>;
 export type AuthorizationType = "NONE" | "AWS_IAM" | "CUSTOM" | "JWT" | (string & {});
-export const AuthorizationType = S.String;
+const AuthorizationType = S.String;
 
 export type RouteModels = { [key: string]: string | undefined };
-export const RouteModels = IntegrationParameters as any as S.Schema<RouteModels>;
+const RouteModels = IntegrationParameters as any as S.Schema<RouteModels>;
 export interface ParameterConstraints {
   Required?: boolean;
 }
-export const ParameterConstraints = /*@__PURE__*/ S.suspend(() =>
+const ParameterConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Required: S.optional(S.Boolean) }).pipe(S.encodeKeys({ Required: "required" })),
 ).annotate({ identifier: "ParameterConstraints" }) as any as S.Schema<ParameterConstraints>;
 export type RouteParameters = { [key: string]: ParameterConstraints | undefined };
-export const RouteParameters = /*@__PURE__*/ S.Record(
+const RouteParameters = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ ParameterConstraints.pipe(S.optional),
 );
@@ -1531,7 +1531,7 @@ export interface CreateRouteRequest {
   RouteResponseSelectionExpression?: string;
   Target?: string;
 }
-export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ApiKeyRequired: S.optional(S.Boolean),
@@ -1587,7 +1587,7 @@ export interface CreateRouteResult {
   RouteResponseSelectionExpression?: string;
   Target?: string;
 }
-export const CreateRouteResult = /*@__PURE__*/ S.suspend(() =>
+const CreateRouteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiGatewayManaged: S.optional(S.Boolean),
     ApiKeyRequired: S.optional(S.Boolean),
@@ -1628,7 +1628,7 @@ export interface CreateRouteResponseRequest {
   RouteId: string;
   RouteResponseKey?: string;
 }
-export const CreateRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ModelSelectionExpression: S.optional(S.String),
@@ -1665,7 +1665,7 @@ export interface CreateRouteResponseResponse {
   RouteResponseId?: string;
   RouteResponseKey?: string;
 }
-export const CreateRouteResponseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRouteResponseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ModelSelectionExpression: S.optional(S.String),
     ResponseModels: S.optional(RouteModels),
@@ -1689,7 +1689,7 @@ export interface RoutingRuleActionInvokeApi {
   Stage?: string;
   StripBasePath?: boolean;
 }
-export const RoutingRuleActionInvokeApi = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleActionInvokeApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.optional(S.String),
     Stage: S.optional(S.String),
@@ -1701,19 +1701,19 @@ export const RoutingRuleActionInvokeApi = /*@__PURE__*/ S.suspend(() =>
 export interface RoutingRuleAction {
   InvokeApi?: RoutingRuleActionInvokeApi;
 }
-export const RoutingRuleAction = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InvokeApi: S.optional(RoutingRuleActionInvokeApi) }).pipe(
     S.encodeKeys({ InvokeApi: "invokeApi" }),
   ),
 ).annotate({ identifier: "RoutingRuleAction" }) as any as S.Schema<RoutingRuleAction>;
 export type __listOfRoutingRuleAction = RoutingRuleAction[];
-export const __listOfRoutingRuleAction = /*@__PURE__*/ S.Array(RoutingRuleAction);
+const __listOfRoutingRuleAction = /*@__PURE__*/ S.Array(RoutingRuleAction);
 export type __listOfSelectionKey = string[];
-export const __listOfSelectionKey = CorsHeaderList as any as S.Schema<__listOfSelectionKey>;
+const __listOfSelectionKey = CorsHeaderList as any as S.Schema<__listOfSelectionKey>;
 export interface RoutingRuleMatchBasePaths {
   AnyOf?: string[];
 }
-export const RoutingRuleMatchBasePaths = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleMatchBasePaths = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AnyOf: S.optional(__listOfSelectionKey) }).pipe(S.encodeKeys({ AnyOf: "anyOf" })),
 ).annotate({
   identifier: "RoutingRuleMatchBasePaths",
@@ -1722,7 +1722,7 @@ export interface RoutingRuleMatchHeaderValue {
   Header?: string;
   ValueGlob?: string;
 }
-export const RoutingRuleMatchHeaderValue = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleMatchHeaderValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Header: S.optional(S.String), ValueGlob: S.optional(S.String) }).pipe(
     S.encodeKeys({ Header: "header", ValueGlob: "valueGlob" }),
   ),
@@ -1730,13 +1730,11 @@ export const RoutingRuleMatchHeaderValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutingRuleMatchHeaderValue",
 }) as any as S.Schema<RoutingRuleMatchHeaderValue>;
 export type __listOfRoutingRuleMatchHeaderValue = RoutingRuleMatchHeaderValue[];
-export const __listOfRoutingRuleMatchHeaderValue = /*@__PURE__*/ S.Array(
-  RoutingRuleMatchHeaderValue,
-);
+const __listOfRoutingRuleMatchHeaderValue = /*@__PURE__*/ S.Array(RoutingRuleMatchHeaderValue);
 export interface RoutingRuleMatchHeaders {
   AnyOf?: RoutingRuleMatchHeaderValue[];
 }
-export const RoutingRuleMatchHeaders = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleMatchHeaders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AnyOf: S.optional(__listOfRoutingRuleMatchHeaderValue) }).pipe(
     S.encodeKeys({ AnyOf: "anyOf" }),
   ),
@@ -1745,14 +1743,14 @@ export interface RoutingRuleCondition {
   MatchBasePaths?: RoutingRuleMatchBasePaths;
   MatchHeaders?: RoutingRuleMatchHeaders;
 }
-export const RoutingRuleCondition = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MatchBasePaths: S.optional(RoutingRuleMatchBasePaths),
     MatchHeaders: S.optional(RoutingRuleMatchHeaders),
   }).pipe(S.encodeKeys({ MatchBasePaths: "matchBasePaths", MatchHeaders: "matchHeaders" })),
 ).annotate({ identifier: "RoutingRuleCondition" }) as any as S.Schema<RoutingRuleCondition>;
 export type __listOfRoutingRuleCondition = RoutingRuleCondition[];
-export const __listOfRoutingRuleCondition = /*@__PURE__*/ S.Array(RoutingRuleCondition);
+const __listOfRoutingRuleCondition = /*@__PURE__*/ S.Array(RoutingRuleCondition);
 export type RoutingRulePriority = number;
 export interface CreateRoutingRuleRequest {
   Actions?: RoutingRuleAction[];
@@ -1761,7 +1759,7 @@ export interface CreateRoutingRuleRequest {
   DomainNameId?: string;
   Priority?: number;
 }
-export const CreateRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Actions: S.optional(__listOfRoutingRuleAction),
     Conditions: S.optional(__listOfRoutingRuleCondition),
@@ -1798,7 +1796,7 @@ export interface CreateRoutingRuleResponse {
   RoutingRuleArn?: string;
   RoutingRuleId?: string;
 }
-export const CreateRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Actions: S.optional(__listOfRoutingRuleAction),
     Conditions: S.optional(__listOfRoutingRuleCondition),
@@ -1821,13 +1819,13 @@ export interface AccessLogSettings {
   DestinationArn?: string;
   Format?: string;
 }
-export const AccessLogSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessLogSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DestinationArn: S.optional(S.String), Format: S.optional(S.String) }).pipe(
     S.encodeKeys({ DestinationArn: "destinationArn", Format: "format" }),
   ),
 ).annotate({ identifier: "AccessLogSettings" }) as any as S.Schema<AccessLogSettings>;
 export type LoggingLevel = "ERROR" | "INFO" | "OFF" | (string & {});
-export const LoggingLevel = S.String;
+const LoggingLevel = S.String;
 
 export interface RouteSettings {
   DataTraceEnabled?: boolean;
@@ -1836,7 +1834,7 @@ export interface RouteSettings {
   ThrottlingBurstLimit?: number;
   ThrottlingRateLimit?: number;
 }
-export const RouteSettings = /*@__PURE__*/ S.suspend(() =>
+const RouteSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataTraceEnabled: S.optional(S.Boolean),
     DetailedMetricsEnabled: S.optional(S.Boolean),
@@ -1854,13 +1852,13 @@ export const RouteSettings = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RouteSettings" }) as any as S.Schema<RouteSettings>;
 export type RouteSettingsMap = { [key: string]: RouteSettings | undefined };
-export const RouteSettingsMap = /*@__PURE__*/ S.Record(
+const RouteSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ RouteSettings.pipe(S.optional),
 );
 export type StringWithLengthBetween0And2048 = string;
 export type StageVariablesMap = { [key: string]: string | undefined };
-export const StageVariablesMap = IntegrationParameters as any as S.Schema<StageVariablesMap>;
+const StageVariablesMap = IntegrationParameters as any as S.Schema<StageVariablesMap>;
 export interface CreateStageRequest {
   AccessLogSettings?: AccessLogSettings;
   ApiId: string;
@@ -1874,7 +1872,7 @@ export interface CreateStageRequest {
   StageVariables?: { [key: string]: string | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateStageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessLogSettings: S.optional(AccessLogSettings),
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
@@ -1929,7 +1927,7 @@ export interface CreateStageResponse {
   StageVariables?: { [key: string]: string | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateStageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessLogSettings: S.optional(AccessLogSettings),
     ApiGatewayManaged: S.optional(S.Boolean),
@@ -1965,16 +1963,16 @@ export const CreateStageResponse = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateStageResponse" }) as any as S.Schema<CreateStageResponse>;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = CorsHeaderList as any as S.Schema<SecurityGroupIdList>;
+const SecurityGroupIdList = CorsHeaderList as any as S.Schema<SecurityGroupIdList>;
 export type SubnetIdList = string[];
-export const SubnetIdList = CorsHeaderList as any as S.Schema<SubnetIdList>;
+const SubnetIdList = CorsHeaderList as any as S.Schema<SubnetIdList>;
 export interface CreateVpcLinkRequest {
   Name?: string;
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     SecurityGroupIds: S.optional(SecurityGroupIdList),
@@ -1998,10 +1996,10 @@ export type VpcLinkStatus =
   | "FAILED"
   | "INACTIVE"
   | (string & {});
-export const VpcLinkStatus = S.String;
+const VpcLinkStatus = S.String;
 
 export type VpcLinkVersion = "V2" | (string & {});
-export const VpcLinkVersion = S.String;
+const VpcLinkVersion = S.String;
 
 export interface CreateVpcLinkResponse {
   CreatedDate?: Date;
@@ -2014,7 +2012,7 @@ export interface CreateVpcLinkResponse {
   VpcLinkStatusMessage?: string;
   VpcLinkVersion?: VpcLinkVersion;
 }
-export const CreateVpcLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     Name: S.optional(S.String),
@@ -2043,7 +2041,7 @@ export interface DeleteAccessLogSettingsRequest {
   ApiId: string;
   StageName: string;
 }
-export const DeleteAccessLogSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessLogSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     StageName: S.String.pipe(T.HttpLabel("StageName")),
@@ -2061,24 +2059,24 @@ export const DeleteAccessLogSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAccessLogSettingsRequest",
 }) as any as S.Schema<DeleteAccessLogSettingsRequest>;
 export interface DeleteAccessLogSettingsResponse {}
-export const DeleteAccessLogSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAccessLogSettingsResponse" },
-) as any as S.Schema<DeleteAccessLogSettingsResponse>;
+const DeleteAccessLogSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAccessLogSettingsResponse",
+}) as any as S.Schema<DeleteAccessLogSettingsResponse>;
 export interface DeleteApiRequest {
   ApiId: string;
 }
-export const DeleteApiRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApiId: S.String.pipe(T.HttpLabel("ApiId")) }).pipe(
     T.all(T.Http({ method: "DELETE", uri: "/v2/apis/{ApiId}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteApiRequest" }) as any as S.Schema<DeleteApiRequest>;
 export interface DeleteApiResponse {}
-export const DeleteApiResponse = None as any as S.Schema<DeleteApiResponse>;
+const DeleteApiResponse = None as any as S.Schema<DeleteApiResponse>;
 export interface DeleteApiMappingRequest {
   ApiMappingId: string;
   DomainName: string;
 }
-export const DeleteApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiMappingId: S.String.pipe(T.HttpLabel("ApiMappingId")),
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -2094,12 +2092,12 @@ export const DeleteApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApiMappingRequest" }) as any as S.Schema<DeleteApiMappingRequest>;
 export interface DeleteApiMappingResponse {}
-export const DeleteApiMappingResponse = None as any as S.Schema<DeleteApiMappingResponse>;
+const DeleteApiMappingResponse = None as any as S.Schema<DeleteApiMappingResponse>;
 export interface DeleteAuthorizerRequest {
   ApiId: string;
   AuthorizerId: string;
 }
-export const DeleteAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     AuthorizerId: S.String.pipe(T.HttpLabel("AuthorizerId")),
@@ -2115,11 +2113,11 @@ export const DeleteAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAuthorizerRequest" }) as any as S.Schema<DeleteAuthorizerRequest>;
 export interface DeleteAuthorizerResponse {}
-export const DeleteAuthorizerResponse = None as any as S.Schema<DeleteAuthorizerResponse>;
+const DeleteAuthorizerResponse = None as any as S.Schema<DeleteAuthorizerResponse>;
 export interface DeleteCorsConfigurationRequest {
   ApiId: string;
 }
-export const DeleteCorsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCorsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApiId: S.String.pipe(T.HttpLabel("ApiId")) }).pipe(
     T.all(T.Http({ method: "DELETE", uri: "/v2/apis/{ApiId}/cors" }), svc, auth, proto, ver, rules),
   ),
@@ -2127,13 +2125,13 @@ export const DeleteCorsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCorsConfigurationRequest",
 }) as any as S.Schema<DeleteCorsConfigurationRequest>;
 export interface DeleteCorsConfigurationResponse {}
-export const DeleteCorsConfigurationResponse =
+const DeleteCorsConfigurationResponse =
   DeleteAccessLogSettingsResponse as any as S.Schema<DeleteCorsConfigurationResponse>;
 export interface DeleteDeploymentRequest {
   ApiId: string;
   DeploymentId: string;
 }
-export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     DeploymentId: S.String.pipe(T.HttpLabel("DeploymentId")),
@@ -2149,11 +2147,11 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = None as any as S.Schema<DeleteDeploymentResponse>;
+const DeleteDeploymentResponse = None as any as S.Schema<DeleteDeploymentResponse>;
 export interface DeleteDomainNameRequest {
   DomainName: string;
 }
-export const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/domainnames/{DomainName}" }),
@@ -2166,12 +2164,12 @@ export const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDomainNameRequest" }) as any as S.Schema<DeleteDomainNameRequest>;
 export interface DeleteDomainNameResponse {}
-export const DeleteDomainNameResponse = None as any as S.Schema<DeleteDomainNameResponse>;
+const DeleteDomainNameResponse = None as any as S.Schema<DeleteDomainNameResponse>;
 export interface DeleteIntegrationRequest {
   ApiId: string;
   IntegrationId: string;
 }
-export const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     IntegrationId: S.String.pipe(T.HttpLabel("IntegrationId")),
@@ -2187,13 +2185,13 @@ export const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIntegrationRequest" }) as any as S.Schema<DeleteIntegrationRequest>;
 export interface DeleteIntegrationResponse {}
-export const DeleteIntegrationResponse = None as any as S.Schema<DeleteIntegrationResponse>;
+const DeleteIntegrationResponse = None as any as S.Schema<DeleteIntegrationResponse>;
 export interface DeleteIntegrationResponseRequest {
   ApiId: string;
   IntegrationId: string;
   IntegrationResponseId: string;
 }
-export const DeleteIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     IntegrationId: S.String.pipe(T.HttpLabel("IntegrationId")),
@@ -2215,16 +2213,14 @@ export const DeleteIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIntegrationResponseRequest",
 }) as any as S.Schema<DeleteIntegrationResponseRequest>;
 export interface DeleteIntegrationResponseResponse {}
-export const DeleteIntegrationResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteIntegrationResponseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteIntegrationResponseResponse",
 }) as any as S.Schema<DeleteIntegrationResponseResponse>;
 export interface DeleteModelRequest {
   ApiId: string;
   ModelId: string;
 }
-export const DeleteModelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ModelId: S.String.pipe(T.HttpLabel("ModelId")),
@@ -2240,11 +2236,11 @@ export const DeleteModelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteModelRequest" }) as any as S.Schema<DeleteModelRequest>;
 export interface DeleteModelResponse {}
-export const DeleteModelResponse = None as any as S.Schema<DeleteModelResponse>;
+const DeleteModelResponse = None as any as S.Schema<DeleteModelResponse>;
 export interface DeletePortalRequest {
   PortalId: string;
 }
-export const DeletePortalRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalId: S.String.pipe(T.HttpLabel("PortalId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/portals/{PortalId}" }),
@@ -2257,11 +2253,11 @@ export const DeletePortalRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePortalRequest" }) as any as S.Schema<DeletePortalRequest>;
 export interface DeletePortalResponse {}
-export const DeletePortalResponse = None as any as S.Schema<DeletePortalResponse>;
+const DeletePortalResponse = None as any as S.Schema<DeletePortalResponse>;
 export interface DeletePortalProductRequest {
   PortalProductId: string;
 }
-export const DeletePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/portalproducts/{PortalProductId}" }),
@@ -2276,11 +2272,11 @@ export const DeletePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePortalProductRequest",
 }) as any as S.Schema<DeletePortalProductRequest>;
 export interface DeletePortalProductResponse {}
-export const DeletePortalProductResponse = None as any as S.Schema<DeletePortalProductResponse>;
+const DeletePortalProductResponse = None as any as S.Schema<DeletePortalProductResponse>;
 export interface DeletePortalProductSharingPolicyRequest {
   PortalProductId: string;
 }
-export const DeletePortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/portalproducts/{PortalProductId}/sharingpolicy" }),
@@ -2295,13 +2291,13 @@ export const DeletePortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeletePortalProductSharingPolicyRequest",
 }) as any as S.Schema<DeletePortalProductSharingPolicyRequest>;
 export interface DeletePortalProductSharingPolicyResponse {}
-export const DeletePortalProductSharingPolicyResponse =
+const DeletePortalProductSharingPolicyResponse =
   DeleteIntegrationResponseResponse as any as S.Schema<DeletePortalProductSharingPolicyResponse>;
 export interface DeleteProductPageRequest {
   PortalProductId: string;
   ProductPageId: string;
 }
-export const DeleteProductPageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
     ProductPageId: S.String.pipe(T.HttpLabel("ProductPageId")),
@@ -2320,12 +2316,12 @@ export const DeleteProductPageRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProductPageRequest" }) as any as S.Schema<DeleteProductPageRequest>;
 export interface DeleteProductPageResponse {}
-export const DeleteProductPageResponse = None as any as S.Schema<DeleteProductPageResponse>;
+const DeleteProductPageResponse = None as any as S.Schema<DeleteProductPageResponse>;
 export interface DeleteProductRestEndpointPageRequest {
   PortalProductId: string;
   ProductRestEndpointPageId: string;
 }
-export const DeleteProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
     ProductRestEndpointPageId: S.String.pipe(T.HttpLabel("ProductRestEndpointPageId")),
@@ -2346,13 +2342,13 @@ export const DeleteProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteProductRestEndpointPageRequest",
 }) as any as S.Schema<DeleteProductRestEndpointPageRequest>;
 export interface DeleteProductRestEndpointPageResponse {}
-export const DeleteProductRestEndpointPageResponse =
+const DeleteProductRestEndpointPageResponse =
   DeleteIntegrationResponseResponse as any as S.Schema<DeleteProductRestEndpointPageResponse>;
 export interface DeleteRouteRequest {
   ApiId: string;
   RouteId: string;
 }
-export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     RouteId: S.String.pipe(T.HttpLabel("RouteId")),
@@ -2368,13 +2364,13 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRouteRequest" }) as any as S.Schema<DeleteRouteRequest>;
 export interface DeleteRouteResponse {}
-export const DeleteRouteResponse = None as any as S.Schema<DeleteRouteResponse>;
+const DeleteRouteResponse = None as any as S.Schema<DeleteRouteResponse>;
 export interface DeleteRouteRequestParameterRequest {
   ApiId: string;
   RequestParameterKey: string;
   RouteId: string;
 }
-export const DeleteRouteRequestParameterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRouteRequestParameterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     RequestParameterKey: S.String.pipe(T.HttpLabel("RequestParameterKey")),
@@ -2396,14 +2392,14 @@ export const DeleteRouteRequestParameterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRouteRequestParameterRequest",
 }) as any as S.Schema<DeleteRouteRequestParameterRequest>;
 export interface DeleteRouteRequestParameterResponse {}
-export const DeleteRouteRequestParameterResponse =
+const DeleteRouteRequestParameterResponse =
   DeleteIntegrationResponseResponse as any as S.Schema<DeleteRouteRequestParameterResponse>;
 export interface DeleteRouteResponseRequest {
   ApiId: string;
   RouteId: string;
   RouteResponseId: string;
 }
-export const DeleteRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     RouteId: S.String.pipe(T.HttpLabel("RouteId")),
@@ -2425,13 +2421,13 @@ export const DeleteRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRouteResponseRequest",
 }) as any as S.Schema<DeleteRouteResponseRequest>;
 export interface DeleteRouteResponseResponse {}
-export const DeleteRouteResponseResponse = None as any as S.Schema<DeleteRouteResponseResponse>;
+const DeleteRouteResponseResponse = None as any as S.Schema<DeleteRouteResponseResponse>;
 export interface DeleteRouteSettingsRequest {
   ApiId: string;
   RouteKey: string;
   StageName: string;
 }
-export const DeleteRouteSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRouteSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     RouteKey: S.String.pipe(T.HttpLabel("RouteKey")),
@@ -2453,13 +2449,13 @@ export const DeleteRouteSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRouteSettingsRequest",
 }) as any as S.Schema<DeleteRouteSettingsRequest>;
 export interface DeleteRouteSettingsResponse {}
-export const DeleteRouteSettingsResponse = None as any as S.Schema<DeleteRouteSettingsResponse>;
+const DeleteRouteSettingsResponse = None as any as S.Schema<DeleteRouteSettingsResponse>;
 export interface DeleteRoutingRuleRequest {
   DomainName: string;
   DomainNameId?: string;
   RoutingRuleId: string;
 }
-export const DeleteRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     DomainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
@@ -2479,12 +2475,12 @@ export const DeleteRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRoutingRuleRequest" }) as any as S.Schema<DeleteRoutingRuleRequest>;
 export interface DeleteRoutingRuleResponse {}
-export const DeleteRoutingRuleResponse = None as any as S.Schema<DeleteRoutingRuleResponse>;
+const DeleteRoutingRuleResponse = None as any as S.Schema<DeleteRoutingRuleResponse>;
 export interface DeleteStageRequest {
   ApiId: string;
   StageName: string;
 }
-export const DeleteStageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     StageName: S.String.pipe(T.HttpLabel("StageName")),
@@ -2500,11 +2496,11 @@ export const DeleteStageRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStageRequest" }) as any as S.Schema<DeleteStageRequest>;
 export interface DeleteStageResponse {}
-export const DeleteStageResponse = None as any as S.Schema<DeleteStageResponse>;
+const DeleteStageResponse = None as any as S.Schema<DeleteStageResponse>;
 export interface DeleteVpcLinkRequest {
   VpcLinkId: string;
 }
-export const DeleteVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcLinkId: S.String.pipe(T.HttpLabel("VpcLinkId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/vpclinks/{VpcLinkId}" }),
@@ -2517,11 +2513,11 @@ export const DeleteVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVpcLinkRequest" }) as any as S.Schema<DeleteVpcLinkRequest>;
 export interface DeleteVpcLinkResponse {}
-export const DeleteVpcLinkResponse = None as any as S.Schema<DeleteVpcLinkResponse>;
+const DeleteVpcLinkResponse = None as any as S.Schema<DeleteVpcLinkResponse>;
 export interface DisablePortalRequest {
   PortalId: string;
 }
-export const DisablePortalRequest = /*@__PURE__*/ S.suspend(() =>
+const DisablePortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalId: S.String.pipe(T.HttpLabel("PortalId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/v2/portals/{PortalId}/publish" }),
@@ -2534,7 +2530,7 @@ export const DisablePortalRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisablePortalRequest" }) as any as S.Schema<DisablePortalRequest>;
 export interface DisablePortalResponse {}
-export const DisablePortalResponse = None as any as S.Schema<DisablePortalResponse>;
+const DisablePortalResponse = None as any as S.Schema<DisablePortalResponse>;
 export interface ExportApiRequest {
   ApiId: string;
   ExportVersion?: string;
@@ -2543,7 +2539,7 @@ export interface ExportApiRequest {
   Specification: string;
   StageName?: string;
 }
-export const ExportApiRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ExportVersion: S.optional(S.String).pipe(T.HttpQuery("exportVersion")),
@@ -2565,13 +2561,13 @@ export const ExportApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ExportApiResponse {
   body?: T.StreamingOutputBody;
 }
-export const ExportApiResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
 ).annotate({ identifier: "ExportApiResponse" }) as any as S.Schema<ExportApiResponse>;
 export interface GetApiRequest {
   ApiId: string;
 }
-export const GetApiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApiId: S.String.pipe(T.HttpLabel("ApiId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/apis/{ApiId}" }), svc, auth, proto, ver, rules),
   ),
@@ -2595,12 +2591,12 @@ export interface GetApiResponse {
   Version?: string;
   Warnings?: string[];
 }
-export const GetApiResponse = CreateApiResponse as any as S.Schema<GetApiResponse>;
+const GetApiResponse = CreateApiResponse as any as S.Schema<GetApiResponse>;
 export interface GetApiMappingRequest {
   ApiMappingId: string;
   DomainName: string;
 }
-export const GetApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiMappingId: S.String.pipe(T.HttpLabel("ApiMappingId")),
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -2621,14 +2617,13 @@ export interface GetApiMappingResponse {
   ApiMappingKey?: string;
   Stage?: string;
 }
-export const GetApiMappingResponse =
-  CreateApiMappingResponse as any as S.Schema<GetApiMappingResponse>;
+const GetApiMappingResponse = CreateApiMappingResponse as any as S.Schema<GetApiMappingResponse>;
 export interface GetApiMappingsRequest {
   DomainName: string;
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetApiMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -2650,15 +2645,15 @@ export interface ApiMapping {
   ApiMappingKey?: string;
   Stage?: string;
 }
-export const ApiMapping = CreateApiMappingResponse as any as S.Schema<ApiMapping>;
+const ApiMapping = CreateApiMappingResponse as any as S.Schema<ApiMapping>;
 export type __listOfApiMapping = ApiMapping[];
-export const __listOfApiMapping = /*@__PURE__*/ S.Array(ApiMapping);
+const __listOfApiMapping = /*@__PURE__*/ S.Array(ApiMapping);
 export type NextToken = string;
 export interface GetApiMappingsResponse {
   Items?: (ApiMapping & { ApiId: Id; Stage: StringWithLengthBetween1And128 })[];
   NextToken?: string;
 }
-export const GetApiMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfApiMapping), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -2667,7 +2662,7 @@ export interface GetApisRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetApisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2692,9 +2687,9 @@ export interface Api {
   Version?: string;
   Warnings?: string[];
 }
-export const Api = CreateApiResponse as any as S.Schema<Api>;
+const Api = CreateApiResponse as any as S.Schema<Api>;
 export type __listOfApi = Api[];
-export const __listOfApi = /*@__PURE__*/ S.Array(Api);
+const __listOfApi = /*@__PURE__*/ S.Array(Api);
 export interface GetApisResponse {
   Items?: (Api & {
     Name: StringWithLengthBetween1And128;
@@ -2703,7 +2698,7 @@ export interface GetApisResponse {
   })[];
   NextToken?: string;
 }
-export const GetApisResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfApi), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -2712,7 +2707,7 @@ export interface GetAuthorizerRequest {
   ApiId: string;
   AuthorizerId: string;
 }
-export const GetAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     AuthorizerId: S.String.pipe(T.HttpLabel("AuthorizerId")),
@@ -2740,14 +2735,13 @@ export interface GetAuthorizerResponse {
   JwtConfiguration?: JWTConfiguration;
   Name?: string;
 }
-export const GetAuthorizerResponse =
-  CreateAuthorizerResponse as any as S.Schema<GetAuthorizerResponse>;
+const GetAuthorizerResponse = CreateAuthorizerResponse as any as S.Schema<GetAuthorizerResponse>;
 export interface GetAuthorizersRequest {
   ApiId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetAuthorizersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -2776,14 +2770,14 @@ export interface Authorizer {
   JwtConfiguration?: JWTConfiguration;
   Name?: string;
 }
-export const Authorizer = CreateAuthorizerResponse as any as S.Schema<Authorizer>;
+const Authorizer = CreateAuthorizerResponse as any as S.Schema<Authorizer>;
 export type __listOfAuthorizer = Authorizer[];
-export const __listOfAuthorizer = /*@__PURE__*/ S.Array(Authorizer);
+const __listOfAuthorizer = /*@__PURE__*/ S.Array(Authorizer);
 export interface GetAuthorizersResponse {
   Items?: (Authorizer & { Name: StringWithLengthBetween1And128 })[];
   NextToken?: string;
 }
-export const GetAuthorizersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfAuthorizer), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -2792,7 +2786,7 @@ export interface GetDeploymentRequest {
   ApiId: string;
   DeploymentId: string;
 }
-export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     DeploymentId: S.String.pipe(T.HttpLabel("DeploymentId")),
@@ -2815,14 +2809,13 @@ export interface GetDeploymentResponse {
   DeploymentStatusMessage?: string;
   Description?: string;
 }
-export const GetDeploymentResponse =
-  CreateDeploymentResponse as any as S.Schema<GetDeploymentResponse>;
+const GetDeploymentResponse = CreateDeploymentResponse as any as S.Schema<GetDeploymentResponse>;
 export interface GetDeploymentsRequest {
   ApiId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -2846,14 +2839,14 @@ export interface Deployment {
   DeploymentStatusMessage?: string;
   Description?: string;
 }
-export const Deployment = CreateDeploymentResponse as any as S.Schema<Deployment>;
+const Deployment = CreateDeploymentResponse as any as S.Schema<Deployment>;
 export type __listOfDeployment = Deployment[];
-export const __listOfDeployment = /*@__PURE__*/ S.Array(Deployment);
+const __listOfDeployment = /*@__PURE__*/ S.Array(Deployment);
 export interface GetDeploymentsResponse {
   Items?: Deployment[];
   NextToken?: string;
 }
-export const GetDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfDeployment), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -2861,7 +2854,7 @@ export const GetDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainNameRequest {
   DomainName: string;
 }
-export const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v2/domainnames/{DomainName}" }),
@@ -2882,13 +2875,12 @@ export interface GetDomainNameResponse {
   RoutingMode?: RoutingMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetDomainNameResponse =
-  CreateDomainNameResponse as any as S.Schema<GetDomainNameResponse>;
+const GetDomainNameResponse = CreateDomainNameResponse as any as S.Schema<GetDomainNameResponse>;
 export interface GetDomainNamesRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2903,14 +2895,14 @@ export interface DomainName {
   RoutingMode?: RoutingMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const DomainName = CreateDomainNameResponse as any as S.Schema<DomainName>;
+const DomainName = CreateDomainNameResponse as any as S.Schema<DomainName>;
 export type __listOfDomainName = DomainName[];
-export const __listOfDomainName = /*@__PURE__*/ S.Array(DomainName);
+const __listOfDomainName = /*@__PURE__*/ S.Array(DomainName);
 export interface GetDomainNamesResponse {
   Items?: (DomainName & { DomainName: StringWithLengthBetween1And512 })[];
   NextToken?: string;
 }
-export const GetDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfDomainName), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -2919,7 +2911,7 @@ export interface GetIntegrationRequest {
   ApiId: string;
   IntegrationId: string;
 }
-export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     IntegrationId: S.String.pipe(T.HttpLabel("IntegrationId")),
@@ -2956,14 +2948,13 @@ export interface GetIntegrationResult {
   TimeoutInMillis?: number;
   TlsConfig?: TlsConfig;
 }
-export const GetIntegrationResult =
-  CreateIntegrationResult as any as S.Schema<GetIntegrationResult>;
+const GetIntegrationResult = CreateIntegrationResult as any as S.Schema<GetIntegrationResult>;
 export interface GetIntegrationResponseRequest {
   ApiId: string;
   IntegrationId: string;
   IntegrationResponseId: string;
 }
-export const GetIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     IntegrationId: S.String.pipe(T.HttpLabel("IntegrationId")),
@@ -2992,7 +2983,7 @@ export interface GetIntegrationResponseResponse {
   ResponseTemplates?: { [key: string]: string | undefined };
   TemplateSelectionExpression?: string;
 }
-export const GetIntegrationResponseResponse =
+const GetIntegrationResponseResponse =
   CreateIntegrationResponseResponse as any as S.Schema<GetIntegrationResponseResponse>;
 export interface GetIntegrationResponsesRequest {
   ApiId: string;
@@ -3000,7 +2991,7 @@ export interface GetIntegrationResponsesRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetIntegrationResponsesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     IntegrationId: S.String.pipe(T.HttpLabel("IntegrationId")),
@@ -3030,7 +3021,7 @@ export interface IntegrationResponse {
   ResponseTemplates?: { [key: string]: string | undefined };
   TemplateSelectionExpression?: string;
 }
-export const IntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentHandlingStrategy: S.optional(ContentHandlingStrategy),
     IntegrationResponseId: S.optional(S.String),
@@ -3050,12 +3041,12 @@ export const IntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "IntegrationResponse" }) as any as S.Schema<IntegrationResponse>;
 export type __listOfIntegrationResponse = IntegrationResponse[];
-export const __listOfIntegrationResponse = /*@__PURE__*/ S.Array(IntegrationResponse);
+const __listOfIntegrationResponse = /*@__PURE__*/ S.Array(IntegrationResponse);
 export interface GetIntegrationResponsesResponse {
   Items?: (IntegrationResponse & { IntegrationResponseKey: SelectionKey })[];
   NextToken?: string;
 }
-export const GetIntegrationResponsesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResponsesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Items: S.optional(__listOfIntegrationResponse),
     NextToken: S.optional(S.String),
@@ -3068,7 +3059,7 @@ export interface GetIntegrationsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -3106,14 +3097,14 @@ export interface Integration {
   TimeoutInMillis?: number;
   TlsConfig?: TlsConfig;
 }
-export const Integration = CreateIntegrationResult as any as S.Schema<Integration>;
+const Integration = CreateIntegrationResult as any as S.Schema<Integration>;
 export type __listOfIntegration = Integration[];
-export const __listOfIntegration = /*@__PURE__*/ S.Array(Integration);
+const __listOfIntegration = /*@__PURE__*/ S.Array(Integration);
 export interface GetIntegrationsResponse {
   Items?: Integration[];
   NextToken?: string;
 }
-export const GetIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfIntegration), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -3122,7 +3113,7 @@ export interface GetModelRequest {
   ApiId: string;
   ModelId: string;
 }
-export const GetModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ModelId: S.String.pipe(T.HttpLabel("ModelId")),
@@ -3144,13 +3135,13 @@ export interface GetModelResponse {
   Name?: string;
   Schema?: string;
 }
-export const GetModelResponse = CreateModelResponse as any as S.Schema<GetModelResponse>;
+const GetModelResponse = CreateModelResponse as any as S.Schema<GetModelResponse>;
 export interface GetModelsRequest {
   ApiId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -3166,14 +3157,14 @@ export interface Model {
   Name?: string;
   Schema?: string;
 }
-export const Model = CreateModelResponse as any as S.Schema<Model>;
+const Model = CreateModelResponse as any as S.Schema<Model>;
 export type __listOfModel = Model[];
-export const __listOfModel = /*@__PURE__*/ S.Array(Model);
+const __listOfModel = /*@__PURE__*/ S.Array(Model);
 export interface GetModelsResponse {
   Items?: (Model & { Name: StringWithLengthBetween1And128 })[];
   NextToken?: string;
 }
-export const GetModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfModel), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -3182,7 +3173,7 @@ export interface GetModelTemplateRequest {
   ApiId: string;
   ModelId: string;
 }
-export const GetModelTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModelTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ModelId: S.String.pipe(T.HttpLabel("ModelId")),
@@ -3200,13 +3191,13 @@ export const GetModelTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetModelTemplateResponse {
   Value?: string;
 }
-export const GetModelTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetModelTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.String) }).pipe(S.encodeKeys({ Value: "value" })),
 ).annotate({ identifier: "GetModelTemplateResponse" }) as any as S.Schema<GetModelTemplateResponse>;
 export interface GetPortalRequest {
   PortalId: string;
 }
-export const GetPortalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalId: S.String.pipe(T.HttpLabel("PortalId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/portals/{PortalId}" }), svc, auth, proto, ver, rules),
   ),
@@ -3216,14 +3207,14 @@ export type PreviewStatus =
   | "PREVIEW_FAILED"
   | "PREVIEW_READY"
   | (string & {});
-export const PreviewStatus = S.String;
+const PreviewStatus = S.String;
 
 export interface Preview {
   PreviewStatus?: PreviewStatus;
   PreviewUrl?: string;
   StatusException?: StatusException;
 }
-export const Preview = /*@__PURE__*/ S.suspend(() =>
+const Preview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PreviewStatus: S.optional(PreviewStatus),
     PreviewUrl: S.optional(S.String),
@@ -3273,7 +3264,7 @@ export interface GetPortalResponse {
   StatusException?: StatusException;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetPortalResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPortalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Authorization: S.optional(Authorization),
     EndpointConfiguration: S.optional(EndpointConfigurationResponse),
@@ -3312,7 +3303,7 @@ export interface GetPortalProductRequest {
   PortalProductId: string;
   ResourceOwnerAccountId?: string;
 }
-export const GetPortalProductRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortalProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
     ResourceOwnerAccountId: S.optional(S.String).pipe(T.HttpQuery("resourceOwnerAccountId")),
@@ -3341,7 +3332,7 @@ export interface GetPortalProductResponse {
   PortalProductId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetPortalProductResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPortalProductResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DisplayName: S.optional(S.String),
@@ -3365,7 +3356,7 @@ export const GetPortalProductResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetPortalProductSharingPolicyRequest {
   PortalProductId: string;
 }
-export const GetPortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v2/portalproducts/{PortalProductId}/sharingpolicy" }),
@@ -3384,7 +3375,7 @@ export interface GetPortalProductSharingPolicyResponse {
   PolicyDocument?: string;
   PortalProductId?: string;
 }
-export const GetPortalProductSharingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPortalProductSharingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PolicyDocument: S.optional(S.String), PortalProductId: S.optional(S.String) }).pipe(
     S.encodeKeys({ PolicyDocument: "policyDocument", PortalProductId: "portalProductId" }),
   ),
@@ -3396,7 +3387,7 @@ export interface GetProductPageRequest {
   ProductPageId: string;
   ResourceOwnerAccountId?: string;
 }
-export const GetProductPageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
     ProductPageId: S.String.pipe(T.HttpLabel("ProductPageId")),
@@ -3421,7 +3412,7 @@ export interface GetProductPageResponse {
   ProductPageArn?: string;
   ProductPageId?: string;
 }
-export const GetProductPageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProductPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(DisplayContent),
     LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -3442,7 +3433,7 @@ export interface GetProductRestEndpointPageRequest {
   ProductRestEndpointPageId: string;
   ResourceOwnerAccountId?: string;
 }
-export const GetProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IncludeRawDisplayContent: S.optional(S.String).pipe(T.HttpQuery("includeRawDisplayContent")),
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
@@ -3482,7 +3473,7 @@ export interface GetProductRestEndpointPageResponse {
   StatusException?: StatusException;
   TryItState?: TryItState;
 }
-export const GetProductRestEndpointPageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProductRestEndpointPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(EndpointDisplayContentResponse),
     LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -3513,7 +3504,7 @@ export interface GetRouteRequest {
   ApiId: string;
   RouteId: string;
 }
-export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     RouteId: S.String.pipe(T.HttpLabel("RouteId")),
@@ -3543,13 +3534,13 @@ export interface GetRouteResult {
   RouteResponseSelectionExpression?: string;
   Target?: string;
 }
-export const GetRouteResult = CreateRouteResult as any as S.Schema<GetRouteResult>;
+const GetRouteResult = CreateRouteResult as any as S.Schema<GetRouteResult>;
 export interface GetRouteResponseRequest {
   ApiId: string;
   RouteId: string;
   RouteResponseId: string;
 }
-export const GetRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     RouteId: S.String.pipe(T.HttpLabel("RouteId")),
@@ -3575,7 +3566,7 @@ export interface GetRouteResponseResponse {
   RouteResponseId?: string;
   RouteResponseKey?: string;
 }
-export const GetRouteResponseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRouteResponseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ModelSelectionExpression: S.optional(S.String),
     ResponseModels: S.optional(RouteModels),
@@ -3598,7 +3589,7 @@ export interface GetRouteResponsesRequest {
   NextToken?: string;
   RouteId: string;
 }
-export const GetRouteResponsesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRouteResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -3622,14 +3613,14 @@ export interface RouteResponse {
   RouteResponseId?: string;
   RouteResponseKey?: string;
 }
-export const RouteResponse = GetRouteResponseResponse as any as S.Schema<RouteResponse>;
+const RouteResponse = GetRouteResponseResponse as any as S.Schema<RouteResponse>;
 export type __listOfRouteResponse = RouteResponse[];
-export const __listOfRouteResponse = /*@__PURE__*/ S.Array(RouteResponse);
+const __listOfRouteResponse = /*@__PURE__*/ S.Array(RouteResponse);
 export interface GetRouteResponsesResponse {
   Items?: (RouteResponse & { RouteResponseKey: SelectionKey })[];
   NextToken?: string;
 }
-export const GetRouteResponsesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRouteResponsesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfRouteResponse), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -3641,7 +3632,7 @@ export interface GetRoutesRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -3665,14 +3656,14 @@ export interface Route {
   RouteResponseSelectionExpression?: string;
   Target?: string;
 }
-export const Route = CreateRouteResult as any as S.Schema<Route>;
+const Route = CreateRouteResult as any as S.Schema<Route>;
 export type __listOfRoute = Route[];
-export const __listOfRoute = /*@__PURE__*/ S.Array(Route);
+const __listOfRoute = /*@__PURE__*/ S.Array(Route);
 export interface GetRoutesResponse {
   Items?: (Route & { RouteKey: SelectionKey })[];
   NextToken?: string;
 }
-export const GetRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfRoute), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -3682,7 +3673,7 @@ export interface GetRoutingRuleRequest {
   DomainNameId?: string;
   RoutingRuleId: string;
 }
-export const GetRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     DomainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
@@ -3715,7 +3706,7 @@ export interface GetRoutingRuleResponse {
   RoutingRuleArn?: string;
   RoutingRuleId?: string;
 }
-export const GetRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Actions: S.optional(__listOfRoutingRuleAction),
     Conditions: S.optional(__listOfRoutingRuleCondition),
@@ -3736,7 +3727,7 @@ export interface GetStageRequest {
   ApiId: string;
   StageName: string;
 }
-export const GetStageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     StageName: S.String.pipe(T.HttpLabel("StageName")),
@@ -3767,13 +3758,13 @@ export interface GetStageResponse {
   StageVariables?: { [key: string]: string | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-export const GetStageResponse = CreateStageResponse as any as S.Schema<GetStageResponse>;
+const GetStageResponse = CreateStageResponse as any as S.Schema<GetStageResponse>;
 export interface GetStagesRequest {
   ApiId: string;
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetStagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
@@ -3798,14 +3789,14 @@ export interface Stage {
   StageVariables?: { [key: string]: string | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-export const Stage = CreateStageResponse as any as S.Schema<Stage>;
+const Stage = CreateStageResponse as any as S.Schema<Stage>;
 export type __listOfStage = Stage[];
-export const __listOfStage = /*@__PURE__*/ S.Array(Stage);
+const __listOfStage = /*@__PURE__*/ S.Array(Stage);
 export interface GetStagesResponse {
   Items?: (Stage & { StageName: StringWithLengthBetween1And128 })[];
   NextToken?: string;
 }
-export const GetStagesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfStage), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -3813,7 +3804,7 @@ export const GetStagesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetTagsRequest {
   ResourceArn: string;
 }
-export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -3821,13 +3812,13 @@ export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTagsResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const GetTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({ identifier: "GetTagsResponse" }) as any as S.Schema<GetTagsResponse>;
 export interface GetVpcLinkRequest {
   VpcLinkId: string;
 }
-export const GetVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcLinkId: S.String.pipe(T.HttpLabel("VpcLinkId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/vpclinks/{VpcLinkId}" }), svc, auth, proto, ver, rules),
   ),
@@ -3843,12 +3834,12 @@ export interface GetVpcLinkResponse {
   VpcLinkStatusMessage?: string;
   VpcLinkVersion?: VpcLinkVersion;
 }
-export const GetVpcLinkResponse = CreateVpcLinkResponse as any as S.Schema<GetVpcLinkResponse>;
+const GetVpcLinkResponse = CreateVpcLinkResponse as any as S.Schema<GetVpcLinkResponse>;
 export interface GetVpcLinksRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const GetVpcLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpcLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -3865,9 +3856,9 @@ export interface VpcLink {
   VpcLinkStatusMessage?: string;
   VpcLinkVersion?: VpcLinkVersion;
 }
-export const VpcLink = CreateVpcLinkResponse as any as S.Schema<VpcLink>;
+const VpcLink = CreateVpcLinkResponse as any as S.Schema<VpcLink>;
 export type __listOfVpcLink = VpcLink[];
-export const __listOfVpcLink = /*@__PURE__*/ S.Array(VpcLink);
+const __listOfVpcLink = /*@__PURE__*/ S.Array(VpcLink);
 export interface GetVpcLinksResponse {
   Items?: (VpcLink & {
     Name: StringWithLengthBetween1And128;
@@ -3877,7 +3868,7 @@ export interface GetVpcLinksResponse {
   })[];
   NextToken?: string;
 }
-export const GetVpcLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVpcLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfVpcLink), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -3887,7 +3878,7 @@ export interface ImportApiRequest {
   Body?: string;
   FailOnWarnings?: boolean;
 }
-export const ImportApiRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Basepath: S.optional(S.String).pipe(T.HttpQuery("basepath")),
     Body: S.optional(S.String),
@@ -3915,13 +3906,13 @@ export interface ImportApiResponse {
   Version?: string;
   Warnings?: string[];
 }
-export const ImportApiResponse = CreateApiResponse as any as S.Schema<ImportApiResponse>;
+const ImportApiResponse = CreateApiResponse as any as S.Schema<ImportApiResponse>;
 export interface ListPortalProductsRequest {
   MaxResults?: string;
   NextToken?: string;
   ResourceOwner?: string;
 }
-export const ListPortalProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPortalProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -3940,7 +3931,7 @@ export interface PortalProductSummary {
   PortalProductId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const PortalProductSummary = /*@__PURE__*/ S.suspend(() =>
+const PortalProductSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DisplayName: S.optional(S.String),
@@ -3960,7 +3951,7 @@ export const PortalProductSummary = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PortalProductSummary" }) as any as S.Schema<PortalProductSummary>;
 export type __listOfPortalProductSummary = PortalProductSummary[];
-export const __listOfPortalProductSummary = /*@__PURE__*/ S.Array(PortalProductSummary);
+const __listOfPortalProductSummary = /*@__PURE__*/ S.Array(PortalProductSummary);
 export interface ListPortalProductsResponse {
   Items?: (PortalProductSummary & {
     Description: __stringMin0Max1024;
@@ -3971,7 +3962,7 @@ export interface ListPortalProductsResponse {
   })[];
   NextToken?: string;
 }
-export const ListPortalProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPortalProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Items: S.optional(__listOfPortalProductSummary),
     NextToken: S.optional(S.String),
@@ -3983,7 +3974,7 @@ export interface ListPortalsRequest {
   MaxResults?: string;
   NextToken?: string;
 }
-export const ListPortalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPortalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4005,9 +3996,9 @@ export interface PortalSummary {
   StatusException?: StatusException;
   Tags?: { [key: string]: string | undefined };
 }
-export const PortalSummary = GetPortalResponse as any as S.Schema<PortalSummary>;
+const PortalSummary = GetPortalResponse as any as S.Schema<PortalSummary>;
 export type __listOfPortalSummary = PortalSummary[];
-export const __listOfPortalSummary = /*@__PURE__*/ S.Array(PortalSummary);
+const __listOfPortalSummary = /*@__PURE__*/ S.Array(PortalSummary);
 export interface ListPortalsResponse {
   Items?: (PortalSummary & {
     Authorization: Authorization & {
@@ -4042,7 +4033,7 @@ export interface ListPortalsResponse {
   })[];
   NextToken?: string;
 }
-export const ListPortalsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPortalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(__listOfPortalSummary), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Items: "items", NextToken: "nextToken" }),
   ),
@@ -4053,7 +4044,7 @@ export interface ListProductPagesRequest {
   PortalProductId: string;
   ResourceOwnerAccountId?: string;
 }
-export const ListProductPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4076,7 +4067,7 @@ export interface ProductPageSummaryNoBody {
   ProductPageArn?: string;
   ProductPageId?: string;
 }
-export const ProductPageSummaryNoBody = /*@__PURE__*/ S.suspend(() =>
+const ProductPageSummaryNoBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     PageTitle: S.optional(S.String),
@@ -4092,7 +4083,7 @@ export const ProductPageSummaryNoBody = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ProductPageSummaryNoBody" }) as any as S.Schema<ProductPageSummaryNoBody>;
 export type __listOfProductPageSummaryNoBody = ProductPageSummaryNoBody[];
-export const __listOfProductPageSummaryNoBody = /*@__PURE__*/ S.Array(ProductPageSummaryNoBody);
+const __listOfProductPageSummaryNoBody = /*@__PURE__*/ S.Array(ProductPageSummaryNoBody);
 export interface ListProductPagesResponse {
   Items?: (ProductPageSummaryNoBody & {
     LastModified: __timestampIso8601;
@@ -4102,7 +4093,7 @@ export interface ListProductPagesResponse {
   })[];
   NextToken?: string;
 }
-export const ListProductPagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Items: S.optional(__listOfProductPageSummaryNoBody),
     NextToken: S.optional(S.String),
@@ -4114,7 +4105,7 @@ export interface ListProductRestEndpointPagesRequest {
   PortalProductId: string;
   ResourceOwnerAccountId?: string;
 }
-export const ListProductRestEndpointPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductRestEndpointPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.String).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4147,7 +4138,7 @@ export interface ProductRestEndpointPageSummaryNoBody {
   StatusException?: StatusException;
   TryItState?: TryItState;
 }
-export const ProductRestEndpointPageSummaryNoBody = /*@__PURE__*/ S.suspend(() =>
+const ProductRestEndpointPageSummaryNoBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Endpoint: S.optional(S.String),
     LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -4175,7 +4166,7 @@ export const ProductRestEndpointPageSummaryNoBody = /*@__PURE__*/ S.suspend(() =
   identifier: "ProductRestEndpointPageSummaryNoBody",
 }) as any as S.Schema<ProductRestEndpointPageSummaryNoBody>;
 export type __listOfProductRestEndpointPageSummaryNoBody = ProductRestEndpointPageSummaryNoBody[];
-export const __listOfProductRestEndpointPageSummaryNoBody = /*@__PURE__*/ S.Array(
+const __listOfProductRestEndpointPageSummaryNoBody = /*@__PURE__*/ S.Array(
   ProductRestEndpointPageSummaryNoBody,
 );
 export interface ListProductRestEndpointPagesResponse {
@@ -4197,7 +4188,7 @@ export interface ListProductRestEndpointPagesResponse {
   })[];
   NextToken?: string;
 }
-export const ListProductRestEndpointPagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductRestEndpointPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Items: S.optional(__listOfProductRestEndpointPageSummaryNoBody),
     NextToken: S.optional(S.String),
@@ -4212,7 +4203,7 @@ export interface ListRoutingRulesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     DomainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
@@ -4236,9 +4227,9 @@ export interface RoutingRule {
   RoutingRuleArn?: string;
   RoutingRuleId?: string;
 }
-export const RoutingRule = GetRoutingRuleResponse as any as S.Schema<RoutingRule>;
+const RoutingRule = GetRoutingRuleResponse as any as S.Schema<RoutingRule>;
 export type __listOfRoutingRule = RoutingRule[];
-export const __listOfRoutingRule = /*@__PURE__*/ S.Array(RoutingRule);
+const __listOfRoutingRule = /*@__PURE__*/ S.Array(RoutingRule);
 export interface ListRoutingRulesResponse {
   NextToken?: string;
   RoutingRules?: (RoutingRule & {
@@ -4256,7 +4247,7 @@ export interface ListRoutingRulesResponse {
     })[];
   })[];
 }
-export const ListRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), RoutingRules: S.optional(__listOfRoutingRule) }).pipe(
     S.encodeKeys({ NextToken: "nextToken", RoutingRules: "routingRules" }),
   ),
@@ -4264,7 +4255,7 @@ export const ListRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PreviewPortalRequest {
   PortalId: string;
 }
-export const PreviewPortalRequest = /*@__PURE__*/ S.suspend(() =>
+const PreviewPortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PortalId: S.String.pipe(T.HttpLabel("PortalId")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/portals/{PortalId}/preview" }),
@@ -4277,12 +4268,12 @@ export const PreviewPortalRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PreviewPortalRequest" }) as any as S.Schema<PreviewPortalRequest>;
 export interface PreviewPortalResponse {}
-export const PreviewPortalResponse = None as any as S.Schema<PreviewPortalResponse>;
+const PreviewPortalResponse = None as any as S.Schema<PreviewPortalResponse>;
 export interface PublishPortalRequest {
   Description?: string;
   PortalId: string;
 }
-export const PublishPortalRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishPortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Description: S.optional(S.String), PortalId: S.String.pipe(T.HttpLabel("PortalId")) })
     .pipe(S.encodeKeys({ Description: "description" }))
     .pipe(
@@ -4297,12 +4288,12 @@ export const PublishPortalRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "PublishPortalRequest" }) as any as S.Schema<PublishPortalRequest>;
 export interface PublishPortalResponse {}
-export const PublishPortalResponse = None as any as S.Schema<PublishPortalResponse>;
+const PublishPortalResponse = None as any as S.Schema<PublishPortalResponse>;
 export interface PutPortalProductSharingPolicyRequest {
   PolicyDocument?: string;
   PortalProductId: string;
 }
-export const PutPortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyDocument: S.optional(S.String),
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
@@ -4322,7 +4313,7 @@ export const PutPortalProductSharingPolicyRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "PutPortalProductSharingPolicyRequest",
 }) as any as S.Schema<PutPortalProductSharingPolicyRequest>;
 export interface PutPortalProductSharingPolicyResponse {}
-export const PutPortalProductSharingPolicyResponse =
+const PutPortalProductSharingPolicyResponse =
   DeleteIntegrationResponseResponse as any as S.Schema<PutPortalProductSharingPolicyResponse>;
 export interface PutRoutingRuleRequest {
   Actions?: RoutingRuleAction[];
@@ -4332,7 +4323,7 @@ export interface PutRoutingRuleRequest {
   Priority?: number;
   RoutingRuleId: string;
 }
-export const PutRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Actions: S.optional(__listOfRoutingRuleAction),
     Conditions: S.optional(__listOfRoutingRuleCondition),
@@ -4370,15 +4361,14 @@ export interface PutRoutingRuleResponse {
   RoutingRuleArn?: string;
   RoutingRuleId?: string;
 }
-export const PutRoutingRuleResponse =
-  GetRoutingRuleResponse as any as S.Schema<PutRoutingRuleResponse>;
+const PutRoutingRuleResponse = GetRoutingRuleResponse as any as S.Schema<PutRoutingRuleResponse>;
 export interface ReimportApiRequest {
   ApiId: string;
   Basepath?: string;
   Body?: string;
   FailOnWarnings?: boolean;
 }
-export const ReimportApiRequest = /*@__PURE__*/ S.suspend(() =>
+const ReimportApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     Basepath: S.optional(S.String).pipe(T.HttpQuery("basepath")),
@@ -4407,12 +4397,12 @@ export interface ReimportApiResponse {
   Version?: string;
   Warnings?: string[];
 }
-export const ReimportApiResponse = CreateApiResponse as any as S.Schema<ReimportApiResponse>;
+const ReimportApiResponse = CreateApiResponse as any as S.Schema<ReimportApiResponse>;
 export interface ResetAuthorizersCacheRequest {
   ApiId: string;
   StageName: string;
 }
-export const ResetAuthorizersCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAuthorizersCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     StageName: S.String.pipe(T.HttpLabel("StageName")),
@@ -4430,12 +4420,12 @@ export const ResetAuthorizersCacheRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetAuthorizersCacheRequest",
 }) as any as S.Schema<ResetAuthorizersCacheRequest>;
 export interface ResetAuthorizersCacheResponse {}
-export const ResetAuthorizersCacheResponse = None as any as S.Schema<ResetAuthorizersCacheResponse>;
+const ResetAuthorizersCacheResponse = None as any as S.Schema<ResetAuthorizersCacheResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: S.optional(Tags) })
     .pipe(S.encodeKeys({ Tags: "tags" }))
     .pipe(
@@ -4450,12 +4440,12 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = None as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = None as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: S.optional(__listOf__string).pipe(T.HttpQuery("tagKeys")),
@@ -4471,7 +4461,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = None as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = None as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApiRequest {
   ApiId: string;
   ApiKeySelectionExpression?: string;
@@ -4487,7 +4477,7 @@ export interface UpdateApiRequest {
   Target?: string;
   Version?: string;
 }
-export const UpdateApiRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ApiKeySelectionExpression: S.optional(S.String),
@@ -4542,7 +4532,7 @@ export interface UpdateApiResponse {
   Version?: string;
   Warnings?: string[];
 }
-export const UpdateApiResponse = CreateApiResponse as any as S.Schema<UpdateApiResponse>;
+const UpdateApiResponse = CreateApiResponse as any as S.Schema<UpdateApiResponse>;
 export interface UpdateApiMappingRequest {
   ApiId?: string;
   ApiMappingId: string;
@@ -4550,7 +4540,7 @@ export interface UpdateApiMappingRequest {
   DomainName: string;
   Stage?: string;
 }
-export const UpdateApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.optional(S.String),
     ApiMappingId: S.String.pipe(T.HttpLabel("ApiMappingId")),
@@ -4576,7 +4566,7 @@ export interface UpdateApiMappingResponse {
   ApiMappingKey?: string;
   Stage?: string;
 }
-export const UpdateApiMappingResponse =
+const UpdateApiMappingResponse =
   CreateApiMappingResponse as any as S.Schema<UpdateApiMappingResponse>;
 export interface UpdateAuthorizerRequest {
   ApiId: string;
@@ -4592,7 +4582,7 @@ export interface UpdateAuthorizerRequest {
   JwtConfiguration?: JWTConfiguration;
   Name?: string;
 }
-export const UpdateAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     AuthorizerCredentialsArn: S.optional(S.String),
@@ -4645,14 +4635,14 @@ export interface UpdateAuthorizerResponse {
   JwtConfiguration?: JWTConfiguration;
   Name?: string;
 }
-export const UpdateAuthorizerResponse =
+const UpdateAuthorizerResponse =
   CreateAuthorizerResponse as any as S.Schema<UpdateAuthorizerResponse>;
 export interface UpdateDeploymentRequest {
   ApiId: string;
   DeploymentId: string;
   Description?: string;
 }
-export const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     DeploymentId: S.String.pipe(T.HttpLabel("DeploymentId")),
@@ -4678,7 +4668,7 @@ export interface UpdateDeploymentResponse {
   DeploymentStatusMessage?: string;
   Description?: string;
 }
-export const UpdateDeploymentResponse =
+const UpdateDeploymentResponse =
   CreateDeploymentResponse as any as S.Schema<UpdateDeploymentResponse>;
 export interface UpdateDomainNameRequest {
   DomainName: string;
@@ -4686,7 +4676,7 @@ export interface UpdateDomainNameRequest {
   MutualTlsAuthentication?: MutualTlsAuthenticationInput;
   RoutingMode?: RoutingMode;
 }
-export const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     DomainNameConfigurations: S.optional(DomainNameConfigurations),
@@ -4720,7 +4710,7 @@ export interface UpdateDomainNameResponse {
   RoutingMode?: RoutingMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateDomainNameResponse =
+const UpdateDomainNameResponse =
   CreateDomainNameResponse as any as S.Schema<UpdateDomainNameResponse>;
 export interface UpdateIntegrationRequest {
   ApiId: string;
@@ -4743,7 +4733,7 @@ export interface UpdateIntegrationRequest {
   TimeoutInMillis?: number;
   TlsConfig?: TlsConfigInput;
 }
-export const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ConnectionId: S.optional(S.String),
@@ -4819,8 +4809,7 @@ export interface UpdateIntegrationResult {
   TimeoutInMillis?: number;
   TlsConfig?: TlsConfig;
 }
-export const UpdateIntegrationResult =
-  CreateIntegrationResult as any as S.Schema<UpdateIntegrationResult>;
+const UpdateIntegrationResult = CreateIntegrationResult as any as S.Schema<UpdateIntegrationResult>;
 export interface UpdateIntegrationResponseRequest {
   ApiId: string;
   ContentHandlingStrategy?: ContentHandlingStrategy;
@@ -4831,7 +4820,7 @@ export interface UpdateIntegrationResponseRequest {
   ResponseTemplates?: { [key: string]: string | undefined };
   TemplateSelectionExpression?: string;
 }
-export const UpdateIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ContentHandlingStrategy: S.optional(ContentHandlingStrategy),
@@ -4875,7 +4864,7 @@ export interface UpdateIntegrationResponseResponse {
   ResponseTemplates?: { [key: string]: string | undefined };
   TemplateSelectionExpression?: string;
 }
-export const UpdateIntegrationResponseResponse =
+const UpdateIntegrationResponseResponse =
   CreateIntegrationResponseResponse as any as S.Schema<UpdateIntegrationResponseResponse>;
 export interface UpdateModelRequest {
   ApiId: string;
@@ -4885,7 +4874,7 @@ export interface UpdateModelRequest {
   Name?: string;
   Schema?: string;
 }
-export const UpdateModelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ContentType: S.optional(S.String),
@@ -4920,7 +4909,7 @@ export interface UpdateModelResponse {
   Name?: string;
   Schema?: string;
 }
-export const UpdateModelResponse = CreateModelResponse as any as S.Schema<UpdateModelResponse>;
+const UpdateModelResponse = CreateModelResponse as any as S.Schema<UpdateModelResponse>;
 export interface UpdatePortalRequest {
   Authorization?: Authorization;
   EndpointConfiguration?: EndpointConfigurationRequest;
@@ -4930,7 +4919,7 @@ export interface UpdatePortalRequest {
   PortalId: string;
   RumAppMonitorName?: string;
 }
-export const UpdatePortalRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePortalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Authorization: S.optional(Authorization),
     EndpointConfiguration: S.optional(EndpointConfigurationRequest),
@@ -4998,14 +4987,14 @@ export interface UpdatePortalResponse {
   StatusException?: StatusException;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdatePortalResponse = GetPortalResponse as any as S.Schema<UpdatePortalResponse>;
+const UpdatePortalResponse = GetPortalResponse as any as S.Schema<UpdatePortalResponse>;
 export interface UpdatePortalProductRequest {
   Description?: string;
   DisplayName?: string;
   DisplayOrder?: DisplayOrder;
   PortalProductId: string;
 }
-export const UpdatePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePortalProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DisplayName: S.optional(S.String),
@@ -5046,14 +5035,14 @@ export interface UpdatePortalProductResponse {
   PortalProductId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdatePortalProductResponse =
+const UpdatePortalProductResponse =
   CreatePortalProductResponse as any as S.Schema<UpdatePortalProductResponse>;
 export interface UpdateProductPageRequest {
   DisplayContent?: DisplayContent;
   PortalProductId: string;
   ProductPageId: string;
 }
-export const UpdateProductPageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(DisplayContent),
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
@@ -5080,7 +5069,7 @@ export interface UpdateProductPageResponse {
   ProductPageArn?: string;
   ProductPageId?: string;
 }
-export const UpdateProductPageResponse =
+const UpdateProductPageResponse =
   CreateProductPageResponse as any as S.Schema<UpdateProductPageResponse>;
 export interface UpdateProductRestEndpointPageRequest {
   DisplayContent?: EndpointDisplayContent;
@@ -5088,7 +5077,7 @@ export interface UpdateProductRestEndpointPageRequest {
   ProductRestEndpointPageId: string;
   TryItState?: TryItState;
 }
-export const UpdateProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductRestEndpointPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisplayContent: S.optional(EndpointDisplayContent),
     PortalProductId: S.String.pipe(T.HttpLabel("PortalProductId")),
@@ -5129,7 +5118,7 @@ export interface UpdateProductRestEndpointPageResponse {
   StatusException?: StatusException;
   TryItState?: TryItState;
 }
-export const UpdateProductRestEndpointPageResponse =
+const UpdateProductRestEndpointPageResponse =
   CreateProductRestEndpointPageResponse as any as S.Schema<UpdateProductRestEndpointPageResponse>;
 export interface UpdateRouteRequest {
   ApiId: string;
@@ -5146,7 +5135,7 @@ export interface UpdateRouteRequest {
   RouteResponseSelectionExpression?: string;
   Target?: string;
 }
-export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ApiKeyRequired: S.optional(S.Boolean),
@@ -5203,7 +5192,7 @@ export interface UpdateRouteResult {
   RouteResponseSelectionExpression?: string;
   Target?: string;
 }
-export const UpdateRouteResult = CreateRouteResult as any as S.Schema<UpdateRouteResult>;
+const UpdateRouteResult = CreateRouteResult as any as S.Schema<UpdateRouteResult>;
 export interface UpdateRouteResponseRequest {
   ApiId: string;
   ModelSelectionExpression?: string;
@@ -5213,7 +5202,7 @@ export interface UpdateRouteResponseRequest {
   RouteResponseId: string;
   RouteResponseKey?: string;
 }
-export const UpdateRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRouteResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
     ModelSelectionExpression: S.optional(S.String),
@@ -5254,7 +5243,7 @@ export interface UpdateRouteResponseResponse {
   RouteResponseId?: string;
   RouteResponseKey?: string;
 }
-export const UpdateRouteResponseResponse =
+const UpdateRouteResponseResponse =
   CreateRouteResponseResponse as any as S.Schema<UpdateRouteResponseResponse>;
 export interface UpdateStageRequest {
   AccessLogSettings?: AccessLogSettings;
@@ -5268,7 +5257,7 @@ export interface UpdateStageRequest {
   StageName: string;
   StageVariables?: { [key: string]: string | undefined };
 }
-export const UpdateStageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessLogSettings: S.optional(AccessLogSettings),
     ApiId: S.String.pipe(T.HttpLabel("ApiId")),
@@ -5320,12 +5309,12 @@ export interface UpdateStageResponse {
   StageVariables?: { [key: string]: string | undefined };
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateStageResponse = CreateStageResponse as any as S.Schema<UpdateStageResponse>;
+const UpdateStageResponse = CreateStageResponse as any as S.Schema<UpdateStageResponse>;
 export interface UpdateVpcLinkRequest {
   Name?: string;
   VpcLinkId: string;
 }
-export const UpdateVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), VpcLinkId: S.String.pipe(T.HttpLabel("VpcLinkId")) })
     .pipe(S.encodeKeys({ Name: "name" }))
     .pipe(
@@ -5350,8 +5339,7 @@ export interface UpdateVpcLinkResponse {
   VpcLinkStatusMessage?: string;
   VpcLinkVersion?: VpcLinkVersion;
 }
-export const UpdateVpcLinkResponse =
-  CreateVpcLinkResponse as any as S.Schema<UpdateVpcLinkResponse>;
+const UpdateVpcLinkResponse = CreateVpcLinkResponse as any as S.Schema<UpdateVpcLinkResponse>;
 export type CreateApiError =
   | BadRequestException
   | ConflictException

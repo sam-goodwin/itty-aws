@@ -35,7 +35,7 @@ export interface CreateWarehouseViewLinkRequest {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
-export const CreateWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -53,7 +53,7 @@ export const CreateWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWarehouseViewLinkRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -69,14 +69,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -89,7 +84,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -122,7 +117,7 @@ export interface ViewLink {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
-export const ViewLink = /*@__PURE__*/ S.suspend(() =>
+const ViewLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -143,7 +138,7 @@ export interface GetWarehouseViewLinkRequest {
   /** A UUID string identifying this data warehouse join. */
   id: string;
 }
-export const GetWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -168,7 +163,7 @@ export interface ListWarehouseViewLinksRequest {
   /** A search term. */
   search?: string;
 }
-export const ListWarehouseViewLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseViewLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -182,7 +177,7 @@ export const ListWarehouseViewLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWarehouseViewLinksRequest>;
 
 export type PaginatedViewLinkListResultsList = Array<ViewLink>;
-export const PaginatedViewLinkListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedViewLinkListResultsList = /*@__PURE__*/ S.Array(
   ViewLink,
 ) as any as S.Schema<PaginatedViewLinkListResultsList>;
 
@@ -192,7 +187,7 @@ export interface PaginatedViewLinkList {
   previous?: string | null;
   results: PaginatedViewLinkListResultsList;
 }
-export const PaginatedViewLinkList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedViewLinkList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -221,7 +216,7 @@ export interface UpdateWarehouseViewLinkRequest {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
-export const UpdateWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseViewLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -263,7 +258,7 @@ export interface UpdateWarehouseViewLinksPartialRequest {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
-export const UpdateWarehouseViewLinksPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseViewLinksPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -291,7 +286,7 @@ export interface WarehouseViewLinksDestroyRequest {
   /** A UUID string identifying this data warehouse join. */
   id: string;
 }
-export const WarehouseViewLinksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseViewLinksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -307,9 +302,7 @@ export const WarehouseViewLinksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseViewLinksDestroyRequest>;
 
 export interface WarehouseViewLinksDestroyResponse {}
-export const WarehouseViewLinksDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const WarehouseViewLinksDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "WarehouseViewLinksDestroyResponse",
 }) as any as S.Schema<WarehouseViewLinksDestroyResponse>;
 
@@ -325,7 +318,7 @@ export interface WarehouseViewLinksValidateCreateRequest {
   /** Column or HogQL expression on the source table used as the join key. */
   source_table_key: string;
 }
-export const WarehouseViewLinksValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseViewLinksValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     joining_table_name: S.String,
@@ -345,19 +338,19 @@ export const WarehouseViewLinksValidateCreateRequest = /*@__PURE__*/ S.suspend((
 
 /** Column names for each row in results. */
 export type ViewLinkValidationResponseColumnsList = Array<string>;
-export const ViewLinkValidationResponseColumnsList = /*@__PURE__*/ S.Array(
+const ViewLinkValidationResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ViewLinkValidationResponseColumnsList>;
 
 export type ViewLinkValidationResponseResultsItemList = Array<unknown>;
-export const ViewLinkValidationResponseResultsItemList = /*@__PURE__*/ S.Array(
+const ViewLinkValidationResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ViewLinkValidationResponseResultsItemList>;
 
 /** Distinct source and joining key pairs from the joined result, at most 5. */
 export type ViewLinkValidationResponseResultsList =
   Array<ViewLinkValidationResponseResultsItemList>;
-export const ViewLinkValidationResponseResultsList = /*@__PURE__*/ S.Array(
+const ViewLinkValidationResponseResultsList = /*@__PURE__*/ S.Array(
   ViewLinkValidationResponseResultsItemList,
 ) as any as S.Schema<ViewLinkValidationResponseResultsList>;
 
@@ -379,7 +372,7 @@ export interface ViewLinkValidationResponse {
   /** matched_rows divided by total_rows, between 0 and 1. Null when the match-rate query failed or no rows were sampled. */
   match_rate: number | null;
 }
-export const ViewLinkValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const ViewLinkValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_valid: S.Boolean,
     msg: S.NullOr(S.String),

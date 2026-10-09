@@ -81,13 +81,13 @@ export type NfsShareStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING";
-export const NfsShareStateEnum = S.String;
+const NfsShareStateEnum = S.String;
 
 export type AllowedClientMountPermissionsEnum =
   | "MOUNT_PERMISSIONS_UNSPECIFIED"
   | "READ"
   | "READ_WRITE";
-export const AllowedClientMountPermissionsEnum = S.String;
+const AllowedClientMountPermissionsEnum = S.String;
 
 /** Represents an 'access point' for the share. */
 export interface AllowedClient {
@@ -108,7 +108,7 @@ export interface AllowedClient {
   /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
   noRootSquash?: boolean;
 }
-export const AllowedClient = /*@__PURE__*/ S.suspend(() =>
+const AllowedClient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     mountPermissions: S.optional(AllowedClientMountPermissionsEnum),
@@ -122,15 +122,15 @@ export const AllowedClient = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowedClient" }) as any as S.Schema<AllowedClient>;
 
 export type AllowedClientList = Array<AllowedClient>;
-export const AllowedClientList = /*@__PURE__*/ S.Array(
+const AllowedClientList = /*@__PURE__*/ S.Array(
   AllowedClient,
 ) as any as S.Schema<AllowedClientList>;
 
 export type NfsShareStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
-export const NfsShareStorageTypeEnum = S.String;
+const NfsShareStorageTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** An NFS share. */
 export interface NfsShare {
@@ -155,7 +155,7 @@ export interface NfsShare {
   /** Labels as key value pairs. */
   labels?: StringMap;
 }
-export const NfsShare = /*@__PURE__*/ S.suspend(() =>
+const NfsShare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(NfsShareStateEnum),
@@ -176,7 +176,7 @@ export interface CreateProjectsLocationsNfsSharesRequest {
   /** Request body */
   body?: NfsShare;
 }
-export const CreateProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(NfsShare.pipe(T.HttpBody())),
@@ -192,15 +192,10 @@ export const CreateProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsNfsSharesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -211,7 +206,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -232,7 +227,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     error: S.optional(Status),
@@ -243,7 +238,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type VolumeConfigPerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
@@ -251,10 +246,10 @@ export type VolumeConfigPerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
   | "VOLUME_PERFORMANCE_TIER_HT"
   | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE";
-export const VolumeConfigPerformanceTierEnum = S.String;
+const VolumeConfigPerformanceTierEnum = S.String;
 
 export type NfsExportPermissionsEnum = "PERMISSIONS_UNSPECIFIED" | "READ_ONLY" | "READ_WRITE";
-export const NfsExportPermissionsEnum = S.String;
+const NfsExportPermissionsEnum = S.String;
 
 /** A NFS export entry. */
 export interface NfsExport {
@@ -273,7 +268,7 @@ export interface NfsExport {
   /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
   noRootSquash?: boolean;
 }
-export const NfsExport = /*@__PURE__*/ S.suspend(() =>
+const NfsExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowSuid: S.optional(S.Boolean),
     networkId: S.optional(S.String),
@@ -286,10 +281,10 @@ export const NfsExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NfsExport" }) as any as S.Schema<NfsExport>;
 
 export type NfsExportList = Array<NfsExport>;
-export const NfsExportList = /*@__PURE__*/ S.Array(NfsExport) as any as S.Schema<NfsExportList>;
+const NfsExportList = /*@__PURE__*/ S.Array(NfsExport) as any as S.Schema<NfsExportList>;
 
 export type VolumeConfigProtocolEnum = "PROTOCOL_UNSPECIFIED" | "PROTOCOL_FC" | "PROTOCOL_NFS";
-export const VolumeConfigProtocolEnum = S.String;
+const VolumeConfigProtocolEnum = S.String;
 
 /** A LUN(Logical Unit Number) range. */
 export interface LunRange {
@@ -298,7 +293,7 @@ export interface LunRange {
   /** Number of LUNs to create. */
   quantity?: number;
 }
-export const LunRange = /*@__PURE__*/ S.suspend(() =>
+const LunRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeGb: S.optional(S.Number),
     quantity: S.optional(S.Number),
@@ -306,10 +301,10 @@ export const LunRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LunRange" }) as any as S.Schema<LunRange>;
 
 export type LunRangeList = Array<LunRange>;
-export const LunRangeList = /*@__PURE__*/ S.Array(LunRange) as any as S.Schema<LunRangeList>;
+const LunRangeList = /*@__PURE__*/ S.Array(LunRange) as any as S.Schema<LunRangeList>;
 
 export type VolumeConfigTypeEnum = "TYPE_UNSPECIFIED" | "FLASH" | "DISK";
-export const VolumeConfigTypeEnum = S.String;
+const VolumeConfigTypeEnum = S.String;
 
 /** Configuration parameters for a new volume. */
 export interface VolumeConfig {
@@ -338,7 +333,7 @@ export interface VolumeConfig {
   /** The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning. */
   gcpService?: string;
 }
-export const VolumeConfig = /*@__PURE__*/ S.suspend(() =>
+const VolumeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userNote: S.optional(S.String),
     machineIds: S.optional(StringList),
@@ -356,15 +351,13 @@ export const VolumeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeConfig" }) as any as S.Schema<VolumeConfig>;
 
 export type VolumeConfigList = Array<VolumeConfig>;
-export const VolumeConfigList = /*@__PURE__*/ S.Array(
-  VolumeConfig,
-) as any as S.Schema<VolumeConfigList>;
+const VolumeConfigList = /*@__PURE__*/ S.Array(VolumeConfig) as any as S.Schema<VolumeConfigList>;
 
 export type InstanceConfigNetworkConfigEnum =
   | "NETWORKCONFIG_UNSPECIFIED"
   | "SINGLE_VLAN"
   | "MULTI_VLAN";
-export const InstanceConfigNetworkConfigEnum = S.String;
+const InstanceConfigNetworkConfigEnum = S.String;
 
 /** A network. */
 export interface NetworkAddress {
@@ -375,7 +368,7 @@ export interface NetworkAddress {
   /** Name of the existing network to use. */
   existingNetworkId?: string;
 }
-export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
+const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     networkId: S.optional(S.String),
@@ -384,7 +377,7 @@ export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAddress" }) as any as S.Schema<NetworkAddress>;
 
 export type LogicalNetworkInterfaceNetworkTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
-export const LogicalNetworkInterfaceNetworkTypeEnum = S.String;
+const LogicalNetworkInterfaceNetworkTypeEnum = S.String;
 
 /** Each logical network interface is effectively a network and IP pair. */
 export interface LogicalNetworkInterface {
@@ -399,7 +392,7 @@ export interface LogicalNetworkInterface {
   /** IP address in the network */
   ipAddress?: string;
 }
-export const LogicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultGateway: S.optional(S.Boolean),
     network: S.optional(S.String),
@@ -410,7 +403,7 @@ export const LogicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogicalNetworkInterface" }) as any as S.Schema<LogicalNetworkInterface>;
 
 export type LogicalNetworkInterfaceList = Array<LogicalNetworkInterface>;
-export const LogicalNetworkInterfaceList = /*@__PURE__*/ S.Array(
+const LogicalNetworkInterfaceList = /*@__PURE__*/ S.Array(
   LogicalNetworkInterface,
 ) as any as S.Schema<LogicalNetworkInterfaceList>;
 
@@ -423,7 +416,7 @@ export interface GoogleCloudBaremetalsolutionV2LogicalInterface {
   /** List of logical network interfaces within a logical interface. */
   logicalNetworkInterfaces?: LogicalNetworkInterfaceList;
 }
-export const GoogleCloudBaremetalsolutionV2LogicalInterface = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBaremetalsolutionV2LogicalInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     interfaceIndex: S.optional(S.Number),
@@ -435,7 +428,7 @@ export const GoogleCloudBaremetalsolutionV2LogicalInterface = /*@__PURE__*/ S.su
 
 export type GoogleCloudBaremetalsolutionV2LogicalInterfaceList =
   Array<GoogleCloudBaremetalsolutionV2LogicalInterface>;
-export const GoogleCloudBaremetalsolutionV2LogicalInterfaceList = /*@__PURE__*/ S.Array(
+const GoogleCloudBaremetalsolutionV2LogicalInterfaceList = /*@__PURE__*/ S.Array(
   GoogleCloudBaremetalsolutionV2LogicalInterface,
 ) as any as S.Schema<GoogleCloudBaremetalsolutionV2LogicalInterfaceList>;
 
@@ -470,7 +463,7 @@ export interface InstanceConfig {
   /** List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true. */
   logicalInterfaces?: GoogleCloudBaremetalsolutionV2LogicalInterfaceList;
 }
-export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceType: S.optional(S.String),
     osImage: S.optional(S.String),
@@ -490,7 +483,7 @@ export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 
 export type InstanceConfigList = Array<InstanceConfig>;
-export const InstanceConfigList = /*@__PURE__*/ S.Array(
+const InstanceConfigList = /*@__PURE__*/ S.Array(
   InstanceConfig,
 ) as any as S.Schema<InstanceConfigList>;
 
@@ -503,10 +496,10 @@ export type ProvisioningConfigStateEnum =
   | "VALIDATED"
   | "CANCELLED"
   | "FAILED";
-export const ProvisioningConfigStateEnum = S.String;
+const ProvisioningConfigStateEnum = S.String;
 
 export type NetworkConfigTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
-export const NetworkConfigTypeEnum = S.String;
+const NetworkConfigTypeEnum = S.String;
 
 export type NetworkConfigBandwidthEnum =
   | "BANDWIDTH_UNSPECIFIED"
@@ -514,7 +507,7 @@ export type NetworkConfigBandwidthEnum =
   | "BW_2_GBPS"
   | "BW_5_GBPS"
   | "BW_10_GBPS";
-export const NetworkConfigBandwidthEnum = S.String;
+const NetworkConfigBandwidthEnum = S.String;
 
 export type NetworkConfigServiceCidrEnum =
   | "SERVICE_CIDR_UNSPECIFIED"
@@ -522,7 +515,7 @@ export type NetworkConfigServiceCidrEnum =
   | "HIGH_26"
   | "HIGH_27"
   | "HIGH_28";
-export const NetworkConfigServiceCidrEnum = S.String;
+const NetworkConfigServiceCidrEnum = S.String;
 
 /** A GCP vlan attachment. */
 export interface IntakeVlanAttachment {
@@ -531,7 +524,7 @@ export interface IntakeVlanAttachment {
   /** Identifier of the VLAN attachment. */
   id?: string;
 }
-export const IntakeVlanAttachment = /*@__PURE__*/ S.suspend(() =>
+const IntakeVlanAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pairingKey: S.optional(S.String),
     id: S.optional(S.String),
@@ -539,7 +532,7 @@ export const IntakeVlanAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntakeVlanAttachment" }) as any as S.Schema<IntakeVlanAttachment>;
 
 export type IntakeVlanAttachmentList = Array<IntakeVlanAttachment>;
-export const IntakeVlanAttachmentList = /*@__PURE__*/ S.Array(
+const IntakeVlanAttachmentList = /*@__PURE__*/ S.Array(
   IntakeVlanAttachment,
 ) as any as S.Schema<IntakeVlanAttachmentList>;
 
@@ -570,7 +563,7 @@ export interface NetworkConfig {
   /** CIDR range of the network. */
   cidr?: string;
 }
-export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vlanSameProject: S.optional(S.Boolean),
     gcpService: S.optional(S.String),
@@ -588,7 +581,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 export type NetworkConfigList = Array<NetworkConfig>;
-export const NetworkConfigList = /*@__PURE__*/ S.Array(
+const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
 
@@ -625,7 +618,7 @@ export interface ProvisioningConfig {
   /** Networks to be created. */
   networks?: NetworkConfigList;
 }
-export const ProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcScEnabled: S.optional(S.Boolean),
     ticketId: S.optional(S.String),
@@ -653,7 +646,7 @@ export interface CreateProjectsLocationsProvisioningConfigsRequest {
   /** Request body */
   body?: ProvisioningConfig;
 }
-export const CreateProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     email: S.optional(S.String.pipe(T.Query())),
@@ -676,7 +669,7 @@ export interface SSHKey {
   /** The public SSH key. This must be in OpenSSH .authorized_keys format. */
   publicKey?: string;
 }
-export const SSHKey = /*@__PURE__*/ S.suspend(() =>
+const SSHKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     publicKey: S.optional(S.String),
@@ -691,7 +684,7 @@ export interface CreateProjectsLocationsSshKeysRequest {
   /** Request body */
   body?: SSHKey;
 }
-export const CreateProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshKeyId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -708,7 +701,7 @@ export const CreateProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectsLocationsSshKeysRequest>;
 
 export type VolumeSnapshotTypeEnum = "SNAPSHOT_TYPE_UNSPECIFIED" | "AD_HOC" | "SCHEDULED";
-export const VolumeSnapshotTypeEnum = S.String;
+const VolumeSnapshotTypeEnum = S.String;
 
 /** A snapshot of a volume. Only boot volumes can have snapshots. */
 export interface VolumeSnapshot {
@@ -725,7 +718,7 @@ export interface VolumeSnapshot {
   /** The description of the snapshot. */
   description?: string;
 }
-export const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
+const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(VolumeSnapshotTypeEnum),
     storageVolume: S.optional(S.String),
@@ -742,7 +735,7 @@ export interface CreateProjectsLocationsVolumesSnapshotsRequest {
   /** Request body */
   body?: VolumeSnapshot;
 }
-export const CreateProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(VolumeSnapshot.pipe(T.HttpBody())),
@@ -761,7 +754,7 @@ export interface DeleteProjectsLocationsNfsSharesRequest {
   /** Required. The name of the NFS share to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -779,7 +772,7 @@ export interface DeleteProjectsLocationsSshKeysRequest {
   /** Required. The name of the SSH key to delete. Currently, the only valid value for the location is "global". */
   name: string;
 }
-export const DeleteProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -795,7 +788,7 @@ export const DeleteProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() 
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -803,7 +796,7 @@ export interface DeleteProjectsLocationsVolumesSnapshotsRequest {
   /** Required. The name of the snapshot to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -824,7 +817,7 @@ export interface DetachLunRequest {
   /** If true, performs lun unmapping without instance reboot. */
   skipReboot?: boolean;
 }
-export const DetachLunRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachLunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lun: S.optional(S.String),
     skipReboot: S.optional(S.Boolean),
@@ -837,7 +830,7 @@ export interface DetachLunProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DetachLunRequest;
 }
-export const DetachLunProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachLunProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     body: S.optional(DetachLunRequest.pipe(T.HttpBody())),
@@ -854,7 +847,7 @@ export const DetachLunProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspen
 
 /** Message requesting to perform disable hyperthreading operation on a server. */
 export interface DisableHyperthreadingRequest {}
-export const DisableHyperthreadingRequest = Empty as any as S.Schema<DisableHyperthreadingRequest>;
+const DisableHyperthreadingRequest = Empty as any as S.Schema<DisableHyperthreadingRequest>;
 
 export interface DisableHyperthreadingProjectsLocationsInstancesRequest {
   /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
@@ -862,7 +855,7 @@ export interface DisableHyperthreadingProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const DisableHyperthreadingProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableHyperthreadingProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -879,16 +872,14 @@ export const DisableHyperthreadingProjectsLocationsInstancesRequest = /*@__PURE_
 
 /** Message for disabling the interactive serial console on an instance. */
 export type DisableInteractiveSerialConsoleRequest = DisableHyperthreadingRequest;
-export const DisableInteractiveSerialConsoleRequest = DisableHyperthreadingRequest;
-
 export interface DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -899,21 +890,19 @@ export const DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest =
         baseUrl: "https://baremetalsolution.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest>;
+).annotate({
+  identifier: "DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest",
+}) as any as S.Schema<DisableInteractiveSerialConsoleProjectsLocationsInstancesRequest>;
 
 /** Message requesting to perform enable hyperthreading operation on a server. */
 export type EnableHyperthreadingRequest = DisableHyperthreadingRequest;
-export const EnableHyperthreadingRequest = DisableHyperthreadingRequest;
-
 export interface EnableHyperthreadingProjectsLocationsInstancesRequest {
   /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const EnableHyperthreadingProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableHyperthreadingProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -930,16 +919,14 @@ export const EnableHyperthreadingProjectsLocationsInstancesRequest = /*@__PURE__
 
 /** Message for enabling the interactive serial console on an instance. */
 export type EnableInteractiveSerialConsoleRequest = DisableHyperthreadingRequest;
-export const EnableInteractiveSerialConsoleRequest = DisableHyperthreadingRequest;
-
 export interface EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -950,21 +937,19 @@ export const EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest =
         baseUrl: "https://baremetalsolution.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest",
-  }) as any as S.Schema<EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest>;
+).annotate({
+  identifier: "EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest",
+}) as any as S.Schema<EnableInteractiveSerialConsoleProjectsLocationsInstancesRequest>;
 
 /** Request for skip volume cooloff and delete it. */
 export type EvictVolumeRequest = DisableHyperthreadingRequest;
-export const EvictVolumeRequest = DisableHyperthreadingRequest;
-
 export interface EvictProjectsLocationsVolumesRequest {
   /** Required. The name of the Volume. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const EvictProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const EvictProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -981,15 +966,13 @@ export const EvictProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Request for skip lun cooloff and delete it. */
 export type EvictLunRequest = DisableHyperthreadingRequest;
-export const EvictLunRequest = DisableHyperthreadingRequest;
-
 export interface EvictProjectsLocationsVolumesLunsRequest {
   /** Required. The name of the lun. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const EvictProjectsLocationsVolumesLunsRequest = /*@__PURE__*/ S.suspend(() =>
+const EvictProjectsLocationsVolumesLunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -1008,7 +991,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1035,7 +1018,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
@@ -1049,7 +1032,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1067,7 +1050,7 @@ export type InstanceWorkloadProfileEnum =
   | "WORKLOAD_PROFILE_UNSPECIFIED"
   | "WORKLOAD_PROFILE_GENERIC"
   | "WORKLOAD_PROFILE_HANA";
-export const InstanceWorkloadProfileEnum = S.String;
+const InstanceWorkloadProfileEnum = S.String;
 
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1078,7 +1061,7 @@ export type InstanceStateEnum =
   | "STARTING"
   | "STOPPING"
   | "SHUTDOWN";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 export type NetworkStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1086,7 +1069,7 @@ export type NetworkStateEnum =
   | "PROVISIONED"
   | "DEPROVISIONING"
   | "UPDATING";
-export const NetworkStateEnum = S.String;
+const NetworkStateEnum = S.String;
 
 /** Mount point for a network. */
 export interface NetworkMountPoint {
@@ -1099,7 +1082,7 @@ export interface NetworkMountPoint {
   /** Ip address of the server. */
   ipAddress?: string;
 }
-export const NetworkMountPoint = /*@__PURE__*/ S.suspend(() =>
+const NetworkMountPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicalInterface: S.optional(S.String),
     defaultGateway: S.optional(S.Boolean),
@@ -1109,12 +1092,12 @@ export const NetworkMountPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkMountPoint" }) as any as S.Schema<NetworkMountPoint>;
 
 export type NetworkMountPointList = Array<NetworkMountPoint>;
-export const NetworkMountPointList = /*@__PURE__*/ S.Array(
+const NetworkMountPointList = /*@__PURE__*/ S.Array(
   NetworkMountPoint,
 ) as any as S.Schema<NetworkMountPointList>;
 
 export type NetworkTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
-export const NetworkTypeEnum = S.String;
+const NetworkTypeEnum = S.String;
 
 /** A reservation of one or more addresses in a network. */
 export interface NetworkAddressReservation {
@@ -1125,7 +1108,7 @@ export interface NetworkAddressReservation {
   /** The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2. */
   endAddress?: string;
 }
-export const NetworkAddressReservation = /*@__PURE__*/ S.suspend(() =>
+const NetworkAddressReservation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startAddress: S.optional(S.String),
     note: S.optional(S.String),
@@ -1136,7 +1119,7 @@ export const NetworkAddressReservation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAddressReservation>;
 
 export type NetworkAddressReservationList = Array<NetworkAddressReservation>;
-export const NetworkAddressReservationList = /*@__PURE__*/ S.Array(
+const NetworkAddressReservationList = /*@__PURE__*/ S.Array(
   NetworkAddressReservation,
 ) as any as S.Schema<NetworkAddressReservationList>;
 
@@ -1145,7 +1128,7 @@ export interface QosPolicy {
   /** The bandwidth permitted by the QOS policy, in gbps. */
   bandwidthGbps?: number;
 }
-export const QosPolicy = /*@__PURE__*/ S.suspend(() =>
+const QosPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidthGbps: S.optional(S.Number),
   }),
@@ -1168,7 +1151,7 @@ export interface VlanAttachment {
   /** The router IP of the attachment. */
   routerIp?: string;
 }
-export const VlanAttachment = /*@__PURE__*/ S.suspend(() =>
+const VlanAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peerVlanId: S.optional(S.String),
     qosPolicy: S.optional(QosPolicy),
@@ -1181,12 +1164,12 @@ export const VlanAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VlanAttachment" }) as any as S.Schema<VlanAttachment>;
 
 export type VlanAttachmentList = Array<VlanAttachment>;
-export const VlanAttachmentList = /*@__PURE__*/ S.Array(
+const VlanAttachmentList = /*@__PURE__*/ S.Array(
   VlanAttachment,
 ) as any as S.Schema<VlanAttachmentList>;
 
 export type VRFStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "PROVISIONED";
-export const VRFStateEnum = S.String;
+const VRFStateEnum = S.String;
 
 /** A network VRF. */
 export interface VRF {
@@ -1199,7 +1182,7 @@ export interface VRF {
   /** The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility. */
   qosPolicy?: QosPolicy;
 }
-export const VRF = /*@__PURE__*/ S.suspend(() =>
+const VRF = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vlanAttachments: S.optional(VlanAttachmentList),
     name: S.optional(S.String),
@@ -1245,7 +1228,7 @@ export interface Network {
   /** Immutable. Pod name. Pod is an independent part of infrastructure. Network can only be connected to the assets (instances, nfsshares) allocated in the same pod. */
   pod?: string;
 }
-export const Network = /*@__PURE__*/ S.suspend(() =>
+const Network = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(NetworkStateEnum),
     vlanId: S.optional(S.String),
@@ -1268,7 +1251,7 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
 export type NetworkList = Array<Network>;
-export const NetworkList = /*@__PURE__*/ S.Array(Network) as any as S.Schema<NetworkList>;
+const NetworkList = /*@__PURE__*/ S.Array(Network) as any as S.Schema<NetworkList>;
 
 export type VolumePerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
@@ -1276,14 +1259,14 @@ export type VolumePerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
   | "VOLUME_PERFORMANCE_TIER_HT"
   | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE";
-export const VolumePerformanceTierEnum = S.String;
+const VolumePerformanceTierEnum = S.String;
 
 export type VolumeSnapshotAutoDeleteBehaviorEnum =
   | "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "OLDEST_FIRST"
   | "NEWEST_FIRST";
-export const VolumeSnapshotAutoDeleteBehaviorEnum = S.String;
+const VolumeSnapshotAutoDeleteBehaviorEnum = S.String;
 
 /** Details about snapshot space reservation and usage on the storage volume. */
 export interface SnapshotReservationDetail {
@@ -1296,7 +1279,7 @@ export interface SnapshotReservationDetail {
   /** The amount, in GiB, of available space in this storage volume's reserved snapshot space. */
   reservedSpaceRemainingGib?: string;
 }
-export const SnapshotReservationDetail = /*@__PURE__*/ S.suspend(() =>
+const SnapshotReservationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservedSpacePercent: S.optional(S.Number),
     reservedSpaceUsedPercent: S.optional(S.Number),
@@ -1308,7 +1291,7 @@ export const SnapshotReservationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotReservationDetail>;
 
 export type VolumeWorkloadProfileEnum = "WORKLOAD_PROFILE_UNSPECIFIED" | "GENERIC" | "HANA";
-export const VolumeWorkloadProfileEnum = S.String;
+const VolumeWorkloadProfileEnum = S.String;
 
 export type VolumeStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1317,13 +1300,13 @@ export type VolumeStateEnum =
   | "DELETING"
   | "UPDATING"
   | "COOL_OFF";
-export const VolumeStateEnum = S.String;
+const VolumeStateEnum = S.String;
 
 export type VolumeStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
-export const VolumeStorageTypeEnum = S.String;
+const VolumeStorageTypeEnum = S.String;
 
 export type VolumeProtocolEnum = "PROTOCOL_UNSPECIFIED" | "FIBRE_CHANNEL" | "NFS";
-export const VolumeProtocolEnum = S.String;
+const VolumeProtocolEnum = S.String;
 
 /** A storage volume. */
 export interface Volume {
@@ -1376,7 +1359,7 @@ export interface Volume {
   /** Output only. Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well. */
   attached?: boolean;
 }
-export const Volume = /*@__PURE__*/ S.suspend(() =>
+const Volume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     originallyRequestedSizeGib: S.optional(S.String),
@@ -1406,13 +1389,13 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export type VolumeList = Array<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
+const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
 
 export type LunStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
-export const LunStorageTypeEnum = S.String;
+const LunStorageTypeEnum = S.String;
 
 export type LunMultiprotocolTypeEnum = "MULTIPROTOCOL_TYPE_UNSPECIFIED" | "LINUX";
-export const LunMultiprotocolTypeEnum = S.String;
+const LunMultiprotocolTypeEnum = S.String;
 
 export type LunStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1421,7 +1404,7 @@ export type LunStateEnum =
   | "READY"
   | "DELETING"
   | "COOL_OFF";
-export const LunStateEnum = S.String;
+const LunStateEnum = S.String;
 
 /** A storage volume logical unit number (LUN). */
 export interface Lun {
@@ -1450,7 +1433,7 @@ export interface Lun {
   /** The state of this storage volume. */
   state?: LunStateEnum | (string & {});
 }
-export const Lun = /*@__PURE__*/ S.suspend(() =>
+const Lun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageVolume: S.optional(S.String),
     shareable: S.optional(S.Boolean),
@@ -1468,7 +1451,7 @@ export const Lun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Lun" }) as any as S.Schema<Lun>;
 
 export type LunList = Array<Lun>;
-export const LunList = /*@__PURE__*/ S.Array(Lun) as any as S.Schema<LunList>;
+const LunList = /*@__PURE__*/ S.Array(Lun) as any as S.Schema<LunList>;
 
 /** A server. */
 export interface Instance {
@@ -1515,7 +1498,7 @@ export interface Instance {
   /** True if you enable hyperthreading for the server, otherwise false. The default value is false. */
   hyperthreadingEnabled?: boolean;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interactiveSerialConsoleEnabled: S.optional(S.Boolean),
     networkTemplate: S.optional(S.String),
@@ -1545,7 +1528,7 @@ export interface GetProjectsLocationsNetworksRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1563,7 +1546,7 @@ export interface GetProjectsLocationsNfsSharesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1581,7 +1564,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1599,7 +1582,7 @@ export interface GetProjectsLocationsOsImagesRequest {
   /** Required. Name of the OS image. */
   name: string;
 }
-export const GetProjectsLocationsOsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOsImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1626,7 +1609,7 @@ export interface OSImage {
   /** Output only. OS Image's unique name. */
   name?: string;
 }
-export const OSImage = /*@__PURE__*/ S.suspend(() =>
+const OSImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     applicableInstanceTypes: S.optional(StringList),
@@ -1640,7 +1623,7 @@ export interface GetProjectsLocationsProvisioningConfigsRequest {
   /** Required. Name of the ProvisioningConfig. */
   name: string;
 }
-export const GetProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1658,7 +1641,7 @@ export interface GetProjectsLocationsVolumesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1676,7 +1659,7 @@ export interface GetProjectsLocationsVolumesLunsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsVolumesLunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsVolumesLunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1694,7 +1677,7 @@ export interface GetProjectsLocationsVolumesSnapshotsRequest {
   /** Required. The name of the snapshot. */
   name: string;
 }
-export const GetProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1712,7 +1695,7 @@ export interface ListNetworkUsageProjectsLocationsNetworksRequest {
   /** Required. Parent value (project and location). */
   location: string;
 }
-export const ListNetworkUsageProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkUsageProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
   }).pipe(
@@ -1733,7 +1716,7 @@ export interface NetworkUsage {
   /** All used IP addresses in this network. */
   usedIps?: StringList;
 }
-export const NetworkUsage = /*@__PURE__*/ S.suspend(() =>
+const NetworkUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(Network),
     usedIps: S.optional(StringList),
@@ -1741,16 +1724,14 @@ export const NetworkUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkUsage" }) as any as S.Schema<NetworkUsage>;
 
 export type NetworkUsageList = Array<NetworkUsage>;
-export const NetworkUsageList = /*@__PURE__*/ S.Array(
-  NetworkUsage,
-) as any as S.Schema<NetworkUsageList>;
+const NetworkUsageList = /*@__PURE__*/ S.Array(NetworkUsage) as any as S.Schema<NetworkUsageList>;
 
 /** Response with Networks with IPs */
 export interface ListNetworkUsageResponse {
   /** Networks with IPs. */
   networks?: NetworkUsageList;
 }
-export const ListNetworkUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networks: S.optional(NetworkUsageList),
   }),
@@ -1768,7 +1749,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1787,7 +1768,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1796,7 +1777,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1813,7 +1794,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** A token identifying a page of results from the server. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1831,7 +1812,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response message for the list of servers. */
 export interface ListInstancesResponse {
@@ -1842,7 +1823,7 @@ export interface ListInstancesResponse {
   /** A token identifying a page of results from the server. */
   nextPageToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     instances: S.optional(InstanceList),
@@ -1860,7 +1841,7 @@ export interface ListProjectsLocationsNetworksRequest {
   /** A token identifying a page of results from the server. */
   pageToken?: string;
 }
-export const ListProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1886,7 +1867,7 @@ export interface ListNetworksResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListNetworksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networks: S.optional(NetworkList),
     nextPageToken: S.optional(S.String),
@@ -1904,7 +1885,7 @@ export interface ListProjectsLocationsNfsSharesRequest {
   /** List filter. */
   filter?: string;
 }
-export const ListProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1922,7 +1903,7 @@ export const ListProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsNfsSharesRequest>;
 
 export type NfsShareList = Array<NfsShare>;
-export const NfsShareList = /*@__PURE__*/ S.Array(NfsShare) as any as S.Schema<NfsShareList>;
+const NfsShareList = /*@__PURE__*/ S.Array(NfsShare) as any as S.Schema<NfsShareList>;
 
 /** Response message containing the list of NFS shares. */
 export interface ListNfsSharesResponse {
@@ -1933,7 +1914,7 @@ export interface ListNfsSharesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListNfsSharesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNfsSharesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     nfsShares: S.optional(NfsShareList),
@@ -1949,7 +1930,7 @@ export interface ListProjectsLocationsOsImagesRequest {
   /** Required. Parent value for ListOSImagesRequest. */
   parent: string;
 }
-export const ListProjectsLocationsOsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOsImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1966,7 +1947,7 @@ export const ListProjectsLocationsOsImagesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsOsImagesRequest>;
 
 export type OSImageList = Array<OSImage>;
-export const OSImageList = /*@__PURE__*/ S.Array(OSImage) as any as S.Schema<OSImageList>;
+const OSImageList = /*@__PURE__*/ S.Array(OSImage) as any as S.Schema<OSImageList>;
 
 /** Request for getting all available OS images. */
 export interface ListOSImagesResponse {
@@ -1975,7 +1956,7 @@ export interface ListOSImagesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListOSImagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOSImagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osImages: S.optional(OSImageList),
     nextPageToken: S.optional(S.String),
@@ -1990,7 +1971,7 @@ export interface ListProjectsLocationsProvisioningQuotasRequest {
   /** Required. Parent value for ListProvisioningQuotasRequest. */
   parent: string;
 }
-export const ListProjectsLocationsProvisioningQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsProvisioningQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2011,7 +1992,7 @@ export type ProvisioningQuotaAssetTypeEnum =
   | "ASSET_TYPE_SERVER"
   | "ASSET_TYPE_STORAGE"
   | "ASSET_TYPE_NETWORK";
-export const ProvisioningQuotaAssetTypeEnum = S.String;
+const ProvisioningQuotaAssetTypeEnum = S.String;
 
 /** A resource budget. */
 export interface InstanceQuota {
@@ -2026,7 +2007,7 @@ export interface InstanceQuota {
   /** Location where the quota applies. */
   location?: string;
 }
-export const InstanceQuota = /*@__PURE__*/ S.suspend(() =>
+const InstanceQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceType: S.optional(S.String),
     availableMachineCount: S.optional(S.Number),
@@ -2057,7 +2038,7 @@ export interface ProvisioningQuota {
   /** Output only. The name of the provisioning quota. */
   name?: string;
 }
-export const ProvisioningQuota = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageGib: S.optional(S.String),
     location: S.optional(S.String),
@@ -2072,7 +2053,7 @@ export const ProvisioningQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProvisioningQuota" }) as any as S.Schema<ProvisioningQuota>;
 
 export type ProvisioningQuotaList = Array<ProvisioningQuota>;
-export const ProvisioningQuotaList = /*@__PURE__*/ S.Array(
+const ProvisioningQuotaList = /*@__PURE__*/ S.Array(
   ProvisioningQuota,
 ) as any as S.Schema<ProvisioningQuotaList>;
 
@@ -2083,7 +2064,7 @@ export interface ListProvisioningQuotasResponse {
   /** The provisioning quotas registered in this project. */
   provisioningQuotas?: ProvisioningQuotaList;
 }
-export const ListProvisioningQuotasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProvisioningQuotasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     provisioningQuotas: S.optional(ProvisioningQuotaList),
@@ -2100,7 +2081,7 @@ export interface ListProjectsLocationsSshKeysRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2117,7 +2098,7 @@ export const ListProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSshKeysRequest>;
 
 export type SSHKeyList = Array<SSHKey>;
-export const SSHKeyList = /*@__PURE__*/ S.Array(SSHKey) as any as S.Schema<SSHKeyList>;
+const SSHKeyList = /*@__PURE__*/ S.Array(SSHKey) as any as S.Schema<SSHKeyList>;
 
 /** Message for response of ListSSHKeys. */
 export interface ListSSHKeysResponse {
@@ -2126,7 +2107,7 @@ export interface ListSSHKeysResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListSSHKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSSHKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshKeys: S.optional(SSHKeyList),
     nextPageToken: S.optional(S.String),
@@ -2143,7 +2124,7 @@ export interface ListProjectsLocationsVolumesRequest {
   /** Required. Parent value for ListVolumesRequest. */
   parent: string;
 }
-export const ListProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2169,7 +2150,7 @@ export interface ListVolumesResponse {
   /** A token identifying a page of results from the server. */
   nextPageToken?: string;
 }
-export const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     volumes: S.optional(VolumeList),
@@ -2185,7 +2166,7 @@ export interface ListProjectsLocationsVolumesLunsRequest {
   /** A token identifying a page of results from the server. */
   pageToken?: string;
 }
-export const ListProjectsLocationsVolumesLunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsVolumesLunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2210,7 +2191,7 @@ export interface ListLunsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListLunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     luns: S.optional(LunList),
     nextPageToken: S.optional(S.String),
@@ -2226,7 +2207,7 @@ export interface ListProjectsLocationsVolumesSnapshotsRequest {
   /** Required. Parent value for ListVolumesRequest. */
   parent: string;
 }
-export const ListProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2243,7 +2224,7 @@ export const ListProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsVolumesSnapshotsRequest>;
 
 export type VolumeSnapshotList = Array<VolumeSnapshot>;
-export const VolumeSnapshotList = /*@__PURE__*/ S.Array(
+const VolumeSnapshotList = /*@__PURE__*/ S.Array(
   VolumeSnapshot,
 ) as any as S.Schema<VolumeSnapshotList>;
 
@@ -2256,7 +2237,7 @@ export interface ListVolumeSnapshotsResponse {
   /** A token identifying a page of results from the server. */
   nextPageToken?: string;
 }
-export const ListVolumeSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     volumeSnapshots: S.optional(VolumeSnapshotList),
@@ -2270,7 +2251,7 @@ export interface LoadAuthInfoProjectsLocationsInstancesRequest {
   /** Required. Name of the server. */
   name: string;
 }
-export const LoadAuthInfoProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadAuthInfoProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2291,7 +2272,7 @@ export interface UserAccount {
   /** KMS CryptoKey Version used to encrypt the password. */
   kmsKeyVersion?: string;
 }
-export const UserAccount = /*@__PURE__*/ S.suspend(() =>
+const UserAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedPassword: S.optional(S.String),
     kmsKeyVersion: S.optional(S.String),
@@ -2299,7 +2280,7 @@ export const UserAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserAccount" }) as any as S.Schema<UserAccount>;
 
 export type UserAccountMap = { [key: string]: UserAccount | undefined };
-export const UserAccountMap = /*@__PURE__*/ S.Record(
+const UserAccountMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAccount,
 ) as any as S.Schema<UserAccountMap>;
@@ -2311,7 +2292,7 @@ export interface LoadInstanceAuthInfoResponse {
   /** Map of username to the user account info. */
   userAccounts?: UserAccountMap;
 }
-export const LoadInstanceAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const LoadInstanceAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshKeys: S.optional(SSHKeyList),
     userAccounts: S.optional(UserAccountMap),
@@ -2328,7 +2309,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2352,7 +2333,7 @@ export interface PatchProjectsLocationsNetworksRequest {
   /** Request body */
   body?: Network;
 }
-export const PatchProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2376,7 +2357,7 @@ export interface PatchProjectsLocationsNfsSharesRequest {
   /** Request body */
   body?: NfsShare;
 }
-export const PatchProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2402,7 +2383,7 @@ export interface PatchProjectsLocationsProvisioningConfigsRequest {
   /** Request body */
   body?: ProvisioningConfig;
 }
-export const PatchProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     email: S.optional(S.String.pipe(T.Query())),
@@ -2427,7 +2408,7 @@ export interface PatchProjectsLocationsVolumesRequest {
   /** Request body */
   body?: Volume;
 }
-export const PatchProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2452,7 +2433,7 @@ export interface ReimageInstanceRequest {
   /** Optional. List of SSH Keys used during reimaging an instance. */
   sshKeys?: StringList;
 }
-export const ReimageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReimageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyVersion: S.optional(S.String),
     osImage: S.optional(S.String),
@@ -2466,7 +2447,7 @@ export interface ReimageProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ReimageInstanceRequest;
 }
-export const ReimageProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReimageProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ReimageInstanceRequest.pipe(T.HttpBody())),
@@ -2486,7 +2467,7 @@ export interface RenameInstanceRequest {
   /** Required. The new `id` of the instance. */
   newInstanceId?: string;
 }
-export const RenameInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newInstanceId: S.optional(S.String),
   }),
@@ -2498,7 +2479,7 @@ export interface RenameProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RenameInstanceRequest;
 }
-export const RenameProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RenameInstanceRequest.pipe(T.HttpBody())),
@@ -2518,7 +2499,7 @@ export interface RenameNetworkRequest {
   /** Required. The new `id` of the network. */
   newNetworkId?: string;
 }
-export const RenameNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newNetworkId: S.optional(S.String),
   }),
@@ -2530,7 +2511,7 @@ export interface RenameProjectsLocationsNetworksRequest {
   /** Request body */
   body?: RenameNetworkRequest;
 }
-export const RenameProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameProjectsLocationsNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RenameNetworkRequest.pipe(T.HttpBody())),
@@ -2550,7 +2531,7 @@ export interface RenameNfsShareRequest {
   /** Required. The new `id` of the nfsshare. */
   newNfsshareId?: string;
 }
-export const RenameNfsShareRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameNfsShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newNfsshareId: S.optional(S.String),
   }),
@@ -2562,7 +2543,7 @@ export interface RenameProjectsLocationsNfsSharesRequest {
   /** Request body */
   body?: RenameNfsShareRequest;
 }
-export const RenameProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RenameNfsShareRequest.pipe(T.HttpBody())),
@@ -2582,7 +2563,7 @@ export interface RenameVolumeRequest {
   /** Required. The new `id` of the volume. */
   newVolumeId?: string;
 }
-export const RenameVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newVolumeId: S.optional(S.String),
   }),
@@ -2594,7 +2575,7 @@ export interface RenameProjectsLocationsVolumesRequest {
   /** Request body */
   body?: RenameVolumeRequest;
 }
-export const RenameProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RenameVolumeRequest.pipe(T.HttpBody())),
@@ -2611,15 +2592,13 @@ export const RenameProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Message requesting to reset a server. */
 export type ResetInstanceRequest = DisableHyperthreadingRequest;
-export const ResetInstanceRequest = DisableHyperthreadingRequest;
-
 export interface ResetProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const ResetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -2639,7 +2618,7 @@ export interface ResizeVolumeRequest {
   /** New Volume size, in GiB. */
   sizeGib?: string;
 }
-export const ResizeVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const ResizeVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeGib: S.optional(S.String),
   }),
@@ -2651,7 +2630,7 @@ export interface ResizeProjectsLocationsVolumesRequest {
   /** Request body */
   body?: ResizeVolumeRequest;
 }
-export const ResizeProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResizeProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volume: S.String.pipe(T.Label()),
     body: S.optional(ResizeVolumeRequest.pipe(T.HttpBody())),
@@ -2668,41 +2647,36 @@ export const ResizeProjectsLocationsVolumesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Message for restoring a volume snapshot. */
 export type RestoreVolumeSnapshotRequest = DisableHyperthreadingRequest;
-export const RestoreVolumeSnapshotRequest = DisableHyperthreadingRequest;
-
 export interface RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest {
   /** Required. Name of the snapshot which will be used to restore its parent volume. */
   volumeSnapshot: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      volumeSnapshot: S.String.pipe(T.Label()),
-      body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+volumeSnapshot}:restoreVolumeSnapshot",
-        baseUrl: "https://baremetalsolution.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest",
-  }) as any as S.Schema<RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest>;
+const RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeSnapshot: S.String.pipe(T.Label()),
+    body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+volumeSnapshot}:restoreVolumeSnapshot",
+      baseUrl: "https://baremetalsolution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest",
+}) as any as S.Schema<RestoreVolumeSnapshotProjectsLocationsVolumesSnapshotsRequest>;
 
 /** Message requesting to start a server. */
 export type StartInstanceRequest = DisableHyperthreadingRequest;
-export const StartInstanceRequest = DisableHyperthreadingRequest;
-
 export interface StartProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -2719,15 +2693,13 @@ export const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(()
 
 /** Message requesting to stop a server. */
 export type StopInstanceRequest = DisableHyperthreadingRequest;
-export const StopInstanceRequest = DisableHyperthreadingRequest;
-
 export interface StopProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: DisableHyperthreadingRequest;
 }
-export const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableHyperthreadingRequest.pipe(T.HttpBody())),
@@ -2749,7 +2721,7 @@ export interface SubmitProvisioningConfigRequest {
   /** Optional. Email provided to send a confirmation with provisioning config to. */
   email?: string;
 }
-export const SubmitProvisioningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitProvisioningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningConfig: S.optional(ProvisioningConfig),
     email: S.optional(S.String),
@@ -2764,7 +2736,7 @@ export interface SubmitProjectsLocationsProvisioningConfigsRequest {
   /** Request body */
   body?: SubmitProvisioningConfigRequest;
 }
-export const SubmitProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitProjectsLocationsProvisioningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SubmitProvisioningConfigRequest.pipe(T.HttpBody())),
@@ -2784,7 +2756,7 @@ export interface SubmitProvisioningConfigResponse {
   /** The submitted provisioning config. */
   provisioningConfig?: ProvisioningConfig;
 }
-export const SubmitProvisioningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const SubmitProvisioningConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningConfig: S.optional(ProvisioningConfig),
   }),

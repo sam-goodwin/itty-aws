@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of resource. */
 export type Type = "Microsoft.Support/supportTickets" | "Microsoft.Support/communications";
-export const Type = S.String;
+const Type = S.String;
 
 export interface CheckCommunicationNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22,7 +22,7 @@ export interface CheckCommunicationNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-export const CheckCommunicationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCommunicationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -49,7 +49,7 @@ export interface CheckNameAvailabilityOutput {
   /** The detailed error message describing why the name is not available. */
   message?: string;
 }
-export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -67,20 +67,19 @@ export interface CheckCommunicationsNoSubscriptionNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-export const CheckCommunicationsNoSubscriptionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      name: S.String,
-      type: Type,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
+const CheckCommunicationsNoSubscriptionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    supportTicketName: S.String.pipe(T.Label()),
+    name: S.String,
+    type: Type,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
 ).annotate({
   identifier: "CheckCommunicationsNoSubscriptionNameAvailabilityRequest",
 }) as any as S.Schema<CheckCommunicationsNoSubscriptionNameAvailabilityRequest>;
@@ -93,7 +92,7 @@ export interface CheckSupportTicketNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-export const CheckSupportTicketNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckSupportTicketNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -116,19 +115,18 @@ export interface CheckSupportTicketsNoSubscriptionNameAvailabilityRequest {
   /** The type of resource. */
   type: Type | (string & {});
 }
-export const CheckSupportTicketsNoSubscriptionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: Type,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Support/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
+const CheckSupportTicketsNoSubscriptionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: Type,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.Support/checkNameAvailability",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
 ).annotate({
   identifier: "CheckSupportTicketsNoSubscriptionNameAvailabilityRequest",
 }) as any as S.Schema<CheckSupportTicketsNoSubscriptionNameAvailabilityRequest>;
@@ -142,7 +140,7 @@ export interface CommunicationDetailsPropertiesInput {
   /** Body of the communication. */
   body: string;
 }
-export const CommunicationDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CommunicationDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sender: S.optional(S.String),
     subject: S.String,
@@ -162,7 +160,7 @@ export interface CreateCommunicationRequest {
   /** Properties of the resource. */
   properties: CommunicationDetailsPropertiesInput;
 }
-export const CreateCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -182,11 +180,11 @@ export const CreateCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -203,7 +201,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -216,11 +214,11 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Communication type. */
 export type CommunicationType = "web" | "phone";
-export const CommunicationType = S.String;
+const CommunicationType = S.String;
 
 /** Direction of communication. */
 export type CommunicationDirection = "inbound" | "outbound";
-export const CommunicationDirection = S.String;
+const CommunicationDirection = S.String;
 
 /** Describes the properties of a communication resource. */
 export interface CommunicationDetailsProperties {
@@ -237,7 +235,7 @@ export interface CommunicationDetailsProperties {
   /** Time in UTC (ISO 8601 format) when the communication was created. */
   createdDate?: string;
 }
-export const CommunicationDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const CommunicationDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     communicationType: S.optional(CommunicationType),
     communicationDirection: S.optional(CommunicationDirection),
@@ -262,7 +260,7 @@ export interface CreateCommunicationResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CreateCommunicationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -282,7 +280,7 @@ export interface CreateCommunicationsNoSubscriptionRequest {
   /** Properties of the resource. */
   properties: CommunicationDetailsPropertiesInput;
 }
-export const CreateCommunicationsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunicationsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
     communicationName: S.String.pipe(T.Label()),
@@ -311,7 +309,7 @@ export interface CreateCommunicationsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CreateCommunicationsNoSubscriptionResponse =
+const CreateCommunicationsNoSubscriptionResponse =
   CreateCommunicationResponse as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>;
 
 /** Describes the properties of a file. */
@@ -323,7 +321,7 @@ export interface FileDetailsPropertiesInput {
   /** Number of chunks to be uploaded. The maximum number of allowed chunks is 2. */
   numberOfChunks?: number;
 }
-export const FileDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FileDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunkSize: S.optional(S.Number),
     fileSize: S.optional(S.Number),
@@ -343,7 +341,7 @@ export interface CreateFileRequest {
   /** Properties of the resource */
   properties?: FileDetailsPropertiesInput;
 }
-export const CreateFileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -370,7 +368,7 @@ export interface FileDetailsProperties {
   /** Number of chunks to be uploaded. The maximum number of allowed chunks is 2. */
   numberOfChunks?: number;
 }
-export const FileDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const FileDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.optional(S.String),
     chunkSize: S.optional(S.Number),
@@ -391,7 +389,7 @@ export interface CreateFileResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const CreateFileResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -409,7 +407,7 @@ export interface CreateFilesNoSubscriptionRequest {
   /** Properties of the resource */
   properties?: FileDetailsPropertiesInput;
 }
-export const CreateFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
@@ -438,7 +436,7 @@ export interface CreateFilesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const CreateFilesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFilesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -456,7 +454,7 @@ export interface CreateFileWorkspaceRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const CreateFileWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -479,7 +477,7 @@ export interface FileWorkspaceDetailsProperties {
   /** Time in UTC (ISO 8601 format) when file workspace is going to expire. */
   expirationTime?: string;
 }
-export const FileWorkspaceDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const FileWorkspaceDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.optional(S.String),
     expirationTime: S.optional(S.String),
@@ -500,7 +498,7 @@ export interface CreateFileWorkspaceResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const CreateFileWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFileWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -516,7 +514,7 @@ export interface CreateFileWorkspacesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const CreateFileWorkspacesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileWorkspacesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -543,24 +541,24 @@ export interface CreateFileWorkspacesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const CreateFileWorkspacesNoSubscriptionResponse =
+const CreateFileWorkspacesNoSubscriptionResponse =
   CreateFileWorkspaceResponse as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>;
 
 /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
 export type SeverityLevel = "minimal" | "moderate" | "critical" | "highestcriticalimpact";
-export const SeverityLevel = S.String;
+const SeverityLevel = S.String;
 
 /** Advanced diagnostic consent to be updated on the support ticket. */
 export type Consent = "Yes" | "No";
-export const Consent = S.String;
+const Consent = S.String;
 
 /** Preferred contact method. */
 export type PreferredContactMethod = "email" | "phone";
-export const PreferredContactMethod = S.String;
+const PreferredContactMethod = S.String;
 
 /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
 export type ContactProfileAdditionalEmailAddressesList = Array<string>;
-export const ContactProfileAdditionalEmailAddressesList = /*@__PURE__*/ S.Array(
+const ContactProfileAdditionalEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactProfileAdditionalEmailAddressesList>;
 
@@ -585,7 +583,7 @@ export interface ContactProfile {
   /** Preferred language of support from Azure. Support languages vary based on the severity you choose for your support ticket. Learn more at [Azure Severity and responsiveness](https://azure.microsoft.com/support/plans/response). Use the standard language-country code. Valid values are 'en-us' for English, 'zh-hans' for Chinese, 'es-es' for Spanish, 'fr-fr' for French, 'ja-jp' for Japanese, 'ko-kr' for Korean, 'ru-ru' for Russian, 'pt-br' for Portuguese, 'it-it' for Italian, 'zh-tw' for Chinese and 'de-de' for German. */
   preferredSupportLanguage: string;
 }
-export const ContactProfile = /*@__PURE__*/ S.suspend(() =>
+const ContactProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.String,
     lastName: S.String,
@@ -601,20 +599,18 @@ export const ContactProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Service Level Agreement details for a support ticket. */
 export interface ServiceLevelAgreementInput {}
-export const ServiceLevelAgreementInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ServiceLevelAgreementInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ServiceLevelAgreementInput",
 }) as any as S.Schema<ServiceLevelAgreementInput>;
 
 /** Support engineer information. */
 export type SupportEngineerInput = ServiceLevelAgreementInput;
-export const SupportEngineerInput = ServiceLevelAgreementInput;
-
 /** Additional information for technical support ticket. */
 export interface TechnicalTicketDetails {
   /** This is the resource Id of the Azure service resource (For example: A virtual machine resource or an HDInsight resource) for which the support ticket is created. */
   resourceId?: string;
 }
-export const TechnicalTicketDetails = /*@__PURE__*/ S.suspend(() =>
+const TechnicalTicketDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
   }),
@@ -627,7 +623,7 @@ export interface QuotaChangeRequest {
   /** Payload of the quota increase request. */
   payload?: string;
 }
-export const QuotaChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const QuotaChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     payload: S.optional(S.String),
@@ -636,7 +632,7 @@ export const QuotaChangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This property is required for providing the region and new quota limits. */
 export type QuotaTicketDetailsQuotaChangeRequestsList = Array<QuotaChangeRequest>;
-export const QuotaTicketDetailsQuotaChangeRequestsList = /*@__PURE__*/ S.Array(
+const QuotaTicketDetailsQuotaChangeRequestsList = /*@__PURE__*/ S.Array(
   QuotaChangeRequest,
 ) as any as S.Schema<QuotaTicketDetailsQuotaChangeRequestsList>;
 
@@ -649,7 +645,7 @@ export interface QuotaTicketDetails {
   /** This property is required for providing the region and new quota limits. */
   quotaChangeRequests?: QuotaTicketDetailsQuotaChangeRequestsList;
 }
-export const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
+const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaChangeRequestSubType: S.optional(S.String),
     quotaChangeRequestVersion: S.optional(S.String),
@@ -659,7 +655,7 @@ export const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** User consent value provided */
 export type UserConsent = "Yes" | "No";
-export const UserConsent = S.String;
+const UserConsent = S.String;
 
 /** This property indicates secondary consent for the support ticket. */
 export interface SecondaryConsent {
@@ -668,7 +664,7 @@ export interface SecondaryConsent {
   /** The service name for which the secondary consent is being provided. The value needs to be retrieved from the Problem Classification API response. */
   type?: string;
 }
-export const SecondaryConsent = /*@__PURE__*/ S.suspend(() =>
+const SecondaryConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userConsent: S.optional(UserConsent),
     type: S.optional(S.String),
@@ -677,7 +673,7 @@ export const SecondaryConsent = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesInputSecondaryConsentList = Array<SecondaryConsent>;
-export const SupportTicketDetailsPropertiesInputSecondaryConsentList = /*@__PURE__*/ S.Array(
+const SupportTicketDetailsPropertiesInputSecondaryConsentList = /*@__PURE__*/ S.Array(
   SecondaryConsent,
 ) as any as S.Schema<SupportTicketDetailsPropertiesInputSecondaryConsentList>;
 
@@ -722,7 +718,7 @@ export interface SupportTicketDetailsPropertiesInput {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketDetailsPropertiesInputSecondaryConsentList;
 }
-export const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketId: S.optional(S.String),
     description: S.String,
@@ -756,7 +752,7 @@ export interface CreateSupportTicketRequest {
   /** Properties of the resource. */
   properties: SupportTicketDetailsPropertiesInput;
 }
-export const CreateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -782,7 +778,7 @@ export interface ServiceLevelAgreement {
   /** Service Level Agreement in minutes. */
   slaMinutes?: number;
 }
-export const ServiceLevelAgreement = /*@__PURE__*/ S.suspend(() =>
+const ServiceLevelAgreement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     expirationTime: S.optional(S.String),
@@ -795,7 +791,7 @@ export interface SupportEngineer {
   /** Email address of the Azure Support engineer assigned to the support ticket. */
   emailAddress?: string;
 }
-export const SupportEngineer = /*@__PURE__*/ S.suspend(() =>
+const SupportEngineer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(S.String),
   }),
@@ -803,11 +799,11 @@ export const SupportEngineer = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates if support ticket is a temporary ticket. */
 export type IsTemporaryTicket = "Yes" | "No";
-export const IsTemporaryTicket = S.String;
+const IsTemporaryTicket = S.String;
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesSecondaryConsentList = Array<SecondaryConsent>;
-export const SupportTicketDetailsPropertiesSecondaryConsentList =
+const SupportTicketDetailsPropertiesSecondaryConsentList =
   SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
 
 /** Describes the properties of a support ticket. */
@@ -867,7 +863,7 @@ export interface SupportTicketDetailsProperties {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketDetailsPropertiesSecondaryConsentList;
 }
-export const SupportTicketDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const SupportTicketDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketId: S.optional(S.String),
     description: S.String,
@@ -913,7 +909,7 @@ export interface CreateSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const CreateSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -931,7 +927,7 @@ export interface CreateSupportTicketsNoSubscriptionRequest {
   /** Properties of the resource. */
   properties: SupportTicketDetailsPropertiesInput;
 }
-export const CreateSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
     properties: SupportTicketDetailsPropertiesInput,
@@ -959,7 +955,7 @@ export interface CreateSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const CreateSupportTicketsNoSubscriptionResponse =
+const CreateSupportTicketsNoSubscriptionResponse =
   CreateSupportTicketResponse as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>;
 
 export interface GetChatTranscriptRequest {
@@ -970,7 +966,7 @@ export interface GetChatTranscriptRequest {
   /** The name of the ChatTranscriptDetails */
   chatTranscriptName: string;
 }
-export const GetChatTranscriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChatTranscriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -998,7 +994,7 @@ export interface MessageProperties {
   /** Time in UTC (ISO 8601 format) when the communication was created. */
   createdDate?: string;
 }
-export const MessageProperties = /*@__PURE__*/ S.suspend(() =>
+const MessageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(S.String),
     communicationDirection: S.optional(CommunicationDirection),
@@ -1010,7 +1006,7 @@ export const MessageProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of chat transcript communication resources. */
 export type ChatTranscriptDetailsPropertiesMessagesList = Array<MessageProperties>;
-export const ChatTranscriptDetailsPropertiesMessagesList = /*@__PURE__*/ S.Array(
+const ChatTranscriptDetailsPropertiesMessagesList = /*@__PURE__*/ S.Array(
   MessageProperties,
 ) as any as S.Schema<ChatTranscriptDetailsPropertiesMessagesList>;
 
@@ -1021,7 +1017,7 @@ export interface ChatTranscriptDetailsProperties {
   /** Time in UTC (ISO 8601 format) when the chat began. */
   startTime?: string;
 }
-export const ChatTranscriptDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const ChatTranscriptDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(ChatTranscriptDetailsPropertiesMessagesList),
     startTime: S.optional(S.String),
@@ -1042,7 +1038,7 @@ export interface GetChatTranscriptResponse {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-export const GetChatTranscriptResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChatTranscriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1060,7 +1056,7 @@ export interface GetChatTranscriptsNoSubscriptionRequest {
   /** The name of the ChatTranscriptDetails */
   chatTranscriptName: string;
 }
-export const GetChatTranscriptsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChatTranscriptsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
     chatTranscriptName: S.String.pipe(T.Label()),
@@ -1088,7 +1084,7 @@ export interface GetChatTranscriptsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-export const GetChatTranscriptsNoSubscriptionResponse =
+const GetChatTranscriptsNoSubscriptionResponse =
   GetChatTranscriptResponse as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>;
 
 export interface GetCommunicationRequest {
@@ -1099,7 +1095,7 @@ export interface GetCommunicationRequest {
   /** The name of the CommunicationDetails */
   communicationName: string;
 }
-export const GetCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -1126,7 +1122,7 @@ export interface GetCommunicationResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const GetCommunicationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCommunicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1142,7 +1138,7 @@ export interface GetCommunicationsNoSubscriptionRequest {
   /** The name of the CommunicationDetails */
   communicationName: string;
 }
-export const GetCommunicationsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommunicationsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
     communicationName: S.String.pipe(T.Label()),
@@ -1170,7 +1166,7 @@ export interface GetCommunicationsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const GetCommunicationsNoSubscriptionResponse =
+const GetCommunicationsNoSubscriptionResponse =
   CreateCommunicationResponse as any as S.Schema<GetCommunicationsNoSubscriptionResponse>;
 
 export interface GetFileRequest {
@@ -1181,7 +1177,7 @@ export interface GetFileRequest {
   /** The name of the FileDetails */
   fileName: string;
 }
-export const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -1208,7 +1204,7 @@ export interface GetFileResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const GetFileResponse = CreateFileResponse as any as S.Schema<GetFileResponse>;
+const GetFileResponse = CreateFileResponse as any as S.Schema<GetFileResponse>;
 
 export interface GetFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
@@ -1216,7 +1212,7 @@ export interface GetFilesNoSubscriptionRequest {
   /** The name of the FileDetails */
   fileName: string;
 }
-export const GetFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
@@ -1244,7 +1240,7 @@ export interface GetFilesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const GetFilesNoSubscriptionResponse =
+const GetFilesNoSubscriptionResponse =
   CreateFilesNoSubscriptionResponse as any as S.Schema<GetFilesNoSubscriptionResponse>;
 
 export interface GetFileWorkspaceRequest {
@@ -1253,7 +1249,7 @@ export interface GetFileWorkspaceRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const GetFileWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -1279,7 +1275,7 @@ export interface GetFileWorkspaceResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const GetFileWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1293,7 +1289,7 @@ export interface GetFileWorkspacesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const GetFileWorkspacesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileWorkspacesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1320,7 +1316,7 @@ export interface GetFileWorkspacesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const GetFileWorkspacesNoSubscriptionResponse =
+const GetFileWorkspacesNoSubscriptionResponse =
   CreateFileWorkspaceResponse as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>;
 
 export interface GetProblemClassificationRequest {
@@ -1329,7 +1325,7 @@ export interface GetProblemClassificationRequest {
   /** Name of problem classification. */
   problemClassificationName: string;
 }
-export const GetProblemClassificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProblemClassificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     problemClassificationName: S.String.pipe(T.Label()),
@@ -1352,7 +1348,7 @@ export interface SecondaryConsentEnabled {
   /** The Azure service for which secondary consent is needed for case creation. */
   type?: string;
 }
-export const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
+const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     type: S.optional(S.String),
@@ -1362,7 +1358,7 @@ export const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
 /** This property indicates whether secondary consent is present for problem classification */
 export type ProblemClassificationPropertiesSecondaryConsentEnabledList =
   Array<SecondaryConsentEnabled>;
-export const ProblemClassificationPropertiesSecondaryConsentEnabledList = /*@__PURE__*/ S.Array(
+const ProblemClassificationPropertiesSecondaryConsentEnabledList = /*@__PURE__*/ S.Array(
   SecondaryConsentEnabled,
 ) as any as S.Schema<ProblemClassificationPropertiesSecondaryConsentEnabledList>;
 
@@ -1373,7 +1369,7 @@ export interface ProblemClassificationProperties {
   /** This property indicates whether secondary consent is present for problem classification */
   secondaryConsentEnabled?: ProblemClassificationPropertiesSecondaryConsentEnabledList;
 }
-export const ProblemClassificationProperties = /*@__PURE__*/ S.suspend(() =>
+const ProblemClassificationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     secondaryConsentEnabled: S.optional(ProblemClassificationPropertiesSecondaryConsentEnabledList),
@@ -1394,7 +1390,7 @@ export interface GetProblemClassificationResponse {
   /** Properties of the resource. */
   properties?: ProblemClassificationProperties;
 }
-export const GetProblemClassificationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProblemClassificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1410,7 +1406,7 @@ export interface GetServiceRequest {
   /** Name of the Azure service. */
   serviceName: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1425,7 +1421,7 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ARM Resource types. */
 export type ServicePropertiesResourceTypesList = Array<string>;
-export const ServicePropertiesResourceTypesList =
+const ServicePropertiesResourceTypesList =
   ContactProfileAdditionalEmailAddressesList as any as S.Schema<ServicePropertiesResourceTypesList>;
 
 /** Details about an Azure service available for support ticket creation. */
@@ -1435,7 +1431,7 @@ export interface ServiceProperties {
   /** ARM Resource types. */
   resourceTypes?: ServicePropertiesResourceTypesList;
 }
-export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     resourceTypes: S.optional(ServicePropertiesResourceTypesList),
@@ -1454,7 +1450,7 @@ export interface GetServiceResponse {
   /** Properties of the resource. */
   properties?: ServiceProperties;
 }
-export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1470,7 +1466,7 @@ export interface GetSupportTicketRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-export const GetSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -1496,7 +1492,7 @@ export interface GetSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const GetSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1510,7 +1506,7 @@ export interface GetSupportTicketsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-export const GetSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1537,7 +1533,7 @@ export interface GetSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const GetSupportTicketsNoSubscriptionResponse =
+const GetSupportTicketsNoSubscriptionResponse =
   CreateSupportTicketResponse as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>;
 
 export interface ListChatTranscriptsRequest {
@@ -1546,7 +1542,7 @@ export interface ListChatTranscriptsRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-export const ListChatTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChatTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -1575,7 +1571,7 @@ export interface ChatTranscriptDetails {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-export const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
+const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1587,7 +1583,7 @@ export const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** [Placeholder] Description for value property */
 export type ChatTranscriptsListResultValueList = Array<ChatTranscriptDetails>;
-export const ChatTranscriptsListResultValueList = /*@__PURE__*/ S.Array(
+const ChatTranscriptsListResultValueList = /*@__PURE__*/ S.Array(
   ChatTranscriptDetails,
 ) as any as S.Schema<ChatTranscriptsListResultValueList>;
 
@@ -1598,7 +1594,7 @@ export interface ChatTranscriptsListResult {
   /** [Placeholder] Description for value property */
   value?: ChatTranscriptsListResultValueList;
 }
-export const ChatTranscriptsListResult = /*@__PURE__*/ S.suspend(() =>
+const ChatTranscriptsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ChatTranscriptsListResultValueList),
@@ -1611,7 +1607,7 @@ export interface ListChatTranscriptsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-export const ListChatTranscriptsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChatTranscriptsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1636,7 +1632,7 @@ export interface ListCommunicationsRequest {
   /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
   _filter?: string;
 }
-export const ListCommunicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommunicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -1667,12 +1663,11 @@ export interface CommunicationDetails {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CommunicationDetails =
-  GetCommunicationResponse as any as S.Schema<CommunicationDetails>;
+const CommunicationDetails = GetCommunicationResponse as any as S.Schema<CommunicationDetails>;
 
 /** [Placeholder] Description for value property */
 export type CommunicationsListResultValueList = Array<CommunicationDetails>;
-export const CommunicationsListResultValueList = /*@__PURE__*/ S.Array(
+const CommunicationsListResultValueList = /*@__PURE__*/ S.Array(
   CommunicationDetails,
 ) as any as S.Schema<CommunicationsListResultValueList>;
 
@@ -1683,7 +1678,7 @@ export interface CommunicationsListResult {
   /** [Placeholder] Description for value property */
   value?: CommunicationsListResultValueList;
 }
-export const CommunicationsListResult = /*@__PURE__*/ S.suspend(() =>
+const CommunicationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(CommunicationsListResultValueList),
@@ -1698,7 +1693,7 @@ export interface ListCommunicationsNoSubscriptionRequest {
   /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
   _filter?: string;
 }
-export const ListCommunicationsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommunicationsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -1721,7 +1716,7 @@ export interface ListFilesRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -1748,11 +1743,11 @@ export interface FileDetails {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const FileDetails = CreateFileResponse as any as S.Schema<FileDetails>;
+const FileDetails = CreateFileResponse as any as S.Schema<FileDetails>;
 
 /** [Placeholder] Description for value property */
 export type FilesListResultValueList = Array<FileDetails>;
-export const FilesListResultValueList = /*@__PURE__*/ S.Array(
+const FilesListResultValueList = /*@__PURE__*/ S.Array(
   FileDetails,
 ) as any as S.Schema<FilesListResultValueList>;
 
@@ -1763,7 +1758,7 @@ export interface FilesListResult {
   /** [Placeholder] Description for value property */
   value?: FilesListResultValueList;
 }
-export const FilesListResult = /*@__PURE__*/ S.suspend(() =>
+const FilesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(FilesListResultValueList),
@@ -1774,7 +1769,7 @@ export interface ListFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const ListFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1790,7 +1785,7 @@ export const ListFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFilesNoSubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1812,7 +1807,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1823,11 +1818,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1842,7 +1837,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1854,7 +1849,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1864,7 +1859,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1875,7 +1870,7 @@ export interface ListProblemClassificationsRequest {
   /** Name of the Azure service. */
   serviceName: string;
 }
-export const ListProblemClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProblemClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1903,7 +1898,7 @@ export interface ProblemClassification {
   /** Properties of the resource. */
   properties?: ProblemClassificationProperties;
 }
-export const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
+const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1915,7 +1910,7 @@ export const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ProblemClassification resources. */
 export type ProblemClassificationsListResultValueList = Array<ProblemClassification>;
-export const ProblemClassificationsListResultValueList = /*@__PURE__*/ S.Array(
+const ProblemClassificationsListResultValueList = /*@__PURE__*/ S.Array(
   ProblemClassification,
 ) as any as S.Schema<ProblemClassificationsListResultValueList>;
 
@@ -1926,7 +1921,7 @@ export interface ProblemClassificationsListResult {
   /** List of ProblemClassification resources. */
   value?: ProblemClassificationsListResultValueList;
 }
-export const ProblemClassificationsListResult = /*@__PURE__*/ S.suspend(() =>
+const ProblemClassificationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ProblemClassificationsListResultValueList),
@@ -1936,7 +1931,7 @@ export const ProblemClassificationsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProblemClassificationsListResult>;
 
 export interface ListServicesRequest {}
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1960,11 +1955,11 @@ export interface Service {
   /** Properties of the resource. */
   properties?: ServiceProperties;
 }
-export const Service = GetServiceResponse as any as S.Schema<Service>;
+const Service = GetServiceResponse as any as S.Schema<Service>;
 
 /** List of Service resources. */
 export type ServicesListResultValueList = Array<Service>;
-export const ServicesListResultValueList = /*@__PURE__*/ S.Array(
+const ServicesListResultValueList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServicesListResultValueList>;
 
@@ -1975,7 +1970,7 @@ export interface ServicesListResult {
   /** List of Service resources. */
   value?: ServicesListResultValueList;
 }
-export const ServicesListResult = /*@__PURE__*/ S.suspend(() =>
+const ServicesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ServicesListResultValueList),
@@ -1990,7 +1985,7 @@ export interface ListSupportTicketsRequest {
   /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
 }
-export const ListSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -2020,12 +2015,11 @@ export interface SupportTicketDetails {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const SupportTicketDetails =
-  GetSupportTicketResponse as any as S.Schema<SupportTicketDetails>;
+const SupportTicketDetails = GetSupportTicketResponse as any as S.Schema<SupportTicketDetails>;
 
 /** [Placeholder] Description for value property */
 export type SupportTicketsListResultValueList = Array<SupportTicketDetails>;
-export const SupportTicketsListResultValueList = /*@__PURE__*/ S.Array(
+const SupportTicketsListResultValueList = /*@__PURE__*/ S.Array(
   SupportTicketDetails,
 ) as any as S.Schema<SupportTicketsListResultValueList>;
 
@@ -2036,7 +2030,7 @@ export interface SupportTicketsListResult {
   /** [Placeholder] Description for value property */
   value?: SupportTicketsListResultValueList;
 }
-export const SupportTicketsListResult = /*@__PURE__*/ S.suspend(() =>
+const SupportTicketsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(SupportTicketsListResultValueList),
@@ -2049,7 +2043,7 @@ export interface ListSupportTicketsNoSubscriptionRequest {
   /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
 }
-export const ListSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2067,11 +2061,11 @@ export const ListSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend((
 
 /** Status to be updated on the ticket. */
 export type Status = "open" | "closed";
-export const Status = S.String;
+const Status = S.String;
 
 /** Email addresses listed will be copied on any correspondence about the support ticket. */
 export type UpdateContactProfileAdditionalEmailAddressesList = Array<string>;
-export const UpdateContactProfileAdditionalEmailAddressesList =
+const UpdateContactProfileAdditionalEmailAddressesList =
   ContactProfileAdditionalEmailAddressesList as any as S.Schema<UpdateContactProfileAdditionalEmailAddressesList>;
 
 /** Contact information associated with the support ticket. */
@@ -2095,7 +2089,7 @@ export interface UpdateContactProfile {
   /** Preferred language of support from Azure. Support languages vary based on the severity you choose for your support ticket. Learn more at [Azure Severity and responsiveness](https://azure.microsoft.com/support/plans/response/). Use the standard language-country code. Valid values are 'en-us' for English, 'zh-hans' for Chinese, 'es-es' for Spanish, 'fr-fr' for French, 'ja-jp' for Japanese, 'ko-kr' for Korean, 'ru-ru' for Russian, 'pt-br' for Portuguese, 'it-it' for Italian, 'zh-tw' for Chinese and 'de-de' for German. */
   preferredSupportLanguage?: string;
 }
-export const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
+const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.optional(S.String),
     lastName: S.optional(S.String),
@@ -2111,7 +2105,7 @@ export const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates secondary consents for the support ticket */
 export type UpdateSupportTicketRequestSecondaryConsentList = Array<SecondaryConsent>;
-export const UpdateSupportTicketRequestSecondaryConsentList =
+const UpdateSupportTicketRequestSecondaryConsentList =
   SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<UpdateSupportTicketRequestSecondaryConsentList>;
 
 export interface UpdateSupportTicketRequest {
@@ -2130,7 +2124,7 @@ export interface UpdateSupportTicketRequest {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: UpdateSupportTicketRequestSecondaryConsentList;
 }
-export const UpdateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -2163,12 +2157,12 @@ export interface UpdateSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const UpdateSupportTicketResponse =
+const UpdateSupportTicketResponse =
   CreateSupportTicketResponse as any as S.Schema<UpdateSupportTicketResponse>;
 
 /** This property indicates secondary consents for the support ticket */
 export type UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList = Array<SecondaryConsent>;
-export const UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList =
+const UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList =
   SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList>;
 
 export interface UpdateSupportTicketsNoSubscriptionRequest {
@@ -2185,7 +2179,7 @@ export interface UpdateSupportTicketsNoSubscriptionRequest {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList;
 }
-export const UpdateSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSupportTicketsNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportTicketName: S.String.pipe(T.Label()),
     severity: S.optional(SeverityLevel),
@@ -2217,7 +2211,7 @@ export interface UpdateSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const UpdateSupportTicketsNoSubscriptionResponse =
+const UpdateSupportTicketsNoSubscriptionResponse =
   CreateSupportTicketResponse as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>;
 
 export interface UploadFileRequest {
@@ -2232,7 +2226,7 @@ export interface UploadFileRequest {
   /** Index of the uploaded chunk (Index starts at 0) */
   chunkIndex?: number;
 }
-export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -2250,7 +2244,7 @@ export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFileRequest" }) as any as S.Schema<UploadFileRequest>;
 
 export interface UploadFileResponse {}
-export const UploadFileResponse = ServiceLevelAgreementInput as any as S.Schema<UploadFileResponse>;
+const UploadFileResponse = ServiceLevelAgreementInput as any as S.Schema<UploadFileResponse>;
 
 export interface UploadFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
@@ -2262,7 +2256,7 @@ export interface UploadFilesNoSubscriptionRequest {
   /** Index of the uploaded chunk (Index starts at 0) */
   chunkIndex?: number;
 }
-export const UploadFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
@@ -2281,9 +2275,7 @@ export const UploadFilesNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadFilesNoSubscriptionRequest>;
 
 export interface UploadFilesNoSubscriptionResponse {}
-export const UploadFilesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const UploadFilesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UploadFilesNoSubscriptionResponse",
 }) as any as S.Schema<UploadFilesNoSubscriptionResponse>;
 

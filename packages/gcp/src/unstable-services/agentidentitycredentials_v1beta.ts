@@ -70,7 +70,7 @@ export interface GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsRe
   /** Required. The encrypted state passed back from the consent flow. */
   userIdValidationState?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsRequest =
+const GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       consentNonce: S.optional(S.String),
@@ -87,33 +87,32 @@ export interface FinalizeProjectsLocationsAuthProvidersCredentialsRequest {
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsRequest;
 }
-export const FinalizeProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      authProvider: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+authProvider}/credentials:finalize",
-        baseUrl: "https://agentidentitycredentials.googleapis.com/",
-      }),
+const FinalizeProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authProvider: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+authProvider}/credentials:finalize",
+      baseUrl: "https://agentidentitycredentials.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FinalizeProjectsLocationsAuthProvidersCredentialsRequest",
 }) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>;
 
 /** Response message for `FinalizeCredentials`. Intentionally empty. */
 export interface GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsResponse {}
-export const GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsResponse =
+const GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsResponse",
   }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1beta_FinalizeCredentialsResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request message for `RetrieveCredentials`. */
 export interface GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsRequest {
@@ -126,7 +125,7 @@ export interface GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsRe
   /** Optional. The OAuth scopes required for this access. */
   scopes?: StringList;
 }
-export const GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsRequest =
+const GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       continueUri: S.optional(S.String),
@@ -144,7 +143,7 @@ export interface GetProjectsLocationsAuthProvidersCredentialsRequest {
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsRequest;
 }
-export const GetProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authProvider: S.String.pipe(T.Label()),
     body: S.optional(
@@ -163,8 +162,8 @@ export const GetProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/
 
 /** Indicates the user has rejected the permission delegation or canceled the request. */
 export interface GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected {}
-export const GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected",
 }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected>;
@@ -180,7 +179,7 @@ export interface GoogleCloudAgentidentitycredentialsV1beta_Success {
   /** The expiration time of the token. This does not guarantee that the token will be valid until this time, since the token could be revoked earlier. There could also be clock skew between the auth provider and the client so it may expire slightly earlier. If not set, the token might be permanent or it may be that the service does not (or cannot) know when it will expire. */
   expireTime?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1beta_Success = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAgentidentitycredentialsV1beta_Success = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(StringList),
     token: S.optional(S.String),
@@ -200,13 +199,12 @@ export interface GoogleCloudAgentidentitycredentialsV1beta_UriConsentRequired {
   /** Output only. The URL where the user should be redirected to grant consent. This will always be present. */
   authorizationUri?: string;
 }
-export const GoogleCloudAgentidentitycredentialsV1beta_UriConsentRequired = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uid: S.optional(S.String),
-      consentNonce: S.optional(S.String),
-      authorizationUri: S.optional(S.String),
-    }),
+const GoogleCloudAgentidentitycredentialsV1beta_UriConsentRequired = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uid: S.optional(S.String),
+    consentNonce: S.optional(S.String),
+    authorizationUri: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudAgentidentitycredentialsV1beta_UriConsentRequired",
 }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1beta_UriConsentRequired>;
@@ -214,9 +212,6 @@ export const GoogleCloudAgentidentitycredentialsV1beta_UriConsentRequired = /*@_
 /** Indicates that the credential retrieval is pending. The caller should retry the `RetrieveCredentials` request after some time. */
 export type GoogleCloudAgentidentitycredentialsV1beta_Pending =
   GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected;
-export const GoogleCloudAgentidentitycredentialsV1beta_Pending =
-  GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected;
-
 /** Response message for `RetrieveCredentials`. Contains the access tokens and related artifacts. */
 export interface GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsResponse {
   /** Message indicating consent was rejected. */
@@ -228,7 +223,7 @@ export interface GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsRe
   /** Message indicating credential retrieval is pending. */
   pending?: GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected;
 }
-export const GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsResponse =
+const GoogleCloudAgentidentitycredentialsV1beta_RetrieveCredentialsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       consentRejected: S.optional(GoogleCloudAgentidentitycredentialsV1beta_ConsentRejected),

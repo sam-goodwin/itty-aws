@@ -16,7 +16,7 @@ export interface AzureLargeInstanceShutdownRequest {
   /** Name of the AzureLargeInstance. */
   azureLargeInstanceName: string;
 }
-export const AzureLargeInstanceShutdownRequest = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeInstanceShutdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -35,13 +35,13 @@ export const AzureLargeInstanceShutdownRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
+const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -52,7 +52,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -61,7 +61,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -78,7 +78,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -125,7 +125,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type AzureLargeInstanceShutdownResponseOperationsList = Array<OperationStatusResult>;
-export const AzureLargeInstanceShutdownResponseOperationsList = /*@__PURE__*/ S.Array(
+const AzureLargeInstanceShutdownResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<AzureLargeInstanceShutdownResponseOperationsList>;
 
@@ -149,7 +149,7 @@ export interface AzureLargeInstanceShutdownResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const AzureLargeInstanceShutdownResponse = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeInstanceShutdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -173,7 +173,7 @@ export interface GetAzureLargeInstanceRequest {
   /** Name of the AzureLargeInstance. */
   azureLargeInstanceName: string;
 }
-export const GetAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -192,11 +192,11 @@ export const GetAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -213,7 +213,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -226,14 +226,14 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAzureLargeInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetAzureLargeInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetAzureLargeInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetAzureLargeInstanceResponseTagsMap>;
 
 /** Enum of the hardware options (vendor and/or their product name) for an Azure Large Instance */
 export type AzureLargeInstanceHardwareTypeNamesEnum = "Cisco_UCS" | "HPE" | "SDFLEX";
-export const AzureLargeInstanceHardwareTypeNamesEnum = S.String;
+const AzureLargeInstanceHardwareTypeNamesEnum = S.String;
 
 /** Enum of available model types (each of which have their own storage / memory sizes) for an Azure Large Instance type. See https://learn.microsoft.com/azure/sap/large-instances/hana-available-skus */
 export type AzureLargeInstanceSizeNamesEnum =
@@ -282,7 +282,7 @@ export type AzureLargeInstanceSizeNamesEnum =
   | "S896oom"
   | "S896ooo"
   | "S960m";
-export const AzureLargeInstanceSizeNamesEnum = S.String;
+const AzureLargeInstanceSizeNamesEnum = S.String;
 
 /** Specifies the hardware settings for the Azure Large Instance. */
 export interface HardwareProfile {
@@ -291,7 +291,7 @@ export interface HardwareProfile {
   /** Specifies the Azure Large Instance SKU. */
   azureLargeInstanceSize?: AzureLargeInstanceSizeNamesEnum;
 }
-export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
+const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareType: S.optional(AzureLargeInstanceHardwareTypeNamesEnum),
     azureLargeInstanceSize: S.optional(AzureLargeInstanceSizeNamesEnum),
@@ -307,7 +307,7 @@ export interface Disk {
   /** Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. */
   lun?: number;
 }
-export const Disk = /*@__PURE__*/ S.suspend(() =>
+const Disk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     diskSizeGB: S.optional(S.Number),
@@ -317,7 +317,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies information about the operating system disk used by Azure Large Instance. */
 export type StorageProfileOsDisksList = Array<Disk>;
-export const StorageProfileOsDisksList = /*@__PURE__*/ S.Array(
+const StorageProfileOsDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<StorageProfileOsDisksList>;
 
@@ -328,7 +328,7 @@ export interface StorageProfile {
   /** Specifies information about the operating system disk used by Azure Large Instance. */
   osDisks?: StorageProfileOsDisksList;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nfsIpAddress: S.optional(S.String),
     osDisks: S.optional(StorageProfileOsDisksList),
@@ -346,7 +346,7 @@ export interface OsProfile {
   /** Specifies the SSH public key used to access the operating system. */
   sshPublicKey?: string;
 }
-export const OsProfile = /*@__PURE__*/ S.suspend(() =>
+const OsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computerName: S.optional(S.String),
     osType: S.optional(S.String),
@@ -360,7 +360,7 @@ export interface IpAddress {
   /** Specifies the IP address of the network interface. */
   ipAddress?: string;
 }
-export const IpAddress = /*@__PURE__*/ S.suspend(() =>
+const IpAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
   }),
@@ -368,7 +368,7 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the network interfaces for the Azure Large Instance. */
 export type NetworkProfileNetworkInterfacesList = Array<IpAddress>;
-export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
+const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
 
@@ -379,7 +379,7 @@ export interface NetworkProfile {
   /** Specifies the circuit id for connecting to express route. */
   circuitId?: string;
 }
-export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkInterfaces: S.optional(NetworkProfileNetworkInterfacesList),
     circuitId: S.optional(S.String),
@@ -394,7 +394,7 @@ export type AzureLargeInstancePowerStateEnum =
   | "stopped"
   | "restarting"
   | "unknown";
-export const AzureLargeInstancePowerStateEnum = S.String;
+const AzureLargeInstancePowerStateEnum = S.String;
 
 /** Provisioning states that an Azure Large Instance can be in */
 export type AzureLargeInstanceProvisioningStatesEnum =
@@ -406,7 +406,7 @@ export type AzureLargeInstanceProvisioningStatesEnum =
   | "Deleting"
   | "Migrating"
   | "Canceled";
-export const AzureLargeInstanceProvisioningStatesEnum = S.String;
+const AzureLargeInstanceProvisioningStatesEnum = S.String;
 
 /** Describes the properties of an Azure Large Instance. */
 export interface AzureLargeInstanceProperties {
@@ -429,7 +429,7 @@ export interface AzureLargeInstanceProperties {
   /** State of provisioning of the AzureLargeInstance */
   provisioningState?: AzureLargeInstanceProvisioningStatesEnum;
 }
-export const AzureLargeInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareProfile: S.optional(HardwareProfile),
     storageProfile: S.optional(StorageProfile),
@@ -461,7 +461,7 @@ export interface GetAzureLargeInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AzureLargeInstanceProperties;
 }
-export const GetAzureLargeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAzureLargeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -483,7 +483,7 @@ export interface GetAzureLargeStorageInstanceRequest {
   /** Name of the AzureLargeStorageInstance. */
   azureLargeStorageInstanceName: string;
 }
-export const GetAzureLargeStorageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAzureLargeStorageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -502,7 +502,7 @@ export const GetAzureLargeStorageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAzureLargeStorageInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetAzureLargeStorageInstanceResponseTagsMap =
+const GetAzureLargeStorageInstanceResponseTagsMap =
   GetAzureLargeInstanceResponseTagsMap as any as S.Schema<GetAzureLargeStorageInstanceResponseTagsMap>;
 
 /** An enum of possible operation states for an AzureLargeStorageInstances */
@@ -515,7 +515,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Canceled"
   | "Migrating";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Describes the billing related details of the AzureLargeStorageInstance. */
 export interface StorageBillingProperties {
@@ -524,7 +524,7 @@ export interface StorageBillingProperties {
   /** the SKU type that is provisioned */
   sku?: string;
 }
-export const StorageBillingProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageBillingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingMode: S.optional(S.String),
     sku: S.optional(S.String),
@@ -548,7 +548,7 @@ export interface StorageProperties {
   /** the billing related information for the resource */
   storageBillingProperties?: StorageBillingProperties;
 }
-export const StorageProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     offeringType: S.optional(S.String),
@@ -567,7 +567,7 @@ export interface AzureLargeStorageInstanceProperties {
   /** Specifies the storage properties for the AzureLargeStorage instance. */
   storageProperties?: StorageProperties;
 }
-export const AzureLargeStorageInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeStorageInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureLargeStorageInstanceUniqueIdentifier: S.optional(S.String),
     storageProperties: S.optional(StorageProperties),
@@ -592,7 +592,7 @@ export interface GetAzureLargeStorageInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AzureLargeStorageInstanceProperties;
 }
-export const GetAzureLargeStorageInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAzureLargeStorageInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -612,7 +612,7 @@ export interface ListAzureLargeInstanceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAzureLargeInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureLargeInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -630,7 +630,7 @@ export const ListAzureLargeInstanceByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type AzureLargeInstanceTagsMap = { [key: string]: string | undefined };
-export const AzureLargeInstanceTagsMap =
+const AzureLargeInstanceTagsMap =
   GetAzureLargeInstanceResponseTagsMap as any as S.Schema<AzureLargeInstanceTagsMap>;
 
 /** Azure Large Instance info on Azure (ARM properties and AzureLargeInstance properties) */
@@ -650,7 +650,7 @@ export interface AzureLargeInstance {
   /** The resource-specific properties for this resource. */
   properties?: AzureLargeInstanceProperties;
 }
-export const AzureLargeInstance = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -664,7 +664,7 @@ export const AzureLargeInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The AzureLargeInstance items on this page */
 export type AzureLargeInstanceListResultValueList = Array<AzureLargeInstance>;
-export const AzureLargeInstanceListResultValueList = /*@__PURE__*/ S.Array(
+const AzureLargeInstanceListResultValueList = /*@__PURE__*/ S.Array(
   AzureLargeInstance,
 ) as any as S.Schema<AzureLargeInstanceListResultValueList>;
 
@@ -675,7 +675,7 @@ export interface AzureLargeInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AzureLargeInstanceListResult = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeInstanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AzureLargeInstanceListResultValueList,
     nextLink: S.optional(S.String),
@@ -688,7 +688,7 @@ export interface ListAzureLargeInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListAzureLargeInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureLargeInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -709,7 +709,7 @@ export interface ListAzureLargeStorageInstanceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAzureLargeStorageInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureLargeStorageInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -727,9 +727,6 @@ export const ListAzureLargeStorageInstanceByResourceGroupRequest = /*@__PURE__*/
 
 /** Resource tags. */
 export type AzureLargeStorageInstanceTagsMap = { [key: string]: string | undefined };
-export const AzureLargeStorageInstanceTagsMap =
-  GetAzureLargeInstanceResponseTagsMap as any as S.Schema<AzureLargeStorageInstanceTagsMap>;
-
 /** AzureLargeStorageInstance info on Azure (ARM properties and AzureLargeStorageInstance properties) */
 export interface AzureLargeStorageInstance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -747,12 +744,12 @@ export interface AzureLargeStorageInstance {
   /** The resource-specific properties for this resource. */
   properties?: AzureLargeStorageInstanceProperties;
 }
-export const AzureLargeStorageInstance =
+const AzureLargeStorageInstance =
   GetAzureLargeStorageInstanceResponse as any as S.Schema<AzureLargeStorageInstance>;
 
 /** The AzureLargeStorageInstance items on this page */
 export type AzureLargeStorageInstanceListResultValueList = Array<AzureLargeStorageInstance>;
-export const AzureLargeStorageInstanceListResultValueList = /*@__PURE__*/ S.Array(
+const AzureLargeStorageInstanceListResultValueList = /*@__PURE__*/ S.Array(
   AzureLargeStorageInstance,
 ) as any as S.Schema<AzureLargeStorageInstanceListResultValueList>;
 
@@ -763,7 +760,7 @@ export interface AzureLargeStorageInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AzureLargeStorageInstanceListResult = /*@__PURE__*/ S.suspend(() =>
+const AzureLargeStorageInstanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AzureLargeStorageInstanceListResultValueList,
     nextLink: S.optional(S.String),
@@ -776,7 +773,7 @@ export interface ListAzureLargeStorageInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListAzureLargeStorageInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureLargeStorageInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -792,7 +789,7 @@ export const ListAzureLargeStorageInstanceBySubscriptionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListAzureLargeStorageInstanceBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -814,7 +811,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -825,11 +822,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -844,7 +841,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -856,7 +853,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -866,7 +863,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -875,7 +872,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Enum of two possible values to determine if the ALI instance restart operation should forcefully terminate and halt any existing processes that may be running on the server or not. */
 export type AzureLargeInstanceForcePowerState = "active" | "inactive";
-export const AzureLargeInstanceForcePowerState = S.String;
+const AzureLargeInstanceForcePowerState = S.String;
 
 export interface RestartAzureLargeInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -887,7 +884,7 @@ export interface RestartAzureLargeInstanceRequest {
   /** Whether to force restart by shutting all processes. */
   forceState?: AzureLargeInstanceForcePowerState | (string & {});
 }
-export const RestartAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -907,9 +904,6 @@ export const RestartAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type RestartAzureLargeInstanceResponseOperationsList = Array<OperationStatusResult>;
-export const RestartAzureLargeInstanceResponseOperationsList =
-  AzureLargeInstanceShutdownResponseOperationsList as any as S.Schema<RestartAzureLargeInstanceResponseOperationsList>;
-
 export interface RestartAzureLargeInstanceResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -930,7 +924,7 @@ export interface RestartAzureLargeInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const RestartAzureLargeInstanceResponse =
+const RestartAzureLargeInstanceResponse =
   AzureLargeInstanceShutdownResponse as any as S.Schema<RestartAzureLargeInstanceResponse>;
 
 export interface StartAzureLargeInstanceRequest {
@@ -941,7 +935,7 @@ export interface StartAzureLargeInstanceRequest {
   /** Name of the AzureLargeInstance. */
   azureLargeInstanceName: string;
 }
-export const StartAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -960,9 +954,6 @@ export const StartAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type StartAzureLargeInstanceResponseOperationsList = Array<OperationStatusResult>;
-export const StartAzureLargeInstanceResponseOperationsList =
-  AzureLargeInstanceShutdownResponseOperationsList as any as S.Schema<StartAzureLargeInstanceResponseOperationsList>;
-
 export interface StartAzureLargeInstanceResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -983,12 +974,12 @@ export interface StartAzureLargeInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const StartAzureLargeInstanceResponse =
+const StartAzureLargeInstanceResponse =
   AzureLargeInstanceShutdownResponse as any as S.Schema<StartAzureLargeInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateAzureLargeInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureLargeInstanceRequestTagsMap =
+const UpdateAzureLargeInstanceRequestTagsMap =
   GetAzureLargeInstanceResponseTagsMap as any as S.Schema<UpdateAzureLargeInstanceRequestTagsMap>;
 
 export interface UpdateAzureLargeInstanceRequest {
@@ -1001,7 +992,7 @@ export interface UpdateAzureLargeInstanceRequest {
   /** Resource tags. */
   tags?: UpdateAzureLargeInstanceRequestTagsMap;
 }
-export const UpdateAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1021,9 +1012,6 @@ export const UpdateAzureLargeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAzureLargeInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureLargeInstanceResponseTagsMap =
-  GetAzureLargeInstanceResponseTagsMap as any as S.Schema<UpdateAzureLargeInstanceResponseTagsMap>;
-
 export interface UpdateAzureLargeInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1040,12 +1028,12 @@ export interface UpdateAzureLargeInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AzureLargeInstanceProperties;
 }
-export const UpdateAzureLargeInstanceResponse =
+const UpdateAzureLargeInstanceResponse =
   GetAzureLargeInstanceResponse as any as S.Schema<UpdateAzureLargeInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateAzureLargeStorageInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureLargeStorageInstanceRequestTagsMap =
+const UpdateAzureLargeStorageInstanceRequestTagsMap =
   GetAzureLargeInstanceResponseTagsMap as any as S.Schema<UpdateAzureLargeStorageInstanceRequestTagsMap>;
 
 export interface UpdateAzureLargeStorageInstanceRequest {
@@ -1058,7 +1046,7 @@ export interface UpdateAzureLargeStorageInstanceRequest {
   /** Resource tags. */
   tags?: UpdateAzureLargeStorageInstanceRequestTagsMap;
 }
-export const UpdateAzureLargeStorageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAzureLargeStorageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1078,9 +1066,6 @@ export const UpdateAzureLargeStorageInstanceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateAzureLargeStorageInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureLargeStorageInstanceResponseTagsMap =
-  GetAzureLargeInstanceResponseTagsMap as any as S.Schema<UpdateAzureLargeStorageInstanceResponseTagsMap>;
-
 export interface UpdateAzureLargeStorageInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1097,7 +1082,7 @@ export interface UpdateAzureLargeStorageInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AzureLargeStorageInstanceProperties;
 }
-export const UpdateAzureLargeStorageInstanceResponse =
+const UpdateAzureLargeStorageInstanceResponse =
   GetAzureLargeStorageInstanceResponse as any as S.Schema<UpdateAzureLargeStorageInstanceResponse>;
 
 export type AzureLargeInstanceShutdownError = AzureOpError;

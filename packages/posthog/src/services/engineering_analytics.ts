@@ -34,7 +34,7 @@ export interface EngineeringAnalyticsAttentionPullRequestsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsAttentionPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsAttentionPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo: S.optional(S.String.pipe(T.Query())),
@@ -60,7 +60,7 @@ export interface Author {
   /** True if the author is a bot (handle ends in [bot] or is a known bot). */
   is_bot: boolean;
 }
-export const Author = /*@__PURE__*/ S.suspend(() =>
+const Author = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     handle: S.String,
     display_name: S.String,
@@ -77,7 +77,7 @@ export interface RepoRef {
   /** Repository name. */
   name: string;
 }
-export const RepoRef = /*@__PURE__*/ S.suspend(() =>
+const RepoRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     owner: S.String,
@@ -87,7 +87,7 @@ export const RepoRef = /*@__PURE__*/ S.suspend(() =>
 
 /** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
 export type CIStatusRollupFailingWorkflowsList = Array<string>;
-export const CIStatusRollupFailingWorkflowsList = /*@__PURE__*/ S.Array(
+const CIStatusRollupFailingWorkflowsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CIStatusRollupFailingWorkflowsList>;
 
@@ -105,7 +105,7 @@ export interface CIStatusRollup {
   /** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
   failing_workflows?: CIStatusRollupFailingWorkflowsList;
 }
-export const CIStatusRollup = /*@__PURE__*/ S.suspend(() =>
+const CIStatusRollup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runs: S.Number,
     passing: S.Number,
@@ -128,7 +128,7 @@ export interface PushCISample {
   /** True when any latest-per-workflow run on this push hasn't completed yet. */
   pending: boolean;
 }
-export const PushCISample = /*@__PURE__*/ S.suspend(() =>
+const PushCISample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head_sha: S.String,
     started_at: S.String,
@@ -140,17 +140,17 @@ export const PushCISample = /*@__PURE__*/ S.suspend(() =>
 
 /** This PR's CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count. */
 export type PullRequestListItemPushHistoryList = Array<PushCISample>;
-export const PullRequestListItemPushHistoryList = /*@__PURE__*/ S.Array(
+const PullRequestListItemPushHistoryList = /*@__PURE__*/ S.Array(
   PushCISample,
 ) as any as S.Schema<PullRequestListItemPushHistoryList>;
 
 /** * `open` - OPEN * `closed` - CLOSED * `merged` - MERGED */
 export type EngineeringAnalyticsPRStateEnum = "open" | "closed" | "merged";
-export const EngineeringAnalyticsPRStateEnum = S.String;
+const EngineeringAnalyticsPRStateEnum = S.String;
 
 /** GitHub label names on the pull request. */
 export type PullRequestListItemLabelsList = Array<string>;
-export const PullRequestListItemLabelsList =
+const PullRequestListItemLabelsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<PullRequestListItemLabelsList>;
 
 export interface PullRequestListItem {
@@ -189,7 +189,7 @@ export interface PullRequestListItem {
   /** Billable (self-hosted) minutes summed over this PR's jobs. Null when the job source isn't synced. */
   billable_minutes?: number | null;
 }
-export const PullRequestListItem = /*@__PURE__*/ S.suspend(() =>
+const PullRequestListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: Author,
     repo: RepoRef,
@@ -213,7 +213,7 @@ export const PullRequestListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Open pull requests needing attention, failing CI first, then newest, capped at `limit`. */
 export type AttentionPullRequestListItemsList = Array<PullRequestListItem>;
-export const AttentionPullRequestListItemsList = /*@__PURE__*/ S.Array(
+const AttentionPullRequestListItemsList = /*@__PURE__*/ S.Array(
   PullRequestListItem,
 ) as any as S.Schema<AttentionPullRequestListItemsList>;
 
@@ -225,7 +225,7 @@ export interface AttentionPullRequestList {
   /** Maximum number of pull requests returned in `items`. */
   limit: number;
 }
-export const AttentionPullRequestList = /*@__PURE__*/ S.suspend(() =>
+const AttentionPullRequestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: AttentionPullRequestListItemsList,
     total: S.Number,
@@ -243,7 +243,7 @@ export interface EngineeringAnalyticsAuthorFrictionRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsAuthorFrictionRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsAuthorFrictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     github_team: S.optional(S.String.pipe(T.Query())),
@@ -262,7 +262,7 @@ export const EngineeringAnalyticsAuthorFrictionRequest = /*@__PURE__*/ S.suspend
 
 /** * `ci` - CI * `review` - REVIEW * `queue` - QUEUE * `rework` - REWORK */
 export type FrictionGroupEnum = "ci" | "review" | "queue" | "rework";
-export const FrictionGroupEnum = S.String;
+const FrictionGroupEnum = S.String;
 
 export interface FrictionGroupShare {
   /** ci (red CI and CI waits), review (waiting for the first approval), queue (merge-queue time and kickouts), or rework (own failures and extra pushes). * `ci` - CI * `review` - REVIEW * `queue` - QUEUE * `rework` - REWORK */
@@ -270,7 +270,7 @@ export interface FrictionGroupShare {
   /** This group's part of the score, in the same 'x typical' unit. The parts add up. */
   score: number;
 }
-export const FrictionGroupShare = /*@__PURE__*/ S.suspend(() =>
+const FrictionGroupShare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: FrictionGroupEnum,
     score: S.Number,
@@ -279,13 +279,13 @@ export const FrictionGroupShare = /*@__PURE__*/ S.suspend(() =>
 
 /** The score split by the kind of friction. */
 export type AuthorFrictionGroupsList = Array<FrictionGroupShare>;
-export const AuthorFrictionGroupsList = /*@__PURE__*/ S.Array(
+const AuthorFrictionGroupsList = /*@__PURE__*/ S.Array(
   FrictionGroupShare,
 ) as any as S.Schema<AuthorFrictionGroupsList>;
 
 /** The author's GitHub teams. Empty when the membership table isn't synced. */
 export type AuthorFrictionTeamsList = Array<string>;
-export const AuthorFrictionTeamsList =
+const AuthorFrictionTeamsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<AuthorFrictionTeamsList>;
 
 export interface AuthorFriction {
@@ -308,7 +308,7 @@ export interface AuthorFriction {
   /** The author's GitHub teams. Empty when the membership table isn't synced. */
   teams?: AuthorFrictionTeamsList;
 }
-export const AuthorFriction = /*@__PURE__*/ S.suspend(() =>
+const AuthorFriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: AuthorFrictionGroupsList,
     author: S.String,
@@ -324,7 +324,7 @@ export const AuthorFriction = /*@__PURE__*/ S.suspend(() =>
 
 /** Authors by friction, most first. */
 export type AuthorFrictionListItemsList = Array<AuthorFriction>;
-export const AuthorFrictionListItemsList = /*@__PURE__*/ S.Array(
+const AuthorFrictionListItemsList = /*@__PURE__*/ S.Array(
   AuthorFriction,
 ) as any as S.Schema<AuthorFrictionListItemsList>;
 
@@ -336,7 +336,7 @@ export interface TeamFriction {
   /** Members with enough merged pull requests to score. A team shows only above a floor, so one or two people never read as a team's figure. */
   scored_author_count: number;
 }
-export const TeamFriction = /*@__PURE__*/ S.suspend(() =>
+const TeamFriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     github_team: S.String,
     median_score: S.Number,
@@ -346,7 +346,7 @@ export const TeamFriction = /*@__PURE__*/ S.suspend(() =>
 
 /** Teams with at least 3 scored members, by median member friction, most first. */
 export type AuthorFrictionListTeamsList = Array<TeamFriction>;
-export const AuthorFrictionListTeamsList = /*@__PURE__*/ S.Array(
+const AuthorFrictionListTeamsList = /*@__PURE__*/ S.Array(
   TeamFriction,
 ) as any as S.Schema<AuthorFrictionListTeamsList>;
 
@@ -366,7 +366,7 @@ export interface AuthorFrictionList {
   /** False when the team membership table isn't synced, so a team filter matches nobody. */
   has_membership_data: boolean;
 }
-export const AuthorFrictionList = /*@__PURE__*/ S.suspend(() =>
+const AuthorFrictionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: AuthorFrictionListItemsList,
     teams: AuthorFrictionListTeamsList,
@@ -388,7 +388,7 @@ export interface EngineeringAnalyticsAuthorFrictionDetailRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsAuthorFrictionDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsAuthorFrictionDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     author: S.String.pipe(T.Query()),
@@ -407,12 +407,12 @@ export const EngineeringAnalyticsAuthorFrictionDetailRequest = /*@__PURE__*/ S.s
 
 /** The author's teams without the author, each only with at least 2 other scored members. */
 export type AuthorFrictionDetailTeamsList = Array<TeamFriction>;
-export const AuthorFrictionDetailTeamsList =
+const AuthorFrictionDetailTeamsList =
   AuthorFrictionListTeamsList as any as S.Schema<AuthorFrictionDetailTeamsList>;
 
 /** The pull request's friction split by kind. */
 export type PullRequestFrictionItemGroupsList = Array<FrictionGroupShare>;
-export const PullRequestFrictionItemGroupsList =
+const PullRequestFrictionItemGroupsList =
   AuthorFrictionGroupsList as any as S.Schema<PullRequestFrictionItemGroupsList>;
 
 export interface PullRequestFrictionItem {
@@ -429,7 +429,7 @@ export interface PullRequestFrictionItem {
   /** Friction as a multiple of the typical pull request in the repository. */
   score: number;
 }
-export const PullRequestFrictionItem = /*@__PURE__*/ S.suspend(() =>
+const PullRequestFrictionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: PullRequestFrictionItemGroupsList,
     number: S.Number,
@@ -442,7 +442,7 @@ export const PullRequestFrictionItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The author's pull requests that added the most friction, most first. */
 export type AuthorFrictionDetailPullRequestsList = Array<PullRequestFrictionItem>;
-export const AuthorFrictionDetailPullRequestsList = /*@__PURE__*/ S.Array(
+const AuthorFrictionDetailPullRequestsList = /*@__PURE__*/ S.Array(
   PullRequestFrictionItem,
 ) as any as S.Schema<AuthorFrictionDetailPullRequestsList>;
 
@@ -464,7 +464,7 @@ export interface AuthorFrictionDetail {
   /** The author's merged pull requests in the window. */
   pr_count: number;
 }
-export const AuthorFrictionDetail = /*@__PURE__*/ S.suspend(() =>
+const AuthorFrictionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.NullOr(AuthorFriction),
     teams: AuthorFrictionDetailTeamsList,
@@ -491,7 +491,7 @@ export interface EngineeringAnalyticsAuthorWorkflowCostsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsAuthorWorkflowCostsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsAuthorWorkflowCostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     author: S.String.pipe(T.Query()),
@@ -524,7 +524,7 @@ export interface WorkflowCost {
   /** Provider-hosted/non-Linux jobs for this workflow, outside the estimate. */
   excluded_jobs: number;
 }
-export const WorkflowCost = /*@__PURE__*/ S.suspend(() =>
+const WorkflowCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflow_name: S.String,
     billable_minutes: S.Number,
@@ -536,13 +536,13 @@ export const WorkflowCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowCost" }) as any as S.Schema<WorkflowCost>;
 
 export type EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList = Array<WorkflowCost>;
-export const EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowCost,
 ) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList>;
 
 export type EngineeringAnalyticsAuthorWorkflowCostsResponse =
   EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList;
-export const EngineeringAnalyticsAuthorWorkflowCostsResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsAuthorWorkflowCostsResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsAuthorWorkflowCostsResponse",
@@ -556,7 +556,7 @@ export interface EngineeringAnalyticsBrokenTestsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsBrokenTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsBrokenTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo: S.optional(S.String.pipe(T.Query())),
@@ -574,7 +574,7 @@ export const EngineeringAnalyticsBrokenTestsRequest = /*@__PURE__*/ S.suspend(()
 
 /** * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
 export type CIEngineEnum = "github_actions" | "depot_ci";
-export const CIEngineEnum = S.String;
+const CIEngineEnum = S.String;
 
 /** * `breaking_master` - BREAKING_MASTER * `blocking_merge_queue` - BLOCKING_MERGE_QUEUE * `novel_burst` - NOVEL_BURST * `potentially_resolved` - POTENTIALLY_RESOLVED * `flaky` - FLAKY * `pr_only` - PR_ONLY */
 export type BrokenTestRowStateEnum =
@@ -584,11 +584,11 @@ export type BrokenTestRowStateEnum =
   | "potentially_resolved"
   | "flaky"
   | "pr_only";
-export const BrokenTestRowStateEnum = S.String;
+const BrokenTestRowStateEnum = S.String;
 
 /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
 export type BrokenTestRowTrend24hList = Array<number>;
-export const BrokenTestRowTrend24hList = /*@__PURE__*/ S.Array(
+const BrokenTestRowTrend24hList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BrokenTestRowTrend24hList>;
 
@@ -624,7 +624,7 @@ export interface BrokenTestRow {
   /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
   trend_24h?: BrokenTestRowTrend24hList;
 }
-export const BrokenTestRow = /*@__PURE__*/ S.suspend(() =>
+const BrokenTestRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latest_ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     fingerprint: S.String,
@@ -646,13 +646,13 @@ export const BrokenTestRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Classified failures ranked by triage urgency: breaking trunk first, single-PR failures last. */
 export type BrokenTestsResultRowsList = Array<BrokenTestRow>;
-export const BrokenTestsResultRowsList = /*@__PURE__*/ S.Array(
+const BrokenTestsResultRowsList = /*@__PURE__*/ S.Array(
   BrokenTestRow,
 ) as any as S.Schema<BrokenTestsResultRowsList>;
 
 /** Default-branch job names whose latest completed run is failing: the 'what's on fire right now' summary. Empty when the job-level source isn't synced or trunk is green. */
 export type BrokenTestsResultBreakingMasterJobsList = Array<string>;
-export const BrokenTestsResultBreakingMasterJobsList =
+const BrokenTestsResultBreakingMasterJobsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<BrokenTestsResultBreakingMasterJobsList>;
 
 export interface BrokenTestsResult {
@@ -667,7 +667,7 @@ export interface BrokenTestsResult {
   /** Maximum number of rows returned. */
   limit: number;
 }
-export const BrokenTestsResult = /*@__PURE__*/ S.suspend(() =>
+const BrokenTestsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: BrokenTestsResultRowsList,
     breaking_master_jobs: BrokenTestsResultBreakingMasterJobsList,
@@ -685,7 +685,7 @@ export interface EngineeringAnalyticsCiCardsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsCiCardsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsCiCardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo: S.optional(S.String.pipe(T.Query())),
@@ -711,7 +711,7 @@ export interface CICardSummary {
   /** Open pull requests with at least one failing latest CI run. May lag until the workflow_run webhook settles late completions. */
   failing_ci: number;
 }
-export const CICardSummary = /*@__PURE__*/ S.suspend(() =>
+const CICardSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     open_prs: S.Number,
     repos: S.Number,
@@ -730,7 +730,7 @@ export interface EngineeringAnalyticsCiFailureLogsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsCiFailureLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsCiFailureLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pr_number: S.Number.pipe(T.Query()),
@@ -753,7 +753,7 @@ export interface CIFailureLogLine {
   /** The log line text, or the omission-marker text. */
   text: string;
 }
-export const CIFailureLogLine = /*@__PURE__*/ S.suspend(() =>
+const CIFailureLogLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     original_line: S.NullOr(S.Number),
     text: S.String,
@@ -762,7 +762,7 @@ export const CIFailureLogLine = /*@__PURE__*/ S.suspend(() =>
 
 /** The thinned failure-log lines in original order, with omission markers. */
 export type CIJobFailureLogLinesList = Array<CIFailureLogLine>;
-export const CIJobFailureLogLinesList = /*@__PURE__*/ S.Array(
+const CIJobFailureLogLinesList = /*@__PURE__*/ S.Array(
   CIFailureLogLine,
 ) as any as S.Schema<CIJobFailureLogLinesList>;
 
@@ -786,7 +786,7 @@ export interface CIJobFailureLog {
   /** True when the job had more failure lines than the per-job cap. */
   truncated: boolean;
 }
-export const CIJobFailureLog = /*@__PURE__*/ S.suspend(() =>
+const CIJobFailureLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     lines: CIJobFailureLogLinesList,
@@ -802,7 +802,7 @@ export const CIJobFailureLog = /*@__PURE__*/ S.suspend(() =>
 
 /** Failed CI jobs with their thinned failure logs, grouped by job. */
 export type CIFailureLogsJobsList = Array<CIJobFailureLog>;
-export const CIFailureLogsJobsList = /*@__PURE__*/ S.Array(
+const CIFailureLogsJobsList = /*@__PURE__*/ S.Array(
   CIJobFailureLog,
 ) as any as S.Schema<CIFailureLogsJobsList>;
 
@@ -820,7 +820,7 @@ export interface CIFailureLogs {
   /** True when the overall line cap across all jobs was hit. */
   truncated: boolean;
 }
-export const CIFailureLogs = /*@__PURE__*/ S.suspend(() =>
+const CIFailureLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: RepoRef,
     jobs: CIFailureLogsJobsList,
@@ -839,7 +839,7 @@ export interface EngineeringAnalyticsCurrentBranchHealthRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsCurrentBranchHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsCurrentBranchHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo: S.optional(S.String.pipe(T.Query())),
@@ -857,7 +857,7 @@ export const EngineeringAnalyticsCurrentBranchHealthRequest = /*@__PURE__*/ S.su
 
 /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
 export type CurrentBranchHealthFailingWorkflowNamesList = Array<string>;
-export const CurrentBranchHealthFailingWorkflowNamesList =
+const CurrentBranchHealthFailingWorkflowNamesList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<CurrentBranchHealthFailingWorkflowNamesList>;
 
 export interface CurrentBranchHealth {
@@ -870,7 +870,7 @@ export interface CurrentBranchHealth {
   /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
   failing_workflow_names: CurrentBranchHealthFailingWorkflowNamesList;
 }
-export const CurrentBranchHealth = /*@__PURE__*/ S.suspend(() =>
+const CurrentBranchHealth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_branch: S.String,
     settled_workflows: S.Number,
@@ -895,7 +895,7 @@ export interface EngineeringAnalyticsDeliveryComparisonRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsDeliveryComparisonRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsDeliveryComparisonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     author: S.String.pipe(T.Query()),
@@ -929,7 +929,7 @@ export interface ReadyToMergeMedians {
   /** Share (0 to 1) of all ready-to-merge hours spent before the first approval, summed over the pull requests, so long pull requests weigh more. */
   before_first_approval_share: number | null;
 }
-export const ReadyToMergeMedians = /*@__PURE__*/ S.suspend(() =>
+const ReadyToMergeMedians = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merged_pr_count: S.Number,
     ready_to_merge_seconds: S.NullOr(S.Number),
@@ -946,7 +946,7 @@ export interface TeamReadyToMergeMedians {
   /** The GitHub team slug. */
   github_team: string;
 }
-export const TeamReadyToMergeMedians = /*@__PURE__*/ S.suspend(() =>
+const TeamReadyToMergeMedians = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     medians: S.NullOr(ReadyToMergeMedians),
     github_team: S.String,
@@ -955,7 +955,7 @@ export const TeamReadyToMergeMedians = /*@__PURE__*/ S.suspend(() =>
 
 /** The author's teams that team_basis picked, sorted by slug. Empty for no_team. */
 export type DeliveryComparisonTeamsList = Array<TeamReadyToMergeMedians>;
-export const DeliveryComparisonTeamsList = /*@__PURE__*/ S.Array(
+const DeliveryComparisonTeamsList = /*@__PURE__*/ S.Array(
   TeamReadyToMergeMedians,
 ) as any as S.Schema<DeliveryComparisonTeamsList>;
 
@@ -971,7 +971,7 @@ export interface PullRequestReadyToMerge {
   /** Share (0 to 1) of the ready-to-merge time spent before the first approval. */
   before_first_approval_share: number | null;
 }
-export const PullRequestReadyToMerge = /*@__PURE__*/ S.suspend(() =>
+const PullRequestReadyToMerge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     ready_to_merge_seconds: S.NullOr(S.Number),
@@ -988,7 +988,7 @@ export type TeamBasisEnum =
   | "only_team"
   | "all_teams"
   | "no_team";
-export const TeamBasisEnum = S.String;
+const TeamBasisEnum = S.String;
 
 export interface DeliveryComparison {
   /** Over the author's pull requests, without the pr_number pull request. */
@@ -1010,7 +1010,7 @@ export interface DeliveryComparison {
   /** How the teams were picked from the author's teams that own code: pull_request (the pr_number asked the team to review); review_requests (the team the author's pull requests asked to review most often in the window, with ties kept); only_team (the author is in one team); all_teams (no review request points at one team); no_team (no team, or no membership data). * `pull_request` - PULL_REQUEST * `review_requests` - REVIEW_REQUESTS * `only_team` - ONLY_TEAM * `all_teams` - ALL_TEAMS * `no_team` - NO_TEAM */
   team_basis: TeamBasisEnum;
 }
-export const DeliveryComparison = /*@__PURE__*/ S.suspend(() =>
+const DeliveryComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author_medians: ReadyToMergeMedians,
     teams: DeliveryComparisonTeamsList,
@@ -1040,7 +1040,7 @@ export interface EngineeringAnalyticsDeliverySummaryRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsDeliverySummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsDeliverySummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     author: S.optional(S.String.pipe(T.Query())),
@@ -1066,7 +1066,7 @@ export interface ScopeRepoFigure {
   /** The same figure over every non-bot pull request in the repository, the scope included. Null when the repository has nothing to measure. */
   repo: number | null;
 }
-export const ScopeRepoFigure = /*@__PURE__*/ S.suspend(() =>
+const ScopeRepoFigure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.NullOr(S.Number),
     repo: S.NullOr(S.Number),
@@ -1093,7 +1093,7 @@ export interface DurationDistribution {
   /** Slowest duration, in seconds. */
   max_seconds: number | null;
 }
-export const DurationDistribution = /*@__PURE__*/ S.suspend(() =>
+const DurationDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pr_count: S.Number,
     min_seconds: S.NullOr(S.Number),
@@ -1113,7 +1113,7 @@ export interface ScopeRepoDistribution {
   /** Every deployed pull request in the repository. */
   repo: DurationDistribution;
 }
-export const ScopeRepoDistribution = /*@__PURE__*/ S.suspend(() =>
+const ScopeRepoDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: DurationDistribution,
     repo: DurationDistribution,
@@ -1136,7 +1136,7 @@ export interface DeliveryLeadTime {
   /** Of merged_pr_count, the PRs whose first successful in-scope deployment was observed by the window end. The rest are still waiting for a deploy or fall outside the scan. */
   deployed_merged_pr_count: number;
 }
-export const DeliveryLeadTime = /*@__PURE__*/ S.suspend(() =>
+const DeliveryLeadTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     open_to_deploy: ScopeRepoDistribution,
     open_to_merge: ScopeRepoDistribution,
@@ -1150,7 +1150,7 @@ export const DeliveryLeadTime = /*@__PURE__*/ S.suspend(() =>
 
 /** * `author` - AUTHOR * `github_team` - GITHUB_TEAM * `pull_request` - PULL_REQUEST */
 export type DeliveryScopeKindEnum = "author" | "github_team" | "pull_request";
-export const DeliveryScopeKindEnum = S.String;
+const DeliveryScopeKindEnum = S.String;
 
 export interface DeliverySummary {
   /** Median estimated CI cost per merged PR, in USD, over every run linked to the PR (merge-queue gate runs included) that started up to 30 days before the window. Null when the jobs table isn't synced. */
@@ -1204,7 +1204,7 @@ export interface DeliverySummary {
   /** Pushes summed over the merged PRs in scope. */
   push_count: number;
 }
-export const DeliverySummary = /*@__PURE__*/ S.suspend(() =>
+const DeliverySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost_per_merged_pr_usd: ScopeRepoFigure,
     billable_minutes_per_merged_pr: ScopeRepoFigure,
@@ -1235,11 +1235,11 @@ export const DeliverySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeliverySummary" }) as any as S.Schema<DeliverySummary>;
 
 export type EngineeringAnalyticsDoraRequestEnvironmentList = Array<string>;
-export const EngineeringAnalyticsDoraRequestEnvironmentList =
+const EngineeringAnalyticsDoraRequestEnvironmentList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<EngineeringAnalyticsDoraRequestEnvironmentList>;
 
 export type EngineeringAnalyticsDoraRequestGranularity = "day" | "hour" | "week";
-export const EngineeringAnalyticsDoraRequestGranularity = S.String;
+const EngineeringAnalyticsDoraRequestGranularity = S.String;
 
 export interface EngineeringAnalyticsDoraRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1259,7 +1259,7 @@ export interface EngineeringAnalyticsDoraRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsDoraRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsDoraRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -1286,7 +1286,7 @@ export interface DeploymentFrequencyBucket {
   /** Deployments whose first success status landed in this bucket, within the environment scope. Zero-filled: 0 means nothing shipped. */
   deployment_count: number;
 }
-export const DeploymentFrequencyBucket = /*@__PURE__*/ S.suspend(() =>
+const DeploymentFrequencyBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     deployment_count: S.Number,
@@ -1297,7 +1297,7 @@ export const DeploymentFrequencyBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Successful deployments per bucket across the window, oldest first, zero-filled, bucketed by series_granularity. Empty when the deploy tables aren't synced. */
 export type DoraOverviewDeploymentFrequencySeriesList = Array<DeploymentFrequencyBucket>;
-export const DoraOverviewDeploymentFrequencySeriesList = /*@__PURE__*/ S.Array(
+const DoraOverviewDeploymentFrequencySeriesList = /*@__PURE__*/ S.Array(
   DeploymentFrequencyBucket,
 ) as any as S.Schema<DoraOverviewDeploymentFrequencySeriesList>;
 
@@ -1323,7 +1323,7 @@ export interface LeadTimeBucket {
   /** Slowest duration for this stage in this bucket, in seconds. Null when nothing deployed. */
   max_seconds: number | null;
 }
-export const LeadTimeBucket = /*@__PURE__*/ S.suspend(() =>
+const LeadTimeBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     deployed_pr_count: S.Number,
@@ -1340,33 +1340,33 @@ export const LeadTimeBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Merge-to-deploy distribution per bucket across the window, oldest first: the box-plot series (min/p5/p25/p50/mean/p75/p95/max seconds per bucket). Empty when the deploy tables aren't synced, or when github_team was passed without membership data synced. */
 export type DoraOverviewMergeToDeploySeriesList = Array<LeadTimeBucket>;
-export const DoraOverviewMergeToDeploySeriesList = /*@__PURE__*/ S.Array(
+const DoraOverviewMergeToDeploySeriesList = /*@__PURE__*/ S.Array(
   LeadTimeBucket,
 ) as any as S.Schema<DoraOverviewMergeToDeploySeriesList>;
 
 /** Open-to-merge distribution over the SAME deployed PRs and buckets as merge_to_deploy_series, so the two stages compare bucket by bucket. Not the all-merged-PRs cycle time. Empty in the same cases as merge_to_deploy_series. */
 export type DoraOverviewOpenToMergeSeriesList = Array<LeadTimeBucket>;
-export const DoraOverviewOpenToMergeSeriesList =
+const DoraOverviewOpenToMergeSeriesList =
   DoraOverviewMergeToDeploySeriesList as any as S.Schema<DoraOverviewOpenToMergeSeriesList>;
 
 /** Open-to-deploy distribution over the same deployed PRs and buckets: the full open to first-successful-deploy span the two stages above compose into. Empty in the same cases as merge_to_deploy_series. */
 export type DoraOverviewOpenToDeploySeriesList = Array<LeadTimeBucket>;
-export const DoraOverviewOpenToDeploySeriesList =
+const DoraOverviewOpenToDeploySeriesList =
   DoraOverviewMergeToDeploySeriesList as any as S.Schema<DoraOverviewOpenToDeploySeriesList>;
 
 /** Distinct persistent environments from the metric scan window or the 30 days before its end, whichever starts earlier, most-deployed first. Transient environments are omitted. */
 export type DoraOverviewEnvironmentsList = Array<string>;
-export const DoraOverviewEnvironmentsList =
+const DoraOverviewEnvironmentsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewEnvironmentsList>;
 
 /** Exact environment names used for these metrics. Defaults to all persistent environments marked production or named prod/production (including regional suffixes), falling back to the busiest persistent environment. Explicit filters are trimmed and deduplicated. DRF rejects blank or unknown names; real transient names are allowed. */
 export type DoraOverviewSelectedEnvironmentsList = Array<string>;
-export const DoraOverviewSelectedEnvironmentsList =
+const DoraOverviewSelectedEnvironmentsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewSelectedEnvironmentsList>;
 
 /** Distinct GitHub team slugs from the membership snapshot, sorted: the team picker's options. Empty when membership isn't synced. */
 export type DoraOverviewGithubTeamsList = Array<string>;
-export const DoraOverviewGithubTeamsList =
+const DoraOverviewGithubTeamsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewGithubTeamsList>;
 
 export interface DoraOverview {
@@ -1431,7 +1431,7 @@ export interface DoraOverview {
   /** Bucket width of every series: the granularity param when given, else chosen to fit the window: 'hour', 'day', or 'week'. */
   series_granularity: string;
 }
-export const DoraOverview = /*@__PURE__*/ S.suspend(() =>
+const DoraOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment_frequency_series: DoraOverviewDeploymentFrequencySeriesList,
     merge_to_deploy_series: DoraOverviewMergeToDeploySeriesList,
@@ -1467,7 +1467,7 @@ export const DoraOverview = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DoraOverview" }) as any as S.Schema<DoraOverview>;
 
 export type EngineeringAnalyticsFlakyTestsRequestRunner = "jest" | "pytest";
-export const EngineeringAnalyticsFlakyTestsRequestRunner = S.String;
+const EngineeringAnalyticsFlakyTestsRequestRunner = S.String;
 
 export interface EngineeringAnalyticsFlakyTestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1487,7 +1487,7 @@ export interface EngineeringAnalyticsFlakyTestsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -1510,14 +1510,14 @@ export const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** * `pytest` - PYTEST * `jest` - JEST */
 export type CITestRunnerEnum = "pytest" | "jest";
-export const CITestRunnerEnum = S.String;
+const CITestRunnerEnum = S.String;
 
 /** * `confirmed_flake` - CONFIRMED_FLAKE * `suspected_regression` - SUSPECTED_REGRESSION * `quarantined` - QUARANTINED */
 export type FlakyTestItemClassificationEnum =
   | "confirmed_flake"
   | "suspected_regression"
   | "quarantined";
-export const FlakyTestItemClassificationEnum = S.String;
+const FlakyTestItemClassificationEnum = S.String;
 
 export interface FlakyTestItem {
   /** Test runner that emitted this signal: 'pytest' or 'jest'. * `pytest` - PYTEST * `jest` - JEST */
@@ -1541,7 +1541,7 @@ export interface FlakyTestItem {
   /** Most recent failure, recovery, or quarantined-failure run for this test in the window. */
   last_signal_at: string;
 }
-export const FlakyTestItem = /*@__PURE__*/ S.suspend(() =>
+const FlakyTestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runner: CITestRunnerEnum,
     nodeid: S.String,
@@ -1558,7 +1558,7 @@ export const FlakyTestItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures. */
 export type FlakyTestListItemsList = Array<FlakyTestItem>;
-export const FlakyTestListItemsList = /*@__PURE__*/ S.Array(
+const FlakyTestListItemsList = /*@__PURE__*/ S.Array(
   FlakyTestItem,
 ) as any as S.Schema<FlakyTestListItemsList>;
 
@@ -1570,7 +1570,7 @@ export interface FlakyTestList {
   /** Maximum number of tests returned in `items`. */
   limit: number;
 }
-export const FlakyTestList = /*@__PURE__*/ S.suspend(() =>
+const FlakyTestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: FlakyTestListItemsList,
     truncated: S.Boolean,
@@ -1583,7 +1583,7 @@ export type EngineeringAnalyticsJobAggregatesRequestRunScope =
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-export const EngineeringAnalyticsJobAggregatesRequestRunScope = S.String;
+const EngineeringAnalyticsJobAggregatesRequestRunScope = S.String;
 
 export interface EngineeringAnalyticsJobAggregatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1603,7 +1603,7 @@ export interface EngineeringAnalyticsJobAggregatesRequest {
   /** Workflow name to aggregate jobs for. */
   workflow_name: string;
 }
-export const EngineeringAnalyticsJobAggregatesRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsJobAggregatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -1650,7 +1650,7 @@ export interface WorkflowJobAggregate {
   /** Estimated cost in USD via the runner-tier rate ladder; null when every instance ran on an unknown tier. */
   estimated_cost_usd: number | null;
 }
-export const WorkflowJobAggregate = /*@__PURE__*/ S.suspend(() =>
+const WorkflowJobAggregate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_name: S.String,
     job_count: S.Number,
@@ -1668,13 +1668,13 @@ export const WorkflowJobAggregate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowJobAggregate" }) as any as S.Schema<WorkflowJobAggregate>;
 
 export type EngineeringAnalyticsJobAggregatesResponseBodyList = Array<WorkflowJobAggregate>;
-export const EngineeringAnalyticsJobAggregatesResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsJobAggregatesResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowJobAggregate,
 ) as any as S.Schema<EngineeringAnalyticsJobAggregatesResponseBodyList>;
 
 export type EngineeringAnalyticsJobAggregatesResponse =
   EngineeringAnalyticsJobAggregatesResponseBodyList;
-export const EngineeringAnalyticsJobAggregatesResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsJobAggregatesResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsJobAggregatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsJobAggregatesResponse",
@@ -1694,7 +1694,7 @@ export interface EngineeringAnalyticsMasterFailuresRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsMasterFailuresRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsMasterFailuresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -1731,7 +1731,7 @@ export interface MasterFailureGroup {
   /** Run id of the newest failing run: the drill-down anchor. */
   latest_run_id: number;
 }
-export const MasterFailureGroup = /*@__PURE__*/ S.suspend(() =>
+const MasterFailureGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latest_ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     repo: RepoRef,
@@ -1745,13 +1745,13 @@ export const MasterFailureGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MasterFailureGroup" }) as any as S.Schema<MasterFailureGroup>;
 
 export type EngineeringAnalyticsMasterFailuresResponseBodyList = Array<MasterFailureGroup>;
-export const EngineeringAnalyticsMasterFailuresResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsMasterFailuresResponseBodyList = /*@__PURE__*/ S.Array(
   MasterFailureGroup,
 ) as any as S.Schema<EngineeringAnalyticsMasterFailuresResponseBodyList>;
 
 export type EngineeringAnalyticsMasterFailuresResponse =
   EngineeringAnalyticsMasterFailuresResponseBodyList;
-export const EngineeringAnalyticsMasterFailuresResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsMasterFailuresResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsMasterFailuresResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsMasterFailuresResponse",
@@ -1767,7 +1767,7 @@ export interface EngineeringAnalyticsPrCostRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pr_number: S.Number.pipe(T.Query()),
@@ -1786,7 +1786,7 @@ export const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Same spend broken down per workflow. */
 export type PRCostSummaryByWorkflowList = Array<WorkflowCost>;
-export const PRCostSummaryByWorkflowList =
+const PRCostSummaryByWorkflowList =
   EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList as any as S.Schema<PRCostSummaryByWorkflowList>;
 
 export interface RunCost {
@@ -1801,7 +1801,7 @@ export interface RunCost {
   /** Estimated dollar cost for this run attempt, or null when nothing was costable. */
   estimated_cost_usd: number | null;
 }
-export const RunCost = /*@__PURE__*/ S.suspend(() =>
+const RunCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     run_id: S.Number,
@@ -1813,7 +1813,7 @@ export const RunCost = /*@__PURE__*/ S.suspend(() =>
 
 /** Same spend broken down per workflow run, keyed by (run_id, run_attempt). */
 export type PRCostSummaryByRunList = Array<RunCost>;
-export const PRCostSummaryByRunList = /*@__PURE__*/ S.Array(
+const PRCostSummaryByRunList = /*@__PURE__*/ S.Array(
   RunCost,
 ) as any as S.Schema<PRCostSummaryByRunList>;
 
@@ -1827,7 +1827,7 @@ export interface PRLLMSpend {
   /** Number of $ai_generation events attributed to this PR by git branch ($ai_git_branch). */
   generations: number;
 }
-export const PRLLMSpend = /*@__PURE__*/ S.suspend(() =>
+const PRLLMSpend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost_usd: S.Number,
     input_tokens: S.Number,
@@ -1856,7 +1856,7 @@ export interface PRCostSummary {
   /** Jobs on provider-hosted (GitHub-hosted, free) or non-Linux runners: outside the estimate. */
   excluded_jobs: number;
 }
-export const PRCostSummary = /*@__PURE__*/ S.suspend(() =>
+const PRCostSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     by_workflow: PRCostSummaryByWorkflowList,
     by_run: PRCostSummaryByRunList,
@@ -1880,7 +1880,7 @@ export interface EngineeringAnalyticsPrLifecycleRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsPrLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPrLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pr_number: S.Number.pipe(T.Query()),
@@ -1919,7 +1919,7 @@ export interface PullRequest {
   /** When the pull request was closed, or null. */
   closed_at: string | null;
 }
-export const PullRequest = /*@__PURE__*/ S.suspend(() =>
+const PullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: Author,
     repo: RepoRef,
@@ -1943,7 +1943,7 @@ export type PRLifecycleEventKindEnum =
   | "ci_finished"
   | "merged"
   | "closed";
-export const PRLifecycleEventKindEnum = S.String;
+const PRLifecycleEventKindEnum = S.String;
 
 export interface PRLifecycleEvent {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
@@ -1957,7 +1957,7 @@ export interface PRLifecycleEvent {
   /** GitHub Actions run id for ci_started/ci_finished events, null otherwise. */
   run_id?: number | null;
 }
-export const PRLifecycleEvent = /*@__PURE__*/ S.suspend(() =>
+const PRLifecycleEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     kind: PRLifecycleEventKindEnum,
@@ -1969,13 +1969,13 @@ export const PRLifecycleEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Lifecycle events ordered by time. */
 export type PRLifecycleEventsList = Array<PRLifecycleEvent>;
-export const PRLifecycleEventsList = /*@__PURE__*/ S.Array(
+const PRLifecycleEventsList = /*@__PURE__*/ S.Array(
   PRLifecycleEvent,
 ) as any as S.Schema<PRLifecycleEventsList>;
 
 /** * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
 export type MetricQualityEnum = "precise" | "coarse" | "partial";
-export const MetricQualityEnum = S.String;
+const MetricQualityEnum = S.String;
 
 export interface PRLifecycle {
   /** The pull request header. */
@@ -1985,7 +1985,7 @@ export interface PRLifecycle {
   /** Always 'partial': CI events only; reviews and comments are not yet available. * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
   metric_quality?: MetricQualityEnum;
 }
-export const PRLifecycle = /*@__PURE__*/ S.suspend(() =>
+const PRLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull_request: PullRequest,
     events: PRLifecycleEventsList,
@@ -2003,7 +2003,7 @@ export interface EngineeringAnalyticsPrRunsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsPrRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPrRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pr_number: S.Number.pipe(T.Query()),
@@ -2056,7 +2056,7 @@ export interface WorkflowRunDetail {
   /** Source-native workflow run id; use with ci_engine for identity. */
   native_workflow_run_id?: string | null;
 }
-export const WorkflowRunDetail = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRunDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     repo: RepoRef,
@@ -2079,12 +2079,12 @@ export const WorkflowRunDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRunDetail" }) as any as S.Schema<WorkflowRunDetail>;
 
 export type EngineeringAnalyticsPrRunsResponseBodyList = Array<WorkflowRunDetail>;
-export const EngineeringAnalyticsPrRunsResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsPrRunsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowRunDetail,
 ) as any as S.Schema<EngineeringAnalyticsPrRunsResponseBodyList>;
 
 export type EngineeringAnalyticsPrRunsResponse = EngineeringAnalyticsPrRunsResponseBodyList;
-export const EngineeringAnalyticsPrRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPrRunsResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsPrRunsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsPrRunsResponse",
@@ -2100,7 +2100,7 @@ export interface EngineeringAnalyticsPullRequestFrictionRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsPullRequestFrictionRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPullRequestFrictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pr_number: S.Number.pipe(T.Query()),
@@ -2119,12 +2119,12 @@ export const EngineeringAnalyticsPullRequestFrictionRequest = /*@__PURE__*/ S.su
 
 /** The pull request's friction split by kind. */
 export type PullRequestFrictionBreakdownGroupsList = Array<FrictionGroupShare>;
-export const PullRequestFrictionBreakdownGroupsList =
+const PullRequestFrictionBreakdownGroupsList =
   AuthorFrictionGroupsList as any as S.Schema<PullRequestFrictionBreakdownGroupsList>;
 
 /** CI running time of each push, oldest first. */
 export type PullRequestFrictionBreakdownCiWaitSecondsList = Array<number>;
-export const PullRequestFrictionBreakdownCiWaitSecondsList =
+const PullRequestFrictionBreakdownCiWaitSecondsList =
   BrokenTestRowTrend24hList as any as S.Schema<PullRequestFrictionBreakdownCiWaitSecondsList>;
 
 export interface PullRequestFrictionBreakdown {
@@ -2155,7 +2155,7 @@ export interface PullRequestFrictionBreakdown {
   /** Times the merge queue removed the pull request. Null without queue data. */
   kickout_count: number | null;
 }
-export const PullRequestFrictionBreakdown = /*@__PURE__*/ S.suspend(() =>
+const PullRequestFrictionBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: PullRequestFrictionBreakdownGroupsList,
     score: S.Number,
@@ -2183,7 +2183,7 @@ export interface PullRequestFrictionDetail {
   /** Pull requests merged in this many days before the view last refreshed. */
   window_days: number;
 }
-export const PullRequestFrictionDetail = /*@__PURE__*/ S.suspend(() =>
+const PullRequestFrictionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull_request: S.NullOr(PullRequestFrictionBreakdown),
     available: S.Boolean,
@@ -2194,7 +2194,7 @@ export const PullRequestFrictionDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PullRequestFrictionDetail>;
 
 export type EngineeringAnalyticsPullRequestsRequestState = "closed" | "merged" | "open";
-export const EngineeringAnalyticsPullRequestsRequestState = S.String;
+const EngineeringAnalyticsPullRequestsRequestState = S.String;
 
 export interface EngineeringAnalyticsPullRequestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2216,7 +2216,7 @@ export interface EngineeringAnalyticsPullRequestsRequest {
   /** Optional state filter. 'merged' lists PRs merged in the window, newest merged_at first. 'closed' lists PRs closed without a merge in the window, newest closed_at first. 'open' lists all open PRs whatever their age, newest first. Omit it to get open PRs plus any merged or closed in the window. */
   state?: EngineeringAnalyticsPullRequestsRequestState | (string & {});
 }
-export const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     author: S.optional(S.String.pipe(T.Query())),
@@ -2240,7 +2240,7 @@ export const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend((
 
 /** This page of pull requests, newest first, capped at `limit`. */
 export type PullRequestListItemsList = Array<PullRequestListItem>;
-export const PullRequestListItemsList =
+const PullRequestListItemsList =
   AttentionPullRequestListItemsList as any as S.Schema<PullRequestListItemsList>;
 
 export interface PullRequestList {
@@ -2251,7 +2251,7 @@ export interface PullRequestList {
   /** Maximum number of pull requests returned in `items`. */
   limit: number;
 }
-export const PullRequestList = /*@__PURE__*/ S.suspend(() =>
+const PullRequestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: PullRequestListItemsList,
     truncated: S.Boolean,
@@ -2277,7 +2277,7 @@ export interface EngineeringAnalyticsPullRequestTimelinesRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsPullRequestTimelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsPullRequestTimelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     author: S.optional(S.String.pipe(T.Query())),
@@ -2304,7 +2304,7 @@ export interface PRTimelinePush {
   /** When the commit's first workflow run was created, which is when the commit arrived. */
   pushed_at: string;
 }
-export const PRTimelinePush = /*@__PURE__*/ S.suspend(() =>
+const PRTimelinePush = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head_sha: S.String,
     pushed_at: S.String,
@@ -2313,7 +2313,7 @@ export const PRTimelinePush = /*@__PURE__*/ S.suspend(() =>
 
 /** Distinct head commits that triggered CI, oldest first, merge-queue gate runs excluded. A PR listed for an author or a team misses pushes from more than 30 days before the window. */
 export type PRTimelinePushesList = Array<PRTimelinePush>;
-export const PRTimelinePushesList = /*@__PURE__*/ S.Array(
+const PRTimelinePushesList = /*@__PURE__*/ S.Array(
   PRTimelinePush,
 ) as any as S.Schema<PRTimelinePushesList>;
 
@@ -2331,7 +2331,7 @@ export type PRTimelineSegmentKindEnum =
   | "red_not_provable"
   | "merge_queue"
   | "out_of_merge_queue";
-export const PRTimelineSegmentKindEnum = S.String;
+const PRTimelineSegmentKindEnum = S.String;
 
 export interface PRTimelineSegment {
   /** What the PR waited on: draft; waiting_for_review (no approval yet, or re-review after a push); changes_requested (no push since); approved_not_enqueued (approved, with no failing or running check); review_state_unknown (reviews not synced); ci_running; red_passed_on_rerun (the failed workflows passed a re-run of the same commit); red_master_broken (the failed jobs also failed on the default branch within 12 hours); red_fixed_by_push (a later commit arrived); red_not_provable; merge_queue (every queue state collapsed); out_of_merge_queue (open PR, Trunk says failed or cancelled). * `draft` - DRAFT * `waiting_for_review` - WAITING_FOR_REVIEW * `changes_requested` - CHANGES_REQUESTED * `approved_not_enqueued` - APPROVED_NOT_ENQUEUED * `review_state_unknown` - REVIEW_STATE_UNKNOWN * `ci_running` - CI_RUNNING * `red_passed_on_rerun` - RED_PASSED_ON_RERUN * `red_master_broken` - RED_MASTER_BROKEN * `red_fixed_by_push` - RED_FIXED_BY_PUSH * `red_not_provable` - RED_NOT_PROVABLE * `merge_queue` - MERGE_QUEUE * `out_of_merge_queue` - OUT_OF_MERGE_QUEUE */
@@ -2341,7 +2341,7 @@ export interface PRTimelineSegment {
   /** Segment end: the next segment's start, the merge or close, or now. */
   ended_at: string;
 }
-export const PRTimelineSegment = /*@__PURE__*/ S.suspend(() =>
+const PRTimelineSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: PRTimelineSegmentKindEnum,
     started_at: S.String,
@@ -2351,7 +2351,7 @@ export const PRTimelineSegment = /*@__PURE__*/ S.suspend(() =>
 
 /** Consecutive segments from started_at to the merge, the close, or now, with no gaps. */
 export type PRTimelineSegmentsList = Array<PRTimelineSegment>;
-export const PRTimelineSegmentsList = /*@__PURE__*/ S.Array(
+const PRTimelineSegmentsList = /*@__PURE__*/ S.Array(
   PRTimelineSegment,
 ) as any as S.Schema<PRTimelineSegmentsList>;
 
@@ -2383,7 +2383,7 @@ export interface PRTimeline {
   /** Billable minutes over the PR's runs. Null when the jobs table isn't synced. */
   billable_minutes: number | null;
 }
-export const PRTimeline = /*@__PURE__*/ S.suspend(() =>
+const PRTimeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: RepoRef,
     pushes: PRTimelinePushesList,
@@ -2403,7 +2403,7 @@ export const PRTimeline = /*@__PURE__*/ S.suspend(() =>
 
 /** The pull requests in scope, newest first: open PRs plus PRs merged in the window, or the one pull request of a pull_request scope. */
 export type PullRequestTimelinesItemsList = Array<PRTimeline>;
-export const PullRequestTimelinesItemsList = /*@__PURE__*/ S.Array(
+const PullRequestTimelinesItemsList = /*@__PURE__*/ S.Array(
   PRTimeline,
 ) as any as S.Schema<PullRequestTimelinesItemsList>;
 
@@ -2413,7 +2413,7 @@ export interface PRTimelineRedTime {
   /** Average seconds per merged pull request attributed to this cause. */
   seconds_per_merged_pr: number;
 }
-export const PRTimelineRedTime = /*@__PURE__*/ S.suspend(() =>
+const PRTimelineRedTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: PRTimelineSegmentKindEnum,
     seconds_per_merged_pr: S.Number,
@@ -2422,7 +2422,7 @@ export const PRTimelineRedTime = /*@__PURE__*/ S.suspend(() =>
 
 /** Average red time per merged pull request, grouped by the evidence that classifies each red stretch. */
 export type PullRequestTimelinesRedSecondsPerMergedPrList = Array<PRTimelineRedTime>;
-export const PullRequestTimelinesRedSecondsPerMergedPrList = /*@__PURE__*/ S.Array(
+const PullRequestTimelinesRedSecondsPerMergedPrList = /*@__PURE__*/ S.Array(
   PRTimelineRedTime,
 ) as any as S.Schema<PullRequestTimelinesRedSecondsPerMergedPrList>;
 
@@ -2452,7 +2452,7 @@ export interface PullRequestTimelines {
   /** The maximum number of PRs returned. */
   limit: number;
 }
-export const PullRequestTimelines = /*@__PURE__*/ S.suspend(() =>
+const PullRequestTimelines = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: PullRequestTimelinesItemsList,
     red_seconds_per_merged_pr: PullRequestTimelinesRedSecondsPerMergedPrList,
@@ -2477,7 +2477,7 @@ export interface EngineeringAnalyticsQuarantineRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo: S.optional(S.String.pipe(T.Query())),
@@ -2495,15 +2495,15 @@ export const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ S.suspend(() 
 
 /** * `run` - RUN * `skip` - SKIP */
 export type QuarantineModeEnum = "run" | "skip";
-export const QuarantineModeEnum = S.String;
+const QuarantineModeEnum = S.String;
 
 /** * `active` - ACTIVE * `expiring_soon` - EXPIRING_SOON * `in_grace` - IN_GRACE * `overdue` - OVERDUE */
 export type LifecycleEnum = "active" | "expiring_soon" | "in_grace" | "overdue";
-export const LifecycleEnum = S.String;
+const LifecycleEnum = S.String;
 
 /** * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
 export type SelectorKindEnum = "product" | "file" | "directory" | "test";
-export const SelectorKindEnum = S.String;
+const SelectorKindEnum = S.String;
 
 export interface QuarantineEntry {
   /** Test selector: an exact test id, a file, a directory, a class prefix, or 'product:<dashed-name>'. */
@@ -2529,7 +2529,7 @@ export interface QuarantineEntry {
   /** What the selector covers: 'test' (contains '::'), 'file', 'directory', or 'product'. * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
   selector_kind: SelectorKindEnum;
 }
-export const QuarantineEntry = /*@__PURE__*/ S.suspend(() =>
+const QuarantineEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     runner: S.String,
@@ -2547,18 +2547,18 @@ export const QuarantineEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Quarantined selectors, most urgent first (overdue, in_grace, expiring_soon, active), then by soonest expiry. */
 export type QuarantineFileEntriesList = Array<QuarantineEntry>;
-export const QuarantineFileEntriesList = /*@__PURE__*/ S.Array(
+const QuarantineFileEntriesList = /*@__PURE__*/ S.Array(
   QuarantineEntry,
 ) as any as S.Schema<QuarantineFileEntriesList>;
 
 /** Contract violations (malformed JSON, bad entries) or fetch failures. Malformed entries are dropped; well-formed ones are kept. */
 export type QuarantineFileParseErrorsList = Array<string>;
-export const QuarantineFileParseErrorsList =
+const QuarantineFileParseErrorsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<QuarantineFileParseErrorsList>;
 
 /** Forward-compatibility notices, e.g. unknown entry fields. */
 export type QuarantineFileParseWarningsList = Array<string>;
-export const QuarantineFileParseWarningsList =
+const QuarantineFileParseWarningsList =
   CIStatusRollupFailingWorkflowsList as any as S.Schema<QuarantineFileParseWarningsList>;
 
 export interface QuarantineFile {
@@ -2577,7 +2577,7 @@ export interface QuarantineFile {
   /** When this snapshot was computed (UTC); expiry math uses this clock. */
   generated_at: string;
 }
-export const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
+const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: QuarantineFileEntriesList,
     repo: S.NullOr(RepoRef),
@@ -2591,11 +2591,11 @@ export const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
 
 /** * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
 export type QuarantineRequestOperationEnum = "quarantine" | "extend" | "remove";
-export const QuarantineRequestOperationEnum = S.String;
+const QuarantineRequestOperationEnum = S.String;
 
 /** * `pytest` - PYTEST * `jest` - JEST * `playwright` - PLAYWRIGHT */
 export type QuarantineRequestRunnerEnum = "pytest" | "jest" | "playwright";
-export const QuarantineRequestRunnerEnum = S.String;
+const QuarantineRequestRunnerEnum = S.String;
 
 export interface EngineeringAnalyticsQuarantineRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2619,7 +2619,7 @@ export interface EngineeringAnalyticsQuarantineRequestRequest {
   /** 'run' (the test still executes but cannot fail the suite) or 'skip' (not run at all). Defaults to 'run'. * `run` - RUN * `skip` - SKIP */
   mode?: QuarantineModeEnum | (string & {});
 }
-export const EngineeringAnalyticsQuarantineRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsQuarantineRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     operation: QuarantineRequestOperationEnum,
@@ -2650,7 +2650,7 @@ export interface QuarantineRequestResult {
   /** Branch the pull request was opened from. */
   branch: string;
 }
-export const QuarantineRequestResult = /*@__PURE__*/ S.suspend(() =>
+const QuarantineRequestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pr_url: S.String,
     issue_url: S.String,
@@ -2672,7 +2672,7 @@ export interface EngineeringAnalyticsRepoOverviewRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsRepoOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsRepoOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -2701,7 +2701,7 @@ export interface CostPerMergeBucket {
   /** Rolling ratio: trailing-window CI cost divided by trailing-window merges (24 h / 7 d / 4 w to match the granularity). Null when the trailing window had no merges or no costable cost. */
   cost_per_merge_usd: number | null;
 }
-export const CostPerMergeBucket = /*@__PURE__*/ S.suspend(() =>
+const CostPerMergeBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     estimated_cost_usd: S.NullOr(S.Number),
@@ -2712,7 +2712,7 @@ export const CostPerMergeBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
 export type RepoOverviewCostSeriesList = Array<CostPerMergeBucket>;
-export const RepoOverviewCostSeriesList = /*@__PURE__*/ S.Array(
+const RepoOverviewCostSeriesList = /*@__PURE__*/ S.Array(
   CostPerMergeBucket,
 ) as any as S.Schema<RepoOverviewCostSeriesList>;
 
@@ -2722,7 +2722,7 @@ export interface TimeToGreenBucket {
   /** Median wall-clock seconds from a PR push round's first run start until every workflow on that head SHA first completed benign, over rounds started in this bucket (merge-queue gates and partially-attributed fork rounds excluded). Null when the bucket had no fully green round (a gap, not instant CI). */
   p50_seconds: number | null;
 }
-export const TimeToGreenBucket = /*@__PURE__*/ S.suspend(() =>
+const TimeToGreenBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     p50_seconds: S.NullOr(S.Number),
@@ -2731,7 +2731,7 @@ export const TimeToGreenBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Median time-to-green (p50 wall clock for a PR push round to settle fully green) per bucket across the window, oldest first, bucketed by time_to_green_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewTimeToGreenSeriesList = Array<TimeToGreenBucket>;
-export const RepoOverviewTimeToGreenSeriesList = /*@__PURE__*/ S.Array(
+const RepoOverviewTimeToGreenSeriesList = /*@__PURE__*/ S.Array(
   TimeToGreenBucket,
 ) as any as S.Schema<RepoOverviewTimeToGreenSeriesList>;
 
@@ -2741,7 +2741,7 @@ export interface PassRateBucket {
   /** Fraction (0-1) of conclusive runs started in this bucket that succeeded. Skipped, cancelled, neutral, and action_required runs are excluded. Null when the bucket had no conclusive run (a gap, not a 0% pass rate). */
   success_rate: number | null;
 }
-export const PassRateBucket = /*@__PURE__*/ S.suspend(() =>
+const PassRateBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     success_rate: S.NullOr(S.Number),
@@ -2750,7 +2750,7 @@ export const PassRateBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** CI pass rate (conclusive runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Skipped, cancelled, neutral, and action_required runs are excluded. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewSuccessRateSeriesList = Array<PassRateBucket>;
-export const RepoOverviewSuccessRateSeriesList = /*@__PURE__*/ S.Array(
+const RepoOverviewSuccessRateSeriesList = /*@__PURE__*/ S.Array(
   PassRateBucket,
 ) as any as S.Schema<RepoOverviewSuccessRateSeriesList>;
 
@@ -2760,16 +2760,14 @@ export interface OpenToMergeBucket {
   /** Median merged_at - created_at seconds over PRs merged in this bucket, bots and drafts excluded. Null when nothing merged in the bucket (a gap, not instant merges). */
   p50_seconds: number | null;
 }
-export const OpenToMergeBucket = TimeToGreenBucket as any as S.Schema<OpenToMergeBucket>;
-
 /** Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewOpenToMergeSeriesList = Array<OpenToMergeBucket>;
-export const RepoOverviewOpenToMergeSeriesList =
+const RepoOverviewOpenToMergeSeriesList =
   RepoOverviewTimeToGreenSeriesList as any as S.Schema<RepoOverviewOpenToMergeSeriesList>;
 
 /** * `open_to_gate` - OPEN_TO_GATE * `gate_to_merge` - GATE_TO_MERGE */
 export type DeliveryStageTimingStageEnum = "open_to_gate" | "gate_to_merge";
-export const DeliveryStageTimingStageEnum = S.String;
+const DeliveryStageTimingStageEnum = S.String;
 
 export interface DeliveryStageTiming {
   /** Which leg this is: 'open_to_gate' (created_at to the PR's first merge-queue gate run starting) or 'gate_to_merge' (that gate run to merged_at). The post-merge leg is the DORA endpoint's median_merge_to_deploy_seconds. * `open_to_gate` - OPEN_TO_GATE * `gate_to_merge` - GATE_TO_MERGE */
@@ -2781,7 +2779,7 @@ export interface DeliveryStageTiming {
   /** PRs behind this leg's figures: those with an observed gate run. A PR that skipped the merge queue has no gate legs, so read a median against this count, not merged_pr_count. */
   pr_count: number;
 }
-export const DeliveryStageTiming = /*@__PURE__*/ S.suspend(() =>
+const DeliveryStageTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: DeliveryStageTimingStageEnum,
     median_seconds: S.NullOr(S.Number),
@@ -2792,7 +2790,7 @@ export const DeliveryStageTiming = /*@__PURE__*/ S.suspend(() =>
 
 /** The legs, ordered open to merge. A leg with nothing observed still appears, with a zero pr_count and null timings. The leg medians do not sum to a cycle-time median: a median of sums is not a sum of medians. */
 export type DeliveryPipelineStagesList = Array<DeliveryStageTiming>;
-export const DeliveryPipelineStagesList = /*@__PURE__*/ S.Array(
+const DeliveryPipelineStagesList = /*@__PURE__*/ S.Array(
   DeliveryStageTiming,
 ) as any as S.Schema<DeliveryPipelineStagesList>;
 
@@ -2802,7 +2800,7 @@ export interface DeliveryPipeline {
   /** PRs merged in the window with bots and drafts excluded. A narrower population than RepoOverview.merged_pr_count, which counts all authors. */
   merged_pr_count: number;
 }
-export const DeliveryPipeline = /*@__PURE__*/ S.suspend(() =>
+const DeliveryPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stages: DeliveryPipelineStagesList,
     merged_pr_count: S.Number,
@@ -2815,11 +2813,9 @@ export interface ReadyToMergeBucket {
   /** Median per-PR ready_to_merge_seconds (merged_at minus the last observed ready-for-review transition) over PRs merged in this bucket, bots and drafts excluded. Null when nothing merged with an observed value (a gap, never zero). */
   p50_seconds: number | null;
 }
-export const ReadyToMergeBucket = TimeToGreenBucket as any as S.Schema<ReadyToMergeBucket>;
-
 /** Median cycle time (p50 per-PR ready_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by ready_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when the issue-events table isn't synced or include_series=false, so fall back to open_to_merge_series. */
 export type RepoOverviewReadyToMergeSeriesList = Array<ReadyToMergeBucket>;
-export const RepoOverviewReadyToMergeSeriesList =
+const RepoOverviewReadyToMergeSeriesList =
   RepoOverviewTimeToGreenSeriesList as any as S.Schema<RepoOverviewReadyToMergeSeriesList>;
 
 export interface RepoOverview {
@@ -2936,7 +2932,7 @@ export interface RepoOverview {
   /** Bucket width of the ready_to_merge_series trend: 'hour', 'day', or 'week'. */
   ready_to_merge_series_granularity: string;
 }
-export const RepoOverview = /*@__PURE__*/ S.suspend(() =>
+const RepoOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost_series: RepoOverviewCostSeriesList,
     time_to_green_series: RepoOverviewTimeToGreenSeriesList,
@@ -3009,7 +3005,7 @@ export interface EngineeringAnalyticsResolveBranchRequest {
   /** Optional ISO8601 timestamp, e.g. the trace's capture time. When a branch name has been reused across PRs over time, the PR whose lifetime window contains this moment is ranked first so the result matches the PR that was active when the trace was captured. A preference only, not a filter; omit to rank purely by open state then recency. */
   timestamp?: string;
 }
-export const EngineeringAnalyticsResolveBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsResolveBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Query()),
@@ -3037,7 +3033,7 @@ export interface BranchPRMatch {
   /** Derived PR state ('open', 'closed', 'merged'), or null when the snapshot carries no state. */
   state: string | null;
 }
-export const BranchPRMatch = /*@__PURE__*/ S.suspend(() =>
+const BranchPRMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String,
     number: S.Number,
@@ -3047,13 +3043,13 @@ export const BranchPRMatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BranchPRMatch" }) as any as S.Schema<BranchPRMatch>;
 
 export type EngineeringAnalyticsResolveBranchResponseBodyList = Array<BranchPRMatch>;
-export const EngineeringAnalyticsResolveBranchResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsResolveBranchResponseBodyList = /*@__PURE__*/ S.Array(
   BranchPRMatch,
 ) as any as S.Schema<EngineeringAnalyticsResolveBranchResponseBodyList>;
 
 export type EngineeringAnalyticsResolveBranchResponse =
   EngineeringAnalyticsResolveBranchResponseBodyList;
-export const EngineeringAnalyticsResolveBranchResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsResolveBranchResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsResolveBranchResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsResolveBranchResponse",
@@ -3063,7 +3059,7 @@ export interface EngineeringAnalyticsSourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const EngineeringAnalyticsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3087,7 +3083,7 @@ export interface GitHubSource {
   /** Whether this repo has both pull_requests and workflow_runs synced (readable now). Default the picker to the first synced entry so its label matches the resolved repo. */
   synced?: boolean;
 }
-export const GitHubSource = /*@__PURE__*/ S.suspend(() =>
+const GitHubSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     repo: S.String,
@@ -3097,12 +3093,12 @@ export const GitHubSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubSource" }) as any as S.Schema<GitHubSource>;
 
 export type EngineeringAnalyticsSourcesResponseBodyList = Array<GitHubSource>;
-export const EngineeringAnalyticsSourcesResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsSourcesResponseBodyList = /*@__PURE__*/ S.Array(
   GitHubSource,
 ) as any as S.Schema<EngineeringAnalyticsSourcesResponseBodyList>;
 
 export type EngineeringAnalyticsSourcesResponse = EngineeringAnalyticsSourcesResponseBodyList;
-export const EngineeringAnalyticsSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsSourcesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsSourcesResponse",
@@ -3122,7 +3118,7 @@ export interface EngineeringAnalyticsTeamCiActivityRequest {
   /** Maximum number of per-test signal rows to return (1-100). Defaults to 25. */
   test_limit?: number;
 }
-export const EngineeringAnalyticsTeamCiActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsTeamCiActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -3155,7 +3151,7 @@ export interface TeamTestSignal {
   /** Most recent failure, recovery, or quarantined-failure run for this test, either window. */
   last_seen_at: string;
 }
-export const TeamTestSignal = /*@__PURE__*/ S.suspend(() =>
+const TeamTestSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runner: CITestRunnerEnum,
     nodeid: S.String,
@@ -3168,7 +3164,7 @@ export const TeamTestSignal = /*@__PURE__*/ S.suspend(() =>
 
 /** The team's owned tests with signal in either window, ranked by the stronger window's count (the current-vs-prior pairs behind a before/after comparison). */
 export type TeamCIActivityTestsList = Array<TeamTestSignal>;
-export const TeamCIActivityTestsList = /*@__PURE__*/ S.Array(
+const TeamCIActivityTestsList = /*@__PURE__*/ S.Array(
   TeamTestSignal,
 ) as any as S.Schema<TeamCIActivityTestsList>;
 
@@ -3180,7 +3176,7 @@ export interface TeamCIActivity {
   /** True when more owned tests had signal than the test cap. */
   truncated_tests: boolean;
 }
-export const TeamCIActivity = /*@__PURE__*/ S.suspend(() =>
+const TeamCIActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tests: TeamCIActivityTestsList,
     owner_team: S.String,
@@ -3204,7 +3200,7 @@ export interface EngineeringAnalyticsTeamCiHealthRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsTeamCiHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsTeamCiHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -3258,7 +3254,7 @@ export interface TeamCIHealthItem {
   /** Same count over the prior window. */
   merged_pr_count_prior?: number | null;
 }
-export const TeamCIHealthItem = /*@__PURE__*/ S.suspend(() =>
+const TeamCIHealthItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner_team: S.String,
     flaky_test_count: S.Number,
@@ -3281,7 +3277,7 @@ export const TeamCIHealthItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Owning teams ranked by current flaky + failure signal, heaviest first, capped at `limit`. Teams are organizational owners of code surfaces; this never aggregates by author. A CI setup break (a run attempt whose tests errored in 3 or more jobs or for 3 or more owning teams, or a job attempt with 100 or more distinct failed or errored tests) excludes every trial of that attempt, not only its failures. */
 export type TeamCIHealthListItemsList = Array<TeamCIHealthItem>;
-export const TeamCIHealthListItemsList = /*@__PURE__*/ S.Array(
+const TeamCIHealthListItemsList = /*@__PURE__*/ S.Array(
   TeamCIHealthItem,
 ) as any as S.Schema<TeamCIHealthListItemsList>;
 
@@ -3293,7 +3289,7 @@ export interface TeamCIHealthList {
   /** Maximum number of teams returned in `items`. */
   limit: number;
 }
-export const TeamCIHealthList = /*@__PURE__*/ S.suspend(() =>
+const TeamCIHealthList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: TeamCIHealthListItemsList,
     truncated: S.Boolean,
@@ -3309,7 +3305,7 @@ export interface EngineeringAnalyticsTrunkQuarantineRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsTrunkQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsTrunkQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo: S.optional(S.String.pipe(T.Query())),
@@ -3335,7 +3331,7 @@ export interface TrunkQuarantineTeamDebt {
   /** Age in days of the team's oldest standing quarantine. */
   oldest_age_days: number;
 }
-export const TrunkQuarantineTeamDebt = /*@__PURE__*/ S.suspend(() =>
+const TrunkQuarantineTeamDebt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner_team: S.String,
     test_count: S.Number,
@@ -3346,7 +3342,7 @@ export const TrunkQuarantineTeamDebt = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-team rollup, most indebted first: overdue count, then test count, then oldest age. */
 export type TrunkQuarantineDebtTeamsList = Array<TrunkQuarantineTeamDebt>;
-export const TrunkQuarantineDebtTeamsList = /*@__PURE__*/ S.Array(
+const TrunkQuarantineDebtTeamsList = /*@__PURE__*/ S.Array(
   TrunkQuarantineTeamDebt,
 ) as any as S.Schema<TrunkQuarantineDebtTeamsList>;
 
@@ -3372,7 +3368,7 @@ export interface TrunkQuarantinedTest {
   /** The Trunk app's page for this test; null when the connected source has no organization slug or the row carries no test case id. */
   trunk_url: string | null;
 }
-export const TrunkQuarantinedTest = /*@__PURE__*/ S.suspend(() =>
+const TrunkQuarantinedTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runner: S.String,
     nodeid: S.String,
@@ -3389,7 +3385,7 @@ export const TrunkQuarantinedTest = /*@__PURE__*/ S.suspend(() =>
 
 /** Every currently quarantined test, oldest first. */
 export type TrunkQuarantineDebtTestsList = Array<TrunkQuarantinedTest>;
-export const TrunkQuarantineDebtTestsList = /*@__PURE__*/ S.Array(
+const TrunkQuarantineDebtTestsList = /*@__PURE__*/ S.Array(
   TrunkQuarantinedTest,
 ) as any as S.Schema<TrunkQuarantineDebtTestsList>;
 
@@ -3413,7 +3409,7 @@ export interface TrunkQuarantineDebt {
   /** Maximum tests returned, oldest quarantine first. */
   limit: number;
 }
-export const TrunkQuarantineDebt = /*@__PURE__*/ S.suspend(() =>
+const TrunkQuarantineDebt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teams: TrunkQuarantineDebtTeamsList,
     tests: TrunkQuarantineDebtTestsList,
@@ -3432,7 +3428,7 @@ export type EngineeringAnalyticsWorkflowHealthRequestRunScope =
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-export const EngineeringAnalyticsWorkflowHealthRequestRunScope = S.String;
+const EngineeringAnalyticsWorkflowHealthRequestRunScope = S.String;
 
 export interface EngineeringAnalyticsWorkflowHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3452,7 +3448,7 @@ export interface EngineeringAnalyticsWorkflowHealthRequest {
   /** Optional exact workflow name to scope results to, e.g. 'Backend CI'. Omit to rank every workflow. Pass it when you want one workflow's figures over the whole window rather than the top slice. */
   workflow_name?: string;
 }
-export const EngineeringAnalyticsWorkflowHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -3485,7 +3481,7 @@ export interface WorkflowHealthBucket {
   /** Completed runs with conclusion 'failure', 'timed_out', 'startup_failure', or 'stale'. Skipped, cancelled, neutral, and action_required runs are excluded. */
   failures: number;
 }
-export const WorkflowHealthBucket = /*@__PURE__*/ S.suspend(() =>
+const WorkflowHealthBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     run_count: S.Number,
@@ -3497,7 +3493,7 @@ export const WorkflowHealthBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Run history across the whole window, oldest first, zero-filled, bucketed by granularity. */
 export type WorkflowHealthItemBucketsList = Array<WorkflowHealthBucket>;
-export const WorkflowHealthItemBucketsList = /*@__PURE__*/ S.Array(
+const WorkflowHealthItemBucketsList = /*@__PURE__*/ S.Array(
   WorkflowHealthBucket,
 ) as any as S.Schema<WorkflowHealthItemBucketsList>;
 
@@ -3545,7 +3541,7 @@ export interface WorkflowHealthItem {
   /** Runs on merge-queue gate branches (trunk-merge/**) in the window, counted regardless of branch or run_scope. Non-zero marks a workflow the queue runs before a merge lands, the closest available proxy for a required check. */
   merge_queue_run_count?: number;
 }
-export const WorkflowHealthItem = /*@__PURE__*/ S.suspend(() =>
+const WorkflowHealthItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latest_ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     repo: RepoRef,
@@ -3573,20 +3569,20 @@ export const WorkflowHealthItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowHealthItem" }) as any as S.Schema<WorkflowHealthItem>;
 
 export type EngineeringAnalyticsWorkflowHealthResponseBodyList = Array<WorkflowHealthItem>;
-export const EngineeringAnalyticsWorkflowHealthResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsWorkflowHealthResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowHealthItem,
 ) as any as S.Schema<EngineeringAnalyticsWorkflowHealthResponseBodyList>;
 
 export type EngineeringAnalyticsWorkflowHealthResponse =
   EngineeringAnalyticsWorkflowHealthResponseBodyList;
-export const EngineeringAnalyticsWorkflowHealthResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowHealthResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsWorkflowHealthResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsWorkflowHealthResponse",
 }) as any as S.Schema<EngineeringAnalyticsWorkflowHealthResponse>;
 
 export type EngineeringAnalyticsWorkflowJobsRequestCiEngine = "depot_ci" | "github_actions";
-export const EngineeringAnalyticsWorkflowJobsRequestCiEngine = S.String;
+const EngineeringAnalyticsWorkflowJobsRequestCiEngine = S.String;
 
 export interface EngineeringAnalyticsWorkflowJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3602,7 +3598,7 @@ export interface EngineeringAnalyticsWorkflowJobsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const EngineeringAnalyticsWorkflowJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ci_engine: S.optional(EngineeringAnalyticsWorkflowJobsRequestCiEngine.pipe(T.Query())),
@@ -3655,7 +3651,7 @@ export interface WorkflowJob {
   /** Source-native attempt id; use with ci_engine for identity. */
   native_attempt_id?: string | null;
 }
-export const WorkflowJob = /*@__PURE__*/ S.suspend(() =>
+const WorkflowJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     id: S.Number,
@@ -3677,13 +3673,13 @@ export const WorkflowJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowJob" }) as any as S.Schema<WorkflowJob>;
 
 export type EngineeringAnalyticsWorkflowJobsResponseBodyList = Array<WorkflowJob>;
-export const EngineeringAnalyticsWorkflowJobsResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsWorkflowJobsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowJob,
 ) as any as S.Schema<EngineeringAnalyticsWorkflowJobsResponseBodyList>;
 
 export type EngineeringAnalyticsWorkflowJobsResponse =
   EngineeringAnalyticsWorkflowJobsResponseBodyList;
-export const EngineeringAnalyticsWorkflowJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowJobsResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsWorkflowJobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsWorkflowJobsResponse",
@@ -3694,7 +3690,7 @@ export type EngineeringAnalyticsWorkflowRunnerCostsRequestRunScope =
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-export const EngineeringAnalyticsWorkflowRunnerCostsRequestRunScope = S.String;
+const EngineeringAnalyticsWorkflowRunnerCostsRequestRunScope = S.String;
 
 export interface EngineeringAnalyticsWorkflowRunnerCostsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3714,7 +3710,7 @@ export interface EngineeringAnalyticsWorkflowRunnerCostsRequest {
   /** Workflow name to break down cost for. */
   workflow_name: string;
 }
-export const EngineeringAnalyticsWorkflowRunnerCostsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowRunnerCostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -3747,7 +3743,7 @@ export interface WorkflowRunnerCost {
   /** Estimated cost in USD on this tier; null for non-billable (github-hosted/non-Linux). */
   estimated_cost_usd: number | null;
 }
-export const WorkflowRunnerCost = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRunnerCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     runner_label: S.String,
@@ -3758,13 +3754,13 @@ export const WorkflowRunnerCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRunnerCost" }) as any as S.Schema<WorkflowRunnerCost>;
 
 export type EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList = Array<WorkflowRunnerCost>;
-export const EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList = /*@__PURE__*/ S.Array(
+const EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowRunnerCost,
 ) as any as S.Schema<EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList>;
 
 export type EngineeringAnalyticsWorkflowRunnerCostsResponse =
   EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList;
-export const EngineeringAnalyticsWorkflowRunnerCostsResponse = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowRunnerCostsResponse = /*@__PURE__*/ S.suspend(() =>
   EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EngineeringAnalyticsWorkflowRunnerCostsResponse",
@@ -3775,7 +3771,7 @@ export type EngineeringAnalyticsWorkflowRunsRequestRunScope =
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-export const EngineeringAnalyticsWorkflowRunsRequestRunScope = S.String;
+const EngineeringAnalyticsWorkflowRunsRequestRunScope = S.String;
 
 export interface EngineeringAnalyticsWorkflowRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3795,7 +3791,7 @@ export interface EngineeringAnalyticsWorkflowRunsRequest {
   /** Workflow name to list runs for. */
   workflow_name: string;
 }
-export const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -3817,19 +3813,16 @@ export const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<EngineeringAnalyticsWorkflowRunsRequest>;
 
 export type EngineeringAnalyticsWorkflowRunsResponseBodyList = Array<WorkflowRunDetail>;
-export const EngineeringAnalyticsWorkflowRunsResponseBodyList =
-  EngineeringAnalyticsPrRunsResponseBodyList as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponseBodyList>;
-
 export type EngineeringAnalyticsWorkflowRunsResponse =
   EngineeringAnalyticsWorkflowRunsResponseBodyList;
-export const EngineeringAnalyticsWorkflowRunsResponse =
+const EngineeringAnalyticsWorkflowRunsResponse =
   EngineeringAnalyticsPrRunsResponse as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>;
 
 export interface GetEngineeringAnalyticsCiSignalsConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3845,7 +3838,7 @@ export const GetEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ S.sus
 
 /** * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
 export type SyncStatusEnum = "running" | "completed" | "failed";
-export const SyncStatusEnum = S.String;
+const SyncStatusEnum = S.String;
 
 export interface CISignalsConfig {
   /** Whether this project has ever configured CI signals. */
@@ -3855,7 +3848,7 @@ export interface CISignalsConfig {
   /** Aggregate sync status for pull requests, workflow runs, and workflow jobs. * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
   sync_status: SyncStatusEnum | null;
 }
-export const CISignalsConfig = /*@__PURE__*/ S.suspend(() =>
+const CISignalsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configured: S.Boolean,
     enabled: S.Boolean,
@@ -3875,7 +3868,7 @@ export interface MergeEngineeringAnalyticsTeamTrendRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const MergeEngineeringAnalyticsTeamTrendRequest = /*@__PURE__*/ S.suspend(() =>
+const MergeEngineeringAnalyticsTeamTrendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -3903,7 +3896,7 @@ export interface TeamMergeTrendPoint {
   /** Merged PRs behind that day's median and average. */
   merged_count: number;
 }
-export const TeamMergeTrendPoint = /*@__PURE__*/ S.suspend(() =>
+const TeamMergeTrendPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.String,
     median_seconds: S.NullOr(S.Number),
@@ -3914,7 +3907,7 @@ export const TeamMergeTrendPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Daily median and average open->merge over the PRs this team's members merged, ascending by day. Coarse timing (open->merge combines draft and review time); bots excluded. */
 export type TeamMergeTrendPointsList = Array<TeamMergeTrendPoint>;
-export const TeamMergeTrendPointsList = /*@__PURE__*/ S.Array(
+const TeamMergeTrendPointsList = /*@__PURE__*/ S.Array(
   TeamMergeTrendPoint,
 ) as any as S.Schema<TeamMergeTrendPointsList>;
 
@@ -3926,7 +3919,7 @@ export interface TeamMergeTrend {
   /** False when the GitHub source has no team_members snapshot synced: the trend then has no honest team attribution and `points` is empty. */
   has_membership_data: boolean;
 }
-export const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
+const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     points: TeamMergeTrendPointsList,
     owner_team: S.String,
@@ -3935,7 +3928,7 @@ export const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamMergeTrend" }) as any as S.Schema<TeamMergeTrend>;
 
 export type RunEngineeringAnalyticsFailureLogsRequestCiEngine = "depot_ci" | "github_actions";
-export const RunEngineeringAnalyticsFailureLogsRequestCiEngine = S.String;
+const RunEngineeringAnalyticsFailureLogsRequestCiEngine = S.String;
 
 export interface RunEngineeringAnalyticsFailureLogsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3949,7 +3942,7 @@ export interface RunEngineeringAnalyticsFailureLogsRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const RunEngineeringAnalyticsFailureLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEngineeringAnalyticsFailureLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ci_engine: S.optional(RunEngineeringAnalyticsFailureLogsRequestCiEngine.pipe(T.Query())),
@@ -3969,8 +3962,7 @@ export const RunEngineeringAnalyticsFailureLogsRequest = /*@__PURE__*/ S.suspend
 
 /** Failed CI jobs of this run with their thinned failure logs, grouped by job. */
 export type RunFailureLogsJobsList = Array<CIJobFailureLog>;
-export const RunFailureLogsJobsList =
-  CIFailureLogsJobsList as any as S.Schema<RunFailureLogsJobsList>;
+const RunFailureLogsJobsList = CIFailureLogsJobsList as any as S.Schema<RunFailureLogsJobsList>;
 
 export interface RunFailureLogs {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
@@ -3984,7 +3976,7 @@ export interface RunFailureLogs {
   /** True when the overall line cap across all jobs was hit. */
   truncated: boolean;
 }
-export const RunFailureLogs = /*@__PURE__*/ S.suspend(() =>
+const RunFailureLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     jobs: RunFailureLogsJobsList,
@@ -4008,7 +4000,7 @@ export interface RunEngineeringAnalyticsRepoActivityRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const RunEngineeringAnalyticsRepoActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEngineeringAnalyticsRepoActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -4045,7 +4037,7 @@ export interface WorkflowRunActivityPoint {
   /** Head commit SHA of the run/commit, or '' when unknown. */
   head_sha: string;
 }
-export const WorkflowRunActivityPoint = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRunActivityPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci_engine: S.optional(S.NullOr(CIEngineEnum)),
     run_id: S.Number,
@@ -4060,7 +4052,7 @@ export const WorkflowRunActivityPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-run chart points, newest first, capped at `limit`. */
 export type WorkflowRunActivityPointsList = Array<WorkflowRunActivityPoint>;
-export const WorkflowRunActivityPointsList = /*@__PURE__*/ S.Array(
+const WorkflowRunActivityPointsList = /*@__PURE__*/ S.Array(
   WorkflowRunActivityPoint,
 ) as any as S.Schema<WorkflowRunActivityPointsList>;
 
@@ -4072,7 +4064,7 @@ export interface WorkflowRunActivity {
   /** Maximum number of run points returned in `points`. */
   limit: number;
 }
-export const WorkflowRunActivity = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRunActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     points: WorkflowRunActivityPointsList,
     truncated: S.Boolean,
@@ -4081,7 +4073,7 @@ export const WorkflowRunActivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRunActivity" }) as any as S.Schema<WorkflowRunActivity>;
 
 export type RunEngineeringAnalyticsWorkflowRequestCiEngine = "depot_ci" | "github_actions";
-export const RunEngineeringAnalyticsWorkflowRequestCiEngine = S.String;
+const RunEngineeringAnalyticsWorkflowRequestCiEngine = S.String;
 
 export interface RunEngineeringAnalyticsWorkflowRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4095,7 +4087,7 @@ export interface RunEngineeringAnalyticsWorkflowRequest {
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
-export const RunEngineeringAnalyticsWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEngineeringAnalyticsWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ci_engine: S.optional(RunEngineeringAnalyticsWorkflowRequestCiEngine.pipe(T.Query())),
@@ -4118,7 +4110,7 @@ export type RunEngineeringAnalyticsWorkflowActivityRequestRunScope =
   | "default_branch"
   | "merge_queue"
   | "pull_request";
-export const RunEngineeringAnalyticsWorkflowActivityRequestRunScope = S.String;
+const RunEngineeringAnalyticsWorkflowActivityRequestRunScope = S.String;
 
 export interface RunEngineeringAnalyticsWorkflowActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4138,7 +4130,7 @@ export interface RunEngineeringAnalyticsWorkflowActivityRequest {
   /** Workflow name to load run activity for. */
   workflow_name: string;
 }
-export const RunEngineeringAnalyticsWorkflowActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEngineeringAnalyticsWorkflowActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -4165,7 +4157,7 @@ export interface UpdateEngineeringAnalyticsCiSignalsConfigRequest {
   /** Enable or disable every CI signal detector atomically. */
   enabled: boolean;
 }
-export const UpdateEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEngineeringAnalyticsCiSignalsConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     enabled: S.Boolean,

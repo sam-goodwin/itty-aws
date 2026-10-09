@@ -41,7 +41,7 @@ export interface CreateDataColorThemeRequest {
   name?: string;
   colors?: unknown;
 }
-export const CreateDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -54,7 +54,7 @@ export const CreateDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDataColorThemeRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -70,14 +70,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -90,7 +85,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -112,7 +107,7 @@ export interface DataColorTheme {
   created_at?: string | null;
   created_by?: UserBasic | null;
 }
-export const DataColorTheme = /*@__PURE__*/ S.suspend(() =>
+const DataColorTheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -129,7 +124,7 @@ export interface DataColorThemesDestroyRequest {
   /** A unique integer value identifying this data color theme. */
   id: number;
 }
-export const DataColorThemesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const DataColorThemesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -145,7 +140,7 @@ export const DataColorThemesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataColorThemesDestroyRequest>;
 
 export interface DataColorThemesDestroyResponse {}
-export const DataColorThemesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DataColorThemesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DataColorThemesDestroyResponse",
 }) as any as S.Schema<DataColorThemesDestroyResponse>;
 
@@ -155,7 +150,7 @@ export interface GetDataColorThemeRequest {
   /** A unique integer value identifying this data color theme. */
   id: number;
 }
-export const GetDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -172,7 +167,7 @@ export interface ListDataColorThemesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListDataColorThemesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataColorThemesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -185,7 +180,7 @@ export const ListDataColorThemesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataColorThemesRequest>;
 
 export type PaginatedDataColorThemeListResultsList = Array<DataColorTheme>;
-export const PaginatedDataColorThemeListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataColorThemeListResultsList = /*@__PURE__*/ S.Array(
   DataColorTheme,
 ) as any as S.Schema<PaginatedDataColorThemeListResultsList>;
 
@@ -195,7 +190,7 @@ export interface PaginatedDataColorThemeList {
   previous?: string | null;
   results?: PaginatedDataColorThemeListResultsList;
 }
-export const PaginatedDataColorThemeList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataColorThemeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -214,7 +209,7 @@ export interface UpdateDataColorThemeRequest {
   name?: string;
   colors?: unknown;
 }
-export const UpdateDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataColorThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -235,7 +230,7 @@ export interface UpdateDataColorThemesPartialRequest {
   name?: string;
   colors?: unknown;
 }
-export const UpdateDataColorThemesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataColorThemesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

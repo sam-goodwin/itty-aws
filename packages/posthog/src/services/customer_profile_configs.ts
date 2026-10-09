@@ -15,7 +15,7 @@ export type CustomerProfileConfigScopeEnum =
   | "group_2"
   | "group_3"
   | "group_4";
-export const CustomerProfileConfigScopeEnum = S.String;
+const CustomerProfileConfigScopeEnum = S.String;
 
 export interface CreateCustomerProfileConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -24,7 +24,7 @@ export interface CreateCustomerProfileConfigRequest {
   content?: unknown;
   sidebar?: unknown;
 }
-export const CreateCustomerProfileConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerProfileConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scope: S.optional(CustomerProfileConfigScopeEnum),
@@ -49,7 +49,7 @@ export interface CustomerProfileConfig {
   created_at?: string;
   updated_at?: string | null;
 }
-export const CustomerProfileConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     scope: S.optional(CustomerProfileConfigScopeEnum),
@@ -65,7 +65,7 @@ export interface CustomerProfileConfigsDestroyRequest {
   project_id: string;
   id: string;
 }
-export const CustomerProfileConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -81,9 +81,7 @@ export const CustomerProfileConfigsDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CustomerProfileConfigsDestroyRequest>;
 
 export interface CustomerProfileConfigsDestroyResponse {}
-export const CustomerProfileConfigsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CustomerProfileConfigsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CustomerProfileConfigsDestroyResponse",
 }) as any as S.Schema<CustomerProfileConfigsDestroyResponse>;
 
@@ -92,7 +90,7 @@ export interface GetCustomerProfileConfigRequest {
   project_id: string;
   id: string;
 }
-export const GetCustomerProfileConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerProfileConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -115,7 +113,7 @@ export interface ListCustomerProfileConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListCustomerProfileConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerProfileConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -132,7 +130,7 @@ export const ListCustomerProfileConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomerProfileConfigsRequest>;
 
 export type PaginatedCustomerProfileConfigListResultsList = Array<CustomerProfileConfig>;
-export const PaginatedCustomerProfileConfigListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCustomerProfileConfigListResultsList = /*@__PURE__*/ S.Array(
   CustomerProfileConfig,
 ) as any as S.Schema<PaginatedCustomerProfileConfigListResultsList>;
 
@@ -142,7 +140,7 @@ export interface PaginatedCustomerProfileConfigList {
   previous?: string | null;
   results?: PaginatedCustomerProfileConfigListResultsList;
 }
-export const PaginatedCustomerProfileConfigList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCustomerProfileConfigList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -161,7 +159,7 @@ export interface UpdateCustomerProfileConfigRequest {
   content?: unknown;
   sidebar?: unknown;
 }
-export const UpdateCustomerProfileConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerProfileConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -187,7 +185,7 @@ export interface UpdateCustomerProfileConfigsPartialRequest {
   content?: unknown;
   sidebar?: unknown;
 }
-export const UpdateCustomerProfileConfigsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerProfileConfigsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

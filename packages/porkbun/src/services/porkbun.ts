@@ -50,7 +50,7 @@ export interface AccountVerifyPhoneConfirmRequest {
   /** The code the person received, exactly as texted. Case does not matter. */
   code: string;
 }
-export const AccountVerifyPhoneConfirmRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountVerifyPhoneConfirmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/account/verifyPhone/confirm", code: 200 })),
@@ -65,7 +65,7 @@ export interface AccountVerifyPhoneConfirmResponse {
   emailVerified?: boolean;
   message?: string;
 }
-export const AccountVerifyPhoneConfirmResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountVerifyPhoneConfirmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     verified: S.optional(S.Boolean),
@@ -79,14 +79,14 @@ export const AccountVerifyPhoneConfirmResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** `call` reads the code out by voice, for when a text does not arrive. */
 export type AccountVerifyPhoneSendRequestChannel = "sms" | "call";
-export const AccountVerifyPhoneSendRequestChannel = S.String;
+const AccountVerifyPhoneSendRequestChannel = S.String;
 
 export interface AccountVerifyPhoneSendRequest {
   /** `call` reads the code out by voice, for when a text does not arrive. */
   channel?: AccountVerifyPhoneSendRequestChannel | (string & {});
   dryRun?: boolean;
 }
-export const AccountVerifyPhoneSendRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountVerifyPhoneSendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(AccountVerifyPhoneSendRequestChannel),
     dryRun: S.optional(S.Boolean),
@@ -107,7 +107,7 @@ export interface AccountVerifyPhoneSendResponse {
   retryAfterSeconds?: number;
   message?: string;
 }
-export const AccountVerifyPhoneSendResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountVerifyPhoneSendResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     sent: S.optional(S.Boolean),
@@ -125,7 +125,7 @@ export const AccountVerifyPhoneSendResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** PKCE challenge method. Only S256 is supported. */
 export type ApikeyRequestRequestCodeChallengeMethod = "S256";
-export const ApikeyRequestRequestCodeChallengeMethod = S.String;
+const ApikeyRequestRequestCodeChallengeMethod = S.String;
 
 export interface ApikeyRequestRequest {
   /** Human-readable name for the application/integration requesting access. Optional but strongly recommended: it is shown to the account holder on the approval screen so they know what they're granting access to. If omitted, the approval page shows "No application name was provided." */
@@ -139,7 +139,7 @@ export interface ApikeyRequestRequest {
   /** Optional app-return redirect for native/mobile apps. Requires codeChallenge (PKCE). Must be an HTTPS URL your app claims as a Universal Link / App Link (custom URI schemes are rejected -- another app could hijack them). After the account holder approves in the system browser, Porkbun redirects here with `?status=approved&requestToken=<token>` (or `status=denied`) so control returns to your app; it then calls /apikey/retrieve with its codeVerifier to receive the keys. The key is NEVER placed in the redirect -- only the request token and status. */
   returnUrl?: string;
 }
-export const ApikeyRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ApikeyRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     codeChallenge: S.optional(S.String),
@@ -151,7 +151,7 @@ export const ApikeyRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Which delivery flow this request uses. 'pkce' when a codeChallenge was supplied (the secret is returned once via /apikey/retrieve to the verifier holder); 'legacy' otherwise (the secret is shown only in the browser). */
 export type ApikeyRequestResponseDeliveryMode = "legacy" | "pkce";
-export const ApikeyRequestResponseDeliveryMode = S.String;
+const ApikeyRequestResponseDeliveryMode = S.String;
 
 export interface ApikeyRequestResponse {
   status?: string;
@@ -166,7 +166,7 @@ export interface ApikeyRequestResponse {
   /** Human-readable instructions */
   message?: string;
 }
-export const ApikeyRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const ApikeyRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     requestToken: S.String,
@@ -179,7 +179,7 @@ export const ApikeyRequestResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains to check, e.g. ["example.com", "example.net"]. Duplicates are removed. */
 export type BulkDomainCheckDomainRequestDomainsList = Array<string>;
-export const BulkDomainCheckDomainRequestDomainsList = /*@__PURE__*/ S.Array(
+const BulkDomainCheckDomainRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkDomainCheckDomainRequestDomainsList>;
 
@@ -187,7 +187,7 @@ export interface BulkDomainCheckDomainRequest {
   /** Domains to check, e.g. ["example.com", "example.net"]. Duplicates are removed. */
   domains: BulkDomainCheckDomainRequestDomainsList;
 }
-export const BulkDomainCheckDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDomainCheckDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: BulkDomainCheckDomainRequestDomainsList,
   }).pipe(T.Http({ method: "POST", uri: "/domain/checkDomain", code: 200 })),
@@ -197,19 +197,19 @@ export const BulkDomainCheckDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Keyed by domain name; each value has the same shape as the single-check `response` object */
 export type BulkDomainCheckDomainResponseDomainsMap = { [key: string]: unknown | undefined };
-export const BulkDomainCheckDomainResponseDomainsMap = /*@__PURE__*/ S.Record(
+const BulkDomainCheckDomainResponseDomainsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<BulkDomainCheckDomainResponseDomainsMap>;
 
 /** The registry did not answer for these. NOT a statement of availability - retry them. */
 export type BulkDomainCheckDomainResponseUnresolvedList = Array<string>;
-export const BulkDomainCheckDomainResponseUnresolvedList =
+const BulkDomainCheckDomainResponseUnresolvedList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<BulkDomainCheckDomainResponseUnresolvedList>;
 
 /** Entries that could not be checked, each with a reason */
 export type BulkDomainCheckDomainResponseInvalidList = Array<unknown>;
-export const BulkDomainCheckDomainResponseInvalidList = /*@__PURE__*/ S.Array(
+const BulkDomainCheckDomainResponseInvalidList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<BulkDomainCheckDomainResponseInvalidList>;
 
@@ -226,7 +226,7 @@ export interface BulkDomainCheckDomainResponse {
   /** Bulk budget usage; `countedIn` is "domains" */
   limits?: unknown;
 }
-export const BulkDomainCheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkDomainCheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     checked: S.optional(S.Number),
@@ -241,7 +241,7 @@ export const BulkDomainCheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
 export type CloseoutBuyRequestPayWith = "usdc";
-export const CloseoutBuyRequestPayWith = S.String;
+const CloseoutBuyRequestPayWith = S.String;
 
 export interface CloseoutBuyRequest {
   domain: string;
@@ -254,7 +254,7 @@ export interface CloseoutBuyRequest {
   /** Validate and price without charging or claiming. */
   dryRun?: boolean;
 }
-export const CloseoutBuyRequest = /*@__PURE__*/ S.suspend(() =>
+const CloseoutBuyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     cost: S.Number,
@@ -274,7 +274,7 @@ export interface CloseoutBuyResponse {
   totalPrice?: number;
   message?: string;
 }
-export const CloseoutBuyResponse = /*@__PURE__*/ S.suspend(() =>
+const CloseoutBuyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -307,7 +307,7 @@ export interface CloudflareCreateRecordRequest {
   data?: unknown;
   dryRun?: boolean;
 }
-export const CloudflareCreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareCreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     type: S.String,
@@ -325,7 +325,7 @@ export const CloudflareCreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareCreateRecordRequest>;
 
 export type CloudflareCreateRecordResponse = unknown;
-export const CloudflareCreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const CloudflareCreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CloudflareCreateRecordResponse",
@@ -337,7 +337,7 @@ export interface CloudflareDeleteRecordRequest {
   recordId: string;
   dryRun?: boolean;
 }
-export const CloudflareDeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareDeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     recordId: S.String.pipe(T.Label()),
@@ -350,7 +350,7 @@ export const CloudflareDeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareDeleteRecordRequest>;
 
 export type CloudflareDeleteRecordResponse = unknown;
-export const CloudflareDeleteRecordResponse =
+const CloudflareDeleteRecordResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareDeleteRecordResponse>;
 
 export interface CloudflareEditRecordRequest {
@@ -375,7 +375,7 @@ export interface CloudflareEditRecordRequest {
   data?: unknown;
   dryRun?: boolean;
 }
-export const CloudflareEditRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareEditRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     recordId: S.String.pipe(T.Label()),
@@ -394,35 +394,35 @@ export const CloudflareEditRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareEditRecordRequest>;
 
 export type CloudflareEditRecordResponse = unknown;
-export const CloudflareEditRecordResponse =
+const CloudflareEditRecordResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareEditRecordResponse>;
 
 export interface CloudflareGetConnectionRequest {}
-export const CloudflareGetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareGetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudflare/getConnection", code: 200 })),
 ).annotate({
   identifier: "CloudflareGetConnectionRequest",
 }) as any as S.Schema<CloudflareGetConnectionRequest>;
 
 export type CloudflareGetConnectionResponse = unknown;
-export const CloudflareGetConnectionResponse =
+const CloudflareGetConnectionResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetConnectionResponse>;
 
 export interface CloudflareGetQueueRequest {}
-export const CloudflareGetQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareGetQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudflare/getQueue", code: 200 })),
 ).annotate({
   identifier: "CloudflareGetQueueRequest",
 }) as any as S.Schema<CloudflareGetQueueRequest>;
 
 export type CloudflareGetQueueResponse = unknown;
-export const CloudflareGetQueueResponse =
+const CloudflareGetQueueResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetQueueResponse>;
 
 export interface CloudflareGetRecordsRequest {
   domain: string;
 }
-export const CloudflareGetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareGetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cloudflare/getRecords/{domain}", code: 200 })),
@@ -431,26 +431,26 @@ export const CloudflareGetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareGetRecordsRequest>;
 
 export type CloudflareGetRecordsResponse = unknown;
-export const CloudflareGetRecordsResponse =
+const CloudflareGetRecordsResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetRecordsResponse>;
 
 export interface CloudflareGetZoneRequest {
   domain: string;
 }
-export const CloudflareGetZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareGetZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cloudflare/getZone/{domain}", code: 200 })),
 ).annotate({ identifier: "CloudflareGetZoneRequest" }) as any as S.Schema<CloudflareGetZoneRequest>;
 
 export type CloudflareGetZoneResponse = unknown;
-export const CloudflareGetZoneResponse =
+const CloudflareGetZoneResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetZoneResponse>;
 
 export interface CloudflareGetZoneSettingsRequest {
   domain: string;
 }
-export const CloudflareGetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareGetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cloudflare/getZoneSettings/{domain}", code: 200 })),
@@ -459,24 +459,24 @@ export const CloudflareGetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareGetZoneSettingsRequest>;
 
 export type CloudflareGetZoneSettingsResponse = unknown;
-export const CloudflareGetZoneSettingsResponse =
+const CloudflareGetZoneSettingsResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetZoneSettingsResponse>;
 
 export interface CloudflareInventoryRequest {}
-export const CloudflareInventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareInventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudflare/inventory", code: 200 })),
 ).annotate({
   identifier: "CloudflareInventoryRequest",
 }) as any as S.Schema<CloudflareInventoryRequest>;
 
 export type CloudflareInventoryResponse = unknown;
-export const CloudflareInventoryResponse =
+const CloudflareInventoryResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareInventoryResponse>;
 
 export interface CloudflareRollbackRequest {
   domain: string;
 }
-export const CloudflareRollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cloudflare/rollback/{domain}", code: 200 })),
@@ -485,12 +485,12 @@ export const CloudflareRollbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareRollbackRequest>;
 
 export type CloudflareRollbackResponse = unknown;
-export const CloudflareRollbackResponse =
+const CloudflareRollbackResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareRollbackResponse>;
 
 /** Optional. Limit to these names; "@" = apex, bare labels are expanded. */
 export type CloudflareSetProxyRequestRecordsList = Array<string>;
-export const CloudflareSetProxyRequestRecordsList =
+const CloudflareSetProxyRequestRecordsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<CloudflareSetProxyRequestRecordsList>;
 
 export interface CloudflareSetProxyRequest {
@@ -501,7 +501,7 @@ export interface CloudflareSetProxyRequest {
   records?: CloudflareSetProxyRequestRecordsList;
   dryRun?: boolean;
 }
-export const CloudflareSetProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareSetProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     enabled: S.Boolean,
@@ -513,26 +513,26 @@ export const CloudflareSetProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareSetProxyRequest>;
 
 export type CloudflareSetProxyResponse = unknown;
-export const CloudflareSetProxyResponse =
+const CloudflareSetProxyResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareSetProxyResponse>;
 
 export type CloudflareSetZoneSettingsRequestSsl = "off" | "flexible" | "full" | "strict";
-export const CloudflareSetZoneSettingsRequestSsl = S.String;
+const CloudflareSetZoneSettingsRequestSsl = S.String;
 
 export type CloudflareSetZoneSettingsRequestAlwaysUseHttps = "on" | "off";
-export const CloudflareSetZoneSettingsRequestAlwaysUseHttps = S.String;
+const CloudflareSetZoneSettingsRequestAlwaysUseHttps = S.String;
 
 export type CloudflareSetZoneSettingsRequestAutomaticHttpsRewrites = "on" | "off";
-export const CloudflareSetZoneSettingsRequestAutomaticHttpsRewrites = S.String;
+const CloudflareSetZoneSettingsRequestAutomaticHttpsRewrites = S.String;
 
 export type CloudflareSetZoneSettingsRequestMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
-export const CloudflareSetZoneSettingsRequestMinTlsVersion = S.String;
+const CloudflareSetZoneSettingsRequestMinTlsVersion = S.String;
 
 export type CloudflareSetZoneSettingsRequestDevelopmentMode = "on" | "off";
-export const CloudflareSetZoneSettingsRequestDevelopmentMode = S.String;
+const CloudflareSetZoneSettingsRequestDevelopmentMode = S.String;
 
 export type CloudflareSetZoneSettingsRequestCacheLevel = "aggressive" | "basic" | "simplified";
-export const CloudflareSetZoneSettingsRequestCacheLevel = S.String;
+const CloudflareSetZoneSettingsRequestCacheLevel = S.String;
 
 export interface CloudflareSetZoneSettingsRequest {
   domain: string;
@@ -544,7 +544,7 @@ export interface CloudflareSetZoneSettingsRequest {
   cache_level?: CloudflareSetZoneSettingsRequestCacheLevel | (string & {});
   dryRun?: boolean;
 }
-export const CloudflareSetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudflareSetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     ssl: S.optional(CloudflareSetZoneSettingsRequestSsl),
@@ -560,12 +560,12 @@ export const CloudflareSetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareSetZoneSettingsRequest>;
 
 export type CloudflareSetZoneSettingsResponse = unknown;
-export const CloudflareSetZoneSettingsResponse =
+const CloudflareSetZoneSettingsResponse =
   CloudflareCreateRecordResponse as any as S.Schema<CloudflareSetZoneSettingsResponse>;
 
 /** Domain names to move. A comma-separated string is also accepted. */
 export type ConnectCloudflareRequestDomainsList = Array<string>;
-export const ConnectCloudflareRequestDomainsList =
+const ConnectCloudflareRequestDomainsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ConnectCloudflareRequestDomainsList>;
 
 export interface ConnectCloudflareRequest {
@@ -574,7 +574,7 @@ export interface ConnectCloudflareRequest {
   /** Validate and return per-domain verdicts without queueing. */
   dryRun?: boolean;
 }
-export const ConnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: ConnectCloudflareRequestDomainsList,
     dryRun: S.optional(S.Boolean),
@@ -582,7 +582,7 @@ export const ConnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectCloudflareRequest" }) as any as S.Schema<ConnectCloudflareRequest>;
 
 export type ConnectCloudflareResponse = unknown;
-export const ConnectCloudflareResponse =
+const ConnectCloudflareResponse =
   CloudflareCreateRecordResponse as any as S.Schema<ConnectCloudflareResponse>;
 
 export interface CreateAccountInviteRequest {
@@ -591,7 +591,7 @@ export interface CreateAccountInviteRequest {
   /** HTTPS URL to redirect the user to after successful registration (optional). Use this to send users back to your platform after they complete account creation. */
   returnUrl?: string;
 }
-export const CreateAccountInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     returnUrl: S.optional(S.String),
@@ -609,7 +609,7 @@ export interface CreateAccountInviteResponse {
   /** UTC datetime when the invite token expires (48 hours from creation) */
   expires: string;
 }
-export const CreateAccountInviteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     inviteToken: S.String,
@@ -635,7 +635,7 @@ export type CreateDnsRequestType =
   | "SSHFP"
   | "HTTPS"
   | "SVCB";
-export const CreateDnsRequestType = S.String;
+const CreateDnsRequestType = S.String;
 
 export interface CreateDnsRequest {
   domain: string;
@@ -654,7 +654,7 @@ export interface CreateDnsRequest {
   /** If true, validate only -- checks ownership/type/permissions and returns wouldSucceed without creating the record. */
   dryRun?: boolean;
 }
-export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -669,7 +669,7 @@ export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Advisory, and present only when there is something to say. It never means the call failed. The one to handle: a DNS write is accepted and stored even when the domain is NOT delegated to our nameservers -- we keep the zone ready in case the delegation comes back -- so the write changed nothing that resolves, and this field says so. Show these to the user as written. */
 export type DnsWriteWarnings = Array<string>;
-export const DnsWriteWarnings =
+const DnsWriteWarnings =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DnsWriteWarnings>;
 
 export interface CreateDnsResponse {
@@ -678,7 +678,7 @@ export interface CreateDnsResponse {
   id?: string;
   warnings?: DnsWriteWarnings;
 }
-export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     id: S.optional(S.String),
@@ -688,11 +688,11 @@ export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Must be 'yes' or '1' to confirm agreement to the Domain Name Registration Agreement, Product Terms of Service, Privacy Policy, and automatic renewal terms. */
 export type CreateDomainRequestAgreeToTerms = "yes" | "1";
-export const CreateDomainRequestAgreeToTerms = S.String;
+const CreateDomainRequestAgreeToTerms = S.String;
 
 /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
 export type CreateDomainRequestPayWith = "usdc";
-export const CreateDomainRequestPayWith = S.String;
+const CreateDomainRequestPayWith = S.String;
 
 export interface CreateDomainRequest {
   domain: string;
@@ -709,7 +709,7 @@ export interface CreateDomainRequest {
   /** Optional. When true, runs all pre-flight validation (availability, pricing, cost match, eligibility, funds, monthly spend limit, including the $100 default when none is set) and returns a preview with `dryRun: true` and `wouldSucceed` WITHOUT creating an order or charging. Nothing is registered and the rate-limit budget is not consumed. Use it to safely confirm an operation before committing. */
   dryRun?: boolean;
 }
-export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     cost: S.Number,
@@ -731,7 +731,7 @@ export interface CreateDomainResponseLimitsAttempts {
   used?: number;
   naturalLanguage?: string;
 }
-export const CreateDomainResponseLimitsAttempts = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainResponseLimitsAttempts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TTL: S.optional(S.Number),
     limit: S.optional(S.Number),
@@ -752,9 +752,6 @@ export interface CreateDomainResponseLimitsSuccess {
   used?: number;
   naturalLanguage?: string;
 }
-export const CreateDomainResponseLimitsSuccess =
-  CreateDomainResponseLimitsAttempts as any as S.Schema<CreateDomainResponseLimitsSuccess>;
-
 /** Current rate limit state for both attempt and success limits */
 export interface CreateDomainResponseLimits {
   /** Create-attempt rate limit state */
@@ -762,15 +759,6 @@ export interface CreateDomainResponseLimits {
   /** Successful-registration rate limit state */
   success?: CreateDomainResponseLimitsSuccess;
 }
-export const CreateDomainResponseLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempts: S.optional(CreateDomainResponseLimitsAttempts),
-    success: S.optional(CreateDomainResponseLimitsSuccess),
-  }),
-).annotate({
-  identifier: "CreateDomainResponseLimits",
-}) as any as S.Schema<CreateDomainResponseLimits>;
-
 export interface CreateDomainResponse {
   status: string;
   /** The registered domain name */
@@ -788,22 +776,7 @@ export interface CreateDomainResponse {
   /** Per-request UUID (also in the X-Request-Id header). Present on every API response. */
   requestId?: string;
 }
-export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    domain: S.String,
-    cost: S.optional(S.Number),
-    orderId: S.Number,
-    limits: S.optional(CreateDomainResponseLimits),
-    balance: S.optional(S.Number),
-    ttlRemaining: S.optional(S.Number),
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateDomainResponse" }) as any as S.Schema<CreateDomainResponse>;
-
 export type DryRunPreviewResponseOperation = "registration" | "renewal" | "transfer";
-export const DryRunPreviewResponseOperation = S.String;
-
 /** Returned (HTTP 200) by /domain/create, /domain/renew, and /domain/transfer when the request includes `dryRun: true`. All validation has run but nothing was created or charged. All money amounts are in pennies (USD cents). */
 export interface DryRunPreviewResponse {
   status: string;
@@ -839,47 +812,24 @@ export interface DryRunPreviewResponse {
   /** Per-request UUID (also in the X-Request-Id header). Present on every API response. */
   requestId?: string;
 }
-export const DryRunPreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    dryRun: S.Boolean,
-    wouldSucceed: S.Boolean,
-    operation: DryRunPreviewResponseOperation,
-    domain: S.String,
-    tld: S.optional(S.String),
-    available: S.optional(S.String),
-    premium: S.optional(S.Boolean),
-    duration: S.optional(S.Number),
-    cost: S.Number,
-    costDisplay: S.optional(S.String),
-    balance: S.optional(S.Number),
-    sufficientFunds: S.optional(S.Boolean),
-    monthlySpendLimit: S.optional(S.Number),
-    monthlySpendSoFar: S.optional(S.Number),
-    withinMonthlySpendLimit: S.optional(S.Boolean),
-    message: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DryRunPreviewResponse" }) as any as S.Schema<DryRunPreviewResponse>;
-
 export type CreateDomainResponseBody = CreateDomainResponse | DryRunPreviewResponse;
-export const CreateDomainResponseBody = S.Unknown as any as S.Schema<CreateDomainResponseBody>;
+const CreateDomainResponseBody = S.Unknown as any as S.Schema<CreateDomainResponseBody>;
 
 export type CreateDomainResponse2 = CreateDomainResponseBody;
-export const CreateDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
   CreateDomainResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateDomainResponse2" }) as any as S.Schema<CreateDomainResponse2>;
 
 /** The hosting plan SKU to provision. Discover the provisionable SKUs (and each one's price/interval/trial) via GET /hosting/plans, then pass the row's `sku`. Currently Secure Static Hosting: PIXIESECURESTATICM2 ($3.00/mo) or PIXIESECURESTATICY2 ($30.00/yr). */
 export type CreateHostingRequestSku = "PIXIESECURESTATICM2" | "PIXIESECURESTATICY2";
-export const CreateHostingRequestSku = S.String;
+const CreateHostingRequestSku = S.String;
 
 export type CreateHostingRequestAgreeToTerms = "yes";
-export const CreateHostingRequestAgreeToTerms = S.String;
+const CreateHostingRequestAgreeToTerms = S.String;
 
 /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
 export type CreateHostingRequestPayWith = "usdc";
-export const CreateHostingRequestPayWith = S.String;
+const CreateHostingRequestPayWith = S.String;
 
 export interface CreateHostingRequest {
   domain: string;
@@ -897,7 +847,7 @@ export interface CreateHostingRequest {
   /** Validate + preview without provisioning or charging. */
   dryRun?: boolean;
 }
-export const CreateHostingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     sku: CreateHostingRequestSku,
@@ -911,7 +861,7 @@ export const CreateHostingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateHostingRequest" }) as any as S.Schema<CreateHostingRequest>;
 
 export type CreateHostingResponseHostingStatus = "ACTIVE" | "PENDING";
-export const CreateHostingResponseHostingStatus = S.String;
+const CreateHostingResponseHostingStatus = S.String;
 
 export interface CreateHostingResponseHosting {
   domain?: string;
@@ -924,7 +874,7 @@ export interface CreateHostingResponseHosting {
   autoRenew?: boolean;
   sku?: string;
 }
-export const CreateHostingResponseHosting = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingResponseHosting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     product: S.optional(S.String),
@@ -945,7 +895,7 @@ export interface CreateHostingResponseCost {
   formatted?: string;
   interval?: string;
 }
-export const CreateHostingResponseCost = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingResponseCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     formatted: S.optional(S.String),
@@ -964,7 +914,7 @@ export interface CreateHostingResponse {
   cost?: CreateHostingResponseCost;
   message?: string;
 }
-export const CreateHostingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     orderId: S.optional(S.Number),
@@ -977,7 +927,7 @@ export const CreateHostingResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Event types to subscribe to. Omit, or pass ["*"], for all events. Prefix wildcards like "dns.*" are allowed. */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList =
+const CreateWebhookRequestEventsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
@@ -986,7 +936,7 @@ export interface CreateWebhookRequest {
   /** Event types to subscribe to. Omit, or pass ["*"], for all events. Prefix wildcards like "dns.*" are allowed. */
   events?: CreateWebhookRequestEventsList;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     events: S.optional(CreateWebhookRequestEventsList),
@@ -995,12 +945,12 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscribed event types, or ["*"] for all. */
 export type WebhookEndpointEventsList = Array<string>;
-export const WebhookEndpointEventsList =
+const WebhookEndpointEventsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<WebhookEndpointEventsList>;
 
 /** ACTIVE or DISABLED. */
 export type WebhookEndpointStatus = "ACTIVE" | "DISABLED";
-export const WebhookEndpointStatus = S.String;
+const WebhookEndpointStatus = S.String;
 
 export interface WebhookEndpoint {
   /** Numeric endpoint id. */
@@ -1024,7 +974,7 @@ export interface WebhookEndpoint {
   /** When the endpoint was created. */
   createDate?: string;
 }
-export const WebhookEndpoint = /*@__PURE__*/ S.suspend(() =>
+const WebhookEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     url: S.optional(S.String),
@@ -1043,7 +993,7 @@ export interface WebhookEndpointResponse {
   status?: string;
   endpoint?: WebhookEndpoint;
 }
-export const WebhookEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     endpoint: S.optional(WebhookEndpoint),
@@ -1055,7 +1005,7 @@ export interface DeleteDnsRequest {
   /** Numeric DNS record ID */
   id: string;
 }
-export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1063,7 +1013,7 @@ export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDnsRequest" }) as any as S.Schema<DeleteDnsRequest>;
 
 export type BasicResponseStatus = "SUCCESS" | "ERROR";
-export const BasicResponseStatus = S.String;
+const BasicResponseStatus = S.String;
 
 export interface BasicResponse {
   warnings?: DnsWriteWarnings;
@@ -1073,7 +1023,7 @@ export interface BasicResponse {
   /** Machine-readable error code. Present when status is ERROR. */
   code?: string;
 }
-export const BasicResponse = /*@__PURE__*/ S.suspend(() =>
+const BasicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warnings: S.optional(DnsWriteWarnings),
     status: BasicResponseStatus,
@@ -1085,7 +1035,7 @@ export const BasicResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteHostingRequest {
   domain: string;
 }
-export const DeleteHostingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/hosting/delete/{domain}", code: 200 })),
@@ -1095,7 +1045,7 @@ export interface DeleteWebhookRequest {
   /** Endpoint id. */
   id: number;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }).pipe(T.Http({ method: "POST", uri: "/webhook/delete", code: 200 })),
@@ -1105,7 +1055,7 @@ export interface DeleteWebhookResponse {
   status?: string;
   message?: string;
 }
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     message: S.optional(S.String),
@@ -1117,7 +1067,7 @@ export interface DeployHostingRequestFilesItem {
   /** base64-encoded file contents */
   content?: string;
 }
-export const DeployHostingRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     content: S.optional(S.String),
@@ -1127,7 +1077,7 @@ export const DeployHostingRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeployHostingRequestFilesItem>;
 
 export type DeployHostingRequestFilesList = Array<DeployHostingRequestFilesItem>;
-export const DeployHostingRequestFilesList = /*@__PURE__*/ S.Array(
+const DeployHostingRequestFilesList = /*@__PURE__*/ S.Array(
   DeployHostingRequestFilesItem,
 ) as any as S.Schema<DeployHostingRequestFilesList>;
 
@@ -1135,7 +1085,7 @@ export interface DeployHostingRequest {
   domain: string;
   files: DeployHostingRequestFilesList;
 }
-export const DeployHostingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     files: DeployHostingRequestFilesList,
@@ -1143,14 +1093,14 @@ export const DeployHostingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployHostingRequest" }) as any as S.Schema<DeployHostingRequest>;
 
 export type DeployHostingResponseDeployedList = Array<string>;
-export const DeployHostingResponseDeployedList =
+const DeployHostingResponseDeployedList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DeployHostingResponseDeployedList>;
 
 export interface DeployHostingResponseSkippedItem {
   path?: string;
   reason?: string;
 }
-export const DeployHostingResponseSkippedItem = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingResponseSkippedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     reason: S.optional(S.String),
@@ -1160,7 +1110,7 @@ export const DeployHostingResponseSkippedItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeployHostingResponseSkippedItem>;
 
 export type DeployHostingResponseSkippedList = Array<DeployHostingResponseSkippedItem>;
-export const DeployHostingResponseSkippedList = /*@__PURE__*/ S.Array(
+const DeployHostingResponseSkippedList = /*@__PURE__*/ S.Array(
   DeployHostingResponseSkippedItem,
 ) as any as S.Schema<DeployHostingResponseSkippedList>;
 
@@ -1169,7 +1119,7 @@ export interface DeployHostingResponse {
   deployed?: DeployHostingResponseDeployedList;
   skipped?: DeployHostingResponseSkippedList;
 }
-export const DeployHostingResponse = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     deployed: S.optional(DeployHostingResponseDeployedList),
@@ -1178,14 +1128,14 @@ export const DeployHostingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployHostingResponse" }) as any as S.Schema<DeployHostingResponse>;
 
 export interface DisconnectCloudflareRequest {}
-export const DisconnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
+const DisconnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/cloudflare/disconnect", code: 200 })),
 ).annotate({
   identifier: "DisconnectCloudflareRequest",
 }) as any as S.Schema<DisconnectCloudflareRequest>;
 
 export type DisconnectCloudflareResponse = unknown;
-export const DisconnectCloudflareResponse =
+const DisconnectCloudflareResponse =
   CloudflareCreateRecordResponse as any as S.Schema<DisconnectCloudflareResponse>;
 
 export interface DnsCreateDnssecRecordRequest {
@@ -1209,7 +1159,7 @@ export interface DnsCreateDnssecRecordRequest {
   /** Key data public key in base64 (optional) */
   keyDataPubKey?: string;
 }
-export const DnsCreateDnssecRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsCreateDnssecRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     keyTag: S.String,
@@ -1227,7 +1177,7 @@ export const DnsCreateDnssecRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsCreateDnssecRecordRequest>;
 
 export type DnsCreateDnssecRecordResponseStatus = "SUCCESS" | "ERROR";
-export const DnsCreateDnssecRecordResponseStatus = S.String;
+const DnsCreateDnssecRecordResponseStatus = S.String;
 
 export interface DnsCreateDnssecRecordResponse {
   warnings?: DnsWriteWarnings;
@@ -1237,7 +1187,7 @@ export interface DnsCreateDnssecRecordResponse {
   /** Machine-readable error code. Present when status is ERROR. */
   code?: string;
 }
-export const DnsCreateDnssecRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsCreateDnssecRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warnings: S.optional(DnsWriteWarnings),
     status: DnsCreateDnssecRecordResponseStatus,
@@ -1254,7 +1204,7 @@ export interface DnsDeleteByNameTypeRequest {
   /** Subdomain portion only. Omit or leave empty for root domain records. */
   subdomain: string;
 }
-export const DnsDeleteByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsDeleteByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -1271,7 +1221,7 @@ export interface DnsDeleteDnssecRecordRequest {
   /** The DNSSEC key tag value */
   keytag: string;
 }
-export const DnsDeleteDnssecRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsDeleteDnssecRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     keytag: S.String.pipe(T.Label()),
@@ -1285,7 +1235,7 @@ export interface DnsDiffRequest {
   /** A restore point id from GET /dns/history/{domain}. */
   snapshotId: number;
 }
-export const DnsDiffRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsDiffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     snapshotId: S.Number.pipe(T.Label()),
@@ -1297,7 +1247,7 @@ export interface DnsDiffResponseSnapshot {
   takenAt?: string;
   reason?: string;
 }
-export const DnsDiffResponseSnapshot = /*@__PURE__*/ S.suspend(() =>
+const DnsDiffResponseSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     takenAt: S.optional(S.String),
@@ -1314,7 +1264,7 @@ export interface DnsHistoryRecord {
   ttl?: number;
   prio?: number | null;
 }
-export const DnsHistoryRecord = /*@__PURE__*/ S.suspend(() =>
+const DnsHistoryRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -1326,13 +1276,13 @@ export const DnsHistoryRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** In the restore point, not live. A restore adds these back. */
 export type DnsDiffResponseMissingList = Array<DnsHistoryRecord>;
-export const DnsDiffResponseMissingList = /*@__PURE__*/ S.Array(
+const DnsDiffResponseMissingList = /*@__PURE__*/ S.Array(
   DnsHistoryRecord,
 ) as any as S.Schema<DnsDiffResponseMissingList>;
 
 /** Live, not in the restore point. A restore leaves these alone unless prune is true. */
 export type DnsDiffResponseExtraList = Array<DnsHistoryRecord>;
-export const DnsDiffResponseExtraList =
+const DnsDiffResponseExtraList =
   DnsDiffResponseMissingList as any as S.Schema<DnsDiffResponseExtraList>;
 
 export interface DnsDiffResponse {
@@ -1345,7 +1295,7 @@ export interface DnsDiffResponse {
   extra?: DnsDiffResponseExtraList;
   inSync?: boolean;
 }
-export const DnsDiffResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsDiffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1370,7 +1320,7 @@ export interface DnsEditByNameTypeRequest {
   /** Notes to store with the record (not served in DNS). Pass an empty string to clear existing notes; pass null or omit this field to leave notes unchanged. */
   notes?: string;
 }
-export const DnsEditByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsEditByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -1387,7 +1337,7 @@ export const DnsEditByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DnsGetDnssecRecordsRequest {
   domain: string;
 }
-export const DnsGetDnssecRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsGetDnssecRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/dns/getDnssecRecords/{domain}", code: 200 })),
@@ -1403,7 +1353,7 @@ export interface DnsGetDnssecRecordsResponseRecordsValue {
   /** Present for key data records */
   pubKey?: string;
 }
-export const DnsGetDnssecRecordsResponseRecordsValue = /*@__PURE__*/ S.suspend(() =>
+const DnsGetDnssecRecordsResponseRecordsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyTag: S.optional(S.String),
     alg: S.optional(S.String),
@@ -1419,7 +1369,7 @@ export const DnsGetDnssecRecordsResponseRecordsValue = /*@__PURE__*/ S.suspend((
 export type DnsGetDnssecRecordsResponseRecordsMap = {
   [key: string]: DnsGetDnssecRecordsResponseRecordsValue | undefined;
 };
-export const DnsGetDnssecRecordsResponseRecordsMap = /*@__PURE__*/ S.Record(
+const DnsGetDnssecRecordsResponseRecordsMap = /*@__PURE__*/ S.Record(
   S.String,
   DnsGetDnssecRecordsResponseRecordsValue,
 ) as any as S.Schema<DnsGetDnssecRecordsResponseRecordsMap>;
@@ -1429,7 +1379,7 @@ export interface DnsGetDnssecRecordsResponse {
   /** Object keyed by key tag value. Each value is an object containing the DNSSEC data fields. */
   records?: DnsGetDnssecRecordsResponseRecordsMap;
 }
-export const DnsGetDnssecRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsGetDnssecRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     records: S.optional(DnsGetDnssecRecordsResponseRecordsMap),
@@ -1441,7 +1391,7 @@ export const DnsGetDnssecRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DnsHistoryRequest {
   domain: string;
 }
-export const DnsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dns/history/{domain}", code: 200 })),
@@ -1460,7 +1410,7 @@ export interface DnsHistoryResponseRestorePointsItem {
   /** True when the live zone is identical to this point, so you can see where you are without diffing. */
   matchesLive?: boolean;
 }
-export const DnsHistoryResponseRestorePointsItem = /*@__PURE__*/ S.suspend(() =>
+const DnsHistoryResponseRestorePointsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     takenAt: S.optional(S.String),
@@ -1475,7 +1425,7 @@ export const DnsHistoryResponseRestorePointsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Newest first, up to 50. */
 export type DnsHistoryResponseRestorePointsList = Array<DnsHistoryResponseRestorePointsItem>;
-export const DnsHistoryResponseRestorePointsList = /*@__PURE__*/ S.Array(
+const DnsHistoryResponseRestorePointsList = /*@__PURE__*/ S.Array(
   DnsHistoryResponseRestorePointsItem,
 ) as any as S.Schema<DnsHistoryResponseRestorePointsList>;
 
@@ -1485,7 +1435,7 @@ export interface DnsHistoryResponse {
   /** Newest first, up to 50. */
   restorePoints?: DnsHistoryResponseRestorePointsList;
 }
-export const DnsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1498,14 +1448,14 @@ export type DnsPreflightRequestIntent =
   | "move-nameservers"
   | "transfer-out"
   | "enable-dnssec";
-export const DnsPreflightRequestIntent = S.String;
+const DnsPreflightRequestIntent = S.String;
 
 export interface DnsPreflightRequest {
   domain: string;
   /** What you are about to do. One of general, move-nameservers, transfer-out, enable-dnssec. May also be sent in the request body. */
   intent?: DnsPreflightRequestIntent | (string & {});
 }
-export const DnsPreflightRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsPreflightRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     intent: S.optional(DnsPreflightRequestIntent.pipe(T.Query())),
@@ -1514,16 +1464,16 @@ export const DnsPreflightRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Check ids that will break something. Read these first. */
 export type DnsPreflightResponseBlockersList = Array<string>;
-export const DnsPreflightResponseBlockersList =
+const DnsPreflightResponseBlockersList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DnsPreflightResponseBlockersList>;
 
 /** Will not break outright, but usually what the customer asks about next. */
 export type DnsPreflightResponseWarningsList = Array<string>;
-export const DnsPreflightResponseWarningsList =
+const DnsPreflightResponseWarningsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DnsPreflightResponseWarningsList>;
 
 export type DnsPreflightResponseChecksItemSeverity = "blocker" | "warning" | "info";
-export const DnsPreflightResponseChecksItemSeverity = S.String;
+const DnsPreflightResponseChecksItemSeverity = S.String;
 
 export interface DnsPreflightResponseChecksItem {
   id?: string;
@@ -1535,7 +1485,7 @@ export interface DnsPreflightResponseChecksItem {
   /** What to do about it. Absent on checks that passed. */
   next_action?: string;
 }
-export const DnsPreflightResponseChecksItem = /*@__PURE__*/ S.suspend(() =>
+const DnsPreflightResponseChecksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     severity: S.optional(DnsPreflightResponseChecksItemSeverity),
@@ -1550,7 +1500,7 @@ export const DnsPreflightResponseChecksItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Every check that ran, passing ones included, so a caller can show what was verified rather than only what failed. */
 export type DnsPreflightResponseChecksList = Array<DnsPreflightResponseChecksItem>;
-export const DnsPreflightResponseChecksList = /*@__PURE__*/ S.Array(
+const DnsPreflightResponseChecksList = /*@__PURE__*/ S.Array(
   DnsPreflightResponseChecksItem,
 ) as any as S.Schema<DnsPreflightResponseChecksList>;
 
@@ -1567,7 +1517,7 @@ export interface DnsPreflightResponse {
   /** Every check that ran, passing ones included, so a caller can show what was verified rather than only what failed. */
   checks?: DnsPreflightResponseChecksList;
 }
-export const DnsPreflightResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsPreflightResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1584,7 +1534,7 @@ export interface DnsRetrieveByIdRequest {
   /** Numeric DNS record ID */
   id: string;
 }
-export const DnsRetrieveByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsRetrieveByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1593,7 +1543,7 @@ export const DnsRetrieveByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether Cloudflare proxy is enabled for this domain */
 export type DnsRecordsResponseCloudflare = "enabled" | "disabled";
-export const DnsRecordsResponseCloudflare = S.String;
+const DnsRecordsResponseCloudflare = S.String;
 
 export interface DnsRecordsResponseRecordsItem {
   /** Numeric record ID */
@@ -1611,7 +1561,7 @@ export interface DnsRecordsResponseRecordsItem {
   /** Optional notes attached to the record. Null if not set. */
   notes?: string | null;
 }
-export const DnsRecordsResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
+const DnsRecordsResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1626,7 +1576,7 @@ export const DnsRecordsResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsRecordsResponseRecordsItem>;
 
 export type DnsRecordsResponseRecordsList = Array<DnsRecordsResponseRecordsItem>;
-export const DnsRecordsResponseRecordsList = /*@__PURE__*/ S.Array(
+const DnsRecordsResponseRecordsList = /*@__PURE__*/ S.Array(
   DnsRecordsResponseRecordsItem,
 ) as any as S.Schema<DnsRecordsResponseRecordsList>;
 
@@ -1636,7 +1586,7 @@ export interface DnsRecordsResponse {
   cloudflare?: DnsRecordsResponseCloudflare;
   records: DnsRecordsResponseRecordsList;
 }
-export const DnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     cloudflare: S.optional(DnsRecordsResponseCloudflare),
@@ -1651,7 +1601,7 @@ export interface DnsRetrieveByNameTypeRequest {
   /** Subdomain portion only. Omit or leave empty for root domain records. */
   subdomain: string;
 }
-export const DnsRetrieveByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsRetrieveByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -1670,7 +1620,7 @@ export const DnsRetrieveByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DnsScanRequest {
   domain: string;
 }
-export const DnsScanRequest = /*@__PURE__*/ S.suspend(() =>
+const DnsScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dns/scan/{domain}", code: 200 })),
@@ -1687,10 +1637,8 @@ export interface DnsRecordInput {
   /** Priority, for MX and SRV. */
   prio?: number | null;
 }
-export const DnsRecordInput = DnsHistoryRecord as any as S.Schema<DnsRecordInput>;
-
 export type DnsScanResponseRecordsList = Array<DnsRecordInput>;
-export const DnsScanResponseRecordsList =
+const DnsScanResponseRecordsList =
   DnsDiffResponseMissingList as any as S.Schema<DnsScanResponseRecordsList>;
 
 export interface DnsScanResponse {
@@ -1699,7 +1647,7 @@ export interface DnsScanResponse {
   recordCount?: number;
   records?: DnsScanResponseRecordsList;
 }
-export const DnsScanResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1710,19 +1658,19 @@ export const DnsScanResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Redirect kind. 'permanent' = HTTP 301; 'temporary' = HTTP 302 (default); 'masked' = loads the destination in a frame (URL masking). For a precise code -- including a 307 temporary redirect -- use `redirectType`. */
 export type DomainAddUrlForwardRequestType = "temporary" | "permanent" | "masked";
-export const DomainAddUrlForwardRequestType = S.String;
+const DomainAddUrlForwardRequestType = S.String;
 
 /** Optional. The exact redirect type; takes precedence over `type` when supplied. 301 = permanent, 302 or 307 = temporary (this is how you request 307), masked = URL masking. Omit to derive from `type` (temporary->302, permanent->301). */
 export type DomainAddUrlForwardRequestRedirectType = "301" | "302" | "307" | "masked";
-export const DomainAddUrlForwardRequestRedirectType = S.String;
+const DomainAddUrlForwardRequestRedirectType = S.String;
 
 /** Whether to append the request URI path to the forwarding destination */
 export type DomainAddUrlForwardRequestIncludePath = "yes" | "no";
-export const DomainAddUrlForwardRequestIncludePath = S.String;
+const DomainAddUrlForwardRequestIncludePath = S.String;
 
 /** Whether to also forward all subdomains of the forwarded subdomain */
 export type DomainAddUrlForwardRequestWildcard = "yes" | "no";
-export const DomainAddUrlForwardRequestWildcard = S.String;
+const DomainAddUrlForwardRequestWildcard = S.String;
 
 export interface DomainAddUrlForwardRequest {
   domain: string;
@@ -1739,7 +1687,7 @@ export interface DomainAddUrlForwardRequest {
   /** Whether to also forward all subdomains of the forwarded subdomain */
   wildcard: DomainAddUrlForwardRequestWildcard | (string & {});
 }
-export const DomainAddUrlForwardRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainAddUrlForwardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     subdomain: S.optional(S.String),
@@ -1757,7 +1705,7 @@ export interface DomainCancelTransferRequest {
   /** Domain name. */
   domain: string;
 }
-export const DomainCancelTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainCancelTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/cancelTransfer/{domain}", code: 200 })),
@@ -1779,7 +1727,7 @@ export interface DomainCancelTransferResponse {
   orderId?: number;
   message?: string;
 }
-export const DomainCancelTransferResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainCancelTransferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1801,7 +1749,7 @@ export const DomainCancelTransferResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DomainCheckDomainRequest {
   domain: string;
 }
-export const DomainCheckDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainCheckDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/checkDomain/{domain}", code: 200 })),
@@ -1809,22 +1757,22 @@ export const DomainCheckDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the domain is available for registration */
 export type CheckDomainResponseResponseAvail = "yes" | "no";
-export const CheckDomainResponseResponseAvail = S.String;
+const CheckDomainResponseResponseAvail = S.String;
 
 /** Whether the returned price is a first-year promotional price */
 export type CheckDomainResponseResponseFirstYearPromo = "yes" | "no";
-export const CheckDomainResponseResponseFirstYearPromo = S.String;
+const CheckDomainResponseResponseFirstYearPromo = S.String;
 
 /** Whether this is a premium domain */
 export type CheckDomainResponseResponsePremium = "yes" | "no";
-export const CheckDomainResponseResponsePremium = S.String;
+const CheckDomainResponseResponsePremium = S.String;
 
 export interface CheckDomainResponseResponseAdditionalRenewal {
   type?: string;
   price?: string;
   regularPrice?: string;
 }
-export const CheckDomainResponseResponseAdditionalRenewal = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainResponseResponseAdditionalRenewal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     price: S.optional(S.String),
@@ -1836,15 +1784,12 @@ export const CheckDomainResponseResponseAdditionalRenewal = /*@__PURE__*/ S.susp
 
 export type CheckDomainResponseResponseAdditionalTransfer =
   CheckDomainResponseResponseAdditionalRenewal;
-export const CheckDomainResponseResponseAdditionalTransfer =
-  CheckDomainResponseResponseAdditionalRenewal;
-
 /** Renewal and transfer pricing for this domain */
 export interface CheckDomainResponseResponseAdditional {
   renewal?: CheckDomainResponseResponseAdditionalRenewal;
   transfer?: CheckDomainResponseResponseAdditionalRenewal;
 }
-export const CheckDomainResponseResponseAdditional = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainResponseResponseAdditional = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renewal: S.optional(CheckDomainResponseResponseAdditionalRenewal),
     transfer: S.optional(CheckDomainResponseResponseAdditionalRenewal),
@@ -1871,7 +1816,7 @@ export interface CheckDomainResponseResponse {
   /** Renewal and transfer pricing for this domain */
   additional?: CheckDomainResponseResponseAdditional;
 }
-export const CheckDomainResponseResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainResponseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avail: S.optional(CheckDomainResponseResponseAvail),
     type: S.optional(S.String),
@@ -1897,7 +1842,7 @@ export interface CheckDomainResponseLimits {
   /** Human-readable rate limit summary */
   naturalLanguage?: string;
 }
-export const CheckDomainResponseLimits =
+const CheckDomainResponseLimits =
   CreateDomainResponseLimitsAttempts as any as S.Schema<CheckDomainResponseLimits>;
 
 export interface CheckDomainResponse {
@@ -1908,7 +1853,7 @@ export interface CheckDomainResponse {
   /** Seconds remaining until the rate limit window resets */
   ttlRemaining?: number;
 }
-export const CheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     response: CheckDomainResponseResponse,
@@ -1919,7 +1864,7 @@ export const CheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP addresses (IPv4 and/or IPv6) to associate with the host record */
 export type DomainCreateGlueRequestIpsList = Array<string>;
-export const DomainCreateGlueRequestIpsList =
+const DomainCreateGlueRequestIpsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainCreateGlueRequestIpsList>;
 
 export interface DomainCreateGlueRequest {
@@ -1929,7 +1874,7 @@ export interface DomainCreateGlueRequest {
   /** Array of IP addresses (IPv4 and/or IPv6) to associate with the host record */
   ips: DomainCreateGlueRequestIpsList;
 }
-export const DomainCreateGlueRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainCreateGlueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     subdomain: S.String.pipe(T.Label()),
@@ -1941,7 +1886,7 @@ export interface DomainDeleteGlueRequest {
   domain: string;
   subdomain: string;
 }
-export const DomainDeleteGlueRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainDeleteGlueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     subdomain: S.String.pipe(T.Label()),
@@ -1953,7 +1898,7 @@ export interface DomainDeleteUrlForwardRequest {
   /** URL forward record ID */
   id: string;
 }
-export const DomainDeleteUrlForwardRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainDeleteUrlForwardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1965,7 +1910,7 @@ export const DomainDeleteUrlForwardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DomainGetContactsRequest {
   domain: string;
 }
-export const DomainGetContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainGetContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getContacts/{domain}", code: 200 })),
@@ -1992,7 +1937,7 @@ export interface DomainContact {
   fax?: string;
   email?: string;
 }
-export const DomainContact = /*@__PURE__*/ S.suspend(() =>
+const DomainContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.optional(S.String),
     lastName: S.optional(S.String),
@@ -2017,7 +1962,7 @@ export interface DomainGetContactsResponseContacts {
   tech?: DomainContact;
   billing?: DomainContact;
 }
-export const DomainGetContactsResponseContacts = /*@__PURE__*/ S.suspend(() =>
+const DomainGetContactsResponseContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrant: S.optional(DomainContact),
     admin: S.optional(DomainContact),
@@ -2032,7 +1977,7 @@ export interface DomainGetContactsResponse {
   status?: string;
   contacts?: DomainGetContactsResponseContacts;
 }
-export const DomainGetContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainGetContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     contacts: S.optional(DomainGetContactsResponseContacts),
@@ -2044,7 +1989,7 @@ export const DomainGetContactsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DomainGetGlueRequest {
   domain: string;
 }
-export const DomainGetGlueRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainGetGlueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/getGlue/{domain}", code: 200 })),
@@ -2052,12 +1997,12 @@ export const DomainGetGlueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Two-element array: [0] full hostname string, [1] IP addresses object */
 export type DomainGetGlueResponseHostsItemList = Array<unknown>;
-export const DomainGetGlueResponseHostsItemList =
+const DomainGetGlueResponseHostsItemList =
   BulkDomainCheckDomainResponseInvalidList as any as S.Schema<DomainGetGlueResponseHostsItemList>;
 
 /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
 export type DomainGetGlueResponseHostsList = Array<DomainGetGlueResponseHostsItemList>;
-export const DomainGetGlueResponseHostsList = /*@__PURE__*/ S.Array(
+const DomainGetGlueResponseHostsList = /*@__PURE__*/ S.Array(
   DomainGetGlueResponseHostsItemList,
 ) as any as S.Schema<DomainGetGlueResponseHostsList>;
 
@@ -2066,7 +2011,7 @@ export interface DomainGetGlueResponse {
   /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
   hosts?: DomainGetGlueResponseHostsList;
 }
-export const DomainGetGlueResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainGetGlueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     hosts: S.optional(DomainGetGlueResponseHostsList),
@@ -2076,21 +2021,21 @@ export const DomainGetGlueResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DomainGetNsRequest {
   domain: string;
 }
-export const DomainGetNsRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainGetNsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/getNs/{domain}", code: 200 })),
 ).annotate({ identifier: "DomainGetNsRequest" }) as any as S.Schema<DomainGetNsRequest>;
 
 export type DomainGetNsResponseNsList = Array<string>;
-export const DomainGetNsResponseNsList =
+const DomainGetNsResponseNsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainGetNsResponseNsList>;
 
 export interface DomainGetNsResponse {
   status?: string;
   ns?: DomainGetNsResponseNsList;
 }
-export const DomainGetNsResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainGetNsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     ns: S.optional(DomainGetNsResponseNsList),
@@ -2101,7 +2046,7 @@ export interface DomainGetRegistrationRequirementsRequest {
   /** TLD without a leading dot, e.g. `com`, `us`, `ca`. */
   tld: string;
 }
-export const DomainGetRegistrationRequirementsRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainGetRegistrationRequirementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getRegistrationRequirements/{tld}", code: 200 })),
@@ -2129,7 +2074,7 @@ export interface DomainGetRegistrationRequirementsResponse {
   /** Present only when apiRegisterable is false. */
   notApiRegisterableReason?: string;
 }
-export const DomainGetRegistrationRequirementsResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainGetRegistrationRequirementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     tld: S.optional(S.String),
@@ -2151,7 +2096,7 @@ export interface DomainGetTransferSetupRequest {
   /** Domain name. */
   domain: string;
 }
-export const DomainGetTransferSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainGetTransferSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getTransferSetup/{domain}", code: 200 })),
@@ -2160,7 +2105,7 @@ export const DomainGetTransferSetupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainGetTransferSetupRequest>;
 
 export type DomainGetTransferSetupResponsePorkbunNameserversList = Array<string>;
-export const DomainGetTransferSetupResponsePorkbunNameserversList =
+const DomainGetTransferSetupResponsePorkbunNameserversList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainGetTransferSetupResponsePorkbunNameserversList>;
 
 export interface DomainGetTransferSetupResponse {
@@ -2175,7 +2120,7 @@ export interface DomainGetTransferSetupResponse {
   nextStep?: unknown;
   porkbunNameservers?: DomainGetTransferSetupResponsePorkbunNameserversList;
 }
-export const DomainGetTransferSetupResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainGetTransferSetupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -2195,7 +2140,7 @@ export const DomainGetTransferSetupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DomainGetUrlForwardingRequest {
   domain: string;
 }
-export const DomainGetUrlForwardingRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainGetUrlForwardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/getUrlForwarding/{domain}", code: 200 })),
@@ -2205,17 +2150,17 @@ export const DomainGetUrlForwardingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Redirect kind: 'permanent' (HTTP 301), 'temporary' (HTTP 302 or 307), or 'masked' (URL masking). Use `redirectType` for the exact code. */
 export type GetUrlForwardingResponseForwardsItemType = "permanent" | "temporary" | "masked";
-export const GetUrlForwardingResponseForwardsItemType = S.String;
+const GetUrlForwardingResponseForwardsItemType = S.String;
 
 /** The exact stored redirect type. Distinguishes 302 from 307 (both report as 'temporary' in `type`); round-trips directly into addUrlForward's `redirectType`. */
 export type GetUrlForwardingResponseForwardsItemRedirectType = "301" | "302" | "307" | "masked";
-export const GetUrlForwardingResponseForwardsItemRedirectType = S.String;
+const GetUrlForwardingResponseForwardsItemRedirectType = S.String;
 
 export type GetUrlForwardingResponseForwardsItemIncludePath = "yes" | "no";
-export const GetUrlForwardingResponseForwardsItemIncludePath = S.String;
+const GetUrlForwardingResponseForwardsItemIncludePath = S.String;
 
 export type GetUrlForwardingResponseForwardsItemWildcard = "yes" | "no";
-export const GetUrlForwardingResponseForwardsItemWildcard = S.String;
+const GetUrlForwardingResponseForwardsItemWildcard = S.String;
 
 export interface GetUrlForwardingResponseForwardsItem {
   /** Numeric record ID */
@@ -2230,7 +2175,7 @@ export interface GetUrlForwardingResponseForwardsItem {
   includePath?: GetUrlForwardingResponseForwardsItemIncludePath;
   wildcard?: GetUrlForwardingResponseForwardsItemWildcard;
 }
-export const GetUrlForwardingResponseForwardsItem = /*@__PURE__*/ S.suspend(() =>
+const GetUrlForwardingResponseForwardsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     subdomain: S.optional(S.String),
@@ -2245,7 +2190,7 @@ export const GetUrlForwardingResponseForwardsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetUrlForwardingResponseForwardsItem>;
 
 export type GetUrlForwardingResponseForwardsList = Array<GetUrlForwardingResponseForwardsItem>;
-export const GetUrlForwardingResponseForwardsList = /*@__PURE__*/ S.Array(
+const GetUrlForwardingResponseForwardsList = /*@__PURE__*/ S.Array(
   GetUrlForwardingResponseForwardsItem,
 ) as any as S.Schema<GetUrlForwardingResponseForwardsList>;
 
@@ -2253,7 +2198,7 @@ export interface GetUrlForwardingResponse {
   status: string;
   forwards: GetUrlForwardingResponseForwardsList;
 }
-export const GetUrlForwardingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUrlForwardingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     forwards: GetUrlForwardingResponseForwardsList,
@@ -2266,7 +2211,7 @@ export interface DomainStartTransferRequest {
   /** Release even though the zone is empty. Use only when the domain needs no DNS here. */
   force?: boolean;
 }
-export const DomainStartTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainStartTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean),
@@ -2280,7 +2225,7 @@ export interface DomainStartTransferResponse {
   domain?: string;
   message?: string;
 }
-export const DomainStartTransferResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainStartTransferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -2292,11 +2237,11 @@ export const DomainStartTransferResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Auto-renew status to set */
 export type DomainUpdateAutoRenewRequestStatus = "on" | "off";
-export const DomainUpdateAutoRenewRequestStatus = S.String;
+const DomainUpdateAutoRenewRequestStatus = S.String;
 
 /** Array of additional domain names to update. Combined with the domain in the URL path if provided. */
 export type DomainUpdateAutoRenewRequestDomainsList = Array<string>;
-export const DomainUpdateAutoRenewRequestDomainsList =
+const DomainUpdateAutoRenewRequestDomainsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainUpdateAutoRenewRequestDomainsList>;
 
 export interface DomainUpdateAutoRenewRequest {
@@ -2307,7 +2252,7 @@ export interface DomainUpdateAutoRenewRequest {
   /** Array of additional domain names to update. Combined with the domain in the URL path if provided. */
   domains?: DomainUpdateAutoRenewRequestDomainsList;
 }
-export const DomainUpdateAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     status: DomainUpdateAutoRenewRequestStatus,
@@ -2321,7 +2266,7 @@ export interface DomainUpdateAutoRenewResponseResultsValue {
   status?: string;
   message?: string;
 }
-export const DomainUpdateAutoRenewResponseResultsValue = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateAutoRenewResponseResultsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     message: S.optional(S.String),
@@ -2334,7 +2279,7 @@ export const DomainUpdateAutoRenewResponseResultsValue = /*@__PURE__*/ S.suspend
 export type DomainUpdateAutoRenewResponseResultsMap = {
   [key: string]: DomainUpdateAutoRenewResponseResultsValue | undefined;
 };
-export const DomainUpdateAutoRenewResponseResultsMap = /*@__PURE__*/ S.Record(
+const DomainUpdateAutoRenewResponseResultsMap = /*@__PURE__*/ S.Record(
   S.String,
   DomainUpdateAutoRenewResponseResultsValue,
 ) as any as S.Schema<DomainUpdateAutoRenewResponseResultsMap>;
@@ -2344,7 +2289,7 @@ export interface DomainUpdateAutoRenewResponse {
   /** Object keyed by domain name */
   results?: DomainUpdateAutoRenewResponseResultsMap;
 }
-export const DomainUpdateAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     results: S.optional(DomainUpdateAutoRenewResponseResultsMap),
@@ -2355,13 +2300,11 @@ export const DomainUpdateAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Any subset of roles to change; unspecified roles are left as-is. */
 export type DomainUpdateContactsRequestContacts = DomainGetContactsResponseContacts;
-export const DomainUpdateContactsRequestContacts = DomainGetContactsResponseContacts;
-
 /** Only for a registrant change on an address-validated TLD after an ADDRESS_VALIDATION_REQUIRED response. 'accept_suggestion' saves the standardized suggestedAddress; 'use_as_entered' keeps the submitted address (rejected if a real correction was offered). */
 export type DomainUpdateContactsRequestAddressValidationChoice =
   | "accept_suggestion"
   | "use_as_entered";
-export const DomainUpdateContactsRequestAddressValidationChoice = S.String;
+const DomainUpdateContactsRequestAddressValidationChoice = S.String;
 
 export interface DomainUpdateContactsRequest {
   domain: string;
@@ -2374,7 +2317,7 @@ export interface DomainUpdateContactsRequest {
   /** Only for a registrant change on an address-validated TLD after an ADDRESS_VALIDATION_REQUIRED response. 'accept_suggestion' saves the standardized suggestedAddress; 'use_as_entered' keeps the submitted address (rejected if a real correction was offered). */
   addressValidationChoice?: DomainUpdateContactsRequestAddressValidationChoice | (string & {});
 }
-export const DomainUpdateContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     contacts: S.optional(DomainGetContactsResponseContacts),
@@ -2391,7 +2334,7 @@ export interface DomainUpdateContactsResponse {
   message?: string;
   registrantChanged?: boolean;
 }
-export const DomainUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     message: S.optional(S.String),
@@ -2403,7 +2346,7 @@ export const DomainUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP addresses (IPv4 and/or IPv6) to associate with the host record */
 export type DomainUpdateGlueRequestIpsList = Array<string>;
-export const DomainUpdateGlueRequestIpsList =
+const DomainUpdateGlueRequestIpsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainUpdateGlueRequestIpsList>;
 
 export interface DomainUpdateGlueRequest {
@@ -2412,7 +2355,7 @@ export interface DomainUpdateGlueRequest {
   /** Array of IP addresses (IPv4 and/or IPv6) to associate with the host record */
   ips: DomainUpdateGlueRequestIpsList;
 }
-export const DomainUpdateGlueRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateGlueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     subdomain: S.String.pipe(T.Label()),
@@ -2422,7 +2365,7 @@ export const DomainUpdateGlueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered array of nameserver hostnames */
 export type DomainUpdateNsRequestNsList = Array<string>;
-export const DomainUpdateNsRequestNsList =
+const DomainUpdateNsRequestNsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainUpdateNsRequestNsList>;
 
 export interface DomainUpdateNsRequest {
@@ -2430,7 +2373,7 @@ export interface DomainUpdateNsRequest {
   /** Ordered array of nameserver hostnames */
   ns: DomainUpdateNsRequestNsList;
 }
-export const DomainUpdateNsRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateNsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     ns: DomainUpdateNsRequestNsList,
@@ -2443,7 +2386,7 @@ export interface DomainUpdateTransferAuthCodeRequest {
   /** The replacement authorization code, exactly as the losing registrar issued it. Never interpolate this into a shell command. */
   authCode: string;
 }
-export const DomainUpdateTransferAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateTransferAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     authCode: S.String,
@@ -2460,7 +2403,7 @@ export interface DomainUpdateTransferAuthCodeResponse {
   transferStatus?: string;
   message?: string;
 }
-export const DomainUpdateTransferAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateTransferAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -2488,7 +2431,7 @@ export type EditDnsRequestType =
   | "SSHFP"
   | "HTTPS"
   | "SVCB";
-export const EditDnsRequestType = S.String;
+const EditDnsRequestType = S.String;
 
 export interface EditDnsRequest {
   domain: string;
@@ -2507,7 +2450,7 @@ export interface EditDnsRequest {
   /** Notes (optional). Pass empty string to clear notes; omit or pass null to leave unchanged. */
   notes?: string;
 }
-export const EditDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const EditDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2526,7 +2469,7 @@ export interface EmailSetPasswordRequest {
   /** The new password. Must pass Porkbun password validation rules. */
   password: string | Redacted.Redacted<string>;
 }
-export const EmailSetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const EmailSetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.String,
     password: S.String.pipe(T.SensitiveValue({})),
@@ -2537,7 +2480,7 @@ export interface GetAccountInviteStatusRequest {
   /** The `inviteToken` returned by `/account/invite` */
   token: string;
 }
-export const GetAccountInviteStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountInviteStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/account/inviteStatus", code: 200 })),
@@ -2547,7 +2490,7 @@ export const GetAccountInviteStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current state of the invite */
 export type GetAccountInviteStatusResponseInviteStatus = "PENDING" | "ACCEPTED" | "EXPIRED";
-export const GetAccountInviteStatusResponseInviteStatus = S.String;
+const GetAccountInviteStatusResponseInviteStatus = S.String;
 
 export interface GetAccountInviteStatusResponse {
   status: string;
@@ -2556,7 +2499,7 @@ export interface GetAccountInviteStatusResponse {
   /** ID of the newly created account. Present only when `inviteStatus` is `ACCEPTED`. */
   newAccountId?: number;
 }
-export const GetAccountInviteStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountInviteStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     inviteStatus: GetAccountInviteStatusResponseInviteStatus,
@@ -2572,7 +2515,7 @@ export interface GetApikeyRequest {
   /** PKCE verifier (RFC 7636). Required only when the request was created with a codeChallenge. The high-entropy secret whose base64url(SHA-256(codeVerifier)) equals that challenge. When it matches, this response includes the secret key (secretapikey) once. */
   codeVerifier?: string;
 }
-export const GetApikeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApikeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestToken: S.String,
     codeVerifier: S.optional(S.String),
@@ -2580,7 +2523,7 @@ export const GetApikeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApikeyRequest" }) as any as S.Schema<GetApikeyRequest>;
 
 export type GetApikeyResponseStatus = "SUCCESS" | "PENDING" | "ERROR";
-export const GetApikeyResponseStatus = S.String;
+const GetApikeyResponseStatus = S.String;
 
 export interface GetApikeyResponse {
   status?: GetApikeyResponseStatus;
@@ -2592,7 +2535,7 @@ export interface GetApikeyResponse {
   /** Machine-readable error code. Present when status is ERROR. */
   code?: string;
 }
-export const GetApikeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApikeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetApikeyResponseStatus),
     apikey: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2603,12 +2546,12 @@ export const GetApikeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApikeyResponse" }) as any as S.Schema<GetApikeyResponse>;
 
 export interface GetApiSettingsRequest {}
-export const GetApiSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/account/apiSettings", code: 200 })),
 ).annotate({ identifier: "GetApiSettingsRequest" }) as any as S.Schema<GetApiSettingsRequest>;
 
 export type ApiSettingsResponseStatus = "SUCCESS" | "ERROR";
-export const ApiSettingsResponseStatus = S.String;
+const ApiSettingsResponseStatus = S.String;
 
 export interface ApiSettingsResponseSettings {
   /** The monthly spend limit the account holder set, in cents. `null` means none is set; `spendLimit` shows what is actually enforced. */
@@ -2622,7 +2565,7 @@ export interface ApiSettingsResponseSettings {
   /** Amount to add during an auto top-up (cents). */
   topupAmount?: number | null;
 }
-export const ApiSettingsResponseSettings = /*@__PURE__*/ S.suspend(() =>
+const ApiSettingsResponseSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monthlySpendLimit: S.optional(S.NullOr(S.Number)),
     lowBalanceAlert: S.optional(S.NullOr(S.Number)),
@@ -2636,7 +2579,7 @@ export const ApiSettingsResponseSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** `account`: the account holder's own limit. `default`: none set, so the $100 default applies. `none`: none set and the account bought over the API before the default existed (2026-10-03), so purchases are not capped. */
 export type ApiSettingsResponseSpendLimitSource = "account" | "default" | "none";
-export const ApiSettingsResponseSpendLimitSource = S.String;
+const ApiSettingsResponseSpendLimitSource = S.String;
 
 /** The monthly cap on API purchases actually enforced (registrations, renewals, transfers, closeouts, paid hosting). */
 export interface ApiSettingsResponseSpendLimit {
@@ -2649,7 +2592,7 @@ export interface ApiSettingsResponseSpendLimit {
   /** Cents left this month, or `null` with no cap. */
   remaining?: number | null;
 }
-export const ApiSettingsResponseSpendLimit = /*@__PURE__*/ S.suspend(() =>
+const ApiSettingsResponseSpendLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.NullOr(S.Number)),
     source: S.optional(ApiSettingsResponseSpendLimitSource),
@@ -2661,7 +2604,7 @@ export const ApiSettingsResponseSpendLimit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiSettingsResponseSpendLimit>;
 
 export type ApiSettingsResponseTopupLimitSource = "account" | "default";
-export const ApiSettingsResponseTopupLimitSource = S.String;
+const ApiSettingsResponseTopupLimitSource = S.String;
 
 /** The monthly cap on credit added over the API: card top-ups, auto top-ups set off by an API purchase, MPP and USDC together. */
 export interface ApiSettingsResponseTopupLimit {
@@ -2671,7 +2614,7 @@ export interface ApiSettingsResponseTopupLimit {
   /** Credit added over the API this calendar month, in cents. */
   added?: number | null;
 }
-export const ApiSettingsResponseTopupLimit = /*@__PURE__*/ S.suspend(() =>
+const ApiSettingsResponseTopupLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     source: S.optional(ApiSettingsResponseTopupLimitSource),
@@ -2691,7 +2634,7 @@ export interface ApiSettingsResponse {
   /** The monthly cap on credit added over the API: card top-ups, auto top-ups set off by an API purchase, MPP and USDC together. */
   topupLimit?: ApiSettingsResponseTopupLimit;
 }
-export const ApiSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ApiSettingsResponseStatus),
     settings: S.optional(ApiSettingsResponseSettings),
@@ -2702,13 +2645,13 @@ export const ApiSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiSettingsResponse" }) as any as S.Schema<ApiSettingsResponse>;
 
 export interface GetAutoTopupRequest {}
-export const GetAutoTopupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoTopupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/account/autoTopup", code: 200 })),
 ).annotate({ identifier: "GetAutoTopupRequest" }) as any as S.Schema<GetAutoTopupRequest>;
 
 /** Advisory. Present when the settings cannot do anything as they stand, e.g. no payment method is saved. */
 export type AutoTopupResponseWarningsList = Array<string>;
-export const AutoTopupResponseWarningsList =
+const AutoTopupResponseWarningsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<AutoTopupResponseWarningsList>;
 
 export interface AutoTopupResponse {
@@ -2733,7 +2676,7 @@ export interface AutoTopupResponse {
   /** Advisory. Present when the settings cannot do anything as they stand, e.g. no payment method is saved. */
   warnings?: AutoTopupResponseWarningsList;
 }
-export const AutoTopupResponse = /*@__PURE__*/ S.suspend(() =>
+const AutoTopupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -2752,12 +2695,12 @@ export const AutoTopupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoTopupResponse" }) as any as S.Schema<AutoTopupResponse>;
 
 export interface GetBalanceRequest {}
-export const GetBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/account/balance", code: 200 })),
 ).annotate({ identifier: "GetBalanceRequest" }) as any as S.Schema<GetBalanceRequest>;
 
 export type BalanceResponseStatus = "SUCCESS" | "ERROR";
-export const BalanceResponseStatus = S.String;
+const BalanceResponseStatus = S.String;
 
 export interface BalanceResponse {
   status?: BalanceResponseStatus;
@@ -2766,7 +2709,7 @@ export interface BalanceResponse {
   /** Human-readable balance string (e.g. `$12.34`). */
   display?: string;
 }
-export const BalanceResponse = /*@__PURE__*/ S.suspend(() =>
+const BalanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(BalanceResponseStatus),
     balance: S.optional(S.Number),
@@ -2777,7 +2720,7 @@ export const BalanceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCloseoutRequest {
   domain: string;
 }
-export const GetCloseoutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloseoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/closeout/get/{domain}", code: 200 })),
@@ -2814,7 +2757,7 @@ export interface CloseoutItem {
   /** How many other TLDs the same SLD is registered in. */
   otherTldCount?: number | null;
 }
-export const CloseoutItem = /*@__PURE__*/ S.suspend(() =>
+const CloseoutItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closeoutId: S.optional(S.Number),
     domain: S.optional(S.String),
@@ -2842,7 +2785,7 @@ export interface GetCloseoutResponse {
   available?: boolean;
   closeout?: CloseoutItem;
 }
-export const GetCloseoutResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloseoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     available: S.optional(S.Boolean),
@@ -2853,21 +2796,21 @@ export const GetCloseoutResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCloudflareRequest {
   domain: string;
 }
-export const GetCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cloudflare/get/{domain}", code: 200 })),
 ).annotate({ identifier: "GetCloudflareRequest" }) as any as S.Schema<GetCloudflareRequest>;
 
 export type GetCloudflareResponse = unknown;
-export const GetCloudflareResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloudflareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCloudflareResponse" }) as any as S.Schema<GetCloudflareResponse>;
 
 export interface GetDnsRequest {
   domain: string;
 }
-export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/dns/retrieve/{domain}", code: 200 })),
@@ -2878,7 +2821,7 @@ export interface GetDnsRecordByIdRequest {
   /** Numeric DNS record ID */
   id: string;
 }
-export const GetDnsRecordByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsRecordByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2888,7 +2831,7 @@ export const GetDnsRecordByIdRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDnsRecordsRequest {
   domain: string;
 }
-export const GetDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dns/retrieve/{domain}", code: 200 })),
@@ -2901,7 +2844,7 @@ export interface GetDnsRecordsByNameTypeRequest {
   /** Subdomain portion only. Omit or leave empty for root domain records. */
   subdomain: string;
 }
-export const GetDnsRecordsByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsRecordsByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -2920,20 +2863,18 @@ export const GetDnsRecordsByNameTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDnssecRecordsRequest {
   domain: string;
 }
-export const GetDnssecRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnssecRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dns/getDnssecRecords/{domain}", code: 200 })),
 ).annotate({ identifier: "GetDnssecRecordsRequest" }) as any as S.Schema<GetDnssecRecordsRequest>;
 
 export type GetDnssecRecordsResponseRecordsValue = DnsGetDnssecRecordsResponseRecordsValue;
-export const GetDnssecRecordsResponseRecordsValue = DnsGetDnssecRecordsResponseRecordsValue;
-
 /** Object keyed by key tag value. Each value is an object containing the DNSSEC data fields. */
 export type GetDnssecRecordsResponseRecordsMap = {
   [key: string]: DnsGetDnssecRecordsResponseRecordsValue | undefined;
 };
-export const GetDnssecRecordsResponseRecordsMap =
+const GetDnssecRecordsResponseRecordsMap =
   DnsGetDnssecRecordsResponseRecordsMap as any as S.Schema<GetDnssecRecordsResponseRecordsMap>;
 
 export interface GetDnssecRecordsResponse {
@@ -2941,7 +2882,7 @@ export interface GetDnssecRecordsResponse {
   /** Object keyed by key tag value. Each value is an object containing the DNSSEC data fields. */
   records?: GetDnssecRecordsResponseRecordsMap;
 }
-export const GetDnssecRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDnssecRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     records: S.optional(GetDnssecRecordsResponseRecordsMap),
@@ -2949,7 +2890,7 @@ export const GetDnssecRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDnssecRecordsResponse" }) as any as S.Schema<GetDnssecRecordsResponse>;
 
 export type GetDomainRequestIncludeLabels = "yes" | "no";
-export const GetDomainRequestIncludeLabels = S.String;
+const GetDomainRequestIncludeLabels = S.String;
 
 export interface GetDomainRequest {
   /** Fully qualified domain name in the authenticated account. */
@@ -2957,7 +2898,7 @@ export interface GetDomainRequest {
   /** Return label metadata. Defaults to no. */
   includeLabels?: GetDomainRequestIncludeLabels | (string & {});
 }
-export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     includeLabels: S.optional(GetDomainRequestIncludeLabels.pipe(T.Query())),
@@ -2976,7 +2917,7 @@ export interface GetDomainResponseDomain {
   apiAccess?: number;
   notLocal?: number;
 }
-export const GetDomainResponseDomain = /*@__PURE__*/ S.suspend(() =>
+const GetDomainResponseDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(S.String),
@@ -2995,7 +2936,7 @@ export interface GetDomainResponse {
   status?: string;
   domain?: GetDomainResponseDomain;
 }
-export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(GetDomainResponseDomain),
@@ -3005,7 +2946,7 @@ export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainGlueRequest {
   domain: string;
 }
-export const GetDomainGlueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainGlueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getGlue/{domain}", code: 200 })),
@@ -3013,59 +2954,49 @@ export const GetDomainGlueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Two-element array: [0] full hostname string, [1] IP addresses object */
 export type GetDomainGlueResponseHostsItemList = Array<unknown>;
-export const GetDomainGlueResponseHostsItemList =
-  BulkDomainCheckDomainResponseInvalidList as any as S.Schema<GetDomainGlueResponseHostsItemList>;
-
 /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
 export type GetDomainGlueResponseHostsList = Array<GetDomainGlueResponseHostsItemList>;
-export const GetDomainGlueResponseHostsList =
-  DomainGetGlueResponseHostsList as any as S.Schema<GetDomainGlueResponseHostsList>;
-
 export interface GetDomainGlueResponse {
   status?: string;
   /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
   hosts?: GetDomainGlueResponseHostsList;
 }
-export const GetDomainGlueResponse =
-  DomainGetGlueResponse as any as S.Schema<GetDomainGlueResponse>;
+const GetDomainGlueResponse = DomainGetGlueResponse as any as S.Schema<GetDomainGlueResponse>;
 
 export interface GetDomainNsRequest {
   domain: string;
 }
-export const GetDomainNsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getNs/{domain}", code: 200 })),
 ).annotate({ identifier: "GetDomainNsRequest" }) as any as S.Schema<GetDomainNsRequest>;
 
 export type GetDomainNsResponseNsList = Array<string>;
-export const GetDomainNsResponseNsList =
-  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetDomainNsResponseNsList>;
-
 export interface GetDomainNsResponse {
   status?: string;
   ns?: GetDomainNsResponseNsList;
 }
-export const GetDomainNsResponse = DomainGetNsResponse as any as S.Schema<GetDomainNsResponse>;
+const GetDomainNsResponse = DomainGetNsResponse as any as S.Schema<GetDomainNsResponse>;
 
 export type GetDomainsRequestIncludeLabels = "yes" | "no";
-export const GetDomainsRequestIncludeLabels = S.String;
+const GetDomainsRequestIncludeLabels = S.String;
 
 export type GetDomainsRequestTldsList = Array<string>;
-export const GetDomainsRequestTldsList =
+const GetDomainsRequestTldsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetDomainsRequestTldsList>;
 
 export type GetDomainsRequestAutoRenew = "yes" | "no";
-export const GetDomainsRequestAutoRenew = S.String;
+const GetDomainsRequestAutoRenew = S.String;
 
 export type GetDomainsRequestApiAccess = "yes" | "no";
-export const GetDomainsRequestApiAccess = S.String;
+const GetDomainsRequestApiAccess = S.String;
 
 export type GetDomainsRequestSortName = "domain" | "tld" | "create_date" | "expire_date";
-export const GetDomainsRequestSortName = S.String;
+const GetDomainsRequestSortName = S.String;
 
 export type GetDomainsRequestSortDirection = "asc" | "desc";
-export const GetDomainsRequestSortDirection = S.String;
+const GetDomainsRequestSortDirection = S.String;
 
 export interface GetDomainsRequest {
   /** Zero-based offset for pagination. Returns up to 1000 domains per call. */
@@ -3089,7 +3020,7 @@ export interface GetDomainsRequest {
   /** Sort direction. Default: asc. */
   sortDirection?: GetDomainsRequestSortDirection | (string & {});
 }
-export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.Number.pipe(T.Query())),
     includeLabels: S.optional(GetDomainsRequestIncludeLabels.pipe(T.Query())),
@@ -3109,7 +3040,7 @@ export interface DomainListAllResponseDomainsItemLabelsItem {
   title?: string;
   color?: string;
 }
-export const DomainListAllResponseDomainsItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const DomainListAllResponseDomainsItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -3122,7 +3053,7 @@ export const DomainListAllResponseDomainsItemLabelsItem = /*@__PURE__*/ S.suspen
 /** Only present when includeLabels=yes */
 export type DomainListAllResponseDomainsItemLabelsList =
   Array<DomainListAllResponseDomainsItemLabelsItem>;
-export const DomainListAllResponseDomainsItemLabelsList = /*@__PURE__*/ S.Array(
+const DomainListAllResponseDomainsItemLabelsList = /*@__PURE__*/ S.Array(
   DomainListAllResponseDomainsItemLabelsItem,
 ) as any as S.Schema<DomainListAllResponseDomainsItemLabelsList>;
 
@@ -3146,7 +3077,7 @@ export interface DomainListAllResponseDomainsItem {
   /** Only present when includeLabels=yes */
   labels?: DomainListAllResponseDomainsItemLabelsList;
 }
-export const DomainListAllResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const DomainListAllResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(S.String),
@@ -3165,7 +3096,7 @@ export const DomainListAllResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainListAllResponseDomainsItem>;
 
 export type DomainListAllResponseDomainsList = Array<DomainListAllResponseDomainsItem>;
-export const DomainListAllResponseDomainsList = /*@__PURE__*/ S.Array(
+const DomainListAllResponseDomainsList = /*@__PURE__*/ S.Array(
   DomainListAllResponseDomainsItem,
 ) as any as S.Schema<DomainListAllResponseDomainsList>;
 
@@ -3175,7 +3106,7 @@ export interface DomainListAllResponse {
   count?: number;
   domains: DomainListAllResponseDomainsList;
 }
-export const DomainListAllResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainListAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     count: S.optional(S.Number),
@@ -3186,7 +3117,7 @@ export const DomainListAllResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainUrlForwardingRequest {
   domain: string;
 }
-export const GetDomainUrlForwardingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainUrlForwardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getUrlForwarding/{domain}", code: 200 })),
@@ -3197,7 +3128,7 @@ export const GetDomainUrlForwardingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetHostingRequest {
   domain: string;
 }
-export const GetHostingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/get/{domain}", code: 200 })),
@@ -3216,7 +3147,7 @@ export interface GetHostingResponseHosting {
   pendingRetire?: boolean;
   cost?: unknown;
 }
-export const GetHostingResponseHosting = /*@__PURE__*/ S.suspend(() =>
+const GetHostingResponseHosting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     product: S.optional(S.String),
@@ -3237,7 +3168,7 @@ export interface GetHostingResponse {
   status?: string;
   hosting?: GetHostingResponseHosting | null;
 }
-export const GetHostingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHostingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     hosting: S.optional(S.NullOr(GetHostingResponseHosting)),
@@ -3248,14 +3179,14 @@ export interface GetInvoiceRequest {
   /** Invoice (order) ID, from `GET /account/invoices`. */
   orderId: number;
 }
-export const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/account/invoice/{orderId}", code: 200 })),
 ).annotate({ identifier: "GetInvoiceRequest" }) as any as S.Schema<GetInvoiceRequest>;
 
 export type GetInvoiceResponseInvoiceState = "PAID" | "PARTIALLY_REFUNDED" | "REFUNDED" | "UNPAID";
-export const GetInvoiceResponseInvoiceState = S.String;
+const GetInvoiceResponseInvoiceState = S.String;
 
 export interface GetInvoiceResponseInvoiceBillTo {
   company?: string | null;
@@ -3263,7 +3194,7 @@ export interface GetInvoiceResponseInvoiceBillTo {
   address?: string | null;
   vat?: string | null;
 }
-export const GetInvoiceResponseInvoiceBillTo = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponseInvoiceBillTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -3275,7 +3206,7 @@ export const GetInvoiceResponseInvoiceBillTo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoiceResponseInvoiceBillTo>;
 
 export type GetInvoiceResponseInvoicePaymentMethodsList = Array<string>;
-export const GetInvoiceResponseInvoicePaymentMethodsList =
+const GetInvoiceResponseInvoicePaymentMethodsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetInvoiceResponseInvoicePaymentMethodsList>;
 
 export type GetInvoiceResponseInvoiceItemsItemStatus =
@@ -3284,10 +3215,10 @@ export type GetInvoiceResponseInvoiceItemsItemStatus =
   | "REFUNDED"
   | "REFUND"
   | "COUPON";
-export const GetInvoiceResponseInvoiceItemsItemStatus = S.String;
+const GetInvoiceResponseInvoiceItemsItemStatus = S.String;
 
 export type GetInvoiceResponseInvoiceItemsItemTagsList = Array<string>;
-export const GetInvoiceResponseInvoiceItemsItemTagsList =
+const GetInvoiceResponseInvoiceItemsItemTagsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetInvoiceResponseInvoiceItemsItemTagsList>;
 
 export interface GetInvoiceResponseInvoiceItemsItem {
@@ -3303,7 +3234,7 @@ export interface GetInvoiceResponseInvoiceItemsItem {
   discount_cents?: number;
   tags?: GetInvoiceResponseInvoiceItemsItemTagsList;
 }
-export const GetInvoiceResponseInvoiceItemsItem = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponseInvoiceItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     product: S.optional(S.String),
@@ -3320,7 +3251,7 @@ export const GetInvoiceResponseInvoiceItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoiceResponseInvoiceItemsItem>;
 
 export type GetInvoiceResponseInvoiceItemsList = Array<GetInvoiceResponseInvoiceItemsItem>;
-export const GetInvoiceResponseInvoiceItemsList = /*@__PURE__*/ S.Array(
+const GetInvoiceResponseInvoiceItemsList = /*@__PURE__*/ S.Array(
   GetInvoiceResponseInvoiceItemsItem,
 ) as any as S.Schema<GetInvoiceResponseInvoiceItemsList>;
 
@@ -3343,7 +3274,7 @@ export interface GetInvoiceResponseInvoice {
   /** When downloadUrl stops working (ISO 8601). */
   downloadExpires?: string | null;
 }
-export const GetInvoiceResponseInvoice = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponseInvoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     date: S.optional(S.String),
@@ -3369,7 +3300,7 @@ export interface GetInvoiceResponse {
   status?: string;
   invoice?: GetInvoiceResponseInvoice;
 }
-export const GetInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     invoice: S.optional(GetInvoiceResponseInvoice),
@@ -3380,7 +3311,7 @@ export interface GetInvoicePdfRequest {
   /** Invoice (order) ID, from `GET /account/invoices`. */
   orderId: number;
 }
-export const GetInvoicePdfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvoicePdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/account/invoicePdf/{orderId}", code: 200 })),
@@ -3397,7 +3328,7 @@ export interface GetInvoicePdfResponse {
   /** When downloadUrl stops working (ISO 8601). */
   downloadExpires?: string | null;
 }
-export const GetInvoicePdfResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInvoicePdfResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     filename: S.optional(S.String),
@@ -3410,7 +3341,7 @@ export const GetInvoicePdfResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInvoicePdfResponse" }) as any as S.Schema<GetInvoicePdfResponse>;
 
 export interface GetIpRequest {}
-export const GetIpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/ip", code: 200 })),
 ).annotate({ identifier: "GetIpRequest" }) as any as S.Schema<GetIpRequest>;
 
@@ -3421,7 +3352,7 @@ export interface IpResponse {
   /** Raw value of the X-Forwarded-For header */
   xForwardedFor?: string;
 }
-export const IpResponse = /*@__PURE__*/ S.suspend(() =>
+const IpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     yourIp: S.String,
@@ -3430,7 +3361,7 @@ export const IpResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpResponse" }) as any as S.Schema<IpResponse>;
 
 export interface GetPingRequest {}
-export const GetPingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/ping", code: 200 })),
 ).annotate({ identifier: "GetPingRequest" }) as any as S.Schema<GetPingRequest>;
 
@@ -3443,7 +3374,7 @@ export interface GetPingResponse {
   /** Present and true when valid credentials were supplied */
   credentialsValid?: boolean;
 }
-export const GetPingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     yourIp: S.String,
@@ -3453,12 +3384,9 @@ export const GetPingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPingResponse" }) as any as S.Schema<GetPingResponse>;
 
 export type GetPricingRequestTldsCase0List = Array<string>;
-export const GetPricingRequestTldsCase0List =
-  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetPricingRequestTldsCase0List>;
-
 /** Optional TLDs to price: an array, or a comma-separated string. If neither `tld` nor `tlds` is given (or both are empty), all supported TLDs are returned. */
 export type GetPricingRequestTlds = GetPricingRequestTldsCase0List | string;
-export const GetPricingRequestTlds = S.Unknown as any as S.Schema<GetPricingRequestTlds>;
+const GetPricingRequestTlds = S.Unknown as any as S.Schema<GetPricingRequestTlds>;
 
 export interface GetPricingRequest {
   /** Optional single TLD to price, e.g. `io`. Combines with `tlds`. */
@@ -3466,7 +3394,7 @@ export interface GetPricingRequest {
   /** Optional TLDs to price: an array, or a comma-separated string. If neither `tld` nor `tlds` is given (or both are empty), all supported TLDs are returned. */
   tlds?: GetPricingRequestTlds;
 }
-export const GetPricingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPricingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.optional(S.String),
     tlds: S.optional(GetPricingRequestTlds),
@@ -3475,11 +3403,11 @@ export const GetPricingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Present only when a filter named TLDs Porkbun does not sell: those names, as sent. They are not in `pricing`. */
 export type GetPricingResponseUnsupportedList = Array<string>;
-export const GetPricingResponseUnsupportedList =
+const GetPricingResponseUnsupportedList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetPricingResponseUnsupportedList>;
 
 export type GetPricingResponsePricingValueCouponsValueFirstYearOnly = "yes" | "no";
-export const GetPricingResponsePricingValueCouponsValueFirstYearOnly = S.String;
+const GetPricingResponsePricingValueCouponsValueFirstYearOnly = S.String;
 
 export interface GetPricingResponsePricingValueCouponsValue {
   code?: string;
@@ -3488,7 +3416,7 @@ export interface GetPricingResponsePricingValueCouponsValue {
   type?: string;
   amount?: number;
 }
-export const GetPricingResponsePricingValueCouponsValue = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingValueCouponsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     max_per_user: S.optional(S.Number),
@@ -3504,7 +3432,7 @@ export const GetPricingResponsePricingValueCouponsValue = /*@__PURE__*/ S.suspen
 export type GetPricingResponsePricingValueCouponsMap = {
   [key: string]: GetPricingResponsePricingValueCouponsValue | undefined;
 };
-export const GetPricingResponsePricingValueCouponsMap = /*@__PURE__*/ S.Record(
+const GetPricingResponsePricingValueCouponsMap = /*@__PURE__*/ S.Record(
   S.String,
   GetPricingResponsePricingValueCouponsValue,
 ) as any as S.Schema<GetPricingResponsePricingValueCouponsMap>;
@@ -3518,7 +3446,7 @@ export interface GetPricingResponsePricingValue {
   /** Active coupon codes for this TLD, keyed by product type */
   coupons?: GetPricingResponsePricingValueCouponsMap;
 }
-export const GetPricingResponsePricingValue = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registration: S.optional(S.String),
     renewal: S.optional(S.String),
@@ -3534,7 +3462,7 @@ export const GetPricingResponsePricingValue = /*@__PURE__*/ S.suspend(() =>
 export type GetPricingResponsePricingMap = {
   [key: string]: GetPricingResponsePricingValue | undefined;
 };
-export const GetPricingResponsePricingMap = /*@__PURE__*/ S.Record(
+const GetPricingResponsePricingMap = /*@__PURE__*/ S.Record(
   S.String,
   GetPricingResponsePricingValue,
 ) as any as S.Schema<GetPricingResponsePricingMap>;
@@ -3546,7 +3474,7 @@ export interface GetPricingResponse {
   /** Object keyed by TLD string */
   pricing?: GetPricingResponsePricingMap;
 }
-export const GetPricingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     unsupported: S.optional(GetPricingResponseUnsupportedList),
@@ -3560,7 +3488,7 @@ export interface GetPricingGetRequest {
   /** Comma-separated TLDs to price, e.g. `com,io,dev`. Omit (with `tld`) for every TLD. */
   tlds?: string;
 }
-export const GetPricingGetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPricingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.optional(S.String.pipe(T.Query())),
     tlds: S.optional(S.String.pipe(T.Query())),
@@ -3569,12 +3497,10 @@ export const GetPricingGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Present only when a filter named TLDs Porkbun does not sell: those names, as sent. They are not in `pricing`. */
 export type GetPricingGetResponseUnsupportedList = Array<string>;
-export const GetPricingGetResponseUnsupportedList =
+const GetPricingGetResponseUnsupportedList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetPricingGetResponseUnsupportedList>;
 
 export type GetPricingGetResponsePricingValueCouponsValueFirstYearOnly = "yes" | "no";
-export const GetPricingGetResponsePricingValueCouponsValueFirstYearOnly = S.String;
-
 export interface GetPricingGetResponsePricingValueCouponsValue {
   code?: string;
   max_per_user?: number;
@@ -3582,16 +3508,10 @@ export interface GetPricingGetResponsePricingValueCouponsValue {
   type?: string;
   amount?: number;
 }
-export const GetPricingGetResponsePricingValueCouponsValue =
-  GetPricingResponsePricingValueCouponsValue as any as S.Schema<GetPricingGetResponsePricingValueCouponsValue>;
-
 /** Active coupon codes for this TLD, keyed by product type */
 export type GetPricingGetResponsePricingValueCouponsMap = {
   [key: string]: GetPricingGetResponsePricingValueCouponsValue | undefined;
 };
-export const GetPricingGetResponsePricingValueCouponsMap =
-  GetPricingResponsePricingValueCouponsMap as any as S.Schema<GetPricingGetResponsePricingValueCouponsMap>;
-
 export interface GetPricingGetResponsePricingValue {
   registration?: string;
   renewal?: string;
@@ -3601,14 +3521,11 @@ export interface GetPricingGetResponsePricingValue {
   /** Active coupon codes for this TLD, keyed by product type */
   coupons?: GetPricingGetResponsePricingValueCouponsMap;
 }
-export const GetPricingGetResponsePricingValue =
-  GetPricingResponsePricingValue as any as S.Schema<GetPricingGetResponsePricingValue>;
-
 /** Object keyed by TLD string */
 export type GetPricingGetResponsePricingMap = {
   [key: string]: GetPricingGetResponsePricingValue | undefined;
 };
-export const GetPricingGetResponsePricingMap =
+const GetPricingGetResponsePricingMap =
   GetPricingResponsePricingMap as any as S.Schema<GetPricingGetResponsePricingMap>;
 
 export interface GetPricingGetResponse {
@@ -3618,7 +3535,7 @@ export interface GetPricingGetResponse {
   /** Object keyed by TLD string */
   pricing?: GetPricingGetResponsePricingMap;
 }
-export const GetPricingGetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPricingGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     unsupported: S.optional(GetPricingGetResponseUnsupportedList),
@@ -3629,7 +3546,7 @@ export const GetPricingGetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSslRequest {
   domain: string;
 }
-export const GetSslRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/ssl/retrieve/{domain}", code: 200 })),
@@ -3644,7 +3561,7 @@ export interface GetSslResponse {
   /** The PEM-encoded public key */
   publickey?: string;
 }
-export const GetSslResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSslResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     certificatechain: S.optional(S.String),
@@ -3656,7 +3573,7 @@ export const GetSslResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSslRetrieveRequest {
   domain: string;
 }
-export const GetSslRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSslRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ssl/retrieve/{domain}", code: 200 })),
@@ -3671,20 +3588,20 @@ export interface GetSslRetrieveResponse {
   /** The PEM-encoded public key */
   publickey?: string;
 }
-export const GetSslRetrieveResponse = GetSslResponse as any as S.Schema<GetSslRetrieveResponse>;
+const GetSslRetrieveResponse = GetSslResponse as any as S.Schema<GetSslRetrieveResponse>;
 
 export interface GetTransferGetRequest {
   /** The domain name (e.g. `example.com`). */
   domain: string;
 }
-export const GetTransferGetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransferGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/getTransfer/{domain}", code: 200 })),
 ).annotate({ identifier: "GetTransferGetRequest" }) as any as S.Schema<GetTransferGetRequest>;
 
 export type GetTransferResponseStatus = "SUCCESS" | "ERROR";
-export const GetTransferResponseStatus = S.String;
+const GetTransferResponseStatus = S.String;
 
 export type GetTransferResponseTransferStatus =
   | "NEW"
@@ -3694,7 +3611,7 @@ export type GetTransferResponseTransferStatus =
   | "DONE"
   | "CANCELED"
   | "INIT";
-export const GetTransferResponseTransferStatus = S.String;
+const GetTransferResponseTransferStatus = S.String;
 
 export interface GetTransferResponseTransfer {
   domain?: string;
@@ -3703,7 +3620,7 @@ export interface GetTransferResponseTransfer {
   transferDate?: string;
   orderId?: number;
 }
-export const GetTransferResponseTransfer = /*@__PURE__*/ S.suspend(() =>
+const GetTransferResponseTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(GetTransferResponseTransferStatus),
@@ -3719,7 +3636,7 @@ export interface GetTransferResponse {
   status?: GetTransferResponseStatus;
   transfer?: GetTransferResponseTransfer;
 }
-export const GetTransferResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTransferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetTransferResponseStatus),
     transfer: S.optional(GetTransferResponseTransfer),
@@ -3729,7 +3646,7 @@ export const GetTransferResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebhookRequest {
   id: number;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/webhook/get/{id}", code: 200 })),
@@ -3737,7 +3654,7 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Least privilege by default. `editor` = content only (recommended for agents). `administrator` = full control incl. plugin install; requires acknowledgeFullAccess. */
 export type HostingCreateWpCredentialsRequestRole = "editor" | "administrator";
-export const HostingCreateWpCredentialsRequestRole = S.String;
+const HostingCreateWpCredentialsRequestRole = S.String;
 
 export interface HostingCreateWpCredentialsRequest {
   domain: string;
@@ -3750,7 +3667,7 @@ export interface HostingCreateWpCredentialsRequest {
   /** Validate without creating anything. */
   dryRun?: boolean;
 }
-export const HostingCreateWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingCreateWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     role: S.optional(HostingCreateWpCredentialsRequestRole),
@@ -3771,7 +3688,7 @@ export interface HostingCreateWpCredentialsResponseCredentials {
   /** Ready-to-use HTTP Basic header value. */
   authorization?: string;
 }
-export const HostingCreateWpCredentialsResponseCredentials = /*@__PURE__*/ S.suspend(() =>
+const HostingCreateWpCredentialsResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     applicationPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3789,7 +3706,7 @@ export interface HostingCreateWpCredentialsResponse {
   credentials?: HostingCreateWpCredentialsResponseCredentials;
   message?: string;
 }
-export const HostingCreateWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingCreateWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     credentials: S.optional(HostingCreateWpCredentialsResponseCredentials),
@@ -3805,7 +3722,7 @@ export interface HostingDeleteFileRequest {
   /** Delete a directory together with everything in it (up to 2,000 items per call; call again to continue). Without it, a non-empty directory returns HOSTING_DIR_NOT_EMPTY. */
   recursive?: boolean;
 }
-export const HostingDeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingDeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     path: S.String,
@@ -3817,7 +3734,7 @@ export interface HostingDeleteFileResponse {
   status?: string;
   deleted?: string;
 }
-export const HostingDeleteFileResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingDeleteFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     deleted: S.optional(S.String),
@@ -3835,7 +3752,7 @@ export interface HostingDeleteWpCredentialsRequest {
   wpUser?: string;
   dryRun?: boolean;
 }
-export const HostingDeleteWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingDeleteWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     uuid: S.optional(S.String),
@@ -3852,7 +3769,7 @@ export interface HostingDeleteWpCredentialsResponse {
   revoked?: string;
   message?: string;
 }
-export const HostingDeleteWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingDeleteWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     revoked: S.optional(S.String),
@@ -3865,14 +3782,14 @@ export const HostingDeleteWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface HostingFilesRequest {
   domain: string;
 }
-export const HostingFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/files/{domain}", code: 200 })),
 ).annotate({ identifier: "HostingFilesRequest" }) as any as S.Schema<HostingFilesRequest>;
 
 export type HostingFilesResponseFilesList = Array<string>;
-export const HostingFilesResponseFilesList =
+const HostingFilesResponseFilesList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<HostingFilesResponseFilesList>;
 
 export interface HostingFilesResponse {
@@ -3880,7 +3797,7 @@ export interface HostingFilesResponse {
   path?: string;
   files?: HostingFilesResponseFilesList;
 }
-export const HostingFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     path: S.optional(S.String),
@@ -3892,7 +3809,7 @@ export interface HostingGetWpCredentialsRequest {
   domain: string;
   wpUser?: string;
 }
-export const HostingGetWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingGetWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     wpUser: S.optional(S.String.pipe(T.Query())),
@@ -3902,7 +3819,7 @@ export const HostingGetWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostingGetWpCredentialsRequest>;
 
 export type HostingGetWpCredentialsResponseCredentialsList = Array<unknown>;
-export const HostingGetWpCredentialsResponseCredentialsList =
+const HostingGetWpCredentialsResponseCredentialsList =
   BulkDomainCheckDomainResponseInvalidList as any as S.Schema<HostingGetWpCredentialsResponseCredentialsList>;
 
 export interface HostingGetWpCredentialsResponse {
@@ -3910,7 +3827,7 @@ export interface HostingGetWpCredentialsResponse {
   wpUser?: string;
   credentials?: HostingGetWpCredentialsResponseCredentialsList;
 }
-export const HostingGetWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingGetWpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     wpUser: S.optional(S.String),
@@ -3924,7 +3841,7 @@ export interface HostingMakeDirRequest {
   domain: string;
   path: string;
 }
-export const HostingMakeDirRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingMakeDirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     path: S.String,
@@ -3935,7 +3852,7 @@ export interface HostingMakeDirResponse {
   status?: string;
   created?: string;
 }
-export const HostingMakeDirResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingMakeDirResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     created: S.optional(S.String),
@@ -3943,7 +3860,7 @@ export const HostingMakeDirResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostingMakeDirResponse" }) as any as S.Schema<HostingMakeDirResponse>;
 
 export interface HostingPlansRequest {}
-export const HostingPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const HostingPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/hosting/plans", code: 200 })),
 ).annotate({ identifier: "HostingPlansRequest" }) as any as S.Schema<HostingPlansRequest>;
 
@@ -3959,7 +3876,7 @@ export interface HostingPlansResponsePlansItem {
   name?: string;
   features?: unknown;
 }
-export const HostingPlansResponsePlansItem = /*@__PURE__*/ S.suspend(() =>
+const HostingPlansResponsePlansItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.optional(S.String),
     plan: S.optional(S.String),
@@ -3976,7 +3893,7 @@ export const HostingPlansResponsePlansItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostingPlansResponsePlansItem>;
 
 export type HostingPlansResponsePlansList = Array<HostingPlansResponsePlansItem>;
-export const HostingPlansResponsePlansList = /*@__PURE__*/ S.Array(
+const HostingPlansResponsePlansList = /*@__PURE__*/ S.Array(
   HostingPlansResponsePlansItem,
 ) as any as S.Schema<HostingPlansResponsePlansList>;
 
@@ -3984,7 +3901,7 @@ export interface HostingPlansResponse {
   status?: string;
   plans?: HostingPlansResponsePlansList;
 }
-export const HostingPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     plans: S.optional(HostingPlansResponsePlansList),
@@ -3993,7 +3910,7 @@ export const HostingPlansResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored -- they describe the delegation, not the zone contents. */
 export type ImportDnsRequestRecordsList = Array<DnsRecordInput>;
-export const ImportDnsRequestRecordsList =
+const ImportDnsRequestRecordsList =
   DnsDiffResponseMissingList as any as S.Schema<ImportDnsRequestRecordsList>;
 
 export interface ImportDnsRequest {
@@ -4001,7 +3918,7 @@ export interface ImportDnsRequest {
   /** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored -- they describe the delegation, not the zone contents. */
   records?: ImportDnsRequestRecordsList;
 }
-export const ImportDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     records: S.optional(ImportDnsRequestRecordsList),
@@ -4009,7 +3926,7 @@ export const ImportDnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDnsRequest" }) as any as S.Schema<ImportDnsRequest>;
 
 export type ImportDnsResponseFailuresList = Array<unknown>;
-export const ImportDnsResponseFailuresList =
+const ImportDnsResponseFailuresList =
   BulkDomainCheckDomainResponseInvalidList as any as S.Schema<ImportDnsResponseFailuresList>;
 
 export interface ImportDnsResponse {
@@ -4022,7 +3939,7 @@ export interface ImportDnsResponse {
   failures?: ImportDnsResponseFailuresList;
   warnings?: DnsWriteWarnings;
 }
-export const ImportDnsResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -4036,28 +3953,28 @@ export const ImportDnsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Return label metadata for each domain. Defaults to no. */
 export type ListDomainsRequestIncludeLabels = "yes" | "no";
-export const ListDomainsRequestIncludeLabels = S.String;
+const ListDomainsRequestIncludeLabels = S.String;
 
 /** Limit to these TLDs (without leading dot). */
 export type ListDomainsRequestTldsList = Array<string>;
-export const ListDomainsRequestTldsList =
+const ListDomainsRequestTldsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListDomainsRequestTldsList>;
 
 /** Filter to domains with auto-renew on or off. */
 export type ListDomainsRequestAutoRenew = "yes" | "no";
-export const ListDomainsRequestAutoRenew = S.String;
+const ListDomainsRequestAutoRenew = S.String;
 
 /** Filter to domains opted in to API access (yes) or not (no). Useful for finding domains an API key can actually operate on. */
 export type ListDomainsRequestApiAccess = "yes" | "no";
-export const ListDomainsRequestApiAccess = S.String;
+const ListDomainsRequestApiAccess = S.String;
 
 /** Field to sort by. Default: `expire_date` ascending. */
 export type ListDomainsRequestSortName = "domain" | "tld" | "create_date" | "expire_date";
-export const ListDomainsRequestSortName = S.String;
+const ListDomainsRequestSortName = S.String;
 
 /** Sort direction. Default: asc. */
 export type ListDomainsRequestSortDirection = "asc" | "desc";
-export const ListDomainsRequestSortDirection = S.String;
+const ListDomainsRequestSortDirection = S.String;
 
 export interface ListDomainsRequest {
   /** Zero-based offset for pagination (default: 0). Returns up to 1000 domains per call. */
@@ -4081,7 +3998,7 @@ export interface ListDomainsRequest {
   /** Sort direction. Default: asc. */
   sortDirection?: ListDomainsRequestSortDirection | (string & {});
 }
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.Number),
     includeLabels: S.optional(ListDomainsRequestIncludeLabels),
@@ -4103,7 +4020,7 @@ export interface ListInvoicesRequest {
   start?: number;
   limit?: number;
 }
-export const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number.pipe(T.Query())),
     start: S.optional(S.Number.pipe(T.Query())),
@@ -4116,11 +4033,11 @@ export type ListInvoicesResponseInvoicesItemState =
   | "PARTIALLY_REFUNDED"
   | "REFUNDED"
   | "UNPAID";
-export const ListInvoicesResponseInvoicesItemState = S.String;
+const ListInvoicesResponseInvoicesItemState = S.String;
 
 /** Up to 10 domains on the invoice. */
 export type ListInvoicesResponseInvoicesItemDomainsList = Array<string>;
-export const ListInvoicesResponseInvoicesItemDomainsList =
+const ListInvoicesResponseInvoicesItemDomainsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListInvoicesResponseInvoicesItemDomainsList>;
 
 export interface ListInvoicesResponseInvoicesItem {
@@ -4135,7 +4052,7 @@ export interface ListInvoicesResponseInvoicesItem {
   /** The invoice page on porkbun.com (null on a sandbox key). */
   url?: string | null;
 }
-export const ListInvoicesResponseInvoicesItem = /*@__PURE__*/ S.suspend(() =>
+const ListInvoicesResponseInvoicesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     date: S.optional(S.String),
@@ -4151,13 +4068,13 @@ export const ListInvoicesResponseInvoicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInvoicesResponseInvoicesItem>;
 
 export type ListInvoicesResponseInvoicesList = Array<ListInvoicesResponseInvoicesItem>;
-export const ListInvoicesResponseInvoicesList = /*@__PURE__*/ S.Array(
+const ListInvoicesResponseInvoicesList = /*@__PURE__*/ S.Array(
   ListInvoicesResponseInvoicesItem,
 ) as any as S.Schema<ListInvoicesResponseInvoicesList>;
 
 /** Years that have invoices. */
 export type ListInvoicesResponseYearsList = Array<number>;
-export const ListInvoicesResponseYearsList = /*@__PURE__*/ S.Array(
+const ListInvoicesResponseYearsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListInvoicesResponseYearsList>;
 
@@ -4171,7 +4088,7 @@ export interface ListInvoicesResponse {
   /** Years that have invoices. */
   years?: ListInvoicesResponseYearsList;
 }
-export const ListInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     invoices: S.optional(ListInvoicesResponseInvoicesList),
@@ -4184,16 +4101,16 @@ export const ListInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter to listings under these TLDs (without the leading dot). */
 export type ListMarketplaceListingsRequestTldsList = Array<string>;
-export const ListMarketplaceListingsRequestTldsList =
+const ListMarketplaceListingsRequestTldsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListMarketplaceListingsRequestTldsList>;
 
 /** Field to sort filtered results by. Default `sld_length` ascending when `query` is set, otherwise `create_date` descending. */
 export type ListMarketplaceListingsRequestSortName = "domain" | "tld" | "price" | "sld_length";
-export const ListMarketplaceListingsRequestSortName = S.String;
+const ListMarketplaceListingsRequestSortName = S.String;
 
 /** Sort direction. Defaults vary by `sortName`. */
 export type ListMarketplaceListingsRequestSortDirection = "asc" | "desc";
-export const ListMarketplaceListingsRequestSortDirection = S.String;
+const ListMarketplaceListingsRequestSortDirection = S.String;
 
 export interface ListMarketplaceListingsRequest {
   /** Pagination offset (unfiltered mode only). Default 0. */
@@ -4213,7 +4130,7 @@ export interface ListMarketplaceListingsRequest {
   /** Sort direction. Defaults vary by `sortName`. */
   sortDirection?: ListMarketplaceListingsRequestSortDirection | (string & {});
 }
-export const ListMarketplaceListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.Number),
     limit: S.optional(S.Number),
@@ -4238,7 +4155,7 @@ export interface ListMarketplaceListingsResponseDomainsItem {
   /** Listing price in USD */
   price?: number;
 }
-export const ListMarketplaceListingsResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceListingsResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     create_date: S.optional(S.String),
     domain: S.optional(S.String),
@@ -4252,7 +4169,7 @@ export const ListMarketplaceListingsResponseDomainsItem = /*@__PURE__*/ S.suspen
 
 export type ListMarketplaceListingsResponseDomainsList =
   Array<ListMarketplaceListingsResponseDomainsItem>;
-export const ListMarketplaceListingsResponseDomainsList = /*@__PURE__*/ S.Array(
+const ListMarketplaceListingsResponseDomainsList = /*@__PURE__*/ S.Array(
   ListMarketplaceListingsResponseDomainsItem,
 ) as any as S.Schema<ListMarketplaceListingsResponseDomainsList>;
 
@@ -4264,7 +4181,7 @@ export interface ListMarketplaceListingsResponse {
   filtered?: boolean;
   domains?: ListMarketplaceListingsResponseDomainsList;
 }
-export const ListMarketplaceListingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceListingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     count: S.optional(S.Number),
@@ -4276,14 +4193,14 @@ export const ListMarketplaceListingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMarketplaceListingsResponse>;
 
 export type ListMarketplaceListingsGetRequestTldsList = Array<string>;
-export const ListMarketplaceListingsGetRequestTldsList =
+const ListMarketplaceListingsGetRequestTldsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListMarketplaceListingsGetRequestTldsList>;
 
 export type ListMarketplaceListingsGetRequestSortName = "domain" | "tld" | "price" | "sld_length";
-export const ListMarketplaceListingsGetRequestSortName = S.String;
+const ListMarketplaceListingsGetRequestSortName = S.String;
 
 export type ListMarketplaceListingsGetRequestSortDirection = "asc" | "desc";
-export const ListMarketplaceListingsGetRequestSortDirection = S.String;
+const ListMarketplaceListingsGetRequestSortDirection = S.String;
 
 export interface ListMarketplaceListingsGetRequest {
   /** SLD substring search. Multi-word; prefix a term with `-` to exclude. Example: `ai -test`. */
@@ -4303,7 +4220,7 @@ export interface ListMarketplaceListingsGetRequest {
   /** Page size (unfiltered mode only). Default 1000, max 5000. */
   limit?: number;
 }
-export const ListMarketplaceListingsGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceListingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     tlds: S.optional(ListMarketplaceListingsGetRequestTldsList.pipe(T.Query())),
@@ -4325,30 +4242,24 @@ export interface ListMarketplaceListingsGetResponseDomainsItem {
   sld_length?: number;
   price?: number;
 }
-export const ListMarketplaceListingsGetResponseDomainsItem =
-  ListMarketplaceListingsResponseDomainsItem as any as S.Schema<ListMarketplaceListingsGetResponseDomainsItem>;
-
 export type ListMarketplaceListingsGetResponseDomainsList =
   Array<ListMarketplaceListingsGetResponseDomainsItem>;
-export const ListMarketplaceListingsGetResponseDomainsList =
-  ListMarketplaceListingsResponseDomainsList as any as S.Schema<ListMarketplaceListingsGetResponseDomainsList>;
-
 export interface ListMarketplaceListingsGetResponse {
   status?: string;
   count?: number;
   filtered?: boolean;
   domains?: ListMarketplaceListingsGetResponseDomainsList;
 }
-export const ListMarketplaceListingsGetResponse =
+const ListMarketplaceListingsGetResponse =
   ListMarketplaceListingsResponse as any as S.Schema<ListMarketplaceListingsGetResponse>;
 
 export interface ListTransfersGetRequest {}
-export const ListTransfersGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransfersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/listTransfers", code: 200 })),
 ).annotate({ identifier: "ListTransfersGetRequest" }) as any as S.Schema<ListTransfersGetRequest>;
 
 export type ListTransfersResponseStatus = "SUCCESS" | "ERROR";
-export const ListTransfersResponseStatus = S.String;
+const ListTransfersResponseStatus = S.String;
 
 export type ListTransfersResponseTransfersItemStatus =
   | "NEW"
@@ -4358,8 +4269,6 @@ export type ListTransfersResponseTransfersItemStatus =
   | "DONE"
   | "CANCELED"
   | "INIT";
-export const ListTransfersResponseTransfersItemStatus = S.String;
-
 export interface ListTransfersResponseTransfersItem {
   domain?: string;
   status?: ListTransfersResponseTransfersItemStatus;
@@ -4367,11 +4276,11 @@ export interface ListTransfersResponseTransfersItem {
   transferDate?: string;
   orderId?: number;
 }
-export const ListTransfersResponseTransfersItem =
+const ListTransfersResponseTransfersItem =
   GetTransferResponseTransfer as any as S.Schema<ListTransfersResponseTransfersItem>;
 
 export type ListTransfersResponseTransfersList = Array<ListTransfersResponseTransfersItem>;
-export const ListTransfersResponseTransfersList = /*@__PURE__*/ S.Array(
+const ListTransfersResponseTransfersList = /*@__PURE__*/ S.Array(
   ListTransfersResponseTransfersItem,
 ) as any as S.Schema<ListTransfersResponseTransfersList>;
 
@@ -4379,7 +4288,7 @@ export interface ListTransfersResponse {
   status?: ListTransfersResponseStatus;
   transfers?: ListTransfersResponseTransfersList;
 }
-export const ListTransfersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransfersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ListTransfersResponseStatus),
     transfers: S.optional(ListTransfersResponseTransfersList),
@@ -4387,12 +4296,12 @@ export const ListTransfersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTransfersResponse" }) as any as S.Schema<ListTransfersResponse>;
 
 export interface ListWebhookRequest {}
-export const ListWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhook/list", code: 200 })),
 ).annotate({ identifier: "ListWebhookRequest" }) as any as S.Schema<ListWebhookRequest>;
 
 export type WebhookListResponseEndpointsList = Array<WebhookEndpoint>;
-export const WebhookListResponseEndpointsList = /*@__PURE__*/ S.Array(
+const WebhookListResponseEndpointsList = /*@__PURE__*/ S.Array(
   WebhookEndpoint,
 ) as any as S.Schema<WebhookListResponseEndpointsList>;
 
@@ -4400,7 +4309,7 @@ export interface WebhookListResponse {
   status?: string;
   endpoints?: WebhookListResponseEndpointsList;
 }
-export const WebhookListResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     endpoints: S.optional(WebhookListResponseEndpointsList),
@@ -4408,7 +4317,7 @@ export const WebhookListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookListResponse" }) as any as S.Schema<WebhookListResponse>;
 
 export interface MockDirectoryRequest {}
-export const MockDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const MockDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/mock", code: 200 })),
 ).annotate({ identifier: "MockDirectoryRequest" }) as any as S.Schema<MockDirectoryRequest>;
 
@@ -4418,7 +4327,7 @@ export interface MockDirectoryResponseEndpointsItem {
   summary?: string;
   mockUrl?: string;
 }
-export const MockDirectoryResponseEndpointsItem = /*@__PURE__*/ S.suspend(() =>
+const MockDirectoryResponseEndpointsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     path: S.optional(S.String),
@@ -4430,7 +4339,7 @@ export const MockDirectoryResponseEndpointsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MockDirectoryResponseEndpointsItem>;
 
 export type MockDirectoryResponseEndpointsList = Array<MockDirectoryResponseEndpointsItem>;
-export const MockDirectoryResponseEndpointsList = /*@__PURE__*/ S.Array(
+const MockDirectoryResponseEndpointsList = /*@__PURE__*/ S.Array(
   MockDirectoryResponseEndpointsItem,
 ) as any as S.Schema<MockDirectoryResponseEndpointsList>;
 
@@ -4440,7 +4349,7 @@ export interface MockDirectoryResponse {
   count?: number;
   endpoints?: MockDirectoryResponseEndpointsList;
 }
-export const MockDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
+const MockDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     mock: S.optional(S.Boolean),
@@ -4450,7 +4359,7 @@ export const MockDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MockDirectoryResponse" }) as any as S.Schema<MockDirectoryResponse>;
 
 export type MockEndpointRequestStatus = "error";
-export const MockEndpointRequestStatus = S.String;
+const MockEndpointRequestStatus = S.String;
 
 export interface MockEndpointRequest {
   /** The real endpoint path to mock, e.g. `domain/listAll`. */
@@ -4458,7 +4367,7 @@ export interface MockEndpointRequest {
   /** Set to `error` to return the error-response shape. */
   status?: MockEndpointRequestStatus | (string & {});
 }
-export const MockEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const MockEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Label()),
     status: S.optional(MockEndpointRequestStatus.pipe(T.Query())),
@@ -4466,10 +4375,10 @@ export const MockEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MockEndpointRequest" }) as any as S.Schema<MockEndpointRequest>;
 
 export type MockEndpointResponse = unknown;
-export const MockEndpointResponse = GetCloudflareResponse as any as S.Schema<MockEndpointResponse>;
+const MockEndpointResponse = GetCloudflareResponse as any as S.Schema<MockEndpointResponse>;
 
 export interface PingRequest {}
-export const PingRequest = /*@__PURE__*/ S.suspend(() =>
+const PingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/ping", code: 200 })),
 ).annotate({ identifier: "PingRequest" }) as any as S.Schema<PingRequest>;
 
@@ -4482,29 +4391,29 @@ export interface PingResponse {
   /** Present and true when valid credentials were supplied */
   credentialsValid?: boolean;
 }
-export const PingResponse = GetPingResponse as any as S.Schema<PingResponse>;
+const PingResponse = GetPingResponse as any as S.Schema<PingResponse>;
 
 export interface PostIpRequest {}
-export const PostIpRequest = /*@__PURE__*/ S.suspend(() =>
+const PostIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/ip", code: 200 })),
 ).annotate({ identifier: "PostIpRequest" }) as any as S.Schema<PostIpRequest>;
 
 export interface PreviewCloudflareRequest {
   domain: string;
 }
-export const PreviewCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
+const PreviewCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cloudflare/preview/{domain}", code: 200 })),
 ).annotate({ identifier: "PreviewCloudflareRequest" }) as any as S.Schema<PreviewCloudflareRequest>;
 
 export type PreviewCloudflareResponse = unknown;
-export const PreviewCloudflareResponse =
+const PreviewCloudflareResponse =
   CloudflareCreateRecordResponse as any as S.Schema<PreviewCloudflareResponse>;
 
 /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
 export type RenewDomainRequestPayWith = "usdc";
-export const RenewDomainRequestPayWith = S.String;
+const RenewDomainRequestPayWith = S.String;
 
 export interface RenewDomainRequest {
   domain: string;
@@ -4517,7 +4426,7 @@ export interface RenewDomainRequest {
   /** Optional. When true, runs all pre-flight validation and returns a preview with `dryRun: true` and `wouldSucceed` WITHOUT renewing or charging. Nothing changes and the rate-limit budget is not consumed. */
   dryRun?: boolean;
 }
-export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     cost: S.Number,
@@ -4528,19 +4437,12 @@ export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenewDomainRequest" }) as any as S.Schema<RenewDomainRequest>;
 
 export type RenewDomainResponseLimitsAttempts = CreateDomainResponseLimitsAttempts;
-export const RenewDomainResponseLimitsAttempts = CreateDomainResponseLimitsAttempts;
-
 export type RenewDomainResponseLimitsSuccess = CreateDomainResponseLimitsSuccess;
-export const RenewDomainResponseLimitsSuccess = CreateDomainResponseLimitsSuccess;
-
 /** Current rate limit state for both attempt and success limits */
 export interface RenewDomainResponseLimits {
   attempts?: CreateDomainResponseLimitsAttempts;
   success?: CreateDomainResponseLimitsSuccess;
 }
-export const RenewDomainResponseLimits =
-  CreateDomainResponseLimits as any as S.Schema<RenewDomainResponseLimits>;
-
 export interface RenewDomainResponse {
   status: string;
   /** The renewed domain name */
@@ -4560,25 +4462,11 @@ export interface RenewDomainResponse {
   /** Per-request UUID (also in the X-Request-Id header). Present on every API response. */
   requestId?: string;
 }
-export const RenewDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    domain: S.String,
-    expirationDate: S.optional(S.String),
-    cost: S.optional(S.Number),
-    orderId: S.Number,
-    limits: S.optional(RenewDomainResponseLimits),
-    balance: S.optional(S.Number),
-    ttlRemaining: S.optional(S.Number),
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RenewDomainResponse" }) as any as S.Schema<RenewDomainResponse>;
-
 export type RenewDomainResponseBody = RenewDomainResponse | DryRunPreviewResponse;
-export const RenewDomainResponseBody = S.Unknown as any as S.Schema<RenewDomainResponseBody>;
+const RenewDomainResponseBody = S.Unknown as any as S.Schema<RenewDomainResponseBody>;
 
 export type RenewDomainResponse2 = RenewDomainResponseBody;
-export const RenewDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
   RenewDomainResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RenewDomainResponse2" }) as any as S.Schema<RenewDomainResponse2>;
 
@@ -4586,7 +4474,7 @@ export interface ResendWebhookRequest {
   /** Endpoint id. */
   id: number;
 }
-export const ResendWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const ResendWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }).pipe(T.Http({ method: "POST", uri: "/webhook/resend", code: 200 })),
@@ -4594,7 +4482,7 @@ export const ResendWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** PENDING (queued/awaiting retry), PROCESSING (in flight), DELIVERED (2xx), or FAILED (gave up after max attempts). */
 export type WebhookDeliveryStatus = "PENDING" | "PROCESSING" | "DELIVERED" | "FAILED";
-export const WebhookDeliveryStatus = S.String;
+const WebhookDeliveryStatus = S.String;
 
 export interface WebhookDelivery {
   /** Delivery id. */
@@ -4623,7 +4511,7 @@ export interface WebhookDelivery {
   /** The full event envelope that was sent. Present only on GET /webhook/delivery/{id}. */
   payload?: unknown;
 }
-export const WebhookDelivery = /*@__PURE__*/ S.suspend(() =>
+const WebhookDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     endpointId: S.optional(S.Number),
@@ -4646,7 +4534,7 @@ export interface WebhookResendResponse {
   delivery?: WebhookDelivery;
   message?: string;
 }
-export const WebhookResendResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookResendResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     delivery: S.optional(WebhookDelivery),
@@ -4655,7 +4543,7 @@ export const WebhookResendResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookResendResponse" }) as any as S.Schema<WebhookResendResponse>;
 
 export interface ResetSandboxRequest {}
-export const ResetSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/sandbox/reset", code: 200 })),
 ).annotate({ identifier: "ResetSandboxRequest" }) as any as S.Schema<ResetSandboxRequest>;
 
@@ -4666,7 +4554,7 @@ export interface ResetSandboxResponse {
   balance?: number;
   sandbox?: boolean;
 }
-export const ResetSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     message: S.optional(S.String),
@@ -4685,7 +4573,7 @@ export interface RestoreDnsRequest {
   /** Report what would change without changing anything. */
   dryRun?: boolean;
 }
-export const RestoreDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     snapshotId: S.Number,
@@ -4699,7 +4587,7 @@ export interface DnsRestoreResponseFailedItem {
   type?: string;
   reason?: string;
 }
-export const DnsRestoreResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
+const DnsRestoreResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -4711,7 +4599,7 @@ export const DnsRestoreResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Records that could not be recreated, with the reason. Parking and other masked types are managed elsewhere and cannot be restored this way. */
 export type DnsRestoreResponseFailedList = Array<DnsRestoreResponseFailedItem>;
-export const DnsRestoreResponseFailedList = /*@__PURE__*/ S.Array(
+const DnsRestoreResponseFailedList = /*@__PURE__*/ S.Array(
   DnsRestoreResponseFailedItem,
 ) as any as S.Schema<DnsRestoreResponseFailedList>;
 
@@ -4730,7 +4618,7 @@ export interface DnsRestoreResponse {
   /** Records that could not be recreated, with the reason. Parking and other masked types are managed elsewhere and cannot be restored this way. */
   failed?: DnsRestoreResponseFailedList;
 }
-export const DnsRestoreResponse = /*@__PURE__*/ S.suspend(() =>
+const DnsRestoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warnings: S.optional(DnsWriteWarnings),
     status: S.optional(S.String),
@@ -4746,21 +4634,20 @@ export const DnsRestoreResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RetryCloudflareRequest {
   domain: string;
 }
-export const RetryCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cloudflare/retry/{domain}", code: 200 })),
 ).annotate({ identifier: "RetryCloudflareRequest" }) as any as S.Schema<RetryCloudflareRequest>;
 
 export type RetryCloudflareResponse = unknown;
-export const RetryCloudflareResponse =
-  GetCloudflareResponse as any as S.Schema<RetryCloudflareResponse>;
+const RetryCloudflareResponse = GetCloudflareResponse as any as S.Schema<RetryCloudflareResponse>;
 
 export interface SandboxTopupRequest {
   /** Fake credit to add in US cents (default 100000; max 1000000). */
   amount?: number;
 }
-export const SandboxTopupRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxTopupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
   }).pipe(T.Http({ method: "POST", uri: "/sandbox/topup", code: 200 })),
@@ -4773,7 +4660,7 @@ export interface SandboxTopupResponse {
   display?: string;
   sandbox?: boolean;
 }
-export const SandboxTopupResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxTopupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     granted: S.optional(S.Number),
@@ -4792,7 +4679,7 @@ export type SandboxTriggerWebhookRequestEventType =
   | "dns.record.created"
   | "dns.record.updated"
   | "dns.record.deleted";
-export const SandboxTriggerWebhookRequestEventType = S.String;
+const SandboxTriggerWebhookRequestEventType = S.String;
 
 export interface SandboxTriggerWebhookRequest {
   /** Event type to emit. */
@@ -4800,7 +4687,7 @@ export interface SandboxTriggerWebhookRequest {
   /** Domain used in the sample payload (default example.com). */
   domain?: string;
 }
-export const SandboxTriggerWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxTriggerWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventType: SandboxTriggerWebhookRequestEventType,
     domain: S.optional(S.String),
@@ -4817,7 +4704,7 @@ export interface SandboxTriggerWebhookResponse {
   message?: string;
   sandbox?: boolean;
 }
-export const SandboxTriggerWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxTriggerWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     event: S.optional(S.String),
@@ -4854,7 +4741,7 @@ export interface SearchCloseoutRequest {
   /** Rows per page, 1-500. Default 100. */
   limit?: number;
 }
-export const SearchCloseoutRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchCloseoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     tld: S.optional(S.String.pipe(T.Query())),
@@ -4871,7 +4758,7 @@ export const SearchCloseoutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchCloseoutRequest" }) as any as S.Schema<SearchCloseoutRequest>;
 
 export type SearchCloseoutResponseCloseoutsList = Array<CloseoutItem>;
-export const SearchCloseoutResponseCloseoutsList = /*@__PURE__*/ S.Array(
+const SearchCloseoutResponseCloseoutsList = /*@__PURE__*/ S.Array(
   CloseoutItem,
 ) as any as S.Schema<SearchCloseoutResponseCloseoutsList>;
 
@@ -4884,7 +4771,7 @@ export interface SearchCloseoutResponse {
   limit?: number;
   closeouts?: SearchCloseoutResponseCloseoutsList;
 }
-export const SearchCloseoutResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchCloseoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     count: S.optional(S.Number),
@@ -4905,7 +4792,7 @@ export interface SetAutoTopupRequest {
   /** Validate only; change nothing. */
   dryRun?: boolean;
 }
-export const SetAutoTopupRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAutoTopupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     threshold: S.optional(S.Number),
@@ -4918,7 +4805,7 @@ export interface TestWebhookRequest {
   /** Endpoint id. */
   id: number;
 }
-export const TestWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const TestWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }).pipe(T.Http({ method: "POST", uri: "/webhook/test", code: 200 })),
@@ -4930,7 +4817,7 @@ export interface WebhookTestResponse {
   eventId?: string;
   message?: string;
 }
-export const WebhookTestResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     eventId: S.optional(S.String),
@@ -4944,7 +4831,7 @@ export interface TopupAccountCreditRequest {
   /** Preview the charge without making it. */
   dryRun?: boolean;
 }
-export const TopupAccountCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const TopupAccountCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     dryRun: S.optional(S.Boolean),
@@ -4971,7 +4858,7 @@ export interface TopupAccountCreditResponse {
   simulated?: boolean;
   message?: string;
 }
-export const TopupAccountCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const TopupAccountCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     charged: S.optional(S.Number),
@@ -4995,7 +4882,7 @@ export interface TopupCryptoRequest {
   /** Check eligibility only; creates no checkout. */
   dryRun?: boolean;
 }
-export const TopupCryptoRequest = /*@__PURE__*/ S.suspend(() =>
+const TopupCryptoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     dryRun: S.optional(S.Boolean),
@@ -5019,7 +4906,7 @@ export interface TopupCryptoResponse {
   expiresAt?: string | null;
   message?: string;
 }
-export const TopupCryptoResponse = /*@__PURE__*/ S.suspend(() =>
+const TopupCryptoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     checkoutId: S.optional(S.String),
@@ -5038,7 +4925,7 @@ export const TopupCryptoResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TopupCryptoStatusRequest {
   checkoutId: string;
 }
-export const TopupCryptoStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const TopupCryptoStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkoutId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/account/topupCryptoStatus/{checkoutId}", code: 200 })),
@@ -5051,7 +4938,7 @@ export type TopupCryptoStatusResponseState =
   | "EXPIRED"
   | "FAILED"
   | "DEACTIVATED";
-export const TopupCryptoStatusResponseState = S.String;
+const TopupCryptoStatusResponseState = S.String;
 
 export interface TopupCryptoStatusResponse {
   status?: string;
@@ -5061,7 +4948,7 @@ export interface TopupCryptoStatusResponse {
   balance_cents?: number;
   balance?: string;
 }
-export const TopupCryptoStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const TopupCryptoStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     checkoutId: S.optional(S.String),
@@ -5080,7 +4967,7 @@ export interface TopupMppRequest {
   /** Check eligibility and limits only. */
   dryRun?: boolean;
 }
-export const TopupMppRequest = /*@__PURE__*/ S.suspend(() =>
+const TopupMppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     dryRun: S.optional(S.Boolean),
@@ -5088,7 +4975,7 @@ export const TopupMppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopupMppRequest" }) as any as S.Schema<TopupMppRequest>;
 
 export type TopupMppResponseMethodsList = Array<string>;
-export const TopupMppResponseMethodsList =
+const TopupMppResponseMethodsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<TopupMppResponseMethodsList>;
 
 export interface TopupMppResponse {
@@ -5101,7 +4988,7 @@ export interface TopupMppResponse {
   methods?: TopupMppResponseMethodsList;
   message?: string;
 }
-export const TopupMppResponse = /*@__PURE__*/ S.suspend(() =>
+const TopupMppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     amount_cents: S.optional(S.Number),
@@ -5115,7 +5002,7 @@ export const TopupMppResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
 export type TransferDomainRequestPayWith = "usdc";
-export const TransferDomainRequestPayWith = S.String;
+const TransferDomainRequestPayWith = S.String;
 
 export interface TransferDomainRequest {
   /** The domain name to transfer (e.g. `example.com`). */
@@ -5133,7 +5020,7 @@ export interface TransferDomainRequest {
   /** Optional. When true, runs all pre-flight validation and returns a preview with `dryRun: true` and `wouldSucceed` WITHOUT initiating the transfer or charging. Nothing changes and the rate-limit budget is not consumed. */
   dryRun?: boolean;
 }
-export const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     authCode: S.String,
@@ -5146,21 +5033,10 @@ export const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferDomainRequest" }) as any as S.Schema<TransferDomainRequest>;
 
 export type TransferDomainResponseStatus = "SUCCESS" | "ERROR";
-export const TransferDomainResponseStatus = S.String;
-
 export interface TransferDomainResponseLimits {
   attempts?: unknown;
   success?: unknown;
 }
-export const TransferDomainResponseLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempts: S.optional(S.Unknown),
-    success: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "TransferDomainResponseLimits",
-}) as any as S.Schema<TransferDomainResponseLimits>;
-
 export interface TransferDomainResponse {
   status?: TransferDomainResponseStatus;
   domain?: string;
@@ -5174,25 +5050,11 @@ export interface TransferDomainResponse {
   /** Per-request UUID (also in the X-Request-Id header). Present on every API response. */
   requestId?: string;
 }
-export const TransferDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(TransferDomainResponseStatus),
-    domain: S.optional(S.String),
-    orderId: S.optional(S.Number),
-    transferId: S.optional(S.Number),
-    message: S.optional(S.String),
-    balance: S.optional(S.Number),
-    ttlRemaining: S.optional(S.Number),
-    limits: S.optional(TransferDomainResponseLimits),
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "TransferDomainResponse" }) as any as S.Schema<TransferDomainResponse>;
-
 export type TransferDomainResponseBody = TransferDomainResponse | DryRunPreviewResponse;
-export const TransferDomainResponseBody = S.Unknown as any as S.Schema<TransferDomainResponseBody>;
+const TransferDomainResponseBody = S.Unknown as any as S.Schema<TransferDomainResponseBody>;
 
 export type TransferDomainResponse2 = TransferDomainResponseBody;
-export const TransferDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
+const TransferDomainResponse2 = /*@__PURE__*/ S.suspend(() =>
   TransferDomainResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "TransferDomainResponse2" }) as any as S.Schema<TransferDomainResponse2>;
 
@@ -5200,7 +5062,7 @@ export interface TransferDomainPrepareRequest {
   /** Domain name. */
   domain: string;
 }
-export const TransferDomainPrepareRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferDomainPrepareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/prepareTransfer/{domain}", code: 200 })),
@@ -5209,7 +5071,7 @@ export const TransferDomainPrepareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferDomainPrepareRequest>;
 
 export type TransferDomainPrepareResponsePorkbunNameserversList = Array<string>;
-export const TransferDomainPrepareResponsePorkbunNameserversList =
+const TransferDomainPrepareResponsePorkbunNameserversList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<TransferDomainPrepareResponsePorkbunNameserversList>;
 
 export interface TransferDomainPrepareResponse {
@@ -5220,7 +5082,7 @@ export interface TransferDomainPrepareResponse {
   message?: string;
   porkbunNameservers?: TransferDomainPrepareResponsePorkbunNameserversList;
 }
-export const TransferDomainPrepareResponse = /*@__PURE__*/ S.suspend(() =>
+const TransferDomainPrepareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     domain: S.optional(S.String),
@@ -5235,12 +5097,12 @@ export const TransferDomainPrepareResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replacement event subscription list (optional). */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList =
+const UpdateWebhookRequestEventsList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 /** Set ACTIVE to resume (also clears the failure counter) or DISABLED to pause (optional). */
 export type UpdateWebhookRequestStatus = "ACTIVE" | "DISABLED";
-export const UpdateWebhookRequestStatus = S.String;
+const UpdateWebhookRequestStatus = S.String;
 
 export interface UpdateWebhookRequest {
   /** Endpoint id to update. */
@@ -5252,7 +5114,7 @@ export interface UpdateWebhookRequest {
   /** Set ACTIVE to resume (also clears the failure counter) or DISABLED to pause (optional). */
   status?: UpdateWebhookRequestStatus | (string & {});
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     url: S.optional(S.String),
@@ -5262,7 +5124,7 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWebhookRequest" }) as any as S.Schema<UpdateWebhookRequest>;
 
 export type WebhookDeliveriesRequestStatus = "PENDING" | "PROCESSING" | "DELIVERED" | "FAILED";
-export const WebhookDeliveriesRequestStatus = S.String;
+const WebhookDeliveriesRequestStatus = S.String;
 
 export interface WebhookDeliveriesRequest {
   /** Only deliveries for this endpoint. */
@@ -5274,7 +5136,7 @@ export interface WebhookDeliveriesRequest {
   /** Page size, 1-200 (default 50). */
   limit?: number;
 }
-export const WebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.Number.pipe(T.Query())),
     status: S.optional(WebhookDeliveriesRequestStatus.pipe(T.Query())),
@@ -5285,7 +5147,7 @@ export const WebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Newest first. The bulky `payload` field is omitted here. */
 export type WebhookDeliveryListResponseDeliveriesList = Array<WebhookDelivery>;
-export const WebhookDeliveryListResponseDeliveriesList = /*@__PURE__*/ S.Array(
+const WebhookDeliveryListResponseDeliveriesList = /*@__PURE__*/ S.Array(
   WebhookDelivery,
 ) as any as S.Schema<WebhookDeliveryListResponseDeliveriesList>;
 
@@ -5301,7 +5163,7 @@ export interface WebhookDeliveryListResponse {
   limit?: number;
   message?: string;
 }
-export const WebhookDeliveryListResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookDeliveryListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     deliveries: S.optional(WebhookDeliveryListResponseDeliveriesList),
@@ -5317,7 +5179,7 @@ export const WebhookDeliveryListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface WebhookDeliveryRequest {
   id: number;
 }
-export const WebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/webhook/delivery/{id}", code: 200 })),
@@ -5327,7 +5189,7 @@ export interface WebhookDeliveryResponse {
   status?: string;
   delivery?: WebhookDelivery;
 }
-export const WebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     delivery: S.optional(WebhookDelivery),
@@ -5335,19 +5197,19 @@ export const WebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookDeliveryResponse" }) as any as S.Schema<WebhookDeliveryResponse>;
 
 export interface WebhookEventTypesRequest {}
-export const WebhookEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhook/eventTypes", code: 200 })),
 ).annotate({ identifier: "WebhookEventTypesRequest" }) as any as S.Schema<WebhookEventTypesRequest>;
 
 export type WebhookEventTypesResponseEventTypesList = Array<string>;
-export const WebhookEventTypesResponseEventTypesList =
+const WebhookEventTypesResponseEventTypesList =
   BulkDomainCheckDomainRequestDomainsList as any as S.Schema<WebhookEventTypesResponseEventTypesList>;
 
 export interface WebhookEventTypesResponse {
   status?: string;
   eventTypes?: WebhookEventTypesResponseEventTypesList;
 }
-export const WebhookEventTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookEventTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     eventTypes: S.optional(WebhookEventTypesResponseEventTypesList),
@@ -5360,7 +5222,7 @@ export interface WebhookRotateSecretRequest {
   /** Endpoint id. */
   id: number;
 }
-export const WebhookRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }).pipe(T.Http({ method: "POST", uri: "/webhook/rotateSecret", code: 200 })),

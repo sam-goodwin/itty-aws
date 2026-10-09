@@ -18,7 +18,7 @@ export interface CheckFileShareNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-export const CheckFileShareNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckFileShareNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -38,7 +38,7 @@ export const CheckFileShareNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The reason why the given name is not available. */
 export type CheckFileShareNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-export const CheckFileShareNameAvailabilityResponseReason = S.String;
+const CheckFileShareNameAvailabilityResponseReason = S.String;
 
 export interface CheckFileShareNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
@@ -48,7 +48,7 @@ export interface CheckFileShareNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const CheckFileShareNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckFileShareNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(CheckFileShareNameAvailabilityResponseReason),
@@ -60,13 +60,13 @@ export const CheckFileShareNameAvailabilityResponse = /*@__PURE__*/ S.suspend(()
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PrivateEndpointInput",
 }) as any as S.Schema<PrivateEndpointInput>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -77,7 +77,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -94,7 +94,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -115,7 +115,7 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -136,11 +136,11 @@ export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -157,7 +157,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -170,7 +170,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
@@ -179,7 +179,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -191,7 +191,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -204,7 +204,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -227,7 +227,7 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -247,7 +247,7 @@ export interface DeleteFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-export const DeleteFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -263,8 +263,7 @@ export const DeleteFileShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileShareRequest" }) as any as S.Schema<DeleteFileShareRequest>;
 
 export interface DeleteFileShareResponse {}
-export const DeleteFileShareResponse =
-  PrivateEndpointInput as any as S.Schema<DeleteFileShareResponse>;
+const DeleteFileShareResponse = PrivateEndpointInput as any as S.Schema<DeleteFileShareResponse>;
 
 export interface DeleteFileShareSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -276,7 +275,7 @@ export interface DeleteFileShareSnapshotRequest {
   /** The name of the FileShareSnapshot */
   name: string;
 }
-export const DeleteFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -295,9 +294,9 @@ export const DeleteFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFileShareSnapshotRequest>;
 
 export interface DeleteFileShareSnapshotResponse {}
-export const DeleteFileShareSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteFileShareSnapshotResponse" },
-) as any as S.Schema<DeleteFileShareSnapshotResponse>;
+const DeleteFileShareSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteFileShareSnapshotResponse",
+}) as any as S.Schema<DeleteFileShareSnapshotResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -309,7 +308,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -328,7 +327,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePrivateEndpointConnectionResponse",
@@ -336,30 +335,30 @@ export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type FileSharesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FileSharesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const FileSharesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<FileSharesCreateOrUpdateRequestTagsMap>;
 
 /** Media Tier enum. */
 export type MediaTier = "SSD";
-export const MediaTier = S.String;
+const MediaTier = S.String;
 
 /** Redundancy enum. */
 export type Redundancy = "Local" | "Zone";
-export const Redundancy = S.String;
+const Redundancy = S.String;
 
 /** Protocol enum. */
 export type Protocol = "NFS";
-export const Protocol = S.String;
+const Protocol = S.String;
 
 /** Share root squash enum. */
 export type ShareRootSquash = "NoRootSquash" | "RootSquash" | "AllSquash";
-export const ShareRootSquash = S.String;
+const ShareRootSquash = S.String;
 
 /** State of NFS encryption in transit. */
 export type EncryptionInTransitRequired = "Enabled" | "Disabled";
-export const EncryptionInTransitRequired = S.String;
+const EncryptionInTransitRequired = S.String;
 
 /** Properties specific to the NFS protocol. */
 export interface NfsProtocolProperties {
@@ -368,7 +367,7 @@ export interface NfsProtocolProperties {
   /** Encryption in transit defines whether data is encrypted for NFS shares. */
   encryptionInTransitRequired?: EncryptionInTransitRequired | (string & {});
 }
-export const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
+const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootSquash: S.optional(ShareRootSquash),
     encryptionInTransitRequired: S.optional(EncryptionInTransitRequired),
@@ -377,7 +376,7 @@ export const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed set of subnets when access is restricted. */
 export type PublicAccessPropertiesAllowedSubnetsList = Array<string>;
-export const PublicAccessPropertiesAllowedSubnetsList =
+const PublicAccessPropertiesAllowedSubnetsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PublicAccessPropertiesAllowedSubnetsList>;
 
 /** The set of properties for control public access. */
@@ -385,7 +384,7 @@ export interface PublicAccessProperties {
   /** The allowed set of subnets when access is restricted. */
   allowedSubnets?: PublicAccessPropertiesAllowedSubnetsList;
 }
-export const PublicAccessProperties = /*@__PURE__*/ S.suspend(() =>
+const PublicAccessProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedSubnets: S.optional(PublicAccessPropertiesAllowedSubnetsList),
   }),
@@ -393,7 +392,7 @@ export const PublicAccessProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-export const PublicNetworkAccess = S.String;
+const PublicNetworkAccess = S.String;
 
 /** File share properties */
 export interface FileSharePropertiesInput {
@@ -418,7 +417,7 @@ export interface FileSharePropertiesInput {
   /** Gets or sets allow or disallow public network access to azure managed file share */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const FileSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FileSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountName: S.optional(S.String),
     mediaTier: S.optional(MediaTier),
@@ -447,7 +446,7 @@ export interface FileSharesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileSharePropertiesInput;
 }
-export const FileSharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileSharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -469,7 +468,7 @@ export const FileSharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FileSharesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FileSharesCreateOrUpdateResponseTagsMap =
+const FileSharesCreateOrUpdateResponseTagsMap =
   FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileSharesCreateOrUpdateResponseTagsMap>;
 
 /** The status of file share's ProvisioningState. */
@@ -486,7 +485,7 @@ export type FileShareProvisioningState =
   | "Creating"
   | "Patching"
   | "Posting";
-export const FileShareProvisioningState = S.String;
+const FileShareProvisioningState = S.String;
 
 /** The private endpoint connection resource. */
 export interface FileSharePropertiesPrivateEndpointConnectionsItem {
@@ -501,13 +500,13 @@ export interface FileSharePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const FileSharePropertiesPrivateEndpointConnectionsItem =
+const FileSharePropertiesPrivateEndpointConnectionsItem =
   CreatePrivateEndpointConnectionResponse as any as S.Schema<FileSharePropertiesPrivateEndpointConnectionsItem>;
 
 /** The list of associated private endpoint connections. */
 export type FileSharePropertiesPrivateEndpointConnectionsList =
   Array<FileSharePropertiesPrivateEndpointConnectionsItem>;
-export const FileSharePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const FileSharePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   FileSharePropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<FileSharePropertiesPrivateEndpointConnectionsList>;
 
@@ -550,7 +549,7 @@ export interface FileShareProperties {
   /** The list of associated private endpoint connections. */
   privateEndpointConnections?: FileSharePropertiesPrivateEndpointConnectionsList;
 }
-export const FileShareProperties = /*@__PURE__*/ S.suspend(() =>
+const FileShareProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountName: S.optional(S.String),
     hostName: S.optional(S.String),
@@ -589,7 +588,7 @@ export interface FileSharesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-export const FileSharesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FileSharesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -605,7 +604,7 @@ export const FileSharesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata */
 export type FileShareSnapshotPropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const FileShareSnapshotPropertiesInputMetadataMap =
+const FileShareSnapshotPropertiesInputMetadataMap =
   FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareSnapshotPropertiesInputMetadataMap>;
 
 /** FileShareSnapshot properties */
@@ -615,7 +614,7 @@ export interface FileShareSnapshotPropertiesInput {
   /** The metadata */
   metadata?: FileShareSnapshotPropertiesInputMetadataMap;
 }
-export const FileShareSnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FileShareSnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initiatorId: S.optional(S.String),
     metadata: S.optional(FileShareSnapshotPropertiesInputMetadataMap),
@@ -636,7 +635,7 @@ export interface FileShareSnapshotCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotPropertiesInput;
 }
-export const FileShareSnapshotCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileShareSnapshotCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -656,7 +655,7 @@ export const FileShareSnapshotCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>;
 
 export interface FileShareSnapshotCreateOrUpdateResponse {}
-export const FileShareSnapshotCreateOrUpdateResponse =
+const FileShareSnapshotCreateOrUpdateResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>;
 
 export interface GetFileShareRequest {
@@ -667,7 +666,7 @@ export interface GetFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-export const GetFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -684,7 +683,7 @@ export const GetFileShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFileShareResponseTagsMap = { [key: string]: string | undefined };
-export const GetFileShareResponseTagsMap =
+const GetFileShareResponseTagsMap =
   FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<GetFileShareResponseTagsMap>;
 
 export interface GetFileShareResponse {
@@ -703,7 +702,7 @@ export interface GetFileShareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-export const GetFileShareResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -721,7 +720,7 @@ export interface GetFileShareLimitsRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const GetFileShareLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -760,7 +759,7 @@ export interface FileShareLimits {
   /** The maximum provisioned throughput in MiB/s for a file share. */
   maxProvisionedThroughputMiBPerSec: number;
 }
-export const FileShareLimits = /*@__PURE__*/ S.suspend(() =>
+const FileShareLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxFileShares: S.Number,
     maxFileShareSnapshots: S.Number,
@@ -790,7 +789,7 @@ export interface FileShareProvisioningConstants {
   /** Guardrail scalar throughput in MiB per second. */
   guardrailThroughputScalar: number;
 }
-export const FileShareProvisioningConstants = /*@__PURE__*/ S.suspend(() =>
+const FileShareProvisioningConstants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseIOPerSec: S.Number,
     scalarIOPerSec: S.Number,
@@ -810,7 +809,7 @@ export interface FileShareLimitsOutput {
   /** The provisioning constants for the file share. */
   provisioningConstants: FileShareProvisioningConstants;
 }
-export const FileShareLimitsOutput = /*@__PURE__*/ S.suspend(() =>
+const FileShareLimitsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limits: FileShareLimits,
     provisioningConstants: FileShareProvisioningConstants,
@@ -822,7 +821,7 @@ export interface FileShareLimitsResponse {
   /** The properties of the file share limits. */
   properties: FileShareLimitsOutput;
 }
-export const FileShareLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+const FileShareLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: FileShareLimitsOutput,
   }),
@@ -833,7 +832,7 @@ export interface FileShareProvisioningRecommendationInput {
   /** The desired provisioned storage size of the share in GiB. Will be use to calculate the values of remaining provisioning parameters. */
   provisionedStorageGiB: number;
 }
-export const FileShareProvisioningRecommendationInput = /*@__PURE__*/ S.suspend(() =>
+const FileShareProvisioningRecommendationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisionedStorageGiB: S.Number,
   }),
@@ -849,7 +848,7 @@ export interface GetFileShareProvisioningRecommendationRequest {
   /** The properties of the file share provisioning recommendation input. */
   properties: FileShareProvisioningRecommendationInput;
 }
-export const GetFileShareProvisioningRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareProvisioningRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -869,7 +868,7 @@ export const GetFileShareProvisioningRecommendationRequest = /*@__PURE__*/ S.sus
 /** Redundancy options for the share. */
 export type FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
   Array<Redundancy>;
-export const FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
+const FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
   /*@__PURE__*/ S.Array(
     Redundancy,
   ) as any as S.Schema<FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList>;
@@ -883,7 +882,7 @@ export interface FileShareProvisioningRecommendationOutput {
   /** Redundancy options for the share. */
   availableRedundancyOptions: FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList;
 }
-export const FileShareProvisioningRecommendationOutput = /*@__PURE__*/ S.suspend(() =>
+const FileShareProvisioningRecommendationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisionedIOPerSec: S.Number,
     provisionedThroughputMiBPerSec: S.Number,
@@ -899,7 +898,7 @@ export interface FileShareProvisioningRecommendationResponse {
   /** The properties of the file share provisioning recommendation output. */
   properties: FileShareProvisioningRecommendationOutput;
 }
-export const FileShareProvisioningRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
+const FileShareProvisioningRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: FileShareProvisioningRecommendationOutput,
   }),
@@ -917,7 +916,7 @@ export interface GetFileShareSnapshotRequest {
   /** The name of the FileShareSnapshot */
   name: string;
 }
-export const GetFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -937,7 +936,7 @@ export const GetFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata */
 export type FileShareSnapshotPropertiesMetadataMap = { [key: string]: string | undefined };
-export const FileShareSnapshotPropertiesMetadataMap =
+const FileShareSnapshotPropertiesMetadataMap =
   FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareSnapshotPropertiesMetadataMap>;
 
 /** FileShareSnapshot properties */
@@ -949,7 +948,7 @@ export interface FileShareSnapshotProperties {
   /** The metadata */
   metadata?: FileShareSnapshotPropertiesMetadataMap;
 }
-export const FileShareSnapshotProperties = /*@__PURE__*/ S.suspend(() =>
+const FileShareSnapshotProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotTime: S.optional(S.String),
     initiatorId: S.optional(S.String),
@@ -971,7 +970,7 @@ export interface GetFileShareSnapshotResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
 }
-export const GetFileShareSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -989,7 +988,7 @@ export interface GetFileShareUsageDataRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const GetFileShareUsageDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileShareUsageDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1010,7 +1009,7 @@ export interface LiveSharesUsageData {
   /** The number of active file shares. */
   fileShareCount: number;
 }
-export const LiveSharesUsageData = /*@__PURE__*/ S.suspend(() =>
+const LiveSharesUsageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileShareCount: S.Number,
   }),
@@ -1021,7 +1020,7 @@ export interface FileShareUsageDataOutput {
   /** File share usage data for active file shares. */
   liveShares: LiveSharesUsageData;
 }
-export const FileShareUsageDataOutput = /*@__PURE__*/ S.suspend(() =>
+const FileShareUsageDataOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liveShares: LiveSharesUsageData,
   }),
@@ -1032,7 +1031,7 @@ export interface FileShareUsageDataResponse {
   /** The properties of the file share usage data. */
   properties: FileShareUsageDataOutput;
 }
-export const FileShareUsageDataResponse = /*@__PURE__*/ S.suspend(() =>
+const FileShareUsageDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: FileShareUsageDataOutput,
   }),
@@ -1050,7 +1049,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1080,7 +1079,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
@@ -1093,7 +1092,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1113,12 +1112,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -1130,7 +1129,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -1152,7 +1151,7 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1170,7 +1169,7 @@ export interface ListFileShareByParentRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListFileShareByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileShareByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1188,9 +1187,6 @@ export const ListFileShareByParentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FileShareTagsMap = { [key: string]: string | undefined };
-export const FileShareTagsMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareTagsMap>;
-
 /** File share resource */
 export interface FileShare {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1208,11 +1204,11 @@ export interface FileShare {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-export const FileShare = GetFileShareResponse as any as S.Schema<FileShare>;
+const FileShare = GetFileShareResponse as any as S.Schema<FileShare>;
 
 /** The FileShare items on this page */
 export type FileShareListResultValueList = Array<FileShare>;
-export const FileShareListResultValueList = /*@__PURE__*/ S.Array(
+const FileShareListResultValueList = /*@__PURE__*/ S.Array(
   FileShare,
 ) as any as S.Schema<FileShareListResultValueList>;
 
@@ -1223,7 +1219,7 @@ export interface FileShareListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FileShareListResult = /*@__PURE__*/ S.suspend(() =>
+const FileShareListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FileShareListResultValueList,
     nextLink: S.optional(S.String),
@@ -1234,7 +1230,7 @@ export interface ListFileShareBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListFileShareBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileShareBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1257,7 +1253,7 @@ export interface ListFileShareSnapshotRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-export const ListFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1287,7 +1283,7 @@ export interface FileShareSnapshot {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
 }
-export const FileShareSnapshot = /*@__PURE__*/ S.suspend(() =>
+const FileShareSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1299,7 +1295,7 @@ export const FileShareSnapshot = /*@__PURE__*/ S.suspend(() =>
 
 /** The FileShareSnapshot items on this page */
 export type FileShareSnapshotListResultValueList = Array<FileShareSnapshot>;
-export const FileShareSnapshotListResultValueList = /*@__PURE__*/ S.Array(
+const FileShareSnapshotListResultValueList = /*@__PURE__*/ S.Array(
   FileShareSnapshot,
 ) as any as S.Schema<FileShareSnapshotListResultValueList>;
 
@@ -1310,7 +1306,7 @@ export interface FileShareSnapshotListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FileShareSnapshotListResult = /*@__PURE__*/ S.suspend(() =>
+const FileShareSnapshotListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FileShareSnapshotListResultValueList,
     nextLink: S.optional(S.String),
@@ -1320,7 +1316,7 @@ export const FileShareSnapshotListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileShareSnapshotListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1342,7 +1338,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1353,11 +1349,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1372,7 +1368,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1384,7 +1380,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1394,7 +1390,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1409,7 +1405,7 @@ export interface ListPrivateEndpointConnectionByFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-export const ListPrivateEndpointConnectionByFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1429,13 +1425,10 @@ export const ListPrivateEndpointConnectionByFileShareRequest = /*@__PURE__*/ S.s
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   FileSharePropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnectionListResultValueItem =
-  FileSharePropertiesPrivateEndpointConnectionsItem;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<FileSharePropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   FileSharePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
@@ -1445,7 +1438,7 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -1462,7 +1455,7 @@ export interface ListPrivateLinkResourcesRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1492,7 +1485,7 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1504,7 +1497,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -1515,7 +1508,7 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1526,7 +1519,7 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFileShareRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFileShareRequestTagsMap =
+const UpdateFileShareRequestTagsMap =
   FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFileShareRequestTagsMap>;
 
 /** The updatable properties of the FileShare. */
@@ -1544,7 +1537,7 @@ export interface FileShareUpdateProperties {
   /** Gets or sets allow or disallow public network access to azure managed file share */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const FileShareUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const FileShareUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisionedStorageGiB: S.optional(S.Number),
     provisionedIOPerSec: S.optional(S.Number),
@@ -1569,7 +1562,7 @@ export interface UpdateFileShareRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareUpdateProperties;
 }
-export const UpdateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1588,9 +1581,6 @@ export const UpdateFileShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFileShareResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFileShareResponseTagsMap =
-  FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFileShareResponseTagsMap>;
-
 export interface UpdateFileShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1607,12 +1597,11 @@ export interface UpdateFileShareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
 }
-export const UpdateFileShareResponse =
-  GetFileShareResponse as any as S.Schema<UpdateFileShareResponse>;
+const UpdateFileShareResponse = GetFileShareResponse as any as S.Schema<UpdateFileShareResponse>;
 
 /** The metadata */
 export type FileShareSnapshotUpdatePropertiesMetadataMap = { [key: string]: string | undefined };
-export const FileShareSnapshotUpdatePropertiesMetadataMap =
+const FileShareSnapshotUpdatePropertiesMetadataMap =
   FileSharesCreateOrUpdateRequestTagsMap as any as S.Schema<FileShareSnapshotUpdatePropertiesMetadataMap>;
 
 /** The updatable properties of the FileShareSnapshot. */
@@ -1620,7 +1609,7 @@ export interface FileShareSnapshotUpdateProperties {
   /** The metadata */
   metadata?: FileShareSnapshotUpdatePropertiesMetadataMap;
 }
-export const FileShareSnapshotUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const FileShareSnapshotUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(FileShareSnapshotUpdatePropertiesMetadataMap),
   }),
@@ -1640,7 +1629,7 @@ export interface UpdateFileShareSnapshotRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotUpdateProperties;
 }
-export const UpdateFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileShareSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1671,7 +1660,7 @@ export interface UpdateFileShareSnapshotResponse {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
 }
-export const UpdateFileShareSnapshotResponse =
+const UpdateFileShareSnapshotResponse =
   GetFileShareSnapshotResponse as any as S.Schema<UpdateFileShareSnapshotResponse>;
 
 export type CheckFileShareNameAvailabilityError = AzureOpError;

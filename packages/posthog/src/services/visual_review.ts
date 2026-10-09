@@ -41,7 +41,7 @@ export interface CreateVisualReviewReposRequest {
   repo_full_name?: string;
   repo_external_id?: number | null;
 }
-export const CreateVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo_full_name: S.optional(S.String),
@@ -54,7 +54,7 @@ export const CreateVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVisualReviewReposRequest>;
 
 export type RepoBaselineFilePathsMap = { [key: string]: string | undefined };
-export const RepoBaselineFilePathsMap = /*@__PURE__*/ S.Record(
+const RepoBaselineFilePathsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<RepoBaselineFilePathsMap>;
@@ -69,7 +69,7 @@ export interface Repo {
   debt_digest_enabled?: boolean;
   created_at?: string;
 }
-export const Repo = /*@__PURE__*/ S.suspend(() =>
+const Repo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     team_id: S.optional(S.Number),
@@ -98,7 +98,7 @@ export interface CreateVisualReviewReposQuarantineRequest {
   /** Post the quarantine to the Slack channel of the team that owns the story, naming the user who quarantined it. Only Storybook snapshots have an owning team. Best effort: skipped when the story has no owning team or the project has no Slack integration. */
   notify_owners?: boolean;
 }
-export const CreateVisualReviewReposQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewReposQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -124,7 +124,7 @@ export interface UserBasicInfo {
   first_name?: string;
   email?: string;
 }
-export const UserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const UserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     first_name: S.optional(S.String),
@@ -139,7 +139,7 @@ export interface QuarantineSourceRun {
   created_at: string;
   pr_number?: number | null;
 }
-export const QuarantineSourceRun = /*@__PURE__*/ S.suspend(() =>
+const QuarantineSourceRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     branch: S.String,
@@ -162,7 +162,7 @@ export interface QuarantinedIdentifierEntry {
   created_at?: string;
   updated_at?: string;
 }
-export const QuarantinedIdentifierEntry = /*@__PURE__*/ S.suspend(() =>
+const QuarantinedIdentifierEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_by: S.optional(S.NullOr(UserBasicInfo)),
     source_run: S.optional(S.NullOr(QuarantineSourceRun)),
@@ -187,7 +187,7 @@ export interface CreateVisualReviewReposQuarantineExpireRequest {
   /** Snapshot identifier to unquarantine */
   identifier: string;
 }
-export const CreateVisualReviewReposQuarantineExpireRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewReposQuarantineExpireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -205,14 +205,14 @@ export const CreateVisualReviewReposQuarantineExpireRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateVisualReviewReposQuarantineExpireRequest>;
 
 export interface CreateVisualReviewReposQuarantineExpireResponse {}
-export const CreateVisualReviewReposQuarantineExpireResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewReposQuarantineExpireResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateVisualReviewReposQuarantineExpireResponse",
 }) as any as S.Schema<CreateVisualReviewReposQuarantineExpireResponse>;
 
 export type SnapshotManifestItemMetadataMap = { [key: string]: unknown | undefined };
-export const SnapshotManifestItemMetadataMap = /*@__PURE__*/ S.Record(
+const SnapshotManifestItemMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SnapshotManifestItemMetadataMap>;
@@ -224,7 +224,7 @@ export interface SnapshotManifestItem {
   height?: number | null;
   metadata?: SnapshotManifestItemMetadataMap;
 }
-export const SnapshotManifestItem = /*@__PURE__*/ S.suspend(() =>
+const SnapshotManifestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     content_hash: S.optional(S.String),
@@ -235,21 +235,21 @@ export const SnapshotManifestItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotManifestItem" }) as any as S.Schema<SnapshotManifestItem>;
 
 export type CreateVisualReviewRunRequestSnapshotsList = Array<SnapshotManifestItem>;
-export const CreateVisualReviewRunRequestSnapshotsList = /*@__PURE__*/ S.Array(
+const CreateVisualReviewRunRequestSnapshotsList = /*@__PURE__*/ S.Array(
   SnapshotManifestItem,
 ) as any as S.Schema<CreateVisualReviewRunRequestSnapshotsList>;
 
 export type CreateVisualReviewRunRequestBaselineHashesMap = { [key: string]: string | undefined };
-export const CreateVisualReviewRunRequestBaselineHashesMap =
+const CreateVisualReviewRunRequestBaselineHashesMap =
   RepoBaselineFilePathsMap as any as S.Schema<CreateVisualReviewRunRequestBaselineHashesMap>;
 
 export type CreateVisualReviewRunRequestRemovedIdentifiersList = Array<string>;
-export const CreateVisualReviewRunRequestRemovedIdentifiersList = /*@__PURE__*/ S.Array(
+const CreateVisualReviewRunRequestRemovedIdentifiersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateVisualReviewRunRequestRemovedIdentifiersList>;
 
 export type CreateVisualReviewRunRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateVisualReviewRunRequestMetadataMap =
+const CreateVisualReviewRunRequestMetadataMap =
   SnapshotManifestItemMetadataMap as any as S.Schema<CreateVisualReviewRunRequestMetadataMap>;
 
 export interface CreateVisualReviewRunRequest {
@@ -268,7 +268,7 @@ export interface CreateVisualReviewRunRequest {
   metadata?: CreateVisualReviewRunRequestMetadataMap;
   is_partial?: boolean;
 }
-export const CreateVisualReviewRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo_id: S.optional(S.String),
@@ -291,15 +291,14 @@ export const CreateVisualReviewRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVisualReviewRunRequest>;
 
 export type UploadTargetFieldsMap = { [key: string]: string | undefined };
-export const UploadTargetFieldsMap =
-  RepoBaselineFilePathsMap as any as S.Schema<UploadTargetFieldsMap>;
+const UploadTargetFieldsMap = RepoBaselineFilePathsMap as any as S.Schema<UploadTargetFieldsMap>;
 
 export interface UploadTarget {
   content_hash?: string;
   url?: string;
   fields?: UploadTargetFieldsMap;
 }
-export const UploadTarget = /*@__PURE__*/ S.suspend(() =>
+const UploadTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_hash: S.optional(S.String),
     url: S.optional(S.String),
@@ -308,7 +307,7 @@ export const UploadTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadTarget" }) as any as S.Schema<UploadTarget>;
 
 export type CreateRunResultUploadsList = Array<UploadTarget>;
-export const CreateRunResultUploadsList = /*@__PURE__*/ S.Array(
+const CreateRunResultUploadsList = /*@__PURE__*/ S.Array(
   UploadTarget,
 ) as any as S.Schema<CreateRunResultUploadsList>;
 
@@ -316,7 +315,7 @@ export interface CreateRunResult {
   run_id?: string;
   uploads?: CreateRunResultUploadsList;
 }
-export const CreateRunResult = /*@__PURE__*/ S.suspend(() =>
+const CreateRunResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.optional(S.String),
     uploads: S.optional(CreateRunResultUploadsList),
@@ -330,7 +329,7 @@ export interface CreateVisualReviewRunsCompleteRequest {
   /** Numeric GitHub Actions job ID of the CI job that completes the run, from `${{ job.check_run_id }}`. Recompute re-runs this job, so it re-reads the verdict without capturing the snapshots again. Omit it outside GitHub Actions. */
   check_run_id?: string;
 }
-export const CreateVisualReviewRunsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewRunsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -348,10 +347,10 @@ export const CreateVisualReviewRunsCompleteRequest = /*@__PURE__*/ S.suspend(() 
 
 /** * `review` - review * `observe` - observe */
 export type PurposeEnum = "review" | "observe";
-export const PurposeEnum = S.String;
+const PurposeEnum = S.String;
 
 export type SearchMatchTypeEnum = "exact" | "similar";
-export const SearchMatchTypeEnum = S.String;
+const SearchMatchTypeEnum = S.String;
 
 export interface RunSummary {
   total?: number;
@@ -362,7 +361,7 @@ export interface RunSummary {
   unresolved?: number;
   tolerated_matched?: number;
 }
-export const RunSummary = /*@__PURE__*/ S.suspend(() =>
+const RunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.Number),
     changed: S.optional(S.Number),
@@ -375,7 +374,7 @@ export const RunSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunSummary" }) as any as S.Schema<RunSummary>;
 
 export type RunMetadataMap = { [key: string]: unknown | undefined };
-export const RunMetadataMap = SnapshotManifestItemMetadataMap as any as S.Schema<RunMetadataMap>;
+const RunMetadataMap = SnapshotManifestItemMetadataMap as any as S.Schema<RunMetadataMap>;
 
 export interface Run {
   approved_by?: UserBasicInfo | null;
@@ -400,7 +399,7 @@ export interface Run {
   superseded_by_id?: string | null;
   metadata?: RunMetadataMap;
 }
-export const Run = /*@__PURE__*/ S.suspend(() =>
+const Run = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approved_by: S.optional(S.NullOr(UserBasicInfo)),
     purpose: S.optional(PurposeEnum),
@@ -435,7 +434,7 @@ export interface CreateVisualReviewRunsFinalizeRequest {
   /** Whether to embed the before/after snapshot images in the post-approval PR comment. The comment itself is posted when the repo has PR comments enabled and `commit_to_github` is true: it updates the run's review prompt when the run has one, and posts a new comment when it does not. This flag only controls the images. Defaults false -- the comment stays a text summary unless the reviewer opts in to attach the snapshots. */
   add_images_to_comment_on_pr?: boolean;
 }
-export const CreateVisualReviewRunsFinalizeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewRunsFinalizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -457,7 +456,7 @@ export interface FinalizeResult {
   run: Run;
   baseline_content: string;
 }
-export const FinalizeResult = /*@__PURE__*/ S.suspend(() =>
+const FinalizeResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run: Run,
     baseline_content: S.String,
@@ -471,7 +470,7 @@ export interface CreateVisualReviewRunsLiftOnMergeRequest {
   /** Identifier of a quarantined snapshot in this run, such as a Storybook story ID. The snapshot's picture is what a default-branch run must render for the quarantine to lift. An unchanged snapshot uses its baseline. A changed or new snapshot must be approved first, because requesting a lift never approves a picture. */
   identifier: string;
 }
-export const CreateVisualReviewRunsLiftOnMergeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewRunsLiftOnMergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -489,7 +488,7 @@ export const CreateVisualReviewRunsLiftOnMergeRequest = /*@__PURE__*/ S.suspend(
 
 /** * `pending` - pending * `applied` - applied * `cancelled` - cancelled * `superseded` - superseded */
 export type QuarantineLiftStateEnum = "pending" | "applied" | "cancelled" | "superseded";
-export const QuarantineLiftStateEnum = S.String;
+const QuarantineLiftStateEnum = S.String;
 
 export interface QuarantineLiftEntry {
   /** UUID of the lift request. */
@@ -525,7 +524,7 @@ export interface QuarantineLiftEntry {
   /** Who requested the lift: `human` for a person in the UI, `agent` for an agent through MCP. */
   source: string;
 }
-export const QuarantineLiftEntry = /*@__PURE__*/ S.suspend(() =>
+const QuarantineLiftEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     quarantine_id: S.String,
@@ -551,7 +550,7 @@ export interface CreateVisualReviewRunsRecomputeRequest {
   project_id: string;
   id: string;
 }
-export const CreateVisualReviewRunsRecomputeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewRunsRecomputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -573,7 +572,7 @@ export interface RecomputeResult {
   ci_rerun_triggered?: boolean;
   ci_rerun_error?: string | null;
 }
-export const RecomputeResult = /*@__PURE__*/ S.suspend(() =>
+const RecomputeResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run: S.optional(Run),
     counts_changed: S.optional(S.Boolean),
@@ -590,7 +589,7 @@ export interface CreateVisualReviewRunsTolerateRequest {
   /** UUID of the changed snapshot to mark as a known tolerated alternate. Future runs that produce the same alternate hash for this identifier will not be flagged as changes. */
   snapshot_id?: string;
 }
-export const CreateVisualReviewRunsTolerateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisualReviewRunsTolerateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -613,7 +612,7 @@ export interface Artifact {
   height?: number | null;
   download_url?: string | null;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
+const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     content_hash: S.optional(S.String),
@@ -632,7 +631,7 @@ export interface DiffCluster {
   centroid_x: number;
   centroid_y: number;
 }
-export const DiffCluster = /*@__PURE__*/ S.suspend(() =>
+const DiffCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.Number,
     y: S.Number,
@@ -645,7 +644,7 @@ export const DiffCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiffCluster" }) as any as S.Schema<DiffCluster>;
 
 export type ClusterSummaryItemsList = Array<DiffCluster>;
-export const ClusterSummaryItemsList = /*@__PURE__*/ S.Array(
+const ClusterSummaryItemsList = /*@__PURE__*/ S.Array(
   DiffCluster,
 ) as any as S.Schema<ClusterSummaryItemsList>;
 
@@ -654,7 +653,7 @@ export interface ClusterSummary {
   total: number;
   truncated: boolean;
 }
-export const ClusterSummary = /*@__PURE__*/ S.suspend(() =>
+const ClusterSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ClusterSummaryItemsList,
     total: S.Number,
@@ -664,7 +663,7 @@ export const ClusterSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** * `inserted` - inserted * `deleted` - deleted */
 export type ShiftBandKindEnum = "inserted" | "deleted";
-export const ShiftBandKindEnum = S.String;
+const ShiftBandKindEnum = S.String;
 
 export interface ShiftBand {
   /** First row of the band, in current-image coordinates. */
@@ -674,7 +673,7 @@ export interface ShiftBand {
   /** 'inserted' when the current image gained these rows, 'deleted' when it lost them. A deleted band has no rows of its own in the current image, so its y is the seam the removed rows left behind. * `inserted` - inserted * `deleted` - deleted */
   kind: ShiftBandKindEnum;
 }
-export const ShiftBand = /*@__PURE__*/ S.suspend(() =>
+const ShiftBand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     y: S.Number,
     rows: S.Number,
@@ -684,9 +683,7 @@ export const ShiftBand = /*@__PURE__*/ S.suspend(() =>
 
 /** Where the shift happened, in current-image coordinates. */
 export type RowShiftBandsList = Array<ShiftBand>;
-export const RowShiftBandsList = /*@__PURE__*/ S.Array(
-  ShiftBand,
-) as any as S.Schema<RowShiftBandsList>;
+const RowShiftBandsList = /*@__PURE__*/ S.Array(ShiftBand) as any as S.Schema<RowShiftBandsList>;
 
 export interface RowShift {
   /** Where the shift happened, in current-image coordinates. */
@@ -700,7 +697,7 @@ export interface RowShift {
   /** Percentage of pixels that differ without alignment, which is what the shift would have cost. */
   raw_diff_percentage: number;
 }
-export const RowShift = /*@__PURE__*/ S.suspend(() =>
+const RowShift = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bands: RowShiftBandsList,
     inserted_rows: S.Number,
@@ -711,8 +708,7 @@ export const RowShift = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RowShift" }) as any as S.Schema<RowShift>;
 
 export type SnapshotMetadataMap = { [key: string]: unknown | undefined };
-export const SnapshotMetadataMap =
-  SnapshotManifestItemMetadataMap as any as S.Schema<SnapshotMetadataMap>;
+const SnapshotMetadataMap = SnapshotManifestItemMetadataMap as any as S.Schema<SnapshotMetadataMap>;
 
 export interface Snapshot {
   current_artifact?: Artifact | null;
@@ -738,7 +734,7 @@ export interface Snapshot {
   change_kind?: string;
   size_mismatch?: boolean;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_artifact: S.optional(S.NullOr(Artifact)),
     baseline_artifact: S.optional(S.NullOr(Artifact)),
@@ -770,7 +766,7 @@ export interface GetVisualReviewReposRequest {
   project_id: string;
   id: string;
 }
-export const GetVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -790,7 +786,7 @@ export interface GetVisualReviewReposBaselineRequest {
   project_id: string;
   id: string;
 }
-export const GetVisualReviewReposBaselineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewReposBaselineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -814,7 +810,7 @@ export interface BaselineQuarantineSummary {
   expires_at: string | null;
   created_at: string;
 }
-export const BaselineQuarantineSummary = /*@__PURE__*/ S.suspend(() =>
+const BaselineQuarantineSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_by: S.optional(S.NullOr(UserBasicInfo)),
     source_run: S.optional(S.NullOr(QuarantineSourceRun)),
@@ -846,7 +842,7 @@ export interface BaselineEntry {
   baseline_change_count: number;
   recent_drift_avg: number | null;
 }
-export const BaselineEntry = /*@__PURE__*/ S.suspend(() =>
+const BaselineEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quarantine: S.optional(S.NullOr(BaselineQuarantineSummary)),
     active_variants_current_baseline: S.Number,
@@ -866,12 +862,12 @@ export const BaselineEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BaselineEntry" }) as any as S.Schema<BaselineEntry>;
 
 export type BaselineOverviewEntriesList = Array<BaselineEntry>;
-export const BaselineOverviewEntriesList = /*@__PURE__*/ S.Array(
+const BaselineOverviewEntriesList = /*@__PURE__*/ S.Array(
   BaselineEntry,
 ) as any as S.Schema<BaselineOverviewEntriesList>;
 
 export type BaselineTotalsByRunTypeMap = { [key: string]: number | undefined };
-export const BaselineTotalsByRunTypeMap = /*@__PURE__*/ S.Record(
+const BaselineTotalsByRunTypeMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<BaselineTotalsByRunTypeMap>;
@@ -885,7 +881,7 @@ export interface BaselineTotals {
   frequently_tolerated: number;
   currently_quarantined: number;
 }
-export const BaselineTotals = /*@__PURE__*/ S.suspend(() =>
+const BaselineTotals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     by_run_type: BaselineTotalsByRunTypeMap,
     variant_pileups: S.Number,
@@ -902,7 +898,7 @@ export interface BaselineOverview {
   truncated: boolean;
   generated_at: string;
 }
-export const BaselineOverview = /*@__PURE__*/ S.suspend(() =>
+const BaselineOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: BaselineOverviewEntriesList,
     totals: BaselineTotals,
@@ -916,7 +912,7 @@ export interface GetVisualReviewReposFlakinessRequest {
   project_id: string;
   id: string;
 }
-export const GetVisualReviewReposFlakinessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewReposFlakinessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -933,18 +929,18 @@ export const GetVisualReviewReposFlakinessRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Gate-failing runs per day over the last 30 days, oldest first. Always that length, so a fixed time axis can be rendered. */
 export type FlakinessEntryDailyHardCountsList = Array<number>;
-export const FlakinessEntryDailyHardCountsList = /*@__PURE__*/ S.Array(
+const FlakinessEntryDailyHardCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FlakinessEntryDailyHardCountsList>;
 
 /** Absorbed runs per day over the same 30 days, oldest first. */
 export type FlakinessEntryDailySoftCountsList = Array<number>;
-export const FlakinessEntryDailySoftCountsList =
+const FlakinessEntryDailySoftCountsList =
   FlakinessEntryDailyHardCountsList as any as S.Schema<FlakinessEntryDailySoftCountsList>;
 
 /** * `broken` - broken * `unstable` - unstable * `at_risk` - at_risk * `noisy` - noisy * `clean` - clean */
 export type FlakinessStateEnum = "broken" | "unstable" | "at_risk" | "noisy" | "clean";
-export const FlakinessStateEnum = S.String;
+const FlakinessStateEnum = S.String;
 
 export interface FlakinessEntry {
   /** Distinct alternate hashes the classifier can still match for this snapshot's current baseline. Reads as how many different images this snapshot is currently allowed to produce. Resets when the baseline moves, because tolerations recorded against an old baseline hash can never match again. */
@@ -991,7 +987,7 @@ export interface FlakinessEntry {
   height: number | null;
   is_quarantined: boolean;
 }
-export const FlakinessEntry = /*@__PURE__*/ S.suspend(() =>
+const FlakinessEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variant_count: S.Number,
     hard_count: S.Number,
@@ -1022,13 +1018,13 @@ export const FlakinessEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlakinessEntry" }) as any as S.Schema<FlakinessEntry>;
 
 export type FlakinessOverviewEntriesList = Array<FlakinessEntry>;
-export const FlakinessOverviewEntriesList = /*@__PURE__*/ S.Array(
+const FlakinessOverviewEntriesList = /*@__PURE__*/ S.Array(
   FlakinessEntry,
 ) as any as S.Schema<FlakinessOverviewEntriesList>;
 
 /** Listed identifiers per run type, so one suite's noise can be told from another's. */
 export type FlakinessTotalsByRunTypeMap = { [key: string]: number | undefined };
-export const FlakinessTotalsByRunTypeMap =
+const FlakinessTotalsByRunTypeMap =
   BaselineTotalsByRunTypeMap as any as S.Schema<FlakinessTotalsByRunTypeMap>;
 
 export interface FlakinessTotals {
@@ -1051,7 +1047,7 @@ export interface FlakinessTotals {
   quarantined: number;
   needs_decision: number;
 }
-export const FlakinessTotals = /*@__PURE__*/ S.suspend(() =>
+const FlakinessTotals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listed: S.Number,
     tracked: S.Number,
@@ -1072,7 +1068,7 @@ export interface FlakinessOverview {
   truncated: boolean;
   generated_at: string;
 }
-export const FlakinessOverview = /*@__PURE__*/ S.suspend(() =>
+const FlakinessOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: FlakinessOverviewEntriesList,
     totals: FlakinessTotals,
@@ -1086,7 +1082,7 @@ export interface GetVisualReviewReposRunsCountRequest {
   project_id: string;
   repo_id: string;
 }
-export const GetVisualReviewReposRunsCountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewReposRunsCountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo_id: S.String.pipe(T.Label()),
@@ -1107,7 +1103,7 @@ export interface ReviewStateCounts {
   processing?: number;
   stale?: number;
 }
-export const ReviewStateCounts = /*@__PURE__*/ S.suspend(() =>
+const ReviewStateCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     needs_review: S.optional(S.Number),
     clean: S.optional(S.Number),
@@ -1124,7 +1120,7 @@ export interface GetVisualReviewReposThumbnailRequest {
   /** Narrow the lookup to one run type. The same identifier under two run types is two different images, so omit this only when the caller shows one run type. */
   run_type?: string;
 }
-export const GetVisualReviewReposThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewReposThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1142,7 +1138,7 @@ export const GetVisualReviewReposThumbnailRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetVisualReviewReposThumbnailRequest>;
 
 export interface GetVisualReviewReposThumbnailResponse {}
-export const GetVisualReviewReposThumbnailResponse =
+const GetVisualReviewReposThumbnailResponse =
   CreateVisualReviewReposQuarantineExpireResponse as any as S.Schema<GetVisualReviewReposThumbnailResponse>;
 
 export interface GetVisualReviewReposTolerationPileupRequest {
@@ -1162,7 +1158,7 @@ export interface GetVisualReviewReposTolerationPileupRequest {
   /** How many days back to count tolerations. Defaults to 30. */
   window_days?: number;
 }
-export const GetVisualReviewReposTolerationPileupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewReposTolerationPileupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1195,7 +1191,7 @@ export interface TolerationPileupEntry {
   /** Whether an active quarantine already covers this snapshot, so it no longer blocks pull requests. */
   is_quarantined: boolean;
 }
-export const TolerationPileupEntry = /*@__PURE__*/ S.suspend(() =>
+const TolerationPileupEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     run_type: S.String,
@@ -1207,7 +1203,7 @@ export const TolerationPileupEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching snapshots, most manual tolerations first. */
 export type TolerationPileupsEntriesList = Array<TolerationPileupEntry>;
-export const TolerationPileupsEntriesList = /*@__PURE__*/ S.Array(
+const TolerationPileupsEntriesList = /*@__PURE__*/ S.Array(
   TolerationPileupEntry,
 ) as any as S.Schema<TolerationPileupsEntriesList>;
 
@@ -1227,7 +1223,7 @@ export interface TolerationPileups {
   /** When the list was computed. */
   generated_at: string;
 }
-export const TolerationPileups = /*@__PURE__*/ S.suspend(() =>
+const TolerationPileups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: TolerationPileupsEntriesList,
     window_days: S.Number,
@@ -1244,7 +1240,7 @@ export interface GetVisualReviewRunRequest {
   project_id: string;
   id: string;
 }
-export const GetVisualReviewRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1263,7 +1259,7 @@ export interface GetVisualReviewRunsCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetVisualReviewRunsCountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisualReviewRunsCountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1285,7 +1281,7 @@ export interface ListVisualReviewReposRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1298,7 +1294,7 @@ export const ListVisualReviewReposRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVisualReviewReposRequest>;
 
 export type PaginatedRepoListResultsList = Array<Repo>;
-export const PaginatedRepoListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedRepoListResultsList = /*@__PURE__*/ S.Array(
   Repo,
 ) as any as S.Schema<PaginatedRepoListResultsList>;
 
@@ -1308,7 +1304,7 @@ export interface PaginatedRepoList {
   previous?: string | null;
   results?: PaginatedRepoListResultsList;
 }
-export const PaginatedRepoList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedRepoList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1330,7 +1326,7 @@ export interface ListVisualReviewReposQuarantineRequest {
   /** Filter by run type */
   run_type?: string;
 }
-export const ListVisualReviewReposQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewReposQuarantineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1350,7 +1346,7 @@ export const ListVisualReviewReposQuarantineRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListVisualReviewReposQuarantineRequest>;
 
 export type PaginatedQuarantinedIdentifierEntryListResultsList = Array<QuarantinedIdentifierEntry>;
-export const PaginatedQuarantinedIdentifierEntryListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedQuarantinedIdentifierEntryListResultsList = /*@__PURE__*/ S.Array(
   QuarantinedIdentifierEntry,
 ) as any as S.Schema<PaginatedQuarantinedIdentifierEntryListResultsList>;
 
@@ -1360,7 +1356,7 @@ export interface PaginatedQuarantinedIdentifierEntryList {
   previous?: string | null;
   results?: PaginatedQuarantinedIdentifierEntryListResultsList;
 }
-export const PaginatedQuarantinedIdentifierEntryList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedQuarantinedIdentifierEntryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1384,7 +1380,7 @@ export interface ListVisualReviewReposRunsRequest {
   /** Free-text search over branch, commit SHA, run type, and PR number */
   search?: string;
 }
-export const ListVisualReviewReposRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewReposRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo_id: S.String.pipe(T.Label()),
@@ -1404,7 +1400,7 @@ export const ListVisualReviewReposRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVisualReviewReposRunsRequest>;
 
 export type PaginatedRunListResultsList = Array<Run>;
-export const PaginatedRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedRunListResultsList = /*@__PURE__*/ S.Array(
   Run,
 ) as any as S.Schema<PaginatedRunListResultsList>;
 
@@ -1414,7 +1410,7 @@ export interface PaginatedRunList {
   previous?: string | null;
   results?: PaginatedRunListResultsList;
 }
-export const PaginatedRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1436,7 +1432,7 @@ export interface ListVisualReviewReposSnapshotsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListVisualReviewReposSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewReposSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repo_id: S.String.pipe(T.Label()),
@@ -1471,7 +1467,7 @@ export interface SnapshotHistoryEntry {
   change_kind?: string;
   size_mismatch?: boolean;
 }
-export const SnapshotHistoryEntry = /*@__PURE__*/ S.suspend(() =>
+const SnapshotHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_artifact: S.optional(S.NullOr(Artifact)),
     row_shift: S.optional(S.NullOr(RowShift)),
@@ -1491,7 +1487,7 @@ export const SnapshotHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotHistoryEntry" }) as any as S.Schema<SnapshotHistoryEntry>;
 
 export type PaginatedSnapshotHistoryEntryListResultsList = Array<SnapshotHistoryEntry>;
-export const PaginatedSnapshotHistoryEntryListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSnapshotHistoryEntryListResultsList = /*@__PURE__*/ S.Array(
   SnapshotHistoryEntry,
 ) as any as S.Schema<PaginatedSnapshotHistoryEntryListResultsList>;
 
@@ -1501,7 +1497,7 @@ export interface PaginatedSnapshotHistoryEntryList {
   previous?: string | null;
   results?: PaginatedSnapshotHistoryEntryListResultsList;
 }
-export const PaginatedSnapshotHistoryEntryList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSnapshotHistoryEntryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1530,7 +1526,7 @@ export interface ListVisualReviewRunsRequest {
   /** Free-text search over branch, commit SHA, run type, and PR number */
   search?: string;
 }
-export const ListVisualReviewRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch: S.optional(S.String.pipe(T.Query())),
@@ -1552,7 +1548,7 @@ export interface ListVisualReviewRunsQuarantineLiftsRequest {
   project_id: string;
   id: string;
 }
-export const ListVisualReviewRunsQuarantineLiftsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewRunsQuarantineLiftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1568,13 +1564,13 @@ export const ListVisualReviewRunsQuarantineLiftsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListVisualReviewRunsQuarantineLiftsRequest>;
 
 export type ListVisualReviewRunsQuarantineLiftsResponseBodyList = Array<QuarantineLiftEntry>;
-export const ListVisualReviewRunsQuarantineLiftsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVisualReviewRunsQuarantineLiftsResponseBodyList = /*@__PURE__*/ S.Array(
   QuarantineLiftEntry,
 ) as any as S.Schema<ListVisualReviewRunsQuarantineLiftsResponseBodyList>;
 
 export type ListVisualReviewRunsQuarantineLiftsResponse =
   ListVisualReviewRunsQuarantineLiftsResponseBodyList;
-export const ListVisualReviewRunsQuarantineLiftsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewRunsQuarantineLiftsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVisualReviewRunsQuarantineLiftsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVisualReviewRunsQuarantineLiftsResponse",
@@ -1592,7 +1588,7 @@ export interface ListVisualReviewRunsSnapshotHistoryRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListVisualReviewRunsSnapshotHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewRunsSnapshotHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1627,7 +1623,7 @@ export interface ListVisualReviewRunsSnapshotsRequest {
   /** Return only the snapshot with this id, read from the `id` field of a snapshot in the run. Use it to fetch one snapshot without listing the whole run. */
   snapshot_id?: string;
 }
-export const ListVisualReviewRunsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewRunsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1649,7 +1645,7 @@ export const ListVisualReviewRunsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListVisualReviewRunsSnapshotsRequest>;
 
 export type PaginatedSnapshotListResultsList = Array<Snapshot>;
-export const PaginatedSnapshotListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSnapshotListResultsList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<PaginatedSnapshotListResultsList>;
 
@@ -1661,7 +1657,7 @@ export interface PaginatedSnapshotList {
   /** Count of this run's snapshots that match the other filters and whose identifier is currently quarantined. Excluded from results unless include_quarantined=true is passed. */
   quarantined_count?: number;
 }
-export const PaginatedSnapshotList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSnapshotList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1683,7 +1679,7 @@ export interface ListVisualReviewRunsToleratedHashesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListVisualReviewRunsToleratedHashesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisualReviewRunsToleratedHashesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1710,7 +1706,7 @@ export interface ToleratedHashEntry {
   created_at?: string;
   source_run_id?: string | null;
 }
-export const ToleratedHashEntry = /*@__PURE__*/ S.suspend(() =>
+const ToleratedHashEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     alternate_hash: S.optional(S.String),
@@ -1723,7 +1719,7 @@ export const ToleratedHashEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToleratedHashEntry" }) as any as S.Schema<ToleratedHashEntry>;
 
 export type PaginatedToleratedHashEntryListResultsList = Array<ToleratedHashEntry>;
-export const PaginatedToleratedHashEntryListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedToleratedHashEntryListResultsList = /*@__PURE__*/ S.Array(
   ToleratedHashEntry,
 ) as any as S.Schema<PaginatedToleratedHashEntryListResultsList>;
 
@@ -1733,7 +1729,7 @@ export interface PaginatedToleratedHashEntryList {
   previous?: string | null;
   results?: PaginatedToleratedHashEntryListResultsList;
 }
-export const PaginatedToleratedHashEntryList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedToleratedHashEntryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1747,7 +1743,7 @@ export const PaginatedToleratedHashEntryList = /*@__PURE__*/ S.suspend(() =>
 export type UpdateVisualReviewReposPartialRequestBaselineFilePathsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateVisualReviewReposPartialRequestBaselineFilePathsMap =
+const UpdateVisualReviewReposPartialRequestBaselineFilePathsMap =
   RepoBaselineFilePathsMap as any as S.Schema<UpdateVisualReviewReposPartialRequestBaselineFilePathsMap>;
 
 export interface UpdateVisualReviewReposPartialRequest {
@@ -1760,7 +1756,7 @@ export interface UpdateVisualReviewReposPartialRequest {
   /** Post the visual review debt digest to the Slack channels of the teams that own the snapshots. Off by default. The digest goes out every Monday morning. */
   debt_digest_enabled?: boolean | null;
 }
-export const UpdateVisualReviewReposPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVisualReviewReposPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1781,13 +1777,13 @@ export const UpdateVisualReviewReposPartialRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateVisualReviewReposPartialRequest>;
 
 export type VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList = Array<SnapshotManifestItem>;
-export const VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList =
+const VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList =
   CreateVisualReviewRunRequestSnapshotsList as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList>;
 
 export type VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap = {
   [key: string]: string | undefined;
 };
-export const VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap =
+const VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap =
   RepoBaselineFilePathsMap as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap>;
 
 export interface VisualReviewRunsAddSnapshotsCreateRequest {
@@ -1799,7 +1795,7 @@ export interface VisualReviewRunsAddSnapshotsCreateRequest {
   /** SHA-256 of the story-to-file map the CLI built from the Storybook index.json of this run's build. Every shard of a run sends the same value. Empty when the run sends no map. */
   story_index_hash?: string;
 }
-export const VisualReviewRunsAddSnapshotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisualReviewRunsAddSnapshotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1818,7 +1814,7 @@ export const VisualReviewRunsAddSnapshotsCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequest>;
 
 export type AddSnapshotsResultUploadsList = Array<UploadTarget>;
-export const AddSnapshotsResultUploadsList =
+const AddSnapshotsResultUploadsList =
   CreateRunResultUploadsList as any as S.Schema<AddSnapshotsResultUploadsList>;
 
 export interface AddSnapshotsResult {
@@ -1827,7 +1823,7 @@ export interface AddSnapshotsResult {
   added?: number;
   uploads?: AddSnapshotsResultUploadsList;
 }
-export const AddSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
+const AddSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     story_index_upload: S.optional(S.NullOr(UploadTarget)),
     added: S.optional(S.Number),
@@ -1841,7 +1837,7 @@ export interface ApproveSnapshotInput {
   /** The content hash of the new baseline image to record for this identifier. */
   new_hash?: string;
 }
-export const ApproveSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+const ApproveSnapshotInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     new_hash: S.optional(S.String),
@@ -1850,7 +1846,7 @@ export const ApproveSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) -- it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
 export type VisualReviewRunsApproveCreateRequestSnapshotsList = Array<ApproveSnapshotInput>;
-export const VisualReviewRunsApproveCreateRequestSnapshotsList = /*@__PURE__*/ S.Array(
+const VisualReviewRunsApproveCreateRequestSnapshotsList = /*@__PURE__*/ S.Array(
   ApproveSnapshotInput,
 ) as any as S.Schema<VisualReviewRunsApproveCreateRequestSnapshotsList>;
 
@@ -1861,7 +1857,7 @@ export interface VisualReviewRunsApproveCreateRequest {
   /** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) -- it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
   snapshots: VisualReviewRunsApproveCreateRequestSnapshotsList;
 }
-export const VisualReviewRunsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisualReviewRunsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1884,7 +1880,7 @@ export interface VisualReviewRunsQuarantineLiftsCancelCreateRequest {
   /** UUID of a pending lift request for this run's pull request. */
   request_id: string;
 }
-export const VisualReviewRunsQuarantineLiftsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisualReviewRunsQuarantineLiftsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1901,7 +1897,7 @@ export const VisualReviewRunsQuarantineLiftsCancelCreateRequest = /*@__PURE__*/ 
 }) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateRequest>;
 
 export interface VisualReviewRunsQuarantineLiftsCancelCreateResponse {}
-export const VisualReviewRunsQuarantineLiftsCancelCreateResponse =
+const VisualReviewRunsQuarantineLiftsCancelCreateResponse =
   CreateVisualReviewReposQuarantineExpireResponse as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateResponse>;
 
 export type CreateVisualReviewReposError = BadRequest | Forbidden | NotFound | PosthogOpError;

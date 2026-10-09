@@ -55,7 +55,7 @@ export interface CreateShipmentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateShipmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShipmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     payment_id: S.String,
@@ -76,7 +76,7 @@ export type ShipmentCheckpointStatus =
   | "failure"
   | "cancelled"
   | "error";
-export const ShipmentCheckpointStatus = S.String;
+const ShipmentCheckpointStatus = S.String;
 
 export interface ShipmentCheckpoint {
   /** Where the carrier recorded the scan, such as `PHILADELPHIA, PA`. Null when the carrier sent none. */
@@ -88,7 +88,7 @@ export interface ShipmentCheckpoint {
   /** When the carrier recorded the scan, as an ISO 8601 timestamp. Null when the carrier sent no scan time. */
   timestamp: string | null;
 }
-export const ShipmentCheckpoint = /*@__PURE__*/ S.suspend(() =>
+const ShipmentCheckpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.NullOr(S.String),
     message: S.NullOr(S.String),
@@ -98,7 +98,7 @@ export const ShipmentCheckpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShipmentCheckpoint" }) as any as S.Schema<ShipmentCheckpoint>;
 
 export type ShipmentCheckpointsList = Array<ShipmentCheckpoint>;
-export const ShipmentCheckpointsList = /*@__PURE__*/ S.Array(
+const ShipmentCheckpointsList = /*@__PURE__*/ S.Array(
   ShipmentCheckpoint,
 ) as any as S.Schema<ShipmentCheckpointsList>;
 
@@ -114,7 +114,7 @@ export type ShipmentStatus =
   | "failure"
   | "cancelled"
   | "error";
-export const ShipmentStatus = S.String;
+const ShipmentStatus = S.String;
 
 export interface Shipment {
   /** The account that owns this shipment, prefixed `biz_`. */
@@ -137,7 +137,7 @@ export interface Shipment {
   /** The datetime the shipment was last updated (ISO 8601). */
   updated_at: string;
 }
-export const Shipment = /*@__PURE__*/ S.suspend(() =>
+const Shipment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     carrier: S.NullOr(S.String),
@@ -156,7 +156,7 @@ export interface GetShipmentRequest {
   /** The shipment id (`ship_`), or the payment id (`pay_`) it fulfills. */
   id: string;
 }
-export const GetShipmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShipmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/shipments/{id}", code: 200 })),
@@ -173,18 +173,18 @@ export type ListShipmentsRequestStatus =
   | "failure"
   | "cancelled"
   | "error";
-export const ListShipmentsRequestStatus = S.String;
+const ListShipmentsRequestStatus = S.String;
 
 export type ListShipmentsRequestPaymentIdList = Array<string>;
-export const ListShipmentsRequestPaymentIdList = /*@__PURE__*/ S.Array(
+const ListShipmentsRequestPaymentIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListShipmentsRequestPaymentIdList>;
 
 export type ListShipmentsRequestOrder = "created_at";
-export const ListShipmentsRequestOrder = S.String;
+const ListShipmentsRequestOrder = S.String;
 
 export type ListShipmentsRequestDirection = "asc" | "desc";
-export const ListShipmentsRequestDirection = S.String;
+const ListShipmentsRequestDirection = S.String;
 
 export interface ListShipmentsRequest {
   /** The account to list shipments for. Defaults to the acting account. */
@@ -210,7 +210,7 @@ export interface ListShipmentsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListShipmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListShipmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListShipmentsRequestStatus.pipe(T.Query())),
@@ -227,7 +227,7 @@ export const ListShipmentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListShipmentsRequest" }) as any as S.Schema<ListShipmentsRequest>;
 
 export type ListShipmentsResponseDataList = Array<Shipment>;
-export const ListShipmentsResponseDataList = /*@__PURE__*/ S.Array(
+const ListShipmentsResponseDataList = /*@__PURE__*/ S.Array(
   Shipment,
 ) as any as S.Schema<ListShipmentsResponseDataList>;
 
@@ -237,7 +237,7 @@ export interface ListShipmentsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListShipmentsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListShipmentsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -252,7 +252,7 @@ export interface ListShipmentsResponse {
   data: ListShipmentsResponseDataList;
   page_info: ListShipmentsResponsePageInfo;
 }
-export const ListShipmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListShipmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListShipmentsResponseDataList,
     page_info: ListShipmentsResponsePageInfo,
@@ -265,7 +265,7 @@ export interface UpdateShipmentRequest {
   /** The new carrier-assigned tracking number. */
   tracking_number: string;
 }
-export const UpdateShipmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateShipmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     tracking_number: S.String,

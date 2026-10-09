@@ -72,7 +72,7 @@ export interface AcquireSsrsLeaseContext {
   /** The username to be used as the service login to connect to the report database for SSRS setup. */
   serviceLogin?: string;
 }
-export const AcquireSsrsLeaseContext = /*@__PURE__*/ S.suspend(() =>
+const AcquireSsrsLeaseContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setupLogin: S.optional(S.String),
     reportDatabase: S.optional(S.String),
@@ -86,7 +86,7 @@ export interface InstancesAcquireSsrsLeaseRequest {
   /** Contains details about the acquire SSRS lease operation. */
   acquireSsrsLeaseContext?: AcquireSsrsLeaseContext;
 }
-export const InstancesAcquireSsrsLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesAcquireSsrsLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acquireSsrsLeaseContext: S.optional(AcquireSsrsLeaseContext),
   }),
@@ -104,7 +104,7 @@ export interface AcquireSsrsLeaseInstancesRequest {
   /** Request body */
   body?: InstancesAcquireSsrsLeaseRequest;
 }
-export const AcquireSsrsLeaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const AcquireSsrsLeaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -126,7 +126,7 @@ export interface SqlInstancesAcquireSsrsLeaseResponse {
   /** The unique identifier for this operation. */
   operationId?: string;
 }
-export const SqlInstancesAcquireSsrsLeaseResponse = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesAcquireSsrsLeaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
   }),
@@ -142,7 +142,7 @@ export interface AddEntraIdCertificateInstancesRequest {
   /** Required. Project ID of the project that contains the instance. */
   project: string;
 }
-export const AddEntraIdCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddEntraIdCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -165,7 +165,7 @@ export interface StartWorkloadReplayContext {
   /** Required. The name of the Cloud SQL instance where the captured workload (SQL queries) is being executed, excluding the project ID (for example, `my-replay-instance`). The instance name must start with a lowercase letter and contain only lowercase letters, numbers, and hyphens. The combined length of `project-ID:instance-name` must be 98 characters or less. */
   replayInstance?: string;
 }
-export const StartWorkloadReplayContext = /*@__PURE__*/ S.suspend(() =>
+const StartWorkloadReplayContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadId: S.optional(S.String),
     replayInstance: S.optional(S.String),
@@ -179,7 +179,7 @@ export interface StopWorkloadCaptureContext {
   /** Optional. If true, immediately aborts the concurrent live replay and discards any un-replayed traffic alongside stopping the capture. If false (the default), the capture stops recording new traffic, but the live replay will continue executing until the entire backlog of captured traffic has been replayed. */
   abortLiveReplay?: boolean;
 }
-export const StopWorkloadCaptureContext = /*@__PURE__*/ S.suspend(() =>
+const StopWorkloadCaptureContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abortLiveReplay: S.optional(S.Boolean),
   }),
@@ -244,17 +244,17 @@ export type PreCheckMajorVersionUpgradeContextTargetDatabaseVersionEnum =
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
   | "SQLSERVER_2025_EXPRESS";
-export const PreCheckMajorVersionUpgradeContextTargetDatabaseVersionEnum = S.String;
+const PreCheckMajorVersionUpgradeContextTargetDatabaseVersionEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type PreCheckResponseMessageTypeEnum =
   | "MESSAGE_TYPE_UNSPECIFIED"
   | "INFO"
   | "WARNING"
   | "ERROR";
-export const PreCheckResponseMessageTypeEnum = S.String;
+const PreCheckResponseMessageTypeEnum = S.String;
 
 /** Structured PreCheckResponse containing message, type, and required actions. */
 export interface PreCheckResponse {
@@ -265,7 +265,7 @@ export interface PreCheckResponse {
   /** The type of message whether it is an info, warning, or error. */
   messageType?: PreCheckResponseMessageTypeEnum | (string & {});
 }
-export const PreCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const PreCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     actionsRequired: S.optional(StringList),
@@ -274,7 +274,7 @@ export const PreCheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PreCheckResponse" }) as any as S.Schema<PreCheckResponse>;
 
 export type PreCheckResponseList = Array<PreCheckResponse>;
-export const PreCheckResponseList = /*@__PURE__*/ S.Array(
+const PreCheckResponseList = /*@__PURE__*/ S.Array(
   PreCheckResponse,
 ) as any as S.Schema<PreCheckResponseList>;
 
@@ -289,7 +289,7 @@ export interface PreCheckMajorVersionUpgradeContext {
   /** Optional. This is always `sql#preCheckMajorVersionUpgradeContext`. */
   kind?: string;
 }
-export const PreCheckMajorVersionUpgradeContext = /*@__PURE__*/ S.suspend(() =>
+const PreCheckMajorVersionUpgradeContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetDatabaseVersion: S.optional(PreCheckMajorVersionUpgradeContextTargetDatabaseVersionEnum),
     preCheckResponse: S.optional(PreCheckResponseList),
@@ -305,21 +305,21 @@ export type SqlSubOperationTypeMaintenanceTypeEnum =
   | "REPLICA_INCLUDED_MAINTENANCE"
   | "INSTANCE_SELF_SERVICE_MAINTENANCE"
   | "REPLICA_INCLUDED_SELF_SERVICE_MAINTENANCE";
-export const SqlSubOperationTypeMaintenanceTypeEnum = S.String;
+const SqlSubOperationTypeMaintenanceTypeEnum = S.String;
 
 /** The sub operation type based on the operation type. */
 export interface SqlSubOperationType {
   /** The type of maintenance to be performed on the instance. */
   maintenanceType?: SqlSubOperationTypeMaintenanceTypeEnum;
 }
-export const SqlSubOperationType = /*@__PURE__*/ S.suspend(() =>
+const SqlSubOperationType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceType: S.optional(SqlSubOperationTypeMaintenanceTypeEnum),
   }),
 ).annotate({ identifier: "SqlSubOperationType" }) as any as S.Schema<SqlSubOperationType>;
 
 export type ImportContextFileTypeEnum = "SQL_FILE_TYPE_UNSPECIFIED" | "SQL" | "CSV" | "BAK" | "TDE";
-export const ImportContextFileTypeEnum = S.String;
+const ImportContextFileTypeEnum = S.String;
 
 export interface ImportContextTdeImportOptions {
   /** Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must have read access to the file. Applicable only for SQL Server instances. */
@@ -331,7 +331,7 @@ export interface ImportContextTdeImportOptions {
   /** Required. Path to the TDE certificate private key in the form gs://bucketName/fileName. The instance must have read access to the file. Applicable only for SQL Server instances. */
   privateKeyPath?: string;
 }
-export const ImportContextTdeImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportContextTdeImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificatePath: S.optional(S.String),
     privateKeyPassword: S.optional(S.String),
@@ -356,7 +356,7 @@ export interface ImportContextCsvImportOptions {
   /** The table to which CSV data is imported. */
   table?: string;
 }
-export const ImportContextCsvImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportContextCsvImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quoteCharacter: S.optional(S.String),
     columns: S.optional(StringList),
@@ -375,7 +375,7 @@ export interface ImportContextSqlImportOptionsPostgresImportOptions {
   /** Optional. The --if-exists flag for the pg_restore utility. This flag applies only if you enabled Cloud SQL to import files in parallel. */
   ifExists?: boolean;
 }
-export const ImportContextSqlImportOptionsPostgresImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportContextSqlImportOptionsPostgresImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clean: S.optional(S.Boolean),
     ifExists: S.optional(S.Boolean),
@@ -392,7 +392,7 @@ export interface ImportContextSqlImportOptions {
   /** Optional. Whether or not the import should be parallel. */
   parallel?: boolean;
 }
-export const ImportContextSqlImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportContextSqlImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threads: S.optional(S.Number),
     postgresImportOptions: S.optional(ImportContextSqlImportOptionsPostgresImportOptions),
@@ -407,7 +407,7 @@ export type ImportContextBakImportOptionsBakTypeEnum =
   | "FULL"
   | "DIFF"
   | "TLOG";
-export const ImportContextBakImportOptionsBakTypeEnum = S.String;
+const ImportContextBakImportOptionsBakTypeEnum = S.String;
 
 export interface ImportContextBakImportOptionsEncryptionOptions {
   /** Optional. Whether the imported file remains encrypted. */
@@ -419,7 +419,7 @@ export interface ImportContextBakImportOptionsEncryptionOptions {
   /** Path to the Certificate (.cer) in Cloud Storage, in the form `gs://bucketName/fileName`. The instance must have write permissions to the bucket and read access to the file. */
   certPath?: string;
 }
-export const ImportContextBakImportOptionsEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportContextBakImportOptionsEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keepEncrypted: S.optional(S.Boolean),
     pvkPath: S.optional(S.String),
@@ -445,7 +445,7 @@ export interface ImportContextBakImportOptions {
   /** Whether or not the backup importing will restore database with NORECOVERY option. Applies only to Cloud SQL for SQL Server. */
   noRecovery?: boolean;
 }
-export const ImportContextBakImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportContextBakImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     striped: S.optional(S.Boolean),
     recoveryOnly: S.optional(S.Boolean),
@@ -480,7 +480,7 @@ export interface ImportContext {
   /** Import parameters specific to SQL Server .BAK files */
   bakImportOptions?: ImportContextBakImportOptions;
 }
-export const ImportContext = /*@__PURE__*/ S.suspend(() =>
+const ImportContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(ImportContextFileTypeEnum),
     database: S.optional(S.String),
@@ -504,7 +504,7 @@ export interface ExportContextTdeExportOptions {
   /** Required. Path to the TDE certificate public key in the form gs://bucketName/fileName. The instance must have write access to the location. Applicable only for SQL Server instances. */
   certificatePath?: string;
 }
-export const ExportContextTdeExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportContextTdeExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateKeyPassword: S.optional(S.String),
     name: S.optional(S.String),
@@ -520,7 +520,7 @@ export type ExportContextBakExportOptionsBakTypeEnum =
   | "FULL"
   | "DIFF"
   | "TLOG";
-export const ExportContextBakExportOptionsBakTypeEnum = S.String;
+const ExportContextBakExportOptionsBakTypeEnum = S.String;
 
 export interface ExportContextBakExportOptions {
   /** Type of this bak file will be export, FULL or DIFF, SQL Server only */
@@ -538,7 +538,7 @@ export interface ExportContextBakExportOptions {
   /** Deprecated: copy_only is deprecated. Use differential_base instead */
   copyOnly?: boolean;
 }
-export const ExportContextBakExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportContextBakExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bakType: S.optional(ExportContextBakExportOptionsBakTypeEnum),
     exportLogEndTime: S.optional(S.String),
@@ -553,7 +553,7 @@ export const ExportContextBakExportOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportContextBakExportOptions>;
 
 export type ExportContextFileTypeEnum = "SQL_FILE_TYPE_UNSPECIFIED" | "SQL" | "CSV" | "BAK" | "TDE";
-export const ExportContextFileTypeEnum = S.String;
+const ExportContextFileTypeEnum = S.String;
 
 export interface ExportContextSqlExportOptionsPostgresExportOptions {
   /** Optional. Option to include an IF EXISTS SQL statement with each DROP statement produced by clean. */
@@ -561,7 +561,7 @@ export interface ExportContextSqlExportOptionsPostgresExportOptions {
   /** Optional. Use this option to include DROP <object> SQL statements. Use these statements to delete database objects before running the import operation. */
   clean?: boolean;
 }
-export const ExportContextSqlExportOptionsPostgresExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportContextSqlExportOptionsPostgresExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ifExists: S.optional(S.Boolean),
     clean: S.optional(S.Boolean),
@@ -574,7 +574,7 @@ export interface ExportContextSqlExportOptionsMysqlExportOptions {
   /** Option to include SQL statement required to set up replication. If set to `1`, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates, and --set-gtid-purged is set to ON. If set to `2`, the CHANGE MASTER TO statement is written as a SQL comment and has no effect. If set to any value other than `1`, --set-gtid-purged is set to OFF. */
   masterData?: number;
 }
-export const ExportContextSqlExportOptionsMysqlExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportContextSqlExportOptionsMysqlExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masterData: S.optional(S.Number),
   }),
@@ -596,7 +596,7 @@ export interface ExportContextSqlExportOptions {
   /** Optional. The number of threads to use for parallel export. */
   threads?: number;
 }
-export const ExportContextSqlExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportContextSqlExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tables: S.optional(StringList),
     schemaOnly: S.optional(S.Boolean),
@@ -621,7 +621,7 @@ export interface ExportContextCsvExportOptions {
   /** Specifies the character that separates columns within each row (line) of the file. */
   fieldsTerminatedBy?: string;
 }
-export const ExportContextCsvExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportContextCsvExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quoteCharacter: S.optional(S.String),
     linesTerminatedBy: S.optional(S.String),
@@ -654,7 +654,7 @@ export interface ExportContext {
   /** Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only. */
   csvExportOptions?: ExportContextCsvExportOptions;
 }
-export const ExportContext = /*@__PURE__*/ S.suspend(() =>
+const ExportContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tdeExportOptions: S.optional(ExportContextTdeExportOptions),
     bakExportOptions: S.optional(ExportContextBakExportOptions),
@@ -677,7 +677,7 @@ export interface OperationError {
   /** Identifies the specific error that occurred. */
   code?: string;
 }
-export const OperationError = /*@__PURE__*/ S.suspend(() =>
+const OperationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     kind: S.optional(S.String),
@@ -686,7 +686,7 @@ export const OperationError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
 
 export type OperationErrorList = Array<OperationError>;
-export const OperationErrorList = /*@__PURE__*/ S.Array(
+const OperationErrorList = /*@__PURE__*/ S.Array(
   OperationError,
 ) as any as S.Schema<OperationErrorList>;
 
@@ -697,7 +697,7 @@ export interface OperationErrors {
   /** This is always `sql#operationErrors`. */
   kind?: string;
 }
-export const OperationErrors = /*@__PURE__*/ S.suspend(() =>
+const OperationErrors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(OperationErrorList),
     kind: S.optional(S.String),
@@ -711,7 +711,7 @@ export interface StopWorkloadReplayContext {
   /** Required. The name of the Cloud SQL instance where the captured workload (SQL queries) is being executed, excluding the project ID (for example, `my-replay-instance`). The instance name must start with a lowercase letter and contain only lowercase letters, numbers, and hyphens. The combined length of `project-ID:instance-name` must be 98 characters or less. */
   replayInstance?: string;
 }
-export const StopWorkloadReplayContext =
+const StopWorkloadReplayContext =
   StartWorkloadReplayContext as any as S.Schema<StopWorkloadReplayContext>;
 
 /** The context for the `StartWorkloadCapture` operation, which contains details to start recording the workload (SQL queries) on a Cloud SQL instance. */
@@ -721,7 +721,7 @@ export interface StartWorkloadCaptureContext {
   /** Optional. If true, the captured workload is simultaneously executed on a separate, ephemeral Cloud SQL instance. This "live replay" instance is automatically provisioned and is cloned from the source instance. If false (the default), the workload is only stored and no live replay occurs. It can be replayed later using a separate `StartWorkloadReplayRequest`. Note: The workload capture runs continuously until an explicit `StopWorkloadCaptureRequest` is issued. */
   enableLiveReplay?: boolean;
 }
-export const StartWorkloadCaptureContext = /*@__PURE__*/ S.suspend(() =>
+const StartWorkloadCaptureContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replayInstance: S.optional(S.String),
     enableLiveReplay: S.optional(S.Boolean),
@@ -789,7 +789,7 @@ export type OperationOperationTypeEnum =
   | "DELETE_BLUE_GREEN_DEPLOYMENT"
   | "SETUP_MIGRATION"
   | "AGENT_SEND_MESSAGE";
-export const OperationOperationTypeEnum = S.String;
+const OperationOperationTypeEnum = S.String;
 
 export type ApiWarningCodeEnum =
   | "SQL_API_WARNING_CODE_UNSPECIFIED"
@@ -797,7 +797,7 @@ export type ApiWarningCodeEnum =
   | "MAX_RESULTS_EXCEEDS_LIMIT"
   | "COMPROMISED_CREDENTIALS"
   | "INTERNAL_STATE_FAILURE";
-export const ApiWarningCodeEnum = S.String;
+const ApiWarningCodeEnum = S.String;
 
 /** An Admin API warning message. */
 export interface ApiWarning {
@@ -808,7 +808,7 @@ export interface ApiWarning {
   /** The region name for REGION_UNREACHABLE warning. */
   region?: string;
 }
-export const ApiWarning = /*@__PURE__*/ S.suspend(() =>
+const ApiWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(ApiWarningCodeEnum),
     message: S.optional(S.String),
@@ -821,7 +821,7 @@ export type OperationStatusEnum =
   | "PENDING"
   | "RUNNING"
   | "DONE";
-export const OperationStatusEnum = S.String;
+const OperationStatusEnum = S.String;
 
 /** Backup context. */
 export interface BackupContext {
@@ -832,7 +832,7 @@ export interface BackupContext {
   /** The identifier of the backup. */
   backupId?: string;
 }
-export const BackupContext = /*@__PURE__*/ S.suspend(() =>
+const BackupContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     name: S.optional(S.String),
@@ -890,7 +890,7 @@ export interface Operation {
   /** The context for backup operation, if applicable. */
   backupContext?: BackupContext;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetLink: S.optional(S.String),
     name: S.optional(S.String),
@@ -927,7 +927,7 @@ export interface AddServerCaInstancesRequest {
   /** Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const AddServerCaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddServerCaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -951,7 +951,7 @@ export interface AddServerCertificateInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const AddServerCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddServerCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -975,7 +975,7 @@ export interface CancelOperationsRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     operation: S.String.pipe(T.Label()),
@@ -991,7 +991,7 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -1004,7 +1004,7 @@ export interface BinLogCoordinates {
   /** Name of the binary log file for a Cloud SQL instance. */
   binLogFileName?: string;
 }
-export const BinLogCoordinates = /*@__PURE__*/ S.suspend(() =>
+const BinLogCoordinates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     binLogPosition: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1039,7 +1039,7 @@ export interface CloneContext {
   /** Name of the Cloud SQL instance to be created as a clone. */
   destinationInstanceName?: string;
 }
-export const CloneContext = /*@__PURE__*/ S.suspend(() =>
+const CloneContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pitrTimestampMs: S.optional(S.String),
     destinationNetwork: S.optional(S.String),
@@ -1061,7 +1061,7 @@ export interface InstancesCloneRequest {
   /** Contains details about the clone operation. */
   cloneContext?: CloneContext;
 }
-export const InstancesCloneRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesCloneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloneContext: S.optional(CloneContext),
   }),
@@ -1077,7 +1077,7 @@ export interface CloneInstancesRequest {
   /** Request body */
   body?: InstancesCloneRequest;
 }
-export const CloneInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -1098,7 +1098,7 @@ export interface ConnectResolveRequest {
   /** Required. Cloud SQL instance ID. This does not include the project ID. */
   dnsName: string;
 }
-export const ConnectResolveRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectResolveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     dnsName: S.String.pipe(T.Label()),
@@ -1112,20 +1112,20 @@ export const ConnectResolveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectResolveRequest" }) as any as S.Schema<ConnectResolveRequest>;
 
 export type DnsNameMappingDnsScopeEnum = "DNS_SCOPE_UNSPECIFIED" | "INSTANCE" | "CLUSTER";
-export const DnsNameMappingDnsScopeEnum = S.String;
+const DnsNameMappingDnsScopeEnum = S.String;
 
 export type DnsNameMappingConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "PUBLIC"
   | "PRIVATE_SERVICES_ACCESS"
   | "PRIVATE_SERVICE_CONNECT";
-export const DnsNameMappingConnectionTypeEnum = S.String;
+const DnsNameMappingConnectionTypeEnum = S.String;
 
 export type DnsNameMappingRecordManagerEnum =
   | "RECORD_MANAGER_UNSPECIFIED"
   | "CUSTOMER"
   | "CLOUD_SQL_AUTOMATION";
-export const DnsNameMappingRecordManagerEnum = S.String;
+const DnsNameMappingRecordManagerEnum = S.String;
 
 /** DNS metadata. */
 export interface DnsNameMapping {
@@ -1138,7 +1138,7 @@ export interface DnsNameMapping {
   /** Output only. The manager for this DNS record. */
   recordManager?: DnsNameMappingRecordManagerEnum | (string & {});
 }
-export const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
+const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsScope: S.optional(DnsNameMappingDnsScopeEnum),
     connectionType: S.optional(DnsNameMappingConnectionTypeEnum),
@@ -1148,7 +1148,7 @@ export const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsNameMapping" }) as any as S.Schema<DnsNameMapping>;
 
 export type DnsNameMappingList = Array<DnsNameMapping>;
-export const DnsNameMappingList = /*@__PURE__*/ S.Array(
+const DnsNameMappingList = /*@__PURE__*/ S.Array(
   DnsNameMapping,
 ) as any as S.Schema<DnsNameMappingList>;
 
@@ -1158,7 +1158,7 @@ export type IpMappingTypeEnum =
   | "OUTGOING"
   | "PRIVATE"
   | "MIGRATED_1ST_GEN";
-export const IpMappingTypeEnum = S.String;
+const IpMappingTypeEnum = S.String;
 
 /** Database instance IP mapping */
 export interface IpMapping {
@@ -1169,7 +1169,7 @@ export interface IpMapping {
   /** The IP address assigned. */
   ipAddress?: string;
 }
-export const IpMapping = /*@__PURE__*/ S.suspend(() =>
+const IpMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeToRetire: S.optional(S.String),
     type: S.optional(IpMappingTypeEnum),
@@ -1178,7 +1178,7 @@ export const IpMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpMapping" }) as any as S.Schema<IpMapping>;
 
 export type IpMappingList = Array<IpMapping>;
-export const IpMappingList = /*@__PURE__*/ S.Array(IpMapping) as any as S.Schema<IpMappingList>;
+const IpMappingList = /*@__PURE__*/ S.Array(IpMapping) as any as S.Schema<IpMappingList>;
 
 /** Details of a single read pool node of a read pool. */
 export interface ConnectPoolNodeConfig {
@@ -1191,7 +1191,7 @@ export interface ConnectPoolNodeConfig {
   /** Output only. Mappings containing IP addresses that can be used to connect to the read pool node. */
   ipAddresses?: IpMappingList;
 }
-export const ConnectPoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectPoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsNames: S.optional(DnsNameMappingList),
     dnsName: S.optional(S.String),
@@ -1201,7 +1201,7 @@ export const ConnectPoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectPoolNodeConfig" }) as any as S.Schema<ConnectPoolNodeConfig>;
 
 export type ConnectPoolNodeConfigList = Array<ConnectPoolNodeConfig>;
-export const ConnectPoolNodeConfigList = /*@__PURE__*/ S.Array(
+const ConnectPoolNodeConfigList = /*@__PURE__*/ S.Array(
   ConnectPoolNodeConfig,
 ) as any as S.Schema<ConnectPoolNodeConfigList>;
 
@@ -1210,23 +1210,23 @@ export type ConnectSettingsServerCaModeEnum =
   | "GOOGLE_MANAGED_INTERNAL_CA"
   | "GOOGLE_MANAGED_CAS_CA"
   | "CUSTOMER_MANAGED_CAS_CA";
-export const ConnectSettingsServerCaModeEnum = S.String;
+const ConnectSettingsServerCaModeEnum = S.String;
 
 export type ConnectSettingsBackendTypeEnum =
   | "SQL_BACKEND_TYPE_UNSPECIFIED"
   | "FIRST_GEN"
   | "SECOND_GEN"
   | "EXTERNAL";
-export const ConnectSettingsBackendTypeEnum = S.String;
+const ConnectSettingsBackendTypeEnum = S.String;
 
 export type ConnectSettingsMdxProtocolSupportItemEnum =
   | "MDX_PROTOCOL_SUPPORT_UNSPECIFIED"
   | "CLIENT_PROTOCOL_TYPE";
-export const ConnectSettingsMdxProtocolSupportItemEnum = S.String;
+const ConnectSettingsMdxProtocolSupportItemEnum = S.String;
 
 export type ConnectSettingsMdxProtocolSupportItemEnumList =
   Array<ConnectSettingsMdxProtocolSupportItemEnum>;
-export const ConnectSettingsMdxProtocolSupportItemEnumList = /*@__PURE__*/ S.Array(
+const ConnectSettingsMdxProtocolSupportItemEnumList = /*@__PURE__*/ S.Array(
   ConnectSettingsMdxProtocolSupportItemEnum,
 ) as any as S.Schema<ConnectSettingsMdxProtocolSupportItemEnumList>;
 
@@ -1251,7 +1251,7 @@ export interface SslCert {
   /** Name of the database instance. */
   instance?: string;
 }
-export const SslCert = /*@__PURE__*/ S.suspend(() =>
+const SslCert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.String),
     certSerialNumber: S.optional(S.String),
@@ -1322,7 +1322,7 @@ export type ConnectSettingsDatabaseVersionEnum =
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
   | "SQLSERVER_2025_EXPRESS";
-export const ConnectSettingsDatabaseVersionEnum = S.String;
+const ConnectSettingsDatabaseVersionEnum = S.String;
 
 /** Connect settings retrieval response. */
 export interface ConnectSettings {
@@ -1357,7 +1357,7 @@ export interface ConnectSettings {
   /** The cloud region for the instance. e.g. `us-central1`, `europe-west1`. The region cannot be changed after instance creation. */
   region?: string;
 }
-export const ConnectSettings = /*@__PURE__*/ S.suspend(() =>
+const ConnectSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionName: S.optional(S.String),
     nodeCount: S.optional(S.Number),
@@ -1378,10 +1378,10 @@ export const ConnectSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectSettings" }) as any as S.Schema<ConnectSettings>;
 
 export type BackupTypeEnum = "SQL_BACKUP_TYPE_UNSPECIFIED" | "AUTOMATED" | "ON_DEMAND" | "FINAL";
-export const BackupTypeEnum = S.String;
+const BackupTypeEnum = S.String;
 
 export type BackupBackupKindEnum = "SQL_BACKUP_KIND_UNSPECIFIED" | "SNAPSHOT" | "PHYSICAL";
-export const BackupBackupKindEnum = S.String;
+const BackupBackupKindEnum = S.String;
 
 export type BackupStateEnum =
   | "SQL_BACKUP_STATE_UNSPECIFIED"
@@ -1391,7 +1391,7 @@ export type BackupStateEnum =
   | "SUCCESSFUL"
   | "DELETING"
   | "DELETION_FAILED";
-export const BackupStateEnum = S.String;
+const BackupStateEnum = S.String;
 
 /** Any scheduled maintenance for this instance. */
 export interface SqlScheduledMaintenance {
@@ -1403,7 +1403,7 @@ export interface SqlScheduledMaintenance {
   /** If the scheduled maintenance can be rescheduled. */
   canReschedule?: boolean;
 }
-export const SqlScheduledMaintenance = /*@__PURE__*/ S.suspend(() =>
+const SqlScheduledMaintenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     canDefer: S.optional(S.Boolean),
@@ -1413,14 +1413,14 @@ export const SqlScheduledMaintenance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlScheduledMaintenance" }) as any as S.Schema<SqlScheduledMaintenance>;
 
 export type SettingsPricingPlanEnum = "SQL_PRICING_PLAN_UNSPECIFIED" | "PACKAGE" | "PER_USE";
-export const SettingsPricingPlanEnum = S.String;
+const SettingsPricingPlanEnum = S.String;
 
 export type SqlActiveDirectoryConfigModeEnum =
   | "ACTIVE_DIRECTORY_MODE_UNSPECIFIED"
   | "MANAGED_ACTIVE_DIRECTORY"
   | "SELF_MANAGED_ACTIVE_DIRECTORY"
   | "CUSTOMER_MANAGED_ACTIVE_DIRECTORY";
-export const SqlActiveDirectoryConfigModeEnum = S.String;
+const SqlActiveDirectoryConfigModeEnum = S.String;
 
 /** Active Directory configuration, relevant only for Cloud SQL for SQL Server. */
 export interface SqlActiveDirectoryConfig {
@@ -1437,7 +1437,7 @@ export interface SqlActiveDirectoryConfig {
   /** Optional. The mode of the Active Directory configuration. */
   mode?: SqlActiveDirectoryConfigModeEnum | (string & {});
 }
-export const SqlActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
+const SqlActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationalUnit: S.optional(S.String),
     dnsServers: S.optional(StringList),
@@ -1452,7 +1452,7 @@ export type SettingsAvailabilityTypeEnum =
   | "SQL_AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
   | "REGIONAL";
-export const SettingsAvailabilityTypeEnum = S.String;
+const SettingsAvailabilityTypeEnum = S.String;
 
 /** Target metric for read pool auto scaling. */
 export interface TargetMetric {
@@ -1461,7 +1461,7 @@ export interface TargetMetric {
   /** The target value for the metric. */
   targetValue?: number;
 }
-export const TargetMetric = /*@__PURE__*/ S.suspend(() =>
+const TargetMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: S.optional(S.String),
     targetValue: S.optional(S.Number),
@@ -1469,9 +1469,7 @@ export const TargetMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetMetric" }) as any as S.Schema<TargetMetric>;
 
 export type TargetMetricList = Array<TargetMetric>;
-export const TargetMetricList = /*@__PURE__*/ S.Array(
-  TargetMetric,
-) as any as S.Schema<TargetMetricList>;
+const TargetMetricList = /*@__PURE__*/ S.Array(TargetMetric) as any as S.Schema<TargetMetricList>;
 
 /** The read pool auto-scale configuration. */
 export interface ReadPoolAutoScaleConfig {
@@ -1490,7 +1488,7 @@ export interface ReadPoolAutoScaleConfig {
   /** Indicates whether read pool auto scaling is enabled. */
   enabled?: boolean;
 }
-export const ReadPoolAutoScaleConfig = /*@__PURE__*/ S.suspend(() =>
+const ReadPoolAutoScaleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scaleInCooldownSeconds: S.optional(S.Number),
     disableScaleIn: S.optional(S.Boolean),
@@ -1507,7 +1505,7 @@ export type IpConfigurationSslModeEnum =
   | "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
   | "ENCRYPTED_ONLY"
   | "TRUSTED_CLIENT_CERTIFICATE_REQUIRED";
-export const IpConfigurationSslModeEnum = S.String;
+const IpConfigurationSslModeEnum = S.String;
 
 /** An entry for an Access Control list. */
 export interface AclEntry {
@@ -1520,7 +1518,7 @@ export interface AclEntry {
   /** The allowlisted value for the access control list. */
   value?: string;
 }
-export const AclEntry = /*@__PURE__*/ S.suspend(() =>
+const AclEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1530,34 +1528,34 @@ export const AclEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AclEntry" }) as any as S.Schema<AclEntry>;
 
 export type AclEntryList = Array<AclEntry>;
-export const AclEntryList = /*@__PURE__*/ S.Array(AclEntry) as any as S.Schema<AclEntryList>;
+const AclEntryList = /*@__PURE__*/ S.Array(AclEntry) as any as S.Schema<AclEntryList>;
 
 export type IpConfigurationServerCertificateRotationModeEnum =
   | "SERVER_CERTIFICATE_ROTATION_MODE_UNSPECIFIED"
   | "NO_AUTOMATIC_ROTATION"
   | "AUTOMATIC_ROTATION_DURING_MAINTENANCE";
-export const IpConfigurationServerCertificateRotationModeEnum = S.String;
+const IpConfigurationServerCertificateRotationModeEnum = S.String;
 
 export type IpConfigurationServerCaModeEnum =
   | "CA_MODE_UNSPECIFIED"
   | "GOOGLE_MANAGED_INTERNAL_CA"
   | "GOOGLE_MANAGED_CAS_CA"
   | "CUSTOMER_MANAGED_CAS_CA";
-export const IpConfigurationServerCaModeEnum = S.String;
+const IpConfigurationServerCaModeEnum = S.String;
 
 export type PscAutoConnectionConfigWriteEndpointAutoDnsStatusEnum =
   | "AUTO_DNS_STATUS_UNSPECIFIED"
   | "AUTO_DNS_OK"
   | "AUTO_DNS_FAILED"
   | "AUTO_DNS_UNKNOWN";
-export const PscAutoConnectionConfigWriteEndpointAutoDnsStatusEnum = S.String;
+const PscAutoConnectionConfigWriteEndpointAutoDnsStatusEnum = S.String;
 
 export type PscAutoConnectionConfigInstanceAutoDnsStatusEnum =
   | "AUTO_DNS_STATUS_UNSPECIFIED"
   | "AUTO_DNS_OK"
   | "AUTO_DNS_FAILED"
   | "AUTO_DNS_UNKNOWN";
-export const PscAutoConnectionConfigInstanceAutoDnsStatusEnum = S.String;
+const PscAutoConnectionConfigInstanceAutoDnsStatusEnum = S.String;
 
 /** Settings for an automatically-setup Private Service Connect consumer endpoint that is used to connect to a Cloud SQL instance. */
 export interface PscAutoConnectionConfig {
@@ -1582,7 +1580,7 @@ export interface PscAutoConnectionConfig {
   /** Optional. This is the project ID of consumer service project of this consumer endpoint. Optional. This is only applicable if consumer_network is a shared vpc network. */
   consumerProject?: string;
 }
-export const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
+const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerNetworkStatus: S.optional(S.String),
     ipAddress: S.optional(S.String),
@@ -1597,7 +1595,7 @@ export const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PscAutoConnectionConfig" }) as any as S.Schema<PscAutoConnectionConfig>;
 
 export type PscAutoConnectionConfigList = Array<PscAutoConnectionConfig>;
-export const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(
+const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(
   PscAutoConnectionConfig,
 ) as any as S.Schema<PscAutoConnectionConfigList>;
 
@@ -1618,7 +1616,7 @@ export interface PscConfig {
   /** Optional. Indicates whether Private Service Connect DNS automation is enabled for this instance. When enabled, Cloud SQL provisions a universal DNS record across all networks configured with Private Service Connect auto-connections. This will default to true for new instances when Private Service Connect is enabled. */
   pscAutoDnsEnabled?: boolean;
 }
-export const PscConfig = /*@__PURE__*/ S.suspend(() =>
+const PscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pscAutoConnections: S.optional(PscAutoConnectionConfigList),
     pscEnabled: S.optional(S.Boolean),
@@ -1657,7 +1655,7 @@ export interface IpConfiguration {
   /** PSC settings for this instance. */
   pscConfig?: PscConfig;
 }
-export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateNetwork: S.optional(S.String),
     enablePrivatePathForGoogleCloudServices: S.optional(S.Boolean),
@@ -1683,7 +1681,7 @@ export interface DenyMaintenancePeriod {
   /** Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00 */
   time?: string;
 }
-export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
+const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(S.String),
     endDate: S.optional(S.String),
@@ -1692,7 +1690,7 @@ export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DenyMaintenancePeriod" }) as any as S.Schema<DenyMaintenancePeriod>;
 
 export type DenyMaintenancePeriodList = Array<DenyMaintenancePeriod>;
-export const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(
+const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(
   DenyMaintenancePeriod,
 ) as any as S.Schema<DenyMaintenancePeriodList>;
 
@@ -1700,21 +1698,21 @@ export type SettingsDataApiAccessEnum =
   | "DATA_API_ACCESS_UNSPECIFIED"
   | "DISALLOW_DATA_API"
   | "ALLOW_DATA_API";
-export const SettingsDataApiAccessEnum = S.String;
+const SettingsDataApiAccessEnum = S.String;
 
 export type SettingsEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS"
   | "DEVELOPER";
-export const SettingsEditionEnum = S.String;
+const SettingsEditionEnum = S.String;
 
 export type MaintenanceWindowUpdateTrackEnum =
   | "SQL_UPDATE_TRACK_UNSPECIFIED"
   | "canary"
   | "stable"
   | "week5";
-export const MaintenanceWindowUpdateTrackEnum = S.String;
+const MaintenanceWindowUpdateTrackEnum = S.String;
 
 /** Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes. */
 export interface MaintenanceWindow {
@@ -1727,7 +1725,7 @@ export interface MaintenanceWindow {
   /** Day of week - `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, or `SUNDAY`. Specify in the UTC time zone. Returned in output as an integer, 1 to 7, where `1` equals Monday. */
   day?: number;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     hour: S.optional(S.Number),
@@ -1737,7 +1735,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 
 export type BackupRetentionSettingsRetentionUnitEnum = "RETENTION_UNIT_UNSPECIFIED" | "COUNT";
-export const BackupRetentionSettingsRetentionUnitEnum = S.String;
+const BackupRetentionSettingsRetentionUnitEnum = S.String;
 
 /** We currently only support backup retention by specifying the number of backups we will retain. */
 export interface BackupRetentionSettings {
@@ -1746,7 +1744,7 @@ export interface BackupRetentionSettings {
   /** Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups. */
   retainedBackups?: number;
 }
-export const BackupRetentionSettings = /*@__PURE__*/ S.suspend(() =>
+const BackupRetentionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionUnit: S.optional(BackupRetentionSettingsRetentionUnitEnum),
     retainedBackups: S.optional(S.Number),
@@ -1758,7 +1756,7 @@ export type BackupConfigurationBackupTierEnum =
   | "STANDARD"
   | "ADVANCED"
   | "ENHANCED";
-export const BackupConfigurationBackupTierEnum = S.String;
+const BackupConfigurationBackupTierEnum = S.String;
 
 export type BackupConfigurationTransactionalLogStorageStateEnum =
   | "TRANSACTIONAL_LOG_STORAGE_STATE_UNSPECIFIED"
@@ -1766,7 +1764,7 @@ export type BackupConfigurationTransactionalLogStorageStateEnum =
   | "SWITCHING_TO_CLOUD_STORAGE"
   | "SWITCHED_TO_CLOUD_STORAGE"
   | "CLOUD_STORAGE";
-export const BackupConfigurationTransactionalLogStorageStateEnum = S.String;
+const BackupConfigurationTransactionalLogStorageStateEnum = S.String;
 
 /** Database instance backup configuration. */
 export interface BackupConfiguration {
@@ -1795,7 +1793,7 @@ export interface BackupConfiguration {
   /** Whether this configuration is enabled. */
   enabled?: boolean;
 }
-export const BackupConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BackupConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     replicationLogArchivingEnabled: S.optional(S.Boolean),
@@ -1815,7 +1813,7 @@ export type PerformanceCaptureConfigTransactionKillTypeEnum =
   | "TRANSACTION_KILL_TYPE_UNSPECIFIED"
   | "READ_ONLY_TRANSACTIONS"
   | "ALL_TRANSACTIONS";
-export const PerformanceCaptureConfigTransactionKillTypeEnum = S.String;
+const PerformanceCaptureConfigTransactionKillTypeEnum = S.String;
 
 /** Performance capture configuration. */
 export interface PerformanceCaptureConfig {
@@ -1848,7 +1846,7 @@ export interface PerformanceCaptureConfig {
   /** Optional. Specifies the interval in seconds between consecutive probes that check if any trigger condition thresholds have been reached. */
   probingIntervalSeconds?: number;
 }
-export const PerformanceCaptureConfig = /*@__PURE__*/ S.suspend(() =>
+const PerformanceCaptureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     semaphoreWaitThresholdCount: S.optional(S.Number),
     enabled: S.optional(S.Boolean),
@@ -1872,7 +1870,7 @@ export interface AdvancedMachineFeatures {
   /** The number of threads per physical core. */
   threadsPerCore?: number;
 }
-export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
+const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threadsPerCore: S.optional(S.Number),
   }),
@@ -1893,7 +1891,7 @@ export interface InsightsConfig {
   /** Whether Query Insights will record application tags from query when enabled. */
   recordApplicationTags?: boolean;
 }
-export const InsightsConfig = /*@__PURE__*/ S.suspend(() =>
+const InsightsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryPlansPerMinute: S.optional(S.Number),
     queryInsightsEnabled: S.optional(S.Boolean),
@@ -1909,7 +1907,7 @@ export interface DataCacheConfig {
   /** Whether data cache is enabled for the instance. */
   dataCacheEnabled?: boolean;
 }
-export const DataCacheConfig = /*@__PURE__*/ S.suspend(() =>
+const DataCacheConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataCacheEnabled: S.optional(S.Boolean),
   }),
@@ -1919,7 +1917,7 @@ export type SettingsConnectorEnforcementEnum =
   | "CONNECTOR_ENFORCEMENT_UNSPECIFIED"
   | "NOT_REQUIRED"
   | "REQUIRED";
-export const SettingsConnectorEnforcementEnum = S.String;
+const SettingsConnectorEnforcementEnum = S.String;
 
 /** Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified. */
 export interface LocationPreference {
@@ -1932,7 +1930,7 @@ export interface LocationPreference {
   /** The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance. */
   zone?: string;
 }
-export const LocationPreference = /*@__PURE__*/ S.suspend(() =>
+const LocationPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     followGaeApplication: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1950,7 +1948,7 @@ export interface SqlServerEntraIdConfig {
   /** Output only. This is always sql#sqlServerEntraIdConfig */
   kind?: string;
 }
-export const SqlServerEntraIdConfig = /*@__PURE__*/ S.suspend(() =>
+const SqlServerEntraIdConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     applicationId: S.optional(S.String),
@@ -1965,7 +1963,7 @@ export interface DatabaseFlags {
   /** The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation. */
   name?: string;
 }
-export const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
+const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     name: S.optional(S.String),
@@ -1973,14 +1971,14 @@ export const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseFlags" }) as any as S.Schema<DatabaseFlags>;
 
 export type DatabaseFlagsList = Array<DatabaseFlags>;
-export const DatabaseFlagsList = /*@__PURE__*/ S.Array(
+const DatabaseFlagsList = /*@__PURE__*/ S.Array(
   DatabaseFlags,
 ) as any as S.Schema<DatabaseFlagsList>;
 
 export type PasswordValidationPolicyComplexityEnum =
   | "COMPLEXITY_UNSPECIFIED"
   | "COMPLEXITY_DEFAULT";
-export const PasswordValidationPolicyComplexityEnum = S.String;
+const PasswordValidationPolicyComplexityEnum = S.String;
 
 /** Database instance local user password validation policy. This message defines the password policy for local database users. When enabled, it enforces constraints on password complexity, length, and reuse. Keep this policy enabled to help prevent unauthorized access. */
 export interface PasswordValidationPolicy {
@@ -1999,7 +1997,7 @@ export interface PasswordValidationPolicy {
   /** This field is deprecated and will be removed in a future version of the API. */
   disallowCompromisedCredentials?: boolean;
 }
-export const PasswordValidationPolicy = /*@__PURE__*/ S.suspend(() =>
+const PasswordValidationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disallowUsernameSubstring: S.optional(S.Boolean),
     minLength: S.optional(S.Number),
@@ -2016,7 +2014,7 @@ export type SettingsActivationPolicyEnum =
   | "ALWAYS"
   | "NEVER"
   | "ON_DEMAND";
-export const SettingsActivationPolicyEnum = S.String;
+const SettingsActivationPolicyEnum = S.String;
 
 /** Config used to determine the final backup settings for the instance. */
 export interface FinalBackupConfig {
@@ -2025,7 +2023,7 @@ export interface FinalBackupConfig {
   /** The number of days to retain the final backup after the instance deletion. The final backup will be purged at (time_of_instance_deletion + retention_days). */
   retentionDays?: number;
 }
-export const FinalBackupConfig = /*@__PURE__*/ S.suspend(() =>
+const FinalBackupConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     retentionDays: S.optional(S.Number),
@@ -2043,7 +2041,7 @@ export interface SqlServerAuditConfig {
   /** How often to upload generated audit files. */
   uploadInterval?: string;
 }
-export const SqlServerAuditConfig = /*@__PURE__*/ S.suspend(() =>
+const SqlServerAuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionInterval: S.optional(S.String),
     bucket: S.optional(S.String),
@@ -2053,7 +2051,7 @@ export const SqlServerAuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlServerAuditConfig" }) as any as S.Schema<SqlServerAuditConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type SettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
@@ -2061,7 +2059,7 @@ export type SettingsDataDiskTypeEnum =
   | "PD_HDD"
   | "OBSOLETE_LOCAL_SSD"
   | "HYPERDISK_BALANCED";
-export const SettingsDataDiskTypeEnum = S.String;
+const SettingsDataDiskTypeEnum = S.String;
 
 /** Connection pool flags for Cloud SQL instances managed connection pool configuration. */
 export interface ConnectionPoolFlags {
@@ -2070,11 +2068,8 @@ export interface ConnectionPoolFlags {
   /** Required. The name of the flag. */
   name?: string;
 }
-export const ConnectionPoolFlags = DatabaseFlags as any as S.Schema<ConnectionPoolFlags>;
-
 export type ConnectionPoolFlagsList = Array<ConnectionPoolFlags>;
-export const ConnectionPoolFlagsList =
-  DatabaseFlagsList as any as S.Schema<ConnectionPoolFlagsList>;
+const ConnectionPoolFlagsList = DatabaseFlagsList as any as S.Schema<ConnectionPoolFlagsList>;
 
 /** The managed connection pooling configuration. */
 export interface ConnectionPoolConfig {
@@ -2085,7 +2080,7 @@ export interface ConnectionPoolConfig {
   /** Optional. List of connection pool configuration flags. */
   flags?: ConnectionPoolFlagsList;
 }
-export const ConnectionPoolConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectionPoolConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     poolerCount: S.optional(S.Number),
     connectionPoolingEnabled: S.optional(S.Boolean),
@@ -2097,7 +2092,7 @@ export type SettingsReplicationTypeEnum =
   | "SQL_REPLICATION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
   | "ASYNCHRONOUS";
-export const SettingsReplicationTypeEnum = S.String;
+const SettingsReplicationTypeEnum = S.String;
 
 /** Database instance settings. */
 export interface Settings {
@@ -2194,7 +2189,7 @@ export interface Settings {
   /** Optional. Configuration value for recreation of replica after certain replication lag. */
   replicationLagMaxSeconds?: number;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricingPlan: S.optional(SettingsPricingPlanEnum),
     acceleratedReplicaMode: S.optional(S.Boolean),
@@ -2254,7 +2249,7 @@ export interface AvailableDatabaseVersion {
   /** The database version name. For MySQL 8.0, this string provides the database major and minor version. */
   name?: string;
 }
-export const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
+const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     majorVersion: S.optional(S.String),
@@ -2263,7 +2258,7 @@ export const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailableDatabaseVersion" }) as any as S.Schema<AvailableDatabaseVersion>;
 
 export type AvailableDatabaseVersionList = Array<AvailableDatabaseVersion>;
-export const AvailableDatabaseVersionList = /*@__PURE__*/ S.Array(
+const AvailableDatabaseVersionList = /*@__PURE__*/ S.Array(
   AvailableDatabaseVersion,
 ) as any as S.Schema<AvailableDatabaseVersionList>;
 
@@ -2274,7 +2269,7 @@ export interface DiskEncryptionStatus {
   /** This is always `sql#diskEncryptionStatus`. */
   kind?: string;
 }
-export const DiskEncryptionStatus = /*@__PURE__*/ S.suspend(() =>
+const DiskEncryptionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyVersionName: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2286,7 +2281,7 @@ export type DatabaseInstanceBackendTypeEnum =
   | "FIRST_GEN"
   | "SECOND_GEN"
   | "EXTERNAL";
-export const DatabaseInstanceBackendTypeEnum = S.String;
+const DatabaseInstanceBackendTypeEnum = S.String;
 
 /** Disk encryption configuration for an instance. */
 export interface DiskEncryptionConfiguration {
@@ -2299,7 +2294,7 @@ export interface DiskEncryptionConfiguration {
   /** Resource name of KMS key for disk encryption */
   kmsKeyName?: string;
 }
-export const DiskEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DiskEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmekSourceLogEncryptionEnforced: S.optional(S.Boolean),
     confidentialMode: S.optional(S.Boolean),
@@ -2314,7 +2309,7 @@ export type DatabaseInstanceSqlNetworkArchitectureEnum =
   | "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
   | "NEW_NETWORK_ARCHITECTURE"
   | "OLD_NETWORK_ARCHITECTURE";
-export const DatabaseInstanceSqlNetworkArchitectureEnum = S.String;
+const DatabaseInstanceSqlNetworkArchitectureEnum = S.String;
 
 export interface DatabaseInstanceFailoverReplica {
   /** The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. */
@@ -2322,7 +2317,7 @@ export interface DatabaseInstanceFailoverReplica {
   /** The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true. */
   available?: boolean;
 }
-export const DatabaseInstanceFailoverReplica = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstanceFailoverReplica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     available: S.optional(S.Boolean),
@@ -2335,7 +2330,7 @@ export type SqlOutOfDiskReportSqlOutOfDiskStateEnum =
   | "SQL_OUT_OF_DISK_STATE_UNSPECIFIED"
   | "NORMAL"
   | "SOFT_SHUTDOWN";
-export const SqlOutOfDiskReportSqlOutOfDiskStateEnum = S.String;
+const SqlOutOfDiskReportSqlOutOfDiskStateEnum = S.String;
 
 /** This message wraps up the information written by out-of-disk detection job. */
 export interface SqlOutOfDiskReport {
@@ -2344,7 +2339,7 @@ export interface SqlOutOfDiskReport {
   /** This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job */
   sqlOutOfDiskState?: SqlOutOfDiskReportSqlOutOfDiskStateEnum | (string & {});
 }
-export const SqlOutOfDiskReport = /*@__PURE__*/ S.suspend(() =>
+const SqlOutOfDiskReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlMinRecommendedIncreaseSizeGb: S.optional(S.Number),
     sqlOutOfDiskState: S.optional(SqlOutOfDiskReportSqlOutOfDiskStateEnum),
@@ -2358,12 +2353,10 @@ export type DatabaseInstanceSuspensionReasonItemEnum =
   | "OPERATIONAL_ISSUE"
   | "KMS_KEY_ISSUE"
   | "PROJECT_ABUSE";
-export const DatabaseInstanceSuspensionReasonItemEnum = S.String;
-
 export type DatabaseInstanceSuspensionReasonItemEnumList = Array<
   DatabaseInstanceSuspensionReasonItemEnum | (string & {})
 >;
-export const DatabaseInstanceSuspensionReasonItemEnumList =
+const DatabaseInstanceSuspensionReasonItemEnumList =
   ConnectSettingsMdxProtocolSupportItemEnumList as any as S.Schema<DatabaseInstanceSuspensionReasonItemEnumList>;
 
 /** A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure. Applicable to MySQL and PostgreSQL. */
@@ -2375,7 +2368,7 @@ export interface ReplicationCluster {
   /** Output only. Read-only field that indicates whether the replica is a DR replica. This field is not set if the instance is a primary instance. */
   drReplica?: boolean;
 }
-export const ReplicationCluster = /*@__PURE__*/ S.suspend(() =>
+const ReplicationCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverDrReplicaName: S.optional(S.String),
     psaWriteEndpoint: S.optional(S.String),
@@ -2398,7 +2391,7 @@ export interface GeminiInstanceConfig {
   /** Output only. Whether canceling the out-of-memory (OOM) session is enabled. */
   oomSessionCancelEnabled?: boolean;
 }
-export const GeminiInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const GeminiInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexAdvisorEnabled: S.optional(S.Boolean),
     googleVacuumMgmtEnabled: S.optional(S.Boolean),
@@ -2418,7 +2411,7 @@ export interface InstanceReference {
   /** The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it. */
   project?: string;
 }
-export const InstanceReference = /*@__PURE__*/ S.suspend(() =>
+const InstanceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     name: S.optional(S.String),
@@ -2431,7 +2424,7 @@ export interface SourceRole {
   /** Output only. The target instance paired with this source instance in a blue-green deployment. */
   targetId?: InstanceReference;
 }
-export const SourceRole = /*@__PURE__*/ S.suspend(() =>
+const SourceRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.optional(InstanceReference),
   }),
@@ -2442,7 +2435,7 @@ export interface TargetRole {
   /** Output only. The source instance paired with this target instance in a blue-green deployment. */
   sourceId?: InstanceReference;
 }
-export const TargetRole = /*@__PURE__*/ S.suspend(() =>
+const TargetRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceId: S.optional(InstanceReference),
   }),
@@ -2452,7 +2445,7 @@ export type BlueGreenDeploymentInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "PRE_SWITCHOVER"
   | "POST_SWITCHOVER";
-export const BlueGreenDeploymentInfoStateEnum = S.String;
+const BlueGreenDeploymentInfoStateEnum = S.String;
 
 /** Blue-green deployment metadata for a database instance. In a blue-green deployment, we maintain two environments, one of which is live. This message contains details about the blue-green deployment. */
 export interface BlueGreenDeploymentInfo {
@@ -2465,7 +2458,7 @@ export interface BlueGreenDeploymentInfo {
   /** Output only. The resource ID of the blue-green deployment. */
   deploymentId?: string;
 }
-export const BlueGreenDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
+const BlueGreenDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(SourceRole),
     target: S.optional(TargetRole),
@@ -2531,7 +2524,7 @@ export type DatabaseInstanceDatabaseVersionEnum =
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
   | "SQLSERVER_2025_EXPRESS";
-export const DatabaseInstanceDatabaseVersionEnum = S.String;
+const DatabaseInstanceDatabaseVersionEnum = S.String;
 
 /** Read-replica configuration specific to MySQL databases. */
 export interface MySqlReplicaConfiguration {
@@ -2558,7 +2551,7 @@ export interface MySqlReplicaConfiguration {
   /** Seconds to wait between connect retries. MySQL's default is 60 seconds. */
   connectRetryInterval?: number;
 }
-export const MySqlReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MySqlReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sslCipher: S.optional(S.String),
     caCertificate: S.optional(S.String),
@@ -2587,7 +2580,7 @@ export interface ReplicaConfiguration {
   /** This is always `sql#replicaConfiguration`. */
   kind?: string;
 }
-export const ReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cascadableReplica: S.optional(S.Boolean),
     mysqlReplicaConfiguration: S.optional(MySqlReplicaConfiguration),
@@ -2601,14 +2594,14 @@ export interface SelectedObjects {
   /** Required. The name of the database to migrate. */
   database?: string;
 }
-export const SelectedObjects = /*@__PURE__*/ S.suspend(() =>
+const SelectedObjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.optional(S.String),
   }),
 ).annotate({ identifier: "SelectedObjects" }) as any as S.Schema<SelectedObjects>;
 
 export type SelectedObjectsList = Array<SelectedObjects>;
-export const SelectedObjectsList = /*@__PURE__*/ S.Array(
+const SelectedObjectsList = /*@__PURE__*/ S.Array(
   SelectedObjects,
 ) as any as S.Schema<SelectedObjectsList>;
 
@@ -2617,7 +2610,7 @@ export type OnPremisesConfigurationSslOptionEnum =
   | "DISABLE"
   | "REQUIRE"
   | "VERIFY_CA";
-export const OnPremisesConfigurationSslOptionEnum = S.String;
+const OnPremisesConfigurationSslOptionEnum = S.String;
 
 /** On-premises instance configuration. */
 export interface OnPremisesConfiguration {
@@ -2646,7 +2639,7 @@ export interface OnPremisesConfiguration {
   /** Optional. SslOption for replica connection to the on-premises source. */
   sslOption?: OnPremisesConfigurationSslOptionEnum | (string & {});
 }
-export const OnPremisesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OnPremisesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceInstance: S.optional(InstanceReference),
     username: S.optional(S.String),
@@ -2670,7 +2663,7 @@ export type DatabaseInstanceInstanceTypeEnum =
   | "READ_REPLICA_INSTANCE"
   | "READ_POOL_INSTANCE"
   | "GREEN_INSTANCE";
-export const DatabaseInstanceInstanceTypeEnum = S.String;
+const DatabaseInstanceInstanceTypeEnum = S.String;
 
 export type DatabaseInstanceStateEnum =
   | "SQL_INSTANCE_STATE_UNSPECIFIED"
@@ -2682,7 +2675,7 @@ export type DatabaseInstanceStateEnum =
   | "FAILED"
   | "ONLINE_MAINTENANCE"
   | "REPAIRING";
-export const DatabaseInstanceStateEnum = S.String;
+const DatabaseInstanceStateEnum = S.String;
 
 export type PoolNodeConfigStateEnum =
   | "SQL_INSTANCE_STATE_UNSPECIFIED"
@@ -2694,7 +2687,7 @@ export type PoolNodeConfigStateEnum =
   | "FAILED"
   | "ONLINE_MAINTENANCE"
   | "REPAIRING";
-export const PoolNodeConfigStateEnum = S.String;
+const PoolNodeConfigStateEnum = S.String;
 
 /** Details of a single read pool node of a read pool. */
 export interface PoolNodeConfig {
@@ -2715,7 +2708,7 @@ export interface PoolNodeConfig {
   /** Output only. The list of DNS names used by this read pool node. */
   dnsNames?: DnsNameMappingList;
 }
-export const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
+const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pscServiceAttachmentLink: S.optional(S.String),
     ipAddresses: S.optional(IpMappingList),
@@ -2729,7 +2722,7 @@ export const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PoolNodeConfig" }) as any as S.Schema<PoolNodeConfig>;
 
 export type PoolNodeConfigList = Array<PoolNodeConfig>;
-export const PoolNodeConfigList = /*@__PURE__*/ S.Array(
+const PoolNodeConfigList = /*@__PURE__*/ S.Array(
   PoolNodeConfig,
 ) as any as S.Schema<PoolNodeConfigList>;
 
@@ -2842,7 +2835,7 @@ export interface DatabaseInstance {
   /** Output only. Entries containing information about each read pool node of the read pool. */
   nodes?: PoolNodeConfigList;
 }
-export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2907,7 +2900,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -2971,7 +2964,7 @@ export type BackupDatabaseVersionEnum =
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
   | "SQLSERVER_2025_EXPRESS";
-export const BackupDatabaseVersionEnum = S.String;
+const BackupDatabaseVersionEnum = S.String;
 
 /** A backup resource. */
 export interface Backup {
@@ -3022,7 +3015,7 @@ export interface Backup {
   /** Output only. The database version of the instance of at the time this backup was made. */
   databaseVersion?: BackupDatabaseVersionEnum | (string & {});
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BackupTypeEnum),
     name: S.optional(S.String),
@@ -3056,7 +3049,7 @@ export interface CreateBackupBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Backup.pipe(T.HttpBody())),
@@ -3078,7 +3071,7 @@ export type DeploymentTaskTypeEnum =
   | "SWITCHOVER"
   | "DELETE"
   | "POST_SWITCHOVER_OPERATIONS";
-export const DeploymentTaskTypeEnum = S.String;
+const DeploymentTaskTypeEnum = S.String;
 
 export type DeploymentTaskStateEnum =
   | "STATE_UNSPECIFIED"
@@ -3086,7 +3079,7 @@ export type DeploymentTaskStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED";
-export const DeploymentTaskStateEnum = S.String;
+const DeploymentTaskStateEnum = S.String;
 
 /** Represents a task executed as part of the deployment on a target instance. */
 export interface DeploymentTask {
@@ -3101,7 +3094,7 @@ export interface DeploymentTask {
   /** Output only. Task end time (if completed). */
   endTime?: string;
 }
-export const DeploymentTask = /*@__PURE__*/ S.suspend(() =>
+const DeploymentTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DeploymentTaskTypeEnum),
     errorMessage: S.optional(S.String),
@@ -3112,7 +3105,7 @@ export const DeploymentTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeploymentTask" }) as any as S.Schema<DeploymentTask>;
 
 export type DeploymentTaskList = Array<DeploymentTask>;
-export const DeploymentTaskList = /*@__PURE__*/ S.Array(
+const DeploymentTaskList = /*@__PURE__*/ S.Array(
   DeploymentTask,
 ) as any as S.Schema<DeploymentTaskList>;
 
@@ -3121,7 +3114,7 @@ export interface DeploymentTasks {
   /** Output only. Tasks performed or being performed on the paired nodes of the deployment at a consolidated level. */
   task?: DeploymentTaskList;
 }
-export const DeploymentTasks = /*@__PURE__*/ S.suspend(() =>
+const DeploymentTasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: S.optional(DeploymentTaskList),
   }),
@@ -3135,14 +3128,14 @@ export type BlueGreenDeploymentStateEnum =
   | "SWITCHOVER_IN_PROGRESS"
   | "SWITCHOVER_COMPLETED"
   | "DELETING";
-export const BlueGreenDeploymentStateEnum = S.String;
+const BlueGreenDeploymentStateEnum = S.String;
 
 /** Deprecated: Use RequestedConfig instead. Configuration specified by the user at creation time for the target (Green) instance. */
 export interface TargetConfig {
   /** Optional. The target database major version for the upgrade. */
   databaseVersion?: string;
 }
-export const TargetConfig = /*@__PURE__*/ S.suspend(() =>
+const TargetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseVersion: S.optional(S.String),
   }),
@@ -3159,7 +3152,7 @@ export interface NodeInfo {
   /** Output only. The list of IP addresses for this instance. */
   ipMappings?: IpMappingList;
 }
-export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
+const NodeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns: S.optional(S.String),
     connection: S.optional(S.String),
@@ -3177,7 +3170,7 @@ export interface ConfigDiff {
   /** Output only. The value on the target instance. */
   targetValue?: string;
 }
-export const ConfigDiff = /*@__PURE__*/ S.suspend(() =>
+const ConfigDiff = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     sourceValue: S.optional(S.String),
@@ -3186,13 +3179,13 @@ export const ConfigDiff = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigDiff" }) as any as S.Schema<ConfigDiff>;
 
 export type ConfigDiffList = Array<ConfigDiff>;
-export const ConfigDiffList = /*@__PURE__*/ S.Array(ConfigDiff) as any as S.Schema<ConfigDiffList>;
+const ConfigDiffList = /*@__PURE__*/ S.Array(ConfigDiff) as any as S.Schema<ConfigDiffList>;
 
 export type SourceTargetPairedNodeCurrentlyServingTrafficEnum =
   | "CURRENTLY_SERVING_TRAFFIC_UNSPECIFIED"
   | "SOURCE"
   | "TARGET";
-export const SourceTargetPairedNodeCurrentlyServingTrafficEnum = S.String;
+const SourceTargetPairedNodeCurrentlyServingTrafficEnum = S.String;
 
 export type SourceTargetPairedNodeStateEnum =
   | "STATE_UNSPECIFIED"
@@ -3205,7 +3198,7 @@ export type SourceTargetPairedNodeStateEnum =
   | "SWITCHOVER_FAILED"
   | "SWITCHOVER_SUCCEEDED"
   | "DELETING";
-export const SourceTargetPairedNodeStateEnum = S.String;
+const SourceTargetPairedNodeStateEnum = S.String;
 
 /** Represents a pairing of a source instance node and a target instance node. */
 export interface SourceTargetPairedNode {
@@ -3222,7 +3215,7 @@ export interface SourceTargetPairedNode {
   /** Output only. The current state of this specific source-target pair. */
   state?: SourceTargetPairedNodeStateEnum | (string & {});
 }
-export const SourceTargetPairedNode = /*@__PURE__*/ S.suspend(() =>
+const SourceTargetPairedNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(NodeInfo),
     diffs: S.optional(ConfigDiffList),
@@ -3234,14 +3227,12 @@ export const SourceTargetPairedNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceTargetPairedNode" }) as any as S.Schema<SourceTargetPairedNode>;
 
 export type SourceTargetPairedNodeList = Array<SourceTargetPairedNode>;
-export const SourceTargetPairedNodeList = /*@__PURE__*/ S.Array(
+const SourceTargetPairedNodeList = /*@__PURE__*/ S.Array(
   SourceTargetPairedNode,
 ) as any as S.Schema<SourceTargetPairedNodeList>;
 
 /** Configuration specified by the user at creation time for the target (Green) instance. */
 export type RequestedConfig = TargetConfig;
-export const RequestedConfig = TargetConfig;
-
 /** A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment setup. It orchestrates the lifecycle of creating a synchronized "green" environment from a "blue" production environment, performing updates, and managing the switchover process to minimize downtime. */
 export interface BlueGreenDeployment {
   /** Output only. Combined list of tasks for all paired nodes. */
@@ -3269,7 +3260,7 @@ export interface BlueGreenDeployment {
   /** Output only. Deprecated: Use deployment_mappings instead. Output only. A list representing the pairs of source and target instances in the deployment. */
   pairedNodes?: SourceTargetPairedNodeList;
 }
-export const BlueGreenDeployment = /*@__PURE__*/ S.suspend(() =>
+const BlueGreenDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentTasks: S.optional(DeploymentTasks),
     sourceInstance: S.optional(S.String),
@@ -3294,7 +3285,7 @@ export interface CreateBlueGreenDeploymentsRequest {
   /** Request body */
   body?: BlueGreenDeployment;
 }
-export const CreateBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueGreenDeploymentId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3317,7 +3308,7 @@ export interface SslCertsCreateEphemeralRequest {
   /** PEM encoded public key to include in the signed certificate. */
   public_key?: string;
 }
-export const SslCertsCreateEphemeralRequest = /*@__PURE__*/ S.suspend(() =>
+const SslCertsCreateEphemeralRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.optional(S.String),
     public_key: S.optional(S.String),
@@ -3336,7 +3327,7 @@ export interface CreateEphemeralSslCertsRequest {
   /** Request body */
   body?: SslCertsCreateEphemeralRequest;
 }
-export const CreateEphemeralSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEphemeralSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -3357,7 +3348,7 @@ export interface DeleteBackupBackupsRequest {
   /** Required. The name of the backup to delete. Format: projects/{project}/backups/{backup} */
   name: string;
 }
-export const DeleteBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3379,7 +3370,7 @@ export interface DeleteBackupRunsRequest {
   /** Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const DeleteBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3399,7 +3390,7 @@ export interface DeleteBlueGreenDeploymentsRequest {
   /** Optional. If set to true, and the switchover is complete, this deletes the old source instance along with the deployment. */
   deleteOldSource?: boolean;
 }
-export const DeleteBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     deleteOldSource: S.optional(S.Boolean.pipe(T.Query())),
@@ -3424,7 +3415,7 @@ export interface DeleteDatabasesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const DeleteDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -3455,7 +3446,7 @@ export interface DeleteInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const DeleteInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableFinalBackup: S.optional(S.Boolean.pipe(T.Query())),
     finalBackupExpiryTime: S.optional(S.String.pipe(T.Query())),
@@ -3481,7 +3472,7 @@ export interface DeleteSslCertsRequest {
   /** Sha1 FingerPrint. */
   sha1Fingerprint: string;
 }
-export const DeleteSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -3507,7 +3498,7 @@ export interface DeleteUsersRequest {
   /** Name of the user in the instance. */
   name?: string;
 }
-export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -3530,7 +3521,7 @@ export interface DemoteContext {
   /** Required. The name of the instance which acts as an on-premises primary instance in the replication setup. */
   sourceRepresentativeInstanceName?: string;
 }
-export const DemoteContext = /*@__PURE__*/ S.suspend(() =>
+const DemoteContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     sourceRepresentativeInstanceName: S.optional(S.String),
@@ -3542,7 +3533,7 @@ export interface InstancesDemoteRequest {
   /** Required. This context is used to demote an existing standalone instance to be a Cloud SQL read replica for an external database server. */
   demoteContext?: DemoteContext;
 }
-export const InstancesDemoteRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesDemoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     demoteContext: S.optional(DemoteContext),
   }),
@@ -3558,7 +3549,7 @@ export interface DemoteInstancesRequest {
   /** Request body */
   body?: InstancesDemoteRequest;
 }
-export const DemoteInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DemoteInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -3588,7 +3579,7 @@ export interface DemoteMasterMySqlReplicaConfiguration {
   /** This is always `sql#demoteMasterMysqlReplicaConfiguration`. */
   kind?: string;
 }
-export const DemoteMasterMySqlReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DemoteMasterMySqlReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCertificate: S.optional(S.String),
     password: S.optional(S.String),
@@ -3608,7 +3599,7 @@ export interface DemoteMasterConfiguration {
   /** This is always `sql#demoteMasterConfiguration`. */
   kind?: string;
 }
-export const DemoteMasterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DemoteMasterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mysqlReplicaConfiguration: S.optional(DemoteMasterMySqlReplicaConfiguration),
     kind: S.optional(S.String),
@@ -3630,7 +3621,7 @@ export interface DemoteMasterContext {
   /** The name of the instance which will act as on-premises primary instance in the replication setup. */
   masterInstanceName?: string;
 }
-export const DemoteMasterContext = /*@__PURE__*/ S.suspend(() =>
+const DemoteMasterContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipReplicationSetup: S.optional(S.Boolean),
     kind: S.optional(S.String),
@@ -3645,7 +3636,7 @@ export interface InstancesDemoteMasterRequest {
   /** Contains details about the demoteMaster operation. */
   demoteMasterContext?: DemoteMasterContext;
 }
-export const InstancesDemoteMasterRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesDemoteMasterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     demoteMasterContext: S.optional(DemoteMasterContext),
   }),
@@ -3663,7 +3654,7 @@ export interface DemoteMasterInstancesRequest {
   /** Request body */
   body?: InstancesDemoteMasterRequest;
 }
-export const DemoteMasterInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DemoteMasterInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -3684,7 +3675,7 @@ export type ExecuteSqlPayloadPartialResultModeEnum =
   | "PARTIAL_RESULT_MODE_UNSPECIFIED"
   | "FAIL_PARTIAL_RESULT"
   | "ALLOW_PARTIAL_RESULT";
-export const ExecuteSqlPayloadPartialResultModeEnum = S.String;
+const ExecuteSqlPayloadPartialResultModeEnum = S.String;
 
 /** The request payload used to execute SQL statements. */
 export interface ExecuteSqlPayload {
@@ -3705,7 +3696,7 @@ export interface ExecuteSqlPayload {
   /** Optional. Controls how the API should respond when the SQL execution result is incomplete due to the size limit or another error. The default mode is to throw an error. */
   partialResultMode?: ExecuteSqlPayloadPartialResultModeEnum | (string & {});
 }
-export const ExecuteSqlPayload = /*@__PURE__*/ S.suspend(() =>
+const ExecuteSqlPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String),
     rowLimit: S.optional(S.String),
@@ -3728,7 +3719,7 @@ export interface ExecuteSqlInstancesRequest {
   /** Request body */
   body?: ExecuteSqlPayload;
 }
-export const ExecuteSqlInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteSqlInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -3752,7 +3743,7 @@ export interface Column {
   /** Name of the column. */
   name?: string;
 }
-export const Column = /*@__PURE__*/ S.suspend(() =>
+const Column = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     name: S.optional(S.String),
@@ -3760,7 +3751,7 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
 export type ColumnList = Array<Column>;
-export const ColumnList = /*@__PURE__*/ S.Array(Column) as any as S.Schema<ColumnList>;
+const ColumnList = /*@__PURE__*/ S.Array(Column) as any as S.Schema<ColumnList>;
 
 /** The cell value of the table. */
 export interface Value {
@@ -3769,7 +3760,7 @@ export interface Value {
   /** The cell value represented in string format. */
   value?: string;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nullValue: S.optional(S.Boolean),
     value: S.optional(S.String),
@@ -3777,32 +3768,27 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
+const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
 
 /** Contains the values for a row. */
 export interface Row {
   /** The values for the row. */
   values?: ValueList;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(ValueList),
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -3813,7 +3799,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -3834,7 +3820,7 @@ export interface QueryResult {
   /** If results were truncated due to an error, details of that error. */
   status?: Status;
 }
-export const QueryResult = /*@__PURE__*/ S.suspend(() =>
+const QueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(ColumnList),
     rows: S.optional(RowList),
@@ -3845,16 +3831,14 @@ export const QueryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryResult" }) as any as S.Schema<QueryResult>;
 
 export type QueryResultList = Array<QueryResult>;
-export const QueryResultList = /*@__PURE__*/ S.Array(
-  QueryResult,
-) as any as S.Schema<QueryResultList>;
+const QueryResultList = /*@__PURE__*/ S.Array(QueryResult) as any as S.Schema<QueryResultList>;
 
 /** The additional metadata information regarding the execution of the SQL statements. */
 export interface Metadata {
   /** The time taken to execute the SQL statements. */
   sqlStatementExecutionTime?: string;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlStatementExecutionTime: S.optional(S.String),
   }),
@@ -3867,7 +3851,7 @@ export interface Message {
   /** The severity of the message (e.g., "NOTICE" for PostgreSQL, "WARNING" for MySQL). */
   severity?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     severity: S.optional(S.String),
@@ -3875,7 +3859,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 export interface SqlInstancesExecuteSqlResponse {
   /** The list of results after executing all the SQL statements. */
@@ -3887,7 +3871,7 @@ export interface SqlInstancesExecuteSqlResponse {
   /** A list of notices and warnings generated during query execution. For PostgreSQL, this includes all notices and warnings. For MySQL, this includes warnings generated by the last executed statement. To retrieve all warnings for a multi-statement query, `SHOW WARNINGS` must be executed after each statement. */
   messages?: MessageList;
 }
-export const SqlInstancesExecuteSqlResponse = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesExecuteSqlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(QueryResultList),
     metadata: S.optional(Metadata),
@@ -3903,7 +3887,7 @@ export interface InstancesExportRequest {
   /** Contains details about the export operation. */
   exportContext?: ExportContext;
 }
-export const InstancesExportRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exportContext: S.optional(ExportContext),
   }),
@@ -3919,7 +3903,7 @@ export interface ExportInstancesRequest {
   /** Request body */
   body?: InstancesExportRequest;
 }
-export const ExportInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -3941,7 +3925,7 @@ export interface FailoverContext {
   /** This is always `sql#failoverContext`. */
   kind?: string;
 }
-export const FailoverContext = /*@__PURE__*/ S.suspend(() =>
+const FailoverContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settingsVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -3953,7 +3937,7 @@ export interface InstancesFailoverRequest {
   /** Failover Context. */
   failoverContext?: FailoverContext;
 }
-export const InstancesFailoverRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesFailoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverContext: S.optional(FailoverContext),
   }),
@@ -3969,7 +3953,7 @@ export interface FailoverInstancesRequest {
   /** Request body */
   body?: InstancesFailoverRequest;
 }
-export const FailoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const FailoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -3995,7 +3979,7 @@ export interface GenerateEphemeralCertRequest {
   /** Optional. Access token to include in the signed certificate. */
   access_token?: string;
 }
-export const GenerateEphemeralCertRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateEphemeralCertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     validDuration: S.optional(S.String),
@@ -4014,7 +3998,7 @@ export interface GenerateEphemeralCertConnectRequest {
   /** Request body */
   body?: GenerateEphemeralCertRequest;
 }
-export const GenerateEphemeralCertConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateEphemeralCertConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -4035,7 +4019,7 @@ export interface GenerateEphemeralCertResponse {
   /** Generated cert */
   ephemeralCert?: SslCert;
 }
-export const GenerateEphemeralCertResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateEphemeralCertResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ephemeralCert: S.optional(SslCert),
   }),
@@ -4047,7 +4031,7 @@ export interface GetBackupBackupsRequest {
   /** Required. The name of the backup to retrieve. Format: projects/{project}/backups/{backup} */
   name: string;
 }
-export const GetBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4067,7 +4051,7 @@ export interface GetBackupRunsRequest {
   /** Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const GetBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -4138,7 +4122,7 @@ export type BackupRunDatabaseVersionEnum =
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
   | "SQLSERVER_2025_EXPRESS";
-export const BackupRunDatabaseVersionEnum = S.String;
+const BackupRunDatabaseVersionEnum = S.String;
 
 export type BackupRunStatusEnum =
   | "SQL_BACKUP_RUN_STATUS_UNSPECIFIED"
@@ -4151,13 +4135,13 @@ export type BackupRunStatusEnum =
   | "DELETION_PENDING"
   | "DELETION_FAILED"
   | "DELETED";
-export const BackupRunStatusEnum = S.String;
+const BackupRunStatusEnum = S.String;
 
 export type BackupRunBackupKindEnum = "SQL_BACKUP_KIND_UNSPECIFIED" | "SNAPSHOT" | "PHYSICAL";
-export const BackupRunBackupKindEnum = S.String;
+const BackupRunBackupKindEnum = S.String;
 
 export type BackupRunTypeEnum = "SQL_BACKUP_RUN_TYPE_UNSPECIFIED" | "AUTOMATED" | "ON_DEMAND";
-export const BackupRunTypeEnum = S.String;
+const BackupRunTypeEnum = S.String;
 
 /** A BackupRun resource. */
 export interface BackupRun {
@@ -4200,7 +4184,7 @@ export interface BackupRun {
   /** The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests. */
   type?: BackupRunTypeEnum | (string & {});
 }
-export const BackupRun = /*@__PURE__*/ S.suspend(() =>
+const BackupRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(OperationError),
     instance: S.optional(S.String),
@@ -4228,7 +4212,7 @@ export type GetBlueGreenDeploymentsViewEnum =
   | "BLUE_GREEN_DEPLOYMENT_VIEW_UNSPECIFIED"
   | "BASIC"
   | "DETAILED";
-export const GetBlueGreenDeploymentsViewEnum = S.String;
+const GetBlueGreenDeploymentsViewEnum = S.String;
 
 export interface GetBlueGreenDeploymentsRequest {
   /** Required. The name of the blue-green deployment to retrieve. Format: projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment} */
@@ -4236,7 +4220,7 @@ export interface GetBlueGreenDeploymentsRequest {
   /** Optional. Specifies whether to return the basic or detailed view of the resource in the response. */
   view?: GetBlueGreenDeploymentsViewEnum | (string & {});
 }
-export const GetBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetBlueGreenDeploymentsViewEnum.pipe(T.Query())),
@@ -4259,7 +4243,7 @@ export interface GetConnectRequest {
   /** Optional. Optional snapshot read timestamp to trade freshness for performance. */
   readTime?: string;
 }
-export const GetConnectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -4283,7 +4267,7 @@ export interface GetDatabasesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const GetDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -4305,7 +4289,7 @@ export interface SqlServerDatabaseDetails {
   /** The recovery model of a SQL Server database */
   recoveryModel?: string;
 }
-export const SqlServerDatabaseDetails = /*@__PURE__*/ S.suspend(() =>
+const SqlServerDatabaseDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatibilityLevel: S.optional(S.Number),
     recoveryModel: S.optional(S.String),
@@ -4332,7 +4316,7 @@ export interface Database {
   /** This field is deprecated and will be removed from a future version of the API. */
   etag?: string;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlserverDatabaseDetails: S.optional(SqlServerDatabaseDetails),
     name: S.optional(S.String),
@@ -4354,7 +4338,7 @@ export interface GetDiskShrinkConfigProjectsInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const GetDiskShrinkConfigProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiskShrinkConfigProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -4379,7 +4363,7 @@ export interface SqlInstancesGetDiskShrinkConfigResponse {
   /** The minimum size to which a disk can be shrunk in GigaBytes. */
   minimalTargetSizeGb?: string;
 }
-export const SqlInstancesGetDiskShrinkConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesGetDiskShrinkConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     message: S.optional(S.String),
@@ -4397,7 +4381,7 @@ export interface GetInstancesRequest {
   /** Database instance ID. This does not include the project ID. */
   instance: string;
 }
-export const GetInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -4421,7 +4405,7 @@ export interface GetLatestRecoveryTimeProjectsInstancesRequest {
   /** Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const GetLatestRecoveryTimeProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestRecoveryTimeProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -4447,7 +4431,7 @@ export interface SqlInstancesGetLatestRecoveryTimeResponse {
   /** This is always `sql#getLatestRecoveryTime`. */
   kind?: string;
 }
-export const SqlInstancesGetLatestRecoveryTimeResponse = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesGetLatestRecoveryTimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     earliestRecoveryTime: S.optional(S.String),
     latestRecoveryTime: S.optional(S.String),
@@ -4465,7 +4449,7 @@ export interface GetOperationsRequest {
   /** Project ID of the project that contains the instance. */
   project: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     operation: S.String.pipe(T.Label()),
@@ -4487,7 +4471,7 @@ export interface GetSslCertsRequest {
   /** Sha1 FingerPrint. */
   sha1Fingerprint: string;
 }
-export const GetSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -4513,7 +4497,7 @@ export interface GetUsersRequest {
   /** Project ID of the project that contains the instance. */
   project: string;
 }
-export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4536,7 +4520,7 @@ export interface SqlServerUserDetails {
   /** Indicates the server roles for this user. */
   serverRoles?: StringList;
 }
-export const SqlServerUserDetails = /*@__PURE__*/ S.suspend(() =>
+const SqlServerUserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     serverRoles: S.optional(StringList),
@@ -4544,7 +4528,7 @@ export const SqlServerUserDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlServerUserDetails" }) as any as S.Schema<SqlServerUserDetails>;
 
 export type UserIamStatusEnum = "IAM_STATUS_UNSPECIFIED" | "INACTIVE" | "ACTIVE";
-export const UserIamStatusEnum = S.String;
+const UserIamStatusEnum = S.String;
 
 /** Read-only password status. */
 export interface PasswordStatus {
@@ -4553,7 +4537,7 @@ export interface PasswordStatus {
   /** If true, user does not have login privileges. */
   locked?: boolean;
 }
-export const PasswordStatus = /*@__PURE__*/ S.suspend(() =>
+const PasswordStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordExpirationTime: S.optional(S.String),
     locked: S.optional(S.Boolean),
@@ -4573,7 +4557,7 @@ export interface UserPasswordValidationPolicy {
   /** If true, the user must specify the current password before changing the password. This flag is supported only for MySQL. */
   enablePasswordVerification?: boolean;
 }
-export const UserPasswordValidationPolicy = /*@__PURE__*/ S.suspend(() =>
+const UserPasswordValidationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordExpirationDuration: S.optional(S.String),
     enableFailedAttemptsCheck: S.optional(S.Boolean),
@@ -4590,7 +4574,7 @@ export type UserDualPasswordTypeEnum =
   | "NO_MODIFY_DUAL_PASSWORD"
   | "NO_DUAL_PASSWORD"
   | "DUAL_PASSWORD";
-export const UserDualPasswordTypeEnum = S.String;
+const UserDualPasswordTypeEnum = S.String;
 
 export type UserTypeEnum =
   | "BUILT_IN"
@@ -4601,7 +4585,7 @@ export type UserTypeEnum =
   | "CLOUD_IAM_GROUP_SERVICE_ACCOUNT"
   | "CLOUD_IAM_WORKFORCE_IDENTITY"
   | "ENTRAID_USER";
-export const UserTypeEnum = S.String;
+const UserTypeEnum = S.String;
 
 /** A Cloud SQL user resource. */
 export interface User {
@@ -4635,7 +4619,7 @@ export interface User {
   /** The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type. */
   type?: UserTypeEnum | (string & {});
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     iamEmail: S.optional(S.String),
@@ -4660,7 +4644,7 @@ export interface InstancesImportRequest {
   /** Contains details about the import operation. */
   importContext?: ImportContext;
 }
-export const InstancesImportRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     importContext: S.optional(ImportContext),
   }),
@@ -4676,7 +4660,7 @@ export interface ImportInstancesRequest {
   /** Request body */
   body?: InstancesImportRequest;
 }
-export const ImportInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -4699,7 +4683,7 @@ export interface InsertBackupRunsRequest {
   /** Request body */
   body?: BackupRun;
 }
-export const InsertBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -4723,7 +4707,7 @@ export interface InsertDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const InsertDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -4746,7 +4730,7 @@ export interface InsertInstancesRequest {
   /** Request body */
   body?: DatabaseInstance;
 }
-export const InsertInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -4765,7 +4749,7 @@ export interface SslCertsInsertRequest {
   /** User supplied name. Must be a distinct name from the other certificates for this instance. */
   commonName?: string;
 }
-export const SslCertsInsertRequest = /*@__PURE__*/ S.suspend(() =>
+const SslCertsInsertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonName: S.optional(S.String),
   }),
@@ -4779,7 +4763,7 @@ export interface InsertSslCertsRequest {
   /** Request body */
   body?: SslCertsInsertRequest;
 }
-export const InsertSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -4800,7 +4784,7 @@ export interface SslCertDetail {
   /** The public information about the cert. */
   certInfo?: SslCert;
 }
-export const SslCertDetail = /*@__PURE__*/ S.suspend(() =>
+const SslCertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certPrivateKey: S.optional(S.String),
     certInfo: S.optional(SslCert),
@@ -4818,7 +4802,7 @@ export interface SslCertsInsertResponse {
   /** The new client certificate and private key. */
   clientCert?: SslCertDetail;
 }
-export const SslCertsInsertResponse = /*@__PURE__*/ S.suspend(() =>
+const SslCertsInsertResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     operation: S.optional(Operation),
@@ -4837,7 +4821,7 @@ export interface InsertUsersRequest {
   /** Request body */
   body?: User;
 }
-export const InsertUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -4862,7 +4846,7 @@ export interface ListBackupRunsRequest {
   /** Maximum number of backup runs per response. */
   maxResults?: number;
 }
-export const ListBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -4878,7 +4862,7 @@ export const ListBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBackupRunsRequest" }) as any as S.Schema<ListBackupRunsRequest>;
 
 export type BackupRunList = Array<BackupRun>;
-export const BackupRunList = /*@__PURE__*/ S.Array(BackupRun) as any as S.Schema<BackupRunList>;
+const BackupRunList = /*@__PURE__*/ S.Array(BackupRun) as any as S.Schema<BackupRunList>;
 
 /** Backup run list results. */
 export interface BackupRunsListResponse {
@@ -4889,7 +4873,7 @@ export interface BackupRunsListResponse {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-export const BackupRunsListResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupRunsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: BackupRunList,
@@ -4907,7 +4891,7 @@ export interface ListBackupsBackupsRequest {
   /** A page token, received from a previous `ListBackups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBackups` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListBackupsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4925,10 +4909,10 @@ export const ListBackupsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBackupsBackupsRequest>;
 
 export type ApiWarningList = Array<ApiWarning>;
-export const ApiWarningList = /*@__PURE__*/ S.Array(ApiWarning) as any as S.Schema<ApiWarningList>;
+const ApiWarningList = /*@__PURE__*/ S.Array(ApiWarning) as any as S.Schema<ApiWarningList>;
 
 export type BackupList = Array<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** The response payload containing a list of the backups. */
 export interface ListBackupsResponse {
@@ -4939,7 +4923,7 @@ export interface ListBackupsResponse {
   /** A list of backups. */
   backups?: BackupList;
 }
-export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warnings: S.optional(ApiWarningList),
     nextPageToken: S.optional(S.String),
@@ -4959,7 +4943,7 @@ export interface ListBlueGreenDeploymentsRequest {
   /** Optional. A page token, received from a previous `ListBlueGreenDeployments` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4978,7 +4962,7 @@ export const ListBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBlueGreenDeploymentsRequest>;
 
 export type BlueGreenDeploymentList = Array<BlueGreenDeployment>;
-export const BlueGreenDeploymentList = /*@__PURE__*/ S.Array(
+const BlueGreenDeploymentList = /*@__PURE__*/ S.Array(
   BlueGreenDeployment,
 ) as any as S.Schema<BlueGreenDeploymentList>;
 
@@ -4989,7 +4973,7 @@ export interface ListBlueGreenDeploymentsResponse {
   /** The list of blue-green deployment resources. */
   blueGreenDeployments?: BlueGreenDeploymentList;
 }
-export const ListBlueGreenDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBlueGreenDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     blueGreenDeployments: S.optional(BlueGreenDeploymentList),
@@ -5006,7 +4990,7 @@ export interface ListDatabasesRequest {
   /** Project ID of the project that contains the instance. */
   project: string;
 }
-export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -5021,7 +5005,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatabasesRequest" }) as any as S.Schema<ListDatabasesRequest>;
 
 export type DatabaseList = Array<Database>;
-export const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
+const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
 
 /** Database list response. */
 export interface DatabasesListResponse {
@@ -5030,7 +5014,7 @@ export interface DatabasesListResponse {
   /** List of database resources in the instance. */
   items?: DatabaseList;
 }
-export const DatabasesListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabasesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(DatabaseList),
@@ -5045,7 +5029,7 @@ export interface ListEntraIdCertificatesInstancesRequest {
   /** Required. Project ID of the project that contains the instance. */
   project: string;
 }
-export const ListEntraIdCertificatesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEntraIdCertificatesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -5062,7 +5046,7 @@ export const ListEntraIdCertificatesInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListEntraIdCertificatesInstancesRequest>;
 
 export type SslCertList = Array<SslCert>;
-export const SslCertList = /*@__PURE__*/ S.Array(SslCert) as any as S.Schema<SslCertList>;
+const SslCertList = /*@__PURE__*/ S.Array(SslCert) as any as S.Schema<SslCertList>;
 
 /** Instances ListEntraIdCertificates response. */
 export interface InstancesListEntraIdCertificatesResponse {
@@ -5073,7 +5057,7 @@ export interface InstancesListEntraIdCertificatesResponse {
   /** List of Entra ID certificates for the instance. */
   certs?: SslCertList;
 }
-export const InstancesListEntraIdCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const InstancesListEntraIdCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     activeVersion: S.optional(S.String),
@@ -5087,7 +5071,7 @@ export type ListFlagsFlagScopeEnum =
   | "SQL_FLAG_SCOPE_UNSPECIFIED"
   | "SQL_FLAG_SCOPE_DATABASE"
   | "SQL_FLAG_SCOPE_CONNECTION_POOL";
-export const ListFlagsFlagScopeEnum = S.String;
+const ListFlagsFlagScopeEnum = S.String;
 
 export interface ListFlagsRequest {
   /** Database type and version you want to retrieve flags for. By default, this method returns flags for all database types and versions. */
@@ -5095,7 +5079,7 @@ export interface ListFlagsRequest {
   /** Optional. Specify the scope of flags to be returned by SqlFlagsListService. Return list of database flags if unspecified. */
   flagScope?: ListFlagsFlagScopeEnum | (string & {});
 }
-export const ListFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseVersion: S.optional(S.String.pipe(T.Query())),
     flagScope: S.optional(ListFlagsFlagScopeEnum.pipe(T.Query())),
@@ -5117,13 +5101,13 @@ export type FlagTypeEnum =
   | "MYSQL_TIMEZONE_OFFSET"
   | "FLOAT"
   | "REPEATED_STRING";
-export const FlagTypeEnum = S.String;
+const FlagTypeEnum = S.String;
 
 export type FlagFlagScopeEnum =
   | "SQL_FLAG_SCOPE_UNSPECIFIED"
   | "SQL_FLAG_SCOPE_DATABASE"
   | "SQL_FLAG_SCOPE_CONNECTION_POOL";
-export const FlagFlagScopeEnum = S.String;
+const FlagFlagScopeEnum = S.String;
 
 export type FlagAppliesToItemEnum =
   | "SQL_DATABASE_VERSION_UNSPECIFIED"
@@ -5182,10 +5166,8 @@ export type FlagAppliesToItemEnum =
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
   | "SQLSERVER_2025_EXPRESS";
-export const FlagAppliesToItemEnum = S.String;
-
 export type FlagAppliesToItemEnumList = Array<FlagAppliesToItemEnum>;
-export const FlagAppliesToItemEnumList =
+const FlagAppliesToItemEnumList =
   ConnectSettingsMdxProtocolSupportItemEnumList as any as S.Schema<FlagAppliesToItemEnumList>;
 
 /** A flag resource. */
@@ -5217,7 +5199,7 @@ export interface Flag {
   /** Indicates whether changing this flag will trigger a database restart. Only applicable to Second Generation instances. */
   requiresRestart?: boolean;
 }
-export const Flag = /*@__PURE__*/ S.suspend(() =>
+const Flag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minValue: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5236,7 +5218,7 @@ export const Flag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Flag" }) as any as S.Schema<Flag>;
 
 export type FlagList = Array<Flag>;
-export const FlagList = /*@__PURE__*/ S.Array(Flag) as any as S.Schema<FlagList>;
+const FlagList = /*@__PURE__*/ S.Array(Flag) as any as S.Schema<FlagList>;
 
 /** Flags list response. */
 export interface FlagsListResponse {
@@ -5245,7 +5227,7 @@ export interface FlagsListResponse {
   /** This is always `sql#flagsList`. */
   kind?: string;
 }
-export const FlagsListResponse = /*@__PURE__*/ S.suspend(() =>
+const FlagsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(FlagList),
     kind: S.optional(S.String),
@@ -5264,7 +5246,7 @@ export interface ListInstancesRequest {
   /** A previously-returned page token representing part of the larger set of results to view. */
   pageToken?: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5281,7 +5263,7 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 
 export type DatabaseInstanceList = Array<DatabaseInstance>;
-export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
+const DatabaseInstanceList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceList>;
 
@@ -5296,7 +5278,7 @@ export interface InstancesListResponse {
   /** This is always `sql#instancesList`. */
   kind?: string;
 }
-export const InstancesListResponse = /*@__PURE__*/ S.suspend(() =>
+const InstancesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     warnings: S.optional(ApiWarningList),
@@ -5317,7 +5299,7 @@ export interface ListOperationsRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5334,7 +5316,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** Operations list response. */
 export interface OperationsListResponse {
@@ -5345,7 +5327,7 @@ export interface OperationsListResponse {
   /** This is always `sql#operationsList`. */
   kind?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     items: OperationList,
@@ -5361,7 +5343,7 @@ export interface ListServerCasInstancesRequest {
   /** Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const ListServerCasInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerCasInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -5385,7 +5367,7 @@ export interface InstancesListServerCasResponse {
   /** List of server CA certificates for the instance. */
   certs?: SslCertList;
 }
-export const InstancesListServerCasResponse = /*@__PURE__*/ S.suspend(() =>
+const InstancesListServerCasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5403,7 +5385,7 @@ export interface ListServerCertificatesInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const ListServerCertificatesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerCertificatesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -5430,7 +5412,7 @@ export interface InstancesListServerCertificatesResponse {
   /** The `sha1_fingerprint` of the active certificate from `server_certs`. */
   activeVersion?: string;
 }
-export const InstancesListServerCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const InstancesListServerCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverCerts: S.optional(SslCertList),
     kind: S.optional(S.String),
@@ -5447,7 +5429,7 @@ export interface ListSslCertsRequest {
   /** Project ID of the project that contains the instance. */
   project: string;
 }
-export const ListSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSslCertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -5467,7 +5449,7 @@ export interface SslCertsListResponse {
   /** List of client certificates for the instance. */
   items?: SslCertList;
 }
-export const SslCertsListResponse = /*@__PURE__*/ S.suspend(() =>
+const SslCertsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(SslCertList),
@@ -5478,7 +5460,7 @@ export interface ListTiersRequest {
   /** Project ID of the project for which to list tiers. */
   project: string;
 }
-export const ListTiersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTiersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
   }).pipe(
@@ -5503,7 +5485,7 @@ export interface Tier {
   /** An identifier for the machine type, for example, `db-custom-1-3840`. For related information, see [Pricing](/sql/pricing). */
   tier?: string;
 }
-export const Tier = /*@__PURE__*/ S.suspend(() =>
+const Tier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(StringList),
     RAM: S.optional(S.String),
@@ -5514,7 +5496,7 @@ export const Tier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tier" }) as any as S.Schema<Tier>;
 
 export type TierList = Array<Tier>;
-export const TierList = /*@__PURE__*/ S.Array(Tier) as any as S.Schema<TierList>;
+const TierList = /*@__PURE__*/ S.Array(Tier) as any as S.Schema<TierList>;
 
 /** Tiers list response. */
 export interface TiersListResponse {
@@ -5523,7 +5505,7 @@ export interface TiersListResponse {
   /** This is always `sql#tiersList`. */
   kind?: string;
 }
-export const TiersListResponse = /*@__PURE__*/ S.suspend(() =>
+const TiersListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(TierList),
     kind: S.optional(S.String),
@@ -5538,7 +5520,7 @@ export interface ListUsersRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -5553,7 +5535,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** User list response. */
 export interface UsersListResponse {
@@ -5564,7 +5546,7 @@ export interface UsersListResponse {
   /** Unused. */
   nextPageToken?: string;
 }
-export const UsersListResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(UserList),
@@ -5578,7 +5560,7 @@ export interface ListWorkloadCapturesRequest {
   /** Required. Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const ListWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -5598,7 +5580,7 @@ export type WorkloadCaptureWorkloadCaptureStateEnum =
   | "RUNNING"
   | "COMPLETED"
   | "FAILED";
-export const WorkloadCaptureWorkloadCaptureStateEnum = S.String;
+const WorkloadCaptureWorkloadCaptureStateEnum = S.String;
 
 /** Captured workload for an instance. */
 export interface WorkloadCapture {
@@ -5617,7 +5599,7 @@ export interface WorkloadCapture {
   /** Output only. The start time of the workload capture. */
   startTime?: string;
 }
-export const WorkloadCapture = /*@__PURE__*/ S.suspend(() =>
+const WorkloadCapture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceInstance: S.optional(S.String),
     replayInstance: S.optional(S.String),
@@ -5630,7 +5612,7 @@ export const WorkloadCapture = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkloadCapture" }) as any as S.Schema<WorkloadCapture>;
 
 export type WorkloadCaptureList = Array<WorkloadCapture>;
-export const WorkloadCaptureList = /*@__PURE__*/ S.Array(
+const WorkloadCaptureList = /*@__PURE__*/ S.Array(
   WorkloadCapture,
 ) as any as S.Schema<WorkloadCaptureList>;
 
@@ -5641,7 +5623,7 @@ export interface WorkloadCapturesListResponse {
   /** This is always `sql#workloadCapturesList`. */
   kind?: string;
 }
-export const WorkloadCapturesListResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkloadCapturesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadCaptures: S.optional(WorkloadCaptureList),
     kind: S.optional(S.String),
@@ -5662,7 +5644,7 @@ export interface PatchDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const PatchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -5692,7 +5674,7 @@ export interface PatchInstancesRequest {
   /** Request body */
   body?: DatabaseInstance;
 }
-export const PatchInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reconcilePscNetworking: S.optional(S.Boolean.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -5714,7 +5696,7 @@ export interface PerformDiskShrinkContext {
   /** The target disk shrink size in GigaBytes. */
   targetSizeGb?: string;
 }
-export const PerformDiskShrinkContext = /*@__PURE__*/ S.suspend(() =>
+const PerformDiskShrinkContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSizeGb: S.optional(S.String),
   }),
@@ -5730,7 +5712,7 @@ export interface PerformDiskShrinkProjectsInstancesRequest {
   /** Request body */
   body?: PerformDiskShrinkContext;
 }
-export const PerformDiskShrinkProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PerformDiskShrinkProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -5770,7 +5752,7 @@ export interface PointInTimeRestoreContext {
   /** Optional. The region of the target instance where the datasource will be restored. For example: "us-central1". */
   region?: string;
 }
-export const PointInTimeRestoreContext = /*@__PURE__*/ S.suspend(() =>
+const PointInTimeRestoreContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocatedIpRange: S.optional(S.String),
     privateNetwork: S.optional(S.String),
@@ -5793,7 +5775,7 @@ export interface PointInTimeRestoreInstancesRequest {
   /** Request body */
   body?: PointInTimeRestoreContext;
 }
-export const PointInTimeRestoreInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PointInTimeRestoreInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PointInTimeRestoreContext.pipe(T.HttpBody())),
@@ -5813,7 +5795,7 @@ export interface InstancesPreCheckMajorVersionUpgradeRequest {
   /** Required. Contains details about the pre-check major version upgrade operation. */
   preCheckMajorVersionUpgradeContext?: PreCheckMajorVersionUpgradeContext;
 }
-export const InstancesPreCheckMajorVersionUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesPreCheckMajorVersionUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preCheckMajorVersionUpgradeContext: S.optional(PreCheckMajorVersionUpgradeContext),
   }),
@@ -5831,7 +5813,7 @@ export interface PreCheckMajorVersionUpgradeInstancesRequest {
   /** Request body */
   body?: InstancesPreCheckMajorVersionUpgradeRequest;
 }
-export const PreCheckMajorVersionUpgradeInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PreCheckMajorVersionUpgradeInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -5858,7 +5840,7 @@ export interface PromoteReplicaInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const PromoteReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -5879,7 +5861,7 @@ export type BackupReencryptionConfigBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "AUTOMATED"
   | "ON_DEMAND";
-export const BackupReencryptionConfigBackupTypeEnum = S.String;
+const BackupReencryptionConfigBackupTypeEnum = S.String;
 
 /** Backup Reencryption Config */
 export interface BackupReencryptionConfig {
@@ -5888,7 +5870,7 @@ export interface BackupReencryptionConfig {
   /** Backup re-encryption limit */
   backupLimit?: number;
 }
-export const BackupReencryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const BackupReencryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupType: S.optional(BackupReencryptionConfigBackupTypeEnum),
     backupLimit: S.optional(S.Number),
@@ -5900,7 +5882,7 @@ export interface InstancesReencryptRequest {
   /** Configuration specific to backup re-encryption */
   backupReencryptionConfig?: BackupReencryptionConfig;
 }
-export const InstancesReencryptRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesReencryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupReencryptionConfig: S.optional(BackupReencryptionConfig),
   }),
@@ -5918,7 +5900,7 @@ export interface ReencryptInstancesRequest {
   /** Request body */
   body?: InstancesReencryptRequest;
 }
-export const ReencryptInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReencryptInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -5943,7 +5925,7 @@ export interface ReleaseSsrsLeaseInstancesRequest {
   /** Required. The Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or less (Example: instance-id). */
   instance: string;
 }
-export const ReleaseSsrsLeaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReleaseSsrsLeaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -5964,7 +5946,7 @@ export interface SqlInstancesReleaseSsrsLeaseResponse {
   /** The operation ID. */
   operationId?: string;
 }
-export const SqlInstancesReleaseSsrsLeaseResponse =
+const SqlInstancesReleaseSsrsLeaseResponse =
   SqlInstancesAcquireSsrsLeaseResponse as any as S.Schema<SqlInstancesReleaseSsrsLeaseResponse>;
 
 export type RescheduleRescheduleTypeEnum =
@@ -5972,7 +5954,7 @@ export type RescheduleRescheduleTypeEnum =
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
   | "SPECIFIC_TIME";
-export const RescheduleRescheduleTypeEnum = S.String;
+const RescheduleRescheduleTypeEnum = S.String;
 
 export interface Reschedule {
   /** Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. */
@@ -5980,7 +5962,7 @@ export interface Reschedule {
   /** Required. The type of the reschedule. */
   rescheduleType?: RescheduleRescheduleTypeEnum | (string & {});
 }
-export const Reschedule = /*@__PURE__*/ S.suspend(() =>
+const Reschedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleTime: S.optional(S.String),
     rescheduleType: S.optional(RescheduleRescheduleTypeEnum),
@@ -5992,7 +5974,7 @@ export interface SqlInstancesRescheduleMaintenanceRequestBody {
   /** Required. The type of the reschedule the user wants. */
   reschedule?: Reschedule;
 }
-export const SqlInstancesRescheduleMaintenanceRequestBody = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesRescheduleMaintenanceRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reschedule: S.optional(Reschedule),
   }),
@@ -6010,7 +5992,7 @@ export interface RescheduleMaintenanceProjectsInstancesRequest {
   /** Request body */
   body?: SqlInstancesRescheduleMaintenanceRequestBody;
 }
-export const RescheduleMaintenanceProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RescheduleMaintenanceProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -6032,7 +6014,7 @@ export interface SqlInstancesResetReplicaSizeRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const SqlInstancesResetReplicaSizeRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesResetReplicaSizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
   }),
@@ -6048,7 +6030,7 @@ export interface ResetReplicaSizeProjectsInstancesRequest {
   /** Request body */
   body?: SqlInstancesResetReplicaSizeRequest;
 }
-export const ResetReplicaSizeProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetReplicaSizeProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6068,7 +6050,7 @@ export type ResetSslConfigInstancesModeEnum =
   | "RESET_SSL_MODE_UNSPECIFIED"
   | "ALL"
   | "SYNC_FROM_PRIMARY";
-export const ResetSslConfigInstancesModeEnum = S.String;
+const ResetSslConfigInstancesModeEnum = S.String;
 
 export interface ResetSslConfigInstancesRequest {
   /** Project ID of the project that contains the instance. */
@@ -6080,7 +6062,7 @@ export interface ResetSslConfigInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const ResetSslConfigInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetSslConfigInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -6105,7 +6087,7 @@ export interface RestartInstancesRequest {
   /** Cloud SQL instance ID. This does not include the project ID. */
   instance: string;
 }
-export const RestartInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -6130,7 +6112,7 @@ export interface RestoreBackupContext {
   /** The full project ID of the source instance. */
   project?: string;
 }
-export const RestoreBackupContext = /*@__PURE__*/ S.suspend(() =>
+const RestoreBackupContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupRunId: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6154,7 +6136,7 @@ export interface InstancesRestoreBackupRequest {
   /** Parameters required to perform the restore backup operation. */
   restoreBackupContext?: RestoreBackupContext;
 }
-export const InstancesRestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesRestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupdrBackup: S.optional(S.String),
     backup: S.optional(S.String),
@@ -6177,7 +6159,7 @@ export interface RestoreBackupInstancesRequest {
   /** Request body */
   body?: InstancesRestoreBackupRequest;
 }
-export const RestoreBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -6201,7 +6183,7 @@ export interface RotateEntraIdCertificateContext {
   /** Optional. This is always `sql#rotateEntraIdCertificateContext`. */
   kind?: string;
 }
-export const RotateEntraIdCertificateContext = /*@__PURE__*/ S.suspend(() =>
+const RotateEntraIdCertificateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6215,7 +6197,7 @@ export interface InstancesRotateEntraIdCertificateRequest {
   /** Optional. Contains details about the rotate Entra ID certificate operation. */
   rotateEntraIdCertificateContext?: RotateEntraIdCertificateContext;
 }
-export const InstancesRotateEntraIdCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesRotateEntraIdCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rotateEntraIdCertificateContext: S.optional(RotateEntraIdCertificateContext),
   }),
@@ -6233,7 +6215,7 @@ export interface RotateEntraIdCertificateInstancesRequest {
   /** Request body */
   body?: InstancesRotateEntraIdCertificateRequest;
 }
-export const RotateEntraIdCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateEntraIdCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6257,7 +6239,7 @@ export interface RotateServerCaContext {
   /** This is always `sql#rotateServerCaContext`. */
   kind?: string;
 }
-export const RotateServerCaContext = /*@__PURE__*/ S.suspend(() =>
+const RotateServerCaContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6269,7 +6251,7 @@ export interface InstancesRotateServerCaRequest {
   /** Contains details about the rotate server CA operation. */
   rotateServerCaContext?: RotateServerCaContext;
 }
-export const InstancesRotateServerCaRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesRotateServerCaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rotateServerCaContext: S.optional(RotateServerCaContext),
   }),
@@ -6287,7 +6269,7 @@ export interface RotateServerCaInstancesRequest {
   /** Request body */
   body?: InstancesRotateServerCaRequest;
 }
-export const RotateServerCaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateServerCaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -6311,7 +6293,7 @@ export interface RotateServerCertificateContext {
   /** Optional. The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the most recently added server certificate version. */
   nextVersion?: string;
 }
-export const RotateServerCertificateContext = /*@__PURE__*/ S.suspend(() =>
+const RotateServerCertificateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     nextVersion: S.optional(S.String),
@@ -6325,7 +6307,7 @@ export interface InstancesRotateServerCertificateRequest {
   /** Optional. Contains details about the rotate server CA operation. */
   rotateServerCertificateContext?: RotateServerCertificateContext;
 }
-export const InstancesRotateServerCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesRotateServerCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rotateServerCertificateContext: S.optional(RotateServerCertificateContext),
   }),
@@ -6343,7 +6325,7 @@ export interface RotateServerCertificateInstancesRequest {
   /** Request body */
   body?: InstancesRotateServerCertificateRequest;
 }
-export const RotateServerCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateServerCertificateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -6364,20 +6346,20 @@ export type SqlInstancesStartExternalSyncRequestSyncModeEnum =
   | "EXTERNAL_SYNC_MODE_UNSPECIFIED"
   | "ONLINE"
   | "OFFLINE";
-export const SqlInstancesStartExternalSyncRequestSyncModeEnum = S.String;
+const SqlInstancesStartExternalSyncRequestSyncModeEnum = S.String;
 
 export type SqlInstancesStartExternalSyncRequestMigrationTypeEnum =
   | "MIGRATION_TYPE_UNSPECIFIED"
   | "LOGICAL"
   | "PHYSICAL";
-export const SqlInstancesStartExternalSyncRequestMigrationTypeEnum = S.String;
+const SqlInstancesStartExternalSyncRequestMigrationTypeEnum = S.String;
 
 export type SqlInstancesStartExternalSyncRequestSyncParallelLevelEnum =
   | "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED"
   | "MIN"
   | "OPTIMAL"
   | "MAX";
-export const SqlInstancesStartExternalSyncRequestSyncParallelLevelEnum = S.String;
+const SqlInstancesStartExternalSyncRequestSyncParallelLevelEnum = S.String;
 
 /** Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL external server initial dump. */
 export interface SyncFlags {
@@ -6386,17 +6368,17 @@ export interface SyncFlags {
   /** The name of the flag. */
   name?: string;
 }
-export const SyncFlags = DatabaseFlags as any as S.Schema<SyncFlags>;
+const SyncFlags = DatabaseFlags as any as S.Schema<SyncFlags>;
 
 export type SyncFlagsList = Array<SyncFlags>;
-export const SyncFlagsList = /*@__PURE__*/ S.Array(SyncFlags) as any as S.Schema<SyncFlagsList>;
+const SyncFlagsList = /*@__PURE__*/ S.Array(SyncFlags) as any as S.Schema<SyncFlagsList>;
 
 /** MySQL-specific external server sync settings. */
 export interface MySqlSyncConfig {
   /** Flags to use for the initial dump. */
   initialSyncFlags?: SyncFlagsList;
 }
-export const MySqlSyncConfig = /*@__PURE__*/ S.suspend(() =>
+const MySqlSyncConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialSyncFlags: S.optional(SyncFlagsList),
   }),
@@ -6418,7 +6400,7 @@ export interface SqlInstancesStartExternalSyncRequest {
   /** MySQL-specific settings for start external sync. */
   mysqlSyncConfig?: MySqlSyncConfig;
 }
-export const SqlInstancesStartExternalSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesStartExternalSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncMode: S.optional(SqlInstancesStartExternalSyncRequestSyncModeEnum),
     migrationType: S.optional(SqlInstancesStartExternalSyncRequestMigrationTypeEnum),
@@ -6440,7 +6422,7 @@ export interface StartExternalSyncProjectsInstancesRequest {
   /** Request body */
   body?: SqlInstancesStartExternalSyncRequest;
 }
-export const StartExternalSyncProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartExternalSyncProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6461,7 +6443,7 @@ export interface SqlWorkloadCapturesStartReplayRequest {
   /** Required. Contains details about the start workload replay operation. */
   startWorkloadReplayContext?: StartWorkloadReplayContext;
 }
-export const SqlWorkloadCapturesStartReplayRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlWorkloadCapturesStartReplayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startWorkloadReplayContext: S.optional(StartWorkloadReplayContext),
   }),
@@ -6479,7 +6461,7 @@ export interface StartReplayWorkloadCapturesRequest {
   /** Request body */
   body?: SqlWorkloadCapturesStartReplayRequest;
 }
-export const StartReplayWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartReplayWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6504,7 +6486,7 @@ export interface StartReplicaInstancesRequest {
   /** ID of the project that contains the read replica. */
   project: string;
 }
-export const StartReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     instance: S.String.pipe(T.Label()),
@@ -6525,7 +6507,7 @@ export interface SqlWorkloadCapturesStartRequest {
   /** Optional. Contains details about the start workload capture operation. */
   startWorkloadCaptureContext?: StartWorkloadCaptureContext;
 }
-export const SqlWorkloadCapturesStartRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlWorkloadCapturesStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startWorkloadCaptureContext: S.optional(StartWorkloadCaptureContext),
   }),
@@ -6541,7 +6523,7 @@ export interface StartWorkloadCapturesRequest {
   /** Request body */
   body?: SqlWorkloadCapturesStartRequest;
 }
-export const StartWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -6562,7 +6544,7 @@ export interface SqlWorkloadCapturesStopReplayRequest {
   /** Required. Contains details about the stop workload replay operation. */
   stopWorkloadReplayContext?: StopWorkloadReplayContext;
 }
-export const SqlWorkloadCapturesStopReplayRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlWorkloadCapturesStopReplayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopWorkloadReplayContext: S.optional(StopWorkloadReplayContext),
   }),
@@ -6580,7 +6562,7 @@ export interface StopReplayWorkloadCapturesRequest {
   /** Request body */
   body?: SqlWorkloadCapturesStopReplayRequest;
 }
-export const StopReplayWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopReplayWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     workloadId: S.String.pipe(T.Label()),
@@ -6605,7 +6587,7 @@ export interface StopReplicaInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const StopReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6626,7 +6608,7 @@ export interface SqlWorkloadCapturesStopRequest {
   /** Optional. Contains details about the stop workload capture operation. */
   stopWorkloadCaptureContext?: StopWorkloadCaptureContext;
 }
-export const SqlWorkloadCapturesStopRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlWorkloadCapturesStopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopWorkloadCaptureContext: S.optional(StopWorkloadCaptureContext),
   }),
@@ -6642,7 +6624,7 @@ export interface StopWorkloadCapturesRequest {
   /** Request body */
   body?: SqlWorkloadCapturesStopRequest;
 }
-export const StopWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -6660,9 +6642,7 @@ export const StopWorkloadCapturesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for switching over a `BlueGreenDeployment` resource. */
 export interface SwitchoverBlueGreenDeploymentRequest {}
-export const SwitchoverBlueGreenDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const SwitchoverBlueGreenDeploymentRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SwitchoverBlueGreenDeploymentRequest",
 }) as any as S.Schema<SwitchoverBlueGreenDeploymentRequest>;
 
@@ -6672,7 +6652,7 @@ export interface SwitchoverBlueGreenDeploymentsRequest {
   /** Request body */
   body?: SwitchoverBlueGreenDeploymentRequest;
 }
-export const SwitchoverBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SwitchoverBlueGreenDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SwitchoverBlueGreenDeploymentRequest.pipe(T.HttpBody())),
@@ -6697,7 +6677,7 @@ export interface SwitchoverInstancesRequest {
   /** Optional. Region of the Cloud SQL instance. */
   location?: string;
 }
-export const SwitchoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const SwitchoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6721,7 +6701,7 @@ export interface TruncateLogContext {
   /** The type of log to truncate. Valid values are `MYSQL_GENERAL_TABLE` and `MYSQL_SLOW_TABLE`. */
   logType?: string;
 }
-export const TruncateLogContext = /*@__PURE__*/ S.suspend(() =>
+const TruncateLogContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     logType: S.optional(S.String),
@@ -6733,7 +6713,7 @@ export interface InstancesTruncateLogRequest {
   /** Contains details about the truncate log operation. */
   truncateLogContext?: TruncateLogContext;
 }
-export const InstancesTruncateLogRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesTruncateLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     truncateLogContext: S.optional(TruncateLogContext),
   }),
@@ -6751,7 +6731,7 @@ export interface TruncateLogInstancesRequest {
   /** Request body */
   body?: InstancesTruncateLogRequest;
 }
-export const TruncateLogInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const TruncateLogInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -6776,7 +6756,7 @@ export interface UpdateBackupBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const UpdateBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBackupBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6804,7 +6784,7 @@ export interface UpdateDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const UpdateDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -6830,7 +6810,7 @@ export interface UpdateInstancesRequest {
   /** Request body */
   body?: DatabaseInstance;
 }
-export const UpdateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     project: S.String.pipe(T.Label()),
@@ -6867,7 +6847,7 @@ export interface UpdateUsersRequest {
   /** Request body */
   body?: User;
 }
-export const UpdateUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     revokeExistingRoles: S.optional(S.Boolean.pipe(T.Query())),
@@ -6892,27 +6872,27 @@ export type SqlInstancesVerifyExternalSyncSettingsRequestSyncModeEnum =
   | "EXTERNAL_SYNC_MODE_UNSPECIFIED"
   | "ONLINE"
   | "OFFLINE";
-export const SqlInstancesVerifyExternalSyncSettingsRequestSyncModeEnum = S.String;
+const SqlInstancesVerifyExternalSyncSettingsRequestSyncModeEnum = S.String;
 
 export type SqlInstancesVerifyExternalSyncSettingsRequestMigrationTypeEnum =
   | "MIGRATION_TYPE_UNSPECIFIED"
   | "LOGICAL"
   | "PHYSICAL";
-export const SqlInstancesVerifyExternalSyncSettingsRequestMigrationTypeEnum = S.String;
+const SqlInstancesVerifyExternalSyncSettingsRequestMigrationTypeEnum = S.String;
 
 export type SqlInstancesVerifyExternalSyncSettingsRequestSyncParallelLevelEnum =
   | "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED"
   | "MIN"
   | "OPTIMAL"
   | "MAX";
-export const SqlInstancesVerifyExternalSyncSettingsRequestSyncParallelLevelEnum = S.String;
+const SqlInstancesVerifyExternalSyncSettingsRequestSyncParallelLevelEnum = S.String;
 
 /** The selected object that Cloud SQL migrates. */
 export interface ExternalSyncSelectedObject {
   /** The name of the database that Cloud SQL migrates. */
   database?: string;
 }
-export const ExternalSyncSelectedObject = /*@__PURE__*/ S.suspend(() =>
+const ExternalSyncSelectedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.optional(S.String),
   }),
@@ -6921,7 +6901,7 @@ export const ExternalSyncSelectedObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalSyncSelectedObject>;
 
 export type ExternalSyncSelectedObjectList = Array<ExternalSyncSelectedObject>;
-export const ExternalSyncSelectedObjectList = /*@__PURE__*/ S.Array(
+const ExternalSyncSelectedObjectList = /*@__PURE__*/ S.Array(
   ExternalSyncSelectedObject,
 ) as any as S.Schema<ExternalSyncSelectedObjectList>;
 
@@ -6945,7 +6925,7 @@ export interface SqlInstancesVerifyExternalSyncSettingsRequest {
   /** Optional. MySQL-specific settings for start external sync. */
   mysqlSyncConfig?: MySqlSyncConfig;
 }
-export const SqlInstancesVerifyExternalSyncSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesVerifyExternalSyncSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncMode: S.optional(SqlInstancesVerifyExternalSyncSettingsRequestSyncModeEnum),
     migrationType: S.optional(SqlInstancesVerifyExternalSyncSettingsRequestMigrationTypeEnum),
@@ -6970,7 +6950,7 @@ export interface VerifyExternalSyncSettingsProjectsInstancesRequest {
   /** Request body */
   body?: SqlInstancesVerifyExternalSyncSettingsRequest;
 }
-export const VerifyExternalSyncSettingsProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyExternalSyncSettingsProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     instance: S.String.pipe(T.Label()),
@@ -7048,7 +7028,7 @@ export type SqlExternalSyncSettingErrorTypeEnum =
   | "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE"
   | "WRITABLE_DESTINATION_REPLICA_RECREATION_DOWNTIME"
   | "WRITABLE_DESTINATION_STORAGE_AUTO_INCREASE_DISABLED";
-export const SqlExternalSyncSettingErrorTypeEnum = S.String;
+const SqlExternalSyncSettingErrorTypeEnum = S.String;
 
 /** External primary instance migration setting error/warning. */
 export interface SqlExternalSyncSettingError {
@@ -7059,7 +7039,7 @@ export interface SqlExternalSyncSettingError {
   /** Can be `sql#externalSyncSettingError` or `sql#externalSyncSettingWarning`. */
   kind?: string;
 }
-export const SqlExternalSyncSettingError = /*@__PURE__*/ S.suspend(() =>
+const SqlExternalSyncSettingError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detail: S.optional(S.String),
     type: S.optional(SqlExternalSyncSettingErrorTypeEnum),
@@ -7070,7 +7050,7 @@ export const SqlExternalSyncSettingError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlExternalSyncSettingError>;
 
 export type SqlExternalSyncSettingErrorList = Array<SqlExternalSyncSettingError>;
-export const SqlExternalSyncSettingErrorList = /*@__PURE__*/ S.Array(
+const SqlExternalSyncSettingErrorList = /*@__PURE__*/ S.Array(
   SqlExternalSyncSettingError,
 ) as any as S.Schema<SqlExternalSyncSettingErrorList>;
 
@@ -7083,7 +7063,7 @@ export interface SqlInstancesVerifyExternalSyncSettingsResponse {
   /** List of migration violations. */
   errors?: SqlExternalSyncSettingErrorList;
 }
-export const SqlInstancesVerifyExternalSyncSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const SqlInstancesVerifyExternalSyncSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     warnings: S.optional(SqlExternalSyncSettingErrorList),

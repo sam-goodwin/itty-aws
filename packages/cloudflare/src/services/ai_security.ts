@@ -43,7 +43,7 @@ export interface GetAiSecurityRequest {
   /** Defines the zone. */
   zoneId: string;
 }
-export const GetAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ai-security/settings", code: 200 })),
@@ -54,7 +54,7 @@ export interface GetAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean | null;
 }
-export const GetAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
   }),
@@ -64,7 +64,7 @@ export interface GetCustomTopicRequest {
   /** Defines the zone. */
   zoneId: string;
 }
-export const GetCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ai-security/custom-topics", code: 200 })),
@@ -76,7 +76,7 @@ export interface CustomTopicsGetResponseTopicsItem {
   /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
 }
-export const CustomTopicsGetResponseTopicsItem = /*@__PURE__*/ S.suspend(() =>
+const CustomTopicsGetResponseTopicsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     topic: S.String,
@@ -86,7 +86,7 @@ export const CustomTopicsGetResponseTopicsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsGetResponseTopicsItem>;
 
 export type CustomTopicsGetResponseTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-export const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ S.Array(
+const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ S.Array(
   CustomTopicsGetResponseTopicsItem,
 ) as any as S.Schema<CustomTopicsGetResponseTopicsList>;
 
@@ -95,7 +95,7 @@ export interface GetCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsGetResponseTopicsList | null;
 }
-export const GetCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(S.NullOr(CustomTopicsGetResponseTopicsList)),
   }),
@@ -107,7 +107,7 @@ export interface PutAiSecurityRequest {
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean;
 }
-export const PutAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -119,14 +119,11 @@ export interface PutAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean | null;
 }
-export const PutAiSecurityResponse =
-  GetAiSecurityResponse as any as S.Schema<PutAiSecurityResponse>;
+const PutAiSecurityResponse = GetAiSecurityResponse as any as S.Schema<PutAiSecurityResponse>;
 
 export type CustomTopicsUpdateRequestTopicsItem = CustomTopicsGetResponseTopicsItem;
-export const CustomTopicsUpdateRequestTopicsItem = CustomTopicsGetResponseTopicsItem;
-
 export type CustomTopicsUpdateRequestTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-export const CustomTopicsUpdateRequestTopicsList =
+const CustomTopicsUpdateRequestTopicsList =
   CustomTopicsGetResponseTopicsList as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
 
 export interface PutCustomTopicRequest {
@@ -135,7 +132,7 @@ export interface PutCustomTopicRequest {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateRequestTopicsList;
 }
-export const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     topics: S.optional(CustomTopicsUpdateRequestTopicsList),
@@ -143,19 +140,13 @@ export const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCustomTopicRequest" }) as any as S.Schema<PutCustomTopicRequest>;
 
 export type CustomTopicsUpdateResponseTopicsItem = CustomTopicsGetResponseTopicsItem;
-export const CustomTopicsUpdateResponseTopicsItem = CustomTopicsGetResponseTopicsItem;
-
 export type CustomTopicsUpdateResponseTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-export const CustomTopicsUpdateResponseTopicsList =
-  CustomTopicsGetResponseTopicsList as any as S.Schema<CustomTopicsUpdateResponseTopicsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateResponseTopicsList | null;
 }
-export const PutCustomTopicResponse =
-  GetCustomTopicResponse as any as S.Schema<PutCustomTopicResponse>;
+const PutCustomTopicResponse = GetCustomTopicResponse as any as S.Schema<PutCustomTopicResponse>;
 
 export type GetAiSecurityError =
   | AiSecurityNotEntitled

@@ -41,7 +41,7 @@ export interface DisableServiceRegionalRequest {
   region: string;
   serviceId: string;
 }
-export const DisableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -59,7 +59,7 @@ export const DisableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableServiceRegionalRequest>;
 
 export interface DisableServiceRegionalResponse {}
-export const DisableServiceRegionalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DisableServiceRegionalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DisableServiceRegionalResponse",
 }) as any as S.Schema<DisableServiceRegionalResponse>;
 
@@ -68,7 +68,7 @@ export interface EnableServiceRegionalRequest {
   region: string;
   serviceId: string;
 }
-export const EnableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -86,7 +86,7 @@ export const EnableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServiceRegionalRequest>;
 
 export interface EnableServiceRegionalResponse {}
-export const EnableServiceRegionalResponse =
+const EnableServiceRegionalResponse =
   DisableServiceRegionalResponse as any as S.Schema<EnableServiceRegionalResponse>;
 
 export interface GetServiceStatusRegionalRequest {
@@ -94,7 +94,7 @@ export interface GetServiceStatusRegionalRequest {
   region: string;
   serviceId: string;
 }
-export const GetServiceStatusRegionalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceStatusRegionalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -113,13 +113,13 @@ export const GetServiceStatusRegionalRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** a list of service IDs which this service depend on. If the service is enabled, those service are enabled as well automatically. */
 export type DependenciesHardList = Array<string>;
-export const DependenciesHardList = /*@__PURE__*/ S.Array(
+const DependenciesHardList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DependenciesHardList>;
 
 /** a list of service IDs which this service depend on. When they are disabled a notification is sent. */
 export type DependenciesSoftList = Array<string>;
-export const DependenciesSoftList = DependenciesHardList as any as S.Schema<DependenciesSoftList>;
+const DependenciesSoftList = DependenciesHardList as any as S.Schema<DependenciesSoftList>;
 
 export interface Dependencies {
   /** a list of service IDs which this service depend on. If the service is enabled, those service are enabled as well automatically. */
@@ -127,7 +127,7 @@ export interface Dependencies {
   /** a list of service IDs which this service depend on. When they are disabled a notification is sent. */
   soft?: DependenciesSoftList;
 }
-export const Dependencies = /*@__PURE__*/ S.suspend(() =>
+const Dependencies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hard: S.optional(DependenciesHardList),
     soft: S.optional(DependenciesSoftList),
@@ -135,11 +135,11 @@ export const Dependencies = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dependencies" }) as any as S.Schema<Dependencies>;
 
 export type ServiceStatusEnablement = "REQUEST" | "AUTO";
-export const ServiceStatusEnablement = S.String;
+const ServiceStatusEnablement = S.String;
 
 /** the last action which was triggered on this service */
 export type ActionErrorAction = "DISABLE" | "ENABLE";
-export const ActionErrorAction = S.String;
+const ActionErrorAction = S.String;
 
 /** the last error for this service. */
 export interface ActionError {
@@ -150,7 +150,7 @@ export interface ActionError {
   /** the error reason provided by the service */
   reason?: string;
 }
-export const ActionError = /*@__PURE__*/ S.suspend(() =>
+const ActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(ActionErrorAction),
     code: S.optional(S.String),
@@ -159,23 +159,23 @@ export const ActionError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionError" }) as any as S.Schema<ActionError>;
 
 export type ServiceStatusLabelsMap = { [key: string]: string | undefined };
-export const ServiceStatusLabelsMap = /*@__PURE__*/ S.Record(
+const ServiceStatusLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ServiceStatusLabelsMap>;
 
 export type ServiceStatusLifecycle = "FLEX" | "PROJECT";
-export const ServiceStatusLifecycle = S.String;
+const ServiceStatusLifecycle = S.String;
 
 export type ParametersGeneralProjectScope = "SCHWARZ" | "PUBLIC";
-export const ParametersGeneralProjectScope = S.String;
+const ParametersGeneralProjectScope = S.String;
 
 export interface ParametersGeneral {
   organizationId?: string;
   projectName?: string;
   projectScope?: ParametersGeneralProjectScope;
 }
-export const ParametersGeneral = /*@__PURE__*/ S.suspend(() =>
+const ParametersGeneral = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.optional(S.String),
     projectName: S.optional(S.String),
@@ -187,18 +187,18 @@ export const ParametersGeneral = /*@__PURE__*/ S.suspend(() =>
 export interface Parameters {
   general?: ParametersGeneral;
 }
-export const Parameters = /*@__PURE__*/ S.suspend(() =>
+const Parameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     general: S.optional(ParametersGeneral),
   }),
 ).annotate({ identifier: "Parameters" }) as any as S.Schema<Parameters>;
 
 export type ServiceStatusScope = "PRIVATE" | "PUBLIC";
-export const ServiceStatusScope = S.String;
+const ServiceStatusScope = S.String;
 
 /** the state of a service within a project */
 export type ServiceStatusState = "ENABLED" | "ENABLING" | "DISABLED" | "DISABLING";
-export const ServiceStatusState = S.String;
+const ServiceStatusState = S.String;
 
 export interface ServiceStatus {
   dependencies?: Dependencies;
@@ -212,7 +212,7 @@ export interface ServiceStatus {
   /** the state of a service within a project */
   state?: ServiceStatusState;
 }
-export const ServiceStatus = /*@__PURE__*/ S.suspend(() =>
+const ServiceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencies: S.optional(Dependencies),
     enablement: S.optional(ServiceStatusEnablement),
@@ -231,7 +231,7 @@ export interface ListServiceStatusRegionalRequest {
   region: string;
   cursor?: string;
 }
-export const ListServiceStatusRegionalRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceStatusRegionalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -249,7 +249,7 @@ export const ListServiceStatusRegionalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServiceStatusRegionalRequest>;
 
 export type ListServiceStatusRegionalResponseItemsList = Array<ServiceStatus>;
-export const ListServiceStatusRegionalResponseItemsList = /*@__PURE__*/ S.Array(
+const ListServiceStatusRegionalResponseItemsList = /*@__PURE__*/ S.Array(
   ServiceStatus,
 ) as any as S.Schema<ListServiceStatusRegionalResponseItemsList>;
 
@@ -257,7 +257,7 @@ export interface ListServiceStatusRegionalResponse {
   items?: ListServiceStatusRegionalResponseItemsList;
   nextCursor?: string;
 }
-export const ListServiceStatusRegionalResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceStatusRegionalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListServiceStatusRegionalResponseItemsList),
     nextCursor: S.optional(S.String),

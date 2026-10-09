@@ -36,7 +36,7 @@ export interface CreateRegionalServicePrefixBindingRequest {
   /** Region key from managed regions (e.g., "us", "eu"). */
   regionKey: string;
 }
-export const CreateRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cidr: S.String,
@@ -66,7 +66,7 @@ export interface CreateRegionalServicePrefixBindingResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-export const CreateRegionalServicePrefixBindingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionalServicePrefixBindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cidr: S.String,
@@ -83,7 +83,7 @@ export interface DeleteRegionalServicePrefixBindingRequest {
   /** Unique identifier for the prefix binding. */
   bindingId: string;
 }
-export const DeleteRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bindingId: S.String.pipe(T.Label("binding_id")),
@@ -101,7 +101,7 @@ export const DeleteRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteRegionalServicePrefixBindingRequest>;
 
 export interface DeleteRegionalServicePrefixBindingResponse {}
-export const DeleteRegionalServicePrefixBindingResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionalServicePrefixBindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRegionalServicePrefixBindingResponse",
@@ -113,7 +113,7 @@ export interface GetRegionRequest {
   /** UUID of the region (custom or managed) or region_key of a managed region. */
   regionId: string;
 }
-export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     regionId: S.String.pipe(T.Label("region_id")),
@@ -134,7 +134,7 @@ export interface GetRegionResponse {
   version: number;
   versionCreatedOn: string;
 }
-export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -152,7 +152,7 @@ export interface GetRegionalServicePrefixBindingRequest {
   /** Unique identifier for the prefix binding. */
   bindingId: string;
 }
-export const GetRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bindingId: S.String.pipe(T.Label("binding_id")),
@@ -180,7 +180,7 @@ export interface GetRegionalServicePrefixBindingResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-export const GetRegionalServicePrefixBindingResponse =
+const GetRegionalServicePrefixBindingResponse =
   CreateRegionalServicePrefixBindingResponse as any as S.Schema<GetRegionalServicePrefixBindingResponse>;
 
 export interface ListRegionalServicePrefixBindingsRequest {
@@ -190,7 +190,7 @@ export interface ListRegionalServicePrefixBindingsRequest {
   cursor?: string;
   perPage?: number;
 }
-export const ListRegionalServicePrefixBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalServicePrefixBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -218,7 +218,7 @@ export interface RegionalServicesPrefixBindingsListResultItem {
   /** The region key used for the binding. */
   regionKey: string;
 }
-export const RegionalServicesPrefixBindingsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RegionalServicesPrefixBindingsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cidr: S.String,
@@ -231,7 +231,7 @@ export const RegionalServicesPrefixBindingsListResultItem = /*@__PURE__*/ S.susp
 
 export type RegionalServicesPrefixBindingsListResultList =
   Array<RegionalServicesPrefixBindingsListResultItem>;
-export const RegionalServicesPrefixBindingsListResultList = /*@__PURE__*/ S.Array(
+const RegionalServicesPrefixBindingsListResultList = /*@__PURE__*/ S.Array(
   RegionalServicesPrefixBindingsListResultItem,
 ) as any as S.Schema<RegionalServicesPrefixBindingsListResultList>;
 
@@ -241,7 +241,7 @@ export interface ListRegionalServicePrefixBindingsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRegionalServicePrefixBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalServicePrefixBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RegionalServicesPrefixBindingsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -251,7 +251,7 @@ export const ListRegionalServicePrefixBindingsResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
 
 export type RegionsListRequestType = "managed" | "custom";
-export const RegionsListRequestType = S.String;
+const RegionsListRequestType = S.String;
 
 export interface ListRegionsRequest {
   /** Identifier of a Cloudflare account. */
@@ -262,7 +262,7 @@ export interface ListRegionsRequest {
   /** Filter regions by type. Omit to return all regions. */
   type?: RegionsListRequestType | (string & {});
 }
-export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -282,7 +282,7 @@ export interface RegionsListResultItem {
   version: number;
   versionCreatedOn: string;
 }
-export const RegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -295,7 +295,7 @@ export const RegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionsListResultItem" }) as any as S.Schema<RegionsListResultItem>;
 
 export type RegionsListResultList = Array<RegionsListResultItem>;
-export const RegionsListResultList = /*@__PURE__*/ S.Array(
+const RegionsListResultList = /*@__PURE__*/ S.Array(
   RegionsListResultItem,
 ) as any as S.Schema<RegionsListResultList>;
 
@@ -305,7 +305,7 @@ export interface ListRegionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RegionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -320,7 +320,7 @@ export interface PatchRegionalServicePrefixBindingRequest {
   /** New region key to assign (e.g., "us", "eu", "cfcanary"). */
   regionKey: string;
 }
-export const PatchRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bindingId: S.String.pipe(T.Label("binding_id")),
@@ -349,7 +349,7 @@ export interface PatchRegionalServicePrefixBindingResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-export const PatchRegionalServicePrefixBindingResponse =
+const PatchRegionalServicePrefixBindingResponse =
   CreateRegionalServicePrefixBindingResponse as any as S.Schema<PatchRegionalServicePrefixBindingResponse>;
 
 export type CreateRegionalServicePrefixBindingError = CloudflareOpError;

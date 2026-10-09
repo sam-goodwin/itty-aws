@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,22 +90,22 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type CloudSqlSettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
   | "PD_SSD"
   | "PD_HDD";
-export const CloudSqlSettingsDataDiskTypeEnum = S.String;
+const CloudSqlSettingsDataDiskTypeEnum = S.String;
 
 export type CloudSqlSettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
   | "NEVER";
-export const CloudSqlSettingsActivationPolicyEnum = S.String;
+const CloudSqlSettingsActivationPolicyEnum = S.String;
 
 /** An entry for an Access Control list. */
 export interface SqlAclEntry {
@@ -118,7 +118,7 @@ export interface SqlAclEntry {
   /** The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`. */
   expireTime?: string;
 }
-export const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
+const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.String),
     label: S.optional(S.String),
@@ -128,9 +128,7 @@ export const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlAclEntry" }) as any as S.Schema<SqlAclEntry>;
 
 export type SqlAclEntryList = Array<SqlAclEntry>;
-export const SqlAclEntryList = /*@__PURE__*/ S.Array(
-  SqlAclEntry,
-) as any as S.Schema<SqlAclEntryList>;
+const SqlAclEntryList = /*@__PURE__*/ S.Array(SqlAclEntry) as any as S.Schema<SqlAclEntryList>;
 
 /** IP Management configuration. */
 export interface SqlIpConfig {
@@ -143,7 +141,7 @@ export interface SqlIpConfig {
   /** The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set. */
   privateNetwork?: string;
 }
-export const SqlIpConfig = /*@__PURE__*/ S.suspend(() =>
+const SqlIpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableIpv4: S.optional(S.Boolean),
     requireSsl: S.optional(S.Boolean),
@@ -157,7 +155,7 @@ export type CloudSqlSettingsDatabaseVersionEnum =
   | "MYSQL_5_6"
   | "MYSQL_5_7"
   | "MYSQL_8_0";
-export const CloudSqlSettingsDatabaseVersionEnum = S.String;
+const CloudSqlSettingsDatabaseVersionEnum = S.String;
 
 /** Settings for creating a Cloud SQL database instance. */
 export interface CloudSqlSettings {
@@ -190,7 +188,7 @@ export interface CloudSqlSettings {
   /** Input only. Initial root password. */
   rootPassword?: string;
 }
-export const CloudSqlSettings = /*@__PURE__*/ S.suspend(() =>
+const CloudSqlSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDiskType: S.optional(CloudSqlSettingsDataDiskTypeEnum),
     tier: S.optional(S.String),
@@ -220,7 +218,7 @@ export interface CloudSqlConnectionProfile {
   /** Output only. The Cloud SQL database instance's private IP. */
   privateIp?: string;
 }
-export const CloudSqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
+const CloudSqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudSqlId: S.optional(S.String),
     settings: S.optional(CloudSqlSettings),
@@ -232,15 +230,10 @@ export const CloudSqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudSqlConnectionProfile>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -251,7 +244,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -260,10 +253,10 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type ConnectionProfileProviderEnum = "DATABASE_PROVIDER_UNSPECIFIED" | "CLOUDSQL" | "RDS";
-export const ConnectionProfileProviderEnum = S.String;
+const ConnectionProfileProviderEnum = S.String;
 
 export type SslConfigTypeEnum = "SSL_TYPE_UNSPECIFIED" | "SERVER_ONLY" | "SERVER_CLIENT";
-export const SslConfigTypeEnum = S.String;
+const SslConfigTypeEnum = S.String;
 
 /** SSL configuration information. */
 export interface SslConfig {
@@ -276,7 +269,7 @@ export interface SslConfig {
   /** Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory. */
   clientKey?: string;
 }
-export const SslConfig = /*@__PURE__*/ S.suspend(() =>
+const SslConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCertificate: S.optional(S.String),
     caCertificate: S.optional(S.String),
@@ -302,7 +295,7 @@ export interface MySqlConnectionProfile {
   /** SSL configuration for the destination to connect to the source database. */
   ssl?: SslConfig;
 }
-export const MySqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
+const MySqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String),
     port: S.optional(S.Number),
@@ -323,7 +316,7 @@ export type ConnectionProfileStateEnum =
   | "DELETING"
   | "DELETED"
   | "FAILED";
-export const ConnectionProfileStateEnum = S.String;
+const ConnectionProfileStateEnum = S.String;
 
 /** A connection profile definition. */
 export interface ConnectionProfile {
@@ -348,7 +341,7 @@ export interface ConnectionProfile {
   /** Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
   updateTime?: string;
 }
-export const ConnectionProfile = /*@__PURE__*/ S.suspend(() =>
+const ConnectionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     cloudsql: S.optional(CloudSqlConnectionProfile),
@@ -373,7 +366,7 @@ export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
-export const CreateProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -403,7 +396,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -414,10 +407,10 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type DatabaseTypeEngineEnum = "DATABASE_ENGINE_UNSPECIFIED" | "MYSQL";
-export const DatabaseTypeEngineEnum = S.String;
+const DatabaseTypeEngineEnum = S.String;
 
 export type DatabaseTypeProviderEnum = "DATABASE_PROVIDER_UNSPECIFIED" | "CLOUDSQL" | "RDS";
-export const DatabaseTypeProviderEnum = S.String;
+const DatabaseTypeProviderEnum = S.String;
 
 /** A message defining the database engine and provider. */
 export interface DatabaseType {
@@ -426,7 +419,7 @@ export interface DatabaseType {
   /** The database provider. */
   provider?: DatabaseTypeProviderEnum | (string & {});
 }
-export const DatabaseType = /*@__PURE__*/ S.suspend(() =>
+const DatabaseType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engine: S.optional(DatabaseTypeEngineEnum),
     provider: S.optional(DatabaseTypeProviderEnum),
@@ -444,7 +437,7 @@ export interface ReverseSshConnectivity {
   /** Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
   vmIp?: string;
 }
-export const ReverseSshConnectivity = /*@__PURE__*/ S.suspend(() =>
+const ReverseSshConnectivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vm: S.optional(S.String),
     vpc: S.optional(S.String),
@@ -470,7 +463,7 @@ export type MigrationJobStateEnum =
   | "STARTING"
   | "RESTARTING"
   | "RESUMING";
-export const MigrationJobStateEnum = S.String;
+const MigrationJobStateEnum = S.String;
 
 export type MigrationJobPhaseEnum =
   | "PHASE_UNSPECIFIED"
@@ -479,25 +472,23 @@ export type MigrationJobPhaseEnum =
   | "PROMOTE_IN_PROGRESS"
   | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
   | "PREPARING_THE_DUMP";
-export const MigrationJobPhaseEnum = S.String;
+const MigrationJobPhaseEnum = S.String;
 
 /** The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required. */
 export type StaticIpConnectivity = CancelOperationRequest;
-export const StaticIpConnectivity = CancelOperationRequest;
-
 /** The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC. */
 export interface VpcPeeringConnectivity {
   /** The name of the VPC network to peer with the Cloud SQL private network. */
   vpc?: string;
 }
-export const VpcPeeringConnectivity = /*@__PURE__*/ S.suspend(() =>
+const VpcPeeringConnectivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpc: S.optional(S.String),
   }),
 ).annotate({ identifier: "VpcPeeringConnectivity" }) as any as S.Schema<VpcPeeringConnectivity>;
 
 export type MigrationJobTypeEnum = "TYPE_UNSPECIFIED" | "ONE_TIME" | "CONTINUOUS";
-export const MigrationJobTypeEnum = S.String;
+const MigrationJobTypeEnum = S.String;
 
 /** Represents a Database Migration Service migration job object. */
 export interface MigrationJob {
@@ -540,7 +531,7 @@ export interface MigrationJob {
   /** Required. The migration job type. */
   type?: MigrationJobTypeEnum | (string & {});
 }
-export const MigrationJob = /*@__PURE__*/ S.suspend(() =>
+const MigrationJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -574,7 +565,7 @@ export interface CreateProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: MigrationJob;
 }
-export const CreateProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -599,7 +590,7 @@ export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** Required. Name of the connection profile resource to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -623,7 +614,7 @@ export interface DeleteProjectsLocationsMigrationJobsRequest {
   /** The destination CloudSQL connection profile is always deleted with the migration job. In case of force delete, the destination CloudSQL replica database is also deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -643,7 +634,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -662,7 +653,7 @@ export interface VmSelectionConfig {
   /** Required. The Google Cloud Platform zone the VM is located. */
   vmZone?: string;
 }
-export const VmSelectionConfig = /*@__PURE__*/ S.suspend(() =>
+const VmSelectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmZone: S.optional(S.String),
   }),
@@ -677,7 +668,7 @@ export interface VmCreationConfig {
   /** Required. VM instance machine type to create. */
   vmMachineType?: string;
 }
-export const VmCreationConfig = /*@__PURE__*/ S.suspend(() =>
+const VmCreationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnet: S.optional(S.String),
     vmZone: S.optional(S.String),
@@ -696,7 +687,7 @@ export interface GenerateSshScriptRequest {
   /** The port that will be open on the bastion host */
   vmPort?: number;
 }
-export const GenerateSshScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSshScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmSelectionConfig: S.optional(VmSelectionConfig),
     vm: S.optional(S.String),
@@ -711,7 +702,7 @@ export interface GenerateSshScriptProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: GenerateSshScriptRequest;
 }
-export const GenerateSshScriptProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSshScriptProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationJob: S.String.pipe(T.Label()),
     body: S.optional(GenerateSshScriptRequest.pipe(T.HttpBody())),
@@ -731,7 +722,7 @@ export interface SshScript {
   /** The ssh configuration script. */
   script?: string;
 }
-export const SshScript = /*@__PURE__*/ S.suspend(() =>
+const SshScript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     script: S.optional(S.String),
   }),
@@ -743,7 +734,7 @@ export interface GetIamPolicyProjectsLocationsConnectionProfilesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -769,7 +760,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -779,7 +770,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -790,7 +781,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     role: S.optional(S.String),
@@ -799,14 +790,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -815,7 +806,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -823,7 +814,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -834,7 +825,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -842,9 +833,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -857,7 +846,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -872,7 +861,7 @@ export interface GetIamPolicyProjectsLocationsMigrationJobsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -891,7 +880,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -918,7 +907,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     name: S.optional(S.String),
@@ -932,7 +921,7 @@ export interface GetProjectsLocationsConnectionProfilesRequest {
   /** Required. Name of the connection profile resource to get. */
   name: string;
 }
-export const GetProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -950,7 +939,7 @@ export interface GetProjectsLocationsMigrationJobsRequest {
   /** Required. Name of the migration job resource to get. */
   name: string;
 }
-export const GetProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -968,7 +957,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -994,7 +983,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1013,7 +1002,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1022,7 +1011,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1041,7 +1030,7 @@ export interface ListProjectsLocationsConnectionProfilesRequest {
   /** the order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1060,7 +1049,7 @@ export const ListProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
 export type ConnectionProfileList = Array<ConnectionProfile>;
-export const ConnectionProfileList = /*@__PURE__*/ S.Array(
+const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
 
@@ -1073,7 +1062,7 @@ export interface ListConnectionProfilesResponse {
   /** The response list of connection profiles. */
   connectionProfiles?: ConnectionProfileList;
 }
-export const ListConnectionProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1095,7 +1084,7 @@ export interface ListProjectsLocationsMigrationJobsRequest {
   /** A filter expression that filters migration jobs listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list migration jobs created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all migration jobs connecting through the specific SSH tunnel bastion. */
   filter?: string;
 }
-export const ListProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1114,9 +1103,7 @@ export const ListProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>;
 
 export type MigrationJobList = Array<MigrationJob>;
-export const MigrationJobList = /*@__PURE__*/ S.Array(
-  MigrationJob,
-) as any as S.Schema<MigrationJobList>;
+const MigrationJobList = /*@__PURE__*/ S.Array(MigrationJob) as any as S.Schema<MigrationJobList>;
 
 /** Response message for 'ListMigrationJobs' request. */
 export interface ListMigrationJobsResponse {
@@ -1127,7 +1114,7 @@ export interface ListMigrationJobsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListMigrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMigrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     migrationJobs: S.optional(MigrationJobList),
@@ -1149,7 +1136,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1168,7 +1155,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1179,7 +1166,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -1197,7 +1184,7 @@ export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
-export const PatchProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1224,7 +1211,7 @@ export interface PatchProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: MigrationJob;
 }
-export const PatchProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1243,15 +1230,13 @@ export const PatchProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspen
 
 /** Request message for 'PromoteMigrationJob' request. */
 export type PromoteMigrationJobRequest = CancelOperationRequest;
-export const PromoteMigrationJobRequest = CancelOperationRequest;
-
 export interface PromoteProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to promote. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const PromoteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1268,15 +1253,13 @@ export const PromoteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.susp
 
 /** Request message for 'RestartMigrationJob' request. */
 export type RestartMigrationJobRequest = CancelOperationRequest;
-export const RestartMigrationJobRequest = CancelOperationRequest;
-
 export interface RestartProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to restart. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RestartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1293,15 +1276,13 @@ export const RestartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.susp
 
 /** Request message for 'ResumeMigrationJob' request. */
 export type ResumeMigrationJobRequest = CancelOperationRequest;
-export const ResumeMigrationJobRequest = CancelOperationRequest;
-
 export interface ResumeProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to resume. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const ResumeProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1323,7 +1304,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1336,7 +1317,7 @@ export interface SetIamPolicyProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1357,7 +1338,7 @@ export interface SetIamPolicyProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1374,15 +1355,13 @@ export const SetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S
 
 /** Request message for 'StartMigrationJob' request. */
 export type StartMigrationJobRequest = CancelOperationRequest;
-export const StartMigrationJobRequest = CancelOperationRequest;
-
 export interface StartProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to start. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1399,15 +1378,13 @@ export const StartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspen
 
 /** Request message for 'StopMigrationJob' request. */
 export type StopMigrationJobRequest = CancelOperationRequest;
-export const StopMigrationJobRequest = CancelOperationRequest;
-
 export interface StopProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to stop. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StopProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1427,7 +1404,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1441,18 +1418,17 @@ export interface TestIamPermissionsProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://datamigration.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:testIamPermissions",
+      baseUrl: "https://datamigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsConnectionProfilesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionProfilesRequest>;
@@ -1462,7 +1438,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsMigrationJobsRequest {
@@ -1471,7 +1447,7 @@ export interface TestIamPermissionsProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1488,15 +1464,13 @@ export const TestIamPermissionsProjectsLocationsMigrationJobsRequest = /*@__PURE
 
 /** Request message for 'VerifyMigrationJob' request. */
 export type VerifyMigrationJobRequest = CancelOperationRequest;
-export const VerifyMigrationJobRequest = CancelOperationRequest;
-
 export interface VerifyProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to verify. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const VerifyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),

@@ -58,7 +58,7 @@ export interface GetDisputeRequest {
   /** The dispute ID (`dspt_` tag). */
   id: string;
 }
-export const GetDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/disputes/{id}", code: 200 })),
@@ -76,7 +76,7 @@ export interface DisputeBuyer {
   /** The customer's Whop username. */
   username: string | null;
 }
-export const DisputeBuyer = /*@__PURE__*/ S.suspend(() =>
+const DisputeBuyer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     member_id: S.NullOr(S.String),
@@ -98,7 +98,7 @@ export interface DisputeAttachment {
   /** A URL to download the attachment. */
   url: string | null;
 }
-export const DisputeAttachment = /*@__PURE__*/ S.suspend(() =>
+const DisputeAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -115,7 +115,7 @@ export type DisputeEvidenceDocumentContentType =
   | "image/jpeg"
   | "image/png"
   | "image/webp";
-export const DisputeEvidenceDocumentContentType = S.String;
+const DisputeEvidenceDocumentContentType = S.String;
 
 /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
 export type DisputeEvidenceDocumentDocumentType =
@@ -131,7 +131,7 @@ export type DisputeEvidenceDocumentDocumentType =
   | "digital_fulfillment"
   | "subscription"
   | "customer_communication";
-export const DisputeEvidenceDocumentDocumentType = S.String;
+const DisputeEvidenceDocumentDocumentType = S.String;
 
 export interface FileMultipartUrl {
   /** The 1-based index of this part within the multipart upload. */
@@ -139,7 +139,7 @@ export interface FileMultipartUrl {
   /** The presigned URL to PUT this part's bytes to. */
   url: string;
 }
-export const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
+const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part_number: S.Number,
     url: S.String,
@@ -147,17 +147,17 @@ export const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileMultipartUrl" }) as any as S.Schema<FileMultipartUrl>;
 
 export type DisputeEvidenceDocumentMultipartUploadUrlsList = Array<FileMultipartUrl>;
-export const DisputeEvidenceDocumentMultipartUploadUrlsList = /*@__PURE__*/ S.Array(
+const DisputeEvidenceDocumentMultipartUploadUrlsList = /*@__PURE__*/ S.Array(
   FileMultipartUrl,
 ) as any as S.Schema<DisputeEvidenceDocumentMultipartUploadUrlsList>;
 
 /** Where the file is in its upload lifecycle. */
 export type DisputeEvidenceDocumentUploadStatus = "pending" | "processing" | "ready" | "failed";
-export const DisputeEvidenceDocumentUploadStatus = S.String;
+const DisputeEvidenceDocumentUploadStatus = S.String;
 
 /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
 export type DisputeEvidenceDocumentVisibility = "public" | "private";
-export const DisputeEvidenceDocumentVisibility = S.String;
+const DisputeEvidenceDocumentVisibility = S.String;
 
 export interface DisputeEvidenceDocument {
   /** The uploaded file's MIME type. Uploads are restricted to the types the processor accepts, and rejected without one -- never null. */
@@ -190,7 +190,7 @@ export interface DisputeEvidenceDocument {
   /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
   visibility: DisputeEvidenceDocumentVisibility;
 }
-export const DisputeEvidenceDocument = /*@__PURE__*/ S.suspend(() =>
+const DisputeEvidenceDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(DisputeEvidenceDocumentContentType),
     created_at: S.String,
@@ -211,7 +211,7 @@ export const DisputeEvidenceDocument = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisputeEvidenceDocument" }) as any as S.Schema<DisputeEvidenceDocument>;
 
 export type DisputeEvidenceDocumentsList = Array<DisputeEvidenceDocument>;
-export const DisputeEvidenceDocumentsList = /*@__PURE__*/ S.Array(
+const DisputeEvidenceDocumentsList = /*@__PURE__*/ S.Array(
   DisputeEvidenceDocument,
 ) as any as S.Schema<DisputeEvidenceDocumentsList>;
 
@@ -246,7 +246,7 @@ export interface DisputeEvidence {
   /** Supporting evidence that does not fit the other categories. */
   uncategorized_attachment: DisputeAttachment | null;
 }
-export const DisputeEvidence = /*@__PURE__*/ S.suspend(() =>
+const DisputeEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_activity_log: S.NullOr(S.String),
     billing_address: S.NullOr(S.String),
@@ -271,7 +271,7 @@ export type DisputeEvidenceLockedReason =
   | "submitted"
   | "response_window_closed"
   | "not_contestable";
-export const DisputeEvidenceLockedReason = S.String;
+const DisputeEvidenceLockedReason = S.String;
 
 export interface DisputeIssuerComment {
   /** When the comment was received, as an ISO 8601 timestamp. */
@@ -279,7 +279,7 @@ export interface DisputeIssuerComment {
   /** What the issuer wrote, as received. */
   text: string;
 }
-export const DisputeIssuerComment = /*@__PURE__*/ S.suspend(() =>
+const DisputeIssuerComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     received_at: S.NullOr(S.String),
     text: S.String,
@@ -287,7 +287,7 @@ export const DisputeIssuerComment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisputeIssuerComment" }) as any as S.Schema<DisputeIssuerComment>;
 
 export type DisputeIssuerCommentsList = Array<DisputeIssuerComment>;
-export const DisputeIssuerCommentsList = /*@__PURE__*/ S.Array(
+const DisputeIssuerCommentsList = /*@__PURE__*/ S.Array(
   DisputeIssuerComment,
 ) as any as S.Schema<DisputeIssuerCommentsList>;
 
@@ -301,7 +301,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -328,7 +328,7 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
-export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
+const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.NullOr(S.String),
     label: S.NullOr(S.String),
@@ -342,7 +342,7 @@ export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReceiptLineItem" }) as any as S.Schema<ReceiptLineItem>;
 
 export type DisputeLineItemsList = Array<ReceiptLineItem>;
-export const DisputeLineItemsList = /*@__PURE__*/ S.Array(
+const DisputeLineItemsList = /*@__PURE__*/ S.Array(
   ReceiptLineItem,
 ) as any as S.Schema<DisputeLineItemsList>;
 
@@ -358,7 +358,7 @@ export interface PaymentInstrumentCard {
   /** The card's last four digits, when captured. */
   last4: string | null;
 }
-export const PaymentInstrumentCard = /*@__PURE__*/ S.suspend(() =>
+const PaymentInstrumentCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.NullOr(S.String),
     exp_month: S.NullOr(S.Number),
@@ -378,7 +378,7 @@ export interface PaymentMethodIconFiles {
   /** The vector file. Prefer this everywhere SVG renders. */
   svg: string;
 }
-export const PaymentMethodIconFiles = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIconFiles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     png_1x: S.String,
     png_2x: S.String,
@@ -393,7 +393,7 @@ export interface PaymentMethodIconVariants {
   /** The colorway for light surfaces. */
   light: PaymentMethodIconFiles;
 }
-export const PaymentMethodIconVariants = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIconVariants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dark: PaymentMethodIconFiles,
     light: PaymentMethodIconFiles,
@@ -408,7 +408,7 @@ export interface PaymentMethodIcons {
   /** The square tile (32x32). */
   square: PaymentMethodIconVariants;
 }
-export const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: PaymentMethodIconVariants,
     square: PaymentMethodIconVariants,
@@ -427,7 +427,7 @@ export interface PaymentInstrument {
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
 }
-export const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
+const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.NullOr(PaymentInstrumentCard),
     display_name: S.String,
@@ -457,7 +457,7 @@ export interface DisputePayment {
   /** Deprecated: no longer populated. Always `null`. DEPRECATED: No longer populated. Always null. */
   payment_processor: string | null;
 }
-export const DisputePayment = /*@__PURE__*/ S.suspend(() =>
+const DisputePayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.NullOr(S.Number),
     card_brand: S.NullOr(S.String),
@@ -485,7 +485,7 @@ export type DisputeReason =
   | "documentation_request"
   | "bank_cannot_process"
   | "other";
-export const DisputeReason = S.String;
+const DisputeReason = S.String;
 
 /** Where the dispute stands. `needs_response` is awaiting evidence, `under_review` is with the processor, `won` returned the funds to the seller, `lost` returned them to the customer, and `closed` ended without a ruling. The `warning_` statuses are the same stages for an inquiry, which moves no funds. A dispute past its `evidence_due_at` reports `under_review` -- the window to respond has closed. */
 export type DisputeStatus =
@@ -497,7 +497,7 @@ export type DisputeStatus =
   | "lost"
   | "closed"
   | "warning_closed";
-export const DisputeStatus = S.String;
+const DisputeStatus = S.String;
 
 export interface Dispute {
   /** The account the dispute was filed against, prefixed `biz_`. */
@@ -541,7 +541,7 @@ export interface Dispute {
   /** When the dispute was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const Dispute = /*@__PURE__*/ S.suspend(() =>
+const Dispute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     amount: S.Number,
@@ -568,12 +568,12 @@ export const Dispute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dispute" }) as any as S.Schema<Dispute>;
 
 export type GetDisputeSummaryRequestGroupsItem = "status" | "currency";
-export const GetDisputeSummaryRequestGroupsItem = S.String;
+const GetDisputeSummaryRequestGroupsItem = S.String;
 
 export type GetDisputeSummaryRequestGroupsList = Array<
   GetDisputeSummaryRequestGroupsItem | (string & {})
 >;
-export const GetDisputeSummaryRequestGroupsList = /*@__PURE__*/ S.Array(
+const GetDisputeSummaryRequestGroupsList = /*@__PURE__*/ S.Array(
   GetDisputeSummaryRequestGroupsItem,
 ) as any as S.Schema<GetDisputeSummaryRequestGroupsList>;
 
@@ -586,12 +586,10 @@ export type GetDisputeSummaryRequestStatusItem =
   | "lost"
   | "closed"
   | "warning_closed";
-export const GetDisputeSummaryRequestStatusItem = S.String;
-
 export type GetDisputeSummaryRequestStatusList = Array<
   GetDisputeSummaryRequestStatusItem | (string & {})
 >;
-export const GetDisputeSummaryRequestStatusList =
+const GetDisputeSummaryRequestStatusList =
   GetDisputeSummaryRequestGroupsList as any as S.Schema<GetDisputeSummaryRequestStatusList>;
 
 export interface GetDisputeSummaryRequest {
@@ -608,7 +606,7 @@ export interface GetDisputeSummaryRequest {
   /** Only disputes opened after this ISO 8601 timestamp. */
   created_after?: string;
 }
-export const GetDisputeSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(GetDisputeSummaryRequestGroupsList.pipe(T.Query())),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -621,7 +619,7 @@ export const GetDisputeSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How many of the matching disputes are in each currency, keyed by three-letter ISO code. Only currencies with at least one dispute are present. */
 export type GetDisputeSummaryResponseGroupsCurrencyMap = { [key: string]: number | undefined };
-export const GetDisputeSummaryResponseGroupsCurrencyMap = /*@__PURE__*/ S.Record(
+const GetDisputeSummaryResponseGroupsCurrencyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<GetDisputeSummaryResponseGroupsCurrencyMap>;
@@ -637,7 +635,7 @@ export interface GetDisputeSummaryResponseGroupsStatus {
   warning_under_review: number;
   won: number;
 }
-export const GetDisputeSummaryResponseGroupsStatus = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeSummaryResponseGroupsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closed: S.Number,
     lost: S.Number,
@@ -659,7 +657,7 @@ export interface GetDisputeSummaryResponseGroups {
   /** How many of the matching disputes are in each status. Every status is present, including those with a count of zero. */
   status?: GetDisputeSummaryResponseGroupsStatus;
 }
-export const GetDisputeSummaryResponseGroups = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeSummaryResponseGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(GetDisputeSummaryResponseGroupsCurrencyMap),
     status: S.optional(GetDisputeSummaryResponseGroupsStatus),
@@ -674,7 +672,7 @@ export interface GetDisputeSummaryResponse {
   /** How many disputes match the filters. */
   total: number;
 }
-export const GetDisputeSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: GetDisputeSummaryResponseGroups,
     total: S.Number,
@@ -684,10 +682,10 @@ export const GetDisputeSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDisputeSummaryResponse>;
 
 export type ListDisputesRequestOrder = "created_at" | "amount" | "evidence_due_at";
-export const ListDisputesRequestOrder = S.String;
+const ListDisputesRequestOrder = S.String;
 
 export type ListDisputesRequestDirection = "asc" | "desc";
-export const ListDisputesRequestDirection = S.String;
+const ListDisputesRequestDirection = S.String;
 
 export type ListDisputesRequestStatusItem =
   | "needs_response"
@@ -698,10 +696,8 @@ export type ListDisputesRequestStatusItem =
   | "lost"
   | "closed"
   | "warning_closed";
-export const ListDisputesRequestStatusItem = S.String;
-
 export type ListDisputesRequestStatusList = Array<ListDisputesRequestStatusItem | (string & {})>;
-export const ListDisputesRequestStatusList =
+const ListDisputesRequestStatusList =
   GetDisputeSummaryRequestGroupsList as any as S.Schema<ListDisputesRequestStatusList>;
 
 export interface ListDisputesRequest {
@@ -728,7 +724,7 @@ export interface ListDisputesRequest {
   /** Only disputes opened after this ISO 8601 timestamp. */
   created_after?: string;
 }
-export const ListDisputesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDisputesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -745,7 +741,7 @@ export const ListDisputesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDisputesRequest" }) as any as S.Schema<ListDisputesRequest>;
 
 export type ListDisputesResponseDataList = Array<Dispute>;
-export const ListDisputesResponseDataList = /*@__PURE__*/ S.Array(
+const ListDisputesResponseDataList = /*@__PURE__*/ S.Array(
   Dispute,
 ) as any as S.Schema<ListDisputesResponseDataList>;
 
@@ -755,7 +751,7 @@ export interface ListDisputesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListDisputesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListDisputesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -770,7 +766,7 @@ export interface ListDisputesResponse {
   data: ListDisputesResponseDataList;
   page_info: ListDisputesResponsePageInfo;
 }
-export const ListDisputesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDisputesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListDisputesResponseDataList,
     page_info: ListDisputesResponsePageInfo,
@@ -783,7 +779,7 @@ export interface SubmitDisputeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const SubmitDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -794,7 +790,7 @@ export interface SubmitEvidenceDisputeRequest {
   /** The unique identifier of the dispute to submit to the payment processor for review. */
   id: string;
 }
-export const SubmitEvidenceDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitEvidenceDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/disputes/{id}/submit_evidence", code: 200 })),
@@ -813,7 +809,7 @@ export interface LegacyDisputeCancellationPolicyAttachment {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const LegacyDisputeCancellationPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputeCancellationPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -831,7 +827,7 @@ export interface LegacyDisputeCompany {
   /** The written name of the company. */
   title: string;
 }
-export const LegacyDisputeCompany = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputeCompany = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -930,14 +926,11 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const LegacyCurrencies = S.String;
+const LegacyCurrencies = S.String;
 
 /** Evidence of customer communication or product usage, uploaded as a dispute attachment. Null if not provided. */
 export type LegacyDisputeCustomerCommunicationAttachment =
   LegacyDisputeCancellationPolicyAttachment;
-export const LegacyDisputeCustomerCommunicationAttachment =
-  LegacyDisputeCancellationPolicyAttachment;
-
 /** The reason why a specific payment was billed */
 export type LegacyBillingReasons =
   | "subscription_create"
@@ -946,7 +939,7 @@ export type LegacyBillingReasons =
   | "one_time"
   | "manual"
   | "subscription";
-export const LegacyBillingReasons = S.String;
+const LegacyBillingReasons = S.String;
 
 /** Possible card brands that a payment token can have */
 export type CardBrands =
@@ -996,7 +989,7 @@ export type CardBrands =
   | "pulse"
   | "star"
   | "unknown";
-export const CardBrands = S.String;
+const CardBrands = S.String;
 
 /** The member attached to this payment. */
 export interface LegacyDisputePaymentMember {
@@ -1005,7 +998,7 @@ export interface LegacyDisputePaymentMember {
   /** The phone number for the member, if available. */
   phone: string | null;
 }
-export const LegacyDisputePaymentMember = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     phone: S.NullOr(S.String),
@@ -1025,7 +1018,7 @@ export type MembershipStatus =
   | "unresolved"
   | "drafted"
   | "canceling";
-export const MembershipStatus = S.String;
+const MembershipStatus = S.String;
 
 /** The membership attached to this payment. */
 export interface LegacyDisputePaymentMembership {
@@ -1034,7 +1027,7 @@ export interface LegacyDisputePaymentMembership {
   /** The state of the membership. */
   status: MembershipStatus;
 }
-export const LegacyDisputePaymentMembership = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: MembershipStatus,
@@ -1048,7 +1041,7 @@ export interface LegacyDisputePaymentPaymentInstrumentIconsSquareDark {
   /** The vector file. Prefer this everywhere SVG renders. */
   svg: string;
 }
-export const LegacyDisputePaymentPaymentInstrumentIconsSquareDark = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentPaymentInstrumentIconsSquareDark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     svg: S.String,
   }),
@@ -1059,9 +1052,6 @@ export const LegacyDisputePaymentPaymentInstrumentIconsSquareDark = /*@__PURE__*
 /** The colorway for light surfaces. */
 export type LegacyDisputePaymentPaymentInstrumentIconsSquareLight =
   LegacyDisputePaymentPaymentInstrumentIconsSquareDark;
-export const LegacyDisputePaymentPaymentInstrumentIconsSquareLight =
-  LegacyDisputePaymentPaymentInstrumentIconsSquareDark;
-
 /** The square tile (32x32). */
 export interface LegacyDisputePaymentPaymentInstrumentIconsSquare {
   /** The colorway for dark surfaces. */
@@ -1069,7 +1059,7 @@ export interface LegacyDisputePaymentPaymentInstrumentIconsSquare {
   /** The colorway for light surfaces. */
   light: LegacyDisputePaymentPaymentInstrumentIconsSquareDark;
 }
-export const LegacyDisputePaymentPaymentInstrumentIconsSquare = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentPaymentInstrumentIconsSquare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dark: LegacyDisputePaymentPaymentInstrumentIconsSquareDark,
     light: LegacyDisputePaymentPaymentInstrumentIconsSquareDark,
@@ -1083,7 +1073,7 @@ export interface LegacyDisputePaymentPaymentInstrumentIcons {
   /** The square tile (32x32). */
   square: LegacyDisputePaymentPaymentInstrumentIconsSquare;
 }
-export const LegacyDisputePaymentPaymentInstrumentIcons = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentPaymentInstrumentIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     square: LegacyDisputePaymentPaymentInstrumentIconsSquare,
   }),
@@ -1102,7 +1092,7 @@ export interface LegacyDisputePaymentPaymentInstrument {
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
 }
-export const LegacyDisputePaymentPaymentInstrument = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentPaymentInstrument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display_name: S.String,
     icons: LegacyDisputePaymentPaymentInstrumentIcons,
@@ -1244,7 +1234,7 @@ export type LegacyPaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
-export const LegacyPaymentMethodTypes = S.String;
+const LegacyPaymentMethodTypes = S.String;
 
 /** The user that made this payment. */
 export interface LegacyDisputePaymentUser {
@@ -1257,7 +1247,7 @@ export interface LegacyDisputePaymentUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const LegacyDisputePaymentUser = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePaymentUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     id: S.String,
@@ -1301,7 +1291,7 @@ export interface LegacyDisputePayment {
   /** The user that made this payment. */
   user: LegacyDisputePaymentUser | null;
 }
-export const LegacyDisputePayment = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_reason: S.NullOr(LegacyBillingReasons),
     card_brand: S.NullOr(CardBrands),
@@ -1327,7 +1317,7 @@ export interface LegacyDisputePlan {
   /** The unique identifier for the plan. */
   id: string;
 }
-export const LegacyDisputePlan = /*@__PURE__*/ S.suspend(() =>
+const LegacyDisputePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -1340,12 +1330,10 @@ export interface LegacyDisputeProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const LegacyDisputeProduct = LegacyDisputeCompany as any as S.Schema<LegacyDisputeProduct>;
+const LegacyDisputeProduct = LegacyDisputeCompany as any as S.Schema<LegacyDisputeProduct>;
 
 /** The refund policy document uploaded as dispute evidence. Null if no refund policy has been provided. */
 export type LegacyDisputeRefundPolicyAttachment = LegacyDisputeCancellationPolicyAttachment;
-export const LegacyDisputeRefundPolicyAttachment = LegacyDisputeCancellationPolicyAttachment;
-
 /** The possible statuses of a dispute */
 export type DisputeStatuses =
   | "warning_needs_response"
@@ -1357,12 +1345,10 @@ export type DisputeStatuses =
   | "lost"
   | "closed"
   | "other";
-export const DisputeStatuses = S.String;
+const DisputeStatuses = S.String;
 
 /** An additional attachment that does not fit into the standard evidence categories. Null if not provided. */
 export type LegacyDisputeUncategorizedAttachment = LegacyDisputeCancellationPolicyAttachment;
-export const LegacyDisputeUncategorizedAttachment = LegacyDisputeCancellationPolicyAttachment;
-
 /** A dispute is a chargeback or payment challenge filed against a company, including evidence and response status. */
 export interface LegacyDispute {
   /** A log of IP-based access activity for the customer on Whop, submitted as evidence in the dispute. */
@@ -1422,7 +1408,7 @@ export interface LegacyDispute {
   /** Whether the dispute was automatically resolved through Visa Rapid Dispute Resolution (RDR). */
   visa_rdr: boolean;
 }
-export const LegacyDispute = /*@__PURE__*/ S.suspend(() =>
+const LegacyDispute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_activity_log: S.NullOr(S.String),
     amount: S.Number,
@@ -1462,12 +1448,11 @@ export interface UpdateDisputeRequestEvidenceCancellationPolicyAttachment {
   /** The ID of an already-uploaded file. */
   id?: string;
 }
-export const UpdateDisputeRequestEvidenceCancellationPolicyAttachment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direct_upload_id: S.optional(S.String),
-      id: S.optional(S.String),
-    }),
+const UpdateDisputeRequestEvidenceCancellationPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    direct_upload_id: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "UpdateDisputeRequestEvidenceCancellationPolicyAttachment",
 }) as any as S.Schema<UpdateDisputeRequestEvidenceCancellationPolicyAttachment>;
@@ -1475,9 +1460,6 @@ export const UpdateDisputeRequestEvidenceCancellationPolicyAttachment = /*@__PUR
 /** Correspondence with the customer, or proof they used the product. */
 export type UpdateDisputeRequestEvidenceCustomerCommunicationAttachment =
   UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
-export const UpdateDisputeRequestEvidenceCustomerCommunicationAttachment =
-  UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
-
 /** What this document proves, in the processor's own evidence vocabulary. `return_policy`, `cancellation_policy`, and `terms_of_service` are the seller's policy documents -- uploading one overrides the account's copy for this dispute (`return_policy`, `cancellation_policy`, and `customer_communication` also override the matching fixed evidence slot). `shipping_policy` is the seller's shipping terms. `customer_communication` is correspondence with the buyer -- a support thread or chat log. `product_image` is a photo of the product or service the buyer received. `physical_fulfillment` is proof a physical order shipped and arrived; `digital_fulfillment` is proof the buyer accessed a digital product. `customer_order_history` is the buyer's past orders with this seller; `prior_transactions` is their broader payment history across the platform, for a fraud defense. `customer_session` is checkout forensics -- IP, device fingerprint, AVS/CVV, 3D Secure result. `subscription` is membership lifecycle evidence -- renewals, cancellation, reminders sent. */
 export type UpdateDisputeRequestEvidenceDocumentsItemDocumentType =
   | "return_policy"
@@ -1492,7 +1474,7 @@ export type UpdateDisputeRequestEvidenceDocumentsItemDocumentType =
   | "digital_fulfillment"
   | "subscription"
   | "customer_communication";
-export const UpdateDisputeRequestEvidenceDocumentsItemDocumentType = S.String;
+const UpdateDisputeRequestEvidenceDocumentsItemDocumentType = S.String;
 
 export interface UpdateDisputeRequestEvidenceDocumentsItem {
   /** The ID returned by a direct upload. */
@@ -1504,7 +1486,7 @@ export interface UpdateDisputeRequestEvidenceDocumentsItem {
   /** The ID of a file already stored on Whop, prefixed `file_`. */
   id?: string;
 }
-export const UpdateDisputeRequestEvidenceDocumentsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateDisputeRequestEvidenceDocumentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct_upload_id: S.optional(S.String),
     document_type: UpdateDisputeRequestEvidenceDocumentsItemDocumentType,
@@ -1518,22 +1500,16 @@ export const UpdateDisputeRequestEvidenceDocumentsItem = /*@__PURE__*/ S.suspend
 /** The full set of evidence documents the dispute should carry, beyond the four fixed evidence slots. Replaces all previously uploaded documents. Upload files through `POST /files` and reference them by `id`, or send the files as multipart file parts to upload and attach in one call. Policy documents (`return_policy`, `shipping_policy`, `cancellation_policy`, `terms_of_service`) default from the account's own documents; uploading one here replaces the account copy for this dispute, and a `cancellation_policy` or `return_policy` upload also takes precedence over the matching fixed evidence slot. */
 export type UpdateDisputeRequestEvidenceDocumentsList =
   Array<UpdateDisputeRequestEvidenceDocumentsItem>;
-export const UpdateDisputeRequestEvidenceDocumentsList = /*@__PURE__*/ S.Array(
+const UpdateDisputeRequestEvidenceDocumentsList = /*@__PURE__*/ S.Array(
   UpdateDisputeRequestEvidenceDocumentsItem,
 ) as any as S.Schema<UpdateDisputeRequestEvidenceDocumentsList>;
 
 /** The refund policy document. Defaults to the account's return policy when not set. */
 export type UpdateDisputeRequestEvidenceRefundPolicyAttachment =
   UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
-export const UpdateDisputeRequestEvidenceRefundPolicyAttachment =
-  UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
-
 /** Supporting evidence that does not fit the other categories. */
 export type UpdateDisputeRequestEvidenceUncategorizedAttachment =
   UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
-export const UpdateDisputeRequestEvidenceUncategorizedAttachment =
-  UpdateDisputeRequestEvidenceCancellationPolicyAttachment;
-
 /** The evidence packet to send to the processor. Only the fields you provide are changed. */
 export interface UpdateDisputeRequestEvidence {
   /** Log of the customer's access to the product, such as sign-in or download activity. */
@@ -1567,7 +1543,7 @@ export interface UpdateDisputeRequestEvidence {
   /** Supporting evidence that does not fit the other categories. */
   uncategorized_attachment?: UpdateDisputeRequestEvidenceCancellationPolicyAttachment | null;
 }
-export const UpdateDisputeRequestEvidence = /*@__PURE__*/ S.suspend(() =>
+const UpdateDisputeRequestEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_activity_log: S.optional(S.NullOr(S.String)),
     billing_address: S.optional(S.NullOr(S.String)),
@@ -1603,7 +1579,7 @@ export interface UpdateDisputeRequest {
   /** The evidence packet to send to the processor. Only the fields you provide are changed. */
   evidence?: UpdateDisputeRequestEvidence;
 }
-export const UpdateDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     evidence: S.optional(UpdateDisputeRequestEvidence),
@@ -1615,11 +1591,10 @@ export interface UpdateEvidenceDisputeRequestCancellationPolicyAttachment {
   /** The ID of an existing file object. */
   id: string;
 }
-export const UpdateEvidenceDisputeRequestCancellationPolicyAttachment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
+const UpdateEvidenceDisputeRequestCancellationPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
 ).annotate({
   identifier: "UpdateEvidenceDisputeRequestCancellationPolicyAttachment",
 }) as any as S.Schema<UpdateEvidenceDisputeRequestCancellationPolicyAttachment>;
@@ -1627,21 +1602,12 @@ export const UpdateEvidenceDisputeRequestCancellationPolicyAttachment = /*@__PUR
 /** A file upload containing evidence of customer communication. Must be a JPEG, PNG, GIF, or PDF. */
 export type UpdateEvidenceDisputeRequestCustomerCommunicationAttachment =
   UpdateEvidenceDisputeRequestCancellationPolicyAttachment;
-export const UpdateEvidenceDisputeRequestCustomerCommunicationAttachment =
-  UpdateEvidenceDisputeRequestCancellationPolicyAttachment;
-
 /** A file upload containing the company's refund policy document. */
 export type UpdateEvidenceDisputeRequestRefundPolicyAttachment =
   UpdateEvidenceDisputeRequestCancellationPolicyAttachment;
-export const UpdateEvidenceDisputeRequestRefundPolicyAttachment =
-  UpdateEvidenceDisputeRequestCancellationPolicyAttachment;
-
 /** A file upload for evidence that does not fit into the other categories. */
 export type UpdateEvidenceDisputeRequestUncategorizedAttachment =
   UpdateEvidenceDisputeRequestCancellationPolicyAttachment;
-export const UpdateEvidenceDisputeRequestUncategorizedAttachment =
-  UpdateEvidenceDisputeRequestCancellationPolicyAttachment;
-
 export interface UpdateEvidenceDisputeRequest {
   /** The unique identifier of the dispute to update. */
   id: string;
@@ -1674,7 +1640,7 @@ export interface UpdateEvidenceDisputeRequest {
   /** A file upload for evidence that does not fit into the other categories. */
   uncategorized_attachment?: UpdateEvidenceDisputeRequestCancellationPolicyAttachment | null;
 }
-export const UpdateEvidenceDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEvidenceDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     access_activity_log: S.optional(S.NullOr(S.String)),
@@ -1718,8 +1684,6 @@ export type UploadDisputeEvidenceRequestDocumentsItemDocumentType =
   | "digital_fulfillment"
   | "subscription"
   | "customer_communication";
-export const UploadDisputeEvidenceRequestDocumentsItemDocumentType = S.String;
-
 export interface UploadDisputeEvidenceRequestDocumentsItem {
   /** The ID returned by a direct upload. */
   direct_upload_id?: string;
@@ -1730,13 +1694,10 @@ export interface UploadDisputeEvidenceRequestDocumentsItem {
   /** The ID of a file already stored on Whop, prefixed `file_`. */
   id?: string;
 }
-export const UploadDisputeEvidenceRequestDocumentsItem =
-  UpdateDisputeRequestEvidenceDocumentsItem as any as S.Schema<UploadDisputeEvidenceRequestDocumentsItem>;
-
 /** The full set of evidence documents the dispute should carry, beyond the four fixed evidence slots. Replaces all previously uploaded documents. Upload files through `POST /files` and reference them by `id`, or send the files as multipart file parts to upload and attach in one call. Policy documents (`return_policy`, `shipping_policy`, `cancellation_policy`, `terms_of_service`) default from the account's own documents; uploading one here replaces the account copy for this dispute, and a `cancellation_policy` or `return_policy` upload also takes precedence over the matching fixed evidence slot. */
 export type UploadDisputeEvidenceRequestDocumentsList =
   Array<UploadDisputeEvidenceRequestDocumentsItem>;
-export const UploadDisputeEvidenceRequestDocumentsList =
+const UploadDisputeEvidenceRequestDocumentsList =
   UpdateDisputeRequestEvidenceDocumentsList as any as S.Schema<UploadDisputeEvidenceRequestDocumentsList>;
 
 export interface UploadDisputeEvidenceRequest {
@@ -1747,7 +1708,7 @@ export interface UploadDisputeEvidenceRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const UploadDisputeEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDisputeEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     documents: UploadDisputeEvidenceRequestDocumentsList,

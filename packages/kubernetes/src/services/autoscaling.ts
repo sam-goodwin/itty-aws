@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface IoK8sApiAutoscalingV1CrossVersionObjectReference {
   /** name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
   name: string;
 }
-export const IoK8sApiAutoscalingV1CrossVersionObjectReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV1CrossVersionObjectReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.String,
@@ -220,7 +220,7 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec {
   /** targetCPUUtilizationPercentage is the target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used. */
   targetCPUUtilizationPercentage?: number;
 }
-export const IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxReplicas: S.Number,
     minReplicas: S.optional(S.Number),
@@ -244,7 +244,7 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus {
   /** observedGeneration is the most recent generation observed by this autoscaler. */
   observedGeneration?: number;
 }
-export const IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentCPUUtilizationPercentage: S.optional(S.Number),
     currentReplicas: S.Number,
@@ -278,26 +278,25 @@ export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
-      status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
-        code: 200,
-      }),
-    ),
+const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
+    status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -315,7 +314,7 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscaler {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-export const IoK8sApiAutoscalingV1HorizontalPodAutoscaler = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV1HorizontalPodAutoscaler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -336,7 +335,7 @@ export interface IoK8sApiAutoscalingV2HPAScalingPolicy {
   /** value contains the amount of change which is permitted by the policy. It must be greater than zero */
   value: number;
 }
-export const IoK8sApiAutoscalingV2HPAScalingPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HPAScalingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     periodSeconds: S.Number,
     type: S.String,
@@ -349,7 +348,7 @@ export const IoK8sApiAutoscalingV2HPAScalingPolicy = /*@__PURE__*/ S.suspend(() 
 /** policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window. */
 export type IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList =
   Array<IoK8sApiAutoscalingV2HPAScalingPolicy>;
-export const IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList = /*@__PURE__*/ S.Array(
+const IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList = /*@__PURE__*/ S.Array(
   IoK8sApiAutoscalingV2HPAScalingPolicy,
 ) as any as S.Schema<IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList>;
 
@@ -364,7 +363,7 @@ export interface IoK8sApiAutoscalingV2HPAScalingRules {
   /** tolerance is the tolerance on the ratio between the current and desired metric value under which no updates are made to the desired number of replicas (e.g. 0.01 for 1%). Must be greater than or equal to zero. If not set, the default cluster-wide tolerance is applied (by default 10%). For example, if autoscaling is configured with a memory consumption target of 100Mi, and scale-down and scale-up tolerances of 5% and 1% respectively, scaling will be triggered when the actual consumption falls below 95Mi or exceeds 101Mi. */
   tolerance?: string;
 }
-export const IoK8sApiAutoscalingV2HPAScalingRules = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HPAScalingRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: S.optional(IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList),
     selectPolicy: S.optional(S.String),
@@ -382,7 +381,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior {
   /** scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of: * increase no more than 4 pods per 60 seconds * double the number of pods per 60 seconds No stabilization is used. */
   scaleUp?: IoK8sApiAutoscalingV2HPAScalingRules;
 }
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scaleDown: S.optional(IoK8sApiAutoscalingV2HPAScalingRules),
     scaleUp: S.optional(IoK8sApiAutoscalingV2HPAScalingRules),
@@ -402,7 +401,7 @@ export interface IoK8sApiAutoscalingV2MetricTarget {
   /** value is the target value of the metric (as a quantity). */
   value?: string;
 }
-export const IoK8sApiAutoscalingV2MetricTarget = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2MetricTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     averageUtilization: S.optional(S.Number),
     averageValue: S.optional(S.String),
@@ -422,7 +421,7 @@ export interface IoK8sApiAutoscalingV2ContainerResourceMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-export const IoK8sApiAutoscalingV2ContainerResourceMetricSource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ContainerResourceMetricSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.String,
     name: S.String,
@@ -434,10 +433,9 @@ export const IoK8sApiAutoscalingV2ContainerResourceMetricSource = /*@__PURE__*/ 
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
@@ -448,7 +446,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: S.String,
@@ -461,16 +459,15 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE_
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
 
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
@@ -480,7 +477,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchExpressions: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList),
     matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
@@ -496,7 +493,7 @@ export interface IoK8sApiAutoscalingV2MetricIdentifier {
   /** selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics. */
   selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector;
 }
-export const IoK8sApiAutoscalingV2MetricIdentifier = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2MetricIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     selector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
@@ -512,7 +509,7 @@ export interface IoK8sApiAutoscalingV2ExternalMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-export const IoK8sApiAutoscalingV2ExternalMetricSource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ExternalMetricSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: IoK8sApiAutoscalingV2MetricIdentifier,
     target: IoK8sApiAutoscalingV2MetricTarget,
@@ -524,9 +521,6 @@ export const IoK8sApiAutoscalingV2ExternalMetricSource = /*@__PURE__*/ S.suspend
 /** CrossVersionObjectReference contains enough information to let you identify the referred resource. */
 export type IoK8sApiAutoscalingV2CrossVersionObjectReference =
   IoK8sApiAutoscalingV1CrossVersionObjectReference;
-export const IoK8sApiAutoscalingV2CrossVersionObjectReference =
-  IoK8sApiAutoscalingV1CrossVersionObjectReference;
-
 /** ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object). */
 export interface IoK8sApiAutoscalingV2ObjectMetricSource {
   /** describedObject specifies the descriptions of a object,such as kind,name apiVersion */
@@ -536,7 +530,7 @@ export interface IoK8sApiAutoscalingV2ObjectMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-export const IoK8sApiAutoscalingV2ObjectMetricSource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ObjectMetricSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     describedObject: IoK8sApiAutoscalingV1CrossVersionObjectReference,
     metric: IoK8sApiAutoscalingV2MetricIdentifier,
@@ -548,8 +542,6 @@ export const IoK8sApiAutoscalingV2ObjectMetricSource = /*@__PURE__*/ S.suspend((
 
 /** PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value. */
 export type IoK8sApiAutoscalingV2PodsMetricSource = IoK8sApiAutoscalingV2ExternalMetricSource;
-export const IoK8sApiAutoscalingV2PodsMetricSource = IoK8sApiAutoscalingV2ExternalMetricSource;
-
 /** ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). The values will be averaged together before being compared to the target. Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. Only one "target" type should be set. */
 export interface IoK8sApiAutoscalingV2ResourceMetricSource {
   /** name is the name of the resource in question. */
@@ -557,7 +549,7 @@ export interface IoK8sApiAutoscalingV2ResourceMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-export const IoK8sApiAutoscalingV2ResourceMetricSource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ResourceMetricSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     target: IoK8sApiAutoscalingV2MetricTarget,
@@ -581,7 +573,7 @@ export interface IoK8sApiAutoscalingV2MetricSpec {
   /** type is the type of metric source. It should be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each mapping to a matching field in the object. */
   type: string;
 }
-export const IoK8sApiAutoscalingV2MetricSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2MetricSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerResource: S.optional(IoK8sApiAutoscalingV2ContainerResourceMetricSource),
     external: S.optional(IoK8sApiAutoscalingV2ExternalMetricSource),
@@ -597,7 +589,7 @@ export const IoK8sApiAutoscalingV2MetricSpec = /*@__PURE__*/ S.suspend(() =>
 /** metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used). The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods. Ergo, metrics used must decrease as the pod count is increased, and vice-versa. See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList =
   Array<IoK8sApiAutoscalingV2MetricSpec>;
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList = /*@__PURE__*/ S.Array(
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList = /*@__PURE__*/ S.Array(
   IoK8sApiAutoscalingV2MetricSpec,
 ) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList>;
 
@@ -614,7 +606,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec {
   /** scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count. */
   scaleTargetRef: IoK8sApiAutoscalingV1CrossVersionObjectReference;
 }
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behavior: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior),
     maxReplicas: S.Number,
@@ -641,7 +633,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition {
   /** type describes the current condition */
   type: string;
 }
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.optional(S.String),
     message: S.optional(S.String),
@@ -657,10 +649,9 @@ export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition = /*@__PURE__
 /** conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList =
   Array<IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition>;
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition,
-  ) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList>;
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList = /*@__PURE__*/ S.Array(
+  IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition,
+) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList>;
 
 /** MetricValueStatus holds the current value for a metric */
 export interface IoK8sApiAutoscalingV2MetricValueStatus {
@@ -671,7 +662,7 @@ export interface IoK8sApiAutoscalingV2MetricValueStatus {
   /** value is the current value of the metric (as a quantity). */
   value?: string;
 }
-export const IoK8sApiAutoscalingV2MetricValueStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2MetricValueStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     averageUtilization: S.optional(S.Number),
     averageValue: S.optional(S.String),
@@ -690,7 +681,7 @@ export interface IoK8sApiAutoscalingV2ContainerResourceMetricStatus {
   /** name is the name of the resource in question. */
   name: string;
 }
-export const IoK8sApiAutoscalingV2ContainerResourceMetricStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ContainerResourceMetricStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.String,
     current: IoK8sApiAutoscalingV2MetricValueStatus,
@@ -707,7 +698,7 @@ export interface IoK8sApiAutoscalingV2ExternalMetricStatus {
   /** metric identifies the target metric by name and selector */
   metric: IoK8sApiAutoscalingV2MetricIdentifier;
 }
-export const IoK8sApiAutoscalingV2ExternalMetricStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ExternalMetricStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: IoK8sApiAutoscalingV2MetricValueStatus,
     metric: IoK8sApiAutoscalingV2MetricIdentifier,
@@ -725,7 +716,7 @@ export interface IoK8sApiAutoscalingV2ObjectMetricStatus {
   /** metric identifies the target metric by name and selector */
   metric: IoK8sApiAutoscalingV2MetricIdentifier;
 }
-export const IoK8sApiAutoscalingV2ObjectMetricStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ObjectMetricStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: IoK8sApiAutoscalingV2MetricValueStatus,
     describedObject: IoK8sApiAutoscalingV1CrossVersionObjectReference,
@@ -737,8 +728,6 @@ export const IoK8sApiAutoscalingV2ObjectMetricStatus = /*@__PURE__*/ S.suspend((
 
 /** PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second). */
 export type IoK8sApiAutoscalingV2PodsMetricStatus = IoK8sApiAutoscalingV2ExternalMetricStatus;
-export const IoK8sApiAutoscalingV2PodsMetricStatus = IoK8sApiAutoscalingV2ExternalMetricStatus;
-
 /** ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. */
 export interface IoK8sApiAutoscalingV2ResourceMetricStatus {
   /** current contains the current value for the given metric */
@@ -746,7 +735,7 @@ export interface IoK8sApiAutoscalingV2ResourceMetricStatus {
   /** name is the name of the resource in question. */
   name: string;
 }
-export const IoK8sApiAutoscalingV2ResourceMetricStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2ResourceMetricStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: IoK8sApiAutoscalingV2MetricValueStatus,
     name: S.String,
@@ -770,7 +759,7 @@ export interface IoK8sApiAutoscalingV2MetricStatus {
   /** type is the type of metric source. It will be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each corresponds to a matching field in the object. */
   type: string;
 }
-export const IoK8sApiAutoscalingV2MetricStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2MetricStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerResource: S.optional(IoK8sApiAutoscalingV2ContainerResourceMetricStatus),
     external: S.optional(IoK8sApiAutoscalingV2ExternalMetricStatus),
@@ -786,10 +775,9 @@ export const IoK8sApiAutoscalingV2MetricStatus = /*@__PURE__*/ S.suspend(() =>
 /** currentMetrics is the last read state of the metrics used by this autoscaler. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList =
   Array<IoK8sApiAutoscalingV2MetricStatus>;
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAutoscalingV2MetricStatus,
-  ) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList>;
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList = /*@__PURE__*/ S.Array(
+  IoK8sApiAutoscalingV2MetricStatus,
+) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList>;
 
 /** HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler. */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus {
@@ -806,7 +794,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus {
   /** observedGeneration is the most recent generation observed by this autoscaler. */
   observedGeneration?: number;
 }
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList),
     currentMetrics: S.optional(
@@ -843,26 +831,25 @@ export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
-      status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
-        code: 200,
-      }),
-    ),
+const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
+    status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
@@ -880,7 +867,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscaler {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscaler = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HorizontalPodAutoscaler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -899,7 +886,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -948,7 +935,7 @@ export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest =
+const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
@@ -990,7 +977,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -1003,7 +990,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -1022,7 +1009,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -1040,7 +1027,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -1061,7 +1048,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -1092,7 +1079,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1131,27 +1118,26 @@ export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -1196,7 +1182,7 @@ export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest =
+const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
@@ -1253,33 +1239,32 @@ export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
 
 export interface GetAutoscalingAPIGroupRequest {}
-export const GetAutoscalingAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoscalingAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/", code: 200 })),
 ).annotate({
   identifier: "GetAutoscalingAPIGroupRequest",
@@ -1292,7 +1277,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -1308,7 +1293,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -1320,15 +1305,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -1347,7 +1331,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1363,7 +1347,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetAutoscalingV1APIResourcesRequest {}
-export const GetAutoscalingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoscalingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/v1/", code: 200 })),
 ).annotate({
   identifier: "GetAutoscalingV1APIResourcesRequest",
@@ -1371,17 +1355,17 @@ export const GetAutoscalingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -1407,7 +1391,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -1427,7 +1411,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -1442,7 +1426,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -1454,7 +1438,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
 
 export interface GetAutoscalingV2APIResourcesRequest {}
-export const GetAutoscalingV2APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoscalingV2APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/autoscaling/v2/", code: 200 })),
 ).annotate({
   identifier: "GetAutoscalingV2APIResourcesRequest",
@@ -1486,8 +1470,8 @@ export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -1504,14 +1488,14 @@ export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest =
     }).pipe(
       T.Http({ method: "GET", uri: "/apis/autoscaling/v1/horizontalpodautoscalers", code: 200 }),
     ),
-  ).annotate({
-    identifier: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest",
-  }) as any as S.Schema<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest>;
+).annotate({
+  identifier: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest",
+}) as any as S.Schema<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest>;
 
 /** items is the list of horizontal pod autoscaler objects. */
 export type IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList =
   Array<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>;
-export const IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
 ) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList>;
 
@@ -1526,7 +1510,7 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAutoscalingV1HorizontalPodAutoscalerList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV1HorizontalPodAutoscalerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList,
@@ -1565,29 +1549,28 @@ export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
-        code: 200,
-      }),
-    ),
+const ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -1618,8 +1601,8 @@ export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -1636,14 +1619,14 @@ export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest =
     }).pipe(
       T.Http({ method: "GET", uri: "/apis/autoscaling/v2/horizontalpodautoscalers", code: 200 }),
     ),
-  ).annotate({
-    identifier: "ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest",
-  }) as any as S.Schema<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest>;
+).annotate({
+  identifier: "ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest",
+}) as any as S.Schema<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest>;
 
 /** items is the list of horizontal pod autoscaler objects. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList =
   Array<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>;
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
 ) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList>;
 
@@ -1658,7 +1641,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerList {
   /** metadata is the standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAutoscalingV2HorizontalPodAutoscalerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList,
@@ -1697,29 +1680,28 @@ export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
-        code: 200,
-      }),
-    ),
+const ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
@@ -1740,23 +1722,22 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -1777,8 +1758,8 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusReques
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -1794,9 +1775,9 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
-  }) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
+).annotate({
+  identifier: "PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
+}) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
 
 export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1814,23 +1795,22 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
@@ -1851,8 +1831,8 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusReques
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -1868,9 +1848,9 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
-  }) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
+).annotate({
+  identifier: "PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
+}) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
 
 export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1880,19 +1860,18 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -1905,8 +1884,8 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -1918,9 +1897,9 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
-  }) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
+).annotate({
+  identifier: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
+}) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
 
 export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1930,19 +1909,18 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
@@ -1955,8 +1933,8 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -1968,9 +1946,9 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
-  }) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
+).annotate({
+  identifier: "ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
+}) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
 
 export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1996,27 +1974,26 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
-      status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
+    status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -2045,8 +2022,8 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequ
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -2066,9 +2043,9 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
-  }) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
+).annotate({
+  identifier: "ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest",
+}) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
 
 export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -2094,27 +2071,26 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
-      status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
+    status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/autoscaling/v2/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
@@ -2143,8 +2119,8 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequ
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -2164,9 +2140,9 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
-  }) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
+).annotate({
+  identifier: "ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest",
+}) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
 
 export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -2194,7 +2170,7 @@ export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest =
+const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2226,7 +2202,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -2265,30 +2241,29 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
@@ -2321,32 +2296,31 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest",
-  }) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest>;
+const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest",
+}) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest>;
 
 export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -2374,7 +2348,7 @@ export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest =
+const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2430,30 +2404,29 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}",
-        code: 200,
-      }),
-    ),
+const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest",
 }) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
@@ -2486,32 +2459,31 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/autoscaling/v2/watch/namespaces/{namespace}/horizontalpodautoscalers",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest",
-  }) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest>;
+const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/autoscaling/v2/watch/namespaces/{namespace}/horizontalpodautoscalers",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest",
+}) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest>;
 
 export type CreateAutoscalingV1NamespacedHorizontalPodAutoscalerError =
   | Conflict

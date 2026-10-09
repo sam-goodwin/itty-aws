@@ -47,7 +47,7 @@ export class NotFound
 
 /** The protective stance action. ACTION_DENY forces a 403 status response code. */
 export type Action = "ACTION_DENY" | "ACTION_PASS" | "ACTION_ALLOW";
-export const Action = S.String;
+const Action = S.String;
 
 export interface Behavior {
   action: Action | (string & {});
@@ -56,7 +56,7 @@ export interface Behavior {
   /** Custom notification message string mapped to underlying logdata contexts. */
   logMsg?: string;
 }
-export const Behavior = /*@__PURE__*/ S.suspend(() =>
+const Behavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: Action,
     log: S.optional(S.Boolean),
@@ -82,14 +82,14 @@ export type Operator =
   | "OPERATOR_VALIDATE_URL_ENCODING"
   | "OPERATOR_VALIDATE_UTF8_ENCODING"
   | "OPERATOR_WITHIN";
-export const Operator = S.String;
+const Operator = S.String;
 
 export interface ConditionOperator {
   type: Operator | (string & {});
   /** The text or rule regex pattern arguments applied inside the operator execution loop. */
   value?: string;
 }
-export const ConditionOperator = /*@__PURE__*/ S.suspend(() =>
+const ConditionOperator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: Operator,
     value: S.optional(S.String),
@@ -103,11 +103,11 @@ export type Transformation =
   | "TRANSFORMATION_TRIM"
   | "TRANSFORMATION_UPPERCASE"
   | "TRANSFORMATION_UTF8_TO_UNICODE";
-export const Transformation = S.String;
+const Transformation = S.String;
 
 /** [HINT] Ordered processing adjustments applied to clean inputs before match checking. */
 export type ConditionTransformationsList = Array<Transformation | (string & {})>;
-export const ConditionTransformationsList = /*@__PURE__*/ S.Array(
+const ConditionTransformationsList = /*@__PURE__*/ S.Array(
   Transformation,
 ) as any as S.Schema<ConditionTransformationsList>;
 
@@ -135,14 +135,12 @@ export type Variable =
   | "VARIABLE_RESPONSE_HEADERS_NAMES"
   | "VARIABLE_RESPONSE_PROTOCOL"
   | "VARIABLE_RESPONSE_STATUS";
-export const Variable = S.String;
-
 export interface ConditionVariable {
   type: Variable | (string & {});
   /** Optional key element context for map variables (e.g., matching a 'Host' header key). */
   value?: string;
 }
-export const ConditionVariable = ConditionOperator as any as S.Schema<ConditionVariable>;
+const ConditionVariable = ConditionOperator as any as S.Schema<ConditionVariable>;
 
 export interface Condition {
   operator: ConditionOperator;
@@ -150,7 +148,7 @@ export interface Condition {
   transformations?: ConditionTransformationsList;
   variable: ConditionVariable;
 }
-export const Condition = /*@__PURE__*/ S.suspend(() =>
+const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operator: ConditionOperator,
     transformations: S.optional(ConditionTransformationsList),
@@ -160,7 +158,7 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 
 /** [HINT] Order matters! First condition match triggers execution. */
 export type CreateCustomRuleConditionsList = Array<Condition>;
-export const CreateCustomRuleConditionsList = /*@__PURE__*/ S.Array(
+const CreateCustomRuleConditionsList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<CreateCustomRuleConditionsList>;
 
@@ -171,7 +169,7 @@ export interface CreateCustomRule {
   /** A clear description explaining the threat vector or criteria addressed by this rule. */
   description?: string;
 }
-export const CreateCustomRule = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behavior: Behavior,
     conditions: CreateCustomRuleConditionsList,
@@ -181,7 +179,7 @@ export const CreateCustomRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of custom rule group SecLang parameters forming this execution group. */
 export type CreateCustomRuleGroupRequestRulesList = Array<CreateCustomRule>;
-export const CreateCustomRuleGroupRequestRulesList = /*@__PURE__*/ S.Array(
+const CreateCustomRuleGroupRequestRulesList = /*@__PURE__*/ S.Array(
   CreateCustomRule,
 ) as any as S.Schema<CreateCustomRuleGroupRequestRulesList>;
 
@@ -193,7 +191,7 @@ export interface CreateCustomRuleGroupRequest {
   /** The collection of custom rule group SecLang parameters forming this execution group. */
   rules: CreateCustomRuleGroupRequestRulesList;
 }
-export const CreateCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -221,7 +219,7 @@ export type Severity =
   | "SEVERITY_NOTICE"
   | "SEVERITY_INFO"
   | "SEVERITY_DEBUG";
-export const Severity = S.String;
+const Severity = S.String;
 
 export interface GetBehavior {
   action: Action;
@@ -231,7 +229,7 @@ export interface GetBehavior {
   logMsg?: string;
   severity: Severity;
 }
-export const GetBehavior = /*@__PURE__*/ S.suspend(() =>
+const GetBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: Action,
     log: S.Boolean,
@@ -242,7 +240,7 @@ export const GetBehavior = /*@__PURE__*/ S.suspend(() =>
 
 /** [HINT] Order matters! First condition match triggers execution. */
 export type GetCustomRuleConditionsList = Array<Condition>;
-export const GetCustomRuleConditionsList =
+const GetCustomRuleConditionsList =
   CreateCustomRuleConditionsList as any as S.Schema<GetCustomRuleConditionsList>;
 
 export interface GetCustomRule {
@@ -254,7 +252,7 @@ export interface GetCustomRule {
   /** Backend auto-allocated unique rule ID within the valid 1-99999 threshold. */
   id: number;
 }
-export const GetCustomRule = /*@__PURE__*/ S.suspend(() =>
+const GetCustomRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behavior: GetBehavior,
     conditions: GetCustomRuleConditionsList,
@@ -265,15 +263,13 @@ export const GetCustomRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Enriched rules containing auto-generated IDs and computed severity values. */
 export type GetCustomRuleGroupResponseRulesList = Array<GetCustomRule>;
-export const GetCustomRuleGroupResponseRulesList = /*@__PURE__*/ S.Array(
+const GetCustomRuleGroupResponseRulesList = /*@__PURE__*/ S.Array(
   GetCustomRule,
 ) as any as S.Schema<GetCustomRuleGroupResponseRulesList>;
 
 /** List of individual WAF configuration names that bind this rule group. */
 export type CRGUsageItemsList = Array<string>;
-export const CRGUsageItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CRGUsageItemsList>;
+const CRGUsageItemsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<CRGUsageItemsList>;
 
 /** Tracking metrics for CRG resource utilization */
 export interface CRGUsage {
@@ -282,7 +278,7 @@ export interface CRGUsage {
   /** List of individual WAF configuration names that bind this rule group. */
   items?: CRGUsageItemsList;
 }
-export const CRGUsage = /*@__PURE__*/ S.suspend(() =>
+const CRGUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     items: S.optional(CRGUsageItemsList),
@@ -297,7 +293,7 @@ export interface GetCustomRuleGroupResponse {
   rules: GetCustomRuleGroupResponseRulesList;
   usage?: CRGUsage;
 }
-export const GetCustomRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     rules: GetCustomRuleGroupResponseRulesList,
@@ -309,7 +305,7 @@ export const GetCustomRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Set the managed rule set type. */
 export type Type = "TYPE_OWASP_CRS";
-export const Type = S.String;
+const Type = S.String;
 
 export interface CreateManagedRuleSetRequest {
   projectId: string;
@@ -318,7 +314,7 @@ export interface CreateManagedRuleSetRequest {
   name: string;
   type: Type | (string & {});
 }
-export const CreateManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -338,7 +334,7 @@ export const CreateManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current mode of the rule. */
 export type Mode = "MODE_ENABLED" | "MODE_DISABLED" | "MODE_LOG_ONLY";
-export const Mode = S.String;
+const Mode = S.String;
 
 /** Rule represents an individual security or validation rule. */
 export interface MRSRule {
@@ -348,7 +344,7 @@ export interface MRSRule {
   /** Impact level. */
   severity: string;
 }
-export const MRSRule = /*@__PURE__*/ S.suspend(() =>
+const MRSRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     mode: Mode,
@@ -357,7 +353,7 @@ export const MRSRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MRSRule" }) as any as S.Schema<MRSRule>;
 
 export type MRSRuleGroupRulesMap = { [key: string]: MRSRule | undefined };
-export const MRSRuleGroupRulesMap = /*@__PURE__*/ S.Record(
+const MRSRuleGroupRulesMap = /*@__PURE__*/ S.Record(
   S.String,
   MRSRule,
 ) as any as S.Schema<MRSRuleGroupRulesMap>;
@@ -370,7 +366,7 @@ export interface MRSRuleGroup {
   groupName: string;
   rules?: MRSRuleGroupRulesMap;
 }
-export const MRSRuleGroup = /*@__PURE__*/ S.suspend(() =>
+const MRSRuleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     groupName: S.String,
@@ -380,22 +376,20 @@ export const MRSRuleGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Inventory of all available Managed Rule Set groups and their current configuration. The key is the unique Group ID. */
 export type GetManagedRuleSetResponseGroupsMap = { [key: string]: MRSRuleGroup | undefined };
-export const GetManagedRuleSetResponseGroupsMap = /*@__PURE__*/ S.Record(
+const GetManagedRuleSetResponseGroupsMap = /*@__PURE__*/ S.Record(
   S.String,
   MRSRuleGroup,
 ) as any as S.Schema<GetManagedRuleSetResponseGroupsMap>;
 
 /** List of WAFs that use this Managed Rule Set. */
 export type MRSUsageItemsList = Array<string>;
-export const MRSUsageItemsList = CRGUsageItemsList as any as S.Schema<MRSUsageItemsList>;
-
 export interface MRSUsage {
   /** Number of WAFs using this Managed Rule Set. */
   count?: number;
   /** List of WAFs that use this Managed Rule Set. */
   items?: MRSUsageItemsList;
 }
-export const MRSUsage = CRGUsage as any as S.Schema<MRSUsage>;
+const MRSUsage = CRGUsage as any as S.Schema<MRSUsage>;
 
 /** GetManagedRuleSetResponse returns rule configuration name and it's rules. */
 export interface GetManagedRuleSetResponse {
@@ -408,7 +402,7 @@ export interface GetManagedRuleSetResponse {
   /** Managed rule set version. */
   version: string;
 }
-export const GetManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(GetManagedRuleSetResponseGroupsMap),
     name: S.String,
@@ -422,7 +416,7 @@ export const GetManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type CreateWAFRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateWAFRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateWAFRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateWAFRequestLabelsMap>;
@@ -439,7 +433,7 @@ export interface CreateWAFRequest {
   /** WAF name */
   name: string;
 }
-export const CreateWAFRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWAFRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -459,12 +453,12 @@ export const CreateWAFRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetWAFResponseLabelsMap = { [key: string]: string | undefined };
-export const GetWAFResponseLabelsMap =
+const GetWAFResponseLabelsMap =
   CreateWAFRequestLabelsMap as any as S.Schema<GetWAFResponseLabelsMap>;
 
 /** The list of listener names in this Load Balancer, that are using the WAF. */
 export type WAFUsageItemListenerNamesList = Array<string>;
-export const WAFUsageItemListenerNamesList =
+const WAFUsageItemListenerNamesList =
   CRGUsageItemsList as any as S.Schema<WAFUsageItemListenerNamesList>;
 
 export interface WAFUsageItem {
@@ -473,7 +467,7 @@ export interface WAFUsageItem {
   /** The display name of the Load Balancer. */
   loadBalancerName: string;
 }
-export const WAFUsageItem = /*@__PURE__*/ S.suspend(() =>
+const WAFUsageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listenerNames: S.optional(WAFUsageItemListenerNamesList),
     loadBalancerName: S.String,
@@ -482,9 +476,7 @@ export const WAFUsageItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Application Load Balancers with their associated listeners that use this WAF configuration. */
 export type WAFUsageItemsList = Array<WAFUsageItem>;
-export const WAFUsageItemsList = /*@__PURE__*/ S.Array(
-  WAFUsageItem,
-) as any as S.Schema<WAFUsageItemsList>;
+const WAFUsageItemsList = /*@__PURE__*/ S.Array(WAFUsageItem) as any as S.Schema<WAFUsageItemsList>;
 
 export interface WAFUsage {
   /** Number of listeners using this WAF configuration. */
@@ -492,7 +484,7 @@ export interface WAFUsage {
   /** List of Application Load Balancers with their associated listeners that use this WAF configuration. */
   items?: WAFUsageItemsList;
 }
-export const WAFUsage = /*@__PURE__*/ S.suspend(() =>
+const WAFUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     items: S.optional(WAFUsageItemsList),
@@ -511,7 +503,7 @@ export interface GetWAFResponse {
   name: string;
   usage?: WAFUsage;
 }
-export const GetWAFResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWAFResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRuleGroupName: S.optional(S.String),
     labels: S.optional(GetWAFResponseLabelsMap),
@@ -526,7 +518,7 @@ export interface DeleteCustomRuleGroupRequest {
   region: string;
   name: string;
 }
-export const DeleteCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -544,7 +536,7 @@ export const DeleteCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomRuleGroupRequest>;
 
 export type DeleteCustomRuleGroupResponse2 = unknown;
-export const DeleteCustomRuleGroupResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomRuleGroupResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteCustomRuleGroupResponse2",
@@ -555,7 +547,7 @@ export interface DeleteManagedRuleSetRequest {
   region: string;
   name: string;
 }
-export const DeleteManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -573,7 +565,7 @@ export const DeleteManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedRuleSetRequest>;
 
 export type DeleteManagedRuleSetResponse2 = unknown;
-export const DeleteManagedRuleSetResponse2 =
+const DeleteManagedRuleSetResponse2 =
   DeleteCustomRuleGroupResponse2 as any as S.Schema<DeleteManagedRuleSetResponse2>;
 
 export interface DeleteWAFRequest {
@@ -581,7 +573,7 @@ export interface DeleteWAFRequest {
   region: string;
   name: string;
 }
-export const DeleteWAFRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWAFRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -597,7 +589,7 @@ export const DeleteWAFRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWAFRequest" }) as any as S.Schema<DeleteWAFRequest>;
 
 export type DeleteWAFResponse2 = unknown;
-export const DeleteWAFResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteWAFResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteWAFResponse2" }) as any as S.Schema<DeleteWAFResponse2>;
 
@@ -606,7 +598,7 @@ export interface GetCustomRuleGroupRequest {
   region: string;
   name: string;
 }
-export const GetCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -628,7 +620,7 @@ export interface GetManagedRuleSetRequest {
   region: string;
   name: string;
 }
-export const GetManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -647,7 +639,7 @@ export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -668,7 +660,7 @@ export interface CRGConfigQuota {
   /** The number of custom rule groups that are currently existing in this project. */
   usage?: number;
 }
-export const CRGConfigQuota = /*@__PURE__*/ S.suspend(() =>
+const CRGConfigQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     usage: S.optional(S.Number),
@@ -682,7 +674,7 @@ export interface MRSConfigQuota {
   /** The number of Managed Rule Set configurations that are currently existing in this project. */
   usage?: number;
 }
-export const MRSConfigQuota = CRGConfigQuota as any as S.Schema<MRSConfigQuota>;
+const MRSConfigQuota = CRGConfigQuota as any as S.Schema<MRSConfigQuota>;
 
 /** WAF Config quota holds the limit and usage for Web Application Firewall configuration resources */
 export interface WAFConfigQuota {
@@ -691,7 +683,7 @@ export interface WAFConfigQuota {
   /** The number of Web Application Firewall configurations that are currently existing in this project. */
   usage?: number;
 }
-export const WAFConfigQuota = CRGConfigQuota as any as S.Schema<WAFConfigQuota>;
+const WAFConfigQuota = CRGConfigQuota as any as S.Schema<WAFConfigQuota>;
 
 /** Quotas holds the specific quota elements for different resources */
 export interface Quotas {
@@ -699,7 +691,7 @@ export interface Quotas {
   managedRuleSet: MRSConfigQuota;
   webApplicationFirewall: WAFConfigQuota;
 }
-export const Quotas = /*@__PURE__*/ S.suspend(() =>
+const Quotas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRuleGroup: CRGConfigQuota,
     managedRuleSet: MRSConfigQuota,
@@ -714,7 +706,7 @@ export interface GetQuotaResponse {
   /** Region */
   region?: string;
 }
-export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     quotas: Quotas,
@@ -727,7 +719,7 @@ export interface GetWAFRequest {
   region: string;
   name: string;
 }
-export const GetWAFRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWAFRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -750,7 +742,7 @@ export interface ListCustomRuleGroupRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-export const ListCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -769,7 +761,7 @@ export const ListCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomRuleGroupRequest>;
 
 export type ListCustomRuleGroupResponseItemsList = Array<GetCustomRuleGroupResponse>;
-export const ListCustomRuleGroupResponseItemsList = /*@__PURE__*/ S.Array(
+const ListCustomRuleGroupResponseItemsList = /*@__PURE__*/ S.Array(
   GetCustomRuleGroupResponse,
 ) as any as S.Schema<ListCustomRuleGroupResponseItemsList>;
 
@@ -779,7 +771,7 @@ export interface ListCustomRuleGroupResponse {
   /** Continue token from the ListCustomRuleGroupResponse with Limit option */
   nextPageId?: string;
 }
-export const ListCustomRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListCustomRuleGroupResponseItemsList),
     nextPageId: S.optional(S.String),
@@ -796,7 +788,7 @@ export interface ListManagedRuleSetsRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-export const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -822,7 +814,7 @@ export interface GetLimitedManagedRuleSetResponse {
   /** Managed rule set version. */
   version: string;
 }
-export const GetLimitedManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLimitedManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: Type,
@@ -834,7 +826,7 @@ export const GetLimitedManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLimitedManagedRuleSetResponse>;
 
 export type ListManagedRuleSetResponseItemsList = Array<GetLimitedManagedRuleSetResponse>;
-export const ListManagedRuleSetResponseItemsList = /*@__PURE__*/ S.Array(
+const ListManagedRuleSetResponseItemsList = /*@__PURE__*/ S.Array(
   GetLimitedManagedRuleSetResponse,
 ) as any as S.Schema<ListManagedRuleSetResponseItemsList>;
 
@@ -844,7 +836,7 @@ export interface ListManagedRuleSetResponse {
   /** Continue token from the ListManagedRuleSetResponse with Limit option */
   nextPageId?: string;
 }
-export const ListManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+const ListManagedRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListManagedRuleSetResponseItemsList),
     nextPageId: S.optional(S.String),
@@ -861,7 +853,7 @@ export interface ListWAFRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-export const ListWAFRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWAFRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -878,7 +870,7 @@ export const ListWAFRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWAFRequest" }) as any as S.Schema<ListWAFRequest>;
 
 export type ListWAFResponseItemsList = Array<GetWAFResponse>;
-export const ListWAFResponseItemsList = /*@__PURE__*/ S.Array(
+const ListWAFResponseItemsList = /*@__PURE__*/ S.Array(
   GetWAFResponse,
 ) as any as S.Schema<ListWAFResponseItemsList>;
 
@@ -888,7 +880,7 @@ export interface ListWAFResponse {
   /** Continue token from the ListWAFResponse with Limit option */
   nextPageId?: string;
 }
-export const ListWAFResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWAFResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListWAFResponseItemsList),
     nextPageId: S.optional(S.String),
@@ -898,14 +890,14 @@ export const ListWAFResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchMRSRule {
   mode?: Mode | (string & {});
 }
-export const PatchMRSRule = /*@__PURE__*/ S.suspend(() =>
+const PatchMRSRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(Mode),
   }),
 ).annotate({ identifier: "PatchMRSRule" }) as any as S.Schema<PatchMRSRule>;
 
 export type PatchMRSRuleGroupRulesMap = { [key: string]: PatchMRSRule | undefined };
-export const PatchMRSRuleGroupRulesMap = /*@__PURE__*/ S.Record(
+const PatchMRSRuleGroupRulesMap = /*@__PURE__*/ S.Record(
   S.String,
   PatchMRSRule,
 ) as any as S.Schema<PatchMRSRuleGroupRulesMap>;
@@ -913,7 +905,7 @@ export const PatchMRSRuleGroupRulesMap = /*@__PURE__*/ S.Record(
 export interface PatchMRSRuleGroup {
   rules: PatchMRSRuleGroupRulesMap;
 }
-export const PatchMRSRuleGroup = /*@__PURE__*/ S.suspend(() =>
+const PatchMRSRuleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: PatchMRSRuleGroupRulesMap,
   }),
@@ -921,7 +913,7 @@ export const PatchMRSRuleGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Managed Rule Set groups to be patched. The key is the Group ID (e.g., 942 for SQL Injection). Only provided rules within the group will be updated; others remain unchanged. */
 export type PatchManagedRuleSetRequestGroupsMap = { [key: string]: PatchMRSRuleGroup | undefined };
-export const PatchManagedRuleSetRequestGroupsMap = /*@__PURE__*/ S.Record(
+const PatchManagedRuleSetRequestGroupsMap = /*@__PURE__*/ S.Record(
   S.String,
   PatchMRSRuleGroup,
 ) as any as S.Schema<PatchManagedRuleSetRequestGroupsMap>;
@@ -933,7 +925,7 @@ export interface PatchManagedRuleSetRequest {
   /** Map of Managed Rule Set groups to be patched. The key is the Group ID (e.g., 942 for SQL Injection). Only provided rules within the group will be updated; others remain unchanged. */
   groups: PatchManagedRuleSetRequestGroupsMap;
 }
-export const PatchManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -953,7 +945,7 @@ export const PatchManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of custom rule group SecLang parameters forming this execution group. Replaces the existing rules atomically. */
 export type UpdateCustomRuleGroupRequestRulesList = Array<CreateCustomRule>;
-export const UpdateCustomRuleGroupRequestRulesList =
+const UpdateCustomRuleGroupRequestRulesList =
   CreateCustomRuleGroupRequestRulesList as any as S.Schema<UpdateCustomRuleGroupRequestRulesList>;
 
 export interface UpdateCustomRuleGroupRequest {
@@ -963,7 +955,7 @@ export interface UpdateCustomRuleGroupRequest {
   /** The collection of custom rule group SecLang parameters forming this execution group. Replaces the existing rules atomically. */
   rules: UpdateCustomRuleGroupRequestRulesList;
 }
-export const UpdateCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -983,7 +975,7 @@ export const UpdateCustomRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per WAF. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UpdateWAFRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateWAFRequestLabelsMap =
+const UpdateWAFRequestLabelsMap =
   CreateWAFRequestLabelsMap as any as S.Schema<UpdateWAFRequestLabelsMap>;
 
 export interface UpdateWAFRequest {
@@ -997,7 +989,7 @@ export interface UpdateWAFRequest {
   /** Name of the managed rule set configuration for that WAF. */
   managedRuleSetName?: string;
 }
-export const UpdateWAFRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWAFRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

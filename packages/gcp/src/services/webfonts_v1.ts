@@ -42,18 +42,18 @@ export type ListWebfontsSortEnum =
   | "POPULARITY"
   | "STYLE"
   | "TRENDING";
-export const ListWebfontsSortEnum = S.String;
+const ListWebfontsSortEnum = S.String;
 
 export type ListWebfontsCapabilityEnum = "CAPABILITY_UNSPECIFIED" | "WOFF2" | "VF" | "FAMILY_TAGS";
-export const ListWebfontsCapabilityEnum = S.String;
+const ListWebfontsCapabilityEnum = S.String;
 
 export type ListWebfontsCapabilityEnumList = Array<ListWebfontsCapabilityEnum | (string & {})>;
-export const ListWebfontsCapabilityEnumList = /*@__PURE__*/ S.Array(
+const ListWebfontsCapabilityEnumList = /*@__PURE__*/ S.Array(
   ListWebfontsCapabilityEnum,
 ) as any as S.Schema<ListWebfontsCapabilityEnumList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListWebfontsRequest {
   /** Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families. */
@@ -67,7 +67,7 @@ export interface ListWebfontsRequest {
   /** Filters by Webfont.family, using literal match. If not set, returns all families */
   family?: StringList;
 }
-export const ListWebfontsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebfontsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subset: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(ListWebfontsSortEnum.pipe(T.Query())),
@@ -88,7 +88,7 @@ export interface Axis {
   /** maximum value */
   end?: number;
 }
-export const Axis = /*@__PURE__*/ S.suspend(() =>
+const Axis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     start: S.optional(S.Number),
@@ -97,10 +97,10 @@ export const Axis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Axis" }) as any as S.Schema<Axis>;
 
 export type AxisList = Array<Axis>;
-export const AxisList = /*@__PURE__*/ S.Array(Axis) as any as S.Schema<AxisList>;
+const AxisList = /*@__PURE__*/ S.Array(Axis) as any as S.Schema<AxisList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Metadata for a tag. */
 export interface Tag {
@@ -109,7 +109,7 @@ export interface Tag {
   /** The weight of the tag. */
   weight?: number;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     weight: S.optional(S.Number),
@@ -117,7 +117,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** Metadata describing a family of fonts. */
 export interface Webfont {
@@ -146,7 +146,7 @@ export interface Webfont {
   /** The available variants for the font. */
   variants?: StringList;
 }
-export const Webfont = /*@__PURE__*/ S.suspend(() =>
+const Webfont = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     axes: S.optional(AxisList),
     subsets: S.optional(StringList),
@@ -164,7 +164,7 @@ export const Webfont = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Webfont" }) as any as S.Schema<Webfont>;
 
 export type WebfontList_ = Array<Webfont>;
-export const WebfontList_ = /*@__PURE__*/ S.Array(Webfont) as any as S.Schema<WebfontList_>;
+const WebfontList_ = /*@__PURE__*/ S.Array(Webfont) as any as S.Schema<WebfontList_>;
 
 /** Response containing the list of fonts currently served by the Google Fonts API. */
 export interface WebfontList {
@@ -173,7 +173,7 @@ export interface WebfontList {
   /** The list of fonts currently served by the Google Fonts API. */
   items?: WebfontList_;
 }
-export const WebfontList = /*@__PURE__*/ S.suspend(() =>
+const WebfontList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(WebfontList_),

@@ -41,18 +41,18 @@ export type FindClosestBuildingInsightsRequiredQualityEnum =
   | "MEDIUM"
   | "LOW"
   | "BASE";
-export const FindClosestBuildingInsightsRequiredQualityEnum = S.String;
+const FindClosestBuildingInsightsRequiredQualityEnum = S.String;
 
 export type FindClosestBuildingInsightsExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
   | "EXPANDED_COVERAGE"
   | "ROOF_GEOMETRY_INSIGHTS";
-export const FindClosestBuildingInsightsExperimentsEnum = S.String;
+const FindClosestBuildingInsightsExperimentsEnum = S.String;
 
 export type FindClosestBuildingInsightsExperimentsEnumList = Array<
   FindClosestBuildingInsightsExperimentsEnum | (string & {})
 >;
-export const FindClosestBuildingInsightsExperimentsEnumList = /*@__PURE__*/ S.Array(
+const FindClosestBuildingInsightsExperimentsEnumList = /*@__PURE__*/ S.Array(
   FindClosestBuildingInsightsExperimentsEnum,
 ) as any as S.Schema<FindClosestBuildingInsightsExperimentsEnumList>;
 
@@ -60,12 +60,10 @@ export type FindClosestBuildingInsightsAdditionalInsightsEnum =
   | "ADDITIONAL_INSIGHTS_UNSPECIFIED"
   | "ROOF_GEOMETRY"
   | "DETECTED_ARRAYS";
-export const FindClosestBuildingInsightsAdditionalInsightsEnum = S.String;
-
 export type FindClosestBuildingInsightsAdditionalInsightsEnumList = Array<
   FindClosestBuildingInsightsAdditionalInsightsEnum | (string & {})
 >;
-export const FindClosestBuildingInsightsAdditionalInsightsEnumList =
+const FindClosestBuildingInsightsAdditionalInsightsEnumList =
   FindClosestBuildingInsightsExperimentsEnumList as any as S.Schema<FindClosestBuildingInsightsAdditionalInsightsEnumList>;
 
 export interface FindClosestBuildingInsightsRequest {
@@ -82,7 +80,7 @@ export interface FindClosestBuildingInsightsRequest {
   /** Optional. A list of additional_insights to be included in the response. */
   additionalInsights?: FindClosestBuildingInsightsAdditionalInsightsEnumList;
 }
-export const FindClosestBuildingInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const FindClosestBuildingInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredQuality: S.optional(FindClosestBuildingInsightsRequiredQualityEnum.pipe(T.Query())),
     "location.latitude": S.optional(S.Number.pipe(T.Query())),
@@ -109,14 +107,14 @@ export type BuildingInsightsImageryQualityEnum =
   | "MEDIUM"
   | "LOW"
   | "BASE";
-export const BuildingInsightsImageryQualityEnum = S.String;
+const BuildingInsightsImageryQualityEnum = S.String;
 
 export type BuildingInsightsDetectedArraysDetectionStatusEnum =
   | "DETECTION_STATUS_UNSPECIFIED"
   | "DETECTION_STATUS_DATA_UNAVAILABLE"
   | "DETECTION_STATUS_ARRAYS_DETECTED"
   | "DETECTION_STATUS_NO_ARRAYS_DETECTED";
-export const BuildingInsightsDetectedArraysDetectionStatusEnum = S.String;
+const BuildingInsightsDetectedArraysDetectionStatusEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Solar_Date {
@@ -127,7 +125,7 @@ export interface Solar_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Solar_Date = /*@__PURE__*/ S.suspend(() =>
+const Solar_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -142,7 +140,7 @@ export interface BuildingInsightsDetectedArrays {
   /** The date indicating when the latest solar array data was captured. */
   latestCaptureDate?: Solar_Date;
 }
-export const BuildingInsightsDetectedArrays = /*@__PURE__*/ S.suspend(() =>
+const BuildingInsightsDetectedArrays = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectionStatus: S.optional(BuildingInsightsDetectedArraysDetectionStatusEnum),
     latestCaptureDate: S.optional(Solar_Date),
@@ -152,24 +150,21 @@ export const BuildingInsightsDetectedArrays = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BuildingInsightsDetectedArrays>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Details of a single detected obstacle. */
 export interface Obstacle {
   /** Output only. A GeoJSON representation of the obstacle. An obstacle is defined as any non-buildable area where solar panels cannot be placed due to physical barriers (vents, chimneys, dormers, etc.). The GeoJSON data must be in RFC 7946 format and represent a Polygon for a single contiguous area. The Polygon will be represented by several loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1, -1, 0], [-1, 0, 0], [0, 0, 0], [-1, -1, 0] ] ] } */
   polygonGeojson?: DocumentMap;
 }
-export const Obstacle = /*@__PURE__*/ S.suspend(() =>
+const Obstacle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     polygonGeojson: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Obstacle" }) as any as S.Schema<Obstacle>;
 
 export type ObstacleList = Array<Obstacle>;
-export const ObstacleList = /*@__PURE__*/ S.Array(Obstacle) as any as S.Schema<ObstacleList>;
+const ObstacleList = /*@__PURE__*/ S.Array(Obstacle) as any as S.Schema<ObstacleList>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
@@ -178,7 +173,7 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -192,7 +187,7 @@ export interface LatLngBox {
   /** The northeast corner of the box. */
   ne?: LatLng;
 }
-export const LatLngBox = /*@__PURE__*/ S.suspend(() =>
+const LatLngBox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sw: S.optional(LatLng),
     ne: S.optional(LatLng),
@@ -200,7 +195,7 @@ export const LatLngBox = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LatLngBox" }) as any as S.Schema<LatLngBox>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Size and sunniness quantiles of a roof, or part of a roof. */
 export interface SizeAndSunshineStats {
@@ -211,7 +206,7 @@ export interface SizeAndSunshineStats {
   /** The ground footprint area covered by the roof or roof segment, in m^2. */
   groundAreaMeters2?: number;
 }
-export const SizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
+const SizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     areaMeters2: S.optional(S.Number),
     sunshineQuantiles: S.optional(DoubleList),
@@ -236,7 +231,7 @@ export interface RoofSegmentSizeAndSunshineStats {
   /** Output only. A GeoJSON representation of the detailed geometry for the roof segment plane. The polygon represents the physical roof facet, excluding overlapping vegetation and internal cutouts (e.g., courtyards). This field is only populated if ROOF_GEOMETRY is included in the request's FindClosestBuildingInsightsRequest.additional_insights parameter. The GeoJSON data must be in RFC 7946 format and represent a Polygon for a single contiguous area. The Polygon will be represented by several loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1, -1, 0], [-1, 0, 0], [0, 0, 0], [-1, -1, 0] ] ] } */
   polygonGeojson?: DocumentMap;
 }
-export const RoofSegmentSizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
+const RoofSegmentSizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pitchDegrees: S.optional(S.Number),
     center: S.optional(LatLng),
@@ -251,7 +246,7 @@ export const RoofSegmentSizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoofSegmentSizeAndSunshineStats>;
 
 export type RoofSegmentSizeAndSunshineStatsList = Array<RoofSegmentSizeAndSunshineStats>;
-export const RoofSegmentSizeAndSunshineStatsList = /*@__PURE__*/ S.Array(
+const RoofSegmentSizeAndSunshineStatsList = /*@__PURE__*/ S.Array(
   RoofSegmentSizeAndSunshineStats,
 ) as any as S.Schema<RoofSegmentSizeAndSunshineStatsList>;
 
@@ -264,7 +259,7 @@ export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     units: S.optional(S.String),
@@ -295,7 +290,7 @@ export interface FinancialDetails {
   /** Amount of money available from utility incentives; this applies if the user buys (with or without a loan) the panels. */
   utilityIncentive?: Money;
 }
-export const FinancialDetails = /*@__PURE__*/ S.suspend(() =>
+const FinancialDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialAcKwhPerYear: S.optional(S.Number),
     netMeteringAllowed: S.optional(S.Boolean),
@@ -325,7 +320,7 @@ export interface SavingsOverTime {
   /** Using the assumed discount rate, what is the present value of the cumulative lifetime savings? */
   presentValueOfSavingsLifetime?: Money;
 }
-export const SavingsOverTime = /*@__PURE__*/ S.suspend(() =>
+const SavingsOverTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsYear1: S.optional(Money),
     savingsLifetime: S.optional(Money),
@@ -347,7 +342,7 @@ export interface FinancedPurchaseSavings {
   /** The value of all tax rebates (including Federal Investment Tax Credit (ITC)). */
   rebateValue?: Money;
 }
-export const FinancedPurchaseSavings = /*@__PURE__*/ S.suspend(() =>
+const FinancedPurchaseSavings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loanInterestRate: S.optional(S.Number),
     annualLoanPayment: S.optional(Money),
@@ -367,7 +362,7 @@ export interface LeasingSavings {
   /** Estimated annual leasing cost. */
   annualLeasingCost?: Money;
 }
-export const LeasingSavings = /*@__PURE__*/ S.suspend(() =>
+const LeasingSavings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leasesSupported: S.optional(S.Boolean),
     leasesAllowed: S.optional(S.Boolean),
@@ -389,7 +384,7 @@ export interface CashPurchaseSavings {
   /** Number of years until payback occurs. A negative value means payback never occurs within the lifetime period. */
   paybackYears?: number;
 }
-export const CashPurchaseSavings = /*@__PURE__*/ S.suspend(() =>
+const CashPurchaseSavings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upfrontCost: S.optional(Money),
     rebateValue: S.optional(Money),
@@ -418,7 +413,7 @@ export interface FinancialAnalysis {
   /** Cost and benefit of buying the solar panels with cash. */
   cashPurchaseSavings?: CashPurchaseSavings;
 }
-export const FinancialAnalysis = /*@__PURE__*/ S.suspend(() =>
+const FinancialAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monthlyBill: S.optional(Money),
     panelConfigIndex: S.optional(S.Number),
@@ -432,7 +427,7 @@ export const FinancialAnalysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FinancialAnalysis" }) as any as S.Schema<FinancialAnalysis>;
 
 export type FinancialAnalysisList = Array<FinancialAnalysis>;
-export const FinancialAnalysisList = /*@__PURE__*/ S.Array(
+const FinancialAnalysisList = /*@__PURE__*/ S.Array(
   FinancialAnalysis,
 ) as any as S.Schema<FinancialAnalysisList>;
 
@@ -449,7 +444,7 @@ export interface RoofSegmentSummary {
   /** The total number of panels on this segment. */
   panelsCount?: number;
 }
-export const RoofSegmentSummary = /*@__PURE__*/ S.suspend(() =>
+const RoofSegmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pitchDegrees: S.optional(S.Number),
     azimuthDegrees: S.optional(S.Number),
@@ -460,7 +455,7 @@ export const RoofSegmentSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoofSegmentSummary" }) as any as S.Schema<RoofSegmentSummary>;
 
 export type RoofSegmentSummaryList = Array<RoofSegmentSummary>;
-export const RoofSegmentSummaryList = /*@__PURE__*/ S.Array(
+const RoofSegmentSummaryList = /*@__PURE__*/ S.Array(
   RoofSegmentSummary,
 ) as any as S.Schema<RoofSegmentSummaryList>;
 
@@ -473,7 +468,7 @@ export interface SolarPanelConfig {
   /** Information about the production of each roof segment that is carrying at least one panel in this layout. `roof_segment_summaries[i]` describes the i-th roof segment, including its size, expected production and orientation. */
   roofSegmentSummaries?: RoofSegmentSummaryList;
 }
-export const SolarPanelConfig = /*@__PURE__*/ S.suspend(() =>
+const SolarPanelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     yearlyEnergyDcKwh: S.optional(S.Number),
     panelsCount: S.optional(S.Number),
@@ -482,7 +477,7 @@ export const SolarPanelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SolarPanelConfig" }) as any as S.Schema<SolarPanelConfig>;
 
 export type SolarPanelConfigList = Array<SolarPanelConfig>;
-export const SolarPanelConfigList = /*@__PURE__*/ S.Array(
+const SolarPanelConfigList = /*@__PURE__*/ S.Array(
   SolarPanelConfig,
 ) as any as S.Schema<SolarPanelConfigList>;
 
@@ -490,7 +485,7 @@ export type SolarPanelOrientationEnum =
   | "SOLAR_PANEL_ORIENTATION_UNSPECIFIED"
   | "LANDSCAPE"
   | "PORTRAIT";
-export const SolarPanelOrientationEnum = S.String;
+const SolarPanelOrientationEnum = S.String;
 
 /** SolarPanel describes the position, orientation, and production of a single solar panel. See the panel_height_meters, panel_width_meters, and panel_capacity_watts fields in SolarPotential for information on the parameters of the panel. */
 export interface SolarPanel {
@@ -503,7 +498,7 @@ export interface SolarPanel {
   /** Index in roof_segment_stats of the `RoofSegmentSizeAndSunshineStats` which corresponds to the roof segment that this panel is placed on. */
   segmentIndex?: number;
 }
-export const SolarPanel = /*@__PURE__*/ S.suspend(() =>
+const SolarPanel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     yearlyEnergyDcKwh: S.optional(S.Number),
     orientation: S.optional(SolarPanelOrientationEnum),
@@ -513,7 +508,7 @@ export const SolarPanel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SolarPanel" }) as any as S.Schema<SolarPanel>;
 
 export type SolarPanelList = Array<SolarPanel>;
-export const SolarPanelList = /*@__PURE__*/ S.Array(SolarPanel) as any as S.Schema<SolarPanelList>;
+const SolarPanelList = /*@__PURE__*/ S.Array(SolarPanel) as any as S.Schema<SolarPanelList>;
 
 /** Information about the solar potential of a building. A number of fields in this are defined in terms of "panels". The fields panel_capacity_watts, panel_height_meters, and panel_width_meters describe the parameters of the model of panel used in these calculations. */
 export interface SolarPotential {
@@ -548,7 +543,7 @@ export interface SolarPotential {
   /** Each SolarPanel describes a single solar panel. They are listed in the order that the panel layout algorithm placed this. This is usually, though not always, in decreasing order of annual energy production. */
   solarPanels?: SolarPanelList;
 }
-export const SolarPotential = /*@__PURE__*/ S.suspend(() =>
+const SolarPotential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carbonOffsetFactorKgPerMwh: S.optional(S.Number),
     maxSunshineHoursPerYear: S.optional(S.Number),
@@ -595,7 +590,7 @@ export interface BuildingInsights {
   /** Administrative area 1 (e.g., in the US, the state) that contains this building. For example, in the US, the abbreviation might be "MA" or "CA." */
   administrativeArea?: string;
 }
-export const BuildingInsights = /*@__PURE__*/ S.suspend(() =>
+const BuildingInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageryQuality: S.optional(BuildingInsightsImageryQualityEnum),
     detectedArrays: S.optional(BuildingInsightsDetectedArrays),
@@ -616,10 +611,8 @@ export type GetDataLayersExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
   | "EXPANDED_COVERAGE"
   | "ROOF_GEOMETRY_INSIGHTS";
-export const GetDataLayersExperimentsEnum = S.String;
-
 export type GetDataLayersExperimentsEnumList = Array<GetDataLayersExperimentsEnum | (string & {})>;
-export const GetDataLayersExperimentsEnumList =
+const GetDataLayersExperimentsEnumList =
   FindClosestBuildingInsightsExperimentsEnumList as any as S.Schema<GetDataLayersExperimentsEnumList>;
 
 export type GetDataLayersRequiredQualityEnum =
@@ -628,7 +621,7 @@ export type GetDataLayersRequiredQualityEnum =
   | "MEDIUM"
   | "LOW"
   | "BASE";
-export const GetDataLayersRequiredQualityEnum = S.String;
+const GetDataLayersRequiredQualityEnum = S.String;
 
 export type GetDataLayersViewEnum =
   | "DATA_LAYER_VIEW_UNSPECIFIED"
@@ -637,7 +630,7 @@ export type GetDataLayersViewEnum =
   | "IMAGERY_AND_ANNUAL_FLUX_LAYERS"
   | "IMAGERY_AND_ALL_FLUX_LAYERS"
   | "FULL_LAYERS";
-export const GetDataLayersViewEnum = S.String;
+const GetDataLayersViewEnum = S.String;
 
 export interface GetDataLayersRequest {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -657,7 +650,7 @@ export interface GetDataLayersRequest {
   /** Required. The radius, in meters, defining the region surrounding that centre point for which data should be returned. The limitations on this value are: * Any value up to 100m can always be specified. * Values over 100m can be specified, as long as `radius_meters` <= `pixel_size_meters * 1000`. * However, for values over 175m, the `DataLayerView` in the request must not include monthly flux or hourly shade. */
   radiusMeters?: number;
 }
-export const GetDataLayersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "location.latitude": S.optional(S.Number.pipe(T.Query())),
     experiments: S.optional(GetDataLayersExperimentsEnumList.pipe(T.Query())),
@@ -673,7 +666,7 @@ export const GetDataLayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDataLayersRequest" }) as any as S.Schema<GetDataLayersRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DataLayersImageryQualityEnum =
   | "IMAGERY_QUALITY_UNSPECIFIED"
@@ -681,7 +674,7 @@ export type DataLayersImageryQualityEnum =
   | "MEDIUM"
   | "LOW"
   | "BASE";
-export const DataLayersImageryQualityEnum = S.String;
+const DataLayersImageryQualityEnum = S.String;
 
 /** Information about the solar potential of a region. The actual data are contained in a number of GeoTIFF files covering the requested region, for which this message contains URLs: Each string in the `DataLayers` message contains a URL from which the corresponding GeoTIFF can be fetched. These URLs are valid for a few hours after they've been generated. Most of the GeoTIFF files are at a resolution of 0.1m/pixel, but the monthly flux file is at 0.5m/pixel, and the hourly shade files are at 1m/pixel. If a `pixel_size_meters` value was specified in the `GetDataLayersRequest`, then the minimum resolution in the GeoTIFF files will be that value. */
 export interface DataLayers {
@@ -704,7 +697,7 @@ export interface DataLayers {
   /** The URL for an image of RGB data (aerial or satellite photo) of the region. */
   rgbUrl?: string;
 }
-export const DataLayers = /*@__PURE__*/ S.suspend(() =>
+const DataLayers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hourlyShadeUrls: S.optional(StringList),
     monthlyFluxUrl: S.optional(S.String),
@@ -722,7 +715,7 @@ export interface GetGeoTiffRequest {
   /** Required. The ID of the asset being requested. */
   id?: string;
 }
-export const GetGeoTiffRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGeoTiffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -731,9 +724,7 @@ export const GetGeoTiffRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetGeoTiffRequest" }) as any as S.Schema<GetGeoTiffRequest>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -744,7 +735,7 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     contentType: S.optional(S.String),

@@ -23,7 +23,7 @@ export interface CancelWebAnalyticsContentAutopilotRunRequest {
   /** A UUID string identifying this content autopilot run. */
   id: string;
 }
-export const CancelWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -46,26 +46,26 @@ export type ContentAutopilotRunRunStatusEnum =
   | "completed"
   | "canceled"
   | "failed";
-export const ContentAutopilotRunRunStatusEnum = S.String;
+const ContentAutopilotRunRunStatusEnum = S.String;
 
 /** * `standard` - Standard * `lower` - Lower */
 export type ContentAutopilotSnapshotConfidenceEnum = "standard" | "lower";
-export const ContentAutopilotSnapshotConfidenceEnum = S.String;
+const ContentAutopilotSnapshotConfidenceEnum = S.String;
 
 /** Public sources authorized for this run. */
 export type ContentAutopilotSnapshotSourceUrlsList = Array<string>;
-export const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ S.Array(
+const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContentAutopilotSnapshotSourceUrlsList>;
 
 /** Site paths authorized for this run. */
 export type ContentAutopilotSnapshotContentBoundariesList = Array<string>;
-export const ContentAutopilotSnapshotContentBoundariesList =
+const ContentAutopilotSnapshotContentBoundariesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
 
 /** Editorial rules captured for this run. */
 export type ContentAutopilotSnapshotBrandRulesList = Array<string>;
-export const ContentAutopilotSnapshotBrandRulesList =
+const ContentAutopilotSnapshotBrandRulesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
 
 export interface ContentAutopilotSnapshot {
@@ -80,7 +80,7 @@ export interface ContentAutopilotSnapshot {
   /** Editorial rules captured for this run. */
   brand_rules?: ContentAutopilotSnapshotBrandRulesList;
 }
-export const ContentAutopilotSnapshot = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     confidence: S.optional(ContentAutopilotSnapshotConfidenceEnum),
@@ -96,7 +96,7 @@ export interface ContentAutopilotError {
   /** Error explanation suitable for the review workspace. */
   message: string;
 }
-export const ContentAutopilotError = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_code: S.String,
     message: S.String,
@@ -105,7 +105,7 @@ export const ContentAutopilotError = /*@__PURE__*/ S.suspend(() =>
 
 /** Inspectable workflow errors from this run. */
 export type ContentAutopilotRunErrorsList = Array<ContentAutopilotError>;
-export const ContentAutopilotRunErrorsList = /*@__PURE__*/ S.Array(
+const ContentAutopilotRunErrorsList = /*@__PURE__*/ S.Array(
   ContentAutopilotError,
 ) as any as S.Schema<ContentAutopilotRunErrorsList>;
 
@@ -123,7 +123,7 @@ export interface ContentAutopilotRun {
   updated_at: string;
   completed_at: string | null;
 }
-export const ContentAutopilotRun = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     profile_id: S.String,
@@ -142,7 +142,7 @@ export interface DismissWebAnalyticsContentAutopilotOpportunityRequest {
   /** A UUID string identifying this content autopilot opportunity. */
   id: string;
 }
-export const DismissWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -159,11 +159,11 @@ export const DismissWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__
 
 /** * `ai_visibility_gap` - AI visibility gap */
 export type ContentAutopilotOpportunityKindEnum = "ai_visibility_gap";
-export const ContentAutopilotOpportunityKindEnum = S.String;
+const ContentAutopilotOpportunityKindEnum = S.String;
 
 /** * `new_content` - New content * `page_improvement` - Page improvement */
 export type ContentAutopilotProposalProposalTypeEnum = "new_content" | "page_improvement";
-export const ContentAutopilotProposalProposalTypeEnum = S.String;
+const ContentAutopilotProposalProposalTypeEnum = S.String;
 
 /** * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
 export type OpportunityKindEnum =
@@ -172,7 +172,7 @@ export type OpportunityKindEnum =
   | "organic_decline"
   | "ai_visibility_gap"
   | "site_hygiene";
-export const OpportunityKindEnum = S.String;
+const OpportunityKindEnum = S.String;
 
 export interface ContentAutopilotEvidence {
   /** Reason the opportunity was selected. * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
@@ -184,7 +184,7 @@ export interface ContentAutopilotEvidence {
   /** Search query supported by this evidence. */
   query?: string;
 }
-export const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opportunity_kind: OpportunityKindEnum,
     explanation: S.String,
@@ -195,38 +195,38 @@ export const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
 
 /** Why this opportunity was selected. */
 export type ContentAutopilotOpportunityEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ S.Array(
+const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ S.Array(
   ContentAutopilotEvidence,
 ) as any as S.Schema<ContentAutopilotOpportunityEvidenceList>;
 
 /** Engines that answered the prompt. */
 export type ContentAutopilotCitationGapEnginesList = Array<string>;
-export const ContentAutopilotCitationGapEnginesList =
+const ContentAutopilotCitationGapEnginesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEnginesList>;
 
 /** Engines that never cited the site in the window. */
 export type ContentAutopilotCitationGapEnginesNotCitingList = Array<string>;
-export const ContentAutopilotCitationGapEnginesNotCitingList =
+const ContentAutopilotCitationGapEnginesNotCitingList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
 
 /** Other sites' pages the engines cited, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorUrlsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorUrlsList =
+const ContentAutopilotCitationGapCompetitorUrlsList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
 
 /** Domains the engines cited instead, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorDomainsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorDomainsList =
+const ContentAutopilotCitationGapCompetitorDomainsList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
 
 /** Web searches the engines ran while answering. */
 export type ContentAutopilotCitationGapEngineSearchQueriesList = Array<string>;
-export const ContentAutopilotCitationGapEngineSearchQueriesList =
+const ContentAutopilotCitationGapEngineSearchQueriesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
 
 /** Site pages the engines cited when they did cite the site. */
 export type ContentAutopilotCitationGapOurCitedUrlsList = Array<string>;
-export const ContentAutopilotCitationGapOurCitedUrlsList =
+const ContentAutopilotCitationGapOurCitedUrlsList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
 
 export interface ContentAutopilotEngineAnswer {
@@ -237,7 +237,7 @@ export interface ContentAutopilotEngineAnswer {
   /** When the answer was recorded, in ISO 8601. */
   checked_at: string;
 }
-export const ContentAutopilotEngineAnswer = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotEngineAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engine: S.String,
     answer_text: S.String,
@@ -249,7 +249,7 @@ export const ContentAutopilotEngineAnswer = /*@__PURE__*/ S.suspend(() =>
 
 /** Most recent answer per engine. */
 export type ContentAutopilotCitationGapLatestAnswersList = Array<ContentAutopilotEngineAnswer>;
-export const ContentAutopilotCitationGapLatestAnswersList = /*@__PURE__*/ S.Array(
+const ContentAutopilotCitationGapLatestAnswersList = /*@__PURE__*/ S.Array(
   ContentAutopilotEngineAnswer,
 ) as any as S.Schema<ContentAutopilotCitationGapLatestAnswersList>;
 
@@ -279,7 +279,7 @@ export interface ContentAutopilotCitationGap {
   /** When the prompt was last checked, in ISO 8601. */
   last_checked_at: string;
 }
-export const ContentAutopilotCitationGap = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotCitationGap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checks: S.Number,
     cited_checks: S.Number,
@@ -300,7 +300,7 @@ export const ContentAutopilotCitationGap = /*@__PURE__*/ S.suspend(() =>
 
 /** * `new` - New * `dismissed` - Dismissed * `queued` - Queued * `drafted` - Drafted */
 export type ContentAutopilotOpportunityStatusEnum = "new" | "dismissed" | "queued" | "drafted";
-export const ContentAutopilotOpportunityStatusEnum = S.String;
+const ContentAutopilotOpportunityStatusEnum = S.String;
 
 export interface ContentAutopilotOpportunity {
   id: string;
@@ -331,7 +331,7 @@ export interface ContentAutopilotOpportunity {
   created_at: string;
   updated_at: string;
 }
-export const ContentAutopilotOpportunity = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotOpportunity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     profile_id: S.String,
@@ -359,7 +359,7 @@ export interface ContentAutopilotFrontmatterEntry {
   /** Serialized frontmatter value. */
   value: string;
 }
-export const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -370,18 +370,18 @@ export const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered frontmatter entries. */
 export type ContentAutopilotPackageFrontmatterList = Array<ContentAutopilotFrontmatterEntry>;
-export const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ S.Array(
+const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ S.Array(
   ContentAutopilotFrontmatterEntry,
 ) as any as S.Schema<ContentAutopilotPackageFrontmatterList>;
 
 /** Validated same-origin internal links included in the content. */
 export type ContentAutopilotPackageInternalLinksList = Array<string>;
-export const ContentAutopilotPackageInternalLinksList =
+const ContentAutopilotPackageInternalLinksList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotPackageInternalLinksList>;
 
 /** Portable source notes included with the export. */
 export type ContentAutopilotPackageSourceNotesList = Array<string>;
-export const ContentAutopilotPackageSourceNotesList =
+const ContentAutopilotPackageSourceNotesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
 
 export interface ContentAutopilotPackage {
@@ -404,7 +404,7 @@ export interface ContentAutopilotPackage {
   /** Suggested llms.txt entry for the page. */
   llms_txt_line?: string;
 }
-export const ContentAutopilotPackage = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_path: S.String,
     title: S.String,
@@ -428,7 +428,7 @@ export interface EditWebAnalyticsContentAutopilotProposalRequest {
   /** Updated structured package to save with the proposal. */
   content_package: ContentAutopilotPackage;
 }
-export const EditWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const EditWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -452,11 +452,11 @@ export type ContentAutopilotProposalLifecycleStatusEnum =
   | "rejected"
   | "exported"
   | "failed";
-export const ContentAutopilotProposalLifecycleStatusEnum = S.String;
+const ContentAutopilotProposalLifecycleStatusEnum = S.String;
 
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotProposalEvidenceList =
+const ContentAutopilotProposalEvidenceList =
   ContentAutopilotOpportunityEvidenceList as any as S.Schema<ContentAutopilotProposalEvidenceList>;
 
 export interface ContentAutopilotValidationCheck {
@@ -471,7 +471,7 @@ export interface ContentAutopilotValidationCheck {
   /** Whether failure prevents export. */
   blocking: boolean;
 }
-export const ContentAutopilotValidationCheck = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotValidationCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_key: S.String,
     label: S.String,
@@ -485,7 +485,7 @@ export const ContentAutopilotValidationCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
 export type ContentAutopilotValidationReportChecksList = Array<ContentAutopilotValidationCheck>;
-export const ContentAutopilotValidationReportChecksList = /*@__PURE__*/ S.Array(
+const ContentAutopilotValidationReportChecksList = /*@__PURE__*/ S.Array(
   ContentAutopilotValidationCheck,
 ) as any as S.Schema<ContentAutopilotValidationReportChecksList>;
 
@@ -495,7 +495,7 @@ export interface ContentAutopilotValidationReport {
   /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
   checks: ContentAutopilotValidationReportChecksList;
 }
-export const ContentAutopilotValidationReport = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotValidationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passed: S.Boolean,
     checks: ContentAutopilotValidationReportChecksList,
@@ -506,7 +506,7 @@ export const ContentAutopilotValidationReport = /*@__PURE__*/ S.suspend(() =>
 
 /** Site pages the brief asked to read for facts. */
 export type ContentAutopilotBriefSitePagesToReadList = Array<string>;
-export const ContentAutopilotBriefSitePagesToReadList =
+const ContentAutopilotBriefSitePagesToReadList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
 
 export interface ContentAutopilotBriefCompetitor {
@@ -515,7 +515,7 @@ export interface ContentAutopilotBriefCompetitor {
   /** The product's own page to research. */
   url: string;
 }
-export const ContentAutopilotBriefCompetitor = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotBriefCompetitor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     url: S.String,
@@ -526,23 +526,23 @@ export const ContentAutopilotBriefCompetitor = /*@__PURE__*/ S.suspend(() =>
 
 /** Products the brief asked to research for a comparison. */
 export type ContentAutopilotBriefCompetitorsToResearchList = Array<ContentAutopilotBriefCompetitor>;
-export const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ S.Array(
+const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ S.Array(
   ContentAutopilotBriefCompetitor,
 ) as any as S.Schema<ContentAutopilotBriefCompetitorsToResearchList>;
 
 /** Planned sections, in order. */
 export type ContentAutopilotBriefOutlineList = Array<string>;
-export const ContentAutopilotBriefOutlineList =
+const ContentAutopilotBriefOutlineList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefOutlineList>;
 
 /** Questions the page must answer. */
 export type ContentAutopilotBriefQuestionsToAnswerList = Array<string>;
-export const ContentAutopilotBriefQuestionsToAnswerList =
+const ContentAutopilotBriefQuestionsToAnswerList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
 
 /** Topics the cited competitor pages cover that the site's pages don't. */
 export type ContentAutopilotBriefCompetitorCoverageList = Array<string>;
-export const ContentAutopilotBriefCompetitorCoverageList =
+const ContentAutopilotBriefCompetitorCoverageList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
 
 export interface ContentAutopilotBrief {
@@ -571,7 +571,7 @@ export interface ContentAutopilotBrief {
   /** What the question means, when AI answer engines misread which product or company it asks about. */
   disambiguation?: string;
 }
-export const ContentAutopilotBrief = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotBrief = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intent: S.optional(S.String),
     audience: S.optional(S.String),
@@ -590,7 +590,7 @@ export const ContentAutopilotBrief = /*@__PURE__*/ S.suspend(() =>
 
 /** * `site` - site * `competitor` - competitor */
 export type ContentAutopilotSourceLedgerEntryKindEnum = "site" | "competitor";
-export const ContentAutopilotSourceLedgerEntryKindEnum = S.String;
+const ContentAutopilotSourceLedgerEntryKindEnum = S.String;
 
 export interface ContentAutopilotSourceLedgerEntry {
   /** Factual claim the draft makes. */
@@ -602,7 +602,7 @@ export interface ContentAutopilotSourceLedgerEntry {
   /** Whether the source is one of the site's pages or a competitor's own page. * `site` - site * `competitor` - competitor */
   kind?: ContentAutopilotSourceLedgerEntryKindEnum;
 }
-export const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claim: S.String,
     source_url: S.String,
@@ -615,7 +615,7 @@ export const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Factual claims in the draft and the site pages that support them. */
 export type ContentAutopilotProposalSourceLedgerList = Array<ContentAutopilotSourceLedgerEntry>;
-export const ContentAutopilotProposalSourceLedgerList = /*@__PURE__*/ S.Array(
+const ContentAutopilotProposalSourceLedgerList = /*@__PURE__*/ S.Array(
   ContentAutopilotSourceLedgerEntry,
 ) as any as S.Schema<ContentAutopilotProposalSourceLedgerList>;
 
@@ -650,7 +650,7 @@ export interface ContentAutopilotProposal {
   created_at: string;
   updated_at: string;
 }
-export const ContentAutopilotProposal = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotProposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     run_id: S.String,
@@ -677,7 +677,7 @@ export interface ExportWebAnalyticsContentAutopilotProposalRequest {
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
-export const ExportWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -700,7 +700,7 @@ export interface ContentAutopilotExportResponse {
   /** Structured JSON package for a CMS adapter. */
   content_package: ContentAutopilotPackage;
 }
-export const ContentAutopilotExportResponse = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotExportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.String,
     markdown: S.String,
@@ -716,7 +716,7 @@ export interface FetchWebAnalyticsLlmsTxtRequest {
   /** Public HTTP or HTTPS URL of the llms.txt file to load. */
   url: string;
 }
-export const FetchWebAnalyticsLlmsTxtRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchWebAnalyticsLlmsTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     url: S.String,
@@ -737,7 +737,7 @@ export interface LlmsTxtFetchResponse {
   /** Final public URL after redirects. */
   url: string;
 }
-export const LlmsTxtFetchResponse = /*@__PURE__*/ S.suspend(() =>
+const LlmsTxtFetchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     url: S.String,
@@ -750,7 +750,7 @@ export interface RefreshWebAnalyticsContentAutopilotOpportunityRequest {
   /** Site profile to refresh opportunities for. */
   profile_id: string;
 }
-export const RefreshWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     profile_id: S.String,
@@ -767,13 +767,13 @@ export const RefreshWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__
 
 export type RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList =
   Array<ContentAutopilotOpportunity>;
-export const RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList = /*@__PURE__*/ S.Array(
+const RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList = /*@__PURE__*/ S.Array(
   ContentAutopilotOpportunity,
 ) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList>;
 
 export type RefreshWebAnalyticsContentAutopilotOpportunityResponse =
   RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList;
-export const RefreshWebAnalyticsContentAutopilotOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
+const RefreshWebAnalyticsContentAutopilotOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
   RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RefreshWebAnalyticsContentAutopilotOpportunityResponse",
@@ -785,7 +785,7 @@ export interface RegenerateWebAnalyticsContentAutopilotProposalRequest {
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
-export const RegenerateWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -801,7 +801,7 @@ export const RegenerateWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__
 }) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalRequest>;
 
 export interface RegenerateWebAnalyticsContentAutopilotProposalResponse {}
-export const RegenerateWebAnalyticsContentAutopilotProposalResponse = /*@__PURE__*/ S.suspend(() =>
+const RegenerateWebAnalyticsContentAutopilotProposalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "RegenerateWebAnalyticsContentAutopilotProposalResponse",
@@ -813,7 +813,7 @@ export interface RejectWebAnalyticsContentAutopilotProposalRequest {
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
-export const RejectWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -834,7 +834,7 @@ export interface StartWebAnalyticsContentAutopilotRunRequest {
   /** Site profile to research. */
   profile_id: string;
 }
-export const StartWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspend(() =>
+const StartWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     profile_id: S.String,
@@ -850,12 +850,12 @@ export const StartWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<StartWebAnalyticsContentAutopilotRunRequest>;
 
 export interface StartWebAnalyticsContentAutopilotRunResponse {}
-export const StartWebAnalyticsContentAutopilotRunResponse =
+const StartWebAnalyticsContentAutopilotRunResponse =
   RegenerateWebAnalyticsContentAutopilotProposalResponse as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>;
 
 /** Opportunities to draft, up to 5 at a time. */
 export type WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList = Array<string>;
-export const WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList =
+const WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList>;
@@ -868,7 +868,7 @@ export interface WebAnalyticsContentAutopilotOpportunitiesDraftRequest {
   /** Opportunities to draft, up to 5 at a time. */
   opportunity_ids: WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList;
 }
-export const WebAnalyticsContentAutopilotOpportunitiesDraftRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsContentAutopilotOpportunitiesDraftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     profile_id: S.String,
@@ -885,7 +885,7 @@ export const WebAnalyticsContentAutopilotOpportunitiesDraftRequest = /*@__PURE__
 }) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequest>;
 
 export interface WebAnalyticsContentAutopilotOpportunitiesDraftResponse {}
-export const WebAnalyticsContentAutopilotOpportunitiesDraftResponse =
+const WebAnalyticsContentAutopilotOpportunitiesDraftResponse =
   RegenerateWebAnalyticsContentAutopilotProposalResponse as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftResponse>;
 
 export interface WebAnalyticsContentAutopilotProfilesDiscoverRequest {
@@ -894,7 +894,7 @@ export interface WebAnalyticsContentAutopilotProfilesDiscoverRequest {
   /** Public site URL to inspect for onboarding defaults. */
   domain: string;
 }
-export const WebAnalyticsContentAutopilotProfilesDiscoverRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsContentAutopilotProfilesDiscoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     domain: S.String,
@@ -911,17 +911,17 @@ export const WebAnalyticsContentAutopilotProfilesDiscoverRequest = /*@__PURE__*/
 
 /** Detected sitemap URLs or an editable conventional suggestion. */
 export type ContentAutopilotSiteDiscoveryResponseSourceUrlsList = Array<string>;
-export const ContentAutopilotSiteDiscoveryResponseSourceUrlsList =
+const ContentAutopilotSiteDiscoveryResponseSourceUrlsList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseSourceUrlsList>;
 
 /** Editable same-origin path boundaries. */
 export type ContentAutopilotSiteDiscoveryResponseContentBoundariesList = Array<string>;
-export const ContentAutopilotSiteDiscoveryResponseContentBoundariesList =
+const ContentAutopilotSiteDiscoveryResponseContentBoundariesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseContentBoundariesList>;
 
 /** Non-blocking discovery warnings. */
 export type ContentAutopilotSiteDiscoveryResponseWarningsList = Array<string>;
-export const ContentAutopilotSiteDiscoveryResponseWarningsList =
+const ContentAutopilotSiteDiscoveryResponseWarningsList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseWarningsList>;
 
 export interface ContentAutopilotSiteDiscoveryResponse {
@@ -938,7 +938,7 @@ export interface ContentAutopilotSiteDiscoveryResponse {
   /** Non-blocking discovery warnings. */
   warnings: ContentAutopilotSiteDiscoveryResponseWarningsList;
 }
-export const ContentAutopilotSiteDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotSiteDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     domain: S.String,
@@ -959,7 +959,7 @@ export interface WebAnalyticsRecapRequest {
   /** Lookback window in days (1-90). Defaults to 7. */
   days?: number;
 }
-export const WebAnalyticsRecapRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsRecapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     compare: S.optional(S.Boolean.pipe(T.Query())),
@@ -971,7 +971,7 @@ export const WebAnalyticsRecapRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `Up` - Up * `Down` - Down */
 export type WoWChangeDirectionEnum = "Up" | "Down";
-export const WoWChangeDirectionEnum = S.String;
+const WoWChangeDirectionEnum = S.String;
 
 export interface WoWChange {
   /** Absolute percentage change, rounded to nearest integer. */
@@ -985,7 +985,7 @@ export interface WoWChange {
   /** Verbose label, e.g. 'Up 12% from prior period'. */
   long_text?: string;
 }
-export const WoWChange = /*@__PURE__*/ S.suspend(() =>
+const WoWChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percent: S.optional(S.Number),
     direction: S.optional(WoWChangeDirectionEnum),
@@ -1003,7 +1003,7 @@ export interface NumericMetric {
   /** Period-over-period change, null when not meaningful. */
   change?: WoWChange | null;
 }
-export const NumericMetric = /*@__PURE__*/ S.suspend(() =>
+const NumericMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: S.optional(S.Number),
     previous: S.optional(S.NullOr(S.Number)),
@@ -1019,7 +1019,7 @@ export interface DurationMetric {
   /** Period-over-period change, null when not meaningful. */
   change?: WoWChange | null;
 }
-export const DurationMetric = /*@__PURE__*/ S.suspend(() =>
+const DurationMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: S.optional(S.String),
     previous: S.optional(S.NullOr(S.String)),
@@ -1037,7 +1037,7 @@ export interface TopPage {
   /** Period-over-period change in visitors, null when not meaningful. */
   change?: WoWChange | null;
 }
-export const TopPage = /*@__PURE__*/ S.suspend(() =>
+const TopPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     path: S.optional(S.String),
@@ -1048,7 +1048,7 @@ export const TopPage = /*@__PURE__*/ S.suspend(() =>
 
 /** Top 5 pages by unique visitors. */
 export type WebAnalyticsRecapResponseTopPagesList = Array<TopPage>;
-export const WebAnalyticsRecapResponseTopPagesList = /*@__PURE__*/ S.Array(
+const WebAnalyticsRecapResponseTopPagesList = /*@__PURE__*/ S.Array(
   TopPage,
 ) as any as S.Schema<WebAnalyticsRecapResponseTopPagesList>;
 
@@ -1060,7 +1060,7 @@ export interface TopSource {
   /** Period-over-period change in visitors, null when not meaningful. */
   change?: WoWChange | null;
 }
-export const TopSource = /*@__PURE__*/ S.suspend(() =>
+const TopSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     visitors: S.optional(S.Number),
@@ -1070,7 +1070,7 @@ export const TopSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Top 5 traffic sources by unique visitors. */
 export type WebAnalyticsRecapResponseTopSourcesList = Array<TopSource>;
-export const WebAnalyticsRecapResponseTopSourcesList = /*@__PURE__*/ S.Array(
+const WebAnalyticsRecapResponseTopSourcesList = /*@__PURE__*/ S.Array(
   TopSource,
 ) as any as S.Schema<WebAnalyticsRecapResponseTopSourcesList>;
 
@@ -1082,7 +1082,7 @@ export interface Goal {
   /** Period-over-period change in conversions, null when not meaningful. */
   change?: WoWChange | null;
 }
-export const Goal = /*@__PURE__*/ S.suspend(() =>
+const Goal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     conversions: S.optional(S.Number),
@@ -1092,17 +1092,17 @@ export const Goal = /*@__PURE__*/ S.suspend(() =>
 
 /** Goal conversions. */
 export type WebAnalyticsRecapResponseGoalsList = Array<Goal>;
-export const WebAnalyticsRecapResponseGoalsList = /*@__PURE__*/ S.Array(
+const WebAnalyticsRecapResponseGoalsList = /*@__PURE__*/ S.Array(
   Goal,
 ) as any as S.Schema<WebAnalyticsRecapResponseGoalsList>;
 
 /** * `ok` - OK * `no_web_sessions` - No web sessions * `no_sessions` - No sessions * `unknown` - Unknown */
 export type DigestDataStatusEnum = "ok" | "no_web_sessions" | "no_sessions" | "unknown";
-export const DigestDataStatusEnum = S.String;
+const DigestDataStatusEnum = S.String;
 
 /** Metric definitions to use when you compare the digest with a direct query. */
 export type DigestMetadataNotesList = Array<string>;
-export const DigestMetadataNotesList =
+const DigestMetadataNotesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<DigestMetadataNotesList>;
 
 export interface DigestMetadata {
@@ -1119,7 +1119,7 @@ export interface DigestMetadata {
   /** Metric definitions to use when you compare the digest with a direct query. */
   notes: DigestMetadataNotesList;
 }
-export const DigestMetadata = /*@__PURE__*/ S.suspend(() =>
+const DigestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_status: DigestDataStatusEnum,
     date_from: S.String,
@@ -1142,7 +1142,7 @@ export interface RecapPersona {
   /** Hex accent color for rendering the persona card. */
   color: string;
 }
-export const RecapPersona = /*@__PURE__*/ S.suspend(() =>
+const RecapPersona = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1164,7 +1164,7 @@ export interface RecapHighlight {
   /** Supporting sentence for the highlight. */
   detail: string;
 }
-export const RecapHighlight = /*@__PURE__*/ S.suspend(() =>
+const RecapHighlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     emoji: S.String,
@@ -1176,7 +1176,7 @@ export const RecapHighlight = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to three screenshot-worthy superlatives for the week. */
 export type WebAnalyticsRecapResponseHighlightsList = Array<RecapHighlight>;
-export const WebAnalyticsRecapResponseHighlightsList = /*@__PURE__*/ S.Array(
+const WebAnalyticsRecapResponseHighlightsList = /*@__PURE__*/ S.Array(
   RecapHighlight,
 ) as any as S.Schema<WebAnalyticsRecapResponseHighlightsList>;
 
@@ -1216,7 +1216,7 @@ export interface WebAnalyticsRecapResponse {
   /** Canonical link to this project's weekly recap. */
   recap_url: string;
 }
-export const WebAnalyticsRecapResponse = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsRecapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visitors: NumericMetric,
     pageviews: NumericMetric,
@@ -1248,7 +1248,7 @@ export interface WebAnalyticsWeeklyDigestRequest {
   /** Lookback window in days (1-90). Defaults to 7. */
   days?: number;
 }
-export const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     compare: S.optional(S.Boolean.pipe(T.Query())),
@@ -1266,17 +1266,17 @@ export const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Top 5 pages by unique visitors. */
 export type WeeklyDigestResponseTopPagesList = Array<TopPage>;
-export const WeeklyDigestResponseTopPagesList =
+const WeeklyDigestResponseTopPagesList =
   WebAnalyticsRecapResponseTopPagesList as any as S.Schema<WeeklyDigestResponseTopPagesList>;
 
 /** Top 5 traffic sources by unique visitors. */
 export type WeeklyDigestResponseTopSourcesList = Array<TopSource>;
-export const WeeklyDigestResponseTopSourcesList =
+const WeeklyDigestResponseTopSourcesList =
   WebAnalyticsRecapResponseTopSourcesList as any as S.Schema<WeeklyDigestResponseTopSourcesList>;
 
 /** Goal conversions. */
 export type WeeklyDigestResponseGoalsList = Array<Goal>;
-export const WeeklyDigestResponseGoalsList =
+const WeeklyDigestResponseGoalsList =
   WebAnalyticsRecapResponseGoalsList as any as S.Schema<WeeklyDigestResponseGoalsList>;
 
 export interface WeeklyDigestResponse {
@@ -1301,7 +1301,7 @@ export interface WeeklyDigestResponse {
   /** Link to the Web analytics dashboard for this project. */
   dashboard_url?: string;
 }
-export const WeeklyDigestResponse = /*@__PURE__*/ S.suspend(() =>
+const WeeklyDigestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visitors: S.optional(NumericMetric),
     pageviews: S.optional(NumericMetric),

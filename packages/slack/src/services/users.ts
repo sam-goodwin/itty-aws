@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 export type { SlackOpError, SlackOpContext };
 
 export interface DeletePhotoRequest {}
-export const DeletePhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users.deletePhoto", code: 200 })),
 ).annotate({ identifier: "DeletePhotoRequest" }) as any as S.Schema<DeletePhotoRequest>;
 
@@ -18,7 +18,7 @@ export interface DeletePhotoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeletePhotoResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePhotoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -28,7 +28,7 @@ export interface GetPresenceRequest {
   /** User to get presence info on. Defaults to the authed user. */
   user?: string;
 }
-export const GetPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPresenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/users.getPresence", code: 200 })),
@@ -44,7 +44,7 @@ export interface GetPresenceResponse {
   connection_count?: number;
   auto_away?: boolean;
 }
-export const GetPresenceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPresenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     last_activity: S.optional(S.Number),
@@ -62,7 +62,7 @@ export interface GetProfileRequest {
   /** User to retrieve profile info for */
   user?: string;
 }
-export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_labels: S.optional(S.Boolean.pipe(T.Query())),
     user: S.optional(S.String.pipe(T.Query())),
@@ -74,7 +74,7 @@ export interface GetProfileResponse {
   ok: boolean;
   profile: unknown;
 }
-export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     profile: S.Unknown,
@@ -91,7 +91,7 @@ export interface ListUsersRequest {
   /** encoded team id to list users in, required if org token is used */
   team_id?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     include_locale: S.optional(S.Boolean.pipe(T.Query())),
@@ -101,7 +101,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseMembersList = Array<unknown>;
-export const ListUsersResponseMembersList = /*@__PURE__*/ S.Array(
+const ListUsersResponseMembersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ListUsersResponseMembersList>;
 
@@ -110,7 +110,7 @@ export interface ListUsersResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const ListUsersResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -127,7 +127,7 @@ export interface ListUsersResponse {
   response_metadata?: ListUsersResponseResponseMetadata;
   offset?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     members: ListUsersResponseMembersList,
@@ -141,7 +141,7 @@ export interface LookupByEmailRequest {
   /** An email address belonging to a user in the workspace */
   email: string;
 }
-export const LookupByEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupByEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/users.lookupByEmail", code: 200 })),
@@ -152,7 +152,7 @@ export interface LookupByEmailResponse {
   ok: boolean;
   user: unknown;
 }
-export const LookupByEmailResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupByEmailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     user: S.Unknown,
@@ -162,7 +162,7 @@ export const LookupByEmailResponse = /*@__PURE__*/ S.suspend(() =>
 export interface LookupDiscoverableContactRequest {
   email: string;
 }
-export const LookupDiscoverableContactRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupDiscoverableContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/users.discoverableContacts.lookup", code: 200 })),
@@ -175,7 +175,7 @@ export interface LookupDiscoverableContactResponse {
   ok: boolean;
   is_discoverable: boolean;
 }
-export const LookupDiscoverableContactResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupDiscoverableContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     is_discoverable: S.Boolean,
@@ -185,7 +185,7 @@ export const LookupDiscoverableContactResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LookupDiscoverableContactResponse>;
 
 export interface SetActiveRequest {}
-export const SetActiveRequest = /*@__PURE__*/ S.suspend(() =>
+const SetActiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/users.setActive", code: 200 })),
 ).annotate({ identifier: "SetActiveRequest" }) as any as S.Schema<SetActiveRequest>;
 
@@ -193,7 +193,7 @@ export interface SetActiveResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetActiveResponse = DeletePhotoResponse as any as S.Schema<SetActiveResponse>;
+const SetActiveResponse = DeletePhotoResponse as any as S.Schema<SetActiveResponse>;
 
 export interface SetPhotoRequest {
   /** Width/height of crop box (always square) */
@@ -205,7 +205,7 @@ export interface SetPhotoRequest {
   /** File contents via `multipart/form-data`. */
   image?: unknown;
 }
-export const SetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crop_w: S.optional(S.String),
     crop_x: S.optional(S.String),
@@ -217,7 +217,7 @@ export const SetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetPhotoRequest" }) as any as S.Schema<SetPhotoRequest>;
 
 export type SetPhotoResponseProfileMap = { [key: string]: unknown | undefined };
-export const SetPhotoResponseProfileMap = /*@__PURE__*/ S.Record(
+const SetPhotoResponseProfileMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SetPhotoResponseProfileMap>;
@@ -227,7 +227,7 @@ export interface SetPhotoResponse {
   ok: boolean;
   profile: SetPhotoResponseProfileMap;
 }
-export const SetPhotoResponse = /*@__PURE__*/ S.suspend(() =>
+const SetPhotoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     profile: SetPhotoResponseProfileMap,
@@ -236,13 +236,13 @@ export const SetPhotoResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Either `auto` or `away` */
 export type SetPresenceRequestPresence = "auto" | "away";
-export const SetPresenceRequestPresence = S.String;
+const SetPresenceRequestPresence = S.String;
 
 export interface SetPresenceRequest {
   /** Either `auto` or `away` */
   presence: SetPresenceRequestPresence | (string & {});
 }
-export const SetPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPresenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presence: SetPresenceRequestPresence,
   }).pipe(T.Http({ method: "POST", uri: "/users.setPresence", code: 200 })),
@@ -252,7 +252,7 @@ export interface SetPresenceResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetPresenceResponse = DeletePhotoResponse as any as S.Schema<SetPresenceResponse>;
+const SetPresenceResponse = DeletePhotoResponse as any as S.Schema<SetPresenceResponse>;
 
 export interface SetProfileRequest {
   /** Name of a single key to set. Usable only if `profile` is not passed. */
@@ -264,7 +264,7 @@ export interface SetProfileRequest {
   /** Value to set a single key to. Usable only if `profile` is not passed. */
   value?: string;
 }
-export const SetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const SetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     profile: S.optional(S.String),
@@ -280,7 +280,7 @@ export interface SetProfileResponse {
   profile: unknown;
   email_pending?: string;
 }
-export const SetProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const SetProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     username: S.String,
@@ -305,7 +305,7 @@ export interface UsersConversationsRequest {
   /** Browse conversations by a specific user ID's membership. Non-public channels are restricted to those where the calling user shares membership. */
   user?: string;
 }
-export const UsersConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     exclude_archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -320,13 +320,11 @@ export const UsersConversationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersConversationsRequest>;
 
 export type UsersConversationsResponseChannelsList = Array<unknown>;
-export const UsersConversationsResponseChannelsList =
+const UsersConversationsResponseChannelsList =
   ListUsersResponseMembersList as any as S.Schema<UsersConversationsResponseChannelsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type UsersConversationsResponseResponseMetadata = ListUsersResponseResponseMetadata;
-export const UsersConversationsResponseResponseMetadata = ListUsersResponseResponseMetadata;
-
 export interface UsersConversationsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -334,7 +332,7 @@ export interface UsersConversationsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListUsersResponseResponseMetadata;
 }
-export const UsersConversationsResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersConversationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channels: UsersConversationsResponseChannelsList,
@@ -345,7 +343,7 @@ export const UsersConversationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersConversationsResponse>;
 
 export interface UsersIdentityRequest {}
-export const UsersIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users.identity", code: 200 })),
 ).annotate({ identifier: "UsersIdentityRequest" }) as any as S.Schema<UsersIdentityRequest>;
 
@@ -353,7 +351,7 @@ export interface UsersIdentityResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UsersIdentityResponse = DeletePhotoResponse as any as S.Schema<UsersIdentityResponse>;
+const UsersIdentityResponse = DeletePhotoResponse as any as S.Schema<UsersIdentityResponse>;
 
 export interface UsersInfoRequest {
   /** Set this to `true` to receive the locale for this user. Defaults to `false` */
@@ -361,7 +359,7 @@ export interface UsersInfoRequest {
   /** User to get info on */
   user?: string;
 }
-export const UsersInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_locale: S.optional(S.Boolean.pipe(T.Query())),
     user: S.optional(S.String.pipe(T.Query())),
@@ -369,7 +367,7 @@ export const UsersInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsersInfoRequest" }) as any as S.Schema<UsersInfoRequest>;
 
 export type UsersInfoResponseUsersList = Array<unknown>;
-export const UsersInfoResponseUsersList =
+const UsersInfoResponseUsersList =
   ListUsersResponseMembersList as any as S.Schema<UsersInfoResponseUsersList>;
 
 export interface UsersInfoResponse {
@@ -378,7 +376,7 @@ export interface UsersInfoResponse {
   user?: unknown;
   users?: UsersInfoResponseUsersList;
 }
-export const UsersInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     user: S.optional(S.Unknown),

@@ -42,7 +42,7 @@ export class Forbidden
   ) {}
 
 export type CreateRequestValue = "enabled" | "disabled";
-export const CreateRequestValue = S.String;
+const CreateRequestValue = S.String;
 
 export interface CreateContentScanningRequest {
   /** Defines an identifier. */
@@ -50,7 +50,7 @@ export interface CreateContentScanningRequest {
   /** The status value for Content Scanning. */
   value: CreateRequestValue | (string & {});
 }
-export const CreateContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: CreateRequestValue,
@@ -68,7 +68,7 @@ export interface CreateContentScanningResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
-export const CreateContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modified: S.optional(S.NullOr(S.String)),
     value: S.optional(S.NullOr(S.String)),
@@ -81,7 +81,7 @@ export interface PayloadsCreateRequestBodyItem {
   /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload: string;
 }
-export const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.String,
   }),
@@ -90,7 +90,7 @@ export const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsCreateRequestBodyItem>;
 
 export type PayloadsCreateRequestBodyList = Array<PayloadsCreateRequestBodyItem>;
-export const PayloadsCreateRequestBodyList = /*@__PURE__*/ S.Array(
+const PayloadsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   PayloadsCreateRequestBodyItem,
 ) as any as S.Schema<PayloadsCreateRequestBodyList>;
 
@@ -99,7 +99,7 @@ export interface CreatePayloadRequest {
   zoneId: string;
   body: PayloadsCreateRequestBodyList;
 }
-export const CreatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: PayloadsCreateRequestBodyList.pipe(T.HttpBody()),
@@ -114,7 +114,7 @@ export interface PayloadsCreateResultItem {
   /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload?: string | null;
 }
-export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     payload: S.optional(S.NullOr(S.String)),
@@ -122,7 +122,7 @@ export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayloadsCreateResultItem" }) as any as S.Schema<PayloadsCreateResultItem>;
 
 export type PayloadsCreateResultList = Array<PayloadsCreateResultItem>;
-export const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
+const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
   PayloadsCreateResultItem,
 ) as any as S.Schema<PayloadsCreateResultList>;
 
@@ -132,7 +132,7 @@ export interface CreatePayloadResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PayloadsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -145,7 +145,7 @@ export interface DeletePayloadRequest {
   /** Defines the unique ID for this Content Scanning custom expression. */
   expressionId: string;
 }
-export const DeletePayloadRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePayloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     expressionId: S.String.pipe(T.Label("expression_id")),
@@ -159,26 +159,20 @@ export const DeletePayloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePayloadRequest" }) as any as S.Schema<DeletePayloadRequest>;
 
 export type PayloadsDeleteResultItem = PayloadsCreateResultItem;
-export const PayloadsDeleteResultItem = PayloadsCreateResultItem;
-
 export type PayloadsDeleteResultList = Array<PayloadsCreateResultItem>;
-export const PayloadsDeleteResultList =
-  PayloadsCreateResultList as any as S.Schema<PayloadsDeleteResultList>;
-
 export interface DeletePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PayloadsDeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const DeletePayloadResponse =
-  CreatePayloadResponse as any as S.Schema<DeletePayloadResponse>;
+const DeletePayloadResponse = CreatePayloadResponse as any as S.Schema<DeletePayloadResponse>;
 
 export interface DisableContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const DisableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -189,7 +183,7 @@ export const DisableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableContentScanningRequest>;
 
 export type DisableContentScanningResponse = unknown;
-export const DisableContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DisableContentScanningResponse",
@@ -199,7 +193,7 @@ export interface EnableContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const EnableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -210,14 +204,14 @@ export const EnableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableContentScanningRequest>;
 
 export type EnableContentScanningResponse = unknown;
-export const EnableContentScanningResponse =
+const EnableContentScanningResponse =
   DisableContentScanningResponse as any as S.Schema<EnableContentScanningResponse>;
 
 export interface GetContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const GetContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -234,14 +228,14 @@ export interface GetContentScanningResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
-export const GetContentScanningResponse =
+const GetContentScanningResponse =
   CreateContentScanningResponse as any as S.Schema<GetContentScanningResponse>;
 
 export interface GetSettingsRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -256,7 +250,7 @@ export interface GetSettingsResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
-export const GetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modified: S.optional(S.NullOr(S.String)),
     value: S.optional(S.NullOr(S.String)),
@@ -267,7 +261,7 @@ export interface ListPayloadsRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const ListPayloadsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPayloadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -276,22 +270,17 @@ export const ListPayloadsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPayloadsRequest" }) as any as S.Schema<ListPayloadsRequest>;
 
 export type PayloadsListResultItem = PayloadsCreateResultItem;
-export const PayloadsListResultItem = PayloadsCreateResultItem;
-
 export type PayloadsListResultList = Array<PayloadsCreateResultItem>;
-export const PayloadsListResultList =
-  PayloadsCreateResultList as any as S.Schema<PayloadsListResultList>;
-
 export interface ListPayloadsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PayloadsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPayloadsResponse = CreatePayloadResponse as any as S.Schema<ListPayloadsResponse>;
+const ListPayloadsResponse = CreatePayloadResponse as any as S.Schema<ListPayloadsResponse>;
 
 export type UpdateRequestValue = "enabled" | "disabled";
-export const UpdateRequestValue = S.String;
+const UpdateRequestValue = S.String;
 
 export interface UpdateRequest {
   /** Defines an identifier. */
@@ -299,7 +288,7 @@ export interface UpdateRequest {
   /** The status value for Content Scanning. */
   value: UpdateRequestValue | (string & {});
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: UpdateRequestValue,
@@ -315,7 +304,7 @@ export interface UpdateResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
-export const UpdateResponse = GetSettingsResponse as any as S.Schema<UpdateResponse>;
+const UpdateResponse = GetSettingsResponse as any as S.Schema<UpdateResponse>;
 
 export interface UpdatePayloadRequest {
   /** Defines an identifier. */
@@ -325,7 +314,7 @@ export interface UpdatePayloadRequest {
   /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload: string;
 }
-export const UpdatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     expressionId: S.String.pipe(T.Label("expression_id")),
@@ -340,14 +329,12 @@ export const UpdatePayloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePayloadRequest" }) as any as S.Schema<UpdatePayloadRequest>;
 
 export type UpdatePayloadResultItem = PayloadsCreateResultItem;
-export const UpdatePayloadResultItem = PayloadsCreateResultItem;
-
 export type UpdatePayloadResultList = Array<PayloadsCreateResultItem>;
-export const UpdatePayloadResultList =
+const UpdatePayloadResultList =
   PayloadsCreateResultList as any as S.Schema<UpdatePayloadResultList>;
 
 export type UpdatePayloadResponse = UpdatePayloadResultList;
-export const UpdatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
   UpdatePayloadResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "UpdatePayloadResponse" }) as any as S.Schema<UpdatePayloadResponse>;
 
@@ -527,13 +514,11 @@ export const updatePayload: API.OperationMethod<
 }));
 
 // Alias of getContentScanning (same route, alternate export name upstream).
-export const getSetting = getContentScanning;
 export type GetSettingRequest = GetContentScanningRequest;
 export type GetSettingResponse = GetContentScanningResponse;
 export type GetSettingError = GetContentScanningError;
 
 // Alias of createContentScanning (same route, alternate export name upstream).
-export const putContentScanning = createContentScanning;
 export type PutContentScanningRequest = CreateContentScanningRequest;
 export type PutContentScanningResponse = CreateContentScanningResponse;
 export type PutContentScanningError = CreateContentScanningError;

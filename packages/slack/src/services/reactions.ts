@@ -17,7 +17,7 @@ export interface AddReactionRequest {
   /** Timestamp of the message to add reaction to. */
   timestamp: string;
 }
-export const AddReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const AddReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     name: S.String,
@@ -29,7 +29,7 @@ export interface AddReactionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AddReactionResponse = /*@__PURE__*/ S.suspend(() =>
+const AddReactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -47,7 +47,7 @@ export interface GetReactionRequest {
   /** Timestamp of the message to get reactions for. */
   timestamp?: string;
 }
-export const GetReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String.pipe(T.Query())),
     file: S.optional(S.String.pipe(T.Query())),
@@ -66,7 +66,7 @@ export interface GetReactionResponse {
   channel?: string;
   file?: unknown;
 }
-export const GetReactionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     comment: S.optional(S.Unknown),
@@ -91,7 +91,7 @@ export interface ListReactionsRequest {
   /** encoded team id to list reactions in, required if org token is used */
   team_id?: string;
 }
-export const ListReactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String.pipe(T.Query())),
     full: S.optional(S.Boolean.pipe(T.Query())),
@@ -104,13 +104,13 @@ export const ListReactionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReactionsRequest" }) as any as S.Schema<ListReactionsRequest>;
 
 export type ListReactionsResponseItemsItemMap = { [key: string]: unknown | undefined };
-export const ListReactionsResponseItemsItemMap = /*@__PURE__*/ S.Record(
+const ListReactionsResponseItemsItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ListReactionsResponseItemsItemMap>;
 
 export type ListReactionsResponseItemsList = Array<ListReactionsResponseItemsItemMap>;
-export const ListReactionsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListReactionsResponseItemsList = /*@__PURE__*/ S.Array(
   ListReactionsResponseItemsItemMap,
 ) as any as S.Schema<ListReactionsResponseItemsList>;
 
@@ -119,7 +119,7 @@ export interface ListReactionsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const ListReactionsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListReactionsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -135,7 +135,7 @@ export interface ListReactionsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListReactionsResponseResponseMetadata;
 }
-export const ListReactionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReactionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     items: ListReactionsResponseItemsList,
@@ -156,7 +156,7 @@ export interface RemoveReactionRequest {
   /** Timestamp of the message to remove reaction from. */
   timestamp?: string;
 }
-export const RemoveReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     file: S.optional(S.String),
@@ -170,8 +170,7 @@ export interface RemoveReactionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveReactionResponse =
-  AddReactionResponse as any as S.Schema<RemoveReactionResponse>;
+const RemoveReactionResponse = AddReactionResponse as any as S.Schema<RemoveReactionResponse>;
 
 export type AddReactionError = SlackOpError;
 /** Adds a reaction to an item. Required scopes -- bot: `reactions:write`; user: `reactions:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `already_reacted` -- The specified item already has the user/reaction combination. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Value passed for `channel` is invalid. - `external_channel_migrating` -- The channel is in the process of being migrated. - `invalid_name` -- Value passed for `name` was invalid. - `is_archived` -- Channel specified has been archived. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- combination of `channel` and `timestamp` was not specified. - `not_reactable` -- Whatever you passed in, like a `file` or `file_comment`, can't be reacted to anymore. Your app can react to messages though. - `thread_locked` -- Reactions are disabled as the specified message is part of a locked thread. - `too_many_emoji` -- The limit for distinct reactions (i.e emoji) on the item has been reached. - `too_many_reactions` -- The limit for reactions a person may add to the item has been reached. - `no_access` -- User does not have access to react to this canvas. See https://docs.slack.dev/reference/methods/reactions.add */

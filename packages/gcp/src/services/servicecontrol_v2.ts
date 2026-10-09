@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** This message defines attributes for a node that handles a network request. The node can be either a service or an application that sends, forwards, or receives the request. Service peers should fill in `principal` and `labels` as appropriate. */
 export interface Peer {
@@ -77,7 +77,7 @@ export interface Peer {
   /** The identity of this peer. Similar to `Request.auth.principal`, but relative to the peer instead of the request. For example, the identity associated with a load balancer that forwarded the request. */
   principal?: string;
 }
-export const Peer = /*@__PURE__*/ S.suspend(() =>
+const Peer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -88,15 +88,10 @@ export const Peer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Peer" }) as any as S.Schema<Peer>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** This message defines attributes for a typical network response. It generally models semantics of an HTTP response. */
 export interface Response {
@@ -111,7 +106,7 @@ export interface Response {
   /** The HTTP response status code, such as `200` and `404`. */
   code?: string;
 }
-export const Response = /*@__PURE__*/ S.suspend(() =>
+const Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backendLatency: S.optional(S.String),
     size: S.optional(S.String),
@@ -148,7 +143,7 @@ export interface Resource {
   /** The type of the resource. The syntax is platform-specific because different platforms define their resources differently. For Google APIs, the type format must be "{service}/{kind}", such as "pubsub.googleapis.com/Topic". */
   type?: string;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     service: S.optional(S.String),
@@ -166,14 +161,14 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** This message defines attributes associated with OAuth credentials. */
 export interface Oauth {
   /** The optional OAuth client ID. This is the unique public identifier issued by an authorization server to a registered client application. Empty string is equivalent to no oauth client id. WARNING: This is for MCP tools/call and tools/list authorization and not for general use. */
   clientId?: string;
 }
-export const Oauth = /*@__PURE__*/ S.suspend(() =>
+const Oauth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
   }),
@@ -196,7 +191,7 @@ export interface Auth {
   /** The authenticated principal. Reflects the issuer (`iss`) and subject (`sub`) claims within a JWT. The issuer and subject should be `/` delimited, with `/` percent-encoded within the subject fragment. For Google accounts, the principal format is: "https://accounts.google.com/{id}" */
   principal?: string;
 }
-export const Auth = /*@__PURE__*/ S.suspend(() =>
+const Auth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialId: S.optional(S.String),
     audiences: S.optional(StringList),
@@ -237,7 +232,7 @@ export interface Request {
   /** The HTTP request method, such as `GET`, `POST`. */
   method?: string;
 }
-export const Request = /*@__PURE__*/ S.suspend(() =>
+const Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     scheme: S.optional(S.String),
@@ -266,7 +261,7 @@ export interface Api {
   /** The API protocol used for sending the request, such as "http", "https", "grpc", or "internal". */
   protocol?: string;
 }
-export const Api = /*@__PURE__*/ S.suspend(() =>
+const Api = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     version: S.optional(S.String),
@@ -294,7 +289,7 @@ export interface AttributeContext {
   /** Represents an API operation that is involved to a network activity. */
   api?: Api;
 }
-export const AttributeContext = /*@__PURE__*/ S.suspend(() =>
+const AttributeContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.optional(Peer),
     destination: S.optional(Peer),
@@ -320,7 +315,7 @@ export interface ResourceInfo {
   /** The resource permission needed for this request. The format must be "{service}/{plural}.{verb}". */
   permission?: string;
 }
-export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     name: S.optional(S.String),
@@ -331,9 +326,7 @@ export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
 export type ResourceInfoList = Array<ResourceInfo>;
-export const ResourceInfoList = /*@__PURE__*/ S.Array(
-  ResourceInfo,
-) as any as S.Schema<ResourceInfoList>;
+const ResourceInfoList = /*@__PURE__*/ S.Array(ResourceInfo) as any as S.Schema<ResourceInfoList>;
 
 /** Request message for the Check method. */
 export interface CheckRequest {
@@ -346,7 +339,7 @@ export interface CheckRequest {
   /** Describes the resources and the policies applied to each resource. */
   resources?: ResourceInfoList;
 }
-export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(AttributeContext),
     serviceConfigId: S.optional(S.String),
@@ -361,7 +354,7 @@ export interface CheckServicesRequest {
   /** Request body */
   body?: CheckRequest;
 }
-export const CheckServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(CheckRequest.pipe(T.HttpBody())),
@@ -383,7 +376,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -400,7 +393,7 @@ export interface CheckResponse {
   /** Returns a set of request contexts generated from the `CheckRequest`. */
   headers?: StringMap;
 }
-export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(Status),
     dynamicMetadata: S.optional(DocumentMap),
@@ -409,7 +402,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
 export type AttributeContextList = Array<AttributeContext>;
-export const AttributeContextList = /*@__PURE__*/ S.Array(
+const AttributeContextList = /*@__PURE__*/ S.Array(
   AttributeContext,
 ) as any as S.Schema<AttributeContextList>;
 
@@ -420,7 +413,7 @@ export interface ReportRequest {
   /** Specifies the version of the service configuration that should be used to process the request. Must not be empty. Set this field to 'latest' to specify using the latest configuration. */
   serviceConfigId?: string;
 }
-export const ReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(AttributeContextList),
     serviceConfigId: S.optional(S.String),
@@ -433,7 +426,7 @@ export interface ReportServicesRequest {
   /** Request body */
   body?: ReportRequest;
 }
-export const ReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(ReportRequest.pipe(T.HttpBody())),
@@ -451,7 +444,7 @@ export interface ReportResponse {
   /** The extension field to store serialized OTel responses. e.g. ExportLogsServiceResponse, ExportMetricsServiceResponse. */
   extensions?: DocumentMap;
 }
-export const ReportResponse = /*@__PURE__*/ S.suspend(() =>
+const ReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(DocumentMap),
   }),

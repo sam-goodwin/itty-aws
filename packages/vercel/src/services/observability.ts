@@ -55,13 +55,13 @@ export class UnprocessableEntity
 
 /** Dimensions to group results by. JSON dimensions support nested refs, for example event_data/checkout_step. Nested keys containing characters that OData cannot parse as an identifier, such as '-', spaces, quotes, or '/', must be wrapped in single quotes (escape embedded single quotes by doubling them), for example flags/'enable-comments-view' or event_data/'some property''s/value'. */
 export type CreateObservabilityQueryRequestGroupByList = Array<string>;
-export const CreateObservabilityQueryRequestGroupByList = /*@__PURE__*/ S.Array(
+const CreateObservabilityQueryRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateObservabilityQueryRequestGroupByList>;
 
 /** Direction to order grouped results by. Defaults to desc. */
 export type CreateObservabilityQueryRequestOrderDirection = "asc" | "desc";
-export const CreateObservabilityQueryRequestOrderDirection = S.String;
+const CreateObservabilityQueryRequestOrderDirection = S.String;
 
 export interface CreateObservabilityQueryRequest {
   /** Metric id */
@@ -89,7 +89,7 @@ export interface CreateObservabilityQueryRequest {
   /** IANA timezone (e.g. Europe/Paris) used only to align calendar buckets (1d/1mo) to that zone's day/month boundaries. startTime/endTime and all output timestamps are always UTC. No effect on sub-day granularities. */
   bucketTimezone?: string;
 }
-export const CreateObservabilityQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateObservabilityQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: S.String,
     scope: S.Unknown,
@@ -109,7 +109,7 @@ export const CreateObservabilityQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateObservabilityQueryRequest>;
 
 export type CreateObservabilityQueryResponse = unknown;
-export const CreateObservabilityQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateObservabilityQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateObservabilityQueryResponse",
@@ -121,7 +121,7 @@ export interface GetObservabilityConfigurationProjectsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetObservabilityConfigurationProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityConfigurationProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -137,28 +137,27 @@ export interface GetObservabilityConfigurationProjectsResponseDisabledProjectsIt
   id: string;
   name?: string;
 }
-export const GetObservabilityConfigurationProjectsResponseDisabledProjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityConfigurationProjectsResponseDisabledProjectsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       disabledAt: S.Number,
       id: S.String,
       name: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetObservabilityConfigurationProjectsResponseDisabledProjectsItem",
-  }) as any as S.Schema<GetObservabilityConfigurationProjectsResponseDisabledProjectsItem>;
+).annotate({
+  identifier: "GetObservabilityConfigurationProjectsResponseDisabledProjectsItem",
+}) as any as S.Schema<GetObservabilityConfigurationProjectsResponseDisabledProjectsItem>;
 
 export type GetObservabilityConfigurationProjectsResponseDisabledProjectsList =
   Array<GetObservabilityConfigurationProjectsResponseDisabledProjectsItem>;
-export const GetObservabilityConfigurationProjectsResponseDisabledProjectsList =
-  /*@__PURE__*/ S.Array(
-    GetObservabilityConfigurationProjectsResponseDisabledProjectsItem,
-  ) as any as S.Schema<GetObservabilityConfigurationProjectsResponseDisabledProjectsList>;
+const GetObservabilityConfigurationProjectsResponseDisabledProjectsList = /*@__PURE__*/ S.Array(
+  GetObservabilityConfigurationProjectsResponseDisabledProjectsItem,
+) as any as S.Schema<GetObservabilityConfigurationProjectsResponseDisabledProjectsList>;
 
 export interface GetObservabilityConfigurationProjectsResponse {
   disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList;
 }
-export const GetObservabilityConfigurationProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityConfigurationProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabledProjects: GetObservabilityConfigurationProjectsResponseDisabledProjectsList,
   }),
@@ -167,7 +166,7 @@ export const GetObservabilityConfigurationProjectsResponse = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetObservabilityConfigurationProjectsResponse>;
 
 export interface GetObservabilitySchemaRequest {}
-export const GetObservabilitySchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/observability/schema", code: 200 })),
 ).annotate({
   identifier: "GetObservabilitySchemaRequest",
@@ -177,7 +176,7 @@ export interface GetObservabilitySchemaResponseMetricsItem {
   description: string;
   id: string;
 }
-export const GetObservabilitySchemaResponseMetricsItem = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySchemaResponseMetricsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     id: S.String,
@@ -188,14 +187,14 @@ export const GetObservabilitySchemaResponseMetricsItem = /*@__PURE__*/ S.suspend
 
 export type GetObservabilitySchemaResponseMetricsList =
   Array<GetObservabilitySchemaResponseMetricsItem>;
-export const GetObservabilitySchemaResponseMetricsList = /*@__PURE__*/ S.Array(
+const GetObservabilitySchemaResponseMetricsList = /*@__PURE__*/ S.Array(
   GetObservabilitySchemaResponseMetricsItem,
 ) as any as S.Schema<GetObservabilitySchemaResponseMetricsList>;
 
 export interface GetObservabilitySchemaResponse {
   metrics: GetObservabilitySchemaResponseMetricsList;
 }
-export const GetObservabilitySchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: GetObservabilitySchemaResponseMetricsList,
   }),
@@ -206,7 +205,7 @@ export const GetObservabilitySchemaResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetObservabilitySchemaByMetricIdRequest {
   metricId: string;
 }
-export const GetObservabilitySchemaByMetricIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySchemaByMetricIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/observability/schema/{metricId}", code: 200 })),
@@ -215,30 +214,28 @@ export const GetObservabilitySchemaByMetricIdRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetObservabilitySchemaByMetricIdRequest>;
 
 export type GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList = Array<string>;
-export const GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList>;
+const GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList>;
 
 export interface GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem {
   description?: string;
   label: string;
   name: string;
 }
-export const GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      label: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem",
-  }) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem>;
+const GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    label: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem",
+}) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem>;
 
 export type GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList =
   Array<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem>;
-export const GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList = /*@__PURE__*/ S.Array(
+const GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList = /*@__PURE__*/ S.Array(
   GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem,
 ) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsList>;
 
@@ -250,7 +247,7 @@ export interface GetObservabilitySchemaByMetricIdResponseBodyItem {
   id: string;
   unit: string;
 }
-export const GetObservabilitySchemaByMetricIdResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySchemaByMetricIdResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregations: GetObservabilitySchemaByMetricIdResponseBodyItemAggregationsList,
     defaultAggregation: S.String,
@@ -265,13 +262,13 @@ export const GetObservabilitySchemaByMetricIdResponseBodyItem = /*@__PURE__*/ S.
 
 export type GetObservabilitySchemaByMetricIdResponseBodyList =
   Array<GetObservabilitySchemaByMetricIdResponseBodyItem>;
-export const GetObservabilitySchemaByMetricIdResponseBodyList = /*@__PURE__*/ S.Array(
+const GetObservabilitySchemaByMetricIdResponseBodyList = /*@__PURE__*/ S.Array(
   GetObservabilitySchemaByMetricIdResponseBodyItem,
 ) as any as S.Schema<GetObservabilitySchemaByMetricIdResponseBodyList>;
 
 export type GetObservabilitySchemaByMetricIdResponse =
   GetObservabilitySchemaByMetricIdResponseBodyList;
-export const GetObservabilitySchemaByMetricIdResponse = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySchemaByMetricIdResponse = /*@__PURE__*/ S.suspend(() =>
   GetObservabilitySchemaByMetricIdResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetObservabilitySchemaByMetricIdResponse",
@@ -287,7 +284,7 @@ export interface UpdateObservabilityConfigurationProjectRequest {
   /** Whether Observability Plus should be disabled for the project */
   disabled: boolean;
 }
-export const UpdateObservabilityConfigurationProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateObservabilityConfigurationProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -308,7 +305,7 @@ export interface UpdateObservabilityConfigurationProjectResponse {
   disabledAt?: number;
   id: string;
 }
-export const UpdateObservabilityConfigurationProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateObservabilityConfigurationProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabledAt: S.optional(S.Number),
     id: S.String,

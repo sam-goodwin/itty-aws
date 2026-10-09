@@ -76,14 +76,14 @@ export class ServiceDisabled
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The Request message for batch adding testers */
 export interface GoogleFirebaseAppdistroV1BatchAddTestersRequest {
   /** Required. The email addresses of the tester resources to create. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchAddTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1BatchAddTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(StringList),
   }),
@@ -97,7 +97,7 @@ export interface BatchAddProjectsTestersRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1BatchAddTestersRequest;
 }
-export const BatchAddProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchAddProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1BatchAddTestersRequest.pipe(T.HttpBody())),
@@ -123,7 +123,7 @@ export interface GoogleFirebaseAppdistroV1Tester {
   /** The name of the tester associated with the Google account used to accept the tester invitation. */
   displayName?: string;
 }
-export const GoogleFirebaseAppdistroV1Tester = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1Tester = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(StringList),
     lastActivityTime: S.optional(S.String),
@@ -135,7 +135,7 @@ export const GoogleFirebaseAppdistroV1Tester = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirebaseAppdistroV1Tester>;
 
 export type GoogleFirebaseAppdistroV1TesterList = Array<GoogleFirebaseAppdistroV1Tester>;
-export const GoogleFirebaseAppdistroV1TesterList = /*@__PURE__*/ S.Array(
+const GoogleFirebaseAppdistroV1TesterList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Tester,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1TesterList>;
 
@@ -144,7 +144,7 @@ export interface GoogleFirebaseAppdistroV1BatchAddTestersResponse {
   /** The testers which are created and/or already exist */
   testers?: GoogleFirebaseAppdistroV1TesterList;
 }
-export const GoogleFirebaseAppdistroV1BatchAddTestersResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1BatchAddTestersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testers: S.optional(GoogleFirebaseAppdistroV1TesterList),
   }),
@@ -157,7 +157,7 @@ export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   /** Required. The names of the release resources to delete. Format: `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per request. */
   names?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
   }),
@@ -171,7 +171,7 @@ export interface BatchDeleteProjectsAppsReleasesRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest;
 }
-export const BatchDeleteProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.pipe(T.HttpBody())),
@@ -188,7 +188,7 @@ export const BatchDeleteProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(()
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -199,7 +199,7 @@ export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   /** Required. The emails of the testers to be added to the group. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1BatchJoinGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createMissingTesters: S.optional(S.Boolean),
     emails: S.optional(StringList),
@@ -214,7 +214,7 @@ export interface BatchJoinProjectsGroupsRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1BatchJoinGroupRequest;
 }
-export const BatchJoinProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchJoinProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1BatchJoinGroupRequest.pipe(T.HttpBody())),
@@ -234,7 +234,7 @@ export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   /** Required. The email addresses of the testers to be removed from the group. A maximum of 999 and a minimum of 1 testers can be removed in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest =
+const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest =
   GoogleFirebaseAppdistroV1BatchAddTestersRequest as any as S.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest>;
 
 export interface BatchLeaveProjectsGroupsRequest {
@@ -243,7 +243,7 @@ export interface BatchLeaveProjectsGroupsRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1BatchLeaveGroupRequest;
 }
-export const BatchLeaveProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchLeaveProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.pipe(T.HttpBody())),
@@ -263,7 +263,7 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   /** Required. The email addresses of the tester resources to removed. A maximum of 999 and a minimum of 1 testers can be deleted in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest =
+const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest =
   GoogleFirebaseAppdistroV1BatchAddTestersRequest as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest>;
 
 export interface BatchRemoveProjectsTestersRequest {
@@ -272,7 +272,7 @@ export interface BatchRemoveProjectsTestersRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1BatchRemoveTestersRequest;
 }
-export const BatchRemoveProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchRemoveProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.pipe(T.HttpBody())),
@@ -292,12 +292,12 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   /** List of deleted tester emails */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse =
+const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse =
   GoogleFirebaseAppdistroV1BatchAddTestersRequest as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -309,7 +309,7 @@ export interface CancelProjectsAppsReleasesOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -337,7 +337,7 @@ export interface GoogleFirebaseAppdistroV1Group {
   /** Output only. The number of testers who are members of this group. */
   testerCount?: number;
 }
-export const GoogleFirebaseAppdistroV1Group = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -357,7 +357,7 @@ export interface CreateProjectsGroupsRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1Group;
 }
-export const CreateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     groupId: S.optional(S.String.pipe(T.Query())),
@@ -377,7 +377,7 @@ export interface DeleteProjectsAppsReleasesFeedbackReportsRequest {
   /** Required. The name of the feedback report to delete. Format: projects/{project_number}/apps/{app}/releases/{release}/feedbackReports/{feedback_report} */
   name: string;
 }
-export const DeleteProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -395,7 +395,7 @@ export interface DeleteProjectsAppsReleasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -413,7 +413,7 @@ export interface DeleteProjectsGroupsRequest {
   /** Required. The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}` */
   name: string;
 }
-export const DeleteProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -434,7 +434,7 @@ export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   /** Optional. A list of tester email addresses to be given access to this release. A combined maximum of 999 `testerEmails` and `groupAliases` can be specified in a single request. */
   testerEmails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1DistributeReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1DistributeReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupAliases: S.optional(StringList),
     testerEmails: S.optional(StringList),
@@ -449,7 +449,7 @@ export interface DistributeProjectsAppsReleasesRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1DistributeReleaseRequest;
 }
-export const DistributeProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DistributeProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1DistributeReleaseRequest.pipe(T.HttpBody())),
@@ -466,14 +466,14 @@ export const DistributeProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The response message for `DistributeRelease`. */
 export interface GoogleFirebaseAppdistroV1DistributeReleaseResponse {}
-export const GoogleFirebaseAppdistroV1DistributeReleaseResponse =
+const GoogleFirebaseAppdistroV1DistributeReleaseResponse =
   GoogleLongrunningCancelOperationRequest as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse>;
 
 export interface GetAabInfoProjectsAppsRequest {
   /** Required. The name of the `AabInfo` resource to retrieve. Format: `projects/{project_number}/apps/{app}/aabInfo` */
   name: string;
 }
-export const GetAabInfoProjectsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAabInfoProjectsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -496,7 +496,7 @@ export interface GoogleFirebaseAppdistroV1TestCertificate {
   /** Hex string of MD5 hash of the test certificate used to resign the AAB */
   hashMd5?: string;
 }
-export const GoogleFirebaseAppdistroV1TestCertificate = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1TestCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashSha256: S.optional(S.String),
     hashSha1: S.optional(S.String),
@@ -518,7 +518,7 @@ export type GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
   | "ADHOC_SHARING_KEY_NOT_REGISTERED"
   | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND"
   | "PLAY_ANDROID_DEVELOPER_CONSOLE_PACKAGE_NOT_FOUND";
-export const GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum = S.String;
+const GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum = S.String;
 
 /** Android App Bundle (AAB) information for a Firebase app. */
 export interface GoogleFirebaseAppdistroV1AabInfo {
@@ -529,7 +529,7 @@ export interface GoogleFirebaseAppdistroV1AabInfo {
   /** App bundle integration state. Only valid for android apps. */
   integrationState?: GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum;
 }
-export const GoogleFirebaseAppdistroV1AabInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1AabInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     testCertificate: S.optional(GoogleFirebaseAppdistroV1TestCertificate),
@@ -543,7 +543,7 @@ export interface GetProjectsAppsReleasesRequest {
   /** Required. The name of the release resource to retrieve. Format: projects/{project_number}/apps/{app}/releases/{release} */
   name: string;
 }
-export const GetProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -564,14 +564,14 @@ export type GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
   | "PASSED"
   | "FAILED"
   | "INCONCLUSIVE";
-export const GoogleFirebaseAppdistroV1ReleaseTestStateEnum = S.String;
+const GoogleFirebaseAppdistroV1ReleaseTestStateEnum = S.String;
 
 /** Notes that belong to a release. */
 export interface GoogleFirebaseAppdistroV1ReleaseNotes {
   /** The text of the release notes. */
   text?: string;
 }
-export const GoogleFirebaseAppdistroV1ReleaseNotes = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1ReleaseNotes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -584,14 +584,14 @@ export type GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
   | "IPA"
   | "APK"
   | "AAB";
-export const GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum = S.String;
+const GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum = S.String;
 
 export type GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum =
   | "ANDROID_PACKAGE_REGISTRATION_STATE_UNSPECIFIED"
   | "REGISTERED"
   | "NOT_REGISTERED"
   | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT";
-export const GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum = S.String;
+const GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum = S.String;
 
 /** A release of a Firebase app. */
 export interface GoogleFirebaseAppdistroV1Release {
@@ -632,7 +632,7 @@ export interface GoogleFirebaseAppdistroV1Release {
   /** Output only. A link to the Firebase console displaying a single release. */
   firebaseConsoleUri?: string;
 }
-export const GoogleFirebaseAppdistroV1Release = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testingUri: S.optional(S.String),
     testState: S.optional(GoogleFirebaseAppdistroV1ReleaseTestStateEnum),
@@ -662,7 +662,7 @@ export interface GetProjectsAppsReleasesFeedbackReportsRequest {
   /** Required. The name of the feedback report to retrieve. Format: projects/{project_number}/apps/{app}/releases/{release}/feedbackReports/{feedback_report} */
   name: string;
 }
-export const GetProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -691,7 +691,7 @@ export interface GoogleFirebaseAppdistroV1FeedbackReport {
   /** Output only. The resource name of the tester who submitted the feedback report. */
   tester?: string;
 }
-export const GoogleFirebaseAppdistroV1FeedbackReport = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1FeedbackReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshotUri: S.optional(S.String),
     text: S.optional(S.String),
@@ -708,7 +708,7 @@ export interface GetProjectsAppsReleasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -723,15 +723,10 @@ export const GetProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsAppsReleasesOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -742,7 +737,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -763,7 +758,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     error: S.optional(GoogleRpcStatus),
@@ -779,7 +774,7 @@ export interface GetProjectsGroupsRequest {
   /** Required. The name of the group resource to retrieve. Format: `projects/{project_number}/groups/{group_alias}` */
   name: string;
 }
-export const GetProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -803,7 +798,7 @@ export interface ListProjectsAppsReleasesRequest {
   /** Optional. The expression to filter releases listed in the response. To learn more about filtering, refer to the [AIP-160 standard](http://aip.dev/160). Supported fields: - Time fields supporting `<`, `<=`, `>` and `>=`; expecting an RFC-3339 formatted string: - `create_time` (or `createTime`) - `update_time` (or `updateTime`) - `expire_time` (or `expireTime`) - Text fields supporting `=`. The compared text can contain a wildcard character (`*`) at the beginning and/or end of the string which also enables case-insensitive matching: - `release_notes.text` (or `releaseNotes.text`) - `display_version` (or `displayVersion`) - `build_version` (or `buildVersion`). Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `expire_time > "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"` - `(display_version = "v1.0.0-rc2" AND `build_version = "123") OR release_notes = "*v1.0.0-rc2 (123)*"` */
   filter?: string;
 }
-export const ListProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -822,7 +817,7 @@ export const ListProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAppsReleasesRequest>;
 
 export type GoogleFirebaseAppdistroV1ReleaseList = Array<GoogleFirebaseAppdistroV1Release>;
-export const GoogleFirebaseAppdistroV1ReleaseList = /*@__PURE__*/ S.Array(
+const GoogleFirebaseAppdistroV1ReleaseList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Release,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseList>;
 
@@ -835,7 +830,7 @@ export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
   /** The total number of releases. */
   totalSize?: number;
 }
-export const GoogleFirebaseAppdistroV1ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releases: S.optional(GoogleFirebaseAppdistroV1ReleaseList),
     nextPageToken: S.optional(S.String),
@@ -853,7 +848,7 @@ export interface ListProjectsAppsReleasesFeedbackReportsRequest {
   /** Output only. A page token, received from a previous `ListFeedbackReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFeedbackReports` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -871,7 +866,7 @@ export const ListProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.su
 
 export type GoogleFirebaseAppdistroV1FeedbackReportList =
   Array<GoogleFirebaseAppdistroV1FeedbackReport>;
-export const GoogleFirebaseAppdistroV1FeedbackReportList = /*@__PURE__*/ S.Array(
+const GoogleFirebaseAppdistroV1FeedbackReportList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1FeedbackReport,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1FeedbackReportList>;
 
@@ -882,7 +877,7 @@ export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedbackReports: S.optional(GoogleFirebaseAppdistroV1FeedbackReportList),
     nextPageToken: S.optional(S.String),
@@ -903,7 +898,7 @@ export interface ListProjectsAppsReleasesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -922,7 +917,7 @@ export const ListProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsAppsReleasesOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -935,7 +930,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -953,7 +948,7 @@ export interface ListProjectsGroupsRequest {
   /** Optional. A page token, received from a previous `ListGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGroups` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -970,7 +965,7 @@ export const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsGroupsRequest>;
 
 export type GoogleFirebaseAppdistroV1GroupList = Array<GoogleFirebaseAppdistroV1Group>;
-export const GoogleFirebaseAppdistroV1GroupList = /*@__PURE__*/ S.Array(
+const GoogleFirebaseAppdistroV1GroupList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Group,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1GroupList>;
 
@@ -981,7 +976,7 @@ export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleFirebaseAppdistroV1ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(GoogleFirebaseAppdistroV1GroupList),
     nextPageToken: S.optional(S.String),
@@ -1000,7 +995,7 @@ export interface ListProjectsTestersRequest {
   /** Optional. The maximum number of testers to return. The service may return fewer than this value. The valid range is [1-1000]; If unspecified (0), at most 10 testers are returned. Values above 1000 are coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1024,7 +1019,7 @@ export interface GoogleFirebaseAppdistroV1ListTestersResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleFirebaseAppdistroV1ListTestersResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1ListTestersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testers: S.optional(GoogleFirebaseAppdistroV1TesterList),
     nextPageToken: S.optional(S.String),
@@ -1041,7 +1036,7 @@ export interface PatchProjectsAppsReleasesRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1Release;
 }
-export const PatchProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1065,7 +1060,7 @@ export interface PatchProjectsGroupsRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1Group;
 }
-export const PatchProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1089,7 +1084,7 @@ export interface PatchProjectsTestersRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1Tester;
 }
-export const PatchProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1114,7 +1109,7 @@ export interface GdataObjectId {
   /** The name of the bucket to which this object belongs. */
   bucketName?: string;
 }
-export const GdataObjectId = /*@__PURE__*/ S.suspend(() =>
+const GdataObjectId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectName: S.optional(S.String),
     generation: S.optional(S.String),
@@ -1128,7 +1123,7 @@ export type GdataCompositeMediaReferenceTypeEnum =
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
-export const GdataCompositeMediaReferenceTypeEnum = S.String;
+const GdataCompositeMediaReferenceTypeEnum = S.String;
 
 /** Information to read/write to blobstore2. */
 export interface GdataBlobstore2Info {
@@ -1147,7 +1142,7 @@ export interface GdataBlobstore2Info {
   /** A serialized Object Fragment List Creation Info passed from Bigstore -> Scotty for a GCS upload. This field must never be consumed outside of Bigstore, and is not applicable to non-GCS media uploads. */
   uploadFragmentListCreationInfo?: string;
 }
-export const GdataBlobstore2Info = /*@__PURE__*/ S.suspend(() =>
+const GdataBlobstore2Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobGeneration: S.optional(S.String),
     downloadExternalReadToken: S.optional(S.String),
@@ -1184,7 +1179,7 @@ export interface GdataCompositeMedia {
   /** MD5 hash for the payload. */
   md5Hash?: string;
 }
-export const GdataCompositeMedia = /*@__PURE__*/ S.suspend(() =>
+const GdataCompositeMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     sha1Hash: S.optional(S.String),
@@ -1205,7 +1200,7 @@ export interface GdataDiffDownloadResponse {
   /** The original object location. */
   objectLocation?: GdataCompositeMedia;
 }
-export const GdataDiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectLocation: S.optional(GdataCompositeMedia),
   }),
@@ -1222,7 +1217,7 @@ export interface GdataDiffUploadRequest {
   /** The location of the new object. Agents must clone the object located here, as the upload server will delete the contents once a response is received. */
   objectInfo?: GdataCompositeMedia;
 }
-export const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     checksumsInfo: S.optional(GdataCompositeMedia),
@@ -1237,7 +1232,7 @@ export interface GdataDiffUploadResponse {
   /** The location of the original file for a diff upload request. Must be filled in if responding to an upload start notification. */
   originalObject?: GdataCompositeMedia;
 }
-export const GdataDiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     originalObject: S.optional(GdataCompositeMedia),
@@ -1261,7 +1256,7 @@ export interface GdataContentTypeInfo {
   /** The content type of the file derived from the file extension of the original file name used by the client. */
   fromFileName?: string;
 }
-export const GdataContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const GdataContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromBytes: S.optional(S.String),
     fusionIdDetectionMetadata: S.optional(S.String),
@@ -1274,7 +1269,7 @@ export const GdataContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GdataContentTypeInfo" }) as any as S.Schema<GdataContentTypeInfo>;
 
 export type GdataCompositeMediaList = Array<GdataCompositeMedia>;
-export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
+const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
   GdataCompositeMedia,
 ) as any as S.Schema<GdataCompositeMediaList>;
 
@@ -1285,7 +1280,7 @@ export interface GdataDiffVersionResponse {
   /** The version of the object stored at the server. */
   objectVersion?: string;
 }
-export const GdataDiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectSizeBytes: S.optional(S.String),
     objectVersion: S.optional(S.String),
@@ -1306,7 +1301,7 @@ export type GdataMediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
-export const GdataMediaReferenceTypeEnum = S.String;
+const GdataMediaReferenceTypeEnum = S.String;
 
 /** Parameters specific to media downloads. */
 export interface GdataDownloadParameters {
@@ -1315,7 +1310,7 @@ export interface GdataDownloadParameters {
   /** Determining whether or not Apiary should skip the inclusion of any Content-Range header on its response to Scotty. */
   ignoreRange?: boolean;
 }
-export const GdataDownloadParameters = /*@__PURE__*/ S.suspend(() =>
+const GdataDownloadParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowGzipCompression: S.optional(S.Boolean),
     ignoreRange: S.optional(S.Boolean),
@@ -1335,7 +1330,7 @@ export interface GdataDiffChecksumsResponse {
   /** Exactly one of these fields must be populated. If checksums_location is filled, the server will return the corresponding contents to the user. If object_location is filled, the server will calculate the checksums based on the content there and return that to the user. For details on the format of the checksums, see http://go/scotty-diff-protocol. */
   checksumsLocation?: GdataCompositeMedia;
 }
-export const GdataDiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectSizeBytes: S.optional(S.String),
     objectVersion: S.optional(S.String),
@@ -1412,7 +1407,7 @@ export interface GdataMedia {
   /** For Scotty Uploads: Scotty-provided hashes for uploads For Scotty Downloads: (WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.) A Hash provided by the agent to be used to verify the data being downloaded. Currently only supported for inline payloads. Further, only crc32c_hash is currently supported. */
   crc32cHash?: number;
 }
-export const GdataMedia = /*@__PURE__*/ S.suspend(() =>
+const GdataMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diffDownloadResponse: S.optional(GdataDiffDownloadResponse),
     bigstoreObjectRef: S.optional(S.String),
@@ -1453,7 +1448,7 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseRequest {
   /** Binary to upload */
   blob?: GdataMedia;
 }
-export const GoogleFirebaseAppdistroV1UploadReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirebaseAppdistroV1UploadReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(GdataMedia),
   }),
@@ -1467,7 +1462,7 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1UploadReleaseRequest;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirebaseAppdistroV1UploadReleaseRequest.pipe(T.HttpBody())),
@@ -1485,7 +1480,7 @@ export interface GoogleLongrunningWaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
-export const GoogleLongrunningWaitOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningWaitOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeout: S.optional(S.String),
   }),
@@ -1499,7 +1494,7 @@ export interface WaitProjectsAppsReleasesOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningWaitOperationRequest;
 }
-export const WaitProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningWaitOperationRequest.pipe(T.HttpBody())),

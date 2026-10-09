@@ -18,14 +18,14 @@ export type AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const AttachedNetworkConnectionPropertiesInputHealthCheckStatus = S.String;
+const AttachedNetworkConnectionPropertiesInputHealthCheckStatus = S.String;
 
 /** Active Directory join type */
 export type AttachedNetworkConnectionPropertiesInputDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
   | "None";
-export const AttachedNetworkConnectionPropertiesInputDomainJoinType = S.String;
+const AttachedNetworkConnectionPropertiesInputDomainJoinType = S.String;
 
 /** Properties of an attached NetworkConnection. */
 export interface AttachedNetworkConnectionPropertiesInput {
@@ -36,7 +36,7 @@ export interface AttachedNetworkConnectionPropertiesInput {
   /** Active Directory join type */
   domainJoinType?: AttachedNetworkConnectionPropertiesInputDomainJoinType | (string & {});
 }
-export const AttachedNetworkConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AttachedNetworkConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkConnectionId: S.String,
     healthCheckStatus: S.optional(AttachedNetworkConnectionPropertiesInputHealthCheckStatus),
@@ -58,7 +58,7 @@ export interface AttachedNetworksCreateOrUpdateRequest {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionPropertiesInput;
 }
-export const AttachedNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachedNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -79,11 +79,11 @@ export const AttachedNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -100,7 +100,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -129,7 +129,7 @@ export type AttachedNetworkConnectionPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const AttachedNetworkConnectionPropertiesProvisioningState = S.String;
+const AttachedNetworkConnectionPropertiesProvisioningState = S.String;
 
 /** Health check status values */
 export type AttachedNetworkConnectionPropertiesHealthCheckStatus =
@@ -140,14 +140,14 @@ export type AttachedNetworkConnectionPropertiesHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const AttachedNetworkConnectionPropertiesHealthCheckStatus = S.String;
+const AttachedNetworkConnectionPropertiesHealthCheckStatus = S.String;
 
 /** Active Directory join type */
 export type AttachedNetworkConnectionPropertiesDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
   | "None";
-export const AttachedNetworkConnectionPropertiesDomainJoinType = S.String;
+const AttachedNetworkConnectionPropertiesDomainJoinType = S.String;
 
 /** Properties of an attached NetworkConnection. */
 export interface AttachedNetworkConnectionProperties {
@@ -162,7 +162,7 @@ export interface AttachedNetworkConnectionProperties {
   /** Active Directory join type */
   domainJoinType?: AttachedNetworkConnectionPropertiesDomainJoinType;
 }
-export const AttachedNetworkConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const AttachedNetworkConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AttachedNetworkConnectionPropertiesProvisioningState),
     networkConnectionId: S.String,
@@ -186,7 +186,7 @@ export interface AttachedNetworksCreateOrUpdateResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const AttachedNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AttachedNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -212,7 +212,7 @@ export interface CancelProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
-export const CancelProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -233,7 +233,7 @@ export const CancelProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CancelProjectCatalogImageDefinitionBuildRequest>;
 
 export interface CancelProjectCatalogImageDefinitionBuildResponse {}
-export const CancelProjectCatalogImageDefinitionBuildResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectCatalogImageDefinitionBuildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CancelProjectCatalogImageDefinitionBuildResponse",
@@ -250,7 +250,7 @@ export interface GitCatalog {
   /** The folder where the catalog items can be found inside the repository. */
   path?: string;
 }
-export const GitCatalog = /*@__PURE__*/ S.suspend(() =>
+const GitCatalog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     branch: S.optional(S.String),
@@ -261,11 +261,11 @@ export const GitCatalog = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogPropertiesInputSyncType = "Manual" | "Scheduled";
-export const CatalogPropertiesInputSyncType = S.String;
+const CatalogPropertiesInputSyncType = S.String;
 
 /** Resource tags. */
 export type CatalogPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const CatalogPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+const CatalogPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CatalogPropertiesInputTagsMap>;
@@ -281,7 +281,7 @@ export interface CatalogPropertiesInput {
   /** Resource tags. */
   tags?: CatalogPropertiesInputTagsMap;
 }
-export const CatalogPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CatalogPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitHub: S.optional(GitCatalog),
     adoGit: S.optional(GitCatalog),
@@ -302,7 +302,7 @@ export interface CatalogsCreateOrUpdateRequest {
   /** Catalog properties. */
   properties?: CatalogPropertiesInput;
 }
-export const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -323,11 +323,11 @@ export const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogPropertiesSyncType = "Manual" | "Scheduled";
-export const CatalogPropertiesSyncType = S.String;
+const CatalogPropertiesSyncType = S.String;
 
 /** Resource tags. */
 export type CatalogPropertiesTagsMap = { [key: string]: string | undefined };
-export const CatalogPropertiesTagsMap =
+const CatalogPropertiesTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<CatalogPropertiesTagsMap>;
 
 /** Provisioning state of the resource. */
@@ -348,19 +348,19 @@ export type CatalogPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const CatalogPropertiesProvisioningState = S.String;
+const CatalogPropertiesProvisioningState = S.String;
 
 /** The synchronization state of the catalog. */
 export type CatalogPropertiesSyncState = "Succeeded" | "InProgress" | "Failed" | "Canceled";
-export const CatalogPropertiesSyncState = S.String;
+const CatalogPropertiesSyncState = S.String;
 
 /** Indicates catalog item types. */
 export type CatalogItemType = "EnvironmentDefinition" | "ImageDefinition";
-export const CatalogItemType = S.String;
+const CatalogItemType = S.String;
 
 /** Indicates catalog item types that were synced. */
 export type SyncStatsSyncedCatalogItemTypesList = Array<CatalogItemType>;
-export const SyncStatsSyncedCatalogItemTypesList = /*@__PURE__*/ S.Array(
+const SyncStatsSyncedCatalogItemTypesList = /*@__PURE__*/ S.Array(
   CatalogItemType,
 ) as any as S.Schema<SyncStatsSyncedCatalogItemTypesList>;
 
@@ -381,7 +381,7 @@ export interface SyncStats {
   /** Indicates catalog item types that were synced. */
   syncedCatalogItemTypes?: SyncStatsSyncedCatalogItemTypesList;
 }
-export const SyncStats = /*@__PURE__*/ S.suspend(() =>
+const SyncStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added: S.optional(S.Number),
     updated: S.optional(S.Number),
@@ -395,7 +395,7 @@ export const SyncStats = /*@__PURE__*/ S.suspend(() =>
 
 /** The connection state of the catalog. */
 export type CatalogPropertiesConnectionState = "Connected" | "Disconnected";
-export const CatalogPropertiesConnectionState = S.String;
+const CatalogPropertiesConnectionState = S.String;
 
 /** Properties of a catalog. */
 export interface CatalogProperties {
@@ -420,7 +420,7 @@ export interface CatalogProperties {
   /** When the catalog was last synced. */
   lastSyncTime?: string;
 }
-export const CatalogProperties = /*@__PURE__*/ S.suspend(() =>
+const CatalogProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitHub: S.optional(GitCatalog),
     adoGit: S.optional(GitCatalog),
@@ -447,7 +447,7 @@ export interface CatalogsCreateOrUpdateResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const CatalogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CatalogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -469,7 +469,7 @@ export interface ConnectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const ConnectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -486,7 +486,7 @@ export const ConnectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectCatalogRequest" }) as any as S.Schema<ConnectCatalogRequest>;
 
 export interface ConnectCatalogResponse {}
-export const ConnectCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ConnectCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ConnectCatalogResponse",
 }) as any as S.Schema<ConnectCatalogResponse>;
 
@@ -500,7 +500,7 @@ export interface ConnectProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const ConnectProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -519,7 +519,7 @@ export const ConnectProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectProjectCatalogRequest>;
 
 export interface ConnectProjectCatalogResponse {}
-export const ConnectProjectCatalogResponse =
+const ConnectProjectCatalogResponse =
   ConnectCatalogResponse as any as S.Schema<ConnectProjectCatalogResponse>;
 
 export interface DeleteAttachedNetworkRequest {
@@ -532,7 +532,7 @@ export interface DeleteAttachedNetworkRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
-export const DeleteAttachedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttachedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -551,7 +551,7 @@ export const DeleteAttachedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttachedNetworkRequest>;
 
 export interface DeleteAttachedNetworkResponse {}
-export const DeleteAttachedNetworkResponse =
+const DeleteAttachedNetworkResponse =
   ConnectCatalogResponse as any as S.Schema<DeleteAttachedNetworkResponse>;
 
 export interface DeleteCatalogRequest {
@@ -564,7 +564,7 @@ export interface DeleteCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const DeleteCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -581,8 +581,7 @@ export const DeleteCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCatalogRequest" }) as any as S.Schema<DeleteCatalogRequest>;
 
 export interface DeleteCatalogResponse {}
-export const DeleteCatalogResponse =
-  ConnectCatalogResponse as any as S.Schema<DeleteCatalogResponse>;
+const DeleteCatalogResponse = ConnectCatalogResponse as any as S.Schema<DeleteCatalogResponse>;
 
 export interface DeleteDevBoxDefinitionRequest {
   /** The ID of the target subscription. */
@@ -594,7 +593,7 @@ export interface DeleteDevBoxDefinitionRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
-export const DeleteDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -613,7 +612,7 @@ export const DeleteDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDevBoxDefinitionRequest>;
 
 export interface DeleteDevBoxDefinitionResponse {}
-export const DeleteDevBoxDefinitionResponse =
+const DeleteDevBoxDefinitionResponse =
   ConnectCatalogResponse as any as S.Schema<DeleteDevBoxDefinitionResponse>;
 
 export interface DeleteDevCenterRequest {
@@ -624,7 +623,7 @@ export interface DeleteDevCenterRequest {
   /** The name of the devcenter. */
   devCenterName: string;
 }
-export const DeleteDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -640,8 +639,7 @@ export const DeleteDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDevCenterRequest" }) as any as S.Schema<DeleteDevCenterRequest>;
 
 export interface DeleteDevCenterResponse {}
-export const DeleteDevCenterResponse =
-  ConnectCatalogResponse as any as S.Schema<DeleteDevCenterResponse>;
+const DeleteDevCenterResponse = ConnectCatalogResponse as any as S.Schema<DeleteDevCenterResponse>;
 
 export interface DeleteEnvironmentTypeRequest {
   /** The ID of the target subscription. */
@@ -653,7 +651,7 @@ export interface DeleteEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
-export const DeleteEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -672,7 +670,7 @@ export const DeleteEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvironmentTypeRequest>;
 
 export interface DeleteEnvironmentTypeResponse {}
-export const DeleteEnvironmentTypeResponse =
+const DeleteEnvironmentTypeResponse =
   ConnectCatalogResponse as any as S.Schema<DeleteEnvironmentTypeResponse>;
 
 export interface DeleteGalleryRequest {
@@ -685,7 +683,7 @@ export interface DeleteGalleryRequest {
   /** The name of the gallery. */
   galleryName: string;
 }
-export const DeleteGalleryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGalleryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -702,8 +700,7 @@ export const DeleteGalleryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGalleryRequest" }) as any as S.Schema<DeleteGalleryRequest>;
 
 export interface DeleteGalleryResponse {}
-export const DeleteGalleryResponse =
-  ConnectCatalogResponse as any as S.Schema<DeleteGalleryResponse>;
+const DeleteGalleryResponse = ConnectCatalogResponse as any as S.Schema<DeleteGalleryResponse>;
 
 export interface DeleteNetworkConnectionRequest {
   /** The ID of the target subscription. */
@@ -713,7 +710,7 @@ export interface DeleteNetworkConnectionRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
-export const DeleteNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -731,9 +728,9 @@ export const DeleteNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNetworkConnectionRequest>;
 
 export interface DeleteNetworkConnectionResponse {}
-export const DeleteNetworkConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteNetworkConnectionResponse" },
-) as any as S.Schema<DeleteNetworkConnectionResponse>;
+const DeleteNetworkConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteNetworkConnectionResponse",
+}) as any as S.Schema<DeleteNetworkConnectionResponse>;
 
 export interface DeletePoolRequest {
   /** The ID of the target subscription. */
@@ -745,7 +742,7 @@ export interface DeletePoolRequest {
   /** Name of the pool. */
   poolName: string;
 }
-export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -762,7 +759,7 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePoolRequest" }) as any as S.Schema<DeletePoolRequest>;
 
 export interface DeletePoolResponse {}
-export const DeletePoolResponse = ConnectCatalogResponse as any as S.Schema<DeletePoolResponse>;
+const DeletePoolResponse = ConnectCatalogResponse as any as S.Schema<DeletePoolResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
@@ -772,7 +769,7 @@ export interface DeleteProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -788,8 +785,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse =
-  ConnectCatalogResponse as any as S.Schema<DeleteProjectResponse>;
+const DeleteProjectResponse = ConnectCatalogResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectCatalogRequest {
   /** The ID of the target subscription. */
@@ -801,7 +797,7 @@ export interface DeleteProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const DeleteProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -820,7 +816,7 @@ export const DeleteProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectCatalogRequest>;
 
 export interface DeleteProjectCatalogResponse {}
-export const DeleteProjectCatalogResponse =
+const DeleteProjectCatalogResponse =
   ConnectCatalogResponse as any as S.Schema<DeleteProjectCatalogResponse>;
 
 export interface DeleteProjectEnvironmentTypeRequest {
@@ -833,7 +829,7 @@ export interface DeleteProjectEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
-export const DeleteProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -852,7 +848,7 @@ export const DeleteProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectEnvironmentTypeRequest>;
 
 export interface DeleteProjectEnvironmentTypeResponse {}
-export const DeleteProjectEnvironmentTypeResponse =
+const DeleteProjectEnvironmentTypeResponse =
   CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<DeleteProjectEnvironmentTypeResponse>;
 
 export interface DeleteProjectPolicyRequest {
@@ -865,7 +861,7 @@ export interface DeleteProjectPolicyRequest {
   /** The name of the project policy. */
   projectPolicyName: string;
 }
-export const DeleteProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -884,7 +880,7 @@ export const DeleteProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectPolicyRequest>;
 
 export interface DeleteProjectPolicyResponse {}
-export const DeleteProjectPolicyResponse =
+const DeleteProjectPolicyResponse =
   ConnectCatalogResponse as any as S.Schema<DeleteProjectPolicyResponse>;
 
 export interface DeleteScheduleRequest {
@@ -901,7 +897,7 @@ export interface DeleteScheduleRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -920,12 +916,11 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse =
-  ConnectCatalogResponse as any as S.Schema<DeleteScheduleResponse>;
+const DeleteScheduleResponse = ConnectCatalogResponse as any as S.Schema<DeleteScheduleResponse>;
 
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DevBoxDefinitionsCreateOrUpdateRequestTagsMap =
+const DevBoxDefinitionsCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequestTagsMap>;
 
 /** Image reference information */
@@ -933,7 +928,7 @@ export interface DevBoxDefinitionPropertiesInputImageReference {
   /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
   id?: string;
 }
-export const DevBoxDefinitionPropertiesInputImageReference = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionPropertiesInputImageReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -943,7 +938,7 @@ export const DevBoxDefinitionPropertiesInputImageReference = /*@__PURE__*/ S.sus
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** The resource model definition representing SKU */
 export interface DevBoxDefinitionPropertiesInputSku {
@@ -957,7 +952,7 @@ export interface DevBoxDefinitionPropertiesInputSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const DevBoxDefinitionPropertiesInputSku = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionPropertiesInputSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(SkuTier),
@@ -971,7 +966,7 @@ export const DevBoxDefinitionPropertiesInputSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether hibernate is enabled/disabled. */
 export type HibernateSupport = "Disabled" | "Enabled";
-export const HibernateSupport = S.String;
+const HibernateSupport = S.String;
 
 /** Image validation status */
 export type DevBoxDefinitionPropertiesInputImageValidationStatus =
@@ -980,7 +975,7 @@ export type DevBoxDefinitionPropertiesInputImageValidationStatus =
   | "Succeeded"
   | "Failed"
   | "TimedOut";
-export const DevBoxDefinitionPropertiesInputImageValidationStatus = S.String;
+const DevBoxDefinitionPropertiesInputImageValidationStatus = S.String;
 
 /** Image validation error details */
 export interface DevBoxDefinitionPropertiesInputImageValidationErrorDetails {
@@ -989,12 +984,11 @@ export interface DevBoxDefinitionPropertiesInputImageValidationErrorDetails {
   /** A message describing the error. */
   message?: string;
 }
-export const DevBoxDefinitionPropertiesInputImageValidationErrorDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-    }),
+const DevBoxDefinitionPropertiesInputImageValidationErrorDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DevBoxDefinitionPropertiesInputImageValidationErrorDetails",
 }) as any as S.Schema<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
@@ -1005,14 +999,11 @@ export type DevBoxDefinitionPropertiesInputValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed";
-export const DevBoxDefinitionPropertiesInputValidationStatus = S.String;
+const DevBoxDefinitionPropertiesInputValidationStatus = S.String;
 
 /** Image reference information */
 export type DevBoxDefinitionPropertiesInputActiveImageReference =
   DevBoxDefinitionPropertiesInputImageReference;
-export const DevBoxDefinitionPropertiesInputActiveImageReference =
-  DevBoxDefinitionPropertiesInputImageReference;
-
 /** Properties of a Dev Box definition. */
 export interface DevBoxDefinitionPropertiesInput {
   /** Image reference information */
@@ -1032,7 +1023,7 @@ export interface DevBoxDefinitionPropertiesInput {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesInputImageReference;
 }
-export const DevBoxDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: DevBoxDefinitionPropertiesInputImageReference,
     sku: DevBoxDefinitionPropertiesInputSku,
@@ -1065,7 +1056,7 @@ export interface DevBoxDefinitionsCreateOrUpdateRequest {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionPropertiesInput;
 }
-export const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1088,7 +1079,7 @@ export const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DevBoxDefinitionsCreateOrUpdateResponseTagsMap =
+const DevBoxDefinitionsCreateOrUpdateResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponseTagsMap>;
 
 /** Image reference information */
@@ -1098,7 +1089,7 @@ export interface DevBoxDefinitionPropertiesImageReference {
   /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
   exactVersion?: string;
 }
-export const DevBoxDefinitionPropertiesImageReference = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionPropertiesImageReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     exactVersion: S.optional(S.String),
@@ -1119,7 +1110,7 @@ export interface DevBoxDefinitionPropertiesSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const DevBoxDefinitionPropertiesSku =
+const DevBoxDefinitionPropertiesSku =
   DevBoxDefinitionPropertiesInputSku as any as S.Schema<DevBoxDefinitionPropertiesSku>;
 
 /** Provisioning state of the resource. */
@@ -1140,7 +1131,7 @@ export type DevBoxDefinitionPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const DevBoxDefinitionPropertiesProvisioningState = S.String;
+const DevBoxDefinitionPropertiesProvisioningState = S.String;
 
 /** Image validation status */
 export type DevBoxDefinitionPropertiesImageValidationStatus =
@@ -1149,28 +1140,22 @@ export type DevBoxDefinitionPropertiesImageValidationStatus =
   | "Succeeded"
   | "Failed"
   | "TimedOut";
-export const DevBoxDefinitionPropertiesImageValidationStatus = S.String;
+const DevBoxDefinitionPropertiesImageValidationStatus = S.String;
 
 /** Image validation error details */
 export type DevBoxDefinitionPropertiesImageValidationErrorDetails =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-export const DevBoxDefinitionPropertiesImageValidationErrorDetails =
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-
 /** Catalog resource validation status */
 export type DevBoxDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
   | "Failed";
-export const DevBoxDefinitionPropertiesValidationStatus = S.String;
+const DevBoxDefinitionPropertiesValidationStatus = S.String;
 
 /** Image reference information */
 export type DevBoxDefinitionPropertiesActiveImageReference =
   DevBoxDefinitionPropertiesImageReference;
-export const DevBoxDefinitionPropertiesActiveImageReference =
-  DevBoxDefinitionPropertiesImageReference;
-
 /** Properties of a Dev Box definition. */
 export interface DevBoxDefinitionProperties {
   /** Image reference information */
@@ -1192,7 +1177,7 @@ export interface DevBoxDefinitionProperties {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
-export const DevBoxDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: DevBoxDefinitionPropertiesImageReference,
     sku: DevBoxDefinitionPropertiesSku,
@@ -1226,7 +1211,7 @@ export interface DevBoxDefinitionsCreateOrUpdateResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const DevBoxDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1242,7 +1227,7 @@ export const DevBoxDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type DevCentersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DevCentersCreateOrUpdateRequestTagsMap =
+const DevCentersCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<DevCentersCreateOrUpdateRequestTagsMap>;
 
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
@@ -1250,7 +1235,7 @@ export type EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdenti
   | "systemAssignedIdentity"
   | "userAssignedIdentity"
   | "delegatedResourceIdentity";
-export const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType = S.String;
+const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType = S.String;
 
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
@@ -1263,18 +1248,17 @@ export interface EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity 
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
   delegatedIdentityClientId?: string;
 }
-export const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identityType: S.optional(
-        EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
-      ),
-      userAssignedIdentityResourceId: S.optional(S.String),
-      delegatedIdentityClientId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
-  }) as any as S.Schema<EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityType: S.optional(
+      EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
+    ),
+    userAssignedIdentityResourceId: S.optional(S.String),
+    delegatedIdentityClientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
+}) as any as S.Schema<EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
 
 /** All Customer-managed key encryption properties for the resource. */
 export interface EncryptionCustomerManagedKeyEncryption {
@@ -1283,7 +1267,7 @@ export interface EncryptionCustomerManagedKeyEncryption {
   /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyEncryptionKeyUrl?: string;
 }
-export const EncryptionCustomerManagedKeyEncryption = /*@__PURE__*/ S.suspend(() =>
+const EncryptionCustomerManagedKeyEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyEncryptionKeyIdentity: S.optional(
       EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
@@ -1298,7 +1282,7 @@ export interface Encryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: EncryptionCustomerManagedKeyEncryption;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedKeyEncryption: S.optional(EncryptionCustomerManagedKeyEncryption),
   }),
@@ -1306,14 +1290,14 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 
 /** Catalog item sync types enable or disable status. Indicates whether project catalogs are allowed to sync catalog items under projects associated to this dev center. */
 export type CatalogItemSyncEnableStatus = "Enabled" | "Disabled";
-export const CatalogItemSyncEnableStatus = S.String;
+const CatalogItemSyncEnableStatus = S.String;
 
 /** Project catalog settings for project catalogs under a project associated to this dev center. */
 export interface DevCenterProjectCatalogSettings {
   /** Whether project catalogs associated with projects in this dev center can be configured to sync catalog items. */
   catalogItemSyncEnableStatus?: CatalogItemSyncEnableStatus | (string & {});
 }
-export const DevCenterProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
+const DevCenterProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogItemSyncEnableStatus: S.optional(CatalogItemSyncEnableStatus),
   }),
@@ -1323,13 +1307,13 @@ export const DevCenterProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set. */
 export type MicrosoftHostedNetworkEnableStatus = "Enabled" | "Disabled";
-export const MicrosoftHostedNetworkEnableStatus = S.String;
+const MicrosoftHostedNetworkEnableStatus = S.String;
 
 /** Network settings for the Dev Center. */
 export interface DevCenterNetworkSettings {
   microsoftHostedNetworkEnableStatus?: MicrosoftHostedNetworkEnableStatus | (string & {});
 }
-export const DevCenterNetworkSettings = /*@__PURE__*/ S.suspend(() =>
+const DevCenterNetworkSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microsoftHostedNetworkEnableStatus: S.optional(MicrosoftHostedNetworkEnableStatus),
   }),
@@ -1337,14 +1321,14 @@ export const DevCenterNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Setting to be used when determining whether to install the Azure Monitor Agent service on Dev Boxes that belong to this dev center. */
 export type InstallAzureMonitorAgentEnableStatus = "Enabled" | "Disabled";
-export const InstallAzureMonitorAgentEnableStatus = S.String;
+const InstallAzureMonitorAgentEnableStatus = S.String;
 
 /** Provisioning settings that apply to all Dev Boxes created in this dev center */
 export interface DevBoxProvisioningSettings {
   /** Whether project catalogs associated with projects in this dev center can be configured to sync catalog items. */
   installAzureMonitorAgentEnableStatus?: InstallAzureMonitorAgentEnableStatus | (string & {});
 }
-export const DevBoxProvisioningSettings = /*@__PURE__*/ S.suspend(() =>
+const DevBoxProvisioningSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installAzureMonitorAgentEnableStatus: S.optional(InstallAzureMonitorAgentEnableStatus),
   }),
@@ -1365,7 +1349,7 @@ export interface DevCenterPropertiesInput {
   /** Settings to be used in the provisioning of all Dev Boxes that belong to this dev center. */
   devBoxProvisioningSettings?: DevBoxProvisioningSettings;
 }
-export const DevCenterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DevCenterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryption: S.optional(Encryption),
     displayName: S.optional(S.String),
@@ -1381,16 +1365,16 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput =
+const UserAssignedIdentityInput =
   ConnectCatalogResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -1400,7 +1384,7 @@ export interface DevCentersCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const DevCentersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const DevCentersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -1425,7 +1409,7 @@ export interface DevCentersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
-export const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1448,7 +1432,7 @@ export const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DevCentersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DevCentersCreateOrUpdateResponseTagsMap =
+const DevCentersCreateOrUpdateResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<DevCentersCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the resource. */
@@ -1469,7 +1453,7 @@ export type DevCenterPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const DevCenterPropertiesProvisioningState = S.String;
+const DevCenterPropertiesProvisioningState = S.String;
 
 /** Properties of the devcenter. */
 export interface DevCenterProperties {
@@ -1488,7 +1472,7 @@ export interface DevCenterProperties {
   /** The URI of the Dev Center. */
   devCenterUri?: string;
 }
-export const DevCenterProperties = /*@__PURE__*/ S.suspend(() =>
+const DevCenterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryption: S.optional(Encryption),
     displayName: S.optional(S.String),
@@ -1507,7 +1491,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1516,7 +1500,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -1530,7 +1514,7 @@ export interface DevCentersCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const DevCentersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const DevCentersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1559,7 +1543,7 @@ export interface DevCentersCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const DevCentersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DevCentersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1579,7 +1563,7 @@ export interface EnvironmentTypePropertiesInput {
   /** The display name of the environment type. */
   displayName?: string;
 }
-export const EnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -1589,7 +1573,7 @@ export const EnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnvironmentTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EnvironmentTypesCreateOrUpdateRequestTagsMap =
+const EnvironmentTypesCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypesCreateOrUpdateRequestTagsMap>;
 
 export interface EnvironmentTypesCreateOrUpdateRequest {
@@ -1606,7 +1590,7 @@ export interface EnvironmentTypesCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: EnvironmentTypesCreateOrUpdateRequestTagsMap;
 }
-export const EnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1644,7 +1628,7 @@ export type EnvironmentTypePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const EnvironmentTypePropertiesProvisioningState = S.String;
+const EnvironmentTypePropertiesProvisioningState = S.String;
 
 /** Properties of an environment type. */
 export interface EnvironmentTypeProperties {
@@ -1653,7 +1637,7 @@ export interface EnvironmentTypeProperties {
   /** Provisioning state of the resource. */
   provisioningState?: EnvironmentTypePropertiesProvisioningState;
 }
-export const EnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     provisioningState: S.optional(EnvironmentTypePropertiesProvisioningState),
@@ -1664,7 +1648,7 @@ export const EnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnvironmentTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EnvironmentTypesCreateOrUpdateResponseTagsMap =
+const EnvironmentTypesCreateOrUpdateResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypesCreateOrUpdateResponseTagsMap>;
 
 export interface EnvironmentTypesCreateOrUpdateResponse {
@@ -1681,7 +1665,7 @@ export interface EnvironmentTypesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: EnvironmentTypesCreateOrUpdateResponseTagsMap;
 }
-export const EnvironmentTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1702,7 +1686,7 @@ export interface ExecuteCheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-export const ExecuteCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -1721,7 +1705,7 @@ export const ExecuteCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason why the given name is not available. */
 export type ExecuteCheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-export const ExecuteCheckNameAvailabilityResponseReason = S.String;
+const ExecuteCheckNameAvailabilityResponseReason = S.String;
 
 export interface ExecuteCheckNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
@@ -1731,7 +1715,7 @@ export interface ExecuteCheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const ExecuteCheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecuteCheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(ExecuteCheckNameAvailabilityResponseReason),
@@ -1751,7 +1735,7 @@ export interface ExecuteCheckScopedNameAvailabilityRequest {
   /** The resource id to scope the name check. */
   scope?: string;
 }
-export const ExecuteCheckScopedNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteCheckScopedNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -1771,8 +1755,6 @@ export const ExecuteCheckScopedNameAvailabilityRequest = /*@__PURE__*/ S.suspend
 
 /** The reason why the given name is not available. */
 export type ExecuteCheckScopedNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-export const ExecuteCheckScopedNameAvailabilityResponseReason = S.String;
-
 export interface ExecuteCheckScopedNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -1781,7 +1763,7 @@ export interface ExecuteCheckScopedNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const ExecuteCheckScopedNameAvailabilityResponse =
+const ExecuteCheckScopedNameAvailabilityResponse =
   ExecuteCheckNameAvailabilityResponse as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>;
 
 /** Properties of a gallery. */
@@ -1789,7 +1771,7 @@ export interface GalleryPropertiesInput {
   /** The resource ID of the backing Azure Compute Gallery. */
   galleryResourceId: string;
 }
-export const GalleryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GalleryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     galleryResourceId: S.String,
   }),
@@ -1807,7 +1789,7 @@ export interface GalleriesCreateOrUpdateRequest {
   /** Gallery properties. */
   properties?: GalleryPropertiesInput;
 }
-export const GalleriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GalleriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1844,7 +1826,7 @@ export type GalleryPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const GalleryPropertiesProvisioningState = S.String;
+const GalleryPropertiesProvisioningState = S.String;
 
 /** Properties of a gallery. */
 export interface GalleryProperties {
@@ -1853,7 +1835,7 @@ export interface GalleryProperties {
   /** The resource ID of the backing Azure Compute Gallery. */
   galleryResourceId: string;
 }
-export const GalleryProperties = /*@__PURE__*/ S.suspend(() =>
+const GalleryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(GalleryPropertiesProvisioningState),
     galleryResourceId: S.String,
@@ -1872,7 +1854,7 @@ export interface GalleriesCreateOrUpdateResponse {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
-export const GalleriesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GalleriesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1894,7 +1876,7 @@ export interface GetAttachedNetworkByDevCenterRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
-export const GetAttachedNetworkByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAttachedNetworkByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1924,7 +1906,7 @@ export interface GetAttachedNetworkByDevCenterResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const GetAttachedNetworkByDevCenterResponse =
+const GetAttachedNetworkByDevCenterResponse =
   AttachedNetworksCreateOrUpdateResponse as any as S.Schema<GetAttachedNetworkByDevCenterResponse>;
 
 export interface GetAttachedNetworkByProjectRequest {
@@ -1937,7 +1919,7 @@ export interface GetAttachedNetworkByProjectRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
-export const GetAttachedNetworkByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAttachedNetworkByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1967,7 +1949,7 @@ export interface GetAttachedNetworkByProjectResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const GetAttachedNetworkByProjectResponse =
+const GetAttachedNetworkByProjectResponse =
   AttachedNetworksCreateOrUpdateResponse as any as S.Schema<GetAttachedNetworkByProjectResponse>;
 
 export interface GetCatalogRequest {
@@ -1980,7 +1962,7 @@ export interface GetCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const GetCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2008,7 +1990,7 @@ export interface GetCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const GetCatalogResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2028,7 +2010,7 @@ export interface GetCatalogSyncErrorDetailsRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const GetCatalogSyncErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCatalogSyncErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2049,9 +2031,6 @@ export const GetCatalogSyncErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Catalog error details */
 export type SyncErrorDetailsOperationError =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-export const SyncErrorDetailsOperationError =
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-
 /** An individual conflict error. */
 export interface CatalogConflictError {
   /** The path of the file that has a conflicting name. */
@@ -2059,7 +2038,7 @@ export interface CatalogConflictError {
   /** Name of the conflicting catalog item. */
   name?: string;
 }
-export const CatalogConflictError = /*@__PURE__*/ S.suspend(() =>
+const CatalogConflictError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     name: S.optional(S.String),
@@ -2068,20 +2047,17 @@ export const CatalogConflictError = /*@__PURE__*/ S.suspend(() =>
 
 /** Catalog items that have conflicting names. */
 export type SyncErrorDetailsConflictsList = Array<CatalogConflictError>;
-export const SyncErrorDetailsConflictsList = /*@__PURE__*/ S.Array(
+const SyncErrorDetailsConflictsList = /*@__PURE__*/ S.Array(
   CatalogConflictError,
 ) as any as S.Schema<SyncErrorDetailsConflictsList>;
 
 /** Catalog error details */
 export type CatalogSyncErrorErrorDetailsItem =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-export const CatalogSyncErrorErrorDetailsItem =
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-
 /** Errors associated with the file. */
 export type CatalogSyncErrorErrorDetailsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const CatalogSyncErrorErrorDetailsList = /*@__PURE__*/ S.Array(
+const CatalogSyncErrorErrorDetailsList = /*@__PURE__*/ S.Array(
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
 ) as any as S.Schema<CatalogSyncErrorErrorDetailsList>;
 
@@ -2092,7 +2068,7 @@ export interface CatalogSyncError {
   /** Errors associated with the file. */
   errorDetails?: CatalogSyncErrorErrorDetailsList;
 }
-export const CatalogSyncError = /*@__PURE__*/ S.suspend(() =>
+const CatalogSyncError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     errorDetails: S.optional(CatalogSyncErrorErrorDetailsList),
@@ -2101,7 +2077,7 @@ export const CatalogSyncError = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors that occured during synchronization. */
 export type SyncErrorDetailsErrorsList = Array<CatalogSyncError>;
-export const SyncErrorDetailsErrorsList = /*@__PURE__*/ S.Array(
+const SyncErrorDetailsErrorsList = /*@__PURE__*/ S.Array(
   CatalogSyncError,
 ) as any as S.Schema<SyncErrorDetailsErrorsList>;
 
@@ -2114,7 +2090,7 @@ export interface SyncErrorDetails {
   /** Errors that occured during synchronization. */
   errors?: SyncErrorDetailsErrorsList;
 }
-export const SyncErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const SyncErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationError: S.optional(DevBoxDefinitionPropertiesInputImageValidationErrorDetails),
     conflicts: S.optional(SyncErrorDetailsConflictsList),
@@ -2134,7 +2110,7 @@ export interface GetCustomizationTaskRequest {
   /** The name of the Task. */
   taskName: string;
 }
-export const GetCustomizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2155,7 +2131,7 @@ export const GetCustomizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the input. */
 export type CustomizationTaskInputType = "string" | "number" | "boolean";
-export const CustomizationTaskInputType = S.String;
+const CustomizationTaskInputType = S.String;
 
 /** Input for a Task. */
 export interface CustomizationTaskInput {
@@ -2166,7 +2142,7 @@ export interface CustomizationTaskInput {
   /** Whether or not the input is required. */
   required?: boolean;
 }
-export const CustomizationTaskInput = /*@__PURE__*/ S.suspend(() =>
+const CustomizationTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     type: S.optional(CustomizationTaskInputType),
@@ -2178,7 +2154,7 @@ export const CustomizationTaskInput = /*@__PURE__*/ S.suspend(() =>
 export type CustomizationTaskPropertiesInputsMap = {
   [key: string]: CustomizationTaskInput | undefined;
 };
-export const CustomizationTaskPropertiesInputsMap = /*@__PURE__*/ S.Record(
+const CustomizationTaskPropertiesInputsMap = /*@__PURE__*/ S.Record(
   S.String,
   CustomizationTaskInput,
 ) as any as S.Schema<CustomizationTaskPropertiesInputsMap>;
@@ -2189,7 +2165,7 @@ export type CustomizationTaskPropertiesValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed";
-export const CustomizationTaskPropertiesValidationStatus = S.String;
+const CustomizationTaskPropertiesValidationStatus = S.String;
 
 /** Properties of a Task. */
 export interface CustomizationTaskProperties {
@@ -2200,7 +2176,7 @@ export interface CustomizationTaskProperties {
   /** Catalog resource validation status */
   validationStatus?: CustomizationTaskPropertiesValidationStatus;
 }
-export const CustomizationTaskProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomizationTaskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputs: S.optional(CustomizationTaskPropertiesInputsMap),
     timeout: S.optional(S.Number),
@@ -2222,7 +2198,7 @@ export interface GetCustomizationTaskResponse {
   /** Task properties */
   properties?: CustomizationTaskProperties;
 }
-export const GetCustomizationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomizationTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2246,7 +2222,7 @@ export interface GetCustomizationTaskErrorDetailsRequest {
   /** The name of the Task. */
   taskName: string;
 }
-export const GetCustomizationTaskErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomizationTaskErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2267,19 +2243,17 @@ export const GetCustomizationTaskErrorDetailsRequest = /*@__PURE__*/ S.suspend((
 
 /** Catalog error details */
 export type CatalogErrorDetails = DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-export const CatalogErrorDetails = DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-
 /** Errors associated with resources synchronized from the catalog. */
 export type GetCustomizationTaskErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetCustomizationTaskErrorDetailsResponseErrorsList =
+const GetCustomizationTaskErrorDetailsResponseErrorsList =
   CatalogSyncErrorErrorDetailsList as any as S.Schema<GetCustomizationTaskErrorDetailsResponseErrorsList>;
 
 export interface GetCustomizationTaskErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetCustomizationTaskErrorDetailsResponseErrorsList;
 }
-export const GetCustomizationTaskErrorDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomizationTaskErrorDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(GetCustomizationTaskErrorDetailsResponseErrorsList),
   }),
@@ -2297,7 +2271,7 @@ export interface GetDevBoxDefinitionRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
-export const GetDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2317,9 +2291,6 @@ export const GetDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDevBoxDefinitionResponseTagsMap = { [key: string]: string | undefined };
-export const GetDevBoxDefinitionResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<GetDevBoxDefinitionResponseTagsMap>;
-
 export interface GetDevBoxDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2336,7 +2307,7 @@ export interface GetDevBoxDefinitionResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const GetDevBoxDefinitionResponse =
+const GetDevBoxDefinitionResponse =
   DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDevBoxDefinitionResponse>;
 
 export interface GetDevBoxDefinitionByProjectRequest {
@@ -2349,7 +2320,7 @@ export interface GetDevBoxDefinitionByProjectRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
-export const GetDevBoxDefinitionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevBoxDefinitionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2369,9 +2340,6 @@ export const GetDevBoxDefinitionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDevBoxDefinitionByProjectResponseTagsMap = { [key: string]: string | undefined };
-export const GetDevBoxDefinitionByProjectResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<GetDevBoxDefinitionByProjectResponseTagsMap>;
-
 export interface GetDevBoxDefinitionByProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2388,7 +2356,7 @@ export interface GetDevBoxDefinitionByProjectResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const GetDevBoxDefinitionByProjectResponse =
+const GetDevBoxDefinitionByProjectResponse =
   DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDevBoxDefinitionByProjectResponse>;
 
 export interface GetDevCenterRequest {
@@ -2399,7 +2367,7 @@ export interface GetDevCenterRequest {
   /** The name of the devcenter. */
   devCenterName: string;
 }
-export const GetDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2416,13 +2384,11 @@ export const GetDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDevCenterResponseTagsMap = { [key: string]: string | undefined };
-export const GetDevCenterResponseTagsMap =
+const GetDevCenterResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<GetDevCenterResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const GetDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 export interface GetDevCenterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2441,7 +2407,7 @@ export interface GetDevCenterResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const GetDevCenterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDevCenterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2466,7 +2432,7 @@ export interface GetEnvironmentDefinitionRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
-export const GetEnvironmentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2487,7 +2453,7 @@ export const GetEnvironmentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of data a parameter accepts. */
 export type ParameterType = "array" | "boolean" | "integer" | "number" | "object" | "string";
-export const ParameterType = S.String;
+const ParameterType = S.String;
 
 /** Properties of an Environment Definition parameter */
 export interface EnvironmentDefinitionParameter {
@@ -2504,7 +2470,7 @@ export interface EnvironmentDefinitionParameter {
   /** Whether or not this parameter is required */
   required?: boolean;
 }
-export const EnvironmentDefinitionParameter = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentDefinitionParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2519,7 +2485,7 @@ export const EnvironmentDefinitionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Input parameters passed to an environment. */
 export type EnvironmentDefinitionPropertiesParametersList = Array<EnvironmentDefinitionParameter>;
-export const EnvironmentDefinitionPropertiesParametersList = /*@__PURE__*/ S.Array(
+const EnvironmentDefinitionPropertiesParametersList = /*@__PURE__*/ S.Array(
   EnvironmentDefinitionParameter,
 ) as any as S.Schema<EnvironmentDefinitionPropertiesParametersList>;
 
@@ -2529,7 +2495,7 @@ export type EnvironmentDefinitionPropertiesValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed";
-export const EnvironmentDefinitionPropertiesValidationStatus = S.String;
+const EnvironmentDefinitionPropertiesValidationStatus = S.String;
 
 /** Properties of an environment definition. */
 export interface EnvironmentDefinitionProperties {
@@ -2542,7 +2508,7 @@ export interface EnvironmentDefinitionProperties {
   /** Catalog resource validation status */
   validationStatus?: EnvironmentDefinitionPropertiesValidationStatus;
 }
-export const EnvironmentDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     parameters: S.optional(EnvironmentDefinitionPropertiesParametersList),
@@ -2565,7 +2531,7 @@ export interface GetEnvironmentDefinitionResponse {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
-export const GetEnvironmentDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2589,7 +2555,7 @@ export interface GetEnvironmentDefinitionByProjectCatalogRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
-export const GetEnvironmentDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2620,7 +2586,7 @@ export interface GetEnvironmentDefinitionByProjectCatalogResponse {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
-export const GetEnvironmentDefinitionByProjectCatalogResponse =
+const GetEnvironmentDefinitionByProjectCatalogResponse =
   GetEnvironmentDefinitionResponse as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>;
 
 export interface GetEnvironmentDefinitionErrorDetailsRequest {
@@ -2635,7 +2601,7 @@ export interface GetEnvironmentDefinitionErrorDetailsRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
-export const GetEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2657,14 +2623,11 @@ export const GetEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspe
 /** Errors associated with resources synchronized from the catalog. */
 export type GetEnvironmentDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetEnvironmentDefinitionErrorDetailsResponseErrorsList =
-  CatalogSyncErrorErrorDetailsList as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponseErrorsList>;
-
 export interface GetEnvironmentDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetEnvironmentDefinitionErrorDetailsResponseErrorsList;
 }
-export const GetEnvironmentDefinitionErrorDetailsResponse =
+const GetEnvironmentDefinitionErrorDetailsResponse =
   GetCustomizationTaskErrorDetailsResponse as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>;
 
 export interface GetEnvironmentTypeRequest {
@@ -2677,7 +2640,7 @@ export interface GetEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
-export const GetEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2697,9 +2660,6 @@ export const GetEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnvironmentTypeResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<GetEnvironmentTypeResponseTagsMap>;
-
 export interface GetEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2714,7 +2674,7 @@ export interface GetEnvironmentTypeResponse {
   /** Resource tags. */
   tags?: GetEnvironmentTypeResponseTagsMap;
 }
-export const GetEnvironmentTypeResponse =
+const GetEnvironmentTypeResponse =
   EnvironmentTypesCreateOrUpdateResponse as any as S.Schema<GetEnvironmentTypeResponse>;
 
 export interface GetGalleryRequest {
@@ -2727,7 +2687,7 @@ export interface GetGalleryRequest {
   /** The name of the gallery. */
   galleryName: string;
 }
-export const GetGalleryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGalleryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2755,7 +2715,7 @@ export interface GetGalleryResponse {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
-export const GetGalleryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGalleryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2777,7 +2737,7 @@ export interface GetImageRequest {
   /** The name of the image. */
   imageName: string;
 }
-export const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2801,7 +2761,7 @@ export interface ResourceRange {
   /** Maximum value. */
   max?: number;
 }
-export const ResourceRange = /*@__PURE__*/ S.suspend(() =>
+const ResourceRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.optional(S.Number),
     max: S.optional(S.Number),
@@ -2815,7 +2775,7 @@ export interface RecommendedMachineConfiguration {
   /** Recommended vCPU range. */
   vCPUs?: ResourceRange;
 }
-export const RecommendedMachineConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RecommendedMachineConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memory: S.optional(ResourceRange),
     vCPUs: S.optional(ResourceRange),
@@ -2842,7 +2802,7 @@ export type ImagePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const ImagePropertiesProvisioningState = S.String;
+const ImagePropertiesProvisioningState = S.String;
 
 /** Properties of an image. */
 export interface ImageProperties {
@@ -2861,7 +2821,7 @@ export interface ImageProperties {
   /** Indicates whether this image has hibernate enabled. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
   hibernateSupport?: HibernateSupport;
 }
-export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     publisher: S.optional(S.String),
@@ -2885,7 +2845,7 @@ export interface GetImageResponse {
   /** Image properties. */
   properties?: ImageProperties;
 }
-export const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2905,7 +2865,7 @@ export interface GetImageByProjectRequest {
   /** The name of the image. */
   imageName: string;
 }
-export const GetImageByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2933,7 +2893,7 @@ export interface GetImageByProjectResponse {
   /** Image properties. */
   properties?: ImageProperties;
 }
-export const GetImageByProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageByProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2959,7 +2919,7 @@ export interface GetImageVersionRequest {
   /** The version of the image. */
   versionName: string;
 }
-export const GetImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2995,7 +2955,7 @@ export type ImageVersionPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const ImageVersionPropertiesProvisioningState = S.String;
+const ImageVersionPropertiesProvisioningState = S.String;
 
 /** Properties of an image version. */
 export interface ImageVersionProperties {
@@ -3010,7 +2970,7 @@ export interface ImageVersionProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ImageVersionPropertiesProvisioningState;
 }
-export const ImageVersionProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     publishedDate: S.optional(S.String),
@@ -3032,7 +2992,7 @@ export interface GetImageVersionResponse {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
-export const GetImageVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3054,7 +3014,7 @@ export interface GetImageVersionByProjectRequest {
   /** The version of the image. */
   versionName: string;
 }
-export const GetImageVersionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageVersionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3085,7 +3045,7 @@ export interface GetImageVersionByProjectResponse {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
-export const GetImageVersionByProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageVersionByProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3105,7 +3065,7 @@ export interface GetNetworkConnectionRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
-export const GetNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3124,7 +3084,7 @@ export const GetNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkConnectionResponseTagsMap =
+const GetNetworkConnectionResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<GetNetworkConnectionResponseTagsMap>;
 
 /** Provisioning state of the resource. */
@@ -3145,7 +3105,7 @@ export type NetworkPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const NetworkPropertiesProvisioningState = S.String;
+const NetworkPropertiesProvisioningState = S.String;
 
 /** Health check status values */
 export type NetworkPropertiesHealthCheckStatus =
@@ -3156,11 +3116,11 @@ export type NetworkPropertiesHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const NetworkPropertiesHealthCheckStatus = S.String;
+const NetworkPropertiesHealthCheckStatus = S.String;
 
 /** Active Directory join type */
 export type NetworkPropertiesDomainJoinType = "HybridAzureADJoin" | "AzureADJoin" | "None";
-export const NetworkPropertiesDomainJoinType = S.String;
+const NetworkPropertiesDomainJoinType = S.String;
 
 /** Network properties */
 export interface NetworkProperties {
@@ -3183,7 +3143,7 @@ export interface NetworkProperties {
   /** Active Directory join type */
   domainJoinType: NetworkPropertiesDomainJoinType;
 }
-export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.String,
     domainName: S.optional(S.String),
@@ -3213,7 +3173,7 @@ export interface GetNetworkConnectionResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
-export const GetNetworkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3235,7 +3195,7 @@ export interface GetNetworkConnectionHealthDetailsRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
-export const GetNetworkConnectionHealthDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkConnectionHealthDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3261,7 +3221,7 @@ export type HealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const HealthCheckStatus = S.String;
+const HealthCheckStatus = S.String;
 
 /** An individual health check item */
 export interface HealthCheck {
@@ -3280,7 +3240,7 @@ export interface HealthCheck {
   /** Additional details about the health check or the recommended action. */
   additionalDetails?: string;
 }
-export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
+const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(HealthCheckStatus),
     displayName: S.optional(S.String),
@@ -3294,7 +3254,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Details for each health check item. */
 export type HealthCheckStatusDetailsPropertiesHealthChecksList = Array<HealthCheck>;
-export const HealthCheckStatusDetailsPropertiesHealthChecksList = /*@__PURE__*/ S.Array(
+const HealthCheckStatusDetailsPropertiesHealthChecksList = /*@__PURE__*/ S.Array(
   HealthCheck,
 ) as any as S.Schema<HealthCheckStatusDetailsPropertiesHealthChecksList>;
 
@@ -3307,7 +3267,7 @@ export interface HealthCheckStatusDetailsProperties {
   /** Details for each health check item. */
   healthChecks?: HealthCheckStatusDetailsPropertiesHealthChecksList;
 }
-export const HealthCheckStatusDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const HealthCheckStatusDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDateTime: S.optional(S.String),
     endDateTime: S.optional(S.String),
@@ -3329,7 +3289,7 @@ export interface GetNetworkConnectionHealthDetailsResponse {
   /** Health check status details properties. */
   properties?: HealthCheckStatusDetailsProperties;
 }
-export const GetNetworkConnectionHealthDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkConnectionHealthDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3349,7 +3309,7 @@ export interface GetOperationStatusRequest {
   /** The ID of an ongoing async operation */
   operationId: string;
 }
-export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3368,13 +3328,13 @@ export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
+const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -3385,7 +3345,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -3394,7 +3354,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -3411,7 +3371,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -3442,7 +3402,7 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -3458,7 +3418,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetOperationStatusResponseOperationsList = Array<OperationStatusResult>;
-export const GetOperationStatusResponseOperationsList = /*@__PURE__*/ S.Array(
+const GetOperationStatusResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<GetOperationStatusResponseOperationsList>;
 
@@ -3484,7 +3444,7 @@ export interface GetOperationStatusResponse {
   /** Custom operation properties, populated only for a successful operation. */
   properties?: unknown;
 }
-export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -3511,7 +3471,7 @@ export interface GetPoolRequest {
   /** Name of the pool. */
   poolName: string;
 }
-export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3529,25 +3489,19 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetPoolResponseTagsMap =
+const GetPoolResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<GetPoolResponseTagsMap>;
 
 /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
 export type PoolDevBoxDefinitionType = "Reference" | "Value";
-export const PoolDevBoxDefinitionType = S.String;
+const PoolDevBoxDefinitionType = S.String;
 
 /** Image reference information */
 export type PoolDevBoxDefinitionImageReference = DevBoxDefinitionPropertiesImageReference;
-export const PoolDevBoxDefinitionImageReference = DevBoxDefinitionPropertiesImageReference;
-
 /** The resource model definition representing SKU */
 export type PoolDevBoxDefinitionSku = DevBoxDefinitionPropertiesSku;
-export const PoolDevBoxDefinitionSku = DevBoxDefinitionPropertiesSku;
-
 /** Image reference information */
 export type PoolDevBoxDefinitionActiveImageReference = DevBoxDefinitionPropertiesImageReference;
-export const PoolDevBoxDefinitionActiveImageReference = DevBoxDefinitionPropertiesImageReference;
-
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinition {
   /** Image reference information */
@@ -3557,7 +3511,7 @@ export interface PoolDevBoxDefinition {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
-export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
+const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
     sku: S.optional(DevBoxDefinitionPropertiesSku),
@@ -3567,15 +3521,15 @@ export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** License Types */
 export type LicenseType = "Windows_Client";
-export const LicenseType = S.String;
+const LicenseType = S.String;
 
 /** Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators on the Dev Box. */
 export type LocalAdminStatus = "Disabled" | "Enabled";
-export const LocalAdminStatus = S.String;
+const LocalAdminStatus = S.String;
 
 /** Stop on disconnect enable or disable status. Indicates whether stop on disconnect to is either enabled or disabled. */
 export type StopOnDisconnectEnableStatus = "Enabled" | "Disabled";
-export const StopOnDisconnectEnableStatus = S.String;
+const StopOnDisconnectEnableStatus = S.String;
 
 /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
 export interface StopOnDisconnectConfiguration {
@@ -3584,7 +3538,7 @@ export interface StopOnDisconnectConfiguration {
   /** The specified time in minutes to wait before stopping a Dev Box once disconnect is detected. */
   gracePeriodMinutes?: number;
 }
-export const StopOnDisconnectConfiguration = /*@__PURE__*/ S.suspend(() =>
+const StopOnDisconnectConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(StopOnDisconnectEnableStatus),
     gracePeriodMinutes: S.optional(S.Number),
@@ -3595,8 +3549,6 @@ export const StopOnDisconnectConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop on no connect enable or disable status. */
 export type StopOnNoConnectEnableStatus = "Enabled" | "Disabled";
-export const StopOnNoConnectEnableStatus = S.String;
-
 /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
 export interface StopOnNoConnectConfiguration {
   /** Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed. */
@@ -3604,26 +3556,26 @@ export interface StopOnNoConnectConfiguration {
   /** The specified time in minutes to wait before stopping a Dev Box if no connection is made. */
   gracePeriodMinutes?: number;
 }
-export const StopOnNoConnectConfiguration =
+const StopOnNoConnectConfiguration =
   StopOnDisconnectConfiguration as any as S.Schema<StopOnNoConnectConfiguration>;
 
 /** SingleSignOn (SSO) enable or disable status. Indicates whether Dev Boxes in the Pool will have SSO enabled or disabled. */
 export type SingleSignOnStatus = "Disabled" | "Enabled";
-export const SingleSignOnStatus = S.String;
+const SingleSignOnStatus = S.String;
 
 /** Indicates a pool uses a Virtual Network managed by Microsoft (Managed), or a customer provided Network (Unmanaged). */
 export type VirtualNetworkType = "Managed" | "Unmanaged";
-export const VirtualNetworkType = S.String;
+const VirtualNetworkType = S.String;
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolPropertiesManagedVirtualNetworkRegionsList = Array<string>;
-export const PoolPropertiesManagedVirtualNetworkRegionsList = /*@__PURE__*/ S.Array(
+const PoolPropertiesManagedVirtualNetworkRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolPropertiesManagedVirtualNetworkRegionsList>;
 
 /** Health status indicating whether a pool is available to create Dev Boxes. */
 export type HealthStatus = "Unknown" | "Pending" | "Healthy" | "Warning" | "Unhealthy";
-export const HealthStatus = S.String;
+const HealthStatus = S.String;
 
 /** Pool health status detail. */
 export interface HealthStatusDetail {
@@ -3632,7 +3584,7 @@ export interface HealthStatusDetail {
   /** A message describing the issue, intended to be suitable for display in a user interface */
   message?: string;
 }
-export const HealthStatusDetail = /*@__PURE__*/ S.suspend(() =>
+const HealthStatusDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -3641,7 +3593,7 @@ export const HealthStatusDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state */
 export type PoolPropertiesHealthStatusDetailsList = Array<HealthStatusDetail>;
-export const PoolPropertiesHealthStatusDetailsList = /*@__PURE__*/ S.Array(
+const PoolPropertiesHealthStatusDetailsList = /*@__PURE__*/ S.Array(
   HealthStatusDetail,
 ) as any as S.Schema<PoolPropertiesHealthStatusDetailsList>;
 
@@ -3663,7 +3615,7 @@ export type PoolPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const PoolPropertiesProvisioningState = S.String;
+const PoolPropertiesProvisioningState = S.String;
 
 /** Properties of a Pool */
 export interface PoolProperties {
@@ -3700,7 +3652,7 @@ export interface PoolProperties {
   /** Provisioning state of the resource. */
   provisioningState?: PoolPropertiesProvisioningState;
 }
-export const PoolProperties = /*@__PURE__*/ S.suspend(() =>
+const PoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
     devBoxDefinitionName: S.String,
@@ -3737,7 +3689,7 @@ export interface GetPoolResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
-export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3757,7 +3709,7 @@ export interface GetProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3774,12 +3726,12 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
-export const GetProjectResponseTagsMap =
+const GetProjectResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<GetProjectResponseTagsMap>;
 
 /** Indicates catalog item types that can be synced. */
 export type ProjectCatalogSettingsCatalogItemSyncTypesList = Array<CatalogItemType | (string & {})>;
-export const ProjectCatalogSettingsCatalogItemSyncTypesList =
+const ProjectCatalogSettingsCatalogItemSyncTypesList =
   SyncStatsSyncedCatalogItemTypesList as any as S.Schema<ProjectCatalogSettingsCatalogItemSyncTypesList>;
 
 /** Settings to be used when associating a project with a catalog. */
@@ -3787,7 +3739,7 @@ export interface ProjectCatalogSettings {
   /** Indicates catalog item types that can be synced. */
   catalogItemSyncTypes?: ProjectCatalogSettingsCatalogItemSyncTypesList;
 }
-export const ProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
+const ProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogItemSyncTypes: S.optional(ProjectCatalogSettingsCatalogItemSyncTypesList),
   }),
@@ -3811,7 +3763,7 @@ export type ProjectPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const ProjectPropertiesProvisioningState = S.String;
+const ProjectPropertiesProvisioningState = S.String;
 
 /** Properties of a project. */
 export interface ProjectProperties {
@@ -3830,7 +3782,7 @@ export interface ProjectProperties {
   /** The URI of the Dev Center resource this project is associated with. */
   devCenterUri?: string;
 }
-export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
+const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devCenterId: S.optional(S.String),
     description: S.optional(S.String),
@@ -3844,8 +3796,6 @@ export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetProjectResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const GetProjectResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 export interface GetProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3864,7 +3814,7 @@ export interface GetProjectResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3887,7 +3837,7 @@ export interface GetProjectAllowedEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
-export const GetProjectAllowedEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectAllowedEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3923,7 +3873,7 @@ export type AllowedEnvironmentTypePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const AllowedEnvironmentTypePropertiesProvisioningState = S.String;
+const AllowedEnvironmentTypePropertiesProvisioningState = S.String;
 
 /** Properties of an allowed environment type. */
 export interface AllowedEnvironmentTypeProperties {
@@ -3932,7 +3882,7 @@ export interface AllowedEnvironmentTypeProperties {
   /** The display name of the allowed environment type. */
   displayName?: string;
 }
-export const AllowedEnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const AllowedEnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AllowedEnvironmentTypePropertiesProvisioningState),
     displayName: S.optional(S.String),
@@ -3953,7 +3903,7 @@ export interface GetProjectAllowedEnvironmentTypeResponse {
   /** Properties of an allowed environment type. */
   properties?: AllowedEnvironmentTypeProperties;
 }
-export const GetProjectAllowedEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectAllowedEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3975,7 +3925,7 @@ export interface GetProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const GetProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4003,7 +3953,7 @@ export interface GetProjectCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const GetProjectCatalogResponse =
+const GetProjectCatalogResponse =
   CatalogsCreateOrUpdateResponse as any as S.Schema<GetProjectCatalogResponse>;
 
 export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest {
@@ -4018,22 +3968,21 @@ export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
-export const GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      catalogName: S.String.pipe(T.Label()),
-      environmentDefinitionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails",
-        code: 200,
-        apiVersion: "2025-02-01",
-      }),
-    ),
+const GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    environmentDefinitionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails",
+      code: 200,
+      apiVersion: "2025-02-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest",
 }) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest>;
@@ -4041,20 +3990,18 @@ export const GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest = /*@__PU
 /** Errors associated with resources synchronized from the catalog. */
 export type GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList =
-  /*@__PURE__*/ S.Array(
-    DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
-  ) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList>;
+const GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList = /*@__PURE__*/ S.Array(
+  DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
+) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList>;
 
 export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList;
 }
-export const GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      errors: S.optional(GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList),
-    }),
+const GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errors: S.optional(GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList),
+  }),
 ).annotate({
   identifier: "GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse",
 }) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse>;
@@ -4073,7 +4020,7 @@ export interface GetProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
-export const GetProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4095,9 +4042,6 @@ export const GetProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ S.susp
 
 /** Image reference information */
 export type ImageDefinitionBuildPropertiesImageReference = DevBoxDefinitionPropertiesImageReference;
-export const ImageDefinitionBuildPropertiesImageReference =
-  DevBoxDefinitionPropertiesImageReference;
-
 /** The state of an Image Definition Build. */
 export type ImageDefinitionBuildStatus =
   | "Succeeded"
@@ -4106,12 +4050,10 @@ export type ImageDefinitionBuildStatus =
   | "Failed"
   | "Cancelled"
   | "TimedOut";
-export const ImageDefinitionBuildStatus = S.String;
+const ImageDefinitionBuildStatus = S.String;
 
 /** Image creation error details */
 export type ImageCreationErrorDetails = DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-export const ImageCreationErrorDetails = DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-
 /** Properties of an Image Definition Build. */
 export interface ImageDefinitionBuildProperties {
   /** Image reference information */
@@ -4125,7 +4067,7 @@ export interface ImageDefinitionBuildProperties {
   /** Details for image creation error. Populated when the image creation is not successful. */
   errorDetails?: DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
 }
-export const ImageDefinitionBuildProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionBuildProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
     status: S.optional(ImageDefinitionBuildStatus),
@@ -4149,7 +4091,7 @@ export interface GetProjectCatalogImageDefinitionBuildResponse {
   /** Image Definition Build properties */
   properties?: ImageDefinitionBuildProperties;
 }
-export const GetProjectCatalogImageDefinitionBuildResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCatalogImageDefinitionBuildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4175,23 +4117,22 @@ export interface GetProjectCatalogImageDefinitionBuildBuildDetailsRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
-export const GetProjectCatalogImageDefinitionBuildBuildDetailsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      catalogName: S.String.pipe(T.Label()),
-      imageDefinitionName: S.String.pipe(T.Label()),
-      buildName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/getBuildDetails",
-        code: 200,
-        apiVersion: "2025-02-01",
-      }),
-    ),
+const GetProjectCatalogImageDefinitionBuildBuildDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    imageDefinitionName: S.String.pipe(T.Label()),
+    buildName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/getBuildDetails",
+      code: 200,
+      apiVersion: "2025-02-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectCatalogImageDefinitionBuildBuildDetailsRequest",
 }) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsRequest>;
@@ -4199,14 +4140,11 @@ export const GetProjectCatalogImageDefinitionBuildBuildDetailsRequest = /*@__PUR
 /** Image reference information */
 export type GetProjectCatalogImageDefinitionBuildBuildDetailsResponseImageReference =
   DevBoxDefinitionPropertiesImageReference;
-export const GetProjectCatalogImageDefinitionBuildBuildDetailsResponseImageReference =
-  DevBoxDefinitionPropertiesImageReference;
-
 export interface ImageDefinitionBuildTaskParametersItem {
   key: string;
   value: string;
 }
-export const ImageDefinitionBuildTaskParametersItem = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionBuildTaskParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -4217,7 +4155,7 @@ export const ImageDefinitionBuildTaskParametersItem = /*@__PURE__*/ S.suspend(()
 
 /** Parameters for the task. */
 export type ImageDefinitionBuildTaskParametersList = Array<ImageDefinitionBuildTaskParametersItem>;
-export const ImageDefinitionBuildTaskParametersList = /*@__PURE__*/ S.Array(
+const ImageDefinitionBuildTaskParametersList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuildTaskParametersItem,
 ) as any as S.Schema<ImageDefinitionBuildTaskParametersList>;
 
@@ -4240,7 +4178,7 @@ export interface ImageDefinitionBuildTask {
   /** The URI for retrieving logs for the task execution. */
   logUri?: string;
 }
-export const ImageDefinitionBuildTask = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionBuildTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     parameters: S.optional(ImageDefinitionBuildTaskParametersList),
@@ -4255,7 +4193,7 @@ export const ImageDefinitionBuildTask = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tasks executed during the task group. */
 export type ImageDefinitionBuildTaskGroupTasksList = Array<ImageDefinitionBuildTask>;
-export const ImageDefinitionBuildTaskGroupTasksList = /*@__PURE__*/ S.Array(
+const ImageDefinitionBuildTaskGroupTasksList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuildTask,
 ) as any as S.Schema<ImageDefinitionBuildTaskGroupTasksList>;
 
@@ -4272,7 +4210,7 @@ export interface ImageDefinitionBuildTaskGroup {
   /** The list of tasks executed during the task group. */
   tasks?: ImageDefinitionBuildTaskGroupTasksList;
 }
-export const ImageDefinitionBuildTaskGroup = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionBuildTaskGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(ImageDefinitionBuildStatus),
@@ -4287,7 +4225,7 @@ export const ImageDefinitionBuildTaskGroup = /*@__PURE__*/ S.suspend(() =>
 /** The list of task groups executed during the image definition build. */
 export type GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList =
   Array<ImageDefinitionBuildTaskGroup>;
-export const GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList =
+const GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList =
   /*@__PURE__*/ S.Array(
     ImageDefinitionBuildTaskGroup,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList>;
@@ -4314,22 +4252,19 @@ export interface GetProjectCatalogImageDefinitionBuildBuildDetailsResponse {
   /** The list of task groups executed during the image definition build. */
   taskGroups?: GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList;
 }
-export const GetProjectCatalogImageDefinitionBuildBuildDetailsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
-      status: S.optional(ImageDefinitionBuildStatus),
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-      errorDetails: S.optional(DevBoxDefinitionPropertiesInputImageValidationErrorDetails),
-      taskGroups: S.optional(
-        GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList,
-      ),
-    }),
+const GetProjectCatalogImageDefinitionBuildBuildDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
+    status: S.optional(ImageDefinitionBuildStatus),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    errorDetails: S.optional(DevBoxDefinitionPropertiesInputImageValidationErrorDetails),
+    taskGroups: S.optional(GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList),
+  }),
 ).annotate({
   identifier: "GetProjectCatalogImageDefinitionBuildBuildDetailsResponse",
 }) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsResponse>;
@@ -4346,7 +4281,7 @@ export interface GetProjectCatalogImageDefinitionByProjectCatalogRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
-export const GetProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4367,8 +4302,6 @@ export const GetProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE
 
 /** Image reference information */
 export type ImageDefinitionPropertiesImageReference = DevBoxDefinitionPropertiesImageReference;
-export const ImageDefinitionPropertiesImageReference = DevBoxDefinitionPropertiesImageReference;
-
 /** Details about the latest build. */
 export interface LatestImageBuild {
   /** Identifier of a build. */
@@ -4380,7 +4313,7 @@ export interface LatestImageBuild {
   /** The state of an Image Definition Build. */
   status?: ImageDefinitionBuildStatus;
 }
-export const LatestImageBuild = /*@__PURE__*/ S.suspend(() =>
+const LatestImageBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -4396,31 +4329,25 @@ export type ImageDefinitionPropertiesImageValidationStatus =
   | "Succeeded"
   | "Failed"
   | "TimedOut";
-export const ImageDefinitionPropertiesImageValidationStatus = S.String;
+const ImageDefinitionPropertiesImageValidationStatus = S.String;
 
 /** Image validation error details */
 export type ImageDefinitionPropertiesImageValidationErrorDetails =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-export const ImageDefinitionPropertiesImageValidationErrorDetails =
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
-
 /** Catalog resource validation status */
 export type ImageDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
   | "Failed";
-export const ImageDefinitionPropertiesValidationStatus = S.String;
+const ImageDefinitionPropertiesValidationStatus = S.String;
 
 /** Image reference information */
 export type ImageDefinitionPropertiesActiveImageReference =
   DevBoxDefinitionPropertiesImageReference;
-export const ImageDefinitionPropertiesActiveImageReference =
-  DevBoxDefinitionPropertiesImageReference;
-
 /** Indicates whether auto image build is enabled/disabled. */
 export type AutoImageBuildStatus = "Disabled" | "Enabled";
-export const AutoImageBuildStatus = S.String;
+const AutoImageBuildStatus = S.String;
 
 /** Properties of an Image Definition. */
 export interface ImageDefinitionProperties {
@@ -4441,7 +4368,7 @@ export interface ImageDefinitionProperties {
   /** Indicates if automatic image builds will be triggered for image definition updates */
   autoImageBuild?: AutoImageBuildStatus;
 }
-export const ImageDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
     fileUrl: S.optional(S.String),
@@ -4470,15 +4397,14 @@ export interface GetProjectCatalogImageDefinitionByProjectCatalogResponse {
   /** Image Definition properties */
   properties?: ImageDefinitionProperties;
 }
-export const GetProjectCatalogImageDefinitionByProjectCatalogResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ImageDefinitionProperties),
-    }),
+const GetProjectCatalogImageDefinitionByProjectCatalogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ImageDefinitionProperties),
+  }),
 ).annotate({
   identifier: "GetProjectCatalogImageDefinitionByProjectCatalogResponse",
 }) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogResponse>;
@@ -4495,7 +4421,7 @@ export interface GetProjectCatalogImageDefinitionErrorDetailsRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
-export const GetProjectCatalogImageDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCatalogImageDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4517,14 +4443,11 @@ export const GetProjectCatalogImageDefinitionErrorDetailsRequest = /*@__PURE__*/
 /** Errors associated with resources synchronized from the catalog. */
 export type GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList =
-  CatalogSyncErrorErrorDetailsList as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList>;
-
 export interface GetProjectCatalogImageDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList;
 }
-export const GetProjectCatalogImageDefinitionErrorDetailsResponse =
+const GetProjectCatalogImageDefinitionErrorDetailsResponse =
   GetCustomizationTaskErrorDetailsResponse as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponse>;
 
 export interface GetProjectCatalogSyncErrorDetailsRequest {
@@ -4537,7 +4460,7 @@ export interface GetProjectCatalogSyncErrorDetailsRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const GetProjectCatalogSyncErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCatalogSyncErrorDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4565,7 +4488,7 @@ export interface GetProjectEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
-export const GetProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4585,7 +4508,7 @@ export const GetProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the environment type is either enabled or disabled. */
 export type EnvironmentTypeEnableStatus = "Enabled" | "Disabled";
-export const EnvironmentTypeEnableStatus = S.String;
+const EnvironmentTypeEnableStatus = S.String;
 
 /** A role that can be assigned to a user. */
 export interface EnvironmentRole {
@@ -4594,7 +4517,7 @@ export interface EnvironmentRole {
   /** This is a description of the Role Assignment. */
   description?: string;
 }
-export const EnvironmentRole = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleName: S.optional(S.String),
     description: S.optional(S.String),
@@ -4605,7 +4528,7 @@ export const EnvironmentRole = /*@__PURE__*/ S.suspend(() =>
 export type ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap = {
   [key: string]: EnvironmentRole | undefined;
 };
-export const ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap = /*@__PURE__*/ S.Record(
+const ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap = /*@__PURE__*/ S.Record(
   S.String,
   EnvironmentRole,
 ) as any as S.Schema<ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap>;
@@ -4615,7 +4538,7 @@ export interface ProjectEnvironmentTypePropertiesCreatorRoleAssignment {
   /** A map of roles to assign to the environment creator. */
   roles?: ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap;
 }
-export const ProjectEnvironmentTypePropertiesCreatorRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypePropertiesCreatorRoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap),
   }),
@@ -4625,7 +4548,7 @@ export const ProjectEnvironmentTypePropertiesCreatorRoleAssignment = /*@__PURE__
 
 /** A map of roles to assign to the parent user. */
 export type UserRoleAssignmentRolesMap = { [key: string]: EnvironmentRole | undefined };
-export const UserRoleAssignmentRolesMap =
+const UserRoleAssignmentRolesMap =
   ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap as any as S.Schema<UserRoleAssignmentRolesMap>;
 
 /** Mapping of user object ID to role assignments. */
@@ -4633,7 +4556,7 @@ export interface UserRoleAssignment {
   /** A map of roles to assign to the parent user. */
   roles?: UserRoleAssignmentRolesMap;
 }
-export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(UserRoleAssignmentRolesMap),
   }),
@@ -4643,7 +4566,7 @@ export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 export type ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap = {
   [key: string]: UserRoleAssignment | undefined;
 };
-export const ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap = /*@__PURE__*/ S.Record(
+const ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   UserRoleAssignment,
 ) as any as S.Schema<ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap>;
@@ -4666,7 +4589,7 @@ export type ProjectEnvironmentTypePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const ProjectEnvironmentTypePropertiesProvisioningState = S.String;
+const ProjectEnvironmentTypePropertiesProvisioningState = S.String;
 
 /** Properties of a project environment type. */
 export interface ProjectEnvironmentTypeProperties {
@@ -4685,7 +4608,7 @@ export interface ProjectEnvironmentTypeProperties {
   /** The number of environments of this type. */
   environmentCount?: number;
 }
-export const ProjectEnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentTargetId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4701,13 +4624,11 @@ export const ProjectEnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProjectEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const GetProjectEnvironmentTypeResponseTagsMap =
+const GetProjectEnvironmentTypeResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<GetProjectEnvironmentTypeResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetProjectEnvironmentTypeResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const GetProjectEnvironmentTypeResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 export interface GetProjectEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4726,7 +4647,7 @@ export interface GetProjectEnvironmentTypeResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const GetProjectEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4749,7 +4670,7 @@ export interface GetProjectInheritedSettingsRequest {
   /** The name of the project. */
   projectName: string;
 }
-export const GetProjectInheritedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectInheritedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4770,8 +4691,7 @@ export const GetProjectInheritedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectNetworkSettings {
   microsoftHostedNetworkEnableStatus?: MicrosoftHostedNetworkEnableStatus;
 }
-export const ProjectNetworkSettings =
-  DevCenterNetworkSettings as any as S.Schema<ProjectNetworkSettings>;
+const ProjectNetworkSettings = DevCenterNetworkSettings as any as S.Schema<ProjectNetworkSettings>;
 
 /** Applicable inherited settings for a project. */
 export interface InheritedSettingsForProject {
@@ -4780,7 +4700,7 @@ export interface InheritedSettingsForProject {
   /** Network settings that will be enforced on this project. */
   networkSettings?: ProjectNetworkSettings;
 }
-export const InheritedSettingsForProject = /*@__PURE__*/ S.suspend(() =>
+const InheritedSettingsForProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
     networkSettings: S.optional(ProjectNetworkSettings),
@@ -4799,7 +4719,7 @@ export interface GetProjectPolicyRequest {
   /** The name of the project policy. */
   projectPolicyName: string;
 }
-export const GetProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4817,11 +4737,11 @@ export const GetProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates what action to perform for the policy. */
 export type PolicyAction = "Allow" | "Deny";
-export const PolicyAction = S.String;
+const PolicyAction = S.String;
 
 /** Indicates dev center resource types. */
 export type DevCenterResourceType = "Images" | "AttachedNetworks" | "Skus";
-export const DevCenterResourceType = S.String;
+const DevCenterResourceType = S.String;
 
 /** A resource policy. */
 export interface ResourcePolicy {
@@ -4834,7 +4754,7 @@ export interface ResourcePolicy {
   /** Optional. The resource type being restricted or allowed by a project policy. Used with a given action to restrict or allow access to a resource type. */
   resourceType?: DevCenterResourceType | (string & {});
 }
-export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
+const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(S.String),
     filter: S.optional(S.String),
@@ -4845,13 +4765,13 @@ export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyPropertiesResourcePoliciesList = Array<ResourcePolicy>;
-export const ProjectPolicyPropertiesResourcePoliciesList = /*@__PURE__*/ S.Array(
+const ProjectPolicyPropertiesResourcePoliciesList = /*@__PURE__*/ S.Array(
   ResourcePolicy,
 ) as any as S.Schema<ProjectPolicyPropertiesResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyPropertiesScopesList = Array<string>;
-export const ProjectPolicyPropertiesScopesList =
+const ProjectPolicyPropertiesScopesList =
   PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyPropertiesScopesList>;
 
 /** Provisioning state of the resource. */
@@ -4872,7 +4792,7 @@ export type ProjectPolicyPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const ProjectPolicyPropertiesProvisioningState = S.String;
+const ProjectPolicyPropertiesProvisioningState = S.String;
 
 /** Properties of an project policy. */
 export interface ProjectPolicyProperties {
@@ -4883,7 +4803,7 @@ export interface ProjectPolicyProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProjectPolicyPropertiesProvisioningState;
 }
-export const ProjectPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ProjectPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePolicies: S.optional(ProjectPolicyPropertiesResourcePoliciesList),
     scopes: S.optional(ProjectPolicyPropertiesScopesList),
@@ -4903,7 +4823,7 @@ export interface GetProjectPolicyResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
-export const GetProjectPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4927,7 +4847,7 @@ export interface GetScheduleRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4947,19 +4867,19 @@ export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Tags>;
+const Tags = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Tags>;
 
 /** The supported types for a scheduled task. */
 export type ScheduledType = "StopDevBox";
-export const ScheduledType = S.String;
+const ScheduledType = S.String;
 
 /** The frequency of task execution. */
 export type ScheduledFrequency = "Daily";
-export const ScheduledFrequency = S.String;
+const ScheduledFrequency = S.String;
 
 /** Schedule enable or disable status. Indicates whether the schedule applied to is either enabled or disabled. */
 export type ScheduleEnableStatus = "Enabled" | "Disabled";
-export const ScheduleEnableStatus = S.String;
+const ScheduleEnableStatus = S.String;
 
 /** Provisioning state of the resource. */
 export type SchedulePropertiesProvisioningState =
@@ -4979,7 +4899,7 @@ export type SchedulePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
-export const SchedulePropertiesProvisioningState = S.String;
+const SchedulePropertiesProvisioningState = S.String;
 
 /** The Schedule properties defining when and what to execute. */
 export interface ScheduleProperties {
@@ -5000,7 +4920,7 @@ export interface ScheduleProperties {
   /** Provisioning state of the resource. */
   provisioningState?: SchedulePropertiesProvisioningState;
 }
-export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(Tags),
     location: S.optional(S.String),
@@ -5025,7 +4945,7 @@ export interface GetScheduleResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
-export const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5045,7 +4965,7 @@ export interface ListAttachedNetworkByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListAttachedNetworkByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttachedNetworkByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5076,12 +4996,12 @@ export interface AttachedNetworkConnection {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const AttachedNetworkConnection =
+const AttachedNetworkConnection =
   AttachedNetworksCreateOrUpdateResponse as any as S.Schema<AttachedNetworkConnection>;
 
 /** Current page of results. */
 export type AttachedNetworkListResultValueList = Array<AttachedNetworkConnection>;
-export const AttachedNetworkListResultValueList = /*@__PURE__*/ S.Array(
+const AttachedNetworkListResultValueList = /*@__PURE__*/ S.Array(
   AttachedNetworkConnection,
 ) as any as S.Schema<AttachedNetworkListResultValueList>;
 
@@ -5092,7 +5012,7 @@ export interface AttachedNetworkListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const AttachedNetworkListResult = /*@__PURE__*/ S.suspend(() =>
+const AttachedNetworkListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AttachedNetworkListResultValueList),
     nextLink: S.optional(S.String),
@@ -5111,7 +5031,7 @@ export interface ListAttachedNetworkByProjectRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListAttachedNetworkByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttachedNetworkByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5139,7 +5059,7 @@ export interface ListCatalogByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListCatalogByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCatalogByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5170,11 +5090,11 @@ export interface Catalog {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const Catalog = GetCatalogResponse as any as S.Schema<Catalog>;
+const Catalog = GetCatalogResponse as any as S.Schema<Catalog>;
 
 /** Current page of results. */
 export type CatalogListResultValueList = Array<Catalog>;
-export const CatalogListResultValueList = /*@__PURE__*/ S.Array(
+const CatalogListResultValueList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogListResultValueList>;
 
@@ -5185,7 +5105,7 @@ export interface CatalogListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const CatalogListResult = /*@__PURE__*/ S.suspend(() =>
+const CatalogListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CatalogListResultValueList),
     nextLink: S.optional(S.String),
@@ -5204,7 +5124,7 @@ export interface ListCustomizationTaskByCatalogRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListCustomizationTaskByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomizationTaskByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5236,7 +5156,7 @@ export interface CustomizationTask {
   /** Task properties */
   properties?: CustomizationTaskProperties;
 }
-export const CustomizationTask = /*@__PURE__*/ S.suspend(() =>
+const CustomizationTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5248,7 +5168,7 @@ export const CustomizationTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type CustomizationTaskListResultValueList = Array<CustomizationTask>;
-export const CustomizationTaskListResultValueList = /*@__PURE__*/ S.Array(
+const CustomizationTaskListResultValueList = /*@__PURE__*/ S.Array(
   CustomizationTask,
 ) as any as S.Schema<CustomizationTaskListResultValueList>;
 
@@ -5259,7 +5179,7 @@ export interface CustomizationTaskListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const CustomizationTaskListResult = /*@__PURE__*/ S.suspend(() =>
+const CustomizationTaskListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CustomizationTaskListResultValueList),
     nextLink: S.optional(S.String),
@@ -5278,7 +5198,7 @@ export interface ListDevBoxDefinitionByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListDevBoxDefinitionByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevBoxDefinitionByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5298,7 +5218,7 @@ export const ListDevBoxDefinitionByDevCenterRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type DevBoxDefinitionTagsMap = { [key: string]: string | undefined };
-export const DevBoxDefinitionTagsMap =
+const DevBoxDefinitionTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionTagsMap>;
 
 /** Represents a definition for a Developer Machine. */
@@ -5318,7 +5238,7 @@ export interface DevBoxDefinition {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const DevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5332,7 +5252,7 @@ export const DevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type DevBoxDefinitionListResultValueList = Array<DevBoxDefinition>;
-export const DevBoxDefinitionListResultValueList = /*@__PURE__*/ S.Array(
+const DevBoxDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   DevBoxDefinition,
 ) as any as S.Schema<DevBoxDefinitionListResultValueList>;
 
@@ -5343,7 +5263,7 @@ export interface DevBoxDefinitionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const DevBoxDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DevBoxDefinitionListResultValueList),
     nextLink: S.optional(S.String),
@@ -5362,7 +5282,7 @@ export interface ListDevBoxDefinitionByProjectRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListDevBoxDefinitionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevBoxDefinitionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5388,7 +5308,7 @@ export interface ListDevCenterByResourceGroupRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListDevCenterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevCenterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5407,12 +5327,8 @@ export const ListDevCenterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DevCenterTagsMap = { [key: string]: string | undefined };
-export const DevCenterTagsMap = CatalogPropertiesInputTagsMap as any as S.Schema<DevCenterTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type DevCenterIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const DevCenterIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 /** Represents a devcenter resource. */
 export interface DevCenter {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5432,11 +5348,11 @@ export interface DevCenter {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const DevCenter = GetDevCenterResponse as any as S.Schema<DevCenter>;
+const DevCenter = GetDevCenterResponse as any as S.Schema<DevCenter>;
 
 /** Current page of results. */
 export type DevCenterListResultValueList = Array<DevCenter>;
-export const DevCenterListResultValueList = /*@__PURE__*/ S.Array(
+const DevCenterListResultValueList = /*@__PURE__*/ S.Array(
   DevCenter,
 ) as any as S.Schema<DevCenterListResultValueList>;
 
@@ -5447,7 +5363,7 @@ export interface DevCenterListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const DevCenterListResult = /*@__PURE__*/ S.suspend(() =>
+const DevCenterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DevCenterListResultValueList),
     nextLink: S.optional(S.String),
@@ -5460,7 +5376,7 @@ export interface ListDevCenterBySubscriptionRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListDevCenterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevCenterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -5488,7 +5404,7 @@ export interface ListEnvironmentDefinitionByCatalogRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListEnvironmentDefinitionByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentDefinitionByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5520,7 +5436,7 @@ export interface EnvironmentDefinition {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
-export const EnvironmentDefinition = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5532,7 +5448,7 @@ export const EnvironmentDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type EnvironmentDefinitionListResultValueList = Array<EnvironmentDefinition>;
-export const EnvironmentDefinitionListResultValueList = /*@__PURE__*/ S.Array(
+const EnvironmentDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   EnvironmentDefinition,
 ) as any as S.Schema<EnvironmentDefinitionListResultValueList>;
 
@@ -5543,7 +5459,7 @@ export interface EnvironmentDefinitionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const EnvironmentDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EnvironmentDefinitionListResultValueList),
     nextLink: S.optional(S.String),
@@ -5562,7 +5478,7 @@ export interface ListEnvironmentDefinitionByProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const ListEnvironmentDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5590,7 +5506,7 @@ export interface ListEnvironmentTypeByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListEnvironmentTypeByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentTypeByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5610,7 +5526,7 @@ export const ListEnvironmentTypeByDevCenterRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type EnvironmentTypeTagsMap = { [key: string]: string | undefined };
-export const EnvironmentTypeTagsMap =
+const EnvironmentTypeTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypeTagsMap>;
 
 /** Represents an environment type. */
@@ -5628,7 +5544,7 @@ export interface EnvironmentType {
   /** Resource tags. */
   tags?: EnvironmentTypeTagsMap;
 }
-export const EnvironmentType = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5641,7 +5557,7 @@ export const EnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type EnvironmentTypeListResultValueList = Array<EnvironmentType>;
-export const EnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
+const EnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   EnvironmentType,
 ) as any as S.Schema<EnvironmentTypeListResultValueList>;
 
@@ -5652,7 +5568,7 @@ export interface EnvironmentTypeListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const EnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EnvironmentTypeListResultValueList),
     nextLink: S.optional(S.String),
@@ -5671,7 +5587,7 @@ export interface ListGalleryByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListGalleryByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGalleryByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5702,11 +5618,11 @@ export interface Gallery {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
-export const Gallery = GetGalleryResponse as any as S.Schema<Gallery>;
+const Gallery = GetGalleryResponse as any as S.Schema<Gallery>;
 
 /** Current page of results. */
 export type GalleryListResultValueList = Array<Gallery>;
-export const GalleryListResultValueList = /*@__PURE__*/ S.Array(
+const GalleryListResultValueList = /*@__PURE__*/ S.Array(
   Gallery,
 ) as any as S.Schema<GalleryListResultValueList>;
 
@@ -5717,7 +5633,7 @@ export interface GalleryListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const GalleryListResult = /*@__PURE__*/ S.suspend(() =>
+const GalleryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GalleryListResultValueList),
     nextLink: S.optional(S.String),
@@ -5734,7 +5650,7 @@ export interface ListImageByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListImageByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5765,11 +5681,11 @@ export interface Image {
   /** Image properties. */
   properties?: ImageProperties;
 }
-export const Image = GetImageResponse as any as S.Schema<Image>;
+const Image = GetImageResponse as any as S.Schema<Image>;
 
 /** Current page of results. */
 export type ImageListResultValueList = Array<Image>;
-export const ImageListResultValueList = /*@__PURE__*/ S.Array(
+const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
 
@@ -5780,7 +5696,7 @@ export interface ImageListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ImageListResult = /*@__PURE__*/ S.suspend(() =>
+const ImageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ImageListResultValueList),
     nextLink: S.optional(S.String),
@@ -5799,7 +5715,7 @@ export interface ListImageByGalleryRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListImageByGalleryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageByGalleryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5826,7 +5742,7 @@ export interface ListImageByProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
-export const ListImageByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5855,7 +5771,7 @@ export interface ListImageVersionByImageRequest {
   /** The name of the image. */
   imageName: string;
 }
-export const ListImageVersionByImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageVersionByImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5887,11 +5803,11 @@ export interface ImageVersion {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
-export const ImageVersion = GetImageVersionResponse as any as S.Schema<ImageVersion>;
+const ImageVersion = GetImageVersionResponse as any as S.Schema<ImageVersion>;
 
 /** Current page of results. */
 export type ImageVersionListResultValueList = Array<ImageVersion>;
-export const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
+const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionListResultValueList>;
 
@@ -5902,7 +5818,7 @@ export interface ImageVersionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ImageVersionListResult = /*@__PURE__*/ S.suspend(() =>
+const ImageVersionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ImageVersionListResultValueList),
     nextLink: S.optional(S.String),
@@ -5919,7 +5835,7 @@ export interface ListImageVersionByProjectRequest {
   /** The name of the image. */
   imageName: string;
 }
-export const ListImageVersionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageVersionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5945,7 +5861,7 @@ export interface ListNetworkConnectionByResourceGroupRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListNetworkConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5964,7 +5880,7 @@ export const ListNetworkConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type NetworkConnectionTagsMap = { [key: string]: string | undefined };
-export const NetworkConnectionTagsMap =
+const NetworkConnectionTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionTagsMap>;
 
 /** Network related settings */
@@ -5984,7 +5900,7 @@ export interface NetworkConnection {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
-export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
+const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5998,7 +5914,7 @@ export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type NetworkConnectionListResultValueList = Array<NetworkConnection>;
-export const NetworkConnectionListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkConnectionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkConnection,
 ) as any as S.Schema<NetworkConnectionListResultValueList>;
 
@@ -6009,7 +5925,7 @@ export interface NetworkConnectionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const NetworkConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -6024,7 +5940,7 @@ export interface ListNetworkConnectionBySubscriptionRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListNetworkConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -6050,7 +5966,7 @@ export interface ListNetworkConnectionHealthDetailsRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListNetworkConnectionHealthDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkConnectionHealthDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6081,7 +5997,7 @@ export interface HealthCheckStatusDetails {
   /** Health check status details properties. */
   properties?: HealthCheckStatusDetailsProperties;
 }
-export const HealthCheckStatusDetails = /*@__PURE__*/ S.suspend(() =>
+const HealthCheckStatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6093,7 +6009,7 @@ export const HealthCheckStatusDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type HealthCheckStatusDetailsListResultValueList = Array<HealthCheckStatusDetails>;
-export const HealthCheckStatusDetailsListResultValueList = /*@__PURE__*/ S.Array(
+const HealthCheckStatusDetailsListResultValueList = /*@__PURE__*/ S.Array(
   HealthCheckStatusDetails,
 ) as any as S.Schema<HealthCheckStatusDetailsListResultValueList>;
 
@@ -6104,7 +6020,7 @@ export interface HealthCheckStatusDetailsListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const HealthCheckStatusDetailsListResult = /*@__PURE__*/ S.suspend(() =>
+const HealthCheckStatusDetailsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(HealthCheckStatusDetailsListResultValueList),
     nextLink: S.optional(S.String),
@@ -6123,8 +6039,8 @@ export interface ListNetworkConnectionOutboundNetworkDependenciesEndpointsReques
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -6138,16 +6054,16 @@ export const ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest =
         apiVersion: "2025-02-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest",
-  }) as any as S.Schema<ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest>;
+).annotate({
+  identifier: "ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest",
+}) as any as S.Schema<ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest>;
 
 /** Details about the connection between the Batch service and the endpoint. */
 export interface EndpointDetail {
   /** The port an endpoint is connected to. */
   port?: number;
 }
-export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
+const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
   }),
@@ -6155,7 +6071,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of connection details for this endpoint. */
 export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
-export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
+const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
 
@@ -6168,7 +6084,7 @@ export interface EndpointDependency {
   /** The list of connection details for this endpoint. */
   endpointDetails?: EndpointDependencyEndpointDetailsList;
 }
-export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
+const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     description: S.optional(S.String),
@@ -6178,7 +6094,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints for this service for which the agent requires outbound access. */
 export type OutboundEnvironmentEndpointEndpointsList = Array<EndpointDependency>;
-export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
+const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
 
@@ -6189,7 +6105,7 @@ export interface OutboundEnvironmentEndpoint {
   /** The endpoints for this service for which the agent requires outbound access. */
   endpoints?: OutboundEnvironmentEndpointEndpointsList;
 }
-export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
+const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     endpoints: S.optional(OutboundEnvironmentEndpointEndpointsList),
@@ -6200,7 +6116,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of outbound network dependency endpoints returned by the listing operation. */
 export type OutboundEnvironmentEndpointCollectionValueList = Array<OutboundEnvironmentEndpoint>;
-export const OutboundEnvironmentEndpointCollectionValueList = /*@__PURE__*/ S.Array(
+const OutboundEnvironmentEndpointCollectionValueList = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<OutboundEnvironmentEndpointCollectionValueList>;
 
@@ -6211,7 +6127,7 @@ export interface OutboundEnvironmentEndpointCollection {
   /** The continuation token. */
   nextLink?: string;
 }
-export const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ S.suspend(() =>
+const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OutboundEnvironmentEndpointCollectionValueList),
     nextLink: S.optional(S.String),
@@ -6221,7 +6137,7 @@ export const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<OutboundEnvironmentEndpointCollection>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -6243,7 +6159,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -6254,11 +6170,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -6273,7 +6189,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -6285,7 +6201,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -6295,7 +6211,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -6312,7 +6228,7 @@ export interface ListPoolByProjectRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListPoolByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoolByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6330,8 +6246,6 @@ export const ListPoolByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolTagsMap = { [key: string]: string | undefined };
-export const PoolTagsMap = CatalogPropertiesInputTagsMap as any as S.Schema<PoolTagsMap>;
-
 /** A pool of Virtual Machines. */
 export interface Pool {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6349,11 +6263,11 @@ export interface Pool {
   /** Pool properties */
   properties?: PoolProperties;
 }
-export const Pool = GetPoolResponse as any as S.Schema<Pool>;
+const Pool = GetPoolResponse as any as S.Schema<Pool>;
 
 /** Current page of results. */
 export type PoolListResultValueList = Array<Pool>;
-export const PoolListResultValueList = /*@__PURE__*/ S.Array(
+const PoolListResultValueList = /*@__PURE__*/ S.Array(
   Pool,
 ) as any as S.Schema<PoolListResultValueList>;
 
@@ -6364,7 +6278,7 @@ export interface PoolListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const PoolListResult = /*@__PURE__*/ S.suspend(() =>
+const PoolListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PoolListResultValueList),
     nextLink: S.optional(S.String),
@@ -6381,7 +6295,7 @@ export interface ListProjectAllowedEnvironmentTypesRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectAllowedEnvironmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectAllowedEnvironmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6412,7 +6326,7 @@ export interface AllowedEnvironmentType {
   /** Properties of an allowed environment type. */
   properties?: AllowedEnvironmentTypeProperties;
 }
-export const AllowedEnvironmentType = /*@__PURE__*/ S.suspend(() =>
+const AllowedEnvironmentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6424,7 +6338,7 @@ export const AllowedEnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type AllowedEnvironmentTypeListResultValueList = Array<AllowedEnvironmentType>;
-export const AllowedEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
+const AllowedEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   AllowedEnvironmentType,
 ) as any as S.Schema<AllowedEnvironmentTypeListResultValueList>;
 
@@ -6435,7 +6349,7 @@ export interface AllowedEnvironmentTypeListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const AllowedEnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
+const AllowedEnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AllowedEnvironmentTypeListResultValueList),
     nextLink: S.optional(S.String),
@@ -6452,7 +6366,7 @@ export interface ListProjectByResourceGroupRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6471,12 +6385,8 @@ export const ListProjectByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
-export const ProjectTagsMap = CatalogPropertiesInputTagsMap as any as S.Schema<ProjectTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const ProjectIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 /** Represents a project resource. */
 export interface Project {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6496,11 +6406,11 @@ export interface Project {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const Project = GetProjectResponse as any as S.Schema<Project>;
+const Project = GetProjectResponse as any as S.Schema<Project>;
 
 /** Current page of results. */
 export type ProjectListResultValueList = Array<Project>;
-export const ProjectListResultValueList = /*@__PURE__*/ S.Array(
+const ProjectListResultValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListResultValueList>;
 
@@ -6511,7 +6421,7 @@ export interface ProjectListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ProjectListResult = /*@__PURE__*/ S.suspend(() =>
+const ProjectListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProjectListResultValueList),
     nextLink: S.optional(S.String),
@@ -6524,7 +6434,7 @@ export interface ListProjectBySubscriptionRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -6552,25 +6462,24 @@ export interface ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest 
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
-export const ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      catalogName: S.String.pipe(T.Label()),
-      imageDefinitionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds",
-        code: 200,
-        apiVersion: "2025-02-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest",
-  }) as any as S.Schema<ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest>;
+const ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    imageDefinitionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds",
+      code: 200,
+      apiVersion: "2025-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest",
+}) as any as S.Schema<ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest>;
 
 /** Represents a specific build of an Image Definition. */
 export interface ImageDefinitionBuild {
@@ -6585,7 +6494,7 @@ export interface ImageDefinitionBuild {
   /** Image Definition Build properties */
   properties?: ImageDefinitionBuildProperties;
 }
-export const ImageDefinitionBuild = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6597,7 +6506,7 @@ export const ImageDefinitionBuild = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ImageDefinitionBuildListResultValueList = Array<ImageDefinitionBuild>;
-export const ImageDefinitionBuildListResultValueList = /*@__PURE__*/ S.Array(
+const ImageDefinitionBuildListResultValueList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuild,
 ) as any as S.Schema<ImageDefinitionBuildListResultValueList>;
 
@@ -6608,7 +6517,7 @@ export interface ImageDefinitionBuildListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ImageDefinitionBuildListResult = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionBuildListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ImageDefinitionBuildListResultValueList),
     nextLink: S.optional(S.String),
@@ -6629,22 +6538,21 @@ export interface ListProjectCatalogImageDefinitionByProjectCatalogRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      catalogName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions",
-        code: 200,
-        apiVersion: "2025-02-01",
-      }),
-    ),
+const ListProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions",
+      code: 200,
+      apiVersion: "2025-02-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectCatalogImageDefinitionByProjectCatalogRequest",
 }) as any as S.Schema<ListProjectCatalogImageDefinitionByProjectCatalogRequest>;
@@ -6662,7 +6570,7 @@ export interface ImageDefinition {
   /** Image Definition properties */
   properties?: ImageDefinitionProperties;
 }
-export const ImageDefinition = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6674,7 +6582,7 @@ export const ImageDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ImageDefinitionListResultValueList = Array<ImageDefinition>;
-export const ImageDefinitionListResultValueList = /*@__PURE__*/ S.Array(
+const ImageDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ImageDefinition,
 ) as any as S.Schema<ImageDefinitionListResultValueList>;
 
@@ -6685,7 +6593,7 @@ export interface ImageDefinitionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ImageDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
+const ImageDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ImageDefinitionListResultValueList),
     nextLink: S.optional(S.String),
@@ -6704,7 +6612,7 @@ export interface ListProjectCatalogsRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6732,7 +6640,7 @@ export interface ListProjectEnvironmentTypesRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectEnvironmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectEnvironmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6752,13 +6660,11 @@ export const ListProjectEnvironmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectEnvironmentTypeTagsMap = { [key: string]: string | undefined };
-export const ProjectEnvironmentTypeTagsMap =
+const ProjectEnvironmentTypeTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypeTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypeIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const ProjectEnvironmentTypeIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 /** Represents an environment type. */
 export interface ProjectEnvironmentType {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6778,7 +6684,7 @@ export interface ProjectEnvironmentType {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const ProjectEnvironmentType = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6793,7 +6699,7 @@ export const ProjectEnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ProjectEnvironmentTypeListResultValueList = Array<ProjectEnvironmentType>;
-export const ProjectEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
+const ProjectEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   ProjectEnvironmentType,
 ) as any as S.Schema<ProjectEnvironmentTypeListResultValueList>;
 
@@ -6804,7 +6710,7 @@ export interface ProjectEnvironmentTypeListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ProjectEnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProjectEnvironmentTypeListResultValueList),
     nextLink: S.optional(S.String),
@@ -6823,7 +6729,7 @@ export interface ListProjectPolicyByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListProjectPolicyByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectPolicyByDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6854,11 +6760,11 @@ export interface ProjectPolicy {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
-export const ProjectPolicy = GetProjectPolicyResponse as any as S.Schema<ProjectPolicy>;
+const ProjectPolicy = GetProjectPolicyResponse as any as S.Schema<ProjectPolicy>;
 
 /** Current page of results. */
 export type ProjectPolicyListResultValueList = Array<ProjectPolicy>;
-export const ProjectPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const ProjectPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ProjectPolicy,
 ) as any as S.Schema<ProjectPolicyListResultValueList>;
 
@@ -6869,7 +6775,7 @@ export interface ProjectPolicyListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ProjectPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const ProjectPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProjectPolicyListResultValueList),
     nextLink: S.optional(S.String),
@@ -6888,7 +6794,7 @@ export interface ListScheduleByPoolRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListScheduleByPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduleByPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6920,11 +6826,11 @@ export interface Schedule {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
-export const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
+const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
 
 /** Current page of results. */
 export type ScheduleListResultValueList = Array<Schedule>;
-export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
+const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleListResultValueList>;
 
@@ -6935,7 +6841,7 @@ export interface ScheduleListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
+const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ScheduleListResultValueList),
     nextLink: S.optional(S.String),
@@ -6950,7 +6856,7 @@ export interface ListSkusByProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
-export const ListSkusByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6967,7 +6873,7 @@ export const ListSkusByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** SKU supported locations. */
 export type ListSkusByProjectResponseValueItemLocationsList = Array<string>;
-export const ListSkusByProjectResponseValueItemLocationsList =
+const ListSkusByProjectResponseValueItemLocationsList =
   PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ListSkusByProjectResponseValueItemLocationsList>;
 
 /** A name/value pair to describe a capability. */
@@ -6977,7 +6883,7 @@ export interface Capability {
   /** Value of the capability. */
   value?: string;
 }
-export const Capability = /*@__PURE__*/ S.suspend(() =>
+const Capability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -6986,7 +6892,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
 export type ListSkusByProjectResponseValueItemCapabilitiesList = Array<Capability>;
-export const ListSkusByProjectResponseValueItemCapabilitiesList = /*@__PURE__*/ S.Array(
+const ListSkusByProjectResponseValueItemCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<ListSkusByProjectResponseValueItemCapabilitiesList>;
 
@@ -7008,7 +6914,7 @@ export interface ListSkusByProjectResponseValueItem {
   /** Collection of name/value pairs to describe the SKU capabilities. */
   capabilities?: ListSkusByProjectResponseValueItemCapabilitiesList;
 }
-export const ListSkusByProjectResponseValueItem = /*@__PURE__*/ S.suspend(() =>
+const ListSkusByProjectResponseValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(SkuTier),
@@ -7025,7 +6931,7 @@ export const ListSkusByProjectResponseValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ListSkusByProjectResponseValueList = Array<ListSkusByProjectResponseValueItem>;
-export const ListSkusByProjectResponseValueList = /*@__PURE__*/ S.Array(
+const ListSkusByProjectResponseValueList = /*@__PURE__*/ S.Array(
   ListSkusByProjectResponseValueItem,
 ) as any as S.Schema<ListSkusByProjectResponseValueList>;
 
@@ -7035,7 +6941,7 @@ export interface ListSkusByProjectResponse {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const ListSkusByProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSkusByProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListSkusByProjectResponseValueList),
     nextLink: S.optional(S.String),
@@ -7050,7 +6956,7 @@ export interface ListSkusBySubscriptionRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export const ListSkusBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -7068,12 +6974,12 @@ export const ListSkusBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** SKU supported locations. */
 export type SkuListResultValueItemLocationsList = Array<string>;
-export const SkuListResultValueItemLocationsList =
+const SkuListResultValueItemLocationsList =
   PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<SkuListResultValueItemLocationsList>;
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
 export type SkuListResultValueItemCapabilitiesList = Array<Capability>;
-export const SkuListResultValueItemCapabilitiesList =
+const SkuListResultValueItemCapabilitiesList =
   ListSkusByProjectResponseValueItemCapabilitiesList as any as S.Schema<SkuListResultValueItemCapabilitiesList>;
 
 /** The resource model definition representing SKU for DevCenter resources */
@@ -7094,7 +7000,7 @@ export interface SkuListResultValueItem {
   /** Collection of name/value pairs to describe the SKU capabilities. */
   capabilities?: SkuListResultValueItemCapabilitiesList;
 }
-export const SkuListResultValueItem = /*@__PURE__*/ S.suspend(() =>
+const SkuListResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(SkuTier),
@@ -7109,7 +7015,7 @@ export const SkuListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type SkuListResultValueList = Array<SkuListResultValueItem>;
-export const SkuListResultValueList = /*@__PURE__*/ S.Array(
+const SkuListResultValueList = /*@__PURE__*/ S.Array(
   SkuListResultValueItem,
 ) as any as S.Schema<SkuListResultValueList>;
 
@@ -7120,7 +7026,7 @@ export interface SkuListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
-export const SkuListResult = /*@__PURE__*/ S.suspend(() =>
+const SkuListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SkuListResultValueList),
     nextLink: S.optional(S.String),
@@ -7133,7 +7039,7 @@ export interface ListUsageByLocationRequest {
   /** The Azure region */
   location: string;
 }
-export const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -7151,7 +7057,7 @@ export const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The unit details. */
 export type UsageUnit = "Count";
-export const UsageUnit = S.String;
+const UsageUnit = S.String;
 
 /** The Usage Names. */
 export interface UsageName {
@@ -7160,7 +7066,7 @@ export interface UsageName {
   /** The name of the resource. */
   value?: string;
 }
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
+const UsageName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localizedValue: S.optional(S.String),
     value: S.optional(S.String),
@@ -7180,7 +7086,7 @@ export interface Usage {
   /** The fully qualified arm resource id. */
   id?: string;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentValue: S.optional(S.Number),
     limit: S.optional(S.Number),
@@ -7192,7 +7098,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of Usages. */
 export type ListUsagesResultValueList = Array<Usage>;
-export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
+const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;
 
@@ -7203,7 +7109,7 @@ export interface ListUsagesResult {
   /** The link to get the next page of Usage result. */
   nextLink?: string;
 }
-export const ListUsagesResult = /*@__PURE__*/ S.suspend(() =>
+const ListUsagesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListUsagesResultValueList),
     nextLink: S.optional(S.String),
@@ -7212,7 +7118,7 @@ export const ListUsagesResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NetworkConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NetworkConnectionsCreateOrUpdateRequestTagsMap =
+const NetworkConnectionsCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
 
 /** Health check status values */
@@ -7224,11 +7130,11 @@ export type NetworkPropertiesInputHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const NetworkPropertiesInputHealthCheckStatus = S.String;
+const NetworkPropertiesInputHealthCheckStatus = S.String;
 
 /** Active Directory join type */
 export type NetworkPropertiesInputDomainJoinType = "HybridAzureADJoin" | "AzureADJoin" | "None";
-export const NetworkPropertiesInputDomainJoinType = S.String;
+const NetworkPropertiesInputDomainJoinType = S.String;
 
 /** Network properties */
 export interface NetworkPropertiesInput {
@@ -7249,7 +7155,7 @@ export interface NetworkPropertiesInput {
   /** Active Directory join type */
   domainJoinType: NetworkPropertiesInputDomainJoinType | (string & {});
 }
-export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.String,
     domainName: S.optional(S.String),
@@ -7276,7 +7182,7 @@ export interface NetworkConnectionsCreateOrUpdateRequest {
   /** Properties of a Network Connection */
   properties?: NetworkPropertiesInput;
 }
-export const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7298,9 +7204,6 @@ export const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type NetworkConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NetworkConnectionsCreateOrUpdateResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionsCreateOrUpdateResponseTagsMap>;
-
 export interface NetworkConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7317,16 +7220,16 @@ export interface NetworkConnectionsCreateOrUpdateResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
-export const NetworkConnectionsCreateOrUpdateResponse =
+const NetworkConnectionsCreateOrUpdateResponse =
   GetNetworkConnectionResponse as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>;
 
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogUpdatePropertiesSyncType = "Manual" | "Scheduled";
-export const CatalogUpdatePropertiesSyncType = S.String;
+const CatalogUpdatePropertiesSyncType = S.String;
 
 /** Resource tags. */
 export type CatalogUpdatePropertiesTagsMap = { [key: string]: string | undefined };
-export const CatalogUpdatePropertiesTagsMap =
+const CatalogUpdatePropertiesTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<CatalogUpdatePropertiesTagsMap>;
 
 /** Properties of a catalog. These properties can be updated after the resource has been created. */
@@ -7340,7 +7243,7 @@ export interface CatalogUpdateProperties {
   /** Resource tags. */
   tags?: CatalogUpdatePropertiesTagsMap;
 }
-export const CatalogUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CatalogUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitHub: S.optional(GitCatalog),
     adoGit: S.optional(GitCatalog),
@@ -7361,7 +7264,7 @@ export interface PatchProjectCatalogRequest {
   /** Catalog properties for update. */
   properties?: CatalogUpdateProperties;
 }
-export const PatchProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7392,29 +7295,21 @@ export interface PatchProjectCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const PatchProjectCatalogResponse =
+const PatchProjectCatalogResponse =
   CatalogsCreateOrUpdateResponse as any as S.Schema<PatchProjectCatalogResponse>;
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateRequestTagsMap =
+const PoolsCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
 
 /** Image reference information */
 export type PoolDevBoxDefinitionInputImageReference = DevBoxDefinitionPropertiesInputImageReference;
-export const PoolDevBoxDefinitionInputImageReference =
-  DevBoxDefinitionPropertiesInputImageReference;
-
 /** The resource model definition representing SKU */
 export type PoolDevBoxDefinitionInputSku = DevBoxDefinitionPropertiesInputSku;
-export const PoolDevBoxDefinitionInputSku = DevBoxDefinitionPropertiesInputSku;
-
 /** Image reference information */
 export type PoolDevBoxDefinitionInputActiveImageReference =
   DevBoxDefinitionPropertiesInputImageReference;
-export const PoolDevBoxDefinitionInputActiveImageReference =
-  DevBoxDefinitionPropertiesInputImageReference;
-
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinitionInput {
   /** Image reference information */
@@ -7424,7 +7319,7 @@ export interface PoolDevBoxDefinitionInput {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesInputImageReference;
 }
-export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
     sku: S.optional(DevBoxDefinitionPropertiesInputSku),
@@ -7436,7 +7331,7 @@ export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolPropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
-export const PoolPropertiesInputManagedVirtualNetworkRegionsList =
+const PoolPropertiesInputManagedVirtualNetworkRegionsList =
   PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<PoolPropertiesInputManagedVirtualNetworkRegionsList>;
 
 /** Properties of a Pool */
@@ -7466,7 +7361,7 @@ export interface PoolPropertiesInput {
   /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
   managedVirtualNetworkRegions?: PoolPropertiesInputManagedVirtualNetworkRegionsList;
 }
-export const PoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
     devBoxDefinitionName: S.String,
@@ -7499,7 +7394,7 @@ export interface PoolsCreateOrUpdateRequest {
   /** Pool properties */
   properties?: PoolPropertiesInput;
 }
-export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7522,7 +7417,7 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateResponseTagsMap =
+const PoolsCreateOrUpdateResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 export interface PoolsCreateOrUpdateResponse {
@@ -7541,7 +7436,7 @@ export interface PoolsCreateOrUpdateResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
-export const PoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7567,7 +7462,7 @@ export interface ProjectCatalogImageDefinitionsBuildImageRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
-export const ProjectCatalogImageDefinitionsBuildImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectCatalogImageDefinitionsBuildImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7587,7 +7482,7 @@ export const ProjectCatalogImageDefinitionsBuildImageRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageRequest>;
 
 export interface ProjectCatalogImageDefinitionsBuildImageResponse {}
-export const ProjectCatalogImageDefinitionsBuildImageResponse =
+const ProjectCatalogImageDefinitionsBuildImageResponse =
   CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageResponse>;
 
 export interface ProjectCatalogsCreateOrUpdateRequest {
@@ -7602,7 +7497,7 @@ export interface ProjectCatalogsCreateOrUpdateRequest {
   /** Catalog properties. */
   properties?: CatalogPropertiesInput;
 }
-export const ProjectCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7633,33 +7528,29 @@ export interface ProjectCatalogsCreateOrUpdateResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const ProjectCatalogsCreateOrUpdateResponse =
+const ProjectCatalogsCreateOrUpdateResponse =
   CatalogsCreateOrUpdateResponse as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>;
 
 /** A role that can be assigned to a user. */
 export type EnvironmentRoleInput = UserAssignedIdentityInput;
-export const EnvironmentRoleInput = UserAssignedIdentityInput;
-
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap>;
+const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap>;
 
 /** The role definition assigned to the environment creator on backing resources. */
 export interface ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment {
   /** A map of roles to assign to the environment creator. */
   roles?: ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap;
 }
-export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      roles: S.optional(ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap),
-    }),
+const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roles: S.optional(ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap),
+  }),
 ).annotate({
   identifier: "ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment",
 }) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment>;
@@ -7668,7 +7559,7 @@ export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment = /*@__P
 export type UserRoleAssignmentInputRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const UserRoleAssignmentInputRolesMap =
+const UserRoleAssignmentInputRolesMap =
   UserAssignedIdentitiesInput as any as S.Schema<UserRoleAssignmentInputRolesMap>;
 
 /** Mapping of user object ID to role assignments. */
@@ -7676,7 +7567,7 @@ export interface UserRoleAssignmentInput {
   /** A map of roles to assign to the parent user. */
   roles?: UserRoleAssignmentInputRolesMap;
 }
-export const UserRoleAssignmentInput = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(UserRoleAssignmentInputRolesMap),
   }),
@@ -7686,7 +7577,7 @@ export const UserRoleAssignmentInput = /*@__PURE__*/ S.suspend(() =>
 export type ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap = {
   [key: string]: UserRoleAssignmentInput | undefined;
 };
-export const ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap = /*@__PURE__*/ S.Record(
+const ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   UserRoleAssignmentInput,
 ) as any as S.Schema<ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap>;
@@ -7704,7 +7595,7 @@ export interface ProjectEnvironmentTypePropertiesInput {
   /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
   userRoleAssignments?: ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap;
 }
-export const ProjectEnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentTargetId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -7720,15 +7611,12 @@ export const ProjectEnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() 
 export type ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
+const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
   DevCentersCreateOrUpdateRequestIdentity;
-export const ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
-  DevCentersCreateOrUpdateRequestIdentity;
-
 export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7747,7 +7635,7 @@ export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const ProjectEnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7773,15 +7661,9 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypesCreateOrUpdateResponseIdentity =
   DevCentersCreateOrUpdateResponseIdentity;
-export const ProjectEnvironmentTypesCreateOrUpdateResponseIdentity =
-  DevCentersCreateOrUpdateResponseIdentity;
-
 export interface ProjectEnvironmentTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7800,17 +7682,17 @@ export interface ProjectEnvironmentTypesCreateOrUpdateResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const ProjectEnvironmentTypesCreateOrUpdateResponse =
+const ProjectEnvironmentTypesCreateOrUpdateResponse =
   GetProjectEnvironmentTypeResponse as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>;
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputResourcePoliciesList = Array<ResourcePolicy>;
-export const ProjectPolicyPropertiesInputResourcePoliciesList =
+const ProjectPolicyPropertiesInputResourcePoliciesList =
   ProjectPolicyPropertiesResourcePoliciesList as any as S.Schema<ProjectPolicyPropertiesInputResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputScopesList = Array<string>;
-export const ProjectPolicyPropertiesInputScopesList =
+const ProjectPolicyPropertiesInputScopesList =
   PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyPropertiesInputScopesList>;
 
 /** Properties of an project policy. */
@@ -7820,7 +7702,7 @@ export interface ProjectPolicyPropertiesInput {
   /** Resources that have access to the shared resources that are a part of this project policy. */
   scopes?: ProjectPolicyPropertiesInputScopesList;
 }
-export const ProjectPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePolicies: S.optional(ProjectPolicyPropertiesInputResourcePoliciesList),
     scopes: S.optional(ProjectPolicyPropertiesInputScopesList),
@@ -7841,7 +7723,7 @@ export interface ProjectPoliciesCreateOrUpdateRequest {
   /** Properties of an project policy. */
   properties?: ProjectPolicyPropertiesInput;
 }
-export const ProjectPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7872,7 +7754,7 @@ export interface ProjectPoliciesCreateOrUpdateResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
-export const ProjectPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7886,7 +7768,7 @@ export const ProjectPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ProjectsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ProjectsCreateOrUpdateRequestTagsMap =
+const ProjectsCreateOrUpdateRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of a project. */
@@ -7902,7 +7784,7 @@ export interface ProjectPropertiesInput {
   /** Settings to be used when associating a project with a catalog. */
   catalogSettings?: ProjectCatalogSettings;
 }
-export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devCenterId: S.optional(S.String),
     description: S.optional(S.String),
@@ -7914,8 +7796,6 @@ export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectsCreateOrUpdateRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-export const ProjectsCreateOrUpdateRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-
 export interface ProjectsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7932,7 +7812,7 @@ export interface ProjectsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
-export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7955,13 +7835,11 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ProjectsCreateOrUpdateResponseTagsMap =
+const ProjectsCreateOrUpdateResponseTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectsCreateOrUpdateResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const ProjectsCreateOrUpdateResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 export interface ProjectsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7980,7 +7858,7 @@ export interface ProjectsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8003,7 +7881,7 @@ export interface RunNetworkConnectionHealthChecksRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
-export const RunNetworkConnectionHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const RunNetworkConnectionHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8021,7 +7899,7 @@ export const RunNetworkConnectionHealthChecksRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RunNetworkConnectionHealthChecksRequest>;
 
 export interface RunNetworkConnectionHealthChecksResponse {}
-export const RunNetworkConnectionHealthChecksResponse =
+const RunNetworkConnectionHealthChecksResponse =
   CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<RunNetworkConnectionHealthChecksResponse>;
 
 export interface RunPoolHealthChecksRequest {
@@ -8034,7 +7912,7 @@ export interface RunPoolHealthChecksRequest {
   /** Name of the pool. */
   poolName: string;
 }
-export const RunPoolHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const RunPoolHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8053,7 +7931,7 @@ export const RunPoolHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunPoolHealthChecksRequest>;
 
 export interface RunPoolHealthChecksResponse {}
-export const RunPoolHealthChecksResponse =
+const RunPoolHealthChecksResponse =
   ConnectCatalogResponse as any as S.Schema<RunPoolHealthChecksResponse>;
 
 /** The Schedule properties defining when and what to execute. */
@@ -8073,7 +7951,7 @@ export interface SchedulePropertiesInput {
   /** Indicates whether or not this scheduled task is enabled. */
   state?: ScheduleEnableStatus | (string & {});
 }
-export const SchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(Tags),
     location: S.optional(S.String),
@@ -8101,7 +7979,7 @@ export interface SchedulesCreateOrUpdateRequest {
   /** Properties of a Schedule resource */
   properties?: SchedulePropertiesInput;
 }
-export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8134,7 +8012,7 @@ export interface SchedulesCreateOrUpdateResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
-export const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8156,7 +8034,7 @@ export interface SyncCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const SyncCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8173,7 +8051,7 @@ export const SyncCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncCatalogRequest" }) as any as S.Schema<SyncCatalogRequest>;
 
 export interface SyncCatalogResponse {}
-export const SyncCatalogResponse = ConnectCatalogResponse as any as S.Schema<SyncCatalogResponse>;
+const SyncCatalogResponse = ConnectCatalogResponse as any as S.Schema<SyncCatalogResponse>;
 
 export interface SyncProjectCatalogRequest {
   /** The ID of the target subscription. */
@@ -8185,7 +8063,7 @@ export interface SyncProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export const SyncProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8204,7 +8082,7 @@ export const SyncProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncProjectCatalogRequest>;
 
 export interface SyncProjectCatalogResponse {}
-export const SyncProjectCatalogResponse =
+const SyncProjectCatalogResponse =
   ConnectCatalogResponse as any as S.Schema<SyncProjectCatalogResponse>;
 
 export interface UpdateCatalogRequest {
@@ -8219,7 +8097,7 @@ export interface UpdateCatalogRequest {
   /** Catalog properties for update. */
   properties?: CatalogUpdateProperties;
 }
-export const UpdateCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8248,18 +8126,13 @@ export interface UpdateCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const UpdateCatalogResponse = GetCatalogResponse as any as S.Schema<UpdateCatalogResponse>;
+const UpdateCatalogResponse = GetCatalogResponse as any as S.Schema<UpdateCatalogResponse>;
 
 /** Image reference information */
 export type DevBoxDefinitionUpdatePropertiesInputImageReference =
   DevBoxDefinitionPropertiesInputImageReference;
-export const DevBoxDefinitionUpdatePropertiesInputImageReference =
-  DevBoxDefinitionPropertiesInputImageReference;
-
 /** The resource model definition representing SKU */
 export type DevBoxDefinitionUpdatePropertiesInputSku = DevBoxDefinitionPropertiesInputSku;
-export const DevBoxDefinitionUpdatePropertiesInputSku = DevBoxDefinitionPropertiesInputSku;
-
 /** Properties of a Dev Box definition. These properties can be updated after the resource has been created. */
 export interface DevBoxDefinitionUpdatePropertiesInput {
   /** Image reference information */
@@ -8271,7 +8144,7 @@ export interface DevBoxDefinitionUpdatePropertiesInput {
   /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
   hibernateSupport?: HibernateSupport | (string & {});
 }
-export const DevBoxDefinitionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DevBoxDefinitionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
     sku: S.optional(DevBoxDefinitionPropertiesInputSku),
@@ -8298,7 +8171,7 @@ export interface UpdateDevBoxDefinitionRequest {
   /** Properties of a Dev Box definition to be updated. */
   properties?: DevBoxDefinitionUpdatePropertiesInput;
 }
-export const UpdateDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8321,9 +8194,6 @@ export const UpdateDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDevBoxDefinitionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDevBoxDefinitionResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateDevBoxDefinitionResponseTagsMap>;
-
 export interface UpdateDevBoxDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8340,17 +8210,13 @@ export interface UpdateDevBoxDefinitionResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const UpdateDevBoxDefinitionResponse =
+const UpdateDevBoxDefinitionResponse =
   DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<UpdateDevBoxDefinitionResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDevCenterRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-export const UpdateDevCenterRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-
 /** Properties of the devcenter. These properties can be updated after the resource has been created. */
 export type DevCenterUpdateProperties = DevCenterPropertiesInput;
-export const DevCenterUpdateProperties = DevCenterPropertiesInput;
-
 export interface UpdateDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8367,7 +8233,7 @@ export interface UpdateDevCenterRequest {
   /** Properties of a Dev Center to be updated. */
   properties?: DevCenterPropertiesInput;
 }
-export const UpdateDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8388,13 +8254,8 @@ export const UpdateDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDevCenterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDevCenterResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateDevCenterResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const UpdateDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 export interface UpdateDevCenterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8413,16 +8274,13 @@ export interface UpdateDevCenterResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const UpdateDevCenterResponse =
-  GetDevCenterResponse as any as S.Schema<UpdateDevCenterResponse>;
+const UpdateDevCenterResponse = GetDevCenterResponse as any as S.Schema<UpdateDevCenterResponse>;
 
 /** Properties of an environment type. These properties can be updated after the resource has been created. */
 export type EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
-export const EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
-
 /** Resource tags. */
 export type UpdateEnvironmentTypeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentTypeRequestTagsMap =
+const UpdateEnvironmentTypeRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<UpdateEnvironmentTypeRequestTagsMap>;
 
 export interface UpdateEnvironmentTypeRequest {
@@ -8439,7 +8297,7 @@ export interface UpdateEnvironmentTypeRequest {
   /** Resource tags. */
   tags?: UpdateEnvironmentTypeRequestTagsMap;
 }
-export const UpdateEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8461,9 +8319,6 @@ export const UpdateEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentTypeResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateEnvironmentTypeResponseTagsMap>;
-
 export interface UpdateEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8478,7 +8333,7 @@ export interface UpdateEnvironmentTypeResponse {
   /** Resource tags. */
   tags?: UpdateEnvironmentTypeResponseTagsMap;
 }
-export const UpdateEnvironmentTypeResponse =
+const UpdateEnvironmentTypeResponse =
   EnvironmentTypesCreateOrUpdateResponse as any as S.Schema<UpdateEnvironmentTypeResponse>;
 
 /** Properties of network connection. These properties can be updated after the resource has been created. */
@@ -8494,7 +8349,7 @@ export interface NetworkConnectionUpdateProperties {
   /** The password for the account used to join domain */
   domainPassword?: string | Redacted.Redacted<string>;
 }
-export const NetworkConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.optional(S.String),
     domainName: S.optional(S.String),
@@ -8520,7 +8375,7 @@ export interface UpdateNetworkConnectionRequest {
   /** Properties of a network connection resource to be updated. */
   properties?: NetworkConnectionUpdateProperties;
 }
-export const UpdateNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8542,9 +8397,6 @@ export const UpdateNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNetworkConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkConnectionResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateNetworkConnectionResponseTagsMap>;
-
 export interface UpdateNetworkConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8561,12 +8413,12 @@ export interface UpdateNetworkConnectionResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
-export const UpdateNetworkConnectionResponse =
+const UpdateNetworkConnectionResponse =
   GetNetworkConnectionResponse as any as S.Schema<UpdateNetworkConnectionResponse>;
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
-export const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
+const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
   PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList>;
 
 /** Properties of a Pool. These properties can be updated after the resource has been created. */
@@ -8596,7 +8448,7 @@ export interface PoolUpdatePropertiesInput {
   /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
   managedVirtualNetworkRegions?: PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList;
 }
-export const PoolUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PoolUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
     devBoxDefinitionName: S.optional(S.String),
@@ -8633,7 +8485,7 @@ export interface UpdatePoolRequest {
   /** Properties of a pool to be updated. */
   properties?: PoolUpdatePropertiesInput;
 }
-export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8654,9 +8506,6 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdatePoolResponseTagsMap>;
-
 export interface UpdatePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8673,16 +8522,12 @@ export interface UpdatePoolResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
-export const UpdatePoolResponse = GetPoolResponse as any as S.Schema<UpdatePoolResponse>;
+const UpdatePoolResponse = GetPoolResponse as any as S.Schema<UpdatePoolResponse>;
 
 /** Properties of a project. These properties can be updated after the resource has been created. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
-export const ProjectUpdateProperties = ProjectPropertiesInput;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-export const UpdateProjectRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-
 export interface UpdateProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8699,7 +8544,7 @@ export interface UpdateProjectRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8720,13 +8565,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const UpdateProjectResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-
 export interface UpdateProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8745,13 +8585,13 @@ export interface UpdateProjectResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
+const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
+const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
   ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap>;
 
 /** The role definition assigned to the environment creator on backing resources. */
@@ -8759,24 +8599,23 @@ export interface ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmen
   /** A map of roles to assign to the environment creator. */
   roles?: ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap;
 }
-export const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment =
-  /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       roles: S.optional(ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap),
     }),
-  ).annotate({
-    identifier: "ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment",
-  }) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment>;
+).annotate({
+  identifier: "ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment",
+}) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment>;
 
 /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap = {
   [key: string]: UserRoleAssignmentInput | undefined;
 };
-export const ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserRoleAssignmentInput,
-  ) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap>;
+const ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserRoleAssignmentInput,
+) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap>;
 
 /** Properties of a project environment type. These properties can be updated after the resource has been created. */
 export interface ProjectEnvironmentTypeUpdatePropertiesInput {
@@ -8791,7 +8630,7 @@ export interface ProjectEnvironmentTypeUpdatePropertiesInput {
   /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
   userRoleAssignments?: ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap;
 }
-export const ProjectEnvironmentTypeUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectEnvironmentTypeUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentTargetId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -8809,13 +8648,11 @@ export const ProjectEnvironmentTypeUpdatePropertiesInput = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type UpdateProjectEnvironmentTypeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectEnvironmentTypeRequestTagsMap =
+const UpdateProjectEnvironmentTypeRequestTagsMap =
   CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectEnvironmentTypeRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectEnvironmentTypeRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-export const UpdateProjectEnvironmentTypeRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
-
 export interface UpdateProjectEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8832,7 +8669,7 @@ export interface UpdateProjectEnvironmentTypeRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
-export const UpdateProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8855,14 +8692,8 @@ export const UpdateProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProjectEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectEnvironmentTypeResponseTagsMap =
-  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectEnvironmentTypeResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectEnvironmentTypeResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
-export const UpdateProjectEnvironmentTypeResponseIdentity =
-  DevCentersCreateOrUpdateResponseIdentity;
-
 export interface UpdateProjectEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8881,19 +8712,13 @@ export interface UpdateProjectEnvironmentTypeResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const UpdateProjectEnvironmentTypeResponse =
+const UpdateProjectEnvironmentTypeResponse =
   GetProjectEnvironmentTypeResponse as any as S.Schema<UpdateProjectEnvironmentTypeResponse>;
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyUpdatePropertiesResourcePoliciesList = Array<ResourcePolicy>;
-export const ProjectPolicyUpdatePropertiesResourcePoliciesList =
-  ProjectPolicyPropertiesResourcePoliciesList as any as S.Schema<ProjectPolicyUpdatePropertiesResourcePoliciesList>;
-
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyUpdatePropertiesScopesList = Array<string>;
-export const ProjectPolicyUpdatePropertiesScopesList =
-  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyUpdatePropertiesScopesList>;
-
 /** Properties of an project policy. These properties can be updated after the resource has been created. */
 export interface ProjectPolicyUpdateProperties {
   /** Resource policies that are a part of this project policy. */
@@ -8901,7 +8726,7 @@ export interface ProjectPolicyUpdateProperties {
   /** Resources that have access to the shared resources that are a part of this project policy. */
   scopes?: ProjectPolicyUpdatePropertiesScopesList;
 }
-export const ProjectPolicyUpdateProperties =
+const ProjectPolicyUpdateProperties =
   ProjectPolicyPropertiesInput as any as S.Schema<ProjectPolicyUpdateProperties>;
 
 export interface UpdateProjectPolicyRequest {
@@ -8916,7 +8741,7 @@ export interface UpdateProjectPolicyRequest {
   /** Properties of an project policy to be updated. */
   properties?: ProjectPolicyUpdateProperties;
 }
-export const UpdateProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8947,7 +8772,7 @@ export interface UpdateProjectPolicyResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
-export const UpdateProjectPolicyResponse =
+const UpdateProjectPolicyResponse =
   ProjectPoliciesCreateOrUpdateResponse as any as S.Schema<UpdateProjectPolicyResponse>;
 
 /** Updatable properties of a Schedule. */
@@ -8967,7 +8792,7 @@ export interface ScheduleUpdateProperties {
   /** Indicates whether or not this scheduled task is enabled. */
   state?: ScheduleEnableStatus | (string & {});
 }
-export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(Tags),
     location: S.optional(S.String),
@@ -8995,7 +8820,7 @@ export interface UpdateScheduleRequest {
   /** Properties of a schedule resource to be updated. */
   properties?: ScheduleUpdateProperties;
 }
-export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9026,8 +8851,7 @@ export interface UpdateScheduleResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
-export const UpdateScheduleResponse =
-  GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
+const UpdateScheduleResponse = GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
 
 export type AttachedNetworksCreateOrUpdateError = AzureOpError;
 /** Creates or updates an attached NetworkConnection. */

@@ -162,7 +162,7 @@ export interface CreateHostnameCertificateRequest {
   /** The hostname certificate's private key. */
   privateKey: string;
 }
-export const CreateHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -188,7 +188,7 @@ export type HostnameCertificatesCreateResponseStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-export const HostnameCertificatesCreateResponseStatus = S.String;
+const HostnameCertificatesCreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHostnameCertificateResponse {
@@ -209,7 +209,7 @@ export interface CreateHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHostnameCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -232,7 +232,7 @@ export interface CreateOriginTlsClientAuthRequest {
   /** The zone's private key. */
   privateKey: string;
 }
-export const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -260,7 +260,7 @@ export interface CreateOriginTlsClientAuthResponse {
   status?: string | null;
   uploadedOn?: string | null;
 }
-export const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -284,7 +284,7 @@ export interface CreateZoneCertificateRequest {
   /** The zone's private key. */
   privateKey: string;
 }
-export const CreateZoneCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateZoneCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -307,7 +307,7 @@ export interface CreateZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const CreateZoneCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateZoneCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -324,7 +324,7 @@ export interface DeleteHostnameCertificateRequest {
   /** Certificate identifier tag. */
   certificateId: string;
 }
-export const DeleteHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
@@ -349,8 +349,6 @@ export type HostnameCertificatesDeleteResponseStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-export const HostnameCertificatesDeleteResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteHostnameCertificateResponse {
   /** Certificate identifier tag. */
@@ -370,7 +368,7 @@ export interface DeleteHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const DeleteHostnameCertificateResponse =
+const DeleteHostnameCertificateResponse =
   CreateHostnameCertificateResponse as any as S.Schema<DeleteHostnameCertificateResponse>;
 
 export interface DeleteOriginTlsClientAuthRequest {
@@ -379,7 +377,7 @@ export interface DeleteOriginTlsClientAuthRequest {
   /** Certificate identifier tag. */
   certificateId: string;
 }
-export const DeleteOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
@@ -407,7 +405,7 @@ export interface DeleteOriginTlsClientAuthResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const DeleteOriginTlsClientAuthResponse =
+const DeleteOriginTlsClientAuthResponse =
   CreateZoneCertificateResponse as any as S.Schema<DeleteOriginTlsClientAuthResponse>;
 
 export interface DeleteZoneCertificateRequest {
@@ -416,7 +414,7 @@ export interface DeleteZoneCertificateRequest {
   /** Certificate identifier tag. */
   certificateId: string;
 }
-export const DeleteZoneCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteZoneCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
@@ -444,7 +442,7 @@ export interface DeleteZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const DeleteZoneCertificateResponse =
+const DeleteZoneCertificateResponse =
   CreateZoneCertificateResponse as any as S.Schema<DeleteZoneCertificateResponse>;
 
 export interface GetHostnameRequest {
@@ -453,7 +451,7 @@ export interface GetHostnameRequest {
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname: string;
 }
-export const GetHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
@@ -476,7 +474,7 @@ export type HostnamesGetResponseCertStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-export const HostnamesGetResponseCertStatus = S.String;
+const HostnamesGetResponseCertStatus = S.String;
 
 export type HostnamesGetResponseStatus =
   | "initializing"
@@ -486,7 +484,7 @@ export type HostnamesGetResponseStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-export const HostnamesGetResponseStatus = S.String;
+const HostnamesGetResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameResponse {
@@ -519,7 +517,7 @@ export interface GetHostnameResponse {
   /** The time when the certificate was updated. */
   updatedAt?: string | null;
 }
-export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
     certStatus: S.optional(S.NullOr(HostnamesGetResponseCertStatus).pipe(T.Body("cert_status"))),
@@ -544,7 +542,7 @@ export interface GetHostnameCertificateRequest {
   /** Certificate identifier tag. */
   certificateId: string;
 }
-export const GetHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostnameCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
@@ -569,8 +567,6 @@ export type HostnameCertificatesGetResponseStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-export const HostnameCertificatesGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameCertificateResponse {
   /** Certificate identifier tag. */
@@ -590,7 +586,7 @@ export interface GetHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const GetHostnameCertificateResponse =
+const GetHostnameCertificateResponse =
   CreateHostnameCertificateResponse as any as S.Schema<GetHostnameCertificateResponse>;
 
 export interface GetOriginTlsClientAuthRequest {
@@ -599,7 +595,7 @@ export interface GetOriginTlsClientAuthRequest {
   /** Certificate identifier tag. */
   certificateId: string;
 }
-export const GetOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOriginTlsClientAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
@@ -632,14 +628,14 @@ export interface GetOriginTlsClientAuthResponse {
   status?: string | null;
   uploadedOn?: string | null;
 }
-export const GetOriginTlsClientAuthResponse =
+const GetOriginTlsClientAuthResponse =
   CreateOriginTlsClientAuthResponse as any as S.Schema<GetOriginTlsClientAuthResponse>;
 
 export interface GetSettingRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -654,7 +650,7 @@ export interface GetSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
 }
-export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -666,7 +662,7 @@ export interface GetZoneCertificateRequest {
   /** Certificate identifier tag. */
   certificateId: string;
 }
-export const GetZoneCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZoneCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificateId: S.String.pipe(T.Label("certificate_id")),
@@ -694,14 +690,14 @@ export interface GetZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const GetZoneCertificateResponse =
+const GetZoneCertificateResponse =
   CreateZoneCertificateResponse as any as S.Schema<GetZoneCertificateResponse>;
 
 export interface ListHostnameCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListHostnameCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostnameCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -725,7 +721,7 @@ export type HostnameCertificatesListResultItemStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-export const HostnameCertificatesListResultItemStatus = S.String;
+const HostnameCertificatesListResultItemStatus = S.String;
 
 export interface HostnameCertificatesListResultItem {
   /** Certificate identifier tag. */
@@ -745,7 +741,7 @@ export interface HostnameCertificatesListResultItem {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const HostnameCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const HostnameCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -761,7 +757,7 @@ export const HostnameCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnameCertificatesListResultItem>;
 
 export type HostnameCertificatesListResultList = Array<HostnameCertificatesListResultItem>;
-export const HostnameCertificatesListResultList = /*@__PURE__*/ S.Array(
+const HostnameCertificatesListResultList = /*@__PURE__*/ S.Array(
   HostnameCertificatesListResultItem,
 ) as any as S.Schema<HostnameCertificatesListResultList>;
 
@@ -771,7 +767,7 @@ export interface ListHostnameCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListHostnameCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostnameCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HostnameCertificatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -784,7 +780,7 @@ export interface ListOriginTlsClientAuthsRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListOriginTlsClientAuthsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOriginTlsClientAuthsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -809,7 +805,7 @@ export interface ListResultItem {
   status?: string | null;
   uploadedOn?: string | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -824,9 +820,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListOriginTlsClientAuthsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -834,7 +828,7 @@ export interface ListOriginTlsClientAuthsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -847,7 +841,7 @@ export interface ListZoneCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListZoneCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListZoneCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -867,7 +861,7 @@ export interface ListZoneCertificatesResultItem {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const ListZoneCertificatesResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListZoneCertificatesResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -879,7 +873,7 @@ export const ListZoneCertificatesResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListZoneCertificatesResultItem>;
 
 export type ListZoneCertificatesResultList = Array<ListZoneCertificatesResultItem>;
-export const ListZoneCertificatesResultList = /*@__PURE__*/ S.Array(
+const ListZoneCertificatesResultList = /*@__PURE__*/ S.Array(
   ListZoneCertificatesResultItem,
 ) as any as S.Schema<ListZoneCertificatesResultList>;
 
@@ -889,7 +883,7 @@ export interface ListZoneCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListZoneCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListZoneCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListZoneCertificatesResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -906,7 +900,7 @@ export interface HostnamesUpdateRequestConfigItem {
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname?: string;
 }
-export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
+const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certId: S.optional(S.String.pipe(T.Body("cert_id"))),
     enabled: S.optional(S.NullOr(S.Boolean)),
@@ -917,7 +911,7 @@ export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnamesUpdateRequestConfigItem>;
 
 export type HostnamesUpdateRequestConfigList = Array<HostnamesUpdateRequestConfigItem>;
-export const HostnamesUpdateRequestConfigList = /*@__PURE__*/ S.Array(
+const HostnamesUpdateRequestConfigList = /*@__PURE__*/ S.Array(
   HostnamesUpdateRequestConfigItem,
 ) as any as S.Schema<HostnamesUpdateRequestConfigList>;
 
@@ -926,7 +920,7 @@ export interface PutHostnameRequest {
   zoneId: string;
   config: HostnamesUpdateRequestConfigList;
 }
-export const PutHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     config: HostnamesUpdateRequestConfigList,
@@ -955,7 +949,7 @@ export interface HostnamesUpdateResultItem {
   /** The hostname certificate's private key. */
   privateKey?: string | null;
 }
-export const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
+const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
@@ -969,7 +963,7 @@ export const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnamesUpdateResultItem>;
 
 export type HostnamesUpdateResultList = Array<HostnamesUpdateResultItem>;
-export const HostnamesUpdateResultList = /*@__PURE__*/ S.Array(
+const HostnamesUpdateResultList = /*@__PURE__*/ S.Array(
   HostnamesUpdateResultItem,
 ) as any as S.Schema<HostnamesUpdateResultList>;
 
@@ -979,7 +973,7 @@ export interface PutHostnameResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PutHostnameResponse = /*@__PURE__*/ S.suspend(() =>
+const PutHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HostnamesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -992,7 +986,7 @@ export interface PutSettingRequest {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled: boolean;
 }
-export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
@@ -1008,7 +1002,7 @@ export interface PutSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
 }
-export const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
+const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
 
 export type CreateHostnameCertificateError =
   | CertificateAlreadyExists

@@ -16,7 +16,7 @@ export type AccessPolicyAssignmentProvisioningState =
   | "Deleted"
   | "Canceled"
   | "Failed";
-export const AccessPolicyAssignmentProvisioningState = S.String;
+const AccessPolicyAssignmentProvisioningState = S.String;
 
 /** Properties for an access policy assignment */
 export interface RedisCacheAccessPolicyAssignmentProperties {
@@ -29,7 +29,7 @@ export interface RedisCacheAccessPolicyAssignmentProperties {
   /** The name of the access policy that is being assigned */
   accessPolicyName: string;
 }
-export const RedisCacheAccessPolicyAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
+const RedisCacheAccessPolicyAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AccessPolicyAssignmentProvisioningState),
     objectId: S.String,
@@ -52,7 +52,7 @@ export interface AccessPolicyAssignmentCreateUpdateRequest {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
-export const AccessPolicyAssignmentCreateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyAssignmentCreateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -73,11 +73,11 @@ export const AccessPolicyAssignmentCreateUpdateRequest = /*@__PURE__*/ S.suspend
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -94,7 +94,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -117,7 +117,7 @@ export interface AccessPolicyAssignmentCreateUpdateResponse {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
-export const AccessPolicyAssignmentCreateUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyAssignmentCreateUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -137,11 +137,11 @@ export type AccessPolicyProvisioningState =
   | "Deleted"
   | "Canceled"
   | "Failed";
-export const AccessPolicyProvisioningState = S.String;
+const AccessPolicyProvisioningState = S.String;
 
 /** Built-In or Custom access policy */
 export type AccessPolicyType = "Custom" | "BuiltIn";
-export const AccessPolicyType = S.String;
+const AccessPolicyType = S.String;
 
 /** All properties of an access policy. */
 export interface RedisCacheAccessPolicyProperties {
@@ -152,7 +152,7 @@ export interface RedisCacheAccessPolicyProperties {
   /** Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites */
   permissions: string;
 }
-export const RedisCacheAccessPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const RedisCacheAccessPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AccessPolicyProvisioningState),
     type: S.optional(AccessPolicyType),
@@ -174,7 +174,7 @@ export interface AccessPolicyCreateUpdateRequest {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
-export const AccessPolicyCreateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyCreateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -205,7 +205,7 @@ export interface AccessPolicyCreateUpdateResponse {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
-export const AccessPolicyCreateUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyCreateUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -225,7 +225,7 @@ export interface CheckRedisNameAvailabilityRequest {
   /** Resource type. The only legal value of this property for checking redis cache name availability is 'Microsoft.Cache/redis'. */
   type: string;
 }
-export const CheckRedisNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckRedisNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -243,15 +243,13 @@ export const CheckRedisNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckRedisNameAvailabilityRequest>;
 
 export interface CheckRedisNameAvailabilityResponse {}
-export const CheckRedisNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CheckRedisNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CheckRedisNameAvailabilityResponse",
 }) as any as S.Schema<CheckRedisNameAvailabilityResponse>;
 
 /** Role of the linked server. */
 export type ReplicationRole = "Primary" | "Secondary";
-export const ReplicationRole = S.String;
+const ReplicationRole = S.String;
 
 /** Create properties for a linked server */
 export interface RedisLinkedServerCreatePropertiesInput {
@@ -262,7 +260,7 @@ export interface RedisLinkedServerCreatePropertiesInput {
   /** Role of the linked server. */
   serverRole: ReplicationRole | (string & {});
 }
-export const RedisLinkedServerCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RedisLinkedServerCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedRedisCacheId: S.String,
     linkedRedisCacheLocation: S.String,
@@ -284,7 +282,7 @@ export interface CreateLinkedServerRequest {
   /** Properties required to create a linked server. */
   properties: RedisLinkedServerCreatePropertiesInput;
 }
-export const CreateLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -318,7 +316,7 @@ export interface RedisLinkedServerProperties {
   /** Terminal state of the link between primary and secondary redis cache. */
   provisioningState?: string;
 }
-export const RedisLinkedServerProperties = /*@__PURE__*/ S.suspend(() =>
+const RedisLinkedServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedRedisCacheId: S.String,
     linkedRedisCacheLocation: S.String,
@@ -343,7 +341,7 @@ export interface CreateLinkedServerResponse {
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
 }
-export const CreateLinkedServerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkedServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -390,7 +388,7 @@ export interface RedisCommonPropertiesRedisConfigurationInput {
   /** Specifies whether AAD based authentication has been enabled or disabled for the cache */
   aad_enabled?: string;
 }
-export const RedisCommonPropertiesRedisConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const RedisCommonPropertiesRedisConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
     rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
@@ -427,34 +425,34 @@ export const RedisCommonPropertiesRedisConfigurationInput = /*@__PURE__*/ S.susp
 
 /** A dictionary of tenant settings */
 export type RedisCreatePropertiesInputTenantSettingsMap = { [key: string]: string | undefined };
-export const RedisCreatePropertiesInputTenantSettingsMap = /*@__PURE__*/ S.Record(
+const RedisCreatePropertiesInputTenantSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<RedisCreatePropertiesInputTenantSettingsMap>;
 
 /** Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2') */
 export type TlsVersion = "1.0" | "1.1" | "1.2";
-export const TlsVersion = S.String;
+const TlsVersion = S.String;
 
 /** Whether or not public endpoint access is allowed for this cache. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-export const PublicNetworkAccess = S.String;
+const PublicNetworkAccess = S.String;
 
 /** Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'. */
 export type UpdateChannel = "Stable" | "Preview";
-export const UpdateChannel = S.String;
+const UpdateChannel = S.String;
 
 /** Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported. */
 export type ZonalAllocationPolicy = "Automatic" | "UserDefined" | "NoZones";
-export const ZonalAllocationPolicy = S.String;
+const ZonalAllocationPolicy = S.String;
 
 /** The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium) */
 export type SkuName = "Basic" | "Standard" | "Premium";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium). */
 export type SkuFamily = "C" | "P";
-export const SkuFamily = S.String;
+const SkuFamily = S.String;
 
 /** SKU parameters supplied to the create Redis operation. */
 export interface Sku {
@@ -465,7 +463,7 @@ export interface Sku {
   /** The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4). */
   capacity: number;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
     family: SkuFamily,
@@ -506,7 +504,7 @@ export interface RedisCreatePropertiesInput {
   /** Static IP address. Optionally, may be specified when deploying a Redis cache inside an existing Azure Virtual Network; auto assigned by default. */
   staticIP?: string;
 }
-export const RedisCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RedisCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisConfiguration: S.optional(RedisCommonPropertiesRedisConfigurationInput),
     redisVersion: S.optional(S.String),
@@ -530,13 +528,13 @@ export const RedisCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type CreateRedisRequestZonesList = Array<string>;
-export const CreateRedisRequestZonesList = /*@__PURE__*/ S.Array(
+const CreateRedisRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRedisRequestZonesList>;
 
 /** Resource tags. */
 export type CreateRedisRequestTagsMap = { [key: string]: string | undefined };
-export const CreateRedisRequestTagsMap =
+const CreateRedisRequestTagsMap =
   RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<CreateRedisRequestTagsMap>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -545,17 +543,17 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -565,7 +563,7 @@ export interface CreateRedisRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const CreateRedisRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateRedisRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -592,7 +590,7 @@ export interface CreateRedisRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisRequestIdentity;
 }
-export const CreateRedisRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRedisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -614,7 +612,7 @@ export const CreateRedisRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateRedisResponseTagsMap = { [key: string]: string | undefined };
-export const CreateRedisResponseTagsMap =
+const CreateRedisResponseTagsMap =
   RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<CreateRedisResponseTagsMap>;
 
 /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
@@ -658,7 +656,7 @@ export interface RedisCommonPropertiesRedisConfiguration {
   /** Specifies whether AAD based authentication has been enabled or disabled for the cache */
   aad_enabled?: string;
 }
-export const RedisCommonPropertiesRedisConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RedisCommonPropertiesRedisConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
     rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
@@ -700,7 +698,7 @@ export const RedisCommonPropertiesRedisConfiguration = /*@__PURE__*/ S.suspend((
 
 /** A dictionary of tenant settings */
 export type RedisPropertiesTenantSettingsMap = { [key: string]: string | undefined };
-export const RedisPropertiesTenantSettingsMap =
+const RedisPropertiesTenantSettingsMap =
   RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<RedisPropertiesTenantSettingsMap>;
 
 /** Redis instance provisioning status. */
@@ -718,7 +716,7 @@ export type ProvisioningState =
   | "Unprovisioning"
   | "Updating"
   | "ConfiguringAAD";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Redis cache access keys. */
 export interface RedisAccessKeys {
@@ -727,7 +725,7 @@ export interface RedisAccessKeys {
   /** The current secondary key that clients can use to authenticate with Redis cache. */
   secondaryKey?: string;
 }
-export const RedisAccessKeys = /*@__PURE__*/ S.suspend(() =>
+const RedisAccessKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryKey: S.optional(S.String),
     secondaryKey: S.optional(S.String),
@@ -739,7 +737,7 @@ export interface RedisLinkedServer {
   /** Linked server Id. */
   id?: string;
 }
-export const RedisLinkedServer = /*@__PURE__*/ S.suspend(() =>
+const RedisLinkedServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -747,7 +745,7 @@ export const RedisLinkedServer = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the linked servers associated with the cache */
 export type RedisPropertiesLinkedServersList = Array<RedisLinkedServer>;
-export const RedisPropertiesLinkedServersList = /*@__PURE__*/ S.Array(
+const RedisPropertiesLinkedServersList = /*@__PURE__*/ S.Array(
   RedisLinkedServer,
 ) as any as S.Schema<RedisPropertiesLinkedServersList>;
 
@@ -766,7 +764,7 @@ export interface RedisInstanceDetails {
   /** Specifies whether the instance is a primary node. */
   isPrimary?: boolean;
 }
-export const RedisInstanceDetails = /*@__PURE__*/ S.suspend(() =>
+const RedisInstanceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sslPort: S.optional(S.Number),
     nonSslPort: S.optional(S.Number),
@@ -779,13 +777,13 @@ export const RedisInstanceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the Redis instances associated with the cache */
 export type RedisPropertiesInstancesList = Array<RedisInstanceDetails>;
-export const RedisPropertiesInstancesList = /*@__PURE__*/ S.Array(
+const RedisPropertiesInstancesList = /*@__PURE__*/ S.Array(
   RedisInstanceDetails,
 ) as any as S.Schema<RedisPropertiesInstancesList>;
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
+const PrivateEndpointConnectionPropertiesGroupIdsList =
   CreateRedisRequestZonesList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The private endpoint resource. */
@@ -793,11 +791,11 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = RedisLinkedServer as any as S.Schema<PrivateEndpoint>;
+const PrivateEndpoint = RedisLinkedServer as any as S.Schema<PrivateEndpoint>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -808,7 +806,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -824,7 +822,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -837,7 +835,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -861,7 +859,7 @@ export interface RedisPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const RedisPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+const RedisPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -876,7 +874,7 @@ export const RedisPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.sus
 /** List of private endpoint connection associated with the specified redis cache */
 export type RedisPropertiesPrivateEndpointConnectionsList =
   Array<RedisPropertiesPrivateEndpointConnectionsItem>;
-export const RedisPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const RedisPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   RedisPropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<RedisPropertiesPrivateEndpointConnectionsList>;
 
@@ -929,7 +927,7 @@ export interface RedisProperties {
   /** List of private endpoint connection associated with the specified redis cache */
   privateEndpointConnections?: RedisPropertiesPrivateEndpointConnectionsList;
 }
-export const RedisProperties = /*@__PURE__*/ S.suspend(() =>
+const RedisProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisConfiguration: S.optional(RedisCommonPropertiesRedisConfiguration),
     redisVersion: S.optional(S.String),
@@ -959,7 +957,7 @@ export const RedisProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type CreateRedisResponseZonesList = Array<string>;
-export const CreateRedisResponseZonesList =
+const CreateRedisResponseZonesList =
   CreateRedisRequestZonesList as any as S.Schema<CreateRedisResponseZonesList>;
 
 /** User assigned identity properties */
@@ -969,7 +967,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -978,7 +976,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -992,7 +990,7 @@ export interface CreateRedisResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const CreateRedisResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateRedisResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1023,7 +1021,7 @@ export interface CreateRedisResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
-export const CreateRedisResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRedisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1047,7 +1045,7 @@ export interface DeleteAccessPolicyRequest {
   /** The name of the access policy that is being added to the Redis cache. */
   accessPolicyName: string;
 }
-export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1066,7 +1064,7 @@ export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessPolicyRequest>;
 
 export interface DeleteAccessPolicyResponse {}
-export const DeleteAccessPolicyResponse =
+const DeleteAccessPolicyResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteAccessPolicyResponse>;
 
 export interface DeleteAccessPolicyAssignmentRequest {
@@ -1079,7 +1077,7 @@ export interface DeleteAccessPolicyAssignmentRequest {
   /** The name of the access policy assignment. */
   accessPolicyAssignmentName: string;
 }
-export const DeleteAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1098,7 +1096,7 @@ export const DeleteAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>;
 
 export interface DeleteAccessPolicyAssignmentResponse {}
-export const DeleteAccessPolicyAssignmentResponse =
+const DeleteAccessPolicyAssignmentResponse =
   CheckRedisNameAvailabilityResponse as any as S.Schema<DeleteAccessPolicyAssignmentResponse>;
 
 export interface DeleteFirewallRuleRequest {
@@ -1111,7 +1109,7 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the firewall rule. */
   ruleName: string;
 }
-export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1130,7 +1128,7 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse =
+const DeleteFirewallRuleResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeleteLinkedServerRequest {
@@ -1143,7 +1141,7 @@ export interface DeleteLinkedServerRequest {
   /** The name of the RedisLinkedServerWithProperties */
   linkedServerName: string;
 }
-export const DeleteLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1162,11 +1160,11 @@ export const DeleteLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkedServerRequest>;
 
 export interface DeleteLinkedServerResponse {}
-export const DeleteLinkedServerResponse =
+const DeleteLinkedServerResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteLinkedServerResponse>;
 
 export type DeletePatchScheduleRequestDefault = "default";
-export const DeletePatchScheduleRequestDefault = S.String;
+const DeletePatchScheduleRequestDefault = S.String;
 
 export interface DeletePatchScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1178,7 +1176,7 @@ export interface DeletePatchScheduleRequest {
   /** The name of the RedisPatchSchedule */
   default: DeletePatchScheduleRequestDefault | (string & {});
 }
-export const DeletePatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1197,7 +1195,7 @@ export const DeletePatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePatchScheduleRequest>;
 
 export interface DeletePatchScheduleResponse {}
-export const DeletePatchScheduleResponse =
+const DeletePatchScheduleResponse =
   UserAssignedIdentityInput as any as S.Schema<DeletePatchScheduleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
@@ -1210,7 +1208,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1229,7 +1227,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   CheckRedisNameAvailabilityResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteRedisRequest {
@@ -1240,7 +1238,7 @@ export interface DeleteRedisRequest {
   /** The name of the RedisResource */
   name: string;
 }
-export const DeleteRedisRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1256,8 +1254,7 @@ export const DeleteRedisRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRedisRequest" }) as any as S.Schema<DeleteRedisRequest>;
 
 export interface DeleteRedisResponse {}
-export const DeleteRedisResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteRedisResponse>;
+const DeleteRedisResponse = UserAssignedIdentityInput as any as S.Schema<DeleteRedisResponse>;
 
 export interface ExportRedisDataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1277,7 +1274,7 @@ export interface ExportRedisDataRequest {
   /** Subscription id of the storage container for data to be exported using ManagedIdentity. */
   storage_subscription_id?: string;
 }
-export const ExportRedisDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportRedisDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1300,7 +1297,7 @@ export const ExportRedisDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportRedisDataRequest" }) as any as S.Schema<ExportRedisDataRequest>;
 
 export interface ExportRedisDataResponse {}
-export const ExportRedisDataResponse =
+const ExportRedisDataResponse =
   UserAssignedIdentityInput as any as S.Schema<ExportRedisDataResponse>;
 
 /** Specifies a range of IP addresses permitted to connect to the cache */
@@ -1310,7 +1307,7 @@ export interface RedisFirewallRuleProperties {
   /** highest IP address included in the range */
   endIP: string;
 }
-export const RedisFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const RedisFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIP: S.String,
     endIP: S.String,
@@ -1331,7 +1328,7 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
-export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1362,7 +1359,7 @@ export interface FirewallRulesCreateOrUpdateResponse {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
-export const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1382,7 +1379,7 @@ export interface FlushRedisCacheRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const FlushRedisCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const FlushRedisCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1399,13 +1396,13 @@ export const FlushRedisCacheRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
+const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -1416,7 +1413,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -1425,7 +1422,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -1442,7 +1439,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1471,7 +1468,7 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1486,7 +1483,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type FlushRedisCacheResponseOperationsList = Array<OperationStatusResult>;
-export const FlushRedisCacheResponseOperationsList = /*@__PURE__*/ S.Array(
+const FlushRedisCacheResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<FlushRedisCacheResponseOperationsList>;
 
@@ -1508,7 +1505,7 @@ export interface FlushRedisCacheResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const FlushRedisCacheResponse = /*@__PURE__*/ S.suspend(() =>
+const FlushRedisCacheResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1531,7 +1528,7 @@ export interface GetAccessPolicyRequest {
   /** The name of the access policy that is being added to the Redis cache. */
   accessPolicyName: string;
 }
-export const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1559,7 +1556,7 @@ export interface GetAccessPolicyResponse {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
-export const GetAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1579,7 +1576,7 @@ export interface GetAccessPolicyAssignmentRequest {
   /** The name of the access policy assignment. */
   accessPolicyAssignmentName: string;
 }
-export const GetAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1609,7 +1606,7 @@ export interface GetAccessPolicyAssignmentResponse {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
-export const GetAccessPolicyAssignmentResponse =
+const GetAccessPolicyAssignmentResponse =
   AccessPolicyAssignmentCreateUpdateResponse as any as S.Schema<GetAccessPolicyAssignmentResponse>;
 
 export interface GetAsyncOperationStatusRequest {
@@ -1620,7 +1617,7 @@ export interface GetAsyncOperationStatusRequest {
   /** The ID of asynchronous operation */
   operationId: string;
 }
-export const GetAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1639,12 +1636,12 @@ export const GetAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetAsyncOperationStatusResponseOperationsList = Array<OperationStatusResult>;
-export const GetAsyncOperationStatusResponseOperationsList =
+const GetAsyncOperationStatusResponseOperationsList =
   FlushRedisCacheResponseOperationsList as any as S.Schema<GetAsyncOperationStatusResponseOperationsList>;
 
 /** Additional properties from RP, only when operation is successful */
 export type GetAsyncOperationStatusResponsePropertiesMap = { [key: string]: unknown | undefined };
-export const GetAsyncOperationStatusResponsePropertiesMap = /*@__PURE__*/ S.Record(
+const GetAsyncOperationStatusResponsePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GetAsyncOperationStatusResponsePropertiesMap>;
@@ -1669,7 +1666,7 @@ export interface GetAsyncOperationStatusResponse {
   /** Additional properties from RP, only when operation is successful */
   properties?: GetAsyncOperationStatusResponsePropertiesMap;
 }
-export const GetAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1695,7 +1692,7 @@ export interface GetFirewallRuleRequest {
   /** The name of the firewall rule. */
   ruleName: string;
 }
-export const GetFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1723,7 +1720,7 @@ export interface GetFirewallRuleResponse {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
-export const GetFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1743,7 +1740,7 @@ export interface GetLinkedServerRequest {
   /** The name of the RedisLinkedServerWithProperties */
   linkedServerName: string;
 }
-export const GetLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1771,7 +1768,7 @@ export interface GetLinkedServerResponse {
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
 }
-export const GetLinkedServerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1782,7 +1779,7 @@ export const GetLinkedServerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLinkedServerResponse" }) as any as S.Schema<GetLinkedServerResponse>;
 
 export type GetPatchScheduleRequestDefault = "default";
-export const GetPatchScheduleRequestDefault = S.String;
+const GetPatchScheduleRequestDefault = S.String;
 
 export interface GetPatchScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1794,7 +1791,7 @@ export interface GetPatchScheduleRequest {
   /** The name of the RedisPatchSchedule */
   default: GetPatchScheduleRequestDefault | (string & {});
 }
-export const GetPatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1821,7 +1818,7 @@ export type DayOfWeek =
   | "Sunday"
   | "Everyday"
   | "Weekend";
-export const DayOfWeek = S.String;
+const DayOfWeek = S.String;
 
 /** Patch schedule entry for a Premium Redis Cache. */
 export interface ScheduleEntry {
@@ -1832,7 +1829,7 @@ export interface ScheduleEntry {
   /** ISO8601 timespan specifying how much time cache patching can take. */
   maintenanceWindow?: string;
 }
-export const ScheduleEntry = /*@__PURE__*/ S.suspend(() =>
+const ScheduleEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfWeek: DayOfWeek,
     startHourUtc: S.Number,
@@ -1842,7 +1839,7 @@ export const ScheduleEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** List of patch schedules for a Redis cache. */
 export type ScheduleEntriesScheduleEntriesList = Array<ScheduleEntry>;
-export const ScheduleEntriesScheduleEntriesList = /*@__PURE__*/ S.Array(
+const ScheduleEntriesScheduleEntriesList = /*@__PURE__*/ S.Array(
   ScheduleEntry,
 ) as any as S.Schema<ScheduleEntriesScheduleEntriesList>;
 
@@ -1851,7 +1848,7 @@ export interface ScheduleEntries {
   /** List of patch schedules for a Redis cache. */
   scheduleEntries: ScheduleEntriesScheduleEntriesList;
 }
-export const ScheduleEntries = /*@__PURE__*/ S.suspend(() =>
+const ScheduleEntries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleEntries: ScheduleEntriesScheduleEntriesList,
   }),
@@ -1871,7 +1868,7 @@ export interface GetPatchScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetPatchScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPatchScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1892,7 +1889,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1922,7 +1919,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   RedisPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetRedisRequest {
@@ -1933,7 +1930,7 @@ export interface GetRedisRequest {
   /** The name of the RedisResource */
   name: string;
 }
-export const GetRedisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRedisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1950,18 +1947,10 @@ export const GetRedisRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRedisResponseTagsMap = { [key: string]: string | undefined };
-export const GetRedisResponseTagsMap =
-  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<GetRedisResponseTagsMap>;
-
 /** The availability zones. */
 export type GetRedisResponseZonesList = Array<string>;
-export const GetRedisResponseZonesList =
-  CreateRedisRequestZonesList as any as S.Schema<GetRedisResponseZonesList>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetRedisResponseIdentity = CreateRedisResponseIdentity;
-export const GetRedisResponseIdentity = CreateRedisResponseIdentity;
-
 export interface GetRedisResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1982,11 +1971,11 @@ export interface GetRedisResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
-export const GetRedisResponse = CreateRedisResponse as any as S.Schema<GetRedisResponse>;
+const GetRedisResponse = CreateRedisResponse as any as S.Schema<GetRedisResponse>;
 
 /** files to import. */
 export type ImportRedisDataRequestFilesList = Array<string>;
-export const ImportRedisDataRequestFilesList =
+const ImportRedisDataRequestFilesList =
   CreateRedisRequestZonesList as any as S.Schema<ImportRedisDataRequestFilesList>;
 
 export interface ImportRedisDataRequest {
@@ -2005,7 +1994,7 @@ export interface ImportRedisDataRequest {
   /** Subscription id of the storage container containing files to import using Managed Identity. */
   storage_subscription_id?: string;
 }
-export const ImportRedisDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportRedisDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2027,7 +2016,7 @@ export const ImportRedisDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportRedisDataRequest" }) as any as S.Schema<ImportRedisDataRequest>;
 
 export interface ImportRedisDataResponse {}
-export const ImportRedisDataResponse =
+const ImportRedisDataResponse =
   UserAssignedIdentityInput as any as S.Schema<ImportRedisDataResponse>;
 
 export interface ListAccessPolicyRequest {
@@ -2038,7 +2027,7 @@ export interface ListAccessPolicyRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const ListAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2066,12 +2055,11 @@ export interface RedisCacheAccessPolicy {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
-export const RedisCacheAccessPolicy =
-  GetAccessPolicyResponse as any as S.Schema<RedisCacheAccessPolicy>;
+const RedisCacheAccessPolicy = GetAccessPolicyResponse as any as S.Schema<RedisCacheAccessPolicy>;
 
 /** The RedisCacheAccessPolicy items on this page */
 export type RedisCacheAccessPolicyListValueList = Array<RedisCacheAccessPolicy>;
-export const RedisCacheAccessPolicyListValueList = /*@__PURE__*/ S.Array(
+const RedisCacheAccessPolicyListValueList = /*@__PURE__*/ S.Array(
   RedisCacheAccessPolicy,
 ) as any as S.Schema<RedisCacheAccessPolicyListValueList>;
 
@@ -2082,7 +2070,7 @@ export interface RedisCacheAccessPolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RedisCacheAccessPolicyList = /*@__PURE__*/ S.suspend(() =>
+const RedisCacheAccessPolicyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RedisCacheAccessPolicyListValueList,
     nextLink: S.optional(S.String),
@@ -2099,7 +2087,7 @@ export interface ListAccessPolicyAssignmentRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const ListAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPolicyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2129,12 +2117,12 @@ export interface RedisCacheAccessPolicyAssignment {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
-export const RedisCacheAccessPolicyAssignment =
+const RedisCacheAccessPolicyAssignment =
   AccessPolicyAssignmentCreateUpdateResponse as any as S.Schema<RedisCacheAccessPolicyAssignment>;
 
 /** The RedisCacheAccessPolicyAssignment items on this page */
 export type RedisCacheAccessPolicyAssignmentListValueList = Array<RedisCacheAccessPolicyAssignment>;
-export const RedisCacheAccessPolicyAssignmentListValueList = /*@__PURE__*/ S.Array(
+const RedisCacheAccessPolicyAssignmentListValueList = /*@__PURE__*/ S.Array(
   RedisCacheAccessPolicyAssignment,
 ) as any as S.Schema<RedisCacheAccessPolicyAssignmentListValueList>;
 
@@ -2145,7 +2133,7 @@ export interface RedisCacheAccessPolicyAssignmentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RedisCacheAccessPolicyAssignmentList = /*@__PURE__*/ S.suspend(() =>
+const RedisCacheAccessPolicyAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RedisCacheAccessPolicyAssignmentListValueList,
     nextLink: S.optional(S.String),
@@ -2162,7 +2150,7 @@ export interface ListFirewallRulesRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const ListFirewallRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFirewallRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2190,11 +2178,11 @@ export interface RedisFirewallRule {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
-export const RedisFirewallRule = GetFirewallRuleResponse as any as S.Schema<RedisFirewallRule>;
+const RedisFirewallRule = GetFirewallRuleResponse as any as S.Schema<RedisFirewallRule>;
 
 /** The RedisFirewallRule items on this page */
 export type RedisFirewallRuleListResultValueList = Array<RedisFirewallRule>;
-export const RedisFirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
+const RedisFirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   RedisFirewallRule,
 ) as any as S.Schema<RedisFirewallRuleListResultValueList>;
 
@@ -2205,7 +2193,7 @@ export interface RedisFirewallRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RedisFirewallRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const RedisFirewallRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RedisFirewallRuleListResultValueList,
     nextLink: S.optional(S.String),
@@ -2222,7 +2210,7 @@ export interface ListLinkedServerRequest {
   /** The name of the redis cache. */
   name: string;
 }
-export const ListLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinkedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2250,12 +2238,12 @@ export interface RedisLinkedServerWithProperties {
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
 }
-export const RedisLinkedServerWithProperties =
+const RedisLinkedServerWithProperties =
   CreateLinkedServerResponse as any as S.Schema<RedisLinkedServerWithProperties>;
 
 /** The RedisLinkedServerWithProperties items on this page */
 export type RedisLinkedServerWithPropertiesListValueList = Array<RedisLinkedServerWithProperties>;
-export const RedisLinkedServerWithPropertiesListValueList = /*@__PURE__*/ S.Array(
+const RedisLinkedServerWithPropertiesListValueList = /*@__PURE__*/ S.Array(
   RedisLinkedServerWithProperties,
 ) as any as S.Schema<RedisLinkedServerWithPropertiesListValueList>;
 
@@ -2266,7 +2254,7 @@ export interface RedisLinkedServerWithPropertiesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RedisLinkedServerWithPropertiesList = /*@__PURE__*/ S.suspend(() =>
+const RedisLinkedServerWithPropertiesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RedisLinkedServerWithPropertiesListValueList,
     nextLink: S.optional(S.String),
@@ -2276,7 +2264,7 @@ export const RedisLinkedServerWithPropertiesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedisLinkedServerWithPropertiesList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2298,7 +2286,7 @@ export interface OperationDisplay {
   /** Friendly name of the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     operation: S.optional(S.String),
@@ -2314,7 +2302,7 @@ export interface Operation {
   /** The object that describes the operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -2323,7 +2311,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -2334,7 +2322,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -2349,7 +2337,7 @@ export interface ListPatchScheduleByRedisResourceRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const ListPatchScheduleByRedisResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPatchScheduleByRedisResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2381,11 +2369,11 @@ export interface RedisPatchSchedule {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const RedisPatchSchedule = GetPatchScheduleResponse as any as S.Schema<RedisPatchSchedule>;
+const RedisPatchSchedule = GetPatchScheduleResponse as any as S.Schema<RedisPatchSchedule>;
 
 /** The RedisPatchSchedule items on this page */
 export type RedisPatchScheduleListResultValueList = Array<RedisPatchSchedule>;
-export const RedisPatchScheduleListResultValueList = /*@__PURE__*/ S.Array(
+const RedisPatchScheduleListResultValueList = /*@__PURE__*/ S.Array(
   RedisPatchSchedule,
 ) as any as S.Schema<RedisPatchScheduleListResultValueList>;
 
@@ -2396,7 +2384,7 @@ export interface RedisPatchScheduleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RedisPatchScheduleListResult = /*@__PURE__*/ S.suspend(() =>
+const RedisPatchScheduleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RedisPatchScheduleListResultValueList,
     nextLink: S.optional(S.String),
@@ -2413,7 +2401,7 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2433,13 +2421,10 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   RedisPropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnectionListResultValueItem =
-  RedisPropertiesPrivateEndpointConnectionsItem;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<RedisPropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   RedisPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
@@ -2449,7 +2434,7 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -2466,7 +2451,7 @@ export interface ListPrivateLinkResourceByRedisCacheRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
-export const ListPrivateLinkResourceByRedisCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByRedisCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2485,12 +2470,12 @@ export const ListPrivateLinkResourceByRedisCacheRequest = /*@__PURE__*/ S.suspen
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   CreateRedisRequestZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   CreateRedisRequestZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -2502,7 +2487,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -2525,7 +2510,7 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2539,7 +2524,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(()
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -2550,7 +2535,7 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -2565,7 +2550,7 @@ export interface ListRedisByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListRedisByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedisByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2583,18 +2568,10 @@ export const ListRedisByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RedisResourceTagsMap = { [key: string]: string | undefined };
-export const RedisResourceTagsMap =
-  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<RedisResourceTagsMap>;
-
 /** The availability zones. */
 export type RedisResourceZonesList = Array<string>;
-export const RedisResourceZonesList =
-  CreateRedisRequestZonesList as any as S.Schema<RedisResourceZonesList>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type RedisResourceIdentity = CreateRedisResponseIdentity;
-export const RedisResourceIdentity = CreateRedisResponseIdentity;
-
 /** A single Redis item in List or Get Operation. */
 export interface RedisResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2616,11 +2593,11 @@ export interface RedisResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
-export const RedisResource = CreateRedisResponse as any as S.Schema<RedisResource>;
+const RedisResource = CreateRedisResponse as any as S.Schema<RedisResource>;
 
 /** The RedisResource items on this page */
 export type RedisListResultValueList = Array<RedisResource>;
-export const RedisListResultValueList = /*@__PURE__*/ S.Array(
+const RedisListResultValueList = /*@__PURE__*/ S.Array(
   RedisResource,
 ) as any as S.Schema<RedisListResultValueList>;
 
@@ -2631,7 +2608,7 @@ export interface RedisListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RedisListResult = /*@__PURE__*/ S.suspend(() =>
+const RedisListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RedisListResultValueList,
     nextLink: S.optional(S.String),
@@ -2642,7 +2619,7 @@ export interface ListRedisBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListRedisBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedisBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2665,7 +2642,7 @@ export interface ListRedisKeysRequest {
   /** The name of the RedisResource */
   name: string;
 }
-export const ListRedisKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedisKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2690,7 +2667,7 @@ export interface ListRedisUpgradeNotificationsRequest {
   /** how many minutes in past to look for upgrade notifications */
   history: number;
 }
-export const ListRedisUpgradeNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedisUpgradeNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2710,7 +2687,7 @@ export const ListRedisUpgradeNotificationsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Details about this upgrade notification */
 export type UpgradeNotificationUpsellNotificationMap = { [key: string]: string | undefined };
-export const UpgradeNotificationUpsellNotificationMap =
+const UpgradeNotificationUpsellNotificationMap =
   RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<UpgradeNotificationUpsellNotificationMap>;
 
 /** Properties of upgrade notification. */
@@ -2722,7 +2699,7 @@ export interface UpgradeNotification {
   /** Details about this upgrade notification */
   upsellNotification?: UpgradeNotificationUpsellNotificationMap;
 }
-export const UpgradeNotification = /*@__PURE__*/ S.suspend(() =>
+const UpgradeNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -2732,7 +2709,7 @@ export const UpgradeNotification = /*@__PURE__*/ S.suspend(() =>
 
 /** The UpgradeNotification items on this page */
 export type NotificationListResponseValueList = Array<UpgradeNotification>;
-export const NotificationListResponseValueList = /*@__PURE__*/ S.Array(
+const NotificationListResponseValueList = /*@__PURE__*/ S.Array(
   UpgradeNotification,
 ) as any as S.Schema<NotificationListResponseValueList>;
 
@@ -2743,7 +2720,7 @@ export interface NotificationListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const NotificationListResponse = /*@__PURE__*/ S.suspend(() =>
+const NotificationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: NotificationListResponseValueList,
     nextLink: S.optional(S.String),
@@ -2751,7 +2728,7 @@ export const NotificationListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationListResponse" }) as any as S.Schema<NotificationListResponse>;
 
 export type PatchSchedulesCreateOrUpdateRequestDefault = "default";
-export const PatchSchedulesCreateOrUpdateRequestDefault = S.String;
+const PatchSchedulesCreateOrUpdateRequestDefault = S.String;
 
 export interface PatchSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2765,7 +2742,7 @@ export interface PatchSchedulesCreateOrUpdateRequest {
   /** List of patch schedules for a Redis cache. */
   properties: ScheduleEntries;
 }
-export const PatchSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2798,7 +2775,7 @@ export interface PatchSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PatchSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2813,8 +2790,6 @@ export const PatchSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** The private endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
-export const PrivateEndpointInput = UserAssignedIdentityInput;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private endpoint resource. */
@@ -2822,7 +2797,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(UserAssignedIdentityInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -2843,7 +2818,7 @@ export interface PutPrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2874,16 +2849,16 @@ export interface PutPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PutPrivateEndpointConnectionResponse =
+const PutPrivateEndpointConnectionResponse =
   RedisPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PutPrivateEndpointConnectionResponse>;
 
 /** Which Redis node(s) to reboot. Depending on this value data loss is possible. */
 export type RebootType = "PrimaryNode" | "SecondaryNode" | "AllNodes";
-export const RebootType = S.String;
+const RebootType = S.String;
 
 /** A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports. */
 export type RebootRedisForceRequestPortsList = Array<number>;
-export const RebootRedisForceRequestPortsList = /*@__PURE__*/ S.Array(
+const RebootRedisForceRequestPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RebootRedisForceRequestPortsList>;
 
@@ -2901,7 +2876,7 @@ export interface RebootRedisForceRequest {
   /** A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports. */
   ports?: RebootRedisForceRequestPortsList;
 }
-export const RebootRedisForceRequest = /*@__PURE__*/ S.suspend(() =>
+const RebootRedisForceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2924,7 +2899,7 @@ export interface RebootRedisForceResponse {
   /** Status message */
   message?: string;
 }
-export const RebootRedisForceResponse = /*@__PURE__*/ S.suspend(() =>
+const RebootRedisForceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -2932,7 +2907,7 @@ export const RebootRedisForceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The Redis access key to regenerate. */
 export type RedisKeyType = "Primary" | "Secondary";
-export const RedisKeyType = S.String;
+const RedisKeyType = S.String;
 
 export interface RegenerateRedisKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2944,7 +2919,7 @@ export interface RegenerateRedisKeyRequest {
   /** The Redis access key to regenerate. */
   keyType: RedisKeyType | (string & {});
 }
-export const RegenerateRedisKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateRedisKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2964,7 +2939,7 @@ export const RegenerateRedisKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A dictionary of tenant settings */
 export type RedisUpdatePropertiesInputTenantSettingsMap = { [key: string]: string | undefined };
-export const RedisUpdatePropertiesInputTenantSettingsMap =
+const RedisUpdatePropertiesInputTenantSettingsMap =
   RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<RedisUpdatePropertiesInputTenantSettingsMap>;
 
 /** Patchable properties of the redis cache. */
@@ -2996,7 +2971,7 @@ export interface RedisUpdatePropertiesInput {
   /** The SKU of the Redis cache to deploy. */
   sku?: Sku;
 }
-export const RedisUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RedisUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisConfiguration: S.optional(RedisCommonPropertiesRedisConfigurationInput),
     redisVersion: S.optional(S.String),
@@ -3018,13 +2993,11 @@ export const RedisUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRedisRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateRedisRequestTagsMap =
+const UpdateRedisRequestTagsMap =
   RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<UpdateRedisRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateRedisRequestIdentity = CreateRedisRequestIdentity;
-export const UpdateRedisRequestIdentity = CreateRedisRequestIdentity;
-
 export interface UpdateRedisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3039,7 +3012,7 @@ export interface UpdateRedisRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisRequestIdentity;
 }
-export const UpdateRedisRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRedisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3059,18 +3032,10 @@ export const UpdateRedisRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRedisResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRedisResponseTagsMap =
-  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<UpdateRedisResponseTagsMap>;
-
 /** The availability zones. */
 export type UpdateRedisResponseZonesList = Array<string>;
-export const UpdateRedisResponseZonesList =
-  CreateRedisRequestZonesList as any as S.Schema<UpdateRedisResponseZonesList>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateRedisResponseIdentity = CreateRedisResponseIdentity;
-export const UpdateRedisResponseIdentity = CreateRedisResponseIdentity;
-
 export interface UpdateRedisResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3091,7 +3056,7 @@ export interface UpdateRedisResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
-export const UpdateRedisResponse = CreateRedisResponse as any as S.Schema<UpdateRedisResponse>;
+const UpdateRedisResponse = CreateRedisResponse as any as S.Schema<UpdateRedisResponse>;
 
 export type AccessPolicyAssignmentCreateUpdateError = AzureOpError;
 /** Adds the access policy assignment to the specified users */

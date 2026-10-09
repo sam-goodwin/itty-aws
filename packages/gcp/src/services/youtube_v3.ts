@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface BatchGetStatsVideosRequest {
   /** Required. Return videos with the given ids. The number of IDs specified cannot exceed 50. */
@@ -72,7 +72,7 @@ export interface BatchGetStatsVideosRequest {
   /** Required. The `**part**` parameter specifies a comma-separated list of one or more `videoStat` resource properties that the API response will include. If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a `videoStat` resource, the `statistics` property contains `view_count` and `like_count`. As such, if you set `**part=snippet**`, the API response will contain all of those properties. */
   part?: StringList;
 }
-export const BatchGetStatsVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetStatsVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(StringList.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -97,7 +97,7 @@ export interface VideoStatsStatistics {
   /** Output only. The number of users who have indicated that they liked the video by giving it a positive rating. */
   likeCount?: string;
 }
-export const VideoStatsStatistics = /*@__PURE__*/ S.suspend(() =>
+const VideoStatsStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewCount: S.optional(S.String),
     commentCount: S.optional(S.String),
@@ -110,7 +110,7 @@ export interface VideoStatsSnippet {
   /** Output only. The date and time that the video was uploaded. The property value is a [`google.protobuf.Timestamp`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#timestamp) object. */
   publishTime?: string;
 }
-export const VideoStatsSnippet = /*@__PURE__*/ S.suspend(() =>
+const VideoStatsSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishTime: S.optional(S.String),
   }),
@@ -121,7 +121,7 @@ export interface VideoStatsContentDetails {
   /** Output only. The length of the video. The property value is a [`google.protobuf.Duration`](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) object. */
   duration?: string;
 }
-export const VideoStatsContentDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoStatsContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
   }),
@@ -142,7 +142,7 @@ export interface VideoStat {
   /** Output only. Etag of this resource. */
   etag?: string;
 }
-export const VideoStat = /*@__PURE__*/ S.suspend(() =>
+const VideoStat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     statistics: S.optional(VideoStatsStatistics),
@@ -154,7 +154,7 @@ export const VideoStat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoStat" }) as any as S.Schema<VideoStat>;
 
 export type VideoStatList = Array<VideoStat>;
-export const VideoStatList = /*@__PURE__*/ S.Array(VideoStat) as any as S.Schema<VideoStatList>;
+const VideoStatList = /*@__PURE__*/ S.Array(VideoStat) as any as S.Schema<VideoStatList>;
 
 /** Response for the Videos.stats API. Returns VideoStat information about a batch of videos. VideoStat contains a subset of the information in Video that is relevant to statistics and content details. BatchGetStats is intentionally not atomic to provide a better user experience. BatchGetStatsResponse returns a summary to help users understand the outcome of the operation. */
 export interface BatchGetStatsResponse {
@@ -165,7 +165,7 @@ export interface BatchGetStatsResponse {
   /** The videos' stats information. */
   items?: VideoStatList;
 }
-export const BatchGetStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     kind: S.optional(S.String),
@@ -185,7 +185,7 @@ export interface BindLiveBroadcastsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const BindLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const BindLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
@@ -207,7 +207,7 @@ export type CuepointScheduleScheduleStrategyEnum =
   | "scheduleStrategyUnspecified"
   | "concurrent"
   | "nonConcurrent";
-export const CuepointScheduleScheduleStrategyEnum = S.String;
+const CuepointScheduleScheduleStrategyEnum = S.String;
 
 /** Schedule to insert cuepoints into a broadcast by ads automator. */
 export interface CuepointSchedule {
@@ -220,7 +220,7 @@ export interface CuepointSchedule {
   /** If set, automatic cuepoint insertion is paused until this timestamp ("No Ad Zone"). The value is specified in ISO 8601 format. */
   pauseAdsUntil?: string;
 }
-export const CuepointSchedule = /*@__PURE__*/ S.suspend(() =>
+const CuepointSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleStrategy: S.optional(CuepointScheduleScheduleStrategyEnum),
     enabled: S.optional(S.Boolean),
@@ -233,7 +233,7 @@ export const CuepointSchedule = /*@__PURE__*/ S.suspend(() =>
 export interface LiveBroadcastMonetizationDetails {
   cuepointSchedule?: CuepointSchedule;
 }
-export const LiveBroadcastMonetizationDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcastMonetizationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cuepointSchedule: S.optional(CuepointSchedule),
   }),
@@ -250,7 +250,7 @@ export interface Thumbnail {
   /** (Optional) Height of the thumbnail image. */
   height?: number;
 }
-export const Thumbnail = /*@__PURE__*/ S.suspend(() =>
+const Thumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     width: S.optional(S.Number),
@@ -277,7 +277,7 @@ export interface ThumbnailDetails {
   /** The medium quality image for this resource. */
   medium?: Thumbnail;
 }
-export const ThumbnailDetails = /*@__PURE__*/ S.suspend(() =>
+const ThumbnailDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxres: S.optional(Thumbnail),
     uhd: S.optional(Thumbnail),
@@ -317,7 +317,7 @@ export interface LiveBroadcastSnippet {
   /** Indicates whether this broadcast is the default broadcast. Internal only. */
   isDefaultBroadcast?: boolean;
 }
-export const LiveBroadcastSnippet = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcastSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEndTime: S.optional(S.String),
     thumbnails: S.optional(ThumbnailDetails),
@@ -339,7 +339,7 @@ export interface LiveBroadcastStatistics {
   /** The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the broadcast ends. So, this property would not identify the number of viewers watching an archived video of a live broadcast that already ended. */
   concurrentViewers?: string;
 }
-export const LiveBroadcastStatistics = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcastStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concurrentViewers: S.optional(S.String),
   }),
@@ -355,24 +355,24 @@ export type LiveBroadcastStatusLifeCycleStatusEnum =
   | "revoked"
   | "testStarting"
   | "liveStarting";
-export const LiveBroadcastStatusLifeCycleStatusEnum = S.String;
+const LiveBroadcastStatusLifeCycleStatusEnum = S.String;
 
 export type LiveBroadcastStatusLiveBroadcastPriorityEnum =
   | "liveBroadcastPriorityUnspecified"
   | "low"
   | "normal"
   | "high";
-export const LiveBroadcastStatusLiveBroadcastPriorityEnum = S.String;
+const LiveBroadcastStatusLiveBroadcastPriorityEnum = S.String;
 
 export type LiveBroadcastStatusRecordingStatusEnum =
   | "liveBroadcastRecordingStatusUnspecified"
   | "notRecording"
   | "recording"
   | "recorded";
-export const LiveBroadcastStatusRecordingStatusEnum = S.String;
+const LiveBroadcastStatusRecordingStatusEnum = S.String;
 
 export type LiveBroadcastStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
-export const LiveBroadcastStatusPrivacyStatusEnum = S.String;
+const LiveBroadcastStatusPrivacyStatusEnum = S.String;
 
 /** Live broadcast state. */
 export interface LiveBroadcastStatus {
@@ -389,7 +389,7 @@ export interface LiveBroadcastStatus {
   /** The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource. */
   privacyStatus?: LiveBroadcastStatusPrivacyStatusEnum | (string & {});
 }
-export const LiveBroadcastStatus = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcastStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selfDeclaredMadeForKids: S.optional(S.Boolean),
     lifeCycleStatus: S.optional(LiveBroadcastStatusLifeCycleStatusEnum),
@@ -409,7 +409,7 @@ export interface MonitorStreamInfo {
   /** If you have set the enableMonitorStream property to true, then this property determines the length of the live broadcast delay. */
   broadcastStreamDelayMs?: number;
 }
-export const MonitorStreamInfo = /*@__PURE__*/ S.suspend(() =>
+const MonitorStreamInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableMonitorStream: S.optional(S.Boolean),
     embedHtml: S.optional(S.String),
@@ -422,28 +422,28 @@ export type LiveBroadcastContentDetailsProjectionEnum =
   | "rectangular"
   | "360"
   | "mesh";
-export const LiveBroadcastContentDetailsProjectionEnum = S.String;
+const LiveBroadcastContentDetailsProjectionEnum = S.String;
 
 export type LiveBroadcastContentDetailsLatencyPreferenceEnum =
   | "latencyPreferenceUnspecified"
   | "normal"
   | "low"
   | "ultraLow";
-export const LiveBroadcastContentDetailsLatencyPreferenceEnum = S.String;
+const LiveBroadcastContentDetailsLatencyPreferenceEnum = S.String;
 
 export type LiveBroadcastContentDetailsClosedCaptionsTypeEnum =
   | "closedCaptionsTypeUnspecified"
   | "closedCaptionsDisabled"
   | "closedCaptionsHttpPost"
   | "closedCaptionsEmbedded";
-export const LiveBroadcastContentDetailsClosedCaptionsTypeEnum = S.String;
+const LiveBroadcastContentDetailsClosedCaptionsTypeEnum = S.String;
 
 export type LiveBroadcastContentDetailsStereoLayoutEnum =
   | "stereoLayoutUnspecified"
   | "mono"
   | "leftRight"
   | "topBottom";
-export const LiveBroadcastContentDetailsStereoLayoutEnum = S.String;
+const LiveBroadcastContentDetailsStereoLayoutEnum = S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -452,7 +452,7 @@ export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -466,7 +466,7 @@ export interface AvailabilityConfigGlobalConfig {
   /** Default time window where video is available for all non-blocked regions Not supported for upcoming / active live broadcasts. If start time is unspecified, video is already available If end time is unspecified, video is available forever Specified start and end times cannot be more than five years in the future. */
   interval?: Interval;
 }
-export const AvailabilityConfigGlobalConfig = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityConfigGlobalConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedRegionCodes: S.optional(StringList),
     interval: S.optional(Interval),
@@ -482,7 +482,7 @@ export interface AvailabilityConfigRegionsConfigRegionInterval {
   /** Time window where video is available for the region. Not supported for upcoming / active live broadcasts. If start time is unspecified, video is already available If end time is unspecified, video is available forever Specified start and end times cannot be more than five years in the future. */
   interval?: Interval;
 }
-export const AvailabilityConfigRegionsConfigRegionInterval = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityConfigRegionsConfigRegionInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     interval: S.optional(Interval),
@@ -493,7 +493,7 @@ export const AvailabilityConfigRegionsConfigRegionInterval = /*@__PURE__*/ S.sus
 
 export type AvailabilityConfigRegionsConfigRegionIntervalList =
   Array<AvailabilityConfigRegionsConfigRegionInterval>;
-export const AvailabilityConfigRegionsConfigRegionIntervalList = /*@__PURE__*/ S.Array(
+const AvailabilityConfigRegionsConfigRegionIntervalList = /*@__PURE__*/ S.Array(
   AvailabilityConfigRegionsConfigRegionInterval,
 ) as any as S.Schema<AvailabilityConfigRegionsConfigRegionIntervalList>;
 
@@ -502,7 +502,7 @@ export interface AvailabilityConfigRegionsConfig {
   /** Required. List of regions and time windows where video is available. If a region is specified multiple times, the union of all intervals is used. */
   regionIntervals?: AvailabilityConfigRegionsConfigRegionIntervalList;
 }
-export const AvailabilityConfigRegionsConfig = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityConfigRegionsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionIntervals: S.optional(AvailabilityConfigRegionsConfigRegionIntervalList),
   }),
@@ -517,7 +517,7 @@ export interface AvailabilityConfig {
   /** Video is available in the specified regions only. */
   regionsConfig?: AvailabilityConfigRegionsConfig;
 }
-export const AvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     globalConfig: S.optional(AvailabilityConfigGlobalConfig),
     regionsConfig: S.optional(AvailabilityConfigRegionsConfig),
@@ -562,7 +562,7 @@ export interface LiveBroadcastContentDetails {
   /** This setting indicates whether the broadcast should automatically begin with an in-stream slate when you update the broadcast's status to live. After updating the status, you then need to send a liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and make your broadcast stream visible to viewers. */
   startWithSlate?: boolean;
 }
-export const LiveBroadcastContentDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcastContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boundStreamLastUpdateTimeMs: S.optional(S.String),
     mesh: S.optional(S.String),
@@ -606,7 +606,7 @@ export interface LiveBroadcast {
   /** The contentDetails object contains information about the event's video content, such as whether the content can be shown in an embedded video player or if it will be archived and therefore available for viewing after the event has concluded. */
   contentDetails?: LiveBroadcastContentDetails;
 }
-export const LiveBroadcast = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcast = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monetizationDetails: S.optional(LiveBroadcastMonetizationDetails),
     etag: S.optional(S.String),
@@ -626,7 +626,7 @@ export interface DeleteCaptionsRequest {
   onBehalfOf?: string;
   id: string;
 }
-export const DeleteCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     onBehalfOf: S.optional(S.String.pipe(T.Query())),
@@ -641,7 +641,7 @@ export const DeleteCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCaptionsRequest" }) as any as S.Schema<DeleteCaptionsRequest>;
 
 export interface DeleteCaptionsResponse {}
-export const DeleteCaptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCaptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCaptionsResponse",
 }) as any as S.Schema<DeleteCaptionsResponse>;
 
@@ -650,7 +650,7 @@ export interface DeleteChannelSectionsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const DeleteChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -666,13 +666,13 @@ export const DeleteChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteChannelSectionsRequest>;
 
 export interface DeleteChannelSectionsResponse {}
-export const DeleteChannelSectionsResponse =
+const DeleteChannelSectionsResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteChannelSectionsResponse>;
 
 export interface DeleteCommentsRequest {
   id: string;
 }
-export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
   }).pipe(
@@ -685,8 +685,7 @@ export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentsRequest" }) as any as S.Schema<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
-export const DeleteCommentsResponse =
-  DeleteCaptionsResponse as any as S.Schema<DeleteCommentsResponse>;
+const DeleteCommentsResponse = DeleteCaptionsResponse as any as S.Schema<DeleteCommentsResponse>;
 
 export interface DeleteLiveBroadcastsRequest {
   /** This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel. */
@@ -696,7 +695,7 @@ export interface DeleteLiveBroadcastsRequest {
   /** Broadcast to delete. */
   id: string;
 }
-export const DeleteLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -713,13 +712,13 @@ export const DeleteLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveBroadcastsRequest>;
 
 export interface DeleteLiveBroadcastsResponse {}
-export const DeleteLiveBroadcastsResponse =
+const DeleteLiveBroadcastsResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteLiveBroadcastsResponse>;
 
 export interface DeleteLiveChatBansRequest {
   id: string;
 }
-export const DeleteLiveChatBansRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveChatBansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
   }).pipe(
@@ -734,13 +733,13 @@ export const DeleteLiveChatBansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveChatBansRequest>;
 
 export interface DeleteLiveChatBansResponse {}
-export const DeleteLiveChatBansResponse =
+const DeleteLiveChatBansResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteLiveChatBansResponse>;
 
 export interface DeleteLiveChatMessagesRequest {
   id: string;
 }
-export const DeleteLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
   }).pipe(
@@ -755,13 +754,13 @@ export const DeleteLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveChatMessagesRequest>;
 
 export interface DeleteLiveChatMessagesResponse {}
-export const DeleteLiveChatMessagesResponse =
+const DeleteLiveChatMessagesResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteLiveChatMessagesResponse>;
 
 export interface DeleteLiveChatModeratorsRequest {
   id: string;
 }
-export const DeleteLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
   }).pipe(
@@ -776,9 +775,7 @@ export const DeleteLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveChatModeratorsRequest>;
 
 export interface DeleteLiveChatModeratorsResponse {}
-export const DeleteLiveChatModeratorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteLiveChatModeratorsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteLiveChatModeratorsResponse",
 }) as any as S.Schema<DeleteLiveChatModeratorsResponse>;
 
@@ -789,7 +786,7 @@ export interface DeleteLiveStreamsRequest {
   onBehalfOfContentOwnerChannel?: string;
   id: string;
 }
-export const DeleteLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
@@ -804,7 +801,7 @@ export const DeleteLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLiveStreamsRequest" }) as any as S.Schema<DeleteLiveStreamsRequest>;
 
 export interface DeleteLiveStreamsResponse {}
-export const DeleteLiveStreamsResponse =
+const DeleteLiveStreamsResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteLiveStreamsResponse>;
 
 export interface DeletePlaylistImagesRequest {
@@ -813,7 +810,7 @@ export interface DeletePlaylistImagesRequest {
   /** Id to identify this image. This is returned from by the List method. */
   id?: string;
 }
-export const DeletePlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     id: S.optional(S.String.pipe(T.Query())),
@@ -829,7 +826,7 @@ export const DeletePlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlaylistImagesRequest>;
 
 export interface DeletePlaylistImagesResponse {}
-export const DeletePlaylistImagesResponse =
+const DeletePlaylistImagesResponse =
   DeleteCaptionsResponse as any as S.Schema<DeletePlaylistImagesResponse>;
 
 export interface DeletePlaylistItemsRequest {
@@ -837,7 +834,7 @@ export interface DeletePlaylistItemsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const DeletePlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -853,7 +850,7 @@ export const DeletePlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlaylistItemsRequest>;
 
 export interface DeletePlaylistItemsResponse {}
-export const DeletePlaylistItemsResponse =
+const DeletePlaylistItemsResponse =
   DeleteCaptionsResponse as any as S.Schema<DeletePlaylistItemsResponse>;
 
 export interface DeletePlaylistsRequest {
@@ -861,7 +858,7 @@ export interface DeletePlaylistsRequest {
   onBehalfOfContentOwner?: string;
   id: string;
 }
-export const DeletePlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     id: S.String.pipe(T.Query()),
@@ -875,13 +872,12 @@ export const DeletePlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePlaylistsRequest" }) as any as S.Schema<DeletePlaylistsRequest>;
 
 export interface DeletePlaylistsResponse {}
-export const DeletePlaylistsResponse =
-  DeleteCaptionsResponse as any as S.Schema<DeletePlaylistsResponse>;
+const DeletePlaylistsResponse = DeleteCaptionsResponse as any as S.Schema<DeletePlaylistsResponse>;
 
 export interface DeleteSubscriptionsRequest {
   id: string;
 }
-export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
   }).pipe(
@@ -896,14 +892,14 @@ export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse =
+const DeleteSubscriptionsResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteSubscriptionsResponse>;
 
 export type DeleteThirdPartyLinksTypeEnum =
   | "linkUnspecified"
   | "channelToStoreLink"
   | "channelToAffiliateProgramLink";
-export const DeleteThirdPartyLinksTypeEnum = S.String;
+const DeleteThirdPartyLinksTypeEnum = S.String;
 
 export interface DeleteThirdPartyLinksRequest {
   /** Channel ID to which changes should be applied, for delegation. */
@@ -915,7 +911,7 @@ export interface DeleteThirdPartyLinksRequest {
   /** Type of the link to be deleted. */
   type: DeleteThirdPartyLinksTypeEnum | (string & {});
 }
-export const DeleteThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalChannelId: S.optional(S.String.pipe(T.Query())),
     part: S.optional(StringList.pipe(T.Query())),
@@ -933,7 +929,7 @@ export const DeleteThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThirdPartyLinksRequest>;
 
 export interface DeleteThirdPartyLinksResponse {}
-export const DeleteThirdPartyLinksResponse =
+const DeleteThirdPartyLinksResponse =
   DeleteCaptionsResponse as any as S.Schema<DeleteThirdPartyLinksResponse>;
 
 export interface DeleteVideosRequest {
@@ -941,7 +937,7 @@ export interface DeleteVideosRequest {
   onBehalfOfContentOwner?: string;
   id: string;
 }
-export const DeleteVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     id: S.String.pipe(T.Query()),
@@ -955,7 +951,7 @@ export const DeleteVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVideosRequest" }) as any as S.Schema<DeleteVideosRequest>;
 
 export interface DeleteVideosResponse {}
-export const DeleteVideosResponse = DeleteCaptionsResponse as any as S.Schema<DeleteVideosResponse>;
+const DeleteVideosResponse = DeleteCaptionsResponse as any as S.Schema<DeleteVideosResponse>;
 
 export interface DownloadCaptionsRequest {
   /** Convert the captions into this format. Supported options are sbv, srt, and vtt. */
@@ -969,7 +965,7 @@ export interface DownloadCaptionsRequest {
   /** The ID of the caption track to download, required for One Platform. */
   id: string;
 }
-export const DownloadCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tfmt: S.optional(S.String.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -986,7 +982,7 @@ export const DownloadCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadCaptionsRequest" }) as any as S.Schema<DownloadCaptionsRequest>;
 
 export interface DownloadCaptionsResponse {}
-export const DownloadCaptionsResponse =
+const DownloadCaptionsResponse =
   DeleteCaptionsResponse as any as S.Schema<DownloadCaptionsResponse>;
 
 export interface GetRatingVideosRequest {
@@ -994,7 +990,7 @@ export interface GetRatingVideosRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const GetRatingVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRatingVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -1008,7 +1004,7 @@ export const GetRatingVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRatingVideosRequest" }) as any as S.Schema<GetRatingVideosRequest>;
 
 export type VideoRatingRatingEnum = "none" | "like" | "dislike";
-export const VideoRatingRatingEnum = S.String;
+const VideoRatingRatingEnum = S.String;
 
 /** Basic details about rating of a video. */
 export interface VideoRating {
@@ -1017,7 +1013,7 @@ export interface VideoRating {
   /** Rating of a video. */
   rating?: VideoRatingRatingEnum;
 }
-export const VideoRating = /*@__PURE__*/ S.suspend(() =>
+const VideoRating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoId: S.optional(S.String),
     rating: S.optional(VideoRatingRatingEnum),
@@ -1025,9 +1021,7 @@ export const VideoRating = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoRating" }) as any as S.Schema<VideoRating>;
 
 export type VideoRatingList = Array<VideoRating>;
-export const VideoRatingList = /*@__PURE__*/ S.Array(
-  VideoRating,
-) as any as S.Schema<VideoRatingList>;
+const VideoRatingList = /*@__PURE__*/ S.Array(VideoRating) as any as S.Schema<VideoRatingList>;
 
 export interface VideoGetRatingResponse {
   /** Etag of this resource. */
@@ -1041,7 +1035,7 @@ export interface VideoGetRatingResponse {
   /** The visitorId identifies the visitor. */
   visitorId?: string;
 }
-export const VideoGetRatingResponse = /*@__PURE__*/ S.suspend(() =>
+const VideoGetRatingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     eventId: S.optional(S.String),
@@ -1055,7 +1049,7 @@ export interface GetVideoTrainabilityRequest {
   /** The ID of the video to retrieve. */
   id?: string;
 }
-export const GetVideoTrainabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVideoTrainabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -1080,7 +1074,7 @@ export interface VideoTrainability {
   /** Etag of this resource. */
   etag?: string;
 }
-export const VideoTrainability = /*@__PURE__*/ S.suspend(() =>
+const VideoTrainability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoId: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1094,7 +1088,7 @@ export interface Entity {
   url?: string;
   typeId?: string;
 }
-export const Entity = /*@__PURE__*/ S.suspend(() =>
+const Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     url: S.optional(S.String),
@@ -1105,28 +1099,28 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 export interface RelatedEntity {
   entity?: Entity;
 }
-export const RelatedEntity = /*@__PURE__*/ S.suspend(() =>
+const RelatedEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(Entity),
   }),
 ).annotate({ identifier: "RelatedEntity" }) as any as S.Schema<RelatedEntity>;
 
 export type RelatedEntityList = Array<RelatedEntity>;
-export const RelatedEntityList = /*@__PURE__*/ S.Array(
+const RelatedEntityList = /*@__PURE__*/ S.Array(
   RelatedEntity,
 ) as any as S.Schema<RelatedEntityList>;
 
 export interface AbuseType {
   id?: string;
 }
-export const AbuseType = /*@__PURE__*/ S.suspend(() =>
+const AbuseType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({ identifier: "AbuseType" }) as any as S.Schema<AbuseType>;
 
 export type AbuseTypeList = Array<AbuseType>;
-export const AbuseTypeList = /*@__PURE__*/ S.Array(AbuseType) as any as S.Schema<AbuseTypeList>;
+const AbuseTypeList = /*@__PURE__*/ S.Array(AbuseType) as any as S.Schema<AbuseTypeList>;
 
 export interface AbuseReport {
   description?: string;
@@ -1134,7 +1128,7 @@ export interface AbuseReport {
   relatedEntities?: RelatedEntityList;
   abuseTypes?: AbuseTypeList;
 }
-export const AbuseReport = /*@__PURE__*/ S.suspend(() =>
+const AbuseReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     subject: S.optional(Entity),
@@ -1149,7 +1143,7 @@ export interface InsertAbuseReportsRequest {
   /** Request body */
   body?: AbuseReport;
 }
-export const InsertAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(AbuseReport.pipe(T.HttpBody())),
@@ -1168,16 +1162,16 @@ export type CaptionSnippetFailureReasonEnum =
   | "unknownFormat"
   | "unsupportedFormat"
   | "processingFailed";
-export const CaptionSnippetFailureReasonEnum = S.String;
+const CaptionSnippetFailureReasonEnum = S.String;
 
 export type CaptionSnippetStatusEnum = "serving" | "syncing" | "failed";
-export const CaptionSnippetStatusEnum = S.String;
+const CaptionSnippetStatusEnum = S.String;
 
 export type CaptionSnippetAudioTrackTypeEnum = "unknown" | "primary" | "commentary" | "descriptive";
-export const CaptionSnippetAudioTrackTypeEnum = S.String;
+const CaptionSnippetAudioTrackTypeEnum = S.String;
 
 export type CaptionSnippetTrackKindEnum = "standard" | "ASR" | "forced";
-export const CaptionSnippetTrackKindEnum = S.String;
+const CaptionSnippetTrackKindEnum = S.String;
 
 /** Basic details about a caption track, such as its language and name. */
 export interface CaptionSnippet {
@@ -1208,7 +1202,7 @@ export interface CaptionSnippet {
   /** The caption track's type. */
   trackKind?: CaptionSnippetTrackKindEnum | (string & {});
 }
-export const CaptionSnippet = /*@__PURE__*/ S.suspend(() =>
+const CaptionSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isLarge: S.optional(S.Boolean),
@@ -1237,7 +1231,7 @@ export interface Caption {
   /** The ID that YouTube uses to uniquely identify the caption track. */
   id?: string;
 }
-export const Caption = /*@__PURE__*/ S.suspend(() =>
+const Caption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     snippet: S.optional(CaptionSnippet),
@@ -1258,7 +1252,7 @@ export interface InsertCaptionsRequest {
   /** Request body */
   body?: Caption;
 }
-export const InsertCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOf: S.optional(S.String.pipe(T.Query())),
     sync: S.optional(S.Boolean.pipe(T.Query())),
@@ -1282,7 +1276,7 @@ export interface ChannelBannerResource {
   /** The URL of this banner image. */
   url?: string;
 }
-export const ChannelBannerResource = /*@__PURE__*/ S.suspend(() =>
+const ChannelBannerResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1300,7 +1294,7 @@ export interface InsertChannelBannersRequest {
   /** Request body */
   body?: ChannelBannerResource;
 }
-export const InsertChannelBannersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertChannelBannersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String.pipe(T.Query())),
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
@@ -1322,7 +1316,7 @@ export interface ChannelSectionLocalization {
   /** The localized strings for channel section's title. */
   title?: string;
 }
-export const ChannelSectionLocalization = /*@__PURE__*/ S.suspend(() =>
+const ChannelSectionLocalization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
   }),
@@ -1348,13 +1342,13 @@ export type ChannelSectionSnippetTypeEnum =
   | "postedVideos"
   | "postedPlaylists"
   | "subscriptions";
-export const ChannelSectionSnippetTypeEnum = S.String;
+const ChannelSectionSnippetTypeEnum = S.String;
 
 export type ChannelSectionSnippetStyleEnum =
   | "channelsectionStyleUnspecified"
   | "horizontalRow"
   | "verticalList";
-export const ChannelSectionSnippetStyleEnum = S.String;
+const ChannelSectionSnippetStyleEnum = S.String;
 
 /** Basic details about a channel section, including title, style and position. */
 export interface ChannelSectionSnippet {
@@ -1373,7 +1367,7 @@ export interface ChannelSectionSnippet {
   /** The channel section's title for multiple_playlists and multiple_channels. */
   title?: string;
 }
-export const ChannelSectionSnippet = /*@__PURE__*/ S.suspend(() =>
+const ChannelSectionSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localized: S.optional(ChannelSectionLocalization),
     type: S.optional(ChannelSectionSnippetTypeEnum),
@@ -1392,7 +1386,7 @@ export interface ChannelSectionContentDetails {
   /** The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one playlistId is allowed. */
   playlists?: StringList;
 }
-export const ChannelSectionContentDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelSectionContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(StringList),
     playlists: S.optional(StringList),
@@ -1410,7 +1404,7 @@ export interface ChannelSectionTargeting {
   /** The language the channel section is targeting. */
   languages?: StringList;
 }
-export const ChannelSectionTargeting = /*@__PURE__*/ S.suspend(() =>
+const ChannelSectionTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countries: S.optional(StringList),
     regions: S.optional(StringList),
@@ -1421,7 +1415,7 @@ export const ChannelSectionTargeting = /*@__PURE__*/ S.suspend(() =>
 export type ChannelSectionLocalizationMap = {
   [key: string]: ChannelSectionLocalization | undefined;
 };
-export const ChannelSectionLocalizationMap = /*@__PURE__*/ S.Record(
+const ChannelSectionLocalizationMap = /*@__PURE__*/ S.Record(
   S.String,
   ChannelSectionLocalization,
 ) as any as S.Schema<ChannelSectionLocalizationMap>;
@@ -1442,7 +1436,7 @@ export interface ChannelSection {
   /** The ID that YouTube uses to uniquely identify the channel section. */
   id?: string;
 }
-export const ChannelSection = /*@__PURE__*/ S.suspend(() =>
+const ChannelSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(ChannelSectionSnippet),
     contentDetails: S.optional(ChannelSectionContentDetails),
@@ -1464,7 +1458,7 @@ export interface InsertChannelSectionsRequest {
   /** Request body */
   body?: ChannelSection;
 }
-export const InsertChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -1482,21 +1476,21 @@ export const InsertChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertChannelSectionsRequest>;
 
 export type CommentSnippetViewerRatingEnum = "none" | "like" | "dislike";
-export const CommentSnippetViewerRatingEnum = S.String;
+const CommentSnippetViewerRatingEnum = S.String;
 
 export type CommentSnippetModerationStatusEnum =
   | "published"
   | "heldForReview"
   | "likelySpam"
   | "rejected";
-export const CommentSnippetModerationStatusEnum = S.String;
+const CommentSnippetModerationStatusEnum = S.String;
 
 /** Contains the id of the author's YouTube channel, if any. */
 export interface CommentSnippetAuthorChannelId {
   /** The id of the author's YouTube channel. */
   value?: string;
 }
-export const CommentSnippetAuthorChannelId = /*@__PURE__*/ S.suspend(() =>
+const CommentSnippetAuthorChannelId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -1538,7 +1532,7 @@ export interface CommentSnippet {
   /** The ID of the video the comment refers to, if any. */
   videoId?: string;
 }
-export const CommentSnippet = /*@__PURE__*/ S.suspend(() =>
+const CommentSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishedAt: S.optional(S.String),
     textOriginal: S.optional(S.String),
@@ -1570,7 +1564,7 @@ export interface Comment {
   /** The snippet object contains basic details about the comment. */
   snippet?: CommentSnippet;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     id: S.optional(S.String),
@@ -1585,7 +1579,7 @@ export interface InsertCommentsRequest {
   /** Request body */
   body?: Comment;
 }
-export const InsertCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(Comment.pipe(T.HttpBody())),
@@ -1613,7 +1607,7 @@ export interface CommentThreadSnippet {
   /** Whether the thread (and therefore all its comments) is visible to all YouTube users. */
   isPublic?: boolean;
 }
-export const CommentThreadSnippet = /*@__PURE__*/ S.suspend(() =>
+const CommentThreadSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topLevelComment: S.optional(Comment),
     videoId: S.optional(S.String),
@@ -1625,14 +1619,14 @@ export const CommentThreadSnippet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentThreadSnippet" }) as any as S.Schema<CommentThreadSnippet>;
 
 export type CommentList = Array<Comment>;
-export const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
+const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
 
 /** Comments written in (direct or indirect) reply to the top level comment. */
 export interface CommentThreadReplies {
   /** A limited number of replies. Unless the number of replies returned equals total_reply_count in the snippet the returned replies are only a subset of the total number of replies. */
   comments?: CommentList;
 }
-export const CommentThreadReplies = /*@__PURE__*/ S.suspend(() =>
+const CommentThreadReplies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(CommentList),
   }),
@@ -1651,7 +1645,7 @@ export interface CommentThread {
   /** The ID that YouTube uses to uniquely identify the comment thread. */
   id?: string;
 }
-export const CommentThread = /*@__PURE__*/ S.suspend(() =>
+const CommentThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     snippet: S.optional(CommentThreadSnippet),
@@ -1667,7 +1661,7 @@ export interface InsertCommentThreadsRequest {
   /** Request body */
   body?: CommentThread;
 }
-export const InsertCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(CommentThread.pipe(T.HttpBody())),
@@ -1683,7 +1677,7 @@ export const InsertCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertCommentThreadsRequest>;
 
 export type CuepointCueTypeEnum = "cueTypeUnspecified" | "cueTypeAd";
-export const CuepointCueTypeEnum = S.String;
+const CuepointCueTypeEnum = S.String;
 
 /** Note that there may be a 5-second end-point resolution issue. For instance, if a cuepoint comes in for 22:03:27, we may stuff the cuepoint into 22:03:25 or 22:03:30, depending. This is an artifact of HLS. */
 export interface Cuepoint {
@@ -1698,7 +1692,7 @@ export interface Cuepoint {
   etag?: string;
   cueType?: CuepointCueTypeEnum | (string & {});
 }
-export const Cuepoint = /*@__PURE__*/ S.suspend(() =>
+const Cuepoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     walltimeMs: S.optional(S.String),
@@ -1721,7 +1715,7 @@ export interface InsertCuepointLiveBroadcastsRequest {
   /** Request body */
   body?: Cuepoint;
 }
-export const InsertCuepointLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCuepointLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     id: S.optional(S.String.pipe(T.Query())),
@@ -1749,7 +1743,7 @@ export interface InsertLiveBroadcastsRequest {
   /** Request body */
   body?: LiveBroadcast;
 }
-export const InsertLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
@@ -1776,7 +1770,7 @@ export interface ChannelProfileDetails {
   /** The channel's URL. */
   channelUrl?: string;
 }
-export const ChannelProfileDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfileDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1786,7 +1780,7 @@ export const ChannelProfileDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChannelProfileDetails" }) as any as S.Schema<ChannelProfileDetails>;
 
 export type LiveChatBanSnippetTypeEnum = "liveChatBanTypeUnspecified" | "permanent" | "temporary";
-export const LiveChatBanSnippetTypeEnum = S.String;
+const LiveChatBanSnippetTypeEnum = S.String;
 
 export interface LiveChatBanSnippet {
   bannedUserDetails?: ChannelProfileDetails;
@@ -1797,7 +1791,7 @@ export interface LiveChatBanSnippet {
   /** The duration of a ban, only filled if the ban has type TEMPORARY. */
   banDurationSeconds?: string;
 }
-export const LiveChatBanSnippet = /*@__PURE__*/ S.suspend(() =>
+const LiveChatBanSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bannedUserDetails: S.optional(ChannelProfileDetails),
     type: S.optional(LiveChatBanSnippetTypeEnum),
@@ -1817,7 +1811,7 @@ export interface LiveChatBan {
   /** The `snippet` object contains basic details about the ban. */
   snippet?: LiveChatBanSnippet;
 }
-export const LiveChatBan = /*@__PURE__*/ S.suspend(() =>
+const LiveChatBan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1832,7 +1826,7 @@ export interface InsertLiveChatBansRequest {
   /** Request body */
   body?: LiveChatBan;
 }
-export const InsertLiveChatBansRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLiveChatBansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(LiveChatBan.pipe(T.HttpBody())),
@@ -1865,7 +1859,7 @@ export interface LiveChatMessageAuthorDetails {
   /** Whether the author's identity has been verified by YouTube. */
   isVerified?: boolean;
 }
-export const LiveChatMessageAuthorDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMessageAuthorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     isChatSponsor: S.optional(S.Boolean),
@@ -1888,7 +1882,7 @@ export interface SuperStickerMetadata {
   /** Specifies the localization language in which the alt text is returned. */
   altTextLanguage?: string;
 }
-export const SuperStickerMetadata = /*@__PURE__*/ S.suspend(() =>
+const SuperStickerMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stickerId: S.optional(S.String),
     altText: S.optional(S.String),
@@ -1908,7 +1902,7 @@ export interface LiveChatSuperStickerDetails {
   /** The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1. */
   tier?: number;
 }
-export const LiveChatSuperStickerDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatSuperStickerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountDisplayString: S.optional(S.String),
     superStickerMetadata: S.optional(SuperStickerMetadata),
@@ -1930,7 +1924,7 @@ export interface LiveChatFanFundingEventDetails {
   /** A rendered string that displays the fund amount and currency to the user. */
   amountDisplayString?: string;
 }
-export const LiveChatFanFundingEventDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatFanFundingEventDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     userComment: S.optional(S.String),
@@ -1942,13 +1936,13 @@ export const LiveChatFanFundingEventDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveChatFanFundingEventDetails>;
 
 export type LiveChatPollDetailsStatusEnum = "unknown" | "active" | "closed";
-export const LiveChatPollDetailsStatusEnum = S.String;
+const LiveChatPollDetailsStatusEnum = S.String;
 
 export interface LiveChatPollDetailsPollMetadataPollOption {
   tally?: string;
   optionText?: string;
 }
-export const LiveChatPollDetailsPollMetadataPollOption = /*@__PURE__*/ S.suspend(() =>
+const LiveChatPollDetailsPollMetadataPollOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tally: S.optional(S.String),
     optionText: S.optional(S.String),
@@ -1959,7 +1953,7 @@ export const LiveChatPollDetailsPollMetadataPollOption = /*@__PURE__*/ S.suspend
 
 export type LiveChatPollDetailsPollMetadataPollOptionList =
   Array<LiveChatPollDetailsPollMetadataPollOption>;
-export const LiveChatPollDetailsPollMetadataPollOptionList = /*@__PURE__*/ S.Array(
+const LiveChatPollDetailsPollMetadataPollOptionList = /*@__PURE__*/ S.Array(
   LiveChatPollDetailsPollMetadataPollOption,
 ) as any as S.Schema<LiveChatPollDetailsPollMetadataPollOptionList>;
 
@@ -1968,7 +1962,7 @@ export interface LiveChatPollDetailsPollMetadata {
   /** The options will be returned in the order that is displayed in 1P */
   options?: LiveChatPollDetailsPollMetadataPollOptionList;
 }
-export const LiveChatPollDetailsPollMetadata = /*@__PURE__*/ S.suspend(() =>
+const LiveChatPollDetailsPollMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionText: S.optional(S.String),
     options: S.optional(LiveChatPollDetailsPollMetadataPollOptionList),
@@ -1981,7 +1975,7 @@ export interface LiveChatPollDetails {
   status?: LiveChatPollDetailsStatusEnum | (string & {});
   metadata?: LiveChatPollDetailsPollMetadata;
 }
-export const LiveChatPollDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatPollDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(LiveChatPollDetailsStatusEnum),
     metadata: S.optional(LiveChatPollDetailsPollMetadata),
@@ -1994,7 +1988,7 @@ export interface LiveChatMembershipGiftingDetails {
   /** The name of the level of the gift memberships purchased by the user. The Level names are defined by the YouTube channel offering the Membership. In some situations this field isn't filled. */
   giftMembershipsLevelName?: string;
 }
-export const LiveChatMembershipGiftingDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMembershipGiftingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     giftMembershipsCount: S.optional(S.Number),
     giftMembershipsLevelName: S.optional(S.String),
@@ -2022,13 +2016,13 @@ export type LiveChatMessageSnippetTypeEnum =
   | "superStickerEvent"
   | "pollEvent"
   | "giftEvent";
-export const LiveChatMessageSnippetTypeEnum = S.String;
+const LiveChatMessageSnippetTypeEnum = S.String;
 
 export interface LiveChatTextMessageDetails {
   /** The user's message. */
   messageText?: string;
 }
-export const LiveChatTextMessageDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatTextMessageDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageText: S.optional(S.String),
   }),
@@ -2039,7 +2033,7 @@ export const LiveChatTextMessageDetails = /*@__PURE__*/ S.suspend(() =>
 export interface LiveChatMessageRetractedDetails {
   retractedMessageId?: string;
 }
-export const LiveChatMessageRetractedDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMessageRetractedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retractedMessageId: S.optional(S.String),
   }),
@@ -2055,7 +2049,7 @@ export interface LiveChatMemberMilestoneChatDetails {
   /** The name of the Level at which the viever is a member. The Level names are defined by the YouTube channel offering the Membership. In some situations this field isn't filled. */
   memberLevelName?: string;
 }
-export const LiveChatMemberMilestoneChatDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMemberMilestoneChatDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userComment: S.optional(S.String),
     memberMonth: S.optional(S.Number),
@@ -2068,7 +2062,7 @@ export const LiveChatMemberMilestoneChatDetails = /*@__PURE__*/ S.suspend(() =>
 export interface LiveChatMessageDeletedDetails {
   deletedMessageId?: string;
 }
-export const LiveChatMessageDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMessageDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedMessageId: S.optional(S.String),
   }),
@@ -2082,7 +2076,7 @@ export interface LiveChatNewSponsorDetails {
   /** The name of the Level that the viewer just had joined. The Level names are defined by the YouTube channel offering the Membership. In some situations this field isn't filled. */
   memberLevelName?: string;
 }
-export const LiveChatNewSponsorDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatNewSponsorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isUpgrade: S.optional(S.Boolean),
     memberLevelName: S.optional(S.String),
@@ -2110,7 +2104,7 @@ export interface LiveChatGiftDetails {
   /** The BCP-47 language code of the gift. */
   language?: string;
 }
-export const LiveChatGiftDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatGiftDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     giftDuration: S.optional(S.String),
     altText: S.optional(S.String),
@@ -2135,7 +2129,7 @@ export interface LiveChatSuperChatDetails {
   /** A rendered string that displays the fund amount and currency to the user. */
   amountDisplayString?: string;
 }
-export const LiveChatSuperChatDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatSuperChatDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tier: S.optional(S.Number),
     userComment: S.optional(S.String),
@@ -2153,7 +2147,7 @@ export interface LiveChatGiftMembershipReceivedDetails {
   /** The name of the Level at which the viewer is a member. This matches the `snippet.membershipGiftingDetails.giftMembershipsLevelName` of the associated membership gifting message. The Level names are defined by the YouTube channel offering the Membership. In some situations this field isn't filled. */
   memberLevelName?: string;
 }
-export const LiveChatGiftMembershipReceivedDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatGiftMembershipReceivedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gifterChannelId: S.optional(S.String),
     associatedMembershipGiftingMessageId: S.optional(S.String),
@@ -2164,7 +2158,7 @@ export const LiveChatGiftMembershipReceivedDetails = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<LiveChatGiftMembershipReceivedDetails>;
 
 export type LiveChatUserBannedMessageDetailsBanTypeEnum = "permanent" | "temporary";
-export const LiveChatUserBannedMessageDetailsBanTypeEnum = S.String;
+const LiveChatUserBannedMessageDetailsBanTypeEnum = S.String;
 
 export interface LiveChatUserBannedMessageDetails {
   /** The duration of the ban. This property is only present if the banType is temporary. */
@@ -2174,7 +2168,7 @@ export interface LiveChatUserBannedMessageDetails {
   /** The type of ban. */
   banType?: LiveChatUserBannedMessageDetailsBanTypeEnum | (string & {});
 }
-export const LiveChatUserBannedMessageDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveChatUserBannedMessageDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     banDurationSeconds: S.optional(S.String),
     bannedUserDetails: S.optional(ChannelProfileDetails),
@@ -2221,7 +2215,7 @@ export interface LiveChatMessageSnippet {
   giftMembershipReceivedDetails?: LiveChatGiftMembershipReceivedDetails;
   userBannedDetails?: LiveChatUserBannedMessageDetails;
 }
-export const LiveChatMessageSnippet = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMessageSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     superStickerDetails: S.optional(LiveChatSuperStickerDetails),
     publishedAt: S.optional(S.String),
@@ -2258,7 +2252,7 @@ export interface LiveChatMessage {
   /** The snippet object contains basic details about the message. */
   snippet?: LiveChatMessageSnippet;
 }
-export const LiveChatMessage = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2274,7 +2268,7 @@ export interface InsertLiveChatMessagesRequest {
   /** Request body */
   body?: LiveChatMessage;
 }
-export const InsertLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(LiveChatMessage.pipe(T.HttpBody())),
@@ -2295,7 +2289,7 @@ export interface LiveChatModeratorSnippet {
   /** The ID of the live chat this moderator can act on. */
   liveChatId?: string;
 }
-export const LiveChatModeratorSnippet = /*@__PURE__*/ S.suspend(() =>
+const LiveChatModeratorSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moderatorDetails: S.optional(ChannelProfileDetails),
     liveChatId: S.optional(S.String),
@@ -2313,7 +2307,7 @@ export interface LiveChatModerator {
   /** The ID that YouTube assigns to uniquely identify the moderator. */
   id?: string;
 }
-export const LiveChatModerator = /*@__PURE__*/ S.suspend(() =>
+const LiveChatModerator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(LiveChatModeratorSnippet),
     etag: S.optional(S.String),
@@ -2328,7 +2322,7 @@ export interface InsertLiveChatModeratorsRequest {
   /** Request body */
   body?: LiveChatModerator;
 }
-export const InsertLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(LiveChatModerator.pipe(T.HttpBody())),
@@ -2344,7 +2338,7 @@ export const InsertLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertLiveChatModeratorsRequest>;
 
 export type CdnSettingsFrameRateEnum = "30fps" | "60fps" | "variable";
-export const CdnSettingsFrameRateEnum = S.String;
+const CdnSettingsFrameRateEnum = S.String;
 
 export type CdnSettingsResolutionEnum =
   | "240p"
@@ -2355,10 +2349,10 @@ export type CdnSettingsResolutionEnum =
   | "1440p"
   | "2160p"
   | "variable";
-export const CdnSettingsResolutionEnum = S.String;
+const CdnSettingsResolutionEnum = S.String;
 
 export type CdnSettingsIngestionTypeEnum = "rtmp" | "dash" | "webrtc" | "hls";
-export const CdnSettingsIngestionTypeEnum = S.String;
+const CdnSettingsIngestionTypeEnum = S.String;
 
 /** Describes information necessary for ingesting an RTMP, HTTP, or SRT stream. */
 export interface IngestionInfo {
@@ -2373,7 +2367,7 @@ export interface IngestionInfo {
   /** The backup ingestion URL that you should use to stream video to YouTube. You have the option of simultaneously streaming the content that you are sending to the ingestionAddress to this URL. */
   backupIngestionAddress?: string;
 }
-export const IngestionInfo = /*@__PURE__*/ S.suspend(() =>
+const IngestionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingestionAddress: S.optional(S.String),
     rtmpsIngestionAddress: S.optional(S.String),
@@ -2396,7 +2390,7 @@ export interface CdnSettings {
   /** The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube. */
   ingestionInfo?: IngestionInfo;
 }
-export const CdnSettings = /*@__PURE__*/ S.suspend(() =>
+const CdnSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(S.String),
     frameRate: S.optional(CdnSettingsFrameRateEnum),
@@ -2407,7 +2401,7 @@ export const CdnSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CdnSettings" }) as any as S.Schema<CdnSettings>;
 
 export type LiveStreamHealthStatusStatusEnum = "good" | "ok" | "bad" | "noData" | "revoked";
-export const LiveStreamHealthStatusStatusEnum = S.String;
+const LiveStreamHealthStatusStatusEnum = S.String;
 
 export type LiveStreamConfigurationIssueTypeEnum =
   | "gopSizeOver"
@@ -2444,10 +2438,10 @@ export type LiveStreamConfigurationIssueTypeEnum =
   | "videoResolutionUnsupported"
   | "videoIngestionStarved"
   | "videoIngestionFasterThanRealtime";
-export const LiveStreamConfigurationIssueTypeEnum = S.String;
+const LiveStreamConfigurationIssueTypeEnum = S.String;
 
 export type LiveStreamConfigurationIssueSeverityEnum = "info" | "warning" | "error";
-export const LiveStreamConfigurationIssueSeverityEnum = S.String;
+const LiveStreamConfigurationIssueSeverityEnum = S.String;
 
 export interface LiveStreamConfigurationIssue {
   /** The short-form reason for this issue. */
@@ -2459,7 +2453,7 @@ export interface LiveStreamConfigurationIssue {
   /** The long-form description of the issue and how to resolve it. */
   description?: string;
 }
-export const LiveStreamConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
+const LiveStreamConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     type: S.optional(LiveStreamConfigurationIssueTypeEnum),
@@ -2471,7 +2465,7 @@ export const LiveStreamConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveStreamConfigurationIssue>;
 
 export type LiveStreamConfigurationIssueList = Array<LiveStreamConfigurationIssue>;
-export const LiveStreamConfigurationIssueList = /*@__PURE__*/ S.Array(
+const LiveStreamConfigurationIssueList = /*@__PURE__*/ S.Array(
   LiveStreamConfigurationIssue,
 ) as any as S.Schema<LiveStreamConfigurationIssueList>;
 
@@ -2483,7 +2477,7 @@ export interface LiveStreamHealthStatus {
   /** The last time this status was updated (in seconds) */
   lastUpdateTimeSeconds?: string;
 }
-export const LiveStreamHealthStatus = /*@__PURE__*/ S.suspend(() =>
+const LiveStreamHealthStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(LiveStreamHealthStatusStatusEnum),
     configurationIssues: S.optional(LiveStreamConfigurationIssueList),
@@ -2497,7 +2491,7 @@ export type LiveStreamStatusStreamStatusEnum =
   | "active"
   | "inactive"
   | "error";
-export const LiveStreamStatusStreamStatusEnum = S.String;
+const LiveStreamStatusStreamStatusEnum = S.String;
 
 /** Brief description of the live stream status. */
 export interface LiveStreamStatus {
@@ -2505,7 +2499,7 @@ export interface LiveStreamStatus {
   healthStatus?: LiveStreamHealthStatus;
   streamStatus?: LiveStreamStatusStreamStatusEnum | (string & {});
 }
-export const LiveStreamStatus = /*@__PURE__*/ S.suspend(() =>
+const LiveStreamStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     healthStatus: S.optional(LiveStreamHealthStatus),
     streamStatus: S.optional(LiveStreamStatusStreamStatusEnum),
@@ -2519,7 +2513,7 @@ export interface LiveStreamContentDetails {
   /** Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts. It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts occur at different times. If you set this value to false, then the stream will not be reusable, which means that it can only be bound to one broadcast. Non-reusable streams differ from reusable streams in the following ways: - A non-reusable stream can only be bound to one broadcast. - A non-reusable stream might be deleted by an automated process after the broadcast ends. - The liveStreams.list method does not list non-reusable streams if you call the method and set the mine parameter to true. The only way to use that method to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream. */
   isReusable?: boolean;
 }
-export const LiveStreamContentDetails = /*@__PURE__*/ S.suspend(() =>
+const LiveStreamContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closedCaptionsIngestionUrl: S.optional(S.String),
     isReusable: S.optional(S.Boolean),
@@ -2537,7 +2531,7 @@ export interface LiveStreamSnippet {
   /** The stream's title. The value must be between 1 and 128 characters long. */
   title?: string;
 }
-export const LiveStreamSnippet = /*@__PURE__*/ S.suspend(() =>
+const LiveStreamSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String),
     isDefaultStream: S.optional(S.Boolean),
@@ -2564,7 +2558,7 @@ export interface LiveStream {
   /** The snippet object contains basic details about the stream, including its channel, title, and description. */
   snippet?: LiveStreamSnippet;
 }
-export const LiveStream = /*@__PURE__*/ S.suspend(() =>
+const LiveStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cdn: S.optional(CdnSettings),
     status: S.optional(LiveStreamStatus),
@@ -2586,7 +2580,7 @@ export interface InsertLiveStreamsRequest {
   /** Request body */
   body?: LiveStream;
 }
-export const InsertLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -2602,7 +2596,7 @@ export const InsertLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertLiveStreamsRequest" }) as any as S.Schema<InsertLiveStreamsRequest>;
 
 export type PlaylistImageSnippetTypeEnum = "hero";
-export const PlaylistImageSnippetTypeEnum = S.String;
+const PlaylistImageSnippetTypeEnum = S.String;
 
 /** A *playlistImage* resource identifies another resource, such as a image, that is associated with a playlist. In addition, the playlistImage resource contains details about the included resource that pertain specifically to how that resource is used in that playlist. YouTube uses playlists to identify special collections of videos for a channel, such as: - uploaded videos - favorite videos - positively rated (liked) videos - watch history To be more specific, these lists are associated with a channel, which is a collection of a person, group, or company's videos, playlists, and other YouTube information. You can retrieve the playlist IDs for each of these lists from the channel resource for a given channel. You can then use the playlistImages.list method to retrieve image data for any of those playlists. You can also add or remove images from those lists by calling the playlistImages.insert and playlistImages.delete methods. */
 export interface PlaylistImageSnippet {
@@ -2615,7 +2609,7 @@ export interface PlaylistImageSnippet {
   /** The image height. */
   height?: number;
 }
-export const PlaylistImageSnippet = /*@__PURE__*/ S.suspend(() =>
+const PlaylistImageSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PlaylistImageSnippetTypeEnum),
     width: S.optional(S.Number),
@@ -2631,7 +2625,7 @@ export interface PlaylistImage {
   /** Identifies this resource (playlist id and image type). */
   id?: string;
 }
-export const PlaylistImage = /*@__PURE__*/ S.suspend(() =>
+const PlaylistImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(PlaylistImageSnippet),
     kind: S.optional(S.String),
@@ -2649,7 +2643,7 @@ export interface InsertPlaylistImagesRequest {
   /** Request body */
   body?: PlaylistImage;
 }
-export const InsertPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     part: S.optional(StringList.pipe(T.Query())),
@@ -2667,14 +2661,14 @@ export const InsertPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertPlaylistImagesRequest>;
 
 export type PlaylistItemStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
-export const PlaylistItemStatusPrivacyStatusEnum = S.String;
+const PlaylistItemStatusPrivacyStatusEnum = S.String;
 
 /** Information about the playlist item's privacy status. */
 export interface PlaylistItemStatus {
   /** This resource's privacy status. */
   privacyStatus?: PlaylistItemStatusPrivacyStatusEnum | (string & {});
 }
-export const PlaylistItemStatus = /*@__PURE__*/ S.suspend(() =>
+const PlaylistItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privacyStatus: S.optional(PlaylistItemStatusPrivacyStatusEnum),
   }),
@@ -2691,7 +2685,7 @@ export interface ResourceId {
   /** The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel. This property is only present if the resourceId.kind value is youtube#channel. */
   channelId?: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
+const ResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     playlistId: S.optional(S.String),
@@ -2725,7 +2719,7 @@ export interface PlaylistItemSnippet {
   /** Channel title for the channel that the playlist item belongs to. */
   channelTitle?: string;
 }
-export const PlaylistItemSnippet = /*@__PURE__*/ S.suspend(() =>
+const PlaylistItemSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishedAt: S.optional(S.String),
     thumbnails: S.optional(ThumbnailDetails),
@@ -2753,7 +2747,7 @@ export interface PlaylistItemContentDetails {
   /** The time, measured in seconds from the start of the video, when the video should stop playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) By default, assume that the video.endTime is the end of the video. */
   endAt?: string;
 }
-export const PlaylistItemContentDetails = /*@__PURE__*/ S.suspend(() =>
+const PlaylistItemContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startAt: S.optional(S.String),
     note: S.optional(S.String),
@@ -2780,7 +2774,7 @@ export interface PlaylistItem {
   /** Etag of this resource. */
   etag?: string;
 }
-export const PlaylistItem = /*@__PURE__*/ S.suspend(() =>
+const PlaylistItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2799,7 +2793,7 @@ export interface InsertPlaylistItemsRequest {
   /** Request body */
   body?: PlaylistItem;
 }
-export const InsertPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -2819,7 +2813,7 @@ export interface PlaylistPlayer {
   /** An <iframe> tag that embeds a player that will play the playlist. */
   embedHtml?: string;
 }
-export const PlaylistPlayer = /*@__PURE__*/ S.suspend(() =>
+const PlaylistPlayer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     embedHtml: S.optional(S.String),
   }),
@@ -2829,17 +2823,17 @@ export interface PlaylistContentDetails {
   /** The number of videos in the playlist. */
   itemCount?: number;
 }
-export const PlaylistContentDetails = /*@__PURE__*/ S.suspend(() =>
+const PlaylistContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "PlaylistContentDetails" }) as any as S.Schema<PlaylistContentDetails>;
 
 export type PlaylistStatusPodcastStatusEnum = "enabled" | "disabled";
-export const PlaylistStatusPodcastStatusEnum = S.String;
+const PlaylistStatusPodcastStatusEnum = S.String;
 
 export type PlaylistStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
-export const PlaylistStatusPrivacyStatusEnum = S.String;
+const PlaylistStatusPrivacyStatusEnum = S.String;
 
 export interface PlaylistStatus {
   /** The playlist's podcast status. */
@@ -2847,7 +2841,7 @@ export interface PlaylistStatus {
   /** The playlist's privacy status. */
   privacyStatus?: PlaylistStatusPrivacyStatusEnum | (string & {});
 }
-export const PlaylistStatus = /*@__PURE__*/ S.suspend(() =>
+const PlaylistStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     podcastStatus: S.optional(PlaylistStatusPodcastStatusEnum),
     privacyStatus: S.optional(PlaylistStatusPrivacyStatusEnum),
@@ -2861,7 +2855,7 @@ export interface PlaylistLocalization {
   /** The localized strings for playlist's description. */
   description?: string;
 }
-export const PlaylistLocalization = /*@__PURE__*/ S.suspend(() =>
+const PlaylistLocalization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -2891,7 +2885,7 @@ export interface PlaylistSnippet {
   /** Keyword tags associated with the playlist. */
   tags?: StringList;
 }
-export const PlaylistSnippet = /*@__PURE__*/ S.suspend(() =>
+const PlaylistSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localized: S.optional(PlaylistLocalization),
     channelId: S.optional(S.String),
@@ -2907,7 +2901,7 @@ export const PlaylistSnippet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlaylistSnippet" }) as any as S.Schema<PlaylistSnippet>;
 
 export type PlaylistLocalizationMap = { [key: string]: PlaylistLocalization | undefined };
-export const PlaylistLocalizationMap = /*@__PURE__*/ S.Record(
+const PlaylistLocalizationMap = /*@__PURE__*/ S.Record(
   S.String,
   PlaylistLocalization,
 ) as any as S.Schema<PlaylistLocalizationMap>;
@@ -2931,7 +2925,7 @@ export interface Playlist {
   /** Localizations for different languages */
   localizations?: PlaylistLocalizationMap;
 }
-export const Playlist = /*@__PURE__*/ S.suspend(() =>
+const Playlist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     player: S.optional(PlaylistPlayer),
@@ -2954,7 +2948,7 @@ export interface InsertPlaylistsRequest {
   /** Request body */
   body?: Playlist;
 }
-export const InsertPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
@@ -2984,7 +2978,7 @@ export interface SubscriptionSnippet {
   /** The date and time that the subscription was created. */
   publishedAt?: string;
 }
-export const SubscriptionSnippet = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(ResourceId),
     channelId: S.optional(S.String),
@@ -2999,7 +2993,7 @@ export type SubscriptionContentDetailsActivityTypeEnum =
   | "subscriptionActivityTypeUnspecified"
   | "all"
   | "uploads";
-export const SubscriptionContentDetailsActivityTypeEnum = S.String;
+const SubscriptionContentDetailsActivityTypeEnum = S.String;
 
 /** Details about the content to witch a subscription refers. */
 export interface SubscriptionContentDetails {
@@ -3010,7 +3004,7 @@ export interface SubscriptionContentDetails {
   /** The type of activity this subscription is for (only uploads, everything). */
   activityType?: SubscriptionContentDetailsActivityTypeEnum | (string & {});
 }
-export const SubscriptionContentDetails = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalItemCount: S.optional(S.Number),
     newItemCount: S.optional(S.Number),
@@ -3031,7 +3025,7 @@ export interface SubscriptionSubscriberSnippet {
   /** Thumbnails for this subscriber. */
   thumbnails?: ThumbnailDetails;
 }
-export const SubscriptionSubscriberSnippet = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionSubscriberSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -3057,7 +3051,7 @@ export interface Subscription {
   /** The ID that YouTube uses to uniquely identify the subscription. */
   id?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     snippet: S.optional(SubscriptionSnippet),
@@ -3074,7 +3068,7 @@ export interface InsertSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(Subscription.pipe(T.HttpBody())),
@@ -3090,8 +3084,7 @@ export const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertSubscriptionsRequest>;
 
 export interface TestItemTestItemSnippet {}
-export const TestItemTestItemSnippet =
-  DeleteCaptionsResponse as any as S.Schema<TestItemTestItemSnippet>;
+const TestItemTestItemSnippet = DeleteCaptionsResponse as any as S.Schema<TestItemTestItemSnippet>;
 
 export interface TestItem {
   id?: string;
@@ -3101,7 +3094,7 @@ export interface TestItem {
   /** Etag for the resource. See https://en.wikipedia.org/wiki/HTTP_ETag. */
   etag?: string;
 }
-export const TestItem = /*@__PURE__*/ S.suspend(() =>
+const TestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     gaia: S.optional(S.String),
@@ -3118,7 +3111,7 @@ export interface InsertTestsRequest {
   /** Request body */
   body?: TestItem;
 }
-export const InsertTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     externalChannelId: S.optional(S.String.pipe(T.Query())),
@@ -3130,13 +3123,13 @@ export const InsertTestsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertTestsRequest" }) as any as S.Schema<InsertTestsRequest>;
 
 export type ThirdPartyLinkStatusLinkStatusEnum = "unknown" | "failed" | "pending" | "linked";
-export const ThirdPartyLinkStatusLinkStatusEnum = S.String;
+const ThirdPartyLinkStatusLinkStatusEnum = S.String;
 
 /** The third-party link status object contains information about the status of the link. */
 export interface ThirdPartyLinkStatus {
   linkStatus?: ThirdPartyLinkStatusLinkStatusEnum | (string & {});
 }
-export const ThirdPartyLinkStatus = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyLinkStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkStatus: S.optional(ThirdPartyLinkStatusLinkStatusEnum),
   }),
@@ -3147,14 +3140,14 @@ export type ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum =
   | "billingStatusPending"
   | "billingStatusActive"
   | "billingStatusInactive";
-export const ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum = S.String;
+const ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum = S.String;
 
 /** Information specific to billing. */
 export interface ChannelToStoreLinkDetailsBillingDetails {
   /** The current billing profile status. */
   billingStatus?: ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum | (string & {});
 }
-export const ChannelToStoreLinkDetailsBillingDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelToStoreLinkDetailsBillingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingStatus: S.optional(ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum),
   }),
@@ -3167,18 +3160,17 @@ export type ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum =
   | "merchantAffiliateProgramStatusEligible"
   | "merchantAffiliateProgramStatusActive"
   | "merchantAffiliateProgramStatusPaused";
-export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum = S.String;
+const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum = S.String;
 
 /** Information specific to merchant affiliate program. */
 export interface ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails {
   /** The current merchant affiliate program status. */
   status?: ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum | (string & {});
 }
-export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum),
-    }),
+const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum),
+  }),
 ).annotate({
   identifier: "ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails",
 }) as any as S.Schema<ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails>;
@@ -3196,7 +3188,7 @@ export interface ChannelToStoreLinkDetails {
   /** Google Merchant Center id of the store. */
   merchantId?: string;
 }
-export const ChannelToStoreLinkDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelToStoreLinkDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingDetails: S.optional(ChannelToStoreLinkDetailsBillingDetails),
     merchantAffiliateProgramDetails: S.optional(
@@ -3214,13 +3206,13 @@ export type ThirdPartyLinkSnippetTypeEnum =
   | "linkUnspecified"
   | "channelToStoreLink"
   | "channelToAffiliateProgramLink";
-export const ThirdPartyLinkSnippetTypeEnum = S.String;
+const ThirdPartyLinkSnippetTypeEnum = S.String;
 
 export type ChannelToAffiliateProgramLinkDetailsProgramStatusEnum =
   | "affiliateProgramStatusUnspecified"
   | "active"
   | "inactive";
-export const ChannelToAffiliateProgramLinkDetailsProgramStatusEnum = S.String;
+const ChannelToAffiliateProgramLinkDetailsProgramStatusEnum = S.String;
 
 /** Information specific to a creator in an affiliate program linked to a YouTube channel. */
 export interface ChannelToAffiliateProgramLinkDetails {
@@ -3233,7 +3225,7 @@ export interface ChannelToAffiliateProgramLinkDetails {
   /** Optional. Timestamp when the affiliate program status was last updated. */
   statusUpdateTime?: string;
 }
-export const ChannelToAffiliateProgramLinkDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelToAffiliateProgramLinkDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusUpdateReason: S.optional(S.String),
     programStatus: S.optional(ChannelToAffiliateProgramLinkDetailsProgramStatusEnum),
@@ -3253,7 +3245,7 @@ export interface ThirdPartyLinkSnippet {
   /** Information specific to a link between a channel and an affiliate program of a partner. */
   channelToAffiliateProgramLink?: ChannelToAffiliateProgramLinkDetails;
 }
-export const ThirdPartyLinkSnippet = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyLinkSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelToStoreLink: S.optional(ChannelToStoreLinkDetails),
     type: S.optional(ThirdPartyLinkSnippetTypeEnum),
@@ -3274,7 +3266,7 @@ export interface ThirdPartyLink {
   /** The snippet object contains basic details about the third- party account link. */
   snippet?: ThirdPartyLinkSnippet;
 }
-export const ThirdPartyLink = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     status: S.optional(ThirdPartyLinkStatus),
@@ -3292,7 +3284,7 @@ export interface InsertThirdPartyLinksRequest {
   /** Request body */
   body?: ThirdPartyLink;
 }
-export const InsertThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     externalChannelId: S.optional(S.String.pipe(T.Query())),
@@ -3315,7 +3307,7 @@ export interface BrandPartner {
   /** Required. Channel handle, must begin with "@" */
   channelHandle?: string;
 }
-export const BrandPartner = /*@__PURE__*/ S.suspend(() =>
+const BrandPartner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String),
     channelHandle: S.optional(S.String),
@@ -3327,7 +3319,7 @@ export type VideoProcessingDetailsProcessingStatusEnum =
   | "succeeded"
   | "failed"
   | "terminated";
-export const VideoProcessingDetailsProcessingStatusEnum = S.String;
+const VideoProcessingDetailsProcessingStatusEnum = S.String;
 
 /** Video processing progress and completion time estimate. */
 export interface VideoProcessingDetailsProcessingProgress {
@@ -3338,7 +3330,7 @@ export interface VideoProcessingDetailsProcessingProgress {
   /** The number of parts of the video that YouTube has already processed. You can estimate the percentage of the video that YouTube has already processed by calculating: 100 * parts_processed / parts_total Note that since the estimated number of parts could increase without a corresponding increase in the number of parts that have already been processed, it is possible that the calculated progress could periodically decrease while YouTube processes a video. */
   partsProcessed?: string;
 }
-export const VideoProcessingDetailsProcessingProgress = /*@__PURE__*/ S.suspend(() =>
+const VideoProcessingDetailsProcessingProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partsTotal: S.optional(S.String),
     timeLeftMs: S.optional(S.String),
@@ -3353,7 +3345,7 @@ export type VideoProcessingDetailsProcessingFailureReasonEnum =
   | "transcodeFailed"
   | "streamingFailed"
   | "other";
-export const VideoProcessingDetailsProcessingFailureReasonEnum = S.String;
+const VideoProcessingDetailsProcessingFailureReasonEnum = S.String;
 
 /** Describes processing status and progress and availability of some other Video resource parts. */
 export interface VideoProcessingDetails {
@@ -3374,7 +3366,7 @@ export interface VideoProcessingDetails {
   /** The reason that YouTube failed to process the video. This property will only have a value if the processingStatus property's value is failed. */
   processingFailureReason?: VideoProcessingDetailsProcessingFailureReasonEnum | (string & {});
 }
-export const VideoProcessingDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoProcessingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDetailsAvailability: S.optional(S.String),
     processingStatus: S.optional(VideoProcessingDetailsProcessingStatusEnum),
@@ -3394,10 +3386,10 @@ export interface VideoLocalization {
   /** Localized version of the video's description. */
   description?: string;
 }
-export const VideoLocalization = PlaylistLocalization as any as S.Schema<VideoLocalization>;
+const VideoLocalization = PlaylistLocalization as any as S.Schema<VideoLocalization>;
 
 export type VideoSnippetLiveBroadcastContentEnum = "none" | "upcoming" | "live" | "completed";
-export const VideoSnippetLiveBroadcastContentEnum = S.String;
+const VideoSnippetLiveBroadcastContentEnum = S.String;
 
 /** Basic details about a video, including title, description, uploader, thumbnails and category. */
 export interface VideoSnippet {
@@ -3426,7 +3418,7 @@ export interface VideoSnippet {
   /** Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an upcoming/active live broadcast. */
   liveBroadcastContent?: VideoSnippetLiveBroadcastContentEnum | (string & {});
 }
-export const VideoSnippet = /*@__PURE__*/ S.suspend(() =>
+const VideoSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultAudioLanguage: S.optional(S.String),
     defaultLanguage: S.optional(S.String),
@@ -3451,7 +3443,7 @@ export interface VideoPlayer {
   /** The embed width */
   embedWidth?: string;
 }
-export const VideoPlayer = /*@__PURE__*/ S.suspend(() =>
+const VideoPlayer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     embedHtml: S.optional(S.String),
     embedHeight: S.optional(S.String),
@@ -3468,7 +3460,7 @@ export interface VideoTopicDetails {
   /** Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You can retrieve information about each topic using Freebase Topic API. */
   relevantTopicIds?: StringList;
 }
-export const VideoTopicDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoTopicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicCategories: S.optional(StringList),
     topicIds: S.optional(StringList),
@@ -3481,12 +3473,12 @@ export type VideoSuggestionsEditorSuggestionsItemEnum =
   | "videoStabilize"
   | "videoCrop"
   | "audioQuietAudioSwap";
-export const VideoSuggestionsEditorSuggestionsItemEnum = S.String;
+const VideoSuggestionsEditorSuggestionsItemEnum = S.String;
 
 export type VideoSuggestionsEditorSuggestionsItemEnumList = Array<
   VideoSuggestionsEditorSuggestionsItemEnum | (string & {})
 >;
-export const VideoSuggestionsEditorSuggestionsItemEnumList = /*@__PURE__*/ S.Array(
+const VideoSuggestionsEditorSuggestionsItemEnumList = /*@__PURE__*/ S.Array(
   VideoSuggestionsEditorSuggestionsItemEnum,
 ) as any as S.Schema<VideoSuggestionsEditorSuggestionsItemEnumList>;
 
@@ -3498,12 +3490,10 @@ export type VideoSuggestionsProcessingErrorsItemEnum =
   | "docFile"
   | "archiveFile"
   | "unsupportedSpatialAudioLayout";
-export const VideoSuggestionsProcessingErrorsItemEnum = S.String;
-
 export type VideoSuggestionsProcessingErrorsItemEnumList = Array<
   VideoSuggestionsProcessingErrorsItemEnum | (string & {})
 >;
-export const VideoSuggestionsProcessingErrorsItemEnumList =
+const VideoSuggestionsProcessingErrorsItemEnumList =
   VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<VideoSuggestionsProcessingErrorsItemEnumList>;
 
 export type VideoSuggestionsProcessingHintsItemEnum =
@@ -3513,12 +3503,10 @@ export type VideoSuggestionsProcessingHintsItemEnum =
   | "spatialAudio"
   | "vrVideo"
   | "hdrVideo";
-export const VideoSuggestionsProcessingHintsItemEnum = S.String;
-
 export type VideoSuggestionsProcessingHintsItemEnumList = Array<
   VideoSuggestionsProcessingHintsItemEnum | (string & {})
 >;
-export const VideoSuggestionsProcessingHintsItemEnumList =
+const VideoSuggestionsProcessingHintsItemEnumList =
   VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<VideoSuggestionsProcessingHintsItemEnumList>;
 
 export type VideoSuggestionsProcessingWarningsItemEnum =
@@ -3534,12 +3522,10 @@ export type VideoSuggestionsProcessingWarningsItemEnum =
   | "unsupportedHdrPixelFormat"
   | "unsupportedHdrColorMetadata"
   | "problematicHdrLookupTable";
-export const VideoSuggestionsProcessingWarningsItemEnum = S.String;
-
 export type VideoSuggestionsProcessingWarningsItemEnumList = Array<
   VideoSuggestionsProcessingWarningsItemEnum | (string & {})
 >;
-export const VideoSuggestionsProcessingWarningsItemEnumList =
+const VideoSuggestionsProcessingWarningsItemEnumList =
   VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<VideoSuggestionsProcessingWarningsItemEnumList>;
 
 /** A single tag suggestion with its relevance information. */
@@ -3549,7 +3535,7 @@ export interface VideoSuggestionsTagSuggestion {
   /** The keyword tag suggested for the video. */
   tag?: string;
 }
-export const VideoSuggestionsTagSuggestion = /*@__PURE__*/ S.suspend(() =>
+const VideoSuggestionsTagSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryRestricts: S.optional(StringList),
     tag: S.optional(S.String),
@@ -3559,7 +3545,7 @@ export const VideoSuggestionsTagSuggestion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoSuggestionsTagSuggestion>;
 
 export type VideoSuggestionsTagSuggestionList = Array<VideoSuggestionsTagSuggestion>;
-export const VideoSuggestionsTagSuggestionList = /*@__PURE__*/ S.Array(
+const VideoSuggestionsTagSuggestionList = /*@__PURE__*/ S.Array(
   VideoSuggestionsTagSuggestion,
 ) as any as S.Schema<VideoSuggestionsTagSuggestionList>;
 
@@ -3576,7 +3562,7 @@ export interface VideoSuggestions {
   /** A list of keyword tags that could be added to the video's metadata to increase the likelihood that users will locate your video when searching or browsing on YouTube. */
   tagSuggestions?: VideoSuggestionsTagSuggestionList;
 }
-export const VideoSuggestions = /*@__PURE__*/ S.suspend(() =>
+const VideoSuggestions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editorSuggestions: S.optional(VideoSuggestionsEditorSuggestionsItemEnumList),
     processingErrors: S.optional(VideoSuggestionsProcessingErrorsItemEnumList),
@@ -3601,7 +3587,7 @@ export interface VideoLiveStreamingDetails {
   /** The time that the broadcast actually started. This value will not be available until the broadcast begins. */
   actualStartTime?: string;
 }
-export const VideoLiveStreamingDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoLiveStreamingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actualEndTime: S.optional(S.String),
     scheduledStartTime: S.optional(S.String),
@@ -3615,15 +3601,14 @@ export const VideoLiveStreamingDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoLiveStreamingDetails>;
 
 export type VideoLocalizationMap = { [key: string]: VideoLocalization | undefined };
-export const VideoLocalizationMap =
-  PlaylistLocalizationMap as any as S.Schema<VideoLocalizationMap>;
+const VideoLocalizationMap = PlaylistLocalizationMap as any as S.Schema<VideoLocalizationMap>;
 
 /** Details about paid content, such as paid product placement, sponsorships or endorsement, contained in a YouTube video and a method to inform viewers of paid promotion. This data can only be retrieved by the video owner. */
 export interface VideoPaidProductPlacementDetails {
   /** This boolean represents whether the video contains Paid Product Placement, Studio equivalent: https://screenshot.googleplex.com/4Me79DE6AfT2ktp.png */
   hasPaidProductPlacement?: boolean;
 }
-export const VideoPaidProductPlacementDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoPaidProductPlacementDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasPaidProductPlacement: S.optional(S.Boolean),
   }),
@@ -3633,8 +3618,6 @@ export const VideoPaidProductPlacementDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** DEPRECATED. b/157517979: This part was never populated after it was added. However, it sees non-zero traffic because there is generated client code in the wild that refers to it [1]. We keep this field and do NOT remove it because otherwise V3 would return an error when this part gets requested [2]. [1] https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html [2] http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677 */
 export type VideoProjectDetails = TestItemTestItemSnippet;
-export const VideoProjectDetails = TestItemTestItemSnippet;
-
 /** Statistics about the video, such as the number of times the video was viewed or liked. */
 export interface VideoStatistics {
   /** The number of users who currently have the video marked as a favorite video. */
@@ -3648,7 +3631,7 @@ export interface VideoStatistics {
   /** The number of comments for the video. */
   commentCount?: string;
 }
-export const VideoStatistics = /*@__PURE__*/ S.suspend(() =>
+const VideoStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     favoriteCount: S.optional(S.String),
     dislikeCount: S.optional(S.String),
@@ -3665,7 +3648,7 @@ export interface AccessPolicy {
   /** The value of allowed indicates whether the access to the policy is allowed or denied by default. */
   allowed?: boolean;
 }
-export const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exception: S.optional(StringList),
     allowed: S.optional(S.Boolean),
@@ -3677,14 +3660,14 @@ export interface VideoMonetizationDetails {
   /** The value of access indicates whether the video can be monetized or not. */
   access?: AccessPolicy;
 }
-export const VideoMonetizationDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoMonetizationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(AccessPolicy),
   }),
 ).annotate({ identifier: "VideoMonetizationDetails" }) as any as S.Schema<VideoMonetizationDetails>;
 
 export type VideoAgeGatingVideoGameRatingEnum = "anyone" | "m15Plus" | "m16Plus" | "m17Plus";
-export const VideoAgeGatingVideoGameRatingEnum = S.String;
+const VideoAgeGatingVideoGameRatingEnum = S.String;
 
 export interface VideoAgeGating {
   /** Age-restricted trailers. For redband trailers and adult-rated video-games. Only users aged 18+ can view the content. The the field is true the content is restricted to viewers aged 18+. Otherwise The field won't be present. */
@@ -3694,7 +3677,7 @@ export interface VideoAgeGating {
   /** Video game rating, if any. */
   videoGameRating?: VideoAgeGatingVideoGameRatingEnum | (string & {});
 }
-export const VideoAgeGating = /*@__PURE__*/ S.suspend(() =>
+const VideoAgeGating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restricted: S.optional(S.Boolean),
     alcoholContent: S.optional(S.Boolean),
@@ -3708,7 +3691,7 @@ export type VideoFileDetailsVideoStreamRotationEnum =
   | "upsideDown"
   | "counterClockwise"
   | "other";
-export const VideoFileDetailsVideoStreamRotationEnum = S.String;
+const VideoFileDetailsVideoStreamRotationEnum = S.String;
 
 /** Information about a video stream. */
 export interface VideoFileDetailsVideoStream {
@@ -3729,7 +3712,7 @@ export interface VideoFileDetailsVideoStream {
   /** The video stream's bitrate, in bits per second. */
   bitrateBps?: string;
 }
-export const VideoFileDetailsVideoStream = /*@__PURE__*/ S.suspend(() =>
+const VideoFileDetailsVideoStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendor: S.optional(S.String),
     widthPixels: S.optional(S.Number),
@@ -3745,7 +3728,7 @@ export const VideoFileDetailsVideoStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoFileDetailsVideoStream>;
 
 export type VideoFileDetailsVideoStreamList = Array<VideoFileDetailsVideoStream>;
-export const VideoFileDetailsVideoStreamList = /*@__PURE__*/ S.Array(
+const VideoFileDetailsVideoStreamList = /*@__PURE__*/ S.Array(
   VideoFileDetailsVideoStream,
 ) as any as S.Schema<VideoFileDetailsVideoStreamList>;
 
@@ -3757,7 +3740,7 @@ export type VideoFileDetailsFileTypeEnum =
   | "document"
   | "project"
   | "other";
-export const VideoFileDetailsFileTypeEnum = S.String;
+const VideoFileDetailsFileTypeEnum = S.String;
 
 /** Information about an audio stream. */
 export interface VideoFileDetailsAudioStream {
@@ -3770,7 +3753,7 @@ export interface VideoFileDetailsAudioStream {
   /** The audio stream's bitrate, in bits per second. */
   bitrateBps?: string;
 }
-export const VideoFileDetailsAudioStream = /*@__PURE__*/ S.suspend(() =>
+const VideoFileDetailsAudioStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendor: S.optional(S.String),
     channelCount: S.optional(S.Number),
@@ -3782,7 +3765,7 @@ export const VideoFileDetailsAudioStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoFileDetailsAudioStream>;
 
 export type VideoFileDetailsAudioStreamList = Array<VideoFileDetailsAudioStream>;
-export const VideoFileDetailsAudioStreamList = /*@__PURE__*/ S.Array(
+const VideoFileDetailsAudioStreamList = /*@__PURE__*/ S.Array(
   VideoFileDetailsAudioStream,
 ) as any as S.Schema<VideoFileDetailsAudioStreamList>;
 
@@ -3807,7 +3790,7 @@ export interface VideoFileDetails {
   /** The uploaded video file's combined (video and audio) bitrate in bits per second. */
   bitrateBps?: string;
 }
-export const VideoFileDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoFileDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoStreams: S.optional(VideoFileDetailsVideoStreamList),
     fileSize: S.optional(S.String),
@@ -3830,7 +3813,7 @@ export interface GeoPoint {
   /** Altitude above the reference ellipsoid, in meters. */
   altitude?: number;
 }
-export const GeoPoint = /*@__PURE__*/ S.suspend(() =>
+const GeoPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -3847,7 +3830,7 @@ export interface VideoRecordingDetails {
   /** The text description of the location where the video was recorded. */
   locationDescription?: string;
 }
-export const VideoRecordingDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoRecordingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordingDate: S.optional(S.String),
     location: S.optional(GeoPoint),
@@ -3862,7 +3845,7 @@ export interface VideoContentDetailsRegionRestriction {
   /** A list of region codes that identify countries where the video is viewable. If this property is present and a country is not listed in its value, then the video is blocked from appearing in that country. If this property is present and contains an empty list, the video is blocked in all countries. */
   allowed?: StringList;
 }
-export const VideoContentDetailsRegionRestriction = /*@__PURE__*/ S.suspend(() =>
+const VideoContentDetailsRegionRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked: S.optional(StringList),
     allowed: S.optional(StringList),
@@ -3872,10 +3855,10 @@ export const VideoContentDetailsRegionRestriction = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<VideoContentDetailsRegionRestriction>;
 
 export type VideoContentDetailsCaptionEnum = "true" | "false";
-export const VideoContentDetailsCaptionEnum = S.String;
+const VideoContentDetailsCaptionEnum = S.String;
 
 export type VideoContentDetailsProjectionEnum = "rectangular" | "360";
-export const VideoContentDetailsProjectionEnum = S.String;
+const VideoContentDetailsProjectionEnum = S.String;
 
 export type ContentRatingBmukkRatingEnum =
   | "bmukkUnspecified"
@@ -3887,7 +3870,7 @@ export type ContentRatingBmukkRatingEnum =
   | "bmukk14"
   | "bmukk16"
   | "bmukkUnrated";
-export const ContentRatingBmukkRatingEnum = S.String;
+const ContentRatingBmukkRatingEnum = S.String;
 
 export type ContentRatingMccaaRatingEnum =
   | "mccaaUnspecified"
@@ -3900,7 +3883,7 @@ export type ContentRatingMccaaRatingEnum =
   | "mccaa16"
   | "mccaa18"
   | "mccaaUnrated";
-export const ContentRatingMccaaRatingEnum = S.String;
+const ContentRatingMccaaRatingEnum = S.String;
 
 export type ContentRatingKmrbRatingEnum =
   | "kmrbUnspecified"
@@ -3910,7 +3893,7 @@ export type ContentRatingKmrbRatingEnum =
   | "kmrbTeenr"
   | "kmrbR"
   | "kmrbUnrated";
-export const ContentRatingKmrbRatingEnum = S.String;
+const ContentRatingKmrbRatingEnum = S.String;
 
 export type ContentRatingMpaaRatingEnum =
   | "mpaaUnspecified"
@@ -3921,7 +3904,7 @@ export type ContentRatingMpaaRatingEnum =
   | "mpaaNc17"
   | "mpaaX"
   | "mpaaUnrated";
-export const ContentRatingMpaaRatingEnum = S.String;
+const ContentRatingMpaaRatingEnum = S.String;
 
 export type ContentRatingFskRatingEnum =
   | "fskUnspecified"
@@ -3931,7 +3914,7 @@ export type ContentRatingFskRatingEnum =
   | "fsk16"
   | "fsk18"
   | "fskUnrated";
-export const ContentRatingFskRatingEnum = S.String;
+const ContentRatingFskRatingEnum = S.String;
 
 export type ContentRatingIncaaRatingEnum =
   | "incaaUnspecified"
@@ -3941,7 +3924,7 @@ export type ContentRatingIncaaRatingEnum =
   | "incaaSam18"
   | "incaaC"
   | "incaaUnrated";
-export const ContentRatingIncaaRatingEnum = S.String;
+const ContentRatingIncaaRatingEnum = S.String;
 
 export type ContentRatingFcoRatingEnum =
   | "fcoUnspecified"
@@ -3951,7 +3934,7 @@ export type ContentRatingFcoRatingEnum =
   | "fcoIi"
   | "fcoIii"
   | "fcoUnrated";
-export const ContentRatingFcoRatingEnum = S.String;
+const ContentRatingFcoRatingEnum = S.String;
 
 export type ContentRatingMccypRatingEnum =
   | "mccypUnspecified"
@@ -3960,7 +3943,7 @@ export type ContentRatingMccypRatingEnum =
   | "mccyp11"
   | "mccyp15"
   | "mccypUnrated";
-export const ContentRatingMccypRatingEnum = S.String;
+const ContentRatingMccypRatingEnum = S.String;
 
 export type ContentRatingNmcRatingEnum =
   | "nmcUnspecified"
@@ -3972,7 +3955,7 @@ export type ContentRatingNmcRatingEnum =
   | "nmc18plus"
   | "nmc18tc"
   | "nmcUnrated";
-export const ContentRatingNmcRatingEnum = S.String;
+const ContentRatingNmcRatingEnum = S.String;
 
 export type ContentRatingOflcRatingEnum =
   | "oflcUnspecified"
@@ -3987,7 +3970,7 @@ export type ContentRatingOflcRatingEnum =
   | "oflcRp13"
   | "oflcRp16"
   | "oflcRp18";
-export const ContentRatingOflcRatingEnum = S.String;
+const ContentRatingOflcRatingEnum = S.String;
 
 export type ContentRatingMocRatingEnum =
   | "mocUnspecified"
@@ -4000,7 +3983,7 @@ export type ContentRatingMocRatingEnum =
   | "mocX"
   | "mocBanned"
   | "mocUnrated";
-export const ContentRatingMocRatingEnum = S.String;
+const ContentRatingMocRatingEnum = S.String;
 
 export type ContentRatingDjctqRatingReasonsItemEnum =
   | "djctqRatingReasonUnspecified"
@@ -4020,12 +4003,10 @@ export type ContentRatingDjctqRatingReasonsItemEnum =
   | "djctqMedicalProcedures"
   | "djctqSensitiveTopics"
   | "djctqFantasyViolence";
-export const ContentRatingDjctqRatingReasonsItemEnum = S.String;
-
 export type ContentRatingDjctqRatingReasonsItemEnumList = Array<
   ContentRatingDjctqRatingReasonsItemEnum | (string & {})
 >;
-export const ContentRatingDjctqRatingReasonsItemEnumList =
+const ContentRatingDjctqRatingReasonsItemEnumList =
   VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<ContentRatingDjctqRatingReasonsItemEnumList>;
 
 export type ContentRatingMoctwRatingEnum =
@@ -4037,7 +4018,7 @@ export type ContentRatingMoctwRatingEnum =
   | "moctwUnrated"
   | "moctwR12"
   | "moctwR15";
-export const ContentRatingMoctwRatingEnum = S.String;
+const ContentRatingMoctwRatingEnum = S.String;
 
 export type ContentRatingChvrsRatingEnum =
   | "chvrsUnspecified"
@@ -4048,7 +4029,7 @@ export type ContentRatingChvrsRatingEnum =
   | "chvrsR"
   | "chvrsE"
   | "chvrsUnrated";
-export const ContentRatingChvrsRatingEnum = S.String;
+const ContentRatingChvrsRatingEnum = S.String;
 
 export type ContentRatingSkfilmRatingEnum =
   | "skfilmUnspecified"
@@ -4057,7 +4038,7 @@ export type ContentRatingSkfilmRatingEnum =
   | "skfilmP5"
   | "skfilmP8"
   | "skfilmUnrated";
-export const ContentRatingSkfilmRatingEnum = S.String;
+const ContentRatingSkfilmRatingEnum = S.String;
 
 export type ContentRatingFpbRatingReasonsItemEnum =
   | "fpbRatingReasonUnspecified"
@@ -4072,12 +4053,10 @@ export type ContentRatingFpbRatingReasonsItemEnum =
   | "fpbHorror"
   | "fpbCriminalTechniques"
   | "fpbImitativeActsTechniques";
-export const ContentRatingFpbRatingReasonsItemEnum = S.String;
-
 export type ContentRatingFpbRatingReasonsItemEnumList = Array<
   ContentRatingFpbRatingReasonsItemEnum | (string & {})
 >;
-export const ContentRatingFpbRatingReasonsItemEnumList =
+const ContentRatingFpbRatingReasonsItemEnumList =
   VideoSuggestionsEditorSuggestionsItemEnumList as any as S.Schema<ContentRatingFpbRatingReasonsItemEnumList>;
 
 export type ContentRatingKfcbRatingEnum =
@@ -4087,7 +4066,7 @@ export type ContentRatingKfcbRatingEnum =
   | "kfcb16plus"
   | "kfcbR"
   | "kfcbUnrated";
-export const ContentRatingKfcbRatingEnum = S.String;
+const ContentRatingKfcbRatingEnum = S.String;
 
 export type ContentRatingMcstRatingEnum =
   | "mcstUnspecified"
@@ -4099,7 +4078,7 @@ export type ContentRatingMcstRatingEnum =
   | "mcstC18"
   | "mcstGPg"
   | "mcstUnrated";
-export const ContentRatingMcstRatingEnum = S.String;
+const ContentRatingMcstRatingEnum = S.String;
 
 export type ContentRatingSmsaRatingEnum =
   | "smsaUnspecified"
@@ -4108,7 +4087,7 @@ export type ContentRatingSmsaRatingEnum =
   | "smsa11"
   | "smsa15"
   | "smsaUnrated";
-export const ContentRatingSmsaRatingEnum = S.String;
+const ContentRatingSmsaRatingEnum = S.String;
 
 export type ContentRatingCatvfrRatingEnum =
   | "catvfrUnspecified"
@@ -4119,7 +4098,7 @@ export type ContentRatingCatvfrRatingEnum =
   | "catvfr18plus"
   | "catvfrUnrated"
   | "catvfrE";
-export const ContentRatingCatvfrRatingEnum = S.String;
+const ContentRatingCatvfrRatingEnum = S.String;
 
 export type ContentRatingCbfcRatingEnum =
   | "cbfcUnspecified"
@@ -4131,10 +4110,10 @@ export type ContentRatingCbfcRatingEnum =
   | "cbfcA"
   | "cbfcS"
   | "cbfcUnrated";
-export const ContentRatingCbfcRatingEnum = S.String;
+const ContentRatingCbfcRatingEnum = S.String;
 
 export type ContentRatingYtRatingEnum = "ytUnspecified" | "ytAgeRestricted";
-export const ContentRatingYtRatingEnum = S.String;
+const ContentRatingYtRatingEnum = S.String;
 
 export type ContentRatingIcaaRatingEnum =
   | "icaaUnspecified"
@@ -4146,10 +4125,10 @@ export type ContentRatingIcaaRatingEnum =
   | "icaa18"
   | "icaaX"
   | "icaaUnrated";
-export const ContentRatingIcaaRatingEnum = S.String;
+const ContentRatingIcaaRatingEnum = S.String;
 
 export type ContentRatingMpaatRatingEnum = "mpaatUnspecified" | "mpaatGb" | "mpaatRb";
-export const ContentRatingMpaatRatingEnum = S.String;
+const ContentRatingMpaatRatingEnum = S.String;
 
 export type ContentRatingEirinRatingEnum =
   | "eirinUnspecified"
@@ -4158,7 +4137,7 @@ export type ContentRatingEirinRatingEnum =
   | "eirinR15plus"
   | "eirinR18plus"
   | "eirinUnrated";
-export const ContentRatingEirinRatingEnum = S.String;
+const ContentRatingEirinRatingEnum = S.String;
 
 export type ContentRatingPefilmRatingEnum =
   | "pefilmUnspecified"
@@ -4167,7 +4146,7 @@ export type ContentRatingPefilmRatingEnum =
   | "pefilm14"
   | "pefilm18"
   | "pefilmUnrated";
-export const ContentRatingPefilmRatingEnum = S.String;
+const ContentRatingPefilmRatingEnum = S.String;
 
 export type ContentRatingMenaMpaaRatingEnum =
   | "menaMpaaUnspecified"
@@ -4176,7 +4155,7 @@ export type ContentRatingMenaMpaaRatingEnum =
   | "menaMpaaPg13"
   | "menaMpaaR"
   | "menaMpaaUnrated";
-export const ContentRatingMenaMpaaRatingEnum = S.String;
+const ContentRatingMenaMpaaRatingEnum = S.String;
 
 export type ContentRatingKijkwijzerRatingEnum =
   | "kijkwijzerUnspecified"
@@ -4187,7 +4166,7 @@ export type ContentRatingKijkwijzerRatingEnum =
   | "kijkwijzer16"
   | "kijkwijzer18"
   | "kijkwijzerUnrated";
-export const ContentRatingKijkwijzerRatingEnum = S.String;
+const ContentRatingKijkwijzerRatingEnum = S.String;
 
 export type ContentRatingCncRatingEnum =
   | "cncUnspecified"
@@ -4199,7 +4178,7 @@ export type ContentRatingCncRatingEnum =
   | "cncE"
   | "cncInterdiction"
   | "cncUnrated";
-export const ContentRatingCncRatingEnum = S.String;
+const ContentRatingCncRatingEnum = S.String;
 
 export type ContentRatingSmaisRatingEnum =
   | "smaisUnspecified"
@@ -4210,7 +4189,7 @@ export type ContentRatingSmaisRatingEnum =
   | "smais16"
   | "smais18"
   | "smaisUnrated";
-export const ContentRatingSmaisRatingEnum = S.String;
+const ContentRatingSmaisRatingEnum = S.String;
 
 export type ContentRatingMtrcbRatingEnum =
   | "mtrcbUnspecified"
@@ -4221,7 +4200,7 @@ export type ContentRatingMtrcbRatingEnum =
   | "mtrcbR18"
   | "mtrcbX"
   | "mtrcbUnrated";
-export const ContentRatingMtrcbRatingEnum = S.String;
+const ContentRatingMtrcbRatingEnum = S.String;
 
 export type ContentRatingMedietilsynetRatingEnum =
   | "medietilsynetUnspecified"
@@ -4234,7 +4213,7 @@ export type ContentRatingMedietilsynetRatingEnum =
   | "medietilsynet15"
   | "medietilsynet18"
   | "medietilsynetUnrated";
-export const ContentRatingMedietilsynetRatingEnum = S.String;
+const ContentRatingMedietilsynetRatingEnum = S.String;
 
 export type ContentRatingCatvRatingEnum =
   | "catvUnspecified"
@@ -4246,7 +4225,7 @@ export type ContentRatingCatvRatingEnum =
   | "catv18plus"
   | "catvUnrated"
   | "catvE";
-export const ContentRatingCatvRatingEnum = S.String;
+const ContentRatingCatvRatingEnum = S.String;
 
 export type ContentRatingAnatelRatingEnum =
   | "anatelUnspecified"
@@ -4258,7 +4237,7 @@ export type ContentRatingAnatelRatingEnum =
   | "anatelR"
   | "anatelA"
   | "anatelUnrated";
-export const ContentRatingAnatelRatingEnum = S.String;
+const ContentRatingAnatelRatingEnum = S.String;
 
 export type ContentRatingNbcRatingEnum =
   | "nbcUnspecified"
@@ -4270,7 +4249,7 @@ export type ContentRatingNbcRatingEnum =
   | "nbc18plusr"
   | "nbcPu"
   | "nbcUnrated";
-export const ContentRatingNbcRatingEnum = S.String;
+const ContentRatingNbcRatingEnum = S.String;
 
 export type ContentRatingAgcomRatingEnum =
   | "agcomUnspecified"
@@ -4278,7 +4257,7 @@ export type ContentRatingAgcomRatingEnum =
   | "agcomVm14"
   | "agcomVm18"
   | "agcomUnrated";
-export const ContentRatingAgcomRatingEnum = S.String;
+const ContentRatingAgcomRatingEnum = S.String;
 
 export type ContentRatingCzfilmRatingEnum =
   | "czfilmUnspecified"
@@ -4287,7 +4266,7 @@ export type ContentRatingCzfilmRatingEnum =
   | "czfilm14"
   | "czfilm18"
   | "czfilmUnrated";
-export const ContentRatingCzfilmRatingEnum = S.String;
+const ContentRatingCzfilmRatingEnum = S.String;
 
 export type ContentRatingNfvcbRatingEnum =
   | "nfvcbUnspecified"
@@ -4299,7 +4278,7 @@ export type ContentRatingNfvcbRatingEnum =
   | "nfvcb18"
   | "nfvcbRe"
   | "nfvcbUnrated";
-export const ContentRatingNfvcbRatingEnum = S.String;
+const ContentRatingNfvcbRatingEnum = S.String;
 
 export type ContentRatingRteRatingEnum =
   | "rteUnspecified"
@@ -4308,7 +4287,7 @@ export type ContentRatingRteRatingEnum =
   | "rtePs"
   | "rteMa"
   | "rteUnrated";
-export const ContentRatingRteRatingEnum = S.String;
+const ContentRatingRteRatingEnum = S.String;
 
 export type ContentRatingEefilmRatingEnum =
   | "eefilmUnspecified"
@@ -4321,7 +4300,7 @@ export type ContentRatingEefilmRatingEnum =
   | "eefilmK14"
   | "eefilmK16"
   | "eefilmUnrated";
-export const ContentRatingEefilmRatingEnum = S.String;
+const ContentRatingEefilmRatingEnum = S.String;
 
 export type ContentRatingFcbmRatingEnum =
   | "fcbmUnspecified"
@@ -4334,7 +4313,7 @@ export type ContentRatingFcbmRatingEnum =
   | "fcbm18sg"
   | "fcbm18pl"
   | "fcbmUnrated";
-export const ContentRatingFcbmRatingEnum = S.String;
+const ContentRatingFcbmRatingEnum = S.String;
 
 export type ContentRatingRtcRatingEnum =
   | "rtcUnspecified"
@@ -4345,7 +4324,7 @@ export type ContentRatingRtcRatingEnum =
   | "rtcC"
   | "rtcD"
   | "rtcUnrated";
-export const ContentRatingRtcRatingEnum = S.String;
+const ContentRatingRtcRatingEnum = S.String;
 
 export type ContentRatingLsfRatingEnum =
   | "lsfUnspecified"
@@ -4358,7 +4337,7 @@ export type ContentRatingLsfRatingEnum =
   | "lsfD"
   | "lsf21"
   | "lsfUnrated";
-export const ContentRatingLsfRatingEnum = S.String;
+const ContentRatingLsfRatingEnum = S.String;
 
 export type ContentRatingCceRatingEnum =
   | "cceUnspecified"
@@ -4369,7 +4348,7 @@ export type ContentRatingCceRatingEnum =
   | "cceM18"
   | "cceUnrated"
   | "cceM14";
-export const ContentRatingCceRatingEnum = S.String;
+const ContentRatingCceRatingEnum = S.String;
 
 export type ContentRatingMdaRatingEnum =
   | "mdaUnspecified"
@@ -4380,7 +4359,7 @@ export type ContentRatingMdaRatingEnum =
   | "mdaM18"
   | "mdaR21"
   | "mdaUnrated";
-export const ContentRatingMdaRatingEnum = S.String;
+const ContentRatingMdaRatingEnum = S.String;
 
 export type ContentRatingFmocRatingEnum =
   | "fmocUnspecified"
@@ -4391,7 +4370,7 @@ export type ContentRatingFmocRatingEnum =
   | "fmoc18"
   | "fmocE"
   | "fmocUnrated";
-export const ContentRatingFmocRatingEnum = S.String;
+const ContentRatingFmocRatingEnum = S.String;
 
 export type ContentRatingCicfRatingEnum =
   | "cicfUnspecified"
@@ -4399,7 +4378,7 @@ export type ContentRatingCicfRatingEnum =
   | "cicfKtEa"
   | "cicfKntEna"
   | "cicfUnrated";
-export const ContentRatingCicfRatingEnum = S.String;
+const ContentRatingCicfRatingEnum = S.String;
 
 export type ContentRatingBbfcRatingEnum =
   | "bbfcUnspecified"
@@ -4411,7 +4390,7 @@ export type ContentRatingBbfcRatingEnum =
   | "bbfc18"
   | "bbfcR18"
   | "bbfcUnrated";
-export const ContentRatingBbfcRatingEnum = S.String;
+const ContentRatingBbfcRatingEnum = S.String;
 
 export type ContentRatingTvpgRatingEnum =
   | "tvpgUnspecified"
@@ -4423,7 +4402,7 @@ export type ContentRatingTvpgRatingEnum =
   | "pg14"
   | "tvpgMa"
   | "tvpgUnrated";
-export const ContentRatingTvpgRatingEnum = S.String;
+const ContentRatingTvpgRatingEnum = S.String;
 
 export type ContentRatingIlfilmRatingEnum =
   | "ilfilmUnspecified"
@@ -4433,7 +4412,7 @@ export type ContentRatingIlfilmRatingEnum =
   | "ilfilm16"
   | "ilfilm18"
   | "ilfilmUnrated";
-export const ContentRatingIlfilmRatingEnum = S.String;
+const ContentRatingIlfilmRatingEnum = S.String;
 
 export type ContentRatingChfilmRatingEnum =
   | "chfilmUnspecified"
@@ -4443,7 +4422,7 @@ export type ContentRatingChfilmRatingEnum =
   | "chfilm16"
   | "chfilm18"
   | "chfilmUnrated";
-export const ContentRatingChfilmRatingEnum = S.String;
+const ContentRatingChfilmRatingEnum = S.String;
 
 export type ContentRatingNkclvRatingEnum =
   | "nkclvUnspecified"
@@ -4453,7 +4432,7 @@ export type ContentRatingNkclvRatingEnum =
   | "nkclv16plus"
   | "nkclv18plus"
   | "nkclvUnrated";
-export const ContentRatingNkclvRatingEnum = S.String;
+const ContentRatingNkclvRatingEnum = S.String;
 
 export type ContentRatingIfcoRatingEnum =
   | "ifcoUnspecified"
@@ -4466,7 +4445,7 @@ export type ContentRatingIfcoRatingEnum =
   | "ifco16"
   | "ifco18"
   | "ifcoUnrated";
-export const ContentRatingIfcoRatingEnum = S.String;
+const ContentRatingIfcoRatingEnum = S.String;
 
 export type ContentRatingCscfRatingEnum =
   | "cscfUnspecified"
@@ -4478,7 +4457,7 @@ export type ContentRatingCscfRatingEnum =
   | "cscf16"
   | "cscf18"
   | "cscfUnrated";
-export const ContentRatingCscfRatingEnum = S.String;
+const ContentRatingCscfRatingEnum = S.String;
 
 export type ContentRatingMibacRatingEnum =
   | "mibacUnspecified"
@@ -4490,7 +4469,7 @@ export type ContentRatingMibacRatingEnum =
   | "mibacVm16"
   | "mibacVm18"
   | "mibacUnrated";
-export const ContentRatingMibacRatingEnum = S.String;
+const ContentRatingMibacRatingEnum = S.String;
 
 export type ContentRatingFpbRatingEnum =
   | "fpbUnspecified"
@@ -4505,7 +4484,7 @@ export type ContentRatingFpbRatingEnum =
   | "fpbXx"
   | "fpbUnrated"
   | "fpb10";
-export const ContentRatingFpbRatingEnum = S.String;
+const ContentRatingFpbRatingEnum = S.String;
 
 export type ContentRatingNfrcRatingEnum =
   | "nfrcUnspecified"
@@ -4515,7 +4494,7 @@ export type ContentRatingNfrcRatingEnum =
   | "nfrcD"
   | "nfrcX"
   | "nfrcUnrated";
-export const ContentRatingNfrcRatingEnum = S.String;
+const ContentRatingNfrcRatingEnum = S.String;
 
 export type ContentRatingCccRatingEnum =
   | "cccUnspecified"
@@ -4526,7 +4505,7 @@ export type ContentRatingCccRatingEnum =
   | "ccc18v"
   | "ccc18s"
   | "cccUnrated";
-export const ContentRatingCccRatingEnum = S.String;
+const ContentRatingCccRatingEnum = S.String;
 
 export type ContentRatingNbcplRatingEnum =
   | "nbcplUnspecified"
@@ -4536,7 +4515,7 @@ export type ContentRatingNbcplRatingEnum =
   | "nbcplIv"
   | "nbcpl18plus"
   | "nbcplUnrated";
-export const ContentRatingNbcplRatingEnum = S.String;
+const ContentRatingNbcplRatingEnum = S.String;
 
 export type ContentRatingCsaRatingEnum =
   | "csaUnspecified"
@@ -4547,7 +4526,7 @@ export type ContentRatingCsaRatingEnum =
   | "csa18"
   | "csaInterdiction"
   | "csaUnrated";
-export const ContentRatingCsaRatingEnum = S.String;
+const ContentRatingCsaRatingEnum = S.String;
 
 export type ContentRatingRussiaRatingEnum =
   | "russiaUnspecified"
@@ -4557,7 +4536,7 @@ export type ContentRatingRussiaRatingEnum =
   | "russia16"
   | "russia18"
   | "russiaUnrated";
-export const ContentRatingRussiaRatingEnum = S.String;
+const ContentRatingRussiaRatingEnum = S.String;
 
 export type ContentRatingCnaRatingEnum =
   | "cnaUnspecified"
@@ -4567,7 +4546,7 @@ export type ContentRatingCnaRatingEnum =
   | "cna18"
   | "cna18plus"
   | "cnaUnrated";
-export const ContentRatingCnaRatingEnum = S.String;
+const ContentRatingCnaRatingEnum = S.String;
 
 export type ContentRatingAcbRatingEnum =
   | "acbUnspecified"
@@ -4580,7 +4559,7 @@ export type ContentRatingAcbRatingEnum =
   | "acbMa15plus"
   | "acbR18plus"
   | "acbUnrated";
-export const ContentRatingAcbRatingEnum = S.String;
+const ContentRatingAcbRatingEnum = S.String;
 
 export type ContentRatingEgfilmRatingEnum =
   | "egfilmUnspecified"
@@ -4588,7 +4567,7 @@ export type ContentRatingEgfilmRatingEnum =
   | "egfilm18"
   | "egfilmBn"
   | "egfilmUnrated";
-export const ContentRatingEgfilmRatingEnum = S.String;
+const ContentRatingEgfilmRatingEnum = S.String;
 
 export type ContentRatingGrfilmRatingEnum =
   | "grfilmUnspecified"
@@ -4600,7 +4579,7 @@ export type ContentRatingGrfilmRatingEnum =
   | "grfilmK17"
   | "grfilmK18"
   | "grfilmUnrated";
-export const ContentRatingGrfilmRatingEnum = S.String;
+const ContentRatingGrfilmRatingEnum = S.String;
 
 export type ContentRatingEcbmctRatingEnum =
   | "ecbmctUnspecified"
@@ -4613,7 +4592,7 @@ export type ContentRatingEcbmctRatingEnum =
   | "ecbmct15plus"
   | "ecbmct18plus"
   | "ecbmctUnrated";
-export const ContentRatingEcbmctRatingEnum = S.String;
+const ContentRatingEcbmctRatingEnum = S.String;
 
 export type ContentRatingMekuRatingEnum =
   | "mekuUnspecified"
@@ -4623,7 +4602,7 @@ export type ContentRatingMekuRatingEnum =
   | "meku16"
   | "meku18"
   | "mekuUnrated";
-export const ContentRatingMekuRatingEnum = S.String;
+const ContentRatingMekuRatingEnum = S.String;
 
 export type ContentRatingRcnofRatingEnum =
   | "rcnofUnspecified"
@@ -4634,7 +4613,7 @@ export type ContentRatingRcnofRatingEnum =
   | "rcnofV"
   | "rcnofVi"
   | "rcnofUnrated";
-export const ContentRatingRcnofRatingEnum = S.String;
+const ContentRatingRcnofRatingEnum = S.String;
 
 export type ContentRatingBfvcRatingEnum =
   | "bfvcUnspecified"
@@ -4646,7 +4625,7 @@ export type ContentRatingBfvcRatingEnum =
   | "bfvc20"
   | "bfvcB"
   | "bfvcUnrated";
-export const ContentRatingBfvcRatingEnum = S.String;
+const ContentRatingBfvcRatingEnum = S.String;
 
 export type ContentRatingDjctqRatingEnum =
   | "djctqUnspecified"
@@ -4673,7 +4652,7 @@ export type ContentRatingDjctqRatingEnum =
   | "djctq1418"
   | "djctq1618"
   | "djctqUnrated";
-export const ContentRatingDjctqRatingEnum = S.String;
+const ContentRatingDjctqRatingEnum = S.String;
 
 export type ContentRatingResorteviolenciaRatingEnum =
   | "resorteviolenciaUnspecified"
@@ -4683,7 +4662,7 @@ export type ContentRatingResorteviolenciaRatingEnum =
   | "resorteviolenciaD"
   | "resorteviolenciaE"
   | "resorteviolenciaUnrated";
-export const ContentRatingResorteviolenciaRatingEnum = S.String;
+const ContentRatingResorteviolenciaRatingEnum = S.String;
 
 /** Ratings schemes. The country-specific ratings are mostly for movies and shows. LINT.IfChange */
 export interface ContentRating {
@@ -4830,7 +4809,7 @@ export interface ContentRating {
   /** The video's rating in Venezuela. */
   resorteviolenciaRating?: ContentRatingResorteviolenciaRatingEnum | (string & {});
 }
-export const ContentRating = /*@__PURE__*/ S.suspend(() =>
+const ContentRating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bmukkRating: S.optional(ContentRatingBmukkRatingEnum),
     mccaaRating: S.optional(ContentRatingMccaaRatingEnum),
@@ -4907,7 +4886,7 @@ export const ContentRating = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentRating" }) as any as S.Schema<ContentRating>;
 
 export type VideoContentDetailsDefinitionEnum = "sd" | "hd";
-export const VideoContentDetailsDefinitionEnum = S.String;
+const VideoContentDetailsDefinitionEnum = S.String;
 
 /** Details about the content of a YouTube Video. */
 export interface VideoContentDetails {
@@ -4932,7 +4911,7 @@ export interface VideoContentDetails {
   /** The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S, in which the letters PT indicate that the value specifies a period of time, and the letters M and S refer to length in minutes and seconds, respectively. The # characters preceding the M and S letters are both integers that specify the number of minutes (or seconds) of the video. For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long. */
   duration?: string;
 }
-export const VideoContentDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionRestriction: S.optional(VideoContentDetailsRegionRestriction),
     countryRestriction: S.optional(AccessPolicy),
@@ -4953,13 +4932,13 @@ export type VideoStatusUploadStatusEnum =
   | "failed"
   | "rejected"
   | "deleted";
-export const VideoStatusUploadStatusEnum = S.String;
+const VideoStatusUploadStatusEnum = S.String;
 
 export type VideoStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
-export const VideoStatusPrivacyStatusEnum = S.String;
+const VideoStatusPrivacyStatusEnum = S.String;
 
 export type VideoStatusLicenseEnum = "youtube" | "creativeCommon";
-export const VideoStatusLicenseEnum = S.String;
+const VideoStatusLicenseEnum = S.String;
 
 export type VideoStatusFailureReasonEnum =
   | "conversion"
@@ -4968,7 +4947,7 @@ export type VideoStatusFailureReasonEnum =
   | "tooSmall"
   | "codec"
   | "uploadAborted";
-export const VideoStatusFailureReasonEnum = S.String;
+const VideoStatusFailureReasonEnum = S.String;
 
 export type VideoStatusRejectionReasonEnum =
   | "copyright"
@@ -4981,7 +4960,7 @@ export type VideoStatusRejectionReasonEnum =
   | "uploaderAccountClosed"
   | "trademark"
   | "legal";
-export const VideoStatusRejectionReasonEnum = S.String;
+const VideoStatusRejectionReasonEnum = S.String;
 
 /** Basic details about a video category, such as its localized title. Next Id: 20 */
 export interface VideoStatus {
@@ -5006,7 +4985,7 @@ export interface VideoStatus {
   /** This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected. */
   rejectionReason?: VideoStatusRejectionReasonEnum | (string & {});
 }
-export const VideoStatus = /*@__PURE__*/ S.suspend(() =>
+const VideoStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selfDeclaredMadeForKids: S.optional(S.Boolean),
     publishAt: S.optional(S.String),
@@ -5063,7 +5042,7 @@ export interface Video {
   /** The status object contains information about the video's uploading, processing, and privacy statuses. */
   status?: VideoStatus;
 }
-export const Video = /*@__PURE__*/ S.suspend(() =>
+const Video = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     brandPartner: S.optional(BrandPartner),
@@ -5104,7 +5083,7 @@ export interface InsertVideosRequest {
   /** Request body */
   body?: Video;
 }
-export const InsertVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -5136,7 +5115,7 @@ export interface ListActivitiesRequest {
   /** The *maxResults* parameter specifies the maximum number of items that should be returned in the result set. */
   maxResults?: number;
 }
-export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishedAfter: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -5158,14 +5137,12 @@ export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stub token pagination template to suppress results. */
 export type TokenPagination = TestItemTestItemSnippet;
-export const TokenPagination = TestItemTestItemSnippet;
-
 /** Information about a resource that received a comment. */
 export interface ActivityContentDetailsComment {
   /** The `resourceId` object contains information that identifies the resource associated with the comment. */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsComment = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetailsComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(ResourceId),
   }),
@@ -5178,7 +5155,7 @@ export interface ActivityContentDetailsChannelItem {
   /** The `resourceId` object contains information that identifies the resource that was added to the channel. */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsChannelItem =
+const ActivityContentDetailsChannelItem =
   ActivityContentDetailsComment as any as S.Schema<ActivityContentDetailsChannelItem>;
 
 /** Information about a channel that a user subscribed to. */
@@ -5186,13 +5163,13 @@ export interface ActivityContentDetailsSubscription {
   /** The `resourceId` object contains information that identifies the resource that the user subscribed to. */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsSubscription =
+const ActivityContentDetailsSubscription =
   ActivityContentDetailsComment as any as S.Schema<ActivityContentDetailsSubscription>;
 
 export type ActivityContentDetailsPromotedItemCtaTypeEnum =
   | "ctaTypeUnspecified"
   | "visitAdvertiserSite";
-export const ActivityContentDetailsPromotedItemCtaTypeEnum = S.String;
+const ActivityContentDetailsPromotedItemCtaTypeEnum = S.String;
 
 /** Details about a resource which is being promoted. */
 export interface ActivityContentDetailsPromotedItem {
@@ -5217,7 +5194,7 @@ export interface ActivityContentDetailsPromotedItem {
   /** The list of forecasting URLs. The client should ping all of these URLs when a promoted item is not available, to indicate that a promoted item could have been shown. */
   forecastingUrl?: StringList;
 }
-export const ActivityContentDetailsPromotedItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetailsPromotedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clickTrackingUrl: S.optional(S.String),
     videoId: S.optional(S.String),
@@ -5239,7 +5216,7 @@ export interface ActivityContentDetailsUpload {
   /** The ID that YouTube uses to uniquely identify the uploaded video. */
   videoId?: string;
 }
-export const ActivityContentDetailsUpload = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetailsUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoId: S.optional(S.String),
   }),
@@ -5252,7 +5229,7 @@ export interface ActivityContentDetailsBulletin {
   /** The `resourceId` object contains information that identifies the resource associated with a bulletin post. @mutable youtube.activities.insert */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsBulletin =
+const ActivityContentDetailsBulletin =
   ActivityContentDetailsComment as any as S.Schema<ActivityContentDetailsBulletin>;
 
 /** Information about a new playlist item. */
@@ -5264,7 +5241,7 @@ export interface ActivityContentDetailsPlaylistItem {
   /** The `resourceId` object contains information about the resource that was added to the playlist. */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsPlaylistItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetailsPlaylistItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     playlistItemId: S.optional(S.String),
     playlistId: S.optional(S.String),
@@ -5279,7 +5256,7 @@ export type ActivityContentDetailsSocialTypeEnum =
   | "googlePlus"
   | "facebook"
   | "twitter";
-export const ActivityContentDetailsSocialTypeEnum = S.String;
+const ActivityContentDetailsSocialTypeEnum = S.String;
 
 /** Details about a social network post. */
 export interface ActivityContentDetailsSocial {
@@ -5294,7 +5271,7 @@ export interface ActivityContentDetailsSocial {
   /** An image of the post's author. */
   imageUrl?: string;
 }
-export const ActivityContentDetailsSocial = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetailsSocial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceUrl: S.optional(S.String),
     type: S.optional(ActivityContentDetailsSocialTypeEnum),
@@ -5307,7 +5284,7 @@ export const ActivityContentDetailsSocial = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityContentDetailsSocial>;
 
 export type ActivityContentDetailsRecommendationReasonEnum = "reasonUnspecified" | "videoWatched";
-export const ActivityContentDetailsRecommendationReasonEnum = S.String;
+const ActivityContentDetailsRecommendationReasonEnum = S.String;
 
 /** Information that identifies the recommended resource. */
 export interface ActivityContentDetailsRecommendation {
@@ -5318,7 +5295,7 @@ export interface ActivityContentDetailsRecommendation {
   /** The reason that the resource is recommended to the user. */
   reason?: ActivityContentDetailsRecommendationReasonEnum;
 }
-export const ActivityContentDetailsRecommendation = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetailsRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seedResourceId: S.optional(ResourceId),
     resourceId: S.optional(ResourceId),
@@ -5349,7 +5326,7 @@ export interface ActivityContentDetails {
   /** The `recommendation` object contains information about a recommended resource. This property is only present if the `snippet.type` is `recommendation`. */
   recommendation?: ActivityContentDetailsRecommendation;
 }
-export const ActivityContentDetails = /*@__PURE__*/ S.suspend(() =>
+const ActivityContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(ActivityContentDetailsComment),
     channelItem: S.optional(ActivityContentDetailsChannelItem),
@@ -5374,7 +5351,7 @@ export type ActivitySnippetTypeEnum =
   | "social"
   | "channelItem"
   | "promotedItem";
-export const ActivitySnippetTypeEnum = S.String;
+const ActivitySnippetTypeEnum = S.String;
 
 /** Basic details about an activity, including title, description, thumbnails, activity type and group. Next ID: 12 */
 export interface ActivitySnippet {
@@ -5395,7 +5372,7 @@ export interface ActivitySnippet {
   /** Channel title for the channel responsible for this activity */
   channelTitle?: string;
 }
-export const ActivitySnippet = /*@__PURE__*/ S.suspend(() =>
+const ActivitySnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -5421,7 +5398,7 @@ export interface Activity {
   /** Identifies what kind of resource this is. Value: The fixed string `"youtube#activity"`. */
   kind?: string;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     contentDetails: S.optional(ActivityContentDetails),
@@ -5432,7 +5409,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type ActivityList = Array<Activity>;
-export const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
+const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
 
 /** Paging details for lists of resources, including total number of items available and number of resources returned in a single page. */
 export interface PageInfo {
@@ -5441,7 +5418,7 @@ export interface PageInfo {
   /** The number of results included in the API response. */
   resultsPerPage?: number;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalResults: S.optional(S.Number),
     resultsPerPage: S.optional(S.Number),
@@ -5466,7 +5443,7 @@ export interface ActivityListResponse {
   /** General pagination information. */
   pageInfo?: PageInfo;
 }
-export const ActivityListResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenPagination: S.optional(TestItemTestItemSnippet),
     items: ActivityList,
@@ -5492,7 +5469,7 @@ export interface ListCaptionsRequest {
   /** Returns the captions with the given IDs for Stubby or Apiary. */
   id?: StringList;
 }
-export const ListCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     videoId: S.String.pipe(T.Query()),
@@ -5509,7 +5486,7 @@ export const ListCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCaptionsRequest" }) as any as S.Schema<ListCaptionsRequest>;
 
 export type CaptionList = Array<Caption>;
-export const CaptionList = /*@__PURE__*/ S.Array(Caption) as any as S.Schema<CaptionList>;
+const CaptionList = /*@__PURE__*/ S.Array(Caption) as any as S.Schema<CaptionList>;
 
 export interface CaptionListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#captionListResponse". */
@@ -5523,7 +5500,7 @@ export interface CaptionListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
 }
-export const CaptionListResponse = /*@__PURE__*/ S.suspend(() =>
+const CaptionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(CaptionList),
@@ -5559,7 +5536,7 @@ export interface ListChannelsRequest {
   /** The *part* parameter specifies a comma-separated list of one or more channel resource properties that the API response will include. If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a channel resource, the contentDetails property contains other properties, such as the uploads properties. As such, if you set *part=contentDetails*, the API response will also contain all of those nested properties. */
   part: StringList;
 }
-export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mine: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5583,14 +5560,14 @@ export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListChannelsRequest" }) as any as S.Schema<ListChannelsRequest>;
 
 export type ChannelStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
-export const ChannelStatusPrivacyStatusEnum = S.String;
+const ChannelStatusPrivacyStatusEnum = S.String;
 
 export type ChannelStatusLongUploadsStatusEnum =
   | "longUploadsUnspecified"
   | "allowed"
   | "eligible"
   | "disallowed";
-export const ChannelStatusLongUploadsStatusEnum = S.String;
+const ChannelStatusLongUploadsStatusEnum = S.String;
 
 /** JSON template for the status part of a channel. */
 export interface ChannelStatus {
@@ -5605,7 +5582,7 @@ export interface ChannelStatus {
   /** The long uploads status of this channel. See https://support.google.com/youtube/answer/71673 for more information. */
   longUploadsStatus?: ChannelStatusLongUploadsStatusEnum | (string & {});
 }
-export const ChannelStatus = /*@__PURE__*/ S.suspend(() =>
+const ChannelStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     madeForKids: S.optional(S.Boolean),
     privacyStatus: S.optional(ChannelStatusPrivacyStatusEnum),
@@ -5623,7 +5600,7 @@ export interface ChannelContentOwnerDetails {
   /** The date and time when the channel was linked to the content owner. */
   timeLinked?: string;
 }
-export const ChannelContentOwnerDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelContentOwnerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentOwner: S.optional(S.String),
     timeLinked: S.optional(S.String),
@@ -5639,11 +5616,10 @@ export interface ChannelLocalization {
   /** The localized strings for channel's description. */
   description?: string;
 }
-export const ChannelLocalization = PlaylistLocalization as any as S.Schema<ChannelLocalization>;
+const ChannelLocalization = PlaylistLocalization as any as S.Schema<ChannelLocalization>;
 
 export type ChannelLocalizationMap = { [key: string]: ChannelLocalization | undefined };
-export const ChannelLocalizationMap =
-  PlaylistLocalizationMap as any as S.Schema<ChannelLocalizationMap>;
+const ChannelLocalizationMap = PlaylistLocalizationMap as any as S.Schema<ChannelLocalizationMap>;
 
 /** A pair Property / Value. */
 export interface PropertyValue {
@@ -5652,7 +5628,7 @@ export interface PropertyValue {
   /** The property's value. */
   value?: string;
 }
-export const PropertyValue = /*@__PURE__*/ S.suspend(() =>
+const PropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.optional(S.String),
     value: S.optional(S.String),
@@ -5660,7 +5636,7 @@ export const PropertyValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyValue" }) as any as S.Schema<PropertyValue>;
 
 export type PropertyValueList = Array<PropertyValue>;
-export const PropertyValueList = /*@__PURE__*/ S.Array(
+const PropertyValueList = /*@__PURE__*/ S.Array(
   PropertyValue,
 ) as any as S.Schema<PropertyValueList>;
 
@@ -5673,7 +5649,7 @@ export interface WatchSettings {
   /** An ID that uniquely identifies a playlist that displays next to the video player. */
   featuredPlaylistId?: string;
 }
-export const WatchSettings = /*@__PURE__*/ S.suspend(() =>
+const WatchSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textColor: S.optional(S.String),
     backgroundColor: S.optional(S.String),
@@ -5684,7 +5660,7 @@ export const WatchSettings = /*@__PURE__*/ S.suspend(() =>
 export interface LanguageTag {
   value?: string;
 }
-export const LanguageTag = /*@__PURE__*/ S.suspend(() =>
+const LanguageTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -5694,7 +5670,7 @@ export interface LocalizedString {
   value?: string;
   language?: string;
 }
-export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
+const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     language: S.optional(S.String),
@@ -5702,7 +5678,7 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalizedString" }) as any as S.Schema<LocalizedString>;
 
 export type LocalizedStringList = Array<LocalizedString>;
-export const LocalizedStringList = /*@__PURE__*/ S.Array(
+const LocalizedStringList = /*@__PURE__*/ S.Array(
   LocalizedString,
 ) as any as S.Schema<LocalizedStringList>;
 
@@ -5712,7 +5688,7 @@ export interface LocalizedProperty {
   default?: string;
   localized?: LocalizedStringList;
 }
-export const LocalizedProperty = /*@__PURE__*/ S.suspend(() =>
+const LocalizedProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultLanguage: S.optional(LanguageTag),
     default: S.optional(S.String),
@@ -5766,7 +5742,7 @@ export interface ImageSettings {
   /** Banner image. TV size high resolution (1920x1080). */
   bannerTvHighImageUrl?: string;
 }
-export const ImageSettings = /*@__PURE__*/ S.suspend(() =>
+const ImageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bannerTabletImageUrl: S.optional(S.String),
     bannerTabletHdImageUrl: S.optional(S.String),
@@ -5823,7 +5799,7 @@ export interface ChannelSettings {
   /** Whether related channels should be proposed. */
   showRelatedChannels?: boolean;
 }
-export const ChannelSettings = /*@__PURE__*/ S.suspend(() =>
+const ChannelSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showBrowseView: S.optional(S.Boolean),
     trackingAnalyticsAccountId: S.optional(S.String),
@@ -5853,7 +5829,7 @@ export interface ChannelBrandingSettings {
   /** Branding properties for the channel view. */
   channel?: ChannelSettings;
 }
-export const ChannelBrandingSettings = /*@__PURE__*/ S.suspend(() =>
+const ChannelBrandingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hints: S.optional(PropertyValueList),
     watch: S.optional(WatchSettings),
@@ -5863,7 +5839,7 @@ export const ChannelBrandingSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChannelBrandingSettings" }) as any as S.Schema<ChannelBrandingSettings>;
 
 export type ChannelConversionPingContextEnum = "subscribe" | "unsubscribe" | "cview";
-export const ChannelConversionPingContextEnum = S.String;
+const ChannelConversionPingContextEnum = S.String;
 
 /** Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping. */
 export interface ChannelConversionPing {
@@ -5872,7 +5848,7 @@ export interface ChannelConversionPing {
   /** The url (without the schema) that the player shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping. */
   conversionUrl?: string;
 }
-export const ChannelConversionPing = /*@__PURE__*/ S.suspend(() =>
+const ChannelConversionPing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(ChannelConversionPingContextEnum),
     conversionUrl: S.optional(S.String),
@@ -5880,7 +5856,7 @@ export const ChannelConversionPing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChannelConversionPing" }) as any as S.Schema<ChannelConversionPing>;
 
 export type ChannelConversionPingList = Array<ChannelConversionPing>;
-export const ChannelConversionPingList = /*@__PURE__*/ S.Array(
+const ChannelConversionPingList = /*@__PURE__*/ S.Array(
   ChannelConversionPing,
 ) as any as S.Schema<ChannelConversionPingList>;
 
@@ -5889,7 +5865,7 @@ export interface ChannelConversionPings {
   /** Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping. */
   pings?: ChannelConversionPingList;
 }
-export const ChannelConversionPings = /*@__PURE__*/ S.suspend(() =>
+const ChannelConversionPings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pings: S.optional(ChannelConversionPingList),
   }),
@@ -5908,7 +5884,7 @@ export interface ChannelStatistics {
   /** Whether or not the number of subscribers is shown for this user. */
   hiddenSubscriberCount?: boolean;
 }
-export const ChannelStatistics = /*@__PURE__*/ S.suspend(() =>
+const ChannelStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewCount: S.optional(S.String),
     videoCount: S.optional(S.String),
@@ -5925,7 +5901,7 @@ export interface ChannelTopicDetails {
   /** A list of Wikipedia URLs that describe the channel's content. */
   topicCategories?: StringList;
 }
-export const ChannelTopicDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelTopicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicIds: S.optional(StringList),
     topicCategories: S.optional(StringList),
@@ -5941,7 +5917,7 @@ export interface ChannelAuditDetails {
   /** Whether or not the channel respects the community guidelines. */
   communityGuidelinesGoodStanding?: boolean;
 }
-export const ChannelAuditDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelAuditDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentIdClaimsGoodStanding: S.optional(S.Boolean),
     copyrightStrikesGoodStanding: S.optional(S.Boolean),
@@ -5968,7 +5944,7 @@ export interface ChannelSnippet {
   /** The country of the channel. */
   country?: string;
 }
-export const ChannelSnippet = /*@__PURE__*/ S.suspend(() =>
+const ChannelSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customUrl: S.optional(S.String),
     defaultLanguage: S.optional(S.String),
@@ -5993,7 +5969,7 @@ export interface ChannelContentDetailsRelatedPlaylists {
   /** The ID of the playlist that contains the channel"s watch later playlist. Use the playlistItems.insert and playlistItems.delete to add or remove items from that list. */
   watchLater?: string;
 }
-export const ChannelContentDetailsRelatedPlaylists = /*@__PURE__*/ S.suspend(() =>
+const ChannelContentDetailsRelatedPlaylists = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchHistory: S.optional(S.String),
     favorites: S.optional(S.String),
@@ -6009,7 +5985,7 @@ export const ChannelContentDetailsRelatedPlaylists = /*@__PURE__*/ S.suspend(() 
 export interface ChannelContentDetails {
   relatedPlaylists?: ChannelContentDetailsRelatedPlaylists;
 }
-export const ChannelContentDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relatedPlaylists: S.optional(ChannelContentDetailsRelatedPlaylists),
   }),
@@ -6044,7 +6020,7 @@ export interface Channel {
   /** The contentDetails object encapsulates information about the channel's content. */
   contentDetails?: ChannelContentDetails;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     status: S.optional(ChannelStatus),
@@ -6063,7 +6039,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export type ChannelList = Array<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
+const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
 
 export interface ChannelListResponse {
   /** Etag of this resource. */
@@ -6083,7 +6059,7 @@ export interface ChannelListResponse {
   /** The visitorId identifies the visitor. */
   visitorId?: string;
 }
-export const ChannelListResponse = /*@__PURE__*/ S.suspend(() =>
+const ChannelListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     eventId: S.optional(S.String),
@@ -6111,7 +6087,7 @@ export interface ListChannelSectionsRequest {
   /** Return the ChannelSections owned by the authenticated user. */
   mine?: boolean;
 }
-export const ListChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -6131,7 +6107,7 @@ export const ListChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChannelSectionsRequest>;
 
 export type ChannelSectionList = Array<ChannelSection>;
-export const ChannelSectionList = /*@__PURE__*/ S.Array(
+const ChannelSectionList = /*@__PURE__*/ S.Array(
   ChannelSection,
 ) as any as S.Schema<ChannelSectionList>;
 
@@ -6147,7 +6123,7 @@ export interface ChannelSectionListResponse {
   /** Serialized EventId of the request which produced this response. */
   eventId?: string;
 }
-export const ChannelSectionListResponse = /*@__PURE__*/ S.suspend(() =>
+const ChannelSectionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     visitorId: S.optional(S.String),
@@ -6160,7 +6136,7 @@ export const ChannelSectionListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChannelSectionListResponse>;
 
 export type ListCommentsTextFormatEnum = "textFormatUnspecified" | "html" | "plainText";
-export const ListCommentsTextFormatEnum = S.String;
+const ListCommentsTextFormatEnum = S.String;
 
 export interface ListCommentsRequest {
   /** The *maxResults* parameter specifies the maximum number of items that should be returned in the result set. */
@@ -6176,7 +6152,7 @@ export interface ListCommentsRequest {
   /** Returns replies to the specified comment. Note, currently YouTube features only one level of replies (ie replies to top level comments). However replies to replies may be supported in the future. */
   parentId?: string;
 }
-export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6210,7 +6186,7 @@ export interface CommentListResponse {
   /** General pagination information. */
   pageInfo?: PageInfo;
 }
-export const CommentListResponse = /*@__PURE__*/ S.suspend(() =>
+const CommentListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenPagination: S.optional(TestItemTestItemSnippet),
     eventId: S.optional(S.String),
@@ -6224,17 +6200,17 @@ export const CommentListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentListResponse" }) as any as S.Schema<CommentListResponse>;
 
 export type ListCommentThreadsOrderEnum = "orderUnspecified" | "time" | "relevance";
-export const ListCommentThreadsOrderEnum = S.String;
+const ListCommentThreadsOrderEnum = S.String;
 
 export type ListCommentThreadsModerationStatusEnum =
   | "published"
   | "heldForReview"
   | "likelySpam"
   | "rejected";
-export const ListCommentThreadsModerationStatusEnum = S.String;
+const ListCommentThreadsModerationStatusEnum = S.String;
 
 export type ListCommentThreadsTextFormatEnum = "textFormatUnspecified" | "html" | "plainText";
-export const ListCommentThreadsTextFormatEnum = S.String;
+const ListCommentThreadsTextFormatEnum = S.String;
 
 export interface ListCommentThreadsRequest {
   /** Returns the comment threads with the given IDs for Stubby or Apiary. */
@@ -6259,7 +6235,7 @@ export interface ListCommentThreadsRequest {
   /** The *part* parameter specifies a comma-separated list of one or more commentThread resource properties that the API response will include. */
   part: StringList;
 }
-export const ListCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(StringList.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -6284,7 +6260,7 @@ export const ListCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommentThreadsRequest>;
 
 export type CommentThreadList = Array<CommentThread>;
-export const CommentThreadList = /*@__PURE__*/ S.Array(
+const CommentThreadList = /*@__PURE__*/ S.Array(
   CommentThread,
 ) as any as S.Schema<CommentThreadList>;
 
@@ -6305,7 +6281,7 @@ export interface CommentThreadListResponse {
   /** General pagination information. */
   pageInfo?: PageInfo;
 }
-export const CommentThreadListResponse = /*@__PURE__*/ S.suspend(() =>
+const CommentThreadListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6325,7 +6301,7 @@ export interface ListI18nLanguagesRequest {
   /** The *part* parameter specifies the i18nLanguage resource properties that the API response will include. Set the parameter value to snippet. */
   part: StringList;
 }
-export const ListI18nLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListI18nLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -6345,7 +6321,7 @@ export interface I18nLanguageSnippet {
   /** The human-readable name of the language in the language itself. */
   name?: string;
 }
-export const I18nLanguageSnippet = /*@__PURE__*/ S.suspend(() =>
+const I18nLanguageSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl: S.optional(S.String),
     name: S.optional(S.String),
@@ -6363,7 +6339,7 @@ export interface I18nLanguage {
   /** The ID that YouTube uses to uniquely identify the i18n language. */
   id?: string;
 }
-export const I18nLanguage = /*@__PURE__*/ S.suspend(() =>
+const I18nLanguage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     snippet: S.optional(I18nLanguageSnippet),
@@ -6373,9 +6349,7 @@ export const I18nLanguage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "I18nLanguage" }) as any as S.Schema<I18nLanguage>;
 
 export type I18nLanguageList = Array<I18nLanguage>;
-export const I18nLanguageList = /*@__PURE__*/ S.Array(
-  I18nLanguage,
-) as any as S.Schema<I18nLanguageList>;
+const I18nLanguageList = /*@__PURE__*/ S.Array(I18nLanguage) as any as S.Schema<I18nLanguageList>;
 
 export interface I18nLanguageListResponse {
   /** Serialized EventId of the request which produced this response. */
@@ -6389,7 +6363,7 @@ export interface I18nLanguageListResponse {
   /** Etag of this resource. */
   etag?: string;
 }
-export const I18nLanguageListResponse = /*@__PURE__*/ S.suspend(() =>
+const I18nLanguageListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6404,7 +6378,7 @@ export interface ListI18nRegionsRequest {
   /** The *part* parameter specifies the i18nRegion resource properties that the API response will include. Set the parameter value to snippet. */
   part: StringList;
 }
-export const ListI18nRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListI18nRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -6424,7 +6398,7 @@ export interface I18nRegionSnippet {
   /** The human-readable name of the region. */
   name?: string;
 }
-export const I18nRegionSnippet = /*@__PURE__*/ S.suspend(() =>
+const I18nRegionSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gl: S.optional(S.String),
     name: S.optional(S.String),
@@ -6442,7 +6416,7 @@ export interface I18nRegion {
   /** The snippet object contains basic details about the i18n region, such as region code and human-readable name. */
   snippet?: I18nRegionSnippet;
 }
-export const I18nRegion = /*@__PURE__*/ S.suspend(() =>
+const I18nRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6452,7 +6426,7 @@ export const I18nRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "I18nRegion" }) as any as S.Schema<I18nRegion>;
 
 export type I18nRegionList = Array<I18nRegion>;
-export const I18nRegionList = /*@__PURE__*/ S.Array(I18nRegion) as any as S.Schema<I18nRegionList>;
+const I18nRegionList = /*@__PURE__*/ S.Array(I18nRegion) as any as S.Schema<I18nRegionList>;
 
 export interface I18nRegionListResponse {
   /** Serialized EventId of the request which produced this response. */
@@ -6466,7 +6440,7 @@ export interface I18nRegionListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#i18nRegionListResponse". */
   kind?: string;
 }
-export const I18nRegionListResponse = /*@__PURE__*/ S.suspend(() =>
+const I18nRegionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     items: S.optional(I18nRegionList),
@@ -6481,7 +6455,7 @@ export type ListLiveBroadcastsBroadcastTypeEnum =
   | "all"
   | "event"
   | "persistent";
-export const ListLiveBroadcastsBroadcastTypeEnum = S.String;
+const ListLiveBroadcastsBroadcastTypeEnum = S.String;
 
 export type ListLiveBroadcastsBroadcastStatusEnum =
   | "broadcastStatusFilterUnspecified"
@@ -6489,7 +6463,7 @@ export type ListLiveBroadcastsBroadcastStatusEnum =
   | "active"
   | "upcoming"
   | "completed";
-export const ListLiveBroadcastsBroadcastStatusEnum = S.String;
+const ListLiveBroadcastsBroadcastStatusEnum = S.String;
 
 export interface ListLiveBroadcastsRequest {
   /** This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel. */
@@ -6510,7 +6484,7 @@ export interface ListLiveBroadcastsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const ListLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6533,7 +6507,7 @@ export const ListLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLiveBroadcastsRequest>;
 
 export type LiveBroadcastList = Array<LiveBroadcast>;
-export const LiveBroadcastList = /*@__PURE__*/ S.Array(
+const LiveBroadcastList = /*@__PURE__*/ S.Array(
   LiveBroadcast,
 ) as any as S.Schema<LiveBroadcastList>;
 
@@ -6556,7 +6530,7 @@ export interface LiveBroadcastListResponse {
   /** A list of broadcasts that match the request criteria. */
   items: LiveBroadcastList;
 }
-export const LiveBroadcastListResponse = /*@__PURE__*/ S.suspend(() =>
+const LiveBroadcastListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     visitorId: S.optional(S.String),
@@ -6586,7 +6560,7 @@ export interface ListLiveChatMessagesRequest {
   /** Specifies the localization language in which the system messages should be returned. */
   hl?: string;
 }
-export const ListLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     liveChatId: S.String.pipe(T.Query()),
@@ -6606,7 +6580,7 @@ export const ListLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLiveChatMessagesRequest>;
 
 export type LiveChatMessageList = Array<LiveChatMessage>;
-export const LiveChatMessageList = /*@__PURE__*/ S.Array(
+const LiveChatMessageList = /*@__PURE__*/ S.Array(
   LiveChatMessage,
 ) as any as S.Schema<LiveChatMessageList>;
 
@@ -6631,7 +6605,7 @@ export interface LiveChatMessageListResponse {
   pageInfo?: PageInfo;
   tokenPagination?: TestItemTestItemSnippet;
 }
-export const LiveChatMessageListResponse = /*@__PURE__*/ S.suspend(() =>
+const LiveChatMessageListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: LiveChatMessageList,
     visitorId: S.optional(S.String),
@@ -6659,7 +6633,7 @@ export interface ListLiveChatModeratorsRequest {
   /** The *part* parameter specifies the liveChatModerator resource parts that the API response will include. Supported values are id and snippet. */
   part: StringList;
 }
-export const ListLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liveChatId: S.String.pipe(T.Query()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -6677,7 +6651,7 @@ export const ListLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLiveChatModeratorsRequest>;
 
 export type LiveChatModeratorList = Array<LiveChatModerator>;
-export const LiveChatModeratorList = /*@__PURE__*/ S.Array(
+const LiveChatModeratorList = /*@__PURE__*/ S.Array(
   LiveChatModerator,
 ) as any as S.Schema<LiveChatModeratorList>;
 
@@ -6700,7 +6674,7 @@ export interface LiveChatModeratorListResponse {
   nextPageToken?: string;
   tokenPagination?: TestItemTestItemSnippet;
 }
-export const LiveChatModeratorListResponse = /*@__PURE__*/ S.suspend(() =>
+const LiveChatModeratorListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageInfo: S.optional(PageInfo),
     prevPageToken: S.optional(S.String),
@@ -6731,7 +6705,7 @@ export interface ListLiveStreamsRequest {
   onBehalfOfContentOwnerChannel?: string;
   mine?: boolean;
 }
-export const ListLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(StringList.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -6750,7 +6724,7 @@ export const ListLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLiveStreamsRequest" }) as any as S.Schema<ListLiveStreamsRequest>;
 
 export type LiveStreamList = Array<LiveStream>;
-export const LiveStreamList = /*@__PURE__*/ S.Array(LiveStream) as any as S.Schema<LiveStreamList>;
+const LiveStreamList = /*@__PURE__*/ S.Array(LiveStream) as any as S.Schema<LiveStreamList>;
 
 export interface LiveStreamListResponse {
   /** Serialized EventId of the request which produced this response. */
@@ -6770,7 +6744,7 @@ export interface LiveStreamListResponse {
   /** A list of live streams that match the request criteria. */
   items: LiveStreamList;
 }
-export const LiveStreamListResponse = /*@__PURE__*/ S.suspend(() =>
+const LiveStreamListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     prevPageToken: S.optional(S.String),
@@ -6785,7 +6759,7 @@ export const LiveStreamListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LiveStreamListResponse" }) as any as S.Schema<LiveStreamListResponse>;
 
 export type ListMembersModeEnum = "listMembersModeUnknown" | "updates" | "all_current";
-export const ListMembersModeEnum = S.String;
+const ListMembersModeEnum = S.String;
 
 export interface ListMembersRequest {
   /** The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved. */
@@ -6801,7 +6775,7 @@ export interface ListMembersRequest {
   /** Filter members in the results set to the ones that have access to a level. */
   hasAccessToLevel?: string;
 }
-export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -6826,7 +6800,7 @@ export interface MembershipsDurationAtLevel {
   /** The cumulative time the user has been a member for the given level in complete months (the time is rounded down to the nearest integer). */
   memberTotalDurationMonths?: number;
 }
-export const MembershipsDurationAtLevel = /*@__PURE__*/ S.suspend(() =>
+const MembershipsDurationAtLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberSince: S.optional(S.String),
     level: S.optional(S.String),
@@ -6837,7 +6811,7 @@ export const MembershipsDurationAtLevel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembershipsDurationAtLevel>;
 
 export type MembershipsDurationAtLevelList = Array<MembershipsDurationAtLevel>;
-export const MembershipsDurationAtLevelList = /*@__PURE__*/ S.Array(
+const MembershipsDurationAtLevelList = /*@__PURE__*/ S.Array(
   MembershipsDurationAtLevel,
 ) as any as S.Schema<MembershipsDurationAtLevelList>;
 
@@ -6847,7 +6821,7 @@ export interface MembershipsDuration {
   /** The date and time when the user became a continuous member across all levels. */
   memberSince?: string;
 }
-export const MembershipsDuration = /*@__PURE__*/ S.suspend(() =>
+const MembershipsDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberTotalDurationMonths: S.optional(S.Number),
     memberSince: S.optional(S.String),
@@ -6866,7 +6840,7 @@ export interface MembershipsDetails {
   /** Id of the highest level that the user has access to at the moment. */
   highestAccessibleLevel?: string;
 }
-export const MembershipsDetails = /*@__PURE__*/ S.suspend(() =>
+const MembershipsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipsDurationAtLevels: S.optional(MembershipsDurationAtLevelList),
     highestAccessibleLevelDisplayName: S.optional(S.String),
@@ -6884,7 +6858,7 @@ export interface MemberSnippet {
   /** Details about the user's membership. */
   membershipsDetails?: MembershipsDetails;
 }
-export const MemberSnippet = /*@__PURE__*/ S.suspend(() =>
+const MemberSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatorChannelId: S.optional(S.String),
     memberDetails: S.optional(ChannelProfileDetails),
@@ -6901,7 +6875,7 @@ export interface Member {
   /** The snippet object contains basic details about the member. */
   snippet?: MemberSnippet;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     etag: S.optional(S.String),
@@ -6910,7 +6884,7 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 
 export type MemberList = Array<Member>;
-export const MemberList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MemberList>;
+const MemberList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MemberList>;
 
 export interface MemberListResponse {
   /** The visitorId identifies the visitor. */
@@ -6928,7 +6902,7 @@ export interface MemberListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#memberListResponse". */
   kind?: string;
 }
-export const MemberListResponse = /*@__PURE__*/ S.suspend(() =>
+const MemberListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visitorId: S.optional(S.String),
     etag: S.optional(S.String),
@@ -6945,7 +6919,7 @@ export interface ListMembershipsLevelsRequest {
   /** The *part* parameter specifies the membershipsLevel resource parts that the API response will include. Supported values are id and snippet. */
   part: StringList;
 }
-export const ListMembershipsLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
   }).pipe(
@@ -6963,7 +6937,7 @@ export interface LevelDetails {
   /** The name that should be used when referring to this level. */
   displayName?: string;
 }
-export const LevelDetails = /*@__PURE__*/ S.suspend(() =>
+const LevelDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -6975,7 +6949,7 @@ export interface MembershipsLevelSnippet {
   /** Details about the pricing level. */
   levelDetails?: LevelDetails;
 }
-export const MembershipsLevelSnippet = /*@__PURE__*/ S.suspend(() =>
+const MembershipsLevelSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatorChannelId: S.optional(S.String),
     levelDetails: S.optional(LevelDetails),
@@ -6993,7 +6967,7 @@ export interface MembershipsLevel {
   /** Etag of this resource. */
   etag?: string;
 }
-export const MembershipsLevel = /*@__PURE__*/ S.suspend(() =>
+const MembershipsLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     kind: S.optional(S.String),
@@ -7003,7 +6977,7 @@ export const MembershipsLevel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MembershipsLevel" }) as any as S.Schema<MembershipsLevel>;
 
 export type MembershipsLevelList = Array<MembershipsLevel>;
-export const MembershipsLevelList = /*@__PURE__*/ S.Array(
+const MembershipsLevelList = /*@__PURE__*/ S.Array(
   MembershipsLevel,
 ) as any as S.Schema<MembershipsLevelList>;
 
@@ -7019,7 +6993,7 @@ export interface MembershipsLevelListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#membershipsLevelListResponse". */
   kind?: string;
 }
-export const MembershipsLevelListResponse = /*@__PURE__*/ S.suspend(() =>
+const MembershipsLevelListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     etag: S.optional(S.String),
@@ -7045,7 +7019,7 @@ export interface ListPlaylistImagesRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const ListPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7065,7 +7039,7 @@ export const ListPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlaylistImagesRequest>;
 
 export type PlaylistImageList = Array<PlaylistImage>;
-export const PlaylistImageList = /*@__PURE__*/ S.Array(
+const PlaylistImageList = /*@__PURE__*/ S.Array(
   PlaylistImage,
 ) as any as S.Schema<PlaylistImageList>;
 
@@ -7080,7 +7054,7 @@ export interface PlaylistImageListResponse {
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
 }
-export const PlaylistImageListResponse = /*@__PURE__*/ S.suspend(() =>
+const PlaylistImageListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prevPageToken: S.optional(S.String),
     pageInfo: S.optional(PageInfo),
@@ -7107,7 +7081,7 @@ export interface ListPlaylistItemsRequest {
   /** Return the playlist items associated with the given video ID. */
   videoId?: string;
 }
-export const ListPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(StringList.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -7126,9 +7100,7 @@ export const ListPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlaylistItemsRequest" }) as any as S.Schema<ListPlaylistItemsRequest>;
 
 export type PlaylistItemList = Array<PlaylistItem>;
-export const PlaylistItemList = /*@__PURE__*/ S.Array(
-  PlaylistItem,
-) as any as S.Schema<PlaylistItemList>;
+const PlaylistItemList = /*@__PURE__*/ S.Array(PlaylistItem) as any as S.Schema<PlaylistItemList>;
 
 export interface PlaylistItemListResponse {
   /** The visitorId identifies the visitor. */
@@ -7148,7 +7120,7 @@ export interface PlaylistItemListResponse {
   /** The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set. */
   nextPageToken?: string;
 }
-export const PlaylistItemListResponse = /*@__PURE__*/ S.suspend(() =>
+const PlaylistItemListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visitorId: S.optional(S.String),
     prevPageToken: S.optional(S.String),
@@ -7182,7 +7154,7 @@ export interface ListPlaylistsRequest {
   /** Return content in specified language */
   hl?: string;
 }
-export const ListPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(StringList.pipe(T.Query())),
     channelId: S.optional(S.String.pipe(T.Query())),
@@ -7203,7 +7175,7 @@ export const ListPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlaylistsRequest" }) as any as S.Schema<ListPlaylistsRequest>;
 
 export type PlaylistList = Array<Playlist>;
-export const PlaylistList = /*@__PURE__*/ S.Array(Playlist) as any as S.Schema<PlaylistList>;
+const PlaylistList = /*@__PURE__*/ S.Array(Playlist) as any as S.Schema<PlaylistList>;
 
 export interface PlaylistListResponse {
   /** A list of playlists that match the request criteria */
@@ -7224,7 +7196,7 @@ export interface PlaylistListResponse {
   /** The visitorId identifies the visitor. */
   visitorId?: string;
 }
-export const PlaylistListResponse = /*@__PURE__*/ S.suspend(() =>
+const PlaylistListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: PlaylistList,
     kind: S.optional(S.String),
@@ -7239,35 +7211,35 @@ export const PlaylistListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlaylistListResponse" }) as any as S.Schema<PlaylistListResponse>;
 
 export type ListSearchVideoTypeEnum = "videoTypeUnspecified" | "any" | "movie" | "episode";
-export const ListSearchVideoTypeEnum = S.String;
+const ListSearchVideoTypeEnum = S.String;
 
 export type ListSearchVideoSyndicatedEnum = "videoSyndicatedUnspecified" | "any" | "true";
-export const ListSearchVideoSyndicatedEnum = S.String;
+const ListSearchVideoSyndicatedEnum = S.String;
 
 export type ListSearchVideoEmbeddableEnum = "videoEmbeddableUnspecified" | "any" | "true";
-export const ListSearchVideoEmbeddableEnum = S.String;
+const ListSearchVideoEmbeddableEnum = S.String;
 
 export type ListSearchChannelTypeEnum = "channelTypeUnspecified" | "any" | "show";
-export const ListSearchChannelTypeEnum = S.String;
+const ListSearchChannelTypeEnum = S.String;
 
 export type ListSearchVideoPaidProductPlacementEnum =
   | "videoPaidProductPlacementUnspecified"
   | "any"
   | "true";
-export const ListSearchVideoPaidProductPlacementEnum = S.String;
+const ListSearchVideoPaidProductPlacementEnum = S.String;
 
 export type ListSearchEventTypeEnum = "none" | "upcoming" | "live" | "completed";
-export const ListSearchEventTypeEnum = S.String;
+const ListSearchEventTypeEnum = S.String;
 
 export type ListSearchSafeSearchEnum =
   | "safeSearchSettingUnspecified"
   | "none"
   | "moderate"
   | "strict";
-export const ListSearchSafeSearchEnum = S.String;
+const ListSearchSafeSearchEnum = S.String;
 
 export type ListSearchVideoDimensionEnum = "any" | "2d" | "3d";
-export const ListSearchVideoDimensionEnum = S.String;
+const ListSearchVideoDimensionEnum = S.String;
 
 export type ListSearchVideoDurationEnum =
   | "videoDurationUnspecified"
@@ -7275,7 +7247,7 @@ export type ListSearchVideoDurationEnum =
   | "short"
   | "medium"
   | "long";
-export const ListSearchVideoDurationEnum = S.String;
+const ListSearchVideoDurationEnum = S.String;
 
 export type ListSearchOrderEnum =
   | "searchSortUnspecified"
@@ -7285,20 +7257,20 @@ export type ListSearchOrderEnum =
   | "relevance"
   | "title"
   | "videoCount";
-export const ListSearchOrderEnum = S.String;
+const ListSearchOrderEnum = S.String;
 
 export type ListSearchVideoDefinitionEnum = "any" | "standard" | "high";
-export const ListSearchVideoDefinitionEnum = S.String;
+const ListSearchVideoDefinitionEnum = S.String;
 
 export type ListSearchVideoCaptionEnum =
   | "videoCaptionUnspecified"
   | "any"
   | "closedCaption"
   | "none";
-export const ListSearchVideoCaptionEnum = S.String;
+const ListSearchVideoCaptionEnum = S.String;
 
 export type ListSearchVideoLicenseEnum = "any" | "youtube" | "creativeCommon";
-export const ListSearchVideoLicenseEnum = S.String;
+const ListSearchVideoLicenseEnum = S.String;
 
 export interface ListSearchRequest {
   /** Filter on videos in a specific category. */
@@ -7363,7 +7335,7 @@ export interface ListSearchRequest {
   /** Filter on distance from the location (specified above). */
   locationRadius?: string;
 }
-export const ListSearchRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoCategoryId: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7406,7 +7378,7 @@ export type SearchResultSnippetLiveBroadcastContentEnum =
   | "upcoming"
   | "live"
   | "completed";
-export const SearchResultSnippetLiveBroadcastContentEnum = S.String;
+const SearchResultSnippetLiveBroadcastContentEnum = S.String;
 
 /** Basic details about a search result, including title, description and thumbnails of the item referenced by the search result. */
 export interface SearchResultSnippet {
@@ -7425,7 +7397,7 @@ export interface SearchResultSnippet {
   /** A description of the search result. */
   description?: string;
 }
-export const SearchResultSnippet = /*@__PURE__*/ S.suspend(() =>
+const SearchResultSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelTitle: S.optional(S.String),
     channelId: S.optional(S.String),
@@ -7448,7 +7420,7 @@ export interface SearchResult {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#searchResult". */
   kind?: string;
 }
-export const SearchResult = /*@__PURE__*/ S.suspend(() =>
+const SearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ResourceId),
     snippet: S.optional(SearchResultSnippet),
@@ -7458,9 +7430,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
 export type SearchResultList = Array<SearchResult>;
-export const SearchResultList = /*@__PURE__*/ S.Array(
-  SearchResult,
-) as any as S.Schema<SearchResultList>;
+const SearchResultList = /*@__PURE__*/ S.Array(SearchResult) as any as S.Schema<SearchResultList>;
 
 export interface SearchListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#searchListResponse". */
@@ -7482,7 +7452,7 @@ export interface SearchListResponse {
   /** General pagination information. */
   pageInfo?: PageInfo;
 }
-export const SearchListResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     tokenPagination: S.optional(TestItemTestItemSnippet),
@@ -7502,7 +7472,7 @@ export type ListSubscriptionsOrderEnum =
   | "relevance"
   | "unread"
   | "alphabetical";
-export const ListSubscriptionsOrderEnum = S.String;
+const ListSubscriptionsOrderEnum = S.String;
 
 export interface ListSubscriptionsRequest {
   /** The order of the returned subscriptions */
@@ -7529,7 +7499,7 @@ export interface ListSubscriptionsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.optional(ListSubscriptionsOrderEnum.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -7553,9 +7523,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 export interface SubscriptionListResponse {
   pageInfo?: PageInfo;
@@ -7575,7 +7543,7 @@ export interface SubscriptionListResponse {
   /** Etag of this resource. */
   etag?: string;
 }
-export const SubscriptionListResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageInfo: S.optional(PageInfo),
     tokenPagination: S.optional(TestItemTestItemSnippet),
@@ -7599,7 +7567,7 @@ export interface ListSuperChatEventsRequest {
   /** Return rendered funding amounts in specified language. */
   hl?: string;
 }
-export const ListSuperChatEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSuperChatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -7638,7 +7606,7 @@ export interface SuperChatEventSnippet {
   /** Details about the supporter. */
   supporterDetails?: ChannelProfileDetails;
 }
-export const SuperChatEventSnippet = /*@__PURE__*/ S.suspend(() =>
+const SuperChatEventSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentText: S.optional(S.String),
     displayString: S.optional(S.String),
@@ -7664,7 +7632,7 @@ export interface SuperChatEvent {
   /** The `snippet` object contains basic details about the Super Chat event. */
   snippet?: SuperChatEventSnippet;
 }
-export const SuperChatEvent = /*@__PURE__*/ S.suspend(() =>
+const SuperChatEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     kind: S.optional(S.String),
@@ -7674,7 +7642,7 @@ export const SuperChatEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuperChatEvent" }) as any as S.Schema<SuperChatEvent>;
 
 export type SuperChatEventList = Array<SuperChatEvent>;
-export const SuperChatEventList = /*@__PURE__*/ S.Array(
+const SuperChatEventList = /*@__PURE__*/ S.Array(
   SuperChatEvent,
 ) as any as S.Schema<SuperChatEventList>;
 
@@ -7694,7 +7662,7 @@ export interface SuperChatEventListResponse {
   etag?: string;
   pageInfo?: PageInfo;
 }
-export const SuperChatEventListResponse = /*@__PURE__*/ S.suspend(() =>
+const SuperChatEventListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     eventId: S.optional(S.String),
@@ -7713,7 +7681,7 @@ export type ListThirdPartyLinksTypeEnum =
   | "linkUnspecified"
   | "channelToStoreLink"
   | "channelToAffiliateProgramLink";
-export const ListThirdPartyLinksTypeEnum = S.String;
+const ListThirdPartyLinksTypeEnum = S.String;
 
 export interface ListThirdPartyLinksRequest {
   /** The *part* parameter specifies the thirdPartyLink resource parts that the API response will include. Supported values are linkingToken, status, and snippet. */
@@ -7725,7 +7693,7 @@ export interface ListThirdPartyLinksRequest {
   /** Get a third party link with the given linking token. */
   linkingToken?: string;
 }
-export const ListThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     externalChannelId: S.optional(S.String.pipe(T.Query())),
@@ -7743,7 +7711,7 @@ export const ListThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThirdPartyLinksRequest>;
 
 export type ThirdPartyLinkList = Array<ThirdPartyLink>;
-export const ThirdPartyLinkList = /*@__PURE__*/ S.Array(
+const ThirdPartyLinkList = /*@__PURE__*/ S.Array(
   ThirdPartyLink,
 ) as any as S.Schema<ThirdPartyLinkList>;
 
@@ -7754,7 +7722,7 @@ export interface ThirdPartyLinkListResponse {
   etag?: string;
   items?: ThirdPartyLinkList;
 }
-export const ThirdPartyLinkListResponse = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyLinkListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     etag: S.optional(S.String),
@@ -7769,7 +7737,7 @@ export interface ListVideoAbuseReportReasonsRequest {
   /** The *part* parameter specifies the videoCategory resource parts that the API response will include. Supported values are id and snippet. */
   part: StringList;
 }
-export const ListVideoAbuseReportReasonsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVideoAbuseReportReasonsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -7790,7 +7758,7 @@ export interface VideoAbuseReportSecondaryReason {
   /** The localized label for this abuse report secondary reason. */
   label?: string;
 }
-export const VideoAbuseReportSecondaryReason = /*@__PURE__*/ S.suspend(() =>
+const VideoAbuseReportSecondaryReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     label: S.optional(S.String),
@@ -7800,7 +7768,7 @@ export const VideoAbuseReportSecondaryReason = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoAbuseReportSecondaryReason>;
 
 export type VideoAbuseReportSecondaryReasonList = Array<VideoAbuseReportSecondaryReason>;
-export const VideoAbuseReportSecondaryReasonList = /*@__PURE__*/ S.Array(
+const VideoAbuseReportSecondaryReasonList = /*@__PURE__*/ S.Array(
   VideoAbuseReportSecondaryReason,
 ) as any as S.Schema<VideoAbuseReportSecondaryReasonList>;
 
@@ -7811,7 +7779,7 @@ export interface VideoAbuseReportReasonSnippet {
   /** The localized label belonging to this abuse report reason. */
   label?: string;
 }
-export const VideoAbuseReportReasonSnippet = /*@__PURE__*/ S.suspend(() =>
+const VideoAbuseReportReasonSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondaryReasons: S.optional(VideoAbuseReportSecondaryReasonList),
     label: S.optional(S.String),
@@ -7831,7 +7799,7 @@ export interface VideoAbuseReportReason {
   /** The `snippet` object contains basic details about the abuse report reason. */
   snippet?: VideoAbuseReportReasonSnippet;
 }
-export const VideoAbuseReportReason = /*@__PURE__*/ S.suspend(() =>
+const VideoAbuseReportReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     id: S.optional(S.String),
@@ -7841,7 +7809,7 @@ export const VideoAbuseReportReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoAbuseReportReason" }) as any as S.Schema<VideoAbuseReportReason>;
 
 export type VideoAbuseReportReasonList = Array<VideoAbuseReportReason>;
-export const VideoAbuseReportReasonList = /*@__PURE__*/ S.Array(
+const VideoAbuseReportReasonList = /*@__PURE__*/ S.Array(
   VideoAbuseReportReason,
 ) as any as S.Schema<VideoAbuseReportReasonList>;
 
@@ -7857,7 +7825,7 @@ export interface VideoAbuseReportReasonListResponse {
   /** The `visitorId` identifies the visitor. */
   visitorId?: string;
 }
-export const VideoAbuseReportReasonListResponse = /*@__PURE__*/ S.suspend(() =>
+const VideoAbuseReportReasonListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(VideoAbuseReportReasonList),
@@ -7877,7 +7845,7 @@ export interface ListVideoCategoriesRequest {
   part: StringList;
   regionCode?: string;
 }
-export const ListVideoCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVideoCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(StringList.pipe(T.Query())),
     hl: S.optional(S.String.pipe(T.Query())),
@@ -7902,7 +7870,7 @@ export interface VideoCategorySnippet {
   /** The video category's title. */
   title?: string;
 }
-export const VideoCategorySnippet = /*@__PURE__*/ S.suspend(() =>
+const VideoCategorySnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String),
     assignable: S.optional(S.Boolean),
@@ -7921,7 +7889,7 @@ export interface VideoCategory {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#videoCategory". */
   kind?: string;
 }
-export const VideoCategory = /*@__PURE__*/ S.suspend(() =>
+const VideoCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     etag: S.optional(S.String),
@@ -7931,7 +7899,7 @@ export const VideoCategory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoCategory" }) as any as S.Schema<VideoCategory>;
 
 export type VideoCategoryList = Array<VideoCategory>;
-export const VideoCategoryList = /*@__PURE__*/ S.Array(
+const VideoCategoryList = /*@__PURE__*/ S.Array(
   VideoCategory,
 ) as any as S.Schema<VideoCategoryList>;
 
@@ -7954,7 +7922,7 @@ export interface VideoCategoryListResponse {
   visitorId?: string;
   tokenPagination?: TestItemTestItemSnippet;
 }
-export const VideoCategoryListResponse = /*@__PURE__*/ S.suspend(() =>
+const VideoCategoryListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     pageInfo: S.optional(PageInfo),
@@ -7971,10 +7939,10 @@ export const VideoCategoryListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoCategoryListResponse>;
 
 export type ListVideosMyRatingEnum = "none" | "like" | "dislike";
-export const ListVideosMyRatingEnum = S.String;
+const ListVideosMyRatingEnum = S.String;
 
 export type ListVideosChartEnum = "chartUnspecified" | "mostPopular";
-export const ListVideosChartEnum = S.String;
+const ListVideosChartEnum = S.String;
 
 export interface ListVideosRequest {
   maxHeight?: number;
@@ -8002,7 +7970,7 @@ export interface ListVideosRequest {
   /** Return the videos that are in the specified chart. */
   chart?: ListVideosChartEnum | (string & {});
 }
-export const ListVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxHeight: S.optional(S.Number.pipe(T.Query())),
     hl: S.optional(S.String.pipe(T.Query())),
@@ -8023,7 +7991,7 @@ export const ListVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVideosRequest" }) as any as S.Schema<ListVideosRequest>;
 
 export type VideoList = Array<Video>;
-export const VideoList = /*@__PURE__*/ S.Array(Video) as any as S.Schema<VideoList>;
+const VideoList = /*@__PURE__*/ S.Array(Video) as any as S.Schema<VideoList>;
 
 export interface VideoListResponse {
   tokenPagination?: TestItemTestItemSnippet;
@@ -8043,7 +8011,7 @@ export interface VideoListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "youtube#videoListResponse". */
   kind?: string;
 }
-export const VideoListResponse = /*@__PURE__*/ S.suspend(() =>
+const VideoListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenPagination: S.optional(TestItemTestItemSnippet),
     prevPageToken: S.optional(S.String),
@@ -8061,7 +8029,7 @@ export interface MarkAsSpamCommentsRequest {
   /** Flags the comments with the given IDs as spam in the caller's opinion. */
   id: StringList;
 }
-export const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: StringList.pipe(T.Query()),
   }).pipe(
@@ -8076,17 +8044,17 @@ export const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkAsSpamCommentsRequest>;
 
 export interface MarkAsSpamCommentsResponse {}
-export const MarkAsSpamCommentsResponse =
+const MarkAsSpamCommentsResponse =
   DeleteCaptionsResponse as any as S.Schema<MarkAsSpamCommentsResponse>;
 
 export type RateVideosRatingEnum = "none" | "like" | "dislike";
-export const RateVideosRatingEnum = S.String;
+const RateVideosRatingEnum = S.String;
 
 export interface RateVideosRequest {
   rating: RateVideosRatingEnum | (string & {});
   id: string;
 }
-export const RateVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const RateVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rating: RateVideosRatingEnum.pipe(T.Query()),
     id: S.String.pipe(T.Query()),
@@ -8100,7 +8068,7 @@ export const RateVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RateVideosRequest" }) as any as S.Schema<RateVideosRequest>;
 
 export interface RateVideosResponse {}
-export const RateVideosResponse = DeleteCaptionsResponse as any as S.Schema<RateVideosResponse>;
+const RateVideosResponse = DeleteCaptionsResponse as any as S.Schema<RateVideosResponse>;
 
 export interface VideoAbuseReport {
   /** The specific, or secondary, reason that this content is abusive (if available). The value is an abuse report reason ID that is a valid secondary reason for the primary reason. */
@@ -8114,7 +8082,7 @@ export interface VideoAbuseReport {
   /** Additional comments regarding the abuse report. */
   comments?: string;
 }
-export const VideoAbuseReport = /*@__PURE__*/ S.suspend(() =>
+const VideoAbuseReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondaryReasonId: S.optional(S.String),
     videoId: S.optional(S.String),
@@ -8130,7 +8098,7 @@ export interface ReportAbuseVideosRequest {
   /** Request body */
   body?: VideoAbuseReport;
 }
-export const ReportAbuseVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportAbuseVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     body: S.optional(VideoAbuseReport.pipe(T.HttpBody())),
@@ -8144,7 +8112,7 @@ export const ReportAbuseVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportAbuseVideosRequest" }) as any as S.Schema<ReportAbuseVideosRequest>;
 
 export interface ReportAbuseVideosResponse {}
-export const ReportAbuseVideosResponse =
+const ReportAbuseVideosResponse =
   DeleteCaptionsResponse as any as S.Schema<ReportAbuseVideosResponse>;
 
 export type SetModerationStatusCommentsModerationStatusEnum =
@@ -8152,7 +8120,7 @@ export type SetModerationStatusCommentsModerationStatusEnum =
   | "heldForReview"
   | "likelySpam"
   | "rejected";
-export const SetModerationStatusCommentsModerationStatusEnum = S.String;
+const SetModerationStatusCommentsModerationStatusEnum = S.String;
 
 export interface SetModerationStatusCommentsRequest {
   /** Specifies the requested moderation status. Note, comments can be in statuses, which are not available through this call. For example, this call does not allow to mark a comment as 'likely spam'. Valid values: 'heldForReview', 'published' or 'rejected'. */
@@ -8162,7 +8130,7 @@ export interface SetModerationStatusCommentsRequest {
   /** Modifies the moderation status of the comments with the given IDs */
   id: StringList;
 }
-export const SetModerationStatusCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetModerationStatusCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moderationStatus: SetModerationStatusCommentsModerationStatusEnum.pipe(T.Query()),
     banAuthor: S.optional(S.Boolean.pipe(T.Query())),
@@ -8179,7 +8147,7 @@ export const SetModerationStatusCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetModerationStatusCommentsRequest>;
 
 export interface SetModerationStatusCommentsResponse {}
-export const SetModerationStatusCommentsResponse =
+const SetModerationStatusCommentsResponse =
   DeleteLiveChatModeratorsResponse as any as S.Schema<SetModerationStatusCommentsResponse>;
 
 export interface SetThumbnailsRequest {
@@ -8188,7 +8156,7 @@ export interface SetThumbnailsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const SetThumbnailsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetThumbnailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoId: S.String.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8202,7 +8170,7 @@ export const SetThumbnailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetThumbnailsRequest" }) as any as S.Schema<SetThumbnailsRequest>;
 
 export type ThumbnailDetailsList = Array<ThumbnailDetails>;
-export const ThumbnailDetailsList = /*@__PURE__*/ S.Array(
+const ThumbnailDetailsList = /*@__PURE__*/ S.Array(
   ThumbnailDetails,
 ) as any as S.Schema<ThumbnailDetailsList>;
 
@@ -8218,7 +8186,7 @@ export interface ThumbnailSetResponse {
   /** The visitorId identifies the visitor. */
   visitorId?: string;
 }
-export const ThumbnailSetResponse = /*@__PURE__*/ S.suspend(() =>
+const ThumbnailSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(ThumbnailDetailsList),
@@ -8233,10 +8201,10 @@ export type InvideoPositionCornerPositionEnum =
   | "topRight"
   | "bottomLeft"
   | "bottomRight";
-export const InvideoPositionCornerPositionEnum = S.String;
+const InvideoPositionCornerPositionEnum = S.String;
 
 export type InvideoPositionTypeEnum = "corner";
-export const InvideoPositionTypeEnum = S.String;
+const InvideoPositionTypeEnum = S.String;
 
 /** Describes the spatial position of a visual widget inside a video. It is a union of various position types, out of which only will be set one. */
 export interface InvideoPosition {
@@ -8245,7 +8213,7 @@ export interface InvideoPosition {
   /** Defines the position type. */
   type?: InvideoPositionTypeEnum | (string & {});
 }
-export const InvideoPosition = /*@__PURE__*/ S.suspend(() =>
+const InvideoPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cornerPosition: S.optional(InvideoPositionCornerPositionEnum),
     type: S.optional(InvideoPositionTypeEnum),
@@ -8253,7 +8221,7 @@ export const InvideoPosition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvideoPosition" }) as any as S.Schema<InvideoPosition>;
 
 export type InvideoTimingTypeEnum = "offsetFromStart" | "offsetFromEnd";
-export const InvideoTimingTypeEnum = S.String;
+const InvideoTimingTypeEnum = S.String;
 
 /** Describes a temporal position of a visual widget inside a video. */
 export interface InvideoTiming {
@@ -8264,7 +8232,7 @@ export interface InvideoTiming {
   /** Defines the duration in milliseconds for which the promotion should be displayed. If missing, the client should use the default. */
   durationMs?: string;
 }
-export const InvideoTiming = /*@__PURE__*/ S.suspend(() =>
+const InvideoTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(InvideoTimingTypeEnum),
     offsetMs: S.optional(S.String),
@@ -8285,7 +8253,7 @@ export interface InvideoBranding {
   /** The temporal position within the video where watermark will be displayed. */
   timing?: InvideoTiming;
 }
-export const InvideoBranding = /*@__PURE__*/ S.suspend(() =>
+const InvideoBranding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     position: S.optional(InvideoPosition),
     targetChannelId: S.optional(S.String),
@@ -8302,7 +8270,7 @@ export interface SetWatermarksRequest {
   /** Request body */
   body?: InvideoBranding;
 }
-export const SetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
+const SetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8317,8 +8285,7 @@ export const SetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetWatermarksRequest" }) as any as S.Schema<SetWatermarksRequest>;
 
 export interface SetWatermarksResponse {}
-export const SetWatermarksResponse =
-  DeleteCaptionsResponse as any as S.Schema<SetWatermarksResponse>;
+const SetWatermarksResponse = DeleteCaptionsResponse as any as S.Schema<SetWatermarksResponse>;
 
 export interface StreamYoutubeV3LiveChatMessagesRequest {
   /** The *part* parameter specifies the liveChatComment resource parts that the API response will include. Supported values are id, snippet, and authorDetails. */
@@ -8334,7 +8301,7 @@ export interface StreamYoutubeV3LiveChatMessagesRequest {
   /** The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken property identify other pages that could be retrieved. */
   pageToken?: string;
 }
-export const StreamYoutubeV3LiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamYoutubeV3LiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: S.optional(StringList.pipe(T.Query())),
     hl: S.optional(S.String.pipe(T.Query())),
@@ -8358,7 +8325,7 @@ export type TransitionLiveBroadcastsBroadcastStatusEnum =
   | "testing"
   | "live"
   | "complete";
-export const TransitionLiveBroadcastsBroadcastStatusEnum = S.String;
+const TransitionLiveBroadcastsBroadcastStatusEnum = S.String;
 
 export interface TransitionLiveBroadcastsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -8372,7 +8339,7 @@ export interface TransitionLiveBroadcastsRequest {
   /** The *part* parameter specifies a comma-separated list of one or more liveBroadcast resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, contentDetails, and status. */
   part: StringList;
 }
-export const TransitionLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const TransitionLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     id: S.String.pipe(T.Query()),
@@ -8391,7 +8358,7 @@ export const TransitionLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitionLiveBroadcastsRequest>;
 
 export type TransitionLiveChatMessagesStatusEnum = "statusUnspecified" | "closed";
-export const TransitionLiveChatMessagesStatusEnum = S.String;
+const TransitionLiveChatMessagesStatusEnum = S.String;
 
 export interface TransitionLiveChatMessagesRequest {
   /** The status to which the chat event is going to transition. */
@@ -8399,7 +8366,7 @@ export interface TransitionLiveChatMessagesRequest {
   /** The ID that uniquely identify the chat message event to transition. */
   id?: string;
 }
-export const TransitionLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const TransitionLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TransitionLiveChatMessagesStatusEnum.pipe(T.Query())),
     id: S.optional(S.String.pipe(T.Query())),
@@ -8419,7 +8386,7 @@ export interface UnsetWatermarksRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const UnsetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8433,8 +8400,7 @@ export const UnsetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnsetWatermarksRequest" }) as any as S.Schema<UnsetWatermarksRequest>;
 
 export interface UnsetWatermarksResponse {}
-export const UnsetWatermarksResponse =
-  DeleteCaptionsResponse as any as S.Schema<UnsetWatermarksResponse>;
+const UnsetWatermarksResponse = DeleteCaptionsResponse as any as S.Schema<UnsetWatermarksResponse>;
 
 export interface UpdateCaptionsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -8448,7 +8414,7 @@ export interface UpdateCaptionsRequest {
   /** Request body */
   body?: Caption;
 }
-export const UpdateCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     sync: S.optional(S.Boolean.pipe(T.Query())),
@@ -8472,7 +8438,7 @@ export interface UpdateChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const UpdateChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8494,7 +8460,7 @@ export interface UpdateChannelSectionsRequest {
   /** Request body */
   body?: ChannelSection;
 }
-export const UpdateChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8516,7 +8482,7 @@ export interface UpdateCommentsRequest {
   /** Request body */
   body?: Comment;
 }
-export const UpdateCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     body: S.optional(Comment.pipe(T.HttpBody())),
@@ -8539,7 +8505,7 @@ export interface UpdateLiveBroadcastsRequest {
   /** Request body */
   body?: LiveBroadcast;
 }
-export const UpdateLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8566,7 +8532,7 @@ export interface UpdateLiveStreamsRequest {
   /** Request body */
   body?: LiveStream;
 }
-export const UpdateLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwnerChannel: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -8589,7 +8555,7 @@ export interface UpdatePlaylistImagesRequest {
   /** Request body */
   body?: PlaylistImage;
 }
-export const UpdatePlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     part: S.optional(StringList.pipe(T.Query())),
@@ -8613,7 +8579,7 @@ export interface UpdatePlaylistItemsRequest {
   /** Request body */
   body?: PlaylistItem;
 }
-export const UpdatePlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8637,7 +8603,7 @@ export interface UpdatePlaylistsRequest {
   /** Request body */
   body?: Playlist;
 }
-export const UpdatePlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: StringList.pipe(T.Query()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -8659,7 +8625,7 @@ export interface UpdateThirdPartyLinksRequest {
   /** Request body */
   body?: ThirdPartyLink;
 }
-export const UpdateThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalChannelId: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),
@@ -8683,7 +8649,7 @@ export interface UpdateVideosRequest {
   /** Request body */
   body?: Video;
 }
-export const UpdateVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     part: StringList.pipe(T.Query()),

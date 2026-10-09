@@ -196,10 +196,8 @@ export type QuickSearchPostRequestLangCase0 =
   | "za"
   | "zh"
   | "zu";
-export const QuickSearchPostRequestLangCase0 = S.String;
-
 export type QuickSearchPostRequestLang = QuickSearchPostRequestLangCase0 | string;
-export const QuickSearchPostRequestLang = S.Unknown as any as S.Schema<QuickSearchPostRequestLang>;
+const QuickSearchPostRequestLang = S.Unknown as any as S.Schema<QuickSearchPostRequestLang>;
 
 export type QuickSearchPostRequestLibraryCase0 =
   | "aadya-neural"
@@ -461,11 +459,8 @@ export type QuickSearchPostRequestLibraryCase0 =
   | "yolov26"
   | "zonos"
   | "3dtopia-xl";
-export const QuickSearchPostRequestLibraryCase0 = S.String;
-
 export type QuickSearchPostRequestLibrary = QuickSearchPostRequestLibraryCase0 | string;
-export const QuickSearchPostRequestLibrary =
-  S.Unknown as any as S.Schema<QuickSearchPostRequestLibrary>;
+const QuickSearchPostRequestLibrary = S.Unknown as any as S.Schema<QuickSearchPostRequestLibrary>;
 
 export type QuickSearchPostRequestTypeCase0Item =
   | "model"
@@ -479,42 +474,28 @@ export type QuickSearchPostRequestTypeCase0Item =
   | "container"
   | "kernel"
   | "blog";
-export const QuickSearchPostRequestTypeCase0Item = S.String;
-
 export type QuickSearchPostRequestTypeCase0List = Array<
   QuickSearchPostRequestTypeCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestTypeCase0List = /*@__PURE__*/ S.Array(
-  QuickSearchPostRequestTypeCase0Item,
-) as any as S.Schema<QuickSearchPostRequestTypeCase0List>;
-
 export type QuickSearchPostRequestTypeCase1List = Array<string>;
-export const QuickSearchPostRequestTypeCase1List = /*@__PURE__*/ S.Array(
+const QuickSearchPostRequestTypeCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuickSearchPostRequestTypeCase1List>;
 
 export type QuickSearchPostRequestType =
   | QuickSearchPostRequestTypeCase0List
   | QuickSearchPostRequestTypeCase1List;
-export const QuickSearchPostRequestType = S.Unknown as any as S.Schema<QuickSearchPostRequestType>;
+const QuickSearchPostRequestType = S.Unknown as any as S.Schema<QuickSearchPostRequestType>;
 
 export type QuickSearchPostRequestOrgsFilterCase0Item = "own" | "unwatched";
-export const QuickSearchPostRequestOrgsFilterCase0Item = S.String;
-
 export type QuickSearchPostRequestOrgsFilterCase0List = Array<
   QuickSearchPostRequestOrgsFilterCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestOrgsFilterCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<QuickSearchPostRequestOrgsFilterCase0List>;
-
 export type QuickSearchPostRequestOrgsFilterCase1List = Array<string>;
-export const QuickSearchPostRequestOrgsFilterCase1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestOrgsFilterCase1List>;
-
 export type QuickSearchPostRequestOrgsFilter =
   | QuickSearchPostRequestOrgsFilterCase0List
   | QuickSearchPostRequestOrgsFilterCase1List;
-export const QuickSearchPostRequestOrgsFilter =
+const QuickSearchPostRequestOrgsFilter =
   S.Unknown as any as S.Schema<QuickSearchPostRequestOrgsFilter>;
 
 export type QuickSearchPostRequestReposFilterCase0Item =
@@ -523,22 +504,14 @@ export type QuickSearchPostRequestReposFilterCase0Item =
   | "own"
   | "own_orgs"
   | "granted_access";
-export const QuickSearchPostRequestReposFilterCase0Item = S.String;
-
 export type QuickSearchPostRequestReposFilterCase0List = Array<
   QuickSearchPostRequestReposFilterCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestReposFilterCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<QuickSearchPostRequestReposFilterCase0List>;
-
 export type QuickSearchPostRequestReposFilterCase1List = Array<string>;
-export const QuickSearchPostRequestReposFilterCase1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestReposFilterCase1List>;
-
 export type QuickSearchPostRequestReposFilter =
   | QuickSearchPostRequestReposFilterCase0List
   | QuickSearchPostRequestReposFilterCase1List;
-export const QuickSearchPostRequestReposFilter =
+const QuickSearchPostRequestReposFilter =
   S.Unknown as any as S.Schema<QuickSearchPostRequestReposFilter>;
 
 export type QuickSearchPostRequestPipelinesCase0Item =
@@ -599,34 +572,23 @@ export type QuickSearchPostRequestPipelinesCase0Item =
   | "any-to-any"
   | "video-to-video"
   | "other";
-export const QuickSearchPostRequestPipelinesCase0Item = S.String;
-
 export type QuickSearchPostRequestPipelinesCase0List = Array<
   QuickSearchPostRequestPipelinesCase0Item | (string & {})
 >;
-export const QuickSearchPostRequestPipelinesCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<QuickSearchPostRequestPipelinesCase0List>;
-
 export type QuickSearchPostRequestPipelinesCase1Case1List = Array<string>;
-export const QuickSearchPostRequestPipelinesCase1Case1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestPipelinesCase1Case1List>;
-
 export type QuickSearchPostRequestPipelinesCase1 =
   | string
   | QuickSearchPostRequestPipelinesCase1Case1List;
-export const QuickSearchPostRequestPipelinesCase1 =
-  S.Unknown as any as S.Schema<QuickSearchPostRequestPipelinesCase1>;
-
 /** Comma-separated or array of pipeline types */
 export type QuickSearchPostRequestPipelines =
   | QuickSearchPostRequestPipelinesCase0List
   | QuickSearchPostRequestPipelinesCase1;
-export const QuickSearchPostRequestPipelines =
+const QuickSearchPostRequestPipelines =
   S.Unknown as any as S.Schema<QuickSearchPostRequestPipelines>;
 
 /** Array of excluded resources: spaces/repo, models/repo, datasets/repo, papers/paperId, collections/collectionId, users/username, orgs/orgName, buckets/bucketName, containers/containerName, kernels/repo, blog/blogSlug */
 export type QuickSearchPostRequestExcludeList = Array<string>;
-export const QuickSearchPostRequestExcludeList =
+const QuickSearchPostRequestExcludeList =
   QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestExcludeList>;
 
 export type QuickSearchPostRequestRepoTypeCase0 =
@@ -636,14 +598,11 @@ export type QuickSearchPostRequestRepoTypeCase0 =
   | "bucket"
   | "kernel"
   | "container";
-export const QuickSearchPostRequestRepoTypeCase0 = S.String;
-
 export type QuickSearchPostRequestRepoType = QuickSearchPostRequestRepoTypeCase0 | string;
-export const QuickSearchPostRequestRepoType =
-  S.Unknown as any as S.Schema<QuickSearchPostRequestRepoType>;
+const QuickSearchPostRequestRepoType = S.Unknown as any as S.Schema<QuickSearchPostRequestRepoType>;
 
 export type QuickSearchPostRequestSpacesTagsList = Array<string>;
-export const QuickSearchPostRequestSpacesTagsList =
+const QuickSearchPostRequestSpacesTagsList =
   QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestSpacesTagsList>;
 
 export interface QuickSearchPostRequest {
@@ -664,7 +623,7 @@ export interface QuickSearchPostRequest {
   discussionCollectionName?: string;
   spacesTags?: QuickSearchPostRequestSpacesTagsList;
 }
-export const QuickSearchPostRequest = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -691,7 +650,7 @@ export interface QuickSearchPostResponseDatasetsItem {
   private?: boolean;
   trendingWeight: number;
 }
-export const QuickSearchPostResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     id: S.String,
@@ -703,15 +662,13 @@ export const QuickSearchPostResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickSearchPostResponseDatasetsItem>;
 
 export type QuickSearchPostResponseDatasetsList = Array<QuickSearchPostResponseDatasetsItem>;
-export const QuickSearchPostResponseDatasetsList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponseDatasetsList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponseDatasetsItem,
 ) as any as S.Schema<QuickSearchPostResponseDatasetsList>;
 
 export type QuickSearchPostResponseModelsItem = QuickSearchPostResponseDatasetsItem;
-export const QuickSearchPostResponseModelsItem = QuickSearchPostResponseDatasetsItem;
-
 export type QuickSearchPostResponseModelsList = Array<QuickSearchPostResponseDatasetsItem>;
-export const QuickSearchPostResponseModelsList =
+const QuickSearchPostResponseModelsList =
   QuickSearchPostResponseDatasetsList as any as S.Schema<QuickSearchPostResponseModelsList>;
 
 export interface QuickSearchPostResponseOrgsItem {
@@ -720,7 +677,7 @@ export interface QuickSearchPostResponseOrgsItem {
   fullname: string;
   name: string;
 }
-export const QuickSearchPostResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     avatarUrl: S.String,
@@ -732,7 +689,7 @@ export const QuickSearchPostResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickSearchPostResponseOrgsItem>;
 
 export type QuickSearchPostResponseOrgsList = Array<QuickSearchPostResponseOrgsItem>;
-export const QuickSearchPostResponseOrgsList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponseOrgsList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponseOrgsItem,
 ) as any as S.Schema<QuickSearchPostResponseOrgsList>;
 
@@ -743,7 +700,7 @@ export interface QuickSearchPostResponseSpacesItem {
   emoji: string;
   trendingWeight: number;
 }
-export const QuickSearchPostResponseSpacesItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponseSpacesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     id: S.String,
@@ -756,7 +713,7 @@ export const QuickSearchPostResponseSpacesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickSearchPostResponseSpacesItem>;
 
 export type QuickSearchPostResponseSpacesList = Array<QuickSearchPostResponseSpacesItem>;
-export const QuickSearchPostResponseSpacesList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponseSpacesList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponseSpacesItem,
 ) as any as S.Schema<QuickSearchPostResponseSpacesList>;
 
@@ -766,7 +723,7 @@ export interface QuickSearchPostResponseUsersItem {
   fullname: string;
   user: string;
 }
-export const QuickSearchPostResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     avatarUrl: S.String,
@@ -778,7 +735,7 @@ export const QuickSearchPostResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickSearchPostResponseUsersItem>;
 
 export type QuickSearchPostResponseUsersList = Array<QuickSearchPostResponseUsersItem>;
-export const QuickSearchPostResponseUsersList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponseUsersList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponseUsersItem,
 ) as any as S.Schema<QuickSearchPostResponseUsersList>;
 
@@ -787,7 +744,7 @@ export interface QuickSearchPostResponsePapersItem {
   id: string;
   private?: boolean;
 }
-export const QuickSearchPostResponsePapersItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponsePapersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     id: S.String,
@@ -798,7 +755,7 @@ export const QuickSearchPostResponsePapersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickSearchPostResponsePapersItem>;
 
 export type QuickSearchPostResponsePapersList = Array<QuickSearchPostResponsePapersItem>;
-export const QuickSearchPostResponsePapersList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponsePapersList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponsePapersItem,
 ) as any as S.Schema<QuickSearchPostResponsePapersList>;
 
@@ -807,7 +764,7 @@ export interface QuickSearchPostResponseCollectionsItem {
   title: string;
   description?: string;
 }
-export const QuickSearchPostResponseCollectionsItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponseCollectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     title: S.String,
@@ -818,29 +775,23 @@ export const QuickSearchPostResponseCollectionsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<QuickSearchPostResponseCollectionsItem>;
 
 export type QuickSearchPostResponseCollectionsList = Array<QuickSearchPostResponseCollectionsItem>;
-export const QuickSearchPostResponseCollectionsList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponseCollectionsList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponseCollectionsItem,
 ) as any as S.Schema<QuickSearchPostResponseCollectionsList>;
 
 export type QuickSearchPostResponseBucketsItem = QuickSearchPostResponsePapersItem;
-export const QuickSearchPostResponseBucketsItem = QuickSearchPostResponsePapersItem;
-
 export type QuickSearchPostResponseBucketsList = Array<QuickSearchPostResponsePapersItem>;
-export const QuickSearchPostResponseBucketsList =
+const QuickSearchPostResponseBucketsList =
   QuickSearchPostResponsePapersList as any as S.Schema<QuickSearchPostResponseBucketsList>;
 
 export type QuickSearchPostResponseContainersItem = QuickSearchPostResponsePapersItem;
-export const QuickSearchPostResponseContainersItem = QuickSearchPostResponsePapersItem;
-
 export type QuickSearchPostResponseContainersList = Array<QuickSearchPostResponsePapersItem>;
-export const QuickSearchPostResponseContainersList =
+const QuickSearchPostResponseContainersList =
   QuickSearchPostResponsePapersList as any as S.Schema<QuickSearchPostResponseContainersList>;
 
 export type QuickSearchPostResponseKernelsItem = QuickSearchPostResponsePapersItem;
-export const QuickSearchPostResponseKernelsItem = QuickSearchPostResponsePapersItem;
-
 export type QuickSearchPostResponseKernelsList = Array<QuickSearchPostResponsePapersItem>;
-export const QuickSearchPostResponseKernelsList =
+const QuickSearchPostResponseKernelsList =
   QuickSearchPostResponsePapersList as any as S.Schema<QuickSearchPostResponseKernelsList>;
 
 export interface QuickSearchPostResponseBlogsItem {
@@ -849,7 +800,7 @@ export interface QuickSearchPostResponseBlogsItem {
   title: string;
   private: boolean;
 }
-export const QuickSearchPostResponseBlogsItem = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponseBlogsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     slug: S.String,
@@ -861,7 +812,7 @@ export const QuickSearchPostResponseBlogsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickSearchPostResponseBlogsItem>;
 
 export type QuickSearchPostResponseBlogsList = Array<QuickSearchPostResponseBlogsItem>;
-export const QuickSearchPostResponseBlogsList = /*@__PURE__*/ S.Array(
+const QuickSearchPostResponseBlogsList = /*@__PURE__*/ S.Array(
   QuickSearchPostResponseBlogsItem,
 ) as any as S.Schema<QuickSearchPostResponseBlogsList>;
 
@@ -888,7 +839,7 @@ export interface QuickSearchPostResponse {
   blogs: QuickSearchPostResponseBlogsList;
   blogsCount: number;
 }
-export const QuickSearchPostResponse = /*@__PURE__*/ S.suspend(() =>
+const QuickSearchPostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: QuickSearchPostResponseDatasetsList,
     datasetsCount: S.Number,
@@ -921,8 +872,6 @@ export type SearchFullTextRequestTypeCase0 =
   | "bucket"
   | "kernel"
   | "container";
-export const SearchFullTextRequestTypeCase0 = S.String;
-
 export type SearchFullTextRequestTypeCase1Item =
   | "dataset"
   | "model"
@@ -930,18 +879,13 @@ export type SearchFullTextRequestTypeCase1Item =
   | "bucket"
   | "kernel"
   | "container";
-export const SearchFullTextRequestTypeCase1Item = S.String;
-
 export type SearchFullTextRequestTypeCase1List = Array<
   SearchFullTextRequestTypeCase1Item | (string & {})
 >;
-export const SearchFullTextRequestTypeCase1List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchFullTextRequestTypeCase1List>;
-
 export type SearchFullTextRequestType =
   | SearchFullTextRequestTypeCase0
   | SearchFullTextRequestTypeCase1List;
-export const SearchFullTextRequestType = S.Unknown as any as S.Schema<SearchFullTextRequestType>;
+const SearchFullTextRequestType = S.Unknown as any as S.Schema<SearchFullTextRequestType>;
 
 export interface SearchFullTextRequest {
   q?: string;
@@ -950,7 +894,7 @@ export interface SearchFullTextRequest {
   type?: SearchFullTextRequestType;
   filter?: string;
 }
-export const SearchFullTextRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchFullTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -961,7 +905,7 @@ export const SearchFullTextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFullTextRequest" }) as any as S.Schema<SearchFullTextRequest>;
 
 export interface SearchFullTextResponse {}
-export const SearchFullTextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SearchFullTextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SearchFullTextResponse",
 }) as any as S.Schema<SearchFullTextResponse>;
 
@@ -1150,10 +1094,8 @@ export type SearchQuickRequestLangCase0 =
   | "za"
   | "zh"
   | "zu";
-export const SearchQuickRequestLangCase0 = S.String;
-
 export type SearchQuickRequestLang = SearchQuickRequestLangCase0 | string;
-export const SearchQuickRequestLang = S.Unknown as any as S.Schema<SearchQuickRequestLang>;
+const SearchQuickRequestLang = S.Unknown as any as S.Schema<SearchQuickRequestLang>;
 
 export type SearchQuickRequestLibraryCase0 =
   | "aadya-neural"
@@ -1415,10 +1357,8 @@ export type SearchQuickRequestLibraryCase0 =
   | "yolov26"
   | "zonos"
   | "3dtopia-xl";
-export const SearchQuickRequestLibraryCase0 = S.String;
-
 export type SearchQuickRequestLibrary = SearchQuickRequestLibraryCase0 | string;
-export const SearchQuickRequestLibrary = S.Unknown as any as S.Schema<SearchQuickRequestLibrary>;
+const SearchQuickRequestLibrary = S.Unknown as any as S.Schema<SearchQuickRequestLibrary>;
 
 export type SearchQuickRequestTypeCase0Item =
   | "model"
@@ -1432,41 +1372,24 @@ export type SearchQuickRequestTypeCase0Item =
   | "container"
   | "kernel"
   | "blog";
-export const SearchQuickRequestTypeCase0Item = S.String;
-
 export type SearchQuickRequestTypeCase0List = Array<
   SearchQuickRequestTypeCase0Item | (string & {})
 >;
-export const SearchQuickRequestTypeCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestTypeCase0List>;
-
 export type SearchQuickRequestTypeCase1List = Array<string>;
-export const SearchQuickRequestTypeCase1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestTypeCase1List>;
-
 export type SearchQuickRequestType =
   | SearchQuickRequestTypeCase0List
   | SearchQuickRequestTypeCase1List;
-export const SearchQuickRequestType = S.Unknown as any as S.Schema<SearchQuickRequestType>;
+const SearchQuickRequestType = S.Unknown as any as S.Schema<SearchQuickRequestType>;
 
 export type SearchQuickRequestOrgsFilterCase0Item = "own" | "unwatched";
-export const SearchQuickRequestOrgsFilterCase0Item = S.String;
-
 export type SearchQuickRequestOrgsFilterCase0List = Array<
   SearchQuickRequestOrgsFilterCase0Item | (string & {})
 >;
-export const SearchQuickRequestOrgsFilterCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestOrgsFilterCase0List>;
-
 export type SearchQuickRequestOrgsFilterCase1List = Array<string>;
-export const SearchQuickRequestOrgsFilterCase1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestOrgsFilterCase1List>;
-
 export type SearchQuickRequestOrgsFilter =
   | SearchQuickRequestOrgsFilterCase0List
   | SearchQuickRequestOrgsFilterCase1List;
-export const SearchQuickRequestOrgsFilter =
-  S.Unknown as any as S.Schema<SearchQuickRequestOrgsFilter>;
+const SearchQuickRequestOrgsFilter = S.Unknown as any as S.Schema<SearchQuickRequestOrgsFilter>;
 
 export type SearchQuickRequestReposFilterCase0Item =
   | "skip_disabled"
@@ -1474,23 +1397,14 @@ export type SearchQuickRequestReposFilterCase0Item =
   | "own"
   | "own_orgs"
   | "granted_access";
-export const SearchQuickRequestReposFilterCase0Item = S.String;
-
 export type SearchQuickRequestReposFilterCase0List = Array<
   SearchQuickRequestReposFilterCase0Item | (string & {})
 >;
-export const SearchQuickRequestReposFilterCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestReposFilterCase0List>;
-
 export type SearchQuickRequestReposFilterCase1List = Array<string>;
-export const SearchQuickRequestReposFilterCase1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestReposFilterCase1List>;
-
 export type SearchQuickRequestReposFilter =
   | SearchQuickRequestReposFilterCase0List
   | SearchQuickRequestReposFilterCase1List;
-export const SearchQuickRequestReposFilter =
-  S.Unknown as any as S.Schema<SearchQuickRequestReposFilter>;
+const SearchQuickRequestReposFilter = S.Unknown as any as S.Schema<SearchQuickRequestReposFilter>;
 
 export type SearchQuickRequestPipelinesCase0Item =
   | "text-classification"
@@ -1550,32 +1464,20 @@ export type SearchQuickRequestPipelinesCase0Item =
   | "any-to-any"
   | "video-to-video"
   | "other";
-export const SearchQuickRequestPipelinesCase0Item = S.String;
-
 export type SearchQuickRequestPipelinesCase0List = Array<
   SearchQuickRequestPipelinesCase0Item | (string & {})
 >;
-export const SearchQuickRequestPipelinesCase0List =
-  QuickSearchPostRequestTypeCase0List as any as S.Schema<SearchQuickRequestPipelinesCase0List>;
-
 export type SearchQuickRequestPipelinesCase1Case1List = Array<string>;
-export const SearchQuickRequestPipelinesCase1Case1List =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestPipelinesCase1Case1List>;
-
 export type SearchQuickRequestPipelinesCase1 = string | SearchQuickRequestPipelinesCase1Case1List;
-export const SearchQuickRequestPipelinesCase1 =
-  S.Unknown as any as S.Schema<SearchQuickRequestPipelinesCase1>;
-
 /** Comma-separated or array of pipeline types */
 export type SearchQuickRequestPipelines =
   | SearchQuickRequestPipelinesCase0List
   | SearchQuickRequestPipelinesCase1;
-export const SearchQuickRequestPipelines =
-  S.Unknown as any as S.Schema<SearchQuickRequestPipelines>;
+const SearchQuickRequestPipelines = S.Unknown as any as S.Schema<SearchQuickRequestPipelines>;
 
 /** Array of excluded resources: spaces/repo, models/repo, datasets/repo, papers/paperId, collections/collectionId, users/username, orgs/orgName, buckets/bucketName, containers/containerName, kernels/repo, blog/blogSlug */
 export type SearchQuickRequestExcludeList = Array<string>;
-export const SearchQuickRequestExcludeList =
+const SearchQuickRequestExcludeList =
   QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestExcludeList>;
 
 export type SearchQuickRequestRepoTypeCase0 =
@@ -1585,13 +1487,11 @@ export type SearchQuickRequestRepoTypeCase0 =
   | "bucket"
   | "kernel"
   | "container";
-export const SearchQuickRequestRepoTypeCase0 = S.String;
-
 export type SearchQuickRequestRepoType = SearchQuickRequestRepoTypeCase0 | string;
-export const SearchQuickRequestRepoType = S.Unknown as any as S.Schema<SearchQuickRequestRepoType>;
+const SearchQuickRequestRepoType = S.Unknown as any as S.Schema<SearchQuickRequestRepoType>;
 
 export type SearchQuickRequestSpacesTagsList = Array<string>;
-export const SearchQuickRequestSpacesTagsList =
+const SearchQuickRequestSpacesTagsList =
   QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestSpacesTagsList>;
 
 export interface SearchQuickRequest {
@@ -1612,7 +1512,7 @@ export interface SearchQuickRequest {
   discussionCollectionName?: string;
   spacesTags?: SearchQuickRequestSpacesTagsList;
 }
-export const SearchQuickRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchQuickRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1634,82 +1534,27 @@ export const SearchQuickRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchQuickRequest" }) as any as S.Schema<SearchQuickRequest>;
 
 export type SearchQuickResponseDatasetsItem = QuickSearchPostResponseDatasetsItem;
-export const SearchQuickResponseDatasetsItem = QuickSearchPostResponseDatasetsItem;
-
 export type SearchQuickResponseDatasetsList = Array<QuickSearchPostResponseDatasetsItem>;
-export const SearchQuickResponseDatasetsList =
-  QuickSearchPostResponseDatasetsList as any as S.Schema<SearchQuickResponseDatasetsList>;
-
 export type SearchQuickResponseModelsItem = QuickSearchPostResponseDatasetsItem;
-export const SearchQuickResponseModelsItem = QuickSearchPostResponseDatasetsItem;
-
 export type SearchQuickResponseModelsList = Array<QuickSearchPostResponseDatasetsItem>;
-export const SearchQuickResponseModelsList =
-  QuickSearchPostResponseDatasetsList as any as S.Schema<SearchQuickResponseModelsList>;
-
 export type SearchQuickResponseOrgsItem = QuickSearchPostResponseOrgsItem;
-export const SearchQuickResponseOrgsItem = QuickSearchPostResponseOrgsItem;
-
 export type SearchQuickResponseOrgsList = Array<QuickSearchPostResponseOrgsItem>;
-export const SearchQuickResponseOrgsList =
-  QuickSearchPostResponseOrgsList as any as S.Schema<SearchQuickResponseOrgsList>;
-
 export type SearchQuickResponseSpacesItem = QuickSearchPostResponseSpacesItem;
-export const SearchQuickResponseSpacesItem = QuickSearchPostResponseSpacesItem;
-
 export type SearchQuickResponseSpacesList = Array<QuickSearchPostResponseSpacesItem>;
-export const SearchQuickResponseSpacesList =
-  QuickSearchPostResponseSpacesList as any as S.Schema<SearchQuickResponseSpacesList>;
-
 export type SearchQuickResponseUsersItem = QuickSearchPostResponseUsersItem;
-export const SearchQuickResponseUsersItem = QuickSearchPostResponseUsersItem;
-
 export type SearchQuickResponseUsersList = Array<QuickSearchPostResponseUsersItem>;
-export const SearchQuickResponseUsersList =
-  QuickSearchPostResponseUsersList as any as S.Schema<SearchQuickResponseUsersList>;
-
 export type SearchQuickResponsePapersItem = QuickSearchPostResponsePapersItem;
-export const SearchQuickResponsePapersItem = QuickSearchPostResponsePapersItem;
-
 export type SearchQuickResponsePapersList = Array<QuickSearchPostResponsePapersItem>;
-export const SearchQuickResponsePapersList =
-  QuickSearchPostResponsePapersList as any as S.Schema<SearchQuickResponsePapersList>;
-
 export type SearchQuickResponseCollectionsItem = QuickSearchPostResponseCollectionsItem;
-export const SearchQuickResponseCollectionsItem = QuickSearchPostResponseCollectionsItem;
-
 export type SearchQuickResponseCollectionsList = Array<QuickSearchPostResponseCollectionsItem>;
-export const SearchQuickResponseCollectionsList =
-  QuickSearchPostResponseCollectionsList as any as S.Schema<SearchQuickResponseCollectionsList>;
-
 export type SearchQuickResponseBucketsItem = QuickSearchPostResponsePapersItem;
-export const SearchQuickResponseBucketsItem = QuickSearchPostResponsePapersItem;
-
 export type SearchQuickResponseBucketsList = Array<QuickSearchPostResponsePapersItem>;
-export const SearchQuickResponseBucketsList =
-  QuickSearchPostResponsePapersList as any as S.Schema<SearchQuickResponseBucketsList>;
-
 export type SearchQuickResponseContainersItem = QuickSearchPostResponsePapersItem;
-export const SearchQuickResponseContainersItem = QuickSearchPostResponsePapersItem;
-
 export type SearchQuickResponseContainersList = Array<QuickSearchPostResponsePapersItem>;
-export const SearchQuickResponseContainersList =
-  QuickSearchPostResponsePapersList as any as S.Schema<SearchQuickResponseContainersList>;
-
 export type SearchQuickResponseKernelsItem = QuickSearchPostResponsePapersItem;
-export const SearchQuickResponseKernelsItem = QuickSearchPostResponsePapersItem;
-
 export type SearchQuickResponseKernelsList = Array<QuickSearchPostResponsePapersItem>;
-export const SearchQuickResponseKernelsList =
-  QuickSearchPostResponsePapersList as any as S.Schema<SearchQuickResponseKernelsList>;
-
 export type SearchQuickResponseBlogsItem = QuickSearchPostResponseBlogsItem;
-export const SearchQuickResponseBlogsItem = QuickSearchPostResponseBlogsItem;
-
 export type SearchQuickResponseBlogsList = Array<QuickSearchPostResponseBlogsItem>;
-export const SearchQuickResponseBlogsList =
-  QuickSearchPostResponseBlogsList as any as S.Schema<SearchQuickResponseBlogsList>;
-
 export interface SearchQuickResponse {
   datasets: SearchQuickResponseDatasetsList;
   datasetsCount: number;
@@ -1733,7 +1578,7 @@ export interface SearchQuickResponse {
   blogs: SearchQuickResponseBlogsList;
   blogsCount: number;
 }
-export const SearchQuickResponse = QuickSearchPostResponse as any as S.Schema<SearchQuickResponse>;
+const SearchQuickResponse = QuickSearchPostResponse as any as S.Schema<SearchQuickResponse>;
 
 export type QuickSearchPostError = HuggingFaceOpError;
 /** Quick search Quick search for models, datasets, spaces, orgs, users, papers, collections, and buckets */

@@ -14,7 +14,7 @@ export interface BotsInfoRequest {
   /** encoded team id or enterprise id where the bot exists, required if org token is used */
   team_id?: string;
 }
-export const BotsInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const BotsInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bot: S.optional(S.String.pipe(T.Query())),
     team_id: S.optional(S.String.pipe(T.Query())),
@@ -28,7 +28,7 @@ export interface BotsInfoResponseBotsItemIcons {
   image_64?: string;
   image_72?: string;
 }
-export const BotsInfoResponseBotsItemIcons = /*@__PURE__*/ S.suspend(() =>
+const BotsInfoResponseBotsItemIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emoji: S.optional(S.String),
     image_36: S.optional(S.String),
@@ -52,7 +52,7 @@ export interface BotsInfoResponseBotsItem {
   is_legacy_workflow_bot?: boolean;
   user_id?: string;
 }
-export const BotsInfoResponseBotsItem = /*@__PURE__*/ S.suspend(() =>
+const BotsInfoResponseBotsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.Number,
     name: S.optional(S.String),
@@ -68,13 +68,11 @@ export const BotsInfoResponseBotsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BotsInfoResponseBotsItem" }) as any as S.Schema<BotsInfoResponseBotsItem>;
 
 export type BotsInfoResponseBotsList = Array<BotsInfoResponseBotsItem>;
-export const BotsInfoResponseBotsList = /*@__PURE__*/ S.Array(
+const BotsInfoResponseBotsList = /*@__PURE__*/ S.Array(
   BotsInfoResponseBotsItem,
 ) as any as S.Schema<BotsInfoResponseBotsList>;
 
 export type BotsInfoResponseBotIcons = BotsInfoResponseBotsItemIcons;
-export const BotsInfoResponseBotIcons = BotsInfoResponseBotsItemIcons;
-
 export interface BotsInfoResponseBot {
   updated: number;
   user_id?: string;
@@ -87,7 +85,7 @@ export interface BotsInfoResponseBot {
   is_connector_bot?: boolean;
   is_legacy_workflow_bot?: boolean;
 }
-export const BotsInfoResponseBot = /*@__PURE__*/ S.suspend(() =>
+const BotsInfoResponseBot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.Number,
     user_id: S.optional(S.String),
@@ -108,7 +106,7 @@ export interface BotsInfoResponse {
   bots?: BotsInfoResponseBotsList;
   bot?: BotsInfoResponseBot;
 }
-export const BotsInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const BotsInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     bots: S.optional(BotsInfoResponseBotsList),

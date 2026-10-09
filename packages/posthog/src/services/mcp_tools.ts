@@ -9,7 +9,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** Arguments validated against the selected tool's schema. */
 export type CreateMcpToolRequestArgsMap = { [key: string]: unknown | undefined };
-export const CreateMcpToolRequestArgsMap = /*@__PURE__*/ S.Record(
+const CreateMcpToolRequestArgsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateMcpToolRequestArgsMap>;
@@ -21,7 +21,7 @@ export interface CreateMcpToolRequest {
   /** Arguments validated against the selected tool's schema. */
   args?: CreateMcpToolRequestArgsMap;
 }
-export const CreateMcpToolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMcpToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     tool_name: S.String.pipe(T.Label()),
@@ -32,7 +32,7 @@ export const CreateMcpToolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMcpToolRequest" }) as any as S.Schema<CreateMcpToolRequest>;
 
 export type MCPToolResponseStructuredContentMap = { [key: string]: unknown | undefined };
-export const MCPToolResponseStructuredContentMap =
+const MCPToolResponseStructuredContentMap =
   CreateMcpToolRequestArgsMap as any as S.Schema<MCPToolResponseStructuredContentMap>;
 
 export type MCPToolResponseErrorType =
@@ -43,7 +43,7 @@ export type MCPToolResponseErrorType =
   | "rate_limited"
   | "api_5xx"
   | "internal";
-export const MCPToolResponseErrorType = S.String;
+const MCPToolResponseErrorType = S.String;
 
 export interface MCPToolResponse {
   /** Formatted tool output for the model. */
@@ -55,7 +55,7 @@ export interface MCPToolResponse {
   /** Failure category for MCP analytics. */
   error_type?: MCPToolResponseErrorType | null;
 }
-export const MCPToolResponse = /*@__PURE__*/ S.suspend(() =>
+const MCPToolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     structured_content: S.optional(S.NullOr(MCPToolResponseStructuredContentMap)),

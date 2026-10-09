@@ -17,7 +17,7 @@ export interface CheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -36,7 +36,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-export const CheckNameAvailabilityResponseReason = S.String;
+const CheckNameAvailabilityResponseReason = S.String;
 
 export interface CheckNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
@@ -46,7 +46,7 @@ export interface CheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(CheckNameAvailabilityResponseReason),
@@ -58,24 +58,24 @@ export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateAccountRequestTagsMap>;
 
 /** Whether or not public network access is allowed for the account. */
 export type CreateAccountRequestPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const CreateAccountRequestPropertiesPublicNetworkAccess = S.String;
+const CreateAccountRequestPropertiesPublicNetworkAccess = S.String;
 
 /** The Private Endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PrivateEndpointInput",
 }) as any as S.Schema<PrivateEndpointInput>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -86,7 +86,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -98,7 +98,7 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of group IDs. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
 
@@ -111,7 +111,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Array of group IDs. */
   groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -126,11 +126,10 @@ export interface CreateAccountRequestPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-export const CreateAccountRequestPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      properties: PrivateEndpointConnectionPropertiesInput,
-    }),
+const CreateAccountRequestPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: PrivateEndpointConnectionPropertiesInput,
+  }),
 ).annotate({
   identifier: "CreateAccountRequestPropertiesPrivateEndpointConnectionsItem",
 }) as any as S.Schema<CreateAccountRequestPropertiesPrivateEndpointConnectionsItem>;
@@ -138,13 +137,13 @@ export const CreateAccountRequestPropertiesPrivateEndpointConnectionsItem = /*@_
 /** List of private endpoint connections associated with the account. */
 export type CreateAccountRequestPropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountRequestPropertiesPrivateEndpointConnectionsItem>;
-export const CreateAccountRequestPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const CreateAccountRequestPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   CreateAccountRequestPropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<CreateAccountRequestPropertiesPrivateEndpointConnectionsList>;
 
 /** Device Update Sku */
 export type CreateAccountRequestPropertiesSku = "Free" | "Standard";
-export const CreateAccountRequestPropertiesSku = S.String;
+const CreateAccountRequestPropertiesSku = S.String;
 
 /** The CMK encryption settings on the Device Update account. */
 export interface Encryption {
@@ -153,7 +152,7 @@ export interface Encryption {
   /** The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account */
   userAssignedIdentity?: string;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyVaultKeyUri: S.optional(S.String),
     userAssignedIdentity: S.optional(S.String),
@@ -171,7 +170,7 @@ export interface CreateAccountRequestProperties {
   /** CMK encryption at rest properties */
   encryption?: Encryption;
 }
-export const CreateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(CreateAccountRequestPropertiesPublicNetworkAccess),
     privateEndpointConnections: S.optional(
@@ -190,15 +189,13 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = PrivateEndpointInput;
-export const UserAssignedIdentityInput = PrivateEndpointInput;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: PrivateEndpointInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   PrivateEndpointInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -208,7 +205,7 @@ export interface CreateAccountRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
-export const CreateAccountRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
@@ -233,7 +230,7 @@ export interface CreateAccountRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountRequestIdentity;
 }
-export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -254,11 +251,11 @@ export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -275,7 +272,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -288,7 +285,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAccountResponseTagsMap =
+const CreateAccountResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
 
 /** Provisioning state. */
@@ -299,18 +296,18 @@ export type CreateAccountResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const CreateAccountResponsePropertiesProvisioningState = S.String;
+const CreateAccountResponsePropertiesProvisioningState = S.String;
 
 /** Whether or not public network access is allowed for the account. */
 export type CreateAccountResponsePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const CreateAccountResponsePropertiesPublicNetworkAccess = S.String;
+const CreateAccountResponsePropertiesPublicNetworkAccess = S.String;
 
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -318,7 +315,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of group IDs. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
+const PrivateEndpointConnectionPropertiesGroupIdsList =
   PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The current provisioning state. */
@@ -327,7 +324,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
@@ -340,7 +337,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -364,40 +361,39 @@ export interface CreateAccountResponsePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const CreateAccountResponsePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: PrivateEndpointConnectionProperties,
-    }),
-  ).annotate({
-    identifier: "CreateAccountResponsePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+const CreateAccountResponsePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: PrivateEndpointConnectionProperties,
+  }),
+).annotate({
+  identifier: "CreateAccountResponsePropertiesPrivateEndpointConnectionsItem",
+}) as any as S.Schema<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
 
 /** List of private endpoint connections associated with the account. */
 export type CreateAccountResponsePropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
-export const CreateAccountResponsePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const CreateAccountResponsePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<CreateAccountResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Device Update Sku */
 export type CreateAccountResponsePropertiesSku = "Free" | "Standard";
-export const CreateAccountResponsePropertiesSku = S.String;
+const CreateAccountResponsePropertiesSku = S.String;
 
 /** Whether the location is primary or failover */
 export type LocationRole = "Primary" | "Failover";
-export const LocationRole = S.String;
+const LocationRole = S.String;
 
 export interface Location {
   name?: string;
   /** Whether the location is primary or failover */
   role?: LocationRole;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     role: S.optional(LocationRole),
@@ -406,7 +402,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 
 /** Device Update account primary and failover location details */
 export type CreateAccountResponsePropertiesLocationsList = Array<Location>;
-export const CreateAccountResponsePropertiesLocationsList = /*@__PURE__*/ S.Array(
+const CreateAccountResponsePropertiesLocationsList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<CreateAccountResponsePropertiesLocationsList>;
 
@@ -427,7 +423,7 @@ export interface CreateAccountResponseProperties {
   /** Device Update account primary and failover location details */
   locations?: CreateAccountResponsePropertiesLocationsList;
 }
-export const CreateAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(CreateAccountResponsePropertiesProvisioningState),
     hostName: S.optional(S.String),
@@ -450,7 +446,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -459,7 +455,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -473,7 +469,7 @@ export interface CreateAccountResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
-export const CreateAccountResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -502,7 +498,7 @@ export interface CreateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
-export const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -517,7 +513,7 @@ export const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateInstanceRequestTagsMap =
+const CreateInstanceRequestTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<CreateInstanceRequestTagsMap>;
 
 /** Device Update account integration with IoT Hub settings. */
@@ -525,7 +521,7 @@ export interface IotHubSettings {
   /** IoTHub resource ID */
   resourceId: string;
 }
-export const IotHubSettings = /*@__PURE__*/ S.suspend(() =>
+const IotHubSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
   }),
@@ -533,13 +529,13 @@ export const IotHubSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IoT Hubs associated with the account. */
 export type CreateInstanceRequestPropertiesIotHubsList = Array<IotHubSettings>;
-export const CreateInstanceRequestPropertiesIotHubsList = /*@__PURE__*/ S.Array(
+const CreateInstanceRequestPropertiesIotHubsList = /*@__PURE__*/ S.Array(
   IotHubSettings,
 ) as any as S.Schema<CreateInstanceRequestPropertiesIotHubsList>;
 
 /** Authentication Type */
 export type DiagnosticStoragePropertiesAuthenticationType = "KeyBased";
-export const DiagnosticStoragePropertiesAuthenticationType = S.String;
+const DiagnosticStoragePropertiesAuthenticationType = S.String;
 
 /** Customer-initiated diagnostic log collection storage properties */
 export interface DiagnosticStorageProperties {
@@ -550,7 +546,7 @@ export interface DiagnosticStorageProperties {
   /** ResourceId of the diagnostic storage account */
   resourceId: string;
 }
-export const DiagnosticStorageProperties = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticStorageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationType: DiagnosticStoragePropertiesAuthenticationType,
     connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -568,7 +564,7 @@ export interface CreateInstanceRequestProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
-export const CreateInstanceRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iotHubs: S.optional(CreateInstanceRequestPropertiesIotHubsList),
     enableDiagnostics: S.optional(S.Boolean),
@@ -594,7 +590,7 @@ export interface CreateInstanceRequest {
   /** Device Update instance properties. */
   properties: CreateInstanceRequestProperties;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -615,7 +611,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateInstanceResponseTagsMap =
+const CreateInstanceResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<CreateInstanceResponseTagsMap>;
 
 /** Provisioning state. */
@@ -626,11 +622,11 @@ export type CreateInstanceResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const CreateInstanceResponsePropertiesProvisioningState = S.String;
+const CreateInstanceResponsePropertiesProvisioningState = S.String;
 
 /** List of IoT Hubs associated with the account. */
 export type CreateInstanceResponsePropertiesIotHubsList = Array<IotHubSettings>;
-export const CreateInstanceResponsePropertiesIotHubsList =
+const CreateInstanceResponsePropertiesIotHubsList =
   CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<CreateInstanceResponsePropertiesIotHubsList>;
 
 /** Device Update instance properties. */
@@ -645,7 +641,7 @@ export interface CreateInstanceResponseProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
-export const CreateInstanceResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(CreateInstanceResponsePropertiesProvisioningState),
     accountName: S.optional(S.String),
@@ -673,7 +669,7 @@ export interface CreateInstanceResponse {
   /** Device Update instance properties. */
   properties: CreateInstanceResponseProperties;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -693,7 +689,7 @@ export interface DeleteAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -709,7 +705,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = PrivateEndpointInput as any as S.Schema<DeleteAccountResponse>;
+const DeleteAccountResponse = PrivateEndpointInput as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeleteInstanceRequest {
   /** The Azure subscription ID. */
@@ -721,7 +717,7 @@ export interface DeleteInstanceRequest {
   /** Instance name. */
   instanceName: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -738,8 +734,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse =
-  PrivateEndpointInput as any as S.Schema<DeleteInstanceResponse>;
+const DeleteInstanceResponse = PrivateEndpointInput as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The Azure subscription ID. */
@@ -751,7 +746,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -770,7 +765,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePrivateEndpointConnectionResponse",
@@ -786,7 +781,7 @@ export interface DeletePrivateEndpointConnectionProxyRequest {
   /** The ID of the private endpoint connection proxy object. */
   privateEndpointConnectionProxyId: string;
 }
-export const DeletePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -805,7 +800,7 @@ export const DeletePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeletePrivateEndpointConnectionProxyRequest>;
 
 export interface DeletePrivateEndpointConnectionProxyResponse {}
-export const DeletePrivateEndpointConnectionProxyResponse =
+const DeletePrivateEndpointConnectionProxyResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<DeletePrivateEndpointConnectionProxyResponse>;
 
 export interface GetAccountRequest {
@@ -816,7 +811,7 @@ export interface GetAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -833,7 +828,7 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap =
+const GetAccountResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** Provisioning state. */
@@ -844,31 +839,28 @@ export type GetAccountResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const GetAccountResponsePropertiesProvisioningState = S.String;
+const GetAccountResponsePropertiesProvisioningState = S.String;
 
 /** Whether or not public network access is allowed for the account. */
 export type GetAccountResponsePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const GetAccountResponsePropertiesPublicNetworkAccess = S.String;
+const GetAccountResponsePropertiesPublicNetworkAccess = S.String;
 
 /** The Private Endpoint Connection resource. */
 export type GetAccountResponsePropertiesPrivateEndpointConnectionsItem =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-export const GetAccountResponsePropertiesPrivateEndpointConnectionsItem =
-  CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-
 /** List of private endpoint connections associated with the account. */
 export type GetAccountResponsePropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
-export const GetAccountResponsePropertiesPrivateEndpointConnectionsList =
+const GetAccountResponsePropertiesPrivateEndpointConnectionsList =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetAccountResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Device Update Sku */
 export type GetAccountResponsePropertiesSku = "Free" | "Standard";
-export const GetAccountResponsePropertiesSku = S.String;
+const GetAccountResponsePropertiesSku = S.String;
 
 /** Device Update account primary and failover location details */
 export type GetAccountResponsePropertiesLocationsList = Array<Location>;
-export const GetAccountResponsePropertiesLocationsList =
+const GetAccountResponsePropertiesLocationsList =
   CreateAccountResponsePropertiesLocationsList as any as S.Schema<GetAccountResponsePropertiesLocationsList>;
 
 /** Device Update account properties. */
@@ -888,7 +880,7 @@ export interface GetAccountResponseProperties {
   /** Device Update account primary and failover location details */
   locations?: GetAccountResponsePropertiesLocationsList;
 }
-export const GetAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(GetAccountResponsePropertiesProvisioningState),
     hostName: S.optional(S.String),
@@ -906,8 +898,6 @@ export const GetAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = CreateAccountResponseIdentity;
-export const GetAccountResponseIdentity = CreateAccountResponseIdentity;
-
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -926,7 +916,7 @@ export interface GetAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -949,7 +939,7 @@ export interface GetInstanceRequest {
   /** Instance name. */
   instanceName: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -967,7 +957,7 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetInstanceResponseTagsMap =
+const GetInstanceResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<GetInstanceResponseTagsMap>;
 
 /** Provisioning state. */
@@ -978,11 +968,11 @@ export type GetInstanceResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const GetInstanceResponsePropertiesProvisioningState = S.String;
+const GetInstanceResponsePropertiesProvisioningState = S.String;
 
 /** List of IoT Hubs associated with the account. */
 export type GetInstanceResponsePropertiesIotHubsList = Array<IotHubSettings>;
-export const GetInstanceResponsePropertiesIotHubsList =
+const GetInstanceResponsePropertiesIotHubsList =
   CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<GetInstanceResponsePropertiesIotHubsList>;
 
 /** Device Update instance properties. */
@@ -997,7 +987,7 @@ export interface GetInstanceResponseProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
-export const GetInstanceResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(GetInstanceResponsePropertiesProvisioningState),
     accountName: S.optional(S.String),
@@ -1025,7 +1015,7 @@ export interface GetInstanceResponse {
   /** Device Update instance properties. */
   properties: GetInstanceResponseProperties;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1047,7 +1037,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1077,7 +1067,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1099,7 +1089,7 @@ export interface GetPrivateEndpointConnectionProxyRequest {
   /** The ID of the private endpoint connection proxy object. */
   privateEndpointConnectionProxyId: string;
 }
-export const GetPrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1119,7 +1109,7 @@ export const GetPrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(
 
 /** List of group IDs. */
 export type PrivateLinkServiceConnectionGroupIdsList = Array<string>;
-export const PrivateLinkServiceConnectionGroupIdsList =
+const PrivateLinkServiceConnectionGroupIdsList =
   PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<PrivateLinkServiceConnectionGroupIdsList>;
 
 /** Private link service connection details. */
@@ -1131,7 +1121,7 @@ export interface PrivateLinkServiceConnection {
   /** Request message. */
   requestMessage?: string;
 }
-export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     groupIds: S.optional(PrivateLinkServiceConnectionGroupIdsList),
@@ -1144,14 +1134,14 @@ export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 /** List of private link service connections that need manual approval. */
 export type RemotePrivateEndpointManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const RemotePrivateEndpointManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
+const RemotePrivateEndpointManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
   PrivateLinkServiceConnection,
 ) as any as S.Schema<RemotePrivateEndpointManualPrivateLinkServiceConnectionsList>;
 
 /** List of automatically approved private link service connections. */
 export type RemotePrivateEndpointPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const RemotePrivateEndpointPrivateLinkServiceConnectionsList =
+const RemotePrivateEndpointPrivateLinkServiceConnectionsList =
   RemotePrivateEndpointManualPrivateLinkServiceConnectionsList as any as S.Schema<RemotePrivateEndpointPrivateLinkServiceConnectionsList>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -1163,23 +1153,22 @@ export interface PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState 
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(PrivateEndpointServiceConnectionStatus),
-      description: S.optional(S.String),
-      actionsRequired: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState",
-  }) as any as S.Schema<PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState>;
+const PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(PrivateEndpointServiceConnectionStatus),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState",
+}) as any as S.Schema<PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState>;
 
 /** Remote private endpoint connection details. */
 export interface RemotePrivateEndpointConnection {
   /** Remote private endpoint connection ID. */
   id?: string;
 }
-export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -1189,7 +1178,7 @@ export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of customer visible FQDNs. */
 export type GroupConnectivityInformationCustomerVisibleFqdnsList = Array<string>;
-export const GroupConnectivityInformationCustomerVisibleFqdnsList =
+const GroupConnectivityInformationCustomerVisibleFqdnsList =
   PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupConnectivityInformationCustomerVisibleFqdnsList>;
 
 /** Group connectivity details. */
@@ -1207,7 +1196,7 @@ export interface GroupConnectivityInformation {
   /** PrivateLinkService ARM region. */
   privateLinkServiceArmRegion?: string;
 }
-export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
+const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     memberName: S.optional(S.String),
@@ -1223,7 +1212,7 @@ export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
 /** Group connectivity information. */
 export type PrivateLinkServiceProxyGroupConnectivityInformationList =
   Array<GroupConnectivityInformation>;
-export const PrivateLinkServiceProxyGroupConnectivityInformationList = /*@__PURE__*/ S.Array(
+const PrivateLinkServiceProxyGroupConnectivityInformationList = /*@__PURE__*/ S.Array(
   GroupConnectivityInformation,
 ) as any as S.Schema<PrivateLinkServiceProxyGroupConnectivityInformationList>;
 
@@ -1238,7 +1227,7 @@ export interface PrivateLinkServiceProxy {
   /** Group connectivity information. */
   groupConnectivityInformation?: PrivateLinkServiceProxyGroupConnectivityInformationList;
 }
-export const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     remotePrivateLinkServiceConnectionState: S.optional(
@@ -1253,7 +1242,7 @@ export const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private link service proxies. */
 export type RemotePrivateEndpointPrivateLinkServiceProxiesList = Array<PrivateLinkServiceProxy>;
-export const RemotePrivateEndpointPrivateLinkServiceProxiesList = /*@__PURE__*/ S.Array(
+const RemotePrivateEndpointPrivateLinkServiceProxiesList = /*@__PURE__*/ S.Array(
   PrivateLinkServiceProxy,
 ) as any as S.Schema<RemotePrivateEndpointPrivateLinkServiceProxiesList>;
 
@@ -1270,7 +1259,7 @@ export interface ConnectionDetails {
   /** Member name. */
   memberName?: string;
 }
-export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     privateIpAddress: S.optional(S.String),
@@ -1282,7 +1271,7 @@ export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of connection details. */
 export type RemotePrivateEndpointConnectionDetailsList = Array<ConnectionDetails>;
-export const RemotePrivateEndpointConnectionDetailsList = /*@__PURE__*/ S.Array(
+const RemotePrivateEndpointConnectionDetailsList = /*@__PURE__*/ S.Array(
   ConnectionDetails,
 ) as any as S.Schema<RemotePrivateEndpointConnectionDetailsList>;
 
@@ -1307,7 +1296,7 @@ export interface RemotePrivateEndpoint {
   /** List of connection details. */
   connectionDetails?: RemotePrivateEndpointConnectionDetailsList;
 }
-export const RemotePrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const RemotePrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -1331,14 +1320,14 @@ export type PrivateEndpointConnectionProxyProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProxyProvisioningState = S.String;
+const PrivateEndpointConnectionProxyProvisioningState = S.String;
 
 /** Private endpoint connection proxy object property bag. */
 export interface GetPrivateEndpointConnectionProxyResponseProperties {
   /** The provisioning state of the private endpoint connection proxy resource. */
   provisioningState?: PrivateEndpointConnectionProxyProvisioningState;
 }
-export const GetPrivateEndpointConnectionProxyResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionProxyResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(PrivateEndpointConnectionProxyProvisioningState),
   }),
@@ -1364,7 +1353,7 @@ export interface GetPrivateEndpointConnectionProxyResponse {
   /** Private endpoint connection proxy object property bag. */
   properties?: GetPrivateEndpointConnectionProxyResponseProperties;
 }
-export const GetPrivateEndpointConnectionProxyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionProxyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1389,7 +1378,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The group ID of the private link resource. */
   groupId: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1409,17 +1398,17 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type GroupInformationPropertiesRequiredMembersList = Array<string>;
-export const GroupInformationPropertiesRequiredMembersList =
+const GroupInformationPropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupInformationPropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type GroupInformationPropertiesRequiredZoneNamesList = Array<string>;
-export const GroupInformationPropertiesRequiredZoneNamesList =
+const GroupInformationPropertiesRequiredZoneNamesList =
   PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupInformationPropertiesRequiredZoneNamesList>;
 
 /** The provisioning state of private link group ID. */
 export type GroupInformationPropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const GroupInformationPropertiesProvisioningState = S.String;
+const GroupInformationPropertiesProvisioningState = S.String;
 
 /** The properties for a group information object */
 export interface GroupInformationProperties {
@@ -1432,7 +1421,7 @@ export interface GroupInformationProperties {
   /** The provisioning state of private link group ID. */
   provisioningState?: GroupInformationPropertiesProvisioningState;
 }
-export const GroupInformationProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupInformationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(GroupInformationPropertiesRequiredMembersList),
@@ -1455,7 +1444,7 @@ export interface GetPrivateLinkResourceResponse {
   /** The properties for a group information object */
   properties: GroupInformationProperties;
 }
-export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1473,7 +1462,7 @@ export interface ListAccountByResourceGroupRequest {
   /** The resource group name. */
   resourceGroupName: string;
 }
-export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1491,7 +1480,7 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap = CreateAccountRequestTagsMap as any as S.Schema<AccountTagsMap>;
+const AccountTagsMap = CreateAccountRequestTagsMap as any as S.Schema<AccountTagsMap>;
 
 /** Provisioning state. */
 export type AccountPropertiesProvisioningState =
@@ -1501,31 +1490,28 @@ export type AccountPropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const AccountPropertiesProvisioningState = S.String;
+const AccountPropertiesProvisioningState = S.String;
 
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const AccountPropertiesPublicNetworkAccess = S.String;
+const AccountPropertiesPublicNetworkAccess = S.String;
 
 /** The Private Endpoint Connection resource. */
 export type AccountPropertiesPrivateEndpointConnectionsItem =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-export const AccountPropertiesPrivateEndpointConnectionsItem =
-  CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-
 /** List of private endpoint connections associated with the account. */
 export type AccountPropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
-export const AccountPropertiesPrivateEndpointConnectionsList =
+const AccountPropertiesPrivateEndpointConnectionsList =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<AccountPropertiesPrivateEndpointConnectionsList>;
 
 /** Device Update Sku */
 export type AccountPropertiesSku = "Free" | "Standard";
-export const AccountPropertiesSku = S.String;
+const AccountPropertiesSku = S.String;
 
 /** Device Update account primary and failover location details */
 export type AccountPropertiesLocationsList = Array<Location>;
-export const AccountPropertiesLocationsList =
+const AccountPropertiesLocationsList =
   CreateAccountResponsePropertiesLocationsList as any as S.Schema<AccountPropertiesLocationsList>;
 
 /** Device Update account properties. */
@@ -1545,7 +1531,7 @@ export interface AccountProperties {
   /** Device Update account primary and failover location details */
   locations?: AccountPropertiesLocationsList;
 }
-export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
+const AccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AccountPropertiesProvisioningState),
     hostName: S.optional(S.String),
@@ -1559,8 +1545,6 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type AccountIdentity = CreateAccountResponseIdentity;
-export const AccountIdentity = CreateAccountResponseIdentity;
-
 /** Device Update account details. */
 export interface Account {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1580,7 +1564,7 @@ export interface Account {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1595,7 +1579,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Accounts. */
 export type AccountListValueList = Array<Account>;
-export const AccountListValueList = /*@__PURE__*/ S.Array(
+const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
 
@@ -1606,7 +1590,7 @@ export interface AccountList {
   /** List of Accounts. */
   value?: AccountListValueList;
 }
-export const AccountList = /*@__PURE__*/ S.suspend(() =>
+const AccountList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AccountListValueList),
@@ -1617,7 +1601,7 @@ export interface ListAccountBySubscriptionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
 }
-export const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1640,7 +1624,7 @@ export interface ListInstanceByAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export const ListInstanceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1659,7 +1643,7 @@ export const ListInstanceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstanceTagsMap = { [key: string]: string | undefined };
-export const InstanceTagsMap = CreateAccountRequestTagsMap as any as S.Schema<InstanceTagsMap>;
+const InstanceTagsMap = CreateAccountRequestTagsMap as any as S.Schema<InstanceTagsMap>;
 
 /** Provisioning state. */
 export type InstancePropertiesProvisioningState =
@@ -1669,11 +1653,11 @@ export type InstancePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const InstancePropertiesProvisioningState = S.String;
+const InstancePropertiesProvisioningState = S.String;
 
 /** List of IoT Hubs associated with the account. */
 export type InstancePropertiesIotHubsList = Array<IotHubSettings>;
-export const InstancePropertiesIotHubsList =
+const InstancePropertiesIotHubsList =
   CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<InstancePropertiesIotHubsList>;
 
 /** Device Update instance properties. */
@@ -1688,7 +1672,7 @@ export interface InstanceProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
-export const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(InstancePropertiesProvisioningState),
     accountName: S.optional(S.String),
@@ -1715,7 +1699,7 @@ export interface Instance {
   /** Device Update instance properties. */
   properties: InstanceProperties;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1729,7 +1713,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Instances. */
 export type InstanceListValueList = Array<Instance>;
-export const InstanceListValueList = /*@__PURE__*/ S.Array(
+const InstanceListValueList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceListValueList>;
 
@@ -1740,7 +1724,7 @@ export interface InstanceList {
   /** List of Instances. */
   value?: InstanceListValueList;
 }
-export const InstanceList = /*@__PURE__*/ S.suspend(() =>
+const InstanceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(InstanceListValueList),
@@ -1748,7 +1732,7 @@ export const InstanceList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceList" }) as any as S.Schema<InstanceList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1770,7 +1754,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1781,11 +1765,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1800,7 +1784,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1812,7 +1796,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1822,7 +1806,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1837,7 +1821,7 @@ export interface ListPrivateEndpointConnectionByAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1857,20 +1841,17 @@ export const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.sus
 /** The Private Endpoint Connection resource. */
 export type PrivateEndpointConnection =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnection =
-  CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionByAccountResponseValueList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
-export const ListPrivateEndpointConnectionByAccountResponseValueList =
+const ListPrivateEndpointConnectionByAccountResponseValueList =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionByAccountResponseValueList>;
 
 export interface ListPrivateEndpointConnectionByAccountResponse {
   /** Array of private endpoint connections */
   value?: ListPrivateEndpointConnectionByAccountResponseValueList;
 }
-export const ListPrivateEndpointConnectionByAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListPrivateEndpointConnectionByAccountResponseValueList),
   }),
@@ -1886,7 +1867,7 @@ export interface ListPrivateEndpointConnectionProxyByAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export const ListPrivateEndpointConnectionProxyByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionProxyByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1906,9 +1887,6 @@ export const ListPrivateEndpointConnectionProxyByAccountRequest = /*@__PURE__*/ 
 /** Private endpoint connection proxy object property bag. */
 export type PrivateEndpointConnectionProxyProperties =
   GetPrivateEndpointConnectionProxyResponseProperties;
-export const PrivateEndpointConnectionProxyProperties =
-  GetPrivateEndpointConnectionProxyResponseProperties;
-
 /** Private endpoint connection proxy details. */
 export interface PrivateEndpointConnectionProxy {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1928,13 +1906,13 @@ export interface PrivateEndpointConnectionProxy {
   /** Private endpoint connection proxy object property bag. */
   properties?: GetPrivateEndpointConnectionProxyResponseProperties;
 }
-export const PrivateEndpointConnectionProxy =
+const PrivateEndpointConnectionProxy =
   GetPrivateEndpointConnectionProxyResponse as any as S.Schema<PrivateEndpointConnectionProxy>;
 
 /** The list of available private endpoint connection proxies for an Account */
 export type PrivateEndpointConnectionProxyListResultValueList =
   Array<PrivateEndpointConnectionProxy>;
-export const PrivateEndpointConnectionProxyListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionProxyListResultValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionProxy,
 ) as any as S.Schema<PrivateEndpointConnectionProxyListResultValueList>;
 
@@ -1945,7 +1923,7 @@ export interface PrivateEndpointConnectionProxyListResult {
   /** The URI that can be used to request the next list of private endpoint connection proxies. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionProxyListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionProxyListResultValueList),
     nextLink: S.optional(S.String),
@@ -1962,7 +1940,7 @@ export interface ListPrivateLinkResourceByAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export const ListPrivateLinkResourceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1992,7 +1970,7 @@ export interface GroupInformation {
   /** The properties for a group information object */
   properties: GroupInformationProperties;
 }
-export const GroupInformation = /*@__PURE__*/ S.suspend(() =>
+const GroupInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2004,7 +1982,7 @@ export const GroupInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of available private link resources for an Account */
 export type PrivateLinkResourceListResultValueList = Array<GroupInformation>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   GroupInformation,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -2015,7 +1993,7 @@ export interface PrivateLinkResourceListResult {
   /** The URI that can be used to request the next list of private link resources. */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceListResultValueList),
     nextLink: S.optional(S.String),
@@ -2027,30 +2005,24 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 /** List of private link service connections that need manual approval. */
 export type RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateLinkServiceConnection,
-  ) as any as S.Schema<RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList>;
+const RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
+  PrivateLinkServiceConnection,
+) as any as S.Schema<RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList>;
 
 /** List of automatically approved private link service connections. */
 export type RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
+const RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
   RemotePrivateEndpointManualPrivateLinkServiceConnectionsList as any as S.Schema<RemotePrivateEndpointInputPrivateLinkServiceConnectionsList>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export type PrivateLinkServiceProxyInputRemotePrivateLinkServiceConnectionState =
   PrivateLinkServiceConnectionState;
-export const PrivateLinkServiceProxyInputRemotePrivateLinkServiceConnectionState =
-  PrivateLinkServiceConnectionState;
-
 /** Remote private endpoint connection details. */
 export type RemotePrivateEndpointConnectionInput = PrivateEndpointInput;
-export const RemotePrivateEndpointConnectionInput = PrivateEndpointInput;
-
 /** List of customer visible FQDNs. */
 export type GroupConnectivityInformationInputCustomerVisibleFqdnsList = Array<string>;
-export const GroupConnectivityInformationInputCustomerVisibleFqdnsList =
+const GroupConnectivityInformationInputCustomerVisibleFqdnsList =
   PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupConnectivityInformationInputCustomerVisibleFqdnsList>;
 
 /** Group connectivity details. */
@@ -2062,7 +2034,7 @@ export interface GroupConnectivityInformationInput {
   /** PrivateLinkService ARM region. */
   privateLinkServiceArmRegion?: string;
 }
-export const GroupConnectivityInformationInput = /*@__PURE__*/ S.suspend(() =>
+const GroupConnectivityInformationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerVisibleFqdns: S.optional(GroupConnectivityInformationInputCustomerVisibleFqdnsList),
     redirectMapId: S.optional(S.String),
@@ -2075,7 +2047,7 @@ export const GroupConnectivityInformationInput = /*@__PURE__*/ S.suspend(() =>
 /** Group connectivity information. */
 export type PrivateLinkServiceProxyInputGroupConnectivityInformationList =
   Array<GroupConnectivityInformationInput>;
-export const PrivateLinkServiceProxyInputGroupConnectivityInformationList = /*@__PURE__*/ S.Array(
+const PrivateLinkServiceProxyInputGroupConnectivityInformationList = /*@__PURE__*/ S.Array(
   GroupConnectivityInformationInput,
 ) as any as S.Schema<PrivateLinkServiceProxyInputGroupConnectivityInformationList>;
 
@@ -2090,7 +2062,7 @@ export interface PrivateLinkServiceProxyInput {
   /** Group connectivity information. */
   groupConnectivityInformation?: PrivateLinkServiceProxyInputGroupConnectivityInformationList;
 }
-export const PrivateLinkServiceProxyInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceProxyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     remotePrivateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
@@ -2106,17 +2078,15 @@ export const PrivateLinkServiceProxyInput = /*@__PURE__*/ S.suspend(() =>
 /** List of private link service proxies. */
 export type RemotePrivateEndpointInputPrivateLinkServiceProxiesList =
   Array<PrivateLinkServiceProxyInput>;
-export const RemotePrivateEndpointInputPrivateLinkServiceProxiesList = /*@__PURE__*/ S.Array(
+const RemotePrivateEndpointInputPrivateLinkServiceProxiesList = /*@__PURE__*/ S.Array(
   PrivateLinkServiceProxyInput,
 ) as any as S.Schema<RemotePrivateEndpointInputPrivateLinkServiceProxiesList>;
 
 /** Private endpoint connection proxy object properties. */
 export type ConnectionDetailsInput = PrivateEndpointInput;
-export const ConnectionDetailsInput = PrivateEndpointInput;
-
 /** List of connection details. */
 export type RemotePrivateEndpointInputConnectionDetailsList = Array<PrivateEndpointInput>;
-export const RemotePrivateEndpointInputConnectionDetailsList = /*@__PURE__*/ S.Array(
+const RemotePrivateEndpointInputConnectionDetailsList = /*@__PURE__*/ S.Array(
   PrivateEndpointInput,
 ) as any as S.Schema<RemotePrivateEndpointInputConnectionDetailsList>;
 
@@ -2141,7 +2111,7 @@ export interface RemotePrivateEndpointInput {
   /** List of connection details. */
   connectionDetails?: RemotePrivateEndpointInputConnectionDetailsList;
 }
-export const RemotePrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const RemotePrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -2163,8 +2133,6 @@ export const RemotePrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connection proxy object property bag. */
 export type PrivateEndpointConnectionProxiesCreateOrUpdateRequestProperties = PrivateEndpointInput;
-export const PrivateEndpointConnectionProxiesCreateOrUpdateRequestProperties = PrivateEndpointInput;
-
 export interface PrivateEndpointConnectionProxiesCreateOrUpdateRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -2181,7 +2149,7 @@ export interface PrivateEndpointConnectionProxiesCreateOrUpdateRequest {
   /** Private endpoint connection proxy object property bag. */
   properties?: PrivateEndpointInput;
 }
-export const PrivateEndpointConnectionProxiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2205,9 +2173,6 @@ export const PrivateEndpointConnectionProxiesCreateOrUpdateRequest = /*@__PURE__
 /** Private endpoint connection proxy object property bag. */
 export type PrivateEndpointConnectionProxiesCreateOrUpdateResponseProperties =
   GetPrivateEndpointConnectionProxyResponseProperties;
-export const PrivateEndpointConnectionProxiesCreateOrUpdateResponseProperties =
-  GetPrivateEndpointConnectionProxyResponseProperties;
-
 export interface PrivateEndpointConnectionProxiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2226,7 +2191,7 @@ export interface PrivateEndpointConnectionProxiesCreateOrUpdateResponse {
   /** Private endpoint connection proxy object property bag. */
   properties?: GetPrivateEndpointConnectionProxyResponseProperties;
 }
-export const PrivateEndpointConnectionProxiesCreateOrUpdateResponse =
+const PrivateEndpointConnectionProxiesCreateOrUpdateResponse =
   GetPrivateEndpointConnectionProxyResponse as any as S.Schema<PrivateEndpointConnectionProxiesCreateOrUpdateResponse>;
 
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
@@ -2241,7 +2206,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2272,18 +2237,16 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
   GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap =
+const UpdateAccountRequestTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountRequestIdentity = CreateAccountRequestIdentity;
-export const UpdateAccountRequestIdentity = CreateAccountRequestIdentity;
-
 export interface UpdateAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -2298,7 +2261,7 @@ export interface UpdateAccountRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2318,7 +2281,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap =
+const UpdateAccountResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** Provisioning state. */
@@ -2329,31 +2292,28 @@ export type UpdateAccountResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const UpdateAccountResponsePropertiesProvisioningState = S.String;
+const UpdateAccountResponsePropertiesProvisioningState = S.String;
 
 /** Whether or not public network access is allowed for the account. */
 export type UpdateAccountResponsePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const UpdateAccountResponsePropertiesPublicNetworkAccess = S.String;
+const UpdateAccountResponsePropertiesPublicNetworkAccess = S.String;
 
 /** The Private Endpoint Connection resource. */
 export type UpdateAccountResponsePropertiesPrivateEndpointConnectionsItem =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-export const UpdateAccountResponsePropertiesPrivateEndpointConnectionsItem =
-  CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
-
 /** List of private endpoint connections associated with the account. */
 export type UpdateAccountResponsePropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
-export const UpdateAccountResponsePropertiesPrivateEndpointConnectionsList =
+const UpdateAccountResponsePropertiesPrivateEndpointConnectionsList =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdateAccountResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Device Update Sku */
 export type UpdateAccountResponsePropertiesSku = "Free" | "Standard";
-export const UpdateAccountResponsePropertiesSku = S.String;
+const UpdateAccountResponsePropertiesSku = S.String;
 
 /** Device Update account primary and failover location details */
 export type UpdateAccountResponsePropertiesLocationsList = Array<Location>;
-export const UpdateAccountResponsePropertiesLocationsList =
+const UpdateAccountResponsePropertiesLocationsList =
   CreateAccountResponsePropertiesLocationsList as any as S.Schema<UpdateAccountResponsePropertiesLocationsList>;
 
 /** Device Update account properties. */
@@ -2373,7 +2333,7 @@ export interface UpdateAccountResponseProperties {
   /** Device Update account primary and failover location details */
   locations?: UpdateAccountResponsePropertiesLocationsList;
 }
-export const UpdateAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(UpdateAccountResponsePropertiesProvisioningState),
     hostName: S.optional(S.String),
@@ -2391,8 +2351,6 @@ export const UpdateAccountResponseProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = CreateAccountResponseIdentity;
-export const UpdateAccountResponseIdentity = CreateAccountResponseIdentity;
-
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2411,7 +2369,7 @@ export interface UpdateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2426,7 +2384,7 @@ export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceRequestTagsMap =
+const UpdateInstanceRequestTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
 
 export interface UpdateInstanceRequest {
@@ -2441,7 +2399,7 @@ export interface UpdateInstanceRequest {
   /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
   tags?: UpdateInstanceRequestTagsMap;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2460,7 +2418,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceResponseTagsMap =
+const UpdateInstanceResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<UpdateInstanceResponseTagsMap>;
 
 /** Provisioning state. */
@@ -2471,11 +2429,11 @@ export type UpdateInstanceResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
-export const UpdateInstanceResponsePropertiesProvisioningState = S.String;
+const UpdateInstanceResponsePropertiesProvisioningState = S.String;
 
 /** List of IoT Hubs associated with the account. */
 export type UpdateInstanceResponsePropertiesIotHubsList = Array<IotHubSettings>;
-export const UpdateInstanceResponsePropertiesIotHubsList =
+const UpdateInstanceResponsePropertiesIotHubsList =
   CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<UpdateInstanceResponsePropertiesIotHubsList>;
 
 /** Device Update instance properties. */
@@ -2490,7 +2448,7 @@ export interface UpdateInstanceResponseProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
-export const UpdateInstanceResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(UpdateInstanceResponsePropertiesProvisioningState),
     accountName: S.optional(S.String),
@@ -2518,7 +2476,7 @@ export interface UpdateInstanceResponse {
   /** Device Update instance properties. */
   properties: UpdateInstanceResponseProperties;
 }
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2550,7 +2508,7 @@ export interface UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRe
   /** Virtual network traffic tag. */
   vnetTrafficTag?: string;
 }
-export const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest =
+const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2575,15 +2533,13 @@ export const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesReques
   }) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest>;
 
 export interface UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse {}
-export const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse =
+const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse",
   }) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse>;
 
 /** Private endpoint connection proxy object property bag. */
 export type ValidatePrivateEndpointConnectionProxyRequestProperties = PrivateEndpointInput;
-export const ValidatePrivateEndpointConnectionProxyRequestProperties = PrivateEndpointInput;
-
 export interface ValidatePrivateEndpointConnectionProxyRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -2600,7 +2556,7 @@ export interface ValidatePrivateEndpointConnectionProxyRequest {
   /** Private endpoint connection proxy object property bag. */
   properties?: PrivateEndpointInput;
 }
-export const ValidatePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidatePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2622,7 +2578,7 @@ export const ValidatePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ValidatePrivateEndpointConnectionProxyRequest>;
 
 export interface ValidatePrivateEndpointConnectionProxyResponse {}
-export const ValidatePrivateEndpointConnectionProxyResponse =
+const ValidatePrivateEndpointConnectionProxyResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<ValidatePrivateEndpointConnectionProxyResponse>;
 
 export type CheckNameAvailabilityError = AzureOpError;

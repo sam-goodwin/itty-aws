@@ -29,7 +29,7 @@ export class NotFound
 
 /** * `api_key` - API Key * `oauth` - OAuth */
 export type MCPAuthTypeEnum = "api_key" | "oauth";
-export const MCPAuthTypeEnum = S.String;
+const MCPAuthTypeEnum = S.String;
 
 export interface CreateMcpServerInstallationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -39,7 +39,7 @@ export interface CreateMcpServerInstallationRequest {
   auth_type?: MCPAuthTypeEnum | (string & {});
   is_enabled?: boolean;
 }
-export const CreateMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     display_name: S.optional(S.String),
@@ -59,7 +59,7 @@ export const CreateMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `personal` - Personal * `shared` - Shared */
 export type MCPServerInstallationScopeEnum = "personal" | "shared";
-export const MCPServerInstallationScopeEnum = S.String;
+const MCPServerInstallationScopeEnum = S.String;
 
 export interface MCPServerInstallation {
   id?: string;
@@ -86,7 +86,7 @@ export interface MCPServerInstallation {
   created_at?: string;
   updated_at?: string | null;
 }
-export const MCPServerInstallation = /*@__PURE__*/ S.suspend(() =>
+const MCPServerInstallation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     template_id: S.optional(S.NullOr(S.String)),
@@ -113,7 +113,7 @@ export const MCPServerInstallation = /*@__PURE__*/ S.suspend(() =>
 export type CreateMcpServerInstallationsCallToolRequestArgumentsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateMcpServerInstallationsCallToolRequestArgumentsMap = /*@__PURE__*/ S.Record(
+const CreateMcpServerInstallationsCallToolRequestArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateMcpServerInstallationsCallToolRequestArgumentsMap>;
@@ -128,7 +128,7 @@ export interface CreateMcpServerInstallationsCallToolRequest {
   /** Arguments object passed straight to the tool, matching its input schema. */
   arguments?: CreateMcpServerInstallationsCallToolRequestArgumentsMap;
 }
-export const CreateMcpServerInstallationsCallToolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMcpServerInstallationsCallToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -146,18 +146,18 @@ export const CreateMcpServerInstallationsCallToolRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateMcpServerInstallationsCallToolRequest>;
 
 export type CallToolResponseContentItemMap = { [key: string]: unknown | undefined };
-export const CallToolResponseContentItemMap =
+const CallToolResponseContentItemMap =
   CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<CallToolResponseContentItemMap>;
 
 /** MCP content blocks the tool returned, in upstream order. */
 export type CallToolResponseContentList = Array<CallToolResponseContentItemMap>;
-export const CallToolResponseContentList = /*@__PURE__*/ S.Array(
+const CallToolResponseContentList = /*@__PURE__*/ S.Array(
   CallToolResponseContentItemMap,
 ) as any as S.Schema<CallToolResponseContentList>;
 
 /** Structured result the tool returned alongside `content`, when it provides one. */
 export type CallToolResponseStructuredContentMap = { [key: string]: unknown | undefined };
-export const CallToolResponseStructuredContentMap =
+const CallToolResponseStructuredContentMap =
   CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<CallToolResponseStructuredContentMap>;
 
 export interface CallToolResponse {
@@ -168,7 +168,7 @@ export interface CallToolResponse {
   /** Structured result the tool returned alongside `content`, when it provides one. */
   structured_content?: CallToolResponseStructuredContentMap | null;
 }
-export const CallToolResponse = /*@__PURE__*/ S.suspend(() =>
+const CallToolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: CallToolResponseContentList,
     is_error: S.Boolean,
@@ -186,7 +186,7 @@ export interface CreateMcpServerInstallationsProxyRequest {
   auth_type?: MCPAuthTypeEnum | (string & {});
   is_enabled?: boolean;
 }
-export const CreateMcpServerInstallationsProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMcpServerInstallationsProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -206,7 +206,7 @@ export const CreateMcpServerInstallationsProxyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateMcpServerInstallationsProxyRequest>;
 
 export interface CreateMcpServerInstallationsProxyResponse {}
-export const CreateMcpServerInstallationsProxyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMcpServerInstallationsProxyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateMcpServerInstallationsProxyResponse",
@@ -218,7 +218,7 @@ export interface CreateMcpServerInstallationsShareRequest {
   /** A UUID string identifying this mcp server installation. */
   id: string;
 }
-export const CreateMcpServerInstallationsShareRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMcpServerInstallationsShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -239,7 +239,7 @@ export interface GetMcpServerInstallationRequest {
   /** A UUID string identifying this mcp server installation. */
   id: string;
 }
-export const GetMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -258,7 +258,7 @@ export interface GetMcpServerInstallationsAvailableToolRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetMcpServerInstallationsAvailableToolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpServerInstallationsAvailableToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -274,17 +274,17 @@ export const GetMcpServerInstallationsAvailableToolRequest = /*@__PURE__*/ S.sus
 
 /** JSON Schema for the tool's arguments. */
 export type AvailableToolInputSchemaMap = { [key: string]: unknown | undefined };
-export const AvailableToolInputSchemaMap =
+const AvailableToolInputSchemaMap =
   CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<AvailableToolInputSchemaMap>;
 
 /** MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only -- policy may escalate them, never loosen them. */
 export type AvailableToolAnnotationsMap = { [key: string]: unknown | undefined };
-export const AvailableToolAnnotationsMap =
+const AvailableToolAnnotationsMap =
   CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<AvailableToolAnnotationsMap>;
 
 /** * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
 export type MCPToolApprovalStateEnum = "approved" | "needs_approval" | "do_not_use";
-export const MCPToolApprovalStateEnum = S.String;
+const MCPToolApprovalStateEnum = S.String;
 
 export interface AvailableTool {
   /** Tool name as the upstream server reports it. */
@@ -298,7 +298,7 @@ export interface AvailableTool {
   /** Effective gateway state. `needs_approval` tools are listed so callers can explain why a call would fail rather than pretending the capability is missing. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
   approval_state: MCPToolApprovalStateEnum;
 }
-export const AvailableTool = /*@__PURE__*/ S.suspend(() =>
+const AvailableTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.String,
@@ -310,7 +310,7 @@ export const AvailableTool = /*@__PURE__*/ S.suspend(() =>
 
 /** Callable tools on this server. */
 export type AvailableServerToolsList = Array<AvailableTool>;
-export const AvailableServerToolsList = /*@__PURE__*/ S.Array(
+const AvailableServerToolsList = /*@__PURE__*/ S.Array(
   AvailableTool,
 ) as any as S.Schema<AvailableServerToolsList>;
 
@@ -324,7 +324,7 @@ export interface AvailableServer {
   /** Callable tools on this server. */
   tools: AvailableServerToolsList;
 }
-export const AvailableServer = /*@__PURE__*/ S.suspend(() =>
+const AvailableServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.String,
     name: S.String,
@@ -335,7 +335,7 @@ export const AvailableServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Connected servers the caller can reach. */
 export type AvailableToolsResponseServersList = Array<AvailableServer>;
-export const AvailableToolsResponseServersList = /*@__PURE__*/ S.Array(
+const AvailableToolsResponseServersList = /*@__PURE__*/ S.Array(
   AvailableServer,
 ) as any as S.Schema<AvailableToolsResponseServersList>;
 
@@ -343,7 +343,7 @@ export interface AvailableToolsResponse {
   /** Connected servers the caller can reach. */
   servers: AvailableToolsResponseServersList;
 }
-export const AvailableToolsResponse = /*@__PURE__*/ S.suspend(() =>
+const AvailableToolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servers: AvailableToolsResponseServersList,
   }),
@@ -355,7 +355,7 @@ export interface GetMcpServerInstallationsToolRequest {
   /** A UUID string identifying this mcp server installation. */
   id: string;
 }
-export const GetMcpServerInstallationsToolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpServerInstallationsToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -389,7 +389,7 @@ export interface MCPServerInstallationTool {
   created_at?: string;
   updated_at?: string | null;
 }
-export const MCPServerInstallationTool = /*@__PURE__*/ S.suspend(() =>
+const MCPServerInstallationTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     tool_name: S.optional(S.String),
@@ -410,7 +410,7 @@ export const MCPServerInstallationTool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MCPServerInstallationTool>;
 
 export type PaginatedMCPServerInstallationToolListResultsList = Array<MCPServerInstallationTool>;
-export const PaginatedMCPServerInstallationToolListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMCPServerInstallationToolListResultsList = /*@__PURE__*/ S.Array(
   MCPServerInstallationTool,
 ) as any as S.Schema<PaginatedMCPServerInstallationToolListResultsList>;
 
@@ -420,7 +420,7 @@ export interface PaginatedMCPServerInstallationToolList {
   previous?: string | null;
   results?: PaginatedMCPServerInstallationToolListResultsList;
 }
-export const PaginatedMCPServerInstallationToolList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMCPServerInstallationToolList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -439,7 +439,7 @@ export interface ListMcpServerInstallationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListMcpServerInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMcpServerInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -456,7 +456,7 @@ export const ListMcpServerInstallationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMcpServerInstallationsRequest>;
 
 export type PaginatedMCPServerInstallationListResultsList = Array<MCPServerInstallation>;
-export const PaginatedMCPServerInstallationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMCPServerInstallationListResultsList = /*@__PURE__*/ S.Array(
   MCPServerInstallation,
 ) as any as S.Schema<PaginatedMCPServerInstallationListResultsList>;
 
@@ -466,7 +466,7 @@ export interface PaginatedMCPServerInstallationList {
   previous?: string | null;
   results?: PaginatedMCPServerInstallationListResultsList;
 }
-export const PaginatedMCPServerInstallationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMCPServerInstallationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -480,7 +480,7 @@ export const PaginatedMCPServerInstallationList = /*@__PURE__*/ S.suspend(() =>
 export type McpServerInstallationsAuthorizeRetrieveRequestInstallSource =
   | "posthog"
   | "posthog-code";
-export const McpServerInstallationsAuthorizeRetrieveRequestInstallSource = S.String;
+const McpServerInstallationsAuthorizeRetrieveRequestInstallSource = S.String;
 
 export interface McpServerInstallationsAuthorizeRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -493,7 +493,7 @@ export interface McpServerInstallationsAuthorizeRetrieveRequest {
   return_path?: string;
   template_id?: string;
 }
-export const McpServerInstallationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const McpServerInstallationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     install_source: S.optional(
@@ -515,7 +515,7 @@ export const McpServerInstallationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<McpServerInstallationsAuthorizeRetrieveRequest>;
 
 export interface McpServerInstallationsAuthorizeRetrieveResponse {}
-export const McpServerInstallationsAuthorizeRetrieveResponse =
+const McpServerInstallationsAuthorizeRetrieveResponse =
   CreateMcpServerInstallationsProxyResponse as any as S.Schema<McpServerInstallationsAuthorizeRetrieveResponse>;
 
 export interface McpServerInstallationsDestroyRequest {
@@ -524,7 +524,7 @@ export interface McpServerInstallationsDestroyRequest {
   /** A UUID string identifying this mcp server installation. */
   id: string;
 }
-export const McpServerInstallationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const McpServerInstallationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -540,24 +540,24 @@ export const McpServerInstallationsDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<McpServerInstallationsDestroyRequest>;
 
 export interface McpServerInstallationsDestroyResponse {}
-export const McpServerInstallationsDestroyResponse =
+const McpServerInstallationsDestroyResponse =
   CreateMcpServerInstallationsProxyResponse as any as S.Schema<McpServerInstallationsDestroyResponse>;
 
 /** * `api_key` - api_key * `oauth` - oauth */
 export type InstallCustomAuthTypeEnum = "api_key" | "oauth";
-export const InstallCustomAuthTypeEnum = S.String;
+const InstallCustomAuthTypeEnum = S.String;
 
 /** * `posthog` - posthog * `posthog-code` - posthog-code */
 export type InstallSourceEnum = "posthog" | "posthog-code";
-export const InstallSourceEnum = S.String;
+const InstallSourceEnum = S.String;
 
 /** * `personal` - personal * `shared` - shared */
 export type MCPInstallationScopeEnum = "personal" | "shared";
-export const MCPInstallationScopeEnum = S.String;
+const MCPInstallationScopeEnum = S.String;
 
 /** * `personal` - Personal * `team` - Team */
 export type MCPAgentGrantScopeEnum = "personal" | "team";
-export const MCPAgentGrantScopeEnum = S.String;
+const MCPAgentGrantScopeEnum = S.String;
 
 export interface McpServerInstallationsInstallCustomCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -580,7 +580,7 @@ export interface McpServerInstallationsInstallCustomCreateRequest {
   /** In-app path to land back on after the OAuth round-trip. Must be a same-app relative path. */
   return_path?: string;
 }
-export const McpServerInstallationsInstallCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const McpServerInstallationsInstallCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -610,7 +610,7 @@ export const McpServerInstallationsInstallCustomCreateRequest = /*@__PURE__*/ S.
 export interface OAuthRedirectResponse {
   redirect_url?: string;
 }
-export const OAuthRedirectResponse = /*@__PURE__*/ S.suspend(() =>
+const OAuthRedirectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirect_url: S.optional(S.String),
   }),
@@ -632,7 +632,7 @@ export interface McpServerInstallationsInstallTemplateCreateRequest {
   /** In-app path to land back on after the OAuth round-trip. Must be a same-app relative path. */
   return_path?: string;
 }
-export const McpServerInstallationsInstallTemplateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const McpServerInstallationsInstallTemplateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     template_id: S.optional(S.String),
@@ -664,7 +664,7 @@ export interface McpServerInstallationsToolsRefreshCreateRequest {
   auth_type?: MCPAuthTypeEnum | (string & {});
   is_enabled?: boolean;
 }
-export const McpServerInstallationsToolsRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const McpServerInstallationsToolsRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -689,7 +689,7 @@ export interface McpServerInstallationsUnshareCreateRequest {
   /** A UUID string identifying this mcp server installation. */
   id: string;
 }
-export const McpServerInstallationsUnshareCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const McpServerInstallationsUnshareCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -714,7 +714,7 @@ export interface UpdateMcpServerInstallationRequest {
   auth_type?: MCPAuthTypeEnum | (string & {});
   is_enabled?: boolean;
 }
-export const UpdateMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMcpServerInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -742,7 +742,7 @@ export interface UpdateMcpServerInstallationsPartialRequest {
   description?: string;
   is_enabled?: boolean;
 }
-export const UpdateMcpServerInstallationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMcpServerInstallationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -762,7 +762,7 @@ export const UpdateMcpServerInstallationsPartialRequest = /*@__PURE__*/ S.suspen
 
 /** * `approved` - approved * `needs_approval` - needs_approval * `do_not_use` - do_not_use */
 export type ToolApprovalUpdateApprovalStateEnum = "approved" | "needs_approval" | "do_not_use";
-export const ToolApprovalUpdateApprovalStateEnum = S.String;
+const ToolApprovalUpdateApprovalStateEnum = S.String;
 
 export interface UpdateMcpServerInstallationsToolsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -772,7 +772,7 @@ export interface UpdateMcpServerInstallationsToolsPartialRequest {
   tool_name: string;
   approval_state?: ToolApprovalUpdateApprovalStateEnum | (string & {});
 }
-export const UpdateMcpServerInstallationsToolsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMcpServerInstallationsToolsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

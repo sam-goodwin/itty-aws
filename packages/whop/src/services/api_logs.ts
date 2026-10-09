@@ -19,10 +19,10 @@ export class Forbidden
   ) {}
 
 export type ListApiLogsRequestHttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-export const ListApiLogsRequestHttpMethod = S.String;
+const ListApiLogsRequestHttpMethod = S.String;
 
 export type ListApiLogsRequestStatus = "success" | "error";
-export const ListApiLogsRequestStatus = S.String;
+const ListApiLogsRequestStatus = S.String;
 
 export interface ListApiLogsRequest {
   /** The account (biz_*) whose API logs to list. Defaults to the authenticated account. */
@@ -48,7 +48,7 @@ export interface ListApiLogsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListApiLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     created_after: S.optional(S.String.pipe(T.Query())),
@@ -65,10 +65,10 @@ export const ListApiLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApiLogsRequest" }) as any as S.Schema<ListApiLogsRequest>;
 
 export type ListApiLogsResponseDataItemHttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-export const ListApiLogsResponseDataItemHttpMethod = S.String;
+const ListApiLogsResponseDataItemHttpMethod = S.String;
 
 export type ListApiLogsResponseDataItemStatus = "success" | "error";
-export const ListApiLogsResponseDataItemStatus = S.String;
+const ListApiLogsResponseDataItemStatus = S.String;
 
 export interface ListApiLogsResponseDataItem {
   api_key_id?: string | null;
@@ -84,7 +84,7 @@ export interface ListApiLogsResponseDataItem {
   status_code?: number | null;
   user_agent?: string | null;
 }
-export const ListApiLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListApiLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_key_id: S.optional(S.NullOr(S.String)),
     created_at: S.String,
@@ -104,7 +104,7 @@ export const ListApiLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApiLogsResponseDataItem>;
 
 export type ListApiLogsResponseDataList = Array<ListApiLogsResponseDataItem>;
-export const ListApiLogsResponseDataList = /*@__PURE__*/ S.Array(
+const ListApiLogsResponseDataList = /*@__PURE__*/ S.Array(
   ListApiLogsResponseDataItem,
 ) as any as S.Schema<ListApiLogsResponseDataList>;
 
@@ -114,7 +114,7 @@ export interface ListApiLogsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListApiLogsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListApiLogsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -129,7 +129,7 @@ export interface ListApiLogsResponse {
   data: ListApiLogsResponseDataList;
   page_info: ListApiLogsResponsePageInfo;
 }
-export const ListApiLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApiLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListApiLogsResponseDataList,
     page_info: ListApiLogsResponsePageInfo,

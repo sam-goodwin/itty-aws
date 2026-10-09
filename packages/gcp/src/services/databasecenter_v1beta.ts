@@ -81,7 +81,7 @@ export interface AggregateFleetV1betaRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `scope`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
   parent?: string;
 }
-export const AggregateFleetV1betaRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateFleetV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -107,7 +107,7 @@ export type DimensionManagementTypeEnum =
   | "MANAGEMENT_TYPE_UNSPECIFIED"
   | "MANAGEMENT_TYPE_GCP_MANAGED"
   | "MANAGEMENT_TYPE_SELF_MANAGED";
-export const DimensionManagementTypeEnum = S.String;
+const DimensionManagementTypeEnum = S.String;
 
 export type DimensionSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_UNSPECIFIED"
@@ -119,14 +119,14 @@ export type DimensionSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_RESERVATION"
   | "SUB_RESOURCE_TYPE_DATASET"
   | "SUB_RESOURCE_TYPE_OTHER";
-export const DimensionSubResourceTypeEnum = S.String;
+const DimensionSubResourceTypeEnum = S.String;
 
 export type DimensionEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
   | "EDITION_STANDARD";
-export const DimensionEditionEnum = S.String;
+const DimensionEditionEnum = S.String;
 
 export type DimensionProductTypeEnum =
   | "PRODUCT_TYPE_UNSPECIFIED"
@@ -140,7 +140,7 @@ export type DimensionProductTypeEnum =
   | "PRODUCT_TYPE_ORACLE_ON_GCP"
   | "PRODUCT_TYPE_BIGQUERY"
   | "PRODUCT_TYPE_OTHER";
-export const DimensionProductTypeEnum = S.String;
+const DimensionProductTypeEnum = S.String;
 
 export type DimensionResourceCategoryEnum =
   | "RESOURCE_CATEGORY_UNSPECIFIED"
@@ -149,7 +149,7 @@ export type DimensionResourceCategoryEnum =
   | "DATABASE"
   | "DATASET"
   | "RESERVATION";
-export const DimensionResourceCategoryEnum = S.String;
+const DimensionResourceCategoryEnum = S.String;
 
 export type DimensionProductEngineEnum =
   | "ENGINE_UNSPECIFIED"
@@ -167,7 +167,7 @@ export type DimensionProductEngineEnum =
   | "ENGINE_ADB_SERVERLESS_ORACLE"
   | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
   | "ENGINE_OTHER";
-export const DimensionProductEngineEnum = S.String;
+const DimensionProductEngineEnum = S.String;
 
 /** Dimension used to aggregate the fleet. */
 export interface Dimension {
@@ -210,7 +210,7 @@ export interface Dimension {
   /** Engine refers to underlying database binary running in an instance. */
   productEngine?: DimensionProductEngineEnum;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelKey: S.optional(S.String),
     resourceType: S.optional(S.String),
@@ -235,7 +235,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 export type DimensionList = Array<Dimension>;
-export const DimensionList = /*@__PURE__*/ S.Array(Dimension) as any as S.Schema<DimensionList>;
+const DimensionList = /*@__PURE__*/ S.Array(Dimension) as any as S.Schema<DimensionList>;
 
 export type ProductEngineEnum =
   | "ENGINE_UNSPECIFIED"
@@ -253,7 +253,7 @@ export type ProductEngineEnum =
   | "ENGINE_ADB_SERVERLESS_ORACLE"
   | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
   | "ENGINE_OTHER";
-export const ProductEngineEnum = S.String;
+const ProductEngineEnum = S.String;
 
 export type ProductTypeEnum =
   | "PRODUCT_TYPE_UNSPECIFIED"
@@ -267,7 +267,7 @@ export type ProductTypeEnum =
   | "PRODUCT_TYPE_ORACLE_ON_GCP"
   | "PRODUCT_TYPE_BIGQUERY"
   | "PRODUCT_TYPE_OTHER";
-export const ProductTypeEnum = S.String;
+const ProductTypeEnum = S.String;
 
 /** Product specification for databasecenter resources. */
 export interface Product {
@@ -280,7 +280,7 @@ export interface Product {
   /** Optional. Type of specific database product. It could be CloudSQL, AlloyDB etc.. */
   type?: ProductTypeEnum | (string & {});
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engine: S.optional(ProductEngineEnum),
     minorVersion: S.optional(S.String),
@@ -300,7 +300,7 @@ export interface ResourceDetails {
   /** Specifies where the resource is created. For Google Cloud resources, it is the full name of the project. */
   container?: string;
 }
-export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     product: S.optional(Product),
@@ -310,7 +310,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
 
 export type ResourceDetailsList = Array<ResourceDetails>;
-export const ResourceDetailsList = /*@__PURE__*/ S.Array(
+const ResourceDetailsList = /*@__PURE__*/ S.Array(
   ResourceDetails,
 ) as any as S.Schema<ResourceDetailsList>;
 
@@ -321,7 +321,7 @@ export interface DeltaDetails {
   /** Details of resources that have increased. */
   increasedResources?: ResourceDetailsList;
 }
-export const DeltaDetails = /*@__PURE__*/ S.suspend(() =>
+const DeltaDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     decreasedResources: S.optional(ResourceDetailsList),
     increasedResources: S.optional(ResourceDetailsList),
@@ -339,7 +339,7 @@ export interface AggregateFleetRow {
   /** Optional. Delta counts and details of resources which were added to/deleted from fleet. */
   deltaDetails?: DeltaDetails;
 }
-export const AggregateFleetRow = /*@__PURE__*/ S.suspend(() =>
+const AggregateFleetRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcesCount: S.optional(S.Number),
     dimension: S.optional(DimensionList),
@@ -349,12 +349,12 @@ export const AggregateFleetRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AggregateFleetRow" }) as any as S.Schema<AggregateFleetRow>;
 
 export type AggregateFleetRowList = Array<AggregateFleetRow>;
-export const AggregateFleetRowList = /*@__PURE__*/ S.Array(
+const AggregateFleetRowList = /*@__PURE__*/ S.Array(
   AggregateFleetRow,
 ) as any as S.Schema<AggregateFleetRowList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The response message to aggregate a fleet by some group by fields. */
 export interface AggregateFleetResponse {
@@ -371,7 +371,7 @@ export interface AggregateFleetResponse {
   /** Count of all resources in the fleet. This includes counts from all pages. */
   resourceTotalCount?: number;
 }
-export const AggregateFleetResponse = /*@__PURE__*/ S.suspend(() =>
+const AggregateFleetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -486,12 +486,12 @@ export type SignalTypeGroupSignalTypesItemEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-export const SignalTypeGroupSignalTypesItemEnum = S.String;
+const SignalTypeGroupSignalTypesItemEnum = S.String;
 
 export type SignalTypeGroupSignalTypesItemEnumList = Array<
   SignalTypeGroupSignalTypesItemEnum | (string & {})
 >;
-export const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ S.Array(
+const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ S.Array(
   SignalTypeGroupSignalTypesItemEnum,
 ) as any as S.Schema<SignalTypeGroupSignalTypesItemEnumList>;
 
@@ -502,7 +502,7 @@ export interface SignalTypeGroup {
   /** Required. The display name of a signal group. */
   displayName?: string;
 }
-export const SignalTypeGroup = /*@__PURE__*/ S.suspend(() =>
+const SignalTypeGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalTypes: S.optional(SignalTypeGroupSignalTypesItemEnumList),
     displayName: S.optional(S.String),
@@ -510,7 +510,7 @@ export const SignalTypeGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalTypeGroup" }) as any as S.Schema<SignalTypeGroup>;
 
 export type SignalTypeGroupList = Array<SignalTypeGroup>;
-export const SignalTypeGroupList = /*@__PURE__*/ S.Array(
+const SignalTypeGroupList = /*@__PURE__*/ S.Array(
   SignalTypeGroup,
 ) as any as S.Schema<SignalTypeGroupList>;
 
@@ -523,7 +523,7 @@ export interface Databasecenter_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Databasecenter_Date = /*@__PURE__*/ S.suspend(() =>
+const Databasecenter_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -542,7 +542,7 @@ export interface AggregateIssueStatsRequest {
   /** Optional. The baseline date w.r.t. which the delta counts are calculated. If not set, delta counts are not included in the response and the response indicates the current state of the fleet. */
   baselineDate?: Databasecenter_Date;
 }
-export const AggregateIssueStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateIssueStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalTypeGroups: S.optional(SignalTypeGroupList),
     parent: S.optional(S.String),
@@ -557,7 +557,7 @@ export interface AggregateIssueStatsV1betaRequest {
   /** Request body */
   body?: AggregateIssueStatsRequest;
 }
-export const AggregateIssueStatsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateIssueStatsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AggregateIssueStatsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -578,7 +578,7 @@ export type IssueStatsIssueSeverityEnum =
   | "ISSUE_SEVERITY_HIGH"
   | "ISSUE_SEVERITY_CRITICAL"
   | "ISSUE_SEVERITY_IRRELEVANT";
-export const IssueStatsIssueSeverityEnum = S.String;
+const IssueStatsIssueSeverityEnum = S.String;
 
 export type IssueStatsSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
@@ -684,7 +684,7 @@ export type IssueStatsSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-export const IssueStatsSignalTypeEnum = S.String;
+const IssueStatsSignalTypeEnum = S.String;
 
 /** IssueStats holds stats for a particular signal category. */
 export interface IssueStats {
@@ -697,7 +697,7 @@ export interface IssueStats {
   /** Optional. Delta counts and details of resources for which issue was raised or fixed. */
   deltaDetails?: DeltaDetails;
 }
-export const IssueStats = /*@__PURE__*/ S.suspend(() =>
+const IssueStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueSeverity: S.optional(IssueStatsIssueSeverityEnum),
     signalType: S.optional(IssueStatsSignalTypeEnum),
@@ -707,7 +707,7 @@ export const IssueStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueStats" }) as any as S.Schema<IssueStats>;
 
 export type IssueStatsList = Array<IssueStats>;
-export const IssueStatsList = /*@__PURE__*/ S.Array(IssueStats) as any as S.Schema<IssueStatsList>;
+const IssueStatsList = /*@__PURE__*/ S.Array(IssueStats) as any as S.Schema<IssueStatsList>;
 
 /** IssueGroupStats refers to stats for a particulare combination of relevant health issues of database resources. */
 export interface IssueGroupStats {
@@ -724,7 +724,7 @@ export interface IssueGroupStats {
   /** The number of resource groups from the total groups as defined above that are healthy with respect to all of the specified issues. */
   healthyResourceGroupsCount?: number;
 }
-export const IssueGroupStats = /*@__PURE__*/ S.suspend(() =>
+const IssueGroupStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcesCount: S.optional(S.Number),
     displayName: S.optional(S.String),
@@ -736,7 +736,7 @@ export const IssueGroupStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueGroupStats" }) as any as S.Schema<IssueGroupStats>;
 
 export type IssueGroupStatsList = Array<IssueGroupStats>;
-export const IssueGroupStatsList = /*@__PURE__*/ S.Array(
+const IssueGroupStatsList = /*@__PURE__*/ S.Array(
   IssueGroupStats,
 ) as any as S.Schema<IssueGroupStatsList>;
 
@@ -751,7 +751,7 @@ export interface AggregateIssueStatsResponse {
   /** List of issue group stats where each group contains stats for resources having a particular combination of relevant issues. */
   issueGroupStats?: IssueGroupStatsList;
 }
-export const AggregateIssueStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const AggregateIssueStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalResourcesCount: S.optional(S.Number),
     totalResourceGroupsCount: S.optional(S.Number),
@@ -773,7 +773,7 @@ export interface AggregateQueryStatsRequest {
   /** Optional. The expression to order the results by. Example: `order_by="execution_count"` Example: `order_by="execution_count desc"` Supported order by fields are `execution_count`, `rows_processed`, `total_cpu_time`, `avg_cpu_time`. */
   orderBy?: string;
 }
-export const AggregateQueryStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateQueryStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number),
     filter: S.optional(S.String),
@@ -790,7 +790,7 @@ export interface AggregateQueryStatsFoldersRequest {
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-export const AggregateQueryStatsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateQueryStatsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
@@ -814,7 +814,7 @@ export interface ResourceId {
   /** The full resource name of the resource. */
   fullResourceName?: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
+const ResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.optional(Product),
     resourceType: S.optional(S.String),
@@ -823,14 +823,14 @@ export const ResourceId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
 
 export type ResourceIdList = Array<ResourceId>;
-export const ResourceIdList = /*@__PURE__*/ S.Array(ResourceId) as any as S.Schema<ResourceIdList>;
+const ResourceIdList = /*@__PURE__*/ S.Array(ResourceId) as any as S.Schema<ResourceIdList>;
 
 export type QueryMetricsMetricsWindowEnum =
   | "METRICS_WINDOW_UNSPECIFIED"
   | "LAST_ONE_DAY"
   | "LAST_ONE_WEEK"
   | "LAST_TWO_WEEKS";
-export const QueryMetricsMetricsWindowEnum = S.String;
+const QueryMetricsMetricsWindowEnum = S.String;
 
 /** QueryMetrics contains the metrics related to the query execution. */
 export interface QueryMetrics {
@@ -845,7 +845,7 @@ export interface QueryMetrics {
   /** The window over which the metrics are aggregated. */
   metricsWindow?: QueryMetricsMetricsWindowEnum;
 }
-export const QueryMetrics = /*@__PURE__*/ S.suspend(() =>
+const QueryMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avgCpuTime: S.optional(S.String),
     executionCount: S.optional(S.String),
@@ -868,7 +868,7 @@ export interface InefficientQueryInfo {
   /** Name of the database where index is required. For example, "db1", which is the name of the database present in the instance. */
   database?: string;
 }
-export const InefficientQueryInfo = /*@__PURE__*/ S.suspend(() =>
+const InefficientQueryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlIndexStatement: S.optional(S.String),
     impactedQueriesCount: S.optional(S.String),
@@ -893,7 +893,7 @@ export interface QueryStats {
   /** The query string is normalized query without any PII data. */
   normalizedQuery?: string;
 }
-export const QueryStats = /*@__PURE__*/ S.suspend(() =>
+const QueryStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryHash: S.optional(S.String),
     resourceType: S.optional(S.String),
@@ -905,7 +905,7 @@ export const QueryStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryStats" }) as any as S.Schema<QueryStats>;
 
 export type QueryStatsList = Array<QueryStats>;
-export const QueryStatsList = /*@__PURE__*/ S.Array(QueryStats) as any as S.Schema<QueryStatsList>;
+const QueryStatsList = /*@__PURE__*/ S.Array(QueryStats) as any as S.Schema<QueryStatsList>;
 
 /** QueryStatsInfo contains the aggregated and detailed query stats for a particular combination of relevant query stats for queries having same normalized query. */
 export interface QueryStatsInfo {
@@ -914,7 +914,7 @@ export interface QueryStatsInfo {
   /** List of query stats for the resources in the group. This stats is stats at resource level for the resources having same normalized query. */
   queryStats?: QueryStatsList;
 }
-export const QueryStatsInfo = /*@__PURE__*/ S.suspend(() =>
+const QueryStatsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregatedQueryStats: S.optional(QueryStats),
     queryStats: S.optional(QueryStatsList),
@@ -922,7 +922,7 @@ export const QueryStatsInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryStatsInfo" }) as any as S.Schema<QueryStatsInfo>;
 
 export type QueryStatsInfoList = Array<QueryStatsInfo>;
-export const QueryStatsInfoList = /*@__PURE__*/ S.Array(
+const QueryStatsInfoList = /*@__PURE__*/ S.Array(
   QueryStatsInfo,
 ) as any as S.Schema<QueryStatsInfoList>;
 
@@ -935,7 +935,7 @@ export interface AggregateQueryStatsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const AggregateQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const AggregateQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     queryStats: S.optional(QueryStatsInfoList),
@@ -951,7 +951,7 @@ export interface AggregateQueryStatsOrganizationsRequest {
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-export const AggregateQueryStatsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateQueryStatsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
@@ -972,7 +972,7 @@ export interface AggregateQueryStatsProjectsRequest {
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-export const AggregateQueryStatsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateQueryStatsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
@@ -1091,7 +1091,7 @@ export type SignalFilterSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-export const SignalFilterSignalTypeEnum = S.String;
+const SignalFilterSignalTypeEnum = S.String;
 
 export type SignalFilterSignalStatusEnum =
   | "SIGNAL_STATUS_UNSPECIFIED"
@@ -1099,7 +1099,7 @@ export type SignalFilterSignalStatusEnum =
   | "SIGNAL_STATUS_OK"
   | "SIGNAL_STATUS_ISSUE"
   | "SIGNAL_STATUS_NOT_ENABLED";
-export const SignalFilterSignalStatusEnum = S.String;
+const SignalFilterSignalStatusEnum = S.String;
 
 /** A filter for Signals. If signal_type is left unset, all signals should be returned. For example, the following filter returns all issues. signal_filter: { signal_status: SIGNAL_STATUS_ISSUE; } Another example, the following filter returns issues of the given type: signal_filter: { type: SIGNAL_TYPE_NO_PROMOTABLE_REPLICA signal_status: ISSUE } If signal_status is left unset or set to SIGNAL_STATE_UNSPECIFIED, an error should be returned. */
 export interface SignalFilter {
@@ -1108,7 +1108,7 @@ export interface SignalFilter {
   /** Optional. Represents the status of the Signal for which the filter is for. */
   signalStatus?: SignalFilterSignalStatusEnum | (string & {});
 }
-export const SignalFilter = /*@__PURE__*/ S.suspend(() =>
+const SignalFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalType: S.optional(SignalFilterSignalTypeEnum),
     signalStatus: S.optional(SignalFilterSignalStatusEnum),
@@ -1116,9 +1116,7 @@ export const SignalFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalFilter" }) as any as S.Schema<SignalFilter>;
 
 export type SignalFilterList = Array<SignalFilter>;
-export const SignalFilterList = /*@__PURE__*/ S.Array(
-  SignalFilter,
-) as any as S.Schema<SignalFilterList>;
+const SignalFilterList = /*@__PURE__*/ S.Array(SignalFilter) as any as S.Schema<SignalFilterList>;
 
 export type SignalProductsFiltersSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
@@ -1224,10 +1222,10 @@ export type SignalProductsFiltersSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-export const SignalProductsFiltersSignalTypeEnum = S.String;
+const SignalProductsFiltersSignalTypeEnum = S.String;
 
 export type ProductList = Array<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** SignalProductsFilters represents a signal and list of supported products. */
 export interface SignalProductsFilters {
@@ -1236,7 +1234,7 @@ export interface SignalProductsFilters {
   /** Optional. Product type of the resource. The version of the product will be ignored in filtering. */
   products?: ProductList;
 }
-export const SignalProductsFilters = /*@__PURE__*/ S.suspend(() =>
+const SignalProductsFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalType: S.optional(SignalProductsFiltersSignalTypeEnum),
     products: S.optional(ProductList),
@@ -1244,7 +1242,7 @@ export const SignalProductsFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalProductsFilters" }) as any as S.Schema<SignalProductsFilters>;
 
 export type SignalProductsFiltersList = Array<SignalProductsFilters>;
-export const SignalProductsFiltersList = /*@__PURE__*/ S.Array(
+const SignalProductsFiltersList = /*@__PURE__*/ S.Array(
   SignalProductsFilters,
 ) as any as S.Schema<SignalProductsFiltersList>;
 
@@ -1267,7 +1265,7 @@ export interface QueryDatabaseResourceGroupsRequest {
   /** Optional. Filters based on signal and product. The filter list will be ORed across pairs and ANDed within a signal and products pair. */
   signalProductsFilters?: SignalProductsFiltersList;
 }
-export const QueryDatabaseResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryDatabaseResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String),
     parent: S.optional(S.String),
@@ -1286,7 +1284,7 @@ export interface QueryDatabaseResourceGroupsV1betaRequest {
   /** Request body */
   body?: QueryDatabaseResourceGroupsRequest;
 }
-export const QueryDatabaseResourceGroupsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryDatabaseResourceGroupsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(QueryDatabaseResourceGroupsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1304,11 +1302,9 @@ export type MaintenanceInfoPossibleFailureReasonsItemEnum =
   | "POSSIBLE_FAILURE_REASON_UNSPECIFIED"
   | "POSSIBLE_FAILURE_REASON_DENY_POLICY_CONFLICT"
   | "POSSIBLE_FAILURE_REASON_INSTANCE_IN_STOPPED_STATE";
-export const MaintenanceInfoPossibleFailureReasonsItemEnum = S.String;
-
 export type MaintenanceInfoPossibleFailureReasonsItemEnumList =
   Array<MaintenanceInfoPossibleFailureReasonsItemEnum>;
-export const MaintenanceInfoPossibleFailureReasonsItemEnumList =
+const MaintenanceInfoPossibleFailureReasonsItemEnumList =
   SignalTypeGroupSignalTypesItemEnumList as any as S.Schema<MaintenanceInfoPossibleFailureReasonsItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -1322,7 +1318,7 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     seconds: S.optional(S.Number),
@@ -1340,7 +1336,7 @@ export type ResourceMaintenanceScheduleDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const ResourceMaintenanceScheduleDayEnum = S.String;
+const ResourceMaintenanceScheduleDayEnum = S.String;
 
 export type ResourceMaintenanceSchedulePhaseEnum =
   | "PHASE_UNSPECIFIED"
@@ -1348,7 +1344,7 @@ export type ResourceMaintenanceSchedulePhaseEnum =
   | "PHASE_WEEK2"
   | "PHASE_WEEK5"
   | "PHASE_ANY";
-export const ResourceMaintenanceSchedulePhaseEnum = S.String;
+const ResourceMaintenanceSchedulePhaseEnum = S.String;
 
 /** Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some cases, when the maintenance can start. */
 export interface ResourceMaintenanceSchedule {
@@ -1359,7 +1355,7 @@ export interface ResourceMaintenanceSchedule {
   /** Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non production resources are usually part of early phase. For more details, refer to Cloud SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance */
   phase?: ResourceMaintenanceSchedulePhaseEnum;
 }
-export const ResourceMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
+const ResourceMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(TimeOfDay),
     day: S.optional(ResourceMaintenanceScheduleDayEnum),
@@ -1378,7 +1374,7 @@ export interface ResourceMaintenanceDenySchedule {
   /** Optional. The start date of the deny maintenance period. */
   startDate?: Databasecenter_Date;
 }
-export const ResourceMaintenanceDenySchedule = /*@__PURE__*/ S.suspend(() =>
+const ResourceMaintenanceDenySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(TimeOfDay),
     endDate: S.optional(Databasecenter_Date),
@@ -1389,7 +1385,7 @@ export const ResourceMaintenanceDenySchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceMaintenanceDenySchedule>;
 
 export type ResourceMaintenanceDenyScheduleList = Array<ResourceMaintenanceDenySchedule>;
-export const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ S.Array(
+const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ S.Array(
   ResourceMaintenanceDenySchedule,
 ) as any as S.Schema<ResourceMaintenanceDenyScheduleList>;
 
@@ -1399,7 +1395,7 @@ export type MaintenanceInfoStateEnum =
   | "MAINTENANCE_STATE_IN_PROGRESS"
   | "MAINTENANCE_STATE_COMPLETED"
   | "MAINTENANCE_STATE_FAILED";
-export const MaintenanceInfoStateEnum = S.String;
+const MaintenanceInfoStateEnum = S.String;
 
 /** Upcoming maintenance window for the database resource. */
 export interface UpcomingMaintenance {
@@ -1408,7 +1404,7 @@ export interface UpcomingMaintenance {
   /** Output only. End time of the upcoming maintenance. This is only populated for an engine, if end time is public for the engine. */
   endTime?: string;
 }
-export const UpcomingMaintenance = /*@__PURE__*/ S.suspend(() =>
+const UpcomingMaintenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -1434,7 +1430,7 @@ export interface MaintenanceInfo {
   /** Output only. The date when the maintenance version was released. */
   currentVersionReleaseDate?: Databasecenter_Date;
 }
-export const MaintenanceInfo = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     possibleFailureReasons: S.optional(MaintenanceInfoPossibleFailureReasonsItemEnumList),
     maintenanceSchedule: S.optional(ResourceMaintenanceSchedule),
@@ -1457,7 +1453,7 @@ export interface Tag {
   source?: string;
   key?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inherited: S.optional(S.Boolean),
     value: S.optional(S.String),
@@ -1467,14 +1463,14 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** BackupDRConfig to capture the backup and disaster recovery details of database resource. */
 export interface BackupDRConfig {
   /** Indicates if the resource is managed by BackupDR. */
   backupdrManaged?: boolean;
 }
-export const BackupDRConfig = /*@__PURE__*/ S.suspend(() =>
+const BackupDRConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupdrManaged: S.optional(S.Boolean),
   }),
@@ -1487,7 +1483,7 @@ export interface TypedValue {
   /** The value of the metric as double. */
   doubleValue?: number;
 }
-export const TypedValue = /*@__PURE__*/ S.suspend(() =>
+const TypedValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     int64Value: S.optional(S.String),
     doubleValue: S.optional(S.Number),
@@ -1501,7 +1497,7 @@ export interface MetricData {
   /** The time the metric was observed in the metric source service. */
   observationTime?: string;
 }
-export const MetricData = /*@__PURE__*/ S.suspend(() =>
+const MetricData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TypedValue),
     observationTime: S.optional(S.String),
@@ -1529,7 +1525,7 @@ export interface Metrics {
   /** Peak memory utilization observed for the resource. The value is a fraction between 0.0 and 1.0 (may momentarily exceed 1.0 in some cases). */
   peakMemoryUtilization?: MetricData;
 }
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
+const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeCount: S.optional(MetricData),
     peakStorageUtilization: S.optional(MetricData),
@@ -1556,7 +1552,7 @@ export interface MachineConfig {
   /** Optional. The number of Shards (if applicable). */
   shardCount?: number;
 }
-export const MachineConfig = /*@__PURE__*/ S.suspend(() =>
+const MachineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxReservationSlotCount: S.optional(S.String),
     memorySizeBytes: S.optional(S.String),
@@ -1573,7 +1569,7 @@ export type DatabaseResourceResourceCategoryEnum =
   | "DATABASE"
   | "DATASET"
   | "RESERVATION";
-export const DatabaseResourceResourceCategoryEnum = S.String;
+const DatabaseResourceResourceCategoryEnum = S.String;
 
 export type DatabaseResourceSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_UNSPECIFIED"
@@ -1585,7 +1581,7 @@ export type DatabaseResourceSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_RESERVATION"
   | "SUB_RESOURCE_TYPE_DATASET"
   | "SUB_RESOURCE_TYPE_OTHER";
-export const DatabaseResourceSubResourceTypeEnum = S.String;
+const DatabaseResourceSubResourceTypeEnum = S.String;
 
 /** Label is a key value pair applied to a resource. */
 export interface Label {
@@ -1596,7 +1592,7 @@ export interface Label {
   /** The value part of the label. */
   value?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     key: S.optional(S.String),
@@ -1605,7 +1601,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type LabelList = Array<Label>;
-export const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
+const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
 
 export type SignalSignalStatusEnum =
   | "SIGNAL_STATUS_UNSPECIFIED"
@@ -1613,7 +1609,7 @@ export type SignalSignalStatusEnum =
   | "SIGNAL_STATUS_OK"
   | "SIGNAL_STATUS_ISSUE"
   | "SIGNAL_STATUS_NOT_ENABLED";
-export const SignalSignalStatusEnum = S.String;
+const SignalSignalStatusEnum = S.String;
 
 export type SignalIssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
@@ -1622,7 +1618,7 @@ export type SignalIssueSeverityEnum =
   | "ISSUE_SEVERITY_HIGH"
   | "ISSUE_SEVERITY_CRITICAL"
   | "ISSUE_SEVERITY_IRRELEVANT";
-export const SignalIssueSeverityEnum = S.String;
+const SignalIssueSeverityEnum = S.String;
 
 export type SignalSignalTypeEnum =
   | "SIGNAL_TYPE_UNSPECIFIED"
@@ -1728,7 +1724,7 @@ export type SignalSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-export const SignalSignalTypeEnum = S.String;
+const SignalSignalTypeEnum = S.String;
 
 /** Compliances associated with signals. */
 export interface RegulatoryStandard {
@@ -1737,7 +1733,7 @@ export interface RegulatoryStandard {
   /** Version of the standard or benchmark, for example, 1.1. */
   version?: string;
 }
-export const RegulatoryStandard = /*@__PURE__*/ S.suspend(() =>
+const RegulatoryStandard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     standard: S.optional(S.String),
     version: S.optional(S.String),
@@ -1745,7 +1741,7 @@ export const RegulatoryStandard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegulatoryStandard" }) as any as S.Schema<RegulatoryStandard>;
 
 export type RegulatoryStandardList = Array<RegulatoryStandard>;
-export const RegulatoryStandardList = /*@__PURE__*/ S.Array(
+const RegulatoryStandardList = /*@__PURE__*/ S.Array(
   RegulatoryStandard,
 ) as any as S.Schema<RegulatoryStandardList>;
 
@@ -1760,7 +1756,7 @@ export interface SCCInfo {
   /** Name of the signal. */
   signal?: string;
 }
-export const SCCInfo = /*@__PURE__*/ S.suspend(() =>
+const SCCInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalUri: S.optional(S.String),
     regulatoryStandards: S.optional(RegulatoryStandardList),
@@ -1780,7 +1776,7 @@ export interface SubResource {
   /** Optional. Resource type associated with the sub resource where backup settings are configured. E.g. "spanner.googleapis.com/Database" for Spanner where backup retention is configured on database within an instance OPTIONAL */
   resourceType?: string;
 }
-export const SubResource = /*@__PURE__*/ S.suspend(() =>
+const SubResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.optional(S.String),
     product: S.optional(Product),
@@ -1800,7 +1796,7 @@ export interface RetentionSettingsInfo {
   /** Optional. Sub resource details associated with the backup configuration. */
   subResource?: SubResource;
 }
-export const RetentionSettingsInfo = /*@__PURE__*/ S.suspend(() =>
+const RetentionSettingsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantityBasedRetention: S.optional(S.Number),
     durationBasedRetention: S.optional(S.String),
@@ -1816,7 +1812,7 @@ export interface DeletionProtectionInfo {
   /** Optional. Sub resource details associated with the signal. */
   subResource?: SubResource;
 }
-export const DeletionProtectionInfo = /*@__PURE__*/ S.suspend(() =>
+const DeletionProtectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletionProtectionEnabled: S.optional(S.Boolean),
     subResource: S.optional(SubResource),
@@ -1927,7 +1923,7 @@ export type AdditionalDetailSignalTypeEnum =
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
   | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
-export const AdditionalDetailSignalTypeEnum = S.String;
+const AdditionalDetailSignalTypeEnum = S.String;
 
 export type AdditionalDetailSignalSourceEnum =
   | "SIGNAL_SOURCE_UNSPECIFIED"
@@ -1935,10 +1931,10 @@ export type AdditionalDetailSignalSourceEnum =
   | "SIGNAL_SOURCE_SECURITY_FINDINGS"
   | "SIGNAL_SOURCE_RECOMMENDER"
   | "SIGNAL_SOURCE_MODERN_OBSERVABILITY";
-export const AdditionalDetailSignalSourceEnum = S.String;
+const AdditionalDetailSignalSourceEnum = S.String;
 
 export type ResourceMaintenanceScheduleList = Array<ResourceMaintenanceSchedule>;
-export const ResourceMaintenanceScheduleList = /*@__PURE__*/ S.Array(
+const ResourceMaintenanceScheduleList = /*@__PURE__*/ S.Array(
   ResourceMaintenanceSchedule,
 ) as any as S.Schema<ResourceMaintenanceScheduleList>;
 
@@ -1947,7 +1943,7 @@ export interface MaintenanceRecommendationInfo {
   /** Optional. List of recommended maintenance schedules for the database resource. */
   resourceMaintenanceSchedules?: ResourceMaintenanceScheduleList;
 }
-export const MaintenanceRecommendationInfo = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceRecommendationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceMaintenanceSchedules: S.optional(ResourceMaintenanceScheduleList),
   }),
@@ -1963,7 +1959,7 @@ export type ResourceSuspensionInfoSuspensionReasonEnum =
   | "ABUSER_DETECTED"
   | "ENCRYPTION_KEY_INACCESSIBLE"
   | "REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE";
-export const ResourceSuspensionInfoSuspensionReasonEnum = S.String;
+const ResourceSuspensionInfoSuspensionReasonEnum = S.String;
 
 /** Resource suspension info for a database resource. */
 export interface ResourceSuspensionInfo {
@@ -1972,7 +1968,7 @@ export interface ResourceSuspensionInfo {
   /** Suspension reason for the resource. */
   suspensionReason?: ResourceSuspensionInfoSuspensionReasonEnum;
 }
-export const ResourceSuspensionInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceSuspensionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceSuspended: S.optional(S.Boolean),
     suspensionReason: S.optional(ResourceSuspensionInfoSuspensionReasonEnum),
@@ -1987,10 +1983,10 @@ export type BackupRunInfoOperationErrorTypeEnum =
   | "CANCELLATION_ERROR"
   | "SQLSERVER_ERROR"
   | "INTERNAL_ERROR";
-export const BackupRunInfoOperationErrorTypeEnum = S.String;
+const BackupRunInfoOperationErrorTypeEnum = S.String;
 
 export type BackupRunInfoStateEnum = "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED";
-export const BackupRunInfoStateEnum = S.String;
+const BackupRunInfoStateEnum = S.String;
 
 /** Metadata about latest backup run state for a database resource. */
 export interface BackupRunInfo {
@@ -2007,7 +2003,7 @@ export interface BackupRunInfo {
   /** The time the backup operation completed. */
   endTime?: string;
 }
-export const BackupRunInfo = /*@__PURE__*/ S.suspend(() =>
+const BackupRunInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     operationErrorType: S.optional(BackupRunInfoOperationErrorTypeEnum),
@@ -2027,7 +2023,7 @@ export interface RecommendationInfo {
   /** ID of recommender. Examples: "google.cloudsql.instance.PerformanceRecommender" */
   recommenderId?: string;
 }
-export const RecommendationInfo = /*@__PURE__*/ S.suspend(() =>
+const RecommendationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommender: S.optional(S.String),
     recommenderSubtype: S.optional(S.String),
@@ -2040,7 +2036,7 @@ export interface OutdatedMinorVersionInfo {
   /** Recommended minor version of the underlying database engine. Example values: For MySQL, it could be "8.0.35", "5.7.25" etc. For PostgreSQL, it could be "14.4", "15.5" etc. */
   recommendedMinorVersion?: string;
 }
-export const OutdatedMinorVersionInfo = /*@__PURE__*/ S.suspend(() =>
+const OutdatedMinorVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendedMinorVersion: S.optional(S.String),
   }),
@@ -2053,7 +2049,7 @@ export interface AutomatedBackupPolicyInfo {
   /** Is automated policy enabled. */
   isEnabled?: boolean;
 }
-export const AutomatedBackupPolicyInfo = /*@__PURE__*/ S.suspend(() =>
+const AutomatedBackupPolicyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subResource: S.optional(SubResource),
     isEnabled: S.optional(S.Boolean),
@@ -2091,7 +2087,7 @@ export interface AdditionalDetail {
   /** Automated backup policy information applies to signals with type SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY. */
   automatedBackupPolicyInfo?: AutomatedBackupPolicyInfo;
 }
-export const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
+const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inefficientQueryInfo: S.optional(InefficientQueryInfo),
     sccInfo: S.optional(SCCInfo),
@@ -2110,7 +2106,7 @@ export const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdditionalDetail" }) as any as S.Schema<AdditionalDetail>;
 
 export type AdditionalDetailList = Array<AdditionalDetail>;
-export const AdditionalDetailList = /*@__PURE__*/ S.Array(
+const AdditionalDetailList = /*@__PURE__*/ S.Array(
   AdditionalDetail,
 ) as any as S.Schema<AdditionalDetailList>;
 
@@ -2127,7 +2123,7 @@ export interface Signal {
   /** Timestamp when the issue was created (when signal status is ISSUE). */
   issueCreateTime?: string;
 }
-export const Signal = /*@__PURE__*/ S.suspend(() =>
+const Signal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalStatus: S.optional(SignalSignalStatusEnum),
     issueSeverity: S.optional(SignalIssueSeverityEnum),
@@ -2138,7 +2134,7 @@ export const Signal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Signal" }) as any as S.Schema<Signal>;
 
 export type SignalList = Array<Signal>;
-export const SignalList = /*@__PURE__*/ S.Array(Signal) as any as S.Schema<SignalList>;
+const SignalList = /*@__PURE__*/ S.Array(Signal) as any as S.Schema<SignalList>;
 
 /** A group of signals and their counts. */
 export interface SignalGroup {
@@ -2149,7 +2145,7 @@ export interface SignalGroup {
   /** List of signals present in the group and associated with the resource. Only applies to a DatabaseResource. */
   signals?: SignalList;
 }
-export const SignalGroup = /*@__PURE__*/ S.suspend(() =>
+const SignalGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     issueCount: S.optional(S.Number),
@@ -2158,16 +2154,14 @@ export const SignalGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalGroup" }) as any as S.Schema<SignalGroup>;
 
 export type SignalGroupList = Array<SignalGroup>;
-export const SignalGroupList = /*@__PURE__*/ S.Array(
-  SignalGroup,
-) as any as S.Schema<SignalGroupList>;
+const SignalGroupList = /*@__PURE__*/ S.Array(SignalGroup) as any as S.Schema<SignalGroupList>;
 
 export type DatabaseResourceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
   | "EDITION_STANDARD";
-export const DatabaseResourceEditionEnum = S.String;
+const DatabaseResourceEditionEnum = S.String;
 
 export type LineageProcessTypeEnum =
   | "PROCESS_TYPE_UNSPECIFIED"
@@ -2177,7 +2171,7 @@ export type LineageProcessTypeEnum =
   | "BIGQUERY"
   | "DATA_FUSION"
   | "DATAPROC";
-export const LineageProcessTypeEnum = S.String;
+const LineageProcessTypeEnum = S.String;
 
 /** lineage information of the affiliated resources This captures source, target and process which created the lineage. */
 export interface Lineage {
@@ -2190,7 +2184,7 @@ export interface Lineage {
   /** Optional. Type of process which created the lineage. */
   processType?: LineageProcessTypeEnum;
 }
-export const Lineage = /*@__PURE__*/ S.suspend(() =>
+const Lineage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processFqn: S.optional(S.String),
     sourceFqn: S.optional(S.String),
@@ -2200,7 +2194,7 @@ export const Lineage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Lineage" }) as any as S.Schema<Lineage>;
 
 export type LineageList = Array<Lineage>;
-export const LineageList = /*@__PURE__*/ S.Array(Lineage) as any as S.Schema<LineageList>;
+const LineageList = /*@__PURE__*/ S.Array(Lineage) as any as S.Schema<LineageList>;
 
 /** Affiliation information of a resource */
 export interface Affiliation {
@@ -2211,7 +2205,7 @@ export interface Affiliation {
   /** Optional. resource id of affiliated resource */
   resourceId?: string;
 }
-export const Affiliation = /*@__PURE__*/ S.suspend(() =>
+const Affiliation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineages: S.optional(LineageList),
     fullResourceName: S.optional(S.String),
@@ -2220,9 +2214,7 @@ export const Affiliation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Affiliation" }) as any as S.Schema<Affiliation>;
 
 export type AffiliationList = Array<Affiliation>;
-export const AffiliationList = /*@__PURE__*/ S.Array(
-  Affiliation,
-) as any as S.Schema<AffiliationList>;
+const AffiliationList = /*@__PURE__*/ S.Array(Affiliation) as any as S.Schema<AffiliationList>;
 
 /** DatabaseResource represents every individually configured database unit representing compute and/or storage. */
 export interface DatabaseResource {
@@ -2263,7 +2255,7 @@ export interface DatabaseResource {
   /** Optional. Affiliation details of the resource. */
   affiliations?: AffiliationList;
 }
-export const DatabaseResource = /*@__PURE__*/ S.suspend(() =>
+const DatabaseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceInfo: S.optional(MaintenanceInfo),
     product: S.optional(Product),
@@ -2287,7 +2279,7 @@ export const DatabaseResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseResource" }) as any as S.Schema<DatabaseResource>;
 
 export type DatabaseResourceList = Array<DatabaseResource>;
-export const DatabaseResourceList = /*@__PURE__*/ S.Array(
+const DatabaseResourceList = /*@__PURE__*/ S.Array(
   DatabaseResource,
 ) as any as S.Schema<DatabaseResourceList>;
 
@@ -2298,7 +2290,7 @@ export interface IssueCount {
   /** The count of the number of issues associated with those resources that are explicitly filtered in by the filters present in the request. A signal is an issue when its SignalStatus field is set to SIGNAL_STATUS_ISSUE. */
   issueCount?: number;
 }
-export const IssueCount = /*@__PURE__*/ S.suspend(() =>
+const IssueCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     issueCount: S.optional(S.Number),
@@ -2306,7 +2298,7 @@ export const IssueCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueCount" }) as any as S.Schema<IssueCount>;
 
 export type IssueCountList = Array<IssueCount>;
-export const IssueCountList = /*@__PURE__*/ S.Array(IssueCount) as any as S.Schema<IssueCountList>;
+const IssueCountList = /*@__PURE__*/ S.Array(IssueCount) as any as S.Schema<IssueCountList>;
 
 /** DatabaseResourceGroup represents all resources that serve a common data set. It is considered notionally as a single entity, powered by any number of units of compute and storage. */
 export interface DatabaseResourceGroup {
@@ -2315,7 +2307,7 @@ export interface DatabaseResourceGroup {
   /** The filtered signal groups and the count of issues associated with the resources that have been filtered in. */
   signalGroups?: IssueCountList;
 }
-export const DatabaseResourceGroup = /*@__PURE__*/ S.suspend(() =>
+const DatabaseResourceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootResources: S.optional(DatabaseResourceList),
     signalGroups: S.optional(IssueCountList),
@@ -2323,7 +2315,7 @@ export const DatabaseResourceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseResourceGroup" }) as any as S.Schema<DatabaseResourceGroup>;
 
 export type DatabaseResourceGroupList = Array<DatabaseResourceGroup>;
-export const DatabaseResourceGroupList = /*@__PURE__*/ S.Array(
+const DatabaseResourceGroupList = /*@__PURE__*/ S.Array(
   DatabaseResourceGroup,
 ) as any as S.Schema<DatabaseResourceGroupList>;
 
@@ -2338,7 +2330,7 @@ export interface QueryDatabaseResourceGroupsResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
   unreachable?: StringList;
 }
-export const QueryDatabaseResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryDatabaseResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.String),
     resourceGroups: S.optional(DatabaseResourceGroupList),
@@ -2364,7 +2356,7 @@ export interface QueryIssuesRequest {
   /** Optional. Filters based on signal and product. The filter list will be ORed across pairs and ANDed within a signal and products pair. */
   signalProductsFilters?: SignalProductsFiltersList;
 }
-export const QueryIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String),
     parent: S.optional(S.String),
@@ -2379,7 +2371,7 @@ export interface QueryIssuesV1betaRequest {
   /** Request body */
   body?: QueryIssuesRequest;
 }
-export const QueryIssuesV1betaRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryIssuesV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(QueryIssuesRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2398,7 +2390,7 @@ export interface DatabaseResourceIssue {
   /** Resource associated with the issue. */
   resource?: DatabaseResource;
 }
-export const DatabaseResourceIssue = /*@__PURE__*/ S.suspend(() =>
+const DatabaseResourceIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signal: S.optional(Signal),
     resource: S.optional(DatabaseResource),
@@ -2406,7 +2398,7 @@ export const DatabaseResourceIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseResourceIssue" }) as any as S.Schema<DatabaseResourceIssue>;
 
 export type DatabaseResourceIssueList = Array<DatabaseResourceIssue>;
-export const DatabaseResourceIssueList = /*@__PURE__*/ S.Array(
+const DatabaseResourceIssueList = /*@__PURE__*/ S.Array(
   DatabaseResourceIssue,
 ) as any as S.Schema<DatabaseResourceIssueList>;
 
@@ -2419,7 +2411,7 @@ export interface QueryIssuesResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
   unreachable?: StringList;
 }
-export const QueryIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIssues: S.optional(DatabaseResourceIssueList),
     nextPageToken: S.optional(S.String),
@@ -2435,7 +2427,7 @@ export interface QueryProductsV1betaRequest {
   /** Optional. A page token, received from a previous `ListLocations` call. Provide this to retrieve the subsequent page. All other parameters except page size should match the call that provided the page page token. */
   pageToken?: string;
 }
-export const QueryProductsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryProductsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.optional(S.String.pipe(T.Query())),
@@ -2460,7 +2452,7 @@ export interface QueryProductsResponse {
   /** Unordered list. List of unreachable regions from where data could not be retrieved. */
   unreachable?: StringList;
 }
-export const QueryProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     products: S.optional(ProductList),
     nextPageToken: S.optional(S.String),

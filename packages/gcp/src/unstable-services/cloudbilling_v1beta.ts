@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type UserContextPersonaEnum = "PERSONA_UNSPECIFIED" | "FINOPS_MANAGER" | "DEVELOPER";
-export const UserContextPersonaEnum = S.String;
+const UserContextPersonaEnum = S.String;
 
 /** Additional context for personalization (e.g., user persona, role). */
 export interface UserContext {
@@ -71,7 +71,7 @@ export interface UserContext {
   /** Optional. The user's role (e.g., Billing Admin, Project Owner, etc.). */
   role?: string;
 }
-export const UserContext = /*@__PURE__*/ S.suspend(() =>
+const UserContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     persona: S.optional(UserContextPersonaEnum),
     role: S.optional(S.String),
@@ -85,7 +85,7 @@ export interface BillingDataResource {
   /** Required. Resource name for an entitity that can be used for authorization to access billing data such as `projects/{project}` or `billingAccounts/{billing_account}` */
   resource?: string;
 }
-export const BillingDataResource = /*@__PURE__*/ S.suspend(() =>
+const BillingDataResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.optional(S.String),
     resource: S.optional(S.String),
@@ -93,7 +93,7 @@ export const BillingDataResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingDataResource" }) as any as S.Schema<BillingDataResource>;
 
 export type BillingDataResourceList = Array<BillingDataResource>;
-export const BillingDataResourceList = /*@__PURE__*/ S.Array(
+const BillingDataResourceList = /*@__PURE__*/ S.Array(
   BillingDataResource,
 ) as any as S.Schema<BillingDataResourceList>;
 
@@ -110,7 +110,7 @@ export interface GenerateInsightsRequest {
   /** Required. The natural language prompt from the user. */
   prompt?: string;
 }
-export const GenerateInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userContext: S.optional(UserContext),
     overriddenMaxIterationCounts: S.optional(S.Number),
@@ -124,7 +124,7 @@ export interface GenerateInsightsV1betaRequest {
   /** Request body */
   body?: GenerateInsightsRequest;
 }
-export const GenerateInsightsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateInsightsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GenerateInsightsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -139,7 +139,7 @@ export const GenerateInsightsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateInsightsV1betaRequest>;
 
 export type RejectionReasonEnum = "REASON_UNSPECIFIED" | "EXPLICIT_OUT_OF_SCOPE";
-export const RejectionReasonEnum = S.String;
+const RejectionReasonEnum = S.String;
 
 /** Encapsulates details about why a request was rejected. */
 export interface Rejection {
@@ -148,7 +148,7 @@ export interface Rejection {
   /** Output only. The reason for the rejection. */
   reason?: RejectionReasonEnum;
 }
-export const Rejection = /*@__PURE__*/ S.suspend(() =>
+const Rejection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayMessage: S.optional(S.String),
     reason: S.optional(RejectionReasonEnum),
@@ -156,7 +156,7 @@ export const Rejection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rejection" }) as any as S.Schema<Rejection>;
 
 export type InsightSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "CRITICAL";
-export const InsightSeverityEnum = S.String;
+const InsightSeverityEnum = S.String;
 
 /** e.g. insight: title: "Cost Increase (The Explanation)" description: "Your cost increase was driven by Vertex AI Online Prediction in us-central1..." severity: INFO */
 export interface Insight {
@@ -167,7 +167,7 @@ export interface Insight {
   /** Output only. The severity of the insight, used for UI rendering (e.g., color-coding). */
   severity?: InsightSeverityEnum;
 }
-export const Insight = /*@__PURE__*/ S.suspend(() =>
+const Insight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -176,21 +176,21 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
 export type InsightList = Array<Insight>;
-export const InsightList = /*@__PURE__*/ S.Array(Insight) as any as S.Schema<InsightList>;
+const InsightList = /*@__PURE__*/ S.Array(Insight) as any as S.Schema<InsightList>;
 
 /** A suggested follow-up query for the user. */
 export interface SuggestedQuery {
   /** The natural language query. */
   query?: string;
 }
-export const SuggestedQuery = /*@__PURE__*/ S.suspend(() =>
+const SuggestedQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
   }),
 ).annotate({ identifier: "SuggestedQuery" }) as any as S.Schema<SuggestedQuery>;
 
 export type SuggestedQueryList = Array<SuggestedQuery>;
-export const SuggestedQueryList = /*@__PURE__*/ S.Array(
+const SuggestedQueryList = /*@__PURE__*/ S.Array(
   SuggestedQuery,
 ) as any as S.Schema<SuggestedQueryList>;
 
@@ -199,7 +199,7 @@ export type InteropLinkLinkTypeEnum =
   | "COST_REPORT"
   | "BQE_QUERY"
   | "FINOPS_HUB";
-export const InteropLinkLinkTypeEnum = S.String;
+const InteropLinkLinkTypeEnum = S.String;
 
 /** A link to interoperable tools (e.g., pre-filtered Cost Reports, BQE queries). */
 export interface InteropLink {
@@ -210,7 +210,7 @@ export interface InteropLink {
   /** Output only. The type of the interop link, e.g., "COST_REPORT", "BQE_QUERY", etc. */
   linkType?: InteropLinkLinkTypeEnum;
 }
-export const InteropLink = /*@__PURE__*/ S.suspend(() =>
+const InteropLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     url: S.optional(S.String),
@@ -219,9 +219,7 @@ export const InteropLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InteropLink" }) as any as S.Schema<InteropLink>;
 
 export type InteropLinkList = Array<InteropLink>;
-export const InteropLinkList = /*@__PURE__*/ S.Array(
-  InteropLink,
-) as any as S.Schema<InteropLinkList>;
+const InteropLinkList = /*@__PURE__*/ S.Array(InteropLink) as any as S.Schema<InteropLinkList>;
 
 export type SuggestedChartChartTypeEnum =
   | "CHART_TYPE_UNSPECIFIED"
@@ -229,7 +227,7 @@ export type SuggestedChartChartTypeEnum =
   | "UNCHARTABLE"
   | "LINE_CHART"
   | "AREA_CHART";
-export const SuggestedChartChartTypeEnum = S.String;
+const SuggestedChartChartTypeEnum = S.String;
 
 /** A suggested chart for the data set, used for UI rendering. */
 export interface SuggestedChart {
@@ -248,7 +246,7 @@ export interface SuggestedChart {
   /** The label of the x-axis. */
   xAxisLabel?: string;
 }
-export const SuggestedChart = /*@__PURE__*/ S.suspend(() =>
+const SuggestedChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     yAxisField: S.optional(S.String),
     seriesField: S.optional(S.String),
@@ -265,7 +263,7 @@ export interface Cloudbilling_Array {
   /** The elements of the array. */
   element?: ValueProtoList;
 }
-export const Cloudbilling_Array = /*@__PURE__*/ S.suspend(() =>
+const Cloudbilling_Array = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     element: S.optional(S.suspend(() => ValueProtoList)),
   }),
@@ -278,7 +276,7 @@ export interface Range {
   /** Represents the end of the range. */
   end?: ValueProto;
 }
-export const Range = /*@__PURE__*/ S.suspend(() =>
+const Range = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.suspend(() => ValueProto)),
     end: S.optional(S.suspend(() => ValueProto)),
@@ -290,7 +288,7 @@ export interface Struct {
   /** The fields in the struct */
   field?: ValueProtoList;
 }
-export const Struct = /*@__PURE__*/ S.suspend(() =>
+const Struct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.suspend(() => ValueProtoList)),
   }),
@@ -303,7 +301,7 @@ export interface MapEntry {
   /** Represents the serialized map value of the entry. */
   value?: ValueProto;
 }
-export const MapEntry = /*@__PURE__*/ S.suspend(() =>
+const MapEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.suspend(() => ValueProto)),
     value: S.optional(S.suspend(() => ValueProto)),
@@ -311,14 +309,14 @@ export const MapEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapEntry" }) as any as S.Schema<MapEntry>;
 
 export type MapEntryList = Array<MapEntry>;
-export const MapEntryList = /*@__PURE__*/ S.Array(MapEntry) as any as S.Schema<MapEntryList>;
+const MapEntryList = /*@__PURE__*/ S.Array(MapEntry) as any as S.Schema<MapEntryList>;
 
 /** An unordered mapping from key to value, represented as a collection of map entries. */
 export interface Cloudbilling_Map {
   /** Represents the map entries in the map. */
   entry?: MapEntryList;
 }
-export const Cloudbilling_Map = /*@__PURE__*/ S.suspend(() =>
+const Cloudbilling_Map = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entry: S.optional(MapEntryList),
   }),
@@ -331,7 +329,7 @@ export interface Datetime {
   /** Represents bit field encoding of year/month/day/hour/minute/second. See class DatetimeValue in civil_time.h for details of encoding. */
   bitFieldDatetimeSeconds?: string;
 }
-export const Datetime = /*@__PURE__*/ S.suspend(() =>
+const Datetime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     bitFieldDatetimeSeconds: S.optional(S.String),
@@ -397,7 +395,7 @@ export interface ValueProto {
   /** Stores a serialized protocol message. */
   protoValue?: string;
 }
-export const ValueProto = /*@__PURE__*/ S.suspend(() =>
+const ValueProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arrayValue: S.optional(Cloudbilling_Array),
     bytesValue: S.optional(S.String),
@@ -431,35 +429,35 @@ export const ValueProto = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValueProto" }) as any as S.Schema<ValueProto>;
 
 export type ValueProtoList = Array<ValueProto>;
-export const ValueProtoList = /*@__PURE__*/ S.Array(ValueProto) as any as S.Schema<ValueProtoList>;
+const ValueProtoList = /*@__PURE__*/ S.Array(ValueProto) as any as S.Schema<ValueProtoList>;
 
 /** Represents a row in the query result. */
 export interface Row {
   /** Values for a row in the column order. */
   values?: ValueProtoList;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(ValueProtoList),
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Represents a column header. */
 export interface ColumnInfo {
   /** Name of the column. */
   column?: string;
 }
-export const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
+const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.optional(S.String),
   }),
 ).annotate({ identifier: "ColumnInfo" }) as any as S.Schema<ColumnInfo>;
 
 export type ColumnInfoList = Array<ColumnInfo>;
-export const ColumnInfoList = /*@__PURE__*/ S.Array(ColumnInfo) as any as S.Schema<ColumnInfoList>;
+const ColumnInfoList = /*@__PURE__*/ S.Array(ColumnInfo) as any as S.Schema<ColumnInfoList>;
 
 /** Encapsulates billing data. */
 export interface BillingData {
@@ -468,7 +466,7 @@ export interface BillingData {
   /** Information about columns. */
   columnInfo?: ColumnInfoList;
 }
-export const BillingData = /*@__PURE__*/ S.suspend(() =>
+const BillingData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(RowList),
     columnInfo: S.optional(ColumnInfoList),
@@ -476,7 +474,7 @@ export const BillingData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingData" }) as any as S.Schema<BillingData>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A local representation of the query used to fetch the data. This is used instead of the raw QueryBillingDataRequest to avoid pulling in Cloud Policy Enforcement (CPE) resource_type annotations into the response payload, which causes ESF validation failures. */
 export interface AgenticQueryInfo {
@@ -495,7 +493,7 @@ export interface AgenticQueryInfo {
   /** The view queried. */
   view?: string;
 }
-export const AgenticQueryInfo = /*@__PURE__*/ S.suspend(() =>
+const AgenticQueryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     filter: S.optional(S.String),
@@ -516,7 +514,7 @@ export interface DataSet {
   /** Output only. The query used to fetch this data. */
   queryInfo?: AgenticQueryInfo;
 }
-export const DataSet = /*@__PURE__*/ S.suspend(() =>
+const DataSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedChart: S.optional(SuggestedChart),
     billingData: S.optional(BillingData),
@@ -525,7 +523,7 @@ export const DataSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
 
 export type DataSetList = Array<DataSet>;
-export const DataSetList = /*@__PURE__*/ S.Array(DataSet) as any as S.Schema<DataSetList>;
+const DataSetList = /*@__PURE__*/ S.Array(DataSet) as any as S.Schema<DataSetList>;
 
 /** Encapsulates all structured data and the completed summary. */
 export interface FinalResult {
@@ -542,7 +540,7 @@ export interface FinalResult {
   /** Output only. Data sets used to support the insights, suitable for UI rendering (tables/charts). */
   dataSets?: DataSetList;
 }
-export const FinalResult = /*@__PURE__*/ S.suspend(() =>
+const FinalResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insights: S.optional(InsightList),
     suggestedQueries: S.optional(SuggestedQueryList),
@@ -564,7 +562,7 @@ export interface GenerateInsightsResponse {
   /** Output only. The final structured results and metadata. Usually sent as the final message in the stream. */
   finalResult?: FinalResult;
 }
-export const GenerateInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaryChunk: S.optional(S.String),
     rejection: S.optional(Rejection),
@@ -577,7 +575,7 @@ export interface GetBillingAccountsServicesRequest {
   /** Required. The name of the billing account service to retrieve. Format: billingAccounts/{billing_account}/services/{service} */
   name: string;
 }
-export const GetBillingAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -600,22 +598,22 @@ export interface GoogleCloudBillingBillingaccountservicesV1betaBillingAccountSer
   /** Description of the BillingAccountService. Example: "BigQuery", "Compute Engine". */
   displayName?: string;
 }
-export const GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.optional(S.String),
       serviceId: S.optional(S.String),
       displayName: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
 
 export interface GetBillingAccountsSkuGroupsRequest {
   /** Required. The name of the BillingAccountSkuGroup to retrieve. Format: billingAccounts/{billing_account}/skuGroups/{sku_group} */
   name: string;
 }
-export const GetBillingAccountsSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -636,7 +634,7 @@ export interface GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSk
   /** Description of the BillingAccountSkuGroup. Example: "A2 VMs (1 Year CUD)". */
   displayName?: string;
 }
-export const GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup =
+const GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
@@ -650,7 +648,7 @@ export interface GetBillingAccountsSkuGroupsSkusRequest {
   /** Required. The name of the billing account SKU group SKU to retrieve. Format: billingAccounts/{billing_account}/skuGroups/{sku_group}/skus/{sku} */
   name: string;
 }
-export const GetBillingAccountsSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -669,32 +667,33 @@ export type GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnu
   | "TYPE_GLOBAL"
   | "TYPE_REGIONAL"
   | "TYPE_MULTI_REGIONAL";
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnum = S.String;
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnum = S.String;
 
 /** Encapsulates a global geographic taxonomy. */
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal {}
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal>;
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal>;
 
 /** Encapsulates a Google Cloud region. */
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion {
   /** Description of a Google Cloud region. Example: "us-west2". */
   region?: string;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       region: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList>;
@@ -704,7 +703,7 @@ export interface GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMu
   /** Google Cloud regions associated with the multi-regional geographic taxonomy. */
   regions?: GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       regions: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList),
@@ -718,7 +717,7 @@ export interface GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRe
   /** Google Cloud region associated with the regional geographic taxonomy. */
   region?: GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       region: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion),
@@ -738,41 +737,38 @@ export interface GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy {
   /** Regional geographic metadata with 1 region. */
   regionalMetadata?: GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnum),
-      globalMetadata: S.optional(
-        GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal,
-      ),
-      multiRegionalMetadata: S.optional(
-        GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional,
-      ),
-      regionalMetadata: S.optional(
-        GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy>;
+const GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyTypeEnum),
+    globalMetadata: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal),
+    multiRegionalMetadata: S.optional(
+      GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional,
+    ),
+    regionalMetadata: S.optional(
+      GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy>;
 
 /** Encapsulates a product category. */
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory {
   /** Name of the product category. */
   category?: string;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       category: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList>;
@@ -782,16 +778,16 @@ export interface GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxono
   /** All product categories that the billing account SKU group SKU belong to. */
   taxonomyCategories?: GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       taxonomyCategories: S.optional(
         GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategoryList,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy>;
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy>;
 
 /** Encapsulates a SKU that is part of a billing account SKU group. */
 export interface GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku {
@@ -808,7 +804,7 @@ export interface GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccoun
   /** List of product categories that apply to the BillingAccountSkuGroupSku. */
   productTaxonomy?: GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayName: S.optional(S.String),
@@ -828,7 +824,7 @@ export interface GetBillingAccountsSkusRequest {
   /** Required. The name of the billing account SKU to retrieve. Format: billingAccounts/{billing_account}/skus/{sku} */
   name: string;
 }
-export const GetBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -845,12 +841,9 @@ export const GetBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
 /** Encapsulates a product category. */
 export type GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory =
   GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory;
-export const GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategory =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory;
-
 export type GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
-export const GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory,
 ) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList>;
 
@@ -859,13 +852,10 @@ export interface GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy {
   /** All product categories that the billing account SKU belong to. */
   taxonomyCategories?: GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList;
 }
-export const GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      taxonomyCategories: S.optional(
-        GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList,
-      ),
-    }),
+const GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taxonomyCategories: S.optional(GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy",
 }) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy>;
@@ -873,39 +863,27 @@ export const GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy = /*@__PU
 /** Encapsulates a global geographic taxonomy. */
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyGlobal =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyGlobal =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_GLOBAL"
   | "TYPE_REGIONAL"
   | "TYPE_MULTI_REGIONAL";
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyTypeEnum = S.String;
+const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyTypeEnum = S.String;
 
 /** Encapsulates a Google Cloud region. */
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion;
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegion =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion;
-
 /** Encapsulates a regional geographic taxonomy. */
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegional =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional;
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegional =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional;
-
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList>;
-
 /** Encapsulates a multi-regional geographic taxonomy. */
 export interface GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional {
   /** Google Cloud regions associated with the multi-regional geographic taxonomy. */
   regions?: GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList;
 }
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional =
+const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional>;
 
 /** Encapsulates geographic metadata, such as regions and multi-regions like `us-east4` or `European Union`. */
@@ -919,7 +897,7 @@ export interface GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy {
   /** Multi-regional geographic metadata with 2 or more regions. */
   multiRegionalMetadata?: GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional;
 }
-export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     globalMetadata: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal),
     type: S.optional(GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyTypeEnum),
@@ -949,16 +927,15 @@ export interface GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku {
   /** Resource name for the BillingAccountSku. Example: "billingAccounts/012345-567890-ABCDEF/skus/AA95-CD31-42FE". */
   name?: string;
 }
-export const GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      productTaxonomy: S.optional(GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy),
-      billingAccountService: S.optional(S.String),
-      geoTaxonomy: S.optional(GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy),
-      skuId: S.optional(S.String),
-      displayName: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+const GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productTaxonomy: S.optional(GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy),
+    billingAccountService: S.optional(S.String),
+    geoTaxonomy: S.optional(GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy),
+    skuId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku",
 }) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>;
@@ -969,7 +946,7 @@ export interface GetBillingAccountsSkusPriceRequest {
   /** Required. Name of the billing account price to retrieve. Format: billingAccounts/{billing_account}/skus/{sku}/price */
   name: string;
 }
-export const GetBillingAccountsSkusPriceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsSkusPriceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -989,7 +966,7 @@ export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
-export const Decimal = /*@__PURE__*/ S.suspend(() =>
+const Decimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -1004,7 +981,7 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaUnitInfo {
   /** Human-readable description of the unit. Example: gibibyte month. */
   unitDescription?: string;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaUnitInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountpricesV1betaUnitInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unitQuantity: S.optional(Decimal),
     unit: S.optional(S.String),
@@ -1023,7 +1000,7 @@ export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -1042,7 +1019,7 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaRateTier {
   /** Negotiated contract price specific for a billing account. */
   contractPrice?: Money;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaRateTier = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountpricesV1betaRateTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listPrice: S.optional(Money),
     startAmount: S.optional(Decimal),
@@ -1055,7 +1032,7 @@ export const GoogleCloudBillingBillingaccountpricesV1betaRateTier = /*@__PURE__*
 
 export type GoogleCloudBillingBillingaccountpricesV1betaRateTierList =
   Array<GoogleCloudBillingBillingaccountpricesV1betaRateTier>;
-export const GoogleCloudBillingBillingaccountpricesV1betaRateTierList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingBillingaccountpricesV1betaRateTierList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBillingaccountpricesV1betaRateTier,
 ) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaRateTierList>;
 
@@ -1063,13 +1040,13 @@ export type GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalE
   | "INTERVAL_UNSPECIFIED"
   | "INTERVAL_MONTHLY"
   | "INTERVAL_DAILY";
-export const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalEnum = S.String;
+const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalEnum = S.String;
 
 export type GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "LEVEL_ACCOUNT"
   | "LEVEL_PROJECT";
-export const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum = S.String;
+const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum = S.String;
 
 /** Encapsulates the aggregation information such as aggregation level and interval for a billing account price. */
 export interface GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo {
@@ -1078,12 +1055,11 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo {
   /** Level at which usage is aggregated to compute cost. Example: "ACCOUNT" level indicates that usage is aggregated across all projects in a single account. */
   level?: GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      interval: S.optional(GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalEnum),
-      level: S.optional(GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum),
-    }),
+const GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interval: S.optional(GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoIntervalEnum),
+    level: S.optional(GoogleCloudBillingBillingaccountpricesV1betaAggregationInfoLevelEnum),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo",
 }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo>;
@@ -1097,7 +1073,7 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaRate {
   /** Aggregation info for tiers such as aggregation level and interval. */
   aggregationInfo?: GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaRate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountpricesV1betaRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unitInfo: S.optional(GoogleCloudBillingBillingaccountpricesV1betaUnitInfo),
     tiers: S.optional(GoogleCloudBillingBillingaccountpricesV1betaRateTierList),
@@ -1112,11 +1088,10 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice {
   /** Source SKU where the discount is migrated from. Format: billingAccounts/{billing_account}/skus/{sku} */
   sourceSku?: string;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceSku: S.optional(S.String),
-    }),
+const GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceSku: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice",
 }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice>;
@@ -1124,9 +1099,6 @@ export const GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice = /*@__PU
 /** Encapsulates a price after merging from multiple sources. With merged tiers, each individual tier can be from a different source with different discount types. */
 export type GoogleCloudBillingBillingaccountpricesV1betaMergedPrice =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-export const GoogleCloudBillingBillingaccountpricesV1betaMergedPrice =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-
 /** Encapsulates a discount off the current list price, not anchored to any list price as of a fixed time. */
 export interface GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount {
   /** Percentage of the floating discount. */
@@ -1136,13 +1108,12 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount {
   /** Type of the floating discount scope which indicates the source of the discount. It can have values such as 'unspecified' and 'sku-group'. */
   discountScopeType?: string;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      discountPercent: S.optional(Decimal),
-      skuGroup: S.optional(S.String),
-      discountScopeType: S.optional(S.String),
-    }),
+const GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    discountPercent: S.optional(Decimal),
+    skuGroup: S.optional(S.String),
+    discountScopeType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount",
 }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount>;
@@ -1150,15 +1121,9 @@ export const GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount = /*@_
 /** Encapsulates a contract feature that the list price (DefaultPrice) will be used for the price if the current list price drops lower than the custom fixed price. Available to new contracts after March 21, 2022. Applies to all fixed price SKUs in the contract, including FixedPrice, FixedDiscount, MigratedPrice, and MergedPrice. */
 export type GoogleCloudBillingBillingaccountpricesV1betaListPriceAsCeiling =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-export const GoogleCloudBillingBillingaccountpricesV1betaListPriceAsCeiling =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-
 /** Encapsulates a set fixed price applicable during the terms of a contract agreement. */
 export type GoogleCloudBillingBillingaccountpricesV1betaFixedPrice =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-export const GoogleCloudBillingBillingaccountpricesV1betaFixedPrice =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-
 /** Encapsulates a discount off the list price, anchored to the list price as of a fixed time. */
 export interface GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount {
   /** Percentage of the fixed discount. */
@@ -1170,14 +1135,13 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount {
   /** Type of the fixed discount scope which indicates the source of the discount. It can have values such as 'unspecified' and 'sku-group'. */
   discountScopeType?: string;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      discountPercent: S.optional(Decimal),
-      fixTime: S.optional(S.String),
-      skuGroup: S.optional(S.String),
-      discountScopeType: S.optional(S.String),
-    }),
+const GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    discountPercent: S.optional(Decimal),
+    fixTime: S.optional(S.String),
+    skuGroup: S.optional(S.String),
+    discountScopeType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount",
 }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount>;
@@ -1185,9 +1149,6 @@ export const GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount = /*@__PU
 /** Encapsulates a default price which is the current list price. */
 export type GoogleCloudBillingBillingaccountpricesV1betaDefaultPrice =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-export const GoogleCloudBillingBillingaccountpricesV1betaDefaultPrice =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-
 /** Encapsulates a price reason which contains background information about the origin of the price. */
 export interface GoogleCloudBillingBillingaccountpricesV1betaPriceReason {
   /** Price migrated from other SKUs. */
@@ -1207,7 +1168,7 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaPriceReason {
   /** Default price which is the current list price. */
   defaultPrice?: GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaPriceReason = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountpricesV1betaPriceReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migratedPrice: S.optional(GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice),
     mergedPrice: S.optional(GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal),
@@ -1237,8 +1198,8 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice
   /** ISO-4217 currency code for the price. */
   currencyCode?: string;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       rate: S.optional(GoogleCloudBillingBillingaccountpricesV1betaRate),
       name: S.optional(S.String),
@@ -1246,15 +1207,15 @@ export const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice =
       valueType: S.optional(S.String),
       currencyCode: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
+).annotate({
+  identifier: "GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice",
+}) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
 
 export interface GetSkuGroupsRequest {
   /** Required. The name of the SKU group to retrieve. Format: skuGroups/{sku_group} */
   name: string;
 }
-export const GetSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1273,7 +1234,7 @@ export interface GoogleCloudBillingSkugroupsV1betaSkuGroup {
   /** Resource name for the SKU group. Example: "skuGroups/0e6403d1-4694-44d2-a696-7a78b1a69301". */
   name?: string;
 }
-export const GoogleCloudBillingSkugroupsV1betaSkuGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingSkugroupsV1betaSkuGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -1286,7 +1247,7 @@ export interface GetSkuGroupsSkusRequest {
   /** Required. The name of the SKU group SKU to retrieve. Format: skuGroups/{sku_group}/skus/{sku} */
   name: string;
 }
-export const GetSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1301,12 +1262,9 @@ export const GetSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
 /** Encapsulates a product category. */
 export type GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory =
   GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory;
-export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory;
-
 export type GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
-export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
+const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
   GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList>;
 
 /** Encapsulates product categories, such as `Serverless`, `Cloud Run`, `TaskQueue`, and others. */
@@ -1314,7 +1272,7 @@ export interface GoogleCloudBillingSkugroupskusV1betaProductTaxonomy {
   /** All product categories that the SKU group SKU belongs to. */
   taxonomyCategories?: GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList;
 }
-export const GoogleCloudBillingSkugroupskusV1betaProductTaxonomy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingSkugroupskusV1betaProductTaxonomy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxonomyCategories: S.optional(GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList),
   }),
@@ -1325,18 +1283,12 @@ export const GoogleCloudBillingSkugroupskusV1betaProductTaxonomy = /*@__PURE__*/
 /** Encapsulates a Google Cloud region. */
 export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion;
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegion =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion;
-
 /** Encapsulates a regional geographic taxonomy. */
 export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegional =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional;
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegional =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional;
-
 export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion,
 ) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList>;
 
@@ -1345,11 +1297,10 @@ export interface GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional {
   /** Google Cloud regions associated with the multi-regional geographic taxonomy. */
   regions?: GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList;
 }
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      regions: S.optional(GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList),
-    }),
+const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    regions: S.optional(GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyRegionList),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional",
 }) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional>;
@@ -1357,15 +1308,12 @@ export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional = /*@_
 /** Encapsulates a global geographic taxonomy. */
 export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyGlobal =
   GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyGlobal =
-  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal;
-
 export type GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_GLOBAL"
   | "TYPE_REGIONAL"
   | "TYPE_MULTI_REGIONAL";
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyTypeEnum = S.String;
+const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyTypeEnum = S.String;
 
 /** Encapsulates geographic metadata, such as regions and multi-regions like `us-east4` or `European Union`. */
 export interface GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy {
@@ -1378,7 +1326,7 @@ export interface GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy {
   /** Type of geographic taxonomy associated with the SKU group SKU. */
   type?: GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyTypeEnum;
 }
-export const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalMetadata: S.optional(
       GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional,
@@ -1406,7 +1354,7 @@ export interface GoogleCloudBillingSkugroupskusV1betaSkuGroupSku {
   /** Geographic metadata that applies to the SkuGroupSku. */
   geoTaxonomy?: GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy;
 }
-export const GoogleCloudBillingSkugroupskusV1betaSkuGroupSku = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingSkugroupskusV1betaSkuGroupSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuId: S.optional(S.String),
     productTaxonomy: S.optional(GoogleCloudBillingSkugroupskusV1betaProductTaxonomy),
@@ -1425,7 +1373,7 @@ export interface GetSkusPriceRequest {
   /** Optional. ISO-4217 currency code for the price. If not specified, USD will be used. */
   currencyCode?: string;
 }
-export const GetSkusPriceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSkusPriceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     currencyCode: S.optional(S.String.pipe(T.Query())),
@@ -1442,13 +1390,13 @@ export type GoogleCloudBillingPricesV1betaAggregationInfoLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "LEVEL_ACCOUNT"
   | "LEVEL_PROJECT";
-export const GoogleCloudBillingPricesV1betaAggregationInfoLevelEnum = S.String;
+const GoogleCloudBillingPricesV1betaAggregationInfoLevelEnum = S.String;
 
 export type GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum =
   | "INTERVAL_UNSPECIFIED"
   | "INTERVAL_MONTHLY"
   | "INTERVAL_DAILY";
-export const GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum = S.String;
+const GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum = S.String;
 
 /** Encapsulates the aggregation information such as aggregation level and interval for a price. */
 export interface GoogleCloudBillingPricesV1betaAggregationInfo {
@@ -1457,7 +1405,7 @@ export interface GoogleCloudBillingPricesV1betaAggregationInfo {
   /** Interval at which usage is aggregated to compute cost. Example: "MONTHLY" interval indicates that usage is aggregated every month. */
   interval?: GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum;
 }
-export const GoogleCloudBillingPricesV1betaAggregationInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingPricesV1betaAggregationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(GoogleCloudBillingPricesV1betaAggregationInfoLevelEnum),
     interval: S.optional(GoogleCloudBillingPricesV1betaAggregationInfoIntervalEnum),
@@ -1469,9 +1417,6 @@ export const GoogleCloudBillingPricesV1betaAggregationInfo = /*@__PURE__*/ S.sus
 /** Encapsulates the unit information for a Rate */
 export type GoogleCloudBillingPricesV1betaUnitInfo =
   GoogleCloudBillingBillingaccountpricesV1betaUnitInfo;
-export const GoogleCloudBillingPricesV1betaUnitInfo =
-  GoogleCloudBillingBillingaccountpricesV1betaUnitInfo;
-
 /** Encapsulates a rate price tier. */
 export interface GoogleCloudBillingPricesV1betaRateTier {
   /** List price of one tier. */
@@ -1479,7 +1424,7 @@ export interface GoogleCloudBillingPricesV1betaRateTier {
   /** Lower bound amount for a tier. Tiers 0-100, 100-200 will be represented with two tiers with `start_amount` 0 and 100. */
   startAmount?: Decimal;
 }
-export const GoogleCloudBillingPricesV1betaRateTier = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingPricesV1betaRateTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listPrice: S.optional(Money),
     startAmount: S.optional(Decimal),
@@ -1490,7 +1435,7 @@ export const GoogleCloudBillingPricesV1betaRateTier = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudBillingPricesV1betaRateTierList =
   Array<GoogleCloudBillingPricesV1betaRateTier>;
-export const GoogleCloudBillingPricesV1betaRateTierList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingPricesV1betaRateTierList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingPricesV1betaRateTier,
 ) as any as S.Schema<GoogleCloudBillingPricesV1betaRateTierList>;
 
@@ -1503,7 +1448,7 @@ export interface GoogleCloudBillingPricesV1betaRate {
   /** All tiers associated with the `Rate` price. */
   tiers?: GoogleCloudBillingPricesV1betaRateTierList;
 }
-export const GoogleCloudBillingPricesV1betaRate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingPricesV1betaRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregationInfo: S.optional(GoogleCloudBillingPricesV1betaAggregationInfo),
     unitInfo: S.optional(GoogleCloudBillingBillingaccountpricesV1betaUnitInfo),
@@ -1524,7 +1469,7 @@ export interface GoogleCloudBillingPricesV1betaPrice {
   /** Resource name for the latest price. */
   name?: string;
 }
-export const GoogleCloudBillingPricesV1betaPrice = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingPricesV1betaPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     rate: S.optional(GoogleCloudBillingPricesV1betaRate),
@@ -1543,7 +1488,7 @@ export interface ListBillingAccountsServicesRequest {
   /** Maximum number of billing account service to return. Results may return fewer than this value. Default value is 50 and maximum value is 5000. */
   pageSize?: number;
 }
-export const ListBillingAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1561,7 +1506,7 @@ export const ListBillingAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudBillingBillingaccountservicesV1betaBillingAccountServiceList =
   Array<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>;
-export const GoogleCloudBillingBillingaccountservicesV1betaBillingAccountServiceList =
+const GoogleCloudBillingBillingaccountservicesV1betaBillingAccountServiceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountServiceList>;
@@ -1573,7 +1518,7 @@ export interface GoogleCloudBillingBillingaccountservicesV1betaListBillingAccoun
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse =
+const GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountServices: S.optional(
@@ -1593,7 +1538,7 @@ export interface ListBillingAccountsSkuGroupsRequest {
   /** Required. The billing account to list billing account SKU groups from. Format: billingAccounts/{billing_account} */
   parent: string;
 }
-export const ListBillingAccountsSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1611,7 +1556,7 @@ export const ListBillingAccountsSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList =
   Array<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup>;
-export const GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList =
+const GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList>;
@@ -1623,7 +1568,7 @@ export interface GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccou
   /** The returned publicly listed billing account SKU groups. */
   billingAccountSkuGroups?: GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroupList;
 }
-export const GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse =
+const GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextPageToken: S.optional(S.String),
@@ -1644,7 +1589,7 @@ export interface ListBillingAccountsSkuGroupsSkusRequest {
   /** Page token received from a previous ListBillingAccountSkuGroupSkus call to retrieve the next page of results. If this field is empty, the first page is returned. */
   pageToken?: string;
 }
-export const ListBillingAccountsSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1662,7 +1607,7 @@ export const ListBillingAccountsSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSkuList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku>;
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSkuList =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSkuList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSkuList>;
@@ -1674,7 +1619,7 @@ export interface GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAc
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse =
+const GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountSkuGroupSkus: S.optional(
@@ -1697,7 +1642,7 @@ export interface ListBillingAccountsSkusRequest {
   /** Page token received from a previous ListBillingAccountSkus call to retrieve the next page of results. If this field is empty, the first page is returned. */
   pageToken?: string;
 }
-export const ListBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1716,10 +1661,9 @@ export const ListBillingAccountsSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList =
   Array<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>;
-export const GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku,
-  ) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList>;
+const GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList = /*@__PURE__*/ S.Array(
+  GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku,
+) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSkuList>;
 
 /** Response message for ListBillingAccountSkus. */
 export interface GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse {
@@ -1728,7 +1672,7 @@ export interface GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSku
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse =
+const GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountSkus: S.optional(
@@ -1750,7 +1694,7 @@ export interface ListBillingAccountsSkusPricesRequest {
   /** Optional. ISO-4217 currency code for the price. If not specified, currency of billing account will be used. */
   currencyCode?: string;
 }
-export const ListBillingAccountsSkusPricesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsSkusPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1769,10 +1713,9 @@ export const ListBillingAccountsSkusPricesRequest = /*@__PURE__*/ S.suspend(() =
 
 export type GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList =
   Array<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>;
-export const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice,
-  ) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList>;
+const GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList = /*@__PURE__*/ S.Array(
+  GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice,
+) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPriceList>;
 
 /** Response message for ListBillingAccountPrices. */
 export interface GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse {
@@ -1781,7 +1724,7 @@ export interface GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountP
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse =
+const GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountPrices: S.optional(
@@ -1799,7 +1742,7 @@ export interface ListSkuGroupsRequest {
   /** Maximum number of SKU groups to return. Results may return fewer than this value. Default value is 50 and maximum value is 5000. */
   pageSize?: number;
 }
-export const ListSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1814,7 +1757,7 @@ export const ListSkuGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudBillingSkugroupsV1betaSkuGroupList =
   Array<GoogleCloudBillingSkugroupsV1betaSkuGroup>;
-export const GoogleCloudBillingSkugroupsV1betaSkuGroupList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingSkugroupsV1betaSkuGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingSkugroupsV1betaSkuGroup,
 ) as any as S.Schema<GoogleCloudBillingSkugroupsV1betaSkuGroupList>;
 
@@ -1825,7 +1768,7 @@ export interface GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse {
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuGroups: S.optional(GoogleCloudBillingSkugroupsV1betaSkuGroupList),
     nextPageToken: S.optional(S.String),
@@ -1842,7 +1785,7 @@ export interface ListSkuGroupsSkusRequest {
   /** Page token received from a previous ListSkuGroupSkus call to retrieve the next page of results. If this field is empty, the first page is returned. */
   pageToken?: string;
 }
-export const ListSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1858,7 +1801,7 @@ export const ListSkuGroupsSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList =
   Array<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>;
-export const GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingSkugroupskusV1betaSkuGroupSku,
 ) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList>;
 
@@ -1869,12 +1812,11 @@ export interface GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse {
   /** The returned SKU group SKUs. */
   skuGroupSkus?: GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList;
 }
-export const GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      skuGroupSkus: S.optional(GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList),
-    }),
+const GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    skuGroupSkus: S.optional(GoogleCloudBillingSkugroupskusV1betaSkuGroupSkuList),
+  }),
 ).annotate({
   identifier: "GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse",
 }) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse>;
@@ -1889,7 +1831,7 @@ export interface ListSkusPricesRequest {
   /** Optional. ISO-4217 currency code for the price. If not specified, USD will be used. */
   currencyCode?: string;
 }
-export const ListSkusPricesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1905,7 +1847,7 @@ export const ListSkusPricesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSkusPricesRequest" }) as any as S.Schema<ListSkusPricesRequest>;
 
 export type GoogleCloudBillingPricesV1betaPriceList = Array<GoogleCloudBillingPricesV1betaPrice>;
-export const GoogleCloudBillingPricesV1betaPriceList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingPricesV1betaPriceList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingPricesV1betaPrice,
 ) as any as S.Schema<GoogleCloudBillingPricesV1betaPriceList>;
 
@@ -1916,7 +1858,7 @@ export interface GoogleCloudBillingPricesV1betaListPricesResponse {
   /** Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingPricesV1betaListPricesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingPricesV1betaListPricesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prices: S.optional(GoogleCloudBillingPricesV1betaPriceList),
     nextPageToken: S.optional(S.String),

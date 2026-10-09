@@ -51,7 +51,7 @@ export interface CreateUserVariableRequest {
   /** Value of the variable to create. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
-export const CreateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variablename: S.String.pipe(T.Label()),
     value: S.String,
@@ -61,7 +61,7 @@ export const CreateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUserVariableRequest>;
 
 export interface CreateUserVariableResponse {}
-export const CreateUserVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateUserVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateUserVariableResponse",
 }) as any as S.Schema<CreateUserVariableResponse>;
 
@@ -69,35 +69,35 @@ export interface DeleteUserRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-export const DeleteUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runner_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/actions/runners/{runner_id}", code: 200 })),
 ).annotate({ identifier: "DeleteUserRunnerRequest" }) as any as S.Schema<DeleteUserRunnerRequest>;
 
 export interface DeleteUserRunnerResponse {}
-export const DeleteUserRunnerResponse =
+const DeleteUserRunnerResponse =
   CreateUserVariableResponse as any as S.Schema<DeleteUserRunnerResponse>;
 
 export interface DeleteUserSecretRequest {
   /** name of the secret */
   secretname: string;
 }
-export const DeleteUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretname: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/actions/secrets/{secretname}", code: 200 })),
 ).annotate({ identifier: "DeleteUserSecretRequest" }) as any as S.Schema<DeleteUserSecretRequest>;
 
 export interface DeleteUserSecretResponse {}
-export const DeleteUserSecretResponse =
+const DeleteUserSecretResponse =
   CreateUserVariableResponse as any as S.Schema<DeleteUserSecretResponse>;
 
 export interface DeleteUserVariableRequest {
   /** name of the variable */
   variablename: string;
 }
-export const DeleteUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variablename: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/actions/variables/{variablename}", code: 200 })),
@@ -106,13 +106,13 @@ export const DeleteUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserVariableRequest>;
 
 export interface DeleteUserVariableResponse {}
-export const DeleteUserVariableResponse =
+const DeleteUserVariableResponse =
   CreateUserVariableResponse as any as S.Schema<DeleteUserVariableResponse>;
 
 export interface FollowUserCurrentActivityPubRequest {
   target?: string;
 }
-export const FollowUserCurrentActivityPubRequest = /*@__PURE__*/ S.suspend(() =>
+const FollowUserCurrentActivityPubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/user/activitypub/follow", code: 200 })),
@@ -121,9 +121,7 @@ export const FollowUserCurrentActivityPubRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FollowUserCurrentActivityPubRequest>;
 
 export interface FollowUserCurrentActivityPubResponse {}
-export const FollowUserCurrentActivityPubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const FollowUserCurrentActivityPubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FollowUserCurrentActivityPubResponse",
 }) as any as S.Schema<FollowUserCurrentActivityPubResponse>;
 
@@ -131,7 +129,7 @@ export interface GetUserRequest {
   /** username of user to get */
   username: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{username}", code: 200 })),
@@ -181,7 +179,7 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     avatar_url: S.optional(S.String),
@@ -213,7 +211,7 @@ export interface GetUserRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-export const GetUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runner_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners/{runner_id}", code: 200 })),
@@ -221,13 +219,13 @@ export const GetUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-export const ActionRunnerLabelsList = /*@__PURE__*/ S.Array(
+const ActionRunnerLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActionRunnerLabelsList>;
 
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
-export const ActionRunnerStatus = S.String;
+const ActionRunnerStatus = S.String;
 
 /** ActionRunner represents a runner */
 export interface ActionRunner {
@@ -252,7 +250,7 @@ export interface ActionRunner {
   /** Version is the self-reported version string of Forgejo Runner. */
   version?: string;
 }
-export const ActionRunner = /*@__PURE__*/ S.suspend(() =>
+const ActionRunner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     ephemeral: S.optional(S.Boolean),
@@ -275,7 +273,7 @@ export interface GetUserRunnersRequest {
   /** page size of results */
   limit?: number;
 }
-export const GetUserRunnersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRunnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visible: S.optional(S.Boolean.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -284,17 +282,17 @@ export const GetUserRunnersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRunnersRequest" }) as any as S.Schema<GetUserRunnersRequest>;
 
 export type GetUserRunnersResponseBodyList = Array<ActionRunner>;
-export const GetUserRunnersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetUserRunnersResponseBodyList = /*@__PURE__*/ S.Array(
   ActionRunner,
 ) as any as S.Schema<GetUserRunnersResponseBodyList>;
 
 export type GetUserRunnersResponse = GetUserRunnersResponseBodyList;
-export const GetUserRunnersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserRunnersResponse = /*@__PURE__*/ S.suspend(() =>
   GetUserRunnersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetUserRunnersResponse" }) as any as S.Schema<GetUserRunnersResponse>;
 
 export interface GetUserSettingsRequest {}
-export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/settings", code: 200 })),
 ).annotate({ identifier: "GetUserSettingsRequest" }) as any as S.Schema<GetUserSettingsRequest>;
 
@@ -314,7 +312,7 @@ export interface UserSettings {
   theme?: string;
   website?: string;
 }
-export const UserSettings = /*@__PURE__*/ S.suspend(() =>
+const UserSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     diff_view_style: S.optional(S.String),
@@ -335,7 +333,7 @@ export interface GetUserVariableRequest {
   /** name of the variable */
   variablename: string;
 }
-export const GetUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variablename: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/actions/variables/{variablename}", code: 200 })),
@@ -352,7 +350,7 @@ export interface ActionVariable {
   /** the repository to which the variable belongs */
   repo_id?: number;
 }
-export const ActionVariable = /*@__PURE__*/ S.suspend(() =>
+const ActionVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.String,
     name: S.String,
@@ -367,7 +365,7 @@ export interface GetUserVariablesListRequest {
   /** page size of results */
   limit?: number;
 }
-export const GetUserVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -377,26 +375,26 @@ export const GetUserVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserVariablesListRequest>;
 
 export type GetUserVariablesListResponseBodyList = Array<ActionVariable>;
-export const GetUserVariablesListResponseBodyList = /*@__PURE__*/ S.Array(
+const GetUserVariablesListResponseBodyList = /*@__PURE__*/ S.Array(
   ActionVariable,
 ) as any as S.Schema<GetUserVariablesListResponseBodyList>;
 
 export type GetUserVariablesListResponse = GetUserVariablesListResponseBodyList;
-export const GetUserVariablesListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserVariablesListResponse = /*@__PURE__*/ S.suspend(() =>
   GetUserVariablesListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetUserVariablesListResponse",
 }) as any as S.Schema<GetUserVariablesListResponse>;
 
 export interface GetVerificationTokenRequest {}
-export const GetVerificationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVerificationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/gpg_key_token", code: 200 })),
 ).annotate({
   identifier: "GetVerificationTokenRequest",
 }) as any as S.Schema<GetVerificationTokenRequest>;
 
 export type GetVerificationTokenResponse = string;
-export const GetVerificationTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVerificationTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetVerificationTokenResponse",
@@ -410,7 +408,7 @@ export interface RegisterUserRunnerRequest {
   /** Name of the runner to register. The name of the runner does not have to be unique. */
   name: string;
 }
-export const RegisterUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     ephemeral: S.optional(S.Boolean),
@@ -425,7 +423,7 @@ export interface RegisterRunnerResponse {
   token?: string;
   uuid?: string;
 }
-export const RegisterRunnerResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterRunnerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     token: S.optional(S.String),
@@ -440,7 +438,7 @@ export type SearchUserRequestSort =
   | "reversealphabetically"
   | "recentupdate"
   | "leastupdate";
-export const SearchUserRequestSort = S.String;
+const SearchUserRequestSort = S.String;
 
 export interface SearchUserRequest {
   /** keyword */
@@ -454,7 +452,7 @@ export interface SearchUserRequest {
   /** page size of results */
   limit?: number;
 }
-export const SearchUserRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     uid: S.optional(S.Number.pipe(T.Query())),
@@ -465,7 +463,7 @@ export const SearchUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchUserRequest" }) as any as S.Schema<SearchUserRequest>;
 
 export type SearchUserResponseDataList = Array<User>;
-export const SearchUserResponseDataList = /*@__PURE__*/ S.Array(
+const SearchUserResponseDataList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<SearchUserResponseDataList>;
 
@@ -473,7 +471,7 @@ export interface SearchUserResponse {
   data?: SearchUserResponseDataList;
   ok?: boolean;
 }
-export const SearchUserResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SearchUserResponseDataList),
     ok: S.optional(S.Boolean),
@@ -484,15 +482,14 @@ export interface UnblockUserRequest {
   /** username of the user */
   username: string;
 }
-export const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/user/unblock/{username}", code: 200 })),
 ).annotate({ identifier: "UnblockUserRequest" }) as any as S.Schema<UnblockUserRequest>;
 
 export interface UnblockUserResponse {}
-export const UnblockUserResponse =
-  CreateUserVariableResponse as any as S.Schema<UnblockUserResponse>;
+const UnblockUserResponse = CreateUserVariableResponse as any as S.Schema<UnblockUserResponse>;
 
 export interface UpdateUserSecretRequest {
   /** name of the secret */
@@ -500,7 +497,7 @@ export interface UpdateUserSecretRequest {
   /** Data of the secret. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   data: string;
 }
-export const UpdateUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretname: S.String.pipe(T.Label()),
     data: S.String,
@@ -508,7 +505,7 @@ export const UpdateUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserSecretRequest" }) as any as S.Schema<UpdateUserSecretRequest>;
 
 export interface UpdateUserSecretResponse {}
-export const UpdateUserSecretResponse =
+const UpdateUserSecretResponse =
   CreateUserVariableResponse as any as S.Schema<UpdateUserSecretResponse>;
 
 export interface UpdateUserSettingsRequest {
@@ -526,7 +523,7 @@ export interface UpdateUserSettingsRequest {
   theme?: string;
   website?: string;
 }
-export const UpdateUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     diff_view_style: S.optional(S.String),
@@ -553,7 +550,7 @@ export interface UpdateUserVariableRequest {
   /** Value of the variable to update. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
-export const UpdateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variablename: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -564,19 +561,19 @@ export const UpdateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateUserVariableRequest>;
 
 export interface UpdateUserVariableResponse {}
-export const UpdateUserVariableResponse =
+const UpdateUserVariableResponse =
   CreateUserVariableResponse as any as S.Schema<UpdateUserVariableResponse>;
 
 /** email addresses to add */
 export type UserAddEmailRequestEmailsList = Array<string>;
-export const UserAddEmailRequestEmailsList =
+const UserAddEmailRequestEmailsList =
   ActionRunnerLabelsList as any as S.Schema<UserAddEmailRequestEmailsList>;
 
 export interface UserAddEmailRequest {
   /** email addresses to add */
   emails?: UserAddEmailRequestEmailsList;
 }
-export const UserAddEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const UserAddEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(UserAddEmailRequestEmailsList),
   }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
@@ -590,7 +587,7 @@ export interface Email {
   username?: string;
   verified?: boolean;
 }
-export const Email = /*@__PURE__*/ S.suspend(() =>
+const Email = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     primary: S.optional(S.Boolean),
@@ -601,12 +598,12 @@ export const Email = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Email" }) as any as S.Schema<Email>;
 
 export type UserAddEmailResponseBodyList = Array<Email>;
-export const UserAddEmailResponseBodyList = /*@__PURE__*/ S.Array(
+const UserAddEmailResponseBodyList = /*@__PURE__*/ S.Array(
   Email,
 ) as any as S.Schema<UserAddEmailResponseBodyList>;
 
 export type UserAddEmailResponse = UserAddEmailResponseBodyList;
-export const UserAddEmailResponse = /*@__PURE__*/ S.suspend(() =>
+const UserAddEmailResponse = /*@__PURE__*/ S.suspend(() =>
   UserAddEmailResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserAddEmailResponse" }) as any as S.Schema<UserAddEmailResponse>;
 
@@ -614,15 +611,14 @@ export interface UserBlockUserRequest {
   /** username of the user */
   username: string;
 }
-export const UserBlockUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UserBlockUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/user/block/{username}", code: 200 })),
 ).annotate({ identifier: "UserBlockUserRequest" }) as any as S.Schema<UserBlockUserRequest>;
 
 export interface UserBlockUserResponse {}
-export const UserBlockUserResponse =
-  CreateUserVariableResponse as any as S.Schema<UserBlockUserResponse>;
+const UserBlockUserResponse = CreateUserVariableResponse as any as S.Schema<UserBlockUserResponse>;
 
 export interface UserCheckFollowingRequest {
   /** username of following user */
@@ -630,7 +626,7 @@ export interface UserCheckFollowingRequest {
   /** username of followed user */
   target: string;
 }
-export const UserCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     target: S.String.pipe(T.Label()),
@@ -640,33 +636,33 @@ export const UserCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCheckFollowingRequest>;
 
 export interface UserCheckFollowingResponse {}
-export const UserCheckFollowingResponse =
+const UserCheckFollowingResponse =
   CreateUserVariableResponse as any as S.Schema<UserCheckFollowingResponse>;
 
 export interface UserCheckQuotaRequest {
   /** subject of the quota */
   subject: string;
 }
-export const UserCheckQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCheckQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/user/quota/check", code: 200 })),
 ).annotate({ identifier: "UserCheckQuotaRequest" }) as any as S.Schema<UserCheckQuotaRequest>;
 
 export type UserCheckQuotaResponse = boolean;
-export const UserCheckQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const UserCheckQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserCheckQuotaResponse" }) as any as S.Schema<UserCheckQuotaResponse>;
 
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
-export const CreateHookOptionConfig = /*@__PURE__*/ S.Record(
+const CreateHookOptionConfig = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateHookOptionConfig>;
 
 export type UserCreateHookRequestEventsList = Array<string>;
-export const UserCreateHookRequestEventsList =
+const UserCreateHookRequestEventsList =
   ActionRunnerLabelsList as any as S.Schema<UserCreateHookRequestEventsList>;
 
 export type UserCreateHookRequestType =
@@ -681,7 +677,7 @@ export type UserCreateHookRequestType =
   | "feishu"
   | "wechatwork"
   | "packagist";
-export const UserCreateHookRequestType = S.String;
+const UserCreateHookRequestType = S.String;
 
 export interface UserCreateHookRequest {
   active?: boolean;
@@ -691,7 +687,7 @@ export interface UserCreateHookRequest {
   events?: UserCreateHookRequestEventsList;
   type: UserCreateHookRequestType | (string & {});
 }
-export const UserCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     authorization_header: S.optional(S.String),
@@ -704,10 +700,10 @@ export const UserCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-export const HookConfigMap = CreateHookOptionConfig as any as S.Schema<HookConfigMap>;
+const HookConfigMap = CreateHookOptionConfig as any as S.Schema<HookConfigMap>;
 
 export type HookEventsList = Array<string>;
-export const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
+const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
 
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
@@ -725,7 +721,7 @@ export interface Hook {
   updated_at: string;
   url: string;
 }
-export const Hook = /*@__PURE__*/ S.suspend(() =>
+const Hook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     authorization_header: S.optional(S.String),
@@ -743,7 +739,7 @@ export const Hook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hook" }) as any as S.Schema<Hook>;
 
 export type UserCreateOAuth2ApplicationRequestRedirectUrisList = Array<string>;
-export const UserCreateOAuth2ApplicationRequestRedirectUrisList =
+const UserCreateOAuth2ApplicationRequestRedirectUrisList =
   ActionRunnerLabelsList as any as S.Schema<UserCreateOAuth2ApplicationRequestRedirectUrisList>;
 
 export interface UserCreateOAuth2ApplicationRequest {
@@ -751,7 +747,7 @@ export interface UserCreateOAuth2ApplicationRequest {
   name?: string;
   redirect_uris?: UserCreateOAuth2ApplicationRequestRedirectUrisList;
 }
-export const UserCreateOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCreateOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidential_client: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -762,7 +758,7 @@ export const UserCreateOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCreateOAuth2ApplicationRequest>;
 
 export type OAuth2ApplicationRedirectUrisList = Array<string>;
-export const OAuth2ApplicationRedirectUrisList =
+const OAuth2ApplicationRedirectUrisList =
   ActionRunnerLabelsList as any as S.Schema<OAuth2ApplicationRedirectUrisList>;
 
 export interface OAuth2Application {
@@ -774,7 +770,7 @@ export interface OAuth2Application {
   name?: string;
   redirect_uris?: OAuth2ApplicationRedirectUrisList;
 }
-export const OAuth2Application = /*@__PURE__*/ S.suspend(() =>
+const OAuth2Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
     client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -792,7 +788,7 @@ export interface RepoTargetOption {
   /** Name of user or organisation that owns the repository */
   owner: string;
 }
-export const RepoTargetOption = /*@__PURE__*/ S.suspend(() =>
+const RepoTargetOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     owner: S.String,
@@ -801,12 +797,12 @@ export const RepoTargetOption = /*@__PURE__*/ S.suspend(() =>
 
 /** If provided and not-empty, creates an access token with access only to specified repositories. */
 export type UserCreateTokenRequestRepositoriesList = Array<RepoTargetOption>;
-export const UserCreateTokenRequestRepositoriesList = /*@__PURE__*/ S.Array(
+const UserCreateTokenRequestRepositoriesList = /*@__PURE__*/ S.Array(
   RepoTargetOption,
 ) as any as S.Schema<UserCreateTokenRequestRepositoriesList>;
 
 export type UserCreateTokenRequestScopesList = Array<string>;
-export const UserCreateTokenRequestScopesList =
+const UserCreateTokenRequestScopesList =
   ActionRunnerLabelsList as any as S.Schema<UserCreateTokenRequestScopesList>;
 
 export interface UserCreateTokenRequest {
@@ -817,7 +813,7 @@ export interface UserCreateTokenRequest {
   repositories?: UserCreateTokenRequestRepositoriesList;
   scopes?: UserCreateTokenRequestScopesList;
 }
-export const UserCreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String,
@@ -833,7 +829,7 @@ export interface RepositoryMeta {
   name?: string;
   owner?: string;
 }
-export const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
+const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     full_name: S.optional(S.String),
     id: S.optional(S.Number),
@@ -844,13 +840,12 @@ export const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates that an access token only has access to the specified repositories. Will be null if the access token is not limited to a set of specified repositories. */
 export type AccessTokenRepositoriesList = Array<RepositoryMeta>;
-export const AccessTokenRepositoriesList = /*@__PURE__*/ S.Array(
+const AccessTokenRepositoriesList = /*@__PURE__*/ S.Array(
   RepositoryMeta,
 ) as any as S.Schema<AccessTokenRepositoriesList>;
 
 export type AccessTokenScopesList = Array<string>;
-export const AccessTokenScopesList =
-  ActionRunnerLabelsList as any as S.Schema<AccessTokenScopesList>;
+const AccessTokenScopesList = ActionRunnerLabelsList as any as S.Schema<AccessTokenScopesList>;
 
 export interface AccessToken {
   created_at: string;
@@ -862,7 +857,7 @@ export interface AccessToken {
   sha1?: string | Redacted.Redacted<string>;
   token_last_eight: string;
 }
-export const AccessToken = /*@__PURE__*/ S.suspend(() =>
+const AccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.Number,
@@ -878,7 +873,7 @@ export interface UserCurrentCheckFollowingRequest {
   /** username of followed user */
   username: string;
 }
-export const UserCurrentCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/following/{username}", code: 200 })),
@@ -887,7 +882,7 @@ export const UserCurrentCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentCheckFollowingRequest>;
 
 export interface UserCurrentCheckFollowingResponse {}
-export const UserCurrentCheckFollowingResponse =
+const UserCurrentCheckFollowingResponse =
   FollowUserCurrentActivityPubResponse as any as S.Schema<UserCurrentCheckFollowingResponse>;
 
 export interface UserCurrentCheckStarringRequest {
@@ -896,7 +891,7 @@ export interface UserCurrentCheckStarringRequest {
   /** name of the repo */
   repo: string;
 }
-export const UserCurrentCheckStarringRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentCheckStarringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -906,14 +901,14 @@ export const UserCurrentCheckStarringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentCheckStarringRequest>;
 
 export interface UserCurrentCheckStarringResponse {}
-export const UserCurrentCheckStarringResponse =
+const UserCurrentCheckStarringResponse =
   FollowUserCurrentActivityPubResponse as any as S.Schema<UserCurrentCheckStarringResponse>;
 
 export interface UserCurrentDeleteFollowRequest {
   /** username of user to unfollow */
   username: string;
 }
-export const UserCurrentDeleteFollowRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentDeleteFollowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/following/{username}", code: 200 })),
@@ -922,15 +917,15 @@ export const UserCurrentDeleteFollowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteFollowRequest>;
 
 export interface UserCurrentDeleteFollowResponse {}
-export const UserCurrentDeleteFollowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UserCurrentDeleteFollowResponse" },
-) as any as S.Schema<UserCurrentDeleteFollowResponse>;
+const UserCurrentDeleteFollowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UserCurrentDeleteFollowResponse",
+}) as any as S.Schema<UserCurrentDeleteFollowResponse>;
 
 export interface UserCurrentDeleteGPGKeyRequest {
   /** id of key to delete */
   id: number;
 }
-export const UserCurrentDeleteGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentDeleteGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/gpg_keys/{id}", code: 200 })),
@@ -939,14 +934,14 @@ export const UserCurrentDeleteGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteGPGKeyRequest>;
 
 export interface UserCurrentDeleteGPGKeyResponse {}
-export const UserCurrentDeleteGPGKeyResponse =
+const UserCurrentDeleteGPGKeyResponse =
   UserCurrentDeleteFollowResponse as any as S.Schema<UserCurrentDeleteGPGKeyResponse>;
 
 export interface UserCurrentDeleteKeyRequest {
   /** id of key to delete */
   id: number;
 }
-export const UserCurrentDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/keys/{id}", code: 200 })),
@@ -955,7 +950,7 @@ export const UserCurrentDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteKeyRequest>;
 
 export interface UserCurrentDeleteKeyResponse {}
-export const UserCurrentDeleteKeyResponse =
+const UserCurrentDeleteKeyResponse =
   CreateUserVariableResponse as any as S.Schema<UserCurrentDeleteKeyResponse>;
 
 export interface UserCurrentDeleteStarRequest {
@@ -964,7 +959,7 @@ export interface UserCurrentDeleteStarRequest {
   /** name of the repo to unstar */
   repo: string;
 }
-export const UserCurrentDeleteStarRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentDeleteStarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -974,14 +969,14 @@ export const UserCurrentDeleteStarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteStarRequest>;
 
 export interface UserCurrentDeleteStarResponse {}
-export const UserCurrentDeleteStarResponse =
+const UserCurrentDeleteStarResponse =
   CreateUserVariableResponse as any as S.Schema<UserCurrentDeleteStarResponse>;
 
 export interface UserCurrentGetGPGKeyRequest {
   /** id of key to get */
   id: number;
 }
-export const UserCurrentGetGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentGetGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys/{id}", code: 200 })),
@@ -994,7 +989,7 @@ export interface GPGKeyEmail {
   email?: string;
   verified?: boolean;
 }
-export const GPGKeyEmail = /*@__PURE__*/ S.suspend(() =>
+const GPGKeyEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     verified: S.optional(S.Boolean),
@@ -1002,12 +997,10 @@ export const GPGKeyEmail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GPGKeyEmail" }) as any as S.Schema<GPGKeyEmail>;
 
 export type GPGKeyEmailsList = Array<GPGKeyEmail>;
-export const GPGKeyEmailsList = /*@__PURE__*/ S.Array(
-  GPGKeyEmail,
-) as any as S.Schema<GPGKeyEmailsList>;
+const GPGKeyEmailsList = /*@__PURE__*/ S.Array(GPGKeyEmail) as any as S.Schema<GPGKeyEmailsList>;
 
 export type GPGKeySubkeysList = Array<GPGKey>;
-export const GPGKeySubkeysList = /*@__PURE__*/ S.Array(
+const GPGKeySubkeysList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GPGKey),
 ) as any as S.Schema<GPGKeySubkeysList>;
 
@@ -1027,7 +1020,7 @@ export interface GPGKey {
   subkeys?: GPGKeySubkeysList;
   verified?: boolean;
 }
-export const GPGKey = /*@__PURE__*/ S.suspend(() =>
+const GPGKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_certify: S.optional(S.Boolean),
     can_encrypt_comms: S.optional(S.Boolean),
@@ -1049,7 +1042,7 @@ export interface UserCurrentGetKeyRequest {
   /** id of key to get */
   id: number;
 }
-export const UserCurrentGetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentGetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/keys/{id}", code: 200 })),
@@ -1069,7 +1062,7 @@ export interface PublicKey {
   user?: User;
   verified?: boolean;
 }
-export const PublicKey = /*@__PURE__*/ S.suspend(() =>
+const PublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     fingerprint: S.optional(S.String),
@@ -1091,7 +1084,7 @@ export interface UserCurrentListFollowersRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserCurrentListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1101,11 +1094,11 @@ export const UserCurrentListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListFollowersRequest>;
 
 export type UserCurrentListFollowersResponseBodyList = Array<User>;
-export const UserCurrentListFollowersResponseBodyList =
+const UserCurrentListFollowersResponseBodyList =
   SearchUserResponseDataList as any as S.Schema<UserCurrentListFollowersResponseBodyList>;
 
 export type UserCurrentListFollowersResponse = UserCurrentListFollowersResponseBodyList;
-export const UserCurrentListFollowersResponse = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListFollowersResponse = /*@__PURE__*/ S.suspend(() =>
   UserCurrentListFollowersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserCurrentListFollowersResponse",
@@ -1117,7 +1110,7 @@ export interface UserCurrentListFollowingRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserCurrentListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1127,11 +1120,8 @@ export const UserCurrentListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListFollowingRequest>;
 
 export type UserCurrentListFollowingResponseBodyList = Array<User>;
-export const UserCurrentListFollowingResponseBodyList =
-  SearchUserResponseDataList as any as S.Schema<UserCurrentListFollowingResponseBodyList>;
-
 export type UserCurrentListFollowingResponse = UserCurrentListFollowingResponseBodyList;
-export const UserCurrentListFollowingResponse =
+const UserCurrentListFollowingResponse =
   UserCurrentListFollowersResponse as any as S.Schema<UserCurrentListFollowingResponse>;
 
 export interface UserCurrentListGPGKeysRequest {
@@ -1140,7 +1130,7 @@ export interface UserCurrentListGPGKeysRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserCurrentListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1150,12 +1140,12 @@ export const UserCurrentListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListGPGKeysRequest>;
 
 export type UserCurrentListGPGKeysResponseBodyList = Array<GPGKey>;
-export const UserCurrentListGPGKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const UserCurrentListGPGKeysResponseBodyList = /*@__PURE__*/ S.Array(
   GPGKey,
 ) as any as S.Schema<UserCurrentListGPGKeysResponseBodyList>;
 
 export type UserCurrentListGPGKeysResponse = UserCurrentListGPGKeysResponseBodyList;
-export const UserCurrentListGPGKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListGPGKeysResponse = /*@__PURE__*/ S.suspend(() =>
   UserCurrentListGPGKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserCurrentListGPGKeysResponse",
@@ -1169,7 +1159,7 @@ export interface UserCurrentListKeysRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserCurrentListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fingerprint: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1180,12 +1170,12 @@ export const UserCurrentListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListKeysRequest>;
 
 export type UserCurrentListKeysResponseBodyList = Array<PublicKey>;
-export const UserCurrentListKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const UserCurrentListKeysResponseBodyList = /*@__PURE__*/ S.Array(
   PublicKey,
 ) as any as S.Schema<UserCurrentListKeysResponseBodyList>;
 
 export type UserCurrentListKeysResponse = UserCurrentListKeysResponseBodyList;
-export const UserCurrentListKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   UserCurrentListKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserCurrentListKeysResponse",
@@ -1210,7 +1200,7 @@ export type UserCurrentListReposRequestOrderBy =
   | "feweststars"
   | "mostforks"
   | "fewestforks";
-export const UserCurrentListReposRequestOrderBy = S.String;
+const UserCurrentListReposRequestOrderBy = S.String;
 
 export interface UserCurrentListReposRequest {
   /** page number of results to return (1-based) */
@@ -1220,7 +1210,7 @@ export interface UserCurrentListReposRequest {
   /** order the repositories */
   order_by?: UserCurrentListReposRequestOrderBy | (string & {});
 }
-export const UserCurrentListReposRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1241,7 +1231,7 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-export const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
+const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_tracker_format: S.optional(S.String),
     external_tracker_regexp_pattern: S.optional(S.String),
@@ -1255,7 +1245,7 @@ export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-export const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
+const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_wiki_url: S.optional(S.String),
   }),
@@ -1270,7 +1260,7 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
+const InternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_only_contributors_to_track_time: S.optional(S.Boolean),
     enable_issue_dependencies: S.optional(S.Boolean),
@@ -1280,7 +1270,7 @@ export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
 
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-export const RepositoryObjectFormatName = S.String;
+const RepositoryObjectFormatName = S.String;
 
 /** Permission represents a set of permissions */
 export interface Permission {
@@ -1288,7 +1278,7 @@ export interface Permission {
   pull?: boolean;
   push?: boolean;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     pull: S.optional(S.Boolean),
@@ -1312,7 +1302,7 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.String),
     created: S.optional(S.String),
@@ -1330,13 +1320,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-export const TeamPermission = S.String;
+const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = HookEventsList as any as S.Schema<TeamUnitsList>;
+const TeamUnitsList = HookEventsList as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = CreateHookOptionConfig as any as S.Schema<TeamUnitsMapMap>;
+const TeamUnitsMapMap = CreateHookOptionConfig as any as S.Schema<TeamUnitsMapMap>;
 
 /** Team represents a team in an organization */
 export interface Team {
@@ -1350,7 +1340,7 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_org_repo: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -1365,9 +1355,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type RepoTransferTeamsList = Array<Team>;
-export const RepoTransferTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RepoTransferTeamsList>;
+const RepoTransferTeamsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<RepoTransferTeamsList>;
 
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
@@ -1375,7 +1363,7 @@ export interface RepoTransfer {
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
+const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doer: S.optional(User),
     recipient: S.optional(User),
@@ -1384,7 +1372,7 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = ActionRunnerLabelsList as any as S.Schema<RepositoryTopicsList>;
+const RepositoryTopicsList = ActionRunnerLabelsList as any as S.Schema<RepositoryTopicsList>;
 
 /** Repository represents a repository */
 export interface Repository {
@@ -1458,7 +1446,7 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_fast_forward_only_merge: S.optional(S.Boolean),
     allow_merge_commits: S.optional(S.Boolean),
@@ -1530,12 +1518,12 @@ export const Repository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
 
 export type UserCurrentListReposResponseBodyList = Array<Repository>;
-export const UserCurrentListReposResponseBodyList = /*@__PURE__*/ S.Array(
+const UserCurrentListReposResponseBodyList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<UserCurrentListReposResponseBodyList>;
 
 export type UserCurrentListReposResponse = UserCurrentListReposResponseBodyList;
-export const UserCurrentListReposResponse = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListReposResponse = /*@__PURE__*/ S.suspend(() =>
   UserCurrentListReposResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserCurrentListReposResponse",
@@ -1547,7 +1535,7 @@ export interface UserCurrentListStarredRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserCurrentListStarredRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListStarredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1557,11 +1545,8 @@ export const UserCurrentListStarredRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListStarredRequest>;
 
 export type UserCurrentListStarredResponseBodyList = Array<Repository>;
-export const UserCurrentListStarredResponseBodyList =
-  UserCurrentListReposResponseBodyList as any as S.Schema<UserCurrentListStarredResponseBodyList>;
-
 export type UserCurrentListStarredResponse = UserCurrentListStarredResponseBodyList;
-export const UserCurrentListStarredResponse =
+const UserCurrentListStarredResponse =
   UserCurrentListReposResponse as any as S.Schema<UserCurrentListStarredResponse>;
 
 export interface UserCurrentListSubscriptionsRequest {
@@ -1570,7 +1555,7 @@ export interface UserCurrentListSubscriptionsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserCurrentListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1580,11 +1565,8 @@ export const UserCurrentListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListSubscriptionsRequest>;
 
 export type UserCurrentListSubscriptionsResponseBodyList = Array<Repository>;
-export const UserCurrentListSubscriptionsResponseBodyList =
-  UserCurrentListReposResponseBodyList as any as S.Schema<UserCurrentListSubscriptionsResponseBodyList>;
-
 export type UserCurrentListSubscriptionsResponse = UserCurrentListSubscriptionsResponseBodyList;
-export const UserCurrentListSubscriptionsResponse =
+const UserCurrentListSubscriptionsResponse =
   UserCurrentListReposResponse as any as S.Schema<UserCurrentListSubscriptionsResponse>;
 
 export interface UserCurrentPostGPGKeyRequest {
@@ -1592,7 +1574,7 @@ export interface UserCurrentPostGPGKeyRequest {
   armored_public_key: string;
   armored_signature?: string;
 }
-export const UserCurrentPostGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentPostGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     armored_public_key: S.String,
     armored_signature: S.optional(S.String),
@@ -1609,7 +1591,7 @@ export interface UserCurrentPostKeyRequest {
   /** Title of the key to add */
   title: string;
 }
-export const UserCurrentPostKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentPostKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     read_only: S.optional(S.Boolean),
@@ -1623,7 +1605,7 @@ export interface UserCurrentPutFollowRequest {
   /** username of user to follow */
   username: string;
 }
-export const UserCurrentPutFollowRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentPutFollowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/user/following/{username}", code: 200 })),
@@ -1632,7 +1614,7 @@ export const UserCurrentPutFollowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentPutFollowRequest>;
 
 export interface UserCurrentPutFollowResponse {}
-export const UserCurrentPutFollowResponse =
+const UserCurrentPutFollowResponse =
   CreateUserVariableResponse as any as S.Schema<UserCurrentPutFollowResponse>;
 
 export interface UserCurrentPutStarRequest {
@@ -1641,7 +1623,7 @@ export interface UserCurrentPutStarRequest {
   /** name of the repo to star */
   repo: string;
 }
-export const UserCurrentPutStarRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentPutStarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1651,7 +1633,7 @@ export const UserCurrentPutStarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentPutStarRequest>;
 
 export interface UserCurrentPutStarResponse {}
-export const UserCurrentPutStarResponse =
+const UserCurrentPutStarResponse =
   CreateUserVariableResponse as any as S.Schema<UserCurrentPutStarResponse>;
 
 export interface UserCurrentTrackedTimesRequest {
@@ -1664,7 +1646,7 @@ export interface UserCurrentTrackedTimesRequest {
   /** Only show times updated before the given time. This is a timestamp in RFC 3339 format */
   before?: string;
 }
-export const UserCurrentTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1676,7 +1658,7 @@ export const UserCurrentTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentTrackedTimesRequest>;
 
 export type AttachmentType = "attachment" | "external";
-export const AttachmentType = S.String;
+const AttachmentType = S.String;
 
 /** Attachment a generic attachment */
 export interface Attachment {
@@ -1689,7 +1671,7 @@ export interface Attachment {
   type?: AttachmentType;
   uuid?: string;
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     browser_download_url: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -1703,12 +1685,10 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type IssueAssetsList = Array<Attachment>;
-export const IssueAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<IssueAssetsList>;
+const IssueAssetsList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<IssueAssetsList>;
 
 export type IssueAssigneesList = Array<User>;
-export const IssueAssigneesList = SearchUserResponseDataList as any as S.Schema<IssueAssigneesList>;
+const IssueAssigneesList = SearchUserResponseDataList as any as S.Schema<IssueAssigneesList>;
 
 /** Label a label to an issue or a pr */
 export interface Label {
@@ -1720,7 +1700,7 @@ export interface Label {
   name: string;
   url?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.String,
     description: S.optional(S.String),
@@ -1733,7 +1713,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type IssueLabelsList = Array<Label>;
-export const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
+const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
 
 /** Milestone milestone is a collection of issues on one repository */
 export interface Milestone {
@@ -1748,7 +1728,7 @@ export interface Milestone {
   title?: string;
   updated_at?: string;
 }
-export const Milestone = /*@__PURE__*/ S.suspend(() =>
+const Milestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closed_at: S.optional(S.String),
     closed_issues: S.optional(S.Number),
@@ -1770,7 +1750,7 @@ export interface PullRequestMeta {
   merged?: boolean;
   merged_at?: string;
 }
-export const PullRequestMeta = /*@__PURE__*/ S.suspend(() =>
+const PullRequestMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     draft: S.optional(S.Boolean),
     html_url: S.optional(S.String),
@@ -1807,7 +1787,7 @@ export interface Issue {
   url?: string;
   user?: User;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
+const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(IssueAssetsList),
     assignee: S.optional(User),
@@ -1850,7 +1830,7 @@ export interface TrackedTime {
   user_id?: number;
   user_name?: string;
 }
-export const TrackedTime = /*@__PURE__*/ S.suspend(() =>
+const TrackedTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1863,12 +1843,12 @@ export const TrackedTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrackedTime" }) as any as S.Schema<TrackedTime>;
 
 export type UserCurrentTrackedTimesResponseBodyList = Array<TrackedTime>;
-export const UserCurrentTrackedTimesResponseBodyList = /*@__PURE__*/ S.Array(
+const UserCurrentTrackedTimesResponseBodyList = /*@__PURE__*/ S.Array(
   TrackedTime,
 ) as any as S.Schema<UserCurrentTrackedTimesResponseBodyList>;
 
 export type UserCurrentTrackedTimesResponse = UserCurrentTrackedTimesResponseBodyList;
-export const UserCurrentTrackedTimesResponse = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentTrackedTimesResponse = /*@__PURE__*/ S.suspend(() =>
   UserCurrentTrackedTimesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserCurrentTrackedTimesResponse",
@@ -1880,7 +1860,7 @@ export interface UserDeleteAccessTokenRequest {
   /** token to be deleted, identified by ID and if not available by name */
   token: string;
 }
-export const UserDeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UserDeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -1890,56 +1870,56 @@ export const UserDeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDeleteAccessTokenRequest>;
 
 export interface UserDeleteAccessTokenResponse {}
-export const UserDeleteAccessTokenResponse =
+const UserDeleteAccessTokenResponse =
   CreateUserVariableResponse as any as S.Schema<UserDeleteAccessTokenResponse>;
 
 export interface UserDeleteAvatarRequest {}
-export const UserDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
+const UserDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/user/avatar", code: 200 })),
 ).annotate({ identifier: "UserDeleteAvatarRequest" }) as any as S.Schema<UserDeleteAvatarRequest>;
 
 export interface UserDeleteAvatarResponse {}
-export const UserDeleteAvatarResponse =
+const UserDeleteAvatarResponse =
   CreateUserVariableResponse as any as S.Schema<UserDeleteAvatarResponse>;
 
 /** email addresses to delete */
 export type UserDeleteEmailRequestEmailsList = Array<string>;
-export const UserDeleteEmailRequestEmailsList =
+const UserDeleteEmailRequestEmailsList =
   ActionRunnerLabelsList as any as S.Schema<UserDeleteEmailRequestEmailsList>;
 
 export interface UserDeleteEmailRequest {
   /** email addresses to delete */
   emails?: UserDeleteEmailRequestEmailsList;
 }
-export const UserDeleteEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const UserDeleteEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(UserDeleteEmailRequestEmailsList),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/emails", code: 200 })),
 ).annotate({ identifier: "UserDeleteEmailRequest" }) as any as S.Schema<UserDeleteEmailRequest>;
 
 export interface UserDeleteEmailResponse {}
-export const UserDeleteEmailResponse =
+const UserDeleteEmailResponse =
   CreateUserVariableResponse as any as S.Schema<UserDeleteEmailResponse>;
 
 export interface UserDeleteHookRequest {
   /** id of the hook to delete */
   id: number;
 }
-export const UserDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
+const UserDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/hooks/{id}", code: 200 })),
 ).annotate({ identifier: "UserDeleteHookRequest" }) as any as S.Schema<UserDeleteHookRequest>;
 
 export interface UserDeleteHookResponse {}
-export const UserDeleteHookResponse =
+const UserDeleteHookResponse =
   CreateUserVariableResponse as any as S.Schema<UserDeleteHookResponse>;
 
 export interface UserDeleteOAuth2ApplicationRequest {
   /** token to be deleted */
   id: number;
 }
-export const UserDeleteOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UserDeleteOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/applications/oauth2/{id}", code: 200 })),
@@ -1948,15 +1928,15 @@ export const UserDeleteOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDeleteOAuth2ApplicationRequest>;
 
 export interface UserDeleteOAuth2ApplicationResponse {}
-export const UserDeleteOAuth2ApplicationResponse =
+const UserDeleteOAuth2ApplicationResponse =
   FollowUserCurrentActivityPubResponse as any as S.Schema<UserDeleteOAuth2ApplicationResponse>;
 
 export type UserEditHookRequestConfigMap = { [key: string]: string | undefined };
-export const UserEditHookRequestConfigMap =
+const UserEditHookRequestConfigMap =
   CreateHookOptionConfig as any as S.Schema<UserEditHookRequestConfigMap>;
 
 export type UserEditHookRequestEventsList = Array<string>;
-export const UserEditHookRequestEventsList =
+const UserEditHookRequestEventsList =
   ActionRunnerLabelsList as any as S.Schema<UserEditHookRequestEventsList>;
 
 export interface UserEditHookRequest {
@@ -1968,7 +1948,7 @@ export interface UserEditHookRequest {
   config?: UserEditHookRequestConfigMap;
   events?: UserEditHookRequestEventsList;
 }
-export const UserEditHookRequest = /*@__PURE__*/ S.suspend(() =>
+const UserEditHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     active: S.optional(S.Boolean),
@@ -1980,7 +1960,7 @@ export const UserEditHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserEditHookRequest" }) as any as S.Schema<UserEditHookRequest>;
 
 export interface UserGetCurrentRequest {}
-export const UserGetCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
 ).annotate({ identifier: "UserGetCurrentRequest" }) as any as S.Schema<UserGetCurrentRequest>;
 
@@ -1988,7 +1968,7 @@ export interface UserGetHeatmapDataRequest {
   /** username of user to get */
   username: string;
 }
-export const UserGetHeatmapDataRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetHeatmapDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{username}/heatmap", code: 200 })),
@@ -2001,7 +1981,7 @@ export interface UserHeatmapData {
   contributions?: number;
   timestamp?: number;
 }
-export const UserHeatmapData = /*@__PURE__*/ S.suspend(() =>
+const UserHeatmapData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contributions: S.optional(S.Number),
     timestamp: S.optional(S.Number),
@@ -2009,12 +1989,12 @@ export const UserHeatmapData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserHeatmapData" }) as any as S.Schema<UserHeatmapData>;
 
 export type UserGetHeatmapDataResponseBodyList = Array<UserHeatmapData>;
-export const UserGetHeatmapDataResponseBodyList = /*@__PURE__*/ S.Array(
+const UserGetHeatmapDataResponseBodyList = /*@__PURE__*/ S.Array(
   UserHeatmapData,
 ) as any as S.Schema<UserGetHeatmapDataResponseBodyList>;
 
 export type UserGetHeatmapDataResponse = UserGetHeatmapDataResponseBodyList;
-export const UserGetHeatmapDataResponse = /*@__PURE__*/ S.suspend(() =>
+const UserGetHeatmapDataResponse = /*@__PURE__*/ S.suspend(() =>
   UserGetHeatmapDataResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserGetHeatmapDataResponse",
@@ -2024,7 +2004,7 @@ export interface UserGetHookRequest {
   /** id of the hook to get */
   id: number;
 }
-export const UserGetHookRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/hooks/{id}", code: 200 })),
@@ -2034,7 +2014,7 @@ export interface UserGetOAuth2ApplicationRequest {
   /** Application ID to be found */
   id: number;
 }
-export const UserGetOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/applications/oauth2/{id}", code: 200 })),
@@ -2048,7 +2028,7 @@ export interface UserGetOAuth2ApplicationsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserGetOAuth2ApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetOAuth2ApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2058,25 +2038,25 @@ export const UserGetOAuth2ApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGetOAuth2ApplicationsRequest>;
 
 export type UserGetOAuth2ApplicationsResponseBodyList = Array<OAuth2Application>;
-export const UserGetOAuth2ApplicationsResponseBodyList = /*@__PURE__*/ S.Array(
+const UserGetOAuth2ApplicationsResponseBodyList = /*@__PURE__*/ S.Array(
   OAuth2Application,
 ) as any as S.Schema<UserGetOAuth2ApplicationsResponseBodyList>;
 
 export type UserGetOAuth2ApplicationsResponse = UserGetOAuth2ApplicationsResponseBodyList;
-export const UserGetOAuth2ApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const UserGetOAuth2ApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   UserGetOAuth2ApplicationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserGetOAuth2ApplicationsResponse",
 }) as any as S.Schema<UserGetOAuth2ApplicationsResponse>;
 
 export interface UserGetQuotaRequest {}
-export const UserGetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quota", code: 200 })),
 ).annotate({ identifier: "UserGetQuotaRequest" }) as any as S.Schema<UserGetQuotaRequest>;
 
 /** Subjects the rule affects */
 export type QuotaRuleInfoSubjectsList = Array<string>;
-export const QuotaRuleInfoSubjectsList =
+const QuotaRuleInfoSubjectsList =
   ActionRunnerLabelsList as any as S.Schema<QuotaRuleInfoSubjectsList>;
 
 /** QuotaRuleInfo contains information about a quota rule */
@@ -2088,7 +2068,7 @@ export interface QuotaRuleInfo {
   /** Subjects the rule affects */
   subjects?: QuotaRuleInfoSubjectsList;
 }
-export const QuotaRuleInfo = /*@__PURE__*/ S.suspend(() =>
+const QuotaRuleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     name: S.optional(S.String),
@@ -2098,7 +2078,7 @@ export const QuotaRuleInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Rules associated with the group */
 export type QuotaGroupRulesList = Array<QuotaRuleInfo>;
-export const QuotaGroupRulesList = /*@__PURE__*/ S.Array(
+const QuotaGroupRulesList = /*@__PURE__*/ S.Array(
   QuotaRuleInfo,
 ) as any as S.Schema<QuotaGroupRulesList>;
 
@@ -2109,7 +2089,7 @@ export interface QuotaGroup {
   /** Rules associated with the group */
   rules?: QuotaGroupRulesList;
 }
-export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
+const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     rules: S.optional(QuotaGroupRulesList),
@@ -2118,7 +2098,7 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** QuotaGroupList represents a list of quota groups */
 export type QuotaGroupList = Array<QuotaGroup>;
-export const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
+const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
 
 /** QuotaUsedSizeAssetsAttachments represents the size-based attachment quota usage of a user */
 export interface QuotaUsedSizeAssetsAttachments {
@@ -2127,7 +2107,7 @@ export interface QuotaUsedSizeAssetsAttachments {
   /** Storage size used for the user's release attachments */
   releases?: number;
 }
-export const QuotaUsedSizeAssetsAttachments = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedSizeAssetsAttachments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(S.Number),
     releases: S.optional(S.Number),
@@ -2141,7 +2121,7 @@ export interface QuotaUsedSizeAssetsPackages {
   /** Storage suze used for the user's packages */
   all?: number;
 }
-export const QuotaUsedSizeAssetsPackages = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedSizeAssetsPackages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Number),
   }),
@@ -2156,7 +2136,7 @@ export interface QuotaUsedSizeAssets {
   attachments?: QuotaUsedSizeAssetsAttachments;
   packages?: QuotaUsedSizeAssetsPackages;
 }
-export const QuotaUsedSizeAssets = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedSizeAssets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(S.Number),
     attachments: S.optional(QuotaUsedSizeAssetsAttachments),
@@ -2169,7 +2149,7 @@ export interface QuotaUsedSizeGit {
   /** Storage size of the user's Git LFS objects */
   LFS?: number;
 }
-export const QuotaUsedSizeGit = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedSizeGit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LFS: S.optional(S.Number),
   }),
@@ -2182,7 +2162,7 @@ export interface QuotaUsedSizeRepos {
   /** Storage size of the user's public repositories */
   public?: number;
 }
-export const QuotaUsedSizeRepos = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedSizeRepos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     private: S.optional(S.Number),
     public: S.optional(S.Number),
@@ -2195,7 +2175,7 @@ export interface QuotaUsedSize {
   git?: QuotaUsedSizeGit;
   repos?: QuotaUsedSizeRepos;
 }
-export const QuotaUsedSize = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(QuotaUsedSizeAssets),
     git: S.optional(QuotaUsedSizeGit),
@@ -2207,7 +2187,7 @@ export const QuotaUsedSize = /*@__PURE__*/ S.suspend(() =>
 export interface QuotaUsed {
   size?: QuotaUsedSize;
 }
-export const QuotaUsed = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(QuotaUsedSize),
   }),
@@ -2218,7 +2198,7 @@ export interface QuotaInfo {
   groups?: QuotaGroupList;
   used?: QuotaUsed;
 }
-export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
+const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(QuotaGroupList),
     used: S.optional(QuotaUsed),
@@ -2231,7 +2211,7 @@ export interface UserGetStopWatchesRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserGetStopWatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetStopWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2250,7 +2230,7 @@ export interface StopWatch {
   repo_owner_name?: string;
   seconds?: number;
 }
-export const StopWatch = /*@__PURE__*/ S.suspend(() =>
+const StopWatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     duration: S.optional(S.String),
@@ -2263,12 +2243,12 @@ export const StopWatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopWatch" }) as any as S.Schema<StopWatch>;
 
 export type UserGetStopWatchesResponseBodyList = Array<StopWatch>;
-export const UserGetStopWatchesResponseBodyList = /*@__PURE__*/ S.Array(
+const UserGetStopWatchesResponseBodyList = /*@__PURE__*/ S.Array(
   StopWatch,
 ) as any as S.Schema<UserGetStopWatchesResponseBodyList>;
 
 export type UserGetStopWatchesResponse = UserGetStopWatchesResponseBodyList;
-export const UserGetStopWatchesResponse = /*@__PURE__*/ S.suspend(() =>
+const UserGetStopWatchesResponse = /*@__PURE__*/ S.suspend(() =>
   UserGetStopWatchesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserGetStopWatchesResponse",
@@ -2282,7 +2262,7 @@ export interface UserGetTokensRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserGetTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const UserGetTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2291,12 +2271,12 @@ export const UserGetTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserGetTokensRequest" }) as any as S.Schema<UserGetTokensRequest>;
 
 export type UserGetTokensResponseBodyList = Array<AccessToken>;
-export const UserGetTokensResponseBodyList = /*@__PURE__*/ S.Array(
+const UserGetTokensResponseBodyList = /*@__PURE__*/ S.Array(
   AccessToken,
 ) as any as S.Schema<UserGetTokensResponseBodyList>;
 
 export type UserGetTokensResponse = UserGetTokensResponseBodyList;
-export const UserGetTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const UserGetTokensResponse = /*@__PURE__*/ S.suspend(() =>
   UserGetTokensResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserGetTokensResponse" }) as any as S.Schema<UserGetTokensResponse>;
 
@@ -2312,7 +2292,7 @@ export interface UserListActivityFeedsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     only_performed_by: S.optional(S.Boolean.pipe(T.Query("only-performed-by"))),
@@ -2326,7 +2306,7 @@ export const UserListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-export const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
+const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
 
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
@@ -2352,7 +2332,7 @@ export interface Comment {
   updated_at?: string;
   user?: User;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(CommentAssetsList),
     body: S.optional(S.String),
@@ -2397,7 +2377,7 @@ export type ActivityOpType =
   | "pull_review_dismissed"
   | "pull_request_ready_for_review"
   | "auto_merge_pull_request";
-export const ActivityOpType = S.String;
+const ActivityOpType = S.String;
 
 export interface Activity {
   act_user?: User;
@@ -2415,7 +2395,7 @@ export interface Activity {
   repo_id?: number;
   user_id?: number;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     act_user: S.optional(User),
     act_user_id: S.optional(S.Number),
@@ -2434,12 +2414,12 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type UserListActivityFeedsResponseBodyList = Array<Activity>;
-export const UserListActivityFeedsResponseBodyList = /*@__PURE__*/ S.Array(
+const UserListActivityFeedsResponseBodyList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<UserListActivityFeedsResponseBodyList>;
 
 export type UserListActivityFeedsResponse = UserListActivityFeedsResponseBodyList;
-export const UserListActivityFeedsResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListActivityFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   UserListActivityFeedsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserListActivityFeedsResponse",
@@ -2451,7 +2431,7 @@ export interface UserListBlockedUsersRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListBlockedUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListBlockedUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2464,7 +2444,7 @@ export interface BlockedUser {
   block_id?: number;
   created_at?: string;
 }
-export const BlockedUser = /*@__PURE__*/ S.suspend(() =>
+const BlockedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     block_id: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -2472,29 +2452,25 @@ export const BlockedUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockedUser" }) as any as S.Schema<BlockedUser>;
 
 export type UserListBlockedUsersResponseBodyList = Array<BlockedUser>;
-export const UserListBlockedUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const UserListBlockedUsersResponseBodyList = /*@__PURE__*/ S.Array(
   BlockedUser,
 ) as any as S.Schema<UserListBlockedUsersResponseBodyList>;
 
 export type UserListBlockedUsersResponse = UserListBlockedUsersResponseBodyList;
-export const UserListBlockedUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListBlockedUsersResponse = /*@__PURE__*/ S.suspend(() =>
   UserListBlockedUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserListBlockedUsersResponse",
 }) as any as S.Schema<UserListBlockedUsersResponse>;
 
 export interface UserListEmailsRequest {}
-export const UserListEmailsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListEmailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/emails", code: 200 })),
 ).annotate({ identifier: "UserListEmailsRequest" }) as any as S.Schema<UserListEmailsRequest>;
 
 export type UserListEmailsResponseBodyList = Array<Email>;
-export const UserListEmailsResponseBodyList =
-  UserAddEmailResponseBodyList as any as S.Schema<UserListEmailsResponseBodyList>;
-
 export type UserListEmailsResponse = UserListEmailsResponseBodyList;
-export const UserListEmailsResponse =
-  UserAddEmailResponse as any as S.Schema<UserListEmailsResponse>;
+const UserListEmailsResponse = UserAddEmailResponse as any as S.Schema<UserListEmailsResponse>;
 
 export interface UserListFollowersRequest {
   /** username of user */
@@ -2504,7 +2480,7 @@ export interface UserListFollowersRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2513,11 +2489,8 @@ export const UserListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListFollowersRequest" }) as any as S.Schema<UserListFollowersRequest>;
 
 export type UserListFollowersResponseBodyList = Array<User>;
-export const UserListFollowersResponseBodyList =
-  SearchUserResponseDataList as any as S.Schema<UserListFollowersResponseBodyList>;
-
 export type UserListFollowersResponse = UserListFollowersResponseBodyList;
-export const UserListFollowersResponse =
+const UserListFollowersResponse =
   UserCurrentListFollowersResponse as any as S.Schema<UserListFollowersResponse>;
 
 export interface UserListFollowingRequest {
@@ -2528,7 +2501,7 @@ export interface UserListFollowingRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2537,11 +2510,8 @@ export const UserListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListFollowingRequest" }) as any as S.Schema<UserListFollowingRequest>;
 
 export type UserListFollowingResponseBodyList = Array<User>;
-export const UserListFollowingResponseBodyList =
-  SearchUserResponseDataList as any as S.Schema<UserListFollowingResponseBodyList>;
-
 export type UserListFollowingResponse = UserListFollowingResponseBodyList;
-export const UserListFollowingResponse =
+const UserListFollowingResponse =
   UserCurrentListFollowersResponse as any as S.Schema<UserListFollowingResponse>;
 
 export interface UserListGPGKeysRequest {
@@ -2552,7 +2522,7 @@ export interface UserListGPGKeysRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2561,11 +2531,11 @@ export const UserListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListGPGKeysRequest" }) as any as S.Schema<UserListGPGKeysRequest>;
 
 export type UserListGPGKeysResponseBodyList = Array<GPGKey>;
-export const UserListGPGKeysResponseBodyList =
+const UserListGPGKeysResponseBodyList =
   UserCurrentListGPGKeysResponseBodyList as any as S.Schema<UserListGPGKeysResponseBodyList>;
 
 export type UserListGPGKeysResponse = UserListGPGKeysResponseBodyList;
-export const UserListGPGKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListGPGKeysResponse = /*@__PURE__*/ S.suspend(() =>
   UserListGPGKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserListGPGKeysResponse" }) as any as S.Schema<UserListGPGKeysResponse>;
 
@@ -2575,7 +2545,7 @@ export interface UserListHooksRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListHooksRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListHooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2583,12 +2553,12 @@ export const UserListHooksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListHooksRequest" }) as any as S.Schema<UserListHooksRequest>;
 
 export type UserListHooksResponseBodyList = Array<Hook>;
-export const UserListHooksResponseBodyList = /*@__PURE__*/ S.Array(
+const UserListHooksResponseBodyList = /*@__PURE__*/ S.Array(
   Hook,
 ) as any as S.Schema<UserListHooksResponseBodyList>;
 
 export type UserListHooksResponse = UserListHooksResponseBodyList;
-export const UserListHooksResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListHooksResponse = /*@__PURE__*/ S.suspend(() =>
   UserListHooksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserListHooksResponse" }) as any as S.Schema<UserListHooksResponse>;
 
@@ -2602,7 +2572,7 @@ export interface UserListKeysRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     fingerprint: S.optional(S.String.pipe(T.Query())),
@@ -2612,11 +2582,11 @@ export const UserListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListKeysRequest" }) as any as S.Schema<UserListKeysRequest>;
 
 export type UserListKeysResponseBodyList = Array<PublicKey>;
-export const UserListKeysResponseBodyList =
+const UserListKeysResponseBodyList =
   UserCurrentListKeysResponseBodyList as any as S.Schema<UserListKeysResponseBodyList>;
 
 export type UserListKeysResponse = UserListKeysResponseBodyList;
-export const UserListKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   UserListKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserListKeysResponse" }) as any as S.Schema<UserListKeysResponse>;
 
@@ -2626,7 +2596,7 @@ export interface UserListQuotaArtifactsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListQuotaArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListQuotaArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2644,7 +2614,7 @@ export interface QuotaUsedArtifact {
   /** Size of the artifact (compressed) */
   size?: number;
 }
-export const QuotaUsedArtifact = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     html_url: S.optional(S.String),
     name: S.optional(S.String),
@@ -2654,12 +2624,12 @@ export const QuotaUsedArtifact = /*@__PURE__*/ S.suspend(() =>
 
 /** QuotaUsedArtifactList represents a list of artifacts counting towards a user's quota */
 export type QuotaUsedArtifactList = Array<QuotaUsedArtifact>;
-export const QuotaUsedArtifactList = /*@__PURE__*/ S.Array(
+const QuotaUsedArtifactList = /*@__PURE__*/ S.Array(
   QuotaUsedArtifact,
 ) as any as S.Schema<QuotaUsedArtifactList>;
 
 export type UserListQuotaArtifactsResponse = QuotaUsedArtifactList;
-export const UserListQuotaArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListQuotaArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
   QuotaUsedArtifactList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserListQuotaArtifactsResponse",
@@ -2671,7 +2641,7 @@ export interface UserListQuotaAttachmentsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListQuotaAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListQuotaAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2687,7 +2657,7 @@ export interface QuotaUsedAttachmentContainedIn {
   /** HTML URL for the object that contains this attachment */
   html_url?: string;
 }
-export const QuotaUsedAttachmentContainedIn = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedAttachmentContainedIn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_url: S.optional(S.String),
     html_url: S.optional(S.String),
@@ -2707,7 +2677,7 @@ export interface QuotaUsedAttachment {
   /** Size of the attachment (in bytes) */
   size?: number;
 }
-export const QuotaUsedAttachment = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_url: S.optional(S.String),
     contained_in: S.optional(QuotaUsedAttachmentContainedIn),
@@ -2718,12 +2688,12 @@ export const QuotaUsedAttachment = /*@__PURE__*/ S.suspend(() =>
 
 /** QuotaUsedAttachmentList represents a list of attachment counting towards a user's quota */
 export type QuotaUsedAttachmentList = Array<QuotaUsedAttachment>;
-export const QuotaUsedAttachmentList = /*@__PURE__*/ S.Array(
+const QuotaUsedAttachmentList = /*@__PURE__*/ S.Array(
   QuotaUsedAttachment,
 ) as any as S.Schema<QuotaUsedAttachmentList>;
 
 export type UserListQuotaAttachmentsResponse = QuotaUsedAttachmentList;
-export const UserListQuotaAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListQuotaAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   QuotaUsedAttachmentList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserListQuotaAttachmentsResponse",
@@ -2735,7 +2705,7 @@ export interface UserListQuotaPackagesRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListQuotaPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListQuotaPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2757,7 +2727,7 @@ export interface QuotaUsedPackage {
   /** Version of the package */
   version?: string;
 }
-export const QuotaUsedPackage = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsedPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     html_url: S.optional(S.String),
     name: S.optional(S.String),
@@ -2769,12 +2739,12 @@ export const QuotaUsedPackage = /*@__PURE__*/ S.suspend(() =>
 
 /** QuotaUsedPackageList represents a list of packages counting towards a user's quota */
 export type QuotaUsedPackageList = Array<QuotaUsedPackage>;
-export const QuotaUsedPackageList = /*@__PURE__*/ S.Array(
+const QuotaUsedPackageList = /*@__PURE__*/ S.Array(
   QuotaUsedPackage,
 ) as any as S.Schema<QuotaUsedPackageList>;
 
 export type UserListQuotaPackagesResponse = QuotaUsedPackageList;
-export const UserListQuotaPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListQuotaPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   QuotaUsedPackageList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserListQuotaPackagesResponse",
@@ -2788,7 +2758,7 @@ export interface UserListReposRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListReposRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2797,11 +2767,11 @@ export const UserListReposRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListReposRequest" }) as any as S.Schema<UserListReposRequest>;
 
 export type UserListReposResponseBodyList = Array<Repository>;
-export const UserListReposResponseBodyList =
+const UserListReposResponseBodyList =
   UserCurrentListReposResponseBodyList as any as S.Schema<UserListReposResponseBodyList>;
 
 export type UserListReposResponse = UserListReposResponseBodyList;
-export const UserListReposResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListReposResponse = /*@__PURE__*/ S.suspend(() =>
   UserListReposResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserListReposResponse" }) as any as S.Schema<UserListReposResponse>;
 
@@ -2813,7 +2783,7 @@ export interface UserListStarredRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListStarredRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListStarredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2822,12 +2792,8 @@ export const UserListStarredRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListStarredRequest" }) as any as S.Schema<UserListStarredRequest>;
 
 export type UserListStarredResponseBodyList = Array<Repository>;
-export const UserListStarredResponseBodyList =
-  UserCurrentListReposResponseBodyList as any as S.Schema<UserListStarredResponseBodyList>;
-
 export type UserListStarredResponse = UserListStarredResponseBodyList;
-export const UserListStarredResponse =
-  UserListReposResponse as any as S.Schema<UserListStarredResponse>;
+const UserListStarredResponse = UserListReposResponse as any as S.Schema<UserListStarredResponse>;
 
 export interface UserListSubscriptionsRequest {
   /** username of the user */
@@ -2837,7 +2803,7 @@ export interface UserListSubscriptionsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2848,11 +2814,8 @@ export const UserListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserListSubscriptionsRequest>;
 
 export type UserListSubscriptionsResponseBodyList = Array<Repository>;
-export const UserListSubscriptionsResponseBodyList =
-  UserCurrentListReposResponseBodyList as any as S.Schema<UserListSubscriptionsResponseBodyList>;
-
 export type UserListSubscriptionsResponse = UserListSubscriptionsResponseBodyList;
-export const UserListSubscriptionsResponse =
+const UserListSubscriptionsResponse =
   UserCurrentListReposResponse as any as S.Schema<UserListSubscriptionsResponse>;
 
 export interface UserListTeamsRequest {
@@ -2861,7 +2824,7 @@ export interface UserListTeamsRequest {
   /** page size of results */
   limit?: number;
 }
-export const UserListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2869,11 +2832,11 @@ export const UserListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListTeamsRequest" }) as any as S.Schema<UserListTeamsRequest>;
 
 export type UserListTeamsResponseBodyList = Array<Team>;
-export const UserListTeamsResponseBodyList =
+const UserListTeamsResponseBodyList =
   RepoTransferTeamsList as any as S.Schema<UserListTeamsResponseBodyList>;
 
 export type UserListTeamsResponse = UserListTeamsResponseBodyList;
-export const UserListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   UserListTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UserListTeamsResponse" }) as any as S.Schema<UserListTeamsResponse>;
 
@@ -2881,7 +2844,7 @@ export interface UserSearchRunJobsRequest {
   /** a comma separated list of run job labels to search for */
   labels?: string;
 }
-export const UserSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const UserSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners/jobs", code: 200 })),
@@ -2889,13 +2852,11 @@ export const UserSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-export const ActionRunJobNeedsList =
-  ActionRunnerLabelsList as any as S.Schema<ActionRunJobNeedsList>;
+const ActionRunJobNeedsList = ActionRunnerLabelsList as any as S.Schema<ActionRunJobNeedsList>;
 
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-export const ActionRunJobRunsOnList =
-  ActionRunnerLabelsList as any as S.Schema<ActionRunJobRunsOnList>;
+const ActionRunJobRunsOnList = ActionRunnerLabelsList as any as S.Schema<ActionRunJobRunsOnList>;
 
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
@@ -2922,7 +2883,7 @@ export interface ActionRunJob {
   /** the action run job latest task id */
   task_id?: number;
 }
-export const ActionRunJob = /*@__PURE__*/ S.suspend(() =>
+const ActionRunJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attempt: S.optional(S.Number),
     handle: S.optional(S.String),
@@ -2939,12 +2900,12 @@ export const ActionRunJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionRunJob" }) as any as S.Schema<ActionRunJob>;
 
 export type UserSearchRunJobsResponseBodyList = Array<ActionRunJob>;
-export const UserSearchRunJobsResponseBodyList = /*@__PURE__*/ S.Array(
+const UserSearchRunJobsResponseBodyList = /*@__PURE__*/ S.Array(
   ActionRunJob,
 ) as any as S.Schema<UserSearchRunJobsResponseBodyList>;
 
 export type UserSearchRunJobsResponse = UserSearchRunJobsResponseBodyList;
-export const UserSearchRunJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const UserSearchRunJobsResponse = /*@__PURE__*/ S.suspend(() =>
   UserSearchRunJobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UserSearchRunJobsResponse",
@@ -2954,18 +2915,18 @@ export interface UserUpdateAvatarRequest {
   /** image must be base64 encoded */
   image?: string;
 }
-export const UserUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
+const UserUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/user/avatar", code: 200 })),
 ).annotate({ identifier: "UserUpdateAvatarRequest" }) as any as S.Schema<UserUpdateAvatarRequest>;
 
 export interface UserUpdateAvatarResponse {}
-export const UserUpdateAvatarResponse =
+const UserUpdateAvatarResponse =
   CreateUserVariableResponse as any as S.Schema<UserUpdateAvatarResponse>;
 
 export type UserUpdateOAuth2ApplicationRequestRedirectUrisList = Array<string>;
-export const UserUpdateOAuth2ApplicationRequestRedirectUrisList =
+const UserUpdateOAuth2ApplicationRequestRedirectUrisList =
   ActionRunnerLabelsList as any as S.Schema<UserUpdateOAuth2ApplicationRequestRedirectUrisList>;
 
 export interface UserUpdateOAuth2ApplicationRequest {
@@ -2975,7 +2936,7 @@ export interface UserUpdateOAuth2ApplicationRequest {
   name?: string;
   redirect_uris?: UserUpdateOAuth2ApplicationRequestRedirectUrisList;
 }
-export const UserUpdateOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UserUpdateOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     confidential_client: S.optional(S.Boolean),
@@ -2991,7 +2952,7 @@ export interface UserVerifyGPGKeyRequest {
   /** An Signature for a GPG key token */
   key_id: string;
 }
-export const UserVerifyGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UserVerifyGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     armored_signature: S.optional(S.String),
     key_id: S.String,

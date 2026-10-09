@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A request to perform batch delete on alerts. */
 export interface BatchDeleteAlertsRequest {
@@ -71,7 +71,7 @@ export interface BatchDeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-export const BatchDeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(StringList),
     customerId: S.optional(S.String),
@@ -82,7 +82,7 @@ export interface BatchDeleteAlertsRequest_ {
   /** Request body */
   body?: BatchDeleteAlertsRequest;
 }
-export const BatchDeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BatchDeleteAlertsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -97,15 +97,10 @@ export const BatchDeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteAlertsRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -116,7 +111,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -125,7 +120,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusMap = { [key: string]: Status | undefined };
-export const StatusMap = /*@__PURE__*/ S.Record(S.String, Status) as any as S.Schema<StatusMap>;
+const StatusMap = /*@__PURE__*/ S.Record(S.String, Status) as any as S.Schema<StatusMap>;
 
 /** Response to batch delete operation on alerts. */
 export interface BatchDeleteAlertsResponse {
@@ -134,7 +129,7 @@ export interface BatchDeleteAlertsResponse {
   /** The status details for each failed `alert_id`. */
   failedAlertStatus?: StatusMap;
 }
-export const BatchDeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successAlertIds: S.optional(StringList),
     failedAlertStatus: S.optional(StatusMap),
@@ -150,7 +145,7 @@ export interface BatchUndeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-export const BatchUndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(StringList),
     customerId: S.optional(S.String),
@@ -163,7 +158,7 @@ export interface BatchUndeleteAlertsRequest_ {
   /** Request body */
   body?: BatchUndeleteAlertsRequest;
 }
-export const BatchUndeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BatchUndeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BatchUndeleteAlertsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -184,7 +179,7 @@ export interface BatchUndeleteAlertsResponse {
   /** The successful list of alert IDs. */
   successAlertIds?: StringList;
 }
-export const BatchUndeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUndeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedAlertStatus: S.optional(StatusMap),
     successAlertIds: S.optional(StringList),
@@ -198,7 +193,7 @@ export type AlertFeedbackTypeEnum =
   | "NOT_USEFUL"
   | "SOMEWHAT_USEFUL"
   | "VERY_USEFUL";
-export const AlertFeedbackTypeEnum = S.String;
+const AlertFeedbackTypeEnum = S.String;
 
 /** A customer feedback about an alert. */
 export interface AlertFeedback {
@@ -215,7 +210,7 @@ export interface AlertFeedback {
   /** Required. The type of the feedback. */
   type?: AlertFeedbackTypeEnum | (string & {});
 }
-export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
+const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(S.String),
     email: S.optional(S.String),
@@ -234,7 +229,7 @@ export interface CreateAlertsFeedbackRequest {
   /** Request body */
   body?: AlertFeedback;
 }
-export const CreateAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.String.pipe(T.Label()),
     customerId: S.optional(S.String.pipe(T.Query())),
@@ -256,7 +251,7 @@ export interface DeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-export const DeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.String.pipe(T.Label()),
     customerId: S.optional(S.String.pipe(T.Query())),
@@ -271,7 +266,7 @@ export const DeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -281,7 +276,7 @@ export interface GetAlertsRequest {
   /** Required. The identifier of the alert to retrieve. */
   alertId: string;
 }
-export const GetAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     alertId: S.String.pipe(T.Label()),
@@ -311,7 +306,7 @@ export interface AlertMetadata {
   /** The current status of the alert. The supported values are the following: * NOT_STARTED * IN_PROGRESS * CLOSED */
   status?: string;
 }
-export const AlertMetadata = /*@__PURE__*/ S.suspend(() =>
+const AlertMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(S.String),
     assignee: S.optional(S.String),
@@ -352,7 +347,7 @@ export interface Alert {
   /** Required. The type of the alert. This is output only after alert is created. For a list of available alert types see [Google Workspace Alert types](https://developers.google.com/workspace/admin/alertcenter/reference/alert-types). */
   type?: string;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DocumentMap),
     createTime: S.optional(S.String),
@@ -376,7 +371,7 @@ export interface GetMetadataAlertsRequest {
   /** Required. The identifier of the alert this metadata belongs to. */
   alertId: string;
 }
-export const GetMetadataAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     alertId: S.String.pipe(T.Label()),
@@ -393,7 +388,7 @@ export interface GetSettingsV1beta1Request {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must/ have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-export const GetSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -408,7 +403,7 @@ export const GetSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSettingsV1beta1Request>;
 
 export type CloudPubsubTopicPayloadFormatEnum = "PAYLOAD_FORMAT_UNSPECIFIED" | "JSON";
-export const CloudPubsubTopicPayloadFormatEnum = S.String;
+const CloudPubsubTopicPayloadFormatEnum = S.String;
 
 /** A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission. */
 export interface CloudPubsubTopic {
@@ -417,7 +412,7 @@ export interface CloudPubsubTopic {
   /** Optional. The format of the payload that would be sent. If not specified the format will be JSON. */
   payloadFormat?: CloudPubsubTopicPayloadFormatEnum | (string & {});
 }
-export const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
+const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
     payloadFormat: S.optional(CloudPubsubTopicPayloadFormatEnum),
@@ -429,23 +424,21 @@ export interface Notification {
   /** A Google Cloud Pub/sub topic destination. */
   cloudPubsubTopic?: CloudPubsubTopic;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudPubsubTopic: S.optional(CloudPubsubTopic),
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 export type NotificationList = Array<Notification>;
-export const NotificationList = /*@__PURE__*/ S.Array(
-  Notification,
-) as any as S.Schema<NotificationList>;
+const NotificationList = /*@__PURE__*/ S.Array(Notification) as any as S.Schema<NotificationList>;
 
 /** Customer-level settings. */
 export interface Settings {
   /** The list of notifications. */
   notifications?: NotificationList;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifications: S.optional(NotificationList),
   }),
@@ -463,7 +456,7 @@ export interface ListAlertsRequest {
   /** Optional. The sort order of the list results. If not specified results may be returned in arbitrary order. You can sort the results in descending order based on the creation timestamp using `order_by="create_time desc"`. Currently, supported sorting are `create_time asc`, `create_time desc`, `update_time desc` */
   orderBy?: string;
 }
-export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -480,7 +473,7 @@ export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsRequest" }) as any as S.Schema<ListAlertsRequest>;
 
 export type AlertList = Array<Alert>;
-export const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
+const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
 
 /** Response message for an alert listing request. */
 export interface ListAlertsResponse {
@@ -489,7 +482,7 @@ export interface ListAlertsResponse {
   /** The token for the next page. If not empty, indicates that there may be more alerts that match the listing request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last result of the current list call. */
   nextPageToken?: string;
 }
-export const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alerts: S.optional(AlertList),
     nextPageToken: S.optional(S.String),
@@ -504,7 +497,7 @@ export interface ListAlertsFeedbackRequest {
   /** Required. The alert identifier. The "-" wildcard could be used to represent all alerts. */
   alertId: string;
 }
-export const ListAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -521,7 +514,7 @@ export const ListAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAlertsFeedbackRequest>;
 
 export type AlertFeedbackList = Array<AlertFeedback>;
-export const AlertFeedbackList = /*@__PURE__*/ S.Array(
+const AlertFeedbackList = /*@__PURE__*/ S.Array(
   AlertFeedback,
 ) as any as S.Schema<AlertFeedbackList>;
 
@@ -530,7 +523,7 @@ export interface ListAlertFeedbackResponse {
   /** The list of alert feedback. Feedback entries for each alert are ordered by creation time descending. */
   feedback?: AlertFeedbackList;
 }
-export const ListAlertFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedback: S.optional(AlertFeedbackList),
   }),
@@ -543,7 +536,7 @@ export interface UndeleteAlertRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-export const UndeleteAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String),
   }),
@@ -555,7 +548,7 @@ export interface UndeleteAlertsRequest {
   /** Request body */
   body?: UndeleteAlertRequest;
 }
-export const UndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.String.pipe(T.Label()),
     body: S.optional(UndeleteAlertRequest.pipe(T.HttpBody())),
@@ -574,7 +567,7 @@ export interface UpdateSettingsV1beta1Request {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Settings.pipe(T.HttpBody())),

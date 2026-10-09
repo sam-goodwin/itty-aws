@@ -82,7 +82,7 @@ export interface DeleteWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
 }
-export const DeleteWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -95,7 +95,7 @@ export const DeleteWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebResourceRequest" }) as any as S.Schema<DeleteWebResourceRequest>;
 
 export interface DeleteWebResourceResponse {}
-export const DeleteWebResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteWebResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWebResourceResponse",
 }) as any as S.Schema<DeleteWebResourceResponse>;
 
@@ -105,7 +105,7 @@ export interface SiteVerificationWebResourceGettokenRequestSite {
   /** The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name). */
   type?: string;
 }
-export const SiteVerificationWebResourceGettokenRequestSite = /*@__PURE__*/ S.suspend(() =>
+const SiteVerificationWebResourceGettokenRequestSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     type: S.optional(S.String),
@@ -120,7 +120,7 @@ export interface SiteVerificationWebResourceGettokenRequest {
   /** The site for which a verification token will be generated. */
   site?: SiteVerificationWebResourceGettokenRequestSite;
 }
-export const SiteVerificationWebResourceGettokenRequest = /*@__PURE__*/ S.suspend(() =>
+const SiteVerificationWebResourceGettokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationMethod: S.optional(S.String),
     site: S.optional(SiteVerificationWebResourceGettokenRequestSite),
@@ -133,7 +133,7 @@ export interface GetTokenWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceGettokenRequest;
 }
-export const GetTokenWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokenWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SiteVerificationWebResourceGettokenRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -153,7 +153,7 @@ export interface SiteVerificationWebResourceGettokenResponse {
   /** The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain. */
   method?: string;
 }
-export const SiteVerificationWebResourceGettokenResponse = /*@__PURE__*/ S.suspend(() =>
+const SiteVerificationWebResourceGettokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     method: S.optional(S.String),
@@ -166,7 +166,7 @@ export interface GetWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
 }
-export const GetWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -179,7 +179,7 @@ export const GetWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWebResourceRequest" }) as any as S.Schema<GetWebResourceRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface SiteVerificationWebResourceResourceSite {
   /** The site type. Can be SITE or INET_DOMAIN (domain name). */
@@ -187,7 +187,7 @@ export interface SiteVerificationWebResourceResourceSite {
   /** The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name. */
   identifier?: string;
 }
-export const SiteVerificationWebResourceResourceSite = /*@__PURE__*/ S.suspend(() =>
+const SiteVerificationWebResourceResourceSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     identifier: S.optional(S.String),
@@ -204,7 +204,7 @@ export interface SiteVerificationWebResourceResource {
   /** The address and type of a site that is verified or will be verified. */
   site?: SiteVerificationWebResourceResourceSite;
 }
-export const SiteVerificationWebResourceResource = /*@__PURE__*/ S.suspend(() =>
+const SiteVerificationWebResourceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     owners: S.optional(StringList),
@@ -220,7 +220,7 @@ export interface InsertWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceResource;
 }
-export const InsertWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationMethod: S.String.pipe(T.Query()),
     body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
@@ -234,7 +234,7 @@ export const InsertWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertWebResourceRequest" }) as any as S.Schema<InsertWebResourceRequest>;
 
 export interface ListWebResourceRequest {}
-export const ListWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -245,7 +245,7 @@ export const ListWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWebResourceRequest" }) as any as S.Schema<ListWebResourceRequest>;
 
 export type SiteVerificationWebResourceResourceList = Array<SiteVerificationWebResourceResource>;
-export const SiteVerificationWebResourceResourceList = /*@__PURE__*/ S.Array(
+const SiteVerificationWebResourceResourceList = /*@__PURE__*/ S.Array(
   SiteVerificationWebResourceResource,
 ) as any as S.Schema<SiteVerificationWebResourceResourceList>;
 
@@ -253,7 +253,7 @@ export interface SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
   items?: SiteVerificationWebResourceResourceList;
 }
-export const SiteVerificationWebResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const SiteVerificationWebResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(SiteVerificationWebResourceResourceList),
   }),
@@ -267,7 +267,7 @@ export interface PatchWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceResource;
 }
-export const PatchWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
@@ -286,7 +286,7 @@ export interface UpdateWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceResource;
 }
-export const UpdateWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),

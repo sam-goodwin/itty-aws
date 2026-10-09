@@ -12,7 +12,7 @@ export type { AzureOpError, AzureOpContext };
 export type AddEntityDataAnnotationRequestAnnotationDetailsMap = {
   [key: string]: string | undefined;
 };
-export const AddEntityDataAnnotationRequestAnnotationDetailsMap = /*@__PURE__*/ S.Record(
+const AddEntityDataAnnotationRequestAnnotationDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AddEntityDataAnnotationRequestAnnotationDetailsMap>;
@@ -31,7 +31,7 @@ export interface AddEntityDataAnnotationRequest {
   /** Optional description of the annotation */
   description?: string;
 }
-export const AddEntityDataAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const AddEntityDataAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -53,7 +53,7 @@ export const AddEntityDataAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Annotation details as a dynamic key-value pair bag. Service-enforced limits: a maximum of 10 entries per annotation and a maximum value length of 256 characters. Requests exceeding these limits will be rejected with a 400 response. */
 export type DataAnnotationAnnotationDetailsMap = { [key: string]: string | undefined };
-export const DataAnnotationAnnotationDetailsMap =
+const DataAnnotationAnnotationDetailsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<DataAnnotationAnnotationDetailsMap>;
 
 /** A single data annotation on an entity */
@@ -67,7 +67,7 @@ export interface DataAnnotation {
   /** Optional description of the annotation */
   description?: string;
 }
-export const DataAnnotation = /*@__PURE__*/ S.suspend(() =>
+const DataAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationId: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -78,7 +78,7 @@ export const DataAnnotation = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported kinds of authentication settings as discriminator */
 export type AuthenticationKind = "ManagedIdentity";
-export const AuthenticationKind = S.String;
+const AuthenticationKind = S.String;
 
 /** Authentication setting properties */
 export interface AuthenticationSettingPropertiesInput {
@@ -87,7 +87,7 @@ export interface AuthenticationSettingPropertiesInput {
   /** Kind of the authentication setting */
   authenticationKind: AuthenticationKind | (string & {});
 }
-export const AuthenticationSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     authenticationKind: AuthenticationKind,
@@ -108,7 +108,7 @@ export interface AuthenticationSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingPropertiesInput;
 }
-export const AuthenticationSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -129,11 +129,11 @@ export const AuthenticationSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -150,7 +150,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -168,7 +168,7 @@ export type HealthModelProvisioningState =
   | "Canceled"
   | "Creating"
   | "Deleting";
-export const HealthModelProvisioningState = S.String;
+const HealthModelProvisioningState = S.String;
 
 /** Authentication setting properties */
 export interface AuthenticationSettingProperties {
@@ -179,7 +179,7 @@ export interface AuthenticationSettingProperties {
   /** Kind of the authentication setting */
   authenticationKind: AuthenticationKind;
 }
-export const AuthenticationSettingProperties = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationSettingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HealthModelProvisioningState),
     displayName: S.optional(S.String),
@@ -201,7 +201,7 @@ export interface AuthenticationSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
 }
-export const AuthenticationSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -215,12 +215,12 @@ export const AuthenticationSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type CreateHealthModelRequestTagsMap = { [key: string]: string | undefined };
-export const CreateHealthModelRequestTagsMap =
+const CreateHealthModelRequestTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<CreateHealthModelRequestTagsMap>;
 
 /** HealthModel properties */
 export interface HealthModelPropertiesInput {}
-export const HealthModelPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const HealthModelPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "HealthModelPropertiesInput",
 }) as any as S.Schema<HealthModelPropertiesInput>;
 
@@ -230,17 +230,15 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = HealthModelPropertiesInput;
-export const UserAssignedIdentityInput = HealthModelPropertiesInput;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: HealthModelPropertiesInput | null | undefined;
 };
-export const CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(HealthModelPropertiesInput),
 ) as any as S.Schema<CreateHealthModelRequestIdentityUserAssignedIdentitiesMap>;
@@ -251,7 +249,7 @@ export interface CreateHealthModelRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateHealthModelRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateHealthModelRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateHealthModelRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(CreateHealthModelRequestIdentityUserAssignedIdentitiesMap),
@@ -276,7 +274,7 @@ export interface CreateHealthModelRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateHealthModelRequestIdentity;
 }
-export const CreateHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -297,7 +295,7 @@ export const CreateHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateHealthModelResponseTagsMap = { [key: string]: string | undefined };
-export const CreateHealthModelResponseTagsMap =
+const CreateHealthModelResponseTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<CreateHealthModelResponseTagsMap>;
 
 /** HealthModel properties */
@@ -305,7 +303,7 @@ export interface HealthModelProperties {
   /** The status of the last operation. */
   provisioningState?: HealthModelProvisioningState;
 }
-export const HealthModelProperties = /*@__PURE__*/ S.suspend(() =>
+const HealthModelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HealthModelProvisioningState),
   }),
@@ -318,7 +316,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -329,7 +327,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateHealthModelResponseIdentityUserAssignedIdentitiesMap>;
@@ -344,7 +342,7 @@ export interface CreateHealthModelResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateHealthModelResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateHealthModelResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateHealthModelResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -373,7 +371,7 @@ export interface CreateHealthModelResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateHealthModelResponseIdentity;
 }
-export const CreateHealthModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHealthModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -398,7 +396,7 @@ export interface DeleteAuthenticationSettingsRequest {
   /** Name of the authentication setting. Must be unique within a health model. */
   authenticationSettingName: string;
 }
-export const DeleteAuthenticationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthenticationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -417,9 +415,7 @@ export const DeleteAuthenticationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthenticationSettingsRequest>;
 
 export interface DeleteAuthenticationSettingsResponse {}
-export const DeleteAuthenticationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAuthenticationSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAuthenticationSettingsResponse",
 }) as any as S.Schema<DeleteAuthenticationSettingsResponse>;
 
@@ -433,7 +429,7 @@ export interface DeleteDiscoveryRuleRequest {
   /** Name of the discovery rule. Must be unique within a health model. */
   discoveryRuleName: string;
 }
-export const DeleteDiscoveryRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDiscoveryRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -452,7 +448,7 @@ export const DeleteDiscoveryRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDiscoveryRuleRequest>;
 
 export interface DeleteDiscoveryRuleResponse {}
-export const DeleteDiscoveryRuleResponse =
+const DeleteDiscoveryRuleResponse =
   HealthModelPropertiesInput as any as S.Schema<DeleteDiscoveryRuleResponse>;
 
 export interface DeleteEntityRequest {
@@ -465,7 +461,7 @@ export interface DeleteEntityRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
-export const DeleteEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -482,8 +478,7 @@ export const DeleteEntityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEntityRequest" }) as any as S.Schema<DeleteEntityRequest>;
 
 export interface DeleteEntityResponse {}
-export const DeleteEntityResponse =
-  HealthModelPropertiesInput as any as S.Schema<DeleteEntityResponse>;
+const DeleteEntityResponse = HealthModelPropertiesInput as any as S.Schema<DeleteEntityResponse>;
 
 export interface DeleteHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -493,7 +488,7 @@ export interface DeleteHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
-export const DeleteHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -509,7 +504,7 @@ export const DeleteHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHealthModelRequest" }) as any as S.Schema<DeleteHealthModelRequest>;
 
 export interface DeleteHealthModelResponse {}
-export const DeleteHealthModelResponse =
+const DeleteHealthModelResponse =
   HealthModelPropertiesInput as any as S.Schema<DeleteHealthModelResponse>;
 
 export interface DeleteRelationshipRequest {
@@ -522,7 +517,7 @@ export interface DeleteRelationshipRequest {
   /** Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name. */
   relationshipName: string;
 }
-export const DeleteRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -541,7 +536,7 @@ export const DeleteRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRelationshipRequest>;
 
 export interface DeleteRelationshipResponse {}
-export const DeleteRelationshipResponse =
+const DeleteRelationshipResponse =
   HealthModelPropertiesInput as any as S.Schema<DeleteRelationshipResponse>;
 
 export interface DeleteSignalDefinitionRequest {
@@ -554,7 +549,7 @@ export interface DeleteSignalDefinitionRequest {
   /** Name of the signal definition. Must be unique within a health model. */
   signalDefinitionName: string;
 }
-export const DeleteSignalDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSignalDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -573,27 +568,27 @@ export const DeleteSignalDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSignalDefinitionRequest>;
 
 export interface DeleteSignalDefinitionResponse {}
-export const DeleteSignalDefinitionResponse =
+const DeleteSignalDefinitionResponse =
   HealthModelPropertiesInput as any as S.Schema<DeleteSignalDefinitionResponse>;
 
 /** Discovery rule relationship discovery behavior */
 export type DiscoveryRuleRelationshipDiscoveryBehavior = "Enabled" | "Disabled";
-export const DiscoveryRuleRelationshipDiscoveryBehavior = S.String;
+const DiscoveryRuleRelationshipDiscoveryBehavior = S.String;
 
 /** Discovery rule recommended signal behavior */
 export type DiscoveryRuleRecommendedSignalsBehavior = "Enabled" | "Disabled";
-export const DiscoveryRuleRecommendedSignalsBehavior = S.String;
+const DiscoveryRuleRecommendedSignalsBehavior = S.String;
 
 /** Discovery rule specification kind discriminator */
 export type DiscoveryRuleKind = "ResourceGraphQuery" | "ApplicationInsightsTopology";
-export const DiscoveryRuleKind = S.String;
+const DiscoveryRuleKind = S.String;
 
 /** Base model for discovery rule specifications */
 export interface DiscoveryRuleSpecification {
   /** Kind of the discovery rule specification */
   kind: DiscoveryRuleKind | (string & {});
 }
-export const DiscoveryRuleSpecification = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryRuleSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: DiscoveryRuleKind,
   }),
@@ -603,7 +598,7 @@ export const DiscoveryRuleSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
 export type DiscoveryRulePropertiesInputAddResourceHealthSignal = "Enabled" | "Disabled";
-export const DiscoveryRulePropertiesInputAddResourceHealthSignal = S.String;
+const DiscoveryRulePropertiesInputAddResourceHealthSignal = S.String;
 
 /** Discovery rule properties */
 export interface DiscoveryRulePropertiesInput {
@@ -620,7 +615,7 @@ export interface DiscoveryRulePropertiesInput {
   /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
   addResourceHealthSignal?: DiscoveryRulePropertiesInputAddResourceHealthSignal | (string & {});
 }
-export const DiscoveryRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     authenticationSetting: S.String,
@@ -645,7 +640,7 @@ export interface DiscoveryRulesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRulePropertiesInput;
 }
-export const DiscoveryRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -666,11 +661,11 @@ export const DiscoveryRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
 export type DiscoveryRulePropertiesAddResourceHealthSignal = "Enabled" | "Disabled";
-export const DiscoveryRulePropertiesAddResourceHealthSignal = S.String;
+const DiscoveryRulePropertiesAddResourceHealthSignal = S.String;
 
 /** Additional context information, like resource IDs or query details */
 export type DiscoveryErrorContextList = Array<string>;
-export const DiscoveryErrorContextList = /*@__PURE__*/ S.Array(
+const DiscoveryErrorContextList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryErrorContextList>;
 
@@ -681,7 +676,7 @@ export interface DiscoveryError {
   /** Additional context information, like resource IDs or query details */
   context?: DiscoveryErrorContextList;
 }
-export const DiscoveryError = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     context: S.optional(DiscoveryErrorContextList),
@@ -709,7 +704,7 @@ export interface DiscoveryRuleProperties {
   /** Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created. */
   entityName?: string;
 }
-export const DiscoveryRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HealthModelProvisioningState),
     displayName: S.optional(S.String),
@@ -735,7 +730,7 @@ export interface DiscoveryRulesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
 }
-export const DiscoveryRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -754,7 +749,7 @@ export interface EntityCoordinates {
   /** Y Coordinate */
   y: number;
 }
-export const EntityCoordinates = /*@__PURE__*/ S.suspend(() =>
+const EntityCoordinates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.Number,
     y: S.Number,
@@ -768,7 +763,7 @@ export interface IconDefinition {
   /** Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon. */
   customData?: string;
 }
-export const IconDefinition = /*@__PURE__*/ S.suspend(() =>
+const IconDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iconName: S.String,
     customData: S.optional(S.String),
@@ -777,11 +772,11 @@ export const IconDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Impact of the entity in health state propagation */
 export type EntityPropertiesInputImpact = "Standard" | "Limited" | "Suppressed";
-export const EntityPropertiesInputImpact = S.String;
+const EntityPropertiesInputImpact = S.String;
 
 /** Optional set of tags (key-value pairs) */
 export type EntityPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const EntityPropertiesInputTagsMap =
+const EntityPropertiesInputTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<EntityPropertiesInputTagsMap>;
 
 /** Supported signal kinds as discriminator */
@@ -790,11 +785,11 @@ export type SignalKind =
   | "LogAnalyticsQuery"
   | "PrometheusMetricsQuery"
   | "External";
-export const SignalKind = S.String;
+const SignalKind = S.String;
 
 /** Metric aggregation type */
 export type MetricAggregationType = "None" | "Average" | "Count" | "Minimum" | "Maximum" | "Total";
-export const MetricAggregationType = S.String;
+const MetricAggregationType = S.String;
 
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type AzureResourceSignalInputRefreshInterval =
@@ -805,7 +800,7 @@ export type AzureResourceSignalInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const AzureResourceSignalInputRefreshInterval = S.String;
+const AzureResourceSignalInputRefreshInterval = S.String;
 
 /** Signal operator */
 export type SignalOperator =
@@ -816,11 +811,11 @@ export type SignalOperator =
   | "Equal"
   | "NotEqual"
   | "Dynamic";
-export const SignalOperator = S.String;
+const SignalOperator = S.String;
 
 /** Sensitivity level for dynamic threshold detection */
 export type DynamicThresholdSensitivity = "Low" | "Medium" | "High";
-export const DynamicThresholdSensitivity = S.String;
+const DynamicThresholdSensitivity = S.String;
 
 /** Threshold-based evaluation rule for a signal definition */
 export interface ThresholdRuleV2 {
@@ -831,7 +826,7 @@ export interface ThresholdRuleV2 {
   /** Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic. */
   sensitivity?: DynamicThresholdSensitivity | (string & {});
 }
-export const ThresholdRuleV2 = /*@__PURE__*/ S.suspend(() =>
+const ThresholdRuleV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operator: SignalOperator,
     threshold: S.optional(S.Number),
@@ -846,7 +841,7 @@ export interface EvaluationRule {
   /** Unhealthy rule with static threshold. */
   unhealthyRule: ThresholdRuleV2;
 }
-export const EvaluationRule = /*@__PURE__*/ S.suspend(() =>
+const EvaluationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     degradedRule: S.optional(ThresholdRuleV2),
     unhealthyRule: ThresholdRuleV2,
@@ -880,7 +875,7 @@ export interface AzureResourceSignalInput {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
-export const AzureResourceSignalInput = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceSignalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -899,20 +894,20 @@ export const AzureResourceSignalInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this group. */
 export type AzureResourceSignalsInputSignalsList = Array<AzureResourceSignalInput>;
-export const AzureResourceSignalsInputSignalsList = /*@__PURE__*/ S.Array(
+const AzureResourceSignalsInputSignalsList = /*@__PURE__*/ S.Array(
   AzureResourceSignalInput,
 ) as any as S.Schema<AzureResourceSignalsInputSignalsList>;
 
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
 export type AzureResourceHealthSignalInputEnabled = "Enabled" | "Disabled";
-export const AzureResourceHealthSignalInputEnabled = S.String;
+const AzureResourceHealthSignalInputEnabled = S.String;
 
 /** Azure resource health signal configuration */
 export interface AzureResourceHealthSignalInput {
   /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
   enabled?: AzureResourceHealthSignalInputEnabled | (string & {});
 }
-export const AzureResourceHealthSignalInput = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceHealthSignalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(AzureResourceHealthSignalInputEnabled),
   }),
@@ -933,7 +928,7 @@ export interface AzureResourceSignalsInput {
   /** Optional configuration for automatically adding a signal based on the resource's availability state in Azure Resource Health. */
   resourceHealth?: AzureResourceHealthSignalInput;
 }
-export const AzureResourceSignalsInput = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceSignalsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSetting: S.String,
     azureResourceId: S.String,
@@ -954,7 +949,7 @@ export type LogAnalyticsSignalInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const LogAnalyticsSignalInputRefreshInterval = S.String;
+const LogAnalyticsSignalInputRefreshInterval = S.String;
 
 /** A Log Analytics Query signal instance assigned to an entity. */
 export interface LogAnalyticsSignalInput {
@@ -979,7 +974,7 @@ export interface LogAnalyticsSignalInput {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
-export const LogAnalyticsSignalInput = /*@__PURE__*/ S.suspend(() =>
+const LogAnalyticsSignalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -996,7 +991,7 @@ export const LogAnalyticsSignalInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this group. */
 export type LogAnalyticsSignalsInputSignalsList = Array<LogAnalyticsSignalInput>;
-export const LogAnalyticsSignalsInputSignalsList = /*@__PURE__*/ S.Array(
+const LogAnalyticsSignalsInputSignalsList = /*@__PURE__*/ S.Array(
   LogAnalyticsSignalInput,
 ) as any as S.Schema<LogAnalyticsSignalsInputSignalsList>;
 
@@ -1009,7 +1004,7 @@ export interface LogAnalyticsSignalsInput {
   /** Signals assigned to this group. */
   signals?: LogAnalyticsSignalsInputSignalsList;
 }
-export const LogAnalyticsSignalsInput = /*@__PURE__*/ S.suspend(() =>
+const LogAnalyticsSignalsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSetting: S.String,
     logAnalyticsWorkspaceResourceId: S.String,
@@ -1026,7 +1021,7 @@ export type PrometheusMetricsSignalInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const PrometheusMetricsSignalInputRefreshInterval = S.String;
+const PrometheusMetricsSignalInputRefreshInterval = S.String;
 
 /** A Prometheus Metrics Query signal instance assigned to an entity. */
 export interface PrometheusMetricsSignalInput {
@@ -1049,7 +1044,7 @@ export interface PrometheusMetricsSignalInput {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
-export const PrometheusMetricsSignalInput = /*@__PURE__*/ S.suspend(() =>
+const PrometheusMetricsSignalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -1067,7 +1062,7 @@ export const PrometheusMetricsSignalInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this signal group. */
 export type AzureMonitorWorkspaceSignalsInputSignalsList = Array<PrometheusMetricsSignalInput>;
-export const AzureMonitorWorkspaceSignalsInputSignalsList = /*@__PURE__*/ S.Array(
+const AzureMonitorWorkspaceSignalsInputSignalsList = /*@__PURE__*/ S.Array(
   PrometheusMetricsSignalInput,
 ) as any as S.Schema<AzureMonitorWorkspaceSignalsInputSignalsList>;
 
@@ -1080,7 +1075,7 @@ export interface AzureMonitorWorkspaceSignalsInput {
   /** Signals assigned to this signal group. */
   signals?: AzureMonitorWorkspaceSignalsInputSignalsList;
 }
-export const AzureMonitorWorkspaceSignalsInput = /*@__PURE__*/ S.suspend(() =>
+const AzureMonitorWorkspaceSignalsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSetting: S.String,
     azureMonitorWorkspaceResourceId: S.String,
@@ -1096,11 +1091,11 @@ export type DependenciesSignalGroupV2AggregationType =
   | "BestOf"
   | "MinHealthy"
   | "MaxNotHealthy";
-export const DependenciesSignalGroupV2AggregationType = S.String;
+const DependenciesSignalGroupV2AggregationType = S.String;
 
 /** Unit type for the thresholds used by threshold-bearing aggregation strategies. */
 export type AggregationUnit = "Absolute" | "Percentage";
-export const AggregationUnit = S.String;
+const AggregationUnit = S.String;
 
 /** Properties for dependent entities, i.e. child entities */
 export interface DependenciesSignalGroupV2 {
@@ -1115,7 +1110,7 @@ export interface DependenciesSignalGroupV2 {
   /** If true, children with Unknown health state are excluded from aggregation calculations. Defaults to true. */
   ignoreUnknown?: boolean;
 }
-export const DependenciesSignalGroupV2 = /*@__PURE__*/ S.suspend(() =>
+const DependenciesSignalGroupV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregationType: DependenciesSignalGroupV2AggregationType,
     degradedThreshold: S.optional(S.Number),
@@ -1138,7 +1133,7 @@ export interface SignalGroupsInput {
   /** Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity. */
   dependencies?: DependenciesSignalGroupV2;
 }
-export const SignalGroupsInput = /*@__PURE__*/ S.suspend(() =>
+const SignalGroupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureResource: S.optional(AzureResourceSignalsInput),
     azureLogAnalytics: S.optional(LogAnalyticsSignalsInput),
@@ -1153,11 +1148,11 @@ export type SignalAggregationGroupInputAggregationType =
   | "BestOf"
   | "MinHealthy"
   | "MaxNotHealthy";
-export const SignalAggregationGroupInputAggregationType = S.String;
+const SignalAggregationGroupInputAggregationType = S.String;
 
 /** Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list. */
 export type SignalAggregationGroupInputMembersList = Array<string>;
-export const SignalAggregationGroupInputMembersList =
+const SignalAggregationGroupInputMembersList =
   DiscoveryErrorContextList as any as S.Schema<SignalAggregationGroupInputMembersList>;
 
 /** A logical group of signals on an entity, evaluated under a configurable aggregation strategy. Groups are independent even when they share members. Each group's aggregated state is one of the inputs to the entity's composite health computation alongside any signals not declared in any group's members[]. */
@@ -1179,7 +1174,7 @@ export interface SignalAggregationGroupInput {
   /** If true (default), members reporting Unknown are excluded from the aggregation. For MinHealthy and MaxNotHealthy this flag affects the denominator/count and is meaningful. For WorstOf and BestOf the flag has no observable effect: under WorstOf, Unknown=0 is the lowest severity and can never beat any non-Unknown member in a Max() so filtering it changes nothing observable; under BestOf, Unknown is unconditionally excluded by the strategy itself irrespective of the flag. The flag is retained on the contract for vocabulary symmetry across all four strategies. */
   ignoreUnknown?: boolean;
 }
-export const SignalAggregationGroupInput = /*@__PURE__*/ S.suspend(() =>
+const SignalAggregationGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     displayName: S.optional(S.String),
@@ -1196,17 +1191,17 @@ export const SignalAggregationGroupInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite. */
 export type EntityPropertiesInputSignalAggregationGroupsList = Array<SignalAggregationGroupInput>;
-export const EntityPropertiesInputSignalAggregationGroupsList = /*@__PURE__*/ S.Array(
+const EntityPropertiesInputSignalAggregationGroupsList = /*@__PURE__*/ S.Array(
   SignalAggregationGroupInput,
 ) as any as S.Schema<EntityPropertiesInputSignalAggregationGroupsList>;
 
 /** Severity of an alert */
 export type AlertSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const AlertSeverity = S.String;
+const AlertSeverity = S.String;
 
 /** Optional list of action group resource IDs to be notified when the alert is triggered. */
 export type AlertConfigurationActionGroupIdsList = Array<string>;
-export const AlertConfigurationActionGroupIdsList =
+const AlertConfigurationActionGroupIdsList =
   DiscoveryErrorContextList as any as S.Schema<AlertConfigurationActionGroupIdsList>;
 
 /** Alert configuration details */
@@ -1218,7 +1213,7 @@ export interface AlertConfiguration {
   /** Optional list of action group resource IDs to be notified when the alert is triggered. */
   actionGroupIds?: AlertConfigurationActionGroupIdsList;
 }
-export const AlertConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AlertConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: AlertSeverity,
     description: S.optional(S.String),
@@ -1233,7 +1228,7 @@ export interface EntityAlerts {
   /** Alert to be triggered on state change to degraded */
   degraded?: AlertConfiguration;
 }
-export const EntityAlerts = /*@__PURE__*/ S.suspend(() =>
+const EntityAlerts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unhealthy: S.optional(AlertConfiguration),
     degraded: S.optional(AlertConfiguration),
@@ -1261,7 +1256,7 @@ export interface EntityPropertiesInput {
   /** Alert configuration for this entity */
   alerts?: EntityAlerts;
 }
-export const EntityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EntityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     canvasPosition: S.optional(EntityCoordinates),
@@ -1287,7 +1282,7 @@ export interface EntitiesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EntityPropertiesInput;
 }
-export const EntitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EntitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1308,16 +1303,16 @@ export const EntitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Impact of the entity in health state propagation */
 export type EntityPropertiesImpact = "Standard" | "Limited" | "Suppressed";
-export const EntityPropertiesImpact = S.String;
+const EntityPropertiesImpact = S.String;
 
 /** Optional set of tags (key-value pairs) */
 export type EntityPropertiesTagsMap = { [key: string]: string | undefined };
-export const EntityPropertiesTagsMap =
+const EntityPropertiesTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<EntityPropertiesTagsMap>;
 
 /** Health state of an entity */
 export type HealthState = "Healthy" | "Degraded" | "Unhealthy" | "Unknown";
-export const HealthState = S.String;
+const HealthState = S.String;
 
 /** Status of a signal */
 export interface SignalStatus {
@@ -1332,7 +1327,7 @@ export interface SignalStatus {
   /** Additional context as provided by the submitter */
   additionalContext?: string;
 }
-export const SignalStatus = /*@__PURE__*/ S.suspend(() =>
+const SignalStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     healthState: S.optional(HealthState),
     value: S.optional(S.Number),
@@ -1351,7 +1346,7 @@ export type AzureResourceSignalRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const AzureResourceSignalRefreshInterval = S.String;
+const AzureResourceSignalRefreshInterval = S.String;
 
 /** An Azure Resource Metric signal instance assigned to an entity. */
 export interface AzureResourceSignal {
@@ -1382,7 +1377,7 @@ export interface AzureResourceSignal {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
-export const AzureResourceSignal = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -1402,29 +1397,29 @@ export const AzureResourceSignal = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this group. */
 export type AzureResourceSignalsSignalsList = Array<AzureResourceSignal>;
-export const AzureResourceSignalsSignalsList = /*@__PURE__*/ S.Array(
+const AzureResourceSignalsSignalsList = /*@__PURE__*/ S.Array(
   AzureResourceSignal,
 ) as any as S.Schema<AzureResourceSignalsSignalsList>;
 
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
 export type AzureResourceHealthSignalEnabled = "Enabled" | "Disabled";
-export const AzureResourceHealthSignalEnabled = S.String;
+const AzureResourceHealthSignalEnabled = S.String;
 
 /** Availability state of an Azure resource as reported by Azure Resource Health. */
 export type ResourceHealthAvailabilityState = "Available" | "Unavailable" | "Degraded" | "Unknown";
-export const ResourceHealthAvailabilityState = S.String;
+const ResourceHealthAvailabilityState = S.String;
 
 /** Whether an Azure Resource Health status changing event was planned or unplanned. */
 export type ResourceHealthCategory = "Planned" | "Unplanned";
-export const ResourceHealthCategory = S.String;
+const ResourceHealthCategory = S.String;
 
 /** Reason type for the current Azure Resource Health availability state. */
 export type ResourceHealthReasonType = "Unplanned" | "Planned" | "UserInitiated";
-export const ResourceHealthReasonType = S.String;
+const ResourceHealthReasonType = S.String;
 
 /** Whether the current Azure Resource Health availability state is persistent or transient. */
 export type ResourceHealthReasonChronicity = "Persistent" | "Transient";
-export const ResourceHealthReasonChronicity = S.String;
+const ResourceHealthReasonChronicity = S.String;
 
 /** Status of an Azure Resource Health signal, including availability information reported by Azure Resource Health. */
 export interface AzureResourceHealthSignalStatus {
@@ -1453,7 +1448,7 @@ export interface AzureResourceHealthSignalStatus {
   /** Timestamp when Azure Resource Health observed the current availability state. */
   availabilityReportedTime?: string;
 }
-export const AzureResourceHealthSignalStatus = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceHealthSignalStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     healthState: S.optional(HealthState),
     value: S.optional(S.Number),
@@ -1481,7 +1476,7 @@ export interface AzureResourceHealthSignal {
   /** Current status of the Azure resource health signal. */
   status?: AzureResourceHealthSignalStatus;
 }
-export const AzureResourceHealthSignal = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceHealthSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(AzureResourceHealthSignalEnabled),
     signalName: S.optional(S.String),
@@ -1504,7 +1499,7 @@ export interface AzureResourceSignals {
   /** Optional configuration for automatically adding a signal based on the resource's availability state in Azure Resource Health. */
   resourceHealth?: AzureResourceHealthSignal;
 }
-export const AzureResourceSignals = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSetting: S.String,
     azureResourceId: S.String,
@@ -1523,7 +1518,7 @@ export type LogAnalyticsSignalRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const LogAnalyticsSignalRefreshInterval = S.String;
+const LogAnalyticsSignalRefreshInterval = S.String;
 
 /** A Log Analytics Query signal instance assigned to an entity. */
 export interface LogAnalyticsSignal {
@@ -1550,7 +1545,7 @@ export interface LogAnalyticsSignal {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
-export const LogAnalyticsSignal = /*@__PURE__*/ S.suspend(() =>
+const LogAnalyticsSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -1568,7 +1563,7 @@ export const LogAnalyticsSignal = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this group. */
 export type LogAnalyticsSignalsSignalsList = Array<LogAnalyticsSignal>;
-export const LogAnalyticsSignalsSignalsList = /*@__PURE__*/ S.Array(
+const LogAnalyticsSignalsSignalsList = /*@__PURE__*/ S.Array(
   LogAnalyticsSignal,
 ) as any as S.Schema<LogAnalyticsSignalsSignalsList>;
 
@@ -1581,7 +1576,7 @@ export interface LogAnalyticsSignals {
   /** Signals assigned to this group. */
   signals?: LogAnalyticsSignalsSignalsList;
 }
-export const LogAnalyticsSignals = /*@__PURE__*/ S.suspend(() =>
+const LogAnalyticsSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSetting: S.String,
     logAnalyticsWorkspaceResourceId: S.String,
@@ -1598,7 +1593,7 @@ export type PrometheusMetricsSignalRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const PrometheusMetricsSignalRefreshInterval = S.String;
+const PrometheusMetricsSignalRefreshInterval = S.String;
 
 /** A Prometheus Metrics Query signal instance assigned to an entity. */
 export interface PrometheusMetricsSignal {
@@ -1623,7 +1618,7 @@ export interface PrometheusMetricsSignal {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
-export const PrometheusMetricsSignal = /*@__PURE__*/ S.suspend(() =>
+const PrometheusMetricsSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -1640,7 +1635,7 @@ export const PrometheusMetricsSignal = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this signal group. */
 export type AzureMonitorWorkspaceSignalsSignalsList = Array<PrometheusMetricsSignal>;
-export const AzureMonitorWorkspaceSignalsSignalsList = /*@__PURE__*/ S.Array(
+const AzureMonitorWorkspaceSignalsSignalsList = /*@__PURE__*/ S.Array(
   PrometheusMetricsSignal,
 ) as any as S.Schema<AzureMonitorWorkspaceSignalsSignalsList>;
 
@@ -1653,7 +1648,7 @@ export interface AzureMonitorWorkspaceSignals {
   /** Signals assigned to this signal group. */
   signals?: AzureMonitorWorkspaceSignalsSignalsList;
 }
-export const AzureMonitorWorkspaceSignals = /*@__PURE__*/ S.suspend(() =>
+const AzureMonitorWorkspaceSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSetting: S.String,
     azureMonitorWorkspaceResourceId: S.String,
@@ -1676,7 +1671,7 @@ export interface ExternalSignal {
   /** Evaluation rules for the external signal as submitted. */
   evaluationRules?: EvaluationRule;
 }
-export const ExternalSignal = /*@__PURE__*/ S.suspend(() =>
+const ExternalSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalKind,
     name: S.String,
@@ -1688,7 +1683,7 @@ export const ExternalSignal = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals assigned to this signal group. */
 export type ExternalSignalGroupSignalsList = Array<ExternalSignal>;
-export const ExternalSignalGroupSignalsList = /*@__PURE__*/ S.Array(
+const ExternalSignalGroupSignalsList = /*@__PURE__*/ S.Array(
   ExternalSignal,
 ) as any as S.Schema<ExternalSignalGroupSignalsList>;
 
@@ -1697,7 +1692,7 @@ export interface ExternalSignalGroup {
   /** Signals assigned to this signal group. */
   signals?: ExternalSignalGroupSignalsList;
 }
-export const ExternalSignalGroup = /*@__PURE__*/ S.suspend(() =>
+const ExternalSignalGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signals: S.optional(ExternalSignalGroupSignalsList),
   }),
@@ -1716,7 +1711,7 @@ export interface SignalGroups {
   /** List of signals which have been externally submitted for this entity. */
   external?: ExternalSignalGroup;
 }
-export const SignalGroups = /*@__PURE__*/ S.suspend(() =>
+const SignalGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureResource: S.optional(AzureResourceSignals),
     azureLogAnalytics: S.optional(LogAnalyticsSignals),
@@ -1732,16 +1727,16 @@ export type SignalAggregationGroupAggregationType =
   | "BestOf"
   | "MinHealthy"
   | "MaxNotHealthy";
-export const SignalAggregationGroupAggregationType = S.String;
+const SignalAggregationGroupAggregationType = S.String;
 
 /** Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list. */
 export type SignalAggregationGroupMembersList = Array<string>;
-export const SignalAggregationGroupMembersList =
+const SignalAggregationGroupMembersList =
   DiscoveryErrorContextList as any as S.Schema<SignalAggregationGroupMembersList>;
 
 /** Members listed in 'members' that do not currently resolve to a signal on this entity at the time of the last entity evaluation. Treated as Unknown during aggregation. Empty/omitted when every member resolves. */
 export type SignalAggregationGroupUnresolvedMembersList = Array<string>;
-export const SignalAggregationGroupUnresolvedMembersList =
+const SignalAggregationGroupUnresolvedMembersList =
   DiscoveryErrorContextList as any as S.Schema<SignalAggregationGroupUnresolvedMembersList>;
 
 /** A logical group of signals on an entity, evaluated under a configurable aggregation strategy. Groups are independent even when they share members. Each group's aggregated state is one of the inputs to the entity's composite health computation alongside any signals not declared in any group's members[]. */
@@ -1767,7 +1762,7 @@ export interface SignalAggregationGroup {
   /** Members listed in 'members' that do not currently resolve to a signal on this entity at the time of the last entity evaluation. Treated as Unknown during aggregation. Empty/omitted when every member resolves. */
   unresolvedMembers?: SignalAggregationGroupUnresolvedMembersList;
 }
-export const SignalAggregationGroup = /*@__PURE__*/ S.suspend(() =>
+const SignalAggregationGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     displayName: S.optional(S.String),
@@ -1784,7 +1779,7 @@ export const SignalAggregationGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite. */
 export type EntityPropertiesSignalAggregationGroupsList = Array<SignalAggregationGroup>;
-export const EntityPropertiesSignalAggregationGroupsList = /*@__PURE__*/ S.Array(
+const EntityPropertiesSignalAggregationGroupsList = /*@__PURE__*/ S.Array(
   SignalAggregationGroup,
 ) as any as S.Schema<EntityPropertiesSignalAggregationGroupsList>;
 
@@ -1815,7 +1810,7 @@ export interface EntityProperties {
   /** Alert configuration for this entity */
   alerts?: EntityAlerts;
 }
-export const EntityProperties = /*@__PURE__*/ S.suspend(() =>
+const EntityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HealthModelProvisioningState),
     displayName: S.optional(S.String),
@@ -1844,7 +1839,7 @@ export interface EntitiesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
 }
-export const EntitiesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EntitiesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1858,8 +1853,6 @@ export const EntitiesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Evaluation rules for the health report */
 export type HealthReportEvaluationRule = EvaluationRule;
-export const HealthReportEvaluationRule = EvaluationRule;
-
 export interface EntitiesIngestHealthReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1882,7 +1875,7 @@ export interface EntitiesIngestHealthReportRequest {
   /** Optional additional context or description for the health report */
   additionalContext?: string;
 }
-export const EntitiesIngestHealthReportRequest = /*@__PURE__*/ S.suspend(() =>
+const EntitiesIngestHealthReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1907,7 +1900,7 @@ export const EntitiesIngestHealthReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntitiesIngestHealthReportRequest>;
 
 export interface EntitiesIngestHealthReportResponse {}
-export const EntitiesIngestHealthReportResponse =
+const EntitiesIngestHealthReportResponse =
   DeleteAuthenticationSettingsResponse as any as S.Schema<EntitiesIngestHealthReportResponse>;
 
 export interface GetAuthenticationSettingsRequest {
@@ -1920,7 +1913,7 @@ export interface GetAuthenticationSettingsRequest {
   /** Name of the authentication setting. Must be unique within a health model. */
   authenticationSettingName: string;
 }
-export const GetAuthenticationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1950,7 +1943,7 @@ export interface GetAuthenticationSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
 }
-export const GetAuthenticationSettingsResponse =
+const GetAuthenticationSettingsResponse =
   AuthenticationSettingsCreateOrUpdateResponse as any as S.Schema<GetAuthenticationSettingsResponse>;
 
 export interface GetDiscoveryRuleRequest {
@@ -1963,7 +1956,7 @@ export interface GetDiscoveryRuleRequest {
   /** Name of the discovery rule. Must be unique within a health model. */
   discoveryRuleName: string;
 }
-export const GetDiscoveryRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiscoveryRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1991,7 +1984,7 @@ export interface GetDiscoveryRuleResponse {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
 }
-export const GetDiscoveryRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDiscoveryRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2011,7 +2004,7 @@ export interface GetEntityRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
-export const GetEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2039,7 +2032,7 @@ export interface GetEntityResponse {
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
 }
-export const GetEntityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2067,7 +2060,7 @@ export interface GetEntityDataAnnotationsRequest {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. Must not be combined with startAt or endAt. */
   nextMarker?: string;
 }
-export const GetEntityDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntityDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2091,7 +2084,7 @@ export const GetEntityDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of data annotations */
 export type GetDataAnnotationsResponseAnnotationsList = Array<DataAnnotation>;
-export const GetDataAnnotationsResponseAnnotationsList = /*@__PURE__*/ S.Array(
+const GetDataAnnotationsResponseAnnotationsList = /*@__PURE__*/ S.Array(
   DataAnnotation,
 ) as any as S.Schema<GetDataAnnotationsResponseAnnotationsList>;
 
@@ -2104,7 +2097,7 @@ export interface GetDataAnnotationsResponse {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. */
   nextMarker?: string;
 }
-export const GetDataAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityName: S.String,
     annotations: GetDataAnnotationsResponseAnnotationsList,
@@ -2132,7 +2125,7 @@ export interface GetEntityHistoryRequest {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. Must not be combined with startAt or endAt. */
   nextMarker?: string;
 }
-export const GetEntityHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntityHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2163,7 +2156,7 @@ export interface HealthStateTransition {
   /** Reason of the transition */
   reason?: string;
 }
-export const HealthStateTransition = /*@__PURE__*/ S.suspend(() =>
+const HealthStateTransition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previousState: HealthState,
     newState: HealthState,
@@ -2174,7 +2167,7 @@ export const HealthStateTransition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of health state transitions */
 export type EntityHistoryResponseHistoryList = Array<HealthStateTransition>;
-export const EntityHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
+const EntityHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
   HealthStateTransition,
 ) as any as S.Schema<EntityHistoryResponseHistoryList>;
 
@@ -2187,7 +2180,7 @@ export interface EntityHistoryResponse {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. */
   nextMarker?: string;
 }
-export const EntityHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const EntityHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityName: S.String,
     history: EntityHistoryResponseHistoryList,
@@ -2215,7 +2208,7 @@ export interface GetEntitySignalHistoryRequest {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. Must not be combined with startAt or endAt. */
   nextMarker?: string;
 }
-export const GetEntitySignalHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntitySignalHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2249,7 +2242,7 @@ export interface SignalHistoryDataPoint {
   /** Additional context as provided by the submitter */
   additionalContext?: string;
 }
-export const SignalHistoryDataPoint = /*@__PURE__*/ S.suspend(() =>
+const SignalHistoryDataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurredAt: S.String,
     value: S.optional(S.Number),
@@ -2260,7 +2253,7 @@ export const SignalHistoryDataPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Signal history data points */
 export type SignalHistoryResponseHistoryList = Array<SignalHistoryDataPoint>;
-export const SignalHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
+const SignalHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
   SignalHistoryDataPoint,
 ) as any as S.Schema<SignalHistoryResponseHistoryList>;
 
@@ -2275,7 +2268,7 @@ export interface SignalHistoryResponse {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. */
   nextMarker?: string;
 }
-export const SignalHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityName: S.String,
     signalName: S.String,
@@ -2294,7 +2287,7 @@ export interface GetEntitySignalRecommendationsRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
-export const GetEntitySignalRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntitySignalRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2314,26 +2307,26 @@ export const GetEntitySignalRecommendationsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Azure resource types to which the recommended signal configuration applies. */
 export type SignalConfigurationApplicableResourceTypesList = Array<string>;
-export const SignalConfigurationApplicableResourceTypesList =
+const SignalConfigurationApplicableResourceTypesList =
   DiscoveryErrorContextList as any as S.Schema<SignalConfigurationApplicableResourceTypesList>;
 
 /** Refresh interval in ISO duration format */
 export type RefreshInterval = "PT1M" | "PT5M" | "PT10M" | "PT15M" | "PT30M" | "PT1H" | "PT2H";
-export const RefreshInterval = S.String;
+const RefreshInterval = S.String;
 
 /** Supported signal recommendation kinds. */
 export type SignalRecommendationKind =
   | "AzureResourceMetric"
   | "LogAnalyticsQuery"
   | "PrometheusMetricsQuery";
-export const SignalRecommendationKind = S.String;
+const SignalRecommendationKind = S.String;
 
 /** Kind-specific signal recommendation configuration. */
 export interface SignalRecommendationConfiguration {
   /** Kind of the recommended signal. */
   signalKind: SignalRecommendationKind;
 }
-export const SignalRecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SignalRecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalKind: SignalRecommendationKind,
   }),
@@ -2360,7 +2353,7 @@ export interface SignalConfiguration {
   /** Evaluation rules with recommended thresholds. */
   evaluationRules?: EvaluationRule;
 }
-export const SignalConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SignalConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalId: S.String,
     displayName: S.optional(S.String),
@@ -2375,14 +2368,14 @@ export const SignalConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` -- not paired by index. */
 export type GetSignalRecommendationsResponseRecommendedSignalsList = Array<SignalConfiguration>;
-export const GetSignalRecommendationsResponseRecommendedSignalsList = /*@__PURE__*/ S.Array(
+const GetSignalRecommendationsResponseRecommendedSignalsList = /*@__PURE__*/ S.Array(
   SignalConfiguration,
 ) as any as S.Schema<GetSignalRecommendationsResponseRecommendedSignalsList>;
 
 /** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` -- not paired by index. */
 export type GetSignalRecommendationsResponseRecommendedConfigurationsList =
   Array<SignalConfiguration>;
-export const GetSignalRecommendationsResponseRecommendedConfigurationsList =
+const GetSignalRecommendationsResponseRecommendedConfigurationsList =
   GetSignalRecommendationsResponseRecommendedSignalsList as any as S.Schema<GetSignalRecommendationsResponseRecommendedConfigurationsList>;
 
 /** Response from `getSignalRecommendations` containing two independent suggestion streams for the Azure resource type represented by the target Entity. `recommendedSignals` lists signals broadly recommended to be enabled by default; `recommendedConfigurations` lists additional metrics that are not broadly applicable but, if a caller chooses to monitor one of them, ship with suggested starting-point thresholds. The two arrays are independent -- items are not paired by index, and callers should treat them as two separate suggestion streams. */
@@ -2392,7 +2385,7 @@ export interface GetSignalRecommendationsResponse {
   /** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` -- not paired by index. */
   recommendedConfigurations: GetSignalRecommendationsResponseRecommendedConfigurationsList;
 }
-export const GetSignalRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSignalRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendedSignals: GetSignalRecommendationsResponseRecommendedSignalsList,
     recommendedConfigurations: GetSignalRecommendationsResponseRecommendedConfigurationsList,
@@ -2409,7 +2402,7 @@ export interface GetHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
-export const GetHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2426,16 +2419,13 @@ export const GetHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetHealthModelResponseTagsMap = { [key: string]: string | undefined };
-export const GetHealthModelResponseTagsMap =
+const GetHealthModelResponseTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<GetHealthModelResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetHealthModelResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetHealthModelResponseIdentityUserAssignedIdentitiesMap =
-  CreateHealthModelResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetHealthModelResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetHealthModelResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2446,7 +2436,7 @@ export interface GetHealthModelResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetHealthModelResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetHealthModelResponseIdentity =
+const GetHealthModelResponseIdentity =
   CreateHealthModelResponseIdentity as any as S.Schema<GetHealthModelResponseIdentity>;
 
 export interface GetHealthModelResponse {
@@ -2467,7 +2457,7 @@ export interface GetHealthModelResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetHealthModelResponseIdentity;
 }
-export const GetHealthModelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHealthModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2490,7 +2480,7 @@ export interface GetRelationshipRequest {
   /** Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name. */
   relationshipName: string;
 }
-export const GetRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2508,7 +2498,7 @@ export const GetRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional set of tags (key-value pairs) */
 export type RelationshipPropertiesTagsMap = { [key: string]: string | undefined };
-export const RelationshipPropertiesTagsMap =
+const RelationshipPropertiesTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<RelationshipPropertiesTagsMap>;
 
 /** Relationship properties */
@@ -2526,7 +2516,7 @@ export interface RelationshipProperties {
   /** Discovered by which discovery rule. If set, the relationship cannot be deleted manually. */
   discoveredBy?: string;
 }
-export const RelationshipProperties = /*@__PURE__*/ S.suspend(() =>
+const RelationshipProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HealthModelProvisioningState),
     displayName: S.optional(S.String),
@@ -2549,7 +2539,7 @@ export interface GetRelationshipResponse {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
 }
-export const GetRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2569,7 +2559,7 @@ export interface GetSignalDefinitionRequest {
   /** Name of the signal definition. Must be unique within a health model. */
   signalDefinitionName: string;
 }
-export const GetSignalDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignalDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2596,11 +2586,11 @@ export type SignalDefinitionPropertiesRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const SignalDefinitionPropertiesRefreshInterval = S.String;
+const SignalDefinitionPropertiesRefreshInterval = S.String;
 
 /** Optional set of tags (key-value pairs) */
 export type SignalDefinitionPropertiesTagsMap = { [key: string]: string | undefined };
-export const SignalDefinitionPropertiesTagsMap =
+const SignalDefinitionPropertiesTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<SignalDefinitionPropertiesTagsMap>;
 
 /** SignalDefinition properties */
@@ -2620,7 +2610,7 @@ export interface SignalDefinitionProperties {
   /** Evaluation rules for the signal definition */
   evaluationRules: EvaluationRule;
 }
-export const SignalDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const SignalDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HealthModelProvisioningState),
     displayName: S.optional(S.String),
@@ -2646,7 +2636,7 @@ export interface GetSignalDefinitionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
 }
-export const GetSignalDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSignalDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2666,7 +2656,7 @@ export interface ListAuthenticationSettingsByHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
-export const ListAuthenticationSettingsByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthenticationSettingsByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2696,7 +2686,7 @@ export interface AuthenticationSetting {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
 }
-export const AuthenticationSetting = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2708,7 +2698,7 @@ export const AuthenticationSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The AuthenticationSetting items on this page */
 export type AuthenticationSettingListResultValueList = Array<AuthenticationSetting>;
-export const AuthenticationSettingListResultValueList = /*@__PURE__*/ S.Array(
+const AuthenticationSettingListResultValueList = /*@__PURE__*/ S.Array(
   AuthenticationSetting,
 ) as any as S.Schema<AuthenticationSettingListResultValueList>;
 
@@ -2719,7 +2709,7 @@ export interface AuthenticationSettingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AuthenticationSettingListResult = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationSettingListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AuthenticationSettingListResultValueList,
     nextLink: S.optional(S.String),
@@ -2738,7 +2728,7 @@ export interface ListDiscoveryRuleByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
-export const ListDiscoveryRuleByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscoveryRuleByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2769,11 +2759,11 @@ export interface DiscoveryRule {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
 }
-export const DiscoveryRule = GetDiscoveryRuleResponse as any as S.Schema<DiscoveryRule>;
+const DiscoveryRule = GetDiscoveryRuleResponse as any as S.Schema<DiscoveryRule>;
 
 /** The DiscoveryRule items on this page */
 export type DiscoveryRuleListResultValueList = Array<DiscoveryRule>;
-export const DiscoveryRuleListResultValueList = /*@__PURE__*/ S.Array(
+const DiscoveryRuleListResultValueList = /*@__PURE__*/ S.Array(
   DiscoveryRule,
 ) as any as S.Schema<DiscoveryRuleListResultValueList>;
 
@@ -2784,7 +2774,7 @@ export interface DiscoveryRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DiscoveryRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DiscoveryRuleListResultValueList,
     nextLink: S.optional(S.String),
@@ -2801,7 +2791,7 @@ export interface ListEntityByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
-export const ListEntityByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEntityByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2832,11 +2822,11 @@ export interface Entity {
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
 }
-export const Entity = GetEntityResponse as any as S.Schema<Entity>;
+const Entity = GetEntityResponse as any as S.Schema<Entity>;
 
 /** The Entity items on this page */
 export type EntityListResultValueList = Array<Entity>;
-export const EntityListResultValueList = /*@__PURE__*/ S.Array(
+const EntityListResultValueList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<EntityListResultValueList>;
 
@@ -2847,7 +2837,7 @@ export interface EntityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EntityListResult = /*@__PURE__*/ S.suspend(() =>
+const EntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EntityListResultValueList,
     nextLink: S.optional(S.String),
@@ -2860,7 +2850,7 @@ export interface ListHealthModelByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListHealthModelByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHealthModelByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2878,14 +2868,14 @@ export const ListHealthModelByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type HealthModelTagsMap = { [key: string]: string | undefined };
-export const HealthModelTagsMap =
+const HealthModelTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<HealthModelTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type HealthModelIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const HealthModelIdentityUserAssignedIdentitiesMap =
+const HealthModelIdentityUserAssignedIdentitiesMap =
   CreateHealthModelResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<HealthModelIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2898,7 +2888,7 @@ export interface HealthModelIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: HealthModelIdentityUserAssignedIdentitiesMap;
 }
-export const HealthModelIdentity = /*@__PURE__*/ S.suspend(() =>
+const HealthModelIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2926,7 +2916,7 @@ export interface HealthModel {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: HealthModelIdentity;
 }
-export const HealthModel = /*@__PURE__*/ S.suspend(() =>
+const HealthModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2941,7 +2931,7 @@ export const HealthModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The HealthModel items on this page */
 export type HealthModelListResultValueList = Array<HealthModel>;
-export const HealthModelListResultValueList = /*@__PURE__*/ S.Array(
+const HealthModelListResultValueList = /*@__PURE__*/ S.Array(
   HealthModel,
 ) as any as S.Schema<HealthModelListResultValueList>;
 
@@ -2952,7 +2942,7 @@ export interface HealthModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HealthModelListResult = /*@__PURE__*/ S.suspend(() =>
+const HealthModelListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HealthModelListResultValueList,
     nextLink: S.optional(S.String),
@@ -2963,7 +2953,7 @@ export interface ListHealthModelBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListHealthModelBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHealthModelBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2979,7 +2969,7 @@ export const ListHealthModelBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListHealthModelBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -3001,7 +2991,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -3012,11 +3002,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -3031,7 +3021,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -3043,7 +3033,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -3053,7 +3043,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -3070,7 +3060,7 @@ export interface ListRelationshipByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
-export const ListRelationshipByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRelationshipByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3101,11 +3091,11 @@ export interface Relationship {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
 }
-export const Relationship = GetRelationshipResponse as any as S.Schema<Relationship>;
+const Relationship = GetRelationshipResponse as any as S.Schema<Relationship>;
 
 /** The Relationship items on this page */
 export type RelationshipListResultValueList = Array<Relationship>;
-export const RelationshipListResultValueList = /*@__PURE__*/ S.Array(
+const RelationshipListResultValueList = /*@__PURE__*/ S.Array(
   Relationship,
 ) as any as S.Schema<RelationshipListResultValueList>;
 
@@ -3116,7 +3106,7 @@ export interface RelationshipListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RelationshipListResult = /*@__PURE__*/ S.suspend(() =>
+const RelationshipListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RelationshipListResultValueList,
     nextLink: S.optional(S.String),
@@ -3133,7 +3123,7 @@ export interface ListSignalDefinitionByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
-export const ListSignalDefinitionByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSignalDefinitionByHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3164,7 +3154,7 @@ export interface SignalDefinition {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
 }
-export const SignalDefinition = /*@__PURE__*/ S.suspend(() =>
+const SignalDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3176,7 +3166,7 @@ export const SignalDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The SignalDefinition items on this page */
 export type SignalDefinitionListResultValueList = Array<SignalDefinition>;
-export const SignalDefinitionListResultValueList = /*@__PURE__*/ S.Array(
+const SignalDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   SignalDefinition,
 ) as any as S.Schema<SignalDefinitionListResultValueList>;
 
@@ -3187,7 +3177,7 @@ export interface SignalDefinitionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SignalDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
+const SignalDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SignalDefinitionListResultValueList,
     nextLink: S.optional(S.String),
@@ -3198,7 +3188,7 @@ export const SignalDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional set of tags (key-value pairs) */
 export type RelationshipPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const RelationshipPropertiesInputTagsMap =
+const RelationshipPropertiesInputTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<RelationshipPropertiesInputTagsMap>;
 
 /** Relationship properties */
@@ -3212,7 +3202,7 @@ export interface RelationshipPropertiesInput {
   /** Optional set of tags (key-value pairs) */
   tags?: RelationshipPropertiesInputTagsMap;
 }
-export const RelationshipPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RelationshipPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     parentEntityName: S.String,
@@ -3235,7 +3225,7 @@ export interface RelationshipsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipPropertiesInput;
 }
-export const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3266,7 +3256,7 @@ export interface RelationshipsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
 }
-export const RelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const RelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3287,11 +3277,11 @@ export type SignalDefinitionPropertiesInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
-export const SignalDefinitionPropertiesInputRefreshInterval = S.String;
+const SignalDefinitionPropertiesInputRefreshInterval = S.String;
 
 /** Optional set of tags (key-value pairs) */
 export type SignalDefinitionPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const SignalDefinitionPropertiesInputTagsMap =
+const SignalDefinitionPropertiesInputTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<SignalDefinitionPropertiesInputTagsMap>;
 
 /** SignalDefinition properties */
@@ -3309,7 +3299,7 @@ export interface SignalDefinitionPropertiesInput {
   /** Evaluation rules for the signal definition */
   evaluationRules: EvaluationRule;
 }
-export const SignalDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SignalDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     signalKind: SignalKind,
@@ -3334,7 +3324,7 @@ export interface SignalDefinitionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionPropertiesInput;
 }
-export const SignalDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3365,28 +3355,25 @@ export interface SignalDefinitionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
 }
-export const SignalDefinitionsCreateOrUpdateResponse =
+const SignalDefinitionsCreateOrUpdateResponse =
   GetSignalDefinitionResponse as any as S.Schema<SignalDefinitionsCreateOrUpdateResponse>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: HealthModelPropertiesInput | null | undefined;
 };
-export const UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap =
-  CreateHealthModelRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateHealthModelRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateHealthModelRequestIdentity =
+const UpdateHealthModelRequestIdentity =
   CreateHealthModelRequestIdentity as any as S.Schema<UpdateHealthModelRequestIdentity>;
 
 /** Resource tags. */
 export type UpdateHealthModelRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateHealthModelRequestTagsMap =
+const UpdateHealthModelRequestTagsMap =
   AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<UpdateHealthModelRequestTagsMap>;
 
 export interface UpdateHealthModelRequest {
@@ -3401,7 +3388,7 @@ export interface UpdateHealthModelRequest {
   /** Resource tags. */
   tags?: UpdateHealthModelRequestTagsMap;
 }
-export const UpdateHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3420,16 +3407,10 @@ export const UpdateHealthModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateHealthModelResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateHealthModelResponseTagsMap =
-  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<UpdateHealthModelResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap =
-  CreateHealthModelResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateHealthModelResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -3440,9 +3421,6 @@ export interface UpdateHealthModelResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateHealthModelResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateHealthModelResponseIdentity =
-  CreateHealthModelResponseIdentity as any as S.Schema<UpdateHealthModelResponseIdentity>;
-
 export interface UpdateHealthModelResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3461,7 +3439,7 @@ export interface UpdateHealthModelResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateHealthModelResponseIdentity;
 }
-export const UpdateHealthModelResponse =
+const UpdateHealthModelResponse =
   CreateHealthModelResponse as any as S.Schema<UpdateHealthModelResponse>;
 
 export type AddEntityDataAnnotationError = AzureOpError;

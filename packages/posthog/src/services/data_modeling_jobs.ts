@@ -13,7 +13,7 @@ export interface GetDataModelingJobRequest {
   /** A UUID string identifying this data modeling job. */
   id: string;
 }
-export const GetDataModelingJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataModelingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -35,11 +35,11 @@ export type DataModelingJobStatusEnum =
   | "Failed"
   | "Running"
   | "Skipped";
-export const DataModelingJobStatusEnum = S.String;
+const DataModelingJobStatusEnum = S.String;
 
 /** * `full_refresh` - Full refresh * `incremental` - Incremental */
 export type DataModelingJobRunModeEnum = "full_refresh" | "incremental";
-export const DataModelingJobRunModeEnum = S.String;
+const DataModelingJobRunModeEnum = S.String;
 
 export interface DataModelingJob {
   id: string;
@@ -60,7 +60,7 @@ export interface DataModelingJob {
   /** Total rows expected to be materialized */
   rows_expected: number | null;
 }
-export const DataModelingJob = /*@__PURE__*/ S.suspend(() =>
+const DataModelingJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     saved_query_id: S.NullOr(S.String),
@@ -82,7 +82,7 @@ export interface GetDataModelingJobsRecentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetDataModelingJobsRecentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataModelingJobsRecentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -100,7 +100,7 @@ export interface GetDataModelingJobsRunningRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetDataModelingJobsRunningRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataModelingJobsRunningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -120,7 +120,7 @@ export type ListDataModelingJobsRequestStatus =
   | "Failed"
   | "Running"
   | "Skipped";
-export const ListDataModelingJobsRequestStatus = S.String;
+const ListDataModelingJobsRequestStatus = S.String;
 
 export interface ListDataModelingJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -133,7 +133,7 @@ export interface ListDataModelingJobsRequest {
   /** * `Cancelled` - Cancelled * `Completed` - Completed * `Failed` - Failed * `Running` - Running * `Skipped` - Skipped */
   status?: ListDataModelingJobsRequestStatus | (string & {});
 }
-export const ListDataModelingJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataModelingJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -148,7 +148,7 @@ export const ListDataModelingJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataModelingJobsRequest>;
 
 export type PaginatedDataModelingJobListResultsList = Array<DataModelingJob>;
-export const PaginatedDataModelingJobListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataModelingJobListResultsList = /*@__PURE__*/ S.Array(
   DataModelingJob,
 ) as any as S.Schema<PaginatedDataModelingJobListResultsList>;
 
@@ -158,7 +158,7 @@ export interface PaginatedDataModelingJobList {
   previous?: string | null;
   results: PaginatedDataModelingJobListResultsList;
 }
-export const PaginatedDataModelingJobList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataModelingJobList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

@@ -9,20 +9,20 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `liquid` - liquid */
 export type MessageTemplateContentTemplatingEnum = "liquid";
-export const MessageTemplateContentTemplatingEnum = S.String;
+const MessageTemplateContentTemplatingEnum = S.String;
 
 /** Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}. */
 export type EmailTemplateDesignBodyRowsList = Array<unknown>;
-export const EmailTemplateDesignBodyRowsList = /*@__PURE__*/ S.Array(
+const EmailTemplateDesignBodyRowsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyRowsList>;
 
 export type EmailTemplateDesignBodyHeadersList = Array<unknown>;
-export const EmailTemplateDesignBodyHeadersList =
+const EmailTemplateDesignBodyHeadersList =
   EmailTemplateDesignBodyRowsList as any as S.Schema<EmailTemplateDesignBodyHeadersList>;
 
 export type EmailTemplateDesignBodyFootersList = Array<unknown>;
-export const EmailTemplateDesignBodyFootersList =
+const EmailTemplateDesignBodyFootersList =
   EmailTemplateDesignBodyRowsList as any as S.Schema<EmailTemplateDesignBodyFootersList>;
 
 export interface EmailTemplateDesignBody {
@@ -35,7 +35,7 @@ export interface EmailTemplateDesignBody {
   /** Body-level settings: backgroundColor, contentWidth ('600px'), fontFamily, textColor. */
   values?: unknown;
 }
-export const EmailTemplateDesignBody = /*@__PURE__*/ S.suspend(() =>
+const EmailTemplateDesignBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     rows: EmailTemplateDesignBodyRowsList,
@@ -53,7 +53,7 @@ export interface EmailTemplateDesign {
   schemaVersion: number;
   body: EmailTemplateDesignBody;
 }
-export const EmailTemplateDesign = /*@__PURE__*/ S.suspend(() =>
+const EmailTemplateDesign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counters: S.optional(S.Unknown),
     schemaVersion: S.Number,
@@ -71,7 +71,7 @@ export interface EmailTemplate {
   /** Design JSON for PostHog's visual email editor -- the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
   design?: EmailTemplateDesign;
 }
-export const EmailTemplate = /*@__PURE__*/ S.suspend(() =>
+const EmailTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String),
     text: S.optional(S.String),
@@ -86,7 +86,7 @@ export interface MessageTemplateContent {
   /** Email message content. Replaced as a whole on update -- send the complete object. */
   email?: EmailTemplate | null;
 }
-export const MessageTemplateContent = /*@__PURE__*/ S.suspend(() =>
+const MessageTemplateContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templating: S.optional(MessageTemplateContentTemplatingEnum),
     email: S.optional(S.NullOr(EmailTemplate)),
@@ -109,7 +109,7 @@ export interface CreateMessagingTemplateRequest {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
-export const CreateMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -126,7 +126,7 @@ export const CreateMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMessagingTemplateRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -142,14 +142,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -162,7 +157,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -194,7 +189,7 @@ export interface MessageTemplate {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
-export const MessageTemplate = /*@__PURE__*/ S.suspend(() =>
+const MessageTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -215,7 +210,7 @@ export interface GetMessagingTemplateRequest {
   /** A UUID string identifying this message template. */
   id: string;
 }
-export const GetMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -238,7 +233,7 @@ export interface ListMessagingTemplatesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListMessagingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMessagingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -251,7 +246,7 @@ export const ListMessagingTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMessagingTemplatesRequest>;
 
 export type PaginatedMessageTemplateListResultsList = Array<MessageTemplate>;
-export const PaginatedMessageTemplateListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMessageTemplateListResultsList = /*@__PURE__*/ S.Array(
   MessageTemplate,
 ) as any as S.Schema<PaginatedMessageTemplateListResultsList>;
 
@@ -261,7 +256,7 @@ export interface PaginatedMessageTemplateList {
   previous?: string | null;
   results: PaginatedMessageTemplateListResultsList;
 }
-export const PaginatedMessageTemplateList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMessageTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -278,7 +273,7 @@ export interface MessagingTemplatesDestroyRequest {
   /** A UUID string identifying this message template. */
   id: string;
 }
-export const MessagingTemplatesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingTemplatesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -294,9 +289,7 @@ export const MessagingTemplatesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagingTemplatesDestroyRequest>;
 
 export interface MessagingTemplatesDestroyResponse {}
-export const MessagingTemplatesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const MessagingTemplatesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "MessagingTemplatesDestroyResponse",
 }) as any as S.Schema<MessagingTemplatesDestroyResponse>;
 
@@ -318,7 +311,7 @@ export interface UpdateMessagingTemplateRequest {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
-export const UpdateMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMessagingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -350,7 +343,7 @@ export type EmailTemplateDesignOperationEnum =
   | "move_content"
   | "add_row"
   | "remove_row";
-export const EmailTemplateDesignOperationEnum = S.String;
+const EmailTemplateDesignOperationEnum = S.String;
 
 export interface DesignOperation {
   /** Design edit. update_content {id, patch}: deep-merge patch into the content block's fields (a null leaf deletes that key) -- the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row. * `update_content` - update_content * `update_column` - update_column * `update_row` - update_row * `update_body` - update_body * `add_content` - add_content * `remove_content` - remove_content * `move_content` - move_content * `add_row` - add_row * `remove_row` - remove_row */
@@ -368,7 +361,7 @@ export interface DesignOperation {
   /** add_*\/move_content only. 0-based insert position; omit to append to the end. */
   index?: number;
 }
-export const DesignOperation = /*@__PURE__*/ S.suspend(() =>
+const DesignOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: EmailTemplateDesignOperationEnum,
     id: S.optional(S.String),
@@ -382,7 +375,7 @@ export const DesignOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid -- otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
 export type UpdateMessagingTemplatesDesignPartialRequestOperationsList = Array<DesignOperation>;
-export const UpdateMessagingTemplatesDesignPartialRequestOperationsList = /*@__PURE__*/ S.Array(
+const UpdateMessagingTemplatesDesignPartialRequestOperationsList = /*@__PURE__*/ S.Array(
   DesignOperation,
 ) as any as S.Schema<UpdateMessagingTemplatesDesignPartialRequestOperationsList>;
 
@@ -394,7 +387,7 @@ export interface UpdateMessagingTemplatesDesignPartialRequest {
   /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid -- otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
   operations?: UpdateMessagingTemplatesDesignPartialRequestOperationsList;
 }
-export const UpdateMessagingTemplatesDesignPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMessagingTemplatesDesignPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -428,7 +421,7 @@ export interface UpdateMessagingTemplatesPartialRequest {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
-export const UpdateMessagingTemplatesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMessagingTemplatesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

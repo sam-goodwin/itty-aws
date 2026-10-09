@@ -13,7 +13,7 @@ export interface GetWebAnalyticsContentAutopilotRunRequest {
   /** A UUID string identifying this content autopilot run. */
   id: string;
 }
-export const GetWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -36,26 +36,26 @@ export type ContentAutopilotRunRunStatusEnum =
   | "completed"
   | "canceled"
   | "failed";
-export const ContentAutopilotRunRunStatusEnum = S.String;
+const ContentAutopilotRunRunStatusEnum = S.String;
 
 /** * `standard` - Standard * `lower` - Lower */
 export type ContentAutopilotSnapshotConfidenceEnum = "standard" | "lower";
-export const ContentAutopilotSnapshotConfidenceEnum = S.String;
+const ContentAutopilotSnapshotConfidenceEnum = S.String;
 
 /** Public sources authorized for this run. */
 export type ContentAutopilotSnapshotSourceUrlsList = Array<string>;
-export const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ S.Array(
+const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContentAutopilotSnapshotSourceUrlsList>;
 
 /** Site paths authorized for this run. */
 export type ContentAutopilotSnapshotContentBoundariesList = Array<string>;
-export const ContentAutopilotSnapshotContentBoundariesList =
+const ContentAutopilotSnapshotContentBoundariesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
 
 /** Editorial rules captured for this run. */
 export type ContentAutopilotSnapshotBrandRulesList = Array<string>;
-export const ContentAutopilotSnapshotBrandRulesList =
+const ContentAutopilotSnapshotBrandRulesList =
   ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
 
 export interface ContentAutopilotSnapshot {
@@ -70,7 +70,7 @@ export interface ContentAutopilotSnapshot {
   /** Editorial rules captured for this run. */
   brand_rules?: ContentAutopilotSnapshotBrandRulesList;
 }
-export const ContentAutopilotSnapshot = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     confidence: S.optional(ContentAutopilotSnapshotConfidenceEnum),
@@ -86,7 +86,7 @@ export interface ContentAutopilotError {
   /** Error explanation suitable for the review workspace. */
   message: string;
 }
-export const ContentAutopilotError = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_code: S.String,
     message: S.String,
@@ -95,7 +95,7 @@ export const ContentAutopilotError = /*@__PURE__*/ S.suspend(() =>
 
 /** Inspectable workflow errors from this run. */
 export type ContentAutopilotRunErrorsList = Array<ContentAutopilotError>;
-export const ContentAutopilotRunErrorsList = /*@__PURE__*/ S.Array(
+const ContentAutopilotRunErrorsList = /*@__PURE__*/ S.Array(
   ContentAutopilotError,
 ) as any as S.Schema<ContentAutopilotRunErrorsList>;
 
@@ -113,7 +113,7 @@ export interface ContentAutopilotRun {
   updated_at: string;
   completed_at: string | null;
 }
-export const ContentAutopilotRun = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     profile_id: S.String,
@@ -136,7 +136,7 @@ export interface ListWebAnalyticsContentAutopilotRunsRequest {
   /** Only return runs for this site profile. */
   profile_id?: string;
 }
-export const ListWebAnalyticsContentAutopilotRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAnalyticsContentAutopilotRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -154,7 +154,7 @@ export const ListWebAnalyticsContentAutopilotRunsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListWebAnalyticsContentAutopilotRunsRequest>;
 
 export type PaginatedContentAutopilotRunListResultsList = Array<ContentAutopilotRun>;
-export const PaginatedContentAutopilotRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedContentAutopilotRunListResultsList = /*@__PURE__*/ S.Array(
   ContentAutopilotRun,
 ) as any as S.Schema<PaginatedContentAutopilotRunListResultsList>;
 
@@ -164,7 +164,7 @@ export interface PaginatedContentAutopilotRunList {
   previous?: string | null;
   results: PaginatedContentAutopilotRunListResultsList;
 }
-export const PaginatedContentAutopilotRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedContentAutopilotRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

@@ -38,7 +38,7 @@ export class NotFound
   ) {}
 
 export type CreateDremioInstanceRequestRegionId = "eu01" | "eu02";
-export const CreateDremioInstanceRequestRegionId = S.String;
+const CreateDremioInstanceRequestRegionId = S.String;
 
 /** Azure Active Directory authentication configuration. */
 export interface AzureadInput {
@@ -49,7 +49,7 @@ export interface AzureadInput {
   /** The Azure AD client secret. */
   clientSecret?: string | Redacted.Redacted<string>;
 }
-export const AzureadInput = /*@__PURE__*/ S.suspend(() =>
+const AzureadInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorityUrl: S.String,
     clientId: S.String,
@@ -61,7 +61,7 @@ export const AzureadInput = /*@__PURE__*/ S.suspend(() =>
 export interface OauthInputJwtClaims {
   userName: string;
 }
-export const OauthInputJwtClaims = /*@__PURE__*/ S.suspend(() =>
+const OauthInputJwtClaims = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.String,
   }),
@@ -72,7 +72,7 @@ export interface AuthParameters {
   name: string;
   value: string;
 }
-export const AuthParameters = /*@__PURE__*/ S.suspend(() =>
+const AuthParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -81,7 +81,7 @@ export const AuthParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Any additional parameters the Identity Provider requires. */
 export type OauthInputParametersList = Array<AuthParameters>;
-export const OauthInputParametersList = /*@__PURE__*/ S.Array(
+const OauthInputParametersList = /*@__PURE__*/ S.Array(
   AuthParameters,
 ) as any as S.Schema<OauthInputParametersList>;
 
@@ -100,7 +100,7 @@ export interface OauthInput {
   /** A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider. */
   scope?: string;
 }
-export const OauthInput = /*@__PURE__*/ S.suspend(() =>
+const OauthInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorityUrl: S.String,
     clientId: S.String,
@@ -112,7 +112,7 @@ export const OauthInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OauthInput" }) as any as S.Schema<OauthInput>;
 
 export type AuthenticationInputType = "local-only" | "azuread" | "oauth";
-export const AuthenticationInputType = S.String;
+const AuthenticationInputType = S.String;
 
 /** Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime. */
 export interface AuthenticationInput {
@@ -120,7 +120,7 @@ export interface AuthenticationInput {
   oauth?: OauthInput;
   type: AuthenticationInputType | (string & {});
 }
-export const AuthenticationInput = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azuread: S.optional(AzureadInput),
     oauth: S.optional(OauthInput),
@@ -139,7 +139,7 @@ export interface CreateDremioInstanceRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-export const CreateDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateDremioInstanceRequestRegionId.pipe(T.Label()),
@@ -167,7 +167,7 @@ export interface AzureadOutput {
   /** The Azure AD redirect URL. */
   redirectUrl?: string;
 }
-export const AzureadOutput = /*@__PURE__*/ S.suspend(() =>
+const AzureadOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorityUrl: S.String,
     clientId: S.String,
@@ -177,11 +177,9 @@ export const AzureadOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Maps fields from the JWT token to fields Dremio requires. */
 export type OauthOutputJwtClaims = OauthInputJwtClaims;
-export const OauthOutputJwtClaims = OauthInputJwtClaims;
-
 /** Any additional parameters the Identity Provider requires. */
 export type OauthOutputParametersList = Array<AuthParameters>;
-export const OauthOutputParametersList =
+const OauthOutputParametersList =
   OauthInputParametersList as any as S.Schema<OauthOutputParametersList>;
 
 /** OIDC authentication configuration. */
@@ -199,7 +197,7 @@ export interface OauthOutput {
   /** A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider. */
   scope?: string;
 }
-export const OauthOutput = /*@__PURE__*/ S.suspend(() =>
+const OauthOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorityUrl: S.String,
     clientId: S.String,
@@ -211,7 +209,7 @@ export const OauthOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OauthOutput" }) as any as S.Schema<OauthOutput>;
 
 export type AuthenticationOutputType = "local-only" | "azuread" | "oauth";
-export const AuthenticationOutputType = S.String;
+const AuthenticationOutputType = S.String;
 
 /** Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime. */
 export interface AuthenticationOutput {
@@ -219,7 +217,7 @@ export interface AuthenticationOutput {
   oauth?: OauthOutput;
   type: AuthenticationOutputType;
 }
-export const AuthenticationOutput = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azuread: S.optional(AzureadOutput),
     oauth: S.optional(OauthOutput),
@@ -236,7 +234,7 @@ export interface Endpoints {
   /** The URL for the UI of the Dremio instance. */
   ui: string;
 }
-export const Endpoints = /*@__PURE__*/ S.suspend(() =>
+const Endpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arrowFlight: S.String,
     catalog: S.String,
@@ -246,7 +244,7 @@ export const Endpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the resource. */
 export type DremioResponseOutputState = "reconciling" | "active" | "deleting" | "error";
-export const DremioResponseOutputState = S.String;
+const DremioResponseOutputState = S.String;
 
 export interface DremioResponseOutput {
   authentication: AuthenticationOutput;
@@ -264,7 +262,7 @@ export interface DremioResponseOutput {
   /** The current state of the resource. */
   state: DremioResponseOutputState;
 }
-export const DremioResponseOutput = /*@__PURE__*/ S.suspend(() =>
+const DremioResponseOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: AuthenticationOutput,
     create_time: S.String,
@@ -278,7 +276,7 @@ export const DremioResponseOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DremioResponseOutput" }) as any as S.Schema<DremioResponseOutput>;
 
 export type CreateDremioUserRequestRegionId = "eu01" | "eu02";
-export const CreateDremioUserRequestRegionId = S.String;
+const CreateDremioUserRequestRegionId = S.String;
 
 export interface CreateDremioUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -300,7 +298,7 @@ export interface CreateDremioUserRequest {
   /** A password chosen by the user. */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateDremioUserRequestRegionId.pipe(T.Label()),
@@ -323,7 +321,7 @@ export const CreateDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the resource. */
 export type DremioUserResponseState = "reconciling" | "active" | "deleting" | "error";
-export const DremioUserResponseState = S.String;
+const DremioUserResponseState = S.String;
 
 export interface DremioUserResponse {
   /** The point in time the resource was created. */
@@ -345,7 +343,7 @@ export interface DremioUserResponse {
   /** The current state of the resource. */
   state: DremioUserResponseState;
 }
-export const DremioUserResponse = /*@__PURE__*/ S.suspend(() =>
+const DremioUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     create_time: S.optional(S.String),
     description: S.optional(S.String),
@@ -360,7 +358,7 @@ export const DremioUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DremioUserResponse" }) as any as S.Schema<DremioUserResponse>;
 
 export type DeleteDremioInstanceRequestRegionId = "eu01" | "eu02";
-export const DeleteDremioInstanceRequestRegionId = S.String;
+const DeleteDremioInstanceRequestRegionId = S.String;
 
 export interface DeleteDremioInstanceRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -370,7 +368,7 @@ export interface DeleteDremioInstanceRequest {
   /** The Dremio instance UUID. */
   dremioId: string;
 }
-export const DeleteDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteDremioInstanceRequestRegionId.pipe(T.Label()),
@@ -388,12 +386,12 @@ export const DeleteDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDremioInstanceRequest>;
 
 export interface DeleteDremioInstanceResponse {}
-export const DeleteDremioInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDremioInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDremioInstanceResponse",
 }) as any as S.Schema<DeleteDremioInstanceResponse>;
 
 export type DeleteDremioUserRequestRegionId = "eu01" | "eu02";
-export const DeleteDremioUserRequestRegionId = S.String;
+const DeleteDremioUserRequestRegionId = S.String;
 
 export interface DeleteDremioUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -405,7 +403,7 @@ export interface DeleteDremioUserRequest {
   /** The Dremio user UUID. */
   dremioUserId: string;
 }
-export const DeleteDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteDremioUserRequestRegionId.pipe(T.Label()),
@@ -422,11 +420,11 @@ export const DeleteDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDremioUserRequest" }) as any as S.Schema<DeleteDremioUserRequest>;
 
 export interface DeleteDremioUserResponse {}
-export const DeleteDremioUserResponse =
+const DeleteDremioUserResponse =
   DeleteDremioInstanceResponse as any as S.Schema<DeleteDremioUserResponse>;
 
 export type GetDremioInstanceRequestRegionId = "eu01" | "eu02";
-export const GetDremioInstanceRequestRegionId = S.String;
+const GetDremioInstanceRequestRegionId = S.String;
 
 export interface GetDremioInstanceRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -436,7 +434,7 @@ export interface GetDremioInstanceRequest {
   /** The Dremio instance UUID. */
   dremioId: string;
 }
-export const GetDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetDremioInstanceRequestRegionId.pipe(T.Label()),
@@ -452,7 +450,7 @@ export const GetDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDremioInstanceRequest" }) as any as S.Schema<GetDremioInstanceRequest>;
 
 export type GetDremioUserRequestRegionId = "eu01" | "eu02";
-export const GetDremioUserRequestRegionId = S.String;
+const GetDremioUserRequestRegionId = S.String;
 
 export interface GetDremioUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -464,7 +462,7 @@ export interface GetDremioUserRequest {
   /** The Dremio user UUID. */
   dremioUserId: string;
 }
-export const GetDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetDremioUserRequestRegionId.pipe(T.Label()),
@@ -481,7 +479,7 @@ export const GetDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDremioUserRequest" }) as any as S.Schema<GetDremioUserRequest>;
 
 export type ListDremioInstancesRequestRegionId = "eu01" | "eu02";
-export const ListDremioInstancesRequestRegionId = S.String;
+const ListDremioInstancesRequestRegionId = S.String;
 
 export interface ListDremioInstancesRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -493,7 +491,7 @@ export interface ListDremioInstancesRequest {
   /** Maximum number of items to return. */
   pageSize?: number;
 }
-export const ListDremioInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDremioInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListDremioInstancesRequestRegionId.pipe(T.Label()),
@@ -512,7 +510,7 @@ export const ListDremioInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDremioInstancesRequest>;
 
 export type ListDremiosResponseOutputDremiosList = Array<DremioResponseOutput>;
-export const ListDremiosResponseOutputDremiosList = /*@__PURE__*/ S.Array(
+const ListDremiosResponseOutputDremiosList = /*@__PURE__*/ S.Array(
   DremioResponseOutput,
 ) as any as S.Schema<ListDremiosResponseOutputDremiosList>;
 
@@ -521,7 +519,7 @@ export interface ListDremiosResponseOutput {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListDremiosResponseOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDremiosResponseOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dremios: ListDremiosResponseOutputDremiosList,
     nextPageToken: S.optional(S.String),
@@ -531,7 +529,7 @@ export const ListDremiosResponseOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDremiosResponseOutput>;
 
 export type ListDremioUsersRequestRegionId = "eu01" | "eu02";
-export const ListDremioUsersRequestRegionId = S.String;
+const ListDremioUsersRequestRegionId = S.String;
 
 export interface ListDremioUsersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -545,7 +543,7 @@ export interface ListDremioUsersRequest {
   /** Maximum number of items to return. */
   pageSize?: number;
 }
-export const ListDremioUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDremioUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListDremioUsersRequestRegionId.pipe(T.Label()),
@@ -563,7 +561,7 @@ export const ListDremioUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDremioUsersRequest" }) as any as S.Schema<ListDremioUsersRequest>;
 
 export type ListDremioUsersResponseDremioUsersList = Array<DremioUserResponse>;
-export const ListDremioUsersResponseDremioUsersList = /*@__PURE__*/ S.Array(
+const ListDremioUsersResponseDremioUsersList = /*@__PURE__*/ S.Array(
   DremioUserResponse,
 ) as any as S.Schema<ListDremioUsersResponseDremioUsersList>;
 
@@ -572,7 +570,7 @@ export interface ListDremioUsersResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListDremioUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDremioUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dremioUsers: ListDremioUsersResponseDremioUsersList,
     nextPageToken: S.optional(S.String),
@@ -580,7 +578,7 @@ export const ListDremioUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDremioUsersResponse" }) as any as S.Schema<ListDremioUsersResponse>;
 
 export type UpdateDremioInstanceRequestRegionId = "eu01" | "eu02";
-export const UpdateDremioInstanceRequestRegionId = S.String;
+const UpdateDremioInstanceRequestRegionId = S.String;
 
 export interface UpdateDremioInstanceRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -595,7 +593,7 @@ export interface UpdateDremioInstanceRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName?: string;
 }
-export const UpdateDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDremioInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateDremioInstanceRequestRegionId.pipe(T.Label()),

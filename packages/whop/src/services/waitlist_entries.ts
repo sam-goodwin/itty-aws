@@ -53,7 +53,7 @@ export interface ApproveAllWaitlistEntriesRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ApproveAllWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveAllWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     plan_id: S.optional(S.String),
@@ -71,7 +71,7 @@ export interface ApproveAllWaitlistEntriesResponse {
   /** Whether any pending signups were queued for approval. `false` when there were none. */
   queued: boolean;
 }
-export const ApproveAllWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveAllWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     plan_id: S.NullOr(S.String),
@@ -87,7 +87,7 @@ export interface ApproveWaitlistEntryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ApproveWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -102,7 +102,7 @@ export type WaitlistEntryApprovalFailureReason =
   | "already_member"
   | "checkout_failed"
   | "unknown";
-export const WaitlistEntryApprovalFailureReason = S.String;
+const WaitlistEntryApprovalFailureReason = S.String;
 
 export interface WaitlistEntryCustomFieldResponse {
   /** The buyer's answer. */
@@ -112,7 +112,7 @@ export interface WaitlistEntryCustomFieldResponse {
   /** The question shown when the signup was submitted. */
   question: string;
 }
-export const WaitlistEntryCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const WaitlistEntryCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.String,
     id: S.String,
@@ -123,13 +123,13 @@ export const WaitlistEntryCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WaitlistEntryCustomFieldResponse>;
 
 export type WaitlistEntryCustomFieldResponsesList = Array<WaitlistEntryCustomFieldResponse>;
-export const WaitlistEntryCustomFieldResponsesList = /*@__PURE__*/ S.Array(
+const WaitlistEntryCustomFieldResponsesList = /*@__PURE__*/ S.Array(
   WaitlistEntryCustomFieldResponse,
 ) as any as S.Schema<WaitlistEntryCustomFieldResponsesList>;
 
 /** The signup's current state. Approval runs asynchronously, so a signup stays `pending` until processing completes. `approved` alone does not prove an active membership; check `membership_id`. */
 export type WaitlistEntryStatus = "pending" | "approved" | "denied" | "canceled";
-export const WaitlistEntryStatus = S.String;
+const WaitlistEntryStatus = S.String;
 
 export interface WaitlistEntry {
   /** The seller account, prefixed `biz_`. */
@@ -158,7 +158,7 @@ export interface WaitlistEntry {
   /** The user who submitted this signup, prefixed `user_`. */
   user_id: string;
 }
-export const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
+const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     approval_failure_reason: S.NullOr(WaitlistEntryApprovalFailureReason),
@@ -182,7 +182,7 @@ export interface CancelWaitlistEntryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CancelWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -197,7 +197,7 @@ export interface CreateWaitlistEntryRequestCustomFieldResponsesItem {
   /** The checkout question being answered, prefixed `field_`. */
   custom_field_id: string;
 }
-export const CreateWaitlistEntryRequestCustomFieldResponsesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateWaitlistEntryRequestCustomFieldResponsesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.String,
     custom_field_id: S.String,
@@ -209,7 +209,7 @@ export const CreateWaitlistEntryRequestCustomFieldResponsesItem = /*@__PURE__*/ 
 /** Answers to the plan's checkout questions. Every required question must be answered. */
 export type CreateWaitlistEntryRequestCustomFieldResponsesList =
   Array<CreateWaitlistEntryRequestCustomFieldResponsesItem>;
-export const CreateWaitlistEntryRequestCustomFieldResponsesList = /*@__PURE__*/ S.Array(
+const CreateWaitlistEntryRequestCustomFieldResponsesList = /*@__PURE__*/ S.Array(
   CreateWaitlistEntryRequestCustomFieldResponsesItem,
 ) as any as S.Schema<CreateWaitlistEntryRequestCustomFieldResponsesList>;
 
@@ -223,7 +223,7 @@ export interface CreateWaitlistEntryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_field_responses: S.optional(CreateWaitlistEntryRequestCustomFieldResponsesList),
     metadata: S.optional(S.Unknown),
@@ -240,7 +240,7 @@ export interface DenyWaitlistEntryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DenyWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const DenyWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -251,20 +251,20 @@ export interface GetWaitlistEntryRequest {
   /** Waitlist signup ID, prefixed `entry_`. */
   id: string;
 }
-export const GetWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries/{id}", code: 200 })),
 ).annotate({ identifier: "GetWaitlistEntryRequest" }) as any as S.Schema<GetWaitlistEntryRequest>;
 
 export type ListWaitlistEntriesRequestStatus = "pending" | "approved" | "denied" | "canceled";
-export const ListWaitlistEntriesRequestStatus = S.String;
+const ListWaitlistEntriesRequestStatus = S.String;
 
 export type ListWaitlistEntriesRequestOrder = "created_at";
-export const ListWaitlistEntriesRequestOrder = S.String;
+const ListWaitlistEntriesRequestOrder = S.String;
 
 export type ListWaitlistEntriesRequestDirection = "asc" | "desc";
-export const ListWaitlistEntriesRequestDirection = S.String;
+const ListWaitlistEntriesRequestDirection = S.String;
 
 export interface ListWaitlistEntriesRequest {
   /** Number of results to return from the start of the range. */
@@ -292,7 +292,7 @@ export interface ListWaitlistEntriesRequest {
   /** The sort direction for results. Defaults to descending. */
   direction?: ListWaitlistEntriesRequestDirection | (string & {});
 }
-export const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -312,7 +312,7 @@ export const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWaitlistEntriesRequest>;
 
 export type ListWaitlistEntriesResponseDataList = Array<WaitlistEntry>;
-export const ListWaitlistEntriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListWaitlistEntriesResponseDataList = /*@__PURE__*/ S.Array(
   WaitlistEntry,
 ) as any as S.Schema<ListWaitlistEntriesResponseDataList>;
 
@@ -322,7 +322,7 @@ export interface ListWaitlistEntriesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListWaitlistEntriesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistEntriesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -337,7 +337,7 @@ export interface ListWaitlistEntriesResponse {
   data: ListWaitlistEntriesResponseDataList;
   page_info: ListWaitlistEntriesResponsePageInfo;
 }
-export const ListWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListWaitlistEntriesResponseDataList,
     page_info: ListWaitlistEntriesResponsePageInfo,

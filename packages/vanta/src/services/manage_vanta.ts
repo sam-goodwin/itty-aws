@@ -15,20 +15,19 @@ export interface AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem {
   /** Remediation IDs */
   id: string;
 }
-export const AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slaViolationComment: S.String,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem",
-  }) as any as S.Schema<AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem>;
+const AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slaViolationComment: S.String,
+    id: S.String,
+  }),
+).annotate({
+  identifier: "AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem",
+}) as any as S.Schema<AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem>;
 
 /** List of vulnerability remediation IDs. */
 export type AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesList =
   Array<AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem>;
-export const AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesList = /*@__PURE__*/ S.Array(
+const AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesList = /*@__PURE__*/ S.Array(
   AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesItem,
 ) as any as S.Schema<AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesList>;
 
@@ -36,7 +35,7 @@ export interface AcknowledgeSlaMissVulnerabilityRemediationsRequest {
   /** List of vulnerability remediation IDs. */
   updates: AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesList;
 }
-export const AcknowledgeSlaMissVulnerabilityRemediationsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeSlaMissVulnerabilityRemediationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updates: AcknowledgeSlaMissVulnerabilityRemediationsRequestUpdatesList,
   }).pipe(
@@ -47,24 +46,13 @@ export const AcknowledgeSlaMissVulnerabilityRemediationsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<AcknowledgeSlaMissVulnerabilityRemediationsRequest>;
 
 export type ResultLineStatusSUCCESS = "SUCCESS";
-export const ResultLineStatusSUCCESS = S.String;
-
 export interface SuccessResponse {
   /** Id of the record */
   id: string;
   /** Status of the requested update */
   status: ResultLineStatusSUCCESS;
 }
-export const SuccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: ResultLineStatusSUCCESS,
-  }),
-).annotate({ identifier: "SuccessResponse" }) as any as S.Schema<SuccessResponse>;
-
 export type ResultLineStatusERROR = "ERROR";
-export const ResultLineStatusERROR = S.String;
-
 export interface NonSuccessResponse {
   /** Id of the record */
   id: string;
@@ -73,20 +61,12 @@ export interface NonSuccessResponse {
   /** Message an error message */
   message: string;
 }
-export const NonSuccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: ResultLineStatusERROR,
-    message: S.String,
-  }),
-).annotate({ identifier: "NonSuccessResponse" }) as any as S.Schema<NonSuccessResponse>;
-
 export type UpdateResponse = SuccessResponse | NonSuccessResponse;
-export const UpdateResponse = S.Unknown as any as S.Schema<UpdateResponse>;
+const UpdateResponse = S.Unknown as any as S.Schema<UpdateResponse>;
 
 /** List of results matching the length and order of the request */
 export type BulkResponseResultsList = Array<UpdateResponse>;
-export const BulkResponseResultsList = /*@__PURE__*/ S.Array(
+const BulkResponseResultsList = /*@__PURE__*/ S.Array(
   UpdateResponse,
 ) as any as S.Schema<BulkResponseResultsList>;
 
@@ -94,7 +74,7 @@ export interface BulkResponse {
   /** List of results matching the length and order of the request */
   results: BulkResponseResultsList;
 }
-export const BulkResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: BulkResponseResultsList,
   }),
@@ -104,7 +84,7 @@ export interface AddControlFromLibraryRequest {
   /** The ID of the control to be added. */
   controlId: string;
 }
-export const AddControlFromLibraryRequest = /*@__PURE__*/ S.suspend(() =>
+const AddControlFromLibraryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/controls/add-from-library", code: 200 })),
@@ -113,13 +93,11 @@ export const AddControlFromLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddControlFromLibraryRequest>;
 
 export type ControlSource = "Vanta" | "Custom";
-export const ControlSource = S.String;
+const ControlSource = S.String;
 
 /** The security domains that the control belongs to. */
 export type ControlDomainsList = Array<string>;
-export const ControlDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ControlDomainsList>;
+const ControlDomainsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ControlDomainsList>;
 
 export interface Owner {
   /** Unique identifier for the person. */
@@ -129,7 +107,7 @@ export interface Owner {
   /** Email address of the person. */
   emailAddress: string;
 }
-export const Owner = /*@__PURE__*/ S.suspend(() =>
+const Owner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -138,17 +116,14 @@ export const Owner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Owner" }) as any as S.Schema<Owner>;
 
 export type CustomFieldValueCase1List = Array<string>;
-export const CustomFieldValueCase1List =
-  ControlDomainsList as any as S.Schema<CustomFieldValueCase1List>;
-
 export type CustomFieldValue = string | CustomFieldValueCase1List;
-export const CustomFieldValue = S.Unknown as any as S.Schema<CustomFieldValue>;
+const CustomFieldValue = S.Unknown as any as S.Schema<CustomFieldValue>;
 
 export interface CustomField {
   label: string;
   value: CustomFieldValue;
 }
-export const CustomField = /*@__PURE__*/ S.suspend(() =>
+const CustomField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     value: CustomFieldValue,
@@ -157,7 +132,7 @@ export const CustomField = /*@__PURE__*/ S.suspend(() =>
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type ControlCustomFieldsList = Array<CustomField>;
-export const ControlCustomFieldsList = /*@__PURE__*/ S.Array(
+const ControlCustomFieldsList = /*@__PURE__*/ S.Array(
   CustomField,
 ) as any as S.Schema<ControlCustomFieldsList>;
 
@@ -187,7 +162,7 @@ export interface Control {
   /** How the control is implemented. */
   implementationDetails?: string | null;
 }
-export const Control = /*@__PURE__*/ S.suspend(() =>
+const Control = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.NullOr(S.String),
@@ -206,7 +181,7 @@ export const Control = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the categories to add the control to. This cannot be empty. */
 export type AddControlToTrustCenterRequestCategoryIdsList = Array<string>;
-export const AddControlToTrustCenterRequestCategoryIdsList =
+const AddControlToTrustCenterRequestCategoryIdsList =
   ControlDomainsList as any as S.Schema<AddControlToTrustCenterRequestCategoryIdsList>;
 
 export interface AddControlToTrustCenterRequest {
@@ -216,7 +191,7 @@ export interface AddControlToTrustCenterRequest {
   /** IDs of the categories to add the control to. This cannot be empty. */
   categoryIds: AddControlToTrustCenterRequestCategoryIdsList;
 }
-export const AddControlToTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const AddControlToTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     controlId: S.String,
@@ -228,7 +203,7 @@ export const AddControlToTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Visibility of a control category's controls on the Trust Center. `SHAREABLE` categories are only visible to accounts with a matching access grant. */
 export type TrustCenterControlVisibility = "PUBLIC" | "SHAREABLE";
-export const TrustCenterControlVisibility = S.String;
+const TrustCenterControlVisibility = S.String;
 
 /** Which controls a Trust Center displays, and whether their pass/fail status is shown. Set as the Trust Center's global default, or per category to override that default. */
 export type TrustCenterControlVisibilityMode =
@@ -236,7 +211,7 @@ export type TrustCenterControlVisibilityMode =
   | "SHOW_OK_AND_UNMAPPED"
   | "SHOW_ALL_WITHOUT_STATUS"
   | "SHOW_ALL_WITH_STATUS";
-export const TrustCenterControlVisibilityMode = S.String;
+const TrustCenterControlVisibilityMode = S.String;
 
 export interface TrustCenterControlCategory {
   /** Unique identifier for the control category. */
@@ -248,7 +223,7 @@ export interface TrustCenterControlCategory {
   /** Per-category status-visibility override. `null` means the category follows the Trust Center's global default. */
   statusVisibilityOverride: TrustCenterControlVisibilityMode | null;
 }
-export const TrustCenterControlCategory = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterControlCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -261,7 +236,7 @@ export const TrustCenterControlCategory = /*@__PURE__*/ S.suspend(() =>
 
 /** The Trust Center control categories that the control belongs to. */
 export type TrustCenterControlCategoriesList = Array<TrustCenterControlCategory>;
-export const TrustCenterControlCategoriesList = /*@__PURE__*/ S.Array(
+const TrustCenterControlCategoriesList = /*@__PURE__*/ S.Array(
   TrustCenterControlCategory,
 ) as any as S.Schema<TrustCenterControlCategoriesList>;
 
@@ -275,7 +250,7 @@ export interface TrustCenterControl {
   /** The Trust Center control categories that the control belongs to. */
   categories: TrustCenterControlCategoriesList | null;
 }
-export const TrustCenterControl = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -287,7 +262,7 @@ export const TrustCenterControl = /*@__PURE__*/ S.suspend(() =>
 export interface AddDiscoveredVendorToManagedRequest {
   discoveredVendorId: string;
 }
-export const AddDiscoveredVendorToManagedRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDiscoveredVendorToManagedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveredVendorId: S.String.pipe(T.Label()),
   }).pipe(
@@ -303,14 +278,14 @@ export const AddDiscoveredVendorToManagedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of risk attribute IDs the vendor has been assigned to. */
 export type VendorRiskAttributeIdsList = Array<string>;
-export const VendorRiskAttributeIdsList =
+const VendorRiskAttributeIdsList =
   ControlDomainsList as any as S.Schema<VendorRiskAttributeIdsList>;
 
 /** The vendor's category. */
 export interface VendorCategory {
   displayName: string;
 }
-export const VendorCategory = /*@__PURE__*/ S.suspend(() =>
+const VendorCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
   }),
@@ -329,7 +304,7 @@ export type VendorAuthenticationMethod =
   | "SSO"
   | "USERNAME_PASSWORD"
   | "OTHER";
-export const VendorAuthenticationMethod = S.String;
+const VendorAuthenticationMethod = S.String;
 
 /** The vendor's authentication details. */
 export interface VendorAuthDetails {
@@ -344,7 +319,7 @@ export interface VendorAuthDetails {
   /** The vendor's authentication method. */
   method: VendorAuthenticationMethod | null;
 }
-export const VendorAuthDetails = /*@__PURE__*/ S.suspend(() =>
+const VendorAuthDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordMinimumLength: S.NullOr(S.Number),
     passwordRequiresSymbol: S.NullOr(S.Boolean),
@@ -356,11 +331,11 @@ export const VendorAuthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of a vendor: - MANAGED: The vendor is actively managed. - ARCHIVED: The vendor has been archived - IN_PROCUREMENT: The vendor is in the procurement process */
 export type VendorStatus = "MANAGED" | "ARCHIVED" | "IN_PROCUREMENT";
-export const VendorStatus = S.String;
+const VendorStatus = S.String;
 
 /** The risk level of a vendor: - CRITICAL: The vendor has a critical security risk - HIGH: The vendor has a high security risk - MEDIUM: The vendor has a medium security risk - LOW: The vendor has a low security risk - UNSCORED: The vendor has not been given a risk level */
 export type VendorRiskLevel = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM" | "UNSCORED";
-export const VendorRiskLevel = S.String;
+const VendorRiskLevel = S.String;
 
 export type CountryCode =
   | "EUE"
@@ -617,7 +592,7 @@ export type CountryCode =
   | "ZAF"
   | "ZMB"
   | "ZWE";
-export const CountryCode = S.String;
+const CountryCode = S.String;
 
 export type CurrencyCode =
   | "ARS"
@@ -644,7 +619,7 @@ export type CurrencyCode =
   | "UAH"
   | "USD"
   | "ZAR";
-export const CurrencyCode = S.String;
+const CurrencyCode = S.String;
 
 export interface VendorContractAmount {
   /** The amount of the contract. */
@@ -652,7 +627,7 @@ export interface VendorContractAmount {
   /** The currency of the contract. */
   currency: CurrencyCode | (string & {});
 }
-export const VendorContractAmount = /*@__PURE__*/ S.suspend(() =>
+const VendorContractAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     currency: CurrencyCode,
@@ -661,18 +636,17 @@ export const VendorContractAmount = /*@__PURE__*/ S.suspend(() =>
 
 /** The vendor's custom fields. */
 export type VendorCustomFieldsList = Array<CustomField>;
-export const VendorCustomFieldsList =
-  ControlCustomFieldsList as any as S.Schema<VendorCustomFieldsList>;
+const VendorCustomFieldsList = ControlCustomFieldsList as any as S.Schema<VendorCustomFieldsList>;
 
 export type VendorDecisionStatus = "APPROVED" | "CONDITIONALLY_APPROVED" | "NOT_APPROVED";
-export const VendorDecisionStatus = S.String;
+const VendorDecisionStatus = S.String;
 
 /** The decision for a vendor. */
 export interface VendorDecision {
   status: VendorDecisionStatus;
   lastUpdatedAt: string;
 }
-export const VendorDecision = /*@__PURE__*/ S.suspend(() =>
+const VendorDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: VendorDecisionStatus,
     lastUpdatedAt: S.String,
@@ -684,7 +658,7 @@ export interface VendorLinkedTaskTrackerTaskProcurementRequest {
   url: string;
   service: string;
 }
-export const VendorLinkedTaskTrackerTaskProcurementRequest = /*@__PURE__*/ S.suspend(() =>
+const VendorLinkedTaskTrackerTaskProcurementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     service: S.String,
@@ -749,7 +723,7 @@ export interface Vendor {
   /** The task tracker procurement request associated with this vendor (if linked). */
   linkedTaskTrackerTaskProcurementRequest: VendorLinkedTaskTrackerTaskProcurementRequest | null;
 }
-export const Vendor = /*@__PURE__*/ S.suspend(() =>
+const Vendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -788,7 +762,7 @@ export interface AddDocumentToControlRequest {
   /** The ID of the document to add to the control. */
   documentId: string;
 }
-export const AddDocumentToControlRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDocumentToControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     documentId: S.String,
@@ -818,10 +792,10 @@ export type DocumentAndTestCategory =
   | "CSPM alert management"
   | "Vendors"
   | "Vulnerability management";
-export const DocumentAndTestCategory = S.String;
+const DocumentAndTestCategory = S.String;
 
 export type DocumentStatus = "Needs document" | "Needs update" | "Not relevant" | "OK";
-export const DocumentStatus = S.String;
+const DocumentStatus = S.String;
 
 export interface Document {
   /** The document's unique ID. */
@@ -843,7 +817,7 @@ export interface Document {
   /** The URL to view the document within Vanta. */
   url: string | null;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ownerId: S.NullOr(S.String),
@@ -861,7 +835,7 @@ export interface AddDocumentToControlResponse {
   document: Document;
   control: Control;
 }
-export const AddDocumentToControlResponse = /*@__PURE__*/ S.suspend(() =>
+const AddDocumentToControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: Document,
     control: Control,
@@ -873,7 +847,7 @@ export const AddDocumentToControlResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AddPeopleToGroupRequestUpdatesItem {
   id: string;
 }
-export const AddPeopleToGroupRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
+const AddPeopleToGroupRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -883,7 +857,7 @@ export const AddPeopleToGroupRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of people IDs to add a group. */
 export type AddPeopleToGroupRequestUpdatesList = Array<AddPeopleToGroupRequestUpdatesItem>;
-export const AddPeopleToGroupRequestUpdatesList = /*@__PURE__*/ S.Array(
+const AddPeopleToGroupRequestUpdatesList = /*@__PURE__*/ S.Array(
   AddPeopleToGroupRequestUpdatesItem,
 ) as any as S.Schema<AddPeopleToGroupRequestUpdatesList>;
 
@@ -892,7 +866,7 @@ export interface AddPeopleToGroupRequest {
   /** List of people IDs to add a group. */
   updates: AddPeopleToGroupRequestUpdatesList;
 }
-export const AddPeopleToGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPeopleToGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     updates: AddPeopleToGroupRequestUpdatesList,
@@ -904,7 +878,7 @@ export interface AddPersonToGroupRequest {
   /** ID of the person to add to the group. */
   id: string;
 }
-export const AddPersonToGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPersonToGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     id: S.String,
@@ -913,7 +887,7 @@ export const AddPersonToGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The employment status of a person: - UPCOMING: The person is not yet employed and will start employment in the future. - CURRENT: The person is currently employed. - ON_LEAVE: The person is on leave. - INACTIVE: The person's employment is inactive. - FORMER: The person was previously employed. */
 export type EmploymentStatus = "UPCOMING" | "CURRENT" | "ON_LEAVE" | "INACTIVE" | "FORMER";
-export const EmploymentStatus = S.String;
+const EmploymentStatus = S.String;
 
 export interface PersonEmployment {
   /** The person's employment status. */
@@ -925,7 +899,7 @@ export interface PersonEmployment {
   /** If present, the date the person's employment ended. */
   endDate: string | null;
 }
-export const PersonEmployment = /*@__PURE__*/ S.suspend(() =>
+const PersonEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: EmploymentStatus,
     startDate: S.String,
@@ -936,7 +910,7 @@ export const PersonEmployment = /*@__PURE__*/ S.suspend(() =>
 
 /** User can be active or upcoming leave period */
 export type LeaveStatus = "ACTIVE" | "UPCOMING";
-export const LeaveStatus = S.String;
+const LeaveStatus = S.String;
 
 export interface LeaveInfo {
   /** The start of the person's leave. */
@@ -946,7 +920,7 @@ export interface LeaveInfo {
   /** ACTIVE if the leave is currently ongoing. UPCOMING if the startDate is in the future. */
   status: LeaveStatus;
 }
-export const LeaveInfo = /*@__PURE__*/ S.suspend(() =>
+const LeaveInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.String,
     endDate: S.NullOr(S.String),
@@ -956,7 +930,7 @@ export const LeaveInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The id of each group the user belongs to. This includes both manually created groups in Vanta and groups imported from an identity provider. */
 export type PersonGroupIdsList = Array<string>;
-export const PersonGroupIdsList = ControlDomainsList as any as S.Schema<PersonGroupIdsList>;
+const PersonGroupIdsList = ControlDomainsList as any as S.Schema<PersonGroupIdsList>;
 
 export interface PersonName {
   /** The person's first (given) name. */
@@ -966,7 +940,7 @@ export interface PersonName {
   /** The person's display name, used in Vanta. */
   display: string;
 }
-export const PersonName = /*@__PURE__*/ S.suspend(() =>
+const PersonName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.NullOr(S.String),
     last: S.NullOr(S.String),
@@ -975,55 +949,28 @@ export const PersonName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersonName" }) as any as S.Schema<PersonName>;
 
 export type PersonInfoSourceTypeVANTA = "VANTA";
-export const PersonInfoSourceTypeVANTA = S.String;
-
 /** The person's information comes from what is set in Vanta. */
 export interface VantaBasedPersonInfoSource {
   type: PersonInfoSourceTypeVANTA;
 }
-export const VantaBasedPersonInfoSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PersonInfoSourceTypeVANTA,
-  }),
-).annotate({
-  identifier: "VantaBasedPersonInfoSource",
-}) as any as S.Schema<VantaBasedPersonInfoSource>;
-
 export type PersonInfoSourceTypeSCIM = "SCIM";
-export const PersonInfoSourceTypeSCIM = S.String;
-
 /** The person's information comes from SCIM. */
 export interface ScimBasedPersonInfoSource {
   type: PersonInfoSourceTypeSCIM;
 }
-export const ScimBasedPersonInfoSource =
-  VantaBasedPersonInfoSource as any as S.Schema<ScimBasedPersonInfoSource>;
-
 export type PersonInfoSourceTypeINTEGRATION = "INTEGRATION";
-export const PersonInfoSourceTypeINTEGRATION = S.String;
-
 /** The person's information comes from an integration. */
 export interface IntegrationBasedPersonInfoSource {
   integrationId: string;
   resourceId: string | null;
   type: PersonInfoSourceTypeINTEGRATION;
 }
-export const IntegrationBasedPersonInfoSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationId: S.String,
-    resourceId: S.NullOr(S.String),
-    type: PersonInfoSourceTypeINTEGRATION,
-  }),
-).annotate({
-  identifier: "IntegrationBasedPersonInfoSource",
-}) as any as S.Schema<IntegrationBasedPersonInfoSource>;
-
 /** The source of the person's information. */
 export type PersonInfoSource =
   | VantaBasedPersonInfoSource
   | ScimBasedPersonInfoSource
   | IntegrationBasedPersonInfoSource;
-export const PersonInfoSource = S.Unknown as any as S.Schema<PersonInfoSource>;
+const PersonInfoSource = S.Unknown as any as S.Schema<PersonInfoSource>;
 
 export interface PersonSourcesEmployment {
   /** The source of the person's employment end date. */
@@ -1031,7 +978,7 @@ export interface PersonSourcesEmployment {
   /** The source of the person's employment start date. */
   startDate: PersonInfoSource;
 }
-export const PersonSourcesEmployment = /*@__PURE__*/ S.suspend(() =>
+const PersonSourcesEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: PersonInfoSource,
     startDate: PersonInfoSource,
@@ -1044,7 +991,7 @@ export interface PersonSources {
   /** The source of the person's email address. */
   emailAddress: PersonInfoSource;
 }
-export const PersonSources = /*@__PURE__*/ S.suspend(() =>
+const PersonSources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment: PersonSourcesEmployment,
     emailAddress: PersonInfoSource,
@@ -1052,18 +999,18 @@ export const PersonSources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersonSources" }) as any as S.Schema<PersonSources>;
 
 export type TaskTypeCOMPLETETRAININGS = "COMPLETE_TRAININGS";
-export const TaskTypeCOMPLETETRAININGS = S.String;
+const TaskTypeCOMPLETETRAININGS = S.String;
 
 /** The status of a task. - COMPLETE: The task has been completed. - DUE_SOON: The task is due soon. - OVERDUE: The task is overdue. - NONE: The task is not assigned. */
 export type TaskStatus = "COMPLETE" | "DUE_SOON" | "OVERDUE" | "NONE";
-export const TaskStatus = S.String;
+const TaskStatus = S.String;
 
 /** If the task is disabled, the reason and date when it was disabled. */
 export interface CompleteTrainingsTaskSummaryDisabled {
   date: string;
   reason: string | null;
 }
-export const CompleteTrainingsTaskSummaryDisabled = /*@__PURE__*/ S.suspend(() =>
+const CompleteTrainingsTaskSummaryDisabled = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     reason: S.NullOr(S.String),
@@ -1076,7 +1023,7 @@ export const CompleteTrainingsTaskSummaryDisabled = /*@__PURE__*/ S.suspend(() =
 export interface Training {
   name: string;
 }
-export const Training = /*@__PURE__*/ S.suspend(() =>
+const Training = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -1084,13 +1031,13 @@ export const Training = /*@__PURE__*/ S.suspend(() =>
 
 /** Incomplete security trainings that are relevant given a person's requirements. */
 export type CompleteTrainingsTaskSummaryIncompleteTrainingsList = Array<Training>;
-export const CompleteTrainingsTaskSummaryIncompleteTrainingsList = /*@__PURE__*/ S.Array(
+const CompleteTrainingsTaskSummaryIncompleteTrainingsList = /*@__PURE__*/ S.Array(
   Training,
 ) as any as S.Schema<CompleteTrainingsTaskSummaryIncompleteTrainingsList>;
 
 /** Security trainings that have been completed and are relevant given a person's current requirements. */
 export type CompleteTrainingsTaskSummaryCompletedTrainingsList = Array<Training>;
-export const CompleteTrainingsTaskSummaryCompletedTrainingsList =
+const CompleteTrainingsTaskSummaryCompletedTrainingsList =
   CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<CompleteTrainingsTaskSummaryCompletedTrainingsList>;
 
 /** Task summary for completing all trainings. */
@@ -1108,7 +1055,7 @@ export interface CompleteTrainingsTaskSummary {
   /** Security trainings that have been completed and are relevant given a person's current requirements. */
   completedTrainings: CompleteTrainingsTaskSummaryCompletedTrainingsList;
 }
-export const CompleteTrainingsTaskSummary = /*@__PURE__*/ S.suspend(() =>
+const CompleteTrainingsTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskType: TaskTypeCOMPLETETRAININGS,
     status: TaskStatus,
@@ -1123,26 +1070,20 @@ export const CompleteTrainingsTaskSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompleteTrainingsTaskSummary>;
 
 export type TaskTypeACCEPTPOLICIES = "ACCEPT_POLICIES";
-export const TaskTypeACCEPTPOLICIES = S.String;
+const TaskTypeACCEPTPOLICIES = S.String;
 
 /** If the task is disabled, the reason and date when it was disabled. */
 export type AcceptPoliciesTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-export const AcceptPoliciesTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-
 export type AcceptPoliciesTaskSummaryUnacceptedPoliciesItem = Training;
-export const AcceptPoliciesTaskSummaryUnacceptedPoliciesItem = Training;
-
 /** Unaccepted policies that are relevant to the person. */
 export type AcceptPoliciesTaskSummaryUnacceptedPoliciesList = Array<Training>;
-export const AcceptPoliciesTaskSummaryUnacceptedPoliciesList =
+const AcceptPoliciesTaskSummaryUnacceptedPoliciesList =
   CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<AcceptPoliciesTaskSummaryUnacceptedPoliciesList>;
 
 export type AcceptPoliciesTaskSummaryAcceptedPoliciesItem = Training;
-export const AcceptPoliciesTaskSummaryAcceptedPoliciesItem = Training;
-
 /** Accepted policies that are relevant to the person. */
 export type AcceptPoliciesTaskSummaryAcceptedPoliciesList = Array<Training>;
-export const AcceptPoliciesTaskSummaryAcceptedPoliciesList =
+const AcceptPoliciesTaskSummaryAcceptedPoliciesList =
   CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<AcceptPoliciesTaskSummaryAcceptedPoliciesList>;
 
 /** Policy acceptance details for a person. */
@@ -1160,7 +1101,7 @@ export interface AcceptPoliciesTaskSummary {
   /** Accepted policies that are relevant to the person. */
   acceptedPolicies: AcceptPoliciesTaskSummaryAcceptedPoliciesList;
 }
-export const AcceptPoliciesTaskSummary = /*@__PURE__*/ S.suspend(() =>
+const AcceptPoliciesTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskType: TaskTypeACCEPTPOLICIES,
     status: TaskStatus,
@@ -1175,24 +1116,20 @@ export const AcceptPoliciesTaskSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptPoliciesTaskSummary>;
 
 export type TaskTypeCOMPLETECUSTOMTASKS = "COMPLETE_CUSTOM_TASKS";
-export const TaskTypeCOMPLETECUSTOMTASKS = S.String;
+const TaskTypeCOMPLETECUSTOMTASKS = S.String;
 
 /** If the task is disabled, the reason and date when it was disabled. */
 export type CompleteCustomTasksTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-export const CompleteCustomTasksTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-
 /** A custom task. */
 export type CustomTask = Training;
-export const CustomTask = Training;
-
 /** Incomplete custom tasks that are relevant given a person's requirements. */
 export type CompleteCustomTasksTaskSummaryIncompleteCustomTasksList = Array<Training>;
-export const CompleteCustomTasksTaskSummaryIncompleteCustomTasksList =
+const CompleteCustomTasksTaskSummaryIncompleteCustomTasksList =
   CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<CompleteCustomTasksTaskSummaryIncompleteCustomTasksList>;
 
 /** Custom tasks that have been completed and are relevant given a person's current requirements. */
 export type CompleteCustomTasksTaskSummaryCompletedCustomTasksList = Array<Training>;
-export const CompleteCustomTasksTaskSummaryCompletedCustomTasksList =
+const CompleteCustomTasksTaskSummaryCompletedCustomTasksList =
   CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<CompleteCustomTasksTaskSummaryCompletedCustomTasksList>;
 
 /** Task summary for completing all custom tasks. */
@@ -1210,7 +1147,7 @@ export interface CompleteCustomTasksTaskSummary {
   /** Custom tasks that have been completed and are relevant given a person's current requirements. */
   completedCustomTasks: CompleteCustomTasksTaskSummaryCompletedCustomTasksList;
 }
-export const CompleteCustomTasksTaskSummary = /*@__PURE__*/ S.suspend(() =>
+const CompleteCustomTasksTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskType: TaskTypeCOMPLETECUSTOMTASKS,
     status: TaskStatus,
@@ -1225,18 +1162,15 @@ export const CompleteCustomTasksTaskSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompleteCustomTasksTaskSummary>;
 
 export type TaskTypeCOMPLETECUSTOMOFFBOARDINGTASKS = "COMPLETE_CUSTOM_OFFBOARDING_TASKS";
-export const TaskTypeCOMPLETECUSTOMOFFBOARDINGTASKS = S.String;
+const TaskTypeCOMPLETECUSTOMOFFBOARDINGTASKS = S.String;
 
 /** If the task is disabled, the reason and date when it was disabled. */
 export type CompleteOffboardingCustomTasksTaskSummaryDisabled =
   CompleteTrainingsTaskSummaryDisabled;
-export const CompleteOffboardingCustomTasksTaskSummaryDisabled =
-  CompleteTrainingsTaskSummaryDisabled;
-
 /** Incomplete custom tasks that are relevant given a person's requirements. */
 export type CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardingTasksList =
   Array<Training>;
-export const CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardingTasksList =
+const CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardingTasksList =
   /*@__PURE__*/ S.Array(
     Training,
   ) as any as S.Schema<CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardingTasksList>;
@@ -1244,7 +1178,7 @@ export const CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardin
 /** Custom tasks that have been completed and are relevant given a person's current requirements. */
 export type CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList =
   Array<Training>;
-export const CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList =
+const CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList =
   CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardingTasksList as any as S.Schema<CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList>;
 
 /** Task summary for completing all offboarding custom tasks. */
@@ -1262,7 +1196,7 @@ export interface CompleteOffboardingCustomTasksTaskSummary {
   /** Custom tasks that have been completed and are relevant given a person's current requirements. */
   completedCustomOffboardingTasks: CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList;
 }
-export const CompleteOffboardingCustomTasksTaskSummary = /*@__PURE__*/ S.suspend(() =>
+const CompleteOffboardingCustomTasksTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskType: TaskTypeCOMPLETECUSTOMOFFBOARDINGTASKS,
     status: TaskStatus,
@@ -1279,12 +1213,10 @@ export const CompleteOffboardingCustomTasksTaskSummary = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CompleteOffboardingCustomTasksTaskSummary>;
 
 export type TaskTypeINSTALLDEVICEMONITORING = "INSTALL_DEVICE_MONITORING";
-export const TaskTypeINSTALLDEVICEMONITORING = S.String;
+const TaskTypeINSTALLDEVICEMONITORING = S.String;
 
 /** If the task is disabled, the reason and date when it was disabled. */
 export type InstallDeviceMonitoringTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-export const InstallDeviceMonitoringTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-
 /** Task summary for installing device monitoring. */
 export interface InstallDeviceMonitoringTaskSummary {
   taskType: TaskTypeINSTALLDEVICEMONITORING;
@@ -1296,7 +1228,7 @@ export interface InstallDeviceMonitoringTaskSummary {
   /** If the task is disabled, the reason and date when it was disabled. */
   disabled: CompleteTrainingsTaskSummaryDisabled | null;
 }
-export const InstallDeviceMonitoringTaskSummary = /*@__PURE__*/ S.suspend(() =>
+const InstallDeviceMonitoringTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskType: TaskTypeINSTALLDEVICEMONITORING,
     status: TaskStatus,
@@ -1309,12 +1241,8 @@ export const InstallDeviceMonitoringTaskSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstallDeviceMonitoringTaskSummary>;
 
 export type TaskTypeCOMPLETEBACKGROUNDCHECKS = "COMPLETE_BACKGROUND_CHECKS";
-export const TaskTypeCOMPLETEBACKGROUNDCHECKS = S.String;
-
 /** If the task is disabled, the reason and date when it was disabled. */
 export type CompleteBackgroundChecksTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-export const CompleteBackgroundChecksTaskSummaryDisabled = CompleteTrainingsTaskSummaryDisabled;
-
 /** Task summary for completing background checks. */
 export interface CompleteBackgroundChecksTaskSummary {
   taskType: TaskTypeCOMPLETEBACKGROUNDCHECKS;
@@ -1326,7 +1254,7 @@ export interface CompleteBackgroundChecksTaskSummary {
   /** If the task is disabled, the reason and date when it was disabled. */
   disabled: CompleteTrainingsTaskSummaryDisabled | null;
 }
-export const CompleteBackgroundChecksTaskSummary =
+const CompleteBackgroundChecksTaskSummary =
   InstallDeviceMonitoringTaskSummary as any as S.Schema<CompleteBackgroundChecksTaskSummary>;
 
 /** All detailed information about a person's tasks, split across task categories. */
@@ -1338,7 +1266,7 @@ export interface TaskSummaryDetails {
   installDeviceMonitoring: InstallDeviceMonitoringTaskSummary;
   completeBackgroundChecks: CompleteBackgroundChecksTaskSummary;
 }
-export const TaskSummaryDetails = /*@__PURE__*/ S.suspend(() =>
+const TaskSummaryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completeTrainings: CompleteTrainingsTaskSummary,
     acceptPolicies: AcceptPoliciesTaskSummary,
@@ -1359,7 +1287,7 @@ export type TasksSummaryStatus =
   | "OFFBOARDING_OVERDUE"
   | "OVERDUE"
   | "PAUSED";
-export const TasksSummaryStatus = S.String;
+const TasksSummaryStatus = S.String;
 
 /** The person's tasks summary, which aggregates their current status across all of their relevant tasks. */
 export interface PersonTasksSummary {
@@ -1371,7 +1299,7 @@ export interface PersonTasksSummary {
   /** The date when person's tasks were completed. */
   completionDate: string | null;
 }
-export const PersonTasksSummary = /*@__PURE__*/ S.suspend(() =>
+const PersonTasksSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: TaskSummaryDetails,
     status: TasksSummaryStatus,
@@ -1396,7 +1324,7 @@ export interface Person {
   /** The person's tasks summary, which aggregates their current status across all of their relevant tasks. */
   tasksSummary: PersonTasksSummary;
 }
-export const Person = /*@__PURE__*/ S.suspend(() =>
+const Person = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     userId: S.NullOr(S.String),
@@ -1414,14 +1342,14 @@ export type CustomerTrustProductContextIdWritable =
   | "EXTERNAL_TRUST_CENTER"
   | "DOCUMENT_SHARING"
   | "CONTROL_SHARING";
-export const CustomerTrustProductContextIdWritable = S.String;
+const CustomerTrustProductContextIdWritable = S.String;
 
 export interface AddTagCategoryProductContextRequest {
   tagCategoryId: string;
   /** Product context to enable this tag category for. */
   productContextId: CustomerTrustProductContextIdWritable | (string & {});
 }
-export const AddTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagCategoryId: S.String.pipe(T.Label()),
     productContextId: CustomerTrustProductContextIdWritable,
@@ -1437,9 +1365,7 @@ export const AddTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddTagCategoryProductContextRequest>;
 
 export interface AddTagCategoryProductContextResponse {}
-export const AddTagCategoryProductContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AddTagCategoryProductContextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddTagCategoryProductContextResponse",
 }) as any as S.Schema<AddTagCategoryProductContextResponse>;
 
@@ -1448,7 +1374,7 @@ export interface AddTestToControlRequest {
   /** The ID of the test to add to the control. */
   testId: string;
 }
-export const AddTestToControlRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTestToControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     testId: S.String,
@@ -1462,7 +1388,7 @@ export interface TestVersion {
   /** The major version number. */
   major: number;
 }
-export const TestVersion = /*@__PURE__*/ S.suspend(() =>
+const TestVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minor: S.Number,
     major: S.Number,
@@ -1471,7 +1397,7 @@ export const TestVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** This test's third-party integration dependencies. */
 export type TestIntegrationsList = Array<string>;
-export const TestIntegrationsList = ControlDomainsList as any as S.Schema<TestIntegrationsList>;
+const TestIntegrationsList = ControlDomainsList as any as S.Schema<TestIntegrationsList>;
 
 export type TestStatus =
   | "OK"
@@ -1480,7 +1406,7 @@ export type TestStatus =
   | "IN_PROGRESS"
   | "INVALID"
   | "NOT_APPLICABLE";
-export const TestStatus = S.String;
+const TestStatus = S.String;
 
 export interface DeactivatedStatusInfo {
   /** The deactivated status of the test. */
@@ -1490,7 +1416,7 @@ export interface DeactivatedStatusInfo {
   /** The date of the last update to the deactivated status. */
   lastUpdatedDate: string | null;
 }
-export const DeactivatedStatusInfo = /*@__PURE__*/ S.suspend(() =>
+const DeactivatedStatusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDeactivated: S.Boolean,
     deactivatedReason: S.NullOr(S.String),
@@ -1508,7 +1434,7 @@ export type TestRemediationStatus =
   | "NEEDS_WORK"
   | "OVERDUE"
   | "PASS";
-export const TestRemediationStatus = S.String;
+const TestRemediationStatus = S.String;
 
 export interface RemediationStatusInfo {
   /** The status of the remediation. */
@@ -1518,7 +1444,7 @@ export interface RemediationStatusInfo {
   /** The number of items that need remediation. */
   itemCount: number;
 }
-export const RemediationStatusInfo = /*@__PURE__*/ S.suspend(() =>
+const RemediationStatusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: TestRemediationStatus,
     soonestRemediateByDate: S.NullOr(S.String),
@@ -1556,7 +1482,7 @@ export interface Test {
   /** The test's owner. */
   owner: Owner | null;
 }
-export const Test = /*@__PURE__*/ S.suspend(() =>
+const Test = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1579,7 +1505,7 @@ export interface AddTestToControlResponse {
   test: Test;
   control: Control;
 }
-export const AddTestToControlResponse = /*@__PURE__*/ S.suspend(() =>
+const AddTestToControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     test: Test,
     control: Control,
@@ -1591,7 +1517,7 @@ export interface AddTrustCenterControlCategoryRequest {
   /** Name of the category. */
   name: string;
 }
-export const AddTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     name: S.String,
@@ -1605,7 +1531,7 @@ export interface AddTrustCenterFaqCategoryRequest {
   /** Name of the category. */
   name: string;
 }
-export const AddTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     name: S.String,
@@ -1620,7 +1546,7 @@ export interface TrustCenterFaqCategory {
   /** Name of the category. */
   name: string;
 }
-export const TrustCenterFaqCategory = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterFaqCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1632,7 +1558,7 @@ export interface AddTrustCenterResourceCategoryRequest {
   /** Name of the category. */
   name: string;
 }
-export const AddTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     name: S.String,
@@ -1649,7 +1575,7 @@ export interface TrustCenterResourceCategory {
   /** Name of the category. */
   name: string;
 }
-export const TrustCenterResourceCategory = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterResourceCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1660,12 +1586,12 @@ export const TrustCenterResourceCategory = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for the resources that this viewer should have access to. If this field is omitted, the viewer will have access to all resources on the Trust Center. */
 export type AddTrustCenterViewerRequestResourceIdsList = Array<string>;
-export const AddTrustCenterViewerRequestResourceIdsList =
+const AddTrustCenterViewerRequestResourceIdsList =
   ControlDomainsList as any as S.Schema<AddTrustCenterViewerRequestResourceIdsList>;
 
 /** The access level of the viewer. FULL_ACCESS means having access to all resources on the trust center. PARTIAL_ACCESS means having access to all public resources and a select list of requestable resources. */
 export type ViewerAccessLevel = "FULL_ACCESS" | "PARTIAL_ACCESS";
-export const ViewerAccessLevel = S.String;
+const ViewerAccessLevel = S.String;
 
 export interface AddTrustCenterViewerRequest {
   slugId: string;
@@ -1686,7 +1612,7 @@ export interface AddTrustCenterViewerRequest {
   /** ID of a Customer Trust Account to associate with this viewer. */
   customerTrustAccountId?: string;
 }
-export const AddTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     email: S.String,
@@ -1704,7 +1630,7 @@ export const AddTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs for the resources this viewer has access to. If null, the viewer has access to all resources on the Trust Center. */
 export type TrustCenterViewerResourceIdsList = Array<string>;
-export const TrustCenterViewerResourceIdsList =
+const TrustCenterViewerResourceIdsList =
   ControlDomainsList as any as S.Schema<TrustCenterViewerResourceIdsList>;
 
 /** Contains information about the DocuSign NDA if that is the NDA provider. */
@@ -1716,7 +1642,7 @@ export interface TrustCenterViewerNdaInfoDocuSign {
   /** eSignature API URL for the DocuSign account. */
   accountBaseUrl: string;
 }
-export const TrustCenterViewerNdaInfoDocuSign = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterViewerNdaInfoDocuSign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envelopeId: S.String,
     accountId: S.String,
@@ -1735,7 +1661,7 @@ export interface TrustCenterViewerNdaInfoOneClick {
   /** The date the NDA document was signed. */
   date: string;
 }
-export const TrustCenterViewerNdaInfoOneClick = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterViewerNdaInfoOneClick = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ndaUploadedDocumentId: S.NullOr(S.String),
     name: S.String,
@@ -1752,7 +1678,7 @@ export type ViewerNdaProvider =
   | "SFDC_BYPASS"
   | "HUBSPOT_BYPASS"
   | "IRONCLAD_BYPASS";
-export const ViewerNdaProvider = S.String;
+const ViewerNdaProvider = S.String;
 
 /** NDA-related information for the viewer. */
 export interface TrustCenterViewerNdaInfo {
@@ -1765,7 +1691,7 @@ export interface TrustCenterViewerNdaInfo {
   /** The date the NDA was satisfied. */
   satisfiedDate: string | null;
 }
-export const TrustCenterViewerNdaInfo = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterViewerNdaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     docuSign: S.NullOr(TrustCenterViewerNdaInfoDocuSign),
     oneClick: S.NullOr(TrustCenterViewerNdaInfoOneClick),
@@ -1776,7 +1702,7 @@ export const TrustCenterViewerNdaInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An external service that a Trust Center viewer may be associated with. */
 export type ExternalService = "SALESFORCE" | "HUBSPOT" | "IRONCLAD";
-export const ExternalService = S.String;
+const ExternalService = S.String;
 
 export interface TrustCenterViewerExternalServiceAssociationsItem {
   /** The type of object in the external service the viewer was linked to. */
@@ -1786,7 +1712,7 @@ export interface TrustCenterViewerExternalServiceAssociationsItem {
   /** The external service for the associated user. */
   service: ExternalService;
 }
-export const TrustCenterViewerExternalServiceAssociationsItem = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterViewerExternalServiceAssociationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
     id: S.String,
@@ -1799,7 +1725,7 @@ export const TrustCenterViewerExternalServiceAssociationsItem = /*@__PURE__*/ S.
 /** Objects in external services that the viewer is associated with. */
 export type TrustCenterViewerExternalServiceAssociationsList =
   Array<TrustCenterViewerExternalServiceAssociationsItem>;
-export const TrustCenterViewerExternalServiceAssociationsList = /*@__PURE__*/ S.Array(
+const TrustCenterViewerExternalServiceAssociationsList = /*@__PURE__*/ S.Array(
   TrustCenterViewerExternalServiceAssociationsItem,
 ) as any as S.Schema<TrustCenterViewerExternalServiceAssociationsList>;
 
@@ -1810,7 +1736,7 @@ export interface CustomerTrustUser {
   givenName: string | null;
   familyName: string | null;
 }
-export const CustomerTrustUser = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organizationId: S.String,
@@ -1848,7 +1774,7 @@ export interface TrustCenterViewer {
   /** ID of the Customer Trust Account associated with this viewer. */
   customerTrustAccountId: string | null;
 }
-export const TrustCenterViewer = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterViewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -1871,7 +1797,7 @@ export interface ApproveQuestionnaireRequest {
   /** Optional message describing the reason for approval. */
   statusChangeMessage?: string;
 }
-export const ApproveQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     statusChangeMessage: S.optional(S.String),
@@ -1887,7 +1813,7 @@ export const ApproveQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApproveQuestionnaireRequest>;
 
 export type CustomerTrustQuestionnaireType = "SPREADSHEET" | "WEBSITE" | "DOCUMENT";
-export const CustomerTrustQuestionnaireType = S.String;
+const CustomerTrustQuestionnaireType = S.String;
 
 export type QuestionnaireStatus =
   | "APPROVED"
@@ -1912,14 +1838,14 @@ export type QuestionnaireStatus =
   | "WAITING_ON_COLUMN_APPROVAL"
   | "QUEUED_FOR_COLUMN_DETECTION"
   | "DETECTING_COLUMNS";
-export const QuestionnaireStatus = S.String;
+const QuestionnaireStatus = S.String;
 
 export interface QuestionnaireUser {
   id: string;
   displayName: string | null;
   email: string | null;
 }
-export const QuestionnaireUser = /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.NullOr(S.String),
@@ -1937,7 +1863,7 @@ export interface QuestionnaireStatusChangeEntry {
   /** An optional message associated with the status change */
   message: string | null;
 }
-export const QuestionnaireStatusChangeEntry = /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireStatusChangeEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updatedBy: QuestionnaireUser,
     updatedAt: S.String,
@@ -1950,19 +1876,19 @@ export const QuestionnaireStatusChangeEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The status change history log for the questionnaire. Entries are ordered by the most recent status change first. */
 export type CustomerTrustQuestionnaireStatusLogList = Array<QuestionnaireStatusChangeEntry>;
-export const CustomerTrustQuestionnaireStatusLogList = /*@__PURE__*/ S.Array(
+const CustomerTrustQuestionnaireStatusLogList = /*@__PURE__*/ S.Array(
   QuestionnaireStatusChangeEntry,
 ) as any as S.Schema<CustomerTrustQuestionnaireStatusLogList>;
 
 export type ActorAssignmentType = "User" | "Team";
-export const ActorAssignmentType = S.String;
+const ActorAssignmentType = S.String;
 
 export interface ActorAssignment {
   type: ActorAssignmentType;
   id: string;
   displayName: string | null;
 }
-export const ActorAssignment = /*@__PURE__*/ S.suspend(() =>
+const ActorAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ActorAssignmentType,
     id: S.String,
@@ -1974,7 +1900,7 @@ export interface CustomerTrustQuestionnaireMetadataItem {
   value: string;
   key: string;
 }
-export const CustomerTrustQuestionnaireMetadataItem = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustQuestionnaireMetadataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     key: S.String,
@@ -1984,7 +1910,7 @@ export const CustomerTrustQuestionnaireMetadataItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CustomerTrustQuestionnaireMetadataItem>;
 
 export type CustomerTrustQuestionnaireMetadataList = Array<CustomerTrustQuestionnaireMetadataItem>;
-export const CustomerTrustQuestionnaireMetadataList = /*@__PURE__*/ S.Array(
+const CustomerTrustQuestionnaireMetadataList = /*@__PURE__*/ S.Array(
   CustomerTrustQuestionnaireMetadataItem,
 ) as any as S.Schema<CustomerTrustQuestionnaireMetadataList>;
 
@@ -1992,7 +1918,7 @@ export interface TagInput {
   categoryId: string;
   tagId: string;
 }
-export const TagInput = /*@__PURE__*/ S.suspend(() =>
+const TagInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.String,
     tagId: S.String,
@@ -2001,7 +1927,7 @@ export const TagInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags assigned to this questionnaire. Each entry contains a categoryId and tagId. */
 export type CustomerTrustQuestionnaireTagAndCategoryIdsList = Array<TagInput>;
-export const CustomerTrustQuestionnaireTagAndCategoryIdsList = /*@__PURE__*/ S.Array(
+const CustomerTrustQuestionnaireTagAndCategoryIdsList = /*@__PURE__*/ S.Array(
   TagInput,
 ) as any as S.Schema<CustomerTrustQuestionnaireTagAndCategoryIdsList>;
 
@@ -2026,7 +1952,7 @@ export interface CustomerTrustQuestionnaire {
   updatedDate: string;
   completedDate?: string;
 }
-export const CustomerTrustQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -2050,7 +1976,7 @@ export const CustomerTrustQuestionnaire = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for the resources that this viewer should have access to. If this field is omitted, the viewer will have access to all resources that they requested. */
 export type ApproveTrustCenterAccessRequestRequestResourceIdsList = Array<string>;
-export const ApproveTrustCenterAccessRequestRequestResourceIdsList =
+const ApproveTrustCenterAccessRequestRequestResourceIdsList =
   ControlDomainsList as any as S.Schema<ApproveTrustCenterAccessRequestRequestResourceIdsList>;
 
 export interface ApproveTrustCenterAccessRequestRequest {
@@ -2065,7 +1991,7 @@ export interface ApproveTrustCenterAccessRequestRequest {
   /** Approved access level of the viewer. If this field is omitted, the viewer will have the access level they requested. */
   accessLevel?: ViewerAccessLevel | (string & {});
 }
-export const ApproveTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     accessRequestId: S.String.pipe(T.Label()),
@@ -2085,17 +2011,17 @@ export const ApproveTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ApproveTrustCenterAccessRequestRequest>;
 
 export interface ApproveTrustCenterAccessRequestResponse {}
-export const ApproveTrustCenterAccessRequestResponse =
+const ApproveTrustCenterAccessRequestResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<ApproveTrustCenterAccessRequestResponse>;
 
 /** IDs of the controls to tag. Maximum 100. */
 export type BulkAddTagsToControlsRequestControlIdsList = Array<string>;
-export const BulkAddTagsToControlsRequestControlIdsList =
+const BulkAddTagsToControlsRequestControlIdsList =
   ControlDomainsList as any as S.Schema<BulkAddTagsToControlsRequestControlIdsList>;
 
 /** IDs of the tags to add or remove. */
 export type BulkAddTagsToControlsRequestTagsList = Array<string>;
-export const BulkAddTagsToControlsRequestTagsList =
+const BulkAddTagsToControlsRequestTagsList =
   ControlDomainsList as any as S.Schema<BulkAddTagsToControlsRequestTagsList>;
 
 export interface BulkAddTagsToControlsRequest {
@@ -2107,7 +2033,7 @@ export interface BulkAddTagsToControlsRequest {
   /** IDs of the tags to add or remove. */
   tags: BulkAddTagsToControlsRequestTagsList;
 }
-export const BulkAddTagsToControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkAddTagsToControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     controlIds: BulkAddTagsToControlsRequestControlIdsList,
@@ -2119,14 +2045,14 @@ export const BulkAddTagsToControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkAddTagsToControlsRequest>;
 
 export type ArrayResponseTrustCenterControlResultsList = Array<TrustCenterControl>;
-export const ArrayResponseTrustCenterControlResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterControlResultsList = /*@__PURE__*/ S.Array(
   TrustCenterControl,
 ) as any as S.Schema<ArrayResponseTrustCenterControlResultsList>;
 
 export interface ArrayResponseTrustCenterControl {
   results: ArrayResponseTrustCenterControlResultsList;
 }
-export const ArrayResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterControlResultsList,
   }),
@@ -2136,12 +2062,12 @@ export const ArrayResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the controls to tag. Maximum 100. */
 export type BulkRemoveTagsFromControlsRequestControlIdsList = Array<string>;
-export const BulkRemoveTagsFromControlsRequestControlIdsList =
+const BulkRemoveTagsFromControlsRequestControlIdsList =
   ControlDomainsList as any as S.Schema<BulkRemoveTagsFromControlsRequestControlIdsList>;
 
 /** IDs of the tags to add or remove. */
 export type BulkRemoveTagsFromControlsRequestTagsList = Array<string>;
-export const BulkRemoveTagsFromControlsRequestTagsList =
+const BulkRemoveTagsFromControlsRequestTagsList =
   ControlDomainsList as any as S.Schema<BulkRemoveTagsFromControlsRequestTagsList>;
 
 export interface BulkRemoveTagsFromControlsRequest {
@@ -2153,7 +2079,7 @@ export interface BulkRemoveTagsFromControlsRequest {
   /** IDs of the tags to add or remove. */
   tags: BulkRemoveTagsFromControlsRequestTagsList;
 }
-export const BulkRemoveTagsFromControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkRemoveTagsFromControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     controlIds: BulkRemoveTagsFromControlsRequestControlIdsList,
@@ -2167,7 +2093,7 @@ export const BulkRemoveTagsFromControlsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CancelRiskScenarioApprovalRequestRequest {
   riskScenarioId: string;
 }
-export const CancelRiskScenarioApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelRiskScenarioApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2183,33 +2109,30 @@ export const CancelRiskScenarioApprovalRequestRequest = /*@__PURE__*/ S.suspend(
 
 /** The list of categories this risk scenario belongs to. */
 export type RiskScenarioCategoriesList = Array<string>;
-export const RiskScenarioCategoriesList =
+const RiskScenarioCategoriesList =
   ControlDomainsList as any as S.Schema<RiskScenarioCategoriesList>;
 
 export type CIA = "Confidentiality" | "Integrity" | "Availability";
-export const CIA = S.String;
+const CIA = S.String;
 
 /** A list of the following for the type of risk documented: - Confidentiality: Risk to data stores, customer/sensitive information, etc. - Integrity: Risk to accuracy or integrity of system settings and/or data - Availability: Risk to normal service operations and critical system functionality */
 export type RiskScenarioCiaCategoriesList = Array<CIA>;
-export const RiskScenarioCiaCategoriesList = /*@__PURE__*/ S.Array(
+const RiskScenarioCiaCategoriesList = /*@__PURE__*/ S.Array(
   CIA,
 ) as any as S.Schema<RiskScenarioCiaCategoriesList>;
 
 export type Treatment = "Mitigate" | "Transfer" | "Avoid" | "Accept";
-export const Treatment = S.String;
+const Treatment = S.String;
 
 export type CustomAttributeValueCase1List = Array<string>;
-export const CustomAttributeValueCase1List =
-  ControlDomainsList as any as S.Schema<CustomAttributeValueCase1List>;
-
 export type CustomAttributeValue = string | CustomAttributeValueCase1List;
-export const CustomAttributeValue = S.Unknown as any as S.Schema<CustomAttributeValue>;
+const CustomAttributeValue = S.Unknown as any as S.Schema<CustomAttributeValue>;
 
 export interface CustomAttribute {
   label: string;
   value: CustomAttributeValue;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     value: CustomAttributeValue,
@@ -2218,7 +2141,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of custom fields. You can reference existing custom fields in the Risk Management settings and/or create new ones. The format is: - {label: "field-name", value: "string-representation"} for text, date, number and currency fields - {label: "field-name", value: ["option1", "option2"]} for picklist fields */
 export type RiskScenarioCustomFieldsList = Array<CustomAttribute>;
-export const RiskScenarioCustomFieldsList = /*@__PURE__*/ S.Array(
+const RiskScenarioCustomFieldsList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<RiskScenarioCustomFieldsList>;
 
@@ -2229,23 +2152,23 @@ export type ReviewStatus =
   | "AWAITING_SUBMISSION"
   | "PENDING_APPROVAL"
   | "REQUESTED_CHANGES";
-export const ReviewStatus = S.String;
+const ReviewStatus = S.String;
 
 /** The list of required approvers for this risk scenario. */
 export type RiskScenarioRequiredApproversList = Array<string>;
-export const RiskScenarioRequiredApproversList =
+const RiskScenarioRequiredApproversList =
   ControlDomainsList as any as S.Schema<RiskScenarioRequiredApproversList>;
 
 export type RiskScenarioType = "Risk Scenario" | "Enterprise Risk";
-export const RiskScenarioType = S.String;
+const RiskScenarioType = S.String;
 
 /** `SCORE` is the root, `DIMENSION` is a direct child, and `FACTOR` is any deeper node. */
 export type ScoreBreakdownEntryKind = "SCORE" | "DIMENSION" | "FACTOR";
-export const ScoreBreakdownEntryKind = S.String;
+const ScoreBreakdownEntryKind = S.String;
 
 /** `SCORED` has an entered value; `MISSING` is unscored; `NOT_APPLICABLE` is excluded from its parent's calculation. */
 export type ScoreBreakdownEntryStatus = "SCORED" | "MISSING" | "NOT_APPLICABLE";
-export const ScoreBreakdownEntryStatus = S.String;
+const ScoreBreakdownEntryStatus = S.String;
 
 /** One node in the inherent risk scoring tree. Entries are ordered parents before children, with `parentId` linking each child to its parent. */
 export interface ScoreBreakdownEntry {
@@ -2264,7 +2187,7 @@ export interface ScoreBreakdownEntry {
   /** Parent entry's ID, or `null` for the overall score. */
   parentId: string | null;
 }
-export const ScoreBreakdownEntry = /*@__PURE__*/ S.suspend(() =>
+const ScoreBreakdownEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: ScoreBreakdownEntryKind,
@@ -2278,7 +2201,7 @@ export const ScoreBreakdownEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Overall inherent score, dimensions, and nested factors, ordered parents before children and linked by `parentId`. `null` when Flexible Risk Scoring is off or the scenario has no score or matching config. Closed beta. */
 export type RiskScenarioScoreBreakdownList = Array<ScoreBreakdownEntry>;
-export const RiskScenarioScoreBreakdownList = /*@__PURE__*/ S.Array(
+const RiskScenarioScoreBreakdownList = /*@__PURE__*/ S.Array(
   ScoreBreakdownEntry,
 ) as any as S.Schema<RiskScenarioScoreBreakdownList>;
 
@@ -2326,7 +2249,7 @@ export interface RiskScenario {
   /** Overall inherent score, dimensions, and nested factors, ordered parents before children and linked by `parentId`. `null` when Flexible Risk Scoring is off or the scenario has no score or matching config. Closed beta. */
   scoreBreakdown: RiskScenarioScoreBreakdownList | null;
 }
-export const RiskScenario = /*@__PURE__*/ S.suspend(() =>
+const RiskScenario = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskId: S.String,
     description: S.String,
@@ -2355,7 +2278,7 @@ export const RiskScenario = /*@__PURE__*/ S.suspend(() =>
 export interface ClearLeaveForPersonRequest {
   personId: string;
 }
-export const ClearLeaveForPersonRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearLeaveForPersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/people/{personId}/clear-leave", code: 200 })),
@@ -2368,7 +2291,7 @@ export interface CompleteQuestionnaireRequest {
   /** Whether to sync approved answers to the answer library. Defaults to true. Ignored for non-English SPREADSHEET/DOCUMENT questionnaires. */
   shouldSyncApprovedToAnswerLibrary?: boolean;
 }
-export const CompleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     shouldSyncApprovedToAnswerLibrary: S.optional(S.Boolean),
@@ -2385,7 +2308,7 @@ export const CompleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of actor. Currently only "User" is supported. */
 export type AnswerLibraryActorAssignmentInputType = "User";
-export const AnswerLibraryActorAssignmentInputType = S.String;
+const AnswerLibraryActorAssignmentInputType = S.String;
 
 export interface AnswerLibraryActorAssignmentInput {
   /** The type of actor. Currently only "User" is supported. */
@@ -2393,7 +2316,7 @@ export interface AnswerLibraryActorAssignmentInput {
   /** The unique identifier of the user or team. */
   id: string;
 }
-export const AnswerLibraryActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
+const AnswerLibraryActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AnswerLibraryActorAssignmentInputType,
     id: S.String,
@@ -2404,7 +2327,7 @@ export const AnswerLibraryActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the entry. Discover valid `categoryId` and `tagId` values via `GET /v1/customer-trust/tag-categories` (to list categories) and `GET /v1/customer-trust/tag-categories/{tagCategoryId}` (to list tags within a category). */
 export type CreateAnswerLibraryEntryRequestTagsList = Array<TagInput>;
-export const CreateAnswerLibraryEntryRequestTagsList =
+const CreateAnswerLibraryEntryRequestTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<CreateAnswerLibraryEntryRequestTagsList>;
 
 export interface CreateAnswerLibraryEntryRequest {
@@ -2419,7 +2342,7 @@ export interface CreateAnswerLibraryEntryRequest {
   /** Tags to associate with the entry. Discover valid `categoryId` and `tagId` values via `GET /v1/customer-trust/tag-categories` (to list categories) and `GET /v1/customer-trust/tag-categories/{tagCategoryId}` (to list tags within a category). */
   tags?: CreateAnswerLibraryEntryRequestTagsList;
 }
-export const CreateAnswerLibraryEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnswerLibraryEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     question: S.String,
     answer: S.String,
@@ -2432,17 +2355,17 @@ export const CreateAnswerLibraryEntryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnswerLibraryEntryRequest>;
 
 export type KnowledgeBaseAnswerLibraryEntryOutputExpirationStatus = "CURRENT" | "EXPIRED";
-export const KnowledgeBaseAnswerLibraryEntryOutputExpirationStatus = S.String;
+const KnowledgeBaseAnswerLibraryEntryOutputExpirationStatus = S.String;
 
 export type AnswerLibraryActorAssignmentType = "User" | "Team";
-export const AnswerLibraryActorAssignmentType = S.String;
+const AnswerLibraryActorAssignmentType = S.String;
 
 export interface AnswerLibraryActorAssignment {
   type: AnswerLibraryActorAssignmentType;
   id: string;
   displayName: string | null;
 }
-export const AnswerLibraryActorAssignment = /*@__PURE__*/ S.suspend(() =>
+const AnswerLibraryActorAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AnswerLibraryActorAssignmentType,
     id: S.String,
@@ -2453,7 +2376,7 @@ export const AnswerLibraryActorAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnswerLibraryActorAssignment>;
 
 export type KnowledgeBaseAnswerLibraryEntryOutputTagsList = Array<TagInput>;
-export const KnowledgeBaseAnswerLibraryEntryOutputTagsList =
+const KnowledgeBaseAnswerLibraryEntryOutputTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<KnowledgeBaseAnswerLibraryEntryOutputTagsList>;
 
 export interface KnowledgeBaseAnswerLibraryEntryOutput {
@@ -2467,7 +2390,7 @@ export interface KnowledgeBaseAnswerLibraryEntryOutput {
   lastVerified: string | null;
   tags: KnowledgeBaseAnswerLibraryEntryOutputTagsList;
 }
-export const KnowledgeBaseAnswerLibraryEntryOutput = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeBaseAnswerLibraryEntryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     question: S.String,
@@ -2541,7 +2464,7 @@ export type CreateComplianceFrameworkRequestStandard =
   | "ukCyberEssentials33"
   | "usDataPrivacy"
   | "fedrampKSI";
-export const CreateComplianceFrameworkRequestStandard = S.String;
+const CreateComplianceFrameworkRequestStandard = S.String;
 
 export interface CreateComplianceFrameworkRequest {
   slugId: string;
@@ -2552,7 +2475,7 @@ export interface CreateComplianceFrameworkRequest {
   /** Description of the framework. */
   description?: string;
 }
-export const CreateComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     name: S.String,
@@ -2575,7 +2498,7 @@ export interface TrustCenterComplianceFramework {
   /** Description of the framework. */
   description: string | null;
 }
-export const TrustCenterComplianceFramework = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterComplianceFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2625,7 +2548,7 @@ export type ControlDomain =
   | "TECHNICAL"
   | "BASIC"
   | "DERIVED";
-export const ControlDomain = S.String;
+const ControlDomain = S.String;
 
 export type FrameworkId =
   | "AU_E_8"
@@ -2664,17 +2587,14 @@ export type FrameworkId =
   | "SOX_ITGC"
   | "UK_CYBER_ESSENTIALS"
   | "US_DATA_PRIVACY";
-export const FrameworkId = S.String;
-
 export type FrameworkSectionFrameworkId = FrameworkId | string;
-export const FrameworkSectionFrameworkId =
-  S.Unknown as any as S.Schema<FrameworkSectionFrameworkId>;
+const FrameworkSectionFrameworkId = S.Unknown as any as S.Schema<FrameworkSectionFrameworkId>;
 
 export interface FrameworkSection {
   frameworkId: FrameworkSectionFrameworkId;
   sectionId: string;
 }
-export const FrameworkSection = /*@__PURE__*/ S.suspend(() =>
+const FrameworkSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkId: FrameworkSectionFrameworkId,
     sectionId: S.String,
@@ -2683,16 +2603,16 @@ export const FrameworkSection = /*@__PURE__*/ S.suspend(() =>
 
 /** The framework sections that the control maps to. */
 export type CreateCustomControlRequestSectionsList = Array<FrameworkSection>;
-export const CreateCustomControlRequestSectionsList = /*@__PURE__*/ S.Array(
+const CreateCustomControlRequestSectionsList = /*@__PURE__*/ S.Array(
   FrameworkSection,
 ) as any as S.Schema<CreateCustomControlRequestSectionsList>;
 
 export type GdprRole = "BOTH" | "CONTROLLER" | "PROCESSOR";
-export const GdprRole = S.String;
+const GdprRole = S.String;
 
 /** The control's values for custom fields. */
 export type CreateCustomControlRequestCustomFieldsList = Array<CustomField>;
-export const CreateCustomControlRequestCustomFieldsList =
+const CreateCustomControlRequestCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<CreateCustomControlRequestCustomFieldsList>;
 
 export interface CreateCustomControlRequest {
@@ -2713,7 +2633,7 @@ export interface CreateCustomControlRequest {
   /** The control's values for custom fields. */
   customFields?: CreateCustomControlRequestCustomFieldsList;
 }
-export const CreateCustomControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalId: S.String,
     name: S.NullOr(S.String),
@@ -2732,7 +2652,7 @@ export interface CustomerTrustAccountNDADetailsInput {
   /** Whether NDA requirement should be bypassed for access requests matching this account */
   markNdaNotRequired: boolean;
 }
-export const CustomerTrustAccountNDADetailsInput = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountNDADetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     markNdaNotRequired: S.Boolean,
   }),
@@ -2744,11 +2664,11 @@ export const CustomerTrustAccountNDADetailsInput = /*@__PURE__*/ S.suspend(() =>
 export type CustomerTrustAccountGrantAccessOption =
   | "INCLUDE_EVERYTHING_REQUESTED"
   | "INCLUDE_ONLY_CONFIGURED";
-export const CustomerTrustAccountGrantAccessOption = S.String;
+const CustomerTrustAccountGrantAccessOption = S.String;
 
 /** Tag IDs to assign. An empty array removes all tags for the category. */
 export type TagsByCategoryInputTagIdsList = Array<string>;
-export const TagsByCategoryInputTagIdsList =
+const TagsByCategoryInputTagIdsList =
   ControlDomainsList as any as S.Schema<TagsByCategoryInputTagIdsList>;
 
 export interface TagsByCategoryInput {
@@ -2757,7 +2677,7 @@ export interface TagsByCategoryInput {
   /** Tag IDs to assign. An empty array removes all tags for the category. */
   tagIds: TagsByCategoryInputTagIdsList;
 }
-export const TagsByCategoryInput = /*@__PURE__*/ S.suspend(() =>
+const TagsByCategoryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.String,
     tagIds: TagsByCategoryInputTagIdsList,
@@ -2766,7 +2686,7 @@ export const TagsByCategoryInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to assign to this account, grouped by category. */
 export type CustomerTrustAccountAccessConfigInputTagsByCategoryList = Array<TagsByCategoryInput>;
-export const CustomerTrustAccountAccessConfigInputTagsByCategoryList = /*@__PURE__*/ S.Array(
+const CustomerTrustAccountAccessConfigInputTagsByCategoryList = /*@__PURE__*/ S.Array(
   TagsByCategoryInput,
 ) as any as S.Schema<CustomerTrustAccountAccessConfigInputTagsByCategoryList>;
 
@@ -2778,7 +2698,7 @@ export interface CustomerTrustAccountAccessConfigInput {
   /** Tags to assign to this account, grouped by category. */
   tagsByCategory?: CustomerTrustAccountAccessConfigInputTagsByCategoryList;
 }
-export const CustomerTrustAccountAccessConfigInput = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountAccessConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoApprovalEnabled: S.Boolean,
     grantAccessOption: S.optional(S.NullOr(CustomerTrustAccountGrantAccessOption)),
@@ -2789,12 +2709,12 @@ export const CustomerTrustAccountAccessConfigInput = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CustomerTrustAccountAccessConfigInput>;
 
 export type CreateCustomerTrustAccountRequestCustomFieldsList = Array<CustomField>;
-export const CreateCustomerTrustAccountRequestCustomFieldsList =
+const CreateCustomerTrustAccountRequestCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<CreateCustomerTrustAccountRequestCustomFieldsList>;
 
 /** Tags to assign to this account, grouped by category */
 export type CreateCustomerTrustAccountRequestTagsByCategoryList = Array<TagsByCategoryInput>;
-export const CreateCustomerTrustAccountRequestTagsByCategoryList =
+const CreateCustomerTrustAccountRequestTagsByCategoryList =
   CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<CreateCustomerTrustAccountRequestTagsByCategoryList>;
 
 export interface CreateCustomerTrustAccountRequest {
@@ -2806,7 +2726,7 @@ export interface CreateCustomerTrustAccountRequest {
   /** Tags to assign to this account, grouped by category */
   tagsByCategory?: CreateCustomerTrustAccountRequestTagsByCategoryList;
 }
-export const CreateCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     emailDomain: S.String,
@@ -2820,7 +2740,7 @@ export const CreateCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomerTrustAccountRequest>;
 
 export type CustomerTrustAccountNdaStatus = "SIGNED" | "NOT_REQUIRED" | "INCOMPLETE";
-export const CustomerTrustAccountNdaStatus = S.String;
+const CustomerTrustAccountNdaStatus = S.String;
 
 export interface CustomerTrustAccountNDADetails {
   /** The status of the NDA for this account */
@@ -2828,7 +2748,7 @@ export interface CustomerTrustAccountNDADetails {
   /** The date and time the NDA was satisfied */
   ndaSatisfiedDate: string | null;
 }
-export const CustomerTrustAccountNDADetails = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountNDADetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ndaStatus: CustomerTrustAccountNdaStatus,
     ndaSatisfiedDate: S.NullOr(S.String),
@@ -2843,7 +2763,7 @@ export interface CustomerTrustAccountAccessConfig {
   /** How to grant resource access for auto-approved requests */
   grantAccessOption: CustomerTrustAccountGrantAccessOption | null;
 }
-export const CustomerTrustAccountAccessConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountAccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoApprovalEnabled: S.Boolean,
     grantAccessOption: S.NullOr(CustomerTrustAccountGrantAccessOption),
@@ -2854,25 +2774,20 @@ export const CustomerTrustAccountAccessConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom field values for this account */
 export type CustomerTrustAccountVantaApiCustomFieldsList = Array<CustomField>;
-export const CustomerTrustAccountVantaApiCustomFieldsList =
+const CustomerTrustAccountVantaApiCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<CustomerTrustAccountVantaApiCustomFieldsList>;
 
 /** Tag IDs assigned in this category */
 export type TagsByCategoryOutputTagIdsList = Array<string>;
-export const TagsByCategoryOutputTagIdsList =
-  ControlDomainsList as any as S.Schema<TagsByCategoryOutputTagIdsList>;
-
 export interface TagsByCategoryOutput {
   /** The tag category ID */
   categoryId: string;
   /** Tag IDs assigned in this category */
   tagIds: TagsByCategoryOutputTagIdsList;
 }
-export const TagsByCategoryOutput = TagsByCategoryInput as any as S.Schema<TagsByCategoryOutput>;
-
 /** Tags assigned to this account, grouped by category */
 export type CustomerTrustAccountVantaApiTagsByCategoryList = Array<TagsByCategoryOutput>;
-export const CustomerTrustAccountVantaApiTagsByCategoryList =
+const CustomerTrustAccountVantaApiTagsByCategoryList =
   CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<CustomerTrustAccountVantaApiTagsByCategoryList>;
 
 /** Vanta API representation of a CustomerTrustAccount. */
@@ -2896,7 +2811,7 @@ export interface CustomerTrustAccountVantaApi {
   /** Tags assigned to this account, grouped by category */
   tagsByCategory: CustomerTrustAccountVantaApiTagsByCategoryList;
 }
-export const CustomerTrustAccountVantaApi = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountVantaApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2916,7 +2831,7 @@ export interface CreateDeletionRequestRequest {
   /** Email address of the individual requesting data deletion. */
   email: string;
 }
-export const CreateDeletionRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeletionRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/customer-trust/deletion-requests", code: 200 })),
@@ -2929,7 +2844,7 @@ export interface CreateDeletionRequestResponse {
   /** Whether the deletion request was successfully enqueued. */
   isSuccessful: boolean;
 }
-export const CreateDeletionRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDeletionRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSuccessful: S.Boolean,
   }),
@@ -2938,13 +2853,13 @@ export const CreateDeletionRequestResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDeletionRequestResponse>;
 
 export type TimeSensitivity = "MOST_RECENT" | "DURING_AUDIT_WINDOW";
-export const TimeSensitivity = S.String;
+const TimeSensitivity = S.String;
 
 export type RecurrenceDuration = "P0D" | "P1D" | "P1W" | "P1M" | "P3M" | "P6M" | "P1Y" | "P2Y";
-export const RecurrenceDuration = S.String;
+const RecurrenceDuration = S.String;
 
 export type ReminderWindow = "P0D" | "P1D" | "P1W" | "P1M" | "P3M";
-export const ReminderWindow = S.String;
+const ReminderWindow = S.String;
 
 export interface CreateDocumentRequest {
   /** The document's title. */
@@ -2960,7 +2875,7 @@ export interface CreateDocumentRequest {
   /** Determines whether or not the document is sensitive. This restricts which users can access or upload files to the document. Only admins are able to view or upload sensitive documents. */
   isSensitive: boolean;
 }
-export const CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.String,
@@ -2992,7 +2907,7 @@ export interface CreateDocumentResourceRequest {
   /** Trust Center category id to associate this resource with. Only applied when `customerVisibility` is `REQUEST_ACCESS` or `PUBLIC`; other visibilities don't place the resource on the Trust Center, so the category is ignored. Pass an unknown id to fall back to uncategorized. */
   categoryId?: string;
 }
-export const CreateDocumentResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDocumentResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
     title: S.String,
@@ -3017,37 +2932,35 @@ export const CreateDocumentResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDocumentResourceRequest>;
 
 export type KnowledgeBaseDocumentResourceOutputType = "FILE";
-export const KnowledgeBaseDocumentResourceOutputType = S.String;
+const KnowledgeBaseDocumentResourceOutputType = S.String;
 
 export type KnowledgeBaseDocumentResourceOutputCustomerVisibility =
   | "PUBLIC"
   | "SHAREABLE"
   | "PRIVATE"
   | "REQUEST_ACCESS";
-export const KnowledgeBaseDocumentResourceOutputCustomerVisibility = S.String;
+const KnowledgeBaseDocumentResourceOutputCustomerVisibility = S.String;
 
 export type KnowledgeBaseDocumentResourceOutputDownloadPermission =
   | "VIEW_ONLY"
   | "VIEW_AND_DOWNLOAD";
-export const KnowledgeBaseDocumentResourceOutputDownloadPermission = S.String;
+const KnowledgeBaseDocumentResourceOutputDownloadPermission = S.String;
 
 export type KnowledgeBaseResourceActorAssignmentType = "User" | "Team";
-export const KnowledgeBaseResourceActorAssignmentType = S.String;
-
 export interface KnowledgeBaseResourceActorAssignment {
   type: KnowledgeBaseResourceActorAssignmentType;
   id: string;
   displayName: string | null;
 }
-export const KnowledgeBaseResourceActorAssignment =
+const KnowledgeBaseResourceActorAssignment =
   AnswerLibraryActorAssignment as any as S.Schema<KnowledgeBaseResourceActorAssignment>;
 
 /** Customer-facing expiration status used by knowledge-base API responses (answer library entries and resources). Derived from the persisted `expiresAt` field at read time. */
 export type KnowledgeBaseExpirationStatus = "CURRENT" | "EXPIRED";
-export const KnowledgeBaseExpirationStatus = S.String;
+const KnowledgeBaseExpirationStatus = S.String;
 
 export type KnowledgeBaseDocumentResourceOutputTagsList = Array<TagInput>;
-export const KnowledgeBaseDocumentResourceOutputTagsList =
+const KnowledgeBaseDocumentResourceOutputTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<KnowledgeBaseDocumentResourceOutputTagsList>;
 
 export interface KnowledgeBaseDocumentResourceOutput {
@@ -3069,7 +2982,7 @@ export interface KnowledgeBaseDocumentResourceOutput {
   /** Trust Center category id the resource is currently filed under, or `null` if uncategorized (or not on the Trust Center, which is the case for `PRIVATE` / `SHAREABLE` resources). */
   categoryId: string | null;
 }
-export const KnowledgeBaseDocumentResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeBaseDocumentResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: KnowledgeBaseDocumentResourceOutputType,
@@ -3114,7 +3027,7 @@ export interface CreateFileQuestionnaireRequest {
   /** Tags to assign, as a JSON string array: [{"categoryId": "<id>", "tagId": "<id>"}]. Replaces all existing tags. */
   tagAndCategoryIds?: string;
 }
-export const CreateFileQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
     displayName: S.String,
@@ -3147,7 +3060,7 @@ export interface CreateGroupRequest {
   /** Display name for the group. Must not duplicate an existing group's name. */
   name: string;
 }
-export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pointOfContactEmail: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -3162,7 +3075,7 @@ export interface GroupPointOfContact {
   /** The point of contact's display name. */
   displayName: string;
 }
-export const GroupPointOfContact = /*@__PURE__*/ S.suspend(() =>
+const GroupPointOfContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     displayName: S.String,
@@ -3185,7 +3098,7 @@ export interface Group {
   /** The group's point of contact. */
   pointOfContact: GroupPointOfContact | null;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3208,7 +3121,7 @@ export interface CreateLinkForDocumentRequest {
   /** The link's effective date. */
   effectiveDate?: string | null;
 }
-export const CreateLinkForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     url: S.String,
@@ -3234,7 +3147,7 @@ export interface UploadedLink {
   /** The link's description. */
   description: string;
 }
-export const UploadedLink = /*@__PURE__*/ S.suspend(() =>
+const UploadedLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     creationDate: S.String,
@@ -3247,7 +3160,7 @@ export const UploadedLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The output format for the exported questionnaire. - `"original"`: Exports in the questionnaire's native format (XLSX for spreadsheets, DOCX for documents). - `"csv"`: Exports as a CSV file, suitable for data analysis or import into other systems. */
 export type CreateQuestionnaireExportRequestFormat = "original" | "csv";
-export const CreateQuestionnaireExportRequestFormat = S.String;
+const CreateQuestionnaireExportRequestFormat = S.String;
 
 export interface CreateQuestionnaireExportRequest {
   /** Unique identifier for the questionnaire to trigger an export for. */
@@ -3255,7 +3168,7 @@ export interface CreateQuestionnaireExportRequest {
   /** The output format for the exported questionnaire. - `"original"`: Exports in the questionnaire's native format (XLSX for spreadsheets, DOCX for documents). - `"csv"`: Exports as a CSV file, suitable for data analysis or import into other systems. */
   format: CreateQuestionnaireExportRequestFormat | (string & {});
 }
-export const CreateQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String,
     format: CreateQuestionnaireExportRequestFormat,
@@ -3265,22 +3178,22 @@ export const CreateQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateQuestionnaireExportRequest>;
 
 export interface CreateQuestionnaireExportResponse {}
-export const CreateQuestionnaireExportResponse =
+const CreateQuestionnaireExportResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<CreateQuestionnaireExportResponse>;
 
 /** The list of categories this risk scenario belongs to. Each element in the list will become a new custom category if it doesn't match an existing one. You can reference the current category options in the Risk Management settings and/or enter new values. */
 export type CreateRiskScenarioRequestCategoriesList = Array<string>;
-export const CreateRiskScenarioRequestCategoriesList =
+const CreateRiskScenarioRequestCategoriesList =
   ControlDomainsList as any as S.Schema<CreateRiskScenarioRequestCategoriesList>;
 
 /** Enter a list of the following for the type of risk documented: - Confidentiality: Risk to data stores, customer/sensitive information, etc. - Integrity: Risk to accuracy or integrity of system settings and/or data - Availability: Risk to normal service operations and critical system functionality */
 export type CreateRiskScenarioRequestCiaCategoriesList = Array<CIA | (string & {})>;
-export const CreateRiskScenarioRequestCiaCategoriesList =
+const CreateRiskScenarioRequestCiaCategoriesList =
   RiskScenarioCiaCategoriesList as any as S.Schema<CreateRiskScenarioRequestCiaCategoriesList>;
 
 /** The list of custom attributes. You can reference existing custom attributes in the Risk Management settings and/or create new ones. The format is: - {label: "field-name", value: "string-representation"} for text, date, number and currency fields - {label: "field-name", value: ["option1", "option2"]} for picklist fields */
 export type CreateRiskScenarioRequestCustomFieldsList = Array<CustomAttribute>;
-export const CreateRiskScenarioRequestCustomFieldsList =
+const CreateRiskScenarioRequestCustomFieldsList =
   RiskScenarioCustomFieldsList as any as S.Schema<CreateRiskScenarioRequestCustomFieldsList>;
 
 export interface CreateRiskScenarioRequest {
@@ -3319,7 +3232,7 @@ export interface CreateRiskScenarioRequest {
   /** The date this risk was identified. Matches the "Identified Date" field in the Vanta UI. Defaults to the scenario's creation time if omitted. */
   identificationDate?: string;
 }
-export const CreateRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     detailedDescription: S.optional(S.String),
@@ -3344,7 +3257,7 @@ export const CreateRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRiskScenarioRequest>;
 
 export type RiskScenarioControlType = "EXISTING" | "TREATMENT_PLAN";
-export const RiskScenarioControlType = S.String;
+const RiskScenarioControlType = S.String;
 
 export interface CreateRiskScenarioControlRequest {
   riskScenarioId: string;
@@ -3353,7 +3266,7 @@ export interface CreateRiskScenarioControlRequest {
   /** `TREATMENT_PLAN` for a control that is part of the risk's treatment plan. Omit (or pass `"EXISTING"`) to associate the control without a treatment-plan designation -- the default "existing control" relationship. */
   controlType?: RiskScenarioControlType | (string & {});
 }
-export const CreateRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
     controlId: S.String,
@@ -3370,7 +3283,7 @@ export interface RiskScenarioControl {
   /** `TREATMENT_PLAN` for controls that are part of the risk's treatment plan (planned mitigations); `EXISTING` for controls linked to the risk without a treatment-plan designation. */
   controlType: RiskScenarioControlType;
 }
-export const RiskScenarioControl = /*@__PURE__*/ S.suspend(() =>
+const RiskScenarioControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String,
     controlType: RiskScenarioControlType,
@@ -3386,7 +3299,7 @@ export interface CreateTrustCenterFaqRequest {
   /** The category to place this FAQ in. Pass null to move to uncategorized. Omit to leave unchanged (on update) or default to uncategorized (on create). */
   categoryId?: string | null;
 }
-export const CreateTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     question: S.String,
@@ -3407,7 +3320,7 @@ export interface TrustCenterFaq {
   /** The category this FAQ belongs to, or null if uncategorized. */
   category: TrustCenterFaqCategory | null;
 }
-export const TrustCenterFaq = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterFaq = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     question: S.String,
@@ -3426,7 +3339,7 @@ export interface CreateTrustCenterResourceRequest {
   /** Description of the uploaded document. */
   description?: string;
 }
-export const CreateTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     file: S.String,
@@ -3463,7 +3376,7 @@ export interface TrustCenterResource {
   /** Boolean determining whether the document is publicly available. */
   isPublic: boolean;
 }
-export const TrustCenterResource = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     fileName: S.NullOr(S.String),
@@ -3489,7 +3402,7 @@ export interface CreateTrustCenterSubprocessorRequest {
   /** The purpose that the subprocessor serves. */
   purpose?: string;
 }
-export const CreateTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     name: S.String,
@@ -3516,7 +3429,7 @@ export interface CreateTrustCenterSubprocessorResponse {
   /** URL of the subprocessor. */
   url: string | null;
 }
-export const CreateTrustCenterSubprocessorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterSubprocessorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3538,7 +3451,7 @@ export interface CreateTrustCenterSubscriberRequest {
   /** When true, the subscriber is created as already verified and no verification email is sent. Defaults to false. */
   shouldSkipEmailVerification?: boolean;
 }
-export const CreateTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     email: S.String,
@@ -3555,11 +3468,11 @@ export interface SubscriberGroup {
   /** Name of the group. */
   name: string;
 }
-export const SubscriberGroup = TrustCenterFaqCategory as any as S.Schema<SubscriberGroup>;
+const SubscriberGroup = TrustCenterFaqCategory as any as S.Schema<SubscriberGroup>;
 
 /** Groups this subscriber belongs to. */
 export type TrustCenterSubscriberGroupsList = Array<SubscriberGroup>;
-export const TrustCenterSubscriberGroupsList = /*@__PURE__*/ S.Array(
+const TrustCenterSubscriberGroupsList = /*@__PURE__*/ S.Array(
   SubscriberGroup,
 ) as any as S.Schema<TrustCenterSubscriberGroupsList>;
 
@@ -3577,7 +3490,7 @@ export interface TrustCenterSubscriber {
   /** Groups this subscriber belongs to. */
   groups: TrustCenterSubscriberGroupsList;
 }
-export const TrustCenterSubscriber = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterSubscriber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -3590,7 +3503,7 @@ export const TrustCenterSubscriber = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriber IDs in the group. */
 export type CreateTrustCenterSubscriberGroupRequestSubscriberIdsList = Array<string>;
-export const CreateTrustCenterSubscriberGroupRequestSubscriberIdsList =
+const CreateTrustCenterSubscriberGroupRequestSubscriberIdsList =
   ControlDomainsList as any as S.Schema<CreateTrustCenterSubscriberGroupRequestSubscriberIdsList>;
 
 export interface CreateTrustCenterSubscriberGroupRequest {
@@ -3600,7 +3513,7 @@ export interface CreateTrustCenterSubscriberGroupRequest {
   /** List of subscriber IDs in the group. */
   subscriberIds: CreateTrustCenterSubscriberGroupRequestSubscriberIdsList;
 }
-export const CreateTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     name: S.String,
@@ -3612,7 +3525,7 @@ export const CreateTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** List of subscriber IDs in the group. */
 export type TrustCenterSubscriberGroupSubscriberIdsList = Array<string>;
-export const TrustCenterSubscriberGroupSubscriberIdsList =
+const TrustCenterSubscriberGroupSubscriberIdsList =
   ControlDomainsList as any as S.Schema<TrustCenterSubscriberGroupSubscriberIdsList>;
 
 export interface TrustCenterSubscriberGroup {
@@ -3625,7 +3538,7 @@ export interface TrustCenterSubscriberGroup {
   /** When the subscriber group was created. */
   creationDate: string;
 }
-export const TrustCenterSubscriberGroup = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterSubscriberGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3644,24 +3557,24 @@ export type UpdateCategory =
   | "PRIVACY"
   | "INCIDENT"
   | "ROADMAP";
-export const UpdateCategory = S.String;
+const UpdateCategory = S.String;
 
 /** Visibility of a Trust Center update. */
 export type UpdateVisibilityType = "PUBLIC" | "PRIVATE";
-export const UpdateVisibilityType = S.String;
+const UpdateVisibilityType = S.String;
 
 /** Additional one-off email addresses to notify. These are always sent regardless of `notificationTarget`. */
 export type CreateTrustCenterUpdateRequestNotifiedEmailsList = Array<string>;
-export const CreateTrustCenterUpdateRequestNotifiedEmailsList =
+const CreateTrustCenterUpdateRequestNotifiedEmailsList =
   ControlDomainsList as any as S.Schema<CreateTrustCenterUpdateRequestNotifiedEmailsList>;
 
 /** Target recipients for notifications */
 export type UpdateNotificationTarget = "ALL" | "GROUPS" | "NONE";
-export const UpdateNotificationTarget = S.String;
+const UpdateNotificationTarget = S.String;
 
 /** IDs of subscriber groups to notify. Required when `notificationTarget` is `GROUPS`. */
 export type CreateTrustCenterUpdateRequestSubscriberGroupIdsList = Array<string>;
-export const CreateTrustCenterUpdateRequestSubscriberGroupIdsList =
+const CreateTrustCenterUpdateRequestSubscriberGroupIdsList =
   ControlDomainsList as any as S.Schema<CreateTrustCenterUpdateRequestSubscriberGroupIdsList>;
 
 export interface CreateTrustCenterUpdateRequest {
@@ -3681,7 +3594,7 @@ export interface CreateTrustCenterUpdateRequest {
   /** IDs of subscriber groups to notify. Required when `notificationTarget` is `GROUPS`. */
   subscriberGroupIds?: CreateTrustCenterUpdateRequestSubscriberGroupIdsList;
 }
-export const CreateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     title: S.String,
@@ -3698,7 +3611,7 @@ export const CreateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to notify about the update. */
 export type TrustCenterUpdateAPIResponseNotifiedEmailsList = Array<string>;
-export const TrustCenterUpdateAPIResponseNotifiedEmailsList =
+const TrustCenterUpdateAPIResponseNotifiedEmailsList =
   ControlDomainsList as any as S.Schema<TrustCenterUpdateAPIResponseNotifiedEmailsList>;
 
 export interface TrustCenterUpdateAPIResponse {
@@ -3719,7 +3632,7 @@ export interface TrustCenterUpdateAPIResponse {
   /** Emails to notify about the update. */
   notifiedEmails?: TrustCenterUpdateAPIResponseNotifiedEmailsList;
 }
-export const TrustCenterUpdateAPIResponse = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterUpdateAPIResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -3747,7 +3660,7 @@ export interface CreateVendorRequestAuthDetails {
   /** The authentication method the vendor uses. */
   method?: VendorAuthenticationMethod | (string & {});
 }
-export const CreateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
+const CreateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordMinimumLength: S.optional(S.Number),
     passwordRequiresSymbol: S.optional(S.Boolean),
@@ -3761,16 +3674,16 @@ export const CreateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom fields for the vendor. For more information on how to set custom fields via the API, visit https://developer.vanta.com/docs/guides/use-custom-fields-with-vendors */
 export type CreateVendorRequestCustomFieldsList = Array<CustomField>;
-export const CreateVendorRequestCustomFieldsList =
+const CreateVendorRequestCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<CreateVendorRequestCustomFieldsList>;
 
 /** The scope type: - ALL: Vendor applies to all frameworks - PARTIAL: Vendor applies to specific frameworks (requires frameworkIds) - NONE: Vendor excluded from all frameworks */
 export type VendorFrameworkScopeScopeType = "ALL" | "PARTIAL" | "NONE";
-export const VendorFrameworkScopeScopeType = S.String;
+const VendorFrameworkScopeScopeType = S.String;
 
 /** Framework IDs the vendor applies to. Required when scopeType is PARTIAL. */
 export type VendorFrameworkScopeFrameworkIdsList = Array<string>;
-export const VendorFrameworkScopeFrameworkIdsList =
+const VendorFrameworkScopeFrameworkIdsList =
   ControlDomainsList as any as S.Schema<VendorFrameworkScopeFrameworkIdsList>;
 
 /** Framework scoping configuration for a vendor. Determines which compliance frameworks the vendor applies to. */
@@ -3780,7 +3693,7 @@ export interface VendorFrameworkScope {
   /** Framework IDs the vendor applies to. Required when scopeType is PARTIAL. */
   frameworkIds?: VendorFrameworkScopeFrameworkIdsList;
 }
-export const VendorFrameworkScope = /*@__PURE__*/ S.suspend(() =>
+const VendorFrameworkScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeType: VendorFrameworkScopeScopeType,
     frameworkIds: S.optional(VendorFrameworkScopeFrameworkIdsList),
@@ -3831,7 +3744,7 @@ export interface CreateVendorRequest {
   /** Framework scoping configuration for this vendor. Determines which compliance frameworks the vendor applies to. */
   frameworkScope?: VendorFrameworkScope;
 }
-export const CreateVendorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVendorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     websiteUrl: S.optional(S.String),
@@ -3859,11 +3772,11 @@ export const CreateVendorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the finding: - ACCEPT: The finding and its risk has been accepted and no follow up is required. - REMEDIATE: The finding needs to be remediated in some way. - NONE: The finding is not related to an observed risk that needs to be accepted or remediated. */
 export type FindingRiskStatus = "ACCEPT" | "REMEDIATE" | "NONE";
-export const FindingRiskStatus = S.String;
+const FindingRiskStatus = S.String;
 
 /** The current state of a finding remediation: - OPEN: The finding has not been remediated and still needs to be addressed. - CLOSED: The finding has been remediated and no further action is needed. */
 export type FindingRemediationState = "OPEN" | "CLOSED";
-export const FindingRemediationState = S.String;
+const FindingRemediationState = S.String;
 
 /** Remediation information about the finding. Will only be populated if riskStatus is set to "REMEDIATE". */
 export interface CreateVendorFindingRequestRemediation {
@@ -3872,7 +3785,7 @@ export interface CreateVendorFindingRequestRemediation {
   /** A string containing the information needed to properly remediate the finding. */
   requirementNotes?: string;
 }
-export const CreateVendorFindingRequestRemediation = /*@__PURE__*/ S.suspend(() =>
+const CreateVendorFindingRequestRemediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(FindingRemediationState),
     requirementNotes: S.optional(S.String),
@@ -3894,7 +3807,7 @@ export interface CreateVendorFindingRequest {
   /** Unique identifier for a document. */
   documentId?: string;
 }
-export const CreateVendorFindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVendorFindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     content: S.String,
@@ -3914,7 +3827,7 @@ export interface VendorFindingRemediation {
   /** A string containing the information needed to properly remediate the finding. */
   requirementNotes: string | null;
 }
-export const VendorFindingRemediation = /*@__PURE__*/ S.suspend(() =>
+const VendorFindingRemediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: FindingRemediationState,
     requirementNotes: S.NullOr(S.String),
@@ -3937,7 +3850,7 @@ export interface VendorFinding {
   /** Remediation information about the finding. Will only be populated if riskStatus is set to "REMEDIATE". */
   remediation: VendorFindingRemediation | null;
 }
-export const VendorFinding = /*@__PURE__*/ S.suspend(() =>
+const VendorFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     vendorId: S.String,
@@ -3951,24 +3864,22 @@ export const VendorFinding = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of actor. Currently only "User" is supported. */
 export type KnowledgeBaseResourceActorAssignmentInputType = "User";
-export const KnowledgeBaseResourceActorAssignmentInputType = S.String;
-
 export interface KnowledgeBaseResourceActorAssignmentInput {
   /** The type of actor. Currently only "User" is supported. */
   type: KnowledgeBaseResourceActorAssignmentInputType | (string & {});
   /** The unique identifier of the user. */
   id: string;
 }
-export const KnowledgeBaseResourceActorAssignmentInput =
+const KnowledgeBaseResourceActorAssignmentInput =
   AnswerLibraryActorAssignmentInput as any as S.Schema<KnowledgeBaseResourceActorAssignmentInput>;
 
 /** Customer-facing visibility of a knowledge-base resource on the Trust Center. Use {@link CUSTOMER_VISIBILITY_TO_DB} to translate to {@link TrustCenterResourceVisibility} when persisting. */
 export type KnowledgeBaseCustomerVisibility = "PRIVATE" | "SHAREABLE" | "REQUEST_ACCESS" | "PUBLIC";
-export const KnowledgeBaseCustomerVisibility = S.String;
+const KnowledgeBaseCustomerVisibility = S.String;
 
 /** Tags to associate with the resource. */
 export type CreateWebpageResourceRequestTagsList = Array<TagInput>;
-export const CreateWebpageResourceRequestTagsList =
+const CreateWebpageResourceRequestTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<CreateWebpageResourceRequestTagsList>;
 
 export interface CreateWebpageResourceRequest {
@@ -3993,7 +3904,7 @@ export interface CreateWebpageResourceRequest {
   /** Trust Center category id to associate this resource with. Pass `null` to keep the resource uncategorized. Only valid when `customerVisibility` is PUBLIC; other combinations and unknown ids return an InvalidInputError. */
   categoryId?: string | null;
 }
-export const CreateWebpageResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebpageResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     url: S.String,
@@ -4011,17 +3922,17 @@ export const CreateWebpageResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWebpageResourceRequest>;
 
 export type KnowledgeBaseWebpageResourceOutputType = "URL";
-export const KnowledgeBaseWebpageResourceOutputType = S.String;
+const KnowledgeBaseWebpageResourceOutputType = S.String;
 
 export type KnowledgeBaseWebpageResourceOutputCustomerVisibility =
   | "PUBLIC"
   | "SHAREABLE"
   | "PRIVATE"
   | "REQUEST_ACCESS";
-export const KnowledgeBaseWebpageResourceOutputCustomerVisibility = S.String;
+const KnowledgeBaseWebpageResourceOutputCustomerVisibility = S.String;
 
 export type KnowledgeBaseWebpageResourceOutputTagsList = Array<TagInput>;
-export const KnowledgeBaseWebpageResourceOutputTagsList =
+const KnowledgeBaseWebpageResourceOutputTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<KnowledgeBaseWebpageResourceOutputTagsList>;
 
 export interface KnowledgeBaseWebpageResourceOutput {
@@ -4042,7 +3953,7 @@ export interface KnowledgeBaseWebpageResourceOutput {
   /** Trust Center category id the resource is currently filed under, or `null` if uncategorized (or not on the Trust Center, which is the case for `PRIVATE` / `SHAREABLE` resources). */
   categoryId: string | null;
 }
-export const KnowledgeBaseWebpageResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeBaseWebpageResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: KnowledgeBaseWebpageResourceOutputType,
@@ -4065,13 +3976,13 @@ export const KnowledgeBaseWebpageResourceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeBaseWebpageResourceOutput>;
 
 export type ActorAssignmentInputType = "User" | "Team";
-export const ActorAssignmentInputType = S.String;
+const ActorAssignmentInputType = S.String;
 
 export interface ActorAssignmentInput {
   type: ActorAssignmentInputType | (string & {});
   id: string;
 }
-export const ActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
+const ActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ActorAssignmentInputType,
     id: S.String,
@@ -4082,7 +3993,7 @@ export interface QuestionnaireMetadata {
   key: string;
   value: string;
 }
-export const QuestionnaireMetadata = /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -4091,21 +4002,21 @@ export const QuestionnaireMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom key-value pairs. Keys and values may contain alphanumeric characters, hyphens, underscores, and periods. Maximum 30 entries. */
 export type CreateWebsiteQuestionnaireRequestMetadataList = Array<QuestionnaireMetadata>;
-export const CreateWebsiteQuestionnaireRequestMetadataList = /*@__PURE__*/ S.Array(
+const CreateWebsiteQuestionnaireRequestMetadataList = /*@__PURE__*/ S.Array(
   QuestionnaireMetadata,
 ) as any as S.Schema<CreateWebsiteQuestionnaireRequestMetadataList>;
 
 /** Category IDs for which to include untagged entities. */
 export type CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList =
   Array<string>;
-export const CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList =
+const CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList>;
 
 /** Tags to assign to the questionnaire. Each entry must include a categoryId and tagId. Replaces all existing tags. */
 export type CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList = Array<TagInput>;
-export const CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList =
+const CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList>;
 
 export interface CreateWebsiteQuestionnaireRequest {
@@ -4132,7 +4043,7 @@ export interface CreateWebsiteQuestionnaireRequest {
   /** Tags to assign to the questionnaire. Each entry must include a categoryId and tagId. Replaces all existing tags. */
   tagAndCategoryIds?: CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList;
 }
-export const CreateWebsiteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebsiteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     url: S.String,
@@ -4160,7 +4071,7 @@ export interface DeactivateTestEntityRequest {
   /** Date until which the entity should be deactivated. If not provided, the entity will be deactivated indefinitely. */
   deactivateUntilDate?: string;
 }
-export const DeactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String.pipe(T.Label()),
     entityId: S.String.pipe(T.Label()),
@@ -4174,7 +4085,7 @@ export const DeactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeactivateTestEntityRequest>;
 
 export interface DeactivateTestEntityResponse {}
-export const DeactivateTestEntityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeactivateTestEntityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeactivateTestEntityResponse",
 }) as any as S.Schema<DeactivateTestEntityResponse>;
 
@@ -4188,7 +4099,7 @@ export interface VulnerabilityDeactivateRequest {
   /** Determines whether or not vulnerabilities should reactivate when they become fixable. */
   shouldReactivateWhenFixable: boolean;
 }
-export const VulnerabilityDeactivateRequest = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityDeactivateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     deactivateUntilDate: S.optional(S.String),
@@ -4201,7 +4112,7 @@ export const VulnerabilityDeactivateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of vulnerabilities to deactivate. */
 export type DeactivateVulnerabilitiesRequestUpdatesList = Array<VulnerabilityDeactivateRequest>;
-export const DeactivateVulnerabilitiesRequestUpdatesList = /*@__PURE__*/ S.Array(
+const DeactivateVulnerabilitiesRequestUpdatesList = /*@__PURE__*/ S.Array(
   VulnerabilityDeactivateRequest,
 ) as any as S.Schema<DeactivateVulnerabilitiesRequestUpdatesList>;
 
@@ -4209,7 +4120,7 @@ export interface DeactivateVulnerabilitiesRequest {
   /** List of vulnerabilities to deactivate. */
   updates: DeactivateVulnerabilitiesRequestUpdatesList;
 }
-export const DeactivateVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updates: DeactivateVulnerabilitiesRequestUpdatesList,
   }).pipe(T.Http({ method: "POST", uri: "/vulnerabilities/deactivate", code: 200 })),
@@ -4220,7 +4131,7 @@ export const DeactivateVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAnswerLibraryEntryRouteRequest {
   id: string;
 }
-export const DeleteAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/knowledge-base/answer-library/{id}", code: 200 })),
@@ -4229,27 +4140,26 @@ export const DeleteAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteAnswerLibraryEntryRouteRequest>;
 
 export interface DeleteAnswerLibraryEntryRouteResponse {}
-export const DeleteAnswerLibraryEntryRouteResponse =
+const DeleteAnswerLibraryEntryRouteResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteAnswerLibraryEntryRouteResponse>;
 
 export interface DeleteByIdRequest {
   vendorId: string;
 }
-export const DeleteByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/vendors/{vendorId}", code: 200 })),
 ).annotate({ identifier: "DeleteByIdRequest" }) as any as S.Schema<DeleteByIdRequest>;
 
 export interface DeleteByIdResponse {}
-export const DeleteByIdResponse =
-  DeactivateTestEntityResponse as any as S.Schema<DeleteByIdResponse>;
+const DeleteByIdResponse = DeactivateTestEntityResponse as any as S.Schema<DeleteByIdResponse>;
 
 export interface DeleteComplianceFrameworkRequest {
   slugId: string;
   frameworkId: string;
 }
-export const DeleteComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     frameworkId: S.String.pipe(T.Label()),
@@ -4265,39 +4175,39 @@ export const DeleteComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteComplianceFrameworkRequest>;
 
 export interface DeleteComplianceFrameworkResponse {}
-export const DeleteComplianceFrameworkResponse =
+const DeleteComplianceFrameworkResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteComplianceFrameworkResponse>;
 
 export interface DeleteContractRequest {
   contractId: string;
 }
-export const DeleteContractRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/contracts/{contractId}", code: 200 })),
 ).annotate({ identifier: "DeleteContractRequest" }) as any as S.Schema<DeleteContractRequest>;
 
 export interface DeleteContractResponse {}
-export const DeleteContractResponse =
+const DeleteContractResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteContractResponse>;
 
 export interface DeleteControlRequest {
   controlId: string;
 }
-export const DeleteControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/controls/{controlId}", code: 200 })),
 ).annotate({ identifier: "DeleteControlRequest" }) as any as S.Schema<DeleteControlRequest>;
 
 export interface DeleteControlResponse {}
-export const DeleteControlResponse =
+const DeleteControlResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteControlResponse>;
 
 export interface DeleteCustomerTrustAccountRequest {
   accountId: string;
 }
-export const DeleteCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/customer-trust/accounts/{accountId}", code: 200 })),
@@ -4306,27 +4216,27 @@ export const DeleteCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomerTrustAccountRequest>;
 
 export interface DeleteCustomerTrustAccountResponse {}
-export const DeleteCustomerTrustAccountResponse =
+const DeleteCustomerTrustAccountResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteCustomerTrustAccountResponse>;
 
 export interface DeleteDocumentRequest {
   documentId: string;
 }
-export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/documents/{documentId}", code: 200 })),
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 
 export interface DeleteDocumentResponse {}
-export const DeleteDocumentResponse =
+const DeleteDocumentResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteDocumentResponse>;
 
 export interface DeleteDocumentForcontrolRequest {
   controlId: string;
   documentId: string;
 }
-export const DeleteDocumentForcontrolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentForcontrolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     documentId: S.String.pipe(T.Label()),
@@ -4338,14 +4248,14 @@ export const DeleteDocumentForcontrolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDocumentForcontrolRequest>;
 
 export interface DeleteDocumentForcontrolResponse {}
-export const DeleteDocumentForcontrolResponse =
+const DeleteDocumentForcontrolResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteDocumentForcontrolResponse>;
 
 export interface DeleteFileForDocumentRequest {
   documentId: string;
   uploadedFileId: string;
 }
-export const DeleteFileForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     uploadedFileId: S.String.pipe(T.Label()),
@@ -4361,14 +4271,14 @@ export const DeleteFileForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFileForDocumentRequest>;
 
 export interface DeleteFileForDocumentResponse {}
-export const DeleteFileForDocumentResponse =
+const DeleteFileForDocumentResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteFileForDocumentResponse>;
 
 export interface DeleteFindingByIdRequest {
   vendorId: string;
   findingId: string;
 }
-export const DeleteFindingByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFindingByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     findingId: S.String.pipe(T.Label()),
@@ -4376,13 +4286,13 @@ export const DeleteFindingByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFindingByIdRequest" }) as any as S.Schema<DeleteFindingByIdRequest>;
 
 export interface DeleteFindingByIdResponse {}
-export const DeleteFindingByIdResponse =
+const DeleteFindingByIdResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteFindingByIdResponse>;
 
 export interface DeleteKnowledgeBaseResourceRequest {
   id: string;
 }
-export const DeleteKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/knowledge-base/resources/{id}", code: 200 })),
@@ -4391,14 +4301,14 @@ export const DeleteKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKnowledgeBaseResourceRequest>;
 
 export interface DeleteKnowledgeBaseResourceResponse {}
-export const DeleteKnowledgeBaseResourceResponse =
+const DeleteKnowledgeBaseResourceResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteKnowledgeBaseResourceResponse>;
 
 export interface DeleteLinkForDocumentRequest {
   documentId: string;
   linkId: string;
 }
-export const DeleteLinkForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     linkId: S.String.pipe(T.Label()),
@@ -4408,13 +4318,13 @@ export const DeleteLinkForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkForDocumentRequest>;
 
 export interface DeleteLinkForDocumentResponse {}
-export const DeleteLinkForDocumentResponse =
+const DeleteLinkForDocumentResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteLinkForDocumentResponse>;
 
 export interface DeleteQuestionnaireRequest {
   questionnaireId: string;
 }
-export const DeleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4429,14 +4339,14 @@ export const DeleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteQuestionnaireRequest>;
 
 export interface DeleteQuestionnaireResponse {}
-export const DeleteQuestionnaireResponse =
+const DeleteQuestionnaireResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteQuestionnaireResponse>;
 
 export interface DeleteRiskScenarioControlRequest {
   riskScenarioId: string;
   controlId: string;
 }
-export const DeleteRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -4452,7 +4362,7 @@ export const DeleteRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRiskScenarioControlRequest>;
 
 export interface DeleteRiskScenarioControlResponse {}
-export const DeleteRiskScenarioControlResponse =
+const DeleteRiskScenarioControlResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteRiskScenarioControlResponse>;
 
 export interface DeleteSecurityReviewDocumentByIdRequest {
@@ -4460,7 +4370,7 @@ export interface DeleteSecurityReviewDocumentByIdRequest {
   securityReviewId: string;
   documentId: string;
 }
-export const DeleteSecurityReviewDocumentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityReviewDocumentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     securityReviewId: S.String.pipe(T.Label()),
@@ -4477,14 +4387,14 @@ export const DeleteSecurityReviewDocumentByIdRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSecurityReviewDocumentByIdRequest>;
 
 export interface DeleteSecurityReviewDocumentByIdResponse {}
-export const DeleteSecurityReviewDocumentByIdResponse =
+const DeleteSecurityReviewDocumentByIdResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteSecurityReviewDocumentByIdResponse>;
 
 export interface DeleteTestForControlRequest {
   controlId: string;
   testId: string;
 }
-export const DeleteTestForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTestForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     testId: S.String.pipe(T.Label()),
@@ -4494,14 +4404,14 @@ export const DeleteTestForControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTestForControlRequest>;
 
 export interface DeleteTestForControlResponse {}
-export const DeleteTestForControlResponse =
+const DeleteTestForControlResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteTestForControlResponse>;
 
 export interface DeleteTrustCenterControlRequest {
   slugId: string;
   controlId: string;
 }
-export const DeleteTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -4513,14 +4423,14 @@ export const DeleteTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterControlRequest>;
 
 export interface DeleteTrustCenterControlResponse {}
-export const DeleteTrustCenterControlResponse =
+const DeleteTrustCenterControlResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterControlResponse>;
 
 export interface DeleteTrustCenterControlCategoryRequest {
   slugId: string;
   categoryId: string;
 }
-export const DeleteTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -4536,14 +4446,14 @@ export const DeleteTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTrustCenterControlCategoryRequest>;
 
 export interface DeleteTrustCenterControlCategoryResponse {}
-export const DeleteTrustCenterControlCategoryResponse =
+const DeleteTrustCenterControlCategoryResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterControlCategoryResponse>;
 
 export interface DeleteTrustCenterFaqRequest {
   slugId: string;
   faqId: string;
 }
-export const DeleteTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     faqId: S.String.pipe(T.Label()),
@@ -4553,14 +4463,14 @@ export const DeleteTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterFaqRequest>;
 
 export interface DeleteTrustCenterFaqResponse {}
-export const DeleteTrustCenterFaqResponse =
+const DeleteTrustCenterFaqResponse =
   DeactivateTestEntityResponse as any as S.Schema<DeleteTrustCenterFaqResponse>;
 
 export interface DeleteTrustCenterFaqCategoryRequest {
   slugId: string;
   categoryId: string;
 }
-export const DeleteTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -4576,14 +4486,14 @@ export const DeleteTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterFaqCategoryRequest>;
 
 export interface DeleteTrustCenterFaqCategoryResponse {}
-export const DeleteTrustCenterFaqCategoryResponse =
+const DeleteTrustCenterFaqCategoryResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterFaqCategoryResponse>;
 
 export interface DeleteTrustCenterResourceRequest {
   slugId: string;
   resourceId: string;
 }
-export const DeleteTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -4595,14 +4505,14 @@ export const DeleteTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterResourceRequest>;
 
 export interface DeleteTrustCenterResourceResponse {}
-export const DeleteTrustCenterResourceResponse =
+const DeleteTrustCenterResourceResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterResourceResponse>;
 
 export interface DeleteTrustCenterResourceCategoryRequest {
   slugId: string;
   categoryId: string;
 }
-export const DeleteTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -4618,14 +4528,14 @@ export const DeleteTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTrustCenterResourceCategoryRequest>;
 
 export interface DeleteTrustCenterResourceCategoryResponse {}
-export const DeleteTrustCenterResourceCategoryResponse =
+const DeleteTrustCenterResourceCategoryResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterResourceCategoryResponse>;
 
 export interface DeleteTrustCenterSubprocessorRequest {
   slugId: string;
   subprocessorId: string;
 }
-export const DeleteTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subprocessorId: S.String.pipe(T.Label()),
@@ -4641,14 +4551,14 @@ export const DeleteTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteTrustCenterSubprocessorRequest>;
 
 export interface DeleteTrustCenterSubprocessorResponse {}
-export const DeleteTrustCenterSubprocessorResponse =
+const DeleteTrustCenterSubprocessorResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterSubprocessorResponse>;
 
 export interface DeleteTrustCenterSubscriberRequest {
   slugId: string;
   subscriberId: string;
 }
-export const DeleteTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subscriberId: S.String.pipe(T.Label()),
@@ -4664,14 +4574,14 @@ export const DeleteTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterSubscriberRequest>;
 
 export interface DeleteTrustCenterSubscriberResponse {}
-export const DeleteTrustCenterSubscriberResponse =
+const DeleteTrustCenterSubscriberResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterSubscriberResponse>;
 
 export interface DeleteTrustCenterSubscriberGroupRequest {
   slugId: string;
   subscriberGroupId: string;
 }
-export const DeleteTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subscriberGroupId: S.String.pipe(T.Label()),
@@ -4687,14 +4597,14 @@ export const DeleteTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTrustCenterSubscriberGroupRequest>;
 
 export interface DeleteTrustCenterSubscriberGroupResponse {}
-export const DeleteTrustCenterSubscriberGroupResponse =
+const DeleteTrustCenterSubscriberGroupResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterSubscriberGroupResponse>;
 
 export interface DeleteTrustCenterUpdateRequest {
   slugId: string;
   updateId: string;
 }
-export const DeleteTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     updateId: S.String.pipe(T.Label()),
@@ -4706,9 +4616,9 @@ export const DeleteTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterUpdateRequest>;
 
 export interface DeleteTrustCenterUpdateResponse {}
-export const DeleteTrustCenterUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteTrustCenterUpdateResponse" },
-) as any as S.Schema<DeleteTrustCenterUpdateResponse>;
+const DeleteTrustCenterUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteTrustCenterUpdateResponse",
+}) as any as S.Schema<DeleteTrustCenterUpdateResponse>;
 
 export interface DenyTrustCenterAccessRequestRequest {
   slugId: string;
@@ -4718,7 +4628,7 @@ export interface DenyTrustCenterAccessRequestRequest {
   /** Whether to email the requester to notify them that their request was denied. The email includes the reason when one is provided. Defaults to false. */
   sendEmail?: boolean;
 }
-export const DenyTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DenyTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     accessRequestId: S.String.pipe(T.Label()),
@@ -4736,13 +4646,13 @@ export const DenyTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DenyTrustCenterAccessRequestRequest>;
 
 export interface DenyTrustCenterAccessRequestResponse {}
-export const DenyTrustCenterAccessRequestResponse =
+const DenyTrustCenterAccessRequestResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<DenyTrustCenterAccessRequestResponse>;
 
 export interface GetAnswerLibraryEntryRequest {
   id: string;
 }
-export const GetAnswerLibraryEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnswerLibraryEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/knowledge-base/answer-library/{id}", code: 200 })),
@@ -4754,7 +4664,7 @@ export interface GetAssessmentByIdRequest {
   vendorId: string;
   assessmentId: string;
 }
-export const GetAssessmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     assessmentId: S.String.pipe(T.Label()),
@@ -4765,11 +4675,11 @@ export const GetAssessmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The lifecycle status of an assessment: - NOT_STARTED: The assessment has not yet been started. - IN_PROGRESS: The assessment is underway. - COMPLETED: The assessment has been completed. */
 export type AssessmentStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
-export const AssessmentStatus = S.String;
+const AssessmentStatus = S.String;
 
 /** The current decision made for an assessment: - APPROVED: The assessment has been approved. - NOT_APPROVED: The assessment has been marked not approved. - CONDITIONALLY_APPROVED: The assessment has been conditionally approved. */
 export type AssessmentDecision = "APPROVED" | "NOT_APPROVED" | "CONDITIONALLY_APPROVED";
-export const AssessmentDecision = S.String;
+const AssessmentDecision = S.String;
 
 /** An object containing information about the decision of the assessment. */
 export interface VendorAssessmentDecision {
@@ -4780,7 +4690,7 @@ export interface VendorAssessmentDecision {
   /** The status of the current decision. */
   status: AssessmentDecision;
 }
-export const VendorAssessmentDecision = /*@__PURE__*/ S.suspend(() =>
+const VendorAssessmentDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.NullOr(S.String),
     lastUpdatedAt: S.String,
@@ -4796,7 +4706,7 @@ export interface AssessmentType {
   /** Description of the assessment type, if set. */
   description: string | null;
 }
-export const AssessmentType = /*@__PURE__*/ S.suspend(() =>
+const AssessmentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4805,7 +4715,7 @@ export const AssessmentType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssessmentType" }) as any as S.Schema<AssessmentType>;
 
 export type AssessmentOwnerType = "USER" | "TEAM";
-export const AssessmentOwnerType = S.String;
+const AssessmentOwnerType = S.String;
 
 export interface AssessmentOwner {
   /** Unique identifier for the owner. */
@@ -4817,7 +4727,7 @@ export interface AssessmentOwner {
   /** Email of the owner. Populated for USER owners, null for TEAM owners. */
   email: string | null;
 }
-export const AssessmentOwner = /*@__PURE__*/ S.suspend(() =>
+const AssessmentOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: AssessmentOwnerType,
@@ -4852,7 +4762,7 @@ export interface VendorAssessment {
   /** The owner of this assessment, if assigned. */
   owner: AssessmentOwner | null;
 }
-export const VendorAssessment = /*@__PURE__*/ S.suspend(() =>
+const VendorAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     vendorId: S.String,
@@ -4870,13 +4780,13 @@ export const VendorAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VendorAssessment" }) as any as S.Schema<VendorAssessment>;
 
 export type GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList = Array<string>;
-export const GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList =
+const GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList>;
 
 export type GetAssessmentsByVendorIdRequestStatusMatchesAnyList = Array<
   AssessmentStatus | (string & {})
 >;
-export const GetAssessmentsByVendorIdRequestStatusMatchesAnyList =
+const GetAssessmentsByVendorIdRequestStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<GetAssessmentsByVendorIdRequestStatusMatchesAnyList>;
 
 export interface GetAssessmentsByVendorIdRequest {
@@ -4888,7 +4798,7 @@ export interface GetAssessmentsByVendorIdRequest {
   /** Filter assessments to any of the given statuses */
   statusMatchesAny?: GetAssessmentsByVendorIdRequestStatusMatchesAnyList;
 }
-export const GetAssessmentsByVendorIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentsByVendorIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4906,8 +4816,6 @@ export const GetAssessmentsByVendorIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An object containing information about the decision of the assessment. */
 export type VendorAssessmentWithQuestionnaireDecision = VendorAssessmentDecision;
-export const VendorAssessmentWithQuestionnaireDecision = VendorAssessmentDecision;
-
 export interface VendorAssessmentQuestionCounts {
   /** The total number of visible questions. */
   all: number;
@@ -4918,7 +4826,7 @@ export interface VendorAssessmentQuestionCounts {
   /** The number of visible questions flagged by Vanta AI. */
   flaggedByAI: number;
 }
-export const VendorAssessmentQuestionCounts = /*@__PURE__*/ S.suspend(() =>
+const VendorAssessmentQuestionCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.Number,
     needsReview: S.Number,
@@ -4932,7 +4840,7 @@ export const VendorAssessmentQuestionCounts = /*@__PURE__*/ S.suspend(() =>
 export interface VendorAssessmentQuestionnaire {
   questionCounts: VendorAssessmentQuestionCounts;
 }
-export const VendorAssessmentQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const VendorAssessmentQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionCounts: VendorAssessmentQuestionCounts,
   }),
@@ -4967,7 +4875,7 @@ export interface VendorAssessmentWithQuestionnaire {
   owner: AssessmentOwner | null;
   questionnaire?: VendorAssessmentQuestionnaire | null;
 }
-export const VendorAssessmentWithQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const VendorAssessmentWithQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     vendorId: S.String,
@@ -4989,10 +4897,9 @@ export const VendorAssessmentWithQuestionnaire = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList =
   Array<VendorAssessmentWithQuestionnaire>;
-export const PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList =
-  /*@__PURE__*/ S.Array(
-    VendorAssessmentWithQuestionnaire,
-  ) as any as S.Schema<PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList>;
+const PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList = /*@__PURE__*/ S.Array(
+  VendorAssessmentWithQuestionnaire,
+) as any as S.Schema<PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList>;
 
 /** Provides information about the pagination of a dataset. */
 export interface PageInfo {
@@ -5005,7 +4912,7 @@ export interface PageInfo {
   /** The cursor that points to the start of the current page, or null if there is no such cursor. */
   startCursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endCursor: S.NullOr(S.String),
     hasNextPage: S.Boolean,
@@ -5018,12 +4925,11 @@ export interface PaginatedResponseVendorAssessmentWithQuestionnaireResults {
   data: PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVendorAssessmentWithQuestionnaireResults = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList,
-      pageInfo: PageInfo,
-    }),
+const PaginatedResponseVendorAssessmentWithQuestionnaireResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PaginatedResponseVendorAssessmentWithQuestionnaireResultsDataList,
+    pageInfo: PageInfo,
+  }),
 ).annotate({
   identifier: "PaginatedResponseVendorAssessmentWithQuestionnaireResults",
 }) as any as S.Schema<PaginatedResponseVendorAssessmentWithQuestionnaireResults>;
@@ -5031,7 +4937,7 @@ export const PaginatedResponseVendorAssessmentWithQuestionnaireResults = /*@__PU
 export interface PaginatedResponseVendorAssessmentWithQuestionnaire {
   results: PaginatedResponseVendorAssessmentWithQuestionnaireResults;
 }
-export const PaginatedResponseVendorAssessmentWithQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorAssessmentWithQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVendorAssessmentWithQuestionnaireResults,
   }),
@@ -5042,7 +4948,7 @@ export const PaginatedResponseVendorAssessmentWithQuestionnaire = /*@__PURE__*/ 
 export interface GetBusinessUnitRequest {
   businessUnitId: string;
 }
-export const GetBusinessUnitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessUnitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businessUnitId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/business-units/{businessUnitId}", code: 200 })),
@@ -5054,7 +4960,7 @@ export interface BusinessUnit {
   /** The business unit's display name. */
   displayName: string;
 }
-export const BusinessUnit = /*@__PURE__*/ S.suspend(() =>
+const BusinessUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -5065,7 +4971,7 @@ export interface GetChatbotConversationMessagesRequest {
   slugId: string;
   conversationId: string;
 }
-export const GetChatbotConversationMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChatbotConversationMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     conversationId: S.String.pipe(T.Label()),
@@ -5081,11 +4987,11 @@ export const GetChatbotConversationMessagesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetChatbotConversationMessagesRequest>;
 
 export type ChatbotMessageRole = "USER" | "ASSISTANT";
-export const ChatbotMessageRole = S.String;
+const ChatbotMessageRole = S.String;
 
 /** Resource IDs referenced by this message. */
 export type TrustCenterChatbotMessageReferencesList = Array<string>;
-export const TrustCenterChatbotMessageReferencesList =
+const TrustCenterChatbotMessageReferencesList =
   ControlDomainsList as any as S.Schema<TrustCenterChatbotMessageReferencesList>;
 
 export interface TrustCenterChatbotMessage {
@@ -5100,7 +5006,7 @@ export interface TrustCenterChatbotMessage {
   /** Resource IDs referenced by this message. */
   references: TrustCenterChatbotMessageReferencesList;
 }
-export const TrustCenterChatbotMessage = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterChatbotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     role: ChatbotMessageRole,
@@ -5113,14 +5019,14 @@ export const TrustCenterChatbotMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrustCenterChatbotMessage>;
 
 export type ArrayResponseTrustCenterChatbotMessageResultsList = Array<TrustCenterChatbotMessage>;
-export const ArrayResponseTrustCenterChatbotMessageResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterChatbotMessageResultsList = /*@__PURE__*/ S.Array(
   TrustCenterChatbotMessage,
 ) as any as S.Schema<ArrayResponseTrustCenterChatbotMessageResultsList>;
 
 export interface ArrayResponseTrustCenterChatbotMessage {
   results: ArrayResponseTrustCenterChatbotMessageResultsList;
 }
-export const ArrayResponseTrustCenterChatbotMessage = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterChatbotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterChatbotMessageResultsList,
   }),
@@ -5132,7 +5038,7 @@ export interface GetConnectedIntegrationRequest {
   /** Unique identifier of the integration */
   integrationId: string;
 }
-export const GetConnectedIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectedIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/integrations/{integrationId}", code: 200 })),
@@ -5142,7 +5048,7 @@ export const GetConnectedIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of string identifiers for the resource types ingested by the Integration. */
 export type IntegrationResourceKindsList = Array<string>;
-export const IntegrationResourceKindsList =
+const IntegrationResourceKindsList =
   ControlDomainsList as any as S.Schema<IntegrationResourceKindsList>;
 
 export interface Connection {
@@ -5153,7 +5059,7 @@ export interface Connection {
   /** An error message that may accompany disabled Connections. */
   connectionErrorMessage: string | null;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String,
     isDisabled: S.Boolean,
@@ -5163,7 +5069,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of installed Connections. */
 export type IntegrationConnectionsList = Array<Connection>;
-export const IntegrationConnectionsList = /*@__PURE__*/ S.Array(
+const IntegrationConnectionsList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<IntegrationConnectionsList>;
 
@@ -5177,7 +5083,7 @@ export interface Integration {
   /** A list of installed Connections. */
   connections: IntegrationConnectionsList;
 }
-export const Integration = /*@__PURE__*/ S.suspend(() =>
+const Integration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String,
     displayName: S.String,
@@ -5189,7 +5095,7 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
 export interface GetContractRequest {
   contractId: string;
 }
-export const GetContractRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/contracts/{contractId}", code: 200 })),
@@ -5209,7 +5115,7 @@ export interface Contract {
   /** Date this contract was created in Vanta. */
   creationDate: string;
 }
-export const Contract = /*@__PURE__*/ S.suspend(() =>
+const Contract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.NullOr(S.String),
@@ -5223,7 +5129,7 @@ export const Contract = /*@__PURE__*/ S.suspend(() =>
 export interface GetControlRequest {
   controlId: string;
 }
-export const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/controls/{controlId}", code: 200 })),
@@ -5231,16 +5137,15 @@ export const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The security domains that the control belongs to. */
 export type ControlDetailDomainsList = Array<string>;
-export const ControlDetailDomainsList =
-  ControlDomainsList as any as S.Schema<ControlDetailDomainsList>;
+const ControlDetailDomainsList = ControlDomainsList as any as S.Schema<ControlDetailDomainsList>;
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type ControlDetailCustomFieldsList = Array<CustomField>;
-export const ControlDetailCustomFieldsList =
+const ControlDetailCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<ControlDetailCustomFieldsList>;
 
 export type ControlStatus = "NO_EVIDENCE_MAPPED" | "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
-export const ControlStatus = S.String;
+const ControlStatus = S.String;
 
 export interface ControlDetail {
   /** The control's unique ID. */
@@ -5280,7 +5185,7 @@ export interface ControlDetail {
   /** A user created note for the control. */
   note: string | null;
 }
-export const ControlDetail = /*@__PURE__*/ S.suspend(() =>
+const ControlDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.NullOr(S.String),
@@ -5306,7 +5211,7 @@ export const ControlDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetCustomerTrustAccountRequest {
   accountId: string;
 }
-export const GetCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/customer-trust/accounts/{accountId}", code: 200 })),
@@ -5317,7 +5222,7 @@ export const GetCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDocumentRequest {
   documentId: string;
 }
-export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/documents/{documentId}", code: 200 })),
@@ -5333,7 +5238,7 @@ export interface DocumentDetailDeactivatedStatus {
   /** Determines whether or not the document is deactivated. */
   isDeactivated: boolean;
 }
-export const DocumentDetailDeactivatedStatus = /*@__PURE__*/ S.suspend(() =>
+const DocumentDetailDeactivatedStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.String,
     expiration: S.NullOr(S.String),
@@ -5346,7 +5251,7 @@ export const DocumentDetailDeactivatedStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the emails subscribed to the document. */
 export type DocumentDetailSubscribersList = Array<string>;
-export const DocumentDetailSubscribersList =
+const DocumentDetailSubscribersList =
   ControlDomainsList as any as S.Schema<DocumentDetailSubscribersList>;
 
 export interface DocumentDetail {
@@ -5380,7 +5285,7 @@ export interface DocumentDetail {
   /** A list of the emails subscribed to the document. */
   subscribers: DocumentDetailSubscribersList;
 }
-export const DocumentDetail = /*@__PURE__*/ S.suspend(() =>
+const DocumentDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ownerId: S.NullOr(S.String),
@@ -5403,7 +5308,7 @@ export const DocumentDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetFrameworkRequest {
   frameworkId: string;
 }
-export const GetFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/frameworks/{frameworkId}", code: 200 })),
@@ -5419,14 +5324,13 @@ export interface FrameworkRequirementCategoryRequirementsItemControlsItem {
   /** The control's unique ID. */
   id: string;
 }
-export const FrameworkRequirementCategoryRequirementsItemControlsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.String,
-      name: S.String,
-      externalId: S.NullOr(S.String),
-      id: S.String,
-    }),
+const FrameworkRequirementCategoryRequirementsItemControlsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    name: S.String,
+    externalId: S.NullOr(S.String),
+    id: S.String,
+  }),
 ).annotate({
   identifier: "FrameworkRequirementCategoryRequirementsItemControlsItem",
 }) as any as S.Schema<FrameworkRequirementCategoryRequirementsItemControlsItem>;
@@ -5434,7 +5338,7 @@ export const FrameworkRequirementCategoryRequirementsItemControlsItem = /*@__PUR
 /** The requirement's list of controls */
 export type FrameworkRequirementCategoryRequirementsItemControlsList =
   Array<FrameworkRequirementCategoryRequirementsItemControlsItem>;
-export const FrameworkRequirementCategoryRequirementsItemControlsList = /*@__PURE__*/ S.Array(
+const FrameworkRequirementCategoryRequirementsItemControlsList = /*@__PURE__*/ S.Array(
   FrameworkRequirementCategoryRequirementsItemControlsItem,
 ) as any as S.Schema<FrameworkRequirementCategoryRequirementsItemControlsList>;
 
@@ -5450,7 +5354,7 @@ export interface FrameworkRequirementCategoryRequirementsItem {
   /** The requirement's unique ID. */
   id: string;
 }
-export const FrameworkRequirementCategoryRequirementsItem = /*@__PURE__*/ S.suspend(() =>
+const FrameworkRequirementCategoryRequirementsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controls: FrameworkRequirementCategoryRequirementsItemControlsList,
     description: S.NullOr(S.String),
@@ -5464,7 +5368,7 @@ export const FrameworkRequirementCategoryRequirementsItem = /*@__PURE__*/ S.susp
 
 export type FrameworkRequirementCategoryRequirementsList =
   Array<FrameworkRequirementCategoryRequirementsItem>;
-export const FrameworkRequirementCategoryRequirementsList = /*@__PURE__*/ S.Array(
+const FrameworkRequirementCategoryRequirementsList = /*@__PURE__*/ S.Array(
   FrameworkRequirementCategoryRequirementsItem,
 ) as any as S.Schema<FrameworkRequirementCategoryRequirementsList>;
 
@@ -5477,7 +5381,7 @@ export interface FrameworkRequirementCategory {
   shorthand: string | null;
   requirements: FrameworkRequirementCategoryRequirementsList;
 }
-export const FrameworkRequirementCategory = /*@__PURE__*/ S.suspend(() =>
+const FrameworkRequirementCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -5490,7 +5394,7 @@ export const FrameworkRequirementCategory = /*@__PURE__*/ S.suspend(() =>
 
 /** The famework's list of requirement categories. */
 export type FrameworkDetailRequirementCategoriesList = Array<FrameworkRequirementCategory>;
-export const FrameworkDetailRequirementCategoriesList = /*@__PURE__*/ S.Array(
+const FrameworkDetailRequirementCategoriesList = /*@__PURE__*/ S.Array(
   FrameworkRequirementCategory,
 ) as any as S.Schema<FrameworkDetailRequirementCategoriesList>;
 
@@ -5518,7 +5422,7 @@ export interface FrameworkDetail {
   /** The famework's list of requirement categories. */
   requirementCategories: FrameworkDetailRequirementCategoriesList;
 }
-export const FrameworkDetail = /*@__PURE__*/ S.suspend(() =>
+const FrameworkDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -5537,7 +5441,7 @@ export const FrameworkDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupRequest {
   groupId: string;
 }
-export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/groups/{groupId}", code: 200 })),
@@ -5546,70 +5450,44 @@ export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupMembersRequest {
   groupId: string;
 }
-export const GetGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/groups/{groupId}/people", code: 200 })),
 ).annotate({ identifier: "GetGroupMembersRequest" }) as any as S.Schema<GetGroupMembersRequest>;
 
 export type GetGroupMembersResponseBodyList = Array<Person>;
-export const GetGroupMembersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetGroupMembersResponseBodyList = /*@__PURE__*/ S.Array(
   Person,
 ) as any as S.Schema<GetGroupMembersResponseBodyList>;
 
 export type GetGroupMembersResponse = GetGroupMembersResponseBodyList;
-export const GetGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   GetGroupMembersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetGroupMembersResponse" }) as any as S.Schema<GetGroupMembersResponse>;
 
 export interface GetIssueRequest {
   issueId: string;
 }
-export const GetIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/issues/{issueId}", code: 200 })),
 ).annotate({ identifier: "GetIssueRequest" }) as any as S.Schema<GetIssueRequest>;
 
 export type ActorType = "USER" | "APPLICATION" | "WORKFLOW_GENERATED";
-export const ActorType = S.String;
-
 export interface Actor {
   actorType: ActorType;
   actorId: string;
 }
-export const Actor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actorType: ActorType,
-    actorId: S.String,
-  }),
-).annotate({ identifier: "Actor" }) as any as S.Schema<Actor>;
-
 export type OwnerType = "USER" | "TEAM";
-export const OwnerType = S.String;
-
 export interface IssueOwner {
   ownerType: OwnerType;
   ownerId: string;
 }
-export const IssueOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerType: OwnerType,
-    ownerId: S.String,
-  }),
-).annotate({ identifier: "IssueOwner" }) as any as S.Schema<IssueOwner>;
-
 export type StandardIssueOwnersList = Array<IssueOwner>;
-export const StandardIssueOwnersList = /*@__PURE__*/ S.Array(
-  IssueOwner,
-) as any as S.Schema<StandardIssueOwnersList>;
-
 export type IssueSeverity = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "NO_SEVERITY";
-export const IssueSeverity = S.String;
-
 export type IssueStatus = "NOT_STARTED" | "IN_PROGRESS" | "CLOSED";
-export const IssueStatus = S.String;
-
 export type SourceType =
   | "AUDIT"
   | "AUDIT_EXTERNAL"
@@ -5617,74 +5495,28 @@ export type SourceType =
   | "EXTERNAL_PARTY"
   | "SELF_ASSESSMENT"
   | "OTHER";
-export const SourceType = S.String;
-
 export interface Source {
   sourceType: SourceType;
   sourceId?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceType: SourceType,
-    sourceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
-
 export type ClosedReason = "RESOLVED" | "DUPLICATE" | "ACCEPTED" | "OTHER";
-export const ClosedReason = S.String;
-
 export interface ClosedMetadata {
   reason: ClosedReason;
   comment: string;
   closedAt: string;
 }
-export const ClosedMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: ClosedReason,
-    comment: S.String,
-    closedAt: S.String,
-  }),
-).annotate({ identifier: "ClosedMetadata" }) as any as S.Schema<ClosedMetadata>;
-
 export type StandardIssueMappedControlIdsList = Array<string>;
-export const StandardIssueMappedControlIdsList =
-  ControlDomainsList as any as S.Schema<StandardIssueMappedControlIdsList>;
-
 export type StandardIssueMappedRiskScenarioIdsList = Array<string>;
-export const StandardIssueMappedRiskScenarioIdsList =
-  ControlDomainsList as any as S.Schema<StandardIssueMappedRiskScenarioIdsList>;
-
 export type StandardIssueMappedPolicyIdsList = Array<string>;
-export const StandardIssueMappedPolicyIdsList =
-  ControlDomainsList as any as S.Schema<StandardIssueMappedPolicyIdsList>;
-
 export type IssueCustomFieldValueCase1List = Array<string>;
-export const IssueCustomFieldValueCase1List =
-  ControlDomainsList as any as S.Schema<IssueCustomFieldValueCase1List>;
-
 export type IssueCustomFieldValue = string | IssueCustomFieldValueCase1List;
-export const IssueCustomFieldValue = S.Unknown as any as S.Schema<IssueCustomFieldValue>;
-
 export interface IssueCustomField {
   label: string;
   value: IssueCustomFieldValue;
 }
-export const IssueCustomField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.String,
-    value: IssueCustomFieldValue,
-  }),
-).annotate({ identifier: "IssueCustomField" }) as any as S.Schema<IssueCustomField>;
-
 export type StandardIssueCustomFieldsList = Array<IssueCustomField>;
-export const StandardIssueCustomFieldsList = /*@__PURE__*/ S.Array(
-  IssueCustomField,
-) as any as S.Schema<StandardIssueCustomFieldsList>;
-
 /** Extract from T those types that are assignable to U */
 export type ExtractIssueTemplateSTANDARDISSUE = "STANDARD_ISSUE";
-export const ExtractIssueTemplateSTANDARDISSUE = S.String;
-
 export type StandardIssueType =
   | "AREA_OF_CONCERN"
   | "MAJOR_NONCONFORMITY"
@@ -5692,8 +5524,6 @@ export type StandardIssueType =
   | "OPP_FOR_IMPROVEMENT"
   | "EXCEPTION"
   | "PROCESS_FOR_IMPROVEMENT";
-export const StandardIssueType = S.String;
-
 export interface StandardIssue {
   id: string;
   readableIssueId: string;
@@ -5720,59 +5550,13 @@ export interface StandardIssue {
   template: ExtractIssueTemplateSTANDARDISSUE;
   type: StandardIssueType | null;
 }
-export const StandardIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    readableIssueId: S.String,
-    createdDate: S.String,
-    createdBy: Actor,
-    lastModifiedBy: Actor,
-    lastModifiedDate: S.String,
-    title: S.String,
-    description: S.String,
-    owners: StandardIssueOwnersList,
-    severity: IssueSeverity,
-    status: IssueStatus,
-    rootCause: S.NullOr(S.String),
-    correctiveAction: S.NullOr(S.String),
-    dueDate: S.NullOr(S.String),
-    source: S.NullOr(Source),
-    controlDomain: S.NullOr(S.String),
-    closedMetadata: S.NullOr(ClosedMetadata),
-    detectedDate: S.String,
-    mappedControlIds: StandardIssueMappedControlIdsList,
-    mappedRiskScenarioIds: StandardIssueMappedRiskScenarioIdsList,
-    mappedPolicyIds: StandardIssueMappedPolicyIdsList,
-    customFields: StandardIssueCustomFieldsList,
-    template: ExtractIssueTemplateSTANDARDISSUE,
-    type: S.NullOr(StandardIssueType),
-  }),
-).annotate({ identifier: "StandardIssue" }) as any as S.Schema<StandardIssue>;
-
 export type StandardPOAMOwnersList = Array<IssueOwner>;
-export const StandardPOAMOwnersList =
-  StandardIssueOwnersList as any as S.Schema<StandardPOAMOwnersList>;
-
 export type StandardPOAMMappedControlIdsList = Array<string>;
-export const StandardPOAMMappedControlIdsList =
-  ControlDomainsList as any as S.Schema<StandardPOAMMappedControlIdsList>;
-
 export type StandardPOAMMappedRiskScenarioIdsList = Array<string>;
-export const StandardPOAMMappedRiskScenarioIdsList =
-  ControlDomainsList as any as S.Schema<StandardPOAMMappedRiskScenarioIdsList>;
-
 export type StandardPOAMMappedPolicyIdsList = Array<string>;
-export const StandardPOAMMappedPolicyIdsList =
-  ControlDomainsList as any as S.Schema<StandardPOAMMappedPolicyIdsList>;
-
 export type StandardPOAMCustomFieldsList = Array<IssueCustomField>;
-export const StandardPOAMCustomFieldsList =
-  StandardIssueCustomFieldsList as any as S.Schema<StandardPOAMCustomFieldsList>;
-
 /** Extract from T those types that are assignable to U */
 export type ExtractIssueTemplateSTANDARDPOAM = "STANDARD_POAM";
-export const ExtractIssueTemplateSTANDARDPOAM = S.String;
-
 export interface StandardPOAM {
   id: string;
   readableIssueId: string;
@@ -5800,48 +5584,18 @@ export interface StandardPOAM {
   requiredResources: string | null;
   systemsDescription: string | null;
 }
-export const StandardPOAM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    readableIssueId: S.String,
-    createdDate: S.String,
-    createdBy: Actor,
-    lastModifiedBy: Actor,
-    lastModifiedDate: S.String,
-    title: S.String,
-    description: S.String,
-    owners: StandardPOAMOwnersList,
-    severity: IssueSeverity,
-    status: IssueStatus,
-    rootCause: S.NullOr(S.String),
-    correctiveAction: S.NullOr(S.String),
-    dueDate: S.NullOr(S.String),
-    source: S.NullOr(Source),
-    controlDomain: S.NullOr(S.String),
-    closedMetadata: S.NullOr(ClosedMetadata),
-    detectedDate: S.String,
-    mappedControlIds: StandardPOAMMappedControlIdsList,
-    mappedRiskScenarioIds: StandardPOAMMappedRiskScenarioIdsList,
-    mappedPolicyIds: StandardPOAMMappedPolicyIdsList,
-    customFields: StandardPOAMCustomFieldsList,
-    template: ExtractIssueTemplateSTANDARDPOAM,
-    requiredResources: S.NullOr(S.String),
-    systemsDescription: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "StandardPOAM" }) as any as S.Schema<StandardPOAM>;
-
 export type Issue = StandardIssue | StandardPOAM;
-export const Issue = S.Unknown as any as S.Schema<Issue>;
+const Issue = S.Unknown as any as S.Schema<Issue>;
 
 export type GetIssueResponse = Issue;
-export const GetIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  Issue.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetIssueResponse" }) as any as S.Schema<GetIssueResponse>;
+const GetIssueResponse = /*@__PURE__*/ S.suspend(() => Issue.pipe(T.RawResponseRoot())).annotate({
+  identifier: "GetIssueResponse",
+}) as any as S.Schema<GetIssueResponse>;
 
 export interface GetKnowledgeBaseResourceRequest {
   id: string;
 }
-export const GetKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/knowledge-base/resources/{id}", code: 200 })),
@@ -5853,11 +5607,11 @@ export const GetKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export type TrustKnowledgeBaseResourceOutput =
   | KnowledgeBaseDocumentResourceOutput
   | KnowledgeBaseWebpageResourceOutput;
-export const TrustKnowledgeBaseResourceOutput =
+const TrustKnowledgeBaseResourceOutput =
   S.Unknown as any as S.Schema<TrustKnowledgeBaseResourceOutput>;
 
 export type GetKnowledgeBaseResourceResponse = TrustKnowledgeBaseResourceOutput;
-export const GetKnowledgeBaseResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKnowledgeBaseResourceResponse = /*@__PURE__*/ S.suspend(() =>
   TrustKnowledgeBaseResourceOutput.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetKnowledgeBaseResourceResponse",
@@ -5866,7 +5620,7 @@ export const GetKnowledgeBaseResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetMonitoredComputerRequest {
   computerId: string;
 }
-export const GetMonitoredComputerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoredComputerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/monitored-computers/{computerId}", code: 200 })),
@@ -5876,14 +5630,14 @@ export const GetMonitoredComputerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The possible outcomes of a status check. The outcome can be one of the following: FAIL: The check is failing. IN_PROGRESS: The check needs further data from the given computer in order to evaluate. The field(s) needed from a computer to calculate the ComputerStatusOutcome were null. NA: The check is not applicable for the given computer. PASS: The check is passing. */
 export type ComputerStatusOutcome = "FAIL" | "IN_PROGRESS" | "NA" | "PASS";
-export const ComputerStatusOutcome = S.String;
+const ComputerStatusOutcome = S.String;
 
 /** The a status check for a computer. Representation for screenlock, diskEncryption, passwordManager, and antivirusInstallation. */
 export interface ComputerStatus {
   /** The outcome of the status check. */
   outcome: ComputerStatusOutcome;
 }
-export const ComputerStatus = /*@__PURE__*/ S.suspend(() =>
+const ComputerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outcome: ComputerStatusOutcome,
   }),
@@ -5891,7 +5645,7 @@ export const ComputerStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The possible types of the operating system. One of `mac_OS`, `linux`, or `windows`. */
 export type OperatingSystemType = "macOS" | "linux" | "windows";
-export const OperatingSystemType = S.String;
+const OperatingSystemType = S.String;
 
 /** The computer's operating system type and version. */
 export interface OperatingSystem {
@@ -5900,7 +5654,7 @@ export interface OperatingSystem {
   /** The version of the operating system. */
   version: string | null;
 }
-export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
+const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: OperatingSystemType,
     version: S.NullOr(S.String),
@@ -5931,7 +5685,7 @@ export interface MonitoredComputer {
   /** The universal device id of the computer. */
   udid: string | null;
 }
-export const MonitoredComputer = /*@__PURE__*/ S.suspend(() =>
+const MonitoredComputer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     integrationId: S.String,
@@ -5948,7 +5702,7 @@ export const MonitoredComputer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonitoredComputer" }) as any as S.Schema<MonitoredComputer>;
 
 export interface GetOrganizationRequest {}
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/organization", code: 200 })),
 ).annotate({ identifier: "GetOrganizationRequest" }) as any as S.Schema<GetOrganizationRequest>;
 
@@ -5957,7 +5711,7 @@ export interface OrganizationIdentity {
   displayName: string;
   region: string;
 }
-export const OrganizationIdentity = /*@__PURE__*/ S.suspend(() =>
+const OrganizationIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -5968,7 +5722,7 @@ export const OrganizationIdentity = /*@__PURE__*/ S.suspend(() =>
 export interface GetPersonRequest {
   personId: string;
 }
-export const GetPersonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/people/{personId}", code: 200 })),
@@ -5977,14 +5731,14 @@ export const GetPersonRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPolicyRequest {
   policyId: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/policies/{policyId}", code: 200 })),
 ).annotate({ identifier: "GetPolicyRequest" }) as any as S.Schema<GetPolicyRequest>;
 
 export type PolicyStatus = "OK" | "NEEDS_REMEDIATION";
-export const PolicyStatus = S.String;
+const PolicyStatus = S.String;
 
 export type PolicyVersionStatus =
   | "NOT_STARTED"
@@ -5993,13 +5747,13 @@ export type PolicyVersionStatus =
   | "APPROVED"
   | "RENEW_SOON"
   | "EXPIRED";
-export const PolicyVersionStatus = S.String;
+const PolicyVersionStatus = S.String;
 
 export interface PolicyLatestVersion {
   /** The status of the policy's latest version. */
   status: PolicyVersionStatus;
 }
-export const PolicyLatestVersion = /*@__PURE__*/ S.suspend(() =>
+const PolicyLatestVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: PolicyVersionStatus,
   }),
@@ -6031,7 +5785,7 @@ export type PolicyLocale =
   | "SV"
   | "TR"
   | "ZH";
-export const PolicyLocale = S.String;
+const PolicyLocale = S.String;
 
 export interface PolicyDocument {
   /** The language of the policy document. */
@@ -6041,7 +5795,7 @@ export interface PolicyDocument {
   /** The URL of the policy document. */
   url: string;
 }
-export const PolicyDocument = /*@__PURE__*/ S.suspend(() =>
+const PolicyDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.NullOr(PolicyLocale),
     slugId: S.String,
@@ -6051,7 +5805,7 @@ export const PolicyDocument = /*@__PURE__*/ S.suspend(() =>
 
 /** Available document versions for this policy, organized by language. */
 export type PolicyLatestApprovedVersionDocumentsList = Array<PolicyDocument>;
-export const PolicyLatestApprovedVersionDocumentsList = /*@__PURE__*/ S.Array(
+const PolicyLatestApprovedVersionDocumentsList = /*@__PURE__*/ S.Array(
   PolicyDocument,
 ) as any as S.Schema<PolicyLatestApprovedVersionDocumentsList>;
 
@@ -6061,7 +5815,7 @@ export interface PolicyLatestApprovedVersion {
   /** Available document versions for this policy, organized by language. */
   documents: PolicyLatestApprovedVersionDocumentsList;
 }
-export const PolicyLatestApprovedVersion = /*@__PURE__*/ S.suspend(() =>
+const PolicyLatestApprovedVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionId: S.String,
     documents: PolicyLatestApprovedVersionDocumentsList,
@@ -6086,7 +5840,7 @@ export interface Policy {
   /** The latest approved version of the policy, if available. */
   latestApprovedVersion: PolicyLatestApprovedVersion | null;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6101,7 +5855,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 export interface GetProgramScopeRequest {
   programScopeId: string;
 }
-export const GetProgramScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProgramScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     programScopeId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/program-scopes/{programScopeId}", code: 200 })),
@@ -6112,7 +5866,7 @@ export interface ProgramScope {
   businessUnitId: string | null;
   frameworkId: string;
 }
-export const ProgramScope = /*@__PURE__*/ S.suspend(() =>
+const ProgramScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     businessUnitId: S.NullOr(S.String),
@@ -6123,7 +5877,7 @@ export const ProgramScope = /*@__PURE__*/ S.suspend(() =>
 export interface GetQuestionnaireRequest {
   questionnaireId: string;
 }
-export const GetQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6135,7 +5889,7 @@ export interface GetQuestionnaireExportRequest {
   /** The unique identifier of the export job, returned from the POST endpoint. */
   id: string;
 }
-export const GetQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/customer-trust/questionnaires/exports/{id}", code: 200 })),
@@ -6145,11 +5899,11 @@ export const GetQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Processing status of the export. - `"pending"`: Export is still being processed. - `"completed"`: Export finished successfully. Download URL is available. - `"failed"`: Export failed. See `errorMessage` for details. */
 export type CustomerTrustExportStatusResponseStatus = "pending" | "completed" | "failed";
-export const CustomerTrustExportStatusResponseStatus = S.String;
+const CustomerTrustExportStatusResponseStatus = S.String;
 
 /** The output format of the exported file. */
 export type CustomerTrustExportStatusResponseFormat = "original" | "csv";
-export const CustomerTrustExportStatusResponseFormat = S.String;
+const CustomerTrustExportStatusResponseFormat = S.String;
 
 /** Detailed status and result of a questionnaire export. When `status` is `"completed"`, the response includes a time-limited download URL. */
 export interface CustomerTrustExportStatusResponse {
@@ -6172,7 +5926,7 @@ export interface CustomerTrustExportStatusResponse {
   /** Human-readable description of why the export failed. Only present when `status` is `"failed"`. */
   errorMessage?: string;
 }
-export const CustomerTrustExportStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustExportStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: CustomerTrustExportStatusResponseStatus,
@@ -6192,7 +5946,7 @@ export interface GetQuestionnaireResponseRequest {
   questionnaireId: string;
   responseId: string;
 }
-export const GetQuestionnaireResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuestionnaireResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     responseId: S.String.pipe(T.Label()),
@@ -6213,14 +5967,14 @@ export type QuestionnaireResponseOriginType =
   | "MANUAL"
   | "ORIGINAL_QUESTIONNAIRE"
   | "RESOURCE";
-export const QuestionnaireResponseOriginType = S.String;
+const QuestionnaireResponseOriginType = S.String;
 
 /** JSON Schema v7 */
 export type JSONSchema7Definition = JSONSchema7 | boolean;
-export const JSONSchema7Definition = S.Unknown as any as S.Schema<JSONSchema7Definition>;
+const JSONSchema7Definition = S.Unknown as any as S.Schema<JSONSchema7Definition>;
 
 export type JSONSchema7DefsMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7DefsMap = /*@__PURE__*/ S.Record(
+const JSONSchema7DefsMap = /*@__PURE__*/ S.Record(
   S.String,
   JSONSchema7Definition,
 ) as any as S.Schema<JSONSchema7DefsMap>;
@@ -6234,83 +5988,63 @@ export type JSONSchema7TypeName =
   | "object"
   | "array"
   | "null";
-export const JSONSchema7TypeName = S.String;
-
 export type JSONSchema7TypeCase1List = Array<JSONSchema7TypeName>;
-export const JSONSchema7TypeCase1List =
-  RiskScenarioCiaCategoriesList as any as S.Schema<JSONSchema7TypeCase1List>;
-
 export type JSONSchema7Type = JSONSchema7TypeName | JSONSchema7TypeCase1List;
-export const JSONSchema7Type = S.Unknown as any as S.Schema<JSONSchema7Type>;
+const JSONSchema7Type = S.Unknown as any as S.Schema<JSONSchema7Type>;
 
 export type JSONSchema7Object = { [key: string]: JSONSchema7Type2 | undefined };
-export const JSONSchema7Object = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => JSONSchema7Type2),
-) as any as S.Schema<JSONSchema7Object>;
-
 /** Primitive type */
 export type JSONSchema7Type2 = string | number | boolean | JSONSchema7Object | unknown;
-export const JSONSchema7Type2 = S.Unknown as any as S.Schema<JSONSchema7Type2>;
+const JSONSchema7Type2 = S.Unknown as any as S.Schema<JSONSchema7Type2>;
 
 export type JSONSchema7EnumList = Array<JSONSchema7Type2 | null>;
-export const JSONSchema7EnumList = /*@__PURE__*/ S.Array(
+const JSONSchema7EnumList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(JSONSchema7Type2),
 ) as any as S.Schema<JSONSchema7EnumList>;
 
 export type JSONSchema7ItemsCase1List = Array<JSONSchema7Definition>;
-export const JSONSchema7ItemsCase1List = /*@__PURE__*/ S.Array(
+const JSONSchema7ItemsCase1List = /*@__PURE__*/ S.Array(
   JSONSchema7Definition,
 ) as any as S.Schema<JSONSchema7ItemsCase1List>;
 
 export type JSONSchema7Items = JSONSchema7Definition | JSONSchema7ItemsCase1List;
-export const JSONSchema7Items = S.Unknown as any as S.Schema<JSONSchema7Items>;
+const JSONSchema7Items = S.Unknown as any as S.Schema<JSONSchema7Items>;
 
 export type JSONSchema7RequiredList = Array<string>;
-export const JSONSchema7RequiredList =
-  ControlDomainsList as any as S.Schema<JSONSchema7RequiredList>;
+const JSONSchema7RequiredList = ControlDomainsList as any as S.Schema<JSONSchema7RequiredList>;
 
 export type JSONSchema7PropertiesMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7PropertiesMap =
-  JSONSchema7DefsMap as any as S.Schema<JSONSchema7PropertiesMap>;
+const JSONSchema7PropertiesMap = JSONSchema7DefsMap as any as S.Schema<JSONSchema7PropertiesMap>;
 
 export type JSONSchema7PatternPropertiesMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7PatternPropertiesMap =
+const JSONSchema7PatternPropertiesMap =
   JSONSchema7DefsMap as any as S.Schema<JSONSchema7PatternPropertiesMap>;
 
 export type JSONSchema7DependenciesValueCase1List = Array<string>;
-export const JSONSchema7DependenciesValueCase1List =
-  ControlDomainsList as any as S.Schema<JSONSchema7DependenciesValueCase1List>;
-
 export type JSONSchema7DependenciesValue =
   | JSONSchema7Definition
   | JSONSchema7DependenciesValueCase1List;
-export const JSONSchema7DependenciesValue =
-  S.Unknown as any as S.Schema<JSONSchema7DependenciesValue>;
+const JSONSchema7DependenciesValue = S.Unknown as any as S.Schema<JSONSchema7DependenciesValue>;
 
 export type JSONSchema7DependenciesMap = {
   [key: string]: JSONSchema7DependenciesValue | undefined;
 };
-export const JSONSchema7DependenciesMap = /*@__PURE__*/ S.Record(
+const JSONSchema7DependenciesMap = /*@__PURE__*/ S.Record(
   S.String,
   JSONSchema7DependenciesValue,
 ) as any as S.Schema<JSONSchema7DependenciesMap>;
 
 export type JSONSchema7AllOfList = Array<JSONSchema7Definition>;
-export const JSONSchema7AllOfList =
-  JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7AllOfList>;
+const JSONSchema7AllOfList = JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7AllOfList>;
 
 export type JSONSchema7AnyOfList = Array<JSONSchema7Definition>;
-export const JSONSchema7AnyOfList =
-  JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7AnyOfList>;
+const JSONSchema7AnyOfList = JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7AnyOfList>;
 
 export type JSONSchema7OneOfList = Array<JSONSchema7Definition>;
-export const JSONSchema7OneOfList =
-  JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7OneOfList>;
+const JSONSchema7OneOfList = JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7OneOfList>;
 
 export type JSONSchema7DefinitionsMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7DefinitionsMap =
-  JSONSchema7DefsMap as any as S.Schema<JSONSchema7DefinitionsMap>;
+const JSONSchema7DefinitionsMap = JSONSchema7DefsMap as any as S.Schema<JSONSchema7DefinitionsMap>;
 
 export interface JSONSchema7 {
   _id?: string;
@@ -6361,7 +6095,7 @@ export interface JSONSchema7 {
   writeOnly?: boolean;
   examples?: JSONSchema7Type2 | null;
 }
-export const JSONSchema7 = /*@__PURE__*/ S.suspend(() =>
+const JSONSchema7 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String.pipe(T.Body("$id"))),
     _ref: S.optional(S.String.pipe(T.Body("$ref"))),
@@ -6414,16 +6148,13 @@ export const JSONSchema7 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JSONSchema7" }) as any as S.Schema<JSONSchema7>;
 
 export type AnswerPartValueCase3List = Array<string>;
-export const AnswerPartValueCase3List =
-  ControlDomainsList as any as S.Schema<AnswerPartValueCase3List>;
-
 /** Valid runtime value types for an answer part. Array values are restricted to string items to match `ArrayFieldSchema.items` (which is narrowed to `StringFieldSchema` only). */
 export type AnswerPartValue = string | number | boolean | AnswerPartValueCase3List;
-export const AnswerPartValue = S.Unknown as any as S.Schema<AnswerPartValue>;
+const AnswerPartValue = S.Unknown as any as S.Schema<AnswerPartValue>;
 
 /** Construct a type with a set of properties K of type T */
 export type RecordStringAnswerPartValue = { [key: string]: AnswerPartValue | null | undefined };
-export const RecordStringAnswerPartValue = /*@__PURE__*/ S.Record(
+const RecordStringAnswerPartValue = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(AnswerPartValue),
 ) as any as S.Schema<RecordStringAnswerPartValue>;
@@ -6433,7 +6164,7 @@ export interface QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceIt
   filename?: string;
   id: string;
 }
-export const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItemUploadedDocument =
+const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItemUploadedDocument =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slugId: S.optional(S.String),
@@ -6447,23 +6178,22 @@ export const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItemUp
 export interface QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem {
   uploadedDocument: QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItemUploadedDocument;
 }
-export const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem =
-  /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       uploadedDocument:
         QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItemUploadedDocument,
     }),
-  ).annotate({
-    identifier: "QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem",
-  }) as any as S.Schema<QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem>;
+).annotate({
+  identifier: "QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem",
+}) as any as S.Schema<QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem>;
 
 /** Evidence documents attached to support this questionnaire response */
 export type QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceList =
   Array<QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem>;
-export const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceList =
-  /*@__PURE__*/ S.Array(
-    QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem,
-  ) as any as S.Schema<QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceList>;
+const QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceList = /*@__PURE__*/ S.Array(
+  QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceItem,
+) as any as S.Schema<QuestionnaireResponseWithoutViewerPermissionsAttachedEvidenceList>;
 
 /** A questionnaire response without the fields that describe what the requesting user may do with it. Surfaces that authenticate a client rather than a user return this, since there is no user those fields could describe. */
 export interface QuestionnaireResponseWithoutViewerPermissions {
@@ -6496,7 +6226,7 @@ export interface QuestionnaireResponseWithoutViewerPermissions {
   /** The response's owner, or null when no owner is assigned. Resolved from the object-role grant rather than the response document's legacy `ownerUserId`, which the object-role registry leaves unset for Team owners. */
   ownerAssignment: ActorAssignment | null;
 }
-export const QuestionnaireResponseWithoutViewerPermissions = /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireResponseWithoutViewerPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     sectionId: S.optional(S.NullOr(S.String)),
@@ -6525,7 +6255,7 @@ export interface GetResourceRequest {
   /** Unique identifier of the resource. */
   resourceId: string;
 }
-export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
     resourceKind: S.String.pipe(T.Label()),
@@ -6556,8 +6286,6 @@ export type ResourceResponseType =
   | "Queue"
   | "ServerlessFunction"
   | "StorageBucket";
-export const ResourceResponseType = S.String;
-
 export interface Resource {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6579,21 +6307,6 @@ export interface Resource {
   /** When the resource was deleted/removed from the integration, if applicable. This field is only present when the resource has been deleted. */
   deletedDate?: string | null;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-
 export interface CloudInfrastructure {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6619,23 +6332,6 @@ export interface CloudInfrastructure {
   /** Region in which the Resource is located */
   region: string;
 }
-export const CloudInfrastructure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    account: S.String,
-    region: S.String,
-  }),
-).annotate({ identifier: "CloudInfrastructure" }) as any as S.Schema<CloudInfrastructure>;
-
 export interface ContainerRepository {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6663,24 +6359,6 @@ export interface ContainerRepository {
   /** Whether autoscans have been enabled */
   isAutoscanEnabled: boolean | null;
 }
-export const ContainerRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    account: S.String,
-    region: S.String,
-    isAutoscanEnabled: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "ContainerRepository" }) as any as S.Schema<ContainerRepository>;
-
 export interface Database {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6712,26 +6390,6 @@ export interface Database {
   /** Whether the Database contains user data */
   containsUserData: boolean | null;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    account: S.String,
-    areBackupsEnabled: S.NullOr(S.Boolean),
-    isEncrypted: S.Boolean,
-    containsEphi: S.NullOr(S.Boolean),
-    containsUserData: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
-
 export interface Device {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6761,25 +6419,6 @@ export interface Device {
   /** Whether the Device contains user data */
   containsUserData: boolean | null;
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    operatingSystemName: S.String,
-    isEncrypted: S.NullOr(S.Boolean),
-    containsEphi: S.NullOr(S.Boolean),
-    containsUserData: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
-
 export interface PaaS {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6805,23 +6444,6 @@ export interface PaaS {
   /** Whether the PaaS contains user data */
   containsUserData: boolean | null;
 }
-export const PaaS = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    containsEphi: S.NullOr(S.Boolean),
-    containsUserData: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "PaaS" }) as any as S.Schema<PaaS>;
-
 export interface Queue {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6851,25 +6473,6 @@ export interface Queue {
   /** Whether the Queue contains user data */
   containsUserData: boolean | null;
 }
-export const Queue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    account: S.String,
-    region: S.String,
-    containsEphi: S.NullOr(S.Boolean),
-    containsUserData: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "Queue" }) as any as S.Schema<Queue>;
-
 export interface StorageBucket {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6903,35 +6506,10 @@ export interface StorageBucket {
   /** Whether the StorageBucket is versioned */
   isVersioned: boolean | null;
 }
-export const StorageBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    account: S.String,
-    region: S.String,
-    isEncrypted: S.Boolean,
-    containsEphi: S.NullOr(S.Boolean),
-    containsUserData: S.NullOr(S.Boolean),
-    isVersioned: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "StorageBucket" }) as any as S.Schema<StorageBucket>;
-
 /** Any role(s) assigned to the Account */
 export type AccountRolesList = Array<string>;
-export const AccountRolesList = ControlDomainsList as any as S.Schema<AccountRolesList>;
-
 /** Any groups to which the Account belongs */
 export type AccountGroupsList = Array<string>;
-export const AccountGroupsList = ControlDomainsList as any as S.Schema<AccountGroupsList>;
-
 export interface Account {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -6963,53 +6541,18 @@ export interface Account {
   /** Whether MFA has been enabled for the account. */
   isMfaEnabled: boolean | null;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    accountName: S.String,
-    roles: AccountRolesList,
-    groups: AccountGroupsList,
-    isDeactivated: S.Boolean,
-    isMfaEnabled: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
-
 /** Any role(s) assigned to the Account */
 export type AwsAccountRolesList = Array<string>;
-export const AwsAccountRolesList = ControlDomainsList as any as S.Schema<AwsAccountRolesList>;
-
 /** Any groups to which the Account belongs */
 export type AwsAccountGroupsList = Array<string>;
-export const AwsAccountGroupsList = ControlDomainsList as any as S.Schema<AwsAccountGroupsList>;
-
 export interface AccessKeyInfo {
   /** The access key ID */
   accessKeyId: string | Redacted.Redacted<string>;
   /** The status of the access key */
   status: string;
 }
-export const AccessKeyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.String.pipe(T.SensitiveValue({})),
-    status: S.String,
-  }),
-).annotate({ identifier: "AccessKeyInfo" }) as any as S.Schema<AccessKeyInfo>;
-
 /** The list of access keys associated with the AWS account */
 export type AwsAccountAccessKeysList = Array<AccessKeyInfo>;
-export const AwsAccountAccessKeysList = /*@__PURE__*/ S.Array(
-  AccessKeyInfo,
-) as any as S.Schema<AwsAccountAccessKeysList>;
-
 export interface AwsAccount {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -7047,29 +6590,6 @@ export interface AwsAccount {
   /** The list of access keys associated with the AWS account */
   accessKeys: AwsAccountAccessKeysList;
 }
-export const AwsAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    accountName: S.String,
-    roles: AwsAccountRolesList,
-    groups: AwsAccountGroupsList,
-    isDeactivated: S.Boolean,
-    isMfaEnabled: S.NullOr(S.Boolean),
-    awsUserAccountId: S.String,
-    awsAccountNumber: S.String,
-    accessKeys: AwsAccountAccessKeysList,
-  }),
-).annotate({ identifier: "AwsAccount" }) as any as S.Schema<AwsAccount>;
-
 export interface OrganizationSubunit {
   responseType: ResourceResponseType;
   /** The identifier for the resource type, unique within the scope of an Integration. */
@@ -7093,22 +6613,6 @@ export interface OrganizationSubunit {
   /** Account ID corresponding to the subunit. Could be null if the subunit is not an account, e.g. a subscription */
   accountId: string | null;
 }
-export const OrganizationSubunit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responseType: ResourceResponseType,
-    resourceKind: S.String,
-    resourceId: S.String,
-    connectionId: S.NullOr(S.String),
-    displayName: S.String,
-    owner: S.NullOr(S.String),
-    inScope: S.Boolean,
-    description: S.NullOr(S.String),
-    creationDate: S.String,
-    deletedDate: S.optional(S.NullOr(S.String)),
-    accountId: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "OrganizationSubunit" }) as any as S.Schema<OrganizationSubunit>;
-
 export type AnyResource =
   | Resource
   | CloudInfrastructure
@@ -7121,10 +6625,10 @@ export type AnyResource =
   | Account
   | AwsAccount
   | OrganizationSubunit;
-export const AnyResource = S.Unknown as any as S.Schema<AnyResource>;
+const AnyResource = S.Unknown as any as S.Schema<AnyResource>;
 
 export type GetResourceResponse = AnyResource;
-export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
   AnyResource.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetResourceResponse" }) as any as S.Schema<GetResourceResponse>;
 
@@ -7136,7 +6640,7 @@ export interface GetResourceKindDetailsRequest {
   /** Unique identifier of the integration connection. */
   connectionId?: string;
 }
-export const GetResourceKindDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceKindDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
     resourceKind: S.String.pipe(T.Label()),
@@ -7172,7 +6676,7 @@ export interface ResourceKindDetails {
   /** The count of resources of the given type that have been given a description in Vanta. */
   numWithDescription: number;
 }
-export const ResourceKindDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceKindDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String,
     resourceKind: S.String,
@@ -7189,7 +6693,7 @@ export const ResourceKindDetails = /*@__PURE__*/ S.suspend(() =>
 export interface GetRiskScenarioRequest {
   riskScenarioId: string;
 }
-export const GetRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/risk-scenarios/{riskScenarioId}", code: 200 })),
@@ -7201,7 +6705,7 @@ export interface GetSecurityReviewDocumentsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const GetSecurityReviewDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityReviewDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     securityReviewId: S.String.pipe(T.Label()),
@@ -7219,15 +6723,12 @@ export const GetSecurityReviewDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSecurityReviewDocumentsRequest>;
 
 export type UploadedDocumentUploadedByType = "USER" | "APPLICATION";
-export const UploadedDocumentUploadedByType = S.String;
-
 /** The actor who uploaded this document. It could be a user or an app. */
 export interface VendorDocumentUploadedBy {
   type: UploadedDocumentUploadedByType;
   id: string;
 }
-export const VendorDocumentUploadedBy =
-  ActorAssignmentInput as any as S.Schema<VendorDocumentUploadedBy>;
+const VendorDocumentUploadedBy = ActorAssignmentInput as any as S.Schema<VendorDocumentUploadedBy>;
 
 export interface VendorDocument {
   /** Unique identifier for the document. */
@@ -7253,7 +6754,7 @@ export interface VendorDocument {
   /** URL link to the document */
   url: string;
 }
-export const VendorDocument = /*@__PURE__*/ S.suspend(() =>
+const VendorDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     fileName: S.NullOr(S.String),
@@ -7270,7 +6771,7 @@ export const VendorDocument = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VendorDocument" }) as any as S.Schema<VendorDocument>;
 
 export type PaginatedResponseVendorDocumentResultsDataList = Array<VendorDocument>;
-export const PaginatedResponseVendorDocumentResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVendorDocumentResultsDataList = /*@__PURE__*/ S.Array(
   VendorDocument,
 ) as any as S.Schema<PaginatedResponseVendorDocumentResultsDataList>;
 
@@ -7278,7 +6779,7 @@ export interface PaginatedResponseVendorDocumentResults {
   data: PaginatedResponseVendorDocumentResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVendorDocumentResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorDocumentResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVendorDocumentResultsDataList,
     pageInfo: PageInfo,
@@ -7290,7 +6791,7 @@ export const PaginatedResponseVendorDocumentResults = /*@__PURE__*/ S.suspend(()
 export interface PaginatedResponseVendorDocument {
   results: PaginatedResponseVendorDocumentResults;
 }
-export const PaginatedResponseVendorDocument = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVendorDocumentResults,
   }),
@@ -7302,7 +6803,7 @@ export interface GetSecurityReviewsByIdRequest {
   vendorId: string;
   securityReviewId: string;
 }
-export const GetSecurityReviewsByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityReviewsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     securityReviewId: S.String.pipe(T.Label()),
@@ -7324,7 +6825,7 @@ export interface SecurityReviewDecision {
   /** The status of the current decision. */
   status: AssessmentDecision;
 }
-export const SecurityReviewDecision = /*@__PURE__*/ S.suspend(() =>
+const SecurityReviewDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedAt: S.String,
     status: AssessmentDecision,
@@ -7357,7 +6858,7 @@ export interface SecurityReview {
   /** The owner of this security review, if assigned. */
   owner: AssessmentOwner | null;
 }
-export const SecurityReview = /*@__PURE__*/ S.suspend(() =>
+const SecurityReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     vendorId: S.String,
@@ -7379,7 +6880,7 @@ export interface GetSecurityReviewsByVendorIdRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const GetSecurityReviewsByVendorIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityReviewsByVendorIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7390,7 +6891,7 @@ export const GetSecurityReviewsByVendorIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSecurityReviewsByVendorIdRequest>;
 
 export type PaginatedResponseSecurityReviewResultsDataList = Array<SecurityReview>;
-export const PaginatedResponseSecurityReviewResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseSecurityReviewResultsDataList = /*@__PURE__*/ S.Array(
   SecurityReview,
 ) as any as S.Schema<PaginatedResponseSecurityReviewResultsDataList>;
 
@@ -7398,7 +6899,7 @@ export interface PaginatedResponseSecurityReviewResults {
   data: PaginatedResponseSecurityReviewResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseSecurityReviewResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseSecurityReviewResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseSecurityReviewResultsDataList,
     pageInfo: PageInfo,
@@ -7410,7 +6911,7 @@ export const PaginatedResponseSecurityReviewResults = /*@__PURE__*/ S.suspend(()
 export interface PaginatedResponseSecurityReview {
   results: PaginatedResponseSecurityReviewResults;
 }
-export const PaginatedResponseSecurityReview = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseSecurityReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseSecurityReviewResults,
   }),
@@ -7419,28 +6920,19 @@ export const PaginatedResponseSecurityReview = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseSecurityReview>;
 
 export interface GetSettingsRequest {}
-export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/personnel-notification-settings", code: 200 })),
 ).annotate({ identifier: "GetSettingsRequest" }) as any as S.Schema<GetSettingsRequest>;
 
 export type NotificationFrequencyDAILY = "DAILY";
-export const NotificationFrequencyDAILY = S.String;
-
 export type NotificationFrequencyWEEKLY = "WEEKLY";
-export const NotificationFrequencyWEEKLY = S.String;
-
 export type EnabledPersonnelNotificationSettingsEmployeeDigestFrequency =
   | NotificationFrequencyDAILY
   | NotificationFrequencyWEEKLY;
-export const EnabledPersonnelNotificationSettingsEmployeeDigestFrequency =
-  S.Unknown as any as S.Schema<EnabledPersonnelNotificationSettingsEmployeeDigestFrequency>;
-
 export type NotificationChannelType = "EMAIL" | "SLACK";
-export const NotificationChannelType = S.String;
-
 export type EnabledPersonnelNotificationSettingsEnabledChannelsList =
   Array<NotificationChannelType>;
-export const EnabledPersonnelNotificationSettingsEnabledChannelsList =
+const EnabledPersonnelNotificationSettingsEnabledChannelsList =
   RiskScenarioCiaCategoriesList as any as S.Schema<EnabledPersonnelNotificationSettingsEnabledChannelsList>;
 
 export interface EnabledPersonnelNotificationSettings {
@@ -7449,43 +6941,23 @@ export interface EnabledPersonnelNotificationSettings {
   enabledChannels: EnabledPersonnelNotificationSettingsEnabledChannelsList;
   nextReminderAt: string;
 }
-export const EnabledPersonnelNotificationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    employeeDigestFrequency: EnabledPersonnelNotificationSettingsEmployeeDigestFrequency,
-    enabledChannels: EnabledPersonnelNotificationSettingsEnabledChannelsList,
-    nextReminderAt: S.String,
-  }),
-).annotate({
-  identifier: "EnabledPersonnelNotificationSettings",
-}) as any as S.Schema<EnabledPersonnelNotificationSettings>;
-
 export interface DisabledPersonnelNotificationSettings {
   enabled: boolean;
 }
-export const DisabledPersonnelNotificationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "DisabledPersonnelNotificationSettings",
-}) as any as S.Schema<DisabledPersonnelNotificationSettings>;
-
 export type PersonnelNotificationSettings =
   | EnabledPersonnelNotificationSettings
   | DisabledPersonnelNotificationSettings;
-export const PersonnelNotificationSettings =
-  S.Unknown as any as S.Schema<PersonnelNotificationSettings>;
+const PersonnelNotificationSettings = S.Unknown as any as S.Schema<PersonnelNotificationSettings>;
 
 export type GetSettingsResponse = PersonnelNotificationSettings;
-export const GetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   PersonnelNotificationSettings.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSettingsResponse" }) as any as S.Schema<GetSettingsResponse>;
 
 export interface GetTagsForCategoryRequest {
   tagCategoryId: string;
 }
-export const GetTagsForCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagsForCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagCategoryId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7499,14 +6971,14 @@ export interface UserDefinedTagCategory {
   id: string;
   displayName: string;
 }
-export const UserDefinedTagCategory = BusinessUnit as any as S.Schema<UserDefinedTagCategory>;
+const UserDefinedTagCategory = BusinessUnit as any as S.Schema<UserDefinedTagCategory>;
 
 export interface UserDefinedTag {
   id: string;
   category: string;
   displayName: string;
 }
-export const UserDefinedTag = /*@__PURE__*/ S.suspend(() =>
+const UserDefinedTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     category: S.String,
@@ -7515,7 +6987,7 @@ export const UserDefinedTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserDefinedTag" }) as any as S.Schema<UserDefinedTag>;
 
 export type TagCategoryWithTagsTagsList = Array<UserDefinedTag>;
-export const TagCategoryWithTagsTagsList = /*@__PURE__*/ S.Array(
+const TagCategoryWithTagsTagsList = /*@__PURE__*/ S.Array(
   UserDefinedTag,
 ) as any as S.Schema<TagCategoryWithTagsTagsList>;
 
@@ -7523,7 +6995,7 @@ export interface TagCategoryWithTags {
   category: UserDefinedTagCategory;
   tags: TagCategoryWithTagsTagsList;
 }
-export const TagCategoryWithTags = /*@__PURE__*/ S.suspend(() =>
+const TagCategoryWithTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: UserDefinedTagCategory,
     tags: TagCategoryWithTagsTagsList,
@@ -7533,14 +7005,14 @@ export const TagCategoryWithTags = /*@__PURE__*/ S.suspend(() =>
 export interface GetTestRequest {
   testId: string;
 }
-export const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/tests/{testId}", code: 200 })),
 ).annotate({ identifier: "GetTestRequest" }) as any as S.Schema<GetTestRequest>;
 
 export type EntityStatus = "FAILING" | "DEACTIVATED";
-export const EntityStatus = S.String;
+const EntityStatus = S.String;
 
 export interface GetTestEntitiesRequest {
   testId: string;
@@ -7549,7 +7021,7 @@ export interface GetTestEntitiesRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const GetTestEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String.pipe(T.Label()),
     entityStatus: S.optional(EntityStatus.pipe(T.Query())),
@@ -7574,7 +7046,7 @@ export interface TestResourceEntity {
   /** The date where the test entity was first detected. Falls back to the test run date if there is no remediation timeline. */
   createdDate: string;
 }
-export const TestResourceEntity = /*@__PURE__*/ S.suspend(() =>
+const TestResourceEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     entityStatus: EntityStatus,
@@ -7587,7 +7059,7 @@ export const TestResourceEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestResourceEntity" }) as any as S.Schema<TestResourceEntity>;
 
 export type PaginatedResponseTestResourceEntityResultsDataList = Array<TestResourceEntity>;
-export const PaginatedResponseTestResourceEntityResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTestResourceEntityResultsDataList = /*@__PURE__*/ S.Array(
   TestResourceEntity,
 ) as any as S.Schema<PaginatedResponseTestResourceEntityResultsDataList>;
 
@@ -7595,7 +7067,7 @@ export interface PaginatedResponseTestResourceEntityResults {
   data: PaginatedResponseTestResourceEntityResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTestResourceEntityResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTestResourceEntityResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTestResourceEntityResultsDataList,
     pageInfo: PageInfo,
@@ -7607,7 +7079,7 @@ export const PaginatedResponseTestResourceEntityResults = /*@__PURE__*/ S.suspen
 export interface PaginatedResponseTestResourceEntity {
   results: PaginatedResponseTestResourceEntityResults;
 }
-export const PaginatedResponseTestResourceEntity = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTestResourceEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTestResourceEntityResults,
   }),
@@ -7618,7 +7090,7 @@ export const PaginatedResponseTestResourceEntity = /*@__PURE__*/ S.suspend(() =>
 export interface GetTrustCenterRequest {
   slugId: string;
 }
-export const GetTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}", code: 200 })),
@@ -7626,7 +7098,7 @@ export const GetTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible banner settings for the Trust Center. - CUSTOM_IMAGE: Banner is a custom uploaded image. - GRADIENT: Banner is a gradient between two colors. - MINIMAL: No banner. - VANTA: Legacy Vanta-themed banner. No longer selectable as a banner style. */
 export type BannerSetting = "CUSTOM_IMAGE" | "GRADIENT" | "MINIMAL" | "VANTA";
-export const BannerSetting = S.String;
+const BannerSetting = S.String;
 
 /** Information about the Trust Center's banner. */
 export interface TrustCenterBannerSetting {
@@ -7637,7 +7109,7 @@ export interface TrustCenterBannerSetting {
   /** Banner setting option. */
   setting: BannerSetting | null;
 }
-export const TrustCenterBannerSetting = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterBannerSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endColor: S.NullOr(S.String),
     startColor: S.NullOr(S.String),
@@ -7652,7 +7124,7 @@ export interface TrustCenterCustomTheme {
   /** Primary color selected for the theme. */
   primary: string | null;
 }
-export const TrustCenterCustomTheme = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterCustomTheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondary: S.NullOr(S.String),
     primary: S.NullOr(S.String),
@@ -7689,7 +7161,7 @@ export interface TrustCenter {
   /** Date the Trust Center was last updated. */
   updatedDate: string;
 }
-export const TrustCenter = /*@__PURE__*/ S.suspend(() =>
+const TrustCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -7712,7 +7184,7 @@ export interface GetTrustCenterAccessRequestRequest {
   slugId: string;
   accessRequestId: string;
 }
-export const GetTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     accessRequestId: S.String.pipe(T.Label()),
@@ -7729,7 +7201,7 @@ export const GetTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs for the resources that the viewer requested access to. */
 export type TrustCenterAccessRequestRequestedResourcesList = Array<string>;
-export const TrustCenterAccessRequestRequestedResourcesList =
+const TrustCenterAccessRequestRequestedResourcesList =
   ControlDomainsList as any as S.Schema<TrustCenterAccessRequestRequestedResourcesList>;
 
 export interface TrustCenterAccessRequest {
@@ -7752,7 +7224,7 @@ export interface TrustCenterAccessRequest {
   /** Date the access request was last updated. */
   updatedDate: string;
 }
-export const TrustCenterAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -7770,7 +7242,7 @@ export interface GetTrustCenterControlRequest {
   slugId: string;
   controlId: string;
 }
-export const GetTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -7784,7 +7256,7 @@ export const GetTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTrustCenterControlCategoriesRequest {
   slugId: string;
 }
-export const GetTrustCenterControlCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterControlCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/control-categories", code: 200 })),
@@ -7793,13 +7265,13 @@ export const GetTrustCenterControlCategoriesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetTrustCenterControlCategoriesRequest>;
 
 export type ArrayResponseTrustCenterControlCategoryResultsList = Array<TrustCenterControlCategory>;
-export const ArrayResponseTrustCenterControlCategoryResultsList =
+const ArrayResponseTrustCenterControlCategoryResultsList =
   TrustCenterControlCategoriesList as any as S.Schema<ArrayResponseTrustCenterControlCategoryResultsList>;
 
 export interface ArrayResponseTrustCenterControlCategory {
   results: ArrayResponseTrustCenterControlCategoryResultsList;
 }
-export const ArrayResponseTrustCenterControlCategory = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterControlCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterControlCategoryResultsList,
   }),
@@ -7811,7 +7283,7 @@ export interface GetTrustCenterControlCategoryRequest {
   slugId: string;
   categoryId: string;
 }
-export const GetTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -7830,7 +7302,7 @@ export interface GetTrustCenterFaqRequest {
   slugId: string;
   faqId: string;
 }
-export const GetTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     faqId: S.String.pipe(T.Label()),
@@ -7841,7 +7313,7 @@ export interface GetTrustCenterResourceRequest {
   slugId: string;
   resourceId: string;
 }
-export const GetTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -7856,7 +7328,7 @@ export interface GetTrustCenterResourceMediaRequest {
   slugId: string;
   resourceId: string;
 }
-export const GetTrustCenterResourceMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterResourceMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -7874,7 +7346,7 @@ export const GetTrustCenterResourceMediaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface NodeJSReadableStream {
   readable: boolean;
 }
-export const NodeJSReadableStream = /*@__PURE__*/ S.suspend(() =>
+const NodeJSReadableStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readable: S.Boolean,
   }),
@@ -7884,7 +7356,7 @@ export interface GetTrustCenterSubprocessorRequest {
   slugId: string;
   subprocessorId: string;
 }
-export const GetTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subprocessorId: S.String.pipe(T.Label()),
@@ -7913,7 +7385,7 @@ export interface TrustCenterSubprocessor {
   /** URL of the subprocessor. */
   url: string | null;
 }
-export const TrustCenterSubprocessor = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterSubprocessor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -7928,7 +7400,7 @@ export interface GetTrustCenterSubscriberRequest {
   slugId: string;
   subscriberId: string;
 }
-export const GetTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subscriberId: S.String.pipe(T.Label()),
@@ -7943,7 +7415,7 @@ export interface GetTrustCenterSubscriberGroupRequest {
   slugId: string;
   subscriberGroupId: string;
 }
-export const GetTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subscriberGroupId: S.String.pipe(T.Label()),
@@ -7962,7 +7434,7 @@ export interface GetTrustCenterUpdateRequest {
   slugId: string;
   updateId: string;
 }
-export const GetTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     updateId: S.String.pipe(T.Label()),
@@ -7975,7 +7447,7 @@ export interface GetTrustCenterViewerRequest {
   slugId: string;
   viewerId: string;
 }
-export const GetTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     viewerId: S.String.pipe(T.Label()),
@@ -7988,7 +7460,7 @@ export interface GetUploadedfileMediaRequest {
   documentId: string;
   uploadedFileId: string;
 }
-export const GetUploadedfileMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUploadedfileMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     uploadedFileId: S.String.pipe(T.Label()),
@@ -8006,7 +7478,7 @@ export const GetUploadedfileMediaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserRequest {
   userId: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{userId}", code: 200 })),
@@ -8018,7 +7490,7 @@ export interface User {
   displayName: string;
   isActive: boolean;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -8030,7 +7502,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 export interface GetVendorRequest {
   vendorId: string;
 }
-export const GetVendorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVendorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vendors/{vendorId}", code: 200 })),
@@ -8039,7 +7511,7 @@ export const GetVendorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVendorAssessmentTypeRequest {
   assessmentTypeId: string;
 }
-export const GetVendorAssessmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVendorAssessmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentTypeId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vendor-assessment-types/{assessmentTypeId}", code: 200 })),
@@ -8049,7 +7521,7 @@ export const GetVendorAssessmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The lifecycle status of a vendor assessment type: - ACTIVE: The assessment type is available for use. - ARCHIVED: The assessment type has been archived and is kept for historical reference. */
 export type VendorAssessmentTypeLifecycleStatus = "ACTIVE" | "ARCHIVED";
-export const VendorAssessmentTypeLifecycleStatus = S.String;
+const VendorAssessmentTypeLifecycleStatus = S.String;
 
 export interface VendorAssessmentType {
   /** Unique identifier for the assessment type. */
@@ -8061,7 +7533,7 @@ export interface VendorAssessmentType {
   /** The lifecycle status of the assessment type. */
   status: VendorAssessmentTypeLifecycleStatus;
 }
-export const VendorAssessmentType = /*@__PURE__*/ S.suspend(() =>
+const VendorAssessmentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -8073,26 +7545,26 @@ export const VendorAssessmentType = /*@__PURE__*/ S.suspend(() =>
 export interface GetVulnerabilityRequest {
   vulnerabilityId: string;
 }
-export const GetVulnerabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVulnerabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vulnerabilityId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vulnerabilities/{vulnerabilityId}", code: 200 })),
 ).annotate({ identifier: "GetVulnerabilityRequest" }) as any as S.Schema<GetVulnerabilityRequest>;
 
 export type VulnerabilityType = "CONFIGURATION" | "COMMON" | "GROUPED";
-export const VulnerabilityType = S.String;
+const VulnerabilityType = S.String;
 
 export type ExternalFindingSeverityType = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM";
-export const ExternalFindingSeverityType = S.String;
+const ExternalFindingSeverityType = S.String;
 
 /** Related vulnerabilities. Only relevant to vulnerabilities of type GROUPED. */
 export type VulnerabilityRelatedVulnsList = Array<string>;
-export const VulnerabilityRelatedVulnsList =
+const VulnerabilityRelatedVulnsList =
   ControlDomainsList as any as S.Schema<VulnerabilityRelatedVulnsList>;
 
 /** Related URLs. */
 export type VulnerabilityRelatedUrlsList = Array<string>;
-export const VulnerabilityRelatedUrlsList =
+const VulnerabilityRelatedUrlsList =
   ControlDomainsList as any as S.Schema<VulnerabilityRelatedUrlsList>;
 
 /** Metadata for the deactivation of the vulnerability. */
@@ -8108,7 +7580,7 @@ export interface VulnerabilityDeactivateMetadata {
   /** Identifier of the user who deactivated the vulnerability. */
   deactivatedBy: string;
 }
-export const VulnerabilityDeactivateMetadata = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityDeactivateMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isVulnDeactivatedIndefinitely: S.Boolean,
     deactivatedUntilDate: S.NullOr(S.String),
@@ -8166,7 +7638,7 @@ export interface Vulnerability {
   /** Identifier for the affected asset in the source system that detected the vulnerability. */
   externalId: string | null;
 }
-export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
+const Vulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -8196,7 +7668,7 @@ export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
 export interface GetVulnerableAssetRequest {
   vulnerableAssetId: string;
 }
-export const GetVulnerableAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVulnerableAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vulnerableAssetId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vulnerable-assets/{vulnerableAssetId}", code: 200 })),
@@ -8215,11 +7687,11 @@ export type VulnerableAssetType =
   | "MANIFEST_FILE"
   | "WORKSTATION"
   | "OTHER";
-export const VulnerableAssetType = S.String;
+const VulnerableAssetType = S.String;
 
 /** Tags of the scanned container image. */
 export type VulnerableAssetScannerImageTagsList = Array<string>;
-export const VulnerableAssetScannerImageTagsList =
+const VulnerableAssetScannerImageTagsList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerImageTagsList>;
 
 export interface KeyValuePair {
@@ -8228,41 +7700,39 @@ export interface KeyValuePair {
   /** Value of key-value pair. */
   value: string;
 }
-export const KeyValuePair = QuestionnaireMetadata as any as S.Schema<KeyValuePair>;
-
 /** Tags of the scanned asset. */
 export type VulnerableAssetScannerAssetTagsList = Array<KeyValuePair>;
-export const VulnerableAssetScannerAssetTagsList =
+const VulnerableAssetScannerAssetTagsList =
   CreateWebsiteQuestionnaireRequestMetadataList as any as S.Schema<VulnerableAssetScannerAssetTagsList>;
 
 /** IPV4s of the scanned asset. */
 export type VulnerableAssetScannerIpv4sList = Array<string>;
-export const VulnerableAssetScannerIpv4sList =
+const VulnerableAssetScannerIpv4sList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerIpv4sList>;
 
 /** IPV6s of the scanned asset. */
 export type VulnerableAssetScannerIpv6sList = Array<string>;
-export const VulnerableAssetScannerIpv6sList =
+const VulnerableAssetScannerIpv6sList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerIpv6sList>;
 
 /** Mac addresses of the scanned asset. */
 export type VulnerableAssetScannerMacAddressesList = Array<string>;
-export const VulnerableAssetScannerMacAddressesList =
+const VulnerableAssetScannerMacAddressesList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerMacAddressesList>;
 
 /** Host names of the scanned asset. */
 export type VulnerableAssetScannerHostnamesList = Array<string>;
-export const VulnerableAssetScannerHostnamesList =
+const VulnerableAssetScannerHostnamesList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerHostnamesList>;
 
 /** fqdns of the scanned asset. */
 export type VulnerableAssetScannerFqdnsList = Array<string>;
-export const VulnerableAssetScannerFqdnsList =
+const VulnerableAssetScannerFqdnsList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerFqdnsList>;
 
 /** Operating systems of the scanned asset. */
 export type VulnerableAssetScannerOperatingSystemsList = Array<string>;
-export const VulnerableAssetScannerOperatingSystemsList =
+const VulnerableAssetScannerOperatingSystemsList =
   ControlDomainsList as any as S.Schema<VulnerableAssetScannerOperatingSystemsList>;
 
 export interface VulnerableAssetScanner {
@@ -8297,7 +7767,7 @@ export interface VulnerableAssetScanner {
   /** The asset's identifier code. */
   targetId: string | null;
 }
-export const VulnerableAssetScanner = /*@__PURE__*/ S.suspend(() =>
+const VulnerableAssetScanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     integrationId: S.String,
@@ -8319,7 +7789,7 @@ export const VulnerableAssetScanner = /*@__PURE__*/ S.suspend(() =>
 
 /** The integrations that are scanning this vulnerable asset. */
 export type VulnerableAssetScannersList = Array<VulnerableAssetScanner>;
-export const VulnerableAssetScannersList = /*@__PURE__*/ S.Array(
+const VulnerableAssetScannersList = /*@__PURE__*/ S.Array(
   VulnerableAssetScanner,
 ) as any as S.Schema<VulnerableAssetScannersList>;
 
@@ -8337,7 +7807,7 @@ export interface VulnerableAsset {
   /** The integrations that are scanning this vulnerable asset. */
   scanners: VulnerableAssetScannersList;
 }
-export const VulnerableAsset = /*@__PURE__*/ S.suspend(() =>
+const VulnerableAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -8350,114 +7820,89 @@ export const VulnerableAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** IdP-group resource IDs to import. */
 export type ImportIdpGroupsRequestIdpGroupIdsList = Array<string>;
-export const ImportIdpGroupsRequestIdpGroupIdsList =
+const ImportIdpGroupsRequestIdpGroupIdsList =
   ControlDomainsList as any as S.Schema<ImportIdpGroupsRequestIdpGroupIdsList>;
 
 export interface ImportIdpGroupsRequest {
   /** IdP-group resource IDs to import. */
   idpGroupIds: ImportIdpGroupsRequestIdpGroupIdsList;
 }
-export const ImportIdpGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportIdpGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idpGroupIds: ImportIdpGroupsRequestIdpGroupIdsList,
   }).pipe(T.Http({ method: "POST", uri: "/groups/import-from-idp", code: 200 })),
 ).annotate({ identifier: "ImportIdpGroupsRequest" }) as any as S.Schema<ImportIdpGroupsRequest>;
 
 export type ImportIdpGroupSuccessStatus = "SUCCESS";
-export const ImportIdpGroupSuccessStatus = S.String;
-
 export interface ImportIdpGroupSuccess {
   idpGroupId: string;
   status: ImportIdpGroupSuccessStatus;
   groupId: string;
 }
-export const ImportIdpGroupSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idpGroupId: S.String,
-    status: ImportIdpGroupSuccessStatus,
-    groupId: S.String,
-  }),
-).annotate({ identifier: "ImportIdpGroupSuccess" }) as any as S.Schema<ImportIdpGroupSuccess>;
-
 export type ImportIdpGroupErrorStatus = "ERROR";
-export const ImportIdpGroupErrorStatus = S.String;
-
 export type ImportIdpGroupFailureReason = "NOT_FOUND" | "IMPORT_FAILED";
-export const ImportIdpGroupFailureReason = S.String;
-
 export interface ImportIdpGroupError {
   idpGroupId: string;
   status: ImportIdpGroupErrorStatus;
   reason: ImportIdpGroupFailureReason;
   message: string;
 }
-export const ImportIdpGroupError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idpGroupId: S.String,
-    status: ImportIdpGroupErrorStatus,
-    reason: ImportIdpGroupFailureReason,
-    message: S.String,
-  }),
-).annotate({ identifier: "ImportIdpGroupError" }) as any as S.Schema<ImportIdpGroupError>;
-
 export type ImportIdpGroupResult = ImportIdpGroupSuccess | ImportIdpGroupError;
-export const ImportIdpGroupResult = S.Unknown as any as S.Schema<ImportIdpGroupResult>;
+const ImportIdpGroupResult = S.Unknown as any as S.Schema<ImportIdpGroupResult>;
 
 export type ImportIdpGroupsResponseResultsList = Array<ImportIdpGroupResult>;
-export const ImportIdpGroupsResponseResultsList = /*@__PURE__*/ S.Array(
+const ImportIdpGroupsResponseResultsList = /*@__PURE__*/ S.Array(
   ImportIdpGroupResult,
 ) as any as S.Schema<ImportIdpGroupsResponseResultsList>;
 
 export interface ImportIdpGroupsResponse {
   results: ImportIdpGroupsResponseResultsList;
 }
-export const ImportIdpGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportIdpGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ImportIdpGroupsResponseResultsList,
   }),
 ).annotate({ identifier: "ImportIdpGroupsResponse" }) as any as S.Schema<ImportIdpGroupsResponse>;
 
 export type ListRequestReadableIssueIdMatchesAnyList = Array<string>;
-export const ListRequestReadableIssueIdMatchesAnyList =
+const ListRequestReadableIssueIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRequestReadableIssueIdMatchesAnyList>;
 
 export type ListRequestStatusMatchesAnyList = Array<IssueStatus | (string & {})>;
-export const ListRequestStatusMatchesAnyList =
+const ListRequestStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestStatusMatchesAnyList>;
 
 export type ListRequestSeverityMatchesAnyList = Array<IssueSeverity | (string & {})>;
-export const ListRequestSeverityMatchesAnyList =
+const ListRequestSeverityMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestSeverityMatchesAnyList>;
 
 export type ListRequestSourceMatchesAnyList = Array<SourceType | (string & {})>;
-export const ListRequestSourceMatchesAnyList =
+const ListRequestSourceMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestSourceMatchesAnyList>;
 
 export type ListRequestTypeMatchesAnyList = Array<StandardIssueType | (string & {})>;
-export const ListRequestTypeMatchesAnyList =
+const ListRequestTypeMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestTypeMatchesAnyList>;
 
 export type ListRequestOwnerIdMatchesAnyList = Array<string>;
-export const ListRequestOwnerIdMatchesAnyList =
+const ListRequestOwnerIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRequestOwnerIdMatchesAnyList>;
 
 export type IssueTemplate = "STANDARD_ISSUE" | "STANDARD_POAM";
-export const IssueTemplate = S.String;
-
 export type ListRequestTemplateMatchesAnyList = Array<IssueTemplate | (string & {})>;
-export const ListRequestTemplateMatchesAnyList =
+const ListRequestTemplateMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestTemplateMatchesAnyList>;
 
 export type ListRequestCloseReasonMatchesAnyList = Array<ClosedReason | (string & {})>;
-export const ListRequestCloseReasonMatchesAnyList =
+const ListRequestCloseReasonMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRequestCloseReasonMatchesAnyList>;
 
 export type ListRequestAuditIdMatchesAnyList = Array<string>;
-export const ListRequestAuditIdMatchesAnyList =
+const ListRequestAuditIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRequestAuditIdMatchesAnyList>;
 
 export type ListRequestControlIdMatchesAnyList = Array<string>;
-export const ListRequestControlIdMatchesAnyList =
+const ListRequestControlIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRequestControlIdMatchesAnyList>;
 
 export type IssueSortField =
@@ -8467,11 +7912,11 @@ export type IssueSortField =
   | "lastModifiedDate"
   | "status"
   | "severity";
-export const IssueSortField = S.String;
+const IssueSortField = S.String;
 
 /** `"asc"` for ascending, `"desc"` for descending. */
 export type OrderDirection = "asc" | "desc";
-export const OrderDirection = S.String;
+const OrderDirection = S.String;
 
 export interface ListRequest {
   pageSize?: number;
@@ -8523,7 +7968,7 @@ export interface ListRequest {
   /** Direction to sort the results in. One of `asc` or `desc`. Defaults to `asc`. */
   orderDirection?: OrderDirection | (string & {});
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -8554,7 +7999,7 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export type PaginatedResponseIssueResultsDataList = Array<Issue>;
-export const PaginatedResponseIssueResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseIssueResultsDataList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<PaginatedResponseIssueResultsDataList>;
 
@@ -8562,7 +8007,7 @@ export interface PaginatedResponseIssueResults {
   data: PaginatedResponseIssueResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseIssueResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIssueResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseIssueResultsDataList,
     pageInfo: PageInfo,
@@ -8574,7 +8019,7 @@ export const PaginatedResponseIssueResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseIssue {
   results: PaginatedResponseIssueResults;
 }
-export const PaginatedResponseIssue = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseIssueResults,
   }),
@@ -8596,7 +8041,7 @@ export interface ListAnswerLibraryEntriesRequest {
   /** Only include entries expiring at or after this ISO 8601 timestamp. */
   expiresAfter?: string;
 }
-export const ListAnswerLibraryEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnswerLibraryEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -8613,29 +8058,27 @@ export const ListAnswerLibraryEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList =
   Array<KnowledgeBaseAnswerLibraryEntryOutput>;
-export const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList =
-  /*@__PURE__*/ S.Array(
-    KnowledgeBaseAnswerLibraryEntryOutput,
-  ) as any as S.Schema<PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList>;
+const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList = /*@__PURE__*/ S.Array(
+  KnowledgeBaseAnswerLibraryEntryOutput,
+) as any as S.Schema<PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList>;
 
 export interface PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults {
   data: PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList,
-      pageInfo: PageInfo,
-    }),
-  ).annotate({
-    identifier: "PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults",
-  }) as any as S.Schema<PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults>;
+const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResultsDataList,
+    pageInfo: PageInfo,
+  }),
+).annotate({
+  identifier: "PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults",
+}) as any as S.Schema<PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults>;
 
 export interface PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutput {
   results: PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults;
 }
-export const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutputResults,
   }),
@@ -8644,7 +8087,7 @@ export const PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutput = /*@__PURE_
 }) as any as S.Schema<PaginatedResponseKnowledgeBaseAnswerLibraryEntryOutput>;
 
 export type QuestionnaireAssignableUserRole = "owner" | "approver";
-export const QuestionnaireAssignableUserRole = S.String;
+const QuestionnaireAssignableUserRole = S.String;
 
 export interface ListAssignableUsersRequest {
   /** Filter by role: "owner" or "approver". */
@@ -8652,7 +8095,7 @@ export interface ListAssignableUsersRequest {
   /** Optional search string to filter users by name or email. */
   q?: string;
 }
-export const ListAssignableUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssignableUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(QuestionnaireAssignableUserRole.pipe(T.Query())),
     q: S.optional(S.String.pipe(T.Query())),
@@ -8664,17 +8107,15 @@ export const ListAssignableUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssignableUsersRequest>;
 
 export type QuestionnaireAssignableUser = UserDefinedTagCategory;
-export const QuestionnaireAssignableUser = UserDefinedTagCategory;
-
 export type QuestionnaireAssignableUsersResponseResultsDataList = Array<UserDefinedTagCategory>;
-export const QuestionnaireAssignableUsersResponseResultsDataList = /*@__PURE__*/ S.Array(
+const QuestionnaireAssignableUsersResponseResultsDataList = /*@__PURE__*/ S.Array(
   UserDefinedTagCategory,
 ) as any as S.Schema<QuestionnaireAssignableUsersResponseResultsDataList>;
 
 export interface QuestionnaireAssignableUsersResponseResults {
   data: QuestionnaireAssignableUsersResponseResultsDataList;
 }
-export const QuestionnaireAssignableUsersResponseResults = /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireAssignableUsersResponseResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: QuestionnaireAssignableUsersResponseResultsDataList,
   }),
@@ -8685,7 +8126,7 @@ export const QuestionnaireAssignableUsersResponseResults = /*@__PURE__*/ S.suspe
 export interface QuestionnaireAssignableUsersResponse {
   results: QuestionnaireAssignableUsersResponseResults;
 }
-export const QuestionnaireAssignableUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const QuestionnaireAssignableUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: QuestionnaireAssignableUsersResponseResults,
   }),
@@ -8697,7 +8138,7 @@ export interface ListBusinessUnitsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListBusinessUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -8705,14 +8146,14 @@ export const ListBusinessUnitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBusinessUnitsRequest" }) as any as S.Schema<ListBusinessUnitsRequest>;
 
 export type PaginatedResponseBusinessUnitResultsDataList = Array<BusinessUnit>;
-export const PaginatedResponseBusinessUnitResultsDataList =
+const PaginatedResponseBusinessUnitResultsDataList =
   QuestionnaireAssignableUsersResponseResultsDataList as any as S.Schema<PaginatedResponseBusinessUnitResultsDataList>;
 
 export interface PaginatedResponseBusinessUnitResults {
   data: PaginatedResponseBusinessUnitResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseBusinessUnitResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseBusinessUnitResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseBusinessUnitResultsDataList,
     pageInfo: PageInfo,
@@ -8724,7 +8165,7 @@ export const PaginatedResponseBusinessUnitResults = /*@__PURE__*/ S.suspend(() =
 export interface PaginatedResponseBusinessUnit {
   results: PaginatedResponseBusinessUnitResults;
 }
-export const PaginatedResponseBusinessUnit = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseBusinessUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseBusinessUnitResults,
   }),
@@ -8739,7 +8180,7 @@ export interface ListChatbotConversationsRequest {
   /** Search conversations by message content. */
   searchString?: string;
 }
-export const ListChatbotConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChatbotConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8766,7 +8207,7 @@ export interface TrustCenterChatbotConversation {
   /** Date and time the conversation was created. */
   createdAt: string;
 }
-export const TrustCenterChatbotConversation = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterChatbotConversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     firstMessage: S.String,
@@ -8781,7 +8222,7 @@ export const TrustCenterChatbotConversation = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseTrustCenterChatbotConversationResultsDataList =
   Array<TrustCenterChatbotConversation>;
-export const PaginatedResponseTrustCenterChatbotConversationResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterChatbotConversationResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterChatbotConversation,
 ) as any as S.Schema<PaginatedResponseTrustCenterChatbotConversationResultsDataList>;
 
@@ -8789,7 +8230,7 @@ export interface PaginatedResponseTrustCenterChatbotConversationResults {
   data: PaginatedResponseTrustCenterChatbotConversationResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterChatbotConversationResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterChatbotConversationResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterChatbotConversationResultsDataList,
     pageInfo: PageInfo,
@@ -8801,7 +8242,7 @@ export const PaginatedResponseTrustCenterChatbotConversationResults = /*@__PURE_
 export interface PaginatedResponseTrustCenterChatbotConversation {
   results: PaginatedResponseTrustCenterChatbotConversationResults;
 }
-export const PaginatedResponseTrustCenterChatbotConversation = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterChatbotConversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterChatbotConversationResults,
   }),
@@ -8812,7 +8253,7 @@ export const PaginatedResponseTrustCenterChatbotConversation = /*@__PURE__*/ S.s
 export interface ListComplianceFrameworksRequest {
   slugId: string;
 }
-export const ListComplianceFrameworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListComplianceFrameworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8824,7 +8265,7 @@ export const ListComplianceFrameworksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type TrustCenterComplianceFrameworkListResponseResultsList =
   Array<TrustCenterComplianceFramework>;
-export const TrustCenterComplianceFrameworkListResponseResultsList = /*@__PURE__*/ S.Array(
+const TrustCenterComplianceFrameworkListResponseResultsList = /*@__PURE__*/ S.Array(
   TrustCenterComplianceFramework,
 ) as any as S.Schema<TrustCenterComplianceFrameworkListResponseResultsList>;
 
@@ -8833,7 +8274,7 @@ export interface TrustCenterComplianceFrameworkListResponse {
   /** Whether the compliance section is visible on the external Trust Center. */
   isSectionVisible: boolean;
 }
-export const TrustCenterComplianceFrameworkListResponse = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterComplianceFrameworkListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: TrustCenterComplianceFrameworkListResponseResultsList,
     isSectionVisible: S.Boolean,
@@ -8846,7 +8287,7 @@ export interface ListConnectedIntegrationsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListConnectedIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectedIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -8856,7 +8297,7 @@ export const ListConnectedIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConnectedIntegrationsRequest>;
 
 export type PaginatedResponseIntegrationResultsDataList = Array<Integration>;
-export const PaginatedResponseIntegrationResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseIntegrationResultsDataList = /*@__PURE__*/ S.Array(
   Integration,
 ) as any as S.Schema<PaginatedResponseIntegrationResultsDataList>;
 
@@ -8864,7 +8305,7 @@ export interface PaginatedResponseIntegrationResults {
   data: PaginatedResponseIntegrationResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseIntegrationResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIntegrationResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseIntegrationResultsDataList,
     pageInfo: PageInfo,
@@ -8876,7 +8317,7 @@ export const PaginatedResponseIntegrationResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseIntegration {
   results: PaginatedResponseIntegrationResults;
 }
-export const PaginatedResponseIntegration = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseIntegrationResults,
   }),
@@ -8888,7 +8329,7 @@ export interface ListContractsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListContractsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContractsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -8896,7 +8337,7 @@ export const ListContractsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListContractsRequest" }) as any as S.Schema<ListContractsRequest>;
 
 export type PaginatedResponseContractResultsDataList = Array<Contract>;
-export const PaginatedResponseContractResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseContractResultsDataList = /*@__PURE__*/ S.Array(
   Contract,
 ) as any as S.Schema<PaginatedResponseContractResultsDataList>;
 
@@ -8904,7 +8345,7 @@ export interface PaginatedResponseContractResults {
   data: PaginatedResponseContractResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseContractResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseContractResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseContractResultsDataList,
     pageInfo: PageInfo,
@@ -8916,7 +8357,7 @@ export const PaginatedResponseContractResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseContract {
   results: PaginatedResponseContractResults;
 }
-export const PaginatedResponseContract = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseContractResults,
   }),
@@ -8925,7 +8366,7 @@ export const PaginatedResponseContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseContract>;
 
 export type ListControlsRequestFrameworkMatchesAnyList = Array<string>;
-export const ListControlsRequestFrameworkMatchesAnyList =
+const ListControlsRequestFrameworkMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListControlsRequestFrameworkMatchesAnyList>;
 
 export interface ListControlsRequest {
@@ -8934,7 +8375,7 @@ export interface ListControlsRequest {
   /** Includes all controls belonging to one of the provided framework values in frameworkMatchesAny. */
   frameworkMatchesAny?: ListControlsRequestFrameworkMatchesAnyList;
 }
-export const ListControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -8943,7 +8384,7 @@ export const ListControlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListControlsRequest" }) as any as S.Schema<ListControlsRequest>;
 
 export type PaginatedResponseControlResultsDataList = Array<Control>;
-export const PaginatedResponseControlResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseControlResultsDataList = /*@__PURE__*/ S.Array(
   Control,
 ) as any as S.Schema<PaginatedResponseControlResultsDataList>;
 
@@ -8951,7 +8392,7 @@ export interface PaginatedResponseControlResults {
   data: PaginatedResponseControlResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseControlResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseControlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseControlResultsDataList,
     pageInfo: PageInfo,
@@ -8963,7 +8404,7 @@ export const PaginatedResponseControlResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseControl {
   results: PaginatedResponseControlResults;
 }
-export const PaginatedResponseControl = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseControlResults,
   }),
@@ -8974,7 +8415,7 @@ export interface ListControlsForDocumentRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListControlsForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListControlsForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8989,7 +8430,7 @@ export interface ListControlsForFrameworkRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListControlsForFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListControlsForFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9006,7 +8447,7 @@ export interface ListCustomerTrustAccountsRequest {
   isAutoApprovalEnabled?: boolean;
   customFieldsFilter?: string;
 }
-export const ListCustomerTrustAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerTrustAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9020,7 +8461,7 @@ export const ListCustomerTrustAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseCustomerTrustAccountVantaApiResultsDataList =
   Array<CustomerTrustAccountVantaApi>;
-export const PaginatedResponseCustomerTrustAccountVantaApiResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseCustomerTrustAccountVantaApiResultsDataList = /*@__PURE__*/ S.Array(
   CustomerTrustAccountVantaApi,
 ) as any as S.Schema<PaginatedResponseCustomerTrustAccountVantaApiResultsDataList>;
 
@@ -9028,7 +8469,7 @@ export interface PaginatedResponseCustomerTrustAccountVantaApiResults {
   data: PaginatedResponseCustomerTrustAccountVantaApiResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseCustomerTrustAccountVantaApiResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCustomerTrustAccountVantaApiResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseCustomerTrustAccountVantaApiResultsDataList,
     pageInfo: PageInfo,
@@ -9040,7 +8481,7 @@ export const PaginatedResponseCustomerTrustAccountVantaApiResults = /*@__PURE__*
 export interface PaginatedResponseCustomerTrustAccountVantaApi {
   results: PaginatedResponseCustomerTrustAccountVantaApiResults;
 }
-export const PaginatedResponseCustomerTrustAccountVantaApi = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCustomerTrustAccountVantaApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseCustomerTrustAccountVantaApiResults,
   }),
@@ -9052,7 +8493,7 @@ export interface ListDeactivatedControlsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListDeactivatedControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeactivatedControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9063,17 +8504,17 @@ export const ListDeactivatedControlsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The security domains that the control belongs to. */
 export type DeactivatedControlDomainsList = Array<string>;
-export const DeactivatedControlDomainsList =
+const DeactivatedControlDomainsList =
   ControlDomainsList as any as S.Schema<DeactivatedControlDomainsList>;
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type DeactivatedControlCustomFieldsList = Array<CustomField>;
-export const DeactivatedControlCustomFieldsList =
+const DeactivatedControlCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<DeactivatedControlCustomFieldsList>;
 
 /** The shorthands of the framework's sections that the control maps to. */
 export type DeactivatedControlFrameworkSectionsList = Array<string>;
-export const DeactivatedControlFrameworkSectionsList =
+const DeactivatedControlFrameworkSectionsList =
   ControlDomainsList as any as S.Schema<DeactivatedControlFrameworkSectionsList>;
 
 export interface DeactivatedControlFramework {
@@ -9086,7 +8527,7 @@ export interface DeactivatedControlFramework {
   /** The shorthands of the framework's sections that the control maps to. */
   sections: DeactivatedControlFrameworkSectionsList;
 }
-export const DeactivatedControlFramework = /*@__PURE__*/ S.suspend(() =>
+const DeactivatedControlFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -9099,7 +8540,7 @@ export const DeactivatedControlFramework = /*@__PURE__*/ S.suspend(() =>
 
 /** The frameworks that the control is mapped to. Empty when the control maps to no framework the organization has enabled. */
 export type DeactivatedControlFrameworksList = Array<DeactivatedControlFramework>;
-export const DeactivatedControlFrameworksList = /*@__PURE__*/ S.Array(
+const DeactivatedControlFrameworksList = /*@__PURE__*/ S.Array(
   DeactivatedControlFramework,
 ) as any as S.Schema<DeactivatedControlFrameworksList>;
 
@@ -9133,7 +8574,7 @@ export interface DeactivatedControl {
   /** The reason given when the control was deactivated. Null when no reason was recorded, including for deactivations that predate the field. */
   deactivationReason: string | null;
 }
-export const DeactivatedControl = /*@__PURE__*/ S.suspend(() =>
+const DeactivatedControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.NullOr(S.String),
@@ -9153,7 +8594,7 @@ export const DeactivatedControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeactivatedControl" }) as any as S.Schema<DeactivatedControl>;
 
 export type PaginatedResponseDeactivatedControlResultsDataList = Array<DeactivatedControl>;
-export const PaginatedResponseDeactivatedControlResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseDeactivatedControlResultsDataList = /*@__PURE__*/ S.Array(
   DeactivatedControl,
 ) as any as S.Schema<PaginatedResponseDeactivatedControlResultsDataList>;
 
@@ -9161,7 +8602,7 @@ export interface PaginatedResponseDeactivatedControlResults {
   data: PaginatedResponseDeactivatedControlResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseDeactivatedControlResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDeactivatedControlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseDeactivatedControlResultsDataList,
     pageInfo: PageInfo,
@@ -9173,7 +8614,7 @@ export const PaginatedResponseDeactivatedControlResults = /*@__PURE__*/ S.suspen
 export interface PaginatedResponseDeactivatedControl {
   results: PaginatedResponseDeactivatedControlResults;
 }
-export const PaginatedResponseDeactivatedControl = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDeactivatedControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseDeactivatedControlResults,
   }),
@@ -9186,7 +8627,7 @@ export interface ListDiscoveredVendorAccountsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListDiscoveredVendorAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscoveredVendorAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveredVendorId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9199,8 +8640,6 @@ export const ListDiscoveredVendorAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDiscoveredVendorAccountsRequest>;
 
 export type DiscoveredVendorAccountTypeUSER = "USER";
-export const DiscoveredVendorAccountTypeUSER = S.String;
-
 export interface DiscoveredVendorUser {
   /** The associated user's unique ID. */
   id: string;
@@ -9211,18 +8650,7 @@ export interface DiscoveredVendorUser {
   /** The account type. */
   type: DiscoveredVendorAccountTypeUSER;
 }
-export const DiscoveredVendorUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.String,
-    displayName: S.String,
-    type: DiscoveredVendorAccountTypeUSER,
-  }),
-).annotate({ identifier: "DiscoveredVendorUser" }) as any as S.Schema<DiscoveredVendorUser>;
-
 export type DiscoveredVendorAccountTypeCOMPUTER = "COMPUTER";
-export const DiscoveredVendorAccountTypeCOMPUTER = S.String;
-
 export interface DiscoveredVendorComputer {
   /** The associated computer's unique ID. */
   id: string;
@@ -9233,21 +8661,12 @@ export interface DiscoveredVendorComputer {
   /** The account type. */
   type: DiscoveredVendorAccountTypeCOMPUTER;
 }
-export const DiscoveredVendorComputer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    displayName: S.optional(S.String),
-    owner: S.NullOr(DiscoveredVendorUser),
-    type: DiscoveredVendorAccountTypeCOMPUTER,
-  }),
-).annotate({ identifier: "DiscoveredVendorComputer" }) as any as S.Schema<DiscoveredVendorComputer>;
-
 export type DiscoveredVendorAccount = DiscoveredVendorUser | DiscoveredVendorComputer;
-export const DiscoveredVendorAccount = S.Unknown as any as S.Schema<DiscoveredVendorAccount>;
+const DiscoveredVendorAccount = S.Unknown as any as S.Schema<DiscoveredVendorAccount>;
 
 export type PaginatedResponseDiscoveredVendorAccountResultsDataList =
   Array<DiscoveredVendorAccount>;
-export const PaginatedResponseDiscoveredVendorAccountResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseDiscoveredVendorAccountResultsDataList = /*@__PURE__*/ S.Array(
   DiscoveredVendorAccount,
 ) as any as S.Schema<PaginatedResponseDiscoveredVendorAccountResultsDataList>;
 
@@ -9255,7 +8674,7 @@ export interface PaginatedResponseDiscoveredVendorAccountResults {
   data: PaginatedResponseDiscoveredVendorAccountResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseDiscoveredVendorAccountResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDiscoveredVendorAccountResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseDiscoveredVendorAccountResultsDataList,
     pageInfo: PageInfo,
@@ -9267,7 +8686,7 @@ export const PaginatedResponseDiscoveredVendorAccountResults = /*@__PURE__*/ S.s
 export interface PaginatedResponseDiscoveredVendorAccount {
   results: PaginatedResponseDiscoveredVendorAccountResults;
 }
-export const PaginatedResponseDiscoveredVendorAccount = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDiscoveredVendorAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseDiscoveredVendorAccountResults,
   }),
@@ -9277,7 +8696,7 @@ export const PaginatedResponseDiscoveredVendorAccount = /*@__PURE__*/ S.suspend(
 
 /** The scope of a discovered vendor. NEEDS_REVIEW: The vendor needs review IGNORED: The vendor was ignored REJECTED: The vendor was rejected */
 export type DiscoveredVendorScope = "NEEDS_REVIEW" | "IGNORED" | "REJECTED";
-export const DiscoveredVendorScope = S.String;
+const DiscoveredVendorScope = S.String;
 
 export interface ListDiscoveredVendorsRequest {
   /** Defaults to "NEEDS_REVIEW" if not provided */
@@ -9285,7 +8704,7 @@ export interface ListDiscoveredVendorsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListDiscoveredVendorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscoveredVendorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(DiscoveredVendorScope.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9297,11 +8716,9 @@ export const ListDiscoveredVendorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The discovered vendor's category. */
 export type DiscoveredVendorCategory = Training;
-export const DiscoveredVendorCategory = Training;
-
 /** The source of the discovered vendor. OKTA: The vendor was discovered via an Okta integration JAMF: The vendor was discovered via a JAMF integration GSUITE: The vendor was discovered via an GSuite integration VENDR: The vendor was discovered via a Vendr integration OFFICE: The vendor was discovered via a microsoft office integration */
 export type DiscoveredVendorSource = "OKTA" | "JAMF" | "GSUITE" | "VENDR" | "OFFICE";
-export const DiscoveredVendorSource = S.String;
+const DiscoveredVendorSource = S.String;
 
 /** Determines whether or not the vendor is ignored. */
 export interface DiscoveredVendorIgnored {
@@ -9312,7 +8729,7 @@ export interface DiscoveredVendorIgnored {
   /** The user ID who ignored the discovered vendor. */
   ignoredByUserId: string | null;
 }
-export const DiscoveredVendorIgnored = /*@__PURE__*/ S.suspend(() =>
+const DiscoveredVendorIgnored = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoredAtDate: S.NullOr(S.String),
     ignoredReason: S.NullOr(S.String),
@@ -9329,7 +8746,7 @@ export interface DiscoveredVendorRejected {
   /** The date the discovered vendor was marked as rejected. */
   rejectedAtDate: string | null;
 }
-export const DiscoveredVendorRejected = /*@__PURE__*/ S.suspend(() =>
+const DiscoveredVendorRejected = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rejectedByUserId: S.NullOr(S.String),
     rejectedReason: S.NullOr(S.String),
@@ -9357,7 +8774,7 @@ export interface DiscoveredVendor {
   /** Determines whether or not the vendor is rejected. */
   rejected: DiscoveredVendorRejected | null;
 }
-export const DiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
+const DiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -9372,7 +8789,7 @@ export const DiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiscoveredVendor" }) as any as S.Schema<DiscoveredVendor>;
 
 export type PaginatedResponseDiscoveredVendorResultsDataList = Array<DiscoveredVendor>;
-export const PaginatedResponseDiscoveredVendorResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseDiscoveredVendorResultsDataList = /*@__PURE__*/ S.Array(
   DiscoveredVendor,
 ) as any as S.Schema<PaginatedResponseDiscoveredVendorResultsDataList>;
 
@@ -9380,7 +8797,7 @@ export interface PaginatedResponseDiscoveredVendorResults {
   data: PaginatedResponseDiscoveredVendorResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseDiscoveredVendorResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDiscoveredVendorResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseDiscoveredVendorResultsDataList,
     pageInfo: PageInfo,
@@ -9392,7 +8809,7 @@ export const PaginatedResponseDiscoveredVendorResults = /*@__PURE__*/ S.suspend(
 export interface PaginatedResponseDiscoveredVendor {
   results: PaginatedResponseDiscoveredVendorResults;
 }
-export const PaginatedResponseDiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseDiscoveredVendorResults,
   }),
@@ -9401,11 +8818,11 @@ export const PaginatedResponseDiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseDiscoveredVendor>;
 
 export type ListDocumentsRequestFrameworkMatchesAnyList = Array<string>;
-export const ListDocumentsRequestFrameworkMatchesAnyList =
+const ListDocumentsRequestFrameworkMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListDocumentsRequestFrameworkMatchesAnyList>;
 
 export type ListDocumentsRequestStatusMatchesAnyList = Array<DocumentStatus | (string & {})>;
-export const ListDocumentsRequestStatusMatchesAnyList =
+const ListDocumentsRequestStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListDocumentsRequestStatusMatchesAnyList>;
 
 export interface ListDocumentsRequest {
@@ -9416,7 +8833,7 @@ export interface ListDocumentsRequest {
   /** Includes all documents that match one of the provided status values in statusMatchesAny. */
   statusMatchesAny?: ListDocumentsRequestStatusMatchesAnyList;
 }
-export const ListDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9426,7 +8843,7 @@ export const ListDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDocumentsRequest" }) as any as S.Schema<ListDocumentsRequest>;
 
 export type PaginatedResponseDocumentResultsDataList = Array<Document>;
-export const PaginatedResponseDocumentResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseDocumentResultsDataList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<PaginatedResponseDocumentResultsDataList>;
 
@@ -9434,7 +8851,7 @@ export interface PaginatedResponseDocumentResults {
   data: PaginatedResponseDocumentResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseDocumentResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDocumentResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseDocumentResultsDataList,
     pageInfo: PageInfo,
@@ -9446,7 +8863,7 @@ export const PaginatedResponseDocumentResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseDocument {
   results: PaginatedResponseDocumentResults;
 }
-export const PaginatedResponseDocument = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseDocumentResults,
   }),
@@ -9459,7 +8876,7 @@ export interface ListDocumentsForControlRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListDocumentsForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9475,7 +8892,7 @@ export interface ListEventLogsRequest {
   /** Filter to event logs created at or after this ISO 8601 timestamp. */
   startDate?: string;
 }
-export const ListEventLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9490,7 +8907,7 @@ export interface EventLogActor {
   /** The actor's unique ID. */
   id: string;
 }
-export const EventLogActor = /*@__PURE__*/ S.suspend(() =>
+const EventLogActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     id: S.String,
@@ -9503,11 +8920,11 @@ export interface EventLogTargetsItem {
   /** The target's unique ID. */
   id: string;
 }
-export const EventLogTargetsItem = EventLogActor as any as S.Schema<EventLogTargetsItem>;
+const EventLogTargetsItem = EventLogActor as any as S.Schema<EventLogTargetsItem>;
 
 /** The list of targets of the event. */
 export type EventLogTargetsList = Array<EventLogTargetsItem>;
-export const EventLogTargetsList = /*@__PURE__*/ S.Array(
+const EventLogTargetsList = /*@__PURE__*/ S.Array(
   EventLogTargetsItem,
 ) as any as S.Schema<EventLogTargetsList>;
 
@@ -9523,7 +8940,7 @@ export interface EventLog {
   /** The list of targets of the event. */
   targets: EventLogTargetsList;
 }
-export const EventLog = /*@__PURE__*/ S.suspend(() =>
+const EventLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     actor: EventLogActor,
@@ -9534,7 +8951,7 @@ export const EventLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventLog" }) as any as S.Schema<EventLog>;
 
 export type PaginatedResponseEventLogResultsDataList = Array<EventLog>;
-export const PaginatedResponseEventLogResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseEventLogResultsDataList = /*@__PURE__*/ S.Array(
   EventLog,
 ) as any as S.Schema<PaginatedResponseEventLogResultsDataList>;
 
@@ -9542,7 +8959,7 @@ export interface PaginatedResponseEventLogResults {
   data: PaginatedResponseEventLogResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseEventLogResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseEventLogResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseEventLogResultsDataList,
     pageInfo: PageInfo,
@@ -9554,7 +8971,7 @@ export const PaginatedResponseEventLogResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseEventLog {
   results: PaginatedResponseEventLogResults;
 }
-export const PaginatedResponseEventLog = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseEventLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseEventLogResults,
   }),
@@ -9567,7 +8984,7 @@ export interface ListFilesForDocumentRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListFilesForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9579,8 +8996,6 @@ export const ListFilesForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor who uploaded this document. It could be a user or an app. */
 export type UploadedFileTUploadedBy = VendorDocumentUploadedBy;
-export const UploadedFileTUploadedBy = VendorDocumentUploadedBy;
-
 export interface UploadedFileT {
   /** Unique identifier for the document. */
   id: string;
@@ -9605,7 +9020,7 @@ export interface UploadedFileT {
   /** The document's URL. */
   url: string;
 }
-export const UploadedFileT = /*@__PURE__*/ S.suspend(() =>
+const UploadedFileT = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     fileName: S.NullOr(S.String),
@@ -9622,7 +9037,7 @@ export const UploadedFileT = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadedFileT" }) as any as S.Schema<UploadedFileT>;
 
 export type PaginatedResponseUploadedFileTResultsDataList = Array<UploadedFileT>;
-export const PaginatedResponseUploadedFileTResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseUploadedFileTResultsDataList = /*@__PURE__*/ S.Array(
   UploadedFileT,
 ) as any as S.Schema<PaginatedResponseUploadedFileTResultsDataList>;
 
@@ -9630,7 +9045,7 @@ export interface PaginatedResponseUploadedFileTResults {
   data: PaginatedResponseUploadedFileTResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseUploadedFileTResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseUploadedFileTResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseUploadedFileTResultsDataList,
     pageInfo: PageInfo,
@@ -9642,7 +9057,7 @@ export const PaginatedResponseUploadedFileTResults = /*@__PURE__*/ S.suspend(() 
 export interface PaginatedResponseUploadedFileT {
   results: PaginatedResponseUploadedFileTResults;
 }
-export const PaginatedResponseUploadedFileT = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseUploadedFileT = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseUploadedFileTResults,
   }),
@@ -9654,7 +9069,7 @@ export interface ListFrameworksRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListFrameworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFrameworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9683,7 +9098,7 @@ export interface Framework {
   /** The total number of tests in the framework. */
   numTestsTotal: number;
 }
-export const Framework = /*@__PURE__*/ S.suspend(() =>
+const Framework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -9699,7 +9114,7 @@ export const Framework = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Framework" }) as any as S.Schema<Framework>;
 
 export type PaginatedResponseFrameworkResultsDataList = Array<Framework>;
-export const PaginatedResponseFrameworkResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseFrameworkResultsDataList = /*@__PURE__*/ S.Array(
   Framework,
 ) as any as S.Schema<PaginatedResponseFrameworkResultsDataList>;
 
@@ -9707,7 +9122,7 @@ export interface PaginatedResponseFrameworkResults {
   data: PaginatedResponseFrameworkResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseFrameworkResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseFrameworkResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseFrameworkResultsDataList,
     pageInfo: PageInfo,
@@ -9719,7 +9134,7 @@ export const PaginatedResponseFrameworkResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseFramework {
   results: PaginatedResponseFrameworkResults;
 }
-export const PaginatedResponseFramework = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseFrameworkResults,
   }),
@@ -9728,7 +9143,7 @@ export const PaginatedResponseFramework = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseFramework>;
 
 export type ListImportableIdpGroupsRequestIntegrationIdList = Array<string>;
-export const ListImportableIdpGroupsRequestIntegrationIdList =
+const ListImportableIdpGroupsRequestIntegrationIdList =
   ControlDomainsList as any as S.Schema<ListImportableIdpGroupsRequestIntegrationIdList>;
 
 export interface ListImportableIdpGroupsRequest {
@@ -9737,7 +9152,7 @@ export interface ListImportableIdpGroupsRequest {
   search?: string;
   integrationId?: ListImportableIdpGroupsRequestIntegrationIdList;
 }
-export const ListImportableIdpGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportableIdpGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9754,7 +9169,7 @@ export interface ImportableIdpGroup {
   integrationId: string;
   externalAccountId: string | null;
 }
-export const ImportableIdpGroup = /*@__PURE__*/ S.suspend(() =>
+const ImportableIdpGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -9764,7 +9179,7 @@ export const ImportableIdpGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportableIdpGroup" }) as any as S.Schema<ImportableIdpGroup>;
 
 export type PaginatedImportableIdpGroupResponseResultsDataList = Array<ImportableIdpGroup>;
-export const PaginatedImportableIdpGroupResponseResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedImportableIdpGroupResponseResultsDataList = /*@__PURE__*/ S.Array(
   ImportableIdpGroup,
 ) as any as S.Schema<PaginatedImportableIdpGroupResponseResultsDataList>;
 
@@ -9772,7 +9187,7 @@ export interface PaginatedImportableIdpGroupResponseResults {
   data: PaginatedImportableIdpGroupResponseResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedImportableIdpGroupResponseResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedImportableIdpGroupResponseResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedImportableIdpGroupResponseResultsDataList,
     pageInfo: PageInfo,
@@ -9784,7 +9199,7 @@ export const PaginatedImportableIdpGroupResponseResults = /*@__PURE__*/ S.suspen
 export interface PaginatedImportableIdpGroupResponse {
   results: PaginatedImportableIdpGroupResponseResults;
 }
-export const PaginatedImportableIdpGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedImportableIdpGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedImportableIdpGroupResponseResults,
   }),
@@ -9793,12 +9208,10 @@ export const PaginatedImportableIdpGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedImportableIdpGroupResponse>;
 
 export type KnowledgeBaseResourceTypeFilter = "FILE" | "URL";
-export const KnowledgeBaseResourceTypeFilter = S.String;
-
 export type ListKnowledgeBaseResourcesRequestTypeMatchesAnyList = Array<
   KnowledgeBaseResourceTypeFilter | (string & {})
 >;
-export const ListKnowledgeBaseResourcesRequestTypeMatchesAnyList =
+const ListKnowledgeBaseResourcesRequestTypeMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListKnowledgeBaseResourcesRequestTypeMatchesAnyList>;
 
 export interface ListKnowledgeBaseResourcesRequest {
@@ -9819,7 +9232,7 @@ export interface ListKnowledgeBaseResourcesRequest {
   /** Only include resources expiring at or after this ISO 8601 timestamp. */
   expiresAfter?: string;
 }
-export const ListKnowledgeBaseResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKnowledgeBaseResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9837,21 +9250,19 @@ export const ListKnowledgeBaseResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList =
   Array<TrustKnowledgeBaseResourceOutput>;
-export const PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList =
-  /*@__PURE__*/ S.Array(
-    TrustKnowledgeBaseResourceOutput,
-  ) as any as S.Schema<PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList>;
+const PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList = /*@__PURE__*/ S.Array(
+  TrustKnowledgeBaseResourceOutput,
+) as any as S.Schema<PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList>;
 
 export interface PaginatedResponseTrustKnowledgeBaseResourceOutputResults {
   data: PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustKnowledgeBaseResourceOutputResults = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList,
-      pageInfo: PageInfo,
-    }),
+const PaginatedResponseTrustKnowledgeBaseResourceOutputResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PaginatedResponseTrustKnowledgeBaseResourceOutputResultsDataList,
+    pageInfo: PageInfo,
+  }),
 ).annotate({
   identifier: "PaginatedResponseTrustKnowledgeBaseResourceOutputResults",
 }) as any as S.Schema<PaginatedResponseTrustKnowledgeBaseResourceOutputResults>;
@@ -9859,7 +9270,7 @@ export const PaginatedResponseTrustKnowledgeBaseResourceOutputResults = /*@__PUR
 export interface PaginatedResponseTrustKnowledgeBaseResourceOutput {
   results: PaginatedResponseTrustKnowledgeBaseResourceOutputResults;
 }
-export const PaginatedResponseTrustKnowledgeBaseResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustKnowledgeBaseResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustKnowledgeBaseResourceOutputResults,
   }),
@@ -9872,7 +9283,7 @@ export interface ListLinksForDocumentRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListLinksForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinksForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9883,7 +9294,7 @@ export const ListLinksForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLinksForDocumentRequest>;
 
 export type PaginatedResponseUploadedLinkResultsDataList = Array<UploadedLink>;
-export const PaginatedResponseUploadedLinkResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseUploadedLinkResultsDataList = /*@__PURE__*/ S.Array(
   UploadedLink,
 ) as any as S.Schema<PaginatedResponseUploadedLinkResultsDataList>;
 
@@ -9891,7 +9302,7 @@ export interface PaginatedResponseUploadedLinkResults {
   data: PaginatedResponseUploadedLinkResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseUploadedLinkResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseUploadedLinkResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseUploadedLinkResultsDataList,
     pageInfo: PageInfo,
@@ -9903,7 +9314,7 @@ export const PaginatedResponseUploadedLinkResults = /*@__PURE__*/ S.suspend(() =
 export interface PaginatedResponseUploadedLink {
   results: PaginatedResponseUploadedLinkResults;
 }
-export const PaginatedResponseUploadedLink = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseUploadedLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseUploadedLinkResults,
   }),
@@ -9918,15 +9329,14 @@ export type ComputerStatusFilter =
   | "AV_NOT_INSTALLED"
   | "SCREENLOCK_NOT_CONFIGURED"
   | "LAST_CHECK_OVER_14_DAYS";
-export const ComputerStatusFilter = S.String;
+const ComputerStatusFilter = S.String;
 
 export type ListMonitoredComputersRequestComplianceStatusFilterMatchesAnyList = Array<
   ComputerStatusFilter | (string & {})
 >;
-export const ListMonitoredComputersRequestComplianceStatusFilterMatchesAnyList =
-  /*@__PURE__*/ S.Array(
-    ComputerStatusFilter,
-  ) as any as S.Schema<ListMonitoredComputersRequestComplianceStatusFilterMatchesAnyList>;
+const ListMonitoredComputersRequestComplianceStatusFilterMatchesAnyList = /*@__PURE__*/ S.Array(
+  ComputerStatusFilter,
+) as any as S.Schema<ListMonitoredComputersRequestComplianceStatusFilterMatchesAnyList>;
 
 export interface ListMonitoredComputersRequest {
   pageSize?: number;
@@ -9934,7 +9344,7 @@ export interface ListMonitoredComputersRequest {
   /** Filters for monitored computers matching any status declared in the filter. */
   complianceStatusFilterMatchesAny?: ListMonitoredComputersRequestComplianceStatusFilterMatchesAnyList;
 }
-export const ListMonitoredComputersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredComputersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -9947,7 +9357,7 @@ export const ListMonitoredComputersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMonitoredComputersRequest>;
 
 export type PaginatedResponseMonitoredComputerResultsDataList = Array<MonitoredComputer>;
-export const PaginatedResponseMonitoredComputerResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseMonitoredComputerResultsDataList = /*@__PURE__*/ S.Array(
   MonitoredComputer,
 ) as any as S.Schema<PaginatedResponseMonitoredComputerResultsDataList>;
 
@@ -9955,7 +9365,7 @@ export interface PaginatedResponseMonitoredComputerResults {
   data: PaginatedResponseMonitoredComputerResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseMonitoredComputerResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseMonitoredComputerResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseMonitoredComputerResultsDataList,
     pageInfo: PageInfo,
@@ -9967,7 +9377,7 @@ export const PaginatedResponseMonitoredComputerResults = /*@__PURE__*/ S.suspend
 export interface PaginatedResponseMonitoredComputer {
   results: PaginatedResponseMonitoredComputerResults;
 }
-export const PaginatedResponseMonitoredComputer = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseMonitoredComputer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseMonitoredComputerResults,
   }),
@@ -9978,7 +9388,7 @@ export const PaginatedResponseMonitoredComputer = /*@__PURE__*/ S.suspend(() =>
 export type ListPeopleRequestTasksSummaryStatusMatchesAnyList = Array<
   TasksSummaryStatus | (string & {})
 >;
-export const ListPeopleRequestTasksSummaryStatusMatchesAnyList =
+const ListPeopleRequestTasksSummaryStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListPeopleRequestTasksSummaryStatusMatchesAnyList>;
 
 /** The type a task summary falls into. COMPLETE_TRAININGS: The task summary containing security trainings. ACCEPT_POLICIES: The task summary containing policy acceptance. COMPLETE_CUSTOM_TASKS: The task summary containing custom tasks. INSTALL_DEVICE_MONITORING: The task summary containing device monitoring installation. COMPLETE_BACKGROUND_CHECKS: The task summary containing background checks. */
@@ -9989,22 +9399,20 @@ export type TaskType =
   | "COMPLETE_CUSTOM_OFFBOARDING_TASKS"
   | "INSTALL_DEVICE_MONITORING"
   | "COMPLETE_BACKGROUND_CHECKS";
-export const TaskType = S.String;
-
 export type ListPeopleRequestTaskTypeMatchesAnyList = Array<TaskType | (string & {})>;
-export const ListPeopleRequestTaskTypeMatchesAnyList =
+const ListPeopleRequestTaskTypeMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListPeopleRequestTaskTypeMatchesAnyList>;
 
 export type ListPeopleRequestTaskStatusMatchesAnyList = Array<TaskStatus | (string & {})>;
-export const ListPeopleRequestTaskStatusMatchesAnyList =
+const ListPeopleRequestTaskStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListPeopleRequestTaskStatusMatchesAnyList>;
 
 export type ListPeopleRequestGroupIdsMatchesAnyList = Array<string>;
-export const ListPeopleRequestGroupIdsMatchesAnyList =
+const ListPeopleRequestGroupIdsMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListPeopleRequestGroupIdsMatchesAnyList>;
 
 export type ListPeopleRequestFrameworkIdMatchesAnyList = Array<string>;
-export const ListPeopleRequestFrameworkIdMatchesAnyList =
+const ListPeopleRequestFrameworkIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListPeopleRequestFrameworkIdMatchesAnyList>;
 
 export interface ListPeopleRequest {
@@ -10025,7 +9433,7 @@ export interface ListPeopleRequest {
   /** Filter people in scope for any of the given framework IDs. Non-viewable program scopes are ignored. */
   frameworkIdMatchesAny?: ListPeopleRequestFrameworkIdMatchesAnyList;
 }
-export const ListPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeopleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10042,14 +9450,14 @@ export const ListPeopleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPeopleRequest" }) as any as S.Schema<ListPeopleRequest>;
 
 export type PaginatedResponsePersonResultsDataList = Array<Person>;
-export const PaginatedResponsePersonResultsDataList =
+const PaginatedResponsePersonResultsDataList =
   GetGroupMembersResponseBodyList as any as S.Schema<PaginatedResponsePersonResultsDataList>;
 
 export interface PaginatedResponsePersonResults {
   data: PaginatedResponsePersonResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponsePersonResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePersonResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponsePersonResultsDataList,
     pageInfo: PageInfo,
@@ -10061,7 +9469,7 @@ export const PaginatedResponsePersonResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponsePerson {
   results: PaginatedResponsePersonResults;
 }
-export const PaginatedResponsePerson = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponsePersonResults,
   }),
@@ -10071,7 +9479,7 @@ export interface ListPersonGroupsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListPersonGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPersonGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10079,7 +9487,7 @@ export const ListPersonGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPersonGroupsRequest" }) as any as S.Schema<ListPersonGroupsRequest>;
 
 export type PaginatedResponseGroupResultsDataList = Array<Group>;
-export const PaginatedResponseGroupResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseGroupResultsDataList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<PaginatedResponseGroupResultsDataList>;
 
@@ -10087,7 +9495,7 @@ export interface PaginatedResponseGroupResults {
   data: PaginatedResponseGroupResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseGroupResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseGroupResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseGroupResultsDataList,
     pageInfo: PageInfo,
@@ -10099,7 +9507,7 @@ export const PaginatedResponseGroupResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseGroup {
   results: PaginatedResponseGroupResults;
 }
-export const PaginatedResponseGroup = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseGroupResults,
   }),
@@ -10109,7 +9517,7 @@ export interface ListPoliciesRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10117,7 +9525,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPoliciesRequest" }) as any as S.Schema<ListPoliciesRequest>;
 
 export type PaginatedResponsePolicyResultsDataList = Array<Policy>;
-export const PaginatedResponsePolicyResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponsePolicyResultsDataList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PaginatedResponsePolicyResultsDataList>;
 
@@ -10125,7 +9533,7 @@ export interface PaginatedResponsePolicyResults {
   data: PaginatedResponsePolicyResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponsePolicyResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePolicyResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponsePolicyResultsDataList,
     pageInfo: PageInfo,
@@ -10137,18 +9545,18 @@ export const PaginatedResponsePolicyResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponsePolicy {
   results: PaginatedResponsePolicyResults;
 }
-export const PaginatedResponsePolicy = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponsePolicyResults,
   }),
 ).annotate({ identifier: "PaginatedResponsePolicy" }) as any as S.Schema<PaginatedResponsePolicy>;
 
 export type ListProgramScopesRequestBusinessUnitIdMatchesAnyList = Array<string>;
-export const ListProgramScopesRequestBusinessUnitIdMatchesAnyList =
+const ListProgramScopesRequestBusinessUnitIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListProgramScopesRequestBusinessUnitIdMatchesAnyList>;
 
 export type ListProgramScopesRequestFrameworkIdMatchesAnyList = Array<string>;
-export const ListProgramScopesRequestFrameworkIdMatchesAnyList =
+const ListProgramScopesRequestFrameworkIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListProgramScopesRequestFrameworkIdMatchesAnyList>;
 
 export interface ListProgramScopesRequest {
@@ -10159,7 +9567,7 @@ export interface ListProgramScopesRequest {
   /** Filter program scopes to those whose framework ID matches any of the provided IDs. */
   frameworkIdMatchesAny?: ListProgramScopesRequestFrameworkIdMatchesAnyList;
 }
-export const ListProgramScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProgramScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10173,7 +9581,7 @@ export const ListProgramScopesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProgramScopesRequest" }) as any as S.Schema<ListProgramScopesRequest>;
 
 export type PaginatedResponseProgramScopeResultsDataList = Array<ProgramScope>;
-export const PaginatedResponseProgramScopeResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseProgramScopeResultsDataList = /*@__PURE__*/ S.Array(
   ProgramScope,
 ) as any as S.Schema<PaginatedResponseProgramScopeResultsDataList>;
 
@@ -10181,7 +9589,7 @@ export interface PaginatedResponseProgramScopeResults {
   data: PaginatedResponseProgramScopeResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseProgramScopeResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseProgramScopeResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseProgramScopeResultsDataList,
     pageInfo: PageInfo,
@@ -10193,7 +9601,7 @@ export const PaginatedResponseProgramScopeResults = /*@__PURE__*/ S.suspend(() =
 export interface PaginatedResponseProgramScope {
   results: PaginatedResponseProgramScopeResults;
 }
-export const PaginatedResponseProgramScope = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseProgramScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseProgramScopeResults,
   }),
@@ -10208,7 +9616,7 @@ export interface ListQuestionnaireResponsesRequest {
   /** Filter responses by question text (case-insensitive, partial match). */
   q?: string;
 }
-export const ListQuestionnaireResponsesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuestionnaireResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -10227,7 +9635,7 @@ export const ListQuestionnaireResponsesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResultsDataList =
   Array<QuestionnaireResponseWithoutViewerPermissions>;
-export const PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResultsDataList =
+const PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResultsDataList =
   /*@__PURE__*/ S.Array(
     QuestionnaireResponseWithoutViewerPermissions,
   ) as any as S.Schema<PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResultsDataList>;
@@ -10236,7 +9644,7 @@ export interface PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsR
   data: PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResults =
+const PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResults =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResultsDataList,
@@ -10249,33 +9657,32 @@ export const PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResul
 export interface PaginatedResponseQuestionnaireResponseWithoutViewerPermissions {
   results: PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResults;
 }
-export const PaginatedResponseQuestionnaireResponseWithoutViewerPermissions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResults,
-    }),
-  ).annotate({
-    identifier: "PaginatedResponseQuestionnaireResponseWithoutViewerPermissions",
-  }) as any as S.Schema<PaginatedResponseQuestionnaireResponseWithoutViewerPermissions>;
+const PaginatedResponseQuestionnaireResponseWithoutViewerPermissions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: PaginatedResponseQuestionnaireResponseWithoutViewerPermissionsResults,
+  }),
+).annotate({
+  identifier: "PaginatedResponseQuestionnaireResponseWithoutViewerPermissions",
+}) as any as S.Schema<PaginatedResponseQuestionnaireResponseWithoutViewerPermissions>;
 
 export type ListQuestionnairesRequestStatusMatchesAnyList = Array<
   QuestionnaireStatus | (string & {})
 >;
-export const ListQuestionnairesRequestStatusMatchesAnyList =
+const ListQuestionnairesRequestStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListQuestionnairesRequestStatusMatchesAnyList>;
 
 export type ListQuestionnairesRequestTypeMatchesAnyList = Array<
   CustomerTrustQuestionnaireType | (string & {})
 >;
-export const ListQuestionnairesRequestTypeMatchesAnyList =
+const ListQuestionnairesRequestTypeMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListQuestionnairesRequestTypeMatchesAnyList>;
 
 export type ListQuestionnairesRequestOwnerIdMatchesAnyList = Array<string>;
-export const ListQuestionnairesRequestOwnerIdMatchesAnyList =
+const ListQuestionnairesRequestOwnerIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListQuestionnairesRequestOwnerIdMatchesAnyList>;
 
 export type ListQuestionnairesRequestApproverIdMatchesAnyList = Array<string>;
-export const ListQuestionnairesRequestApproverIdMatchesAnyList =
+const ListQuestionnairesRequestApproverIdMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListQuestionnairesRequestApproverIdMatchesAnyList>;
 
 export interface ListQuestionnairesRequest {
@@ -10296,7 +9703,7 @@ export interface ListQuestionnairesRequest {
   /** Filter to questionnaires with an approver matching any of the provided user IDs. */
   approverIdMatchesAny?: ListQuestionnairesRequestApproverIdMatchesAnyList;
 }
-export const ListQuestionnairesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuestionnairesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10316,7 +9723,7 @@ export const ListQuestionnairesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseCustomerTrustQuestionnaireResultsDataList =
   Array<CustomerTrustQuestionnaire>;
-export const PaginatedResponseCustomerTrustQuestionnaireResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseCustomerTrustQuestionnaireResultsDataList = /*@__PURE__*/ S.Array(
   CustomerTrustQuestionnaire,
 ) as any as S.Schema<PaginatedResponseCustomerTrustQuestionnaireResultsDataList>;
 
@@ -10324,7 +9731,7 @@ export interface PaginatedResponseCustomerTrustQuestionnaireResults {
   data: PaginatedResponseCustomerTrustQuestionnaireResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseCustomerTrustQuestionnaireResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCustomerTrustQuestionnaireResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseCustomerTrustQuestionnaireResultsDataList,
     pageInfo: PageInfo,
@@ -10336,7 +9743,7 @@ export const PaginatedResponseCustomerTrustQuestionnaireResults = /*@__PURE__*/ 
 export interface PaginatedResponseCustomerTrustQuestionnaire {
   results: PaginatedResponseCustomerTrustQuestionnaireResults;
 }
-export const PaginatedResponseCustomerTrustQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCustomerTrustQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseCustomerTrustQuestionnaireResults,
   }),
@@ -10348,7 +9755,7 @@ export interface ListResourceKindSummariesRequest {
   /** Unique identifier of the integration */
   integrationId: string;
 }
-export const ListResourceKindSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceKindSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -10370,7 +9777,7 @@ export interface ResourceKindSummary {
   /** Whether resources of this type may be assigned an owner. */
   canUpdateOwner: boolean;
 }
-export const ResourceKindSummary = /*@__PURE__*/ S.suspend(() =>
+const ResourceKindSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String,
     resourceKind: S.String,
@@ -10381,12 +9788,12 @@ export const ResourceKindSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceKindSummary" }) as any as S.Schema<ResourceKindSummary>;
 
 export type ListResourceKindSummariesResponseBodyList = Array<ResourceKindSummary>;
-export const ListResourceKindSummariesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListResourceKindSummariesResponseBodyList = /*@__PURE__*/ S.Array(
   ResourceKindSummary,
 ) as any as S.Schema<ListResourceKindSummariesResponseBodyList>;
 
 export type ListResourceKindSummariesResponse = ListResourceKindSummariesResponseBodyList;
-export const ListResourceKindSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourceKindSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   ListResourceKindSummariesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListResourceKindSummariesResponse",
@@ -10408,7 +9815,7 @@ export interface ListResourcesRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
     resourceKind: S.String.pipe(T.Label()),
@@ -10428,7 +9835,7 @@ export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourcesRequest" }) as any as S.Schema<ListResourcesRequest>;
 
 export type PaginatedResponseAnyResourceResultsDataList = Array<AnyResource>;
-export const PaginatedResponseAnyResourceResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAnyResourceResultsDataList = /*@__PURE__*/ S.Array(
   AnyResource,
 ) as any as S.Schema<PaginatedResponseAnyResourceResultsDataList>;
 
@@ -10436,7 +9843,7 @@ export interface PaginatedResponseAnyResourceResults {
   data: PaginatedResponseAnyResourceResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAnyResourceResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAnyResourceResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAnyResourceResultsDataList,
     pageInfo: PageInfo,
@@ -10448,7 +9855,7 @@ export const PaginatedResponseAnyResourceResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseAnyResource {
   results: PaginatedResponseAnyResourceResults;
 }
-export const PaginatedResponseAnyResource = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAnyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAnyResourceResults,
   }),
@@ -10457,60 +9864,54 @@ export const PaginatedResponseAnyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseAnyResource>;
 
 export type ListRiskScenarioRequestOwnerMatchesAnyList = Array<string>;
-export const ListRiskScenarioRequestOwnerMatchesAnyList =
+const ListRiskScenarioRequestOwnerMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRiskScenarioRequestOwnerMatchesAnyList>;
 
 export type ListRiskScenarioRequestCategoryMatchesAnyList = Array<string>;
-export const ListRiskScenarioRequestCategoryMatchesAnyList =
+const ListRiskScenarioRequestCategoryMatchesAnyList =
   ControlDomainsList as any as S.Schema<ListRiskScenarioRequestCategoryMatchesAnyList>;
 
 export type UNCATEGORIZED = "Uncategorized";
-export const UNCATEGORIZED = S.String;
-
 export type ListRiskScenarioRequestCiaCategoryMatchesAnyItem = CIA | UNCATEGORIZED;
-export const ListRiskScenarioRequestCiaCategoryMatchesAnyItem =
+const ListRiskScenarioRequestCiaCategoryMatchesAnyItem =
   S.Unknown as any as S.Schema<ListRiskScenarioRequestCiaCategoryMatchesAnyItem>;
 
 export type ListRiskScenarioRequestCiaCategoryMatchesAnyList =
   Array<ListRiskScenarioRequestCiaCategoryMatchesAnyItem>;
-export const ListRiskScenarioRequestCiaCategoryMatchesAnyList = /*@__PURE__*/ S.Array(
+const ListRiskScenarioRequestCiaCategoryMatchesAnyList = /*@__PURE__*/ S.Array(
   ListRiskScenarioRequestCiaCategoryMatchesAnyItem,
 ) as any as S.Schema<ListRiskScenarioRequestCiaCategoryMatchesAnyList>;
 
 export type NOTREATMENTTYPE = "No treatment type";
-export const NOTREATMENTTYPE = S.String;
-
 export type ListRiskScenarioRequestTreatmentTypeMatchesAnyItem = Treatment | NOTREATMENTTYPE;
-export const ListRiskScenarioRequestTreatmentTypeMatchesAnyItem =
+const ListRiskScenarioRequestTreatmentTypeMatchesAnyItem =
   S.Unknown as any as S.Schema<ListRiskScenarioRequestTreatmentTypeMatchesAnyItem>;
 
 export type ListRiskScenarioRequestTreatmentTypeMatchesAnyList =
   Array<ListRiskScenarioRequestTreatmentTypeMatchesAnyItem>;
-export const ListRiskScenarioRequestTreatmentTypeMatchesAnyList = /*@__PURE__*/ S.Array(
+const ListRiskScenarioRequestTreatmentTypeMatchesAnyList = /*@__PURE__*/ S.Array(
   ListRiskScenarioRequestTreatmentTypeMatchesAnyItem,
 ) as any as S.Schema<ListRiskScenarioRequestTreatmentTypeMatchesAnyList>;
 
 export type ScoreGroup = "Very low" | "Low" | "Med" | "High" | "Critical";
-export const ScoreGroup = S.String;
-
 export type ListRiskScenarioRequestInherentScoreGroupMatchesAnyList = Array<
   ScoreGroup | (string & {})
 >;
-export const ListRiskScenarioRequestInherentScoreGroupMatchesAnyList =
+const ListRiskScenarioRequestInherentScoreGroupMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRiskScenarioRequestInherentScoreGroupMatchesAnyList>;
 
 export type ListRiskScenarioRequestResidualScoreGroupMatchesAnyList = Array<
   ScoreGroup | (string & {})
 >;
-export const ListRiskScenarioRequestResidualScoreGroupMatchesAnyList =
+const ListRiskScenarioRequestResidualScoreGroupMatchesAnyList =
   ListRiskScenarioRequestInherentScoreGroupMatchesAnyList as any as S.Schema<ListRiskScenarioRequestResidualScoreGroupMatchesAnyList>;
 
 export type ListRiskScenarioRequestReviewStatusMatchesAnyList = Array<ReviewStatus | (string & {})>;
-export const ListRiskScenarioRequestReviewStatusMatchesAnyList =
+const ListRiskScenarioRequestReviewStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListRiskScenarioRequestReviewStatusMatchesAnyList>;
 
 export type ListRiskScenarioRequestOrderBy = "description" | "createdAt";
-export const ListRiskScenarioRequestOrderBy = S.String;
+const ListRiskScenarioRequestOrderBy = S.String;
 
 export interface ListRiskScenarioRequest {
   pageSize?: number;
@@ -10533,7 +9934,7 @@ export interface ListRiskScenarioRequest {
   /** Default to order by description alphabetically. */
   orderBy?: ListRiskScenarioRequestOrderBy | (string & {});
 }
-export const ListRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10562,7 +9963,7 @@ export const ListRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRiskScenarioRequest" }) as any as S.Schema<ListRiskScenarioRequest>;
 
 export type PaginatedResponseRiskScenarioResultsDataList = Array<RiskScenario>;
-export const PaginatedResponseRiskScenarioResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseRiskScenarioResultsDataList = /*@__PURE__*/ S.Array(
   RiskScenario,
 ) as any as S.Schema<PaginatedResponseRiskScenarioResultsDataList>;
 
@@ -10570,7 +9971,7 @@ export interface PaginatedResponseRiskScenarioResults {
   data: PaginatedResponseRiskScenarioResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseRiskScenarioResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseRiskScenarioResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseRiskScenarioResultsDataList,
     pageInfo: PageInfo,
@@ -10582,7 +9983,7 @@ export const PaginatedResponseRiskScenarioResults = /*@__PURE__*/ S.suspend(() =
 export interface PaginatedResponseRiskScenario {
   results: PaginatedResponseRiskScenarioResults;
 }
-export const PaginatedResponseRiskScenario = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseRiskScenario = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseRiskScenarioResults,
   }),
@@ -10595,7 +9996,7 @@ export interface ListRiskScenarioControlsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListRiskScenarioControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRiskScenarioControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -10606,7 +10007,7 @@ export const ListRiskScenarioControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRiskScenarioControlsRequest>;
 
 export type PaginatedResponseRiskScenarioControlResultsDataList = Array<RiskScenarioControl>;
-export const PaginatedResponseRiskScenarioControlResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseRiskScenarioControlResultsDataList = /*@__PURE__*/ S.Array(
   RiskScenarioControl,
 ) as any as S.Schema<PaginatedResponseRiskScenarioControlResultsDataList>;
 
@@ -10614,7 +10015,7 @@ export interface PaginatedResponseRiskScenarioControlResults {
   data: PaginatedResponseRiskScenarioControlResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseRiskScenarioControlResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseRiskScenarioControlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseRiskScenarioControlResultsDataList,
     pageInfo: PageInfo,
@@ -10626,7 +10027,7 @@ export const PaginatedResponseRiskScenarioControlResults = /*@__PURE__*/ S.suspe
 export interface PaginatedResponseRiskScenarioControl {
   results: PaginatedResponseRiskScenarioControlResults;
 }
-export const PaginatedResponseRiskScenarioControl = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseRiskScenarioControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseRiskScenarioControlResults,
   }),
@@ -10639,18 +10040,16 @@ export type CustomerTrustProductContextIdFilter =
   | "DOCUMENT_SHARING"
   | "CONTROL_SHARING"
   | "QUESTIONNAIRE";
-export const CustomerTrustProductContextIdFilter = S.String;
-
 export type ListTagCategoriesRequestProductContextIdsMatchesAnyList = Array<
   CustomerTrustProductContextIdFilter | (string & {})
 >;
-export const ListTagCategoriesRequestProductContextIdsMatchesAnyList =
+const ListTagCategoriesRequestProductContextIdsMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListTagCategoriesRequestProductContextIdsMatchesAnyList>;
 
 export interface ListTagCategoriesRequest {
   productContextIdsMatchesAny?: ListTagCategoriesRequestProductContextIdsMatchesAnyList;
 }
-export const ListTagCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productContextIdsMatchesAny: S.optional(
       ListTagCategoriesRequestProductContextIdsMatchesAnyList.pipe(T.Query()),
@@ -10659,13 +10058,13 @@ export const ListTagCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagCategoriesRequest" }) as any as S.Schema<ListTagCategoriesRequest>;
 
 export type ArrayResponseUserDefinedTagCategoryResultsList = Array<UserDefinedTagCategory>;
-export const ArrayResponseUserDefinedTagCategoryResultsList =
+const ArrayResponseUserDefinedTagCategoryResultsList =
   QuestionnaireAssignableUsersResponseResultsDataList as any as S.Schema<ArrayResponseUserDefinedTagCategoryResultsList>;
 
 export interface ArrayResponseUserDefinedTagCategory {
   results: ArrayResponseUserDefinedTagCategoryResultsList;
 }
-export const ArrayResponseUserDefinedTagCategory = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseUserDefinedTagCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseUserDefinedTagCategoryResultsList,
   }),
@@ -10693,7 +10092,7 @@ export type TestCategory =
   | "SOFTWARE_DEVELOPMENT"
   | "VENDORS"
   | "VULNERABILITY_MANAGEMENT";
-export const TestCategory = S.String;
+const TestCategory = S.String;
 
 export interface ListTestsRequest {
   pageSize?: number;
@@ -10713,7 +10112,7 @@ export interface ListTestsRequest {
   /** Filter tests by rollout status. A test in rollout is an upcoming test that does not have its history tracked yet. */
   isInRollout?: boolean;
 }
-export const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -10728,7 +10127,7 @@ export const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTestsRequest" }) as any as S.Schema<ListTestsRequest>;
 
 export type PaginatedResponseTestResultsDataList = Array<Test>;
-export const PaginatedResponseTestResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTestResultsDataList = /*@__PURE__*/ S.Array(
   Test,
 ) as any as S.Schema<PaginatedResponseTestResultsDataList>;
 
@@ -10736,7 +10135,7 @@ export interface PaginatedResponseTestResults {
   data: PaginatedResponseTestResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTestResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTestResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTestResultsDataList,
     pageInfo: PageInfo,
@@ -10748,7 +10147,7 @@ export const PaginatedResponseTestResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseTest {
   results: PaginatedResponseTestResults;
 }
-export const PaginatedResponseTest = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTestResults,
   }),
@@ -10759,7 +10158,7 @@ export interface ListTestsForControlRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListTestsForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestsForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -10774,7 +10173,7 @@ export interface ListTrustCenterAccessRequestsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListTrustCenterAccessRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterAccessRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -10786,7 +10185,7 @@ export const ListTrustCenterAccessRequestsRequest = /*@__PURE__*/ S.suspend(() =
 
 export type PaginatedResponseTrustCenterAccessRequestResultsDataList =
   Array<TrustCenterAccessRequest>;
-export const PaginatedResponseTrustCenterAccessRequestResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterAccessRequestResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterAccessRequest,
 ) as any as S.Schema<PaginatedResponseTrustCenterAccessRequestResultsDataList>;
 
@@ -10794,7 +10193,7 @@ export interface PaginatedResponseTrustCenterAccessRequestResults {
   data: PaginatedResponseTrustCenterAccessRequestResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterAccessRequestResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterAccessRequestResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterAccessRequestResultsDataList,
     pageInfo: PageInfo,
@@ -10806,7 +10205,7 @@ export const PaginatedResponseTrustCenterAccessRequestResults = /*@__PURE__*/ S.
 export interface PaginatedResponseTrustCenterAccessRequest {
   results: PaginatedResponseTrustCenterAccessRequestResults;
 }
-export const PaginatedResponseTrustCenterAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterAccessRequestResults,
   }),
@@ -10815,12 +10214,12 @@ export const PaginatedResponseTrustCenterAccessRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PaginatedResponseTrustCenterAccessRequest>;
 
 export type ActivityEventType = "PAGE_VIEW" | "RESOURCE_DOWNLOAD" | "RESOURCE_VIEW" | "VIDEO_PLAY";
-export const ActivityEventType = S.String;
+const ActivityEventType = S.String;
 
 export type ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList = Array<
   ActivityEventType | (string & {})
 >;
-export const ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList =
+const ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListTrustCenterActivityEventsRequestEventTypesMatchesAnyList>;
 
 export interface ListTrustCenterActivityEventsRequest {
@@ -10833,7 +10232,7 @@ export interface ListTrustCenterActivityEventsRequest {
   /** Only include activity events that occurred before the specified date and time. */
   beforeDate?: string;
 }
-export const ListTrustCenterActivityEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterActivityEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -10857,53 +10256,26 @@ export type TrustCenterPage =
   | "RESOURCES"
   | "SUBPROCESSORS"
   | "UPDATES";
-export const TrustCenterPage = S.String;
-
 export interface TrustCenterActivityEventDetailsCase0 {
   /** Page that was viewed. */
   page: TrustCenterPage;
 }
-export const TrustCenterActivityEventDetailsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    page: TrustCenterPage,
-  }),
-).annotate({
-  identifier: "TrustCenterActivityEventDetailsCase0",
-}) as any as S.Schema<TrustCenterActivityEventDetailsCase0>;
-
 export interface TrustCenterActivityEventDetailsCase1 {
   /** Title of the resource that this event pertains to. */
   resourceName: string;
   /** ID of the resource that this event pertains to. */
   resourceId: string;
 }
-export const TrustCenterActivityEventDetailsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.String,
-    resourceId: S.String,
-  }),
-).annotate({
-  identifier: "TrustCenterActivityEventDetailsCase1",
-}) as any as S.Schema<TrustCenterActivityEventDetailsCase1>;
-
 export interface TrustCenterActivityEventDetailsCase2 {
   /** Title of the video that was played. */
   videoTitle: string;
 }
-export const TrustCenterActivityEventDetailsCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    videoTitle: S.String,
-  }),
-).annotate({
-  identifier: "TrustCenterActivityEventDetailsCase2",
-}) as any as S.Schema<TrustCenterActivityEventDetailsCase2>;
-
 /** Additional details about the event. Details vary based on event type. */
 export type TrustCenterActivityEventDetails =
   | TrustCenterActivityEventDetailsCase0
   | TrustCenterActivityEventDetailsCase1
   | TrustCenterActivityEventDetailsCase2;
-export const TrustCenterActivityEventDetails =
+const TrustCenterActivityEventDetails =
   S.Unknown as any as S.Schema<TrustCenterActivityEventDetails>;
 
 export interface TrustCenterActivityEvent {
@@ -10924,7 +10296,7 @@ export interface TrustCenterActivityEvent {
   /** Country code from which the request originated. */
   countryCode: string | null;
 }
-export const TrustCenterActivityEvent = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterActivityEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     date: S.String,
@@ -10939,7 +10311,7 @@ export const TrustCenterActivityEvent = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseTrustCenterActivityEventResultsDataList =
   Array<TrustCenterActivityEvent>;
-export const PaginatedResponseTrustCenterActivityEventResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterActivityEventResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterActivityEvent,
 ) as any as S.Schema<PaginatedResponseTrustCenterActivityEventResultsDataList>;
 
@@ -10947,7 +10319,7 @@ export interface PaginatedResponseTrustCenterActivityEventResults {
   data: PaginatedResponseTrustCenterActivityEventResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterActivityEventResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterActivityEventResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterActivityEventResultsDataList,
     pageInfo: PageInfo,
@@ -10959,7 +10331,7 @@ export const PaginatedResponseTrustCenterActivityEventResults = /*@__PURE__*/ S.
 export interface PaginatedResponseTrustCenterActivityEvent {
   results: PaginatedResponseTrustCenterActivityEventResults;
 }
-export const PaginatedResponseTrustCenterActivityEvent = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterActivityEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterActivityEventResults,
   }),
@@ -10972,7 +10344,7 @@ export interface ListTrustCenterControlsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListTrustCenterControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -10983,14 +10355,14 @@ export const ListTrustCenterControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterControlsRequest>;
 
 export type PaginatedResponseTrustCenterControlResultsDataList = Array<TrustCenterControl>;
-export const PaginatedResponseTrustCenterControlResultsDataList =
+const PaginatedResponseTrustCenterControlResultsDataList =
   ArrayResponseTrustCenterControlResultsList as any as S.Schema<PaginatedResponseTrustCenterControlResultsDataList>;
 
 export interface PaginatedResponseTrustCenterControlResults {
   data: PaginatedResponseTrustCenterControlResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterControlResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterControlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterControlResultsDataList,
     pageInfo: PageInfo,
@@ -11002,7 +10374,7 @@ export const PaginatedResponseTrustCenterControlResults = /*@__PURE__*/ S.suspen
 export interface PaginatedResponseTrustCenterControl {
   results: PaginatedResponseTrustCenterControlResults;
 }
-export const PaginatedResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterControlResults,
   }),
@@ -11013,7 +10385,7 @@ export const PaginatedResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
 export interface ListTrustCenterDataCollectedRequest {
   slugId: string;
 }
-export const ListTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/data-collected", code: 200 })),
@@ -11023,7 +10395,7 @@ export const ListTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Enum representing if and how the data collected is shown on the trust center */
 export type DataCollectedStatus = "COLLECTED" | "HIDDEN" | "NOT_COLLECTED";
-export const DataCollectedStatus = S.String;
+const DataCollectedStatus = S.String;
 
 export interface TrustCenterDataCollected {
   /** Name of the data type being disclosed. */
@@ -11031,7 +10403,7 @@ export interface TrustCenterDataCollected {
   /** Status of the data collection disclosure. */
   status: DataCollectedStatus;
 }
-export const TrustCenterDataCollected = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterDataCollected = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataCollected: S.String,
     status: DataCollectedStatus,
@@ -11039,14 +10411,14 @@ export const TrustCenterDataCollected = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrustCenterDataCollected" }) as any as S.Schema<TrustCenterDataCollected>;
 
 export type ArrayResponseTrustCenterDataCollectedResultsList = Array<TrustCenterDataCollected>;
-export const ArrayResponseTrustCenterDataCollectedResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterDataCollectedResultsList = /*@__PURE__*/ S.Array(
   TrustCenterDataCollected,
 ) as any as S.Schema<ArrayResponseTrustCenterDataCollectedResultsList>;
 
 export interface ArrayResponseTrustCenterDataCollected {
   results: ArrayResponseTrustCenterDataCollectedResultsList;
 }
-export const ArrayResponseTrustCenterDataCollected = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterDataCollected = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterDataCollectedResultsList,
   }),
@@ -11057,7 +10429,7 @@ export const ArrayResponseTrustCenterDataCollected = /*@__PURE__*/ S.suspend(() 
 export interface ListTrustCenterFaqCategoriesRequest {
   slugId: string;
 }
-export const ListTrustCenterFaqCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterFaqCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/faq-categories", code: 200 })),
@@ -11066,13 +10438,13 @@ export const ListTrustCenterFaqCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterFaqCategoriesRequest>;
 
 export type ArrayResponseTrustCenterFaqCategoryResultsList = Array<TrustCenterFaqCategory>;
-export const ArrayResponseTrustCenterFaqCategoryResultsList =
+const ArrayResponseTrustCenterFaqCategoryResultsList =
   TrustCenterSubscriberGroupsList as any as S.Schema<ArrayResponseTrustCenterFaqCategoryResultsList>;
 
 export interface ArrayResponseTrustCenterFaqCategory {
   results: ArrayResponseTrustCenterFaqCategoryResultsList;
 }
-export const ArrayResponseTrustCenterFaqCategory = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterFaqCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterFaqCategoryResultsList,
   }),
@@ -11083,7 +10455,7 @@ export const ArrayResponseTrustCenterFaqCategory = /*@__PURE__*/ S.suspend(() =>
 export interface ListTrustCenterFaqsRequest {
   slugId: string;
 }
-export const ListTrustCenterFaqsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterFaqsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/faqs", code: 200 })),
@@ -11092,14 +10464,14 @@ export const ListTrustCenterFaqsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterFaqsRequest>;
 
 export type ArrayResponseTrustCenterFaqResultsList = Array<TrustCenterFaq>;
-export const ArrayResponseTrustCenterFaqResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterFaqResultsList = /*@__PURE__*/ S.Array(
   TrustCenterFaq,
 ) as any as S.Schema<ArrayResponseTrustCenterFaqResultsList>;
 
 export interface ArrayResponseTrustCenterFaq {
   results: ArrayResponseTrustCenterFaqResultsList;
 }
-export const ArrayResponseTrustCenterFaq = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterFaq = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterFaqResultsList,
   }),
@@ -11112,7 +10484,7 @@ export interface ListTrustCenterHistoricalAccessRequestsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListTrustCenterHistoricalAccessRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterHistoricalAccessRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11126,12 +10498,12 @@ export const ListTrustCenterHistoricalAccessRequestsRequest = /*@__PURE__*/ S.su
 
 /** IDs for the resources that the viewer requested access to. */
 export type TrustCenterAccessRequestHistoricalRequestedResourcesList = Array<string>;
-export const TrustCenterAccessRequestHistoricalRequestedResourcesList =
+const TrustCenterAccessRequestHistoricalRequestedResourcesList =
   ControlDomainsList as any as S.Schema<TrustCenterAccessRequestHistoricalRequestedResourcesList>;
 
 /** Enum representing the outcome states of a historical trust center access request */
 export type HistoricalAccessRequestOutcome = "APPROVED" | "DENIED";
-export const HistoricalAccessRequestOutcome = S.String;
+const HistoricalAccessRequestOutcome = S.String;
 
 export interface TrustCenterAccessRequestHistorical {
   /** Unique identifier for the access request. */
@@ -11157,7 +10529,7 @@ export interface TrustCenterAccessRequestHistorical {
   /** Reason provided when the access request was denied. Null if not denied or no reason was given. */
   manualDenialReason: string | null;
 }
-export const TrustCenterAccessRequestHistorical = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterAccessRequestHistorical = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -11177,21 +10549,19 @@ export const TrustCenterAccessRequestHistorical = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList =
   Array<TrustCenterAccessRequestHistorical>;
-export const PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList =
-  /*@__PURE__*/ S.Array(
-    TrustCenterAccessRequestHistorical,
-  ) as any as S.Schema<PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList>;
+const PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList = /*@__PURE__*/ S.Array(
+  TrustCenterAccessRequestHistorical,
+) as any as S.Schema<PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList>;
 
 export interface PaginatedResponseTrustCenterAccessRequestHistoricalResults {
   data: PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterAccessRequestHistoricalResults = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList,
-      pageInfo: PageInfo,
-    }),
+const PaginatedResponseTrustCenterAccessRequestHistoricalResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PaginatedResponseTrustCenterAccessRequestHistoricalResultsDataList,
+    pageInfo: PageInfo,
+  }),
 ).annotate({
   identifier: "PaginatedResponseTrustCenterAccessRequestHistoricalResults",
 }) as any as S.Schema<PaginatedResponseTrustCenterAccessRequestHistoricalResults>;
@@ -11199,7 +10569,7 @@ export const PaginatedResponseTrustCenterAccessRequestHistoricalResults = /*@__P
 export interface PaginatedResponseTrustCenterAccessRequestHistorical {
   results: PaginatedResponseTrustCenterAccessRequestHistoricalResults;
 }
-export const PaginatedResponseTrustCenterAccessRequestHistorical = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterAccessRequestHistorical = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterAccessRequestHistoricalResults,
   }),
@@ -11210,7 +10580,7 @@ export const PaginatedResponseTrustCenterAccessRequestHistorical = /*@__PURE__*/
 export interface ListTrustCenterResourceCategoriesRequest {
   slugId: string;
 }
-export const ListTrustCenterResourceCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterResourceCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/resource-categories", code: 200 })),
@@ -11220,14 +10590,14 @@ export const ListTrustCenterResourceCategoriesRequest = /*@__PURE__*/ S.suspend(
 
 export type ArrayResponseTrustCenterResourceCategoryResultsList =
   Array<TrustCenterResourceCategory>;
-export const ArrayResponseTrustCenterResourceCategoryResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterResourceCategoryResultsList = /*@__PURE__*/ S.Array(
   TrustCenterResourceCategory,
 ) as any as S.Schema<ArrayResponseTrustCenterResourceCategoryResultsList>;
 
 export interface ArrayResponseTrustCenterResourceCategory {
   results: ArrayResponseTrustCenterResourceCategoryResultsList;
 }
-export const ArrayResponseTrustCenterResourceCategory = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterResourceCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterResourceCategoryResultsList,
   }),
@@ -11238,7 +10608,7 @@ export const ArrayResponseTrustCenterResourceCategory = /*@__PURE__*/ S.suspend(
 export interface ListTrustCenterResourcesRequest {
   slugId: string;
 }
-export const ListTrustCenterResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/resources", code: 200 })),
@@ -11247,14 +10617,14 @@ export const ListTrustCenterResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterResourcesRequest>;
 
 export type ArrayResponseTrustCenterResourceResultsList = Array<TrustCenterResource>;
-export const ArrayResponseTrustCenterResourceResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterResourceResultsList = /*@__PURE__*/ S.Array(
   TrustCenterResource,
 ) as any as S.Schema<ArrayResponseTrustCenterResourceResultsList>;
 
 export interface ArrayResponseTrustCenterResource {
   results: ArrayResponseTrustCenterResourceResultsList;
 }
-export const ArrayResponseTrustCenterResource = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterResourceResultsList,
   }),
@@ -11265,7 +10635,7 @@ export const ArrayResponseTrustCenterResource = /*@__PURE__*/ S.suspend(() =>
 export interface ListTrustCenterSubprocessorsRequest {
   slugId: string;
 }
-export const ListTrustCenterSubprocessorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterSubprocessorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/trust-centers/{slugId}/subprocessors", code: 200 })),
@@ -11274,14 +10644,14 @@ export const ListTrustCenterSubprocessorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterSubprocessorsRequest>;
 
 export type ArrayResponseTrustCenterSubprocessorResultsList = Array<TrustCenterSubprocessor>;
-export const ArrayResponseTrustCenterSubprocessorResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterSubprocessorResultsList = /*@__PURE__*/ S.Array(
   TrustCenterSubprocessor,
 ) as any as S.Schema<ArrayResponseTrustCenterSubprocessorResultsList>;
 
 export interface ArrayResponseTrustCenterSubprocessor {
   results: ArrayResponseTrustCenterSubprocessorResultsList;
 }
-export const ArrayResponseTrustCenterSubprocessor = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterSubprocessor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterSubprocessorResultsList,
   }),
@@ -11294,7 +10664,7 @@ export interface ListTrustCenterSubscriberGroupsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListTrustCenterSubscriberGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterSubscriberGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11306,7 +10676,7 @@ export const ListTrustCenterSubscriberGroupsRequest = /*@__PURE__*/ S.suspend(()
 
 export type PaginatedResponseTrustCenterSubscriberGroupResultsDataList =
   Array<TrustCenterSubscriberGroup>;
-export const PaginatedResponseTrustCenterSubscriberGroupResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterSubscriberGroupResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterSubscriberGroup,
 ) as any as S.Schema<PaginatedResponseTrustCenterSubscriberGroupResultsDataList>;
 
@@ -11314,7 +10684,7 @@ export interface PaginatedResponseTrustCenterSubscriberGroupResults {
   data: PaginatedResponseTrustCenterSubscriberGroupResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterSubscriberGroupResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterSubscriberGroupResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterSubscriberGroupResultsDataList,
     pageInfo: PageInfo,
@@ -11326,7 +10696,7 @@ export const PaginatedResponseTrustCenterSubscriberGroupResults = /*@__PURE__*/ 
 export interface PaginatedResponseTrustCenterSubscriberGroup {
   results: PaginatedResponseTrustCenterSubscriberGroupResults;
 }
-export const PaginatedResponseTrustCenterSubscriberGroup = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterSubscriberGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterSubscriberGroupResults,
   }),
@@ -11340,7 +10710,7 @@ export interface ListTrustCenterSubscribersRequest {
   pageCursor?: string;
   customerTrustAccountId?: string;
 }
-export const ListTrustCenterSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11352,7 +10722,7 @@ export const ListTrustCenterSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterSubscribersRequest>;
 
 export type PaginatedResponseTrustCenterSubscriberResultsDataList = Array<TrustCenterSubscriber>;
-export const PaginatedResponseTrustCenterSubscriberResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterSubscriberResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterSubscriber,
 ) as any as S.Schema<PaginatedResponseTrustCenterSubscriberResultsDataList>;
 
@@ -11360,7 +10730,7 @@ export interface PaginatedResponseTrustCenterSubscriberResults {
   data: PaginatedResponseTrustCenterSubscriberResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterSubscriberResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterSubscriberResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterSubscriberResultsDataList,
     pageInfo: PageInfo,
@@ -11372,7 +10742,7 @@ export const PaginatedResponseTrustCenterSubscriberResults = /*@__PURE__*/ S.sus
 export interface PaginatedResponseTrustCenterSubscriber {
   results: PaginatedResponseTrustCenterSubscriberResults;
 }
-export const PaginatedResponseTrustCenterSubscriber = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterSubscriber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterSubscriberResults,
   }),
@@ -11385,7 +10755,7 @@ export interface ListTrustCenterUpdatesRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListTrustCenterUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11397,7 +10767,7 @@ export const ListTrustCenterUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseTrustCenterUpdateAPIResponseResultsDataList =
   Array<TrustCenterUpdateAPIResponse>;
-export const PaginatedResponseTrustCenterUpdateAPIResponseResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterUpdateAPIResponseResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterUpdateAPIResponse,
 ) as any as S.Schema<PaginatedResponseTrustCenterUpdateAPIResponseResultsDataList>;
 
@@ -11405,7 +10775,7 @@ export interface PaginatedResponseTrustCenterUpdateAPIResponseResults {
   data: PaginatedResponseTrustCenterUpdateAPIResponseResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterUpdateAPIResponseResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterUpdateAPIResponseResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterUpdateAPIResponseResultsDataList,
     pageInfo: PageInfo,
@@ -11417,7 +10787,7 @@ export const PaginatedResponseTrustCenterUpdateAPIResponseResults = /*@__PURE__*
 export interface PaginatedResponseTrustCenterUpdateAPIResponse {
   results: PaginatedResponseTrustCenterUpdateAPIResponseResults;
 }
-export const PaginatedResponseTrustCenterUpdateAPIResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterUpdateAPIResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterUpdateAPIResponseResults,
   }),
@@ -11431,7 +10801,7 @@ export interface ListTrustCenterViewersRequest {
   pageCursor?: string;
   includeRemoved?: boolean;
 }
-export const ListTrustCenterViewersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustCenterViewersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11443,7 +10813,7 @@ export const ListTrustCenterViewersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterViewersRequest>;
 
 export type PaginatedResponseTrustCenterViewerResultsDataList = Array<TrustCenterViewer>;
-export const PaginatedResponseTrustCenterViewerResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseTrustCenterViewerResultsDataList = /*@__PURE__*/ S.Array(
   TrustCenterViewer,
 ) as any as S.Schema<PaginatedResponseTrustCenterViewerResultsDataList>;
 
@@ -11451,7 +10821,7 @@ export interface PaginatedResponseTrustCenterViewerResults {
   data: PaginatedResponseTrustCenterViewerResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseTrustCenterViewerResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterViewerResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseTrustCenterViewerResultsDataList,
     pageInfo: PageInfo,
@@ -11463,7 +10833,7 @@ export const PaginatedResponseTrustCenterViewerResults = /*@__PURE__*/ S.suspend
 export interface PaginatedResponseTrustCenterViewer {
   results: PaginatedResponseTrustCenterViewerResults;
 }
-export const PaginatedResponseTrustCenterViewer = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseTrustCenterViewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseTrustCenterViewerResults,
   }),
@@ -11475,7 +10845,7 @@ export interface ListUsersRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -11483,7 +10853,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type PaginatedResponseUserResultsDataList = Array<User>;
-export const PaginatedResponseUserResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseUserResultsDataList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<PaginatedResponseUserResultsDataList>;
 
@@ -11491,7 +10861,7 @@ export interface PaginatedResponseUserResults {
   data: PaginatedResponseUserResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseUserResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseUserResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseUserResultsDataList,
     pageInfo: PageInfo,
@@ -11503,7 +10873,7 @@ export const PaginatedResponseUserResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseUser {
   results: PaginatedResponseUserResults;
 }
-export const PaginatedResponseUser = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseUserResults,
   }),
@@ -11515,7 +10885,7 @@ export interface ListVendorAssessmentTypesRequest {
   /** Filter assessment types to a single lifecycle status */
   status?: VendorAssessmentTypeLifecycleStatus | (string & {});
 }
-export const ListVendorAssessmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVendorAssessmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -11526,7 +10896,7 @@ export const ListVendorAssessmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVendorAssessmentTypesRequest>;
 
 export type PaginatedResponseVendorAssessmentTypeResultsDataList = Array<VendorAssessmentType>;
-export const PaginatedResponseVendorAssessmentTypeResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVendorAssessmentTypeResultsDataList = /*@__PURE__*/ S.Array(
   VendorAssessmentType,
 ) as any as S.Schema<PaginatedResponseVendorAssessmentTypeResultsDataList>;
 
@@ -11534,7 +10904,7 @@ export interface PaginatedResponseVendorAssessmentTypeResults {
   data: PaginatedResponseVendorAssessmentTypeResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVendorAssessmentTypeResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorAssessmentTypeResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVendorAssessmentTypeResultsDataList,
     pageInfo: PageInfo,
@@ -11546,7 +10916,7 @@ export const PaginatedResponseVendorAssessmentTypeResults = /*@__PURE__*/ S.susp
 export interface PaginatedResponseVendorAssessmentType {
   results: PaginatedResponseVendorAssessmentTypeResults;
 }
-export const PaginatedResponseVendorAssessmentType = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorAssessmentType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVendorAssessmentTypeResults,
   }),
@@ -11559,7 +10929,7 @@ export interface ListVendorDocumentsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListVendorDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVendorDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11578,7 +10948,7 @@ export interface ListVendorFindingsRequest {
   /** Filter findings by document ID */
   documentId?: string;
 }
-export const ListVendorFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVendorFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11591,7 +10961,7 @@ export const ListVendorFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVendorFindingsRequest>;
 
 export type PaginatedResponseVendorFindingResultsDataList = Array<VendorFinding>;
-export const PaginatedResponseVendorFindingResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVendorFindingResultsDataList = /*@__PURE__*/ S.Array(
   VendorFinding,
 ) as any as S.Schema<PaginatedResponseVendorFindingResultsDataList>;
 
@@ -11599,7 +10969,7 @@ export interface PaginatedResponseVendorFindingResults {
   data: PaginatedResponseVendorFindingResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVendorFindingResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorFindingResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVendorFindingResultsDataList,
     pageInfo: PageInfo,
@@ -11611,7 +10981,7 @@ export const PaginatedResponseVendorFindingResults = /*@__PURE__*/ S.suspend(() 
 export interface PaginatedResponseVendorFinding {
   results: PaginatedResponseVendorFindingResults;
 }
-export const PaginatedResponseVendorFinding = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVendorFindingResults,
   }),
@@ -11623,7 +10993,7 @@ export interface ListVendorRiskAttributesRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListVendorRiskAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVendorRiskAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -11634,7 +11004,7 @@ export const ListVendorRiskAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Vendor categories this risk attribute applies to. */
 export type VendorRiskAttributeVendorCategoriesList = Array<string>;
-export const VendorRiskAttributeVendorCategoriesList =
+const VendorRiskAttributeVendorCategoriesList =
   ControlDomainsList as any as S.Schema<VendorRiskAttributeVendorCategoriesList>;
 
 export interface VendorRiskSection {
@@ -11643,7 +11013,7 @@ export interface VendorRiskSection {
   /** Display name of the risk section. */
   name: string;
 }
-export const VendorRiskSection = TrustCenterFaqCategory as any as S.Schema<VendorRiskSection>;
+const VendorRiskSection = TrustCenterFaqCategory as any as S.Schema<VendorRiskSection>;
 
 export interface VendorRiskAttribute {
   /** Unique identifier for the risk attribute. */
@@ -11661,7 +11031,7 @@ export interface VendorRiskAttribute {
   /** Risk section this attribute belongs to. */
   riskSection: VendorRiskSection;
 }
-export const VendorRiskAttribute = /*@__PURE__*/ S.suspend(() =>
+const VendorRiskAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -11674,7 +11044,7 @@ export const VendorRiskAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VendorRiskAttribute" }) as any as S.Schema<VendorRiskAttribute>;
 
 export type PaginatedResponseVendorRiskAttributeResultsDataList = Array<VendorRiskAttribute>;
-export const PaginatedResponseVendorRiskAttributeResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVendorRiskAttributeResultsDataList = /*@__PURE__*/ S.Array(
   VendorRiskAttribute,
 ) as any as S.Schema<PaginatedResponseVendorRiskAttributeResultsDataList>;
 
@@ -11682,7 +11052,7 @@ export interface PaginatedResponseVendorRiskAttributeResults {
   data: PaginatedResponseVendorRiskAttributeResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVendorRiskAttributeResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorRiskAttributeResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVendorRiskAttributeResultsDataList,
     pageInfo: PageInfo,
@@ -11694,7 +11064,7 @@ export const PaginatedResponseVendorRiskAttributeResults = /*@__PURE__*/ S.suspe
 export interface PaginatedResponseVendorRiskAttribute {
   results: PaginatedResponseVendorRiskAttributeResults;
 }
-export const PaginatedResponseVendorRiskAttribute = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorRiskAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVendorRiskAttributeResults,
   }),
@@ -11703,7 +11073,7 @@ export const PaginatedResponseVendorRiskAttribute = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PaginatedResponseVendorRiskAttribute>;
 
 export type ListVendorsRequestStatusMatchesAnyList = Array<VendorStatus | (string & {})>;
-export const ListVendorsRequestStatusMatchesAnyList =
+const ListVendorsRequestStatusMatchesAnyList =
   RiskScenarioCiaCategoriesList as any as S.Schema<ListVendorsRequestStatusMatchesAnyList>;
 
 export interface ListVendorsRequest {
@@ -11714,7 +11084,7 @@ export interface ListVendorsRequest {
   /** Filter vendors by status (can specify multiple) */
   statusMatchesAny?: ListVendorsRequestStatusMatchesAnyList;
 }
-export const ListVendorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVendorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -11724,7 +11094,7 @@ export const ListVendorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVendorsRequest" }) as any as S.Schema<ListVendorsRequest>;
 
 export type PaginatedResponseVendorResultsDataList = Array<Vendor>;
-export const PaginatedResponseVendorResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVendorResultsDataList = /*@__PURE__*/ S.Array(
   Vendor,
 ) as any as S.Schema<PaginatedResponseVendorResultsDataList>;
 
@@ -11732,7 +11102,7 @@ export interface PaginatedResponseVendorResults {
   data: PaginatedResponseVendorResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVendorResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendorResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVendorResultsDataList,
     pageInfo: PageInfo,
@@ -11744,7 +11114,7 @@ export const PaginatedResponseVendorResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseVendor {
   results: PaginatedResponseVendorResults;
 }
-export const PaginatedResponseVendor = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVendorResults,
   }),
@@ -11752,7 +11122,7 @@ export const PaginatedResponseVendor = /*@__PURE__*/ S.suspend(() =>
 
 /** ExternalFindingSeverity describes the severity of an external finding (Vulnerability or Security Alert) */
 export type ExternalFindingSeverity = "CRITICAL" | "HIGH" | "LOW" | "MEDIUM";
-export const ExternalFindingSeverity = S.String;
+const ExternalFindingSeverity = S.String;
 
 export interface ListVulnerabilitiesRequest {
   pageSize?: number;
@@ -11780,7 +11150,7 @@ export interface ListVulnerabilitiesRequest {
   /** Full-text filter on the vulnerability's name and description. */
   q?: string;
 }
-export const ListVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -11801,7 +11171,7 @@ export const ListVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVulnerabilitiesRequest>;
 
 export type PaginatedResponseVulnerabilityResultsDataList = Array<Vulnerability>;
-export const PaginatedResponseVulnerabilityResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVulnerabilityResultsDataList = /*@__PURE__*/ S.Array(
   Vulnerability,
 ) as any as S.Schema<PaginatedResponseVulnerabilityResultsDataList>;
 
@@ -11809,7 +11179,7 @@ export interface PaginatedResponseVulnerabilityResults {
   data: PaginatedResponseVulnerabilityResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVulnerabilityResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVulnerabilityResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVulnerabilityResultsDataList,
     pageInfo: PageInfo,
@@ -11821,7 +11191,7 @@ export const PaginatedResponseVulnerabilityResults = /*@__PURE__*/ S.suspend(() 
 export interface PaginatedResponseVulnerability {
   results: PaginatedResponseVulnerabilityResults;
 }
-export const PaginatedResponseVulnerability = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVulnerabilityResults,
   }),
@@ -11843,7 +11213,7 @@ export interface ListVulnerabilityRemediationsRequest {
   /** Filter vulnerability remediations that occurred before a specific timestamp. */
   remediatedBeforeDate?: string;
 }
-export const ListVulnerabilityRemediationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVulnerabilityRemediationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -11873,7 +11243,7 @@ export interface VulnerabilityRemediation {
   /** Date when the vulnerability was remediated. */
   remediationDate: string | null;
 }
-export const VulnerabilityRemediation = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityRemediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     vulnerabilityId: S.String,
@@ -11887,7 +11257,7 @@ export const VulnerabilityRemediation = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseVulnerabilityRemediationResultsDataList =
   Array<VulnerabilityRemediation>;
-export const PaginatedResponseVulnerabilityRemediationResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVulnerabilityRemediationResultsDataList = /*@__PURE__*/ S.Array(
   VulnerabilityRemediation,
 ) as any as S.Schema<PaginatedResponseVulnerabilityRemediationResultsDataList>;
 
@@ -11895,7 +11265,7 @@ export interface PaginatedResponseVulnerabilityRemediationResults {
   data: PaginatedResponseVulnerabilityRemediationResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVulnerabilityRemediationResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVulnerabilityRemediationResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVulnerabilityRemediationResultsDataList,
     pageInfo: PageInfo,
@@ -11907,7 +11277,7 @@ export const PaginatedResponseVulnerabilityRemediationResults = /*@__PURE__*/ S.
 export interface PaginatedResponseVulnerabilityRemediation {
   results: PaginatedResponseVulnerabilityRemediationResults;
 }
-export const PaginatedResponseVulnerabilityRemediation = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVulnerabilityRemediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVulnerabilityRemediationResults,
   }),
@@ -11927,7 +11297,7 @@ export interface ListVulnerableAssetsRequest {
   /** Filter vulnerable assets by... */
   assetExternalAccountId?: string;
 }
-export const ListVulnerableAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVulnerableAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11941,7 +11311,7 @@ export const ListVulnerableAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVulnerableAssetsRequest>;
 
 export type PaginatedResponseVulnerableAssetResultsDataList = Array<VulnerableAsset>;
-export const PaginatedResponseVulnerableAssetResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseVulnerableAssetResultsDataList = /*@__PURE__*/ S.Array(
   VulnerableAsset,
 ) as any as S.Schema<PaginatedResponseVulnerableAssetResultsDataList>;
 
@@ -11949,7 +11319,7 @@ export interface PaginatedResponseVulnerableAssetResults {
   data: PaginatedResponseVulnerableAssetResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseVulnerableAssetResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVulnerableAssetResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseVulnerableAssetResultsDataList,
     pageInfo: PageInfo,
@@ -11961,7 +11331,7 @@ export const PaginatedResponseVulnerableAssetResults = /*@__PURE__*/ S.suspend((
 export interface PaginatedResponseVulnerableAsset {
   results: PaginatedResponseVulnerableAssetResults;
 }
-export const PaginatedResponseVulnerableAsset = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseVulnerableAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseVulnerableAssetResults,
   }),
@@ -11975,7 +11345,7 @@ export interface MarkAsNotPeopleRequestUpdatesItem {
   /** ID of the person to change */
   id: string;
 }
-export const MarkAsNotPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
+const MarkAsNotPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.String,
     id: S.String,
@@ -11986,7 +11356,7 @@ export const MarkAsNotPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of account IDs to mark as not a person */
 export type MarkAsNotPeopleRequestUpdatesList = Array<MarkAsNotPeopleRequestUpdatesItem>;
-export const MarkAsNotPeopleRequestUpdatesList = /*@__PURE__*/ S.Array(
+const MarkAsNotPeopleRequestUpdatesList = /*@__PURE__*/ S.Array(
   MarkAsNotPeopleRequestUpdatesItem,
 ) as any as S.Schema<MarkAsNotPeopleRequestUpdatesList>;
 
@@ -11994,7 +11364,7 @@ export interface MarkAsNotPeopleRequest {
   /** List of account IDs to mark as not a person */
   updates: MarkAsNotPeopleRequestUpdatesList;
 }
-export const MarkAsNotPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkAsNotPeopleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updates: MarkAsNotPeopleRequestUpdatesList,
   }).pipe(T.Http({ method: "POST", uri: "/people/mark-as-not-people", code: 200 })),
@@ -12004,19 +11374,16 @@ export interface MarkAsPeopleRequestUpdatesItem {
   /** ID of the person to change */
   id: string;
 }
-export const MarkAsPeopleRequestUpdatesItem =
-  AddPeopleToGroupRequestUpdatesItem as any as S.Schema<MarkAsPeopleRequestUpdatesItem>;
-
 /** List of account IDs to mark as a person */
 export type MarkAsPeopleRequestUpdatesList = Array<MarkAsPeopleRequestUpdatesItem>;
-export const MarkAsPeopleRequestUpdatesList =
+const MarkAsPeopleRequestUpdatesList =
   AddPeopleToGroupRequestUpdatesList as any as S.Schema<MarkAsPeopleRequestUpdatesList>;
 
 export interface MarkAsPeopleRequest {
   /** List of account IDs to mark as a person */
   updates: MarkAsPeopleRequestUpdatesList;
 }
-export const MarkAsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkAsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updates: MarkAsPeopleRequestUpdatesList,
   }).pipe(T.Http({ method: "POST", uri: "/people/mark-as-people", code: 200 })),
@@ -12028,7 +11395,7 @@ export interface OffboardPeopleRequestUpdatesItem {
   /** ID of the person to offboard */
   id: string;
 }
-export const OffboardPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
+const OffboardPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgerId: S.String,
     id: S.String,
@@ -12039,7 +11406,7 @@ export const OffboardPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the people to offboard. */
 export type OffboardPeopleRequestUpdatesList = Array<OffboardPeopleRequestUpdatesItem>;
-export const OffboardPeopleRequestUpdatesList = /*@__PURE__*/ S.Array(
+const OffboardPeopleRequestUpdatesList = /*@__PURE__*/ S.Array(
   OffboardPeopleRequestUpdatesItem,
 ) as any as S.Schema<OffboardPeopleRequestUpdatesList>;
 
@@ -12047,7 +11414,7 @@ export interface OffboardPeopleRequest {
   /** List of the people to offboard. */
   updates: OffboardPeopleRequestUpdatesList;
 }
-export const OffboardPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+const OffboardPeopleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updates: OffboardPeopleRequestUpdatesList,
   }).pipe(T.Http({ method: "POST", uri: "/people/offboard", code: 200 })),
@@ -12057,7 +11424,7 @@ export interface ReactivateTestEntityRequest {
   testId: string;
   entityId: string;
 }
-export const ReactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String.pipe(T.Label()),
     entityId: S.String.pipe(T.Label()),
@@ -12069,27 +11436,24 @@ export const ReactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactivateTestEntityRequest>;
 
 export interface ReactivateTestEntityResponse {}
-export const ReactivateTestEntityResponse =
+const ReactivateTestEntityResponse =
   DeactivateTestEntityResponse as any as S.Schema<ReactivateTestEntityResponse>;
 
 export interface ReactivateVulnerabilitiesRequestUpdatesItem {
   /** ID of the vulnerability to reactivate. */
   id: string;
 }
-export const ReactivateVulnerabilitiesRequestUpdatesItem =
-  AddPeopleToGroupRequestUpdatesItem as any as S.Schema<ReactivateVulnerabilitiesRequestUpdatesItem>;
-
 /** List of vulnerability IDs to reactivate. */
 export type ReactivateVulnerabilitiesRequestUpdatesList =
   Array<ReactivateVulnerabilitiesRequestUpdatesItem>;
-export const ReactivateVulnerabilitiesRequestUpdatesList =
+const ReactivateVulnerabilitiesRequestUpdatesList =
   AddPeopleToGroupRequestUpdatesList as any as S.Schema<ReactivateVulnerabilitiesRequestUpdatesList>;
 
 export interface ReactivateVulnerabilitiesRequest {
   /** List of vulnerability IDs to reactivate. */
   updates: ReactivateVulnerabilitiesRequestUpdatesList;
 }
-export const ReactivateVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactivateVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updates: ReactivateVulnerabilitiesRequestUpdatesList,
   }).pipe(T.Http({ method: "POST", uri: "/vulnerabilities/reactivate", code: 200 })),
@@ -12098,11 +11462,9 @@ export const ReactivateVulnerabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactivateVulnerabilitiesRequest>;
 
 export type RemovePeopleFromGroupRequestUpdatesItem = AddPeopleToGroupRequestUpdatesItem;
-export const RemovePeopleFromGroupRequestUpdatesItem = AddPeopleToGroupRequestUpdatesItem;
-
 /** List of people IDs to remove from a group. */
 export type RemovePeopleFromGroupRequestUpdatesList = Array<AddPeopleToGroupRequestUpdatesItem>;
-export const RemovePeopleFromGroupRequestUpdatesList =
+const RemovePeopleFromGroupRequestUpdatesList =
   AddPeopleToGroupRequestUpdatesList as any as S.Schema<RemovePeopleFromGroupRequestUpdatesList>;
 
 export interface RemovePeopleFromGroupRequest {
@@ -12110,7 +11472,7 @@ export interface RemovePeopleFromGroupRequest {
   /** List of people IDs to remove from a group. */
   updates: RemovePeopleFromGroupRequestUpdatesList;
 }
-export const RemovePeopleFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePeopleFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     updates: RemovePeopleFromGroupRequestUpdatesList,
@@ -12123,7 +11485,7 @@ export interface RemovePersonFromGroupRequest {
   groupId: string;
   personId: string;
 }
-export const RemovePersonFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePersonFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     personId: S.String.pipe(T.Label()),
@@ -12136,13 +11498,13 @@ export type RemoveTagCategoryProductContextRequestProductContextId =
   | "EXTERNAL_TRUST_CENTER"
   | "DOCUMENT_SHARING"
   | "CONTROL_SHARING";
-export const RemoveTagCategoryProductContextRequestProductContextId = S.String;
+const RemoveTagCategoryProductContextRequestProductContextId = S.String;
 
 export interface RemoveTagCategoryProductContextRequest {
   tagCategoryId: string;
   productContextId: RemoveTagCategoryProductContextRequestProductContextId | (string & {});
 }
-export const RemoveTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagCategoryId: S.String.pipe(T.Label()),
     productContextId: RemoveTagCategoryProductContextRequestProductContextId.pipe(T.Label()),
@@ -12158,14 +11520,14 @@ export const RemoveTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveTagCategoryProductContextRequest>;
 
 export interface RemoveTagCategoryProductContextResponse {}
-export const RemoveTagCategoryProductContextResponse =
+const RemoveTagCategoryProductContextResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<RemoveTagCategoryProductContextResponse>;
 
 export interface RemoveTrustCenterViewerRequest {
   slugId: string;
   viewerId: string;
 }
-export const RemoveTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     viewerId: S.String.pipe(T.Label()),
@@ -12177,7 +11539,7 @@ export const RemoveTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveTrustCenterViewerRequest>;
 
 export interface RemoveTrustCenterViewerResponse {}
-export const RemoveTrustCenterViewerResponse =
+const RemoveTrustCenterViewerResponse =
   DeleteTrustCenterUpdateResponse as any as S.Schema<RemoveTrustCenterViewerResponse>;
 
 export interface ReplaceDocumentResourceFileRequest {
@@ -12185,7 +11547,7 @@ export interface ReplaceDocumentResourceFileRequest {
   /** New document binary; replaces the existing file in place. */
   file: string;
 }
-export const ReplaceDocumentResourceFileRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceDocumentResourceFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     file: S.String,
@@ -12205,7 +11567,7 @@ export interface SendNotificationsToAllSubscribersRequest {
   slugId: string;
   updateId: string;
 }
-export const SendNotificationsToAllSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
+const SendNotificationsToAllSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     updateId: S.String.pipe(T.Label()),
@@ -12221,28 +11583,25 @@ export const SendNotificationsToAllSubscribersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SendNotificationsToAllSubscribersRequest>;
 
 export interface SendNotificationsToAllSubscribersResponse {}
-export const SendNotificationsToAllSubscribersResponse =
+const SendNotificationsToAllSubscribersResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<SendNotificationsToAllSubscribersResponse>;
 
 /** Additional email addresses to notify about this Trust Center update in addition to the existing Trust Center subscribers. Duplicate emails are deduplicated to ensure each recipient gets only one notification. */
 export type SendTrustCenterUpdateNotificationsRequestEmailsList = Array<string>;
-export const SendTrustCenterUpdateNotificationsRequestEmailsList =
+const SendTrustCenterUpdateNotificationsRequestEmailsList =
   ControlDomainsList as any as S.Schema<SendTrustCenterUpdateNotificationsRequestEmailsList>;
 
 /** IDs of subscriber groups to notify. When `customerTrustAccounts` is also provided, only subscribers in these groups whose linked account matches are notified. */
 export type SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList = Array<string>;
-export const SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList =
+const SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList =
   CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList as any as S.Schema<SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList>;
 
 export type CustomerTrustAccountCustomFieldFilterValueCase1List = Array<string>;
-export const CustomerTrustAccountCustomFieldFilterValueCase1List =
-  ControlDomainsList as any as S.Schema<CustomerTrustAccountCustomFieldFilterValueCase1List>;
-
 /** The value(s) to match against. Provide an array to match any of multiple values. */
 export type CustomerTrustAccountCustomFieldFilterValue =
   | string
   | CustomerTrustAccountCustomFieldFilterValueCase1List;
-export const CustomerTrustAccountCustomFieldFilterValue =
+const CustomerTrustAccountCustomFieldFilterValue =
   S.Unknown as any as S.Schema<CustomerTrustAccountCustomFieldFilterValue>;
 
 /** A single custom field filter condition. */
@@ -12252,7 +11611,7 @@ export interface CustomerTrustAccountCustomFieldFilter {
   /** The value(s) to match against. Provide an array to match any of multiple values. */
   value: CustomerTrustAccountCustomFieldFilterValue;
 }
-export const CustomerTrustAccountCustomFieldFilter = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountCustomFieldFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     value: CustomerTrustAccountCustomFieldFilterValue,
@@ -12264,13 +11623,13 @@ export const CustomerTrustAccountCustomFieldFilter = /*@__PURE__*/ S.suspend(() 
 /** Filter accounts by custom field label/value pairs. When `value` is an array, accounts matching any of the values are included. When multiple entries are provided, accounts must satisfy all of them. */
 export type CustomerTrustAccountsInputCustomFieldsFilterList =
   Array<CustomerTrustAccountCustomFieldFilter>;
-export const CustomerTrustAccountsInputCustomFieldsFilterList = /*@__PURE__*/ S.Array(
+const CustomerTrustAccountsInputCustomFieldsFilterList = /*@__PURE__*/ S.Array(
   CustomerTrustAccountCustomFieldFilter,
 ) as any as S.Schema<CustomerTrustAccountsInputCustomFieldsFilterList>;
 
 /** Narrow the candidate accounts resolved from `customFieldsFilter` to those with matching tags. Within a category entry, accounts matching any of the `tagIds` are included. When multiple entries are provided, accounts must satisfy all of them. */
 export type CustomerTrustAccountsInputTagsByCategoryList = Array<TagsByCategoryInput>;
-export const CustomerTrustAccountsInputTagsByCategoryList =
+const CustomerTrustAccountsInputTagsByCategoryList =
   CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<CustomerTrustAccountsInputTagsByCategoryList>;
 
 /** Account selectors for narrowing `GROUPS` notifications to subscribers with a matching linked account. */
@@ -12280,7 +11639,7 @@ export interface CustomerTrustAccountsInput {
   /** Narrow the candidate accounts resolved from `customFieldsFilter` to those with matching tags. Within a category entry, accounts matching any of the `tagIds` are included. When multiple entries are provided, accounts must satisfy all of them. */
   tagsByCategory?: CustomerTrustAccountsInputTagsByCategoryList;
 }
-export const CustomerTrustAccountsInput = /*@__PURE__*/ S.suspend(() =>
+const CustomerTrustAccountsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customFieldsFilter: S.optional(CustomerTrustAccountsInputCustomFieldsFilterList),
     tagsByCategory: S.optional(CustomerTrustAccountsInputTagsByCategoryList),
@@ -12299,7 +11658,7 @@ export interface SendTrustCenterUpdateNotificationsRequest {
   /** Optional account filters. When provided, only subscribers in `subscriberGroupIds` whose linked account matches all specified filters are notified. */
   customerTrustAccounts?: CustomerTrustAccountsInput;
 }
-export const SendTrustCenterUpdateNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTrustCenterUpdateNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     updateId: S.String.pipe(T.Label()),
@@ -12321,7 +11680,7 @@ export interface NotifySpecificSubscribersResponse {
   /** The number of subscribers who will receive this notification. */
   recipientCount: number;
 }
-export const NotifySpecificSubscribersResponse = /*@__PURE__*/ S.suspend(() =>
+const NotifySpecificSubscribersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientCount: S.Number,
   }),
@@ -12333,7 +11692,7 @@ export interface SendTrustCenterViewerInviteReminderRequest {
   slugId: string;
   viewerId: string;
 }
-export const SendTrustCenterViewerInviteReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTrustCenterViewerInviteReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     viewerId: S.String.pipe(T.Label()),
@@ -12353,7 +11712,7 @@ export interface InviteReminderResponse {
   /** Whether the invite reminder email was successfully sent. */
   isSuccessful: boolean;
 }
-export const InviteReminderResponse = /*@__PURE__*/ S.suspend(() =>
+const InviteReminderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSuccessful: S.Boolean,
   }),
@@ -12366,7 +11725,7 @@ export interface SetLeaveForPersonRequest {
   /** The start date of the person's leave. */
   startDate: string;
 }
-export const SetLeaveForPersonRequest = /*@__PURE__*/ S.suspend(() =>
+const SetLeaveForPersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personId: S.String.pipe(T.Label()),
     endDate: S.NullOr(S.String),
@@ -12379,7 +11738,7 @@ export interface SetOwnerForControlRequest {
   /** The new owner's ID. */
   userId: string | null;
 }
-export const SetOwnerForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOwnerForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     userId: S.NullOr(S.String),
@@ -12393,7 +11752,7 @@ export interface SetOwnerForDocumentRequest {
   /** The new owner ID */
   userId: string | null;
 }
-export const SetOwnerForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOwnerForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     userId: S.NullOr(S.String),
@@ -12407,7 +11766,7 @@ export interface SetStatusForVendorRequest {
   /** Status of the vendor */
   status: string;
 }
-export const SetStatusForVendorRequest = /*@__PURE__*/ S.suspend(() =>
+const SetStatusForVendorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     status: S.String,
@@ -12426,7 +11785,7 @@ export const SetStatusForVendorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SubmitDocumentCollectionRequest {
   documentId: string;
 }
-export const SubmitDocumentCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitDocumentCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/documents/{documentId}/submit", code: 200 })),
@@ -12435,7 +11794,7 @@ export const SubmitDocumentCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitDocumentCollectionRequest>;
 
 export interface SubmitDocumentCollectionResponse {}
-export const SubmitDocumentCollectionResponse =
+const SubmitDocumentCollectionResponse =
   AddTagCategoryProductContextResponse as any as S.Schema<SubmitDocumentCollectionResponse>;
 
 export interface SubmitRiskForApprovalRequest {
@@ -12443,7 +11802,7 @@ export interface SubmitRiskForApprovalRequest {
   /** Optional comment to include with the approval request. */
   comment?: string;
 }
-export const SubmitRiskForApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitRiskForApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
     comment: S.optional(S.String),
@@ -12460,7 +11819,7 @@ export const SubmitRiskForApprovalRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the entry. Replaces the existing tag set. Pass `[]` to clear all tags. Discover valid `categoryId` and `tagId` values via `GET /v1/customer-trust/tag-categories` (to list categories) and `GET /v1/customer-trust/tag-categories/{tagCategoryId}` (to list tags within a category). */
 export type UpdateAnswerLibraryEntryRouteRequestTagsList = Array<TagInput>;
-export const UpdateAnswerLibraryEntryRouteRequestTagsList =
+const UpdateAnswerLibraryEntryRouteRequestTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateAnswerLibraryEntryRouteRequestTagsList>;
 
 export interface UpdateAnswerLibraryEntryRouteRequest {
@@ -12476,7 +11835,7 @@ export interface UpdateAnswerLibraryEntryRouteRequest {
   /** Tags to associate with the entry. Replaces the existing tag set. Pass `[]` to clear all tags. Discover valid `categoryId` and `tagId` values via `GET /v1/customer-trust/tag-categories` (to list categories) and `GET /v1/customer-trust/tag-categories/{tagCategoryId}` (to list tags within a category). */
   tags?: UpdateAnswerLibraryEntryRouteRequestTagsList;
 }
-export const UpdateAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     question: S.optional(S.String),
@@ -12547,7 +11906,7 @@ export type UpdateComplianceFrameworkRequestStandard =
   | "ukCyberEssentials33"
   | "usDataPrivacy"
   | "fedrampKSI";
-export const UpdateComplianceFrameworkRequestStandard = S.String;
+const UpdateComplianceFrameworkRequestStandard = S.String;
 
 export interface UpdateComplianceFrameworkRequest {
   slugId: string;
@@ -12559,7 +11918,7 @@ export interface UpdateComplianceFrameworkRequest {
   /** Description of the framework. Pass null to unset. */
   description?: string | null;
 }
-export const UpdateComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     frameworkId: S.String.pipe(T.Label()),
@@ -12579,7 +11938,7 @@ export const UpdateComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The control's new values for custom fields. */
 export type UpdateControlMetadataRequestCustomFieldsList = Array<CustomField>;
-export const UpdateControlMetadataRequestCustomFieldsList =
+const UpdateControlMetadataRequestCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<UpdateControlMetadataRequestCustomFieldsList>;
 
 export interface UpdateControlMetadataRequest {
@@ -12599,7 +11958,7 @@ export interface UpdateControlMetadataRequest {
   /** The control's new values for custom fields. */
   customFields?: UpdateControlMetadataRequestCustomFieldsList;
 }
-export const UpdateControlMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateControlMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String.pipe(T.Label()),
     implementationDetails: S.optional(S.String),
@@ -12616,12 +11975,12 @@ export const UpdateControlMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated custom field values for the account */
 export type UpdateCustomerTrustAccountRequestCustomFieldsList = Array<CustomField>;
-export const UpdateCustomerTrustAccountRequestCustomFieldsList =
+const UpdateCustomerTrustAccountRequestCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<UpdateCustomerTrustAccountRequestCustomFieldsList>;
 
 /** Tags to assign to this account, grouped by category. Replaces existing tags per category. */
 export type UpdateCustomerTrustAccountRequestTagsByCategoryList = Array<TagsByCategoryInput>;
-export const UpdateCustomerTrustAccountRequestTagsByCategoryList =
+const UpdateCustomerTrustAccountRequestTagsByCategoryList =
   CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<UpdateCustomerTrustAccountRequestTagsByCategoryList>;
 
 export interface UpdateCustomerTrustAccountRequest {
@@ -12635,7 +11994,7 @@ export interface UpdateCustomerTrustAccountRequest {
   /** Tags to assign to this account, grouped by category. Replaces existing tags per category. */
   tagsByCategory?: UpdateCustomerTrustAccountRequestTagsByCategoryList;
 }
-export const UpdateCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -12649,11 +12008,11 @@ export const UpdateCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Customer-facing download permission for a knowledge-base resource on the Trust Center. Use {@link DOWNLOAD_PERMISSION_TO_DB} to translate to {@link TrustKnowledgeBaseResourceDownloadSetting} when persisting. */
 export type KnowledgeBaseResourceDownloadPermission = "VIEW_ONLY" | "VIEW_AND_DOWNLOAD";
-export const KnowledgeBaseResourceDownloadPermission = S.String;
+const KnowledgeBaseResourceDownloadPermission = S.String;
 
 /** Tags to associate with the resource. A non-empty array replaces the existing tag set; pass `[]` to clear all tags. */
 export type UpdateDocumentResourceRequestTagsList = Array<TagInput>;
-export const UpdateDocumentResourceRequestTagsList =
+const UpdateDocumentResourceRequestTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateDocumentResourceRequestTagsList>;
 
 export interface UpdateDocumentResourceRequest {
@@ -12677,7 +12036,7 @@ export interface UpdateDocumentResourceRequest {
   /** Trust Center category id to associate this resource with. Pass `null` to move the resource to uncategorized. Only valid when the resource's effective visibility (after applying any patched `customerVisibility`) is REQUEST_ACCESS or PUBLIC; other combinations and unknown ids return an InvalidInputError. */
   categoryId?: string | null;
 }
-export const UpdateDocumentResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     title: S.optional(S.String),
@@ -12703,7 +12062,7 @@ export interface UpdateGroupRequest {
   /** New display name. Omit to preserve. Names are trimmed, must be non-empty and unique, and cannot change for an IdP-managed group. */
   name?: string;
 }
-export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     pointOfContactEmail: S.optional(S.NullOr(S.String)),
@@ -12716,7 +12075,7 @@ export interface UpdatePersonRequestName {
   last: string;
   first: string;
 }
-export const UpdatePersonRequestName = /*@__PURE__*/ S.suspend(() =>
+const UpdatePersonRequestName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last: S.String,
     first: S.String,
@@ -12726,7 +12085,7 @@ export const UpdatePersonRequestName = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePersonRequestEmployment {
   startDate?: string;
 }
-export const UpdatePersonRequestEmployment = /*@__PURE__*/ S.suspend(() =>
+const UpdatePersonRequestEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(S.String),
   }),
@@ -12739,7 +12098,7 @@ export interface UpdatePersonRequest {
   name?: UpdatePersonRequestName;
   employment?: UpdatePersonRequestEmployment;
 }
-export const UpdatePersonRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personId: S.String.pipe(T.Label()),
     name: S.optional(UpdatePersonRequestName),
@@ -12754,12 +12113,10 @@ export type SettableQuestionnaireStatus =
   | "WAITING_ON_ANSWERS"
   | "ON_HOLD"
   | "NO_LONGER_NEEDED";
-export const SettableQuestionnaireStatus = S.String;
+const SettableQuestionnaireStatus = S.String;
 
 /** The type of actor: "User" for an individual user, "Team" for a team. */
 export type UpdateActorAssignmentType = "User" | "Team";
-export const UpdateActorAssignmentType = S.String;
-
 /** Actor assignment for setting an owner or approver. */
 export interface UpdateActorAssignment {
   /** The type of actor: "User" for an individual user, "Team" for a team. */
@@ -12767,16 +12124,16 @@ export interface UpdateActorAssignment {
   /** The unique identifier of the user or team. */
   id: string;
 }
-export const UpdateActorAssignment = ActorAssignmentInput as any as S.Schema<UpdateActorAssignment>;
+const UpdateActorAssignment = ActorAssignmentInput as any as S.Schema<UpdateActorAssignment>;
 
 /** Metadata key-value pairs */
 export type UpdateQuestionnaireRequestMetadataList = Array<QuestionnaireMetadata>;
-export const UpdateQuestionnaireRequestMetadataList =
+const UpdateQuestionnaireRequestMetadataList =
   CreateWebsiteQuestionnaireRequestMetadataList as any as S.Schema<UpdateQuestionnaireRequestMetadataList>;
 
 /** Tags to assign to the questionnaire. Each entry must include a categoryId and tagId. Replaces all existing tags. */
 export type UpdateQuestionnaireRequestTagAndCategoryIdsList = Array<TagInput>;
-export const UpdateQuestionnaireRequestTagAndCategoryIdsList =
+const UpdateQuestionnaireRequestTagAndCategoryIdsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateQuestionnaireRequestTagAndCategoryIdsList>;
 
 export interface UpdateQuestionnaireRequest {
@@ -12796,7 +12153,7 @@ export interface UpdateQuestionnaireRequest {
   /** Tags to assign to the questionnaire. Each entry must include a categoryId and tagId. Replaces all existing tags. */
   tagAndCategoryIds?: UpdateQuestionnaireRequestTagAndCategoryIdsList;
 }
-export const UpdateQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     displayName: S.optional(S.String),
@@ -12815,7 +12172,7 @@ export const UpdateQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Construct a type with a set of properties K of type T */
 export type RecordStringUnknown = { [key: string]: unknown | undefined };
-export const RecordStringUnknown = /*@__PURE__*/ S.Record(
+const RecordStringUnknown = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<RecordStringUnknown>;
@@ -12826,7 +12183,7 @@ export interface UpdateQuestionnaireResponseContentRequest {
   /** Map of answer part id -> value, matching the shape of the `answerPartsValues` read field. Values must be string, number, boolean, null, or string[]. A null value clears that part's value; ids omitted from the map are left unchanged. */
   answerPartsValues: RecordStringUnknown;
 }
-export const UpdateQuestionnaireResponseContentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateQuestionnaireResponseContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     responseId: S.String.pipe(T.Label()),
@@ -12848,7 +12205,7 @@ export interface UpdateQuestionnaireResponseOwnerRequest {
   /** New owner, or null to clear the current owner. */
   ownerAssignment: UpdateActorAssignment | null;
 }
-export const UpdateQuestionnaireResponseOwnerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateQuestionnaireResponseOwnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionnaireId: S.String.pipe(T.Label()),
     responseId: S.String.pipe(T.Label()),
@@ -12878,7 +12235,7 @@ export interface UpdateResourceRequest2 {
   /** Owner ID to update for the resources. */
   ownerId?: string;
 }
-export const UpdateResourceRequest2 = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
     resourceKind: S.String.pipe(T.Label()),
@@ -12896,7 +12253,7 @@ export const UpdateResourceRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateResourceRequest2" }) as any as S.Schema<UpdateResourceRequest2>;
 
 export interface UpdateResourceResponse {}
-export const UpdateResourceResponse =
+const UpdateResourceResponse =
   DeactivateTestEntityResponse as any as S.Schema<UpdateResourceResponse>;
 
 export interface UpdateResourceRequest {
@@ -12909,7 +12266,7 @@ export interface UpdateResourceRequest {
   /** Determines whether resources should be marked in scope or not. */
   inScope?: boolean;
 }
-export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ownerId: S.optional(S.String),
@@ -12920,7 +12277,7 @@ export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource update requests. */
 export type UpdateResourcesRequestUpdatesList = Array<UpdateResourceRequest>;
-export const UpdateResourcesRequestUpdatesList = /*@__PURE__*/ S.Array(
+const UpdateResourcesRequestUpdatesList = /*@__PURE__*/ S.Array(
   UpdateResourceRequest,
 ) as any as S.Schema<UpdateResourcesRequestUpdatesList>;
 
@@ -12932,7 +12289,7 @@ export interface UpdateResourcesRequest {
   /** List of resource update requests. */
   updates: UpdateResourcesRequestUpdatesList;
 }
-export const UpdateResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String.pipe(T.Label()),
     resourceKind: S.String.pipe(T.Label()),
@@ -12948,17 +12305,17 @@ export const UpdateResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of categories this risk scenario belongs to. Each element in the list will become a new custom category if it doesn't match an existing one. You can reference the current category options in the Risk Management settings and/or enter new values. */
 export type UpdateRiskScenarioRequestCategoriesList = Array<string>;
-export const UpdateRiskScenarioRequestCategoriesList =
+const UpdateRiskScenarioRequestCategoriesList =
   ControlDomainsList as any as S.Schema<UpdateRiskScenarioRequestCategoriesList>;
 
 /** Enter a list of the following for the type of risk documented: - Confidentiality: Risk to data stores, customer/sensitive information, etc. - Integrity: Risk to accuracy or integrity of system settings and/or data - Availability: Risk to normal service operations and critical system functionality */
 export type UpdateRiskScenarioRequestCiaCategoriesList = Array<CIA | (string & {})>;
-export const UpdateRiskScenarioRequestCiaCategoriesList =
+const UpdateRiskScenarioRequestCiaCategoriesList =
   RiskScenarioCiaCategoriesList as any as S.Schema<UpdateRiskScenarioRequestCiaCategoriesList>;
 
 /** The list of custom fields. You can reference custom fields in the Risk Management settings and/or create new one. The format is: - {label: "field-name", value: "string-representation"} for text, date, number and currency fields - {label: "field-name", value: ["option1", "option2"]} for picklist fields */
 export type UpdateRiskScenarioRequestCustomFieldsList = Array<CustomAttribute>;
-export const UpdateRiskScenarioRequestCustomFieldsList =
+const UpdateRiskScenarioRequestCustomFieldsList =
   RiskScenarioCustomFieldsList as any as S.Schema<UpdateRiskScenarioRequestCustomFieldsList>;
 
 export interface UpdateRiskScenarioRequest {
@@ -12996,7 +12353,7 @@ export interface UpdateRiskScenarioRequest {
   /** The date this risk was identified. Matches the "Identified Date" field in the Vanta UI. Omitting the field leaves the existing value unchanged. */
   identificationDate?: string;
 }
-export const UpdateRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRiskScenarioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -13026,7 +12383,7 @@ export interface UpdateRiskScenarioControlRequest {
   /** The new relationship state. `TREATMENT_PLAN` moves the control into the risk's treatment plan; `EXISTING` removes it from the treatment plan while keeping it linked as an existing control (use DELETE to unlink entirely). */
   controlType: RiskScenarioControlType | (string & {});
 }
-export const UpdateRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskScenarioId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -13043,11 +12400,11 @@ export const UpdateRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRiskScenarioControlRequest>;
 
 export type NotificationFrequency = "DAILY" | "NEVER" | "WEEKLY";
-export const NotificationFrequency = S.String;
+const NotificationFrequency = S.String;
 
 /** Replaces the complete channel set. Omit to preserve it; an empty array disables reminders. */
 export type UpdateSettingsRequestChannelsList = Array<NotificationChannelType | (string & {})>;
-export const UpdateSettingsRequestChannelsList =
+const UpdateSettingsRequestChannelsList =
   EnabledPersonnelNotificationSettingsEnabledChannelsList as any as S.Schema<UpdateSettingsRequestChannelsList>;
 
 export interface UpdateSettingsRequest {
@@ -13056,7 +12413,7 @@ export interface UpdateSettingsRequest {
   /** Replaces the complete channel set. Omit to preserve it; an empty array disables reminders. */
   channels?: UpdateSettingsRequestChannelsList;
 }
-export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: S.optional(NotificationFrequency),
     channels: S.optional(UpdateSettingsRequestChannelsList),
@@ -13064,17 +12421,12 @@ export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSettingsRequest" }) as any as S.Schema<UpdateSettingsRequest>;
 
 export type UpdateSettingsResponse = PersonnelNotificationSettings;
-export const UpdateSettingsResponse =
-  GetSettingsResponse as any as S.Schema<UpdateSettingsResponse>;
+const UpdateSettingsResponse = GetSettingsResponse as any as S.Schema<UpdateSettingsResponse>;
 
 export type BannerSettingGRADIENT = "GRADIENT";
-export const BannerSettingGRADIENT = S.String;
-
 export type BannerSettingMINIMAL = "MINIMAL";
-export const BannerSettingMINIMAL = S.String;
-
 export type ApiSelectableBannerSetting = BannerSettingGRADIENT | BannerSettingMINIMAL;
-export const ApiSelectableBannerSetting = S.Unknown as any as S.Schema<ApiSelectableBannerSetting>;
+const ApiSelectableBannerSetting = S.Unknown as any as S.Schema<ApiSelectableBannerSetting>;
 
 /** The banner configuration of the Trust Center. */
 export interface UpdateTrustCenterRequestBannerSetting {
@@ -13085,7 +12437,7 @@ export interface UpdateTrustCenterRequestBannerSetting {
   /** The banner style to use. Must be one of "GRADIENT" or "MINIMAL". */
   setting: ApiSelectableBannerSetting;
 }
-export const UpdateTrustCenterRequestBannerSetting = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterRequestBannerSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endColor: S.optional(S.String),
     startColor: S.optional(S.String),
@@ -13102,7 +12454,7 @@ export interface UpdateTrustCenterRequestCustomTheme {
   /** Primary color for the theme. If null is passed in, resets to default. */
   primary?: string | null;
 }
-export const UpdateTrustCenterRequestCustomTheme = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterRequestCustomTheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondary: S.optional(S.NullOr(S.String)),
     primary: S.optional(S.NullOr(S.String)),
@@ -13134,7 +12486,7 @@ export interface UpdateTrustCenterRequest {
   /** The default status-visibility mode applied to all controls that don't have a category-level override. Omit to leave unchanged. Only settable for domains with the Vanta Compliance Platform; other domains have no control status to render. */
   controlVisibilityMode?: TrustCenterControlVisibilityMode | (string & {});
 }
-export const UpdateTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     title: S.optional(S.NullOr(S.String)),
@@ -13160,7 +12512,7 @@ export interface UpdateTrustCenterControlCategoryRequest {
   /** Per-category status-visibility override. Omit to leave unchanged; pass `null` to clear the override and fall back to the Trust Center's global default. */
   statusVisibilityOverride?: TrustCenterControlVisibilityMode | (string & {}) | null;
 }
-export const UpdateTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -13180,12 +12532,12 @@ export const UpdateTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend((
 
 /** IDs of controls to add to the category. */
 export type UpdateTrustCenterControlsInCategoryRequestControlsToAddList = Array<string>;
-export const UpdateTrustCenterControlsInCategoryRequestControlsToAddList =
+const UpdateTrustCenterControlsInCategoryRequestControlsToAddList =
   ControlDomainsList as any as S.Schema<UpdateTrustCenterControlsInCategoryRequestControlsToAddList>;
 
 /** IDs of controls to remove from the category. */
 export type UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList = Array<string>;
-export const UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList =
+const UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList =
   ControlDomainsList as any as S.Schema<UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList>;
 
 export interface UpdateTrustCenterControlsInCategoryRequest {
@@ -13196,7 +12548,7 @@ export interface UpdateTrustCenterControlsInCategoryRequest {
   /** IDs of controls to remove from the category. */
   controlsToRemove: UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList;
 }
-export const UpdateTrustCenterControlsInCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterControlsInCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -13223,7 +12575,7 @@ export interface UpdateTrustCenterFaqRequest {
   /** The category to place this FAQ in. Pass null to move to uncategorized. Omit to leave unchanged (on update) or default to uncategorized (on create). */
   categoryId?: string | null;
 }
-export const UpdateTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     faqId: S.String.pipe(T.Label()),
@@ -13241,7 +12593,7 @@ export interface UpdateTrustCenterFaqCategoryRequest {
   /** New name for the category. */
   name: string;
 }
-export const UpdateTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -13267,7 +12619,7 @@ export interface UpdateTrustCenterResourceRequest {
   /** Description of the uploaded document. */
   description?: string;
 }
-export const UpdateTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -13287,7 +12639,7 @@ export interface UpdateTrustCenterResourceCategoryRequest {
   /** New name for the category. */
   name: string;
 }
-export const UpdateTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -13313,7 +12665,7 @@ export interface UpdateTrustCenterSubprocessorRequest {
   /** What to set the subprocessor purpose to. If null is passed in, the subprocessor's current description is unset. */
   purpose?: string | null;
 }
-export const UpdateTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subprocessorId: S.String.pipe(T.Label()),
@@ -13337,7 +12689,7 @@ export interface UpdateTrustCenterSubscriberGroupRequest {
   /** Updated name of the subscriber group. */
   name: string;
 }
-export const UpdateTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subscriberGroupId: S.String.pipe(T.Label()),
@@ -13365,7 +12717,7 @@ export interface UpdateTrustCenterUpdateRequest {
   /** Visibility type of the update. */
   visibilityType?: UpdateVisibilityType | (string & {});
 }
-export const UpdateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     updateId: S.String.pipe(T.Label()),
@@ -13382,7 +12734,7 @@ export const UpdateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for the resources that this viewer should have access to. */
 export type UpdateTrustCenterViewerRequestResourceIdsList = Array<string>;
-export const UpdateTrustCenterViewerRequestResourceIdsList =
+const UpdateTrustCenterViewerRequestResourceIdsList =
   ControlDomainsList as any as S.Schema<UpdateTrustCenterViewerRequestResourceIdsList>;
 
 export interface UpdateTrustCenterViewerRequest {
@@ -13399,7 +12751,7 @@ export interface UpdateTrustCenterViewerRequest {
   /** ID of a Customer Trust Account to associate with this viewer. Set to null to remove the association. Omit to leave unchanged. */
   customerTrustAccountId?: string | null;
 }
-export const UpdateTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     viewerId: S.String.pipe(T.Label()),
@@ -13428,7 +12780,7 @@ export interface UpdateVendorRequestAuthDetails {
   /** The authentication method the vendor uses. */
   method?: VendorAuthenticationMethod | (string & {}) | null;
 }
-export const UpdateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
+const UpdateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordMinimumLength: S.optional(S.Number),
     passwordRequiresSymbol: S.optional(S.Boolean),
@@ -13442,12 +12794,12 @@ export const UpdateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of risk attribute ids the vendor has been assigned. */
 export type UpdateVendorRequestRiskAttributeIdsList = Array<string>;
-export const UpdateVendorRequestRiskAttributeIdsList =
+const UpdateVendorRequestRiskAttributeIdsList =
   ControlDomainsList as any as S.Schema<UpdateVendorRequestRiskAttributeIdsList>;
 
 /** The custom fields for the vendor. For more information on how to set custom fields via the API, visit https://developer.vanta.com/docs/guides/use-custom-fields-with-vendors */
 export type UpdateVendorRequestCustomFieldsList = Array<CustomField>;
-export const UpdateVendorRequestCustomFieldsList =
+const UpdateVendorRequestCustomFieldsList =
   ControlCustomFieldsList as any as S.Schema<UpdateVendorRequestCustomFieldsList>;
 
 export interface UpdateVendorRequest {
@@ -13497,7 +12849,7 @@ export interface UpdateVendorRequest {
   /** Framework scoping configuration for this vendor. Determines which compliance frameworks the vendor applies to. */
   frameworkScope?: VendorFrameworkScope;
 }
-export const UpdateVendorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVendorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -13527,8 +12879,6 @@ export const UpdateVendorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Remediation information about the finding. Will only be populated if riskStatus is set to "REMEDIATE". */
 export type UpdateVendorFindingRequestRemediation = CreateVendorFindingRequestRemediation;
-export const UpdateVendorFindingRequestRemediation = CreateVendorFindingRequestRemediation;
-
 export interface UpdateVendorFindingRequest {
   vendorId: string;
   findingId: string;
@@ -13539,7 +12889,7 @@ export interface UpdateVendorFindingRequest {
   /** Remediation information about the finding. Will only be populated if riskStatus is set to "REMEDIATE". */
   remediation?: CreateVendorFindingRequestRemediation;
 }
-export const UpdateVendorFindingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVendorFindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     findingId: S.String.pipe(T.Label()),
@@ -13553,7 +12903,7 @@ export const UpdateVendorFindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the resource. A non-empty array replaces the existing tag set; pass `[]` to clear all tags. */
 export type UpdateWebpageResourceRequestTagsList = Array<TagInput>;
-export const UpdateWebpageResourceRequestTagsList =
+const UpdateWebpageResourceRequestTagsList =
   CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateWebpageResourceRequestTagsList>;
 
 export interface UpdateWebpageResourceRequest {
@@ -13577,7 +12927,7 @@ export interface UpdateWebpageResourceRequest {
   /** Trust Center category id to associate this resource with. Pass `null` to move the resource to uncategorized. Only valid when the resource's effective visibility (after applying any patched `customerVisibility`) is PUBLIC; other combinations and unknown ids return an InvalidInputError. */
   categoryId?: string | null;
 }
-export const UpdateWebpageResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebpageResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     title: S.optional(S.String),
@@ -13599,7 +12949,7 @@ export interface UploadComplianceFrameworkBadgeRequest {
   frameworkId: string;
   file: string;
 }
-export const UploadComplianceFrameworkBadgeRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadComplianceFrameworkBadgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     frameworkId: S.String.pipe(T.Label()),
@@ -13620,7 +12970,7 @@ export interface BadgeUploadResponse {
   /** Whether the upload succeeded. */
   isSuccessful: boolean;
 }
-export const BadgeUploadResponse = InviteReminderResponse as any as S.Schema<BadgeUploadResponse>;
+const BadgeUploadResponse = InviteReminderResponse as any as S.Schema<BadgeUploadResponse>;
 
 export interface UploadContractRequest {
   /** The contract file to upload. Only PDF files are accepted. */
@@ -13632,7 +12982,7 @@ export interface UploadContractRequest {
   /** Stable source-system identifier used to reject duplicate contract uploads; repeats return 409. Use the upstream document or record ID when available, such as the Microsoft Graph DriveItem ID for SharePoint or the Ironclad record ID for Ironclad. If there is no source system, generate and store a durable idempotency key. Maximum 256 characters. */
   externalId?: string;
 }
-export const UploadContractRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
     executedDate: S.optional(S.String),
@@ -13652,7 +13002,7 @@ export interface UploadDocumentForSecurityReviewRequest {
   /** The document's description. */
   description?: string;
 }
-export const UploadDocumentForSecurityReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDocumentForSecurityReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     securityReviewId: S.String.pipe(T.Label()),
@@ -13682,7 +13032,7 @@ export interface UploadDocumentToVendorRequest {
   /** The document's description. */
   description?: string;
 }
-export const UploadDocumentToVendorRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDocumentToVendorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendorId: S.String.pipe(T.Label()),
     file: S.String,
@@ -13709,7 +13059,7 @@ export interface UploadFileForDocumentRequest {
   /** Description of the uploaded document. */
   description?: string;
 }
-export const UploadFileForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFileForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     file: S.String,
@@ -13731,7 +13081,7 @@ export interface UploadTrustCenterFaviconRequest {
   slugId: string;
   favicon: string;
 }
-export const UploadTrustCenterFaviconRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadTrustCenterFaviconRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     favicon: S.String,
@@ -13752,12 +13102,11 @@ export interface UploadFaviconResponse {
   /** Whether the favicon was successfully uploaded. */
   isSuccessful: boolean;
 }
-export const UploadFaviconResponse =
-  InviteReminderResponse as any as S.Schema<UploadFaviconResponse>;
+const UploadFaviconResponse = InviteReminderResponse as any as S.Schema<UploadFaviconResponse>;
 
 /** Group IDs to set for the subscriber. The subscriber will be removed from any groups not included in this list. */
 export type UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList = Array<string>;
-export const UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList =
+const UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList =
   ControlDomainsList as any as S.Schema<UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList>;
 
 export interface UpsertGroupsForTrustCenterSubscriberRequest {
@@ -13766,7 +13115,7 @@ export interface UpsertGroupsForTrustCenterSubscriberRequest {
   /** Group IDs to set for the subscriber. The subscriber will be removed from any groups not included in this list. */
   groupIds: UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList;
 }
-export const UpsertGroupsForTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertGroupsForTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     subscriberId: S.String.pipe(T.Label()),
@@ -13784,7 +13133,7 @@ export const UpsertGroupsForTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspe
 
 /** Ordered list of all control category IDs representing the desired order. */
 export type UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList = Array<string>;
-export const UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList =
+const UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList =
   CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList as any as S.Schema<UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList>;
 
 export interface UpsertTrustCenterControlCategoriesOrderRequest {
@@ -13792,7 +13141,7 @@ export interface UpsertTrustCenterControlCategoriesOrderRequest {
   /** Ordered list of all control category IDs representing the desired order. */
   orderedCategoryIds: UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList;
 }
-export const UpsertTrustCenterControlCategoriesOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertTrustCenterControlCategoriesOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     orderedCategoryIds: UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList,
@@ -13805,7 +13154,7 @@ export const UpsertTrustCenterControlCategoriesOrderRequest = /*@__PURE__*/ S.su
 
 /** Ordered list of all control IDs in the category representing the desired order. */
 export type UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList = Array<string>;
-export const UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList =
+const UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList =
   CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList as any as S.Schema<UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList>;
 
 export interface UpsertTrustCenterControlsInCategoryOrderRequest {
@@ -13814,7 +13163,7 @@ export interface UpsertTrustCenterControlsInCategoryOrderRequest {
   /** Ordered list of all control IDs in the category representing the desired order. */
   orderedControlIds: UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList;
 }
-export const UpsertTrustCenterControlsInCategoryOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertTrustCenterControlsInCategoryOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryId: S.String.pipe(T.Label()),
@@ -13836,12 +13185,9 @@ export interface DataCollectedInputItem {
   /** Status of the data collection disclosure. Must be one of "COLLECTED", "HIDDEN", or "NOT_COLLECTED". */
   status: DataCollectedStatus | (string & {});
 }
-export const DataCollectedInputItem =
-  TrustCenterDataCollected as any as S.Schema<DataCollectedInputItem>;
-
 /** List of data-collected disclosures to set on the Trust Center. */
 export type UpsertTrustCenterDataCollectedRequestDataCollectedList = Array<DataCollectedInputItem>;
-export const UpsertTrustCenterDataCollectedRequestDataCollectedList =
+const UpsertTrustCenterDataCollectedRequestDataCollectedList =
   ArrayResponseTrustCenterDataCollectedResultsList as any as S.Schema<UpsertTrustCenterDataCollectedRequestDataCollectedList>;
 
 export interface UpsertTrustCenterDataCollectedRequest {
@@ -13851,7 +13197,7 @@ export interface UpsertTrustCenterDataCollectedRequest {
   /** Custom heading for the data collected section. If null is passed in, unsets the current heading. */
   dataCollectedHeading?: string | null;
 }
-export const UpsertTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     dataCollected: UpsertTrustCenterDataCollectedRequestDataCollectedList,
@@ -13863,7 +13209,7 @@ export const UpsertTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Ordered list of all resource category IDs representing the desired order. */
 export type UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList = Array<string>;
-export const UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList =
+const UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList =
   ControlDomainsList as any as S.Schema<UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList>;
 
 export interface UpsertTrustCenterResourceCategoriesOrderRequest {
@@ -13871,7 +13217,7 @@ export interface UpsertTrustCenterResourceCategoriesOrderRequest {
   /** Ordered list of all resource category IDs representing the desired order. */
   categoryIds: UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList;
 }
-export const UpsertTrustCenterResourceCategoriesOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertTrustCenterResourceCategoriesOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     categoryIds: UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList,
@@ -13890,7 +13236,7 @@ export interface SetTrustCenterVideoItem {
   /** Description of the video. */
   description?: string;
 }
-export const SetTrustCenterVideoItem = /*@__PURE__*/ S.suspend(() =>
+const SetTrustCenterVideoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     title: S.String,
@@ -13900,7 +13246,7 @@ export const SetTrustCenterVideoItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The videos to display on the Trust Center. Replaces all existing videos. */
 export type UpsertTrustCenterVideosRequestVideosList = Array<SetTrustCenterVideoItem>;
-export const UpsertTrustCenterVideosRequestVideosList = /*@__PURE__*/ S.Array(
+const UpsertTrustCenterVideosRequestVideosList = /*@__PURE__*/ S.Array(
   SetTrustCenterVideoItem,
 ) as any as S.Schema<UpsertTrustCenterVideosRequestVideosList>;
 
@@ -13909,7 +13255,7 @@ export interface UpsertTrustCenterVideosRequest {
   /** The videos to display on the Trust Center. Replaces all existing videos. */
   videos: UpsertTrustCenterVideosRequestVideosList;
 }
-export const UpsertTrustCenterVideosRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertTrustCenterVideosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slugId: S.String.pipe(T.Label()),
     videos: UpsertTrustCenterVideosRequestVideosList,
@@ -13926,7 +13272,7 @@ export interface TrustCenterVideo {
   /** Description of the video. */
   description?: string | null;
 }
-export const TrustCenterVideo = /*@__PURE__*/ S.suspend(() =>
+const TrustCenterVideo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     title: S.String,
@@ -13935,14 +13281,14 @@ export const TrustCenterVideo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrustCenterVideo" }) as any as S.Schema<TrustCenterVideo>;
 
 export type ArrayResponseTrustCenterVideoResultsList = Array<TrustCenterVideo>;
-export const ArrayResponseTrustCenterVideoResultsList = /*@__PURE__*/ S.Array(
+const ArrayResponseTrustCenterVideoResultsList = /*@__PURE__*/ S.Array(
   TrustCenterVideo,
 ) as any as S.Schema<ArrayResponseTrustCenterVideoResultsList>;
 
 export interface ArrayResponseTrustCenterVideo {
   results: ArrayResponseTrustCenterVideoResultsList;
 }
-export const ArrayResponseTrustCenterVideo = /*@__PURE__*/ S.suspend(() =>
+const ArrayResponseTrustCenterVideo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ArrayResponseTrustCenterVideoResultsList,
   }),
@@ -13955,7 +13301,7 @@ export interface VerifyAnswerLibraryEntryRouteRequest {
   /** The expiration date in ISO 8601 format. If omitted, falls back to the configured review cadence. */
   expirationDate?: string;
 }
-export const VerifyAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expirationDate: S.optional(S.String),
@@ -13969,7 +13315,7 @@ export interface VerifyKnowledgeBaseResourceRequest {
   /** The expiration date in ISO 8601 format. If omitted, falls back to the configured review cadence. */
   expirationDate?: string;
 }
-export const VerifyKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expirationDate: S.optional(S.String),
@@ -13979,7 +13325,7 @@ export const VerifyKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifyKnowledgeBaseResourceRequest>;
 
 export type VerifyKnowledgeBaseResourceResponse = TrustKnowledgeBaseResourceOutput;
-export const VerifyKnowledgeBaseResourceResponse =
+const VerifyKnowledgeBaseResourceResponse =
   GetKnowledgeBaseResourceResponse as any as S.Schema<VerifyKnowledgeBaseResourceResponse>;
 
 export type AcknowledgeSlaMissVulnerabilityRemediationsError = VantaOpError;

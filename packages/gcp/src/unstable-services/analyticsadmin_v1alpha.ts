@@ -66,14 +66,14 @@ export interface GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
   /** Required. An acknowledgement that the caller of this method understands the terms of user data collection. This field must contain the exact value: "I acknowledge that I have the necessary privacy disclosures and rights from my end users for the collection and processing of their data, including the association of such data with the visitation information Google Analytics collects from my site and/or app property." */
   acknowledgement?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       acknowledgement: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest>;
 
 export interface AcknowledgeUserDataCollectionPropertiesRequest {
   /** Required. The property for which to acknowledge user data collection. */
@@ -81,7 +81,7 @@ export interface AcknowledgeUserDataCollectionPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest;
 }
-export const AcknowledgeUserDataCollectionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeUserDataCollectionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.String.pipe(T.Label()),
     body: S.optional(
@@ -100,14 +100,15 @@ export const AcknowledgeUserDataCollectionPropertiesRequest = /*@__PURE__*/ S.su
 
 /** Response message for AcknowledgeUserDataCollection RPC. */
 export interface GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse {}
-export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse>;
+const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse>;
 
 /** Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC. */
 export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest {}
-export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest =
+const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest =
   GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse as any as S.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest>;
 
 export interface ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
@@ -116,25 +117,24 @@ export interface ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest 
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
 }
-export const ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.pipe(
-          T.HttpBody(),
-        ),
+const ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.pipe(
+        T.HttpBody(),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:approve",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
     ),
-  ).annotate({
-    identifier: "ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
-  }) as any as S.Schema<ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/{+name}:approve",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
+}) as any as S.Schema<ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 /** A link between a Google Analytics property and a Display & Video 360 advertiser. */
 export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
@@ -151,16 +151,15 @@ export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /** Immutable. Enables the import of cost data from Display & Video 360 into the Google Analytics property. This can only be enabled if `campaign_data_sharing_enabled` is true. After link creation, this can only be updated from the Display & Video 360 product. If this field is not set on create, it will be defaulted to true. */
   costDataSharingEnabled?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      adsPersonalizationEnabled: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      advertiserId: S.optional(S.String),
-      campaignDataSharingEnabled: S.optional(S.Boolean),
-      advertiserDisplayName: S.optional(S.String),
-      costDataSharingEnabled: S.optional(S.Boolean),
-    }),
+const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adsPersonalizationEnabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    advertiserId: S.optional(S.String),
+    campaignDataSharingEnabled: S.optional(S.Boolean),
+    advertiserDisplayName: S.optional(S.String),
+    costDataSharingEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
@@ -170,7 +169,7 @@ export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLink
   /** The DisplayVideo360AdvertiserLink created as a result of approving the proposal. */
   displayVideo360AdvertiserLink?: GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
 }
-export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse =
+const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayVideo360AdvertiserLink: S.optional(
@@ -184,16 +183,13 @@ export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProp
 /** Request message for ArchiveAudience RPC. */
 export type GoogleAnalyticsAdminV1alphaArchiveAudienceRequest =
   GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-export const GoogleAnalyticsAdminV1alphaArchiveAudienceRequest =
-  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-
 export interface ArchivePropertiesAudiencesRequest {
   /** Required. Example format: properties/1234/audiences/5678 */
   name: string;
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
 }
-export const ArchivePropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchivePropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -214,23 +210,20 @@ export const ArchivePropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
 /** Request message for ArchiveCustomDimension RPC. */
 export type GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest =
   GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-export const GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest =
-  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-
 export interface ArchivePropertiesCustomDimensionsRequest {
   /** Required. The name of the CustomDimension to archive. Example format: properties/1234/customDimensions/5678 */
   name: string;
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
 }
-export const ArchivePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchivePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -252,16 +245,13 @@ export const ArchivePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 /** Request message for ArchiveCustomMetric RPC. */
 export type GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest =
   GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-export const GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest =
-  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-
 export interface ArchivePropertiesCustomMetricsRequest {
   /** Required. The name of the CustomMetric to archive. Example format: properties/1234/customMetrics/5678 */
   name: string;
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
 }
-export const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -281,7 +271,7 @@ export const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ArchivePropertiesCustomMetricsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A binding of a user to a set of roles. */
 export interface GoogleAnalyticsAdminV1alphaAccessBinding {
@@ -292,7 +282,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessBinding {
   /** A list of roles for to grant to the parent resource. Valid values: predefinedRoles/viewer predefinedRoles/analyst predefinedRoles/editor predefinedRoles/admin predefinedRoles/no-cost-data predefinedRoles/no-revenue-data For users, if an empty list of roles is set, this AccessBinding will be deleted. */
   roles?: StringList;
 }
-export const GoogleAnalyticsAdminV1alphaAccessBinding = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     user: S.optional(S.String),
@@ -309,7 +299,7 @@ export interface GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest {
   /** Required. Formats: - accounts/{account} - properties/{property} */
   parent?: string;
 }
-export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessBinding: S.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
     parent: S.optional(S.String),
@@ -320,7 +310,7 @@ export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest = /*@__PURE__
 
 export type GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList =
   Array<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
-export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList>;
 
@@ -329,11 +319,10 @@ export interface GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest {
   /** Required. The requests specifying the access bindings to create. A maximum of 1000 access bindings can be created in a batch. */
   requests?: GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList),
-    }),
+const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest>;
@@ -344,7 +333,7 @@ export interface BatchCreateAccountsAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest;
 }
-export const BatchCreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -363,7 +352,7 @@ export const BatchCreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleAnalyticsAdminV1alphaAccessBindingList =
   Array<GoogleAnalyticsAdminV1alphaAccessBinding>;
-export const GoogleAnalyticsAdminV1alphaAccessBindingList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessBindingList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessBinding,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessBindingList>;
 
@@ -372,11 +361,10 @@ export interface GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse {
   /** The access bindings created. */
   accessBindings?: GoogleAnalyticsAdminV1alphaAccessBindingList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessBindings: S.optional(GoogleAnalyticsAdminV1alphaAccessBindingList),
-    }),
+const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessBindings: S.optional(GoogleAnalyticsAdminV1alphaAccessBindingList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse>;
@@ -387,7 +375,7 @@ export interface BatchCreatePropertiesAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest;
 }
-export const BatchCreatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -409,7 +397,7 @@ export interface GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest {
   /** Required. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -419,7 +407,7 @@ export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest = /*@__PURE__
 
 export type GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList =
   Array<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
-export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList>;
 
@@ -428,11 +416,10 @@ export interface GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest {
   /** Required. The requests specifying the access bindings to delete. A maximum of 1000 access bindings can be deleted in a batch. */
   requests?: GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList),
-    }),
+const GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest>;
@@ -443,7 +430,7 @@ export interface BatchDeleteAccountsAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest;
 }
-export const BatchDeleteAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -466,7 +453,7 @@ export interface BatchDeletePropertiesAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest;
 }
-export const BatchDeletePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeletePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -489,7 +476,7 @@ export interface BatchGetAccountsAccessBindingsRequest {
   /** Required. The account or property that owns the access bindings. The parent of all provided values for the 'names' field must match this field. Formats: - accounts/{account} - properties/{property} */
   parent: string;
 }
-export const BatchGetAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -509,7 +496,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse {
   /** The requested access bindings. */
   accessBindings?: GoogleAnalyticsAdminV1alphaAccessBindingList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse =
+const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse>;
 
 export interface BatchGetPropertiesAccessBindingsRequest {
@@ -518,7 +505,7 @@ export interface BatchGetPropertiesAccessBindingsRequest {
   /** Required. The account or property that owns the access bindings. The parent of all provided values for the 'names' field must match this field. Formats: - accounts/{account} - properties/{property} */
   parent: string;
 }
-export const BatchGetPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -538,7 +525,7 @@ export interface GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest {
   /** Required. The access binding to update. */
   accessBinding?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
-export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessBinding: S.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
   }),
@@ -548,7 +535,7 @@ export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest = /*@__PURE__
 
 export type GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList =
   Array<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
-export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList>;
 
@@ -557,11 +544,10 @@ export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest {
   /** Required. The requests specifying the access bindings to update. A maximum of 1000 access bindings can be updated in a batch. */
   requests?: GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requests: S.optional(GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList),
-    }),
+const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest>;
@@ -572,7 +558,7 @@ export interface BatchUpdateAccountsAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest;
 }
-export const BatchUpdateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -594,7 +580,7 @@ export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse {
   /** The access bindings updated. */
   accessBindings?: GoogleAnalyticsAdminV1alphaAccessBindingList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse =
+const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse =
   GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse>;
 
 export interface BatchUpdatePropertiesAccessBindingsRequest {
@@ -603,7 +589,7 @@ export interface BatchUpdatePropertiesAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest;
 }
-export const BatchUpdatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -623,34 +609,30 @@ export const BatchUpdatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspen
 /** Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC. */
 export type GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest =
   GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-export const GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest =
-  GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
-
 export interface CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
   /** Required. The name of the DisplayVideo360AdvertiserLinkProposal to cancel. Example format: properties/1234/displayVideo360AdvertiserLinkProposals/5678 */
   name: string;
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest;
 }
-export const CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.pipe(
-          T.HttpBody(),
-        ),
+const CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest.pipe(
+        T.HttpBody(),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+name}:cancel",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
     ),
-  ).annotate({
-    identifier: "CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
-  }) as any as S.Schema<CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/{+name}:cancel",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
+}) as any as S.Schema<CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum =
   | "LINK_PROPOSAL_STATE_UNSPECIFIED"
@@ -660,13 +642,13 @@ export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStat
   | "DECLINED"
   | "EXPIRED"
   | "OBSOLETE";
-export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum = S.String;
+const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
   | "LINK_PROPOSAL_INITIATING_PRODUCT_UNSPECIFIED"
   | "GOOGLE_ANALYTICS"
   | "LINKED_PRODUCT";
-export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
+const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
   S.String;
 
 /** Status information for a link proposal. */
@@ -682,7 +664,7 @@ export interface GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
   /** Output only. The email address of the user that proposed this linkage. */
   requestorEmail?: string;
 }
-export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkProposalState: S.optional(
       GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum,
@@ -715,8 +697,8 @@ export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposa
   /** Immutable. Enables the import of campaign data from Display & Video 360. If this field is not set on create, it will be defaulted to true. */
   campaignDataSharingEnabled?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       advertiserId: S.optional(S.String),
       adsPersonalizationEnabled: S.optional(S.Boolean),
@@ -727,9 +709,9 @@ export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal =
       costDataSharingEnabled: S.optional(S.Boolean),
       campaignDataSharingEnabled: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
 
 export interface CreateAccountsAccessBindingsRequest {
   /** Required. Formats: - accounts/{account} - properties/{property} */
@@ -737,7 +719,7 @@ export interface CreateAccountsAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
-export const CreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaAccessBinding.pipe(T.HttpBody())),
@@ -780,20 +762,20 @@ export type GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum =
   | "SPORTS"
   | "JOBS_AND_EDUCATION"
   | "SHOPPING";
-export const GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum = S.String;
+const GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
   | "PROPERTY_TYPE_ROLLUP";
-export const GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "GOOGLE_ANALYTICS_STANDARD"
   | "GOOGLE_ANALYTICS_360";
-export const GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum = S.String;
+const GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum = S.String;
 
 /** A resource message representing a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1alphaProperty {
@@ -824,7 +806,7 @@ export interface GoogleAnalyticsAdminV1alphaProperty {
   /** Output only. The Google Analytics service level that applies to this property. */
   serviceLevel?: GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaProperty = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     deleteTime: S.optional(S.String),
@@ -848,7 +830,7 @@ export interface CreatePropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaProperty;
 }
-export const CreatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleAnalyticsAdminV1alphaProperty.pipe(T.HttpBody())),
   }).pipe(
@@ -866,7 +848,7 @@ export interface CreatePropertiesAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
-export const CreatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaAccessBinding.pipe(T.HttpBody())),
@@ -888,7 +870,7 @@ export interface GoogleAnalyticsAdminV1alphaAdSenseLink {
   /** Immutable. The AdSense ad client code that the Google Analytics property is linked to. Example format: "ca-pub-1234567890" */
   adClientCode?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAdSenseLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAdSenseLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     adClientCode: S.optional(S.String),
@@ -903,7 +885,7 @@ export interface CreatePropertiesAdSenseLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAdSenseLink;
 }
-export const CreatePropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaAdSenseLink.pipe(T.HttpBody())),
@@ -922,7 +904,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum =
   | "LOG_CONDITION_UNSPECIFIED"
   | "AUDIENCE_JOINED"
   | "AUDIENCE_MEMBERSHIP_RENEWED";
-export const GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum = S.String;
 
 /** Specifies an event to log when a user joins the Audience. */
 export interface GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
@@ -931,7 +913,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
   /** Required. When to log the event. */
   logCondition?: GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceEventTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     logCondition: S.optional(GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum),
@@ -947,7 +929,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumer
   /** Double value. */
   doubleValue?: number;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       int64Value: S.optional(S.String),
@@ -964,7 +946,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetwe
   /** Required. Begins with this number, inclusive. */
   fromValue?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       toValue: S.optional(GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue),
@@ -981,7 +963,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilt
   | "ENDS_WITH"
   | "CONTAINS"
   | "FULL_REGEXP";
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilterMatchTypeEnum =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilterMatchTypeEnum =
   S.String;
 
 /** A filter for a string-type dimension that matches a particular pattern. */
@@ -995,7 +977,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStrin
   /** Required. The string value to be matched against. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       caseSensitive: S.optional(S.Boolean),
@@ -1015,7 +997,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInLis
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. */
   caseSensitive?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       values: S.optional(StringList),
@@ -1030,7 +1012,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFil
   | "EQUAL"
   | "LESS_THAN"
   | "GREATER_THAN";
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum =
   S.String;
 
 /** A filter for numeric or date values on a dimension or metric. */
@@ -1042,7 +1024,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumer
   /** Required. The numeric or date value to match against. */
   value?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter =
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation: S.optional(
@@ -1071,32 +1053,31 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter {
   /** A filter for numeric or date values on a dimension or metric. */
   numericFilter?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      atAnyPointInTime: S.optional(S.Boolean),
-      fieldName: S.optional(S.String),
-      inAnyNDayPeriod: S.optional(S.Number),
-      betweenFilter: S.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter,
-      ),
-      stringFilter: S.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter,
-      ),
-      inListFilter: S.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter,
-      ),
-      numericFilter: S.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter,
-      ),
-    }),
+const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    atAnyPointInTime: S.optional(S.Boolean),
+    fieldName: S.optional(S.String),
+    inAnyNDayPeriod: S.optional(S.Number),
+    betweenFilter: S.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter,
+    ),
+    stringFilter: S.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter,
+    ),
+    inListFilter: S.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter,
+    ),
+    numericFilter: S.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ =
   Array<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
-export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleAnalyticsAdminV1alphaAudienceFilterExpression),
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_>;
 
@@ -1105,7 +1086,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList {
   /** A list of Audience filter expressions. */
   filterExpressions?: GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterExpressions: S.optional(GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_),
   }),
@@ -1120,7 +1101,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceEventFilter {
   /** Required. Immutable. The name of the event to match against. */
   eventName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceEventFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceEventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventParameterFilterExpression: S.optional(
       S.suspend(() => GoogleAnalyticsAdminV1alphaAudienceFilterExpression),
@@ -1144,7 +1125,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpression {
   /** Creates a filter that matches a specific event. This cannot be set on the top level AudienceFilterExpression. */
   eventFilter?: GoogleAnalyticsAdminV1alphaAudienceEventFilter;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceFilterExpression = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceFilterExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionOrMetricFilter: S.optional(GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter),
     andGroup: S.optional(GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList),
@@ -1161,7 +1142,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum =
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
   | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
-export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum = S.String;
 
 /** Defines a simple filter that a user must satisfy to be a member of the Audience. */
 export interface GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
@@ -1170,7 +1151,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
   /** Required. Immutable. Specifies the scope for this filter. */
   scope?: GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceSimpleFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterExpression: S.optional(GoogleAnalyticsAdminV1alphaAudienceFilterExpression),
     scope: S.optional(GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum),
@@ -1184,8 +1165,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSte
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
   | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepScopeEnum =
-  S.String;
+const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepScopeEnum = S.String;
 
 /** A condition that must occur in the specified step order for this user to match the sequence. */
 export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep {
@@ -1200,7 +1180,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequen
   /** Required. Immutable. A logical expression of Audience dimension, metric, or event filters in each step. */
   filterExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
 }
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep =
+const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       immediatelyFollows: S.optional(S.Boolean),
@@ -1216,7 +1196,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSt
 
 export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
   Array<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
+const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep,
   ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList>;
@@ -1226,7 +1206,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum =
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
   | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum = S.String;
 
 /** Defines filters that must occur in a specific order for the user to be a member of the Audience. */
 export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
@@ -1237,7 +1217,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
   /** Required. Immutable. Specifies the scope for this filter. */
   scope?: GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sequenceSteps: S.optional(
       GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList,
@@ -1253,7 +1233,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum =
   | "AUDIENCE_CLAUSE_TYPE_UNSPECIFIED"
   | "INCLUDE"
   | "EXCLUDE";
-export const GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum = S.String;
 
 /** A clause for defining either a simple or sequence filter. A filter can be inclusive (For example, users satisfying the filter clause are included in the Audience) or exclusive (For example, users satisfying the filter clause are excluded from the Audience). */
 export interface GoogleAnalyticsAdminV1alphaAudienceFilterClause {
@@ -1264,7 +1244,7 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterClause {
   /** Required. Specifies whether this is an include or exclude filter clause. */
   clauseType?: GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAudienceFilterClause = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudienceFilterClause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     simpleFilter: S.optional(GoogleAnalyticsAdminV1alphaAudienceSimpleFilter),
     sequenceFilter: S.optional(GoogleAnalyticsAdminV1alphaAudienceSequenceFilter),
@@ -1276,7 +1256,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceFilterClause = /*@__PURE__*/ S.s
 
 export type GoogleAnalyticsAdminV1alphaAudienceFilterClauseList =
   Array<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
-export const GoogleAnalyticsAdminV1alphaAudienceFilterClauseList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAudienceFilterClauseList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAudienceFilterClause,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterClauseList>;
 
@@ -1284,7 +1264,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum =
   | "AUDIENCE_EXCLUSION_DURATION_MODE_UNSPECIFIED"
   | "EXCLUDE_TEMPORARILY"
   | "EXCLUDE_PERMANENTLY";
-export const GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum = S.String;
 
 /** A resource message representing an Audience. */
 export interface GoogleAnalyticsAdminV1alphaAudience {
@@ -1309,7 +1289,7 @@ export interface GoogleAnalyticsAdminV1alphaAudience {
     | GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum
     | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAudience = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAudience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     eventTrigger: S.optional(GoogleAnalyticsAdminV1alphaAudienceEventTrigger),
@@ -1331,7 +1311,7 @@ export interface CreatePropertiesAudiencesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAudience;
 }
-export const CreatePropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaAudience.pipe(T.HttpBody())),
@@ -1369,7 +1349,7 @@ export interface GoogleAnalyticsAdminV1alphaBigQueryLink {
   /** The list of event names that will be excluded from exports. */
   excludedEvents?: StringList;
 }
-export const GoogleAnalyticsAdminV1alphaBigQueryLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaBigQueryLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeAdvertisingId: S.optional(S.Boolean),
     datasetLocation: S.optional(S.String),
@@ -1392,7 +1372,7 @@ export interface CreatePropertiesBigQueryLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBigQueryLink;
 }
-export const CreatePropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaBigQueryLink.pipe(T.HttpBody())),
@@ -1419,18 +1399,18 @@ export type GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum =
   | "SECONDS"
   | "MINUTES"
   | "HOURS";
-export const GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum = S.String;
+const GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum =
   | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
   | "COST_DATA"
   | "REVENUE_DATA";
-export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum = S.String;
+const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList = Array<
   GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum | (string & {})
 >;
-export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList =
+const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum,
   ) as any as S.Schema<GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList>;
@@ -1454,7 +1434,7 @@ export interface GoogleAnalyticsAdminV1alphaCalculatedMetric {
   /** Optional. Description for this calculated metric. Max length of 4096 characters. */
   description?: string;
 }
-export const GoogleAnalyticsAdminV1alphaCalculatedMetric = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaCalculatedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricUnit: S.optional(GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum),
     calculatedMetricId: S.optional(S.String),
@@ -1479,7 +1459,7 @@ export interface CreatePropertiesCalculatedMetricsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCalculatedMetric;
 }
-export const CreatePropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     calculatedMetricId: S.optional(S.String.pipe(T.Query())),
@@ -1503,7 +1483,7 @@ export type GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEn
   | "CONTAINS"
   | "FULL_REGEXP"
   | "PARTIAL_REGEXP";
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum = S.String;
 
 /** Filter where the field value is a String. The match is case insensitive. */
 export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
@@ -1514,12 +1494,11 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   /** Required. The string value to be matched against. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      matchType: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum),
-      value: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matchType: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum),
+    value: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter>;
@@ -1529,11 +1508,10 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter {
   /** Required. The list of possible string values to match against. Must be non-empty. */
   values?: StringList;
 }
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      values: S.optional(StringList),
-    }),
+const GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter>;
@@ -1547,7 +1525,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilter {
   /** A filter for a string dimension that matches a particular list of options. */
   inListFilter?: GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter;
 }
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaChannelGroupFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldName: S.optional(S.String),
     stringFilter: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter),
@@ -1559,7 +1537,7 @@ export const GoogleAnalyticsAdminV1alphaChannelGroupFilter = /*@__PURE__*/ S.sus
 
 export type GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ =
   Array<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression),
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_>;
 
@@ -1568,11 +1546,10 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList {
   /** A list of Channel Group filter expressions. */
   filterExpressions?: GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_;
 }
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filterExpressions: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_),
-    }),
+const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filterExpressions: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList>;
@@ -1588,7 +1565,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression {
   /** A list of expressions to OR'ed together. It cannot contain ChannelGroupFilterExpressions with and_group or or_group. */
   orGroup?: GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList;
 }
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notExpression: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression),
     filter: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilter),
@@ -1606,7 +1583,7 @@ export interface GoogleAnalyticsAdminV1alphaGroupingRule {
   /** Required. Customer defined display name for the channel. */
   displayName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaGroupingRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaGroupingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression),
     displayName: S.optional(S.String),
@@ -1617,7 +1594,7 @@ export const GoogleAnalyticsAdminV1alphaGroupingRule = /*@__PURE__*/ S.suspend((
 
 export type GoogleAnalyticsAdminV1alphaGroupingRuleList =
   Array<GoogleAnalyticsAdminV1alphaGroupingRule>;
-export const GoogleAnalyticsAdminV1alphaGroupingRuleList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaGroupingRuleList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaGroupingRule,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaGroupingRuleList>;
 
@@ -1636,7 +1613,7 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroup {
   /** Output only. If true, then this channel group is the Default Channel Group predefined by Google Analytics. Display name and grouping rules cannot be updated for this channel group. */
   systemDefined?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaChannelGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaChannelGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     primary: S.optional(S.Boolean),
@@ -1655,7 +1632,7 @@ export interface CreatePropertiesChannelGroupsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaChannelGroup;
 }
-export const CreatePropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaChannelGroup.pipe(T.HttpBody())),
@@ -1674,7 +1651,7 @@ export type GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum =
   | "CONVERSION_COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
   | "ONCE_PER_SESSION";
-export const GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum = S.String;
+const GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum = S.String;
 
 /** Defines a default value/currency for a conversion event. Both value and currency must be provided. */
 export interface GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue {
@@ -1683,15 +1660,15 @@ export interface GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValu
   /** When a conversion event for this event_name has no set currency, this currency will be applied as the default. Must be in ISO 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more information. */
   currencyCode?: string;
 }
-export const GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       value: S.optional(S.Number),
       currencyCode: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue>;
 
 /** A conversion event in a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1alphaConversionEvent {
@@ -1710,7 +1687,7 @@ export interface GoogleAnalyticsAdminV1alphaConversionEvent {
   /** Optional. Defines a default value/currency for a conversion event. */
   defaultConversionValue?: GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue;
 }
-export const GoogleAnalyticsAdminV1alphaConversionEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaConversionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     custom: S.optional(S.Boolean),
@@ -1732,7 +1709,7 @@ export interface CreatePropertiesConversionEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaConversionEvent;
 }
-export const CreatePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaConversionEvent.pipe(T.HttpBody())),
@@ -1752,7 +1729,7 @@ export type GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum =
   | "EVENT"
   | "USER"
   | "ITEM";
-export const GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum = S.String;
 
 /** A definition for a CustomDimension. */
 export interface GoogleAnalyticsAdminV1alphaCustomDimension {
@@ -1769,7 +1746,7 @@ export interface GoogleAnalyticsAdminV1alphaCustomDimension {
   /** Optional. If set to true, sets this dimension as NPA and excludes it from ads personalization. This is currently only supported by user-scoped custom dimensions. */
   disallowAdsPersonalization?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaCustomDimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaCustomDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterName: S.optional(S.String),
     description: S.optional(S.String),
@@ -1788,7 +1765,7 @@ export interface CreatePropertiesCustomDimensionsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCustomDimension;
 }
-export const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaCustomDimension.pipe(T.HttpBody())),
@@ -1807,12 +1784,10 @@ export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum 
   | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
   | "COST_DATA"
   | "REVENUE_DATA";
-export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum = S.String;
-
 export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList = Array<
   GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum | (string & {})
 >;
-export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
+const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
   GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList>;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
@@ -1827,10 +1802,10 @@ export type GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
   | "SECONDS"
   | "MINUTES"
   | "HOURS";
-export const GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum = S.String;
+const GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum = "METRIC_SCOPE_UNSPECIFIED" | "EVENT";
-export const GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum = S.String;
 
 /** A definition for a custom metric. */
 export interface GoogleAnalyticsAdminV1alphaCustomMetric {
@@ -1849,7 +1824,7 @@ export interface GoogleAnalyticsAdminV1alphaCustomMetric {
   /** Required. Immutable. The scope of this custom metric. */
   scope?: GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaCustomMetric = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaCustomMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     restrictedMetricType: S.optional(
@@ -1871,7 +1846,7 @@ export interface CreatePropertiesCustomMetricsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCustomMetric;
 }
-export const CreatePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaCustomMetric.pipe(T.HttpBody())),
@@ -1891,7 +1866,7 @@ export type GoogleAnalyticsAdminV1alphaDataStreamTypeEnum =
   | "WEB_DATA_STREAM"
   | "ANDROID_APP_DATA_STREAM"
   | "IOS_APP_DATA_STREAM";
-export const GoogleAnalyticsAdminV1alphaDataStreamTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaDataStreamTypeEnum = S.String;
 
 /** Data specific to iOS app streams. */
 export interface GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData {
@@ -1900,7 +1875,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData {
   /** Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated. */
   firebaseAppId?: string;
 }
-export const GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundleId: S.optional(S.String),
     firebaseAppId: S.optional(S.String),
@@ -1916,12 +1891,11 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData {
   /** Immutable. The package name for the app being measured. Example: "com.example.myandroidapp" */
   packageName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      firebaseAppId: S.optional(S.String),
-      packageName: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    firebaseAppId: S.optional(S.String),
+    packageName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData>;
@@ -1935,7 +1909,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamWebStreamData {
   /** Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is deleted and recreated. */
   firebaseAppId?: string;
 }
-export const GoogleAnalyticsAdminV1alphaDataStreamWebStreamData = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDataStreamWebStreamData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultUri: S.optional(S.String),
     measurementId: S.optional(S.String),
@@ -1964,7 +1938,7 @@ export interface GoogleAnalyticsAdminV1alphaDataStream {
   /** Data specific to web streams. Must be populated if type is WEB_DATA_STREAM. */
   webStreamData?: GoogleAnalyticsAdminV1alphaDataStreamWebStreamData;
 }
-export const GoogleAnalyticsAdminV1alphaDataStream = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDataStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1985,7 +1959,7 @@ export interface CreatePropertiesDataStreamsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDataStream;
 }
-export const CreatePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaDataStream.pipe(T.HttpBody())),
@@ -2016,7 +1990,7 @@ export type GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum =
   | "LESS_THAN_OR_EQUAL"
   | "REGULAR_EXPRESSION"
   | "REGULAR_EXPRESSION_CASE_INSENSITIVE";
-export const GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum = S.String;
 
 /** Defines a condition for when an Event Edit or Event Creation rule applies to an event. */
 export interface GoogleAnalyticsAdminV1alphaMatchingCondition {
@@ -2029,7 +2003,7 @@ export interface GoogleAnalyticsAdminV1alphaMatchingCondition {
   /** Required. The name of the field that is compared against for the condition. If 'event_name' is specified this condition will apply to the name of the event. Otherwise the condition will apply to a parameter with the specified name. This value cannot contain spaces. */
   field?: string;
 }
-export const GoogleAnalyticsAdminV1alphaMatchingCondition = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaMatchingCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     comparisonType: S.optional(GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum),
@@ -2042,7 +2016,7 @@ export const GoogleAnalyticsAdminV1alphaMatchingCondition = /*@__PURE__*/ S.susp
 
 export type GoogleAnalyticsAdminV1alphaMatchingConditionList =
   Array<GoogleAnalyticsAdminV1alphaMatchingCondition>;
-export const GoogleAnalyticsAdminV1alphaMatchingConditionList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaMatchingConditionList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaMatchingCondition,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaMatchingConditionList>;
 
@@ -2053,7 +2027,7 @@ export interface GoogleAnalyticsAdminV1alphaParameterMutation {
   /** Required. The name of the parameter to mutate. This value must: * be less than 40 characters. * be unique across across all mutations within the rule * consist only of letters, digits or _ (underscores) For event edit rules, the name may also be set to 'event_name' to modify the event_name in place. */
   parameter?: string;
 }
-export const GoogleAnalyticsAdminV1alphaParameterMutation = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaParameterMutation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterValue: S.optional(S.String),
     parameter: S.optional(S.String),
@@ -2064,7 +2038,7 @@ export const GoogleAnalyticsAdminV1alphaParameterMutation = /*@__PURE__*/ S.susp
 
 export type GoogleAnalyticsAdminV1alphaParameterMutationList =
   Array<GoogleAnalyticsAdminV1alphaParameterMutation>;
-export const GoogleAnalyticsAdminV1alphaParameterMutationList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaParameterMutationList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaParameterMutation,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaParameterMutationList>;
 
@@ -2081,7 +2055,7 @@ export interface GoogleAnalyticsAdminV1alphaEventCreateRule {
   /** If true, the source parameters are copied to the new event. If false, or unset, all non-internal parameters are not copied from the source event. Parameter mutations are applied after the parameters have been copied. */
   sourceCopyParameters?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaEventCreateRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaEventCreateRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     eventConditions: S.optional(GoogleAnalyticsAdminV1alphaMatchingConditionList),
@@ -2099,7 +2073,7 @@ export interface CreatePropertiesDataStreamsEventCreateRulesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaEventCreateRule;
 }
-export const CreatePropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaEventCreateRule.pipe(T.HttpBody())),
@@ -2127,7 +2101,7 @@ export interface GoogleAnalyticsAdminV1alphaEventEditRule {
   /** Required. The display name of this event edit rule. Maximum of 255 characters. */
   displayName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaEventEditRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaEventEditRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     processingOrder: S.optional(S.String),
@@ -2145,7 +2119,7 @@ export interface CreatePropertiesDataStreamsEventEditRulesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaEventEditRule;
 }
-export const CreatePropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaEventEditRule.pipe(T.HttpBody())),
@@ -2169,7 +2143,7 @@ export interface GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
   /** Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret} */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretValue: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2185,18 +2159,17 @@ export interface CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret;
 }
-export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/measurementProtocolSecrets",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/{+parent}/measurementProtocolSecrets",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -2214,7 +2187,7 @@ export interface GoogleAnalyticsAdminV1alphaEventMapping {
   /** The maximum revenue generated due to the event. Revenue currency will be defined at the property level. If not set, maximum event value won't be checked. */
   maxEventValue?: number;
 }
-export const GoogleAnalyticsAdminV1alphaEventMapping = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaEventMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minEventCount: S.optional(S.String),
     maxEventCount: S.optional(S.String),
@@ -2228,7 +2201,7 @@ export const GoogleAnalyticsAdminV1alphaEventMapping = /*@__PURE__*/ S.suspend((
 
 export type GoogleAnalyticsAdminV1alphaEventMappingList =
   Array<GoogleAnalyticsAdminV1alphaEventMapping>;
-export const GoogleAnalyticsAdminV1alphaEventMappingList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaEventMappingList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaEventMapping,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaEventMappingList>;
 
@@ -2237,7 +2210,7 @@ export type GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum =
   | "COARSE_VALUE_LOW"
   | "COARSE_VALUE_MEDIUM"
   | "COARSE_VALUE_HIGH";
-export const GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum = S.String;
+const GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum = S.String;
 
 /** Conversion value settings for a postback window for SKAdNetwork conversion value schema. */
 export interface GoogleAnalyticsAdminV1alphaConversionValues {
@@ -2252,7 +2225,7 @@ export interface GoogleAnalyticsAdminV1alphaConversionValues {
   /** Required. A coarse grained conversion value. This value is not guaranteed to be unique. */
   coarseValue?: GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaConversionValues = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaConversionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventMappings: S.optional(GoogleAnalyticsAdminV1alphaEventMappingList),
     lockEnabled: S.optional(S.Boolean),
@@ -2266,7 +2239,7 @@ export const GoogleAnalyticsAdminV1alphaConversionValues = /*@__PURE__*/ S.suspe
 
 export type GoogleAnalyticsAdminV1alphaConversionValuesList =
   Array<GoogleAnalyticsAdminV1alphaConversionValues>;
-export const GoogleAnalyticsAdminV1alphaConversionValuesList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaConversionValuesList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaConversionValues,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaConversionValuesList>;
 
@@ -2277,7 +2250,7 @@ export interface GoogleAnalyticsAdminV1alphaPostbackWindow {
   /** Ordering of the repeated field will be used to prioritize the conversion value settings. Lower indexed entries are prioritized higher. The first conversion value setting that evaluates to true will be selected. It must have at least one entry if enable_postback_window_settings is set to true. It can have maximum of 128 entries. */
   conversionValues?: GoogleAnalyticsAdminV1alphaConversionValuesList;
 }
-export const GoogleAnalyticsAdminV1alphaPostbackWindow = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaPostbackWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postbackWindowSettingsEnabled: S.optional(S.Boolean),
     conversionValues: S.optional(GoogleAnalyticsAdminV1alphaConversionValuesList),
@@ -2299,15 +2272,14 @@ export interface GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
   /** If enabled, the GA SDK will set conversion values using this schema definition, and schema will be exported to any Google Ads accounts linked to this property. If disabled, the GA SDK will not automatically set conversion values, and also the schema will not be exported to Ads. */
   applyConversionValues?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      postbackWindowOne: S.optional(GoogleAnalyticsAdminV1alphaPostbackWindow),
-      name: S.optional(S.String),
-      postbackWindowThree: S.optional(GoogleAnalyticsAdminV1alphaPostbackWindow),
-      postbackWindowTwo: S.optional(GoogleAnalyticsAdminV1alphaPostbackWindow),
-      applyConversionValues: S.optional(S.Boolean),
-    }),
+const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    postbackWindowOne: S.optional(GoogleAnalyticsAdminV1alphaPostbackWindow),
+    name: S.optional(S.String),
+    postbackWindowThree: S.optional(GoogleAnalyticsAdminV1alphaPostbackWindow),
+    postbackWindowTwo: S.optional(GoogleAnalyticsAdminV1alphaPostbackWindow),
+    applyConversionValues: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>;
@@ -2318,8 +2290,8 @@ export interface CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequ
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema;
 }
-export const CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(
@@ -2332,9 +2304,9 @@ export const CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest 
         baseUrl: "https://analyticsadmin.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
-  }) as any as S.Schema<CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+).annotate({
+  identifier: "CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
+}) as any as S.Schema<CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export interface CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
   /** Required. Example format: properties/1234 */
@@ -2342,23 +2314,22 @@ export interface CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal;
 }
-export const CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
+const CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal.pipe(T.HttpBody()),
     ),
-  ).annotate({
-    identifier: "CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
-  }) as any as S.Schema<CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
+}) as any as S.Schema<CreatePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export interface CreatePropertiesDisplayVideo360AdvertiserLinksRequest {
   /** Required. Example format: properties/1234 */
@@ -2366,7 +2337,7 @@ export interface CreatePropertiesDisplayVideo360AdvertiserLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
 }
-export const CreatePropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink.pipe(T.HttpBody())),
@@ -2385,7 +2356,7 @@ export type GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTyp
   | "MATCH_TYPE_UNSPECIFIED"
   | "EXACT"
   | "CONTAINS";
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum = S.String;
 
 /** A filter for a string-type dimension that matches a particular pattern. */
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
@@ -2398,15 +2369,14 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. Must be true when match_type is EXACT. Must be false when match_type is CONTAINS. */
   caseSensitive?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(S.String),
-      matchType: S.optional(
-        GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum,
-      ),
-      caseSensitive: S.optional(S.Boolean),
-    }),
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    matchType: S.optional(
+      GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum,
+    ),
+    caseSensitive: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter>;
@@ -2418,12 +2388,11 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter {
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. Must be true. */
   caseSensitive?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      values: S.optional(StringList),
-      caseSensitive: S.optional(S.Boolean),
-    }),
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(StringList),
+    caseSensitive: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter>;
@@ -2437,7 +2406,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilter {
   /** Required. The dimension name to filter. */
   fieldName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringFilter: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter),
     inListFilter: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter),
@@ -2449,26 +2418,22 @@ export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter = /*@__PURE__*/ S.
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ =
   Array<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ =
-  /*@__PURE__*/ S.Array(
-    S.suspend(() => GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression),
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_>;
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ = /*@__PURE__*/ S.Array(
+  S.suspend(() => GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression),
+) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_>;
 
 /** A list of ExpandedDataSet filter expressions. */
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList {
   /** A list of ExpandedDataSet filter expressions. */
   filterExpressions?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_;
 }
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filterExpressions: S.optional(
-        GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList>;
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filterExpressions: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_),
+  }),
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList>;
 
 /** A logical expression of EnhancedDataSet dimension filters. */
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression {
@@ -2479,13 +2444,12 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression {
   /** A list of expressions to be AND'ed together. It must contain a ExpandedDataSetFilterExpression with either not_expression or dimension_filter. This must be set for the top level ExpandedDataSetFilterExpression. */
   andGroup?: GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList;
 }
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notExpression: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression),
-      filter: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilter),
-      andGroup: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList),
-    }),
+const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notExpression: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression),
+    filter: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilter),
+    andGroup: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
@@ -2507,7 +2471,7 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSet {
   /** Required. The display name of the ExpandedDataSet. Max 200 chars. */
   displayName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaExpandedDataSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaExpandedDataSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataCollectionStartTime: S.optional(S.String),
     dimensionNames: S.optional(StringList),
@@ -2529,7 +2493,7 @@ export interface CreatePropertiesExpandedDataSetsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaExpandedDataSet;
 }
-export const CreatePropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSet.pipe(T.HttpBody())),
@@ -2553,7 +2517,7 @@ export interface GoogleAnalyticsAdminV1alphaFirebaseLink {
   /** Identifier. Example format: properties/1234/firebaseLinks/5678 */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1alphaFirebaseLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaFirebaseLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2569,7 +2533,7 @@ export interface CreatePropertiesFirebaseLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaFirebaseLink;
 }
-export const CreatePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaFirebaseLink.pipe(T.HttpBody())),
@@ -2601,7 +2565,7 @@ export interface GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   /** Output only. Time when this link was originally created. */
   createTime?: string;
 }
-export const GoogleAnalyticsAdminV1alphaGoogleAdsLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaGoogleAdsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     adsPersonalizationEnabled: S.optional(S.Boolean),
@@ -2621,7 +2585,7 @@ export interface CreatePropertiesGoogleAdsLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaGoogleAdsLink;
 }
-export const CreatePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaGoogleAdsLink.pipe(T.HttpBody())),
@@ -2643,7 +2607,7 @@ export interface GoogleAnalyticsAdminV1alphaKeyEventDefaultValue {
   /** Required. When an occurrence of this Key Event (specified by event_name) has no set currency this currency will be applied as the default. Must be in ISO 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more information. */
   currencyCode?: string;
 }
-export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numericValue: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -2656,7 +2620,7 @@ export type GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum =
   | "COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
   | "ONCE_PER_SESSION";
-export const GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum = S.String;
+const GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum = S.String;
 
 /** A key event in a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1alphaKeyEvent {
@@ -2675,7 +2639,7 @@ export interface GoogleAnalyticsAdminV1alphaKeyEvent {
   /** Required. The method by which Key Events will be counted across multiple events within a session. */
   countingMethod?: GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaKeyEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaKeyEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     custom: S.optional(S.Boolean),
@@ -2695,7 +2659,7 @@ export interface CreatePropertiesKeyEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaKeyEvent;
 }
-export const CreatePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaKeyEvent.pipe(T.HttpBody())),
@@ -2719,7 +2683,7 @@ export interface GoogleTypeDate {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -2736,7 +2700,7 @@ export type GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum =
   | "RED"
   | "CYAN"
   | "ORANGE";
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum = S.String;
+const GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum = S.String;
 
 /** Represents a Reporting Data Annotation's date range, both start and end dates are inclusive. Time zones are based on the parent property. */
 export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange {
@@ -2745,12 +2709,11 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange {
   /** Required. The end date for this range. Must be a valid date with year, month, and day set. This date must be greater than or equal to the start date. */
   endDate?: GoogleTypeDate;
 }
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      startDate: S.optional(GoogleTypeDate),
-      endDate: S.optional(GoogleTypeDate),
-    }),
+const GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startDate: S.optional(GoogleTypeDate),
+    endDate: S.optional(GoogleTypeDate),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange>;
@@ -2772,7 +2735,7 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotation {
   /** Optional. Description for this Reporting Data Annotation. */
   description?: string;
 }
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaReportingDataAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationDate: S.optional(GoogleTypeDate),
     name: S.optional(S.String),
@@ -2792,7 +2755,7 @@ export interface CreatePropertiesReportingDataAnnotationsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaReportingDataAnnotation;
 }
-export const CreatePropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaReportingDataAnnotation.pipe(T.HttpBody())),
@@ -2814,7 +2777,7 @@ export interface GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
   /** Immutable. Resource name of the source property. Format: properties/{property_id} Example: "properties/789" */
   sourceProperty?: string;
 }
-export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaRollupPropertySourceLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     sourceProperty: S.optional(S.String),
@@ -2829,7 +2792,7 @@ export interface CreatePropertiesRollupPropertySourceLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaRollupPropertySourceLink;
 }
-export const CreatePropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaRollupPropertySourceLink.pipe(T.HttpBody())),
@@ -2861,7 +2824,7 @@ export interface GoogleAnalyticsAdminV1alphaSearchAds360Link {
   /** Enables personalized advertising features with this integration. If this field is not set on create, it will be defaulted to true. */
   adsPersonalizationEnabled?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaSearchAds360Link = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSearchAds360Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserDisplayName: S.optional(S.String),
     siteStatsSharingEnabled: S.optional(S.Boolean),
@@ -2881,7 +2844,7 @@ export interface CreatePropertiesSearchAds360LinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSearchAds360Link;
 }
-export const CreatePropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaSearchAds360Link.pipe(T.HttpBody())),
@@ -2900,7 +2863,7 @@ export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseT
   | "FILTER_CLAUSE_TYPE_UNSPECIFIED"
   | "INCLUDE"
   | "EXCLUDE";
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum =
   | "MATCH_TYPE_UNSPECIFIED"
@@ -2910,7 +2873,7 @@ export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilt
   | "CONTAINS"
   | "FULL_REGEXP"
   | "PARTIAL_REGEXP";
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum =
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum =
   S.String;
 
 /** A filter for a string-type dimension that matches a particular pattern. */
@@ -2924,7 +2887,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStrin
   /** Optional. If true, the string value is case sensitive. If false, the match is case-insensitive. */
   caseSensitive?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter =
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       matchType: S.optional(
@@ -2946,41 +2909,39 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition {
   /** A filter for null values. */
   nullFilter?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stringFilter: S.optional(
-        GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter,
-      ),
-      fieldName: S.optional(S.String),
-      nullFilter: S.optional(S.Boolean),
-    }),
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stringFilter: S.optional(
+      GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter,
+    ),
+    fieldName: S.optional(S.String),
+    nullFilter: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ =
   Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ =
-  /*@__PURE__*/ S.Array(
-    S.suspend(() => GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression),
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_>;
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ = /*@__PURE__*/ S.Array(
+  S.suspend(() => GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression),
+) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_>;
 
 /** A list of Subproperty event filter expressions. */
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList {
   /** Required. Unordered list. A list of Subproperty event filter expressions */
   filterExpressions?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_;
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       filterExpressions: S.optional(
         GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList>;
 
 /** A logical expression of Subproperty event filters. */
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression {
@@ -2991,13 +2952,12 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression {
   /** A list of expressions to OR'ed together. Must only contain not_expression or filter_condition expressions. */
   orGroup?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList;
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      notExpression: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression),
-      filterCondition: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition),
-      orGroup: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList),
-    }),
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notExpression: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression),
+    filterCondition: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition),
+    orGroup: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
@@ -3011,7 +2971,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause {
   /** Required. The logical expression for what events are sent to the subproperty. */
   filterExpression?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression;
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterClauseType: S.optional(
       GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum,
@@ -3024,7 +2984,7 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause = /*@__PURE
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList =
   Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList>;
 
@@ -3037,7 +2997,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
   /** Immutable. Resource name of the Subproperty that uses this filter. */
   applyToProperty?: string;
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     filterClauses: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList),
@@ -3053,7 +3013,7 @@ export interface CreatePropertiesSubpropertyEventFiltersRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
 }
-export const CreatePropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.pipe(T.HttpBody())),
@@ -3075,7 +3035,7 @@ export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest {
   /** Required. The roll-up property to create. */
   rollupProperty?: GoogleAnalyticsAdminV1alphaProperty;
 }
-export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceProperties: S.optional(StringList),
     rollupProperty: S.optional(GoogleAnalyticsAdminV1alphaProperty),
@@ -3088,7 +3048,7 @@ export interface CreateRollupPropertyPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest;
 }
-export const CreateRollupPropertyPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRollupPropertyPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3104,7 +3064,7 @@ export const CreateRollupPropertyPropertiesRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList =
   Array<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
-export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaRollupPropertySourceLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList>;
 
@@ -3115,7 +3075,7 @@ export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse {
   /** The created roll-up property. */
   rollupProperty?: GoogleAnalyticsAdminV1alphaProperty;
 }
-export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollupPropertySourceLinks: S.optional(GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList),
     rollupProperty: S.optional(GoogleAnalyticsAdminV1alphaProperty),
@@ -3128,7 +3088,7 @@ export interface DeleteAccountsRequest {
   /** Required. The name of the Account to soft-delete. Format: accounts/{account} Example: "accounts/100" */
   name: string;
 }
-export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3144,7 +3104,7 @@ export interface DeleteAccountsAccessBindingsRequest {
   /** Required. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
   name: string;
 }
-export const DeleteAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3162,7 +3122,7 @@ export interface DeletePropertiesRequest {
   /** Required. The name of the Property to soft-delete. Format: properties/{property_id} Example: "properties/1000" */
   name: string;
 }
-export const DeletePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3178,7 +3138,7 @@ export interface DeletePropertiesAccessBindingsRequest {
   /** Required. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
   name: string;
 }
-export const DeletePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3196,7 +3156,7 @@ export interface DeletePropertiesAdSenseLinksRequest {
   /** Required. Unique identifier for the AdSense Link to be deleted. Format: properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/5678 */
   name: string;
 }
-export const DeletePropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3214,7 +3174,7 @@ export interface DeletePropertiesBigQueryLinksRequest {
   /** Required. The BigQueryLink to delete. Example format: properties/1234/bigQueryLinks/5678 */
   name: string;
 }
-export const DeletePropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3232,7 +3192,7 @@ export interface DeletePropertiesCalculatedMetricsRequest {
   /** Required. The name of the CalculatedMetric to delete. Format: properties/{property_id}/calculatedMetrics/{calculated_metric_id} Example: properties/1234/calculatedMetrics/Metric01 */
   name: string;
 }
-export const DeletePropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3250,7 +3210,7 @@ export interface DeletePropertiesChannelGroupsRequest {
   /** Required. The ChannelGroup to delete. Example format: properties/1234/channelGroups/5678 */
   name: string;
 }
-export const DeletePropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3268,7 +3228,7 @@ export interface DeletePropertiesConversionEventsRequest {
   /** Required. The resource name of the conversion event to delete. Format: properties/{property}/conversionEvents/{conversion_event} Example: "properties/123/conversionEvents/456" */
   name: string;
 }
-export const DeletePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3286,7 +3246,7 @@ export interface DeletePropertiesDataStreamsRequest {
   /** Required. The name of the DataStream to delete. Example format: properties/1234/dataStreams/5678 */
   name: string;
 }
-export const DeletePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3304,7 +3264,7 @@ export interface DeletePropertiesDataStreamsEventCreateRulesRequest {
   /** Required. Example format: properties/123/dataStreams/456/eventCreateRules/789 */
   name: string;
 }
-export const DeletePropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3322,7 +3282,7 @@ export interface DeletePropertiesDataStreamsEventEditRulesRequest {
   /** Required. Example format: properties/123/dataStreams/456/eventEditRules/789 */
   name: string;
 }
-export const DeletePropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3340,7 +3300,25 @@ export interface DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Required. The name of the MeasurementProtocolSecret to delete. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret} */
   name: string;
 }
-export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
+const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest",
+}) as any as S.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
+
+export interface DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest {
+  /** Required. The name of the SKAdNetworkConversionValueSchema to delete. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema} */
+  name: string;
+}
+const DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3352,52 +3330,32 @@ export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@_
       }),
     ),
 ).annotate({
-  identifier: "DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest",
-}) as any as S.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
-
-export interface DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest {
-  /** Required. The name of the SKAdNetworkConversionValueSchema to delete. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema} */
-  name: string;
-}
-export const DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
-  }) as any as S.Schema<DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+  identifier: "DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
+}) as any as S.Schema<DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export interface DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
   /** Required. The name of the DisplayVideo360AdvertiserLinkProposal to delete. Example format: properties/1234/displayVideo360AdvertiserLinkProposals/5678 */
   name: string;
 }
-export const DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
-  }) as any as S.Schema<DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
+const DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
+}) as any as S.Schema<DeletePropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export interface DeletePropertiesDisplayVideo360AdvertiserLinksRequest {
   /** Required. The name of the DisplayVideo360AdvertiserLink to delete. Example format: properties/1234/displayVideo360AdvertiserLinks/5678 */
   name: string;
 }
-export const DeletePropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3415,7 +3373,7 @@ export interface DeletePropertiesExpandedDataSetsRequest {
   /** Required. Example format: properties/1234/expandedDataSets/5678 */
   name: string;
 }
-export const DeletePropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3433,7 +3391,7 @@ export interface DeletePropertiesFirebaseLinksRequest {
   /** Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example: `properties/1234/firebaseLinks/5678` */
   name: string;
 }
-export const DeletePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3451,7 +3409,7 @@ export interface DeletePropertiesGoogleAdsLinksRequest {
   /** Required. Example format: properties/1234/googleAdsLinks/5678 */
   name: string;
 }
-export const DeletePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3469,7 +3427,7 @@ export interface DeletePropertiesKeyEventsRequest {
   /** Required. The resource name of the Key Event to delete. Format: properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456" */
   name: string;
 }
-export const DeletePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3487,7 +3445,7 @@ export interface DeletePropertiesReportingDataAnnotationsRequest {
   /** Required. Resource name of the Reporting Data Annotation to delete. Format: properties/property_id/reportingDataAnnotations/reporting_data_annotation Example: properties/123/reportingDataAnnotations/456 */
   name: string;
 }
-export const DeletePropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3505,7 +3463,7 @@ export interface DeletePropertiesRollupPropertySourceLinksRequest {
   /** Required. Format: properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link_id} Example: properties/1234/rollupPropertySourceLinks/5678 */
   name: string;
 }
-export const DeletePropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3523,7 +3481,7 @@ export interface DeletePropertiesSearchAds360LinksRequest {
   /** Required. The name of the SearchAds360Link to delete. Example format: properties/1234/SearchAds360Links/5678 */
   name: string;
 }
-export const DeletePropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3541,7 +3499,7 @@ export interface DeletePropertiesSubpropertyEventFiltersRequest {
   /** Required. Resource name of the subproperty event filter to delete. Format: properties/property_id/subpropertyEventFilters/subproperty_event_filter Example: properties/123/subpropertyEventFilters/456 */
   name: string;
 }
-export const DeletePropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3559,7 +3517,7 @@ export interface GetAccountsRequest {
   /** Required. The name of the account to lookup. Format: accounts/{account} Example: "accounts/100" */
   name: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3588,7 +3546,7 @@ export interface GoogleAnalyticsAdminV1alphaAccount {
   /** Country of business. Must be a Unicode CLDR region code. */
   regionCode?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccount = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.optional(S.Boolean),
     createTime: S.optional(S.String),
@@ -3606,7 +3564,7 @@ export interface GetAccountsAccessBindingsRequest {
   /** Required. The name of the access binding to retrieve. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
   name: string;
 }
-export const GetAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3624,7 +3582,7 @@ export interface GetAttributionSettingsPropertiesRequest {
   /** Required. The name of the attribution settings to retrieve. Format: properties/{property}/attributionSettings */
   name: string;
 }
-export const GetAttributionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAttributionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3643,29 +3601,28 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataEx
   | "NOT_SELECTED_YET"
   | "PAID_AND_ORGANIC_CHANNELS"
   | "GOOGLE_PAID_CHANNELS";
-export const GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum =
-  S.String;
+const GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum =
   | "REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED"
   | "PAID_AND_ORGANIC_CHANNELS_DATA_DRIVEN"
   | "PAID_AND_ORGANIC_CHANNELS_LAST_CLICK"
   | "GOOGLE_PAID_CHANNELS_LAST_CLICK";
-export const GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum =
   | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED"
   | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS"
   | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_60_DAYS"
   | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS";
-export const GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum =
+const GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum =
   S.String;
 
 export type GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
   | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED"
   | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_7_DAYS"
   | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS";
-export const GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
+const GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
   S.String;
 
 /** The attribution settings used for a given property. This is a singleton resource. */
@@ -3689,7 +3646,7 @@ export interface GoogleAnalyticsAdminV1alphaAttributionSettings {
   /** Output only. Resource name of this attribution settings resource. Format: properties/{property_id}/attributionSettings Example: "properties/1000/attributionSettings" */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAttributionSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAttributionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adsWebConversionDataExportScope: S.optional(
       GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum,
@@ -3713,7 +3670,7 @@ export interface GetDataRedactionSettingsPropertiesDataStreamsRequest {
   /** Required. The name of the settings to lookup. Format: properties/{property}/dataStreams/{data_stream}/dataRedactionSettings Example: "properties/1000/dataStreams/2000/dataRedactionSettings" */
   name: string;
 }
-export const GetDataRedactionSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataRedactionSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3738,7 +3695,7 @@ export interface GoogleAnalyticsAdminV1alphaDataRedactionSettings {
   /** If enabled, any event parameter or user property values that look like an email will be redacted. */
   emailRedactionEnabled?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaDataRedactionSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDataRedactionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     queryParameterRedactionEnabled: S.optional(S.Boolean),
@@ -3753,7 +3710,7 @@ export interface GetDataRetentionSettingsPropertiesRequest {
   /** Required. The name of the settings to lookup. Format: properties/{property}/dataRetentionSettings Example: "properties/1000/dataRetentionSettings" */
   name: string;
 }
-export const GetDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3774,7 +3731,7 @@ export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEn
   | "TWENTY_SIX_MONTHS"
   | "THIRTY_EIGHT_MONTHS"
   | "FIFTY_MONTHS";
-export const GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEnum = S.String;
+const GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum =
   | "RETENTION_DURATION_UNSPECIFIED"
@@ -3783,7 +3740,7 @@ export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnu
   | "TWENTY_SIX_MONTHS"
   | "THIRTY_EIGHT_MONTHS"
   | "FIFTY_MONTHS";
-export const GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum = S.String;
+const GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum = S.String;
 
 /** Settings values for data retention. This is a singleton resource. */
 export interface GoogleAnalyticsAdminV1alphaDataRetentionSettings {
@@ -3800,7 +3757,7 @@ export interface GoogleAnalyticsAdminV1alphaDataRetentionSettings {
   /** If true, reset the retention period for the user identifier with every event from that user. */
   resetUserDataOnNewActivity?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaDataRetentionSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDataRetentionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     eventDataRetention: S.optional(
@@ -3819,7 +3776,7 @@ export interface GetDataSharingSettingsAccountsRequest {
   /** Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example: `accounts/1000/dataSharingSettings` */
   name: string;
 }
-export const GetDataSharingSettingsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSharingSettingsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3848,7 +3805,7 @@ export interface GoogleAnalyticsAdminV1alphaDataSharingSettings {
   /** Enable features like predictions, modeled data, and benchmarking that can provide you with richer business insights when you contribute aggregated measurement data. The data you share (including information about the property from which it is shared) is aggregated and de-identified before being used to generate business insights. This field maps to the "Modeling contributions & business insights" field in the Google Analytics Admin UI. */
   sharingWithOthersEnabled?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaDataSharingSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaDataSharingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharingWithGoogleAssignedSalesEnabled: S.optional(S.Boolean),
     sharingWithGoogleSupportEnabled: S.optional(S.Boolean),
@@ -3865,17 +3822,16 @@ export interface GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest {
   /** Required. The name of the settings to lookup. Format: properties/{property}/dataStreams/{data_stream}/enhancedMeasurementSettings Example: "properties/1000/dataStreams/2000/enhancedMeasurementSettings" */
   name: string;
 }
-export const GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest",
 }) as any as S.Schema<GetEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
@@ -3905,7 +3861,7 @@ export interface GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   /** Required. URL query parameters to interpret as site search parameters. Max length is 1024 characters. Must not be empty. */
   searchQueryParameter?: string;
 }
-export const GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     videoEngagementEnabled: S.optional(S.Boolean),
@@ -3927,7 +3883,7 @@ export interface GetGlobalSiteTagPropertiesDataStreamsRequest {
   /** Required. The name of the site tag to lookup. Note that site tags are singletons and do not have unique IDs. Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example: `properties/123/dataStreams/456/globalSiteTag` */
   name: string;
 }
-export const GetGlobalSiteTagPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalSiteTagPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3948,7 +3904,7 @@ export interface GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   /** Identifier. Resource name for this GlobalSiteTag resource. Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example: "properties/123/dataStreams/456/globalSiteTag" */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1alphaGlobalSiteTag = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaGlobalSiteTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(S.String),
     name: S.optional(S.String),
@@ -3961,7 +3917,7 @@ export interface GetGoogleSignalsSettingsPropertiesRequest {
   /** Required. The name of the google signals settings to retrieve. Format: properties/{property}/googleSignalsSettings */
   name: string;
 }
-export const GetGoogleSignalsSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleSignalsSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3979,13 +3935,13 @@ export type GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum =
   | "GOOGLE_SIGNALS_STATE_UNSPECIFIED"
   | "GOOGLE_SIGNALS_ENABLED"
   | "GOOGLE_SIGNALS_DISABLED";
-export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum = S.String;
+const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum = S.String;
 
 export type GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum =
   | "GOOGLE_SIGNALS_CONSENT_UNSPECIFIED"
   | "GOOGLE_SIGNALS_CONSENT_CONSENTED"
   | "GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED";
-export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum = S.String;
+const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum = S.String;
 
 /** Settings values for Google Signals. This is a singleton resource. */
 export interface GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
@@ -3996,7 +3952,7 @@ export interface GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
   /** Output only. Terms of Service acceptance. */
   consent?: GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum),
     name: S.optional(S.String),
@@ -4010,7 +3966,7 @@ export interface GetPropertiesRequest {
   /** Required. The name of the property to lookup. Format: properties/{property_id} Example: "properties/1000" */
   name: string;
 }
-export const GetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4026,7 +3982,7 @@ export interface GetPropertiesAccessBindingsRequest {
   /** Required. The name of the access binding to retrieve. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
   name: string;
 }
-export const GetPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4044,7 +4000,7 @@ export interface GetPropertiesAdSenseLinksRequest {
   /** Required. Unique identifier for the AdSense Link requested. Format: properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/5678 */
   name: string;
 }
-export const GetPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4062,7 +4018,7 @@ export interface GetPropertiesAudiencesRequest {
   /** Required. The name of the Audience to get. Example format: properties/1234/audiences/5678 */
   name: string;
 }
-export const GetPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4080,7 +4036,7 @@ export interface GetPropertiesBigQueryLinksRequest {
   /** Required. The name of the BigQuery link to lookup. Format: properties/{property_id}/bigQueryLinks/{bigquery_link_id} Example: properties/123/bigQueryLinks/456 */
   name: string;
 }
-export const GetPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4098,7 +4054,7 @@ export interface GetPropertiesCalculatedMetricsRequest {
   /** Required. The name of the CalculatedMetric to get. Format: properties/{property_id}/calculatedMetrics/{calculated_metric_id} Example: properties/1234/calculatedMetrics/Metric01 */
   name: string;
 }
-export const GetPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4116,7 +4072,7 @@ export interface GetPropertiesChannelGroupsRequest {
   /** Required. The ChannelGroup to get. Example format: properties/1234/channelGroups/5678 */
   name: string;
 }
-export const GetPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4134,7 +4090,7 @@ export interface GetPropertiesConversionEventsRequest {
   /** Required. The resource name of the conversion event to retrieve. Format: properties/{property}/conversionEvents/{conversion_event} Example: "properties/123/conversionEvents/456" */
   name: string;
 }
-export const GetPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4152,7 +4108,7 @@ export interface GetPropertiesCustomDimensionsRequest {
   /** Required. The name of the CustomDimension to get. Example format: properties/1234/customDimensions/5678 */
   name: string;
 }
-export const GetPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4170,7 +4126,7 @@ export interface GetPropertiesCustomMetricsRequest {
   /** Required. The name of the CustomMetric to get. Example format: properties/1234/customMetrics/5678 */
   name: string;
 }
-export const GetPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4188,7 +4144,7 @@ export interface GetPropertiesDataStreamsRequest {
   /** Required. The name of the DataStream to get. Example format: properties/1234/dataStreams/5678 */
   name: string;
 }
-export const GetPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4206,7 +4162,7 @@ export interface GetPropertiesDataStreamsEventCreateRulesRequest {
   /** Required. The name of the EventCreateRule to get. Example format: properties/123/dataStreams/456/eventCreateRules/789 */
   name: string;
 }
-export const GetPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4224,7 +4180,7 @@ export interface GetPropertiesDataStreamsEventEditRulesRequest {
   /** Required. The name of the EventEditRule to get. Example format: properties/123/dataStreams/456/eventEditRules/789 */
   name: string;
 }
-export const GetPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4242,17 +4198,16 @@ export interface GetPropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Required. The name of the measurement protocol secret to lookup. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret} */
   name: string;
 }
-export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetPropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -4261,26 +4216,7 @@ export interface GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest
   /** Required. The resource name of SKAdNetwork conversion value schema to look up. Format: properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema} */
   name: string;
 }
-export const GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
-  }) as any as S.Schema<GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
-
-export interface GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
-  /** Required. The name of the DisplayVideo360AdvertiserLinkProposal to get. Example format: properties/1234/displayVideo360AdvertiserLinkProposals/5678 */
-  name: string;
-}
-export const GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(
+const GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4292,6 +4228,24 @@ export const GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__P
       }),
     ),
 ).annotate({
+  identifier: "GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
+}) as any as S.Schema<GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+
+export interface GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
+  /** Required. The name of the DisplayVideo360AdvertiserLinkProposal to get. Example format: properties/1234/displayVideo360AdvertiserLinkProposals/5678 */
+  name: string;
+}
+const GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
 }) as any as S.Schema<GetPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
@@ -4299,7 +4253,7 @@ export interface GetPropertiesDisplayVideo360AdvertiserLinksRequest {
   /** Required. The name of the DisplayVideo360AdvertiserLink to get. Example format: properties/1234/displayVideo360AdvertiserLink/5678 */
   name: string;
 }
-export const GetPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4317,7 +4271,7 @@ export interface GetPropertiesExpandedDataSetsRequest {
   /** Required. The name of the ExpandedDataSet to get. Example format: properties/1234/expandedDataSets/5678 */
   name: string;
 }
-export const GetPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4335,7 +4289,7 @@ export interface GetPropertiesKeyEventsRequest {
   /** Required. The resource name of the Key Event to retrieve. Format: properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456" */
   name: string;
 }
-export const GetPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4353,7 +4307,7 @@ export interface GetPropertiesReportingDataAnnotationsRequest {
   /** Required. Resource name of the Reporting Data Annotation to lookup. Format: properties/property_id/reportingDataAnnotations/reportingDataAnnotation Example: properties/123/reportingDataAnnotations/456 */
   name: string;
 }
-export const GetPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4371,7 +4325,7 @@ export interface GetPropertiesRollupPropertySourceLinksRequest {
   /** Required. The name of the roll-up property source link to lookup. Format: properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link_id} Example: properties/123/rollupPropertySourceLinks/456 */
   name: string;
 }
-export const GetPropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4389,7 +4343,7 @@ export interface GetPropertiesSearchAds360LinksRequest {
   /** Required. The name of the SearchAds360Link to get. Example format: properties/1234/SearchAds360Link/5678 */
   name: string;
 }
-export const GetPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4407,7 +4361,7 @@ export interface GetPropertiesSubpropertyEventFiltersRequest {
   /** Required. Resource name of the subproperty event filter to lookup. Format: properties/property_id/subpropertyEventFilters/subproperty_event_filter Example: properties/123/subpropertyEventFilters/456 */
   name: string;
 }
-export const GetPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4425,7 +4379,7 @@ export interface GetPropertiesSubpropertySyncConfigsRequest {
   /** Required. Resource name of the SubpropertySyncConfig to lookup. Format: properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id} Example: properties/1234/subpropertySyncConfigs/5678 */
   name: string;
 }
-export const GetPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4443,7 +4397,7 @@ export type GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMe
   | "SYNCHRONIZATION_MODE_UNSPECIFIED"
   | "NONE"
   | "ALL";
-export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum =
+const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum =
   S.String;
 
 /** Subproperty synchronization configuration controls how ordinary property configurations are synchronized to subproperties. This resource is provisioned automatically for each subproperty. */
@@ -4457,7 +4411,7 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertySyncConfig {
     | GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum
     | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     applyToProperty: S.optional(S.String),
@@ -4473,7 +4427,7 @@ export interface GetReportingIdentitySettingsPropertiesRequest {
   /** Required. The name of the settings to lookup. Format: properties/{property}/reportingIdentitySettings Example: "properties/1000/reportingIdentitySettings" */
   name: string;
 }
-export const GetReportingIdentitySettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportingIdentitySettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4492,7 +4446,7 @@ export type GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentit
   | "BLENDED"
   | "OBSERVED"
   | "DEVICE_BASED";
-export const GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum = S.String;
+const GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum = S.String;
 
 /** A resource containing settings related to reporting identity. */
 export interface GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
@@ -4503,7 +4457,7 @@ export interface GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
     | GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum
     | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaReportingIdentitySettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaReportingIdentitySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     reportingIdentity: S.optional(
@@ -4518,7 +4472,7 @@ export interface GetUserProvidedDataSettingsPropertiesRequest {
   /** Required. The name of the user provided data settings to retrieve. Format: properties/{property}/userProvidedDataSettings */
   name: string;
 }
-export const GetUserProvidedDataSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserProvidedDataSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4541,7 +4495,7 @@ export interface GoogleAnalyticsAdminV1alphaUserProvidedDataSettings {
   /** Identifier. Resource name of this setting. Format: properties/{property}/userProvidedDataSettings Example: "properties/1000/userProvidedDataSettings" */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1alphaUserProvidedDataSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaUserProvidedDataSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userProvidedDataCollectionEnabled: S.optional(S.Boolean),
     automaticallyDetectedDataCollectionEnabled: S.optional(S.Boolean),
@@ -4559,7 +4513,7 @@ export interface ListAccountsRequest {
   /** Whether to include soft-deleted (ie: "trashed") Accounts in the results. Accounts can be inspected to determine whether they are deleted or not. */
   showDeleted?: boolean;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4574,7 +4528,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAccountList = Array<GoogleAnalyticsAdminV1alphaAccount>;
-export const GoogleAnalyticsAdminV1alphaAccountList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccountList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccount,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccountList>;
 
@@ -4585,7 +4539,7 @@ export interface GoogleAnalyticsAdminV1alphaListAccountsResponse {
   /** Results that were accessible to the caller. */
   accounts?: GoogleAnalyticsAdminV1alphaAccountList;
 }
-export const GoogleAnalyticsAdminV1alphaListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accounts: S.optional(GoogleAnalyticsAdminV1alphaAccountList),
@@ -4602,7 +4556,7 @@ export interface ListAccountsAccessBindingsRequest {
   /** A page token, received from a previous `ListAccessBindings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccessBindings` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4625,7 +4579,7 @@ export interface GoogleAnalyticsAdminV1alphaListAccessBindingsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessBindings: S.optional(GoogleAnalyticsAdminV1alphaAccessBindingList),
     nextPageToken: S.optional(S.String),
@@ -4640,7 +4594,7 @@ export interface ListAccountSummariesRequest {
   /** Optional. The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListAccountSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4660,7 +4614,7 @@ export type GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum =
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
   | "PROPERTY_TYPE_ROLLUP";
-export const GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum = S.String;
 
 /** A virtual resource representing metadata for a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1alphaPropertySummary {
@@ -4675,7 +4629,7 @@ export interface GoogleAnalyticsAdminV1alphaPropertySummary {
   /** Resource name of this property's logical parent. Note: The Property-Moving UI can be used to change the parent. Format: accounts/{account}, properties/{property} Example: "accounts/100", "properties/200" */
   parent?: string;
 }
-export const GoogleAnalyticsAdminV1alphaPropertySummary = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaPropertySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canEdit: S.optional(S.Boolean),
     property: S.optional(S.String),
@@ -4689,7 +4643,7 @@ export const GoogleAnalyticsAdminV1alphaPropertySummary = /*@__PURE__*/ S.suspen
 
 export type GoogleAnalyticsAdminV1alphaPropertySummaryList =
   Array<GoogleAnalyticsAdminV1alphaPropertySummary>;
-export const GoogleAnalyticsAdminV1alphaPropertySummaryList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaPropertySummaryList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaPropertySummary,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaPropertySummaryList>;
 
@@ -4704,7 +4658,7 @@ export interface GoogleAnalyticsAdminV1alphaAccountSummary {
   /** Resource name of account referred to by this account summary Format: accounts/{account_id} Example: "accounts/1000" */
   account?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccountSummary = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertySummaries: S.optional(GoogleAnalyticsAdminV1alphaPropertySummaryList),
     displayName: S.optional(S.String),
@@ -4717,7 +4671,7 @@ export const GoogleAnalyticsAdminV1alphaAccountSummary = /*@__PURE__*/ S.suspend
 
 export type GoogleAnalyticsAdminV1alphaAccountSummaryList =
   Array<GoogleAnalyticsAdminV1alphaAccountSummary>;
-export const GoogleAnalyticsAdminV1alphaAccountSummaryList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccountSummaryList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccountSummary,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccountSummaryList>;
 
@@ -4728,7 +4682,7 @@ export interface GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   /** Account summaries of all accounts the caller has access to. */
   accountSummaries?: GoogleAnalyticsAdminV1alphaAccountSummaryList;
 }
-export const GoogleAnalyticsAdminV1alphaListAccountSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListAccountSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accountSummaries: S.optional(GoogleAnalyticsAdminV1alphaAccountSummaryList),
@@ -4747,7 +4701,7 @@ export interface ListPropertiesRequest {
   /** Required. An expression for filtering the results of the request. Fields eligible for filtering are: `parent:`(The resource name of the parent account/property) or `ancestor:`(The resource name of the parent account) or `firebase_project:`(The id or number of the linked firebase project). Some examples of filters: ``` | Filter | Description | |-----------------------------|-------------------------------------------| | parent:accounts/123 | The account with account id: 123. | | parent:properties/123 | The property with property id: 123. | | ancestor:accounts/123 | The account with account id: 123. | | firebase_project:project-id | The firebase project with id: project-id. | | firebase_project:123 | The firebase project with number: 123. | ``` */
   filter?: string;
 }
-export const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4763,7 +4717,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPropertiesRequest" }) as any as S.Schema<ListPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaPropertyList = Array<GoogleAnalyticsAdminV1alphaProperty>;
-export const GoogleAnalyticsAdminV1alphaPropertyList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaPropertyList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaProperty,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaPropertyList>;
 
@@ -4774,7 +4728,7 @@ export interface GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(GoogleAnalyticsAdminV1alphaPropertyList),
     nextPageToken: S.optional(S.String),
@@ -4791,7 +4745,7 @@ export interface ListPropertiesAccessBindingsRequest {
   /** Required. Formats: - accounts/{account} - properties/{property} */
   parent: string;
 }
-export const ListPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4815,7 +4769,7 @@ export interface ListPropertiesAdSenseLinksRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4833,7 +4787,7 @@ export const ListPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaAdSenseLinkList =
   Array<GoogleAnalyticsAdminV1alphaAdSenseLink>;
-export const GoogleAnalyticsAdminV1alphaAdSenseLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAdSenseLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAdSenseLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAdSenseLinkList>;
 
@@ -4844,7 +4798,7 @@ export interface GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adsenseLinks: S.optional(GoogleAnalyticsAdminV1alphaAdSenseLinkList),
     nextPageToken: S.optional(S.String),
@@ -4861,7 +4815,7 @@ export interface ListPropertiesAudiencesRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4878,7 +4832,7 @@ export const ListPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesAudiencesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceList = Array<GoogleAnalyticsAdminV1alphaAudience>;
-export const GoogleAnalyticsAdminV1alphaAudienceList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAudienceList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAudience,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceList>;
 
@@ -4889,7 +4843,7 @@ export interface GoogleAnalyticsAdminV1alphaListAudiencesResponse {
   /** List of Audiences. */
   audiences?: GoogleAnalyticsAdminV1alphaAudienceList;
 }
-export const GoogleAnalyticsAdminV1alphaListAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     audiences: S.optional(GoogleAnalyticsAdminV1alphaAudienceList),
@@ -4906,7 +4860,7 @@ export interface ListPropertiesBigQueryLinksRequest {
   /** The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4924,7 +4878,7 @@ export const ListPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaBigQueryLinkList =
   Array<GoogleAnalyticsAdminV1alphaBigQueryLink>;
-export const GoogleAnalyticsAdminV1alphaBigQueryLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaBigQueryLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaBigQueryLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaBigQueryLinkList>;
 
@@ -4935,7 +4889,7 @@ export interface GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryLinks: S.optional(GoogleAnalyticsAdminV1alphaBigQueryLinkList),
     nextPageToken: S.optional(S.String),
@@ -4952,7 +4906,7 @@ export interface ListPropertiesCalculatedMetricsRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4970,7 +4924,7 @@ export const ListPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(()
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricList =
   Array<GoogleAnalyticsAdminV1alphaCalculatedMetric>;
-export const GoogleAnalyticsAdminV1alphaCalculatedMetricList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaCalculatedMetricList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaCalculatedMetric,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaCalculatedMetricList>;
 
@@ -4981,12 +4935,11 @@ export interface GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      calculatedMetrics: S.optional(GoogleAnalyticsAdminV1alphaCalculatedMetricList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    calculatedMetrics: S.optional(GoogleAnalyticsAdminV1alphaCalculatedMetricList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse>;
@@ -4999,7 +4952,7 @@ export interface ListPropertiesChannelGroupsRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5017,7 +4970,7 @@ export const ListPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaChannelGroupList =
   Array<GoogleAnalyticsAdminV1alphaChannelGroup>;
-export const GoogleAnalyticsAdminV1alphaChannelGroupList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaChannelGroupList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaChannelGroup,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaChannelGroupList>;
 
@@ -5028,7 +4981,7 @@ export interface GoogleAnalyticsAdminV1alphaListChannelGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListChannelGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListChannelGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelGroups: S.optional(GoogleAnalyticsAdminV1alphaChannelGroupList),
     nextPageToken: S.optional(S.String),
@@ -5045,7 +4998,7 @@ export interface ListPropertiesConversionEventsRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5063,7 +5016,7 @@ export const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleAnalyticsAdminV1alphaConversionEventList =
   Array<GoogleAnalyticsAdminV1alphaConversionEvent>;
-export const GoogleAnalyticsAdminV1alphaConversionEventList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaConversionEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaConversionEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaConversionEventList>;
 
@@ -5074,7 +5027,7 @@ export interface GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListConversionEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListConversionEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionEvents: S.optional(GoogleAnalyticsAdminV1alphaConversionEventList),
     nextPageToken: S.optional(S.String),
@@ -5091,7 +5044,7 @@ export interface ListPropertiesCustomDimensionsRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5109,7 +5062,7 @@ export const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleAnalyticsAdminV1alphaCustomDimensionList =
   Array<GoogleAnalyticsAdminV1alphaCustomDimension>;
-export const GoogleAnalyticsAdminV1alphaCustomDimensionList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaCustomDimensionList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaCustomDimension,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaCustomDimensionList>;
 
@@ -5120,7 +5073,7 @@ export interface GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
   /** List of CustomDimensions. */
   customDimensions?: GoogleAnalyticsAdminV1alphaCustomDimensionList;
 }
-export const GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     customDimensions: S.optional(GoogleAnalyticsAdminV1alphaCustomDimensionList),
@@ -5137,7 +5090,7 @@ export interface ListPropertiesCustomMetricsRequest {
   /** Required. Example format: properties/1234 */
   parent: string;
 }
-export const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5155,7 +5108,7 @@ export const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricList =
   Array<GoogleAnalyticsAdminV1alphaCustomMetric>;
-export const GoogleAnalyticsAdminV1alphaCustomMetricList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaCustomMetricList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaCustomMetric,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaCustomMetricList>;
 
@@ -5166,7 +5119,7 @@ export interface GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListCustomMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListCustomMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customMetrics: S.optional(GoogleAnalyticsAdminV1alphaCustomMetricList),
     nextPageToken: S.optional(S.String),
@@ -5183,7 +5136,7 @@ export interface ListPropertiesDataStreamsRequest {
   /** A page token, received from a previous `ListDataStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataStreams` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5201,7 +5154,7 @@ export const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaDataStreamList =
   Array<GoogleAnalyticsAdminV1alphaDataStream>;
-export const GoogleAnalyticsAdminV1alphaDataStreamList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaDataStreamList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaDataStream,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaDataStreamList>;
 
@@ -5212,7 +5165,7 @@ export interface GoogleAnalyticsAdminV1alphaListDataStreamsResponse {
   /** List of DataStreams. */
   dataStreams?: GoogleAnalyticsAdminV1alphaDataStreamList;
 }
-export const GoogleAnalyticsAdminV1alphaListDataStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListDataStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataStreams: S.optional(GoogleAnalyticsAdminV1alphaDataStreamList),
@@ -5229,7 +5182,7 @@ export interface ListPropertiesDataStreamsEventCreateRulesRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5247,7 +5200,7 @@ export const ListPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.
 
 export type GoogleAnalyticsAdminV1alphaEventCreateRuleList =
   Array<GoogleAnalyticsAdminV1alphaEventCreateRule>;
-export const GoogleAnalyticsAdminV1alphaEventCreateRuleList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaEventCreateRuleList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaEventCreateRule,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaEventCreateRuleList>;
 
@@ -5258,7 +5211,7 @@ export interface GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse {
   /** List of EventCreateRules. These will be ordered stably, but in an arbitrary order. */
   eventCreateRules?: GoogleAnalyticsAdminV1alphaEventCreateRuleList;
 }
-export const GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     eventCreateRules: S.optional(GoogleAnalyticsAdminV1alphaEventCreateRuleList),
@@ -5275,7 +5228,7 @@ export interface ListPropertiesDataStreamsEventEditRulesRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5293,7 +5246,7 @@ export const ListPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.su
 
 export type GoogleAnalyticsAdminV1alphaEventEditRuleList =
   Array<GoogleAnalyticsAdminV1alphaEventEditRule>;
-export const GoogleAnalyticsAdminV1alphaEventEditRuleList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaEventEditRuleList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaEventEditRule,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaEventEditRuleList>;
 
@@ -5304,7 +5257,7 @@ export interface GoogleAnalyticsAdminV1alphaListEventEditRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListEventEditRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListEventEditRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventEditRules: S.optional(GoogleAnalyticsAdminV1alphaEventEditRuleList),
     nextPageToken: S.optional(S.String),
@@ -5321,26 +5274,25 @@ export interface ListPropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Optional. A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/measurementProtocolSecrets",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+parent}/measurementProtocolSecrets",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListPropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList =
   Array<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>;
-export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList>;
 
@@ -5351,17 +5303,17 @@ export interface GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsRespon
   /** A list of secrets for the parent stream specified in the request. */
   measurementProtocolSecrets?: GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList;
 }
-export const GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       measurementProtocolSecrets: S.optional(
         GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse>;
 
 export interface ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
@@ -5371,8 +5323,8 @@ export interface ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaReques
   /** Optional. A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -5384,16 +5336,15 @@ export const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
         baseUrl: "https://analyticsadmin.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
-  }) as any as S.Schema<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+).annotate({
+  identifier: "ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
+}) as any as S.Schema<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList =
   Array<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>;
-export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList>;
+const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList = /*@__PURE__*/ S.Array(
+  GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
+) as any as S.Schema<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList>;
 
 /** Response message for ListSKAdNetworkConversionValueSchemas RPC */
 export interface GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse {
@@ -5402,7 +5353,7 @@ export interface GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchema
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. Currently, Google Analytics supports only one SKAdNetworkConversionValueSchema per dataStream, so this will never be populated. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse =
+const GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       skadnetworkConversionValueSchemas: S.optional(
@@ -5422,29 +5373,27 @@ export interface ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest",
 }) as any as S.Schema<ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList =
   Array<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList =
-  /*@__PURE__*/ S.Array(
-    GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
-  ) as any as S.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList>;
+const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList = /*@__PURE__*/ S.Array(
+  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
+) as any as S.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList>;
 
 /** Response message for ListDisplayVideo360AdvertiserLinkProposals RPC. */
 export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse {
@@ -5453,7 +5402,7 @@ export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkPro
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse =
+const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayVideo360AdvertiserLinkProposals: S.optional(
@@ -5473,7 +5422,7 @@ export interface ListPropertiesDisplayVideo360AdvertiserLinksRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5491,7 +5440,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/
 
 export type GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList =
   Array<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList>;
 
@@ -5502,7 +5451,7 @@ export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksRe
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse =
+const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayVideo360AdvertiserLinks: S.optional(
@@ -5522,7 +5471,7 @@ export interface ListPropertiesExpandedDataSetsRequest {
   /** Required. Example format: properties/1234 */
   parent: string;
 }
-export const ListPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5540,7 +5489,7 @@ export const ListPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetList =
   Array<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaExpandedDataSetList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaExpandedDataSet,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetList>;
 
@@ -5551,7 +5500,7 @@ export interface GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expandedDataSets: S.optional(GoogleAnalyticsAdminV1alphaExpandedDataSetList),
     nextPageToken: S.optional(S.String),
@@ -5568,7 +5517,7 @@ export interface ListPropertiesFirebaseLinksRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5586,7 +5535,7 @@ export const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaFirebaseLinkList =
   Array<GoogleAnalyticsAdminV1alphaFirebaseLink>;
-export const GoogleAnalyticsAdminV1alphaFirebaseLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaFirebaseLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaFirebaseLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaFirebaseLinkList>;
 
@@ -5597,7 +5546,7 @@ export interface GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   /** List of FirebaseLinks. This will have at most one value. */
   firebaseLinks?: GoogleAnalyticsAdminV1alphaFirebaseLinkList;
 }
-export const GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     firebaseLinks: S.optional(GoogleAnalyticsAdminV1alphaFirebaseLinkList),
@@ -5614,7 +5563,7 @@ export interface ListPropertiesGoogleAdsLinksRequest {
   /** Optional. A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5632,7 +5581,7 @@ export const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1alphaGoogleAdsLinkList =
   Array<GoogleAnalyticsAdminV1alphaGoogleAdsLink>;
-export const GoogleAnalyticsAdminV1alphaGoogleAdsLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaGoogleAdsLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaGoogleAdsLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaGoogleAdsLinkList>;
 
@@ -5643,7 +5592,7 @@ export interface GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAdsLinks: S.optional(GoogleAnalyticsAdminV1alphaGoogleAdsLinkList),
     nextPageToken: S.optional(S.String),
@@ -5660,7 +5609,7 @@ export interface ListPropertiesKeyEventsRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5677,7 +5626,7 @@ export const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesKeyEventsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaKeyEventList = Array<GoogleAnalyticsAdminV1alphaKeyEvent>;
-export const GoogleAnalyticsAdminV1alphaKeyEventList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaKeyEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaKeyEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaKeyEventList>;
 
@@ -5688,7 +5637,7 @@ export interface GoogleAnalyticsAdminV1alphaListKeyEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListKeyEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListKeyEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyEvents: S.optional(GoogleAnalyticsAdminV1alphaKeyEventList),
     nextPageToken: S.optional(S.String),
@@ -5707,7 +5656,7 @@ export interface ListPropertiesReportingDataAnnotationsRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5726,7 +5675,7 @@ export const ListPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.sus
 
 export type GoogleAnalyticsAdminV1alphaReportingDataAnnotationList =
   Array<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>;
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaReportingDataAnnotationList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaReportingDataAnnotation,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotationList>;
 
@@ -5737,15 +5686,15 @@ export interface GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       reportingDataAnnotations: S.optional(GoogleAnalyticsAdminV1alphaReportingDataAnnotationList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse>;
 
 export interface ListPropertiesRollupPropertySourceLinksRequest {
   /** Required. The name of the roll-up property to list roll-up property source links under. Format: properties/{property_id} Example: properties/1234 */
@@ -5755,7 +5704,7 @@ export interface ListPropertiesRollupPropertySourceLinksRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesRollupPropertySourceLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5778,17 +5727,17 @@ export interface GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       rollupPropertySourceLinks: S.optional(
         GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList,
       ),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse>;
 
 export interface ListPropertiesSearchAds360LinksRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
@@ -5798,7 +5747,7 @@ export interface ListPropertiesSearchAds360LinksRequest {
   /** A page token, received from a previous `ListSearchAds360Links` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSearchAds360Links` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5816,7 +5765,7 @@ export const ListPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(()
 
 export type GoogleAnalyticsAdminV1alphaSearchAds360LinkList =
   Array<GoogleAnalyticsAdminV1alphaSearchAds360Link>;
-export const GoogleAnalyticsAdminV1alphaSearchAds360LinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaSearchAds360LinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaSearchAds360Link,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchAds360LinkList>;
 
@@ -5827,12 +5776,11 @@ export interface GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse {
   /** List of SearchAds360Links. */
   searchAds360Links?: GoogleAnalyticsAdminV1alphaSearchAds360LinkList;
 }
-export const GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      searchAds360Links: S.optional(GoogleAnalyticsAdminV1alphaSearchAds360LinkList),
-    }),
+const GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    searchAds360Links: S.optional(GoogleAnalyticsAdminV1alphaSearchAds360LinkList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse>;
@@ -5845,7 +5793,7 @@ export interface ListPropertiesSubpropertyEventFiltersRequest {
   /** Optional. A page token, received from a previous `ListSubpropertyEventFilters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubpropertyEventFilters` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5863,7 +5811,7 @@ export const ListPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.susp
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList =
   Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>;
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList>;
 
@@ -5874,15 +5822,14 @@ export interface GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse 
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subpropertyEventFilters: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse>;
+const GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subpropertyEventFilters: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse>;
 
 export interface ListPropertiesSubpropertySyncConfigsRequest {
   /** Required. Resource name of the property. Format: properties/property_id Example: properties/123 */
@@ -5892,7 +5839,7 @@ export interface ListPropertiesSubpropertySyncConfigsRequest {
   /** Optional. A page token, received from a previous `ListSubpropertySyncConfig` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubpropertySyncConfig` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5910,7 +5857,7 @@ export const ListPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspe
 
 export type GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList =
   Array<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>;
-export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaSubpropertySyncConfig,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList>;
 
@@ -5921,15 +5868,14 @@ export interface GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse {
   /** List of `SubpropertySyncConfig` resources. */
   subpropertySyncConfigs?: GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList;
 }
-export const GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      subpropertySyncConfigs: S.optional(GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse>;
+const GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    subpropertySyncConfigs: S.optional(GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList),
+  }),
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse>;
 
 export interface PatchAccountsRequest {
   /** Required. The list of fields to be updated. Field names must be in snake case (for example, "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. */
@@ -5939,7 +5885,7 @@ export interface PatchAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAccount;
 }
-export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5959,7 +5905,7 @@ export interface PatchAccountsAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
-export const PatchAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaAccessBinding.pipe(T.HttpBody())),
@@ -5982,7 +5928,7 @@ export interface PatchPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaProperty;
 }
-export const PatchPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6002,7 +5948,7 @@ export interface PatchPropertiesAccessBindingsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
-export const PatchPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaAccessBinding.pipe(T.HttpBody())),
@@ -6025,7 +5971,7 @@ export interface PatchPropertiesAudiencesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAudience;
 }
-export const PatchPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6049,7 +5995,7 @@ export interface PatchPropertiesBigQueryLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaBigQueryLink;
 }
-export const PatchPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6073,7 +6019,7 @@ export interface PatchPropertiesCalculatedMetricsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCalculatedMetric;
 }
-export const PatchPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6097,7 +6043,7 @@ export interface PatchPropertiesChannelGroupsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaChannelGroup;
 }
-export const PatchPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6121,7 +6067,7 @@ export interface PatchPropertiesConversionEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaConversionEvent;
 }
-export const PatchPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6145,7 +6091,7 @@ export interface PatchPropertiesCustomDimensionsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCustomDimension;
 }
-export const PatchPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6169,7 +6115,7 @@ export interface PatchPropertiesCustomMetricsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaCustomMetric;
 }
-export const PatchPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6193,7 +6139,7 @@ export interface PatchPropertiesDataStreamsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDataStream;
 }
-export const PatchPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6217,7 +6163,7 @@ export interface PatchPropertiesDataStreamsEventCreateRulesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaEventCreateRule;
 }
-export const PatchPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesDataStreamsEventCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6241,7 +6187,7 @@ export interface PatchPropertiesDataStreamsEventEditRulesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaEventEditRule;
 }
-export const PatchPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6265,19 +6211,18 @@ export interface PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret;
 }
-export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -6290,8 +6235,8 @@ export interface PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaReque
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema;
 }
-export const PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -6305,9 +6250,9 @@ export const PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
         baseUrl: "https://analyticsadmin.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
-  }) as any as S.Schema<PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
+).annotate({
+  identifier: "PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest",
+}) as any as S.Schema<PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export interface PatchPropertiesDisplayVideo360AdvertiserLinksRequest {
   /** Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display & Video 360 Advertiser ID */
@@ -6317,7 +6262,7 @@ export interface PatchPropertiesDisplayVideo360AdvertiserLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
 }
-export const PatchPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesDisplayVideo360AdvertiserLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6341,7 +6286,7 @@ export interface PatchPropertiesExpandedDataSetsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaExpandedDataSet;
 }
-export const PatchPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6365,7 +6310,7 @@ export interface PatchPropertiesGoogleAdsLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaGoogleAdsLink;
 }
-export const PatchPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6389,7 +6334,7 @@ export interface PatchPropertiesKeyEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaKeyEvent;
 }
-export const PatchPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6413,7 +6358,7 @@ export interface PatchPropertiesReportingDataAnnotationsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaReportingDataAnnotation;
 }
-export const PatchPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesReportingDataAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6437,7 +6382,7 @@ export interface PatchPropertiesSearchAds360LinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSearchAds360Link;
 }
-export const PatchPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6461,7 +6406,7 @@ export interface PatchPropertiesSubpropertyEventFiltersRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
 }
-export const PatchPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesSubpropertyEventFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6485,7 +6430,7 @@ export interface PatchPropertiesSubpropertySyncConfigsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSubpropertySyncConfig;
 }
-export const PatchPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesSubpropertySyncConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6508,12 +6453,11 @@ export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   /** The account to create. */
   account?: GoogleAnalyticsAdminV1alphaAccount;
 }
-export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      redirectUri: S.optional(S.String),
-      account: S.optional(GoogleAnalyticsAdminV1alphaAccount),
-    }),
+const GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    redirectUri: S.optional(S.String),
+    account: S.optional(GoogleAnalyticsAdminV1alphaAccount),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest>;
@@ -6522,7 +6466,7 @@ export interface ProvisionAccountTicketAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest;
 }
-export const ProvisionAccountTicketAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionAccountTicketAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -6541,11 +6485,10 @@ export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
   /** The param to be passed in the ToS link. */
   accountTicketId?: string;
 }
-export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountTicketId: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountTicketId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse>;
@@ -6554,7 +6497,7 @@ export type GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensio
   | "SYNCHRONIZATION_MODE_UNSPECIFIED"
   | "NONE"
   | "ALL";
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum =
+const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum =
   S.String;
 
 /** Request message for CreateSubproperty RPC. */
@@ -6568,7 +6511,7 @@ export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
   /** Optional. The subproperty event filter to create on an ordinary property. */
   subpropertyEventFilter?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
 }
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDimensionAndMetricSynchronizationMode: S.optional(
       GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum,
@@ -6584,7 +6527,7 @@ export interface ProvisionSubpropertyPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest;
 }
-export const ProvisionSubpropertyPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionSubpropertyPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -6605,7 +6548,7 @@ export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse {
   /** The created subproperty event filter. */
   subpropertyEventFilter?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
 }
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subproperty: S.optional(GoogleAnalyticsAdminV1alphaProperty),
     subpropertyEventFilter: S.optional(GoogleAnalyticsAdminV1alphaSubpropertyEventFilter),
@@ -6619,7 +6562,7 @@ export interface GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest {
   /** Required. EventEditRule resource names for the specified data stream, in the needed processing order. All EventEditRules for the stream must be present in the list. */
   eventEditRules?: StringList;
 }
-export const GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventEditRules: S.optional(StringList),
   }),
@@ -6633,7 +6576,7 @@ export interface ReorderPropertiesDataStreamsEventEditRulesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest;
 }
-export const ReorderPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReorderPropertiesDataStreamsEventEditRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest.pipe(T.HttpBody())),
@@ -6653,7 +6596,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimension {
   /** The API name of the dimension. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of dimensions supported in this API. Dimensions are referenced by name in `dimensionFilter` and `orderBys`. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessDimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionName: S.optional(S.String),
   }),
@@ -6663,7 +6606,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDimension = /*@__PURE__*/ S.suspen
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionList =
   Array<GoogleAnalyticsAdminV1alphaAccessDimension>;
-export const GoogleAnalyticsAdminV1alphaAccessDimensionList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessDimensionList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessDimension,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionList>;
 
@@ -6674,7 +6617,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessDateRange {
   /** The inclusive end date for the query in the format `YYYY-MM-DD`. Cannot be before `startDate`. The format `NdaysAgo`, `yesterday`, or `today` is also accepted, and in that case, the date is inferred based on the current time in the request's time zone. */
   endDate?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessDateRange = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(S.String),
     endDate: S.optional(S.String),
@@ -6685,7 +6628,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDateRange = /*@__PURE__*/ S.suspen
 
 export type GoogleAnalyticsAdminV1alphaAccessDateRangeList =
   Array<GoogleAnalyticsAdminV1alphaAccessDateRange>;
-export const GoogleAnalyticsAdminV1alphaAccessDateRangeList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessDateRangeList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessDateRange,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDateRangeList>;
 
@@ -6694,7 +6637,7 @@ export type GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnu
   | "ALPHANUMERIC"
   | "CASE_INSENSITIVE_ALPHANUMERIC"
   | "NUMERIC";
-export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnum = S.String;
 
 /** Sorts by dimension values. */
 export interface GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy {
@@ -6703,12 +6646,11 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy {
   /** A dimension name in the request to order by. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderType: S.optional(GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnum),
-      dimensionName: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderType: S.optional(GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnum),
+    dimensionName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy>;
@@ -6718,7 +6660,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy {
   /** A metric name in the request to order by. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.optional(S.String),
   }),
@@ -6735,7 +6677,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderBy {
   /** If true, sorts by descending order. If false or unspecified, sorts in ascending order. */
   desc?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaAccessOrderBy = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessOrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimension: S.optional(GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy),
     metric: S.optional(GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy),
@@ -6747,7 +6689,7 @@ export const GoogleAnalyticsAdminV1alphaAccessOrderBy = /*@__PURE__*/ S.suspend(
 
 export type GoogleAnalyticsAdminV1alphaAccessOrderByList =
   Array<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
-export const GoogleAnalyticsAdminV1alphaAccessOrderByList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessOrderByList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessOrderBy,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByList>;
 
@@ -6756,18 +6698,18 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetric {
   /** The API name of the metric. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of metrics supported in this API. Metrics are referenced by name in `metricFilter` & `orderBys`. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessMetric =
+const GoogleAnalyticsAdminV1alphaAccessMetric =
   GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetric>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricList =
   Array<GoogleAnalyticsAdminV1alphaAccessMetric>;
-export const GoogleAnalyticsAdminV1alphaAccessMetricList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessMetricList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessMetric,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricList>;
 
 export type GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ =
   Array<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
-export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleAnalyticsAdminV1alphaAccessFilterExpression),
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_>;
 
@@ -6776,7 +6718,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilterExpressionList {
   /** A list of filter expressions. */
   expressions?: GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_;
 }
-export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expressions: S.optional(GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_),
   }),
@@ -6791,7 +6733,7 @@ export interface GoogleAnalyticsAdminV1alphaNumericValue {
   /** Integer value */
   int64Value?: string;
 }
-export const GoogleAnalyticsAdminV1alphaNumericValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaNumericValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleValue: S.optional(S.Number),
     int64Value: S.optional(S.String),
@@ -6807,7 +6749,7 @@ export type GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum =
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL";
-export const GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum = S.String;
 
 /** Filters for numeric or date values. */
 export interface GoogleAnalyticsAdminV1alphaAccessNumericFilter {
@@ -6816,7 +6758,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessNumericFilter {
   /** The operation type for this filter. */
   operation?: GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAccessNumericFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessNumericFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GoogleAnalyticsAdminV1alphaNumericValue),
     operation: S.optional(GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum),
@@ -6833,7 +6775,7 @@ export type GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum =
   | "CONTAINS"
   | "FULL_REGEXP"
   | "PARTIAL_REGEXP";
-export const GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum = S.String;
 
 /** The filter for strings. */
 export interface GoogleAnalyticsAdminV1alphaAccessStringFilter {
@@ -6844,7 +6786,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessStringFilter {
   /** The match type for this filter. */
   matchType?: GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1alphaAccessStringFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessStringFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caseSensitive: S.optional(S.Boolean),
     value: S.optional(S.String),
@@ -6861,7 +6803,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessInListFilter {
   /** If true, the string value is case sensitive. */
   caseSensitive?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaAccessInListFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessInListFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
     caseSensitive: S.optional(S.Boolean),
@@ -6877,7 +6819,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessBetweenFilter {
   /** Begins with this number. */
   fromValue?: GoogleAnalyticsAdminV1alphaNumericValue;
 }
-export const GoogleAnalyticsAdminV1alphaAccessBetweenFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessBetweenFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toValue: S.optional(GoogleAnalyticsAdminV1alphaNumericValue),
     fromValue: S.optional(GoogleAnalyticsAdminV1alphaNumericValue),
@@ -6899,7 +6841,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilter {
   /** A filter for two values. */
   betweenFilter?: GoogleAnalyticsAdminV1alphaAccessBetweenFilter;
 }
-export const GoogleAnalyticsAdminV1alphaAccessFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numericFilter: S.optional(GoogleAnalyticsAdminV1alphaAccessNumericFilter),
     stringFilter: S.optional(GoogleAnalyticsAdminV1alphaAccessStringFilter),
@@ -6922,7 +6864,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilterExpression {
   /** Each of the FilterExpressions in the and_group has an AND relationship. */
   andGroup?: GoogleAnalyticsAdminV1alphaAccessFilterExpressionList;
 }
-export const GoogleAnalyticsAdminV1alphaAccessFilterExpression = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessFilterExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orGroup: S.optional(GoogleAnalyticsAdminV1alphaAccessFilterExpressionList),
     notExpression: S.optional(GoogleAnalyticsAdminV1alphaAccessFilterExpression),
@@ -6960,7 +6902,7 @@ export interface GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
   /** Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in [AccessQuota](#AccessQuota). For account-level requests, this field must be false. */
   returnEntityQuota?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaRunAccessReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaRunAccessReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(GoogleAnalyticsAdminV1alphaAccessDimensionList),
     dateRanges: S.optional(GoogleAnalyticsAdminV1alphaAccessDateRangeList),
@@ -6985,7 +6927,7 @@ export interface RunAccessReportAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaRunAccessReportRequest;
 }
-export const RunAccessReportAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAccessReportAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaRunAccessReportRequest.pipe(T.HttpBody())),
@@ -7007,7 +6949,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessQuotaStatus {
   /** Quota consumed by this request. */
   consumed?: number;
 }
-export const GoogleAnalyticsAdminV1alphaAccessQuotaStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessQuotaStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remaining: S.optional(S.Number),
     consumed: S.optional(S.Number),
@@ -7029,7 +6971,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessQuota {
   /** Properties can use up to 50 concurrent requests. */
   concurrentRequests?: GoogleAnalyticsAdminV1alphaAccessQuotaStatus;
 }
-export const GoogleAnalyticsAdminV1alphaAccessQuota = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokensPerDay: S.optional(GoogleAnalyticsAdminV1alphaAccessQuotaStatus),
     tokensPerHour: S.optional(GoogleAnalyticsAdminV1alphaAccessQuotaStatus),
@@ -7046,12 +6988,9 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimensionHeader {
   /** The dimension's name; for example 'userEmail'. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader =
-  GoogleAnalyticsAdminV1alphaAccessDimension as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
-
 export type GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
   Array<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
-export const GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
+const GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
   GoogleAnalyticsAdminV1alphaAccessDimensionList as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList>;
 
 /** The value of a metric. */
@@ -7059,7 +6998,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetricValue {
   /** The measurement value. For example, this value may be '13'. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessMetricValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessMetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -7069,7 +7008,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetricValue = /*@__PURE__*/ S.susp
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricValueList =
   Array<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
-export const GoogleAnalyticsAdminV1alphaAccessMetricValueList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessMetricValueList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessMetricValue,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricValueList>;
 
@@ -7078,12 +7017,9 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimensionValue {
   /** The dimension value. For example, this value may be 'France' for the 'country' dimension. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessDimensionValue =
-  GoogleAnalyticsAdminV1alphaAccessMetricValue as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
-
 export type GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
   Array<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
-export const GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
+const GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
   GoogleAnalyticsAdminV1alphaAccessMetricValueList as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValueList>;
 
 /** Access report data for each row. */
@@ -7093,7 +7029,7 @@ export interface GoogleAnalyticsAdminV1alphaAccessRow {
   /** List of dimension values. These values are in the same order as specified in the request. */
   dimensionValues?: GoogleAnalyticsAdminV1alphaAccessDimensionValueList;
 }
-export const GoogleAnalyticsAdminV1alphaAccessRow = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaAccessRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricValues: S.optional(GoogleAnalyticsAdminV1alphaAccessMetricValueList),
     dimensionValues: S.optional(GoogleAnalyticsAdminV1alphaAccessDimensionValueList),
@@ -7103,7 +7039,7 @@ export const GoogleAnalyticsAdminV1alphaAccessRow = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessRow>;
 
 export type GoogleAnalyticsAdminV1alphaAccessRowList = Array<GoogleAnalyticsAdminV1alphaAccessRow>;
-export const GoogleAnalyticsAdminV1alphaAccessRowList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaAccessRowList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessRow,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessRowList>;
 
@@ -7112,12 +7048,9 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetricHeader {
   /** The metric's name; for example 'accessCount'. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessMetricHeader =
-  GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
-
 export type GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
   Array<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
-export const GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
+const GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
   GoogleAnalyticsAdminV1alphaAccessMetricList as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeaderList>;
 
 /** The customized Data Access Record Report response. */
@@ -7133,7 +7066,7 @@ export interface GoogleAnalyticsAdminV1alphaRunAccessReportResponse {
   /** The header for a column in the report that corresponds to a specific metric. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows. */
   metricHeaders?: GoogleAnalyticsAdminV1alphaAccessMetricHeaderList;
 }
-export const GoogleAnalyticsAdminV1alphaRunAccessReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaRunAccessReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.optional(GoogleAnalyticsAdminV1alphaAccessQuota),
     dimensionHeaders: S.optional(GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList),
@@ -7151,7 +7084,7 @@ export interface RunAccessReportPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaRunAccessReportRequest;
 }
-export const RunAccessReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAccessReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaRunAccessReportRequest.pipe(T.HttpBody())),
@@ -7198,14 +7131,11 @@ export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceT
   | "SUBPROPERTY_SYNC_CONFIG"
   | "REPORTING_IDENTITY_SETTINGS"
   | "USER_PROVIDED_DATA_SETTINGS";
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
-  S.String;
-
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
   Array<
     GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum | (string & {})
   >;
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
+const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
   GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum =
@@ -7213,12 +7143,10 @@ export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionIte
   | "CREATED"
   | "UPDATED"
   | "DELETED";
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum = S.String;
-
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList = Array<
   GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum | (string & {})
 >;
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList =
+const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList =
   GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList>;
 
 /** Request message for SearchChangeHistoryEvents RPC. */
@@ -7240,22 +7168,21 @@ export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
   /** Optional. The maximum number of ChangeHistoryEvent items to return. If unspecified, at most 50 items will be returned. The maximum value is 200 (higher values will be coerced to the maximum). Note that the service may return a page with fewer items than this value specifies (potentially even zero), and that there still may be additional pages. If you want a particular number of items, you'll need to continue requesting additional pages using `page_token` until you get the needed number. */
   pageSize?: number;
 }
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      earliestChangeTime: S.optional(S.String),
-      property: S.optional(S.String),
-      pageToken: S.optional(S.String),
-      latestChangeTime: S.optional(S.String),
-      actorEmail: S.optional(StringList),
-      resourceType: S.optional(
-        GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList,
-      ),
-      action: S.optional(
-        GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList,
-      ),
-      pageSize: S.optional(S.Number),
-    }),
+const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    earliestChangeTime: S.optional(S.String),
+    property: S.optional(S.String),
+    pageToken: S.optional(S.String),
+    latestChangeTime: S.optional(S.String),
+    actorEmail: S.optional(StringList),
+    resourceType: S.optional(
+      GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList,
+    ),
+    action: S.optional(
+      GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList,
+    ),
+    pageSize: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest>;
@@ -7266,7 +7193,7 @@ export interface SearchChangeHistoryEventsAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest;
 }
-export const SearchChangeHistoryEventsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchChangeHistoryEventsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.String.pipe(T.Label()),
     body: S.optional(
@@ -7346,8 +7273,8 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryReso
   /** A snapshot of an Account resource in change history. */
   account?: GoogleAnalyticsAdminV1alphaAccount;
 }
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       calculatedMetric: S.optional(GoogleAnalyticsAdminV1alphaCalculatedMetric),
       reportingDataAnnotation: S.optional(GoogleAnalyticsAdminV1alphaReportingDataAnnotation),
@@ -7388,16 +7315,16 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
       adsenseLink: S.optional(GoogleAnalyticsAdminV1alphaAdSenseLink),
       account: S.optional(GoogleAnalyticsAdminV1alphaAccount),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource",
+}) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource>;
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "CREATED"
   | "UPDATED"
   | "DELETED";
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum = S.String;
+const GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum = S.String;
 
 /** A description of a change to a single Google Analytics resource. */
 export interface GoogleAnalyticsAdminV1alphaChangeHistoryChange {
@@ -7410,7 +7337,7 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryChange {
   /** Resource contents from after the change was made. If this resource was deleted in this change, this field will be missing. */
   resourceAfterChange?: GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource;
 }
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChange = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaChangeHistoryChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceBeforeChange: S.optional(
       GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource,
@@ -7427,7 +7354,7 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryChange = /*@__PURE__*/ S.su
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryChangeList =
   Array<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaChangeHistoryChangeList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaChangeHistoryChange,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChangeList>;
 
@@ -7436,7 +7363,7 @@ export type GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum =
   | "USER"
   | "SYSTEM"
   | "SUPPORT";
-export const GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum = S.String;
+const GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum = S.String;
 
 /** A set of changes within a Google Analytics account or its child properties that resulted from the same cause. Common causes would be updates made in the Google Analytics UI, changes from customer support, or automatic Google Analytics system changes. */
 export interface GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
@@ -7453,7 +7380,7 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
   /** If true, then the list of changes returned was filtered, and does not represent all changes that occurred in this event. */
   changesFiltered?: boolean;
 }
-export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaChangeHistoryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     userActorEmail: S.optional(S.String),
@@ -7468,7 +7395,7 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent = /*@__PURE__*/ S.sus
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryEventList =
   Array<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
-export const GoogleAnalyticsAdminV1alphaChangeHistoryEventList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1alphaChangeHistoryEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaChangeHistoryEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryEventList>;
 
@@ -7479,12 +7406,11 @@ export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      changeHistoryEvents: S.optional(GoogleAnalyticsAdminV1alphaChangeHistoryEventList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changeHistoryEvents: S.optional(GoogleAnalyticsAdminV1alphaChangeHistoryEventList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse>;
@@ -7500,7 +7426,7 @@ export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest {
   /** Google Analytics [client ID](https://support.google.com/analytics/answer/11593727). */
   clientId?: string;
 }
-export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appInstanceId: S.optional(S.String),
     userId: S.optional(S.String),
@@ -7517,7 +7443,7 @@ export interface SubmitUserDeletionPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest;
 }
-export const SubmitUserDeletionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitUserDeletionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest.pipe(T.HttpBody())),
@@ -7537,7 +7463,7 @@ export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse {
   /** Marks the moment for which all visitor data before this point should be deleted. This is set to the time at which the deletion request was received. */
   deletionRequestTime?: string;
 }
-export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletionRequestTime: S.optional(S.String),
   }),
@@ -7553,7 +7479,7 @@ export interface UpdateAttributionSettingsPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaAttributionSettings;
 }
-export const UpdateAttributionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAttributionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7577,7 +7503,7 @@ export interface UpdateDataRedactionSettingsPropertiesDataStreamsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDataRedactionSettings;
 }
-export const UpdateDataRedactionSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataRedactionSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7601,7 +7527,7 @@ export interface UpdateDataRetentionSettingsPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaDataRetentionSettings;
 }
-export const UpdateDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7625,22 +7551,21 @@ export interface UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings;
 }
-export const UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest",
-  }) as any as S.Schema<UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
+const UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest",
+}) as any as S.Schema<UpdateEnhancedMeasurementSettingsPropertiesDataStreamsRequest>;
 
 export interface UpdateGoogleSignalsSettingsPropertiesRequest {
   /** Output only. Resource name of this setting. Format: properties/{property_id}/googleSignalsSettings Example: "properties/1000/googleSignalsSettings" */
@@ -7650,7 +7575,7 @@ export interface UpdateGoogleSignalsSettingsPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaGoogleSignalsSettings;
 }
-export const UpdateGoogleSignalsSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGoogleSignalsSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7674,7 +7599,7 @@ export interface UpdateReportingIdentitySettingsPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1alphaReportingIdentitySettings;
 }
-export const UpdateReportingIdentitySettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReportingIdentitySettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

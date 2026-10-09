@@ -207,20 +207,20 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface UsageAllocation {
   AllocatedUsageQuantity: number;
   Tags?: Tag[];
 }
-export const UsageAllocation = /*@__PURE__*/ S.suspend(() =>
+const UsageAllocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(TagList) }),
 ).annotate({ identifier: "UsageAllocation" }) as any as S.Schema<UsageAllocation>;
 export type UsageAllocations = UsageAllocation[];
-export const UsageAllocations = /*@__PURE__*/ S.Array(UsageAllocation);
+const UsageAllocations = /*@__PURE__*/ S.Array(UsageAllocation);
 export type CustomerAWSAccountId = string;
 export type LicenseArn = string;
 export interface UsageRecord {
@@ -232,7 +232,7 @@ export interface UsageRecord {
   CustomerAWSAccountId?: string;
   LicenseArn?: string;
 }
-export const UsageRecord = /*@__PURE__*/ S.suspend(() =>
+const UsageRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     CustomerIdentifier: S.optional(S.String),
@@ -244,13 +244,13 @@ export const UsageRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageRecord" }) as any as S.Schema<UsageRecord>;
 export type UsageRecordList = UsageRecord[];
-export const UsageRecordList = /*@__PURE__*/ S.Array(UsageRecord);
+const UsageRecordList = /*@__PURE__*/ S.Array(UsageRecord);
 export type ProductCode = string;
 export interface BatchMeterUsageRequest {
   UsageRecords: UsageRecord[];
   ProductCode?: string;
 }
-export const BatchMeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchMeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UsageRecords: UsageRecordList, ProductCode: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -260,14 +260,14 @@ export type UsageRecordResultStatus =
   | "CustomerNotSubscribed"
   | "DuplicateRecord"
   | (string & {});
-export const UsageRecordResultStatus = S.String;
+const UsageRecordResultStatus = S.String;
 
 export interface UsageRecordResult {
   UsageRecord?: UsageRecord;
   MeteringRecordId?: string;
   Status?: UsageRecordResultStatus;
 }
-export const UsageRecordResult = /*@__PURE__*/ S.suspend(() =>
+const UsageRecordResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UsageRecord: S.optional(UsageRecord),
     MeteringRecordId: S.optional(S.String),
@@ -275,12 +275,12 @@ export const UsageRecordResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageRecordResult" }) as any as S.Schema<UsageRecordResult>;
 export type UsageRecordResultList = UsageRecordResult[];
-export const UsageRecordResultList = /*@__PURE__*/ S.Array(UsageRecordResult);
+const UsageRecordResultList = /*@__PURE__*/ S.Array(UsageRecordResult);
 export interface BatchMeterUsageResult {
   Results?: UsageRecordResult[];
   UnprocessedRecords?: UsageRecord[];
 }
-export const BatchMeterUsageResult = /*@__PURE__*/ S.suspend(() =>
+const BatchMeterUsageResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Results: S.optional(UsageRecordResultList),
     UnprocessedRecords: S.optional(UsageRecordList),
@@ -296,7 +296,7 @@ export interface MeterUsageRequest {
   UsageAllocations?: UsageAllocation[];
   ClientToken?: string;
 }
-export const MeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const MeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProductCode: S.String,
     Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -310,7 +310,7 @@ export const MeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MeterUsageResult {
   MeteringRecordId?: string;
 }
-export const MeterUsageResult = /*@__PURE__*/ S.suspend(() =>
+const MeterUsageResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MeteringRecordId: S.optional(S.String) }),
 ).annotate({ identifier: "MeterUsageResult" }) as any as S.Schema<MeterUsageResult>;
 export type VersionInteger = number;
@@ -320,7 +320,7 @@ export interface RegisterUsageRequest {
   PublicKeyVersion: number;
   Nonce?: string;
 }
-export const RegisterUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProductCode: S.String, PublicKeyVersion: S.Number, Nonce: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -330,7 +330,7 @@ export interface RegisterUsageResult {
   PublicKeyRotationTimestamp?: Date;
   Signature?: string;
 }
-export const RegisterUsageResult = /*@__PURE__*/ S.suspend(() =>
+const RegisterUsageResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PublicKeyRotationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Signature: S.optional(S.String),
@@ -339,7 +339,7 @@ export const RegisterUsageResult = /*@__PURE__*/ S.suspend(() =>
 export interface ResolveCustomerRequest {
   RegistrationToken: string;
 }
-export const ResolveCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RegistrationToken: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -350,7 +350,7 @@ export interface ResolveCustomerResult {
   CustomerAWSAccountId?: string;
   LicenseArn?: string;
 }
-export const ResolveCustomerResult = /*@__PURE__*/ S.suspend(() =>
+const ResolveCustomerResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CustomerIdentifier: S.optional(S.String),
     ProductCode: S.optional(S.String),

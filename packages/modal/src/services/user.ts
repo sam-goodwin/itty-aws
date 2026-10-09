@@ -13,14 +13,14 @@ export type EnvironmentRole =
   | "ENVIRONMENT_ROLE_VIEWER"
   | "ENVIRONMENT_ROLE_CONTRIBUTOR"
   | "ENVIRONMENT_ROLE_NO_ACCESS";
-export const EnvironmentRole = S.String;
+const EnvironmentRole = S.String;
 
 export interface SetUserGroupEnvironmentRequest {
   environmentId?: string;
   userGroupId?: string;
   role?: EnvironmentRole | (string & {});
 }
-export const SetUserGroupEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const SetUserGroupEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     userGroupId: S.optional(S.String),
@@ -33,9 +33,9 @@ export const SetUserGroupEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetUserGroupEnvironmentRequest>;
 
 export interface SetUserGroupEnvironmentResponse {}
-export const SetUserGroupEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "SetUserGroupEnvironmentResponse" },
-) as any as S.Schema<SetUserGroupEnvironmentResponse>;
+const SetUserGroupEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "SetUserGroupEnvironmentResponse",
+}) as any as S.Schema<SetUserGroupEnvironmentResponse>;
 
 export type SetUserGroupEnvironmentError = ModalOpError;
 /** User groups */

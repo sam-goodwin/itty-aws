@@ -11,7 +11,7 @@ export type { ModalOpError, ModalOpContext };
 export interface CreateDomainRequest {
   domainName?: string;
 }
-export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/DomainCreate", code: 200 })),
@@ -19,14 +19,14 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** now unused internal experimental values */
 export type DNSRecordType = "DNS_RECORD_TYPE_A" | "DNS_RECORD_TYPE_TXT" | "DNS_RECORD_TYPE_CNAME";
-export const DNSRecordType = S.String;
+const DNSRecordType = S.String;
 
 export interface DNSRecord {
   type?: DNSRecordType;
   name?: string;
   value?: string;
 }
-export const DNSRecord = /*@__PURE__*/ S.suspend(() =>
+const DNSRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DNSRecordType),
     name: S.optional(S.String),
@@ -35,13 +35,13 @@ export const DNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DNSRecord" }) as any as S.Schema<DNSRecord>;
 
 export type DNSRecordList = Array<DNSRecord>;
-export const DNSRecordList = /*@__PURE__*/ S.Array(DNSRecord) as any as S.Schema<DNSRecordList>;
+const DNSRecordList = /*@__PURE__*/ S.Array(DNSRecord) as any as S.Schema<DNSRecordList>;
 
 export interface CreateDomainResponse {
   domainId?: string;
   dnsRecords?: DNSRecordList;
 }
-export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainId: S.optional(S.String),
     dnsRecords: S.optional(DNSRecordList),
@@ -49,7 +49,7 @@ export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDomainResponse" }) as any as S.Schema<CreateDomainResponse>;
 
 export interface ListDomainRequest {}
-export const ListDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/DomainList", code: 200 }),
   ),
@@ -60,7 +60,7 @@ export type CertificateStatus =
   | "CERTIFICATE_STATUS_ISSUED"
   | "CERTIFICATE_STATUS_FAILED"
   | "CERTIFICATE_STATUS_REVOKED";
-export const CertificateStatus = S.String;
+const CertificateStatus = S.String;
 
 export interface Domain {
   domainId?: string;
@@ -69,7 +69,7 @@ export interface Domain {
   certificateStatus?: CertificateStatus;
   dnsRecords?: DNSRecordList;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainId: S.optional(S.String),
     domainName: S.optional(S.String),
@@ -80,12 +80,12 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 export type DomainList2 = Array<Domain>;
-export const DomainList2 = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList2>;
+const DomainList2 = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList2>;
 
 export interface ListDomainResponse {
   domains?: DomainList2;
 }
-export const ListDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(DomainList2),
   }),
@@ -94,7 +94,7 @@ export const ListDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyDomainCertificateRequest {
   domainId?: string;
 }
-export const VerifyDomainCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainId: S.optional(S.String),
   }).pipe(
@@ -107,7 +107,7 @@ export const VerifyDomainCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyDomainCertificateResponse {
   domain?: Domain;
 }
-export const VerifyDomainCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(Domain),
   }),

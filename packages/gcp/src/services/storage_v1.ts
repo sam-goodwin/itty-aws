@@ -115,7 +115,7 @@ export interface AdvanceRelocateBucketOperationRequest {
   /** Specifies the time when the relocation will revert to the sync stage if the relocation hasn't succeeded. */
   expireTime?: string;
 }
-export const AdvanceRelocateBucketOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const AdvanceRelocateBucketOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -132,7 +132,7 @@ export interface AdvanceRelocateBucketOperationsRequest {
   /** Request body */
   body?: AdvanceRelocateBucketOperationRequest;
 }
-export const AdvanceRelocateBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdvanceRelocateBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -149,14 +149,14 @@ export const AdvanceRelocateBucketOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AdvanceRelocateBucketOperationsRequest>;
 
 export interface AdvanceRelocateBucketOperationsResponse {}
-export const AdvanceRelocateBucketOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const AdvanceRelocateBucketOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AdvanceRelocateBucketOperationsResponse",
 }) as any as S.Schema<AdvanceRelocateBucketOperationsResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A bulk restore objects request. */
 export interface BulkRestoreObjectsRequest {
@@ -175,7 +175,7 @@ export interface BulkRestoreObjectsRequest {
   /** Restores only the objects that were created before this time. */
   createdBeforeTime?: string;
 }
-export const BulkRestoreObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkRestoreObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOverwrite: S.optional(S.Boolean),
     softDeletedAfterTime: S.optional(S.String),
@@ -195,7 +195,7 @@ export interface BulkRestoreObjectsRequest_ {
   /** Request body */
   body?: BulkRestoreObjectsRequest;
 }
-export const BulkRestoreObjectsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BulkRestoreObjectsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     body: S.optional(BulkRestoreObjectsRequest.pipe(T.HttpBody())),
@@ -211,15 +211,10 @@ export const BulkRestoreObjectsRequest_ = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkRestoreObjectsRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The "Status" type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each "Status" message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -230,7 +225,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. */
   message?: string;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -255,7 +250,7 @@ export interface GoogleLongrunningOperation {
   /** The kind of item this is. For operations, this is always storage#operation. */
   kind?: string;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(GoogleRpcStatus),
@@ -275,7 +270,7 @@ export interface CancelOperationsRequest {
   /** The ID of the operation resource. */
   operationId: string;
 }
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -289,7 +284,7 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
 
 export interface CancelOperationsResponse {}
-export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationsResponse",
 }) as any as S.Schema<CancelOperationsResponse>;
 
@@ -300,7 +295,7 @@ export type ComposeObjectsDestinationPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const ComposeObjectsDestinationPredefinedAclEnum = S.String;
+const ComposeObjectsDestinationPredefinedAclEnum = S.String;
 
 export interface ObjectAccessControlProjectTeam {
   /** The project number. */
@@ -308,7 +303,7 @@ export interface ObjectAccessControlProjectTeam {
   /** The team. */
   team?: string;
 }
-export const ObjectAccessControlProjectTeam = /*@__PURE__*/ S.suspend(() =>
+const ObjectAccessControlProjectTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectNumber: S.optional(S.String),
     team: S.optional(S.String),
@@ -346,7 +341,7 @@ export interface ObjectAccessControl {
   /** The link to this access-control entry. */
   selfLink?: string;
 }
-export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
+const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     domain: S.optional(S.String),
@@ -365,7 +360,7 @@ export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectAccessControl" }) as any as S.Schema<ObjectAccessControl>;
 
 export type ObjectAccessControlList = Array<ObjectAccessControl>;
-export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
+const ObjectAccessControlList = /*@__PURE__*/ S.Array(
   ObjectAccessControl,
 ) as any as S.Schema<ObjectAccessControlList>;
 
@@ -375,7 +370,7 @@ export interface Storage_ObjectCustomerEncryption {
   /** SHA256 hash value of the encryption key. */
   keySha256?: string;
 }
-export const Storage_ObjectCustomerEncryption = /*@__PURE__*/ S.suspend(() =>
+const Storage_ObjectCustomerEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionAlgorithm: S.optional(S.String),
     keySha256: S.optional(S.String),
@@ -385,7 +380,7 @@ export const Storage_ObjectCustomerEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Storage_ObjectCustomerEncryption>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The payload of a single user-defined object context. */
 export interface ObjectCustomContextPayload {
@@ -398,7 +393,7 @@ export interface ObjectCustomContextPayload {
   /** The type URL of the object context's extended data. */
   extendedDataTypeUrl?: string;
 }
-export const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
+const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -412,7 +407,7 @@ export const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
 export type ObjectCustomContextPayloadMap = {
   [key: string]: ObjectCustomContextPayload | undefined;
 };
-export const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(
+const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(
   S.String,
   ObjectCustomContextPayload,
 ) as any as S.Schema<ObjectCustomContextPayloadMap>;
@@ -421,7 +416,7 @@ export interface Storage_ObjectContexts {
   /** User-defined object contexts. */
   custom?: ObjectCustomContextPayloadMap;
 }
-export const Storage_ObjectContexts = /*@__PURE__*/ S.suspend(() =>
+const Storage_ObjectContexts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom: S.optional(ObjectCustomContextPayloadMap),
   }),
@@ -433,7 +428,7 @@ export interface Storage_ObjectOwner {
   /** The ID for the entity. */
   entityId?: string;
 }
-export const Storage_ObjectOwner = /*@__PURE__*/ S.suspend(() =>
+const Storage_ObjectOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(S.String),
     entityId: S.optional(S.String),
@@ -446,7 +441,7 @@ export interface Storage_ObjectRetention {
   /** The bucket's object retention mode, can only be Unlocked or Locked. */
   mode?: string;
 }
-export const Storage_ObjectRetention = /*@__PURE__*/ S.suspend(() =>
+const Storage_ObjectRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retainUntilTime: S.optional(S.String),
     mode: S.optional(S.String),
@@ -532,7 +527,7 @@ export interface Storage_Object {
   /** The modification time of the object metadata in RFC 3339 format. Set initially to object creation time and then updated whenever any metadata of the object changes. This includes changes made by a requester, such as modifying custom metadata, as well as changes made by Cloud Storage on behalf of a requester, such as changing the storage class based on an Object Lifecycle Configuration. */
   updated?: string;
 }
-export const Storage_Object = /*@__PURE__*/ S.suspend(() =>
+const Storage_Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(ObjectAccessControlList),
     bucket: S.optional(S.String),
@@ -579,7 +574,7 @@ export interface ComposeRequestSourceObjectsItemObjectPreconditions {
   /** Only perform the composition if the generation of the source object that would be used matches this value. If this value and a generation are both specified, they must be the same value or the call will fail. */
   ifGenerationMatch?: string;
 }
-export const ComposeRequestSourceObjectsItemObjectPreconditions = /*@__PURE__*/ S.suspend(() =>
+const ComposeRequestSourceObjectsItemObjectPreconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ifGenerationMatch: S.optional(S.String),
   }),
@@ -595,7 +590,7 @@ export interface ComposeRequestSourceObjectsItem {
   /** Conditions that must be met for this operation to execute. */
   objectPreconditions?: ComposeRequestSourceObjectsItemObjectPreconditions;
 }
-export const ComposeRequestSourceObjectsItem = /*@__PURE__*/ S.suspend(() =>
+const ComposeRequestSourceObjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation: S.optional(S.String),
     name: S.optional(S.String),
@@ -606,7 +601,7 @@ export const ComposeRequestSourceObjectsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComposeRequestSourceObjectsItem>;
 
 export type ComposeRequestSourceObjectsItemList = Array<ComposeRequestSourceObjectsItem>;
-export const ComposeRequestSourceObjectsItemList = /*@__PURE__*/ S.Array(
+const ComposeRequestSourceObjectsItemList = /*@__PURE__*/ S.Array(
   ComposeRequestSourceObjectsItem,
 ) as any as S.Schema<ComposeRequestSourceObjectsItemList>;
 
@@ -621,7 +616,7 @@ export interface ComposeRequest {
   /** If true, the source objects will be deleted. */
   deleteSourceObjects?: boolean;
 }
-export const ComposeRequest = /*@__PURE__*/ S.suspend(() =>
+const ComposeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(Storage_Object),
     kind: S.optional(S.String),
@@ -650,7 +645,7 @@ export interface ComposeObjectsRequest {
   /** Request body */
   body?: ComposeRequest;
 }
-export const ComposeObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ComposeObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationBucket: S.String.pipe(T.Label()),
     destinationObject: S.String.pipe(T.Label()),
@@ -679,10 +674,10 @@ export type CopyObjectsDestinationPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const CopyObjectsDestinationPredefinedAclEnum = S.String;
+const CopyObjectsDestinationPredefinedAclEnum = S.String;
 
 export type CopyObjectsProjectionEnum = "full" | "noAcl";
-export const CopyObjectsProjectionEnum = S.String;
+const CopyObjectsProjectionEnum = S.String;
 
 export interface CopyObjectsRequest {
   /** Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). */
@@ -722,7 +717,7 @@ export interface CopyObjectsRequest {
   /** Request body */
   body?: Storage_Object;
 }
-export const CopyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationBucket: S.String.pipe(T.Label()),
     destinationKmsKeyName: S.optional(S.String.pipe(T.Query())),
@@ -759,7 +754,7 @@ export interface CreateProjectsHmacKeysRequest {
   /** The project to be billed for this request. */
   userProject?: string;
 }
-export const CreateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Query()),
@@ -798,7 +793,7 @@ export interface HmacKeyMetadata {
   /** The last modification time of the HMAC key metadata in RFC 3339 format. */
   updated?: string;
 }
-export const HmacKeyMetadata = /*@__PURE__*/ S.suspend(() =>
+const HmacKeyMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessId: S.optional(S.String),
     etag: S.optional(S.String),
@@ -822,7 +817,7 @@ export interface HmacKey {
   /** HMAC secret key material. */
   secret?: string;
 }
-export const HmacKey = /*@__PURE__*/ S.suspend(() =>
+const HmacKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(HmacKeyMetadata),
@@ -838,7 +833,7 @@ export interface DeleteBucketAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -855,7 +850,7 @@ export const DeleteBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBucketAccessControlsRequest>;
 
 export interface DeleteBucketAccessControlsResponse {}
-export const DeleteBucketAccessControlsResponse =
+const DeleteBucketAccessControlsResponse =
   AdvanceRelocateBucketOperationsResponse as any as S.Schema<DeleteBucketAccessControlsResponse>;
 
 export interface DeleteBucketsRequest {
@@ -868,7 +863,7 @@ export interface DeleteBucketsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
@@ -884,8 +879,7 @@ export const DeleteBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketsRequest" }) as any as S.Schema<DeleteBucketsRequest>;
 
 export interface DeleteBucketsResponse {}
-export const DeleteBucketsResponse =
-  CancelOperationsResponse as any as S.Schema<DeleteBucketsResponse>;
+const DeleteBucketsResponse = CancelOperationsResponse as any as S.Schema<DeleteBucketsResponse>;
 
 export interface DeleteDefaultObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -895,7 +889,7 @@ export interface DeleteDefaultObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -912,7 +906,7 @@ export const DeleteDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteDefaultObjectAccessControlsRequest>;
 
 export interface DeleteDefaultObjectAccessControlsResponse {}
-export const DeleteDefaultObjectAccessControlsResponse =
+const DeleteDefaultObjectAccessControlsResponse =
   AdvanceRelocateBucketOperationsResponse as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>;
 
 export interface DeleteFoldersRequest {
@@ -925,7 +919,7 @@ export interface DeleteFoldersRequest {
   /** If set, only deletes the folder if its metageneration does not match this value. */
   ifMetagenerationNotMatch?: string;
 }
-export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     folder: S.String.pipe(T.Label()),
@@ -941,8 +935,7 @@ export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFoldersRequest" }) as any as S.Schema<DeleteFoldersRequest>;
 
 export interface DeleteFoldersResponse {}
-export const DeleteFoldersResponse =
-  CancelOperationsResponse as any as S.Schema<DeleteFoldersResponse>;
+const DeleteFoldersResponse = CancelOperationsResponse as any as S.Schema<DeleteFoldersResponse>;
 
 export interface DeleteManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -956,7 +949,7 @@ export interface DeleteManagedFoldersRequest {
   /** Allows the deletion of a managed folder even if it is not empty. A managed folder is empty if there are no objects or managed folders that it applies to. Callers must have storage.managedFolders.setIamPolicy permission. */
   allowNonEmpty?: boolean;
 }
-export const DeleteManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     managedFolder: S.String.pipe(T.Label()),
@@ -975,7 +968,7 @@ export const DeleteManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedFoldersRequest>;
 
 export interface DeleteManagedFoldersResponse {}
-export const DeleteManagedFoldersResponse =
+const DeleteManagedFoldersResponse =
   CancelOperationsResponse as any as S.Schema<DeleteManagedFoldersResponse>;
 
 export interface DeleteNotificationsRequest {
@@ -986,7 +979,7 @@ export interface DeleteNotificationsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     notification: S.String.pipe(T.Label()),
@@ -1003,7 +996,7 @@ export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse =
+const DeleteNotificationsResponse =
   CancelOperationsResponse as any as S.Schema<DeleteNotificationsResponse>;
 
 export interface DeleteObjectAccessControlsRequest {
@@ -1018,7 +1011,7 @@ export interface DeleteObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -1037,7 +1030,7 @@ export const DeleteObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteObjectAccessControlsRequest>;
 
 export interface DeleteObjectAccessControlsResponse {}
-export const DeleteObjectAccessControlsResponse =
+const DeleteObjectAccessControlsResponse =
   AdvanceRelocateBucketOperationsResponse as any as S.Schema<DeleteObjectAccessControlsResponse>;
 
 export interface DeleteObjectsRequest {
@@ -1058,7 +1051,7 @@ export interface DeleteObjectsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -1078,8 +1071,7 @@ export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteObjectsRequest" }) as any as S.Schema<DeleteObjectsRequest>;
 
 export interface DeleteObjectsResponse {}
-export const DeleteObjectsResponse =
-  CancelOperationsResponse as any as S.Schema<DeleteObjectsResponse>;
+const DeleteObjectsResponse = CancelOperationsResponse as any as S.Schema<DeleteObjectsResponse>;
 
 export interface DeleteProjectsHmacKeysRequest {
   /** Name of the HMAC key to be deleted. */
@@ -1089,7 +1081,7 @@ export interface DeleteProjectsHmacKeysRequest {
   /** The project to be billed for this request. */
   userProject?: string;
 }
-export const DeleteProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -1106,7 +1098,7 @@ export const DeleteProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectsHmacKeysRequest>;
 
 export interface DeleteProjectsHmacKeysResponse {}
-export const DeleteProjectsHmacKeysResponse =
+const DeleteProjectsHmacKeysResponse =
   CancelOperationsResponse as any as S.Schema<DeleteProjectsHmacKeysResponse>;
 
 export interface DeleteRecursiveFoldersRequest {
@@ -1119,7 +1111,7 @@ export interface DeleteRecursiveFoldersRequest {
   /** If set, only deletes the folder if its metageneration does not match this value. */
   ifMetagenerationNotMatch?: string;
 }
-export const DeleteRecursiveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecursiveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     folder: S.String.pipe(T.Label()),
@@ -1142,7 +1134,7 @@ export interface DisableAnywhereCachesRequest {
   /** The ID of requested Anywhere Cache instance. */
   anywhereCacheId: string;
 }
-export const DisableAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     anywhereCacheId: S.String.pipe(T.Label()),
@@ -1186,7 +1178,7 @@ export interface AnywhereCache {
   /** Specifies whether objects are ingested into the cache upon write. */
   ingestOnWrite?: boolean;
 }
-export const AnywhereCache = /*@__PURE__*/ S.suspend(() =>
+const AnywhereCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -1210,7 +1202,7 @@ export interface DisableRapidCachesRequest {
   /** The ID of the requested Rapid Cache instance. */
   rapidCacheId: string;
 }
-export const DisableRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     rapidCacheId: S.String.pipe(T.Label()),
@@ -1231,7 +1223,7 @@ export interface GetAnywhereCachesRequest {
   /** The ID of requested Anywhere Cache instance. */
   anywhereCacheId: string;
 }
-export const GetAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     anywhereCacheId: S.String.pipe(T.Label()),
@@ -1252,7 +1244,7 @@ export interface GetBucketAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -1269,8 +1261,6 @@ export const GetBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketAccessControlsRequest>;
 
 export type BucketAccessControlProjectTeam = ObjectAccessControlProjectTeam;
-export const BucketAccessControlProjectTeam = ObjectAccessControlProjectTeam;
-
 /** An access-control entry. */
 export interface BucketAccessControl {
   /** The name of the bucket. */
@@ -1296,7 +1286,7 @@ export interface BucketAccessControl {
   /** The link to this access-control entry. */
   selfLink?: string;
 }
-export const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
+const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1313,7 +1303,7 @@ export const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketAccessControl" }) as any as S.Schema<BucketAccessControl>;
 
 export type GetBucketsProjectionEnum = "full" | "noAcl";
-export const GetBucketsProjectionEnum = S.String;
+const GetBucketsProjectionEnum = S.String;
 
 export interface GetBucketsRequest {
   /** Name of a bucket. */
@@ -1331,7 +1321,7 @@ export interface GetBucketsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -1350,7 +1340,7 @@ export const GetBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBucketsRequest" }) as any as S.Schema<GetBucketsRequest>;
 
 export type BucketAccessControlList = Array<BucketAccessControl>;
-export const BucketAccessControlList = /*@__PURE__*/ S.Array(
+const BucketAccessControlList = /*@__PURE__*/ S.Array(
   BucketAccessControl,
 ) as any as S.Schema<BucketAccessControlList>;
 
@@ -1358,7 +1348,7 @@ export interface BucketBilling {
   /** When set to true, Requester Pays is enabled for this bucket. */
   requesterPays?: boolean;
 }
-export const BucketBilling = /*@__PURE__*/ S.suspend(() =>
+const BucketBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requesterPays: S.optional(S.Boolean),
   }),
@@ -1374,7 +1364,7 @@ export interface BucketCorsItem {
   /** The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains. */
   responseHeader?: StringList;
 }
-export const BucketCorsItem = /*@__PURE__*/ S.suspend(() =>
+const BucketCorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxAgeSeconds: S.optional(S.Number),
     method: S.optional(StringList),
@@ -1384,7 +1374,7 @@ export const BucketCorsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketCorsItem" }) as any as S.Schema<BucketCorsItem>;
 
 export type BucketCorsItemList = Array<BucketCorsItem>;
-export const BucketCorsItemList = /*@__PURE__*/ S.Array(
+const BucketCorsItemList = /*@__PURE__*/ S.Array(
   BucketCorsItem,
 ) as any as S.Schema<BucketCorsItemList>;
 
@@ -1392,7 +1382,7 @@ export interface BucketCustomPlacementConfig {
   /** The list of regional locations in which data is placed. */
   dataLocations?: StringList;
 }
-export const BucketCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
+const BucketCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLocations: S.optional(StringList),
   }),
@@ -1403,7 +1393,7 @@ export const BucketCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
 export type BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
   | "NotRestricted"
   | "FullyRestricted";
-export const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum = S.String;
+const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum = S.String;
 
 export interface BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
   /** Restriction mode for Google-Managed Encryption Keys. Defaults to NotRestricted. */
@@ -1413,14 +1403,13 @@ export interface BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionGoogleManagedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      restrictionMode: S.optional(
-        BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum,
-      ),
-      effectiveTime: S.optional(S.String),
-    }),
+const BucketEncryptionGoogleManagedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    restrictionMode: S.optional(
+      BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum,
+    ),
+    effectiveTime: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "BucketEncryptionGoogleManagedEncryptionEnforcementConfig",
 }) as any as S.Schema<BucketEncryptionGoogleManagedEncryptionEnforcementConfig>;
@@ -1428,9 +1417,6 @@ export const BucketEncryptionGoogleManagedEncryptionEnforcementConfig = /*@__PUR
 export type BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
   | "NotRestricted"
   | "FullyRestricted";
-export const BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
-  S.String;
-
 export interface BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
   /** Restriction mode for Customer-Managed Encryption Keys. Defaults to NotRestricted. */
   restrictionMode?:
@@ -1439,15 +1425,12 @@ export interface BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig =
+const BucketEncryptionCustomerManagedEncryptionEnforcementConfig =
   BucketEncryptionGoogleManagedEncryptionEnforcementConfig as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
 
 export type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
   | "NotRestricted"
   | "FullyRestricted";
-export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
-  S.String;
-
 export interface BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /** Restriction mode for Customer-Supplied Encryption Keys. Defaults to NotRestricted. */
   restrictionMode?:
@@ -1456,7 +1439,7 @@ export interface BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig =
+const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig =
   BucketEncryptionGoogleManagedEncryptionEnforcementConfig as any as S.Schema<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig>;
 
 export interface BucketEncryption {
@@ -1469,7 +1452,7 @@ export interface BucketEncryption {
   /** If set, the new objects created in this bucket must comply with this enforcement config. Changing this has no effect on existing objects; it applies to new objects only. If omitted, the new objects are allowed to be encrypted with Customer Supplied Encryption type by default. */
   customerSuppliedEncryptionEnforcementConfig?: BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig;
 }
-export const BucketEncryption = /*@__PURE__*/ S.suspend(() =>
+const BucketEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultKmsKeyName: S.optional(S.String),
     googleManagedEncryptionEnforcementConfig: S.optional(
@@ -1488,7 +1471,7 @@ export interface BucketHierarchicalNamespace {
   /** When set to true, hierarchical namespace is enabled for this bucket. */
   enabled?: boolean;
 }
-export const BucketHierarchicalNamespace = /*@__PURE__*/ S.suspend(() =>
+const BucketHierarchicalNamespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -1502,7 +1485,7 @@ export interface BucketIamConfigurationBucketPolicyOnly {
   /** The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const BucketIamConfigurationBucketPolicyOnly = /*@__PURE__*/ S.suspend(() =>
+const BucketIamConfigurationBucketPolicyOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     lockedTime: S.optional(S.String),
@@ -1517,7 +1500,7 @@ export interface BucketIamConfigurationUniformBucketLevelAccess {
   /** The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339 format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const BucketIamConfigurationUniformBucketLevelAccess =
+const BucketIamConfigurationUniformBucketLevelAccess =
   BucketIamConfigurationBucketPolicyOnly as any as S.Schema<BucketIamConfigurationUniformBucketLevelAccess>;
 
 export interface BucketIamConfiguration {
@@ -1528,7 +1511,7 @@ export interface BucketIamConfiguration {
   /** The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported. */
   publicAccessPrevention?: string;
 }
-export const BucketIamConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BucketIamConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketPolicyOnly: S.optional(BucketIamConfigurationBucketPolicyOnly),
     uniformBucketLevelAccess: S.optional(BucketIamConfigurationUniformBucketLevelAccess),
@@ -1540,7 +1523,7 @@ export interface BucketIpFilterPublicNetworkSource {
   /** The list of public IPv4, IPv6 cidr ranges that are allowed to access the bucket. */
   allowedIpCidrRanges?: StringList;
 }
-export const BucketIpFilterPublicNetworkSource = /*@__PURE__*/ S.suspend(() =>
+const BucketIpFilterPublicNetworkSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedIpCidrRanges: S.optional(StringList),
   }),
@@ -1554,7 +1537,7 @@ export interface BucketIpFilterVpcNetworkSourcesItem {
   /** The list of IPv4, IPv6 cidr ranges subnetworks that are allowed to access the bucket. */
   allowedIpCidrRanges?: StringList;
 }
-export const BucketIpFilterVpcNetworkSourcesItem = /*@__PURE__*/ S.suspend(() =>
+const BucketIpFilterVpcNetworkSourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     allowedIpCidrRanges: S.optional(StringList),
@@ -1564,7 +1547,7 @@ export const BucketIpFilterVpcNetworkSourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItem>;
 
 export type BucketIpFilterVpcNetworkSourcesItemList = Array<BucketIpFilterVpcNetworkSourcesItem>;
-export const BucketIpFilterVpcNetworkSourcesItemList = /*@__PURE__*/ S.Array(
+const BucketIpFilterVpcNetworkSourcesItemList = /*@__PURE__*/ S.Array(
   BucketIpFilterVpcNetworkSourcesItem,
 ) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItemList>;
 
@@ -1580,7 +1563,7 @@ export interface BucketIpFilter {
   /** Whether to allow all service agents to access the bucket regardless of the IP filter configuration. */
   allowAllServiceAgentAccess?: boolean;
 }
-export const BucketIpFilter = /*@__PURE__*/ S.suspend(() =>
+const BucketIpFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
     publicNetworkSource: S.optional(BucketIpFilterPublicNetworkSource),
@@ -1596,7 +1579,7 @@ export interface BucketLifecycleRuleItemAction {
   /** Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported. */
   type?: string;
 }
-export const BucketLifecycleRuleItemAction = /*@__PURE__*/ S.suspend(() =>
+const BucketLifecycleRuleItemAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageClass: S.optional(S.String),
     type: S.optional(S.String),
@@ -1635,7 +1618,7 @@ export interface BucketLifecycleRuleItemCondition {
   /** Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object. */
   numNewerVersions?: number;
 }
-export const BucketLifecycleRuleItemCondition = /*@__PURE__*/ S.suspend(() =>
+const BucketLifecycleRuleItemCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     age: S.optional(S.Number),
     createdBefore: S.optional(S.String),
@@ -1662,7 +1645,7 @@ export interface BucketLifecycleRuleItem {
   /** The condition(s) under which the action will be taken. */
   condition?: BucketLifecycleRuleItemCondition;
 }
-export const BucketLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
+const BucketLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(BucketLifecycleRuleItemAction),
     condition: S.optional(BucketLifecycleRuleItemCondition),
@@ -1670,7 +1653,7 @@ export const BucketLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketLifecycleRuleItem" }) as any as S.Schema<BucketLifecycleRuleItem>;
 
 export type BucketLifecycleRuleItemList = Array<BucketLifecycleRuleItem>;
-export const BucketLifecycleRuleItemList = /*@__PURE__*/ S.Array(
+const BucketLifecycleRuleItemList = /*@__PURE__*/ S.Array(
   BucketLifecycleRuleItem,
 ) as any as S.Schema<BucketLifecycleRuleItemList>;
 
@@ -1678,7 +1661,7 @@ export interface BucketLifecycle {
   /** A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken. */
   rule?: BucketLifecycleRuleItemList;
 }
-export const BucketLifecycle = /*@__PURE__*/ S.suspend(() =>
+const BucketLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(BucketLifecycleRuleItemList),
   }),
@@ -1694,7 +1677,7 @@ export interface BucketAutoclass {
   /** A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass". */
   terminalStorageClassUpdateTime?: string;
 }
-export const BucketAutoclass = /*@__PURE__*/ S.suspend(() =>
+const BucketAutoclass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     toggleTime: S.optional(S.String),
@@ -1709,7 +1692,7 @@ export interface BucketLogging {
   /** A prefix for log object names. */
   logObjectPrefix?: string;
 }
-export const BucketLogging = /*@__PURE__*/ S.suspend(() =>
+const BucketLogging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logBucket: S.optional(S.String),
     logObjectPrefix: S.optional(S.String),
@@ -1722,7 +1705,7 @@ export interface BucketOwner {
   /** The ID for the entity. */
   entityId?: string;
 }
-export const BucketOwner = Storage_ObjectOwner as any as S.Schema<BucketOwner>;
+const BucketOwner = Storage_ObjectOwner as any as S.Schema<BucketOwner>;
 
 export interface BucketRetentionPolicy {
   /** Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format. */
@@ -1732,7 +1715,7 @@ export interface BucketRetentionPolicy {
   /** The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes. */
   retentionPeriod?: string;
 }
-export const BucketRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
+const BucketRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveTime: S.optional(S.String),
     isLocked: S.optional(S.Boolean),
@@ -1744,7 +1727,7 @@ export interface BucketObjectRetention {
   /** The bucket's object retention mode. Can be Enabled. */
   mode?: string;
 }
-export const BucketObjectRetention = /*@__PURE__*/ S.suspend(() =>
+const BucketObjectRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
   }),
@@ -1756,7 +1739,7 @@ export interface BucketSoftDeletePolicyHardDeletePause {
   /** Server-determined value that indicates the time from which the hard delete pause became effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketSoftDeletePolicyHardDeletePause = /*@__PURE__*/ S.suspend(() =>
+const BucketSoftDeletePolicyHardDeletePause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     effectiveTime: S.optional(S.String),
@@ -1773,7 +1756,7 @@ export interface BucketSoftDeletePolicy {
   /** The bucket's hard delete pause configuration. If set, soft-deleted objects in the bucket will not be permanently deleted until the hard delete pause is disabled. */
   hardDeletePause?: BucketSoftDeletePolicyHardDeletePause;
 }
-export const BucketSoftDeletePolicy = /*@__PURE__*/ S.suspend(() =>
+const BucketSoftDeletePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionDurationSeconds: S.optional(S.String),
     effectiveTime: S.optional(S.String),
@@ -1785,7 +1768,7 @@ export interface BucketVersioning {
   /** While set to true, versioning is fully enabled for this bucket. */
   enabled?: boolean;
 }
-export const BucketVersioning = /*@__PURE__*/ S.suspend(() =>
+const BucketVersioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -1797,7 +1780,7 @@ export interface BucketWebsite {
   /** If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result. */
   notFoundPage?: string;
 }
-export const BucketWebsite = /*@__PURE__*/ S.suspend(() =>
+const BucketWebsite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mainPageSuffix: S.optional(S.String),
     notFoundPage: S.optional(S.String),
@@ -1883,7 +1866,7 @@ export interface Bucket {
   /** Reserved for future use. */
   satisfiesPZI?: boolean;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(BucketAccessControlList),
     billing: S.optional(BucketBilling),
@@ -1934,7 +1917,7 @@ export interface GetDefaultObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -1960,7 +1943,7 @@ export interface GetFoldersRequest {
   /** Makes the return of the folder metadata conditional on whether the folder's current metageneration does not match the given value. */
   ifMetagenerationNotMatch?: string;
 }
-export const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     folder: S.String.pipe(T.Label()),
@@ -1979,7 +1962,7 @@ export interface FolderPendingRenameInfo {
   /** The ID of the rename folder operation. */
   operationId?: string;
 }
-export const FolderPendingRenameInfo = /*@__PURE__*/ S.suspend(() =>
+const FolderPendingRenameInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
   }),
@@ -2006,7 +1989,7 @@ export interface Folder {
   /** Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status. */
   pendingRenameInfo?: FolderPendingRenameInfo;
 }
-export const Folder = /*@__PURE__*/ S.suspend(() =>
+const Folder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     id: S.optional(S.String),
@@ -2028,7 +2011,7 @@ export interface GetIamPolicyBucketsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetIamPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
@@ -2055,7 +2038,7 @@ export interface Expr {
   /** An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expression: S.optional(S.String),
@@ -2072,7 +2055,7 @@ export interface PolicyBindingsItem {
   /** The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole. The new IAM roles are: - roles/storage.admin - Full control of Google Cloud Storage resources. - roles/storage.objectViewer - Read-Only access to Google Cloud Storage objects. - roles/storage.objectCreator - Access to create objects in Google Cloud Storage. - roles/storage.objectAdmin - Full control of Google Cloud Storage objects. The legacy IAM roles are: - roles/storage.legacyObjectReader - Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role. - roles/storage.legacyObjectOwner - Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role. - roles/storage.legacyBucketReader - Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role. - roles/storage.legacyBucketWriter - Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role. - roles/storage.legacyBucketOwner - Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role. */
   role?: string;
 }
-export const PolicyBindingsItem = /*@__PURE__*/ S.suspend(() =>
+const PolicyBindingsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -2081,7 +2064,7 @@ export const PolicyBindingsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyBindingsItem" }) as any as S.Schema<PolicyBindingsItem>;
 
 export type PolicyBindingsItemList = Array<PolicyBindingsItem>;
-export const PolicyBindingsItemList = /*@__PURE__*/ S.Array(
+const PolicyBindingsItemList = /*@__PURE__*/ S.Array(
   PolicyBindingsItem,
 ) as any as S.Schema<PolicyBindingsItemList>;
 
@@ -2098,7 +2081,7 @@ export interface Policy {
   /** The IAM policy format version. */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(PolicyBindingsItemList),
     etag: S.optional(S.String),
@@ -2118,7 +2101,7 @@ export interface GetIamPolicyManagedFoldersRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetIamPolicyManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
@@ -2145,7 +2128,7 @@ export interface GetIamPolicyObjectsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetIamPolicyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -2172,7 +2155,7 @@ export interface GetManagedFoldersRequest {
   /** Makes the return of the managed folder metadata conditional on whether the managed folder's current metageneration does not match the given value. */
   ifMetagenerationNotMatch?: string;
 }
-export const GetManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     managedFolder: S.String.pipe(T.Label()),
@@ -2188,7 +2171,7 @@ export const GetManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetManagedFoldersRequest" }) as any as S.Schema<GetManagedFoldersRequest>;
 
 export type RapidCachePolicyIngestOnWriteEnum = "enabled" | "unspecified";
-export const RapidCachePolicyIngestOnWriteEnum = S.String;
+const RapidCachePolicyIngestOnWriteEnum = S.String;
 
 /** The rapid cache policy configuration for a managed folder. */
 export interface RapidCachePolicy {
@@ -2197,7 +2180,7 @@ export interface RapidCachePolicy {
   /** The ingest-on-write policy for objects in the managed folder. When set to `enabled`, objects are automatically ingested into the cache when they are written to the managed folder. */
   ingestOnWrite?: RapidCachePolicyIngestOnWriteEnum | (string & {});
 }
-export const RapidCachePolicy = /*@__PURE__*/ S.suspend(() =>
+const RapidCachePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rapidCacheId: S.optional(S.String),
     ingestOnWrite: S.optional(RapidCachePolicyIngestOnWriteEnum),
@@ -2205,7 +2188,7 @@ export const RapidCachePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RapidCachePolicy" }) as any as S.Schema<RapidCachePolicy>;
 
 export type RapidCachePolicyMap = { [key: string]: RapidCachePolicy | undefined };
-export const RapidCachePolicyMap = /*@__PURE__*/ S.Record(
+const RapidCachePolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   RapidCachePolicy,
 ) as any as S.Schema<RapidCachePolicyMap>;
@@ -2215,7 +2198,7 @@ export interface RapidCacheConfig {
   /** A map of rapid cache IDs to the corresponding `RapidCachePolicy` configurations for a managed folder. */
   policies?: RapidCachePolicyMap;
 }
-export const RapidCacheConfig = /*@__PURE__*/ S.suspend(() =>
+const RapidCacheConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: S.optional(RapidCachePolicyMap),
   }),
@@ -2242,7 +2225,7 @@ export interface ManagedFolder {
   /** The rapid cache configuration for the managed folder. */
   rapidCacheConfig?: RapidCacheConfig;
 }
-export const ManagedFolder = /*@__PURE__*/ S.suspend(() =>
+const ManagedFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     id: S.optional(S.String),
@@ -2264,7 +2247,7 @@ export interface GetNotificationsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     notification: S.String.pipe(T.Label()),
@@ -2299,7 +2282,7 @@ export interface Notification {
   /** The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}' */
   topic?: string;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_attributes: S.optional(StringMap),
     etag: S.optional(S.String),
@@ -2325,7 +2308,7 @@ export interface GetObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -2344,7 +2327,7 @@ export const GetObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetObjectAccessControlsRequest>;
 
 export type GetObjectsProjectionEnum = "full" | "noAcl";
-export const GetObjectsProjectionEnum = S.String;
+const GetObjectsProjectionEnum = S.String;
 
 export interface GetObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -2370,7 +2353,7 @@ export interface GetObjectsRequest {
   /** Restore token used to differentiate soft-deleted objects with the same name and generation. Only applicable for hierarchical namespace buckets and if softDeleted is set to true. This parameter is optional, and is only required in the rare case when there are multiple soft-deleted objects with the same name and generation. */
   restoreToken?: string;
 }
-export const GetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -2398,7 +2381,7 @@ export interface GetOperationsRequest {
   /** The ID of the operation resource. */
   operationId: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -2419,7 +2402,7 @@ export interface GetProjectsHmacKeysRequest {
   /** The project to be billed for this request. */
   userProject?: string;
 }
-export const GetProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -2441,7 +2424,7 @@ export interface GetProjectsServiceAccountRequest {
   /** The project to be billed for this request. */
   userProject?: string;
 }
-export const GetProjectsServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -2463,7 +2446,7 @@ export interface ServiceAccount {
   /** The kind of item this is. For notifications, this is always storage#notification. */
   kind?: string;
 }
-export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2476,7 +2459,7 @@ export interface GetRapidCachesRequest {
   /** The ID of the requested Rapid Cache instance. */
   rapidCacheId: string;
 }
-export const GetRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     rapidCacheId: S.String.pipe(T.Label()),
@@ -2520,7 +2503,7 @@ export interface RapidCache {
   /** The type of Rapid Cache this represents. Valid values include: "rapid-cache" and "rapid-cache-ultra". */
   cacheType?: string;
 }
-export const RapidCache = /*@__PURE__*/ S.suspend(() =>
+const RapidCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2545,7 +2528,7 @@ export interface GetStorageLayoutBucketsRequest {
   /** An optional prefix used for permission check. It is useful when the caller only has storage.objects.list permission under a specific prefix. */
   prefix?: string;
 }
-export const GetStorageLayoutBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageLayoutBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     prefix: S.optional(S.String.pipe(T.Query())),
@@ -2561,11 +2544,7 @@ export const GetStorageLayoutBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStorageLayoutBucketsRequest>;
 
 export type BucketStorageLayoutCustomPlacementConfig = BucketCustomPlacementConfig;
-export const BucketStorageLayoutCustomPlacementConfig = BucketCustomPlacementConfig;
-
 export type BucketStorageLayoutHierarchicalNamespace = BucketHierarchicalNamespace;
-export const BucketStorageLayoutHierarchicalNamespace = BucketHierarchicalNamespace;
-
 /** The storage layout configuration of a bucket. */
 export interface BucketStorageLayout {
   /** The name of the bucket. */
@@ -2581,7 +2560,7 @@ export interface BucketStorageLayout {
   /** The type of the bucket location. */
   locationType?: string;
 }
-export const BucketStorageLayout = /*@__PURE__*/ S.suspend(() =>
+const BucketStorageLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     customPlacementConfig: S.optional(BucketCustomPlacementConfig),
@@ -2598,7 +2577,7 @@ export interface InsertAnywhereCachesRequest {
   /** Request body */
   body?: AnywhereCache;
 }
-export const InsertAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     body: S.optional(AnywhereCache.pipe(T.HttpBody())),
@@ -2621,7 +2600,7 @@ export interface InsertBucketAccessControlsRequest {
   /** Request body */
   body?: BucketAccessControl;
 }
-export const InsertBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -2643,7 +2622,7 @@ export type InsertBucketsPredefinedAclEnum =
   | "projectPrivate"
   | "publicRead"
   | "publicReadWrite";
-export const InsertBucketsPredefinedAclEnum = S.String;
+const InsertBucketsPredefinedAclEnum = S.String;
 
 export type InsertBucketsPredefinedDefaultObjectAclEnum =
   | "authenticatedRead"
@@ -2652,10 +2631,10 @@ export type InsertBucketsPredefinedDefaultObjectAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const InsertBucketsPredefinedDefaultObjectAclEnum = S.String;
+const InsertBucketsPredefinedDefaultObjectAclEnum = S.String;
 
 export type InsertBucketsProjectionEnum = "full" | "noAcl";
-export const InsertBucketsProjectionEnum = S.String;
+const InsertBucketsProjectionEnum = S.String;
 
 export interface InsertBucketsRequest {
   /** Apply a predefined set of access controls to this bucket. */
@@ -2673,7 +2652,7 @@ export interface InsertBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
-export const InsertBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predefinedAcl: S.optional(InsertBucketsPredefinedAclEnum.pipe(T.Query())),
     predefinedDefaultObjectAcl: S.optional(
@@ -2697,7 +2676,7 @@ export interface InsertDefaultObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const InsertDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -2721,7 +2700,7 @@ export interface InsertFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const InsertFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     recursive: S.optional(S.Boolean.pipe(T.Query())),
@@ -2741,7 +2720,7 @@ export interface InsertManagedFoldersRequest {
   /** Request body */
   body?: ManagedFolder;
 }
-export const InsertManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     body: S.optional(ManagedFolder.pipe(T.HttpBody())),
@@ -2764,7 +2743,7 @@ export interface InsertNotificationsRequest {
   /** Request body */
   body?: Notification;
 }
-export const InsertNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -2792,7 +2771,7 @@ export interface InsertObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const InsertObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -2817,10 +2796,10 @@ export type InsertObjectsPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const InsertObjectsPredefinedAclEnum = S.String;
+const InsertObjectsPredefinedAclEnum = S.String;
 
 export type InsertObjectsProjectionEnum = "full" | "noAcl";
-export const InsertObjectsProjectionEnum = S.String;
+const InsertObjectsProjectionEnum = S.String;
 
 export interface InsertObjectsRequest {
   /** Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any. */
@@ -2848,7 +2827,7 @@ export interface InsertObjectsRequest {
   /** Request body */
   body?: Storage_Object;
 }
-export const InsertObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     contentEncoding: S.optional(S.String.pipe(T.Query())),
@@ -2877,7 +2856,7 @@ export interface InsertRapidCachesRequest {
   /** Request body */
   body?: RapidCache;
 }
-export const InsertRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     body: S.optional(RapidCache.pipe(T.HttpBody())),
@@ -2898,7 +2877,7 @@ export interface ListAnywhereCachesRequest {
   /** A previously-returned page token representing part of the larger set of results to view. */
   pageToken?: string;
 }
-export const ListAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2915,7 +2894,7 @@ export const ListAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAnywhereCachesRequest>;
 
 export type AnywhereCacheList = Array<AnywhereCache>;
-export const AnywhereCacheList = /*@__PURE__*/ S.Array(
+const AnywhereCacheList = /*@__PURE__*/ S.Array(
   AnywhereCache,
 ) as any as S.Schema<AnywhereCacheList>;
 
@@ -2928,7 +2907,7 @@ export interface AnywhereCaches {
   /** The list of items. */
   items: AnywhereCacheList;
 }
-export const AnywhereCaches = /*@__PURE__*/ S.suspend(() =>
+const AnywhereCaches = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -2942,7 +2921,7 @@ export interface ListBucketAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const ListBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -2964,7 +2943,7 @@ export interface BucketAccessControls {
   /** The kind of item this is. For lists of bucket access control entries, this is always storage#bucketAccessControls. */
   kind?: string;
 }
-export const BucketAccessControls = /*@__PURE__*/ S.suspend(() =>
+const BucketAccessControls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(BucketAccessControlList),
     kind: S.optional(S.String),
@@ -2972,7 +2951,7 @@ export const BucketAccessControls = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketAccessControls" }) as any as S.Schema<BucketAccessControls>;
 
 export type ListBucketsProjectionEnum = "full" | "noAcl";
-export const ListBucketsProjectionEnum = S.String;
+const ListBucketsProjectionEnum = S.String;
 
 export interface ListBucketsRequest {
   /** Maximum number of buckets to return in a single response. The service will use this parameter or 1,000 items, whichever is smaller. */
@@ -2992,7 +2971,7 @@ export interface ListBucketsRequest {
   /** If true, return a list of bucket resource names for buckets that are in unreachable locations. */
   returnPartialSuccess?: boolean;
 }
-export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3008,7 +2987,7 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBucketsRequest" }) as any as S.Schema<ListBucketsRequest>;
 
 export type BucketList = Array<Bucket>;
-export const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
+const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
 
 /** A list of buckets. */
 export interface Buckets {
@@ -3021,7 +3000,7 @@ export interface Buckets {
   /** The list of bucket resource names that could not be reached during the listing operation. */
   unreachable?: StringList;
 }
-export const Buckets = /*@__PURE__*/ S.suspend(() =>
+const Buckets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: BucketList,
     kind: S.optional(S.String),
@@ -3040,7 +3019,7 @@ export interface ListDefaultObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const ListDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
@@ -3064,7 +3043,7 @@ export interface ObjectAccessControls {
   /** The kind of item this is. For lists of object access control entries, this is always storage#objectAccessControls. */
   kind?: string;
 }
-export const ObjectAccessControls = /*@__PURE__*/ S.suspend(() =>
+const ObjectAccessControls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ObjectAccessControlList),
     kind: S.optional(S.String),
@@ -3087,7 +3066,7 @@ export interface ListFoldersRequest {
   /** Filter results to folders whose names are lexicographically equal to or after startOffset. If endOffset is also set, the folders listed will have names between startOffset (inclusive) and endOffset (exclusive). */
   startOffset?: string;
 }
-export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     delimiter: S.optional(S.String.pipe(T.Query())),
@@ -3106,7 +3085,7 @@ export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFoldersRequest" }) as any as S.Schema<ListFoldersRequest>;
 
 export type FolderList = Array<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
+const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
 
 /** A list of folders. */
 export interface Folders {
@@ -3117,7 +3096,7 @@ export interface Folders {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-export const Folders = /*@__PURE__*/ S.suspend(() =>
+const Folders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: FolderList,
     kind: S.optional(S.String),
@@ -3135,7 +3114,7 @@ export interface ListManagedFoldersRequest {
   /** The managed folder name/path prefix to filter the output list of results. */
   prefix?: string;
 }
-export const ListManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3153,7 +3132,7 @@ export const ListManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListManagedFoldersRequest>;
 
 export type ManagedFolderList = Array<ManagedFolder>;
-export const ManagedFolderList = /*@__PURE__*/ S.Array(
+const ManagedFolderList = /*@__PURE__*/ S.Array(
   ManagedFolder,
 ) as any as S.Schema<ManagedFolderList>;
 
@@ -3166,7 +3145,7 @@ export interface ManagedFolders {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-export const ManagedFolders = /*@__PURE__*/ S.suspend(() =>
+const ManagedFolders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ManagedFolderList,
     kind: S.optional(S.String),
@@ -3180,7 +3159,7 @@ export interface ListNotificationsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -3194,9 +3173,7 @@ export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNotificationsRequest" }) as any as S.Schema<ListNotificationsRequest>;
 
 export type NotificationList = Array<Notification>;
-export const NotificationList = /*@__PURE__*/ S.Array(
-  Notification,
-) as any as S.Schema<NotificationList>;
+const NotificationList = /*@__PURE__*/ S.Array(Notification) as any as S.Schema<NotificationList>;
 
 /** A list of notification subscriptions. */
 export interface Notifications {
@@ -3205,7 +3182,7 @@ export interface Notifications {
   /** The kind of item this is. For lists of notifications, this is always storage#notifications. */
   kind?: string;
 }
-export const Notifications = /*@__PURE__*/ S.suspend(() =>
+const Notifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(NotificationList),
     kind: S.optional(S.String),
@@ -3222,7 +3199,7 @@ export interface ListObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const ListObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -3240,7 +3217,7 @@ export const ListObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListObjectAccessControlsRequest>;
 
 export type ListObjectsProjectionEnum = "full" | "noAcl";
-export const ListObjectsProjectionEnum = S.String;
+const ListObjectsProjectionEnum = S.String;
 
 export interface ListObjectsRequest {
   /** Name of the bucket in which to look for objects. */
@@ -3274,7 +3251,7 @@ export interface ListObjectsRequest {
   /** Only applicable if delimiter is set to '/'. If true, will also include folders and managed folders (besides objects) in the returned prefixes. */
   includeFoldersAsPrefixes?: boolean;
 }
-export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     delimiter: S.optional(S.String.pipe(T.Query())),
@@ -3301,7 +3278,7 @@ export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListObjectsRequest" }) as any as S.Schema<ListObjectsRequest>;
 
 export type Storage_ObjectList = Array<Storage_Object>;
-export const Storage_ObjectList = /*@__PURE__*/ S.Array(
+const Storage_ObjectList = /*@__PURE__*/ S.Array(
   Storage_Object,
 ) as any as S.Schema<Storage_ObjectList>;
 
@@ -3316,7 +3293,7 @@ export interface Objects {
   /** The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter. */
   prefixes?: StringList;
 }
-export const Objects = /*@__PURE__*/ S.suspend(() =>
+const Objects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: Storage_ObjectList,
     kind: S.optional(S.String),
@@ -3335,7 +3312,7 @@ export interface ListOperationsRequest {
   /** A previously-returned page token representing part of the larger set of results to view. */
   pageToken?: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     bucket: S.String.pipe(T.Label()),
@@ -3351,7 +3328,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -3364,7 +3341,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The kind of item this is. For lists of operations, this is always storage#operations. */
   kind?: string;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(GoogleLongrunningOperationList),
@@ -3388,7 +3365,7 @@ export interface ListProjectsHmacKeysRequest {
   /** The project to be billed for this request. */
   userProject?: string;
 }
-export const ListProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3408,7 +3385,7 @@ export const ListProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsHmacKeysRequest>;
 
 export type HmacKeyMetadataList = Array<HmacKeyMetadata>;
-export const HmacKeyMetadataList = /*@__PURE__*/ S.Array(
+const HmacKeyMetadataList = /*@__PURE__*/ S.Array(
   HmacKeyMetadata,
 ) as any as S.Schema<HmacKeyMetadataList>;
 
@@ -3421,7 +3398,7 @@ export interface HmacKeysMetadata {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-export const HmacKeysMetadata = /*@__PURE__*/ S.suspend(() =>
+const HmacKeysMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: HmacKeyMetadataList,
     kind: S.optional(S.String),
@@ -3437,7 +3414,7 @@ export interface ListRapidCachesRequest {
   /** A previously-returned page token representing part of the larger set of results to view. */
   pageToken?: string;
 }
-export const ListRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3452,7 +3429,7 @@ export const ListRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRapidCachesRequest" }) as any as S.Schema<ListRapidCachesRequest>;
 
 export type RapidCacheList = Array<RapidCache>;
-export const RapidCacheList = /*@__PURE__*/ S.Array(RapidCache) as any as S.Schema<RapidCacheList>;
+const RapidCacheList = /*@__PURE__*/ S.Array(RapidCache) as any as S.Schema<RapidCacheList>;
 
 /** A list of Rapid Caches. */
 export interface RapidCaches {
@@ -3463,7 +3440,7 @@ export interface RapidCaches {
   /** The list of items. */
   items: RapidCacheList;
 }
-export const RapidCaches = /*@__PURE__*/ S.suspend(() =>
+const RapidCaches = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -3479,7 +3456,7 @@ export interface LockRetentionPolicyBucketsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const LockRetentionPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const LockRetentionPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     ifMetagenerationMatch: S.String.pipe(T.Query()),
@@ -3496,7 +3473,7 @@ export const LockRetentionPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LockRetentionPolicyBucketsRequest>;
 
 export type MoveObjectsProjectionEnum = "full" | "noAcl";
-export const MoveObjectsProjectionEnum = S.String;
+const MoveObjectsProjectionEnum = S.String;
 
 export interface MoveObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -3526,7 +3503,7 @@ export interface MoveObjectsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const MoveObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     sourceObject: S.String.pipe(T.Label()),
@@ -3560,7 +3537,7 @@ export interface PatchBucketAccessControlsRequest {
   /** Request body */
   body?: BucketAccessControl;
 }
-export const PatchBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -3583,7 +3560,7 @@ export type PatchBucketsPredefinedAclEnum =
   | "projectPrivate"
   | "publicRead"
   | "publicReadWrite";
-export const PatchBucketsPredefinedAclEnum = S.String;
+const PatchBucketsPredefinedAclEnum = S.String;
 
 export type PatchBucketsPredefinedDefaultObjectAclEnum =
   | "authenticatedRead"
@@ -3592,10 +3569,10 @@ export type PatchBucketsPredefinedDefaultObjectAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const PatchBucketsPredefinedDefaultObjectAclEnum = S.String;
+const PatchBucketsPredefinedDefaultObjectAclEnum = S.String;
 
 export type PatchBucketsProjectionEnum = "full" | "noAcl";
-export const PatchBucketsProjectionEnum = S.String;
+const PatchBucketsProjectionEnum = S.String;
 
 export interface PatchBucketsRequest {
   /** Name of a bucket. */
@@ -3615,7 +3592,7 @@ export interface PatchBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
-export const PatchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
@@ -3646,7 +3623,7 @@ export interface PatchDefaultObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const PatchDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -3677,7 +3654,7 @@ export interface PatchObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const PatchObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -3703,10 +3680,10 @@ export type PatchObjectsPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const PatchObjectsPredefinedAclEnum = S.String;
+const PatchObjectsPredefinedAclEnum = S.String;
 
 export type PatchObjectsProjectionEnum = "full" | "noAcl";
-export const PatchObjectsProjectionEnum = S.String;
+const PatchObjectsProjectionEnum = S.String;
 
 export interface PatchObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -3734,7 +3711,7 @@ export interface PatchObjectsRequest {
   /** Request body */
   body?: Storage_Object;
 }
-export const PatchObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -3763,7 +3740,7 @@ export interface PauseAnywhereCachesRequest {
   /** The ID of requested Anywhere Cache instance. */
   anywhereCacheId: string;
 }
-export const PauseAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     anywhereCacheId: S.String.pipe(T.Label()),
@@ -3779,8 +3756,6 @@ export const PauseAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseAnywhereCachesRequest>;
 
 export type RelocateBucketRequestDestinationCustomPlacementConfig = BucketCustomPlacementConfig;
-export const RelocateBucketRequestDestinationCustomPlacementConfig = BucketCustomPlacementConfig;
-
 /** A Relocate Bucket request. */
 export interface RelocateBucketRequest {
   /** The new location the bucket will be relocated to. */
@@ -3792,7 +3767,7 @@ export interface RelocateBucketRequest {
   /** Resource name of a Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key. If set, is used to encrypt all objects in the destination bucket. */
   destinationKmsKeyName?: string;
 }
-export const RelocateBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const RelocateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationLocation: S.optional(S.String),
     destinationCustomPlacementConfig: S.optional(BucketCustomPlacementConfig),
@@ -3807,7 +3782,7 @@ export interface RelocateBucketsRequest {
   /** Request body */
   body?: RelocateBucketRequest;
 }
-export const RelocateBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const RelocateBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     body: S.optional(RelocateBucketRequest.pipe(T.HttpBody())),
@@ -3832,7 +3807,7 @@ export interface RenameFoldersRequest {
   /** Name of the source folder. */
   sourceFolder: string;
 }
-export const RenameFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     destinationFolder: S.String.pipe(T.Label()),
@@ -3849,7 +3824,7 @@ export const RenameFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameFoldersRequest" }) as any as S.Schema<RenameFoldersRequest>;
 
 export type RestoreBucketsProjectionEnum = "full" | "noAcl";
-export const RestoreBucketsProjectionEnum = S.String;
+const RestoreBucketsProjectionEnum = S.String;
 
 export interface RestoreBucketsRequest {
   /** Name of a bucket. */
@@ -3861,7 +3836,7 @@ export interface RestoreBucketsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const RestoreBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.String.pipe(T.Query()),
@@ -3877,7 +3852,7 @@ export const RestoreBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreBucketsRequest" }) as any as S.Schema<RestoreBucketsRequest>;
 
 export type RestoreObjectsProjectionEnum = "full" | "noAcl";
-export const RestoreObjectsProjectionEnum = S.String;
+const RestoreObjectsProjectionEnum = S.String;
 
 export interface RestoreObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -3903,7 +3878,7 @@ export interface RestoreObjectsRequest {
   /** Restore token used to differentiate sof-deleted objects with the same name and generation. Only applicable for hierarchical namespace buckets. This parameter is optional, and is only required in the rare case when there are multiple soft-deleted objects with the same name and generation. */
   restoreToken?: string;
 }
-export const RestoreObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.String.pipe(T.Query()),
@@ -3931,7 +3906,7 @@ export interface ResumeAnywhereCachesRequest {
   /** The ID of requested Anywhere Cache instance. */
   anywhereCacheId: string;
 }
-export const ResumeAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     anywhereCacheId: S.String.pipe(T.Label()),
@@ -3953,10 +3928,10 @@ export type RewriteObjectsDestinationPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const RewriteObjectsDestinationPredefinedAclEnum = S.String;
+const RewriteObjectsDestinationPredefinedAclEnum = S.String;
 
 export type RewriteObjectsProjectionEnum = "full" | "noAcl";
-export const RewriteObjectsProjectionEnum = S.String;
+const RewriteObjectsProjectionEnum = S.String;
 
 export interface RewriteObjectsRequest {
   /** Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any. */
@@ -4002,7 +3977,7 @@ export interface RewriteObjectsRequest {
   /** Request body */
   body?: Storage_Object;
 }
-export const RewriteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RewriteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationBucket: S.String.pipe(T.Label()),
     destinationKmsKeyName: S.optional(S.String.pipe(T.Query())),
@@ -4051,7 +4026,7 @@ export interface RewriteResponse {
   /** The total bytes written so far, which can be used to provide a waiting user with a progress indicator. This property is always present in the response. */
   totalBytesRewritten?: string;
 }
-export const RewriteResponse = /*@__PURE__*/ S.suspend(() =>
+const RewriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     kind: S.optional(S.String),
@@ -4070,7 +4045,7 @@ export interface SetIamPolicyBucketsRequest {
   /** Request body */
   body?: Policy;
 }
-export const SetIamPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     userProject: S.optional(S.String.pipe(T.Query())),
@@ -4096,7 +4071,7 @@ export interface SetIamPolicyManagedFoldersRequest {
   /** Request body */
   body?: Policy;
 }
-export const SetIamPolicyManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     managedFolder: S.String.pipe(T.Label()),
@@ -4125,7 +4100,7 @@ export interface SetIamPolicyObjectsRequest {
   /** Request body */
   body?: Policy;
 }
-export const SetIamPolicyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -4166,7 +4141,7 @@ export interface Channel {
   /** The type of delivery mechanism used for this channel. */
   type?: string;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     expiration: S.optional(S.String),
@@ -4185,7 +4160,7 @@ export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Channel.pipe(T.HttpBody())),
   }).pipe(
@@ -4198,8 +4173,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse =
-  CancelOperationsResponse as any as S.Schema<StopChannelsResponse>;
+const StopChannelsResponse = CancelOperationsResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface TestIamPermissionsBucketsRequest {
   /** Name of a bucket. */
@@ -4209,7 +4183,7 @@ export interface TestIamPermissionsBucketsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const TestIamPermissionsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     permissions: StringList.pipe(T.Query()),
@@ -4232,7 +4206,7 @@ export interface TestIamPermissionsResponse {
   /** The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets, objects, or managedFolders. The supported permissions are as follows: - storage.buckets.delete - Delete bucket. - storage.buckets.get - Read bucket metadata. - storage.buckets.getIamPolicy - Read bucket IAM policy. - storage.buckets.create - Create bucket. - storage.buckets.list - List buckets. - storage.buckets.setIamPolicy - Update bucket IAM policy. - storage.buckets.update - Update bucket metadata. - storage.objects.delete - Delete object. - storage.objects.get - Read object data and metadata. - storage.objects.getIamPolicy - Read object IAM policy. - storage.objects.create - Create object. - storage.objects.list - List objects. - storage.objects.setIamPolicy - Update object IAM policy. - storage.objects.update - Update object metadata. - storage.managedFolders.delete - Delete managed folder. - storage.managedFolders.get - Read managed folder metadata. - storage.managedFolders.getIamPolicy - Read managed folder IAM policy. - storage.managedFolders.create - Create managed folder. - storage.managedFolders.list - List managed folders. - storage.managedFolders.setIamPolicy - Update managed folder IAM policy. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     permissions: S.optional(StringList),
@@ -4251,7 +4225,7 @@ export interface TestIamPermissionsManagedFoldersRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const TestIamPermissionsManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     managedFolder: S.String.pipe(T.Label()),
@@ -4280,7 +4254,7 @@ export interface TestIamPermissionsObjectsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const TestIamPermissionsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -4306,7 +4280,7 @@ export interface UpdateAnywhereCachesRequest {
   /** Request body */
   body?: AnywhereCache;
 }
-export const UpdateAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     anywhereCacheId: S.String.pipe(T.Label()),
@@ -4332,7 +4306,7 @@ export interface UpdateBucketAccessControlsRequest {
   /** Request body */
   body?: BucketAccessControl;
 }
-export const UpdateBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -4355,7 +4329,7 @@ export type UpdateBucketsPredefinedAclEnum =
   | "projectPrivate"
   | "publicRead"
   | "publicReadWrite";
-export const UpdateBucketsPredefinedAclEnum = S.String;
+const UpdateBucketsPredefinedAclEnum = S.String;
 
 export type UpdateBucketsPredefinedDefaultObjectAclEnum =
   | "authenticatedRead"
@@ -4364,10 +4338,10 @@ export type UpdateBucketsPredefinedDefaultObjectAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const UpdateBucketsPredefinedDefaultObjectAclEnum = S.String;
+const UpdateBucketsPredefinedDefaultObjectAclEnum = S.String;
 
 export type UpdateBucketsProjectionEnum = "full" | "noAcl";
-export const UpdateBucketsProjectionEnum = S.String;
+const UpdateBucketsProjectionEnum = S.String;
 
 export interface UpdateBucketsRequest {
   /** Name of a bucket. */
@@ -4387,7 +4361,7 @@ export interface UpdateBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
-export const UpdateBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
@@ -4418,7 +4392,7 @@ export interface UpdateDefaultObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const UpdateDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -4447,7 +4421,7 @@ export interface UpdateManagedFoldersRequest {
   /** Request body */
   body?: ManagedFolder;
 }
-export const UpdateManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     managedFolder: S.String.pipe(T.Label()),
@@ -4479,7 +4453,7 @@ export interface UpdateObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const UpdateObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     entity: S.String.pipe(T.Label()),
@@ -4505,10 +4479,10 @@ export type UpdateObjectsPredefinedAclEnum =
   | "private"
   | "projectPrivate"
   | "publicRead";
-export const UpdateObjectsPredefinedAclEnum = S.String;
+const UpdateObjectsPredefinedAclEnum = S.String;
 
 export type UpdateObjectsProjectionEnum = "full" | "noAcl";
-export const UpdateObjectsProjectionEnum = S.String;
+const UpdateObjectsProjectionEnum = S.String;
 
 export interface UpdateObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -4536,7 +4510,7 @@ export interface UpdateObjectsRequest {
   /** Request body */
   body?: Storage_Object;
 }
-export const UpdateObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     generation: S.optional(S.String.pipe(T.Query())),
@@ -4569,7 +4543,7 @@ export interface UpdateProjectsHmacKeysRequest {
   /** Request body */
   body?: HmacKeyMetadata;
 }
-export const UpdateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -4594,7 +4568,7 @@ export interface UpdateRapidCachesRequest {
   /** Request body */
   body?: RapidCache;
 }
-export const UpdateRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRapidCachesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     rapidCacheId: S.String.pipe(T.Label()),
@@ -4620,7 +4594,7 @@ export interface ViewFullContextObjectsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const ViewFullContextObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ViewFullContextObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String.pipe(T.Label()),
     object: S.String.pipe(T.Label()),
@@ -4639,7 +4613,7 @@ export const ViewFullContextObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ViewFullContextObjectsRequest>;
 
 export type ObjectFullContextTypeEnum = "CUSTOM";
-export const ObjectFullContextTypeEnum = S.String;
+const ObjectFullContextTypeEnum = S.String;
 
 /** A full representation of an object context. */
 export interface ObjectFullContext {
@@ -4658,7 +4632,7 @@ export interface ObjectFullContext {
   /** The extended data of the object context. */
   extendedData?: DocumentMap;
 }
-export const ObjectFullContext = /*@__PURE__*/ S.suspend(() =>
+const ObjectFullContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     type: S.optional(ObjectFullContextTypeEnum),

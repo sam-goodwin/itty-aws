@@ -9,12 +9,12 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface MountBatchedCheckExistenceRequest {
   sha256HexHashes?: StringList;
 }
-export const MountBatchedCheckExistenceRequest = /*@__PURE__*/ S.suspend(() =>
+const MountBatchedCheckExistenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256HexHashes: S.optional(StringList),
   }).pipe(
@@ -31,7 +31,7 @@ export const MountBatchedCheckExistenceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MountBatchedCheckExistenceResponse {
   missingSha256HexHashes?: StringList;
 }
-export const MountBatchedCheckExistenceResponse = /*@__PURE__*/ S.suspend(() =>
+const MountBatchedCheckExistenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missingSha256HexHashes: S.optional(StringList),
   }),
@@ -43,7 +43,7 @@ export type DeploymentNamespace =
   | "DEPLOYMENT_NAMESPACE_UNSPECIFIED"
   | "DEPLOYMENT_NAMESPACE_WORKSPACE"
   | "DEPLOYMENT_NAMESPACE_GLOBAL";
-export const DeploymentNamespace = S.String;
+const DeploymentNamespace = S.String;
 
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
@@ -52,7 +52,7 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export interface MountFile {
   filename?: string;
@@ -62,7 +62,7 @@ export interface MountFile {
   /** Size of the file in bytes -- ignored in MountBuild(). */
   mode?: number;
 }
-export const MountFile = /*@__PURE__*/ S.suspend(() =>
+const MountFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     sha256Hex: S.optional(S.String),
@@ -72,7 +72,7 @@ export const MountFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountFile" }) as any as S.Schema<MountFile>;
 
 export type MountFileList = Array<MountFile>;
-export const MountFileList = /*@__PURE__*/ S.Array(MountFile) as any as S.Schema<MountFileList>;
+const MountFileList = /*@__PURE__*/ S.Array(MountFile) as any as S.Schema<MountFileList>;
 
 export interface MountGetOrCreateRequest {
   deploymentName?: string;
@@ -82,7 +82,7 @@ export interface MountGetOrCreateRequest {
   files?: MountFileList;
   appId?: string;
 }
-export const MountGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MountGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     namespace: S.optional(DeploymentNamespace),
@@ -96,7 +96,7 @@ export const MountGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MountHandleMetadata {
   contentChecksumSha256Hex?: string;
 }
-export const MountHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const MountHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentChecksumSha256Hex: S.optional(S.String),
   }),
@@ -106,7 +106,7 @@ export interface MountGetOrCreateResponse {
   mountId?: string;
   handleMetadata?: MountHandleMetadata;
 }
-export const MountGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const MountGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountId: S.optional(S.String),
     handleMetadata: S.optional(MountHandleMetadata),
@@ -118,7 +118,7 @@ export interface MountPutFileRequest {
   data?: string;
   dataBlobId?: string;
 }
-export const MountPutFileRequest = /*@__PURE__*/ S.suspend(() =>
+const MountPutFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256Hex: S.optional(S.String),
     data: S.optional(S.String),
@@ -129,7 +129,7 @@ export const MountPutFileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MountPutFileResponse {
   exists?: boolean;
 }
-export const MountPutFileResponse = /*@__PURE__*/ S.suspend(() =>
+const MountPutFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.optional(S.Boolean),
   }),

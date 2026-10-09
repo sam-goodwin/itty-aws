@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export interface ListTemplateRequest {}
-export const ListTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/TemplateList", code: 200 }),
   ),
@@ -20,7 +20,7 @@ export interface ListTemplateResponseTemplateListItem {
   repo?: string;
   ref?: string;
 }
-export const ListTemplateResponseTemplateListItem = /*@__PURE__*/ S.suspend(() =>
+const ListTemplateResponseTemplateListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     repo: S.optional(S.String),
@@ -31,14 +31,14 @@ export const ListTemplateResponseTemplateListItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListTemplateResponseTemplateListItem>;
 
 export type ListTemplateResponseTemplateListItemList = Array<ListTemplateResponseTemplateListItem>;
-export const ListTemplateResponseTemplateListItemList = /*@__PURE__*/ S.Array(
+const ListTemplateResponseTemplateListItemList = /*@__PURE__*/ S.Array(
   ListTemplateResponseTemplateListItem,
 ) as any as S.Schema<ListTemplateResponseTemplateListItemList>;
 
 export interface ListTemplateResponse {
   items?: ListTemplateResponseTemplateListItemList;
 }
-export const ListTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListTemplateResponseTemplateListItemList),
   }),

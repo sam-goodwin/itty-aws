@@ -52,7 +52,7 @@ export interface ActivateDedicatedServerAntiDDosGameRequest {
   /** scheduling operation to activate anti DDoS protection (0=disable || 1=enable) */
   enable: boolean;
 }
-export const ActivateDedicatedServerAntiDDosGameRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateDedicatedServerAntiDDosGameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     enable: S.Boolean,
@@ -110,7 +110,7 @@ export type DedicatedTaskFunctionEnum =
   | "testIPMIping"
   | "virtualMacAdd"
   | "virtualMacDelete";
-export const DedicatedTaskFunctionEnum = S.String;
+const DedicatedTaskFunctionEnum = S.String;
 
 /** different task status */
 export type DedicatedTaskStatusEnum =
@@ -121,14 +121,14 @@ export type DedicatedTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-export const DedicatedTaskStatusEnum = S.String;
+const DedicatedTaskStatusEnum = S.String;
 
 /** Key and value, with proper key strings */
 export interface ComplexTypeSafeKeyValueCanBeNullString {
   key?: string | null;
   value?: string;
 }
-export const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
     value: S.optional(S.String),
@@ -139,7 +139,7 @@ export const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ S.suspend(()
 
 /** Task result tags output */
 export type DedicatedServerTaskTagsList = Array<ComplexTypeSafeKeyValueCanBeNullString>;
-export const DedicatedServerTaskTagsList = /*@__PURE__*/ S.Array(
+const DedicatedServerTaskTagsList = /*@__PURE__*/ S.Array(
   ComplexTypeSafeKeyValueCanBeNullString,
 ) as any as S.Schema<DedicatedServerTaskTagsList>;
 
@@ -170,7 +170,7 @@ export interface DedicatedServerTask {
   /** Reference of the thread on the support tool */
   ticketReference?: string | null;
 }
-export const DedicatedServerTask = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -193,7 +193,7 @@ export interface CancelDedicatedServerTaskRequest {
   /** the id of the task */
   taskId: number;
 }
-export const CancelDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -209,9 +209,7 @@ export const CancelDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDedicatedServerTaskRequest>;
 
 export interface CancelDedicatedServerTaskResponse {}
-export const CancelDedicatedServerTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelDedicatedServerTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelDedicatedServerTaskResponse",
 }) as any as S.Schema<CancelDedicatedServerTaskResponse>;
 
@@ -222,7 +220,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -240,7 +238,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmDedicatedServerTerminationRequest {
   /** The internal name of your dedicated server */
@@ -254,7 +252,7 @@ export interface ConfirmDedicatedServerTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmDedicatedServerTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmDedicatedServerTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -273,7 +271,7 @@ export const ConfirmDedicatedServerTerminationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfirmDedicatedServerTerminationRequest>;
 
 export type ConfirmDedicatedServerTerminationResponse = string;
-export const ConfirmDedicatedServerTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmDedicatedServerTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmDedicatedServerTerminationResponse",
@@ -283,7 +281,7 @@ export interface CreateDedicatedServerAuthenticationSecretRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const CreateDedicatedServerAuthenticationSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerAuthenticationSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -306,7 +304,7 @@ export type DedicatedServerAccessTypeEnum =
   | "SQL_SERVER"
   | "SSH"
   | "WEB_PANEL";
-export const DedicatedServerAccessTypeEnum = S.String;
+const DedicatedServerAccessTypeEnum = S.String;
 
 /** A structure describing the server's access */
 export interface DedicatedServerAccess {
@@ -319,7 +317,7 @@ export interface DedicatedServerAccess {
   /** Login */
   user?: string | null;
 }
-export const DedicatedServerAccess = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
     type: S.optional(DedicatedServerAccessTypeEnum),
@@ -330,13 +328,13 @@ export const DedicatedServerAccess = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDedicatedServerAuthenticationSecretResponseBodyList =
   Array<DedicatedServerAccess>;
-export const CreateDedicatedServerAuthenticationSecretResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateDedicatedServerAuthenticationSecretResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedServerAccess,
 ) as any as S.Schema<CreateDedicatedServerAuthenticationSecretResponseBodyList>;
 
 export type CreateDedicatedServerAuthenticationSecretResponse =
   CreateDedicatedServerAuthenticationSecretResponseBodyList;
-export const CreateDedicatedServerAuthenticationSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerAuthenticationSecretResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDedicatedServerAuthenticationSecretResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDedicatedServerAuthenticationSecretResponse",
@@ -356,14 +354,14 @@ export type DedicatedServerBiosSettingsSgxPrmrrEnum =
   | "64"
   | "65536"
   | "8192";
-export const DedicatedServerBiosSettingsSgxPrmrrEnum = S.String;
+const DedicatedServerBiosSettingsSgxPrmrrEnum = S.String;
 
 /** SGX Status enum */
 export type DedicatedServerBiosSettingsSgxStatusEnum =
   | "disabled"
   | "enabled"
   | "software controlled";
-export const DedicatedServerBiosSettingsSgxStatusEnum = S.String;
+const DedicatedServerBiosSettingsSgxStatusEnum = S.String;
 
 export interface CreateDedicatedServerBiosSettingsSgxConfigureRequest {
   /** The internal name of your dedicated server */
@@ -373,7 +371,7 @@ export interface CreateDedicatedServerBiosSettingsSgxConfigureRequest {
   /** Desired SGX status */
   status?: DedicatedServerBiosSettingsSgxStatusEnum | (string & {});
 }
-export const CreateDedicatedServerBiosSettingsSgxConfigureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerBiosSettingsSgxConfigureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     prmrr: S.optional(DedicatedServerBiosSettingsSgxPrmrrEnum),
@@ -399,7 +397,7 @@ export interface CreateDedicatedServerChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateDedicatedServerChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -413,13 +411,13 @@ export const CreateDedicatedServerChangeContactRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateDedicatedServerChangeContactRequest>;
 
 export type CreateDedicatedServerChangeContactResponseBodyList = Array<number>;
-export const CreateDedicatedServerChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateDedicatedServerChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateDedicatedServerChangeContactResponseBodyList>;
 
 export type CreateDedicatedServerChangeContactResponse =
   CreateDedicatedServerChangeContactResponseBodyList;
-export const CreateDedicatedServerChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDedicatedServerChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDedicatedServerChangeContactResponse",
@@ -433,7 +431,7 @@ export interface CreateDedicatedServerFeatureBackupCloudRequest {
   /** Project description of the project to be created (ignored when an existing project is already specified) */
   projectDescription?: string;
 }
-export const CreateDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     cloudProjectId: S.optional(S.String),
@@ -451,7 +449,7 @@ export const CreateDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.su
 
 /** Agreement ids waiting for validation */
 export type DedicatedServerBackupCloudAgreementsList = Array<number>;
-export const DedicatedServerBackupCloudAgreementsList =
+const DedicatedServerBackupCloudAgreementsList =
   CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<DedicatedServerBackupCloudAgreementsList>;
 
 /** Cloud project struct. */
@@ -461,7 +459,7 @@ export interface DedicatedServerBackupBackupProject {
   /** Project id. */
   projectId?: string | null;
 }
-export const DedicatedServerBackupBackupProject = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     projectId: S.optional(S.NullOr(S.String)),
@@ -475,7 +473,7 @@ export interface ComplexTypeUnitAndValueLong {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -495,7 +493,7 @@ export interface DedicatedServerBackupBackupQuota {
   /** Volume usage in percent */
   usagePercent?: number | null;
 }
-export const DedicatedServerBackupBackupQuota = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxBandwidth: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     maxStorage: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -515,7 +513,7 @@ export interface DedicatedServerBackupBackupSftp {
   /** Username */
   username?: string | null;
 }
-export const DedicatedServerBackupBackupSftp = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupSftp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
     url: S.optional(S.NullOr(S.String)),
@@ -534,7 +532,7 @@ export interface DedicatedServerBackupBackupSwift {
   /** Openstack username to use swift. */
   username?: string | null;
 }
-export const DedicatedServerBackupBackupSwift = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupSwift = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authUrl: S.optional(S.NullOr(S.String)),
     password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -561,7 +559,7 @@ export interface DedicatedServerBackupBackupContainer {
   /** Swift related information to reach the container */
   swift?: DedicatedServerBackupBackupSwift | null;
 }
-export const DedicatedServerBackupBackupContainer = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudProject: S.optional(S.NullOr(DedicatedServerBackupBackupProject)),
     id: S.optional(S.NullOr(S.String)),
@@ -584,7 +582,7 @@ export type DedicatedServerBackupBackupStatusCodeEnum =
   | "SUSPENDING"
   | "UNKNOWN"
   | "WAITING_AGREEMENTS_VALIDATION";
-export const DedicatedServerBackupBackupStatusCodeEnum = S.String;
+const DedicatedServerBackupBackupStatusCodeEnum = S.String;
 
 /** A structure describing the status of your backup */
 export interface DedicatedServerBackupBackupStatus {
@@ -593,7 +591,7 @@ export interface DedicatedServerBackupBackupStatus {
   /** Status code reason (when not ok) */
   reason?: string | null;
 }
-export const DedicatedServerBackupBackupStatus = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(DedicatedServerBackupBackupStatusCodeEnum),
     reason: S.optional(S.NullOr(S.String)),
@@ -613,7 +611,7 @@ export interface DedicatedServerBackupCloud {
   /** Storage space info. */
   storage?: DedicatedServerBackupBackupContainer | null;
 }
-export const DedicatedServerBackupCloud = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupCloud = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreements: S.optional(S.NullOr(DedicatedServerBackupCloudAgreementsList)),
     archive: S.optional(S.NullOr(DedicatedServerBackupBackupContainer)),
@@ -628,7 +626,7 @@ export interface CreateDedicatedServerFeatureBackupCloudPasswordRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const CreateDedicatedServerFeatureBackupCloudPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBackupCloudPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -653,7 +651,7 @@ export interface DedicatedServerBackupBackupPassword {
   /** Password to reach the storage container through swift. */
   swiftStorage?: string | null;
 }
-export const DedicatedServerBackupBackupPassword = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupPassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sftpArchive: S.optional(S.NullOr(S.String)),
     sftpStorage: S.optional(S.NullOr(S.String)),
@@ -668,7 +666,7 @@ export interface CreateDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const CreateDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -694,7 +692,7 @@ export interface CreateDedicatedServerFeatureBackupFTPAccessRequest {
   /** Whether to allow the NFS protocol for this ACL */
   nfs: boolean;
 }
-export const CreateDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     cifs: S.Boolean,
@@ -716,7 +714,7 @@ export interface CreateDedicatedServerFeatureBackupFTPPasswordRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const CreateDedicatedServerFeatureBackupFTPPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBackupFTPPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -732,7 +730,7 @@ export const CreateDedicatedServerFeatureBackupFTPPasswordRequest = /*@__PURE__*
 
 /** Time to live in minutes for cache */
 export type DedicatedServerCacheTTLEnum = 1 | 3 | 5 | 10 | 15;
-export const DedicatedServerCacheTTLEnum = S.Number;
+const DedicatedServerCacheTTLEnum = S.Number;
 
 export interface CreateDedicatedServerFeatureBmcJavaKvmRequest {
   /** The internal name of your dedicated server */
@@ -742,7 +740,7 @@ export interface CreateDedicatedServerFeatureBmcJavaKvmRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-export const CreateDedicatedServerFeatureBmcJavaKvmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBmcJavaKvmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipToAllow: S.optional(S.String),
@@ -769,7 +767,7 @@ export type DedicatedOperationFunctionEnum =
   | "bmc/testWeb"
   | "bmc/webKvm"
   | "bmc/webSol";
-export const DedicatedOperationFunctionEnum = S.String;
+const DedicatedOperationFunctionEnum = S.String;
 
 /** Server operations */
 export interface DedicatedServerOperation {
@@ -788,7 +786,7 @@ export interface DedicatedServerOperation {
   /** Task status */
   status?: DedicatedTaskStatusEnum;
 }
-export const DedicatedServerOperation = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -808,7 +806,7 @@ export interface CreateDedicatedServerFeatureBmcSshSolRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-export const CreateDedicatedServerFeatureBmcSshSolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBmcSshSolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sshKey: S.String,
@@ -832,7 +830,7 @@ export interface CreateDedicatedServerFeatureBmcWebKvmRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-export const CreateDedicatedServerFeatureBmcWebKvmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBmcWebKvmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipToAllow: S.optional(S.String),
@@ -856,7 +854,7 @@ export interface CreateDedicatedServerFeatureBmcWebSolRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-export const CreateDedicatedServerFeatureBmcWebSolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureBmcWebSolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipToAllow: S.optional(S.String),
@@ -878,7 +876,7 @@ export type DedicatedServerIpmiAccessTypeEnum =
   | "kvmipJnlp"
   | "serialOverLanSshKey"
   | "serialOverLanURL";
-export const DedicatedServerIpmiAccessTypeEnum = S.String;
+const DedicatedServerIpmiAccessTypeEnum = S.String;
 
 export interface CreateDedicatedServerFeatureIpmiAccessRequest {
   /** The internal name of your dedicated server */
@@ -892,7 +890,7 @@ export interface CreateDedicatedServerFeatureIpmiAccessRequest {
   /** IPMI console access */
   type: DedicatedServerIpmiAccessTypeEnum | (string & {});
 }
-export const CreateDedicatedServerFeatureIpmiAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerFeatureIpmiAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipToAllow: S.optional(S.String),
@@ -916,7 +914,7 @@ export interface CreateDedicatedServerIpBlockMergeRequest {
   /** The splitted block you want to merge */
   block: string;
 }
-export const CreateDedicatedServerIpBlockMergeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerIpBlockMergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     block: S.String,
@@ -933,7 +931,7 @@ export interface CreateDedicatedServerIpMoveRequest {
   /** The ip to move to this server */
   ip: string;
 }
-export const CreateDedicatedServerIpMoveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerIpMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String,
@@ -1524,7 +1522,7 @@ export type LicenseWindowsOsVersionEnum =
   | "windows-server-2025-license-standard-edition-72-cores"
   | "windows-server-2025-license-standard-edition-8-cores"
   | "windows-server-2025-license-standard-edition-96-cores";
-export const LicenseWindowsOsVersionEnum = S.String;
+const LicenseWindowsOsVersionEnum = S.String;
 
 export interface CreateDedicatedServerLicenseWindowsRequest {
   /** The internal name of your dedicated server */
@@ -1534,7 +1532,7 @@ export interface CreateDedicatedServerLicenseWindowsRequest {
   /** Your license version */
   version: LicenseWindowsOsVersionEnum | (string & {});
 }
-export const CreateDedicatedServerLicenseWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerLicenseWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     licenseId: S.String,
@@ -1548,13 +1546,13 @@ export const CreateDedicatedServerLicenseWindowsRequest = /*@__PURE__*/ S.suspen
 
 /** Mac address or list of mac addresses */
 export type DedicatedServerInterfacesMacsList = Array<string>;
-export const DedicatedServerInterfacesMacsList = /*@__PURE__*/ S.Array(
+const DedicatedServerInterfacesMacsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedServerInterfacesMacsList>;
 
 /** Network type */
 export type DedicatedServerNetworkingTypeEnum = "public" | "vrack";
-export const DedicatedServerNetworkingTypeEnum = S.String;
+const DedicatedServerNetworkingTypeEnum = S.String;
 
 /** Interface or interfaces aggregation */
 export interface DedicatedServerInterfaces {
@@ -1563,7 +1561,7 @@ export interface DedicatedServerInterfaces {
   /** Network type */
   type?: DedicatedServerNetworkingTypeEnum | (string & {});
 }
-export const DedicatedServerInterfaces = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerInterfaces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     macs: S.optional(DedicatedServerInterfacesMacsList),
     type: S.optional(DedicatedServerNetworkingTypeEnum),
@@ -1574,7 +1572,7 @@ export const DedicatedServerInterfaces = /*@__PURE__*/ S.suspend(() =>
 
 /** Interface or interfaces aggregation */
 export type CreateDedicatedServerNetworkingRequestInterfacesList = Array<DedicatedServerInterfaces>;
-export const CreateDedicatedServerNetworkingRequestInterfacesList = /*@__PURE__*/ S.Array(
+const CreateDedicatedServerNetworkingRequestInterfacesList = /*@__PURE__*/ S.Array(
   DedicatedServerInterfaces,
 ) as any as S.Schema<CreateDedicatedServerNetworkingRequestInterfacesList>;
 
@@ -1584,7 +1582,7 @@ export interface CreateDedicatedServerNetworkingRequest {
   /** Interface or interfaces aggregation */
   interfaces: CreateDedicatedServerNetworkingRequestInterfacesList;
 }
-export const CreateDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     interfaces: CreateDedicatedServerNetworkingRequestInterfacesList,
@@ -1595,12 +1593,12 @@ export const CreateDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(()
 
 /** Interface or interfaces aggregation */
 export type DedicatedServerNetworkingInterfacesList = Array<DedicatedServerInterfaces>;
-export const DedicatedServerNetworkingInterfacesList =
+const DedicatedServerNetworkingInterfacesList =
   CreateDedicatedServerNetworkingRequestInterfacesList as any as S.Schema<DedicatedServerNetworkingInterfacesList>;
 
 /** Network operation states */
 export type DedicatedServerNetworkingOperationEnum = "active" | "deploying";
-export const DedicatedServerNetworkingOperationEnum = S.String;
+const DedicatedServerNetworkingOperationEnum = S.String;
 
 /** Network configuration */
 export interface DedicatedServerNetworking {
@@ -1611,7 +1609,7 @@ export interface DedicatedServerNetworking {
   /** Operation status */
   status?: DedicatedServerNetworkingOperationEnum | null;
 }
-export const DedicatedServerNetworking = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerNetworking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     interfaces: S.optional(DedicatedServerNetworkingInterfacesList),
@@ -1623,7 +1621,7 @@ export const DedicatedServerNetworking = /*@__PURE__*/ S.suspend(() =>
 
 /** Interfaces to aggregate */
 export type CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList = Array<string>;
-export const CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList =
+const CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList>;
@@ -1636,7 +1634,7 @@ export interface CreateDedicatedServerOlaAggregationRequest {
   /** Interfaces to aggregate */
   virtualNetworkInterfaces: CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList;
 }
-export const CreateDedicatedServerOlaAggregationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerOlaAggregationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String,
@@ -1653,7 +1651,7 @@ export const CreateDedicatedServerOlaAggregationRequest = /*@__PURE__*/ S.suspen
 export type DedicatedServerReinstallCustomizationsHttpHeadersMap = {
   [key: string]: string | undefined;
 };
-export const DedicatedServerReinstallCustomizationsHttpHeadersMap = /*@__PURE__*/ S.Record(
+const DedicatedServerReinstallCustomizationsHttpHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DedicatedServerReinstallCustomizationsHttpHeadersMap>;
@@ -1664,11 +1662,11 @@ export type DedicatedServerReinstallCustomizationsImageCheckSumTypeEnum =
   | "sha1"
   | "sha256"
   | "sha512";
-export const DedicatedServerReinstallCustomizationsImageCheckSumTypeEnum = S.String;
+const DedicatedServerReinstallCustomizationsImageCheckSumTypeEnum = S.String;
 
 /** Image Type */
 export type DedicatedServerReinstallCustomizationsImageTypeEnum = "qcow2" | "raw";
-export const DedicatedServerReinstallCustomizationsImageTypeEnum = S.String;
+const DedicatedServerReinstallCustomizationsImageTypeEnum = S.String;
 
 /** Display Language */
 export type DedicatedServerReinstallCustomizationsLanguageEnum =
@@ -1681,13 +1679,13 @@ export type DedicatedServerReinstallCustomizationsLanguageEnum =
   | "nl-nl"
   | "pl-pl"
   | "pt-pt";
-export const DedicatedServerReinstallCustomizationsLanguageEnum = S.String;
+const DedicatedServerReinstallCustomizationsLanguageEnum = S.String;
 
 /** Post-Installation Script File Extension */
 export type DedicatedServerReinstallCustomizationsPostInstallationScriptExtensionEnum =
   | "cmd"
   | "ps1";
-export const DedicatedServerReinstallCustomizationsPostInstallationScriptExtensionEnum = S.String;
+const DedicatedServerReinstallCustomizationsPostInstallationScriptExtensionEnum = S.String;
 
 /** OS reinstallation customizations */
 export interface DedicatedServerReinstallCustomizations {
@@ -1718,7 +1716,7 @@ export interface DedicatedServerReinstallCustomizations {
   /** SSH Public Key */
   sshKey?: string;
 }
-export const DedicatedServerReinstallCustomizations = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerReinstallCustomizations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configDriveUserData: S.optional(S.String),
     efiBootloaderPath: S.optional(S.String),
@@ -1743,12 +1741,12 @@ export const DedicatedServerReinstallCustomizations = /*@__PURE__*/ S.suspend(()
 export type CreateDedicatedServerReinstallRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const CreateDedicatedServerReinstallRequestPropertiesMap =
+const CreateDedicatedServerReinstallRequestPropertiesMap =
   DedicatedServerReinstallCustomizationsHttpHeadersMap as any as S.Schema<CreateDedicatedServerReinstallRequestPropertiesMap>;
 
 /** Hardware raid types */
 export type DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum = 0 | 1 | 5 | 6 | 10 | 50 | 60;
-export const DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum = S.Number;
+const DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum = S.Number;
 
 /** Hardware Raid configuration */
 export interface DedicatedServerReinstallStorageHardwareRaid {
@@ -1761,7 +1759,7 @@ export interface DedicatedServerReinstallStorageHardwareRaid {
   /** Number of disks in the disk group involved in the spare (default is 0) */
   spares?: number;
 }
-export const DedicatedServerReinstallStorageHardwareRaid = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerReinstallStorageHardwareRaid = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arrays: S.optional(S.Number),
     disks: S.optional(S.Number),
@@ -1775,7 +1773,7 @@ export const DedicatedServerReinstallStorageHardwareRaid = /*@__PURE__*/ S.suspe
 /** Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode) */
 export type DedicatedServerReinstallStorageHardwareRaidList =
   Array<DedicatedServerReinstallStorageHardwareRaid>;
-export const DedicatedServerReinstallStorageHardwareRaidList = /*@__PURE__*/ S.Array(
+const DedicatedServerReinstallStorageHardwareRaidList = /*@__PURE__*/ S.Array(
   DedicatedServerReinstallStorageHardwareRaid,
 ) as any as S.Schema<DedicatedServerReinstallStorageHardwareRaidList>;
 
@@ -1784,11 +1782,10 @@ export interface DedicatedServerReinstallStoragePartitioningLayoutExtrasLv {
   /** Logical volume name */
   name?: string;
 }
-export const DedicatedServerReinstallStoragePartitioningLayoutExtrasLv = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
+const DedicatedServerReinstallStoragePartitioningLayoutExtrasLv = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DedicatedServerReinstallStoragePartitioningLayoutExtrasLv",
 }) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtrasLv>;
@@ -1798,7 +1795,7 @@ export interface DedicatedServerReinstallStoragePartitioningLayoutExtrasZp {
   /** zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible) */
   name?: string;
 }
-export const DedicatedServerReinstallStoragePartitioningLayoutExtrasZp =
+const DedicatedServerReinstallStoragePartitioningLayoutExtrasZp =
   DedicatedServerReinstallStoragePartitioningLayoutExtrasLv as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtrasZp>;
 
 /** Partition extras parameters */
@@ -1808,7 +1805,7 @@ export interface DedicatedServerReinstallStoragePartitioningLayoutExtras {
   /** ZFS-specific parameters */
   zp?: DedicatedServerReinstallStoragePartitioningLayoutExtrasZp;
 }
-export const DedicatedServerReinstallStoragePartitioningLayoutExtras = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerReinstallStoragePartitioningLayoutExtras = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lv: S.optional(DedicatedServerReinstallStoragePartitioningLayoutExtrasLv),
     zp: S.optional(DedicatedServerReinstallStoragePartitioningLayoutExtrasZp),
@@ -1833,11 +1830,11 @@ export type DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum =
   | "vmfsl"
   | "xfs"
   | "zfs";
-export const DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum = S.String;
+const DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum = S.String;
 
 /** Software raid types */
 export type DedicatedServerReinstallStoragePartitioningLayoutRaidLevelEnum = 0 | 1 | 5 | 6 | 7 | 10;
-export const DedicatedServerReinstallStoragePartitioningLayoutRaidLevelEnum = S.Number;
+const DedicatedServerReinstallStoragePartitioningLayoutRaidLevelEnum = S.Number;
 
 /** Custom partition parameters */
 export interface DedicatedServerReinstallStoragePartitioningLayout {
@@ -1852,7 +1849,7 @@ export interface DedicatedServerReinstallStoragePartitioningLayout {
   /** Partition size in MiB (default value is 0 which means to fill the disk with that partition) */
   size?: number;
 }
-export const DedicatedServerReinstallStoragePartitioningLayout = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerReinstallStoragePartitioningLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extras: S.optional(DedicatedServerReinstallStoragePartitioningLayoutExtras),
     fileSystem: DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum,
@@ -1867,7 +1864,7 @@ export const DedicatedServerReinstallStoragePartitioningLayout = /*@__PURE__*/ S
 /** Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme) */
 export type DedicatedServerReinstallStoragePartitioningLayoutList =
   Array<DedicatedServerReinstallStoragePartitioningLayout>;
-export const DedicatedServerReinstallStoragePartitioningLayoutList = /*@__PURE__*/ S.Array(
+const DedicatedServerReinstallStoragePartitioningLayoutList = /*@__PURE__*/ S.Array(
   DedicatedServerReinstallStoragePartitioningLayout,
 ) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutList>;
 
@@ -1880,7 +1877,7 @@ export interface DedicatedServerReinstallStoragePartitioning {
   /** Partitioning scheme (if applicable with selected operating system) */
   schemeName?: string;
 }
-export const DedicatedServerReinstallStoragePartitioning = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerReinstallStoragePartitioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(S.Number),
     layout: S.optional(DedicatedServerReinstallStoragePartitioningLayoutList),
@@ -1899,7 +1896,7 @@ export interface DedicatedServerReinstallStorage {
   /** Partitioning configuration */
   partitioning?: DedicatedServerReinstallStoragePartitioning;
 }
-export const DedicatedServerReinstallStorage = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerReinstallStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskGroupId: S.optional(S.Number),
     hardwareRaid: S.optional(DedicatedServerReinstallStorageHardwareRaidList),
@@ -1912,7 +1909,7 @@ export const DedicatedServerReinstallStorage = /*@__PURE__*/ S.suspend(() =>
 /** OS reinstallation storage configurations */
 export type CreateDedicatedServerReinstallRequestStorageList =
   Array<DedicatedServerReinstallStorage>;
-export const CreateDedicatedServerReinstallRequestStorageList = /*@__PURE__*/ S.Array(
+const CreateDedicatedServerReinstallRequestStorageList = /*@__PURE__*/ S.Array(
   DedicatedServerReinstallStorage,
 ) as any as S.Schema<CreateDedicatedServerReinstallRequestStorageList>;
 
@@ -1928,7 +1925,7 @@ export interface CreateDedicatedServerReinstallRequest {
   /** OS reinstallation storage configurations */
   storage?: CreateDedicatedServerReinstallRequestStorageList;
 }
-export const CreateDedicatedServerReinstallRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerReinstallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     customizations: S.optional(DedicatedServerReinstallCustomizations),
@@ -1983,7 +1980,7 @@ export type DedicatedServerTaskFunctionEnum =
   | "testIPMIping"
   | "virtualMacAdd"
   | "virtualMacDelete";
-export const DedicatedServerTaskFunctionEnum = S.String;
+const DedicatedServerTaskFunctionEnum = S.String;
 
 /** Task statuses */
 export type DedicatedServerTaskStatusEnum =
@@ -1994,7 +1991,7 @@ export type DedicatedServerTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-export const DedicatedServerTaskStatusEnum = S.String;
+const DedicatedServerTaskStatusEnum = S.String;
 
 /** Dedicated server task */
 export interface DedicatedServerTaskResponse {
@@ -2011,7 +2008,7 @@ export interface DedicatedServerTaskResponse {
   /** Task id */
   taskId?: number;
 }
-export const DedicatedServerTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -2031,7 +2028,7 @@ export interface CreateDedicatedServerSecondaryDnsDomainRequest {
   domain: string;
   ip?: string;
 }
-export const CreateDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String,
@@ -2048,12 +2045,12 @@ export const CreateDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainRequest>;
 
 export interface CreateDedicatedServerSecondaryDnsDomainResponse {}
-export const CreateDedicatedServerSecondaryDnsDomainResponse =
+const CreateDedicatedServerSecondaryDnsDomainResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>;
 
 /** SPLA license type */
 export type DedicatedServerSplaTypeEnum = "os" | "sqlstd" | "sqlweb";
-export const DedicatedServerSplaTypeEnum = S.String;
+const DedicatedServerSplaTypeEnum = S.String;
 
 export interface CreateDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
@@ -2063,7 +2060,7 @@ export interface CreateDedicatedServerSplaRequest {
   /** License type */
   type: DedicatedServerSplaTypeEnum | (string & {});
 }
-export const CreateDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serialNumber: S.String,
@@ -2074,7 +2071,7 @@ export const CreateDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDedicatedServerSplaRequest>;
 
 export type CreateDedicatedServerSplaResponse = number;
-export const CreateDedicatedServerSplaResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerSplaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDedicatedServerSplaResponse",
@@ -2088,7 +2085,7 @@ export interface CreateDedicatedServerSupportReplaceCoolingRequest {
   /** Technical details or logs */
   details: string;
 }
-export const CreateDedicatedServerSupportReplaceCoolingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerSupportReplaceCoolingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     comment: S.String,
@@ -2115,7 +2112,7 @@ export interface SupportNewMessageInfo {
   /** Ticket external number */
   ticketNumber?: number;
 }
-export const SupportNewMessageInfo = /*@__PURE__*/ S.suspend(() =>
+const SupportNewMessageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalNotice: S.optional(S.NullOr(S.String)),
     messageId: S.optional(S.Number),
@@ -2131,7 +2128,7 @@ export interface DedicatedServerSupportReplaceHddInfo {
   /** Disk slotId (if any) */
   slot_id?: number | null;
 }
-export const DedicatedServerSupportReplaceHddInfo = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerSupportReplaceHddInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disk_serial: S.optional(S.String),
     slot_id: S.optional(S.NullOr(S.Number)),
@@ -2143,10 +2140,9 @@ export const DedicatedServerSupportReplaceHddInfo = /*@__PURE__*/ S.suspend(() =
 /** If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE. */
 export type CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList =
   Array<DedicatedServerSupportReplaceHddInfo>;
-export const CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList =
-  /*@__PURE__*/ S.Array(
-    DedicatedServerSupportReplaceHddInfo,
-  ) as any as S.Schema<CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList>;
+const CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList = /*@__PURE__*/ S.Array(
+  DedicatedServerSupportReplaceHddInfo,
+) as any as S.Schema<CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList>;
 
 export interface CreateDedicatedServerSupportReplaceHardDiskDriveRequest {
   /** The internal name of your dedicated server */
@@ -2158,7 +2154,7 @@ export interface CreateDedicatedServerSupportReplaceHardDiskDriveRequest {
   /** If set to 'true', replace only NON LISTED DISKS */
   inverse: boolean;
 }
-export const CreateDedicatedServerSupportReplaceHardDiskDriveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerSupportReplaceHardDiskDriveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     comment: S.String,
@@ -2177,7 +2173,7 @@ export const CreateDedicatedServerSupportReplaceHardDiskDriveRequest = /*@__PURE
 
 /** The list of faulty RAM slots (if you have the information) */
 export type CreateDedicatedServerSupportReplaceMemoryRequestSlotsList = Array<string>;
-export const CreateDedicatedServerSupportReplaceMemoryRequestSlotsList =
+const CreateDedicatedServerSupportReplaceMemoryRequestSlotsList =
   DedicatedServerInterfacesMacsList as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequestSlotsList>;
 
 export interface CreateDedicatedServerSupportReplaceMemoryRequest {
@@ -2190,7 +2186,7 @@ export interface CreateDedicatedServerSupportReplaceMemoryRequest {
   /** The list of faulty RAM slots (if you have the information) */
   slots?: CreateDedicatedServerSupportReplaceMemoryRequestSlotsList;
 }
-export const CreateDedicatedServerSupportReplaceMemoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerSupportReplaceMemoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     comment: S.String,
@@ -2217,7 +2213,7 @@ export interface CreateDedicatedServerTaskScheduleRequest {
   /** Wanted begining date for your intervention */
   wantedBeginingDate: string;
 }
-export const CreateDedicatedServerTaskScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerTaskScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -2235,12 +2231,12 @@ export const CreateDedicatedServerTaskScheduleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateDedicatedServerTaskScheduleRequest>;
 
 export interface CreateDedicatedServerTaskScheduleResponse {}
-export const CreateDedicatedServerTaskScheduleResponse =
+const CreateDedicatedServerTaskScheduleResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>;
 
 /** Distinct type of virtual mac */
 export type DedicatedServerVmacTypeEnum = "ovh" | "vmware";
-export const DedicatedServerVmacTypeEnum = S.String;
+const DedicatedServerVmacTypeEnum = S.String;
 
 export interface CreateDedicatedServerVirtualMacRequest {
   /** The internal name of your dedicated server */
@@ -2252,7 +2248,7 @@ export interface CreateDedicatedServerVirtualMacRequest {
   /** Friendly name of your Virtual Machine behind this IP/MAC */
   virtualMachineName: string;
 }
-export const CreateDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipAddress: S.String,
@@ -2273,7 +2269,7 @@ export interface CreateDedicatedServerVirtualMacVirtualAddressRequest {
   /** Friendly name of your Virtual Machine behind this IP/MAC */
   virtualMachineName: string;
 }
-export const CreateDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     macAddress: S.String.pipe(T.Label()),
@@ -2294,7 +2290,7 @@ export interface DeleteDedicatedServerFeatureBackupCloudRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const DeleteDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2309,14 +2305,14 @@ export const DeleteDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudRequest>;
 
 export interface DeleteDedicatedServerFeatureBackupCloudResponse {}
-export const DeleteDedicatedServerFeatureBackupCloudResponse =
+const DeleteDedicatedServerFeatureBackupCloudResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>;
 
 export interface DeleteDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const DeleteDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2336,7 +2332,7 @@ export interface DeleteDedicatedServerFeatureBackupFTPAccessRequest {
   /** The IP Block specific to this ACL */
   ipBlock: string;
 }
-export const DeleteDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipBlock: S.String.pipe(T.Label()),
@@ -2355,7 +2351,7 @@ export interface DeleteDedicatedServerNetworkingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const DeleteDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2378,7 +2374,7 @@ export type DeleteDedicatedServerOptionRequestOption =
   | "TUNING_FIREWALL"
   | "TUNING_KVM"
   | "USB_KVM_IP";
-export const DeleteDedicatedServerOptionRequestOption = S.String;
+const DeleteDedicatedServerOptionRequestOption = S.String;
 
 export interface DeleteDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
@@ -2386,7 +2382,7 @@ export interface DeleteDedicatedServerOptionRequest {
   /** The option name */
   option: DeleteDedicatedServerOptionRequestOption | (string & {});
 }
-export const DeleteDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     option: DeleteDedicatedServerOptionRequestOption.pipe(T.Label()),
@@ -2398,7 +2394,7 @@ export const DeleteDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedServerOptionRequest>;
 
 export interface DeleteDedicatedServerOptionResponse {}
-export const DeleteDedicatedServerOptionResponse =
+const DeleteDedicatedServerOptionResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerOptionResponse>;
 
 export interface DeleteDedicatedServerSecondaryDnsDomainRequest {
@@ -2407,7 +2403,7 @@ export interface DeleteDedicatedServerSecondaryDnsDomainRequest {
   /** domain on slave server */
   domain: string;
 }
-export const DeleteDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2423,7 +2419,7 @@ export const DeleteDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainRequest>;
 
 export interface DeleteDedicatedServerSecondaryDnsDomainResponse {}
-export const DeleteDedicatedServerSecondaryDnsDomainResponse =
+const DeleteDedicatedServerSecondaryDnsDomainResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>;
 
 export interface DeleteDedicatedServerVirtualMacVirtualAddressRequest {
@@ -2434,7 +2430,7 @@ export interface DeleteDedicatedServerVirtualMacVirtualAddressRequest {
   /** IP address */
   ipAddress: string;
 }
-export const DeleteDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     macAddress: S.String.pipe(T.Label()),
@@ -2456,7 +2452,7 @@ export interface DeleteDedicatedServerVrackRequest {
   /** vrack name */
   vrack: string;
 }
-export const DeleteDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrack: S.String.pipe(T.Label()),
@@ -2469,7 +2465,7 @@ export const DeleteDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All states a vRack Task can be in */
 export type VrackTaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo";
-export const VrackTaskStatusEnum = S.String;
+const VrackTaskStatusEnum = S.String;
 
 /** vrack tasks */
 export interface VrackTask {
@@ -2483,7 +2479,7 @@ export interface VrackTask {
   targetDomain?: string | null;
   todoDate?: string | null;
 }
-export const VrackTask = /*@__PURE__*/ S.suspend(() =>
+const VrackTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(S.String),
     id: S.optional(S.Number),
@@ -2500,7 +2496,7 @@ export interface GetDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}", code: 200 })),
@@ -2564,11 +2560,11 @@ export type DedicatedDatacenterEnum =
   | "waw1"
   | "ynm1"
   | "yyz01";
-export const DedicatedDatacenterEnum = S.String;
+const DedicatedDatacenterEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap =
+const IamResourceMetadataTagsMap =
   DedicatedServerReinstallCustomizationsHttpHeadersMap as any as S.Schema<IamResourceMetadataTagsMap>;
 
 /** IAM resource metadata embedded in services models */
@@ -2582,7 +2578,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -2593,15 +2589,15 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Power states of a Dedicated */
 export type DedicatedServerPowerStateEnum = "poweroff" | "poweron";
-export const DedicatedServerPowerStateEnum = S.String;
+const DedicatedServerPowerStateEnum = S.String;
 
 /** All states a Dedicated can in */
 export type DedicatedServerStateEnum = "error" | "hacked" | "hackedBlocked" | "ok";
-export const DedicatedServerStateEnum = S.String;
+const DedicatedServerStateEnum = S.String;
 
 /** distincts support level */
 export type DedicatedServerSupportLevelEnum = "critical" | "fastpath" | "gs" | "pro";
-export const DedicatedServerSupportLevelEnum = S.String;
+const DedicatedServerSupportLevelEnum = S.String;
 
 /** Server informations */
 export interface DedicatedServerDedicatedWithIAM {
@@ -2650,7 +2646,7 @@ export interface DedicatedServerDedicatedWithIAM {
   /** Dedicated server support level */
   supportLevel?: DedicatedServerSupportLevelEnum;
 }
-export const DedicatedServerDedicatedWithIAM = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerDedicatedWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZone: S.optional(S.String),
     bootId: S.optional(S.NullOr(S.Number)),
@@ -2686,7 +2682,7 @@ export interface GetDedicatedServerAntiDDosGameStatusRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerAntiDDosGameStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerAntiDDosGameStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2702,10 +2698,10 @@ export const GetDedicatedServerAntiDDosGameStatusRequest = /*@__PURE__*/ S.suspe
 
 /** enable or disable */
 export type DedicatedStatusEnum = "disable" | "enable";
-export const DedicatedStatusEnum = S.String;
+const DedicatedStatusEnum = S.String;
 
 export type GetDedicatedServerAntiDDosGameStatusResponse = DedicatedStatusEnum;
-export const GetDedicatedServerAntiDDosGameStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerAntiDDosGameStatusResponse = /*@__PURE__*/ S.suspend(() =>
   DedicatedStatusEnum.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDedicatedServerAntiDDosGameStatusResponse",
@@ -2715,7 +2711,7 @@ export interface GetDedicatedServerBackupCloudOfferDetailsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerBackupCloudOfferDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerBackupCloudOfferDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2740,7 +2736,7 @@ export interface DedicatedServerBackupBackupOffer {
   /** Storage container max size. */
   maxStorage?: ComplexTypeUnitAndValueLong | null;
 }
-export const DedicatedServerBackupBackupOffer = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupBackupOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxArchive: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     maxBandwidthArchive: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -2755,7 +2751,7 @@ export interface GetDedicatedServerBiosSettingsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerBiosSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerBiosSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2768,14 +2764,14 @@ export const GetDedicatedServerBiosSettingsRequest = /*@__PURE__*/ S.suspend(() 
 /** Supported SGX prmrr values */
 export type DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList =
   Array<DedicatedServerBiosSettingsSgxPrmrrEnum>;
-export const DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList = /*@__PURE__*/ S.Array(
+const DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList = /*@__PURE__*/ S.Array(
   DedicatedServerBiosSettingsSgxPrmrrEnum,
 ) as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList>;
 
 /** Supported SGX statuses */
 export type DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
   Array<DedicatedServerBiosSettingsSgxStatusEnum>;
-export const DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
+const DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
   DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptionsStatusList>;
 
 /** A structure describing supported SGX options values */
@@ -2785,7 +2781,7 @@ export interface DedicatedServerBiosSettingsSupportSgxOptions {
   /** Supported SGX statuses */
   status?: DedicatedServerBiosSettingsSupportSgxOptionsStatusList;
 }
-export const DedicatedServerBiosSettingsSupportSgxOptions = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBiosSettingsSupportSgxOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prmrr: S.optional(DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList),
     status: S.optional(DedicatedServerBiosSettingsSupportSgxOptionsStatusList),
@@ -2801,7 +2797,7 @@ export interface DedicatedServerBiosSettingsSupport {
   /** Supported SGX options */
   sgxOptions?: DedicatedServerBiosSettingsSupportSgxOptions;
 }
-export const DedicatedServerBiosSettingsSupport = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBiosSettingsSupport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sgx: S.optional(S.Boolean),
     sgxOptions: S.optional(DedicatedServerBiosSettingsSupportSgxOptions),
@@ -2815,7 +2811,7 @@ export interface DedicatedBiosSettingsBiosSettings {
   /** List supported setting */
   supportedSettings?: DedicatedServerBiosSettingsSupport;
 }
-export const DedicatedBiosSettingsBiosSettings = /*@__PURE__*/ S.suspend(() =>
+const DedicatedBiosSettingsBiosSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedSettings: S.optional(DedicatedServerBiosSettingsSupport),
   }),
@@ -2827,7 +2823,7 @@ export interface GetDedicatedServerBiosSettingsSgxRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerBiosSettingsSgxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerBiosSettingsSgxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2844,7 +2840,7 @@ export interface DedicatedBiosSettingsSgxBiosSettingsSgx {
   /** Settings sections */
   status?: DedicatedServerBiosSettingsSgxStatusEnum;
 }
-export const DedicatedBiosSettingsSgxBiosSettingsSgx = /*@__PURE__*/ S.suspend(() =>
+const DedicatedBiosSettingsSgxBiosSettingsSgx = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prmrr: S.optional(DedicatedServerBiosSettingsSgxPrmrrEnum),
     status: S.optional(DedicatedServerBiosSettingsSgxStatusEnum),
@@ -2859,7 +2855,7 @@ export interface GetDedicatedServerBootRequest {
   /** boot id */
   bootId: number;
 }
-export const GetDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bootId: S.Number.pipe(T.Label()),
@@ -2872,7 +2868,7 @@ export const GetDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Different netboot boot */
 export type DedicatedServerBootTypeEnum = "harddisk" | "internal" | "network" | "power" | "rescue";
-export const DedicatedServerBootTypeEnum = S.String;
+const DedicatedServerBootTypeEnum = S.String;
 
 /** Available boots */
 export interface DedicatedServerNetboot {
@@ -2885,7 +2881,7 @@ export interface DedicatedServerNetboot {
   /** The boot kernel */
   kernel?: string;
 }
-export const DedicatedServerNetboot = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerNetboot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bootId: S.optional(S.Number),
     bootType: S.optional(DedicatedServerBootTypeEnum),
@@ -2896,7 +2892,7 @@ export const DedicatedServerNetboot = /*@__PURE__*/ S.suspend(() =>
 
 /** Different option activated on netboot */
 export type GetDedicatedServerBootOptionRequestOption = "cpufamily" | "grsec" | "ipv6" | "smp";
-export const GetDedicatedServerBootOptionRequestOption = S.String;
+const GetDedicatedServerBootOptionRequestOption = S.String;
 
 export interface GetDedicatedServerBootOptionRequest {
   /** The internal name of your dedicated server */
@@ -2906,7 +2902,7 @@ export interface GetDedicatedServerBootOptionRequest {
   /** The option of this boot */
   option: GetDedicatedServerBootOptionRequestOption | (string & {});
 }
-export const GetDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bootId: S.Number.pipe(T.Label()),
@@ -2924,7 +2920,7 @@ export const GetDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Different option activated on netboot */
 export type DedicatedServerBootOptionEnum = "cpufamily" | "grsec" | "ipv6" | "smp";
-export const DedicatedServerBootOptionEnum = S.String;
+const DedicatedServerBootOptionEnum = S.String;
 
 /** Available boot options */
 export interface DedicatedServerNetbootOption {
@@ -2933,7 +2929,7 @@ export interface DedicatedServerNetbootOption {
   /** the value of this option */
   value?: string;
 }
-export const DedicatedServerNetbootOption = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerNetbootOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     option: S.optional(DedicatedServerBootOptionEnum),
     value: S.optional(S.String),
@@ -2946,7 +2942,7 @@ export interface GetDedicatedServerBurstRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerBurstRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerBurstRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/burst", code: 200 })),
@@ -2956,7 +2952,7 @@ export const GetDedicatedServerBurstRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dedicated server bandwidth burst */
 export type DedicatedServerBurstStatusEnum = "active" | "inactive" | "inactiveLocked";
-export const DedicatedServerBurstStatusEnum = S.String;
+const DedicatedServerBurstStatusEnum = S.String;
 
 /** Server bandwidth burst details */
 export interface DedicatedServerServerBurst {
@@ -2965,7 +2961,7 @@ export interface DedicatedServerServerBurst {
   /** indicates whether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet */
   status?: DedicatedServerBurstStatusEnum;
 }
-export const DedicatedServerServerBurst = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerServerBurst = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     status: S.optional(DedicatedServerBurstStatusEnum),
@@ -2978,7 +2974,7 @@ export interface GetDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2990,7 +2986,7 @@ export const GetDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ S.suspend
 
 /** Different backup storage type */
 export type DedicatedServerBackupStorageTypeEnum = "included" | "storage";
-export const DedicatedServerBackupStorageTypeEnum = S.String;
+const DedicatedServerBackupStorageTypeEnum = S.String;
 
 /** Backup Ftp assigned to this server */
 export interface DedicatedServerBackupFtp {
@@ -3005,7 +3001,7 @@ export interface DedicatedServerBackupFtp {
   /** The disk space currently used on your backup FTP in percent */
   usage?: ComplexTypeUnitAndValueLong | null;
 }
-export const DedicatedServerBackupFtp = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupFtp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ftpBackupName: S.optional(S.String),
     quota: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -3021,7 +3017,7 @@ export interface GetDedicatedServerFeatureBackupFTPAccessRequest {
   /** The IP Block specific to this ACL */
   ipBlock: string;
 }
-export const GetDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipBlock: S.String.pipe(T.Label()),
@@ -3051,7 +3047,7 @@ export interface DedicatedServerBackupFtpAcl {
   /** Whether to allow the NFS protocol for this ACL */
   nfs?: boolean;
 }
-export const DedicatedServerBackupFtpAcl = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupFtpAcl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cifs: S.optional(S.Boolean),
     ftp: S.optional(S.Boolean),
@@ -3068,7 +3064,7 @@ export interface GetDedicatedServerFeatureBmcRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerFeatureBmcRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBmcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3095,7 +3091,7 @@ export interface DedicatedServerBmcSupportedFeatures {
   /** Access to the virtual serial port of your server through a Web interface */
   webSol?: boolean;
 }
-export const DedicatedServerBmcSupportedFeatures = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBmcSupportedFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     javaKvm: S.optional(S.Boolean),
     sshSol: S.optional(S.Boolean),
@@ -3116,7 +3112,7 @@ export interface DedicatedServerBMC {
   /** A structure describing the BMC supported features */
   supportedFeatures?: DedicatedServerBmcSupportedFeatures;
 }
-export const DedicatedServerBMC = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBMC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(S.Boolean),
     supportedFeatures: S.optional(DedicatedServerBmcSupportedFeatures),
@@ -3129,7 +3125,7 @@ export interface GetDedicatedServerFeatureBmcJavaKvmRequest {
   /** The ID of the request access operation */
   operationId: string;
 }
-export const GetDedicatedServerFeatureBmcJavaKvmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBmcJavaKvmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Query()),
@@ -3151,7 +3147,7 @@ export interface DedicatedServerBmcJavaKvmValue {
   /** value */
   jnlp?: string;
 }
-export const DedicatedServerBmcJavaKvmValue = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBmcJavaKvmValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     jnlp: S.optional(S.String),
@@ -3166,7 +3162,7 @@ export interface GetDedicatedServerFeatureBmcSshSolRequest {
   /** The ID of the request access operation */
   operationId: string;
 }
-export const GetDedicatedServerFeatureBmcSshSolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBmcSshSolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Query()),
@@ -3188,7 +3184,7 @@ export interface DedicatedServerBmcSshSolValue {
   /** Ssh user and host in "user@host" format */
   uri?: string;
 }
-export const DedicatedServerBmcSshSolValue = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBmcSshSolValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     uri: S.optional(S.String),
@@ -3199,7 +3195,7 @@ export const DedicatedServerBmcSshSolValue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tests to run on a BMC */
 export type DedicatedServerBmcTestTypeEnum = "password" | "ping" | "web";
-export const DedicatedServerBmcTestTypeEnum = S.String;
+const DedicatedServerBmcTestTypeEnum = S.String;
 
 export interface GetDedicatedServerFeatureBmcTestRequest {
   /** The internal name of your dedicated server */
@@ -3209,7 +3205,7 @@ export interface GetDedicatedServerFeatureBmcTestRequest {
   /** Test to execute on the BMC interface */
   type: DedicatedServerBmcTestTypeEnum | (string & {});
 }
-export const GetDedicatedServerFeatureBmcTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBmcTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Query()),
@@ -3230,7 +3226,7 @@ export interface DedicatedServerBmcTestResult {
   /** Test result, true if successful */
   status?: boolean;
 }
-export const DedicatedServerBmcTestResult = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBmcTestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     message: S.optional(S.NullOr(S.String)),
@@ -3246,7 +3242,7 @@ export interface GetDedicatedServerFeatureBmcWebKvmRequest {
   /** The ID of the request access operation */
   operationId: string;
 }
-export const GetDedicatedServerFeatureBmcWebKvmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBmcWebKvmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Query()),
@@ -3268,7 +3264,7 @@ export interface DedicatedServerBmcWebKvmValue {
   /** URL of the Web KVM session */
   url?: string;
 }
-export const DedicatedServerBmcWebKvmValue = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBmcWebKvmValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -3283,7 +3279,7 @@ export interface GetDedicatedServerFeatureBmcWebSolRequest {
   /** The ID of the request access operation */
   operationId: string;
 }
-export const GetDedicatedServerFeatureBmcWebSolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureBmcWebSolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Query()),
@@ -3305,14 +3301,14 @@ export interface DedicatedServerBmcWebSolValue {
   /** URL of the Web SOL session */
   url?: string;
 }
-export const DedicatedServerBmcWebSolValue =
+const DedicatedServerBmcWebSolValue =
   DedicatedServerBmcWebKvmValue as any as S.Schema<DedicatedServerBmcWebSolValue>;
 
 export interface GetDedicatedServerFeatureFirewallRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3324,11 +3320,11 @@ export const GetDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(
 
 /** Dedicated server firewall mode */
 export type DedicatedServerFirewallModeEnum = "routed" | "transparent";
-export const DedicatedServerFirewallModeEnum = S.String;
+const DedicatedServerFirewallModeEnum = S.String;
 
 /** Firewall model name */
 export type DedicatedServerFirewallModelEnum = "asa5505" | "asa5510" | "asa5520";
-export const DedicatedServerFirewallModelEnum = S.String;
+const DedicatedServerFirewallModelEnum = S.String;
 
 /** Firewall attached to this server */
 export interface DedicatedServerFirewall {
@@ -3341,7 +3337,7 @@ export interface DedicatedServerFirewall {
   /** Firewall model */
   model?: DedicatedServerFirewallModelEnum | null;
 }
-export const DedicatedServerFirewall = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerFirewall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     firewall: S.optional(S.String),
@@ -3355,7 +3351,7 @@ export interface GetDedicatedServerFeatureIpmiRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerFeatureIpmiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureIpmiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3376,7 +3372,7 @@ export interface DedicatedServerIpmiSupportedFeatures {
   /** Access to the virtual serial port of your server through an HTML command line interface */
   serialOverLanURL?: boolean;
 }
-export const DedicatedServerIpmiSupportedFeatures = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIpmiSupportedFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kvmipHtml5URL: S.optional(S.Boolean),
     kvmipJnlp: S.optional(S.Boolean),
@@ -3394,7 +3390,7 @@ export interface DedicatedServerIpmi {
   /** A structure describing the IPMI supported features */
   supportedFeatures?: DedicatedServerIpmiSupportedFeatures;
 }
-export const DedicatedServerIpmi = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIpmi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activated: S.optional(S.Boolean),
     supportedFeatures: S.optional(DedicatedServerIpmiSupportedFeatures),
@@ -3407,7 +3403,7 @@ export interface GetDedicatedServerFeatureIpmiAccessRequest {
   /** IPMI console access */
   type: DedicatedServerIpmiAccessTypeEnum | (string & {});
 }
-export const GetDedicatedServerFeatureIpmiAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureIpmiAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     type: DedicatedServerIpmiAccessTypeEnum.pipe(T.Query()),
@@ -3429,7 +3425,7 @@ export interface DedicatedServerIpmiAccessValue {
   /** value */
   value?: string | null;
 }
-export const DedicatedServerIpmiAccessValue = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIpmiAccessValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiration: S.optional(S.NullOr(S.String)),
     value: S.optional(S.NullOr(S.String)),
@@ -3440,7 +3436,7 @@ export const DedicatedServerIpmiAccessValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Different test can be made on IPMI interface */
 export type DedicatedServerIpmiTestTypeEnum = "http" | "password" | "ping";
-export const DedicatedServerIpmiTestTypeEnum = S.String;
+const DedicatedServerIpmiTestTypeEnum = S.String;
 
 export interface GetDedicatedServerFeatureIpmiTestRequest {
   /** The internal name of your dedicated server */
@@ -3448,7 +3444,7 @@ export interface GetDedicatedServerFeatureIpmiTestRequest {
   /** Test type result on KVM IPMI interface */
   type: DedicatedServerIpmiTestTypeEnum | (string & {});
 }
-export const GetDedicatedServerFeatureIpmiTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureIpmiTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     type: DedicatedServerIpmiTestTypeEnum.pipe(T.Query()),
@@ -3466,7 +3462,7 @@ export interface DedicatedServerIpmiTestResult {
   /** Test result */
   status?: string | null;
 }
-export const DedicatedServerIpmiTestResult = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIpmiTestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(S.String)),
@@ -3479,7 +3475,7 @@ export interface GetDedicatedServerFeatureKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerFeatureKvmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerFeatureKvmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3498,7 +3494,7 @@ export interface DedicatedServerKvm {
   /** KVM hostname */
   name?: string;
 }
-export const DedicatedServerKvm = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerKvm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiration: S.optional(S.String),
     ip: S.optional(S.NullOr(S.String)),
@@ -3512,7 +3508,7 @@ export interface GetDedicatedServerInterventionRequest {
   /** The intervention id */
   interventionId: number;
 }
-export const GetDedicatedServerInterventionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerInterventionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     interventionId: S.Number.pipe(T.Label()),
@@ -3536,7 +3532,7 @@ export interface DedicatedServerIntervention {
   /** the intervention type */
   type?: string | null;
 }
-export const DedicatedServerIntervention = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIntervention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.NullOr(S.String)),
     interventionId: S.optional(S.Number),
@@ -3552,7 +3548,7 @@ export interface GetDedicatedServerIpCanBeMovedToRequest {
   /** The ip to move to this server */
   ip: string;
 }
-export const GetDedicatedServerIpCanBeMovedToRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerIpCanBeMovedToRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Query()),
@@ -3564,7 +3560,7 @@ export const GetDedicatedServerIpCanBeMovedToRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetDedicatedServerIpCanBeMovedToRequest>;
 
 export interface GetDedicatedServerIpCanBeMovedToResponse {}
-export const GetDedicatedServerIpCanBeMovedToResponse =
+const GetDedicatedServerIpCanBeMovedToResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>;
 
 export interface GetDedicatedServerNetworkInterfaceControllerRequest {
@@ -3573,7 +3569,7 @@ export interface GetDedicatedServerNetworkInterfaceControllerRequest {
   /** NetworkInterfaceController mac */
   mac: string;
 }
-export const GetDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     mac: S.String.pipe(T.Label()),
@@ -3597,7 +3593,7 @@ export type DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTyp
   | "provisioning_lag"
   | "public"
   | "public_lag";
-export const DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum = S.String;
+const DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum = S.String;
 
 /** Your networkInterfaceController */
 export interface DedicatedNetworkInterfaceControllerNetworkInterfaceController {
@@ -3608,18 +3604,15 @@ export interface DedicatedNetworkInterfaceControllerNetworkInterfaceController {
   /** VirtualNetworkInterface bound to this NetworkInterfaceController */
   virtualNetworkInterface?: string | null;
 }
-export const DedicatedNetworkInterfaceControllerNetworkInterfaceController =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      linkType: S.optional(
-        DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum,
-      ),
-      mac: S.optional(S.String),
-      virtualNetworkInterface: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DedicatedNetworkInterfaceControllerNetworkInterfaceController",
-  }) as any as S.Schema<DedicatedNetworkInterfaceControllerNetworkInterfaceController>;
+const DedicatedNetworkInterfaceControllerNetworkInterfaceController = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    linkType: S.optional(DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum),
+    mac: S.optional(S.String),
+    virtualNetworkInterface: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "DedicatedNetworkInterfaceControllerNetworkInterfaceController",
+}) as any as S.Schema<DedicatedNetworkInterfaceControllerNetworkInterfaceController>;
 
 export interface GetDedicatedServerOperationRequest {
   /** The internal name of your dedicated server */
@@ -3627,7 +3620,7 @@ export interface GetDedicatedServerOperationRequest {
   /** The unique identifier of the operation */
   operationId: string;
 }
-export const GetDedicatedServerOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -3655,7 +3648,7 @@ export type GetDedicatedServerOptionRequestOption =
   | "TUNING_FIREWALL"
   | "TUNING_KVM"
   | "USB_KVM_IP";
-export const GetDedicatedServerOptionRequestOption = S.String;
+const GetDedicatedServerOptionRequestOption = S.String;
 
 export interface GetDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
@@ -3663,7 +3656,7 @@ export interface GetDedicatedServerOptionRequest {
   /** The option name */
   option: GetDedicatedServerOptionRequestOption | (string & {});
 }
-export const GetDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     option: GetDedicatedServerOptionRequestOption.pipe(T.Label()),
@@ -3687,11 +3680,11 @@ export type DedicatedServerOptionEnum =
   | "TUNING_FIREWALL"
   | "TUNING_KVM"
   | "USB_KVM_IP";
-export const DedicatedServerOptionEnum = S.String;
+const DedicatedServerOptionEnum = S.String;
 
 /** All states a dedicated server option can be in */
 export type DedicatedServerOptionStateEnum = "released" | "subscribed";
-export const DedicatedServerOptionStateEnum = S.String;
+const DedicatedServerOptionStateEnum = S.String;
 
 /** Information about the options of a dedicated server */
 export interface DedicatedServerOption {
@@ -3700,7 +3693,7 @@ export interface DedicatedServerOption {
   /** The state of the option */
   state?: DedicatedServerOptionStateEnum;
 }
-export const DedicatedServerOption = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     option: S.optional(DedicatedServerOptionEnum),
     state: S.optional(DedicatedServerOptionStateEnum),
@@ -3709,7 +3702,7 @@ export const DedicatedServerOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Dedicated server orderable features */
 export type DedicatedServerOrderableSysFeatureEnum = "backupProtocol" | "monitoring";
-export const DedicatedServerOrderableSysFeatureEnum = S.String;
+const DedicatedServerOrderableSysFeatureEnum = S.String;
 
 export interface GetDedicatedServerOrderableFeatureRequest {
   /** The internal name of your dedicated server */
@@ -3717,7 +3710,7 @@ export interface GetDedicatedServerOrderableFeatureRequest {
   /** the feature */
   feature: DedicatedServerOrderableSysFeatureEnum | (string & {});
 }
-export const GetDedicatedServerOrderableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOrderableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     feature: DedicatedServerOrderableSysFeatureEnum.pipe(T.Query()),
@@ -3729,7 +3722,7 @@ export const GetDedicatedServerOrderableFeatureRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetDedicatedServerOrderableFeatureRequest>;
 
 export type GetDedicatedServerOrderableFeatureResponse = boolean;
-export const GetDedicatedServerOrderableFeatureResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOrderableFeatureResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDedicatedServerOrderableFeatureResponse",
@@ -3739,7 +3732,7 @@ export interface GetDedicatedServerOrderableKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerOrderableKvmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOrderableKvmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3750,14 +3743,14 @@ export const GetDedicatedServerOrderableKvmRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetDedicatedServerOrderableKvmRequest>;
 
 export type GetDedicatedServerOrderableKvmResponse = boolean;
-export const GetDedicatedServerOrderableKvmResponse =
+const GetDedicatedServerOrderableKvmResponse =
   GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableKvmResponse>;
 
 export interface GetDedicatedServerOrderableKvmExpressRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerOrderableKvmExpressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOrderableKvmExpressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3772,14 +3765,14 @@ export const GetDedicatedServerOrderableKvmExpressRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetDedicatedServerOrderableKvmExpressRequest>;
 
 export type GetDedicatedServerOrderableKvmExpressResponse = boolean;
-export const GetDedicatedServerOrderableKvmExpressResponse =
+const GetDedicatedServerOrderableKvmExpressResponse =
   GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>;
 
 export interface GetDedicatedServerOrderableProfessionalUseRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerOrderableProfessionalUseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerOrderableProfessionalUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3794,7 +3787,7 @@ export const GetDedicatedServerOrderableProfessionalUseRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseRequest>;
 
 export type GetDedicatedServerOrderableProfessionalUseResponse = boolean;
-export const GetDedicatedServerOrderableProfessionalUseResponse =
+const GetDedicatedServerOrderableProfessionalUseResponse =
   GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>;
 
 export interface GetDedicatedServerPlannedInterventionRequest {
@@ -3803,7 +3796,7 @@ export interface GetDedicatedServerPlannedInterventionRequest {
   /** ID of the intervention */
   interventionId: number;
 }
-export const GetDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     interventionId: S.Number.pipe(T.Label()),
@@ -3820,11 +3813,11 @@ export const GetDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.susp
 
 /** Intervention status */
 export type DedicatedPlannedInterventionStatusEnum = "doing" | "done" | "todo";
-export const DedicatedPlannedInterventionStatusEnum = S.String;
+const DedicatedPlannedInterventionStatusEnum = S.String;
 
 /** Intervention type */
 export type DedicatedPlannedInterventionTypeEnum = "HARDWARE_UPGRADE_ON_ACTIVE_SERVER";
-export const DedicatedPlannedInterventionTypeEnum = S.String;
+const DedicatedPlannedInterventionTypeEnum = S.String;
 
 /** Planned intervention on the server */
 export interface DedicatedServerPlannedIntervention {
@@ -3839,7 +3832,7 @@ export interface DedicatedServerPlannedIntervention {
   /** Wanted start date for this intervention */
   wantedStartDate?: string;
 }
-export const DedicatedServerPlannedIntervention = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerPlannedIntervention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expectedEndDate: S.optional(S.String),
     id: S.optional(S.Number),
@@ -3857,7 +3850,7 @@ export interface GetDedicatedServerSecondaryDnsDomainRequest {
   /** domain on slave server */
   domain: string;
 }
-export const GetDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -3882,7 +3875,7 @@ export interface SecondaryDnsSecondaryDNS {
   /** master ip */
   ipMaster?: string;
 }
-export const SecondaryDnsSecondaryDNS = /*@__PURE__*/ S.suspend(() =>
+const SecondaryDnsSecondaryDNS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     dns: S.optional(S.String),
@@ -3897,7 +3890,7 @@ export interface GetDedicatedServerSecondaryDnsDomainDnsServerRequest {
   /** domain on slave server */
   domain: string;
 }
-export const GetDedicatedServerSecondaryDnsDomainDnsServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerSecondaryDnsDomainDnsServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -3919,7 +3912,7 @@ export interface SecondaryDnsSecondaryDNSNameServer {
   ip?: string;
   ipv6?: string | null;
 }
-export const SecondaryDnsSecondaryDNSNameServer = /*@__PURE__*/ S.suspend(() =>
+const SecondaryDnsSecondaryDNSNameServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.optional(S.String),
     ip: S.optional(S.String),
@@ -3935,7 +3928,7 @@ export interface GetDedicatedServerSecondaryDnsNameDomainTokenRequest {
   /** The domain to check */
   domain: string;
 }
-export const GetDedicatedServerSecondaryDnsNameDomainTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerSecondaryDnsNameDomainTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Query()),
@@ -3969,7 +3962,7 @@ export type ZoneNamedResolutionFieldTypeEnum =
   | "SSHFP"
   | "TLSA"
   | "TXT";
-export const ZoneNamedResolutionFieldTypeEnum = S.String;
+const ZoneNamedResolutionFieldTypeEnum = S.String;
 
 /** A structure describing informations about secondary dns check field */
 export interface SecondaryDnsSecondaryDNSCheckField {
@@ -3980,7 +3973,7 @@ export interface SecondaryDnsSecondaryDNSCheckField {
   /** The subdomain to add on your DNS zone for the domain */
   subDomain?: string;
 }
-export const SecondaryDnsSecondaryDNSCheckField = /*@__PURE__*/ S.suspend(() =>
+const SecondaryDnsSecondaryDNSCheckField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldType: S.optional(ZoneNamedResolutionFieldTypeEnum),
     fieldValue: S.optional(S.String),
@@ -3994,17 +3987,16 @@ export interface GetDedicatedServerSecondaryDnsNameServerAvailableRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerSecondaryDnsNameServerAvailableRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable",
-        code: 200,
-      }),
-    ),
+const GetDedicatedServerSecondaryDnsNameServerAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetDedicatedServerSecondaryDnsNameServerAvailableRequest",
 }) as any as S.Schema<GetDedicatedServerSecondaryDnsNameServerAvailableRequest>;
@@ -4013,7 +4005,7 @@ export interface GetDedicatedServerServiceInfosRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4025,7 +4017,7 @@ export const GetDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -4041,7 +4033,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -4061,7 +4053,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -4070,7 +4062,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -4091,7 +4083,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -4113,7 +4105,7 @@ export interface GetDedicatedServerSpecificationHardwareRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerSpecificationHardwareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerSpecificationHardwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4129,7 +4121,7 @@ export const GetDedicatedServerSpecificationHardwareRequest = /*@__PURE__*/ S.su
 
 /** Server boot mode */
 export type DedicatedServerBootModeEnum = "legacy" | "uefi" | "uefi-legacy";
-export const DedicatedServerBootModeEnum = S.String;
+const DedicatedServerBootModeEnum = S.String;
 
 /** Raid hard configuration */
 export type DedicatedServerHardwareSpecificationsRaidHardEnum =
@@ -4141,7 +4133,7 @@ export type DedicatedServerHardwareSpecificationsRaidHardEnum =
   | "raid50"
   | "raid6"
   | "raid60";
-export const DedicatedServerHardwareSpecificationsRaidHardEnum = S.String;
+const DedicatedServerHardwareSpecificationsRaidHardEnum = S.String;
 
 /** A structure describing informations about server disks */
 export interface DedicatedServerHardwareSpecificationsDisk {
@@ -4162,7 +4154,7 @@ export interface DedicatedServerHardwareSpecificationsDisk {
   /** raid controller, if any, managing this group of disks */
   raidController?: string | null;
 }
-export const DedicatedServerHardwareSpecificationsDisk = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareSpecificationsDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultHardwareRaidSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     defaultHardwareRaidType: S.optional(
@@ -4182,13 +4174,13 @@ export const DedicatedServerHardwareSpecificationsDisk = /*@__PURE__*/ S.suspend
 /** details about the groups of disks in the server */
 export type DedicatedServerHardwareSpecificationsDiskGroupsList =
   Array<DedicatedServerHardwareSpecificationsDisk>;
-export const DedicatedServerHardwareSpecificationsDiskGroupsList = /*@__PURE__*/ S.Array(
+const DedicatedServerHardwareSpecificationsDiskGroupsList = /*@__PURE__*/ S.Array(
   DedicatedServerHardwareSpecificationsDisk,
 ) as any as S.Schema<DedicatedServerHardwareSpecificationsDiskGroupsList>;
 
 /** Expansion card type enum */
 export type DedicatedServerHardwareSpecificationsExpansionCardTypeEnum = "fpga" | "gpu";
-export const DedicatedServerHardwareSpecificationsExpansionCardTypeEnum = S.String;
+const DedicatedServerHardwareSpecificationsExpansionCardTypeEnum = S.String;
 
 /** A structure describing informations about server expansion cards */
 export interface DedicatedServerHardwareSpecificationsExpansionCard {
@@ -4197,7 +4189,7 @@ export interface DedicatedServerHardwareSpecificationsExpansionCard {
   /** expansion card type */
   type?: DedicatedServerHardwareSpecificationsExpansionCardTypeEnum;
 }
-export const DedicatedServerHardwareSpecificationsExpansionCard = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareSpecificationsExpansionCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     type: S.optional(DedicatedServerHardwareSpecificationsExpansionCardTypeEnum),
@@ -4209,13 +4201,13 @@ export const DedicatedServerHardwareSpecificationsExpansionCard = /*@__PURE__*/ 
 /** details about the server's expansion cards */
 export type DedicatedServerHardwareSpecificationsExpansionCardsList =
   Array<DedicatedServerHardwareSpecificationsExpansionCard>;
-export const DedicatedServerHardwareSpecificationsExpansionCardsList = /*@__PURE__*/ S.Array(
+const DedicatedServerHardwareSpecificationsExpansionCardsList = /*@__PURE__*/ S.Array(
   DedicatedServerHardwareSpecificationsExpansionCard,
 ) as any as S.Schema<DedicatedServerHardwareSpecificationsExpansionCardsList>;
 
 /** Server form factor */
 export type DedicatedServerFormFactorEnum = "0.25u" | "0.5u" | "1u" | "2u" | "3u" | "4u";
-export const DedicatedServerFormFactorEnum = S.String;
+const DedicatedServerFormFactorEnum = S.String;
 
 /** cpu family */
 export type DedicatedServerCpuFamilyEnum =
@@ -4225,11 +4217,11 @@ export type DedicatedServerCpuFamilyEnum =
   | "x86"
   | "x86-ht"
   | "x86_64";
-export const DedicatedServerCpuFamilyEnum = S.String;
+const DedicatedServerCpuFamilyEnum = S.String;
 
 /** Capacity of the USB keys installed on your server, if any */
 export type DedicatedServerHardwareSpecificationsUsbKeysList = Array<ComplexTypeUnitAndValueLong>;
-export const DedicatedServerHardwareSpecificationsUsbKeysList = /*@__PURE__*/ S.Array(
+const DedicatedServerHardwareSpecificationsUsbKeysList = /*@__PURE__*/ S.Array(
   ComplexTypeUnitAndValueLong,
 ) as any as S.Schema<DedicatedServerHardwareSpecificationsUsbKeysList>;
 
@@ -4266,7 +4258,7 @@ export interface DedicatedServerHardwareSpecifications {
   /** Capacity of the USB keys installed on your server, if any */
   usbKeys?: DedicatedServerHardwareSpecificationsUsbKeysList | null;
 }
-export const DedicatedServerHardwareSpecifications = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareSpecifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bootMode: S.optional(DedicatedServerBootModeEnum),
     coresPerProcessor: S.optional(S.NullOr(S.Number)),
@@ -4294,7 +4286,7 @@ export interface GetDedicatedServerSpecificationNetworkRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const GetDedicatedServerSpecificationNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerSpecificationNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4316,7 +4308,7 @@ export type DedicatedServerBandwidthTypeEnum =
   | "premium"
   | "standard"
   | "ultimate";
-export const DedicatedServerBandwidthTypeEnum = S.String;
+const DedicatedServerBandwidthTypeEnum = S.String;
 
 /** A structure describing bandwidth informations about this dedicated server */
 export interface DedicatedServerBandwidthDetails {
@@ -4329,7 +4321,7 @@ export interface DedicatedServerBandwidthDetails {
   /** bandwidth offer type */
   type?: DedicatedServerBandwidthTypeEnum | null;
 }
-export const DedicatedServerBandwidthDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBandwidthDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InternetToOvh: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     OvhToInternet: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -4342,7 +4334,7 @@ export const DedicatedServerBandwidthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** An enum describing OVH Link Aggregation interface types */
 export type DedicatedServerOlaInterfaceModeEnum = "public" | "vrack";
-export const DedicatedServerOlaInterfaceModeEnum = S.String;
+const DedicatedServerOlaInterfaceModeEnum = S.String;
 
 /** A structure describing OVH Link Aggregation interface configuration */
 export interface DedicatedServerOlaInterface {
@@ -4353,7 +4345,7 @@ export interface DedicatedServerOlaInterface {
   /** Interface mode */
   type?: DedicatedServerOlaInterfaceModeEnum;
 }
-export const DedicatedServerOlaInterface = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerOlaInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregation: S.optional(S.Boolean),
     count: S.optional(S.Number),
@@ -4365,7 +4357,7 @@ export const DedicatedServerOlaInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** Interface layout */
 export type DedicatedServerOlaAvailableModesInterfacesList = Array<DedicatedServerOlaInterface>;
-export const DedicatedServerOlaAvailableModesInterfacesList = /*@__PURE__*/ S.Array(
+const DedicatedServerOlaAvailableModesInterfacesList = /*@__PURE__*/ S.Array(
   DedicatedServerOlaInterface,
 ) as any as S.Schema<DedicatedServerOlaAvailableModesInterfacesList>;
 
@@ -4378,7 +4370,7 @@ export interface DedicatedServerOlaAvailableModes {
   /** Mode name */
   name?: string;
 }
-export const DedicatedServerOlaAvailableModes = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerOlaAvailableModes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.Boolean),
     interfaces: S.optional(DedicatedServerOlaAvailableModesInterfacesList),
@@ -4390,7 +4382,7 @@ export const DedicatedServerOlaAvailableModes = /*@__PURE__*/ S.suspend(() =>
 
 /** What modes are supported */
 export type DedicatedServerOlaDetailsAvailableModesList = Array<DedicatedServerOlaAvailableModes>;
-export const DedicatedServerOlaDetailsAvailableModesList = /*@__PURE__*/ S.Array(
+const DedicatedServerOlaDetailsAvailableModesList = /*@__PURE__*/ S.Array(
   DedicatedServerOlaAvailableModes,
 ) as any as S.Schema<DedicatedServerOlaDetailsAvailableModesList>;
 
@@ -4400,12 +4392,12 @@ export type DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum =
   | "public_aggregation"
   | "vrack"
   | "vrack_aggregation";
-export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum = S.String;
+const DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum = S.String;
 
 /** (DEPRECATED) What modes are supported */
 export type DedicatedServerOlaDetailsSupportedModesList =
   Array<DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum>;
-export const DedicatedServerOlaDetailsSupportedModesList =
+const DedicatedServerOlaDetailsSupportedModesList =
   DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerOlaDetailsSupportedModesList>;
 
 /** A structure describing OVH Link Aggregation available modes for this dedicated server */
@@ -4417,7 +4409,7 @@ export interface DedicatedServerOlaDetails {
   /** (DEPRECATED) What modes are supported */
   supportedModes?: DedicatedServerOlaDetailsSupportedModesList | null;
 }
-export const DedicatedServerOlaDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerOlaDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(S.Boolean),
     availableModes: S.optional(DedicatedServerOlaDetailsAvailableModesList),
@@ -4436,7 +4428,7 @@ export interface DedicatedServerRoutingDetailsIpv4 {
   /** Server network */
   network?: string | null;
 }
-export const DedicatedServerRoutingDetailsIpv4 = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerRoutingDetailsIpv4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateway: S.optional(S.NullOr(S.String)),
     ip: S.optional(S.NullOr(S.String)),
@@ -4448,8 +4440,6 @@ export const DedicatedServerRoutingDetailsIpv4 = /*@__PURE__*/ S.suspend(() =>
 
 /** A structure describing IPv6 routing informations about this dedicated server */
 export type DedicatedServerRoutingDetailsIpv6 = DedicatedServerRoutingDetailsIpv4;
-export const DedicatedServerRoutingDetailsIpv6 = DedicatedServerRoutingDetailsIpv4;
-
 /** A structure describing routing informations about this dedicated server */
 export interface DedicatedServerRoutingDetails {
   /** Ipv4 routing details */
@@ -4457,7 +4447,7 @@ export interface DedicatedServerRoutingDetails {
   /** Ipv6 routing details */
   ipv6?: DedicatedServerRoutingDetailsIpv4 | null;
 }
-export const DedicatedServerRoutingDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerRoutingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipv4: S.optional(S.NullOr(DedicatedServerRoutingDetailsIpv4)),
     ipv6: S.optional(S.NullOr(DedicatedServerRoutingDetailsIpv4)),
@@ -4471,7 +4461,7 @@ export interface DedicatedServerSwitchingDetails {
   /** Switch name */
   name?: string | null;
 }
-export const DedicatedServerSwitchingDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerSwitchingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
   }),
@@ -4494,7 +4484,7 @@ export interface DedicatedServerTrafficDetails {
   /** Next reset quota date for traffic counter */
   resetQuotaDate?: string | null;
 }
-export const DedicatedServerTrafficDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerTrafficDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputQuotaSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     inputQuotaUsed: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -4514,7 +4504,7 @@ export interface DedicatedServerVmacDetails {
   /** Server is compatible vmac or not */
   supported?: boolean;
 }
-export const DedicatedServerVmacDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerVmacDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.optional(S.Number),
     supported: S.optional(S.Boolean),
@@ -4525,7 +4515,7 @@ export const DedicatedServerVmacDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Different Bandwidth type */
 export type DedicatedServerBandwidthvRackTypeEnum = "included" | "standard";
-export const DedicatedServerBandwidthvRackTypeEnum = S.String;
+const DedicatedServerBandwidthvRackTypeEnum = S.String;
 
 /** A structure describing vRack bandwidth informations about this dedicated server */
 export interface DedicatedServerBandwidthvRackDetails {
@@ -4534,7 +4524,7 @@ export interface DedicatedServerBandwidthvRackDetails {
   /** bandwidth offer type */
   type?: DedicatedServerBandwidthvRackTypeEnum | null;
 }
-export const DedicatedServerBandwidthvRackDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBandwidthvRackDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidth: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
     type: S.optional(S.NullOr(DedicatedServerBandwidthvRackTypeEnum)),
@@ -4562,7 +4552,7 @@ export interface DedicatedServerNetworkSpecifications {
   /** vRack details */
   vrack?: DedicatedServerBandwidthvRackDetails | null;
 }
-export const DedicatedServerNetworkSpecifications = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerNetworkSpecifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidth: S.optional(S.NullOr(DedicatedServerBandwidthDetails)),
     connection: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -4583,7 +4573,7 @@ export interface GetDedicatedServerSplaRequest {
   /** License id */
   id: number;
 }
-export const GetDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4594,7 +4584,7 @@ export const GetDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** SPLA license status */
 export type DedicatedServerSplaStatusEnum = "terminated" | "used" | "waitingToCheck";
-export const DedicatedServerSplaStatusEnum = S.String;
+const DedicatedServerSplaStatusEnum = S.String;
 
 /** SPLA licenses management */
 export interface DedicatedServerSpla {
@@ -4609,7 +4599,7 @@ export interface DedicatedServerSpla {
   /** License type */
   type?: DedicatedServerSplaTypeEnum;
 }
-export const DedicatedServerSpla = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerSpla = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     lastUpdate: S.optional(S.String),
@@ -4625,7 +4615,7 @@ export interface GetDedicatedServerTaskRequest {
   /** the id of the task */
   taskId: number;
 }
-export const GetDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -4642,7 +4632,7 @@ export interface GetDedicatedServerVirtualMacRequest {
   /** Virtual MAC address in 00:00:00:00:00:00 format */
   macAddress: string;
 }
-export const GetDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     macAddress: S.String.pipe(T.Label()),
@@ -4664,7 +4654,7 @@ export interface DedicatedServerVirtualMac {
   /** Virtual MAC address type */
   type?: DedicatedServerVmacTypeEnum;
 }
-export const DedicatedServerVirtualMac = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerVirtualMac = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     macAddress: S.optional(S.String),
     type: S.optional(DedicatedServerVmacTypeEnum),
@@ -4681,7 +4671,7 @@ export interface GetDedicatedServerVirtualMacVirtualAddressRequest {
   /** IP address */
   ipAddress: string;
 }
-export const GetDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     macAddress: S.String.pipe(T.Label()),
@@ -4704,7 +4694,7 @@ export interface DedicatedServerVirtualMacManagement {
   /** Friendly name of your Virtual Machine behind this IP/MAC */
   virtualMachineName?: string;
 }
-export const DedicatedServerVirtualMacManagement = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerVirtualMacManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     virtualMachineName: S.optional(S.String),
@@ -4717,7 +4707,7 @@ export interface GetDedicatedServerVirtualNetworkInterfaceRequest {
   /** Uuid */
   uuid: string;
 }
-export const GetDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4729,7 +4719,7 @@ export const GetDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S.
 
 /** NetworkInterfaceControllers bound to this VirtualNetworkInterface */
 export type DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList = Array<string>;
-export const DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList =
+const DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList =
   CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList>;
 
 /** Your VirtualNetworkInterface */
@@ -4749,7 +4739,7 @@ export interface DedicatedServerVirtualNetworkInterface {
   /** vRack name */
   vrack?: string | null;
 }
-export const DedicatedServerVirtualNetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerVirtualNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     mode: S.optional(DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum),
@@ -4771,7 +4761,7 @@ export interface GetDedicatedServerVirtualNetworkInterfaceByUuidRequest {
   /** VirtualNetworkInterface unique id */
   uuid: string;
 }
-export const GetDedicatedServerVirtualNetworkInterfaceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerVirtualNetworkInterfaceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     uuid: S.String.pipe(T.Label()),
@@ -4789,9 +4779,6 @@ export const GetDedicatedServerVirtualNetworkInterfaceByUuidRequest = /*@__PURE_
 /** NetworkInterfaceControllers bound to this VirtualNetworkInterface */
 export type DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList =
   Array<string>;
-export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList =
-  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList>;
-
 /** Your VirtualNetworkInterface */
 export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
   /** VirtualNetworkInterface activation state */
@@ -4809,7 +4796,7 @@ export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
   /** vRack name */
   vrack?: string | null;
 }
-export const DedicatedVirtualNetworkInterfaceVirtualNetworkInterface =
+const DedicatedVirtualNetworkInterfaceVirtualNetworkInterface =
   DedicatedServerVirtualNetworkInterface as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
 
 export interface GetDedicatedServerVrackRequest {
@@ -4818,7 +4805,7 @@ export interface GetDedicatedServerVrackRequest {
   /** vrack name */
   vrack: string;
 }
-export const GetDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrack: S.String.pipe(T.Label()),
@@ -4836,7 +4823,7 @@ export interface VrackDedicatedServer {
   /** vrack name */
   vrack?: string;
 }
-export const VrackDedicatedServer = /*@__PURE__*/ S.suspend(() =>
+const VrackDedicatedServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedServer: S.optional(S.String),
     vrack: S.optional(S.String),
@@ -4845,19 +4832,19 @@ export const VrackDedicatedServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListDedicatedServerRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListDedicatedServerRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListDedicatedServerRequestIamTagsValueList>;
 
 export type ListDedicatedServerRequestIamTagsMap = {
   [key: string]: ListDedicatedServerRequestIamTagsValueList | undefined;
 };
-export const ListDedicatedServerRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListDedicatedServerRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListDedicatedServerRequestIamTagsValueList,
 ) as any as S.Schema<ListDedicatedServerRequestIamTagsMap>;
@@ -4866,7 +4853,7 @@ export interface ListDedicatedServerRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListDedicatedServerRequestIamTagsMap;
 }
-export const ListDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListDedicatedServerRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server", code: 200 })),
@@ -4875,18 +4862,18 @@ export const ListDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerRequest>;
 
 export type ListDedicatedServerResponseBodyList = Array<string>;
-export const ListDedicatedServerResponseBodyList =
+const ListDedicatedServerResponseBodyList =
   DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerResponseBodyList>;
 
 export type ListDedicatedServerResponse = ListDedicatedServerResponseBodyList;
-export const ListDedicatedServerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerResponse",
 }) as any as S.Schema<ListDedicatedServerResponse>;
 
 export interface ListDedicatedServerAvailabilityRawRequest {}
-export const ListDedicatedServerAvailabilityRawRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerAvailabilityRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/dedicated/server/availabilities/raw", code: 200 }),
   ),
@@ -4909,7 +4896,7 @@ export type DedicatedAvailabilityEnum =
   | "comingSoon"
   | "unavailable"
   | "unknown";
-export const DedicatedAvailabilityEnum = S.String;
+const DedicatedAvailabilityEnum = S.String;
 
 /** The region */
 export type DedicatedAvailabilityRegionEnum =
@@ -4957,7 +4944,7 @@ export type DedicatedAvailabilityRegionEnum =
   | "vin"
   | "waw"
   | "ynm";
-export const DedicatedAvailabilityRegionEnum = S.String;
+const DedicatedAvailabilityRegionEnum = S.String;
 
 /** A structure describing the availabilities of dedicated server */
 export interface DedicatedAvailabilitiesRaw {
@@ -4986,7 +4973,7 @@ export interface DedicatedAvailabilitiesRaw {
   /** The region */
   zone?: DedicatedAvailabilityRegionEnum;
 }
-export const DedicatedAvailabilitiesRaw = /*@__PURE__*/ S.suspend(() =>
+const DedicatedAvailabilitiesRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedAvailabilityEnum),
     available: S.optional(S.Number),
@@ -5006,13 +4993,13 @@ export const DedicatedAvailabilitiesRaw = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DedicatedAvailabilitiesRaw>;
 
 export type ListDedicatedServerAvailabilityRawResponseBodyList = Array<DedicatedAvailabilitiesRaw>;
-export const ListDedicatedServerAvailabilityRawResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerAvailabilityRawResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedAvailabilitiesRaw,
 ) as any as S.Schema<ListDedicatedServerAvailabilityRawResponseBodyList>;
 
 export type ListDedicatedServerAvailabilityRawResponse =
   ListDedicatedServerAvailabilityRawResponseBodyList;
-export const ListDedicatedServerAvailabilityRawResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerAvailabilityRawResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerAvailabilityRawResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerAvailabilityRawResponse",
@@ -5024,7 +5011,7 @@ export interface ListDedicatedServerBootRequest {
   /** Filter the value of bootType property (=) */
   bootType?: DedicatedServerBootTypeEnum | (string & {});
 }
-export const ListDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bootType: S.optional(DedicatedServerBootTypeEnum.pipe(T.Query())),
@@ -5034,11 +5021,8 @@ export const ListDedicatedServerBootRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerBootRequest>;
 
 export type ListDedicatedServerBootResponseBodyList = Array<number>;
-export const ListDedicatedServerBootResponseBodyList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerBootResponseBodyList>;
-
 export type ListDedicatedServerBootResponse = ListDedicatedServerBootResponseBodyList;
-export const ListDedicatedServerBootResponse =
+const ListDedicatedServerBootResponse =
   CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerBootResponse>;
 
 export interface ListDedicatedServerBootOptionRequest {
@@ -5047,7 +5031,7 @@ export interface ListDedicatedServerBootOptionRequest {
   /** boot id */
   bootId: number;
 }
-export const ListDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bootId: S.Number.pipe(T.Label()),
@@ -5063,11 +5047,11 @@ export const ListDedicatedServerBootOptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDedicatedServerBootOptionRequest>;
 
 export type ListDedicatedServerBootOptionResponseBodyList = Array<DedicatedServerBootOptionEnum>;
-export const ListDedicatedServerBootOptionResponseBodyList =
+const ListDedicatedServerBootOptionResponseBodyList =
   DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerBootOptionResponseBodyList>;
 
 export type ListDedicatedServerBootOptionResponse = ListDedicatedServerBootOptionResponseBodyList;
-export const ListDedicatedServerBootOptionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerBootOptionResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerBootOptionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerBootOptionResponse",
@@ -5091,7 +5075,7 @@ export interface ListDedicatedServerDatacenterAvailabilitiesRequest {
   /** The name of the system storage hardware part */
   systemStorage?: string;
 }
-export const ListDedicatedServerDatacenterAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerDatacenterAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenters: S.optional(S.String.pipe(T.Query())),
     excludeDatacenters: S.optional(S.Boolean.pipe(T.Query())),
@@ -5156,7 +5140,7 @@ export type DedicatedAvailabilityDatacenterEnum =
   | "vin"
   | "waw"
   | "ynm";
-export const DedicatedAvailabilityDatacenterEnum = S.String;
+const DedicatedAvailabilityDatacenterEnum = S.String;
 
 /** A structure describing the hardware availability for each datacenter */
 export interface DedicatedAvailabilityDatacenter {
@@ -5165,7 +5149,7 @@ export interface DedicatedAvailabilityDatacenter {
   /** The datacenter */
   datacenter?: DedicatedAvailabilityDatacenterEnum;
 }
-export const DedicatedAvailabilityDatacenter = /*@__PURE__*/ S.suspend(() =>
+const DedicatedAvailabilityDatacenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedAvailabilityEnum),
     datacenter: S.optional(DedicatedAvailabilityDatacenterEnum),
@@ -5176,7 +5160,7 @@ export const DedicatedAvailabilityDatacenter = /*@__PURE__*/ S.suspend(() =>
 
 /** The hardware availability for each datacenter */
 export type DedicatedDatacenterAvailabilityDatacentersList = Array<DedicatedAvailabilityDatacenter>;
-export const DedicatedDatacenterAvailabilityDatacentersList = /*@__PURE__*/ S.Array(
+const DedicatedDatacenterAvailabilityDatacentersList = /*@__PURE__*/ S.Array(
   DedicatedAvailabilityDatacenter,
 ) as any as S.Schema<DedicatedDatacenterAvailabilityDatacentersList>;
 
@@ -5199,7 +5183,7 @@ export interface DedicatedDatacenterAvailability {
   /** Name of the system storage hardware part */
   systemStorage?: string | null;
 }
-export const DedicatedDatacenterAvailability = /*@__PURE__*/ S.suspend(() =>
+const DedicatedDatacenterAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenters: S.optional(DedicatedDatacenterAvailabilityDatacentersList),
     fqn: S.optional(S.String),
@@ -5216,13 +5200,13 @@ export const DedicatedDatacenterAvailability = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDedicatedServerDatacenterAvailabilitiesResponseBodyList =
   Array<DedicatedDatacenterAvailability>;
-export const ListDedicatedServerDatacenterAvailabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerDatacenterAvailabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedDatacenterAvailability,
 ) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesResponseBodyList>;
 
 export type ListDedicatedServerDatacenterAvailabilitiesResponse =
   ListDedicatedServerDatacenterAvailabilitiesResponseBodyList;
-export const ListDedicatedServerDatacenterAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerDatacenterAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerDatacenterAvailabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerDatacenterAvailabilitiesResponse",
@@ -5246,7 +5230,7 @@ export interface ListDedicatedServerDatacenterAvailabilityRawRequest {
   /** The name of the system storage hardware part */
   systemStorage?: string;
 }
-export const ListDedicatedServerDatacenterAvailabilityRawRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerDatacenterAvailabilityRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenters: S.optional(S.String.pipe(T.Query())),
     excludeDatacenters: S.optional(S.Boolean.pipe(T.Query())),
@@ -5276,7 +5260,7 @@ export interface DedicatedAvailabilityRawDatacenter {
   /** Real stock */
   trueAvailable?: number;
 }
-export const DedicatedAvailabilityRawDatacenter = /*@__PURE__*/ S.suspend(() =>
+const DedicatedAvailabilityRawDatacenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedAvailabilityEnum),
     datacenter: S.optional(DedicatedAvailabilityDatacenterEnum),
@@ -5291,7 +5275,7 @@ export const DedicatedAvailabilityRawDatacenter = /*@__PURE__*/ S.suspend(() =>
 /** The hardware raw availability for each datacenter */
 export type DedicatedDatacenterRawAvailabilityDatacentersList =
   Array<DedicatedAvailabilityRawDatacenter>;
-export const DedicatedDatacenterRawAvailabilityDatacentersList = /*@__PURE__*/ S.Array(
+const DedicatedDatacenterRawAvailabilityDatacentersList = /*@__PURE__*/ S.Array(
   DedicatedAvailabilityRawDatacenter,
 ) as any as S.Schema<DedicatedDatacenterRawAvailabilityDatacentersList>;
 
@@ -5321,7 +5305,7 @@ export type DedicatedAvailabilityAvailabilityZoneEnum =
   | "eu-west-sbg-a"
   | "us-east-vin-a"
   | "us-west-hil-a";
-export const DedicatedAvailabilityAvailabilityZoneEnum = S.String;
+const DedicatedAvailabilityAvailabilityZoneEnum = S.String;
 
 /** A structure describing the hardware raw availability for each availability zone */
 export interface DedicatedAvailabilityRawAvailabilityZones {
@@ -5336,7 +5320,7 @@ export interface DedicatedAvailabilityRawAvailabilityZones {
   /** Real stock */
   trueAvailable?: number;
 }
-export const DedicatedAvailabilityRawAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
+const DedicatedAvailabilityRawAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedAvailabilityEnum),
     availabilityZone: S.optional(DedicatedAvailabilityAvailabilityZoneEnum),
@@ -5351,7 +5335,7 @@ export const DedicatedAvailabilityRawAvailabilityZones = /*@__PURE__*/ S.suspend
 /** Availability for each availability zone */
 export type DedicatedAvailabilityRawRegionAvailabilityZonesList =
   Array<DedicatedAvailabilityRawAvailabilityZones>;
-export const DedicatedAvailabilityRawRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
+const DedicatedAvailabilityRawRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
   DedicatedAvailabilityRawAvailabilityZones,
 ) as any as S.Schema<DedicatedAvailabilityRawRegionAvailabilityZonesList>;
 
@@ -5375,7 +5359,7 @@ export type DedicatedAvailabilityRegionalizationEnum =
   | "eu-west-sbg"
   | "us-east-vin"
   | "us-west-hil";
-export const DedicatedAvailabilityRegionalizationEnum = S.String;
+const DedicatedAvailabilityRegionalizationEnum = S.String;
 
 /** A structure describing the hardware raw availability for each datacenter */
 export interface DedicatedAvailabilityRawRegion {
@@ -5392,7 +5376,7 @@ export interface DedicatedAvailabilityRawRegion {
   /** Real stock */
   trueAvailable?: number;
 }
-export const DedicatedAvailabilityRawRegion = /*@__PURE__*/ S.suspend(() =>
+const DedicatedAvailabilityRawRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedAvailabilityEnum),
     availabilityZones: S.optional(DedicatedAvailabilityRawRegionAvailabilityZonesList),
@@ -5407,7 +5391,7 @@ export const DedicatedAvailabilityRawRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** The hardware raw availability for each datacenter */
 export type DedicatedDatacenterRawAvailabilityRegionsList = Array<DedicatedAvailabilityRawRegion>;
-export const DedicatedDatacenterRawAvailabilityRegionsList = /*@__PURE__*/ S.Array(
+const DedicatedDatacenterRawAvailabilityRegionsList = /*@__PURE__*/ S.Array(
   DedicatedAvailabilityRawRegion,
 ) as any as S.Schema<DedicatedDatacenterRawAvailabilityRegionsList>;
 
@@ -5432,7 +5416,7 @@ export interface DedicatedDatacenterRawAvailability {
   /** Name of the system storage hardware part */
   systemStorage?: string | null;
 }
-export const DedicatedDatacenterRawAvailability = /*@__PURE__*/ S.suspend(() =>
+const DedicatedDatacenterRawAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenters: S.optional(DedicatedDatacenterRawAvailabilityDatacentersList),
     fqn: S.optional(S.String),
@@ -5450,13 +5434,13 @@ export const DedicatedDatacenterRawAvailability = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDedicatedServerDatacenterAvailabilityRawResponseBodyList =
   Array<DedicatedDatacenterRawAvailability>;
-export const ListDedicatedServerDatacenterAvailabilityRawResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerDatacenterAvailabilityRawResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedDatacenterRawAvailability,
 ) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawResponseBodyList>;
 
 export type ListDedicatedServerDatacenterAvailabilityRawResponse =
   ListDedicatedServerDatacenterAvailabilityRawResponseBodyList;
-export const ListDedicatedServerDatacenterAvailabilityRawResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerDatacenterAvailabilityRawResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerDatacenterAvailabilityRawResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerDatacenterAvailabilityRawResponse",
@@ -5466,7 +5450,7 @@ export interface ListDedicatedServerFeatureBackupCloudRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5484,7 +5468,7 @@ export interface ListDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5499,53 +5483,48 @@ export const ListDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessRequest>;
 
 export type ListDedicatedServerFeatureBackupFTPAccessResponseBodyList = Array<string>;
-export const ListDedicatedServerFeatureBackupFTPAccessResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponseBodyList>;
-
 export type ListDedicatedServerFeatureBackupFTPAccessResponse =
   ListDedicatedServerFeatureBackupFTPAccessResponseBodyList;
-export const ListDedicatedServerFeatureBackupFTPAccessResponse =
+const ListDedicatedServerFeatureBackupFTPAccessResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>;
 
 export interface ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks",
-        code: 200,
-      }),
-    ),
+const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest",
 }) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest>;
 
 export type ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList = Array<string>;
-export const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList =
+const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList =
   CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList>;
 
 export type ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse =
   ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList;
-export const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse",
-  }) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse>;
+const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse = /*@__PURE__*/ S.suspend(() =>
+  ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse",
+}) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse>;
 
 export interface ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   templateName: string;
 }
-export const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
       templateName: S.String.pipe(T.Query()),
@@ -5556,18 +5535,18 @@ export const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest",
-  }) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest>;
+).annotate({
+  identifier: "ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest",
+}) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest>;
 
 export type ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
   Array<string>;
-export const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
+const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
   CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList>;
 
 export type ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse =
   ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList;
-export const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse =
+const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse =
   /*@__PURE__*/ S.suspend(() =>
     ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList.pipe(
       T.RawResponseRoot(),
@@ -5580,7 +5559,7 @@ export interface ListDedicatedServerInstallCompatibleTemplatesRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerInstallCompatibleTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerInstallCompatibleTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5596,12 +5575,12 @@ export const ListDedicatedServerInstallCompatibleTemplatesRequest = /*@__PURE__*
 
 /** Names list of ovh installationtemplates compatibles with this server */
 export type DedicatedServerInstallTemplateOvhList = Array<string>;
-export const DedicatedServerInstallTemplateOvhList =
+const DedicatedServerInstallTemplateOvhList =
   DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerInstallTemplateOvhList>;
 
 /** Names list of yours installation templates compatibles with this server */
 export type DedicatedServerInstallTemplatePersonalList = Array<string>;
-export const DedicatedServerInstallTemplatePersonalList =
+const DedicatedServerInstallTemplatePersonalList =
   DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerInstallTemplatePersonalList>;
 
 /** A structure describing informations about an Installation templates */
@@ -5611,7 +5590,7 @@ export interface DedicatedServerInstallTemplate {
   /** Names list of yours installation templates compatibles with this server */
   personal?: DedicatedServerInstallTemplatePersonalList | null;
 }
-export const DedicatedServerInstallTemplate = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerInstallTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovh: S.optional(S.NullOr(DedicatedServerInstallTemplateOvhList)),
     personal: S.optional(S.NullOr(DedicatedServerInstallTemplatePersonalList)),
@@ -5624,7 +5603,7 @@ export interface ListDedicatedServerInstallHardwareRaidProfileRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerInstallHardwareRaidProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerInstallHardwareRaidProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5640,7 +5619,7 @@ export const ListDedicatedServerInstallHardwareRaidProfileRequest = /*@__PURE__*
 
 /** Disk names */
 export type DedicatedServerHardwareRaidDiskGroupNamesList = Array<string>;
-export const DedicatedServerHardwareRaidDiskGroupNamesList =
+const DedicatedServerHardwareRaidDiskGroupNamesList =
   DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerHardwareRaidDiskGroupNamesList>;
 
 /** A numeric value tagged with its unit */
@@ -5648,7 +5627,7 @@ export interface ComplexTypeUnitAndValueString {
   unit?: string;
   value?: string;
 }
-export const ComplexTypeUnitAndValueString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.String),
@@ -5659,7 +5638,7 @@ export const ComplexTypeUnitAndValueString = /*@__PURE__*/ S.suspend(() =>
 
 /** Disk interface type enum */
 export type DedicatedServerDiskTypeEnum = "NVMe" | "SAS" | "SATA" | "SSD" | "Unknown";
-export const DedicatedServerDiskTypeEnum = S.String;
+const DedicatedServerDiskTypeEnum = S.String;
 
 /** Disk attached to a RAID controller */
 export interface DedicatedServerHardwareRaidDiskGroup {
@@ -5674,7 +5653,7 @@ export interface DedicatedServerHardwareRaidDiskGroup {
   /** Disk type */
   type?: DedicatedServerDiskTypeEnum;
 }
-export const DedicatedServerHardwareRaidDiskGroup = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareRaidDiskGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(ComplexTypeUnitAndValueLong),
     diskGroupId: S.optional(S.Number),
@@ -5689,7 +5668,7 @@ export const DedicatedServerHardwareRaidDiskGroup = /*@__PURE__*/ S.suspend(() =
 /** Connected disk type */
 export type DedicatedServerHardwareRaidControllerDisksList =
   Array<DedicatedServerHardwareRaidDiskGroup>;
-export const DedicatedServerHardwareRaidControllerDisksList = /*@__PURE__*/ S.Array(
+const DedicatedServerHardwareRaidControllerDisksList = /*@__PURE__*/ S.Array(
   DedicatedServerHardwareRaidDiskGroup,
 ) as any as S.Schema<DedicatedServerHardwareRaidControllerDisksList>;
 
@@ -5702,7 +5681,7 @@ export interface DedicatedServerHardwareRaidController {
   /** Raid controler type */
   type?: string;
 }
-export const DedicatedServerHardwareRaidController = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareRaidController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(DedicatedServerHardwareRaidControllerDisksList),
     model: S.optional(S.String),
@@ -5715,7 +5694,7 @@ export const DedicatedServerHardwareRaidController = /*@__PURE__*/ S.suspend(() 
 /** Hardware RAID controller list */
 export type DedicatedServerHardwareRaidProfileControllersList =
   Array<DedicatedServerHardwareRaidController>;
-export const DedicatedServerHardwareRaidProfileControllersList = /*@__PURE__*/ S.Array(
+const DedicatedServerHardwareRaidProfileControllersList = /*@__PURE__*/ S.Array(
   DedicatedServerHardwareRaidController,
 ) as any as S.Schema<DedicatedServerHardwareRaidProfileControllersList>;
 
@@ -5724,7 +5703,7 @@ export interface DedicatedServerHardwareRaidProfile {
   /** Hardware RAID controller list */
   controllers?: DedicatedServerHardwareRaidProfileControllersList;
 }
-export const DedicatedServerHardwareRaidProfile = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareRaidProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controllers: S.optional(DedicatedServerHardwareRaidProfileControllersList),
   }),
@@ -5740,7 +5719,7 @@ export interface ListDedicatedServerInstallHardwareRaidSizeRequest {
   /** Template name */
   templateName: string;
 }
-export const ListDedicatedServerInstallHardwareRaidSizeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerInstallHardwareRaidSizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionSchemeName: S.String.pipe(T.Query()),
@@ -5773,7 +5752,7 @@ export interface DedicatedServerHardwareRaidConfiguration {
   /** RAID controller type */
   type?: string;
 }
-export const DedicatedServerHardwareRaidConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareRaidConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(ComplexTypeUnitAndValueLong),
     diskCount: S.optional(S.Number),
@@ -5790,7 +5769,7 @@ export const DedicatedServerHardwareRaidConfiguration = /*@__PURE__*/ S.suspend(
 /** Hardware RAID configuration list */
 export type DedicatedServerHardwareRaidSizeConfigurationsList =
   Array<DedicatedServerHardwareRaidConfiguration>;
-export const DedicatedServerHardwareRaidSizeConfigurationsList = /*@__PURE__*/ S.Array(
+const DedicatedServerHardwareRaidSizeConfigurationsList = /*@__PURE__*/ S.Array(
   DedicatedServerHardwareRaidConfiguration,
 ) as any as S.Schema<DedicatedServerHardwareRaidSizeConfigurationsList>;
 
@@ -5799,7 +5778,7 @@ export interface DedicatedServerHardwareRaidSize {
   /** Hardware RAID configuration list */
   configurations?: DedicatedServerHardwareRaidSizeConfigurationsList;
 }
-export const DedicatedServerHardwareRaidSize = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerHardwareRaidSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurations: S.optional(DedicatedServerHardwareRaidSizeConfigurationsList),
   }),
@@ -5811,7 +5790,7 @@ export interface ListDedicatedServerInstallStatusRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerInstallStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerInstallStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5831,7 +5810,7 @@ export type DedicatedServerInstallationProgressStatusEnum =
   | "pending"
   | "stopping"
   | "todo";
-export const DedicatedServerInstallationProgressStatusEnum = S.String;
+const DedicatedServerInstallationProgressStatusEnum = S.String;
 
 /** A structure describing informations about this dedicated server installation steps */
 export interface DedicatedServerInstallationProgressSteps {
@@ -5842,7 +5821,7 @@ export interface DedicatedServerInstallationProgressSteps {
   /** Status of this installation step */
   status?: DedicatedServerInstallationProgressStatusEnum;
 }
-export const DedicatedServerInstallationProgressSteps = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerInstallationProgressSteps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     error: S.optional(S.NullOr(S.String)),
@@ -5855,7 +5834,7 @@ export const DedicatedServerInstallationProgressSteps = /*@__PURE__*/ S.suspend(
 /** Installation steps */
 export type DedicatedServerInstallationProgressStatusProgressList =
   Array<DedicatedServerInstallationProgressSteps>;
-export const DedicatedServerInstallationProgressStatusProgressList = /*@__PURE__*/ S.Array(
+const DedicatedServerInstallationProgressStatusProgressList = /*@__PURE__*/ S.Array(
   DedicatedServerInstallationProgressSteps,
 ) as any as S.Schema<DedicatedServerInstallationProgressStatusProgressList>;
 
@@ -5866,7 +5845,7 @@ export interface DedicatedServerInstallationProgressStatus {
   /** Installation steps */
   progress?: DedicatedServerInstallationProgressStatusProgressList | null;
 }
-export const DedicatedServerInstallationProgressStatus = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerInstallationProgressStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elapsedTime: S.optional(S.Number),
     progress: S.optional(S.NullOr(DedicatedServerInstallationProgressStatusProgressList)),
@@ -5879,7 +5858,7 @@ export interface ListDedicatedServerInterventionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerInterventionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerInterventionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5890,19 +5869,16 @@ export const ListDedicatedServerInterventionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDedicatedServerInterventionRequest>;
 
 export type ListDedicatedServerInterventionResponseBodyList = Array<number>;
-export const ListDedicatedServerInterventionResponseBodyList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerInterventionResponseBodyList>;
-
 export type ListDedicatedServerInterventionResponse =
   ListDedicatedServerInterventionResponseBodyList;
-export const ListDedicatedServerInterventionResponse =
+const ListDedicatedServerInterventionResponse =
   CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerInterventionResponse>;
 
 export interface ListDedicatedServerIpCountryAvailableRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerIpCountryAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerIpCountryAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5932,23 +5908,18 @@ export type DedicatedServerIpCountryEnum =
   | "sg"
   | "uk"
   | "us";
-export const DedicatedServerIpCountryEnum = S.String;
-
 export type ListDedicatedServerIpCountryAvailableResponseBodyList =
   Array<DedicatedServerIpCountryEnum>;
-export const ListDedicatedServerIpCountryAvailableResponseBodyList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerIpCountryAvailableResponseBodyList>;
-
 export type ListDedicatedServerIpCountryAvailableResponse =
   ListDedicatedServerIpCountryAvailableResponseBodyList;
-export const ListDedicatedServerIpCountryAvailableResponse =
+const ListDedicatedServerIpCountryAvailableResponse =
   ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>;
 
 export interface ListDedicatedServerIpsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/ips", code: 200 })),
@@ -5957,18 +5928,15 @@ export const ListDedicatedServerIpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerIpsRequest>;
 
 export type ListDedicatedServerIpsResponseBodyList = Array<string>;
-export const ListDedicatedServerIpsResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerIpsResponseBodyList>;
-
 export type ListDedicatedServerIpsResponse = ListDedicatedServerIpsResponseBodyList;
-export const ListDedicatedServerIpsResponse =
+const ListDedicatedServerIpsResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerIpsResponse>;
 
 export interface ListDedicatedServerLicenseCompliantWindowsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerLicenseCompliantWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerLicenseCompliantWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5984,29 +5952,25 @@ export const ListDedicatedServerLicenseCompliantWindowsRequest = /*@__PURE__*/ S
 
 export type ListDedicatedServerLicenseCompliantWindowsResponseBodyList =
   Array<LicenseWindowsOsVersionEnum>;
-export const ListDedicatedServerLicenseCompliantWindowsResponseBodyList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponseBodyList>;
-
 export type ListDedicatedServerLicenseCompliantWindowsResponse =
   ListDedicatedServerLicenseCompliantWindowsResponseBodyList;
-export const ListDedicatedServerLicenseCompliantWindowsResponse =
+const ListDedicatedServerLicenseCompliantWindowsResponse =
   ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>;
 
 export interface ListDedicatedServerLicenseCompliantWindowsSqlServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerLicenseCompliantWindowsSqlServerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer",
-        code: 200,
-      }),
-    ),
+const ListDedicatedServerLicenseCompliantWindowsSqlServerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerRequest",
 }) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerRequest>;
@@ -6037,20 +6001,18 @@ export type LicenseWindowsSqlVersionEnum =
   | "SQL_SERVER_2012_WEB_EDITION_4_CORES"
   | "SQL_SERVER_2012_WEB_EDITION_6_CORES"
   | "SQL_SERVER_2012_WEB_EDITION_8_CORES";
-export const LicenseWindowsSqlVersionEnum = S.String;
+const LicenseWindowsSqlVersionEnum = S.String;
 
 export type ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList =
   Array<LicenseWindowsSqlVersionEnum>;
-export const ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    LicenseWindowsSqlVersionEnum,
-  ) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList>;
+const ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList = /*@__PURE__*/ S.Array(
+  LicenseWindowsSqlVersionEnum,
+) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList>;
 
 export type ListDedicatedServerLicenseCompliantWindowsSqlServerResponse =
   ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList;
-export const ListDedicatedServerLicenseCompliantWindowsSqlServerResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList.pipe(T.RawResponseRoot()),
+const ListDedicatedServerLicenseCompliantWindowsSqlServerResponse = /*@__PURE__*/ S.suspend(() =>
+  ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerResponse",
 }) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponse>;
@@ -6059,7 +6021,7 @@ export interface ListDedicatedServerNetworkingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerNetworkingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/networking", code: 200 })),
@@ -6075,7 +6037,7 @@ export interface ListDedicatedServerNetworkInterfaceControllerRequest {
     | DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum
     | (string & {});
 }
-export const ListDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     linkType: S.optional(
@@ -6093,17 +6055,14 @@ export const ListDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*
 }) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerRequest>;
 
 export type ListDedicatedServerNetworkInterfaceControllerResponseBodyList = Array<string>;
-export const ListDedicatedServerNetworkInterfaceControllerResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponseBodyList>;
-
 export type ListDedicatedServerNetworkInterfaceControllerResponse =
   ListDedicatedServerNetworkInterfaceControllerResponseBodyList;
-export const ListDedicatedServerNetworkInterfaceControllerResponse =
+const ListDedicatedServerNetworkInterfaceControllerResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponse>;
 
 /** distincts MRTG period */
 export type DedicatedServerMrtgPeriodEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly";
-export const DedicatedServerMrtgPeriodEnum = S.String;
+const DedicatedServerMrtgPeriodEnum = S.String;
 
 /** distincts MRTG type */
 export type DedicatedServerMrtgTypeEnum =
@@ -6113,7 +6072,7 @@ export type DedicatedServerMrtgTypeEnum =
   | "packets:upload"
   | "traffic:download"
   | "traffic:upload";
-export const DedicatedServerMrtgTypeEnum = S.String;
+const DedicatedServerMrtgTypeEnum = S.String;
 
 export interface ListDedicatedServerNetworkInterfaceControllerMrtgRequest {
   /** The internal name of your dedicated server */
@@ -6125,34 +6084,31 @@ export interface ListDedicatedServerNetworkInterfaceControllerMrtgRequest {
   /** mrtg type */
   type: DedicatedServerMrtgTypeEnum | (string & {});
 }
-export const ListDedicatedServerNetworkInterfaceControllerMrtgRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      mac: S.String.pipe(T.Label()),
-      period: DedicatedServerMrtgPeriodEnum.pipe(T.Query()),
-      type: DedicatedServerMrtgTypeEnum.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg",
-        code: 200,
-      }),
-    ),
+const ListDedicatedServerNetworkInterfaceControllerMrtgRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    mac: S.String.pipe(T.Label()),
+    period: DedicatedServerMrtgPeriodEnum.pipe(T.Query()),
+    type: DedicatedServerMrtgTypeEnum.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgRequest",
 }) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgRequest>;
 
 /** A numeric value tagged with its unit */
 export type ComplexTypeUnitAndValueDouble = ComplexTypeUnitAndValueLong;
-export const ComplexTypeUnitAndValueDouble = ComplexTypeUnitAndValueLong;
-
 /** A timestamp associated to a value */
 export interface DedicatedServerMrtgTimestampValue {
   timestamp?: number;
   value?: ComplexTypeUnitAndValueLong | null;
 }
-export const DedicatedServerMrtgTimestampValue = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerMrtgTimestampValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Number),
     value: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -6163,15 +6119,14 @@ export const DedicatedServerMrtgTimestampValue = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList =
   Array<DedicatedServerMrtgTimestampValue>;
-export const ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    DedicatedServerMrtgTimestampValue,
-  ) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList>;
+const ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList = /*@__PURE__*/ S.Array(
+  DedicatedServerMrtgTimestampValue,
+) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList>;
 
 export type ListDedicatedServerNetworkInterfaceControllerMrtgResponse =
   ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList;
-export const ListDedicatedServerNetworkInterfaceControllerMrtgResponse = /*@__PURE__*/ S.suspend(
-  () => ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList.pipe(T.RawResponseRoot()),
+const ListDedicatedServerNetworkInterfaceControllerMrtgResponse = /*@__PURE__*/ S.suspend(() =>
+  ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgResponse",
 }) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponse>;
@@ -6180,7 +6135,7 @@ export interface ListDedicatedServerOngoingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOngoingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOngoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/ongoing", code: 200 })),
@@ -6199,7 +6154,7 @@ export interface DedicatedExposedTask {
   /** Timestamp for processing */
   todoDate?: string;
 }
-export const DedicatedExposedTask = /*@__PURE__*/ S.suspend(() =>
+const DedicatedExposedTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenter: S.optional(DedicatedDatacenterEnum),
     description: S.optional(S.String),
@@ -6209,12 +6164,12 @@ export const DedicatedExposedTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DedicatedExposedTask" }) as any as S.Schema<DedicatedExposedTask>;
 
 export type ListDedicatedServerOngoingResponseBodyList = Array<DedicatedExposedTask>;
-export const ListDedicatedServerOngoingResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerOngoingResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedExposedTask,
 ) as any as S.Schema<ListDedicatedServerOngoingResponseBodyList>;
 
 export type ListDedicatedServerOngoingResponse = ListDedicatedServerOngoingResponseBodyList;
-export const ListDedicatedServerOngoingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOngoingResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerOngoingResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerOngoingResponse",
@@ -6228,7 +6183,7 @@ export interface ListDedicatedServerOperationRequest {
   /** Filter the value of status property (=) */
   status?: DedicatedTaskStatusEnum | (string & {});
 }
-export const ListDedicatedServerOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     function: S.optional(DedicatedOperationFunctionEnum.pipe(T.Query())),
@@ -6239,18 +6194,15 @@ export const ListDedicatedServerOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerOperationRequest>;
 
 export type ListDedicatedServerOperationResponseBodyList = Array<string>;
-export const ListDedicatedServerOperationResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerOperationResponseBodyList>;
-
 export type ListDedicatedServerOperationResponse = ListDedicatedServerOperationResponseBodyList;
-export const ListDedicatedServerOperationResponse =
+const ListDedicatedServerOperationResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerOperationResponse>;
 
 export interface ListDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/option", code: 200 })),
@@ -6259,18 +6211,15 @@ export const ListDedicatedServerOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerOptionRequest>;
 
 export type ListDedicatedServerOptionResponseBodyList = Array<DedicatedServerOptionEnum>;
-export const ListDedicatedServerOptionResponseBodyList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerOptionResponseBodyList>;
-
 export type ListDedicatedServerOptionResponse = ListDedicatedServerOptionResponseBodyList;
-export const ListDedicatedServerOptionResponse =
+const ListDedicatedServerOptionResponse =
   ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerOptionResponse>;
 
 export interface ListDedicatedServerOrderableBackupStorageRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableBackupStorageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableBackupStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6286,12 +6235,12 @@ export const ListDedicatedServerOrderableBackupStorageRequest = /*@__PURE__*/ S.
 
 /** Different backup storage capacity in gigabytes */
 export type DedicatedServerBackupStorageCapacityEnum = 500 | 1000 | 5000 | 10000;
-export const DedicatedServerBackupStorageCapacityEnum = S.Number;
+const DedicatedServerBackupStorageCapacityEnum = S.Number;
 
 /** Backup storage orderable capacities in gigabytes */
 export type DedicatedServerBackupStorageOrderableCapacitiesList =
   Array<DedicatedServerBackupStorageCapacityEnum>;
-export const DedicatedServerBackupStorageOrderableCapacitiesList = /*@__PURE__*/ S.Array(
+const DedicatedServerBackupStorageOrderableCapacitiesList = /*@__PURE__*/ S.Array(
   DedicatedServerBackupStorageCapacityEnum,
 ) as any as S.Schema<DedicatedServerBackupStorageOrderableCapacitiesList>;
 
@@ -6302,7 +6251,7 @@ export interface DedicatedServerBackupStorageOrderable {
   /** Is a backup storage is orderable for this server */
   orderable?: boolean;
 }
-export const DedicatedServerBackupStorageOrderable = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupStorageOrderable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacities: S.optional(S.NullOr(DedicatedServerBackupStorageOrderableCapacitiesList)),
     orderable: S.optional(S.Boolean),
@@ -6315,7 +6264,7 @@ export interface ListDedicatedServerOrderableBandwidthRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableBandwidthRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableBandwidthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6331,23 +6280,21 @@ export const ListDedicatedServerOrderableBandwidthRequest = /*@__PURE__*/ S.susp
 
 /** Different Bandwidth orderable in Mbps */
 export type DedicatedServerBandwidthOrderEnum = 1000 | 2000 | 3000;
-export const DedicatedServerBandwidthOrderEnum = S.Number;
-
 /** Bandwidth "platinum" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePlatinumList =
   Array<DedicatedServerBandwidthOrderEnum>;
-export const DedicatedServerBandwidthOrderablePlatinumList =
+const DedicatedServerBandwidthOrderablePlatinumList =
   DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerBandwidthOrderablePlatinumList>;
 
 /** Bandwidth "premium" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePremiumList = Array<DedicatedServerBandwidthOrderEnum>;
-export const DedicatedServerBandwidthOrderablePremiumList =
+const DedicatedServerBandwidthOrderablePremiumList =
   DedicatedServerBandwidthOrderablePlatinumList as any as S.Schema<DedicatedServerBandwidthOrderablePremiumList>;
 
 /** Bandwidth "ultimate" orderable in mbps */
 export type DedicatedServerBandwidthOrderableUltimateList =
   Array<DedicatedServerBandwidthOrderEnum>;
-export const DedicatedServerBandwidthOrderableUltimateList =
+const DedicatedServerBandwidthOrderableUltimateList =
   DedicatedServerBandwidthOrderablePlatinumList as any as S.Schema<DedicatedServerBandwidthOrderableUltimateList>;
 
 /** A structure describing informations bandwidth orderable for this dedicated server */
@@ -6361,7 +6308,7 @@ export interface DedicatedServerBandwidthOrderable {
   /** Bandwidth "ultimate" orderable in mbps */
   ultimate?: DedicatedServerBandwidthOrderableUltimateList | null;
 }
-export const DedicatedServerBandwidthOrderable = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBandwidthOrderable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderable: S.optional(S.Boolean),
     platinum: S.optional(S.NullOr(DedicatedServerBandwidthOrderablePlatinumList)),
@@ -6376,7 +6323,7 @@ export interface ListDedicatedServerOrderableBandwidthvRackRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableBandwidthvRackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableBandwidthvRackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6392,12 +6339,10 @@ export const ListDedicatedServerOrderableBandwidthvRackRequest = /*@__PURE__*/ S
 
 /** Different vRack Bandwidth orderable in Mbps */
 export type DedicatedServerBandwidthvRackOrderEnum = 1000 | 3000;
-export const DedicatedServerBandwidthvRackOrderEnum = S.Number;
-
 /** vRack Bandwidth orderable in mbps */
 export type DedicatedServerBandwidthvRackOrderableVrackList =
   Array<DedicatedServerBandwidthvRackOrderEnum>;
-export const DedicatedServerBandwidthvRackOrderableVrackList =
+const DedicatedServerBandwidthvRackOrderableVrackList =
   DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerBandwidthvRackOrderableVrackList>;
 
 /** A structure describing informations bandwidth orderable for this dedicated server */
@@ -6407,7 +6352,7 @@ export interface DedicatedServerBandwidthvRackOrderable {
   /** vRack Bandwidth orderable in mbps */
   vrack?: DedicatedServerBandwidthvRackOrderableVrackList | null;
 }
-export const DedicatedServerBandwidthvRackOrderable = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBandwidthvRackOrderable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderable: S.optional(S.Boolean),
     vrack: S.optional(S.NullOr(DedicatedServerBandwidthvRackOrderableVrackList)),
@@ -6420,7 +6365,7 @@ export interface ListDedicatedServerOrderableIpRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6432,20 +6377,18 @@ export const ListDedicatedServerOrderableIpRequest = /*@__PURE__*/ S.suspend(() 
 
 /** IP block size */
 export type DedicatedServerIpBlockSizeEnum = 1 | 4 | 8 | 16 | 32 | 64 | 128 | 256;
-export const DedicatedServerIpBlockSizeEnum = S.Number;
-
 /** Orderable IP blocks sizes */
 export type DedicatedServerIpOrderableDetailsBlockSizesList = Array<DedicatedServerIpBlockSizeEnum>;
-export const DedicatedServerIpOrderableDetailsBlockSizesList =
+const DedicatedServerIpOrderableDetailsBlockSizesList =
   DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerIpOrderableDetailsBlockSizesList>;
 
 /** Required option */
 export type DedicatedServerOptionRequiredEnum = "professionalUse";
-export const DedicatedServerOptionRequiredEnum = S.String;
+const DedicatedServerOptionRequiredEnum = S.String;
 
 /** Orderable IP type */
 export type DedicatedServerIpTypeOrderableEnum = "failover" | "static" | "unshielded";
-export const DedicatedServerIpTypeOrderableEnum = S.String;
+const DedicatedServerIpTypeOrderableEnum = S.String;
 
 /** A structure describing informations about orderable IP address */
 export interface DedicatedServerIpOrderableDetails {
@@ -6462,7 +6405,7 @@ export interface DedicatedServerIpOrderableDetails {
   /** this IP type */
   type?: DedicatedServerIpTypeOrderableEnum;
 }
-export const DedicatedServerIpOrderableDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIpOrderableDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockSizes: S.optional(DedicatedServerIpOrderableDetailsBlockSizesList),
     included: S.optional(S.Boolean),
@@ -6477,13 +6420,13 @@ export const DedicatedServerIpOrderableDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Orderable IP v4 details */
 export type DedicatedServerIpOrderableIpv4List = Array<DedicatedServerIpOrderableDetails>;
-export const DedicatedServerIpOrderableIpv4List = /*@__PURE__*/ S.Array(
+const DedicatedServerIpOrderableIpv4List = /*@__PURE__*/ S.Array(
   DedicatedServerIpOrderableDetails,
 ) as any as S.Schema<DedicatedServerIpOrderableIpv4List>;
 
 /** Orderable IP v6 details */
 export type DedicatedServerIpOrderableIpv6List = Array<DedicatedServerIpOrderableDetails>;
-export const DedicatedServerIpOrderableIpv6List =
+const DedicatedServerIpOrderableIpv6List =
   DedicatedServerIpOrderableIpv4List as any as S.Schema<DedicatedServerIpOrderableIpv6List>;
 
 /** A structure describing informations about orderable IP address */
@@ -6493,7 +6436,7 @@ export interface DedicatedServerIpOrderable {
   /** Orderable IP v6 details */
   ipv6?: DedicatedServerIpOrderableIpv6List | null;
 }
-export const DedicatedServerIpOrderable = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerIpOrderable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipv4: S.optional(S.NullOr(DedicatedServerIpOrderableIpv4List)),
     ipv6: S.optional(S.NullOr(DedicatedServerIpOrderableIpv6List)),
@@ -6506,7 +6449,7 @@ export interface ListDedicatedServerOrderableSupportLevelRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableSupportLevelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableSupportLevelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6522,12 +6465,10 @@ export const ListDedicatedServerOrderableSupportLevelRequest = /*@__PURE__*/ S.s
 
 /** distincts support level */
 export type DedicatedServerSupportLevelOrderableEnum = "critical" | "fastpath" | "gs";
-export const DedicatedServerSupportLevelOrderableEnum = S.String;
-
 /** Support level orderable */
 export type DedicatedServerSupportLevelOrderableLevelsList =
   Array<DedicatedServerSupportLevelOrderableEnum>;
-export const DedicatedServerSupportLevelOrderableLevelsList =
+const DedicatedServerSupportLevelOrderableLevelsList =
   DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerSupportLevelOrderableLevelsList>;
 
 /** A structure describing informations support level orderable for this dedicated server */
@@ -6537,7 +6478,7 @@ export interface DedicatedServerSupportLevelOrderable {
   /** Is a support level is orderable for this server */
   orderable?: boolean;
 }
-export const DedicatedServerSupportLevelOrderable = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerSupportLevelOrderable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     levels: S.optional(S.NullOr(DedicatedServerSupportLevelOrderableLevelsList)),
     orderable: S.optional(S.Boolean),
@@ -6550,7 +6491,7 @@ export interface ListDedicatedServerOrderableTrafficRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableTrafficRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6565,11 +6506,9 @@ export type DedicatedServerTrafficOrderEnum =
   | "100Mbps-Unlimited"
   | "250Mbps-Unlimited"
   | "500Mbps-Unlimited";
-export const DedicatedServerTrafficOrderEnum = S.String;
-
 /** traffic orderable */
 export type DedicatedServerTrafficOrderableTrafficList = Array<DedicatedServerTrafficOrderEnum>;
-export const DedicatedServerTrafficOrderableTrafficList =
+const DedicatedServerTrafficOrderableTrafficList =
   DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerTrafficOrderableTrafficList>;
 
 /** A structure describing informations bandwidth orderable for this dedicated server */
@@ -6579,7 +6518,7 @@ export interface DedicatedServerTrafficOrderable {
   /** traffic orderable */
   traffic?: DedicatedServerTrafficOrderableTrafficList | null;
 }
-export const DedicatedServerTrafficOrderable = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerTrafficOrderable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderable: S.optional(S.Boolean),
     traffic: S.optional(S.NullOr(DedicatedServerTrafficOrderableTrafficList)),
@@ -6592,7 +6531,7 @@ export interface ListDedicatedServerOrderableUsbKeyRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerOrderableUsbKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOrderableUsbKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6604,12 +6543,10 @@ export const ListDedicatedServerOrderableUsbKeyRequest = /*@__PURE__*/ S.suspend
 
 /** Different USB key capacity in gigabytes */
 export type DedicatedServerUsbKeyCapacityEnum = 16 | 32 | 64 | 128 | 256;
-export const DedicatedServerUsbKeyCapacityEnum = S.Number;
-
 /** Orderable USB keys capacity in gigabytes */
 export type DedicatedServerUsbKeyOrderableDetailsCapacityList =
   Array<DedicatedServerUsbKeyCapacityEnum>;
-export const DedicatedServerUsbKeyOrderableDetailsCapacityList =
+const DedicatedServerUsbKeyOrderableDetailsCapacityList =
   DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerUsbKeyOrderableDetailsCapacityList>;
 
 /** A structure describing informations about orderable USB keys */
@@ -6623,7 +6560,7 @@ export interface DedicatedServerUsbKeyOrderableDetails {
   /** Is USB keys orderable for this server */
   orderable?: boolean;
 }
-export const DedicatedServerUsbKeyOrderableDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerUsbKeyOrderableDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(DedicatedServerUsbKeyOrderableDetailsCapacityList),
     number: S.optional(S.Number),
@@ -6638,7 +6575,7 @@ export interface ListDedicatedServerOsAvailabilitiesRequest {
   /** Hardware reference requested */
   hardware: string;
 }
-export const ListDedicatedServerOsAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerOsAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardware: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/osAvailabilities", code: 200 })),
@@ -6647,19 +6584,16 @@ export const ListDedicatedServerOsAvailabilitiesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListDedicatedServerOsAvailabilitiesRequest>;
 
 export type ListDedicatedServerOsAvailabilitiesResponseBodyList = Array<string>;
-export const ListDedicatedServerOsAvailabilitiesResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponseBodyList>;
-
 export type ListDedicatedServerOsAvailabilitiesResponse =
   ListDedicatedServerOsAvailabilitiesResponseBodyList;
-export const ListDedicatedServerOsAvailabilitiesResponse =
+const ListDedicatedServerOsAvailabilitiesResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>;
 
 export interface ListDedicatedServerPlannedInterventionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6674,12 +6608,9 @@ export const ListDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListDedicatedServerPlannedInterventionRequest>;
 
 export type ListDedicatedServerPlannedInterventionResponseBodyList = Array<number>;
-export const ListDedicatedServerPlannedInterventionResponseBodyList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerPlannedInterventionResponseBodyList>;
-
 export type ListDedicatedServerPlannedInterventionResponse =
   ListDedicatedServerPlannedInterventionResponseBodyList;
-export const ListDedicatedServerPlannedInterventionResponse =
+const ListDedicatedServerPlannedInterventionResponse =
   CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>;
 
 /** The region */
@@ -6698,12 +6629,12 @@ export type DedicatedServerAvailabilityRegionalizationEnum =
   | "eu-west-sbg"
   | "us-east-vin"
   | "us-west-hil";
-export const DedicatedServerAvailabilityRegionalizationEnum = S.String;
+const DedicatedServerAvailabilityRegionalizationEnum = S.String;
 
 export type ListDedicatedServerRegionAvailabilitiesRequestRegionsList = Array<
   DedicatedServerAvailabilityRegionalizationEnum | (string & {})
 >;
-export const ListDedicatedServerRegionAvailabilitiesRequestRegionsList =
+const ListDedicatedServerRegionAvailabilitiesRequestRegionsList =
   DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequestRegionsList>;
 
 export interface ListDedicatedServerRegionAvailabilitiesRequest {
@@ -6724,7 +6655,7 @@ export interface ListDedicatedServerRegionAvailabilitiesRequest {
   /** The name of the system storage hardware part */
   systemStorage?: string;
 }
-export const ListDedicatedServerRegionAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerRegionAvailabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeRegions: S.optional(S.Boolean.pipe(T.Query())),
     gpu: S.optional(S.String.pipe(T.Query())),
@@ -6754,7 +6685,7 @@ export type DedicatedServerAvailabilityEnum =
   | "comingSoon"
   | "unavailable"
   | "unknown";
-export const DedicatedServerAvailabilityEnum = S.String;
+const DedicatedServerAvailabilityEnum = S.String;
 
 /** The availability zone */
 export type DedicatedServerAvailabilityZonesEnum =
@@ -6782,7 +6713,7 @@ export type DedicatedServerAvailabilityZonesEnum =
   | "eu-west-sbg-a"
   | "us-east-vin-a"
   | "us-west-hil-a";
-export const DedicatedServerAvailabilityZonesEnum = S.String;
+const DedicatedServerAvailabilityZonesEnum = S.String;
 
 /** A structure describing the hardware availability for each availability zone */
 export interface DedicatedServerAvailabilityZones {
@@ -6791,7 +6722,7 @@ export interface DedicatedServerAvailabilityZones {
   /** The availability zone */
   availabilityZone?: DedicatedServerAvailabilityZonesEnum;
 }
-export const DedicatedServerAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedServerAvailabilityEnum),
     availabilityZone: S.optional(DedicatedServerAvailabilityZonesEnum),
@@ -6803,7 +6734,7 @@ export const DedicatedServerAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
 /** Availability zones */
 export type DedicatedServerAvailabilityByRegionAvailabilityZonesList =
   Array<DedicatedServerAvailabilityZones>;
-export const DedicatedServerAvailabilityByRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
+const DedicatedServerAvailabilityByRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
   DedicatedServerAvailabilityZones,
 ) as any as S.Schema<DedicatedServerAvailabilityByRegionAvailabilityZonesList>;
 
@@ -6816,7 +6747,7 @@ export interface DedicatedServerAvailabilityByRegion {
   /** The region */
   region?: DedicatedServerAvailabilityRegionalizationEnum;
 }
-export const DedicatedServerAvailabilityByRegion = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerAvailabilityByRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(DedicatedServerAvailabilityEnum),
     availabilityZones: S.optional(DedicatedServerAvailabilityByRegionAvailabilityZonesList),
@@ -6829,7 +6760,7 @@ export const DedicatedServerAvailabilityByRegion = /*@__PURE__*/ S.suspend(() =>
 /** The hardware availability for each region */
 export type DedicatedServerRegionAvailabilityRegionsList =
   Array<DedicatedServerAvailabilityByRegion>;
-export const DedicatedServerRegionAvailabilityRegionsList = /*@__PURE__*/ S.Array(
+const DedicatedServerRegionAvailabilityRegionsList = /*@__PURE__*/ S.Array(
   DedicatedServerAvailabilityByRegion,
 ) as any as S.Schema<DedicatedServerRegionAvailabilityRegionsList>;
 
@@ -6852,7 +6783,7 @@ export interface DedicatedServerRegionAvailability {
   /** Name of the system storage hardware part */
   systemStorage?: string | null;
 }
-export const DedicatedServerRegionAvailability = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerRegionAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqn: S.optional(S.String),
     gpu: S.optional(S.NullOr(S.String)),
@@ -6869,13 +6800,13 @@ export const DedicatedServerRegionAvailability = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDedicatedServerRegionAvailabilitiesResponseBodyList =
   Array<DedicatedServerRegionAvailability>;
-export const ListDedicatedServerRegionAvailabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerRegionAvailabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedServerRegionAvailability,
 ) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesResponseBodyList>;
 
 export type ListDedicatedServerRegionAvailabilitiesResponse =
   ListDedicatedServerRegionAvailabilitiesResponseBodyList;
-export const ListDedicatedServerRegionAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerRegionAvailabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerRegionAvailabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerRegionAvailabilitiesResponse",
@@ -6885,7 +6816,7 @@ export interface ListDedicatedServerSecondaryDnsDomainsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerSecondaryDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerSecondaryDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6900,19 +6831,16 @@ export const ListDedicatedServerSecondaryDnsDomainsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsRequest>;
 
 export type ListDedicatedServerSecondaryDnsDomainsResponseBodyList = Array<string>;
-export const ListDedicatedServerSecondaryDnsDomainsResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponseBodyList>;
-
 export type ListDedicatedServerSecondaryDnsDomainsResponse =
   ListDedicatedServerSecondaryDnsDomainsResponseBodyList;
-export const ListDedicatedServerSecondaryDnsDomainsResponse =
+const ListDedicatedServerSecondaryDnsDomainsResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>;
 
 export interface ListDedicatedServerSpecificationIpRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerSpecificationIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerSpecificationIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6930,7 +6858,7 @@ export interface ListDedicatedServerSplaRequest {
   /** Filter the value of type property (=) */
   type?: DedicatedServerSplaTypeEnum | (string & {});
 }
-export const ListDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: S.optional(DedicatedServerSplaStatusEnum.pipe(T.Query())),
@@ -6941,11 +6869,8 @@ export const ListDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerSplaRequest>;
 
 export type ListDedicatedServerSplaResponseBodyList = Array<number>;
-export const ListDedicatedServerSplaResponseBodyList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerSplaResponseBodyList>;
-
 export type ListDedicatedServerSplaResponse = ListDedicatedServerSplaResponseBodyList;
-export const ListDedicatedServerSplaResponse =
+const ListDedicatedServerSplaResponse =
   CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerSplaResponse>;
 
 export interface ListDedicatedServerTaskRequest {
@@ -6956,7 +6881,7 @@ export interface ListDedicatedServerTaskRequest {
   /** Filter the value of status property (=) */
   status?: DedicatedTaskStatusEnum | (string & {});
 }
-export const ListDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     function: S.optional(DedicatedTaskFunctionEnum.pipe(T.Query())),
@@ -6967,11 +6892,8 @@ export const ListDedicatedServerTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerTaskRequest>;
 
 export type ListDedicatedServerTaskResponseBodyList = Array<number>;
-export const ListDedicatedServerTaskResponseBodyList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ListDedicatedServerTaskResponseBodyList>;
-
 export type ListDedicatedServerTaskResponse = ListDedicatedServerTaskResponseBodyList;
-export const ListDedicatedServerTaskResponse =
+const ListDedicatedServerTaskResponse =
   CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerTaskResponse>;
 
 export interface ListDedicatedServerTaskAvailableTimeslotsRequest {
@@ -6984,7 +6906,7 @@ export interface ListDedicatedServerTaskAvailableTimeslotsRequest {
   /** Begining of the period to query */
   periodStart: string;
 }
-export const ListDedicatedServerTaskAvailableTimeslotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerTaskAvailableTimeslotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -7008,7 +6930,7 @@ export interface DedicatedPlannedInterventionTimeSlot {
   /** Start date for the planned intervention */
   startDate?: string;
 }
-export const DedicatedPlannedInterventionTimeSlot = /*@__PURE__*/ S.suspend(() =>
+const DedicatedPlannedInterventionTimeSlot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.String),
     startDate: S.optional(S.String),
@@ -7019,13 +6941,13 @@ export const DedicatedPlannedInterventionTimeSlot = /*@__PURE__*/ S.suspend(() =
 
 export type ListDedicatedServerTaskAvailableTimeslotsResponseBodyList =
   Array<DedicatedPlannedInterventionTimeSlot>;
-export const ListDedicatedServerTaskAvailableTimeslotsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerTaskAvailableTimeslotsResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedPlannedInterventionTimeSlot,
 ) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsResponseBodyList>;
 
 export type ListDedicatedServerTaskAvailableTimeslotsResponse =
   ListDedicatedServerTaskAvailableTimeslotsResponseBodyList;
-export const ListDedicatedServerTaskAvailableTimeslotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerTaskAvailableTimeslotsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerTaskAvailableTimeslotsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerTaskAvailableTimeslotsResponse",
@@ -7033,7 +6955,7 @@ export const ListDedicatedServerTaskAvailableTimeslotsResponse = /*@__PURE__*/ S
 
 /** Addon family */
 export type DedicatedServerAddonFamilyEnum = "memory" | "storage";
-export const DedicatedServerAddonFamilyEnum = S.String;
+const DedicatedServerAddonFamilyEnum = S.String;
 
 export interface ListDedicatedServerUpdateAllowedRequest {
   /** The internal name of your dedicated server */
@@ -7041,7 +6963,7 @@ export interface ListDedicatedServerUpdateAllowedRequest {
   /** Desired option family */
   family: DedicatedServerAddonFamilyEnum | (string & {});
 }
-export const ListDedicatedServerUpdateAllowedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerUpdateAllowedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     family: DedicatedServerAddonFamilyEnum.pipe(T.Query()),
@@ -7059,7 +6981,7 @@ export interface DedicatedServerBillingAddon {
   /** Plan code to order */
   planCode?: string;
 }
-export const DedicatedServerBillingAddon = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBillingAddon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     family: S.optional(DedicatedServerAddonFamilyEnum),
     planCode: S.optional(S.String),
@@ -7069,13 +6991,13 @@ export const DedicatedServerBillingAddon = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DedicatedServerBillingAddon>;
 
 export type ListDedicatedServerUpdateAllowedResponseBodyList = Array<DedicatedServerBillingAddon>;
-export const ListDedicatedServerUpdateAllowedResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedServerUpdateAllowedResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedServerBillingAddon,
 ) as any as S.Schema<ListDedicatedServerUpdateAllowedResponseBodyList>;
 
 export type ListDedicatedServerUpdateAllowedResponse =
   ListDedicatedServerUpdateAllowedResponseBodyList;
-export const ListDedicatedServerUpdateAllowedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerUpdateAllowedResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedServerUpdateAllowedResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedServerUpdateAllowedResponse",
@@ -7089,7 +7011,7 @@ export interface ListDedicatedServerUpgradeAvailableTimeslotsRequest {
   /** Begining of the period to query */
   periodStart: string;
 }
-export const ListDedicatedServerUpgradeAvailableTimeslotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerUpgradeAvailableTimeslotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     periodEnd: S.String.pipe(T.Query()),
@@ -7107,23 +7029,18 @@ export const ListDedicatedServerUpgradeAvailableTimeslotsRequest = /*@__PURE__*/
 
 /** A time slot for a planned intervention */
 export type DedicatedServerHardwareUpgradeTimeslot = DedicatedPlannedInterventionTimeSlot;
-export const DedicatedServerHardwareUpgradeTimeslot = DedicatedPlannedInterventionTimeSlot;
-
 export type ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList =
   Array<DedicatedPlannedInterventionTimeSlot>;
-export const ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList =
-  ListDedicatedServerTaskAvailableTimeslotsResponseBodyList as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList>;
-
 export type ListDedicatedServerUpgradeAvailableTimeslotsResponse =
   ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList;
-export const ListDedicatedServerUpgradeAvailableTimeslotsResponse =
+const ListDedicatedServerUpgradeAvailableTimeslotsResponse =
   ListDedicatedServerTaskAvailableTimeslotsResponse as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponse>;
 
 export interface ListDedicatedServerVirtualMacRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/virtualMac", code: 200 })),
@@ -7132,11 +7049,8 @@ export const ListDedicatedServerVirtualMacRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDedicatedServerVirtualMacRequest>;
 
 export type ListDedicatedServerVirtualMacResponseBodyList = Array<string>;
-export const ListDedicatedServerVirtualMacResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVirtualMacResponseBodyList>;
-
 export type ListDedicatedServerVirtualMacResponse = ListDedicatedServerVirtualMacResponseBodyList;
-export const ListDedicatedServerVirtualMacResponse =
+const ListDedicatedServerVirtualMacResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualMacResponse>;
 
 export interface ListDedicatedServerVirtualMacVirtualAddressRequest {
@@ -7145,7 +7059,7 @@ export interface ListDedicatedServerVirtualMacVirtualAddressRequest {
   /** Virtual MAC address in 00:00:00:00:00:00 format */
   macAddress: string;
 }
-export const ListDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     macAddress: S.String.pipe(T.Label()),
@@ -7161,12 +7075,9 @@ export const ListDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressRequest>;
 
 export type ListDedicatedServerVirtualMacVirtualAddressResponseBodyList = Array<string>;
-export const ListDedicatedServerVirtualMacVirtualAddressResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponseBodyList>;
-
 export type ListDedicatedServerVirtualMacVirtualAddressResponse =
   ListDedicatedServerVirtualMacVirtualAddressResponseBodyList;
-export const ListDedicatedServerVirtualMacVirtualAddressResponse =
+const ListDedicatedServerVirtualMacVirtualAddressResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponse>;
 
 export interface ListDedicatedServerVirtualNetworkInterfaceRequest {
@@ -7181,7 +7092,7 @@ export interface ListDedicatedServerVirtualNetworkInterfaceRequest {
   /** Filter the value of vrack property (=) */
   vrack?: string;
 }
-export const ListDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     enabled: S.optional(S.Boolean.pipe(T.Query())),
@@ -7202,19 +7113,16 @@ export const ListDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceRequest>;
 
 export type ListDedicatedServerVirtualNetworkInterfaceResponseBodyList = Array<string>;
-export const ListDedicatedServerVirtualNetworkInterfaceResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponseBodyList>;
-
 export type ListDedicatedServerVirtualNetworkInterfaceResponse =
   ListDedicatedServerVirtualNetworkInterfaceResponseBodyList;
-export const ListDedicatedServerVirtualNetworkInterfaceResponse =
+const ListDedicatedServerVirtualNetworkInterfaceResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>;
 
 export interface ListDedicatedServerVrackRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ListDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/vrack", code: 200 })),
@@ -7223,11 +7131,8 @@ export const ListDedicatedServerVrackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedServerVrackRequest>;
 
 export type ListDedicatedServerVrackResponseBodyList = Array<string>;
-export const ListDedicatedServerVrackResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerVrackResponseBodyList>;
-
 export type ListDedicatedServerVrackResponse = ListDedicatedServerVrackResponseBodyList;
-export const ListDedicatedServerVrackResponse =
+const ListDedicatedServerVrackResponse =
   ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVrackResponse>;
 
 export interface PutDedicatedServerRequest {
@@ -7249,7 +7154,7 @@ export interface PutDedicatedServerRequest {
   rootDevice?: string | null;
   state?: DedicatedServerStateEnum | (string & {});
 }
-export const PutDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bootId: S.optional(S.NullOr(S.Number)),
@@ -7267,7 +7172,7 @@ export const PutDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedServerRequest>;
 
 export interface PutDedicatedServerResponse {}
-export const PutDedicatedServerResponse =
+const PutDedicatedServerResponse =
   IamResourceTagFilterInput as any as S.Schema<PutDedicatedServerResponse>;
 
 export interface PutDedicatedServerBurstRequest {
@@ -7276,7 +7181,7 @@ export interface PutDedicatedServerBurstRequest {
   /** indicates whether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet */
   status?: DedicatedServerBurstStatusEnum | (string & {});
 }
-export const PutDedicatedServerBurstRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerBurstRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: S.optional(DedicatedServerBurstStatusEnum),
@@ -7286,9 +7191,9 @@ export const PutDedicatedServerBurstRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedServerBurstRequest>;
 
 export interface PutDedicatedServerBurstResponse {}
-export const PutDedicatedServerBurstResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutDedicatedServerBurstResponse" },
-) as any as S.Schema<PutDedicatedServerBurstResponse>;
+const PutDedicatedServerBurstResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutDedicatedServerBurstResponse",
+}) as any as S.Schema<PutDedicatedServerBurstResponse>;
 
 export interface PutDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
@@ -7302,7 +7207,7 @@ export interface PutDedicatedServerFeatureBackupFTPAccessRequest {
   /** Whether to allow the NFS protocol for this ACL */
   nfs?: boolean;
 }
-export const PutDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipBlock: S.String.pipe(T.Label()),
@@ -7321,7 +7226,7 @@ export const PutDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessRequest>;
 
 export interface PutDedicatedServerFeatureBackupFTPAccessResponse {}
-export const PutDedicatedServerFeatureBackupFTPAccessResponse =
+const PutDedicatedServerFeatureBackupFTPAccessResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>;
 
 export interface PutDedicatedServerFeatureFirewallRequest {
@@ -7329,7 +7234,7 @@ export interface PutDedicatedServerFeatureFirewallRequest {
   serviceName: string;
   enabled?: boolean;
 }
-export const PutDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     enabled: S.optional(S.Boolean),
@@ -7341,7 +7246,7 @@ export const PutDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDedicatedServerFeatureFirewallRequest>;
 
 export interface PutDedicatedServerFeatureFirewallResponse {}
-export const PutDedicatedServerFeatureFirewallResponse =
+const PutDedicatedServerFeatureFirewallResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>;
 
 export interface PutDedicatedServerSecondaryDnsDomainRequest {
@@ -7352,7 +7257,7 @@ export interface PutDedicatedServerSecondaryDnsDomainRequest {
   /** master ip */
   ipMaster?: string;
 }
-export const PutDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7369,7 +7274,7 @@ export const PutDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainRequest>;
 
 export interface PutDedicatedServerSecondaryDnsDomainResponse {}
-export const PutDedicatedServerSecondaryDnsDomainResponse =
+const PutDedicatedServerSecondaryDnsDomainResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>;
 
 export interface PutDedicatedServerServiceInfosRequest {
@@ -7378,7 +7283,7 @@ export interface PutDedicatedServerServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -7390,7 +7295,7 @@ export const PutDedicatedServerServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutDedicatedServerServiceInfosRequest>;
 
 export interface PutDedicatedServerServiceInfosResponse {}
-export const PutDedicatedServerServiceInfosResponse =
+const PutDedicatedServerServiceInfosResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerServiceInfosResponse>;
 
 export interface PutDedicatedServerSplaRequest {
@@ -7401,7 +7306,7 @@ export interface PutDedicatedServerSplaRequest {
   /** License serial number */
   serialNumber?: string;
 }
-export const PutDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7412,7 +7317,7 @@ export const PutDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedServerSplaRequest>;
 
 export interface PutDedicatedServerSplaResponse {}
-export const PutDedicatedServerSplaResponse =
+const PutDedicatedServerSplaResponse =
   IamResourceTagFilterInput as any as S.Schema<PutDedicatedServerSplaResponse>;
 
 export interface PutDedicatedServerUpgradeScheduleRequest {
@@ -7423,7 +7328,7 @@ export interface PutDedicatedServerUpgradeScheduleRequest {
   /** Wanted beginning date for the upgrade intervention */
   wantedBeginningDate: string;
 }
-export const PutDedicatedServerUpgradeScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedServerUpgradeScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     hasPerformedBackup: S.Boolean,
@@ -7436,14 +7341,14 @@ export const PutDedicatedServerUpgradeScheduleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDedicatedServerUpgradeScheduleRequest>;
 
 export interface PutDedicatedServerUpgradeScheduleResponse {}
-export const PutDedicatedServerUpgradeScheduleResponse =
+const PutDedicatedServerUpgradeScheduleResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>;
 
 export interface RebootDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const RebootDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const RebootDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/reboot", code: 200 })),
@@ -7455,7 +7360,7 @@ export interface ResetDedicatedServerFeaturesIpmiInterfaceRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ResetDedicatedServerFeaturesIpmiInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetDedicatedServerFeaturesIpmiInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -7473,7 +7378,7 @@ export interface ResetDedicatedServerFeaturesIpmiSessionsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const ResetDedicatedServerFeaturesIpmiSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetDedicatedServerFeaturesIpmiSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -7493,7 +7398,7 @@ export interface ResetDedicatedServerOlaRequest {
   /** Interface to reset */
   virtualNetworkInterface: string;
 }
-export const ResetDedicatedServerOlaRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetDedicatedServerOlaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     virtualNetworkInterface: S.String,
@@ -7506,7 +7411,7 @@ export interface RestartDedicatedServerFeaturesBmcRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const RestartDedicatedServerFeaturesBmcRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartDedicatedServerFeaturesBmcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -7524,7 +7429,7 @@ export interface RevokeDedicatedServerFeaturesBmcSessionsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const RevokeDedicatedServerFeaturesBmcSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeDedicatedServerFeaturesBmcSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -7544,7 +7449,7 @@ export interface RevokeDedicatedServerSplaRequest {
   /** License id */
   id: number;
 }
-export const RevokeDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7556,7 +7461,7 @@ export const RevokeDedicatedServerSplaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeDedicatedServerSplaRequest>;
 
 export interface RevokeDedicatedServerSplaResponse {}
-export const RevokeDedicatedServerSplaResponse =
+const RevokeDedicatedServerSplaResponse =
   CancelDedicatedServerTaskResponse as any as S.Schema<RevokeDedicatedServerSplaResponse>;
 
 /** A structure describing informations about installation custom */
@@ -7574,7 +7479,7 @@ export interface DedicatedServerInstallCustom {
   /** Number of devices to use for system's software RAID */
   softRaidDevices?: number | null;
 }
-export const DedicatedServerInstallCustom = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerInstallCustom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customHostname: S.optional(S.NullOr(S.String)),
     diskGroupId: S.optional(S.NullOr(S.Number)),
@@ -7592,7 +7497,7 @@ export interface ComplexTypeSafeKeyValueString {
   key?: string;
   value?: string;
 }
-export const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -7604,7 +7509,7 @@ export const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
 /** Metadata */
 export type StartDedicatedServerInstallRequestUserMetadataList =
   Array<ComplexTypeSafeKeyValueString>;
-export const StartDedicatedServerInstallRequestUserMetadataList = /*@__PURE__*/ S.Array(
+const StartDedicatedServerInstallRequestUserMetadataList = /*@__PURE__*/ S.Array(
   ComplexTypeSafeKeyValueString,
 ) as any as S.Schema<StartDedicatedServerInstallRequestUserMetadataList>;
 
@@ -7620,7 +7525,7 @@ export interface StartDedicatedServerInstallRequest {
   /** Metadata */
   userMetadata?: StartDedicatedServerInstallRequestUserMetadataList;
 }
-export const StartDedicatedServerInstallRequest = /*@__PURE__*/ S.suspend(() =>
+const StartDedicatedServerInstallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     details: S.optional(DedicatedServerInstallCustom),
@@ -7638,7 +7543,7 @@ export interface TerminateDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-export const TerminateDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/terminate", code: 200 })),
@@ -7647,7 +7552,7 @@ export const TerminateDedicatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateDedicatedServerRequest>;
 
 export type TerminateDedicatedServerResponse = string;
-export const TerminateDedicatedServerResponse =
+const TerminateDedicatedServerResponse =
   ConfirmDedicatedServerTerminationResponse as any as S.Schema<TerminateDedicatedServerResponse>;
 
 export interface TestDedicatedServerFeaturesBmcRequest {
@@ -7658,7 +7563,7 @@ export interface TestDedicatedServerFeaturesBmcRequest {
   /** Test to execute on the BMC interface */
   type: DedicatedServerBmcTestTypeEnum | (string & {});
 }
-export const TestDedicatedServerFeaturesBmcRequest = /*@__PURE__*/ S.suspend(() =>
+const TestDedicatedServerFeaturesBmcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ttl: S.optional(DedicatedServerCacheTTLEnum),
@@ -7678,7 +7583,7 @@ export interface TestDedicatedServerFeaturesIpmiRequest {
   /** Test to make on KVM IPMI interface */
   type: DedicatedServerIpmiTestTypeEnum | (string & {});
 }
-export const TestDedicatedServerFeaturesIpmiRequest = /*@__PURE__*/ S.suspend(() =>
+const TestDedicatedServerFeaturesIpmiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ttl: DedicatedServerCacheTTLEnum,

@@ -65,7 +65,7 @@ export interface FetchReleaseFilterOptionsAppsRequest {
   /** Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app} */
   name: string;
 }
-export const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -80,7 +80,7 @@ export const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<FetchReleaseFilterOptionsAppsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A representation of an app release. */
 export interface GooglePlayDeveloperReportingV1beta1Release {
@@ -89,7 +89,7 @@ export interface GooglePlayDeveloperReportingV1beta1Release {
   /** Readable identifier of the release. */
   displayName?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1Release = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCodes: S.optional(StringList),
     displayName: S.optional(S.String),
@@ -100,7 +100,7 @@ export const GooglePlayDeveloperReportingV1beta1Release = /*@__PURE__*/ S.suspen
 
 export type GooglePlayDeveloperReportingV1beta1ReleaseList =
   Array<GooglePlayDeveloperReportingV1beta1Release>;
-export const GooglePlayDeveloperReportingV1beta1ReleaseList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1ReleaseList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1Release,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ReleaseList>;
 
@@ -113,7 +113,7 @@ export interface GooglePlayDeveloperReportingV1beta1Track {
   /** Represents all active releases in the track. */
   servingReleases?: GooglePlayDeveloperReportingV1beta1ReleaseList;
 }
-export const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -125,7 +125,7 @@ export const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ S.suspend(
 
 export type GooglePlayDeveloperReportingV1beta1TrackList =
   Array<GooglePlayDeveloperReportingV1beta1Track>;
-export const GooglePlayDeveloperReportingV1beta1TrackList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1TrackList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1Track,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1TrackList>;
 
@@ -134,7 +134,7 @@ export interface GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions {
   /** List of tracks to filter releases over. Provides the grouping of version codes under releases and tracks. */
   tracks?: GooglePlayDeveloperReportingV1beta1TrackList;
 }
-export const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tracks: S.optional(GooglePlayDeveloperReportingV1beta1TrackList),
   }),
@@ -146,7 +146,7 @@ export interface GetVitalsAnonrssandswapmemoryusageRequest {
   /** Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet */
   name: string;
 }
-export const GetVitalsAnonrssandswapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsAnonrssandswapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -165,8 +165,7 @@ export type GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregation
   | "HOURLY"
   | "DAILY"
   | "FULL_RANGE";
-export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum =
-  S.String;
+const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum = S.String;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface GoogleTypeTimeZone {
@@ -175,7 +174,7 @@ export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     id: S.optional(S.String),
@@ -203,7 +202,7 @@ export interface GoogleTypeDateTime {
   /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
   day?: number;
 }
-export const GoogleTypeDateTime = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utcOffset: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -224,21 +223,20 @@ export interface GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness {
   /** Latest end time for which data is available, for the aggregation period. The time is specified in the metric set's default timezone. *Note:* time ranges in TimelineSpec are represented as `start_time, end_time)`. For example, if the latest available timeline data point for a `DAILY` aggregation period is `2021-06-23 00:00:00 America/Los_Angeles`, the value of this field would be `2021-06-24 00:00:00 America/Los_Angeles` so it can be easily reused in [TimelineSpec.end_time. */
   latestEndTime?: GoogleTypeDateTime;
 }
-export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      aggregationPeriod: S.optional(
-        GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum,
-      ),
-      latestEndTime: S.optional(GoogleTypeDateTime),
-    }),
+const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    aggregationPeriod: S.optional(
+      GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum,
+    ),
+    latestEndTime: S.optional(GoogleTypeDateTime),
+  }),
 ).annotate({
   identifier: "GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness",
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
 
 export type GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList =
   Array<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
-export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList>;
 
@@ -247,7 +245,7 @@ export interface GooglePlayDeveloperReportingV1beta1FreshnessInfo {
   /** Information about data freshness for every supported aggregation period. This field has set semantics, keyed by the `aggregation_period` field. */
   freshnesses?: GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList;
 }
-export const GooglePlayDeveloperReportingV1beta1FreshnessInfo = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1FreshnessInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freshnesses: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList),
   }),
@@ -262,7 +260,7 @@ export interface GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMet
   /** Output only. * Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-export const GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet =
+const GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
@@ -276,7 +274,7 @@ export interface GetVitalsAnrrateRequest {
   /** Required. The resource name. Format: apps/{app}/anrRateMetricSet */
   name: string;
 }
-export const GetVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -295,7 +293,7 @@ export interface GooglePlayDeveloperReportingV1beta1AnrRateMetricSet {
   /** Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-export const GooglePlayDeveloperReportingV1beta1AnrRateMetricSet = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1AnrRateMetricSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
@@ -308,7 +306,7 @@ export interface GetVitalsBitmapmemoryusageRequest {
   /** Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet */
   name: string;
 }
-export const GetVitalsBitmapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsBitmapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -329,21 +327,20 @@ export interface GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet>;
+const GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet>;
 
 export interface GetVitalsCrashrateRequest {
   /** Required. The resource name. Format: apps/{app}/crashRateMetricSet */
   name: string;
 }
-export const GetVitalsCrashrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsCrashrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -364,7 +361,7 @@ export interface GooglePlayDeveloperReportingV1beta1CrashRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/crashRateMetricSet */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1CrashRateMetricSet = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1CrashRateMetricSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
     name: S.optional(S.String),
@@ -377,7 +374,7 @@ export interface GetVitalsErrorsCountsRequest {
   /** Required. Name of the errors metric set. Format: apps/{app}/errorCountMetricSet */
   name: string;
 }
-export const GetVitalsErrorsCountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsErrorsCountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -398,14 +395,14 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet {
   /** Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-export const GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet =
+const GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet =
   GooglePlayDeveloperReportingV1beta1AnrRateMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorCountMetricSet>;
 
 export interface GetVitalsExcessivewakeuprateRequest {
   /** Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet */
   name: string;
 }
-export const GetVitalsExcessivewakeuprateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsExcessivewakeuprateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -426,14 +423,14 @@ export interface GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet
   /** Identifier. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet =
+const GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet =
   GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1ExcessiveWakeupRateMetricSet>;
 
 export interface GetVitalsLmkrateRequest {
   /** Required. The resource name. Format: apps/{app}/lmkRateMetricSet */
   name: string;
 }
-export const GetVitalsLmkrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsLmkrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -452,14 +449,14 @@ export interface GooglePlayDeveloperReportingV1beta1LmkRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/lmkRateMetricSet */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1LmkRateMetricSet =
+const GooglePlayDeveloperReportingV1beta1LmkRateMetricSet =
   GooglePlayDeveloperReportingV1beta1CrashRateMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1LmkRateMetricSet>;
 
 export interface GetVitalsSlowrenderingrateRequest {
   /** Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet */
   name: string;
 }
-export const GetVitalsSlowrenderingrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsSlowrenderingrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -480,14 +477,14 @@ export interface GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet {
   /** Identifier. The resource name. Format: apps/{app}/slowRenderingRateMetricSet */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet =
+const GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet =
   GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1SlowRenderingRateMetricSet>;
 
 export interface GetVitalsSlowstartrateRequest {
   /** Required. The resource name. Format: apps/{app}/slowStartRateMetricSet */
   name: string;
 }
-export const GetVitalsSlowstartrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsSlowstartrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -508,12 +505,11 @@ export interface GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet {
   /** Summary about data freshness in this resource. */
   freshnessInfo?: GooglePlayDeveloperReportingV1beta1FreshnessInfo;
 }
-export const GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
-    }),
+const GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    freshnessInfo: S.optional(GooglePlayDeveloperReportingV1beta1FreshnessInfo),
+  }),
 ).annotate({
   identifier: "GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet",
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SlowStartRateMetricSet>;
@@ -522,7 +518,7 @@ export interface GetVitalsStuckbackgroundwakelockrateRequest {
   /** Required. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet */
   name: string;
 }
-export const GetVitalsStuckbackgroundwakelockrateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVitalsStuckbackgroundwakelockrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -543,7 +539,7 @@ export interface GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateM
   /** Identifier. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet =
+const GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet =
   GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet as any as S.Schema<GooglePlayDeveloperReportingV1beta1StuckBackgroundWakelockRateMetricSet>;
 
 export interface ListAnomaliesRequest {
@@ -556,7 +552,7 @@ export interface ListAnomaliesRequest {
   /** Optional. Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -576,7 +572,7 @@ export interface GoogleTypeDecimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
-export const GoogleTypeDecimal = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDecimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -589,12 +585,11 @@ export interface GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval {
   /** The confidence interval's upper bound. */
   upperBound?: GoogleTypeDecimal;
 }
-export const GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      lowerBound: S.optional(GoogleTypeDecimal),
-      upperBound: S.optional(GoogleTypeDecimal),
-    }),
+const GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lowerBound: S.optional(GoogleTypeDecimal),
+    upperBound: S.optional(GoogleTypeDecimal),
+  }),
 ).annotate({
   identifier: "GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval",
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval>;
@@ -608,7 +603,7 @@ export interface GooglePlayDeveloperReportingV1beta1MetricValue {
   /** Confidence interval of a value that is of type `type.Decimal`. */
   decimalValueConfidenceInterval?: GooglePlayDeveloperReportingV1beta1DecimalConfidenceInterval;
 }
-export const GooglePlayDeveloperReportingV1beta1MetricValue = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1MetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: S.optional(S.String),
     decimalValue: S.optional(GoogleTypeDecimal),
@@ -625,7 +620,7 @@ export type GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum
   | "HOURLY"
   | "DAILY"
   | "FULL_RANGE";
-export const GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum = S.String;
+const GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum = S.String;
 
 /** Specification of the time-related aggregation parameters of a timeline. Timelines have an aggregation period (`DAILY`, `HOURLY`, etc) which defines how events are aggregated in metrics. The points in a timeline are defined by the starting DateTime of the aggregation period. The duration is implicit in the AggregationPeriod. Hourly aggregation periods, when supported by a metric set, are always specified in UTC to avoid ambiguities around daylight saving time transitions, where an hour is skipped when adopting DST, and repeated when abandoning DST. For example, the timestamp '2021-11-07 01:00:00 America/Los_Angeles' is ambiguous since it can correspond to '2021-11-07 08:00:00 UTC' or '2021-11-07 09:00:00 UTC'. Daily aggregation periods require specifying a timezone which will determine the precise instants of the start and the end of the day. Not all metric sets support all timezones, so make sure to check which timezones are supported by the metric set you want to query. */
 export interface GooglePlayDeveloperReportingV1beta1TimelineSpec {
@@ -638,7 +633,7 @@ export interface GooglePlayDeveloperReportingV1beta1TimelineSpec {
     | GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum
     | (string & {});
 }
-export const GooglePlayDeveloperReportingV1beta1TimelineSpec = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1TimelineSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(GoogleTypeDateTime),
     endTime: S.optional(GoogleTypeDateTime),
@@ -661,7 +656,7 @@ export interface GooglePlayDeveloperReportingV1beta1DimensionValue {
   /** Optional. Human-friendly label for the value, always in English. For example, 'Spain' for the 'ES' country code. Whereas the dimension value is stable, this value label is subject to change. Do not assume that the (value, value_label) relationship is stable. For example, the ISO country code 'MK' changed its name recently to 'North Macedonia'. */
   valueLabel?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1DimensionValue = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1DimensionValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValue: S.optional(S.String),
     dimension: S.optional(S.String),
@@ -674,7 +669,7 @@ export const GooglePlayDeveloperReportingV1beta1DimensionValue = /*@__PURE__*/ S
 
 export type GooglePlayDeveloperReportingV1beta1DimensionValueList =
   Array<GooglePlayDeveloperReportingV1beta1DimensionValue>;
-export const GooglePlayDeveloperReportingV1beta1DimensionValueList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1DimensionValueList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1DimensionValue,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DimensionValueList>;
 
@@ -691,7 +686,7 @@ export interface GooglePlayDeveloperReportingV1beta1Anomaly {
   /** Combination of dimensions in which the anomaly was detected. */
   dimensions?: GooglePlayDeveloperReportingV1beta1DimensionValueList;
 }
-export const GooglePlayDeveloperReportingV1beta1Anomaly = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1Anomaly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: S.optional(GooglePlayDeveloperReportingV1beta1MetricValue),
     name: S.optional(S.String),
@@ -705,7 +700,7 @@ export const GooglePlayDeveloperReportingV1beta1Anomaly = /*@__PURE__*/ S.suspen
 
 export type GooglePlayDeveloperReportingV1beta1AnomalyList =
   Array<GooglePlayDeveloperReportingV1beta1Anomaly>;
-export const GooglePlayDeveloperReportingV1beta1AnomalyList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1AnomalyList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1Anomaly,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AnomalyList>;
 
@@ -716,12 +711,11 @@ export interface GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse {
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      anomalies: S.optional(GooglePlayDeveloperReportingV1beta1AnomalyList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    anomalies: S.optional(GooglePlayDeveloperReportingV1beta1AnomalyList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse",
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse>;
@@ -731,7 +725,7 @@ export type GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMet
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequestUserCohortEnum =
+const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequestUserCohortEnum =
   S.String;
 
 /** Request message for QueryAnonRssAndSwapMemoryUsageMetricSet. */
@@ -753,7 +747,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsa
   /** Optional. * Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
   pageSize?: number;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest =
+const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
@@ -776,7 +770,7 @@ export interface QueryVitalsAnonrssandswapmemoryusageRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest;
 }
-export const QueryVitalsAnonrssandswapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsAnonrssandswapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -800,11 +794,11 @@ export type GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum =
   | "HOURLY"
   | "DAILY"
   | "FULL_RANGE";
-export const GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum = S.String;
+const GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum = S.String;
 
 export type GooglePlayDeveloperReportingV1beta1MetricValueList =
   Array<GooglePlayDeveloperReportingV1beta1MetricValue>;
-export const GooglePlayDeveloperReportingV1beta1MetricValueList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1MetricValueList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1MetricValue,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricValueList>;
 
@@ -819,7 +813,7 @@ export interface GooglePlayDeveloperReportingV1beta1MetricsRow {
   /** Optional. Metric columns in the row. */
   metrics?: GooglePlayDeveloperReportingV1beta1MetricValueList;
 }
-export const GooglePlayDeveloperReportingV1beta1MetricsRow = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1MetricsRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(GoogleTypeDateTime),
     aggregationPeriod: S.optional(
@@ -834,7 +828,7 @@ export const GooglePlayDeveloperReportingV1beta1MetricsRow = /*@__PURE__*/ S.sus
 
 export type GooglePlayDeveloperReportingV1beta1MetricsRowList =
   Array<GooglePlayDeveloperReportingV1beta1MetricsRow>;
-export const GooglePlayDeveloperReportingV1beta1MetricsRowList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1MetricsRowList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1MetricsRow,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricsRowList>;
 
@@ -845,7 +839,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsa
   /** * Returned rows of data. */
   rows?: GooglePlayDeveloperReportingV1beta1MetricsRowList;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextPageToken: S.optional(S.String),
@@ -861,8 +855,7 @@ export type GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserC
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum =
-  S.String;
+const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum = S.String;
 
 /** Request message for QueryAnrRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest {
@@ -883,8 +876,8 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageToken: S.optional(S.String),
       dimensions: S.optional(StringList),
@@ -896,9 +889,9 @@ export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest =
       ),
       filter: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest>;
 
 export interface QueryVitalsAnrrateRequest {
   /** Required. The resource name. Format: apps/{app}/anrRateMetricSet */
@@ -906,7 +899,7 @@ export interface QueryVitalsAnrrateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest;
 }
-export const QueryVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -930,22 +923,22 @@ export interface GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRespons
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequestUserCohortEnum =
+const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequestUserCohortEnum =
   S.String;
 
 /** Request message for QueryBitmapMemoryUsageMetricSet. */
@@ -967,7 +960,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetric
   /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
   pageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest =
+const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dimensions: S.optional(StringList),
@@ -990,7 +983,7 @@ export interface QueryVitalsBitmapmemoryusageRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest;
 }
-export const QueryVitalsBitmapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsBitmapmemoryusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1014,7 +1007,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetric
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse =
   GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum =
@@ -1022,8 +1015,7 @@ export type GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUse
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum =
-  S.String;
+const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum = S.String;
 
 /** Request message for QueryCrashRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest {
@@ -1044,8 +1036,8 @@ export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetReque
     | GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum
     | (string & {});
 }
-export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       dimensions: S.optional(StringList),
       pageToken: S.optional(S.String),
@@ -1057,9 +1049,9 @@ export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest =
         GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum,
       ),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest>;
 
 export interface QueryVitalsCrashrateRequest {
   /** Required. The resource name. Format: apps/{app}/crashRateMetricSet */
@@ -1067,7 +1059,7 @@ export interface QueryVitalsCrashrateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequest;
 }
-export const QueryVitalsCrashrateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsCrashrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1091,7 +1083,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRespo
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse =
   GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetResponse>;
 
 /** Request message for QueryErrorCountMetricSet. */
@@ -1109,8 +1101,8 @@ export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequ
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions and: * `isUserPerceived` (string): denotes whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED. */
   filter?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       dimensions: S.optional(StringList),
       pageToken: S.optional(S.String),
@@ -1119,9 +1111,9 @@ export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest 
       timelineSpec: S.optional(GooglePlayDeveloperReportingV1beta1TimelineSpec),
       filter: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest>;
 
 export interface QueryVitalsErrorsCountsRequest {
   /** Required. The resource name. Format: apps/{app}/errorCountMetricSet */
@@ -1129,7 +1121,7 @@ export interface QueryVitalsErrorsCountsRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetRequest;
 }
-export const QueryVitalsErrorsCountsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsErrorsCountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1153,22 +1145,22 @@ export interface GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResp
   /** Returned rows. */
   rows?: GooglePlayDeveloperReportingV1beta1MetricsRowList;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
   | "USER_COHORT_UNSPECIFIED"
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
+const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
   S.String;
 
 /** Request message for QueryExcessiveWakeupRateMetricSet. */
@@ -1190,7 +1182,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetr
   /** Optional. Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
   metrics?: StringList;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest =
+const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String),
@@ -1213,7 +1205,7 @@ export interface QueryVitalsExcessivewakeuprateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequest;
 }
-export const QueryVitalsExcessivewakeuprateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsExcessivewakeuprateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1239,7 +1231,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetr
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse =
   GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum =
@@ -1247,8 +1239,7 @@ export type GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserC
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum =
-  S.String;
+const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum = S.String;
 
 /** Request message for QueryLmkRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest {
@@ -1269,8 +1260,8 @@ export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest
   /** Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
   dimensions?: StringList;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       userCohort: S.optional(
         GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum,
@@ -1282,9 +1273,9 @@ export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest =
       pageSize: S.optional(S.Number),
       dimensions: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest>;
 
 export interface QueryVitalsLmkrateRequest {
   /** Required. The resource name. Format: apps/{app}/lmkRateMetricSet */
@@ -1292,7 +1283,7 @@ export interface QueryVitalsLmkrateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequest;
 }
-export const QueryVitalsLmkrateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsLmkrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1316,7 +1307,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRespons
   /** Returned rows of data. */
   rows?: GooglePlayDeveloperReportingV1beta1MetricsRowList;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse =
   GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
@@ -1324,7 +1315,7 @@ export type GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRe
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
+const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
   S.String;
 
 /** Request message for QuerySlowRenderingRateMetricSet. */
@@ -1346,7 +1337,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetric
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest =
+const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dimensions: S.optional(StringList),
@@ -1369,7 +1360,7 @@ export interface QueryVitalsSlowrenderingrateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequest;
 }
-export const QueryVitalsSlowrenderingrateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsSlowrenderingrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1393,7 +1384,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetric
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse =
   GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
@@ -1401,7 +1392,7 @@ export type GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetReques
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
+const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
   S.String;
 
 /** Request message for QuerySlowStartRateMetricSet. */
@@ -1423,7 +1414,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetR
   /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
   pageSize?: number;
 }
-export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest =
+const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String),
@@ -1446,7 +1437,7 @@ export interface QueryVitalsSlowstartrateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequest;
 }
-export const QueryVitalsSlowstartrateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsSlowstartrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1470,7 +1461,7 @@ export interface GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetR
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse =
   GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
@@ -1478,7 +1469,7 @@ export type GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateM
   | "OS_PUBLIC"
   | "OS_BETA"
   | "APP_TESTERS";
-export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
+const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
   S.String;
 
 /** Request message for QueryStuckBackgroundWakelockRateMetricSet. */
@@ -1500,7 +1491,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelock
   /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
   timelineSpec?: GooglePlayDeveloperReportingV1beta1TimelineSpec;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest =
+const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dimensions: S.optional(StringList),
@@ -1524,7 +1515,7 @@ export interface QueryVitalsStuckbackgroundwakelockrateRequest {
   /** Request body */
   body?: GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequest;
 }
-export const QueryVitalsStuckbackgroundwakelockrateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryVitalsStuckbackgroundwakelockrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -1550,7 +1541,7 @@ export interface GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelock
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse =
+const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rows: S.optional(GooglePlayDeveloperReportingV1beta1MetricsRowList),
@@ -1567,7 +1558,7 @@ export interface SearchAppsRequest {
   /** Optional. A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const SearchAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1589,7 +1580,7 @@ export interface GooglePlayDeveloperReportingV1beta1App {
   /** Identifier. The resource name. Format: apps/{app} */
   name?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1App = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1601,7 +1592,7 @@ export const GooglePlayDeveloperReportingV1beta1App = /*@__PURE__*/ S.suspend(()
 
 export type GooglePlayDeveloperReportingV1beta1AppList =
   Array<GooglePlayDeveloperReportingV1beta1App>;
-export const GooglePlayDeveloperReportingV1beta1AppList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1AppList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1App,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AppList>;
 
@@ -1612,15 +1603,15 @@ export interface GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apps: S.optional(GooglePlayDeveloperReportingV1beta1AppList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse>;
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchAccessibleAppsResponse>;
 
 export interface SearchVitalsErrorsIssuesRequest {
   /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
@@ -1676,7 +1667,7 @@ export interface SearchVitalsErrorsIssuesRequest {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   "interval.startTime.timeZone.id"?: string;
 }
-export const SearchVitalsErrorsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchVitalsErrorsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "interval.startTime.nanos": S.optional(S.Number.pipe(T.Query())),
     sampleErrorReportLimit: S.optional(S.Number.pipe(T.Query())),
@@ -1724,7 +1715,7 @@ export interface GooglePlayDeveloperReportingV1beta1IssueAnnotation {
   /** Contains the contents of the annotation message. */
   body?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1IssueAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1IssueAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     title: S.optional(S.String),
@@ -1736,7 +1727,7 @@ export const GooglePlayDeveloperReportingV1beta1IssueAnnotation = /*@__PURE__*/ 
 
 export type GooglePlayDeveloperReportingV1beta1IssueAnnotationList =
   Array<GooglePlayDeveloperReportingV1beta1IssueAnnotation>;
-export const GooglePlayDeveloperReportingV1beta1IssueAnnotationList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1IssueAnnotationList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1IssueAnnotation,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1IssueAnnotationList>;
 
@@ -1745,7 +1736,7 @@ export interface GooglePlayDeveloperReportingV1beta1AppVersion {
   /** Optional. Numeric version code of the app version (set by the app's developer). */
   versionCode?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1AppVersion = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1AppVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.optional(S.String),
   }),
@@ -1758,7 +1749,7 @@ export interface GooglePlayDeveloperReportingV1beta1OsVersion {
   /** Optional. Numeric version code of the OS - API level */
   apiLevel?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1OsVersion = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1OsVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiLevel: S.optional(S.String),
   }),
@@ -1771,7 +1762,7 @@ export type GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum =
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
   | "NON_FATAL";
-export const GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum = S.String;
+const GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum = S.String;
 
 /** A group of related ErrorReports received for an app. Similar error reports are grouped together into issues with a likely identical root cause. **Please note:** this resource is currently in Alpha. There could be changes to the issue grouping that would result in similar but more recent error reports being assigned to different issues. This could also cause some issues disappearing entirely and being replaced by new ones. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1beta1ErrorIssue {
@@ -1806,7 +1797,7 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorIssue {
   /** Location where the issue happened. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the name of the activity or service that stopped responding. * CRASH: the likely method name that caused the error. */
   location?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1ErrorIssue = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1ErrorIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cause: S.optional(S.String),
     annotations: S.optional(GooglePlayDeveloperReportingV1beta1IssueAnnotationList),
@@ -1830,7 +1821,7 @@ export const GooglePlayDeveloperReportingV1beta1ErrorIssue = /*@__PURE__*/ S.sus
 
 export type GooglePlayDeveloperReportingV1beta1ErrorIssueList =
   Array<GooglePlayDeveloperReportingV1beta1ErrorIssue>;
-export const GooglePlayDeveloperReportingV1beta1ErrorIssueList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1ErrorIssueList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1ErrorIssue,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorIssueList>;
 
@@ -1841,12 +1832,11 @@ export interface GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse {
   /** ErrorIssues that were found. */
   errorIssues?: GooglePlayDeveloperReportingV1beta1ErrorIssueList;
 }
-export const GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      errorIssues: S.optional(GooglePlayDeveloperReportingV1beta1ErrorIssueList),
-    }),
+const GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    errorIssues: S.optional(GooglePlayDeveloperReportingV1beta1ErrorIssueList),
+  }),
 ).annotate({
   identifier: "GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse",
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorIssuesResponse>;
@@ -1901,7 +1891,7 @@ export interface SearchVitalsErrorsReportsRequest {
   /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
   "interval.startTime.month"?: number;
 }
-export const SearchVitalsErrorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchVitalsErrorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "interval.startTime.day": S.optional(S.Number.pipe(T.Query())),
     "interval.endTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
@@ -1943,7 +1933,7 @@ export type GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum =
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
   | "NON_FATAL";
-export const GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum = S.String;
+const GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum = S.String;
 
 /** Identifier of a device. */
 export interface GooglePlayDeveloperReportingV1beta1DeviceId {
@@ -1952,7 +1942,7 @@ export interface GooglePlayDeveloperReportingV1beta1DeviceId {
   /** Value of Build.DEVICE. */
   buildDevice?: string;
 }
-export const GooglePlayDeveloperReportingV1beta1DeviceId = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1DeviceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildBrand: S.optional(S.String),
     buildDevice: S.optional(S.String),
@@ -1970,7 +1960,7 @@ export interface GooglePlayDeveloperReportingV1beta1DeviceModelSummary {
   /** Identifier of the device. */
   deviceId?: GooglePlayDeveloperReportingV1beta1DeviceId;
 }
-export const GooglePlayDeveloperReportingV1beta1DeviceModelSummary = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1DeviceModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketingName: S.optional(S.String),
     deviceUri: S.optional(S.String),
@@ -2001,7 +1991,7 @@ export interface GooglePlayDeveloperReportingV1beta1ErrorReport {
   /** A device model on which an event in this error report occurred on. */
   deviceModel?: GooglePlayDeveloperReportingV1beta1DeviceModelSummary;
 }
-export const GooglePlayDeveloperReportingV1beta1ErrorReport = /*@__PURE__*/ S.suspend(() =>
+const GooglePlayDeveloperReportingV1beta1ErrorReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum),
     eventTime: S.optional(S.String),
@@ -2019,7 +2009,7 @@ export const GooglePlayDeveloperReportingV1beta1ErrorReport = /*@__PURE__*/ S.su
 
 export type GooglePlayDeveloperReportingV1beta1ErrorReportList =
   Array<GooglePlayDeveloperReportingV1beta1ErrorReport>;
-export const GooglePlayDeveloperReportingV1beta1ErrorReportList = /*@__PURE__*/ S.Array(
+const GooglePlayDeveloperReportingV1beta1ErrorReportList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1ErrorReport,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorReportList>;
 
@@ -2030,15 +2020,14 @@ export interface GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse {
   /** Error reports that were found. */
   errorReports?: GooglePlayDeveloperReportingV1beta1ErrorReportList;
 }
-export const GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      errorReports: S.optional(GooglePlayDeveloperReportingV1beta1ErrorReportList),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse>;
+const GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    errorReports: S.optional(GooglePlayDeveloperReportingV1beta1ErrorReportList),
+  }),
+).annotate({
+  identifier: "GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse",
+}) as any as S.Schema<GooglePlayDeveloperReportingV1beta1SearchErrorReportsResponse>;
 
 export type FetchReleaseFilterOptionsAppsError = NotFound | Forbidden | GcpOpError;
 /** Describes filtering options for releases. */

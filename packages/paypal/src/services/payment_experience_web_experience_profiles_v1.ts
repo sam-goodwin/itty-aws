@@ -10,15 +10,15 @@ export type { PaypalOpError, PaypalOpContext };
 
 /** The type of landing page to display on the PayPal site for user checkout. To use the non-PayPal account landing page, set to `Billing`. To use the PayPal account login landing page, set to `Login`. */
 export type FlowConfigLandingPageType = "login" | "billing";
-export const FlowConfigLandingPageType = S.String;
+const FlowConfigLandingPageType = S.String;
 
 /** Presents either the **Continue** or **Pay Now** checkout flow to the customer.<br/><br/>Default is **Continue**, or `user_action=continue`. When you do not know the final payment amount, accept this default flow, which redirects the customer to the PayPal payment page with the **Continue** button. When the customer clicks **Continue**, the customer can change the payment amount.<br/><br/> When you know the final payment amount, set `user_action=commit` to choose the **Pay Now** flow, which redirects the customer to the PayPal payment page with the **Pay Now** button. When the customer clicks **Pay Now**, the payment is processed immediately. */
 export type FlowConfigUserAction = "COMMIT";
-export const FlowConfigUserAction = S.String;
+const FlowConfigUserAction = S.String;
 
 /** The HTTP method to use to redirect the customer to a return URL. Value is `GET` or `POST`. */
 export type FlowConfigReturnUriHttpMethod = "GET" | "POST";
-export const FlowConfigReturnUriHttpMethod = S.String;
+const FlowConfigReturnUriHttpMethod = S.String;
 
 /** The flow configuration parameters. */
 export interface FlowConfig {
@@ -31,7 +31,7 @@ export interface FlowConfig {
   /** The HTTP method to use to redirect the customer to a return URL. Value is `GET` or `POST`. */
   return_uri_http_method?: FlowConfigReturnUriHttpMethod | (string & {});
 }
-export const FlowConfig = /*@__PURE__*/ S.suspend(() =>
+const FlowConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     landing_page_type: S.optional(FlowConfigLandingPageType),
     bank_txn_pending_url: S.optional(S.String),
@@ -47,7 +47,7 @@ export interface InputFields {
   /** Indicates whether to display the shipping address that is passed to this call rather than the one on file for this buyer on the PayPal experience pages. Value is:<ul><li><code>0</code>. Displays the shipping address on file.</li><li><code>1</code>. Displays the shipping address specified in this call. the customer cannot edit this shipping address.</li></ul> */
   address_override?: number;
 }
-export const InputFields = /*@__PURE__*/ S.suspend(() =>
+const InputFields = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     no_shipping: S.optional(S.Number),
     address_override: S.optional(S.Number),
@@ -63,7 +63,7 @@ export interface Presentation {
   /** The locale of pages that the PayPal payment experience displays. A valid value is `AU`, `AT`, `BE`, `BR`, `CA`, `CH`, `CN`, `DE`, `ES`, `GB`, `FR`, `IT`, `NL`, `PL`, `PT`, `RU`, or `US`. A 5-character code is also valid for languages in these countries: `da_DK`, `he_IL`, `id_ID`, `ja_JP`, `no_NO`, `pt_BR`, `ru_RU`, `sv_SE`, `th_TH`, `zh_CN`, `zh_HK`, or `zh_TW`. */
   locale_code?: string;
 }
-export const Presentation = /*@__PURE__*/ S.suspend(() =>
+const Presentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand_name: S.optional(S.String),
     logo_image: S.optional(S.String),
@@ -82,7 +82,7 @@ export interface CreateWebProfileRequest {
   input_fields?: InputFields;
   presentation?: Presentation;
 }
-export const CreateWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payPalRequestId: S.String.pipe(T.Header("PayPal-Request-Id")),
     name: S.String,
@@ -105,7 +105,7 @@ export interface WebProfile {
   input_fields?: InputFields;
   presentation?: Presentation;
 }
-export const WebProfile = /*@__PURE__*/ S.suspend(() =>
+const WebProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.String,
@@ -120,14 +120,14 @@ export interface DeleteWebProfileRequest {
   /** The ID of the profile to delete. */
   id: string;
 }
-export const DeleteWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteWebProfileRequest" }) as any as S.Schema<DeleteWebProfileRequest>;
 
 export interface DeleteWebProfileResponse {}
-export const DeleteWebProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteWebProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWebProfileResponse",
 }) as any as S.Schema<DeleteWebProfileResponse>;
 
@@ -135,7 +135,7 @@ export interface GetWebProfileRequest {
   /** The ID of the profile to delete. */
   id: string;
 }
-export const GetWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 })),
@@ -152,7 +152,7 @@ export interface UpdateWebProfileRequest {
   input_fields?: InputFields;
   presentation?: Presentation;
 }
-export const UpdateWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.String,
@@ -164,12 +164,12 @@ export const UpdateWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWebProfileRequest" }) as any as S.Schema<UpdateWebProfileRequest>;
 
 export interface UpdateWebProfileResponse {}
-export const UpdateWebProfileResponse =
+const UpdateWebProfileResponse =
   DeleteWebProfileResponse as any as S.Schema<UpdateWebProfileResponse>;
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-export const PatchOp = S.String;
+const PatchOp = S.String;
 
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
@@ -182,7 +182,7 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-export const Patch = /*@__PURE__*/ S.suspend(() =>
+const Patch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: PatchOp,
     path: S.optional(S.String),
@@ -193,14 +193,14 @@ export const Patch = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-export const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
+const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
 
 export interface UpdateWebProfilePartialRequest {
   /** The ID of the profile to delete. */
   id: string;
   body?: PatchRequest;
 }
-export const UpdateWebProfilePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebProfilePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(PatchRequest.pipe(T.HttpBody())),
@@ -210,12 +210,12 @@ export const UpdateWebProfilePartialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWebProfilePartialRequest>;
 
 export interface UpdateWebProfilePartialResponse {}
-export const UpdateWebProfilePartialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateWebProfilePartialResponse" },
-) as any as S.Schema<UpdateWebProfilePartialResponse>;
+const UpdateWebProfilePartialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UpdateWebProfilePartialResponse",
+}) as any as S.Schema<UpdateWebProfilePartialResponse>;
 
 export interface WebProfileGetListRequest {}
-export const WebProfileGetListRequest = /*@__PURE__*/ S.suspend(() =>
+const WebProfileGetListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v1/payment-experience/web-profiles", code: 200 }),
   ),
@@ -223,10 +223,10 @@ export const WebProfileGetListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of web profiles. */
 export type WebProfileList = Array<WebProfile>;
-export const WebProfileList = /*@__PURE__*/ S.Array(WebProfile) as any as S.Schema<WebProfileList>;
+const WebProfileList = /*@__PURE__*/ S.Array(WebProfile) as any as S.Schema<WebProfileList>;
 
 export type WebProfileGetListResponse = WebProfileList;
-export const WebProfileGetListResponse = /*@__PURE__*/ S.suspend(() =>
+const WebProfileGetListResponse = /*@__PURE__*/ S.suspend(() =>
   WebProfileList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "WebProfileGetListResponse",

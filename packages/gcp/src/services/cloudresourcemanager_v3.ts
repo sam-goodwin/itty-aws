@@ -118,13 +118,13 @@ export class TagValueNotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type FolderStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED";
-export const FolderStateEnum = S.String;
+const FolderStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A folder in an organization's resource hierarchy, used to organize that organization's resources. */
 export interface Folder {
@@ -151,7 +151,7 @@ export interface Folder {
   /** Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example: `folders/123/capabilities/app-management`. */
   configuredCapabilities?: StringList;
 }
-export const Folder = /*@__PURE__*/ S.suspend(() =>
+const Folder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     managementProject: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface CreateFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Folder.pipe(T.HttpBody())),
   }).pipe(
@@ -184,15 +184,10 @@ export const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFoldersRequest" }) as any as S.Schema<CreateFoldersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -203,7 +198,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -224,7 +219,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -235,18 +230,18 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type CapabilityConfigStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
-export const CapabilityConfigStateEnum = S.String;
+const CapabilityConfigStateEnum = S.String;
 
 export type CapabilityConfigTypesItemEnum =
   | "TYPE_UNSPECIFIED"
   | "APP_MANAGEMENT"
   | "AGENT_MANAGEMENT";
-export const CapabilityConfigTypesItemEnum = S.String;
+const CapabilityConfigTypesItemEnum = S.String;
 
 export type CapabilityConfigTypesItemEnumList = Array<
   CapabilityConfigTypesItemEnum | (string & {})
 >;
-export const CapabilityConfigTypesItemEnumList = /*@__PURE__*/ S.Array(
+const CapabilityConfigTypesItemEnumList = /*@__PURE__*/ S.Array(
   CapabilityConfigTypesItemEnum,
 ) as any as S.Schema<CapabilityConfigTypesItemEnumList>;
 
@@ -271,7 +266,7 @@ export interface CapabilityConfig {
   /** This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const CapabilityConfig = /*@__PURE__*/ S.suspend(() =>
+const CapabilityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -293,7 +288,7 @@ export interface CreateFoldersCapabilityConfigsRequest {
   /** Request body */
   body?: CapabilityConfig;
 }
-export const CreateFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilityConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -324,7 +319,7 @@ export interface Lien {
   /** The creation time of this Lien. */
   createTime?: string;
 }
-export const Lien = /*@__PURE__*/ S.suspend(() =>
+const Lien = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     origin: S.optional(S.String),
@@ -339,7 +334,7 @@ export interface CreateLiensRequest {
   /** Request body */
   body?: Lien;
 }
-export const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Lien.pipe(T.HttpBody())),
   }).pipe(
@@ -359,7 +354,7 @@ export interface CreateOrganizationsCapabilityConfigsRequest {
   /** Request body */
   body?: CapabilityConfig;
 }
-export const CreateOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     capabilityConfigId: S.optional(S.String.pipe(T.Query())),
@@ -376,7 +371,7 @@ export const CreateOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateOrganizationsCapabilityConfigsRequest>;
 
 export type ProjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED";
-export const ProjectStateEnum = S.String;
+const ProjectStateEnum = S.String;
 
 /** A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. */
 export interface Project {
@@ -407,7 +402,7 @@ export interface Project {
   /** Output only. The project lifecycle state. */
   state?: ProjectStateEnum | (string & {});
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredCapabilities: S.optional(StringList),
     labels: S.optional(StringMap),
@@ -429,7 +424,7 @@ export interface CreateProjectsRequest {
   /** Request body */
   body?: Project;
 }
-export const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Project.pipe(T.HttpBody())),
   }).pipe(
@@ -449,7 +444,7 @@ export interface CreateProjectsCapabilityConfigsRequest {
   /** Request body */
   body?: CapabilityConfig;
 }
-export const CreateProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilityConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -476,7 +471,7 @@ export interface TagBinding {
   /** The TagValue of the TagBinding. Must be of the form `tagValues/456`. */
   tagValue?: string;
 }
-export const TagBinding = /*@__PURE__*/ S.suspend(() =>
+const TagBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     name: S.optional(S.String),
@@ -491,7 +486,7 @@ export interface CreateTagBindingsRequest {
   /** Request body */
   body?: TagBinding;
 }
-export const CreateTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(TagBinding.pipe(T.HttpBody())),
@@ -505,7 +500,7 @@ export const CreateTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTagBindingsRequest" }) as any as S.Schema<CreateTagBindingsRequest>;
 
 export type TagKeyPurposeEnum = "PURPOSE_UNSPECIFIED" | "GCE_FIREWALL" | "DATA_GOVERNANCE";
-export const TagKeyPurposeEnum = S.String;
+const TagKeyPurposeEnum = S.String;
 
 /** A TagKey, used to group a set of TagValues. */
 export interface TagKey {
@@ -532,7 +527,7 @@ export interface TagKey {
   /** Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details. */
   etag?: string;
 }
-export const TagKey = /*@__PURE__*/ S.suspend(() =>
+const TagKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     purpose: S.optional(TagKeyPurposeEnum),
@@ -554,7 +549,7 @@ export interface CreateTagKeysRequest {
   /** Request body */
   body?: TagKey;
 }
-export const CreateTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(TagKey.pipe(T.HttpBody())),
@@ -586,7 +581,7 @@ export interface TagValue {
   /** Output only. Update time. */
   updateTime?: string;
 }
-export const TagValue = /*@__PURE__*/ S.suspend(() =>
+const TagValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     shortName: S.optional(S.String),
@@ -605,7 +600,7 @@ export interface CreateTagValuesRequest {
   /** Request body */
   body?: TagValue;
 }
-export const CreateTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(TagValue.pipe(T.HttpBody())),
@@ -631,7 +626,7 @@ export interface TagHold {
   /** Optional. An optional string representing the origin of this request. This field should include human-understandable information to distinguish origins from each other. Must be less than 200 characters. E.g. `migs-35678234` */
   origin?: string;
 }
-export const TagHold = /*@__PURE__*/ S.suspend(() =>
+const TagHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -649,7 +644,7 @@ export interface CreateTagValuesTagHoldsRequest {
   /** Request body */
   body?: TagHold;
 }
-export const CreateTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -669,7 +664,7 @@ export interface DeleteFoldersRequest {
   /** Required. The resource name of the folder to be deleted. Must be of the form `folders/{folder_id}`. */
   name: string;
 }
-export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -685,7 +680,7 @@ export interface DeleteFoldersCapabilityConfigsRequest {
   /** Required. The name of the CapabilityConfig to delete. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}` */
   name: string;
 }
-export const DeleteFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -703,7 +698,7 @@ export interface DeleteLiensRequest {
   /** Required. The name/identifier of the Lien to delete. */
   name: string;
 }
-export const DeleteLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -717,7 +712,7 @@ export const DeleteLiensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -725,7 +720,7 @@ export interface DeleteOrganizationsCapabilityConfigsRequest {
   /** Required. The name of the CapabilityConfig to delete. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}` */
   name: string;
 }
-export const DeleteOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -743,7 +738,7 @@ export interface DeleteProjectsRequest {
   /** Required. The name of the Project (for example, `projects/415104041262`). */
   name: string;
 }
-export const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -759,7 +754,7 @@ export interface DeleteProjectsCapabilityConfigsRequest {
   /** Required. The name of the CapabilityConfig to delete. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}` */
   name: string;
 }
-export const DeleteProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -777,7 +772,7 @@ export interface DeleteTagBindingsRequest {
   /** Required. The name of the TagBinding. This is a String of the form: `tagBindings/{id}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`). */
   name: string;
 }
-export const DeleteTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -797,7 +792,7 @@ export interface DeleteTagKeysRequest {
   /** Optional. Set as true to perform validations necessary for deletion, but not actually perform the action. */
   validateOnly?: boolean;
 }
-export const DeleteTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -819,7 +814,7 @@ export interface DeleteTagValuesRequest {
   /** Required. Resource name for TagValue to be deleted in the format tagValues/456. */
   name: string;
 }
-export const DeleteTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -839,7 +834,7 @@ export interface DeleteTagValuesTagHoldsRequest {
   /** Required. The resource name of the TagHold to delete. Must be of the form: `tagValues/{tag-value-id}/tagHolds/{tag-hold-id}`. */
   name: string;
 }
-export const DeleteTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -858,7 +853,7 @@ export interface FetchResourceSemanticsV3Request {
   /** Required. The full resource name of the GCP resource to retrieve semantics for. Examples: "//compute.googleapis.com/projects/123/zones/us-central1-a/instances/my-instance" "//storage.googleapis.com/projects/_/buckets/my_bucket" */
   fullResourceName?: string;
 }
-export const FetchResourceSemanticsV3Request = /*@__PURE__*/ S.suspend(() =>
+const FetchResourceSemanticsV3Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullResourceName: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -879,7 +874,7 @@ export interface FetchResourceSemanticsResponse {
   /** Map of resource semantics (e.g., `"ENVIRONMENT": "PRODUCTION"`). */
   semantics?: StringMap;
 }
-export const FetchResourceSemanticsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchResourceSemanticsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullResourceName: S.optional(S.String),
     semantics: S.optional(StringMap),
@@ -892,7 +887,7 @@ export interface GetFoldersRequest {
   /** Required. The resource name of the folder to retrieve. Must be of the form `folders/{folder_id}`. */
   name: string;
 }
-export const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -908,7 +903,7 @@ export interface GetFoldersCapabilitiesRequest {
   /** Required. The name of the capability to get. For example, `folders/123/capabilities/app-management` */
   name: string;
 }
-export const GetFoldersCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -929,7 +924,7 @@ export interface Capability {
   /** Required. The configured value of the capability at the given parent resource. */
   value?: boolean;
 }
-export const Capability = /*@__PURE__*/ S.suspend(() =>
+const Capability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.Boolean),
@@ -940,7 +935,7 @@ export interface GetFoldersCapabilityConfigsRequest {
   /** Required. The name of the CapabilityConfig to retrieve. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}` Example: `folders/123456789/capabilityConfigs/my-capability-config` */
   name: string;
 }
-export const GetFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -959,7 +954,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -970,7 +965,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -982,7 +977,7 @@ export interface GetIamPolicyFoldersRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1002,7 +997,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -1011,7 +1006,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -1019,7 +1014,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -1030,7 +1025,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -1038,9 +1033,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1053,7 +1046,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -1071,7 +1064,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -1080,7 +1073,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1093,7 +1086,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(AuditConfigList),
     version: S.optional(S.Number),
@@ -1108,7 +1101,7 @@ export interface GetIamPolicyOrganizationsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1129,7 +1122,7 @@ export interface GetIamPolicyProjectsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1150,7 +1143,7 @@ export interface GetIamPolicyTagKeysRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1171,7 +1164,7 @@ export interface GetIamPolicyTagValuesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1190,7 +1183,7 @@ export interface GetLiensRequest {
   /** Required. The name/identifier of the Lien. */
   name: string;
 }
-export const GetLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1206,7 +1199,7 @@ export interface GetLocationsEffectiveTagBindingCollectionsRequest {
   /** Required. The full name of the EffectiveTagBindingCollection in format: `locations/{location}/effectiveTagBindingCollections/{encoded-full-resource-name}` where the encoded-full-resource-name is the UTF-8 encoded name of the resource the TagBindings are bound to. E.g. "locations/global/effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123" */
   name: string;
 }
-export const GetLocationsEffectiveTagBindingCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsEffectiveTagBindingCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1229,7 +1222,7 @@ export interface EffectiveTagBindingCollection {
   /** Tag keys/values effectively bound to this resource, specified in namespaced format. For example: "123/environment": "production" */
   effectiveTags?: StringMap;
 }
-export const EffectiveTagBindingCollection = /*@__PURE__*/ S.suspend(() =>
+const EffectiveTagBindingCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fullResourceName: S.optional(S.String),
@@ -1243,7 +1236,7 @@ export interface GetLocationsTagBindingCollectionsRequest {
   /** Required. The full name of the TagBindingCollection in format: `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the enoded-full-resource-name is the UTF-8 encoded name of the resource the TagBindings are bound to. E.g. "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123" */
   name: string;
 }
-export const GetLocationsTagBindingCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsTagBindingCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1268,7 +1261,7 @@ export interface TagBindingCollection {
   /** Optional. A checksum based on the current bindings which can be passed to prevent race conditions. This field is always set in server responses. */
   etag?: string;
 }
-export const TagBindingCollection = /*@__PURE__*/ S.suspend(() =>
+const TagBindingCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fullResourceName: S.optional(S.String),
@@ -1281,7 +1274,7 @@ export interface GetNamespacedTagKeysRequest {
   /** Required. A namespaced tag key name in the format `{parentId}/{tagKeyShort}`, such as `42/foo` for a key with short name "foo" under the organization with ID 42 or `r2-d2/bar` for a key with short name "bar" under the project `r2-d2`. */
   name?: string;
 }
-export const GetNamespacedTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespacedTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -1299,7 +1292,7 @@ export interface GetNamespacedTagValuesRequest {
   /** Required. A namespaced tag value name in the following format: `{parentId}/{tagKeyShort}/{tagValueShort}` Examples: - `42/foo/abc` for a value with short name "abc" under the key with short name "foo" under the organization with ID 42 - `r2-d2/bar/xyz` for a value with short name "xyz" under the key with short name "bar" under the project with ID "r2-d2" */
   name?: string;
 }
-export const GetNamespacedTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespacedTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -1317,7 +1310,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1333,7 +1326,7 @@ export interface GetOrganizationsRequest {
   /** Required. The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
   name: string;
 }
-export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1346,7 +1339,7 @@ export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrganizationsRequest" }) as any as S.Schema<GetOrganizationsRequest>;
 
 export type OrganizationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED";
-export const OrganizationStateEnum = S.String;
+const OrganizationStateEnum = S.String;
 
 /** The root node in the resource hierarchy to which a particular entity's (a company, for example) resources belong. */
 export interface Organization {
@@ -1367,7 +1360,7 @@ export interface Organization {
   /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
   name?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(OrganizationStateEnum),
     deleteTime: S.optional(S.String),
@@ -1384,7 +1377,7 @@ export interface GetOrganizationsCapabilityConfigsRequest {
   /** Required. The name of the CapabilityConfig to retrieve. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}` Example: `folders/123456789/capabilityConfigs/my-capability-config` */
   name: string;
 }
-export const GetOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1402,7 +1395,7 @@ export interface GetProjectsRequest {
   /** Required. The name of the project (for example, `projects/415104041262`). */
   name: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1418,7 +1411,7 @@ export interface GetProjectsCapabilityConfigsRequest {
   /** Required. The name of the CapabilityConfig to retrieve. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}` Example: `folders/123456789/capabilityConfigs/my-capability-config` */
   name: string;
 }
-export const GetProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1436,7 +1429,7 @@ export interface GetTagKeysRequest {
   /** Required. A resource name in the format `tagKeys/{id}`, such as `tagKeys/123`. */
   name: string;
 }
-export const GetTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1452,7 +1445,7 @@ export interface GetTagValuesRequest {
   /** Required. Resource name for TagValue to be fetched in the format `tagValues/456`. */
   name: string;
 }
-export const GetTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1472,7 +1465,7 @@ export interface ListEffectiveTagsRequest {
   /** Required. The full resource name of a resource for which you want to list the effective tags. E.g. "//cloudresourcemanager.googleapis.com/projects/123" */
   parent?: string;
 }
-export const ListEffectiveTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEffectiveTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1501,7 +1494,7 @@ export interface EffectiveTag {
   /** The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`. */
   namespacedTagValue?: string;
 }
-export const EffectiveTag = /*@__PURE__*/ S.suspend(() =>
+const EffectiveTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespacedTagKey: S.optional(S.String),
     tagValue: S.optional(S.String),
@@ -1513,9 +1506,7 @@ export const EffectiveTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EffectiveTag" }) as any as S.Schema<EffectiveTag>;
 
 export type EffectiveTagList = Array<EffectiveTag>;
-export const EffectiveTagList = /*@__PURE__*/ S.Array(
-  EffectiveTag,
-) as any as S.Schema<EffectiveTagList>;
+const EffectiveTagList = /*@__PURE__*/ S.Array(EffectiveTag) as any as S.Schema<EffectiveTagList>;
 
 /** The response of ListEffectiveTags. */
 export interface ListEffectiveTagsResponse {
@@ -1524,7 +1515,7 @@ export interface ListEffectiveTagsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const ListEffectiveTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEffectiveTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveTags: S.optional(EffectiveTagList),
     nextPageToken: S.optional(S.String),
@@ -1543,7 +1534,7 @@ export interface ListFoldersRequest {
   /** Required. The name of the parent resource whose folders are being listed. Only children of this parent resource are listed; descendants are not listed. If the parent is a folder, use the value `folders/{folder_id}`. If the parent is an organization, use the value `organizations/{org_id}`. Access to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`. */
   parent?: string;
 }
-export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1559,7 +1550,7 @@ export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFoldersRequest" }) as any as S.Schema<ListFoldersRequest>;
 
 export type FolderList = Array<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
+const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
 
 /** The ListFolders response message. */
 export interface ListFoldersResponse {
@@ -1568,7 +1559,7 @@ export interface ListFoldersResponse {
   /** A possibly paginated list of folders that are direct descendants of the specified parent resource. */
   folders?: FolderList;
 }
-export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     folders: S.optional(FolderList),
@@ -1583,7 +1574,7 @@ export interface ListFoldersCapabilityConfigsRequest {
   /** Optional. The maximum number of CapabilityConfigs to return in the response. The service may return fewer CapabilityConfigs than requested. If unspecified, at most 100 CapabilityConfigs will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1600,7 +1591,7 @@ export const ListFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersCapabilityConfigsRequest>;
 
 export type CapabilityConfigList = Array<CapabilityConfig>;
-export const CapabilityConfigList = /*@__PURE__*/ S.Array(
+const CapabilityConfigList = /*@__PURE__*/ S.Array(
   CapabilityConfig,
 ) as any as S.Schema<CapabilityConfigList>;
 
@@ -1611,7 +1602,7 @@ export interface ListCapabilityConfigsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
   nextPageToken?: string;
 }
-export const ListCapabilityConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCapabilityConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilityConfigs: S.optional(CapabilityConfigList),
     nextPageToken: S.optional(S.String),
@@ -1628,7 +1619,7 @@ export interface ListLiensRequest {
   /** The `next_page_token` value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1643,7 +1634,7 @@ export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLiensRequest" }) as any as S.Schema<ListLiensRequest>;
 
 export type LienList = Array<Lien>;
-export const LienList = /*@__PURE__*/ S.Array(Lien) as any as S.Schema<LienList>;
+const LienList = /*@__PURE__*/ S.Array(Lien) as any as S.Schema<LienList>;
 
 /** The response message for Liens.ListLiens. */
 export interface ListLiensResponse {
@@ -1652,7 +1643,7 @@ export interface ListLiensResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListLiensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLiensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liens: S.optional(LienList),
     nextPageToken: S.optional(S.String),
@@ -1667,7 +1658,7 @@ export interface ListOrganizationsCapabilityConfigsRequest {
   /** Optional. A pagination token received from a previous call to `ListCapabilityConfigs` that indicates from where listing should continue. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1693,7 +1684,7 @@ export interface ListProjectsRequest {
   /** Optional. A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. */
   pageToken?: string;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.optional(S.String.pipe(T.Query())),
@@ -1709,7 +1700,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectList = Array<Project>;
-export const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
+const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
 
 /** A page of the response received from the ListProjects method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page. NOTE: A response may contain fewer elements than the request `page_size` and still have a `next_page_token`. */
 export interface ListProjectsResponse {
@@ -1718,7 +1709,7 @@ export interface ListProjectsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: S.optional(ProjectList),
     nextPageToken: S.optional(S.String),
@@ -1733,7 +1724,7 @@ export interface ListProjectsCapabilityConfigsRequest {
   /** Optional. A pagination token received from a previous call to `ListCapabilityConfigs` that indicates from where listing should continue. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1757,7 +1748,7 @@ export interface ListTagBindingsRequest {
   /** Optional. The maximum number of TagBindings to return in the response. The server allows a maximum of 300 TagBindings to return. If unspecified, the server will use 100 as the default. */
   pageSize?: number;
 }
-export const ListTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1772,7 +1763,7 @@ export const ListTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagBindingsRequest" }) as any as S.Schema<ListTagBindingsRequest>;
 
 export type TagBindingList = Array<TagBinding>;
-export const TagBindingList = /*@__PURE__*/ S.Array(TagBinding) as any as S.Schema<TagBindingList>;
+const TagBindingList = /*@__PURE__*/ S.Array(TagBinding) as any as S.Schema<TagBindingList>;
 
 /** The ListTagBindings response. */
 export interface ListTagBindingsResponse {
@@ -1781,7 +1772,7 @@ export interface ListTagBindingsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const ListTagBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagBindings: S.optional(TagBindingList),
     nextPageToken: S.optional(S.String),
@@ -1796,7 +1787,7 @@ export interface ListTagKeysRequest {
   /** Optional. A pagination token returned from a previous call to `ListTagKey` that indicates where this listing should continue from. */
   pageToken?: string;
 }
-export const ListTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.optional(S.String.pipe(T.Query())),
@@ -1811,7 +1802,7 @@ export const ListTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagKeysRequest" }) as any as S.Schema<ListTagKeysRequest>;
 
 export type TagKeyList = Array<TagKey>;
-export const TagKeyList = /*@__PURE__*/ S.Array(TagKey) as any as S.Schema<TagKeyList>;
+const TagKeyList = /*@__PURE__*/ S.Array(TagKey) as any as S.Schema<TagKeyList>;
 
 /** The ListTagKeys response message. */
 export interface ListTagKeysResponse {
@@ -1820,7 +1811,7 @@ export interface ListTagKeysResponse {
   /** A pagination token returned from a previous call to `ListTagKeys` that indicates from where listing should continue. */
   nextPageToken?: string;
 }
-export const ListTagKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagKeys: S.optional(TagKeyList),
     nextPageToken: S.optional(S.String),
@@ -1835,7 +1826,7 @@ export interface ListTagValuesRequest {
   /** Required. Resource name for the parent of the TagValues to be listed, in the format `tagKeys/123` or `tagValues/123`. */
   parent?: string;
 }
-export const ListTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1850,7 +1841,7 @@ export const ListTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagValuesRequest" }) as any as S.Schema<ListTagValuesRequest>;
 
 export type TagValueList = Array<TagValue>;
-export const TagValueList = /*@__PURE__*/ S.Array(TagValue) as any as S.Schema<TagValueList>;
+const TagValueList = /*@__PURE__*/ S.Array(TagValue) as any as S.Schema<TagValueList>;
 
 /** The ListTagValues response. */
 export interface ListTagValuesResponse {
@@ -1859,7 +1850,7 @@ export interface ListTagValuesResponse {
   /** A possibly paginated list of TagValues that are direct descendants of the specified parent TagKey. */
   tagValues?: TagValueList;
 }
-export const ListTagValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     tagValues: S.optional(TagValueList),
@@ -1876,7 +1867,7 @@ export interface ListTagValuesTagHoldsRequest {
   /** Optional. Criteria used to select a subset of TagHolds parented by the TagValue to return. This field follows the syntax defined by aip.dev/160; the `holder` and `origin` fields are supported for filtering. Currently only `AND` syntax is supported. Some example queries are: * `holder = //compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group` * `origin = 35678234` * `holder = //compute.googleapis.com/compute/projects/myproject/regions/us-east-1/instanceGroupManagers/instance-group AND origin = 35678234` */
   filter?: string;
 }
-export const ListTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1894,7 +1885,7 @@ export const ListTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagValuesTagHoldsRequest>;
 
 export type TagHoldList = Array<TagHold>;
-export const TagHoldList = /*@__PURE__*/ S.Array(TagHold) as any as S.Schema<TagHoldList>;
+const TagHoldList = /*@__PURE__*/ S.Array(TagHold) as any as S.Schema<TagHoldList>;
 
 /** The ListTagHolds response. */
 export interface ListTagHoldsResponse {
@@ -1903,7 +1894,7 @@ export interface ListTagHoldsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const ListTagHoldsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagHoldsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagHolds: S.optional(TagHoldList),
     nextPageToken: S.optional(S.String),
@@ -1915,7 +1906,7 @@ export interface MoveFolderRequest {
   /** Required. The resource name of the folder or organization which should be the folder's new parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. */
   destinationParent?: string;
 }
-export const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationParent: S.optional(S.String),
   }),
@@ -1927,7 +1918,7 @@ export interface MoveFoldersRequest {
   /** Request body */
   body?: MoveFolderRequest;
 }
-export const MoveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveFolderRequest.pipe(T.HttpBody())),
@@ -1945,7 +1936,7 @@ export interface MoveProjectRequest {
   /** Required. The new parent to move the Project under. */
   destinationParent?: string;
 }
-export const MoveProjectRequest = MoveFolderRequest as any as S.Schema<MoveProjectRequest>;
+const MoveProjectRequest = MoveFolderRequest as any as S.Schema<MoveProjectRequest>;
 
 export interface MoveProjectsRequest {
   /** Required. The name of the project to move. */
@@ -1953,7 +1944,7 @@ export interface MoveProjectsRequest {
   /** Request body */
   body?: MoveProjectRequest;
 }
-export const MoveProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveProjectRequest.pipe(T.HttpBody())),
@@ -1974,7 +1965,7 @@ export interface PatchFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const PatchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1996,7 +1987,7 @@ export interface PatchFoldersCapabilitiesRequest {
   /** Request body */
   body?: Capability;
 }
-export const PatchFoldersCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2020,7 +2011,7 @@ export interface PatchFoldersCapabilityConfigsRequest {
   /** Request body */
   body?: CapabilityConfig;
 }
-export const PatchFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2044,7 +2035,7 @@ export interface PatchLocationsTagBindingCollectionsRequest {
   /** Request body */
   body?: TagBindingCollection;
 }
-export const PatchLocationsTagBindingCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsTagBindingCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2068,7 +2059,7 @@ export interface PatchOrganizationsCapabilityConfigsRequest {
   /** Request body */
   body?: CapabilityConfig;
 }
-export const PatchOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2092,7 +2083,7 @@ export interface PatchProjectsRequest {
   /** Request body */
   body?: Project;
 }
-export const PatchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2114,7 +2105,7 @@ export interface PatchProjectsCapabilityConfigsRequest {
   /** Request body */
   body?: CapabilityConfig;
 }
-export const PatchProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsCapabilityConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2140,7 +2131,7 @@ export interface PatchTagKeysRequest {
   /** Request body */
   body?: TagKey;
 }
-export const PatchTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2165,7 +2156,7 @@ export interface PatchTagValuesRequest {
   /** Request body */
   body?: TagValue;
 }
-export const PatchTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2188,7 +2179,7 @@ export interface SearchFoldersRequest {
   /** Optional. A pagination token returned from a previous call to `SearchFolders` that indicates from where search should continue. */
   pageToken?: string;
 }
-export const SearchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2209,7 +2200,7 @@ export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
   folders?: FolderList;
 }
-export const SearchFoldersResponse = ListFoldersResponse as any as S.Schema<SearchFoldersResponse>;
+const SearchFoldersResponse = ListFoldersResponse as any as S.Schema<SearchFoldersResponse>;
 
 export interface SearchOrganizationsRequest {
   /** Optional. An optional query string used to filter the Organizations to return in the response. Query rules are case-insensitive. ``` | Field | Description | |------------------|--------------------------------------------| | directoryCustomerId, owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. | ``` Organizations may be queried by `directoryCustomerId` or by `domain`, where the domain is a G Suite domain, for example: * Query `directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Query `domain:google.com` returns Organization resources corresponding to the domain `google.com`. */
@@ -2219,7 +2210,7 @@ export interface SearchOrganizationsRequest {
   /** Optional. A pagination token returned from a previous call to `SearchOrganizations` that indicates from where listing should continue. */
   pageToken?: string;
 }
-export const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2236,9 +2227,7 @@ export const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchOrganizationsRequest>;
 
 export type OrganizationList = Array<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrganizationList>;
+const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
 
 /** The response returned from the `SearchOrganizations` method. */
 export interface SearchOrganizationsResponse {
@@ -2247,7 +2236,7 @@ export interface SearchOrganizationsResponse {
   /** The list of Organizations that matched the search query, possibly paginated. */
   organizations?: OrganizationList;
 }
-export const SearchOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     organizations: S.optional(OrganizationList),
@@ -2264,7 +2253,7 @@ export interface SearchProjectsRequest {
   /** Optional. A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. */
   pageToken?: string;
 }
-export const SearchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2285,8 +2274,7 @@ export interface SearchProjectsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
-export const SearchProjectsResponse =
-  ListProjectsResponse as any as S.Schema<SearchProjectsResponse>;
+const SearchProjectsResponse = ListProjectsResponse as any as S.Schema<SearchProjectsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2295,7 +2283,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -2308,7 +2296,7 @@ export interface SetIamPolicyFoldersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2329,7 +2317,7 @@ export interface SetIamPolicyOrganizationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2350,7 +2338,7 @@ export interface SetIamPolicyProjectsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2371,7 +2359,7 @@ export interface SetIamPolicyTagKeysRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2392,7 +2380,7 @@ export interface SetIamPolicyTagValuesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2412,7 +2400,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -2426,7 +2414,7 @@ export interface TestIamPermissionsFoldersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2446,7 +2434,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsOrganizationsRequest {
@@ -2455,7 +2443,7 @@ export interface TestIamPermissionsOrganizationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2476,7 +2464,7 @@ export interface TestIamPermissionsProjectsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2497,7 +2485,7 @@ export interface TestIamPermissionsTagKeysRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2518,7 +2506,7 @@ export interface TestIamPermissionsTagValuesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2535,7 +2523,7 @@ export const TestIamPermissionsTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The UndeleteFolder request message. */
 export interface UndeleteFolderRequest {}
-export const UndeleteFolderRequest = Empty as any as S.Schema<UndeleteFolderRequest>;
+const UndeleteFolderRequest = Empty as any as S.Schema<UndeleteFolderRequest>;
 
 export interface UndeleteFoldersRequest {
   /** Required. The resource name of the folder to undelete. Must be of the form `folders/{folder_id}`. */
@@ -2543,7 +2531,7 @@ export interface UndeleteFoldersRequest {
   /** Request body */
   body?: UndeleteFolderRequest;
 }
-export const UndeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteFolderRequest.pipe(T.HttpBody())),
@@ -2558,15 +2546,13 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request sent to the UndeleteProject method. */
 export type UndeleteProjectRequest = UndeleteFolderRequest;
-export const UndeleteProjectRequest = UndeleteFolderRequest;
-
 export interface UndeleteProjectsRequest {
   /** Required. The name of the project (for example, `projects/415104041262`). Required. */
   name: string;
   /** Request body */
   body?: UndeleteFolderRequest;
 }
-export const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteFolderRequest.pipe(T.HttpBody())),

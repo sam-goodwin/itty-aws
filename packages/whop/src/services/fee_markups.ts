@@ -57,11 +57,11 @@ export type FeeMarkupTypes =
   | "bank_deposit_markup"
   | "crypto_swap_markup"
   | "payment_markup";
-export const FeeMarkupTypes = S.String;
+const FeeMarkupTypes = S.String;
 
 /** Custom key-value metadata to attach to this fee markup. */
 export type CreateFeeMarkupRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateFeeMarkupRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateFeeMarkupRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateFeeMarkupRequestMetadataMap>;
@@ -80,7 +80,7 @@ export interface CreateFeeMarkupRequest {
   /** The percentage fee to charge per transaction. Must be between 0 and 25. */
   percentage_fee?: number | null;
 }
-export const CreateFeeMarkupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeeMarkupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     fee_type: FeeMarkupTypes,
@@ -108,7 +108,7 @@ export interface FeeMarkup {
   /** The datetime the fee markup was last updated. */
   updated_at: string;
 }
-export const FeeMarkup = /*@__PURE__*/ S.suspend(() =>
+const FeeMarkup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     fee_type: FeeMarkupTypes,
@@ -124,14 +124,14 @@ export interface DeleteFeeMarkupRequest {
   /** The unique identifier of the fee markup to delete. */
   id: string;
 }
-export const DeleteFeeMarkupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFeeMarkupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/fee_markups/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteFeeMarkupRequest" }) as any as S.Schema<DeleteFeeMarkupRequest>;
 
 export type DeleteFeeMarkupResponse = boolean;
-export const DeleteFeeMarkupResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteFeeMarkupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteFeeMarkupResponse" }) as any as S.Schema<DeleteFeeMarkupResponse>;
 
@@ -142,7 +142,7 @@ export interface ListFeeMarkupRequest {
   last?: number;
   account_id: string;
 }
-export const ListFeeMarkupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeeMarkupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -169,11 +169,11 @@ export interface FeeMarkupListItem {
   /** The datetime the fee markup was last updated. */
   updated_at: string;
 }
-export const FeeMarkupListItem = FeeMarkup as any as S.Schema<FeeMarkupListItem>;
+const FeeMarkupListItem = FeeMarkup as any as S.Schema<FeeMarkupListItem>;
 
 /** A list of nodes. */
 export type ListFeeMarkupResponseDataList = Array<FeeMarkupListItem>;
-export const ListFeeMarkupResponseDataList = /*@__PURE__*/ S.Array(
+const ListFeeMarkupResponseDataList = /*@__PURE__*/ S.Array(
   FeeMarkupListItem,
 ) as any as S.Schema<ListFeeMarkupResponseDataList>;
 
@@ -188,7 +188,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -203,7 +203,7 @@ export interface ListFeeMarkupResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListFeeMarkupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeeMarkupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListFeeMarkupResponseDataList,
     page_info: PageInfo,

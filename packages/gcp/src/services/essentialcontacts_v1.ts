@@ -71,12 +71,12 @@ export type ComputeFoldersContactsNotificationCategoriesEnum =
   | "LEGAL"
   | "PRODUCT_UPDATES"
   | "TECHNICAL_INCIDENTS";
-export const ComputeFoldersContactsNotificationCategoriesEnum = S.String;
+const ComputeFoldersContactsNotificationCategoriesEnum = S.String;
 
 export type ComputeFoldersContactsNotificationCategoriesEnumList = Array<
   ComputeFoldersContactsNotificationCategoriesEnum | (string & {})
 >;
-export const ComputeFoldersContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(
+const ComputeFoldersContactsNotificationCategoriesEnumList = /*@__PURE__*/ S.Array(
   ComputeFoldersContactsNotificationCategoriesEnum,
 ) as any as S.Schema<ComputeFoldersContactsNotificationCategoriesEnumList>;
 
@@ -90,7 +90,7 @@ export interface ComputeFoldersContactsRequest {
   /** Required. The name of the resource to compute contacts for. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
 }
-export const ComputeFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ComputeFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -113,7 +113,7 @@ export type GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
   | "VALIDATION_STATE_UNSPECIFIED"
   | "VALID"
   | "INVALID";
-export const GoogleCloudEssentialcontactsV1ContactValidationStateEnum = S.String;
+const GoogleCloudEssentialcontactsV1ContactValidationStateEnum = S.String;
 
 export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum =
   | "NOTIFICATION_CATEGORY_UNSPECIFIED"
@@ -125,14 +125,13 @@ export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptio
   | "LEGAL"
   | "PRODUCT_UPDATES"
   | "TECHNICAL_INCIDENTS";
-export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum =
-  S.String;
+const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum = S.String;
 
 export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
   Array<
     GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum | (string & {})
   >;
-export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
+const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum,
   ) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList>;
@@ -152,7 +151,7 @@ export interface GoogleCloudEssentialcontactsV1Contact {
   /** Required. The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages. */
   languageTag?: string;
 }
-export const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -169,7 +168,7 @@ export const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudEssentialcontactsV1ContactList =
   Array<GoogleCloudEssentialcontactsV1Contact>;
-export const GoogleCloudEssentialcontactsV1ContactList = /*@__PURE__*/ S.Array(
+const GoogleCloudEssentialcontactsV1ContactList = /*@__PURE__*/ S.Array(
   GoogleCloudEssentialcontactsV1Contact,
 ) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactList>;
 
@@ -180,7 +179,7 @@ export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token` and the rest of the parameters the same as the original request. */
   nextPageToken?: string;
 }
-export const GoogleCloudEssentialcontactsV1ComputeContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudEssentialcontactsV1ComputeContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contacts: S.optional(GoogleCloudEssentialcontactsV1ContactList),
     nextPageToken: S.optional(S.String),
@@ -199,12 +198,10 @@ export type ComputeOrganizationsContactsNotificationCategoriesEnum =
   | "LEGAL"
   | "PRODUCT_UPDATES"
   | "TECHNICAL_INCIDENTS";
-export const ComputeOrganizationsContactsNotificationCategoriesEnum = S.String;
-
 export type ComputeOrganizationsContactsNotificationCategoriesEnumList = Array<
   ComputeOrganizationsContactsNotificationCategoriesEnum | (string & {})
 >;
-export const ComputeOrganizationsContactsNotificationCategoriesEnumList =
+const ComputeOrganizationsContactsNotificationCategoriesEnumList =
   ComputeFoldersContactsNotificationCategoriesEnumList as any as S.Schema<ComputeOrganizationsContactsNotificationCategoriesEnumList>;
 
 export interface ComputeOrganizationsContactsRequest {
@@ -217,7 +214,7 @@ export interface ComputeOrganizationsContactsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. If not specified, the default page_size is 100. */
   pageSize?: number;
 }
-export const ComputeOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ComputeOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     notificationCategories: S.optional(
@@ -246,12 +243,10 @@ export type ComputeProjectsContactsNotificationCategoriesEnum =
   | "LEGAL"
   | "PRODUCT_UPDATES"
   | "TECHNICAL_INCIDENTS";
-export const ComputeProjectsContactsNotificationCategoriesEnum = S.String;
-
 export type ComputeProjectsContactsNotificationCategoriesEnumList = Array<
   ComputeProjectsContactsNotificationCategoriesEnum | (string & {})
 >;
-export const ComputeProjectsContactsNotificationCategoriesEnumList =
+const ComputeProjectsContactsNotificationCategoriesEnumList =
   ComputeFoldersContactsNotificationCategoriesEnumList as any as S.Schema<ComputeProjectsContactsNotificationCategoriesEnumList>;
 
 export interface ComputeProjectsContactsRequest {
@@ -264,7 +259,7 @@ export interface ComputeProjectsContactsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ComputeProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ComputeProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     notificationCategories: S.optional(
@@ -289,7 +284,7 @@ export interface CreateFoldersContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
-export const CreateFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
@@ -310,7 +305,7 @@ export interface CreateOrganizationsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
-export const CreateOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
@@ -331,7 +326,7 @@ export interface CreateProjectsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
-export const CreateProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudEssentialcontactsV1Contact.pipe(T.HttpBody())),
@@ -350,7 +345,7 @@ export interface DeleteFoldersContactsRequest {
   /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
-export const DeleteFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -366,7 +361,7 @@ export const DeleteFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -374,7 +369,7 @@ export interface DeleteOrganizationsContactsRequest {
   /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
-export const DeleteOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -392,7 +387,7 @@ export interface DeleteProjectsContactsRequest {
   /** Required. The name of the contact to delete. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
-export const DeleteProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -410,7 +405,7 @@ export interface GetFoldersContactsRequest {
   /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
-export const GetFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -428,7 +423,7 @@ export interface GetOrganizationsContactsRequest {
   /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
-export const GetOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -446,7 +441,7 @@ export interface GetProjectsContactsRequest {
   /** Required. The name of the contact to retrieve. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
   name: string;
 }
-export const GetProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -468,7 +463,7 @@ export interface ListFoldersContactsRequest {
   /** Required. The parent resource name. Format: organizations/{organization}, folders/{folder} or projects/{project} (where {project} is the project number) */
   parent: string;
 }
-export const ListFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -491,7 +486,7 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token` and the rest of the parameters the same as the original request. */
   nextPageToken?: string;
 }
-export const GoogleCloudEssentialcontactsV1ListContactsResponse =
+const GoogleCloudEssentialcontactsV1ListContactsResponse =
   GoogleCloudEssentialcontactsV1ComputeContactsResponse as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
 
 export interface ListOrganizationsContactsRequest {
@@ -502,7 +497,7 @@ export interface ListOrganizationsContactsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -526,7 +521,7 @@ export interface ListProjectsContactsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -550,7 +545,7 @@ export interface PatchFoldersContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
-export const PatchFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -574,7 +569,7 @@ export interface PatchOrganizationsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
-export const PatchOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -598,7 +593,7 @@ export interface PatchProjectsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1Contact;
 }
-export const PatchProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -615,7 +610,7 @@ export const PatchProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchProjectsContactsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum =
   | "NOTIFICATION_CATEGORY_UNSPECIFIED"
@@ -627,8 +622,7 @@ export type GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCate
   | "LEGAL"
   | "PRODUCT_UPDATES"
   | "TECHNICAL_INCIDENTS";
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum =
-  S.String;
+const GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum = S.String;
 
 /** Request message for the SendTestMessage method. */
 export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
@@ -639,7 +633,7 @@ export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
     | GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum
     | (string & {});
 }
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudEssentialcontactsV1SendTestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contacts: S.optional(StringList),
     notificationCategory: S.optional(
@@ -656,7 +650,7 @@ export interface SendTestMessageFoldersContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
 }
-export const SendTestMessageFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTestMessageFoldersContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody())),
@@ -677,7 +671,7 @@ export interface SendTestMessageOrganizationsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
 }
-export const SendTestMessageOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTestMessageOrganizationsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody())),
@@ -698,7 +692,7 @@ export interface SendTestMessageProjectsContactsRequest {
   /** Request body */
   body?: GoogleCloudEssentialcontactsV1SendTestMessageRequest;
 }
-export const SendTestMessageProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTestMessageProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudEssentialcontactsV1SendTestMessageRequest.pipe(T.HttpBody())),

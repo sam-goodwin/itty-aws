@@ -31,11 +31,9 @@ export type CreateProviderMappingRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
-export const CreateProviderMappingRequestProvider = S.String;
+const CreateProviderMappingRequestProvider = S.String;
 
 export type CreateProviderMappingRequestBodyCase0Status = "live" | "staging" | "error";
-export const CreateProviderMappingRequestBodyCase0Status = S.String;
-
 export type CreateProviderMappingRequestBodyCase0Task =
   | "conversational"
   | "text-classification"
@@ -94,8 +92,6 @@ export type CreateProviderMappingRequestBodyCase0Task =
   | "visual-document-retrieval"
   | "any-to-any"
   | "video-to-video";
-export const CreateProviderMappingRequestBodyCase0Task = S.String;
-
 export interface CreateProviderMappingRequestBodyCase0 {
   type?: string;
   hfModel: string;
@@ -103,21 +99,7 @@ export interface CreateProviderMappingRequestBodyCase0 {
   status?: CreateProviderMappingRequestBodyCase0Status | (string & {});
   task: CreateProviderMappingRequestBodyCase0Task | (string & {});
 }
-export const CreateProviderMappingRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    hfModel: S.String,
-    providerModel: S.String,
-    status: S.optional(CreateProviderMappingRequestBodyCase0Status),
-    task: CreateProviderMappingRequestBodyCase0Task,
-  }),
-).annotate({
-  identifier: "CreateProviderMappingRequestBodyCase0",
-}) as any as S.Schema<CreateProviderMappingRequestBodyCase0>;
-
 export type CreateProviderMappingRequestBodyCase1Status = "live" | "staging" | "error";
-export const CreateProviderMappingRequestBodyCase1Status = S.String;
-
 export type CreateProviderMappingRequestBodyCase1Task =
   | "conversational"
   | "text-classification"
@@ -176,13 +158,7 @@ export type CreateProviderMappingRequestBodyCase1Task =
   | "visual-document-retrieval"
   | "any-to-any"
   | "video-to-video";
-export const CreateProviderMappingRequestBodyCase1Task = S.String;
-
 export type CreateProviderMappingRequestBodyCase1TagsList = Array<string>;
-export const CreateProviderMappingRequestBodyCase1TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProviderMappingRequestBodyCase1TagsList>;
-
 export interface CreateProviderMappingRequestBodyCase1 {
   type: string;
   providerModel: string;
@@ -191,30 +167,17 @@ export interface CreateProviderMappingRequestBodyCase1 {
   tags: CreateProviderMappingRequestBodyCase1TagsList;
   adapterType: string;
 }
-export const CreateProviderMappingRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    providerModel: S.String,
-    status: S.optional(CreateProviderMappingRequestBodyCase1Status),
-    task: CreateProviderMappingRequestBodyCase1Task,
-    tags: CreateProviderMappingRequestBodyCase1TagsList,
-    adapterType: S.String,
-  }),
-).annotate({
-  identifier: "CreateProviderMappingRequestBodyCase1",
-}) as any as S.Schema<CreateProviderMappingRequestBodyCase1>;
-
 export type CreateProviderMappingRequestBody =
   | CreateProviderMappingRequestBodyCase0
   | CreateProviderMappingRequestBodyCase1;
-export const CreateProviderMappingRequestBody =
+const CreateProviderMappingRequestBody =
   S.Unknown as any as S.Schema<CreateProviderMappingRequestBody>;
 
 export interface CreateProviderMappingRequest {
   provider: CreateProviderMappingRequestProvider | (string & {});
   body?: CreateProviderMappingRequestBody;
 }
-export const CreateProviderMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProviderMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: CreateProviderMappingRequestProvider.pipe(T.Label()),
     body: S.optional(CreateProviderMappingRequestBody.pipe(T.HttpBody())),
@@ -224,14 +187,14 @@ export const CreateProviderMappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProviderMappingRequest>;
 
 export interface CreateProviderMappingResponse {}
-export const CreateProviderMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateProviderMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateProviderMappingResponse",
 }) as any as S.Schema<CreateProviderMappingResponse>;
 
 export interface DefaultBillingEntityRequest {
   orgId?: string;
 }
-export const DefaultBillingEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const DefaultBillingEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgId: S.optional(S.String),
   }).pipe(
@@ -246,7 +209,7 @@ export const DefaultBillingEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultBillingEntityRequest>;
 
 export interface DefaultBillingEntityResponse {}
-export const DefaultBillingEntityResponse =
+const DefaultBillingEntityResponse =
   CreateProviderMappingResponse as any as S.Schema<DefaultBillingEntityResponse>;
 
 export type ListProviderMappingsRequestProvider =
@@ -268,16 +231,16 @@ export type ListProviderMappingsRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
-export const ListProviderMappingsRequestProvider = S.String;
+const ListProviderMappingsRequestProvider = S.String;
 
 export type ListProviderMappingsRequestStatus = "live" | "staging" | "error";
-export const ListProviderMappingsRequestStatus = S.String;
+const ListProviderMappingsRequestStatus = S.String;
 
 export interface ListProviderMappingsRequest {
   provider: ListProviderMappingsRequestProvider | (string & {});
   status?: ListProviderMappingsRequestStatus | (string & {});
 }
-export const ListProviderMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProviderMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: ListProviderMappingsRequestProvider.pipe(T.Label()),
     status: S.optional(ListProviderMappingsRequestStatus.pipe(T.Query())),
@@ -287,14 +250,14 @@ export const ListProviderMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProviderMappingsRequest>;
 
 export interface ListProviderMappingsResponse {}
-export const ListProviderMappingsResponse =
+const ListProviderMappingsResponse =
   CreateProviderMappingResponse as any as S.Schema<ListProviderMappingsResponse>;
 
 export interface ReorderInferenceProvidersRequestBodyValue {
   enabled: boolean;
   position: number;
 }
-export const ReorderInferenceProvidersRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
+const ReorderInferenceProvidersRequestBodyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     position: S.Number,
@@ -306,7 +269,7 @@ export const ReorderInferenceProvidersRequestBodyValue = /*@__PURE__*/ S.suspend
 export type ReorderInferenceProvidersRequestBodyMap = {
   [key: string]: ReorderInferenceProvidersRequestBodyValue | undefined;
 };
-export const ReorderInferenceProvidersRequestBodyMap = /*@__PURE__*/ S.Record(
+const ReorderInferenceProvidersRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   ReorderInferenceProvidersRequestBodyValue,
 ) as any as S.Schema<ReorderInferenceProvidersRequestBodyMap>;
@@ -314,7 +277,7 @@ export const ReorderInferenceProvidersRequestBodyMap = /*@__PURE__*/ S.Record(
 export interface ReorderInferenceProvidersRequest {
   body?: ReorderInferenceProvidersRequestBodyMap;
 }
-export const ReorderInferenceProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ReorderInferenceProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ReorderInferenceProvidersRequestBodyMap.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/api/settings/inference-providers", code: 200 })),
@@ -323,9 +286,7 @@ export const ReorderInferenceProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReorderInferenceProvidersRequest>;
 
 export interface ReorderInferenceProvidersResponse {}
-export const ReorderInferenceProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ReorderInferenceProvidersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ReorderInferenceProvidersResponse",
 }) as any as S.Schema<ReorderInferenceProvidersResponse>;
 
@@ -347,13 +308,13 @@ export type SetProviderKeyRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
-export const SetProviderKeyRequestProvider = S.String;
+const SetProviderKeyRequestProvider = S.String;
 
 export interface SetProviderKeyRequest {
   provider: SetProviderKeyRequestProvider | (string & {});
   apiKey: string | Redacted.Redacted<string>;
 }
-export const SetProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: SetProviderKeyRequestProvider,
     apiKey: S.String.pipe(T.SensitiveValue({})),
@@ -361,13 +322,13 @@ export const SetProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetProviderKeyRequest" }) as any as S.Schema<SetProviderKeyRequest>;
 
 export interface SetProviderKeyResponse {}
-export const SetProviderKeyResponse =
+const SetProviderKeyResponse =
   CreateProviderMappingResponse as any as S.Schema<SetProviderKeyResponse>;
 
 export interface SetSpendingLimitRequest {
   spendingLimitCents: number;
 }
-export const SetSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spendingLimitCents: S.Number,
   }).pipe(
@@ -376,7 +337,7 @@ export const SetSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSpendingLimitRequest" }) as any as S.Schema<SetSpendingLimitRequest>;
 
 export interface SetSpendingLimitResponse {}
-export const SetSpendingLimitResponse =
+const SetSpendingLimitResponse =
   CreateProviderMappingResponse as any as S.Schema<SetSpendingLimitResponse>;
 
 export type UpdateMappingStatusRequestProvider =
@@ -398,17 +359,17 @@ export type UpdateMappingStatusRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
-export const UpdateMappingStatusRequestProvider = S.String;
+const UpdateMappingStatusRequestProvider = S.String;
 
 export type UpdateMappingStatusRequestStatus = "live" | "staging" | "error";
-export const UpdateMappingStatusRequestStatus = S.String;
+const UpdateMappingStatusRequestStatus = S.String;
 
 export interface UpdateMappingStatusRequest {
   provider: UpdateMappingStatusRequestProvider | (string & {});
   mappingId: string;
   status: UpdateMappingStatusRequestStatus | (string & {});
 }
-export const UpdateMappingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMappingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: UpdateMappingStatusRequestProvider.pipe(T.Label()),
     mappingId: S.String.pipe(T.Label()),
@@ -421,7 +382,7 @@ export const UpdateMappingStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMappingStatusRequest>;
 
 export interface UpdateMappingStatusResponse {}
-export const UpdateMappingStatusResponse =
+const UpdateMappingStatusResponse =
   CreateProviderMappingResponse as any as S.Schema<UpdateMappingStatusResponse>;
 
 export type CreateProviderMappingError = HuggingFaceOpError;

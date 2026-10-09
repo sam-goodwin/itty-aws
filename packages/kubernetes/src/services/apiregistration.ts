@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -199,13 +199,12 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
   /** If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive). */
   port?: number;
 }
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      namespace: S.optional(S.String),
-      port: S.optional(S.Number),
-    }),
+const IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    namespace: S.optional(S.String),
+    port: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference",
 }) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference>;
@@ -227,17 +226,16 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
   /** VersionPriority controls the ordering of this API version inside of its group. Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. */
   versionPriority: number;
 }
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      caBundle: S.optional(S.String),
-      group: S.optional(S.String),
-      groupPriorityMinimum: S.Number,
-      insecureSkipTLSVerify: S.optional(S.Boolean),
-      service: S.optional(IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference),
-      version: S.optional(S.String),
-      versionPriority: S.Number,
-    }),
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    caBundle: S.optional(S.String),
+    group: S.optional(S.String),
+    groupPriorityMinimum: S.Number,
+    insecureSkipTLSVerify: S.optional(S.Boolean),
+    service: S.optional(IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference),
+    version: S.optional(S.String),
+    versionPriority: S.Number,
+  }),
 ).annotate({
   identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec",
 }) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec>;
@@ -255,23 +253,22 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition 
   /** Type is the type of the condition. */
   type: string;
 }
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastTransitionTime: S.optional(S.String),
-      message: S.optional(S.String),
-      reason: S.optional(S.String),
-      status: S.String,
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition",
-  }) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition>;
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastTransitionTime: S.optional(S.String),
+    message: S.optional(S.String),
+    reason: S.optional(S.String),
+    status: S.String,
+    type: S.String,
+  }),
+).annotate({
+  identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition",
+}) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition>;
 
 /** Current service state of apiService. */
 export type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList =
   Array<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition>;
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList =
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList>;
@@ -281,13 +278,12 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
   /** Current service state of apiService. */
   conditions?: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList;
 }
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      conditions: S.optional(
-        IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList,
-      ),
-    }),
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conditions: S.optional(
+      IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatusConditionsList,
+    ),
+  }),
 ).annotate({
   identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus",
 }) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus>;
@@ -312,7 +308,7 @@ export interface CreateApiregistrationV1APIServiceRequest {
   /** Status contains derived information about an API server */
   status?: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus;
 }
-export const CreateApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -343,7 +339,7 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIService {
   /** Status contains derived information about an API server */
   status?: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus;
 }
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIService = /*@__PURE__*/ S.suspend(() =>
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -362,7 +358,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -393,7 +389,7 @@ export interface DeleteApiregistrationV1APIServiceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -425,7 +421,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -438,7 +434,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -457,7 +453,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -475,7 +471,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -496,7 +492,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -527,7 +523,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -580,7 +576,7 @@ export interface DeleteApiregistrationV1CollectionAPIServiceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteApiregistrationV1CollectionAPIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiregistrationV1CollectionAPIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -608,7 +604,7 @@ export const DeleteApiregistrationV1CollectionAPIServiceRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteApiregistrationV1CollectionAPIServiceRequest>;
 
 export interface GetApiregistrationAPIGroupRequest {}
-export const GetApiregistrationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiregistrationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetApiregistrationAPIGroupRequest",
@@ -621,7 +617,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -637,7 +633,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -649,15 +645,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -676,7 +671,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -692,7 +687,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetApiregistrationV1APIResourcesRequest {}
-export const GetApiregistrationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiregistrationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetApiregistrationV1APIResourcesRequest",
@@ -700,17 +695,17 @@ export const GetApiregistrationV1APIResourcesRequest = /*@__PURE__*/ S.suspend((
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -736,7 +731,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -756,7 +751,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -771,7 +766,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -808,7 +803,7 @@ export interface ListApiregistrationV1APIServiceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -830,10 +825,9 @@ export const ListApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(()
 /** Items is the list of APIService */
 export type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList =
   Array<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>;
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sKubeAggregatorPkgApisApiregistrationV1APIService,
-  ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList>;
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList = /*@__PURE__*/ S.Array(
+  IoK8sKubeAggregatorPkgApisApiregistrationV1APIService,
+) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList>;
 
 /** APIServiceList is a list of APIService objects. */
 export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList {
@@ -846,14 +840,13 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      items: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList,
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-    }),
+const IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    items: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceListItemsList,
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+  }),
 ).annotate({
   identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList",
 }) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList>;
@@ -872,7 +865,7 @@ export interface PatchApiregistrationV1APIServiceRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -905,7 +898,7 @@ export interface PatchApiregistrationV1APIServiceStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchApiregistrationV1APIServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchApiregistrationV1APIServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -930,7 +923,7 @@ export interface ReadApiregistrationV1APIServiceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -947,7 +940,7 @@ export interface ReadApiregistrationV1APIServiceStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadApiregistrationV1APIServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadApiregistrationV1APIServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -984,7 +977,7 @@ export interface ReplaceApiregistrationV1APIServiceRequest {
   /** Status contains derived information about an API server */
   status?: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus;
 }
-export const ReplaceApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1025,7 +1018,7 @@ export interface ReplaceApiregistrationV1APIServiceStatusRequest {
   /** Status contains derived information about an API server */
   status?: IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus;
 }
-export const ReplaceApiregistrationV1APIServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceApiregistrationV1APIServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1076,7 +1069,7 @@ export interface WatchApiregistrationV1APIServiceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchApiregistrationV1APIServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1108,7 +1101,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -1143,7 +1136,7 @@ export interface WatchApiregistrationV1APIServiceListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchApiregistrationV1APIServiceListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchApiregistrationV1APIServiceListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),

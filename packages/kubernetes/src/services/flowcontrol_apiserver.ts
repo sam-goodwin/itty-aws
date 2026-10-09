@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -195,7 +195,7 @@ export interface IoK8sApiFlowcontrolV1FlowDistinguisherMethod {
   /** type is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required. */
   type: string;
 }
-export const IoK8sApiFlowcontrolV1FlowDistinguisherMethod = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1FlowDistinguisherMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
   }),
@@ -208,23 +208,22 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference {
   /** name is the name of the priority level configuration being referenced Required. */
   name: string;
 }
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-    }),
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+  }),
 ).annotate({
   identifier: "IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference",
 }) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference>;
 
 /** nonResourceURLs is a set of url prefixes that a user should have access to and may not be empty. For example: - "/healthz" is legal - "/hea*" is illegal - "/hea" is legal but matches nothing - "/hea/*" also matches nothing - "/healthz/*" matches all per-component health checks. "*" matches all non-resource urls. if it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList = Array<string>;
-export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList =
+const IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList>;
 
 /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList = Array<string>;
-export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList =
+const IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList>;
 
 /** NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request. */
@@ -234,7 +233,7 @@ export interface IoK8sApiFlowcontrolV1NonResourcePolicyRule {
   /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required. */
   verbs: IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList;
 }
-export const IoK8sApiFlowcontrolV1NonResourcePolicyRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1NonResourcePolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonResourceURLs: IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList,
     verbs: IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList,
@@ -246,29 +245,28 @@ export const IoK8sApiFlowcontrolV1NonResourcePolicyRule = /*@__PURE__*/ S.suspen
 /** nonResourceRules is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
   Array<IoK8sApiFlowcontrolV1NonResourcePolicyRule>;
-export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiFlowcontrolV1NonResourcePolicyRule,
-  ) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList>;
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList = /*@__PURE__*/ S.Array(
+  IoK8sApiFlowcontrolV1NonResourcePolicyRule,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList>;
 
 /** apiGroups is a list of matching API groups and may not be empty. "*" matches all API groups and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList>;
 
 /** namespaces is a list of target namespaces that restricts matches. A request that specifies a target namespace matches only if either (a) this list contains that target namespace or (b) this list contains "*". Note that "*" matches any specified namespace but does not match a request that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be empty, but only if `clusterScope` is true. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList>;
 
 /** resources is a list of matching resources (i.e., lowercase and plural) with, if desired, subresource. For example, [ "services", "nodes/status" ]. This list may not be empty. "*" matches all resources and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList =
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList>;
 
 /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList =
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList>;
 
 /** ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb and the target resource. A ResourcePolicyRule matches a resource request if and only if: (a) at least one member of verbs matches the request, (b) at least one member of apiGroups matches the request, (c) at least one member of resources matches the request, and (d) either (d1) the request does not specify a namespace (i.e., `Namespace==""`) and clusterScope is true or (d2) the request specifies a namespace and least one member of namespaces matches the request's namespace. */
@@ -284,7 +282,7 @@ export interface IoK8sApiFlowcontrolV1ResourcePolicyRule {
   /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required. */
   verbs: IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList;
 }
-export const IoK8sApiFlowcontrolV1ResourcePolicyRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1ResourcePolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroups: IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList,
     clusterScope: S.optional(S.Boolean),
@@ -299,7 +297,7 @@ export const IoK8sApiFlowcontrolV1ResourcePolicyRule = /*@__PURE__*/ S.suspend((
 /** resourceRules is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList =
   Array<IoK8sApiFlowcontrolV1ResourcePolicyRule>;
-export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList = /*@__PURE__*/ S.Array(
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiFlowcontrolV1ResourcePolicyRule,
 ) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList>;
 
@@ -308,7 +306,7 @@ export interface IoK8sApiFlowcontrolV1GroupSubject {
   /** name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required. */
   name: string;
 }
-export const IoK8sApiFlowcontrolV1GroupSubject = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1GroupSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -323,7 +321,7 @@ export interface IoK8sApiFlowcontrolV1ServiceAccountSubject {
   /** namespace is the namespace of matching ServiceAccount objects. Required. */
   namespace: string;
 }
-export const IoK8sApiFlowcontrolV1ServiceAccountSubject = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1ServiceAccountSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     namespace: S.String,
@@ -337,7 +335,7 @@ export interface IoK8sApiFlowcontrolV1UserSubject {
   /** name is the username that matches, or "*" to match all usernames. Required. */
   name: string;
 }
-export const IoK8sApiFlowcontrolV1UserSubject =
+const IoK8sApiFlowcontrolV1UserSubject =
   IoK8sApiFlowcontrolV1GroupSubject as any as S.Schema<IoK8sApiFlowcontrolV1UserSubject>;
 
 /** Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account. */
@@ -351,7 +349,7 @@ export interface IoK8sApiFlowcontrolV1Subject {
   /** user matches based on username. */
   user?: IoK8sApiFlowcontrolV1UserSubject;
 }
-export const IoK8sApiFlowcontrolV1Subject = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1Subject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(IoK8sApiFlowcontrolV1GroupSubject),
     kind: S.String,
@@ -365,7 +363,7 @@ export const IoK8sApiFlowcontrolV1Subject = /*@__PURE__*/ S.suspend(() =>
 /** subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList =
   Array<IoK8sApiFlowcontrolV1Subject>;
-export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList = /*@__PURE__*/ S.Array(
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList = /*@__PURE__*/ S.Array(
   IoK8sApiFlowcontrolV1Subject,
 ) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList>;
 
@@ -378,7 +376,7 @@ export interface IoK8sApiFlowcontrolV1PolicyRulesWithSubjects {
   /** subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required. */
   subjects: IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList;
 }
-export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjects = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonResourceRules: S.optional(IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList),
     resourceRules: S.optional(IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList),
@@ -391,7 +389,7 @@ export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjects = /*@__PURE__*/ S.susp
 /** rules describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema. */
 export type IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList =
   Array<IoK8sApiFlowcontrolV1PolicyRulesWithSubjects>;
-export const IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList = /*@__PURE__*/ S.Array(
+const IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiFlowcontrolV1PolicyRulesWithSubjects,
 ) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList>;
 
@@ -406,7 +404,7 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaSpec {
   /** rules describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema. */
   rules?: IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList;
 }
-export const IoK8sApiFlowcontrolV1FlowSchemaSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1FlowSchemaSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distinguisherMethod: S.optional(IoK8sApiFlowcontrolV1FlowDistinguisherMethod),
     matchingPrecedence: S.optional(S.Number),
@@ -430,7 +428,7 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaCondition {
   /** type is the type of the condition. Required. */
   type: string;
 }
-export const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.optional(S.String),
     message: S.optional(S.String),
@@ -445,7 +443,7 @@ export const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ S.suspend(
 /** `conditions` is a list of the current states of FlowSchema. */
 export type IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList =
   Array<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
-export const IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList = /*@__PURE__*/ S.Array(
+const IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList = /*@__PURE__*/ S.Array(
   IoK8sApiFlowcontrolV1FlowSchemaCondition,
 ) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList>;
 
@@ -454,7 +452,7 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaStatus {
   /** `conditions` is a list of the current states of FlowSchema. */
   conditions?: IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList;
 }
-export const IoK8sApiFlowcontrolV1FlowSchemaStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1FlowSchemaStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList),
   }),
@@ -482,7 +480,7 @@ export interface CreateFlowcontrolApiserverV1FlowSchemaRequest {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
-export const CreateFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -513,7 +511,7 @@ export interface IoK8sApiFlowcontrolV1FlowSchema {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
-export const IoK8sApiFlowcontrolV1FlowSchema = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1FlowSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -532,7 +530,7 @@ export interface IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration {
   /** nominalConcurrencyShares (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats nominally reserved for this priority level. This DOES NOT limit the dispatching from this priority level but affects the other priority levels through the borrowing mechanism. The server's concurrency limit (ServerCL) is divided among all the priority levels in proportion to their NCS values: NominalCL(i) = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k) Bigger numbers mean a larger nominal concurrency limit, at the expense of every other priority level. This field has a default value of zero. */
   nominalConcurrencyShares?: number;
 }
-export const IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lendablePercent: S.optional(S.Number),
     nominalConcurrencyShares: S.optional(S.Number),
@@ -550,7 +548,7 @@ export interface IoK8sApiFlowcontrolV1QueuingConfiguration {
   /** queues is the number of queues for this priority level. The queues exist independently at each apiserver. The value must be positive. Setting it to 1 effectively precludes shufflesharding and thus makes the distinguisher method of associated flow schemas irrelevant. This field has a default value of 64. */
   queues?: number;
 }
-export const IoK8sApiFlowcontrolV1QueuingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1QueuingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     handSize: S.optional(S.Number),
     queueLengthLimit: S.optional(S.Number),
@@ -567,7 +565,7 @@ export interface IoK8sApiFlowcontrolV1LimitResponse {
   /** type is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required. */
   type: string;
 }
-export const IoK8sApiFlowcontrolV1LimitResponse = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1LimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queuing: S.optional(IoK8sApiFlowcontrolV1QueuingConfiguration),
     type: S.String,
@@ -587,7 +585,7 @@ export interface IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration {
   /** nominalConcurrencyShares (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats available at this priority level. This is used both for requests dispatched from this priority level as well as requests dispatched from other priority levels borrowing seats from this level. The server's concurrency limit (ServerCL) is divided among the Limited priority levels in proportion to their NCS values: NominalCL(i) = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k) Bigger numbers mean a larger nominal concurrency limit, at the expense of every other priority level. If not specified, this field defaults to a value of 30. Setting this field to zero supports the construction of a "jail" for this priority level that is used to hold some request(s) */
   nominalConcurrencyShares?: number;
 }
-export const IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     borrowingLimitPercent: S.optional(S.Number),
     lendablePercent: S.optional(S.Number),
@@ -607,7 +605,7 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec {
   /** type indicates whether this priority level is subject to limitation on request execution. A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels. A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required. */
   type: string;
 }
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exempt: S.optional(IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration),
     limited: S.optional(IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration),
@@ -620,23 +618,19 @@ export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec = /*@__PURE__*/
 /** PriorityLevelConfigurationCondition defines the condition of priority level. */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition =
   IoK8sApiFlowcontrolV1FlowSchemaCondition;
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition =
-  IoK8sApiFlowcontrolV1FlowSchemaCondition;
-
 /** `conditions` is the current state of "request-priority". */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList =
   Array<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiFlowcontrolV1FlowSchemaCondition,
-  ) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList>;
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList = /*@__PURE__*/ S.Array(
+  IoK8sApiFlowcontrolV1FlowSchemaCondition,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList>;
 
 /** PriorityLevelConfigurationStatus represents the current state of a "request-priority". */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus {
   /** `conditions` is the current state of "request-priority". */
   conditions?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList;
 }
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList),
   }),
@@ -664,28 +658,27 @@ export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
-export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
-      status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
-  }) as any as S.Schema<CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+const CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+    status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
+}) as any as S.Schema<CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
 
 /** PriorityLevelConfiguration represents the configuration of a priority level. */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfiguration {
@@ -700,7 +693,7 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfiguration {
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
-export const IoK8sApiFlowcontrolV1PriorityLevelConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1PriorityLevelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -719,7 +712,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -766,7 +759,7 @@ export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -806,7 +799,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -819,7 +812,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -838,7 +831,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -856,7 +849,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -877,7 +870,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -908,7 +901,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -961,7 +954,7 @@ export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguratio
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest =
+const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -1015,7 +1008,7 @@ export interface DeleteFlowcontrolApiserverV1FlowSchemaRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1060,32 +1053,31 @@ export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
-  }) as any as S.Schema<DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
+}) as any as S.Schema<DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
 
 export interface GetFlowcontrolApiserverAPIGroupRequest {}
-export const GetFlowcontrolApiserverAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowcontrolApiserverAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/flowcontrol.apiserver.k8s.io/", code: 200 }),
   ),
@@ -1100,7 +1092,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -1116,7 +1108,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -1128,15 +1120,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -1155,7 +1146,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1171,7 +1162,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetFlowcontrolApiserverV1APIResourcesRequest {}
-export const GetFlowcontrolApiserverV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowcontrolApiserverV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/flowcontrol.apiserver.k8s.io/v1/", code: 200 }),
   ),
@@ -1181,17 +1172,17 @@ export const GetFlowcontrolApiserverV1APIResourcesRequest = /*@__PURE__*/ S.susp
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -1217,7 +1208,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -1237,7 +1228,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -1252,7 +1243,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -1289,7 +1280,7 @@ export interface ListFlowcontrolApiserverV1FlowSchemaRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1312,7 +1303,7 @@ export const ListFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspe
 
 /** `items` is a list of FlowSchemas. */
 export type IoK8sApiFlowcontrolV1FlowSchemaListItemsList = Array<IoK8sApiFlowcontrolV1FlowSchema>;
-export const IoK8sApiFlowcontrolV1FlowSchemaListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiFlowcontrolV1FlowSchemaListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiFlowcontrolV1FlowSchema,
 ) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaListItemsList>;
 
@@ -1327,7 +1318,7 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaList {
   /** `metadata` is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiFlowcontrolV1FlowSchemaList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1FlowSchemaList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiFlowcontrolV1FlowSchemaListItemsList,
@@ -1364,28 +1355,27 @@ export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
-        code: 200,
-      }),
-    ),
+const ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
 }) as any as S.Schema<ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
@@ -1393,7 +1383,7 @@ export const ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__
 /** `items` is a list of request-priorities. */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList =
   Array<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>;
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
 ) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList>;
 
@@ -1408,7 +1398,7 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationList {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList,
@@ -1433,7 +1423,7 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1466,7 +1456,7 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1499,22 +1489,21 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
-        code: 200,
-      }),
-    ),
+const PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
 }) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
@@ -1533,8 +1522,8 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequ
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -1549,9 +1538,9 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest",
-  }) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
+).annotate({
+  identifier: "PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest",
+}) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
 
 export interface ReadFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
@@ -1559,7 +1548,7 @@ export interface ReadFlowcontrolApiserverV1FlowSchemaRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1580,7 +1569,7 @@ export interface ReadFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1601,18 +1590,17 @@ export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
-        code: 200,
-      }),
-    ),
+const ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
 }) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
@@ -1623,8 +1611,8 @@ export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusReque
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -1635,9 +1623,9 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest",
-  }) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
+).annotate({
+  identifier: "ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest",
+}) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
 
 export interface ReplaceFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
@@ -1661,7 +1649,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaRequest {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
-export const ReplaceFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1706,7 +1694,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
-export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1751,29 +1739,28 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest 
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
-export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
-      status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
-  }) as any as S.Schema<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+    status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
+}) as any as S.Schema<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
 
 export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest {
   /** name of the PriorityLevelConfiguration */
@@ -1797,7 +1784,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRe
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
-export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest =
+const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1849,7 +1836,7 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1881,7 +1868,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -1916,7 +1903,7 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchFlowcontrolApiserverV1FlowSchemaListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchFlowcontrolApiserverV1FlowSchemaListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -1969,29 +1956,28 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/flowcontrol.apiserver.k8s.io/v1/watch/prioritylevelconfigurations/{name}",
-        code: 200,
-      }),
-    ),
+const WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/flowcontrol.apiserver.k8s.io/v1/watch/prioritylevelconfigurations/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
 }) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
@@ -2022,8 +2008,8 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListReques
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -2044,9 +2030,9 @@ export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest",
-  }) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest>;
+).annotate({
+  identifier: "WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest",
+}) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest>;
 
 export type CreateFlowcontrolApiserverV1FlowSchemaError =
   | Conflict

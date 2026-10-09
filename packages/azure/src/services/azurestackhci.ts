@@ -19,7 +19,7 @@ export interface ArcSettingsConsentAndInstallDefaultExtensionsRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const ArcSettingsConsentAndInstallDefaultExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingsConsentAndInstallDefaultExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -39,11 +39,11 @@ export const ArcSettingsConsentAndInstallDefaultExtensionsRequest = /*@__PURE__*
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -60,7 +60,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -91,7 +91,7 @@ export type ProvisioningState =
   | "Accepted"
   | "Provisioning"
   | "DisableInProgress";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Aggregate state of Arc agent across the nodes in this HCI cluster. */
 export type ArcSettingAggregateState =
@@ -113,7 +113,7 @@ export type ArcSettingAggregateState =
   | "Accepted"
   | "Provisioning"
   | "DisableInProgress";
-export const ArcSettingAggregateState = S.String;
+const ArcSettingAggregateState = S.String;
 
 /** State of the Arc agent in this node. Indicates the current lifecycle status of the agent, such as whether it's being provisioned, connected, updated, or has encountered an error. */
 export type NodeArcState =
@@ -135,7 +135,7 @@ export type NodeArcState =
   | "Accepted"
   | "Provisioning"
   | "DisableInProgress";
-export const NodeArcState = S.String;
+const NodeArcState = S.String;
 
 /** Status of Arc agent for a particular node in HCI Cluster. */
 export interface PerNodeState {
@@ -148,7 +148,7 @@ export interface PerNodeState {
   /** State of the Arc agent in this node. Indicates the current lifecycle status of the agent, such as whether it's being provisioned, connected, updated, or has encountered an error. */
   state?: NodeArcState;
 }
-export const PerNodeState = /*@__PURE__*/ S.suspend(() =>
+const PerNodeState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     arcInstance: S.optional(S.String),
@@ -159,13 +159,13 @@ export const PerNodeState = /*@__PURE__*/ S.suspend(() =>
 
 /** State of Arc agent in each of the nodes. */
 export type ArcSettingPropertiesPerNodeDetailsList = Array<PerNodeState>;
-export const ArcSettingPropertiesPerNodeDetailsList = /*@__PURE__*/ S.Array(
+const ArcSettingPropertiesPerNodeDetailsList = /*@__PURE__*/ S.Array(
   PerNodeState,
 ) as any as S.Schema<ArcSettingPropertiesPerNodeDetailsList>;
 
 /** Specifies the name of the service associated with the update or operation. This helps identify which system component or tool is involved. */
 export type ServiceName = "WAC";
-export const ServiceName = S.String;
+const ServiceName = S.String;
 
 /** Service configuration details */
 export interface ServiceConfiguration {
@@ -174,7 +174,7 @@ export interface ServiceConfiguration {
   /** The port on which service is enabled. */
   port: number;
 }
-export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: ServiceName,
     port: S.Number,
@@ -183,7 +183,7 @@ export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'. */
 export type ArcConnectivityPropertiesServiceConfigurationsList = Array<ServiceConfiguration>;
-export const ArcConnectivityPropertiesServiceConfigurationsList = /*@__PURE__*/ S.Array(
+const ArcConnectivityPropertiesServiceConfigurationsList = /*@__PURE__*/ S.Array(
   ServiceConfiguration,
 ) as any as S.Schema<ArcConnectivityPropertiesServiceConfigurationsList>;
 
@@ -194,7 +194,7 @@ export interface ArcConnectivityProperties {
   /** Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'. */
   serviceConfigurations?: ArcConnectivityPropertiesServiceConfigurationsList;
 }
-export const ArcConnectivityProperties = /*@__PURE__*/ S.suspend(() =>
+const ArcConnectivityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     serviceConfigurations: S.optional(ArcConnectivityPropertiesServiceConfigurationsList),
@@ -210,7 +210,7 @@ export interface DefaultExtensionDetails {
   /** Consent time for extension category */
   consentTime?: string;
 }
-export const DefaultExtensionDetails = /*@__PURE__*/ S.suspend(() =>
+const DefaultExtensionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     consentTime: S.optional(S.String),
@@ -219,7 +219,7 @@ export const DefaultExtensionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties for each of the default extensions category */
 export type ArcSettingPropertiesDefaultExtensionsList = Array<DefaultExtensionDetails>;
-export const ArcSettingPropertiesDefaultExtensionsList = /*@__PURE__*/ S.Array(
+const ArcSettingPropertiesDefaultExtensionsList = /*@__PURE__*/ S.Array(
   DefaultExtensionDetails,
 ) as any as S.Schema<ArcSettingPropertiesDefaultExtensionsList>;
 
@@ -246,7 +246,7 @@ export interface ArcSettingProperties {
   /** Properties for each of the default extensions category */
   defaultExtensions?: ArcSettingPropertiesDefaultExtensionsList;
 }
-export const ArcSettingProperties = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     arcInstanceResourceGroup: S.optional(S.String),
@@ -273,7 +273,7 @@ export interface ArcSettingsConsentAndInstallDefaultExtensionsResponse {
   /** ArcSetting properties. */
   properties?: ArcSettingProperties;
 }
-export const ArcSettingsConsentAndInstallDefaultExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingsConsentAndInstallDefaultExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -295,7 +295,7 @@ export interface ArcSettingsInitializeDisableProcessRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const ArcSettingsInitializeDisableProcessRequest = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingsInitializeDisableProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -314,14 +314,14 @@ export const ArcSettingsInitializeDisableProcessRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ArcSettingsInitializeDisableProcessRequest>;
 
 export interface ArcSettingsInitializeDisableProcessResponse {}
-export const ArcSettingsInitializeDisableProcessResponse = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingsInitializeDisableProcessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ArcSettingsInitializeDisableProcessResponse",
 }) as any as S.Schema<ArcSettingsInitializeDisableProcessResponse>;
 
 export type ReconcileArcSettingsRequestPropertiesClusterNodesList = Array<string>;
-export const ReconcileArcSettingsRequestPropertiesClusterNodesList = /*@__PURE__*/ S.Array(
+const ReconcileArcSettingsRequestPropertiesClusterNodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReconcileArcSettingsRequestPropertiesClusterNodesList>;
 
@@ -329,7 +329,7 @@ export const ReconcileArcSettingsRequestPropertiesClusterNodesList = /*@__PURE__
 export interface ReconcileArcSettingsRequestProperties {
   clusterNodes?: ReconcileArcSettingsRequestPropertiesClusterNodesList;
 }
-export const ReconcileArcSettingsRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const ReconcileArcSettingsRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterNodes: S.optional(ReconcileArcSettingsRequestPropertiesClusterNodesList),
   }),
@@ -349,7 +349,7 @@ export interface ArcSettingsReconcileRequest {
   /** List of Arc Nodes in the cluster */
   properties?: ReconcileArcSettingsRequestProperties;
 }
-export const ArcSettingsReconcileRequest = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingsReconcileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -380,7 +380,7 @@ export interface ArcSettingsReconcileResponse {
   /** ArcSetting properties. */
   properties?: ArcSettingProperties;
 }
-export const ArcSettingsReconcileResponse =
+const ArcSettingsReconcileResponse =
   ArcSettingsConsentAndInstallDefaultExtensionsResponse as any as S.Schema<ArcSettingsReconcileResponse>;
 
 export interface CheckUpdateSummariesOperationGroupHealthRequest {
@@ -391,7 +391,7 @@ export interface CheckUpdateSummariesOperationGroupHealthRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const CheckUpdateSummariesOperationGroupHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUpdateSummariesOperationGroupHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -409,7 +409,7 @@ export const CheckUpdateSummariesOperationGroupHealthRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CheckUpdateSummariesOperationGroupHealthRequest>;
 
 export interface CheckUpdateSummariesOperationGroupHealthResponse {}
-export const CheckUpdateSummariesOperationGroupHealthResponse =
+const CheckUpdateSummariesOperationGroupHealthResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<CheckUpdateSummariesOperationGroupHealthResponse>;
 
 export interface CheckUpdateSummariesOperationGroupUpdatesRequest {
@@ -422,7 +422,7 @@ export interface CheckUpdateSummariesOperationGroupUpdatesRequest {
   /** Name of update */
   updateName?: string;
 }
-export const CheckUpdateSummariesOperationGroupUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUpdateSummariesOperationGroupUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -441,16 +441,16 @@ export const CheckUpdateSummariesOperationGroupUpdatesRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CheckUpdateSummariesOperationGroupUpdatesRequest>;
 
 export interface CheckUpdateSummariesOperationGroupUpdatesResponse {}
-export const CheckUpdateSummariesOperationGroupUpdatesResponse =
+const CheckUpdateSummariesOperationGroupUpdatesResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<CheckUpdateSummariesOperationGroupUpdatesResponse>;
 
 /** ClusterJob Type supported. */
 export type HciJobType = "AddServer" | "RepairServer" | "ConfigureSdnIntegration";
-export const HciJobType = S.String;
+const HciJobType = S.String;
 
 /** Deployment mode to trigger job. */
 export type ClusterJobPropertiesInputDeploymentMode = "Validate" | "Deploy";
-export const ClusterJobPropertiesInputDeploymentMode = S.String;
+const ClusterJobPropertiesInputDeploymentMode = S.String;
 
 /** Cluster Job properties */
 export interface ClusterJobPropertiesInput {
@@ -459,7 +459,7 @@ export interface ClusterJobPropertiesInput {
   /** Deployment mode to trigger job. */
   deploymentMode?: ClusterJobPropertiesInputDeploymentMode | (string & {});
 }
-export const ClusterJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: HciJobType,
     deploymentMode: S.optional(ClusterJobPropertiesInputDeploymentMode),
@@ -480,7 +480,7 @@ export interface ClusterJobsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ClusterJobPropertiesInput;
 }
-export const ClusterJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClusterJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -501,7 +501,7 @@ export const ClusterJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deployment mode to trigger job. */
 export type ClusterJobPropertiesDeploymentMode = "Validate" | "Deploy";
-export const ClusterJobPropertiesDeploymentMode = S.String;
+const ClusterJobPropertiesDeploymentMode = S.String;
 
 /** Represents the various statuses a job can have throughout its lifecycle. */
 export type JobStatus =
@@ -517,22 +517,22 @@ export type JobStatus =
   | "Canceled"
   | "Paused"
   | "Scheduled";
-export const JobStatus = S.String;
+const JobStatus = S.String;
 
 /** List of nested steps of AzureStackHCI Cluster Deployment. */
 export type DeploymentStepStepsList = Array<DeploymentStep>;
-export const DeploymentStepStepsList = /*@__PURE__*/ S.Array(
+const DeploymentStepStepsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => DeploymentStep),
 ) as any as S.Schema<DeploymentStepStepsList>;
 
 /** List of exceptions in AzureStackHCI Cluster Deployment. */
 export type DeploymentStepExceptionList = Array<string>;
-export const DeploymentStepExceptionList =
+const DeploymentStepExceptionList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DeploymentStepExceptionList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -543,7 +543,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -552,7 +552,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -569,7 +569,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -581,13 +581,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type DeploymentStepErrorDetailsList = Array<ErrorDetail>;
-export const DeploymentStepErrorDetailsList = /*@__PURE__*/ S.Array(
+const DeploymentStepErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<DeploymentStepErrorDetailsList>;
 
 /** The error additional info. */
 export type DeploymentStepErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const DeploymentStepErrorAdditionalInfoList =
+const DeploymentStepErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<DeploymentStepErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -603,7 +603,7 @@ export interface DeploymentStepError {
   /** The error additional info. */
   additionalInfo?: DeploymentStepErrorAdditionalInfoList;
 }
-export const DeploymentStepError = /*@__PURE__*/ S.suspend(() =>
+const DeploymentStepError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -620,7 +620,7 @@ export interface Metadata {
   /** The value of the metadata entry. */
   value: string;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -629,13 +629,13 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional metadata associated with the step. */
 export type DeploymentStepAdditionalDataList = Array<Metadata>;
-export const DeploymentStepAdditionalDataList = /*@__PURE__*/ S.Array(
+const DeploymentStepAdditionalDataList = /*@__PURE__*/ S.Array(
   Metadata,
 ) as any as S.Schema<DeploymentStepAdditionalDataList>;
 
 /** Recommended steps to resolve failures in this step. */
 export type DeploymentStepRecommendedStepsList = Array<string>;
-export const DeploymentStepRecommendedStepsList =
+const DeploymentStepRecommendedStepsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DeploymentStepRecommendedStepsList>;
 
 /** The Step of AzureStackHCI Cluster. */
@@ -665,7 +665,7 @@ export interface DeploymentStep {
   /** Recommended steps to resolve failures in this step. */
   recommendedSteps?: DeploymentStepRecommendedStepsList;
 }
-export const DeploymentStep = /*@__PURE__*/ S.suspend(() =>
+const DeploymentStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -684,7 +684,7 @@ export const DeploymentStep = /*@__PURE__*/ S.suspend(() =>
 
 /** List of steps of AzureStackHCI Cluster Deployment. */
 export type EceActionStatusStepsList = Array<DeploymentStep>;
-export const EceActionStatusStepsList = /*@__PURE__*/ S.Array(
+const EceActionStatusStepsList = /*@__PURE__*/ S.Array(
   DeploymentStep,
 ) as any as S.Schema<EceActionStatusStepsList>;
 
@@ -695,7 +695,7 @@ export interface EceActionStatus {
   /** List of steps of AzureStackHCI Cluster Deployment. */
   steps?: EceActionStatusStepsList;
 }
-export const EceActionStatus = /*@__PURE__*/ S.suspend(() =>
+const EceActionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     steps: S.optional(EceActionStatusStepsList),
@@ -711,7 +711,7 @@ export interface JobReportedProperties {
   /** Deployment status of job. */
   deploymentStatus?: EceActionStatus;
 }
-export const JobReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const JobReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.optional(S.Number),
     validationStatus: S.optional(EceActionStatus),
@@ -738,7 +738,7 @@ export interface ClusterJobProperties {
   /** Reported properties for job */
   reportedProperties?: JobReportedProperties;
 }
-export const ClusterJobProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: HciJobType,
     deploymentMode: S.optional(ClusterJobPropertiesDeploymentMode),
@@ -763,7 +763,7 @@ export interface ClusterJobsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ClusterJobProperties;
 }
-export const ClusterJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClusterJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -777,7 +777,7 @@ export const ClusterJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Remote Support Type for cluster */
 export type RemoteSupportType = "Enable" | "Revoke";
-export const RemoteSupportType = S.String;
+const RemoteSupportType = S.String;
 
 /** Properties for Remote Support Request */
 export interface RemoteSupportRequestProperties {
@@ -786,7 +786,7 @@ export interface RemoteSupportRequestProperties {
   /** Remote Support Type for cluster */
   remoteSupportType?: RemoteSupportType | (string & {});
 }
-export const RemoteSupportRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const RemoteSupportRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTimeStamp: S.optional(S.String),
     remoteSupportType: S.optional(RemoteSupportType),
@@ -805,7 +805,7 @@ export interface ClustersConfigureRemoteSupportRequest {
   /** Properties for Remote Support Request */
   properties?: RemoteSupportRequestProperties;
 }
-export const ClustersConfigureRemoteSupportRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersConfigureRemoteSupportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -825,7 +825,7 @@ export const ClustersConfigureRemoteSupportRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ClustersConfigureRemoteSupportResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersConfigureRemoteSupportResponseTagsMap = /*@__PURE__*/ S.Record(
+const ClustersConfigureRemoteSupportResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ClustersConfigureRemoteSupportResponseTagsMap>;
@@ -844,7 +844,7 @@ export type Status =
   | "DeploymentInProgress"
   | "DeploymentFailed"
   | "DeploymentSuccess";
-export const Status = S.String;
+const Status = S.String;
 
 /** Overall connectivity status for the cluster resource. Indicates whether the cluster is connected to Azure, partially connected, or has not recently communicated. */
 export type ConnectivityStatus =
@@ -854,15 +854,15 @@ export type ConnectivityStatus =
   | "PartiallyConnected"
   | "Disconnected"
   | "NotSpecified";
-export const ConnectivityStatus = S.String;
+const ConnectivityStatus = S.String;
 
 /** Status of the Software Assurance for the cluster. */
 export type SoftwareAssuranceStatus = "Enabled" | "Disabled";
-export const SoftwareAssuranceStatus = S.String;
+const SoftwareAssuranceStatus = S.String;
 
 /** Customer Intent for Software Assurance Benefit. */
 export type SoftwareAssuranceIntent = "Enable" | "Disable";
-export const SoftwareAssuranceIntent = S.String;
+const SoftwareAssuranceIntent = S.String;
 
 /** Software Assurance properties of the cluster. */
 export interface SoftwareAssuranceProperties {
@@ -873,7 +873,7 @@ export interface SoftwareAssuranceProperties {
   /** TimeStamp denoting the latest SA benefit applicability is validated. */
   lastUpdated?: string;
 }
-export const SoftwareAssuranceProperties = /*@__PURE__*/ S.suspend(() =>
+const SoftwareAssuranceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     softwareAssuranceStatus: S.optional(SoftwareAssuranceStatus),
     softwareAssuranceIntent: S.optional(SoftwareAssuranceIntent),
@@ -885,11 +885,11 @@ export const SoftwareAssuranceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** LogCollection status */
 export type LogCollectionStatus = "None" | "InProgress" | "Failed" | "Succeeded";
-export const LogCollectionStatus = S.String;
+const LogCollectionStatus = S.String;
 
 /** Specifies the type of log collection job. Determines whether the logs are collected immediately on demand or as part of a scheduled operation. */
 export type LogCollectionJobType = "OnDemand" | "Scheduled";
-export const LogCollectionJobType = S.String;
+const LogCollectionJobType = S.String;
 
 /** Log Collection Error details of the cluster. */
 export interface LogCollectionError {
@@ -898,7 +898,7 @@ export interface LogCollectionError {
   /** Error Message of the log collection */
   errorMessage?: string;
 }
-export const LogCollectionError = /*@__PURE__*/ S.suspend(() =>
+const LogCollectionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -926,7 +926,7 @@ export interface LogCollectionSession {
   /** Log Collection Error details of the cluster. */
   logCollectionError?: LogCollectionError;
 }
-export const LogCollectionSession = /*@__PURE__*/ S.suspend(() =>
+const LogCollectionSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logStartTime: S.optional(S.String),
     logEndTime: S.optional(S.String),
@@ -941,7 +941,7 @@ export const LogCollectionSession = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogCollectionSession" }) as any as S.Schema<LogCollectionSession>;
 
 export type LogCollectionPropertiesLogCollectionSessionDetailsList = Array<LogCollectionSession>;
-export const LogCollectionPropertiesLogCollectionSessionDetailsList = /*@__PURE__*/ S.Array(
+const LogCollectionPropertiesLogCollectionSessionDetailsList = /*@__PURE__*/ S.Array(
   LogCollectionSession,
 ) as any as S.Schema<LogCollectionPropertiesLogCollectionSessionDetailsList>;
 
@@ -955,7 +955,7 @@ export interface LogCollectionProperties {
   lastLogGenerated?: string;
   logCollectionSessionDetails?: LogCollectionPropertiesLogCollectionSessionDetailsList;
 }
-export const LogCollectionProperties = /*@__PURE__*/ S.suspend(() =>
+const LogCollectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromDate: S.optional(S.String),
     toDate: S.optional(S.String),
@@ -966,7 +966,7 @@ export const LogCollectionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Remote Support Access Level */
 export type AccessLevel = "Diagnostics" | "DiagnosticsAndRepair";
-export const AccessLevel = S.String;
+const AccessLevel = S.String;
 
 /** Remote Support Node Settings of the cluster. */
 export interface RemoteSupportNodeSettings {
@@ -985,7 +985,7 @@ export interface RemoteSupportNodeSettings {
   /** Remote Support Transcript location on the node */
   transcriptLocation?: string;
 }
-export const RemoteSupportNodeSettings = /*@__PURE__*/ S.suspend(() =>
+const RemoteSupportNodeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arcResourceId: S.optional(S.String),
     state: S.optional(S.String),
@@ -1000,7 +1000,7 @@ export const RemoteSupportNodeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoteSupportNodeSettings>;
 
 export type RemoteSupportPropertiesRemoteSupportNodeSettingsList = Array<RemoteSupportNodeSettings>;
-export const RemoteSupportPropertiesRemoteSupportNodeSettingsList = /*@__PURE__*/ S.Array(
+const RemoteSupportPropertiesRemoteSupportNodeSettingsList = /*@__PURE__*/ S.Array(
   RemoteSupportNodeSettings,
 ) as any as S.Schema<RemoteSupportPropertiesRemoteSupportNodeSettingsList>;
 
@@ -1019,7 +1019,7 @@ export interface PerNodeRemoteSupportSession {
   /** The location where the session transcript is stored. */
   transcriptLocation?: string;
 }
-export const PerNodeRemoteSupportSession = /*@__PURE__*/ S.suspend(() =>
+const PerNodeRemoteSupportSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionStartTime: S.optional(S.String),
     sessionEndTime: S.optional(S.String),
@@ -1034,7 +1034,7 @@ export const PerNodeRemoteSupportSession = /*@__PURE__*/ S.suspend(() =>
 
 export type RemoteSupportPropertiesRemoteSupportSessionDetailsList =
   Array<PerNodeRemoteSupportSession>;
-export const RemoteSupportPropertiesRemoteSupportSessionDetailsList = /*@__PURE__*/ S.Array(
+const RemoteSupportPropertiesRemoteSupportSessionDetailsList = /*@__PURE__*/ S.Array(
   PerNodeRemoteSupportSession,
 ) as any as S.Schema<RemoteSupportPropertiesRemoteSupportSessionDetailsList>;
 
@@ -1045,7 +1045,7 @@ export type RemoteSupportProvisioningState =
   | "RevokeInProgress"
   | "Succeeded"
   | "Failed";
-export const RemoteSupportProvisioningState = S.String;
+const RemoteSupportProvisioningState = S.String;
 
 /** Remote Support properties of the cluster. */
 export interface RemoteSupportProperties {
@@ -1060,7 +1060,7 @@ export interface RemoteSupportProperties {
   /** Remote Support Provisioning State */
   remoteSupportProvisioningState?: RemoteSupportProvisioningState;
 }
-export const RemoteSupportProperties = /*@__PURE__*/ S.suspend(() =>
+const RemoteSupportProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessLevel: S.optional(AccessLevel),
     expirationTimeStamp: S.optional(S.String),
@@ -1073,11 +1073,11 @@ export const RemoteSupportProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Desired state of Windows Server Subscription. */
 export type WindowsServerSubscription = "Disabled" | "Enabled";
-export const WindowsServerSubscription = S.String;
+const WindowsServerSubscription = S.String;
 
 /** Desired level of diagnostic data emitted by the cluster. */
 export type DiagnosticLevel = "Off" | "Basic" | "Enhanced";
-export const DiagnosticLevel = S.String;
+const DiagnosticLevel = S.String;
 
 /** Desired properties of the cluster. */
 export interface ClusterDesiredProperties {
@@ -1086,7 +1086,7 @@ export interface ClusterDesiredProperties {
   /** Desired level of diagnostic data emitted by the cluster. */
   diagnosticLevel?: DiagnosticLevel | (string & {});
 }
-export const ClusterDesiredProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterDesiredProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     windowsServerSubscription: S.optional(WindowsServerSubscription),
     diagnosticLevel: S.optional(DiagnosticLevel),
@@ -1095,11 +1095,11 @@ export const ClusterDesiredProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the type of hardware vendor for all nodes in the cluster. Indicates whether the nodes are provided by Microsoft or a third-party vendor. */
 export type ClusterNodeType = "FirstParty" | "ThirdParty";
-export const ClusterNodeType = S.String;
+const ClusterNodeType = S.String;
 
 /** OEM activation status of the cluster. */
 export type OemActivation = "Disabled" | "Enabled";
-export const OemActivation = S.String;
+const OemActivation = S.String;
 
 /** Cluster node details. */
 export interface ClusterNode {
@@ -1134,7 +1134,7 @@ export interface ClusterNode {
   /** OEM activation status of the node. */
   oemActivation?: OemActivation;
 }
-export const ClusterNode = /*@__PURE__*/ S.suspend(() =>
+const ClusterNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1156,22 +1156,22 @@ export const ClusterNode = /*@__PURE__*/ S.suspend(() =>
 
 /** List of nodes reported by the cluster. */
 export type ClusterReportedPropertiesNodesList = Array<ClusterNode>;
-export const ClusterReportedPropertiesNodesList = /*@__PURE__*/ S.Array(
+const ClusterReportedPropertiesNodesList = /*@__PURE__*/ S.Array(
   ClusterNode,
 ) as any as S.Schema<ClusterReportedPropertiesNodesList>;
 
 /** IMDS attestation status of the cluster. */
 export type ImdsAttestation = "Disabled" | "Enabled";
-export const ImdsAttestation = S.String;
+const ImdsAttestation = S.String;
 
 /** Capabilities supported by the cluster. */
 export type ClusterReportedPropertiesSupportedCapabilitiesList = Array<string>;
-export const ClusterReportedPropertiesSupportedCapabilitiesList =
+const ClusterReportedPropertiesSupportedCapabilitiesList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<ClusterReportedPropertiesSupportedCapabilitiesList>;
 
 /** Hardware class of the cluster. */
 export type ClusterReportedPropertiesHardwareClass = "Small" | "Medium" | "Large";
-export const ClusterReportedPropertiesHardwareClass = S.String;
+const ClusterReportedPropertiesHardwareClass = S.String;
 
 /** Properties reported by cluster agent. */
 export interface ClusterReportedProperties {
@@ -1202,7 +1202,7 @@ export interface ClusterReportedProperties {
   /** Hardware class of the cluster. */
   hardwareClass?: ClusterReportedPropertiesHardwareClass;
 }
-export const ClusterReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.optional(S.String),
     clusterId: S.optional(S.String),
@@ -1231,7 +1231,7 @@ export interface IsolatedVmAttestationConfiguration {
   /** Region specific endpoint for Microsoft Azure Attestation service for the cluster */
   attestationServiceEndpoint?: string;
 }
-export const IsolatedVmAttestationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IsolatedVmAttestationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestationResourceId: S.optional(S.String),
     relyingPartyServiceEndpoint: S.optional(S.String),
@@ -1243,7 +1243,7 @@ export const IsolatedVmAttestationConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Capabilities enabled under this billing model. */
 export type NextBillingModelCapabilitiesEnabledList = Array<string>;
-export const NextBillingModelCapabilitiesEnabledList =
+const NextBillingModelCapabilitiesEnabledList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<NextBillingModelCapabilitiesEnabledList>;
 
 /** Details of the next billing model for the cluster. */
@@ -1255,7 +1255,7 @@ export interface NextBillingModel {
   /** Number of days remaining in the trial period. */
   trialDaysRemaining?: number;
 }
-export const NextBillingModel = /*@__PURE__*/ S.suspend(() =>
+const NextBillingModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingModel: S.optional(S.String),
     capabilitiesEnabled: S.optional(NextBillingModelCapabilitiesEnabledList),
@@ -1268,7 +1268,7 @@ export interface ClusterBillingProperties {
   /** The next billing model to be applied to the cluster. */
   nextBillingModel?: NextBillingModel;
 }
-export const ClusterBillingProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterBillingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextBillingModel: S.optional(NextBillingModel),
   }),
@@ -1276,7 +1276,7 @@ export const ClusterBillingProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of secrets to store */
 export type SecretsType = "BackupSecrets";
-export const SecretsType = S.String;
+const SecretsType = S.String;
 
 /** Secrets location details */
 export interface SecretsLocationDetails {
@@ -1285,7 +1285,7 @@ export interface SecretsLocationDetails {
   /** secrets location */
   secretsLocation: string;
 }
-export const SecretsLocationDetails = /*@__PURE__*/ S.suspend(() =>
+const SecretsLocationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretsType: SecretsType,
     secretsLocation: S.String,
@@ -1294,21 +1294,21 @@ export const SecretsLocationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of secret locations. */
 export type ClusterPropertiesSecretsLocationsList = Array<SecretsLocationDetails>;
-export const ClusterPropertiesSecretsLocationsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesSecretsLocationsList = /*@__PURE__*/ S.Array(
   SecretsLocationDetails,
 ) as any as S.Schema<ClusterPropertiesSecretsLocationsList>;
 
 /** Supported Storage Pattern for HCI Cluster */
 export type ClusterPattern = "Standard" | "RackAware";
-export const ClusterPattern = S.String;
+const ClusterPattern = S.String;
 
 /** Indicates the current Software Defined Networking (SDN) status of the resource, which may be an individual device or a cluster. */
 export type SdnStatus = "Unknown" | "Disabled" | "Enabled";
-export const SdnStatus = S.String;
+const SdnStatus = S.String;
 
 /** Indicates whether Software Defined Networking (SDN) integration should be enabled or disabled for this deployment. */
 export type SdnIntegrationIntent = "Enable" | "Disable";
-export const SdnIntegrationIntent = S.String;
+const SdnIntegrationIntent = S.String;
 
 /** Represents the Software Defined Networking (SDN) configuration state of the Azure Stack HCI cluster. */
 export interface ClusterSdnProperties {
@@ -1321,7 +1321,7 @@ export interface ClusterSdnProperties {
   /** Indicates whether Software Defined Networking (SDN) integration should be enabled or disabled for this deployment. */
   sdnIntegrationIntent?: SdnIntegrationIntent;
 }
-export const ClusterSdnProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterSdnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdnStatus: S.optional(SdnStatus),
     sdnDomainName: S.optional(S.String),
@@ -1332,7 +1332,7 @@ export const ClusterSdnProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Nodes belonging to a particular zone */
 export type LocalAvailabilityZonesNodesList = Array<string>;
-export const LocalAvailabilityZonesNodesList =
+const LocalAvailabilityZonesNodesList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<LocalAvailabilityZonesNodesList>;
 
 /** Local Availability Zone information for HCI cluster */
@@ -1342,7 +1342,7 @@ export interface LocalAvailabilityZones {
   /** Nodes belonging to a particular zone */
   nodes?: LocalAvailabilityZonesNodesList;
 }
-export const LocalAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
+const LocalAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localAvailabilityZoneName: S.optional(S.String),
     nodes: S.optional(LocalAvailabilityZonesNodesList),
@@ -1351,17 +1351,17 @@ export const LocalAvailabilityZones = /*@__PURE__*/ S.suspend(() =>
 
 /** Local Availability Zone information for HCI cluster */
 export type ClusterPropertiesLocalAvailabilityZonesList = Array<LocalAvailabilityZones>;
-export const ClusterPropertiesLocalAvailabilityZonesList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesLocalAvailabilityZonesList = /*@__PURE__*/ S.Array(
   LocalAvailabilityZones,
 ) as any as S.Schema<ClusterPropertiesLocalAvailabilityZonesList>;
 
 /** Identity Provider for the cluster */
 export type ClusterPropertiesIdentityProvider = "ActiveDirectory" | "LocalIdentity";
-export const ClusterPropertiesIdentityProvider = S.String;
+const ClusterPropertiesIdentityProvider = S.String;
 
 /** Storage type supported for HCI Cluster. */
 export type StorageType = "S2D" | "SAN" | "SANS2D";
-export const StorageType = S.String;
+const StorageType = S.String;
 
 /** Cluster properties. */
 export interface ClusterProperties {
@@ -1426,7 +1426,7 @@ export interface ClusterProperties {
   /** Storage type of the cluster. Indicates whether the cluster uses S2D, SAN, or a combination. */
   storageType?: StorageType;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     status: S.optional(Status),
@@ -1467,7 +1467,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -1476,7 +1476,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1487,7 +1487,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap =
+const ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
@@ -1503,7 +1503,7 @@ export interface ClustersConfigureRemoteSupportResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap;
 }
-export const ClustersConfigureRemoteSupportResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const ClustersConfigureRemoteSupportResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1536,7 +1536,7 @@ export interface ClustersConfigureRemoteSupportResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const ClustersConfigureRemoteSupportResponse = /*@__PURE__*/ S.suspend(() =>
+const ClustersConfigureRemoteSupportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1567,7 +1567,7 @@ export interface ArcSettingPropertiesInput {
   /** contains connectivity related configuration for ARC resources */
   connectivityProperties?: ArcConnectivityProperties;
 }
-export const ArcSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arcInstanceResourceGroup: S.optional(S.String),
     arcApplicationClientId: S.optional(S.String),
@@ -1592,7 +1592,7 @@ export interface CreateArcSettingsRequest {
   /** ArcSetting properties. */
   properties?: ArcSettingPropertiesInput;
 }
-export const CreateArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1621,7 +1621,7 @@ export interface CreateArcSettingsResponse {
   /** ArcSetting properties. */
   properties?: ArcSettingProperties;
 }
-export const CreateArcSettingsResponse =
+const CreateArcSettingsResponse =
   ArcSettingsConsentAndInstallDefaultExtensionsResponse as any as S.Schema<CreateArcSettingsResponse>;
 
 export interface CreateArcSettingsIdentityRequest {
@@ -1634,7 +1634,7 @@ export interface CreateArcSettingsIdentityRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const CreateArcSettingsIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateArcSettingsIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1658,7 +1658,7 @@ export interface ArcIdentityResponseProperties {
   arcServicePrincipalObjectId?: string;
   arcApplicationObjectId?: string;
 }
-export const ArcIdentityResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const ArcIdentityResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arcApplicationClientId: S.optional(S.String),
     arcApplicationTenantId: S.optional(S.String),
@@ -1674,7 +1674,7 @@ export interface ArcIdentityResponse {
   /** ArcIdentity properties. */
   properties?: ArcIdentityResponseProperties;
 }
-export const ArcIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const ArcIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ArcIdentityResponseProperties),
   }),
@@ -1682,7 +1682,7 @@ export const ArcIdentityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const CreateClusterRequestTagsMap =
+const CreateClusterRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<CreateClusterRequestTagsMap>;
 
 /** Software Assurance properties of the cluster. */
@@ -1690,7 +1690,7 @@ export interface SoftwareAssurancePropertiesInput {
   /** Customer Intent for Software Assurance Benefit. */
   softwareAssuranceIntent?: SoftwareAssuranceIntent | (string & {});
 }
-export const SoftwareAssurancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SoftwareAssurancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     softwareAssuranceIntent: S.optional(SoftwareAssuranceIntent),
   }),
@@ -1700,22 +1700,20 @@ export const SoftwareAssurancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Log Collection properties of the cluster. */
 export interface LogCollectionPropertiesInput {}
-export const LogCollectionPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const LogCollectionPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "LogCollectionPropertiesInput",
 }) as any as S.Schema<LogCollectionPropertiesInput>;
 
 /** Remote Support properties of the cluster. */
 export type RemoteSupportPropertiesInput = LogCollectionPropertiesInput;
-export const RemoteSupportPropertiesInput = LogCollectionPropertiesInput;
-
 /** List of secret locations. */
 export type ClusterPropertiesInputSecretsLocationsList = Array<SecretsLocationDetails>;
-export const ClusterPropertiesInputSecretsLocationsList =
+const ClusterPropertiesInputSecretsLocationsList =
   ClusterPropertiesSecretsLocationsList as any as S.Schema<ClusterPropertiesInputSecretsLocationsList>;
 
 /** Local Availability Zone information for HCI cluster */
 export type ClusterPropertiesInputLocalAvailabilityZonesList = Array<LocalAvailabilityZones>;
-export const ClusterPropertiesInputLocalAvailabilityZonesList =
+const ClusterPropertiesInputLocalAvailabilityZonesList =
   ClusterPropertiesLocalAvailabilityZonesList as any as S.Schema<ClusterPropertiesInputLocalAvailabilityZonesList>;
 
 /** Cluster properties. */
@@ -1743,7 +1741,7 @@ export interface ClusterPropertiesInput {
   /** Local Availability Zone information for HCI cluster */
   localAvailabilityZones?: ClusterPropertiesInputLocalAvailabilityZonesList;
 }
-export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudManagementEndpoint: S.optional(S.String),
     aadClientId: S.optional(S.String),
@@ -1761,13 +1759,11 @@ export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = LogCollectionPropertiesInput;
-export const UserAssignedIdentityInput = LogCollectionPropertiesInput;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateClusterRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: LogCollectionPropertiesInput | null | undefined;
 };
-export const CreateClusterRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const CreateClusterRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
 ) as any as S.Schema<CreateClusterRequestIdentityUserAssignedIdentitiesMap>;
@@ -1778,7 +1774,7 @@ export interface CreateClusterRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateClusterRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateClusterRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(CreateClusterRequestIdentityUserAssignedIdentitiesMap),
@@ -1805,7 +1801,7 @@ export interface CreateClusterRequest {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1827,14 +1823,14 @@ export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const CreateClusterResponseTagsMap =
+const CreateClusterResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<CreateClusterResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateClusterResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const CreateClusterResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CreateClusterResponseIdentityUserAssignedIdentitiesMap>;
@@ -1849,7 +1845,7 @@ export interface CreateClusterResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateClusterResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateClusterResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1880,7 +1876,7 @@ export interface CreateClusterResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1902,7 +1898,7 @@ export interface CreateClusterIdentityRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const CreateClusterIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1925,7 +1921,7 @@ export interface ClusterIdentityResponseProperties {
   aadServicePrincipalObjectId?: string;
   aadApplicationObjectId?: string;
 }
-export const ClusterIdentityResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterIdentityResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aadClientId: S.optional(S.String),
     aadTenantId: S.optional(S.String),
@@ -1941,7 +1937,7 @@ export interface ClusterIdentityResponse {
   /** Cluster identity properties. */
   properties?: ClusterIdentityResponseProperties;
 }
-export const ClusterIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const ClusterIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ClusterIdentityResponseProperties),
   }),
@@ -1966,7 +1962,7 @@ export interface ExtensionParameters {
   /** Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available. */
   enableAutomaticUpgrade?: boolean;
 }
-export const ExtensionParameters = /*@__PURE__*/ S.suspend(() =>
+const ExtensionParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceUpdateTag: S.optional(S.String),
     publisher: S.optional(S.String),
@@ -1984,7 +1980,7 @@ export interface ExtensionPropertiesInput {
   /** Parameters specific to this extension type. */
   extensionParameters?: ExtensionParameters;
 }
-export const ExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionParameters: S.optional(ExtensionParameters),
   }),
@@ -2004,7 +2000,7 @@ export interface CreateExtensionRequest {
   /** Describes Machine Extension Properties. */
   properties?: ExtensionPropertiesInput;
 }
-export const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2042,7 +2038,7 @@ export type ExtensionAggregateState =
   | "Accepted"
   | "Provisioning"
   | "UpgradeFailedRollbackSucceeded";
-export const ExtensionAggregateState = S.String;
+const ExtensionAggregateState = S.String;
 
 /** State of Arc Extension in this node. Reflects the current lifecycle status of the extension on the individual node, such as whether it's being created, updated, deleted, or has encountered an error. */
 export type NodeExtensionState =
@@ -2063,11 +2059,11 @@ export type NodeExtensionState =
   | "InProgress"
   | "Accepted"
   | "Provisioning";
-export const NodeExtensionState = S.String;
+const NodeExtensionState = S.String;
 
 /** The level code. Indicates the severity or importance of the status message. */
 export type StatusLevelTypes = "Info" | "Warning" | "Error";
-export const StatusLevelTypes = S.String;
+const StatusLevelTypes = S.String;
 
 /** Instance view status. */
 export interface ExtensionInstanceViewStatus {
@@ -2082,7 +2078,7 @@ export interface ExtensionInstanceViewStatus {
   /** The time of the status. */
   time?: string;
 }
-export const ExtensionInstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
+const ExtensionInstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     level: S.optional(StatusLevelTypes),
@@ -2105,7 +2101,7 @@ export interface ExtensionInstanceView {
   /** Instance view status. */
   status?: ExtensionInstanceViewStatus;
 }
-export const ExtensionInstanceView = /*@__PURE__*/ S.suspend(() =>
+const ExtensionInstanceView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2127,7 +2123,7 @@ export interface PerNodeExtensionState {
   /** The extension instance view. */
   instanceView?: ExtensionInstanceView;
 }
-export const PerNodeExtensionState = /*@__PURE__*/ S.suspend(() =>
+const PerNodeExtensionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     extension: S.optional(S.String),
@@ -2139,13 +2135,13 @@ export const PerNodeExtensionState = /*@__PURE__*/ S.suspend(() =>
 
 /** State of Arc Extension in each of the nodes. */
 export type ExtensionPropertiesPerNodeExtensionDetailsList = Array<PerNodeExtensionState>;
-export const ExtensionPropertiesPerNodeExtensionDetailsList = /*@__PURE__*/ S.Array(
+const ExtensionPropertiesPerNodeExtensionDetailsList = /*@__PURE__*/ S.Array(
   PerNodeExtensionState,
 ) as any as S.Schema<ExtensionPropertiesPerNodeExtensionDetailsList>;
 
 /** Indicates whether the extension is managed by the user or by Azure. */
 export type ExtensionManagedBy = "User" | "Azure";
-export const ExtensionManagedBy = S.String;
+const ExtensionManagedBy = S.String;
 
 /** Status of Arc Extension for a particular node in HCI Cluster. */
 export interface ExtensionProperties {
@@ -2160,7 +2156,7 @@ export interface ExtensionProperties {
   /** Indicates if the extension is managed by Azure or the user. This determines who controls the deployment and lifecycle of the extension. */
   managedBy?: ExtensionManagedBy;
 }
-export const ExtensionProperties = /*@__PURE__*/ S.suspend(() =>
+const ExtensionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     extensionParameters: S.optional(ExtensionParameters),
@@ -2182,7 +2178,7 @@ export interface CreateExtensionResponse {
   /** Describes Machine Extension Properties. */
   properties?: ExtensionProperties;
 }
-export const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2199,7 +2195,7 @@ export interface GuestCredential {
   /** The password to connect with the guest. */
   password?: string | Redacted.Redacted<string>;
 }
-export const GuestCredential = /*@__PURE__*/ S.suspend(() =>
+const GuestCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2208,7 +2204,7 @@ export const GuestCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the different types of operations for guest agent. */
 export type ProvisioningAction = "install" | "uninstall" | "repair";
-export const ProvisioningAction = S.String;
+const ProvisioningAction = S.String;
 
 /** Defines the resource properties. */
 export interface GuestAgentPropertiesInput {
@@ -2217,7 +2213,7 @@ export interface GuestAgentPropertiesInput {
   /** The guest agent provisioning action. */
   provisioningAction?: ProvisioningAction | (string & {});
 }
-export const GuestAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(GuestCredential),
     provisioningAction: S.optional(ProvisioningAction),
@@ -2232,7 +2228,7 @@ export interface CreateGuestAgentRequest {
   /** Resource properties. */
   properties: GuestAgentPropertiesInput;
 }
-export const CreateGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: GuestAgentPropertiesInput,
@@ -2257,7 +2253,7 @@ export interface GuestAgentProperties {
   /** The provisioning state. */
   provisioningState?: string;
 }
-export const GuestAgentProperties = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(GuestCredential),
     provisioningAction: S.optional(ProvisioningAction),
@@ -2278,7 +2274,7 @@ export interface CreateGuestAgentResponse {
   /** Resource properties. */
   properties: GuestAgentProperties;
 }
-export const CreateGuestAgentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2298,7 +2294,7 @@ export interface DeleteArcSettingsRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const DeleteArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2315,7 +2311,7 @@ export const DeleteArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteArcSettingsRequest" }) as any as S.Schema<DeleteArcSettingsRequest>;
 
 export interface DeleteArcSettingsResponse {}
-export const DeleteArcSettingsResponse =
+const DeleteArcSettingsResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteArcSettingsResponse>;
 
 export interface DeleteClusterRequest {
@@ -2326,7 +2322,7 @@ export interface DeleteClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2342,7 +2338,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse =
+const DeleteClusterResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteClusterJobRequest {
@@ -2355,7 +2351,7 @@ export interface DeleteClusterJobRequest {
   /** Name of ClusterJob */
   jobsName: string;
 }
-export const DeleteClusterJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2372,7 +2368,7 @@ export const DeleteClusterJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterJobRequest" }) as any as S.Schema<DeleteClusterJobRequest>;
 
 export interface DeleteClusterJobResponse {}
-export const DeleteClusterJobResponse =
+const DeleteClusterJobResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteClusterJobResponse>;
 
 export interface DeleteDeploymentSettingsRequest {
@@ -2385,7 +2381,7 @@ export interface DeleteDeploymentSettingsRequest {
   /** Name of Deployment Setting */
   deploymentSettingsName: string;
 }
-export const DeleteDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2404,7 +2400,7 @@ export const DeleteDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDeploymentSettingsRequest>;
 
 export interface DeleteDeploymentSettingsResponse {}
-export const DeleteDeploymentSettingsResponse =
+const DeleteDeploymentSettingsResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteDeploymentSettingsResponse>;
 
 export interface DeleteEdgeDeviceRequest {
@@ -2413,7 +2409,7 @@ export interface DeleteEdgeDeviceRequest {
   /** Name of Device */
   edgeDeviceName: string;
 }
-export const DeleteEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -2428,7 +2424,7 @@ export const DeleteEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEdgeDeviceRequest" }) as any as S.Schema<DeleteEdgeDeviceRequest>;
 
 export interface DeleteEdgeDeviceResponse {}
-export const DeleteEdgeDeviceResponse =
+const DeleteEdgeDeviceResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteEdgeDeviceResponse>;
 
 export interface DeleteEdgeDeviceJobRequest {
@@ -2439,7 +2435,7 @@ export interface DeleteEdgeDeviceJobRequest {
   /** Name of EdgeDevice Job */
   jobsName: string;
 }
-export const DeleteEdgeDeviceJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeDeviceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -2457,7 +2453,7 @@ export const DeleteEdgeDeviceJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeDeviceJobRequest>;
 
 export interface DeleteEdgeDeviceJobResponse {}
-export const DeleteEdgeDeviceJobResponse =
+const DeleteEdgeDeviceJobResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteEdgeDeviceJobResponse>;
 
 export interface DeleteEdgeMachineRequest {
@@ -2468,7 +2464,7 @@ export interface DeleteEdgeMachineRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const DeleteEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2484,7 +2480,7 @@ export const DeleteEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEdgeMachineRequest" }) as any as S.Schema<DeleteEdgeMachineRequest>;
 
 export interface DeleteEdgeMachineResponse {}
-export const DeleteEdgeMachineResponse =
+const DeleteEdgeMachineResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteEdgeMachineResponse>;
 
 export interface DeleteEdgeMachineDeploymentSettingsRequest {
@@ -2497,7 +2493,7 @@ export interface DeleteEdgeMachineDeploymentSettingsRequest {
   /** Name of Edge Machine Deployment Setting. */
   deploymentSettingName: string;
 }
-export const DeleteEdgeMachineDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2516,7 +2512,7 @@ export const DeleteEdgeMachineDeploymentSettingsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteEdgeMachineDeploymentSettingsRequest>;
 
 export interface DeleteEdgeMachineDeploymentSettingsResponse {}
-export const DeleteEdgeMachineDeploymentSettingsResponse =
+const DeleteEdgeMachineDeploymentSettingsResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteEdgeMachineDeploymentSettingsResponse>;
 
 export interface DeleteEdgeMachineDiskRequest {
@@ -2529,7 +2525,7 @@ export interface DeleteEdgeMachineDiskRequest {
   /** The name of the EdgeMachineDisk */
   diskName: string;
 }
-export const DeleteEdgeMachineDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2548,7 +2544,7 @@ export const DeleteEdgeMachineDiskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeMachineDiskRequest>;
 
 export interface DeleteEdgeMachineDiskResponse {}
-export const DeleteEdgeMachineDiskResponse =
+const DeleteEdgeMachineDiskResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteEdgeMachineDiskResponse>;
 
 export interface DeleteEdgeMachineDiskJobRequest {
@@ -2563,7 +2559,7 @@ export interface DeleteEdgeMachineDiskJobRequest {
   /** The name of the EdgeMachineDiskJob */
   jobName: string;
 }
-export const DeleteEdgeMachineDiskJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineDiskJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2583,7 +2579,7 @@ export const DeleteEdgeMachineDiskJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeMachineDiskJobRequest>;
 
 export interface DeleteEdgeMachineDiskJobResponse {}
-export const DeleteEdgeMachineDiskJobResponse =
+const DeleteEdgeMachineDiskJobResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteEdgeMachineDiskJobResponse>;
 
 export interface DeleteEdgeMachineDiskPrivilegedJobRequest {
@@ -2598,7 +2594,7 @@ export interface DeleteEdgeMachineDiskPrivilegedJobRequest {
   /** The name of the EdgeMachineDiskPrivilegedJob */
   privilegedJobName: string;
 }
-export const DeleteEdgeMachineDiskPrivilegedJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineDiskPrivilegedJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2618,7 +2614,7 @@ export const DeleteEdgeMachineDiskPrivilegedJobRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteEdgeMachineDiskPrivilegedJobRequest>;
 
 export interface DeleteEdgeMachineDiskPrivilegedJobResponse {}
-export const DeleteEdgeMachineDiskPrivilegedJobResponse =
+const DeleteEdgeMachineDiskPrivilegedJobResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteEdgeMachineDiskPrivilegedJobResponse>;
 
 export interface DeleteEdgeMachineJobRequest {
@@ -2631,7 +2627,7 @@ export interface DeleteEdgeMachineJobRequest {
   /** Name of EdgeMachineJob */
   jobsName: string;
 }
-export const DeleteEdgeMachineJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2650,7 +2646,7 @@ export const DeleteEdgeMachineJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeMachineJobRequest>;
 
 export interface DeleteEdgeMachineJobResponse {}
-export const DeleteEdgeMachineJobResponse =
+const DeleteEdgeMachineJobResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteEdgeMachineJobResponse>;
 
 export interface DeleteEdgeMachineNetworkAdapterJobRequest {
@@ -2665,7 +2661,7 @@ export interface DeleteEdgeMachineNetworkAdapterJobRequest {
   /** The name of the EdgeMachineNetworkAdapterJob */
   jobName: string;
 }
-export const DeleteEdgeMachineNetworkAdapterJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineNetworkAdapterJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2685,7 +2681,7 @@ export const DeleteEdgeMachineNetworkAdapterJobRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteEdgeMachineNetworkAdapterJobRequest>;
 
 export interface DeleteEdgeMachineNetworkAdapterJobResponse {}
-export const DeleteEdgeMachineNetworkAdapterJobResponse =
+const DeleteEdgeMachineNetworkAdapterJobResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteEdgeMachineNetworkAdapterJobResponse>;
 
 export interface DeleteEdgeMachineSecuritySettingsOperationRequest {
@@ -2698,7 +2694,7 @@ export interface DeleteEdgeMachineSecuritySettingsOperationRequest {
   /** Name of the security settings resource */
   securitySettingsName: string;
 }
-export const DeleteEdgeMachineSecuritySettingsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineSecuritySettingsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2717,7 +2713,7 @@ export const DeleteEdgeMachineSecuritySettingsOperationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteEdgeMachineSecuritySettingsOperationRequest>;
 
 export interface DeleteEdgeMachineSecuritySettingsOperationResponse {}
-export const DeleteEdgeMachineSecuritySettingsOperationResponse =
+const DeleteEdgeMachineSecuritySettingsOperationResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteEdgeMachineSecuritySettingsOperationResponse>;
 
 export interface DeleteEdgeMachineVolumeRequest {
@@ -2730,7 +2726,7 @@ export interface DeleteEdgeMachineVolumeRequest {
   /** The name of the EdgeMachineVolume */
   volumeName: string;
 }
-export const DeleteEdgeMachineVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeMachineVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2749,9 +2745,9 @@ export const DeleteEdgeMachineVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeMachineVolumeRequest>;
 
 export interface DeleteEdgeMachineVolumeResponse {}
-export const DeleteEdgeMachineVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteEdgeMachineVolumeResponse" },
-) as any as S.Schema<DeleteEdgeMachineVolumeResponse>;
+const DeleteEdgeMachineVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteEdgeMachineVolumeResponse",
+}) as any as S.Schema<DeleteEdgeMachineVolumeResponse>;
 
 export interface DeleteExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2765,7 +2761,7 @@ export interface DeleteExtensionRequest {
   /** The name of the machine extension. */
   extensionName: string;
 }
-export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2783,7 +2779,7 @@ export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExtensionRequest" }) as any as S.Schema<DeleteExtensionRequest>;
 
 export interface DeleteExtensionResponse {}
-export const DeleteExtensionResponse =
+const DeleteExtensionResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteExtensionResponse>;
 
 export interface DeleteGalleryImageRequest {
@@ -2794,7 +2790,7 @@ export interface DeleteGalleryImageRequest {
   /** Name of the gallery image */
   galleryImageName: string;
 }
-export const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2812,14 +2808,14 @@ export const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGalleryImageRequest>;
 
 export interface DeleteGalleryImageResponse {}
-export const DeleteGalleryImageResponse =
+const DeleteGalleryImageResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteGalleryImageResponse>;
 
 export interface DeleteGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const DeleteGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2833,7 +2829,7 @@ export const DeleteGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGuestAgentRequest" }) as any as S.Schema<DeleteGuestAgentRequest>;
 
 export interface DeleteGuestAgentResponse {}
-export const DeleteGuestAgentResponse =
+const DeleteGuestAgentResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteGuestAgentResponse>;
 
 export interface DeleteLogicalNetworkRequest {
@@ -2844,7 +2840,7 @@ export interface DeleteLogicalNetworkRequest {
   /** Name of the logical network */
   logicalNetworkName: string;
 }
-export const DeleteLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2862,7 +2858,7 @@ export const DeleteLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogicalNetworkRequest>;
 
 export interface DeleteLogicalNetworkResponse {}
-export const DeleteLogicalNetworkResponse =
+const DeleteLogicalNetworkResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteLogicalNetworkResponse>;
 
 export interface DeleteMarketplaceGalleryImageRequest {
@@ -2873,7 +2869,7 @@ export interface DeleteMarketplaceGalleryImageRequest {
   /** Name of the marketplace gallery image */
   marketplaceGalleryImageName: string;
 }
-export const DeleteMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2891,7 +2887,7 @@ export const DeleteMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteMarketplaceGalleryImageRequest>;
 
 export interface DeleteMarketplaceGalleryImageResponse {}
-export const DeleteMarketplaceGalleryImageResponse =
+const DeleteMarketplaceGalleryImageResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteMarketplaceGalleryImageResponse>;
 
 export interface DeleteNetworkInterfaceRequest {
@@ -2902,7 +2898,7 @@ export interface DeleteNetworkInterfaceRequest {
   /** Name of the network interface */
   networkInterfaceName: string;
 }
-export const DeleteNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2920,7 +2916,7 @@ export const DeleteNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNetworkInterfaceRequest>;
 
 export interface DeleteNetworkInterfaceResponse {}
-export const DeleteNetworkInterfaceResponse =
+const DeleteNetworkInterfaceResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteNetworkInterfaceResponse>;
 
 export interface DeleteSecuritySettingsRequest {
@@ -2933,7 +2929,7 @@ export interface DeleteSecuritySettingsRequest {
   /** Name of security setting */
   securitySettingsName: string;
 }
-export const DeleteSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2952,7 +2948,7 @@ export const DeleteSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSecuritySettingsRequest>;
 
 export interface DeleteSecuritySettingsResponse {}
-export const DeleteSecuritySettingsResponse =
+const DeleteSecuritySettingsResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteSecuritySettingsResponse>;
 
 export interface DeleteStorageContainerRequest {
@@ -2963,7 +2959,7 @@ export interface DeleteStorageContainerRequest {
   /** Name of the storage container */
   storageContainerName: string;
 }
-export const DeleteStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2981,7 +2977,7 @@ export const DeleteStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageContainerRequest>;
 
 export interface DeleteStorageContainerResponse {}
-export const DeleteStorageContainerResponse =
+const DeleteStorageContainerResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteStorageContainerResponse>;
 
 export interface DeleteUpdateRequest {
@@ -2994,7 +2990,7 @@ export interface DeleteUpdateRequest {
   /** The name of the Update */
   updateName: string;
 }
-export const DeleteUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3011,8 +3007,7 @@ export const DeleteUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUpdateRequest" }) as any as S.Schema<DeleteUpdateRequest>;
 
 export interface DeleteUpdateResponse {}
-export const DeleteUpdateResponse =
-  LogCollectionPropertiesInput as any as S.Schema<DeleteUpdateResponse>;
+const DeleteUpdateResponse = LogCollectionPropertiesInput as any as S.Schema<DeleteUpdateResponse>;
 
 export interface DeleteUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3026,7 +3021,7 @@ export interface DeleteUpdateRunRequest {
   /** The name of the Update Run */
   updateRunName: string;
 }
-export const DeleteUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3044,7 +3039,7 @@ export const DeleteUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUpdateRunRequest" }) as any as S.Schema<DeleteUpdateRunRequest>;
 
 export interface DeleteUpdateRunResponse {}
-export const DeleteUpdateRunResponse =
+const DeleteUpdateRunResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteUpdateRunResponse>;
 
 export interface DeleteUpdateSummaryRequest {
@@ -3055,7 +3050,7 @@ export interface DeleteUpdateSummaryRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const DeleteUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3073,7 +3068,7 @@ export const DeleteUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUpdateSummaryRequest>;
 
 export interface DeleteUpdateSummaryResponse {}
-export const DeleteUpdateSummaryResponse =
+const DeleteUpdateSummaryResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteUpdateSummaryResponse>;
 
 export interface DeleteVirtualHardDiskRequest {
@@ -3084,7 +3079,7 @@ export interface DeleteVirtualHardDiskRequest {
   /** Name of the virtual hard disk */
   virtualHardDiskName: string;
 }
-export const DeleteVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3102,14 +3097,14 @@ export const DeleteVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualHardDiskRequest>;
 
 export interface DeleteVirtualHardDiskResponse {}
-export const DeleteVirtualHardDiskResponse =
+const DeleteVirtualHardDiskResponse =
   LogCollectionPropertiesInput as any as S.Schema<DeleteVirtualHardDiskResponse>;
 
 export interface DeleteVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -3125,23 +3120,23 @@ export const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineInstanceRequest>;
 
 export interface DeleteVirtualMachineInstanceResponse {}
-export const DeleteVirtualMachineInstanceResponse =
+const DeleteVirtualMachineInstanceResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<DeleteVirtualMachineInstanceResponse>;
 
 /** Azure resource ids of Arc machines to be part of cluster. */
 export type DeploymentSettingsPropertiesInputArcNodeResourceIdsList = Array<string>;
-export const DeploymentSettingsPropertiesInputArcNodeResourceIdsList =
+const DeploymentSettingsPropertiesInputArcNodeResourceIdsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DeploymentSettingsPropertiesInputArcNodeResourceIdsList>;
 
 /** Deployment mode to trigger job. */
 export type DeploymentMode = "Validate" | "Deploy";
-export const DeploymentMode = S.String;
+const DeploymentMode = S.String;
 
 /** The intended operation for a cluster. */
 export type DeploymentSettingsPropertiesInputOperationType =
   | "ClusterProvisioning"
   | "ClusterUpgrade";
-export const DeploymentSettingsPropertiesInputOperationType = S.String;
+const DeploymentSettingsPropertiesInputOperationType = S.String;
 
 /** The SecuritySettings of AzureStackHCI Cluster. */
 export interface DeploymentSecuritySettings {
@@ -3166,7 +3161,7 @@ export interface DeploymentSecuritySettings {
   /** WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster. */
   wdacEnforced?: boolean;
 }
-export const DeploymentSecuritySettings = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hvciProtection: S.optional(S.Boolean),
     drtmProtection: S.optional(S.Boolean),
@@ -3192,7 +3187,7 @@ export interface Observability {
   /** When set to true, collects log data to facilitate quicker issue resolution. */
   episodicDataUpload?: boolean;
 }
-export const Observability = /*@__PURE__*/ S.suspend(() =>
+const Observability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamingDataClient: S.optional(S.Boolean),
     euLocation: S.optional(S.Boolean),
@@ -3215,7 +3210,7 @@ export interface DeploymentClusterInput {
   /** Cluster Pattern supported. */
   clusterPattern?: ClusterPattern | (string & {});
 }
-export const DeploymentClusterInput = /*@__PURE__*/ S.suspend(() =>
+const DeploymentClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     witnessType: S.optional(S.String),
@@ -3228,15 +3223,15 @@ export const DeploymentClusterInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Identity Provider for the cluster */
 export type IdentityProvider = "ActiveDirectory" | "LocalIdentity";
-export const IdentityProvider = S.String;
+const IdentityProvider = S.String;
 
 /** Volume provisioning type for S2D storage. */
 export type VolumeType = "Fixed" | "ThinProvisioned";
-export const VolumeType = S.String;
+const VolumeType = S.String;
 
 /** Overprovisioning ratio for S2D storage. */
 export type OverprovisioningRatio = "0" | "1" | "2";
-export const OverprovisioningRatio = S.String;
+const OverprovisioningRatio = S.String;
 
 /** The S2D (Storage Spaces Direct) configuration for AzureStackHCI Cluster storage. */
 export interface StorageS2dConfig {
@@ -3245,7 +3240,7 @@ export interface StorageS2dConfig {
   /** Overprovisioning ratio for S2D storage. Allowed values are '0', '1', '2'. */
   overprovisioningRatio?: OverprovisioningRatio | (string & {});
 }
-export const StorageS2dConfig = /*@__PURE__*/ S.suspend(() =>
+const StorageS2dConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeType: S.optional(VolumeType),
     overprovisioningRatio: S.optional(OverprovisioningRatio),
@@ -3259,7 +3254,7 @@ export interface StorageSanConfig {
   /** Infrastructure performance LUN ID. */
   infraPerfLunId?: string;
 }
-export const StorageSanConfig = /*@__PURE__*/ S.suspend(() =>
+const StorageSanConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infraVolLunId: S.optional(S.String),
     infraPerfLunId: S.optional(S.String),
@@ -3277,7 +3272,7 @@ export interface Storage {
   /** SAN (Storage Area Network) configuration. Applicable when StorageType is 'SAN' or 'SANS2D'. */
   san?: StorageSanConfig;
 }
-export const Storage = /*@__PURE__*/ S.suspend(() =>
+const Storage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationMode: S.optional(S.String),
     storageType: S.optional(StorageType),
@@ -3293,7 +3288,7 @@ export interface IpPools {
   /** Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering. */
   endingAddress?: string;
 }
-export const IpPools = /*@__PURE__*/ S.suspend(() =>
+const IpPools = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startingAddress: S.optional(S.String),
     endingAddress: S.optional(S.String),
@@ -3302,17 +3297,17 @@ export const IpPools = /*@__PURE__*/ S.suspend(() =>
 
 /** Range of IP addresses from which addresses are allocated for nodes within a subnet. */
 export type InfrastructureNetworkIpPoolsList = Array<IpPools>;
-export const InfrastructureNetworkIpPoolsList = /*@__PURE__*/ S.Array(
+const InfrastructureNetworkIpPoolsList = /*@__PURE__*/ S.Array(
   IpPools,
 ) as any as S.Schema<InfrastructureNetworkIpPoolsList>;
 
 /** Specifies how DNS servers are configured for the infrastructure network. Allowed values are 'UseDnsServer' to use the provided DNS servers, and 'UseForwarder' to use DNS forwarders. */
 export type InfrastructureNetworkDnsServerConfig = "UseDnsServer" | "UseForwarder";
-export const InfrastructureNetworkDnsServerConfig = S.String;
+const InfrastructureNetworkDnsServerConfig = S.String;
 
 /** Forwarder details of the DNS Zone to be configured. */
 export type DnsZonesDnsForwarderList = Array<string>;
-export const DnsZonesDnsForwarderList =
+const DnsZonesDnsForwarderList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DnsZonesDnsForwarderList>;
 
 /** Details of the DNS Zones to be configured. */
@@ -3322,7 +3317,7 @@ export interface DnsZones {
   /** Forwarder details of the DNS Zone to be configured. */
   dnsForwarder?: DnsZonesDnsForwarderList;
 }
-export const DnsZones = /*@__PURE__*/ S.suspend(() =>
+const DnsZones = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsZoneName: S.optional(S.String),
     dnsForwarder: S.optional(DnsZonesDnsForwarderList),
@@ -3331,13 +3326,13 @@ export const DnsZones = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the DNS Zones to be configured. */
 export type InfrastructureNetworkDnsZonesList = Array<DnsZones>;
-export const InfrastructureNetworkDnsZonesList = /*@__PURE__*/ S.Array(
+const InfrastructureNetworkDnsZonesList = /*@__PURE__*/ S.Array(
   DnsZones,
 ) as any as S.Schema<InfrastructureNetworkDnsZonesList>;
 
 /** IPv4 address of the DNS servers in your environment. */
 export type InfrastructureNetworkDnsServersList = Array<string>;
-export const InfrastructureNetworkDnsServersList =
+const InfrastructureNetworkDnsServersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<InfrastructureNetworkDnsServersList>;
 
 /** The InfrastructureNetwork of a AzureStackHCI Cluster. */
@@ -3357,7 +3352,7 @@ export interface InfrastructureNetwork {
   /** Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required */
   useDhcp?: boolean;
 }
-export const InfrastructureNetwork = /*@__PURE__*/ S.suspend(() =>
+const InfrastructureNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetMask: S.optional(S.String),
     gateway: S.optional(S.String),
@@ -3371,7 +3366,7 @@ export const InfrastructureNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** InfrastructureNetwork config to deploy AzureStackHCI Cluster. */
 export type DeploymentDataInputInfrastructureNetworkList = Array<InfrastructureNetwork>;
-export const DeploymentDataInputInfrastructureNetworkList = /*@__PURE__*/ S.Array(
+const DeploymentDataInputInfrastructureNetworkList = /*@__PURE__*/ S.Array(
   InfrastructureNetwork,
 ) as any as S.Schema<DeploymentDataInputInfrastructureNetworkList>;
 
@@ -3382,7 +3377,7 @@ export interface PhysicalNodes {
   /** The IPv4 address assigned to each physical server on your Azure Stack HCI cluster. */
   ipv4Address?: string;
 }
-export const PhysicalNodes = /*@__PURE__*/ S.suspend(() =>
+const PhysicalNodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     ipv4Address: S.optional(S.String),
@@ -3391,18 +3386,18 @@ export const PhysicalNodes = /*@__PURE__*/ S.suspend(() =>
 
 /** list of physical nodes config to deploy AzureStackHCI Cluster. */
 export type DeploymentDataInputPhysicalNodesList = Array<PhysicalNodes>;
-export const DeploymentDataInputPhysicalNodesList = /*@__PURE__*/ S.Array(
+const DeploymentDataInputPhysicalNodesList = /*@__PURE__*/ S.Array(
   PhysicalNodes,
 ) as any as S.Schema<DeploymentDataInputPhysicalNodesList>;
 
 /** List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'. */
 export type DeploymentSettingIntentsTrafficTypeList = Array<string>;
-export const DeploymentSettingIntentsTrafficTypeList =
+const DeploymentSettingIntentsTrafficTypeList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DeploymentSettingIntentsTrafficTypeList>;
 
 /** Array of network interfaces used for the network intent. */
 export type DeploymentSettingIntentsAdapterList = Array<string>;
-export const DeploymentSettingIntentsAdapterList =
+const DeploymentSettingIntentsAdapterList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DeploymentSettingIntentsAdapterList>;
 
 /** The VirtualSwitchConfigurationOverrides of a cluster. */
@@ -3412,7 +3407,7 @@ export interface DeploymentSettingVirtualSwitchConfigurationOverrides {
   /** Load Balancing Algorithm for Virtual Switch */
   loadBalancingAlgorithm?: string;
 }
-export const DeploymentSettingVirtualSwitchConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingVirtualSwitchConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableIov: S.optional(S.String),
     loadBalancingAlgorithm: S.optional(S.String),
@@ -3430,7 +3425,7 @@ export interface QosPolicyOverrides {
   /** This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. */
   bandwidthPercentage_SMB?: string;
 }
-export const QosPolicyOverrides = /*@__PURE__*/ S.suspend(() =>
+const QosPolicyOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorityValue8021Action_Cluster: S.optional(S.String),
     priorityValue8021Action_SMB: S.optional(S.String),
@@ -3447,7 +3442,7 @@ export interface DeploymentSettingAdapterPropertyOverrides {
   /** This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE' */
   networkDirectTechnology?: string;
 }
-export const DeploymentSettingAdapterPropertyOverrides = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingAdapterPropertyOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jumboPacket: S.optional(S.String),
     networkDirect: S.optional(S.String),
@@ -3478,7 +3473,7 @@ export interface DeploymentSettingIntents {
   /** Set Adapter PropertyOverrides for cluster. */
   adapterPropertyOverrides?: DeploymentSettingAdapterPropertyOverrides;
 }
-export const DeploymentSettingIntents = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingIntents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     trafficType: S.optional(DeploymentSettingIntentsTrafficTypeList),
@@ -3496,7 +3491,7 @@ export const DeploymentSettingIntents = /*@__PURE__*/ S.suspend(() =>
 
 /** The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM. */
 export type DeploymentSettingHostNetworkIntentsList = Array<DeploymentSettingIntents>;
-export const DeploymentSettingHostNetworkIntentsList = /*@__PURE__*/ S.Array(
+const DeploymentSettingHostNetworkIntentsList = /*@__PURE__*/ S.Array(
   DeploymentSettingIntents,
 ) as any as S.Schema<DeploymentSettingHostNetworkIntentsList>;
 
@@ -3509,7 +3504,7 @@ export interface DeploymentSettingStorageAdapterIPInfo {
   /** The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster. */
   subnetMask?: string;
 }
-export const DeploymentSettingStorageAdapterIPInfo = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingStorageAdapterIPInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     physicalNode: S.optional(S.String),
     ipv4Address: S.optional(S.String),
@@ -3522,7 +3517,7 @@ export const DeploymentSettingStorageAdapterIPInfo = /*@__PURE__*/ S.suspend(() 
 /** List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster. */
 export type DeploymentSettingStorageNetworksStorageAdapterIPInfoList =
   Array<DeploymentSettingStorageAdapterIPInfo>;
-export const DeploymentSettingStorageNetworksStorageAdapterIPInfoList = /*@__PURE__*/ S.Array(
+const DeploymentSettingStorageNetworksStorageAdapterIPInfoList = /*@__PURE__*/ S.Array(
   DeploymentSettingStorageAdapterIPInfo,
 ) as any as S.Schema<DeploymentSettingStorageNetworksStorageAdapterIPInfoList>;
 
@@ -3537,7 +3532,7 @@ export interface DeploymentSettingStorageNetworks {
   /** List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster. */
   storageAdapterIPInfo?: DeploymentSettingStorageNetworksStorageAdapterIPInfoList;
 }
-export const DeploymentSettingStorageNetworks = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingStorageNetworks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     networkAdapterName: S.optional(S.String),
@@ -3551,7 +3546,7 @@ export const DeploymentSettingStorageNetworks = /*@__PURE__*/ S.suspend(() =>
 /** List of StorageNetworks config to deploy AzureStackHCI Cluster. */
 export type DeploymentSettingHostNetworkStorageNetworksList =
   Array<DeploymentSettingStorageNetworks>;
-export const DeploymentSettingHostNetworkStorageNetworksList = /*@__PURE__*/ S.Array(
+const DeploymentSettingHostNetworkStorageNetworksList = /*@__PURE__*/ S.Array(
   DeploymentSettingStorageNetworks,
 ) as any as S.Schema<DeploymentSettingHostNetworkStorageNetworksList>;
 
@@ -3566,7 +3561,7 @@ export interface SanAdapterProperties {
   /** Jumbo frame size in bytes. */
   jumboPacket?: number;
 }
-export const SanAdapterProperties = /*@__PURE__*/ S.suspend(() =>
+const SanAdapterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorityValue8021ActionCluster: S.optional(S.Number),
     priorityValue8021ActionSmb: S.optional(S.Number),
@@ -3586,7 +3581,7 @@ export interface SanAdapterIPConfig {
   /** Subnet address prefix in CIDR notation (e.g., 10.10.30.0/24). */
   addressPrefix?: string;
 }
-export const SanAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
+const SanAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     networkAdapterName: S.optional(S.String),
@@ -3597,7 +3592,7 @@ export const SanAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-adapter IP configuration for the cluster network. */
 export type SanClusterNetworkConfigAdapterIPConfigList = Array<SanAdapterIPConfig>;
-export const SanClusterNetworkConfigAdapterIPConfigList = /*@__PURE__*/ S.Array(
+const SanClusterNetworkConfigAdapterIPConfigList = /*@__PURE__*/ S.Array(
   SanAdapterIPConfig,
 ) as any as S.Schema<SanClusterNetworkConfigAdapterIPConfigList>;
 
@@ -3608,7 +3603,7 @@ export interface SanClusterNetworkConfig {
   /** Per-adapter IP configuration for the cluster network. */
   adapterIPConfig?: SanClusterNetworkConfigAdapterIPConfigList;
 }
-export const SanClusterNetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const SanClusterNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterProperties: S.optional(SanAdapterProperties),
     adapterIPConfig: S.optional(SanClusterNetworkConfigAdapterIPConfigList),
@@ -3620,7 +3615,7 @@ export interface SanNetworks {
   /** Cluster (CSV/LiveMig) network configuration for SAN deployments. */
   clusterNetworkConfig?: SanClusterNetworkConfig;
 }
-export const SanNetworks = /*@__PURE__*/ S.suspend(() =>
+const SanNetworks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterNetworkConfig: S.optional(SanClusterNetworkConfig),
   }),
@@ -3639,7 +3634,7 @@ export interface DeploymentSettingHostNetwork {
   /** Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically. */
   enableStorageAutoIp?: boolean;
 }
-export const DeploymentSettingHostNetwork = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingHostNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intents: S.optional(DeploymentSettingHostNetworkIntentsList),
     storageNetworks: S.optional(DeploymentSettingHostNetworkStorageNetworksList),
@@ -3660,7 +3655,7 @@ export interface NetworkController {
   /** NetworkVirtualizationEnabled of network controller used for SDN Integration. */
   networkVirtualizationEnabled?: boolean;
 }
-export const NetworkController = /*@__PURE__*/ S.suspend(() =>
+const NetworkController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     macAddressPoolStart: S.optional(S.String),
     macAddressPoolStop: S.optional(S.String),
@@ -3673,7 +3668,7 @@ export interface SdnIntegration {
   /** network controller config for SDN Integration to deploy AzureStackHCI Cluster. */
   networkController?: NetworkController;
 }
-export const SdnIntegration = /*@__PURE__*/ S.suspend(() =>
+const SdnIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkController: S.optional(NetworkController),
   }),
@@ -3687,7 +3682,7 @@ export type EceSecrets =
   | "WitnessStorageKey"
   | "chapCredential"
   | "mutualChapCredential";
-export const EceSecrets = S.String;
+const EceSecrets = S.String;
 
 /** Protected parameters list stored in keyvault. */
 export interface EceDeploymentSecrets {
@@ -3698,7 +3693,7 @@ export interface EceDeploymentSecrets {
   /** Secret URI stored in keyvault. */
   secretLocation?: string;
 }
-export const EceDeploymentSecrets = /*@__PURE__*/ S.suspend(() =>
+const EceDeploymentSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretName: S.optional(S.String),
     eceSecretName: S.optional(EceSecrets),
@@ -3708,7 +3703,7 @@ export const EceDeploymentSecrets = /*@__PURE__*/ S.suspend(() =>
 
 /** secrets used for cloud deployment. */
 export type DeploymentDataInputSecretsList = Array<EceDeploymentSecrets>;
-export const DeploymentDataInputSecretsList = /*@__PURE__*/ S.Array(
+const DeploymentDataInputSecretsList = /*@__PURE__*/ S.Array(
   EceDeploymentSecrets,
 ) as any as S.Schema<DeploymentDataInputSecretsList>;
 
@@ -3717,7 +3712,7 @@ export interface OptionalServices {
   /** The name of custom location. */
   customLocation?: string;
 }
-export const OptionalServices = /*@__PURE__*/ S.suspend(() =>
+const OptionalServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocation: S.optional(S.String),
   }),
@@ -3725,13 +3720,11 @@ export const OptionalServices = /*@__PURE__*/ S.suspend(() =>
 
 /** Local Availability Zone information for HCI cluster */
 export type DeploymentDataInputLocalAvailabilityZonesList = Array<LocalAvailabilityZones>;
-export const DeploymentDataInputLocalAvailabilityZonesList =
+const DeploymentDataInputLocalAvailabilityZonesList =
   ClusterPropertiesLocalAvailabilityZonesList as any as S.Schema<DeploymentDataInputLocalAvailabilityZonesList>;
 
 /** Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster */
 export type AssemblyInfoInput = LogCollectionPropertiesInput;
-export const AssemblyInfoInput = LogCollectionPropertiesInput;
-
 /** The Deployment data of AzureStackHCI Cluster. */
 export interface DeploymentDataInput {
   /** SecuritySettings to deploy AzureStackHCI Cluster. */
@@ -3771,7 +3764,7 @@ export interface DeploymentDataInput {
   /** Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster */
   assemblyInfo?: LogCollectionPropertiesInput;
 }
-export const DeploymentDataInput = /*@__PURE__*/ S.suspend(() =>
+const DeploymentDataInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securitySettings: S.optional(DeploymentSecuritySettings),
     observability: S.optional(Observability),
@@ -3807,7 +3800,7 @@ export interface SbeDeploymentInfo {
   /** SBE Manifest Creation Date. */
   sbeManifestCreationDate?: string;
 }
-export const SbeDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
+const SbeDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     family: S.optional(S.String),
@@ -3824,7 +3817,7 @@ export interface SbePartnerProperties {
   /** SBE partner property value. */
   value?: string;
 }
-export const SbePartnerProperties = /*@__PURE__*/ S.suspend(() =>
+const SbePartnerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -3833,7 +3826,7 @@ export const SbePartnerProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SBE partner properties for AzureStackHCI cluster deployment. */
 export type SbePartnerInfoPartnerPropertiesList = Array<SbePartnerProperties>;
-export const SbePartnerInfoPartnerPropertiesList = /*@__PURE__*/ S.Array(
+const SbePartnerInfoPartnerPropertiesList = /*@__PURE__*/ S.Array(
   SbePartnerProperties,
 ) as any as S.Schema<SbePartnerInfoPartnerPropertiesList>;
 
@@ -3846,7 +3839,7 @@ export interface SbeCredentials {
   /** secret URI stored in keyvault. */
   secretLocation?: string;
 }
-export const SbeCredentials = /*@__PURE__*/ S.suspend(() =>
+const SbeCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretName: S.optional(S.String),
     eceSecretName: S.optional(S.String),
@@ -3856,7 +3849,7 @@ export const SbeCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** SBE credentials list for AzureStackHCI cluster deployment. */
 export type SbePartnerInfoCredentialListList = Array<SbeCredentials>;
-export const SbePartnerInfoCredentialListList = /*@__PURE__*/ S.Array(
+const SbePartnerInfoCredentialListList = /*@__PURE__*/ S.Array(
   SbeCredentials,
 ) as any as S.Schema<SbePartnerInfoCredentialListList>;
 
@@ -3869,7 +3862,7 @@ export interface SbePartnerInfo {
   /** SBE credentials list for AzureStackHCI cluster deployment. */
   credentialList?: SbePartnerInfoCredentialListList;
 }
-export const SbePartnerInfo = /*@__PURE__*/ S.suspend(() =>
+const SbePartnerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sbeDeploymentInfo: S.optional(SbeDeploymentInfo),
     partnerProperties: S.optional(SbePartnerInfoPartnerPropertiesList),
@@ -3884,7 +3877,7 @@ export interface ScaleUnitsInput {
   /** Solution builder extension (SBE) partner properties */
   sbePartnerInfo?: SbePartnerInfo;
 }
-export const ScaleUnitsInput = /*@__PURE__*/ S.suspend(() =>
+const ScaleUnitsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentData: DeploymentDataInput,
     sbePartnerInfo: S.optional(SbePartnerInfo),
@@ -3893,7 +3886,7 @@ export const ScaleUnitsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Scale units will contains list of deployment data */
 export type DeploymentConfigurationInputScaleUnitsList = Array<ScaleUnitsInput>;
-export const DeploymentConfigurationInputScaleUnitsList = /*@__PURE__*/ S.Array(
+const DeploymentConfigurationInputScaleUnitsList = /*@__PURE__*/ S.Array(
   ScaleUnitsInput,
 ) as any as S.Schema<DeploymentConfigurationInputScaleUnitsList>;
 
@@ -3904,7 +3897,7 @@ export interface DeploymentConfigurationInput {
   /** Scale units will contains list of deployment data */
   scaleUnits: DeploymentConfigurationInputScaleUnitsList;
 }
-export const DeploymentConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const DeploymentConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     scaleUnits: DeploymentConfigurationInputScaleUnitsList,
@@ -3924,7 +3917,7 @@ export interface DeploymentSettingsPropertiesInput {
   /** Scale units will contains list of deployment data */
   deploymentConfiguration: DeploymentConfigurationInput;
 }
-export const DeploymentSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arcNodeResourceIds: DeploymentSettingsPropertiesInputArcNodeResourceIdsList,
     deploymentMode: DeploymentMode,
@@ -3947,7 +3940,7 @@ export interface DeploymentSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentSettingsPropertiesInput;
 }
-export const DeploymentSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3968,16 +3961,16 @@ export const DeploymentSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Azure resource ids of Arc machines to be part of cluster. */
 export type DeploymentSettingsPropertiesArcNodeResourceIdsList = Array<string>;
-export const DeploymentSettingsPropertiesArcNodeResourceIdsList =
+const DeploymentSettingsPropertiesArcNodeResourceIdsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DeploymentSettingsPropertiesArcNodeResourceIdsList>;
 
 /** The intended operation for a cluster. */
 export type DeploymentSettingsPropertiesOperationType = "ClusterProvisioning" | "ClusterUpgrade";
-export const DeploymentSettingsPropertiesOperationType = S.String;
+const DeploymentSettingsPropertiesOperationType = S.String;
 
 /** Hardware class of the cluster. */
 export type DeploymentClusterHardwareClass = "Small" | "Medium" | "Large";
-export const DeploymentClusterHardwareClass = S.String;
+const DeploymentClusterHardwareClass = S.String;
 
 /** AzureStackHCI Cluster deployment properties. */
 export interface DeploymentCluster {
@@ -3996,7 +3989,7 @@ export interface DeploymentCluster {
   /** Cluster Pattern supported. */
   clusterPattern?: ClusterPattern;
 }
-export const DeploymentCluster = /*@__PURE__*/ S.suspend(() =>
+const DeploymentCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     witnessType: S.optional(S.String),
@@ -4010,22 +4003,22 @@ export const DeploymentCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** InfrastructureNetwork config to deploy AzureStackHCI Cluster. */
 export type DeploymentDataInfrastructureNetworkList = Array<InfrastructureNetwork>;
-export const DeploymentDataInfrastructureNetworkList =
+const DeploymentDataInfrastructureNetworkList =
   DeploymentDataInputInfrastructureNetworkList as any as S.Schema<DeploymentDataInfrastructureNetworkList>;
 
 /** list of physical nodes config to deploy AzureStackHCI Cluster. */
 export type DeploymentDataPhysicalNodesList = Array<PhysicalNodes>;
-export const DeploymentDataPhysicalNodesList =
+const DeploymentDataPhysicalNodesList =
   DeploymentDataInputPhysicalNodesList as any as S.Schema<DeploymentDataPhysicalNodesList>;
 
 /** secrets used for cloud deployment. */
 export type DeploymentDataSecretsList = Array<EceDeploymentSecrets>;
-export const DeploymentDataSecretsList =
+const DeploymentDataSecretsList =
   DeploymentDataInputSecretsList as any as S.Schema<DeploymentDataSecretsList>;
 
 /** Local Availability Zone information for HCI cluster */
 export type DeploymentDataLocalAvailabilityZonesList = Array<LocalAvailabilityZones>;
-export const DeploymentDataLocalAvailabilityZonesList =
+const DeploymentDataLocalAvailabilityZonesList =
   ClusterPropertiesLocalAvailabilityZonesList as any as S.Schema<DeploymentDataLocalAvailabilityZonesList>;
 
 /** Payload properties for Validated Solution Recipe for AzureStackHCI Cluster */
@@ -4039,7 +4032,7 @@ export interface AssemblyInfoPayload {
   /** Url of assembly package for Validated Solution Recipe for AzureStackHCI Cluster */
   url?: string;
 }
-export const AssemblyInfoPayload = /*@__PURE__*/ S.suspend(() =>
+const AssemblyInfoPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     hash: S.optional(S.String),
@@ -4050,7 +4043,7 @@ export const AssemblyInfoPayload = /*@__PURE__*/ S.suspend(() =>
 
 /** Payload properties for Validated Solution Recipe for AzureStackHCI Cluster */
 export type AssemblyInfoPayloadList = Array<AssemblyInfoPayload>;
-export const AssemblyInfoPayloadList = /*@__PURE__*/ S.Array(
+const AssemblyInfoPayloadList = /*@__PURE__*/ S.Array(
   AssemblyInfoPayload,
 ) as any as S.Schema<AssemblyInfoPayloadList>;
 
@@ -4061,7 +4054,7 @@ export interface AssemblyInfo {
   /** Payload properties for Validated Solution Recipe for AzureStackHCI Cluster */
   payload?: AssemblyInfoPayloadList;
 }
-export const AssemblyInfo = /*@__PURE__*/ S.suspend(() =>
+const AssemblyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageVersion: S.optional(S.String),
     payload: S.optional(AssemblyInfoPayloadList),
@@ -4107,7 +4100,7 @@ export interface DeploymentData {
   /** Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster */
   assemblyInfo?: AssemblyInfo;
 }
-export const DeploymentData = /*@__PURE__*/ S.suspend(() =>
+const DeploymentData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securitySettings: S.optional(DeploymentSecuritySettings),
     observability: S.optional(Observability),
@@ -4137,7 +4130,7 @@ export interface ScaleUnits {
   /** Solution builder extension (SBE) partner properties */
   sbePartnerInfo?: SbePartnerInfo;
 }
-export const ScaleUnits = /*@__PURE__*/ S.suspend(() =>
+const ScaleUnits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentData: DeploymentData,
     sbePartnerInfo: S.optional(SbePartnerInfo),
@@ -4146,7 +4139,7 @@ export const ScaleUnits = /*@__PURE__*/ S.suspend(() =>
 
 /** Scale units will contains list of deployment data */
 export type DeploymentConfigurationScaleUnitsList = Array<ScaleUnits>;
-export const DeploymentConfigurationScaleUnitsList = /*@__PURE__*/ S.Array(
+const DeploymentConfigurationScaleUnitsList = /*@__PURE__*/ S.Array(
   ScaleUnits,
 ) as any as S.Schema<DeploymentConfigurationScaleUnitsList>;
 
@@ -4157,7 +4150,7 @@ export interface DeploymentConfiguration {
   /** Scale units will contains list of deployment data */
   scaleUnits: DeploymentConfigurationScaleUnitsList;
 }
-export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     scaleUnits: DeploymentConfigurationScaleUnitsList,
@@ -4171,7 +4164,7 @@ export interface EceReportedProperties {
   /** Deployment status of AzureStackHCI Cluster Deployment. */
   deploymentStatus?: EceActionStatus;
 }
-export const EceReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const EceReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validationStatus: S.optional(EceActionStatus),
     deploymentStatus: S.optional(EceActionStatus),
@@ -4193,7 +4186,7 @@ export interface DeploymentSettingsProperties {
   /** Deployment Status reported from cluster. */
   reportedProperties?: EceReportedProperties;
 }
-export const DeploymentSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     arcNodeResourceIds: DeploymentSettingsPropertiesArcNodeResourceIdsList,
@@ -4218,7 +4211,7 @@ export interface DeploymentSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentSettingsProperties;
 }
-export const DeploymentSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4232,7 +4225,7 @@ export const DeploymentSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
 
 /** Edge device kind. */
 export type EdgeDeviceKind = "HCI";
-export const EdgeDeviceKind = S.String;
+const EdgeDeviceKind = S.String;
 
 export interface EdgeDeviceJobsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -4244,7 +4237,7 @@ export interface EdgeDeviceJobsCreateOrUpdateRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: EdgeDeviceKind | (string & {});
 }
-export const EdgeDeviceJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeDeviceJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -4274,7 +4267,7 @@ export interface EdgeDeviceJobsCreateOrUpdateResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: EdgeDeviceKind;
 }
-export const EdgeDeviceJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeDeviceJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4288,10 +4281,10 @@ export const EdgeDeviceJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Edge device kind. */
 export type DeviceKind = "HCI";
-export const DeviceKind = S.String;
+const DeviceKind = S.String;
 
 export type HciEdgeDeviceStringList = Array<string>;
-export const HciEdgeDeviceStringList =
+const HciEdgeDeviceStringList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<HciEdgeDeviceStringList>;
 
 /** NIC Details of device */
@@ -4315,7 +4308,7 @@ export interface HciEdgeDeviceNicDetail {
   /** Default Isolation of Management NIC */
   defaultIsolationId?: string;
 }
-export const HciEdgeDeviceNicDetail = /*@__PURE__*/ S.suspend(() =>
+const HciEdgeDeviceNicDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterName: S.String,
     interfaceDescription: S.optional(S.String),
@@ -4330,7 +4323,7 @@ export const HciEdgeDeviceNicDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HciEdgeDeviceNicDetail" }) as any as S.Schema<HciEdgeDeviceNicDetail>;
 
 export type HciEdgeDeviceNicDetailList = Array<HciEdgeDeviceNicDetail>;
-export const HciEdgeDeviceNicDetailList = /*@__PURE__*/ S.Array(
+const HciEdgeDeviceNicDetailList = /*@__PURE__*/ S.Array(
   HciEdgeDeviceNicDetail,
 ) as any as S.Schema<HciEdgeDeviceNicDetailList>;
 
@@ -4341,7 +4334,7 @@ export interface HciEdgeDeviceConfiguration {
   /** Device metadata details. */
   deviceMetadata?: string;
 }
-export const HciEdgeDeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const HciEdgeDeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nicDetails: S.optional(HciEdgeDeviceNicDetailList),
     deviceMetadata: S.optional(S.String),
@@ -4357,7 +4350,7 @@ export interface HciEdgeDeviceProperties {
   /** Provisioning state of edgeDevice resource */
   provisioningState?: string;
 }
-export const HciEdgeDeviceProperties = /*@__PURE__*/ S.suspend(() =>
+const HciEdgeDeviceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceConfiguration: S.optional(HciEdgeDeviceConfiguration),
     provisioningState: S.optional(S.String),
@@ -4374,7 +4367,7 @@ export interface EdgeDevicesCreateOrUpdateRequest {
   /** properties for Arc-enabled edge device with HCI OS. */
   properties?: HciEdgeDeviceProperties;
 }
-export const EdgeDevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeDevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -4406,7 +4399,7 @@ export interface EdgeDevicesCreateOrUpdateResponse {
   /** properties for Arc-enabled edge device with HCI OS. */
   properties?: HciEdgeDeviceProperties;
 }
-export const EdgeDevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeDevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4421,7 +4414,7 @@ export const EdgeDevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Node storage type for an edge machine. */
 export type NodeStorageType = "S2D" | "SANISCSI" | "SANFC";
-export const NodeStorageType = S.String;
+const NodeStorageType = S.String;
 
 /** Common properties applied to iSCSI network adapters. */
 export interface IscsiAdapterProperties {
@@ -4432,7 +4425,7 @@ export interface IscsiAdapterProperties {
   /** Jumbo frame size in bytes. */
   jumboPacket?: number;
 }
-export const IscsiAdapterProperties = /*@__PURE__*/ S.suspend(() =>
+const IscsiAdapterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorityValue8021ActionIscsi: S.optional(S.Number),
     bandwidthPercentageIscsi: S.optional(S.Number),
@@ -4447,7 +4440,7 @@ export interface IscsiTargetPortalAddress {
   /** Next hop IP address used to reach the target portal. */
   nextHop?: string;
 }
-export const IscsiTargetPortalAddress = /*@__PURE__*/ S.suspend(() =>
+const IscsiTargetPortalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     nextHop: S.optional(S.String),
@@ -4456,7 +4449,7 @@ export const IscsiTargetPortalAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** Target portal addresses reachable through this adapter. */
 export type IscsiAdapterIPConfigTargetPortalAddressesList = Array<IscsiTargetPortalAddress>;
-export const IscsiAdapterIPConfigTargetPortalAddressesList = /*@__PURE__*/ S.Array(
+const IscsiAdapterIPConfigTargetPortalAddressesList = /*@__PURE__*/ S.Array(
   IscsiTargetPortalAddress,
 ) as any as S.Schema<IscsiAdapterIPConfigTargetPortalAddressesList>;
 
@@ -4471,7 +4464,7 @@ export interface IscsiAdapterIPConfig {
   /** Target portal addresses reachable through this adapter. */
   targetPortalAddresses?: IscsiAdapterIPConfigTargetPortalAddressesList;
 }
-export const IscsiAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
+const IscsiAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkAdapterName: S.optional(S.String),
     vlanId: S.optional(S.Number),
@@ -4482,7 +4475,7 @@ export const IscsiAdapterIPConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-adapter IP configuration for the iSCSI network adapters. */
 export type IscsiNetworkConfigAdapterIPConfigList = Array<IscsiAdapterIPConfig>;
-export const IscsiNetworkConfigAdapterIPConfigList = /*@__PURE__*/ S.Array(
+const IscsiNetworkConfigAdapterIPConfigList = /*@__PURE__*/ S.Array(
   IscsiAdapterIPConfig,
 ) as any as S.Schema<IscsiNetworkConfigAdapterIPConfigList>;
 
@@ -4493,7 +4486,7 @@ export interface IscsiNetworkConfig {
   /** Per-adapter IP configuration for the iSCSI network adapters. */
   adapterIPConfig?: IscsiNetworkConfigAdapterIPConfigList;
 }
-export const IscsiNetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const IscsiNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterProperties: S.optional(IscsiAdapterProperties),
     adapterIPConfig: S.optional(IscsiNetworkConfigAdapterIPConfigList),
@@ -4502,14 +4495,14 @@ export const IscsiNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The CHAP authentication mode for an iSCSI connection. */
 export type IscsiChapType = "NoChap" | "OneWay" | "Bidirectional";
-export const IscsiChapType = S.String;
+const IscsiChapType = S.String;
 
 /** CHAP authentication settings for an iSCSI connection. */
 export interface IscsiChapSettings {
   /** The CHAP authentication mode to use. */
   chapType?: IscsiChapType | (string & {});
 }
-export const IscsiChapSettings = /*@__PURE__*/ S.suspend(() =>
+const IscsiChapSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chapType: S.optional(IscsiChapType),
   }),
@@ -4524,7 +4517,7 @@ export interface IscsiConfig {
   /** iSCSI Qualified Name of the initiator. */
   initiatorIqn?: string;
 }
-export const IscsiConfig = /*@__PURE__*/ S.suspend(() =>
+const IscsiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iScsiNetworkConfig: S.optional(IscsiNetworkConfig),
     chapSettings: S.optional(IscsiChapSettings),
@@ -4534,7 +4527,7 @@ export const IscsiConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Protected parameters stored in Key Vault and applied during edge machine node preparation. */
 export type EdgeMachineDeploymentDataSecretsList = Array<EceDeploymentSecrets>;
-export const EdgeMachineDeploymentDataSecretsList =
+const EdgeMachineDeploymentDataSecretsList =
   DeploymentDataInputSecretsList as any as S.Schema<EdgeMachineDeploymentDataSecretsList>;
 
 /** The deployment data of an edge machine. */
@@ -4546,7 +4539,7 @@ export interface EdgeMachineDeploymentData {
   /** Protected parameters stored in Key Vault and applied during edge machine node preparation. */
   secrets?: EdgeMachineDeploymentDataSecretsList;
 }
-export const EdgeMachineDeploymentData = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageType: NodeStorageType,
     iScsiConfig: S.optional(IscsiConfig),
@@ -4561,7 +4554,7 @@ export interface EdgeMachineScaleUnits {
   /** Deployment data to configure the edge machine. */
   deploymentData: EdgeMachineDeploymentData;
 }
-export const EdgeMachineScaleUnits = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineScaleUnits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentData: EdgeMachineDeploymentData,
   }),
@@ -4569,7 +4562,7 @@ export const EdgeMachineScaleUnits = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of deployment data. */
 export type EdgeMachineDeploymentConfigurationScaleUnitsList = Array<EdgeMachineScaleUnits>;
-export const EdgeMachineDeploymentConfigurationScaleUnitsList = /*@__PURE__*/ S.Array(
+const EdgeMachineDeploymentConfigurationScaleUnitsList = /*@__PURE__*/ S.Array(
   EdgeMachineScaleUnits,
 ) as any as S.Schema<EdgeMachineDeploymentConfigurationScaleUnitsList>;
 
@@ -4580,7 +4573,7 @@ export interface EdgeMachineDeploymentConfiguration {
   /** The list of deployment data. */
   scaleUnits: EdgeMachineDeploymentConfigurationScaleUnitsList;
 }
-export const EdgeMachineDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     scaleUnits: EdgeMachineDeploymentConfigurationScaleUnitsList,
@@ -4594,7 +4587,7 @@ export interface EdgeMachineDeploymentSettingPropertiesInput {
   /** The deployment configuration for the edge machine. */
   deploymentConfiguration: EdgeMachineDeploymentConfiguration;
 }
-export const EdgeMachineDeploymentSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentConfiguration: EdgeMachineDeploymentConfiguration,
   }),
@@ -4614,7 +4607,7 @@ export interface EdgeMachineDeploymentSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDeploymentSettingPropertiesInput;
 }
-export const EdgeMachineDeploymentSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4642,7 +4635,7 @@ export interface EdgeMachineDeploymentSettingProperties {
   /** Deployment status reported from the edge machine. */
   reportedProperties?: EceReportedProperties;
 }
-export const EdgeMachineDeploymentSettingProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentSettingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     deploymentConfiguration: EdgeMachineDeploymentConfiguration,
@@ -4664,7 +4657,7 @@ export interface EdgeMachineDeploymentSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDeploymentSettingProperties;
 }
-export const EdgeMachineDeploymentSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4678,12 +4671,10 @@ export const EdgeMachineDeploymentSettingsCreateOrUpdateResponse = /*@__PURE__*/
 
 /** Job Type supported for disk operations. */
 export type DiskJobType = "CreateVolume" | "SyncConfiguration";
-export const DiskJobType = S.String;
+const DiskJobType = S.String;
 
 /** The error detail. */
 export type EdgeMachineDiskJobPropertiesInputError = LogCollectionPropertiesInput;
-export const EdgeMachineDiskJobPropertiesInputError = LogCollectionPropertiesInput;
-
 /** Disk Job properties. */
 export interface EdgeMachineDiskJobPropertiesInput {
   /** Job Type to support polymorphic resource. */
@@ -4693,7 +4684,7 @@ export interface EdgeMachineDiskJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineDiskJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: DiskJobType,
     deploymentMode: S.optional(DeploymentMode),
@@ -4717,7 +4708,7 @@ export interface EdgeMachineDiskJobsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskJobPropertiesInput;
 }
-export const EdgeMachineDiskJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4739,12 +4730,12 @@ export const EdgeMachineDiskJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** The error details. */
 export type EdgeMachineDiskJobPropertiesErrorDetailsList = Array<ErrorDetail>;
-export const EdgeMachineDiskJobPropertiesErrorDetailsList =
+const EdgeMachineDiskJobPropertiesErrorDetailsList =
   DeploymentStepErrorDetailsList as any as S.Schema<EdgeMachineDiskJobPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type EdgeMachineDiskJobPropertiesErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const EdgeMachineDiskJobPropertiesErrorAdditionalInfoList =
+const EdgeMachineDiskJobPropertiesErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<EdgeMachineDiskJobPropertiesErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -4760,7 +4751,7 @@ export interface EdgeMachineDiskJobPropertiesError {
   /** The error additional info. */
   additionalInfo?: EdgeMachineDiskJobPropertiesErrorAdditionalInfoList;
 }
-export const EdgeMachineDiskJobPropertiesError = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJobPropertiesError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -4774,13 +4765,13 @@ export const EdgeMachineDiskJobPropertiesError = /*@__PURE__*/ S.suspend(() =>
 
 /** List of nested steps. */
 export type DiskDeploymentStepStepsList = Array<DiskDeploymentStep>;
-export const DiskDeploymentStepStepsList = /*@__PURE__*/ S.Array(
+const DiskDeploymentStepStepsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => DiskDeploymentStep),
 ) as any as S.Schema<DiskDeploymentStepStepsList>;
 
 /** List of exceptions. */
 export type DiskDeploymentStepExceptionList = Array<string>;
-export const DiskDeploymentStepExceptionList =
+const DiskDeploymentStepExceptionList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<DiskDeploymentStepExceptionList>;
 
 /** The Step of Disk Job. */
@@ -4802,7 +4793,7 @@ export interface DiskDeploymentStep {
   /** List of exceptions. */
   exception?: DiskDeploymentStepExceptionList;
 }
-export const DiskDeploymentStep = /*@__PURE__*/ S.suspend(() =>
+const DiskDeploymentStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -4817,7 +4808,7 @@ export const DiskDeploymentStep = /*@__PURE__*/ S.suspend(() =>
 
 /** List of steps of Disk Job. */
 export type DiskActionStatusStepsList = Array<DiskDeploymentStep>;
-export const DiskActionStatusStepsList = /*@__PURE__*/ S.Array(
+const DiskActionStatusStepsList = /*@__PURE__*/ S.Array(
   DiskDeploymentStep,
 ) as any as S.Schema<DiskActionStatusStepsList>;
 
@@ -4828,7 +4819,7 @@ export interface DiskActionStatus {
   /** List of steps of Disk Job. */
   steps?: DiskActionStatusStepsList;
 }
-export const DiskActionStatus = /*@__PURE__*/ S.suspend(() =>
+const DiskActionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     steps: S.optional(DiskActionStatusStepsList),
@@ -4844,7 +4835,7 @@ export interface DiskJobReportedProperties {
   /** Deployment status of Disk Job. */
   deploymentStatus?: DiskActionStatus;
 }
-export const DiskJobReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const DiskJobReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.optional(S.Number),
     validationStatus: S.optional(DiskActionStatus),
@@ -4875,7 +4866,7 @@ export interface EdgeMachineDiskJobProperties {
   /** Properties reported by the job execution. */
   reportedProperties?: DiskJobReportedProperties;
 }
-export const EdgeMachineDiskJobProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: DiskJobType,
     deploymentMode: S.optional(DeploymentMode),
@@ -4903,7 +4894,7 @@ export interface EdgeMachineDiskJobsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskJobProperties;
 }
-export const EdgeMachineDiskJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4917,12 +4908,10 @@ export const EdgeMachineDiskJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend
 
 /** Job Type supported for disk privileged operations. */
 export type PrivilegedJobType = "DeleteVolume";
-export const PrivilegedJobType = S.String;
+const PrivilegedJobType = S.String;
 
 /** The error detail. */
 export type EdgeMachineDiskPrivilegedJobPropertiesInputError = LogCollectionPropertiesInput;
-export const EdgeMachineDiskPrivilegedJobPropertiesInputError = LogCollectionPropertiesInput;
-
 /** Disk Privileged Job properties. */
 export interface EdgeMachineDiskPrivilegedJobPropertiesInput {
   /** Privileged Job Type to support polymorphic resource. */
@@ -4932,7 +4921,7 @@ export interface EdgeMachineDiskPrivilegedJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineDiskPrivilegedJobPropertiesInput =
+const EdgeMachineDiskPrivilegedJobPropertiesInput =
   EdgeMachineDiskJobPropertiesInput as any as S.Schema<EdgeMachineDiskPrivilegedJobPropertiesInput>;
 
 export interface EdgeMachineDiskPrivilegedJobsCreateOrUpdateRequest {
@@ -4949,7 +4938,7 @@ export interface EdgeMachineDiskPrivilegedJobsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskPrivilegedJobPropertiesInput;
 }
-export const EdgeMachineDiskPrivilegedJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskPrivilegedJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4971,15 +4960,9 @@ export const EdgeMachineDiskPrivilegedJobsCreateOrUpdateRequest = /*@__PURE__*/ 
 
 /** The error details. */
 export type EdgeMachineDiskPrivilegedJobPropertiesErrorDetailsList = Array<ErrorDetail>;
-export const EdgeMachineDiskPrivilegedJobPropertiesErrorDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<EdgeMachineDiskPrivilegedJobPropertiesErrorDetailsList>;
-
 /** The error additional info. */
 export type EdgeMachineDiskPrivilegedJobPropertiesErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-export const EdgeMachineDiskPrivilegedJobPropertiesErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<EdgeMachineDiskPrivilegedJobPropertiesErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface EdgeMachineDiskPrivilegedJobPropertiesError {
   /** The error code. */
@@ -4993,7 +4976,7 @@ export interface EdgeMachineDiskPrivilegedJobPropertiesError {
   /** The error additional info. */
   additionalInfo?: EdgeMachineDiskPrivilegedJobPropertiesErrorAdditionalInfoList;
 }
-export const EdgeMachineDiskPrivilegedJobPropertiesError =
+const EdgeMachineDiskPrivilegedJobPropertiesError =
   EdgeMachineDiskJobPropertiesError as any as S.Schema<EdgeMachineDiskPrivilegedJobPropertiesError>;
 
 /** Disk Privileged Job properties. */
@@ -5017,7 +5000,7 @@ export interface EdgeMachineDiskPrivilegedJobProperties {
   /** Properties reported by the job execution. */
   reportedProperties?: DiskJobReportedProperties;
 }
-export const EdgeMachineDiskPrivilegedJobProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskPrivilegedJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: PrivilegedJobType,
     deploymentMode: S.optional(DeploymentMode),
@@ -5045,7 +5028,7 @@ export interface EdgeMachineDiskPrivilegedJobsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskPrivilegedJobProperties;
 }
-export const EdgeMachineDiskPrivilegedJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskPrivilegedJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5059,7 +5042,7 @@ export const EdgeMachineDiskPrivilegedJobsCreateOrUpdateResponse = /*@__PURE__*/
 
 /** File system types supported for volumes. */
 export type DiskFileSystemType = "ext4" | "xfs" | "NTFS" | "ReFS" | "vfat" | "fat32" | "fat";
-export const DiskFileSystemType = S.String;
+const DiskFileSystemType = S.String;
 
 /** Configuration for a volume on a disk. */
 export interface DiskVolumeConfiguration {
@@ -5070,7 +5053,7 @@ export interface DiskVolumeConfiguration {
   /** File system type to format the volume with. */
   fileSystem?: DiskFileSystemType | (string & {});
 }
-export const DiskVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DiskVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeInBytes: S.String,
     path: S.String,
@@ -5080,7 +5063,7 @@ export const DiskVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of desired volumes on this disk. */
 export type DiskConfigurationVolumesList = Array<DiskVolumeConfiguration>;
-export const DiskConfigurationVolumesList = /*@__PURE__*/ S.Array(
+const DiskConfigurationVolumesList = /*@__PURE__*/ S.Array(
   DiskVolumeConfiguration,
 ) as any as S.Schema<DiskConfigurationVolumesList>;
 
@@ -5089,7 +5072,7 @@ export interface DiskConfiguration {
   /** List of desired volumes on this disk. */
   volumes?: DiskConfigurationVolumesList;
 }
-export const DiskConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DiskConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumes: S.optional(DiskConfigurationVolumesList),
   }),
@@ -5100,7 +5083,7 @@ export interface EdgeMachineDiskPropertiesInput {
   /** The authoritative desired configuration for this disk. */
   diskConfiguration?: DiskConfiguration;
 }
-export const EdgeMachineDiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskConfiguration: S.optional(DiskConfiguration),
   }),
@@ -5120,7 +5103,7 @@ export interface EdgeMachineDisksCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskPropertiesInput;
 }
-export const EdgeMachineDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5141,15 +5124,15 @@ export const EdgeMachineDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Storage type of the disk. */
 export type DiskStorageType = "SAN" | "S2D";
-export const DiskStorageType = S.String;
+const DiskStorageType = S.String;
 
 /** Type of disk. */
 export type DiskType = "Unknown" | "SCM" | "NVMe" | "SATA" | "SSD" | "HDD" | "Virtual" | "Other";
-export const DiskType = S.String;
+const DiskType = S.String;
 
 /** State of the disk. */
 export type DiskState = "Online" | "Offline" | "Failed" | "Missing" | "Unknown";
-export const DiskState = S.String;
+const DiskState = S.String;
 
 /** Reported properties of a volume on the disk. */
 export interface DiskVolumeReportedProperties {
@@ -5174,7 +5157,7 @@ export interface DiskVolumeReportedProperties {
   /** Resource name of the volume. */
   resourceName?: string;
 }
-export const DiskVolumeReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const DiskVolumeReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeInBytes: S.optional(S.String),
     path: S.optional(S.String),
@@ -5193,7 +5176,7 @@ export const DiskVolumeReportedProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of volumes on this disk. */
 export type DiskReportedPropertiesVolumesList = Array<DiskVolumeReportedProperties>;
-export const DiskReportedPropertiesVolumesList = /*@__PURE__*/ S.Array(
+const DiskReportedPropertiesVolumesList = /*@__PURE__*/ S.Array(
   DiskVolumeReportedProperties,
 ) as any as S.Schema<DiskReportedPropertiesVolumesList>;
 
@@ -5226,7 +5209,7 @@ export interface DiskReportedProperties {
   /** List of volumes on this disk. */
   volumes?: DiskReportedPropertiesVolumesList;
 }
-export const DiskReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const DiskReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskName: S.optional(S.String),
     model: S.optional(S.String),
@@ -5253,7 +5236,7 @@ export interface EdgeMachineDiskProperties {
   /** Provisioning state of the disk resource. */
   provisioningState?: ProvisioningState;
 }
-export const EdgeMachineDiskProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskConfiguration: S.optional(DiskConfiguration),
     reportedProperties: S.optional(DiskReportedProperties),
@@ -5275,7 +5258,7 @@ export interface EdgeMachineDisksCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskProperties;
 }
-export const EdgeMachineDisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5289,12 +5272,10 @@ export const EdgeMachineDisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(()
 
 /** Job Type supported. */
 export type EdgeMachineJobType = "CollectLog" | "RemoteSupport" | "ProvisionOs" | "DownloadOs";
-export const EdgeMachineJobType = S.String;
+const EdgeMachineJobType = S.String;
 
 /** The error detail. */
 export type EdgeMachineJobPropertiesInputError = LogCollectionPropertiesInput;
-export const EdgeMachineJobPropertiesInputError = LogCollectionPropertiesInput;
-
 /** EdgeMachine Job properties */
 export interface EdgeMachineJobPropertiesInput {
   /** Job Type to support polymorphic resource. */
@@ -5304,7 +5285,7 @@ export interface EdgeMachineJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineJobPropertiesInput =
+const EdgeMachineJobPropertiesInput =
   EdgeMachineDiskJobPropertiesInput as any as S.Schema<EdgeMachineJobPropertiesInput>;
 
 export interface EdgeMachineJobsCreateOrUpdateRequest {
@@ -5319,7 +5300,7 @@ export interface EdgeMachineJobsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineJobPropertiesInput;
 }
-export const EdgeMachineJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5340,14 +5321,8 @@ export const EdgeMachineJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The error details. */
 export type EdgeMachineJobPropertiesErrorDetailsList = Array<ErrorDetail>;
-export const EdgeMachineJobPropertiesErrorDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<EdgeMachineJobPropertiesErrorDetailsList>;
-
 /** The error additional info. */
 export type EdgeMachineJobPropertiesErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const EdgeMachineJobPropertiesErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<EdgeMachineJobPropertiesErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface EdgeMachineJobPropertiesError {
   /** The error code. */
@@ -5361,7 +5336,7 @@ export interface EdgeMachineJobPropertiesError {
   /** The error additional info. */
   additionalInfo?: EdgeMachineJobPropertiesErrorAdditionalInfoList;
 }
-export const EdgeMachineJobPropertiesError =
+const EdgeMachineJobPropertiesError =
   EdgeMachineDiskJobPropertiesError as any as S.Schema<EdgeMachineJobPropertiesError>;
 
 /** EdgeMachine Job properties */
@@ -5383,7 +5358,7 @@ export interface EdgeMachineJobProperties {
   /** The error detail. */
   error?: EdgeMachineJobPropertiesError;
 }
-export const EdgeMachineJobProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: EdgeMachineJobType,
     deploymentMode: S.optional(DeploymentMode),
@@ -5408,7 +5383,7 @@ export interface EdgeMachineJobsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineJobProperties;
 }
-export const EdgeMachineJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5422,12 +5397,10 @@ export const EdgeMachineJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Type of network adapter job operation. */
 export type NetworkAdapterJobType = "ApplyConfiguration" | "ForcePush" | "SyncConfiguration";
-export const NetworkAdapterJobType = S.String;
+const NetworkAdapterJobType = S.String;
 
 /** The error detail. */
 export type EdgeMachineNetworkAdapterJobPropertiesInputError = LogCollectionPropertiesInput;
-export const EdgeMachineNetworkAdapterJobPropertiesInputError = LogCollectionPropertiesInput;
-
 /** Properties of the Network Adapter Job. */
 export interface EdgeMachineNetworkAdapterJobPropertiesInput {
   /** Type of operation. */
@@ -5437,7 +5410,7 @@ export interface EdgeMachineNetworkAdapterJobPropertiesInput {
   /** The error detail. */
   error?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineNetworkAdapterJobPropertiesInput =
+const EdgeMachineNetworkAdapterJobPropertiesInput =
   EdgeMachineDiskJobPropertiesInput as any as S.Schema<EdgeMachineNetworkAdapterJobPropertiesInput>;
 
 export interface EdgeMachineNetworkAdapterJobsCreateOrUpdateRequest {
@@ -5454,7 +5427,7 @@ export interface EdgeMachineNetworkAdapterJobsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineNetworkAdapterJobPropertiesInput;
 }
-export const EdgeMachineNetworkAdapterJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkAdapterJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5476,15 +5449,9 @@ export const EdgeMachineNetworkAdapterJobsCreateOrUpdateRequest = /*@__PURE__*/ 
 
 /** The error details. */
 export type EdgeMachineNetworkAdapterJobPropertiesErrorDetailsList = Array<ErrorDetail>;
-export const EdgeMachineNetworkAdapterJobPropertiesErrorDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<EdgeMachineNetworkAdapterJobPropertiesErrorDetailsList>;
-
 /** The error additional info. */
 export type EdgeMachineNetworkAdapterJobPropertiesErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-export const EdgeMachineNetworkAdapterJobPropertiesErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<EdgeMachineNetworkAdapterJobPropertiesErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface EdgeMachineNetworkAdapterJobPropertiesError {
   /** The error code. */
@@ -5498,18 +5465,18 @@ export interface EdgeMachineNetworkAdapterJobPropertiesError {
   /** The error additional info. */
   additionalInfo?: EdgeMachineNetworkAdapterJobPropertiesErrorAdditionalInfoList;
 }
-export const EdgeMachineNetworkAdapterJobPropertiesError =
+const EdgeMachineNetworkAdapterJobPropertiesError =
   EdgeMachineDiskJobPropertiesError as any as S.Schema<EdgeMachineNetworkAdapterJobPropertiesError>;
 
 /** List of nested steps. */
 export type NetworkAdapterDeploymentStepStepsList = Array<NetworkAdapterDeploymentStep>;
-export const NetworkAdapterDeploymentStepStepsList = /*@__PURE__*/ S.Array(
+const NetworkAdapterDeploymentStepStepsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => NetworkAdapterDeploymentStep),
 ) as any as S.Schema<NetworkAdapterDeploymentStepStepsList>;
 
 /** List of exceptions. */
 export type NetworkAdapterDeploymentStepExceptionList = Array<string>;
-export const NetworkAdapterDeploymentStepExceptionList =
+const NetworkAdapterDeploymentStepExceptionList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<NetworkAdapterDeploymentStepExceptionList>;
 
 /** The Step of Network Adapter Job. */
@@ -5531,7 +5498,7 @@ export interface NetworkAdapterDeploymentStep {
   /** List of exceptions. */
   exception?: NetworkAdapterDeploymentStepExceptionList;
 }
-export const NetworkAdapterDeploymentStep = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterDeploymentStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -5548,7 +5515,7 @@ export const NetworkAdapterDeploymentStep = /*@__PURE__*/ S.suspend(() =>
 
 /** List of steps of Network Adapter Job. */
 export type NetworkAdapterActionStatusStepsList = Array<NetworkAdapterDeploymentStep>;
-export const NetworkAdapterActionStatusStepsList = /*@__PURE__*/ S.Array(
+const NetworkAdapterActionStatusStepsList = /*@__PURE__*/ S.Array(
   NetworkAdapterDeploymentStep,
 ) as any as S.Schema<NetworkAdapterActionStatusStepsList>;
 
@@ -5559,7 +5526,7 @@ export interface NetworkAdapterActionStatus {
   /** List of steps of Network Adapter Job. */
   steps?: NetworkAdapterActionStatusStepsList;
 }
-export const NetworkAdapterActionStatus = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterActionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     steps: S.optional(NetworkAdapterActionStatusStepsList),
@@ -5577,7 +5544,7 @@ export interface NetworkAdapterJobReportedProperties {
   /** Deployment status of Network Adapter Job. */
   deploymentStatus?: NetworkAdapterActionStatus;
 }
-export const NetworkAdapterJobReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterJobReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.optional(S.Number),
     validationStatus: S.optional(NetworkAdapterActionStatus),
@@ -5608,7 +5575,7 @@ export interface EdgeMachineNetworkAdapterJobProperties {
   /** Reported properties for Network Adapter Job. */
   reportedProperties?: NetworkAdapterJobReportedProperties;
 }
-export const EdgeMachineNetworkAdapterJobProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkAdapterJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: NetworkAdapterJobType,
     deploymentMode: S.optional(DeploymentMode),
@@ -5636,7 +5603,7 @@ export interface EdgeMachineNetworkAdapterJobsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineNetworkAdapterJobProperties;
 }
-export const EdgeMachineNetworkAdapterJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkAdapterJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5650,16 +5617,16 @@ export const EdgeMachineNetworkAdapterJobsCreateOrUpdateResponse = /*@__PURE__*/
 
 /** Resource tags. */
 export type EdgeMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EdgeMachinesCreateOrUpdateRequestTagsMap =
+const EdgeMachinesCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<EdgeMachinesCreateOrUpdateRequestTagsMap>;
 
 /** Edge Machine Kind. */
 export type EdgeMachineKind = "Standard" | "Dedicated";
-export const EdgeMachineKind = S.String;
+const EdgeMachineKind = S.String;
 
 /** IP assignment types */
 export type IpAssignmentType = "Automatic" | "Manual";
-export const IpAssignmentType = S.String;
+const IpAssignmentType = S.String;
 
 /** IP address range configuration. */
 export interface IpAddressRange {
@@ -5668,7 +5635,7 @@ export interface IpAddressRange {
   /** End IP address. */
   endIp: string;
 }
-export const IpAddressRange = /*@__PURE__*/ S.suspend(() =>
+const IpAddressRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIp: S.String,
     endIp: S.String,
@@ -5677,7 +5644,7 @@ export const IpAddressRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of DNS addresses. */
 export type NetworkAdapterDnsAddressArrayList = Array<string>;
-export const NetworkAdapterDnsAddressArrayList =
+const NetworkAdapterDnsAddressArrayList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<NetworkAdapterDnsAddressArrayList>;
 
 /** Network adapter configuration. */
@@ -5701,7 +5668,7 @@ export interface NetworkAdapter {
   /** VLAN ID for the network setup. */
   vlanId?: string;
 }
-export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAssignmentType: IpAssignmentType,
     ipAddress: S.optional(S.String),
@@ -5717,7 +5684,7 @@ export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of network adapters. */
 export type NetworkConfigurationNetworkAdaptersList = Array<NetworkAdapter>;
-export const NetworkConfigurationNetworkAdaptersList = /*@__PURE__*/ S.Array(
+const NetworkConfigurationNetworkAdaptersList = /*@__PURE__*/ S.Array(
   NetworkAdapter,
 ) as any as S.Schema<NetworkConfigurationNetworkAdaptersList>;
 
@@ -5726,7 +5693,7 @@ export interface NetworkConfiguration {
   /** List of network adapters. */
   networkAdapters?: NetworkConfigurationNetworkAdaptersList;
 }
-export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkAdapters: S.optional(NetworkConfigurationNetworkAdaptersList),
   }),
@@ -5734,7 +5701,7 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Bypass list for the web proxy. */
 export type WebProxyConfigurationBypassListList = Array<string>;
-export const WebProxyConfigurationBypassListList =
+const WebProxyConfigurationBypassListList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<WebProxyConfigurationBypassListList>;
 
 /** Web proxy configuration. */
@@ -5746,7 +5713,7 @@ export interface WebProxyConfiguration {
   /** Bypass list for the web proxy. */
   bypassList?: WebProxyConfigurationBypassListList;
 }
-export const WebProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const WebProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionUri: S.optional(S.String.pipe(T.SensitiveValue({}))),
     port: S.optional(S.String),
@@ -5763,7 +5730,7 @@ export interface TimeConfiguration {
   /** Time zone. */
   timeZone?: string;
 }
-export const TimeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TimeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryTimeServer: S.optional(S.String),
     secondaryTimeServer: S.optional(S.String),
@@ -5776,7 +5743,7 @@ export interface StorageConfiguration {
   /** Partition size. */
   partitionSize?: string;
 }
-export const StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionSize: S.optional(S.String),
   }),
@@ -5795,7 +5762,7 @@ export interface TargetDeviceConfiguration {
   /** Storage configuration. */
   storage?: StorageConfiguration;
 }
-export const TargetDeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TargetDeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(NetworkConfiguration),
     hostName: S.optional(S.String),
@@ -5814,7 +5781,7 @@ export interface SiteDetails {
   /** Edge Device configuration received from site common configuration. */
   deviceConfiguration?: TargetDeviceConfiguration;
 }
-export const SiteDetails = /*@__PURE__*/ S.suspend(() =>
+const SiteDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteResourceId: S.String,
     deviceConfiguration: S.optional(TargetDeviceConfiguration),
@@ -5823,7 +5790,7 @@ export const SiteDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of owner key in the voucher */
 export type OwnerKeyType = "MicrosoftManaged";
-export const OwnerKeyType = S.String;
+const OwnerKeyType = S.String;
 
 /** Details for ownership voucher. */
 export interface OwnershipVoucherDetailsInput {
@@ -5832,7 +5799,7 @@ export interface OwnershipVoucherDetailsInput {
   /** Owner key type */
   ownerKeyType: OwnerKeyType | (string & {});
 }
-export const OwnershipVoucherDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const OwnershipVoucherDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownershipVoucher: S.String,
     ownerKeyType: OwnerKeyType,
@@ -5843,7 +5810,7 @@ export const OwnershipVoucherDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation sub type of OS Provisioning */
 export type OsProvisionProfileOperationType = "Provision" | "Update" | "ReImage" | "Reset";
-export const OsProvisionProfileOperationType = S.String;
+const OsProvisionProfileOperationType = S.String;
 
 /** Operating system profile. */
 export interface OsProvisionProfile {
@@ -5864,7 +5831,7 @@ export interface OsProvisionProfile {
   /** Operation sub type of OS Provisioning */
   operationType?: OsProvisionProfileOperationType | (string & {});
 }
-export const OsProvisionProfile = /*@__PURE__*/ S.suspend(() =>
+const OsProvisionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osName: S.optional(S.String),
     osType: S.optional(S.String),
@@ -5879,11 +5846,11 @@ export const OsProvisionProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of secret used for authentication. */
 export type SecretType = "KeyVault" | "SshPubKey";
-export const SecretType = S.String;
+const SecretType = S.String;
 
 /** SSH Public Key for the user. */
 export type UserDetailsSshPubKeyList = Array<string>;
-export const UserDetailsSshPubKeyList =
+const UserDetailsSshPubKeyList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<UserDetailsSshPubKeyList>;
 
 /** User configuration. */
@@ -5897,7 +5864,7 @@ export interface UserDetails {
   /** SSH Public Key for the user. */
   sshPubKey?: UserDetailsSshPubKeyList;
 }
-export const UserDetails = /*@__PURE__*/ S.suspend(() =>
+const UserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.String,
     secretType: SecretType,
@@ -5908,7 +5875,7 @@ export const UserDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** User configuration. */
 export type ProvisioningDetailsUserDetailsList = Array<UserDetails>;
-export const ProvisioningDetailsUserDetailsList = /*@__PURE__*/ S.Array(
+const ProvisioningDetailsUserDetailsList = /*@__PURE__*/ S.Array(
   UserDetails,
 ) as any as S.Schema<ProvisioningDetailsUserDetailsList>;
 
@@ -5919,7 +5886,7 @@ export interface ProvisioningDetails {
   /** User configuration. */
   userDetails?: ProvisioningDetailsUserDetailsList;
 }
-export const ProvisioningDetails = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osProfile: OsProvisionProfile,
     userDetails: S.optional(ProvisioningDetailsUserDetailsList),
@@ -5943,7 +5910,7 @@ export interface EdgeMachinePropertiesInput {
   /** Details for device provisioning. */
   provisioningDetails?: ProvisioningDetails;
 }
-export const EdgeMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edgeMachineKind: S.optional(EdgeMachineKind),
     arcMachineResourceGroupId: S.optional(S.String),
@@ -5961,11 +5928,10 @@ export const EdgeMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: LogCollectionPropertiesInput | null | undefined;
 };
-export const EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
-  ) as any as S.Schema<EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+const EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.NullOr(LogCollectionPropertiesInput),
+) as any as S.Schema<EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EdgeMachinesCreateOrUpdateRequestIdentity {
@@ -5973,7 +5939,7 @@ export interface EdgeMachinesCreateOrUpdateRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: EdgeMachinesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
-export const EdgeMachinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(
@@ -6000,7 +5966,7 @@ export interface EdgeMachinesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EdgeMachinesCreateOrUpdateRequestIdentity;
 }
-export const EdgeMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6023,7 +5989,7 @@ export const EdgeMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EdgeMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EdgeMachinesCreateOrUpdateResponseTagsMap =
+const EdgeMachinesCreateOrUpdateResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<EdgeMachinesCreateOrUpdateResponseTagsMap>;
 
 /** Lifecycle status of an Edge Machine. */
@@ -6038,11 +6004,11 @@ export type EdgeMachineLifecycleStatus =
   | "ResettingOs"
   | "Deleting"
   | "Failed";
-export const EdgeMachineLifecycleStatus = S.String;
+const EdgeMachineLifecycleStatus = S.String;
 
 /** Recommended steps to resolve failures. */
 export type LifecycleStatusRecommendedStepsList = Array<string>;
-export const LifecycleStatusRecommendedStepsList =
+const LifecycleStatusRecommendedStepsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<LifecycleStatusRecommendedStepsList>;
 
 /** Summary lifecycle status for a resource. */
@@ -6058,7 +6024,7 @@ export interface LifecycleStatus {
   /** Recommended steps to resolve failures. */
   recommendedSteps?: LifecycleStatusRecommendedStepsList;
 }
-export const LifecycleStatus = /*@__PURE__*/ S.suspend(() =>
+const LifecycleStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: EdgeMachineLifecycleStatus,
     stage: S.optional(S.String),
@@ -6070,18 +6036,12 @@ export const LifecycleStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of an operation. Maps to Steps.Status / SubSteps.Status. */
 export type LifecycleOperationStatus = "NotStarted" | "InProgress" | "Completed" | "Failed";
-export const LifecycleOperationStatus = S.String;
+const LifecycleOperationStatus = S.String;
 
 /** The error details. */
 export type LifecycleStageErrorDetailsList = Array<ErrorDetail>;
-export const LifecycleStageErrorDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<LifecycleStageErrorDetailsList>;
-
 /** The error additional info. */
 export type LifecycleStageErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const LifecycleStageErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<LifecycleStageErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface LifecycleStageError {
   /** The error code. */
@@ -6095,11 +6055,11 @@ export interface LifecycleStageError {
   /** The error additional info. */
   additionalInfo?: LifecycleStageErrorAdditionalInfoList;
 }
-export const LifecycleStageError = DeploymentStepError as any as S.Schema<LifecycleStageError>;
+const LifecycleStageError = DeploymentStepError as any as S.Schema<LifecycleStageError>;
 
 /** Sub-stages for this stage. */
 export type LifecycleStageSubStagesList = Array<LifecycleStage>;
-export const LifecycleStageSubStagesList = /*@__PURE__*/ S.Array(
+const LifecycleStageSubStagesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => LifecycleStage),
 ) as any as S.Schema<LifecycleStageSubStagesList>;
 
@@ -6122,7 +6082,7 @@ export interface LifecycleStage {
   /** Sub-stages for this stage. */
   subStages?: LifecycleStageSubStagesList;
 }
-export const LifecycleStage = /*@__PURE__*/ S.suspend(() =>
+const LifecycleStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.String,
@@ -6137,7 +6097,7 @@ export const LifecycleStage = /*@__PURE__*/ S.suspend(() =>
 
 /** List of lifecycle stages for the edge machine. */
 export type LifecycleDetailsLifecycleStagesList = Array<LifecycleStage>;
-export const LifecycleDetailsLifecycleStagesList = /*@__PURE__*/ S.Array(
+const LifecycleDetailsLifecycleStagesList = /*@__PURE__*/ S.Array(
   LifecycleStage,
 ) as any as S.Schema<LifecycleDetailsLifecycleStagesList>;
 
@@ -6148,7 +6108,7 @@ export interface LifecycleDetails {
   /** List of lifecycle stages for the edge machine. */
   lifecycleStages: LifecycleDetailsLifecycleStagesList;
 }
-export const LifecycleDetails = /*@__PURE__*/ S.suspend(() =>
+const LifecycleDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycleStatus: S.optional(LifecycleStatus),
     lifecycleStages: LifecycleDetailsLifecycleStagesList,
@@ -6157,22 +6117,16 @@ export const LifecycleDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Ownership Voucher validation Status. */
 export type OwnershipVoucherValidationStatus = "Valid" | "Invalid";
-export const OwnershipVoucherValidationStatus = S.String;
+const OwnershipVoucherValidationStatus = S.String;
 
 /** Represents the CPU architecture of a machine or an OS image. */
 export type Architecture = "amd64" | "arm64";
-export const Architecture = S.String;
+const Architecture = S.String;
 
 /** The error details. */
 export type OwnershipVoucherValidationDetailsErrorDetailsList = Array<ErrorDetail>;
-export const OwnershipVoucherValidationDetailsErrorDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<OwnershipVoucherValidationDetailsErrorDetailsList>;
-
 /** The error additional info. */
 export type OwnershipVoucherValidationDetailsErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OwnershipVoucherValidationDetailsErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<OwnershipVoucherValidationDetailsErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface OwnershipVoucherValidationDetailsError {
   /** The error code. */
@@ -6186,7 +6140,7 @@ export interface OwnershipVoucherValidationDetailsError {
   /** The error additional info. */
   additionalInfo?: OwnershipVoucherValidationDetailsErrorAdditionalInfoList;
 }
-export const OwnershipVoucherValidationDetailsError =
+const OwnershipVoucherValidationDetailsError =
   EdgeMachineDiskJobPropertiesError as any as S.Schema<OwnershipVoucherValidationDetailsError>;
 
 /** Ownership Voucher Validation Details */
@@ -6210,7 +6164,7 @@ export interface OwnershipVoucherValidationDetails {
   /** The error detail. */
   error?: OwnershipVoucherValidationDetailsError;
 }
-export const OwnershipVoucherValidationDetails = /*@__PURE__*/ S.suspend(() =>
+const OwnershipVoucherValidationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validationStatus: S.optional(OwnershipVoucherValidationStatus),
     serialNumber: S.optional(S.String),
@@ -6235,7 +6189,7 @@ export interface OwnershipVoucherDetails {
   /** Ownership Voucher Validation Details */
   validationDetails?: OwnershipVoucherValidationDetails;
 }
-export const OwnershipVoucherDetails = /*@__PURE__*/ S.suspend(() =>
+const OwnershipVoucherDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownershipVoucher: S.String,
     ownerKeyType: OwnerKeyType,
@@ -6254,20 +6208,20 @@ export type EdgeMachineState =
   | "Resetting"
   | "Failed"
   | "Preparing";
-export const EdgeMachineState = S.String;
+const EdgeMachineState = S.String;
 
 /** Overall connectivity status for the machine resource. */
 export type EdgeMachineConnectivityStatus = "NotSpecified" | "Disconnected" | "Connected";
-export const EdgeMachineConnectivityStatus = S.String;
+const EdgeMachineConnectivityStatus = S.String;
 
 /** DNS Servers for NIC */
 export type EdgeMachineNicDetailDnsServersList = Array<string>;
-export const EdgeMachineNicDetailDnsServersList =
+const EdgeMachineNicDetailDnsServersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<EdgeMachineNicDetailDnsServersList>;
 
 /** Describes the RDMA capability of the network adapter. */
 export type EdgeMachineNicDetailRdmaCapability = "Enabled" | "Disabled";
-export const EdgeMachineNicDetailRdmaCapability = S.String;
+const EdgeMachineNicDetailRdmaCapability = S.String;
 
 /** Network Interface Card (NIC) Details of edge machine. */
 export interface EdgeMachineNicDetail {
@@ -6304,7 +6258,7 @@ export interface EdgeMachineNicDetail {
   /** Describes the RDMA capability of the network adapter. */
   rdmaCapability?: EdgeMachineNicDetailRdmaCapability;
 }
-export const EdgeMachineNicDetail = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNicDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterName: S.optional(S.String),
     interfaceDescription: S.optional(S.String),
@@ -6327,7 +6281,7 @@ export const EdgeMachineNicDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Network Interface Card (NIC) Details of edge machine. */
 export type EdgeMachineNetworkProfileNicDetailsList = Array<EdgeMachineNicDetail>;
-export const EdgeMachineNetworkProfileNicDetailsList = /*@__PURE__*/ S.Array(
+const EdgeMachineNetworkProfileNicDetailsList = /*@__PURE__*/ S.Array(
   EdgeMachineNicDetail,
 ) as any as S.Schema<EdgeMachineNetworkProfileNicDetailsList>;
 
@@ -6340,7 +6294,7 @@ export interface SwitchExtension {
   /** This represents whether extension is enabled on virtualSwitch. */
   extensionEnabled?: boolean;
 }
-export const SwitchExtension = /*@__PURE__*/ S.suspend(() =>
+const SwitchExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     switchId: S.optional(S.String),
     extensionName: S.optional(S.String),
@@ -6350,7 +6304,7 @@ export const SwitchExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** This represents extensions installed on virtualSwitch. */
 export type SwitchDetailExtensionsList = Array<SwitchExtension>;
-export const SwitchDetailExtensionsList = /*@__PURE__*/ S.Array(
+const SwitchDetailExtensionsList = /*@__PURE__*/ S.Array(
   SwitchExtension,
 ) as any as S.Schema<SwitchDetailExtensionsList>;
 
@@ -6363,7 +6317,7 @@ export interface SwitchDetail {
   /** This represents extensions installed on virtualSwitch. */
   extensions?: SwitchDetailExtensionsList;
 }
-export const SwitchDetail = /*@__PURE__*/ S.suspend(() =>
+const SwitchDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     switchName: S.optional(S.String),
     switchType: S.optional(S.String),
@@ -6373,25 +6327,20 @@ export const SwitchDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** List of switch Details of edge machine. */
 export type EdgeMachineNetworkProfileSwitchDetailsList = Array<SwitchDetail>;
-export const EdgeMachineNetworkProfileSwitchDetailsList = /*@__PURE__*/ S.Array(
+const EdgeMachineNetworkProfileSwitchDetailsList = /*@__PURE__*/ S.Array(
   SwitchDetail,
 ) as any as S.Schema<EdgeMachineNetworkProfileSwitchDetailsList>;
 
 /** Array of adapters used for the network intent. */
 export type EdgeMachineHostNetworkIntentIntentAdaptersList = Array<string>;
-export const EdgeMachineHostNetworkIntentIntentAdaptersList =
+const EdgeMachineHostNetworkIntentIntentAdaptersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<EdgeMachineHostNetworkIntentIntentAdaptersList>;
 
 /** The VirtualSwitchConfigurationOverrides reported for the edge machine. */
 export type EdgeMachineVirtualSwitchConfigurationOverrides =
   DeploymentSettingVirtualSwitchConfigurationOverrides;
-export const EdgeMachineVirtualSwitchConfigurationOverrides =
-  DeploymentSettingVirtualSwitchConfigurationOverrides;
-
 /** The AdapterPropertyOverrides reported for the edge machine. */
 export type EdgeMachineAdapterPropertyOverrides = DeploymentSettingAdapterPropertyOverrides;
-export const EdgeMachineAdapterPropertyOverrides = DeploymentSettingAdapterPropertyOverrides;
-
 /** The network intent reported for the edge machine. */
 export interface EdgeMachineHostNetworkIntent {
   /** Scope for host network intent. */
@@ -6429,7 +6378,7 @@ export interface EdgeMachineHostNetworkIntent {
   /** Set Adapter PropertyOverrides for cluster. */
   adapterPropertyOverrides?: DeploymentSettingAdapterPropertyOverrides;
 }
-export const EdgeMachineHostNetworkIntent = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineHostNetworkIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(S.Number),
     intentType: S.optional(S.Number),
@@ -6457,18 +6406,16 @@ export const EdgeMachineHostNetworkIntent = /*@__PURE__*/ S.suspend(() =>
 
 /** The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM. */
 export type EdgeMachineHostNetworkIntentsList = Array<EdgeMachineHostNetworkIntent>;
-export const EdgeMachineHostNetworkIntentsList = /*@__PURE__*/ S.Array(
+const EdgeMachineHostNetworkIntentsList = /*@__PURE__*/ S.Array(
   EdgeMachineHostNetworkIntent,
 ) as any as S.Schema<EdgeMachineHostNetworkIntentsList>;
 
 /** The StorageAdapter physical nodes reported for the edge machine. */
 export type EdgeMachineStorageAdapterIpInfo = DeploymentSettingStorageAdapterIPInfo;
-export const EdgeMachineStorageAdapterIpInfo = DeploymentSettingStorageAdapterIPInfo;
-
 /** List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster. */
 export type EdgeMachineStorageNetworkStorageAdapterIPInfoList =
   Array<DeploymentSettingStorageAdapterIPInfo>;
-export const EdgeMachineStorageNetworkStorageAdapterIPInfoList =
+const EdgeMachineStorageNetworkStorageAdapterIPInfoList =
   DeploymentSettingStorageNetworksStorageAdapterIPInfoList as any as S.Schema<EdgeMachineStorageNetworkStorageAdapterIPInfoList>;
 
 /** The StorageNetworks reported for the edge machine. */
@@ -6482,7 +6429,7 @@ export interface EdgeMachineStorageNetwork {
   /** List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster. */
   storageAdapterIPInfo?: EdgeMachineStorageNetworkStorageAdapterIPInfoList;
 }
-export const EdgeMachineStorageNetwork = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineStorageNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     networkAdapterName: S.optional(S.String),
@@ -6495,7 +6442,7 @@ export const EdgeMachineStorageNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** List of StorageNetworks config to deploy AzureStackHCI Cluster. */
 export type EdgeMachineHostNetworkStorageNetworksList = Array<EdgeMachineStorageNetwork>;
-export const EdgeMachineHostNetworkStorageNetworksList = /*@__PURE__*/ S.Array(
+const EdgeMachineHostNetworkStorageNetworksList = /*@__PURE__*/ S.Array(
   EdgeMachineStorageNetwork,
 ) as any as S.Schema<EdgeMachineHostNetworkStorageNetworksList>;
 
@@ -6510,7 +6457,7 @@ export interface EdgeMachineHostNetwork {
   /** Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically. */
   enableStorageAutoIp?: boolean;
 }
-export const EdgeMachineHostNetwork = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineHostNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intents: S.optional(EdgeMachineHostNetworkIntentsList),
     storageNetworks: S.optional(EdgeMachineHostNetworkStorageNetworksList),
@@ -6528,7 +6475,7 @@ export interface SdnProperties {
   /** Represents the API address for the SDN deployment. */
   sdnApiAddress?: string;
 }
-export const SdnProperties = /*@__PURE__*/ S.suspend(() =>
+const SdnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdnStatus: S.optional(SdnStatus),
     sdnDomainName: S.optional(S.String),
@@ -6547,7 +6494,7 @@ export interface EdgeMachineNetworkProfile {
   /** Software Defined Networking (SDN) properties reported for the edge machine. */
   sdnProperties?: SdnProperties;
 }
-export const EdgeMachineNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nicDetails: S.optional(EdgeMachineNetworkProfileNicDetailsList),
     switchDetails: S.optional(EdgeMachineNetworkProfileSwitchDetailsList),
@@ -6577,7 +6524,7 @@ export interface OsProfile {
   /** OS Image Version */
   imageVersion?: string;
 }
-export const OsProfile = /*@__PURE__*/ S.suspend(() =>
+const OsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bootType: S.optional(S.String),
     assemblyVersion: S.optional(S.String),
@@ -6609,7 +6556,7 @@ export interface HardwareProfile {
   /** CPU architecture of the machine, for example amd64 or arm64. */
   architecture?: Architecture;
 }
-export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
+const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuCores: S.optional(S.Number),
     cpuSockets: S.optional(S.Number),
@@ -6627,7 +6574,7 @@ export interface StorageProfile {
   /** Number of storage disks in the device with $CanPool as true. */
   poolableDisksCount?: number;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     poolableDisksCount: S.optional(S.Number),
   }),
@@ -6642,7 +6589,7 @@ export interface SbeDeploymentPackageInfo {
   /** This represents discovered update results for matching updates and store it as SBE manifest. */
   sbeManifest?: string;
 }
-export const SbeDeploymentPackageInfo = /*@__PURE__*/ S.suspend(() =>
+const SbeDeploymentPackageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -6662,14 +6609,14 @@ export type ArcExtensionState =
   | "Moving"
   | "Deleting"
   | "Deleted";
-export const ArcExtensionState = S.String;
+const ArcExtensionState = S.String;
 
 /** details of validation failure */
 export interface HciValidationFailureDetail {
   /** Exception details while installing extension. */
   exception?: string;
 }
-export const HciValidationFailureDetail = /*@__PURE__*/ S.suspend(() =>
+const HciValidationFailureDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exception: S.optional(S.String),
   }),
@@ -6679,7 +6626,7 @@ export const HciValidationFailureDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Error details while installing Arc extension. */
 export type HciEdgeDeviceArcExtensionErrorDetailsList = Array<HciValidationFailureDetail>;
-export const HciEdgeDeviceArcExtensionErrorDetailsList = /*@__PURE__*/ S.Array(
+const HciEdgeDeviceArcExtensionErrorDetailsList = /*@__PURE__*/ S.Array(
   HciValidationFailureDetail,
 ) as any as S.Schema<HciEdgeDeviceArcExtensionErrorDetailsList>;
 
@@ -6698,7 +6645,7 @@ export interface HciEdgeDeviceArcExtension {
   /** Indicates whether the extension is managed by the user or by Azure. */
   managedBy?: ExtensionManagedBy;
 }
-export const HciEdgeDeviceArcExtension = /*@__PURE__*/ S.suspend(() =>
+const HciEdgeDeviceArcExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionName: S.optional(S.String),
     state: S.optional(ArcExtensionState),
@@ -6713,7 +6660,7 @@ export const HciEdgeDeviceArcExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Arc extensions installed on edge device. */
 export type ExtensionProfileExtensionsList = Array<HciEdgeDeviceArcExtension>;
-export const ExtensionProfileExtensionsList = /*@__PURE__*/ S.Array(
+const ExtensionProfileExtensionsList = /*@__PURE__*/ S.Array(
   HciEdgeDeviceArcExtension,
 ) as any as S.Schema<ExtensionProfileExtensionsList>;
 
@@ -6722,7 +6669,7 @@ export interface ExtensionProfile {
   /** List of Arc extensions installed on edge device. */
   extensions?: ExtensionProfileExtensionsList;
 }
-export const ExtensionProfile = /*@__PURE__*/ S.suspend(() =>
+const ExtensionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(ExtensionProfileExtensionsList),
   }),
@@ -6745,7 +6692,7 @@ export interface EdgeMachineWorkloadInventoryItem {
   /** Maximum memory the VM can consume, in bytes. */
   memoryInBytes?: string;
 }
-export const EdgeMachineWorkloadInventoryItem = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineWorkloadInventoryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadId: S.optional(S.String),
     name: S.optional(S.String),
@@ -6762,13 +6709,13 @@ export const EdgeMachineWorkloadInventoryItem = /*@__PURE__*/ S.suspend(() =>
 /** Read-only Hyper-V VM inventory reported by the device management extension for VMs visible on this node. */
 export type EdgeMachineReportedPropertiesWorkloadInventoryList =
   Array<EdgeMachineWorkloadInventoryItem>;
-export const EdgeMachineReportedPropertiesWorkloadInventoryList = /*@__PURE__*/ S.Array(
+const EdgeMachineReportedPropertiesWorkloadInventoryList = /*@__PURE__*/ S.Array(
   EdgeMachineWorkloadInventoryItem,
 ) as any as S.Schema<EdgeMachineReportedPropertiesWorkloadInventoryList>;
 
 /** Transport type of a storage fabric initiator port on the edge machine. */
 export type StorageInitiatorType = "iSCSI" | "FibreChannel" | "Unknown";
-export const StorageInitiatorType = S.String;
+const StorageInitiatorType = S.String;
 
 /** A storage fabric initiator port (iSCSI or Fibre Channel) discovered on the edge machine. */
 export interface StorageInitiator {
@@ -6785,7 +6732,7 @@ export interface StorageInitiator {
   /** Operational status of the initiator port as reported by the host. Corresponds to OperationalStatus from Get-InitiatorPort. */
   operationalStatus?: string;
 }
-export const StorageInitiator = /*@__PURE__*/ S.suspend(() =>
+const StorageInitiator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initiatorType: StorageInitiatorType,
     initiatorIdentifier: S.String,
@@ -6798,7 +6745,7 @@ export const StorageInitiator = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage fabric initiator ports (iSCSI or Fibre Channel) discovered on the edge machine. */
 export type EdgeMachineReportedPropertiesStorageInitiatorsList = Array<StorageInitiator>;
-export const EdgeMachineReportedPropertiesStorageInitiatorsList = /*@__PURE__*/ S.Array(
+const EdgeMachineReportedPropertiesStorageInitiatorsList = /*@__PURE__*/ S.Array(
   StorageInitiator,
 ) as any as S.Schema<EdgeMachineReportedPropertiesStorageInitiatorsList>;
 
@@ -6825,7 +6772,7 @@ export interface EdgeMachineReportedProperties {
   /** Storage fabric initiator ports (iSCSI or Fibre Channel) discovered on the edge machine. */
   storageInitiators?: EdgeMachineReportedPropertiesStorageInitiatorsList;
 }
-export const EdgeMachineReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.optional(S.String),
     networkProfile: S.optional(EdgeMachineNetworkProfile),
@@ -6844,14 +6791,8 @@ export const EdgeMachineReportedProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type OperationDetailErrorDetailsList = Array<ErrorDetail>;
-export const OperationDetailErrorDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<OperationDetailErrorDetailsList>;
-
 /** The error additional info. */
 export type OperationDetailErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OperationDetailErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<OperationDetailErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface OperationDetailError {
   /** The error code. */
@@ -6865,7 +6806,7 @@ export interface OperationDetailError {
   /** The error additional info. */
   additionalInfo?: OperationDetailErrorAdditionalInfoList;
 }
-export const OperationDetailError = DeploymentStepError as any as S.Schema<OperationDetailError>;
+const OperationDetailError = DeploymentStepError as any as S.Schema<OperationDetailError>;
 
 /** operation detail. */
 export interface OperationDetail {
@@ -6884,7 +6825,7 @@ export interface OperationDetail {
   /** The error detail. */
   error?: OperationDetailError;
 }
-export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
+const OperationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -6898,7 +6839,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** operation status details for edge machine. */
 export type EdgeMachinePropertiesOperationDetailsList = Array<OperationDetail>;
-export const EdgeMachinePropertiesOperationDetailsList = /*@__PURE__*/ S.Array(
+const EdgeMachinePropertiesOperationDetailsList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<EdgeMachinePropertiesOperationDetailsList>;
 
@@ -6939,7 +6880,7 @@ export interface EdgeMachineProperties {
   /** Last time data updated to service. */
   lastSyncTimestamp?: string;
 }
-export const EdgeMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edgeMachineKind: S.optional(EdgeMachineKind),
     provisioningState: S.optional(ProvisioningState),
@@ -6965,9 +6906,6 @@ export const EdgeMachineProperties = /*@__PURE__*/ S.suspend(() =>
 export type EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
-  ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EdgeMachinesCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6978,7 +6916,7 @@ export interface EdgeMachinesCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: EdgeMachinesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const EdgeMachinesCreateOrUpdateResponseIdentity =
+const EdgeMachinesCreateOrUpdateResponseIdentity =
   ClustersConfigureRemoteSupportResponseIdentity as any as S.Schema<EdgeMachinesCreateOrUpdateResponseIdentity>;
 
 export interface EdgeMachinesCreateOrUpdateResponse {
@@ -6999,7 +6937,7 @@ export interface EdgeMachinesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EdgeMachinesCreateOrUpdateResponseIdentity;
 }
-export const EdgeMachinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7016,8 +6954,6 @@ export const EdgeMachinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of an Edge Machine Security Settings resource. */
 export type EdgeMachineSecurityPropertiesInput = LogCollectionPropertiesInput;
-export const EdgeMachineSecurityPropertiesInput = LogCollectionPropertiesInput;
-
 export interface EdgeMachineSecuritySettingsOperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7030,29 +6966,28 @@ export interface EdgeMachineSecuritySettingsOperationsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: LogCollectionPropertiesInput;
 }
-export const EdgeMachineSecuritySettingsOperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      edgeMachineName: S.String.pipe(T.Label()),
-      securitySettingsName: S.String.pipe(T.Label()),
-      properties: S.optional(LogCollectionPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/securitySettings/{securitySettingsName}",
-        code: 200,
-        apiVersion: "2026-10-01",
-      }),
-    ),
+const EdgeMachineSecuritySettingsOperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    edgeMachineName: S.String.pipe(T.Label()),
+    securitySettingsName: S.String.pipe(T.Label()),
+    properties: S.optional(LogCollectionPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/securitySettings/{securitySettingsName}",
+      code: 200,
+      apiVersion: "2026-10-01",
+    }),
+  ),
 ).annotate({
   identifier: "EdgeMachineSecuritySettingsOperationsCreateOrUpdateRequest",
 }) as any as S.Schema<EdgeMachineSecuritySettingsOperationsCreateOrUpdateRequest>;
 
 /** Represents the compliance status of a resource. */
 export type ComplianceStatus = "Compliant" | "NonCompliant" | "Pending";
-export const ComplianceStatus = S.String;
+const ComplianceStatus = S.String;
 
 /** Compliance status payload for edge machine security settings. */
 export interface EdgeMachineSecurityComplianceStatus {
@@ -7067,7 +7002,7 @@ export interface EdgeMachineSecurityComplianceStatus {
   /** Security baseline compliance status. */
   securityBaselineStatus?: ComplianceStatus;
 }
-export const EdgeMachineSecurityComplianceStatus = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineSecurityComplianceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fipsStatus: S.optional(ComplianceStatus),
     secureBootStatus: S.optional(ComplianceStatus),
@@ -7090,7 +7025,7 @@ export interface EdgeMachineSecurityProperties {
   /** Most recent synchronization timestamp in UTC. */
   lastSyncTimestamp?: string;
 }
-export const EdgeMachineSecurityProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineSecurityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     securityComplianceStatus: S.optional(EdgeMachineSecurityComplianceStatus),
@@ -7113,15 +7048,14 @@ export interface EdgeMachineSecuritySettingsOperationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineSecurityProperties;
 }
-export const EdgeMachineSecuritySettingsOperationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(EdgeMachineSecurityProperties),
-    }),
+const EdgeMachineSecuritySettingsOperationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EdgeMachineSecurityProperties),
+  }),
 ).annotate({
   identifier: "EdgeMachineSecuritySettingsOperationsCreateOrUpdateResponse",
 }) as any as S.Schema<EdgeMachineSecuritySettingsOperationsCreateOrUpdateResponse>;
@@ -7131,7 +7065,7 @@ export interface VolumeConfiguration {
   /** Reserved for future volume configuration options. */
   reserved?: string;
 }
-export const VolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const VolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reserved: S.optional(S.String),
   }),
@@ -7142,7 +7076,7 @@ export interface EdgeMachineVolumePropertiesInput {
   /** Desired configuration for this volume. */
   volumeConfiguration?: VolumeConfiguration;
 }
-export const EdgeMachineVolumePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineVolumePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeConfiguration: S.optional(VolumeConfiguration),
   }),
@@ -7162,7 +7096,7 @@ export interface EdgeMachineVolumesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineVolumePropertiesInput;
 }
-export const EdgeMachineVolumesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineVolumesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7202,7 +7136,7 @@ export interface VolumeReportedProperties {
   /** File system on the volume. */
   fileSystem?: string;
 }
-export const VolumeReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const VolumeReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionId: S.optional(S.String),
     offsetInBytes: S.optional(S.Number),
@@ -7225,7 +7159,7 @@ export interface EdgeMachineVolumeProperties {
   /** Provisioning state of the volume resource. */
   provisioningState?: ProvisioningState;
 }
-export const EdgeMachineVolumeProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineVolumeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeConfiguration: S.optional(VolumeConfiguration),
     reportedProperties: S.optional(VolumeReportedProperties),
@@ -7247,7 +7181,7 @@ export interface EdgeMachineVolumesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineVolumeProperties;
 }
-export const EdgeMachineVolumesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineVolumesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7263,7 +7197,7 @@ export interface SoftwareAssuranceChangeRequestProperties {
   /** Customer Intent for Software Assurance Benefit. This indicates whether the customer wishes to opt in or out of the Software Assurance program, which provides licensing and support benefits. */
   softwareAssuranceIntent?: SoftwareAssuranceIntent | (string & {});
 }
-export const SoftwareAssuranceChangeRequestProperties =
+const SoftwareAssuranceChangeRequestProperties =
   SoftwareAssurancePropertiesInput as any as S.Schema<SoftwareAssuranceChangeRequestProperties>;
 
 export interface ExtendClusterSoftwareAssuranceBenefitRequest {
@@ -7275,7 +7209,7 @@ export interface ExtendClusterSoftwareAssuranceBenefitRequest {
   clusterName: string;
   properties?: SoftwareAssuranceChangeRequestProperties;
 }
-export const ExtendClusterSoftwareAssuranceBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendClusterSoftwareAssuranceBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7297,16 +7231,10 @@ export const ExtendClusterSoftwareAssuranceBenefitRequest = /*@__PURE__*/ S.susp
 export type ExtendClusterSoftwareAssuranceBenefitResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ExtendClusterSoftwareAssuranceBenefitResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<ExtendClusterSoftwareAssuranceBenefitResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIdentitiesMap =
-  ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ExtendClusterSoftwareAssuranceBenefitResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -7317,9 +7245,6 @@ export interface ExtendClusterSoftwareAssuranceBenefitResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ExtendClusterSoftwareAssuranceBenefitResponseIdentityUserAssignedIdentitiesMap;
 }
-export const ExtendClusterSoftwareAssuranceBenefitResponseIdentity =
-  ClustersConfigureRemoteSupportResponseIdentity as any as S.Schema<ExtendClusterSoftwareAssuranceBenefitResponseIdentity>;
-
 export interface ExtendClusterSoftwareAssuranceBenefitResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7340,7 +7265,7 @@ export interface ExtendClusterSoftwareAssuranceBenefitResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const ExtendClusterSoftwareAssuranceBenefitResponse =
+const ExtendClusterSoftwareAssuranceBenefitResponse =
   ClustersConfigureRemoteSupportResponse as any as S.Schema<ExtendClusterSoftwareAssuranceBenefitResponse>;
 
 export interface ExtensionsUpgradeRequest {
@@ -7357,7 +7282,7 @@ export interface ExtensionsUpgradeRequest {
   /** Extension Upgrade Target Version. */
   targetVersion?: string;
 }
-export const ExtensionsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtensionsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7376,25 +7301,25 @@ export const ExtensionsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExtensionsUpgradeRequest" }) as any as S.Schema<ExtensionsUpgradeRequest>;
 
 export interface ExtensionsUpgradeResponse {}
-export const ExtensionsUpgradeResponse =
+const ExtensionsUpgradeResponse =
   LogCollectionPropertiesInput as any as S.Schema<ExtensionsUpgradeResponse>;
 
 /** Resource tags. */
 export type GalleryImagesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const GalleryImagesCreateOrUpdateRequestTagsMap =
+const GalleryImagesCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GalleryImagesCreateOrUpdateRequestTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
 export type GalleryImagePropertiesInputOsType = "Windows" | "Linux";
-export const GalleryImagePropertiesInputOsType = S.String;
+const GalleryImagePropertiesInputOsType = S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type GalleryImagePropertiesInputCloudInitDataSource = "NoCloud" | "Azure";
-export const GalleryImagePropertiesInputCloudInitDataSource = S.String;
+const GalleryImagePropertiesInputCloudInitDataSource = S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type GalleryImagePropertiesInputHyperVGeneration = "V1" | "V2";
-export const GalleryImagePropertiesInputHyperVGeneration = S.String;
+const GalleryImagePropertiesInputHyperVGeneration = S.String;
 
 /** This is the gallery image definition identifier. */
 export interface GalleryImageIdentifier {
@@ -7405,7 +7330,7 @@ export interface GalleryImageIdentifier {
   /** The name of the gallery image definition SKU. */
   sku: string;
 }
-export const GalleryImageIdentifier = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisher: S.String,
     offer: S.String,
@@ -7415,13 +7340,11 @@ export const GalleryImageIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** This is the disk image base class. */
 export type GalleryDiskImageInput = LogCollectionPropertiesInput;
-export const GalleryDiskImageInput = LogCollectionPropertiesInput;
-
 /** This is the storage profile of a Gallery Image Version. */
 export interface GalleryImageVersionStorageProfileInput {
   osDiskImage?: LogCollectionPropertiesInput;
 }
-export const GalleryImageVersionStorageProfileInput = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageVersionStorageProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osDiskImage: S.optional(LogCollectionPropertiesInput),
   }),
@@ -7433,7 +7356,7 @@ export const GalleryImageVersionStorageProfileInput = /*@__PURE__*/ S.suspend(()
 export interface GalleryImageVersionPropertiesInput {
   storageProfile: GalleryImageVersionStorageProfileInput;
 }
-export const GalleryImageVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageProfile: GalleryImageVersionStorageProfileInput,
   }),
@@ -7447,7 +7370,7 @@ export interface GalleryImageVersionInput {
   name?: string;
   properties?: GalleryImageVersionPropertiesInput;
 }
-export const GalleryImageVersionInput = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageVersionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(GalleryImageVersionPropertiesInput),
@@ -7469,7 +7392,7 @@ export interface GalleryImagePropertiesInput {
   identifier?: GalleryImageIdentifier;
   version?: GalleryImageVersionInput;
 }
-export const GalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     imagePath: S.optional(S.String),
@@ -7485,7 +7408,7 @@ export const GalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of extendedLocation. */
 export type ExtendedLocationType = "CustomLocation";
-export const ExtendedLocationType = S.String;
+const ExtendedLocationType = S.String;
 
 /** The complex type of the extended location. */
 export interface GalleryImagesCreateOrUpdateRequestExtendedLocation {
@@ -7494,7 +7417,7 @@ export interface GalleryImagesCreateOrUpdateRequestExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationType | (string & {});
 }
-export const GalleryImagesCreateOrUpdateRequestExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+const GalleryImagesCreateOrUpdateRequestExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ExtendedLocationType),
@@ -7518,7 +7441,7 @@ export interface GalleryImagesCreateOrUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
-export const GalleryImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GalleryImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7541,27 +7464,27 @@ export const GalleryImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GalleryImagesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const GalleryImagesCreateOrUpdateResponseTagsMap =
+const GalleryImagesCreateOrUpdateResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GalleryImagesCreateOrUpdateResponseTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
 export type GalleryImagePropertiesOsType = "Windows" | "Linux";
-export const GalleryImagePropertiesOsType = S.String;
+const GalleryImagePropertiesOsType = S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type GalleryImagePropertiesCloudInitDataSource = "NoCloud" | "Azure";
-export const GalleryImagePropertiesCloudInitDataSource = S.String;
+const GalleryImagePropertiesCloudInitDataSource = S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type GalleryImagePropertiesHyperVGeneration = "V1" | "V2";
-export const GalleryImagePropertiesHyperVGeneration = S.String;
+const GalleryImagePropertiesHyperVGeneration = S.String;
 
 /** This is the disk image base class. */
 export interface GalleryDiskImage {
   /** This property indicates the size of the VHD to be created. */
   sizeInMB?: number;
 }
-export const GalleryDiskImage = /*@__PURE__*/ S.suspend(() =>
+const GalleryDiskImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeInMB: S.optional(S.Number),
   }),
@@ -7571,7 +7494,7 @@ export const GalleryDiskImage = /*@__PURE__*/ S.suspend(() =>
 export interface GalleryImageVersionStorageProfile {
   osDiskImage?: GalleryDiskImage;
 }
-export const GalleryImageVersionStorageProfile = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageVersionStorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osDiskImage: S.optional(GalleryDiskImage),
   }),
@@ -7583,7 +7506,7 @@ export const GalleryImageVersionStorageProfile = /*@__PURE__*/ S.suspend(() =>
 export interface GalleryImageVersionProperties {
   storageProfile: GalleryImageVersionStorageProfile;
 }
-export const GalleryImageVersionProperties = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageProfile: GalleryImageVersionStorageProfile,
   }),
@@ -7597,7 +7520,7 @@ export interface GalleryImageVersion {
   name?: string;
   properties?: GalleryImageVersionProperties;
 }
-export const GalleryImageVersion = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(GalleryImageVersionProperties),
@@ -7612,11 +7535,11 @@ export type GalleryImagePropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const GalleryImagePropertiesProvisioningState = S.String;
+const GalleryImagePropertiesProvisioningState = S.String;
 
 /** The status of the operation performed on the gallery image [Succeeded, Failed, InProgress] */
 export type GalleryImageStatusProvisioningStatusStatus = "Succeeded" | "Failed" | "InProgress";
-export const GalleryImageStatusProvisioningStatusStatus = S.String;
+const GalleryImageStatusProvisioningStatusStatus = S.String;
 
 export interface GalleryImageStatusProvisioningStatus {
   /** The ID of the operation performed on the gallery image */
@@ -7624,7 +7547,7 @@ export interface GalleryImageStatusProvisioningStatus {
   /** The status of the operation performed on the gallery image [Succeeded, Failed, InProgress] */
   status?: GalleryImageStatusProvisioningStatusStatus;
 }
-export const GalleryImageStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageStatusProvisioningStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     status: S.optional(GalleryImageStatusProvisioningStatusStatus),
@@ -7638,7 +7561,7 @@ export interface GalleryImageStatusDownloadStatus {
   /** The downloaded sized of the image in MB */
   downloadSizeInMB?: number;
 }
-export const GalleryImageStatusDownloadStatus = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageStatusDownloadStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadSizeInMB: S.optional(S.Number),
   }),
@@ -7658,7 +7581,7 @@ export interface GalleryImageStatus {
   /** The progress of the operation in percentage */
   progressPercentage?: number;
 }
-export const GalleryImageStatus = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -7686,7 +7609,7 @@ export interface GalleryImageProperties {
   provisioningState?: GalleryImagePropertiesProvisioningState;
   status?: GalleryImageStatus;
 }
-export const GalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
+const GalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     imagePath: S.optional(S.String),
@@ -7707,7 +7630,7 @@ export interface GalleryImagesCreateOrUpdateResponseExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationType;
 }
-export const GalleryImagesCreateOrUpdateResponseExtendedLocation =
+const GalleryImagesCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation as any as S.Schema<GalleryImagesCreateOrUpdateResponseExtendedLocation>;
 
 export interface GalleryImagesCreateOrUpdateResponse {
@@ -7727,7 +7650,7 @@ export interface GalleryImagesCreateOrUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GalleryImagesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GalleryImagesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7752,7 +7675,7 @@ export interface GenerateArcSettingsPasswordRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const GenerateArcSettingsPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateArcSettingsPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7776,7 +7699,7 @@ export interface PasswordCredential {
   startDateTime?: string;
   endDateTime?: string;
 }
-export const PasswordCredential = /*@__PURE__*/ S.suspend(() =>
+const PasswordCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretText: S.optional(S.String),
     keyId: S.optional(S.String),
@@ -7795,7 +7718,7 @@ export interface GetArcSettingsRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const GetArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7823,7 +7746,7 @@ export interface GetArcSettingsResponse {
   /** ArcSetting properties. */
   properties?: ArcSettingProperties;
 }
-export const GetArcSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetArcSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7841,7 +7764,7 @@ export interface GetClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7858,16 +7781,10 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetClusterResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetClusterResponseIdentityUserAssignedIdentitiesMap =
-  CreateClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetClusterResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetClusterResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -7878,9 +7795,6 @@ export interface GetClusterResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetClusterResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetClusterResponseIdentity =
-  CreateClusterResponseIdentity as any as S.Schema<GetClusterResponseIdentity>;
-
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7901,7 +7815,7 @@ export interface GetClusterResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const GetClusterResponse = CreateClusterResponse as any as S.Schema<GetClusterResponse>;
+const GetClusterResponse = CreateClusterResponse as any as S.Schema<GetClusterResponse>;
 
 export interface GetClusterJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7913,7 +7827,7 @@ export interface GetClusterJobRequest {
   /** Name of ClusterJob */
   jobsName: string;
 }
-export const GetClusterJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7941,7 +7855,7 @@ export interface GetClusterJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: ClusterJobProperties;
 }
-export const GetClusterJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7961,7 +7875,7 @@ export interface GetDeploymentSettingsRequest {
   /** Name of Deployment Setting */
   deploymentSettingsName: string;
 }
-export const GetDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7991,7 +7905,7 @@ export interface GetDeploymentSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentSettingsProperties;
 }
-export const GetDeploymentSettingsResponse =
+const GetDeploymentSettingsResponse =
   DeploymentSettingsCreateOrUpdateResponse as any as S.Schema<GetDeploymentSettingsResponse>;
 
 export interface GetEdgeDeviceRequest {
@@ -8000,7 +7914,7 @@ export interface GetEdgeDeviceRequest {
   /** Name of Device */
   edgeDeviceName: string;
 }
-export const GetEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -8028,7 +7942,7 @@ export interface GetEdgeDeviceResponse {
   /** properties for Arc-enabled edge device with HCI OS. */
   properties?: HciEdgeDeviceProperties;
 }
-export const GetEdgeDeviceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8047,7 +7961,7 @@ export interface GetEdgeDeviceJobRequest {
   /** Name of EdgeDevice Job */
   jobsName: string;
 }
-export const GetEdgeDeviceJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeDeviceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -8074,7 +7988,7 @@ export interface GetEdgeDeviceJobResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: EdgeDeviceKind;
 }
-export const GetEdgeDeviceJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeDeviceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8092,7 +8006,7 @@ export interface GetEdgeMachineRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const GetEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8109,16 +8023,13 @@ export const GetEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEdgeMachineResponseTagsMap = { [key: string]: string | undefined };
-export const GetEdgeMachineResponseTagsMap =
+const GetEdgeMachineResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetEdgeMachineResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap =
-  CreateClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetEdgeMachineResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -8129,7 +8040,7 @@ export interface GetEdgeMachineResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetEdgeMachineResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetEdgeMachineResponseIdentity =
+const GetEdgeMachineResponseIdentity =
   CreateClusterResponseIdentity as any as S.Schema<GetEdgeMachineResponseIdentity>;
 
 export interface GetEdgeMachineResponse {
@@ -8150,7 +8061,7 @@ export interface GetEdgeMachineResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetEdgeMachineResponseIdentity;
 }
-export const GetEdgeMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8173,7 +8084,7 @@ export interface GetEdgeMachineDeploymentSettingsRequest {
   /** Name of Edge Machine Deployment Setting. */
   deploymentSettingName: string;
 }
-export const GetEdgeMachineDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineDeploymentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8203,7 +8114,7 @@ export interface GetEdgeMachineDeploymentSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDeploymentSettingProperties;
 }
-export const GetEdgeMachineDeploymentSettingsResponse =
+const GetEdgeMachineDeploymentSettingsResponse =
   EdgeMachineDeploymentSettingsCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineDeploymentSettingsResponse>;
 
 export interface GetEdgeMachineDiskRequest {
@@ -8216,7 +8127,7 @@ export interface GetEdgeMachineDiskRequest {
   /** The name of the EdgeMachineDisk */
   diskName: string;
 }
-export const GetEdgeMachineDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8246,7 +8157,7 @@ export interface GetEdgeMachineDiskResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskProperties;
 }
-export const GetEdgeMachineDiskResponse =
+const GetEdgeMachineDiskResponse =
   EdgeMachineDisksCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineDiskResponse>;
 
 export interface GetEdgeMachineDiskJobRequest {
@@ -8261,7 +8172,7 @@ export interface GetEdgeMachineDiskJobRequest {
   /** The name of the EdgeMachineDiskJob */
   jobName: string;
 }
-export const GetEdgeMachineDiskJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineDiskJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8292,7 +8203,7 @@ export interface GetEdgeMachineDiskJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskJobProperties;
 }
-export const GetEdgeMachineDiskJobResponse =
+const GetEdgeMachineDiskJobResponse =
   EdgeMachineDiskJobsCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineDiskJobResponse>;
 
 export interface GetEdgeMachineDiskPrivilegedJobRequest {
@@ -8307,7 +8218,7 @@ export interface GetEdgeMachineDiskPrivilegedJobRequest {
   /** The name of the EdgeMachineDiskPrivilegedJob */
   privilegedJobName: string;
 }
-export const GetEdgeMachineDiskPrivilegedJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineDiskPrivilegedJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8338,7 +8249,7 @@ export interface GetEdgeMachineDiskPrivilegedJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskPrivilegedJobProperties;
 }
-export const GetEdgeMachineDiskPrivilegedJobResponse =
+const GetEdgeMachineDiskPrivilegedJobResponse =
   EdgeMachineDiskPrivilegedJobsCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineDiskPrivilegedJobResponse>;
 
 export interface GetEdgeMachineJobRequest {
@@ -8351,7 +8262,7 @@ export interface GetEdgeMachineJobRequest {
   /** Name of EdgeMachineJob */
   jobsName: string;
 }
-export const GetEdgeMachineJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8379,7 +8290,7 @@ export interface GetEdgeMachineJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineJobProperties;
 }
-export const GetEdgeMachineJobResponse =
+const GetEdgeMachineJobResponse =
   EdgeMachineJobsCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineJobResponse>;
 
 export interface GetEdgeMachineNetworkAdapterRequest {
@@ -8392,7 +8303,7 @@ export interface GetEdgeMachineNetworkAdapterRequest {
   /** The name of the EdgeMachineNetworkAdapter */
   networkAdapterName: string;
 }
-export const GetEdgeMachineNetworkAdapterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineNetworkAdapterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8412,16 +8323,16 @@ export const GetEdgeMachineNetworkAdapterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DNS servers. */
 export type NetworkAdapterConfigurationDnsServersList = Array<string>;
-export const NetworkAdapterConfigurationDnsServersList =
+const NetworkAdapterConfigurationDnsServersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<NetworkAdapterConfigurationDnsServersList>;
 
 /** IP configuration type. */
 export type IpInterfaceType = "Dhcp" | "Static";
-export const IpInterfaceType = S.String;
+const IpInterfaceType = S.String;
 
 /** Current state of the interface. */
 export type InterfaceState = "up" | "down";
-export const InterfaceState = S.String;
+const InterfaceState = S.String;
 
 /** WiFi authentication type. */
 export type AuthenticationType =
@@ -8430,15 +8341,15 @@ export type AuthenticationType =
   | "WPA3-Personal"
   | "WPA3-Enterprise"
   | "Open";
-export const AuthenticationType = S.String;
+const AuthenticationType = S.String;
 
 /** EAP authentication method. */
 export type EAPMethod = "PEAP" | "EAP-TLS" | "EAP-TTLS" | "EAP-FAST";
-export const EAPMethod = S.String;
+const EAPMethod = S.String;
 
 /** Type of WiFi secret. */
 export type WifiSecretType = "WiFiPassword" | "WiFiCertificate" | "WiFiCACertificate";
-export const WifiSecretType = S.String;
+const WifiSecretType = S.String;
 
 /** WiFi secret reference for storing credentials. */
 export interface WifiSecret {
@@ -8449,7 +8360,7 @@ export interface WifiSecret {
   /** Type of the WiFi secret. */
   secretType?: WifiSecretType;
 }
-export const WifiSecret = /*@__PURE__*/ S.suspend(() =>
+const WifiSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretName: S.optional(S.String),
     secretLocation: S.optional(S.String),
@@ -8470,7 +8381,7 @@ export interface WifiConfigurationDesiredProperties {
   /** WiFi secret reference. */
   wifiSecret?: WifiSecret;
 }
-export const WifiConfigurationDesiredProperties = /*@__PURE__*/ S.suspend(() =>
+const WifiConfigurationDesiredProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ssid: S.optional(S.String),
     authenticationType: S.optional(AuthenticationType),
@@ -8503,7 +8414,7 @@ export interface NetworkAdapterConfiguration {
   /** WiFi configuration desired properties. */
   wifiConfiguration?: WifiConfigurationDesiredProperties;
 }
-export const NetworkAdapterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterName: S.optional(S.String),
     ip4Address: S.optional(S.String),
@@ -8521,21 +8432,19 @@ export const NetworkAdapterConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DNS servers. */
 export type NetworkAdapterReportedPropertiesDnsServersList = Array<string>;
-export const NetworkAdapterReportedPropertiesDnsServersList =
+const NetworkAdapterReportedPropertiesDnsServersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<NetworkAdapterReportedPropertiesDnsServersList>;
 
 /** Type of network interface. */
 export type NetworkInterfaceType = "Eth" | "wifi";
-export const NetworkInterfaceType = S.String;
+const NetworkInterfaceType = S.String;
 
 /** Describes the RDMA capability of the network adapter. */
 export type RdmaCapability = "Enabled" | "Disabled";
-export const RdmaCapability = S.String;
+const RdmaCapability = S.String;
 
 /** Status of network adapter operation. */
 export type NetworkAdapterOperationStatus = "Succeeded" | "Failed" | "InProgress";
-export const NetworkAdapterOperationStatus = S.String;
-
 /** Network adapter provisioning status. */
 export interface NetworkAdapterProvisioningStatus {
   /** The ID of the operation performed on the network adapter. */
@@ -8543,7 +8452,7 @@ export interface NetworkAdapterProvisioningStatus {
   /** The status of the operation performed on the network adapter. */
   status?: NetworkAdapterOperationStatus;
 }
-export const NetworkAdapterProvisioningStatus =
+const NetworkAdapterProvisioningStatus =
   GalleryImageStatusProvisioningStatus as any as S.Schema<NetworkAdapterProvisioningStatus>;
 
 /** The observed state of network adapters. */
@@ -8555,7 +8464,7 @@ export interface NetworkAdapterStatus {
   /** Network adapter provisioning status. */
   provisioningStatus?: NetworkAdapterProvisioningStatus;
 }
-export const NetworkAdapterStatus = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -8571,7 +8480,7 @@ export type ConnectionState =
   | "Connecting"
   | "Disconnecting"
   | "AuthenticationFailed";
-export const ConnectionState = S.String;
+const ConnectionState = S.String;
 
 /** WiFi configuration reported properties. */
 export interface WifiConfigurationReportedProperties {
@@ -8590,7 +8499,7 @@ export interface WifiConfigurationReportedProperties {
   /** Username for enterprise WiFi authentication. */
   username?: string;
 }
-export const WifiConfigurationReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const WifiConfigurationReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ssid: S.optional(S.String),
     authenticationType: S.optional(AuthenticationType),
@@ -8653,7 +8562,7 @@ export interface NetworkAdapterReportedProperties {
   /** WiFi configuration reported properties. */
   wifiConfiguration?: WifiConfigurationReportedProperties;
 }
-export const NetworkAdapterReportedProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterReportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterName: S.optional(S.String),
     ip4Address: S.optional(S.String),
@@ -8692,7 +8601,7 @@ export interface EdgeMachineNetworkAdapterProperties {
   /** Provisioning state of the network adapter resource. */
   provisioningState?: ProvisioningState;
 }
-export const EdgeMachineNetworkAdapterProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkAdapterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkConfiguration: S.optional(NetworkAdapterConfiguration),
     reportedProperties: S.optional(NetworkAdapterReportedProperties),
@@ -8714,7 +8623,7 @@ export interface GetEdgeMachineNetworkAdapterResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineNetworkAdapterProperties;
 }
-export const GetEdgeMachineNetworkAdapterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineNetworkAdapterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8738,7 +8647,7 @@ export interface GetEdgeMachineNetworkAdapterJobRequest {
   /** The name of the EdgeMachineNetworkAdapterJob */
   jobName: string;
 }
-export const GetEdgeMachineNetworkAdapterJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineNetworkAdapterJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8769,7 +8678,7 @@ export interface GetEdgeMachineNetworkAdapterJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineNetworkAdapterJobProperties;
 }
-export const GetEdgeMachineNetworkAdapterJobResponse =
+const GetEdgeMachineNetworkAdapterJobResponse =
   EdgeMachineNetworkAdapterJobsCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineNetworkAdapterJobResponse>;
 
 export interface GetEdgeMachineSecuritySettingsOperationRequest {
@@ -8782,7 +8691,7 @@ export interface GetEdgeMachineSecuritySettingsOperationRequest {
   /** Name of the security settings resource */
   securitySettingsName: string;
 }
-export const GetEdgeMachineSecuritySettingsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineSecuritySettingsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8812,7 +8721,7 @@ export interface GetEdgeMachineSecuritySettingsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineSecurityProperties;
 }
-export const GetEdgeMachineSecuritySettingsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineSecuritySettingsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8834,7 +8743,7 @@ export interface GetEdgeMachineVolumeRequest {
   /** The name of the EdgeMachineVolume */
   volumeName: string;
 }
-export const GetEdgeMachineVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeMachineVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8864,7 +8773,7 @@ export interface GetEdgeMachineVolumeResponse {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineVolumeProperties;
 }
-export const GetEdgeMachineVolumeResponse =
+const GetEdgeMachineVolumeResponse =
   EdgeMachineVolumesCreateOrUpdateResponse as any as S.Schema<GetEdgeMachineVolumeResponse>;
 
 export interface GetExtensionRequest {
@@ -8879,7 +8788,7 @@ export interface GetExtensionRequest {
   /** The name of the machine extension. */
   extensionName: string;
 }
-export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8908,8 +8817,7 @@ export interface GetExtensionResponse {
   /** Describes Machine Extension Properties. */
   properties?: ExtensionProperties;
 }
-export const GetExtensionResponse =
-  CreateExtensionResponse as any as S.Schema<GetExtensionResponse>;
+const GetExtensionResponse = CreateExtensionResponse as any as S.Schema<GetExtensionResponse>;
 
 export interface GetGalleryImageRequest {
   /** The ID of the target subscription. */
@@ -8919,7 +8827,7 @@ export interface GetGalleryImageRequest {
   /** Name of the gallery image */
   galleryImageName: string;
 }
-export const GetGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8936,15 +8844,12 @@ export const GetGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetGalleryImageResponseTagsMap = { [key: string]: string | undefined };
-export const GetGalleryImageResponseTagsMap =
+const GetGalleryImageResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetGalleryImageResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type GetGalleryImageResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetGalleryImageResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface GetGalleryImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -8962,7 +8867,7 @@ export interface GetGalleryImageResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GetGalleryImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGalleryImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8979,7 +8884,7 @@ export interface GetGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const GetGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -9004,14 +8909,13 @@ export interface GetGuestAgentResponse {
   /** Resource properties. */
   properties: GuestAgentProperties;
 }
-export const GetGuestAgentResponse =
-  CreateGuestAgentResponse as any as S.Schema<GetGuestAgentResponse>;
+const GetGuestAgentResponse = CreateGuestAgentResponse as any as S.Schema<GetGuestAgentResponse>;
 
 export interface GetHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const GetHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -9028,7 +8932,7 @@ export const GetHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type HybridIdentityMetadataPropertiesIdentityType = "SystemAssigned";
-export const HybridIdentityMetadataPropertiesIdentityType = S.String;
+const HybridIdentityMetadataPropertiesIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface HybridIdentityMetadataPropertiesIdentity {
@@ -9039,7 +8943,7 @@ export interface HybridIdentityMetadataPropertiesIdentity {
   /** The identity type. */
   type?: HybridIdentityMetadataPropertiesIdentityType;
 }
-export const HybridIdentityMetadataPropertiesIdentity = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadataPropertiesIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -9060,7 +8964,7 @@ export interface HybridIdentityMetadataProperties {
   /** The provisioning state. */
   provisioningState?: string;
 }
-export const HybridIdentityMetadataProperties = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUid: S.optional(S.String),
     publicKey: S.optional(S.String),
@@ -9083,7 +8987,7 @@ export interface GetHybridIdentityMetadataResponse {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
-export const GetHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9103,7 +9007,7 @@ export interface GetLogicalNetworkRequest {
   /** Name of the logical network */
   logicalNetworkName: string;
 }
-export const GetLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9120,12 +9024,12 @@ export const GetLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLogicalNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetLogicalNetworkResponseTagsMap =
+const GetLogicalNetworkResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetLogicalNetworkResponseTagsMap>;
 
 /** The list of DNS servers IP addresses. */
 export type LogicalNetworkPropertiesDhcpOptionsDnsServersList = Array<string>;
-export const LogicalNetworkPropertiesDhcpOptionsDnsServersList =
+const LogicalNetworkPropertiesDhcpOptionsDnsServersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<LogicalNetworkPropertiesDhcpOptionsDnsServersList>;
 
 /** DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options. */
@@ -9133,7 +9037,7 @@ export interface LogicalNetworkPropertiesDhcpOptions {
   /** The list of DNS servers IP addresses. */
   dnsServers?: LogicalNetworkPropertiesDhcpOptionsDnsServersList;
 }
-export const LogicalNetworkPropertiesDhcpOptions = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworkPropertiesDhcpOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsServers: S.optional(LogicalNetworkPropertiesDhcpOptionsDnsServersList),
   }),
@@ -9143,19 +9047,19 @@ export const LogicalNetworkPropertiesDhcpOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** List of address prefixes for the subnet. */
 export type SubnetPropertiesFormatAddressPrefixesList = Array<string>;
-export const SubnetPropertiesFormatAddressPrefixesList =
+const SubnetPropertiesFormatAddressPrefixesList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<SubnetPropertiesFormatAddressPrefixesList>;
 
 /** IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic' */
 export type SubnetPropertiesFormatIpAllocationMethod = "Dynamic" | "Static";
-export const SubnetPropertiesFormatIpAllocationMethod = S.String;
+const SubnetPropertiesFormatIpAllocationMethod = S.String;
 
 /** IPConfigurationReference - Describes a IPConfiguration under the virtual network */
 export interface SubnetPropertiesFormatIpConfigurationReferencesItem {
   /** IPConfigurationID */
   ID?: string;
 }
-export const SubnetPropertiesFormatIpConfigurationReferencesItem = /*@__PURE__*/ S.suspend(() =>
+const SubnetPropertiesFormatIpConfigurationReferencesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ID: S.optional(S.String),
   }),
@@ -9166,7 +9070,7 @@ export const SubnetPropertiesFormatIpConfigurationReferencesItem = /*@__PURE__*/
 /** IPConfigurationReferences - list of IPConfigurationReferences */
 export type SubnetPropertiesFormatIpConfigurationReferencesList =
   Array<SubnetPropertiesFormatIpConfigurationReferencesItem>;
-export const SubnetPropertiesFormatIpConfigurationReferencesList = /*@__PURE__*/ S.Array(
+const SubnetPropertiesFormatIpConfigurationReferencesList = /*@__PURE__*/ S.Array(
   SubnetPropertiesFormatIpConfigurationReferencesItem,
 ) as any as S.Schema<SubnetPropertiesFormatIpConfigurationReferencesList>;
 
@@ -9177,7 +9081,7 @@ export interface RoutePropertiesFormat {
   /** The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance. */
   nextHopIpAddress?: string;
 }
-export const RoutePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const RoutePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressPrefix: S.optional(S.String),
     nextHopIpAddress: S.optional(S.String),
@@ -9191,7 +9095,7 @@ export interface Route {
   /** Name - name of the subnet */
   name?: string;
 }
-export const Route = /*@__PURE__*/ S.suspend(() =>
+const Route = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(RoutePropertiesFormat),
     name: S.optional(S.String),
@@ -9200,7 +9104,7 @@ export const Route = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of routes contained within a route table. */
 export type RouteTablePropertiesFormatRoutesList = Array<Route>;
-export const RouteTablePropertiesFormatRoutesList = /*@__PURE__*/ S.Array(
+const RouteTablePropertiesFormatRoutesList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteTablePropertiesFormatRoutesList>;
 
@@ -9209,7 +9113,7 @@ export interface RouteTablePropertiesFormat {
   /** Collection of routes contained within a route table. */
   routes?: RouteTablePropertiesFormatRoutesList;
 }
-export const RouteTablePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const RouteTablePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routes: S.optional(RouteTablePropertiesFormatRoutesList),
   }),
@@ -9228,7 +9132,7 @@ export interface RouteTable {
   /** Properties of the route table. */
   properties?: RouteTablePropertiesFormat;
 }
-export const RouteTable = /*@__PURE__*/ S.suspend(() =>
+const RouteTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     name: S.optional(S.String),
@@ -9239,7 +9143,7 @@ export const RouteTable = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the IP Pool [vm, vippool] */
 export type IPPoolIpPoolType = "vm" | "vippool";
-export const IPPoolIpPoolType = S.String;
+const IPPoolIpPoolType = S.String;
 
 export interface IPPoolInfo {
   /** Number of IP addresses allocated from the IP Pool */
@@ -9247,7 +9151,7 @@ export interface IPPoolInfo {
   /** Number of IP addresses available in the IP Pool */
   available?: string;
 }
-export const IPPoolInfo = /*@__PURE__*/ S.suspend(() =>
+const IPPoolInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     used: S.optional(S.String),
     available: S.optional(S.String),
@@ -9265,7 +9169,7 @@ export interface IPPool {
   end?: string;
   info?: IPPoolInfo;
 }
-export const IPPool = /*@__PURE__*/ S.suspend(() =>
+const IPPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     ipPoolType: S.optional(IPPoolIpPoolType),
@@ -9277,7 +9181,7 @@ export const IPPool = /*@__PURE__*/ S.suspend(() =>
 
 /** network associated pool of IP Addresses */
 export type SubnetPropertiesFormatIpPoolsList = Array<IPPool>;
-export const SubnetPropertiesFormatIpPoolsList = /*@__PURE__*/ S.Array(
+const SubnetPropertiesFormatIpPoolsList = /*@__PURE__*/ S.Array(
   IPPool,
 ) as any as S.Schema<SubnetPropertiesFormatIpPoolsList>;
 
@@ -9297,7 +9201,7 @@ export interface SubnetPropertiesFormat {
   /** Vlan to use for the subnet */
   vlan?: number;
 }
-export const SubnetPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const SubnetPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressPrefix: S.optional(S.String),
     addressPrefixes: S.optional(SubnetPropertiesFormatAddressPrefixesList),
@@ -9315,7 +9219,7 @@ export interface Subnet {
   /** Name - The name of the resource that is unique within a resource group. This name can be used to access the resource. */
   name?: string;
 }
-export const Subnet = /*@__PURE__*/ S.suspend(() =>
+const Subnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SubnetPropertiesFormat),
     name: S.optional(S.String),
@@ -9324,7 +9228,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 
 /** Subnet - list of subnets under the logical network */
 export type LogicalNetworkPropertiesSubnetsList = Array<Subnet>;
-export const LogicalNetworkPropertiesSubnetsList = /*@__PURE__*/ S.Array(
+const LogicalNetworkPropertiesSubnetsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<LogicalNetworkPropertiesSubnetsList>;
 
@@ -9336,21 +9240,16 @@ export type LogicalNetworkPropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const LogicalNetworkPropertiesProvisioningState = S.String;
+const LogicalNetworkPropertiesProvisioningState = S.String;
 
 /** The status of the operation performed on the logical network [Succeeded, Failed, InProgress] */
 export type LogicalNetworkStatusProvisioningStatusStatus = "Succeeded" | "Failed" | "InProgress";
-export const LogicalNetworkStatusProvisioningStatusStatus = S.String;
-
 export interface LogicalNetworkStatusProvisioningStatus {
   /** The ID of the operation performed on the logical network */
   operationId?: string;
   /** The status of the operation performed on the logical network [Succeeded, Failed, InProgress] */
   status?: LogicalNetworkStatusProvisioningStatusStatus;
 }
-export const LogicalNetworkStatusProvisioningStatus =
-  GalleryImageStatusProvisioningStatus as any as S.Schema<LogicalNetworkStatusProvisioningStatus>;
-
 /** The observed state of logical networks */
 export interface LogicalNetworkStatus {
   /** LogicalNetwork provisioning error code */
@@ -9359,7 +9258,7 @@ export interface LogicalNetworkStatus {
   errorMessage?: string;
   provisioningStatus?: LogicalNetworkStatusProvisioningStatus;
 }
-export const LogicalNetworkStatus = NetworkAdapterStatus as any as S.Schema<LogicalNetworkStatus>;
+const LogicalNetworkStatus = NetworkAdapterStatus as any as S.Schema<LogicalNetworkStatus>;
 
 /** Properties under the logical network resource */
 export interface LogicalNetworkProperties {
@@ -9373,7 +9272,7 @@ export interface LogicalNetworkProperties {
   vmSwitchName?: string;
   status?: LogicalNetworkStatus;
 }
-export const LogicalNetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dhcpOptions: S.optional(LogicalNetworkPropertiesDhcpOptions),
     subnets: S.optional(LogicalNetworkPropertiesSubnetsList),
@@ -9386,9 +9285,6 @@ export const LogicalNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type GetLogicalNetworkResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetLogicalNetworkResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface GetLogicalNetworkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9406,7 +9302,7 @@ export interface GetLogicalNetworkResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GetLogicalNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLogicalNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9429,7 +9325,7 @@ export interface GetMarketplaceGalleryImageRequest {
   /** Name of the marketplace gallery image */
   marketplaceGalleryImageName: string;
 }
-export const GetMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9448,20 +9344,20 @@ export const GetMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMarketplaceGalleryImageResponseTagsMap = { [key: string]: string | undefined };
-export const GetMarketplaceGalleryImageResponseTagsMap =
+const GetMarketplaceGalleryImageResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetMarketplaceGalleryImageResponseTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
 export type MarketplaceGalleryImagePropertiesOsType = "Windows" | "Linux";
-export const MarketplaceGalleryImagePropertiesOsType = S.String;
+const MarketplaceGalleryImagePropertiesOsType = S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type MarketplaceGalleryImagePropertiesCloudInitDataSource = "NoCloud" | "Azure";
-export const MarketplaceGalleryImagePropertiesCloudInitDataSource = S.String;
+const MarketplaceGalleryImagePropertiesCloudInitDataSource = S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type MarketplaceGalleryImagePropertiesHyperVGeneration = "V1" | "V2";
-export const MarketplaceGalleryImagePropertiesHyperVGeneration = S.String;
+const MarketplaceGalleryImagePropertiesHyperVGeneration = S.String;
 
 /** Provisioning state of the marketplace gallery image. */
 export type MarketplaceGalleryImagePropertiesProvisioningState =
@@ -9471,28 +9367,24 @@ export type MarketplaceGalleryImagePropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const MarketplaceGalleryImagePropertiesProvisioningState = S.String;
+const MarketplaceGalleryImagePropertiesProvisioningState = S.String;
 
 /** The status of the operation performed on the gallery image [Succeeded, Failed, InProgress] */
 export type MarketplaceGalleryImageStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
   | "InProgress";
-export const MarketplaceGalleryImageStatusProvisioningStatusStatus = S.String;
-
 export interface MarketplaceGalleryImageStatusProvisioningStatus {
   /** The ID of the operation performed on the gallery image */
   operationId?: string;
   /** The status of the operation performed on the gallery image [Succeeded, Failed, InProgress] */
   status?: MarketplaceGalleryImageStatusProvisioningStatusStatus;
 }
-export const MarketplaceGalleryImageStatusProvisioningStatus =
+const MarketplaceGalleryImageStatusProvisioningStatus =
   GalleryImageStatusProvisioningStatus as any as S.Schema<MarketplaceGalleryImageStatusProvisioningStatus>;
 
 /** The download status of the gallery image */
 export type MarketplaceGalleryImageStatusDownloadStatus = GalleryImageStatusDownloadStatus;
-export const MarketplaceGalleryImageStatusDownloadStatus = GalleryImageStatusDownloadStatus;
-
 /** The observed state of marketplace gallery images */
 export interface MarketplaceGalleryImageStatus {
   /** MarketplaceGalleryImage provisioning error code */
@@ -9505,7 +9397,7 @@ export interface MarketplaceGalleryImageStatus {
   /** The progress of the operation in percentage */
   progressPercentage?: number;
 }
-export const MarketplaceGalleryImageStatus = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceGalleryImageStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -9533,7 +9425,7 @@ export interface MarketplaceGalleryImageProperties {
   provisioningState?: MarketplaceGalleryImagePropertiesProvisioningState;
   status?: MarketplaceGalleryImageStatus;
 }
-export const MarketplaceGalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceGalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     osType: MarketplaceGalleryImagePropertiesOsType,
@@ -9551,9 +9443,6 @@ export const MarketplaceGalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type GetMarketplaceGalleryImageResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetMarketplaceGalleryImageResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface GetMarketplaceGalleryImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9571,7 +9460,7 @@ export interface GetMarketplaceGalleryImageResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GetMarketplaceGalleryImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMarketplaceGalleryImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9594,7 +9483,7 @@ export interface GetNetworkInterfaceRequest {
   /** Name of the network interface */
   networkInterfaceName: string;
 }
-export const GetNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9613,7 +9502,7 @@ export const GetNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkInterfaceResponseTagsMap =
+const GetNetworkInterfaceResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetNetworkInterfaceResponseTagsMap>;
 
 /** Subnet - Name of Subnet bound to the IP configuration. */
@@ -9621,7 +9510,7 @@ export interface IPConfigurationPropertiesSubnet {
   /** ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/... */
   id?: string;
 }
-export const IPConfigurationPropertiesSubnet = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationPropertiesSubnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -9640,7 +9529,7 @@ export interface IPConfigurationProperties {
   /** Subnet - Name of Subnet bound to the IP configuration. */
   subnet?: IPConfigurationPropertiesSubnet;
 }
-export const IPConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateway: S.optional(S.String),
     prefixLength: S.optional(S.String),
@@ -9658,7 +9547,7 @@ export interface IPConfiguration {
   /** InterfaceIPConfigurationPropertiesFormat properties of IP configuration. */
   properties?: IPConfigurationProperties;
 }
-export const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(IPConfigurationProperties),
@@ -9667,20 +9556,20 @@ export const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** IPConfigurations - A list of IPConfigurations of the network interface. */
 export type NetworkInterfacePropertiesIpConfigurationsList = Array<IPConfiguration>;
-export const NetworkInterfacePropertiesIpConfigurationsList = /*@__PURE__*/ S.Array(
+const NetworkInterfacePropertiesIpConfigurationsList = /*@__PURE__*/ S.Array(
   IPConfiguration,
 ) as any as S.Schema<NetworkInterfacePropertiesIpConfigurationsList>;
 
 /** List of DNS server IP Addresses for the interface */
 export type InterfaceDNSSettingsDnsServersList = Array<string>;
-export const InterfaceDNSSettingsDnsServersList =
+const InterfaceDNSSettingsDnsServersList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<InterfaceDNSSettingsDnsServersList>;
 
 export interface InterfaceDNSSettings {
   /** List of DNS server IP Addresses for the interface */
   dnsServers?: InterfaceDNSSettingsDnsServersList;
 }
-export const InterfaceDNSSettings = /*@__PURE__*/ S.suspend(() =>
+const InterfaceDNSSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsServers: S.optional(InterfaceDNSSettingsDnsServersList),
   }),
@@ -9694,21 +9583,16 @@ export type NetworkInterfacePropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const NetworkInterfacePropertiesProvisioningState = S.String;
+const NetworkInterfacePropertiesProvisioningState = S.String;
 
 /** The status of the operation performed on the network interface [Succeeded, Failed, InProgress] */
 export type NetworkInterfaceStatusProvisioningStatusStatus = "Succeeded" | "Failed" | "InProgress";
-export const NetworkInterfaceStatusProvisioningStatusStatus = S.String;
-
 export interface NetworkInterfaceStatusProvisioningStatus {
   /** The ID of the operation performed on the network interface */
   operationId?: string;
   /** The status of the operation performed on the network interface [Succeeded, Failed, InProgress] */
   status?: NetworkInterfaceStatusProvisioningStatusStatus;
 }
-export const NetworkInterfaceStatusProvisioningStatus =
-  GalleryImageStatusProvisioningStatus as any as S.Schema<NetworkInterfaceStatusProvisioningStatus>;
-
 /** The observed state of network interfaces */
 export interface NetworkInterfaceStatus {
   /** NetworkInterface provisioning error code */
@@ -9717,8 +9601,7 @@ export interface NetworkInterfaceStatus {
   errorMessage?: string;
   provisioningStatus?: NetworkInterfaceStatusProvisioningStatus;
 }
-export const NetworkInterfaceStatus =
-  NetworkAdapterStatus as any as S.Schema<NetworkInterfaceStatus>;
+const NetworkInterfaceStatus = NetworkAdapterStatus as any as S.Schema<NetworkInterfaceStatus>;
 
 /** Properties under the network interface resource */
 export interface NetworkInterfaceProperties {
@@ -9732,7 +9615,7 @@ export interface NetworkInterfaceProperties {
   provisioningState?: NetworkInterfacePropertiesProvisioningState;
   status?: NetworkInterfaceStatus;
 }
-export const NetworkInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipConfigurations: S.optional(NetworkInterfacePropertiesIpConfigurationsList),
     macAddress: S.optional(S.String),
@@ -9747,9 +9630,6 @@ export const NetworkInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type GetNetworkInterfaceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetNetworkInterfaceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface GetNetworkInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -9767,7 +9647,7 @@ export interface GetNetworkInterfaceResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GetNetworkInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9796,7 +9676,7 @@ export interface GetOfferRequest {
   /** Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer. */
   _expand?: string;
 }
-export const GetOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9816,7 +9696,7 @@ export const GetOfferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of SKU versions available */
 export type SkuMappingsMarketplaceSkuVersionsList = Array<string>;
-export const SkuMappingsMarketplaceSkuVersionsList =
+const SkuMappingsMarketplaceSkuVersionsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<SkuMappingsMarketplaceSkuVersionsList>;
 
 /** SKU Mapping details. */
@@ -9828,7 +9708,7 @@ export interface SkuMappings {
   /** Array of SKU versions available */
   marketplaceSkuVersions?: SkuMappingsMarketplaceSkuVersionsList;
 }
-export const SkuMappings = /*@__PURE__*/ S.suspend(() =>
+const SkuMappings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogPlanId: S.optional(S.String),
     marketplaceSkuId: S.optional(S.String),
@@ -9838,7 +9718,7 @@ export const SkuMappings = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of SKU mappings */
 export type OfferPropertiesSkuMappingsList = Array<SkuMappings>;
-export const OfferPropertiesSkuMappingsList = /*@__PURE__*/ S.Array(
+const OfferPropertiesSkuMappingsList = /*@__PURE__*/ S.Array(
   SkuMappings,
 ) as any as S.Schema<OfferPropertiesSkuMappingsList>;
 
@@ -9855,7 +9735,7 @@ export interface OfferProperties {
   /** Array of SKU mappings */
   skuMappings?: OfferPropertiesSkuMappingsList;
 }
-export const OfferProperties = /*@__PURE__*/ S.suspend(() =>
+const OfferProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     publisherId: S.optional(S.String),
@@ -9877,7 +9757,7 @@ export interface GetOfferResponse {
   /** Offer properties. */
   properties?: OfferProperties;
 }
-export const GetOfferResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOfferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9895,7 +9775,7 @@ export interface GetOsImageRequest {
   /** The name of the OsImage */
   osImageName: string;
 }
-export const GetOsImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOsImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -9912,7 +9792,7 @@ export const GetOsImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the solution type (OS family) of an OS image. */
 export type SolutionType = "AzureLinux" | "HCI";
-export const SolutionType = S.String;
+const SolutionType = S.String;
 
 /** Represents properties of a os image resource. */
 export interface OsImageProperties {
@@ -9929,7 +9809,7 @@ export interface OsImageProperties {
   /** The solution type (OS family) of the OS image, for example AzureLinux or HCI. */
   solutionType?: SolutionType;
 }
-export const OsImageProperties = /*@__PURE__*/ S.suspend(() =>
+const OsImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validatedSolutionRecipeVersion: S.optional(S.String),
     composedImageVersion: S.optional(S.String),
@@ -9952,7 +9832,7 @@ export interface GetOsImageResponse {
   /** The resource-specific properties for this resource. */
   properties?: OsImageProperties;
 }
-export const GetOsImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOsImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9972,7 +9852,7 @@ export interface GetSecuritySettingsRequest {
   /** Name of security setting */
   securitySettingsName: string;
 }
-export const GetSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9992,17 +9872,17 @@ export const GetSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Secured Core Compliance Assignment */
 export type SecurityPropertiesSecuredCoreComplianceAssignment = "Audit" | "ApplyAndAutoCorrect";
-export const SecurityPropertiesSecuredCoreComplianceAssignment = S.String;
+const SecurityPropertiesSecuredCoreComplianceAssignment = S.String;
 
 /** WDAC Compliance Assignment */
 export type SecurityPropertiesWdacComplianceAssignment = "Audit" | "ApplyAndAutoCorrect";
-export const SecurityPropertiesWdacComplianceAssignment = S.String;
+const SecurityPropertiesWdacComplianceAssignment = S.String;
 
 /** SMB encryption for intra-cluster traffic Compliance Assignment */
 export type SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment =
   | "Audit"
   | "ApplyAndAutoCorrect";
-export const SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment = S.String;
+const SecurityPropertiesSmbEncryptionForIntraClusterTrafficComplianceAssignment = S.String;
 
 /** Security compliance properties of the resource */
 export interface SecurityComplianceStatus {
@@ -10017,7 +9897,7 @@ export interface SecurityComplianceStatus {
   /** Time in UTC when compliance status was last updated. */
   lastUpdated?: string;
 }
-export const SecurityComplianceStatus = /*@__PURE__*/ S.suspend(() =>
+const SecurityComplianceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securedCoreCompliance: S.optional(ComplianceStatus),
     wdacCompliance: S.optional(ComplianceStatus),
@@ -10040,7 +9920,7 @@ export interface SecurityProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const SecurityProperties = /*@__PURE__*/ S.suspend(() =>
+const SecurityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securedCoreComplianceAssignment: S.optional(SecurityPropertiesSecuredCoreComplianceAssignment),
     wdacComplianceAssignment: S.optional(SecurityPropertiesWdacComplianceAssignment),
@@ -10064,7 +9944,7 @@ export interface GetSecuritySettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: SecurityProperties;
 }
-export const GetSecuritySettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10092,7 +9972,7 @@ export interface GetSkusRequest {
   /** Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer. */
   _expand?: string;
 }
-export const GetSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10113,7 +9993,7 @@ export const GetSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of SKU mappings */
 export type SkuPropertiesSkuMappingsList = Array<SkuMappings>;
-export const SkuPropertiesSkuMappingsList =
+const SkuPropertiesSkuMappingsList =
   OfferPropertiesSkuMappingsList as any as S.Schema<SkuPropertiesSkuMappingsList>;
 
 /** SKU properties. */
@@ -10131,7 +10011,7 @@ export interface SkuProperties {
   /** Array of SKU mappings */
   skuMappings?: SkuPropertiesSkuMappingsList;
 }
-export const SkuProperties = /*@__PURE__*/ S.suspend(() =>
+const SkuProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     publisherId: S.optional(S.String),
@@ -10154,7 +10034,7 @@ export interface GetSkusResponse {
   /** SKU properties. */
   properties?: SkuProperties;
 }
-export const GetSkusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSkusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10172,7 +10052,7 @@ export interface GetStorageContainerRequest {
   /** Name of the storage container */
   storageContainerName: string;
 }
-export const GetStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10191,7 +10071,7 @@ export const GetStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStorageContainerResponseTagsMap = { [key: string]: string | undefined };
-export const GetStorageContainerResponseTagsMap =
+const GetStorageContainerResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetStorageContainerResponseTagsMap>;
 
 /** Provisioning state of the storage container. */
@@ -10202,19 +10082,17 @@ export type StorageContainerPropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const StorageContainerPropertiesProvisioningState = S.String;
+const StorageContainerPropertiesProvisioningState = S.String;
 
 /** The status of the operation performed on the storage container [Succeeded, Failed, InProgress] */
 export type StorageContainerStatusProvisioningStatusStatus = "Succeeded" | "Failed" | "InProgress";
-export const StorageContainerStatusProvisioningStatusStatus = S.String;
-
 export interface StorageContainerStatusProvisioningStatus {
   /** The ID of the operation performed on the storage container */
   operationId?: string;
   /** The status of the operation performed on the storage container [Succeeded, Failed, InProgress] */
   status?: StorageContainerStatusProvisioningStatusStatus;
 }
-export const StorageContainerStatusProvisioningStatus =
+const StorageContainerStatusProvisioningStatus =
   GalleryImageStatusProvisioningStatus as any as S.Schema<StorageContainerStatusProvisioningStatus>;
 
 /** The observed state of storage containers */
@@ -10229,7 +10107,7 @@ export interface StorageContainerStatus {
   containerSizeMB?: number;
   provisioningStatus?: StorageContainerStatusProvisioningStatus;
 }
-export const StorageContainerStatus = /*@__PURE__*/ S.suspend(() =>
+const StorageContainerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -10247,7 +10125,7 @@ export interface StorageContainerProperties {
   provisioningState?: StorageContainerPropertiesProvisioningState;
   status?: StorageContainerStatus;
 }
-export const StorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     provisioningState: S.optional(StorageContainerPropertiesProvisioningState),
@@ -10260,9 +10138,6 @@ export const StorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type GetStorageContainerResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetStorageContainerResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface GetStorageContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10280,7 +10155,7 @@ export interface GetStorageContainerResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GetStorageContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10305,7 +10180,7 @@ export interface GetUpdateRequest {
   /** The name of the Update */
   updateName: string;
 }
-export const GetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10344,7 +10219,7 @@ export type State =
   | "AdditionalContentRequired"
   | "HealthCheckExpired"
   | "PendingOEMValidation";
-export const State = S.String;
+const State = S.String;
 
 /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
 export interface UpdatePrerequisite {
@@ -10355,7 +10230,7 @@ export interface UpdatePrerequisite {
   /** Friendly name of the prerequisite. */
   packageName?: string;
 }
-export const UpdatePrerequisite = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrerequisite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateType: S.optional(S.String),
     version: S.optional(S.String),
@@ -10365,7 +10240,7 @@ export const UpdatePrerequisite = /*@__PURE__*/ S.suspend(() =>
 
 /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
 export type UpdatePropertiesPrerequisitesList = Array<UpdatePrerequisite>;
-export const UpdatePropertiesPrerequisitesList = /*@__PURE__*/ S.Array(
+const UpdatePropertiesPrerequisitesList = /*@__PURE__*/ S.Array(
   UpdatePrerequisite,
 ) as any as S.Schema<UpdatePropertiesPrerequisitesList>;
 
@@ -10378,7 +10253,7 @@ export interface PackageVersionInfo {
   /** Last time this component was updated. */
   lastUpdated?: string;
 }
-export const PackageVersionInfo = /*@__PURE__*/ S.suspend(() =>
+const PackageVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageType: S.optional(S.String),
     version: S.optional(S.String),
@@ -10388,17 +10263,17 @@ export const PackageVersionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of component versions for a Solution Bundle update, and an empty array otherwise. */
 export type UpdatePropertiesComponentVersionsList = Array<PackageVersionInfo>;
-export const UpdatePropertiesComponentVersionsList = /*@__PURE__*/ S.Array(
+const UpdatePropertiesComponentVersionsList = /*@__PURE__*/ S.Array(
   PackageVersionInfo,
 ) as any as S.Schema<UpdatePropertiesComponentVersionsList>;
 
 /** Indicates whether a reboot is required after the update or operation. Helps determine if a system restart is necessary to complete the process. */
 export type RebootRequirement = "Unknown" | "True" | "False";
-export const RebootRequirement = S.String;
+const RebootRequirement = S.String;
 
 /** Overall health state for update-specific health checks. Indicates whether the system is functioning correctly, has warnings or errors, or is undergoing a health evaluation. */
 export type HealthState = "Unknown" | "Success" | "Failure" | "Warning" | "Error" | "InProgress";
-export const HealthState = S.String;
+const HealthState = S.String;
 
 /** Key-value pairs that allow grouping/filtering individual tests. */
 export interface PrecheckResultTags {
@@ -10407,7 +10282,7 @@ export interface PrecheckResultTags {
   /** Value of the key that allow grouping/filtering individual tests. */
   value?: string;
 }
-export const PrecheckResultTags = /*@__PURE__*/ S.suspend(() =>
+const PrecheckResultTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -10416,7 +10291,7 @@ export const PrecheckResultTags = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the importance or impact level of the result. Determines whether the result is informational, a warning, or a critical issue that may block updates. */
 export type Severity = "Critical" | "Warning" | "Informational" | "Hidden";
-export const Severity = S.String;
+const Severity = S.String;
 
 export interface PrecheckResult {
   /** Name of the individual test/rule/alert that was executed. Unique, not exposed to the customer. */
@@ -10450,7 +10325,7 @@ export interface PrecheckResult {
   /** The name of the services called for the HealthCheck (I.E. Test-AzureStack, Test-Cluster). */
   healthCheckSource?: string;
 }
-export const PrecheckResult = /*@__PURE__*/ S.suspend(() =>
+const PrecheckResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -10472,13 +10347,13 @@ export const PrecheckResult = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of PrecheckResult objects. */
 export type UpdatePropertiesHealthCheckResultList = Array<PrecheckResult>;
-export const UpdatePropertiesHealthCheckResultList = /*@__PURE__*/ S.Array(
+const UpdatePropertiesHealthCheckResultList = /*@__PURE__*/ S.Array(
   PrecheckResult,
 ) as any as S.Schema<UpdatePropertiesHealthCheckResultList>;
 
 /** Indicates how the update content is made available for download. This determines whether the update is sourced locally, from an online repository, or requires user notification. */
 export type AvailabilityType = "Local" | "Online" | "Notify";
-export const AvailabilityType = S.String;
+const AvailabilityType = S.String;
 
 /** Additional information regarding the state of the update. See definition of UpdateStateProperties type below for more details on this property. */
 export interface UpdateStateProperties {
@@ -10487,7 +10362,7 @@ export interface UpdateStateProperties {
   /** Brief message with instructions for updates of AvailabilityType Notify. */
   notifyMessage?: string;
 }
-export const UpdateStateProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateStateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     progressPercentage: S.optional(S.Number),
     notifyMessage: S.optional(S.String),
@@ -10539,7 +10414,7 @@ export interface UpdateProperties {
   /** Additional information regarding the state of the update. See definition of UpdateStateProperties type below for more details on this property. */
   updateStateProperties?: UpdateStateProperties;
 }
-export const UpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     installedDate: S.optional(S.String),
@@ -10579,7 +10454,7 @@ export interface GetUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10602,7 +10477,7 @@ export interface GetUpdateRunRequest {
   /** The name of the Update Run */
   updateRunName: string;
 }
-export const GetUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10621,11 +10496,11 @@ export const GetUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the current state of the update run. Indicates whether the update is in progress, has completed successfully, failed, or is in an unknown state. */
 export type UpdateRunPropertiesState = "Unknown" | "Succeeded" | "InProgress" | "Failed";
-export const UpdateRunPropertiesState = S.String;
+const UpdateRunPropertiesState = S.String;
 
 /** Recursive model for child steps of this step. */
 export type StepStepsList = Array<Step>;
-export const StepStepsList = /*@__PURE__*/ S.Array(
+const StepStepsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => Step),
 ) as any as S.Schema<StepStepsList>;
 
@@ -10650,7 +10525,7 @@ export interface Step {
   /** Recursive model for child steps of this step. */
   steps?: StepStepsList;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -10679,7 +10554,7 @@ export interface UpdateRunProperties {
   /** Progress representation of the update run steps. */
   progress?: Step;
 }
-export const UpdateRunProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateRunProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     timeStarted: S.optional(S.String),
@@ -10704,7 +10579,7 @@ export interface GetUpdateRunResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetUpdateRunResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10723,7 +10598,7 @@ export interface GetUpdateSummaryRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10740,12 +10615,12 @@ export const GetUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current version of each updatable component. */
 export type UpdateSummariesPropertiesPackageVersionsList = Array<PackageVersionInfo>;
-export const UpdateSummariesPropertiesPackageVersionsList =
+const UpdateSummariesPropertiesPackageVersionsList =
   UpdatePropertiesComponentVersionsList as any as S.Schema<UpdateSummariesPropertiesPackageVersionsList>;
 
 /** An array of pre-check result objects. */
 export type UpdateSummariesPropertiesHealthCheckResultList = Array<PrecheckResult>;
-export const UpdateSummariesPropertiesHealthCheckResultList =
+const UpdateSummariesPropertiesHealthCheckResultList =
   UpdatePropertiesHealthCheckResultList as any as S.Schema<UpdateSummariesPropertiesHealthCheckResultList>;
 
 /** Overall update state of the stamp. Indicates the current status of update deployment across the stamp, including preparation, application, and any issues encountered. */
@@ -10758,7 +10633,7 @@ export type UpdateSummariesPropertiesState =
   | "NeedsAttention"
   | "PreparationInProgress"
   | "PreparationFailed";
-export const UpdateSummariesPropertiesState = S.String;
+const UpdateSummariesPropertiesState = S.String;
 
 /** Properties of Update summaries */
 export interface UpdateSummariesProperties {
@@ -10789,7 +10664,7 @@ export interface UpdateSummariesProperties {
   /** Overall update state of the stamp. Indicates the current status of update deployment across the stamp, including preparation, application, and any issues encountered. */
   state?: UpdateSummariesPropertiesState;
 }
-export const UpdateSummariesProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateSummariesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     oemFamily: S.optional(S.String),
@@ -10823,7 +10698,7 @@ export interface GetUpdateSummaryResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetUpdateSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10842,7 +10717,7 @@ export interface GetValidatedSolutionRecipeRequest {
   /** The name of the ValidatedSolutionRecipe */
   validatedSolutionRecipeName: string;
 }
-export const GetValidatedSolutionRecipeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetValidatedSolutionRecipeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -10866,7 +10741,7 @@ export interface ValidatedSolutionRecipeInfo {
   /** Represents the version for which this validated solution recipe is applicable. */
   version: string;
 }
-export const ValidatedSolutionRecipeInfo = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     solutionType: S.String,
     version: S.String,
@@ -10880,7 +10755,7 @@ export interface ValidatedSolutionRecipeCapability {
   /** Represents the capability name. */
   capabilityName: string;
 }
-export const ValidatedSolutionRecipeCapability = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilityName: S.String,
   }),
@@ -10891,14 +10766,14 @@ export const ValidatedSolutionRecipeCapability = /*@__PURE__*/ S.suspend(() =>
 /** Represents the cluster capabilities. */
 export type ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList =
   Array<ValidatedSolutionRecipeCapability>;
-export const ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList = /*@__PURE__*/ S.Array(
+const ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList = /*@__PURE__*/ S.Array(
   ValidatedSolutionRecipeCapability,
 ) as any as S.Schema<ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList>;
 
 /** Represents the node capabilities. */
 export type ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList =
   Array<ValidatedSolutionRecipeCapability>;
-export const ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList =
+const ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList =
   ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList as any as S.Schema<ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList>;
 
 /** Represents capabilities available in a validated solution recipe. */
@@ -10908,7 +10783,7 @@ export interface ValidatedSolutionRecipeCapabilities {
   /** Represents the node capabilities. */
   nodeCapabilities: ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList;
 }
-export const ValidatedSolutionRecipeCapabilities = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterCapabilities: ValidatedSolutionRecipeCapabilitiesClusterCapabilitiesList,
     nodeCapabilities: ValidatedSolutionRecipeCapabilitiesNodeCapabilitiesList,
@@ -10919,7 +10794,7 @@ export const ValidatedSolutionRecipeCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the component's tags. */
 export type ValidatedSolutionRecipeComponentTagsList = Array<string>;
-export const ValidatedSolutionRecipeComponentTagsList =
+const ValidatedSolutionRecipeComponentTagsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<ValidatedSolutionRecipeComponentTagsList>;
 
 /** Represents payloads associated with a component available in a validated solution recipe. */
@@ -10933,7 +10808,7 @@ export interface ValidatedSolutionRecipeComponentPayload {
   /** Represents the URL from which the payload can be downloaded. */
   url: string;
 }
-export const ValidatedSolutionRecipeComponentPayload = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeComponentPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     hash: S.String,
@@ -10947,7 +10822,7 @@ export const ValidatedSolutionRecipeComponentPayload = /*@__PURE__*/ S.suspend((
 /** Represents the component's payloads. */
 export type ValidatedSolutionRecipeComponentPayloadsList =
   Array<ValidatedSolutionRecipeComponentPayload>;
-export const ValidatedSolutionRecipeComponentPayloadsList = /*@__PURE__*/ S.Array(
+const ValidatedSolutionRecipeComponentPayloadsList = /*@__PURE__*/ S.Array(
   ValidatedSolutionRecipeComponentPayload,
 ) as any as S.Schema<ValidatedSolutionRecipeComponentPayloadsList>;
 
@@ -10976,7 +10851,7 @@ export interface ValidatedSolutionRecipeComponentMetadata {
   /** Specifies the preview source of the extension. */
   previewSource?: string;
 }
-export const ValidatedSolutionRecipeComponentMetadata = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeComponentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionType: S.optional(S.String),
     publisher: S.optional(S.String),
@@ -11011,7 +10886,7 @@ export interface ValidatedSolutionRecipeComponent {
   /** Represents the component's metadata. */
   metadata?: ValidatedSolutionRecipeComponentMetadata;
 }
-export const ValidatedSolutionRecipeComponent = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -11027,7 +10902,7 @@ export const ValidatedSolutionRecipeComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents components available in a validated solution recipe. */
 export type ValidatedSolutionRecipeContentComponentsList = Array<ValidatedSolutionRecipeComponent>;
-export const ValidatedSolutionRecipeContentComponentsList = /*@__PURE__*/ S.Array(
+const ValidatedSolutionRecipeContentComponentsList = /*@__PURE__*/ S.Array(
   ValidatedSolutionRecipeComponent,
 ) as any as S.Schema<ValidatedSolutionRecipeContentComponentsList>;
 
@@ -11040,7 +10915,7 @@ export interface ValidatedSolutionRecipeContent {
   /** Represents components available in a validated solution recipe. */
   components: ValidatedSolutionRecipeContentComponentsList;
 }
-export const ValidatedSolutionRecipeContent = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: ValidatedSolutionRecipeInfo,
     capabilities: S.optional(ValidatedSolutionRecipeCapabilities),
@@ -11057,7 +10932,7 @@ export interface ValidatedSolutionRecipeProperties {
   /** Represents the signature of the recipe, to be used for ensuring its integrity. */
   signature?: string;
 }
-export const ValidatedSolutionRecipeProperties = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipeContent: ValidatedSolutionRecipeContent,
     signature: S.optional(S.String),
@@ -11078,7 +10953,7 @@ export interface GetValidatedSolutionRecipeResponse {
   /** The resource-specific properties for this resource. */
   properties?: ValidatedSolutionRecipeProperties;
 }
-export const GetValidatedSolutionRecipeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetValidatedSolutionRecipeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11098,7 +10973,7 @@ export interface GetVirtualHardDiskRequest {
   /** Name of the virtual hard disk */
   virtualHardDiskName: string;
 }
-export const GetVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11117,16 +10992,16 @@ export const GetVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualHardDiskResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualHardDiskResponseTagsMap =
+const GetVirtualHardDiskResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GetVirtualHardDiskResponseTagsMap>;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type VirtualHardDiskPropertiesHyperVGeneration = "V1" | "V2";
-export const VirtualHardDiskPropertiesHyperVGeneration = S.String;
+const VirtualHardDiskPropertiesHyperVGeneration = S.String;
 
 /** The format of the actual VHD file [vhd, vhdx] */
 export type VirtualHardDiskPropertiesDiskFileFormat = "vhdx" | "vhd";
-export const VirtualHardDiskPropertiesDiskFileFormat = S.String;
+const VirtualHardDiskPropertiesDiskFileFormat = S.String;
 
 /** Provisioning state of the virtual hard disk. */
 export type VirtualHardDiskPropertiesProvisioningState =
@@ -11136,21 +11011,16 @@ export type VirtualHardDiskPropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const VirtualHardDiskPropertiesProvisioningState = S.String;
+const VirtualHardDiskPropertiesProvisioningState = S.String;
 
 /** The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress] */
 export type VirtualHardDiskStatusProvisioningStatusStatus = "Succeeded" | "Failed" | "InProgress";
-export const VirtualHardDiskStatusProvisioningStatusStatus = S.String;
-
 export interface VirtualHardDiskStatusProvisioningStatus {
   /** The ID of the operation performed on the virtual hard disk */
   operationId?: string;
   /** The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress] */
   status?: VirtualHardDiskStatusProvisioningStatusStatus;
 }
-export const VirtualHardDiskStatusProvisioningStatus =
-  GalleryImageStatusProvisioningStatus as any as S.Schema<VirtualHardDiskStatusProvisioningStatus>;
-
 /** The observed state of virtual hard disks */
 export interface VirtualHardDiskStatus {
   /** VirtualHardDisk provisioning error code */
@@ -11159,7 +11029,7 @@ export interface VirtualHardDiskStatus {
   errorMessage?: string;
   provisioningStatus?: VirtualHardDiskStatusProvisioningStatus;
 }
-export const VirtualHardDiskStatus = NetworkAdapterStatus as any as S.Schema<VirtualHardDiskStatus>;
+const VirtualHardDiskStatus = NetworkAdapterStatus as any as S.Schema<VirtualHardDiskStatus>;
 
 /** Properties under the virtual hard disk resource */
 export interface VirtualHardDiskProperties {
@@ -11180,7 +11050,7 @@ export interface VirtualHardDiskProperties {
   containerId?: string;
   status?: VirtualHardDiskStatus;
 }
-export const VirtualHardDiskProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualHardDiskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockSizeBytes: S.optional(S.Number),
     diskSizeGB: S.optional(S.Number),
@@ -11200,9 +11070,6 @@ export const VirtualHardDiskProperties = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type GetVirtualHardDiskResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetVirtualHardDiskResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface GetVirtualHardDiskResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11220,7 +11087,7 @@ export interface GetVirtualHardDiskResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GetVirtualHardDiskResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualHardDiskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11239,7 +11106,7 @@ export interface GetVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const GetVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -11278,7 +11145,7 @@ export type VirtualMachineInstancePropertiesHardwareProfileVmSize =
   | "Standard_NV12"
   | "Standard_K8S5_v1"
   | "Custom";
-export const VirtualMachineInstancePropertiesHardwareProfileVmSize = S.String;
+const VirtualMachineInstancePropertiesHardwareProfileVmSize = S.String;
 
 export interface VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig {
   maximumMemoryMB?: number;
@@ -11286,16 +11153,16 @@ export interface VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryCon
   /** Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000. */
   targetMemoryBuffer?: number;
 }
-export const VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig =
-  /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maximumMemoryMB: S.optional(S.Number),
       minimumMemoryMB: S.optional(S.Number),
       targetMemoryBuffer: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig>;
+).annotate({
+  identifier: "VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig",
+}) as any as S.Schema<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig>;
 
 /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesHardwareProfile {
@@ -11306,7 +11173,7 @@ export interface VirtualMachineInstancePropertiesHardwareProfile {
   memoryMB?: number;
   dynamicMemoryConfig?: VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig;
 }
-export const VirtualMachineInstancePropertiesHardwareProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesHardwareProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmSize: S.optional(VirtualMachineInstancePropertiesHardwareProfileVmSize),
     processors: S.optional(S.Number),
@@ -11323,29 +11190,28 @@ export interface VirtualMachineInstancePropertiesNetworkProfileNetworkInterfaces
   /** ID - Resource Id of the network interface */
   id?: string;
 }
-export const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem =
-  /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
+).annotate({
+  identifier: "VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem",
+}) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
 
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList =
   Array<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
-export const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList =
-  /*@__PURE__*/ S.Array(
-    VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem,
-  ) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList>;
+const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
+  VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem,
+) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList>;
 
 /** NetworkProfile - describes the network configuration the virtual machine instance */
 export interface VirtualMachineInstancePropertiesNetworkProfile {
   /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
   networkInterfaces?: VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList;
 }
-export const VirtualMachineInstancePropertiesNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkInterfaces: S.optional(
       VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList,
@@ -11362,7 +11228,7 @@ export interface SshPublicKey {
   /** SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed). */
   keyData?: string;
 }
-export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
+const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     keyData: S.optional(S.String),
@@ -11371,7 +11237,7 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of SSH public keys used to authenticate with linux based VMs. */
 export type SshConfigurationPublicKeysList = Array<SshPublicKey>;
-export const SshConfigurationPublicKeysList = /*@__PURE__*/ S.Array(
+const SshConfigurationPublicKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<SshConfigurationPublicKeysList>;
 
@@ -11380,7 +11246,7 @@ export interface SshConfiguration {
   /** The list of SSH public keys used to authenticate with linux based VMs. */
   publicKeys?: SshConfigurationPublicKeysList;
 }
-export const SshConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SshConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeys: S.optional(SshConfigurationPublicKeysList),
   }),
@@ -11397,14 +11263,13 @@ export interface VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
   /** Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process. */
   provisionVMConfigAgent?: boolean;
 }
-export const VirtualMachineInstancePropertiesOsProfileLinuxConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disablePasswordAuthentication: S.optional(S.Boolean),
-      ssh: S.optional(SshConfiguration),
-      provisionVMAgent: S.optional(S.Boolean),
-      provisionVMConfigAgent: S.optional(S.Boolean),
-    }),
+const VirtualMachineInstancePropertiesOsProfileLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disablePasswordAuthentication: S.optional(S.Boolean),
+    ssh: S.optional(SshConfiguration),
+    provisionVMAgent: S.optional(S.Boolean),
+    provisionVMConfigAgent: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "VirtualMachineInstancePropertiesOsProfileLinuxConfiguration",
 }) as any as S.Schema<VirtualMachineInstancePropertiesOsProfileLinuxConfiguration>;
@@ -11422,18 +11287,17 @@ export interface VirtualMachineInstancePropertiesOsProfileWindowsConfiguration {
   /** Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process. */
   provisionVMConfigAgent?: boolean;
 }
-export const VirtualMachineInstancePropertiesOsProfileWindowsConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enableAutomaticUpdates: S.optional(S.Boolean),
-      ssh: S.optional(SshConfiguration),
-      timeZone: S.optional(S.String),
-      provisionVMAgent: S.optional(S.Boolean),
-      provisionVMConfigAgent: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesOsProfileWindowsConfiguration",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesOsProfileWindowsConfiguration>;
+const VirtualMachineInstancePropertiesOsProfileWindowsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enableAutomaticUpdates: S.optional(S.Boolean),
+    ssh: S.optional(SshConfiguration),
+    timeZone: S.optional(S.String),
+    provisionVMAgent: S.optional(S.Boolean),
+    provisionVMConfigAgent: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VirtualMachineInstancePropertiesOsProfileWindowsConfiguration",
+}) as any as S.Schema<VirtualMachineInstancePropertiesOsProfileWindowsConfiguration>;
 
 /** OsProfile - describes the configuration of the operating system and sets login data */
 export interface VirtualMachineInstancePropertiesOsProfile {
@@ -11448,7 +11312,7 @@ export interface VirtualMachineInstancePropertiesOsProfile {
   /** Windows Configuration for the virtual machine instance */
   windowsConfiguration?: VirtualMachineInstancePropertiesOsProfileWindowsConfiguration;
 }
-export const VirtualMachineInstancePropertiesOsProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesOsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     adminUsername: S.optional(S.String),
@@ -11464,11 +11328,10 @@ export interface VirtualMachineInstancePropertiesSecurityProfileUefiSettings {
   /** Specifies whether secure boot should be enabled on the virtual machine instance. */
   secureBootEnabled?: boolean;
 }
-export const VirtualMachineInstancePropertiesSecurityProfileUefiSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      secureBootEnabled: S.optional(S.Boolean),
-    }),
+const VirtualMachineInstancePropertiesSecurityProfileUefiSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    secureBootEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "VirtualMachineInstancePropertiesSecurityProfileUefiSettings",
 }) as any as S.Schema<VirtualMachineInstancePropertiesSecurityProfileUefiSettings>;
@@ -11477,7 +11340,7 @@ export const VirtualMachineInstancePropertiesSecurityProfileUefiSettings = /*@__
 export type VirtualMachineInstancePropertiesSecurityProfileSecurityType =
   | "TrustedLaunch"
   | "ConfidentialVM";
-export const VirtualMachineInstancePropertiesSecurityProfileSecurityType = S.String;
+const VirtualMachineInstancePropertiesSecurityProfileSecurityType = S.String;
 
 /** SecurityProfile - Specifies the security settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesSecurityProfile {
@@ -11486,7 +11349,7 @@ export interface VirtualMachineInstancePropertiesSecurityProfile {
   /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
   securityType?: VirtualMachineInstancePropertiesSecurityProfileSecurityType;
 }
-export const VirtualMachineInstancePropertiesSecurityProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesSecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableTPM: S.optional(S.Boolean),
     uefiSettings: S.optional(VirtualMachineInstancePropertiesSecurityProfileUefiSettings),
@@ -11500,11 +11363,10 @@ export interface VirtualMachineInstancePropertiesStorageProfileDataDisksItem {
   /** Resource ID of the data disk */
   id?: string;
 }
-export const VirtualMachineInstancePropertiesStorageProfileDataDisksItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
+const VirtualMachineInstancePropertiesStorageProfileDataDisksItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "VirtualMachineInstancePropertiesStorageProfileDataDisksItem",
 }) as any as S.Schema<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
@@ -11512,7 +11374,7 @@ export const VirtualMachineInstancePropertiesStorageProfileDataDisksItem = /*@__
 /** adds data disks to the virtual machine instance */
 export type VirtualMachineInstancePropertiesStorageProfileDataDisksList =
   Array<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
-export const VirtualMachineInstancePropertiesStorageProfileDataDisksList = /*@__PURE__*/ S.Array(
+const VirtualMachineInstancePropertiesStorageProfileDataDisksList = /*@__PURE__*/ S.Array(
   VirtualMachineInstancePropertiesStorageProfileDataDisksItem,
 ) as any as S.Schema<VirtualMachineInstancePropertiesStorageProfileDataDisksList>;
 
@@ -11521,12 +11383,12 @@ export interface VirtualMachineInstancePropertiesStorageProfileImageReference {
   /** Resource ID of the image */
   id?: string;
 }
-export const VirtualMachineInstancePropertiesStorageProfileImageReference =
+const VirtualMachineInstancePropertiesStorageProfileImageReference =
   VirtualMachineInstancePropertiesStorageProfileDataDisksItem as any as S.Schema<VirtualMachineInstancePropertiesStorageProfileImageReference>;
 
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
 export type VirtualMachineInstancePropertiesStorageProfileOsDiskOsType = "Linux" | "Windows";
-export const VirtualMachineInstancePropertiesStorageProfileOsDiskOsType = S.String;
+const VirtualMachineInstancePropertiesStorageProfileOsDiskOsType = S.String;
 
 /** VHD to attach as OS disk */
 export interface VirtualMachineInstancePropertiesStorageProfileOsDisk {
@@ -11535,7 +11397,7 @@ export interface VirtualMachineInstancePropertiesStorageProfileOsDisk {
   /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
   osType?: VirtualMachineInstancePropertiesStorageProfileOsDiskOsType;
 }
-export const VirtualMachineInstancePropertiesStorageProfileOsDisk = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesStorageProfileOsDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     osType: S.optional(VirtualMachineInstancePropertiesStorageProfileOsDiskOsType),
@@ -11555,7 +11417,7 @@ export interface VirtualMachineInstancePropertiesStorageProfile {
   /** Id of the storage container that hosts the VM configuration file */
   vmConfigStoragePathId?: string;
 }
-export const VirtualMachineInstancePropertiesStorageProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesStorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDisks: S.optional(VirtualMachineInstancePropertiesStorageProfileDataDisksList),
     imageReference: S.optional(VirtualMachineInstancePropertiesStorageProfileImageReference),
@@ -11568,7 +11430,7 @@ export const VirtualMachineInstancePropertiesStorageProfile = /*@__PURE__*/ S.su
 
 /** The endpoints that should not go through proxy. */
 export type HttpProxyConfigurationNoProxyList = Array<string>;
-export const HttpProxyConfigurationNoProxyList =
+const HttpProxyConfigurationNoProxyList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<HttpProxyConfigurationNoProxyList>;
 
 /** HTTP Proxy configuration for the VM. */
@@ -11582,7 +11444,7 @@ export interface HttpProxyConfiguration {
   /** Alternative CA cert to use for connecting to proxy servers. */
   trustedCa?: string;
 }
-export const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpProxy: S.optional(S.String),
     httpsProxy: S.optional(S.String),
@@ -11599,11 +11461,11 @@ export type VirtualMachineInstancePropertiesProvisioningState =
   | "Accepted"
   | "Deleting"
   | "Canceled";
-export const VirtualMachineInstancePropertiesProvisioningState = S.String;
+const VirtualMachineInstancePropertiesProvisioningState = S.String;
 
 /** The level code. */
 export type InstanceViewStatusLevel = "Info" | "Warning" | "Error";
-export const InstanceViewStatusLevel = S.String;
+const InstanceViewStatusLevel = S.String;
 
 /** Instance view status. */
 export interface InstanceViewStatus {
@@ -11618,7 +11480,7 @@ export interface InstanceViewStatus {
   /** The time of the status. */
   time?: string;
 }
-export const InstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
+const InstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     level: S.optional(InstanceViewStatusLevel),
@@ -11630,7 +11492,7 @@ export const InstanceViewStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource status information. */
 export type VirtualMachineConfigAgentInstanceViewStatusesList = Array<InstanceViewStatus>;
-export const VirtualMachineConfigAgentInstanceViewStatusesList = /*@__PURE__*/ S.Array(
+const VirtualMachineConfigAgentInstanceViewStatusesList = /*@__PURE__*/ S.Array(
   InstanceViewStatus,
 ) as any as S.Schema<VirtualMachineConfigAgentInstanceViewStatusesList>;
 
@@ -11641,7 +11503,7 @@ export interface VirtualMachineConfigAgentInstanceView {
   /** The resource status information. */
   statuses?: VirtualMachineConfigAgentInstanceViewStatusesList;
 }
-export const VirtualMachineConfigAgentInstanceView = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineConfigAgentInstanceView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmConfigAgentVersion: S.optional(S.String),
     statuses: S.optional(VirtualMachineConfigAgentInstanceViewStatusesList),
@@ -11655,7 +11517,7 @@ export interface VirtualMachineInstanceView {
   /** The VM Config Agent running on the virtual machine. */
   vmAgent?: VirtualMachineConfigAgentInstanceView;
 }
-export const VirtualMachineInstanceView = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmAgent: S.optional(VirtualMachineConfigAgentInstanceView),
   }),
@@ -11672,22 +11534,20 @@ export type VirtualMachineInstanceStatusPowerState =
   | "Stopped"
   | "Stopping"
   | "Unknown";
-export const VirtualMachineInstanceStatusPowerState = S.String;
+const VirtualMachineInstanceStatusPowerState = S.String;
 
 /** The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress] */
 export type VirtualMachineInstanceStatusProvisioningStatusStatus =
   | "Succeeded"
   | "Failed"
   | "InProgress";
-export const VirtualMachineInstanceStatusProvisioningStatusStatus = S.String;
-
 export interface VirtualMachineInstanceStatusProvisioningStatus {
   /** The ID of the operation performed on the virtual machine instance */
   operationId?: string;
   /** The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress] */
   status?: VirtualMachineInstanceStatusProvisioningStatusStatus;
 }
-export const VirtualMachineInstanceStatusProvisioningStatus =
+const VirtualMachineInstanceStatusProvisioningStatus =
   GalleryImageStatusProvisioningStatus as any as S.Schema<VirtualMachineInstanceStatusProvisioningStatus>;
 
 /** The observed state of virtual machine instances */
@@ -11700,7 +11560,7 @@ export interface VirtualMachineInstanceStatus {
   powerState?: VirtualMachineInstanceStatusPowerState;
   provisioningStatus?: VirtualMachineInstanceStatusProvisioningStatus;
 }
-export const VirtualMachineInstanceStatus = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -11713,18 +11573,12 @@ export const VirtualMachineInstanceStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The installation status of the hybrid machine agent installation. */
 export type GuestAgentInstallStatusStatus = "Succeeded" | "InProgress" | "Failed";
-export const GuestAgentInstallStatusStatus = S.String;
+const GuestAgentInstallStatusStatus = S.String;
 
 /** The error details. */
 export type GuestAgentInstallStatusErrorDetailsItemDetailsList = Array<ErrorDetail>;
-export const GuestAgentInstallStatusErrorDetailsItemDetailsList =
-  DeploymentStepErrorDetailsList as any as S.Schema<GuestAgentInstallStatusErrorDetailsItemDetailsList>;
-
 /** The error additional info. */
 export type GuestAgentInstallStatusErrorDetailsItemAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const GuestAgentInstallStatusErrorDetailsItemAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<GuestAgentInstallStatusErrorDetailsItemAdditionalInfoList>;
-
 /** The error detail. */
 export interface GuestAgentInstallStatusErrorDetailsItem {
   /** The error code. */
@@ -11738,13 +11592,13 @@ export interface GuestAgentInstallStatusErrorDetailsItem {
   /** The error additional info. */
   additionalInfo?: GuestAgentInstallStatusErrorDetailsItemAdditionalInfoList;
 }
-export const GuestAgentInstallStatusErrorDetailsItem =
+const GuestAgentInstallStatusErrorDetailsItem =
   EdgeMachineDiskJobPropertiesError as any as S.Schema<GuestAgentInstallStatusErrorDetailsItem>;
 
 /** Details about the error state. */
 export type GuestAgentInstallStatusErrorDetailsList =
   Array<GuestAgentInstallStatusErrorDetailsItem>;
-export const GuestAgentInstallStatusErrorDetailsList = /*@__PURE__*/ S.Array(
+const GuestAgentInstallStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   GuestAgentInstallStatusErrorDetailsItem,
 ) as any as S.Schema<GuestAgentInstallStatusErrorDetailsList>;
 
@@ -11761,7 +11615,7 @@ export interface GuestAgentInstallStatus {
   /** Details about the error state. */
   errorDetails?: GuestAgentInstallStatusErrorDetailsList;
 }
-export const GuestAgentInstallStatus = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentInstallStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmUuid: S.optional(S.String),
     status: S.optional(GuestAgentInstallStatusStatus),
@@ -11797,7 +11651,7 @@ export interface VirtualMachineInstanceProperties {
   /** Unique identifier defined by ARC to identify the guest of the VM. */
   resourceUid?: string;
 }
-export const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareProfile: S.optional(VirtualMachineInstancePropertiesHardwareProfile),
     networkProfile: S.optional(VirtualMachineInstancePropertiesNetworkProfile),
@@ -11819,13 +11673,8 @@ export const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type GetVirtualMachineInstanceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GetVirtualMachineInstanceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type GetVirtualMachineInstanceResponseIdentityType = "SystemAssigned";
-export const GetVirtualMachineInstanceResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface GetVirtualMachineInstanceResponseIdentity {
   /** The principal ID of resource identity. */
@@ -11835,7 +11684,7 @@ export interface GetVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: GetVirtualMachineInstanceResponseIdentityType;
 }
-export const GetVirtualMachineInstanceResponseIdentity =
+const GetVirtualMachineInstanceResponseIdentity =
   HybridIdentityMetadataPropertiesIdentity as any as S.Schema<GetVirtualMachineInstanceResponseIdentity>;
 
 export interface GetVirtualMachineInstanceResponse {
@@ -11853,7 +11702,7 @@ export interface GetVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: GetVirtualMachineInstanceResponseIdentity;
 }
-export const GetVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11875,7 +11724,7 @@ export interface ListArcSettingsByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListArcSettingsByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArcSettingsByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11905,11 +11754,11 @@ export interface ArcSetting {
   /** ArcSetting properties. */
   properties?: ArcSettingProperties;
 }
-export const ArcSetting = GetArcSettingsResponse as any as S.Schema<ArcSetting>;
+const ArcSetting = GetArcSettingsResponse as any as S.Schema<ArcSetting>;
 
 /** The ArcSetting items on this page */
 export type ArcSettingListValueList = Array<ArcSetting>;
-export const ArcSettingListValueList = /*@__PURE__*/ S.Array(
+const ArcSettingListValueList = /*@__PURE__*/ S.Array(
   ArcSetting,
 ) as any as S.Schema<ArcSettingListValueList>;
 
@@ -11920,7 +11769,7 @@ export interface ArcSettingList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ArcSettingList = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ArcSettingListValueList,
     nextLink: S.optional(S.String),
@@ -11933,7 +11782,7 @@ export interface ListClusterByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11951,14 +11800,14 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap =
+const ClusterTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ClusterIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ClusterIdentityUserAssignedIdentitiesMap =
+const ClusterIdentityUserAssignedIdentitiesMap =
   CreateClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -11971,7 +11820,7 @@ export interface ClusterIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ClusterIdentityUserAssignedIdentitiesMap;
 }
-export const ClusterIdentity = /*@__PURE__*/ S.suspend(() =>
+const ClusterIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -12001,7 +11850,7 @@ export interface Cluster {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12017,7 +11866,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The Cluster items on this page */
 export type ClusterListValueList = Array<Cluster>;
-export const ClusterListValueList = /*@__PURE__*/ S.Array(
+const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
 
@@ -12028,7 +11877,7 @@ export interface ClusterList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ClusterList = /*@__PURE__*/ S.suspend(() =>
+const ClusterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ClusterListValueList,
     nextLink: S.optional(S.String),
@@ -12039,7 +11888,7 @@ export interface ListClusterBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -12062,7 +11911,7 @@ export interface ListClusterJobsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListClusterJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12090,11 +11939,11 @@ export interface ClusterJob {
   /** The resource-specific properties for this resource. */
   properties?: ClusterJobProperties;
 }
-export const ClusterJob = GetClusterJobResponse as any as S.Schema<ClusterJob>;
+const ClusterJob = GetClusterJobResponse as any as S.Schema<ClusterJob>;
 
 /** The ClusterJob items on this page */
 export type ClusterJobListResultValueList = Array<ClusterJob>;
-export const ClusterJobListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterJobListResultValueList = /*@__PURE__*/ S.Array(
   ClusterJob,
 ) as any as S.Schema<ClusterJobListResultValueList>;
 
@@ -12105,7 +11954,7 @@ export interface ClusterJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ClusterJobListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ClusterJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -12120,7 +11969,7 @@ export interface ListDeploymentSettingsByClustersRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListDeploymentSettingsByClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentSettingsByClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12150,7 +11999,7 @@ export interface DeploymentSetting {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentSettingsProperties;
 }
-export const DeploymentSetting = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12162,7 +12011,7 @@ export const DeploymentSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeploymentSetting items on this page */
 export type DeploymentSettingListResultValueList = Array<DeploymentSetting>;
-export const DeploymentSettingListResultValueList = /*@__PURE__*/ S.Array(
+const DeploymentSettingListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentSetting,
 ) as any as S.Schema<DeploymentSettingListResultValueList>;
 
@@ -12173,7 +12022,7 @@ export interface DeploymentSettingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DeploymentSettingListResult = /*@__PURE__*/ S.suspend(() =>
+const DeploymentSettingListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DeploymentSettingListResultValueList,
     nextLink: S.optional(S.String),
@@ -12188,7 +12037,7 @@ export interface ListEdgeDeviceJobByEdgeDeviceRequest {
   /** Name of Device */
   edgeDeviceName: string;
 }
-export const ListEdgeDeviceJobByEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeDeviceJobByEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -12217,11 +12066,11 @@ export interface EdgeDeviceJob {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: EdgeDeviceKind;
 }
-export const EdgeDeviceJob = GetEdgeDeviceJobResponse as any as S.Schema<EdgeDeviceJob>;
+const EdgeDeviceJob = GetEdgeDeviceJobResponse as any as S.Schema<EdgeDeviceJob>;
 
 /** The EdgeDeviceJob items on this page */
 export type EdgeDeviceJobListResultValueList = Array<EdgeDeviceJob>;
-export const EdgeDeviceJobListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeDeviceJobListResultValueList = /*@__PURE__*/ S.Array(
   EdgeDeviceJob,
 ) as any as S.Schema<EdgeDeviceJobListResultValueList>;
 
@@ -12232,7 +12081,7 @@ export interface EdgeDeviceJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeDeviceJobListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeDeviceJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeDeviceJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -12243,7 +12092,7 @@ export interface ListEdgeDevicesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListEdgeDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -12271,11 +12120,11 @@ export interface EdgeDevice {
   /** properties for Arc-enabled edge device with HCI OS. */
   properties?: HciEdgeDeviceProperties;
 }
-export const EdgeDevice = GetEdgeDeviceResponse as any as S.Schema<EdgeDevice>;
+const EdgeDevice = GetEdgeDeviceResponse as any as S.Schema<EdgeDevice>;
 
 /** The EdgeDevice items on this page */
 export type EdgeDeviceListResultValueList = Array<EdgeDevice>;
-export const EdgeDeviceListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeDeviceListResultValueList = /*@__PURE__*/ S.Array(
   EdgeDevice,
 ) as any as S.Schema<EdgeDeviceListResultValueList>;
 
@@ -12286,7 +12135,7 @@ export interface EdgeDeviceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeDeviceListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeDeviceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeDeviceListResultValueList,
     nextLink: S.optional(S.String),
@@ -12299,7 +12148,7 @@ export interface ListEdgeMachineByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListEdgeMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12317,16 +12166,13 @@ export const ListEdgeMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type EdgeMachineTagsMap = { [key: string]: string | undefined };
-export const EdgeMachineTagsMap =
+const EdgeMachineTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<EdgeMachineTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type EdgeMachineIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const EdgeMachineIdentityUserAssignedIdentitiesMap =
-  CreateClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<EdgeMachineIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EdgeMachineIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -12337,7 +12183,7 @@ export interface EdgeMachineIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: EdgeMachineIdentityUserAssignedIdentitiesMap;
 }
-export const EdgeMachineIdentity = ClusterIdentity as any as S.Schema<EdgeMachineIdentity>;
+const EdgeMachineIdentity = ClusterIdentity as any as S.Schema<EdgeMachineIdentity>;
 
 /** EdgeMachine details. */
 export interface EdgeMachine {
@@ -12358,7 +12204,7 @@ export interface EdgeMachine {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EdgeMachineIdentity;
 }
-export const EdgeMachine = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12373,7 +12219,7 @@ export const EdgeMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The EdgeMachine items on this page */
 export type EdgeMachineListResultValueList = Array<EdgeMachine>;
-export const EdgeMachineListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachine,
 ) as any as S.Schema<EdgeMachineListResultValueList>;
 
@@ -12384,7 +12230,7 @@ export interface EdgeMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -12395,7 +12241,7 @@ export interface ListEdgeMachineBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListEdgeMachineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -12418,7 +12264,7 @@ export interface ListEdgeMachineDeploymentSettingsByEdgeMachineRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const ListEdgeMachineDeploymentSettingsByEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineDeploymentSettingsByEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12448,12 +12294,12 @@ export interface EdgeMachineDeploymentSetting {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDeploymentSettingProperties;
 }
-export const EdgeMachineDeploymentSetting =
+const EdgeMachineDeploymentSetting =
   EdgeMachineDeploymentSettingsCreateOrUpdateResponse as any as S.Schema<EdgeMachineDeploymentSetting>;
 
 /** The EdgeMachineDeploymentSetting items on this page */
 export type EdgeMachineDeploymentSettingListResultValueList = Array<EdgeMachineDeploymentSetting>;
-export const EdgeMachineDeploymentSettingListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineDeploymentSettingListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineDeploymentSetting,
 ) as any as S.Schema<EdgeMachineDeploymentSettingListResultValueList>;
 
@@ -12464,7 +12310,7 @@ export interface EdgeMachineDeploymentSettingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineDeploymentSettingListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDeploymentSettingListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineDeploymentSettingListResultValueList,
     nextLink: S.optional(S.String),
@@ -12483,7 +12329,7 @@ export interface ListEdgeMachineDiskJobsRequest {
   /** The name of the EdgeMachineDisk */
   diskName: string;
 }
-export const ListEdgeMachineDiskJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineDiskJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12514,7 +12360,7 @@ export interface EdgeMachineDiskJob {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskJobProperties;
 }
-export const EdgeMachineDiskJob = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12526,7 +12372,7 @@ export const EdgeMachineDiskJob = /*@__PURE__*/ S.suspend(() =>
 
 /** The EdgeMachineDiskJob items on this page */
 export type EdgeMachineDiskJobListResultValueList = Array<EdgeMachineDiskJob>;
-export const EdgeMachineDiskJobListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineDiskJobListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineDiskJob,
 ) as any as S.Schema<EdgeMachineDiskJobListResultValueList>;
 
@@ -12537,7 +12383,7 @@ export interface EdgeMachineDiskJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineDiskJobListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineDiskJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -12556,7 +12402,7 @@ export interface ListEdgeMachineDiskPrivilegedJobsRequest {
   /** The name of the EdgeMachineDisk */
   diskName: string;
 }
-export const ListEdgeMachineDiskPrivilegedJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineDiskPrivilegedJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12587,12 +12433,12 @@ export interface EdgeMachineDiskPrivilegedJob {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskPrivilegedJobProperties;
 }
-export const EdgeMachineDiskPrivilegedJob =
+const EdgeMachineDiskPrivilegedJob =
   EdgeMachineDiskPrivilegedJobsCreateOrUpdateResponse as any as S.Schema<EdgeMachineDiskPrivilegedJob>;
 
 /** The EdgeMachineDiskPrivilegedJob items on this page */
 export type EdgeMachineDiskPrivilegedJobListResultValueList = Array<EdgeMachineDiskPrivilegedJob>;
-export const EdgeMachineDiskPrivilegedJobListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineDiskPrivilegedJobListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineDiskPrivilegedJob,
 ) as any as S.Schema<EdgeMachineDiskPrivilegedJobListResultValueList>;
 
@@ -12603,7 +12449,7 @@ export interface EdgeMachineDiskPrivilegedJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineDiskPrivilegedJobListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskPrivilegedJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineDiskPrivilegedJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -12620,7 +12466,7 @@ export interface ListEdgeMachineDisksRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const ListEdgeMachineDisksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineDisksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12650,7 +12496,7 @@ export interface EdgeMachineDisk {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineDiskProperties;
 }
-export const EdgeMachineDisk = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12662,7 +12508,7 @@ export const EdgeMachineDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** The EdgeMachineDisk items on this page */
 export type EdgeMachineDiskListResultValueList = Array<EdgeMachineDisk>;
-export const EdgeMachineDiskListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineDiskListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineDisk,
 ) as any as S.Schema<EdgeMachineDiskListResultValueList>;
 
@@ -12673,7 +12519,7 @@ export interface EdgeMachineDiskListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineDiskListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineDiskListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineDiskListResultValueList,
     nextLink: S.optional(S.String),
@@ -12690,7 +12536,7 @@ export interface ListEdgeMachineJobsRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const ListEdgeMachineJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12720,7 +12566,7 @@ export interface EdgeMachineJob {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineJobProperties;
 }
-export const EdgeMachineJob = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12732,7 +12578,7 @@ export const EdgeMachineJob = /*@__PURE__*/ S.suspend(() =>
 
 /** The EdgeMachineJob items on this page */
 export type EdgeMachineJobListResultValueList = Array<EdgeMachineJob>;
-export const EdgeMachineJobListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineJobListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineJob,
 ) as any as S.Schema<EdgeMachineJobListResultValueList>;
 
@@ -12743,7 +12589,7 @@ export interface EdgeMachineJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineJobListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -12760,7 +12606,7 @@ export interface ListEdgeMachineNetworkAdapterJobsRequest {
   /** The name of the EdgeMachineNetworkAdapter */
   networkAdapterName: string;
 }
-export const ListEdgeMachineNetworkAdapterJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineNetworkAdapterJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12791,12 +12637,12 @@ export interface EdgeMachineNetworkAdapterJob {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineNetworkAdapterJobProperties;
 }
-export const EdgeMachineNetworkAdapterJob =
+const EdgeMachineNetworkAdapterJob =
   EdgeMachineNetworkAdapterJobsCreateOrUpdateResponse as any as S.Schema<EdgeMachineNetworkAdapterJob>;
 
 /** The EdgeMachineNetworkAdapterJob items on this page */
 export type EdgeMachineNetworkAdapterJobListResultValueList = Array<EdgeMachineNetworkAdapterJob>;
-export const EdgeMachineNetworkAdapterJobListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineNetworkAdapterJobListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineNetworkAdapterJob,
 ) as any as S.Schema<EdgeMachineNetworkAdapterJobListResultValueList>;
 
@@ -12807,7 +12653,7 @@ export interface EdgeMachineNetworkAdapterJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineNetworkAdapterJobListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkAdapterJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineNetworkAdapterJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -12824,7 +12670,7 @@ export interface ListEdgeMachineNetworkAdaptersRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const ListEdgeMachineNetworkAdaptersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineNetworkAdaptersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12854,12 +12700,12 @@ export interface EdgeMachineNetworkAdapter {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineNetworkAdapterProperties;
 }
-export const EdgeMachineNetworkAdapter =
+const EdgeMachineNetworkAdapter =
   GetEdgeMachineNetworkAdapterResponse as any as S.Schema<EdgeMachineNetworkAdapter>;
 
 /** The EdgeMachineNetworkAdapter items on this page */
 export type EdgeMachineNetworkAdapterListResultValueList = Array<EdgeMachineNetworkAdapter>;
-export const EdgeMachineNetworkAdapterListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineNetworkAdapterListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineNetworkAdapter,
 ) as any as S.Schema<EdgeMachineNetworkAdapterListResultValueList>;
 
@@ -12870,7 +12716,7 @@ export interface EdgeMachineNetworkAdapterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineNetworkAdapterListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineNetworkAdapterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineNetworkAdapterListResultValueList,
     nextLink: S.optional(S.String),
@@ -12887,20 +12733,19 @@ export interface ListEdgeMachineSecuritySettingsOperationByEdgeMachineRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const ListEdgeMachineSecuritySettingsOperationByEdgeMachineRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      edgeMachineName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/securitySettings",
-        code: 200,
-        apiVersion: "2026-10-01",
-      }),
-    ),
+const ListEdgeMachineSecuritySettingsOperationByEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    edgeMachineName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/securitySettings",
+      code: 200,
+      apiVersion: "2026-10-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListEdgeMachineSecuritySettingsOperationByEdgeMachineRequest",
 }) as any as S.Schema<ListEdgeMachineSecuritySettingsOperationByEdgeMachineRequest>;
@@ -12918,12 +12763,12 @@ export interface EdgeMachineSecuritySettings {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineSecurityProperties;
 }
-export const EdgeMachineSecuritySettings =
+const EdgeMachineSecuritySettings =
   GetEdgeMachineSecuritySettingsOperationResponse as any as S.Schema<EdgeMachineSecuritySettings>;
 
 /** The EdgeMachineSecuritySettings items on this page */
 export type EdgeMachineSecuritySettingsListResultValueList = Array<EdgeMachineSecuritySettings>;
-export const EdgeMachineSecuritySettingsListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineSecuritySettingsListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineSecuritySettings,
 ) as any as S.Schema<EdgeMachineSecuritySettingsListResultValueList>;
 
@@ -12934,7 +12779,7 @@ export interface EdgeMachineSecuritySettingsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineSecuritySettingsListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineSecuritySettingsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineSecuritySettingsListResultValueList,
     nextLink: S.optional(S.String),
@@ -12951,7 +12796,7 @@ export interface ListEdgeMachineVolumesRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const ListEdgeMachineVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeMachineVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12981,7 +12826,7 @@ export interface EdgeMachineVolume {
   /** The resource-specific properties for this resource. */
   properties?: EdgeMachineVolumeProperties;
 }
-export const EdgeMachineVolume = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12993,7 +12838,7 @@ export const EdgeMachineVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** The EdgeMachineVolume items on this page */
 export type EdgeMachineVolumeListResultValueList = Array<EdgeMachineVolume>;
-export const EdgeMachineVolumeListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeMachineVolumeListResultValueList = /*@__PURE__*/ S.Array(
   EdgeMachineVolume,
 ) as any as S.Schema<EdgeMachineVolumeListResultValueList>;
 
@@ -13004,7 +12849,7 @@ export interface EdgeMachineVolumeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EdgeMachineVolumeListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineVolumeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EdgeMachineVolumeListResultValueList,
     nextLink: S.optional(S.String),
@@ -13023,7 +12868,7 @@ export interface ListExtensionByArcSettingRequest {
   /** The name of the proxy resource holding details of HCI ArcSetting information. */
   arcSettingName: string;
 }
-export const ListExtensionByArcSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionByArcSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13054,11 +12899,11 @@ export interface Extension {
   /** Describes Machine Extension Properties. */
   properties?: ExtensionProperties;
 }
-export const Extension = CreateExtensionResponse as any as S.Schema<Extension>;
+const Extension = CreateExtensionResponse as any as S.Schema<Extension>;
 
 /** The Extension items on this page */
 export type ExtensionListValueList = Array<Extension>;
-export const ExtensionListValueList = /*@__PURE__*/ S.Array(
+const ExtensionListValueList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ExtensionListValueList>;
 
@@ -13069,7 +12914,7 @@ export interface ExtensionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ExtensionList = /*@__PURE__*/ S.suspend(() =>
+const ExtensionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ExtensionListValueList,
     nextLink: S.optional(S.String),
@@ -13080,7 +12925,7 @@ export interface ListGalleryImageAllRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListGalleryImageAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGalleryImageAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -13097,13 +12942,8 @@ export const ListGalleryImageAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GalleryImagesTagsMap = { [key: string]: string | undefined };
-export const GalleryImagesTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<GalleryImagesTagsMap>;
-
 /** The complex type of the extended location. */
 export type GalleryImagesExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const GalleryImagesExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The gallery images resource definition. */
 export interface GalleryImages {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -13122,10 +12962,10 @@ export interface GalleryImages {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const GalleryImages = GetGalleryImageResponse as any as S.Schema<GalleryImages>;
+const GalleryImages = GetGalleryImageResponse as any as S.Schema<GalleryImages>;
 
 export type GalleryImagesListResultValueList = Array<GalleryImages>;
-export const GalleryImagesListResultValueList = /*@__PURE__*/ S.Array(
+const GalleryImagesListResultValueList = /*@__PURE__*/ S.Array(
   GalleryImages,
 ) as any as S.Schema<GalleryImagesListResultValueList>;
 
@@ -13135,7 +12975,7 @@ export interface GalleryImagesListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-export const GalleryImagesListResult = /*@__PURE__*/ S.suspend(() =>
+const GalleryImagesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GalleryImagesListResultValueList),
     nextLink: S.optional(S.String),
@@ -13148,7 +12988,7 @@ export interface ListGalleryImagesRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListGalleryImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGalleryImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13166,7 +13006,7 @@ export interface ListGuestAgentsRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const ListGuestAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGuestAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -13192,11 +13032,11 @@ export interface GuestAgent {
   /** Resource properties. */
   properties: GuestAgentProperties;
 }
-export const GuestAgent = CreateGuestAgentResponse as any as S.Schema<GuestAgent>;
+const GuestAgent = CreateGuestAgentResponse as any as S.Schema<GuestAgent>;
 
 /** Array of GuestAgent */
 export type GuestAgentListValueList = Array<GuestAgent>;
-export const GuestAgentListValueList = /*@__PURE__*/ S.Array(
+const GuestAgentListValueList = /*@__PURE__*/ S.Array(
   GuestAgent,
 ) as any as S.Schema<GuestAgentListValueList>;
 
@@ -13207,7 +13047,7 @@ export interface GuestAgentList {
   /** Array of GuestAgent */
   value: GuestAgentListValueList;
 }
-export const GuestAgentList = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: GuestAgentListValueList,
@@ -13218,7 +13058,7 @@ export interface ListHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const ListHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -13246,7 +13086,7 @@ export interface HybridIdentityMetadata {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
-export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13258,7 +13098,7 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of HybridIdentityMetadata */
 export type HybridIdentityMetadataListValueList = Array<HybridIdentityMetadata>;
-export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
+const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
 
@@ -13269,7 +13109,7 @@ export interface HybridIdentityMetadataList {
   /** Array of HybridIdentityMetadata */
   value: HybridIdentityMetadataListValueList;
 }
-export const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: HybridIdentityMetadataListValueList,
@@ -13282,7 +13122,7 @@ export interface ListLogicalNetworkAllRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListLogicalNetworkAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogicalNetworkAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -13299,13 +13139,11 @@ export const ListLogicalNetworkAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LogicalNetworksTagsMap = { [key: string]: string | undefined };
-export const LogicalNetworksTagsMap =
+const LogicalNetworksTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<LogicalNetworksTagsMap>;
 
 /** The complex type of the extended location. */
 export type LogicalNetworksExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const LogicalNetworksExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The logical network resource definition. */
 export interface LogicalNetworks {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -13324,7 +13162,7 @@ export interface LogicalNetworks {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const LogicalNetworks = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13338,7 +13176,7 @@ export const LogicalNetworks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogicalNetworks" }) as any as S.Schema<LogicalNetworks>;
 
 export type LogicalNetworksListResultValueList = Array<LogicalNetworks>;
-export const LogicalNetworksListResultValueList = /*@__PURE__*/ S.Array(
+const LogicalNetworksListResultValueList = /*@__PURE__*/ S.Array(
   LogicalNetworks,
 ) as any as S.Schema<LogicalNetworksListResultValueList>;
 
@@ -13346,7 +13184,7 @@ export interface LogicalNetworksListResult {
   value?: LogicalNetworksListResultValueList;
   nextLink?: string;
 }
-export const LogicalNetworksListResult = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworksListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(LogicalNetworksListResultValueList),
     nextLink: S.optional(S.String),
@@ -13361,7 +13199,7 @@ export interface ListLogicalNetworksRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListLogicalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogicalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13381,7 +13219,7 @@ export interface ListMarketplaceGalleryImageAllRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListMarketplaceGalleryImageAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceGalleryImageAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -13398,15 +13236,12 @@ export const ListMarketplaceGalleryImageAllRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type MarketplaceGalleryImagesTagsMap = { [key: string]: string | undefined };
-export const MarketplaceGalleryImagesTagsMap =
+const MarketplaceGalleryImagesTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<MarketplaceGalleryImagesTagsMap>;
 
 /** The complex type of the extended location. */
 export type MarketplaceGalleryImagesExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const MarketplaceGalleryImagesExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The marketplace gallery image resource definition. */
 export interface MarketplaceGalleryImages {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -13425,7 +13260,7 @@ export interface MarketplaceGalleryImages {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const MarketplaceGalleryImages = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceGalleryImages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13439,7 +13274,7 @@ export const MarketplaceGalleryImages = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketplaceGalleryImages" }) as any as S.Schema<MarketplaceGalleryImages>;
 
 export type MarketplaceGalleryImagesListResultValueList = Array<MarketplaceGalleryImages>;
-export const MarketplaceGalleryImagesListResultValueList = /*@__PURE__*/ S.Array(
+const MarketplaceGalleryImagesListResultValueList = /*@__PURE__*/ S.Array(
   MarketplaceGalleryImages,
 ) as any as S.Schema<MarketplaceGalleryImagesListResultValueList>;
 
@@ -13447,7 +13282,7 @@ export interface MarketplaceGalleryImagesListResult {
   value?: MarketplaceGalleryImagesListResultValueList;
   nextLink?: string;
 }
-export const MarketplaceGalleryImagesListResult = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceGalleryImagesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MarketplaceGalleryImagesListResultValueList),
     nextLink: S.optional(S.String),
@@ -13462,7 +13297,7 @@ export interface ListMarketplaceGalleryImagesRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListMarketplaceGalleryImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceGalleryImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13482,7 +13317,7 @@ export interface ListNetworkInterfaceAllRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListNetworkInterfaceAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkInterfaceAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -13499,14 +13334,11 @@ export const ListNetworkInterfaceAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NetworkInterfacesTagsMap = { [key: string]: string | undefined };
-export const NetworkInterfacesTagsMap =
+const NetworkInterfacesTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<NetworkInterfacesTagsMap>;
 
 /** The complex type of the extended location. */
 export type NetworkInterfacesExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const NetworkInterfacesExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The network interface resource definition. */
 export interface NetworkInterfaces {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -13525,7 +13357,7 @@ export interface NetworkInterfaces {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const NetworkInterfaces = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterfaces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13539,7 +13371,7 @@ export const NetworkInterfaces = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkInterfaces" }) as any as S.Schema<NetworkInterfaces>;
 
 export type NetworkInterfacesListResultValueList = Array<NetworkInterfaces>;
-export const NetworkInterfacesListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkInterfacesListResultValueList = /*@__PURE__*/ S.Array(
   NetworkInterfaces,
 ) as any as S.Schema<NetworkInterfacesListResultValueList>;
 
@@ -13547,7 +13379,7 @@ export interface NetworkInterfacesListResult {
   value?: NetworkInterfacesListResultValueList;
   nextLink?: string;
 }
-export const NetworkInterfacesListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterfacesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkInterfacesListResultValueList),
     nextLink: S.optional(S.String),
@@ -13562,7 +13394,7 @@ export interface ListNetworkInterfacesRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListNetworkInterfacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkInterfacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13588,7 +13420,7 @@ export interface ListOfferByClusterRequest {
   /** Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer. */
   _expand?: string;
 }
-export const ListOfferByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13619,13 +13451,11 @@ export interface Offer {
   /** Offer properties. */
   properties?: OfferProperties;
 }
-export const Offer = GetOfferResponse as any as S.Schema<Offer>;
+const Offer = GetOfferResponse as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
 export type OfferListValueList = Array<Offer>;
-export const OfferListValueList = /*@__PURE__*/ S.Array(
-  Offer,
-) as any as S.Schema<OfferListValueList>;
+const OfferListValueList = /*@__PURE__*/ S.Array(Offer) as any as S.Schema<OfferListValueList>;
 
 /** List of Offer proxy resources for the HCI cluster. */
 export interface OfferList {
@@ -13634,7 +13464,7 @@ export interface OfferList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OfferList = /*@__PURE__*/ S.suspend(() =>
+const OfferList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OfferListValueList,
     nextLink: S.optional(S.String),
@@ -13653,7 +13483,7 @@ export interface ListOfferByPublisherRequest {
   /** Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer. */
   _expand?: string;
 }
-export const ListOfferByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13673,7 +13503,7 @@ export const ListOfferByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOfferByPublisherRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -13695,7 +13525,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -13706,11 +13536,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -13725,7 +13555,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -13737,7 +13567,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -13747,7 +13577,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -13760,7 +13590,7 @@ export interface ListOsImageBySubscriptionLocationResourceRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListOsImageBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOsImageBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -13789,11 +13619,11 @@ export interface OsImage {
   /** The resource-specific properties for this resource. */
   properties?: OsImageProperties;
 }
-export const OsImage = GetOsImageResponse as any as S.Schema<OsImage>;
+const OsImage = GetOsImageResponse as any as S.Schema<OsImage>;
 
 /** The OsImage items on this page */
 export type OsImageListResultValueList = Array<OsImage>;
-export const OsImageListResultValueList = /*@__PURE__*/ S.Array(
+const OsImageListResultValueList = /*@__PURE__*/ S.Array(
   OsImage,
 ) as any as S.Schema<OsImageListResultValueList>;
 
@@ -13804,7 +13634,7 @@ export interface OsImageListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OsImageListResult = /*@__PURE__*/ S.suspend(() =>
+const OsImageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OsImageListResultValueList,
     nextLink: S.optional(S.String),
@@ -13819,7 +13649,7 @@ export interface ListSecuritySettingsByClustersRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListSecuritySettingsByClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecuritySettingsByClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13849,7 +13679,7 @@ export interface SecuritySetting {
   /** The resource-specific properties for this resource. */
   properties?: SecurityProperties;
 }
-export const SecuritySetting = /*@__PURE__*/ S.suspend(() =>
+const SecuritySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13861,7 +13691,7 @@ export const SecuritySetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecuritySetting items on this page */
 export type SecuritySettingListResultValueList = Array<SecuritySetting>;
-export const SecuritySettingListResultValueList = /*@__PURE__*/ S.Array(
+const SecuritySettingListResultValueList = /*@__PURE__*/ S.Array(
   SecuritySetting,
 ) as any as S.Schema<SecuritySettingListResultValueList>;
 
@@ -13872,7 +13702,7 @@ export interface SecuritySettingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SecuritySettingListResult = /*@__PURE__*/ S.suspend(() =>
+const SecuritySettingListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SecuritySettingListResultValueList,
     nextLink: S.optional(S.String),
@@ -13895,7 +13725,7 @@ export interface ListSkusByOfferRequest {
   /** Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer. */
   _expand?: string;
 }
-export const ListSkusByOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusByOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13926,11 +13756,11 @@ export interface Sku {
   /** SKU properties. */
   properties?: SkuProperties;
 }
-export const Sku = GetSkusResponse as any as S.Schema<Sku>;
+const Sku = GetSkusResponse as any as S.Schema<Sku>;
 
 /** The Sku items on this page */
 export type SkuListValueList = Array<Sku>;
-export const SkuListValueList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuListValueList>;
+const SkuListValueList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuListValueList>;
 
 /** List of SKU proxy resources for the HCI cluster. */
 export interface SkuList {
@@ -13939,7 +13769,7 @@ export interface SkuList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SkuList = /*@__PURE__*/ S.suspend(() =>
+const SkuList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SkuListValueList,
     nextLink: S.optional(S.String),
@@ -13950,7 +13780,7 @@ export interface ListStorageContainerAllRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListStorageContainerAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageContainerAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -13967,14 +13797,11 @@ export const ListStorageContainerAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StorageContainersTagsMap = { [key: string]: string | undefined };
-export const StorageContainersTagsMap =
+const StorageContainersTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<StorageContainersTagsMap>;
 
 /** The complex type of the extended location. */
 export type StorageContainersExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const StorageContainersExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The storage container resource definition. */
 export interface StorageContainers {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -13993,7 +13820,7 @@ export interface StorageContainers {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const StorageContainers = /*@__PURE__*/ S.suspend(() =>
+const StorageContainers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14007,7 +13834,7 @@ export const StorageContainers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageContainers" }) as any as S.Schema<StorageContainers>;
 
 export type StorageContainersListResultValueList = Array<StorageContainers>;
-export const StorageContainersListResultValueList = /*@__PURE__*/ S.Array(
+const StorageContainersListResultValueList = /*@__PURE__*/ S.Array(
   StorageContainers,
 ) as any as S.Schema<StorageContainersListResultValueList>;
 
@@ -14015,7 +13842,7 @@ export interface StorageContainersListResult {
   value?: StorageContainersListResultValueList;
   nextLink?: string;
 }
-export const StorageContainersListResult = /*@__PURE__*/ S.suspend(() =>
+const StorageContainersListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(StorageContainersListResultValueList),
     nextLink: S.optional(S.String),
@@ -14030,7 +13857,7 @@ export interface ListStorageContainersRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStorageContainersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageContainersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14056,7 +13883,7 @@ export interface ListUpdateRunsRequest {
   /** The name of the Update */
   updateName: string;
 }
-export const ListUpdateRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdateRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14087,11 +13914,11 @@ export interface UpdateRun {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateRun = GetUpdateRunResponse as any as S.Schema<UpdateRun>;
+const UpdateRun = GetUpdateRunResponse as any as S.Schema<UpdateRun>;
 
 /** The UpdateRun items on this page */
 export type UpdateRunListValueList = Array<UpdateRun>;
-export const UpdateRunListValueList = /*@__PURE__*/ S.Array(
+const UpdateRunListValueList = /*@__PURE__*/ S.Array(
   UpdateRun,
 ) as any as S.Schema<UpdateRunListValueList>;
 
@@ -14102,7 +13929,7 @@ export interface UpdateRunList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const UpdateRunList = /*@__PURE__*/ S.suspend(() =>
+const UpdateRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UpdateRunListValueList,
     nextLink: S.optional(S.String),
@@ -14117,7 +13944,7 @@ export interface ListUpdatesRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14147,13 +13974,11 @@ export interface Update {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Update = GetUpdateResponse as any as S.Schema<Update>;
+const Update = GetUpdateResponse as any as S.Schema<Update>;
 
 /** The Update items on this page */
 export type UpdateListValueList = Array<Update>;
-export const UpdateListValueList = /*@__PURE__*/ S.Array(
-  Update,
-) as any as S.Schema<UpdateListValueList>;
+const UpdateListValueList = /*@__PURE__*/ S.Array(Update) as any as S.Schema<UpdateListValueList>;
 
 /** List of Updates */
 export interface UpdateList {
@@ -14162,7 +13987,7 @@ export interface UpdateList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const UpdateList = /*@__PURE__*/ S.suspend(() =>
+const UpdateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UpdateListValueList,
     nextLink: S.optional(S.String),
@@ -14177,7 +14002,7 @@ export interface ListUpdateSummariesRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListUpdateSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdateSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14209,11 +14034,11 @@ export interface UpdateSummaries {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateSummaries = GetUpdateSummaryResponse as any as S.Schema<UpdateSummaries>;
+const UpdateSummaries = GetUpdateSummaryResponse as any as S.Schema<UpdateSummaries>;
 
 /** The UpdateSummaries items on this page */
 export type UpdateSummariesListValueList = Array<UpdateSummaries>;
-export const UpdateSummariesListValueList = /*@__PURE__*/ S.Array(
+const UpdateSummariesListValueList = /*@__PURE__*/ S.Array(
   UpdateSummaries,
 ) as any as S.Schema<UpdateSummariesListValueList>;
 
@@ -14224,7 +14049,7 @@ export interface UpdateSummariesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const UpdateSummariesList = /*@__PURE__*/ S.suspend(() =>
+const UpdateSummariesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UpdateSummariesListValueList,
     nextLink: S.optional(S.String),
@@ -14237,8 +14062,8 @@ export interface ListValidatedSolutionRecipeBySubscriptionLocationResourceReques
   /** The name of the Azure region. */
   location: string;
 }
-export const ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
@@ -14250,9 +14075,9 @@ export const ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest =
         apiVersion: "2026-10-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest",
-  }) as any as S.Schema<ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest>;
+).annotate({
+  identifier: "ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest",
+}) as any as S.Schema<ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest>;
 
 /** Represents a validated solution recipe resource. */
 export interface ValidatedSolutionRecipe {
@@ -14267,7 +14092,7 @@ export interface ValidatedSolutionRecipe {
   /** The resource-specific properties for this resource. */
   properties?: ValidatedSolutionRecipeProperties;
 }
-export const ValidatedSolutionRecipe = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14279,7 +14104,7 @@ export const ValidatedSolutionRecipe = /*@__PURE__*/ S.suspend(() =>
 
 /** The ValidatedSolutionRecipe items on this page */
 export type ValidatedSolutionRecipeListResultValueList = Array<ValidatedSolutionRecipe>;
-export const ValidatedSolutionRecipeListResultValueList = /*@__PURE__*/ S.Array(
+const ValidatedSolutionRecipeListResultValueList = /*@__PURE__*/ S.Array(
   ValidatedSolutionRecipe,
 ) as any as S.Schema<ValidatedSolutionRecipeListResultValueList>;
 
@@ -14290,7 +14115,7 @@ export interface ValidatedSolutionRecipeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ValidatedSolutionRecipeListResult = /*@__PURE__*/ S.suspend(() =>
+const ValidatedSolutionRecipeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ValidatedSolutionRecipeListResultValueList,
     nextLink: S.optional(S.String),
@@ -14303,7 +14128,7 @@ export interface ListVirtualHardDiskAllRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListVirtualHardDiskAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualHardDiskAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -14320,13 +14145,11 @@ export const ListVirtualHardDiskAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualHardDisksTagsMap = { [key: string]: string | undefined };
-export const VirtualHardDisksTagsMap =
+const VirtualHardDisksTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<VirtualHardDisksTagsMap>;
 
 /** The complex type of the extended location. */
 export type VirtualHardDisksExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const VirtualHardDisksExtendedLocation = GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The virtual hard disk resource definition. */
 export interface VirtualHardDisks {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -14345,7 +14168,7 @@ export interface VirtualHardDisks {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const VirtualHardDisks = /*@__PURE__*/ S.suspend(() =>
+const VirtualHardDisks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14359,7 +14182,7 @@ export const VirtualHardDisks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualHardDisks" }) as any as S.Schema<VirtualHardDisks>;
 
 export type VirtualHardDisksListResultValueList = Array<VirtualHardDisks>;
-export const VirtualHardDisksListResultValueList = /*@__PURE__*/ S.Array(
+const VirtualHardDisksListResultValueList = /*@__PURE__*/ S.Array(
   VirtualHardDisks,
 ) as any as S.Schema<VirtualHardDisksListResultValueList>;
 
@@ -14367,7 +14190,7 @@ export interface VirtualHardDisksListResult {
   value?: VirtualHardDisksListResultValueList;
   nextLink?: string;
 }
-export const VirtualHardDisksListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualHardDisksListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VirtualHardDisksListResultValueList),
     nextLink: S.optional(S.String),
@@ -14382,7 +14205,7 @@ export interface ListVirtualHardDisksRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListVirtualHardDisksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualHardDisksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14402,7 +14225,7 @@ export interface ListVirtualMachineInstancesRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const ListVirtualMachineInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -14420,13 +14243,8 @@ export const ListVirtualMachineInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type VirtualMachineInstanceExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const VirtualMachineInstanceExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type VirtualMachineInstanceIdentityType = "SystemAssigned";
-export const VirtualMachineInstanceIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface VirtualMachineInstanceIdentity {
   /** The principal ID of resource identity. */
@@ -14436,7 +14254,7 @@ export interface VirtualMachineInstanceIdentity {
   /** The identity type. */
   type?: VirtualMachineInstanceIdentityType;
 }
-export const VirtualMachineInstanceIdentity =
+const VirtualMachineInstanceIdentity =
   HybridIdentityMetadataPropertiesIdentity as any as S.Schema<VirtualMachineInstanceIdentity>;
 
 /** The virtual machine instance resource definition. */
@@ -14455,7 +14273,7 @@ export interface VirtualMachineInstance {
   /** Identity for the resource. */
   identity?: VirtualMachineInstanceIdentity;
 }
-export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14468,7 +14286,7 @@ export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualMachineInstance" }) as any as S.Schema<VirtualMachineInstance>;
 
 export type VirtualMachineInstanceListResultValueList = Array<VirtualMachineInstance>;
-export const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ S.Array(
+const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineInstance,
 ) as any as S.Schema<VirtualMachineInstanceListResultValueList>;
 
@@ -14476,7 +14294,7 @@ export interface VirtualMachineInstanceListResult {
   value?: VirtualMachineInstanceListResultValueList;
   nextLink?: string;
 }
-export const VirtualMachineInstanceListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VirtualMachineInstanceListResultValueList),
     nextLink: S.optional(S.String),
@@ -14487,41 +14305,35 @@ export const VirtualMachineInstanceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LogicalNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LogicalNetworksCreateOrUpdateRequestTagsMap =
+const LogicalNetworksCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<LogicalNetworksCreateOrUpdateRequestTagsMap>;
 
 /** The list of DNS servers IP addresses. */
 export type LogicalNetworkPropertiesInputDhcpOptionsDnsServersList = Array<string>;
-export const LogicalNetworkPropertiesInputDhcpOptionsDnsServersList =
-  ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<LogicalNetworkPropertiesInputDhcpOptionsDnsServersList>;
-
 /** DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options. */
 export interface LogicalNetworkPropertiesInputDhcpOptions {
   /** The list of DNS servers IP addresses. */
   dnsServers?: LogicalNetworkPropertiesInputDhcpOptionsDnsServersList;
 }
-export const LogicalNetworkPropertiesInputDhcpOptions =
+const LogicalNetworkPropertiesInputDhcpOptions =
   LogicalNetworkPropertiesDhcpOptions as any as S.Schema<LogicalNetworkPropertiesInputDhcpOptions>;
 
 /** List of address prefixes for the subnet. */
 export type SubnetPropertiesFormatInputAddressPrefixesList = Array<string>;
-export const SubnetPropertiesFormatInputAddressPrefixesList =
+const SubnetPropertiesFormatInputAddressPrefixesList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<SubnetPropertiesFormatInputAddressPrefixesList>;
 
 /** IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic' */
 export type SubnetPropertiesFormatInputIpAllocationMethod = "Dynamic" | "Static";
-export const SubnetPropertiesFormatInputIpAllocationMethod = S.String;
+const SubnetPropertiesFormatInputIpAllocationMethod = S.String;
 
 /** IPConfigurationReference - Describes a IPConfiguration under the virtual network */
 export type SubnetPropertiesFormatInputIpConfigurationReferencesItem =
   SubnetPropertiesFormatIpConfigurationReferencesItem;
-export const SubnetPropertiesFormatInputIpConfigurationReferencesItem =
-  SubnetPropertiesFormatIpConfigurationReferencesItem;
-
 /** IPConfigurationReferences - list of IPConfigurationReferences */
 export type SubnetPropertiesFormatInputIpConfigurationReferencesList =
   Array<SubnetPropertiesFormatIpConfigurationReferencesItem>;
-export const SubnetPropertiesFormatInputIpConfigurationReferencesList =
+const SubnetPropertiesFormatInputIpConfigurationReferencesList =
   SubnetPropertiesFormatIpConfigurationReferencesList as any as S.Schema<SubnetPropertiesFormatInputIpConfigurationReferencesList>;
 
 /** Route table resource. */
@@ -14529,7 +14341,7 @@ export interface RouteTableInput {
   /** Properties of the route table. */
   properties?: RouteTablePropertiesFormat;
 }
-export const RouteTableInput = /*@__PURE__*/ S.suspend(() =>
+const RouteTableInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(RouteTablePropertiesFormat),
   }),
@@ -14537,11 +14349,9 @@ export const RouteTableInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the IP Pool [vm, vippool] */
 export type IPPoolInputIpPoolType = "vm" | "vippool";
-export const IPPoolInputIpPoolType = S.String;
+const IPPoolInputIpPoolType = S.String;
 
 export type IPPoolInfoInput = LogCollectionPropertiesInput;
-export const IPPoolInfoInput = LogCollectionPropertiesInput;
-
 export interface IPPoolInput {
   /** Name of the IP-Pool */
   name?: string;
@@ -14553,7 +14363,7 @@ export interface IPPoolInput {
   end?: string;
   info?: LogCollectionPropertiesInput;
 }
-export const IPPoolInput = /*@__PURE__*/ S.suspend(() =>
+const IPPoolInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     ipPoolType: S.optional(IPPoolInputIpPoolType),
@@ -14565,7 +14375,7 @@ export const IPPoolInput = /*@__PURE__*/ S.suspend(() =>
 
 /** network associated pool of IP Addresses */
 export type SubnetPropertiesFormatInputIpPoolsList = Array<IPPoolInput>;
-export const SubnetPropertiesFormatInputIpPoolsList = /*@__PURE__*/ S.Array(
+const SubnetPropertiesFormatInputIpPoolsList = /*@__PURE__*/ S.Array(
   IPPoolInput,
 ) as any as S.Schema<SubnetPropertiesFormatInputIpPoolsList>;
 
@@ -14585,7 +14395,7 @@ export interface SubnetPropertiesFormatInput {
   /** Vlan to use for the subnet */
   vlan?: number;
 }
-export const SubnetPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const SubnetPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressPrefix: S.optional(S.String),
     addressPrefixes: S.optional(SubnetPropertiesFormatInputAddressPrefixesList),
@@ -14605,7 +14415,7 @@ export interface SubnetInput {
   /** Name - The name of the resource that is unique within a resource group. This name can be used to access the resource. */
   name?: string;
 }
-export const SubnetInput = /*@__PURE__*/ S.suspend(() =>
+const SubnetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SubnetPropertiesFormatInput),
     name: S.optional(S.String),
@@ -14614,7 +14424,7 @@ export const SubnetInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Subnet - list of subnets under the logical network */
 export type LogicalNetworkPropertiesInputSubnetsList = Array<SubnetInput>;
-export const LogicalNetworkPropertiesInputSubnetsList = /*@__PURE__*/ S.Array(
+const LogicalNetworkPropertiesInputSubnetsList = /*@__PURE__*/ S.Array(
   SubnetInput,
 ) as any as S.Schema<LogicalNetworkPropertiesInputSubnetsList>;
 
@@ -14627,7 +14437,7 @@ export interface LogicalNetworkPropertiesInput {
   /** name of the network switch to be used for VMs */
   vmSwitchName?: string;
 }
-export const LogicalNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dhcpOptions: S.optional(LogicalNetworkPropertiesInputDhcpOptions),
     subnets: S.optional(LogicalNetworkPropertiesInputSubnetsList),
@@ -14640,9 +14450,6 @@ export const LogicalNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type LogicalNetworksCreateOrUpdateRequestExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation;
-export const LogicalNetworksCreateOrUpdateRequestExtendedLocation =
-  GalleryImagesCreateOrUpdateRequestExtendedLocation;
-
 export interface LogicalNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -14658,7 +14465,7 @@ export interface LogicalNetworksCreateOrUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
-export const LogicalNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LogicalNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14681,15 +14488,9 @@ export const LogicalNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type LogicalNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LogicalNetworksCreateOrUpdateResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<LogicalNetworksCreateOrUpdateResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type LogicalNetworksCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const LogicalNetworksCreateOrUpdateResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface LogicalNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -14707,27 +14508,27 @@ export interface LogicalNetworksCreateOrUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const LogicalNetworksCreateOrUpdateResponse =
+const LogicalNetworksCreateOrUpdateResponse =
   GetLogicalNetworkResponse as any as S.Schema<LogicalNetworksCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap =
+const MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap>;
 
 /** Operating system type that the gallery image uses [Windows, Linux] */
 export type MarketplaceGalleryImagePropertiesInputOsType = "Windows" | "Linux";
-export const MarketplaceGalleryImagePropertiesInputOsType = S.String;
+const MarketplaceGalleryImagePropertiesInputOsType = S.String;
 
 /** Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure] */
 export type MarketplaceGalleryImagePropertiesInputCloudInitDataSource = "NoCloud" | "Azure";
-export const MarketplaceGalleryImagePropertiesInputCloudInitDataSource = S.String;
+const MarketplaceGalleryImagePropertiesInputCloudInitDataSource = S.String;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type MarketplaceGalleryImagePropertiesInputHyperVGeneration = "V1" | "V2";
-export const MarketplaceGalleryImagePropertiesInputHyperVGeneration = S.String;
+const MarketplaceGalleryImagePropertiesInputHyperVGeneration = S.String;
 
 /** Properties under the marketplace gallery image resource */
 export interface MarketplaceGalleryImagePropertiesInput {
@@ -14742,7 +14543,7 @@ export interface MarketplaceGalleryImagePropertiesInput {
   identifier?: GalleryImageIdentifier;
   version?: GalleryImageVersionInput;
 }
-export const MarketplaceGalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceGalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     osType: MarketplaceGalleryImagePropertiesInputOsType,
@@ -14758,9 +14559,6 @@ export const MarketplaceGalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(()
 /** The complex type of the extended location. */
 export type MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation;
-export const MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation =
-  GalleryImagesCreateOrUpdateRequestExtendedLocation;
-
 export interface MarketplaceGalleryImagesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -14776,7 +14574,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
-export const MarketplaceGalleryImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceGalleryImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14801,15 +14599,9 @@ export const MarketplaceGalleryImagesCreateOrUpdateRequest = /*@__PURE__*/ S.sus
 export type MarketplaceGalleryImagesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const MarketplaceGalleryImagesCreateOrUpdateResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface MarketplaceGalleryImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -14827,18 +14619,16 @@ export interface MarketplaceGalleryImagesCreateOrUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const MarketplaceGalleryImagesCreateOrUpdateResponse =
+const MarketplaceGalleryImagesCreateOrUpdateResponse =
   GetMarketplaceGalleryImageResponse as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type NetworkInterfacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NetworkInterfacesCreateOrUpdateRequestTagsMap =
+const NetworkInterfacesCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<NetworkInterfacesCreateOrUpdateRequestTagsMap>;
 
 /** Subnet - Name of Subnet bound to the IP configuration. */
 export type IPConfigurationInputPropertiesSubnet = IPConfigurationPropertiesSubnet;
-export const IPConfigurationInputPropertiesSubnet = IPConfigurationPropertiesSubnet;
-
 /** InterfaceIPConfigurationPropertiesFormat properties of IP configuration. */
 export interface IPConfigurationInputProperties {
   /** PrivateIPAddress - Private IP address of the IP configuration. */
@@ -14846,7 +14636,7 @@ export interface IPConfigurationInputProperties {
   /** Subnet - Name of Subnet bound to the IP configuration. */
   subnet?: IPConfigurationPropertiesSubnet;
 }
-export const IPConfigurationInputProperties = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateIPAddress: S.optional(S.String),
     subnet: S.optional(IPConfigurationPropertiesSubnet),
@@ -14862,7 +14652,7 @@ export interface IPConfigurationInput {
   /** InterfaceIPConfigurationPropertiesFormat properties of IP configuration. */
   properties?: IPConfigurationInputProperties;
 }
-export const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(IPConfigurationInputProperties),
@@ -14871,7 +14661,7 @@ export const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** IPConfigurations - A list of IPConfigurations of the network interface. */
 export type NetworkInterfacePropertiesInputIpConfigurationsList = Array<IPConfigurationInput>;
-export const NetworkInterfacePropertiesInputIpConfigurationsList = /*@__PURE__*/ S.Array(
+const NetworkInterfacePropertiesInputIpConfigurationsList = /*@__PURE__*/ S.Array(
   IPConfigurationInput,
 ) as any as S.Schema<NetworkInterfacePropertiesInputIpConfigurationsList>;
 
@@ -14884,7 +14674,7 @@ export interface NetworkInterfacePropertiesInput {
   /** DNS Settings for the interface */
   dnsSettings?: InterfaceDNSSettings;
 }
-export const NetworkInterfacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterfacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipConfigurations: S.optional(NetworkInterfacePropertiesInputIpConfigurationsList),
     macAddress: S.optional(S.String),
@@ -14897,9 +14687,6 @@ export const NetworkInterfacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation;
-export const NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
-  GalleryImagesCreateOrUpdateRequestExtendedLocation;
-
 export interface NetworkInterfacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -14915,7 +14702,7 @@ export interface NetworkInterfacesCreateOrUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
-export const NetworkInterfacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterfacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14938,15 +14725,9 @@ export const NetworkInterfacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type NetworkInterfacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NetworkInterfacesCreateOrUpdateResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<NetworkInterfacesCreateOrUpdateResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type NetworkInterfacesCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const NetworkInterfacesCreateOrUpdateResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface NetworkInterfacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -14964,7 +14745,7 @@ export interface NetworkInterfacesCreateOrUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const NetworkInterfacesCreateOrUpdateResponse =
+const NetworkInterfacesCreateOrUpdateResponse =
   GetNetworkInterfaceResponse as any as S.Schema<NetworkInterfacesCreateOrUpdateResponse>;
 
 export interface PostUpdateRequest {
@@ -14977,7 +14758,7 @@ export interface PostUpdateRequest {
   /** The name of the Update */
   updateName: string;
 }
-export const PostUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PostUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14994,22 +14775,21 @@ export const PostUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostUpdateRequest" }) as any as S.Schema<PostUpdateRequest>;
 
 export interface PostUpdateResponse {}
-export const PostUpdateResponse =
-  LogCollectionPropertiesInput as any as S.Schema<PostUpdateResponse>;
+const PostUpdateResponse = LogCollectionPropertiesInput as any as S.Schema<PostUpdateResponse>;
 
 /** If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty. */
 export type UpdatePropertiesInputPrerequisitesList = Array<UpdatePrerequisite>;
-export const UpdatePropertiesInputPrerequisitesList =
+const UpdatePropertiesInputPrerequisitesList =
   UpdatePropertiesPrerequisitesList as any as S.Schema<UpdatePropertiesInputPrerequisitesList>;
 
 /** An array of component versions for a Solution Bundle update, and an empty array otherwise. */
 export type UpdatePropertiesInputComponentVersionsList = Array<PackageVersionInfo>;
-export const UpdatePropertiesInputComponentVersionsList =
+const UpdatePropertiesInputComponentVersionsList =
   UpdatePropertiesComponentVersionsList as any as S.Schema<UpdatePropertiesInputComponentVersionsList>;
 
 /** An array of PrecheckResult objects. */
 export type UpdatePropertiesInputHealthCheckResultList = Array<PrecheckResult>;
-export const UpdatePropertiesInputHealthCheckResultList =
+const UpdatePropertiesInputHealthCheckResultList =
   UpdatePropertiesHealthCheckResultList as any as S.Schema<UpdatePropertiesInputHealthCheckResultList>;
 
 /** Details of a singular Update in HCI Cluster */
@@ -15055,7 +14835,7 @@ export interface UpdatePropertiesInput {
   /** Additional information regarding the state of the update. See definition of UpdateStateProperties type below for more details on this property. */
   updateStateProperties?: UpdateStateProperties;
 }
-export const UpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const UpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installedDate: S.optional(S.String),
     description: S.optional(S.String),
@@ -15094,7 +14874,7 @@ export interface PutUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PutUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PutUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15126,7 +14906,7 @@ export interface PutUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PutUpdateResponse = GetUpdateResponse as any as S.Schema<PutUpdateResponse>;
+const PutUpdateResponse = GetUpdateResponse as any as S.Schema<PutUpdateResponse>;
 
 /** Details of an Update run */
 export interface UpdateRunPropertiesInput {
@@ -15139,7 +14919,7 @@ export interface UpdateRunPropertiesInput {
   /** Progress representation of the update run steps. */
   progress?: Step;
 }
-export const UpdateRunPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateRunPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeStarted: S.optional(S.String),
     lastUpdatedTime: S.optional(S.String),
@@ -15164,7 +14944,7 @@ export interface PutUpdateRunRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PutUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
+const PutUpdateRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15197,16 +14977,16 @@ export interface PutUpdateRunResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PutUpdateRunResponse = GetUpdateRunResponse as any as S.Schema<PutUpdateRunResponse>;
+const PutUpdateRunResponse = GetUpdateRunResponse as any as S.Schema<PutUpdateRunResponse>;
 
 /** Current version of each updatable component. */
 export type UpdateSummariesPropertiesInputPackageVersionsList = Array<PackageVersionInfo>;
-export const UpdateSummariesPropertiesInputPackageVersionsList =
+const UpdateSummariesPropertiesInputPackageVersionsList =
   UpdatePropertiesComponentVersionsList as any as S.Schema<UpdateSummariesPropertiesInputPackageVersionsList>;
 
 /** An array of pre-check result objects. */
 export type UpdateSummariesPropertiesInputHealthCheckResultList = Array<PrecheckResult>;
-export const UpdateSummariesPropertiesInputHealthCheckResultList =
+const UpdateSummariesPropertiesInputHealthCheckResultList =
   UpdatePropertiesHealthCheckResultList as any as S.Schema<UpdateSummariesPropertiesInputHealthCheckResultList>;
 
 /** Properties of Update summaries */
@@ -15236,7 +15016,7 @@ export interface UpdateSummariesPropertiesInput {
   /** Overall update state of the stamp. Indicates the current status of update deployment across the stamp, including preparation, application, and any issues encountered. */
   state?: UpdateSummariesPropertiesState | (string & {});
 }
-export const UpdateSummariesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateSummariesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oemFamily: S.optional(S.String),
     currentOemVersion: S.optional(S.String),
@@ -15267,7 +15047,7 @@ export interface PutUpdateSummaryRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PutUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const PutUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15298,7 +15078,7 @@ export interface PutUpdateSummaryResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PutUpdateSummaryResponse =
+const PutUpdateSummaryResponse =
   GetUpdateSummaryResponse as any as S.Schema<PutUpdateSummaryResponse>;
 
 export interface RefreshEdgeMachineApplicableUpdatesRequest {
@@ -15309,7 +15089,7 @@ export interface RefreshEdgeMachineApplicableUpdatesRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const RefreshEdgeMachineApplicableUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshEdgeMachineApplicableUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15327,7 +15107,7 @@ export const RefreshEdgeMachineApplicableUpdatesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RefreshEdgeMachineApplicableUpdatesRequest>;
 
 export interface RefreshEdgeMachineApplicableUpdatesResponse {}
-export const RefreshEdgeMachineApplicableUpdatesResponse =
+const RefreshEdgeMachineApplicableUpdatesResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<RefreshEdgeMachineApplicableUpdatesResponse>;
 
 export interface RefreshEdgeMachineSecuritySettingsRequest {
@@ -15338,7 +15118,7 @@ export interface RefreshEdgeMachineSecuritySettingsRequest {
   /** Name of Device */
   edgeMachineName: string;
 }
-export const RefreshEdgeMachineSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshEdgeMachineSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15356,14 +15136,14 @@ export const RefreshEdgeMachineSecuritySettingsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RefreshEdgeMachineSecuritySettingsRequest>;
 
 export interface RefreshEdgeMachineSecuritySettingsResponse {}
-export const RefreshEdgeMachineSecuritySettingsResponse =
+const RefreshEdgeMachineSecuritySettingsResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<RefreshEdgeMachineSecuritySettingsResponse>;
 
 export interface RestartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -15381,13 +15161,8 @@ export const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =
 /** The complex type of the extended location. */
 export type RestartVirtualMachineInstanceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const RestartVirtualMachineInstanceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type RestartVirtualMachineInstanceResponseIdentityType = "SystemAssigned";
-export const RestartVirtualMachineInstanceResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface RestartVirtualMachineInstanceResponseIdentity {
   /** The principal ID of resource identity. */
@@ -15397,9 +15172,6 @@ export interface RestartVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: RestartVirtualMachineInstanceResponseIdentityType;
 }
-export const RestartVirtualMachineInstanceResponseIdentity =
-  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<RestartVirtualMachineInstanceResponseIdentity>;
-
 export interface RestartVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -15415,25 +15187,24 @@ export interface RestartVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: RestartVirtualMachineInstanceResponseIdentity;
 }
-export const RestartVirtualMachineInstanceResponse =
+const RestartVirtualMachineInstanceResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<RestartVirtualMachineInstanceResponse>;
 
 /** Secured Core Compliance Assignment */
 export type SecurityPropertiesInputSecuredCoreComplianceAssignment =
   | "Audit"
   | "ApplyAndAutoCorrect";
-export const SecurityPropertiesInputSecuredCoreComplianceAssignment = S.String;
+const SecurityPropertiesInputSecuredCoreComplianceAssignment = S.String;
 
 /** WDAC Compliance Assignment */
 export type SecurityPropertiesInputWdacComplianceAssignment = "Audit" | "ApplyAndAutoCorrect";
-export const SecurityPropertiesInputWdacComplianceAssignment = S.String;
+const SecurityPropertiesInputWdacComplianceAssignment = S.String;
 
 /** SMB encryption for intra-cluster traffic Compliance Assignment */
 export type SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment =
   | "Audit"
   | "ApplyAndAutoCorrect";
-export const SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment =
-  S.String;
+const SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment = S.String;
 
 /** Security properties of the resource */
 export interface SecurityPropertiesInput {
@@ -15448,7 +15219,7 @@ export interface SecurityPropertiesInput {
     | SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment
     | (string & {});
 }
-export const SecurityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SecurityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securedCoreComplianceAssignment: S.optional(
       SecurityPropertiesInputSecuredCoreComplianceAssignment,
@@ -15472,7 +15243,7 @@ export interface SecuritySettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SecurityPropertiesInput;
 }
-export const SecuritySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SecuritySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15503,14 +15274,14 @@ export interface SecuritySettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SecurityProperties;
 }
-export const SecuritySettingsCreateOrUpdateResponse =
+const SecuritySettingsCreateOrUpdateResponse =
   GetSecuritySettingsResponse as any as S.Schema<SecuritySettingsCreateOrUpdateResponse>;
 
 export interface StartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const StartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const StartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -15528,13 +15299,8 @@ export const StartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type StartVirtualMachineInstanceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const StartVirtualMachineInstanceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type StartVirtualMachineInstanceResponseIdentityType = "SystemAssigned";
-export const StartVirtualMachineInstanceResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface StartVirtualMachineInstanceResponseIdentity {
   /** The principal ID of resource identity. */
@@ -15544,9 +15310,6 @@ export interface StartVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: StartVirtualMachineInstanceResponseIdentityType;
 }
-export const StartVirtualMachineInstanceResponseIdentity =
-  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<StartVirtualMachineInstanceResponseIdentity>;
-
 export interface StartVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -15562,14 +15325,14 @@ export interface StartVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: StartVirtualMachineInstanceResponseIdentity;
 }
-export const StartVirtualMachineInstanceResponse =
+const StartVirtualMachineInstanceResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<StartVirtualMachineInstanceResponse>;
 
 export interface StopVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export const StopVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const StopVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -15587,13 +15350,8 @@ export const StopVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type StopVirtualMachineInstanceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const StopVirtualMachineInstanceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type StopVirtualMachineInstanceResponseIdentityType = "SystemAssigned";
-export const StopVirtualMachineInstanceResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface StopVirtualMachineInstanceResponseIdentity {
   /** The principal ID of resource identity. */
@@ -15603,9 +15361,6 @@ export interface StopVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: StopVirtualMachineInstanceResponseIdentityType;
 }
-export const StopVirtualMachineInstanceResponseIdentity =
-  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<StopVirtualMachineInstanceResponseIdentity>;
-
 export interface StopVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -15621,12 +15376,12 @@ export interface StopVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: StopVirtualMachineInstanceResponseIdentity;
 }
-export const StopVirtualMachineInstanceResponse =
+const StopVirtualMachineInstanceResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<StopVirtualMachineInstanceResponse>;
 
 /** Resource tags. */
 export type StorageContainersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const StorageContainersCreateOrUpdateRequestTagsMap =
+const StorageContainersCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<StorageContainersCreateOrUpdateRequestTagsMap>;
 
 /** Properties under the storage container resource */
@@ -15634,7 +15389,7 @@ export interface StorageContainerPropertiesInput {
   /** Path of the storage container on the disk */
   path: string;
 }
-export const StorageContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
   }),
@@ -15645,9 +15400,6 @@ export const StorageContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type StorageContainersCreateOrUpdateRequestExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation;
-export const StorageContainersCreateOrUpdateRequestExtendedLocation =
-  GalleryImagesCreateOrUpdateRequestExtendedLocation;
-
 export interface StorageContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -15663,7 +15415,7 @@ export interface StorageContainersCreateOrUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
-export const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15686,15 +15438,9 @@ export const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type StorageContainersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const StorageContainersCreateOrUpdateResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<StorageContainersCreateOrUpdateResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type StorageContainersCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const StorageContainersCreateOrUpdateResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface StorageContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -15712,7 +15458,7 @@ export interface StorageContainersCreateOrUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const StorageContainersCreateOrUpdateResponse =
+const StorageContainersCreateOrUpdateResponse =
   GetStorageContainerResponse as any as S.Schema<StorageContainersCreateOrUpdateResponse>;
 
 /** Properties for Log Collection Request */
@@ -15722,7 +15468,7 @@ export interface LogCollectionRequestProperties {
   /** To DateTimeStamp till when logs need to be connected */
   toDate: string;
 }
-export const LogCollectionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const LogCollectionRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromDate: S.String,
     toDate: S.String,
@@ -15741,7 +15487,7 @@ export interface TriggerClusterLogCollectionRequest {
   /** Properties for Log Collection Request */
   properties?: LogCollectionRequestProperties;
 }
-export const TriggerClusterLogCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerClusterLogCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15761,16 +15507,10 @@ export const TriggerClusterLogCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TriggerClusterLogCollectionResponseTagsMap = { [key: string]: string | undefined };
-export const TriggerClusterLogCollectionResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<TriggerClusterLogCollectionResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap =
-  ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface TriggerClusterLogCollectionResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -15781,9 +15521,6 @@ export interface TriggerClusterLogCollectionResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: TriggerClusterLogCollectionResponseIdentityUserAssignedIdentitiesMap;
 }
-export const TriggerClusterLogCollectionResponseIdentity =
-  ClustersConfigureRemoteSupportResponseIdentity as any as S.Schema<TriggerClusterLogCollectionResponseIdentity>;
-
 export interface TriggerClusterLogCollectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -15804,12 +15541,12 @@ export interface TriggerClusterLogCollectionResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const TriggerClusterLogCollectionResponse =
+const TriggerClusterLogCollectionResponse =
   ClustersConfigureRemoteSupportResponse as any as S.Schema<TriggerClusterLogCollectionResponse>;
 
 /** Resource tags. */
 export type UpdateArcSettingsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateArcSettingsRequestTagsMap =
+const UpdateArcSettingsRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateArcSettingsRequestTagsMap>;
 
 /** ArcSettings properties. */
@@ -15817,7 +15554,7 @@ export interface ArcSettingsPatchProperties {
   /** contains connectivity related configuration for ARC resources */
   connectivityProperties?: ArcConnectivityProperties;
 }
-export const ArcSettingsPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const ArcSettingsPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectivityProperties: S.optional(ArcConnectivityProperties),
   }),
@@ -15839,7 +15576,7 @@ export interface UpdateArcSettingsRequest {
   /** ArcSettings properties. */
   properties?: ArcSettingsPatchProperties;
 }
-export const UpdateArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateArcSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15869,28 +15606,25 @@ export interface UpdateArcSettingsResponse {
   /** ArcSetting properties. */
   properties?: ArcSettingProperties;
 }
-export const UpdateArcSettingsResponse =
+const UpdateArcSettingsResponse =
   ArcSettingsConsentAndInstallDefaultExtensionsResponse as any as S.Schema<UpdateArcSettingsResponse>;
 
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap =
+const UpdateClusterRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: LogCollectionPropertiesInput | null | undefined;
 };
-export const UpdateClusterRequestIdentityUserAssignedIdentitiesMap =
-  CreateClusterRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateClusterRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateClusterRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateClusterRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateClusterRequestIdentity =
+const UpdateClusterRequestIdentity =
   CreateClusterRequestIdentity as any as S.Schema<UpdateClusterRequestIdentity>;
 
 /** Cluster properties. */
@@ -15904,7 +15638,7 @@ export interface ClusterPatchProperties {
   /** Desired properties of the cluster. */
   desiredProperties?: ClusterDesiredProperties;
 }
-export const ClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudManagementEndpoint: S.optional(S.String),
     aadClientId: S.optional(S.String),
@@ -15927,7 +15661,7 @@ export interface UpdateClusterRequest {
   /** Cluster properties. */
   properties?: ClusterPatchProperties;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15947,16 +15681,10 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateClusterResponseIdentityUserAssignedIdentitiesMap =
-  CreateClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateClusterResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateClusterResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -15967,9 +15695,6 @@ export interface UpdateClusterResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateClusterResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateClusterResponseIdentity =
-  CreateClusterResponseIdentity as any as S.Schema<UpdateClusterResponseIdentity>;
-
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -15990,12 +15715,11 @@ export interface UpdateClusterResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const UpdateClusterResponse =
-  CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
+const UpdateClusterResponse = CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** List of secret locations */
 export type UpdateClusterSecretsLocationsRequestPropertiesList = Array<SecretsLocationDetails>;
-export const UpdateClusterSecretsLocationsRequestPropertiesList =
+const UpdateClusterSecretsLocationsRequestPropertiesList =
   ClusterPropertiesSecretsLocationsList as any as S.Schema<UpdateClusterSecretsLocationsRequestPropertiesList>;
 
 export interface UpdateClusterSecretsLocationsRequest {
@@ -16008,7 +15732,7 @@ export interface UpdateClusterSecretsLocationsRequest {
   /** List of secret locations */
   properties?: UpdateClusterSecretsLocationsRequestPropertiesList;
 }
-export const UpdateClusterSecretsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterSecretsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16028,16 +15752,10 @@ export const UpdateClusterSecretsLocationsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type UpdateClusterSecretsLocationsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterSecretsLocationsResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateClusterSecretsLocationsResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesMap =
-  ClustersConfigureRemoteSupportResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateClusterSecretsLocationsResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -16048,9 +15766,6 @@ export interface UpdateClusterSecretsLocationsResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateClusterSecretsLocationsResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateClusterSecretsLocationsResponseIdentity =
-  ClustersConfigureRemoteSupportResponseIdentity as any as S.Schema<UpdateClusterSecretsLocationsResponseIdentity>;
-
 export interface UpdateClusterSecretsLocationsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -16071,28 +15786,25 @@ export interface UpdateClusterSecretsLocationsResponse {
   /** This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal */
   kind?: string;
 }
-export const UpdateClusterSecretsLocationsResponse =
+const UpdateClusterSecretsLocationsResponse =
   ClustersConfigureRemoteSupportResponse as any as S.Schema<UpdateClusterSecretsLocationsResponse>;
 
 /** Resource tags. */
 export type UpdateEdgeMachineRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEdgeMachineRequestTagsMap =
+const UpdateEdgeMachineRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateEdgeMachineRequestTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: LogCollectionPropertiesInput | null | undefined;
 };
-export const UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap =
-  CreateClusterRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateEdgeMachineRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateEdgeMachineRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateEdgeMachineRequestIdentity =
+const UpdateEdgeMachineRequestIdentity =
   CreateClusterRequestIdentity as any as S.Schema<UpdateEdgeMachineRequestIdentity>;
 
 export interface UpdateEdgeMachineRequest {
@@ -16107,7 +15819,7 @@ export interface UpdateEdgeMachineRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateEdgeMachineRequestIdentity;
 }
-export const UpdateEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16126,16 +15838,13 @@ export const UpdateEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEdgeMachineResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEdgeMachineResponseTagsMap =
+const UpdateEdgeMachineResponseTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateEdgeMachineResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap =
-  CreateClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateEdgeMachineResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -16146,7 +15855,7 @@ export interface UpdateEdgeMachineResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateEdgeMachineResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateEdgeMachineResponseIdentity =
+const UpdateEdgeMachineResponseIdentity =
   CreateClusterResponseIdentity as any as S.Schema<UpdateEdgeMachineResponseIdentity>;
 
 export interface UpdateEdgeMachineResponse {
@@ -16167,7 +15876,7 @@ export interface UpdateEdgeMachineResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateEdgeMachineResponseIdentity;
 }
-export const UpdateEdgeMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateEdgeMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -16193,7 +15902,7 @@ export interface ExtensionPatchParameters {
   /** Protected settings (may contain secrets). */
   protectedSettings?: unknown;
 }
-export const ExtensionPatchParameters = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPatchParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeHandlerVersion: S.optional(S.String),
     enableAutomaticUpgrade: S.optional(S.Boolean),
@@ -16207,7 +15916,7 @@ export interface ExtensionPatchProperties {
   /** Describes the properties of a Machine Extension that can be updated. */
   extensionParameters?: ExtensionPatchParameters;
 }
-export const ExtensionPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionParameters: S.optional(ExtensionPatchParameters),
   }),
@@ -16227,7 +15936,7 @@ export interface UpdateExtensionRequest {
   /** Describes Machine Extension Properties that can be updated. */
   properties?: ExtensionPatchProperties;
 }
-export const UpdateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16257,12 +15966,11 @@ export interface UpdateExtensionResponse {
   /** Describes Machine Extension Properties. */
   properties?: ExtensionProperties;
 }
-export const UpdateExtensionResponse =
-  CreateExtensionResponse as any as S.Schema<UpdateExtensionResponse>;
+const UpdateExtensionResponse = CreateExtensionResponse as any as S.Schema<UpdateExtensionResponse>;
 
 /** Resource tags */
 export type UpdateGalleryImageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGalleryImageRequestTagsMap =
+const UpdateGalleryImageRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateGalleryImageRequestTagsMap>;
 
 export interface UpdateGalleryImageRequest {
@@ -16275,7 +15983,7 @@ export interface UpdateGalleryImageRequest {
   /** Resource tags */
   tags?: UpdateGalleryImageRequestTagsMap;
 }
-export const UpdateGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16295,15 +16003,9 @@ export const UpdateGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateGalleryImageResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateGalleryImageResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateGalleryImageResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type UpdateGalleryImageResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateGalleryImageResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface UpdateGalleryImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16321,12 +16023,12 @@ export interface UpdateGalleryImageResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const UpdateGalleryImageResponse =
+const UpdateGalleryImageResponse =
   GalleryImagesCreateOrUpdateResponse as any as S.Schema<UpdateGalleryImageResponse>;
 
 /** Resource tags */
 export type UpdateLogicalNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateLogicalNetworkRequestTagsMap =
+const UpdateLogicalNetworkRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateLogicalNetworkRequestTagsMap>;
 
 export interface UpdateLogicalNetworkRequest {
@@ -16339,7 +16041,7 @@ export interface UpdateLogicalNetworkRequest {
   /** Resource tags */
   tags?: UpdateLogicalNetworkRequestTagsMap;
 }
-export const UpdateLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16359,15 +16061,9 @@ export const UpdateLogicalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLogicalNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLogicalNetworkResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateLogicalNetworkResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type UpdateLogicalNetworkResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateLogicalNetworkResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface UpdateLogicalNetworkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16385,12 +16081,12 @@ export interface UpdateLogicalNetworkResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const UpdateLogicalNetworkResponse =
+const UpdateLogicalNetworkResponse =
   GetLogicalNetworkResponse as any as S.Schema<UpdateLogicalNetworkResponse>;
 
 /** Resource tags */
 export type UpdateMarketplaceGalleryImageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMarketplaceGalleryImageRequestTagsMap =
+const UpdateMarketplaceGalleryImageRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateMarketplaceGalleryImageRequestTagsMap>;
 
 export interface UpdateMarketplaceGalleryImageRequest {
@@ -16403,7 +16099,7 @@ export interface UpdateMarketplaceGalleryImageRequest {
   /** Resource tags */
   tags?: UpdateMarketplaceGalleryImageRequestTagsMap;
 }
-export const UpdateMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16423,15 +16119,9 @@ export const UpdateMarketplaceGalleryImageRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type UpdateMarketplaceGalleryImageResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMarketplaceGalleryImageResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateMarketplaceGalleryImageResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type UpdateMarketplaceGalleryImageResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateMarketplaceGalleryImageResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface UpdateMarketplaceGalleryImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16449,12 +16139,12 @@ export interface UpdateMarketplaceGalleryImageResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const UpdateMarketplaceGalleryImageResponse =
+const UpdateMarketplaceGalleryImageResponse =
   GetMarketplaceGalleryImageResponse as any as S.Schema<UpdateMarketplaceGalleryImageResponse>;
 
 /** Resource tags */
 export type UpdateNetworkInterfaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkInterfaceRequestTagsMap =
+const UpdateNetworkInterfaceRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateNetworkInterfaceRequestTagsMap>;
 
 export interface UpdateNetworkInterfaceRequest {
@@ -16467,7 +16157,7 @@ export interface UpdateNetworkInterfaceRequest {
   /** Resource tags */
   tags?: UpdateNetworkInterfaceRequestTagsMap;
 }
-export const UpdateNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16487,15 +16177,9 @@ export const UpdateNetworkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNetworkInterfaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkInterfaceResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateNetworkInterfaceResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type UpdateNetworkInterfaceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateNetworkInterfaceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface UpdateNetworkInterfaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16513,7 +16197,7 @@ export interface UpdateNetworkInterfaceResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const UpdateNetworkInterfaceResponse =
+const UpdateNetworkInterfaceResponse =
   GetNetworkInterfaceResponse as any as S.Schema<UpdateNetworkInterfaceResponse>;
 
 export interface UpdatesPrepareRequest {
@@ -16526,7 +16210,7 @@ export interface UpdatesPrepareRequest {
   /** The name of the Update */
   updateName: string;
 }
-export const UpdatesPrepareRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatesPrepareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16543,12 +16227,12 @@ export const UpdatesPrepareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatesPrepareRequest" }) as any as S.Schema<UpdatesPrepareRequest>;
 
 export interface UpdatesPrepareResponse {}
-export const UpdatesPrepareResponse =
+const UpdatesPrepareResponse =
   LogCollectionPropertiesInput as any as S.Schema<UpdatesPrepareResponse>;
 
 /** Resource tags */
 export type UpdateStorageContainerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageContainerRequestTagsMap =
+const UpdateStorageContainerRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateStorageContainerRequestTagsMap>;
 
 export interface UpdateStorageContainerRequest {
@@ -16561,7 +16245,7 @@ export interface UpdateStorageContainerRequest {
   /** Resource tags */
   tags?: UpdateStorageContainerRequestTagsMap;
 }
-export const UpdateStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16581,15 +16265,9 @@ export const UpdateStorageContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageContainerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageContainerResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateStorageContainerResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type UpdateStorageContainerResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateStorageContainerResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface UpdateStorageContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16607,12 +16285,12 @@ export interface UpdateStorageContainerResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const UpdateStorageContainerResponse =
+const UpdateStorageContainerResponse =
   GetStorageContainerResponse as any as S.Schema<UpdateStorageContainerResponse>;
 
 /** Resource tags */
 export type UpdateVirtualHardDiskRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualHardDiskRequestTagsMap =
+const UpdateVirtualHardDiskRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateVirtualHardDiskRequestTagsMap>;
 
 export interface UpdateVirtualHardDiskRequest {
@@ -16625,7 +16303,7 @@ export interface UpdateVirtualHardDiskRequest {
   /** Resource tags */
   tags?: UpdateVirtualHardDiskRequestTagsMap;
 }
-export const UpdateVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16645,15 +16323,9 @@ export const UpdateVirtualHardDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualHardDiskResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualHardDiskResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<UpdateVirtualHardDiskResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type UpdateVirtualHardDiskResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateVirtualHardDiskResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface UpdateVirtualHardDiskResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16671,7 +16343,7 @@ export interface UpdateVirtualHardDiskResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const UpdateVirtualHardDiskResponse =
+const UpdateVirtualHardDiskResponse =
   GetVirtualHardDiskResponse as any as S.Schema<UpdateVirtualHardDiskResponse>;
 
 export type HardwareProfileUpdateVmSize =
@@ -16698,7 +16370,7 @@ export type HardwareProfileUpdateVmSize =
   | "Standard_NV12"
   | "Standard_K8S5_v1"
   | "Custom";
-export const HardwareProfileUpdateVmSize = S.String;
+const HardwareProfileUpdateVmSize = S.String;
 
 /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
 export interface HardwareProfileUpdate {
@@ -16708,7 +16380,7 @@ export interface HardwareProfileUpdate {
   /** RAM in MB for the virtual machine instance */
   memoryMB?: number;
 }
-export const HardwareProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const HardwareProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmSize: S.optional(HardwareProfileUpdateVmSize),
     processors: S.optional(S.Number),
@@ -16719,12 +16391,12 @@ export const HardwareProfileUpdate = /*@__PURE__*/ S.suspend(() =>
 export interface StorageProfileUpdateDataDisksItem {
   id?: string;
 }
-export const StorageProfileUpdateDataDisksItem =
+const StorageProfileUpdateDataDisksItem =
   IPConfigurationPropertiesSubnet as any as S.Schema<StorageProfileUpdateDataDisksItem>;
 
 /** adds data disks to the virtual machine instance for the update call */
 export type StorageProfileUpdateDataDisksList = Array<StorageProfileUpdateDataDisksItem>;
-export const StorageProfileUpdateDataDisksList = /*@__PURE__*/ S.Array(
+const StorageProfileUpdateDataDisksList = /*@__PURE__*/ S.Array(
   StorageProfileUpdateDataDisksItem,
 ) as any as S.Schema<StorageProfileUpdateDataDisksList>;
 
@@ -16732,7 +16404,7 @@ export interface StorageProfileUpdate {
   /** adds data disks to the virtual machine instance for the update call */
   dataDisks?: StorageProfileUpdateDataDisksList;
 }
-export const StorageProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDisks: S.optional(StorageProfileUpdateDataDisksList),
   }),
@@ -16742,13 +16414,10 @@ export interface NetworkProfileUpdateNetworkInterfacesItem {
   /** ID - Resource ID of the network interface */
   id?: string;
 }
-export const NetworkProfileUpdateNetworkInterfacesItem =
-  IPConfigurationPropertiesSubnet as any as S.Schema<NetworkProfileUpdateNetworkInterfacesItem>;
-
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type NetworkProfileUpdateNetworkInterfacesList =
   Array<NetworkProfileUpdateNetworkInterfacesItem>;
-export const NetworkProfileUpdateNetworkInterfacesList =
+const NetworkProfileUpdateNetworkInterfacesList =
   StorageProfileUpdateDataDisksList as any as S.Schema<NetworkProfileUpdateNetworkInterfacesList>;
 
 /** NetworkProfile - describes the network update configuration the virtual machine instance */
@@ -16756,7 +16425,7 @@ export interface NetworkProfileUpdate {
   /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
   networkInterfaces?: NetworkProfileUpdateNetworkInterfacesList;
 }
-export const NetworkProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkInterfaces: S.optional(NetworkProfileUpdateNetworkInterfacesList),
   }),
@@ -16768,7 +16437,7 @@ export interface OsProfileUpdateLinuxConfiguration {
   /** Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process. */
   provisionVMConfigAgent?: boolean;
 }
-export const OsProfileUpdateLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OsProfileUpdateLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisionVMAgent: S.optional(S.Boolean),
     provisionVMConfigAgent: S.optional(S.Boolean),
@@ -16778,8 +16447,6 @@ export const OsProfileUpdateLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OsProfileUpdateLinuxConfiguration>;
 
 export type OsProfileUpdateWindowsConfiguration = OsProfileUpdateLinuxConfiguration;
-export const OsProfileUpdateWindowsConfiguration = OsProfileUpdateLinuxConfiguration;
-
 /** OsProfile - describes the update configuration of the operating system */
 export interface OsProfileUpdate {
   /** ComputerName - name of the computer */
@@ -16787,7 +16454,7 @@ export interface OsProfileUpdate {
   linuxConfiguration?: OsProfileUpdateLinuxConfiguration;
   windowsConfiguration?: OsProfileUpdateLinuxConfiguration;
 }
-export const OsProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const OsProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computerName: S.optional(S.String),
     linuxConfiguration: S.optional(OsProfileUpdateLinuxConfiguration),
@@ -16802,7 +16469,7 @@ export interface VirtualMachineInstanceUpdateProperties {
   networkProfile?: NetworkProfileUpdate;
   osProfile?: OsProfileUpdate;
 }
-export const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareProfile: S.optional(HardwareProfileUpdate),
     storageProfile: S.optional(StorageProfileUpdate),
@@ -16815,14 +16482,14 @@ export const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ S.suspend(()
 
 /** The identity type. */
 export type UpdateVirtualMachineInstanceRequestIdentityType = "SystemAssigned";
-export const UpdateVirtualMachineInstanceRequestIdentityType = S.String;
+const UpdateVirtualMachineInstanceRequestIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface UpdateVirtualMachineInstanceRequestIdentity {
   /** The identity type. */
   type?: UpdateVirtualMachineInstanceRequestIdentityType | (string & {});
 }
-export const UpdateVirtualMachineInstanceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualMachineInstanceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(UpdateVirtualMachineInstanceRequestIdentityType),
   }),
@@ -16837,7 +16504,7 @@ export interface UpdateVirtualMachineInstanceRequest {
   /** Identity for the resource. */
   identity?: UpdateVirtualMachineInstanceRequestIdentity;
 }
-export const UpdateVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(VirtualMachineInstanceUpdateProperties),
@@ -16857,13 +16524,8 @@ export const UpdateVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type UpdateVirtualMachineInstanceResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const UpdateVirtualMachineInstanceResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type UpdateVirtualMachineInstanceResponseIdentityType = "SystemAssigned";
-export const UpdateVirtualMachineInstanceResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface UpdateVirtualMachineInstanceResponseIdentity {
   /** The principal ID of resource identity. */
@@ -16873,9 +16535,6 @@ export interface UpdateVirtualMachineInstanceResponseIdentity {
   /** The identity type. */
   type?: UpdateVirtualMachineInstanceResponseIdentityType;
 }
-export const UpdateVirtualMachineInstanceResponseIdentity =
-  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<UpdateVirtualMachineInstanceResponseIdentity>;
-
 export interface UpdateVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16891,17 +16550,17 @@ export interface UpdateVirtualMachineInstanceResponse {
   /** Identity for the resource. */
   identity?: UpdateVirtualMachineInstanceResponseIdentity;
 }
-export const UpdateVirtualMachineInstanceResponse =
+const UpdateVirtualMachineInstanceResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<UpdateVirtualMachineInstanceResponse>;
 
 export type RawCertificateDataCertificatesList = Array<string>;
-export const RawCertificateDataCertificatesList =
+const RawCertificateDataCertificatesList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<RawCertificateDataCertificatesList>;
 
 export interface RawCertificateData {
   certificates?: RawCertificateDataCertificatesList;
 }
-export const RawCertificateData = /*@__PURE__*/ S.suspend(() =>
+const RawCertificateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificates: S.optional(RawCertificateDataCertificatesList),
   }),
@@ -16916,7 +16575,7 @@ export interface UploadClusterCertificateRequest {
   clusterName: string;
   properties?: RawCertificateData;
 }
-export const UploadClusterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadClusterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16935,12 +16594,12 @@ export const UploadClusterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadClusterCertificateRequest>;
 
 export interface UploadClusterCertificateResponse {}
-export const UploadClusterCertificateResponse =
+const UploadClusterCertificateResponse =
   ArcSettingsInitializeDisableProcessResponse as any as S.Schema<UploadClusterCertificateResponse>;
 
 /** Node Ids against which, current node has to be validated. */
 export type ValidateEdgeDeviceRequestEdgeDeviceIdsList = Array<string>;
-export const ValidateEdgeDeviceRequestEdgeDeviceIdsList =
+const ValidateEdgeDeviceRequestEdgeDeviceIdsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<ValidateEdgeDeviceRequestEdgeDeviceIdsList>;
 
 export interface ValidateEdgeDeviceRequest {
@@ -16953,7 +16612,7 @@ export interface ValidateEdgeDeviceRequest {
   /** Additional info required for validation. */
   additionalInfo?: string;
 }
-export const ValidateEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     edgeDeviceName: S.String.pipe(T.Label()),
@@ -16976,7 +16635,7 @@ export interface ValidateResponse {
   /** edge device validation status */
   status?: string;
 }
-export const ValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -16984,7 +16643,7 @@ export const ValidateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Machine Ids against which, current machine has to be validated. */
 export type ValidateEdgeMachineRequestEdgeMachineIdsList = Array<string>;
-export const ValidateEdgeMachineRequestEdgeMachineIdsList =
+const ValidateEdgeMachineRequestEdgeMachineIdsList =
   ReconcileArcSettingsRequestPropertiesClusterNodesList as any as S.Schema<ValidateEdgeMachineRequestEdgeMachineIdsList>;
 
 export interface ValidateEdgeMachineRequest {
@@ -16999,7 +16658,7 @@ export interface ValidateEdgeMachineRequest {
   /** Additional info required for validation. */
   additionalInfo?: string;
 }
-export const ValidateEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateEdgeMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17023,7 +16682,7 @@ export interface EdgeMachineValidateResponse {
   /** Edge machine validation status. */
   status?: string;
 }
-export const EdgeMachineValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeMachineValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -17034,7 +16693,7 @@ export const EdgeMachineValidateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Ownership Voucher Details. */
 export type ValidateOwnershipVoucherRequestOwnershipVoucherDetailsList =
   Array<OwnershipVoucherDetailsInput>;
-export const ValidateOwnershipVoucherRequestOwnershipVoucherDetailsList = /*@__PURE__*/ S.Array(
+const ValidateOwnershipVoucherRequestOwnershipVoucherDetailsList = /*@__PURE__*/ S.Array(
   OwnershipVoucherDetailsInput,
 ) as any as S.Schema<ValidateOwnershipVoucherRequestOwnershipVoucherDetailsList>;
 
@@ -17048,7 +16707,7 @@ export interface ValidateOwnershipVoucherRequest {
   /** Ownership Voucher Details. */
   ownershipVoucherDetails: ValidateOwnershipVoucherRequestOwnershipVoucherDetailsList;
 }
-export const ValidateOwnershipVoucherRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateOwnershipVoucherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17069,7 +16728,7 @@ export const ValidateOwnershipVoucherRequest = /*@__PURE__*/ S.suspend(() =>
 /** Ownership Voucher Validation Details. */
 export type ValidateOwnershipVouchersResponseOwnershipVoucherValidationDetailsList =
   Array<OwnershipVoucherValidationDetails>;
-export const ValidateOwnershipVouchersResponseOwnershipVoucherValidationDetailsList =
+const ValidateOwnershipVouchersResponseOwnershipVoucherValidationDetailsList =
   /*@__PURE__*/ S.Array(
     OwnershipVoucherValidationDetails,
   ) as any as S.Schema<ValidateOwnershipVouchersResponseOwnershipVoucherValidationDetailsList>;
@@ -17079,7 +16738,7 @@ export interface ValidateOwnershipVouchersResponse {
   /** Ownership Voucher Validation Details. */
   ownershipVoucherValidationDetails: ValidateOwnershipVouchersResponseOwnershipVoucherValidationDetailsList;
 }
-export const ValidateOwnershipVouchersResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateOwnershipVouchersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownershipVoucherValidationDetails:
       ValidateOwnershipVouchersResponseOwnershipVoucherValidationDetailsList,
@@ -17090,16 +16749,16 @@ export const ValidateOwnershipVouchersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualHardDisksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualHardDisksCreateOrUpdateRequestTagsMap =
+const VirtualHardDisksCreateOrUpdateRequestTagsMap =
   ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<VirtualHardDisksCreateOrUpdateRequestTagsMap>;
 
 /** The hypervisor generation of the Virtual Machine [V1, V2] */
 export type VirtualHardDiskPropertiesInputHyperVGeneration = "V1" | "V2";
-export const VirtualHardDiskPropertiesInputHyperVGeneration = S.String;
+const VirtualHardDiskPropertiesInputHyperVGeneration = S.String;
 
 /** The format of the actual VHD file [vhd, vhdx] */
 export type VirtualHardDiskPropertiesInputDiskFileFormat = "vhdx" | "vhd";
-export const VirtualHardDiskPropertiesInputDiskFileFormat = S.String;
+const VirtualHardDiskPropertiesInputDiskFileFormat = S.String;
 
 /** Properties under the virtual hard disk resource */
 export interface VirtualHardDiskPropertiesInput {
@@ -17117,7 +16776,7 @@ export interface VirtualHardDiskPropertiesInput {
   /** Storage ContainerID of the storage container to be used for VHD */
   containerId?: string;
 }
-export const VirtualHardDiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualHardDiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockSizeBytes: S.optional(S.Number),
     diskSizeGB: S.optional(S.Number),
@@ -17135,9 +16794,6 @@ export const VirtualHardDiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** The complex type of the extended location. */
 export type VirtualHardDisksCreateOrUpdateRequestExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation;
-export const VirtualHardDisksCreateOrUpdateRequestExtendedLocation =
-  GalleryImagesCreateOrUpdateRequestExtendedLocation;
-
 export interface VirtualHardDisksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -17153,7 +16809,7 @@ export interface VirtualHardDisksCreateOrUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
-export const VirtualHardDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualHardDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17176,15 +16832,9 @@ export const VirtualHardDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type VirtualHardDisksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualHardDisksCreateOrUpdateResponseTagsMap =
-  ClustersConfigureRemoteSupportResponseTagsMap as any as S.Schema<VirtualHardDisksCreateOrUpdateResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type VirtualHardDisksCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const VirtualHardDisksCreateOrUpdateResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 export interface VirtualHardDisksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -17202,7 +16852,7 @@ export interface VirtualHardDisksCreateOrUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
-export const VirtualHardDisksCreateOrUpdateResponse =
+const VirtualHardDisksCreateOrUpdateResponse =
   GetVirtualHardDiskResponse as any as S.Schema<VirtualHardDisksCreateOrUpdateResponse>;
 
 export type VirtualMachineInstancePropertiesInputHardwareProfileVmSize =
@@ -17229,13 +16879,8 @@ export type VirtualMachineInstancePropertiesInputHardwareProfileVmSize =
   | "Standard_NV12"
   | "Standard_K8S5_v1"
   | "Custom";
-export const VirtualMachineInstancePropertiesInputHardwareProfileVmSize = S.String;
-
 export type VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig =
   VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig;
-export const VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig =
-  VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig;
-
 /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesInputHardwareProfile {
   vmSize?: VirtualMachineInstancePropertiesInputHardwareProfileVmSize | (string & {});
@@ -17245,57 +16890,37 @@ export interface VirtualMachineInstancePropertiesInputHardwareProfile {
   memoryMB?: number;
   dynamicMemoryConfig?: VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig;
 }
-export const VirtualMachineInstancePropertiesInputHardwareProfile =
+const VirtualMachineInstancePropertiesInputHardwareProfile =
   VirtualMachineInstancePropertiesHardwareProfile as any as S.Schema<VirtualMachineInstancePropertiesInputHardwareProfile>;
 
 export type VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem =
   VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem;
-export const VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem =
-  VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem;
-
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList =
   Array<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
-export const VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList =
-  VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList as any as S.Schema<VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList>;
-
 /** NetworkProfile - describes the network configuration the virtual machine instance */
 export interface VirtualMachineInstancePropertiesInputNetworkProfile {
   /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
   networkInterfaces?: VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList;
 }
-export const VirtualMachineInstancePropertiesInputNetworkProfile =
+const VirtualMachineInstancePropertiesInputNetworkProfile =
   VirtualMachineInstancePropertiesNetworkProfile as any as S.Schema<VirtualMachineInstancePropertiesInputNetworkProfile>;
 
 /** LinuxConfiguration - linux specific configuration values for the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputOsProfileLinuxConfiguration =
   VirtualMachineInstancePropertiesOsProfileLinuxConfiguration;
-export const VirtualMachineInstancePropertiesInputOsProfileLinuxConfiguration =
-  VirtualMachineInstancePropertiesOsProfileLinuxConfiguration;
-
 /** Windows Configuration for the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputOsProfileWindowsConfiguration =
   VirtualMachineInstancePropertiesOsProfileWindowsConfiguration;
-export const VirtualMachineInstancePropertiesInputOsProfileWindowsConfiguration =
-  VirtualMachineInstancePropertiesOsProfileWindowsConfiguration;
-
 /** OsProfile - describes the configuration of the operating system and sets login data */
 export type VirtualMachineInstancePropertiesInputOsProfile =
   VirtualMachineInstancePropertiesOsProfile;
-export const VirtualMachineInstancePropertiesInputOsProfile =
-  VirtualMachineInstancePropertiesOsProfile;
-
 export type VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings =
   VirtualMachineInstancePropertiesSecurityProfileUefiSettings;
-export const VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings =
-  VirtualMachineInstancePropertiesSecurityProfileUefiSettings;
-
 /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
 export type VirtualMachineInstancePropertiesInputSecurityProfileSecurityType =
   | "TrustedLaunch"
   | "ConfidentialVM";
-export const VirtualMachineInstancePropertiesInputSecurityProfileSecurityType = S.String;
-
 /** SecurityProfile - Specifies the security settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesInputSecurityProfile {
   enableTPM?: boolean;
@@ -17303,31 +16928,24 @@ export interface VirtualMachineInstancePropertiesInputSecurityProfile {
   /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
   securityType?: VirtualMachineInstancePropertiesInputSecurityProfileSecurityType | (string & {});
 }
-export const VirtualMachineInstancePropertiesInputSecurityProfile =
+const VirtualMachineInstancePropertiesInputSecurityProfile =
   VirtualMachineInstancePropertiesSecurityProfile as any as S.Schema<VirtualMachineInstancePropertiesInputSecurityProfile>;
 
 export type VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem =
   VirtualMachineInstancePropertiesStorageProfileDataDisksItem;
-export const VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem =
-  VirtualMachineInstancePropertiesStorageProfileDataDisksItem;
-
 /** adds data disks to the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputStorageProfileDataDisksList =
   Array<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
-export const VirtualMachineInstancePropertiesInputStorageProfileDataDisksList =
-  /*@__PURE__*/ S.Array(
-    VirtualMachineInstancePropertiesStorageProfileDataDisksItem,
-  ) as any as S.Schema<VirtualMachineInstancePropertiesInputStorageProfileDataDisksList>;
+const VirtualMachineInstancePropertiesInputStorageProfileDataDisksList = /*@__PURE__*/ S.Array(
+  VirtualMachineInstancePropertiesStorageProfileDataDisksItem,
+) as any as S.Schema<VirtualMachineInstancePropertiesInputStorageProfileDataDisksList>;
 
 /** Which Image to use for the virtual machine instance */
 export type VirtualMachineInstancePropertiesInputStorageProfileImageReference =
   VirtualMachineInstancePropertiesStorageProfileImageReference;
-export const VirtualMachineInstancePropertiesInputStorageProfileImageReference =
-  VirtualMachineInstancePropertiesStorageProfileImageReference;
-
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
 export type VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType = "Linux" | "Windows";
-export const VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType = S.String;
+const VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType = S.String;
 
 /** VHD to attach as OS disk */
 export interface VirtualMachineInstancePropertiesInputStorageProfileOsDisk {
@@ -17336,12 +16954,11 @@ export interface VirtualMachineInstancePropertiesInputStorageProfileOsDisk {
   /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
   osType?: VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType | (string & {});
 }
-export const VirtualMachineInstancePropertiesInputStorageProfileOsDisk = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      osType: S.optional(VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType),
-    }),
+const VirtualMachineInstancePropertiesInputStorageProfileOsDisk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    osType: S.optional(VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType),
+  }),
 ).annotate({
   identifier: "VirtualMachineInstancePropertiesInputStorageProfileOsDisk",
 }) as any as S.Schema<VirtualMachineInstancePropertiesInputStorageProfileOsDisk>;
@@ -17357,7 +16974,7 @@ export interface VirtualMachineInstancePropertiesInputStorageProfile {
   /** Id of the storage container that hosts the VM configuration file */
   vmConfigStoragePathId?: string;
 }
-export const VirtualMachineInstancePropertiesInputStorageProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesInputStorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDisks: S.optional(VirtualMachineInstancePropertiesInputStorageProfileDataDisksList),
     imageReference: S.optional(VirtualMachineInstancePropertiesStorageProfileImageReference),
@@ -17370,8 +16987,6 @@ export const VirtualMachineInstancePropertiesInputStorageProfile = /*@__PURE__*/
 
 /** Defines the status of a guest agent installation. */
 export type GuestAgentInstallStatusInput = LogCollectionPropertiesInput;
-export const GuestAgentInstallStatusInput = LogCollectionPropertiesInput;
-
 /** Properties under the virtual machine instance resource */
 export interface VirtualMachineInstancePropertiesInput {
   /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
@@ -17391,7 +17006,7 @@ export interface VirtualMachineInstancePropertiesInput {
   /** Unique identifier defined by ARC to identify the guest of the VM. */
   resourceUid?: string;
 }
-export const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareProfile: S.optional(VirtualMachineInstancePropertiesInputHardwareProfile),
     networkProfile: S.optional(VirtualMachineInstancePropertiesInputNetworkProfile),
@@ -17409,19 +17024,14 @@ export const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(() 
 /** The complex type of the extended location. */
 export type VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
   GalleryImagesCreateOrUpdateRequestExtendedLocation;
-export const VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
-  GalleryImagesCreateOrUpdateRequestExtendedLocation;
-
 /** The identity type. */
 export type VirtualMachineInstancesCreateOrUpdateRequestIdentityType = "SystemAssigned";
-export const VirtualMachineInstancesCreateOrUpdateRequestIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface VirtualMachineInstancesCreateOrUpdateRequestIdentity {
   /** The identity type. */
   type?: VirtualMachineInstancesCreateOrUpdateRequestIdentityType | (string & {});
 }
-export const VirtualMachineInstancesCreateOrUpdateRequestIdentity =
+const VirtualMachineInstancesCreateOrUpdateRequestIdentity =
   UpdateVirtualMachineInstanceRequestIdentity as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequestIdentity>;
 
 export interface VirtualMachineInstancesCreateOrUpdateRequest {
@@ -17433,7 +17043,7 @@ export interface VirtualMachineInstancesCreateOrUpdateRequest {
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesCreateOrUpdateRequestIdentity;
 }
-export const VirtualMachineInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(VirtualMachineInstancePropertiesInput),
@@ -17454,13 +17064,8 @@ export const VirtualMachineInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 /** The complex type of the extended location. */
 export type VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation =
   GalleryImagesCreateOrUpdateResponseExtendedLocation;
-export const VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation =
-  GalleryImagesCreateOrUpdateResponseExtendedLocation;
-
 /** The identity type. */
 export type VirtualMachineInstancesCreateOrUpdateResponseIdentityType = "SystemAssigned";
-export const VirtualMachineInstancesCreateOrUpdateResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface VirtualMachineInstancesCreateOrUpdateResponseIdentity {
   /** The principal ID of resource identity. */
@@ -17470,9 +17075,6 @@ export interface VirtualMachineInstancesCreateOrUpdateResponseIdentity {
   /** The identity type. */
   type?: VirtualMachineInstancesCreateOrUpdateResponseIdentityType;
 }
-export const VirtualMachineInstancesCreateOrUpdateResponseIdentity =
-  HybridIdentityMetadataPropertiesIdentity as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponseIdentity>;
-
 export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -17488,7 +17090,7 @@ export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesCreateOrUpdateResponseIdentity;
 }
-export const VirtualMachineInstancesCreateOrUpdateResponse =
+const VirtualMachineInstancesCreateOrUpdateResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>;
 
 export type ArcSettingsConsentAndInstallDefaultExtensionsError = AzureOpError;

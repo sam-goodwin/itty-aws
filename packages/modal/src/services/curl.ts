@@ -11,7 +11,7 @@ export type { ModalOpError, ModalOpContext };
 export interface CurlGetAuthTokenRequest {
   url?: string;
 }
-export const CurlGetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CurlGetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/CurlGetAuthToken", code: 200 })),
@@ -20,7 +20,7 @@ export const CurlGetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CurlGetAuthTokenResponse {
   token?: string;
 }
-export const CurlGetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CurlGetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),

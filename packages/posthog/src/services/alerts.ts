@@ -37,7 +37,7 @@ export class NotFound
 
 /** Destination IDs to delete, as returned when the destination was created. */
 export type AlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-export const AlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ S.Array(
+const AlertsDestinationsDeleteCreateRequestHogFunctionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
 
@@ -49,7 +49,7 @@ export interface AlertsDestinationsDeleteCreateRequest {
   /** Destination IDs to delete, as returned when the destination was created. */
   hog_function_ids: AlertsDestinationsDeleteCreateRequestHogFunctionIdsList;
 }
-export const AlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -66,11 +66,11 @@ export const AlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AlertsDestinationsDeleteCreateRequest>;
 
 export interface AlertsDestinationsDeleteCreateResponse {}
-export const AlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AlertsDestinationsDeleteCreateResponse",
-}) as any as S.Schema<AlertsDestinationsDeleteCreateResponse>;
+const AlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "AlertsDestinationsDeleteCreateResponse",
+  },
+) as any as S.Schema<AlertsDestinationsDeleteCreateResponse>;
 
 export interface AlertsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -78,7 +78,7 @@ export interface AlertsDestroyRequest {
   /** A UUID string identifying this alert configuration. */
   id: string;
 }
-export const AlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -86,13 +86,13 @@ export const AlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertsDestroyRequest" }) as any as S.Schema<AlertsDestroyRequest>;
 
 export interface AlertsDestroyResponse {}
-export const AlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AlertsDestroyResponse",
 }) as any as S.Schema<AlertsDestroyResponse>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type CreateAlertRequestSubscribedUsersList = Array<number>;
-export const CreateAlertRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
+const CreateAlertRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateAlertRequestSubscribedUsersList>;
 
@@ -102,7 +102,7 @@ export interface InsightsThresholdBounds {
   /** Alert fires when the value exceeds this number. */
   upper?: number | null;
 }
-export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
+const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lower: S.optional(S.NullOr(S.Number)),
     upper: S.optional(S.NullOr(S.Number)),
@@ -110,14 +110,14 @@ export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsightsThresholdBounds" }) as any as S.Schema<InsightsThresholdBounds>;
 
 export type InsightThresholdType = "absolute" | "percentage";
-export const InsightThresholdType = S.String;
+const InsightThresholdType = S.String;
 
 export interface InsightThreshold {
   bounds?: InsightsThresholdBounds | null;
   /** Whether bounds are compared as absolute values or as percentage change from the previous interval. */
   type?: InsightThresholdType | (string & {});
 }
-export const InsightThreshold = /*@__PURE__*/ S.suspend(() =>
+const InsightThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounds: S.optional(S.NullOr(InsightsThresholdBounds)),
     type: S.optional(InsightThresholdType),
@@ -130,7 +130,7 @@ export interface ThresholdInput {
   /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
   configuration?: InsightThreshold;
 }
-export const ThresholdInput = /*@__PURE__*/ S.suspend(() =>
+const ThresholdInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     configuration: S.optional(InsightThreshold),
@@ -138,12 +138,12 @@ export const ThresholdInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThresholdInput" }) as any as S.Schema<ThresholdInput>;
 
 export type AlertConditionType = "absolute_value" | "relative_increase" | "relative_decrease";
-export const AlertConditionType = S.String;
+const AlertConditionType = S.String;
 
 export interface AlertCondition {
   type?: AlertConditionType | (string & {});
 }
-export const AlertCondition = /*@__PURE__*/ S.suspend(() =>
+const AlertCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(AlertConditionType),
   }),
@@ -156,17 +156,7 @@ export interface TrendsAlertConfig {
   series_index?: number;
   type?: string;
 }
-export const TrendsAlertConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check_ongoing_interval: S.optional(S.NullOr(S.Boolean)),
-    series_index: S.optional(S.Number),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "TrendsAlertConfig" }) as any as S.Schema<TrendsAlertConfig>;
-
 export type HogQLAlertEvaluation = "last_row" | "first_row" | "any_row";
-export const HogQLAlertEvaluation = S.String;
-
 export interface HogQLAlertConfig {
   /** Name of the result column to evaluate. When unset, the single numeric column is used (an error if the result has more than one numeric column). */
   column?: string | null;
@@ -176,18 +166,7 @@ export interface HogQLAlertConfig {
   label_column?: string | null;
   type?: string;
 }
-export const HogQLAlertConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.optional(S.NullOr(S.String)),
-    evaluation: HogQLAlertEvaluation,
-    label_column: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "HogQLAlertConfig" }) as any as S.Schema<HogQLAlertConfig>;
-
 export type FunnelConversionMetric = "conversion_from_start" | "conversion_from_previous";
-export const FunnelConversionMetric = S.String;
-
 export interface FunnelsAlertConfig {
   /** When true, evaluate the current (still in-progress) period; by default only completed periods are used. */
   check_ongoing_interval?: boolean | null;
@@ -196,34 +175,18 @@ export interface FunnelsAlertConfig {
   metric: FunnelConversionMetric | (string & {});
   type?: string;
 }
-export const FunnelsAlertConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check_ongoing_interval: S.optional(S.NullOr(S.Boolean)),
-    funnel_step: S.optional(S.NullOr(S.Number)),
-    metric: FunnelConversionMetric,
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "FunnelsAlertConfig" }) as any as S.Schema<FunnelsAlertConfig>;
-
 export interface MetricsAlertConfig {
   /** When true, anchor on the trailing (possibly still accumulating) bucket instead of the last complete one. */
   check_ongoing_interval?: boolean | null;
   type?: string;
 }
-export const MetricsAlertConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check_ongoing_interval: S.optional(S.NullOr(S.Boolean)),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "MetricsAlertConfig" }) as any as S.Schema<MetricsAlertConfig>;
-
 /** Per-insight-kind alert config, discriminated by ``type`` -- keeps the OpenAPI (and the generated frontend types and MCP tool schemas) in sync with every kind alerts support. */
 export type AlertConfigUnion =
   | TrendsAlertConfig
   | HogQLAlertConfig
   | FunnelsAlertConfig
   | MetricsAlertConfig;
-export const AlertConfigUnion = S.Unknown as any as S.Schema<AlertConfigUnion>;
+const AlertConfigUnion = S.Unknown as any as S.Schema<AlertConfigUnion>;
 
 export interface PreprocessingConfig {
   /** Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0) */
@@ -233,14 +196,6 @@ export interface PreprocessingConfig {
   /** Moving average window size. 0 = no smoothing, >1 = smooth over n points (default: 0) */
   smooth_n?: number | null;
 }
-export const PreprocessingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diffs_n: S.optional(S.NullOr(S.Number)),
-    lags_n: S.optional(S.NullOr(S.Number)),
-    smooth_n: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "PreprocessingConfig" }) as any as S.Schema<PreprocessingConfig>;
-
 export interface ZScoreDetectorConfig {
   /** Preprocessing transforms applied before detection */
   preprocessing?: PreprocessingConfig | null;
@@ -250,15 +205,6 @@ export interface ZScoreDetectorConfig {
   /** Rolling window size for calculating mean/std (default: 30) */
   window?: number | null;
 }
-export const ZScoreDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ZScoreDetectorConfig" }) as any as S.Schema<ZScoreDetectorConfig>;
-
 export interface MADDetectorConfig {
   /** Preprocessing transforms applied before detection */
   preprocessing?: PreprocessingConfig | null;
@@ -268,8 +214,6 @@ export interface MADDetectorConfig {
   /** Rolling window size for calculating median/MAD (default: 30) */
   window?: number | null;
 }
-export const MADDetectorConfig = ZScoreDetectorConfig as any as S.Schema<MADDetectorConfig>;
-
 export interface IQRDetectorConfig {
   /** IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers) */
   multiplier?: number | null;
@@ -279,15 +223,6 @@ export interface IQRDetectorConfig {
   /** Rolling window size for calculating quartiles (default: 30) */
   window?: number | null;
 }
-export const IQRDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    multiplier: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "IQRDetectorConfig" }) as any as S.Schema<IQRDetectorConfig>;
-
 export interface ThresholdDetectorConfig {
   /** Lower bound - values below this are anomalies */
   lower_bound?: number | null;
@@ -297,15 +232,6 @@ export interface ThresholdDetectorConfig {
   /** Upper bound - values above this are anomalies */
   upper_bound?: number | null;
 }
-export const ThresholdDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lower_bound: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    type: S.optional(S.String),
-    upper_bound: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ThresholdDetectorConfig" }) as any as S.Schema<ThresholdDetectorConfig>;
-
 export interface ECODDetectorConfig {
   /** Preprocessing transforms applied before detection */
   preprocessing?: PreprocessingConfig | null;
@@ -315,11 +241,7 @@ export interface ECODDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const ECODDetectorConfig = ZScoreDetectorConfig as any as S.Schema<ECODDetectorConfig>;
-
 export type COPODDetectorConfig = ECODDetectorConfig;
-export const COPODDetectorConfig = ECODDetectorConfig;
-
 export interface IsolationForestDetectorConfig {
   /** Number of trees in the forest (default: 100) */
   n_estimators?: number | null;
@@ -331,21 +253,7 @@ export interface IsolationForestDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    n_estimators: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "IsolationForestDetectorConfig",
-}) as any as S.Schema<IsolationForestDetectorConfig>;
-
 export type Method = "largest" | "mean" | "median";
-export const Method = S.String;
-
 export interface KNNDetectorConfig {
   /** Distance method: 'largest', 'mean', 'median' (default: 'largest') */
   method?: Method | (string & {}) | null;
@@ -359,17 +267,6 @@ export interface KNNDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const KNNDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(Method)),
-    n_neighbors: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "KNNDetectorConfig" }) as any as S.Schema<KNNDetectorConfig>;
-
 export interface HBOSDetectorConfig {
   /** Number of histogram bins (default: 10) */
   n_bins?: number | null;
@@ -381,16 +278,6 @@ export interface HBOSDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const HBOSDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    n_bins: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "HBOSDetectorConfig" }) as any as S.Schema<HBOSDetectorConfig>;
-
 export interface LOFDetectorConfig {
   /** Number of neighbors for LOF (default: 20) */
   n_neighbors?: number | null;
@@ -402,16 +289,6 @@ export interface LOFDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const LOFDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    n_neighbors: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "LOFDetectorConfig" }) as any as S.Schema<LOFDetectorConfig>;
-
 export interface OCSVMDetectorConfig {
   /** SVM kernel type (default: "rbf") */
   kernel?: string | null;
@@ -425,20 +302,7 @@ export interface OCSVMDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const OCSVMDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kernel: S.optional(S.NullOr(S.String)),
-    nu: S.optional(S.NullOr(S.Number)),
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "OCSVMDetectorConfig" }) as any as S.Schema<OCSVMDetectorConfig>;
-
 export type PCADetectorConfig = ECODDetectorConfig;
-export const PCADetectorConfig = ECODDetectorConfig;
-
 export type EnsembleDetectorConfigDetectorsItem =
   | ZScoreDetectorConfig
   | MADDetectorConfig
@@ -452,18 +316,9 @@ export type EnsembleDetectorConfigDetectorsItem =
   | LOFDetectorConfig
   | OCSVMDetectorConfig
   | ECODDetectorConfig;
-export const EnsembleDetectorConfigDetectorsItem =
-  S.Unknown as any as S.Schema<EnsembleDetectorConfigDetectorsItem>;
-
 /** Sub-detector configurations (minimum 2) */
 export type EnsembleDetectorConfigDetectorsList = Array<EnsembleDetectorConfigDetectorsItem>;
-export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
-  EnsembleDetectorConfigDetectorsItem,
-) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
-
 export type EnsembleOperator = "and" | "or";
-export const EnsembleOperator = S.String;
-
 export interface EnsembleDetectorConfig {
   /** Sub-detector configurations (minimum 2) */
   detectors?: EnsembleDetectorConfigDetectorsList;
@@ -471,14 +326,6 @@ export interface EnsembleDetectorConfig {
   operator?: EnsembleOperator | (string & {});
   type?: string;
 }
-export const EnsembleDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detectors: S.optional(EnsembleDetectorConfigDetectorsList),
-    operator: S.optional(EnsembleOperator),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnsembleDetectorConfig" }) as any as S.Schema<EnsembleDetectorConfig>;
-
 export interface LLMDetectorConfig {
   /** What counts as unusual or interesting for this metric, in your own words. Optional. */
   instructions?: string | null;
@@ -488,15 +335,6 @@ export interface LLMDetectorConfig {
   /** How many recent points the model is shown (default: 90) */
   window?: number | null;
 }
-export const LLMDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instructions: S.optional(S.NullOr(S.String)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "LLMDetectorConfig" }) as any as S.Schema<LLMDetectorConfig>;
-
 /** Detector configuration types */
 export type DetectorConfig =
   | EnsembleDetectorConfig
@@ -513,7 +351,7 @@ export type DetectorConfig =
   | OCSVMDetectorConfig
   | ECODDetectorConfig
   | LLMDetectorConfig;
-export const DetectorConfig = S.Unknown as any as S.Schema<DetectorConfig>;
+const DetectorConfig = S.Unknown as any as S.Schema<DetectorConfig>;
 
 /** * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type CalculationIntervalEnum =
@@ -523,7 +361,7 @@ export type CalculationIntervalEnum =
   | "daily"
   | "weekly"
   | "monthly";
-export const CalculationIntervalEnum = S.String;
+const CalculationIntervalEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
@@ -531,7 +369,7 @@ export interface AlertScheduleRestrictionWindow {
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
-export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -542,7 +380,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
-export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
+const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
 
@@ -550,7 +388,7 @@ export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
-export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
   }),
@@ -558,7 +396,7 @@ export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
 
 /** * `notify` - Notify * `suppress` - Suppress */
 export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
-export const InvestigationInconclusiveActionEnum = S.String;
+const InvestigationInconclusiveActionEnum = S.String;
 
 export interface CreateAlertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -597,7 +435,7 @@ export interface CreateAlertRequest {
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
-export const CreateAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     insight: S.optional(S.Number),
@@ -621,7 +459,7 @@ export const CreateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAlertRequest" }) as any as S.Schema<CreateAlertRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -637,14 +475,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -657,7 +490,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -673,7 +506,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type AlertSubscribedUsersList = Array<number>;
-export const AlertSubscribedUsersList =
+const AlertSubscribedUsersList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSubscribedUsersList>;
 
 export interface Threshold {
@@ -684,7 +517,7 @@ export interface Threshold {
   /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
   configuration?: InsightThreshold;
 }
-export const Threshold = /*@__PURE__*/ S.suspend(() =>
+const Threshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -695,21 +528,21 @@ export const Threshold = /*@__PURE__*/ S.suspend(() =>
 
 /** * `Firing` - Firing * `Not firing` - Not firing * `Errored` - Errored * `Snoozed` - Snoozed */
 export type AlertCheckStateEnum = "Firing" | "Not firing" | "Errored" | "Snoozed";
-export const AlertCheckStateEnum = S.String;
+const AlertCheckStateEnum = S.String;
 
 export type AlertCheckErrorMap = { [key: string]: string | undefined };
-export const AlertCheckErrorMap = /*@__PURE__*/ S.Record(
+const AlertCheckErrorMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AlertCheckErrorMap>;
 
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
 export type InvestigationStatusEnum = "pending" | "running" | "done" | "failed" | "skipped";
-export const InvestigationStatusEnum = S.String;
+const InvestigationStatusEnum = S.String;
 
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum = "true_positive" | "false_positive" | "inconclusive";
-export const InvestigationVerdictEnum = S.String;
+const InvestigationVerdictEnum = S.String;
 
 export interface AlertDelivery {
   /** Delivery channel: 'email' or 'hog_function' (destinations). */
@@ -727,7 +560,7 @@ export interface AlertDelivery {
   /** Ready-to-display description of the delivery, e.g. 'Email: a@example.com' or 'Slack #eng-alerts'. */
   display_label: string;
 }
-export const AlertDelivery = /*@__PURE__*/ S.suspend(() =>
+const AlertDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     target: S.String,
@@ -741,7 +574,7 @@ export const AlertDelivery = /*@__PURE__*/ S.suspend(() =>
 
 /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
 export type AlertCheckDeliveriesList = Array<AlertDelivery>;
-export const AlertCheckDeliveriesList = /*@__PURE__*/ S.Array(
+const AlertCheckDeliveriesList = /*@__PURE__*/ S.Array(
   AlertDelivery,
 ) as any as S.Schema<AlertCheckDeliveriesList>;
 
@@ -767,7 +600,7 @@ export interface AlertCheck {
   /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
   deliveries?: AlertCheckDeliveriesList | null;
 }
-export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
+const AlertCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -792,12 +625,10 @@ export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
 export type AlertChecksList = Array<AlertCheck>;
-export const AlertChecksList = /*@__PURE__*/ S.Array(
-  AlertCheck,
-) as any as S.Schema<AlertChecksList>;
+const AlertChecksList = /*@__PURE__*/ S.Array(AlertCheck) as any as S.Schema<AlertChecksList>;
 
 export type SearchMatchTypeEnum = "exact" | "similar";
-export const SearchMatchTypeEnum = S.String;
+const SearchMatchTypeEnum = S.String;
 
 export interface Alert {
   id?: string;
@@ -856,7 +687,7 @@ export interface Alert {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_by: S.optional(S.NullOr(UserBasic)),
@@ -894,7 +725,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 
 /** * `slack` - slack */
 export type ChannelTypeEnum = "slack";
-export const ChannelTypeEnum = S.String;
+const ChannelTypeEnum = S.String;
 
 export interface CreateAlertsDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -910,7 +741,7 @@ export interface CreateAlertsDestinationRequest {
   /** Channel name shown on the destination, for example product-alerts. */
   slack_channel_name?: string;
 }
-export const CreateAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -931,14 +762,14 @@ export const CreateAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the created destination. Pass them to destinations/delete to remove it. */
 export type AlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const AlertDestinationResponseHogFunctionIdsList =
+const AlertDestinationResponseHogFunctionIdsList =
   AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertDestinationResponseHogFunctionIdsList>;
 
 export interface AlertDestinationResponse {
   /** IDs of the created destination. Pass them to destinations/delete to remove it. */
   hog_function_ids: AlertDestinationResponseHogFunctionIdsList;
 }
-export const AlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_ids: AlertDestinationResponseHogFunctionIdsList,
   }),
@@ -946,7 +777,7 @@ export const AlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Numeric insight ID or saved insight short ID to simulate the detector on. */
 export type CreateAlertsSimulateRequestInsight = number | string;
-export const CreateAlertsSimulateRequestInsight =
+const CreateAlertsSimulateRequestInsight =
   S.Unknown as any as S.Schema<CreateAlertsSimulateRequestInsight>;
 
 export interface CreateAlertsSimulateRequest {
@@ -965,7 +796,7 @@ export interface CreateAlertsSimulateRequest {
   /** Per-insight-kind alert config. For SQL insights, selects the evaluated column and read direction (last_row/first_row) so the preview matches the alert; ignored for trends. */
   config?: AlertConfigUnion | null;
 }
-export const CreateAlertsSimulateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertsSimulateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_delay_intervals: S.optional(S.Number),
@@ -983,76 +814,73 @@ export const CreateAlertsSimulateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Data values for each point. */
 export type AlertSimulateResponseDataList = Array<number>;
-export const AlertSimulateResponseDataList =
+const AlertSimulateResponseDataList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSimulateResponseDataList>;
 
 /** Date labels for each point. */
 export type AlertSimulateResponseDatesList = Array<string>;
-export const AlertSimulateResponseDatesList =
+const AlertSimulateResponseDatesList =
   AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertSimulateResponseDatesList>;
 
 /** Score for each point. Null can mean insufficient data or a valid unscored point. AI previews report model confidence only for points flagged by an anomaly verdict; all other points are null, including every point in a normal verdict. */
 export type AlertSimulateResponseScoresList = Array<number | null>;
-export const AlertSimulateResponseScoresList = /*@__PURE__*/ S.Array(
+const AlertSimulateResponseScoresList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<AlertSimulateResponseScoresList>;
 
 /** Indices of points flagged as anomalies. */
 export type AlertSimulateResponseTriggeredIndicesList = Array<number>;
-export const AlertSimulateResponseTriggeredIndicesList =
+const AlertSimulateResponseTriggeredIndicesList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSimulateResponseTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
 export type AlertSimulateResponseTriggeredDatesList = Array<string>;
-export const AlertSimulateResponseTriggeredDatesList =
+const AlertSimulateResponseTriggeredDatesList =
   AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertSimulateResponseTriggeredDatesList>;
 
 export type AlertSimulateResponseSubDetectorScoresItemMap = { [key: string]: unknown | undefined };
-export const AlertSimulateResponseSubDetectorScoresItemMap =
+const AlertSimulateResponseSubDetectorScoresItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<AlertSimulateResponseSubDetectorScoresItemMap>;
 
 /** Per-sub-detector scores for ensemble detectors. Each entry has 'type' and 'scores' fields. */
 export type AlertSimulateResponseSubDetectorScoresList =
   Array<AlertSimulateResponseSubDetectorScoresItemMap>;
-export const AlertSimulateResponseSubDetectorScoresList = /*@__PURE__*/ S.Array(
+const AlertSimulateResponseSubDetectorScoresList = /*@__PURE__*/ S.Array(
   AlertSimulateResponseSubDetectorScoresItemMap,
 ) as any as S.Schema<AlertSimulateResponseSubDetectorScoresList>;
 
 /** Data values for each point. */
 export type BreakdownSimulationResultDataList = Array<number>;
-export const BreakdownSimulationResultDataList =
+const BreakdownSimulationResultDataList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<BreakdownSimulationResultDataList>;
 
 /** Date labels for each point. */
 export type BreakdownSimulationResultDatesList = Array<string>;
-export const BreakdownSimulationResultDatesList =
+const BreakdownSimulationResultDatesList =
   AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BreakdownSimulationResultDatesList>;
 
 /** Anomaly score for each point. */
 export type BreakdownSimulationResultScoresList = Array<number | null>;
-export const BreakdownSimulationResultScoresList =
+const BreakdownSimulationResultScoresList =
   AlertSimulateResponseScoresList as any as S.Schema<BreakdownSimulationResultScoresList>;
 
 /** Indices of points flagged as anomalies. */
 export type BreakdownSimulationResultTriggeredIndicesList = Array<number>;
-export const BreakdownSimulationResultTriggeredIndicesList =
+const BreakdownSimulationResultTriggeredIndicesList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<BreakdownSimulationResultTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
 export type BreakdownSimulationResultTriggeredDatesList = Array<string>;
-export const BreakdownSimulationResultTriggeredDatesList =
+const BreakdownSimulationResultTriggeredDatesList =
   AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BreakdownSimulationResultTriggeredDatesList>;
 
 export type BreakdownSimulationResultSubDetectorScoresItemMap = {
   [key: string]: unknown | undefined;
 };
-export const BreakdownSimulationResultSubDetectorScoresItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<BreakdownSimulationResultSubDetectorScoresItemMap>;
-
 /** Per-sub-detector scores for ensemble detectors. */
 export type BreakdownSimulationResultSubDetectorScoresList =
   Array<BreakdownSimulationResultSubDetectorScoresItemMap>;
-export const BreakdownSimulationResultSubDetectorScoresList =
+const BreakdownSimulationResultSubDetectorScoresList =
   AlertSimulateResponseSubDetectorScoresList as any as S.Schema<BreakdownSimulationResultSubDetectorScoresList>;
 
 export interface BreakdownSimulationResult {
@@ -1075,7 +903,7 @@ export interface BreakdownSimulationResult {
   /** Per-sub-detector scores for ensemble detectors. */
   sub_detector_scores?: BreakdownSimulationResultSubDetectorScoresList;
 }
-export const BreakdownSimulationResult = /*@__PURE__*/ S.suspend(() =>
+const BreakdownSimulationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     data: S.optional(BreakdownSimulationResultDataList),
@@ -1093,7 +921,7 @@ export const BreakdownSimulationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values). */
 export type AlertSimulateResponseBreakdownResultsList = Array<BreakdownSimulationResult>;
-export const AlertSimulateResponseBreakdownResultsList = /*@__PURE__*/ S.Array(
+const AlertSimulateResponseBreakdownResultsList = /*@__PURE__*/ S.Array(
   BreakdownSimulationResult,
 ) as any as S.Schema<AlertSimulateResponseBreakdownResultsList>;
 
@@ -1127,7 +955,7 @@ export interface AlertSimulateResponse {
   /** Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values). */
   breakdown_results?: AlertSimulateResponseBreakdownResultsList;
 }
-export const AlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluation_delay_intervals: S.optional(S.Number),
     evaluated_interval_start: S.optional(S.String),
@@ -1152,7 +980,7 @@ export interface CreateAlertsTestDeliveryRequest {
   /** A UUID string identifying this alert configuration. */
   id: string;
 }
-export const CreateAlertsTestDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertsTestDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1168,7 +996,7 @@ export const CreateAlertsTestDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAlertsTestDeliveryRequest>;
 
 export interface CreateAlertsTestDeliveryResponse {}
-export const CreateAlertsTestDeliveryResponse =
+const CreateAlertsTestDeliveryResponse =
   AlertsDestinationsDeleteCreateResponse as any as S.Schema<CreateAlertsTestDeliveryResponse>;
 
 export interface GetAlertRequest {
@@ -1185,7 +1013,7 @@ export interface GetAlertRequest {
   /** Number of newest checks to skip (0-based). Use with checks_limit for pagination. Default 0. */
   checks_offset?: number;
 }
-export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1214,7 +1042,7 @@ export interface ListAlertsRequest {
   /** Optional. Fuzzy match against alert `name` using Postgres trigram word similarity (handles typos, transpositions, and prefix-as-you-type). Results are ordered by relevance, then creation time. Capped at 200 characters; longer queries return a 400 error. */
   search?: string;
 }
-export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.String.pipe(T.Query())),
@@ -1228,7 +1056,7 @@ export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsRequest" }) as any as S.Schema<ListAlertsRequest>;
 
 export type PaginatedAlertListResultsList = Array<Alert>;
-export const PaginatedAlertListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAlertListResultsList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<PaginatedAlertListResultsList>;
 
@@ -1238,7 +1066,7 @@ export interface PaginatedAlertList {
   previous?: string | null;
   results?: PaginatedAlertListResultsList;
 }
-export const PaginatedAlertList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAlertList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1249,7 +1077,7 @@ export const PaginatedAlertList = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type UpdateAlertRequestSubscribedUsersList = Array<number>;
-export const UpdateAlertRequestSubscribedUsersList =
+const UpdateAlertRequestSubscribedUsersList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<UpdateAlertRequestSubscribedUsersList>;
 
 export interface UpdateAlertRequest {
@@ -1291,7 +1119,7 @@ export interface UpdateAlertRequest {
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
-export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1317,7 +1145,7 @@ export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type UpdateAlertsPartialRequestSubscribedUsersList = Array<number>;
-export const UpdateAlertsPartialRequestSubscribedUsersList =
+const UpdateAlertsPartialRequestSubscribedUsersList =
   CreateAlertRequestSubscribedUsersList as any as S.Schema<UpdateAlertsPartialRequestSubscribedUsersList>;
 
 export interface UpdateAlertsPartialRequest {
@@ -1359,7 +1187,7 @@ export interface UpdateAlertsPartialRequest {
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default -- an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum | (string & {});
 }
-export const UpdateAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

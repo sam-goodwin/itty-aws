@@ -74,10 +74,10 @@ export type CreateStorageStoresBlobRequestRegion =
   | "sin1"
   | "syd1"
   | "yul1";
-export const CreateStorageStoresBlobRequestRegion = S.String;
+const CreateStorageStoresBlobRequestRegion = S.String;
 
 export type CreateStorageStoresBlobRequestAccess = "public" | "private";
-export const CreateStorageStoresBlobRequestAccess = S.String;
+const CreateStorageStoresBlobRequestAccess = S.String;
 
 export interface CreateStorageStoresBlobRequest {
   name: string;
@@ -85,7 +85,7 @@ export interface CreateStorageStoresBlobRequest {
   access?: CreateStorageStoresBlobRequestAccess | (string & {});
   projectId?: string;
 }
-export const CreateStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     region: S.optional(CreateStorageStoresBlobRequestRegion),
@@ -97,7 +97,7 @@ export const CreateStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStorageStoresBlobRequest>;
 
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList = Array<string>;
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList = /*@__PURE__*/ S.Array(
+const CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList>;
 
@@ -105,26 +105,17 @@ export type CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0It
   | "bitbucket"
   | "github"
   | "gitlab";
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0Item = S.String;
-
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0List =
   Array<CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0Item>;
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0List =
-  /*@__PURE__*/ S.Array(
-    CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0Item,
-  ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0List>;
-
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase1 = "*";
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase1 = S.String;
-
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitProviders =
   | CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase0List
   | CreateStorageStoresBlobResponseStoreProjectFilterGitProvidersCase1;
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitProviders =
+const CreateStorageStoresBlobResponseStoreProjectFilterGitProviders =
   S.Unknown as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitProviders>;
 
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitReposList = Array<string>;
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitReposList =
+const CreateStorageStoresBlobResponseStoreProjectFilterGitReposList =
   CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitReposList>;
 
 export interface CreateStorageStoresBlobResponseStoreProjectFilterGit {
@@ -132,7 +123,7 @@ export interface CreateStorageStoresBlobResponseStoreProjectFilterGit {
   providers: CreateStorageStoresBlobResponseStoreProjectFilterGitProviders;
   repos?: CreateStorageStoresBlobResponseStoreProjectFilterGitReposList;
 }
-export const CreateStorageStoresBlobResponseStoreProjectFilterGit = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageStoresBlobResponseStoreProjectFilterGit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owners: S.optional(CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList),
     providers: CreateStorageStoresBlobResponseStoreProjectFilterGitProviders,
@@ -145,7 +136,7 @@ export const CreateStorageStoresBlobResponseStoreProjectFilterGit = /*@__PURE__*
 export interface CreateStorageStoresBlobResponseStoreProjectFilter {
   git?: CreateStorageStoresBlobResponseStoreProjectFilterGit;
 }
-export const CreateStorageStoresBlobResponseStoreProjectFilter = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageStoresBlobResponseStoreProjectFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     git: S.optional(CreateStorageStoresBlobResponseStoreProjectFilterGit),
   }),
@@ -155,7 +146,7 @@ export const CreateStorageStoresBlobResponseStoreProjectFilter = /*@__PURE__*/ S
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
@@ -164,7 +155,7 @@ export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploym
   environments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
   slug: string;
 }
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem =
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       environments:
@@ -177,7 +168,7 @@ export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList =
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList =
   /*@__PURE__*/ S.Array(
     CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem,
   ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList>;
@@ -186,24 +177,24 @@ export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploym
   actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList;
   required: boolean;
 }
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       actions: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList,
       required: S.Boolean,
     }),
-  ).annotate({
-    identifier: "CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments",
-  }) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments>;
+).annotate({
+  identifier: "CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments",
+}) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments>;
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
   Array<string>;
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
   CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList>;
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework =
@@ -281,7 +272,7 @@ export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework = S.String;
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework = S.String;
 
 export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
   deployments?: CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments;
@@ -295,30 +286,29 @@ export interface CreateStorageStoresBlobResponseStoreProjectsMetadataItem {
   name: string;
   projectId: string;
 }
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deployments: S.optional(CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments),
-      environments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList,
-      environmentVariables:
-        CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList,
-      envVarPrefix: S.NullOr(S.String),
-      framework: S.optional(
-        S.NullOr(CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework),
-      ),
-      id: S.String,
-      latestDeployment: S.optional(S.String),
-      makeEnvVarsSensitive: S.optional(S.Boolean),
-      name: S.String,
-      projectId: S.String,
-    }),
+const CreateStorageStoresBlobResponseStoreProjectsMetadataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deployments: S.optional(CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments),
+    environments: CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList,
+    environmentVariables:
+      CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList,
+    envVarPrefix: S.NullOr(S.String),
+    framework: S.optional(
+      S.NullOr(CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework),
+    ),
+    id: S.String,
+    latestDeployment: S.optional(S.String),
+    makeEnvVarsSensitive: S.optional(S.Boolean),
+    name: S.String,
+    projectId: S.String,
+  }),
 ).annotate({
   identifier: "CreateStorageStoresBlobResponseStoreProjectsMetadataItem",
 }) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItem>;
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataList =
   Array<CreateStorageStoresBlobResponseStoreProjectsMetadataItem>;
-export const CreateStorageStoresBlobResponseStoreProjectsMetadataList = /*@__PURE__*/ S.Array(
+const CreateStorageStoresBlobResponseStoreProjectsMetadataList = /*@__PURE__*/ S.Array(
   CreateStorageStoresBlobResponseStoreProjectsMetadataItem,
 ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataList>;
 
@@ -331,14 +321,14 @@ export type CreateStorageStoresBlobResponseStoreStatus =
   | "onboarding"
   | "suspended"
   | "uninstalled";
-export const CreateStorageStoresBlobResponseStoreStatus = S.String;
+const CreateStorageStoresBlobResponseStoreStatus = S.String;
 
 export type CreateStorageStoresBlobResponseStoreAccess = "private" | "public";
-export const CreateStorageStoresBlobResponseStoreAccess = S.String;
+const CreateStorageStoresBlobResponseStoreAccess = S.String;
 
 /** A project-default store is a private blob store that is lazily created per-project, uses OIDC auth instead of read-write tokens, and cannot be modified through standard store mutation APIs. Undefined for legacy stores. */
 export type CreateStorageStoresBlobResponseStoreKind = "project-default" | "user-created";
-export const CreateStorageStoresBlobResponseStoreKind = S.String;
+const CreateStorageStoresBlobResponseStoreKind = S.String;
 
 export type CreateStorageStoresBlobResponseStoreRegion =
   | "arn1"
@@ -361,7 +351,7 @@ export type CreateStorageStoresBlobResponseStoreRegion =
   | "sin1"
   | "syd1"
   | "yul1";
-export const CreateStorageStoresBlobResponseStoreRegion = S.String;
+const CreateStorageStoresBlobResponseStoreRegion = S.String;
 
 export interface CreateStorageStoresBlobResponseStore {
   projectFilter?: CreateStorageStoresBlobResponseStoreProjectFilter;
@@ -379,7 +369,7 @@ export interface CreateStorageStoresBlobResponseStore {
   region: CreateStorageStoresBlobResponseStoreRegion;
   size: number;
 }
-export const CreateStorageStoresBlobResponseStore = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageStoresBlobResponseStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectFilter: S.optional(CreateStorageStoresBlobResponseStoreProjectFilter),
     projectsMetadata: CreateStorageStoresBlobResponseStoreProjectsMetadataList,
@@ -401,7 +391,7 @@ export const CreateStorageStoresBlobResponseStore = /*@__PURE__*/ S.suspend(() =
 export interface CreateStorageStoresBlobResponse {
   store: CreateStorageStoresBlobResponseStore | null;
 }
-export const CreateStorageStoresBlobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageStoresBlobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store: S.NullOr(CreateStorageStoresBlobResponseStore),
   }),
@@ -412,7 +402,7 @@ export const CreateStorageStoresBlobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteStorageStoresBlobRequest {
   id: string;
 }
-export const DeleteStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/storage/stores/blob/{id}", code: 200 })),
@@ -423,7 +413,7 @@ export const DeleteStorageStoresBlobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteStorageStoresBlobResponse {
   id: string;
 }
-export const DeleteStorageStoresBlobResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageStoresBlobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -436,7 +426,7 @@ export interface GetStorageStoreRequest {
   skip_metadata?: boolean;
   include_guides?: boolean;
 }
-export const GetStorageStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     skip_metadata: S.optional(S.Boolean.pipe(T.Query("skip-metadata"))),
@@ -445,32 +435,24 @@ export const GetStorageStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStorageStoreRequest" }) as any as S.Schema<GetStorageStoreRequest>;
 
 export type GetStorageStoreResponseStoreProjectFilterGitOwnersList = Array<string>;
-export const GetStorageStoreResponseStoreProjectFilterGitOwnersList =
+const GetStorageStoreResponseStoreProjectFilterGitOwnersList =
   CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitOwnersList>;
 
 export type GetStorageStoreResponseStoreProjectFilterGitProvidersCase0Item =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const GetStorageStoreResponseStoreProjectFilterGitProvidersCase0Item = S.String;
-
 export type GetStorageStoreResponseStoreProjectFilterGitProvidersCase0List =
   Array<GetStorageStoreResponseStoreProjectFilterGitProvidersCase0Item>;
-export const GetStorageStoreResponseStoreProjectFilterGitProvidersCase0List = /*@__PURE__*/ S.Array(
-  GetStorageStoreResponseStoreProjectFilterGitProvidersCase0Item,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitProvidersCase0List>;
-
 export type GetStorageStoreResponseStoreProjectFilterGitProvidersCase1 = "*";
-export const GetStorageStoreResponseStoreProjectFilterGitProvidersCase1 = S.String;
-
 export type GetStorageStoreResponseStoreProjectFilterGitProviders =
   | GetStorageStoreResponseStoreProjectFilterGitProvidersCase0List
   | GetStorageStoreResponseStoreProjectFilterGitProvidersCase1;
-export const GetStorageStoreResponseStoreProjectFilterGitProviders =
+const GetStorageStoreResponseStoreProjectFilterGitProviders =
   S.Unknown as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitProviders>;
 
 export type GetStorageStoreResponseStoreProjectFilterGitReposList = Array<string>;
-export const GetStorageStoreResponseStoreProjectFilterGitReposList =
+const GetStorageStoreResponseStoreProjectFilterGitReposList =
   CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitReposList>;
 
 export interface GetStorageStoreResponseStoreProjectFilterGit {
@@ -478,7 +460,7 @@ export interface GetStorageStoreResponseStoreProjectFilterGit {
   providers: GetStorageStoreResponseStoreProjectFilterGitProviders;
   repos?: GetStorageStoreResponseStoreProjectFilterGitReposList;
 }
-export const GetStorageStoreResponseStoreProjectFilterGit = /*@__PURE__*/ S.suspend(() =>
+const GetStorageStoreResponseStoreProjectFilterGit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owners: S.optional(GetStorageStoreResponseStoreProjectFilterGitOwnersList),
     providers: GetStorageStoreResponseStoreProjectFilterGitProviders,
@@ -491,7 +473,7 @@ export const GetStorageStoreResponseStoreProjectFilterGit = /*@__PURE__*/ S.susp
 export interface GetStorageStoreResponseStoreProjectFilter {
   git?: GetStorageStoreResponseStoreProjectFilterGit;
 }
-export const GetStorageStoreResponseStoreProjectFilter = /*@__PURE__*/ S.suspend(() =>
+const GetStorageStoreResponseStoreProjectFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     git: S.optional(GetStorageStoreResponseStoreProjectFilterGit),
   }),
@@ -501,42 +483,35 @@ export const GetStorageStoreResponseStoreProjectFilter = /*@__PURE__*/ S.suspend
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
-export const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
-
 export interface GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem {
   environments: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
   slug: string;
 }
-export const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem =
-  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-
 export type GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-export const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
+const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
   CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList>;
 
 export interface GetStorageStoreResponseStoreProjectsMetadataItemDeployments {
   actions: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList;
   required: boolean;
 }
-export const GetStorageStoreResponseStoreProjectsMetadataItemDeployments = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actions: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList,
-      required: S.Boolean,
-    }),
+const GetStorageStoreResponseStoreProjectsMetadataItemDeployments = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actions: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList,
+    required: S.Boolean,
+  }),
 ).annotate({
   identifier: "GetStorageStoreResponseStoreProjectsMetadataItemDeployments",
 }) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeployments>;
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList = Array<string>;
-export const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList =
+const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList =
   CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList>;
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
-export const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
+const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemFramework =
@@ -614,7 +589,7 @@ export type GetStorageStoreResponseStoreProjectsMetadataItemFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-export const GetStorageStoreResponseStoreProjectsMetadataItemFramework = S.String;
+const GetStorageStoreResponseStoreProjectsMetadataItemFramework = S.String;
 
 export interface GetStorageStoreResponseStoreProjectsMetadataItem {
   deployments?: GetStorageStoreResponseStoreProjectsMetadataItemDeployments;
@@ -628,7 +603,7 @@ export interface GetStorageStoreResponseStoreProjectsMetadataItem {
   name: string;
   projectId: string;
 }
-export const GetStorageStoreResponseStoreProjectsMetadataItem = /*@__PURE__*/ S.suspend(() =>
+const GetStorageStoreResponseStoreProjectsMetadataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployments: S.optional(GetStorageStoreResponseStoreProjectsMetadataItemDeployments),
     environments: GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList,
@@ -647,7 +622,7 @@ export const GetStorageStoreResponseStoreProjectsMetadataItem = /*@__PURE__*/ S.
 
 export type GetStorageStoreResponseStoreProjectsMetadataList =
   Array<GetStorageStoreResponseStoreProjectsMetadataItem>;
-export const GetStorageStoreResponseStoreProjectsMetadataList = /*@__PURE__*/ S.Array(
+const GetStorageStoreResponseStoreProjectsMetadataList = /*@__PURE__*/ S.Array(
   GetStorageStoreResponseStoreProjectsMetadataItem,
 ) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataList>;
 
@@ -660,7 +635,7 @@ export type GetStorageStoreResponseStoreStatus =
   | "onboarding"
   | "suspended"
   | "uninstalled";
-export const GetStorageStoreResponseStoreStatus = S.String;
+const GetStorageStoreResponseStoreStatus = S.String;
 
 export interface GetStorageStoreResponseStore {
   projectFilter?: GetStorageStoreResponseStoreProjectFilter;
@@ -669,7 +644,7 @@ export interface GetStorageStoreResponseStore {
   totalConnectedProjects?: number;
   usageQuotaExceeded: boolean;
 }
-export const GetStorageStoreResponseStore = /*@__PURE__*/ S.suspend(() =>
+const GetStorageStoreResponseStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectFilter: S.optional(GetStorageStoreResponseStoreProjectFilter),
     projectsMetadata: GetStorageStoreResponseStoreProjectsMetadataList,
@@ -684,7 +659,7 @@ export const GetStorageStoreResponseStore = /*@__PURE__*/ S.suspend(() =>
 export interface GetStorageStoreResponse {
   store: GetStorageStoreResponseStore;
 }
-export const GetStorageStoreResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store: GetStorageStoreResponseStore,
   }),

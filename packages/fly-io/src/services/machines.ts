@@ -65,40 +65,40 @@ export class VolumeAttached
 export interface AuthenticateTokenRequest {
   header?: string;
 }
-export const AuthenticateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthenticateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/v1/tokens/authenticate", code: 200 })),
 ).annotate({ identifier: "AuthenticateTokenRequest" }) as any as S.Schema<AuthenticateTokenRequest>;
 
 export type MacaroonCaveatSetCaveatsList = Array<unknown>;
-export const MacaroonCaveatSetCaveatsList = /*@__PURE__*/ S.Array(
+const MacaroonCaveatSetCaveatsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<MacaroonCaveatSetCaveatsList>;
 
 export interface MacaroonCaveatSet {
   caveats?: MacaroonCaveatSetCaveatsList;
 }
-export const MacaroonCaveatSet = /*@__PURE__*/ S.suspend(() =>
+const MacaroonCaveatSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caveats: S.optional(MacaroonCaveatSetCaveatsList),
   }),
 ).annotate({ identifier: "MacaroonCaveatSet" }) as any as S.Schema<MacaroonCaveatSet>;
 
 export type MacaroonNonceKidList = Array<number>;
-export const MacaroonNonceKidList = /*@__PURE__*/ S.Array(
+const MacaroonNonceKidList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MacaroonNonceKidList>;
 
 export type MacaroonNonceRndList = Array<number>;
-export const MacaroonNonceRndList = MacaroonNonceKidList as any as S.Schema<MacaroonNonceRndList>;
+const MacaroonNonceRndList = MacaroonNonceKidList as any as S.Schema<MacaroonNonceRndList>;
 
 export interface MacaroonNonce {
   kid?: MacaroonNonceKidList;
   proof?: boolean;
   rnd?: MacaroonNonceRndList;
 }
-export const MacaroonNonce = /*@__PURE__*/ S.suspend(() =>
+const MacaroonNonce = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kid: S.optional(MacaroonNonceKidList),
     proof: S.optional(S.Boolean),
@@ -107,7 +107,7 @@ export const MacaroonNonce = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MacaroonNonce" }) as any as S.Schema<MacaroonNonce>;
 
 export type RootVerifiedTokenPermissionTokenList = Array<number>;
-export const RootVerifiedTokenPermissionTokenList =
+const RootVerifiedTokenPermissionTokenList =
   MacaroonNonceKidList as any as S.Schema<RootVerifiedTokenPermissionTokenList>;
 
 export interface RootVerifiedToken {
@@ -116,7 +116,7 @@ export interface RootVerifiedToken {
   nonce?: MacaroonNonce;
   permission_token?: RootVerifiedTokenPermissionTokenList;
 }
-export const RootVerifiedToken = /*@__PURE__*/ S.suspend(() =>
+const RootVerifiedToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caveats: S.optional(MacaroonCaveatSet),
     header: S.optional(S.String),
@@ -126,23 +126,23 @@ export const RootVerifiedToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RootVerifiedToken" }) as any as S.Schema<RootVerifiedToken>;
 
 export type AuthenticateTokenResponseBodyList = Array<RootVerifiedToken>;
-export const AuthenticateTokenResponseBodyList = /*@__PURE__*/ S.Array(
+const AuthenticateTokenResponseBodyList = /*@__PURE__*/ S.Array(
   RootVerifiedToken,
 ) as any as S.Schema<AuthenticateTokenResponseBodyList>;
 
 export type AuthenticateTokenResponse = AuthenticateTokenResponseBodyList;
-export const AuthenticateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthenticateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   AuthenticateTokenResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AuthenticateTokenResponse",
 }) as any as S.Schema<AuthenticateTokenResponse>;
 
 export type RessetAction = 1 | 2 | 4 | 8 | 16 | 31 | 0;
-export const RessetAction = S.Number;
+const RessetAction = S.Number;
 
 /** Command is the command being executed on a machine. If this is specified, the Machine must be set. */
 export type MainTokenAccessCommandList = Array<string>;
-export const MainTokenAccessCommandList = /*@__PURE__*/ S.Array(
+const MainTokenAccessCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MainTokenAccessCommandList>;
 
@@ -172,7 +172,7 @@ export interface MainTokenAccess {
   /** VolumeID is the encoded ID of the volume being accessed (e.g. vol_r1p6pln1k9m9j7zr). */
   volume_id?: string;
 }
-export const MainTokenAccess = /*@__PURE__*/ S.suspend(() =>
+const MainTokenAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(RessetAction),
     app_feature: S.optional(S.String),
@@ -193,7 +193,7 @@ export interface AuthorizeTokenRequest {
   access?: MainTokenAccess;
   header?: string;
 }
-export const AuthorizeTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(MainTokenAccess),
     header: S.optional(S.String),
@@ -201,7 +201,7 @@ export const AuthorizeTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizeTokenRequest" }) as any as S.Schema<AuthorizeTokenRequest>;
 
 export type FlyioAccessCommandList = Array<string>;
-export const FlyioAccessCommandList =
+const FlyioAccessCommandList =
   MainTokenAccessCommandList as any as S.Schema<FlyioAccessCommandList>;
 
 export interface FlyioAccess {
@@ -221,7 +221,7 @@ export interface FlyioAccess {
   storage_object?: string;
   volume?: string;
 }
-export const FlyioAccess = /*@__PURE__*/ S.suspend(() =>
+const FlyioAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(RessetAction),
     app_feature: S.optional(S.String),
@@ -245,7 +245,7 @@ export interface AuthorizeResponse {
   access?: FlyioAccess;
   verified_token?: RootVerifiedToken;
 }
-export const AuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(FlyioAccess),
     verified_token: S.optional(RootVerifiedToken),
@@ -258,7 +258,7 @@ export interface CheckAppCertificateRequest {
   /** Certificate Hostname */
   hostname: string;
 }
-export const CheckAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     hostname: S.String.pipe(T.Label()),
@@ -270,14 +270,14 @@ export const CheckAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckAppCertificateRequest>;
 
 export type IssuedCertificateType = "rsa" | "ecdsa";
-export const IssuedCertificateType = S.String;
+const IssuedCertificateType = S.String;
 
 export interface IssuedCertificate {
   certificate_authority?: string;
   expires_at?: string;
   type?: IssuedCertificateType;
 }
-export const IssuedCertificate = /*@__PURE__*/ S.suspend(() =>
+const IssuedCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate_authority: S.optional(S.String),
     expires_at: S.optional(S.String),
@@ -286,15 +286,15 @@ export const IssuedCertificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssuedCertificate" }) as any as S.Schema<IssuedCertificate>;
 
 export type CertificateEntryIssuedList = Array<IssuedCertificate>;
-export const CertificateEntryIssuedList = /*@__PURE__*/ S.Array(
+const CertificateEntryIssuedList = /*@__PURE__*/ S.Array(
   IssuedCertificate,
 ) as any as S.Schema<CertificateEntryIssuedList>;
 
 export type CertificateEntrySource = "custom" | "fly";
-export const CertificateEntrySource = S.String;
+const CertificateEntrySource = S.String;
 
 export type CertificateEntryStatus = "active" | "pending_ownership" | "pending_validation";
-export const CertificateEntryStatus = S.String;
+const CertificateEntryStatus = S.String;
 
 export interface CertificateEntry {
   created_at?: string;
@@ -304,7 +304,7 @@ export interface CertificateEntry {
   source?: CertificateEntrySource;
   status?: CertificateEntryStatus;
 }
-export const CertificateEntry = /*@__PURE__*/ S.suspend(() =>
+const CertificateEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     expires_at: S.optional(S.String),
@@ -316,22 +316,21 @@ export const CertificateEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CertificateEntry" }) as any as S.Schema<CertificateEntry>;
 
 export type CertificateCheckResponseCertificatesList = Array<CertificateEntry>;
-export const CertificateCheckResponseCertificatesList = /*@__PURE__*/ S.Array(
+const CertificateCheckResponseCertificatesList = /*@__PURE__*/ S.Array(
   CertificateEntry,
 ) as any as S.Schema<CertificateCheckResponseCertificatesList>;
 
 export type DNSRecordsAList = Array<string>;
-export const DNSRecordsAList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsAList>;
+const DNSRecordsAList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsAList>;
 
 export type DNSRecordsAaaaList = Array<string>;
-export const DNSRecordsAaaaList = MainTokenAccessCommandList as any as S.Schema<DNSRecordsAaaaList>;
+const DNSRecordsAaaaList = MainTokenAccessCommandList as any as S.Schema<DNSRecordsAaaaList>;
 
 export type DNSRecordsCnameList = Array<string>;
-export const DNSRecordsCnameList =
-  MainTokenAccessCommandList as any as S.Schema<DNSRecordsCnameList>;
+const DNSRecordsCnameList = MainTokenAccessCommandList as any as S.Schema<DNSRecordsCnameList>;
 
 export type DNSRecordsResolvedAddressesList = Array<string>;
-export const DNSRecordsResolvedAddressesList =
+const DNSRecordsResolvedAddressesList =
   MainTokenAccessCommandList as any as S.Schema<DNSRecordsResolvedAddressesList>;
 
 export interface DNSRecords {
@@ -343,7 +342,7 @@ export interface DNSRecords {
   resolved_addresses?: DNSRecordsResolvedAddressesList;
   soa?: string;
 }
-export const DNSRecords = /*@__PURE__*/ S.suspend(() =>
+const DNSRecords = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     a: S.optional(DNSRecordsAList),
     aaaa: S.optional(DNSRecordsAaaaList),
@@ -356,18 +355,17 @@ export const DNSRecords = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DNSRecords" }) as any as S.Schema<DNSRecords>;
 
 export type DNSRequirementsAList = Array<string>;
-export const DNSRequirementsAList =
-  MainTokenAccessCommandList as any as S.Schema<DNSRequirementsAList>;
+const DNSRequirementsAList = MainTokenAccessCommandList as any as S.Schema<DNSRequirementsAList>;
 
 export type DNSRequirementsAaaaList = Array<string>;
-export const DNSRequirementsAaaaList =
+const DNSRequirementsAaaaList =
   MainTokenAccessCommandList as any as S.Schema<DNSRequirementsAaaaList>;
 
 export interface AcmeChallenge {
   name?: string;
   target?: string;
 }
-export const AcmeChallenge = /*@__PURE__*/ S.suspend(() =>
+const AcmeChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     target: S.optional(S.String),
@@ -379,7 +377,7 @@ export interface OwnershipVerification {
   name?: string;
   org_value?: string;
 }
-export const OwnershipVerification = /*@__PURE__*/ S.suspend(() =>
+const OwnershipVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_value: S.optional(S.String),
     name: S.optional(S.String),
@@ -394,7 +392,7 @@ export interface DNSRequirements {
   cname?: string;
   ownership?: OwnershipVerification;
 }
-export const DNSRequirements = /*@__PURE__*/ S.suspend(() =>
+const DNSRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     a: S.optional(DNSRequirementsAList),
     aaaa: S.optional(DNSRequirementsAaaaList),
@@ -410,7 +408,7 @@ export interface CertificateValidation {
   http_configured?: boolean;
   ownership_txt_configured?: boolean;
 }
-export const CertificateValidation = /*@__PURE__*/ S.suspend(() =>
+const CertificateValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpn_configured: S.optional(S.Boolean),
     dns_configured: S.optional(S.Boolean),
@@ -425,7 +423,7 @@ export interface CertificateValidationError {
   remediation?: string;
   timestamp?: string;
 }
-export const CertificateValidationError = /*@__PURE__*/ S.suspend(() =>
+const CertificateValidationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -437,7 +435,7 @@ export const CertificateValidationError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateValidationError>;
 
 export type CertificateCheckResponseValidationErrorsList = Array<CertificateValidationError>;
-export const CertificateCheckResponseValidationErrorsList = /*@__PURE__*/ S.Array(
+const CertificateCheckResponseValidationErrorsList = /*@__PURE__*/ S.Array(
   CertificateValidationError,
 ) as any as S.Schema<CertificateCheckResponseValidationErrorsList>;
 
@@ -454,7 +452,7 @@ export interface CertificateCheckResponse {
   validation?: CertificateValidation;
   validation_errors?: CertificateCheckResponseValidationErrorsList;
 }
-export const CertificateCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CertificateCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acme_requested: S.optional(S.Boolean),
     certificates: S.optional(CertificateCheckResponseCertificatesList),
@@ -477,7 +475,7 @@ export interface CordonMachineRequest {
   machine_id: string;
   lease_nonce?: string;
 }
-export const CordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const CordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -488,7 +486,7 @@ export const CordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CordonMachineRequest" }) as any as S.Schema<CordonMachineRequest>;
 
 export interface CordonMachineResponse {}
-export const CordonMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CordonMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CordonMachineResponse",
 }) as any as S.Schema<CordonMachineResponse>;
 
@@ -500,7 +498,7 @@ export interface CreateAppRequest {
   network?: string;
   org_slug?: string;
 }
-export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enable_subdomains: S.optional(S.Boolean),
     idempotency_key: S.optional(S.String),
@@ -514,7 +512,7 @@ export interface CreateAppResponse {
   created_at?: number;
   id?: string;
 }
-export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.Number),
     id: S.optional(S.String),
@@ -526,7 +524,7 @@ export interface CreateAppAcmeCertificateRequest {
   app_name: string;
   hostname?: string;
 }
-export const CreateAppAcmeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppAcmeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     hostname: S.optional(S.String),
@@ -536,11 +534,11 @@ export const CreateAppAcmeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppAcmeCertificateRequest>;
 
 export type CertificateDetailCertificatesList = Array<CertificateEntry>;
-export const CertificateDetailCertificatesList =
+const CertificateDetailCertificatesList =
   CertificateCheckResponseCertificatesList as any as S.Schema<CertificateDetailCertificatesList>;
 
 export type CertificateDetailValidationErrorsList = Array<CertificateValidationError>;
-export const CertificateDetailValidationErrorsList =
+const CertificateDetailValidationErrorsList =
   CertificateCheckResponseValidationErrorsList as any as S.Schema<CertificateDetailValidationErrorsList>;
 
 export interface CertificateDetail {
@@ -555,7 +553,7 @@ export interface CertificateDetail {
   validation?: CertificateValidation;
   validation_errors?: CertificateDetailValidationErrorsList;
 }
-export const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
+const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acme_requested: S.optional(S.Boolean),
     certificates: S.optional(CertificateDetailCertificatesList),
@@ -577,7 +575,7 @@ export interface CreateAppCustomCertificateRequest {
   hostname?: string;
   private_key?: string;
 }
-export const CreateAppCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     fullchain: S.optional(S.String),
@@ -593,7 +591,7 @@ export interface CreateAppDeployTokenRequest {
   app_name: string;
   expiry?: string;
 }
-export const CreateAppDeployTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppDeployTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     expiry: S.optional(S.String),
@@ -605,7 +603,7 @@ export const CreateAppDeployTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAppDeployTokenResponse {
   token?: string;
 }
-export const CreateAppDeployTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAppDeployTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -622,7 +620,7 @@ export type IPAssignmentType =
   | "egress_v4"
   | "egress_v6"
   | "egress_pair";
-export const IPAssignmentType = S.String;
+const IPAssignmentType = S.String;
 
 export interface CreateAppIPAssignmentRequest {
   /** Fly App Name */
@@ -633,7 +631,7 @@ export interface CreateAppIPAssignmentRequest {
   service_name?: string;
   type?: IPAssignmentType | (string & {});
 }
-export const CreateAppIPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppIPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     network: S.optional(S.String),
@@ -650,7 +648,7 @@ export interface IPPair {
   v4?: string;
   v6?: string;
 }
-export const IPPair = /*@__PURE__*/ S.suspend(() =>
+const IPPair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     v4: S.optional(S.String),
     v6: S.optional(S.String),
@@ -663,7 +661,7 @@ export interface IPAssignmentNetwork {
   name?: string;
   org_slug?: string;
 }
-export const IPAssignmentNetwork = /*@__PURE__*/ S.suspend(() =>
+const IPAssignmentNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     org_slug: S.optional(S.String),
@@ -681,7 +679,7 @@ export interface AssignIPResponse {
   service_name?: string;
   shared?: boolean;
 }
-export const AssignIPResponse = /*@__PURE__*/ S.suspend(() =>
+const AssignIPResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     egress: S.optional(S.Boolean),
@@ -697,7 +695,7 @@ export const AssignIPResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FlyMachineCacheDrive {
   size_mb?: number;
 }
-export const FlyMachineCacheDrive = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineCacheDrive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size_mb: S.optional(S.Number),
   }),
@@ -705,7 +703,7 @@ export const FlyMachineCacheDrive = /*@__PURE__*/ S.suspend(() =>
 
 /** The header value */
 export type FlyMachineHTTPHeaderValuesList = Array<string>;
-export const FlyMachineHTTPHeaderValuesList =
+const FlyMachineHTTPHeaderValuesList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineHTTPHeaderValuesList>;
 
 /** For http checks, an array of objects with string field Name and array of strings field Values. The key/value pairs specify header and header values that will get passed with the check call. */
@@ -715,7 +713,7 @@ export interface FlyMachineHTTPHeader {
   /** The header value */
   values?: FlyMachineHTTPHeaderValuesList;
 }
-export const FlyMachineHTTPHeader = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineHTTPHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     values: S.optional(FlyMachineHTTPHeaderValuesList),
@@ -723,13 +721,13 @@ export const FlyMachineHTTPHeader = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineHTTPHeader" }) as any as S.Schema<FlyMachineHTTPHeader>;
 
 export type FlyMachineCheckHeadersList = Array<FlyMachineHTTPHeader>;
-export const FlyMachineCheckHeadersList = /*@__PURE__*/ S.Array(
+const FlyMachineCheckHeadersList = /*@__PURE__*/ S.Array(
   FlyMachineHTTPHeader,
 ) as any as S.Schema<FlyMachineCheckHeadersList>;
 
 /** Kind of the check (informational, readiness) */
 export type FlyMachineCheckKind = "informational" | "readiness";
-export const FlyMachineCheckKind = S.String;
+const FlyMachineCheckKind = S.String;
 
 export interface FlyMachineCheck {
   /** The time to wait after a VM starts before checking its health */
@@ -756,7 +754,7 @@ export interface FlyMachineCheck {
   /** tcp or http */
   type?: string;
 }
-export const FlyMachineCheck = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grace_period: S.optional(S.String),
     headers: S.optional(FlyMachineCheckHeadersList),
@@ -775,24 +773,24 @@ export const FlyMachineCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional object that defines one or more named top-level checks. The key for each check is the check name. */
 export type FlyMachineConfigChecksMap = { [key: string]: FlyMachineCheck | undefined };
-export const FlyMachineConfigChecksMap = /*@__PURE__*/ S.Record(
+const FlyMachineConfigChecksMap = /*@__PURE__*/ S.Record(
   S.String,
   FlyMachineCheck,
 ) as any as S.Schema<FlyMachineConfigChecksMap>;
 
 /** CmdOverride is used to override the default command of the image. */
 export type FlyContainerConfigCmdList = Array<string>;
-export const FlyContainerConfigCmdList =
+const FlyContainerConfigCmdList =
   MainTokenAccessCommandList as any as S.Schema<FlyContainerConfigCmdList>;
 
 export type FlyContainerDependencyCondition = "exited_successfully" | "healthy" | "started";
-export const FlyContainerDependencyCondition = S.String;
+const FlyContainerDependencyCondition = S.String;
 
 export interface FlyContainerDependency {
   condition?: FlyContainerDependencyCondition | (string & {});
   name?: string;
 }
-export const FlyContainerDependency = /*@__PURE__*/ S.suspend(() =>
+const FlyContainerDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(FlyContainerDependencyCondition),
     name: S.optional(S.String),
@@ -801,25 +799,25 @@ export const FlyContainerDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** DependsOn can be used to define dependencies between containers. The container will only be started after all of its dependent conditions have been satisfied. */
 export type FlyContainerConfigDependsOnList = Array<FlyContainerDependency>;
-export const FlyContainerConfigDependsOnList = /*@__PURE__*/ S.Array(
+const FlyContainerConfigDependsOnList = /*@__PURE__*/ S.Array(
   FlyContainerDependency,
 ) as any as S.Schema<FlyContainerConfigDependsOnList>;
 
 /** EntrypointOverride is used to override the default entrypoint of the image. */
 export type FlyContainerConfigEntrypointList = Array<string>;
-export const FlyContainerConfigEntrypointList =
+const FlyContainerConfigEntrypointList =
   MainTokenAccessCommandList as any as S.Schema<FlyContainerConfigEntrypointList>;
 
 /** ExtraEnv is used to add additional environment variables to the container. */
 export type FlyContainerConfigEnvMap = { [key: string]: string | undefined };
-export const FlyContainerConfigEnvMap = /*@__PURE__*/ S.Record(
+const FlyContainerConfigEnvMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<FlyContainerConfigEnvMap>;
 
 /** FieldRef selects a field of the Machine: supports id, version, app_name, private_ip, region, image. */
 export type FlyEnvFromFieldRef = "id" | "version" | "app_name" | "private_ip" | "region" | "image";
-export const FlyEnvFromFieldRef = S.String;
+const FlyEnvFromFieldRef = S.String;
 
 /** EnvVar defines an environment variable to be populated from a machine field, env_var */
 export interface FlyEnvFrom {
@@ -828,7 +826,7 @@ export interface FlyEnvFrom {
   /** FieldRef selects a field of the Machine: supports id, version, app_name, private_ip, region, image. */
   field_ref?: FlyEnvFromFieldRef | (string & {});
 }
-export const FlyEnvFrom = /*@__PURE__*/ S.suspend(() =>
+const FlyEnvFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     env_var: S.optional(S.String),
     field_ref: S.optional(FlyEnvFromFieldRef),
@@ -837,13 +835,13 @@ export const FlyEnvFrom = /*@__PURE__*/ S.suspend(() =>
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
 export type FlyContainerConfigEnvFromList = Array<FlyEnvFrom>;
-export const FlyContainerConfigEnvFromList = /*@__PURE__*/ S.Array(
+const FlyContainerConfigEnvFromList = /*@__PURE__*/ S.Array(
   FlyEnvFrom,
 ) as any as S.Schema<FlyContainerConfigEnvFromList>;
 
 /** Image Config overrides - these fields are used to override the image configuration. If not provided, the image configuration will be used. ExecOverride is used to override the default command of the image. */
 export type FlyContainerConfigExecList = Array<string>;
-export const FlyContainerConfigExecList =
+const FlyContainerConfigExecList =
   MainTokenAccessCommandList as any as S.Schema<FlyContainerConfigExecList>;
 
 /** A file that will be written to the Machine. One of RawValue or SecretName must be set. */
@@ -859,7 +857,7 @@ export interface FlyFile {
   /** The name of the secret that contains the base64 encoded file contents. */
   secret_name?: string;
 }
-export const FlyFile = /*@__PURE__*/ S.suspend(() =>
+const FlyFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guest_path: S.optional(S.String),
     image_config: S.optional(S.String),
@@ -871,20 +869,20 @@ export const FlyFile = /*@__PURE__*/ S.suspend(() =>
 
 /** Files are files that will be written to the container file system. */
 export type FlyContainerConfigFilesList = Array<FlyFile>;
-export const FlyContainerConfigFilesList = /*@__PURE__*/ S.Array(
+const FlyContainerConfigFilesList = /*@__PURE__*/ S.Array(
   FlyFile,
 ) as any as S.Schema<FlyContainerConfigFilesList>;
 
 /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
 export type FlyExecHealthcheckCommandList = Array<string>;
-export const FlyExecHealthcheckCommandList =
+const FlyExecHealthcheckCommandList =
   MainTokenAccessCommandList as any as S.Schema<FlyExecHealthcheckCommandList>;
 
 export interface FlyExecHealthcheck {
   /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
   command?: FlyExecHealthcheckCommandList;
 }
-export const FlyExecHealthcheck = /*@__PURE__*/ S.suspend(() =>
+const FlyExecHealthcheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(FlyExecHealthcheckCommandList),
   }),
@@ -892,11 +890,11 @@ export const FlyExecHealthcheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional headers to send with the request */
 export type FlyHTTPHealthcheckHeadersList = Array<FlyMachineHTTPHeader>;
-export const FlyHTTPHealthcheckHeadersList =
+const FlyHTTPHealthcheckHeadersList =
   FlyMachineCheckHeadersList as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
 
 export type FlyContainerHealthcheckScheme = "http" | "https";
-export const FlyContainerHealthcheckScheme = S.String;
+const FlyContainerHealthcheckScheme = S.String;
 
 export interface FlyHTTPHealthcheck {
   /** Additional headers to send with the request */
@@ -914,7 +912,7 @@ export interface FlyHTTPHealthcheck {
   /** If the protocol is https, whether or not to verify the TLS certificate */
   tls_skip_verify?: boolean;
 }
-export const FlyHTTPHealthcheck = /*@__PURE__*/ S.suspend(() =>
+const FlyHTTPHealthcheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(FlyHTTPHealthcheckHeadersList),
     method: S.optional(S.String),
@@ -927,20 +925,20 @@ export const FlyHTTPHealthcheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyHTTPHealthcheck" }) as any as S.Schema<FlyHTTPHealthcheck>;
 
 export type FlyContainerHealthcheckKind = "readiness" | "liveness";
-export const FlyContainerHealthcheckKind = S.String;
+const FlyContainerHealthcheckKind = S.String;
 
 export interface FlyTCPHealthcheck {
   /** The port to connect to, often the same as internal_port */
   port?: number;
 }
-export const FlyTCPHealthcheck = /*@__PURE__*/ S.suspend(() =>
+const FlyTCPHealthcheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
   }),
 ).annotate({ identifier: "FlyTCPHealthcheck" }) as any as S.Schema<FlyTCPHealthcheck>;
 
 export type FlyUnhealthyPolicy = "stop";
-export const FlyUnhealthyPolicy = S.String;
+const FlyUnhealthyPolicy = S.String;
 
 export interface FlyContainerHealthcheck {
   exec?: FlyExecHealthcheck;
@@ -963,7 +961,7 @@ export interface FlyContainerHealthcheck {
   /** Unhealthy policy that determines what action to take if a container is deemed unhealthy */
   unhealthy?: FlyUnhealthyPolicy | (string & {});
 }
-export const FlyContainerHealthcheck = /*@__PURE__*/ S.suspend(() =>
+const FlyContainerHealthcheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exec: S.optional(FlyExecHealthcheck),
     failure_threshold: S.optional(S.Number),
@@ -981,13 +979,13 @@ export const FlyContainerHealthcheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Healthchecks determine the health of your containers. Healthchecks can use HTTP, TCP or an Exec command. */
 export type FlyContainerConfigHealthchecksList = Array<FlyContainerHealthcheck>;
-export const FlyContainerConfigHealthchecksList = /*@__PURE__*/ S.Array(
+const FlyContainerConfigHealthchecksList = /*@__PURE__*/ S.Array(
   FlyContainerHealthcheck,
 ) as any as S.Schema<FlyContainerConfigHealthchecksList>;
 
 /** * no - Never try to restart a Machine automatically when its main process exits, whether that's on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. */
 export type FlyMachineRestartPolicy = "no" | "always" | "on-failure";
-export const FlyMachineRestartPolicy = S.String;
+const FlyMachineRestartPolicy = S.String;
 
 /** The Machine restart policy defines whether and how flyd restarts a Machine after its main process exits. See https://fly.io/docs/machines/guides-examples/machine-restart-policy/. */
 export interface FlyMachineRestart {
@@ -996,7 +994,7 @@ export interface FlyMachineRestart {
   /** * no - Never try to restart a Machine automatically when its main process exits, whether that's on purpose or on a crash. * always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly. * on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules. */
   policy?: FlyMachineRestartPolicy | (string & {});
 }
-export const FlyMachineRestart = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineRestart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max_retries: S.optional(S.Number),
     policy: S.optional(FlyMachineRestartPolicy),
@@ -1010,7 +1008,7 @@ export interface FlyMachineSecret {
   /** Name is optional and when provided is used to reference a secret name where the EnvVar is different from what was set as the secret name. */
   name?: string;
 }
-export const FlyMachineSecret = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     env_var: S.optional(S.String),
     name: S.optional(S.String),
@@ -1019,7 +1017,7 @@ export const FlyMachineSecret = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
 export type FlyContainerConfigSecretsList = Array<FlyMachineSecret>;
-export const FlyContainerConfigSecretsList = /*@__PURE__*/ S.Array(
+const FlyContainerConfigSecretsList = /*@__PURE__*/ S.Array(
   FlyMachineSecret,
 ) as any as S.Schema<FlyContainerConfigSecretsList>;
 
@@ -1031,13 +1029,13 @@ export type FlyStopConfigSignal =
   | "SIGUSR1"
   | "SIGUSR2"
   | "SIGTERM";
-export const FlyStopConfigSignal = S.String;
+const FlyStopConfigSignal = S.String;
 
 export interface FlyStopConfig {
   signal?: FlyStopConfigSignal | (string & {});
   timeout?: string;
 }
-export const FlyStopConfig = /*@__PURE__*/ S.suspend(() =>
+const FlyStopConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signal: S.optional(FlyStopConfigSignal),
     timeout: S.optional(S.String),
@@ -1074,7 +1072,7 @@ export interface FlyContainerConfig {
   /** UserOverride is used to override the default user of the image. */
   user?: string;
 }
-export const FlyContainerConfig = /*@__PURE__*/ S.suspend(() =>
+const FlyContainerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmd: S.optional(FlyContainerConfigCmdList),
     depends_on: S.optional(FlyContainerConfigDependsOnList),
@@ -1095,7 +1093,7 @@ export const FlyContainerConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Containers are a list of containers that will run in the machine. Currently restricted to only specific organizations. */
 export type FlyMachineConfigContainersList = Array<FlyContainerConfig>;
-export const FlyMachineConfigContainersList = /*@__PURE__*/ S.Array(
+const FlyMachineConfigContainersList = /*@__PURE__*/ S.Array(
   FlyContainerConfig,
 ) as any as S.Schema<FlyMachineConfigContainersList>;
 
@@ -1103,7 +1101,7 @@ export interface FlyDnsForwardRule {
   addr?: string;
   basename?: string;
 }
-export const FlyDnsForwardRule = /*@__PURE__*/ S.suspend(() =>
+const FlyDnsForwardRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addr: S.optional(S.String),
     basename: S.optional(S.String),
@@ -1111,19 +1109,19 @@ export const FlyDnsForwardRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyDnsForwardRule" }) as any as S.Schema<FlyDnsForwardRule>;
 
 export type FlyDNSConfigDnsForwardRulesList = Array<FlyDnsForwardRule>;
-export const FlyDNSConfigDnsForwardRulesList = /*@__PURE__*/ S.Array(
+const FlyDNSConfigDnsForwardRulesList = /*@__PURE__*/ S.Array(
   FlyDnsForwardRule,
 ) as any as S.Schema<FlyDNSConfigDnsForwardRulesList>;
 
 export type FlyDNSConfigNameserversList = Array<string>;
-export const FlyDNSConfigNameserversList =
+const FlyDNSConfigNameserversList =
   MainTokenAccessCommandList as any as S.Schema<FlyDNSConfigNameserversList>;
 
 export interface FlyDnsOption {
   name?: string;
   value?: string;
 }
-export const FlyDnsOption = /*@__PURE__*/ S.suspend(() =>
+const FlyDnsOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -1131,12 +1129,12 @@ export const FlyDnsOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyDnsOption" }) as any as S.Schema<FlyDnsOption>;
 
 export type FlyDNSConfigOptionsList = Array<FlyDnsOption>;
-export const FlyDNSConfigOptionsList = /*@__PURE__*/ S.Array(
+const FlyDNSConfigOptionsList = /*@__PURE__*/ S.Array(
   FlyDnsOption,
 ) as any as S.Schema<FlyDNSConfigOptionsList>;
 
 export type FlyDNSConfigSearchesList = Array<string>;
-export const FlyDNSConfigSearchesList =
+const FlyDNSConfigSearchesList =
   MainTokenAccessCommandList as any as S.Schema<FlyDNSConfigSearchesList>;
 
 export interface FlyDNSConfig {
@@ -1148,7 +1146,7 @@ export interface FlyDNSConfig {
   searches?: FlyDNSConfigSearchesList;
   skip_registration?: boolean;
 }
-export const FlyDNSConfig = /*@__PURE__*/ S.suspend(() =>
+const FlyDNSConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns_forward_rules: S.optional(FlyDNSConfigDnsForwardRulesList),
     hostname: S.optional(S.String),
@@ -1162,23 +1160,22 @@ export const FlyDNSConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** An object filled with key/value pairs to be set as environment variables */
 export type FlyMachineConfigEnvMap = { [key: string]: string | undefined };
-export const FlyMachineConfigEnvMap =
-  FlyContainerConfigEnvMap as any as S.Schema<FlyMachineConfigEnvMap>;
+const FlyMachineConfigEnvMap = FlyContainerConfigEnvMap as any as S.Schema<FlyMachineConfigEnvMap>;
 
 export type FlyMachineConfigFilesList = Array<FlyFile>;
-export const FlyMachineConfigFilesList =
+const FlyMachineConfigFilesList =
   FlyContainerConfigFilesList as any as S.Schema<FlyMachineConfigFilesList>;
 
 export type FlyMachineGuestKernelArgsList = Array<string>;
-export const FlyMachineGuestKernelArgsList =
+const FlyMachineGuestKernelArgsList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineGuestKernelArgsList>;
 
 /** Deprecated: use MachineConfig.Rootfs instead */
 export type FlyMachineGuestPersistRootfs = "never" | "always" | "restart";
-export const FlyMachineGuestPersistRootfs = S.String;
+const FlyMachineGuestPersistRootfs = S.String;
 
 export type FlyMachineGuestRequiredHostFeaturesList = Array<string>;
-export const FlyMachineGuestRequiredHostFeaturesList =
+const FlyMachineGuestRequiredHostFeaturesList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineGuestRequiredHostFeaturesList>;
 
 export interface FlyMachineGuest {
@@ -1194,7 +1191,7 @@ export interface FlyMachineGuest {
   persist_rootfs?: FlyMachineGuestPersistRootfs | (string & {});
   required_host_features?: FlyMachineGuestRequiredHostFeaturesList;
 }
-export const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu_kind: S.optional(S.String),
     cpus: S.optional(S.Number),
@@ -1210,19 +1207,18 @@ export const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineGuest" }) as any as S.Schema<FlyMachineGuest>;
 
 export type FlyMachineInitCmdList = Array<string>;
-export const FlyMachineInitCmdList =
-  MainTokenAccessCommandList as any as S.Schema<FlyMachineInitCmdList>;
+const FlyMachineInitCmdList = MainTokenAccessCommandList as any as S.Schema<FlyMachineInitCmdList>;
 
 export type FlyMachineInitEntrypointList = Array<string>;
-export const FlyMachineInitEntrypointList =
+const FlyMachineInitEntrypointList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineInitEntrypointList>;
 
 export type FlyMachineInitExecList = Array<string>;
-export const FlyMachineInitExecList =
+const FlyMachineInitExecList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineInitExecList>;
 
 export type FlyMachineInitKernelArgsList = Array<string>;
-export const FlyMachineInitKernelArgsList =
+const FlyMachineInitKernelArgsList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineInitKernelArgsList>;
 
 export interface FlyMachineInit {
@@ -1233,7 +1229,7 @@ export interface FlyMachineInit {
   swap_size_mb?: number;
   tty?: boolean;
 }
-export const FlyMachineInit = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineInit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmd: S.optional(FlyMachineInitCmdList),
     entrypoint: S.optional(FlyMachineInitEntrypointList),
@@ -1245,7 +1241,7 @@ export const FlyMachineInit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineInit" }) as any as S.Schema<FlyMachineInit>;
 
 export type FlyMachineConfigMetadataMap = { [key: string]: string | undefined };
-export const FlyMachineConfigMetadataMap =
+const FlyMachineConfigMetadataMap =
   FlyContainerConfigEnvMap as any as S.Schema<FlyMachineConfigMetadataMap>;
 
 export interface FlyMachineMetrics {
@@ -1253,7 +1249,7 @@ export interface FlyMachineMetrics {
   path?: string;
   port?: number;
 }
-export const FlyMachineMetrics = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     https: S.optional(S.Boolean),
     path: S.optional(S.String),
@@ -1275,7 +1271,7 @@ export interface FlyMachineMount {
   size_gb_limit?: number;
   volume?: string;
 }
-export const FlyMachineMount = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     add_size_gb: S.optional(S.Number),
     add_size_percent: S.optional(S.Number),
@@ -1291,34 +1287,34 @@ export const FlyMachineMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineMount" }) as any as S.Schema<FlyMachineMount>;
 
 export type FlyMachineConfigMountsList = Array<FlyMachineMount>;
-export const FlyMachineConfigMountsList = /*@__PURE__*/ S.Array(
+const FlyMachineConfigMountsList = /*@__PURE__*/ S.Array(
   FlyMachineMount,
 ) as any as S.Schema<FlyMachineConfigMountsList>;
 
 export type FlyMachineProcessCmdList = Array<string>;
-export const FlyMachineProcessCmdList =
+const FlyMachineProcessCmdList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineProcessCmdList>;
 
 export type FlyMachineProcessEntrypointList = Array<string>;
-export const FlyMachineProcessEntrypointList =
+const FlyMachineProcessEntrypointList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineProcessEntrypointList>;
 
 export type FlyMachineProcessEnvMap = { [key: string]: string | undefined };
-export const FlyMachineProcessEnvMap =
+const FlyMachineProcessEnvMap =
   FlyContainerConfigEnvMap as any as S.Schema<FlyMachineProcessEnvMap>;
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
 export type FlyMachineProcessEnvFromList = Array<FlyEnvFrom>;
-export const FlyMachineProcessEnvFromList =
+const FlyMachineProcessEnvFromList =
   FlyContainerConfigEnvFromList as any as S.Schema<FlyMachineProcessEnvFromList>;
 
 export type FlyMachineProcessExecList = Array<string>;
-export const FlyMachineProcessExecList =
+const FlyMachineProcessExecList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineProcessExecList>;
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
 export type FlyMachineProcessSecretsList = Array<FlyMachineSecret>;
-export const FlyMachineProcessSecretsList =
+const FlyMachineProcessSecretsList =
   FlyContainerConfigSecretsList as any as S.Schema<FlyMachineProcessSecretsList>;
 
 export interface FlyMachineProcess {
@@ -1334,7 +1330,7 @@ export interface FlyMachineProcess {
   secrets?: FlyMachineProcessSecretsList;
   user?: string;
 }
-export const FlyMachineProcess = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineProcess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmd: S.optional(FlyMachineProcessCmdList),
     entrypoint: S.optional(FlyMachineProcessEntrypointList),
@@ -1348,18 +1344,18 @@ export const FlyMachineProcess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineProcess" }) as any as S.Schema<FlyMachineProcess>;
 
 export type FlyMachineConfigProcessesList = Array<FlyMachineProcess>;
-export const FlyMachineConfigProcessesList = /*@__PURE__*/ S.Array(
+const FlyMachineConfigProcessesList = /*@__PURE__*/ S.Array(
   FlyMachineProcess,
 ) as any as S.Schema<FlyMachineConfigProcessesList>;
 
 export type FlyMachineRootfsPersist = "never" | "always" | "restart";
-export const FlyMachineRootfsPersist = S.String;
+const FlyMachineRootfsPersist = S.String;
 
 export interface FlyMachineRootfs {
   persist?: FlyMachineRootfsPersist | (string & {});
   size_gb?: number;
 }
-export const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     persist: S.optional(FlyMachineRootfsPersist),
     size_gb: S.optional(S.Number),
@@ -1368,17 +1364,17 @@ export const FlyMachineRootfs = /*@__PURE__*/ S.suspend(() =>
 
 /** Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses. * "off" or false - Do not autostop the Machine. * "stop" or true - Automatically stop the Machine. * "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible. */
 export type FlyMachineServiceAutostopMode = "off" | "stop" | "suspend";
-export const FlyMachineServiceAutostopMode = S.String;
+const FlyMachineServiceAutostopMode = S.String;
 
 /** Accepts off, stop, or suspend. For backward compatibility, responses encode off as false and stop as true. */
 export type FlyMachineServiceAutostop = FlyMachineServiceAutostopMode | (string & {}) | boolean;
-export const FlyMachineServiceAutostop: S.Codec<FlyMachineServiceAutostop> = /*@__PURE__*/ S.Union([
+const FlyMachineServiceAutostop: S.Codec<FlyMachineServiceAutostop> = /*@__PURE__*/ S.Union([
   FlyMachineServiceAutostopMode,
   S.Boolean,
 ]);
 
 export type FlyMachineServiceCheckHeadersList = Array<FlyMachineHTTPHeader>;
-export const FlyMachineServiceCheckHeadersList =
+const FlyMachineServiceCheckHeadersList =
   FlyMachineCheckHeadersList as any as S.Schema<FlyMachineServiceCheckHeadersList>;
 
 export interface FlyMachineServiceCheck {
@@ -1404,7 +1400,7 @@ export interface FlyMachineServiceCheck {
   /** tcp or http */
   type?: string;
 }
-export const FlyMachineServiceCheck = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineServiceCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grace_period: S.optional(S.String),
     headers: S.optional(FlyMachineServiceCheckHeadersList),
@@ -1422,7 +1418,7 @@ export const FlyMachineServiceCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional list of service checks */
 export type FlyMachineServiceChecksList = Array<FlyMachineServiceCheck>;
-export const FlyMachineServiceChecksList = /*@__PURE__*/ S.Array(
+const FlyMachineServiceChecksList = /*@__PURE__*/ S.Array(
   FlyMachineServiceCheck,
 ) as any as S.Schema<FlyMachineServiceChecksList>;
 
@@ -1431,7 +1427,7 @@ export interface FlyMachineServiceConcurrency {
   soft_limit?: number;
   type?: string;
 }
-export const FlyMachineServiceConcurrency = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineServiceConcurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hard_limit: S.optional(S.Number),
     soft_limit: S.optional(S.Number),
@@ -1442,12 +1438,12 @@ export const FlyMachineServiceConcurrency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyMachineServiceConcurrency>;
 
 export type FlyMachinePortHandlersList = Array<string>;
-export const FlyMachinePortHandlersList =
+const FlyMachinePortHandlersList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachinePortHandlersList>;
 
 /** Currently either "cookie" or "header" */
 export type FlyReplayCacheType = "cookie" | "header";
-export const FlyReplayCacheType = S.String;
+const FlyReplayCacheType = S.String;
 
 export interface FlyReplayCache {
   allow_bypass?: boolean;
@@ -1458,7 +1454,7 @@ export interface FlyReplayCache {
   /** Currently either "cookie" or "header" */
   type?: FlyReplayCacheType | (string & {});
 }
-export const FlyReplayCache = /*@__PURE__*/ S.suspend(() =>
+const FlyReplayCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_bypass: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -1469,12 +1465,12 @@ export const FlyReplayCache = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyReplayCache" }) as any as S.Schema<FlyReplayCache>;
 
 export type FlyHTTPOptionsReplayCacheList = Array<FlyReplayCache>;
-export const FlyHTTPOptionsReplayCacheList = /*@__PURE__*/ S.Array(
+const FlyHTTPOptionsReplayCacheList = /*@__PURE__*/ S.Array(
   FlyReplayCache,
 ) as any as S.Schema<FlyHTTPOptionsReplayCacheList>;
 
 export type FlyHTTPResponseOptionsHeadersMap = { [key: string]: unknown | undefined };
-export const FlyHTTPResponseOptionsHeadersMap = /*@__PURE__*/ S.Record(
+const FlyHTTPResponseOptionsHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<FlyHTTPResponseOptionsHeadersMap>;
@@ -1483,7 +1479,7 @@ export interface FlyHTTPResponseOptions {
   headers?: FlyHTTPResponseOptionsHeadersMap;
   pristine?: boolean;
 }
-export const FlyHTTPResponseOptions = /*@__PURE__*/ S.suspend(() =>
+const FlyHTTPResponseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(FlyHTTPResponseOptionsHeadersMap),
     pristine: S.optional(S.Boolean),
@@ -1498,7 +1494,7 @@ export interface FlyHTTPOptions {
   replay_cache?: FlyHTTPOptionsReplayCacheList;
   response?: FlyHTTPResponseOptions;
 }
-export const FlyHTTPOptions = /*@__PURE__*/ S.suspend(() =>
+const FlyHTTPOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compress: S.optional(S.Boolean),
     h2_backend: S.optional(S.Boolean),
@@ -1512,18 +1508,17 @@ export const FlyHTTPOptions = /*@__PURE__*/ S.suspend(() =>
 export interface FlyProxyProtoOptions {
   version?: string;
 }
-export const FlyProxyProtoOptions = /*@__PURE__*/ S.suspend(() =>
+const FlyProxyProtoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
 ).annotate({ identifier: "FlyProxyProtoOptions" }) as any as S.Schema<FlyProxyProtoOptions>;
 
 export type FlyTLSOptionsAlpnList = Array<string>;
-export const FlyTLSOptionsAlpnList =
-  MainTokenAccessCommandList as any as S.Schema<FlyTLSOptionsAlpnList>;
+const FlyTLSOptionsAlpnList = MainTokenAccessCommandList as any as S.Schema<FlyTLSOptionsAlpnList>;
 
 export type FlyTLSOptionsVersionsList = Array<string>;
-export const FlyTLSOptionsVersionsList =
+const FlyTLSOptionsVersionsList =
   MainTokenAccessCommandList as any as S.Schema<FlyTLSOptionsVersionsList>;
 
 export interface FlyTLSOptions {
@@ -1531,7 +1526,7 @@ export interface FlyTLSOptions {
   default_self_signed?: boolean;
   versions?: FlyTLSOptionsVersionsList;
 }
-export const FlyTLSOptions = /*@__PURE__*/ S.suspend(() =>
+const FlyTLSOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpn: S.optional(FlyTLSOptionsAlpnList),
     default_self_signed: S.optional(S.Boolean),
@@ -1549,7 +1544,7 @@ export interface FlyMachinePort {
   start_port?: number;
   tls_options?: FlyTLSOptions;
 }
-export const FlyMachinePort = /*@__PURE__*/ S.suspend(() =>
+const FlyMachinePort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_port: S.optional(S.Number),
     force_https: S.optional(S.Boolean),
@@ -1563,7 +1558,7 @@ export const FlyMachinePort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachinePort" }) as any as S.Schema<FlyMachinePort>;
 
 export type FlyMachineServicePortsList = Array<FlyMachinePort>;
-export const FlyMachineServicePortsList = /*@__PURE__*/ S.Array(
+const FlyMachineServicePortsList = /*@__PURE__*/ S.Array(
   FlyMachinePort,
 ) as any as S.Schema<FlyMachineServicePortsList>;
 
@@ -1581,7 +1576,7 @@ export interface FlyMachineService {
   ports?: FlyMachineServicePortsList;
   protocol?: string;
 }
-export const FlyMachineService = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autostart: S.optional(S.Boolean),
     autostop: S.optional(FlyMachineServiceAutostop),
@@ -1597,7 +1592,7 @@ export const FlyMachineService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineService" }) as any as S.Schema<FlyMachineService>;
 
 export type FlyMachineConfigServicesList = Array<FlyMachineService>;
-export const FlyMachineConfigServicesList = /*@__PURE__*/ S.Array(
+const FlyMachineConfigServicesList = /*@__PURE__*/ S.Array(
   FlyMachineService,
 ) as any as S.Schema<FlyMachineConfigServicesList>;
 
@@ -1605,7 +1600,7 @@ export interface FlyMachineSpot {
   /** MaxPriceFraction is the maximum fraction of the full Machine price you will pay for this Machine. Range: (0, 1.0] */
   max_price_fraction?: number;
 }
-export const FlyMachineSpot = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineSpot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max_price_fraction: S.optional(S.Number),
   }),
@@ -1613,7 +1608,7 @@ export const FlyMachineSpot = /*@__PURE__*/ S.suspend(() =>
 
 /** Standbys enable a machine to be a standby for another. In the event of a hardware failure, the standby machine will be started. */
 export type FlyMachineConfigStandbysList = Array<string>;
-export const FlyMachineConfigStandbysList =
+const FlyMachineConfigStandbysList =
   MainTokenAccessCommandList as any as S.Schema<FlyMachineConfigStandbysList>;
 
 export interface FlyStatic {
@@ -1622,7 +1617,7 @@ export interface FlyStatic {
   tigris_bucket?: string;
   url_prefix: string;
 }
-export const FlyStatic = /*@__PURE__*/ S.suspend(() =>
+const FlyStatic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guest_path: S.String,
     index_document: S.optional(S.String),
@@ -1632,7 +1627,7 @@ export const FlyStatic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyStatic" }) as any as S.Schema<FlyStatic>;
 
 export type FlyMachineConfigStaticsList = Array<FlyStatic>;
-export const FlyMachineConfigStaticsList = /*@__PURE__*/ S.Array(
+const FlyMachineConfigStaticsList = /*@__PURE__*/ S.Array(
   FlyStatic,
 ) as any as S.Schema<FlyMachineConfigStaticsList>;
 
@@ -1670,7 +1665,7 @@ export interface FlyMachineConfig {
   statics?: FlyMachineConfigStaticsList;
   stop_config?: FlyStopConfig;
 }
-export const FlyMachineConfig = /*@__PURE__*/ S.suspend(() =>
+const FlyMachineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_destroy: S.optional(S.Boolean),
     cache_drive: S.optional(FlyMachineCacheDrive),
@@ -1714,7 +1709,7 @@ export interface CreateMachineRequest {
   skip_secrets?: boolean;
   skip_service_registration?: boolean;
 }
-export const CreateMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     config: S.optional(FlyMachineConfig),
@@ -1734,7 +1729,7 @@ export interface CheckStatus {
   status?: string;
   updated_at?: string;
 }
-export const CheckStatus = /*@__PURE__*/ S.suspend(() =>
+const CheckStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     output: S.optional(S.String),
@@ -1744,9 +1739,7 @@ export const CheckStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckStatus" }) as any as S.Schema<CheckStatus>;
 
 export type MachineChecksList = Array<CheckStatus>;
-export const MachineChecksList = /*@__PURE__*/ S.Array(
-  CheckStatus,
-) as any as S.Schema<MachineChecksList>;
+const MachineChecksList = /*@__PURE__*/ S.Array(CheckStatus) as any as S.Schema<MachineChecksList>;
 
 export interface MachineEvent {
   id?: string;
@@ -1756,7 +1749,7 @@ export interface MachineEvent {
   timestamp?: number;
   type?: string;
 }
-export const MachineEvent = /*@__PURE__*/ S.suspend(() =>
+const MachineEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     request: S.optional(S.Unknown),
@@ -1768,19 +1761,17 @@ export const MachineEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MachineEvent" }) as any as S.Schema<MachineEvent>;
 
 export type MachineEventsList = Array<MachineEvent>;
-export const MachineEventsList = /*@__PURE__*/ S.Array(
-  MachineEvent,
-) as any as S.Schema<MachineEventsList>;
+const MachineEventsList = /*@__PURE__*/ S.Array(MachineEvent) as any as S.Schema<MachineEventsList>;
 
 export type MachineHostFeaturesList = Array<string>;
-export const MachineHostFeaturesList =
+const MachineHostFeaturesList =
   MainTokenAccessCommandList as any as S.Schema<MachineHostFeaturesList>;
 
 export type MachineHostStatus = "ok" | "unknown" | "unreachable";
-export const MachineHostStatus = S.String;
+const MachineHostStatus = S.String;
 
 export type ImageRefLabelsMap = { [key: string]: string | undefined };
-export const ImageRefLabelsMap = FlyContainerConfigEnvMap as any as S.Schema<ImageRefLabelsMap>;
+const ImageRefLabelsMap = FlyContainerConfigEnvMap as any as S.Schema<ImageRefLabelsMap>;
 
 export interface ImageRef {
   digest?: string;
@@ -1789,7 +1780,7 @@ export interface ImageRef {
   repository?: string;
   tag?: string;
 }
-export const ImageRef = /*@__PURE__*/ S.suspend(() =>
+const ImageRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     digest: S.optional(S.String),
     labels: S.optional(ImageRefLabelsMap),
@@ -1804,7 +1795,7 @@ export interface StrippedLease {
   expires_at?: number;
   owner?: string;
 }
-export const StrippedLease = /*@__PURE__*/ S.suspend(() =>
+const StrippedLease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expires_at: S.optional(S.Number),
@@ -1837,7 +1828,7 @@ export interface Machine {
   /** Version is unique for each version of the machine. Pass it as `current_version` when updating the Machine to reject the update if the Machine has changed since this version. */
   version?: string;
 }
-export const Machine = /*@__PURE__*/ S.suspend(() =>
+const Machine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checks: S.optional(MachineChecksList),
     config: S.optional(FlyMachineConfig),
@@ -1872,7 +1863,7 @@ export interface CreateMachineLeaseRequest {
   /** Existing lease nonce when refreshing; omit to acquire a new lease. Keep the nonce private. */
   lease_nonce?: string;
 }
-export const CreateMachineLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMachineLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -1898,7 +1889,7 @@ export interface Lease {
   /** Machine version */
   version?: string;
 }
-export const Lease = /*@__PURE__*/ S.suspend(() =>
+const Lease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expires_at: S.optional(S.Number),
@@ -1912,7 +1903,7 @@ export interface MachineLease {
   status?: string;
   data?: Lease;
 }
-export const MachineLease = /*@__PURE__*/ S.suspend(() =>
+const MachineLease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     data: S.optional(Lease),
@@ -1921,15 +1912,15 @@ export const MachineLease = /*@__PURE__*/ S.suspend(() =>
 
 /** Postgres major version. */
 export type CreatePostgresRequestPgMajorVersion = "16" | "17";
-export const CreatePostgresRequestPgMajorVersion = S.String;
+const CreatePostgresRequestPgMajorVersion = S.String;
 
 /** Plan slug selecting CPU, memory, and disk sizing. Matched case-insensitively. */
 export type CreatePostgresRequestPlan = "basic" | "starter" | "launch" | "scale" | "Performance";
-export const CreatePostgresRequestPlan = S.String;
+const CreatePostgresRequestPlan = S.String;
 
 /** Connection pooler mode. */
 export type CreatePostgresRequestPoolMode = "session" | "transaction";
-export const CreatePostgresRequestPoolMode = S.String;
+const CreatePostgresRequestPoolMode = S.String;
 
 export interface CreatePostgresRequest {
   /** Disk size in gigabytes. */
@@ -1949,7 +1940,7 @@ export interface CreatePostgresRequest {
   /** Fly region code where the cluster's primary runs. */
   region: string;
 }
-export const CreatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disk_size_gb: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1966,7 +1957,7 @@ export interface PostgresAttachedApp {
   /** Attached Fly app name. */
   name?: string;
 }
-export const PostgresAttachedApp = /*@__PURE__*/ S.suspend(() =>
+const PostgresAttachedApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1974,13 +1965,13 @@ export const PostgresAttachedApp = /*@__PURE__*/ S.suspend(() =>
 
 /** Apps attached to the cluster. */
 export type PostgresClusterAttachedAppsList = Array<PostgresAttachedApp>;
-export const PostgresClusterAttachedAppsList = /*@__PURE__*/ S.Array(
+const PostgresClusterAttachedAppsList = /*@__PURE__*/ S.Array(
   PostgresAttachedApp,
 ) as any as S.Schema<PostgresClusterAttachedAppsList>;
 
 /** CPU class. */
 export type PostgresClusterCpuKind = "shared" | "performance";
-export const PostgresClusterCpuKind = S.String;
+const PostgresClusterCpuKind = S.String;
 
 export interface PostgresEndpoint {
   /** Hostname to connect to. */
@@ -1988,7 +1979,7 @@ export interface PostgresEndpoint {
   /** TCP port. */
   port?: number;
 }
-export const PostgresEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PostgresEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     port: S.optional(S.Number),
@@ -2001,7 +1992,7 @@ export interface PostgresNodeEndpoints {
   /** Pooled connection to the cluster node (through PgBouncer). */
   pooler?: PostgresEndpoint;
 }
-export const PostgresNodeEndpoints = /*@__PURE__*/ S.suspend(() =>
+const PostgresNodeEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct: S.optional(PostgresEndpoint),
     pooler: S.optional(PostgresEndpoint),
@@ -2012,7 +2003,7 @@ export interface PostgresClusterEndpoints {
   /** Endpoints for connecting to the primary node. */
   primary?: PostgresNodeEndpoints;
 }
-export const PostgresClusterEndpoints = /*@__PURE__*/ S.suspend(() =>
+const PostgresClusterEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(PostgresNodeEndpoints),
   }),
@@ -2024,7 +2015,7 @@ export interface OrganizationRef {
   /** Organization slug. */
   slug?: string;
 }
-export const OrganizationRef = /*@__PURE__*/ S.suspend(() =>
+const OrganizationRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -2033,11 +2024,11 @@ export const OrganizationRef = /*@__PURE__*/ S.suspend(() =>
 
 /** Postgres major version. */
 export type PostgresClusterPgMajorVersion = "16" | "17";
-export const PostgresClusterPgMajorVersion = S.String;
+const PostgresClusterPgMajorVersion = S.String;
 
 /** Plan slug. */
 export type PostgresClusterPlan = "basic" | "starter" | "launch" | "scale" | "Performance";
-export const PostgresClusterPlan = S.String;
+const PostgresClusterPlan = S.String;
 
 /** Current lifecycle status. */
 export type PostgresClusterStatus =
@@ -2047,7 +2038,7 @@ export type PostgresClusterStatus =
   | "deleting"
   | "deleted"
   | "failed";
-export const PostgresClusterStatus = S.String;
+const PostgresClusterStatus = S.String;
 
 export interface PostgresCluster {
   /** Apps attached to the cluster. */
@@ -2086,7 +2077,7 @@ export interface PostgresCluster {
   /** Storage used, summed across the cluster's volumes and measured hourly. Null until first measured. */
   storage_used_bytes?: number | null;
 }
-export const PostgresCluster = /*@__PURE__*/ S.suspend(() =>
+const PostgresCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attached_apps: S.optional(PostgresClusterAttachedAppsList),
     cpu_kind: S.optional(PostgresClusterCpuKind),
@@ -2112,7 +2103,7 @@ export const PostgresCluster = /*@__PURE__*/ S.suspend(() =>
 export interface ShowPostgresClusterResponse {
   data?: PostgresCluster;
 }
-export const ShowPostgresClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowPostgresClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PostgresCluster),
   }),
@@ -2126,7 +2117,7 @@ export interface CreatePostgresAttachmentRequest {
   /** Name of the Fly app to attach. */
   app_name: string;
 }
-export const CreatePostgresAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     app_name: S.String,
@@ -2145,7 +2136,7 @@ export interface PostgresAttachment {
   /** Cluster ID the app is attached to. */
   postgres_cluster_id?: string;
 }
-export const PostgresAttachment = /*@__PURE__*/ S.suspend(() =>
+const PostgresAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.optional(S.String),
     attached_at: S.optional(S.String),
@@ -2156,7 +2147,7 @@ export const PostgresAttachment = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePostgresAttachmentResponse {
   data?: PostgresAttachment;
 }
-export const CreatePostgresAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PostgresAttachment),
   }),
@@ -2166,7 +2157,7 @@ export const CreatePostgresAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Backup type. */
 export type CreatePostgresBackupRequestType = "full" | "incr" | "diff";
-export const CreatePostgresBackupRequestType = S.String;
+const CreatePostgresBackupRequestType = S.String;
 
 export interface CreatePostgresBackupRequest {
   /** Managed Postgres Cluster ID */
@@ -2174,7 +2165,7 @@ export interface CreatePostgresBackupRequest {
   /** Backup type. */
   type: CreatePostgresBackupRequestType | (string & {});
 }
-export const CreatePostgresBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     type: CreatePostgresBackupRequestType,
@@ -2184,7 +2175,7 @@ export const CreatePostgresBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresBackupRequest>;
 
 export interface CreatePostgresBackupResponse {}
-export const CreatePostgresBackupResponse =
+const CreatePostgresBackupResponse =
   CordonMachineResponse as any as S.Schema<CreatePostgresBackupResponse>;
 
 export interface CreatePostgresDatabaseRequest {
@@ -2193,7 +2184,7 @@ export interface CreatePostgresDatabaseRequest {
   /** Name of the database to create. Must start and end with an alphanumeric character and may contain hyphens and underscores, up to 63 characters. */
   name: string;
 }
-export const CreatePostgresDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -2208,12 +2199,12 @@ export interface PostgresDatabase {
   /** Database name. */
   name?: string;
 }
-export const PostgresDatabase = PostgresAttachedApp as any as S.Schema<PostgresDatabase>;
+const PostgresDatabase = PostgresAttachedApp as any as S.Schema<PostgresDatabase>;
 
 export interface PostgresDatabaseResponse {
   data?: PostgresDatabase;
 }
-export const PostgresDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const PostgresDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PostgresDatabase),
   }),
@@ -2221,7 +2212,7 @@ export const PostgresDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Role to grant the user. */
 export type CreatePostgresUserRequestRole = "schema_admin" | "writer" | "reader";
-export const CreatePostgresUserRequestRole = S.String;
+const CreatePostgresUserRequestRole = S.String;
 
 export interface CreatePostgresUserRequest {
   /** Managed Postgres Cluster ID */
@@ -2231,7 +2222,7 @@ export interface CreatePostgresUserRequest {
   /** Name for the new user. Must start and end with a lowercase alphanumeric character and may contain hyphens and underscores, up to 63 characters. */
   username: string;
 }
-export const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     role: CreatePostgresUserRequestRole,
@@ -2243,7 +2234,7 @@ export const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User role. */
 export type PostgresUserRole = "schema_admin" | "writer" | "reader";
-export const PostgresUserRole = S.String;
+const PostgresUserRole = S.String;
 
 export interface PostgresUser {
   /** User role. */
@@ -2251,7 +2242,7 @@ export interface PostgresUser {
   /** User name. */
   username?: string;
 }
-export const PostgresUser = /*@__PURE__*/ S.suspend(() =>
+const PostgresUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(PostgresUserRole),
     username: S.optional(S.String),
@@ -2261,7 +2252,7 @@ export const PostgresUser = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePostgresUserResponse {
   data?: PostgresUser;
 }
-export const CreatePostgresUserResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PostgresUser),
   }),
@@ -2276,7 +2267,7 @@ export interface CreateSecretRequest {
   secret_name: string;
   value?: string;
 }
-export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -2294,7 +2285,7 @@ export interface SetAppSecretResponse {
   value?: string;
   version?: number;
 }
-export const SetAppSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const SetAppSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Version: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -2326,7 +2317,7 @@ export interface CreateVolumeRequest {
   source_volume_id?: string;
   unique_zone_app_wide?: boolean;
 }
-export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     auto_backup_enabled: S.optional(S.Boolean),
@@ -2346,18 +2337,18 @@ export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVolumeRequest" }) as any as S.Schema<CreateVolumeRequest>;
 
 export type VolumeHostFeaturesList = Array<string>;
-export const VolumeHostFeaturesList =
+const VolumeHostFeaturesList =
   MainTokenAccessCommandList as any as S.Schema<VolumeHostFeaturesList>;
 
 export type VolumeHostStatus = "ok" | "unknown" | "unreachable";
-export const VolumeHostStatus = S.String;
+const VolumeHostStatus = S.String;
 
 export type VolumeRequiredHostFeaturesList = Array<string>;
-export const VolumeRequiredHostFeaturesList =
+const VolumeRequiredHostFeaturesList =
   MainTokenAccessCommandList as any as S.Schema<VolumeRequiredHostFeaturesList>;
 
 export type VolumeType = "local" | "cache";
-export const VolumeType = S.String;
+const VolumeType = S.String;
 
 export interface Volume {
   attached_alloc_id?: string;
@@ -2384,7 +2375,7 @@ export interface Volume {
   type?: VolumeType;
   zone?: string;
 }
-export const Volume = /*@__PURE__*/ S.suspend(() =>
+const Volume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attached_alloc_id: S.optional(S.String),
     attached_machine_id: S.optional(S.String),
@@ -2418,7 +2409,7 @@ export interface CreateVolumeSnapshotRequest {
   /** Volume ID */
   volume_id: string;
 }
-export const CreateVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     volume_id: S.String.pipe(T.Label()),
@@ -2430,7 +2421,7 @@ export const CreateVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVolumeSnapshotRequest>;
 
 export interface CreateVolumeSnapshotResponse {}
-export const CreateVolumeSnapshotResponse =
+const CreateVolumeSnapshotResponse =
   CordonMachineResponse as any as S.Schema<CreateVolumeSnapshotResponse>;
 
 export interface DecryptSecretKeyRequest {
@@ -2443,7 +2434,7 @@ export interface DecryptSecretKeyRequest {
   associated_data?: string;
   ciphertext?: string;
 }
-export const DecryptSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DecryptSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -2462,7 +2453,7 @@ export const DecryptSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DecryptSecretkeyResponse {
   plaintext?: string;
 }
-export const DecryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DecryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plaintext: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -2472,14 +2463,14 @@ export interface DeleteAppRequest {
   /** Fly App Name */
   app_name: string;
 }
-export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/apps/{app_name}", code: 200 })),
 ).annotate({ identifier: "DeleteAppRequest" }) as any as S.Schema<DeleteAppRequest>;
 
 export interface DeleteAppResponse {}
-export const DeleteAppResponse = CordonMachineResponse as any as S.Schema<DeleteAppResponse>;
+const DeleteAppResponse = CordonMachineResponse as any as S.Schema<DeleteAppResponse>;
 
 export interface DeleteAppAcmeCertificateRequest {
   /** Fly App Name */
@@ -2487,7 +2478,7 @@ export interface DeleteAppAcmeCertificateRequest {
   /** Certificate Hostname */
   hostname: string;
 }
-export const DeleteAppAcmeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppAcmeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     hostname: S.String.pipe(T.Label()),
@@ -2508,7 +2499,7 @@ export interface DeleteAppCertificateRequest {
   /** Certificate Hostname */
   hostname: string;
 }
-export const DeleteAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     hostname: S.String.pipe(T.Label()),
@@ -2520,7 +2511,7 @@ export const DeleteAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppCertificateRequest>;
 
 export interface DeleteAppCertificateResponse {}
-export const DeleteAppCertificateResponse =
+const DeleteAppCertificateResponse =
   CordonMachineResponse as any as S.Schema<DeleteAppCertificateResponse>;
 
 export interface DeleteAppCustomCertificateRequest {
@@ -2529,7 +2520,7 @@ export interface DeleteAppCustomCertificateRequest {
   /** Certificate Hostname */
   hostname: string;
 }
-export const DeleteAppCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     hostname: S.String.pipe(T.Label()),
@@ -2545,12 +2536,12 @@ export const DeleteAppCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppCustomCertificateRequest>;
 
 export type DestroyCustomCertificateResponseCertificatesList = Array<CertificateEntry>;
-export const DestroyCustomCertificateResponseCertificatesList =
+const DestroyCustomCertificateResponseCertificatesList =
   CertificateCheckResponseCertificatesList as any as S.Schema<DestroyCustomCertificateResponseCertificatesList>;
 
 export type DestroyCustomCertificateResponseValidationErrorsList =
   Array<CertificateValidationError>;
-export const DestroyCustomCertificateResponseValidationErrorsList =
+const DestroyCustomCertificateResponseValidationErrorsList =
   CertificateCheckResponseValidationErrorsList as any as S.Schema<DestroyCustomCertificateResponseValidationErrorsList>;
 
 export interface DestroyCustomCertificateResponse {
@@ -2566,7 +2557,7 @@ export interface DestroyCustomCertificateResponse {
   validation_errors?: DestroyCustomCertificateResponseValidationErrorsList;
   warning?: string;
 }
-export const DestroyCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const DestroyCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acme_requested: S.optional(S.Boolean),
     certificates: S.optional(DestroyCustomCertificateResponseCertificatesList),
@@ -2590,7 +2581,7 @@ export interface DeleteAppIPAssignmentRequest {
   /** IP address */
   ip: string;
 }
-export const DeleteAppIPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppIPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -2600,7 +2591,7 @@ export const DeleteAppIPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppIPAssignmentRequest>;
 
 export interface DeleteAppIPAssignmentResponse {}
-export const DeleteAppIPAssignmentResponse =
+const DeleteAppIPAssignmentResponse =
   CordonMachineResponse as any as S.Schema<DeleteAppIPAssignmentResponse>;
 
 export interface DeleteMachineRequest {
@@ -2612,7 +2603,7 @@ export interface DeleteMachineRequest {
   force?: boolean;
   lease_nonce?: string;
 }
-export const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -2624,8 +2615,7 @@ export const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMachineRequest" }) as any as S.Schema<DeleteMachineRequest>;
 
 export interface DeleteMachineResponse {}
-export const DeleteMachineResponse =
-  CordonMachineResponse as any as S.Schema<DeleteMachineResponse>;
+const DeleteMachineResponse = CordonMachineResponse as any as S.Schema<DeleteMachineResponse>;
 
 export interface DeleteMachineMetadataRequest {
   /** Fly App Name */
@@ -2635,7 +2625,7 @@ export interface DeleteMachineMetadataRequest {
   /** Metadata Key */
   key: string;
 }
-export const DeleteMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -2652,22 +2642,21 @@ export const DeleteMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMachineMetadataRequest>;
 
 export interface DeleteMachineMetadataResponse {}
-export const DeleteMachineMetadataResponse =
+const DeleteMachineMetadataResponse =
   CordonMachineResponse as any as S.Schema<DeleteMachineMetadataResponse>;
 
 export interface DeletePostgresRequest {
   /** Managed Postgres Cluster ID */
   postgres_cluster_id: string;
 }
-export const DeletePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/postgres/{postgres_cluster_id}", code: 200 })),
 ).annotate({ identifier: "DeletePostgresRequest" }) as any as S.Schema<DeletePostgresRequest>;
 
 export interface DeletePostgresResponse {}
-export const DeletePostgresResponse =
-  CordonMachineResponse as any as S.Schema<DeletePostgresResponse>;
+const DeletePostgresResponse = CordonMachineResponse as any as S.Schema<DeletePostgresResponse>;
 
 export interface DeletePostgresAttachmentRequest {
   /** Managed Postgres Cluster ID */
@@ -2675,7 +2664,7 @@ export interface DeletePostgresAttachmentRequest {
   /** Fly App Name */
   app_name: string;
 }
-export const DeletePostgresAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     app_name: S.String.pipe(T.Label()),
@@ -2691,9 +2680,7 @@ export const DeletePostgresAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePostgresAttachmentRequest>;
 
 export interface DeletePostgresAttachmentResponse {}
-export const DeletePostgresAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeletePostgresAttachmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePostgresAttachmentResponse",
 }) as any as S.Schema<DeletePostgresAttachmentResponse>;
 
@@ -2703,7 +2690,7 @@ export interface DeletePostgresDatabaseRequest {
   /** Database Name */
   database_name: string;
 }
-export const DeletePostgresDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -2724,7 +2711,7 @@ export interface DeletePostgresUserRequest {
   /** Postgres User Name */
   username: string;
 }
-export const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -2740,7 +2727,7 @@ export const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePostgresUserRequest>;
 
 export interface DeletePostgresUserResponse {}
-export const DeletePostgresUserResponse =
+const DeletePostgresUserResponse =
   CordonMachineResponse as any as S.Schema<DeletePostgresUserResponse>;
 
 export interface DeleteSecretRequest {
@@ -2749,7 +2736,7 @@ export interface DeleteSecretRequest {
   /** App secret name */
   secret_name: string;
 }
-export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -2763,7 +2750,7 @@ export interface DeleteAppSecretResponse {
   Version?: number;
   version?: number;
 }
-export const DeleteAppSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Version: S.optional(S.Number),
     version: S.optional(S.Number),
@@ -2776,7 +2763,7 @@ export interface DeleteSecretKeyRequest {
   /** Secret key name */
   secret_name: string;
 }
-export const DeleteSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -2790,8 +2777,7 @@ export interface DeleteSecretkeyResponse {
   Version?: number;
   version?: number;
 }
-export const DeleteSecretkeyResponse =
-  DeleteAppSecretResponse as any as S.Schema<DeleteSecretkeyResponse>;
+const DeleteSecretkeyResponse = DeleteAppSecretResponse as any as S.Schema<DeleteSecretkeyResponse>;
 
 export interface DeleteVolumeRequest {
   /** Fly App Name */
@@ -2799,7 +2785,7 @@ export interface DeleteVolumeRequest {
   /** Volume ID */
   volume_id: string;
 }
-export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     volume_id: S.String.pipe(T.Label()),
@@ -2816,7 +2802,7 @@ export interface DisablePostgresExtensionRequest {
   /** Also drop objects that depend on the extension */
   force?: boolean;
 }
-export const DisablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DisablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -2834,7 +2820,7 @@ export const DisablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisablePostgresExtensionRequest>;
 
 export interface DisablePostgresExtensionResponse {}
-export const DisablePostgresExtensionResponse =
+const DisablePostgresExtensionResponse =
   DeletePostgresAttachmentResponse as any as S.Schema<DisablePostgresExtensionResponse>;
 
 export interface EnablePostgresExtensionRequest {
@@ -2849,7 +2835,7 @@ export interface EnablePostgresExtensionRequest {
   /** Schema to install the extension into. Defaults to the database's default schema. */
   schema?: string;
 }
-export const EnablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const EnablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -2868,9 +2854,9 @@ export const EnablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnablePostgresExtensionRequest>;
 
 export interface EnablePostgresExtensionResponse {}
-export const EnablePostgresExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "EnablePostgresExtensionResponse" },
-) as any as S.Schema<EnablePostgresExtensionResponse>;
+const EnablePostgresExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "EnablePostgresExtensionResponse",
+}) as any as S.Schema<EnablePostgresExtensionResponse>;
 
 export interface EncryptSecretKeyRequest {
   /** Fly App Name */
@@ -2882,7 +2868,7 @@ export interface EncryptSecretKeyRequest {
   associated_data?: string;
   plaintext?: string;
 }
-export const EncryptSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const EncryptSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -2901,14 +2887,14 @@ export const EncryptSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EncryptSecretkeyResponse {
   ciphertext?: string;
 }
-export const EncryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
+const EncryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphertext: S.optional(S.String),
   }),
 ).annotate({ identifier: "EncryptSecretkeyResponse" }) as any as S.Schema<EncryptSecretkeyResponse>;
 
 export type ExecMachineRequestCommandList = Array<string>;
-export const ExecMachineRequestCommandList =
+const ExecMachineRequestCommandList =
   MainTokenAccessCommandList as any as S.Schema<ExecMachineRequestCommandList>;
 
 export interface ExecMachineRequest {
@@ -2925,7 +2911,7 @@ export interface ExecMachineRequest {
   stdin?: string;
   timeout?: number;
 }
-export const ExecMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -2946,7 +2932,7 @@ export interface Flydv1ExecResponse {
   stderr?: string;
   stdout?: string;
 }
-export const Flydv1ExecResponse = /*@__PURE__*/ S.suspend(() =>
+const Flydv1ExecResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exit_code: S.optional(S.Number),
     exit_signal: S.optional(S.Number),
@@ -2962,7 +2948,7 @@ export interface ExtendVolumeRequest {
   volume_id: string;
   size_gb?: number;
 }
-export const ExtendVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     volume_id: S.String.pipe(T.Label()),
@@ -2976,7 +2962,7 @@ export interface ExtendVolumeResponse {
   needs_restart?: boolean;
   volume?: Volume;
 }
-export const ExtendVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const ExtendVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     needs_restart: S.optional(S.Boolean),
     volume: S.optional(Volume),
@@ -2989,7 +2975,7 @@ export interface ForkPostgresRequest {
   /** Name for the forked cluster. Defaults to the source name with a -fork suffix. */
   name?: string;
 }
-export const ForkPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const ForkPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -2997,7 +2983,7 @@ export const ForkPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForkPostgresRequest" }) as any as S.Schema<ForkPostgresRequest>;
 
 export type GenerateSecretKeyRequestValueList = Array<number>;
-export const GenerateSecretKeyRequestValueList =
+const GenerateSecretKeyRequestValueList =
   MacaroonNonceKidList as any as S.Schema<GenerateSecretKeyRequestValueList>;
 
 export interface GenerateSecretKeyRequest {
@@ -3008,7 +2994,7 @@ export interface GenerateSecretKeyRequest {
   type?: string;
   value?: GenerateSecretKeyRequestValueList;
 }
-export const GenerateSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -3033,7 +3019,7 @@ export interface SetSecretkeyResponse {
   updated_at?: string;
   version?: number;
 }
-export const SetSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
+const SetSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Version: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -3049,7 +3035,7 @@ export interface GetAppRequest {
   /** Fly App Name */
   app_name: string;
 }
-export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/apps/{app_name}", code: 200 })),
@@ -3060,7 +3046,7 @@ export interface AppOrganizationInfo {
   name?: string;
   slug?: string;
 }
-export const AppOrganizationInfo = /*@__PURE__*/ S.suspend(() =>
+const AppOrganizationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internal_numeric_id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -3079,7 +3065,7 @@ export interface App {
   status?: string;
   volume_count?: number;
 }
-export const App = /*@__PURE__*/ S.suspend(() =>
+const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     internal_numeric_id: S.optional(S.Number),
@@ -3099,7 +3085,7 @@ export interface GetAppCertificateRequest {
   /** Certificate Hostname */
   hostname: string;
 }
-export const GetAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     hostname: S.String.pipe(T.Label()),
@@ -3107,13 +3093,12 @@ export const GetAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAppCertificateRequest" }) as any as S.Schema<GetAppCertificateRequest>;
 
 export interface GetCurrentTokenRequest {}
-export const GetCurrentTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/tokens/current", code: 200 })),
 ).annotate({ identifier: "GetCurrentTokenRequest" }) as any as S.Schema<GetCurrentTokenRequest>;
 
 export type MainTokenInfoAppsList = Array<string>;
-export const MainTokenInfoAppsList =
-  MainTokenAccessCommandList as any as S.Schema<MainTokenInfoAppsList>;
+const MainTokenInfoAppsList = MainTokenAccessCommandList as any as S.Schema<MainTokenInfoAppsList>;
 
 export interface MainTokenInfo {
   apps?: MainTokenInfoAppsList;
@@ -3127,7 +3112,7 @@ export interface MainTokenInfo {
   /** User identifier if token is for a user */
   user?: string;
 }
-export const MainTokenInfo = /*@__PURE__*/ S.suspend(() =>
+const MainTokenInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: S.optional(MainTokenInfoAppsList),
     org_slug: S.optional(S.String),
@@ -3140,14 +3125,14 @@ export const MainTokenInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MainTokenInfo" }) as any as S.Schema<MainTokenInfo>;
 
 export type CurrentTokenResponseTokensList = Array<MainTokenInfo>;
-export const CurrentTokenResponseTokensList = /*@__PURE__*/ S.Array(
+const CurrentTokenResponseTokensList = /*@__PURE__*/ S.Array(
   MainTokenInfo,
 ) as any as S.Schema<CurrentTokenResponseTokensList>;
 
 export interface CurrentTokenResponse {
   tokens?: CurrentTokenResponseTokensList;
 }
-export const CurrentTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CurrentTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: S.optional(CurrentTokenResponseTokensList),
   }),
@@ -3163,7 +3148,7 @@ export interface GetMachineRequest {
   /** Include machine lease */
   include_leases?: boolean;
 }
-export const GetMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3178,7 +3163,7 @@ export interface GetMachineLeaseRequest {
   /** Machine ID */
   machine_id: string;
 }
-export const GetMachineLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3193,7 +3178,7 @@ export interface GetMachineMemoryRequest {
   /** Machine ID */
   machine_id: string;
 }
-export const GetMachineMemoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineMemoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3206,7 +3191,7 @@ export interface MainMemoryResponse {
   available_mb?: number;
   limit_mb?: number;
 }
-export const MainMemoryResponse = /*@__PURE__*/ S.suspend(() =>
+const MainMemoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available_mb: S.optional(S.Number),
     limit_mb: S.optional(S.Number),
@@ -3219,7 +3204,7 @@ export interface GetMachineMetadataRequest {
   /** Machine ID */
   machine_id: string;
 }
-export const GetMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3231,11 +3216,11 @@ export const GetMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMachineMetadataRequest>;
 
 export type GetMachineMetadataResponseBodyMap = { [key: string]: string | undefined };
-export const GetMachineMetadataResponseBodyMap =
+const GetMachineMetadataResponseBodyMap =
   FlyContainerConfigEnvMap as any as S.Schema<GetMachineMetadataResponseBodyMap>;
 
 export type GetMachineMetadataResponse = GetMachineMetadataResponseBodyMap;
-export const GetMachineMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMachineMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   GetMachineMetadataResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetMachineMetadataResponse",
@@ -3249,7 +3234,7 @@ export interface GetMachineMetadataKeyRequest {
   /** Metadata Key */
   key: string;
 }
-export const GetMachineMetadataKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineMetadataKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3268,14 +3253,14 @@ export const GetMachineMetadataKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MetadataValueResponse {
   value?: string;
 }
-export const MetadataValueResponse = /*@__PURE__*/ S.suspend(() =>
+const MetadataValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
 ).annotate({ identifier: "MetadataValueResponse" }) as any as S.Schema<MetadataValueResponse>;
 
 export type PlacementWeights = { [key: string]: number | undefined };
-export const PlacementWeights = /*@__PURE__*/ S.Record(
+const PlacementWeights = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<PlacementWeights>;
@@ -3293,7 +3278,7 @@ export interface GetPlacementsRequest {
   /** Optional weights to override default placement preferences. */
   weights?: PlacementWeights;
 }
-export const GetPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlacementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compute: S.optional(FlyMachineGuest),
     count: S.optional(S.Number),
@@ -3310,7 +3295,7 @@ export interface PlacementRegionPlacement {
   count?: number;
   region?: string;
 }
-export const PlacementRegionPlacement = /*@__PURE__*/ S.suspend(() =>
+const PlacementRegionPlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concurrency: S.optional(S.Number),
     count: S.optional(S.Number),
@@ -3319,14 +3304,14 @@ export const PlacementRegionPlacement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlacementRegionPlacement" }) as any as S.Schema<PlacementRegionPlacement>;
 
 export type MainGetPlacementsResponseRegionsList = Array<PlacementRegionPlacement>;
-export const MainGetPlacementsResponseRegionsList = /*@__PURE__*/ S.Array(
+const MainGetPlacementsResponseRegionsList = /*@__PURE__*/ S.Array(
   PlacementRegionPlacement,
 ) as any as S.Schema<MainGetPlacementsResponseRegionsList>;
 
 export interface MainGetPlacementsResponse {
   regions?: MainGetPlacementsResponseRegionsList;
 }
-export const MainGetPlacementsResponse = /*@__PURE__*/ S.suspend(() =>
+const MainGetPlacementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(MainGetPlacementsResponseRegionsList),
   }),
@@ -3338,14 +3323,14 @@ export interface GetPostgresRequest {
   /** Managed Postgres Cluster ID */
   postgres_cluster_id: string;
 }
-export const GetPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/postgres/{postgres_cluster_id}", code: 200 })),
 ).annotate({ identifier: "GetPostgresRequest" }) as any as S.Schema<GetPostgresRequest>;
 
 export interface GetRegionsRequest {}
-export const GetRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/platform/regions", code: 200 })),
 ).annotate({ identifier: "GetRegionsRequest" }) as any as S.Schema<GetRegionsRequest>;
 
@@ -3360,7 +3345,7 @@ export interface MainRegionRow {
   name?: string;
   requires_paid_plan?: boolean;
 }
-export const MainRegionRow = /*@__PURE__*/ S.suspend(() =>
+const MainRegionRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     deprecated: S.optional(S.Boolean),
@@ -3375,7 +3360,7 @@ export const MainRegionRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MainRegionRow" }) as any as S.Schema<MainRegionRow>;
 
 export type MainRegionResponseRegionsList = Array<MainRegionRow>;
-export const MainRegionResponseRegionsList = /*@__PURE__*/ S.Array(
+const MainRegionResponseRegionsList = /*@__PURE__*/ S.Array(
   MainRegionRow,
 ) as any as S.Schema<MainRegionResponseRegionsList>;
 
@@ -3383,7 +3368,7 @@ export interface MainRegionResponse {
   nearest?: string;
   regions?: MainRegionResponseRegionsList;
 }
-export const MainRegionResponse = /*@__PURE__*/ S.suspend(() =>
+const MainRegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nearest: S.optional(S.String),
     regions: S.optional(MainRegionResponseRegionsList),
@@ -3400,7 +3385,7 @@ export interface GetSecretRequest {
   /** Show the secret value. */
   show_secrets?: boolean;
 }
-export const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -3416,7 +3401,7 @@ export interface AppSecret {
   updated_at?: string;
   value?: string;
 }
-export const AppSecret = /*@__PURE__*/ S.suspend(() =>
+const AppSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     digest: S.optional(S.String),
@@ -3434,7 +3419,7 @@ export interface GetSecretKeyRequest {
   /** Minimum secrets version to return. Returned when setting a new secret */
   min_version?: string;
 }
-export const GetSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -3451,7 +3436,7 @@ export interface SecretKey {
   type?: string;
   updated_at?: string;
 }
-export const SecretKey = /*@__PURE__*/ S.suspend(() =>
+const SecretKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     name: S.optional(S.String),
@@ -3467,7 +3452,7 @@ export interface GetVolumeByIdRequest {
   /** Volume ID */
   volume_id: string;
 }
-export const GetVolumeByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     volume_id: S.String.pipe(T.Label()),
@@ -3484,7 +3469,7 @@ export interface ListAppCertificatesRequest {
   /** Number of results per page (default 25, max 500) */
   limit?: number;
 }
-export const ListAppCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3510,7 +3495,7 @@ export interface CertificateSummary {
   status?: string;
   updated_at?: string;
 }
-export const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
+const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acme_alpn_configured: S.optional(S.Boolean),
     acme_dns_configured: S.optional(S.Boolean),
@@ -3529,7 +3514,7 @@ export const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CertificateSummary" }) as any as S.Schema<CertificateSummary>;
 
 export type ListCertificatesResponseCertificatesList = Array<CertificateSummary>;
-export const ListCertificatesResponseCertificatesList = /*@__PURE__*/ S.Array(
+const ListCertificatesResponseCertificatesList = /*@__PURE__*/ S.Array(
   CertificateSummary,
 ) as any as S.Schema<ListCertificatesResponseCertificatesList>;
 
@@ -3538,7 +3523,7 @@ export interface ListCertificatesResponse {
   next_cursor?: string;
   total_count?: number;
 }
-export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificates: S.optional(ListCertificatesResponseCertificatesList),
     next_cursor: S.optional(S.String),
@@ -3550,7 +3535,7 @@ export interface ListAppIPAssignmentsRequest {
   /** Fly App Name */
   app_name: string;
 }
-export const ListAppIPAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppIPAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/apps/{app_name}/ip_assignments", code: 200 })),
@@ -3568,7 +3553,7 @@ export interface IPAssignment {
   shared?: boolean;
   type?: string;
 }
-export const IPAssignment = /*@__PURE__*/ S.suspend(() =>
+const IPAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     egress: S.optional(S.Boolean),
@@ -3582,14 +3567,14 @@ export const IPAssignment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPAssignment" }) as any as S.Schema<IPAssignment>;
 
 export type ListIPAssignmentsResponseIpsList = Array<IPAssignment>;
-export const ListIPAssignmentsResponseIpsList = /*@__PURE__*/ S.Array(
+const ListIPAssignmentsResponseIpsList = /*@__PURE__*/ S.Array(
   IPAssignment,
 ) as any as S.Schema<ListIPAssignmentsResponseIpsList>;
 
 export interface ListIPAssignmentsResponse {
   ips?: ListIPAssignmentsResponseIpsList;
 }
-export const ListIPAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIPAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ips: S.optional(ListIPAssignmentsResponseIpsList),
   }),
@@ -3607,7 +3592,7 @@ export interface ListAppsRequest {
   /** Value of next_cursor from the previous page. Requires limit. Later pages only include apps that existed when the first page was requested. Apps created in the seconds before the first page was requested may be missing. Cursors expire 30 minutes after the first page was requested. */
   cursor?: string;
 }
-export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Query()),
     app_role: S.optional(S.String.pipe(T.Query())),
@@ -3617,7 +3602,7 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppsRequest" }) as any as S.Schema<ListAppsRequest>;
 
 export type ListAppsResponseAppsList = Array<App>;
-export const ListAppsResponseAppsList = /*@__PURE__*/ S.Array(
+const ListAppsResponseAppsList = /*@__PURE__*/ S.Array(
   App,
 ) as any as S.Schema<ListAppsResponseAppsList>;
 
@@ -3628,7 +3613,7 @@ export interface ListAppsResponse {
   /** The number of apps matching the request, across all pages. When paginating, it is counted once when the first page is requested and not updated afterwards, so it may differ slightly from the number of apps returned: it excludes apps created later and includes apps deleted while paginating. Apps created in the seconds before the first page may also be counted but missing from the pages. */
   total_apps?: number;
 }
-export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: S.optional(ListAppsResponseAppsList),
     next_cursor: S.optional(S.String),
@@ -3644,7 +3629,7 @@ export interface ListMachineEventsRequest {
   /** The number of events to fetch (max of 50). If omitted, this is set to 20 by default. */
   limit?: number;
 }
-export const ListMachineEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachineEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3655,11 +3640,11 @@ export const ListMachineEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMachineEventsRequest" }) as any as S.Schema<ListMachineEventsRequest>;
 
 export type ListMachineEventsResponseBodyList = Array<MachineEvent>;
-export const ListMachineEventsResponseBodyList =
+const ListMachineEventsResponseBodyList =
   MachineEventsList as any as S.Schema<ListMachineEventsResponseBodyList>;
 
 export type ListMachineEventsResponse = ListMachineEventsResponseBodyList;
-export const ListMachineEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMachineEventsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMachineEventsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMachineEventsResponse",
@@ -3675,7 +3660,7 @@ export interface ListMachineProcessesRequest {
   /** Order */
   order?: string;
 }
-export const ListMachineProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachineProcessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3692,7 +3677,7 @@ export interface ListenSocket {
   address?: string;
   proto?: string;
 }
-export const ListenSocket = /*@__PURE__*/ S.suspend(() =>
+const ListenSocket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     proto: S.optional(S.String),
@@ -3700,7 +3685,7 @@ export const ListenSocket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListenSocket" }) as any as S.Schema<ListenSocket>;
 
 export type ProcessStatListenSocketsList = Array<ListenSocket>;
-export const ProcessStatListenSocketsList = /*@__PURE__*/ S.Array(
+const ProcessStatListenSocketsList = /*@__PURE__*/ S.Array(
   ListenSocket,
 ) as any as S.Schema<ProcessStatListenSocketsList>;
 
@@ -3714,7 +3699,7 @@ export interface ProcessStat {
   rtime?: number;
   stime?: number;
 }
-export const ProcessStat = /*@__PURE__*/ S.suspend(() =>
+const ProcessStat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(S.String),
     cpu: S.optional(S.Number),
@@ -3728,12 +3713,12 @@ export const ProcessStat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProcessStat" }) as any as S.Schema<ProcessStat>;
 
 export type ListMachineProcessesResponseBodyList = Array<ProcessStat>;
-export const ListMachineProcessesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMachineProcessesResponseBodyList = /*@__PURE__*/ S.Array(
   ProcessStat,
 ) as any as S.Schema<ListMachineProcessesResponseBodyList>;
 
 export type ListMachineProcessesResponse = ListMachineProcessesResponseBodyList;
-export const ListMachineProcessesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMachineProcessesResponse = /*@__PURE__*/ S.suspend(() =>
   ListMachineProcessesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMachineProcessesResponse",
@@ -3759,7 +3744,7 @@ export interface ListMachinesRequest {
   /** The number of machines to fetch (must be between 1 and 1000). Providing a limit enables pagination. This limit is advisory; responses may be shorter, or even empty, even when more machines remain. */
   limit?: number;
 }
-export const ListMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     include_deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -3774,12 +3759,12 @@ export const ListMachinesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMachinesRequest" }) as any as S.Schema<ListMachinesRequest>;
 
 export type ListMachinesResponseBodyList = Array<Machine>;
-export const ListMachinesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMachinesResponseBodyList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<ListMachinesResponseBodyList>;
 
 export type ListMachinesResponse = ListMachinesResponseBodyList;
-export const ListMachinesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesResponse = /*@__PURE__*/ S.suspend(() =>
   ListMachinesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMachinesResponse" }) as any as S.Schema<ListMachinesResponse>;
 
@@ -3801,7 +3786,7 @@ export interface ListMachinesOrgRequest {
   /** The number of machines to fetch (max of 1000). This limit is advisory. Responses may be shorter, or even empty, even when more machines remain. If omitted, the maximum is used */
   limit?: number;
 }
-export const ListMachinesOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
     include_deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -3815,11 +3800,11 @@ export const ListMachinesOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMachinesOrgRequest" }) as any as S.Schema<ListMachinesOrgRequest>;
 
 export type OrgMachinesResponseErrorRegionsList = Array<string>;
-export const OrgMachinesResponseErrorRegionsList =
+const OrgMachinesResponseErrorRegionsList =
   MainTokenAccessCommandList as any as S.Schema<OrgMachinesResponseErrorRegionsList>;
 
 export type MachineOverviewConfigMetadataMap = { [key: string]: string | undefined };
-export const MachineOverviewConfigMetadataMap =
+const MachineOverviewConfigMetadataMap =
   FlyContainerConfigEnvMap as any as S.Schema<MachineOverviewConfigMetadataMap>;
 
 export interface MachineOverviewConfig {
@@ -3827,7 +3812,7 @@ export interface MachineOverviewConfig {
   image?: string;
   metadata?: MachineOverviewConfigMetadataMap;
 }
-export const MachineOverviewConfig = /*@__PURE__*/ S.suspend(() =>
+const MachineOverviewConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guest: S.optional(FlyMachineGuest),
     image: S.optional(S.String),
@@ -3847,7 +3832,7 @@ export interface OrgMachine {
   updated_at?: string;
   version?: string;
 }
-export const OrgMachine = /*@__PURE__*/ S.suspend(() =>
+const OrgMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.optional(S.String),
     config: S.optional(MachineOverviewConfig),
@@ -3863,7 +3848,7 @@ export const OrgMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgMachine" }) as any as S.Schema<OrgMachine>;
 
 export type OrgMachinesResponseMachinesList = Array<OrgMachine>;
-export const OrgMachinesResponseMachinesList = /*@__PURE__*/ S.Array(
+const OrgMachinesResponseMachinesList = /*@__PURE__*/ S.Array(
   OrgMachine,
 ) as any as S.Schema<OrgMachinesResponseMachinesList>;
 
@@ -3874,7 +3859,7 @@ export interface OrgMachinesResponse {
   machines?: OrgMachinesResponseMachinesList;
   next_cursor?: string;
 }
-export const OrgMachinesResponse = /*@__PURE__*/ S.suspend(() =>
+const OrgMachinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_regions: S.optional(OrgMachinesResponseErrorRegionsList),
     last_machine_id: S.optional(S.String),
@@ -3890,7 +3875,7 @@ export interface ListMachineVersionsRequest {
   /** Machine ID */
   machine_id: string;
 }
-export const ListMachineVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachineVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -3905,7 +3890,7 @@ export interface MachineVersion {
   user_config?: FlyMachineConfig;
   version?: string;
 }
-export const MachineVersion = /*@__PURE__*/ S.suspend(() =>
+const MachineVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_config: S.optional(FlyMachineConfig),
     version: S.optional(S.String),
@@ -3913,12 +3898,12 @@ export const MachineVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MachineVersion" }) as any as S.Schema<MachineVersion>;
 
 export type ListMachineVersionsResponseBodyList = Array<MachineVersion>;
-export const ListMachineVersionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMachineVersionsResponseBodyList = /*@__PURE__*/ S.Array(
   MachineVersion,
 ) as any as S.Schema<ListMachineVersionsResponseBodyList>;
 
 export type ListMachineVersionsResponse = ListMachineVersionsResponseBodyList;
-export const ListMachineVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMachineVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMachineVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMachineVersionsResponse",
@@ -3930,7 +3915,7 @@ export interface ListPostgresRequest {
   /** Include deleted clusters */
   include_deleted?: boolean;
 }
-export const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Query()),
     include_deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -3939,12 +3924,12 @@ export const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Apps attached to the cluster. */
 export type PostgresClusterSummaryAttachedAppsList = Array<PostgresAttachedApp>;
-export const PostgresClusterSummaryAttachedAppsList =
+const PostgresClusterSummaryAttachedAppsList =
   PostgresClusterAttachedAppsList as any as S.Schema<PostgresClusterSummaryAttachedAppsList>;
 
 /** Plan slug. */
 export type PostgresClusterSummaryPlan = "basic" | "starter" | "launch" | "scale" | "Performance";
-export const PostgresClusterSummaryPlan = S.String;
+const PostgresClusterSummaryPlan = S.String;
 
 /** Current lifecycle status. */
 export type PostgresClusterSummaryStatus =
@@ -3954,7 +3939,7 @@ export type PostgresClusterSummaryStatus =
   | "deleting"
   | "deleted"
   | "failed";
-export const PostgresClusterSummaryStatus = S.String;
+const PostgresClusterSummaryStatus = S.String;
 
 export interface PostgresClusterSummary {
   /** Apps attached to the cluster. */
@@ -3974,7 +3959,7 @@ export interface PostgresClusterSummary {
   /** Current lifecycle status. */
   status?: PostgresClusterSummaryStatus;
 }
-export const PostgresClusterSummary = /*@__PURE__*/ S.suspend(() =>
+const PostgresClusterSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attached_apps: S.optional(PostgresClusterSummaryAttachedAppsList),
     created_at: S.optional(S.String),
@@ -3988,14 +3973,14 @@ export const PostgresClusterSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostgresClusterSummary" }) as any as S.Schema<PostgresClusterSummary>;
 
 export type ListPostgresClustersResponseDataList = Array<PostgresClusterSummary>;
-export const ListPostgresClustersResponseDataList = /*@__PURE__*/ S.Array(
+const ListPostgresClustersResponseDataList = /*@__PURE__*/ S.Array(
   PostgresClusterSummary,
 ) as any as S.Schema<ListPostgresClustersResponseDataList>;
 
 export interface ListPostgresClustersResponse {
   data?: ListPostgresClustersResponseDataList;
 }
-export const ListPostgresClustersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresClustersResponseDataList),
   }),
@@ -4007,7 +3992,7 @@ export interface ListPostgresBackupsRequest {
   /** Managed Postgres Cluster ID */
   postgres_cluster_id: string;
 }
-export const ListPostgresBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/postgres/{postgres_cluster_id}/backups", code: 200 })),
@@ -4017,7 +4002,7 @@ export const ListPostgresBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Backup type. */
 export type PostgresBackupType = "full" | "incr" | "diff";
-export const PostgresBackupType = S.String;
+const PostgresBackupType = S.String;
 
 export interface PostgresBackup {
   /** RFC 3339 stop timestamp. */
@@ -4033,7 +4018,7 @@ export interface PostgresBackup {
   /** Backup type. */
   type?: PostgresBackupType;
 }
-export const PostgresBackup = /*@__PURE__*/ S.suspend(() =>
+const PostgresBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finished_at: S.optional(S.String),
     id: S.optional(S.String),
@@ -4045,14 +4030,14 @@ export const PostgresBackup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostgresBackup" }) as any as S.Schema<PostgresBackup>;
 
 export type ListPostgresBackupsResponseDataList = Array<PostgresBackup>;
-export const ListPostgresBackupsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPostgresBackupsResponseDataList = /*@__PURE__*/ S.Array(
   PostgresBackup,
 ) as any as S.Schema<ListPostgresBackupsResponseDataList>;
 
 export interface ListPostgresBackupsResponse {
   data?: ListPostgresBackupsResponseDataList;
 }
-export const ListPostgresBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresBackupsResponseDataList),
   }),
@@ -4064,7 +4049,7 @@ export interface ListPostgresDatabasesRequest {
   /** Managed Postgres Cluster ID */
   postgres_cluster_id: string;
 }
-export const ListPostgresDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -4075,13 +4060,13 @@ export const ListPostgresDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostgresDatabasesRequest>;
 
 export type ListPostgresDatabasesResponseDataList = Array<PostgresDatabase>;
-export const ListPostgresDatabasesResponseDataList =
+const ListPostgresDatabasesResponseDataList =
   PostgresClusterAttachedAppsList as any as S.Schema<ListPostgresDatabasesResponseDataList>;
 
 export interface ListPostgresDatabasesResponse {
   data?: ListPostgresDatabasesResponseDataList;
 }
-export const ListPostgresDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresDatabasesResponseDataList),
   }),
@@ -4095,7 +4080,7 @@ export interface ListPostgresExtensionsRequest {
   /** Database Name */
   database_name: string;
 }
-export const ListPostgresExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -4117,7 +4102,7 @@ export interface PostgresExtensionInstalled {
   /** Installed version. */
   version?: string;
 }
-export const PostgresExtensionInstalled = /*@__PURE__*/ S.suspend(() =>
+const PostgresExtensionInstalled = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(S.String),
     version: S.optional(S.String),
@@ -4138,7 +4123,7 @@ export interface PostgresExtension {
   /** Whether this is a system extension that cannot be disabled. */
   system?: boolean;
 }
-export const PostgresExtension = /*@__PURE__*/ S.suspend(() =>
+const PostgresExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_version: S.optional(S.String),
     description: S.optional(S.String),
@@ -4149,14 +4134,14 @@ export const PostgresExtension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostgresExtension" }) as any as S.Schema<PostgresExtension>;
 
 export type ListPostgresExtensionsResponseDataList = Array<PostgresExtension>;
-export const ListPostgresExtensionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPostgresExtensionsResponseDataList = /*@__PURE__*/ S.Array(
   PostgresExtension,
 ) as any as S.Schema<ListPostgresExtensionsResponseDataList>;
 
 export interface ListPostgresExtensionsResponse {
   data?: ListPostgresExtensionsResponseDataList;
 }
-export const ListPostgresExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresExtensionsResponseDataList),
   }),
@@ -4168,21 +4153,21 @@ export interface ListPostgresUsersRequest {
   /** Managed Postgres Cluster ID */
   postgres_cluster_id: string;
 }
-export const ListPostgresUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/postgres/{postgres_cluster_id}/users", code: 200 })),
 ).annotate({ identifier: "ListPostgresUsersRequest" }) as any as S.Schema<ListPostgresUsersRequest>;
 
 export type ListPostgresUsersResponseDataList = Array<PostgresUser>;
-export const ListPostgresUsersResponseDataList = /*@__PURE__*/ S.Array(
+const ListPostgresUsersResponseDataList = /*@__PURE__*/ S.Array(
   PostgresUser,
 ) as any as S.Schema<ListPostgresUsersResponseDataList>;
 
 export interface ListPostgresUsersResponse {
   data?: ListPostgresUsersResponseDataList;
 }
-export const ListPostgresUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresUsersResponseDataList),
   }),
@@ -4198,7 +4183,7 @@ export interface ListSecretKeysRequest {
   /** Comma-seperated list of secret keys to list */
   types?: string;
 }
-export const ListSecretKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     min_version: S.optional(S.String.pipe(T.Query())),
@@ -4207,14 +4192,14 @@ export const ListSecretKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSecretKeysRequest" }) as any as S.Schema<ListSecretKeysRequest>;
 
 export type SecretKeysSecretKeysList = Array<SecretKey>;
-export const SecretKeysSecretKeysList = /*@__PURE__*/ S.Array(
+const SecretKeysSecretKeysList = /*@__PURE__*/ S.Array(
   SecretKey,
 ) as any as S.Schema<SecretKeysSecretKeysList>;
 
 export interface SecretKeys {
   secret_keys?: SecretKeysSecretKeysList;
 }
-export const SecretKeys = /*@__PURE__*/ S.suspend(() =>
+const SecretKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_keys: S.optional(SecretKeysSecretKeysList),
   }),
@@ -4228,7 +4213,7 @@ export interface ListSecretsRequest {
   /** Show the secret values. */
   show_secrets?: boolean;
 }
-export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     min_version: S.optional(S.String.pipe(T.Query())),
@@ -4237,14 +4222,14 @@ export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSecretsRequest" }) as any as S.Schema<ListSecretsRequest>;
 
 export type AppSecretsSecretsList = Array<AppSecret>;
-export const AppSecretsSecretsList = /*@__PURE__*/ S.Array(
+const AppSecretsSecretsList = /*@__PURE__*/ S.Array(
   AppSecret,
 ) as any as S.Schema<AppSecretsSecretsList>;
 
 export interface AppSecrets {
   secrets?: AppSecretsSecretsList;
 }
-export const AppSecrets = /*@__PURE__*/ S.suspend(() =>
+const AppSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secrets: S.optional(AppSecretsSecretsList),
   }),
@@ -4260,7 +4245,7 @@ export interface ListVolumesRequest {
   /** The number of volumes to fetch (must be between 1 and 1000). Providing a limit enables pagination. This limit is advisory; responses may be shorter, or even empty, even when more volumes remain. */
   limit?: number;
 }
-export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     summary: S.optional(S.Boolean.pipe(T.Query())),
@@ -4270,12 +4255,12 @@ export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVolumesRequest" }) as any as S.Schema<ListVolumesRequest>;
 
 export type ListVolumesResponseBodyList = Array<Volume>;
-export const ListVolumesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVolumesResponseBodyList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<ListVolumesResponseBodyList>;
 
 export type ListVolumesResponse = ListVolumesResponseBodyList;
-export const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
   ListVolumesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVolumesResponse" }) as any as S.Schema<ListVolumesResponse>;
 
@@ -4285,7 +4270,7 @@ export interface ListVolumeSnapshotsRequest {
   /** Volume ID */
   volume_id: string;
 }
-export const ListVolumeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     volume_id: S.String.pipe(T.Label()),
@@ -4305,7 +4290,7 @@ export interface VolumeSnapshot {
   status?: string;
   volume_size?: number;
 }
-export const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
+const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     digest: S.optional(S.String),
@@ -4318,12 +4303,12 @@ export const VolumeSnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeSnapshot" }) as any as S.Schema<VolumeSnapshot>;
 
 export type ListVolumeSnapshotsResponseBodyList = Array<VolumeSnapshot>;
-export const ListVolumeSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVolumeSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
   VolumeSnapshot,
 ) as any as S.Schema<ListVolumeSnapshotsResponseBodyList>;
 
 export type ListVolumeSnapshotsResponse = ListVolumeSnapshotsResponseBodyList;
-export const ListVolumeSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVolumeSnapshotsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVolumeSnapshotsResponse",
@@ -4347,7 +4332,7 @@ export interface ListVolumesOrgRequest {
   /** The number of volumes to fetch (max of 1000). This limit is advisory. Responses may be shorter, even when more volumes remain. If omitted, the maximum is used */
   limit?: number;
 }
-export const ListVolumesOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
     include_deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -4361,18 +4346,18 @@ export const ListVolumesOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVolumesOrgRequest" }) as any as S.Schema<ListVolumesOrgRequest>;
 
 export type OrgVolumeHostFeaturesList = Array<string>;
-export const OrgVolumeHostFeaturesList =
+const OrgVolumeHostFeaturesList =
   MainTokenAccessCommandList as any as S.Schema<OrgVolumeHostFeaturesList>;
 
 export type OrgVolumeHostStatus = "ok" | "unknown" | "unreachable";
-export const OrgVolumeHostStatus = S.String;
+const OrgVolumeHostStatus = S.String;
 
 export type OrgVolumeRequiredHostFeaturesList = Array<string>;
-export const OrgVolumeRequiredHostFeaturesList =
+const OrgVolumeRequiredHostFeaturesList =
   MainTokenAccessCommandList as any as S.Schema<OrgVolumeRequiredHostFeaturesList>;
 
 export type OrgVolumeType = "local" | "cache";
-export const OrgVolumeType = S.String;
+const OrgVolumeType = S.String;
 
 export interface OrgVolume {
   app_name?: string;
@@ -4401,7 +4386,7 @@ export interface OrgVolume {
   updated_at?: string;
   zone?: string;
 }
-export const OrgVolume = /*@__PURE__*/ S.suspend(() =>
+const OrgVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.optional(S.String),
     attached_alloc_id: S.optional(S.String),
@@ -4432,7 +4417,7 @@ export const OrgVolume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgVolume" }) as any as S.Schema<OrgVolume>;
 
 export type OrgVolumesResponseVolumesList = Array<OrgVolume>;
-export const OrgVolumesResponseVolumesList = /*@__PURE__*/ S.Array(
+const OrgVolumesResponseVolumesList = /*@__PURE__*/ S.Array(
   OrgVolume,
 ) as any as S.Schema<OrgVolumesResponseVolumesList>;
 
@@ -4442,7 +4427,7 @@ export interface OrgVolumesResponse {
   next_cursor?: string;
   volumes?: OrgVolumesResponseVolumesList;
 }
-export const OrgVolumesResponse = /*@__PURE__*/ S.suspend(() =>
+const OrgVolumesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_updated_at: S.optional(S.String),
     last_volume_id: S.optional(S.String),
@@ -4459,7 +4444,7 @@ export interface MachinesReleaseLeaseRequest {
   /** Nonce of the lease to release. Keep the nonce private. */
   lease_nonce: string;
 }
-export const MachinesReleaseLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const MachinesReleaseLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4472,11 +4457,11 @@ export const MachinesReleaseLeaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinesReleaseLeaseRequest>;
 
 export interface MachinesReleaseLeaseResponse {}
-export const MachinesReleaseLeaseResponse =
+const MachinesReleaseLeaseResponse =
   CordonMachineResponse as any as S.Schema<MachinesReleaseLeaseResponse>;
 
 export type PatchMachineMetadataRequestMetadataMap = { [key: string]: string | undefined };
-export const PatchMachineMetadataRequestMetadataMap =
+const PatchMachineMetadataRequestMetadataMap =
   FlyContainerConfigEnvMap as any as S.Schema<PatchMachineMetadataRequestMetadataMap>;
 
 export interface PatchMachineMetadataRequest {
@@ -4488,7 +4473,7 @@ export interface PatchMachineMetadataRequest {
   metadata?: PatchMachineMetadataRequestMetadataMap;
   updated_at?: string;
 }
-export const PatchMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4507,7 +4492,7 @@ export const PatchMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchMachineMetadataRequest>;
 
 export interface PatchMachineMetadataResponse {}
-export const PatchMachineMetadataResponse =
+const PatchMachineMetadataResponse =
   CordonMachineResponse as any as S.Schema<PatchMachineMetadataResponse>;
 
 export interface PostgresQueriesActiveRequest {
@@ -4516,7 +4501,7 @@ export interface PostgresQueriesActiveRequest {
   /** Database to inspect (must not be empty or whitespace-only) */
   database: string;
 }
-export const PostgresQueriesActiveRequest = /*@__PURE__*/ S.suspend(() =>
+const PostgresQueriesActiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Query()),
@@ -4551,7 +4536,7 @@ export interface PostgresActiveQuery {
   /** Type of event the backend is waiting for. */
   wait_event_type?: string;
 }
-export const PostgresActiveQuery = /*@__PURE__*/ S.suspend(() =>
+const PostgresActiveQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     application_name: S.optional(S.String),
     client: S.optional(S.String),
@@ -4568,14 +4553,14 @@ export const PostgresActiveQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostgresActiveQuery" }) as any as S.Schema<PostgresActiveQuery>;
 
 export type ListPostgresActiveQueriesResponseDataList = Array<PostgresActiveQuery>;
-export const ListPostgresActiveQueriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListPostgresActiveQueriesResponseDataList = /*@__PURE__*/ S.Array(
   PostgresActiveQuery,
 ) as any as S.Schema<ListPostgresActiveQueriesResponseDataList>;
 
 export interface ListPostgresActiveQueriesResponse {
   data?: ListPostgresActiveQueriesResponseDataList;
 }
-export const ListPostgresActiveQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresActiveQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresActiveQueriesResponseDataList),
   }),
@@ -4589,7 +4574,7 @@ export interface PostgresQueriesSlowRequest {
   /** Metrics lookback in seconds */
   range?: number;
 }
-export const PostgresQueriesSlowRequest = /*@__PURE__*/ S.suspend(() =>
+const PostgresQueriesSlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     range: S.optional(S.Number.pipe(T.Query())),
@@ -4618,7 +4603,7 @@ export interface PostgresSlowQuery {
   /** User running the query. */
   user?: string;
 }
-export const PostgresSlowQuery = /*@__PURE__*/ S.suspend(() =>
+const PostgresSlowQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calls: S.optional(S.Number),
     database: S.optional(S.String),
@@ -4632,14 +4617,14 @@ export const PostgresSlowQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostgresSlowQuery" }) as any as S.Schema<PostgresSlowQuery>;
 
 export type ListPostgresSlowQueriesResponseDataList = Array<PostgresSlowQuery>;
-export const ListPostgresSlowQueriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListPostgresSlowQueriesResponseDataList = /*@__PURE__*/ S.Array(
   PostgresSlowQuery,
 ) as any as S.Schema<ListPostgresSlowQueriesResponseDataList>;
 
 export interface ListPostgresSlowQueriesResponse {
   data?: ListPostgresSlowQueriesResponseDataList;
 }
-export const ListPostgresSlowQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresSlowQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPostgresSlowQueriesResponseDataList),
   }),
@@ -4653,7 +4638,7 @@ export interface PostgresUsersCredentialsRequest {
   /** Postgres User Name */
   username: string;
 }
-export const PostgresUsersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const PostgresUsersCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -4674,7 +4659,7 @@ export interface PostgresUserCredentials {
   /** User name. */
   username?: string;
 }
-export const PostgresUserCredentials = /*@__PURE__*/ S.suspend(() =>
+const PostgresUserCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     username: S.optional(S.String),
@@ -4684,7 +4669,7 @@ export const PostgresUserCredentials = /*@__PURE__*/ S.suspend(() =>
 export interface GetPostgresUserCredentialsResponse {
   data?: PostgresUserCredentials;
 }
-export const GetPostgresUserCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPostgresUserCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PostgresUserCredentials),
   }),
@@ -4699,7 +4684,7 @@ export interface ReclaimMachineMemoryRequest {
   machine_id: string;
   amount_mb?: number;
 }
-export const ReclaimMachineMemoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ReclaimMachineMemoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4718,7 +4703,7 @@ export const ReclaimMachineMemoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MainReclaimMemoryResponse {
   actual_mb?: number;
 }
-export const MainReclaimMemoryResponse = /*@__PURE__*/ S.suspend(() =>
+const MainReclaimMemoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actual_mb: S.optional(S.Number),
   }),
@@ -4727,19 +4712,18 @@ export const MainReclaimMemoryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MainReclaimMemoryResponse>;
 
 export interface RequestKmsTokenRequest {}
-export const RequestKmsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestKmsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/v1/tokens/kms", code: 200 })),
 ).annotate({ identifier: "RequestKmsTokenRequest" }) as any as S.Schema<RequestKmsTokenRequest>;
 
 export interface RequestKmsTokenResponse {}
-export const RequestKmsTokenResponse =
-  CordonMachineResponse as any as S.Schema<RequestKmsTokenResponse>;
+const RequestKmsTokenResponse = CordonMachineResponse as any as S.Schema<RequestKmsTokenResponse>;
 
 export interface RequestOidcTokenRequest {
   aud?: string;
   aws_principal_tags?: boolean;
 }
-export const RequestOidcTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestOidcTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aud: S.optional(S.String),
     aws_principal_tags: S.optional(S.Boolean),
@@ -4747,8 +4731,7 @@ export const RequestOidcTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestOidcTokenRequest" }) as any as S.Schema<RequestOidcTokenRequest>;
 
 export interface RequestOidcTokenResponse {}
-export const RequestOidcTokenResponse =
-  CordonMachineResponse as any as S.Schema<RequestOidcTokenResponse>;
+const RequestOidcTokenResponse = CordonMachineResponse as any as S.Schema<RequestOidcTokenResponse>;
 
 export type RestartMachineRequestSignal =
   | "SIGHUP"
@@ -4758,7 +4741,7 @@ export type RestartMachineRequestSignal =
   | "SIGUSR1"
   | "SIGUSR2"
   | "SIGTERM";
-export const RestartMachineRequestSignal = S.String;
+const RestartMachineRequestSignal = S.String;
 
 export interface RestartMachineRequest {
   /** Fly App Name */
@@ -4771,7 +4754,7 @@ export interface RestartMachineRequest {
   signal?: RestartMachineRequestSignal | (string & {});
   lease_nonce?: string;
 }
-export const RestartMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4784,8 +4767,7 @@ export const RestartMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartMachineRequest" }) as any as S.Schema<RestartMachineRequest>;
 
 export interface RestartMachineResponse {}
-export const RestartMachineResponse =
-  CordonMachineResponse as any as S.Schema<RestartMachineResponse>;
+const RestartMachineResponse = CordonMachineResponse as any as S.Schema<RestartMachineResponse>;
 
 export interface RestorePostgresRequest {
   /** Managed Postgres Cluster ID */
@@ -4797,7 +4779,7 @@ export interface RestorePostgresRequest {
   /** Point in time to restore to, as an RFC3339 timestamp with an explicit offset from UTC (e.g. Z or +02:00). Normalized to UTC and must fall within the cluster's PITR recovery window. Mutually exclusive with backup_id. */
   pitr_time?: string;
 }
-export const RestorePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     backup_id: S.optional(S.String),
@@ -4814,7 +4796,7 @@ export interface RotatePostgresUserPasswordRequest {
   /** Terminate the user's existing sessions after rotating. */
   kill_sessions?: boolean;
 }
-export const RotatePostgresUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const RotatePostgresUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -4833,7 +4815,7 @@ export const RotatePostgresUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RotatePostgresPasswordResponse {
   data?: PostgresUserCredentials;
 }
-export const RotatePostgresPasswordResponse =
+const RotatePostgresPasswordResponse =
   GetPostgresUserCredentialsResponse as any as S.Schema<RotatePostgresPasswordResponse>;
 
 export interface SetMachineMemoryLimitRequest {
@@ -4843,7 +4825,7 @@ export interface SetMachineMemoryLimitRequest {
   machine_id: string;
   limit_mb?: number;
 }
-export const SetMachineMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const SetMachineMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4856,7 +4838,7 @@ export const SetMachineMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetMachineMemoryLimitRequest>;
 
 export type SetSecretKeyRequestValueList = Array<number>;
-export const SetSecretKeyRequestValueList =
+const SetSecretKeyRequestValueList =
   MacaroonNonceKidList as any as S.Schema<SetSecretKeyRequestValueList>;
 
 export interface SetSecretKeyRequest {
@@ -4867,7 +4849,7 @@ export interface SetSecretKeyRequest {
   type?: string;
   value?: SetSecretKeyRequestValueList;
 }
-export const SetSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -4893,7 +4875,7 @@ export type SignalMachineRequestSignal =
   | "SIGTRAP"
   | "SIGUSR1"
   | "SIGUSR2";
-export const SignalMachineRequestSignal = S.String;
+const SignalMachineRequestSignal = S.String;
 
 export interface SignalMachineRequest {
   /** Fly App Name */
@@ -4902,7 +4884,7 @@ export interface SignalMachineRequest {
   machine_id: string;
   signal?: SignalMachineRequestSignal | (string & {});
 }
-export const SignalMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4913,8 +4895,7 @@ export const SignalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalMachineRequest" }) as any as S.Schema<SignalMachineRequest>;
 
 export interface SignalMachineResponse {}
-export const SignalMachineResponse =
-  CordonMachineResponse as any as S.Schema<SignalMachineResponse>;
+const SignalMachineResponse = CordonMachineResponse as any as S.Schema<SignalMachineResponse>;
 
 export interface SignSecretKeyRequest {
   /** Fly App Name */
@@ -4925,7 +4906,7 @@ export interface SignSecretKeyRequest {
   min_version?: string;
   plaintext?: string;
 }
-export const SignSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -4939,7 +4920,7 @@ export const SignSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SignSecretkeyResponse {
   signature?: string;
 }
-export const SignSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
+const SignSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signature: S.optional(S.String),
   }),
@@ -4952,7 +4933,7 @@ export interface StartMachineRequest {
   machine_id: string;
   lease_nonce?: string;
 }
-export const StartMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const StartMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4963,7 +4944,7 @@ export const StartMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartMachineRequest" }) as any as S.Schema<StartMachineRequest>;
 
 export interface StartMachineResponse {}
-export const StartMachineResponse = CordonMachineResponse as any as S.Schema<StartMachineResponse>;
+const StartMachineResponse = CordonMachineResponse as any as S.Schema<StartMachineResponse>;
 
 export type StopMachineRequestSignal =
   | "SIGHUP"
@@ -4973,7 +4954,7 @@ export type StopMachineRequestSignal =
   | "SIGUSR1"
   | "SIGUSR2"
   | "SIGTERM";
-export const StopMachineRequestSignal = S.String;
+const StopMachineRequestSignal = S.String;
 
 export interface StopMachineRequest {
   /** Fly App Name */
@@ -4984,7 +4965,7 @@ export interface StopMachineRequest {
   timeout?: string;
   lease_nonce?: string;
 }
-export const StopMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const StopMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -4997,7 +4978,7 @@ export const StopMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopMachineRequest" }) as any as S.Schema<StopMachineRequest>;
 
 export interface StopMachineResponse {}
-export const StopMachineResponse = CordonMachineResponse as any as S.Schema<StopMachineResponse>;
+const StopMachineResponse = CordonMachineResponse as any as S.Schema<StopMachineResponse>;
 
 export interface SuspendMachineRequest {
   /** Fly App Name */
@@ -5006,7 +4987,7 @@ export interface SuspendMachineRequest {
   machine_id: string;
   lease_nonce?: string;
 }
-export const SuspendMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -5017,8 +4998,7 @@ export const SuspendMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendMachineRequest" }) as any as S.Schema<SuspendMachineRequest>;
 
 export interface SuspendMachineResponse {}
-export const SuspendMachineResponse =
-  CordonMachineResponse as any as S.Schema<SuspendMachineResponse>;
+const SuspendMachineResponse = CordonMachineResponse as any as S.Schema<SuspendMachineResponse>;
 
 export interface UncordonMachineRequest {
   /** Fly App Name */
@@ -5027,7 +5007,7 @@ export interface UncordonMachineRequest {
   machine_id: string;
   lease_nonce?: string;
 }
-export const UncordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const UncordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -5042,8 +5022,7 @@ export const UncordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UncordonMachineRequest" }) as any as S.Schema<UncordonMachineRequest>;
 
 export interface UncordonMachineResponse {}
-export const UncordonMachineResponse =
-  CordonMachineResponse as any as S.Schema<UncordonMachineResponse>;
+const UncordonMachineResponse = CordonMachineResponse as any as S.Schema<UncordonMachineResponse>;
 
 export interface UpdateMachineRequest {
   /** Fly App Name */
@@ -5065,7 +5044,7 @@ export interface UpdateMachineRequest {
   skip_service_registration?: boolean;
   lease_nonce?: string;
 }
-export const UpdateMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -5084,7 +5063,7 @@ export const UpdateMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** New role for the user. */
 export type UpdatePostgresUserRoleRequestRole = "schema_admin" | "writer" | "reader";
-export const UpdatePostgresUserRoleRequestRole = S.String;
+const UpdatePostgresUserRoleRequestRole = S.String;
 
 export interface UpdatePostgresUserRoleRequest {
   /** Managed Postgres Cluster ID */
@@ -5094,7 +5073,7 @@ export interface UpdatePostgresUserRoleRequest {
   /** New role for the user. */
   role: UpdatePostgresUserRoleRequestRole | (string & {});
 }
-export const UpdatePostgresUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePostgresUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres_cluster_id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -5111,11 +5090,11 @@ export const UpdatePostgresUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePostgresUserRoleRequest>;
 
 export interface UpdatePostgresUserRoleResponse {}
-export const UpdatePostgresUserRoleResponse =
+const UpdatePostgresUserRoleResponse =
   CordonMachineResponse as any as S.Schema<UpdatePostgresUserRoleResponse>;
 
 export type UpdateSecretsRequestValuesMap = { [key: string]: string | undefined };
-export const UpdateSecretsRequestValuesMap =
+const UpdateSecretsRequestValuesMap =
   FlyContainerConfigEnvMap as any as S.Schema<UpdateSecretsRequestValuesMap>;
 
 export interface UpdateSecretsRequest {
@@ -5123,7 +5102,7 @@ export interface UpdateSecretsRequest {
   app_name: string;
   values?: UpdateSecretsRequestValuesMap;
 }
-export const UpdateSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     values: S.optional(UpdateSecretsRequestValuesMap),
@@ -5131,7 +5110,7 @@ export const UpdateSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSecretsRequest" }) as any as S.Schema<UpdateSecretsRequest>;
 
 export type AppSecretsUpdateRespSecretsList = Array<AppSecret>;
-export const AppSecretsUpdateRespSecretsList =
+const AppSecretsUpdateRespSecretsList =
   AppSecretsSecretsList as any as S.Schema<AppSecretsUpdateRespSecretsList>;
 
 export interface AppSecretsUpdateResp {
@@ -5140,7 +5119,7 @@ export interface AppSecretsUpdateResp {
   secrets?: AppSecretsUpdateRespSecretsList;
   version?: number;
 }
-export const AppSecretsUpdateResp = /*@__PURE__*/ S.suspend(() =>
+const AppSecretsUpdateResp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Version: S.optional(S.Number),
     secrets: S.optional(AppSecretsUpdateRespSecretsList),
@@ -5156,7 +5135,7 @@ export interface UpdateVolumeRequest {
   auto_backup_enabled?: boolean;
   snapshot_retention?: number;
 }
-export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     volume_id: S.String.pipe(T.Label()),
@@ -5175,7 +5154,7 @@ export interface UpsertMachineMetadataRequest {
   updated_at?: string;
   value?: string;
 }
-export const UpsertMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -5194,7 +5173,7 @@ export const UpsertMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertMachineMetadataRequest>;
 
 export interface UpsertMachineMetadataResponse {}
-export const UpsertMachineMetadataResponse =
+const UpsertMachineMetadataResponse =
   CordonMachineResponse as any as S.Schema<UpsertMachineMetadataResponse>;
 
 export interface VerifySecretKeyRequest {
@@ -5207,7 +5186,7 @@ export interface VerifySecretKeyRequest {
   plaintext?: string;
   signature?: string;
 }
-export const VerifySecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifySecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -5224,8 +5203,7 @@ export const VerifySecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifySecretKeyRequest" }) as any as S.Schema<VerifySecretKeyRequest>;
 
 export interface VerifySecretKeyResponse {}
-export const VerifySecretKeyResponse =
-  CordonMachineResponse as any as S.Schema<VerifySecretKeyResponse>;
+const VerifySecretKeyResponse = CordonMachineResponse as any as S.Schema<VerifySecretKeyResponse>;
 
 export type WaitMachineRequestState =
   | "started"
@@ -5234,7 +5212,7 @@ export type WaitMachineRequestState =
   | "destroyed"
   | "failed"
   | "settled";
-export const WaitMachineRequestState = S.String;
+const WaitMachineRequestState = S.String;
 
 export interface WaitMachineRequest {
   /** Fly App Name */
@@ -5252,7 +5230,7 @@ export interface WaitMachineRequest {
   /** desired state(s), supports repeated or comma-separated values */
   state?: WaitMachineRequestState | (string & {});
 }
-export const WaitMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
@@ -5272,7 +5250,7 @@ export interface WaitMachineResponse {
   state?: string;
   version?: string;
 }
-export const WaitMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const WaitMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_id: S.optional(S.String),
     ok: S.optional(S.Boolean),

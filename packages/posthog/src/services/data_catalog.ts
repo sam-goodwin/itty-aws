@@ -19,7 +19,7 @@ export class BadRequest
 
 /** * `certified` - certified * `deprecated` - deprecated */
 export type ProposedStatusEnum = "certified" | "deprecated";
-export const ProposedStatusEnum = S.String;
+const ProposedStatusEnum = S.String;
 
 export interface CreateDataCatalogCertificationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -37,7 +37,7 @@ export interface CreateDataCatalogCertificationRequest {
   /** Intent of the proposal: 'certified' to propose trusting this source, 'deprecated' to propose avoiding it (e.g. a stale or wrong source). * `certified` - certified * `deprecated` - deprecated */
   proposed_status?: ProposedStatusEnum | (string & {});
 }
-export const CreateDataCatalogCertificationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataCatalogCertificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     table_id: S.optional(S.String),
@@ -58,7 +58,7 @@ export const CreateDataCatalogCertificationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateDataCatalogCertificationRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -74,14 +74,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -94,7 +89,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -130,7 +125,7 @@ export interface DataCatalogCertification {
   created_by: number | null;
   created_at: string;
 }
-export const DataCatalogCertification = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogCertification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     table: S.NullOr(S.String),
@@ -153,7 +148,7 @@ export interface CreateDataCatalogCertificationsCertifyRequest {
   /** A UUID string identifying this table certification. */
   id: string;
 }
-export const CreateDataCatalogCertificationsCertifyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataCatalogCertificationsCertifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -174,7 +169,7 @@ export interface CreateDataCatalogCertificationsDeprecateRequest {
   /** A UUID string identifying this table certification. */
   id: string;
 }
-export const CreateDataCatalogCertificationsDeprecateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataCatalogCertificationsDeprecateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -191,12 +186,12 @@ export const CreateDataCatalogCertificationsDeprecateRequest = /*@__PURE__*/ S.s
 
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type CreateDataCatalogMetricsRequestDefinitionMap = { [key: string]: unknown | undefined };
-export const CreateDataCatalogMetricsRequestDefinitionMap =
+const CreateDataCatalogMetricsRequestDefinitionMap =
   UserBasicHedgehogConfigMap as any as S.Schema<CreateDataCatalogMetricsRequestDefinitionMap>;
 
 /** * `user` - user * `ai_generated` - ai_generated */
 export type CreatedSourceEnum = "user" | "ai_generated";
-export const CreatedSourceEnum = S.String;
+const CreatedSourceEnum = S.String;
 
 export interface CreateDataCatalogMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -222,7 +217,7 @@ export interface CreateDataCatalogMetricsRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-export const CreateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -244,7 +239,7 @@ export const CreateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type DataCatalogMetricDefinitionMap = { [key: string]: unknown | undefined };
-export const DataCatalogMetricDefinitionMap =
+const DataCatalogMetricDefinitionMap =
   UserBasicHedgehogConfigMap as any as S.Schema<DataCatalogMetricDefinitionMap>;
 
 export interface DataCatalogMetric {
@@ -289,7 +284,7 @@ export interface DataCatalogMetric {
   created_at: string;
   updated_at: string | null;
 }
-export const DataCatalogMetric = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -323,7 +318,7 @@ export type CreateDataCatalogMetricsRunRequestRefresh =
   | "force_blocking"
   | "force_async"
   | "force_cache";
-export const CreateDataCatalogMetricsRunRequestRefresh = S.String;
+const CreateDataCatalogMetricsRunRequestRefresh = S.String;
 
 /** * `second` - second * `minute` - minute * `hour` - hour * `day` - day * `week` - week * `month` - month * `quarter` - quarter * `year` - year */
 export type DataCatalogMetricRunRequestIntervalEnum =
@@ -335,7 +330,7 @@ export type DataCatalogMetricRunRequestIntervalEnum =
   | "month"
   | "quarter"
   | "year";
-export const DataCatalogMetricRunRequestIntervalEnum = S.String;
+const DataCatalogMetricRunRequestIntervalEnum = S.String;
 
 export interface CreateDataCatalogMetricsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -352,7 +347,7 @@ export interface CreateDataCatalogMetricsRunRequest {
   /** Client-supplied id to correlate or cancel the run. */
   query_id?: string;
 }
-export const CreateDataCatalogMetricsRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataCatalogMetricsRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -374,7 +369,7 @@ export const CreateDataCatalogMetricsRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the result columns, in the order of the values in each positional result row. Null when the results are already labeled, or the query kind returns no column names. */
 export type DataCatalogMetricRunColumnsList = Array<string>;
-export const DataCatalogMetricRunColumnsList = /*@__PURE__*/ S.Array(
+const DataCatalogMetricRunColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataCatalogMetricRunColumnsList>;
 
@@ -405,7 +400,7 @@ export interface DataCatalogMetricRun {
   /** For a markdown (agent-calculated) metric, the steps to follow to compute it. Null for an executable metric. */
   instructions: string | null;
 }
-export const DataCatalogMetricRun = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     is_drifted: S.Boolean,
@@ -444,7 +439,7 @@ export interface CreateDataCatalogRelationshipProposalRequest {
   /** Sampling evidence: match rates, sample values. */
   evidence?: unknown;
 }
-export const CreateDataCatalogRelationshipProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataCatalogRelationshipProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_table_name: S.String,
@@ -499,7 +494,7 @@ export interface DataCatalogRelationshipProposal {
   created_by: number | null;
   created_at: string;
 }
-export const DataCatalogRelationshipProposal = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogRelationshipProposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source_table_name: S.String,
@@ -529,7 +524,7 @@ export interface DataCatalogCertificationsDestroyRequest {
   /** A UUID string identifying this table certification. */
   id: string;
 }
-export const DataCatalogCertificationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogCertificationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -545,7 +540,7 @@ export const DataCatalogCertificationsDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DataCatalogCertificationsDestroyRequest>;
 
 export interface DataCatalogCertificationsDestroyResponse {}
-export const DataCatalogCertificationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogCertificationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DataCatalogCertificationsDestroyResponse",
@@ -556,7 +551,7 @@ export interface DataCatalogMetricsApproveCreateRequest {
   project_id: string;
   name: string;
 }
-export const DataCatalogMetricsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -573,7 +568,7 @@ export const DataCatalogMetricsApproveCreateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
 export type DataCatalogMetricsBulkApproveCreateRequestNamesList = Array<string>;
-export const DataCatalogMetricsBulkApproveCreateRequestNamesList =
+const DataCatalogMetricsBulkApproveCreateRequestNamesList =
   DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequestNamesList>;
 
 export interface DataCatalogMetricsBulkApproveCreateRequest {
@@ -582,7 +577,7 @@ export interface DataCatalogMetricsBulkApproveCreateRequest {
   /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
   names: DataCatalogMetricsBulkApproveCreateRequestNamesList;
 }
-export const DataCatalogMetricsBulkApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricsBulkApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     names: DataCatalogMetricsBulkApproveCreateRequestNamesList,
@@ -599,7 +594,7 @@ export const DataCatalogMetricsBulkApproveCreateRequest = /*@__PURE__*/ S.suspen
 
 /** The metrics that are now approved, freshly serialized. */
 export type DataCatalogMetricBulkApproveApprovedList = Array<DataCatalogMetric>;
-export const DataCatalogMetricBulkApproveApprovedList = /*@__PURE__*/ S.Array(
+const DataCatalogMetricBulkApproveApprovedList = /*@__PURE__*/ S.Array(
   DataCatalogMetric,
 ) as any as S.Schema<DataCatalogMetricBulkApproveApprovedList>;
 
@@ -610,7 +605,7 @@ export interface DataCatalogMetricBulkSkip {
   /** Why it was skipped, e.g. 'Not found', 'Already approved', 'Drifted from its source insight'. */
   reason: string;
 }
-export const DataCatalogMetricBulkSkip = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricBulkSkip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     reason: S.String,
@@ -621,7 +616,7 @@ export const DataCatalogMetricBulkSkip = /*@__PURE__*/ S.suspend(() =>
 
 /** Requested metrics that were not approved, with reasons. */
 export type DataCatalogMetricBulkApproveSkippedList = Array<DataCatalogMetricBulkSkip>;
-export const DataCatalogMetricBulkApproveSkippedList = /*@__PURE__*/ S.Array(
+const DataCatalogMetricBulkApproveSkippedList = /*@__PURE__*/ S.Array(
   DataCatalogMetricBulkSkip,
 ) as any as S.Schema<DataCatalogMetricBulkApproveSkippedList>;
 
@@ -632,7 +627,7 @@ export interface DataCatalogMetricBulkApprove {
   /** Requested metrics that were not approved, with reasons. */
   skipped: DataCatalogMetricBulkApproveSkippedList;
 }
-export const DataCatalogMetricBulkApprove = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricBulkApprove = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approved: DataCatalogMetricBulkApproveApprovedList,
     skipped: DataCatalogMetricBulkApproveSkippedList,
@@ -643,7 +638,7 @@ export const DataCatalogMetricBulkApprove = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
 export type DataCatalogMetricsBulkDeleteCreateRequestNamesList = Array<string>;
-export const DataCatalogMetricsBulkDeleteCreateRequestNamesList =
+const DataCatalogMetricsBulkDeleteCreateRequestNamesList =
   DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequestNamesList>;
 
 export interface DataCatalogMetricsBulkDeleteCreateRequest {
@@ -652,7 +647,7 @@ export interface DataCatalogMetricsBulkDeleteCreateRequest {
   /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
   names: DataCatalogMetricsBulkDeleteCreateRequestNamesList;
 }
-export const DataCatalogMetricsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     names: DataCatalogMetricsBulkDeleteCreateRequestNamesList,
@@ -669,12 +664,12 @@ export const DataCatalogMetricsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend
 
 /** Names of the metrics that were deleted, now free for reuse. */
 export type DataCatalogMetricBulkDeleteDeletedList = Array<string>;
-export const DataCatalogMetricBulkDeleteDeletedList =
+const DataCatalogMetricBulkDeleteDeletedList =
   DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricBulkDeleteDeletedList>;
 
 /** Requested metrics that were not deleted, with reasons. */
 export type DataCatalogMetricBulkDeleteSkippedList = Array<DataCatalogMetricBulkSkip>;
-export const DataCatalogMetricBulkDeleteSkippedList =
+const DataCatalogMetricBulkDeleteSkippedList =
   DataCatalogMetricBulkApproveSkippedList as any as S.Schema<DataCatalogMetricBulkDeleteSkippedList>;
 
 /** Outcome of a bulk delete: which names are gone, and what was left alone. */
@@ -684,7 +679,7 @@ export interface DataCatalogMetricBulkDelete {
   /** Requested metrics that were not deleted, with reasons. */
   skipped: DataCatalogMetricBulkDeleteSkippedList;
 }
-export const DataCatalogMetricBulkDelete = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricBulkDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: DataCatalogMetricBulkDeleteDeletedList,
     skipped: DataCatalogMetricBulkDeleteSkippedList,
@@ -698,7 +693,7 @@ export interface DataCatalogMetricsDestroyRequest {
   project_id: string;
   name: string;
 }
-export const DataCatalogMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -714,7 +709,7 @@ export const DataCatalogMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCatalogMetricsDestroyRequest>;
 
 export interface DataCatalogMetricsDestroyResponse {}
-export const DataCatalogMetricsDestroyResponse =
+const DataCatalogMetricsDestroyResponse =
   DataCatalogCertificationsDestroyResponse as any as S.Schema<DataCatalogMetricsDestroyResponse>;
 
 export interface DataCatalogMetricsRefreshFromInsightCreateRequest {
@@ -722,7 +717,7 @@ export interface DataCatalogMetricsRefreshFromInsightCreateRequest {
   project_id: string;
   name: string;
 }
-export const DataCatalogMetricsRefreshFromInsightCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogMetricsRefreshFromInsightCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -743,7 +738,7 @@ export interface DataCatalogRelationshipProposalsAcceptCreateRequest {
   /** A UUID string identifying this relationship proposal. */
   id: string;
 }
-export const DataCatalogRelationshipProposalsAcceptCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogRelationshipProposalsAcceptCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -766,7 +761,7 @@ export interface DataCatalogRelationshipProposalsRejectCreateRequest {
   /** Why the proposal is rejected. Persisted so it is never re-proposed. */
   rejection_reason?: string;
 }
-export const DataCatalogRelationshipProposalsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataCatalogRelationshipProposalsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -788,7 +783,7 @@ export interface GetDataCatalogCertificationRequest {
   /** A UUID string identifying this table certification. */
   id: string;
 }
-export const GetDataCatalogCertificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataCatalogCertificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -808,7 +803,7 @@ export interface GetDataCatalogMetricsRequest {
   project_id: string;
   name: string;
 }
-export const GetDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -829,7 +824,7 @@ export interface GetDataCatalogRelationshipProposalRequest {
   /** A UUID string identifying this relationship proposal. */
   id: string;
 }
-export const GetDataCatalogRelationshipProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataCatalogRelationshipProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -852,7 +847,7 @@ export interface ListDataCatalogCertificationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListDataCatalogCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataCatalogCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -869,7 +864,7 @@ export const ListDataCatalogCertificationsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDataCatalogCertificationsRequest>;
 
 export type PaginatedDataCatalogCertificationListResultsList = Array<DataCatalogCertification>;
-export const PaginatedDataCatalogCertificationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataCatalogCertificationListResultsList = /*@__PURE__*/ S.Array(
   DataCatalogCertification,
 ) as any as S.Schema<PaginatedDataCatalogCertificationListResultsList>;
 
@@ -879,7 +874,7 @@ export interface PaginatedDataCatalogCertificationList {
   previous?: string | null;
   results: PaginatedDataCatalogCertificationListResultsList;
 }
-export const PaginatedDataCatalogCertificationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataCatalogCertificationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -898,7 +893,7 @@ export interface ListDataCatalogMetricsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -911,7 +906,7 @@ export const ListDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataCatalogMetricsRequest>;
 
 export type PaginatedDataCatalogMetricListResultsList = Array<DataCatalogMetric>;
-export const PaginatedDataCatalogMetricListResultsList =
+const PaginatedDataCatalogMetricListResultsList =
   DataCatalogMetricBulkApproveApprovedList as any as S.Schema<PaginatedDataCatalogMetricListResultsList>;
 
 export interface PaginatedDataCatalogMetricList {
@@ -920,7 +915,7 @@ export interface PaginatedDataCatalogMetricList {
   previous?: string | null;
   results: PaginatedDataCatalogMetricListResultsList;
 }
-export const PaginatedDataCatalogMetricList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataCatalogMetricList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -941,7 +936,7 @@ export interface ListDataCatalogRelationshipProposalsRequest {
   /** Filter by proposed/accepted/rejected. */
   status?: string;
 }
-export const ListDataCatalogRelationshipProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataCatalogRelationshipProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -960,7 +955,7 @@ export const ListDataCatalogRelationshipProposalsRequest = /*@__PURE__*/ S.suspe
 
 export type PaginatedDataCatalogRelationshipProposalListResultsList =
   Array<DataCatalogRelationshipProposal>;
-export const PaginatedDataCatalogRelationshipProposalListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataCatalogRelationshipProposalListResultsList = /*@__PURE__*/ S.Array(
   DataCatalogRelationshipProposal,
 ) as any as S.Schema<PaginatedDataCatalogRelationshipProposalListResultsList>;
 
@@ -970,7 +965,7 @@ export interface PaginatedDataCatalogRelationshipProposalList {
   previous?: string | null;
   results: PaginatedDataCatalogRelationshipProposalListResultsList;
 }
-export const PaginatedDataCatalogRelationshipProposalList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataCatalogRelationshipProposalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -983,7 +978,7 @@ export const PaginatedDataCatalogRelationshipProposalList = /*@__PURE__*/ S.susp
 
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type UpdateDataCatalogMetricsRequestDefinitionMap = { [key: string]: unknown | undefined };
-export const UpdateDataCatalogMetricsRequestDefinitionMap =
+const UpdateDataCatalogMetricsRequestDefinitionMap =
   UserBasicHedgehogConfigMap as any as S.Schema<UpdateDataCatalogMetricsRequestDefinitionMap>;
 
 export interface UpdateDataCatalogMetricsRequest {
@@ -1009,7 +1004,7 @@ export interface UpdateDataCatalogMetricsRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-export const UpdateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1037,7 +1032,7 @@ export const UpdateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateDataCatalogMetricsPartialRequestDefinitionMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDataCatalogMetricsPartialRequestDefinitionMap =
+const UpdateDataCatalogMetricsPartialRequestDefinitionMap =
   UserBasicHedgehogConfigMap as any as S.Schema<UpdateDataCatalogMetricsPartialRequestDefinitionMap>;
 
 export interface UpdateDataCatalogMetricsPartialRequest {
@@ -1063,7 +1058,7 @@ export interface UpdateDataCatalogMetricsPartialRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-export const UpdateDataCatalogMetricsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataCatalogMetricsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),

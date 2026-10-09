@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { SlackOpError, SlackOpContext };
 
 export type SearchAllRequestSortDir = "asc" | "desc";
-export const SearchAllRequestSortDir = S.String;
+const SearchAllRequestSortDir = S.String;
 
 export interface SearchAllRequest {
   count?: number;
@@ -25,7 +25,7 @@ export interface SearchAllRequest {
   /** encoded team id to search in, required if org token is used */
   team_id?: string;
 }
-export const SearchAllRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number.pipe(T.Query())),
     highlight: S.optional(S.Boolean.pipe(T.Query())),
@@ -47,7 +47,7 @@ export interface SearchAllResponse {
   /** Search query. */
   query?: string;
 }
-export const SearchAllResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     files: S.optional(S.Unknown),
@@ -59,7 +59,7 @@ export const SearchAllResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchAllResponse" }) as any as S.Schema<SearchAllResponse>;
 
 export type SearchFilesRequestSortDir = "asc" | "desc";
-export const SearchFilesRequestSortDir = S.String;
+const SearchFilesRequestSortDir = S.String;
 
 export interface SearchFilesRequest {
   count?: number;
@@ -75,7 +75,7 @@ export interface SearchFilesRequest {
   /** encoded team id to search in, required if org token is used */
   team_id?: string;
 }
-export const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number.pipe(T.Query())),
     highlight: S.optional(S.Boolean.pipe(T.Query())),
@@ -88,7 +88,7 @@ export const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilesRequest" }) as any as S.Schema<SearchFilesRequest>;
 
 export type SearchFilesResponseFilesPaginationWarningsList = Array<string>;
-export const SearchFilesResponseFilesPaginationWarningsList = /*@__PURE__*/ S.Array(
+const SearchFilesResponseFilesPaginationWarningsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchFilesResponseFilesPaginationWarningsList>;
 
@@ -107,7 +107,7 @@ export interface SearchFilesResponseFilesPagination {
   /** First result id */
   first?: number;
 }
-export const SearchFilesResponseFilesPagination = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesResponseFilesPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last: S.optional(S.Number),
     warnings: S.optional(SearchFilesResponseFilesPaginationWarningsList),
@@ -122,12 +122,12 @@ export const SearchFilesResponseFilesPagination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchFilesResponseFilesPagination>;
 
 export type SearchFilesResponseFilesMatchesList = Array<unknown>;
-export const SearchFilesResponseFilesMatchesList = /*@__PURE__*/ S.Array(
+const SearchFilesResponseFilesMatchesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SearchFilesResponseFilesMatchesList>;
 
 export type SearchFilesResponseFilesPagingWarningsList = Array<string>;
-export const SearchFilesResponseFilesPagingWarningsList =
+const SearchFilesResponseFilesPagingWarningsList =
   SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchFilesResponseFilesPagingWarningsList>;
 
 export interface SearchFilesResponseFilesPaging {
@@ -141,7 +141,7 @@ export interface SearchFilesResponseFilesPaging {
   page?: number;
   warnings?: SearchFilesResponseFilesPagingWarningsList;
 }
-export const SearchFilesResponseFilesPaging = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesResponseFilesPaging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     pages: S.optional(S.Number),
@@ -162,7 +162,7 @@ export interface SearchFilesResponseFiles {
   total?: number;
   query_too_long?: boolean;
 }
-export const SearchFilesResponseFiles = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesResponseFiles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(SearchFilesResponseFilesPagination),
     matches: S.optional(SearchFilesResponseFilesMatchesList),
@@ -174,25 +174,25 @@ export const SearchFilesResponseFiles = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilesResponseFiles" }) as any as S.Schema<SearchFilesResponseFiles>;
 
 export type SearchFilesResponseUsersMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseUsersMap = /*@__PURE__*/ S.Record(
+const SearchFilesResponseUsersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SearchFilesResponseUsersMap>;
 
 export type SearchFilesResponseTeamsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseTeamsMap =
+const SearchFilesResponseTeamsMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseTeamsMap>;
 
 export type SearchFilesResponseChannelsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseChannelsMap =
+const SearchFilesResponseChannelsMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseChannelsMap>;
 
 export type SearchFilesResponseImsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseImsMap =
+const SearchFilesResponseImsMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseImsMap>;
 
 export type SearchFilesResponseGroupsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseGroupsMap =
+const SearchFilesResponseGroupsMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseGroupsMap>;
 
 export interface SearchFilesResponse {
@@ -209,7 +209,7 @@ export interface SearchFilesResponse {
   query?: string;
   ignored_exclude_bots_pref?: boolean;
 }
-export const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     files: S.optional(SearchFilesResponseFiles),
@@ -225,7 +225,7 @@ export const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilesResponse" }) as any as S.Schema<SearchFilesResponse>;
 
 export type SearchMessagesRequestSortDir = "asc" | "desc" | "";
-export const SearchMessagesRequestSortDir = S.String;
+const SearchMessagesRequestSortDir = S.String;
 
 export interface SearchMessagesRequest {
   /** Pass the number of results you want per "page". Maximum of `100`. */
@@ -244,7 +244,7 @@ export interface SearchMessagesRequest {
   /** encoded team id to search in, required if org token is used */
   team_id?: string;
 }
-export const SearchMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number.pipe(T.Query())),
     highlight: S.optional(S.Boolean.pipe(T.Query())),
@@ -258,15 +258,15 @@ export const SearchMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMessagesRequest" }) as any as S.Schema<SearchMessagesRequest>;
 
 export type SearchMessagesResponseUsersMap = { [key: string]: unknown | undefined };
-export const SearchMessagesResponseUsersMap =
+const SearchMessagesResponseUsersMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseUsersMap>;
 
 export type SearchMessagesResponseMessagesMatchesList = Array<unknown>;
-export const SearchMessagesResponseMessagesMatchesList =
+const SearchMessagesResponseMessagesMatchesList =
   SearchFilesResponseFilesMatchesList as any as S.Schema<SearchMessagesResponseMessagesMatchesList>;
 
 export type SearchMessagesResponseMessagesPaginationWarningsList = Array<string>;
-export const SearchMessagesResponseMessagesPaginationWarningsList =
+const SearchMessagesResponseMessagesPaginationWarningsList =
   SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchMessagesResponseMessagesPaginationWarningsList>;
 
 export interface SearchMessagesResponseMessagesPagination {
@@ -286,7 +286,7 @@ export interface SearchMessagesResponseMessagesPagination {
   /** value of next cursor to be passed when using cursormark pagination */
   next_cursor?: string;
 }
-export const SearchMessagesResponseMessagesPagination = /*@__PURE__*/ S.suspend(() =>
+const SearchMessagesResponseMessagesPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last: S.optional(S.Number),
     warnings: S.optional(SearchMessagesResponseMessagesPaginationWarningsList),
@@ -302,7 +302,7 @@ export const SearchMessagesResponseMessagesPagination = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SearchMessagesResponseMessagesPagination>;
 
 export type SearchMessagesResponseMessagesPagingWarningsList = Array<string>;
-export const SearchMessagesResponseMessagesPagingWarningsList =
+const SearchMessagesResponseMessagesPagingWarningsList =
   SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchMessagesResponseMessagesPagingWarningsList>;
 
 export interface SearchMessagesResponseMessagesPaging {
@@ -318,7 +318,7 @@ export interface SearchMessagesResponseMessagesPaging {
   /** next cursor to be passed to the method for next set of results using cursor pagination */
   next_cursor?: string;
 }
-export const SearchMessagesResponseMessagesPaging = /*@__PURE__*/ S.suspend(() =>
+const SearchMessagesResponseMessagesPaging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     total: S.optional(S.Number),
@@ -339,7 +339,7 @@ export interface SearchMessagesResponseMessages {
   all_stop_words?: boolean;
   paging?: SearchMessagesResponseMessagesPaging;
 }
-export const SearchMessagesResponseMessages = /*@__PURE__*/ S.suspend(() =>
+const SearchMessagesResponseMessages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: S.optional(SearchMessagesResponseMessagesMatchesList),
     pagination: S.optional(SearchMessagesResponseMessagesPagination),
@@ -352,11 +352,11 @@ export const SearchMessagesResponseMessages = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchMessagesResponseMessages>;
 
 export type SearchMessagesResponseTeamsMap = { [key: string]: unknown | undefined };
-export const SearchMessagesResponseTeamsMap =
+const SearchMessagesResponseTeamsMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseTeamsMap>;
 
 export type SearchMessagesResponseBotsMap = { [key: string]: unknown | undefined };
-export const SearchMessagesResponseBotsMap =
+const SearchMessagesResponseBotsMap =
   SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseBotsMap>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
@@ -364,7 +364,7 @@ export interface SearchMessagesResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const SearchMessagesResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const SearchMessagesResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -387,7 +387,7 @@ export interface SearchMessagesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: SearchMessagesResponseResponseMetadata;
 }
-export const SearchMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     callstack: S.optional(S.String),

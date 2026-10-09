@@ -96,48 +96,26 @@ export type IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
   | "cosine"
   | "euclidean"
   | "dot-product";
-export const IndexesCreateRequestConfigIndexDimensionConfigurationMetric = S.String;
-
 export interface IndexesCreateRequestConfigIndexDimensionConfiguration {
   /** Specifies the number of dimensions for the index */
   dimensions: number;
   /** Specifies the type of metric to use calculating distance. */
   metric: IndexesCreateRequestConfigIndexDimensionConfigurationMetric | (string & {});
 }
-export const IndexesCreateRequestConfigIndexDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.Number,
-    metric: IndexesCreateRequestConfigIndexDimensionConfigurationMetric,
-  }),
-).annotate({
-  identifier: "IndexesCreateRequestConfigIndexDimensionConfiguration",
-}) as any as S.Schema<IndexesCreateRequestConfigIndexDimensionConfiguration>;
-
 export type IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
   | "@cf/baai/bge-small-en-v1.5"
   | "@cf/baai/bge-base-en-v1.5"
   | "@cf/baai/bge-large-en-v1.5"
   | "openai/text-embedding-ada-002"
   | "cohere/embed-multilingual-v2.0";
-export const IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset = S.String;
-
 export interface IndexesCreateRequestConfigVectorizeIndexPresetConfiguration {
   /** Specifies the preset to use for the index. */
   preset: IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset | (string & {});
 }
-export const IndexesCreateRequestConfigVectorizeIndexPresetConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      preset: IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset,
-    }),
-).annotate({
-  identifier: "IndexesCreateRequestConfigVectorizeIndexPresetConfiguration",
-}) as any as S.Schema<IndexesCreateRequestConfigVectorizeIndexPresetConfiguration>;
-
 export type IndexesCreateRequestConfig =
   | IndexesCreateRequestConfigIndexDimensionConfiguration
   | IndexesCreateRequestConfigVectorizeIndexPresetConfiguration;
-export const IndexesCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
+const IndexesCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["dimensions", "metric"], ["preset"]]),
 );
 
@@ -150,7 +128,7 @@ export interface CreateIndexRequest {
   /** Specifies the description of the index. */
   description?: string;
 }
-export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     config: IndexesCreateRequestConfig,
@@ -162,7 +140,7 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateIndexRequest" }) as any as S.Schema<CreateIndexRequest>;
 
 export type IndexesCreateResponseConfigMetric = "cosine" | "euclidean" | "dot-product";
-export const IndexesCreateResponseConfigMetric = S.String;
+const IndexesCreateResponseConfigMetric = S.String;
 
 export type IndexesCreateResponseConfigPreset =
   | "@cf/baai/bge-small-en-v1.5"
@@ -170,7 +148,7 @@ export type IndexesCreateResponseConfigPreset =
   | "@cf/baai/bge-large-en-v1.5"
   | "openai/text-embedding-ada-002"
   | "cohere/embed-multilingual-v2.0";
-export const IndexesCreateResponseConfigPreset = S.String;
+const IndexesCreateResponseConfigPreset = S.String;
 
 export interface IndexesCreateResponseConfig {
   /** Specifies the number of dimensions for the index */
@@ -180,7 +158,7 @@ export interface IndexesCreateResponseConfig {
   /** Specifies the preset to use for the index. */
   preset?: IndexesCreateResponseConfigPreset | null;
 }
-export const IndexesCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const IndexesCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.Number,
     metric: IndexesCreateResponseConfigMetric,
@@ -201,7 +179,7 @@ export interface CreateIndexResponse {
   modifiedOn?: string | null;
   name?: string | null;
 }
-export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.NullOr(IndexesCreateResponseConfig)),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -212,7 +190,7 @@ export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateIndexResponse" }) as any as S.Schema<CreateIndexResponse>;
 
 export type IndexesMetadataIndexCreateRequestIndexType = "string" | "number" | "boolean";
-export const IndexesMetadataIndexCreateRequestIndexType = S.String;
+const IndexesMetadataIndexCreateRequestIndexType = S.String;
 
 export interface CreateIndexMetadataIndexRequest {
   /** Identifier */
@@ -223,7 +201,7 @@ export interface CreateIndexMetadataIndexRequest {
   /** Specifies the metadata property to index. */
   propertyName: string;
 }
-export const CreateIndexMetadataIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIndexMetadataIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -247,7 +225,7 @@ export interface CreateIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const CreateIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -256,7 +234,7 @@ export const CreateIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIndexMetadataIndexResponse>;
 
 export type IndexesDeleteByIdsRequestIdsList = Array<string>;
-export const IndexesDeleteByIdsRequestIdsList = /*@__PURE__*/ S.Array(
+const IndexesDeleteByIdsRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IndexesDeleteByIdsRequestIdsList>;
 
@@ -267,7 +245,7 @@ export interface DeleteByIdsIndexRequest {
   /** A list of vector identifiers to delete from the index indicated by the path. */
   ids?: IndexesDeleteByIdsRequestIdsList;
 }
-export const DeleteByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -288,7 +266,7 @@ export interface DeleteByIdsIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const DeleteByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteByIdsIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationId: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -299,7 +277,7 @@ export interface DeleteIndexRequest {
   accountId: string;
   indexName: string;
 }
-export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -315,7 +293,7 @@ export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIndexRequest" }) as any as S.Schema<DeleteIndexRequest>;
 
 export type DeleteIndexResponse = unknown;
-export const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteIndexResponse" }) as any as S.Schema<DeleteIndexResponse>;
 
@@ -326,7 +304,7 @@ export interface DeleteIndexMetadataIndexRequest {
   /** Specifies the metadata property for which the index must be deleted. */
   propertyName: string;
 }
-export const DeleteIndexMetadataIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexMetadataIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -349,11 +327,11 @@ export interface DeleteIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const DeleteIndexMetadataIndexResponse =
+const DeleteIndexMetadataIndexResponse =
   CreateIndexMetadataIndexResponse as any as S.Schema<DeleteIndexMetadataIndexResponse>;
 
 export type IndexesGetByIdsRequestIdsList = Array<string>;
-export const IndexesGetByIdsRequestIdsList =
+const IndexesGetByIdsRequestIdsList =
   IndexesDeleteByIdsRequestIdsList as any as S.Schema<IndexesGetByIdsRequestIdsList>;
 
 export interface GetByIdsIndexRequest {
@@ -363,7 +341,7 @@ export interface GetByIdsIndexRequest {
   /** A list of vector identifiers to retrieve from the index indicated by the path. */
   ids?: IndexesGetByIdsRequestIdsList;
 }
-export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -380,14 +358,14 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetByIdsIndexRequest" }) as any as S.Schema<GetByIdsIndexRequest>;
 
 export type GetByIdsIndexResponse = unknown;
-export const GetByIdsIndexResponse = DeleteIndexResponse as any as S.Schema<GetByIdsIndexResponse>;
+const GetByIdsIndexResponse = DeleteIndexResponse as any as S.Schema<GetByIdsIndexResponse>;
 
 export interface GetIndexRequest {
   /** Identifier */
   accountId: string;
   indexName: string;
 }
-export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -403,7 +381,7 @@ export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIndexRequest" }) as any as S.Schema<GetIndexRequest>;
 
 export type IndexesGetResponseConfigMetric = "cosine" | "euclidean" | "dot-product";
-export const IndexesGetResponseConfigMetric = S.String;
+const IndexesGetResponseConfigMetric = S.String;
 
 export type IndexesGetResponseConfigPreset =
   | "@cf/baai/bge-small-en-v1.5"
@@ -411,7 +389,7 @@ export type IndexesGetResponseConfigPreset =
   | "@cf/baai/bge-large-en-v1.5"
   | "openai/text-embedding-ada-002"
   | "cohere/embed-multilingual-v2.0";
-export const IndexesGetResponseConfigPreset = S.String;
+const IndexesGetResponseConfigPreset = S.String;
 
 export interface IndexesGetResponseConfig {
   /** Specifies the number of dimensions for the index */
@@ -421,7 +399,7 @@ export interface IndexesGetResponseConfig {
   /** Specifies the preset to use for the index. */
   preset?: IndexesGetResponseConfigPreset | null;
 }
-export const IndexesGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const IndexesGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.Number,
     metric: IndexesGetResponseConfigMetric,
@@ -440,7 +418,7 @@ export interface GetIndexResponse {
   modifiedOn?: string | null;
   name?: string | null;
 }
-export const GetIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.NullOr(IndexesGetResponseConfig)),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -455,7 +433,7 @@ export interface GetIndexInfoRequest {
   accountId: string;
   indexName: string;
 }
-export const GetIndexInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIndexInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -481,7 +459,7 @@ export interface GetIndexInfoResponse {
   /** Specifies the number of vectors present in the index */
   vectorCount?: number | null;
 }
-export const GetIndexInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIndexInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(S.NullOr(S.Number)),
     processedUpToDatetime: S.optional(S.NullOr(S.String)),
@@ -491,7 +469,7 @@ export const GetIndexInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIndexInfoResponse" }) as any as S.Schema<GetIndexInfoResponse>;
 
 export type IndexesInsertRequestUnparsableBehavior = "error" | "discard";
-export const IndexesInsertRequestUnparsableBehavior = S.String;
+const IndexesInsertRequestUnparsableBehavior = S.String;
 
 export interface InsertIndexRequest {
   /** Identifier */
@@ -502,7 +480,7 @@ export interface InsertIndexRequest {
   /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
   body: Blob | Uint8Array | ArrayBuffer | string;
 }
-export const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -527,13 +505,13 @@ export interface InsertIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const InsertIndexResponse = DeleteByIdsIndexResponse as any as S.Schema<InsertIndexResponse>;
+const InsertIndexResponse = DeleteByIdsIndexResponse as any as S.Schema<InsertIndexResponse>;
 
 export interface ListIndexesRequest {
   /** Identifier */
   accountId: string;
 }
-export const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -542,16 +520,12 @@ export const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIndexesRequest" }) as any as S.Schema<ListIndexesRequest>;
 
 export type IndexesListResultItemConfigMetric = "cosine" | "euclidean" | "dot-product";
-export const IndexesListResultItemConfigMetric = S.String;
-
 export type IndexesListResultItemConfigPreset =
   | "@cf/baai/bge-small-en-v1.5"
   | "@cf/baai/bge-base-en-v1.5"
   | "@cf/baai/bge-large-en-v1.5"
   | "openai/text-embedding-ada-002"
   | "cohere/embed-multilingual-v2.0";
-export const IndexesListResultItemConfigPreset = S.String;
-
 export interface IndexesListResultItemConfig {
   /** Specifies the number of dimensions for the index */
   dimensions: number;
@@ -560,7 +534,7 @@ export interface IndexesListResultItemConfig {
   /** Specifies the preset to use for the index. */
   preset?: IndexesListResultItemConfigPreset | null;
 }
-export const IndexesListResultItemConfig =
+const IndexesListResultItemConfig =
   IndexesCreateResponseConfig as any as S.Schema<IndexesListResultItemConfig>;
 
 export interface IndexesListResultItem {
@@ -573,7 +547,7 @@ export interface IndexesListResultItem {
   modifiedOn?: string | null;
   name?: string | null;
 }
-export const IndexesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const IndexesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.NullOr(IndexesListResultItemConfig)),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -584,7 +558,7 @@ export const IndexesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexesListResultItem" }) as any as S.Schema<IndexesListResultItem>;
 
 export type IndexesListResultList = Array<IndexesListResultItem>;
-export const IndexesListResultList = /*@__PURE__*/ S.Array(
+const IndexesListResultList = /*@__PURE__*/ S.Array(
   IndexesListResultItem,
 ) as any as S.Schema<IndexesListResultList>;
 
@@ -594,7 +568,7 @@ export interface ListIndexesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: IndexesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -606,7 +580,7 @@ export interface ListIndexMetadataIndexesRequest {
   accountId: string;
   indexName: string;
 }
-export const ListIndexMetadataIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIndexMetadataIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -627,7 +601,7 @@ export type IndexesMetadataIndexListResponseMetadataIndexesItemIndexType =
   | "string"
   | "number"
   | "boolean";
-export const IndexesMetadataIndexListResponseMetadataIndexesItemIndexType = S.String;
+const IndexesMetadataIndexListResponseMetadataIndexesItemIndexType = S.String;
 
 export interface IndexesMetadataIndexListResponseMetadataIndexesItem {
   /** Specifies the type of indexed metadata property. */
@@ -635,7 +609,7 @@ export interface IndexesMetadataIndexListResponseMetadataIndexesItem {
   /** Specifies the indexed metadata property. */
   propertyName?: string | null;
 }
-export const IndexesMetadataIndexListResponseMetadataIndexesItem = /*@__PURE__*/ S.suspend(() =>
+const IndexesMetadataIndexListResponseMetadataIndexesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexType: S.optional(S.NullOr(IndexesMetadataIndexListResponseMetadataIndexesItemIndexType)),
     propertyName: S.optional(S.NullOr(S.String)),
@@ -646,7 +620,7 @@ export const IndexesMetadataIndexListResponseMetadataIndexesItem = /*@__PURE__*/
 
 export type IndexesMetadataIndexListResponseMetadataIndexesList =
   Array<IndexesMetadataIndexListResponseMetadataIndexesItem>;
-export const IndexesMetadataIndexListResponseMetadataIndexesList = /*@__PURE__*/ S.Array(
+const IndexesMetadataIndexListResponseMetadataIndexesList = /*@__PURE__*/ S.Array(
   IndexesMetadataIndexListResponseMetadataIndexesItem,
 ) as any as S.Schema<IndexesMetadataIndexListResponseMetadataIndexesList>;
 
@@ -655,7 +629,7 @@ export interface ListIndexMetadataIndexesResponse {
   /** Array of indexed metadata properties. */
   metadataIndexes?: IndexesMetadataIndexListResponseMetadataIndexesList | null;
 }
-export const ListIndexMetadataIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIndexMetadataIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadataIndexes: S.optional(S.NullOr(IndexesMetadataIndexListResponseMetadataIndexesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -672,7 +646,7 @@ export interface ListVectorsIndexRequest {
   /** Cursor for pagination to get the next page of results */
   cursor?: string;
 }
-export const ListVectorsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVectorsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -693,7 +667,7 @@ export interface IndexesListVectorsResponseVectorsItem {
   /** Identifier for a Vector */
   id: string;
 }
-export const IndexesListVectorsResponseVectorsItem = /*@__PURE__*/ S.suspend(() =>
+const IndexesListVectorsResponseVectorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -702,7 +676,7 @@ export const IndexesListVectorsResponseVectorsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<IndexesListVectorsResponseVectorsItem>;
 
 export type IndexesListVectorsResponseVectorsList = Array<IndexesListVectorsResponseVectorsItem>;
-export const IndexesListVectorsResponseVectorsList = /*@__PURE__*/ S.Array(
+const IndexesListVectorsResponseVectorsList = /*@__PURE__*/ S.Array(
   IndexesListVectorsResponseVectorsItem,
 ) as any as S.Schema<IndexesListVectorsResponseVectorsList>;
 
@@ -721,7 +695,7 @@ export interface ListVectorsIndexResponse {
   /** Cursor for the next page of results */
   nextCursor?: string | null;
 }
-export const ListVectorsIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVectorsIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     isTruncated: S.Boolean,
@@ -733,12 +707,12 @@ export const ListVectorsIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVectorsIndexResponse" }) as any as S.Schema<ListVectorsIndexResponse>;
 
 export type IndexesQueryRequestVectorList = Array<number>;
-export const IndexesQueryRequestVectorList = /*@__PURE__*/ S.Array(
+const IndexesQueryRequestVectorList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IndexesQueryRequestVectorList>;
 
 export type IndexesQueryRequestReturnMetadata = "none" | "indexed" | "all";
-export const IndexesQueryRequestReturnMetadata = S.String;
+const IndexesQueryRequestReturnMetadata = S.String;
 
 export interface QueryIndexRequest {
   /** Identifier */
@@ -755,7 +729,7 @@ export interface QueryIndexRequest {
   /** The number of nearest neighbors to find. */
   topK?: number;
 }
-export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -776,7 +750,7 @@ export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryIndexRequest" }) as any as S.Schema<QueryIndexRequest>;
 
 export type IndexesQueryResponseMatchesItemValuesList = Array<number>;
-export const IndexesQueryResponseMatchesItemValuesList =
+const IndexesQueryResponseMatchesItemValuesList =
   IndexesQueryRequestVectorList as any as S.Schema<IndexesQueryResponseMatchesItemValuesList>;
 
 export interface IndexesQueryResponseMatchesItem {
@@ -788,7 +762,7 @@ export interface IndexesQueryResponseMatchesItem {
   score?: number | null;
   values?: IndexesQueryResponseMatchesItemValuesList | null;
 }
-export const IndexesQueryResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
+const IndexesQueryResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     metadata: S.optional(S.NullOr(S.Unknown)),
@@ -801,7 +775,7 @@ export const IndexesQueryResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesQueryResponseMatchesItem>;
 
 export type IndexesQueryResponseMatchesList = Array<IndexesQueryResponseMatchesItem>;
-export const IndexesQueryResponseMatchesList = /*@__PURE__*/ S.Array(
+const IndexesQueryResponseMatchesList = /*@__PURE__*/ S.Array(
   IndexesQueryResponseMatchesItem,
 ) as any as S.Schema<IndexesQueryResponseMatchesList>;
 
@@ -812,7 +786,7 @@ export interface QueryIndexResponse {
   /** Array of vectors matched by the search */
   matches?: IndexesQueryResponseMatchesList | null;
 }
-export const QueryIndexResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryIndexResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.NullOr(S.Number)),
     matches: S.optional(S.NullOr(IndexesQueryResponseMatchesList)),
@@ -820,7 +794,7 @@ export const QueryIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryIndexResponse" }) as any as S.Schema<QueryIndexResponse>;
 
 export type IndexesUpsertRequestUnparsableBehavior = "error" | "discard";
-export const IndexesUpsertRequestUnparsableBehavior = S.String;
+const IndexesUpsertRequestUnparsableBehavior = S.String;
 
 export interface UpsertIndexRequest {
   /** Identifier */
@@ -831,7 +805,7 @@ export interface UpsertIndexRequest {
   /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
   body: Blob | Uint8Array | ArrayBuffer | string;
 }
-export const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
@@ -856,7 +830,7 @@ export interface UpsertIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string | null;
 }
-export const UpsertIndexResponse = DeleteByIdsIndexResponse as any as S.Schema<UpsertIndexResponse>;
+const UpsertIndexResponse = DeleteByIdsIndexResponse as any as S.Schema<UpsertIndexResponse>;
 
 export type CreateIndexError =
   | IndexAlreadyExists

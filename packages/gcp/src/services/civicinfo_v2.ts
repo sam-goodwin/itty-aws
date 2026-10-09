@@ -39,7 +39,7 @@ export interface ElectionQueryElectionsRequest {
   /** Whether to include data that has not been allowlisted yet */
   productionDataOnly?: boolean;
 }
-export const ElectionQueryElectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ElectionQueryElectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productionDataOnly: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
@@ -57,7 +57,7 @@ export type CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum =
   | "shapeLookupDefault"
   | "shapeLookupDisabled"
   | "shapeLookupEnabled";
-export const CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum = S.String;
+const CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum = S.String;
 
 /** Information about the election that was queried. */
 export interface CivicinfoSchemaV2Election {
@@ -71,7 +71,7 @@ export interface CivicinfoSchemaV2Election {
   /** Day of the election in YYYY-MM-DD format. */
   electionDay?: string;
 }
-export const CivicinfoSchemaV2Election = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2Election = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ocdDivisionId: S.optional(S.String),
     shapeLookupBehavior: S.optional(CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum),
@@ -84,7 +84,7 @@ export const CivicinfoSchemaV2Election = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2Election>;
 
 export type CivicinfoSchemaV2ElectionList = Array<CivicinfoSchemaV2Election>;
-export const CivicinfoSchemaV2ElectionList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2ElectionList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Election,
 ) as any as S.Schema<CivicinfoSchemaV2ElectionList>;
 
@@ -95,7 +95,7 @@ export interface CivicinfoApiprotosV2ElectionsQueryResponse {
   /** A list of available elections */
   elections?: CivicinfoSchemaV2ElectionList;
 }
-export const CivicinfoApiprotosV2ElectionsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoApiprotosV2ElectionsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     elections: S.optional(CivicinfoSchemaV2ElectionList),
@@ -107,7 +107,7 @@ export const CivicinfoApiprotosV2ElectionsQueryResponse = /*@__PURE__*/ S.suspen
 export interface QueryDivisionByAddressDivisionsRequest {
   address?: string;
 }
-export const QueryDivisionByAddressDivisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryDivisionByAddressDivisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -122,10 +122,10 @@ export const QueryDivisionByAddressDivisionsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<QueryDivisionByAddressDivisionsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Describes a political geography. */
 export interface CivicinfoSchemaV2GeographicDivision {
@@ -136,7 +136,7 @@ export interface CivicinfoSchemaV2GeographicDivision {
   /** List of indices in the offices array, one for each office elected from this division. Will only be present if includeOffices was true (or absent) in the request. */
   officeIndices?: IntegerList;
 }
-export const CivicinfoSchemaV2GeographicDivision = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2GeographicDivision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     alsoKnownAs: S.optional(StringList),
@@ -149,7 +149,7 @@ export const CivicinfoSchemaV2GeographicDivision = /*@__PURE__*/ S.suspend(() =>
 export type CivicinfoSchemaV2GeographicDivisionMap = {
   [key: string]: CivicinfoSchemaV2GeographicDivision | undefined;
 };
-export const CivicinfoSchemaV2GeographicDivisionMap = /*@__PURE__*/ S.Record(
+const CivicinfoSchemaV2GeographicDivisionMap = /*@__PURE__*/ S.Record(
   S.String,
   CivicinfoSchemaV2GeographicDivision,
 ) as any as S.Schema<CivicinfoSchemaV2GeographicDivisionMap>;
@@ -172,7 +172,7 @@ export interface CivicinfoSchemaV2SimpleAddressType {
   /** The street name and number of this address. */
   line1?: string;
 }
-export const CivicinfoSchemaV2SimpleAddressType = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2SimpleAddressType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationName: S.optional(S.String),
     city: S.optional(S.String),
@@ -192,7 +192,7 @@ export interface CivicinfoApiprotosV2DivisionByAddressResponse {
   /** The normalized version of the requested address. */
   normalizedInput?: CivicinfoSchemaV2SimpleAddressType;
 }
-export const CivicinfoApiprotosV2DivisionByAddressResponse = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoApiprotosV2DivisionByAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     divisions: S.optional(CivicinfoSchemaV2GeographicDivisionMap),
     normalizedInput: S.optional(CivicinfoSchemaV2SimpleAddressType),
@@ -205,7 +205,7 @@ export interface SearchDivisionsRequest {
   /** The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html */
   query?: string;
 }
-export const SearchDivisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDivisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -226,7 +226,7 @@ export interface CivicinfoApiprotosV2DivisionSearchResult {
   /** The unique Open Civic Data identifier for this division */
   ocdId?: string;
 }
-export const CivicinfoApiprotosV2DivisionSearchResult = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoApiprotosV2DivisionSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     aliases: S.optional(StringList),
@@ -238,7 +238,7 @@ export const CivicinfoApiprotosV2DivisionSearchResult = /*@__PURE__*/ S.suspend(
 
 export type CivicinfoApiprotosV2DivisionSearchResultList =
   Array<CivicinfoApiprotosV2DivisionSearchResult>;
-export const CivicinfoApiprotosV2DivisionSearchResultList = /*@__PURE__*/ S.Array(
+const CivicinfoApiprotosV2DivisionSearchResultList = /*@__PURE__*/ S.Array(
   CivicinfoApiprotosV2DivisionSearchResult,
 ) as any as S.Schema<CivicinfoApiprotosV2DivisionSearchResultList>;
 
@@ -248,7 +248,7 @@ export interface CivicinfoApiprotosV2DivisionSearchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "civicinfo#divisionSearchResponse". */
   kind?: string;
 }
-export const CivicinfoApiprotosV2DivisionSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoApiprotosV2DivisionSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(CivicinfoApiprotosV2DivisionSearchResultList),
     kind: S.optional(S.String),
@@ -269,7 +269,7 @@ export interface VoterInfoQueryElectionsRequest {
   /** If set to true, the query will return the success code and include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries. */
   returnAllAvailableData?: boolean;
 }
-export const VoterInfoQueryElectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const VoterInfoQueryElectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     officialOnly: S.optional(S.Boolean.pipe(T.Query())),
     electionId: S.optional(S.String.pipe(T.Query())),
@@ -294,7 +294,7 @@ export interface CivicinfoSchemaV2Source {
   /** Whether this data comes from an official government source. */
   official?: boolean;
 }
-export const CivicinfoSchemaV2Source = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     official: S.optional(S.Boolean),
@@ -302,7 +302,7 @@ export const CivicinfoSchemaV2Source = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CivicinfoSchemaV2Source" }) as any as S.Schema<CivicinfoSchemaV2Source>;
 
 export type CivicinfoSchemaV2SourceList = Array<CivicinfoSchemaV2Source>;
-export const CivicinfoSchemaV2SourceList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2SourceList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Source,
 ) as any as S.Schema<CivicinfoSchemaV2SourceList>;
 
@@ -329,7 +329,7 @@ export interface CivicinfoSchemaV2PollingLocation {
   /** A description of when this location is open. */
   pollingHours?: string;
 }
-export const CivicinfoSchemaV2PollingLocation = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2PollingLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notes: S.optional(S.String),
     name: S.optional(S.String),
@@ -347,7 +347,7 @@ export const CivicinfoSchemaV2PollingLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2PollingLocation>;
 
 export type CivicinfoSchemaV2PollingLocationList = Array<CivicinfoSchemaV2PollingLocation>;
-export const CivicinfoSchemaV2PollingLocationList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2PollingLocationList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2PollingLocation,
 ) as any as S.Schema<CivicinfoSchemaV2PollingLocationList>;
 
@@ -381,7 +381,7 @@ export interface CivicinfoSchemaV2Precinct {
   /** ID(s) of the Contest message(s) for this precinct. */
   contestId?: StringList;
 }
-export const CivicinfoSchemaV2Precinct = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2Precinct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailOnly: S.optional(S.Boolean),
     electoralDistrictId: S.optional(StringList),
@@ -403,7 +403,7 @@ export const CivicinfoSchemaV2Precinct = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2Precinct>;
 
 export type CivicinfoSchemaV2PrecinctList = Array<CivicinfoSchemaV2Precinct>;
-export const CivicinfoSchemaV2PrecinctList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2PrecinctList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Precinct,
 ) as any as S.Schema<CivicinfoSchemaV2PrecinctList>;
 
@@ -414,7 +414,7 @@ export interface CivicinfoSchemaV2Channel {
   /** The unique public identifier for the candidate's channel. */
   id?: string;
 }
-export const CivicinfoSchemaV2Channel = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     id: S.optional(S.String),
@@ -422,7 +422,7 @@ export const CivicinfoSchemaV2Channel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CivicinfoSchemaV2Channel" }) as any as S.Schema<CivicinfoSchemaV2Channel>;
 
 export type CivicinfoSchemaV2ChannelList = Array<CivicinfoSchemaV2Channel>;
-export const CivicinfoSchemaV2ChannelList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2ChannelList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Channel,
 ) as any as S.Schema<CivicinfoSchemaV2ChannelList>;
 
@@ -445,7 +445,7 @@ export interface CivicinfoSchemaV2Candidate {
   /** The URL for the candidate's campaign web site. */
   candidateUrl?: string;
 }
-export const CivicinfoSchemaV2Candidate = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2Candidate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderOnBallot: S.optional(S.String),
     channels: S.optional(CivicinfoSchemaV2ChannelList),
@@ -461,7 +461,7 @@ export const CivicinfoSchemaV2Candidate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2Candidate>;
 
 export type CivicinfoSchemaV2CandidateList = Array<CivicinfoSchemaV2Candidate>;
-export const CivicinfoSchemaV2CandidateList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2CandidateList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Candidate,
 ) as any as S.Schema<CivicinfoSchemaV2CandidateList>;
 
@@ -478,11 +478,11 @@ export type CivicinfoSchemaV2ContestRolesItemEnum =
   | "schoolBoard"
   | "specialPurposeOfficer"
   | "otherRole";
-export const CivicinfoSchemaV2ContestRolesItemEnum = S.String;
+const CivicinfoSchemaV2ContestRolesItemEnum = S.String;
 
 export type CivicinfoSchemaV2ContestRolesItemEnumList =
   Array<CivicinfoSchemaV2ContestRolesItemEnum>;
-export const CivicinfoSchemaV2ContestRolesItemEnumList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2ContestRolesItemEnumList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2ContestRolesItemEnum,
 ) as any as S.Schema<CivicinfoSchemaV2ContestRolesItemEnumList>;
 
@@ -496,11 +496,9 @@ export type CivicinfoSchemaV2ContestLevelItemEnum =
   | "subLocality1"
   | "subLocality2"
   | "special";
-export const CivicinfoSchemaV2ContestLevelItemEnum = S.String;
-
 export type CivicinfoSchemaV2ContestLevelItemEnumList =
   Array<CivicinfoSchemaV2ContestLevelItemEnum>;
-export const CivicinfoSchemaV2ContestLevelItemEnumList =
+const CivicinfoSchemaV2ContestLevelItemEnumList =
   CivicinfoSchemaV2ContestRolesItemEnumList as any as S.Schema<CivicinfoSchemaV2ContestLevelItemEnumList>;
 
 export type CivicinfoSchemaV2ElectoralDistrictScopeEnum =
@@ -518,7 +516,7 @@ export type CivicinfoSchemaV2ElectoralDistrictScopeEnum =
   | "ward"
   | "cityCouncil"
   | "national";
-export const CivicinfoSchemaV2ElectoralDistrictScopeEnum = S.String;
+const CivicinfoSchemaV2ElectoralDistrictScopeEnum = S.String;
 
 /** Describes the geographic scope of a contest. */
 export interface CivicinfoSchemaV2ElectoralDistrict {
@@ -529,7 +527,7 @@ export interface CivicinfoSchemaV2ElectoralDistrict {
   /** The geographic scope of this district. If unspecified the district's geography is not known. One of: national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide, township, countyCouncil, cityCouncil, ward, special */
   scope?: CivicinfoSchemaV2ElectoralDistrictScopeEnum;
 }
-export const CivicinfoSchemaV2ElectoralDistrict = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2ElectoralDistrict = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -590,7 +588,7 @@ export interface CivicinfoSchemaV2Contest {
   /** The threshold of votes that the referendum needs in order to pass, e.g. "two-thirds". This field is only populated for contests of type 'Referendum'. */
   referendumPassageThreshold?: string;
 }
-export const CivicinfoSchemaV2Contest = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2Contest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referendumBrief: S.optional(S.String),
     ballotTitle: S.optional(S.String),
@@ -620,7 +618,7 @@ export const CivicinfoSchemaV2Contest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CivicinfoSchemaV2Contest" }) as any as S.Schema<CivicinfoSchemaV2Contest>;
 
 export type CivicinfoSchemaV2ContestList = Array<CivicinfoSchemaV2Contest>;
-export const CivicinfoSchemaV2ContestList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2ContestList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Contest,
 ) as any as S.Schema<CivicinfoSchemaV2ContestList>;
 
@@ -637,7 +635,7 @@ export interface CivicinfoSchemaV2ElectionOfficial {
   /** The full name of the election official. */
   name?: string;
 }
-export const CivicinfoSchemaV2ElectionOfficial = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2ElectionOfficial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     officePhoneNumber: S.optional(S.String),
@@ -650,7 +648,7 @@ export const CivicinfoSchemaV2ElectionOfficial = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2ElectionOfficial>;
 
 export type CivicinfoSchemaV2ElectionOfficialList = Array<CivicinfoSchemaV2ElectionOfficial>;
-export const CivicinfoSchemaV2ElectionOfficialList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2ElectionOfficialList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2ElectionOfficial,
 ) as any as S.Schema<CivicinfoSchemaV2ElectionOfficialList>;
 
@@ -687,7 +685,7 @@ export interface CivicinfoSchemaV2AdministrativeBody {
   /** A URL provided by this administrative body describing election rules to the voter. */
   electionRulesUrl?: string;
 }
-export const CivicinfoSchemaV2AdministrativeBody = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2AdministrativeBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     votingLocationFinderUrl: S.optional(S.String),
     electionOfficials: S.optional(CivicinfoSchemaV2ElectionOfficialList),
@@ -720,7 +718,7 @@ export interface CivicinfoSchemaV2AdministrationRegion {
   /** A list of sources for this area. If multiple sources are listed the data has been aggregated from those sources. */
   sources?: CivicinfoSchemaV2SourceList;
 }
-export const CivicinfoSchemaV2AdministrationRegion = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoSchemaV2AdministrationRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     local_jurisdiction: S.optional(CivicinfoSchemaV2AdministrationRegion),
     electionAdministrationBody: S.optional(CivicinfoSchemaV2AdministrativeBody),
@@ -733,7 +731,7 @@ export const CivicinfoSchemaV2AdministrationRegion = /*@__PURE__*/ S.suspend(() 
 
 export type CivicinfoSchemaV2AdministrationRegionList =
   Array<CivicinfoSchemaV2AdministrationRegion>;
-export const CivicinfoSchemaV2AdministrationRegionList = /*@__PURE__*/ S.Array(
+const CivicinfoSchemaV2AdministrationRegionList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2AdministrationRegion,
 ) as any as S.Schema<CivicinfoSchemaV2AdministrationRegionList>;
 
@@ -763,7 +761,7 @@ export interface CivicinfoApiprotosV2VoterInfoResponse {
   /** Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array. */
   state?: CivicinfoSchemaV2AdministrationRegionList;
 }
-export const CivicinfoApiprotosV2VoterInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const CivicinfoApiprotosV2VoterInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailOnly: S.optional(S.Boolean),
     pollingLocations: S.optional(CivicinfoSchemaV2PollingLocationList),

@@ -41,7 +41,7 @@ export interface CreateExternalDataSchemasIncrementalFieldRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const CreateExternalDataSchemasIncrementalFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSchemasIncrementalFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -57,7 +57,7 @@ export const CreateExternalDataSchemasIncrementalFieldRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateExternalDataSchemasIncrementalFieldRequest>;
 
 export interface CreateExternalDataSchemasIncrementalFieldResponse {}
-export const CreateExternalDataSchemasIncrementalFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSchemasIncrementalFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateExternalDataSchemasIncrementalFieldResponse",
@@ -69,7 +69,7 @@ export interface CreateExternalDataSchemasReloadRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const CreateExternalDataSchemasReloadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSchemasReloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -85,7 +85,7 @@ export const CreateExternalDataSchemasReloadRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateExternalDataSchemasReloadRequest>;
 
 export interface CreateExternalDataSchemasReloadResponse {}
-export const CreateExternalDataSchemasReloadResponse =
+const CreateExternalDataSchemasReloadResponse =
   CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<CreateExternalDataSchemasReloadResponse>;
 
 export interface CreateExternalDataSchemasResyncRequest {
@@ -94,7 +94,7 @@ export interface CreateExternalDataSchemasResyncRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const CreateExternalDataSchemasResyncRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataSchemasResyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -110,7 +110,7 @@ export const CreateExternalDataSchemasResyncRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateExternalDataSchemasResyncRequest>;
 
 export interface CreateExternalDataSchemasResyncResponse {}
-export const CreateExternalDataSchemasResyncResponse =
+const CreateExternalDataSchemasResyncResponse =
   CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<CreateExternalDataSchemasResyncResponse>;
 
 export interface DeleteExternalDataSchemaDataDestroyRequest {
@@ -119,7 +119,7 @@ export interface DeleteExternalDataSchemaDataDestroyRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const DeleteExternalDataSchemaDataDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExternalDataSchemaDataDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -135,7 +135,7 @@ export const DeleteExternalDataSchemaDataDestroyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteExternalDataSchemaDataDestroyRequest>;
 
 export interface DeleteExternalDataSchemaDataDestroyResponse {}
-export const DeleteExternalDataSchemaDataDestroyResponse =
+const DeleteExternalDataSchemaDataDestroyResponse =
   CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<DeleteExternalDataSchemaDataDestroyResponse>;
 
 export interface ExternalDataSchemasCancelCreateRequest {
@@ -144,7 +144,7 @@ export interface ExternalDataSchemasCancelCreateRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const ExternalDataSchemasCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemasCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -162,7 +162,7 @@ export const ExternalDataSchemasCancelCreateRequest = /*@__PURE__*/ S.suspend(()
 export interface ExternalDataSchemasCancelCreateResponse {
   detail?: string;
 }
-export const ExternalDataSchemasCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemasCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detail: S.optional(S.String),
   }),
@@ -176,7 +176,7 @@ export interface ExternalDataSchemasDestroyRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const ExternalDataSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -192,7 +192,7 @@ export const ExternalDataSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSchemasDestroyRequest>;
 
 export interface ExternalDataSchemasDestroyResponse {}
-export const ExternalDataSchemasDestroyResponse =
+const ExternalDataSchemasDestroyResponse =
   CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<ExternalDataSchemasDestroyResponse>;
 
 export interface GetExternalDataSchemaRequest {
@@ -201,7 +201,7 @@ export interface GetExternalDataSchemaRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const GetExternalDataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -217,7 +217,7 @@ export const GetExternalDataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExternalDataSchemaRequest>;
 
 export type ExternalDataSchemaTableMap = { [key: string]: unknown | undefined };
-export const ExternalDataSchemaTableMap = /*@__PURE__*/ S.Record(
+const ExternalDataSchemaTableMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ExternalDataSchemaTableMap>;
@@ -230,7 +230,7 @@ export type ExternalDataSchemaSyncTypeEnum =
   | "webhook"
   | "cdc"
   | "xmin";
-export const ExternalDataSchemaSyncTypeEnum = S.String;
+const ExternalDataSchemaSyncTypeEnum = S.String;
 
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
 export type IncrementalFieldTypeEnum =
@@ -241,7 +241,7 @@ export type IncrementalFieldTypeEnum =
   | "timestamp"
   | "objectid"
   | "xid";
-export const IncrementalFieldTypeEnum = S.String;
+const IncrementalFieldTypeEnum = S.String;
 
 /** * `never` - never * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
 export type ExternalDataSchemaSyncFrequencyEnum =
@@ -255,25 +255,25 @@ export type ExternalDataSchemaSyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
-export const ExternalDataSchemaSyncFrequencyEnum = S.String;
+const ExternalDataSchemaSyncFrequencyEnum = S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemaPrimaryKeyColumnsList = Array<string>;
-export const ExternalDataSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
+const ExternalDataSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
 
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
 export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
-export const CdcTableModeEnum = S.String;
+const CdcTableModeEnum = S.String;
 
 /** * `missing_primary_key` - Missing primary key * `duplicate_primary_key` - Duplicate primary key */
 export type IncrementalSyncBlockedReasonEnum = "missing_primary_key" | "duplicate_primary_key";
-export const IncrementalSyncBlockedReasonEnum = S.String;
+const IncrementalSyncBlockedReasonEnum = S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemaEnabledColumnsList = Array<string>;
-export const ExternalDataSchemaEnabledColumnsList =
+const ExternalDataSchemaEnabledColumnsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
 
 export interface ExternalDataSchemaRowFiltersItem {
@@ -283,7 +283,7 @@ export interface ExternalDataSchemaRowFiltersItem {
   /** Comparison value; must match the column's type. For `IN` / `NOT IN`, a comma-separated list (e.g. `1, 2, 3` or `'a','b'`). */
   value: unknown;
 }
-export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.String,
     operator: S.String,
@@ -295,7 +295,7 @@ export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList = Array<ExternalDataSchemaRowFiltersItem>;
-export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
+const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaRowFiltersItem,
 ) as any as S.Schema<ExternalDataSchemaRowFiltersList>;
 
@@ -304,7 +304,7 @@ export interface ExternalDataSchemaAvailableColumnsItem {
   data_type?: string;
   is_nullable?: boolean;
 }
-export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     data_type: S.optional(S.String),
@@ -316,12 +316,12 @@ export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(()
 
 /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
 export type ExternalDataSchemaAvailableColumnsList = Array<ExternalDataSchemaAvailableColumnsItem>;
-export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
+const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaAvailableColumnsItem,
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
 export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
-export const ExternalDataSchemaSourceSupportedApiVersionsList =
+const ExternalDataSchemaSourceSupportedApiVersionsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
 
 /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
@@ -336,7 +336,7 @@ export interface ExternalDataSchemaSource {
   api_version?: string | null;
   supported_api_versions?: ExternalDataSchemaSourceSupportedApiVersionsList;
 }
-export const ExternalDataSchemaSource = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchemaSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     source_type: S.optional(S.String),
@@ -358,7 +358,7 @@ export interface ExternalDataSourceApiVersionDeprecation {
   /** The source's current default vendor API version -- the migration target. */
   default_version: string;
 }
-export const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     sunset_at: S.NullOr(S.String),
@@ -422,7 +422,7 @@ export interface ExternalDataSchema {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -463,7 +463,7 @@ export interface GetExternalDataSchemasDestinationRequest {
   /** A UUID string identifying this external data schema. */
   id: string;
 }
-export const GetExternalDataSchemasDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSchemasDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -480,12 +480,12 @@ export const GetExternalDataSchemasDestinationRequest = /*@__PURE__*/ S.suspend(
 
 /** The table's own destinations, or null when it follows its source. */
 export type SchemaDestinationsDestinationIdsList = Array<string>;
-export const SchemaDestinationsDestinationIdsList =
+const SchemaDestinationsDestinationIdsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<SchemaDestinationsDestinationIdsList>;
 
 /** Where the table actually syncs, after inheritance is resolved. */
 export type SchemaDestinationsEffectiveDestinationIdsList = Array<string>;
-export const SchemaDestinationsEffectiveDestinationIdsList =
+const SchemaDestinationsEffectiveDestinationIdsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<SchemaDestinationsEffectiveDestinationIdsList>;
 
 /** Response shape for a table's destination override. */
@@ -497,7 +497,7 @@ export interface SchemaDestinations {
   /** Where the table actually syncs, after inheritance is resolved. */
   effective_destination_ids?: SchemaDestinationsEffectiveDestinationIdsList;
 }
-export const SchemaDestinations = /*@__PURE__*/ S.suspend(() =>
+const SchemaDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination_ids: S.NullOr(SchemaDestinationsDestinationIdsList),
     inherits_from_source: S.Boolean,
@@ -523,7 +523,7 @@ export interface GetExternalDataSchemasLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
-export const GetExternalDataSchemasLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataSchemasLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -545,7 +545,7 @@ export const GetExternalDataSchemasLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExternalDataSchemasLogRequest>;
 
 export interface GetExternalDataSchemasLogResponse {}
-export const GetExternalDataSchemasLogResponse =
+const GetExternalDataSchemasLogResponse =
   CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<GetExternalDataSchemasLogResponse>;
 
 export interface ListExternalDataSchemasRequest {
@@ -558,7 +558,7 @@ export interface ListExternalDataSchemasRequest {
   /** A search term. */
   search?: string;
 }
-export const ListExternalDataSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -572,7 +572,7 @@ export const ListExternalDataSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExternalDataSchemasRequest>;
 
 export type PaginatedExternalDataSchemaListResultsList = Array<ExternalDataSchema>;
-export const PaginatedExternalDataSchemaListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExternalDataSchemaListResultsList = /*@__PURE__*/ S.Array(
   ExternalDataSchema,
 ) as any as S.Schema<PaginatedExternalDataSchemaListResultsList>;
 
@@ -582,7 +582,7 @@ export interface PaginatedExternalDataSchemaList {
   previous?: string | null;
   results?: PaginatedExternalDataSchemaListResultsList;
 }
-export const PaginatedExternalDataSchemaList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExternalDataSchemaList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -595,20 +595,18 @@ export const PaginatedExternalDataSchemaList = /*@__PURE__*/ S.suspend(() =>
 
 /** Column names for primary key deduplication. */
 export type UpdateExternalDataSchemaRequestPrimaryKeyColumnsList = Array<string>;
-export const UpdateExternalDataSchemaRequestPrimaryKeyColumnsList =
+const UpdateExternalDataSchemaRequestPrimaryKeyColumnsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemaRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type UpdateExternalDataSchemaRequestEnabledColumnsList = Array<string>;
-export const UpdateExternalDataSchemaRequestEnabledColumnsList =
+const UpdateExternalDataSchemaRequestEnabledColumnsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemaRequestEnabledColumnsList>;
 
 export type UpdateExternalDataSchemaRequestRowFiltersItem = ExternalDataSchemaRowFiltersItem;
-export const UpdateExternalDataSchemaRequestRowFiltersItem = ExternalDataSchemaRowFiltersItem;
-
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type UpdateExternalDataSchemaRequestRowFiltersList = Array<ExternalDataSchemaRowFiltersItem>;
-export const UpdateExternalDataSchemaRequestRowFiltersList =
+const UpdateExternalDataSchemaRequestRowFiltersList =
   ExternalDataSchemaRowFiltersList as any as S.Schema<UpdateExternalDataSchemaRequestRowFiltersList>;
 
 export interface UpdateExternalDataSchemaRequest {
@@ -644,7 +642,7 @@ export interface UpdateExternalDataSchemaRequest {
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
 }
-export const UpdateExternalDataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -675,10 +673,9 @@ export const UpdateExternalDataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
 export type UpdateExternalDataSchemasDestinationsPartialRequestDestinationIdsList = Array<string>;
-export const UpdateExternalDataSchemasDestinationsPartialRequestDestinationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExternalDataSchemasDestinationsPartialRequestDestinationIdsList>;
+const UpdateExternalDataSchemasDestinationsPartialRequestDestinationIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateExternalDataSchemasDestinationsPartialRequestDestinationIdsList>;
 
 export interface UpdateExternalDataSchemasDestinationsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -688,7 +685,7 @@ export interface UpdateExternalDataSchemasDestinationsPartialRequest {
   /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
   destination_ids?: UpdateExternalDataSchemasDestinationsPartialRequestDestinationIdsList | null;
 }
-export const UpdateExternalDataSchemasDestinationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataSchemasDestinationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -708,23 +705,20 @@ export const UpdateExternalDataSchemasDestinationsPartialRequest = /*@__PURE__*/
 
 /** Column names for primary key deduplication. */
 export type UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList = Array<string>;
-export const UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList =
+const UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type UpdateExternalDataSchemasPartialRequestEnabledColumnsList = Array<string>;
-export const UpdateExternalDataSchemasPartialRequestEnabledColumnsList =
+const UpdateExternalDataSchemasPartialRequestEnabledColumnsList =
   ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemasPartialRequestEnabledColumnsList>;
 
 export type UpdateExternalDataSchemasPartialRequestRowFiltersItem =
   ExternalDataSchemaRowFiltersItem;
-export const UpdateExternalDataSchemasPartialRequestRowFiltersItem =
-  ExternalDataSchemaRowFiltersItem;
-
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type UpdateExternalDataSchemasPartialRequestRowFiltersList =
   Array<ExternalDataSchemaRowFiltersItem>;
-export const UpdateExternalDataSchemasPartialRequestRowFiltersList =
+const UpdateExternalDataSchemasPartialRequestRowFiltersList =
   ExternalDataSchemaRowFiltersList as any as S.Schema<UpdateExternalDataSchemasPartialRequestRowFiltersList>;
 
 export interface UpdateExternalDataSchemasPartialRequest {
@@ -760,7 +754,7 @@ export interface UpdateExternalDataSchemasPartialRequest {
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
 }
-export const UpdateExternalDataSchemasPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataSchemasPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

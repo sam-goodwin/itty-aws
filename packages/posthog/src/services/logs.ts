@@ -45,7 +45,7 @@ export class UnprocessableEntity
   ) {}
 
 export type FilterLogicalOperator = "AND" | "OR";
-export const FilterLogicalOperator = S.String;
+const FilterLogicalOperator = S.String;
 
 export type PropertyOperator =
   | "exact"
@@ -86,24 +86,13 @@ export type PropertyOperator =
   | "semver_wildcard"
   | "icontains_multi"
   | "not_icontains_multi";
-export const PropertyOperator = S.String;
-
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
-export const EventPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
-
 export type EventPropertyFilterValueCase0List = Array<EventPropertyFilterValueCase0Item>;
-export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  EventPropertyFilterValueCase0Item,
-) as any as S.Schema<EventPropertyFilterValueCase0List>;
-
 export type EventPropertyFilterValue =
   | EventPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const EventPropertyFilterValue = S.Unknown as any as S.Schema<EventPropertyFilterValue>;
-
 export interface EventPropertyFilter {
   key?: string;
   label?: string | null;
@@ -112,32 +101,13 @@ export interface EventPropertyFilter {
   type?: string;
   value?: EventPropertyFilterValue | null;
 }
-export const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(EventPropertyFilterValue)),
-  }),
-).annotate({ identifier: "EventPropertyFilter" }) as any as S.Schema<EventPropertyFilter>;
-
 export type PersonPropertyFilterValueCase0Item = string | number | boolean;
-export const PersonPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
-
 export type PersonPropertyFilterValueCase0List = Array<PersonPropertyFilterValueCase0Item>;
-export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonPropertyFilterValueCase0List>;
-
 export type PersonPropertyFilterValue =
   | PersonPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const PersonPropertyFilterValue = S.Unknown as any as S.Schema<PersonPropertyFilterValue>;
-
 export interface PersonPropertyFilter {
   key?: string;
   label?: string | null;
@@ -146,34 +116,14 @@ export interface PersonPropertyFilter {
   type?: string;
   value?: PersonPropertyFilterValue | null;
 }
-export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonPropertyFilterValue)),
-  }),
-).annotate({ identifier: "PersonPropertyFilter" }) as any as S.Schema<PersonPropertyFilter>;
-
 export type PersonMetadataPropertyFilterValueCase0Item = string | number | boolean;
-export const PersonMetadataPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
-
 export type PersonMetadataPropertyFilterValueCase0List =
   Array<PersonMetadataPropertyFilterValueCase0Item>;
-export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
-
 export type PersonMetadataPropertyFilterValue =
   | PersonMetadataPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const PersonMetadataPropertyFilterValue =
-  S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValue>;
-
 export interface PersonMetadataPropertyFilter {
   key: string;
   label?: string | null;
@@ -182,37 +132,14 @@ export interface PersonMetadataPropertyFilter {
   type?: string;
   value?: PersonMetadataPropertyFilterValue | null;
 }
-export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "PersonMetadataPropertyFilter",
-}) as any as S.Schema<PersonMetadataPropertyFilter>;
-
 export type Key10 = "tag_name" | "text" | "href" | "selector";
-export const Key10 = S.String;
-
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
-export const ElementPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
-
 export type ElementPropertyFilterValueCase0List = Array<ElementPropertyFilterValueCase0Item>;
-export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ElementPropertyFilterValueCase0Item,
-) as any as S.Schema<ElementPropertyFilterValueCase0List>;
-
 export type ElementPropertyFilterValue =
   | ElementPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const ElementPropertyFilterValue = S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
-
 export interface ElementPropertyFilter {
   key?: Key10 | (string & {});
   label?: string | null;
@@ -220,34 +147,14 @@ export interface ElementPropertyFilter {
   type?: string;
   value?: ElementPropertyFilterValue | null;
 }
-export const ElementPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(Key10),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(ElementPropertyFilterValue)),
-  }),
-).annotate({ identifier: "ElementPropertyFilter" }) as any as S.Schema<ElementPropertyFilter>;
-
 export type EventMetadataPropertyFilterValueCase0Item = string | number | boolean;
-export const EventMetadataPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
-
 export type EventMetadataPropertyFilterValueCase0List =
   Array<EventMetadataPropertyFilterValueCase0Item>;
-export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  EventMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
-
 export type EventMetadataPropertyFilterValue =
   | EventMetadataPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const EventMetadataPropertyFilterValue =
-  S.Unknown as any as S.Schema<EventMetadataPropertyFilterValue>;
-
 export interface EventMetadataPropertyFilter {
   key?: string;
   label?: string | null;
@@ -255,34 +162,13 @@ export interface EventMetadataPropertyFilter {
   type?: string;
   value?: EventMetadataPropertyFilterValue | null;
 }
-export const EventMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(EventMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "EventMetadataPropertyFilter",
-}) as any as S.Schema<EventMetadataPropertyFilter>;
-
 export type SessionPropertyFilterValueCase0Item = string | number | boolean;
-export const SessionPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
-
 export type SessionPropertyFilterValueCase0List = Array<SessionPropertyFilterValueCase0Item>;
-export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  SessionPropertyFilterValueCase0Item,
-) as any as S.Schema<SessionPropertyFilterValueCase0List>;
-
 export type SessionPropertyFilterValue =
   | SessionPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const SessionPropertyFilterValue = S.Unknown as any as S.Schema<SessionPropertyFilterValue>;
-
 export interface SessionPropertyFilter {
   key?: string;
   label?: string | null;
@@ -290,16 +176,6 @@ export interface SessionPropertyFilter {
   type?: string;
   value?: SessionPropertyFilterValue | null;
 }
-export const SessionPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(SessionPropertyFilterValue)),
-  }),
-).annotate({ identifier: "SessionPropertyFilter" }) as any as S.Schema<SessionPropertyFilter>;
-
 export interface CohortPropertyFilter {
   cohort_name?: string | null;
   key?: string;
@@ -308,40 +184,15 @@ export interface CohortPropertyFilter {
   type?: string;
   value?: number;
 }
-export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cohort_name: S.optional(S.NullOr(S.String)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CohortPropertyFilter" }) as any as S.Schema<CohortPropertyFilter>;
-
 export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
-export const DurationType = S.String;
-
 export type RecordingPropertyFilterKey = DurationType | string;
-export const RecordingPropertyFilterKey = S.Unknown as any as S.Schema<RecordingPropertyFilterKey>;
-
 export type RecordingPropertyFilterValueCase0Item = string | number | boolean;
-export const RecordingPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
-
 export type RecordingPropertyFilterValueCase0List = Array<RecordingPropertyFilterValueCase0Item>;
-export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  RecordingPropertyFilterValueCase0Item,
-) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
-
 export type RecordingPropertyFilterValue =
   | RecordingPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const RecordingPropertyFilterValue =
-  S.Unknown as any as S.Schema<RecordingPropertyFilterValue>;
-
 export interface RecordingPropertyFilter {
   key?: RecordingPropertyFilterKey;
   label?: string | null;
@@ -349,33 +200,13 @@ export interface RecordingPropertyFilter {
   type?: string;
   value?: RecordingPropertyFilterValue | null;
 }
-export const RecordingPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(RecordingPropertyFilterKey),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(RecordingPropertyFilterValue)),
-  }),
-).annotate({ identifier: "RecordingPropertyFilter" }) as any as S.Schema<RecordingPropertyFilter>;
-
 export type LogEntryPropertyFilterValueCase0Item = string | number | boolean;
-export const LogEntryPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
-
 export type LogEntryPropertyFilterValueCase0List = Array<LogEntryPropertyFilterValueCase0Item>;
-export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  LogEntryPropertyFilterValueCase0Item,
-) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
-
 export type LogEntryPropertyFilterValue =
   | LogEntryPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const LogEntryPropertyFilterValue =
-  S.Unknown as any as S.Schema<LogEntryPropertyFilterValue>;
-
 export interface LogEntryPropertyFilter {
   key?: string;
   label?: string | null;
@@ -383,38 +214,19 @@ export interface LogEntryPropertyFilter {
   type?: string;
   value?: LogEntryPropertyFilterValue | null;
 }
-export const LogEntryPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(LogEntryPropertyFilterValue)),
-  }),
-).annotate({ identifier: "LogEntryPropertyFilter" }) as any as S.Schema<LogEntryPropertyFilter>;
-
 export type GroupPropertyFilterGroupKeyNamesMap = { [key: string]: string | undefined };
-export const GroupPropertyFilterGroupKeyNamesMap = /*@__PURE__*/ S.Record(
+const GroupPropertyFilterGroupKeyNamesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GroupPropertyFilterGroupKeyNamesMap>;
 
 export type GroupPropertyFilterValueCase0Item = string | number | boolean;
-export const GroupPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
-
 export type GroupPropertyFilterValueCase0List = Array<GroupPropertyFilterValueCase0Item>;
-export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  GroupPropertyFilterValueCase0Item,
-) as any as S.Schema<GroupPropertyFilterValueCase0List>;
-
 export type GroupPropertyFilterValue =
   | GroupPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const GroupPropertyFilterValue = S.Unknown as any as S.Schema<GroupPropertyFilterValue>;
-
 export interface GroupPropertyFilter {
   group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
   group_type_index?: number | null;
@@ -424,34 +236,13 @@ export interface GroupPropertyFilter {
   type?: string;
   value?: GroupPropertyFilterValue | null;
 }
-export const GroupPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(GroupPropertyFilterValue)),
-  }),
-).annotate({ identifier: "GroupPropertyFilter" }) as any as S.Schema<GroupPropertyFilter>;
-
 export type FeaturePropertyFilterValueCase0Item = string | number | boolean;
-export const FeaturePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
-
 export type FeaturePropertyFilterValueCase0List = Array<FeaturePropertyFilterValueCase0Item>;
-export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  FeaturePropertyFilterValueCase0Item,
-) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
-
 export type FeaturePropertyFilterValue =
   | FeaturePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const FeaturePropertyFilterValue = S.Unknown as any as S.Schema<FeaturePropertyFilterValue>;
-
 export interface FeaturePropertyFilter {
   key?: string;
   label?: string | null;
@@ -460,20 +251,8 @@ export interface FeaturePropertyFilter {
   type?: string;
   value?: FeaturePropertyFilterValue | null;
 }
-export const FeaturePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(FeaturePropertyFilterValue)),
-  }),
-).annotate({ identifier: "FeaturePropertyFilter" }) as any as S.Schema<FeaturePropertyFilter>;
-
 /** The value can be true, false, or a variant name */
 export type FlagPropertyFilterValue = boolean | string;
-export const FlagPropertyFilterValue = S.Unknown as any as S.Schema<FlagPropertyFilterValue>;
-
 export interface FlagPropertyFilter {
   /** The key should be the flag ID */
   key?: string;
@@ -485,74 +264,30 @@ export interface FlagPropertyFilter {
   /** The value can be true, false, or a variant name */
   value?: FlagPropertyFilterValue;
 }
-export const FlagPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.String),
-    type: S.optional(S.String),
-    value: S.optional(FlagPropertyFilterValue),
-  }),
-).annotate({ identifier: "FlagPropertyFilter" }) as any as S.Schema<FlagPropertyFilter>;
-
 export type HogQLPropertyFilterValueCase0Item = string | number | boolean;
-export const HogQLPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
-
 export type HogQLPropertyFilterValueCase0List = Array<HogQLPropertyFilterValueCase0Item>;
-export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  HogQLPropertyFilterValueCase0Item,
-) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
-
 export type HogQLPropertyFilterValue =
   | HogQLPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const HogQLPropertyFilterValue = S.Unknown as any as S.Schema<HogQLPropertyFilterValue>;
-
 export interface HogQLPropertyFilter {
   key?: string;
   label?: string | null;
   type?: string;
   value?: HogQLPropertyFilterValue | null;
 }
-export const HogQLPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(HogQLPropertyFilterValue)),
-  }),
-).annotate({ identifier: "HogQLPropertyFilter" }) as any as S.Schema<HogQLPropertyFilter>;
-
 export interface EmptyPropertyFilter {
   type?: string;
 }
-export const EmptyPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmptyPropertyFilter" }) as any as S.Schema<EmptyPropertyFilter>;
-
 export type DataWarehousePropertyFilterValueCase0Item = string | number | boolean;
-export const DataWarehousePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
-
 export type DataWarehousePropertyFilterValueCase0List =
   Array<DataWarehousePropertyFilterValueCase0Item>;
-export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  DataWarehousePropertyFilterValueCase0Item,
-) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
-
 export type DataWarehousePropertyFilterValue =
   | DataWarehousePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const DataWarehousePropertyFilterValue =
-  S.Unknown as any as S.Schema<DataWarehousePropertyFilterValue>;
-
 export interface DataWarehousePropertyFilter {
   key?: string;
   label?: string | null;
@@ -560,36 +295,14 @@ export interface DataWarehousePropertyFilter {
   type?: string;
   value?: DataWarehousePropertyFilterValue | null;
 }
-export const DataWarehousePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(DataWarehousePropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "DataWarehousePropertyFilter",
-}) as any as S.Schema<DataWarehousePropertyFilter>;
-
 export type DataWarehousePersonPropertyFilterValueCase0Item = string | number | boolean;
-export const DataWarehousePersonPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
-
 export type DataWarehousePersonPropertyFilterValueCase0List =
   Array<DataWarehousePersonPropertyFilterValueCase0Item>;
-export const DataWarehousePersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  DataWarehousePersonPropertyFilterValueCase0Item,
-) as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0List>;
-
 export type DataWarehousePersonPropertyFilterValue =
   | DataWarehousePersonPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const DataWarehousePersonPropertyFilterValue =
-  S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValue>;
-
 export interface DataWarehousePersonPropertyFilter {
   key?: string;
   label?: string | null;
@@ -597,35 +310,13 @@ export interface DataWarehousePersonPropertyFilter {
   type?: string;
   value?: DataWarehousePersonPropertyFilterValue | null;
 }
-export const DataWarehousePersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(DataWarehousePersonPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "DataWarehousePersonPropertyFilter",
-}) as any as S.Schema<DataWarehousePersonPropertyFilter>;
-
 export type ErrorTrackingIssueFilterValueCase0Item = string | number | boolean;
-export const ErrorTrackingIssueFilterValueCase0Item =
-  S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
-
 export type ErrorTrackingIssueFilterValueCase0List = Array<ErrorTrackingIssueFilterValueCase0Item>;
-export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ErrorTrackingIssueFilterValueCase0Item,
-) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
-
 export type ErrorTrackingIssueFilterValue =
   | ErrorTrackingIssueFilterValueCase0List
   | string
   | number
   | boolean;
-export const ErrorTrackingIssueFilterValue =
-  S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValue>;
-
 export interface ErrorTrackingIssueFilter {
   key?: string;
   label?: string | null;
@@ -633,31 +324,10 @@ export interface ErrorTrackingIssueFilter {
   type?: string;
   value?: ErrorTrackingIssueFilterValue | null;
 }
-export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(ErrorTrackingIssueFilterValue)),
-  }),
-).annotate({ identifier: "ErrorTrackingIssueFilter" }) as any as S.Schema<ErrorTrackingIssueFilter>;
-
 export type LogPropertyFilterType = "log" | "log_attribute" | "log_resource_attribute";
-export const LogPropertyFilterType = S.String;
-
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
-export const LogPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
-
 export type LogPropertyFilterValueCase0List = Array<LogPropertyFilterValueCase0Item>;
-export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  LogPropertyFilterValueCase0Item,
-) as any as S.Schema<LogPropertyFilterValueCase0List>;
-
 export type LogPropertyFilterValue = LogPropertyFilterValueCase0List | string | number | boolean;
-export const LogPropertyFilterValue = S.Unknown as any as S.Schema<LogPropertyFilterValue>;
-
 export interface LogPropertyFilter {
   key?: string;
   label?: string | null;
@@ -665,32 +335,13 @@ export interface LogPropertyFilter {
   type?: LogPropertyFilterType | (string & {});
   value?: LogPropertyFilterValue | null;
 }
-export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(LogPropertyFilterType),
-    value: S.optional(S.NullOr(LogPropertyFilterValue)),
-  }),
-).annotate({ identifier: "LogPropertyFilter" }) as any as S.Schema<LogPropertyFilter>;
-
 export type MetricPropertyFilterValueCase0Item = string | number | boolean;
-export const MetricPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
-
 export type MetricPropertyFilterValueCase0List = Array<MetricPropertyFilterValueCase0Item>;
-export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  MetricPropertyFilterValueCase0Item,
-) as any as S.Schema<MetricPropertyFilterValueCase0List>;
-
 export type MetricPropertyFilterValue =
   | MetricPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const MetricPropertyFilterValue = S.Unknown as any as S.Schema<MetricPropertyFilterValue>;
-
 export interface MetricPropertyFilter {
   key: string;
   label?: string | null;
@@ -698,31 +349,10 @@ export interface MetricPropertyFilter {
   type?: string;
   value?: MetricPropertyFilterValue | null;
 }
-export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(MetricPropertyFilterValue)),
-  }),
-).annotate({ identifier: "MetricPropertyFilter" }) as any as S.Schema<MetricPropertyFilter>;
-
 export type SpanPropertyFilterType = "span" | "span_attribute" | "span_resource_attribute";
-export const SpanPropertyFilterType = S.String;
-
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
-export const SpanPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
-
 export type SpanPropertyFilterValueCase0List = Array<SpanPropertyFilterValueCase0Item>;
-export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  SpanPropertyFilterValueCase0Item,
-) as any as S.Schema<SpanPropertyFilterValueCase0List>;
-
 export type SpanPropertyFilterValue = SpanPropertyFilterValueCase0List | string | number | boolean;
-export const SpanPropertyFilterValue = S.Unknown as any as S.Schema<SpanPropertyFilterValue>;
-
 export interface SpanPropertyFilter {
   key?: string;
   label?: string | null;
@@ -730,34 +360,14 @@ export interface SpanPropertyFilter {
   type?: SpanPropertyFilterType | (string & {});
   value?: SpanPropertyFilterValue | null;
 }
-export const SpanPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(SpanPropertyFilterType),
-    value: S.optional(S.NullOr(SpanPropertyFilterValue)),
-  }),
-).annotate({ identifier: "SpanPropertyFilter" }) as any as S.Schema<SpanPropertyFilter>;
-
 export type RevenueAnalyticsPropertyFilterValueCase0Item = string | number | boolean;
-export const RevenueAnalyticsPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
-
 export type RevenueAnalyticsPropertyFilterValueCase0List =
   Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
-export const RevenueAnalyticsPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  RevenueAnalyticsPropertyFilterValueCase0Item,
-) as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0List>;
-
 export type RevenueAnalyticsPropertyFilterValue =
   | RevenueAnalyticsPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const RevenueAnalyticsPropertyFilterValue =
-  S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValue>;
-
 export interface RevenueAnalyticsPropertyFilter {
   key?: string;
   label?: string | null;
@@ -765,36 +375,14 @@ export interface RevenueAnalyticsPropertyFilter {
   type?: string;
   value?: RevenueAnalyticsPropertyFilterValue | null;
 }
-export const RevenueAnalyticsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(RevenueAnalyticsPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "RevenueAnalyticsPropertyFilter",
-}) as any as S.Schema<RevenueAnalyticsPropertyFilter>;
-
 export type AccountCustomPropertyFilterValueCase0Item = string | number | boolean;
-export const AccountCustomPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
-
 export type AccountCustomPropertyFilterValueCase0List =
   Array<AccountCustomPropertyFilterValueCase0Item>;
-export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  AccountCustomPropertyFilterValueCase0Item,
-) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
-
 export type AccountCustomPropertyFilterValue =
   | AccountCustomPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const AccountCustomPropertyFilterValue =
-  S.Unknown as any as S.Schema<AccountCustomPropertyFilterValue>;
-
 export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
@@ -803,36 +391,14 @@ export interface AccountCustomPropertyFilter {
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
-export const AccountCustomPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(AccountCustomPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "AccountCustomPropertyFilter",
-}) as any as S.Schema<AccountCustomPropertyFilter>;
-
 export type WorkflowVariablePropertyFilterValueCase0Item = string | number | boolean;
-export const WorkflowVariablePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
-
 export type WorkflowVariablePropertyFilterValueCase0List =
   Array<WorkflowVariablePropertyFilterValueCase0Item>;
-export const WorkflowVariablePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  WorkflowVariablePropertyFilterValueCase0Item,
-) as any as S.Schema<WorkflowVariablePropertyFilterValueCase0List>;
-
 export type WorkflowVariablePropertyFilterValue =
   | WorkflowVariablePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const WorkflowVariablePropertyFilterValue =
-  S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValue>;
-
 export interface WorkflowVariablePropertyFilter {
   key?: string;
   label?: string | null;
@@ -840,42 +406,17 @@ export interface WorkflowVariablePropertyFilter {
   type?: string;
   value?: WorkflowVariablePropertyFilterValue | null;
 }
-export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(WorkflowVariablePropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "WorkflowVariablePropertyFilter",
-}) as any as S.Schema<WorkflowVariablePropertyFilter>;
-
 export type BehavioralPropertyFilterEventFiltersItem =
   | EventPropertyFilter
   | PersonPropertyFilter
   | ElementPropertyFilter
   | FeaturePropertyFilter
   | HogQLPropertyFilter;
-export const BehavioralPropertyFilterEventFiltersItem =
-  S.Unknown as any as S.Schema<BehavioralPropertyFilterEventFiltersItem>;
-
 export type BehavioralPropertyFilterEventFiltersList =
   Array<BehavioralPropertyFilterEventFiltersItem>;
-export const BehavioralPropertyFilterEventFiltersList = /*@__PURE__*/ S.Array(
-  BehavioralPropertyFilterEventFiltersItem,
-) as any as S.Schema<BehavioralPropertyFilterEventFiltersList>;
-
 export type BehavioralEventSource = "events" | "actions";
-export const BehavioralEventSource = S.String;
-
 export type TimeUnitType = "day" | "week" | "month" | "year";
-export const TimeUnitType = S.String;
-
 export type InlineBehavioralType = "performed_event" | "performed_event_multiple";
-export const InlineBehavioralType = S.String;
-
 export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
@@ -899,24 +440,6 @@ export interface BehavioralPropertyFilter {
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
-export const BehavioralPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event_filters: S.optional(S.NullOr(BehavioralPropertyFilterEventFiltersList)),
-    event_type: BehavioralEventSource,
-    explicit_datetime: S.optional(S.NullOr(S.String)),
-    explicit_datetime_to: S.optional(S.NullOr(S.String)),
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    negation: S.optional(S.NullOr(S.Boolean)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    operator_value: S.optional(S.NullOr(S.Number)),
-    time_interval: S.optional(S.NullOr(TimeUnitType)),
-    time_value: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    value: InlineBehavioralType,
-  }),
-).annotate({ identifier: "BehavioralPropertyFilter" }) as any as S.Schema<BehavioralPropertyFilter>;
-
 export type PropertyGroupFilterValueValuesItem =
   | PropertyGroupFilterValue
   | EventPropertyFilter
@@ -943,11 +466,11 @@ export type PropertyGroupFilterValueValuesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PropertyGroupFilterValueValuesItem =
+const PropertyGroupFilterValueValuesItem =
   S.Unknown as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList = Array<PropertyGroupFilterValueValuesItem>;
-export const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
+const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValueValuesItem,
 ) as any as S.Schema<PropertyGroupFilterValueValuesList>;
 
@@ -955,7 +478,7 @@ export interface PropertyGroupFilterValue {
   type?: FilterLogicalOperator | (string & {});
   values?: PropertyGroupFilterValueValuesList;
 }
-export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
+const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(FilterLogicalOperator),
     values: S.optional(PropertyGroupFilterValueValuesList),
@@ -963,7 +486,7 @@ export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyGroupFilterValue" }) as any as S.Schema<PropertyGroupFilterValue>;
 
 export type PropertyGroupFilterValuesList = Array<PropertyGroupFilterValue>;
-export const PropertyGroupFilterValuesList = /*@__PURE__*/ S.Array(
+const PropertyGroupFilterValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValue,
 ) as any as S.Schema<PropertyGroupFilterValuesList>;
 
@@ -971,7 +494,7 @@ export interface PropertyGroupFilter {
   type?: FilterLogicalOperator | (string & {});
   values?: PropertyGroupFilterValuesList;
 }
-export const PropertyGroupFilter = /*@__PURE__*/ S.suspend(() =>
+const PropertyGroupFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(FilterLogicalOperator),
     values: S.optional(PropertyGroupFilterValuesList),
@@ -979,15 +502,15 @@ export const PropertyGroupFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyGroupFilter" }) as any as S.Schema<PropertyGroupFilter>;
 
 export type LogsAlertFiltersServiceNamesList = Array<string>;
-export const LogsAlertFiltersServiceNamesList = /*@__PURE__*/ S.Array(
+const LogsAlertFiltersServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAlertFiltersServiceNamesList>;
 
 export type LogSeverityLevel = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
-export const LogSeverityLevel = S.String;
+const LogSeverityLevel = S.String;
 
 export type LogsAlertFiltersSeverityLevelsList = Array<LogSeverityLevel | (string & {})>;
-export const LogsAlertFiltersSeverityLevelsList = /*@__PURE__*/ S.Array(
+const LogsAlertFiltersSeverityLevelsList = /*@__PURE__*/ S.Array(
   LogSeverityLevel,
 ) as any as S.Schema<LogsAlertFiltersSeverityLevelsList>;
 
@@ -996,7 +519,7 @@ export interface LogsAlertFilters {
   serviceNames?: LogsAlertFiltersServiceNamesList | null;
   severityLevels?: LogsAlertFiltersSeverityLevelsList | null;
 }
-export const LogsAlertFilters = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterGroup: S.optional(S.NullOr(PropertyGroupFilter)),
     serviceNames: S.optional(S.NullOr(LogsAlertFiltersServiceNamesList)),
@@ -1006,7 +529,7 @@ export const LogsAlertFilters = /*@__PURE__*/ S.suspend(() =>
 
 /** * `above` - Above * `below` - Below */
 export type LogsAlertConfigurationThresholdOperatorEnum = "above" | "below";
-export const LogsAlertConfigurationThresholdOperatorEnum = S.String;
+const LogsAlertConfigurationThresholdOperatorEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
@@ -1014,7 +537,7 @@ export interface AlertScheduleRestrictionWindow {
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
-export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -1025,7 +548,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
-export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
+const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
 
@@ -1033,7 +556,7 @@ export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
-export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
   }),
@@ -1065,7 +588,7 @@ export interface CreateLogsAlertRequest {
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
 }
-export const CreateLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -1090,7 +613,7 @@ export type LogsAlertConfigurationStateEnum =
   | "errored"
   | "snoozed"
   | "broken";
-export const LogsAlertConfigurationStateEnum = S.String;
+const LogsAlertConfigurationStateEnum = S.String;
 
 export interface LogsAlertStateInterval {
   /** Interval start (UTC, inclusive). */
@@ -1102,7 +625,7 @@ export interface LogsAlertStateInterval {
   /** Whether the alert was enabled during this interval. Disabled alerts keep their state but are inactive. */
   enabled?: boolean;
 }
-export const LogsAlertStateInterval = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertStateInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -1113,21 +636,21 @@ export const LogsAlertStateInterval = /*@__PURE__*/ S.suspend(() =>
 
 /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
 export type LogsAlertConfigurationStateTimelineList = Array<LogsAlertStateInterval>;
-export const LogsAlertConfigurationStateTimelineList = /*@__PURE__*/ S.Array(
+const LogsAlertConfigurationStateTimelineList = /*@__PURE__*/ S.Array(
   LogsAlertStateInterval,
 ) as any as S.Schema<LogsAlertConfigurationStateTimelineList>;
 
 /** * `slack` - slack * `webhook` - webhook * `teams` - teams */
 export type NotificationDestinationTypeEnum = "slack" | "webhook" | "teams";
-export const NotificationDestinationTypeEnum = S.String;
+const NotificationDestinationTypeEnum = S.String;
 
 /** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
 export type LogsAlertConfigurationDestinationTypesList = Array<NotificationDestinationTypeEnum>;
-export const LogsAlertConfigurationDestinationTypesList =
+const LogsAlertConfigurationDestinationTypesList =
   LogsAlertFiltersSeverityLevelsList as any as S.Schema<LogsAlertConfigurationDestinationTypesList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -1143,14 +666,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -1163,7 +681,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -1228,7 +746,7 @@ export interface LogsAlertConfiguration {
   /** When the alert was last modified. */
   updated_at?: string | null;
 }
-export const LogsAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1274,7 +792,7 @@ export interface CreateLogsAlertsDestinationRequest {
   /** HTTPS endpoint to post to. Required for webhook and teams. */
   webhook_url?: string;
 }
-export const CreateLogsAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1295,13 +813,13 @@ export const CreateLogsAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLogsAlertsDestinationRequest>;
 
 export type LogsAlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const LogsAlertDestinationResponseHogFunctionIdsList =
+const LogsAlertDestinationResponseHogFunctionIdsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsAlertDestinationResponseHogFunctionIdsList>;
 
 export interface LogsAlertDestinationResponse {
   hog_function_ids?: LogsAlertDestinationResponseHogFunctionIdsList;
 }
-export const LogsAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_ids: S.optional(LogsAlertDestinationResponseHogFunctionIdsList),
   }),
@@ -1331,7 +849,7 @@ export interface CreateLogsAlertsSimulateRequest {
   /** Relative date string for how far back to simulate (e.g. '-24h', '-7d', '-30d'). */
   date_from?: string;
 }
-export const CreateLogsAlertsSimulateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsAlertsSimulateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     filters: S.optional(LogsAlertFilters),
@@ -1364,7 +882,7 @@ export interface LogsAlertSimulateBucket {
   /** Human-readable explanation of the state transition. */
   reason?: string;
 }
-export const LogsAlertSimulateBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertSimulateBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     count: S.optional(S.Number),
@@ -1377,7 +895,7 @@ export const LogsAlertSimulateBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Time-bucketed counts with full state machine evaluation. */
 export type LogsAlertSimulateResponseBucketsList = Array<LogsAlertSimulateBucket>;
-export const LogsAlertSimulateResponseBucketsList = /*@__PURE__*/ S.Array(
+const LogsAlertSimulateResponseBucketsList = /*@__PURE__*/ S.Array(
   LogsAlertSimulateBucket,
 ) as any as S.Schema<LogsAlertSimulateResponseBucketsList>;
 
@@ -1395,7 +913,7 @@ export interface LogsAlertSimulateResponse {
   /** Threshold operator used for evaluation. */
   threshold_operator?: string;
 }
-export const LogsAlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(LogsAlertSimulateResponseBucketsList),
     fire_count: S.optional(S.Number),
@@ -1414,7 +932,7 @@ export interface ScanDateRange {
   /** End of the evaluation window (ISO 8601), clamped to now. */
   date_to: string;
 }
-export const ScanDateRange = /*@__PURE__*/ S.suspend(() =>
+const ScanDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.String,
     date_to: S.String,
@@ -1429,7 +947,7 @@ export interface CreateLogsAnomaliesScanRequest {
   /** Evaluation window to scan for anomalies. May span at most 7 days. */
   dateRange: ScanDateRange;
 }
-export const CreateLogsAnomaliesScanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsAnomaliesScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     serviceName: S.String,
@@ -1443,28 +961,26 @@ export const CreateLogsAnomaliesScanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `team_retention` - team_retention * `byte_budget` - byte_budget */
 export type BindingConstraintsEnum = "team_retention" | "byte_budget";
-export const BindingConstraintsEnum = S.String;
-
 /** Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project's log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget. */
 export type LogsAnomalyScanResponseBindingConstraintsList = Array<BindingConstraintsEnum>;
-export const LogsAnomalyScanResponseBindingConstraintsList =
+const LogsAnomalyScanResponseBindingConstraintsList =
   LogsAlertFiltersSeverityLevelsList as any as S.Schema<LogsAnomalyScanResponseBindingConstraintsList>;
 
 /** * `insufficient` - insufficient * `cold_start` - cold_start * `developing` - developing * `mature` - mature */
 export type LogsAnomalyBaselineStageEnum = "insufficient" | "cold_start" | "developing" | "mature";
-export const LogsAnomalyBaselineStageEnum = S.String;
+const LogsAnomalyBaselineStageEnum = S.String;
 
 /** * `a` - a * `b` - b * `c` - c * `d` - d */
 export type TierEnum = "a" | "b" | "c" | "d";
-export const TierEnum = S.String;
+const TierEnum = S.String;
 
 /** * `series_history` - series_history * `team_retention` - team_retention * `byte_budget` - byte_budget */
 export type LimitedByEnum = "series_history" | "team_retention" | "byte_budget";
-export const LimitedByEnum = S.String;
+const LimitedByEnum = S.String;
 
 /** * `spike` - spike * `drop` - drop * `silence` - silence */
 export type LogsAnomalyVerdictEnum = "spike" | "drop" | "silence";
-export const LogsAnomalyVerdictEnum = S.String;
+const LogsAnomalyVerdictEnum = S.String;
 
 export interface LogsAnomalyScanBucket {
   /** Start of the 5 minute bucket (UTC). */
@@ -1482,7 +998,7 @@ export interface LogsAnomalyScanBucket {
   /** Anomaly verdict for this bucket, or null when the observed count sat inside the band. * `spike` - spike * `drop` - drop * `silence` - silence */
   verdict: LogsAnomalyVerdictEnum | null;
 }
-export const LogsAnomalyScanBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsAnomalyScanBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.String,
     observed: S.Number,
@@ -1496,7 +1012,7 @@ export const LogsAnomalyScanBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Per bucket observed counts and expected bands across the evaluation window, for evidence charts. */
 export type LogsAnomalyScanSeriesBucketsList = Array<LogsAnomalyScanBucket>;
-export const LogsAnomalyScanSeriesBucketsList = /*@__PURE__*/ S.Array(
+const LogsAnomalyScanSeriesBucketsList = /*@__PURE__*/ S.Array(
   LogsAnomalyScanBucket,
 ) as any as S.Schema<LogsAnomalyScanSeriesBucketsList>;
 
@@ -1514,7 +1030,7 @@ export interface LogsAnomalyScanSeries {
   /** Per bucket observed counts and expected bands across the evaluation window, for evidence charts. */
   buckets: LogsAnomalyScanSeriesBucketsList;
 }
-export const LogsAnomalyScanSeries = /*@__PURE__*/ S.suspend(() =>
+const LogsAnomalyScanSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.String,
     stage: S.NullOr(LogsAnomalyBaselineStageEnum),
@@ -1527,21 +1043,21 @@ export const LogsAnomalyScanSeries = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per severity level observed for the service, with per bucket evidence. */
 export type LogsAnomalyScanResponseSeriesList = Array<LogsAnomalyScanSeries>;
-export const LogsAnomalyScanResponseSeriesList = /*@__PURE__*/ S.Array(
+const LogsAnomalyScanResponseSeriesList = /*@__PURE__*/ S.Array(
   LogsAnomalyScanSeries,
 ) as any as S.Schema<LogsAnomalyScanResponseSeriesList>;
 
 /** * `up` - up * `down` - down */
 export type LogsAnomalyScanIssueDirectionEnum = "up" | "down";
-export const LogsAnomalyScanIssueDirectionEnum = S.String;
+const LogsAnomalyScanIssueDirectionEnum = S.String;
 
 /** * `pending` - pending * `active` - active * `resolved` - resolved */
 export type LogsAnomalyScanIssueStateEnum = "pending" | "active" | "resolved";
-export const LogsAnomalyScanIssueStateEnum = S.String;
+const LogsAnomalyScanIssueStateEnum = S.String;
 
 /** Every anomalous bucket attributed to this issue, oldest first. */
 export type LogsAnomalyScanIssueAnomalousBucketTimesList = Array<string>;
-export const LogsAnomalyScanIssueAnomalousBucketTimesList =
+const LogsAnomalyScanIssueAnomalousBucketTimesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsAnomalyScanIssueAnomalousBucketTimesList>;
 
 export interface LogsAnomalyScanIssue {
@@ -1562,7 +1078,7 @@ export interface LogsAnomalyScanIssue {
   /** Every anomalous bucket attributed to this issue, oldest first. */
   anomalous_bucket_times: LogsAnomalyScanIssueAnomalousBucketTimesList;
 }
-export const LogsAnomalyScanIssue = /*@__PURE__*/ S.suspend(() =>
+const LogsAnomalyScanIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: LogsAnomalyScanIssueDirectionEnum,
     severity: S.NullOr(S.String),
@@ -1577,7 +1093,7 @@ export const LogsAnomalyScanIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** Anomaly issues that opened during the evaluation window, oldest first. */
 export type LogsAnomalyScanResponseIssuesList = Array<LogsAnomalyScanIssue>;
-export const LogsAnomalyScanResponseIssuesList = /*@__PURE__*/ S.Array(
+const LogsAnomalyScanResponseIssuesList = /*@__PURE__*/ S.Array(
   LogsAnomalyScanIssue,
 ) as any as S.Schema<LogsAnomalyScanResponseIssuesList>;
 
@@ -1601,7 +1117,7 @@ export interface LogsAnomalyScanResponse {
   /** Anomaly issues that opened during the evaluation window, oldest first. */
   issues: LogsAnomalyScanResponseIssuesList;
 }
-export const LogsAnomalyScanResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsAnomalyScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.String,
     eval_start: S.String,
@@ -1621,7 +1137,7 @@ export interface SeriesBandsDateRange {
   /** End of the window. Same format as date_from. Omit or null for "now". */
   date_to?: string | null;
 }
-export const SeriesBandsDateRange = /*@__PURE__*/ S.suspend(() =>
+const SeriesBandsDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.NullOr(S.String)),
     date_to: S.optional(S.NullOr(S.String)),
@@ -1630,7 +1146,7 @@ export const SeriesBandsDateRange = /*@__PURE__*/ S.suspend(() =>
 
 /** * `5` - 5 * `15` - 15 * `30` - 30 * `60` - 60 */
 export type IntervalMinutesEnum = 5 | 15 | 30 | 60;
-export const IntervalMinutesEnum = S.Number;
+const IntervalMinutesEnum = S.Number;
 
 export interface CreateLogsAnomaliesSeriesBandRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1642,7 +1158,7 @@ export interface CreateLogsAnomaliesSeriesBandRequest {
   /** Display grain in minutes for buckets and bands. One of 5, 15, 30, 60. The window may hold at most 500 buckets per series at the chosen grain, so a finer grain needs a shorter window. Omit it to let the window pick its grain, the coarsest that still cuts it into about 168 buckets. A series too sparse to read at this grain is returned at a coarser one; see each series' interval_minutes. * `5` - 5 * `15` - 15 * `30` - 30 * `60` - 60 */
   intervalMinutes?: IntervalMinutesEnum | (number & {}) | null;
 }
-export const CreateLogsAnomaliesSeriesBandRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsAnomaliesSeriesBandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     serviceName: S.String,
@@ -1661,11 +1177,11 @@ export const CreateLogsAnomaliesSeriesBandRequest = /*@__PURE__*/ S.suspend(() =
 
 /** * `sparse` - sparse * `quiet` - quiet */
 export type CoarsenedReasonEnum = "sparse" | "quiet";
-export const CoarsenedReasonEnum = S.String;
+const CoarsenedReasonEnum = S.String;
 
 /** * `above` - Above the band * `below` - Below the band */
 export type LogsSeriesBandVerdictEnum = "above" | "below";
-export const LogsSeriesBandVerdictEnum = S.String;
+const LogsSeriesBandVerdictEnum = S.String;
 
 export interface LogsSeriesBandBucket {
   /** Start of the display bucket (UTC). */
@@ -1679,7 +1195,7 @@ export interface LogsSeriesBandBucket {
   /** Where the observed count sits against the band: above when it exceeds upper, below when it falls under lower. Null while it sits inside the band, or while the band is not ready. An out-of-range bucket is not a confirmed incident or an alert. * `above` - Above the band * `below` - Below the band */
   verdict: LogsSeriesBandVerdictEnum | null;
 }
-export const LogsSeriesBandBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsSeriesBandBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.String,
     observed: S.Number,
@@ -1691,7 +1207,7 @@ export const LogsSeriesBandBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per display bucket across the window at this series' interval_minutes, oldest first, zero-filled. A coarsened series' window is snapped to its grain, so it can end short of window_end. */
 export type LogsSeriesBandSeriesBucketsList = Array<LogsSeriesBandBucket>;
-export const LogsSeriesBandSeriesBucketsList = /*@__PURE__*/ S.Array(
+const LogsSeriesBandSeriesBucketsList = /*@__PURE__*/ S.Array(
   LogsSeriesBandBucket,
 ) as any as S.Schema<LogsSeriesBandSeriesBucketsList>;
 
@@ -1717,7 +1233,7 @@ export interface LogsSeriesBandSeries {
   /** One entry per display bucket across the window at this series' interval_minutes, oldest first, zero-filled. A coarsened series' window is snapped to its grain, so it can end short of window_end. */
   buckets: LogsSeriesBandSeriesBucketsList;
 }
-export const LogsSeriesBandSeries = /*@__PURE__*/ S.suspend(() =>
+const LogsSeriesBandSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String,
     environment: S.String,
@@ -1734,7 +1250,7 @@ export const LogsSeriesBandSeries = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per (namespace, environment, severity) series, ordered by observed volume descending. */
 export type LogsSeriesBandsResponseSeriesList = Array<LogsSeriesBandSeries>;
-export const LogsSeriesBandsResponseSeriesList = /*@__PURE__*/ S.Array(
+const LogsSeriesBandsResponseSeriesList = /*@__PURE__*/ S.Array(
   LogsSeriesBandSeries,
 ) as any as S.Schema<LogsSeriesBandsResponseSeriesList>;
 
@@ -1752,7 +1268,7 @@ export interface LogsSeriesBandsResponse {
   /** One entry per (namespace, environment, severity) series, ordered by observed volume descending. */
   series: LogsSeriesBandsResponseSeriesList;
 }
-export const LogsSeriesBandsResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsSeriesBandsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.String,
     window_start: S.String,
@@ -1769,25 +1285,23 @@ export interface DateRange {
   /** End of the date range. Same format as date_from. Omit or null for "now". */
   date_to?: string | null;
 }
-export const DateRange = SeriesBandsDateRange as any as S.Schema<DateRange>;
+const DateRange = SeriesBandsDateRange as any as S.Schema<DateRange>;
 
 /** * `trace` - trace * `debug` - debug * `info` - info * `warn` - warn * `error` - error * `fatal` - fatal */
 export type SeverityLevelsEnum = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
-export const SeverityLevelsEnum = S.String;
-
 /** Filter by log severity levels. */
 export type LogsCountBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsCountBodySeverityLevelsList =
+const LogsCountBodySeverityLevelsList =
   LogsAlertFiltersSeverityLevelsList as any as S.Schema<LogsCountBodySeverityLevelsList>;
 
 /** Filter by service names. */
 export type LogsCountBodyServiceNamesList = Array<string>;
-export const LogsCountBodyServiceNamesList =
+const LogsCountBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsCountBodyServiceNamesList>;
 
 /** * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute */
 export type LogPropertyFilterTypeEnum = "log" | "log_attribute" | "log_resource_attribute";
-export const LogPropertyFilterTypeEnum = S.String;
+const LogPropertyFilterTypeEnum = S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after * `is_set` - is_set * `is_not_set` - is_not_set */
 export type LogPropertyFilterOperatorEnum =
@@ -1808,7 +1322,7 @@ export type LogPropertyFilterOperatorEnum =
   | "is_date_after"
   | "is_set"
   | "is_not_set";
-export const LogPropertyFilterOperatorEnum = S.String;
+const LogPropertyFilterOperatorEnum = S.String;
 
 export interface LogPropertyFilter2 {
   /** Attribute key. For type "log", use "message" for the body text, or a log column: "pattern" and "pattern_version" (the patterns pivot), "severity_level", "service_name", "trace_id", "span_id". For "log_attribute"/"log_resource_attribute", use the attribute key (e.g. "k8s.container.name"). */
@@ -1820,7 +1334,7 @@ export interface LogPropertyFilter2 {
   /** Value to compare against. String, number, or array of strings. Omit for is_set/is_not_set operators. */
   value?: unknown;
 }
-export const LogPropertyFilter2 = /*@__PURE__*/ S.suspend(() =>
+const LogPropertyFilter2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     type: S.optional(LogPropertyFilterTypeEnum),
@@ -1831,7 +1345,7 @@ export const LogPropertyFilter2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Property filters for the query. */
 export type LogsCountBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsCountBodyFilterGroupList = /*@__PURE__*/ S.Array(
+const LogsCountBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsCountBodyFilterGroupList>;
 
@@ -1847,7 +1361,7 @@ export interface LogsCountBody {
   /** Property filters for the query. */
   filterGroup?: LogsCountBodyFilterGroupList;
 }
-export const LogsCountBody = /*@__PURE__*/ S.suspend(() =>
+const LogsCountBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     severityLevels: S.optional(LogsCountBodySeverityLevelsList),
@@ -1863,7 +1377,7 @@ export interface CreateLogsCountRequest {
   /** The count query to execute. */
   query?: LogsCountBody;
 }
-export const CreateLogsCountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsCountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(LogsCountBody),
@@ -1874,7 +1388,7 @@ export interface LogsCountResponse {
   /** Number of log entries matching the filters. */
   count?: number;
 }
-export const LogsCountResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsCountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
   }),
@@ -1882,17 +1396,17 @@ export const LogsCountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by log severity levels. Applied before bucketing. */
 export type LogsCountRangesBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsCountRangesBodySeverityLevelsList =
+const LogsCountRangesBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsCountRangesBodySeverityLevelsList>;
 
 /** Filter by service names. Applied before bucketing. */
 export type LogsCountRangesBodyServiceNamesList = Array<string>;
-export const LogsCountRangesBodyServiceNamesList =
+const LogsCountRangesBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsCountRangesBodyServiceNamesList>;
 
 /** Property filters applied before bucketing. Same shape as `query-logs`. */
 export type LogsCountRangesBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsCountRangesBodyFilterGroupList =
+const LogsCountRangesBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsCountRangesBodyFilterGroupList>;
 
 export interface LogsCountRangesBody {
@@ -1909,7 +1423,7 @@ export interface LogsCountRangesBody {
   /** Property filters applied before bucketing. Same shape as `query-logs`. */
   filterGroup?: LogsCountRangesBodyFilterGroupList;
 }
-export const LogsCountRangesBody = /*@__PURE__*/ S.suspend(() =>
+const LogsCountRangesBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     targetBuckets: S.optional(S.Number),
@@ -1926,7 +1440,7 @@ export interface CreateLogsCountRangeRequest {
   /** The bucketed-count query to execute. */
   query: LogsCountRangesBody;
 }
-export const CreateLogsCountRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsCountRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: LogsCountRangesBody,
@@ -1945,7 +1459,7 @@ export interface LogsCountRangeBucket {
   /** Log entries matching the filters within this bucket. */
   count: number;
 }
-export const LogsCountRangeBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsCountRangeBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.String,
     date_to: S.String,
@@ -1955,7 +1469,7 @@ export const LogsCountRangeBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Buckets ordered by `date_from` ascending. Empty buckets are omitted -- infer gaps by comparing each bucket's `date_to` to the next bucket's `date_from`. */
 export type LogsCountRangesResponseRangesList = Array<LogsCountRangeBucket>;
-export const LogsCountRangesResponseRangesList = /*@__PURE__*/ S.Array(
+const LogsCountRangesResponseRangesList = /*@__PURE__*/ S.Array(
   LogsCountRangeBucket,
 ) as any as S.Schema<LogsCountRangesResponseRangesList>;
 
@@ -1965,7 +1479,7 @@ export interface LogsCountRangesResponse {
   /** Short-form duration of the chosen bucket width (e.g. "1h", "5m", "30s", "1d"). Informational only -- use each bucket's `date_from`/`date_to` for follow-up queries. */
   interval: string;
 }
-export const LogsCountRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsCountRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ranges: LogsCountRangesResponseRangesList,
     interval: S.String,
@@ -1982,7 +1496,7 @@ export interface CreateLogsExplainLogWithAIRequest {
   /** Force regenerate explanation, bypassing cache */
   force_refresh?: boolean;
 }
-export const CreateLogsExplainLogWithAIRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsExplainLogWithAIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     uuid: S.optional(S.String),
@@ -2003,7 +1517,7 @@ export interface ExplainRequest {
   /** Force regenerate explanation, bypassing cache */
   force_refresh?: boolean;
 }
-export const ExplainRequest = /*@__PURE__*/ S.suspend(() =>
+const ExplainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -2013,21 +1527,21 @@ export const ExplainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `severity_text` - severity_text * `service_name` - service_name */
 export type FacetFieldEnum = "severity_text" | "service_name";
-export const FacetFieldEnum = S.String;
+const FacetFieldEnum = S.String;
 
 /** Filter by log severity levels (ignored when faceting on severity_text). */
 export type LogsFacetValuesBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsFacetValuesBodySeverityLevelsList =
+const LogsFacetValuesBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsFacetValuesBodySeverityLevelsList>;
 
 /** Filter by service names (ignored when faceting on service_name). */
 export type LogsFacetValuesBodyServiceNamesList = Array<string>;
-export const LogsFacetValuesBodyServiceNamesList =
+const LogsFacetValuesBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsFacetValuesBodyServiceNamesList>;
 
 /** Property filters for the query. */
 export type LogsFacetValuesBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsFacetValuesBodyFilterGroupList =
+const LogsFacetValuesBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsFacetValuesBodyFilterGroupList>;
 
 export interface LogsFacetValuesBody {
@@ -2054,7 +1568,7 @@ export interface LogsFacetValuesBody {
   /** Scope counts to one session ID. Matched server-side against the team's configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes. */
   sessionId?: string;
 }
-export const LogsFacetValuesBody = /*@__PURE__*/ S.suspend(() =>
+const LogsFacetValuesBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facetField: S.optional(S.NullOr(FacetFieldEnum)),
     facetResourceAttribute: S.optional(S.NullOr(S.String)),
@@ -2076,7 +1590,7 @@ export interface CreateLogsFacetValueRequest {
   /** The facet values query to execute. */
   query: LogsFacetValuesBody;
 }
-export const CreateLogsFacetValueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsFacetValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: LogsFacetValuesBody,
@@ -2093,7 +1607,7 @@ export interface LogFacetValue {
   /** Number of matching log records, with all active filters applied except this facet's own selection. */
   count: number;
 }
-export const LogFacetValue = /*@__PURE__*/ S.suspend(() =>
+const LogFacetValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     count: S.Number,
@@ -2102,7 +1616,7 @@ export const LogFacetValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Facet values with cross-filtered counts, ordered by count descending. */
 export type LogsFacetValuesResponseResultsList = Array<LogFacetValue>;
-export const LogsFacetValuesResponseResultsList = /*@__PURE__*/ S.Array(
+const LogsFacetValuesResponseResultsList = /*@__PURE__*/ S.Array(
   LogFacetValue,
 ) as any as S.Schema<LogsFacetValuesResponseResultsList>;
 
@@ -2110,7 +1624,7 @@ export interface LogsFacetValuesResponse {
   /** Facet values with cross-filtered counts, ordered by count descending. */
   results: LogsFacetValuesResponseResultsList;
 }
-export const LogsFacetValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsFacetValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: LogsFacetValuesResponseResultsList,
   }),
@@ -2118,22 +1632,22 @@ export const LogsFacetValuesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by log severity levels before grouping. */
 export type LogsGroupByBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsGroupByBodySeverityLevelsList =
+const LogsGroupByBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsGroupByBodySeverityLevelsList>;
 
 /** Restrict grouping to these service names. */
 export type LogsGroupByBodyServiceNamesList = Array<string>;
-export const LogsGroupByBodyServiceNamesList =
+const LogsGroupByBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsGroupByBodyServiceNamesList>;
 
 /** Property filters applied before grouping. Same shape as the query-logs endpoint. */
 export type LogsGroupByBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsGroupByBodyFilterGroupList =
+const LogsGroupByBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsGroupByBodyFilterGroupList>;
 
 /** * `log` - log * `resource` - resource * `column` - column */
 export type LogsGroupBySourceEnum = "log" | "resource" | "column";
-export const LogsGroupBySourceEnum = S.String;
+const LogsGroupBySourceEnum = S.String;
 
 export interface LogsGroupByDimension {
   /** The key this dimension groups by -- an attribute key (e.g. "session_id", "service.name") or, when source is "column", one of the top-level log fields: "severity_level", "trace_id", "span_id". */
@@ -2141,7 +1655,7 @@ export interface LogsGroupByDimension {
   /** Where this dimension's key lives: "log" for log-level attributes, "resource" for resource-level attributes, "column" for top-level log fields. * `log` - log * `resource` - resource * `column` - column */
   source?: LogsGroupBySourceEnum | (string & {});
 }
-export const LogsGroupByDimension = /*@__PURE__*/ S.suspend(() =>
+const LogsGroupByDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     source: S.optional(LogsGroupBySourceEnum),
@@ -2150,13 +1664,13 @@ export const LogsGroupByDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered group-by dimensions to combine (a group is one combination of per-dimension values), up to 4. Takes precedence over groupBy/groupBySource; one of the two must be provided. */
 export type LogsGroupByBodyGroupBysList = Array<LogsGroupByDimension>;
-export const LogsGroupByBodyGroupBysList = /*@__PURE__*/ S.Array(
+const LogsGroupByBodyGroupBysList = /*@__PURE__*/ S.Array(
   LogsGroupByDimension,
 ) as any as S.Schema<LogsGroupByBodyGroupBysList>;
 
 /** * `log_count` - log_count * `error_count` - error_count * `last_seen` - last_seen */
 export type OrderGroupsByEnum = "log_count" | "error_count" | "last_seen";
-export const OrderGroupsByEnum = S.String;
+const OrderGroupsByEnum = S.String;
 
 export interface LogsGroupByBody {
   /** Date range to aggregate over. Defaults to last hour. */
@@ -2184,7 +1698,7 @@ export interface LogsGroupByBody {
   /** Scope grouping to one session ID. Matched server-side against the team's configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes. */
   sessionId?: string;
 }
-export const LogsGroupByBody = /*@__PURE__*/ S.suspend(() =>
+const LogsGroupByBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     severityLevels: S.optional(LogsGroupByBodySeverityLevelsList),
@@ -2207,7 +1721,7 @@ export interface CreateLogsGroupByRequest {
   /** The group-by query to execute. */
   query: LogsGroupByBody;
 }
-export const CreateLogsGroupByRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsGroupByRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: LogsGroupByBody,
@@ -2216,7 +1730,7 @@ export const CreateLogsGroupByRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This group's values, one per requested dimension, in request order. */
 export type LogsGroupByGroupValuesList = Array<string>;
-export const LogsGroupByGroupValuesList =
+const LogsGroupByGroupValuesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsGroupByGroupValuesList>;
 
 export interface LogsGroupByGroup {
@@ -2231,7 +1745,7 @@ export interface LogsGroupByGroup {
   /** ISO 8601 timestamp of the most recent matching log in this group. */
   last_seen: string;
 }
-export const LogsGroupByGroup = /*@__PURE__*/ S.suspend(() =>
+const LogsGroupByGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     values: LogsGroupByGroupValuesList,
@@ -2243,7 +1757,7 @@ export const LogsGroupByGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Top groups ordered by the requested aggregate, descending. Capped at `limit`. */
 export type LogsGroupByResponseGroupsList = Array<LogsGroupByGroup>;
-export const LogsGroupByResponseGroupsList = /*@__PURE__*/ S.Array(
+const LogsGroupByResponseGroupsList = /*@__PURE__*/ S.Array(
   LogsGroupByGroup,
 ) as any as S.Schema<LogsGroupByResponseGroupsList>;
 
@@ -2257,7 +1771,7 @@ export interface LogsGroupByResponse {
   /** True when more groups matched than were returned (total_groups > groups length). */
   truncated: boolean;
 }
-export const LogsGroupByResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsGroupByResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: LogsGroupByResponseGroupsList,
     total_groups: S.Number,
@@ -2272,7 +1786,7 @@ export interface CreateLogsImpactRequest {
   /** The impact query to execute. Takes the same filters as the count query. */
   query: LogsCountBody;
 }
-export const CreateLogsImpactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsImpactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: LogsCountBody,
@@ -2285,16 +1799,14 @@ export interface LogsImpactTopValue {
   /** Approximate number of matching logs that carry this value (topK estimate). */
   count: number;
 }
-export const LogsImpactTopValue = LogFacetValue as any as S.Schema<LogsImpactTopValue>;
-
 /** Top session IDs on the matching logs, ordered by log count descending (topK, at most 5). */
 export type LogsImpactResponseTopSessionsList = Array<LogsImpactTopValue>;
-export const LogsImpactResponseTopSessionsList =
+const LogsImpactResponseTopSessionsList =
   LogsFacetValuesResponseResultsList as any as S.Schema<LogsImpactResponseTopSessionsList>;
 
 /** Top person distinct IDs on the matching logs, ordered by log count descending (topK, at most 5). */
 export type LogsImpactResponseTopUsersList = Array<LogsImpactTopValue>;
-export const LogsImpactResponseTopUsersList =
+const LogsImpactResponseTopUsersList =
   LogsFacetValuesResponseResultsList as any as S.Schema<LogsImpactResponseTopUsersList>;
 
 export interface LogsImpactGroupKey {
@@ -2303,7 +1815,7 @@ export interface LogsImpactGroupKey {
   /** The attribute key that carries the ID on most matching logs. */
   key: string;
 }
-export const LogsImpactGroupKey = /*@__PURE__*/ S.suspend(() =>
+const LogsImpactGroupKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: LogsGroupBySourceEnum,
     key: S.String,
@@ -2330,7 +1842,7 @@ export interface LogsImpactResponse {
   /** The dimension that carries the person distinct ID on most matching logs. Group by this dimension to drill into the users behind the counts. Null when no matching log carries a distinct ID. */
   personGroupKey: LogsImpactGroupKey | null;
 }
-export const LogsImpactResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsImpactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     logsWithSessionId: S.Number,
@@ -2346,12 +1858,12 @@ export const LogsImpactResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type CreateLogsMetricRuleRequestGroupByList = Array<string>;
-export const CreateLogsMetricRuleRequestGroupByList =
+const CreateLogsMetricRuleRequestGroupByList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<CreateLogsMetricRuleRequestGroupByList>;
 
 /** * `logs` - Logs * `spans` - Spans */
 export type LogsMetricRuleRecordSourceEnum = "logs" | "spans";
-export const LogsMetricRuleRecordSourceEnum = S.String;
+const LogsMetricRuleRecordSourceEnum = S.String;
 
 export interface CreateLogsMetricRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2371,7 +1883,7 @@ export interface CreateLogsMetricRuleRequest {
   /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum | (string & {});
 }
-export const CreateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -2390,7 +1902,7 @@ export const CreateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type LogsMetricRuleGroupByList = Array<string>;
-export const LogsMetricRuleGroupByList =
+const LogsMetricRuleGroupByList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsMetricRuleGroupByList>;
 
 export interface LogsMetricRule {
@@ -2416,7 +1928,7 @@ export interface LogsMetricRule {
   created_at: string;
   updated_at: string | null;
 }
-export const LogsMetricRule = /*@__PURE__*/ S.suspend(() =>
+const LogsMetricRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2435,17 +1947,17 @@ export const LogsMetricRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by log severity levels before mining. */
 export type LogsPatternsBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsPatternsBodySeverityLevelsList =
+const LogsPatternsBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsPatternsBodySeverityLevelsList>;
 
 /** Restrict mining to these service names. */
 export type LogsPatternsBodyServiceNamesList = Array<string>;
-export const LogsPatternsBodyServiceNamesList =
+const LogsPatternsBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsPatternsBodyServiceNamesList>;
 
 /** Property filters applied before mining. Same shape as the query-logs endpoint. */
 export type LogsPatternsBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsPatternsBodyFilterGroupList =
+const LogsPatternsBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsPatternsBodyFilterGroupList>;
 
 export interface LogsPatternsBody {
@@ -2464,7 +1976,7 @@ export interface LogsPatternsBody {
   /** Scope mining to one session ID. Matched server-side against the team's configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes. */
   sessionId?: string;
 }
-export const LogsPatternsBody = /*@__PURE__*/ S.suspend(() =>
+const LogsPatternsBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     severityLevels: S.optional(LogsPatternsBodySeverityLevelsList),
@@ -2482,7 +1994,7 @@ export interface CreateLogsPatternRequest {
   /** The patterns query to execute. */
   query: LogsPatternsBody;
 }
-export const CreateLogsPatternRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsPatternRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: LogsPatternsBody,
@@ -2491,7 +2003,7 @@ export const CreateLogsPatternRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `stored_patterns` - stored_patterns * `body_mining` - body_mining */
 export type LogsPatternsSourceEnum = "stored_patterns" | "body_mining";
-export const LogsPatternsSourceEnum = S.String;
+const LogsPatternsSourceEnum = S.String;
 
 /** * `flag_disabled` - flag_disabled * `insufficient_version_coverage` - insufficient_version_coverage * `empty_window` - empty_window * `comparison` - comparison */
 export type FallbackReasonEnum =
@@ -2499,7 +2011,7 @@ export type FallbackReasonEnum =
   | "insufficient_version_coverage"
   | "empty_window"
   | "comparison";
-export const FallbackReasonEnum = S.String;
+const FallbackReasonEnum = S.String;
 
 export interface LogPatternExample {
   /** Original-message example. Body mining normalizes whitespace, extracts JSON message fields and truncates to the mining cap. Stored-pattern aggregation returns the raw body prefix, limited to 4096 Unicode characters. */
@@ -2511,7 +2023,7 @@ export interface LogPatternExample {
   /** ISO 8601 timestamp of the sampled line. */
   timestamp: string;
 }
-export const LogPatternExample = /*@__PURE__*/ S.suspend(() =>
+const LogPatternExample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String,
     severity_text: S.String,
@@ -2522,31 +2034,31 @@ export const LogPatternExample = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 10 distinct sampled log lines that produced this pattern, with severity, service, and timestamp for display. */
 export type LogPatternExamplesList = Array<LogPatternExample>;
-export const LogPatternExamplesList = /*@__PURE__*/ S.Array(
+const LogPatternExamplesList = /*@__PURE__*/ S.Array(
   LogPatternExample,
 ) as any as S.Schema<LogPatternExamplesList>;
 
 /** Up to 4 distinct service names this pattern was observed in. */
 export type LogPatternServicesList = Array<string>;
-export const LogPatternServicesList =
+const LogPatternServicesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogPatternServicesList>;
 
 /** Occurrences per time bucket, aligned index-for-index with the response's `sparkline_buckets`. When `sampled` is true these are extrapolated like `estimated_count` and show the volume shape over the window rather than exact tallies. Otherwise they are exact per-bucket counts. */
 export type LogPatternSparklineList = Array<number>;
-export const LogPatternSparklineList = /*@__PURE__*/ S.Array(
+const LogPatternSparklineList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LogPatternSparklineList>;
 
 /** Occurrences keyed by lowercased severity ("trace" through "fatal"). Never extrapolated, because severity dominance is a proportion that scaling would not change. Sample counts when `sampled` is true, counts over every matching row otherwise. */
 export type LogPatternSeverityCountsMap = { [key: string]: number | undefined };
-export const LogPatternSeverityCountsMap = /*@__PURE__*/ S.Record(
+const LogPatternSeverityCountsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<LogPatternSeverityCountsMap>;
 
 /** Exact canonical members of a stored-pattern group. Filter pattern IN these values AND pattern_version equals this group's version. Empty for body mining. */
 export type LogPatternMatchPatternsList = Array<string>;
-export const LogPatternMatchPatternsList =
+const LogPatternMatchPatternsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogPatternMatchPatternsList>;
 
 export interface LogPattern {
@@ -2583,7 +2095,7 @@ export interface LogPattern {
   /** Version required by match_patterns. Null for body mining. */
   pattern_version?: number | null;
 }
-export const LogPattern = /*@__PURE__*/ S.suspend(() =>
+const LogPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern: S.String,
     count: S.Number,
@@ -2606,7 +2118,7 @@ export const LogPattern = /*@__PURE__*/ S.suspend(() =>
 
 /** Pattern groups ordered by count. Stored-pattern counts are exact; body-mining counts describe the sample. */
 export type LogsPatternsResponsePatternsList = Array<LogPattern>;
-export const LogsPatternsResponsePatternsList = /*@__PURE__*/ S.Array(
+const LogsPatternsResponsePatternsList = /*@__PURE__*/ S.Array(
   LogPattern,
 ) as any as S.Schema<LogsPatternsResponsePatternsList>;
 
@@ -2616,7 +2128,7 @@ export interface LogsPatternsSparklineBucket {
   /** Bucket end (ISO 8601, exclusive). */
   end: string;
 }
-export const LogsPatternsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsPatternsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.String,
     end: S.String,
@@ -2627,7 +2139,7 @@ export const LogsPatternsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Time buckets that every pattern's `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly. */
 export type LogsPatternsResponseSparklineBucketsList = Array<LogsPatternsSparklineBucket>;
-export const LogsPatternsResponseSparklineBucketsList = /*@__PURE__*/ S.Array(
+const LogsPatternsResponseSparklineBucketsList = /*@__PURE__*/ S.Array(
   LogsPatternsSparklineBucket,
 ) as any as S.Schema<LogsPatternsResponseSparklineBucketsList>;
 
@@ -2657,7 +2169,7 @@ export interface LogsPatternsResponse {
   /** Time buckets that every pattern's `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly. */
   sparkline_buckets: LogsPatternsResponseSparklineBucketsList;
 }
-export const LogsPatternsResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsPatternsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(LogsPatternsSourceEnum),
     pattern_version: S.optional(S.NullOr(S.Number)),
@@ -2682,7 +2194,7 @@ export interface CreateLogsPatternsDiffRequest {
   /** Baseline window to compare against. Omit to default to the current window shifted back exactly one week, which absorbs daily and weekly log-volume cycles. Pass an explicit range to compare against a specific period, e.g. pre-deploy or pre-incident. */
   baselineDateRange?: DateRange;
 }
-export const CreateLogsPatternsDiffRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsPatternsDiffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: LogsPatternsBody,
@@ -2696,7 +2208,7 @@ export const CreateLogsPatternsDiffRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `new` - new * `rate_shift` - rate_shift * `gone` - gone * `unchanged` - unchanged */
 export type LogPatternDiffEntryClassificationEnum = "new" | "rate_shift" | "gone" | "unchanged";
-export const LogPatternDiffEntryClassificationEnum = S.String;
+const LogPatternDiffEntryClassificationEnum = S.String;
 
 export interface LogPatternDiffEntry {
   /** "new": appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). "rate_shift": present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. "gone": cleared the floor in the baseline but absent from the current window. "unchanged" means "no confident claim", not "provably identical" -- sampled mining cannot prove a below-floor template is genuinely new or gone. * `new` - new * `rate_shift` - rate_shift * `gone` - gone * `unchanged` - unchanged */
@@ -2710,7 +2222,7 @@ export interface LogPatternDiffEntry {
   /** Share of the baseline sample this pattern represented (0-100). Null when absent from the baseline. */
   baseline_volume_share_pct: number | null;
 }
-export const LogPatternDiffEntry = /*@__PURE__*/ S.suspend(() =>
+const LogPatternDiffEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classification: LogPatternDiffEntryClassificationEnum,
     rate_ratio: S.NullOr(S.Number),
@@ -2722,7 +2234,7 @@ export const LogPatternDiffEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Classified diff entries, most interesting first: "new" (by estimated count), then "rate_shift" (by shift magnitude), then "gone", then "unchanged". A pattern in the baseline is matched to the current window by literal-content fingerprint, so a placeholder widening between runs does not read as one pattern vanishing and another appearing. */
 export type LogsPatternsDiffResponseEntriesList = Array<LogPatternDiffEntry>;
-export const LogsPatternsDiffResponseEntriesList = /*@__PURE__*/ S.Array(
+const LogsPatternsDiffResponseEntriesList = /*@__PURE__*/ S.Array(
   LogPatternDiffEntry,
 ) as any as S.Schema<LogsPatternsDiffResponseEntriesList>;
 
@@ -2752,7 +2264,7 @@ export interface LogsPatternsDiffWindow {
   /** Resolved window end (ISO 8601, exclusive). */
   date_to: string;
 }
-export const LogsPatternsDiffWindow = /*@__PURE__*/ S.suspend(() =>
+const LogsPatternsDiffWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(LogsPatternsSourceEnum),
     pattern_version: S.optional(S.NullOr(S.Number)),
@@ -2777,7 +2289,7 @@ export interface LogsPatternsDiffResponse {
   /** Mining metadata for the baseline window. Check `total_count` before trusting a wall of "new" entries: an empty or tiny baseline (e.g. logging only started this week) makes everything look new. */
   baseline: LogsPatternsDiffWindow;
 }
-export const LogsPatternsDiffResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsPatternsDiffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: LogsPatternsDiffResponseEntriesList,
     current: LogsPatternsDiffWindow,
@@ -2787,26 +2299,26 @@ export const LogsPatternsDiffResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by log severity levels. */
 export type LogsQueryBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsQueryBodySeverityLevelsList =
+const LogsQueryBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsQueryBodySeverityLevelsList>;
 
 /** Filter by service names. */
 export type LogsQueryBodyServiceNamesList = Array<string>;
-export const LogsQueryBodyServiceNamesList =
+const LogsQueryBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsQueryBodyServiceNamesList>;
 
 /** * `latest` - latest * `earliest` - earliest */
 export type OrderByEnum = "latest" | "earliest";
-export const OrderByEnum = S.String;
+const OrderByEnum = S.String;
 
 /** Property filters for the query. */
 export type LogsQueryBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsQueryBodyFilterGroupList =
+const LogsQueryBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsQueryBodyFilterGroupList>;
 
 /** Custom column expressions evaluated per log row. Each entry is either a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression (`upper(level)`, `coalesce(attributes['a'], attributes['b'])`). Aggregations and subqueries are rejected. Values come back on each result row keyed by the aliases echoed in the response `columns` field. */
 export type LogsQueryBodyCustomColumnsList = Array<string>;
-export const LogsQueryBodyCustomColumnsList =
+const LogsQueryBodyCustomColumnsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsQueryBodyCustomColumnsList>;
 
 export interface LogsQueryBody {
@@ -2835,7 +2347,7 @@ export interface LogsQueryBody {
   /** Scope results to one session ID. Matched server-side against the team's configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes. */
   sessionId?: string;
 }
-export const LogsQueryBody = /*@__PURE__*/ S.suspend(() =>
+const LogsQueryBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     severityLevels: S.optional(LogsQueryBodySeverityLevelsList),
@@ -2858,7 +2370,7 @@ export interface CreateLogsQueryRequest {
   /** The logs query to execute. */
   query?: LogsQueryBody;
 }
-export const CreateLogsQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(LogsQueryBody),
@@ -2867,17 +2379,17 @@ export const CreateLogsQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The parsed query that was executed, echoed back for confirmation. */
 export type LogsQueryResponseQueryMap = { [key: string]: unknown | undefined };
-export const LogsQueryResponseQueryMap =
+const LogsQueryResponseQueryMap =
   UserBasicHedgehogConfigMap as any as S.Schema<LogsQueryResponseQueryMap>;
 
 /** Log-level attributes as a string-keyed map. Values are strings (numeric/datetime attributes are also accessible via materialized columns). */
 export type LogEntryAttributesMap = { [key: string]: string | undefined };
-export const LogEntryAttributesMap =
+const LogEntryAttributesMap =
   GroupPropertyFilterGroupKeyNamesMap as any as S.Schema<LogEntryAttributesMap>;
 
 /** Resource-level attributes (service.name, k8s.*, host.hostname, etc.) as a string-keyed map. Repeats across all logs from the same pod/host. */
 export type LogEntryResourceAttributesMap = { [key: string]: string | undefined };
-export const LogEntryResourceAttributesMap =
+const LogEntryResourceAttributesMap =
   GroupPropertyFilterGroupKeyNamesMap as any as S.Schema<LogEntryResourceAttributesMap>;
 
 export interface LogEntry {
@@ -2906,7 +2418,7 @@ export interface LogEntry {
   /** OpenTelemetry event name, if set. */
   event_name?: string;
 }
-export const LogEntry = /*@__PURE__*/ S.suspend(() =>
+const LogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -2926,13 +2438,13 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Log entries matching the query. */
 export type LogsQueryResponseResultsList = Array<LogEntry>;
-export const LogsQueryResponseResultsList = /*@__PURE__*/ S.Array(
+const LogsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LogEntry,
 ) as any as S.Schema<LogsQueryResponseResultsList>;
 
 /** Aliases for the requested `customColumns`, in request order. Each result row carries its custom column values under these keys. Null when no custom columns were requested. */
 export type LogsQueryResponseColumnsList = Array<string>;
-export const LogsQueryResponseColumnsList =
+const LogsQueryResponseColumnsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsQueryResponseColumnsList>;
 
 export interface LogsQueryResponse {
@@ -2949,7 +2461,7 @@ export interface LogsQueryResponse {
   /** Aliases for the requested `customColumns`, in request order. Each result row carries its custom column values under these keys. Null when no custom columns were requested. */
   columns?: LogsQueryResponseColumnsList | null;
 }
-export const LogsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(LogsQueryResponseQueryMap),
     results: S.optional(LogsQueryResponseResultsList),
@@ -2972,7 +2484,7 @@ export interface CreateLogsRetentionRuleRequest {
   /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
-export const CreateLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -3003,7 +2515,7 @@ export interface LogsRetentionRule {
   created_at: string;
   updated_at: string | null;
 }
-export const LogsRetentionRule = /*@__PURE__*/ S.suspend(() =>
+const LogsRetentionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3019,7 +2531,7 @@ export const LogsRetentionRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
 export type CreateLogsRetentionRulesReorderRequestOrderedIdsList = Array<string>;
-export const CreateLogsRetentionRulesReorderRequestOrderedIdsList =
+const CreateLogsRetentionRulesReorderRequestOrderedIdsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<CreateLogsRetentionRulesReorderRequestOrderedIdsList>;
 
 export interface CreateLogsRetentionRulesReorderRequest {
@@ -3032,7 +2544,7 @@ export interface CreateLogsRetentionRulesReorderRequest {
   /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
   ordered_ids: CreateLogsRetentionRulesReorderRequestOrderedIdsList;
 }
-export const CreateLogsRetentionRulesReorderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsRetentionRulesReorderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3050,7 +2562,7 @@ export const CreateLogsRetentionRulesReorderRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateLogsRetentionRulesReorderRequest>;
 
 export type PaginatedLogsRetentionRuleListResultsList = Array<LogsRetentionRule>;
-export const PaginatedLogsRetentionRuleListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLogsRetentionRuleListResultsList = /*@__PURE__*/ S.Array(
   LogsRetentionRule,
 ) as any as S.Schema<PaginatedLogsRetentionRuleListResultsList>;
 
@@ -3060,7 +2572,7 @@ export interface PaginatedLogsRetentionRuleList {
   previous?: string | null;
   results: PaginatedLogsRetentionRuleListResultsList;
 }
-export const PaginatedLogsRetentionRuleList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLogsRetentionRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3079,7 +2591,7 @@ export interface CreateLogsRetentionRulesSuggestNameRequest {
   /** PropertyGroupFilter tree the rule would match on. */
   filter_group: unknown;
 }
-export const CreateLogsRetentionRulesSuggestNameRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsRetentionRulesSuggestNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     retention_days: S.Number,
@@ -3099,7 +2611,7 @@ export interface LogsRetentionRuleNameSuggestion {
   /** Suggested rule name. Empty when no suggestion could be generated -- clients hide the hint. */
   name: string;
 }
-export const LogsRetentionRuleNameSuggestion = /*@__PURE__*/ S.suspend(() =>
+const LogsRetentionRuleNameSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -3109,18 +2621,18 @@ export const LogsRetentionRuleNameSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** * `severity_sampling` - Severity-based reduction * `path_drop` - Path exclusion * `rate_limit` - Rate limit */
 export type LogsExclusionRuleRuleTypeEnum = "severity_sampling" | "path_drop" | "rate_limit";
-export const LogsExclusionRuleRuleTypeEnum = S.String;
+const LogsExclusionRuleRuleTypeEnum = S.String;
 
 export type CreateLogsSamplingRuleRequestScopeAttributeFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLogsSamplingRuleRequestScopeAttributeFiltersItemMap =
+const CreateLogsSamplingRuleRequestScopeAttributeFiltersItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<CreateLogsSamplingRuleRequestScopeAttributeFiltersItemMap>;
 
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type CreateLogsSamplingRuleRequestScopeAttributeFiltersList =
   Array<CreateLogsSamplingRuleRequestScopeAttributeFiltersItemMap>;
-export const CreateLogsSamplingRuleRequestScopeAttributeFiltersList = /*@__PURE__*/ S.Array(
+const CreateLogsSamplingRuleRequestScopeAttributeFiltersList = /*@__PURE__*/ S.Array(
   CreateLogsSamplingRuleRequestScopeAttributeFiltersItemMap,
 ) as any as S.Schema<CreateLogsSamplingRuleRequestScopeAttributeFiltersList>;
 
@@ -3144,7 +2656,7 @@ export interface CreateLogsSamplingRuleRequest {
   /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
 }
-export const CreateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -3163,13 +2675,10 @@ export const CreateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLogsSamplingRuleRequest>;
 
 export type LogsSamplingRuleScopeAttributeFiltersItemMap = { [key: string]: unknown | undefined };
-export const LogsSamplingRuleScopeAttributeFiltersItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<LogsSamplingRuleScopeAttributeFiltersItemMap>;
-
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type LogsSamplingRuleScopeAttributeFiltersList =
   Array<LogsSamplingRuleScopeAttributeFiltersItemMap>;
-export const LogsSamplingRuleScopeAttributeFiltersList =
+const LogsSamplingRuleScopeAttributeFiltersList =
   CreateLogsSamplingRuleRequestScopeAttributeFiltersList as any as S.Schema<LogsSamplingRuleScopeAttributeFiltersList>;
 
 export interface LogsSamplingRule {
@@ -3197,7 +2706,7 @@ export interface LogsSamplingRule {
   created_at: string;
   updated_at: string | null;
 }
-export const LogsSamplingRule = /*@__PURE__*/ S.suspend(() =>
+const LogsSamplingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3217,7 +2726,7 @@ export const LogsSamplingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
 export type CreateLogsSamplingRulesReorderRequestOrderedIdsList = Array<string>;
-export const CreateLogsSamplingRulesReorderRequestOrderedIdsList =
+const CreateLogsSamplingRulesReorderRequestOrderedIdsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<CreateLogsSamplingRulesReorderRequestOrderedIdsList>;
 
 export interface CreateLogsSamplingRulesReorderRequest {
@@ -3230,7 +2739,7 @@ export interface CreateLogsSamplingRulesReorderRequest {
   /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
   ordered_ids: CreateLogsSamplingRulesReorderRequestOrderedIdsList;
 }
-export const CreateLogsSamplingRulesReorderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsSamplingRulesReorderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3248,7 +2757,7 @@ export const CreateLogsSamplingRulesReorderRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateLogsSamplingRulesReorderRequest>;
 
 export type PaginatedLogsSamplingRuleListResultsList = Array<LogsSamplingRule>;
-export const PaginatedLogsSamplingRuleListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLogsSamplingRuleListResultsList = /*@__PURE__*/ S.Array(
   LogsSamplingRule,
 ) as any as S.Schema<PaginatedLogsSamplingRuleListResultsList>;
 
@@ -3258,7 +2767,7 @@ export interface PaginatedLogsSamplingRuleList {
   previous?: string | null;
   results: PaginatedLogsSamplingRuleListResultsList;
 }
-export const PaginatedLogsSamplingRuleList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLogsSamplingRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3275,7 +2784,7 @@ export interface CreateLogsSamplingRulesSimulateRequest {
   /** A UUID string identifying this logs exclusion rule. */
   id: string;
 }
-export const CreateLogsSamplingRulesSimulateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsSamplingRulesSimulateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3296,7 +2805,7 @@ export interface LogsSamplingRuleSimulateResponse {
   /** Human-readable caveats for the estimate. */
   notes: string;
 }
-export const LogsSamplingRuleSimulateResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsSamplingRuleSimulateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimated_reduction_pct: S.Number,
     notes: S.String,
@@ -3307,17 +2816,17 @@ export const LogsSamplingRuleSimulateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by log severity levels. */
 export type LogsServicesBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsServicesBodySeverityLevelsList =
+const LogsServicesBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsServicesBodySeverityLevelsList>;
 
 /** Restrict the aggregation to these service names. */
 export type LogsServicesBodyServiceNamesList = Array<string>;
-export const LogsServicesBodyServiceNamesList =
+const LogsServicesBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsServicesBodyServiceNamesList>;
 
 /** Property filters for the query. */
 export type LogsServicesBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsServicesBodyFilterGroupList =
+const LogsServicesBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsServicesBodyFilterGroupList>;
 
 export interface LogsServicesBody {
@@ -3334,7 +2843,7 @@ export interface LogsServicesBody {
   /** Property filters for the query. */
   filterGroup?: LogsServicesBodyFilterGroupList;
 }
-export const LogsServicesBody = /*@__PURE__*/ S.suspend(() =>
+const LogsServicesBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     severityLevels: S.optional(LogsServicesBodySeverityLevelsList),
@@ -3351,7 +2860,7 @@ export interface CreateLogsServiceRequest {
   /** The services aggregation query to execute. */
   query?: LogsServicesBody;
 }
-export const CreateLogsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(LogsServicesBody),
@@ -3364,7 +2873,7 @@ export interface LogsServiceSeverityBreakdown {
   warn: number;
   error: number;
 }
-export const LogsServiceSeverityBreakdown = /*@__PURE__*/ S.suspend(() =>
+const LogsServiceSeverityBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debug: S.Number,
     info: S.Number,
@@ -3380,7 +2889,7 @@ export interface LogsServiceActiveRule {
   rule_name: string;
   summary_string: string;
 }
-export const LogsServiceActiveRule = /*@__PURE__*/ S.suspend(() =>
+const LogsServiceActiveRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule_id: S.String,
     rule_name: S.String,
@@ -3390,7 +2899,7 @@ export const LogsServiceActiveRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Enabled sampling rules whose scope includes this service. */
 export type LogsServiceAggregateActiveRulesList = Array<LogsServiceActiveRule>;
-export const LogsServiceAggregateActiveRulesList = /*@__PURE__*/ S.Array(
+const LogsServiceAggregateActiveRulesList = /*@__PURE__*/ S.Array(
   LogsServiceActiveRule,
 ) as any as S.Schema<LogsServiceAggregateActiveRulesList>;
 
@@ -3410,7 +2919,7 @@ export interface LogsServiceAggregate {
   /** Enabled sampling rules whose scope includes this service. */
   active_rules?: LogsServiceAggregateActiveRulesList;
 }
-export const LogsServiceAggregate = /*@__PURE__*/ S.suspend(() =>
+const LogsServiceAggregate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.optional(S.String),
     log_count: S.optional(S.Number),
@@ -3424,7 +2933,7 @@ export const LogsServiceAggregate = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-service aggregates, ordered by log_count descending. Capped at 10000 services. */
 export type LogsServicesResponseServicesList = Array<LogsServiceAggregate>;
-export const LogsServicesResponseServicesList = /*@__PURE__*/ S.Array(
+const LogsServicesResponseServicesList = /*@__PURE__*/ S.Array(
   LogsServiceAggregate,
 ) as any as S.Schema<LogsServicesResponseServicesList>;
 
@@ -3434,7 +2943,7 @@ export interface LogsServicesSparklineBucket {
   service_name?: string;
   count?: number;
 }
-export const LogsServicesSparklineBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsServicesSparklineBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     service_name: S.optional(S.String),
@@ -3446,7 +2955,7 @@ export const LogsServicesSparklineBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Time-bucketed counts broken down by service, for plotting volume over time. Covers only the top 25 services in this response; re-request with `serviceNames` to get sparklines for specific services. */
 export type LogsServicesResponseSparklineList = Array<LogsServicesSparklineBucket>;
-export const LogsServicesResponseSparklineList = /*@__PURE__*/ S.Array(
+const LogsServicesResponseSparklineList = /*@__PURE__*/ S.Array(
   LogsServicesSparklineBucket,
 ) as any as S.Schema<LogsServicesResponseSparklineList>;
 
@@ -3456,7 +2965,7 @@ export interface LogsServicesSummary {
   /** Combined volume share (percent) of the top services by log_count. */
   top_services_volume_share_pct: number;
 }
-export const LogsServicesSummary = /*@__PURE__*/ S.suspend(() =>
+const LogsServicesSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     top_services_count: S.Number,
     top_services_volume_share_pct: S.Number,
@@ -3473,7 +2982,7 @@ export interface LogsServicesResponse {
   /** Roll-up stats for the Services tab header. */
   summary?: LogsServicesSummary;
 }
-export const LogsServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(LogsServicesResponseServicesList),
     sparkline: S.optional(LogsServicesResponseSparklineList),
@@ -3484,26 +2993,26 @@ export const LogsServicesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by log severity levels. */
 export type LogsSparklineBodySeverityLevelsList = Array<SeverityLevelsEnum | (string & {})>;
-export const LogsSparklineBodySeverityLevelsList =
+const LogsSparklineBodySeverityLevelsList =
   LogsCountBodySeverityLevelsList as any as S.Schema<LogsSparklineBodySeverityLevelsList>;
 
 /** Filter by service names. */
 export type LogsSparklineBodyServiceNamesList = Array<string>;
-export const LogsSparklineBodyServiceNamesList =
+const LogsSparklineBodyServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsSparklineBodyServiceNamesList>;
 
 /** Property filters for the query. */
 export type LogsSparklineBodyFilterGroupList = Array<LogPropertyFilter2>;
-export const LogsSparklineBodyFilterGroupList =
+const LogsSparklineBodyFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<LogsSparklineBodyFilterGroupList>;
 
 /** * `severity` - severity * `service` - service */
 export type SparklineBreakdownByEnum = "severity" | "service";
-export const SparklineBreakdownByEnum = S.String;
+const SparklineBreakdownByEnum = S.String;
 
 /** * `count` - count * `bytes` - bytes */
 export type SparklineRankByEnum = "count" | "bytes";
-export const SparklineRankByEnum = S.String;
+const SparklineRankByEnum = S.String;
 
 export interface LogsSparklineBody {
   /** Date range for the sparkline. Defaults to last hour. */
@@ -3525,7 +3034,7 @@ export interface LogsSparklineBody {
   /** Scope results to one session ID. Matched server-side against the team's configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes. */
   sessionId?: string;
 }
-export const LogsSparklineBody = /*@__PURE__*/ S.suspend(() =>
+const LogsSparklineBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     severityLevels: S.optional(LogsSparklineBodySeverityLevelsList),
@@ -3545,7 +3054,7 @@ export interface CreateLogsSparklineRequest {
   /** The sparkline query to execute. */
   query?: LogsSparklineBody;
 }
-export const CreateLogsSparklineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsSparklineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(LogsSparklineBody),
@@ -3565,7 +3074,7 @@ export interface LogsSparklineBucket {
   /** Sum of uncompressed bytes for the bucket. */
   bytes_uncompressed?: number;
 }
-export const LogsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
+const LogsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     severity: S.optional(S.String),
@@ -3577,7 +3086,7 @@ export const LogsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Time-bucketed log counts. Each bucket carries either `severity` or `service` depending on breakdown. */
 export type LogsSparklineResponseResultsList = Array<LogsSparklineBucket>;
-export const LogsSparklineResponseResultsList = /*@__PURE__*/ S.Array(
+const LogsSparklineResponseResultsList = /*@__PURE__*/ S.Array(
   LogsSparklineBucket,
 ) as any as S.Schema<LogsSparklineResponseResultsList>;
 
@@ -3585,7 +3094,7 @@ export interface LogsSparklineResponse {
   /** Time-bucketed log counts. Each bucket carries either `severity` or `service` depending on breakdown. */
   results?: LogsSparklineResponseResultsList;
 }
-export const LogsSparklineResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsSparklineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(LogsSparklineResponseResultsList),
   }),
@@ -3593,7 +3102,7 @@ export const LogsSparklineResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type CreateLogsViewRequestFiltersMap = { [key: string]: unknown | undefined };
-export const CreateLogsViewRequestFiltersMap =
+const CreateLogsViewRequestFiltersMap =
   UserBasicHedgehogConfigMap as any as S.Schema<CreateLogsViewRequestFiltersMap>;
 
 /** * `timestamp` - timestamp * `level` - level * `source` - source * `trace_id` - trace_id * `span_id` - span_id * `person` - person * `session` - session * `pattern` - pattern * `message` - message * `custom` - custom */
@@ -3608,7 +3117,7 @@ export type LogsViewColumnTypeEnum =
   | "pattern"
   | "message"
   | "custom";
-export const LogsViewColumnTypeEnum = S.String;
+const LogsViewColumnTypeEnum = S.String;
 
 export interface LogsViewColumn {
   /** Client-generated stable identity for list operations (React keys, reorder). Never interpreted by the server. */
@@ -3622,7 +3131,7 @@ export interface LogsViewColumn {
   /** Column width in pixels (1-2000). Omitted for the default width; ignored for the flex message column. */
   width?: number;
 }
-export const LogsViewColumn = /*@__PURE__*/ S.suspend(() =>
+const LogsViewColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: LogsViewColumnTypeEnum,
@@ -3634,7 +3143,7 @@ export const LogsViewColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
 export type CreateLogsViewRequestColumnsList = Array<LogsViewColumn>;
-export const CreateLogsViewRequestColumnsList = /*@__PURE__*/ S.Array(
+const CreateLogsViewRequestColumnsList = /*@__PURE__*/ S.Array(
   LogsViewColumn,
 ) as any as S.Schema<CreateLogsViewRequestColumnsList>;
 
@@ -3648,7 +3157,7 @@ export interface CreateLogsViewRequest {
   columns?: CreateLogsViewRequestColumnsList | null;
   pinned?: boolean;
 }
-export const CreateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -3660,11 +3169,11 @@ export const CreateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type LogsViewFiltersMap = { [key: string]: unknown | undefined };
-export const LogsViewFiltersMap = UserBasicHedgehogConfigMap as any as S.Schema<LogsViewFiltersMap>;
+const LogsViewFiltersMap = UserBasicHedgehogConfigMap as any as S.Schema<LogsViewFiltersMap>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
 export type LogsViewColumnsList = Array<LogsViewColumn>;
-export const LogsViewColumnsList =
+const LogsViewColumnsList =
   CreateLogsViewRequestColumnsList as any as S.Schema<LogsViewColumnsList>;
 
 export interface LogsView {
@@ -3680,7 +3189,7 @@ export interface LogsView {
   created_by?: UserBasic | null;
   updated_at?: string | null;
 }
-export const LogsView = /*@__PURE__*/ S.suspend(() =>
+const LogsView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     short_id: S.optional(S.String),
@@ -3700,7 +3209,7 @@ export interface GetLogsAlertRequest {
   /** A UUID string identifying this logs alert configuration. */
   id: string;
 }
-export const GetLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3711,17 +3220,17 @@ export const GetLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
 export type LogsAlertConfigurationDetailStateTimelineList = Array<LogsAlertStateInterval>;
-export const LogsAlertConfigurationDetailStateTimelineList =
+const LogsAlertConfigurationDetailStateTimelineList =
   LogsAlertConfigurationStateTimelineList as any as S.Schema<LogsAlertConfigurationDetailStateTimelineList>;
 
 /** Notification destination types configured for this alert -- e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
 export type LogsAlertConfigurationDetailDestinationTypesList =
   Array<NotificationDestinationTypeEnum>;
-export const LogsAlertConfigurationDetailDestinationTypesList =
+const LogsAlertConfigurationDetailDestinationTypesList =
   LogsAlertConfigurationDestinationTypesList as any as S.Schema<LogsAlertConfigurationDetailDestinationTypesList>;
 
 export type LogsAlertDestinationConfigHogFunctionIdsList = Array<string>;
-export const LogsAlertDestinationConfigHogFunctionIdsList =
+const LogsAlertDestinationConfigHogFunctionIdsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsAlertDestinationConfigHogFunctionIdsList>;
 
 export interface LogsAlertDestinationConfig {
@@ -3735,7 +3244,7 @@ export interface LogsAlertDestinationConfig {
   /** Webhook endpoint reduced to scheme and host. The path, query and userinfo carry the secret. */
   webhook_url?: string;
 }
-export const LogsAlertDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertDestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_ids: LogsAlertDestinationConfigHogFunctionIdsList,
     type: NotificationDestinationTypeEnum,
@@ -3750,7 +3259,7 @@ export const LogsAlertDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** This alert's notification destinations, one entry per destination. Each carries the HogFunction IDs that delete it as a group, and its configuration with credential-bearing URL components removed. */
 export type LogsAlertConfigurationDetailDestinationsList = Array<LogsAlertDestinationConfig>;
-export const LogsAlertConfigurationDetailDestinationsList = /*@__PURE__*/ S.Array(
+const LogsAlertConfigurationDetailDestinationsList = /*@__PURE__*/ S.Array(
   LogsAlertDestinationConfig,
 ) as any as S.Schema<LogsAlertConfigurationDetailDestinationsList>;
 
@@ -3808,7 +3317,7 @@ export interface LogsAlertConfigurationDetail {
   /** This alert's notification destinations, one entry per destination. Each carries the HogFunction IDs that delete it as a group, and its configuration with credential-bearing URL components removed. */
   destinations: LogsAlertConfigurationDetailDestinationsList;
 }
-export const LogsAlertConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -3842,14 +3351,14 @@ export const LogsAlertConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAlertConfigurationDetail>;
 
 export type GetLogsAttributeRequestAttributeType = "log" | "resource";
-export const GetLogsAttributeRequestAttributeType = S.String;
+const GetLogsAttributeRequestAttributeType = S.String;
 
 export type GetLogsAttributeRequestFilterGroupList = Array<LogPropertyFilter2>;
-export const GetLogsAttributeRequestFilterGroupList =
+const GetLogsAttributeRequestFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<GetLogsAttributeRequestFilterGroupList>;
 
 export type GetLogsAttributeRequestServiceNamesList = Array<string>;
-export const GetLogsAttributeRequestServiceNamesList =
+const GetLogsAttributeRequestServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<GetLogsAttributeRequestServiceNamesList>;
 
 export interface GetLogsAttributeRequest {
@@ -3878,7 +3387,7 @@ export interface GetLogsAttributeRequest {
   /** Filter attributes to those appearing in logs from these services. */
   serviceNames?: GetLogsAttributeRequestServiceNamesList;
 }
-export const GetLogsAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     attribute_type: S.optional(GetLogsAttributeRequestAttributeType.pipe(T.Query())),
@@ -3897,7 +3406,7 @@ export const GetLogsAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `key` - key * `value` - value */
 export type MatchedOnEnum = "key" | "value";
-export const MatchedOnEnum = S.String;
+const MatchedOnEnum = S.String;
 
 export interface LogAttributeEntry {
   name?: string;
@@ -3908,7 +3417,7 @@ export interface LogAttributeEntry {
   /** Sample matching value -- only set when matchedOn is "value". */
   matchedValue?: string | null;
 }
-export const LogAttributeEntry = /*@__PURE__*/ S.suspend(() =>
+const LogAttributeEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     propertyFilterType: S.optional(S.String),
@@ -3919,7 +3428,7 @@ export const LogAttributeEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Available attribute keys matching the filters. */
 export type LogsAttributesResponseResultsList = Array<LogAttributeEntry>;
-export const LogsAttributesResponseResultsList = /*@__PURE__*/ S.Array(
+const LogsAttributesResponseResultsList = /*@__PURE__*/ S.Array(
   LogAttributeEntry,
 ) as any as S.Schema<LogsAttributesResponseResultsList>;
 
@@ -3929,7 +3438,7 @@ export interface LogsAttributesResponse {
   /** Total attribute keys matched (not paginated). */
   count?: number;
 }
-export const LogsAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(LogsAttributesResponseResultsList),
     count: S.optional(S.Number),
@@ -3940,18 +3449,18 @@ export interface GetLogsHasLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetLogsHasLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsHasLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/has_logs/", code: 200 })),
 ).annotate({ identifier: "GetLogsHasLogRequest" }) as any as S.Schema<GetLogsHasLogRequest>;
 
 export type GetLogsHasLogResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetLogsHasLogResponseBodyMap =
+const GetLogsHasLogResponseBodyMap =
   UserBasicHedgehogConfigMap as any as S.Schema<GetLogsHasLogResponseBodyMap>;
 
 export type GetLogsHasLogResponse = GetLogsHasLogResponseBodyMap;
-export const GetLogsHasLogResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLogsHasLogResponse = /*@__PURE__*/ S.suspend(() =>
   GetLogsHasLogResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetLogsHasLogResponse" }) as any as S.Schema<GetLogsHasLogResponse>;
 
@@ -3961,7 +3470,7 @@ export interface GetLogsMetricRuleRequest {
   /** A UUID string identifying this logs metric rule. */
   id: string;
 }
-export const GetLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3976,7 +3485,7 @@ export interface GetLogsRetentionRuleRequest {
   /** A UUID string identifying this logs retention rule. */
   id: string;
 }
-export const GetLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3997,7 +3506,7 @@ export interface GetLogsSamplingRuleRequest {
   /** A UUID string identifying this logs exclusion rule. */
   id: string;
 }
-export const GetLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4013,14 +3522,14 @@ export const GetLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLogsSamplingRuleRequest>;
 
 export type GetLogsValueRequestAttributeType = "log" | "resource";
-export const GetLogsValueRequestAttributeType = S.String;
+const GetLogsValueRequestAttributeType = S.String;
 
 export type GetLogsValueRequestFilterGroupList = Array<LogPropertyFilter2>;
-export const GetLogsValueRequestFilterGroupList =
+const GetLogsValueRequestFilterGroupList =
   LogsCountBodyFilterGroupList as any as S.Schema<GetLogsValueRequestFilterGroupList>;
 
 export type GetLogsValueRequestServiceNamesList = Array<string>;
-export const GetLogsValueRequestServiceNamesList =
+const GetLogsValueRequestServiceNamesList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<GetLogsValueRequestServiceNamesList>;
 
 export interface GetLogsValueRequest {
@@ -4039,7 +3548,7 @@ export interface GetLogsValueRequest {
   /** Search filter for attribute values */
   value?: string;
 }
-export const GetLogsValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     attribute_type: S.optional(GetLogsValueRequestAttributeType.pipe(T.Query())),
@@ -4059,7 +3568,7 @@ export interface LogAttributeValue {
   /** Number of log records with this attribute value, scoped to the current date range, service, and resource filters. */
   count?: number;
 }
-export const LogAttributeValue = /*@__PURE__*/ S.suspend(() =>
+const LogAttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4069,7 +3578,7 @@ export const LogAttributeValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Distinct values observed for the requested attribute. */
 export type LogsValuesResponseResultsList = Array<LogAttributeValue>;
-export const LogsValuesResponseResultsList = /*@__PURE__*/ S.Array(
+const LogsValuesResponseResultsList = /*@__PURE__*/ S.Array(
   LogAttributeValue,
 ) as any as S.Schema<LogsValuesResponseResultsList>;
 
@@ -4079,7 +3588,7 @@ export interface LogsValuesResponse {
   /** Always false -- reserved for future cached-value refresh signalling. */
   refreshing?: boolean;
 }
-export const LogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(LogsValuesResponseResultsList),
     refreshing: S.optional(S.Boolean),
@@ -4091,7 +3600,7 @@ export interface GetLogsViewRequest {
   project_id: string;
   short_id: string;
 }
-export const GetLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -4110,7 +3619,7 @@ export interface ListLogsAlertsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLogsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.String.pipe(T.Query())),
@@ -4120,7 +3629,7 @@ export const ListLogsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLogsAlertsRequest" }) as any as S.Schema<ListLogsAlertsRequest>;
 
 export type PaginatedLogsAlertConfigurationListResultsList = Array<LogsAlertConfiguration>;
-export const PaginatedLogsAlertConfigurationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLogsAlertConfigurationListResultsList = /*@__PURE__*/ S.Array(
   LogsAlertConfiguration,
 ) as any as S.Schema<PaginatedLogsAlertConfigurationListResultsList>;
 
@@ -4130,7 +3639,7 @@ export interface PaginatedLogsAlertConfigurationList {
   previous?: string | null;
   results?: PaginatedLogsAlertConfigurationListResultsList;
 }
-export const PaginatedLogsAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLogsAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -4151,7 +3660,7 @@ export interface ListLogsAlertsEventsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLogsAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4178,7 +3687,7 @@ export type LogsAlertEventKindEnum =
   | "unsnooze"
   | "threshold_change"
   | "broken_config";
-export const LogsAlertEventKindEnum = S.String;
+const LogsAlertEventKindEnum = S.String;
 
 export interface LogsAlertEvent {
   id?: string;
@@ -4191,7 +3700,7 @@ export interface LogsAlertEvent {
   error_message?: string | null;
   query_duration_ms?: number | null;
 }
-export const LogsAlertEvent = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -4206,7 +3715,7 @@ export const LogsAlertEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsAlertEvent" }) as any as S.Schema<LogsAlertEvent>;
 
 export type PaginatedLogsAlertEventListResultsList = Array<LogsAlertEvent>;
-export const PaginatedLogsAlertEventListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLogsAlertEventListResultsList = /*@__PURE__*/ S.Array(
   LogsAlertEvent,
 ) as any as S.Schema<PaginatedLogsAlertEventListResultsList>;
 
@@ -4216,7 +3725,7 @@ export interface PaginatedLogsAlertEventList {
   previous?: string | null;
   results?: PaginatedLogsAlertEventListResultsList;
 }
-export const PaginatedLogsAlertEventList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLogsAlertEventList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -4235,7 +3744,7 @@ export interface ListLogsMetricRulesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLogsMetricRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsMetricRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4248,7 +3757,7 @@ export const ListLogsMetricRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLogsMetricRulesRequest>;
 
 export type PaginatedLogsMetricRuleListResultsList = Array<LogsMetricRule>;
-export const PaginatedLogsMetricRuleListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLogsMetricRuleListResultsList = /*@__PURE__*/ S.Array(
   LogsMetricRule,
 ) as any as S.Schema<PaginatedLogsMetricRuleListResultsList>;
 
@@ -4258,7 +3767,7 @@ export interface PaginatedLogsMetricRuleList {
   previous?: string | null;
   results: PaginatedLogsMetricRuleListResultsList;
 }
-export const PaginatedLogsMetricRuleList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLogsMetricRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -4277,7 +3786,7 @@ export interface ListLogsRetentionRulesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLogsRetentionRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsRetentionRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4297,7 +3806,7 @@ export interface ListLogsSamplingRulesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLogsSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4317,7 +3826,7 @@ export interface ListLogsViewsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLogsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4326,7 +3835,7 @@ export const ListLogsViewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLogsViewsRequest" }) as any as S.Schema<ListLogsViewsRequest>;
 
 export type PaginatedLogsViewListResultsList = Array<LogsView>;
-export const PaginatedLogsViewListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLogsViewListResultsList = /*@__PURE__*/ S.Array(
   LogsView,
 ) as any as S.Schema<PaginatedLogsViewListResultsList>;
 
@@ -4336,7 +3845,7 @@ export interface PaginatedLogsViewList {
   previous?: string | null;
   results?: PaginatedLogsViewListResultsList;
 }
-export const PaginatedLogsViewList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLogsViewList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -4347,7 +3856,7 @@ export const PaginatedLogsViewList = /*@__PURE__*/ S.suspend(() =>
 
 /** HogFunction IDs to delete as one atomic destination group. */
 export type LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-export const LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
+const LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
 
 export interface LogsAlertsDestinationsDeleteCreateRequest {
@@ -4358,7 +3867,7 @@ export interface LogsAlertsDestinationsDeleteCreateRequest {
   /** HogFunction IDs to delete as one atomic destination group. */
   hog_function_ids?: LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList;
 }
-export const LogsAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4375,7 +3884,7 @@ export const LogsAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<LogsAlertsDestinationsDeleteCreateRequest>;
 
 export interface LogsAlertsDestinationsDeleteCreateResponse {}
-export const LogsAlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "LogsAlertsDestinationsDeleteCreateResponse",
@@ -4387,7 +3896,7 @@ export interface LogsAlertsDestroyRequest {
   /** A UUID string identifying this logs alert configuration. */
   id: string;
 }
-export const LogsAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4397,7 +3906,7 @@ export const LogsAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsAlertsDestroyRequest" }) as any as S.Schema<LogsAlertsDestroyRequest>;
 
 export interface LogsAlertsDestroyResponse {}
-export const LogsAlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const LogsAlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "LogsAlertsDestroyResponse",
 }) as any as S.Schema<LogsAlertsDestroyResponse>;
 
@@ -4407,7 +3916,7 @@ export interface LogsAlertsResetCreateRequest {
   /** A UUID string identifying this logs alert configuration. */
   id: string;
 }
-export const LogsAlertsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsAlertsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4426,19 +3935,15 @@ export interface LogsExportCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const LogsExportCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsExportCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/export/", code: 200 })),
 ).annotate({ identifier: "LogsExportCreateRequest" }) as any as S.Schema<LogsExportCreateRequest>;
 
 export type LogsExportCreateResponseBodyMap = { [key: string]: unknown | undefined };
-export const LogsExportCreateResponseBodyMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<LogsExportCreateResponseBodyMap>;
-
 export type LogsExportCreateResponse = LogsExportCreateResponseBodyMap;
-export const LogsExportCreateResponse =
-  GetLogsHasLogResponse as any as S.Schema<LogsExportCreateResponse>;
+const LogsExportCreateResponse = GetLogsHasLogResponse as any as S.Schema<LogsExportCreateResponse>;
 
 export interface LogsMetricRulesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4446,7 +3951,7 @@ export interface LogsMetricRulesDestroyRequest {
   /** A UUID string identifying this logs metric rule. */
   id: string;
 }
-export const LogsMetricRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsMetricRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4462,7 +3967,7 @@ export const LogsMetricRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsMetricRulesDestroyRequest>;
 
 export interface LogsMetricRulesDestroyResponse {}
-export const LogsMetricRulesDestroyResponse =
+const LogsMetricRulesDestroyResponse =
   LogsAlertsDestroyResponse as any as S.Schema<LogsMetricRulesDestroyResponse>;
 
 export interface LogsRetentionRulesDestroyRequest {
@@ -4471,7 +3976,7 @@ export interface LogsRetentionRulesDestroyRequest {
   /** A UUID string identifying this logs retention rule. */
   id: string;
 }
-export const LogsRetentionRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsRetentionRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4487,7 +3992,7 @@ export const LogsRetentionRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsRetentionRulesDestroyRequest>;
 
 export interface LogsRetentionRulesDestroyResponse {}
-export const LogsRetentionRulesDestroyResponse =
+const LogsRetentionRulesDestroyResponse =
   LogsAlertsDestinationsDeleteCreateResponse as any as S.Schema<LogsRetentionRulesDestroyResponse>;
 
 export interface LogsSamplingRulesDestroyRequest {
@@ -4496,7 +4001,7 @@ export interface LogsSamplingRulesDestroyRequest {
   /** A UUID string identifying this logs exclusion rule. */
   id: string;
 }
-export const LogsSamplingRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsSamplingRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4512,7 +4017,7 @@ export const LogsSamplingRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsSamplingRulesDestroyRequest>;
 
 export interface LogsSamplingRulesDestroyResponse {}
-export const LogsSamplingRulesDestroyResponse =
+const LogsSamplingRulesDestroyResponse =
   LogsAlertsDestinationsDeleteCreateResponse as any as S.Schema<LogsSamplingRulesDestroyResponse>;
 
 export interface LogsViewsDestroyRequest {
@@ -4520,7 +4025,7 @@ export interface LogsViewsDestroyRequest {
   project_id: string;
   short_id: string;
 }
-export const LogsViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LogsViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -4534,7 +4039,7 @@ export const LogsViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsViewsDestroyRequest" }) as any as S.Schema<LogsViewsDestroyRequest>;
 
 export interface LogsViewsDestroyResponse {}
-export const LogsViewsDestroyResponse =
+const LogsViewsDestroyResponse =
   LogsAlertsDestroyResponse as any as S.Schema<LogsViewsDestroyResponse>;
 
 export interface UpdateLogsAlertRequest {
@@ -4565,7 +4070,7 @@ export interface UpdateLogsAlertRequest {
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
 }
-export const UpdateLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4613,7 +4118,7 @@ export interface UpdateLogsAlertsPartialRequest {
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
 }
-export const UpdateLogsAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4637,7 +4142,7 @@ export const UpdateLogsAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type UpdateLogsMetricRuleRequestGroupByList = Array<string>;
-export const UpdateLogsMetricRuleRequestGroupByList =
+const UpdateLogsMetricRuleRequestGroupByList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<UpdateLogsMetricRuleRequestGroupByList>;
 
 export interface UpdateLogsMetricRuleRequest {
@@ -4660,7 +4165,7 @@ export interface UpdateLogsMetricRuleRequest {
   /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum | (string & {});
 }
-export const UpdateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4680,7 +4185,7 @@ export const UpdateLogsMetricRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. For `source=logs` rules allowed: service_name, severity_text, event_name; for `source=spans` rules allowed: service_name, name, status_code, kind; for either, map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) -- excess series are dropped at ingestion. For `source=spans` rules, note that `name` is high-cardinality on poorly instrumented services (route params or SQL fragments in the span name), so grouping by `name` can overflow the per-rule series cap on its own. */
 export type UpdateLogsMetricRulesPartialRequestGroupByList = Array<string>;
-export const UpdateLogsMetricRulesPartialRequestGroupByList =
+const UpdateLogsMetricRulesPartialRequestGroupByList =
   LogsAlertFiltersServiceNamesList as any as S.Schema<UpdateLogsMetricRulesPartialRequestGroupByList>;
 
 export interface UpdateLogsMetricRulesPartialRequest {
@@ -4703,7 +4208,7 @@ export interface UpdateLogsMetricRulesPartialRequest {
   /** Record source the rule tallies: `logs` (default) evaluates in the logs consumer, `spans` in the traces consumer. Immutable after creation -- it decides which keys are valid and which pipeline runs the rule. * `logs` - Logs * `spans` - Spans */
   source?: LogsMetricRuleRecordSourceEnum | (string & {});
 }
-export const UpdateLogsMetricRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsMetricRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4739,7 +4244,7 @@ export interface UpdateLogsRetentionRuleRequest {
   /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config: unknown;
 }
-export const UpdateLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsRetentionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4772,7 +4277,7 @@ export interface UpdateLogsRetentionRulesPartialRequest {
   /** Retention rule JSON. Required keys: `retention_days` (integer -- how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape -- an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{"retention_days":30,"filter_group":{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}}`. Logs matching no enabled rule keep the environment's default retention. */
   config?: unknown;
 }
-export const UpdateLogsRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4794,13 +4299,10 @@ export const UpdateLogsRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend(()
 export type UpdateLogsSamplingRuleRequestScopeAttributeFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateLogsSamplingRuleRequestScopeAttributeFiltersItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<UpdateLogsSamplingRuleRequestScopeAttributeFiltersItemMap>;
-
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type UpdateLogsSamplingRuleRequestScopeAttributeFiltersList =
   Array<UpdateLogsSamplingRuleRequestScopeAttributeFiltersItemMap>;
-export const UpdateLogsSamplingRuleRequestScopeAttributeFiltersList =
+const UpdateLogsSamplingRuleRequestScopeAttributeFiltersList =
   CreateLogsSamplingRuleRequestScopeAttributeFiltersList as any as S.Schema<UpdateLogsSamplingRuleRequestScopeAttributeFiltersList>;
 
 export interface UpdateLogsSamplingRuleRequest {
@@ -4825,7 +4327,7 @@ export interface UpdateLogsSamplingRuleRequest {
   /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
 }
-export const UpdateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4851,16 +4353,15 @@ export const UpdateLogsSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap>;
+const UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap>;
 
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersList =
   Array<UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap>;
-export const UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersList = /*@__PURE__*/ S.Array(
+const UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersList = /*@__PURE__*/ S.Array(
   UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersItemMap,
 ) as any as S.Schema<UpdateLogsSamplingRulesPartialRequestScopeAttributeFiltersList>;
 
@@ -4886,7 +4387,7 @@ export interface UpdateLogsSamplingRulesPartialRequest {
   /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape -- AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter -- empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1-1000000, optional `burst_logs` integer >= logs_per_second, max 10000000) OR `kb_per_second` (integer 1-1000000 = 1 GB/s, optional `burst_kb` integer >= kb_per_second, max 10000000) -- not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config?: unknown;
 }
-export const UpdateLogsSamplingRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsSamplingRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4913,12 +4414,12 @@ export const UpdateLogsSamplingRulesPartialRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type UpdateLogsViewRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateLogsViewRequestFiltersMap =
+const UpdateLogsViewRequestFiltersMap =
   UserBasicHedgehogConfigMap as any as S.Schema<UpdateLogsViewRequestFiltersMap>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
 export type UpdateLogsViewRequestColumnsList = Array<LogsViewColumn>;
-export const UpdateLogsViewRequestColumnsList =
+const UpdateLogsViewRequestColumnsList =
   CreateLogsViewRequestColumnsList as any as S.Schema<UpdateLogsViewRequestColumnsList>;
 
 export interface UpdateLogsViewRequest {
@@ -4932,7 +4433,7 @@ export interface UpdateLogsViewRequest {
   columns?: UpdateLogsViewRequestColumnsList | null;
   pinned?: boolean;
 }
-export const UpdateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -4947,12 +4448,12 @@ export const UpdateLogsViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter criteria -- subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
 export type UpdateLogsViewsPartialRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateLogsViewsPartialRequestFiltersMap =
+const UpdateLogsViewsPartialRequestFiltersMap =
   UserBasicHedgehogConfigMap as any as S.Schema<UpdateLogsViewsPartialRequestFiltersMap>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
 export type UpdateLogsViewsPartialRequestColumnsList = Array<LogsViewColumn>;
-export const UpdateLogsViewsPartialRequestColumnsList =
+const UpdateLogsViewsPartialRequestColumnsList =
   CreateLogsViewRequestColumnsList as any as S.Schema<UpdateLogsViewsPartialRequestColumnsList>;
 
 export interface UpdateLogsViewsPartialRequest {
@@ -4966,7 +4467,7 @@ export interface UpdateLogsViewsPartialRequest {
   columns?: UpdateLogsViewsPartialRequestColumnsList | null;
   pinned?: boolean;
 }
-export const UpdateLogsViewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsViewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),

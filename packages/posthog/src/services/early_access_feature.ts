@@ -43,7 +43,7 @@ export type EarlyAccessFeatureStageEnum =
   | "beta"
   | "general-availability"
   | "archived";
-export const EarlyAccessFeatureStageEnum = S.String;
+const EarlyAccessFeatureStageEnum = S.String;
 
 export interface CreateEarlyAccessFeatureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -62,7 +62,7 @@ export interface CreateEarlyAccessFeatureRequest {
   feature_flag_id?: number;
   _create_in_folder?: string;
 }
-export const CreateEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -80,7 +80,7 @@ export const CreateEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEarlyAccessFeatureRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -96,14 +96,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -116,7 +111,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -131,10 +126,10 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType = "user" | "role";
-export const EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType = S.String;
+const EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType = S.String;
 
 export type EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId = number | string;
-export const EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId =
+const EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId =
   S.Unknown as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId>;
 
 /** The person or role responsible for this feature, e.g. {"type": "user", "id": 123} or {"type": "role", "id": "<role uuid>"}. Defaults to the creator. Send null to unassign. */
@@ -142,7 +137,7 @@ export interface EarlyAccessFeatureSerializerCreateOnlyOutputAssignee {
   type?: EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType;
   id?: EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId;
 }
-export const EarlyAccessFeatureSerializerCreateOnlyOutputAssignee = /*@__PURE__*/ S.suspend(() =>
+const EarlyAccessFeatureSerializerCreateOnlyOutputAssignee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType),
     id: S.optional(EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId),
@@ -152,29 +147,25 @@ export const EarlyAccessFeatureSerializerCreateOnlyOutputAssignee = /*@__PURE__*
 }) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutputAssignee>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap =
+const MinimalFeatureFlagFiltersMap =
   UserBasicHedgehogConfigMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
-export const EvaluationRuntimeEnum = S.String;
-
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const MinimalFeatureFlagEvaluationRuntime =
+const MinimalFeatureFlagEvaluationRuntime =
   S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
-export const BucketingIdentifierEnum = S.String;
-
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const MinimalFeatureFlagBucketingIdentifier =
+const MinimalFeatureFlagBucketingIdentifier =
   S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
+const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
 
@@ -194,7 +185,7 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
-export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
+const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     team_id: S.optional(S.Number),
@@ -233,7 +224,7 @@ export interface EarlyAccessFeatureSerializerCreateOnlyOutput {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const EarlyAccessFeatureSerializerCreateOnlyOutput = /*@__PURE__*/ S.suspend(() =>
+const EarlyAccessFeatureSerializerCreateOnlyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -257,7 +248,7 @@ export interface EarlyAccessFeatureDestroyRequest {
   /** A UUID string identifying this early access feature. */
   id: string;
 }
-export const EarlyAccessFeatureDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const EarlyAccessFeatureDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -273,9 +264,7 @@ export const EarlyAccessFeatureDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EarlyAccessFeatureDestroyRequest>;
 
 export interface EarlyAccessFeatureDestroyResponse {}
-export const EarlyAccessFeatureDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const EarlyAccessFeatureDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EarlyAccessFeatureDestroyResponse",
 }) as any as S.Schema<EarlyAccessFeatureDestroyResponse>;
 
@@ -285,7 +274,7 @@ export interface GetEarlyAccessFeatureRequest {
   /** A UUID string identifying this early access feature. */
   id: string;
 }
-export const GetEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -302,22 +291,21 @@ export const GetEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Feature flag payload for this early access feature */
 export type EarlyAccessFeaturePayloadMap = { [key: string]: unknown | undefined };
-export const EarlyAccessFeaturePayloadMap =
+const EarlyAccessFeaturePayloadMap =
   UserBasicHedgehogConfigMap as any as S.Schema<EarlyAccessFeaturePayloadMap>;
 
 export type EarlyAccessFeatureAssigneeType = "user" | "role";
-export const EarlyAccessFeatureAssigneeType = S.String;
+const EarlyAccessFeatureAssigneeType = S.String;
 
 export type EarlyAccessFeatureAssigneeId = number | string;
-export const EarlyAccessFeatureAssigneeId =
-  S.Unknown as any as S.Schema<EarlyAccessFeatureAssigneeId>;
+const EarlyAccessFeatureAssigneeId = S.Unknown as any as S.Schema<EarlyAccessFeatureAssigneeId>;
 
 /** The person or role responsible for this feature, e.g. {"type": "user", "id": 123} or {"type": "role", "id": "<role uuid>"}. Defaults to the creator. Send null to unassign. */
 export interface EarlyAccessFeatureAssignee {
   type?: EarlyAccessFeatureAssigneeType;
   id?: EarlyAccessFeatureAssigneeId;
 }
-export const EarlyAccessFeatureAssignee = /*@__PURE__*/ S.suspend(() =>
+const EarlyAccessFeatureAssignee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(EarlyAccessFeatureAssigneeType),
     id: S.optional(EarlyAccessFeatureAssigneeId),
@@ -348,7 +336,7 @@ export interface EarlyAccessFeature2 {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const EarlyAccessFeature2 = /*@__PURE__*/ S.suspend(() =>
+const EarlyAccessFeature2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     feature_flag: S.optional(MinimalFeatureFlag),
@@ -372,7 +360,7 @@ export interface ListEarlyAccessFeatureRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -385,7 +373,7 @@ export const ListEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEarlyAccessFeatureRequest>;
 
 export type PaginatedEarlyAccessFeatureListResultsList = Array<EarlyAccessFeature2>;
-export const PaginatedEarlyAccessFeatureListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEarlyAccessFeatureListResultsList = /*@__PURE__*/ S.Array(
   EarlyAccessFeature2,
 ) as any as S.Schema<PaginatedEarlyAccessFeatureListResultsList>;
 
@@ -395,7 +383,7 @@ export interface PaginatedEarlyAccessFeatureList {
   previous?: string | null;
   results?: PaginatedEarlyAccessFeatureListResultsList;
 }
-export const PaginatedEarlyAccessFeatureList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEarlyAccessFeatureList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -420,7 +408,7 @@ export interface UpdateEarlyAccessFeatureRequest {
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
 }
-export const UpdateEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -453,7 +441,7 @@ export interface UpdateEarlyAccessFeaturePartialRequest {
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
 }
-export const UpdateEarlyAccessFeaturePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEarlyAccessFeaturePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

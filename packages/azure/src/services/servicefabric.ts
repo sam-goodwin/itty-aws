@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Azure resource tags. */
 export type ApplicationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
@@ -21,16 +21,16 @@ export type ManagedIdentityType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ManagedIdentityType = S.String;
+const ManagedIdentityType = S.String;
 
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedIdentityMapInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentityMapInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentityMapInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentityMapInput>;
@@ -40,7 +40,7 @@ export interface ManagedIdentityInput {
   type?: ManagedIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentityMapInput;
 }
-export const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ManagedIdentityType),
     userAssignedIdentities: S.optional(UserAssignedIdentityMapInput),
@@ -49,12 +49,12 @@ export const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of application parameters with overridden values from their default values specified in the application manifest. */
 export type ApplicationParameterList = { [key: string]: string | undefined };
-export const ApplicationParameterList =
+const ApplicationParameterList =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationParameterList>;
 
 /** The activation Mode of the service package */
 export type ArmRollingUpgradeMonitoringPolicyFailureAction = "Rollback" | "Manual";
-export const ArmRollingUpgradeMonitoringPolicyFailureAction = S.String;
+const ArmRollingUpgradeMonitoringPolicyFailureAction = S.String;
 
 /** The policy used for monitoring the application upgrade */
 export interface ArmRollingUpgradeMonitoringPolicy {
@@ -66,7 +66,7 @@ export interface ArmRollingUpgradeMonitoringPolicy {
   upgradeTimeout?: string;
   upgradeDomainTimeout?: string;
 }
-export const ArmRollingUpgradeMonitoringPolicy = /*@__PURE__*/ S.suspend(() =>
+const ArmRollingUpgradeMonitoringPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureAction: S.optional(ArmRollingUpgradeMonitoringPolicyFailureAction),
     healthCheckWaitDuration: S.optional(S.String),
@@ -88,7 +88,7 @@ export interface ArmServiceTypeHealthPolicy {
   /** The maximum percentage of replicas per partition allowed to be unhealthy before your application is considered in error. */
   maxPercentUnhealthyReplicasPerPartition?: number;
 }
-export const ArmServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ArmServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPercentUnhealthyServices: S.optional(S.Number),
     maxPercentUnhealthyPartitionsPerService: S.optional(S.Number),
@@ -102,7 +102,7 @@ export const ArmServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ArmServiceTypeHealthPolicyMap = {
   [key: string]: ArmServiceTypeHealthPolicy | undefined;
 };
-export const ArmServiceTypeHealthPolicyMap = /*@__PURE__*/ S.Record(
+const ArmServiceTypeHealthPolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   ArmServiceTypeHealthPolicy,
 ) as any as S.Schema<ArmServiceTypeHealthPolicyMap>;
@@ -118,7 +118,7 @@ export interface ArmApplicationHealthPolicy {
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicyMap?: ArmServiceTypeHealthPolicyMap;
 }
-export const ArmApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ArmApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     considerWarningAsError: S.optional(S.Boolean),
     maxPercentUnhealthyDeployedApplications: S.optional(S.Number),
@@ -131,7 +131,7 @@ export const ArmApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The mode used to monitor health during a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and Monitored. */
 export type RollingUpgradeMode = "Invalid" | "UnmonitoredAuto" | "UnmonitoredManual" | "Monitored";
-export const RollingUpgradeMode = S.String;
+const RollingUpgradeMode = S.String;
 
 /** Describes the policy for a monitored application upgrade. */
 export interface ApplicationUpgradePolicy {
@@ -144,7 +144,7 @@ export interface ApplicationUpgradePolicy {
   /** Determines whether the application should be recreated on update. If value=true, the rest of the upgrade policy parameters are not allowed and it will result in availability loss. */
   recreateApplication?: boolean;
 }
-export const ApplicationUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
+const ApplicationUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeReplicaSetCheckTimeout: S.optional(S.String),
     forceRestart: S.optional(S.Boolean),
@@ -166,7 +166,7 @@ export interface ApplicationMetricDescription {
   /** The total metric capacity for Service Fabric application. This is the total metric capacity for this application in the cluster. Service Fabric will try to limit the sum of loads of services within the application to this value. When creating a new application with application capacity defined, the product of MaximumNodes and MaximumCapacity must always be smaller than or equal to this value. */
   totalApplicationCapacity?: number;
 }
-export const ApplicationMetricDescription = /*@__PURE__*/ S.suspend(() =>
+const ApplicationMetricDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     maximumCapacity: S.optional(S.Number),
@@ -179,7 +179,7 @@ export const ApplicationMetricDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of application capacity metric description. */
 export type ApplicationMetricDescriptionList = Array<ApplicationMetricDescription>;
-export const ApplicationMetricDescriptionList = /*@__PURE__*/ S.Array(
+const ApplicationMetricDescriptionList = /*@__PURE__*/ S.Array(
   ApplicationMetricDescription,
 ) as any as S.Schema<ApplicationMetricDescriptionList>;
 
@@ -189,7 +189,7 @@ export interface ApplicationUserAssignedIdentity {
   /** The principal id of user assigned identity. */
   principalId: string;
 }
-export const ApplicationUserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const ApplicationUserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     principalId: S.String,
@@ -201,7 +201,7 @@ export const ApplicationUserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesInputManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-export const ApplicationResourcePropertiesInputManagedIdentitiesList = /*@__PURE__*/ S.Array(
+const ApplicationResourcePropertiesInputManagedIdentitiesList = /*@__PURE__*/ S.Array(
   ApplicationUserAssignedIdentity,
 ) as any as S.Schema<ApplicationResourcePropertiesInputManagedIdentitiesList>;
 
@@ -221,7 +221,7 @@ export interface ApplicationResourcePropertiesInput {
   managedIdentities?: ApplicationResourcePropertiesInputManagedIdentitiesList;
   typeName?: string;
 }
-export const ApplicationResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ApplicationResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeVersion: S.optional(S.String),
     parameters: S.optional(ApplicationParameterList),
@@ -253,7 +253,7 @@ export interface ApplicationsCreateOrUpdateRequest {
   identity?: ManagedIdentityInput;
   properties?: ApplicationResourcePropertiesInput;
 }
-export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -276,21 +276,17 @@ export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
 
 export interface ApplicationsCreateOrUpdateResponse {}
-export const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApplicationsCreateOrUpdateResponse",
 }) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
 
 /** Azure resource tags. */
 export type ApplicationTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ApplicationTypesCreateOrUpdateRequestTagsMap =
+const ApplicationTypesCreateOrUpdateRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypesCreateOrUpdateRequestTagsMap>;
 
 /** The application type name properties */
 export type ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
-export const ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
-
 export interface ApplicationTypesCreateOrUpdateRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
@@ -306,7 +302,7 @@ export interface ApplicationTypesCreateOrUpdateRequest {
   tags?: ApplicationTypesCreateOrUpdateRequestTagsMap;
   properties?: UserAssignedIdentityInput;
 }
-export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -329,7 +325,7 @@ export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Azure resource tags. */
 export type ApplicationTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ApplicationTypesCreateOrUpdateResponseTagsMap =
+const ApplicationTypesCreateOrUpdateResponseTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypesCreateOrUpdateResponseTagsMap>;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -347,7 +343,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC). */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(S.String),
@@ -363,7 +359,7 @@ export interface ApplicationTypeResourceProperties {
   /** The current deployment or provisioning state, which only appears in the response. */
   provisioningState?: string;
 }
-export const ApplicationTypeResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
   }),
@@ -387,7 +383,7 @@ export interface ApplicationTypesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ApplicationTypeResourceProperties;
 }
-export const ApplicationTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -406,7 +402,7 @@ export const ApplicationTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(()
 export type ApplicationTypeVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ApplicationTypeVersionsCreateOrUpdateRequestTagsMap =
+const ApplicationTypeVersionsCreateOrUpdateRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequestTagsMap>;
 
 /** The properties of the application type version resource. */
@@ -414,7 +410,7 @@ export interface ApplicationTypeVersionResourcePropertiesInput {
   /** The URL to the application package */
   appPackageUrl: string;
 }
-export const ApplicationTypeVersionResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeVersionResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appPackageUrl: S.String,
   }),
@@ -439,7 +435,7 @@ export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   tags?: ApplicationTypeVersionsCreateOrUpdateRequestTagsMap;
   properties?: ApplicationTypeVersionResourcePropertiesInput;
 }
-export const ApplicationTypeVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -462,12 +458,12 @@ export const ApplicationTypeVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>;
 
 export interface ApplicationTypeVersionsCreateOrUpdateResponse {}
-export const ApplicationTypeVersionsCreateOrUpdateResponse =
+const ApplicationTypeVersionsCreateOrUpdateResponse =
   ApplicationsCreateOrUpdateResponse as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>;
 
 /** Azure resource tags. */
 export type ClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateRequestTagsMap =
+const ClustersCreateOrUpdateRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
 
 /** Available cluster add-on features */
@@ -476,11 +472,11 @@ export type AddOnFeatures =
   | "DnsService"
   | "BackupRestoreService"
   | "ResourceMonitorService";
-export const AddOnFeatures = S.String;
+const AddOnFeatures = S.String;
 
 /** The list of add-on features to enable in the cluster. */
 export type ClusterPropertiesInputAddOnFeaturesList = Array<AddOnFeatures | (string & {})>;
-export const ClusterPropertiesInputAddOnFeaturesList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputAddOnFeaturesList = /*@__PURE__*/ S.Array(
   AddOnFeatures,
 ) as any as S.Schema<ClusterPropertiesInputAddOnFeaturesList>;
 
@@ -493,7 +489,7 @@ export interface AzureActiveDirectory {
   /** Azure active directory client application id. */
   clientApplication?: string;
 }
-export const AzureActiveDirectory = /*@__PURE__*/ S.suspend(() =>
+const AzureActiveDirectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     clusterApplication: S.optional(S.String),
@@ -511,7 +507,7 @@ export type StoreName =
   | "Root"
   | "TrustedPeople"
   | "TrustedPublisher";
-export const StoreName = S.String;
+const StoreName = S.String;
 
 /** Describes the certificate details. */
 export interface CertificateDescription {
@@ -521,7 +517,7 @@ export interface CertificateDescription {
   thumbprintSecondary?: string;
   x509StoreName?: StoreName | (string & {});
 }
-export const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
+const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thumbprint: S.String,
     thumbprintSecondary: S.optional(S.String),
@@ -536,7 +532,7 @@ export interface ServerCertificateCommonName {
   /** The issuer thumbprint of the server certificate. */
   certificateIssuerThumbprint: string;
 }
-export const ServerCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
+const ServerCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateCommonName: S.String,
     certificateIssuerThumbprint: S.String,
@@ -547,7 +543,7 @@ export const ServerCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of server certificates referenced by common name that are used to secure the cluster. */
 export type ServerCertificateCommonNamesCommonNamesList = Array<ServerCertificateCommonName>;
-export const ServerCertificateCommonNamesCommonNamesList = /*@__PURE__*/ S.Array(
+const ServerCertificateCommonNamesCommonNamesList = /*@__PURE__*/ S.Array(
   ServerCertificateCommonName,
 ) as any as S.Schema<ServerCertificateCommonNamesCommonNamesList>;
 
@@ -557,7 +553,7 @@ export interface ServerCertificateCommonNames {
   commonNames?: ServerCertificateCommonNamesCommonNamesList;
   x509StoreName?: StoreName | (string & {});
 }
-export const ServerCertificateCommonNames = /*@__PURE__*/ S.suspend(() =>
+const ServerCertificateCommonNames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonNames: S.optional(ServerCertificateCommonNamesCommonNamesList),
     x509StoreName: S.optional(StoreName),
@@ -575,7 +571,7 @@ export interface ClientCertificateCommonName {
   /** The issuer thumbprint of the client certificate. */
   certificateIssuerThumbprint: string;
 }
-export const ClientCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
+const ClientCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAdmin: S.Boolean,
     certificateCommonName: S.String,
@@ -588,7 +584,7 @@ export const ClientCertificateCommonName = /*@__PURE__*/ S.suspend(() =>
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. */
 export type ClusterPropertiesInputClientCertificateCommonNamesList =
   Array<ClientCertificateCommonName>;
-export const ClusterPropertiesInputClientCertificateCommonNamesList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputClientCertificateCommonNamesList = /*@__PURE__*/ S.Array(
   ClientCertificateCommonName,
 ) as any as S.Schema<ClusterPropertiesInputClientCertificateCommonNamesList>;
 
@@ -599,7 +595,7 @@ export interface ClientCertificateThumbprint {
   /** The thumbprint of the client certificate. */
   certificateThumbprint: string;
 }
-export const ClientCertificateThumbprint = /*@__PURE__*/ S.suspend(() =>
+const ClientCertificateThumbprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAdmin: S.Boolean,
     certificateThumbprint: S.String,
@@ -611,7 +607,7 @@ export const ClientCertificateThumbprint = /*@__PURE__*/ S.suspend(() =>
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. */
 export type ClusterPropertiesInputClientCertificateThumbprintsList =
   Array<ClientCertificateThumbprint>;
-export const ClusterPropertiesInputClientCertificateThumbprintsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputClientCertificateThumbprintsList = /*@__PURE__*/ S.Array(
   ClientCertificateThumbprint,
 ) as any as S.Schema<ClusterPropertiesInputClientCertificateThumbprintsList>;
 
@@ -630,7 +626,7 @@ export interface DiagnosticsStorageAccountConfig {
   /** The table endpoint of the azure storage account. */
   tableEndpoint: string;
 }
-export const DiagnosticsStorageAccountConfig = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticsStorageAccountConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountName: S.String,
     protectedAccountKeyName: S.String,
@@ -650,7 +646,7 @@ export interface SettingsParameterDescription {
   /** The parameter value of fabric setting. */
   value: string;
 }
-export const SettingsParameterDescription = /*@__PURE__*/ S.suspend(() =>
+const SettingsParameterDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -661,7 +657,7 @@ export const SettingsParameterDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of parameters in the section. */
 export type SettingsSectionDescriptionParametersList = Array<SettingsParameterDescription>;
-export const SettingsSectionDescriptionParametersList = /*@__PURE__*/ S.Array(
+const SettingsSectionDescriptionParametersList = /*@__PURE__*/ S.Array(
   SettingsParameterDescription,
 ) as any as S.Schema<SettingsSectionDescriptionParametersList>;
 
@@ -672,7 +668,7 @@ export interface SettingsSectionDescription {
   /** The collection of parameters in the section. */
   parameters: SettingsSectionDescriptionParametersList;
 }
-export const SettingsSectionDescription = /*@__PURE__*/ S.suspend(() =>
+const SettingsSectionDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     parameters: SettingsSectionDescriptionParametersList,
@@ -683,23 +679,23 @@ export const SettingsSectionDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of custom fabric settings to configure the cluster. */
 export type ClusterPropertiesInputFabricSettingsList = Array<SettingsSectionDescription>;
-export const ClusterPropertiesInputFabricSettingsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputFabricSettingsList = /*@__PURE__*/ S.Array(
   SettingsSectionDescription,
 ) as any as S.Schema<ClusterPropertiesInputFabricSettingsList>;
 
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
 export type NodeTypeDescriptionPlacementPropertiesMap = { [key: string]: string | undefined };
-export const NodeTypeDescriptionPlacementPropertiesMap =
+const NodeTypeDescriptionPlacementPropertiesMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<NodeTypeDescriptionPlacementPropertiesMap>;
 
 /** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
 export type NodeTypeDescriptionCapacitiesMap = { [key: string]: string | undefined };
-export const NodeTypeDescriptionCapacitiesMap =
+const NodeTypeDescriptionCapacitiesMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<NodeTypeDescriptionCapacitiesMap>;
 
 /** The durability level of the node type. Learn about [DurabilityLevel](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). - Bronze - No privileges. This is the default. - Silver - The infrastructure jobs can be paused for a duration of 10 minutes per UD. - Gold - The infrastructure jobs can be paused for a duration of 2 hours per UD. Gold durability can be enabled only on full node VM skus like D15_V2, G5 etc. */
 export type DurabilityLevel = "Bronze" | "Silver" | "Gold";
-export const DurabilityLevel = S.String;
+const DurabilityLevel = S.String;
 
 /** Port range details */
 export interface EndpointRangeDescription {
@@ -708,7 +704,7 @@ export interface EndpointRangeDescription {
   /** End port of a range of ports */
   endPort: number;
 }
-export const EndpointRangeDescription = /*@__PURE__*/ S.suspend(() =>
+const EndpointRangeDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startPort: S.Number,
     endPort: S.Number,
@@ -743,7 +739,7 @@ export interface NodeTypeDescription {
   /** Indicates if the node type is enabled to support multiple zones. */
   multipleAvailabilityZones?: boolean;
 }
-export const NodeTypeDescription = /*@__PURE__*/ S.suspend(() =>
+const NodeTypeDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     placementProperties: S.optional(NodeTypeDescriptionPlacementPropertiesMap),
@@ -763,20 +759,20 @@ export const NodeTypeDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of node types in the cluster. */
 export type ClusterPropertiesInputNodeTypesList = Array<NodeTypeDescription>;
-export const ClusterPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputNodeTypesList = /*@__PURE__*/ S.Array(
   NodeTypeDescription,
 ) as any as S.Schema<ClusterPropertiesInputNodeTypesList>;
 
 /** The reliability level sets the replica set size of system services. Learn about [ReliabilityLevel](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). - None - Run the System services with a target replica set count of 1. This should only be used for test clusters. - Bronze - Run the System services with a target replica set count of 3. This should only be used for test clusters. - Silver - Run the System services with a target replica set count of 5. - Gold - Run the System services with a target replica set count of 7. - Platinum - Run the System services with a target replica set count of 9. */
 export type ReliabilityLevel = "None" | "Bronze" | "Silver" | "Gold" | "Platinum";
-export const ReliabilityLevel = S.String;
+const ReliabilityLevel = S.String;
 
 /** Represents the health policy used to evaluate the health of services belonging to a service type. */
 export interface ServiceTypeHealthPolicy {
   /** The maximum percentage of services allowed to be unhealthy before your application is considered in error. */
   maxPercentUnhealthyServices?: number;
 }
-export const ServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPercentUnhealthyServices: S.optional(S.Number),
   }),
@@ -784,7 +780,7 @@ export const ServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines a ServiceTypeHealthPolicy per service type name. The entries in the map replace the default service type health policy for each specified service type. For example, in an application that contains both a stateless gateway service type and a stateful engine service type, the health policies for the stateless and stateful services can be configured differently. With policy per service type, there's more granular control of the health of the service. If no policy is specified for a service type name, the DefaultServiceTypeHealthPolicy is used for evaluation. */
 export type ServiceTypeHealthPolicyMap = { [key: string]: ServiceTypeHealthPolicy | undefined };
-export const ServiceTypeHealthPolicyMap = /*@__PURE__*/ S.Record(
+const ServiceTypeHealthPolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   ServiceTypeHealthPolicy,
 ) as any as S.Schema<ServiceTypeHealthPolicyMap>;
@@ -796,7 +792,7 @@ export interface ApplicationHealthPolicy {
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicies?: ServiceTypeHealthPolicyMap;
 }
-export const ApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultServiceTypeHealthPolicy: S.optional(ServiceTypeHealthPolicy),
     serviceTypeHealthPolicies: S.optional(ServiceTypeHealthPolicyMap),
@@ -805,7 +801,7 @@ export const ApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines a map that contains specific application health policies for different applications. Each entry specifies as key the application name and as value an ApplicationHealthPolicy used to evaluate the application health. The application name should include the 'fabric:' URI scheme. The map is empty by default. */
 export type ApplicationHealthPolicyMap = { [key: string]: ApplicationHealthPolicy | undefined };
-export const ApplicationHealthPolicyMap = /*@__PURE__*/ S.Record(
+const ApplicationHealthPolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   ApplicationHealthPolicy,
 ) as any as S.Schema<ApplicationHealthPolicyMap>;
@@ -819,7 +815,7 @@ export interface ClusterHealthPolicy {
   /** Defines the application health policy map used to evaluate the health of an application or one of its children entities. */
   applicationHealthPolicies?: ApplicationHealthPolicyMap;
 }
-export const ClusterHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ClusterHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPercentUnhealthyNodes: S.optional(S.Number),
     maxPercentUnhealthyApplications: S.optional(S.Number),
@@ -832,7 +828,7 @@ export interface ServiceTypeDeltaHealthPolicy {
   /** The maximum allowed percentage of services health degradation allowed during cluster upgrades. The delta is measured between the state of the services at the beginning of upgrade and the state of the services at the time of the health evaluation. The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. */
   maxPercentDeltaUnhealthyServices?: number;
 }
-export const ServiceTypeDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ServiceTypeDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPercentDeltaUnhealthyServices: S.optional(S.Number),
   }),
@@ -844,7 +840,7 @@ export const ServiceTypeDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ServiceTypeDeltaHealthPolicyMap = {
   [key: string]: ServiceTypeDeltaHealthPolicy | undefined;
 };
-export const ServiceTypeDeltaHealthPolicyMap = /*@__PURE__*/ S.Record(
+const ServiceTypeDeltaHealthPolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   ServiceTypeDeltaHealthPolicy,
 ) as any as S.Schema<ServiceTypeDeltaHealthPolicyMap>;
@@ -856,7 +852,7 @@ export interface ApplicationDeltaHealthPolicy {
   /** The map with service type delta health policy per service type name. The map is empty by default. */
   serviceTypeDeltaHealthPolicies?: ServiceTypeDeltaHealthPolicyMap;
 }
-export const ApplicationDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApplicationDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultServiceTypeDeltaHealthPolicy: S.optional(ServiceTypeDeltaHealthPolicy),
     serviceTypeDeltaHealthPolicies: S.optional(ServiceTypeDeltaHealthPolicyMap),
@@ -869,7 +865,7 @@ export const ApplicationDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationDeltaHealthPolicyMap = {
   [key: string]: ApplicationDeltaHealthPolicy | undefined;
 };
-export const ApplicationDeltaHealthPolicyMap = /*@__PURE__*/ S.Record(
+const ApplicationDeltaHealthPolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   ApplicationDeltaHealthPolicy,
 ) as any as S.Schema<ApplicationDeltaHealthPolicyMap>;
@@ -885,7 +881,7 @@ export interface ClusterUpgradeDeltaHealthPolicy {
   /** Defines the application delta health policy map used to evaluate the health of an application or one of its child entities when upgrading the cluster. */
   applicationDeltaHealthPolicies?: ApplicationDeltaHealthPolicyMap;
 }
-export const ClusterUpgradeDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeDeltaHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPercentDeltaUnhealthyNodes: S.Number,
     maxPercentUpgradeDomainDeltaUnhealthyNodes: S.Number,
@@ -917,7 +913,7 @@ export interface ClusterUpgradePolicy {
   /** The cluster delta health policy used when upgrading the cluster. */
   deltaHealthPolicy?: ClusterUpgradeDeltaHealthPolicy;
 }
-export const ClusterUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceRestart: S.optional(S.Boolean),
     upgradeReplicaSetCheckTimeout: S.String,
@@ -933,13 +929,13 @@ export const ClusterUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
 export type UpgradeMode = "Automatic" | "Manual";
-export const UpgradeMode = S.String;
+const UpgradeMode = S.String;
 
 export interface ApplicationTypeVersionsCleanupPolicy {
   /** Number of unused versions per application type to keep. */
   maxUnusedVersionsToKeep: number;
 }
-export const ApplicationTypeVersionsCleanupPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeVersionsCleanupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxUnusedVersionsToKeep: S.Number,
   }),
@@ -949,31 +945,31 @@ export const ApplicationTypeVersionsCleanupPolicy = /*@__PURE__*/ S.suspend(() =
 
 /** This property controls the logical grouping of VMs in upgrade domains (UDs). This property can't be modified if a node type with multiple Availability Zones is already present in the cluster. */
 export type SfZonalUpgradeMode = "Parallel" | "Hierarchical";
-export const SfZonalUpgradeMode = S.String;
+const SfZonalUpgradeMode = S.String;
 
 /** This property defines the upgrade mode for the virtual machine scale set, it is mandatory if a node type with multiple Availability Zones is added. */
 export type VmssZonalUpgradeMode = "Parallel" | "Hierarchical";
-export const VmssZonalUpgradeMode = S.String;
+const VmssZonalUpgradeMode = S.String;
 
 /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. */
 export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2";
-export const ClusterUpgradeCadence = S.String;
+const ClusterUpgradeCadence = S.String;
 
 /** The category of notification. */
 export type NotificationNotificationCategory = "WaveProgress";
-export const NotificationNotificationCategory = S.String;
+const NotificationNotificationCategory = S.String;
 
 /** The level of notification. */
 export type NotificationNotificationLevel = "Critical" | "All";
-export const NotificationNotificationLevel = S.String;
+const NotificationNotificationLevel = S.String;
 
 /** The notification channel indicates the type of receivers subscribed to the notification, either user or subscription. */
 export type NotificationTargetNotificationChannel = "EmailUser" | "EmailSubscription";
-export const NotificationTargetNotificationChannel = S.String;
+const NotificationTargetNotificationChannel = S.String;
 
 /** List of targets that subscribe to the notification. */
 export type NotificationTargetReceiversList = Array<string>;
-export const NotificationTargetReceiversList = /*@__PURE__*/ S.Array(
+const NotificationTargetReceiversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationTargetReceiversList>;
 
@@ -984,7 +980,7 @@ export interface NotificationTarget {
   /** List of targets that subscribe to the notification. */
   receivers: NotificationTargetReceiversList;
 }
-export const NotificationTarget = /*@__PURE__*/ S.suspend(() =>
+const NotificationTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationChannel: NotificationTargetNotificationChannel,
     receivers: NotificationTargetReceiversList,
@@ -993,7 +989,7 @@ export const NotificationTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** List of targets that subscribe to the notification. */
 export type NotificationNotificationTargetsList = Array<NotificationTarget>;
-export const NotificationNotificationTargetsList = /*@__PURE__*/ S.Array(
+const NotificationNotificationTargetsList = /*@__PURE__*/ S.Array(
   NotificationTarget,
 ) as any as S.Schema<NotificationNotificationTargetsList>;
 
@@ -1008,7 +1004,7 @@ export interface Notification {
   /** List of targets that subscribe to the notification. */
   notificationTargets: NotificationNotificationTargetsList;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.Boolean,
     notificationCategory: NotificationNotificationCategory,
@@ -1019,7 +1015,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesInputNotificationsList = Array<Notification>;
-export const ClusterPropertiesInputNotificationsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ClusterPropertiesInputNotificationsList>;
 
@@ -1074,7 +1070,7 @@ export interface ClusterPropertiesInput {
   /** Indicates a list of notification channels for cluster events. */
   notifications?: ClusterPropertiesInputNotificationsList;
 }
-export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnFeatures: S.optional(ClusterPropertiesInputAddOnFeaturesList),
     azureActiveDirectory: S.optional(AzureActiveDirectory),
@@ -1124,7 +1120,7 @@ export interface ClustersCreateOrUpdateRequest {
   /** The cluster resource properties */
   properties?: ClusterPropertiesInput;
 }
-export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1146,17 +1142,17 @@ export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateResponseTagsMap =
+const ClustersCreateOrUpdateResponseTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 /** The list of add-on features to enable in the cluster. */
 export type ClusterPropertiesAddOnFeaturesList = Array<AddOnFeatures>;
-export const ClusterPropertiesAddOnFeaturesList =
+const ClusterPropertiesAddOnFeaturesList =
   ClusterPropertiesInputAddOnFeaturesList as any as S.Schema<ClusterPropertiesAddOnFeaturesList>;
 
 /** Cluster operating system, the default will be Windows */
 export type ClusterEnvironment = "Windows" | "Linux";
-export const ClusterEnvironment = S.String;
+const ClusterEnvironment = S.String;
 
 /** The detail of the Service Fabric runtime version result */
 export interface ClusterVersionDetails {
@@ -1167,7 +1163,7 @@ export interface ClusterVersionDetails {
   /** Indicates if this version is for Windows or Linux operating system. */
   environment?: ClusterEnvironment;
 }
-export const ClusterVersionDetails = /*@__PURE__*/ S.suspend(() =>
+const ClusterVersionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codeVersion: S.optional(S.String),
     supportExpiryUtc: S.optional(S.String),
@@ -1177,18 +1173,18 @@ export const ClusterVersionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The Service Fabric runtime versions available for this cluster. */
 export type ClusterPropertiesAvailableClusterVersionsList = Array<ClusterVersionDetails>;
-export const ClusterPropertiesAvailableClusterVersionsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesAvailableClusterVersionsList = /*@__PURE__*/ S.Array(
   ClusterVersionDetails,
 ) as any as S.Schema<ClusterPropertiesAvailableClusterVersionsList>;
 
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. */
 export type ClusterPropertiesClientCertificateCommonNamesList = Array<ClientCertificateCommonName>;
-export const ClusterPropertiesClientCertificateCommonNamesList =
+const ClusterPropertiesClientCertificateCommonNamesList =
   ClusterPropertiesInputClientCertificateCommonNamesList as any as S.Schema<ClusterPropertiesClientCertificateCommonNamesList>;
 
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. */
 export type ClusterPropertiesClientCertificateThumbprintsList = Array<ClientCertificateThumbprint>;
-export const ClusterPropertiesClientCertificateThumbprintsList =
+const ClusterPropertiesClientCertificateThumbprintsList =
   ClusterPropertiesInputClientCertificateThumbprintsList as any as S.Schema<ClusterPropertiesClientCertificateThumbprintsList>;
 
 /** The current state of the cluster. - WaitingForNodes - Indicates that the cluster resource is created and the resource provider is waiting for Service Fabric VM extension to boot up and report to it. - Deploying - Indicates that the Service Fabric runtime is being installed on the VMs. Cluster resource will be in this state until the cluster boots up and system services are up. - BaselineUpgrade - Indicates that the cluster is upgrading to establishes the cluster version. This upgrade is automatically initiated when the cluster boots up for the first time. - UpdatingUserConfiguration - Indicates that the cluster is being upgraded with the user provided configuration. - UpdatingUserCertificate - Indicates that the cluster is being upgraded with the user provided certificate. - UpdatingInfrastructure - Indicates that the cluster is being upgraded with the latest Service Fabric runtime version. This happens only when the **upgradeMode** is set to 'Automatic'. - EnforcingClusterVersion - Indicates that cluster is on a different version than expected and the cluster is being upgraded to the expected version. - UpgradeServiceUnreachable - Indicates that the system service in the cluster is no longer polling the Resource Provider. Clusters in this state cannot be managed by the Resource Provider. - AutoScale - Indicates that the ReliabilityLevel of the cluster is being adjusted. - Ready - Indicates that the cluster is in a stable state. */
@@ -1203,25 +1199,25 @@ export type ClusterState =
   | "UpgradeServiceUnreachable"
   | "AutoScale"
   | "Ready";
-export const ClusterState = S.String;
+const ClusterState = S.String;
 
 /** The list of custom fabric settings to configure the cluster. */
 export type ClusterPropertiesFabricSettingsList = Array<SettingsSectionDescription>;
-export const ClusterPropertiesFabricSettingsList =
+const ClusterPropertiesFabricSettingsList =
   ClusterPropertiesInputFabricSettingsList as any as S.Schema<ClusterPropertiesFabricSettingsList>;
 
 /** The list of node types in the cluster. */
 export type ClusterPropertiesNodeTypesList = Array<NodeTypeDescription>;
-export const ClusterPropertiesNodeTypesList =
+const ClusterPropertiesNodeTypesList =
   ClusterPropertiesInputNodeTypesList as any as S.Schema<ClusterPropertiesNodeTypesList>;
 
 /** The provisioning state of the cluster resource. */
 export type ClusterPropertiesProvisioningState = "Updating" | "Succeeded" | "Failed" | "Canceled";
-export const ClusterPropertiesProvisioningState = S.String;
+const ClusterPropertiesProvisioningState = S.String;
 
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesNotificationsList = Array<Notification>;
-export const ClusterPropertiesNotificationsList =
+const ClusterPropertiesNotificationsList =
   ClusterPropertiesInputNotificationsList as any as S.Schema<ClusterPropertiesNotificationsList>;
 
 /** Describes the cluster resource properties. */
@@ -1284,7 +1280,7 @@ export interface ClusterProperties {
   /** Indicates a list of notification channels for cluster events. */
   notifications?: ClusterPropertiesNotificationsList;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnFeatures: S.optional(ClusterPropertiesAddOnFeaturesList),
     availableClusterVersions: S.optional(ClusterPropertiesAvailableClusterVersionsList),
@@ -1338,7 +1334,7 @@ export interface ClustersCreateOrUpdateResponse {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-export const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1363,7 +1359,7 @@ export interface DeleteApplicationRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1380,7 +1376,7 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse =
+const DeleteApplicationResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteApplicationResponse>;
 
 export interface DeleteApplicationTypeRequest {
@@ -1393,7 +1389,7 @@ export interface DeleteApplicationTypeRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-export const DeleteApplicationTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1412,7 +1408,7 @@ export const DeleteApplicationTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationTypeRequest>;
 
 export interface DeleteApplicationTypeResponse {}
-export const DeleteApplicationTypeResponse =
+const DeleteApplicationTypeResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteApplicationTypeResponse>;
 
 export interface DeleteApplicationTypeVersionRequest {
@@ -1427,7 +1423,7 @@ export interface DeleteApplicationTypeVersionRequest {
   /** The application type version. */
   version: string;
 }
-export const DeleteApplicationTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1447,7 +1443,7 @@ export const DeleteApplicationTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationTypeVersionRequest>;
 
 export interface DeleteApplicationTypeVersionResponse {}
-export const DeleteApplicationTypeVersionResponse =
+const DeleteApplicationTypeVersionResponse =
   ApplicationsCreateOrUpdateResponse as any as S.Schema<DeleteApplicationTypeVersionResponse>;
 
 export interface DeleteClusterRequest {
@@ -1458,7 +1454,7 @@ export interface DeleteClusterRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1474,8 +1470,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteClusterResponse>;
+const DeleteClusterResponse = UserAssignedIdentityInput as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteServiceRequest {
   /** The customer subscription identifier. */
@@ -1489,7 +1484,7 @@ export interface DeleteServiceRequest {
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1507,8 +1502,7 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteServiceResponse>;
+const DeleteServiceResponse = UserAssignedIdentityInput as any as S.Schema<DeleteServiceResponse>;
 
 export interface GetApplicationRequest {
   /** The customer subscription identifier. */
@@ -1520,7 +1514,7 @@ export interface GetApplicationRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1538,7 +1532,7 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationResponseTagsMap =
+const GetApplicationResponseTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
 
 export interface UserAssignedIdentity {
@@ -1547,7 +1541,7 @@ export interface UserAssignedIdentity {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1556,7 +1550,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedIdentityMap = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentityMap = /*@__PURE__*/ S.Record(
+const UserAssignedIdentityMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentityMap>;
@@ -1570,7 +1564,7 @@ export interface ManagedIdentity {
   type?: ManagedIdentityType;
   userAssignedIdentities?: UserAssignedIdentityMap;
 }
-export const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
+const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1582,7 +1576,7 @@ export const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-export const ApplicationResourcePropertiesManagedIdentitiesList =
+const ApplicationResourcePropertiesManagedIdentitiesList =
   ApplicationResourcePropertiesInputManagedIdentitiesList as any as S.Schema<ApplicationResourcePropertiesManagedIdentitiesList>;
 
 /** The application resource properties. */
@@ -1603,7 +1597,7 @@ export interface ApplicationResourceProperties {
   provisioningState?: string;
   typeName?: string;
 }
-export const ApplicationResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplicationResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeVersion: S.optional(S.String),
     parameters: S.optional(ApplicationParameterList),
@@ -1637,7 +1631,7 @@ export interface GetApplicationResponse {
   identity?: ManagedIdentity;
   properties?: ApplicationResourceProperties;
 }
-export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1661,7 +1655,7 @@ export interface GetApplicationTypeRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-export const GetApplicationTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1681,9 +1675,6 @@ export const GetApplicationTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type GetApplicationTypeResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationTypeResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationTypeResponseTagsMap>;
-
 export interface GetApplicationTypeResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -1700,7 +1691,7 @@ export interface GetApplicationTypeResponse {
   systemData?: SystemData;
   properties?: ApplicationTypeResourceProperties;
 }
-export const GetApplicationTypeResponse =
+const GetApplicationTypeResponse =
   ApplicationTypesCreateOrUpdateResponse as any as S.Schema<GetApplicationTypeResponse>;
 
 export interface GetApplicationTypeVersionRequest {
@@ -1715,7 +1706,7 @@ export interface GetApplicationTypeVersionRequest {
   /** The application type version. */
   version: string;
 }
-export const GetApplicationTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1736,12 +1727,12 @@ export const GetApplicationTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type GetApplicationTypeVersionResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationTypeVersionResponseTagsMap =
+const GetApplicationTypeVersionResponseTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationTypeVersionResponseTagsMap>;
 
 /** List of application type parameters that can be overridden when creating or updating the application. */
 export type ApplicationTypeParameterList = { [key: string]: string | undefined };
-export const ApplicationTypeParameterList =
+const ApplicationTypeParameterList =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeParameterList>;
 
 /** The properties of the application type version resource. */
@@ -1752,7 +1743,7 @@ export interface ApplicationTypeVersionResourceProperties {
   appPackageUrl: string;
   defaultParameterList?: ApplicationTypeParameterList;
 }
-export const ApplicationTypeVersionResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeVersionResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     appPackageUrl: S.String,
@@ -1778,7 +1769,7 @@ export interface GetApplicationTypeVersionResponse {
   systemData?: SystemData;
   properties?: ApplicationTypeVersionResourceProperties;
 }
-export const GetApplicationTypeVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationTypeVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1801,7 +1792,7 @@ export interface GetClusterRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1818,7 +1809,7 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap =
+const GetClusterResponseTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 export interface GetClusterResponse {
@@ -1838,7 +1829,7 @@ export interface GetClusterResponse {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1859,7 +1850,7 @@ export interface GetClusterVersionRequest {
   /** The cluster code version. */
   clusterVersion: string;
 }
-export const GetClusterVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1884,7 +1875,7 @@ export interface ClusterCodeVersionsResult {
   type?: string;
   properties?: ClusterVersionDetails;
 }
-export const ClusterCodeVersionsResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterCodeVersionsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1896,7 +1887,7 @@ export const ClusterCodeVersionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterCodeVersionsResult>;
 
 export type ClusterCodeVersionsListResultValueList = Array<ClusterCodeVersionsResult>;
-export const ClusterCodeVersionsListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterCodeVersionsListResultValueList = /*@__PURE__*/ S.Array(
   ClusterCodeVersionsResult,
 ) as any as S.Schema<ClusterCodeVersionsListResultValueList>;
 
@@ -1906,7 +1897,7 @@ export interface ClusterCodeVersionsListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const ClusterCodeVersionsListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterCodeVersionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterCodeVersionsListResultValueList),
     nextLink: S.optional(S.String),
@@ -1916,7 +1907,7 @@ export const ClusterCodeVersionsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterCodeVersionsListResult>;
 
 export type GetClusterVersionByEnvironmentRequestEnvironment = "Windows" | "Linux";
-export const GetClusterVersionByEnvironmentRequestEnvironment = S.String;
+const GetClusterVersionByEnvironmentRequestEnvironment = S.String;
 
 export interface GetClusterVersionByEnvironmentRequest {
   /** The customer subscription identifier. */
@@ -1928,7 +1919,7 @@ export interface GetClusterVersionByEnvironmentRequest {
   /** The cluster code version. */
   clusterVersion: string;
 }
-export const GetClusterVersionByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterVersionByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1958,7 +1949,7 @@ export interface GetServiceRequest {
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1977,7 +1968,7 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceResponseTagsMap =
+const GetServiceResponseTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceResponseTagsMap>;
 
 /** The service correlation scheme. */
@@ -1986,7 +1977,7 @@ export type ServiceCorrelationScheme =
   | "Affinity"
   | "AlignedAffinity"
   | "NonAlignedAffinity";
-export const ServiceCorrelationScheme = S.String;
+const ServiceCorrelationScheme = S.String;
 
 /** Creates a particular correlation between services. */
 export interface ServiceCorrelationDescription {
@@ -1995,7 +1986,7 @@ export interface ServiceCorrelationDescription {
   /** The name of the service that the correlation relationship is established with. */
   serviceName: string;
 }
-export const ServiceCorrelationDescription = /*@__PURE__*/ S.suspend(() =>
+const ServiceCorrelationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheme: ServiceCorrelationScheme,
     serviceName: S.String,
@@ -2006,13 +1997,13 @@ export const ServiceCorrelationDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** A list that describes the correlation of the service with other services. */
 export type CorrelationSchemeList = Array<ServiceCorrelationDescription>;
-export const CorrelationSchemeList = /*@__PURE__*/ S.Array(
+const CorrelationSchemeList = /*@__PURE__*/ S.Array(
   ServiceCorrelationDescription,
 ) as any as S.Schema<CorrelationSchemeList>;
 
 /** Determines the metric weight relative to the other metrics that are configured for this service. During runtime, if two metrics end up in conflict, the Cluster Resource Manager prefers the metric with the higher weight. */
 export type ServiceLoadMetricWeight = "Zero" | "Low" | "Medium" | "High";
-export const ServiceLoadMetricWeight = S.String;
+const ServiceLoadMetricWeight = S.String;
 
 /** Specifies a metric to load balance a service during runtime. */
 export interface ServiceLoadMetricDescription {
@@ -2027,7 +2018,7 @@ export interface ServiceLoadMetricDescription {
   /** Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric. */
   defaultLoad?: number;
 }
-export const ServiceLoadMetricDescription = /*@__PURE__*/ S.suspend(() =>
+const ServiceLoadMetricDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     weight: S.optional(ServiceLoadMetricWeight),
@@ -2041,7 +2032,7 @@ export const ServiceLoadMetricDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The service load metrics is given as an array of ServiceLoadMetricDescription objects. */
 export type ServiceLoadMetricsList = Array<ServiceLoadMetricDescription>;
-export const ServiceLoadMetricsList = /*@__PURE__*/ S.Array(
+const ServiceLoadMetricsList = /*@__PURE__*/ S.Array(
   ServiceLoadMetricDescription,
 ) as any as S.Schema<ServiceLoadMetricsList>;
 
@@ -2053,13 +2044,13 @@ export type ServicePlacementPolicyType =
   | "PreferredPrimaryDomain"
   | "RequiredDomainDistribution"
   | "NonPartiallyPlaceService";
-export const ServicePlacementPolicyType = S.String;
+const ServicePlacementPolicyType = S.String;
 
 /** Describes the policy to be used for placement of a Service Fabric service. */
 export interface ServicePlacementPolicyDescription {
   type: ServicePlacementPolicyType | (string & {});
 }
-export const ServicePlacementPolicyDescription = /*@__PURE__*/ S.suspend(() =>
+const ServicePlacementPolicyDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ServicePlacementPolicyType,
   }),
@@ -2069,26 +2060,25 @@ export const ServicePlacementPolicyDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** A list that describes the correlation of the service with other services. */
 export type ServicePlacementPoliciesList = Array<ServicePlacementPolicyDescription>;
-export const ServicePlacementPoliciesList = /*@__PURE__*/ S.Array(
+const ServicePlacementPoliciesList = /*@__PURE__*/ S.Array(
   ServicePlacementPolicyDescription,
 ) as any as S.Schema<ServicePlacementPoliciesList>;
 
 /** Specifies the move cost for the service. */
 export type MoveCost = "Zero" | "Low" | "Medium" | "High";
-export const MoveCost = S.String;
+const MoveCost = S.String;
 
 /** The kind of service (Stateless or Stateful). */
 export type ServiceKind = "Invalid" | "Stateless" | "Stateful";
-export const ServiceKind = S.String;
+const ServiceKind = S.String;
 
 /** Enumerates the ways that a service can be partitioned. */
 export type PartitionScheme = "Invalid" | "Singleton" | "UniformInt64Range" | "Named";
-export const PartitionScheme = S.String;
+const PartitionScheme = S.String;
 
 /** Partition names (Named scheme). */
 export type PartitionNamesList = Array<string>;
-export const PartitionNamesList =
-  NotificationTargetReceiversList as any as S.Schema<PartitionNamesList>;
+const PartitionNamesList = NotificationTargetReceiversList as any as S.Schema<PartitionNamesList>;
 
 /** Describes how the service is partitioned. */
 export interface PartitionSchemeDescription {
@@ -2103,7 +2093,7 @@ export interface PartitionSchemeDescription {
   /** Partition names (Named). */
   names?: PartitionNamesList;
 }
-export const PartitionSchemeDescription = /*@__PURE__*/ S.suspend(() =>
+const PartitionSchemeDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionScheme: PartitionScheme,
     count: S.optional(S.Number),
@@ -2119,7 +2109,7 @@ export const PartitionSchemeDescription = /*@__PURE__*/ S.suspend(() =>
 export type ServiceResourcePropertiesServicePackageActivationMode =
   | "SharedProcess"
   | "ExclusiveProcess";
-export const ServiceResourcePropertiesServicePackageActivationMode = S.String;
+const ServiceResourcePropertiesServicePackageActivationMode = S.String;
 
 /** The service resource properties. */
 export interface ServiceResourceProperties {
@@ -2156,7 +2146,7 @@ export interface ServiceResourceProperties {
   /** Stateful: whether the service persists state on local disk. */
   hasPersistedState?: boolean;
 }
-export const ServiceResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placementConstraints: S.optional(S.String),
     correlationScheme: S.optional(CorrelationSchemeList),
@@ -2198,7 +2188,7 @@ export interface GetServiceResponse {
   systemData?: SystemData;
   properties?: ServiceResourceProperties;
 }
-export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2219,7 +2209,7 @@ export interface ListApplicationsRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2236,9 +2226,6 @@ export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ApplicationResourceTagsMap = { [key: string]: string | undefined };
-export const ApplicationResourceTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationResourceTagsMap>;
-
 /** The application resource. */
 export interface ApplicationResource {
   /** Azure resource identifier. */
@@ -2257,10 +2244,10 @@ export interface ApplicationResource {
   identity?: ManagedIdentity;
   properties?: ApplicationResourceProperties;
 }
-export const ApplicationResource = GetApplicationResponse as any as S.Schema<ApplicationResource>;
+const ApplicationResource = GetApplicationResponse as any as S.Schema<ApplicationResource>;
 
 export type ApplicationResourceListValueList = Array<ApplicationResource>;
-export const ApplicationResourceListValueList = /*@__PURE__*/ S.Array(
+const ApplicationResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationResource,
 ) as any as S.Schema<ApplicationResourceListValueList>;
 
@@ -2270,7 +2257,7 @@ export interface ApplicationResourceList {
   /** URL to get the next set of application list results if there are any. */
   nextLink?: string;
 }
-export const ApplicationResourceList = /*@__PURE__*/ S.suspend(() =>
+const ApplicationResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ApplicationResourceListValueList),
     nextLink: S.optional(S.String),
@@ -2285,7 +2272,7 @@ export interface ListApplicationTypesRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-export const ListApplicationTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2304,7 +2291,7 @@ export const ListApplicationTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ApplicationTypeResourceTagsMap = { [key: string]: string | undefined };
-export const ApplicationTypeResourceTagsMap =
+const ApplicationTypeResourceTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeResourceTagsMap>;
 
 /** The application type name resource */
@@ -2324,7 +2311,7 @@ export interface ApplicationTypeResource {
   systemData?: SystemData;
   properties?: ApplicationTypeResourceProperties;
 }
-export const ApplicationTypeResource = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2338,7 +2325,7 @@ export const ApplicationTypeResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationTypeResource" }) as any as S.Schema<ApplicationTypeResource>;
 
 export type ApplicationTypeResourceListValueList = Array<ApplicationTypeResource>;
-export const ApplicationTypeResourceListValueList = /*@__PURE__*/ S.Array(
+const ApplicationTypeResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationTypeResource,
 ) as any as S.Schema<ApplicationTypeResourceListValueList>;
 
@@ -2348,7 +2335,7 @@ export interface ApplicationTypeResourceList {
   /** URL to get the next set of application type list results if there are any. */
   nextLink?: string;
 }
-export const ApplicationTypeResourceList = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ApplicationTypeResourceListValueList),
     nextLink: S.optional(S.String),
@@ -2367,7 +2354,7 @@ export interface ListApplicationTypeVersionsRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-export const ListApplicationTypeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationTypeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2387,9 +2374,6 @@ export const ListApplicationTypeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ApplicationTypeVersionResourceTagsMap = { [key: string]: string | undefined };
-export const ApplicationTypeVersionResourceTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTypeVersionResourceTagsMap>;
-
 /** An application type version resource for the specified application type name resource. */
 export interface ApplicationTypeVersionResource {
   /** Azure resource identifier. */
@@ -2407,11 +2391,11 @@ export interface ApplicationTypeVersionResource {
   systemData?: SystemData;
   properties?: ApplicationTypeVersionResourceProperties;
 }
-export const ApplicationTypeVersionResource =
+const ApplicationTypeVersionResource =
   GetApplicationTypeVersionResponse as any as S.Schema<ApplicationTypeVersionResource>;
 
 export type ApplicationTypeVersionResourceListValueList = Array<ApplicationTypeVersionResource>;
-export const ApplicationTypeVersionResourceListValueList = /*@__PURE__*/ S.Array(
+const ApplicationTypeVersionResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationTypeVersionResource,
 ) as any as S.Schema<ApplicationTypeVersionResourceListValueList>;
 
@@ -2421,7 +2405,7 @@ export interface ApplicationTypeVersionResourceList {
   /** URL to get the next set of application type version list results if there are any. */
   nextLink?: string;
 }
-export const ApplicationTypeVersionResourceList = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTypeVersionResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ApplicationTypeVersionResourceListValueList),
     nextLink: S.optional(S.String),
@@ -2436,7 +2420,7 @@ export interface ListClusterByResourceGroupRequest {
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2454,9 +2438,6 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterTagsMap>;
-
 /** The cluster resource */
 export interface Cluster {
   /** Azure resource identifier. */
@@ -2475,10 +2456,10 @@ export interface Cluster {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
+const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 export type ClusterListResultValueList = Array<Cluster>;
-export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
 
@@ -2488,7 +2469,7 @@ export interface ClusterListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterListResultValueList),
     nextLink: S.optional(S.String),
@@ -2499,7 +2480,7 @@ export interface ListClustersRequest {
   /** The customer subscription identifier. */
   subscriptionId: string;
 }
-export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2522,7 +2503,7 @@ export interface ListClusterUpgradableVersionsRequest {
   /** The target code version. */
   targetVersion: string;
 }
-export const ListClusterUpgradableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterUpgradableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2541,14 +2522,14 @@ export const ListClusterUpgradableVersionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListClusterUpgradableVersionsRequest>;
 
 export type UpgradableVersionPathResultSupportedPathList = Array<string>;
-export const UpgradableVersionPathResultSupportedPathList =
+const UpgradableVersionPathResultSupportedPathList =
   NotificationTargetReceiversList as any as S.Schema<UpgradableVersionPathResultSupportedPathList>;
 
 /** The list of intermediate cluster code versions for an upgrade or downgrade. Or minimum and maximum upgradable version if no target was given */
 export interface UpgradableVersionPathResult {
   supportedPath?: UpgradableVersionPathResultSupportedPathList;
 }
-export const UpgradableVersionPathResult = /*@__PURE__*/ S.suspend(() =>
+const UpgradableVersionPathResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedPath: S.optional(UpgradableVersionPathResultSupportedPathList),
   }),
@@ -2557,7 +2538,7 @@ export const UpgradableVersionPathResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradableVersionPathResult>;
 
 export type ListClusterVersionByEnvironmentRequestEnvironment = "Windows" | "Linux";
-export const ListClusterVersionByEnvironmentRequestEnvironment = S.String;
+const ListClusterVersionByEnvironmentRequestEnvironment = S.String;
 
 export interface ListClusterVersionByEnvironmentRequest {
   /** The customer subscription identifier. */
@@ -2567,7 +2548,7 @@ export interface ListClusterVersionByEnvironmentRequest {
   /** The operating system of the cluster. The default means all. */
   environment: ListClusterVersionByEnvironmentRequestEnvironment | (string & {});
 }
-export const ListClusterVersionByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterVersionByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2590,7 +2571,7 @@ export interface ListClusterVersionsRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
 }
-export const ListClusterVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2607,7 +2588,7 @@ export const ListClusterVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListClusterVersionsRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2629,7 +2610,7 @@ export interface AvailableOperationDisplay {
   /** Operation description */
   description?: string;
 }
-export const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2653,7 +2634,7 @@ export interface OperationResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2665,7 +2646,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the Service Fabric resource provider. */
 export type OperationListResultValueList = Array<OperationResult>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -2676,7 +2657,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -2693,7 +2674,7 @@ export interface ListServicesRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2711,9 +2692,6 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ServiceResourceTagsMap = { [key: string]: string | undefined };
-export const ServiceResourceTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceResourceTagsMap>;
-
 /** The service resource. */
 export interface ServiceResource {
   /** Azure resource identifier. */
@@ -2731,10 +2709,10 @@ export interface ServiceResource {
   systemData?: SystemData;
   properties?: ServiceResourceProperties;
 }
-export const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
+const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
 
 export type ServiceResourceListValueList = Array<ServiceResource>;
-export const ServiceResourceListValueList = /*@__PURE__*/ S.Array(
+const ServiceResourceListValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListValueList>;
 
@@ -2744,7 +2722,7 @@ export interface ServiceResourceList {
   /** URL to get the next set of service list results if there are any. */
   nextLink?: string;
 }
-export const ServiceResourceList = /*@__PURE__*/ S.suspend(() =>
+const ServiceResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ServiceResourceListValueList),
     nextLink: S.optional(S.String),
@@ -2753,14 +2731,14 @@ export const ServiceResourceList = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateRequestTagsMap =
+const ServicesCreateOrUpdateRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** The activation Mode of the service package */
 export type ServiceResourcePropertiesInputServicePackageActivationMode =
   | "SharedProcess"
   | "ExclusiveProcess";
-export const ServiceResourcePropertiesInputServicePackageActivationMode = S.String;
+const ServiceResourcePropertiesInputServicePackageActivationMode = S.String;
 
 /** The service resource properties. */
 export interface ServiceResourcePropertiesInput {
@@ -2797,7 +2775,7 @@ export interface ServiceResourcePropertiesInput {
   /** Stateful: whether the service persists state on local disk. */
   hasPersistedState?: boolean;
 }
-export const ServiceResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ServiceResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placementConstraints: S.optional(S.String),
     correlationScheme: S.optional(CorrelationSchemeList),
@@ -2841,7 +2819,7 @@ export interface ServicesCreateOrUpdateRequest {
   tags?: ServicesCreateOrUpdateRequestTagsMap;
   properties?: ServiceResourcePropertiesInput;
 }
-export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2864,18 +2842,18 @@ export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesCreateOrUpdateRequest>;
 
 export interface ServicesCreateOrUpdateResponse {}
-export const ServicesCreateOrUpdateResponse =
+const ServicesCreateOrUpdateResponse =
   UserAssignedIdentityInput as any as S.Schema<ServicesCreateOrUpdateResponse>;
 
 /** Azure resource tags. */
 export type UpdateApplicationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationRequestTagsMap =
+const UpdateApplicationRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationRequestTagsMap>;
 
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourceUpdatePropertiesManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-export const ApplicationResourceUpdatePropertiesManagedIdentitiesList =
+const ApplicationResourceUpdatePropertiesManagedIdentitiesList =
   ApplicationResourcePropertiesInputManagedIdentitiesList as any as S.Schema<ApplicationResourceUpdatePropertiesManagedIdentitiesList>;
 
 /** The application resource properties for patch operations. */
@@ -2893,7 +2871,7 @@ export interface ApplicationResourceUpdateProperties {
   /** List of user assigned identities for the application, each mapped to a friendly name. */
   managedIdentities?: ApplicationResourceUpdatePropertiesManagedIdentitiesList;
 }
-export const ApplicationResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplicationResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeVersion: S.optional(S.String),
     parameters: S.optional(ApplicationParameterList),
@@ -2923,7 +2901,7 @@ export interface UpdateApplicationRequest {
   tags?: UpdateApplicationRequestTagsMap;
   properties?: ApplicationResourceUpdateProperties;
 }
-export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2943,45 +2921,43 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateApplicationRequest" }) as any as S.Schema<UpdateApplicationRequest>;
 
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse =
+const UpdateApplicationResponse =
   UserAssignedIdentityInput as any as S.Schema<UpdateApplicationResponse>;
 
 /** The list of add-on features to enable in the cluster. */
 export type ClusterPropertiesUpdateParametersAddOnFeaturesList = Array<
   AddOnFeatures | (string & {})
 >;
-export const ClusterPropertiesUpdateParametersAddOnFeaturesList =
+const ClusterPropertiesUpdateParametersAddOnFeaturesList =
   ClusterPropertiesInputAddOnFeaturesList as any as S.Schema<ClusterPropertiesUpdateParametersAddOnFeaturesList>;
 
 /** The list of client certificates referenced by common name that are allowed to manage the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersClientCertificateCommonNamesList =
   Array<ClientCertificateCommonName>;
-export const ClusterPropertiesUpdateParametersClientCertificateCommonNamesList =
-  /*@__PURE__*/ S.Array(
-    ClientCertificateCommonName,
-  ) as any as S.Schema<ClusterPropertiesUpdateParametersClientCertificateCommonNamesList>;
+const ClusterPropertiesUpdateParametersClientCertificateCommonNamesList = /*@__PURE__*/ S.Array(
+  ClientCertificateCommonName,
+) as any as S.Schema<ClusterPropertiesUpdateParametersClientCertificateCommonNamesList>;
 
 /** The list of client certificates referenced by thumbprint that are allowed to manage the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersClientCertificateThumbprintsList =
   Array<ClientCertificateThumbprint>;
-export const ClusterPropertiesUpdateParametersClientCertificateThumbprintsList =
-  /*@__PURE__*/ S.Array(
-    ClientCertificateThumbprint,
-  ) as any as S.Schema<ClusterPropertiesUpdateParametersClientCertificateThumbprintsList>;
+const ClusterPropertiesUpdateParametersClientCertificateThumbprintsList = /*@__PURE__*/ S.Array(
+  ClientCertificateThumbprint,
+) as any as S.Schema<ClusterPropertiesUpdateParametersClientCertificateThumbprintsList>;
 
 /** The list of custom fabric settings to configure the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersFabricSettingsList = Array<SettingsSectionDescription>;
-export const ClusterPropertiesUpdateParametersFabricSettingsList =
+const ClusterPropertiesUpdateParametersFabricSettingsList =
   ClusterPropertiesInputFabricSettingsList as any as S.Schema<ClusterPropertiesUpdateParametersFabricSettingsList>;
 
 /** The list of node types in the cluster. This will overwrite the existing list. */
 export type ClusterPropertiesUpdateParametersNodeTypesList = Array<NodeTypeDescription>;
-export const ClusterPropertiesUpdateParametersNodeTypesList =
+const ClusterPropertiesUpdateParametersNodeTypesList =
   ClusterPropertiesInputNodeTypesList as any as S.Schema<ClusterPropertiesUpdateParametersNodeTypesList>;
 
 /** Indicates a list of notification channels for cluster events. */
 export type ClusterPropertiesUpdateParametersNotificationsList = Array<Notification>;
-export const ClusterPropertiesUpdateParametersNotificationsList =
+const ClusterPropertiesUpdateParametersNotificationsList =
   ClusterPropertiesInputNotificationsList as any as S.Schema<ClusterPropertiesUpdateParametersNotificationsList>;
 
 /** Describes the cluster resource properties that can be updated during PATCH operation. */
@@ -3026,7 +3002,7 @@ export interface ClusterPropertiesUpdateParameters {
   /** Indicates a list of notification channels for cluster events. */
   notifications?: ClusterPropertiesUpdateParametersNotificationsList;
 }
-export const ClusterPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+const ClusterPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnFeatures: S.optional(ClusterPropertiesUpdateParametersAddOnFeaturesList),
     certificate: S.optional(CertificateDescription),
@@ -3061,7 +3037,7 @@ export const ClusterPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Cluster update parameters */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap =
+const UpdateClusterRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
@@ -3075,7 +3051,7 @@ export interface UpdateClusterRequest {
   /** Cluster update parameters */
   tags?: UpdateClusterRequestTagsMap;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3094,9 +3070,6 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap =
-  ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
-
 export interface UpdateClusterResponse {
   /** Azure resource identifier. */
   id?: string;
@@ -3114,11 +3087,11 @@ export interface UpdateClusterResponse {
   /** The cluster resource properties */
   properties?: ClusterProperties;
 }
-export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
+const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** Azure resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestTagsMap =
+const UpdateServiceRequestTagsMap =
   ApplicationsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
 
 /** The service resource properties for patch operations. */
@@ -3145,7 +3118,7 @@ export interface ServiceResourceUpdateProperties {
   /** Stateful: how long standby replicas are kept (ISO 8601 duration). */
   standByReplicaKeepDuration?: string;
 }
-export const ServiceResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placementConstraints: S.optional(S.String),
     correlationScheme: S.optional(CorrelationSchemeList),
@@ -3182,7 +3155,7 @@ export interface UpdateServiceRequest {
   tags?: UpdateServiceRequestTagsMap;
   properties?: ServiceResourceUpdateProperties;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3203,8 +3176,7 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateServiceRequest" }) as any as S.Schema<UpdateServiceRequest>;
 
 export interface UpdateServiceResponse {}
-export const UpdateServiceResponse =
-  UserAssignedIdentityInput as any as S.Schema<UpdateServiceResponse>;
+const UpdateServiceResponse = UserAssignedIdentityInput as any as S.Schema<UpdateServiceResponse>;
 
 export type ApplicationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a Service Fabric application resource. Create or update a Service Fabric application resource with the specified name. */

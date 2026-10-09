@@ -11,7 +11,7 @@ export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateVolumeRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateVolumeRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateVolumeRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateVolumeRequestLabelsMap>;
@@ -32,7 +32,7 @@ export interface CreateVolumeRequest {
   /** Server to which to attach the Volume once it's created (Volume will be created in the same Location as the server). */
   server?: number;
 }
-export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.Number,
     name: S.String,
@@ -63,7 +63,7 @@ export interface CreateVolumeResponseVolumeLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
-export const CreateVolumeResponseVolumeLocation = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseVolumeLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -83,7 +83,7 @@ export interface CreateVolumeResponseVolumeProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-export const CreateVolumeResponseVolumeProtection = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseVolumeProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.Boolean,
   }),
@@ -93,12 +93,12 @@ export const CreateVolumeResponseVolumeProtection = /*@__PURE__*/ S.suspend(() =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
-export const CreateVolumeResponseVolumeLabelsMap =
+const CreateVolumeResponseVolumeLabelsMap =
   CreateVolumeRequestLabelsMap as any as S.Schema<CreateVolumeResponseVolumeLabelsMap>;
 
 /** Status of the Volume. */
 export type CreateVolumeResponseVolumeStatus = "available" | "creating";
-export const CreateVolumeResponseVolumeStatus = S.String;
+const CreateVolumeResponseVolumeStatus = S.String;
 
 export interface CreateVolumeResponseVolume {
   /** ID of the [Volume](#tag/volumes). */
@@ -124,7 +124,7 @@ export interface CreateVolumeResponseVolume {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
-export const CreateVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     created: S.String,
@@ -144,7 +144,7 @@ export const CreateVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type CreateVolumeResponseActionStatus = "running" | "success" | "error";
-export const CreateVolumeResponseActionStatus = S.String;
+const CreateVolumeResponseActionStatus = S.String;
 
 export interface CreateVolumeResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -152,7 +152,7 @@ export interface CreateVolumeResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const CreateVolumeResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -164,7 +164,7 @@ export const CreateVolumeResponseActionResourcesItem = /*@__PURE__*/ S.suspend((
 /** Resources the Action relates to. */
 export type CreateVolumeResponseActionResourcesList =
   Array<CreateVolumeResponseActionResourcesItem>;
-export const CreateVolumeResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const CreateVolumeResponseActionResourcesList = /*@__PURE__*/ S.Array(
   CreateVolumeResponseActionResourcesItem,
 ) as any as S.Schema<CreateVolumeResponseActionResourcesList>;
 
@@ -175,7 +175,7 @@ export interface CreateVolumeResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const CreateVolumeResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -202,7 +202,7 @@ export interface CreateVolumeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateVolumeResponseActionError | null;
 }
-export const CreateVolumeResponseAction = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -219,23 +219,18 @@ export const CreateVolumeResponseAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type CreateVolumeResponseNextActionsItemStatus = "running" | "success" | "error";
-export const CreateVolumeResponseNextActionsItemStatus = S.String;
+const CreateVolumeResponseNextActionsItemStatus = S.String;
 
 export type CreateVolumeResponseNextActionsItemResourcesItem =
   CreateVolumeResponseActionResourcesItem;
-export const CreateVolumeResponseNextActionsItemResourcesItem =
-  CreateVolumeResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type CreateVolumeResponseNextActionsItemResourcesList =
   Array<CreateVolumeResponseActionResourcesItem>;
-export const CreateVolumeResponseNextActionsItemResourcesList =
+const CreateVolumeResponseNextActionsItemResourcesList =
   CreateVolumeResponseActionResourcesList as any as S.Schema<CreateVolumeResponseNextActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateVolumeResponseNextActionsItemError = CreateVolumeResponseActionError;
-export const CreateVolumeResponseNextActionsItemError = CreateVolumeResponseActionError;
-
 export interface CreateVolumeResponseNextActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -254,7 +249,7 @@ export interface CreateVolumeResponseNextActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateVolumeResponseActionError | null;
 }
-export const CreateVolumeResponseNextActionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponseNextActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -270,7 +265,7 @@ export const CreateVolumeResponseNextActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVolumeResponseNextActionsItem>;
 
 export type CreateVolumeResponseNextActionsList = Array<CreateVolumeResponseNextActionsItem>;
-export const CreateVolumeResponseNextActionsList = /*@__PURE__*/ S.Array(
+const CreateVolumeResponseNextActionsList = /*@__PURE__*/ S.Array(
   CreateVolumeResponseNextActionsItem,
 ) as any as S.Schema<CreateVolumeResponseNextActionsList>;
 
@@ -279,7 +274,7 @@ export interface CreateVolumeResponse {
   action: CreateVolumeResponseAction;
   next_actions: CreateVolumeResponseNextActionsList;
 }
-export const CreateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volume: CreateVolumeResponseVolume,
     action: CreateVolumeResponseAction,
@@ -291,14 +286,14 @@ export interface DeleteVolumeRequest {
   /** ID of the Volume. */
   id: number;
 }
-export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/volumes/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVolumeResponse",
 }) as any as S.Schema<DeleteVolumeResponse>;
 
@@ -306,7 +301,7 @@ export interface GetVolumeRequest {
   /** ID of the Volume. */
   id: number;
 }
-export const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/volumes/{id}", code: 200 })),
@@ -314,20 +309,16 @@ export const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export type GetVolumeResponseVolumeLocation = CreateVolumeResponseVolumeLocation;
-export const GetVolumeResponseVolumeLocation = CreateVolumeResponseVolumeLocation;
-
 /** Protection configuration for the Resource. */
 export type GetVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProtection;
-export const GetVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProtection;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
-export const GetVolumeResponseVolumeLabelsMap =
+const GetVolumeResponseVolumeLabelsMap =
   CreateVolumeRequestLabelsMap as any as S.Schema<GetVolumeResponseVolumeLabelsMap>;
 
 /** Status of the Volume. */
 export type GetVolumeResponseVolumeStatus = "available" | "creating";
-export const GetVolumeResponseVolumeStatus = S.String;
+const GetVolumeResponseVolumeStatus = S.String;
 
 export interface GetVolumeResponseVolume {
   /** ID of the [Volume](#tag/volumes). */
@@ -353,7 +344,7 @@ export interface GetVolumeResponseVolume {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
-export const GetVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     created: S.String,
@@ -372,7 +363,7 @@ export const GetVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
 export interface GetVolumeResponse {
   volume: GetVolumeResponseVolume;
 }
-export const GetVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volume: GetVolumeResponseVolume,
   }),
@@ -380,10 +371,10 @@ export const GetVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Volume. */
 export type ListVolumesRequestStatusItem = "available" | "creating";
-export const ListVolumesRequestStatusItem = S.String;
+const ListVolumesRequestStatusItem = S.String;
 
 export type ListVolumesRequestStatusList = Array<ListVolumesRequestStatusItem | (string & {})>;
-export const ListVolumesRequestStatusList = /*@__PURE__*/ S.Array(
+const ListVolumesRequestStatusList = /*@__PURE__*/ S.Array(
   ListVolumesRequestStatusItem,
 ) as any as S.Schema<ListVolumesRequestStatusList>;
 
@@ -397,10 +388,8 @@ export type ListVolumesRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-export const ListVolumesRequestSortItem = S.String;
-
 export type ListVolumesRequestSortList = Array<ListVolumesRequestSortItem | (string & {})>;
-export const ListVolumesRequestSortList =
+const ListVolumesRequestSortList =
   ListVolumesRequestStatusList as any as S.Schema<ListVolumesRequestSortList>;
 
 export interface ListVolumesRequest {
@@ -417,7 +406,7 @@ export interface ListVolumesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ListVolumesRequestStatusList.pipe(T.Query())),
     sort: S.optional(ListVolumesRequestSortList.pipe(T.Query())),
@@ -430,20 +419,16 @@ export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export type ListVolumesResponseVolumesItemLocation = CreateVolumeResponseVolumeLocation;
-export const ListVolumesResponseVolumesItemLocation = CreateVolumeResponseVolumeLocation;
-
 /** Protection configuration for the Resource. */
 export type ListVolumesResponseVolumesItemProtection = CreateVolumeResponseVolumeProtection;
-export const ListVolumesResponseVolumesItemProtection = CreateVolumeResponseVolumeProtection;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListVolumesResponseVolumesItemLabelsMap = { [key: string]: string | undefined };
-export const ListVolumesResponseVolumesItemLabelsMap =
+const ListVolumesResponseVolumesItemLabelsMap =
   CreateVolumeRequestLabelsMap as any as S.Schema<ListVolumesResponseVolumesItemLabelsMap>;
 
 /** Status of the Volume. */
 export type ListVolumesResponseVolumesItemStatus = "available" | "creating";
-export const ListVolumesResponseVolumesItemStatus = S.String;
+const ListVolumesResponseVolumesItemStatus = S.String;
 
 export interface ListVolumesResponseVolumesItem {
   /** ID of the [Volume](#tag/volumes). */
@@ -469,7 +454,7 @@ export interface ListVolumesResponseVolumesItem {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
-export const ListVolumesResponseVolumesItem = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponseVolumesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     created: S.String,
@@ -488,7 +473,7 @@ export const ListVolumesResponseVolumesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVolumesResponseVolumesItem>;
 
 export type ListVolumesResponseVolumesList = Array<ListVolumesResponseVolumesItem>;
-export const ListVolumesResponseVolumesList = /*@__PURE__*/ S.Array(
+const ListVolumesResponseVolumesList = /*@__PURE__*/ S.Array(
   ListVolumesResponseVolumesItem,
 ) as any as S.Schema<ListVolumesResponseVolumesList>;
 
@@ -507,7 +492,7 @@ export interface ListVolumesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListVolumesResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -524,7 +509,7 @@ export interface ListVolumesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListVolumesResponseMetaPagination;
 }
-export const ListVolumesResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListVolumesResponseMetaPagination,
   }),
@@ -534,7 +519,7 @@ export interface ListVolumesResponse {
   volumes: ListVolumesResponseVolumesList;
   meta: ListVolumesResponseMeta;
 }
-export const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumes: ListVolumesResponseVolumesList,
     meta: ListVolumesResponseMeta,
@@ -543,7 +528,7 @@ export const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateVolumeRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateVolumeRequestLabelsMap =
+const UpdateVolumeRequestLabelsMap =
   CreateVolumeRequestLabelsMap as any as S.Schema<UpdateVolumeRequestLabelsMap>;
 
 export interface UpdateVolumeRequest {
@@ -554,7 +539,7 @@ export interface UpdateVolumeRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateVolumeRequestLabelsMap;
 }
-export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -564,20 +549,16 @@ export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export type UpdateVolumeResponseVolumeLocation = CreateVolumeResponseVolumeLocation;
-export const UpdateVolumeResponseVolumeLocation = CreateVolumeResponseVolumeLocation;
-
 /** Protection configuration for the Resource. */
 export type UpdateVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProtection;
-export const UpdateVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProtection;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
-export const UpdateVolumeResponseVolumeLabelsMap =
+const UpdateVolumeResponseVolumeLabelsMap =
   CreateVolumeRequestLabelsMap as any as S.Schema<UpdateVolumeResponseVolumeLabelsMap>;
 
 /** Status of the Volume. */
 export type UpdateVolumeResponseVolumeStatus = "available" | "creating";
-export const UpdateVolumeResponseVolumeStatus = S.String;
+const UpdateVolumeResponseVolumeStatus = S.String;
 
 export interface UpdateVolumeResponseVolume {
   /** ID of the [Volume](#tag/volumes). */
@@ -603,7 +584,7 @@ export interface UpdateVolumeResponseVolume {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
-export const UpdateVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
+const UpdateVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     created: S.String,
@@ -624,7 +605,7 @@ export const UpdateVolumeResponseVolume = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVolumeResponse {
   volume: UpdateVolumeResponseVolume;
 }
-export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volume: UpdateVolumeResponseVolume,
   }),

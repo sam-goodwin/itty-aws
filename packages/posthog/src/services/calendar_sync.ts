@@ -17,7 +17,7 @@ export interface CreateCalendarSyncBackfillRequest {
   /** Final UTC date to include. Cannot be after today. */
   end_date: string;
 }
-export const CreateCalendarSyncBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCalendarSyncBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     integration_id: S.Number,
@@ -36,14 +36,14 @@ export const CreateCalendarSyncBackfillRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `started` - started * `already_running` - already_running */
 export type CalendarSyncTriggerResponseStatusEnum = "started" | "already_running";
-export const CalendarSyncTriggerResponseStatusEnum = S.String;
+const CalendarSyncTriggerResponseStatusEnum = S.String;
 
 /** Response of the calendar sync-now trigger. */
 export interface CalendarSyncTriggerResponse {
   /** 'started' (a sync run began) or 'already_running' (a sync for this calendar was already in flight, so this was a no-op). * `started` - started * `already_running` - already_running */
   status: CalendarSyncTriggerResponseStatusEnum;
 }
-export const CalendarSyncTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+const CalendarSyncTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: CalendarSyncTriggerResponseStatusEnum,
   }),
@@ -59,7 +59,7 @@ export interface CreateCalendarSyncIntervalRequest {
   /** Minutes between scheduled syncs: 5, 15, 30, or 60. */
   sync_interval_minutes: number;
 }
-export const CreateCalendarSyncIntervalRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCalendarSyncIntervalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     integration_id: S.Number,
@@ -81,7 +81,7 @@ export interface CalendarSyncInterval {
   /** Minutes between scheduled syncs: 5, 15, 30, or 60. */
   sync_interval_minutes: number;
 }
-export const CalendarSyncInterval = /*@__PURE__*/ S.suspend(() =>
+const CalendarSyncInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_id: S.Number,
     sync_interval_minutes: S.Number,
@@ -94,7 +94,7 @@ export interface CreateCalendarSyncSyncNowRequest {
   /** Id of the google-calendar integration to sync. */
   integration_id: number;
 }
-export const CreateCalendarSyncSyncNowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCalendarSyncSyncNowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     integration_id: S.Number,
@@ -113,7 +113,7 @@ export interface ListCalendarSyncRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListCalendarSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCalendarSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/calendar_sync/", code: 200 })),
@@ -130,7 +130,7 @@ export interface CalendarSyncStatus {
   /** Minutes between scheduled syncs. */
   sync_interval_minutes: number;
 }
-export const CalendarSyncStatus = /*@__PURE__*/ S.suspend(() =>
+const CalendarSyncStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_id: S.Number,
     last_synced_at: S.NullOr(S.String),
@@ -140,12 +140,12 @@ export const CalendarSyncStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CalendarSyncStatus" }) as any as S.Schema<CalendarSyncStatus>;
 
 export type ListCalendarSyncResponseBodyList = Array<CalendarSyncStatus>;
-export const ListCalendarSyncResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCalendarSyncResponseBodyList = /*@__PURE__*/ S.Array(
   CalendarSyncStatus,
 ) as any as S.Schema<ListCalendarSyncResponseBodyList>;
 
 export type ListCalendarSyncResponse = ListCalendarSyncResponseBodyList;
-export const ListCalendarSyncResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCalendarSyncResponse = /*@__PURE__*/ S.suspend(() =>
   ListCalendarSyncResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListCalendarSyncResponse" }) as any as S.Schema<ListCalendarSyncResponse>;
 

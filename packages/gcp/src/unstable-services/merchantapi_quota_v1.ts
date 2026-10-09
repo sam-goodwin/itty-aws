@@ -39,7 +39,7 @@ export interface GetAccountsLimitsRequest {
   /** Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example: `accounts/123/limits/products~ADS_NON_EEA` */
   name: string;
 }
-export const GetAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -52,7 +52,7 @@ export const GetAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccountsLimitsRequest" }) as any as S.Schema<GetAccountsLimitsRequest>;
 
 export type ProductLimitScopeEnum = "SCOPE_UNSPECIFIED" | "ADS_NON_EEA" | "ADS_EEA";
-export const ProductLimitScopeEnum = S.String;
+const ProductLimitScopeEnum = S.String;
 
 /** The limit for products. */
 export interface ProductLimit {
@@ -61,7 +61,7 @@ export interface ProductLimit {
   /** Required. The maximum number of products that are allowed in the account in the given scope. */
   limit?: string;
 }
-export const ProductLimit = /*@__PURE__*/ S.suspend(() =>
+const ProductLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(ProductLimitScopeEnum),
     limit: S.optional(S.String),
@@ -75,7 +75,7 @@ export interface AccountLimit {
   /** Identifier. The limit part of the name will be a combination of the type and the scope. For example: `accounts/123/limits/products~ADS_NON_EEA` Format: `accounts/{account}/limits/{limit}` */
   name?: string;
 }
-export const AccountLimit = /*@__PURE__*/ S.suspend(() =>
+const AccountLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     products: S.optional(ProductLimit),
     name: S.optional(S.String),
@@ -92,7 +92,7 @@ export interface ListAccountsLimitsRequest {
   /** Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -110,9 +110,7 @@ export const ListAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsLimitsRequest>;
 
 export type AccountLimitList = Array<AccountLimit>;
-export const AccountLimitList = /*@__PURE__*/ S.Array(
-  AccountLimit,
-) as any as S.Schema<AccountLimitList>;
+const AccountLimitList = /*@__PURE__*/ S.Array(AccountLimit) as any as S.Schema<AccountLimitList>;
 
 /** Response message for the `ListAccountLimits` method. */
 export interface ListAccountLimitsResponse {
@@ -121,7 +119,7 @@ export interface ListAccountLimitsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAccountLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountLimits: S.optional(AccountLimitList),
     nextPageToken: S.optional(S.String),
@@ -138,7 +136,7 @@ export interface ListAccountsQuotasRequest {
   /** Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -165,7 +163,7 @@ export interface MethodDetails {
   /** Output only. The sub-API that the method belongs to. */
   subapi?: string;
 }
-export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
+const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     version: S.optional(S.String),
@@ -175,7 +173,7 @@ export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
 export type MethodDetailsList = Array<MethodDetails>;
-export const MethodDetailsList = /*@__PURE__*/ S.Array(
+const MethodDetailsList = /*@__PURE__*/ S.Array(
   MethodDetails,
 ) as any as S.Schema<MethodDetailsList>;
 
@@ -192,7 +190,7 @@ export interface QuotaGroup {
   /** Output only. List of all methods group quota applies to. */
   methodDetails?: MethodDetailsList;
 }
-export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
+const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     quotaUsage: S.optional(S.String),
@@ -203,7 +201,7 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
 export type QuotaGroupList = Array<QuotaGroup>;
-export const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
+const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
 
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
@@ -212,7 +210,7 @@ export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
   quotaGroups?: QuotaGroupList;
 }
-export const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     quotaGroups: S.optional(QuotaGroupList),

@@ -65,7 +65,7 @@ export interface GetAccountsPromotionsRequest {
   /** Required. The name of the promotion to retrieve. Format: `accounts/{account}/promotions/{promotions}` */
   name: string;
 }
-export const GetAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -88,7 +88,7 @@ export interface CustomAttribute {
   /** The name of the attribute. */
   name?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
     value: S.optional(S.String),
@@ -97,7 +97,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = Array<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
+const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
 
@@ -105,12 +105,12 @@ export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
   | "ONLINE";
-export const PromotionRedemptionChannelItemEnum = S.String;
+const PromotionRedemptionChannelItemEnum = S.String;
 
 export type PromotionRedemptionChannelItemEnumList = Array<
   PromotionRedemptionChannelItemEnum | (string & {})
 >;
-export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
+const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
   PromotionRedemptionChannelItemEnum,
 ) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
 
@@ -121,7 +121,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -129,16 +129,16 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type AttributesOfferTypeEnum = "OFFER_TYPE_UNSPECIFIED" | "NO_CODE" | "GENERIC_CODE";
-export const AttributesOfferTypeEnum = S.String;
+const AttributesOfferTypeEnum = S.String;
 
 export type AttributesStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
   | "SPECIFIC_STORES";
-export const AttributesStoreApplicabilityEnum = S.String;
+const AttributesStoreApplicabilityEnum = S.String;
 
 export type AttributesRedemptionRestrictionEnum =
   | "REDEMPTION_RESTRICTION_UNSPECIFIED"
@@ -147,7 +147,7 @@ export type AttributesRedemptionRestrictionEnum =
   | "SIGNUP_FOR_EMAIL"
   | "SIGNUP_FOR_TEXT"
   | "CUSTOM";
-export const AttributesRedemptionRestrictionEnum = S.String;
+const AttributesRedemptionRestrictionEnum = S.String;
 
 export type AttributesPromotionDestinationsItemEnum =
   | "DESTINATION_ENUM_UNSPECIFIED"
@@ -164,19 +164,17 @@ export type AttributesPromotionDestinationsItemEnum =
   | "CLOUD_RETAIL"
   | "LOCAL_CLOUD_RETAIL"
   | "RENTAL_ADS";
-export const AttributesPromotionDestinationsItemEnum = S.String;
-
 export type AttributesPromotionDestinationsItemEnumList = Array<
   AttributesPromotionDestinationsItemEnum | (string & {})
 >;
-export const AttributesPromotionDestinationsItemEnumList =
+const AttributesPromotionDestinationsItemEnumList =
   PromotionRedemptionChannelItemEnumList as any as S.Schema<AttributesPromotionDestinationsItemEnumList>;
 
 export type AttributesEventApplicabilityEnum =
   | "EVENT_APPLICABILITY_UNSPECIFIED"
   | "SITEWIDE"
   | "SPECIFIC_CATEGORIES";
-export const AttributesEventApplicabilityEnum = S.String;
+const AttributesEventApplicabilityEnum = S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -185,7 +183,7 @@ export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -196,10 +194,10 @@ export type AttributesProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
   | "SPECIFIC_PRODUCTS";
-export const AttributesProductApplicabilityEnum = S.String;
+const AttributesProductApplicabilityEnum = S.String;
 
 export type AttributesAudienceEnum = "AUDIENCE_UNSPECIFIED" | "NEW_CUSTOMERS" | "LOCATION";
-export const AttributesAudienceEnum = S.String;
+const AttributesAudienceEnum = S.String;
 
 export type AttributesCouponValueTypeEnum =
   | "COUPON_VALUE_TYPE_UNSPECIFIED"
@@ -217,7 +215,7 @@ export type AttributesCouponValueTypeEnum =
   | "FREE_SHIPPING_TWO_DAY"
   | "MONEY_OFF_RANGE"
   | "PERCENT_OFF_RANGE";
-export const AttributesCouponValueTypeEnum = S.String;
+const AttributesCouponValueTypeEnum = S.String;
 
 /** Attributes. */
 export interface Attributes {
@@ -303,7 +301,7 @@ export interface Attributes {
   /** Required. The [coupon value type] (https://support.google.com/merchants/answer/13861986?ref_topic=13773355) attribute to signal the type of promotion that you are running. Depending on type of the selected coupon value [some attributes are required](https://support.google.com/merchants/answer/6393006?ref_topic=7322920). */
   couponValueType?: AttributesCouponValueTypeEnum | (string & {});
 }
-export const Attributes = /*@__PURE__*/ S.suspend(() =>
+const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freeGiftValue: S.optional(Price),
     productTypeExclusion: S.optional(StringList),
@@ -357,7 +355,7 @@ export type DestinationStatusStatusEnum =
   | "STOPPED"
   | "EXPIRED"
   | "PENDING";
-export const DestinationStatusStatusEnum = S.String;
+const DestinationStatusStatusEnum = S.String;
 
 export type DestinationStatusReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -381,7 +379,7 @@ export type DestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const DestinationStatusReportingContextEnum = S.String;
+const DestinationStatusReportingContextEnum = S.String;
 
 /** The status for the specified destination. */
 export interface DestinationStatus {
@@ -390,7 +388,7 @@ export interface DestinationStatus {
   /** Output only. The name of the promotion destination. */
   reportingContext?: DestinationStatusReportingContextEnum | (string & {});
 }
-export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(DestinationStatusStatusEnum),
     reportingContext: S.optional(DestinationStatusReportingContextEnum),
@@ -398,7 +396,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestinationStatus" }) as any as S.Schema<DestinationStatus>;
 
 export type DestinationStatusList = Array<DestinationStatus>;
-export const DestinationStatusList = /*@__PURE__*/ S.Array(
+const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
 
@@ -407,7 +405,7 @@ export type ItemLevelIssueSeverityEnum =
   | "NOT_IMPACTED"
   | "DEMOTED"
   | "DISAPPROVED";
-export const ItemLevelIssueSeverityEnum = S.String;
+const ItemLevelIssueSeverityEnum = S.String;
 
 export type ItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -431,7 +429,7 @@ export type ItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const ItemLevelIssueReportingContextEnum = S.String;
+const ItemLevelIssueReportingContextEnum = S.String;
 
 /** The issue associated with the promotion. */
 export interface ItemLevelIssue {
@@ -454,7 +452,7 @@ export interface ItemLevelIssue {
   /** Output only. A short issue description in English. */
   description?: string;
 }
-export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.optional(S.String),
     applicableCountries: S.optional(StringList),
@@ -469,7 +467,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = Array<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
+const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
 
@@ -484,7 +482,7 @@ export interface PromotionStatus {
   /** Output only. Date on which the promotion status has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example `2020-01-02T09:00:00+01:00` or `2020-01-02T09:00:00Z` */
   lastUpdateDate?: string;
 }
-export const PromotionStatus = /*@__PURE__*/ S.suspend(() =>
+const PromotionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationStatuses: S.optional(DestinationStatusList),
     creationDate: S.optional(S.String),
@@ -516,7 +514,7 @@ export interface Promotion {
   /** Output only. The [status of a promotion](https://support.google.com/merchants/answer/3398326?ref_topic=7322924&sjid=5155774230887277618-NC), data validation issues, that is, information about a promotion computed asynchronously. */
   promotionStatus?: PromotionStatus;
 }
-export const Promotion = /*@__PURE__*/ S.suspend(() =>
+const Promotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionNumber: S.optional(S.String),
     name: S.optional(S.String),
@@ -538,7 +536,7 @@ export interface InsertPromotionRequest {
   /** Required. The data source of the [promotion](https://support.google.com/merchants/answer/6396268?sjid=5155774230887277618-NC) Format: `accounts/{account}/dataSources/{datasource}`. */
   dataSource?: string;
 }
-export const InsertPromotionRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPromotionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotion: S.optional(Promotion),
     dataSource: S.optional(S.String),
@@ -551,7 +549,7 @@ export interface InsertAccountsPromotionsRequest {
   /** Request body */
   body?: InsertPromotionRequest;
 }
-export const InsertAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(InsertPromotionRequest.pipe(T.HttpBody())),
@@ -574,7 +572,7 @@ export interface ListAccountsPromotionsRequest {
   /** Required. The account to list processed promotions for. Format: `accounts/{account}` */
   parent: string;
 }
-export const ListAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -591,7 +589,7 @@ export const ListAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsPromotionsRequest>;
 
 export type PromotionList = Array<Promotion>;
-export const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
+const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
 
 /** Response message for the `ListPromotions` method. */
 export interface ListPromotionsResponse {
@@ -600,7 +598,7 @@ export interface ListPromotionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPromotionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPromotionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotions: S.optional(PromotionList),
     nextPageToken: S.optional(S.String),

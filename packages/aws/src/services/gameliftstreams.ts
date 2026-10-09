@@ -110,12 +110,12 @@ export type MaximumCapacity = number;
 export type VpcId = string;
 export type Ipv4CidrBlock = string;
 export type Ipv4CidrBlockList = string[];
-export const Ipv4CidrBlockList = /*@__PURE__*/ S.Array(S.String);
+const Ipv4CidrBlockList = /*@__PURE__*/ S.Array(S.String);
 export interface VpcTransitConfiguration {
   VpcId: string;
   Ipv4CidrBlocks: string[];
 }
-export const VpcTransitConfiguration = /*@__PURE__*/ S.suspend(() =>
+const VpcTransitConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcId: S.String, Ipv4CidrBlocks: Ipv4CidrBlockList }),
 ).annotate({ identifier: "VpcTransitConfiguration" }) as any as S.Schema<VpcTransitConfiguration>;
 export interface LocationConfiguration {
@@ -126,7 +126,7 @@ export interface LocationConfiguration {
   MaximumCapacity?: number;
   VpcTransitConfiguration?: VpcTransitConfiguration;
 }
-export const LocationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LocationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LocationName: S.String,
     AlwaysOnCapacity: S.optional(S.Number),
@@ -137,12 +137,12 @@ export const LocationConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationConfiguration" }) as any as S.Schema<LocationConfiguration>;
 export type LocationConfigurations = LocationConfiguration[];
-export const LocationConfigurations = /*@__PURE__*/ S.Array(LocationConfiguration);
+const LocationConfigurations = /*@__PURE__*/ S.Array(LocationConfiguration);
 export interface AddStreamGroupLocationsInput {
   Identifier: string;
   LocationConfigurations: LocationConfiguration[];
 }
-export const AddStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
+const AddStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     LocationConfigurations: LocationConfigurations,
@@ -165,7 +165,7 @@ export type StreamGroupLocationStatus =
   | "ERROR"
   | "REMOVING"
   | (string & {});
-export const StreamGroupLocationStatus = S.String;
+const StreamGroupLocationStatus = S.String;
 
 export type CapacityValue = number;
 export interface VpcTransitConfigurationResponse {
@@ -174,7 +174,7 @@ export interface VpcTransitConfigurationResponse {
   TransitGatewayId?: string;
   TransitGatewayResourceShareArn?: string;
 }
-export const VpcTransitConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const VpcTransitConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VpcId: S.optional(S.String),
     Ipv4CidrBlocks: S.optional(Ipv4CidrBlockList),
@@ -197,7 +197,7 @@ export interface LocationState {
   InternalVpcIpv4CidrBlock?: string;
   VpcTransitConfiguration?: VpcTransitConfigurationResponse;
 }
-export const LocationState = /*@__PURE__*/ S.suspend(() =>
+const LocationState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LocationName: S.optional(S.String),
     Status: S.optional(StreamGroupLocationStatus),
@@ -213,23 +213,23 @@ export const LocationState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationState" }) as any as S.Schema<LocationState>;
 export type LocationStates = LocationState[];
-export const LocationStates = /*@__PURE__*/ S.Array(LocationState);
+const LocationStates = /*@__PURE__*/ S.Array(LocationState);
 export interface AddStreamGroupLocationsOutput {
   Identifier: string;
   Locations: LocationState[];
 }
-export const AddStreamGroupLocationsOutput = /*@__PURE__*/ S.suspend(() =>
+const AddStreamGroupLocationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String, Locations: LocationStates }),
 ).annotate({
   identifier: "AddStreamGroupLocationsOutput",
 }) as any as S.Schema<AddStreamGroupLocationsOutput>;
 export type Identifiers = string[];
-export const Identifiers = Ipv4CidrBlockList as any as S.Schema<Identifiers>;
+const Identifiers = Ipv4CidrBlockList as any as S.Schema<Identifiers>;
 export interface AssociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
 }
-export const AssociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
+const AssociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     ApplicationIdentifiers: Identifiers,
@@ -248,38 +248,38 @@ export const AssociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateApplicationsInput>;
 export type Arn = string;
 export type ArnList = string[];
-export const ArnList = Ipv4CidrBlockList as any as S.Schema<ArnList>;
+const ArnList = Ipv4CidrBlockList as any as S.Schema<ArnList>;
 export interface AssociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
 }
-export const AssociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
+const AssociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String), ApplicationArns: S.optional(ArnList) }),
 ).annotate({
   identifier: "AssociateApplicationsOutput",
 }) as any as S.Schema<AssociateApplicationsOutput>;
 export type Description = string;
 export type RuntimeEnvironmentType = "PROTON" | "WINDOWS" | "UBUNTU" | (string & {});
-export const RuntimeEnvironmentType = S.String;
+const RuntimeEnvironmentType = S.String;
 
 export type RuntimeEnvironmentVersion = string;
 export interface RuntimeEnvironment {
   Type: RuntimeEnvironmentType;
   Version: string;
 }
-export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: RuntimeEnvironmentType, Version: S.String }),
 ).annotate({ identifier: "RuntimeEnvironment" }) as any as S.Schema<RuntimeEnvironment>;
 export type ExecutablePath = string;
 export type ApplicationSourceUri = string;
 export type FilePath = string;
 export type FilePaths = string[];
-export const FilePaths = Ipv4CidrBlockList as any as S.Schema<FilePaths>;
+const FilePaths = Ipv4CidrBlockList as any as S.Schema<FilePaths>;
 export type ApplicationLogOutputUri = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ClientToken = string;
 export interface CreateApplicationInput {
   Description: string;
@@ -291,7 +291,7 @@ export interface CreateApplicationInput {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-export const CreateApplicationInput = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.String,
     RuntimeEnvironment: RuntimeEnvironment,
@@ -311,27 +311,27 @@ export type ApplicationStatus =
   | "DELETING"
   | "ERROR"
   | (string & {});
-export const ApplicationStatus = S.String;
+const ApplicationStatus = S.String;
 
 export type ApplicationStatusReason =
   | "internalError"
   | "accessDenied"
   | "sourceModified"
   | (string & {});
-export const ApplicationStatusReason = S.String;
+const ApplicationStatusReason = S.String;
 
 export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
-export const ReplicationStatusType = S.String;
+const ReplicationStatusType = S.String;
 
 export interface ReplicationStatus {
   Location?: string;
   Status?: ReplicationStatusType;
 }
-export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Location: S.optional(S.String), Status: S.optional(ReplicationStatusType) }),
 ).annotate({ identifier: "ReplicationStatus" }) as any as S.Schema<ReplicationStatus>;
 export type ReplicationStatuses = ReplicationStatus[];
-export const ReplicationStatuses = /*@__PURE__*/ S.Array(ReplicationStatus);
+const ReplicationStatuses = /*@__PURE__*/ S.Array(ReplicationStatus);
 export interface CreateApplicationOutput {
   Arn: string;
   Description?: string;
@@ -348,7 +348,7 @@ export interface CreateApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-export const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     Description: S.optional(S.String),
@@ -385,7 +385,7 @@ export type StreamClass =
   | "gen6e_pro"
   | "gen6e_pro_win2022"
   | (string & {});
-export const StreamClass = S.String;
+const StreamClass = S.String;
 
 export interface CreateStreamGroupInput {
   Description: string;
@@ -395,7 +395,7 @@ export interface CreateStreamGroupInput {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-export const CreateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.String,
     StreamClass: StreamClass,
@@ -409,7 +409,7 @@ export interface DefaultApplication {
   Id?: string;
   Arn?: string;
 }
-export const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
+const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
 ).annotate({ identifier: "DefaultApplication" }) as any as S.Schema<DefaultApplication>;
 export type StreamGroupStatus =
@@ -421,10 +421,10 @@ export type StreamGroupStatus =
   | "DELETING"
   | "EXPIRED"
   | (string & {});
-export const StreamGroupStatus = S.String;
+const StreamGroupStatus = S.String;
 
 export type StreamGroupStatusReason = "internalError" | "noAvailableInstances" | (string & {});
-export const StreamGroupStatusReason = S.String;
+const StreamGroupStatusReason = S.String;
 
 export interface CreateStreamGroupOutput {
   Arn: string;
@@ -440,7 +440,7 @@ export interface CreateStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-export const CreateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     Description: S.optional(S.String),
@@ -460,7 +460,7 @@ export interface CreateStreamSessionAdminShellInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-export const CreateStreamSessionAdminShellInput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamSessionAdminShellInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
@@ -488,7 +488,7 @@ export interface CreateStreamSessionAdminShellOutput {
   StreamUrl?: string;
   TokenValue?: string | redacted.Redacted<string>;
 }
-export const CreateStreamSessionAdminShellOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamSessionAdminShellOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SessionId: S.optional(S.String),
     StreamUrl: S.optional(S.String),
@@ -504,7 +504,7 @@ export interface CreateStreamSessionConnectionInput {
   StreamSessionIdentifier: string;
   SignalRequest: string | redacted.Redacted<string>;
 }
-export const CreateStreamSessionConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamSessionConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
@@ -530,23 +530,23 @@ export type SignalResponse = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionOutput {
   SignalResponse?: string | redacted.Redacted<string>;
 }
-export const CreateStreamSessionConnectionOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamSessionConnectionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SignalResponse: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "CreateStreamSessionConnectionOutput",
 }) as any as S.Schema<CreateStreamSessionConnectionOutput>;
 export type Protocol = "WebRTC" | (string & {});
-export const Protocol = S.String;
+const Protocol = S.String;
 
 export type UrlExpiresAfterMinutes = number;
 export type UsageLimit = number;
 export type LocationList = string[];
-export const LocationList = Ipv4CidrBlockList as any as S.Schema<LocationList>;
+const LocationList = Ipv4CidrBlockList as any as S.Schema<LocationList>;
 export type SessionLengthSeconds = number;
 export type GameLaunchArgList = string[];
-export const GameLaunchArgList = Ipv4CidrBlockList as any as S.Schema<GameLaunchArgList>;
+const GameLaunchArgList = Ipv4CidrBlockList as any as S.Schema<GameLaunchArgList>;
 export type EnvironmentVariables = { [key: string]: string | undefined };
-export const EnvironmentVariables = /*@__PURE__*/ S.Record(
+const EnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -557,13 +557,13 @@ export interface Resolution {
   Width: number;
   Height: number;
 }
-export const Resolution = /*@__PURE__*/ S.suspend(() =>
+const Resolution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Width: S.Number, Height: S.Number }),
 ).annotate({ identifier: "Resolution" }) as any as S.Schema<Resolution>;
 export interface DisplayConfiguration {
   Resolution?: Resolution;
 }
-export const DisplayConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DisplayConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resolution: S.optional(Resolution) }),
 ).annotate({ identifier: "DisplayConfiguration" }) as any as S.Schema<DisplayConfiguration>;
 export interface CreateStreamUrlInput {
@@ -581,7 +581,7 @@ export interface CreateStreamUrlInput {
   DisplayConfiguration?: DisplayConfiguration;
   ClientToken?: string;
 }
-export const CreateStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     ApplicationIdentifier: S.String,
@@ -609,7 +609,7 @@ export const CreateStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStreamUrlInput" }) as any as S.Schema<CreateStreamUrlInput>;
 export type StreamSessionStreamUrl = string | redacted.Redacted<string>;
 export type StreamUrlStatus = "ACTIVE" | "EXPIRED" | "REVOKED" | "LIMIT_REACHED" | (string & {});
-export const StreamUrlStatus = S.String;
+const StreamUrlStatus = S.String;
 
 export type StreamUrlStatusReason =
   | "userRevoked"
@@ -618,7 +618,7 @@ export type StreamUrlStatusReason =
   | "streamGroupDeleted"
   | "applicationDeleted"
   | (string & {});
-export const StreamUrlStatusReason = S.String;
+const StreamUrlStatusReason = S.String;
 
 export type RemainingUses = number;
 export interface CreateStreamUrlOutput {
@@ -642,7 +642,7 @@ export interface CreateStreamUrlOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-export const CreateStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     StreamUrlId: S.optional(S.String),
@@ -668,7 +668,7 @@ export const CreateStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApplicationInput {
   Identifier: string;
 }
-export const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/applications/{Identifier}" }),
@@ -681,13 +681,13 @@ export const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApplicationInput" }) as any as S.Schema<DeleteApplicationInput>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteStreamGroupInput {
   Identifier: string;
 }
-export const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}" }),
@@ -700,13 +700,13 @@ export const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStreamGroupInput" }) as any as S.Schema<DeleteStreamGroupInput>;
 export interface DeleteStreamGroupResponse {}
-export const DeleteStreamGroupResponse =
+const DeleteStreamGroupResponse =
   DeleteApplicationResponse as any as S.Schema<DeleteStreamGroupResponse>;
 export interface DisassociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
 }
-export const DisassociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
+const DisassociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     ApplicationIdentifiers: Identifiers,
@@ -727,7 +727,7 @@ export interface DisassociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
 }
-export const DisassociateApplicationsOutput =
+const DisassociateApplicationsOutput =
   AssociateApplicationsOutput as any as S.Schema<DisassociateApplicationsOutput>;
 export type OutputUri = string;
 export interface ExportStreamSessionFilesInput {
@@ -735,7 +735,7 @@ export interface ExportStreamSessionFilesInput {
   StreamSessionIdentifier: string;
   OutputUri: string;
 }
-export const ExportStreamSessionFilesInput = /*@__PURE__*/ S.suspend(() =>
+const ExportStreamSessionFilesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
@@ -757,12 +757,12 @@ export const ExportStreamSessionFilesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportStreamSessionFilesInput",
 }) as any as S.Schema<ExportStreamSessionFilesInput>;
 export interface ExportStreamSessionFilesOutput {}
-export const ExportStreamSessionFilesOutput =
+const ExportStreamSessionFilesOutput =
   DeleteApplicationResponse as any as S.Schema<ExportStreamSessionFilesOutput>;
 export interface GetApplicationInput {
   Identifier: string;
 }
-export const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/applications/{Identifier}" }),
@@ -790,12 +790,11 @@ export interface GetApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-export const GetApplicationOutput =
-  CreateApplicationOutput as any as S.Schema<GetApplicationOutput>;
+const GetApplicationOutput = CreateApplicationOutput as any as S.Schema<GetApplicationOutput>;
 export interface GetStreamGroupInput {
   Identifier: string;
 }
-export const GetStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+const GetStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/streamgroups/{Identifier}" }),
@@ -821,13 +820,12 @@ export interface GetStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-export const GetStreamGroupOutput =
-  CreateStreamGroupOutput as any as S.Schema<GetStreamGroupOutput>;
+const GetStreamGroupOutput = CreateStreamGroupOutput as any as S.Schema<GetStreamGroupOutput>;
 export interface GetStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-export const GetStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
+const GetStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
@@ -856,7 +854,7 @@ export type StreamSessionStatus =
   | "TERMINATED"
   | "ERROR"
   | (string & {});
-export const StreamSessionStatus = S.String;
+const StreamSessionStatus = S.String;
 
 export type StreamSessionStatusReason =
   | "internalError"
@@ -871,13 +869,13 @@ export type StreamSessionStatusReason =
   | "idleTimeout"
   | "apiTerminated"
   | (string & {});
-export const StreamSessionStatusReason = S.String;
+const StreamSessionStatusReason = S.String;
 
 export type ConnectionTimeoutSeconds = number;
 export interface PerformanceStatsConfiguration {
   SharedWithClient?: boolean;
 }
-export const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SharedWithClient: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "PerformanceStatsConfiguration",
@@ -885,7 +883,7 @@ export const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type FileLocationUri = string;
 export type WebSdkProtocolUrl = string;
 export type ExportFilesStatus = "SUCCEEDED" | "FAILED" | "PENDING" | (string & {});
-export const ExportFilesStatus = S.String;
+const ExportFilesStatus = S.String;
 
 export type ExportFilesReason = string;
 export interface ExportFilesMetadata {
@@ -893,7 +891,7 @@ export interface ExportFilesMetadata {
   StatusReason?: string;
   OutputUri?: string;
 }
-export const ExportFilesMetadata = /*@__PURE__*/ S.suspend(() =>
+const ExportFilesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(ExportFilesStatus),
     StatusReason: S.optional(S.String),
@@ -925,7 +923,7 @@ export interface GetStreamSessionOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-export const GetStreamSessionOutput = /*@__PURE__*/ S.suspend(() =>
+const GetStreamSessionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Description: S.optional(S.String),
@@ -956,7 +954,7 @@ export interface GetStreamUrlInput {
   Identifier: string;
   StreamUrlIdentifier: string;
 }
-export const GetStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
+const GetStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
@@ -984,7 +982,7 @@ export interface StreamSessionSummary {
   Location?: string;
   RoleArn?: string | redacted.Redacted<string>;
 }
-export const StreamSessionSummary = /*@__PURE__*/ S.suspend(() =>
+const StreamSessionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     UserId: S.optional(S.String),
@@ -1000,7 +998,7 @@ export const StreamSessionSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamSessionSummary" }) as any as S.Schema<StreamSessionSummary>;
 export type StreamSessionSummaryList = StreamSessionSummary[];
-export const StreamSessionSummaryList = /*@__PURE__*/ S.Array(StreamSessionSummary);
+const StreamSessionSummaryList = /*@__PURE__*/ S.Array(StreamSessionSummary);
 export interface GetStreamUrlOutput {
   Arn: string;
   StreamUrlId?: string;
@@ -1023,7 +1021,7 @@ export interface GetStreamUrlOutput {
   DisplayConfiguration?: DisplayConfiguration;
   StreamSessions?: StreamSessionSummary[];
 }
-export const GetStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
+const GetStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     StreamUrlId: S.optional(S.String),
@@ -1053,7 +1051,7 @@ export interface ListApplicationsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListApplicationsInput = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -1068,7 +1066,7 @@ export interface ApplicationSummary {
   LastUpdatedAt?: Date;
   RuntimeEnvironment?: RuntimeEnvironment;
 }
-export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     Id: S.optional(S.String),
@@ -1080,18 +1078,18 @@ export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApplicationSummary" }) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaryList = ApplicationSummary[];
-export const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
+const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsOutput {
   Items?: ApplicationSummary[];
   NextToken?: string;
 }
-export const ListApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(ApplicationSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListApplicationsOutput" }) as any as S.Schema<ListApplicationsOutput>;
 export interface ListApplicationShaderCachesInput {
   Identifier: string;
 }
-export const ListApplicationShaderCachesInput = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationShaderCachesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/applications/{Identifier}/shadercaches" }),
@@ -1112,7 +1110,7 @@ export type ShaderCacheStatus =
   | "DELETING"
   | "ERROR"
   | (string & {});
-export const ShaderCacheStatus = S.String;
+const ShaderCacheStatus = S.String;
 
 export interface ShaderCacheSummary {
   Identifier: string;
@@ -1122,7 +1120,7 @@ export interface ShaderCacheSummary {
   StorageBytes?: number;
   AssociatedStreamGroups?: string[];
 }
-export const ShaderCacheSummary = /*@__PURE__*/ S.suspend(() =>
+const ShaderCacheSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String,
     ApplicationArn: S.String,
@@ -1133,11 +1131,11 @@ export const ShaderCacheSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShaderCacheSummary" }) as any as S.Schema<ShaderCacheSummary>;
 export type ShaderCacheSummaryList = ShaderCacheSummary[];
-export const ShaderCacheSummaryList = /*@__PURE__*/ S.Array(ShaderCacheSummary);
+const ShaderCacheSummaryList = /*@__PURE__*/ S.Array(ShaderCacheSummary);
 export interface ListApplicationShaderCachesOutput {
   Items?: ShaderCacheSummary[];
 }
-export const ListApplicationShaderCachesOutput = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationShaderCachesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(ShaderCacheSummaryList) }),
 ).annotate({
   identifier: "ListApplicationShaderCachesOutput",
@@ -1146,7 +1144,7 @@ export interface ListStreamGroupsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListStreamGroupsInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamGroupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -1163,7 +1161,7 @@ export interface StreamGroupSummary {
   LastUpdatedAt?: Date;
   ExpiresAt?: Date;
 }
-export const StreamGroupSummary = /*@__PURE__*/ S.suspend(() =>
+const StreamGroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     Id: S.optional(S.String),
@@ -1177,12 +1175,12 @@ export const StreamGroupSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamGroupSummary" }) as any as S.Schema<StreamGroupSummary>;
 export type StreamGroupSummaryList = StreamGroupSummary[];
-export const StreamGroupSummaryList = /*@__PURE__*/ S.Array(StreamGroupSummary);
+const StreamGroupSummaryList = /*@__PURE__*/ S.Array(StreamGroupSummary);
 export interface ListStreamGroupsOutput {
   Items?: StreamGroupSummary[];
   NextToken?: string;
 }
-export const ListStreamGroupsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(StreamGroupSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListStreamGroupsOutput" }) as any as S.Schema<ListStreamGroupsOutput>;
 export interface ListStreamSessionsInput {
@@ -1192,7 +1190,7 @@ export interface ListStreamSessionsInput {
   MaxResults?: number;
   Identifier: string;
 }
-export const ListStreamSessionsInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamSessionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
     ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
@@ -1214,7 +1212,7 @@ export interface ListStreamSessionsOutput {
   Items?: StreamSessionSummary[];
   NextToken?: string;
 }
-export const ListStreamSessionsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamSessionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListStreamSessionsOutput" }) as any as S.Schema<ListStreamSessionsOutput>;
 export interface ListStreamSessionsByAccountInput {
@@ -1223,7 +1221,7 @@ export interface ListStreamSessionsByAccountInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListStreamSessionsByAccountInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamSessionsByAccountInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
     ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
@@ -1237,7 +1235,7 @@ export interface ListStreamSessionsByAccountOutput {
   Items?: StreamSessionSummary[];
   NextToken?: string;
 }
-export const ListStreamSessionsByAccountOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamSessionsByAccountOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListStreamSessionsByAccountOutput",
@@ -1248,7 +1246,7 @@ export interface ListStreamUrlsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListStreamUrlsInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamUrlsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(StreamUrlStatus).pipe(T.HttpQuery("Status")),
     StreamGroupIdentifier: S.optional(S.String).pipe(T.HttpQuery("StreamGroupIdentifier")),
@@ -1271,7 +1269,7 @@ export interface StreamUrlSummary {
   SessionLengthSeconds?: number;
   Description?: string;
 }
-export const StreamUrlSummary = /*@__PURE__*/ S.suspend(() =>
+const StreamUrlSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     StreamUrlId: S.optional(S.String),
@@ -1289,18 +1287,18 @@ export const StreamUrlSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamUrlSummary" }) as any as S.Schema<StreamUrlSummary>;
 export type StreamUrlSummaryList = StreamUrlSummary[];
-export const StreamUrlSummaryList = /*@__PURE__*/ S.Array(StreamUrlSummary);
+const StreamUrlSummaryList = /*@__PURE__*/ S.Array(StreamUrlSummary);
 export interface ListStreamUrlsOutput {
   Items?: StreamUrlSummary[];
   NextToken?: string;
 }
-export const ListStreamUrlsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamUrlsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(StreamUrlSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListStreamUrlsOutput" }) as any as S.Schema<ListStreamUrlsOutput>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1310,18 +1308,18 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(Tags) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type LocationsList = string[];
-export const LocationsList = Ipv4CidrBlockList as any as S.Schema<LocationsList>;
+const LocationsList = Ipv4CidrBlockList as any as S.Schema<LocationsList>;
 export interface RemoveStreamGroupLocationsInput {
   Identifier: string;
   Locations: string[];
 }
-export const RemoveStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
+const RemoveStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     Locations: LocationsList.pipe(T.HttpQuery("locations")),
@@ -1339,20 +1337,18 @@ export const RemoveStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveStreamGroupLocationsInput",
 }) as any as S.Schema<RemoveStreamGroupLocationsInput>;
 export interface RemoveStreamGroupLocationsResponse {}
-export const RemoveStreamGroupLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const RemoveStreamGroupLocationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RemoveStreamGroupLocationsResponse",
 }) as any as S.Schema<RemoveStreamGroupLocationsResponse>;
 export type RevocationMode = "REVOKE_URL" | "REVOKE_AND_TERMINATE_SESSIONS" | (string & {});
-export const RevocationMode = S.String;
+const RevocationMode = S.String;
 
 export interface RevokeStreamUrlInput {
   Identifier: string;
   StreamUrlIdentifier: string;
   RevocationMode?: RevocationMode;
 }
-export const RevokeStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
+const RevokeStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
@@ -1372,7 +1368,7 @@ export const RevokeStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokeStreamUrlInput" }) as any as S.Schema<RevokeStreamUrlInput>;
 export interface RevokeStreamUrlResponse {}
-export const RevokeStreamUrlResponse =
+const RevokeStreamUrlResponse =
   DeleteApplicationResponse as any as S.Schema<RevokeStreamUrlResponse>;
 export interface StartStreamSessionInput {
   ClientToken?: string;
@@ -1391,7 +1387,7 @@ export interface StartStreamSessionInput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-export const StartStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
+const StartStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     Description: S.optional(S.String),
@@ -1444,25 +1440,24 @@ export interface StartStreamSessionOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-export const StartStreamSessionOutput =
+const StartStreamSessionOutput =
   GetStreamSessionOutput as any as S.Schema<StartStreamSessionOutput>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-export const TerminateStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
+const TerminateStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
@@ -1483,15 +1478,15 @@ export const TerminateStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateStreamSessionInput",
 }) as any as S.Schema<TerminateStreamSessionInput>;
 export interface TerminateStreamSessionResponse {}
-export const TerminateStreamSessionResponse =
+const TerminateStreamSessionResponse =
   DeleteApplicationResponse as any as S.Schema<TerminateStreamSessionResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = Ipv4CidrBlockList as any as S.Schema<TagKeyList>;
+const TagKeyList = Ipv4CidrBlockList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1500,15 +1495,14 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationInput {
   Identifier: string;
   Description?: string;
   ApplicationLogPaths?: string[];
   ApplicationLogOutputUri?: string;
 }
-export const UpdateApplicationInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     Description: S.optional(S.String),
@@ -1541,15 +1535,14 @@ export interface UpdateApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-export const UpdateApplicationOutput =
-  CreateApplicationOutput as any as S.Schema<UpdateApplicationOutput>;
+const UpdateApplicationOutput = CreateApplicationOutput as any as S.Schema<UpdateApplicationOutput>;
 export interface UpdateStreamGroupInput {
   Identifier: string;
   LocationConfigurations?: LocationConfiguration[];
   Description?: string;
   DefaultApplicationIdentifier?: string;
 }
-export const UpdateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
     LocationConfigurations: S.optional(LocationConfigurations),
@@ -1580,8 +1573,7 @@ export interface UpdateStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-export const UpdateStreamGroupOutput =
-  CreateStreamGroupOutput as any as S.Schema<UpdateStreamGroupOutput>;
+const UpdateStreamGroupOutput = CreateStreamGroupOutput as any as S.Schema<UpdateStreamGroupOutput>;
 export type AddStreamGroupLocationsError =
   | AccessDeniedException
   | InternalServerException

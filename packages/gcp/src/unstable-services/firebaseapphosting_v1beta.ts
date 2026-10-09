@@ -65,7 +65,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,19 +81,19 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A managed Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service). */
 export interface RunService {
   /** Optional. The name of the Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service), in the format: `projects/{project}/locations/{location}/services/{serviceId}` */
   service?: string;
 }
-export const RunService = /*@__PURE__*/ S.suspend(() =>
+const RunService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
   }),
@@ -104,14 +104,14 @@ export interface ManagedResource {
   /** A Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service), managed by App Hosting. */
   runService?: RunService;
 }
-export const ManagedResource = /*@__PURE__*/ S.suspend(() =>
+const ManagedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runService: S.optional(RunService),
   }),
 ).annotate({ identifier: "ManagedResource" }) as any as S.Schema<ManagedResource>;
 
 export type ManagedResourceList = Array<ManagedResource>;
-export const ManagedResourceList = /*@__PURE__*/ S.Array(
+const ManagedResourceList = /*@__PURE__*/ S.Array(
   ManagedResource,
 ) as any as S.Schema<ManagedResourceList>;
 
@@ -120,7 +120,7 @@ export interface BackendRuntime {
   /** Optional. The value of the runtime. */
   value?: string;
 }
-export const BackendRuntime = /*@__PURE__*/ S.suspend(() =>
+const BackendRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -130,18 +130,18 @@ export type BackendServingLocalityEnum =
   | "SERVING_LOCALITY_UNSPECIFIED"
   | "REGIONAL_STRICT"
   | "GLOBAL_ACCESS";
-export const BackendServingLocalityEnum = S.String;
+const BackendServingLocalityEnum = S.String;
 
 export type EnvironmentVariableAvailabilityItemEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "BUILD"
   | "RUNTIME";
-export const EnvironmentVariableAvailabilityItemEnum = S.String;
+const EnvironmentVariableAvailabilityItemEnum = S.String;
 
 export type EnvironmentVariableAvailabilityItemEnumList = Array<
   EnvironmentVariableAvailabilityItemEnum | (string & {})
 >;
-export const EnvironmentVariableAvailabilityItemEnumList = /*@__PURE__*/ S.Array(
+const EnvironmentVariableAvailabilityItemEnumList = /*@__PURE__*/ S.Array(
   EnvironmentVariableAvailabilityItemEnum,
 ) as any as S.Schema<EnvironmentVariableAvailabilityItemEnumList>;
 
@@ -151,7 +151,7 @@ export type EnvironmentVariableOriginEnum =
   | "BUILD_CONFIG"
   | "APPHOSTING_YAML"
   | "FIREBASE_SYSTEM";
-export const EnvironmentVariableOriginEnum = S.String;
+const EnvironmentVariableOriginEnum = S.String;
 
 /** Environment variables for this build. */
 export interface EnvironmentVariable {
@@ -168,7 +168,7 @@ export interface EnvironmentVariable {
   /** Required. The name of the environment variable. The environment variables reserved by [Cloud Run](https://docs.cloud.google.com/run/docs/configuring/services/environment-variables#reserved) should not be set. Additionally, variable names cannot start with "X_FIREBASE_". */
   variable?: string;
 }
-export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(EnvironmentVariableAvailabilityItemEnumList),
     value: S.optional(S.String),
@@ -180,7 +180,7 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvironmentVariable" }) as any as S.Schema<EnvironmentVariable>;
 
 export type EnvironmentVariableList = Array<EnvironmentVariable>;
-export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
+const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
 
@@ -191,7 +191,7 @@ export interface Codebase {
   /** Required. The resource name for the Developer Connect [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks) connected to this backend, in the format: `projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}` The connection for the `gitRepositoryLink` must made be using the Firebase App Hosting GitHub App via the Firebase Console. */
   repository?: string;
 }
-export const Codebase = /*@__PURE__*/ S.suspend(() =>
+const Codebase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootDirectory: S.optional(S.String),
     repository: S.optional(S.String),
@@ -245,7 +245,7 @@ export interface Backend {
   /** Optional. A field that, if true, indicates that incoming request logs are disabled for this backend. Incoming request logs are enabled by default. */
   requestLogsDisabled?: boolean;
 }
-export const Backend = /*@__PURE__*/ S.suspend(() =>
+const Backend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(S.String),
     mode: S.optional(S.String),
@@ -284,7 +284,7 @@ export interface CreateProjectsLocationsBackendsRequest {
   /** Request body */
   body?: Backend;
 }
-export const CreateProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -303,15 +303,10 @@ export const CreateProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateProjectsLocationsBackendsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -322,7 +317,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -343,7 +338,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -366,7 +361,7 @@ export interface RunConfig {
   /** Optional. Number of Cloud Run instances to maintain at maximum for each revision. By default, each Cloud Run [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service) scales out to Cloud Run's default of a maximum of 100 instances. The maximum max_instances limit is based on your quota. See https://cloud.google.com/run/docs/configuring/max-instances#limits. */
   maxInstances?: number;
 }
-export const RunConfig = /*@__PURE__*/ S.suspend(() =>
+const RunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minInstances: S.optional(S.Number),
     cpu: S.optional(S.Number),
@@ -385,7 +380,7 @@ export interface Config {
   /** Output only. [OUTPUT_ONLY] This field represents all environment variables employed during both the build and runtime. This list reflects the result of merging variables from all sources (Backend.override_env, Build.Config.env, YAML, defaults, system). Each variable includes its `origin` */
   effectiveEnv?: EnvironmentVariableList;
 }
-export const Config = /*@__PURE__*/ S.suspend(() =>
+const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     env: S.optional(EnvironmentVariableList),
     runConfig: S.optional(RunConfig),
@@ -402,7 +397,7 @@ export interface SourceUserMetadata {
   /** Output only. Deprecated: Not used. The account email linked to the EUC that created the build. May be a service account or other robot account. */
   email?: string;
 }
-export const SourceUserMetadata = /*@__PURE__*/ S.suspend(() =>
+const SourceUserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUri: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -423,7 +418,7 @@ export interface ArchiveSource {
   /** Optional. The directory relative to the root of the archive to use as the root for the deployed web app. Defaults to use the root of the repository if not provided. If deploying a [monorepo](https://firebase.google.com/docs/app-hosting/monorepos), this should be the directory that contains the `package.json` or `apphosting.yaml` file. */
   rootDirectory?: string;
 }
-export const ArchiveSource = /*@__PURE__*/ S.suspend(() =>
+const ArchiveSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userStorageUri: S.optional(S.String),
     author: S.optional(SourceUserMetadata),
@@ -442,7 +437,7 @@ export interface UserMetadata {
   /** Output only. The 'name' field in a Git user's git.config. Required by Git. */
   displayName?: string;
 }
-export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
+const UserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     imageUri: S.optional(S.String),
@@ -471,7 +466,7 @@ export interface CodebaseSource {
   /** The branch in the codebase to build from, using the latest commit. */
   branch?: string;
 }
-export const CodebaseSource = /*@__PURE__*/ S.suspend(() =>
+const CodebaseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(UserMetadata),
     hash: S.optional(S.String),
@@ -500,7 +495,7 @@ export interface LocallyBuiltSource {
   /** URI to an archive in Cloud Storage. The object must be a gzipped archive file (.tar.gz) containing source to deploy. */
   userStorageUri?: string;
 }
-export const LocallyBuiltSource = /*@__PURE__*/ S.suspend(() =>
+const LocallyBuiltSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootDirectory: S.optional(S.String),
     runConfig: S.optional(RunConfig),
@@ -516,7 +511,7 @@ export interface ContainerSource {
   /** Required. A URI representing a container for the backend to use. */
   image?: string;
 }
-export const ContainerSource = /*@__PURE__*/ S.suspend(() =>
+const ContainerSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
   }),
@@ -533,7 +528,7 @@ export interface BuildSource {
   /** An Artifact Registry container image source. */
   container?: ContainerSource;
 }
-export const BuildSource = /*@__PURE__*/ S.suspend(() =>
+const BuildSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive: S.optional(ArchiveSource),
     codebase: S.optional(CodebaseSource),
@@ -543,13 +538,13 @@ export const BuildSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildSource" }) as any as S.Schema<BuildSource>;
 
 export type BuildErrorSourceEnum = "ERROR_SOURCE_UNSPECIFIED" | "CLOUD_BUILD" | "CLOUD_RUN";
-export const BuildErrorSourceEnum = S.String;
+const BuildErrorSourceEnum = S.String;
 
 export type Firebaseapphosting_ErrorErrorSourceEnum =
   | "ERROR_SOURCE_UNSPECIFIED"
   | "CLOUD_BUILD"
   | "CLOUD_RUN";
-export const Firebaseapphosting_ErrorErrorSourceEnum = S.String;
+const Firebaseapphosting_ErrorErrorSourceEnum = S.String;
 
 /** The container for the rpc status and source for any errors found during the build process. */
 export interface Firebaseapphosting_Error {
@@ -560,7 +555,7 @@ export interface Firebaseapphosting_Error {
   /** Output only. Resource link */
   cloudResource?: string;
 }
-export const Firebaseapphosting_Error = /*@__PURE__*/ S.suspend(() =>
+const Firebaseapphosting_Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     errorSource: S.optional(Firebaseapphosting_ErrorErrorSourceEnum),
@@ -569,7 +564,7 @@ export const Firebaseapphosting_Error = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Firebaseapphosting_Error" }) as any as S.Schema<Firebaseapphosting_Error>;
 
 export type Firebaseapphosting_ErrorList = Array<Firebaseapphosting_Error>;
-export const Firebaseapphosting_ErrorList = /*@__PURE__*/ S.Array(
+const Firebaseapphosting_ErrorList = /*@__PURE__*/ S.Array(
   Firebaseapphosting_Error,
 ) as any as S.Schema<Firebaseapphosting_ErrorList>;
 
@@ -582,7 +577,7 @@ export type BuildStateEnum =
   | "FAILED"
   | "SKIPPED"
   | "EXPIRED";
-export const BuildStateEnum = S.String;
+const BuildStateEnum = S.String;
 
 /** A single build for a backend, at a specific point codebase reference tag and point in time. Encapsulates several resources, including an Artifact Registry container image, a Cloud Build invocation that built the image, and the Cloud Run revision that uses that image. */
 export interface Build {
@@ -625,7 +620,7 @@ export interface Build {
   /** Output only. Time at which the build was deleted. */
   deleteTime?: string;
 }
-export const Build = /*@__PURE__*/ S.suspend(() =>
+const Build = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     name: S.optional(S.String),
@@ -661,7 +656,7 @@ export interface CreateProjectsLocationsBackendsBuildsRequest {
   /** Request body */
   body?: Build;
 }
-export const CreateProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     buildId: S.optional(S.String.pipe(T.Query())),
@@ -687,26 +682,24 @@ export type CustomDomainStatusOwnershipStateEnum =
   | "OWNERSHIP_CONFLICT"
   | "OWNERSHIP_PENDING"
   | "OWNERSHIP_ACTIVE";
-export const CustomDomainStatusOwnershipStateEnum = S.String;
+const CustomDomainStatusOwnershipStateEnum = S.String;
 
 export type DnsRecordTypeEnum = "TYPE_UNSPECIFIED" | "A" | "CNAME" | "TXT" | "AAAA" | "CAA";
-export const DnsRecordTypeEnum = S.String;
+const DnsRecordTypeEnum = S.String;
 
 export type DnsRecordRelevantStateItemEnum =
   | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
   | "HOST_STATE"
   | "OWNERSHIP_STATE"
   | "CERT_STATE";
-export const DnsRecordRelevantStateItemEnum = S.String;
-
 export type DnsRecordRelevantStateItemEnumList = Array<
   DnsRecordRelevantStateItemEnum | (string & {})
 >;
-export const DnsRecordRelevantStateItemEnumList =
+const DnsRecordRelevantStateItemEnumList =
   EnvironmentVariableAvailabilityItemEnumList as any as S.Schema<DnsRecordRelevantStateItemEnumList>;
 
 export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
-export const DnsRecordRequiredActionEnum = S.String;
+const DnsRecordRequiredActionEnum = S.String;
 
 /** A representation of a DNS records for a domain. DNS records are resource records that define how systems and services should behave when handling requests for a domain. For example, when you add `A` records to your domain's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain (such as your App Hosting files). */
 export interface DnsRecord {
@@ -721,7 +714,7 @@ export interface DnsRecord {
   /** Output only. The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain. App Hosting uses TXT records to determine which Firebase projects have permission to act on the domain's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`. */
   rdata?: string;
 }
-export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
+const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DnsRecordTypeEnum),
     relevantState: S.optional(DnsRecordRelevantStateItemEnumList),
@@ -732,7 +725,7 @@ export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
 export type DnsRecordList = Array<DnsRecord>;
-export const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord) as any as S.Schema<DnsRecordList>;
+const DnsRecordList = /*@__PURE__*/ S.Array(DnsRecord) as any as S.Schema<DnsRecordList>;
 
 /** A set of DNS records relevant to the setup and maintenance of a custom domain in App Hosting. */
 export interface DnsRecordSet {
@@ -743,7 +736,7 @@ export interface DnsRecordSet {
   /** Output only. The domain name the record set pertains to. */
   domainName?: string;
 }
-export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
+const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     records: S.optional(DnsRecordList),
     checkError: S.optional(Status),
@@ -752,9 +745,7 @@ export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
 export type DnsRecordSetList = Array<DnsRecordSet>;
-export const DnsRecordSetList = /*@__PURE__*/ S.Array(
-  DnsRecordSet,
-) as any as S.Schema<DnsRecordSetList>;
+const DnsRecordSetList = /*@__PURE__*/ S.Array(DnsRecordSet) as any as S.Schema<DnsRecordSetList>;
 
 /** A set of DNS record updates that you should make to allow App Hosting to serve secure content in response to requests against your domain. These updates present the current state of your domain's and related subdomains' DNS records when App Hosting last queried them, and the desired set of records that App Hosting needs to see before your custom domain can be fully active. */
 export interface DnsUpdates {
@@ -767,7 +758,7 @@ export interface DnsUpdates {
   /** Output only. The set of DNS records App Hosting needs in order to be able to serve secure content on the domain. */
   desired?: DnsRecordSetList;
 }
-export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
+const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     checkTime: S.optional(S.String),
@@ -777,10 +768,10 @@ export const DnsUpdates = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsUpdates" }) as any as S.Schema<DnsUpdates>;
 
 export type DnsUpdatesList = Array<DnsUpdates>;
-export const DnsUpdatesList = /*@__PURE__*/ S.Array(DnsUpdates) as any as S.Schema<DnsUpdatesList>;
+const DnsUpdatesList = /*@__PURE__*/ S.Array(DnsUpdates) as any as S.Schema<DnsUpdatesList>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 export type CustomDomainStatusHostStateEnum =
   | "HOST_STATE_UNSPECIFIED"
@@ -790,7 +781,7 @@ export type CustomDomainStatusHostStateEnum =
   | "HOST_CONFLICT"
   | "HOST_WRONG_SHARD"
   | "HOST_ACTIVE";
-export const CustomDomainStatusHostStateEnum = S.String;
+const CustomDomainStatusHostStateEnum = S.String;
 
 export type CustomDomainStatusCertStateEnum =
   | "CERT_STATE_UNSPECIFIED"
@@ -800,7 +791,7 @@ export type CustomDomainStatusCertStateEnum =
   | "CERT_ACTIVE"
   | "CERT_EXPIRING_SOON"
   | "CERT_EXPIRED";
-export const CustomDomainStatusCertStateEnum = S.String;
+const CustomDomainStatusCertStateEnum = S.String;
 
 /** The status of a custom domain's linkage to a backend. */
 export interface CustomDomainStatus {
@@ -815,7 +806,7 @@ export interface CustomDomainStatus {
   /** Output only. Tracks SSL certificate status for the domain. */
   certState?: CustomDomainStatusCertStateEnum | (string & {});
 }
-export const CustomDomainStatus = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownershipState: S.optional(CustomDomainStatusOwnershipStateEnum),
     requiredDnsUpdates: S.optional(DnsUpdatesList),
@@ -832,7 +823,7 @@ export interface Redirect {
   /** Optional. The status code to use in a redirect response. Must be a valid HTTP 3XX status code. Defaults to 302 if not present. */
   status?: string;
 }
-export const Redirect = /*@__PURE__*/ S.suspend(() =>
+const Redirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     status: S.optional(S.String),
@@ -844,14 +835,14 @@ export interface ServingBehavior {
   /** Optional. Redirect behavior for a domain, if provided. */
   redirect?: Redirect;
 }
-export const ServingBehavior = /*@__PURE__*/ S.suspend(() =>
+const ServingBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirect: S.optional(Redirect),
   }),
 ).annotate({ identifier: "ServingBehavior" }) as any as S.Schema<ServingBehavior>;
 
 export type DomainTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT" | "CUSTOM";
-export const DomainTypeEnum = S.String;
+const DomainTypeEnum = S.String;
 
 /** A domain name that is associated with a backend. */
 export interface Domain {
@@ -886,7 +877,7 @@ export interface Domain {
   /** Identifier. The resource name of the domain, e.g. `/projects/p/locations/l/backends/b/domains/foo.com` */
   name?: string;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomainStatus: S.optional(CustomDomainStatus),
     uid: S.optional(S.String),
@@ -918,7 +909,7 @@ export interface CreateProjectsLocationsBackendsDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const CreateProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -946,7 +937,7 @@ export type RolloutStateEnum =
   | "FAILED"
   | "CANCELLED"
   | "SKIPPED";
-export const RolloutStateEnum = S.String;
+const RolloutStateEnum = S.String;
 
 /** A single rollout of a build for a backend. */
 export interface Rollout {
@@ -977,7 +968,7 @@ export interface Rollout {
   /** Output only. The state of the rollout. */
   state?: RolloutStateEnum | (string & {});
 }
-export const Rollout = /*@__PURE__*/ S.suspend(() =>
+const Rollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(StringMap),
     error: S.optional(Status),
@@ -1007,7 +998,7 @@ export interface CreateProjectsLocationsBackendsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const CreateProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1037,7 +1028,7 @@ export interface DeleteProjectsLocationsBackendsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. */
   name: string;
 }
-export const DeleteProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -1065,7 +1056,7 @@ export interface DeleteProjectsLocationsBackendsBuildsRequest {
   /** Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1092,7 +1083,7 @@ export interface DeleteProjectsLocationsBackendsDomainsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1113,7 +1104,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1131,7 +1122,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1158,7 +1149,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     locationId: S.optional(S.String),
@@ -1172,7 +1163,7 @@ export interface GetProjectsLocationsBackendsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1190,7 +1181,7 @@ export interface GetProjectsLocationsBackendsBuildsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1208,7 +1199,7 @@ export interface GetProjectsLocationsBackendsDomainsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1226,7 +1217,7 @@ export interface GetProjectsLocationsBackendsRolloutsRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/rollouts/{rolloutId}`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1244,7 +1235,7 @@ export interface GetProjectsLocationsBackendsTrafficRequest {
   /** Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`. */
   name: string;
 }
-export const GetProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1259,7 +1250,7 @@ export const GetProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetProjectsLocationsBackendsTrafficRequest>;
 
 export type PathTypeEnum = "PATTERN_TYPE_UNSPECIFIED" | "RE2" | "GLOB" | "PREFIX";
-export const PathTypeEnum = S.String;
+const PathTypeEnum = S.String;
 
 /** A file path pattern to match against. */
 export interface Path {
@@ -1268,7 +1259,7 @@ export interface Path {
   /** Optional. The pattern to match against. */
   pattern?: string;
 }
-export const Path = /*@__PURE__*/ S.suspend(() =>
+const Path = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PathTypeEnum),
     pattern: S.optional(S.String),
@@ -1276,7 +1267,7 @@ export const Path = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Path" }) as any as S.Schema<Path>;
 
 export type PathList = Array<Path>;
-export const PathList = /*@__PURE__*/ S.Array(Path) as any as S.Schema<PathList>;
+const PathList = /*@__PURE__*/ S.Array(Path) as any as S.Schema<PathList>;
 
 /** The policy for how automatic builds and rollouts are triggered and rolled out. */
 export interface RolloutPolicy {
@@ -1291,7 +1282,7 @@ export interface RolloutPolicy {
   /** Optional. A list of file paths patterns that trigger a build and rollout if at least one of the changed files in the commit are present in this list. This field is optional; the rollout policy will default to triggering on all paths if both ignored_paths and required_paths are not populated. Limited to 100 paths. Example: ``` required_paths: { pattern: "foo/bar/*", type: "GLOB" } ``` */
   requiredPaths?: PathList;
 }
-export const RolloutPolicy = /*@__PURE__*/ S.suspend(() =>
+const RolloutPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     codebaseBranch: S.optional(S.String),
@@ -1308,7 +1299,7 @@ export interface TrafficSplit {
   /** Required. The percentage of traffic to send to the build. Currently must be 100% or 0%. */
   percent?: number;
 }
-export const TrafficSplit = /*@__PURE__*/ S.suspend(() =>
+const TrafficSplit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     build: S.optional(S.String),
     percent: S.optional(S.Number),
@@ -1316,16 +1307,14 @@ export const TrafficSplit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficSplit" }) as any as S.Schema<TrafficSplit>;
 
 export type TrafficSplitList = Array<TrafficSplit>;
-export const TrafficSplitList = /*@__PURE__*/ S.Array(
-  TrafficSplit,
-) as any as S.Schema<TrafficSplitList>;
+const TrafficSplitList = /*@__PURE__*/ S.Array(TrafficSplit) as any as S.Schema<TrafficSplitList>;
 
 /** A list of traffic splits that together represent where traffic is being routed. */
 export interface TrafficSet {
   /** Required. The list of traffic splits. */
   splits?: TrafficSplitList;
 }
-export const TrafficSet = /*@__PURE__*/ S.suspend(() =>
+const TrafficSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     splits: S.optional(TrafficSplitList),
   }),
@@ -1356,7 +1345,7 @@ export interface Traffic {
   /** Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
   annotations?: StringMap;
 }
-export const Traffic = /*@__PURE__*/ S.suspend(() =>
+const Traffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutPolicy: S.optional(RolloutPolicy),
     target: S.optional(TrafficSet),
@@ -1376,7 +1365,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1391,7 +1380,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -1405,7 +1394,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1424,7 +1413,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1433,7 +1422,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1454,7 +1443,7 @@ export interface ListProjectsLocationsBackendsRequest {
   /** Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. */
   showDeleted?: boolean;
 }
-export const ListProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1474,7 +1463,7 @@ export const ListProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsBackendsRequest>;
 
 export type BackendList = Array<Backend>;
-export const BackendList = /*@__PURE__*/ S.Array(Backend) as any as S.Schema<BackendList>;
+const BackendList = /*@__PURE__*/ S.Array(Backend) as any as S.Schema<BackendList>;
 
 /** Message for response to list backends */
 export interface ListBackendsResponse {
@@ -1485,7 +1474,7 @@ export interface ListBackendsResponse {
   /** A token identifying the next page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListBackendsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackendsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     backends: S.optional(BackendList),
@@ -1507,7 +1496,7 @@ export interface ListProjectsLocationsBackendsBuildsRequest {
   /** Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. */
   showDeleted?: boolean;
 }
-export const ListProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1527,7 +1516,7 @@ export const ListProjectsLocationsBackendsBuildsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsBackendsBuildsRequest>;
 
 export type BuildList = Array<Build>;
-export const BuildList = /*@__PURE__*/ S.Array(Build) as any as S.Schema<BuildList>;
+const BuildList = /*@__PURE__*/ S.Array(Build) as any as S.Schema<BuildList>;
 
 /** Message for response to list builds. */
 export interface ListBuildsResponse {
@@ -1538,7 +1527,7 @@ export interface ListBuildsResponse {
   /** The list of builds. */
   builds?: BuildList;
 }
-export const ListBuildsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBuildsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1560,7 +1549,7 @@ export interface ListProjectsLocationsBackendsDomainsRequest {
   /** Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. */
   parent: string;
 }
-export const ListProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1580,7 +1569,7 @@ export const ListProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsBackendsDomainsRequest>;
 
 export type DomainList = Array<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** Message for response to list domains. */
 export interface ListDomainsResponse {
@@ -1591,7 +1580,7 @@ export interface ListDomainsResponse {
   /** Output only. The list of domains. */
   domains?: DomainList;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1613,7 +1602,7 @@ export interface ListProjectsLocationsBackendsRolloutsRequest {
   /** Optional. The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1633,7 +1622,7 @@ export const ListProjectsLocationsBackendsRolloutsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsBackendsRolloutsRequest>;
 
 export type RolloutList = Array<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
 
 /** Message for response to list rollouts. */
 export interface ListRolloutsResponse {
@@ -1644,7 +1633,7 @@ export interface ListRolloutsResponse {
   /** The list of rollouts. */
   rollouts?: RolloutList;
 }
-export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1664,7 +1653,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1683,7 +1672,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1694,7 +1683,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -1708,7 +1697,7 @@ export interface ListProjectsLocationsSupportedRuntimesRequest {
   /** Optional. The suggested number of runtimes to return. This field is ignored. We return all runtimes in a single page regardless of the page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSupportedRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSupportedRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1736,7 +1725,7 @@ export interface SupportedRuntime {
   /** Output only. The identifier of the runtime, e.g., "nodejs22". */
   runtimeId?: string;
 }
-export const SupportedRuntime = /*@__PURE__*/ S.suspend(() =>
+const SupportedRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     deprecateTime: S.optional(S.String),
@@ -1747,7 +1736,7 @@ export const SupportedRuntime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportedRuntime" }) as any as S.Schema<SupportedRuntime>;
 
 export type SupportedRuntimeList = Array<SupportedRuntime>;
-export const SupportedRuntimeList = /*@__PURE__*/ S.Array(
+const SupportedRuntimeList = /*@__PURE__*/ S.Array(
   SupportedRuntime,
 ) as any as S.Schema<SupportedRuntimeList>;
 
@@ -1756,7 +1745,7 @@ export interface ListSupportedRuntimesResponse {
   /** The list of supported runtimes. */
   supportedRuntimes?: SupportedRuntimeList;
 }
-export const ListSupportedRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportedRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedRuntimes: S.optional(SupportedRuntimeList),
   }),
@@ -1778,7 +1767,7 @@ export interface PatchProjectsLocationsBackendsRequest {
   /** Request body */
   body?: Backend;
 }
-export const PatchProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBackendsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1811,7 +1800,7 @@ export interface PatchProjectsLocationsBackendsDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const PatchProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBackendsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1842,7 +1831,7 @@ export interface PatchProjectsLocationsBackendsTrafficRequest {
   /** Request body */
   body?: Traffic;
 }
-export const PatchProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBackendsTrafficRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),

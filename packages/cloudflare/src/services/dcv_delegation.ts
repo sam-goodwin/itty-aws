@@ -16,7 +16,7 @@ export interface GetDcvDelegationRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetDcvDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDcvDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dcv_delegation/uuid", code: 200 })),
@@ -27,7 +27,7 @@ export interface GetDcvDelegationResponse {
   /** The DCV Delegation unique identifier. */
   uuid?: string | null;
 }
-export const GetDcvDelegationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDcvDelegationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.NullOr(S.String)),
   }),

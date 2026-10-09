@@ -24,7 +24,7 @@ export interface GetCsamScannerRequest {
   /** Identifier for the zone. */
   zoneId: string;
 }
-export const GetCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -39,13 +39,13 @@ export const GetCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCsamScannerRequest" }) as any as S.Schema<GetCsamScannerRequest>;
 
 export type GetResponseId = "csam_scanner";
-export const GetResponseId = S.String;
+const GetResponseId = S.String;
 
 export type GetResponseValueEmailState = "valid" | "pending" | "unverified";
-export const GetResponseValueEmailState = S.String;
+const GetResponseValueEmailState = S.String;
 
 export type GetResponseValueSourcesMap = { [key: string]: boolean | undefined };
-export const GetResponseValueSourcesMap = /*@__PURE__*/ S.Record(
+const GetResponseValueSourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean,
 ) as any as S.Schema<GetResponseValueSourcesMap>;
@@ -62,7 +62,7 @@ export interface GetResponseValue {
   /** The zone's plan level. */
   zonePlan?: string | null;
 }
-export const GetResponseValue = /*@__PURE__*/ S.suspend(() =>
+const GetResponseValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     emailState: S.optional(S.NullOr(GetResponseValueEmailState).pipe(T.Body("email_state"))),
@@ -83,7 +83,7 @@ export interface GetCsamScannerResponse {
   /** The CSAM Scanner feature configuration values. Contains the notification email and scanning enablement settings. */
   value?: GetResponseValue | null;
 }
-export const GetCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(GetResponseId)),
     editable: S.optional(S.NullOr(S.Boolean)),
@@ -93,10 +93,10 @@ export const GetCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCsamScannerResponse" }) as any as S.Schema<GetCsamScannerResponse>;
 
 export type EditRequestId = "csam_scanner";
-export const EditRequestId = S.String;
+const EditRequestId = S.String;
 
 export type EditRequestValueSourcesMap = { [key: string]: boolean | undefined };
-export const EditRequestValueSourcesMap =
+const EditRequestValueSourcesMap =
   GetResponseValueSourcesMap as any as S.Schema<EditRequestValueSourcesMap>;
 
 export interface EditRequestValue {
@@ -109,7 +109,7 @@ export interface EditRequestValue {
   /** Map of scanning sources and their enabled state. */
   sources?: EditRequestValueSourcesMap;
 }
-export const EditRequestValue = /*@__PURE__*/ S.suspend(() =>
+const EditRequestValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -126,7 +126,7 @@ export interface PatchCsamScannerRequest {
   /** Writable CSAM Scanner feature configuration values. */
   value?: EditRequestValue;
 }
-export const PatchCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(EditRequestId),
@@ -143,13 +143,13 @@ export const PatchCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchCsamScannerRequest" }) as any as S.Schema<PatchCsamScannerRequest>;
 
 export type EditResponseId = "csam_scanner";
-export const EditResponseId = S.String;
+const EditResponseId = S.String;
 
 export type EditResponseValueEmailState = "valid" | "pending" | "unverified";
-export const EditResponseValueEmailState = S.String;
+const EditResponseValueEmailState = S.String;
 
 export type EditResponseValueSourcesMap = { [key: string]: boolean | undefined };
-export const EditResponseValueSourcesMap =
+const EditResponseValueSourcesMap =
   GetResponseValueSourcesMap as any as S.Schema<EditResponseValueSourcesMap>;
 
 export interface EditResponseValue {
@@ -164,7 +164,7 @@ export interface EditResponseValue {
   /** The zone's plan level. */
   zonePlan?: string | null;
 }
-export const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
+const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     emailState: S.optional(S.NullOr(EditResponseValueEmailState).pipe(T.Body("email_state"))),
@@ -185,7 +185,7 @@ export interface PatchCsamScannerResponse {
   /** The CSAM Scanner feature configuration values. Contains the notification email and scanning enablement settings. */
   value?: EditResponseValue | null;
 }
-export const PatchCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchCsamScannerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(EditResponseId)),
     editable: S.optional(S.NullOr(S.Boolean)),

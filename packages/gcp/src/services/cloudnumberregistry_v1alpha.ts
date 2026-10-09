@@ -77,7 +77,7 @@ export class ServiceDisabled
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -87,7 +87,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -104,7 +104,7 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -112,7 +112,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -128,7 +128,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface CheckAvailabilityProjectsLocationsIpamAdminScopesRequest {
   /** Required. The administrative scopes to check for availability. */
@@ -136,18 +136,17 @@ export interface CheckAvailabilityProjectsLocationsIpamAdminScopesRequest {
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
   parent: string;
 }
-export const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scopes: S.optional(StringList.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
+const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scopes: S.optional(StringList.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
+      baseUrl: "https://cloudnumberregistry.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CheckAvailabilityProjectsLocationsIpamAdminScopesRequest",
 }) as any as S.Schema<CheckAvailabilityProjectsLocationsIpamAdminScopesRequest>;
@@ -156,7 +155,7 @@ export type IpamAdminScopeAvailabilityAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
   | "UNAVAILABLE";
-export const IpamAdminScopeAvailabilityAvailabilityEnum = S.String;
+const IpamAdminScopeAvailabilityAvailabilityEnum = S.String;
 
 /** Availability details for a specific IpamAdminScope. */
 export interface IpamAdminScopeAvailability {
@@ -167,7 +166,7 @@ export interface IpamAdminScopeAvailability {
   /** The availability of the scope. */
   availability?: IpamAdminScopeAvailabilityAvailabilityEnum;
 }
-export const IpamAdminScopeAvailability = /*@__PURE__*/ S.suspend(() =>
+const IpamAdminScopeAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminProject: S.optional(S.String),
     scope: S.optional(S.String),
@@ -178,7 +177,7 @@ export const IpamAdminScopeAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamAdminScopeAvailability>;
 
 export type IpamAdminScopeAvailabilityList = Array<IpamAdminScopeAvailability>;
-export const IpamAdminScopeAvailabilityList = /*@__PURE__*/ S.Array(
+const IpamAdminScopeAvailabilityList = /*@__PURE__*/ S.Array(
   IpamAdminScopeAvailability,
 ) as any as S.Schema<IpamAdminScopeAvailabilityList>;
 
@@ -187,7 +186,7 @@ export interface CheckAvailabilityIpamAdminScopesResponse {
   /** The details of the requested scopes. */
   scopeAvailabilities?: IpamAdminScopeAvailabilityList;
 }
-export const CheckAvailabilityIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckAvailabilityIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeAvailabilities: S.optional(IpamAdminScopeAvailabilityList),
   }),
@@ -200,7 +199,7 @@ export interface CleanupIpamAdminScopeRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const CleanupIpamAdminScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const CleanupIpamAdminScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -214,7 +213,7 @@ export interface CleanupProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: CleanupIpamAdminScopeRequest;
 }
-export const CleanupProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CleanupProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CleanupIpamAdminScopeRequest.pipe(T.HttpBody())),
@@ -230,15 +229,10 @@ export const CleanupProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CleanupProjectsLocationsIpamAdminScopesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -249,7 +243,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -270,7 +264,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     done: S.optional(S.Boolean),
@@ -281,7 +275,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** An OrgNumberRegistry defines a delegation of authority from an organization to a project, allowing the project to manage IP address data within specified scopes of the organization. */
 export interface OrgNumberRegistry {
@@ -298,7 +292,7 @@ export interface OrgNumberRegistry {
   /** Required. The scopes within the organization that the project is able to manage. Currently only organization scope is supported. For example, "organizations/1234567890". */
   targetScopes?: StringList;
 }
-export const OrgNumberRegistry = /*@__PURE__*/ S.suspend(() =>
+const OrgNumberRegistry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminProject: S.optional(S.String),
     name: S.optional(S.String),
@@ -319,7 +313,7 @@ export interface CreateOrganizationsLocationsOrgNumberRegistriesRequest {
   /** Request body */
   body?: OrgNumberRegistry;
 }
-export const CreateOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -343,7 +337,7 @@ export interface Attribute {
   /** Required. The value of the attribute. */
   value?: string;
 }
-export const Attribute = /*@__PURE__*/ S.suspend(() =>
+const Attribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -351,7 +345,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
 export type AttributeList = Array<Attribute>;
-export const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
+const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
 
 /** A CustomRange represents a user-defined IP address range. */
 export interface CustomRange {
@@ -374,7 +368,7 @@ export interface CustomRange {
   /** Output only. The RegistryBook of the CustomRange. This field is inherited from the Realm or parent CustomRange depending on which one is specified. */
   registryBook?: string;
 }
-export const CustomRange = /*@__PURE__*/ S.suspend(() =>
+const CustomRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     ipv4CidrRange: S.optional(S.String),
@@ -398,7 +392,7 @@ export interface CreateProjectsLocationsCustomRangesRequest {
   /** Request body */
   body?: CustomRange;
 }
-export const CreateProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -419,12 +413,12 @@ export type IpamAdminScopeEnabledAddonPlatformsItemEnum =
   | "ADD_ON_PLATFORM_UNSPECIFIED"
   | "COMPUTE_ENGINE"
   | "GCE";
-export const IpamAdminScopeEnabledAddonPlatformsItemEnum = S.String;
+const IpamAdminScopeEnabledAddonPlatformsItemEnum = S.String;
 
 export type IpamAdminScopeEnabledAddonPlatformsItemEnumList = Array<
   IpamAdminScopeEnabledAddonPlatformsItemEnum | (string & {})
 >;
-export const IpamAdminScopeEnabledAddonPlatformsItemEnumList = /*@__PURE__*/ S.Array(
+const IpamAdminScopeEnabledAddonPlatformsItemEnumList = /*@__PURE__*/ S.Array(
   IpamAdminScopeEnabledAddonPlatformsItemEnum,
 ) as any as S.Schema<IpamAdminScopeEnabledAddonPlatformsItemEnumList>;
 
@@ -441,7 +435,7 @@ export type IpamAdminScopeStateEnum =
   | "DELETION_COMPLETED"
   | "CLEANUP_IN_PROGRESS"
   | "READY_FOR_DELETION";
-export const IpamAdminScopeStateEnum = S.String;
+const IpamAdminScopeStateEnum = S.String;
 
 /** An IpamAdminScope defines the administrative boundary for IP address discovery and management. It configures which platforms and organizational scopes are enabled for IP tracking. */
 export interface IpamAdminScope {
@@ -460,7 +454,7 @@ export interface IpamAdminScope {
   /** Output only. State of resource discovery pipeline. */
   state?: IpamAdminScopeStateEnum | (string & {});
 }
-export const IpamAdminScope = /*@__PURE__*/ S.suspend(() =>
+const IpamAdminScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     createTime: S.optional(S.String),
@@ -482,7 +476,7 @@ export interface CreateProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: IpamAdminScope;
 }
-export const CreateProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipamAdminScopeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -506,7 +500,7 @@ export interface RealmAggregatedData {
   /** Output only. Number of CustomRanges in the Realm. */
   customRangesCount?: number;
 }
-export const RealmAggregatedData = /*@__PURE__*/ S.suspend(() =>
+const RealmAggregatedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveredRangesCount: S.optional(S.Number),
     customRangesCount: S.optional(S.Number),
@@ -519,13 +513,13 @@ export type RealmTrafficTypeEnum =
   | "INTERNET"
   | "PRIVATE"
   | "LINKLOCAL";
-export const RealmTrafficTypeEnum = S.String;
+const RealmTrafficTypeEnum = S.String;
 
 export type RealmManagementTypeEnum = "MANAGEMENT_TYPE_UNSPECIFIED" | "CNR" | "USER";
-export const RealmManagementTypeEnum = S.String;
+const RealmManagementTypeEnum = S.String;
 
 export type RealmIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
-export const RealmIpVersionEnum = S.String;
+const RealmIpVersionEnum = S.String;
 
 export type DiscoveryMetadataStateEnum =
   | "RESOURCE_STATE_UNSPECIFIED"
@@ -533,7 +527,7 @@ export type DiscoveryMetadataStateEnum =
   | "EXISTS"
   | "DOES_NOT_EXIST"
   | "ERROR";
-export const DiscoveryMetadataStateEnum = S.String;
+const DiscoveryMetadataStateEnum = S.String;
 
 /** Metadata about a discovered resource, tracking event times, state, and source information. */
 export interface DiscoveryMetadata {
@@ -554,7 +548,7 @@ export interface DiscoveryMetadata {
   /** Output only. A single source resource can be the source of multiple CNR resources. This sub_id is used to distinguish between the different CNR resources derived from the same upstream resource. For example, a single subnetwork can be the source of multiple Ranges, one for each protocol. In this case, the sub_id could be "private-ipv4" or "private-ipv6". */
   sourceSubId?: string;
 }
-export const DiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(DiscoveryMetadataStateEnum),
     updateTime: S.optional(S.String),
@@ -590,7 +584,7 @@ export interface Realm {
   /** Output only. Discovery metadata of the Realm. */
   discoveryMetadata?: DiscoveryMetadata;
 }
-export const Realm = /*@__PURE__*/ S.suspend(() =>
+const Realm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -615,7 +609,7 @@ export interface CreateProjectsLocationsRealmsRequest {
   /** Request body */
   body?: Realm;
 }
-export const CreateProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -641,7 +635,7 @@ export interface ScopeInfo {
   /** Output only. Resource name of the scope, e.g. "projects/1234567890". */
   name?: string;
 }
-export const ScopeInfo = /*@__PURE__*/ S.suspend(() =>
+const ScopeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     id: S.optional(S.String),
@@ -650,7 +644,7 @@ export const ScopeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopeInfo" }) as any as S.Schema<ScopeInfo>;
 
 export type ScopeInfoList = Array<ScopeInfo>;
-export const ScopeInfoList = /*@__PURE__*/ S.Array(ScopeInfo) as any as S.Schema<ScopeInfoList>;
+const ScopeInfoList = /*@__PURE__*/ S.Array(ScopeInfo) as any as S.Schema<ScopeInfoList>;
 
 /** Aggregated data for the RegistryBook. */
 export interface AggregatedData {
@@ -665,7 +659,7 @@ export interface AggregatedData {
   /** Output only. Number of custom Realms in the RegistryBook. */
   customRealmsCount?: number;
 }
-export const AggregatedData = /*@__PURE__*/ S.suspend(() =>
+const AggregatedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveredRangesCount: S.optional(S.Number),
     uniqueScopesCount: S.optional(S.Number),
@@ -694,7 +688,7 @@ export interface RegistryBook {
   /** Optional. List of scopes claimed by the RegistryBook. In Preview, Only project scope is supported. Each scope is in the format of projects/{project}. Each scope can only be claimed once. */
   claimedScopes?: StringList;
 }
-export const RegistryBook = /*@__PURE__*/ S.suspend(() =>
+const RegistryBook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     isDefault: S.optional(S.Boolean),
@@ -717,7 +711,7 @@ export interface CreateProjectsLocationsRegistryBooksRequest {
   /** Request body */
   body?: RegistryBook;
 }
-export const CreateProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryBookId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -738,7 +732,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -758,7 +752,7 @@ export interface DeleteOrganizationsLocationsOrgNumberRegistriesRequest {
   /** Required. The resource name of the OrgNumberRegistry to delete. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -781,7 +775,7 @@ export interface DeleteProjectsLocationsCustomRangesRequest {
   /** Optional. If set to true, all associated resources will be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -805,7 +799,7 @@ export interface DeleteProjectsLocationsIpamAdminScopesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -825,7 +819,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -847,7 +841,7 @@ export interface DeleteProjectsLocationsRealmsRequest {
   /** Required. The resource name of the Realm to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -871,7 +865,7 @@ export interface DeleteProjectsLocationsRegistryBooksRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -889,15 +883,13 @@ export const DeleteProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspe
 
 /** Request message for the CloudNumberRegistry.DisableIpamAdminScope method. */
 export type DisableIpamAdminScopeRequest = CleanupIpamAdminScopeRequest;
-export const DisableIpamAdminScopeRequest = CleanupIpamAdminScopeRequest;
-
 export interface DisableProjectsLocationsIpamAdminScopesRequest {
   /** Required. The resource name of the IpamAdminScope to disable. */
   name: string;
   /** Request body */
   body?: CleanupIpamAdminScopeRequest;
 }
-export const DisableProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CleanupIpamAdminScopeRequest.pipe(T.HttpBody())),
@@ -922,7 +914,7 @@ export interface FindFreeIpRangesProjectsLocationsCustomRangesRequest {
   /** Required. The prefix length of the free IP ranges to find. */
   cidrPrefixLength?: number;
 }
-export const FindFreeIpRangesProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const FindFreeIpRangesProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rangeCount: S.optional(S.Number.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -944,7 +936,7 @@ export interface FindCustomRangeFreeIpRangesResponse {
   /** Output only. The free IP CIDR ranges found. */
   freeIpCidrRanges?: StringList;
 }
-export const FindCustomRangeFreeIpRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const FindCustomRangeFreeIpRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freeIpCidrRanges: S.optional(StringList),
   }),
@@ -962,20 +954,19 @@ export interface FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest {
   /** Required. The resource name of the DiscoveredRange to search within. */
   name: string;
 }
-export const FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      rangeCount: S.optional(S.Number.pipe(T.Query())),
-      cidrPrefixLength: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:findFreeIpRanges",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
+const FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    rangeCount: S.optional(S.Number.pipe(T.Query())),
+    cidrPrefixLength: S.optional(S.Number.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}:findFreeIpRanges",
+      baseUrl: "https://cloudnumberregistry.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest",
 }) as any as S.Schema<FindFreeIpRangesProjectsLocationsDiscoveredRangesRequest>;
@@ -985,14 +976,14 @@ export interface FindDiscoveredRangeFreeIpRangesResponse {
   /** Output only. The free IP CIDR ranges found. */
   freeIpCidrRanges?: StringList;
 }
-export const FindDiscoveredRangeFreeIpRangesResponse =
+const FindDiscoveredRangeFreeIpRangesResponse =
   FindCustomRangeFreeIpRangesResponse as any as S.Schema<FindDiscoveredRangeFreeIpRangesResponse>;
 
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1010,7 +1001,7 @@ export interface GetOrganizationsLocationsOrgNumberRegistriesRequest {
   /** Required. The resource name of the OrgNumberRegistry to retrieve. */
   name: string;
 }
-export const GetOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1028,7 +1019,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1055,7 +1046,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -1069,7 +1060,7 @@ export interface GetProjectsLocationsCustomRangesRequest {
   /** Required. The resource name of the CustomRange to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1087,7 +1078,7 @@ export interface GetProjectsLocationsDiscoveredRangesRequest {
   /** Required. The resource name of the DiscoveredRange to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1130,7 +1121,7 @@ export interface DiscoveredRange {
   /** Output only. The time at which the DiscoveredRange was last updated. */
   updateTime?: string;
 }
-export const DiscoveredRange = /*@__PURE__*/ S.suspend(() =>
+const DiscoveredRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryMetadata: S.optional(DiscoveryMetadata),
     realm: S.optional(S.String),
@@ -1152,7 +1143,7 @@ export interface GetProjectsLocationsIpamAdminScopesRequest {
   /** Required. The resource name of the IpamAdminScope to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1170,7 +1161,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1189,7 +1180,7 @@ export type GetProjectsLocationsRealmsViewEnum =
   | "BASIC"
   | "FULL"
   | "AGGREGATE";
-export const GetProjectsLocationsRealmsViewEnum = S.String;
+const GetProjectsLocationsRealmsViewEnum = S.String;
 
 export interface GetProjectsLocationsRealmsRequest {
   /** Required. The resource name of the Realm to retrieve. */
@@ -1197,7 +1188,7 @@ export interface GetProjectsLocationsRealmsRequest {
   /** Optional. The view of the Realm to retrieve. */
   view?: GetProjectsLocationsRealmsViewEnum | (string & {});
 }
-export const GetProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsRealmsViewEnum.pipe(T.Query())),
@@ -1217,7 +1208,7 @@ export type GetProjectsLocationsRegistryBooksViewEnum =
   | "BASIC"
   | "FULL"
   | "AGGREGATE";
-export const GetProjectsLocationsRegistryBooksViewEnum = S.String;
+const GetProjectsLocationsRegistryBooksViewEnum = S.String;
 
 export interface GetProjectsLocationsRegistryBooksRequest {
   /** Required. The resource name of the RegistryBook to retrieve. */
@@ -1225,7 +1216,7 @@ export interface GetProjectsLocationsRegistryBooksRequest {
   /** Optional. The view of the RegistryBook to retrieve. */
   view?: GetProjectsLocationsRegistryBooksViewEnum | (string & {});
 }
-export const GetProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsRegistryBooksViewEnum.pipe(T.Query())),
@@ -1244,7 +1235,7 @@ export interface GetUtilizationProjectsLocationsCustomRangesRequest {
   /** Required. The resource name of the CustomRange. */
   name: string;
 }
-export const GetUtilizationProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUtilizationProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1267,7 +1258,7 @@ export interface RangeUtilization {
   /** Output only. The usage of the Range as a percentage. This is marked as optional so that we have presence tracking and API responses show 0.0 instead of NULL. */
   usage?: number;
 }
-export const RangeUtilization = /*@__PURE__*/ S.suspend(() =>
+const RangeUtilization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalConsumed: S.optional(S.String),
     totalProduced: S.optional(S.String),
@@ -1282,7 +1273,7 @@ export interface ShowCustomRangeUtilizationResponse {
   /** The CustomRange resource. */
   customRange?: CustomRange;
 }
-export const ShowCustomRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowCustomRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rangeUtilization: S.optional(RangeUtilization),
     customRange: S.optional(CustomRange),
@@ -1295,7 +1286,7 @@ export interface GetUtilizationProjectsLocationsDiscoveredRangesRequest {
   /** Required. The resource name of the DiscoveredRange. */
   name: string;
 }
-export const GetUtilizationProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUtilizationProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1316,7 +1307,7 @@ export interface ShowDiscoveredRangeUtilizationResponse {
   /** The DiscoveredRange resource. */
   discoveredRange?: DiscoveredRange;
 }
-export const ShowDiscoveredRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowDiscoveredRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rangeUtilization: S.optional(RangeUtilization),
     discoveredRange: S.optional(DiscoveredRange),
@@ -1337,7 +1328,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1356,7 +1347,7 @@ export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1367,7 +1358,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -1387,7 +1378,7 @@ export interface ListOrganizationsLocationsOrgNumberRegistriesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1406,7 +1397,7 @@ export const ListOrganizationsLocationsOrgNumberRegistriesRequest = /*@__PURE__*
 }) as any as S.Schema<ListOrganizationsLocationsOrgNumberRegistriesRequest>;
 
 export type OrgNumberRegistryList = Array<OrgNumberRegistry>;
-export const OrgNumberRegistryList = /*@__PURE__*/ S.Array(
+const OrgNumberRegistryList = /*@__PURE__*/ S.Array(
   OrgNumberRegistry,
 ) as any as S.Schema<OrgNumberRegistryList>;
 
@@ -1419,7 +1410,7 @@ export interface ListOrgNumberRegistriesResponse {
   /** The list of OrgNumberRegistries. */
   orgNumberRegistries?: OrgNumberRegistryList;
 }
-export const ListOrgNumberRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgNumberRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1441,7 +1432,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1460,7 +1451,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1469,7 +1460,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1488,7 +1479,7 @@ export interface ListProjectsLocationsCustomRangesRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
 }
-export const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1507,9 +1498,7 @@ export const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>;
 
 export type CustomRangeList = Array<CustomRange>;
-export const CustomRangeList = /*@__PURE__*/ S.Array(
-  CustomRange,
-) as any as S.Schema<CustomRangeList>;
+const CustomRangeList = /*@__PURE__*/ S.Array(CustomRange) as any as S.Schema<CustomRangeList>;
 
 /** Response message for the CloudNumberRegistry.ListCustomRanges method. */
 export interface ListCustomRangesResponse {
@@ -1520,7 +1509,7 @@ export interface ListCustomRangesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListCustomRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRanges: S.optional(CustomRangeList),
     nextPageToken: S.optional(S.String),
@@ -1540,7 +1529,7 @@ export interface ListProjectsLocationsDiscoveredRangesRequest {
   /** Optional. Filter expression to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1559,7 +1548,7 @@ export const ListProjectsLocationsDiscoveredRangesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>;
 
 export type DiscoveredRangeList = Array<DiscoveredRange>;
-export const DiscoveredRangeList = /*@__PURE__*/ S.Array(
+const DiscoveredRangeList = /*@__PURE__*/ S.Array(
   DiscoveredRange,
 ) as any as S.Schema<DiscoveredRangeList>;
 
@@ -1572,7 +1561,7 @@ export interface ListDiscoveredRangesResponse {
   /** The list of DiscoveredRanges. */
   discoveredRanges?: DiscoveredRangeList;
 }
-export const ListDiscoveredRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDiscoveredRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1594,7 +1583,7 @@ export interface ListProjectsLocationsIpamAdminScopesRequest {
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
   parent: string;
 }
-export const ListProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1613,7 +1602,7 @@ export const ListProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>;
 
 export type IpamAdminScopeList = Array<IpamAdminScope>;
-export const IpamAdminScopeList = /*@__PURE__*/ S.Array(
+const IpamAdminScopeList = /*@__PURE__*/ S.Array(
   IpamAdminScope,
 ) as any as S.Schema<IpamAdminScopeList>;
 
@@ -1626,7 +1615,7 @@ export interface ListIpamAdminScopesResponse {
   /** The list of IpamAdminScopes. */
   ipamAdminScopes?: IpamAdminScopeList;
 }
-export const ListIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpamAdminScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1648,7 +1637,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1671,7 +1660,7 @@ export type ListProjectsLocationsRealmsViewEnum =
   | "BASIC"
   | "FULL"
   | "AGGREGATE";
-export const ListProjectsLocationsRealmsViewEnum = S.String;
+const ListProjectsLocationsRealmsViewEnum = S.String;
 
 export interface ListProjectsLocationsRealmsRequest {
   /** Optional. The view of the Realm to retrieve. */
@@ -1687,7 +1676,7 @@ export interface ListProjectsLocationsRealmsRequest {
   /** Required. The parent resource name, for example `projects/*\/locations/*`. */
   parent: string;
 }
-export const ListProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListProjectsLocationsRealmsViewEnum.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1707,7 +1696,7 @@ export const ListProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRealmsRequest>;
 
 export type RealmList = Array<Realm>;
-export const RealmList = /*@__PURE__*/ S.Array(Realm) as any as S.Schema<RealmList>;
+const RealmList = /*@__PURE__*/ S.Array(Realm) as any as S.Schema<RealmList>;
 
 /** Response message for the CloudNumberRegistry.ListRealms method. */
 export interface ListRealmsResponse {
@@ -1718,7 +1707,7 @@ export interface ListRealmsResponse {
   /** The list of Realms. */
   realms?: RealmList;
 }
-export const ListRealmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRealmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1731,7 +1720,7 @@ export type ListProjectsLocationsRegistryBooksViewEnum =
   | "BASIC"
   | "FULL"
   | "AGGREGATE";
-export const ListProjectsLocationsRegistryBooksViewEnum = S.String;
+const ListProjectsLocationsRegistryBooksViewEnum = S.String;
 
 export interface ListProjectsLocationsRegistryBooksRequest {
   /** Optional. Hint for how to order the results. */
@@ -1747,7 +1736,7 @@ export interface ListProjectsLocationsRegistryBooksRequest {
   /** Optional. Filter expression to filter the results. */
   filter?: string;
 }
-export const ListProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     view: S.optional(ListProjectsLocationsRegistryBooksViewEnum.pipe(T.Query())),
@@ -1767,9 +1756,7 @@ export const ListProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>;
 
 export type RegistryBookList = Array<RegistryBook>;
-export const RegistryBookList = /*@__PURE__*/ S.Array(
-  RegistryBook,
-) as any as S.Schema<RegistryBookList>;
+const RegistryBookList = /*@__PURE__*/ S.Array(RegistryBook) as any as S.Schema<RegistryBookList>;
 
 /** Response message for the CloudNumberRegistry.ListRegistryBooks method. */
 export interface ListRegistryBooksResponse {
@@ -1780,7 +1767,7 @@ export interface ListRegistryBooksResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListRegistryBooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegistryBooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryBooks: S.optional(RegistryBookList),
     unreachable: S.optional(StringList),
@@ -1800,7 +1787,7 @@ export interface PatchProjectsLocationsCustomRangesRequest {
   /** Request body */
   body?: CustomRange;
 }
-export const PatchProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1827,7 +1814,7 @@ export interface PatchProjectsLocationsIpamAdminScopesRequest {
   /** Request body */
   body?: IpamAdminScope;
 }
-export const PatchProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsIpamAdminScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1854,7 +1841,7 @@ export interface PatchProjectsLocationsRealmsRequest {
   /** Request body */
   body?: Realm;
 }
-export const PatchProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1881,7 +1868,7 @@ export interface PatchProjectsLocationsRegistryBooksRequest {
   /** Request body */
   body?: RegistryBook;
 }
-export const PatchProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1902,12 +1889,10 @@ export type SearchIpResourcesRequestSearchResourceTypesItemEnum =
   | "SEARCH_RESOURCE_TYPE_UNSPECIFIED"
   | "RANGES"
   | "REALMS";
-export const SearchIpResourcesRequestSearchResourceTypesItemEnum = S.String;
-
 export type SearchIpResourcesRequestSearchResourceTypesItemEnumList = Array<
   SearchIpResourcesRequestSearchResourceTypesItemEnum | (string & {})
 >;
-export const SearchIpResourcesRequestSearchResourceTypesItemEnumList =
+const SearchIpResourcesRequestSearchResourceTypesItemEnumList =
   IpamAdminScopeEnabledAddonPlatformsItemEnumList as any as S.Schema<SearchIpResourcesRequestSearchResourceTypesItemEnumList>;
 
 /** Request message for the CloudNumberRegistry.SearchIpResources method. */
@@ -1925,7 +1910,7 @@ export interface SearchIpResourcesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const SearchIpResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchIpResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showUtilization: S.optional(S.Boolean),
     orderBy: S.optional(S.String),
@@ -1942,7 +1927,7 @@ export interface SearchIpResourcesProjectsLocationsRegistryBooksRequest {
   /** Request body */
   body?: SearchIpResourcesRequest;
 }
-export const SearchIpResourcesProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchIpResourcesProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SearchIpResourcesRequest.pipe(T.HttpBody())),
@@ -1966,7 +1951,7 @@ export interface Range {
   /** The utilization of the Range. */
   utilization?: RangeUtilization;
 }
-export const Range = /*@__PURE__*/ S.suspend(() =>
+const Range = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveredRange: S.optional(DiscoveredRange),
     customRange: S.optional(CustomRange),
@@ -1975,7 +1960,7 @@ export const Range = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 
 export type RangeList = Array<Range>;
-export const RangeList = /*@__PURE__*/ S.Array(Range) as any as S.Schema<RangeList>;
+const RangeList = /*@__PURE__*/ S.Array(Range) as any as S.Schema<RangeList>;
 
 /** A result matching the search query, which can be either a Range or a Realm. */
 export interface SearchIpResourcesResult {
@@ -1984,7 +1969,7 @@ export interface SearchIpResourcesResult {
   /** A Realm matching the search query. */
   realm?: Realm;
 }
-export const SearchIpResourcesResult = /*@__PURE__*/ S.suspend(() =>
+const SearchIpResourcesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
     realm: S.optional(Realm),
@@ -1992,7 +1977,7 @@ export const SearchIpResourcesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchIpResourcesResult" }) as any as S.Schema<SearchIpResourcesResult>;
 
 export type SearchIpResourcesResultList = Array<SearchIpResourcesResult>;
-export const SearchIpResourcesResultList = /*@__PURE__*/ S.Array(
+const SearchIpResourcesResultList = /*@__PURE__*/ S.Array(
   SearchIpResourcesResult,
 ) as any as S.Schema<SearchIpResourcesResultList>;
 
@@ -2007,7 +1992,7 @@ export interface SearchIpResourcesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const SearchIpResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchIpResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ranges: S.optional(RangeList),
     results: S.optional(SearchIpResourcesResultList),

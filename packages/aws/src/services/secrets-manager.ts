@@ -142,7 +142,7 @@ export class ResourceNotFoundException
   }).pipe(C.withNotFoundError) {}
 export type SecretIdType = string;
 export type SecretIdListType = string[];
-export const SecretIdListType = /*@__PURE__*/ S.Array(S.String);
+const SecretIdListType = /*@__PURE__*/ S.Array(S.String);
 export type FilterNameStringType =
   | "description"
   | "name"
@@ -152,20 +152,20 @@ export type FilterNameStringType =
   | "owning-service"
   | "all"
   | (string & {});
-export const FilterNameStringType = S.String;
+const FilterNameStringType = S.String;
 
 export type FilterValueStringType = string;
 export type FilterValuesStringList = string[];
-export const FilterValuesStringList = SecretIdListType as any as S.Schema<FilterValuesStringList>;
+const FilterValuesStringList = SecretIdListType as any as S.Schema<FilterValuesStringList>;
 export interface Filter {
   Key?: FilterNameStringType;
   Values?: string[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(FilterNameStringType), Values: S.optional(FilterValuesStringList) }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FiltersListType = Filter[];
-export const FiltersListType = /*@__PURE__*/ S.Array(Filter);
+const FiltersListType = /*@__PURE__*/ S.Array(Filter);
 export type MaxResultsBatchType = number;
 export type NextTokenType = string;
 export interface BatchGetSecretValueRequest {
@@ -174,7 +174,7 @@ export interface BatchGetSecretValueRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const BatchGetSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretIdList: S.optional(SecretIdListType),
     Filters: S.optional(FiltersListType),
@@ -191,7 +191,7 @@ export type SecretBinaryType = Uint8Array | redacted.Redacted<Uint8Array>;
 export type SecretStringType = string | redacted.Redacted<string>;
 export type SecretVersionStageType = string;
 export type SecretVersionStagesType = string[];
-export const SecretVersionStagesType = SecretIdListType as any as S.Schema<SecretVersionStagesType>;
+const SecretVersionStagesType = SecretIdListType as any as S.Schema<SecretVersionStagesType>;
 export type CreatedDateType = Date;
 export interface SecretValueEntry {
   ARN?: string;
@@ -202,7 +202,7 @@ export interface SecretValueEntry {
   VersionStages?: string[];
   CreatedDate?: Date;
 }
-export const SecretValueEntry = /*@__PURE__*/ S.suspend(() =>
+const SecretValueEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -214,7 +214,7 @@ export const SecretValueEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretValueEntry" }) as any as S.Schema<SecretValueEntry>;
 export type SecretValuesType = SecretValueEntry[];
-export const SecretValuesType = /*@__PURE__*/ S.Array(SecretValueEntry);
+const SecretValuesType = /*@__PURE__*/ S.Array(SecretValueEntry);
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export interface APIErrorType {
@@ -222,7 +222,7 @@ export interface APIErrorType {
   ErrorCode?: string;
   Message?: string;
 }
-export const APIErrorType = /*@__PURE__*/ S.suspend(() =>
+const APIErrorType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.optional(S.String),
     ErrorCode: S.optional(S.String),
@@ -230,13 +230,13 @@ export const APIErrorType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "APIErrorType" }) as any as S.Schema<APIErrorType>;
 export type APIErrorListType = APIErrorType[];
-export const APIErrorListType = /*@__PURE__*/ S.Array(APIErrorType);
+const APIErrorListType = /*@__PURE__*/ S.Array(APIErrorType);
 export interface BatchGetSecretValueResponse {
   SecretValues?: SecretValueEntry[];
   NextToken?: string;
   Errors?: APIErrorType[];
 }
-export const BatchGetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretValues: S.optional(SecretValuesType),
     NextToken: S.optional(S.String),
@@ -248,7 +248,7 @@ export const BatchGetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CancelRotateSecretRequest {
   SecretId: string;
 }
-export const CancelRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -260,7 +260,7 @@ export interface CancelRotateSecretResponse {
   Name?: string;
   VersionId?: string;
 }
-export const CancelRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -279,21 +279,21 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagListType = Tag[];
-export const TagListType = /*@__PURE__*/ S.Array(Tag);
+const TagListType = /*@__PURE__*/ S.Array(Tag);
 export type RegionType = string;
 export interface ReplicaRegionType {
   Region?: string;
   KmsKeyId?: string;
 }
-export const ReplicaRegionType = /*@__PURE__*/ S.suspend(() =>
+const ReplicaRegionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Region: S.optional(S.String), KmsKeyId: S.optional(S.String) }),
 ).annotate({ identifier: "ReplicaRegionType" }) as any as S.Schema<ReplicaRegionType>;
 export type AddReplicaRegionListType = ReplicaRegionType[];
-export const AddReplicaRegionListType = /*@__PURE__*/ S.Array(ReplicaRegionType);
+const AddReplicaRegionListType = /*@__PURE__*/ S.Array(ReplicaRegionType);
 export type MedeaTypeType = string;
 export interface CreateSecretRequest {
   Name: string;
@@ -307,7 +307,7 @@ export interface CreateSecretRequest {
   ForceOverwriteReplicaSecret?: boolean;
   Type?: string;
 }
-export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -322,7 +322,7 @@ export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateSecretRequest" }) as any as S.Schema<CreateSecretRequest>;
 export type StatusType = "InSync" | "Failed" | "InProgress" | (string & {});
-export const StatusType = S.String;
+const StatusType = S.String;
 
 export type StatusMessageType = string;
 export type LastAccessedDateType = Date;
@@ -333,7 +333,7 @@ export interface ReplicationStatusType {
   StatusMessage?: string;
   LastAccessedDate?: Date;
 }
-export const ReplicationStatusType = /*@__PURE__*/ S.suspend(() =>
+const ReplicationStatusType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Region: S.optional(S.String),
     KmsKeyId: S.optional(S.String),
@@ -343,14 +343,14 @@ export const ReplicationStatusType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReplicationStatusType" }) as any as S.Schema<ReplicationStatusType>;
 export type ReplicationStatusListType = ReplicationStatusType[];
-export const ReplicationStatusListType = /*@__PURE__*/ S.Array(ReplicationStatusType);
+const ReplicationStatusListType = /*@__PURE__*/ S.Array(ReplicationStatusType);
 export interface CreateSecretResponse {
   ARN?: string;
   Name?: string;
   VersionId?: string;
   ReplicationStatus?: ReplicationStatusType[];
 }
-export const CreateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -361,7 +361,7 @@ export const CreateSecretResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResourcePolicyRequest {
   SecretId: string;
 }
-export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -372,7 +372,7 @@ export interface DeleteResourcePolicyResponse {
   ARN?: string;
   Name?: string;
 }
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteResourcePolicyResponse",
@@ -383,7 +383,7 @@ export interface DeleteSecretRequest {
   RecoveryWindowInDays?: number;
   ForceDeleteWithoutRecovery?: boolean;
 }
-export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     RecoveryWindowInDays: S.optional(S.Number),
@@ -396,7 +396,7 @@ export interface DeleteSecretResponse {
   Name?: string;
   DeletionDate?: Date;
 }
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -406,7 +406,7 @@ export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeSecretRequest {
   SecretId: string;
 }
-export const DescribeSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -421,7 +421,7 @@ export interface RotationRulesType {
   Duration?: string;
   ScheduleExpression?: string;
 }
-export const RotationRulesType = /*@__PURE__*/ S.suspend(() =>
+const RotationRulesType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AutomaticallyAfterDays: S.optional(S.Number),
     Duration: S.optional(S.String),
@@ -434,13 +434,13 @@ export interface ExternalSecretRotationMetadataItem {
   Key?: string;
   Value?: string;
 }
-export const ExternalSecretRotationMetadataItem = /*@__PURE__*/ S.suspend(() =>
+const ExternalSecretRotationMetadataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({
   identifier: "ExternalSecretRotationMetadataItem",
 }) as any as S.Schema<ExternalSecretRotationMetadataItem>;
 export type ExternalSecretRotationMetadataType = ExternalSecretRotationMetadataItem[];
-export const ExternalSecretRotationMetadataType = /*@__PURE__*/ S.Array(
+const ExternalSecretRotationMetadataType = /*@__PURE__*/ S.Array(
   ExternalSecretRotationMetadataItem,
 );
 export type RoleARNType = string;
@@ -449,7 +449,7 @@ export type LastChangedDateType = Date;
 export type DeletedDateType = Date;
 export type NextRotationDateType = Date;
 export type SecretVersionsToStagesMapType = { [key: string]: string[] | undefined };
-export const SecretVersionsToStagesMapType = /*@__PURE__*/ S.Record(
+const SecretVersionsToStagesMapType = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ SecretVersionStagesType.pipe(S.optional),
 );
@@ -477,7 +477,7 @@ export interface DescribeSecretResponse {
   PrimaryRegion?: string;
   ReplicationStatus?: ReplicationStatusType[];
 }
-export const DescribeSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -520,7 +520,7 @@ export interface GetRandomPasswordRequest {
   IncludeSpace?: boolean;
   RequireEachIncludedType?: boolean;
 }
-export const GetRandomPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRandomPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PasswordLength: S.optional(S.Number),
     ExcludeCharacters: S.optional(S.String),
@@ -536,7 +536,7 @@ export type RandomPasswordType = string | redacted.Redacted<string>;
 export interface GetRandomPasswordResponse {
   RandomPassword?: string | redacted.Redacted<string>;
 }
-export const GetRandomPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRandomPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RandomPassword: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "GetRandomPasswordResponse",
@@ -544,7 +544,7 @@ export const GetRandomPasswordResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcePolicyRequest {
   SecretId: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -555,7 +555,7 @@ export interface GetResourcePolicyResponse {
   Name?: string;
   ResourcePolicy?: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -569,7 +569,7 @@ export interface GetSecretValueRequest {
   VersionId?: string;
   VersionStage?: string;
 }
-export const GetSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     VersionId: S.optional(S.String),
@@ -585,10 +585,10 @@ export interface GetSecretValueResponse {
   VersionStages?: string[];
   CreatedDate?: Date;
 }
-export const GetSecretValueResponse = SecretValueEntry as any as S.Schema<GetSecretValueResponse>;
+const GetSecretValueResponse = SecretValueEntry as any as S.Schema<GetSecretValueResponse>;
 export type MaxResultsType = number;
 export type SortOrderType = "asc" | "desc" | (string & {});
-export const SortOrderType = S.String;
+const SortOrderType = S.String;
 
 export type SortByType =
   | "created-date"
@@ -596,7 +596,7 @@ export type SortByType =
   | "last-changed-date"
   | "name"
   | (string & {});
-export const SortByType = S.String;
+const SortByType = S.String;
 
 export interface ListSecretsRequest {
   IncludePlannedDeletion?: boolean;
@@ -606,7 +606,7 @@ export interface ListSecretsRequest {
   SortOrder?: SortOrderType;
   SortBy?: SortByType;
 }
-export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IncludePlannedDeletion: S.optional(S.Boolean),
     MaxResults: S.optional(S.Number),
@@ -638,7 +638,7 @@ export interface SecretListEntry {
   CreatedDate?: Date;
   PrimaryRegion?: string;
 }
-export const SecretListEntry = /*@__PURE__*/ S.suspend(() =>
+const SecretListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -663,12 +663,12 @@ export const SecretListEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretListEntry" }) as any as S.Schema<SecretListEntry>;
 export type SecretListType = SecretListEntry[];
-export const SecretListType = /*@__PURE__*/ S.Array(SecretListEntry);
+const SecretListType = /*@__PURE__*/ S.Array(SecretListEntry);
 export interface ListSecretsResponse {
   SecretList?: SecretListEntry[];
   NextToken?: string;
 }
-export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretList: S.optional(SecretListType), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSecretsResponse" }) as any as S.Schema<ListSecretsResponse>;
 export interface ListSecretVersionIdsRequest {
@@ -677,7 +677,7 @@ export interface ListSecretVersionIdsRequest {
   NextToken?: string;
   IncludeDeprecated?: boolean;
 }
-export const ListSecretVersionIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretVersionIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     MaxResults: S.optional(S.Number),
@@ -688,7 +688,7 @@ export const ListSecretVersionIdsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSecretVersionIdsRequest",
 }) as any as S.Schema<ListSecretVersionIdsRequest>;
 export type KmsKeyIdListType = string[];
-export const KmsKeyIdListType = SecretIdListType as any as S.Schema<KmsKeyIdListType>;
+const KmsKeyIdListType = SecretIdListType as any as S.Schema<KmsKeyIdListType>;
 export interface SecretVersionsListEntry {
   VersionId?: string;
   VersionStages?: string[];
@@ -696,7 +696,7 @@ export interface SecretVersionsListEntry {
   CreatedDate?: Date;
   KmsKeyIds?: string[];
 }
-export const SecretVersionsListEntry = /*@__PURE__*/ S.suspend(() =>
+const SecretVersionsListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VersionId: S.optional(S.String),
     VersionStages: S.optional(SecretVersionStagesType),
@@ -706,14 +706,14 @@ export const SecretVersionsListEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVersionsListEntry" }) as any as S.Schema<SecretVersionsListEntry>;
 export type SecretVersionsListType = SecretVersionsListEntry[];
-export const SecretVersionsListType = /*@__PURE__*/ S.Array(SecretVersionsListEntry);
+const SecretVersionsListType = /*@__PURE__*/ S.Array(SecretVersionsListEntry);
 export interface ListSecretVersionIdsResponse {
   Versions?: SecretVersionsListEntry[];
   NextToken?: string;
   ARN?: string;
   Name?: string;
 }
-export const ListSecretVersionIdsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretVersionIdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Versions: S.optional(SecretVersionsListType),
     NextToken: S.optional(S.String),
@@ -728,7 +728,7 @@ export interface PutResourcePolicyRequest {
   ResourcePolicy: string;
   BlockPublicPolicy?: boolean;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     ResourcePolicy: S.String,
@@ -739,7 +739,7 @@ export interface PutResourcePolicyResponse {
   ARN?: string;
   Name?: string;
 }
-export const PutResourcePolicyResponse =
+const PutResourcePolicyResponse =
   DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export type RotationTokenType = string | redacted.Redacted<string>;
 export interface PutSecretValueRequest {
@@ -750,7 +750,7 @@ export interface PutSecretValueRequest {
   VersionStages?: string[];
   RotationToken?: string | redacted.Redacted<string>;
 }
-export const PutSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -766,7 +766,7 @@ export interface PutSecretValueResponse {
   VersionId?: string;
   VersionStages?: string[];
 }
-export const PutSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -775,13 +775,13 @@ export const PutSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PutSecretValueResponse" }) as any as S.Schema<PutSecretValueResponse>;
 export type RemoveReplicaRegionListType = string[];
-export const RemoveReplicaRegionListType =
+const RemoveReplicaRegionListType =
   SecretIdListType as any as S.Schema<RemoveReplicaRegionListType>;
 export interface RemoveRegionsFromReplicationRequest {
   SecretId: string;
   RemoveReplicaRegions: string[];
 }
-export const RemoveRegionsFromReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRegionsFromReplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String, RemoveReplicaRegions: RemoveReplicaRegionListType }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -792,7 +792,7 @@ export interface RemoveRegionsFromReplicationResponse {
   ARN?: string;
   ReplicationStatus?: ReplicationStatusType[];
 }
-export const RemoveRegionsFromReplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveRegionsFromReplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.optional(S.String), ReplicationStatus: S.optional(ReplicationStatusListType) }),
 ).annotate({
   identifier: "RemoveRegionsFromReplicationResponse",
@@ -802,7 +802,7 @@ export interface ReplicateSecretToRegionsRequest {
   AddReplicaRegions: ReplicaRegionType[];
   ForceOverwriteReplicaSecret?: boolean;
 }
-export const ReplicateSecretToRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplicateSecretToRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     AddReplicaRegions: AddReplicaRegionListType,
@@ -815,12 +815,12 @@ export interface ReplicateSecretToRegionsResponse {
   ARN?: string;
   ReplicationStatus?: ReplicationStatusType[];
 }
-export const ReplicateSecretToRegionsResponse =
+const ReplicateSecretToRegionsResponse =
   RemoveRegionsFromReplicationResponse as any as S.Schema<ReplicateSecretToRegionsResponse>;
 export interface RestoreSecretRequest {
   SecretId: string;
 }
-export const RestoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -829,7 +829,7 @@ export interface RestoreSecretResponse {
   ARN?: string;
   Name?: string;
 }
-export const RestoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const RestoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
 ).annotate({ identifier: "RestoreSecretResponse" }) as any as S.Schema<RestoreSecretResponse>;
 export interface RotateSecretRequest {
@@ -841,7 +841,7 @@ export interface RotateSecretRequest {
   ExternalSecretRotationRoleArn?: string;
   RotateImmediately?: boolean;
 }
-export const RotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -857,7 +857,7 @@ export interface RotateSecretResponse {
   Name?: string;
   VersionId?: string;
 }
-export const RotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARN: S.optional(S.String),
     Name: S.optional(S.String),
@@ -867,7 +867,7 @@ export const RotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StopReplicationToReplicaRequest {
   SecretId: string;
 }
-export const StopReplicationToReplicaRequest = /*@__PURE__*/ S.suspend(() =>
+const StopReplicationToReplicaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -877,7 +877,7 @@ export const StopReplicationToReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopReplicationToReplicaResponse {
   ARN?: string;
 }
-export const StopReplicationToReplicaResponse = /*@__PURE__*/ S.suspend(() =>
+const StopReplicationToReplicaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.optional(S.String) }),
 ).annotate({
   identifier: "StopReplicationToReplicaResponse",
@@ -886,28 +886,28 @@ export interface TagResourceRequest {
   SecretId: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String, Tags: TagListType }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyListType = string[];
-export const TagKeyListType = SecretIdListType as any as S.Schema<TagKeyListType>;
+const TagKeyListType = SecretIdListType as any as S.Schema<TagKeyListType>;
 export interface UntagResourceRequest {
   SecretId: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.String, TagKeys: TagKeyListType }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateSecretRequest {
   SecretId: string;
   ClientRequestToken?: string;
@@ -917,7 +917,7 @@ export interface UpdateSecretRequest {
   SecretString?: string | redacted.Redacted<string>;
   Type?: string;
 }
-export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -933,14 +933,14 @@ export interface UpdateSecretResponse {
   Name?: string;
   VersionId?: string;
 }
-export const UpdateSecretResponse = RotateSecretResponse as any as S.Schema<UpdateSecretResponse>;
+const UpdateSecretResponse = RotateSecretResponse as any as S.Schema<UpdateSecretResponse>;
 export interface UpdateSecretVersionStageRequest {
   SecretId: string;
   VersionStage: string;
   RemoveFromVersionId?: string;
   MoveToVersionId?: string;
 }
-export const UpdateSecretVersionStageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretVersionStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretId: S.String,
     VersionStage: S.String,
@@ -954,13 +954,13 @@ export interface UpdateSecretVersionStageResponse {
   ARN?: string;
   Name?: string;
 }
-export const UpdateSecretVersionStageResponse =
+const UpdateSecretVersionStageResponse =
   DeleteResourcePolicyResponse as any as S.Schema<UpdateSecretVersionStageResponse>;
 export interface ValidateResourcePolicyRequest {
   SecretId?: string;
   ResourcePolicy: string;
 }
-export const ValidateResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.optional(S.String), ResourcePolicy: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -971,16 +971,16 @@ export interface ValidationErrorsEntry {
   CheckName?: string;
   ErrorMessage?: string;
 }
-export const ValidationErrorsEntry = /*@__PURE__*/ S.suspend(() =>
+const ValidationErrorsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CheckName: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
 ).annotate({ identifier: "ValidationErrorsEntry" }) as any as S.Schema<ValidationErrorsEntry>;
 export type ValidationErrorsType = ValidationErrorsEntry[];
-export const ValidationErrorsType = /*@__PURE__*/ S.Array(ValidationErrorsEntry);
+const ValidationErrorsType = /*@__PURE__*/ S.Array(ValidationErrorsEntry);
 export interface ValidateResourcePolicyResponse {
   PolicyValidationPassed?: boolean;
   ValidationErrors?: ValidationErrorsEntry[];
 }
-export const ValidateResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyValidationPassed: S.optional(S.Boolean),
     ValidationErrors: S.optional(ValidationErrorsType),

@@ -126,13 +126,13 @@ export type GetEntitlementFilterName =
   | "CUSTOMER_AWS_ACCOUNT_ID"
   | "LICENSE_ARN"
   | (string & {});
-export const GetEntitlementFilterName = S.String;
+const GetEntitlementFilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export type GetEntitlementFilters = { [key in GetEntitlementFilterName]?: string[] };
-export const GetEntitlementFilters = /*@__PURE__*/ S.Record(
+const GetEntitlementFilters = /*@__PURE__*/ S.Record(
   GetEntitlementFilterName,
   /*@__PURE__*/ FilterValueList.pipe(S.optional),
 );
@@ -144,7 +144,7 @@ export interface GetEntitlementsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const GetEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProductCode: S.String,
     Filter: S.optional(GetEntitlementFilters),
@@ -158,7 +158,7 @@ export interface EntitlementValue {
   BooleanValue?: boolean;
   StringValue?: string;
 }
-export const EntitlementValue = /*@__PURE__*/ S.suspend(() =>
+const EntitlementValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IntegerValue: S.optional(S.Number),
     DoubleValue: S.optional(S.Number),
@@ -175,7 +175,7 @@ export interface Entitlement {
   ExpirationDate?: Date;
   LicenseArn?: string;
 }
-export const Entitlement = /*@__PURE__*/ S.suspend(() =>
+const Entitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProductCode: S.optional(S.String),
     Dimension: S.optional(S.String),
@@ -187,12 +187,12 @@ export const Entitlement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 export type EntitlementList = Entitlement[];
-export const EntitlementList = /*@__PURE__*/ S.Array(Entitlement);
+const EntitlementList = /*@__PURE__*/ S.Array(Entitlement);
 export interface GetEntitlementsResult {
   Entitlements?: Entitlement[];
   NextToken?: string;
 }
-export const GetEntitlementsResult = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Entitlements: S.optional(EntitlementList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetEntitlementsResult" }) as any as S.Schema<GetEntitlementsResult>;
 export type ErrorMessage = string;

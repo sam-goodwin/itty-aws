@@ -37,22 +37,22 @@ export class NotFound
 
 /** * `numeric` - numeric * `currency` - currency */
 export type GroupUsageMetricFormatEnum = "numeric" | "currency";
-export const GroupUsageMetricFormatEnum = S.String;
+const GroupUsageMetricFormatEnum = S.String;
 
 /** * `number` - number * `sparkline` - sparkline */
 export type GroupUsageMetricDisplayEnum = "number" | "sparkline";
-export const GroupUsageMetricDisplayEnum = S.String;
+const GroupUsageMetricDisplayEnum = S.String;
 
 /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type CreateGroupsTypesMetricsRequestFiltersMap = { [key: string]: unknown | undefined };
-export const CreateGroupsTypesMetricsRequestFiltersMap = /*@__PURE__*/ S.Record(
+const CreateGroupsTypesMetricsRequestFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateGroupsTypesMetricsRequestFiltersMap>;
 
 /** * `count` - count * `sum` - sum */
 export type GroupUsageMetricMathEnum = "count" | "sum";
-export const GroupUsageMetricMathEnum = S.String;
+const GroupUsageMetricMathEnum = S.String;
 
 export interface CreateGroupsTypesMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -73,7 +73,7 @@ export interface CreateGroupsTypesMetricsRequest {
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }
-export const CreateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -97,7 +97,7 @@ export const CreateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type GroupUsageMetricFiltersMap = { [key: string]: unknown | undefined };
-export const GroupUsageMetricFiltersMap =
+const GroupUsageMetricFiltersMap =
   CreateGroupsTypesMetricsRequestFiltersMap as any as S.Schema<GroupUsageMetricFiltersMap>;
 
 export interface GroupUsageMetric {
@@ -117,7 +117,7 @@ export interface GroupUsageMetric {
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }
-export const GroupUsageMetric = /*@__PURE__*/ S.suspend(() =>
+const GroupUsageMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -137,7 +137,7 @@ export interface GetGroupsTypesMetricsRequest {
   /** A UUID string identifying this group usage metric. */
   id: string;
 }
-export const GetGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -154,10 +154,9 @@ export const GetGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupsTypesMetricsRequest>;
 
 export type GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList = Array<string>;
-export const GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList>;
+const GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList>;
 
 export interface GroupsTypesCreateDetailDashboardUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -168,7 +167,7 @@ export interface GroupsTypesCreateDetailDashboardUpdateRequest {
   default_columns?: GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList | null;
   created_at?: string | null;
 }
-export const GroupsTypesCreateDetailDashboardUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsTypesCreateDetailDashboardUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name_singular: S.optional(S.NullOr(S.String)),
@@ -190,7 +189,7 @@ export const GroupsTypesCreateDetailDashboardUpdateRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GroupsTypesCreateDetailDashboardUpdateRequest>;
 
 export interface GroupsTypesCreateDetailDashboardUpdateResponse {}
-export const GroupsTypesCreateDetailDashboardUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GroupsTypesCreateDetailDashboardUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GroupsTypesCreateDetailDashboardUpdateResponse",
@@ -201,7 +200,7 @@ export interface GroupsTypesDestroyRequest {
   project_id: string;
   group_type_index: number;
 }
-export const GroupsTypesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsTypesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -217,7 +216,7 @@ export const GroupsTypesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesDestroyRequest>;
 
 export interface GroupsTypesDestroyResponse {}
-export const GroupsTypesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GroupsTypesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GroupsTypesDestroyResponse",
 }) as any as S.Schema<GroupsTypesDestroyResponse>;
 
@@ -228,7 +227,7 @@ export interface GroupsTypesMetricsDestroyRequest {
   /** A UUID string identifying this group usage metric. */
   id: string;
 }
-export const GroupsTypesMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsTypesMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -245,11 +244,11 @@ export const GroupsTypesMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesMetricsDestroyRequest>;
 
 export interface GroupsTypesMetricsDestroyResponse {}
-export const GroupsTypesMetricsDestroyResponse =
+const GroupsTypesMetricsDestroyResponse =
   GroupsTypesCreateDetailDashboardUpdateResponse as any as S.Schema<GroupsTypesMetricsDestroyResponse>;
 
 export type GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList = Array<string>;
-export const GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
+const GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
   GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList as any as S.Schema<GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList>;
 
 export interface GroupsTypesUpdateMetadataPartialUpdateRequest {
@@ -261,7 +260,7 @@ export interface GroupsTypesUpdateMetadataPartialUpdateRequest {
   default_columns?: GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList | null;
   created_at?: string | null;
 }
-export const GroupsTypesUpdateMetadataPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsTypesUpdateMetadataPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name_singular: S.optional(S.NullOr(S.String)),
@@ -283,21 +282,21 @@ export const GroupsTypesUpdateMetadataPartialUpdateRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GroupsTypesUpdateMetadataPartialUpdateRequest>;
 
 export interface GroupsTypesUpdateMetadataPartialUpdateResponse {}
-export const GroupsTypesUpdateMetadataPartialUpdateResponse =
+const GroupsTypesUpdateMetadataPartialUpdateResponse =
   GroupsTypesCreateDetailDashboardUpdateResponse as any as S.Schema<GroupsTypesUpdateMetadataPartialUpdateResponse>;
 
 export interface ListGroupsTypesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListGroupsTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/groups_types/", code: 200 })),
 ).annotate({ identifier: "ListGroupsTypesRequest" }) as any as S.Schema<ListGroupsTypesRequest>;
 
 export type GroupTypeDefaultColumnsList = Array<string>;
-export const GroupTypeDefaultColumnsList = /*@__PURE__*/ S.Array(
+const GroupTypeDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupTypeDefaultColumnsList>;
 
@@ -310,7 +309,7 @@ export interface GroupType {
   default_columns?: GroupTypeDefaultColumnsList | null;
   created_at?: string | null;
 }
-export const GroupType = /*@__PURE__*/ S.suspend(() =>
+const GroupType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_type: S.optional(S.String),
     group_type_index: S.optional(S.Number),
@@ -323,12 +322,12 @@ export const GroupType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupType" }) as any as S.Schema<GroupType>;
 
 export type ListGroupsTypesResponseBodyList = Array<GroupType>;
-export const ListGroupsTypesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListGroupsTypesResponseBodyList = /*@__PURE__*/ S.Array(
   GroupType,
 ) as any as S.Schema<ListGroupsTypesResponseBodyList>;
 
 export type ListGroupsTypesResponse = ListGroupsTypesResponseBodyList;
-export const ListGroupsTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsTypesResponse = /*@__PURE__*/ S.suspend(() =>
   ListGroupsTypesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListGroupsTypesResponse" }) as any as S.Schema<ListGroupsTypesResponse>;
 
@@ -341,7 +340,7 @@ export interface ListGroupsTypesMetricsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -359,7 +358,7 @@ export const ListGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupsTypesMetricsRequest>;
 
 export type PaginatedGroupUsageMetricListResultsList = Array<GroupUsageMetric>;
-export const PaginatedGroupUsageMetricListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedGroupUsageMetricListResultsList = /*@__PURE__*/ S.Array(
   GroupUsageMetric,
 ) as any as S.Schema<PaginatedGroupUsageMetricListResultsList>;
 
@@ -369,7 +368,7 @@ export interface PaginatedGroupUsageMetricList {
   previous?: string | null;
   results?: PaginatedGroupUsageMetricListResultsList;
 }
-export const PaginatedGroupUsageMetricList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedGroupUsageMetricList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -382,7 +381,7 @@ export const PaginatedGroupUsageMetricList = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape -- `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles -- person profiles are not yet supported. */
 export type UpdateGroupsTypesMetricsRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateGroupsTypesMetricsRequestFiltersMap =
+const UpdateGroupsTypesMetricsRequestFiltersMap =
   CreateGroupsTypesMetricsRequestFiltersMap as any as S.Schema<UpdateGroupsTypesMetricsRequestFiltersMap>;
 
 export interface UpdateGroupsTypesMetricsRequest {
@@ -406,7 +405,7 @@ export interface UpdateGroupsTypesMetricsRequest {
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }
-export const UpdateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -433,7 +432,7 @@ export const UpdateGroupsTypesMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateGroupsTypesMetricsPartialRequestFiltersMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateGroupsTypesMetricsPartialRequestFiltersMap =
+const UpdateGroupsTypesMetricsPartialRequestFiltersMap =
   CreateGroupsTypesMetricsRequestFiltersMap as any as S.Schema<UpdateGroupsTypesMetricsPartialRequestFiltersMap>;
 
 export interface UpdateGroupsTypesMetricsPartialRequest {
@@ -457,7 +456,7 @@ export interface UpdateGroupsTypesMetricsPartialRequest {
   /** Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table. */
   math_property?: string | null;
 }
-export const UpdateGroupsTypesMetricsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsTypesMetricsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
@@ -481,7 +480,7 @@ export const UpdateGroupsTypesMetricsPartialRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateGroupsTypesMetricsPartialRequest>;
 
 export type UpdateGroupsTypesSetDefaultColumnRequestDefaultColumnsList = Array<string>;
-export const UpdateGroupsTypesSetDefaultColumnRequestDefaultColumnsList =
+const UpdateGroupsTypesSetDefaultColumnRequestDefaultColumnsList =
   GroupTypeDefaultColumnsList as any as S.Schema<UpdateGroupsTypesSetDefaultColumnRequestDefaultColumnsList>;
 
 export interface UpdateGroupsTypesSetDefaultColumnRequest {
@@ -493,7 +492,7 @@ export interface UpdateGroupsTypesSetDefaultColumnRequest {
   default_columns?: UpdateGroupsTypesSetDefaultColumnRequestDefaultColumnsList | null;
   created_at?: string | null;
 }
-export const UpdateGroupsTypesSetDefaultColumnRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsTypesSetDefaultColumnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name_singular: S.optional(S.NullOr(S.String)),
@@ -515,7 +514,7 @@ export const UpdateGroupsTypesSetDefaultColumnRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateGroupsTypesSetDefaultColumnRequest>;
 
 export interface UpdateGroupsTypesSetDefaultColumnResponse {}
-export const UpdateGroupsTypesSetDefaultColumnResponse =
+const UpdateGroupsTypesSetDefaultColumnResponse =
   GroupsTypesCreateDetailDashboardUpdateResponse as any as S.Schema<UpdateGroupsTypesSetDefaultColumnResponse>;
 
 export type CreateGroupsTypesMetricsError = BadRequest | Forbidden | NotFound | PosthogOpError;

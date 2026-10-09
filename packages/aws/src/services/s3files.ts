@@ -98,22 +98,22 @@ export interface Tag {
   key: string;
   value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export type FileSystemId = string;
 export type Uid = number;
 export type Gid = number;
 export type SecondaryGids = number[];
-export const SecondaryGids = /*@__PURE__*/ S.Array(S.Number);
+const SecondaryGids = /*@__PURE__*/ S.Array(S.Number);
 export interface PosixUser {
   uid: number;
   gid: number;
   secondaryGids?: number[];
 }
-export const PosixUser = /*@__PURE__*/ S.suspend(() =>
+const PosixUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uid: S.Number, gid: S.Number, secondaryGids: S.optional(SecondaryGids) }),
 ).annotate({ identifier: "PosixUser" }) as any as S.Schema<PosixUser>;
 export type Path = string;
@@ -125,14 +125,14 @@ export interface CreationPermissions {
   ownerGid: number;
   permissions: string;
 }
-export const CreationPermissions = /*@__PURE__*/ S.suspend(() =>
+const CreationPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ownerUid: S.Number, ownerGid: S.Number, permissions: S.String }),
 ).annotate({ identifier: "CreationPermissions" }) as any as S.Schema<CreationPermissions>;
 export interface RootDirectory {
   path?: string;
   creationPermissions?: CreationPermissions;
 }
-export const RootDirectory = /*@__PURE__*/ S.suspend(() =>
+const RootDirectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ path: S.optional(S.String), creationPermissions: S.optional(CreationPermissions) }),
 ).annotate({ identifier: "RootDirectory" }) as any as S.Schema<RootDirectory>;
 export interface CreateAccessPointRequest {
@@ -142,7 +142,7 @@ export interface CreateAccessPointRequest {
   posixUser?: PosixUser;
   rootDirectory?: RootDirectory;
 }
-export const CreateAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     tags: S.optional(TagList),
@@ -163,7 +163,7 @@ export type LifeCycleState =
   | "error"
   | "updating"
   | (string & {});
-export const LifeCycleState = S.String;
+const LifeCycleState = S.String;
 
 export type AwsAccountId = string;
 export interface CreateAccessPointResponse {
@@ -178,7 +178,7 @@ export interface CreateAccessPointResponse {
   tags?: Tag[];
   name?: string;
 }
-export const CreateAccessPointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessPointArn: S.String,
     accessPointId: S.String,
@@ -207,7 +207,7 @@ export interface CreateFileSystemRequest {
   tags?: Tag[];
   acceptBucketWarning?: boolean;
 }
-export const CreateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     prefix: S.optional(S.String),
@@ -235,7 +235,7 @@ export interface CreateFileSystemResponse {
   tags?: Tag[];
   name?: string;
 }
-export const CreateFileSystemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFileSystemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     fileSystemArn: S.optional(S.String),
@@ -256,11 +256,11 @@ export type SubnetId = string;
 export type Ipv4Address = string;
 export type Ipv6Address = string;
 export type IpAddressType = "IPV4_ONLY" | "IPV6_ONLY" | "DUAL_STACK" | (string & {});
-export const IpAddressType = S.String;
+const IpAddressType = S.String;
 
 export type SecurityGroup = string;
 export type SecurityGroups = string[];
-export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
+const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
 export interface CreateMountTargetRequest {
   fileSystemId: string;
   subnetId: string;
@@ -269,7 +269,7 @@ export interface CreateMountTargetRequest {
   ipAddressType?: IpAddressType;
   securityGroups?: string[];
 }
-export const CreateMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSystemId: S.String,
     subnetId: S.String,
@@ -299,7 +299,7 @@ export interface CreateMountTargetResponse {
   status?: LifeCycleState;
   statusMessage?: string;
 }
-export const CreateMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZoneId: S.optional(S.String),
     ownerId: S.String,
@@ -320,7 +320,7 @@ export const CreateMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAccessPointRequest {
   accessPointId: string;
 }
-export const DeleteAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accessPointId: S.String.pipe(T.HttpLabel("accessPointId")) }).pipe(
     T.all(
       ns,
@@ -334,16 +334,14 @@ export const DeleteAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAccessPointRequest" }) as any as S.Schema<DeleteAccessPointRequest>;
 export interface DeleteAccessPointResponse {}
-export const DeleteAccessPointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const DeleteAccessPointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "DeleteAccessPointResponse",
 }) as any as S.Schema<DeleteAccessPointResponse>;
 export interface DeleteFileSystemRequest {
   fileSystemId: string;
   forceDelete?: boolean;
 }
-export const DeleteFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")),
     forceDelete: S.optional(S.Boolean).pipe(T.HttpQuery("forceDelete")),
@@ -360,13 +358,13 @@ export const DeleteFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFileSystemRequest" }) as any as S.Schema<DeleteFileSystemRequest>;
 export interface DeleteFileSystemResponse {}
-export const DeleteFileSystemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "DeleteFileSystemResponse" }) as any as S.Schema<DeleteFileSystemResponse>;
+const DeleteFileSystemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "DeleteFileSystemResponse",
+}) as any as S.Schema<DeleteFileSystemResponse>;
 export interface DeleteFileSystemPolicyRequest {
   fileSystemId: string;
 }
-export const DeleteFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")) }).pipe(
     T.all(
       ns,
@@ -382,12 +380,12 @@ export const DeleteFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFileSystemPolicyRequest",
 }) as any as S.Schema<DeleteFileSystemPolicyRequest>;
 export interface DeleteFileSystemPolicyResponse {}
-export const DeleteFileSystemPolicyResponse =
+const DeleteFileSystemPolicyResponse =
   DeleteAccessPointResponse as any as S.Schema<DeleteFileSystemPolicyResponse>;
 export interface DeleteMountTargetRequest {
   mountTargetId: string;
 }
-export const DeleteMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mountTargetId: S.String.pipe(T.HttpLabel("mountTargetId")) }).pipe(
     T.all(
       ns,
@@ -401,12 +399,12 @@ export const DeleteMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMountTargetRequest" }) as any as S.Schema<DeleteMountTargetRequest>;
 export interface DeleteMountTargetResponse {}
-export const DeleteMountTargetResponse =
+const DeleteMountTargetResponse =
   DeleteAccessPointResponse as any as S.Schema<DeleteMountTargetResponse>;
 export interface GetAccessPointRequest {
   accessPointId: string;
 }
-export const GetAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accessPointId: S.String.pipe(T.HttpLabel("accessPointId")) }).pipe(
     T.all(
       ns,
@@ -431,7 +429,7 @@ export interface GetAccessPointResponse {
   tags?: Tag[];
   name?: string;
 }
-export const GetAccessPointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessPointArn: S.String,
     accessPointId: S.String,
@@ -448,7 +446,7 @@ export const GetAccessPointResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetFileSystemRequest {
   fileSystemId: string;
 }
-export const GetFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")) }).pipe(
     T.all(
       ns,
@@ -476,12 +474,11 @@ export interface GetFileSystemResponse {
   tags?: Tag[];
   name?: string;
 }
-export const GetFileSystemResponse =
-  CreateFileSystemResponse as any as S.Schema<GetFileSystemResponse>;
+const GetFileSystemResponse = CreateFileSystemResponse as any as S.Schema<GetFileSystemResponse>;
 export interface GetFileSystemPolicyRequest {
   fileSystemId: string;
 }
-export const GetFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")) }).pipe(
     T.all(
       ns,
@@ -500,7 +497,7 @@ export interface GetFileSystemPolicyResponse {
   fileSystemId: string;
   policy: string;
 }
-export const GetFileSystemPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileSystemPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSystemId: S.String, policy: S.String }).pipe(ns),
 ).annotate({
   identifier: "GetFileSystemPolicyResponse",
@@ -508,7 +505,7 @@ export const GetFileSystemPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetMountTargetRequest {
   mountTargetId: string;
 }
-export const GetMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mountTargetId: S.String.pipe(T.HttpLabel("mountTargetId")) }).pipe(
     T.all(
       ns,
@@ -535,7 +532,7 @@ export interface GetMountTargetResponse {
   status?: LifeCycleState;
   statusMessage?: string;
 }
-export const GetMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZoneId: S.optional(S.String),
     ownerId: S.String,
@@ -554,7 +551,7 @@ export const GetMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSynchronizationConfigurationRequest {
   fileSystemId: string;
 }
-export const GetSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")) }).pipe(
     T.all(
       ns,
@@ -570,32 +567,32 @@ export const GetSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "GetSynchronizationConfigurationRequest",
 }) as any as S.Schema<GetSynchronizationConfigurationRequest>;
 export type ImportTrigger = "ON_DIRECTORY_FIRST_ACCESS" | "ON_FILE_ACCESS" | (string & {});
-export const ImportTrigger = S.String;
+const ImportTrigger = S.String;
 
 export interface ImportDataRule {
   prefix: string;
   trigger: ImportTrigger;
   sizeLessThan: number;
 }
-export const ImportDataRule = /*@__PURE__*/ S.suspend(() =>
+const ImportDataRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ prefix: S.String, trigger: ImportTrigger, sizeLessThan: S.Number }),
 ).annotate({ identifier: "ImportDataRule" }) as any as S.Schema<ImportDataRule>;
 export type ImportDataRuleList = ImportDataRule[];
-export const ImportDataRuleList = /*@__PURE__*/ S.Array(ImportDataRule);
+const ImportDataRuleList = /*@__PURE__*/ S.Array(ImportDataRule);
 export interface ExpirationDataRule {
   daysAfterLastAccess: number;
 }
-export const ExpirationDataRule = /*@__PURE__*/ S.suspend(() =>
+const ExpirationDataRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ daysAfterLastAccess: S.Number }),
 ).annotate({ identifier: "ExpirationDataRule" }) as any as S.Schema<ExpirationDataRule>;
 export type ExpirationDataRuleList = ExpirationDataRule[];
-export const ExpirationDataRuleList = /*@__PURE__*/ S.Array(ExpirationDataRule);
+const ExpirationDataRuleList = /*@__PURE__*/ S.Array(ExpirationDataRule);
 export interface GetSynchronizationConfigurationResponse {
   latestVersionNumber?: number;
   importDataRules: ImportDataRule[];
   expirationDataRules: ExpirationDataRule[];
 }
-export const GetSynchronizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSynchronizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestVersionNumber: S.optional(S.Number),
     importDataRules: ImportDataRuleList,
@@ -609,7 +606,7 @@ export interface ListAccessPointsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAccessPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSystemId: S.String.pipe(T.HttpQuery("fileSystemId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -628,7 +625,7 @@ export interface ListAccessPointsDescription {
   rootDirectory?: RootDirectory;
   name?: string;
 }
-export const ListAccessPointsDescription = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPointsDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessPointArn: S.String,
     accessPointId: S.String,
@@ -643,12 +640,12 @@ export const ListAccessPointsDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccessPointsDescription",
 }) as any as S.Schema<ListAccessPointsDescription>;
 export type AccessPoints = ListAccessPointsDescription[];
-export const AccessPoints = /*@__PURE__*/ S.Array(ListAccessPointsDescription);
+const AccessPoints = /*@__PURE__*/ S.Array(ListAccessPointsDescription);
 export interface ListAccessPointsResponse {
   nextToken?: string;
   accessPoints: ListAccessPointsDescription[];
 }
-export const ListAccessPointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), accessPoints: AccessPoints }).pipe(ns),
 ).annotate({ identifier: "ListAccessPointsResponse" }) as any as S.Schema<ListAccessPointsResponse>;
 export interface ListFileSystemsRequest {
@@ -656,7 +653,7 @@ export interface ListFileSystemsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFileSystemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileSystemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String).pipe(T.HttpQuery("bucket")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -674,7 +671,7 @@ export interface ListFileSystemsDescription {
   roleArn: string;
   ownerId: string;
 }
-export const ListFileSystemsDescription = /*@__PURE__*/ S.suspend(() =>
+const ListFileSystemsDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     fileSystemArn: S.String,
@@ -690,12 +687,12 @@ export const ListFileSystemsDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFileSystemsDescription",
 }) as any as S.Schema<ListFileSystemsDescription>;
 export type FileSystems = ListFileSystemsDescription[];
-export const FileSystems = /*@__PURE__*/ S.Array(ListFileSystemsDescription);
+const FileSystems = /*@__PURE__*/ S.Array(ListFileSystemsDescription);
 export interface ListFileSystemsResponse {
   nextToken?: string;
   fileSystems: ListFileSystemsDescription[];
 }
-export const ListFileSystemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFileSystemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), fileSystems: FileSystems }).pipe(ns),
 ).annotate({ identifier: "ListFileSystemsResponse" }) as any as S.Schema<ListFileSystemsResponse>;
 export interface ListMountTargetsRequest {
@@ -704,7 +701,7 @@ export interface ListMountTargetsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListMountTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMountTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSystemId: S.optional(S.String).pipe(T.HttpQuery("fileSystemId")),
     accessPointId: S.optional(S.String).pipe(T.HttpQuery("accessPointId")),
@@ -727,7 +724,7 @@ export interface ListMountTargetsDescription {
   subnetId: string;
   vpcId?: string;
 }
-export const ListMountTargetsDescription = /*@__PURE__*/ S.suspend(() =>
+const ListMountTargetsDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZoneId: S.optional(S.String),
     fileSystemId: S.optional(S.String),
@@ -745,12 +742,12 @@ export const ListMountTargetsDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMountTargetsDescription",
 }) as any as S.Schema<ListMountTargetsDescription>;
 export type MountTargets = ListMountTargetsDescription[];
-export const MountTargets = /*@__PURE__*/ S.Array(ListMountTargetsDescription);
+const MountTargets = /*@__PURE__*/ S.Array(ListMountTargetsDescription);
 export interface ListMountTargetsResponse {
   nextToken?: string;
   mountTargets: ListMountTargetsDescription[];
 }
-export const ListMountTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMountTargetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), mountTargets: MountTargets }).pipe(ns),
 ).annotate({ identifier: "ListMountTargetsResponse" }) as any as S.Schema<ListMountTargetsResponse>;
 export type ResourceId = string;
@@ -759,7 +756,7 @@ export interface ListTagsForResourceRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.HttpLabel("resourceId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -782,7 +779,7 @@ export interface ListTagsForResourceResponse {
   tags?: Tag[];
   nextToken?: string;
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -791,7 +788,7 @@ export interface PutFileSystemPolicyRequest {
   fileSystemId: string;
   policy: string;
 }
-export const PutFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")), policy: S.String }).pipe(
     T.all(
       ns,
@@ -807,7 +804,7 @@ export const PutFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutFileSystemPolicyRequest",
 }) as any as S.Schema<PutFileSystemPolicyRequest>;
 export interface PutFileSystemPolicyResponse {}
-export const PutFileSystemPolicyResponse =
+const PutFileSystemPolicyResponse =
   DeleteAccessPointResponse as any as S.Schema<PutFileSystemPolicyResponse>;
 export interface PutSynchronizationConfigurationRequest {
   fileSystemId: string;
@@ -815,7 +812,7 @@ export interface PutSynchronizationConfigurationRequest {
   importDataRules: ImportDataRule[];
   expirationDataRules: ExpirationDataRule[];
 }
-export const PutSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSystemId: S.String.pipe(T.HttpLabel("fileSystemId")),
     latestVersionNumber: S.optional(S.Number),
@@ -836,13 +833,13 @@ export const PutSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "PutSynchronizationConfigurationRequest",
 }) as any as S.Schema<PutSynchronizationConfigurationRequest>;
 export interface PutSynchronizationConfigurationResponse {}
-export const PutSynchronizationConfigurationResponse =
+const PutSynchronizationConfigurationResponse =
   DeleteAccessPointResponse as any as S.Schema<PutSynchronizationConfigurationResponse>;
 export interface TagResourceRequest {
   resourceId: string;
   tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceId: S.String.pipe(T.HttpLabel("resourceId")), tags: TagList }).pipe(
     T.all(
       ns,
@@ -856,16 +853,16 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = SecurityGroups as any as S.Schema<TagKeys>;
+const TagKeys = SecurityGroups as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceId: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.HttpLabel("resourceId")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -882,12 +879,12 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMountTargetRequest {
   mountTargetId: string;
   securityGroups: string[];
 }
-export const UpdateMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountTargetId: S.String.pipe(T.HttpLabel("mountTargetId")),
     securityGroups: SecurityGroups,
@@ -917,7 +914,7 @@ export interface UpdateMountTargetResponse {
   status?: LifeCycleState;
   statusMessage?: string;
 }
-export const UpdateMountTargetResponse =
+const UpdateMountTargetResponse =
   CreateMountTargetResponse as any as S.Schema<UpdateMountTargetResponse>;
 export type ErrorCode = string;
 export type CreateAccessPointError =

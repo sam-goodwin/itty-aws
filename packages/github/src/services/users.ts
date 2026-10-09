@@ -37,7 +37,7 @@ export class UnprocessableEntity
 
 /** Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key. */
 export type AddEmailForAuthenticatedUserRequestBodyCase0EmailsList = Array<string>;
-export const AddEmailForAuthenticatedUserRequestBodyCase0EmailsList = /*@__PURE__*/ S.Array(
+const AddEmailForAuthenticatedUserRequestBodyCase0EmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddEmailForAuthenticatedUserRequestBodyCase0EmailsList>;
 
@@ -45,29 +45,18 @@ export interface AddEmailForAuthenticatedUserRequestBodyCase0 {
   /** Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key. */
   emails: AddEmailForAuthenticatedUserRequestBodyCase0EmailsList;
 }
-export const AddEmailForAuthenticatedUserRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emails: AddEmailForAuthenticatedUserRequestBodyCase0EmailsList,
-  }),
-).annotate({
-  identifier: "AddEmailForAuthenticatedUserRequestBodyCase0",
-}) as any as S.Schema<AddEmailForAuthenticatedUserRequestBodyCase0>;
-
 export type AddEmailForAuthenticatedUserRequestBodyCase1List = Array<string>;
-export const AddEmailForAuthenticatedUserRequestBodyCase1List =
-  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<AddEmailForAuthenticatedUserRequestBodyCase1List>;
-
 export type AddEmailForAuthenticatedUserRequestBody =
   | AddEmailForAuthenticatedUserRequestBodyCase0
   | AddEmailForAuthenticatedUserRequestBodyCase1List
   | string;
-export const AddEmailForAuthenticatedUserRequestBody =
+const AddEmailForAuthenticatedUserRequestBody =
   S.Unknown as any as S.Schema<AddEmailForAuthenticatedUserRequestBody>;
 
 export interface AddEmailForAuthenticatedUserRequest {
   body?: AddEmailForAuthenticatedUserRequestBody;
 }
-export const AddEmailForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddEmailForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AddEmailForAuthenticatedUserRequestBody.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
@@ -82,7 +71,7 @@ export interface Email {
   verified: boolean;
   visibility: string | null;
 }
-export const Email = /*@__PURE__*/ S.suspend(() =>
+const Email = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     primary: S.Boolean,
@@ -92,12 +81,12 @@ export const Email = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Email" }) as any as S.Schema<Email>;
 
 export type AddEmailForAuthenticatedUserResponseBodyList = Array<Email>;
-export const AddEmailForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const AddEmailForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Email,
 ) as any as S.Schema<AddEmailForAuthenticatedUserResponseBodyList>;
 
 export type AddEmailForAuthenticatedUserResponse = AddEmailForAuthenticatedUserResponseBodyList;
-export const AddEmailForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AddEmailForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   AddEmailForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddEmailForAuthenticatedUserResponse",
@@ -105,14 +94,14 @@ export const AddEmailForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Full URLs for the social media profiles to add. */
 export type AddSocialAccountForAuthenticatedUserRequestAccountUrlsList = Array<string>;
-export const AddSocialAccountForAuthenticatedUserRequestAccountUrlsList =
+const AddSocialAccountForAuthenticatedUserRequestAccountUrlsList =
   AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<AddSocialAccountForAuthenticatedUserRequestAccountUrlsList>;
 
 export interface AddSocialAccountForAuthenticatedUserRequest {
   /** Full URLs for the social media profiles to add. */
   account_urls: AddSocialAccountForAuthenticatedUserRequestAccountUrlsList;
 }
-export const AddSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_urls: AddSocialAccountForAuthenticatedUserRequestAccountUrlsList,
   }).pipe(T.Http({ method: "POST", uri: "/user/social_accounts", code: 200 })),
@@ -125,7 +114,7 @@ export interface SocialAccount {
   provider: string;
   url: string;
 }
-export const SocialAccount = /*@__PURE__*/ S.suspend(() =>
+const SocialAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     url: S.String,
@@ -133,13 +122,13 @@ export const SocialAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SocialAccount" }) as any as S.Schema<SocialAccount>;
 
 export type AddSocialAccountForAuthenticatedUserResponseBodyList = Array<SocialAccount>;
-export const AddSocialAccountForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const AddSocialAccountForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   SocialAccount,
 ) as any as S.Schema<AddSocialAccountForAuthenticatedUserResponseBodyList>;
 
 export type AddSocialAccountForAuthenticatedUserResponse =
   AddSocialAccountForAuthenticatedUserResponseBodyList;
-export const AddSocialAccountForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AddSocialAccountForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   AddSocialAccountForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddSocialAccountForAuthenticatedUserResponse",
@@ -149,14 +138,14 @@ export interface BlockRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const BlockRequest = /*@__PURE__*/ S.suspend(() =>
+const BlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/user/blocks/{username}", code: 200 })),
 ).annotate({ identifier: "BlockRequest" }) as any as S.Schema<BlockRequest>;
 
 export interface BlockResponse {}
-export const BlockResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const BlockResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BlockResponse",
 }) as any as S.Schema<BlockResponse>;
 
@@ -164,21 +153,21 @@ export interface CheckBlockedRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const CheckBlockedRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckBlockedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/blocks/{username}", code: 200 })),
 ).annotate({ identifier: "CheckBlockedRequest" }) as any as S.Schema<CheckBlockedRequest>;
 
 export interface CheckBlockedResponse {}
-export const CheckBlockedResponse = BlockResponse as any as S.Schema<CheckBlockedResponse>;
+const CheckBlockedResponse = BlockResponse as any as S.Schema<CheckBlockedResponse>;
 
 export interface CheckFollowingForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   target_user: string;
 }
-export const CheckFollowingForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckFollowingForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     target_user: S.String.pipe(T.Label()),
@@ -188,14 +177,14 @@ export const CheckFollowingForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckFollowingForUserRequest>;
 
 export interface CheckFollowingForUserResponse {}
-export const CheckFollowingForUserResponse =
+const CheckFollowingForUserResponse =
   BlockResponse as any as S.Schema<CheckFollowingForUserResponse>;
 
 export interface CheckPersonIsFollowedByAuthenticatedRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const CheckPersonIsFollowedByAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckPersonIsFollowedByAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/following/{username}", code: 200 })),
@@ -204,7 +193,7 @@ export const CheckPersonIsFollowedByAuthenticatedRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedRequest>;
 
 export interface CheckPersonIsFollowedByAuthenticatedResponse {}
-export const CheckPersonIsFollowedByAuthenticatedResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckPersonIsFollowedByAuthenticatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CheckPersonIsFollowedByAuthenticatedResponse",
@@ -216,7 +205,7 @@ export interface CreateGpgKeyForAuthenticatedUserRequest {
   /** A GPG key in ASCII-armored format. */
   armored_public_key: string;
 }
-export const CreateGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     armored_public_key: S.String,
@@ -229,7 +218,7 @@ export interface GpgKeyEmailsItem {
   email?: string;
   verified?: boolean;
 }
-export const GpgKeyEmailsItem = /*@__PURE__*/ S.suspend(() =>
+const GpgKeyEmailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     verified: S.optional(S.Boolean),
@@ -237,19 +226,17 @@ export const GpgKeyEmailsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GpgKeyEmailsItem" }) as any as S.Schema<GpgKeyEmailsItem>;
 
 export type GpgKeyEmailsList = Array<GpgKeyEmailsItem>;
-export const GpgKeyEmailsList = /*@__PURE__*/ S.Array(
+const GpgKeyEmailsList = /*@__PURE__*/ S.Array(
   GpgKeyEmailsItem,
 ) as any as S.Schema<GpgKeyEmailsList>;
 
 export type GpgKeySubkeysItemEmailsItem = GpgKeyEmailsItem;
-export const GpgKeySubkeysItemEmailsItem = GpgKeyEmailsItem;
-
 export type GpgKeySubkeysItemEmailsList = Array<GpgKeyEmailsItem>;
-export const GpgKeySubkeysItemEmailsList =
+const GpgKeySubkeysItemEmailsList =
   GpgKeyEmailsList as any as S.Schema<GpgKeySubkeysItemEmailsList>;
 
 export type GpgKeySubkeysItemSubkeysList = Array<unknown>;
-export const GpgKeySubkeysItemSubkeysList = /*@__PURE__*/ S.Array(
+const GpgKeySubkeysItemSubkeysList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GpgKeySubkeysItemSubkeysList>;
 
@@ -269,7 +256,7 @@ export interface GpgKeySubkeysItem {
   raw_key?: string | null;
   revoked?: boolean;
 }
-export const GpgKeySubkeysItem = /*@__PURE__*/ S.suspend(() =>
+const GpgKeySubkeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     primary_key_id: S.optional(S.Number),
@@ -289,7 +276,7 @@ export const GpgKeySubkeysItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GpgKeySubkeysItem" }) as any as S.Schema<GpgKeySubkeysItem>;
 
 export type GpgKeySubkeysList = Array<GpgKeySubkeysItem>;
-export const GpgKeySubkeysList = /*@__PURE__*/ S.Array(
+const GpgKeySubkeysList = /*@__PURE__*/ S.Array(
   GpgKeySubkeysItem,
 ) as any as S.Schema<GpgKeySubkeysList>;
 
@@ -311,7 +298,7 @@ export interface GpgKey {
   revoked: boolean;
   raw_key: string | null;
 }
-export const GpgKey = /*@__PURE__*/ S.suspend(() =>
+const GpgKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.optional(S.NullOr(S.String)),
@@ -337,7 +324,7 @@ export interface CreatePublicSshKeyForAuthenticatedUserRequest {
   /** The public SSH key to add to your GitHub account. */
   key: string;
 }
-export const CreatePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     key: S.String,
@@ -357,7 +344,7 @@ export interface Key {
   read_only: boolean;
   last_used?: string | null;
 }
-export const Key = /*@__PURE__*/ S.suspend(() =>
+const Key = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     id: S.Number,
@@ -376,7 +363,7 @@ export interface CreateSshSigningKeyForAuthenticatedUserRequest {
   /** The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)." */
   key: string;
 }
-export const CreateSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     key: S.String,
@@ -392,7 +379,7 @@ export interface SshSigningKey {
   title: string;
   created_at: string;
 }
-export const SshSigningKey = /*@__PURE__*/ S.suspend(() =>
+const SshSigningKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     id: S.Number,
@@ -403,44 +390,21 @@ export const SshSigningKey = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subject digests associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList = Array<string>;
-export const DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList =
-  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList>;
-
 export interface DeleteAttestationsBulkRequestBodyCase0 {
   /** List of subject digests associated with the artifact attestations to delete. */
   subject_digests: DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList;
 }
-export const DeleteAttestationsBulkRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject_digests: DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList,
-  }),
-).annotate({
-  identifier: "DeleteAttestationsBulkRequestBodyCase0",
-}) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase0>;
-
 /** List of unique IDs associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase1AttestationIdsList = Array<number>;
-export const DeleteAttestationsBulkRequestBodyCase1AttestationIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase1AttestationIdsList>;
-
 export interface DeleteAttestationsBulkRequestBodyCase1 {
   /** List of unique IDs associated with the artifact attestations to delete. */
   attestation_ids: DeleteAttestationsBulkRequestBodyCase1AttestationIdsList;
 }
-export const DeleteAttestationsBulkRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attestation_ids: DeleteAttestationsBulkRequestBodyCase1AttestationIdsList,
-  }),
-).annotate({
-  identifier: "DeleteAttestationsBulkRequestBodyCase1",
-}) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase1>;
-
 /** The request body must include either `subject_digests` or `attestation_ids`, but not both. */
 export type DeleteAttestationsBulkRequestBody =
   | DeleteAttestationsBulkRequestBodyCase0
   | DeleteAttestationsBulkRequestBodyCase1;
-export const DeleteAttestationsBulkRequestBody =
+const DeleteAttestationsBulkRequestBody =
   S.Unknown as any as S.Schema<DeleteAttestationsBulkRequestBody>;
 
 export interface DeleteAttestationsBulkRequest {
@@ -448,7 +412,7 @@ export interface DeleteAttestationsBulkRequest {
   username: string;
   body: DeleteAttestationsBulkRequestBody;
 }
-export const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     body: DeleteAttestationsBulkRequestBody.pipe(T.HttpBody()),
@@ -460,7 +424,7 @@ export const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttestationsBulkRequest>;
 
 export interface DeleteAttestationsBulkResponse {}
-export const DeleteAttestationsBulkResponse =
+const DeleteAttestationsBulkResponse =
   BlockResponse as any as S.Schema<DeleteAttestationsBulkResponse>;
 
 export interface DeleteAttestationsByIdRequest {
@@ -469,7 +433,7 @@ export interface DeleteAttestationsByIdRequest {
   /** Attestation ID */
   attestation_id: number;
 }
-export const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     attestation_id: S.Number.pipe(T.Label()),
@@ -481,7 +445,7 @@ export const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttestationsByIdRequest>;
 
 export interface DeleteAttestationsByIdResponse {}
-export const DeleteAttestationsByIdResponse =
+const DeleteAttestationsByIdResponse =
   BlockResponse as any as S.Schema<DeleteAttestationsByIdResponse>;
 
 export interface DeleteAttestationsBySubjectDigestRequest {
@@ -490,7 +454,7 @@ export interface DeleteAttestationsBySubjectDigestRequest {
   /** Subject Digest */
   subject_digest: string;
 }
-export const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     subject_digest: S.String.pipe(T.Label()),
@@ -506,37 +470,28 @@ export const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>;
 
 export interface DeleteAttestationsBySubjectDigestResponse {}
-export const DeleteAttestationsBySubjectDigestResponse =
+const DeleteAttestationsBySubjectDigestResponse =
   CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>;
 
 /** Email addresses associated with the GitHub user account. */
 export type DeleteEmailForAuthenticatedUserRequestBodyCase0EmailsList = Array<string>;
-export const DeleteEmailForAuthenticatedUserRequestBodyCase0EmailsList =
-  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<DeleteEmailForAuthenticatedUserRequestBodyCase0EmailsList>;
-
 /** Deletes one or more email addresses from your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key. */
 export interface DeleteEmailForAuthenticatedUserRequestBodyCase0 {
   /** Email addresses associated with the GitHub user account. */
   emails: DeleteEmailForAuthenticatedUserRequestBodyCase0EmailsList;
 }
-export const DeleteEmailForAuthenticatedUserRequestBodyCase0 =
-  AddEmailForAuthenticatedUserRequestBodyCase0 as any as S.Schema<DeleteEmailForAuthenticatedUserRequestBodyCase0>;
-
 export type DeleteEmailForAuthenticatedUserRequestBodyCase1List = Array<string>;
-export const DeleteEmailForAuthenticatedUserRequestBodyCase1List =
-  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<DeleteEmailForAuthenticatedUserRequestBodyCase1List>;
-
 export type DeleteEmailForAuthenticatedUserRequestBody =
   | DeleteEmailForAuthenticatedUserRequestBodyCase0
   | DeleteEmailForAuthenticatedUserRequestBodyCase1List
   | string;
-export const DeleteEmailForAuthenticatedUserRequestBody =
+const DeleteEmailForAuthenticatedUserRequestBody =
   S.Unknown as any as S.Schema<DeleteEmailForAuthenticatedUserRequestBody>;
 
 export interface DeleteEmailForAuthenticatedUserRequest {
   body?: DeleteEmailForAuthenticatedUserRequestBody;
 }
-export const DeleteEmailForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(DeleteEmailForAuthenticatedUserRequestBody.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/emails", code: 200 })),
@@ -545,14 +500,14 @@ export const DeleteEmailForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteEmailForAuthenticatedUserRequest>;
 
 export interface DeleteEmailForAuthenticatedUserResponse {}
-export const DeleteEmailForAuthenticatedUserResponse =
+const DeleteEmailForAuthenticatedUserResponse =
   CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteEmailForAuthenticatedUserResponse>;
 
 export interface DeleteGpgKeyForAuthenticatedUserRequest {
   /** The unique identifier of the GPG key. */
   gpg_key_id: number;
 }
-export const DeleteGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpg_key_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/gpg_keys/{gpg_key_id}", code: 200 })),
@@ -561,14 +516,14 @@ export const DeleteGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserRequest>;
 
 export interface DeleteGpgKeyForAuthenticatedUserResponse {}
-export const DeleteGpgKeyForAuthenticatedUserResponse =
+const DeleteGpgKeyForAuthenticatedUserResponse =
   CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteGpgKeyForAuthenticatedUserResponse>;
 
 export interface DeletePublicSshKeyForAuthenticatedUserRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
-export const DeletePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/keys/{key_id}", code: 200 })),
@@ -577,19 +532,19 @@ export const DeletePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserRequest>;
 
 export interface DeletePublicSshKeyForAuthenticatedUserResponse {}
-export const DeletePublicSshKeyForAuthenticatedUserResponse =
+const DeletePublicSshKeyForAuthenticatedUserResponse =
   CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserResponse>;
 
 /** Full URLs for the social media profiles to delete. */
 export type DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList = Array<string>;
-export const DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList =
+const DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList =
   AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList>;
 
 export interface DeleteSocialAccountForAuthenticatedUserRequest {
   /** Full URLs for the social media profiles to delete. */
   account_urls: DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList;
 }
-export const DeleteSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_urls: DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList,
   }).pipe(T.Http({ method: "DELETE", uri: "/user/social_accounts", code: 200 })),
@@ -598,14 +553,14 @@ export const DeleteSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequest>;
 
 export interface DeleteSocialAccountForAuthenticatedUserResponse {}
-export const DeleteSocialAccountForAuthenticatedUserResponse =
+const DeleteSocialAccountForAuthenticatedUserResponse =
   CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteSocialAccountForAuthenticatedUserResponse>;
 
 export interface DeleteSshSigningKeyForAuthenticatedUserRequest {
   /** The unique identifier of the SSH signing key. */
   ssh_signing_key_id: number;
 }
-export const DeleteSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ssh_signing_key_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -616,24 +571,24 @@ export const DeleteSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserRequest>;
 
 export interface DeleteSshSigningKeyForAuthenticatedUserResponse {}
-export const DeleteSshSigningKeyForAuthenticatedUserResponse =
+const DeleteSshSigningKeyForAuthenticatedUserResponse =
   CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserResponse>;
 
 export interface FollowRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const FollowRequest = /*@__PURE__*/ S.suspend(() =>
+const FollowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/user/following/{username}", code: 200 })),
 ).annotate({ identifier: "FollowRequest" }) as any as S.Schema<FollowRequest>;
 
 export interface FollowResponse {}
-export const FollowResponse = BlockResponse as any as S.Schema<FollowResponse>;
+const FollowResponse = BlockResponse as any as S.Schema<FollowResponse>;
 
 export interface GetAuthenticatedRequest {}
-export const GetAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
 ).annotate({ identifier: "GetAuthenticatedRequest" }) as any as S.Schema<GetAuthenticatedRequest>;
 
@@ -643,7 +598,7 @@ export interface PrivateUserPlan {
   space: number;
   private_repos: number;
 }
-export const PrivateUserPlan = /*@__PURE__*/ S.suspend(() =>
+const PrivateUserPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collaborators: S.Number,
     name: S.String,
@@ -698,7 +653,7 @@ export interface PrivateUser {
   business_plus?: boolean;
   ldap_dn?: string;
 }
-export const PrivateUser = /*@__PURE__*/ S.suspend(() =>
+const PrivateUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -747,8 +702,6 @@ export const PrivateUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateUser" }) as any as S.Schema<PrivateUser>;
 
 export type PublicUserPlan = PrivateUserPlan;
-export const PublicUserPlan = PrivateUserPlan;
-
 /** Public User */
 export interface PublicUser {
   login: string;
@@ -792,57 +745,11 @@ export interface PublicUser {
   disk_usage?: number;
   collaborators?: number;
 }
-export const PublicUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    login: S.String,
-    id: S.Number,
-    user_view_type: S.optional(S.String),
-    node_id: S.String,
-    avatar_url: S.String,
-    gravatar_id: S.NullOr(S.String),
-    url: S.String,
-    html_url: S.String,
-    followers_url: S.String,
-    following_url: S.String,
-    gists_url: S.String,
-    starred_url: S.String,
-    subscriptions_url: S.String,
-    organizations_url: S.String,
-    repos_url: S.String,
-    events_url: S.String,
-    received_events_url: S.String,
-    type: S.String,
-    site_admin: S.Boolean,
-    name: S.NullOr(S.String),
-    company: S.NullOr(S.String),
-    blog: S.NullOr(S.String),
-    location: S.NullOr(S.String),
-    email: S.NullOr(S.String),
-    notification_email: S.optional(S.NullOr(S.String)),
-    hireable: S.NullOr(S.Boolean),
-    bio: S.NullOr(S.String),
-    twitter_username: S.optional(S.NullOr(S.String)),
-    public_repos: S.Number,
-    public_gists: S.Number,
-    followers: S.Number,
-    following: S.Number,
-    created_at: S.String,
-    updated_at: S.String,
-    plan: S.optional(PrivateUserPlan),
-    private_gists: S.optional(S.Number),
-    total_private_repos: S.optional(S.Number),
-    owned_private_repos: S.optional(S.Number),
-    disk_usage: S.optional(S.Number),
-    collaborators: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PublicUser" }) as any as S.Schema<PublicUser>;
-
 export type GetAuthenticatedResponseBody = PrivateUser | PublicUser;
-export const GetAuthenticatedResponseBody =
-  S.Unknown as any as S.Schema<GetAuthenticatedResponseBody>;
+const GetAuthenticatedResponseBody = S.Unknown as any as S.Schema<GetAuthenticatedResponseBody>;
 
 export type GetAuthenticatedResponse = GetAuthenticatedResponseBody;
-export const GetAuthenticatedResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticatedResponse = /*@__PURE__*/ S.suspend(() =>
   GetAuthenticatedResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetAuthenticatedResponse" }) as any as S.Schema<GetAuthenticatedResponse>;
 
@@ -850,17 +757,17 @@ export interface GetByIdRequest {
   /** account_id parameter */
   account_id: number;
 }
-export const GetByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/{account_id}", code: 200 })),
 ).annotate({ identifier: "GetByIdRequest" }) as any as S.Schema<GetByIdRequest>;
 
 export type GetByIdResponseBody = PrivateUser | PublicUser;
-export const GetByIdResponseBody = S.Unknown as any as S.Schema<GetByIdResponseBody>;
+const GetByIdResponseBody = S.Unknown as any as S.Schema<GetByIdResponseBody>;
 
 export type GetByIdResponse = GetByIdResponseBody;
-export const GetByIdResponse = /*@__PURE__*/ S.suspend(() =>
+const GetByIdResponse = /*@__PURE__*/ S.suspend(() =>
   GetByIdResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetByIdResponse" }) as any as S.Schema<GetByIdResponse>;
 
@@ -868,17 +775,17 @@ export interface GetByUsernameRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const GetByUsernameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetByUsernameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{username}", code: 200 })),
 ).annotate({ identifier: "GetByUsernameRequest" }) as any as S.Schema<GetByUsernameRequest>;
 
 export type GetByUsernameResponseBody = PrivateUser | PublicUser;
-export const GetByUsernameResponseBody = S.Unknown as any as S.Schema<GetByUsernameResponseBody>;
+const GetByUsernameResponseBody = S.Unknown as any as S.Schema<GetByUsernameResponseBody>;
 
 export type GetByUsernameResponse = GetByUsernameResponseBody;
-export const GetByUsernameResponse = /*@__PURE__*/ S.suspend(() =>
+const GetByUsernameResponse = /*@__PURE__*/ S.suspend(() =>
   GetByUsernameResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetByUsernameResponse" }) as any as S.Schema<GetByUsernameResponse>;
 
@@ -887,7 +794,7 @@ export type GetContextForUserRequestSubjectType =
   | "repository"
   | "issue"
   | "pull_request";
-export const GetContextForUserRequestSubjectType = S.String;
+const GetContextForUserRequestSubjectType = S.String;
 
 export interface GetContextForUserRequest {
   /** The handle for the GitHub user account. */
@@ -897,7 +804,7 @@ export interface GetContextForUserRequest {
   /** Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`. */
   subject_id?: string;
 }
-export const GetContextForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     subject_type: S.optional(GetContextForUserRequestSubjectType.pipe(T.Query())),
@@ -909,7 +816,7 @@ export interface HovercardContextsItem {
   message: string;
   octicon: string;
 }
-export const HovercardContextsItem = /*@__PURE__*/ S.suspend(() =>
+const HovercardContextsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     octicon: S.String,
@@ -917,7 +824,7 @@ export const HovercardContextsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HovercardContextsItem" }) as any as S.Schema<HovercardContextsItem>;
 
 export type HovercardContextsList = Array<HovercardContextsItem>;
-export const HovercardContextsList = /*@__PURE__*/ S.Array(
+const HovercardContextsList = /*@__PURE__*/ S.Array(
   HovercardContextsItem,
 ) as any as S.Schema<HovercardContextsList>;
 
@@ -925,7 +832,7 @@ export const HovercardContextsList = /*@__PURE__*/ S.Array(
 export interface Hovercard {
   contexts: HovercardContextsList;
 }
-export const Hovercard = /*@__PURE__*/ S.suspend(() =>
+const Hovercard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contexts: HovercardContextsList,
   }),
@@ -935,7 +842,7 @@ export interface GetGpgKeyForAuthenticatedUserRequest {
   /** The unique identifier of the GPG key. */
   gpg_key_id: number;
 }
-export const GetGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpg_key_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys/{gpg_key_id}", code: 200 })),
@@ -947,7 +854,7 @@ export interface GetPublicSshKeyForAuthenticatedUserRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
-export const GetPublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/keys/{key_id}", code: 200 })),
@@ -959,7 +866,7 @@ export interface GetSshSigningKeyForAuthenticatedUserRequest {
   /** The unique identifier of the SSH signing key. */
   ssh_signing_key_id: number;
 }
-export const GetSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ssh_signing_key_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/ssh_signing_keys/{ssh_signing_key_id}", code: 200 })),
@@ -973,7 +880,7 @@ export interface ListRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     since: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1005,7 +912,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -1033,12 +940,12 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleUser" }) as any as S.Schema<SimpleUser>;
 
 export type ListResponseBodyList = Array<SimpleUser>;
-export const ListResponseBodyList = /*@__PURE__*/ S.Array(
+const ListResponseBodyList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<ListResponseBodyList>;
 
 export type ListResponse = ListResponseBodyList;
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResponse = /*@__PURE__*/ S.suspend(() =>
   ListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
@@ -1056,7 +963,7 @@ export interface ListAttestationsRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-export const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     subject_digest: S.String.pipe(T.Label()),
@@ -1072,7 +979,7 @@ export const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap =
+const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -1081,7 +988,7 @@ export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialM
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = /*@__PURE__*/ S.Record(
+const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
@@ -1092,7 +999,7 @@ export interface ListAttestationsResponseAttestationsItemBundle {
   verificationMaterial?: ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap;
 }
-export const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaType: S.optional(S.String),
     verificationMaterial: S.optional(
@@ -1111,7 +1018,7 @@ export interface ListAttestationsResponseAttestationsItem {
   bundle_url?: string;
   initiator?: string;
 }
-export const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundle: S.optional(ListAttestationsResponseAttestationsItemBundle),
     repository_id: S.optional(S.Number),
@@ -1124,14 +1031,14 @@ export const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(
 
 export type ListAttestationsResponseAttestationsList =
   Array<ListAttestationsResponseAttestationsItem>;
-export const ListAttestationsResponseAttestationsList = /*@__PURE__*/ S.Array(
+const ListAttestationsResponseAttestationsList = /*@__PURE__*/ S.Array(
   ListAttestationsResponseAttestationsItem,
 ) as any as S.Schema<ListAttestationsResponseAttestationsList>;
 
 export interface ListAttestationsResponse {
   attestations?: ListAttestationsResponseAttestationsList;
 }
-export const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestations: S.optional(ListAttestationsResponseAttestationsList),
   }),
@@ -1139,7 +1046,7 @@ export const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subject digests to fetch attestations for. */
 export type ListAttestationsBulkRequestSubjectDigestsList = Array<string>;
-export const ListAttestationsBulkRequestSubjectDigestsList =
+const ListAttestationsBulkRequestSubjectDigestsList =
   AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<ListAttestationsBulkRequestSubjectDigestsList>;
 
 export interface ListAttestationsBulkRequest {
@@ -1156,7 +1063,7 @@ export interface ListAttestationsBulkRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-export const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1171,13 +1078,13 @@ export const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   { [key: string]: unknown | undefined };
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap>;
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
   ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap>;
 
 /** The bundle of the attestation. */
@@ -1186,7 +1093,7 @@ export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem
   verificationMaterial?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap;
 }
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle =
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mediaType: S.optional(S.String),
@@ -1207,29 +1114,28 @@ export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem
   repository_id?: number;
   bundle_url?: string;
 }
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       bundle: S.optional(ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle),
       repository_id: S.optional(S.Number),
       bundle_url: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
-  }) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
+).annotate({
+  identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
+}) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueList =
   Array<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueList =
-  /*@__PURE__*/ S.Array(
-    ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem,
-  ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueList>;
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueList = /*@__PURE__*/ S.Array(
+  ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem,
+) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueList>;
 
 /** Mapping of subject digest to bundles. */
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsMap = {
   [key: string]: ListAttestationsBulkResponseAttestationsSubjectDigestsValueList | null | undefined;
 };
-export const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ S.Record(
+const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(ListAttestationsBulkResponseAttestationsSubjectDigestsValueList),
 ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsMap>;
@@ -1245,7 +1151,7 @@ export interface ListAttestationsBulkResponsePageInfo {
   /** The cursor to the previous page. */
   previous?: string;
 }
-export const ListAttestationsBulkResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_next: S.optional(S.Boolean),
     has_previous: S.optional(S.Boolean),
@@ -1262,7 +1168,7 @@ export interface ListAttestationsBulkResponse {
   /** Information about the current page. */
   page_info?: ListAttestationsBulkResponsePageInfo;
 }
-export const ListAttestationsBulkResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestations_subject_digests: S.optional(
       ListAttestationsBulkResponseAttestationsSubjectDigestsMap,
@@ -1279,7 +1185,7 @@ export interface ListBlockedByAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListBlockedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlockedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1289,11 +1195,11 @@ export const ListBlockedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListBlockedByAuthenticatedUserRequest>;
 
 export type ListBlockedByAuthenticatedUserResponseBodyList = Array<SimpleUser>;
-export const ListBlockedByAuthenticatedUserResponseBodyList =
+const ListBlockedByAuthenticatedUserResponseBodyList =
   ListResponseBodyList as any as S.Schema<ListBlockedByAuthenticatedUserResponseBodyList>;
 
 export type ListBlockedByAuthenticatedUserResponse = ListBlockedByAuthenticatedUserResponseBodyList;
-export const ListBlockedByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBlockedByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListBlockedByAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListBlockedByAuthenticatedUserResponse",
@@ -1305,7 +1211,7 @@ export interface ListEmailsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListEmailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1315,11 +1221,8 @@ export const ListEmailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEmailsForAuthenticatedUserRequest>;
 
 export type ListEmailsForAuthenticatedUserResponseBodyList = Array<Email>;
-export const ListEmailsForAuthenticatedUserResponseBodyList =
-  AddEmailForAuthenticatedUserResponseBodyList as any as S.Schema<ListEmailsForAuthenticatedUserResponseBodyList>;
-
 export type ListEmailsForAuthenticatedUserResponse = ListEmailsForAuthenticatedUserResponseBodyList;
-export const ListEmailsForAuthenticatedUserResponse =
+const ListEmailsForAuthenticatedUserResponse =
   AddEmailForAuthenticatedUserResponse as any as S.Schema<ListEmailsForAuthenticatedUserResponse>;
 
 export interface ListFollowedByAuthenticatedUserRequest {
@@ -1328,7 +1231,7 @@ export interface ListFollowedByAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListFollowedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1338,12 +1241,9 @@ export const ListFollowedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListFollowedByAuthenticatedUserRequest>;
 
 export type ListFollowedByAuthenticatedUserResponseBodyList = Array<SimpleUser>;
-export const ListFollowedByAuthenticatedUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListFollowedByAuthenticatedUserResponseBodyList>;
-
 export type ListFollowedByAuthenticatedUserResponse =
   ListFollowedByAuthenticatedUserResponseBodyList;
-export const ListFollowedByAuthenticatedUserResponse =
+const ListFollowedByAuthenticatedUserResponse =
   ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowedByAuthenticatedUserResponse>;
 
 export interface ListFollowersForAuthenticatedUserRequest {
@@ -1352,7 +1252,7 @@ export interface ListFollowersForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListFollowersForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFollowersForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1362,12 +1262,9 @@ export const ListFollowersForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListFollowersForAuthenticatedUserRequest>;
 
 export type ListFollowersForAuthenticatedUserResponseBodyList = Array<SimpleUser>;
-export const ListFollowersForAuthenticatedUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListFollowersForAuthenticatedUserResponseBodyList>;
-
 export type ListFollowersForAuthenticatedUserResponse =
   ListFollowersForAuthenticatedUserResponseBodyList;
-export const ListFollowersForAuthenticatedUserResponse =
+const ListFollowersForAuthenticatedUserResponse =
   ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowersForAuthenticatedUserResponse>;
 
 export interface ListFollowersForUserRequest {
@@ -1378,7 +1275,7 @@ export interface ListFollowersForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListFollowersForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFollowersForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1389,11 +1286,8 @@ export const ListFollowersForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFollowersForUserRequest>;
 
 export type ListFollowersForUserResponseBodyList = Array<SimpleUser>;
-export const ListFollowersForUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListFollowersForUserResponseBodyList>;
-
 export type ListFollowersForUserResponse = ListFollowersForUserResponseBodyList;
-export const ListFollowersForUserResponse =
+const ListFollowersForUserResponse =
   ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowersForUserResponse>;
 
 export interface ListFollowingForUserRequest {
@@ -1404,7 +1298,7 @@ export interface ListFollowingForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListFollowingForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFollowingForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1415,11 +1309,8 @@ export const ListFollowingForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFollowingForUserRequest>;
 
 export type ListFollowingForUserResponseBodyList = Array<SimpleUser>;
-export const ListFollowingForUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListFollowingForUserResponseBodyList>;
-
 export type ListFollowingForUserResponse = ListFollowingForUserResponseBodyList;
-export const ListFollowingForUserResponse =
+const ListFollowingForUserResponse =
   ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowingForUserResponse>;
 
 export interface ListGpgKeysForAuthenticatedUserRequest {
@@ -1428,7 +1319,7 @@ export interface ListGpgKeysForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListGpgKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGpgKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1438,13 +1329,13 @@ export const ListGpgKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListGpgKeysForAuthenticatedUserRequest>;
 
 export type ListGpgKeysForAuthenticatedUserResponseBodyList = Array<GpgKey>;
-export const ListGpgKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListGpgKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   GpgKey,
 ) as any as S.Schema<ListGpgKeysForAuthenticatedUserResponseBodyList>;
 
 export type ListGpgKeysForAuthenticatedUserResponse =
   ListGpgKeysForAuthenticatedUserResponseBodyList;
-export const ListGpgKeysForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGpgKeysForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListGpgKeysForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListGpgKeysForAuthenticatedUserResponse",
@@ -1458,7 +1349,7 @@ export interface ListGpgKeysForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListGpgKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGpgKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1469,11 +1360,8 @@ export const ListGpgKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGpgKeysForUserRequest>;
 
 export type ListGpgKeysForUserResponseBodyList = Array<GpgKey>;
-export const ListGpgKeysForUserResponseBodyList =
-  ListGpgKeysForAuthenticatedUserResponseBodyList as any as S.Schema<ListGpgKeysForUserResponseBodyList>;
-
 export type ListGpgKeysForUserResponse = ListGpgKeysForUserResponseBodyList;
-export const ListGpgKeysForUserResponse =
+const ListGpgKeysForUserResponse =
   ListGpgKeysForAuthenticatedUserResponse as any as S.Schema<ListGpgKeysForUserResponse>;
 
 export interface ListPublicEmailsForAuthenticatedUserRequest {
@@ -1482,7 +1370,7 @@ export interface ListPublicEmailsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicEmailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicEmailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1492,12 +1380,9 @@ export const ListPublicEmailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListPublicEmailsForAuthenticatedUserRequest>;
 
 export type ListPublicEmailsForAuthenticatedUserResponseBodyList = Array<Email>;
-export const ListPublicEmailsForAuthenticatedUserResponseBodyList =
-  AddEmailForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEmailsForAuthenticatedUserResponseBodyList>;
-
 export type ListPublicEmailsForAuthenticatedUserResponse =
   ListPublicEmailsForAuthenticatedUserResponseBodyList;
-export const ListPublicEmailsForAuthenticatedUserResponse =
+const ListPublicEmailsForAuthenticatedUserResponse =
   AddEmailForAuthenticatedUserResponse as any as S.Schema<ListPublicEmailsForAuthenticatedUserResponse>;
 
 export interface ListPublicKeysForUserRequest {
@@ -1508,7 +1393,7 @@ export interface ListPublicKeysForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1525,7 +1410,7 @@ export interface KeySimple {
   created_at?: string;
   last_used?: string | null;
 }
-export const KeySimple = /*@__PURE__*/ S.suspend(() =>
+const KeySimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.String,
@@ -1535,12 +1420,12 @@ export const KeySimple = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeySimple" }) as any as S.Schema<KeySimple>;
 
 export type ListPublicKeysForUserResponseBodyList = Array<KeySimple>;
-export const ListPublicKeysForUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPublicKeysForUserResponseBodyList = /*@__PURE__*/ S.Array(
   KeySimple,
 ) as any as S.Schema<ListPublicKeysForUserResponseBodyList>;
 
 export type ListPublicKeysForUserResponse = ListPublicKeysForUserResponseBodyList;
-export const ListPublicKeysForUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublicKeysForUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListPublicKeysForUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPublicKeysForUserResponse",
@@ -1552,7 +1437,7 @@ export interface ListPublicSshKeysForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicSshKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicSshKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1562,13 +1447,13 @@ export const ListPublicSshKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserRequest>;
 
 export type ListPublicSshKeysForAuthenticatedUserResponseBodyList = Array<Key>;
-export const ListPublicSshKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPublicSshKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Key,
 ) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserResponseBodyList>;
 
 export type ListPublicSshKeysForAuthenticatedUserResponse =
   ListPublicSshKeysForAuthenticatedUserResponseBodyList;
-export const ListPublicSshKeysForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublicSshKeysForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListPublicSshKeysForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPublicSshKeysForAuthenticatedUserResponse",
@@ -1580,7 +1465,7 @@ export interface ListSocialAccountsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSocialAccountsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSocialAccountsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1590,12 +1475,9 @@ export const ListSocialAccountsForAuthenticatedUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListSocialAccountsForAuthenticatedUserRequest>;
 
 export type ListSocialAccountsForAuthenticatedUserResponseBodyList = Array<SocialAccount>;
-export const ListSocialAccountsForAuthenticatedUserResponseBodyList =
-  AddSocialAccountForAuthenticatedUserResponseBodyList as any as S.Schema<ListSocialAccountsForAuthenticatedUserResponseBodyList>;
-
 export type ListSocialAccountsForAuthenticatedUserResponse =
   ListSocialAccountsForAuthenticatedUserResponseBodyList;
-export const ListSocialAccountsForAuthenticatedUserResponse =
+const ListSocialAccountsForAuthenticatedUserResponse =
   AddSocialAccountForAuthenticatedUserResponse as any as S.Schema<ListSocialAccountsForAuthenticatedUserResponse>;
 
 export interface ListSocialAccountsForUserRequest {
@@ -1606,7 +1488,7 @@ export interface ListSocialAccountsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSocialAccountsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSocialAccountsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1617,11 +1499,8 @@ export const ListSocialAccountsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSocialAccountsForUserRequest>;
 
 export type ListSocialAccountsForUserResponseBodyList = Array<SocialAccount>;
-export const ListSocialAccountsForUserResponseBodyList =
-  AddSocialAccountForAuthenticatedUserResponseBodyList as any as S.Schema<ListSocialAccountsForUserResponseBodyList>;
-
 export type ListSocialAccountsForUserResponse = ListSocialAccountsForUserResponseBodyList;
-export const ListSocialAccountsForUserResponse =
+const ListSocialAccountsForUserResponse =
   AddSocialAccountForAuthenticatedUserResponse as any as S.Schema<ListSocialAccountsForUserResponse>;
 
 export interface ListSshSigningKeysForAuthenticatedUserRequest {
@@ -1630,7 +1509,7 @@ export interface ListSshSigningKeysForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSshSigningKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSshSigningKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1640,13 +1519,13 @@ export const ListSshSigningKeysForAuthenticatedUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserRequest>;
 
 export type ListSshSigningKeysForAuthenticatedUserResponseBodyList = Array<SshSigningKey>;
-export const ListSshSigningKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSshSigningKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   SshSigningKey,
 ) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserResponseBodyList>;
 
 export type ListSshSigningKeysForAuthenticatedUserResponse =
   ListSshSigningKeysForAuthenticatedUserResponseBodyList;
-export const ListSshSigningKeysForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSshSigningKeysForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListSshSigningKeysForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSshSigningKeysForAuthenticatedUserResponse",
@@ -1660,7 +1539,7 @@ export interface ListSshSigningKeysForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSshSigningKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSshSigningKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1671,22 +1550,19 @@ export const ListSshSigningKeysForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSshSigningKeysForUserRequest>;
 
 export type ListSshSigningKeysForUserResponseBodyList = Array<SshSigningKey>;
-export const ListSshSigningKeysForUserResponseBodyList =
-  ListSshSigningKeysForAuthenticatedUserResponseBodyList as any as S.Schema<ListSshSigningKeysForUserResponseBodyList>;
-
 export type ListSshSigningKeysForUserResponse = ListSshSigningKeysForUserResponseBodyList;
-export const ListSshSigningKeysForUserResponse =
+const ListSshSigningKeysForUserResponse =
   ListSshSigningKeysForAuthenticatedUserResponse as any as S.Schema<ListSshSigningKeysForUserResponse>;
 
 /** Denotes whether an email is publicly visible. */
 export type SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility = "public" | "private";
-export const SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility = S.String;
+const SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility = S.String;
 
 export interface SetPrimaryEmailVisibilityForAuthenticatedUserRequest {
   /** Denotes whether an email is publicly visible. */
   visibility: SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility | (string & {});
 }
-export const SetPrimaryEmailVisibilityForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPrimaryEmailVisibilityForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visibility: SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility,
   }).pipe(T.Http({ method: "PATCH", uri: "/user/email/visibility", code: 200 })),
@@ -1695,39 +1571,36 @@ export const SetPrimaryEmailVisibilityForAuthenticatedUserRequest = /*@__PURE__*
 }) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserRequest>;
 
 export type SetPrimaryEmailVisibilityForAuthenticatedUserResponseBodyList = Array<Email>;
-export const SetPrimaryEmailVisibilityForAuthenticatedUserResponseBodyList =
-  AddEmailForAuthenticatedUserResponseBodyList as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserResponseBodyList>;
-
 export type SetPrimaryEmailVisibilityForAuthenticatedUserResponse =
   SetPrimaryEmailVisibilityForAuthenticatedUserResponseBodyList;
-export const SetPrimaryEmailVisibilityForAuthenticatedUserResponse =
+const SetPrimaryEmailVisibilityForAuthenticatedUserResponse =
   AddEmailForAuthenticatedUserResponse as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserResponse>;
 
 export interface UnblockRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const UnblockRequest = /*@__PURE__*/ S.suspend(() =>
+const UnblockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/blocks/{username}", code: 200 })),
 ).annotate({ identifier: "UnblockRequest" }) as any as S.Schema<UnblockRequest>;
 
 export interface UnblockResponse {}
-export const UnblockResponse = BlockResponse as any as S.Schema<UnblockResponse>;
+const UnblockResponse = BlockResponse as any as S.Schema<UnblockResponse>;
 
 export interface UnfollowRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const UnfollowRequest = /*@__PURE__*/ S.suspend(() =>
+const UnfollowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/following/{username}", code: 200 })),
 ).annotate({ identifier: "UnfollowRequest" }) as any as S.Schema<UnfollowRequest>;
 
 export interface UnfollowResponse {}
-export const UnfollowResponse = BlockResponse as any as S.Schema<UnfollowResponse>;
+const UnfollowResponse = BlockResponse as any as S.Schema<UnfollowResponse>;
 
 export interface UpdateAuthenticatedRequest {
   /** The new name of the user. */
@@ -1747,7 +1620,7 @@ export interface UpdateAuthenticatedRequest {
   /** The new short biography of the user. */
   bio?: string;
 }
-export const UpdateAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthenticatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),

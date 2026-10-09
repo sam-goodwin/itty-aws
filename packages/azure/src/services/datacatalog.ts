@@ -10,14 +10,14 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags */
 export type ADCCatalogsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ADCCatalogsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ADCCatalogsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ADCCatalogsCreateOrUpdateRequestTagsMap>;
 
 /** Azure data catalog SKU. */
 export type ADCCatalogPropertiesSku = "Free" | "Standard";
-export const ADCCatalogPropertiesSku = S.String;
+const ADCCatalogPropertiesSku = S.String;
 
 /** User principals. */
 export interface Principals {
@@ -26,7 +26,7 @@ export interface Principals {
   /** Object Id for the user */
   objectId?: string;
 }
-export const Principals = /*@__PURE__*/ S.suspend(() =>
+const Principals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upn: S.optional(S.String),
     objectId: S.optional(S.String),
@@ -35,13 +35,13 @@ export const Principals = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure data catalog admin list. */
 export type ADCCatalogPropertiesAdminsList = Array<Principals>;
-export const ADCCatalogPropertiesAdminsList = /*@__PURE__*/ S.Array(
+const ADCCatalogPropertiesAdminsList = /*@__PURE__*/ S.Array(
   Principals,
 ) as any as S.Schema<ADCCatalogPropertiesAdminsList>;
 
 /** Azure data catalog user list. */
 export type ADCCatalogPropertiesUsersList = Array<Principals>;
-export const ADCCatalogPropertiesUsersList =
+const ADCCatalogPropertiesUsersList =
   ADCCatalogPropertiesAdminsList as any as S.Schema<ADCCatalogPropertiesUsersList>;
 
 /** Properties of the data catalog. */
@@ -59,7 +59,7 @@ export interface ADCCatalogProperties {
   /** Automatic unit adjustment enabled or not. */
   enableAutomaticUnitAdjustment?: boolean;
 }
-export const ADCCatalogProperties = /*@__PURE__*/ S.suspend(() =>
+const ADCCatalogProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(ADCCatalogPropertiesSku),
     units: S.optional(S.Number),
@@ -86,7 +86,7 @@ export interface ADCCatalogsCreateOrUpdateRequest {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
-export const ADCCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ADCCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -109,7 +109,7 @@ export const ADCCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type ADCCatalogsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ADCCatalogsCreateOrUpdateResponseTagsMap =
+const ADCCatalogsCreateOrUpdateResponseTagsMap =
   ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<ADCCatalogsCreateOrUpdateResponseTagsMap>;
 
 export interface ADCCatalogsCreateOrUpdateResponse {
@@ -128,7 +128,7 @@ export interface ADCCatalogsCreateOrUpdateResponse {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
-export const ADCCatalogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ADCCatalogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -148,7 +148,7 @@ export interface ADCCatalogsListtByResourceGroupRequest {
   /** The name of the resource group within the user's subscription. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ADCCatalogsListtByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ADCCatalogsListtByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -166,7 +166,7 @@ export const ADCCatalogsListtByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags */
 export type ADCCatalogTagsMap = { [key: string]: string | undefined };
-export const ADCCatalogTagsMap =
+const ADCCatalogTagsMap =
   ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<ADCCatalogTagsMap>;
 
 /** Azure Data Catalog. */
@@ -186,7 +186,7 @@ export interface ADCCatalog {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
-export const ADCCatalog = /*@__PURE__*/ S.suspend(() =>
+const ADCCatalog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -200,7 +200,7 @@ export const ADCCatalog = /*@__PURE__*/ S.suspend(() =>
 
 /** the list of Azure Data Catalogs. */
 export type ADCCatalogsListResultValueList = Array<ADCCatalog>;
-export const ADCCatalogsListResultValueList = /*@__PURE__*/ S.Array(
+const ADCCatalogsListResultValueList = /*@__PURE__*/ S.Array(
   ADCCatalog,
 ) as any as S.Schema<ADCCatalogsListResultValueList>;
 
@@ -209,7 +209,7 @@ export interface ADCCatalogsListResult {
   /** the list of Azure Data Catalogs. */
   value?: ADCCatalogsListResultValueList;
 }
-export const ADCCatalogsListResult = /*@__PURE__*/ S.suspend(() =>
+const ADCCatalogsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ADCCatalogsListResultValueList),
   }),
@@ -223,7 +223,7 @@ export interface DeleteADCCatalogRequest {
   /** The name of the data catalog in the specified subscription and resource group. */
   catalogName: string;
 }
-export const DeleteADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -239,7 +239,7 @@ export const DeleteADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteADCCatalogRequest" }) as any as S.Schema<DeleteADCCatalogRequest>;
 
 export interface DeleteADCCatalogResponse {}
-export const DeleteADCCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteADCCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteADCCatalogResponse",
 }) as any as S.Schema<DeleteADCCatalogResponse>;
 
@@ -251,7 +251,7 @@ export interface GetADCCatalogRequest {
   /** The name of the data catalog in the specified subscription and resource group. */
   catalogName: string;
 }
-export const GetADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -268,9 +268,6 @@ export const GetADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetADCCatalogResponseTagsMap = { [key: string]: string | undefined };
-export const GetADCCatalogResponseTagsMap =
-  ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<GetADCCatalogResponseTagsMap>;
-
 export interface GetADCCatalogResponse {
   /** Resource Id */
   id?: string;
@@ -287,10 +284,10 @@ export interface GetADCCatalogResponse {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
-export const GetADCCatalogResponse = ADCCatalog as any as S.Schema<GetADCCatalogResponse>;
+const GetADCCatalogResponse = ADCCatalog as any as S.Schema<GetADCCatalogResponse>;
 
 export interface ListADCOperationsRequest {}
-export const ListADCOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListADCOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -312,7 +309,7 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -328,7 +325,7 @@ export interface OperationEntity {
   /** The operation supported by Azure Data Catalog Service. */
   display?: OperationDisplayInfo;
 }
-export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
+const OperationEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplayInfo),
@@ -337,7 +334,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
-export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
+const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
 
@@ -346,7 +343,7 @@ export interface OperationEntityListResult {
   /** The list of operations. */
   value?: OperationEntityListResultValueList;
 }
-export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationEntityListResultValueList),
   }),
@@ -356,7 +353,7 @@ export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateADCCatalogRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateADCCatalogRequestTagsMap =
+const UpdateADCCatalogRequestTagsMap =
   ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateADCCatalogRequestTagsMap>;
 
 export interface UpdateADCCatalogRequest {
@@ -375,7 +372,7 @@ export interface UpdateADCCatalogRequest {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
-export const UpdateADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -396,9 +393,6 @@ export const UpdateADCCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateADCCatalogResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateADCCatalogResponseTagsMap =
-  ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateADCCatalogResponseTagsMap>;
-
 export interface UpdateADCCatalogResponse {
   /** Resource Id */
   id?: string;
@@ -415,7 +409,7 @@ export interface UpdateADCCatalogResponse {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
-export const UpdateADCCatalogResponse = ADCCatalog as any as S.Schema<UpdateADCCatalogResponse>;
+const UpdateADCCatalogResponse = ADCCatalog as any as S.Schema<UpdateADCCatalogResponse>;
 
 export type ADCCatalogsCreateOrUpdateError = AzureOpError;
 /** Create or Update Azure Data Catalog service (PUT Resource) The Create Azure Data Catalog service operation creates a new data catalog service with the specified parameters. If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged. */

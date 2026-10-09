@@ -40,7 +40,7 @@ export interface GetMemberRequest {
   /** Member ID (`mber_` tag). */
   id: string;
 }
-export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/members/{id}", code: 200 })),
@@ -48,17 +48,17 @@ export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** What the member can reach on the account: `customer` for paying members, `admin` for team members, `no_access` once every grant has lapsed. */
 export type MemberAccessLevel = "no_access" | "admin" | "customer";
-export const MemberAccessLevel = S.String;
+const MemberAccessLevel = S.String;
 
 /** `joined` while the member is part of the account, `left` after they leave. */
 export type MemberStatus = "joined" | "left";
-export const MemberStatus = S.String;
+const MemberStatus = S.String;
 
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -74,7 +74,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -105,7 +105,7 @@ export interface Member {
   /** The user behind this member. `null` when the buyer is another business rather than a person. */
   user: UserSummary | null;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_level: MemberAccessLevel,
     account_id: S.String,
@@ -132,7 +132,7 @@ export interface ListMemberLogsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListMemberLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMemberLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -147,7 +147,7 @@ export interface ListMemberLogsResponseDataItemActor {
   name?: string | null;
   username?: string | null;
 }
-export const ListMemberLogsResponseDataItemActor = /*@__PURE__*/ S.suspend(() =>
+const ListMemberLogsResponseDataItemActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.NullOr(S.String)),
@@ -162,7 +162,7 @@ export interface ListMemberLogsResponseDataItem {
   actor: ListMemberLogsResponseDataItemActor | null;
   created_at: string;
 }
-export const ListMemberLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListMemberLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.NullOr(S.String),
     actor: S.NullOr(ListMemberLogsResponseDataItemActor),
@@ -173,7 +173,7 @@ export const ListMemberLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMemberLogsResponseDataItem>;
 
 export type ListMemberLogsResponseDataList = Array<ListMemberLogsResponseDataItem>;
-export const ListMemberLogsResponseDataList = /*@__PURE__*/ S.Array(
+const ListMemberLogsResponseDataList = /*@__PURE__*/ S.Array(
   ListMemberLogsResponseDataItem,
 ) as any as S.Schema<ListMemberLogsResponseDataList>;
 
@@ -183,7 +183,7 @@ export interface ListMemberLogsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListMemberLogsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListMemberLogsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -198,7 +198,7 @@ export interface ListMemberLogsResponse {
   data: ListMemberLogsResponseDataList;
   page_info: ListMemberLogsResponsePageInfo;
 }
-export const ListMemberLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMemberLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListMemberLogsResponseDataList,
     page_info: ListMemberLogsResponsePageInfo,
@@ -206,13 +206,13 @@ export const ListMemberLogsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMemberLogsResponse" }) as any as S.Schema<ListMemberLogsResponse>;
 
 export type ListMembersRequestAccessLevel = "no_access" | "admin" | "customer";
-export const ListMembersRequestAccessLevel = S.String;
+const ListMembersRequestAccessLevel = S.String;
 
 export type ListMembersRequestStatus = "joined" | "left";
-export const ListMembersRequestStatus = S.String;
+const ListMembersRequestStatus = S.String;
 
 export type ListMembersRequestUserIdsList = Array<string>;
-export const ListMembersRequestUserIdsList = /*@__PURE__*/ S.Array(
+const ListMembersRequestUserIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListMembersRequestUserIdsList>;
 
@@ -221,10 +221,10 @@ export type ListMembersRequestOrder =
   | "joined_at"
   | "last_accessed_at"
   | "usd_total_spent";
-export const ListMembersRequestOrder = S.String;
+const ListMembersRequestOrder = S.String;
 
 export type ListMembersRequestDirection = "asc" | "desc";
-export const ListMembersRequestDirection = S.String;
+const ListMembersRequestDirection = S.String;
 
 export interface ListMembersRequest {
   /** The account to list members for (`biz_` tag). Defaults to the account the credential acts as. */
@@ -254,7 +254,7 @@ export interface ListMembersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     access_level: S.optional(ListMembersRequestAccessLevel.pipe(T.Query())),
@@ -273,18 +273,16 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type ListMembersResponseDataList = Array<Member>;
-export const ListMembersResponseDataList = /*@__PURE__*/ S.Array(
+const ListMembersResponseDataList = /*@__PURE__*/ S.Array(
   Member,
 ) as any as S.Schema<ListMembersResponseDataList>;
 
 export type ListMembersResponsePageInfo = ListMemberLogsResponsePageInfo;
-export const ListMembersResponsePageInfo = ListMemberLogsResponsePageInfo;
-
 export interface ListMembersResponse {
   data: ListMembersResponseDataList;
   page_info: ListMemberLogsResponsePageInfo;
 }
-export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListMembersResponseDataList,
     page_info: ListMemberLogsResponsePageInfo,

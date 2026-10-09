@@ -34,14 +34,14 @@ export type CreateMeetingNoteRequestLanguage =
   | "ar"
   | "he"
   | "pl";
-export const CreateMeetingNoteRequestLanguage = S.String;
+const CreateMeetingNoteRequestLanguage = S.String;
 
 /** Optional processing settings. */
 export interface CreateMeetingNoteRequestOptions {
   /** Whether to start summary generation after transcription. */
   kickoff_summary?: boolean;
 }
-export const CreateMeetingNoteRequestOptions = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kickoff_summary: S.optional(S.Boolean),
   }),
@@ -56,7 +56,7 @@ export interface CreateMeetingNoteRequestSource {
   /** ID of a completed public API file upload. */
   file_upload_id: string;
 }
-export const CreateMeetingNoteRequestSource = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     file_upload_id: S.String,
@@ -72,7 +72,7 @@ export interface CreateMeetingNoteRequestParent {
   /** Page ID where the meeting note should be created. Required for file_upload sources. */
   page_id: string;
 }
-export const CreateMeetingNoteRequestParent = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     page_id: S.String,
@@ -93,7 +93,7 @@ export interface CreateMeetingNoteRequest {
   /** Parent page for the new meeting note. */
   parent?: CreateMeetingNoteRequestParent;
 }
-export const CreateMeetingNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     language: S.optional(CreateMeetingNoteRequestLanguage),
@@ -109,15 +109,6 @@ export interface CreateMeetingNoteResponseBodyCase0 {
   /** The ID of the meeting note block. */
   id: string;
 }
-export const CreateMeetingNoteResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CreateMeetingNoteResponseBodyCase0",
-}) as any as S.Schema<CreateMeetingNoteResponseBodyCase0>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`, `default_background`, `gray_background`, `brown_background`, `orange_background`, `yellow_background`, `green_background`, `blue_background`, `purple_background`, `pink_background`, `red_background` */
 export type ApiColor =
   | "default"
@@ -140,7 +131,7 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
-export const ApiColor = S.String;
+const ApiColor = S.String;
 
 export interface AnnotationResponse {
   bold: boolean;
@@ -150,7 +141,7 @@ export interface AnnotationResponse {
   code: boolean;
   color: ApiColor;
 }
-export const AnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const AnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bold: S.Boolean,
     italic: S.Boolean,
@@ -165,7 +156,7 @@ export interface RichTextItemResponseTextLink {
   /** The URL of the link. */
   url: string;
 }
-export const RichTextItemResponseTextLink = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemResponseTextLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -180,7 +171,7 @@ export interface RichTextItemResponseText {
   /** An object with information about any inline link in this text, if included. */
   link: RichTextItemResponseTextLink | null;
 }
-export const RichTextItemResponseText = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemResponseText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     link: S.NullOr(RichTextItemResponseTextLink),
@@ -192,7 +183,7 @@ export interface PartialUserObjectResponse {
   /** Always `user` */
   object: string;
 }
-export const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: S.String,
@@ -208,17 +199,8 @@ export interface UserObjectResponsePerson {
   /** Whether the person's email is verified. */
   email_verified?: boolean;
 }
-export const UserObjectResponsePerson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    email_verified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UserObjectResponsePerson" }) as any as S.Schema<UserObjectResponsePerson>;
-
 /** The person info of the user. */
 export type BotInfoResponseOwnerCase0UserCase0Person = UserObjectResponsePerson;
-export const BotInfoResponseOwnerCase0UserCase0Person = UserObjectResponsePerson;
-
 export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The ID of the user. */
   id: string;
@@ -233,74 +215,29 @@ export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The person info of the user. */
   person: UserObjectResponsePerson;
 }
-export const BotInfoResponseOwnerCase0UserCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.String,
-    person: UserObjectResponsePerson,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0UserCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0UserCase0>;
-
 /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
 export type BotInfoResponseOwnerCase0User =
   | BotInfoResponseOwnerCase0UserCase0
   | PartialUserObjectResponse;
-export const BotInfoResponseOwnerCase0User =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwnerCase0User>;
-
 export interface BotInfoResponseOwnerCase0 {
   /** Always `user` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
   user: BotInfoResponseOwnerCase0User;
 }
-export const BotInfoResponseOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: BotInfoResponseOwnerCase0User,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0>;
-
 export interface BotInfoResponseOwnerCase1 {
   /** Always `workspace` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `workspace`. This means the bot is for an internal integration. */
   workspace: boolean;
 }
-export const BotInfoResponseOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase1",
-}) as any as S.Schema<BotInfoResponseOwnerCase1>;
-
 /** Details about the owner of the bot. */
 export type BotInfoResponseOwner = BotInfoResponseOwnerCase0 | BotInfoResponseOwnerCase1;
-export const BotInfoResponseOwner =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwner>;
-
 /** Limits and restrictions that apply to the bot's workspace */
 export interface BotInfoResponseWorkspaceLimits {
   /** The maximum allowable size of a file upload, in bytes */
   max_file_upload_size_in_bytes: number;
 }
-export const BotInfoResponseWorkspaceLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_file_upload_size_in_bytes: S.Number,
-  }),
-).annotate({
-  identifier: "BotInfoResponseWorkspaceLimits",
-}) as any as S.Schema<BotInfoResponseWorkspaceLimits>;
-
 export interface BotInfoResponse {
   /** Details about the owner of the bot. */
   owner: BotInfoResponseOwner;
@@ -311,20 +248,8 @@ export interface BotInfoResponse {
   /** The name of the bot's workspace. */
   workspace_name: string | null;
 }
-export const BotInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: BotInfoResponseOwner,
-    workspace_id: S.String,
-    workspace_limits: BotInfoResponseWorkspaceLimits,
-    workspace_name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "BotInfoResponse" }) as any as S.Schema<BotInfoResponse>;
-
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type UserObjectResponseBot = unknown | BotInfoResponse;
-export const UserObjectResponseBot =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserObjectResponseBot>;
-
 export interface UserObjectResponse {
   /** The ID of the user. */
   id: string;
@@ -341,36 +266,13 @@ export interface UserObjectResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: UserObjectResponseBot;
 }
-export const UserObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.optional(S.String),
-    person: S.optional(UserObjectResponsePerson),
-    bot: S.optional(UserObjectResponseBot),
-  }),
-).annotate({ identifier: "UserObjectResponse" }) as any as S.Schema<UserObjectResponse>;
-
 export type UserValueResponse = PartialUserObjectResponse | UserObjectResponse;
-export const UserValueResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<UserValueResponse>;
-
 export interface RichTextItemResponseMentionCase0 {
   /** Always `user` */
   type: string;
   /** Details of the user mention. */
   user: UserValueResponse;
 }
-export const RichTextItemResponseMentionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: UserValueResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase0",
-}) as any as S.Schema<RichTextItemResponseMentionCase0>;
-
 export interface DateResponse {
   /** The start date of the date object. */
   start: string;
@@ -379,51 +281,22 @@ export interface DateResponse {
   /** The time zone of the date object. */
   time_zone: string | null;
 }
-export const DateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.String,
-    end: S.NullOr(S.String),
-    time_zone: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DateResponse" }) as any as S.Schema<DateResponse>;
-
 export interface RichTextItemResponseMentionCase1 {
   /** Always `date` */
   type: string;
   /** Details of the date mention. */
   date: DateResponse;
 }
-export const RichTextItemResponseMentionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date: DateResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase1",
-}) as any as S.Schema<RichTextItemResponseMentionCase1>;
-
 export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse =
-  RichTextItemResponseTextLink as any as S.Schema<LinkPreviewMentionResponse>;
-
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
   type: string;
   /** Details of the link preview mention. */
   link_preview: LinkPreviewMentionResponse;
 }
-export const RichTextItemResponseMentionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    link_preview: LinkPreviewMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase2",
-}) as any as S.Schema<RichTextItemResponseMentionCase2>;
-
 export interface LinkMentionResponse {
   /** The href of the link mention. */
   href: string;
@@ -448,143 +321,57 @@ export interface LinkMentionResponse {
   /** The top padding of the link preview iframe. */
   padding_top?: number;
 }
-export const LinkMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    link_author: S.optional(S.String),
-    link_provider: S.optional(S.String),
-    thumbnail_url: S.optional(S.String),
-    icon_url: S.optional(S.String),
-    iframe_url: S.optional(S.String),
-    height: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    padding_top: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LinkMentionResponse" }) as any as S.Schema<LinkMentionResponse>;
-
 export interface RichTextItemResponseMentionCase3 {
   /** Always `link_mention` */
   type: string;
   /** Details of the link mention. */
   link_mention: LinkMentionResponse;
 }
-export const RichTextItemResponseMentionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    link_mention: LinkMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase3",
-}) as any as S.Schema<RichTextItemResponseMentionCase3>;
-
 /** Details of the page mention. */
 export interface RichTextItemResponseMentionCase4Page {
   /** The ID of the page in the mention. */
   id: string;
 }
-export const RichTextItemResponseMentionCase4Page = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase4Page",
-}) as any as S.Schema<RichTextItemResponseMentionCase4Page>;
-
 export interface RichTextItemResponseMentionCase4 {
   /** Always `page` */
   type: string;
   /** Details of the page mention. */
   page: RichTextItemResponseMentionCase4Page;
 }
-export const RichTextItemResponseMentionCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    page: RichTextItemResponseMentionCase4Page,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase4",
-}) as any as S.Schema<RichTextItemResponseMentionCase4>;
-
 /** Details of the database mention. */
 export interface RichTextItemResponseMentionCase5Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemResponseMentionCase5Database =
-  RichTextItemResponseMentionCase4Page as any as S.Schema<RichTextItemResponseMentionCase5Database>;
-
 export interface RichTextItemResponseMentionCase5 {
   /** Always `database` */
   type: string;
   /** Details of the database mention. */
   database: RichTextItemResponseMentionCase5Database;
 }
-export const RichTextItemResponseMentionCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    database: RichTextItemResponseMentionCase5Database,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase5",
-}) as any as S.Schema<RichTextItemResponseMentionCase5>;
-
 /** The date of the template mention. */
 export type TemplateMentionDateTemplateMentionResponseTemplateMentionDate = "today" | "now";
-export const TemplateMentionDateTemplateMentionResponseTemplateMentionDate = S.String;
-
 export interface TemplateMentionDateTemplateMentionResponse {
   /** Always `template_mention_date` */
   type: string;
   /** The date of the template mention. */
   template_mention_date: TemplateMentionDateTemplateMentionResponseTemplateMentionDate;
 }
-export const TemplateMentionDateTemplateMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention_date: TemplateMentionDateTemplateMentionResponseTemplateMentionDate,
-  }),
-).annotate({
-  identifier: "TemplateMentionDateTemplateMentionResponse",
-}) as any as S.Schema<TemplateMentionDateTemplateMentionResponse>;
-
 export interface TemplateMentionUserTemplateMentionResponse {
   /** Always `template_mention_user` */
   type: string;
   /** The user of the template mention. */
   template_mention_user: string;
 }
-export const TemplateMentionUserTemplateMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention_user: S.String,
-  }),
-).annotate({
-  identifier: "TemplateMentionUserTemplateMentionResponse",
-}) as any as S.Schema<TemplateMentionUserTemplateMentionResponse>;
-
 export type TemplateMentionResponse =
   | TemplateMentionDateTemplateMentionResponse
   | TemplateMentionUserTemplateMentionResponse;
-export const TemplateMentionResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TemplateMentionResponse>;
-
 export interface RichTextItemResponseMentionCase6 {
   /** Always `template_mention` */
   type: string;
   /** Details of the template mention. */
   template_mention: TemplateMentionResponse;
 }
-export const RichTextItemResponseMentionCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention: TemplateMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase6",
-}) as any as S.Schema<RichTextItemResponseMentionCase6>;
-
 export interface CustomEmojiResponse {
   /** The ID of the custom emoji. */
   id: string;
@@ -593,29 +380,12 @@ export interface CustomEmojiResponse {
   /** The URL of the custom emoji. */
   url: string;
 }
-export const CustomEmojiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "CustomEmojiResponse" }) as any as S.Schema<CustomEmojiResponse>;
-
 export interface RichTextItemResponseMentionCase7 {
   /** Always `custom_emoji` */
   type: string;
   /** Details of the custom emoji mention. */
   custom_emoji: CustomEmojiResponse;
 }
-export const RichTextItemResponseMentionCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase7",
-}) as any as S.Schema<RichTextItemResponseMentionCase7>;
-
 /** Mention objects represent an inline mention of a database, date, link preview mention, page, template mention, or user. A mention is created in the Notion UI when a user types `@` followed by the name of the reference. */
 export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase0
@@ -626,7 +396,7 @@ export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase5
   | RichTextItemResponseMentionCase6
   | RichTextItemResponseMentionCase7;
-export const RichTextItemResponseMention =
+const RichTextItemResponseMention =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemResponseMention>;
 
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
@@ -634,7 +404,7 @@ export interface RichTextItemResponseEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
-export const RichTextItemResponseEquation = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemResponseEquation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
   }),
@@ -658,7 +428,7 @@ export interface RichTextItemResponse {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemResponseEquation;
 }
-export const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plain_text: S.String.pipe(T.SensitiveValue({})),
     href: S.NullOr(S.String),
@@ -672,7 +442,7 @@ export const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Title of the meeting note as rich text. */
 export type CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList = Array<RichTextItemResponse>;
-export const CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList = /*@__PURE__*/ S.Array(
+const CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList = /*@__PURE__*/ S.Array(
   RichTextItemResponse,
 ) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList>;
 
@@ -684,8 +454,6 @@ export type CreateMeetingNoteResponseBodyCase1MeetingNotesStatus =
   | "transcription_failed"
   | "summary_in_progress"
   | "notes_ready";
-export const CreateMeetingNoteResponseBodyCase1MeetingNotesStatus = S.String;
-
 /** Block IDs for each tab (summary, notes, transcript). */
 export interface CreateMeetingNoteResponseBodyCase1MeetingNotesChildren {
   /** Block ID of the AI summary tab. */
@@ -695,7 +463,7 @@ export interface CreateMeetingNoteResponseBodyCase1MeetingNotesChildren {
   /** Block ID of the transcript tab. */
   transcript_block_id?: string;
 }
-export const CreateMeetingNoteResponseBodyCase1MeetingNotesChildren = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteResponseBodyCase1MeetingNotesChildren = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary_block_id: S.optional(S.String),
     notes_block_id: S.optional(S.String),
@@ -708,7 +476,7 @@ export const CreateMeetingNoteResponseBodyCase1MeetingNotesChildren = /*@__PURE_
 /** List of attendee user IDs. */
 export type CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList =
   Array<string>;
-export const CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList =
+const CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList>;
@@ -722,19 +490,6 @@ export interface CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEvent {
   /** List of attendee user IDs. */
   attendees?: CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList;
 }
-export const CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEvent = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      start_time: S.String,
-      end_time: S.String,
-      attendees: S.optional(
-        CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList,
-      ),
-    }),
-).annotate({
-  identifier: "CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEvent",
-}) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEvent>;
-
 /** Start and end times of the actual recording. */
 export interface CreateMeetingNoteResponseBodyCase1MeetingNotesRecording {
   /** ISO-8601 timestamp when the recording started. */
@@ -742,7 +497,7 @@ export interface CreateMeetingNoteResponseBodyCase1MeetingNotesRecording {
   /** ISO-8601 timestamp when the recording ended. */
   end_time?: string;
 }
-export const CreateMeetingNoteResponseBodyCase1MeetingNotesRecording = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteResponseBodyCase1MeetingNotesRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_time: S.optional(S.String),
     end_time: S.optional(S.String),
@@ -764,18 +519,6 @@ export interface CreateMeetingNoteResponseBodyCase1MeetingNotes {
   /** Start and end times of the actual recording. */
   recording?: CreateMeetingNoteResponseBodyCase1MeetingNotesRecording;
 }
-export const CreateMeetingNoteResponseBodyCase1MeetingNotes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList),
-    status: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesStatus),
-    children: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesChildren),
-    calendar_event: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEvent),
-    recording: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesRecording),
-  }),
-).annotate({
-  identifier: "CreateMeetingNoteResponseBodyCase1MeetingNotes",
-}) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotes>;
-
 export interface CreateMeetingNoteResponseBodyCase1 {
   /** Always "block". */
   object: string;
@@ -798,31 +541,14 @@ export interface CreateMeetingNoteResponseBodyCase1 {
   /** Whether this meeting note is in the trash. */
   in_trash: boolean;
 }
-export const CreateMeetingNoteResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    type: S.String,
-    meeting_notes: CreateMeetingNoteResponseBodyCase1MeetingNotes,
-    created_time: S.String,
-    last_edited_time: S.String,
-    created_by: PartialUserObjectResponse,
-    last_edited_by: PartialUserObjectResponse,
-    has_children: S.Boolean,
-    in_trash: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateMeetingNoteResponseBodyCase1",
-}) as any as S.Schema<CreateMeetingNoteResponseBodyCase1>;
-
 export type CreateMeetingNoteResponseBody =
   | CreateMeetingNoteResponseBodyCase0
   | CreateMeetingNoteResponseBodyCase1;
-export const CreateMeetingNoteResponseBody =
+const CreateMeetingNoteResponseBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateMeetingNoteResponseBody>;
 
 export type CreateMeetingNoteResponse = CreateMeetingNoteResponseBody;
-export const CreateMeetingNoteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMeetingNoteResponse = /*@__PURE__*/ S.suspend(() =>
   CreateMeetingNoteResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateMeetingNoteResponse",
@@ -830,7 +556,7 @@ export const CreateMeetingNoteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Operator for combinator filters. */
 export type QueryMeetingNotesRequestFilterOperator = "and" | "or";
-export const QueryMeetingNotesRequestFilterOperator = S.String;
+const QueryMeetingNotesRequestFilterOperator = S.String;
 
 /** Which meeting-note property to filter on. Prefer the short names; the schema URI form is accepted for compatibility. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0Property =
@@ -841,8 +567,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase0Property =
   | "last_edited_time"
   | "last_edited_by"
   | "notion://meeting_notes/attendees";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0Property = S.String;
-
 /** How to compare the text. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Operator =
   | "string_is"
@@ -851,8 +575,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Operator =
   | "string_does_not_contain"
   | "string_starts_with"
   | "string_ends_with";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Operator = S.String;
-
 /** The text to compare against. */
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value {
   /** Always `exact` */
@@ -860,38 +582,16 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value 
   /** The literal text the operator compares against. */
   value: string;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0 {
   /** How to compare the text. */
   operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Operator | (string & {});
   /** The text to compare against. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value,
-    }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0>;
-
 /** Whether the property must contain the people listed. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1Operator =
   | "person_contains"
   | "person_does_not_contain";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1Operator = S.String;
-
 /** Pointer to the Notion user to match. */
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value {
   /** Always `notion_user` */
@@ -899,71 +599,30 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueI
   /** The user's ID, as a UUID or the `user://<uuid>` form returned by user search. */
   id: string;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      table: S.String,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0 {
   /** Always `exact` */
   type: string;
   /** Pointer to the Notion user to match. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1 {
   /** Always `relative` */
   type: string;
   /** Always `me` */
   value: string;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1>;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItem =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItem>;
-
 /** The people to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueList =
   Array<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItem>;
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueList =
-  /*@__PURE__*/ S.Array(
-    QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItem,
-  ) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueList>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1 {
   /** Whether the property must contain the people listed. */
   operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1Operator | (string & {});
   /** The people to compare against. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueList;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueList,
-    }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1>;
-
 /** How to compare the date. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Operator =
   | "date_is"
@@ -971,8 +630,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Operator =
   | "date_is_after"
   | "date_is_on_or_before"
   | "date_is_on_or_after";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Operator = S.String;
-
 /** One of: `today`, `tomorrow`, `yesterday`, `one_week_ago`, `one_week_from_now`, `one_month_ago`, `one_month_from_now` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0Value =
   | "today"
@@ -982,40 +639,18 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0V
   | "one_week_from_now"
   | "one_month_ago"
   | "one_month_from_now";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0Value = S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 {
   /** Always `relative` */
   type: string;
   /** One of: `today`, `tomorrow`, `yesterday`, `one_week_ago`, `one_week_from_now`, `one_month_ago`, `one_month_from_now` */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0Value | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0 {
   /** Always `date` */
   type: string;
   /** The calendar date as an ISO 8601 date string. */
   start_date: string;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      start_date: S.String,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1 {
   /** Always `datetime` */
   type: string;
@@ -1026,48 +661,20 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueC
   /** The IANA time zone name the time is interpreted in. */
   time_zone: string;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      start_date: S.String,
-      start_time: S.String,
-      time_zone: S.String,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1>;
-
 /** Use the is_empty operator to match an unset date. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1Value =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1Value =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1 {
   /** Always `exact` */
   type: string;
   /** Use the is_empty operator to match an unset date. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1Value;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1>;
-
 /** The date to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Value =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Value =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2 {
   /** How to compare the date. */
   operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Operator | (string & {});
@@ -1076,38 +683,20 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2 {
   /** Compare against the end of a date range rather than its start. */
   use_end?: boolean;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2Value,
-      use_end: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2>;
-
 /** How to compare the date against the range. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Operator =
   | "date_is_within"
   | "date_is_relative_to";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Operator = S.String;
-
 /** Whether the window runs backwards or forwards from now. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0Direction =
   | "past"
   | "future";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0Direction =
-  S.String;
-
 /** One of: `year`, `month`, `week`, `day` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0Unit =
   | "year"
   | "month"
   | "week"
   | "day";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0Unit = S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0 {
   /** Always `relative` */
   type: string;
@@ -1122,27 +711,12 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueC
   /** How many units wide the window is. */
   count: number;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: S.String,
-      direction: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0Direction,
-      unit: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0Unit,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0>;
-
 /** One of: `year`, `month`, `week`, `day` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1Unit =
   | "year"
   | "month"
   | "week"
   | "day";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1Unit = S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1 {
   /** Always `relative` */
   type: string;
@@ -1151,17 +725,6 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueC
   /** One of: `year`, `month`, `week`, `day` */
   unit: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1Unit | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: S.String,
-      unit: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1Unit,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1>;
-
 /** One of: `this_week`, `the_past_week`, `the_past_month`, `the_past_year`, `the_next_week`, `the_next_month`, `the_next_year` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2Value =
   | "this_week"
@@ -1171,17 +734,12 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2V
   | "the_next_week"
   | "the_next_month"
   | "the_next_year";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2Value = S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2 {
   /** Always `relative` */
   type: string;
   /** One of: `this_week`, `the_past_week`, `the_past_month`, `the_past_year`, `the_next_week`, `the_next_month`, `the_next_year` */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2Value | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2>;
-
 /** Use the is_empty operator to match an unset date. */
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value {
   /** Always `daterange` */
@@ -1191,42 +749,18 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueC
   /** Inclusive end of the range as an ISO 8601 date string, if any. */
   end_date?: string;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      start_date: S.optional(S.String),
-      end_date: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3 {
   /** Always `exact` */
   type: string;
   /** Use the is_empty operator to match an unset date. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3>;
-
 /** The range to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Value =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase2
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3;
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Value =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3 {
   /** How to compare the date against the range. */
   operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Operator | (string & {});
@@ -1235,36 +769,14 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3 {
   /** Compare against the end of a date range rather than its start. */
   use_end?: boolean;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3Value,
-      use_end: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3>;
-
 /** Whether the property must be empty or set. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4Operator =
   | "is_empty"
   | "is_not_empty";
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4Operator = S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4 {
   /** Whether the property must be empty or set. */
   operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4Operator | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4Operator,
-    }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4>;
-
 /** The comparison to apply. Use the arm matching the property's type. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0Filter =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0
@@ -1272,28 +784,14 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase0Filter =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase4;
-export const QueryMeetingNotesRequestFilterFiltersItemCase0Filter =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0Filter>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase0 {
   /** Which meeting-note property to filter on. Prefer the short names; the schema URI form is accepted for compatibility. */
   property: QueryMeetingNotesRequestFilterFiltersItemCase0Property | (string & {});
   /** The comparison to apply. Use the arm matching the property's type. */
   filter: QueryMeetingNotesRequestFilterFiltersItemCase0Filter;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: QueryMeetingNotesRequestFilterFiltersItemCase0Property,
-    filter: QueryMeetingNotesRequestFilterFiltersItemCase0Filter,
-  }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0>;
-
 /** Whether every child must match, or any of them. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1Operator = "and" | "or";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1Operator = S.String;
-
 /** Which meeting-note property to filter on. Prefer the short names; the schema URI form is accepted for compatibility. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemProperty =
   | "title"
@@ -1303,8 +801,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemProperty =
   | "last_edited_time"
   | "last_edited_by"
   | "notion://meeting_notes/attendees";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemProperty = S.String;
-
 /** How to compare the text. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0Operator =
   | "string_is"
@@ -1313,15 +809,9 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0
   | "string_does_not_contain"
   | "string_starts_with"
   | "string_ends_with";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0Operator =
-  S.String;
-
 /** The text to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0Value =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0Value =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0 {
   /** How to compare the text. */
   operator:
@@ -1330,53 +820,23 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
   /** The text to compare against. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0>;
-
 /** Whether the property must contain the people listed. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1Operator =
   | "person_contains"
   | "person_does_not_contain";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1Operator =
-  S.String;
-
 /** Pointer to the Notion user to match. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItemCase0Value =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItemCase0Value =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0Value;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItemCase0 =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItemCase0 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItemCase1 =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItemCase1 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItem =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItem>;
-
 /** The people to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueList =
   Array<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItem>;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueList =
-  /*@__PURE__*/ S.Array(
-    QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueItem,
-  ) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueList>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1 {
   /** Whether the property must contain the people listed. */
   operator:
@@ -1385,16 +845,6 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
   /** The people to compare against. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueList;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1ValueList,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase1>;
-
 /** How to compare the date. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Operator =
   | "date_is"
@@ -1402,9 +852,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2
   | "date_is_after"
   | "date_is_on_or_before"
   | "date_is_on_or_after";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Operator =
-  S.String;
-
 /** One of: `today`, `tomorrow`, `yesterday`, `one_week_ago`, `one_week_from_now`, `one_month_ago`, `one_month_from_now` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0Value =
   | "today"
@@ -1414,9 +861,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2
   | "one_week_from_now"
   | "one_month_ago"
   | "one_month_from_now";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0Value =
-  S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0 {
   /** Always `relative` */
   type: string;
@@ -1425,49 +869,24 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
     | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0Value
     | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0>;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1ValueCase0 =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1ValueCase0 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1ValueCase1 =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1ValueCase1 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1;
-
 /** Use the is_empty operator to match an unset date. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1Value =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase1ValueCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1Value =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1 {
   /** Always `exact` */
   type: string;
   /** Use the is_empty operator to match an unset date. */
   value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1Value;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1Value,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1>;
-
 /** The date to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Value =
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2ValueCase1;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Value =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2 {
   /** How to compare the date. */
   operator:
@@ -1478,40 +897,20 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
   /** Compare against the end of a date range rather than its start. */
   use_end?: boolean;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2Value,
-      use_end: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2>;
-
 /** How to compare the date against the range. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Operator =
   | "date_is_within"
   | "date_is_relative_to";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Operator =
-  S.String;
-
 /** Whether the window runs backwards or forwards from now. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0Direction =
   | "past"
   | "future";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0Direction =
-  S.String;
-
 /** One of: `year`, `month`, `week`, `day` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0Unit =
   | "year"
   | "month"
   | "week"
   | "day";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0Unit =
-  S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0 {
   /** Always `relative` */
   type: string;
@@ -1528,29 +927,12 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
   /** How many units wide the window is. */
   count: number;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: S.String,
-      direction:
-        QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0Direction,
-      unit: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0Unit,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0>;
-
 /** One of: `year`, `month`, `week`, `day` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1Unit =
   | "year"
   | "month"
   | "week"
   | "day";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1Unit =
-  S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1 {
   /** Always `relative` */
   type: string;
@@ -1561,9 +943,6 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
     | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1Unit
     | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase1 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1>;
-
 /** One of: `this_week`, `the_past_week`, `the_past_month`, `the_past_year`, `the_next_week`, `the_next_month`, `the_next_year` */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2Value =
   | "this_week"
@@ -1573,9 +952,6 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3
   | "the_next_week"
   | "the_next_month"
   | "the_next_year";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2Value =
-  S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2 {
   /** Always `relative` */
   type: string;
@@ -1584,29 +960,17 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
     | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2Value
     | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase2ValueCase0 as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2>;
-
 /** Use the is_empty operator to match an unset date. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase3Value =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase3Value =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3Value;
-
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase3 =
   QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase3 =
-  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3;
-
 /** The range to compare against. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Value =
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase1
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3ValueCase2
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase3ValueCase3;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Value =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Value>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3 {
   /** How to compare the date against the range. */
   operator:
@@ -1617,39 +981,16 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter
   /** Compare against the end of a date range rather than its start. */
   use_end?: boolean;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Operator,
-      value: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3Value,
-      use_end: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3>;
-
 /** Whether the property must be empty or set. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4Operator =
   | "is_empty"
   | "is_not_empty";
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4Operator =
-  S.String;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4 {
   /** Whether the property must be empty or set. */
   operator:
     | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4Operator
     | (string & {});
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operator: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4Operator,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4>;
-
 /** The comparison to apply. Use the arm matching the property's type. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter =
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase0
@@ -1657,57 +998,31 @@ export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter =
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase2
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase3
   | QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilterCase4;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItem {
   /** Which meeting-note property to filter on. Prefer the short names; the schema URI form is accepted for compatibility. */
   property: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemProperty | (string & {});
   /** The comparison to apply. Use the arm matching the property's type. */
   filter: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemProperty,
-      filter: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItemFilter,
-    }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItem",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItem>;
-
 /** The conditions in this group. A group with no conditions matches nothing, so send at least one. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase1FiltersList =
   Array<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItem>;
-export const QueryMeetingNotesRequestFilterFiltersItemCase1FiltersList = /*@__PURE__*/ S.Array(
-  QueryMeetingNotesRequestFilterFiltersItemCase1FiltersItem,
-) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1FiltersList>;
-
 export interface QueryMeetingNotesRequestFilterFiltersItemCase1 {
   /** Whether every child must match, or any of them. */
   operator: QueryMeetingNotesRequestFilterFiltersItemCase1Operator | (string & {});
   /** The conditions in this group. A group with no conditions matches nothing, so send at least one. */
   filters: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersList;
 }
-export const QueryMeetingNotesRequestFilterFiltersItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: QueryMeetingNotesRequestFilterFiltersItemCase1Operator,
-    filters: QueryMeetingNotesRequestFilterFiltersItemCase1FiltersList,
-  }),
-).annotate({
-  identifier: "QueryMeetingNotesRequestFilterFiltersItemCase1",
-}) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase1>;
-
 export type QueryMeetingNotesRequestFilterFiltersItem =
   | QueryMeetingNotesRequestFilterFiltersItemCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase1;
-export const QueryMeetingNotesRequestFilterFiltersItem =
+const QueryMeetingNotesRequestFilterFiltersItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItem>;
 
 /** Nested filters; each may be a combinator (and/or) or property filter. */
 export type QueryMeetingNotesRequestFilterFiltersList =
   Array<QueryMeetingNotesRequestFilterFiltersItem>;
-export const QueryMeetingNotesRequestFilterFiltersList = /*@__PURE__*/ S.Array(
+const QueryMeetingNotesRequestFilterFiltersList = /*@__PURE__*/ S.Array(
   QueryMeetingNotesRequestFilterFiltersItem,
 ) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersList>;
 
@@ -1718,7 +1033,7 @@ export interface QueryMeetingNotesRequestFilter {
   /** Nested filters; each may be a combinator (and/or) or property filter. */
   filters?: QueryMeetingNotesRequestFilterFiltersList;
 }
-export const QueryMeetingNotesRequestFilter = /*@__PURE__*/ S.suspend(() =>
+const QueryMeetingNotesRequestFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operator: QueryMeetingNotesRequestFilterOperator,
     filters: S.optional(QueryMeetingNotesRequestFilterFiltersList),
@@ -1735,11 +1050,11 @@ export type QueryMeetingNotesRequestSortItemProperty =
   | "created_by"
   | "last_edited_time"
   | "last_edited_by";
-export const QueryMeetingNotesRequestSortItemProperty = S.String;
+const QueryMeetingNotesRequestSortItemProperty = S.String;
 
 /** Sort direction. Must be 'ascending' or 'descending'. */
 export type QueryMeetingNotesRequestSortItemDirection = "ascending" | "descending";
-export const QueryMeetingNotesRequestSortItemDirection = S.String;
+const QueryMeetingNotesRequestSortItemDirection = S.String;
 
 export interface QueryMeetingNotesRequestSortItem {
   /** Property name to sort by. */
@@ -1747,7 +1062,7 @@ export interface QueryMeetingNotesRequestSortItem {
   /** Sort direction. Must be 'ascending' or 'descending'. */
   direction: QueryMeetingNotesRequestSortItemDirection | (string & {});
 }
-export const QueryMeetingNotesRequestSortItem = /*@__PURE__*/ S.suspend(() =>
+const QueryMeetingNotesRequestSortItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: QueryMeetingNotesRequestSortItemProperty,
     direction: QueryMeetingNotesRequestSortItemDirection,
@@ -1758,7 +1073,7 @@ export const QueryMeetingNotesRequestSortItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional sort order for the results. Each entry specifies a property name and direction. */
 export type QueryMeetingNotesRequestSortList = Array<QueryMeetingNotesRequestSortItem>;
-export const QueryMeetingNotesRequestSortList = /*@__PURE__*/ S.Array(
+const QueryMeetingNotesRequestSortList = /*@__PURE__*/ S.Array(
   QueryMeetingNotesRequestSortItem,
 ) as any as S.Schema<QueryMeetingNotesRequestSortList>;
 
@@ -1770,7 +1085,7 @@ export interface QueryMeetingNotesRequest {
   /** Maximum number of results to return. Defaults to 50. */
   limit?: number;
 }
-export const QueryMeetingNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryMeetingNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(QueryMeetingNotesRequestFilter),
     sort: S.optional(QueryMeetingNotesRequestSortList),
@@ -1780,7 +1095,7 @@ export const QueryMeetingNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Title of the meeting note as rich text. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesTitleList = Array<RichTextItemResponse>;
-export const QueryMeetingNotesResponseResultsItemMeetingNotesTitleList =
+const QueryMeetingNotesResponseResultsItemMeetingNotesTitleList =
   CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesTitleList>;
 
 /** Current processing status of the meeting note transcription. */
@@ -1791,18 +1106,15 @@ export type QueryMeetingNotesResponseResultsItemMeetingNotesStatus =
   | "transcription_failed"
   | "summary_in_progress"
   | "notes_ready";
-export const QueryMeetingNotesResponseResultsItemMeetingNotesStatus = S.String;
+const QueryMeetingNotesResponseResultsItemMeetingNotesStatus = S.String;
 
 /** Block IDs for each tab (summary, notes, transcript). */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesChildren =
   CreateMeetingNoteResponseBodyCase1MeetingNotesChildren;
-export const QueryMeetingNotesResponseResultsItemMeetingNotesChildren =
-  CreateMeetingNoteResponseBodyCase1MeetingNotesChildren;
-
 /** List of attendee user IDs. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
   Array<string>;
-export const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
+const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
   CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList>;
 
 /** Calendar event metadata associated with this meeting note. */
@@ -1814,25 +1126,21 @@ export interface QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent {
   /** List of attendee user IDs. */
   attendees?: QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList;
 }
-export const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      start_time: S.String,
-      end_time: S.String,
-      attendees: S.optional(
-        QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent",
-  }) as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent>;
+const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    start_time: S.String,
+    end_time: S.String,
+    attendees: S.optional(
+      QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList,
+    ),
+  }),
+).annotate({
+  identifier: "QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent",
+}) as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent>;
 
 /** Start and end times of the actual recording. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesRecording =
   CreateMeetingNoteResponseBodyCase1MeetingNotesRecording;
-export const QueryMeetingNotesResponseResultsItemMeetingNotesRecording =
-  CreateMeetingNoteResponseBodyCase1MeetingNotesRecording;
-
 /** Meeting note content fields. */
 export interface QueryMeetingNotesResponseResultsItemMeetingNotes {
   /** Title of the meeting note as rich text. */
@@ -1846,7 +1154,7 @@ export interface QueryMeetingNotesResponseResultsItemMeetingNotes {
   /** Start and end times of the actual recording. */
   recording?: CreateMeetingNoteResponseBodyCase1MeetingNotesRecording;
 }
-export const QueryMeetingNotesResponseResultsItemMeetingNotes = /*@__PURE__*/ S.suspend(() =>
+const QueryMeetingNotesResponseResultsItemMeetingNotes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(QueryMeetingNotesResponseResultsItemMeetingNotesTitleList),
     status: S.optional(QueryMeetingNotesResponseResultsItemMeetingNotesStatus),
@@ -1880,7 +1188,7 @@ export interface QueryMeetingNotesResponseResultsItem {
   /** Whether this meeting note is in the trash. */
   in_trash: boolean;
 }
-export const QueryMeetingNotesResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const QueryMeetingNotesResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -1899,7 +1207,7 @@ export const QueryMeetingNotesResponseResultsItem = /*@__PURE__*/ S.suspend(() =
 
 /** Meeting note block objects. */
 export type QueryMeetingNotesResponseResultsList = Array<QueryMeetingNotesResponseResultsItem>;
-export const QueryMeetingNotesResponseResultsList = /*@__PURE__*/ S.Array(
+const QueryMeetingNotesResponseResultsList = /*@__PURE__*/ S.Array(
   QueryMeetingNotesResponseResultsItem,
 ) as any as S.Schema<QueryMeetingNotesResponseResultsList>;
 
@@ -1909,7 +1217,7 @@ export interface QueryMeetingNotesResponse {
   /** Whether additional results exist beyond the returned limit. */
   has_more: boolean;
 }
-export const QueryMeetingNotesResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryMeetingNotesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: QueryMeetingNotesResponseResultsList,
     has_more: S.Boolean,

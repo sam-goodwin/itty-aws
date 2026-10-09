@@ -166,7 +166,7 @@ export interface ApplyOnRampRequest {
   accountId: string;
   onrampId: string;
 }
-export const ApplyOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -182,15 +182,15 @@ export const ApplyOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplyOnRampRequest" }) as any as S.Schema<ApplyOnRampRequest>;
 
 export interface ApplyOnRampResponse {}
-export const ApplyOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplyOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ApplyOnRampResponse" }) as any as S.Schema<ApplyOnRampResponse>;
 
 export type CatalogSyncsCreateRequestDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsCreateRequestDestinationType = S.String;
+const CatalogSyncsCreateRequestDestinationType = S.String;
 
 export type CatalogSyncsCreateRequestUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsCreateRequestUpdateMode = S.String;
+const CatalogSyncsCreateRequestUpdateMode = S.String;
 
 export interface CreateCatalogSyncRequest {
   accountId: string;
@@ -201,7 +201,7 @@ export interface CreateCatalogSyncRequest {
   description?: string;
   policy?: string;
 }
-export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     forwarded: S.optional(S.String.pipe(T.Header())),
@@ -222,10 +222,10 @@ export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCatalogSyncRequest" }) as any as S.Schema<CreateCatalogSyncRequest>;
 
 export type CatalogSyncsCreateResponseDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsCreateResponseDestinationType = S.String;
+const CatalogSyncsCreateResponseDestinationType = S.String;
 
 export type CatalogSyncsCreateResponseUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsCreateResponseUpdateMode = S.String;
+const CatalogSyncsCreateResponseUpdateMode = S.String;
 
 export type CatalogSyncsCreateResponseErrorsValueCode =
   | 1001
@@ -383,7 +383,7 @@ export type CatalogSyncsCreateResponseErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const CatalogSyncsCreateResponseErrorsValueCode = S.Number;
+const CatalogSyncsCreateResponseErrorsValueCode = S.Number;
 
 export interface CatalogSyncsCreateResponseErrorsValueMeta {
   l10nKey?: string | null;
@@ -391,7 +391,7 @@ export interface CatalogSyncsCreateResponseErrorsValueMeta {
   templateData?: unknown | null;
   traceId?: string | null;
 }
-export const CatalogSyncsCreateResponseErrorsValueMeta = /*@__PURE__*/ S.suspend(() =>
+const CatalogSyncsCreateResponseErrorsValueMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
     loggableError: S.optional(S.NullOr(S.String).pipe(T.Body("loggable_error"))),
@@ -407,7 +407,7 @@ export interface CatalogSyncsCreateResponseErrorsValueSource {
   parameterValueIndex?: number | null;
   pointer?: string | null;
 }
-export const CatalogSyncsCreateResponseErrorsValueSource = /*@__PURE__*/ S.suspend(() =>
+const CatalogSyncsCreateResponseErrorsValueSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameter: S.optional(S.NullOr(S.String)),
     parameterValueIndex: S.optional(S.NullOr(S.Number).pipe(T.Body("parameter_value_index"))),
@@ -424,7 +424,7 @@ export interface CatalogSyncsCreateResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsCreateResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
+const CatalogSyncsCreateResponseErrorsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: CatalogSyncsCreateResponseErrorsValueCode,
     message: S.String,
@@ -439,7 +439,7 @@ export const CatalogSyncsCreateResponseErrorsValue = /*@__PURE__*/ S.suspend(() 
 export type CatalogSyncsCreateResponseErrorsMap = {
   [key: string]: CatalogSyncsCreateResponseErrorsValue | undefined;
 };
-export const CatalogSyncsCreateResponseErrorsMap = /*@__PURE__*/ S.Record(
+const CatalogSyncsCreateResponseErrorsMap = /*@__PURE__*/ S.Record(
   S.String,
   CatalogSyncsCreateResponseErrorsValue,
 ) as any as S.Schema<CatalogSyncsCreateResponseErrorsMap>;
@@ -459,7 +459,7 @@ export interface CreateCatalogSyncResponse {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
@@ -483,7 +483,7 @@ export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCatalogSyncResponse>;
 
 export type CloudIntegrationsCreateRequestCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const CloudIntegrationsCreateRequestCloudType = S.String;
+const CloudIntegrationsCreateRequestCloudType = S.String;
 
 export interface CreateCloudIntegrationRequest {
   accountId: string;
@@ -492,7 +492,7 @@ export interface CreateCloudIntegrationRequest {
   friendlyName: string;
   description?: string;
 }
-export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     forwarded: S.optional(S.String.pipe(T.Header())),
@@ -509,10 +509,10 @@ export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudIntegrationRequest>;
 
 export type CloudIntegrationsCreateResponseCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const CloudIntegrationsCreateResponseCloudType = S.String;
+const CloudIntegrationsCreateResponseCloudType = S.String;
 
 export type CloudIntegrationsCreateResponseLifecycleState = "ACTIVE" | "PENDING_SETUP" | "RETIRED";
-export const CloudIntegrationsCreateResponseLifecycleState = S.String;
+const CloudIntegrationsCreateResponseLifecycleState = S.String;
 
 export type CloudIntegrationsCreateResponseState =
   | "UNSPECIFIED"
@@ -520,7 +520,7 @@ export type CloudIntegrationsCreateResponseState =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseState = S.String;
+const CloudIntegrationsCreateResponseState = S.String;
 
 export type CloudIntegrationsCreateResponseStateV2 =
   | "UNSPECIFIED"
@@ -528,14 +528,14 @@ export type CloudIntegrationsCreateResponseStateV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseStateV2 = S.String;
+const CloudIntegrationsCreateResponseStateV2 = S.String;
 
 export interface CloudIntegrationsCreateResponseStatusDiscoveryProgress {
   done: number;
   total: number;
   unit: string;
 }
-export const CloudIntegrationsCreateResponseStatusDiscoveryProgress = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsCreateResponseStatusDiscoveryProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.Number,
     total: S.Number,
@@ -547,16 +547,13 @@ export const CloudIntegrationsCreateResponseStatusDiscoveryProgress = /*@__PURE_
 
 export type CloudIntegrationsCreateResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsCreateResponseStatusDiscoveryProgressV2 =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatus =
   | "UNSPECIFIED"
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatus = S.String;
+const CloudIntegrationsCreateResponseStatusLastDiscoveryStatus = S.String;
 
 export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
   | "UNSPECIFIED"
@@ -564,22 +561,22 @@ export type CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 = S.String;
+const CloudIntegrationsCreateResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsCreateResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsCreateResponseStatusRegionsList = /*@__PURE__*/ S.Array(
+const CloudIntegrationsCreateResponseStatusRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CloudIntegrationsCreateResponseStatusRegionsList>;
 
 export type CloudIntegrationsCreateResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const CloudIntegrationsCreateResponseStatusInUseByItemClientType = S.String;
+const CloudIntegrationsCreateResponseStatusInUseByItemClientType = S.String;
 
 export interface CloudIntegrationsCreateResponseStatusInUseByItem {
   id: string;
   clientType: CloudIntegrationsCreateResponseStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsCreateResponseStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsCreateResponseStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     clientType: CloudIntegrationsCreateResponseStatusInUseByItemClientType.pipe(
@@ -593,7 +590,7 @@ export const CloudIntegrationsCreateResponseStatusInUseByItem = /*@__PURE__*/ S.
 
 export type CloudIntegrationsCreateResponseStatusInUseByList =
   Array<CloudIntegrationsCreateResponseStatusInUseByItem>;
-export const CloudIntegrationsCreateResponseStatusInUseByList = /*@__PURE__*/ S.Array(
+const CloudIntegrationsCreateResponseStatusInUseByList = /*@__PURE__*/ S.Array(
   CloudIntegrationsCreateResponseStatusInUseByItem,
 ) as any as S.Schema<CloudIntegrationsCreateResponseStatusInUseByList>;
 
@@ -615,7 +612,7 @@ export interface CloudIntegrationsCreateResponseStatus {
   lastDiscoveryStartedAtV2?: string | null;
   lastUpdated?: string | null;
 }
-export const CloudIntegrationsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
       T.Body("discovery_progress"),
@@ -677,7 +674,7 @@ export interface CreateCloudIntegrationResponse {
   gcpServiceAccountEmail?: string | null;
   status?: CloudIntegrationsCreateResponseStatus | null;
 }
-export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: CloudIntegrationsCreateResponseCloudType.pipe(T.Body("cloud_type")),
@@ -701,17 +698,17 @@ export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudIntegrationResponse>;
 
 export type OnRampsCreateRequestCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsCreateRequestCloudType = S.String;
+const OnRampsCreateRequestCloudType = S.String;
 
 export type OnRampsCreateRequestType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsCreateRequestType = S.String;
+const OnRampsCreateRequestType = S.String;
 
 export type OnRampsCreateRequestAttachedHubsList = Array<string>;
-export const OnRampsCreateRequestAttachedHubsList =
+const OnRampsCreateRequestAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateRequestAttachedHubsList>;
 
 export type OnRampsCreateRequestAttachedVpcsList = Array<string>;
-export const OnRampsCreateRequestAttachedVpcsList =
+const OnRampsCreateRequestAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateRequestAttachedVpcsList>;
 
 export interface CreateOnRampRequest {
@@ -736,7 +733,7 @@ export interface CreateOnRampRequest {
   region?: string;
   vpc?: string;
 }
-export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     forwarded: S.optional(S.String.pipe(T.Header())),
@@ -762,17 +759,17 @@ export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOnRampRequest" }) as any as S.Schema<CreateOnRampRequest>;
 
 export type OnRampsCreateResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsCreateResponseCloudType = S.String;
+const OnRampsCreateResponseCloudType = S.String;
 
 export type OnRampsCreateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsCreateResponseType = S.String;
+const OnRampsCreateResponseType = S.String;
 
 export type OnRampsCreateResponseAttachedHubsList = Array<string>;
-export const OnRampsCreateResponseAttachedHubsList =
+const OnRampsCreateResponseAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseAttachedHubsList>;
 
 export type OnRampsCreateResponseAttachedVpcsList = Array<string>;
-export const OnRampsCreateResponseAttachedVpcsList =
+const OnRampsCreateResponseAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseAttachedVpcsList>;
 
 export interface OnRampsCreateResponsePlannedMonthlyCostEstimate {
@@ -781,7 +778,7 @@ export interface OnRampsCreateResponsePlannedMonthlyCostEstimate {
   diff: number;
   proposedMonthlyCost: number;
 }
-export const OnRampsCreateResponsePlannedMonthlyCostEstimate = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponsePlannedMonthlyCostEstimate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
@@ -799,7 +796,7 @@ export interface OnRampsCreateResponsePlannedResourcesItemDiff {
   rightDescription: string;
   rightYaml: string;
 }
-export const OnRampsCreateResponsePlannedResourcesItemDiff = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponsePlannedResourcesItemDiff = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: S.String,
     leftDescription: S.String.pipe(T.Body("left_description")),
@@ -812,30 +809,26 @@ export const OnRampsCreateResponsePlannedResourcesItemDiff = /*@__PURE__*/ S.sus
 }) as any as S.Schema<OnRampsCreateResponsePlannedResourcesItemDiff>;
 
 export type OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList>;
+const OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsCreateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsCreateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsCreateResponsePlannedResourcesItemPlannedAction =
   | "no_op"
   | "create"
   | "update"
   | "replace"
   | "destroy";
-export const OnRampsCreateResponsePlannedResourcesItemPlannedAction = S.String;
+const OnRampsCreateResponsePlannedResourcesItemPlannedAction = S.String;
 
 export type OnRampsCreateResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePlannedResourcesItemResourceCloudType = S.String;
+const OnRampsCreateResponsePlannedResourcesItemResourceCloudType = S.String;
 
 export type OnRampsCreateResponsePlannedResourcesItemResourceResourceType =
   | "aws_customer_gateway"
@@ -895,7 +888,7 @@ export type OnRampsCreateResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePlannedResourcesItemResourceResourceType = S.String;
+const OnRampsCreateResponsePlannedResourcesItemResourceResourceType = S.String;
 
 export interface OnRampsCreateResponsePlannedResourcesItemResource {
   id: string;
@@ -905,7 +898,7 @@ export interface OnRampsCreateResponsePlannedResourcesItemResource {
   resourceType: OnRampsCreateResponsePlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsCreateResponsePlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponsePlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsCreateResponsePlannedResourcesItemResourceCloudType.pipe(
@@ -929,7 +922,7 @@ export interface OnRampsCreateResponsePlannedResourcesItem {
   plannedAction: OnRampsCreateResponsePlannedResourcesItemPlannedAction;
   resource: OnRampsCreateResponsePlannedResourcesItemResource;
 }
-export const OnRampsCreateResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: OnRampsCreateResponsePlannedResourcesItemDiff,
     keysRequireReplace: OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
@@ -949,7 +942,7 @@ export const OnRampsCreateResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend
 
 export type OnRampsCreateResponsePlannedResourcesList =
   Array<OnRampsCreateResponsePlannedResourcesItem>;
-export const OnRampsCreateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
+const OnRampsCreateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsCreateResponsePlannedResourcesList>;
 
@@ -957,7 +950,7 @@ export interface OnRampsCreateResponsePostApplyMonthlyCostEstimate {
   currency: string;
   monthlyCost: number;
 }
-export const OnRampsCreateResponsePostApplyMonthlyCostEstimate = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponsePostApplyMonthlyCostEstimate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
@@ -971,59 +964,54 @@ export type OnRampsCreateResponsePostApplyResourcesValueCloudType =
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueCloudType = S.String;
+const OnRampsCreateResponsePostApplyResourcesValueCloudType = S.String;
 
 export type OnRampsCreateResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesValueConfigMap = /*@__PURE__*/ S.Record(
+const OnRampsCreateResponsePostApplyResourcesValueConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsCreateResponsePostApplyResourcesValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueObservationsValue {
   firstObservedAt: string;
   lastObservedAt: string;
   providerId: string;
   resourceId: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueObservationsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      firstObservedAt: S.String.pipe(T.Body("first_observed_at")),
-      lastObservedAt: S.String.pipe(T.Body("last_observed_at")),
-      providerId: S.String.pipe(T.Body("provider_id")),
-      resourceId: S.String.pipe(T.Body("resource_id")),
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponsePostApplyResourcesValueObservationsValue",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsValue>;
+const OnRampsCreateResponsePostApplyResourcesValueObservationsValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    firstObservedAt: S.String.pipe(T.Body("first_observed_at")),
+    lastObservedAt: S.String.pipe(T.Body("last_observed_at")),
+    providerId: S.String.pipe(T.Body("provider_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+  }),
+).annotate({
+  identifier: "OnRampsCreateResponsePostApplyResourcesValueObservationsValue",
+}) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsValue>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesValueObservationsMap = /*@__PURE__*/ S.Record(
+const OnRampsCreateResponsePostApplyResourcesValueObservationsMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue,
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
+const OnRampsCreateResponsePostApplyResourcesValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap>;
+const OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueResourceType =
   | "aws_customer_gateway"
@@ -1083,66 +1071,27 @@ export type OnRampsCreateResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueResourceType = S.String;
+const OnRampsCreateResponsePostApplyResourcesValueResourceType = S.String;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem {
   itemType: string;
   string: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      string: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem {
   itemType: string;
   yaml: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      yaml: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem {
   itemType: string;
   yamlDiff: OnRampsCreateResponsePlannedResourcesItemDiff;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      yamlDiff: OnRampsCreateResponsePlannedResourcesItemDiff.pipe(T.Body("yaml_diff")),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -1201,9 +1150,6 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -1212,58 +1158,17 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenI
   resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -1322,9 +1227,6 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -1333,56 +1235,26 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenI
   resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -1398,7 +1270,7 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenI
   name?: string | null;
   value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -1413,39 +1285,24 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
   ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -1504,9 +1361,6 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -1515,29 +1369,17 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisible
   resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -1596,9 +1438,6 @@ export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -1607,56 +1446,26 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisible
   resourceType: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -1672,7 +1481,7 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisible
   name?: string | null;
   value?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -1687,7 +1496,7 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
   ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
@@ -1698,67 +1507,65 @@ export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItem {
   visibleItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hiddenItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
-        T.Body("hidden_items"),
-      ),
-      name: S.String,
-      visibleItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
-        T.Body("visible_items"),
-      ),
-      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-    }),
+const OnRampsCreateResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hiddenItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+      T.Body("hidden_items"),
+    ),
+    name: S.String,
+    visibleItems: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+      T.Body("visible_items"),
+    ),
+    helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+  }),
 ).annotate({
   identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItem",
 }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsList =
   Array<OnRampsCreateResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsCreateResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponsePostApplyResourcesValueSectionsItem,
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsList>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesValueStateMap =
+const OnRampsCreateResponsePostApplyResourcesValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesValueTagsMap = /*@__PURE__*/ S.Record(
+const OnRampsCreateResponsePostApplyResourcesValueTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType = S.String;
+const OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType = S.String;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueManagedByItem {
   id: string;
   clientType: OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsCreateResponsePostApplyResourcesValueManagedByItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      clientType: OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType.pipe(
-        T.Body("client_type"),
-      ),
-      name: S.String,
-    }),
+const OnRampsCreateResponsePostApplyResourcesValueManagedByItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    clientType: OnRampsCreateResponsePostApplyResourcesValueManagedByItemClientType.pipe(
+      T.Body("client_type"),
+    ),
+    name: S.String,
+  }),
 ).annotate({
   identifier: "OnRampsCreateResponsePostApplyResourcesValueManagedByItem",
 }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsCreateResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsCreateResponsePostApplyResourcesValueManagedByList = /*@__PURE__*/ S.Array(
+const OnRampsCreateResponsePostApplyResourcesValueManagedByList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponsePostApplyResourcesValueManagedByItem,
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueManagedByList>;
 
@@ -1785,7 +1592,7 @@ export interface OnRampsCreateResponsePostApplyResourcesValue {
   url: string;
   managedBy?: OnRampsCreateResponsePostApplyResourcesValueManagedByList | null;
 }
-export const OnRampsCreateResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -1828,7 +1635,7 @@ export const OnRampsCreateResponsePostApplyResourcesValue = /*@__PURE__*/ S.susp
 export type OnRampsCreateResponsePostApplyResourcesMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValue | undefined;
 };
-export const OnRampsCreateResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
+const OnRampsCreateResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsCreateResponsePostApplyResourcesValue,
 ) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesMap>;
@@ -1837,7 +1644,7 @@ export interface OnRampsCreateResponseStatusApplyProgress {
   done: number;
   total: number;
 }
-export const OnRampsCreateResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.Number,
     total: S.Number,
@@ -1859,17 +1666,15 @@ export type OnRampsCreateResponseStatusLifecycleState =
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
   | "OnrampDestroyFailed";
-export const OnRampsCreateResponseStatusLifecycleState = S.String;
+const OnRampsCreateResponseStatusLifecycleState = S.String;
 
 export type OnRampsCreateResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsCreateResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsCreateResponseStatusRoutesList = Array<string>;
-export const OnRampsCreateResponseStatusRoutesList =
+const OnRampsCreateResponseStatusRoutesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseStatusRoutesList>;
 
 export type OnRampsCreateResponseStatusTunnelsList = Array<string>;
-export const OnRampsCreateResponseStatusTunnelsList =
+const OnRampsCreateResponseStatusTunnelsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseStatusTunnelsList>;
 
 export type OnRampsCreateResponseStatusLifecycleErrorsValueCode =
@@ -2028,18 +1833,10 @@ export type OnRampsCreateResponseStatusLifecycleErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const OnRampsCreateResponseStatusLifecycleErrorsValueCode = S.Number;
-
 export type OnRampsCreateResponseStatusLifecycleErrorsValueMeta =
   CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsCreateResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type OnRampsCreateResponseStatusLifecycleErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsCreateResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface OnRampsCreateResponseStatusLifecycleErrorsValue {
   code: OnRampsCreateResponseStatusLifecycleErrorsValueCode;
   message: string;
@@ -2047,13 +1844,10 @@ export interface OnRampsCreateResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsCreateResponseStatusLifecycleErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsValue>;
-
 export type OnRampsCreateResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsCreateResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsCreateResponseStatusLifecycleErrorsMap =
+const OnRampsCreateResponseStatusLifecycleErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsCreateResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsCreateResponseStatus {
@@ -2064,7 +1858,7 @@ export interface OnRampsCreateResponseStatus {
   tunnels: OnRampsCreateResponseStatusTunnelsList;
   lifecycleErrors?: OnRampsCreateResponseStatusLifecycleErrorsMap | null;
 }
-export const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(T.Body("apply_progress")),
     lifecycleState: OnRampsCreateResponseStatusLifecycleState.pipe(T.Body("lifecycle_state")),
@@ -2080,36 +1874,30 @@ export const OnRampsCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnRampsCreateResponseStatus>;
 
 export type OnRampsCreateResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueCloudType = S.String;
+const OnRampsCreateResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsCreateResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsCreateResponseVpcsByIdValueConfigMap =
+const OnRampsCreateResponseVpcsByIdValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsCreateResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsCreateResponseVpcsByIdValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsCreateResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsCreateResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsCreateResponseVpcsByIdValueObservationsMap =
+const OnRampsCreateResponseVpcsByIdValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsCreateResponseVpcsByIdValueProviderIdsList =
+const OnRampsCreateResponseVpcsByIdValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap =
+const OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueResourceType =
@@ -2170,36 +1958,21 @@ export type OnRampsCreateResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueResourceType = S.String;
+const OnRampsCreateResponseVpcsByIdValueResourceType = S.String;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -2258,9 +2031,6 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -2269,29 +2039,17 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -2350,9 +2108,6 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -2361,55 +2116,26 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
+const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -2425,53 +2151,35 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
+const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue)),
+  }),
+).annotate({
+  identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
+}) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList =
   Array<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem,
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -2530,9 +2238,6 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -2541,29 +2246,17 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -2622,9 +2315,6 @@ export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -2633,55 +2323,26 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   resourceType: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
+const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -2697,22 +2358,21 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem 
   name?: string | null;
   value?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
+const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(
+      S.NullOr(OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue),
+    ),
+  }),
+).annotate({
+  identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
+}) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList =
   Array<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem,
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList>;
 
@@ -2722,7 +2382,7 @@ export interface OnRampsCreateResponseVpcsByIdValueSectionsItem {
   visibleItems: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsCreateResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -2739,32 +2399,27 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.su
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsList =
   Array<OnRampsCreateResponseVpcsByIdValueSectionsItem>;
-export const OnRampsCreateResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsCreateResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsCreateResponseVpcsByIdValueSectionsItem,
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsCreateResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsCreateResponseVpcsByIdValueStateMap =
+const OnRampsCreateResponseVpcsByIdValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueStateMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsCreateResponseVpcsByIdValueTagsMap =
+const OnRampsCreateResponseVpcsByIdValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsCreateResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsCreateResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsCreateResponseVpcsByIdValueManagedByItemClientType = S.String;
-
 export interface OnRampsCreateResponseVpcsByIdValueManagedByItem {
   id: string;
   clientType: OnRampsCreateResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsCreateResponseVpcsByIdValueManagedByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
-
 export type OnRampsCreateResponseVpcsByIdValueManagedByList =
   Array<OnRampsCreateResponseVpcsByIdValueManagedByItem>;
-export const OnRampsCreateResponseVpcsByIdValueManagedByList =
+const OnRampsCreateResponseVpcsByIdValueManagedByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsCreateResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsCreateResponseVpcsByIdValue {
@@ -2790,7 +2445,7 @@ export interface OnRampsCreateResponseVpcsByIdValue {
   url: string;
   managedBy?: OnRampsCreateResponseVpcsByIdValueManagedByList | null;
 }
-export const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -2827,13 +2482,13 @@ export const OnRampsCreateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
 export type OnRampsCreateResponseVpcsByIdMap = {
   [key: string]: OnRampsCreateResponseVpcsByIdValue | undefined;
 };
-export const OnRampsCreateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
+const OnRampsCreateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsCreateResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsCreateResponseVpcsByIdMap>;
 
 export type OnRampsCreateResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsCreateResponseVpcsByIdUnavailableList =
+const OnRampsCreateResponseVpcsByIdUnavailableList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsCreateResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2869,7 +2524,7 @@ export interface CreateOnRampResponse {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsCreateResponseVpcsByIdUnavailableList | null;
 }
-export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsCreateResponseCloudType.pipe(T.Body("cloud_type")),
@@ -2934,7 +2589,7 @@ export interface DeleteCatalogSyncRequest {
   syncId: string;
   deleteDestination?: boolean;
 }
-export const DeleteCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
@@ -2954,7 +2609,7 @@ export const DeleteCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCatalogSyncResponse {
   id: string;
 }
-export const DeleteCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2966,7 +2621,7 @@ export interface DeleteCloudIntegrationRequest {
   accountId: string;
   providerId: string;
 }
-export const DeleteCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
@@ -2987,7 +2642,7 @@ export const DeleteCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCloudIntegrationResponse {
   id: string;
 }
-export const DeleteCloudIntegrationResponse =
+const DeleteCloudIntegrationResponse =
   DeleteCatalogSyncResponse as any as S.Schema<DeleteCloudIntegrationResponse>;
 
 export interface DeleteOnRampRequest {
@@ -2996,7 +2651,7 @@ export interface DeleteOnRampRequest {
   destroy?: boolean;
   force?: boolean;
 }
-export const DeleteOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -3017,7 +2672,7 @@ export const DeleteOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOnRampResponse {
   id: string;
 }
-export const DeleteOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3026,7 +2681,7 @@ export const DeleteOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DiscoverAllCloudIntegrationRequest {
   accountId: string;
 }
-export const DiscoverAllCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DiscoverAllCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -3043,7 +2698,7 @@ export const DiscoverAllCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoverAllCloudIntegrationRequest>;
 
 export interface DiscoverAllCloudIntegrationResponse {}
-export const DiscoverAllCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const DiscoverAllCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DiscoverAllCloudIntegrationResponse",
@@ -3054,7 +2709,7 @@ export interface DiscoverCloudIntegrationRequest {
   providerId: string;
   v2?: boolean;
 }
-export const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
@@ -3073,14 +2728,14 @@ export const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoverCloudIntegrationRequest>;
 
 export interface DiscoverCloudIntegrationResponse {}
-export const DiscoverCloudIntegrationResponse =
+const DiscoverCloudIntegrationResponse =
   DiscoverAllCloudIntegrationResponse as any as S.Schema<DiscoverCloudIntegrationResponse>;
 
 export interface ExportOnRampRequest {
   accountId: string;
   onrampId: string;
 }
-export const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -3096,10 +2751,10 @@ export const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportOnRampRequest" }) as any as S.Schema<ExportOnRampRequest>;
 
 export interface ExportOnRampResponse {}
-export const ExportOnRampResponse = ApplyOnRampResponse as any as S.Schema<ExportOnRampResponse>;
+const ExportOnRampResponse = ApplyOnRampResponse as any as S.Schema<ExportOnRampResponse>;
 
 export type ResourcesExportRequestResourceIdList = Array<string>;
-export const ResourcesExportRequestResourceIdList =
+const ResourcesExportRequestResourceIdList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesExportRequestResourceIdList>;
 
 export type ResourcesExportRequestResourceType =
@@ -3160,17 +2815,17 @@ export type ResourcesExportRequestResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesExportRequestResourceType = S.String;
+const ResourcesExportRequestResourceType = S.String;
 
 export type ResourcesExportRequestResourceTypeList = Array<
   ResourcesExportRequestResourceType | (string & {})
 >;
-export const ResourcesExportRequestResourceTypeList = /*@__PURE__*/ S.Array(
+const ResourcesExportRequestResourceTypeList = /*@__PURE__*/ S.Array(
   ResourcesExportRequestResourceType,
 ) as any as S.Schema<ResourcesExportRequestResourceTypeList>;
 
 export type ResourcesExportRequestSearchList = Array<string>;
-export const ResourcesExportRequestSearchList =
+const ResourcesExportRequestSearchList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesExportRequestSearchList>;
 
 export interface ExportResourceRequest {
@@ -3186,7 +2841,7 @@ export interface ExportResourceRequest {
   search?: ResourcesExportRequestSearchList;
   v2?: boolean;
 }
-export const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     desc: S.optional(S.Boolean.pipe(T.Query())),
@@ -3210,14 +2865,13 @@ export const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportResourceRequest" }) as any as S.Schema<ExportResourceRequest>;
 
 export interface ExportResourceResponse {}
-export const ExportResourceResponse =
-  ApplyOnRampResponse as any as S.Schema<ExportResourceResponse>;
+const ExportResourceResponse = ApplyOnRampResponse as any as S.Schema<ExportResourceResponse>;
 
 export interface GetCatalogSyncRequest {
   accountId: string;
   syncId: string;
 }
-export const GetCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
@@ -3233,10 +2887,10 @@ export const GetCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCatalogSyncRequest" }) as any as S.Schema<GetCatalogSyncRequest>;
 
 export type CatalogSyncsGetResponseDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsGetResponseDestinationType = S.String;
+const CatalogSyncsGetResponseDestinationType = S.String;
 
 export type CatalogSyncsGetResponseUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsGetResponseUpdateMode = S.String;
+const CatalogSyncsGetResponseUpdateMode = S.String;
 
 export type CatalogSyncsGetResponseErrorsValueCode =
   | 1001
@@ -3394,14 +3048,8 @@ export type CatalogSyncsGetResponseErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const CatalogSyncsGetResponseErrorsValueCode = S.Number;
-
 export type CatalogSyncsGetResponseErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsGetResponseErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type CatalogSyncsGetResponseErrorsValueSource = CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsGetResponseErrorsValueSource = CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface CatalogSyncsGetResponseErrorsValue {
   code: CatalogSyncsGetResponseErrorsValueCode;
   message: string;
@@ -3409,13 +3057,10 @@ export interface CatalogSyncsGetResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsGetResponseErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsGetResponseErrorsValue>;
-
 export type CatalogSyncsGetResponseErrorsMap = {
   [key: string]: CatalogSyncsGetResponseErrorsValue | undefined;
 };
-export const CatalogSyncsGetResponseErrorsMap =
+const CatalogSyncsGetResponseErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsGetResponseErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3433,7 +3078,7 @@ export interface GetCatalogSyncResponse {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
@@ -3459,7 +3104,7 @@ export interface GetCloudIntegrationRequest {
   providerId: string;
   status?: boolean;
 }
-export const GetCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
@@ -3478,10 +3123,10 @@ export const GetCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCloudIntegrationRequest>;
 
 export type CloudIntegrationsGetResponseCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const CloudIntegrationsGetResponseCloudType = S.String;
+const CloudIntegrationsGetResponseCloudType = S.String;
 
 export type CloudIntegrationsGetResponseLifecycleState = "ACTIVE" | "PENDING_SETUP" | "RETIRED";
-export const CloudIntegrationsGetResponseLifecycleState = S.String;
+const CloudIntegrationsGetResponseLifecycleState = S.String;
 
 export type CloudIntegrationsGetResponseState =
   | "UNSPECIFIED"
@@ -3489,7 +3134,7 @@ export type CloudIntegrationsGetResponseState =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsGetResponseState = S.String;
+const CloudIntegrationsGetResponseState = S.String;
 
 export type CloudIntegrationsGetResponseStateV2 =
   | "UNSPECIFIED"
@@ -3497,25 +3142,19 @@ export type CloudIntegrationsGetResponseStateV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsGetResponseStateV2 = S.String;
+const CloudIntegrationsGetResponseStateV2 = S.String;
 
 export type CloudIntegrationsGetResponseStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsGetResponseStatusDiscoveryProgress =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsGetResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsGetResponseStatusDiscoveryProgressV2 =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
   | "UNSPECIFIED"
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsGetResponseStatusLastDiscoveryStatus = S.String;
+const CloudIntegrationsGetResponseStatusLastDiscoveryStatus = S.String;
 
 export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
   | "UNSPECIFIED"
@@ -3523,21 +3162,21 @@ export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 = S.String;
+const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsGetResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsGetResponseStatusRegionsList =
+const CloudIntegrationsGetResponseStatusRegionsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsGetResponseStatusRegionsList>;
 
 export type CloudIntegrationsGetResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const CloudIntegrationsGetResponseStatusInUseByItemClientType = S.String;
+const CloudIntegrationsGetResponseStatusInUseByItemClientType = S.String;
 
 export interface CloudIntegrationsGetResponseStatusInUseByItem {
   id: string;
   clientType: CloudIntegrationsGetResponseStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsGetResponseStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsGetResponseStatusInUseByItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     clientType: CloudIntegrationsGetResponseStatusInUseByItemClientType.pipe(T.Body("client_type")),
@@ -3549,7 +3188,7 @@ export const CloudIntegrationsGetResponseStatusInUseByItem = /*@__PURE__*/ S.sus
 
 export type CloudIntegrationsGetResponseStatusInUseByList =
   Array<CloudIntegrationsGetResponseStatusInUseByItem>;
-export const CloudIntegrationsGetResponseStatusInUseByList = /*@__PURE__*/ S.Array(
+const CloudIntegrationsGetResponseStatusInUseByList = /*@__PURE__*/ S.Array(
   CloudIntegrationsGetResponseStatusInUseByItem,
 ) as any as S.Schema<CloudIntegrationsGetResponseStatusInUseByList>;
 
@@ -3571,7 +3210,7 @@ export interface CloudIntegrationsGetResponseStatus {
   lastDiscoveryStartedAtV2?: string | null;
   lastUpdated?: string | null;
 }
-export const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
       T.Body("discovery_progress"),
@@ -3633,7 +3272,7 @@ export interface GetCloudIntegrationResponse {
   gcpServiceAccountEmail?: string | null;
   status?: CloudIntegrationsGetResponseStatus | null;
 }
-export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: CloudIntegrationsGetResponseCloudType.pipe(T.Body("cloud_type")),
@@ -3664,7 +3303,7 @@ export interface GetOnRampRequest {
   status?: boolean;
   vpcs?: boolean;
 }
-export const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -3684,52 +3323,43 @@ export const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOnRampRequest" }) as any as S.Schema<GetOnRampRequest>;
 
 export type OnRampsGetResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsGetResponseCloudType = S.String;
+const OnRampsGetResponseCloudType = S.String;
 
 export type OnRampsGetResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsGetResponseType = S.String;
+const OnRampsGetResponseType = S.String;
 
 export type OnRampsGetResponseAttachedHubsList = Array<string>;
-export const OnRampsGetResponseAttachedHubsList =
+const OnRampsGetResponseAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseAttachedHubsList>;
 
 export type OnRampsGetResponseAttachedVpcsList = Array<string>;
-export const OnRampsGetResponseAttachedVpcsList =
+const OnRampsGetResponseAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseAttachedVpcsList>;
 
 export type OnRampsGetResponsePlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsGetResponsePlannedMonthlyCostEstimate =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsGetResponsePlannedResourcesItemDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponsePlannedResourcesItemDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList =
+const OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsGetResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsGetResponsePlannedResourcesItemMonthlyCostEstimateDiff =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsGetResponsePlannedResourcesItemPlannedAction =
   | "no_op"
   | "create"
   | "update"
   | "replace"
   | "destroy";
-export const OnRampsGetResponsePlannedResourcesItemPlannedAction = S.String;
+const OnRampsGetResponsePlannedResourcesItemPlannedAction = S.String;
 
 export type OnRampsGetResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePlannedResourcesItemResourceCloudType = S.String;
+const OnRampsGetResponsePlannedResourcesItemResourceCloudType = S.String;
 
 export type OnRampsGetResponsePlannedResourcesItemResourceResourceType =
   | "aws_customer_gateway"
@@ -3789,7 +3419,7 @@ export type OnRampsGetResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePlannedResourcesItemResourceResourceType = S.String;
+const OnRampsGetResponsePlannedResourcesItemResourceResourceType = S.String;
 
 export interface OnRampsGetResponsePlannedResourcesItemResource {
   id: string;
@@ -3799,7 +3429,7 @@ export interface OnRampsGetResponsePlannedResourcesItemResource {
   resourceType: OnRampsGetResponsePlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsGetResponsePlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponsePlannedResourcesItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsGetResponsePlannedResourcesItemResourceCloudType.pipe(T.Body("cloud_type")),
@@ -3821,7 +3451,7 @@ export interface OnRampsGetResponsePlannedResourcesItem {
   plannedAction: OnRampsGetResponsePlannedResourcesItemPlannedAction;
   resource: OnRampsGetResponsePlannedResourcesItemResource;
 }
-export const OnRampsGetResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: OnRampsCreateResponsePlannedResourcesItemDiff,
     keysRequireReplace: OnRampsGetResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
@@ -3840,52 +3470,43 @@ export const OnRampsGetResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<OnRampsGetResponsePlannedResourcesItem>;
 
 export type OnRampsGetResponsePlannedResourcesList = Array<OnRampsGetResponsePlannedResourcesItem>;
-export const OnRampsGetResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
+const OnRampsGetResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsGetResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsGetResponsePlannedResourcesList>;
 
 export type OnRampsGetResponsePostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsGetResponsePostApplyMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsGetResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueCloudType = S.String;
+const OnRampsGetResponsePostApplyResourcesValueCloudType = S.String;
 
 export type OnRampsGetResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueConfigMap =
+const OnRampsGetResponsePostApplyResourcesValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsGetResponsePostApplyResourcesValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsGetResponsePostApplyResourcesValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsGetResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsGetResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueObservationsMap =
+const OnRampsGetResponsePostApplyResourcesValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
+const OnRampsGetResponsePostApplyResourcesValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap =
+const OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueResourceType =
@@ -3946,36 +3567,21 @@ export type OnRampsGetResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueResourceType = S.String;
+const OnRampsGetResponsePostApplyResourcesValueResourceType = S.String;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -4034,9 +3640,6 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -4045,29 +3648,17 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItem
   resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -4126,9 +3717,6 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -4137,56 +3725,26 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItem
   resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
+const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -4202,7 +3760,7 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItem
   name?: string | null;
   value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
+const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -4217,39 +3775,23 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
+const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+  OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
+) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -4308,9 +3850,6 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIte
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -4319,29 +3858,17 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleIte
   resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -4400,9 +3927,6 @@ export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIte
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -4411,56 +3935,26 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleIte
   resourceType: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
+const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -4476,7 +3970,7 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleIte
   name?: string | null;
   value?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
+const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -4491,10 +3985,9 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   Array<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
+const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+  OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
+) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItem {
   hiddenItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList;
@@ -4502,7 +3995,7 @@ export interface OnRampsGetResponsePostApplyResourcesValueSectionsItem {
   visibleItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsGetResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -4519,37 +4012,32 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItem = /*@__PURE__
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsList =
   Array<OnRampsGetResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsGetResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsGetResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsGetResponsePostApplyResourcesValueSectionsItem,
 ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsList>;
 
 export type OnRampsGetResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueStateMap =
+const OnRampsGetResponsePostApplyResourcesValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesValueTagsMap =
+const OnRampsGetResponsePostApplyResourcesValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType = S.String;
-
 export interface OnRampsGetResponsePostApplyResourcesValueManagedByItem {
   id: string;
   clientType: OnRampsGetResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsGetResponsePostApplyResourcesValueManagedByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
-
 export type OnRampsGetResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsGetResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsGetResponsePostApplyResourcesValueManagedByList =
+const OnRampsGetResponsePostApplyResourcesValueManagedByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueManagedByList>;
 
 export interface OnRampsGetResponsePostApplyResourcesValue {
@@ -4575,7 +4063,7 @@ export interface OnRampsGetResponsePostApplyResourcesValue {
   url: string;
   managedBy?: OnRampsGetResponsePostApplyResourcesValueManagedByList | null;
 }
-export const OnRampsGetResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -4616,14 +4104,12 @@ export const OnRampsGetResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend
 export type OnRampsGetResponsePostApplyResourcesMap = {
   [key: string]: OnRampsGetResponsePostApplyResourcesValue | undefined;
 };
-export const OnRampsGetResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
+const OnRampsGetResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsGetResponsePostApplyResourcesValue,
 ) as any as S.Schema<OnRampsGetResponsePostApplyResourcesMap>;
 
 export type OnRampsGetResponseStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsGetResponseStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsGetResponseStatusLifecycleState =
   | "OnrampNeedsApply"
   | "OnrampPendingPlan"
@@ -4637,17 +4123,15 @@ export type OnRampsGetResponseStatusLifecycleState =
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
   | "OnrampDestroyFailed";
-export const OnRampsGetResponseStatusLifecycleState = S.String;
+const OnRampsGetResponseStatusLifecycleState = S.String;
 
 export type OnRampsGetResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsGetResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsGetResponseStatusRoutesList = Array<string>;
-export const OnRampsGetResponseStatusRoutesList =
+const OnRampsGetResponseStatusRoutesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseStatusRoutesList>;
 
 export type OnRampsGetResponseStatusTunnelsList = Array<string>;
-export const OnRampsGetResponseStatusTunnelsList =
+const OnRampsGetResponseStatusTunnelsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseStatusTunnelsList>;
 
 export type OnRampsGetResponseStatusLifecycleErrorsValueCode =
@@ -4806,18 +4290,10 @@ export type OnRampsGetResponseStatusLifecycleErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const OnRampsGetResponseStatusLifecycleErrorsValueCode = S.Number;
-
 export type OnRampsGetResponseStatusLifecycleErrorsValueMeta =
   CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsGetResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type OnRampsGetResponseStatusLifecycleErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsGetResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface OnRampsGetResponseStatusLifecycleErrorsValue {
   code: OnRampsGetResponseStatusLifecycleErrorsValueCode;
   message: string;
@@ -4825,13 +4301,10 @@ export interface OnRampsGetResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsGetResponseStatusLifecycleErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsValue>;
-
 export type OnRampsGetResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsGetResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsGetResponseStatusLifecycleErrorsMap =
+const OnRampsGetResponseStatusLifecycleErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsGetResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsGetResponseStatus {
@@ -4842,7 +4315,7 @@ export interface OnRampsGetResponseStatus {
   tunnels: OnRampsGetResponseStatusTunnelsList;
   lifecycleErrors?: OnRampsGetResponseStatusLifecycleErrorsMap | null;
 }
-export const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(T.Body("apply_progress")),
     lifecycleState: OnRampsGetResponseStatusLifecycleState.pipe(T.Body("lifecycle_state")),
@@ -4856,36 +4329,30 @@ export const OnRampsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OnRampsGetResponseStatus" }) as any as S.Schema<OnRampsGetResponseStatus>;
 
 export type OnRampsGetResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueCloudType = S.String;
+const OnRampsGetResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsGetResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsGetResponseVpcsByIdValueConfigMap =
+const OnRampsGetResponseVpcsByIdValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsGetResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsGetResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsGetResponseVpcsByIdValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsGetResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsGetResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsGetResponseVpcsByIdValueObservationsMap =
+const OnRampsGetResponseVpcsByIdValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsGetResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsGetResponseVpcsByIdValueProviderIdsList =
+const OnRampsGetResponseVpcsByIdValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap =
+const OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsGetResponseVpcsByIdValueResourceType =
@@ -4946,36 +4413,21 @@ export type OnRampsGetResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueResourceType = S.String;
+const OnRampsGetResponseVpcsByIdValueResourceType = S.String;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -5034,9 +4486,6 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnRe
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -5045,29 +4494,17 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue
   resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -5126,9 +4563,6 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnLi
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -5137,55 +4571,26 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue
   resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
+const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -5201,51 +4606,35 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue)),
-    }),
+const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue)),
+  }),
 ).annotate({
   identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem",
 }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList =
   Array<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem,
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -5304,9 +4693,6 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnR
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -5315,29 +4701,17 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValu
   resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -5396,9 +4770,6 @@ export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnL
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -5407,55 +4778,26 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValu
   resourceType: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
+const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -5471,20 +4813,19 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem {
   name?: string | null;
   value?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue)),
-    }),
+const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue)),
+  }),
 ).annotate({
   identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem",
 }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList =
   Array<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem,
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList>;
 
@@ -5494,7 +4835,7 @@ export interface OnRampsGetResponseVpcsByIdValueSectionsItem {
   visibleItems: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsGetResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -5511,32 +4852,27 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspe
 
 export type OnRampsGetResponseVpcsByIdValueSectionsList =
   Array<OnRampsGetResponseVpcsByIdValueSectionsItem>;
-export const OnRampsGetResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsGetResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsGetResponseVpcsByIdValueSectionsItem,
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsGetResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsGetResponseVpcsByIdValueStateMap =
+const OnRampsGetResponseVpcsByIdValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueStateMap>;
 
 export type OnRampsGetResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsGetResponseVpcsByIdValueTagsMap =
+const OnRampsGetResponseVpcsByIdValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsGetResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsGetResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsGetResponseVpcsByIdValueManagedByItemClientType = S.String;
-
 export interface OnRampsGetResponseVpcsByIdValueManagedByItem {
   id: string;
   clientType: OnRampsGetResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsGetResponseVpcsByIdValueManagedByItem =
-  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByItem>;
-
 export type OnRampsGetResponseVpcsByIdValueManagedByList =
   Array<OnRampsGetResponseVpcsByIdValueManagedByItem>;
-export const OnRampsGetResponseVpcsByIdValueManagedByList =
+const OnRampsGetResponseVpcsByIdValueManagedByList =
   CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<OnRampsGetResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsGetResponseVpcsByIdValue {
@@ -5562,7 +4898,7 @@ export interface OnRampsGetResponseVpcsByIdValue {
   url: string;
   managedBy?: OnRampsGetResponseVpcsByIdValueManagedByList | null;
 }
-export const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -5599,13 +4935,13 @@ export const OnRampsGetResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
 export type OnRampsGetResponseVpcsByIdMap = {
   [key: string]: OnRampsGetResponseVpcsByIdValue | undefined;
 };
-export const OnRampsGetResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
+const OnRampsGetResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsGetResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdMap>;
 
 export type OnRampsGetResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsGetResponseVpcsByIdUnavailableList =
+const OnRampsGetResponseVpcsByIdUnavailableList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsGetResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5641,7 +4977,7 @@ export interface GetOnRampResponse {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsGetResponseVpcsByIdUnavailableList | null;
 }
-export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsGetResponseCloudType.pipe(T.Body("cloud_type")),
@@ -5706,7 +5042,7 @@ export interface GetResourceRequest {
   resourceId: string;
   v2?: boolean;
 }
-export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     resourceId: S.String.pipe(T.Label("resource_id")),
@@ -5723,34 +5059,28 @@ export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResourceRequest" }) as any as S.Schema<GetResourceRequest>;
 
 export type ResourcesGetResponseCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const ResourcesGetResponseCloudType = S.String;
+const ResourcesGetResponseCloudType = S.String;
 
 export type ResourcesGetResponseConfigMap = { [key: string]: unknown | undefined };
-export const ResourcesGetResponseConfigMap =
+const ResourcesGetResponseConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesGetResponseConfigMap>;
 
 export type ResourcesGetResponseMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const ResourcesGetResponseMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type ResourcesGetResponseObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const ResourcesGetResponseObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type ResourcesGetResponseObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const ResourcesGetResponseObservationsMap =
+const ResourcesGetResponseObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<ResourcesGetResponseObservationsMap>;
 
 export type ResourcesGetResponseProviderIdsList = Array<string>;
-export const ResourcesGetResponseProviderIdsList =
+const ResourcesGetResponseProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesGetResponseProviderIdsList>;
 
 export type ResourcesGetResponseProviderNamesByIdMap = { [key: string]: string | undefined };
-export const ResourcesGetResponseProviderNamesByIdMap =
+const ResourcesGetResponseProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesGetResponseProviderNamesByIdMap>;
 
 export type ResourcesGetResponseResourceType =
@@ -5811,36 +5141,21 @@ export type ResourcesGetResponseResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseResourceType = S.String;
+const ResourcesGetResponseResourceType = S.String;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -5899,9 +5214,6 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePrevi
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -5910,39 +5222,17 @@ export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResource
   resourceType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      resourcePreview:
-        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
-          T.Body("resource_preview"),
-        ),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -6001,9 +5291,6 @@ export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -6012,55 +5299,26 @@ export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem
   resourceType: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem;
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
+const ResourcesGetResponseSectionsItemHiddenItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["itemType", "string"],
     ["itemType", "yaml"],
@@ -6075,7 +5333,7 @@ export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: ResourcesGetResponseSectionsItemHiddenItemsItemValue | null;
 }
-export const ResourcesGetResponseSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesGetResponseSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     helpText: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -6087,38 +5345,23 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItem = /*@__PURE__*/ S.s
 
 export type ResourcesGetResponseSectionsItemHiddenItemsList =
   Array<ResourcesGetResponseSectionsItemHiddenItemsItem>;
-export const ResourcesGetResponseSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const ResourcesGetResponseSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   ResourcesGetResponseSectionsItemHiddenItemsItem,
 ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsList>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -6177,9 +5420,6 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePrev
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -6188,29 +5428,17 @@ export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourc
   resourceType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -6269,9 +5497,6 @@ export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemList
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -6280,55 +5505,26 @@ export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListIte
   resourceType: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem;
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
+const ResourcesGetResponseSectionsItemVisibleItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["itemType", "string"],
     ["itemType", "yaml"],
@@ -6343,7 +5539,7 @@ export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
   name?: string | null;
   value?: ResourcesGetResponseSectionsItemVisibleItemsItemValue | null;
 }
-export const ResourcesGetResponseSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesGetResponseSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     helpText: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -6355,7 +5551,7 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItem = /*@__PURE__*/ S.
 
 export type ResourcesGetResponseSectionsItemVisibleItemsList =
   Array<ResourcesGetResponseSectionsItemVisibleItemsItem>;
-export const ResourcesGetResponseSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const ResourcesGetResponseSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   ResourcesGetResponseSectionsItemVisibleItemsItem,
 ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsList>;
 
@@ -6365,7 +5561,7 @@ export interface ResourcesGetResponseSectionsItem {
   visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: ResourcesGetResponseSectionsItemHiddenItemsList.pipe(T.Body("hidden_items")),
     name: S.String,
@@ -6377,31 +5573,26 @@ export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesGetResponseSectionsItem>;
 
 export type ResourcesGetResponseSectionsList = Array<ResourcesGetResponseSectionsItem>;
-export const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
+const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
   ResourcesGetResponseSectionsItem,
 ) as any as S.Schema<ResourcesGetResponseSectionsList>;
 
 export type ResourcesGetResponseStateMap = { [key: string]: unknown | undefined };
-export const ResourcesGetResponseStateMap =
+const ResourcesGetResponseStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesGetResponseStateMap>;
 
 export type ResourcesGetResponseTagsMap = { [key: string]: string | undefined };
-export const ResourcesGetResponseTagsMap =
+const ResourcesGetResponseTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesGetResponseTagsMap>;
 
 export type ResourcesGetResponseManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const ResourcesGetResponseManagedByItemClientType = S.String;
-
 export interface ResourcesGetResponseManagedByItem {
   id: string;
   clientType: ResourcesGetResponseManagedByItemClientType;
   name: string;
 }
-export const ResourcesGetResponseManagedByItem =
-  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<ResourcesGetResponseManagedByItem>;
-
 export type ResourcesGetResponseManagedByList = Array<ResourcesGetResponseManagedByItem>;
-export const ResourcesGetResponseManagedByList =
+const ResourcesGetResponseManagedByList =
   CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<ResourcesGetResponseManagedByList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6428,7 +5619,7 @@ export interface GetResourceResponse {
   url: string;
   managedBy?: ResourcesGetResponseManagedByList | null;
 }
-export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -6462,7 +5653,7 @@ export interface InitialSetupCloudIntegrationRequest {
   accountId: string;
   providerId: string;
 }
-export const InitialSetupCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const InitialSetupCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
@@ -6483,52 +5674,22 @@ export interface CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy {
   awsTrustPolicy: string;
   itemType: string;
 }
-export const CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsTrustPolicy: S.String.pipe(T.Body("aws_trust_policy")),
-    itemType: S.String.pipe(T.Body("item_type")),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy",
-}) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy>;
-
 export interface CloudIntegrationsInitialSetupResultMcnAzureSetup {
   azureConsentUrl: string;
   integrationIdentityTag: string;
   itemType: string;
   tagCliCommand: string;
 }
-export const CloudIntegrationsInitialSetupResultMcnAzureSetup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureConsentUrl: S.String.pipe(T.Body("azure_consent_url")),
-    integrationIdentityTag: S.String.pipe(T.Body("integration_identity_tag")),
-    itemType: S.String.pipe(T.Body("item_type")),
-    tagCliCommand: S.String.pipe(T.Body("tag_cli_command")),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsInitialSetupResultMcnAzureSetup",
-}) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnAzureSetup>;
-
 export interface CloudIntegrationsInitialSetupResultMcnGcpSetup {
   integrationIdentityTag: string;
   itemType: string;
   tagCliCommand: string;
 }
-export const CloudIntegrationsInitialSetupResultMcnGcpSetup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationIdentityTag: S.String.pipe(T.Body("integration_identity_tag")),
-    itemType: S.String.pipe(T.Body("item_type")),
-    tagCliCommand: S.String.pipe(T.Body("tag_cli_command")),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsInitialSetupResultMcnGcpSetup",
-}) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnGcpSetup>;
-
 export type CloudIntegrationsInitialSetupResult =
   | CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy
   | CloudIntegrationsInitialSetupResultMcnAzureSetup
   | CloudIntegrationsInitialSetupResultMcnGcpSetup;
-export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
+const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["awsTrustPolicy", "itemType"],
     ["azureConsentUrl", "integrationIdentityTag", "itemType", "tagCliCommand"],
@@ -6537,7 +5698,7 @@ export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type InitialSetupCloudIntegrationResponse = CloudIntegrationsInitialSetupResult;
-export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   CloudIntegrationsInitialSetupResult.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -6547,14 +5708,14 @@ export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<InitialSetupCloudIntegrationResponse>;
 
 export type CatalogSyncsPrebuiltPoliciesListRequestDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsPrebuiltPoliciesListRequestDestinationType = S.String;
+const CatalogSyncsPrebuiltPoliciesListRequestDestinationType = S.String;
 
 export interface ListCatalogSyncPrebuiltPoliciesRequest {
   accountId: string;
   /** Specify type of destination, omit to return all. */
   destinationType?: CatalogSyncsPrebuiltPoliciesListRequestDestinationType | (string & {});
 }
-export const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationType: S.optional(
@@ -6576,14 +5737,13 @@ export const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(()
 export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
   | "NONE"
   | "ZERO_TRUST_LIST";
-export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem = S.String;
+const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem = S.String;
 
 export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
   Array<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem>;
-export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
-  /*@__PURE__*/ S.Array(
-    CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem,
-  ) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList>;
+const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList = /*@__PURE__*/ S.Array(
+  CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem,
+) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList>;
 
 export interface CatalogSyncsPrebuiltPoliciesListResultItem {
   applicableDestinations: CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList;
@@ -6591,7 +5751,7 @@ export interface CatalogSyncsPrebuiltPoliciesListResultItem {
   policyName: string;
   policyString: string;
 }
-export const CatalogSyncsPrebuiltPoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const CatalogSyncsPrebuiltPoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicableDestinations:
       CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList.pipe(
@@ -6607,7 +5767,7 @@ export const CatalogSyncsPrebuiltPoliciesListResultItem = /*@__PURE__*/ S.suspen
 
 export type CatalogSyncsPrebuiltPoliciesListResultList =
   Array<CatalogSyncsPrebuiltPoliciesListResultItem>;
-export const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
+const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
   CatalogSyncsPrebuiltPoliciesListResultItem,
 ) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultList>;
 
@@ -6617,7 +5777,7 @@ export interface ListCatalogSyncPrebuiltPoliciesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CatalogSyncsPrebuiltPoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -6629,7 +5789,7 @@ export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend((
 export interface ListCatalogSyncsRequest {
   accountId: string;
 }
-export const ListCatalogSyncsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCatalogSyncsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -6640,10 +5800,10 @@ export const ListCatalogSyncsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCatalogSyncsRequest" }) as any as S.Schema<ListCatalogSyncsRequest>;
 
 export type CatalogSyncsListResultItemDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsListResultItemDestinationType = S.String;
+const CatalogSyncsListResultItemDestinationType = S.String;
 
 export type CatalogSyncsListResultItemUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsListResultItemUpdateMode = S.String;
+const CatalogSyncsListResultItemUpdateMode = S.String;
 
 export type CatalogSyncsListResultItemErrorsValueCode =
   | 1001
@@ -6801,16 +5961,9 @@ export type CatalogSyncsListResultItemErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const CatalogSyncsListResultItemErrorsValueCode = S.Number;
-
 export type CatalogSyncsListResultItemErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsListResultItemErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type CatalogSyncsListResultItemErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsListResultItemErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface CatalogSyncsListResultItemErrorsValue {
   code: CatalogSyncsListResultItemErrorsValueCode;
   message: string;
@@ -6818,13 +5971,10 @@ export interface CatalogSyncsListResultItemErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsListResultItemErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsListResultItemErrorsValue>;
-
 export type CatalogSyncsListResultItemErrorsMap = {
   [key: string]: CatalogSyncsListResultItemErrorsValue | undefined;
 };
-export const CatalogSyncsListResultItemErrorsMap =
+const CatalogSyncsListResultItemErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsListResultItemErrorsMap>;
 
 export interface CatalogSyncsListResultItem {
@@ -6841,7 +5991,7 @@ export interface CatalogSyncsListResultItem {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
@@ -6865,7 +6015,7 @@ export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogSyncsListResultItem>;
 
 export type CatalogSyncsListResultList = Array<CatalogSyncsListResultItem>;
-export const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
+const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
   CatalogSyncsListResultItem,
 ) as any as S.Schema<CatalogSyncsListResultList>;
 
@@ -6875,7 +6025,7 @@ export interface ListCatalogSyncsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CatalogSyncsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -6890,7 +6040,7 @@ export interface ListCloudIntegrationsRequest {
   orderBy?: string;
   status?: boolean;
 }
-export const ListCloudIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cloudflare: S.optional(S.Boolean.pipe(T.Query())),
@@ -6905,10 +6055,10 @@ export const ListCloudIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudIntegrationsRequest>;
 
 export type CloudIntegrationsListResultItemCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const CloudIntegrationsListResultItemCloudType = S.String;
+const CloudIntegrationsListResultItemCloudType = S.String;
 
 export type CloudIntegrationsListResultItemLifecycleState = "ACTIVE" | "PENDING_SETUP" | "RETIRED";
-export const CloudIntegrationsListResultItemLifecycleState = S.String;
+const CloudIntegrationsListResultItemLifecycleState = S.String;
 
 export type CloudIntegrationsListResultItemState =
   | "UNSPECIFIED"
@@ -6916,7 +6066,7 @@ export type CloudIntegrationsListResultItemState =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsListResultItemState = S.String;
+const CloudIntegrationsListResultItemState = S.String;
 
 export type CloudIntegrationsListResultItemStateV2 =
   | "UNSPECIFIED"
@@ -6924,25 +6074,19 @@ export type CloudIntegrationsListResultItemStateV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsListResultItemStateV2 = S.String;
+const CloudIntegrationsListResultItemStateV2 = S.String;
 
 export type CloudIntegrationsListResultItemStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsListResultItemStatusDiscoveryProgress =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsListResultItemStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsListResultItemStatusDiscoveryProgressV2 =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
   | "UNSPECIFIED"
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsListResultItemStatusLastDiscoveryStatus = S.String;
+const CloudIntegrationsListResultItemStatusLastDiscoveryStatus = S.String;
 
 export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
   | "UNSPECIFIED"
@@ -6950,26 +6094,21 @@ export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 = S.String;
+const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsListResultItemStatusRegionsList = Array<string>;
-export const CloudIntegrationsListResultItemStatusRegionsList =
+const CloudIntegrationsListResultItemStatusRegionsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsListResultItemStatusRegionsList>;
 
 export type CloudIntegrationsListResultItemStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const CloudIntegrationsListResultItemStatusInUseByItemClientType = S.String;
-
 export interface CloudIntegrationsListResultItemStatusInUseByItem {
   id: string;
   clientType: CloudIntegrationsListResultItemStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsListResultItemStatusInUseByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByItem>;
-
 export type CloudIntegrationsListResultItemStatusInUseByList =
   Array<CloudIntegrationsListResultItemStatusInUseByItem>;
-export const CloudIntegrationsListResultItemStatusInUseByList =
+const CloudIntegrationsListResultItemStatusInUseByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByList>;
 
 export interface CloudIntegrationsListResultItemStatus {
@@ -6990,7 +6129,7 @@ export interface CloudIntegrationsListResultItemStatus {
   lastDiscoveryStartedAtV2?: string | null;
   lastUpdated?: string | null;
 }
-export const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
       T.Body("discovery_progress"),
@@ -7051,7 +6190,7 @@ export interface CloudIntegrationsListResultItem {
   gcpServiceAccountEmail?: string | null;
   status?: CloudIntegrationsListResultItemStatus | null;
 }
-export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: CloudIntegrationsListResultItemCloudType.pipe(T.Body("cloud_type")),
@@ -7075,7 +6214,7 @@ export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudIntegrationsListResultItem>;
 
 export type CloudIntegrationsListResultList = Array<CloudIntegrationsListResultItem>;
-export const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
+const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
   CloudIntegrationsListResultItem,
 ) as any as S.Schema<CloudIntegrationsListResultList>;
 
@@ -7085,7 +6224,7 @@ export interface ListCloudIntegrationsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -7097,7 +6236,7 @@ export const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListOnRampAddressSpacesRequest {
   accountId: string;
 }
-export const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -7114,14 +6253,14 @@ export const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOnRampAddressSpacesRequest>;
 
 export type OnRampsAddressSpacesListResponsePrefixesList = Array<string>;
-export const OnRampsAddressSpacesListResponsePrefixesList =
+const OnRampsAddressSpacesListResponsePrefixesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesListResponsePrefixesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListOnRampAddressSpacesResponse {
   prefixes: OnRampsAddressSpacesListResponsePrefixesList;
 }
-export const ListOnRampAddressSpacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOnRampAddressSpacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes: OnRampsAddressSpacesListResponsePrefixesList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7137,7 +6276,7 @@ export interface ListOnRampsRequest {
   status?: boolean;
   vpcs?: boolean;
 }
-export const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     desc: S.optional(S.Boolean.pipe(T.Query())),
@@ -7150,53 +6289,42 @@ export const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOnRampsRequest" }) as any as S.Schema<ListOnRampsRequest>;
 
 export type OnRampsListResultItemCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsListResultItemCloudType = S.String;
+const OnRampsListResultItemCloudType = S.String;
 
 export type OnRampsListResultItemType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsListResultItemType = S.String;
+const OnRampsListResultItemType = S.String;
 
 export type OnRampsListResultItemAttachedHubsList = Array<string>;
-export const OnRampsListResultItemAttachedHubsList =
+const OnRampsListResultItemAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemAttachedHubsList>;
 
 export type OnRampsListResultItemAttachedVpcsList = Array<string>;
-export const OnRampsListResultItemAttachedVpcsList =
+const OnRampsListResultItemAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemAttachedVpcsList>;
 
 export type OnRampsListResultItemPlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsListResultItemPlannedMonthlyCostEstimate =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsListResultItemPlannedResourcesItemDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemPlannedResourcesItemDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList =
+const OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList =
   OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList as any as S.Schema<OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsListResultItemPlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsListResultItemPlannedResourcesItemMonthlyCostEstimateDiff =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsListResultItemPlannedResourcesItemPlannedAction =
   | "no_op"
   | "create"
   | "update"
   | "replace"
   | "destroy";
-export const OnRampsListResultItemPlannedResourcesItemPlannedAction = S.String;
+const OnRampsListResultItemPlannedResourcesItemPlannedAction = S.String;
 
 export type OnRampsListResultItemPlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPlannedResourcesItemResourceCloudType = S.String;
-
 export type OnRampsListResultItemPlannedResourcesItemResourceResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -7255,8 +6383,6 @@ export type OnRampsListResultItemPlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPlannedResourcesItemResourceResourceType = S.String;
-
 export interface OnRampsListResultItemPlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsListResultItemPlannedResourcesItemResourceCloudType;
@@ -7265,7 +6391,7 @@ export interface OnRampsListResultItemPlannedResourcesItemResource {
   resourceType: OnRampsListResultItemPlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsListResultItemPlannedResourcesItemResource =
+const OnRampsListResultItemPlannedResourcesItemResource =
   OnRampsCreateResponsePlannedResourcesItemResource as any as S.Schema<OnRampsListResultItemPlannedResourcesItemResource>;
 
 export interface OnRampsListResultItemPlannedResourcesItem {
@@ -7275,7 +6401,7 @@ export interface OnRampsListResultItemPlannedResourcesItem {
   plannedAction: OnRampsListResultItemPlannedResourcesItemPlannedAction;
   resource: OnRampsListResultItemPlannedResourcesItemResource;
 }
-export const OnRampsListResultItemPlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsListResultItemPlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: OnRampsCreateResponsePlannedResourcesItemDiff,
     keysRequireReplace: OnRampsListResultItemPlannedResourcesItemKeysRequireReplaceList.pipe(
@@ -7295,52 +6421,43 @@ export const OnRampsListResultItemPlannedResourcesItem = /*@__PURE__*/ S.suspend
 
 export type OnRampsListResultItemPlannedResourcesList =
   Array<OnRampsListResultItemPlannedResourcesItem>;
-export const OnRampsListResultItemPlannedResourcesList = /*@__PURE__*/ S.Array(
+const OnRampsListResultItemPlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsListResultItemPlannedResourcesItem,
 ) as any as S.Schema<OnRampsListResultItemPlannedResourcesList>;
 
 export type OnRampsListResultItemPostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsListResultItemPostApplyMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsListResultItemPostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueCloudType = S.String;
+const OnRampsListResultItemPostApplyResourcesValueCloudType = S.String;
 
 export type OnRampsListResultItemPostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueConfigMap =
+const OnRampsListResultItemPostApplyResourcesValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueConfigMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsListResultItemPostApplyResourcesValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsListResultItemPostApplyResourcesValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsListResultItemPostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsListResultItemPostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueObservationsMap =
+const OnRampsListResultItemPostApplyResourcesValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueObservationsMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
+const OnRampsListResultItemPostApplyResourcesValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap =
+const OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueResourceType =
@@ -7401,36 +6518,21 @@ export type OnRampsListResultItemPostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueResourceType = S.String;
+const OnRampsListResultItemPostApplyResourcesValueResourceType = S.String;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -7489,9 +6591,6 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -7500,29 +6599,17 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenI
   resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -7581,9 +6668,6 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -7592,56 +6676,26 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenI
   resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
+const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -7657,7 +6711,7 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenI
   name?: string | null;
   value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem =
+const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -7672,39 +6726,24 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
   Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
+const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem,
   ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -7763,9 +6802,6 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItems
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -7774,29 +6810,17 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisible
   resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -7855,9 +6879,6 @@ export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItems
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -7866,56 +6887,26 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisible
   resourceType: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
+const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -7931,7 +6922,7 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisible
   name?: string | null;
   value?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem =
+const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -7946,7 +6937,7 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
   Array<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
+const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem,
   ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList>;
@@ -7957,55 +6948,49 @@ export interface OnRampsListResultItemPostApplyResourcesValueSectionsItem {
   visibleItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsListResultItemPostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hiddenItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
-        T.Body("hidden_items"),
-      ),
-      name: S.String,
-      visibleItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
-        T.Body("visible_items"),
-      ),
-      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-    }),
+const OnRampsListResultItemPostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hiddenItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+      T.Body("hidden_items"),
+    ),
+    name: S.String,
+    visibleItems: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+      T.Body("visible_items"),
+    ),
+    helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+  }),
 ).annotate({
   identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItem",
 }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsList =
   Array<OnRampsListResultItemPostApplyResourcesValueSectionsItem>;
-export const OnRampsListResultItemPostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsListResultItemPostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsListResultItemPostApplyResourcesValueSectionsItem,
 ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsList>;
 
 export type OnRampsListResultItemPostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueStateMap =
+const OnRampsListResultItemPostApplyResourcesValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueStateMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesValueTagsMap =
+const OnRampsListResultItemPostApplyResourcesValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueTagsMap>;
 
 export type OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType = S.String;
-
 export interface OnRampsListResultItemPostApplyResourcesValueManagedByItem {
   id: string;
   clientType: OnRampsListResultItemPostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsListResultItemPostApplyResourcesValueManagedByItem =
-  OnRampsCreateResponsePostApplyResourcesValueManagedByItem as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
-
 export type OnRampsListResultItemPostApplyResourcesValueManagedByList =
   Array<OnRampsListResultItemPostApplyResourcesValueManagedByItem>;
-export const OnRampsListResultItemPostApplyResourcesValueManagedByList =
+const OnRampsListResultItemPostApplyResourcesValueManagedByList =
   OnRampsCreateResponsePostApplyResourcesValueManagedByList as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueManagedByList>;
 
 export interface OnRampsListResultItemPostApplyResourcesValue {
@@ -8031,7 +7016,7 @@ export interface OnRampsListResultItemPostApplyResourcesValue {
   url: string;
   managedBy?: OnRampsListResultItemPostApplyResourcesValueManagedByList | null;
 }
-export const OnRampsListResultItemPostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsListResultItemPostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -8074,14 +7059,12 @@ export const OnRampsListResultItemPostApplyResourcesValue = /*@__PURE__*/ S.susp
 export type OnRampsListResultItemPostApplyResourcesMap = {
   [key: string]: OnRampsListResultItemPostApplyResourcesValue | undefined;
 };
-export const OnRampsListResultItemPostApplyResourcesMap = /*@__PURE__*/ S.Record(
+const OnRampsListResultItemPostApplyResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsListResultItemPostApplyResourcesValue,
 ) as any as S.Schema<OnRampsListResultItemPostApplyResourcesMap>;
 
 export type OnRampsListResultItemStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsListResultItemStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsListResultItemStatusLifecycleState =
   | "OnrampNeedsApply"
   | "OnrampPendingPlan"
@@ -8095,17 +7078,15 @@ export type OnRampsListResultItemStatusLifecycleState =
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
   | "OnrampDestroyFailed";
-export const OnRampsListResultItemStatusLifecycleState = S.String;
+const OnRampsListResultItemStatusLifecycleState = S.String;
 
 export type OnRampsListResultItemStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsListResultItemStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsListResultItemStatusRoutesList = Array<string>;
-export const OnRampsListResultItemStatusRoutesList =
+const OnRampsListResultItemStatusRoutesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemStatusRoutesList>;
 
 export type OnRampsListResultItemStatusTunnelsList = Array<string>;
-export const OnRampsListResultItemStatusTunnelsList =
+const OnRampsListResultItemStatusTunnelsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemStatusTunnelsList>;
 
 export type OnRampsListResultItemStatusLifecycleErrorsValueCode =
@@ -8264,18 +7245,10 @@ export type OnRampsListResultItemStatusLifecycleErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const OnRampsListResultItemStatusLifecycleErrorsValueCode = S.Number;
-
 export type OnRampsListResultItemStatusLifecycleErrorsValueMeta =
   CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsListResultItemStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type OnRampsListResultItemStatusLifecycleErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsListResultItemStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface OnRampsListResultItemStatusLifecycleErrorsValue {
   code: OnRampsListResultItemStatusLifecycleErrorsValueCode;
   message: string;
@@ -8283,13 +7256,10 @@ export interface OnRampsListResultItemStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsListResultItemStatusLifecycleErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsValue>;
-
 export type OnRampsListResultItemStatusLifecycleErrorsMap = {
   [key: string]: OnRampsListResultItemStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsListResultItemStatusLifecycleErrorsMap =
+const OnRampsListResultItemStatusLifecycleErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsListResultItemStatusLifecycleErrorsMap>;
 
 export interface OnRampsListResultItemStatus {
@@ -8300,7 +7270,7 @@ export interface OnRampsListResultItemStatus {
   tunnels: OnRampsListResultItemStatusTunnelsList;
   lifecycleErrors?: OnRampsListResultItemStatusLifecycleErrorsMap | null;
 }
-export const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
+const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(T.Body("apply_progress")),
     lifecycleState: OnRampsListResultItemStatusLifecycleState.pipe(T.Body("lifecycle_state")),
@@ -8316,36 +7286,30 @@ export const OnRampsListResultItemStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnRampsListResultItemStatus>;
 
 export type OnRampsListResultItemVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueCloudType = S.String;
+const OnRampsListResultItemVpcsByIdValueCloudType = S.String;
 
 export type OnRampsListResultItemVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsListResultItemVpcsByIdValueConfigMap =
+const OnRampsListResultItemVpcsByIdValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueConfigMap>;
 
 export type OnRampsListResultItemVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsListResultItemVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsListResultItemVpcsByIdValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsListResultItemVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsListResultItemVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsListResultItemVpcsByIdValueObservationsMap =
+const OnRampsListResultItemVpcsByIdValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueObservationsMap>;
 
 export type OnRampsListResultItemVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsListResultItemVpcsByIdValueProviderIdsList =
+const OnRampsListResultItemVpcsByIdValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderIdsList>;
 
 export type OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap =
+const OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsListResultItemVpcsByIdValueResourceType =
@@ -8406,36 +7370,21 @@ export type OnRampsListResultItemVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueResourceType = S.String;
+const OnRampsListResultItemVpcsByIdValueResourceType = S.String;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -8494,9 +7443,6 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -8505,29 +7451,17 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemVa
   resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -8586,9 +7520,6 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -8597,55 +7528,26 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemVa
   resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
+const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -8661,53 +7563,35 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
+const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue)),
+  }),
+).annotate({
+  identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem",
+}) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList =
   Array<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem,
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -8766,9 +7650,6 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -8777,29 +7658,17 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemV
   resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -8858,9 +7727,6 @@ export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -8869,55 +7735,26 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemV
   resourceType: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
+const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -8933,22 +7770,21 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem 
   name?: string | null;
   value?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
+const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(
+      S.NullOr(OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue),
+    ),
+  }),
+).annotate({
+  identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem",
+}) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList =
   Array<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem,
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList>;
 
@@ -8958,7 +7794,7 @@ export interface OnRampsListResultItemVpcsByIdValueSectionsItem {
   visibleItems: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsListResultItemVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsListResultItemVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -8975,32 +7811,27 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItem = /*@__PURE__*/ S.su
 
 export type OnRampsListResultItemVpcsByIdValueSectionsList =
   Array<OnRampsListResultItemVpcsByIdValueSectionsItem>;
-export const OnRampsListResultItemVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsListResultItemVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsListResultItemVpcsByIdValueSectionsItem,
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsList>;
 
 export type OnRampsListResultItemVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsListResultItemVpcsByIdValueStateMap =
+const OnRampsListResultItemVpcsByIdValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueStateMap>;
 
 export type OnRampsListResultItemVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsListResultItemVpcsByIdValueTagsMap =
+const OnRampsListResultItemVpcsByIdValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsListResultItemVpcsByIdValueTagsMap>;
 
 export type OnRampsListResultItemVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsListResultItemVpcsByIdValueManagedByItemClientType = S.String;
-
 export interface OnRampsListResultItemVpcsByIdValueManagedByItem {
   id: string;
   clientType: OnRampsListResultItemVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsListResultItemVpcsByIdValueManagedByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByItem>;
-
 export type OnRampsListResultItemVpcsByIdValueManagedByList =
   Array<OnRampsListResultItemVpcsByIdValueManagedByItem>;
-export const OnRampsListResultItemVpcsByIdValueManagedByList =
+const OnRampsListResultItemVpcsByIdValueManagedByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsListResultItemVpcsByIdValueManagedByList>;
 
 export interface OnRampsListResultItemVpcsByIdValue {
@@ -9026,7 +7857,7 @@ export interface OnRampsListResultItemVpcsByIdValue {
   url: string;
   managedBy?: OnRampsListResultItemVpcsByIdValueManagedByList | null;
 }
-export const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -9063,13 +7894,13 @@ export const OnRampsListResultItemVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
 export type OnRampsListResultItemVpcsByIdMap = {
   [key: string]: OnRampsListResultItemVpcsByIdValue | undefined;
 };
-export const OnRampsListResultItemVpcsByIdMap = /*@__PURE__*/ S.Record(
+const OnRampsListResultItemVpcsByIdMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsListResultItemVpcsByIdValue,
 ) as any as S.Schema<OnRampsListResultItemVpcsByIdMap>;
 
 export type OnRampsListResultItemVpcsByIdUnavailableList = Array<string>;
-export const OnRampsListResultItemVpcsByIdUnavailableList =
+const OnRampsListResultItemVpcsByIdUnavailableList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsListResultItemVpcsByIdUnavailableList>;
 
 export interface OnRampsListResultItem {
@@ -9104,7 +7935,7 @@ export interface OnRampsListResultItem {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsListResultItemVpcsByIdUnavailableList | null;
 }
-export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsListResultItemCloudType.pipe(T.Body("cloud_type")),
@@ -9165,7 +7996,7 @@ export const OnRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OnRampsListResultItem" }) as any as S.Schema<OnRampsListResultItem>;
 
 export type OnRampsListResultList = Array<OnRampsListResultItem>;
-export const OnRampsListResultList = /*@__PURE__*/ S.Array(
+const OnRampsListResultList = /*@__PURE__*/ S.Array(
   OnRampsListResultItem,
 ) as any as S.Schema<OnRampsListResultList>;
 
@@ -9175,7 +8006,7 @@ export interface ListOnRampsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OnRampsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -9183,7 +8014,7 @@ export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOnRampsResponse" }) as any as S.Schema<ListOnRampsResponse>;
 
 export type ResourcesListRequestResourceIdList = Array<string>;
-export const ResourcesListRequestResourceIdList =
+const ResourcesListRequestResourceIdList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesListRequestResourceIdList>;
 
 export type ResourcesListRequestResourceType =
@@ -9244,16 +8075,14 @@ export type ResourcesListRequestResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesListRequestResourceType = S.String;
-
 export type ResourcesListRequestResourceTypeList = Array<
   ResourcesListRequestResourceType | (string & {})
 >;
-export const ResourcesListRequestResourceTypeList =
+const ResourcesListRequestResourceTypeList =
   ResourcesExportRequestResourceTypeList as any as S.Schema<ResourcesListRequestResourceTypeList>;
 
 export type ResourcesListRequestSearchList = Array<string>;
-export const ResourcesListRequestSearchList =
+const ResourcesListRequestSearchList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesListRequestSearchList>;
 
 export interface ListResourcesRequest {
@@ -9273,7 +8102,7 @@ export interface ListResourcesRequest {
   search?: ResourcesListRequestSearchList;
   v2?: boolean;
 }
-export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cloudflare: S.optional(S.Boolean.pipe(T.Query())),
@@ -9295,34 +8124,28 @@ export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourcesRequest" }) as any as S.Schema<ListResourcesRequest>;
 
 export type ResourcesListResultItemCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const ResourcesListResultItemCloudType = S.String;
+const ResourcesListResultItemCloudType = S.String;
 
 export type ResourcesListResultItemConfigMap = { [key: string]: unknown | undefined };
-export const ResourcesListResultItemConfigMap =
+const ResourcesListResultItemConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesListResultItemConfigMap>;
 
 export type ResourcesListResultItemMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const ResourcesListResultItemMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type ResourcesListResultItemObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const ResourcesListResultItemObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type ResourcesListResultItemObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const ResourcesListResultItemObservationsMap =
+const ResourcesListResultItemObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<ResourcesListResultItemObservationsMap>;
 
 export type ResourcesListResultItemProviderIdsList = Array<string>;
-export const ResourcesListResultItemProviderIdsList =
+const ResourcesListResultItemProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<ResourcesListResultItemProviderIdsList>;
 
 export type ResourcesListResultItemProviderNamesByIdMap = { [key: string]: string | undefined };
-export const ResourcesListResultItemProviderNamesByIdMap =
+const ResourcesListResultItemProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesListResultItemProviderNamesByIdMap>;
 
 export type ResourcesListResultItemResourceType =
@@ -9383,36 +8206,21 @@ export type ResourcesListResultItemResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemResourceType = S.String;
+const ResourcesListResultItemResourceType = S.String;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -9471,9 +8279,6 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePr
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -9482,29 +8287,17 @@ export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResou
   resourceType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -9563,9 +8356,6 @@ export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemLi
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -9574,55 +8364,26 @@ export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListI
   resourceType: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem;
-export const ResourcesListResultItemSectionsItemHiddenItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
+const ResourcesListResultItemSectionsItemHiddenItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["itemType", "string"],
     ["itemType", "yaml"],
@@ -9637,7 +8398,7 @@ export interface ResourcesListResultItemSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: ResourcesListResultItemSectionsItemHiddenItemsItemValue | null;
 }
-export const ResourcesListResultItemSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesListResultItemSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     helpText: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -9649,38 +8410,23 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItem = /*@__PURE__*/ 
 
 export type ResourcesListResultItemSectionsItemHiddenItemsList =
   Array<ResourcesListResultItemSectionsItemHiddenItemsItem>;
-export const ResourcesListResultItemSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const ResourcesListResultItemSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   ResourcesListResultItemSectionsItemHiddenItemsItem,
 ) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsList>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -9739,9 +8485,6 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourceP
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -9750,29 +8493,17 @@ export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnReso
   resourceType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -9831,9 +8562,6 @@ export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemL
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -9842,71 +8570,41 @@ export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnList
   resourceType: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem;
-export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+const ResourcesListResultItemSectionsItemVisibleItemsItemValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([
+    ["itemType", "string"],
+    ["itemType", "yaml"],
+    ["itemType", "yamlDiff"],
+    ["itemType", "resourcePreview"],
+    ["itemType", "list"],
+  ]),
+);
 
 export interface ResourcesListResultItemSectionsItemVisibleItemsItem {
   helpText?: string | null;
   name?: string | null;
   value?: ResourcesListResultItemSectionsItemVisibleItemsItemValue | null;
 }
-export const ResourcesListResultItemSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesListResultItemSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     helpText: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -9918,7 +8616,7 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItem = /*@__PURE__*/
 
 export type ResourcesListResultItemSectionsItemVisibleItemsList =
   Array<ResourcesListResultItemSectionsItemVisibleItemsItem>;
-export const ResourcesListResultItemSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const ResourcesListResultItemSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   ResourcesListResultItemSectionsItemVisibleItemsItem,
 ) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsList>;
 
@@ -9928,7 +8626,7 @@ export interface ResourcesListResultItemSectionsItem {
   visibleItems: ResourcesListResultItemSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const ResourcesListResultItemSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesListResultItemSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: ResourcesListResultItemSectionsItemHiddenItemsList.pipe(T.Body("hidden_items")),
     name: S.String,
@@ -9940,31 +8638,26 @@ export const ResourcesListResultItemSectionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesListResultItemSectionsItem>;
 
 export type ResourcesListResultItemSectionsList = Array<ResourcesListResultItemSectionsItem>;
-export const ResourcesListResultItemSectionsList = /*@__PURE__*/ S.Array(
+const ResourcesListResultItemSectionsList = /*@__PURE__*/ S.Array(
   ResourcesListResultItemSectionsItem,
 ) as any as S.Schema<ResourcesListResultItemSectionsList>;
 
 export type ResourcesListResultItemStateMap = { [key: string]: unknown | undefined };
-export const ResourcesListResultItemStateMap =
+const ResourcesListResultItemStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<ResourcesListResultItemStateMap>;
 
 export type ResourcesListResultItemTagsMap = { [key: string]: string | undefined };
-export const ResourcesListResultItemTagsMap =
+const ResourcesListResultItemTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<ResourcesListResultItemTagsMap>;
 
 export type ResourcesListResultItemManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const ResourcesListResultItemManagedByItemClientType = S.String;
-
 export interface ResourcesListResultItemManagedByItem {
   id: string;
   clientType: ResourcesListResultItemManagedByItemClientType;
   name: string;
 }
-export const ResourcesListResultItemManagedByItem =
-  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<ResourcesListResultItemManagedByItem>;
-
 export type ResourcesListResultItemManagedByList = Array<ResourcesListResultItemManagedByItem>;
-export const ResourcesListResultItemManagedByList =
+const ResourcesListResultItemManagedByList =
   CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<ResourcesListResultItemManagedByList>;
 
 export interface ResourcesListResultItem {
@@ -9990,7 +8683,7 @@ export interface ResourcesListResultItem {
   url: string;
   managedBy?: ResourcesListResultItemManagedByList | null;
 }
-export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -10023,7 +8716,7 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcesListResultItem" }) as any as S.Schema<ResourcesListResultItem>;
 
 export type ResourcesListResultList = Array<ResourcesListResultItem>;
-export const ResourcesListResultList = /*@__PURE__*/ S.Array(
+const ResourcesListResultList = /*@__PURE__*/ S.Array(
   ResourcesListResultItem,
 ) as any as S.Schema<ResourcesListResultList>;
 
@@ -10033,7 +8726,7 @@ export interface ListResourcesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ResourcesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -10041,7 +8734,7 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourcesResponse" }) as any as S.Schema<ListResourcesResponse>;
 
 export type CatalogSyncsEditRequestUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsEditRequestUpdateMode = S.String;
+const CatalogSyncsEditRequestUpdateMode = S.String;
 
 export interface PatchCatalogSyncRequest {
   accountId: string;
@@ -10051,7 +8744,7 @@ export interface PatchCatalogSyncRequest {
   policy?: string;
   updateMode?: CatalogSyncsEditRequestUpdateMode | (string & {});
 }
-export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
@@ -10071,11 +8764,7 @@ export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchCatalogSyncRequest" }) as any as S.Schema<PatchCatalogSyncRequest>;
 
 export type CatalogSyncsEditResponseDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsEditResponseDestinationType = S.String;
-
 export type CatalogSyncsEditResponseUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsEditResponseUpdateMode = S.String;
-
 export type CatalogSyncsEditResponseErrorsValueCode =
   | 1001
   | 1002
@@ -10232,15 +8921,8 @@ export type CatalogSyncsEditResponseErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const CatalogSyncsEditResponseErrorsValueCode = S.Number;
-
 export type CatalogSyncsEditResponseErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsEditResponseErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type CatalogSyncsEditResponseErrorsValueSource = CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsEditResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface CatalogSyncsEditResponseErrorsValue {
   code: CatalogSyncsEditResponseErrorsValueCode;
   message: string;
@@ -10248,15 +8930,9 @@ export interface CatalogSyncsEditResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsEditResponseErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsEditResponseErrorsValue>;
-
 export type CatalogSyncsEditResponseErrorsMap = {
   [key: string]: CatalogSyncsEditResponseErrorsValue | undefined;
 };
-export const CatalogSyncsEditResponseErrorsMap =
-  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsEditResponseErrorsMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCatalogSyncResponse {
   id: string;
@@ -10272,7 +8948,7 @@ export interface PatchCatalogSyncResponse {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const PatchCatalogSyncResponse =
+const PatchCatalogSyncResponse =
   GetCatalogSyncResponse as any as S.Schema<PatchCatalogSyncResponse>;
 
 export interface PatchCloudIntegrationRequest {
@@ -10286,7 +8962,7 @@ export interface PatchCloudIntegrationRequest {
   gcpProjectId?: string;
   gcpServiceAccountEmail?: string;
 }
-export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
@@ -10311,10 +8987,10 @@ export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCloudIntegrationRequest>;
 
 export type CloudIntegrationsEditResponseCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const CloudIntegrationsEditResponseCloudType = S.String;
+const CloudIntegrationsEditResponseCloudType = S.String;
 
 export type CloudIntegrationsEditResponseLifecycleState = "ACTIVE" | "PENDING_SETUP" | "RETIRED";
-export const CloudIntegrationsEditResponseLifecycleState = S.String;
+const CloudIntegrationsEditResponseLifecycleState = S.String;
 
 export type CloudIntegrationsEditResponseState =
   | "UNSPECIFIED"
@@ -10322,7 +8998,7 @@ export type CloudIntegrationsEditResponseState =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsEditResponseState = S.String;
+const CloudIntegrationsEditResponseState = S.String;
 
 export type CloudIntegrationsEditResponseStateV2 =
   | "UNSPECIFIED"
@@ -10330,25 +9006,19 @@ export type CloudIntegrationsEditResponseStateV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsEditResponseStateV2 = S.String;
+const CloudIntegrationsEditResponseStateV2 = S.String;
 
 export type CloudIntegrationsEditResponseStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsEditResponseStatusDiscoveryProgress =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsEditResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsEditResponseStatusDiscoveryProgressV2 =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
   | "UNSPECIFIED"
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsEditResponseStatusLastDiscoveryStatus = S.String;
+const CloudIntegrationsEditResponseStatusLastDiscoveryStatus = S.String;
 
 export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
   | "UNSPECIFIED"
@@ -10356,26 +9026,21 @@ export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 = S.String;
+const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsEditResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsEditResponseStatusRegionsList =
+const CloudIntegrationsEditResponseStatusRegionsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsEditResponseStatusRegionsList>;
 
 export type CloudIntegrationsEditResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const CloudIntegrationsEditResponseStatusInUseByItemClientType = S.String;
-
 export interface CloudIntegrationsEditResponseStatusInUseByItem {
   id: string;
   clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsEditResponseStatusInUseByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByItem>;
-
 export type CloudIntegrationsEditResponseStatusInUseByList =
   Array<CloudIntegrationsEditResponseStatusInUseByItem>;
-export const CloudIntegrationsEditResponseStatusInUseByList =
+const CloudIntegrationsEditResponseStatusInUseByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByList>;
 
 export interface CloudIntegrationsEditResponseStatus {
@@ -10396,7 +9061,7 @@ export interface CloudIntegrationsEditResponseStatus {
   lastDiscoveryStartedAtV2?: string | null;
   lastUpdated?: string | null;
 }
-export const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
       T.Body("discovery_progress"),
@@ -10458,7 +9123,7 @@ export interface PatchCloudIntegrationResponse {
   gcpServiceAccountEmail?: string | null;
   status?: CloudIntegrationsEditResponseStatus | null;
 }
-export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: CloudIntegrationsEditResponseCloudType.pipe(T.Body("cloud_type")),
@@ -10482,11 +9147,11 @@ export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCloudIntegrationResponse>;
 
 export type OnRampsEditRequestAttachedHubsList = Array<string>;
-export const OnRampsEditRequestAttachedHubsList =
+const OnRampsEditRequestAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
 
 export type OnRampsEditRequestAttachedVpcsList = Array<string>;
-export const OnRampsEditRequestAttachedVpcsList =
+const OnRampsEditRequestAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
 
 export interface PatchOnRampRequest {
@@ -10502,7 +9167,7 @@ export interface PatchOnRampRequest {
   name?: string;
   vpc?: string;
 }
-export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -10527,53 +9192,42 @@ export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOnRampRequest" }) as any as S.Schema<PatchOnRampRequest>;
 
 export type OnRampsEditResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsEditResponseCloudType = S.String;
+const OnRampsEditResponseCloudType = S.String;
 
 export type OnRampsEditResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsEditResponseType = S.String;
+const OnRampsEditResponseType = S.String;
 
 export type OnRampsEditResponseAttachedHubsList = Array<string>;
-export const OnRampsEditResponseAttachedHubsList =
+const OnRampsEditResponseAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseAttachedHubsList>;
 
 export type OnRampsEditResponseAttachedVpcsList = Array<string>;
-export const OnRampsEditResponseAttachedVpcsList =
+const OnRampsEditResponseAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseAttachedVpcsList>;
 
 export type OnRampsEditResponsePlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsEditResponsePlannedMonthlyCostEstimate =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsEditResponsePlannedResourcesItemDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponsePlannedResourcesItemDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
+const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsEditResponsePlannedResourcesItemPlannedAction =
   | "no_op"
   | "create"
   | "update"
   | "replace"
   | "destroy";
-export const OnRampsEditResponsePlannedResourcesItemPlannedAction = S.String;
+const OnRampsEditResponsePlannedResourcesItemPlannedAction = S.String;
 
 export type OnRampsEditResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePlannedResourcesItemResourceCloudType = S.String;
-
 export type OnRampsEditResponsePlannedResourcesItemResourceResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -10632,8 +9286,6 @@ export type OnRampsEditResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePlannedResourcesItemResourceResourceType = S.String;
-
 export interface OnRampsEditResponsePlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType;
@@ -10642,7 +9294,7 @@ export interface OnRampsEditResponsePlannedResourcesItemResource {
   resourceType: OnRampsEditResponsePlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsEditResponsePlannedResourcesItemResource =
+const OnRampsEditResponsePlannedResourcesItemResource =
   OnRampsGetResponsePlannedResourcesItemResource as any as S.Schema<OnRampsEditResponsePlannedResourcesItemResource>;
 
 export interface OnRampsEditResponsePlannedResourcesItem {
@@ -10652,7 +9304,7 @@ export interface OnRampsEditResponsePlannedResourcesItem {
   plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction;
   resource: OnRampsEditResponsePlannedResourcesItemResource;
 }
-export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: OnRampsCreateResponsePlannedResourcesItemDiff,
     keysRequireReplace: OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
@@ -10672,52 +9324,43 @@ export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend((
 
 export type OnRampsEditResponsePlannedResourcesList =
   Array<OnRampsEditResponsePlannedResourcesItem>;
-export const OnRampsEditResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
+const OnRampsEditResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsEditResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsEditResponsePlannedResourcesList>;
 
 export type OnRampsEditResponsePostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsEditResponsePostApplyMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsEditResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueCloudType = S.String;
+const OnRampsEditResponsePostApplyResourcesValueCloudType = S.String;
 
 export type OnRampsEditResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueConfigMap =
+const OnRampsEditResponsePostApplyResourcesValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsEditResponsePostApplyResourcesValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsEditResponsePostApplyResourcesValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsEditResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsEditResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueObservationsMap =
+const OnRampsEditResponsePostApplyResourcesValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
+const OnRampsEditResponsePostApplyResourcesValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap =
+const OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueResourceType =
@@ -10778,36 +9421,21 @@ export type OnRampsEditResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueResourceType = S.String;
+const OnRampsEditResponsePostApplyResourcesValueResourceType = S.String;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -10866,9 +9494,6 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -10877,29 +9502,17 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenIte
   resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -10958,9 +9571,6 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -10969,56 +9579,26 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenIte
   resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
+const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -11034,7 +9614,7 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenIte
   name?: string | null;
   value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
+const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -11049,39 +9629,23 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
+const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+  OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
+) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -11140,9 +9704,6 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -11151,29 +9712,17 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleIt
   resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -11232,9 +9781,6 @@ export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -11243,56 +9789,26 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleIt
   resourceType: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
+const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -11308,7 +9824,7 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleIt
   name?: string | null;
   value?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
+const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -11323,7 +9839,7 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   Array<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
+const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
   ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
@@ -11334,7 +9850,7 @@ export interface OnRampsEditResponsePostApplyResourcesValueSectionsItem {
   visibleItems: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsEditResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsEditResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -11351,37 +9867,32 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItem = /*@__PURE_
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsList =
   Array<OnRampsEditResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsEditResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsEditResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsEditResponsePostApplyResourcesValueSectionsItem,
 ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsList>;
 
 export type OnRampsEditResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueStateMap =
+const OnRampsEditResponsePostApplyResourcesValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesValueTagsMap =
+const OnRampsEditResponsePostApplyResourcesValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType = S.String;
-
 export interface OnRampsEditResponsePostApplyResourcesValueManagedByItem {
   id: string;
   clientType: OnRampsEditResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsEditResponsePostApplyResourcesValueManagedByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
-
 export type OnRampsEditResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsEditResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsEditResponsePostApplyResourcesValueManagedByList =
+const OnRampsEditResponsePostApplyResourcesValueManagedByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueManagedByList>;
 
 export interface OnRampsEditResponsePostApplyResourcesValue {
@@ -11407,7 +9918,7 @@ export interface OnRampsEditResponsePostApplyResourcesValue {
   url: string;
   managedBy?: OnRampsEditResponsePostApplyResourcesValueManagedByList | null;
 }
-export const OnRampsEditResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsEditResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -11448,14 +9959,12 @@ export const OnRampsEditResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspen
 export type OnRampsEditResponsePostApplyResourcesMap = {
   [key: string]: OnRampsEditResponsePostApplyResourcesValue | undefined;
 };
-export const OnRampsEditResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
+const OnRampsEditResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsEditResponsePostApplyResourcesValue,
 ) as any as S.Schema<OnRampsEditResponsePostApplyResourcesMap>;
 
 export type OnRampsEditResponseStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsEditResponseStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsEditResponseStatusLifecycleState =
   | "OnrampNeedsApply"
   | "OnrampPendingPlan"
@@ -11469,17 +9978,15 @@ export type OnRampsEditResponseStatusLifecycleState =
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
   | "OnrampDestroyFailed";
-export const OnRampsEditResponseStatusLifecycleState = S.String;
+const OnRampsEditResponseStatusLifecycleState = S.String;
 
 export type OnRampsEditResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsEditResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsEditResponseStatusRoutesList = Array<string>;
-export const OnRampsEditResponseStatusRoutesList =
+const OnRampsEditResponseStatusRoutesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseStatusRoutesList>;
 
 export type OnRampsEditResponseStatusTunnelsList = Array<string>;
-export const OnRampsEditResponseStatusTunnelsList =
+const OnRampsEditResponseStatusTunnelsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
 
 export type OnRampsEditResponseStatusLifecycleErrorsValueCode =
@@ -11638,18 +10145,10 @@ export type OnRampsEditResponseStatusLifecycleErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const OnRampsEditResponseStatusLifecycleErrorsValueCode = S.Number;
-
 export type OnRampsEditResponseStatusLifecycleErrorsValueMeta =
   CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsEditResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type OnRampsEditResponseStatusLifecycleErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsEditResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface OnRampsEditResponseStatusLifecycleErrorsValue {
   code: OnRampsEditResponseStatusLifecycleErrorsValueCode;
   message: string;
@@ -11657,13 +10156,10 @@ export interface OnRampsEditResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsEditResponseStatusLifecycleErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsValue>;
-
 export type OnRampsEditResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsEditResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsEditResponseStatusLifecycleErrorsMap =
+const OnRampsEditResponseStatusLifecycleErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsEditResponseStatus {
@@ -11674,7 +10170,7 @@ export interface OnRampsEditResponseStatus {
   tunnels: OnRampsEditResponseStatusTunnelsList;
   lifecycleErrors?: OnRampsEditResponseStatusLifecycleErrorsMap | null;
 }
-export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(T.Body("apply_progress")),
     lifecycleState: OnRampsEditResponseStatusLifecycleState.pipe(T.Body("lifecycle_state")),
@@ -11690,36 +10186,30 @@ export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnRampsEditResponseStatus>;
 
 export type OnRampsEditResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueCloudType = S.String;
+const OnRampsEditResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsEditResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsEditResponseVpcsByIdValueConfigMap =
+const OnRampsEditResponseVpcsByIdValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsEditResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsEditResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsEditResponseVpcsByIdValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsEditResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsEditResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsEditResponseVpcsByIdValueObservationsMap =
+const OnRampsEditResponseVpcsByIdValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsEditResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsEditResponseVpcsByIdValueProviderIdsList =
+const OnRampsEditResponseVpcsByIdValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap =
+const OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsEditResponseVpcsByIdValueResourceType =
@@ -11780,36 +10270,21 @@ export type OnRampsEditResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueResourceType = S.String;
+const OnRampsEditResponseVpcsByIdValueResourceType = S.String;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -11868,9 +10343,6 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnR
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -11879,29 +10351,17 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValu
   resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -11960,9 +10420,6 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -11971,55 +10428,26 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValu
   resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
+const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -12035,51 +10463,35 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue)),
-    }),
+const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue)),
+  }),
 ).annotate({
   identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem",
 }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList =
   Array<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem,
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -12138,9 +10550,6 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -12149,29 +10558,17 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemVal
   resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -12230,9 +10627,6 @@ export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -12241,55 +10635,26 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemVal
   resourceType: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
+const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -12305,22 +10670,19 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem {
   name?: string | null;
   value?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue),
-      ),
-    }),
+const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue)),
+  }),
 ).annotate({
   identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem",
 }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList =
   Array<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem,
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList>;
 
@@ -12330,7 +10692,7 @@ export interface OnRampsEditResponseVpcsByIdValueSectionsItem {
   visibleItems: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsEditResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsEditResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -12347,32 +10709,27 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.susp
 
 export type OnRampsEditResponseVpcsByIdValueSectionsList =
   Array<OnRampsEditResponseVpcsByIdValueSectionsItem>;
-export const OnRampsEditResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsEditResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsEditResponseVpcsByIdValueSectionsItem,
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsEditResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsEditResponseVpcsByIdValueStateMap =
+const OnRampsEditResponseVpcsByIdValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueStateMap>;
 
 export type OnRampsEditResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsEditResponseVpcsByIdValueTagsMap =
+const OnRampsEditResponseVpcsByIdValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsEditResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsEditResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsEditResponseVpcsByIdValueManagedByItemClientType = S.String;
-
 export interface OnRampsEditResponseVpcsByIdValueManagedByItem {
   id: string;
   clientType: OnRampsEditResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsEditResponseVpcsByIdValueManagedByItem =
-  CloudIntegrationsGetResponseStatusInUseByItem as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByItem>;
-
 export type OnRampsEditResponseVpcsByIdValueManagedByList =
   Array<OnRampsEditResponseVpcsByIdValueManagedByItem>;
-export const OnRampsEditResponseVpcsByIdValueManagedByList =
+const OnRampsEditResponseVpcsByIdValueManagedByList =
   CloudIntegrationsGetResponseStatusInUseByList as any as S.Schema<OnRampsEditResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsEditResponseVpcsByIdValue {
@@ -12398,7 +10755,7 @@ export interface OnRampsEditResponseVpcsByIdValue {
   url: string;
   managedBy?: OnRampsEditResponseVpcsByIdValueManagedByList | null;
 }
-export const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -12435,13 +10792,13 @@ export const OnRampsEditResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
 export type OnRampsEditResponseVpcsByIdMap = {
   [key: string]: OnRampsEditResponseVpcsByIdValue | undefined;
 };
-export const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
+const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsEditResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsEditResponseVpcsByIdMap>;
 
 export type OnRampsEditResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsEditResponseVpcsByIdUnavailableList =
+const OnRampsEditResponseVpcsByIdUnavailableList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsEditResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -12477,7 +10834,7 @@ export interface PatchOnRampResponse {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsEditResponseVpcsByIdUnavailableList | null;
 }
-export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsEditResponseCloudType.pipe(T.Body("cloud_type")),
@@ -12538,14 +10895,14 @@ export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOnRampResponse" }) as any as S.Schema<PatchOnRampResponse>;
 
 export type OnRampsAddressSpacesEditRequestPrefixesList = Array<string>;
-export const OnRampsAddressSpacesEditRequestPrefixesList =
+const OnRampsAddressSpacesEditRequestPrefixesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesEditRequestPrefixesList>;
 
 export interface PatchOnRampAddressSpaceRequest {
   accountId: string;
   prefixes: OnRampsAddressSpacesEditRequestPrefixesList;
 }
-export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixes: OnRampsAddressSpacesEditRequestPrefixesList,
@@ -12563,21 +10920,18 @@ export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchOnRampAddressSpaceRequest>;
 
 export type OnRampsAddressSpacesEditResponsePrefixesList = Array<string>;
-export const OnRampsAddressSpacesEditResponsePrefixesList =
-  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesEditResponsePrefixesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOnRampAddressSpaceResponse {
   prefixes: OnRampsAddressSpacesEditResponsePrefixesList;
 }
-export const PatchOnRampAddressSpaceResponse =
+const PatchOnRampAddressSpaceResponse =
   ListOnRampAddressSpacesResponse as any as S.Schema<PatchOnRampAddressSpaceResponse>;
 
 export interface PlanOnRampRequest {
   accountId: string;
   onrampId: string;
 }
-export const PlanOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const PlanOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -12593,13 +10947,13 @@ export const PlanOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanOnRampRequest" }) as any as S.Schema<PlanOnRampRequest>;
 
 export interface PlanOnRampResponse {}
-export const PlanOnRampResponse = ApplyOnRampResponse as any as S.Schema<PlanOnRampResponse>;
+const PlanOnRampResponse = ApplyOnRampResponse as any as S.Schema<PlanOnRampResponse>;
 
 export interface PolicyPreviewResourceRequest {
   accountId: string;
   policy: string;
 }
-export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policy: S.String,
@@ -12617,21 +10971,21 @@ export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyPreviewResourceRequest>;
 
 export type PolicyPreviewResourceResponse = string;
-export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PolicyPreviewResourceResponse",
 }) as any as S.Schema<PolicyPreviewResourceResponse>;
 
 export type OnRampsAddressSpacesUpdateRequestPrefixesList = Array<string>;
-export const OnRampsAddressSpacesUpdateRequestPrefixesList =
+const OnRampsAddressSpacesUpdateRequestPrefixesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesUpdateRequestPrefixesList>;
 
 export interface PutOnRampAddressSpaceRequest {
   accountId: string;
   prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList;
 }
-export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList,
@@ -12649,21 +11003,18 @@ export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutOnRampAddressSpaceRequest>;
 
 export type OnRampsAddressSpacesUpdateResponsePrefixesList = Array<string>;
-export const OnRampsAddressSpacesUpdateResponsePrefixesList =
-  CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsAddressSpacesUpdateResponsePrefixesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOnRampAddressSpaceResponse {
   prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList;
 }
-export const PutOnRampAddressSpaceResponse =
+const PutOnRampAddressSpaceResponse =
   ListOnRampAddressSpacesResponse as any as S.Schema<PutOnRampAddressSpaceResponse>;
 
 export interface RefreshCatalogSyncRequest {
   accountId: string;
   syncId: string;
 }
-export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
@@ -12681,11 +11032,11 @@ export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshCatalogSyncRequest>;
 
 export type RefreshCatalogSyncResponse = string;
-export const RefreshCatalogSyncResponse =
+const RefreshCatalogSyncResponse =
   PolicyPreviewResourceResponse as any as S.Schema<RefreshCatalogSyncResponse>;
 
 export type CatalogSyncsUpdateRequestUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsUpdateRequestUpdateMode = S.String;
+const CatalogSyncsUpdateRequestUpdateMode = S.String;
 
 export interface UpdateCatalogSyncRequest {
   accountId: string;
@@ -12695,7 +11046,7 @@ export interface UpdateCatalogSyncRequest {
   policy?: string;
   updateMode?: CatalogSyncsUpdateRequestUpdateMode | (string & {});
 }
-export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
@@ -12715,11 +11066,7 @@ export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCatalogSyncRequest" }) as any as S.Schema<UpdateCatalogSyncRequest>;
 
 export type CatalogSyncsUpdateResponseDestinationType = "NONE" | "ZERO_TRUST_LIST";
-export const CatalogSyncsUpdateResponseDestinationType = S.String;
-
 export type CatalogSyncsUpdateResponseUpdateMode = "AUTO" | "MANUAL";
-export const CatalogSyncsUpdateResponseUpdateMode = S.String;
-
 export type CatalogSyncsUpdateResponseErrorsValueCode =
   | 1001
   | 1002
@@ -12876,16 +11223,9 @@ export type CatalogSyncsUpdateResponseErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const CatalogSyncsUpdateResponseErrorsValueCode = S.Number;
-
 export type CatalogSyncsUpdateResponseErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-export const CatalogSyncsUpdateResponseErrorsValueMeta = CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type CatalogSyncsUpdateResponseErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const CatalogSyncsUpdateResponseErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface CatalogSyncsUpdateResponseErrorsValue {
   code: CatalogSyncsUpdateResponseErrorsValueCode;
   message: string;
@@ -12893,15 +11233,9 @@ export interface CatalogSyncsUpdateResponseErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const CatalogSyncsUpdateResponseErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<CatalogSyncsUpdateResponseErrorsValue>;
-
 export type CatalogSyncsUpdateResponseErrorsMap = {
   [key: string]: CatalogSyncsUpdateResponseErrorsValue | undefined;
 };
-export const CatalogSyncsUpdateResponseErrorsMap =
-  CatalogSyncsCreateResponseErrorsMap as any as S.Schema<CatalogSyncsUpdateResponseErrorsMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateCatalogSyncResponse {
   id: string;
@@ -12917,7 +11251,7 @@ export interface UpdateCatalogSyncResponse {
   lastAttemptedUpdateAt?: string | null;
   lastSuccessfulUpdateAt?: string | null;
 }
-export const UpdateCatalogSyncResponse =
+const UpdateCatalogSyncResponse =
   CreateCatalogSyncResponse as any as S.Schema<UpdateCatalogSyncResponse>;
 
 export interface UpdateCloudIntegrationRequest {
@@ -12931,7 +11265,7 @@ export interface UpdateCloudIntegrationRequest {
   gcpProjectId?: string;
   gcpServiceAccountEmail?: string;
 }
-export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
@@ -12956,10 +11290,10 @@ export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCloudIntegrationRequest>;
 
 export type CloudIntegrationsUpdateResponseCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const CloudIntegrationsUpdateResponseCloudType = S.String;
+const CloudIntegrationsUpdateResponseCloudType = S.String;
 
 export type CloudIntegrationsUpdateResponseLifecycleState = "ACTIVE" | "PENDING_SETUP" | "RETIRED";
-export const CloudIntegrationsUpdateResponseLifecycleState = S.String;
+const CloudIntegrationsUpdateResponseLifecycleState = S.String;
 
 export type CloudIntegrationsUpdateResponseState =
   | "UNSPECIFIED"
@@ -12967,7 +11301,7 @@ export type CloudIntegrationsUpdateResponseState =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseState = S.String;
+const CloudIntegrationsUpdateResponseState = S.String;
 
 export type CloudIntegrationsUpdateResponseStateV2 =
   | "UNSPECIFIED"
@@ -12975,25 +11309,19 @@ export type CloudIntegrationsUpdateResponseStateV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseStateV2 = S.String;
+const CloudIntegrationsUpdateResponseStateV2 = S.String;
 
 export type CloudIntegrationsUpdateResponseStatusDiscoveryProgress =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsUpdateResponseStatusDiscoveryProgress =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 =
   CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-export const CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 =
-  CloudIntegrationsCreateResponseStatusDiscoveryProgress;
-
 export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
   | "UNSPECIFIED"
   | "PENDING"
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus = S.String;
+const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus = S.String;
 
 export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
   | "UNSPECIFIED"
@@ -13001,26 +11329,21 @@ export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
   | "DISCOVERING"
   | "FAILED"
   | "SUCCEEDED";
-export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 = S.String;
+const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 = S.String;
 
 export type CloudIntegrationsUpdateResponseStatusRegionsList = Array<string>;
-export const CloudIntegrationsUpdateResponseStatusRegionsList =
+const CloudIntegrationsUpdateResponseStatusRegionsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<CloudIntegrationsUpdateResponseStatusRegionsList>;
 
 export type CloudIntegrationsUpdateResponseStatusInUseByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const CloudIntegrationsUpdateResponseStatusInUseByItemClientType = S.String;
-
 export interface CloudIntegrationsUpdateResponseStatusInUseByItem {
   id: string;
   clientType: CloudIntegrationsUpdateResponseStatusInUseByItemClientType;
   name: string;
 }
-export const CloudIntegrationsUpdateResponseStatusInUseByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByItem>;
-
 export type CloudIntegrationsUpdateResponseStatusInUseByList =
   Array<CloudIntegrationsUpdateResponseStatusInUseByItem>;
-export const CloudIntegrationsUpdateResponseStatusInUseByList =
+const CloudIntegrationsUpdateResponseStatusInUseByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByList>;
 
 export interface CloudIntegrationsUpdateResponseStatus {
@@ -13041,7 +11364,7 @@ export interface CloudIntegrationsUpdateResponseStatus {
   lastDiscoveryStartedAtV2?: string | null;
   lastUpdated?: string | null;
 }
-export const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryProgress: CloudIntegrationsCreateResponseStatusDiscoveryProgress.pipe(
       T.Body("discovery_progress"),
@@ -13103,7 +11426,7 @@ export interface UpdateCloudIntegrationResponse {
   gcpServiceAccountEmail?: string | null;
   status?: CloudIntegrationsUpdateResponseStatus | null;
 }
-export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: CloudIntegrationsUpdateResponseCloudType.pipe(T.Body("cloud_type")),
@@ -13127,11 +11450,11 @@ export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCloudIntegrationResponse>;
 
 export type OnRampsUpdateRequestAttachedHubsList = Array<string>;
-export const OnRampsUpdateRequestAttachedHubsList =
+const OnRampsUpdateRequestAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
 
 export type OnRampsUpdateRequestAttachedVpcsList = Array<string>;
-export const OnRampsUpdateRequestAttachedVpcsList =
+const OnRampsUpdateRequestAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
 
 export interface UpdateOnRampRequest {
@@ -13147,7 +11470,7 @@ export interface UpdateOnRampRequest {
   name?: string;
   vpc?: string;
 }
-export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -13172,53 +11495,42 @@ export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOnRampRequest" }) as any as S.Schema<UpdateOnRampRequest>;
 
 export type OnRampsUpdateResponseCloudType = "AWS" | "AZURE" | "GOOGLE";
-export const OnRampsUpdateResponseCloudType = S.String;
+const OnRampsUpdateResponseCloudType = S.String;
 
 export type OnRampsUpdateResponseType = "OnrampTypeSingle" | "OnrampTypeHub";
-export const OnRampsUpdateResponseType = S.String;
+const OnRampsUpdateResponseType = S.String;
 
 export type OnRampsUpdateResponseAttachedHubsList = Array<string>;
-export const OnRampsUpdateResponseAttachedHubsList =
+const OnRampsUpdateResponseAttachedHubsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseAttachedHubsList>;
 
 export type OnRampsUpdateResponseAttachedVpcsList = Array<string>;
-export const OnRampsUpdateResponseAttachedVpcsList =
+const OnRampsUpdateResponseAttachedVpcsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseAttachedVpcsList>;
 
 export type OnRampsUpdateResponsePlannedMonthlyCostEstimate =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsUpdateResponsePlannedMonthlyCostEstimate =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsUpdateResponsePlannedResourcesItemDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponsePlannedResourcesItemDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList = Array<string>;
-export const OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
+const OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
   OnRampsCreateResponsePlannedResourcesItemKeysRequireReplaceList as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList>;
 
 export type OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
   OnRampsCreateResponsePlannedMonthlyCostEstimate;
-export const OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
-  OnRampsCreateResponsePlannedMonthlyCostEstimate;
-
 export type OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
   | "no_op"
   | "create"
   | "update"
   | "replace"
   | "destroy";
-export const OnRampsUpdateResponsePlannedResourcesItemPlannedAction = S.String;
+const OnRampsUpdateResponsePlannedResourcesItemPlannedAction = S.String;
 
 export type OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePlannedResourcesItemResourceCloudType = S.String;
-
 export type OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -13277,8 +11589,6 @@ export type OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePlannedResourcesItemResourceResourceType = S.String;
-
 export interface OnRampsUpdateResponsePlannedResourcesItemResource {
   id: string;
   cloudType: OnRampsUpdateResponsePlannedResourcesItemResourceCloudType;
@@ -13287,7 +11597,7 @@ export interface OnRampsUpdateResponsePlannedResourcesItemResource {
   resourceType: OnRampsUpdateResponsePlannedResourcesItemResourceResourceType;
   title: string;
 }
-export const OnRampsUpdateResponsePlannedResourcesItemResource =
+const OnRampsUpdateResponsePlannedResourcesItemResource =
   OnRampsCreateResponsePlannedResourcesItemResource as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemResource>;
 
 export interface OnRampsUpdateResponsePlannedResourcesItem {
@@ -13297,7 +11607,7 @@ export interface OnRampsUpdateResponsePlannedResourcesItem {
   plannedAction: OnRampsUpdateResponsePlannedResourcesItemPlannedAction;
   resource: OnRampsUpdateResponsePlannedResourcesItemResource;
 }
-export const OnRampsUpdateResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsUpdateResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diff: OnRampsCreateResponsePlannedResourcesItemDiff,
     keysRequireReplace: OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
@@ -13317,52 +11627,43 @@ export const OnRampsUpdateResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend
 
 export type OnRampsUpdateResponsePlannedResourcesList =
   Array<OnRampsUpdateResponsePlannedResourcesItem>;
-export const OnRampsUpdateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
+const OnRampsUpdateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
   OnRampsUpdateResponsePlannedResourcesItem,
 ) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesList>;
 
 export type OnRampsUpdateResponsePostApplyMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsUpdateResponsePostApplyMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueCloudType = S.String;
+const OnRampsUpdateResponsePostApplyResourcesValueCloudType = S.String;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueConfigMap =
+const OnRampsUpdateResponsePostApplyResourcesValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueConfigMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsUpdateResponsePostApplyResourcesValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsUpdateResponsePostApplyResourcesValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueObservationsMap =
+const OnRampsUpdateResponsePostApplyResourcesValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueObservationsMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList = Array<string>;
-export const OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
+const OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderIdsList>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap =
+const OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueProviderNamesByIdMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueProviderNamesByIdMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueResourceType =
@@ -13423,36 +11724,21 @@ export type OnRampsUpdateResponsePostApplyResourcesValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueResourceType = S.String;
+const OnRampsUpdateResponsePostApplyResourcesValueResourceType = S.String;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -13511,9 +11797,6 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -13522,29 +11805,17 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenI
   resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -13603,9 +11874,6 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsI
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -13614,56 +11882,26 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenI
   resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -13679,7 +11917,7 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenI
   name?: string | null;
   value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -13694,39 +11932,24 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem,
   ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -13785,9 +12008,6 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -13796,29 +12016,17 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisible
   resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -13877,9 +12085,6 @@ export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItems
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -13888,56 +12093,26 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisible
   resourceType: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -13953,7 +12128,7 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisible
   name?: string | null;
   value?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       helpText: S.optional(S.NullOr(S.String)),
@@ -13968,7 +12143,7 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList =
   /*@__PURE__*/ S.Array(
     OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem,
   ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList>;
@@ -13979,55 +12154,49 @@ export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItem {
   visibleItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hiddenItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
-        T.Body("hidden_items"),
-      ),
-      name: S.String,
-      visibleItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
-        T.Body("visible_items"),
-      ),
-      helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-    }),
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hiddenItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsList.pipe(
+      T.Body("hidden_items"),
+    ),
+    name: S.String,
+    visibleItems: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsList.pipe(
+      T.Body("visible_items"),
+    ),
+    helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+  }),
 ).annotate({
   identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItem",
 }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueSectionsItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsUpdateResponsePostApplyResourcesValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsUpdateResponsePostApplyResourcesValueSectionsItem,
 ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsList>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueStateMap = {
   [key: string]: unknown | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueStateMap =
+const OnRampsUpdateResponsePostApplyResourcesValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueStateMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueTagsMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesValueTagsMap =
+const OnRampsUpdateResponsePostApplyResourcesValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueTagsMap>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType =
   "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType = S.String;
-
 export interface OnRampsUpdateResponsePostApplyResourcesValueManagedByItem {
   id: string;
   clientType: OnRampsUpdateResponsePostApplyResourcesValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByItem =
-  OnRampsCreateResponsePostApplyResourcesValueManagedByItem as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
-
 export type OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
   Array<OnRampsUpdateResponsePostApplyResourcesValueManagedByItem>;
-export const OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
+const OnRampsUpdateResponsePostApplyResourcesValueManagedByList =
   OnRampsCreateResponsePostApplyResourcesValueManagedByList as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueManagedByList>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValue {
@@ -14053,7 +12222,7 @@ export interface OnRampsUpdateResponsePostApplyResourcesValue {
   url: string;
   managedBy?: OnRampsUpdateResponsePostApplyResourcesValueManagedByList | null;
 }
-export const OnRampsUpdateResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsUpdateResponsePostApplyResourcesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -14096,14 +12265,12 @@ export const OnRampsUpdateResponsePostApplyResourcesValue = /*@__PURE__*/ S.susp
 export type OnRampsUpdateResponsePostApplyResourcesMap = {
   [key: string]: OnRampsUpdateResponsePostApplyResourcesValue | undefined;
 };
-export const OnRampsUpdateResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
+const OnRampsUpdateResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsUpdateResponsePostApplyResourcesValue,
 ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesMap>;
 
 export type OnRampsUpdateResponseStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsUpdateResponseStatusApplyProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsUpdateResponseStatusLifecycleState =
   | "OnrampNeedsApply"
   | "OnrampPendingPlan"
@@ -14117,17 +12284,15 @@ export type OnRampsUpdateResponseStatusLifecycleState =
   | "OnrampPendingDestroy"
   | "OnrampDestroying"
   | "OnrampDestroyFailed";
-export const OnRampsUpdateResponseStatusLifecycleState = S.String;
+const OnRampsUpdateResponseStatusLifecycleState = S.String;
 
 export type OnRampsUpdateResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-export const OnRampsUpdateResponseStatusPlanProgress = OnRampsCreateResponseStatusApplyProgress;
-
 export type OnRampsUpdateResponseStatusRoutesList = Array<string>;
-export const OnRampsUpdateResponseStatusRoutesList =
+const OnRampsUpdateResponseStatusRoutesList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseStatusRoutesList>;
 
 export type OnRampsUpdateResponseStatusTunnelsList = Array<string>;
-export const OnRampsUpdateResponseStatusTunnelsList =
+const OnRampsUpdateResponseStatusTunnelsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
 
 export type OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
@@ -14286,18 +12451,10 @@ export type OnRampsUpdateResponseStatusLifecycleErrorsValueCode =
   | 103006
   | 103007
   | 103008;
-export const OnRampsUpdateResponseStatusLifecycleErrorsValueCode = S.Number;
-
 export type OnRampsUpdateResponseStatusLifecycleErrorsValueMeta =
   CatalogSyncsCreateResponseErrorsValueMeta;
-export const OnRampsUpdateResponseStatusLifecycleErrorsValueMeta =
-  CatalogSyncsCreateResponseErrorsValueMeta;
-
 export type OnRampsUpdateResponseStatusLifecycleErrorsValueSource =
   CatalogSyncsCreateResponseErrorsValueSource;
-export const OnRampsUpdateResponseStatusLifecycleErrorsValueSource =
-  CatalogSyncsCreateResponseErrorsValueSource;
-
 export interface OnRampsUpdateResponseStatusLifecycleErrorsValue {
   code: OnRampsUpdateResponseStatusLifecycleErrorsValueCode;
   message: string;
@@ -14305,13 +12462,10 @@ export interface OnRampsUpdateResponseStatusLifecycleErrorsValue {
   meta?: CatalogSyncsCreateResponseErrorsValueMeta | null;
   source?: CatalogSyncsCreateResponseErrorsValueSource | null;
 }
-export const OnRampsUpdateResponseStatusLifecycleErrorsValue =
-  CatalogSyncsCreateResponseErrorsValue as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsValue>;
-
 export type OnRampsUpdateResponseStatusLifecycleErrorsMap = {
   [key: string]: OnRampsUpdateResponseStatusLifecycleErrorsValue | undefined;
 };
-export const OnRampsUpdateResponseStatusLifecycleErrorsMap =
+const OnRampsUpdateResponseStatusLifecycleErrorsMap =
   CatalogSyncsCreateResponseErrorsMap as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsMap>;
 
 export interface OnRampsUpdateResponseStatus {
@@ -14322,7 +12476,7 @@ export interface OnRampsUpdateResponseStatus {
   tunnels: OnRampsUpdateResponseStatusTunnelsList;
   lifecycleErrors?: OnRampsUpdateResponseStatusLifecycleErrorsMap | null;
 }
-export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyProgress: OnRampsCreateResponseStatusApplyProgress.pipe(T.Body("apply_progress")),
     lifecycleState: OnRampsUpdateResponseStatusLifecycleState.pipe(T.Body("lifecycle_state")),
@@ -14338,36 +12492,30 @@ export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnRampsUpdateResponseStatus>;
 
 export type OnRampsUpdateResponseVpcsByIdValueCloudType = "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueCloudType = S.String;
+const OnRampsUpdateResponseVpcsByIdValueCloudType = S.String;
 
 export type OnRampsUpdateResponseVpcsByIdValueConfigMap = { [key: string]: unknown | undefined };
-export const OnRampsUpdateResponseVpcsByIdValueConfigMap =
+const OnRampsUpdateResponseVpcsByIdValueConfigMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueConfigMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueMonthlyCostEstimate =
   OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-export const OnRampsUpdateResponseVpcsByIdValueMonthlyCostEstimate =
-  OnRampsCreateResponsePostApplyMonthlyCostEstimate;
-
 export type OnRampsUpdateResponseVpcsByIdValueObservationsValue =
   OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-export const OnRampsUpdateResponseVpcsByIdValueObservationsValue =
-  OnRampsCreateResponsePostApplyResourcesValueObservationsValue;
-
 export type OnRampsUpdateResponseVpcsByIdValueObservationsMap = {
   [key: string]: OnRampsCreateResponsePostApplyResourcesValueObservationsValue | undefined;
 };
-export const OnRampsUpdateResponseVpcsByIdValueObservationsMap =
+const OnRampsUpdateResponseVpcsByIdValueObservationsMap =
   OnRampsCreateResponsePostApplyResourcesValueObservationsMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueObservationsMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueProviderIdsList = Array<string>;
-export const OnRampsUpdateResponseVpcsByIdValueProviderIdsList =
+const OnRampsUpdateResponseVpcsByIdValueProviderIdsList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderIdsList>;
 
 export type OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap = {
   [key: string]: string | undefined;
 };
-export const OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap =
+const OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueProviderNamesByIdMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueResourceType =
@@ -14428,36 +12576,21 @@ export type OnRampsUpdateResponseVpcsByIdValueResourceType =
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueResourceType = S.String;
+const OnRampsUpdateResponseVpcsByIdValueResourceType = S.String;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -14516,9 +12649,6 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -14527,29 +12657,17 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -14608,9 +12726,6 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMc
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -14619,55 +12734,26 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemVa
   resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList>;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
+const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -14683,53 +12769,35 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   name?: string | null;
   value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue | null;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
+const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue)),
+  }),
+).annotate({
+  identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
+}) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList =
   Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
+const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList = /*@__PURE__*/ S.Array(
   OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem,
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
   OnRampsCreateResponsePlannedResourcesItemDiff;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff =
-  OnRampsCreateResponsePlannedResourcesItemDiff;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -14788,9 +12856,6 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewCloudType;
@@ -14799,29 +12864,17 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
   OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
   | "AWS"
   | "AZURE"
   | "GOOGLE"
   | "CLOUDFLARE";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType =
-  S.String;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
   | "aws_customer_gateway"
   | "aws_egress_only_internet_gateway"
@@ -14880,9 +12933,6 @@ export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueM
   | "google_compute_network_firewall_policy_rule"
   | "cloudflare_static_route"
   | "cloudflare_ipsec_tunnel";
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType =
-  S.String;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview {
   id: string;
   cloudType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewCloudType;
@@ -14891,55 +12941,26 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemV
   resourceType: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreviewResourceType;
   title: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview>;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem {
   itemType: string;
   resourcePreview: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem =
-  OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
-  /*@__PURE__*/ S.Array(
-    OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList>;
-
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem {
   itemType: string;
   list: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      itemType: S.String.pipe(T.Body("item_type")),
-      list: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
   | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
   | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
+const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["itemType", "string"],
@@ -14955,22 +12976,21 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem 
   name?: string | null;
   value?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue | null;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(
-        S.NullOr(OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
+const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    helpText: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(
+      S.NullOr(OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue),
+    ),
+  }),
+).annotate({
+  identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
+}) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList =
   Array<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
+const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList = /*@__PURE__*/ S.Array(
   OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem,
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList>;
 
@@ -14980,7 +13000,7 @@ export interface OnRampsUpdateResponseVpcsByIdValueSectionsItem {
   visibleItems: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsList;
   helpText?: string | null;
 }
-export const OnRampsUpdateResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const OnRampsUpdateResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiddenItems: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsList.pipe(
       T.Body("hidden_items"),
@@ -14997,32 +13017,27 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItem = /*@__PURE__*/ S.su
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsList =
   Array<OnRampsUpdateResponseVpcsByIdValueSectionsItem>;
-export const OnRampsUpdateResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
+const OnRampsUpdateResponseVpcsByIdValueSectionsList = /*@__PURE__*/ S.Array(
   OnRampsUpdateResponseVpcsByIdValueSectionsItem,
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsList>;
 
 export type OnRampsUpdateResponseVpcsByIdValueStateMap = { [key: string]: unknown | undefined };
-export const OnRampsUpdateResponseVpcsByIdValueStateMap =
+const OnRampsUpdateResponseVpcsByIdValueStateMap =
   OnRampsCreateResponsePostApplyResourcesValueConfigMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueStateMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueTagsMap = { [key: string]: string | undefined };
-export const OnRampsUpdateResponseVpcsByIdValueTagsMap =
+const OnRampsUpdateResponseVpcsByIdValueTagsMap =
   OnRampsCreateResponsePostApplyResourcesValueTagsMap as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueTagsMap>;
 
 export type OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType = "MAGIC_WAN_CLOUD_ONRAMP";
-export const OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType = S.String;
-
 export interface OnRampsUpdateResponseVpcsByIdValueManagedByItem {
   id: string;
   clientType: OnRampsUpdateResponseVpcsByIdValueManagedByItemClientType;
   name: string;
 }
-export const OnRampsUpdateResponseVpcsByIdValueManagedByItem =
-  CloudIntegrationsCreateResponseStatusInUseByItem as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
-
 export type OnRampsUpdateResponseVpcsByIdValueManagedByList =
   Array<OnRampsUpdateResponseVpcsByIdValueManagedByItem>;
-export const OnRampsUpdateResponseVpcsByIdValueManagedByList =
+const OnRampsUpdateResponseVpcsByIdValueManagedByList =
   CloudIntegrationsCreateResponseStatusInUseByList as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueManagedByList>;
 
 export interface OnRampsUpdateResponseVpcsByIdValue {
@@ -15048,7 +13063,7 @@ export interface OnRampsUpdateResponseVpcsByIdValue {
   url: string;
   managedBy?: OnRampsUpdateResponseVpcsByIdValueManagedByList | null;
 }
-export const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
+const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -15085,13 +13100,13 @@ export const OnRampsUpdateResponseVpcsByIdValue = /*@__PURE__*/ S.suspend(() =>
 export type OnRampsUpdateResponseVpcsByIdMap = {
   [key: string]: OnRampsUpdateResponseVpcsByIdValue | undefined;
 };
-export const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
+const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
   S.String,
   OnRampsUpdateResponseVpcsByIdValue,
 ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdMap>;
 
 export type OnRampsUpdateResponseVpcsByIdUnavailableList = Array<string>;
-export const OnRampsUpdateResponseVpcsByIdUnavailableList =
+const OnRampsUpdateResponseVpcsByIdUnavailableList =
   CloudIntegrationsCreateResponseStatusRegionsList as any as S.Schema<OnRampsUpdateResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -15127,7 +13142,7 @@ export interface UpdateOnRampResponse {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsUpdateResponseVpcsByIdUnavailableList | null;
 }
-export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsUpdateResponseCloudType.pipe(T.Body("cloud_type")),

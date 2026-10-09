@@ -62,16 +62,16 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type FolderLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DELETE_REQUESTED";
-export const FolderLifecycleStateEnum = S.String;
+const FolderLifecycleStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A Folder in an Organization's resource hierarchy, used to organize that Organization's resources. */
 export interface Folder {
@@ -92,7 +92,7 @@ export interface Folder {
   /** The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. */
   displayName?: string;
 }
-export const Folder = /*@__PURE__*/ S.suspend(() =>
+const Folder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     tags: S.optional(StringMap),
@@ -111,7 +111,7 @@ export interface CreateFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Folder.pipe(T.HttpBody())),
@@ -125,15 +125,10 @@ export const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFoldersRequest" }) as any as S.Schema<CreateFoldersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -144,7 +139,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -165,7 +160,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -179,7 +174,7 @@ export interface DeleteFoldersRequest {
   /** Required. the resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`. */
   name: string;
 }
-export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -195,7 +190,7 @@ export interface GetFoldersRequest {
   /** Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`. */
   name: string;
 }
-export const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -212,7 +207,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -223,7 +218,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -235,7 +230,7 @@ export interface GetIamPolicyFoldersRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -261,7 +256,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     location: S.optional(S.String),
@@ -279,7 +274,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -288,14 +283,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -304,7 +299,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -312,7 +307,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -323,7 +318,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -331,9 +326,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -346,7 +339,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -359,7 +352,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -381,7 +374,7 @@ export interface ListFoldersRequest {
   /** Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`. */
   parent?: string;
 }
-export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -397,7 +390,7 @@ export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFoldersRequest" }) as any as S.Schema<ListFoldersRequest>;
 
 export type FolderList = Array<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
+const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
 
 /** The ListFolders response message. */
 export interface ListFoldersResponse {
@@ -406,7 +399,7 @@ export interface ListFoldersResponse {
   /** A possibly paginated list of Folders that are direct descendants of the specified parent resource. */
   folders?: FolderList;
 }
-export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     folders: S.optional(FolderList),
@@ -418,7 +411,7 @@ export interface MoveFolderRequest {
   /** Required. The resource name of the Folder or Organization to reparent the folder under. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. */
   destinationParent?: string;
 }
-export const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationParent: S.optional(S.String),
   }),
@@ -430,7 +423,7 @@ export interface MoveFoldersRequest {
   /** Request body */
   body?: MoveFolderRequest;
 }
-export const MoveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveFolderRequest.pipe(T.HttpBody())),
@@ -451,7 +444,7 @@ export interface PatchFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const PatchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -474,7 +467,7 @@ export interface SearchFoldersRequest {
   /** Optional. The maximum number of folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. */
   pageSize?: number;
 }
-export const SearchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     query: S.optional(S.String),
@@ -486,7 +479,7 @@ export interface SearchFoldersRequest_ {
   /** Request body */
   body?: SearchFoldersRequest;
 }
-export const SearchFoldersRequest_ = /*@__PURE__*/ S.suspend(() =>
+const SearchFoldersRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SearchFoldersRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -505,7 +498,7 @@ export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
   folders?: FolderList;
 }
-export const SearchFoldersResponse = ListFoldersResponse as any as S.Schema<SearchFoldersResponse>;
+const SearchFoldersResponse = ListFoldersResponse as any as S.Schema<SearchFoldersResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -514,7 +507,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -527,7 +520,7 @@ export interface SetIamPolicyFoldersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -547,7 +540,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -561,7 +554,7 @@ export interface TestIamPermissionsFoldersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -581,12 +574,12 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 /** The UndeleteFolder request message. */
 export interface UndeleteFolderRequest {}
-export const UndeleteFolderRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UndeleteFolderRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UndeleteFolderRequest",
 }) as any as S.Schema<UndeleteFolderRequest>;
 
@@ -596,7 +589,7 @@ export interface UndeleteFoldersRequest {
   /** Request body */
   body?: UndeleteFolderRequest;
 }
-export const UndeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteFolderRequest.pipe(T.HttpBody())),

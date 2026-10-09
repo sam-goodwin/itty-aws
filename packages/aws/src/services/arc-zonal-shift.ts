@@ -124,7 +124,7 @@ export type ZonalShiftId = string;
 export interface CancelPracticeRunRequest {
   zonalShiftId: string;
 }
-export const CancelPracticeRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPracticeRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ zonalShiftId: S.String.pipe(T.HttpLabel("zonalShiftId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/practiceruns/{zonalShiftId}" }),
@@ -141,7 +141,7 @@ export type AvailabilityZone = string;
 export type ExpiryTime = Date;
 export type StartTime = Date;
 export type ZonalShiftStatus = "ACTIVE" | "EXPIRED" | "CANCELED" | (string & {});
-export const ZonalShiftStatus = S.String;
+const ZonalShiftStatus = S.String;
 
 export type ZonalShiftComment = string;
 export interface CancelPracticeRunResponse {
@@ -153,7 +153,7 @@ export interface CancelPracticeRunResponse {
   status: ZonalShiftStatus;
   comment: string;
 }
-export const CancelPracticeRunResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelPracticeRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zonalShiftId: S.String,
     resourceIdentifier: S.String,
@@ -169,7 +169,7 @@ export const CancelPracticeRunResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CancelZonalShiftRequest {
   zonalShiftId: string;
 }
-export const CancelZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ zonalShiftId: S.String.pipe(T.HttpLabel("zonalShiftId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/zonalshifts/{zonalShiftId}" }),
@@ -190,7 +190,7 @@ export interface ZonalShift {
   status: ZonalShiftStatus;
   comment: string;
 }
-export const ZonalShift = /*@__PURE__*/ S.suspend(() =>
+const ZonalShift = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zonalShiftId: S.String,
     resourceIdentifier: S.String,
@@ -203,28 +203,28 @@ export const ZonalShift = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZonalShift" }) as any as S.Schema<ZonalShift>;
 export type BlockedWindow = string;
 export type BlockedWindows = string[];
-export const BlockedWindows = /*@__PURE__*/ S.Array(S.String);
+const BlockedWindows = /*@__PURE__*/ S.Array(S.String);
 export type BlockedDate = string;
 export type BlockedDates = string[];
-export const BlockedDates = BlockedWindows as any as S.Schema<BlockedDates>;
+const BlockedDates = BlockedWindows as any as S.Schema<BlockedDates>;
 export type ControlConditionType = "CLOUDWATCH" | (string & {});
-export const ControlConditionType = S.String;
+const ControlConditionType = S.String;
 
 export type MetricIdentifier = string;
 export interface ControlCondition {
   type: ControlConditionType;
   alarmIdentifier: string;
 }
-export const ControlCondition = /*@__PURE__*/ S.suspend(() =>
+const ControlCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: ControlConditionType, alarmIdentifier: S.String }),
 ).annotate({ identifier: "ControlCondition" }) as any as S.Schema<ControlCondition>;
 export type BlockingAlarms = ControlCondition[];
-export const BlockingAlarms = /*@__PURE__*/ S.Array(ControlCondition);
+const BlockingAlarms = /*@__PURE__*/ S.Array(ControlCondition);
 export type AllowedWindow = string;
 export type AllowedWindows = string[];
-export const AllowedWindows = BlockedWindows as any as S.Schema<AllowedWindows>;
+const AllowedWindows = BlockedWindows as any as S.Schema<AllowedWindows>;
 export type OutcomeAlarms = ControlCondition[];
-export const OutcomeAlarms = BlockingAlarms as any as S.Schema<OutcomeAlarms>;
+const OutcomeAlarms = BlockingAlarms as any as S.Schema<OutcomeAlarms>;
 export interface CreatePracticeRunConfigurationRequest {
   resourceIdentifier: string;
   blockedWindows?: string[];
@@ -233,7 +233,7 @@ export interface CreatePracticeRunConfigurationRequest {
   allowedWindows?: string[];
   outcomeAlarms: ControlCondition[];
 }
-export const CreatePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String,
     blockedWindows: S.optional(BlockedWindows),
@@ -248,7 +248,7 @@ export const CreatePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 export type ResourceArn = string;
 export type ResourceName = string;
 export type ZonalAutoshiftStatus = "ENABLED" | "DISABLED" | (string & {});
-export const ZonalAutoshiftStatus = S.String;
+const ZonalAutoshiftStatus = S.String;
 
 export interface PracticeRunConfiguration {
   blockingAlarms?: ControlCondition[];
@@ -257,7 +257,7 @@ export interface PracticeRunConfiguration {
   allowedWindows?: string[];
   blockedDates?: string[];
 }
-export const PracticeRunConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PracticeRunConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockingAlarms: S.optional(BlockingAlarms),
     outcomeAlarms: OutcomeAlarms,
@@ -272,7 +272,7 @@ export interface CreatePracticeRunConfigurationResponse {
   zonalAutoshiftStatus: ZonalAutoshiftStatus;
   practiceRunConfiguration: PracticeRunConfiguration;
 }
-export const CreatePracticeRunConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePracticeRunConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -285,7 +285,7 @@ export const CreatePracticeRunConfigurationResponse = /*@__PURE__*/ S.suspend(()
 export interface DeletePracticeRunConfigurationRequest {
   resourceIdentifier: string;
 }
-export const DeletePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/configuration/{resourceIdentifier}" }),
@@ -304,13 +304,13 @@ export interface DeletePracticeRunConfigurationResponse {
   name: string;
   zonalAutoshiftStatus: ZonalAutoshiftStatus;
 }
-export const DeletePracticeRunConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePracticeRunConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, name: S.String, zonalAutoshiftStatus: ZonalAutoshiftStatus }),
 ).annotate({
   identifier: "DeletePracticeRunConfigurationResponse",
 }) as any as S.Schema<DeletePracticeRunConfigurationResponse>;
 export interface GetAutoshiftObserverNotificationStatusRequest {}
-export const GetAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/autoshift-observer-notification" }),
@@ -325,12 +325,12 @@ export const GetAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.sus
   identifier: "GetAutoshiftObserverNotificationStatusRequest",
 }) as any as S.Schema<GetAutoshiftObserverNotificationStatusRequest>;
 export type AutoshiftObserverNotificationStatus = "ENABLED" | "DISABLED" | (string & {});
-export const AutoshiftObserverNotificationStatus = S.String;
+const AutoshiftObserverNotificationStatus = S.String;
 
 export interface GetAutoshiftObserverNotificationStatusResponse {
   status: AutoshiftObserverNotificationStatus;
 }
-export const GetAutoshiftObserverNotificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAutoshiftObserverNotificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: AutoshiftObserverNotificationStatus }),
 ).annotate({
   identifier: "GetAutoshiftObserverNotificationStatusResponse",
@@ -338,7 +338,7 @@ export const GetAutoshiftObserverNotificationStatusResponse = /*@__PURE__*/ S.su
 export interface GetManagedResourceRequest {
   resourceIdentifier: string;
 }
-export const GetManagedResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/managedresources/{resourceIdentifier}" }),
@@ -354,12 +354,9 @@ export const GetManagedResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetManagedResourceRequest>;
 export type Weight = number;
 export type AppliedWeights = { [key: string]: number | undefined };
-export const AppliedWeights = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+const AppliedWeights = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
 export type AppliedStatus = "APPLIED" | "NOT_APPLIED" | (string & {});
-export const AppliedStatus = S.String;
+const AppliedStatus = S.String;
 
 export type ShiftType =
   | "ZONAL_SHIFT"
@@ -367,7 +364,7 @@ export type ShiftType =
   | "FIS_EXPERIMENT"
   | "ZONAL_AUTOSHIFT"
   | (string & {});
-export const ShiftType = S.String;
+const ShiftType = S.String;
 
 export type PracticeRunOutcome =
   | "FAILED"
@@ -376,7 +373,7 @@ export type PracticeRunOutcome =
   | "SUCCEEDED"
   | "CAPACITY_CHECK_FAILED"
   | (string & {});
-export const PracticeRunOutcome = S.String;
+const PracticeRunOutcome = S.String;
 
 export interface ZonalShiftInResource {
   appliedStatus: AppliedStatus;
@@ -389,7 +386,7 @@ export interface ZonalShiftInResource {
   shiftType?: ShiftType;
   practiceRunOutcome?: PracticeRunOutcome;
 }
-export const ZonalShiftInResource = /*@__PURE__*/ S.suspend(() =>
+const ZonalShiftInResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedStatus: AppliedStatus,
     zonalShiftId: S.String,
@@ -403,16 +400,16 @@ export const ZonalShiftInResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ZonalShiftInResource" }) as any as S.Schema<ZonalShiftInResource>;
 export type ZonalShiftsInResource = ZonalShiftInResource[];
-export const ZonalShiftsInResource = /*@__PURE__*/ S.Array(ZonalShiftInResource);
+const ZonalShiftsInResource = /*@__PURE__*/ S.Array(ZonalShiftInResource);
 export type AutoshiftAppliedStatus = "APPLIED" | "NOT_APPLIED" | (string & {});
-export const AutoshiftAppliedStatus = S.String;
+const AutoshiftAppliedStatus = S.String;
 
 export interface AutoshiftInResource {
   appliedStatus: AutoshiftAppliedStatus;
   awayFrom: string;
   startTime: Date;
 }
-export const AutoshiftInResource = /*@__PURE__*/ S.suspend(() =>
+const AutoshiftInResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedStatus: AutoshiftAppliedStatus,
     awayFrom: S.String,
@@ -420,7 +417,7 @@ export const AutoshiftInResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AutoshiftInResource" }) as any as S.Schema<AutoshiftInResource>;
 export type AutoshiftsInResource = AutoshiftInResource[];
-export const AutoshiftsInResource = /*@__PURE__*/ S.Array(AutoshiftInResource);
+const AutoshiftsInResource = /*@__PURE__*/ S.Array(AutoshiftInResource);
 export interface GetManagedResourceResponse {
   arn?: string;
   name?: string;
@@ -430,7 +427,7 @@ export interface GetManagedResourceResponse {
   practiceRunConfiguration?: PracticeRunConfiguration;
   zonalAutoshiftStatus?: ZonalAutoshiftStatus;
 }
-export const GetManagedResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagedResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     name: S.optional(S.String),
@@ -444,7 +441,7 @@ export const GetManagedResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetManagedResourceResponse",
 }) as any as S.Schema<GetManagedResourceResponse>;
 export type AutoshiftExecutionStatus = "ACTIVE" | "COMPLETED" | (string & {});
-export const AutoshiftExecutionStatus = S.String;
+const AutoshiftExecutionStatus = S.String;
 
 export type MaxResults = number;
 export interface ListAutoshiftsRequest {
@@ -452,7 +449,7 @@ export interface ListAutoshiftsRequest {
   status?: AutoshiftExecutionStatus;
   maxResults?: number;
 }
-export const ListAutoshiftsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoshiftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     status: S.optional(AutoshiftExecutionStatus).pipe(T.HttpQuery("status")),
@@ -465,7 +462,7 @@ export interface AutoshiftSummary {
   startTime: Date;
   status: AutoshiftExecutionStatus;
 }
-export const AutoshiftSummary = /*@__PURE__*/ S.suspend(() =>
+const AutoshiftSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     awayFrom: S.String,
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -474,19 +471,19 @@ export const AutoshiftSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AutoshiftSummary" }) as any as S.Schema<AutoshiftSummary>;
 export type AutoshiftSummaries = AutoshiftSummary[];
-export const AutoshiftSummaries = /*@__PURE__*/ S.Array(AutoshiftSummary);
+const AutoshiftSummaries = /*@__PURE__*/ S.Array(AutoshiftSummary);
 export interface ListAutoshiftsResponse {
   items?: AutoshiftSummary[];
   nextToken?: string;
 }
-export const ListAutoshiftsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutoshiftsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: S.optional(AutoshiftSummaries), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListAutoshiftsResponse" }) as any as S.Schema<ListAutoshiftsResponse>;
 export interface ListManagedResourcesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListManagedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -495,7 +492,7 @@ export const ListManagedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedResourcesRequest",
 }) as any as S.Schema<ListManagedResourcesRequest>;
 export type AvailabilityZones = string[];
-export const AvailabilityZones = BlockedWindows as any as S.Schema<AvailabilityZones>;
+const AvailabilityZones = BlockedWindows as any as S.Schema<AvailabilityZones>;
 export interface ManagedResourceSummary {
   arn?: string;
   name?: string;
@@ -506,7 +503,7 @@ export interface ManagedResourceSummary {
   zonalAutoshiftStatus?: ZonalAutoshiftStatus;
   practiceRunStatus?: ZonalAutoshiftStatus;
 }
-export const ManagedResourceSummary = /*@__PURE__*/ S.suspend(() =>
+const ManagedResourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     name: S.optional(S.String),
@@ -519,12 +516,12 @@ export const ManagedResourceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ManagedResourceSummary" }) as any as S.Schema<ManagedResourceSummary>;
 export type ManagedResourceSummaries = ManagedResourceSummary[];
-export const ManagedResourceSummaries = /*@__PURE__*/ S.Array(ManagedResourceSummary);
+const ManagedResourceSummaries = /*@__PURE__*/ S.Array(ManagedResourceSummary);
 export interface ListManagedResourcesResponse {
   items: ManagedResourceSummary[];
   nextToken?: string;
 }
-export const ListManagedResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListManagedResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: ManagedResourceSummaries, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListManagedResourcesResponse",
@@ -535,7 +532,7 @@ export interface ListZonalShiftsRequest {
   maxResults?: number;
   resourceIdentifier?: string;
 }
-export const ListZonalShiftsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListZonalShiftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     status: S.optional(ZonalShiftStatus).pipe(T.HttpQuery("status")),
@@ -554,7 +551,7 @@ export interface ZonalShiftSummary {
   shiftType?: ShiftType;
   practiceRunOutcome?: PracticeRunOutcome;
 }
-export const ZonalShiftSummary = /*@__PURE__*/ S.suspend(() =>
+const ZonalShiftSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zonalShiftId: S.String,
     resourceIdentifier: S.String,
@@ -568,12 +565,12 @@ export const ZonalShiftSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ZonalShiftSummary" }) as any as S.Schema<ZonalShiftSummary>;
 export type ZonalShiftSummaries = ZonalShiftSummary[];
-export const ZonalShiftSummaries = /*@__PURE__*/ S.Array(ZonalShiftSummary);
+const ZonalShiftSummaries = /*@__PURE__*/ S.Array(ZonalShiftSummary);
 export interface ListZonalShiftsResponse {
   items?: ZonalShiftSummary[];
   nextToken?: string;
 }
-export const ListZonalShiftsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListZonalShiftsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: S.optional(ZonalShiftSummaries), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListZonalShiftsResponse" }) as any as S.Schema<ListZonalShiftsResponse>;
 export interface StartPracticeRunRequest {
@@ -581,7 +578,7 @@ export interface StartPracticeRunRequest {
   awayFrom: string;
   comment: string;
 }
-export const StartPracticeRunRequest = /*@__PURE__*/ S.suspend(() =>
+const StartPracticeRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceIdentifier: S.String, awayFrom: S.String, comment: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/practiceruns" }), svc, auth, proto, ver, rules),
   ),
@@ -595,7 +592,7 @@ export interface StartPracticeRunResponse {
   status: ZonalShiftStatus;
   comment: string;
 }
-export const StartPracticeRunResponse = ZonalShift as any as S.Schema<StartPracticeRunResponse>;
+const StartPracticeRunResponse = ZonalShift as any as S.Schema<StartPracticeRunResponse>;
 export type ExpiresIn = string;
 export interface StartZonalShiftRequest {
   resourceIdentifier: string;
@@ -603,7 +600,7 @@ export interface StartZonalShiftRequest {
   expiresIn: string;
   comment: string;
 }
-export const StartZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
+const StartZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String,
     awayFrom: S.String,
@@ -614,7 +611,7 @@ export const StartZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAutoshiftObserverNotificationStatusRequest {
   status: AutoshiftObserverNotificationStatus;
 }
-export const UpdateAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: AutoshiftObserverNotificationStatus }).pipe(
     T.all(
       T.Http({ method: "PUT", uri: "/autoshift-observer-notification" }),
@@ -631,7 +628,7 @@ export const UpdateAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.
 export interface UpdateAutoshiftObserverNotificationStatusResponse {
   status: AutoshiftObserverNotificationStatus;
 }
-export const UpdateAutoshiftObserverNotificationStatusResponse =
+const UpdateAutoshiftObserverNotificationStatusResponse =
   GetAutoshiftObserverNotificationStatusResponse as any as S.Schema<UpdateAutoshiftObserverNotificationStatusResponse>;
 export interface UpdatePracticeRunConfigurationRequest {
   resourceIdentifier: string;
@@ -641,7 +638,7 @@ export interface UpdatePracticeRunConfigurationRequest {
   allowedWindows?: string[];
   outcomeAlarms?: ControlCondition[];
 }
-export const UpdatePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePracticeRunConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")),
     blockedWindows: S.optional(BlockedWindows),
@@ -668,13 +665,13 @@ export interface UpdatePracticeRunConfigurationResponse {
   zonalAutoshiftStatus: ZonalAutoshiftStatus;
   practiceRunConfiguration: PracticeRunConfiguration;
 }
-export const UpdatePracticeRunConfigurationResponse =
+const UpdatePracticeRunConfigurationResponse =
   CreatePracticeRunConfigurationResponse as any as S.Schema<UpdatePracticeRunConfigurationResponse>;
 export interface UpdateZonalAutoshiftConfigurationRequest {
   resourceIdentifier: string;
   zonalAutoshiftStatus: ZonalAutoshiftStatus;
 }
-export const UpdateZonalAutoshiftConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateZonalAutoshiftConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String.pipe(T.HttpLabel("resourceIdentifier")),
     zonalAutoshiftStatus: ZonalAutoshiftStatus,
@@ -695,7 +692,7 @@ export interface UpdateZonalAutoshiftConfigurationResponse {
   resourceIdentifier: string;
   zonalAutoshiftStatus: ZonalAutoshiftStatus;
 }
-export const UpdateZonalAutoshiftConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateZonalAutoshiftConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceIdentifier: S.String, zonalAutoshiftStatus: ZonalAutoshiftStatus }),
 ).annotate({
   identifier: "UpdateZonalAutoshiftConfigurationResponse",
@@ -705,7 +702,7 @@ export interface UpdateZonalShiftRequest {
   comment?: string;
   expiresIn?: string;
 }
-export const UpdateZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateZonalShiftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zonalShiftId: S.String.pipe(T.HttpLabel("zonalShiftId")),
     comment: S.optional(S.String),
@@ -735,7 +732,7 @@ export type ConflictExceptionReason =
   | "PracticeInBlockedWindows"
   | "PracticeOutsideAllowedWindows"
   | (string & {});
-export const ConflictExceptionReason = S.String;
+const ConflictExceptionReason = S.String;
 
 export type ValidationExceptionReason =
   | "InvalidExpiresIn"
@@ -754,7 +751,7 @@ export type ValidationExceptionReason =
   | "InvalidPracticeAllowedWindow"
   | "InvalidPracticeWindows"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export type CancelPracticeRunError =
   | AccessDeniedException

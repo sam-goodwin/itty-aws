@@ -15,7 +15,7 @@ export interface ChangeImageProtectionRequest {
   /** If true, prevents the snapshot from being deleted. */
   delete?: boolean;
 }
-export const ChangeImageProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeImageProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     delete: S.optional(S.Boolean),
@@ -26,7 +26,7 @@ export const ChangeImageProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeImageProtectionResponseActionStatus = "running" | "success" | "error";
-export const ChangeImageProtectionResponseActionStatus = S.String;
+const ChangeImageProtectionResponseActionStatus = S.String;
 
 export interface ChangeImageProtectionResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -34,7 +34,7 @@ export interface ChangeImageProtectionResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const ChangeImageProtectionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const ChangeImageProtectionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -46,7 +46,7 @@ export const ChangeImageProtectionResponseActionResourcesItem = /*@__PURE__*/ S.
 /** Resources the Action relates to. */
 export type ChangeImageProtectionResponseActionResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const ChangeImageProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const ChangeImageProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
   ChangeImageProtectionResponseActionResourcesItem,
 ) as any as S.Schema<ChangeImageProtectionResponseActionResourcesList>;
 
@@ -57,7 +57,7 @@ export interface ChangeImageProtectionResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const ChangeImageProtectionResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const ChangeImageProtectionResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -84,7 +84,7 @@ export interface ChangeImageProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
-export const ChangeImageProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeImageProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -102,7 +102,7 @@ export const ChangeImageProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeImageProtectionResponse {
   action: ChangeImageProtectionResponseAction;
 }
-export const ChangeImageProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeImageProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeImageProtectionResponseAction,
   }),
@@ -114,7 +114,7 @@ export interface GetImagesActionRequest {
   /** ID of the Action. */
   id: number;
 }
-export const GetImagesActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImagesActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/images/actions/{id}", code: 200 })),
@@ -122,23 +122,18 @@ export const GetImagesActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetImagesActionResponseActionStatus = "running" | "success" | "error";
-export const GetImagesActionResponseActionStatus = S.String;
+const GetImagesActionResponseActionStatus = S.String;
 
 export type GetImagesActionResponseActionResourcesItem =
   ChangeImageProtectionResponseActionResourcesItem;
-export const GetImagesActionResponseActionResourcesItem =
-  ChangeImageProtectionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type GetImagesActionResponseActionResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const GetImagesActionResponseActionResourcesList =
+const GetImagesActionResponseActionResourcesList =
   ChangeImageProtectionResponseActionResourcesList as any as S.Schema<GetImagesActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetImagesActionResponseActionError = ChangeImageProtectionResponseActionError;
-export const GetImagesActionResponseActionError = ChangeImageProtectionResponseActionError;
-
 export interface GetImagesActionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -157,7 +152,7 @@ export interface GetImagesActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
-export const GetImagesActionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const GetImagesActionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -175,7 +170,7 @@ export const GetImagesActionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface GetImagesActionResponse {
   action: GetImagesActionResponseAction;
 }
-export const GetImagesActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImagesActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetImagesActionResponseAction,
   }),
@@ -197,23 +192,21 @@ export type ListImageActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListImageActionsRequestSortItem = S.String;
+const ListImageActionsRequestSortItem = S.String;
 
 export type ListImageActionsRequestSortList = Array<
   ListImageActionsRequestSortItem | (string & {})
 >;
-export const ListImageActionsRequestSortList = /*@__PURE__*/ S.Array(
+const ListImageActionsRequestSortList = /*@__PURE__*/ S.Array(
   ListImageActionsRequestSortItem,
 ) as any as S.Schema<ListImageActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListImageActionsRequestStatusItem = "running" | "success" | "error";
-export const ListImageActionsRequestStatusItem = S.String;
-
 export type ListImageActionsRequestStatusList = Array<
   ListImageActionsRequestStatusItem | (string & {})
 >;
-export const ListImageActionsRequestStatusList =
+const ListImageActionsRequestStatusList =
   ListImageActionsRequestSortList as any as S.Schema<ListImageActionsRequestStatusList>;
 
 export interface ListImageActionsRequest {
@@ -228,7 +221,7 @@ export interface ListImageActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListImageActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     sort: S.optional(ListImageActionsRequestSortList.pipe(T.Query())),
@@ -240,23 +233,18 @@ export const ListImageActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListImageActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListImageActionsResponseActionsItemStatus = S.String;
+const ListImageActionsResponseActionsItemStatus = S.String;
 
 export type ListImageActionsResponseActionsItemResourcesItem =
   ChangeImageProtectionResponseActionResourcesItem;
-export const ListImageActionsResponseActionsItemResourcesItem =
-  ChangeImageProtectionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListImageActionsResponseActionsItemResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const ListImageActionsResponseActionsItemResourcesList =
+const ListImageActionsResponseActionsItemResourcesList =
   ChangeImageProtectionResponseActionResourcesList as any as S.Schema<ListImageActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListImageActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
-export const ListImageActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
-
 export interface ListImageActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -275,7 +263,7 @@ export interface ListImageActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
-export const ListImageActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListImageActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -291,7 +279,7 @@ export const ListImageActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListImageActionsResponseActionsItem>;
 
 export type ListImageActionsResponseActionsList = Array<ListImageActionsResponseActionsItem>;
-export const ListImageActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListImageActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListImageActionsResponseActionsItem,
 ) as any as S.Schema<ListImageActionsResponseActionsList>;
 
@@ -310,7 +298,7 @@ export interface ListImageActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListImageActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListImageActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -327,7 +315,7 @@ export interface ListImageActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListImageActionsResponseMetaPagination;
 }
-export const ListImageActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListImageActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListImageActionsResponseMetaPagination,
   }),
@@ -339,7 +327,7 @@ export interface ListImageActionsResponse {
   actions: ListImageActionsResponseActionsList;
   meta: ListImageActionsResponseMeta;
 }
-export const ListImageActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImageActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListImageActionsResponseActionsList,
     meta: ListImageActionsResponseMeta,
@@ -347,7 +335,7 @@ export const ListImageActionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListImageActionsResponse" }) as any as S.Schema<ListImageActionsResponse>;
 
 export type ListImagesActionsRequestIdList = Array<number>;
-export const ListImagesActionsRequestIdList = /*@__PURE__*/ S.Array(
+const ListImagesActionsRequestIdList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListImagesActionsRequestIdList>;
 
@@ -367,22 +355,18 @@ export type ListImagesActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListImagesActionsRequestSortItem = S.String;
-
 export type ListImagesActionsRequestSortList = Array<
   ListImagesActionsRequestSortItem | (string & {})
 >;
-export const ListImagesActionsRequestSortList =
+const ListImagesActionsRequestSortList =
   ListImageActionsRequestSortList as any as S.Schema<ListImagesActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListImagesActionsRequestStatusItem = "running" | "success" | "error";
-export const ListImagesActionsRequestStatusItem = S.String;
-
 export type ListImagesActionsRequestStatusList = Array<
   ListImagesActionsRequestStatusItem | (string & {})
 >;
-export const ListImagesActionsRequestStatusList =
+const ListImagesActionsRequestStatusList =
   ListImageActionsRequestSortList as any as S.Schema<ListImagesActionsRequestStatusList>;
 
 export interface ListImagesActionsRequest {
@@ -397,7 +381,7 @@ export interface ListImagesActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListImagesActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImagesActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListImagesActionsRequestIdList.pipe(T.Query())),
     sort: S.optional(ListImagesActionsRequestSortList.pipe(T.Query())),
@@ -409,23 +393,18 @@ export const ListImagesActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListImagesActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListImagesActionsResponseActionsItemStatus = S.String;
+const ListImagesActionsResponseActionsItemStatus = S.String;
 
 export type ListImagesActionsResponseActionsItemResourcesItem =
   ChangeImageProtectionResponseActionResourcesItem;
-export const ListImagesActionsResponseActionsItemResourcesItem =
-  ChangeImageProtectionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListImagesActionsResponseActionsItemResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const ListImagesActionsResponseActionsItemResourcesList =
+const ListImagesActionsResponseActionsItemResourcesList =
   ChangeImageProtectionResponseActionResourcesList as any as S.Schema<ListImagesActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListImagesActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
-export const ListImagesActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
-
 export interface ListImagesActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -444,7 +423,7 @@ export interface ListImagesActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
-export const ListImagesActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListImagesActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -460,22 +439,18 @@ export const ListImagesActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListImagesActionsResponseActionsItem>;
 
 export type ListImagesActionsResponseActionsList = Array<ListImagesActionsResponseActionsItem>;
-export const ListImagesActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListImagesActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListImagesActionsResponseActionsItem,
 ) as any as S.Schema<ListImagesActionsResponseActionsList>;
 
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListImagesActionsResponseMetaPagination = ListImageActionsResponseMetaPagination;
-export const ListImagesActionsResponseMetaPagination = ListImageActionsResponseMetaPagination;
-
 export type ListImagesActionsResponseMeta = ListImageActionsResponseMeta;
-export const ListImagesActionsResponseMeta = ListImageActionsResponseMeta;
-
 export interface ListImagesActionsResponse {
   actions: ListImagesActionsResponseActionsList;
   meta: ListImageActionsResponseMeta;
 }
-export const ListImagesActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImagesActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListImagesActionsResponseActionsList,
     meta: ListImageActionsResponseMeta,

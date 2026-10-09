@@ -55,25 +55,12 @@ export class UnprocessableEntity
   ) {}
 
 export type CreateEventRequestEventCase0Type = "installation.updated";
-export const CreateEventRequestEventCase0Type = S.String;
-
 export interface CreateEventRequestEventCase0 {
   type: CreateEventRequestEventCase0Type;
   /** The installation-level billing plan ID */
   billingPlanId?: string;
 }
-export const CreateEventRequestEventCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateEventRequestEventCase0Type,
-    billingPlanId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEventRequestEventCase0",
-}) as any as S.Schema<CreateEventRequestEventCase0>;
-
 export type CreateEventRequestEventCase1Type = "resource.updated";
-export const CreateEventRequestEventCase1Type = S.String;
-
 export interface CreateEventRequestEventCase1 {
   type: CreateEventRequestEventCase1Type;
   /** Partner-provided product slug or id */
@@ -81,24 +68,14 @@ export interface CreateEventRequestEventCase1 {
   /** Partner provided resource ID */
   resourceId: string;
 }
-export const CreateEventRequestEventCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateEventRequestEventCase1Type,
-    productId: S.optional(S.String),
-    resourceId: S.String,
-  }),
-).annotate({
-  identifier: "CreateEventRequestEventCase1",
-}) as any as S.Schema<CreateEventRequestEventCase1>;
-
 export type CreateEventRequestEvent = CreateEventRequestEventCase0 | CreateEventRequestEventCase1;
-export const CreateEventRequestEvent = S.Unknown as any as S.Schema<CreateEventRequestEvent>;
+const CreateEventRequestEvent = S.Unknown as any as S.Schema<CreateEventRequestEvent>;
 
 export interface CreateEventRequest {
   integrationConfigurationId: string;
   event: CreateEventRequestEvent;
 }
-export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     event: CreateEventRequestEvent,
@@ -112,14 +89,14 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEventRequest" }) as any as S.Schema<CreateEventRequest>;
 
 export interface CreateEventResponse {}
-export const CreateEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateEventResponse",
 }) as any as S.Schema<CreateEventResponse>;
 
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItemCategory =
   | "experiment"
   | "flag";
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItemCategory =
+const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItemCategory =
   S.String;
 
 export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem {
@@ -135,7 +112,7 @@ export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResou
   createdAt?: number;
   updatedAt?: number;
 }
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem =
+const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
@@ -157,7 +134,7 @@ export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceI
 
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList =
   Array<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem>;
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList =
+const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList =
   /*@__PURE__*/ S.Array(
     CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem,
   ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList>;
@@ -167,7 +144,7 @@ export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResou
   resourceId: string;
   items: CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList;
 }
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest =
+const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       integrationConfigurationId: S.String.pipe(T.Label()),
@@ -187,7 +164,7 @@ export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceI
   }) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest>;
 
 export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse {}
-export const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse =
+const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier:
       "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse",
@@ -198,7 +175,7 @@ export interface DeleteInstallationResourceExperimentationItemRequest {
   resourceId: string;
   itemId: string;
 }
-export const DeleteInstallationResourceExperimentationItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstallationResourceExperimentationItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -215,7 +192,7 @@ export const DeleteInstallationResourceExperimentationItemRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteInstallationResourceExperimentationItemRequest>;
 
 export interface DeleteInstallationResourceExperimentationItemResponse {}
-export const DeleteInstallationResourceExperimentationItemResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstallationResourceExperimentationItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteInstallationResourceExperimentationItemResponse",
@@ -225,7 +202,7 @@ export interface DeleteIntegrationResourceRequest {
   integrationConfigurationId: string;
   resourceId: string;
 }
-export const DeleteIntegrationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -241,13 +218,13 @@ export const DeleteIntegrationResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationResourceRequest>;
 
 export interface DeleteIntegrationResourceResponse {}
-export const DeleteIntegrationResourceResponse =
+const DeleteIntegrationResourceResponse =
   DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<DeleteIntegrationResourceResponse>;
 
 export interface FinalizeInstallationRequest {
   integrationConfigurationId: string;
 }
-export const FinalizeInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -262,13 +239,13 @@ export const FinalizeInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinalizeInstallationRequest>;
 
 export interface FinalizeInstallationResponse {}
-export const FinalizeInstallationResponse =
+const FinalizeInstallationResponse =
   CreateEventResponse as any as S.Schema<FinalizeInstallationResponse>;
 
 export interface GetAccountInfoRequest {
   integrationConfigurationId: string;
 }
-export const GetAccountInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -285,7 +262,7 @@ export interface GetAccountInfoResponseContact {
   email: string;
   name?: string;
 }
-export const GetAccountInfoResponseContact = /*@__PURE__*/ S.suspend(() =>
+const GetAccountInfoResponseContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     name: S.optional(S.String),
@@ -302,7 +279,7 @@ export interface GetAccountInfoResponse {
   /** A URL linking to the installation in the Vercel Dashboard. */
   url: string;
 }
-export const GetAccountInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contact: S.NullOr(GetAccountInfoResponseContact),
     name: S.optional(S.String),
@@ -314,54 +291,43 @@ export interface GetInstallationResourceExperimentationGlobalConfigRequest {
   integrationConfigurationId: string;
   resourceId: string;
 }
-export const GetInstallationResourceExperimentationGlobalConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationConfigurationId: S.String.pipe(T.Label()),
-      resourceId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config",
-        code: 200,
-      }),
-    ),
+const GetInstallationResourceExperimentationGlobalConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationConfigurationId: S.String.pipe(T.Label()),
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetInstallationResourceExperimentationGlobalConfigRequest",
 }) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigRequest>;
 
 export type GlobalConfigItemValueCase2Map = { [key: string]: GlobalConfigItemValue | undefined };
-export const GlobalConfigItemValueCase2Map = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => GlobalConfigItemValue),
-) as any as S.Schema<GlobalConfigItemValueCase2Map>;
-
 export type GlobalConfigItemValueCase3List = Array<GlobalConfigItemValue>;
-export const GlobalConfigItemValueCase3List = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => GlobalConfigItemValue),
-) as any as S.Schema<GlobalConfigItemValueCase3List>;
-
 export type GlobalConfigItemValue =
   | string
   | number
   | GlobalConfigItemValueCase2Map
   | GlobalConfigItemValueCase3List
   | boolean;
-export const GlobalConfigItemValue = S.Unknown as any as S.Schema<GlobalConfigItemValue>;
+const GlobalConfigItemValue = S.Unknown as any as S.Schema<GlobalConfigItemValue>;
 
 export type GetInstallationResourceExperimentationGlobalConfigResponseItemsMap = {
   [key: string]: GlobalConfigItemValue | null | undefined;
 };
-export const GetInstallationResourceExperimentationGlobalConfigResponseItemsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(GlobalConfigItemValue),
-  ) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponseItemsMap>;
+const GetInstallationResourceExperimentationGlobalConfigResponseItemsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.NullOr(GlobalConfigItemValue),
+) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponseItemsMap>;
 
 export type GetInstallationResourceExperimentationGlobalConfigResponsePurpose =
   | "experimentation"
   | "flags";
-export const GetInstallationResourceExperimentationGlobalConfigResponsePurpose = S.String;
+const GetInstallationResourceExperimentationGlobalConfigResponsePurpose = S.String;
 
 export interface GetInstallationResourceExperimentationGlobalConfigResponse {
   digest: string;
@@ -369,14 +335,13 @@ export interface GetInstallationResourceExperimentationGlobalConfigResponse {
   purpose?: GetInstallationResourceExperimentationGlobalConfigResponsePurpose;
   updatedAt: number;
 }
-export const GetInstallationResourceExperimentationGlobalConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      digest: S.String,
-      items: GetInstallationResourceExperimentationGlobalConfigResponseItemsMap,
-      purpose: S.optional(GetInstallationResourceExperimentationGlobalConfigResponsePurpose),
-      updatedAt: S.Number,
-    }),
+const GetInstallationResourceExperimentationGlobalConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    digest: S.String,
+    items: GetInstallationResourceExperimentationGlobalConfigResponseItemsMap,
+    purpose: S.optional(GetInstallationResourceExperimentationGlobalConfigResponsePurpose),
+    updatedAt: S.Number,
+  }),
 ).annotate({
   identifier: "GetInstallationResourceExperimentationGlobalConfigResponse",
 }) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponse>;
@@ -387,7 +352,7 @@ export interface GetIntegrationResourceRequest {
   /** The ID provided by the 3rd party provider for the given resource */
   resourceId: string;
 }
-export const GetIntegrationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -406,7 +371,7 @@ export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue 
   | string
   | number
   | boolean;
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue =
+const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue =
   S.Unknown as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue>;
 
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap = {
@@ -415,35 +380,33 @@ export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap = 
     | null
     | undefined;
 };
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue),
-  ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap>;
+const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.NullOr(GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue),
+) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap>;
 
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList =
   Array<string>;
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList =
+const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList>;
 
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList =
+const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList =
   GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList>;
 
 export interface GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen {
   environment?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList;
   role?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList;
 }
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environment: S.optional(
-        GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList,
-      ),
-      role: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList),
-    }),
+const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environment: S.optional(
+      GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList,
+    ),
+    role: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList),
+  }),
 ).annotate({
   identifier: "GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen",
 }) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen>;
@@ -452,24 +415,23 @@ export interface GetIntegrationResourceResponseCustomClaimsClaimRulesItem {
   claims: GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap;
   when?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen;
 }
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      claims: GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap,
-      when: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen),
-    }),
+const GetIntegrationResourceResponseCustomClaimsClaimRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    claims: GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap,
+    when: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen),
+  }),
 ).annotate({
   identifier: "GetIntegrationResourceResponseCustomClaimsClaimRulesItem",
 }) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItem>;
 
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesList =
   Array<GetIntegrationResourceResponseCustomClaimsClaimRulesItem>;
-export const GetIntegrationResourceResponseCustomClaimsClaimRulesList = /*@__PURE__*/ S.Array(
+const GetIntegrationResourceResponseCustomClaimsClaimRulesList = /*@__PURE__*/ S.Array(
   GetIntegrationResourceResponseCustomClaimsClaimRulesItem,
 ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesList>;
 
 export type GetIntegrationResourceResponseCustomClaimsRolesList = Array<string>;
-export const GetIntegrationResourceResponseCustomClaimsRolesList = /*@__PURE__*/ S.Array(
+const GetIntegrationResourceResponseCustomClaimsRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsRolesList>;
 
@@ -479,7 +441,7 @@ export interface GetIntegrationResourceResponseCustomClaims {
   defaultRole?: string;
   roles?: GetIntegrationResourceResponseCustomClaimsRolesList;
 }
-export const GetIntegrationResourceResponseCustomClaims = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourceResponseCustomClaims = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claimRules: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesList),
     defaultRole: S.optional(S.String),
@@ -491,35 +453,28 @@ export const GetIntegrationResourceResponseCustomClaims = /*@__PURE__*/ S.suspen
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataValueCase2List = Array<string>;
-export const GetIntegrationResourceResponseMetadataValueCase2List =
-  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<GetIntegrationResourceResponseMetadataValueCase2List>;
-
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataValueCase3List = Array<number>;
-export const GetIntegrationResourceResponseMetadataValueCase3List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetIntegrationResourceResponseMetadataValueCase3List>;
-
 export type GetIntegrationResourceResponseMetadataValue =
   | string
   | number
   | GetIntegrationResourceResponseMetadataValueCase2List
   | GetIntegrationResourceResponseMetadataValueCase3List
   | boolean;
-export const GetIntegrationResourceResponseMetadataValue =
+const GetIntegrationResourceResponseMetadataValue =
   S.Unknown as any as S.Schema<GetIntegrationResourceResponseMetadataValue>;
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataMap = {
   [key: string]: GetIntegrationResourceResponseMetadataValue | undefined;
 };
-export const GetIntegrationResourceResponseMetadataMap = /*@__PURE__*/ S.Record(
+const GetIntegrationResourceResponseMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   GetIntegrationResourceResponseMetadataValue,
 ) as any as S.Schema<GetIntegrationResourceResponseMetadataMap>;
 
 export type GetIntegrationResourceResponseNotificationLevel = "error" | "info" | "warn";
-export const GetIntegrationResourceResponseNotificationLevel = S.String;
+const GetIntegrationResourceResponseNotificationLevel = S.String;
 
 /** The notification, if set, displayed to the user when viewing the resource in Vercel */
 export interface GetIntegrationResourceResponseNotification {
@@ -528,7 +483,7 @@ export interface GetIntegrationResourceResponseNotification {
   message?: string;
   title: string;
 }
-export const GetIntegrationResourceResponseNotification = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourceResponseNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.optional(S.String),
     level: GetIntegrationResourceResponseNotificationLevel,
@@ -543,14 +498,13 @@ export type GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsI
   | "development"
   | "preview"
   | "production";
-export const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget =
-  S.String;
+const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget = S.String;
 
 export interface GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem {
   target: GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget;
   url: string;
 }
-export const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem =
+const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       target: GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget,
@@ -562,7 +516,7 @@ export const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrls
 
 export type GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList =
   Array<GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem>;
-export const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList =
+const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList =
   /*@__PURE__*/ S.Array(
     GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem,
   ) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList>;
@@ -570,11 +524,10 @@ export const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrls
 export interface GetIntegrationResourceResponseProtocolSettingsAuthentication {
   appUrls?: GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList;
 }
-export const GetIntegrationResourceResponseProtocolSettingsAuthentication = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appUrls: S.optional(GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList),
-    }),
+const GetIntegrationResourceResponseProtocolSettingsAuthentication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appUrls: S.optional(GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList),
+  }),
 ).annotate({
   identifier: "GetIntegrationResourceResponseProtocolSettingsAuthentication",
 }) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsAuthentication>;
@@ -583,22 +536,21 @@ export interface GetIntegrationResourceResponseProtocolSettingsExperimentation {
   edgeConfigId?: string;
   globalConfigId?: string;
 }
-export const GetIntegrationResourceResponseProtocolSettingsExperimentation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      edgeConfigId: S.optional(S.String),
-      globalConfigId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetIntegrationResourceResponseProtocolSettingsExperimentation",
-  }) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsExperimentation>;
+const GetIntegrationResourceResponseProtocolSettingsExperimentation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edgeConfigId: S.optional(S.String),
+    globalConfigId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetIntegrationResourceResponseProtocolSettingsExperimentation",
+}) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsExperimentation>;
 
 /** Any settings provided for the resource to support its product's protocols */
 export interface GetIntegrationResourceResponseProtocolSettings {
   authentication?: GetIntegrationResourceResponseProtocolSettingsAuthentication;
   experimentation?: GetIntegrationResourceResponseProtocolSettingsExperimentation;
 }
-export const GetIntegrationResourceResponseProtocolSettings = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourceResponseProtocolSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: S.optional(GetIntegrationResourceResponseProtocolSettingsAuthentication),
     experimentation: S.optional(GetIntegrationResourceResponseProtocolSettingsExperimentation),
@@ -616,7 +568,7 @@ export type GetIntegrationResourceResponseStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetIntegrationResourceResponseStatus = S.String;
+const GetIntegrationResourceResponseStatus = S.String;
 
 export interface GetIntegrationResourceResponse {
   /** The ID of the billing plan the resource is subscribed to, if applicable */
@@ -640,7 +592,7 @@ export interface GetIntegrationResourceResponse {
   /** The current status of the resource */
   status?: GetIntegrationResourceResponseStatus;
 }
-export const GetIntegrationResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPlanId: S.optional(S.String),
     customClaims: S.optional(GetIntegrationResourceResponseCustomClaims),
@@ -660,7 +612,7 @@ export const GetIntegrationResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetIntegrationResourcesRequest {
   integrationConfigurationId: string;
 }
-export const GetIntegrationResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -676,30 +628,22 @@ export const GetIntegrationResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List = Array<string>;
-export const GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List =
-  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List>;
-
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataValueCase3List = Array<number>;
-export const GetIntegrationResourcesResponseResourcesItemMetadataValueCase3List =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataValueCase3List>;
-
 export type GetIntegrationResourcesResponseResourcesItemMetadataValue =
   | string
   | number
   | GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List
   | GetIntegrationResourcesResponseResourcesItemMetadataValueCase3List
   | boolean;
-export const GetIntegrationResourcesResponseResourcesItemMetadataValue =
+const GetIntegrationResourcesResponseResourcesItemMetadataValue =
   S.Unknown as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataValue>;
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataMap = {
   [key: string]: GetIntegrationResourcesResponseResourcesItemMetadataValue | undefined;
 };
-export const GetIntegrationResourcesResponseResourcesItemMetadataMap = /*@__PURE__*/ S.Record(
+const GetIntegrationResourcesResponseResourcesItemMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   GetIntegrationResourcesResponseResourcesItemMetadataValue,
 ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataMap>;
@@ -708,7 +652,7 @@ export type GetIntegrationResourcesResponseResourcesItemNotificationLevel =
   | "error"
   | "info"
   | "warn";
-export const GetIntegrationResourcesResponseResourcesItemNotificationLevel = S.String;
+const GetIntegrationResourcesResponseResourcesItemNotificationLevel = S.String;
 
 /** The notification, if set, displayed to the user when viewing the resource in Vercel */
 export interface GetIntegrationResourcesResponseResourcesItemNotification {
@@ -717,14 +661,13 @@ export interface GetIntegrationResourcesResponseResourcesItemNotification {
   message?: string;
   title: string;
 }
-export const GetIntegrationResourcesResponseResourcesItemNotification = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      href: S.optional(S.String),
-      level: GetIntegrationResourcesResponseResourcesItemNotificationLevel,
-      message: S.optional(S.String),
-      title: S.String,
-    }),
+const GetIntegrationResourcesResponseResourcesItemNotification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    href: S.optional(S.String),
+    level: GetIntegrationResourcesResponseResourcesItemNotificationLevel,
+    message: S.optional(S.String),
+    title: S.String,
+  }),
 ).annotate({
   identifier: "GetIntegrationResourcesResponseResourcesItemNotification",
 }) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemNotification>;
@@ -733,14 +676,14 @@ export type GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenti
   | "development"
   | "preview"
   | "production";
-export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget =
+const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget =
   S.String;
 
 export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem {
   target: GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget;
   url: string;
 }
-export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem =
+const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       target:
@@ -754,7 +697,7 @@ export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthent
 
 export type GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList =
   Array<GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem>;
-export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList =
+const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList =
   /*@__PURE__*/ S.Array(
     GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem,
   ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList>;
@@ -762,7 +705,7 @@ export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthent
 export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication {
   appUrls?: GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList;
 }
-export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication =
+const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       appUrls: S.optional(
@@ -780,7 +723,7 @@ export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsExp
   globalConfigId?: string;
   globalConfigSyncingEnabled?: boolean;
 }
-export const GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation =
+const GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       edgeConfigId: S.optional(S.String),
@@ -798,16 +741,15 @@ export interface GetIntegrationResourcesResponseResourcesItemProtocolSettings {
   authentication?: GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication;
   experimentation?: GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation;
 }
-export const GetIntegrationResourcesResponseResourcesItemProtocolSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      authentication: S.optional(
-        GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication,
-      ),
-      experimentation: S.optional(
-        GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation,
-      ),
-    }),
+const GetIntegrationResourcesResponseResourcesItemProtocolSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authentication: S.optional(
+      GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication,
+    ),
+    experimentation: S.optional(
+      GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation,
+    ),
+  }),
 ).annotate({
   identifier: "GetIntegrationResourcesResponseResourcesItemProtocolSettings",
 }) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettings>;
@@ -821,7 +763,7 @@ export type GetIntegrationResourcesResponseResourcesItemStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetIntegrationResourcesResponseResourcesItemStatus = S.String;
+const GetIntegrationResourcesResponseResourcesItemStatus = S.String;
 
 export interface GetIntegrationResourcesResponseResourcesItem {
   /** The ID of the billing plan the resource is subscribed to, if applicable */
@@ -843,7 +785,7 @@ export interface GetIntegrationResourcesResponseResourcesItem {
   /** The current status of the resource */
   status?: GetIntegrationResourcesResponseResourcesItemStatus;
 }
-export const GetIntegrationResourcesResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourcesResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPlanId: S.optional(S.String),
     internalId: S.String,
@@ -861,14 +803,14 @@ export const GetIntegrationResourcesResponseResourcesItem = /*@__PURE__*/ S.susp
 
 export type GetIntegrationResourcesResponseResourcesList =
   Array<GetIntegrationResourcesResponseResourcesItem>;
-export const GetIntegrationResourcesResponseResourcesList = /*@__PURE__*/ S.Array(
+const GetIntegrationResourcesResponseResourcesList = /*@__PURE__*/ S.Array(
   GetIntegrationResourcesResponseResourcesItem,
 ) as any as S.Schema<GetIntegrationResourcesResponseResourcesList>;
 
 export interface GetIntegrationResourcesResponse {
   resources: GetIntegrationResourcesResponseResourcesList;
 }
-export const GetIntegrationResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: GetIntegrationResourcesResponseResourcesList,
   }),
@@ -880,7 +822,7 @@ export interface GetInvoiceRequest {
   integrationConfigurationId: string;
   invoiceId: string;
 }
-export const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     invoiceId: S.String.pipe(T.Label()),
@@ -910,7 +852,7 @@ export interface GetInvoiceResponseDiscountsItem {
   /** Start and end are only needed if different from the period's start/end. ISO 8601 timestamp. */
   start?: string;
 }
-export const GetInvoiceResponseDiscountsItem = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponseDiscountsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     billingPlanId: S.String,
@@ -926,7 +868,7 @@ export const GetInvoiceResponseDiscountsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Invoice discounts. */
 export type GetInvoiceResponseDiscountsList = Array<GetInvoiceResponseDiscountsItem>;
-export const GetInvoiceResponseDiscountsList = /*@__PURE__*/ S.Array(
+const GetInvoiceResponseDiscountsList = /*@__PURE__*/ S.Array(
   GetInvoiceResponseDiscountsItem,
 ) as any as S.Schema<GetInvoiceResponseDiscountsList>;
 
@@ -953,7 +895,7 @@ export interface GetInvoiceResponseItemsItem {
   /** Units for item's quantity. */
   units: string;
 }
-export const GetInvoiceResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPlanId: S.String,
     details: S.optional(S.String),
@@ -972,7 +914,7 @@ export const GetInvoiceResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Invoice items. */
 export type GetInvoiceResponseItemsList = Array<GetInvoiceResponseItemsItem>;
-export const GetInvoiceResponseItemsList = /*@__PURE__*/ S.Array(
+const GetInvoiceResponseItemsList = /*@__PURE__*/ S.Array(
   GetInvoiceResponseItemsItem,
 ) as any as S.Schema<GetInvoiceResponseItemsList>;
 
@@ -981,7 +923,7 @@ export interface GetInvoiceResponsePeriod {
   end: string;
   start: string;
 }
-export const GetInvoiceResponsePeriod = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponsePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.String,
     start: S.String,
@@ -999,7 +941,7 @@ export type GetInvoiceResponseState =
   | "refund_requested"
   | "refunded"
   | "scheduled";
-export const GetInvoiceResponseState = S.String;
+const GetInvoiceResponseState = S.String;
 
 export interface GetInvoiceResponse {
   /** System creation date. ISO 8601 timestamp. */
@@ -1037,7 +979,7 @@ export interface GetInvoiceResponse {
   /** System update date. ISO 8601 timestamp. */
   updated: string;
 }
-export const GetInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     discounts: S.optional(GetInvoiceResponseDiscountsList),
@@ -1063,7 +1005,7 @@ export interface GetMemberRequest {
   integrationConfigurationId: string;
   memberId: string;
 }
-export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     memberId: S.String.pipe(T.Label()),
@@ -1078,7 +1020,7 @@ export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles." */
 export type GetMemberResponseRole = "ADMIN" | "USER";
-export const GetMemberResponseRole = S.String;
+const GetMemberResponseRole = S.String;
 
 export interface GetMemberResponse {
   globalUserId?: string;
@@ -1087,7 +1029,7 @@ export interface GetMemberResponse {
   role: GetMemberResponseRole;
   userEmail?: string;
 }
-export const GetMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     globalUserId: S.optional(S.String),
     id: S.String,
@@ -1100,31 +1042,30 @@ export interface HeadInstallationResourceExperimentationGlobalConfigRequest {
   integrationConfigurationId: string;
   resourceId: string;
 }
-export const HeadInstallationResourceExperimentationGlobalConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationConfigurationId: S.String.pipe(T.Label()),
-      resourceId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "HEAD",
-        uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config",
-        code: 200,
-      }),
-    ),
+const HeadInstallationResourceExperimentationGlobalConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationConfigurationId: S.String.pipe(T.Label()),
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "HEAD",
+      uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/global-config",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "HeadInstallationResourceExperimentationGlobalConfigRequest",
 }) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigRequest>;
 
 export interface HeadInstallationResourceExperimentationGlobalConfigResponse {}
-export const HeadInstallationResourceExperimentationGlobalConfigResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const HeadInstallationResourceExperimentationGlobalConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "HeadInstallationResourceExperimentationGlobalConfigResponse",
 }) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigResponse>;
 
 export type ImportResourceRequestOwnership = "owned" | "linked" | "sandbox";
-export const ImportResourceRequestOwnership = S.String;
+const ImportResourceRequestOwnership = S.String;
 
 export type ImportResourceRequestStatus =
   | "ready"
@@ -1134,22 +1075,22 @@ export type ImportResourceRequestStatus =
   | "resumed"
   | "uninstalled"
   | "error";
-export const ImportResourceRequestStatus = S.String;
+const ImportResourceRequestStatus = S.String;
 
 export type ImportResourceRequestMetadataMap = { [key: string]: unknown | undefined };
-export const ImportResourceRequestMetadataMap = /*@__PURE__*/ S.Record(
+const ImportResourceRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ImportResourceRequestMetadataMap>;
 
 export type ImportResourceRequestBillingPlanType = "prepayment" | "subscription";
-export const ImportResourceRequestBillingPlanType = S.String;
+const ImportResourceRequestBillingPlanType = S.String;
 
 export interface ImportResourceRequestBillingPlanDetailsItem {
   label: string;
   value?: string;
 }
-export const ImportResourceRequestBillingPlanDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestBillingPlanDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     value: S.optional(S.String),
@@ -1160,18 +1101,15 @@ export const ImportResourceRequestBillingPlanDetailsItem = /*@__PURE__*/ S.suspe
 
 export type ImportResourceRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const ImportResourceRequestBillingPlanDetailsList = /*@__PURE__*/ S.Array(
+const ImportResourceRequestBillingPlanDetailsList = /*@__PURE__*/ S.Array(
   ImportResourceRequestBillingPlanDetailsItem,
 ) as any as S.Schema<ImportResourceRequestBillingPlanDetailsList>;
 
 export type ImportResourceRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
-export const ImportResourceRequestBillingPlanHighlightedDetailsItem =
-  ImportResourceRequestBillingPlanDetailsItem;
-
 export type ImportResourceRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const ImportResourceRequestBillingPlanHighlightedDetailsList =
+const ImportResourceRequestBillingPlanHighlightedDetailsList =
   ImportResourceRequestBillingPlanDetailsList as any as S.Schema<ImportResourceRequestBillingPlanHighlightedDetailsList>;
 
 export interface ImportResourceRequestBillingPlan {
@@ -1185,7 +1123,7 @@ export interface ImportResourceRequestBillingPlan {
   highlightedDetails?: ImportResourceRequestBillingPlanHighlightedDetailsList;
   effectiveDate?: string;
 }
-export const ImportResourceRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: ImportResourceRequestBillingPlanType,
@@ -1202,7 +1140,7 @@ export const ImportResourceRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportResourceRequestBillingPlan>;
 
 export type ImportResourceRequestNotificationLevel = "info" | "warn" | "error";
-export const ImportResourceRequestNotificationLevel = S.String;
+const ImportResourceRequestNotificationLevel = S.String;
 
 export interface ImportResourceRequestNotification {
   level: ImportResourceRequestNotificationLevel | (string & {});
@@ -1210,7 +1148,7 @@ export interface ImportResourceRequestNotification {
   message?: string;
   href?: string;
 }
-export const ImportResourceRequestNotification = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: ImportResourceRequestNotificationLevel,
     title: S.String,
@@ -1222,7 +1160,7 @@ export const ImportResourceRequestNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportResourceRequestNotification>;
 
 export type ImportResourceRequestExtrasMap = { [key: string]: unknown | undefined };
-export const ImportResourceRequestExtrasMap =
+const ImportResourceRequestExtrasMap =
   ImportResourceRequestMetadataMap as any as S.Schema<ImportResourceRequestExtrasMap>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
@@ -1234,7 +1172,7 @@ export interface ImportResourceRequestSecretsItemEnvironmentOverrides {
   /** Value used for production environment. */
   production?: string;
 }
-export const ImportResourceRequestSecretsItemEnvironmentOverrides = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestSecretsItemEnvironmentOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     development: S.optional(S.String),
     preview: S.optional(S.String),
@@ -1251,7 +1189,7 @@ export interface ImportResourceRequestSecretsItem {
   /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
   environmentOverrides?: ImportResourceRequestSecretsItemEnvironmentOverrides;
 }
-export const ImportResourceRequestSecretsItem = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestSecretsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -1263,23 +1201,23 @@ export const ImportResourceRequestSecretsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportResourceRequestSecretsItem>;
 
 export type ImportResourceRequestSecretsList = Array<ImportResourceRequestSecretsItem>;
-export const ImportResourceRequestSecretsList = /*@__PURE__*/ S.Array(
+const ImportResourceRequestSecretsList = /*@__PURE__*/ S.Array(
   ImportResourceRequestSecretsItem,
 ) as any as S.Schema<ImportResourceRequestSecretsList>;
 
 /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
 export type ImportResourceRequestCustomClaimsRolesList = Array<string>;
-export const ImportResourceRequestCustomClaimsRolesList =
+const ImportResourceRequestCustomClaimsRolesList =
   GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<ImportResourceRequestCustomClaimsRolesList>;
 
 /** Applies only when the token is minted for one of these roles. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-export const ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList =
+const ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList =
   GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
 
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList = Array<string>;
-export const ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList =
+const ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList =
   GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
 
 export interface ImportResourceRequestCustomClaimsClaimRulesItemWhen {
@@ -1288,7 +1226,7 @@ export interface ImportResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
   environment?: ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList;
 }
-export const ImportResourceRequestCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList),
     environment: S.optional(ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList),
@@ -1298,14 +1236,14 @@ export const ImportResourceRequestCustomClaimsClaimRulesItemWhen = /*@__PURE__*/
 }) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhen>;
 
 export type ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue = string | number | boolean;
-export const ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue =
+const ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue =
   S.Unknown as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue>;
 
 /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = {
   [key: string]: ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue | null | undefined;
 };
-export const ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
+const ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue),
 ) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap>;
@@ -1315,7 +1253,7 @@ export interface ImportResourceRequestCustomClaimsClaimRulesItem {
   /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
   claims: ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap;
 }
-export const ImportResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     when: S.optional(ImportResourceRequestCustomClaimsClaimRulesItemWhen),
     claims: ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap,
@@ -1327,7 +1265,7 @@ export const ImportResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ S.s
 /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
 export type ImportResourceRequestCustomClaimsClaimRulesList =
   Array<ImportResourceRequestCustomClaimsClaimRulesItem>;
-export const ImportResourceRequestCustomClaimsClaimRulesList = /*@__PURE__*/ S.Array(
+const ImportResourceRequestCustomClaimsClaimRulesList = /*@__PURE__*/ S.Array(
   ImportResourceRequestCustomClaimsClaimRulesItem,
 ) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesList>;
 
@@ -1340,7 +1278,7 @@ export interface ImportResourceRequestCustomClaims {
   /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
   claimRules?: ImportResourceRequestCustomClaimsClaimRulesList;
 }
-export const ImportResourceRequestCustomClaims = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequestCustomClaims = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ImportResourceRequestCustomClaimsRolesList),
     defaultRole: S.optional(S.String),
@@ -1365,7 +1303,7 @@ export interface ImportResourceRequest {
   /** Custom claims embedded in the resource tokens Vercel mints for this resource. */
   customClaims?: ImportResourceRequestCustomClaims;
 }
-export const ImportResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -1391,7 +1329,7 @@ export const ImportResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportResourceResponse {
   name: string;
 }
-export const ImportResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -1399,7 +1337,7 @@ export const ImportResourceResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap =
   { [key: string]: unknown | undefined };
-export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap =
+const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -1410,7 +1348,7 @@ export interface ReplaceInstallationsByIntegrationConfigurationIdResourcesByReso
   resourceId: string;
   data: ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap;
 }
-export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest =
+const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       integrationConfigurationId: S.String.pipe(T.Label()),
@@ -1430,13 +1368,13 @@ export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResource
 
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
   { [key: string]: GlobalConfigItemValue | null | undefined };
-export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
+const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
   GetInstallationResourceExperimentationGlobalConfigResponseItemsMap as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap>;
 
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
   | "experimentation"
   | "flags";
-export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
+const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
   S.String;
 
 export interface ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse {
@@ -1445,7 +1383,7 @@ export interface ReplaceInstallationsByIntegrationConfigurationIdResourcesByReso
   purpose?: ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose;
   updatedAt: number;
 }
-export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse =
+const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       digest: S.String,
@@ -1467,7 +1405,7 @@ export interface RevokeInstallationCredentialRequest {
   client_secret: string | Redacted.Redacted<string>;
   client_id?: string;
 }
-export const RevokeInstallationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeInstallationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     token: S.String,
@@ -1488,7 +1426,7 @@ export interface RevokeInstallationCredentialResponse {
   already_revoked: boolean;
   revoked: boolean;
 }
-export const RevokeInstallationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeInstallationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     already_revoked: S.Boolean,
     revoked: S.Boolean,
@@ -1502,7 +1440,7 @@ export interface RotateInstallationCredentialRequest {
   client_secret: string | Redacted.Redacted<string>;
   client_id?: string;
 }
-export const RotateInstallationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateInstallationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     client_secret: S.String.pipe(T.SensitiveValue({})),
@@ -1519,7 +1457,7 @@ export const RotateInstallationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateInstallationCredentialRequest>;
 
 export type RotateInstallationCredentialResponseTokenType = "oauth2-token";
-export const RotateInstallationCredentialResponseTokenType = S.String;
+const RotateInstallationCredentialResponseTokenType = S.String;
 
 export interface RotateInstallationCredentialResponse {
   access_token: string | Redacted.Redacted<string>;
@@ -1527,7 +1465,7 @@ export interface RotateInstallationCredentialResponse {
   scope: string;
   token_type: RotateInstallationCredentialResponseTokenType;
 }
-export const RotateInstallationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateInstallationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     expires_in: S.Number,
@@ -1543,7 +1481,7 @@ export interface SubmitBillingDataRequestPeriod {
   start: string;
   end: string;
 }
-export const SubmitBillingDataRequestPeriod = /*@__PURE__*/ S.suspend(() =>
+const SubmitBillingDataRequestPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.String,
     end: S.String,
@@ -1574,39 +1512,12 @@ export interface SubmitBillingDataRequestBillingCase0Item {
   /** Total amount. */
   total: string;
 }
-export const SubmitBillingDataRequestBillingCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPlanId: S.String,
-    resourceId: S.optional(S.String),
-    start: S.optional(S.String),
-    end: S.optional(S.String),
-    name: S.String,
-    details: S.optional(S.String),
-    price: S.String,
-    quantity: S.Number,
-    units: S.String,
-    total: S.String,
-  }),
-).annotate({
-  identifier: "SubmitBillingDataRequestBillingCase0Item",
-}) as any as S.Schema<SubmitBillingDataRequestBillingCase0Item>;
-
 export type SubmitBillingDataRequestBillingCase0List =
   Array<SubmitBillingDataRequestBillingCase0Item>;
-export const SubmitBillingDataRequestBillingCase0List = /*@__PURE__*/ S.Array(
-  SubmitBillingDataRequestBillingCase0Item,
-) as any as S.Schema<SubmitBillingDataRequestBillingCase0List>;
-
 export type SubmitBillingDataRequestBillingCase1ItemsItem =
   SubmitBillingDataRequestBillingCase0Item;
-export const SubmitBillingDataRequestBillingCase1ItemsItem =
-  SubmitBillingDataRequestBillingCase0Item;
-
 export type SubmitBillingDataRequestBillingCase1ItemsList =
   Array<SubmitBillingDataRequestBillingCase0Item>;
-export const SubmitBillingDataRequestBillingCase1ItemsList =
-  SubmitBillingDataRequestBillingCase0List as any as S.Schema<SubmitBillingDataRequestBillingCase1ItemsList>;
-
 export interface SubmitBillingDataRequestBillingCase1DiscountsItem {
   /** Partner's billing plan ID. */
   billingPlanId: string;
@@ -1623,49 +1534,22 @@ export interface SubmitBillingDataRequestBillingCase1DiscountsItem {
   /** Discount amount. */
   amount: string;
 }
-export const SubmitBillingDataRequestBillingCase1DiscountsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPlanId: S.String,
-    resourceId: S.optional(S.String),
-    start: S.optional(S.String),
-    end: S.optional(S.String),
-    name: S.String,
-    details: S.optional(S.String),
-    amount: S.String,
-  }),
-).annotate({
-  identifier: "SubmitBillingDataRequestBillingCase1DiscountsItem",
-}) as any as S.Schema<SubmitBillingDataRequestBillingCase1DiscountsItem>;
-
 export type SubmitBillingDataRequestBillingCase1DiscountsList =
   Array<SubmitBillingDataRequestBillingCase1DiscountsItem>;
-export const SubmitBillingDataRequestBillingCase1DiscountsList = /*@__PURE__*/ S.Array(
-  SubmitBillingDataRequestBillingCase1DiscountsItem,
-) as any as S.Schema<SubmitBillingDataRequestBillingCase1DiscountsList>;
-
 export interface SubmitBillingDataRequestBillingCase1 {
   items: SubmitBillingDataRequestBillingCase1ItemsList;
   discounts?: SubmitBillingDataRequestBillingCase1DiscountsList;
 }
-export const SubmitBillingDataRequestBillingCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: SubmitBillingDataRequestBillingCase1ItemsList,
-    discounts: S.optional(SubmitBillingDataRequestBillingCase1DiscountsList),
-  }),
-).annotate({
-  identifier: "SubmitBillingDataRequestBillingCase1",
-}) as any as S.Schema<SubmitBillingDataRequestBillingCase1>;
-
 /** Billing data (interim invoicing data). */
 export type SubmitBillingDataRequestBilling =
   | SubmitBillingDataRequestBillingCase0List
   | SubmitBillingDataRequestBillingCase1;
-export const SubmitBillingDataRequestBilling =
+const SubmitBillingDataRequestBilling =
   S.Unknown as any as S.Schema<SubmitBillingDataRequestBilling>;
 
 /** Type of the metric. - total: measured total value, such as Database size - interval: usage during the period, such as i/o or number of queries. - rate: rate of usage, such as queries per second. */
 export type SubmitBillingDataRequestUsageItemType = "total" | "interval" | "rate";
-export const SubmitBillingDataRequestUsageItemType = S.String;
+const SubmitBillingDataRequestUsageItemType = S.String;
 
 export interface SubmitBillingDataRequestUsageItem {
   /** Partner's resource ID. */
@@ -1683,7 +1567,7 @@ export interface SubmitBillingDataRequestUsageItem {
   /** The limit value of the metric for a billing period, if a limit is defined by the plan. */
   planValue?: number;
 }
-export const SubmitBillingDataRequestUsageItem = /*@__PURE__*/ S.suspend(() =>
+const SubmitBillingDataRequestUsageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     name: S.String,
@@ -1698,7 +1582,7 @@ export const SubmitBillingDataRequestUsageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitBillingDataRequestUsageItem>;
 
 export type SubmitBillingDataRequestUsageList = Array<SubmitBillingDataRequestUsageItem>;
-export const SubmitBillingDataRequestUsageList = /*@__PURE__*/ S.Array(
+const SubmitBillingDataRequestUsageList = /*@__PURE__*/ S.Array(
   SubmitBillingDataRequestUsageItem,
 ) as any as S.Schema<SubmitBillingDataRequestUsageList>;
 
@@ -1714,7 +1598,7 @@ export interface SubmitBillingDataRequest {
   billing: SubmitBillingDataRequestBilling;
   usage: SubmitBillingDataRequestUsageList;
 }
-export const SubmitBillingDataRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitBillingDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     timestamp: S.String,
@@ -1732,13 +1616,10 @@ export const SubmitBillingDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmitBillingDataRequest" }) as any as S.Schema<SubmitBillingDataRequest>;
 
 export interface SubmitBillingDataResponse {}
-export const SubmitBillingDataResponse =
-  CreateEventResponse as any as S.Schema<SubmitBillingDataResponse>;
+const SubmitBillingDataResponse = CreateEventResponse as any as S.Schema<SubmitBillingDataResponse>;
 
 /** Subscription period for this billing cycle. */
 export type SubmitInvoiceRequestPeriod = SubmitBillingDataRequestPeriod;
-export const SubmitInvoiceRequestPeriod = SubmitBillingDataRequestPeriod;
-
 export interface SubmitInvoiceRequestItemsItem {
   /** Partner's resource ID. */
   resourceId?: string;
@@ -1757,7 +1638,7 @@ export interface SubmitInvoiceRequestItemsItem {
   /** Currency amount as a decimal string. */
   total: string;
 }
-export const SubmitInvoiceRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+const SubmitInvoiceRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     billingPlanId: S.String,
@@ -1775,7 +1656,7 @@ export const SubmitInvoiceRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitInvoiceRequestItemsItem>;
 
 export type SubmitInvoiceRequestItemsList = Array<SubmitInvoiceRequestItemsItem>;
-export const SubmitInvoiceRequestItemsList = /*@__PURE__*/ S.Array(
+const SubmitInvoiceRequestItemsList = /*@__PURE__*/ S.Array(
   SubmitInvoiceRequestItemsItem,
 ) as any as S.Schema<SubmitInvoiceRequestItemsList>;
 
@@ -1793,7 +1674,7 @@ export interface SubmitInvoiceRequestDiscountsItem {
   /** Currency amount as a decimal string. */
   amount: string;
 }
-export const SubmitInvoiceRequestDiscountsItem = /*@__PURE__*/ S.suspend(() =>
+const SubmitInvoiceRequestDiscountsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     billingPlanId: S.String,
@@ -1808,19 +1689,19 @@ export const SubmitInvoiceRequestDiscountsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitInvoiceRequestDiscountsItem>;
 
 export type SubmitInvoiceRequestDiscountsList = Array<SubmitInvoiceRequestDiscountsItem>;
-export const SubmitInvoiceRequestDiscountsList = /*@__PURE__*/ S.Array(
+const SubmitInvoiceRequestDiscountsList = /*@__PURE__*/ S.Array(
   SubmitInvoiceRequestDiscountsItem,
 ) as any as S.Schema<SubmitInvoiceRequestDiscountsList>;
 
 export type SubmitInvoiceRequestTestResult = "paid" | "notpaid" | "overdue";
-export const SubmitInvoiceRequestTestResult = S.String;
+const SubmitInvoiceRequestTestResult = S.String;
 
 /** Test mode */
 export interface SubmitInvoiceRequestTest {
   validate?: boolean;
   result?: SubmitInvoiceRequestTestResult | (string & {});
 }
-export const SubmitInvoiceRequestTest = /*@__PURE__*/ S.suspend(() =>
+const SubmitInvoiceRequestTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validate: S.optional(S.Boolean),
     result: S.optional(SubmitInvoiceRequestTestResult),
@@ -1844,7 +1725,7 @@ export interface SubmitInvoiceRequest {
   /** Test mode */
   test?: SubmitInvoiceRequestTest;
 }
-export const SubmitInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     externalId: S.optional(S.String),
@@ -1865,7 +1746,7 @@ export const SubmitInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmitInvoiceRequest" }) as any as S.Schema<SubmitInvoiceRequest>;
 
 export type SubmitInvoiceResponseValidationErrorsList = Array<string>;
-export const SubmitInvoiceResponseValidationErrorsList =
+const SubmitInvoiceResponseValidationErrorsList =
   GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<SubmitInvoiceResponseValidationErrorsList>;
 
 export interface SubmitInvoiceResponse {
@@ -1873,7 +1754,7 @@ export interface SubmitInvoiceResponse {
   test?: boolean;
   validationErrors?: SubmitInvoiceResponseValidationErrorsList;
 }
-export const SubmitInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const SubmitInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceId: S.optional(S.String),
     test: S.optional(S.Boolean),
@@ -1892,7 +1773,7 @@ export interface SubmitPrepaymentBalancesRequestBalancesItem {
   /** The dollar value of the credit balance, in USD and provided in cents, which is used to trigger automatic purchase thresholds. */
   currencyValueInCents: number;
 }
-export const SubmitPrepaymentBalancesRequestBalancesItem = /*@__PURE__*/ S.suspend(() =>
+const SubmitPrepaymentBalancesRequestBalancesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     credit: S.optional(S.String),
@@ -1905,7 +1786,7 @@ export const SubmitPrepaymentBalancesRequestBalancesItem = /*@__PURE__*/ S.suspe
 
 export type SubmitPrepaymentBalancesRequestBalancesList =
   Array<SubmitPrepaymentBalancesRequestBalancesItem>;
-export const SubmitPrepaymentBalancesRequestBalancesList = /*@__PURE__*/ S.Array(
+const SubmitPrepaymentBalancesRequestBalancesList = /*@__PURE__*/ S.Array(
   SubmitPrepaymentBalancesRequestBalancesItem,
 ) as any as S.Schema<SubmitPrepaymentBalancesRequestBalancesList>;
 
@@ -1915,7 +1796,7 @@ export interface SubmitPrepaymentBalancesRequest {
   timestamp: string;
   balances: SubmitPrepaymentBalancesRequestBalancesList;
 }
-export const SubmitPrepaymentBalancesRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitPrepaymentBalancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     timestamp: S.String,
@@ -1932,7 +1813,7 @@ export const SubmitPrepaymentBalancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitPrepaymentBalancesRequest>;
 
 export interface SubmitPrepaymentBalancesResponse {}
-export const SubmitPrepaymentBalancesResponse =
+const SubmitPrepaymentBalancesResponse =
   DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<SubmitPrepaymentBalancesResponse>;
 
 export type UpdateInstallationRequestStatus =
@@ -1943,29 +1824,23 @@ export type UpdateInstallationRequestStatus =
   | "resumed"
   | "uninstalled"
   | "error";
-export const UpdateInstallationRequestStatus = S.String;
+const UpdateInstallationRequestStatus = S.String;
 
 export type UpdateInstallationRequestBillingPlanType = "prepayment" | "subscription";
-export const UpdateInstallationRequestBillingPlanType = S.String;
+const UpdateInstallationRequestBillingPlanType = S.String;
 
 export type UpdateInstallationRequestBillingPlanDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
-export const UpdateInstallationRequestBillingPlanDetailsItem =
-  ImportResourceRequestBillingPlanDetailsItem;
-
 export type UpdateInstallationRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateInstallationRequestBillingPlanDetailsList =
+const UpdateInstallationRequestBillingPlanDetailsList =
   ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateInstallationRequestBillingPlanDetailsList>;
 
 export type UpdateInstallationRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
-export const UpdateInstallationRequestBillingPlanHighlightedDetailsItem =
-  ImportResourceRequestBillingPlanDetailsItem;
-
 export type UpdateInstallationRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateInstallationRequestBillingPlanHighlightedDetailsList =
+const UpdateInstallationRequestBillingPlanHighlightedDetailsList =
   ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateInstallationRequestBillingPlanHighlightedDetailsList>;
 
 export interface UpdateInstallationRequestBillingPlan {
@@ -1979,7 +1854,7 @@ export interface UpdateInstallationRequestBillingPlan {
   highlightedDetails?: UpdateInstallationRequestBillingPlanHighlightedDetailsList;
   effectiveDate?: string;
 }
-export const UpdateInstallationRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstallationRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: UpdateInstallationRequestBillingPlanType,
@@ -1996,22 +1871,17 @@ export const UpdateInstallationRequestBillingPlan = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateInstallationRequestBillingPlan>;
 
 export type UpdateInstallationRequestNotificationCase0Level = "info" | "warn" | "error";
-export const UpdateInstallationRequestNotificationCase0Level = S.String;
-
 export interface UpdateInstallationRequestNotificationCase0 {
   level: UpdateInstallationRequestNotificationCase0Level | (string & {});
   title: string;
   message?: string;
   href?: string;
 }
-export const UpdateInstallationRequestNotificationCase0 =
-  ImportResourceRequestNotification as any as S.Schema<UpdateInstallationRequestNotificationCase0>;
-
 /** A notification to display to your customer. Send `null` to clear the current notification. */
 export type UpdateInstallationRequestNotification =
   | UpdateInstallationRequestNotificationCase0
   | string;
-export const UpdateInstallationRequestNotification =
+const UpdateInstallationRequestNotification =
   S.Unknown as any as S.Schema<UpdateInstallationRequestNotification>;
 
 export interface UpdateInstallationRequest {
@@ -2022,7 +1892,7 @@ export interface UpdateInstallationRequest {
   /** A notification to display to your customer. Send `null` to clear the current notification. */
   notification?: UpdateInstallationRequestNotification;
 }
-export const UpdateInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     status: S.optional(UpdateInstallationRequestStatus),
@@ -2037,13 +1907,13 @@ export const UpdateInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstallationRequest>;
 
 export interface UpdateInstallationResponse {}
-export const UpdateInstallationResponse =
+const UpdateInstallationResponse =
   CreateEventResponse as any as S.Schema<UpdateInstallationResponse>;
 
 export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory =
   | "experiment"
   | "flag";
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory =
+const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory =
   S.String;
 
 export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest {
@@ -2061,7 +1931,7 @@ export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResou
   createdAt?: number;
   updatedAt?: number;
 }
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest =
+const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       integrationConfigurationId: S.String.pipe(T.Label()),
@@ -2090,11 +1960,11 @@ export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceI
   }) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest>;
 
 export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse {}
-export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse =
+const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse =
   CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse>;
 
 export type UpdateInvoiceRequestBodyAction = "refund";
-export const UpdateInvoiceRequestBodyAction = S.String;
+const UpdateInvoiceRequestBodyAction = S.String;
 
 export interface UpdateInvoiceRequestBody {
   action: UpdateInvoiceRequestBodyAction | (string & {});
@@ -2103,7 +1973,7 @@ export interface UpdateInvoiceRequestBody {
   /** The total amount to be refunded. Must be less than or equal to the total amount of the invoice. */
   total: string;
 }
-export const UpdateInvoiceRequestBody = /*@__PURE__*/ S.suspend(() =>
+const UpdateInvoiceRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: UpdateInvoiceRequestBodyAction,
     reason: S.String,
@@ -2116,7 +1986,7 @@ export interface UpdateInvoiceRequest {
   invoiceId: string;
   body: UpdateInvoiceRequestBody;
 }
-export const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     invoiceId: S.String.pipe(T.Label()),
@@ -2131,10 +2001,10 @@ export const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInvoiceRequest" }) as any as S.Schema<UpdateInvoiceRequest>;
 
 export interface UpdateInvoiceResponse {}
-export const UpdateInvoiceResponse = CreateEventResponse as any as S.Schema<UpdateInvoiceResponse>;
+const UpdateInvoiceResponse = CreateEventResponse as any as S.Schema<UpdateInvoiceResponse>;
 
 export type UpdateResourceRequestOwnership = "owned" | "linked" | "sandbox";
-export const UpdateResourceRequestOwnership = S.String;
+const UpdateResourceRequestOwnership = S.String;
 
 export type UpdateResourceRequestStatus =
   | "ready"
@@ -2144,33 +2014,27 @@ export type UpdateResourceRequestStatus =
   | "resumed"
   | "uninstalled"
   | "error";
-export const UpdateResourceRequestStatus = S.String;
+const UpdateResourceRequestStatus = S.String;
 
 export type UpdateResourceRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateResourceRequestMetadataMap =
+const UpdateResourceRequestMetadataMap =
   ImportResourceRequestMetadataMap as any as S.Schema<UpdateResourceRequestMetadataMap>;
 
 export type UpdateResourceRequestBillingPlanType = "prepayment" | "subscription";
-export const UpdateResourceRequestBillingPlanType = S.String;
+const UpdateResourceRequestBillingPlanType = S.String;
 
 export type UpdateResourceRequestBillingPlanDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
-export const UpdateResourceRequestBillingPlanDetailsItem =
-  ImportResourceRequestBillingPlanDetailsItem;
-
 export type UpdateResourceRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateResourceRequestBillingPlanDetailsList =
+const UpdateResourceRequestBillingPlanDetailsList =
   ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateResourceRequestBillingPlanDetailsList>;
 
 export type UpdateResourceRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
-export const UpdateResourceRequestBillingPlanHighlightedDetailsItem =
-  ImportResourceRequestBillingPlanDetailsItem;
-
 export type UpdateResourceRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateResourceRequestBillingPlanHighlightedDetailsList =
+const UpdateResourceRequestBillingPlanHighlightedDetailsList =
   ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateResourceRequestBillingPlanHighlightedDetailsList>;
 
 export interface UpdateResourceRequestBillingPlan {
@@ -2184,7 +2048,7 @@ export interface UpdateResourceRequestBillingPlan {
   highlightedDetails?: UpdateResourceRequestBillingPlanHighlightedDetailsList;
   effectiveDate?: string;
 }
-export const UpdateResourceRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: UpdateResourceRequestBillingPlanType,
@@ -2201,104 +2065,67 @@ export const UpdateResourceRequestBillingPlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResourceRequestBillingPlan>;
 
 export type UpdateResourceRequestNotificationCase0Level = "info" | "warn" | "error";
-export const UpdateResourceRequestNotificationCase0Level = S.String;
-
 export interface UpdateResourceRequestNotificationCase0 {
   level: UpdateResourceRequestNotificationCase0Level | (string & {});
   title: string;
   message?: string;
   href?: string;
 }
-export const UpdateResourceRequestNotificationCase0 =
-  ImportResourceRequestNotification as any as S.Schema<UpdateResourceRequestNotificationCase0>;
-
 export type UpdateResourceRequestNotification = UpdateResourceRequestNotificationCase0 | string;
-export const UpdateResourceRequestNotification =
+const UpdateResourceRequestNotification =
   S.Unknown as any as S.Schema<UpdateResourceRequestNotification>;
 
 export type UpdateResourceRequestExtrasMap = { [key: string]: unknown | undefined };
-export const UpdateResourceRequestExtrasMap =
+const UpdateResourceRequestExtrasMap =
   ImportResourceRequestMetadataMap as any as S.Schema<UpdateResourceRequestExtrasMap>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceRequestSecretsCase0ItemEnvironmentOverrides =
   ImportResourceRequestSecretsItemEnvironmentOverrides;
-export const UpdateResourceRequestSecretsCase0ItemEnvironmentOverrides =
-  ImportResourceRequestSecretsItemEnvironmentOverrides;
-
 export type UpdateResourceRequestSecretsCase0Item = ImportResourceRequestSecretsItem;
-export const UpdateResourceRequestSecretsCase0Item = ImportResourceRequestSecretsItem;
-
 export type UpdateResourceRequestSecretsCase0List = Array<ImportResourceRequestSecretsItem>;
-export const UpdateResourceRequestSecretsCase0List =
-  ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceRequestSecretsCase0List>;
-
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceRequestSecretsCase1SecretsItemEnvironmentOverrides =
   ImportResourceRequestSecretsItemEnvironmentOverrides;
-export const UpdateResourceRequestSecretsCase1SecretsItemEnvironmentOverrides =
-  ImportResourceRequestSecretsItemEnvironmentOverrides;
-
 export type UpdateResourceRequestSecretsCase1SecretsItem = ImportResourceRequestSecretsItem;
-export const UpdateResourceRequestSecretsCase1SecretsItem = ImportResourceRequestSecretsItem;
-
 export type UpdateResourceRequestSecretsCase1SecretsList = Array<ImportResourceRequestSecretsItem>;
-export const UpdateResourceRequestSecretsCase1SecretsList =
-  ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceRequestSecretsCase1SecretsList>;
-
 export interface UpdateResourceRequestSecretsCase1 {
   secrets: UpdateResourceRequestSecretsCase1SecretsList;
   /** If true, will only overwrite the provided secrets instead of replacing all secrets. */
   partial?: boolean;
 }
-export const UpdateResourceRequestSecretsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secrets: UpdateResourceRequestSecretsCase1SecretsList,
-    partial: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateResourceRequestSecretsCase1",
-}) as any as S.Schema<UpdateResourceRequestSecretsCase1>;
-
 export type UpdateResourceRequestSecrets =
   | UpdateResourceRequestSecretsCase0List
   | UpdateResourceRequestSecretsCase1;
-export const UpdateResourceRequestSecrets =
-  S.Unknown as any as S.Schema<UpdateResourceRequestSecrets>;
+const UpdateResourceRequestSecrets = S.Unknown as any as S.Schema<UpdateResourceRequestSecrets>;
 
 /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
 export type UpdateResourceRequestCustomClaimsRolesList = Array<string>;
-export const UpdateResourceRequestCustomClaimsRolesList =
+const UpdateResourceRequestCustomClaimsRolesList =
   GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<UpdateResourceRequestCustomClaimsRolesList>;
 
 /** Applies only when the token is minted for one of these roles. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-export const UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList =
-  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
-
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList = Array<string>;
-export const UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList =
-  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
-
 export interface UpdateResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these roles. */
   role?: UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList;
   /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
   environment?: UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList;
 }
-export const UpdateResourceRequestCustomClaimsClaimRulesItemWhen =
+const UpdateResourceRequestCustomClaimsClaimRulesItemWhen =
   ImportResourceRequestCustomClaimsClaimRulesItemWhen as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhen>;
 
 export type UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue = string | number | boolean;
-export const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue =
+const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue =
   S.Unknown as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue>;
 
 /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = {
   [key: string]: UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue | null | undefined;
 };
-export const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
+const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue),
 ) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap>;
@@ -2308,7 +2135,7 @@ export interface UpdateResourceRequestCustomClaimsClaimRulesItem {
   /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
   claims: UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap;
 }
-export const UpdateResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     when: S.optional(UpdateResourceRequestCustomClaimsClaimRulesItemWhen),
     claims: UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap,
@@ -2320,7 +2147,7 @@ export const UpdateResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ S.s
 /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
 export type UpdateResourceRequestCustomClaimsClaimRulesList =
   Array<UpdateResourceRequestCustomClaimsClaimRulesItem>;
-export const UpdateResourceRequestCustomClaimsClaimRulesList = /*@__PURE__*/ S.Array(
+const UpdateResourceRequestCustomClaimsClaimRulesList = /*@__PURE__*/ S.Array(
   UpdateResourceRequestCustomClaimsClaimRulesItem,
 ) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesList>;
 
@@ -2333,7 +2160,7 @@ export interface UpdateResourceRequestCustomClaims {
   /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
   claimRules?: UpdateResourceRequestCustomClaimsClaimRulesList;
 }
-export const UpdateResourceRequestCustomClaims = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequestCustomClaims = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(UpdateResourceRequestCustomClaimsRolesList),
     defaultRole: S.optional(S.String),
@@ -2357,7 +2184,7 @@ export interface UpdateResourceRequest {
   /** Custom claims embedded in the resource tokens Vercel mints for this resource. */
   customClaims?: UpdateResourceRequestCustomClaims;
 }
-export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -2382,20 +2209,14 @@ export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResourceResponse {
   name: string;
 }
-export const UpdateResourceResponse =
-  ImportResourceResponse as any as S.Schema<UpdateResourceResponse>;
+const UpdateResourceResponse = ImportResourceResponse as any as S.Schema<UpdateResourceResponse>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceSecretsByIdRequestSecretsItemEnvironmentOverrides =
   ImportResourceRequestSecretsItemEnvironmentOverrides;
-export const UpdateResourceSecretsByIdRequestSecretsItemEnvironmentOverrides =
-  ImportResourceRequestSecretsItemEnvironmentOverrides;
-
 export type UpdateResourceSecretsByIdRequestSecretsItem = ImportResourceRequestSecretsItem;
-export const UpdateResourceSecretsByIdRequestSecretsItem = ImportResourceRequestSecretsItem;
-
 export type UpdateResourceSecretsByIdRequestSecretsList = Array<ImportResourceRequestSecretsItem>;
-export const UpdateResourceSecretsByIdRequestSecretsList =
+const UpdateResourceSecretsByIdRequestSecretsList =
   ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceSecretsByIdRequestSecretsList>;
 
 export interface UpdateResourceSecretsByIdRequest {
@@ -2405,7 +2226,7 @@ export interface UpdateResourceSecretsByIdRequest {
   /** If true, will only overwrite the provided secrets instead of replacing all secrets. */
   partial?: boolean;
 }
-export const UpdateResourceSecretsByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceSecretsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -2423,7 +2244,7 @@ export const UpdateResourceSecretsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResourceSecretsByIdRequest>;
 
 export interface UpdateResourceSecretsByIdResponse {}
-export const UpdateResourceSecretsByIdResponse =
+const UpdateResourceSecretsByIdResponse =
   DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<UpdateResourceSecretsByIdResponse>;
 
 export type CreateEventError = BadRequest | Forbidden | NotFound | VercelOpError;

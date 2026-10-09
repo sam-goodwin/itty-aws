@@ -47,7 +47,7 @@ export interface CreateUpdateRequest {
   /** Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart. */
   maintenanceWindow: number;
 }
-export const CreateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -73,7 +73,7 @@ export interface Update {
   startDate: string;
   status: string;
 }
-export const Update = /*@__PURE__*/ S.suspend(() =>
+const Update = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.String),
     failReason: S.optional(S.String),
@@ -99,7 +99,7 @@ export interface CreateUpdateScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-export const CreateUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -129,7 +129,7 @@ export interface CreateUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
-export const CreateUpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     maintenanceWindow: S.Number,
@@ -151,7 +151,7 @@ export interface DeleteUpdateScheduleRequest {
   /** update schedule id */
   scheduleId: string;
 }
-export const DeleteUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -170,7 +170,7 @@ export const DeleteUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUpdateScheduleRequest>;
 
 export interface DeleteUpdateScheduleResponse {}
-export const DeleteUpdateScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteUpdateScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteUpdateScheduleResponse",
 }) as any as S.Schema<DeleteUpdateScheduleResponse>;
 
@@ -182,7 +182,7 @@ export interface DisableServiceResourceRequest {
   /** server id */
   serverId: string;
 }
-export const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -200,7 +200,7 @@ export const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableServiceResourceRequest>;
 
 export interface DisableServiceResourceResponse {}
-export const DisableServiceResourceResponse =
+const DisableServiceResourceResponse =
   DeleteUpdateScheduleResponse as any as S.Schema<DisableServiceResourceResponse>;
 
 export interface EnableServiceResourceRequest {
@@ -212,7 +212,7 @@ export interface EnableServiceResourceRequest {
   serverId: string;
   updatePolicyId?: string;
 }
-export const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -231,7 +231,7 @@ export const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServiceResourceRequest>;
 
 export interface EnableServiceResourceResponse {}
-export const EnableServiceResourceResponse =
+const EnableServiceResourceResponse =
   DeleteUpdateScheduleResponse as any as S.Schema<EnableServiceResourceResponse>;
 
 export interface GetServiceResourceRequest {
@@ -242,7 +242,7 @@ export interface GetServiceResourceRequest {
   /** server id */
   serverId: string;
 }
-export const GetServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -262,7 +262,7 @@ export const GetServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUpdateServiceResponse {
   enabled?: boolean;
 }
-export const GetUpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -278,7 +278,7 @@ export interface GetUpdateRequest {
   /** id of the update */
   updateId: string;
 }
-export const GetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -304,7 +304,7 @@ export interface GetUpdateScheduleRequest {
   /** update schedule id */
   scheduleId: string;
 }
-export const GetUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -329,14 +329,14 @@ export interface GetUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
-export const GetUpdateScheduleResponse =
+const GetUpdateScheduleResponse =
   CreateUpdateScheduleResponse as any as S.Schema<GetUpdateScheduleResponse>;
 
 export interface ListUpdatePoliciesRequest {
   /** project id */
   projectId: string;
 }
-export const ListUpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -362,7 +362,7 @@ export interface UpdatePolicy {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule?: string;
 }
-export const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
+const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -375,14 +375,14 @@ export const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePolicy" }) as any as S.Schema<UpdatePolicy>;
 
 export type GetUpdatePoliciesResponseItemsList = Array<UpdatePolicy>;
-export const GetUpdatePoliciesResponseItemsList = /*@__PURE__*/ S.Array(
+const GetUpdatePoliciesResponseItemsList = /*@__PURE__*/ S.Array(
   UpdatePolicy,
 ) as any as S.Schema<GetUpdatePoliciesResponseItemsList>;
 
 export interface GetUpdatePoliciesResponse {
   items?: GetUpdatePoliciesResponseItemsList;
 }
-export const GetUpdatePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdatePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetUpdatePoliciesResponseItemsList),
   }),
@@ -398,7 +398,7 @@ export interface ListUpdatesRequest {
   /** server id */
   serverId: string;
 }
-export const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -414,14 +414,14 @@ export const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUpdatesRequest" }) as any as S.Schema<ListUpdatesRequest>;
 
 export type GetUpdatesListResponseItemsList = Array<Update>;
-export const GetUpdatesListResponseItemsList = /*@__PURE__*/ S.Array(
+const GetUpdatesListResponseItemsList = /*@__PURE__*/ S.Array(
   Update,
 ) as any as S.Schema<GetUpdatesListResponseItemsList>;
 
 export interface GetUpdatesListResponse {
   items?: GetUpdatesListResponseItemsList;
 }
-export const GetUpdatesListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdatesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetUpdatesListResponseItemsList),
   }),
@@ -435,7 +435,7 @@ export interface ListUpdateSchedulesRequest {
   /** server id */
   serverId: string;
 }
-export const ListUpdateSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdateSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -461,7 +461,7 @@ export interface UpdateSchedule {
   rrule: string;
   id: number;
 }
-export const UpdateSchedule = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     maintenanceWindow: S.Number,
@@ -472,14 +472,14 @@ export const UpdateSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSchedule" }) as any as S.Schema<UpdateSchedule>;
 
 export type GetUpdateSchedulesResponseItemsList = Array<UpdateSchedule>;
-export const GetUpdateSchedulesResponseItemsList = /*@__PURE__*/ S.Array(
+const GetUpdateSchedulesResponseItemsList = /*@__PURE__*/ S.Array(
   UpdateSchedule,
 ) as any as S.Schema<GetUpdateSchedulesResponseItemsList>;
 
 export interface GetUpdateSchedulesResponse {
   items?: GetUpdateSchedulesResponseItemsList;
 }
-export const GetUpdateSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetUpdateSchedulesResponseItemsList),
   }),
@@ -503,7 +503,7 @@ export interface UpdateUpdateScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-export const UpdateUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -534,7 +534,7 @@ export interface UpdateUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
-export const UpdateUpdateScheduleResponse =
+const UpdateUpdateScheduleResponse =
   CreateUpdateScheduleResponse as any as S.Schema<UpdateUpdateScheduleResponse>;
 
 export type CreateUpdateError = BadRequest | NotFound | Conflict | StackitOpError;

@@ -51,7 +51,7 @@ export type ListEconomicIntelligenceRequestStatus =
   | "ready"
   | "executed"
   | "superseded";
-export const ListEconomicIntelligenceRequestStatus = S.String;
+const ListEconomicIntelligenceRequestStatus = S.String;
 
 export interface ListEconomicIntelligenceRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account; omit for personal onboarding. */
@@ -69,7 +69,7 @@ export interface ListEconomicIntelligenceRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListEconomicIntelligenceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEconomicIntelligenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListEconomicIntelligenceRequestStatus.pipe(T.Query())),
@@ -89,7 +89,7 @@ export interface EconomicIntelligenceOperation {
   /** API operation or assistant tool name. */
   tool_name: string;
 }
-export const EconomicIntelligenceOperation = /*@__PURE__*/ S.suspend(() =>
+const EconomicIntelligenceOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.NullOr(S.String),
     tool_name: S.String,
@@ -99,17 +99,17 @@ export const EconomicIntelligenceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EconomicIntelligenceOperation>;
 
 export type EconomicIntelligenceExpectedToolCallsList = Array<EconomicIntelligenceOperation>;
-export const EconomicIntelligenceExpectedToolCallsList = /*@__PURE__*/ S.Array(
+const EconomicIntelligenceExpectedToolCallsList = /*@__PURE__*/ S.Array(
   EconomicIntelligenceOperation,
 ) as any as S.Schema<EconomicIntelligenceExpectedToolCallsList>;
 
 /** How the user rated this recommendation, or `null` if they have not rated it */
 export type EconomicIntelligenceSentiment = "positive" | "negative";
-export const EconomicIntelligenceSentiment = S.String;
+const EconomicIntelligenceSentiment = S.String;
 
 /** `queued` when awaiting generation; `pending` while generating; `ready` when available for approval; `executed` when approved; `superseded` when rejected or replaced. */
 export type EconomicIntelligenceStatus = "queued" | "pending" | "ready" | "executed" | "superseded";
-export const EconomicIntelligenceStatus = S.String;
+const EconomicIntelligenceStatus = S.String;
 
 export interface EconomicIntelligence2 {
   /** ID of the account this recommendation is for, prefixed `biz_`, or null for personal onboarding. */
@@ -144,7 +144,7 @@ export interface EconomicIntelligence2 {
   /** The user's written feedback, or `null` if they have not provided any. */
   user_feedback: string | null;
 }
-export const EconomicIntelligence2 = /*@__PURE__*/ S.suspend(() =>
+const EconomicIntelligence2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     action_type: S.NullOr(S.String),
@@ -166,7 +166,7 @@ export const EconomicIntelligence2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EconomicIntelligence2" }) as any as S.Schema<EconomicIntelligence2>;
 
 export type ListEconomicIntelligenceResponseDataList = Array<EconomicIntelligence2>;
-export const ListEconomicIntelligenceResponseDataList = /*@__PURE__*/ S.Array(
+const ListEconomicIntelligenceResponseDataList = /*@__PURE__*/ S.Array(
   EconomicIntelligence2,
 ) as any as S.Schema<ListEconomicIntelligenceResponseDataList>;
 
@@ -176,7 +176,7 @@ export interface ListEconomicIntelligenceResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListEconomicIntelligenceResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListEconomicIntelligenceResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -191,7 +191,7 @@ export interface ListEconomicIntelligenceResponse {
   data: ListEconomicIntelligenceResponseDataList;
   page_info: ListEconomicIntelligenceResponsePageInfo;
 }
-export const ListEconomicIntelligenceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEconomicIntelligenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListEconomicIntelligenceResponseDataList,
     page_info: ListEconomicIntelligenceResponsePageInfo,
@@ -202,11 +202,11 @@ export const ListEconomicIntelligenceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A signed-in user can rate a recommendation as `positive` or `negative`. Can be sent alone or together with status. */
 export type UpdateEconomicIntelligenceRequestSentiment = "positive" | "negative";
-export const UpdateEconomicIntelligenceRequestSentiment = S.String;
+const UpdateEconomicIntelligenceRequestSentiment = S.String;
 
 /** Use `executed` to record approval, or `superseded` to reject the recommendation. */
 export type UpdateEconomicIntelligenceRequestStatus = "executed" | "superseded";
-export const UpdateEconomicIntelligenceRequestStatus = S.String;
+const UpdateEconomicIntelligenceRequestStatus = S.String;
 
 export interface UpdateEconomicIntelligenceRequest {
   /** Recommendation ID, prefixed `reca_`. */
@@ -222,7 +222,7 @@ export interface UpdateEconomicIntelligenceRequest {
   /** An optional explanation of the rating or rejection. Negative feedback informs replacement recommendations. */
   user_feedback?: string;
 }
-export const UpdateEconomicIntelligenceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEconomicIntelligenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),

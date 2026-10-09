@@ -68,7 +68,7 @@ export interface ClearOrgPolicyRequest {
   /** The current version, for concurrency control. Not sending an `etag` will cause the `Policy` to be cleared blindly. */
   etag?: string;
 }
-export const ClearOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(S.String),
     etag: S.optional(S.String),
@@ -81,7 +81,7 @@ export interface ClearOrgPolicyFoldersRequest {
   /** Request body */
   body?: ClearOrgPolicyRequest;
 }
-export const ClearOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ClearOrgPolicyRequest.pipe(T.HttpBody())),
@@ -98,7 +98,7 @@ export const ClearOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -108,7 +108,7 @@ export interface ClearOrgPolicyOrganizationsRequest {
   /** Request body */
   body?: ClearOrgPolicyRequest;
 }
-export const ClearOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ClearOrgPolicyRequest.pipe(T.HttpBody())),
@@ -129,7 +129,7 @@ export interface ClearOrgPolicyProjectsRequest {
   /** Request body */
   body?: ClearOrgPolicyRequest;
 }
-export const ClearOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ClearOrgPolicyRequest.pipe(T.HttpBody())),
@@ -145,7 +145,7 @@ export const ClearOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClearOrgPolicyProjectsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A Lien represents an encumbrance on the actions that can be performed on a resource. */
 export interface Lien {
@@ -162,7 +162,7 @@ export interface Lien {
   /** Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key' */
   reason?: string;
 }
-export const Lien = /*@__PURE__*/ S.suspend(() =>
+const Lien = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictions: S.optional(StringList),
     origin: S.optional(S.String),
@@ -177,7 +177,7 @@ export interface CreateLiensRequest {
   /** Request body */
   body?: Lien;
 }
-export const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Lien.pipe(T.HttpBody())),
   }).pipe(
@@ -190,14 +190,14 @@ export const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLiensRequest" }) as any as S.Schema<CreateLiensRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ProjectLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DELETE_REQUESTED"
   | "DELETE_IN_PROGRESS";
-export const ProjectLifecycleStateEnum = S.String;
+const ProjectLifecycleStateEnum = S.String;
 
 /** A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on. */
 export interface ResourceId {
@@ -206,7 +206,7 @@ export interface ResourceId {
   /** The type-specific id. This should correspond to the id used in the type-specific API's. */
   id?: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
+const ResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     id: S.optional(S.String),
@@ -236,7 +236,7 @@ export interface Project {
   /** Output only. If `true`, this project is a Management Project. A Management Project manages dedicated project groups for specific purposes (e.g., agent management or app management). */
   isManagementProject?: boolean;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringMap),
     labels: S.optional(StringMap),
@@ -255,7 +255,7 @@ export interface CreateProjectsRequest {
   /** Request body */
   body?: Project;
 }
-export const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Project.pipe(T.HttpBody())),
   }).pipe(
@@ -268,15 +268,10 @@ export const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateProjectsRequest" }) as any as S.Schema<CreateProjectsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -287,7 +282,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -308,7 +303,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     response: S.optional(DocumentMap),
@@ -322,7 +317,7 @@ export interface DeleteLiensRequest {
   /** Required. The name/identifier of the Lien to delete. */
   name: string;
 }
-export const DeleteLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -338,7 +333,7 @@ export interface DeleteProjectsRequest {
   /** The Project ID (for example, `foo-bar-123`). Required. */
   projectId: string;
 }
-export const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -352,7 +347,7 @@ export const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request sent to the GetAncestry method. */
 export interface GetAncestryRequest {}
-export const GetAncestryRequest = Empty as any as S.Schema<GetAncestryRequest>;
+const GetAncestryRequest = Empty as any as S.Schema<GetAncestryRequest>;
 
 export interface GetAncestryProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
@@ -360,7 +355,7 @@ export interface GetAncestryProjectsRequest {
   /** Request body */
   body?: GetAncestryRequest;
 }
-export const GetAncestryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAncestryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(GetAncestryRequest.pipe(T.HttpBody())),
@@ -380,21 +375,21 @@ export interface Ancestor {
   /** Resource id of the ancestor. */
   resourceId?: ResourceId;
 }
-export const Ancestor = /*@__PURE__*/ S.suspend(() =>
+const Ancestor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(ResourceId),
   }),
 ).annotate({ identifier: "Ancestor" }) as any as S.Schema<Ancestor>;
 
 export type AncestorList = Array<Ancestor>;
-export const AncestorList = /*@__PURE__*/ S.Array(Ancestor) as any as S.Schema<AncestorList>;
+const AncestorList = /*@__PURE__*/ S.Array(Ancestor) as any as S.Schema<AncestorList>;
 
 /** Response from the projects.getAncestry method. */
 export interface GetAncestryResponse {
   /** Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the project itself, followed by the project's parent, etc.. */
   ancestor?: AncestorList;
 }
-export const GetAncestryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAncestryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ancestor: S.optional(AncestorList),
   }),
@@ -405,7 +400,7 @@ export interface GetEffectiveOrgPolicyRequest {
   /** The name of the `Constraint` to compute the effective `Policy`. */
   constraint?: string;
 }
-export const GetEffectiveOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(S.String),
   }),
@@ -419,7 +414,7 @@ export interface GetEffectiveOrgPolicyFoldersRequest {
   /** Request body */
   body?: GetEffectiveOrgPolicyRequest;
 }
-export const GetEffectiveOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetEffectiveOrgPolicyRequest.pipe(T.HttpBody())),
@@ -439,14 +434,14 @@ export interface BooleanPolicy {
   /** If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy` at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`. */
   enforced?: boolean;
 }
-export const BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
+const BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforced: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "BooleanPolicy" }) as any as S.Schema<BooleanPolicy>;
 
 export type ListPolicyAllValuesEnum = "ALL_VALUES_UNSPECIFIED" | "ALLOW" | "DENY";
-export const ListPolicyAllValuesEnum = S.String;
+const ListPolicyAllValuesEnum = S.String;
 
 /** Used in `policy_type` to specify how `list_policy` behaves at this resource. `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used. You can set `allowed_values` and `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and `denied_values` must be unset. */
 export interface ListPolicy {
@@ -461,7 +456,7 @@ export interface ListPolicy {
   /** Determines the inheritance behavior for this `Policy`. By default, a `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the resource hierarchy. However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up the hierarchy. Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy` with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that are allowed must be in `allowed_values` and not present in `denied_values`. For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then, if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false` and field all_values set to DENY, then an attempt to activate any API will be denied. The following examples demonstrate different possible layerings for `projects/bar` parented by `organizations/foo`: Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3" allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E3`, and `E4`. Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4" inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`. Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`. Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no `Policy` set. The accepted values at both levels are either all or none depending on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none). Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`. Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`. Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values: {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values: "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`. */
   inheritFromParent?: boolean;
 }
-export const ListPolicy = /*@__PURE__*/ S.suspend(() =>
+const ListPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deniedValues: S.optional(StringList),
     allValues: S.optional(ListPolicyAllValuesEnum),
@@ -473,8 +468,6 @@ export const ListPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`. Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed service activations to deny all service activations. They could then set a `Policy` with the `policy_type` `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the `Constraint` for only those projects, allowing those projects to have all services activated. */
 export type RestoreDefault = GetAncestryRequest;
-export const RestoreDefault = GetAncestryRequest;
-
 /** Defines a Cloud Organization `Policy` which is used to specify `Constraints` for configurations of Cloud Platform resources. */
 export interface OrgPolicy {
   /** For boolean `Constraints`, whether to enforce the `Constraint` or not. */
@@ -492,7 +485,7 @@ export interface OrgPolicy {
   /** Version of the `Policy`. Default version is 0; */
   version?: number;
 }
-export const OrgPolicy = /*@__PURE__*/ S.suspend(() =>
+const OrgPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     booleanPolicy: S.optional(BooleanPolicy),
     constraint: S.optional(S.String),
@@ -510,7 +503,7 @@ export interface GetEffectiveOrgPolicyOrganizationsRequest {
   /** Request body */
   body?: GetEffectiveOrgPolicyRequest;
 }
-export const GetEffectiveOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetEffectiveOrgPolicyRequest.pipe(T.HttpBody())),
@@ -531,7 +524,7 @@ export interface GetEffectiveOrgPolicyProjectsRequest {
   /** Request body */
   body?: GetEffectiveOrgPolicyRequest;
 }
-export const GetEffectiveOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetEffectiveOrgPolicyRequest.pipe(T.HttpBody())),
@@ -551,7 +544,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -562,7 +555,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -574,7 +567,7 @@ export interface GetIamPolicyOrganizationsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -600,7 +593,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     location: S.optional(S.String),
@@ -618,7 +611,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     role: S.optional(S.String),
@@ -627,14 +620,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -643,7 +636,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -651,7 +644,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -662,7 +655,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -670,9 +663,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -685,7 +676,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     bindings: S.optional(BindingList),
@@ -700,7 +691,7 @@ export interface GetIamPolicyProjectsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -719,7 +710,7 @@ export interface GetLiensRequest {
   /** Required. The name/identifier of the Lien. */
   name: string;
 }
-export const GetLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -735,7 +726,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -751,7 +742,7 @@ export interface GetOrganizationsRequest {
   /** The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
   name: string;
 }
-export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -767,14 +758,14 @@ export type OrganizationLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DELETE_REQUESTED";
-export const OrganizationLifecycleStateEnum = S.String;
+const OrganizationLifecycleStateEnum = S.String;
 
 /** The entity that owns an Organization. The lifetime of the Organization and all of its descendants are bound to the `OrganizationOwner`. If the `OrganizationOwner` is deleted, the Organization and all its descendants will be deleted. */
 export interface OrganizationOwner {
   /** The G Suite customer id used in the Directory API. */
   directoryCustomerId?: string;
 }
-export const OrganizationOwner = /*@__PURE__*/ S.suspend(() =>
+const OrganizationOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directoryCustomerId: S.optional(S.String),
   }),
@@ -793,7 +784,7 @@ export interface Organization {
   /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
   name?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycleState: S.optional(OrganizationLifecycleStateEnum),
     owner: S.optional(OrganizationOwner),
@@ -808,7 +799,7 @@ export interface GetOrgPolicyRequest {
   /** Name of the `Constraint` to get the `Policy`. */
   constraint?: string;
 }
-export const GetOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(S.String),
   }),
@@ -820,7 +811,7 @@ export interface GetOrgPolicyFoldersRequest {
   /** Request body */
   body?: GetOrgPolicyRequest;
 }
-export const GetOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetOrgPolicyRequest.pipe(T.HttpBody())),
@@ -841,7 +832,7 @@ export interface GetOrgPolicyOrganizationsRequest {
   /** Request body */
   body?: GetOrgPolicyRequest;
 }
-export const GetOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetOrgPolicyRequest.pipe(T.HttpBody())),
@@ -862,7 +853,7 @@ export interface GetOrgPolicyProjectsRequest {
   /** Request body */
   body?: GetOrgPolicyRequest;
 }
-export const GetOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetOrgPolicyRequest.pipe(T.HttpBody())),
@@ -881,7 +872,7 @@ export interface GetProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
   projectId: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -900,7 +891,7 @@ export interface ListAvailableOrgPolicyConstraintsRequest {
   /** Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field. */
   pageToken?: string;
 }
-export const ListAvailableOrgPolicyConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableOrgPolicyConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number),
     pageToken: S.optional(S.String),
@@ -915,7 +906,7 @@ export interface ListAvailableOrgPolicyConstraintsFoldersRequest {
   /** Request body */
   body?: ListAvailableOrgPolicyConstraintsRequest;
 }
-export const ListAvailableOrgPolicyConstraintsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableOrgPolicyConstraintsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ListAvailableOrgPolicyConstraintsRequest.pipe(T.HttpBody())),
@@ -932,8 +923,6 @@ export const ListAvailableOrgPolicyConstraintsFoldersRequest = /*@__PURE__*/ S.s
 
 /** A `Constraint` that is either enforced or not. For example a constraint `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will not be opened to that instance. */
 export type BooleanConstraint = GetAncestryRequest;
-export const BooleanConstraint = GetAncestryRequest;
-
 /** A `Constraint` that allows or disallows a list of string values, which are configured by an Organization's policy administrator with a `Policy`. */
 export interface ListConstraint {
   /** Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the 'folders/123' folder. */
@@ -941,7 +930,7 @@ export interface ListConstraint {
   /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Constraint`. */
   suggestedValue?: string;
 }
-export const ListConstraint = /*@__PURE__*/ S.suspend(() =>
+const ListConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsUnder: S.optional(S.Boolean),
     suggestedValue: S.optional(S.String),
@@ -949,7 +938,7 @@ export const ListConstraint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConstraint" }) as any as S.Schema<ListConstraint>;
 
 export type ConstraintConstraintDefaultEnum = "CONSTRAINT_DEFAULT_UNSPECIFIED" | "ALLOW" | "DENY";
-export const ConstraintConstraintDefaultEnum = S.String;
+const ConstraintConstraintDefaultEnum = S.String;
 
 /** A `Constraint` describes a way in which a resource's configuration can be restricted. For example, it controls which cloud services can be activated across an organization, or whether a Compute Engine instance can have serial port connections established. `Constraints` can be configured by the organization's policy administrator to fit the needs of the organzation by setting Policies for `Constraints` at different locations in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from higher levels, but can also be overridden. For details about the inheritance rules please read about [Policies](/resource-manager/reference/rest/v1/Policy). `Constraints` have a default behavior determined by the `constraint_default` field, which is the enforcement behavior that is used in the absence of a `Policy` being defined or inherited for the resource in question. */
 export interface Constraint {
@@ -968,7 +957,7 @@ export interface Constraint {
   /** The evaluation behavior of this constraint in the absence of 'Policy'. */
   constraintDefault?: ConstraintConstraintDefaultEnum;
 }
-export const Constraint = /*@__PURE__*/ S.suspend(() =>
+const Constraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -981,7 +970,7 @@ export const Constraint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Constraint" }) as any as S.Schema<Constraint>;
 
 export type ConstraintList = Array<Constraint>;
-export const ConstraintList = /*@__PURE__*/ S.Array(Constraint) as any as S.Schema<ConstraintList>;
+const ConstraintList = /*@__PURE__*/ S.Array(Constraint) as any as S.Schema<ConstraintList>;
 
 /** The response returned from the `ListAvailableOrgPolicyConstraints` method. Returns all `Constraints` that could be set at this level of the hierarchy (contrast with the response from `ListPolicies`, which returns all policies which are set). */
 export interface ListAvailableOrgPolicyConstraintsResponse {
@@ -990,7 +979,7 @@ export interface ListAvailableOrgPolicyConstraintsResponse {
   /** The collection of constraints that are settable on the request resource. */
   constraints?: ConstraintList;
 }
-export const ListAvailableOrgPolicyConstraintsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableOrgPolicyConstraintsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     constraints: S.optional(ConstraintList),
@@ -1005,7 +994,7 @@ export interface ListAvailableOrgPolicyConstraintsOrganizationsRequest {
   /** Request body */
   body?: ListAvailableOrgPolicyConstraintsRequest;
 }
-export const ListAvailableOrgPolicyConstraintsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableOrgPolicyConstraintsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ListAvailableOrgPolicyConstraintsRequest.pipe(T.HttpBody())),
@@ -1026,7 +1015,7 @@ export interface ListAvailableOrgPolicyConstraintsProjectsRequest {
   /** Request body */
   body?: ListAvailableOrgPolicyConstraintsRequest;
 }
-export const ListAvailableOrgPolicyConstraintsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableOrgPolicyConstraintsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ListAvailableOrgPolicyConstraintsRequest.pipe(T.HttpBody())),
@@ -1049,7 +1038,7 @@ export interface ListLiensRequest {
   /** Required. The name of the resource to list all attached Liens. For example, `projects/1234`. (google.api.field_policy).resource_type annotation is not set since the parent depends on the meta api implementation. This field could be a project or other sub project resources. */
   parent?: string;
 }
-export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1064,7 +1053,7 @@ export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLiensRequest" }) as any as S.Schema<ListLiensRequest>;
 
 export type LienList = Array<Lien>;
-export const LienList = /*@__PURE__*/ S.Array(Lien) as any as S.Schema<LienList>;
+const LienList = /*@__PURE__*/ S.Array(Lien) as any as S.Schema<LienList>;
 
 /** The response message for Liens.ListLiens. */
 export interface ListLiensResponse {
@@ -1073,7 +1062,7 @@ export interface ListLiensResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListLiensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLiensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liens: S.optional(LienList),
     nextPageToken: S.optional(S.String),
@@ -1087,7 +1076,7 @@ export interface ListOrgPoliciesRequest {
   /** Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size. */
   pageSize?: number;
 }
-export const ListOrgPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     pageSize: S.optional(S.Number),
@@ -1100,7 +1089,7 @@ export interface ListOrgPoliciesFoldersRequest {
   /** Request body */
   body?: ListOrgPoliciesRequest;
 }
-export const ListOrgPoliciesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgPoliciesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ListOrgPoliciesRequest.pipe(T.HttpBody())),
@@ -1116,7 +1105,7 @@ export const ListOrgPoliciesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrgPoliciesFoldersRequest>;
 
 export type OrgPolicyList = Array<OrgPolicy>;
-export const OrgPolicyList = /*@__PURE__*/ S.Array(OrgPolicy) as any as S.Schema<OrgPolicyList>;
+const OrgPolicyList = /*@__PURE__*/ S.Array(OrgPolicy) as any as S.Schema<OrgPolicyList>;
 
 /** The response returned from the `ListOrgPolicies` method. It will be empty if no `Policies` are set on the resource. */
 export interface ListOrgPoliciesResponse {
@@ -1125,7 +1114,7 @@ export interface ListOrgPoliciesResponse {
   /** The `Policies` that are set on the resource. It will be empty if no `Policies` are set. */
   policies?: OrgPolicyList;
 }
-export const ListOrgPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     policies: S.optional(OrgPolicyList),
@@ -1138,7 +1127,7 @@ export interface ListOrgPoliciesOrganizationsRequest {
   /** Request body */
   body?: ListOrgPoliciesRequest;
 }
-export const ListOrgPoliciesOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgPoliciesOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ListOrgPoliciesRequest.pipe(T.HttpBody())),
@@ -1159,7 +1148,7 @@ export interface ListOrgPoliciesProjectsRequest {
   /** Request body */
   body?: ListOrgPoliciesRequest;
 }
-export const ListOrgPoliciesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgPoliciesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ListOrgPoliciesRequest.pipe(T.HttpBody())),
@@ -1182,7 +1171,7 @@ export interface ListProjectsRequest {
   /** Optional. A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. */
   pageToken?: string;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1197,7 +1186,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectList = Array<Project>;
-export const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
+const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
 
 /** A page of the response received from the ListProjects method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page. */
 export interface ListProjectsResponse {
@@ -1206,7 +1195,7 @@ export interface ListProjectsResponse {
   /** The list of Projects that matched the list filter. This list can be paginated. */
   projects?: ProjectList;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     projects: S.optional(ProjectList),
@@ -1222,7 +1211,7 @@ export interface SearchOrganizationsRequest {
   /** An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a verified G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization resources corresponding to the domain `google.com`. This field is optional. */
   filter?: string;
 }
-export const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     pageSize: S.optional(S.Number),
@@ -1236,7 +1225,7 @@ export interface SearchOrganizationsRequest_ {
   /** Request body */
   body?: SearchOrganizationsRequest;
 }
-export const SearchOrganizationsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const SearchOrganizationsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SearchOrganizationsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1251,9 +1240,7 @@ export const SearchOrganizationsRequest_ = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchOrganizationsRequest_>;
 
 export type OrganizationList = Array<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrganizationList>;
+const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
 
 /** The response returned from the `SearchOrganizations` method. */
 export interface SearchOrganizationsResponse {
@@ -1262,7 +1249,7 @@ export interface SearchOrganizationsResponse {
   /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
   nextPageToken?: string;
 }
-export const SearchOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizations: S.optional(OrganizationList),
     nextPageToken: S.optional(S.String),
@@ -1278,7 +1265,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1291,7 +1278,7 @@ export interface SetIamPolicyOrganizationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1312,7 +1299,7 @@ export interface SetIamPolicyProjectsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1332,7 +1319,7 @@ export interface SetOrgPolicyRequest {
   /** `Policy` to set on the resource. */
   policy?: OrgPolicy;
 }
-export const SetOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOrgPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(OrgPolicy),
   }),
@@ -1344,7 +1331,7 @@ export interface SetOrgPolicyFoldersRequest {
   /** Request body */
   body?: SetOrgPolicyRequest;
 }
-export const SetOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOrgPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetOrgPolicyRequest.pipe(T.HttpBody())),
@@ -1365,7 +1352,7 @@ export interface SetOrgPolicyOrganizationsRequest {
   /** Request body */
   body?: SetOrgPolicyRequest;
 }
-export const SetOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOrgPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetOrgPolicyRequest.pipe(T.HttpBody())),
@@ -1386,7 +1373,7 @@ export interface SetOrgPolicyProjectsRequest {
   /** Request body */
   body?: SetOrgPolicyRequest;
 }
-export const SetOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetOrgPolicyRequest.pipe(T.HttpBody())),
@@ -1406,7 +1393,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1420,7 +1407,7 @@ export interface TestIamPermissionsOrganizationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1440,7 +1427,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsRequest {
@@ -1449,7 +1436,7 @@ export interface TestIamPermissionsProjectsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1466,15 +1453,13 @@ export const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request sent to the UndeleteProject method. */
 export type UndeleteProjectRequest = GetAncestryRequest;
-export const UndeleteProjectRequest = GetAncestryRequest;
-
 export interface UndeleteProjectsRequest {
   /** Required. The project ID (for example, `foo-bar-123`). */
   projectId: string;
   /** Request body */
   body?: GetAncestryRequest;
 }
-export const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(GetAncestryRequest.pipe(T.HttpBody())),
@@ -1493,7 +1478,7 @@ export interface UpdateProjectsRequest {
   /** Request body */
   body?: Project;
 }
-export const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(Project.pipe(T.HttpBody())),

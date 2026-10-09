@@ -11,25 +11,25 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AppliancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AppliancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AppliancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AppliancesCreateOrUpdateRequestTagsMap>;
 
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
 export type AppliancePropertiesInputDistro = "AKSEdge";
-export const AppliancePropertiesInputDistro = S.String;
+const AppliancePropertiesInputDistro = S.String;
 
 /** Information about the connected appliance. */
 export type Provider = "VMWare" | "HCI" | "SCVMM";
-export const Provider = S.String;
+const Provider = S.String;
 
 /** Contains infrastructure information about the Appliance */
 export interface AppliancePropertiesInfrastructureConfig {
   /** Information about the connected appliance. */
   provider?: Provider | (string & {});
 }
-export const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(() =>
+const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(Provider),
   }),
@@ -48,7 +48,7 @@ export interface AppliancePropertiesInput {
   /** Version of the Appliance */
   version?: string;
 }
-export const AppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distro: S.optional(AppliancePropertiesInputDistro),
     infrastructureConfig: S.optional(AppliancePropertiesInfrastructureConfig),
@@ -59,14 +59,14 @@ export const AppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type ResourceIdentityType = "SystemAssigned" | "None";
-export const ResourceIdentityType = S.String;
+const ResourceIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
   type?: ResourceIdentityType | (string & {});
 }
-export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ResourceIdentityType),
   }),
@@ -88,7 +88,7 @@ export interface AppliancesCreateOrUpdateRequest {
   /** Identity for the resource. */
   identity?: IdentityInput;
 }
-export const AppliancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AppliancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -111,11 +111,11 @@ export const AppliancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -132,7 +132,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -145,12 +145,12 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AppliancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AppliancesCreateOrUpdateResponseTagsMap =
+const AppliancesCreateOrUpdateResponseTagsMap =
   AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<AppliancesCreateOrUpdateResponseTagsMap>;
 
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
 export type AppliancePropertiesDistro = "AKSEdge";
-export const AppliancePropertiesDistro = S.String;
+const AppliancePropertiesDistro = S.String;
 
 /** Appliance's health and state of connection to on-prem. This list of values is not exhaustive. */
 export type Status =
@@ -186,7 +186,7 @@ export type Status =
   | "UpgradeFailed"
   | "Offline"
   | "None";
-export const Status = S.String;
+const Status = S.String;
 
 /** Properties for an appliance. */
 export interface ApplianceProperties {
@@ -203,7 +203,7 @@ export interface ApplianceProperties {
   /** Version of the Appliance */
   version?: string;
 }
-export const ApplianceProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplianceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distro: S.optional(AppliancePropertiesDistro),
     infrastructureConfig: S.optional(AppliancePropertiesInfrastructureConfig),
@@ -223,7 +223,7 @@ export interface Identity {
   /** The identity type. */
   type?: ResourceIdentityType;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -249,7 +249,7 @@ export interface AppliancesCreateOrUpdateResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const AppliancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AppliancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -272,7 +272,7 @@ export interface DeleteApplianceRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export const DeleteApplianceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -288,7 +288,7 @@ export const DeleteApplianceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApplianceRequest" }) as any as S.Schema<DeleteApplianceRequest>;
 
 export interface DeleteApplianceResponse {}
-export const DeleteApplianceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteApplianceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteApplianceResponse",
 }) as any as S.Schema<DeleteApplianceResponse>;
 
@@ -300,7 +300,7 @@ export interface GetApplianceRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export const GetApplianceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -317,7 +317,7 @@ export const GetApplianceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetApplianceResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplianceResponseTagsMap =
+const GetApplianceResponseTagsMap =
   AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplianceResponseTagsMap>;
 
 export interface GetApplianceResponse {
@@ -338,7 +338,7 @@ export interface GetApplianceResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const GetApplianceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplianceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -355,7 +355,7 @@ export interface GetApplianceTelemetryConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const GetApplianceTelemetryConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplianceTelemetryConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -375,7 +375,7 @@ export interface ApplianceGetTelemetryConfigResult {
   /** Telemetry instrumentation key. */
   telemetryInstrumentationKey?: string;
 }
-export const ApplianceGetTelemetryConfigResult = /*@__PURE__*/ S.suspend(() =>
+const ApplianceGetTelemetryConfigResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     telemetryInstrumentationKey: S.optional(S.String),
   }),
@@ -393,7 +393,7 @@ export interface GetApplianceUpgradeGraphRequest {
   /** Upgrade graph version, ex - stable */
   upgradeGraph: string;
 }
-export const GetApplianceUpgradeGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplianceUpgradeGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -422,7 +422,7 @@ export interface SupportedVersionCatalogVersionData {
   /** The image version for the version available for upgrade. */
   version?: string;
 }
-export const SupportedVersionCatalogVersionData = /*@__PURE__*/ S.suspend(() =>
+const SupportedVersionCatalogVersionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.String),
     catalog: S.optional(S.String),
@@ -442,7 +442,7 @@ export interface SupportedVersionCatalogVersion {
   /** The catalog version namespace for the version available for upgrade. */
   namespace?: string;
 }
-export const SupportedVersionCatalogVersion = /*@__PURE__*/ S.suspend(() =>
+const SupportedVersionCatalogVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SupportedVersionCatalogVersionData),
     name: S.optional(S.String),
@@ -457,7 +457,7 @@ export interface SupportedVersionMetadata {
   /** The newer supported version catalog version. */
   catalogVersion?: SupportedVersionCatalogVersion;
 }
-export const SupportedVersionMetadata = /*@__PURE__*/ S.suspend(() =>
+const SupportedVersionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogVersion: S.optional(SupportedVersionCatalogVersion),
   }),
@@ -470,7 +470,7 @@ export interface SupportedVersion {
   /** The newer version available for upgrade. */
   version?: string;
 }
-export const SupportedVersion = /*@__PURE__*/ S.suspend(() =>
+const SupportedVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SupportedVersionMetadata),
     version: S.optional(S.String),
@@ -479,7 +479,7 @@ export const SupportedVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** This contains the current version and supported upgrade versions. */
 export type UpgradeGraphPropertiesSupportedVersionsList = Array<SupportedVersion>;
-export const UpgradeGraphPropertiesSupportedVersionsList = /*@__PURE__*/ S.Array(
+const UpgradeGraphPropertiesSupportedVersionsList = /*@__PURE__*/ S.Array(
   SupportedVersion,
 ) as any as S.Schema<UpgradeGraphPropertiesSupportedVersionsList>;
 
@@ -490,7 +490,7 @@ export interface UpgradeGraphProperties {
   /** This contains the current version and supported upgrade versions. */
   supportedVersions?: UpgradeGraphPropertiesSupportedVersionsList;
 }
-export const UpgradeGraphProperties = /*@__PURE__*/ S.suspend(() =>
+const UpgradeGraphProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applianceVersion: S.optional(S.String),
     supportedVersions: S.optional(UpgradeGraphPropertiesSupportedVersionsList),
@@ -506,7 +506,7 @@ export interface UpgradeGraph {
   /** The properties of supported version */
   properties?: UpgradeGraphProperties;
 }
-export const UpgradeGraph = /*@__PURE__*/ S.suspend(() =>
+const UpgradeGraph = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -520,7 +520,7 @@ export interface ListApplianceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListApplianceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplianceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -538,9 +538,6 @@ export const ListApplianceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ApplianceTagsMap = { [key: string]: string | undefined };
-export const ApplianceTagsMap =
-  AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<ApplianceTagsMap>;
-
 /** Appliances definition. */
 export interface Appliance {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -560,11 +557,11 @@ export interface Appliance {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const Appliance = GetApplianceResponse as any as S.Schema<Appliance>;
+const Appliance = GetApplianceResponse as any as S.Schema<Appliance>;
 
 /** The Appliance items on this page */
 export type ApplianceListResultValueList = Array<Appliance>;
-export const ApplianceListResultValueList = /*@__PURE__*/ S.Array(
+const ApplianceListResultValueList = /*@__PURE__*/ S.Array(
   Appliance,
 ) as any as S.Schema<ApplianceListResultValueList>;
 
@@ -575,7 +572,7 @@ export interface ApplianceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ApplianceListResult = /*@__PURE__*/ S.suspend(() =>
+const ApplianceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ApplianceListResultValueList,
     nextLink: S.optional(S.String),
@@ -586,7 +583,7 @@ export interface ListApplianceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListApplianceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplianceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -609,7 +606,7 @@ export interface ListApplianceClusterUserCredentialRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export const ListApplianceClusterUserCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplianceClusterUserCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -637,7 +634,7 @@ export interface HybridConnectionConfig {
   /** Listener access token */
   token?: string;
 }
-export const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
+const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.Number),
     hybridConnectionName: S.optional(S.String),
@@ -648,7 +645,7 @@ export const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Name which contains the role of the kubeconfig. */
 export type AccessProfileType = "clusterUser" | "clusterCustomerUser";
-export const AccessProfileType = S.String;
+const AccessProfileType = S.String;
 
 /** Cluster User Credential appliance. */
 export interface ApplianceCredentialKubeconfig {
@@ -657,7 +654,7 @@ export interface ApplianceCredentialKubeconfig {
   /** Contains the kubeconfig value. */
   value?: string;
 }
-export const ApplianceCredentialKubeconfig = /*@__PURE__*/ S.suspend(() =>
+const ApplianceCredentialKubeconfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(AccessProfileType),
     value: S.optional(S.String),
@@ -668,7 +665,7 @@ export const ApplianceCredentialKubeconfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of appliance kubeconfigs. */
 export type ApplianceListCredentialResultsKubeconfigsList = Array<ApplianceCredentialKubeconfig>;
-export const ApplianceListCredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
+const ApplianceListCredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   ApplianceCredentialKubeconfig,
 ) as any as S.Schema<ApplianceListCredentialResultsKubeconfigsList>;
 
@@ -679,7 +676,7 @@ export interface ApplianceListCredentialResults {
   /** The list of appliance kubeconfigs. */
   kubeconfigs?: ApplianceListCredentialResultsKubeconfigsList;
 }
-export const ApplianceListCredentialResults = /*@__PURE__*/ S.suspend(() =>
+const ApplianceListCredentialResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hybridConnectionConfig: S.optional(HybridConnectionConfig),
     kubeconfigs: S.optional(ApplianceListCredentialResultsKubeconfigsList),
@@ -698,7 +695,7 @@ export interface ListApplianceKeysRequest {
   /** This sets the type of artifact being returned, when empty no artifact endpoint is returned. */
   artifactType?: string;
 }
-export const ListApplianceKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplianceKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -719,7 +716,7 @@ export interface ArtifactProfile {
   /** Endpoint is the URL to upload artifacts to. */
   endpoint?: string;
 }
-export const ArtifactProfile = /*@__PURE__*/ S.suspend(() =>
+const ArtifactProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
   }),
@@ -729,14 +726,14 @@ export const ArtifactProfile = /*@__PURE__*/ S.suspend(() =>
 export type ApplianceListKeysResultsArtifactProfilesMap = {
   [key: string]: ArtifactProfile | undefined;
 };
-export const ApplianceListKeysResultsArtifactProfilesMap = /*@__PURE__*/ S.Record(
+const ApplianceListKeysResultsArtifactProfilesMap = /*@__PURE__*/ S.Record(
   S.String,
   ArtifactProfile,
 ) as any as S.Schema<ApplianceListKeysResultsArtifactProfilesMap>;
 
 /** The list of appliance kubeconfigs. */
 export type ApplianceListKeysResultsKubeconfigsList = Array<ApplianceCredentialKubeconfig>;
-export const ApplianceListKeysResultsKubeconfigsList =
+const ApplianceListKeysResultsKubeconfigsList =
   ApplianceListCredentialResultsKubeconfigsList as any as S.Schema<ApplianceListKeysResultsKubeconfigsList>;
 
 /** Appliance SSHKey definition. */
@@ -752,7 +749,7 @@ export interface SSHKey {
   /** Public Key. */
   publicKey?: string;
 }
-export const SSHKey = /*@__PURE__*/ S.suspend(() =>
+const SSHKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate: S.optional(S.String),
     creationTimeStamp: S.optional(S.Number),
@@ -764,7 +761,7 @@ export const SSHKey = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of Customer User Public, Private SSH Keys and Certificate when available. */
 export type ApplianceListKeysResultsSshKeysMap = { [key: string]: SSHKey | undefined };
-export const ApplianceListKeysResultsSshKeysMap = /*@__PURE__*/ S.Record(
+const ApplianceListKeysResultsSshKeysMap = /*@__PURE__*/ S.Record(
   S.String,
   SSHKey,
 ) as any as S.Schema<ApplianceListKeysResultsSshKeysMap>;
@@ -778,7 +775,7 @@ export interface ApplianceListKeysResults {
   /** Map of Customer User Public, Private SSH Keys and Certificate when available. */
   sshKeys?: ApplianceListKeysResultsSshKeysMap;
 }
-export const ApplianceListKeysResults = /*@__PURE__*/ S.suspend(() =>
+const ApplianceListKeysResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactProfiles: S.optional(ApplianceListKeysResultsArtifactProfilesMap),
     kubeconfigs: S.optional(ApplianceListKeysResultsKubeconfigsList),
@@ -787,7 +784,7 @@ export const ApplianceListKeysResults = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplianceListKeysResults" }) as any as S.Schema<ApplianceListKeysResults>;
 
 export interface ListApplianceOperationsRequest {}
-export const ListApplianceOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplianceOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -811,7 +808,7 @@ export interface ApplianceOperationValueDisplay {
   /** The display name of the resource the operation applies to. */
   resource?: string;
 }
-export const ApplianceOperationValueDisplay = /*@__PURE__*/ S.suspend(() =>
+const ApplianceOperationValueDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -833,7 +830,7 @@ export interface ApplianceOperation {
   /** The origin of the compute operation. */
   origin?: string;
 }
-export const ApplianceOperation = /*@__PURE__*/ S.suspend(() =>
+const ApplianceOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.optional(ApplianceOperationValueDisplay),
     isDataAction: S.optional(S.Boolean),
@@ -844,7 +841,7 @@ export const ApplianceOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ApplianceOperation items on this page */
 export type ApplianceOperationsListValueList = Array<ApplianceOperation>;
-export const ApplianceOperationsListValueList = /*@__PURE__*/ S.Array(
+const ApplianceOperationsListValueList = /*@__PURE__*/ S.Array(
   ApplianceOperation,
 ) as any as S.Schema<ApplianceOperationsListValueList>;
 
@@ -855,7 +852,7 @@ export interface ApplianceOperationsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ApplianceOperationsList = /*@__PURE__*/ S.suspend(() =>
+const ApplianceOperationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ApplianceOperationsListValueList,
     nextLink: S.optional(S.String),
@@ -864,7 +861,7 @@ export const ApplianceOperationsList = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateApplianceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApplianceRequestTagsMap =
+const UpdateApplianceRequestTagsMap =
   AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplianceRequestTagsMap>;
 
 export interface UpdateApplianceRequest {
@@ -877,7 +874,7 @@ export interface UpdateApplianceRequest {
   /** Resource tags */
   tags?: UpdateApplianceRequestTagsMap;
 }
-export const UpdateApplianceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -895,9 +892,6 @@ export const UpdateApplianceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateApplianceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApplianceResponseTagsMap =
-  AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplianceResponseTagsMap>;
-
 export interface UpdateApplianceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -916,8 +910,7 @@ export interface UpdateApplianceResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const UpdateApplianceResponse =
-  GetApplianceResponse as any as S.Schema<UpdateApplianceResponse>;
+const UpdateApplianceResponse = GetApplianceResponse as any as S.Schema<UpdateApplianceResponse>;
 
 export type AppliancesCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Appliance. Creates or updates an Appliance in the specified Subscription and Resource Group. */

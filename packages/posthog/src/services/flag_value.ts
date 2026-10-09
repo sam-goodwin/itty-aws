@@ -41,7 +41,7 @@ export interface GetFlagValueValueRequest {
   /** The flag ID */
   key?: string;
 }
-export const GetFlagValueValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagValueValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key: S.optional(S.String.pipe(T.Query())),
@@ -53,14 +53,14 @@ export const GetFlagValueValueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FlagValueItem {
   name?: unknown;
 }
-export const FlagValueItem = /*@__PURE__*/ S.suspend(() =>
+const FlagValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.Unknown),
   }),
 ).annotate({ identifier: "FlagValueItem" }) as any as S.Schema<FlagValueItem>;
 
 export type FlagValueResponseResultsList = Array<FlagValueItem>;
-export const FlagValueResponseResultsList = /*@__PURE__*/ S.Array(
+const FlagValueResponseResultsList = /*@__PURE__*/ S.Array(
   FlagValueItem,
 ) as any as S.Schema<FlagValueResponseResultsList>;
 
@@ -68,7 +68,7 @@ export interface FlagValueResponse {
   results?: FlagValueResponseResultsList;
   refreshing?: boolean;
 }
-export const FlagValueResponse = /*@__PURE__*/ S.suspend(() =>
+const FlagValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(FlagValueResponseResultsList),
     refreshing: S.optional(S.Boolean),

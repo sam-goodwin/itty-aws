@@ -50,7 +50,7 @@ export interface CommentsDestroyRequest {
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const CommentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const CommentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -60,7 +60,7 @@ export const CommentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentsDestroyRequest" }) as any as S.Schema<CommentsDestroyRequest>;
 
 export interface CommentsDestroyResponse {}
-export const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CommentsDestroyResponse",
 }) as any as S.Schema<CommentsDestroyResponse>;
 
@@ -74,7 +74,7 @@ export interface CommentsSendToSlackCreateRequest {
   /** Slack channel ID to create the mirrored thread in. The bot must be a member of the channel. The channel's display name is resolved server-side. */
   channel_id: string;
 }
-export const CommentsSendToSlackCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const CommentsSendToSlackCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -92,7 +92,7 @@ export const CommentsSendToSlackCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommentsSendToSlackCreateRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -108,14 +108,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -128,7 +123,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -164,7 +159,7 @@ export interface CommentSlackThread {
   /** User who mirrored the discussion. Null if since deleted. */
   created_by: UserBasic | null;
 }
-export const CommentSlackThread = /*@__PURE__*/ S.suspend(() =>
+const CommentSlackThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: S.String,
@@ -181,7 +176,7 @@ export const CommentSlackThread = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentSlackThread" }) as any as S.Schema<CommentSlackThread>;
 
 export type CreateCommentRequestMentionsList = Array<number>;
-export const CreateCommentRequestMentionsList = /*@__PURE__*/ S.Array(
+const CreateCommentRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateCommentRequestMentionsList>;
 
@@ -201,7 +196,7 @@ export interface CreateCommentRequest {
   item_id?: string | null;
   source_comment?: string | null;
 }
-export const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scope: S.optional(S.String),
@@ -225,7 +220,7 @@ export interface CommentSlackThreadRef {
   /** Deep link that opens the mirrored Slack thread. */
   url: string;
 }
-export const CommentSlackThreadRef = /*@__PURE__*/ S.suspend(() =>
+const CommentSlackThreadRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     channel_name: S.String,
@@ -255,7 +250,7 @@ export interface CommentOutput {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const CommentOutput = /*@__PURE__*/ S.suspend(() =>
+const CommentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_by: S.optional(S.NullOr(UserBasic)),
@@ -281,7 +276,7 @@ export interface CreateCommentsCompleteRequest {
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const CreateCommentsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -302,7 +297,7 @@ export interface CreateCommentsReopenRequest {
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const CreateCommentsReopenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentsReopenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -319,7 +314,7 @@ export interface GetCommentRequest {
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -330,14 +325,14 @@ export interface GetCommentsCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetCommentsCountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentsCountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/comments/count/", code: 200 })),
 ).annotate({ identifier: "GetCommentsCountRequest" }) as any as S.Schema<GetCommentsCountRequest>;
 
 export interface GetCommentsCountResponse {}
-export const GetCommentsCountResponse =
+const GetCommentsCountResponse =
   CommentsDestroyResponse as any as S.Schema<GetCommentsCountResponse>;
 
 export interface GetCommentsThreadRequest {
@@ -346,7 +341,7 @@ export interface GetCommentsThreadRequest {
   /** A UUID string identifying this comment. */
   id: string;
 }
-export const GetCommentsThreadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentsThreadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -356,14 +351,14 @@ export const GetCommentsThreadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCommentsThreadRequest" }) as any as S.Schema<GetCommentsThreadRequest>;
 
 export interface GetCommentsThreadResponse {}
-export const GetCommentsThreadResponse =
+const GetCommentsThreadResponse =
   CommentsDestroyResponse as any as S.Schema<GetCommentsThreadResponse>;
 
 export type ListCommentsRequestCompleted = "any" | "open" | "completed";
-export const ListCommentsRequestCompleted = S.String;
+const ListCommentsRequestCompleted = S.String;
 
 export type ListCommentsRequestKind = "any" | "comment" | "task";
-export const ListCommentsRequestKind = S.String;
+const ListCommentsRequestKind = S.String;
 
 export interface ListCommentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -387,7 +382,7 @@ export interface ListCommentsRequest {
   /** Owning task for task, task_artifact, task_preview, task_browser, and canvas comment scopes. */
   task_id?: string;
 }
-export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     completed: S.optional(ListCommentsRequestCompleted.pipe(T.Query())),
@@ -403,7 +398,7 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommentsRequest" }) as any as S.Schema<ListCommentsRequest>;
 
 export type PaginatedCommentListOutputResultsList = Array<CommentOutput>;
-export const PaginatedCommentListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCommentListOutputResultsList = /*@__PURE__*/ S.Array(
   CommentOutput,
 ) as any as S.Schema<PaginatedCommentListOutputResultsList>;
 
@@ -412,7 +407,7 @@ export interface PaginatedCommentListOutput {
   previous?: string | null;
   results?: PaginatedCommentListOutputResultsList;
 }
-export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
@@ -423,7 +418,7 @@ export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedCommentListOutput>;
 
 export type UpdateCommentRequestMentionsList = Array<number>;
-export const UpdateCommentRequestMentionsList =
+const UpdateCommentRequestMentionsList =
   CreateCommentRequestMentionsList as any as S.Schema<UpdateCommentRequestMentionsList>;
 
 export interface UpdateCommentRequest {
@@ -444,7 +439,7 @@ export interface UpdateCommentRequest {
   item_id?: string | null;
   source_comment?: string | null;
 }
-export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -462,7 +457,7 @@ export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCommentRequest" }) as any as S.Schema<UpdateCommentRequest>;
 
 export type UpdateCommentsPartialRequestMentionsList = Array<number>;
-export const UpdateCommentsPartialRequestMentionsList =
+const UpdateCommentsPartialRequestMentionsList =
   CreateCommentRequestMentionsList as any as S.Schema<UpdateCommentsPartialRequestMentionsList>;
 
 export interface UpdateCommentsPartialRequest {
@@ -483,7 +478,7 @@ export interface UpdateCommentsPartialRequest {
   item_id?: string | null;
   source_comment?: string | null;
 }
-export const UpdateCommentsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

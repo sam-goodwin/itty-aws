@@ -119,7 +119,7 @@ export type ClientToken = string;
 export interface DeleteConnectionRecordingPreferencesRequest {
   ClientToken?: string;
 }
-export const DeleteConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteConnectionRecordingPreferences" }),
@@ -136,13 +136,13 @@ export const DeleteConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspe
 export interface DeleteConnectionRecordingPreferencesResponse {
   ClientToken?: string;
 }
-export const DeleteConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ClientToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteConnectionRecordingPreferencesResponse",
 }) as any as S.Schema<DeleteConnectionRecordingPreferencesResponse>;
 export interface GetConnectionRecordingPreferencesRequest {}
-export const GetConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetConnectionRecordingPreferences" }),
@@ -162,22 +162,22 @@ export interface S3Bucket {
   BucketOwner: string;
   BucketName: string;
 }
-export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
+const S3Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketOwner: S.String, BucketName: S.String }),
 ).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
 export type S3Buckets = S3Bucket[];
-export const S3Buckets = /*@__PURE__*/ S.Array(S3Bucket);
+const S3Buckets = /*@__PURE__*/ S.Array(S3Bucket);
 export interface RecordingDestinations {
   S3Buckets: S3Bucket[];
 }
-export const RecordingDestinations = /*@__PURE__*/ S.suspend(() =>
+const RecordingDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Buckets: S3Buckets }),
 ).annotate({ identifier: "RecordingDestinations" }) as any as S.Schema<RecordingDestinations>;
 export interface ConnectionRecordingPreferences {
   RecordingDestinations: RecordingDestinations;
   KMSKeyArn: string;
 }
-export const ConnectionRecordingPreferences = /*@__PURE__*/ S.suspend(() =>
+const ConnectionRecordingPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecordingDestinations: RecordingDestinations, KMSKeyArn: S.String }),
 ).annotate({
   identifier: "ConnectionRecordingPreferences",
@@ -186,7 +186,7 @@ export interface GetConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
-export const GetConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String),
     ConnectionRecordingPreferences: S.optional(ConnectionRecordingPreferences),
@@ -198,7 +198,7 @@ export interface UpdateConnectionRecordingPreferencesRequest {
   ConnectionRecordingPreferences: ConnectionRecordingPreferences;
   ClientToken?: string;
 }
-export const UpdateConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConnectionRecordingPreferences: ConnectionRecordingPreferences,
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -219,7 +219,7 @@ export interface UpdateConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
-export const UpdateConnectionRecordingPreferencesResponse =
+const UpdateConnectionRecordingPreferencesResponse =
   GetConnectionRecordingPreferencesResponse as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>;
 export type ErrorMessage = string;
 export type DeleteConnectionRecordingPreferencesError =

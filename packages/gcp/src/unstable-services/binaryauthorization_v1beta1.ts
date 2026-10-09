@@ -82,7 +82,7 @@ export type PkixPublicKeySignatureAlgorithmEnum =
   | "ECDSA_P521_SHA512"
   | "EC_SIGN_P521_SHA512"
   | "ML_DSA_65";
-export const PkixPublicKeySignatureAlgorithmEnum = S.String;
+const PkixPublicKeySignatureAlgorithmEnum = S.String;
 
 /** A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format. */
 export interface PkixPublicKey {
@@ -91,7 +91,7 @@ export interface PkixPublicKey {
   /** A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13 */
   publicKeyPem?: string;
 }
-export const PkixPublicKey = /*@__PURE__*/ S.suspend(() =>
+const PkixPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signatureAlgorithm: S.optional(PkixPublicKeySignatureAlgorithmEnum),
     publicKeyPem: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface AttestorPublicKey {
   /** The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details. */
   id?: string;
 }
-export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
+const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pkixPublicKey: S.optional(PkixPublicKey),
     asciiArmoredPgpPublicKey: S.optional(S.String),
@@ -119,7 +119,7 @@ export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttestorPublicKey" }) as any as S.Schema<AttestorPublicKey>;
 
 export type AttestorPublicKeyList = Array<AttestorPublicKey>;
-export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
+const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
   AttestorPublicKey,
 ) as any as S.Schema<AttestorPublicKeyList>;
 
@@ -132,7 +132,7 @@ export interface UserOwnedDrydockNote {
   /** Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern. */
   delegationServiceAccountEmail?: string;
 }
-export const UserOwnedDrydockNote = /*@__PURE__*/ S.suspend(() =>
+const UserOwnedDrydockNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeys: S.optional(AttestorPublicKeyList),
     noteReference: S.optional(S.String),
@@ -153,7 +153,7 @@ export interface Attestor {
   /** Output only. Time when the attestor was last updated. */
   updateTime?: string;
 }
-export const Attestor = /*@__PURE__*/ S.suspend(() =>
+const Attestor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     userOwnedDrydockNote: S.optional(UserOwnedDrydockNote),
@@ -171,7 +171,7 @@ export interface CreateProjectsAttestorsRequest {
   /** Request body */
   body?: Attestor;
 }
-export const CreateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     attestorId: S.optional(S.String.pipe(T.Query())),
@@ -191,7 +191,7 @@ export interface DeleteProjectsAttestorsRequest {
   /** Required. The name of the attestors to delete, in the format `projects/*\/attestors/*`. */
   name: string;
 }
-export const DeleteProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -207,7 +207,7 @@ export const DeleteProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -217,7 +217,7 @@ export interface GetIamPolicyProjectsAttestorsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -233,7 +233,7 @@ export const GetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -246,7 +246,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     description: S.optional(S.String),
@@ -264,7 +264,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -273,7 +273,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface IamPolicy {
@@ -284,7 +284,7 @@ export interface IamPolicy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const IamPolicy = /*@__PURE__*/ S.suspend(() =>
+const IamPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     etag: S.optional(S.String),
@@ -298,7 +298,7 @@ export interface GetIamPolicyProjectsPolicyRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -317,7 +317,7 @@ export interface GetPolicyProjectsRequest {
   /** Required. The resource name of the policy to retrieve, in the format `projects/*\/policy`. */
   name: string;
 }
-export const GetPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -334,13 +334,13 @@ export type AdmissionRuleEvaluationModeEnum =
   | "ALWAYS_ALLOW"
   | "REQUIRE_ATTESTATION"
   | "ALWAYS_DENY";
-export const AdmissionRuleEvaluationModeEnum = S.String;
+const AdmissionRuleEvaluationModeEnum = S.String;
 
 export type AdmissionRuleEnforcementModeEnum =
   | "ENFORCEMENT_MODE_UNSPECIFIED"
   | "ENFORCED_BLOCK_AND_AUDIT_LOG"
   | "DRYRUN_AUDIT_LOG_ONLY";
-export const AdmissionRuleEnforcementModeEnum = S.String;
+const AdmissionRuleEnforcementModeEnum = S.String;
 
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
 export interface AdmissionRule {
@@ -350,7 +350,7 @@ export interface AdmissionRule {
   /** Required. The action when a pod creation is denied by the admission rule. */
   enforcementMode?: AdmissionRuleEnforcementModeEnum | (string & {});
 }
-export const AdmissionRule = /*@__PURE__*/ S.suspend(() =>
+const AdmissionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationMode: S.optional(AdmissionRuleEvaluationModeEnum),
     requireAttestationsBy: S.optional(StringList),
@@ -359,7 +359,7 @@ export const AdmissionRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdmissionRule" }) as any as S.Schema<AdmissionRule>;
 
 export type AdmissionRuleMap = { [key: string]: AdmissionRule | undefined };
-export const AdmissionRuleMap = /*@__PURE__*/ S.Record(
+const AdmissionRuleMap = /*@__PURE__*/ S.Record(
   S.String,
   AdmissionRule,
 ) as any as S.Schema<AdmissionRuleMap>;
@@ -369,7 +369,7 @@ export interface AdmissionWhitelistPattern {
   /** An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*` as a wildcard, but this is allowed only in text after the `registry/` part. `*` wildcard does not match `/`, i.e., `gcr.io/nginx*` matches `gcr.io/nginx@latest`, but it does not match `gcr.io/nginx/image`. This also supports a trailing `**` wildcard which matches subdirectories, i.e., `gcr.io/nginx**` matches `gcr.io/nginx/image`. */
   namePattern?: string;
 }
-export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
+const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namePattern: S.optional(S.String),
   }),
@@ -378,7 +378,7 @@ export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdmissionWhitelistPattern>;
 
 export type AdmissionWhitelistPatternList = Array<AdmissionWhitelistPattern>;
-export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
+const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
   AdmissionWhitelistPattern,
 ) as any as S.Schema<AdmissionWhitelistPatternList>;
 
@@ -386,7 +386,7 @@ export type PolicyGlobalPolicyEvaluationModeEnum =
   | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
   | "ENABLE"
   | "DISABLE";
-export const PolicyGlobalPolicyEvaluationModeEnum = S.String;
+const PolicyGlobalPolicyEvaluationModeEnum = S.String;
 
 /** A policy for Binary Authorization. */
 export interface Policy {
@@ -413,7 +413,7 @@ export interface Policy {
   /** Optional. Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not covered by the global policy will be subject to the project admission policy. This setting has no effect when specified inside a global admission policy. */
   globalPolicyEvaluationMode?: PolicyGlobalPolicyEvaluationModeEnum | (string & {});
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubernetesServiceAccountAdmissionRules: S.optional(AdmissionRuleMap),
     defaultAdmissionRule: S.optional(AdmissionRule),
@@ -433,7 +433,7 @@ export interface GetPolicySystempolicyRequest {
   /** Required. The resource name, in the format `locations/*\/policy`. Note that the system policy is not associated with a project. */
   name: string;
 }
-export const GetPolicySystempolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicySystempolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -451,7 +451,7 @@ export interface GetProjectsAttestorsRequest {
   /** Required. The name of the attestor to retrieve, in the format `projects/*\/attestors/*`. */
   name: string;
 }
-export const GetProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -473,7 +473,7 @@ export interface ListProjectsAttestorsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -490,7 +490,7 @@ export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAttestorsRequest>;
 
 export type AttestorList = Array<Attestor>;
-export const AttestorList = /*@__PURE__*/ S.Array(Attestor) as any as S.Schema<AttestorList>;
+const AttestorList = /*@__PURE__*/ S.Array(Attestor) as any as S.Schema<AttestorList>;
 
 /** Response message for BinauthzManagementService.ListAttestors. */
 export interface ListAttestorsResponse {
@@ -499,7 +499,7 @@ export interface ListAttestorsResponse {
   /** The list of attestors. */
   attestors?: AttestorList;
 }
-export const ListAttestorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     attestors: S.optional(AttestorList),
@@ -511,7 +511,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: IamPolicy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(IamPolicy),
   }),
@@ -523,7 +523,7 @@ export interface SetIamPolicyProjectsAttestorsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -544,7 +544,7 @@ export interface SetIamPolicyProjectsPolicyRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -564,7 +564,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -578,7 +578,7 @@ export interface TestIamPermissionsProjectsAttestorsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -598,7 +598,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsPolicyRequest {
@@ -607,7 +607,7 @@ export interface TestIamPermissionsProjectsPolicyRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -628,7 +628,7 @@ export interface UpdatePolicyProjectsRequest {
   /** Request body */
   body?: Policy;
 }
-export const UpdatePolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Policy.pipe(T.HttpBody())),
@@ -649,7 +649,7 @@ export interface UpdateProjectsAttestorsRequest {
   /** Request body */
   body?: Attestor;
 }
-export const UpdateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Attestor.pipe(T.HttpBody())),
@@ -668,14 +668,14 @@ export interface Jwt {
   /** The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1 */
   compactJwt?: string;
 }
-export const Jwt = /*@__PURE__*/ S.suspend(() =>
+const Jwt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compactJwt: S.optional(S.String),
   }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
 export type JwtList = Array<Jwt>;
-export const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
+const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
 
 /** Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature). */
 export interface Signature {
@@ -684,7 +684,7 @@ export interface Signature {
   /** The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5" */
   publicKeyId?: string;
 }
-export const Signature = /*@__PURE__*/ S.suspend(() =>
+const Signature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signature: S.optional(S.String),
     publicKeyId: S.optional(S.String),
@@ -692,7 +692,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
 export type SignatureList = Array<Signature>;
-export const SignatureList = /*@__PURE__*/ S.Array(Signature) as any as S.Schema<SignatureList>;
+const SignatureList = /*@__PURE__*/ S.Array(Signature) as any as S.Schema<SignatureList>;
 
 /** Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign. */
 export interface AttestationOccurrence {
@@ -703,7 +703,7 @@ export interface AttestationOccurrence {
   /** One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification. */
   signatures?: SignatureList;
 }
-export const AttestationOccurrence = /*@__PURE__*/ S.suspend(() =>
+const AttestationOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serializedPayload: S.optional(S.String),
     jwts: S.optional(JwtList),
@@ -720,7 +720,7 @@ export interface ValidateAttestationOccurrenceRequest {
   /** Required. The resource name of the Note to which the containing Occurrence is associated. */
   occurrenceNote?: string;
 }
-export const ValidateAttestationOccurrenceRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateAttestationOccurrenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrenceResourceUri: S.optional(S.String),
     attestation: S.optional(AttestationOccurrence),
@@ -736,7 +736,7 @@ export interface ValidateAttestationOccurrenceProjectsAttestorsRequest {
   /** Request body */
   body?: ValidateAttestationOccurrenceRequest;
 }
-export const ValidateAttestationOccurrenceProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateAttestationOccurrenceProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestor: S.String.pipe(T.Label()),
     body: S.optional(ValidateAttestationOccurrenceRequest.pipe(T.HttpBody())),
@@ -755,7 +755,7 @@ export type ValidateAttestationOccurrenceResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "VERIFIED"
   | "ATTESTATION_NOT_VERIFIABLE";
-export const ValidateAttestationOccurrenceResponseResultEnum = S.String;
+const ValidateAttestationOccurrenceResponseResultEnum = S.String;
 
 /** Response message for ValidationHelperV1.ValidateAttestationOccurrence. */
 export interface ValidateAttestationOccurrenceResponse {
@@ -764,7 +764,7 @@ export interface ValidateAttestationOccurrenceResponse {
   /** The reason for denial if the Attestation couldn't be validated. */
   denialReason?: string;
 }
-export const ValidateAttestationOccurrenceResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateAttestationOccurrenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ValidateAttestationOccurrenceResponseResultEnum),
     denialReason: S.optional(S.String),

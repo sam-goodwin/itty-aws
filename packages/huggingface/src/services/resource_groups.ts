@@ -17,34 +17,23 @@ export type AddUsersRequestUsersItemCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const AddUsersRequestUsersItemCase0Role = S.String;
-
 export interface AddUsersRequestUsersItemCase0 {
   name: string;
   role: AddUsersRequestUsersItemCase0Role | (string & {});
 }
-export const AddUsersRequestUsersItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    role: AddUsersRequestUsersItemCase0Role,
-  }),
-).annotate({
-  identifier: "AddUsersRequestUsersItemCase0",
-}) as any as S.Schema<AddUsersRequestUsersItemCase0>;
-
 export type AddUsersRequestUsersItemCase1Role =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const AddUsersRequestUsersItemCase1Role = S.String;
+const AddUsersRequestUsersItemCase1Role = S.String;
 
 export interface AddUsersRequestUsersItemCase1 {
   user: string;
   role: AddUsersRequestUsersItemCase1Role | (string & {});
 }
-export const AddUsersRequestUsersItemCase1 = /*@__PURE__*/ S.suspend(() =>
+const AddUsersRequestUsersItemCase1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String,
     role: AddUsersRequestUsersItemCase1Role,
@@ -56,10 +45,10 @@ export const AddUsersRequestUsersItemCase1 = /*@__PURE__*/ S.suspend(() =>
 export type AddUsersRequestUsersItem =
   | AddUsersRequestUsersItemCase0
   | AddUsersRequestUsersItemCase1;
-export const AddUsersRequestUsersItem = S.Unknown as any as S.Schema<AddUsersRequestUsersItem>;
+const AddUsersRequestUsersItem = S.Unknown as any as S.Schema<AddUsersRequestUsersItem>;
 
 export type AddUsersRequestUsersList = Array<AddUsersRequestUsersItem>;
-export const AddUsersRequestUsersList = /*@__PURE__*/ S.Array(
+const AddUsersRequestUsersList = /*@__PURE__*/ S.Array(
   AddUsersRequestUsersItem,
 ) as any as S.Schema<AddUsersRequestUsersList>;
 
@@ -68,7 +57,7 @@ export interface AddUsersRequest {
   resourceGroupId: string;
   users: AddUsersRequestUsersList;
 }
-export const AddUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const AddUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -88,41 +77,19 @@ export type AddUsersResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const AddUsersResponseAutoJoinCase0Role = S.String;
-
 export type AddUsersResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const AddUsersResponseAutoJoinCase0Scope = S.String;
-
 export interface AddUsersResponseAutoJoinCase0 {
   enabled: boolean;
   role: AddUsersResponseAutoJoinCase0Role;
   scope?: AddUsersResponseAutoJoinCase0Scope;
 }
-export const AddUsersResponseAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    role: AddUsersResponseAutoJoinCase0Role,
-    scope: S.optional(AddUsersResponseAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "AddUsersResponseAutoJoinCase0",
-}) as any as S.Schema<AddUsersResponseAutoJoinCase0>;
-
 export interface AddUsersResponseAutoJoinCase1 {
   enabled: boolean;
 }
-export const AddUsersResponseAutoJoinCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "AddUsersResponseAutoJoinCase1",
-}) as any as S.Schema<AddUsersResponseAutoJoinCase1>;
-
 export type AddUsersResponseAutoJoin =
   | AddUsersResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const AddUsersResponseAutoJoin = S.Unknown as any as S.Schema<AddUsersResponseAutoJoin>;
+const AddUsersResponseAutoJoin = S.Unknown as any as S.Schema<AddUsersResponseAutoJoin>;
 
 export interface AddUsersResponseSpendLimits {
   total?: number;
@@ -131,7 +98,7 @@ export interface AddUsersResponseSpendLimits {
   jobs?: number;
   endpoints?: number;
 }
-export const AddUsersResponseSpendLimits = /*@__PURE__*/ S.suspend(() =>
+const AddUsersResponseSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.Number),
     inferenceProviders: S.optional(S.Number),
@@ -149,7 +116,7 @@ export type AddUsersResponseUsersItemRole =
   | "contributor"
   | "read"
   | "no_access";
-export const AddUsersResponseUsersItemRole = S.String;
+const AddUsersResponseUsersItemRole = S.String;
 
 export type AddUsersResponseUsersItemOrgRole =
   | "admin"
@@ -157,7 +124,7 @@ export type AddUsersResponseUsersItemOrgRole =
   | "contributor"
   | "read"
   | "no_access";
-export const AddUsersResponseUsersItemOrgRole = S.String;
+const AddUsersResponseUsersItemOrgRole = S.String;
 
 export interface AddUsersResponseUsersItem {
   type: string;
@@ -170,7 +137,7 @@ export interface AddUsersResponseUsersItem {
   orgRole: AddUsersResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const AddUsersResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
+const AddUsersResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     _id: S.String,
@@ -186,7 +153,7 @@ export const AddUsersResponseUsersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddUsersResponseUsersItem>;
 
 export type AddUsersResponseUsersList = Array<AddUsersResponseUsersItem>;
-export const AddUsersResponseUsersList = /*@__PURE__*/ S.Array(
+const AddUsersResponseUsersList = /*@__PURE__*/ S.Array(
   AddUsersResponseUsersItem,
 ) as any as S.Schema<AddUsersResponseUsersList>;
 
@@ -197,25 +164,12 @@ export type AddUsersResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const AddUsersResponseResourcesItemCase0Type = S.String;
-
 export interface AddUsersResponseResourcesItemCase0 {
   type: AddUsersResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const AddUsersResponseResourcesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AddUsersResponseResourcesItemCase0Type,
-    name: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "AddUsersResponseResourcesItemCase0",
-}) as any as S.Schema<AddUsersResponseResourcesItemCase0>;
-
 export interface AddUsersResponseResourcesItemCase1 {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -225,53 +179,24 @@ export interface AddUsersResponseResourcesItemCase1 {
   addedBy?: string;
   private: boolean;
 }
-export const AddUsersResponseResourcesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-    slug: S.String,
-    title: S.String,
-    addedBy: S.optional(S.String),
-    private: S.Boolean,
-  }),
-).annotate({
-  identifier: "AddUsersResponseResourcesItemCase1",
-}) as any as S.Schema<AddUsersResponseResourcesItemCase1>;
-
 export type AddUsersResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const AddUsersResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export interface AddUsersResponseResourcesItemCase3 {
   type: string;
   id: string;
   name?: string;
   addedBy?: string;
 }
-export const AddUsersResponseResourcesItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-    name: S.optional(S.String),
-    addedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddUsersResponseResourcesItemCase3",
-}) as any as S.Schema<AddUsersResponseResourcesItemCase3>;
-
 export type AddUsersResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const AddUsersResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type AddUsersResponseResourcesItem =
   | AddUsersResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const AddUsersResponseResourcesItem =
-  S.Unknown as any as S.Schema<AddUsersResponseResourcesItem>;
+const AddUsersResponseResourcesItem = S.Unknown as any as S.Schema<AddUsersResponseResourcesItem>;
 
 export type AddUsersResponseResourcesList = Array<AddUsersResponseResourcesItem>;
-export const AddUsersResponseResourcesList = /*@__PURE__*/ S.Array(
+const AddUsersResponseResourcesList = /*@__PURE__*/ S.Array(
   AddUsersResponseResourcesItem,
 ) as any as S.Schema<AddUsersResponseResourcesList>;
 
@@ -285,7 +210,7 @@ export interface AddUsersResponse {
   users: AddUsersResponseUsersList;
   resources: AddUsersResponseResourcesList;
 }
-export const AddUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const AddUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -298,7 +223,7 @@ export const AddUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddUsersResponse" }) as any as S.Schema<AddUsersResponse>;
 
 export type ChangeUserRoleRequestRole = "admin" | "write" | "contributor" | "read" | "no_access";
-export const ChangeUserRoleRequestRole = S.String;
+const ChangeUserRoleRequestRole = S.String;
 
 export interface ChangeUserRoleRequest {
   name: string;
@@ -306,7 +231,7 @@ export interface ChangeUserRoleRequest {
   username: string;
   role: ChangeUserRoleRequestRole | (string & {});
 }
-export const ChangeUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -327,47 +252,31 @@ export type ChangeUserRoleResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const ChangeUserRoleResponseAutoJoinCase0Role = S.String;
-
 export type ChangeUserRoleResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const ChangeUserRoleResponseAutoJoinCase0Scope = S.String;
-
 export interface ChangeUserRoleResponseAutoJoinCase0 {
   enabled: boolean;
   role: ChangeUserRoleResponseAutoJoinCase0Role;
   scope?: ChangeUserRoleResponseAutoJoinCase0Scope;
 }
-export const ChangeUserRoleResponseAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<ChangeUserRoleResponseAutoJoinCase0>;
-
 export type ChangeUserRoleResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const ChangeUserRoleResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type ChangeUserRoleResponseAutoJoin =
   | ChangeUserRoleResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const ChangeUserRoleResponseAutoJoin =
-  S.Unknown as any as S.Schema<ChangeUserRoleResponseAutoJoin>;
+const ChangeUserRoleResponseAutoJoin = S.Unknown as any as S.Schema<ChangeUserRoleResponseAutoJoin>;
 
 export type ChangeUserRoleResponseSpendLimits = AddUsersResponseSpendLimits;
-export const ChangeUserRoleResponseSpendLimits = AddUsersResponseSpendLimits;
-
 export type ChangeUserRoleResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ChangeUserRoleResponseUsersItemRole = S.String;
-
 export type ChangeUserRoleResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ChangeUserRoleResponseUsersItemOrgRole = S.String;
-
 export interface ChangeUserRoleResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -379,11 +288,8 @@ export interface ChangeUserRoleResponseUsersItem {
   orgRole: ChangeUserRoleResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const ChangeUserRoleResponseUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<ChangeUserRoleResponseUsersItem>;
-
 export type ChangeUserRoleResponseUsersList = Array<ChangeUserRoleResponseUsersItem>;
-export const ChangeUserRoleResponseUsersList =
+const ChangeUserRoleResponseUsersList =
   AddUsersResponseUsersList as any as S.Schema<ChangeUserRoleResponseUsersList>;
 
 export type ChangeUserRoleResponseResourcesItemCase0Type =
@@ -393,40 +299,27 @@ export type ChangeUserRoleResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const ChangeUserRoleResponseResourcesItemCase0Type = S.String;
-
 export interface ChangeUserRoleResponseResourcesItemCase0 {
   type: ChangeUserRoleResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const ChangeUserRoleResponseResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<ChangeUserRoleResponseResourcesItemCase0>;
-
 export type ChangeUserRoleResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-export const ChangeUserRoleResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-
 export type ChangeUserRoleResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const ChangeUserRoleResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export type ChangeUserRoleResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-export const ChangeUserRoleResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-
 export type ChangeUserRoleResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const ChangeUserRoleResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type ChangeUserRoleResponseResourcesItem =
   | ChangeUserRoleResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const ChangeUserRoleResponseResourcesItem =
+const ChangeUserRoleResponseResourcesItem =
   S.Unknown as any as S.Schema<ChangeUserRoleResponseResourcesItem>;
 
 export type ChangeUserRoleResponseResourcesList = Array<ChangeUserRoleResponseResourcesItem>;
-export const ChangeUserRoleResponseResourcesList = /*@__PURE__*/ S.Array(
+const ChangeUserRoleResponseResourcesList = /*@__PURE__*/ S.Array(
   ChangeUserRoleResponseResourcesItem,
 ) as any as S.Schema<ChangeUserRoleResponseResourcesList>;
 
@@ -440,7 +333,7 @@ export interface ChangeUserRoleResponse {
   users: ChangeUserRoleResponseUsersList;
   resources: ChangeUserRoleResponseResourcesList;
 }
-export const ChangeUserRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeUserRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -458,28 +351,26 @@ export type CreateResourceGroupRequestUsersItemRole =
   | "contributor"
   | "read"
   | "no_access";
-export const CreateResourceGroupRequestUsersItemRole = S.String;
-
 export interface CreateResourceGroupRequestUsersItem {
   user: string;
   role: CreateResourceGroupRequestUsersItemRole | (string & {});
 }
-export const CreateResourceGroupRequestUsersItem =
+const CreateResourceGroupRequestUsersItem =
   AddUsersRequestUsersItemCase1 as any as S.Schema<CreateResourceGroupRequestUsersItem>;
 
 export type CreateResourceGroupRequestUsersList = Array<CreateResourceGroupRequestUsersItem>;
-export const CreateResourceGroupRequestUsersList = /*@__PURE__*/ S.Array(
+const CreateResourceGroupRequestUsersList = /*@__PURE__*/ S.Array(
   CreateResourceGroupRequestUsersItem,
 ) as any as S.Schema<CreateResourceGroupRequestUsersList>;
 
 export type RepoIdType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
-export const RepoIdType = S.String;
+const RepoIdType = S.String;
 
 export interface RepoId {
   name: string;
   type: RepoIdType | (string & {});
 }
-export const RepoId = /*@__PURE__*/ S.suspend(() =>
+const RepoId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: RepoIdType,
@@ -487,7 +378,7 @@ export const RepoId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoId" }) as any as S.Schema<RepoId>;
 
 export type CreateResourceGroupRequestReposList = Array<RepoId>;
-export const CreateResourceGroupRequestReposList = /*@__PURE__*/ S.Array(
+const CreateResourceGroupRequestReposList = /*@__PURE__*/ S.Array(
   RepoId,
 ) as any as S.Schema<CreateResourceGroupRequestReposList>;
 
@@ -497,26 +388,17 @@ export type CreateResourceGroupRequestAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const CreateResourceGroupRequestAutoJoinCase0Role = S.String;
-
 export type CreateResourceGroupRequestAutoJoinCase0Scope = "all" | "read_plus";
-export const CreateResourceGroupRequestAutoJoinCase0Scope = S.String;
-
 export interface CreateResourceGroupRequestAutoJoinCase0 {
   enabled: boolean;
   role: CreateResourceGroupRequestAutoJoinCase0Role | (string & {});
   scope?: CreateResourceGroupRequestAutoJoinCase0Scope | (string & {});
 }
-export const CreateResourceGroupRequestAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<CreateResourceGroupRequestAutoJoinCase0>;
-
 export type CreateResourceGroupRequestAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const CreateResourceGroupRequestAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type CreateResourceGroupRequestAutoJoin =
   | CreateResourceGroupRequestAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const CreateResourceGroupRequestAutoJoin =
+const CreateResourceGroupRequestAutoJoin =
   S.Unknown as any as S.Schema<CreateResourceGroupRequestAutoJoin>;
 
 export interface CreateResourceGroupRequest {
@@ -526,7 +408,7 @@ export interface CreateResourceGroupRequest {
   repos?: CreateResourceGroupRequestReposList;
   autoJoin?: CreateResourceGroupRequestAutoJoin;
 }
-export const CreateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -544,47 +426,32 @@ export type CreateResourceGroupResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const CreateResourceGroupResponseAutoJoinCase0Role = S.String;
-
 export type CreateResourceGroupResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const CreateResourceGroupResponseAutoJoinCase0Scope = S.String;
-
 export interface CreateResourceGroupResponseAutoJoinCase0 {
   enabled: boolean;
   role: CreateResourceGroupResponseAutoJoinCase0Role;
   scope?: CreateResourceGroupResponseAutoJoinCase0Scope;
 }
-export const CreateResourceGroupResponseAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<CreateResourceGroupResponseAutoJoinCase0>;
-
 export type CreateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const CreateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type CreateResourceGroupResponseAutoJoin =
   | CreateResourceGroupResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const CreateResourceGroupResponseAutoJoin =
+const CreateResourceGroupResponseAutoJoin =
   S.Unknown as any as S.Schema<CreateResourceGroupResponseAutoJoin>;
 
 export type CreateResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
-export const CreateResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
-
 export type CreateResourceGroupResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateResourceGroupResponseUsersItemRole = S.String;
-
 export type CreateResourceGroupResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateResourceGroupResponseUsersItemOrgRole = S.String;
-
 export interface CreateResourceGroupResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -596,11 +463,8 @@ export interface CreateResourceGroupResponseUsersItem {
   orgRole: CreateResourceGroupResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const CreateResourceGroupResponseUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<CreateResourceGroupResponseUsersItem>;
-
 export type CreateResourceGroupResponseUsersList = Array<CreateResourceGroupResponseUsersItem>;
-export const CreateResourceGroupResponseUsersList =
+const CreateResourceGroupResponseUsersList =
   AddUsersResponseUsersList as any as S.Schema<CreateResourceGroupResponseUsersList>;
 
 export type CreateResourceGroupResponseResourcesItemCase0Type =
@@ -610,41 +474,28 @@ export type CreateResourceGroupResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const CreateResourceGroupResponseResourcesItemCase0Type = S.String;
-
 export interface CreateResourceGroupResponseResourcesItemCase0 {
   type: CreateResourceGroupResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const CreateResourceGroupResponseResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<CreateResourceGroupResponseResourcesItemCase0>;
-
 export type CreateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-export const CreateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-
 export type CreateResourceGroupResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const CreateResourceGroupResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export type CreateResourceGroupResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-export const CreateResourceGroupResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-
 export type CreateResourceGroupResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const CreateResourceGroupResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type CreateResourceGroupResponseResourcesItem =
   | CreateResourceGroupResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const CreateResourceGroupResponseResourcesItem =
+const CreateResourceGroupResponseResourcesItem =
   S.Unknown as any as S.Schema<CreateResourceGroupResponseResourcesItem>;
 
 export type CreateResourceGroupResponseResourcesList =
   Array<CreateResourceGroupResponseResourcesItem>;
-export const CreateResourceGroupResponseResourcesList = /*@__PURE__*/ S.Array(
+const CreateResourceGroupResponseResourcesList = /*@__PURE__*/ S.Array(
   CreateResourceGroupResponseResourcesItem,
 ) as any as S.Schema<CreateResourceGroupResponseResourcesList>;
 
@@ -658,7 +509,7 @@ export interface CreateResourceGroupResponse {
   users: CreateResourceGroupResponseUsersList;
   resources: CreateResourceGroupResponseResourcesList;
 }
-export const CreateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -676,7 +527,7 @@ export interface DeleteResourceGroupRequest {
   name: string;
   resourceGroupId: string;
 }
-export const DeleteResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -694,7 +545,7 @@ export const DeleteResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResourceGroupResponse {
   success: boolean;
 }
-export const DeleteResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -706,7 +557,7 @@ export interface GetResourceGroupRequest {
   name: string;
   resourceGroupId: string;
 }
-export const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -725,47 +576,32 @@ export type GetResourceGroupResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const GetResourceGroupResponseAutoJoinCase0Role = S.String;
-
 export type GetResourceGroupResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const GetResourceGroupResponseAutoJoinCase0Scope = S.String;
-
 export interface GetResourceGroupResponseAutoJoinCase0 {
   enabled: boolean;
   role: GetResourceGroupResponseAutoJoinCase0Role;
   scope?: GetResourceGroupResponseAutoJoinCase0Scope;
 }
-export const GetResourceGroupResponseAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<GetResourceGroupResponseAutoJoinCase0>;
-
 export type GetResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const GetResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type GetResourceGroupResponseAutoJoin =
   | GetResourceGroupResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const GetResourceGroupResponseAutoJoin =
+const GetResourceGroupResponseAutoJoin =
   S.Unknown as any as S.Schema<GetResourceGroupResponseAutoJoin>;
 
 export type GetResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
-export const GetResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
-
 export type GetResourceGroupResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetResourceGroupResponseUsersItemRole = S.String;
-
 export type GetResourceGroupResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetResourceGroupResponseUsersItemOrgRole = S.String;
-
 export interface GetResourceGroupResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -777,11 +613,8 @@ export interface GetResourceGroupResponseUsersItem {
   orgRole: GetResourceGroupResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const GetResourceGroupResponseUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<GetResourceGroupResponseUsersItem>;
-
 export type GetResourceGroupResponseUsersList = Array<GetResourceGroupResponseUsersItem>;
-export const GetResourceGroupResponseUsersList =
+const GetResourceGroupResponseUsersList =
   AddUsersResponseUsersList as any as S.Schema<GetResourceGroupResponseUsersList>;
 
 export type GetResourceGroupResponseResourcesItemCase0Type =
@@ -791,40 +624,27 @@ export type GetResourceGroupResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const GetResourceGroupResponseResourcesItemCase0Type = S.String;
-
 export interface GetResourceGroupResponseResourcesItemCase0 {
   type: GetResourceGroupResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const GetResourceGroupResponseResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<GetResourceGroupResponseResourcesItemCase0>;
-
 export type GetResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-export const GetResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-
 export type GetResourceGroupResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const GetResourceGroupResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export type GetResourceGroupResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-export const GetResourceGroupResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-
 export type GetResourceGroupResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const GetResourceGroupResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type GetResourceGroupResponseResourcesItem =
   | GetResourceGroupResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const GetResourceGroupResponseResourcesItem =
+const GetResourceGroupResponseResourcesItem =
   S.Unknown as any as S.Schema<GetResourceGroupResponseResourcesItem>;
 
 export type GetResourceGroupResponseResourcesList = Array<GetResourceGroupResponseResourcesItem>;
-export const GetResourceGroupResponseResourcesList = /*@__PURE__*/ S.Array(
+const GetResourceGroupResponseResourcesList = /*@__PURE__*/ S.Array(
   GetResourceGroupResponseResourcesItem,
 ) as any as S.Schema<GetResourceGroupResponseResourcesList>;
 
@@ -838,7 +658,7 @@ export interface GetResourceGroupResponse {
   users: GetResourceGroupResponseUsersList;
   resources: GetResourceGroupResponseResourcesList;
 }
-export const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -853,7 +673,7 @@ export const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourceGroupsRequest {
   name: string;
 }
-export const GetResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/resource-groups", code: 200 })),
@@ -865,47 +685,32 @@ export type GetResourceGroupsResponseBodyItemAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const GetResourceGroupsResponseBodyItemAutoJoinCase0Role = S.String;
-
 export type GetResourceGroupsResponseBodyItemAutoJoinCase0Scope = "all" | "read_plus";
-export const GetResourceGroupsResponseBodyItemAutoJoinCase0Scope = S.String;
-
 export interface GetResourceGroupsResponseBodyItemAutoJoinCase0 {
   enabled: boolean;
   role: GetResourceGroupsResponseBodyItemAutoJoinCase0Role;
   scope?: GetResourceGroupsResponseBodyItemAutoJoinCase0Scope;
 }
-export const GetResourceGroupsResponseBodyItemAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<GetResourceGroupsResponseBodyItemAutoJoinCase0>;
-
 export type GetResourceGroupsResponseBodyItemAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const GetResourceGroupsResponseBodyItemAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type GetResourceGroupsResponseBodyItemAutoJoin =
   | GetResourceGroupsResponseBodyItemAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const GetResourceGroupsResponseBodyItemAutoJoin =
+const GetResourceGroupsResponseBodyItemAutoJoin =
   S.Unknown as any as S.Schema<GetResourceGroupsResponseBodyItemAutoJoin>;
 
 export type GetResourceGroupsResponseBodyItemSpendLimits = AddUsersResponseSpendLimits;
-export const GetResourceGroupsResponseBodyItemSpendLimits = AddUsersResponseSpendLimits;
-
 export type GetResourceGroupsResponseBodyItemUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetResourceGroupsResponseBodyItemUsersItemRole = S.String;
-
 export type GetResourceGroupsResponseBodyItemUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetResourceGroupsResponseBodyItemUsersItemOrgRole = S.String;
-
 export interface GetResourceGroupsResponseBodyItemUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -917,12 +722,9 @@ export interface GetResourceGroupsResponseBodyItemUsersItem {
   orgRole: GetResourceGroupsResponseBodyItemUsersItemOrgRole;
   addedBy?: string;
 }
-export const GetResourceGroupsResponseBodyItemUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<GetResourceGroupsResponseBodyItemUsersItem>;
-
 export type GetResourceGroupsResponseBodyItemUsersList =
   Array<GetResourceGroupsResponseBodyItemUsersItem>;
-export const GetResourceGroupsResponseBodyItemUsersList =
+const GetResourceGroupsResponseBodyItemUsersList =
   AddUsersResponseUsersList as any as S.Schema<GetResourceGroupsResponseBodyItemUsersList>;
 
 export type GetResourceGroupsResponseBodyItemResourcesItemCase0Type =
@@ -932,49 +734,32 @@ export type GetResourceGroupsResponseBodyItemResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const GetResourceGroupsResponseBodyItemResourcesItemCase0Type = S.String;
-
 export interface GetResourceGroupsResponseBodyItemResourcesItemCase0 {
   type: GetResourceGroupsResponseBodyItemResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const GetResourceGroupsResponseBodyItemResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesItemCase0>;
-
 export type GetResourceGroupsResponseBodyItemResourcesItemCase1 =
   AddUsersResponseResourcesItemCase1;
-export const GetResourceGroupsResponseBodyItemResourcesItemCase1 =
-  AddUsersResponseResourcesItemCase1;
-
 export type GetResourceGroupsResponseBodyItemResourcesItemCase2 =
   AddUsersResponseResourcesItemCase1;
-export const GetResourceGroupsResponseBodyItemResourcesItemCase2 =
-  AddUsersResponseResourcesItemCase1;
-
 export type GetResourceGroupsResponseBodyItemResourcesItemCase3 =
   AddUsersResponseResourcesItemCase3;
-export const GetResourceGroupsResponseBodyItemResourcesItemCase3 =
-  AddUsersResponseResourcesItemCase3;
-
 export type GetResourceGroupsResponseBodyItemResourcesItemCase4 =
   AddUsersResponseResourcesItemCase3;
-export const GetResourceGroupsResponseBodyItemResourcesItemCase4 =
-  AddUsersResponseResourcesItemCase3;
-
 export type GetResourceGroupsResponseBodyItemResourcesItem =
   | GetResourceGroupsResponseBodyItemResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const GetResourceGroupsResponseBodyItemResourcesItem =
+const GetResourceGroupsResponseBodyItemResourcesItem =
   S.Unknown as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesItem>;
 
 export type GetResourceGroupsResponseBodyItemResourcesList =
   Array<GetResourceGroupsResponseBodyItemResourcesItem>;
-export const GetResourceGroupsResponseBodyItemResourcesList = /*@__PURE__*/ S.Array(
+const GetResourceGroupsResponseBodyItemResourcesList = /*@__PURE__*/ S.Array(
   GetResourceGroupsResponseBodyItemResourcesItem,
 ) as any as S.Schema<GetResourceGroupsResponseBodyItemResourcesList>;
 
@@ -988,7 +773,7 @@ export interface GetResourceGroupsResponseBodyItem {
   users: GetResourceGroupsResponseBodyItemUsersList;
   resources: GetResourceGroupsResponseBodyItemResourcesList;
 }
-export const GetResourceGroupsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1003,66 +788,38 @@ export const GetResourceGroupsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourceGroupsResponseBodyItem>;
 
 export type GetResourceGroupsResponseBodyList = Array<GetResourceGroupsResponseBodyItem>;
-export const GetResourceGroupsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetResourceGroupsResponseBodyList = /*@__PURE__*/ S.Array(
   GetResourceGroupsResponseBodyItem,
 ) as any as S.Schema<GetResourceGroupsResponseBodyList>;
 
 export type GetResourceGroupsResponse = GetResourceGroupsResponseBodyList;
-export const GetResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   GetResourceGroupsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetResourceGroupsResponse",
 }) as any as S.Schema<GetResourceGroupsResponse>;
 
 export type JoinConfigureAutoRequestAutoJoinCase0Enabled = boolean | string;
-export const JoinConfigureAutoRequestAutoJoinCase0Enabled =
-  S.Unknown as any as S.Schema<JoinConfigureAutoRequestAutoJoinCase0Enabled>;
-
 export type JoinConfigureAutoRequestAutoJoinCase0Role =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const JoinConfigureAutoRequestAutoJoinCase0Role = S.String;
-
 export type JoinConfigureAutoRequestAutoJoinCase0Scope = "all" | "read_plus";
-export const JoinConfigureAutoRequestAutoJoinCase0Scope = S.String;
-
 export interface JoinConfigureAutoRequestAutoJoinCase0 {
   enabled: JoinConfigureAutoRequestAutoJoinCase0Enabled;
   role: JoinConfigureAutoRequestAutoJoinCase0Role | (string & {});
   scope?: JoinConfigureAutoRequestAutoJoinCase0Scope | (string & {});
 }
-export const JoinConfigureAutoRequestAutoJoinCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: JoinConfigureAutoRequestAutoJoinCase0Enabled,
-    role: JoinConfigureAutoRequestAutoJoinCase0Role,
-    scope: S.optional(JoinConfigureAutoRequestAutoJoinCase0Scope),
-  }),
-).annotate({
-  identifier: "JoinConfigureAutoRequestAutoJoinCase0",
-}) as any as S.Schema<JoinConfigureAutoRequestAutoJoinCase0>;
-
 export type JoinConfigureAutoRequestAutoJoinCase1Enabled = boolean | string;
-export const JoinConfigureAutoRequestAutoJoinCase1Enabled =
-  S.Unknown as any as S.Schema<JoinConfigureAutoRequestAutoJoinCase1Enabled>;
-
 export interface JoinConfigureAutoRequestAutoJoinCase1 {
   enabled: JoinConfigureAutoRequestAutoJoinCase1Enabled;
 }
-export const JoinConfigureAutoRequestAutoJoinCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: JoinConfigureAutoRequestAutoJoinCase1Enabled,
-  }),
-).annotate({
-  identifier: "JoinConfigureAutoRequestAutoJoinCase1",
-}) as any as S.Schema<JoinConfigureAutoRequestAutoJoinCase1>;
-
 export type JoinConfigureAutoRequestAutoJoin =
   | JoinConfigureAutoRequestAutoJoinCase0
   | JoinConfigureAutoRequestAutoJoinCase1;
-export const JoinConfigureAutoRequestAutoJoin =
+const JoinConfigureAutoRequestAutoJoin =
   S.Unknown as any as S.Schema<JoinConfigureAutoRequestAutoJoin>;
 
 export interface JoinConfigureAutoRequest {
@@ -1070,7 +827,7 @@ export interface JoinConfigureAutoRequest {
   resourceGroupId: string;
   autoJoin?: JoinConfigureAutoRequestAutoJoin;
 }
-export const JoinConfigureAutoRequest = /*@__PURE__*/ S.suspend(() =>
+const JoinConfigureAutoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -1090,47 +847,32 @@ export type JoinConfigureAutoResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const JoinConfigureAutoResponseAutoJoinCase0Role = S.String;
-
 export type JoinConfigureAutoResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const JoinConfigureAutoResponseAutoJoinCase0Scope = S.String;
-
 export interface JoinConfigureAutoResponseAutoJoinCase0 {
   enabled: boolean;
   role: JoinConfigureAutoResponseAutoJoinCase0Role;
   scope?: JoinConfigureAutoResponseAutoJoinCase0Scope;
 }
-export const JoinConfigureAutoResponseAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<JoinConfigureAutoResponseAutoJoinCase0>;
-
 export type JoinConfigureAutoResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const JoinConfigureAutoResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type JoinConfigureAutoResponseAutoJoin =
   | JoinConfigureAutoResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const JoinConfigureAutoResponseAutoJoin =
+const JoinConfigureAutoResponseAutoJoin =
   S.Unknown as any as S.Schema<JoinConfigureAutoResponseAutoJoin>;
 
 export type JoinConfigureAutoResponseSpendLimits = AddUsersResponseSpendLimits;
-export const JoinConfigureAutoResponseSpendLimits = AddUsersResponseSpendLimits;
-
 export type JoinConfigureAutoResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const JoinConfigureAutoResponseUsersItemRole = S.String;
-
 export type JoinConfigureAutoResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const JoinConfigureAutoResponseUsersItemOrgRole = S.String;
-
 export interface JoinConfigureAutoResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1142,11 +884,8 @@ export interface JoinConfigureAutoResponseUsersItem {
   orgRole: JoinConfigureAutoResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const JoinConfigureAutoResponseUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<JoinConfigureAutoResponseUsersItem>;
-
 export type JoinConfigureAutoResponseUsersList = Array<JoinConfigureAutoResponseUsersItem>;
-export const JoinConfigureAutoResponseUsersList =
+const JoinConfigureAutoResponseUsersList =
   AddUsersResponseUsersList as any as S.Schema<JoinConfigureAutoResponseUsersList>;
 
 export type JoinConfigureAutoResponseResourcesItemCase0Type =
@@ -1156,40 +895,27 @@ export type JoinConfigureAutoResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const JoinConfigureAutoResponseResourcesItemCase0Type = S.String;
-
 export interface JoinConfigureAutoResponseResourcesItemCase0 {
   type: JoinConfigureAutoResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const JoinConfigureAutoResponseResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<JoinConfigureAutoResponseResourcesItemCase0>;
-
 export type JoinConfigureAutoResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-export const JoinConfigureAutoResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-
 export type JoinConfigureAutoResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const JoinConfigureAutoResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export type JoinConfigureAutoResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-export const JoinConfigureAutoResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-
 export type JoinConfigureAutoResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const JoinConfigureAutoResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type JoinConfigureAutoResponseResourcesItem =
   | JoinConfigureAutoResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const JoinConfigureAutoResponseResourcesItem =
+const JoinConfigureAutoResponseResourcesItem =
   S.Unknown as any as S.Schema<JoinConfigureAutoResponseResourcesItem>;
 
 export type JoinConfigureAutoResponseResourcesList = Array<JoinConfigureAutoResponseResourcesItem>;
-export const JoinConfigureAutoResponseResourcesList = /*@__PURE__*/ S.Array(
+const JoinConfigureAutoResponseResourcesList = /*@__PURE__*/ S.Array(
   JoinConfigureAutoResponseResourcesItem,
 ) as any as S.Schema<JoinConfigureAutoResponseResourcesList>;
 
@@ -1203,7 +929,7 @@ export interface JoinConfigureAutoResponse {
   users: JoinConfigureAutoResponseUsersList;
   resources: JoinConfigureAutoResponseResourcesList;
 }
-export const JoinConfigureAutoResponse = /*@__PURE__*/ S.suspend(() =>
+const JoinConfigureAutoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1222,7 +948,7 @@ export interface RemoveUserRequest {
   resourceGroupId: string;
   username: string;
 }
-export const RemoveUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -1242,46 +968,31 @@ export type RemoveUserResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const RemoveUserResponseAutoJoinCase0Role = S.String;
-
 export type RemoveUserResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const RemoveUserResponseAutoJoinCase0Scope = S.String;
-
 export interface RemoveUserResponseAutoJoinCase0 {
   enabled: boolean;
   role: RemoveUserResponseAutoJoinCase0Role;
   scope?: RemoveUserResponseAutoJoinCase0Scope;
 }
-export const RemoveUserResponseAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<RemoveUserResponseAutoJoinCase0>;
-
 export type RemoveUserResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const RemoveUserResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type RemoveUserResponseAutoJoin =
   | RemoveUserResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const RemoveUserResponseAutoJoin = S.Unknown as any as S.Schema<RemoveUserResponseAutoJoin>;
+const RemoveUserResponseAutoJoin = S.Unknown as any as S.Schema<RemoveUserResponseAutoJoin>;
 
 export type RemoveUserResponseSpendLimits = AddUsersResponseSpendLimits;
-export const RemoveUserResponseSpendLimits = AddUsersResponseSpendLimits;
-
 export type RemoveUserResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const RemoveUserResponseUsersItemRole = S.String;
-
 export type RemoveUserResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const RemoveUserResponseUsersItemOrgRole = S.String;
-
 export interface RemoveUserResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1293,11 +1004,8 @@ export interface RemoveUserResponseUsersItem {
   orgRole: RemoveUserResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const RemoveUserResponseUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<RemoveUserResponseUsersItem>;
-
 export type RemoveUserResponseUsersList = Array<RemoveUserResponseUsersItem>;
-export const RemoveUserResponseUsersList =
+const RemoveUserResponseUsersList =
   AddUsersResponseUsersList as any as S.Schema<RemoveUserResponseUsersList>;
 
 export type RemoveUserResponseResourcesItemCase0Type =
@@ -1307,40 +1015,27 @@ export type RemoveUserResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const RemoveUserResponseResourcesItemCase0Type = S.String;
-
 export interface RemoveUserResponseResourcesItemCase0 {
   type: RemoveUserResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const RemoveUserResponseResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<RemoveUserResponseResourcesItemCase0>;
-
 export type RemoveUserResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-export const RemoveUserResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-
 export type RemoveUserResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const RemoveUserResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export type RemoveUserResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-export const RemoveUserResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-
 export type RemoveUserResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const RemoveUserResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type RemoveUserResponseResourcesItem =
   | RemoveUserResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const RemoveUserResponseResourcesItem =
+const RemoveUserResponseResourcesItem =
   S.Unknown as any as S.Schema<RemoveUserResponseResourcesItem>;
 
 export type RemoveUserResponseResourcesList = Array<RemoveUserResponseResourcesItem>;
-export const RemoveUserResponseResourcesList = /*@__PURE__*/ S.Array(
+const RemoveUserResponseResourcesList = /*@__PURE__*/ S.Array(
   RemoveUserResponseResourcesItem,
 ) as any as S.Schema<RemoveUserResponseResourcesList>;
 
@@ -1354,7 +1049,7 @@ export interface RemoveUserResponse {
   users: RemoveUserResponseUsersList;
   resources: RemoveUserResponseResourcesList;
 }
-export const RemoveUserResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1373,7 +1068,7 @@ export interface UpdateResourceGroupRequestSpendLimits {
   jobs?: number | null;
   endpoints?: number | null;
 }
-export const UpdateResourceGroupRequestSpendLimits = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceGroupRequestSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.NullOr(S.Number)),
     inferenceProviders: S.optional(S.NullOr(S.Number)),
@@ -1391,7 +1086,7 @@ export interface UpdateResourceGroupRequest {
   description?: string;
   spendLimits?: UpdateResourceGroupRequestSpendLimits;
 }
-export const UpdateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     resourceGroupId: S.String.pipe(T.Label()),
@@ -1414,47 +1109,32 @@ export type UpdateResourceGroupResponseAutoJoinCase0Role =
   | "contributor"
   | "read"
   | "no_access";
-export const UpdateResourceGroupResponseAutoJoinCase0Role = S.String;
-
 export type UpdateResourceGroupResponseAutoJoinCase0Scope = "all" | "read_plus";
-export const UpdateResourceGroupResponseAutoJoinCase0Scope = S.String;
-
 export interface UpdateResourceGroupResponseAutoJoinCase0 {
   enabled: boolean;
   role: UpdateResourceGroupResponseAutoJoinCase0Role;
   scope?: UpdateResourceGroupResponseAutoJoinCase0Scope;
 }
-export const UpdateResourceGroupResponseAutoJoinCase0 =
-  AddUsersResponseAutoJoinCase0 as any as S.Schema<UpdateResourceGroupResponseAutoJoinCase0>;
-
 export type UpdateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-export const UpdateResourceGroupResponseAutoJoinCase1 = AddUsersResponseAutoJoinCase1;
-
 export type UpdateResourceGroupResponseAutoJoin =
   | UpdateResourceGroupResponseAutoJoinCase0
   | AddUsersResponseAutoJoinCase1;
-export const UpdateResourceGroupResponseAutoJoin =
+const UpdateResourceGroupResponseAutoJoin =
   S.Unknown as any as S.Schema<UpdateResourceGroupResponseAutoJoin>;
 
 export type UpdateResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
-export const UpdateResourceGroupResponseSpendLimits = AddUsersResponseSpendLimits;
-
 export type UpdateResourceGroupResponseUsersItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const UpdateResourceGroupResponseUsersItemRole = S.String;
-
 export type UpdateResourceGroupResponseUsersItemOrgRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const UpdateResourceGroupResponseUsersItemOrgRole = S.String;
-
 export interface UpdateResourceGroupResponseUsersItem {
   type: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1466,11 +1146,8 @@ export interface UpdateResourceGroupResponseUsersItem {
   orgRole: UpdateResourceGroupResponseUsersItemOrgRole;
   addedBy?: string;
 }
-export const UpdateResourceGroupResponseUsersItem =
-  AddUsersResponseUsersItem as any as S.Schema<UpdateResourceGroupResponseUsersItem>;
-
 export type UpdateResourceGroupResponseUsersList = Array<UpdateResourceGroupResponseUsersItem>;
-export const UpdateResourceGroupResponseUsersList =
+const UpdateResourceGroupResponseUsersList =
   AddUsersResponseUsersList as any as S.Schema<UpdateResourceGroupResponseUsersList>;
 
 export type UpdateResourceGroupResponseResourcesItemCase0Type =
@@ -1480,41 +1157,28 @@ export type UpdateResourceGroupResponseResourcesItemCase0Type =
   | "bucket"
   | "kernel"
   | "container";
-export const UpdateResourceGroupResponseResourcesItemCase0Type = S.String;
-
 export interface UpdateResourceGroupResponseResourcesItemCase0 {
   type: UpdateResourceGroupResponseResourcesItemCase0Type;
   name: string;
   addedBy?: string;
   private: boolean;
 }
-export const UpdateResourceGroupResponseResourcesItemCase0 =
-  AddUsersResponseResourcesItemCase0 as any as S.Schema<UpdateResourceGroupResponseResourcesItemCase0>;
-
 export type UpdateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-export const UpdateResourceGroupResponseResourcesItemCase1 = AddUsersResponseResourcesItemCase1;
-
 export type UpdateResourceGroupResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-export const UpdateResourceGroupResponseResourcesItemCase2 = AddUsersResponseResourcesItemCase1;
-
 export type UpdateResourceGroupResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-export const UpdateResourceGroupResponseResourcesItemCase3 = AddUsersResponseResourcesItemCase3;
-
 export type UpdateResourceGroupResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-export const UpdateResourceGroupResponseResourcesItemCase4 = AddUsersResponseResourcesItemCase3;
-
 export type UpdateResourceGroupResponseResourcesItem =
   | UpdateResourceGroupResponseResourcesItemCase0
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase1
   | AddUsersResponseResourcesItemCase3
   | AddUsersResponseResourcesItemCase3;
-export const UpdateResourceGroupResponseResourcesItem =
+const UpdateResourceGroupResponseResourcesItem =
   S.Unknown as any as S.Schema<UpdateResourceGroupResponseResourcesItem>;
 
 export type UpdateResourceGroupResponseResourcesList =
   Array<UpdateResourceGroupResponseResourcesItem>;
-export const UpdateResourceGroupResponseResourcesList = /*@__PURE__*/ S.Array(
+const UpdateResourceGroupResponseResourcesList = /*@__PURE__*/ S.Array(
   UpdateResourceGroupResponseResourcesItem,
 ) as any as S.Schema<UpdateResourceGroupResponseResourcesList>;
 
@@ -1528,7 +1192,7 @@ export interface UpdateResourceGroupResponse {
   users: UpdateResourceGroupResponseUsersList;
   resources: UpdateResourceGroupResponseResourcesList;
 }
-export const UpdateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,

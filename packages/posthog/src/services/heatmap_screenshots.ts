@@ -34,7 +34,7 @@ export interface GetHeatmapScreenshotsContentRequest {
   /** Viewport width (CSS pixels) to fetch. Defaults to 1024. If no exact render exists for this width the closest available one is returned. */
   width?: number;
 }
-export const GetHeatmapScreenshotsContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHeatmapScreenshotsContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -51,9 +51,7 @@ export const GetHeatmapScreenshotsContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHeatmapScreenshotsContentRequest>;
 
 export interface GetHeatmapScreenshotsContentResponse {}
-export const GetHeatmapScreenshotsContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetHeatmapScreenshotsContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetHeatmapScreenshotsContentResponse",
 }) as any as S.Schema<GetHeatmapScreenshotsContentResponse>;
 

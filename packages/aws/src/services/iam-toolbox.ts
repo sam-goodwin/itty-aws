@@ -101,7 +101,7 @@ export interface GetRequestAuthorizationDetailsInput {
   authorizationId: string;
   nextToken?: string;
 }
-export const GetRequestAuthorizationDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const GetRequestAuthorizationDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationId: S.String.pipe(T.HttpLabel("authorizationId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -119,34 +119,31 @@ export const GetRequestAuthorizationDetailsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRequestAuthorizationDetailsInput",
 }) as any as S.Schema<GetRequestAuthorizationDetailsInput>;
 export type AuthorizationContext = { [key: string]: any | undefined };
-export const AuthorizationContext = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Any.pipe(S.optional),
-);
+const AuthorizationContext = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
 export type EvaluatedEffect = "ALLOW" | "EXPLICIT_DENY" | "IMPLICIT_DENY" | (string & {});
-export const EvaluatedEffect = S.String;
+const EvaluatedEffect = S.String;
 
 export type StatementEffect = "ALLOW" | "DENY" | (string & {});
-export const StatementEffect = S.String;
+const StatementEffect = S.String;
 
 export interface MatchedStatement {
   sid?: string;
   evaluatedEffect?: StatementEffect;
 }
-export const MatchedStatement = /*@__PURE__*/ S.suspend(() =>
+const MatchedStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sid: S.optional(S.String), evaluatedEffect: S.optional(StatementEffect) }),
 ).annotate({ identifier: "MatchedStatement" }) as any as S.Schema<MatchedStatement>;
 export type MatchedStatementList = MatchedStatement[];
-export const MatchedStatementList = /*@__PURE__*/ S.Array(MatchedStatement);
+const MatchedStatementList = /*@__PURE__*/ S.Array(MatchedStatement);
 export interface MatchedPolicy {
   uri: string;
   matchedStatements?: MatchedStatement[];
 }
-export const MatchedPolicy = /*@__PURE__*/ S.suspend(() =>
+const MatchedPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.String, matchedStatements: S.optional(MatchedStatementList) }),
 ).annotate({ identifier: "MatchedPolicy" }) as any as S.Schema<MatchedPolicy>;
 export type MatchedPolicyList = MatchedPolicy[];
-export const MatchedPolicyList = /*@__PURE__*/ S.Array(MatchedPolicy);
+const MatchedPolicyList = /*@__PURE__*/ S.Array(MatchedPolicy);
 export interface Evaluation {
   action: string;
   resource: string;
@@ -154,7 +151,7 @@ export interface Evaluation {
   evaluatedEffect?: EvaluatedEffect;
   matchedPolicies?: MatchedPolicy[];
 }
-export const Evaluation = /*@__PURE__*/ S.suspend(() =>
+const Evaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     resource: S.String,
@@ -164,7 +161,7 @@ export const Evaluation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Evaluation" }) as any as S.Schema<Evaluation>;
 export type Evaluations = Evaluation[];
-export const Evaluations = /*@__PURE__*/ S.Array(Evaluation);
+const Evaluations = /*@__PURE__*/ S.Array(Evaluation);
 export type PolicyType =
   | "IDENTITY_BASED_POLICY"
   | "RESOURCE_BASED_POLICY"
@@ -174,23 +171,23 @@ export type PolicyType =
   | "RESOURCE_CONTROL_POLICY"
   | "VPC_ENDPOINT_POLICY"
   | (string & {});
-export const PolicyType = S.String;
+const PolicyType = S.String;
 
 export interface AttachedTo {
   arn?: string;
 }
-export const AttachedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String) }),
-).annotate({ identifier: "AttachedTo" }) as any as S.Schema<AttachedTo>;
+const AttachedTo = /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
+  identifier: "AttachedTo",
+}) as any as S.Schema<AttachedTo>;
 export type AttachedToList = AttachedTo[];
-export const AttachedToList = /*@__PURE__*/ S.Array(AttachedTo);
+const AttachedToList = /*@__PURE__*/ S.Array(AttachedTo);
 export interface PolicyInfo {
   type?: PolicyType;
   inline?: boolean;
   uri?: string;
   attachedTo?: AttachedTo[];
 }
-export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
+const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PolicyType),
     inline: S.optional(S.Boolean),
@@ -199,14 +196,14 @@ export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyInfo" }) as any as S.Schema<PolicyInfo>;
 export type PolicyInfoList = PolicyInfo[];
-export const PolicyInfoList = /*@__PURE__*/ S.Array(PolicyInfo);
+const PolicyInfoList = /*@__PURE__*/ S.Array(PolicyInfo);
 export interface GetRequestAuthorizationDetailsOutput {
   requestContext: { [key: string]: any | undefined };
   evaluations: Evaluation[];
   policies: PolicyInfo[];
   nextToken?: string;
 }
-export const GetRequestAuthorizationDetailsOutput = /*@__PURE__*/ S.suspend(() =>
+const GetRequestAuthorizationDetailsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestContext: AuthorizationContext,
     evaluations: Evaluations,

@@ -78,7 +78,7 @@ export interface ThreeLeggedOAuth {
   /** Optional. The authorization endpoint to send users to for consenting to delegate to the agent. For example, "https://auth.atlassian.com/authorize". */
   authorizationUrl?: string;
 }
-export const ThreeLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
+const ThreeLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultContinueUri: S.optional(S.String),
     enablePkce: S.optional(S.Boolean),
@@ -92,22 +92,18 @@ export const ThreeLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration for Gemini Enterprise authentication. */
 export interface GeminiEnterpriseAuthProviderParams {}
-export const GeminiEnterpriseAuthProviderParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GeminiEnterpriseAuthProviderParams = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GeminiEnterpriseAuthProviderParams",
 }) as any as S.Schema<GeminiEnterpriseAuthProviderParams>;
 
 /** Configuration for Workforce Identity Federation usage as the issuer. */
 export type WorkforceIdentityFederation = GeminiEnterpriseAuthProviderParams;
-export const WorkforceIdentityFederation = GeminiEnterpriseAuthProviderParams;
-
 /** Configuration for client ID and client assertion JWT authentication. */
 export interface ClientAssertionJwtAuth {
   /** Required. The client identifier. */
   clientId?: string;
 }
-export const ClientAssertionJwtAuth = /*@__PURE__*/ S.suspend(() =>
+const ClientAssertionJwtAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
   }),
@@ -120,7 +116,7 @@ export interface CustomIssuer {
   /** Optional. The issuer identifier of the target Authorization Server. */
   issuer?: string;
 }
-export const CustomIssuer = /*@__PURE__*/ S.suspend(() =>
+const CustomIssuer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenUrl: S.optional(S.String),
     issuer: S.optional(S.String),
@@ -129,13 +125,8 @@ export const CustomIssuer = /*@__PURE__*/ S.suspend(() =>
 
 /** Marker message to indicate the managed Agent Identity Pool is used. */
 export type AgentIdentityPool = GeminiEnterpriseAuthProviderParams;
-export const AgentIdentityPool = GeminiEnterpriseAuthProviderParams;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Defines how to process an input ID token to obtain an ID-JAG. */
 export interface IdTokenProcessingConfig {
@@ -146,7 +137,7 @@ export interface IdTokenProcessingConfig {
   /** Optional. Optional additional claims to include when fetching an ID-JAG. */
   idJagAdditionalClaims?: DocumentMap;
 }
-export const IdTokenProcessingConfig = /*@__PURE__*/ S.suspend(() =>
+const IdTokenProcessingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idJagAuthProvider: S.optional(S.String),
     agentIdentityPool: S.optional(GeminiEnterpriseAuthProviderParams),
@@ -156,8 +147,6 @@ export const IdTokenProcessingConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration for Google Account usage as the issuer. */
 export type GoogleAccount = GeminiEnterpriseAuthProviderParams;
-export const GoogleAccount = GeminiEnterpriseAuthProviderParams;
-
 /** Configuration for client ID and client secret authentication. */
 export interface ClientSecretAuth {
   /** Required. The client identifier. */
@@ -165,7 +154,7 @@ export interface ClientSecretAuth {
   /** Required. Input only. The client secret. */
   clientSecret?: string;
 }
-export const ClientSecretAuth = /*@__PURE__*/ S.suspend(() =>
+const ClientSecretAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecret: S.optional(S.String),
@@ -173,12 +162,10 @@ export const ClientSecretAuth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientSecretAuth" }) as any as S.Schema<ClientSecretAuth>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Marker message indicating the input is already an ID-JAG, so no fetching is required. */
 export type DirectIdJagInput = GeminiEnterpriseAuthProviderParams;
-export const DirectIdJagInput = GeminiEnterpriseAuthProviderParams;
-
 /** Configuration parameters for the Cross-App Access auth provider. */
 export interface CrossAppAccessAuthProvider {
   /** Configuration when using Workforce Identity Federation as the issuer. */
@@ -198,7 +185,7 @@ export interface CrossAppAccessAuthProvider {
   /** Configuration for when the input is already an ID-JAG. */
   idJagInput?: GeminiEnterpriseAuthProviderParams;
 }
-export const CrossAppAccessAuthProvider = /*@__PURE__*/ S.suspend(() =>
+const CrossAppAccessAuthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workforceIdentityFederation: S.optional(GeminiEnterpriseAuthProviderParams),
     clientAssertionJwtAuth: S.optional(ClientAssertionJwtAuth),
@@ -222,7 +209,7 @@ export interface TwoLeggedOAuth {
   /** Optional. The client ID of the OAuth client. */
   clientId?: string;
 }
-export const TwoLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
+const TwoLeggedOAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenUrl: S.optional(S.String),
     clientSecret: S.optional(S.String),
@@ -235,16 +222,14 @@ export interface ApiKeyParams {
   /** Optional. Input only. The API key for this auth provider. */
   apiKey?: string;
 }
-export const ApiKeyParams = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String),
   }),
 ).annotate({ identifier: "ApiKeyParams" }) as any as S.Schema<ApiKeyParams>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Configuration parameters for the Connector Reference auth provider. */
 export interface ConnectorReferenceAuthProvider {
@@ -253,7 +238,7 @@ export interface ConnectorReferenceAuthProvider {
   /** Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth resources/scopes, formatted as a JSON array of JSON objects. */
   authorizationDetails?: DocumentMapList;
 }
-export const ConnectorReferenceAuthProvider = /*@__PURE__*/ S.suspend(() =>
+const ConnectorReferenceAuthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connector: S.optional(S.String),
     authorizationDetails: S.optional(DocumentMapList),
@@ -277,7 +262,7 @@ export interface AuthProviderTypeParams {
   /** Parameters for Connector Reference authentication. */
   connectorReferenceAuthProvider?: ConnectorReferenceAuthProvider;
 }
-export const AuthProviderTypeParams = /*@__PURE__*/ S.suspend(() =>
+const AuthProviderTypeParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threeLeggedOauth: S.optional(ThreeLeggedOAuth),
     geAuthProvider: S.optional(GeminiEnterpriseAuthProviderParams),
@@ -289,10 +274,10 @@ export const AuthProviderTypeParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthProviderTypeParams" }) as any as S.Schema<AuthProviderTypeParams>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type AuthProviderStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
-export const AuthProviderStateEnum = S.String;
+const AuthProviderStateEnum = S.String;
 
 /** Represents an auth provider. */
 export interface AuthProvider {
@@ -321,7 +306,7 @@ export interface AuthProvider {
   /** Optional. List of scopes that are blocked from being requested for this auth provider. If a scope appears in this list, it will not be requested, even if it also appears in `allowed_scopes`. `blocked_scopes` takes precedence over `allowed_scopes`. The number of blocked scopes is limited to 200. */
   blockedScopes?: StringList;
 }
-export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
+const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authProviderTypeParams: S.optional(AuthProviderTypeParams),
     createTime: S.optional(S.String),
@@ -348,7 +333,7 @@ export interface CreateProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: AuthProvider;
 }
-export const CreateProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -371,7 +356,7 @@ export interface DeleteProjectsLocationsAuthProvidersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -388,7 +373,7 @@ export const DeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspe
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -398,18 +383,17 @@ export interface DeleteProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Required. The resource name of the authorization to delete. Format: projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization} */
   name: string;
 }
-export const DeleteProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://agentidentity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsAuthProvidersAuthorizationsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsAuthProvidersAuthorizationsRequest>;
@@ -419,7 +403,7 @@ export interface DisableAuthProviderRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DisableAuthProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableAuthProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -433,7 +417,7 @@ export interface DisableProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: DisableAuthProviderRequest;
 }
-export const DisableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableAuthProviderRequest.pipe(T.HttpBody())),
@@ -450,15 +434,13 @@ export const DisableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.susp
 
 /** Request message for `EnableAuthProvider`. */
 export type EnableAuthProviderRequest = DisableAuthProviderRequest;
-export const EnableAuthProviderRequest = DisableAuthProviderRequest;
-
 export interface EnableProjectsLocationsAuthProvidersRequest {
   /** Required. The resource name of the auth provider. Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
   name: string;
   /** Request body */
   body?: DisableAuthProviderRequest;
 }
-export const EnableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableAuthProviderRequest.pipe(T.HttpBody())),
@@ -479,7 +461,7 @@ export interface GetIamPolicyProjectsLocationsAuthProvidersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -499,7 +481,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -508,7 +490,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -516,7 +498,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -527,7 +509,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -535,9 +517,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -550,7 +530,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -568,7 +548,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -577,7 +557,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -590,7 +570,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(AuditConfigList),
     bindings: S.optional(BindingList),
@@ -605,8 +585,8 @@ export interface GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
       resource: S.String.pipe(T.Label()),
@@ -617,15 +597,15 @@ export const GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest =
         baseUrl: "https://agentidentity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest>;
+).annotate({
+  identifier: "GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -652,7 +632,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -666,7 +646,7 @@ export interface GetProjectsLocationsAccessSummariesRequest {
   /** Required. The resource name of the access summary. */
   name: string;
 }
-export const GetProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -688,7 +668,7 @@ export type AccessSummaryAuthProviderTypeEnum =
   | "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE"
   | "AUTH_PROVIDER_TYPE_CROSS_APP_ACCESS"
   | "AUTH_PROVIDER_TYPE_CONNECTOR_REFERENCE";
-export const AccessSummaryAuthProviderTypeEnum = S.String;
+const AccessSummaryAuthProviderTypeEnum = S.String;
 
 /** Represents an access summary. */
 export interface AccessSummary {
@@ -715,7 +695,7 @@ export interface AccessSummary {
   /** Output only. The auth provider that this access summary is associated with. */
   authProvider?: string;
 }
-export const AccessSummary = /*@__PURE__*/ S.suspend(() =>
+const AccessSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenUrl: S.optional(S.String),
     authProviderType: S.optional(AccessSummaryAuthProviderTypeEnum),
@@ -735,7 +715,7 @@ export interface GetProjectsLocationsAuthProvidersRequest {
   /** Required. The resource name of the auth provider. */
   name: string;
 }
-export const GetProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -753,7 +733,7 @@ export interface GetProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Required. The resource name of the authorization. */
   name: string;
 }
-export const GetProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -768,7 +748,7 @@ export const GetProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE_
 }) as any as S.Schema<GetProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
 export type AuthorizationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
-export const AuthorizationStateEnum = S.String;
+const AuthorizationStateEnum = S.String;
 
 /** Represents an authorization. */
 export interface Authorization {
@@ -785,7 +765,7 @@ export interface Authorization {
   /** Output only. The client user ID provided by the client application for their end user. Not verified by Google. */
   clientUserId?: string;
 }
-export const Authorization = /*@__PURE__*/ S.suspend(() =>
+const Authorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     scopes: S.optional(StringList),
@@ -808,7 +788,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -827,7 +807,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -836,7 +816,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -855,7 +835,7 @@ export interface ListProjectsLocationsAccessSummariesRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -874,7 +854,7 @@ export const ListProjectsLocationsAccessSummariesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>;
 
 export type AccessSummaryList = Array<AccessSummary>;
-export const AccessSummaryList = /*@__PURE__*/ S.Array(
+const AccessSummaryList = /*@__PURE__*/ S.Array(
   AccessSummary,
 ) as any as S.Schema<AccessSummaryList>;
 
@@ -887,7 +867,7 @@ export interface ListAccessSummariesResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListAccessSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accessSummaries: S.optional(AccessSummaryList),
@@ -911,7 +891,7 @@ export interface ListProjectsLocationsAuthProvidersRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum page size is 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -931,9 +911,7 @@ export const ListProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>;
 
 export type AuthProviderList = Array<AuthProvider>;
-export const AuthProviderList = /*@__PURE__*/ S.Array(
-  AuthProvider,
-) as any as S.Schema<AuthProviderList>;
+const AuthProviderList = /*@__PURE__*/ S.Array(AuthProvider) as any as S.Schema<AuthProviderList>;
 
 /** Response message for `ListAuthProviders`. */
 export interface ListAuthProvidersResponse {
@@ -944,7 +922,7 @@ export interface ListAuthProvidersResponse {
   /** The list of auth providers. */
   authProviders?: AuthProviderList;
 }
-export const ListAuthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -966,7 +944,7 @@ export interface ListProjectsLocationsAuthProvidersAuthorizationsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum page size is 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -985,7 +963,7 @@ export const ListProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
 export type AuthorizationList = Array<Authorization>;
-export const AuthorizationList = /*@__PURE__*/ S.Array(
+const AuthorizationList = /*@__PURE__*/ S.Array(
   Authorization,
 ) as any as S.Schema<AuthorizationList>;
 
@@ -998,7 +976,7 @@ export interface ListAuthorizationsResponse {
   /** The list of authorizations. */
   authorizations?: AuthorizationList;
 }
-export const ListAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1018,7 +996,7 @@ export interface PatchProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: AuthProvider;
 }
-export const PatchProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1045,7 +1023,7 @@ export interface QueryProjectsLocationsAuthProvidersRequest {
   /** Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, the first page is returned. A page token, received from a previous QueryAuthProviders call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to QueryAuthProviders must match the call that provided the page token. */
   pageToken?: string;
 }
-export const QueryProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadId: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1069,7 +1047,7 @@ export interface QueryAuthProvidersResponse {
   /** A token identifying a page of results the server should return. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const QueryAuthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryAuthProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authProviderNames: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1086,7 +1064,7 @@ export interface QueryWorkloadsProjectsLocationsAuthProvidersRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum page size is 1000. */
   pageSize?: number;
 }
-export const QueryWorkloadsProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryWorkloadsProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1109,7 +1087,7 @@ export interface QueryWorkloadsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const QueryWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadIds: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1121,7 +1099,7 @@ export interface ResolveAuthorizationRequest {
   /** Required. The user ID of the client for whom the authorization is resolved. */
   clientUserId?: string;
 }
-export const ResolveAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientUserId: S.optional(S.String),
   }),
@@ -1135,18 +1113,17 @@ export interface ResolveAuthorizationProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: ResolveAuthorizationRequest;
 }
-export const ResolveAuthorizationProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ResolveAuthorizationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:resolveAuthorization",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
+const ResolveAuthorizationProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ResolveAuthorizationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:resolveAuthorization",
+      baseUrl: "https://agentidentity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ResolveAuthorizationProjectsLocationsAuthProvidersRequest",
 }) as any as S.Schema<ResolveAuthorizationProjectsLocationsAuthProvidersRequest>;
@@ -1156,7 +1133,7 @@ export interface ResolveAuthorizationResponse {
   /** The resource name of the resolved authorization. Format: projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization} */
   authorization?: string;
 }
-export const ResolveAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
+const ResolveAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.optional(S.String),
   }),
@@ -1169,7 +1146,7 @@ export interface RevokeAuthorizationRequest {
   /** Required. The identity of the user to revoke authorization for. */
   userId?: string;
 }
-export const RevokeAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
   }),
@@ -1183,25 +1160,24 @@ export interface RevokeAuthorizationProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: RevokeAuthorizationRequest;
 }
-export const RevokeAuthorizationProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RevokeAuthorizationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:revokeAuthorization",
-        baseUrl: "https://agentidentity.googleapis.com/",
-      }),
-    ),
+const RevokeAuthorizationProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RevokeAuthorizationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:revokeAuthorization",
+      baseUrl: "https://agentidentity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "RevokeAuthorizationProjectsLocationsAuthProvidersRequest",
 }) as any as S.Schema<RevokeAuthorizationProjectsLocationsAuthProvidersRequest>;
 
 /** Response message for `RevokeAuthorization`. */
 export interface RevokeAuthorizationResponse {}
-export const RevokeAuthorizationResponse = Empty as any as S.Schema<RevokeAuthorizationResponse>;
+const RevokeAuthorizationResponse = Empty as any as S.Schema<RevokeAuthorizationResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1210,7 +1186,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -1223,7 +1199,7 @@ export interface SetIamPolicyProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1244,8 +1220,8 @@ export interface SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1256,16 +1232,16 @@ export const SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest =
         baseUrl: "https://agentidentity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest>;
+).annotate({
+  identifier: "SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1279,7 +1255,7 @@ export interface TestIamPermissionsProjectsLocationsAuthProvidersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1299,7 +1275,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsRequest {
@@ -1308,7 +1284,7 @@ export interface TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsR
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsRequest =
+const TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -1326,15 +1302,13 @@ export const TestIamPermissionsProjectsLocationsAuthProvidersAuthorizationsReque
 
 /** Request message for `UndeleteAuthProvider`. */
 export type UndeleteAuthProviderRequest = DisableAuthProviderRequest;
-export const UndeleteAuthProviderRequest = DisableAuthProviderRequest;
-
 export interface UndeleteProjectsLocationsAuthProvidersRequest {
   /** Required. The resource name of the auth provider. Format: projects/{project}/locations/{location}/authProviders/{auth_provider} */
   name: string;
   /** Request body */
   body?: DisableAuthProviderRequest;
 }
-export const UndeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsLocationsAuthProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableAuthProviderRequest.pipe(T.HttpBody())),

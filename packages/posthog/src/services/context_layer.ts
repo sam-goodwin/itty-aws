@@ -48,7 +48,7 @@ export interface ContextLayerEnableCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const ContextLayerEnableCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContextLayerEnableCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -67,7 +67,7 @@ export interface ContextLayerStatus {
   /** Commit sha of the wiki's current head. */
   head_sha: string;
 }
-export const ContextLayerStatus = /*@__PURE__*/ S.suspend(() =>
+const ContextLayerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head_sha: S.String,
   }),
@@ -77,7 +77,7 @@ export interface ContextLayerExportRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const ContextLayerExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const ContextLayerExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -98,7 +98,7 @@ export interface WikiExport {
   /** Commit sha of the bundle behind the URL. */
   head_sha: string;
 }
-export const WikiExport = /*@__PURE__*/ S.suspend(() =>
+const WikiExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     head_sha: S.String,
@@ -110,7 +110,7 @@ export interface ContextLayerProposalsApplyCreateRequest {
   organization_id: string;
   proposal_id: string;
 }
-export const ContextLayerProposalsApplyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContextLayerProposalsApplyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     proposal_id: S.String.pipe(T.Label()),
@@ -135,7 +135,7 @@ export interface CreateContextLayerCommitRequest {
   /** Land a dated dreaming branch (`dream/<YYYY-MM-DD>`) as one merge commit instead of rebasing onto `main`. Omit for ordinary commits on `main`. */
   branch?: string | null;
 }
-export const CreateContextLayerCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContextLayerCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     bundle: S.String,
@@ -158,7 +158,7 @@ export interface GetContextLayerChannelPageRequest {
   organization_id: string;
   channel_id: string;
 }
-export const GetContextLayerChannelPageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextLayerChannelPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     channel_id: S.String.pipe(T.Label()),
@@ -180,7 +180,7 @@ export interface ChannelWikiPage {
   /** Whether a page exists at this path. False when the path is a proposal for a channel whose page has not been created yet. */
   exists?: boolean;
 }
-export const ChannelWikiPage = /*@__PURE__*/ S.suspend(() =>
+const ChannelWikiPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     exists: S.optional(S.Boolean),
@@ -192,7 +192,7 @@ export interface GetContextLayerDreamRequest {
   organization_id: string;
   sha: string;
 }
-export const GetContextLayerDreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextLayerDreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     sha: S.String.pipe(T.Label()),
@@ -224,7 +224,7 @@ export interface DreamRun {
   /** Pages the run removed. */
   pages_deleted: number;
 }
-export const DreamRun = /*@__PURE__*/ S.suspend(() =>
+const DreamRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     date: S.String,
@@ -238,7 +238,7 @@ export const DreamRun = /*@__PURE__*/ S.suspend(() =>
 
 /** * `added` - added * `modified` - modified * `deleted` - deleted */
 export type DreamFileDiffStatusEnum = "added" | "modified" | "deleted";
-export const DreamFileDiffStatusEnum = S.String;
+const DreamFileDiffStatusEnum = S.String;
 
 /** One file a dream run changed, with its unified patch. */
 export interface DreamFileDiff {
@@ -251,7 +251,7 @@ export interface DreamFileDiff {
   /** Whether the patch was cut off for size. */
   truncated: boolean;
 }
-export const DreamFileDiff = /*@__PURE__*/ S.suspend(() =>
+const DreamFileDiff = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     status: DreamFileDiffStatusEnum,
@@ -262,7 +262,7 @@ export const DreamFileDiff = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-file patches, in diff order. */
 export type DreamRunDetailFilesList = Array<DreamFileDiff>;
-export const DreamRunDetailFilesList = /*@__PURE__*/ S.Array(
+const DreamRunDetailFilesList = /*@__PURE__*/ S.Array(
   DreamFileDiff,
 ) as any as S.Schema<DreamRunDetailFilesList>;
 
@@ -272,7 +272,7 @@ export interface DreamRunDetail {
   /** Per-file patches, in diff order. */
   files: DreamRunDetailFilesList;
 }
-export const DreamRunDetail = /*@__PURE__*/ S.suspend(() =>
+const DreamRunDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run: DreamRun,
     files: DreamRunDetailFilesList,
@@ -291,7 +291,7 @@ export interface GetContextLayerPageRequest {
   /** Repo-relative Markdown path of the page to read. */
   path: string;
 }
-export const GetContextLayerPageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextLayerPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     head_sha: S.optional(S.String.pipe(T.Query())),
@@ -328,7 +328,7 @@ export interface WikiPage {
   /** True when no further chunks remain. Do not write a page until all chunks are read. */
   complete: boolean;
 }
-export const WikiPage = /*@__PURE__*/ S.suspend(() =>
+const WikiPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     content: S.String,
@@ -345,7 +345,7 @@ export interface GetContextLayerStatusRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const GetContextLayerStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextLayerStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -363,7 +363,7 @@ export interface GetContextLayerTreeRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const GetContextLayerTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextLayerTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -379,9 +379,7 @@ export const GetContextLayerTreeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Repo-relative path of every Markdown page at the current head. */
 export type WikiTreePathsList = Array<string>;
-export const WikiTreePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WikiTreePathsList>;
+const WikiTreePathsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<WikiTreePathsList>;
 
 /** Response shape for the wiki's page listing. */
 export interface WikiTree {
@@ -390,7 +388,7 @@ export interface WikiTree {
   /** Repo-relative path of every Markdown page at the current head. */
   paths: WikiTreePathsList;
 }
-export const WikiTree = /*@__PURE__*/ S.suspend(() =>
+const WikiTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head_sha: S.String,
     paths: WikiTreePathsList,
@@ -401,7 +399,7 @@ export interface GetContextLayerWikiReportRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const GetContextLayerWikiReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextLayerWikiReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -423,7 +421,7 @@ export interface WikiHealthFinding {
   /** Human-readable explanation of the finding. */
   message: string;
 }
-export const WikiHealthFinding = /*@__PURE__*/ S.suspend(() =>
+const WikiHealthFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.String,
     path: S.String,
@@ -433,7 +431,7 @@ export const WikiHealthFinding = /*@__PURE__*/ S.suspend(() =>
 
 /** Health findings for the current wiki head. */
 export type WikiHealthReportFindingsList = Array<WikiHealthFinding>;
-export const WikiHealthReportFindingsList = /*@__PURE__*/ S.Array(
+const WikiHealthReportFindingsList = /*@__PURE__*/ S.Array(
   WikiHealthFinding,
 ) as any as S.Schema<WikiHealthReportFindingsList>;
 
@@ -443,7 +441,7 @@ export interface WikiHealthReport {
   /** Health findings for the current wiki head. */
   findings: WikiHealthReportFindingsList;
 }
-export const WikiHealthReport = /*@__PURE__*/ S.suspend(() =>
+const WikiHealthReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head_sha: S.String,
     findings: WikiHealthReportFindingsList,
@@ -454,7 +452,7 @@ export interface ListContextLayerDreamsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const ListContextLayerDreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContextLayerDreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -470,7 +468,7 @@ export const ListContextLayerDreamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress */
 export type ActiveDreamRunRunStatusEnum = "not_started" | "queued" | "in_progress";
-export const ActiveDreamRunRunStatusEnum = S.String;
+const ActiveDreamRunRunStatusEnum = S.String;
 
 /** A dreaming task that has not reached a terminal state yet. */
 export interface ActiveDreamRun {
@@ -479,7 +477,7 @@ export interface ActiveDreamRun {
   /** When the active dream task was created. */
   started_at: string;
 }
-export const ActiveDreamRun = /*@__PURE__*/ S.suspend(() =>
+const ActiveDreamRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_status: ActiveDreamRunRunStatusEnum,
     started_at: S.String,
@@ -494,7 +492,7 @@ export interface UnpublishedDreamRun {
   /** When the unpublished dream task was created. */
   started_at: string;
 }
-export const UnpublishedDreamRun = /*@__PURE__*/ S.suspend(() =>
+const UnpublishedDreamRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_url: S.String,
     run_status: S.String,
@@ -504,7 +502,7 @@ export const UnpublishedDreamRun = /*@__PURE__*/ S.suspend(() =>
 
 /** Every landed dream run, newest first. */
 export type DreamRunListDreamsList = Array<DreamRun>;
-export const DreamRunListDreamsList = /*@__PURE__*/ S.Array(
+const DreamRunListDreamsList = /*@__PURE__*/ S.Array(
   DreamRun,
 ) as any as S.Schema<DreamRunListDreamsList>;
 
@@ -519,7 +517,7 @@ export interface DreamRunList {
   /** Every landed dream run, newest first. */
   dreams: DreamRunListDreamsList;
 }
-export const DreamRunList = /*@__PURE__*/ S.suspend(() =>
+const DreamRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head_sha: S.String,
     active_run: S.NullOr(ActiveDreamRun),
@@ -536,7 +534,7 @@ export interface ListContextLayerProposalsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListContextLayerProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContextLayerProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -568,7 +566,7 @@ export interface WikiPageProposal {
   /** When the edit was proposed. */
   created_at: string;
 }
-export const WikiPageProposal = /*@__PURE__*/ S.suspend(() =>
+const WikiPageProposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_id: S.String,
@@ -581,7 +579,7 @@ export const WikiPageProposal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WikiPageProposal" }) as any as S.Schema<WikiPageProposal>;
 
 export type PaginatedWikiPageProposalListResultsList = Array<WikiPageProposal>;
-export const PaginatedWikiPageProposalListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWikiPageProposalListResultsList = /*@__PURE__*/ S.Array(
   WikiPageProposal,
 ) as any as S.Schema<PaginatedWikiPageProposalListResultsList>;
 
@@ -591,7 +589,7 @@ export interface PaginatedWikiPageProposalList {
   previous?: string | null;
   results: PaginatedWikiPageProposalListResultsList;
 }
-export const PaginatedWikiPageProposalList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWikiPageProposalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -612,7 +610,7 @@ export interface UpdateContextLayerPageRequest {
   /** Optimistic-concurrency guard: the head sha the edit is based on. A moved head is rejected with 409 and the current head; omit to write unguarded. */
   base_head?: string | null;
 }
-export const UpdateContextLayerPageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContextLayerPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     path: S.String,

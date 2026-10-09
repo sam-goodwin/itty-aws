@@ -58,7 +58,7 @@ export interface AcceptInvitationForAuthenticatedUserRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-export const AcceptInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitation_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -69,7 +69,7 @@ export const AcceptInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<AcceptInvitationForAuthenticatedUserRequest>;
 
 export interface AcceptInvitationForAuthenticatedUserResponse {}
-export const AcceptInvitationForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptInvitationForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AcceptInvitationForAuthenticatedUserResponse",
@@ -77,7 +77,7 @@ export const AcceptInvitationForAuthenticatedUserResponse = /*@__PURE__*/ S.susp
 
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type AddAppAccessRestrictionsRequestAppsList = Array<string>;
-export const AddAppAccessRestrictionsRequestAppsList = /*@__PURE__*/ S.Array(
+const AddAppAccessRestrictionsRequestAppsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddAppAccessRestrictionsRequestAppsList>;
 
@@ -91,7 +91,7 @@ export interface AddAppAccessRestrictionsRequest {
   /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
   apps: AddAppAccessRestrictionsRequestAppsList;
 }
-export const AddAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -133,7 +133,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -178,23 +178,8 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type IntegrationOwner = SimpleUser | Enterprise;
-export const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
+const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
 
 /** The set of permissions for the GitHub app */
 export interface IntegrationPermissions {
@@ -204,7 +189,7 @@ export interface IntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-export const IntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
+const IntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(S.String),
     checks: S.optional(S.String),
@@ -216,7 +201,7 @@ export const IntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
-export const IntegrationEventsList =
+const IntegrationEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<IntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
@@ -242,7 +227,7 @@ export interface Integration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const Integration = /*@__PURE__*/ S.suspend(() =>
+const Integration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.optional(S.String),
@@ -262,12 +247,12 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
 
 export type AddAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
-export const AddAppAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
+const AddAppAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(Integration),
 ) as any as S.Schema<AddAppAccessRestrictionsResponseBodyList>;
 
 export type AddAppAccessRestrictionsResponse = AddAppAccessRestrictionsResponseBodyList;
-export const AddAppAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddAppAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
   AddAppAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddAppAccessRestrictionsResponse",
@@ -283,7 +268,7 @@ export interface AddCollaboratorRequest {
   /** The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `triage_plus`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. */
   permission?: string;
 }
-export const AddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -295,12 +280,12 @@ export const AddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddCollaboratorRequest" }) as any as S.Schema<AddCollaboratorRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList =
+const MinimalRepositoryTopicsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -309,7 +294,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -329,7 +314,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -346,7 +331,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -357,13 +342,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -372,98 +357,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -473,7 +442,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -488,16 +457,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -519,7 +487,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -542,7 +510,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -643,7 +611,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -740,8 +708,6 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
-export const NullableSimpleUser = SimpleUser;
-
 /** The permission associated with the invitation. */
 export type RepositoryInvitationPermissions =
   | "read"
@@ -750,7 +716,7 @@ export type RepositoryInvitationPermissions =
   | "triage"
   | "triage_plus"
   | "maintain";
-export const RepositoryInvitationPermissions = S.String;
+const RepositoryInvitationPermissions = S.String;
 
 /** Repository invitations let you manage who you collaborate with. */
 export interface RepositoryInvitation {
@@ -769,7 +735,7 @@ export interface RepositoryInvitation {
   html_url: string;
   node_id: string;
 }
-export const RepositoryInvitation = /*@__PURE__*/ S.suspend(() =>
+const RepositoryInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     repository: MinimalRepository,
@@ -786,30 +752,16 @@ export const RepositoryInvitation = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the status checks */
 export type AddStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
-export const AddStatusCheckContextsRequestBodyCase0ContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsRequestBodyCase0ContextsList>;
-
 export interface AddStatusCheckContextsRequestBodyCase0 {
   /** The name of the status checks */
   contexts: AddStatusCheckContextsRequestBodyCase0ContextsList;
 }
-export const AddStatusCheckContextsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contexts: AddStatusCheckContextsRequestBodyCase0ContextsList,
-  }),
-).annotate({
-  identifier: "AddStatusCheckContextsRequestBodyCase0",
-}) as any as S.Schema<AddStatusCheckContextsRequestBodyCase0>;
-
 /** The name of the status checks */
 export type AddStatusCheckContextsRequestBodyCase1List = Array<string>;
-export const AddStatusCheckContextsRequestBodyCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsRequestBodyCase1List>;
-
 export type AddStatusCheckContextsRequestBody =
   | AddStatusCheckContextsRequestBodyCase0
   | AddStatusCheckContextsRequestBodyCase1List;
-export const AddStatusCheckContextsRequestBody =
+const AddStatusCheckContextsRequestBody =
   S.Unknown as any as S.Schema<AddStatusCheckContextsRequestBody>;
 
 export interface AddStatusCheckContextsRequest {
@@ -821,7 +773,7 @@ export interface AddStatusCheckContextsRequest {
   branch: string;
   body?: AddStatusCheckContextsRequestBody;
 }
-export const AddStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -839,11 +791,11 @@ export const AddStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddStatusCheckContextsRequest>;
 
 export type AddStatusCheckContextsResponseBodyList = Array<string>;
-export const AddStatusCheckContextsResponseBodyList =
+const AddStatusCheckContextsResponseBodyList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsResponseBodyList>;
 
 export type AddStatusCheckContextsResponse = AddStatusCheckContextsResponseBodyList;
-export const AddStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
   AddStatusCheckContextsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddStatusCheckContextsResponse",
@@ -851,30 +803,16 @@ export const AddStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The slug values for teams */
 export type AddTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
-export const AddTeamAccessRestrictionsRequestBodyCase0TeamsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase0TeamsList>;
-
 export interface AddTeamAccessRestrictionsRequestBodyCase0 {
   /** The slug values for teams */
   teams: AddTeamAccessRestrictionsRequestBodyCase0TeamsList;
 }
-export const AddTeamAccessRestrictionsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    teams: AddTeamAccessRestrictionsRequestBodyCase0TeamsList,
-  }),
-).annotate({
-  identifier: "AddTeamAccessRestrictionsRequestBodyCase0",
-}) as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase0>;
-
 /** The slug values for teams */
 export type AddTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
-export const AddTeamAccessRestrictionsRequestBodyCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase1List>;
-
 export type AddTeamAccessRestrictionsRequestBody =
   | AddTeamAccessRestrictionsRequestBodyCase0
   | AddTeamAccessRestrictionsRequestBodyCase1List;
-export const AddTeamAccessRestrictionsRequestBody =
+const AddTeamAccessRestrictionsRequestBody =
   S.Unknown as any as S.Schema<AddTeamAccessRestrictionsRequestBody>;
 
 export interface AddTeamAccessRestrictionsRequest {
@@ -886,7 +824,7 @@ export interface AddTeamAccessRestrictionsRequest {
   branch: string;
   body?: AddTeamAccessRestrictionsRequestBody;
 }
-export const AddTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -910,7 +848,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -922,15 +860,15 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -962,7 +900,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1008,7 +946,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1032,12 +970,12 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type AddTeamAccessRestrictionsResponseBodyList = Array<Team>;
-export const AddTeamAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
+const AddTeamAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
   Team,
 ) as any as S.Schema<AddTeamAccessRestrictionsResponseBodyList>;
 
 export type AddTeamAccessRestrictionsResponse = AddTeamAccessRestrictionsResponseBodyList;
-export const AddTeamAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddTeamAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
   AddTeamAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddTeamAccessRestrictionsResponse",
@@ -1045,7 +983,7 @@ export const AddTeamAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The username for users */
 export type AddUserAccessRestrictionsRequestUsersList = Array<string>;
-export const AddUserAccessRestrictionsRequestUsersList =
+const AddUserAccessRestrictionsRequestUsersList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddUserAccessRestrictionsRequestUsersList>;
 
 export interface AddUserAccessRestrictionsRequest {
@@ -1058,7 +996,7 @@ export interface AddUserAccessRestrictionsRequest {
   /** The username for users */
   users: AddUserAccessRestrictionsRequestUsersList;
 }
-export const AddUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1076,12 +1014,12 @@ export const AddUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddUserAccessRestrictionsRequest>;
 
 export type AddUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
-export const AddUserAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
+const AddUserAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<AddUserAccessRestrictionsResponseBodyList>;
 
 export type AddUserAccessRestrictionsResponse = AddUserAccessRestrictionsResponseBodyList;
-export const AddUserAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddUserAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
   AddUserAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddUserAccessRestrictionsResponse",
@@ -1095,7 +1033,7 @@ export interface CancelPagesDeploymentRequest {
   /** The ID of the Pages deployment. You can also give the commit SHA of the deployment. */
   pages_deployment_id: string;
 }
-export const CancelPagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1112,7 +1050,7 @@ export const CancelPagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelPagesDeploymentRequest>;
 
 export interface CancelPagesDeploymentResponse {}
-export const CancelPagesDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelPagesDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelPagesDeploymentResponse",
 }) as any as S.Schema<CancelPagesDeploymentResponse>;
 
@@ -1122,7 +1060,7 @@ export interface CheckAutomatedSecurityFixesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CheckAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1140,7 +1078,7 @@ export interface CheckAutomatedSecurityFixes {
   /** Whether Dependabot security updates are paused for the repository. */
   paused: boolean;
 }
-export const CheckAutomatedSecurityFixes = /*@__PURE__*/ S.suspend(() =>
+const CheckAutomatedSecurityFixes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     paused: S.Boolean,
@@ -1157,7 +1095,7 @@ export interface CheckCollaboratorRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const CheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1168,7 +1106,7 @@ export const CheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckCollaboratorRequest" }) as any as S.Schema<CheckCollaboratorRequest>;
 
 export interface CheckCollaboratorResponse {}
-export const CheckCollaboratorResponse =
+const CheckCollaboratorResponse =
   CancelPagesDeploymentResponse as any as S.Schema<CheckCollaboratorResponse>;
 
 export interface CheckImmutableReleasesRequest {
@@ -1177,7 +1115,7 @@ export interface CheckImmutableReleasesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CheckImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1193,7 +1131,7 @@ export interface CheckImmutableReleases {
   /** Whether immutable releases are enforced by the repository owner. */
   enforced_by_owner: boolean;
 }
-export const CheckImmutableReleases = /*@__PURE__*/ S.suspend(() =>
+const CheckImmutableReleases = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     enforced_by_owner: S.Boolean,
@@ -1206,7 +1144,7 @@ export interface CheckPrivateVulnerabilityReportingRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CheckPrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckPrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1225,7 +1163,7 @@ export interface CheckPrivateVulnerabilityReportingResponse {
   /** Whether or not private vulnerability reporting is enabled for the repository. */
   enabled: boolean;
 }
-export const CheckPrivateVulnerabilityReportingResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckPrivateVulnerabilityReportingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
   }),
@@ -1239,7 +1177,7 @@ export interface CheckVulnerabilityAlertsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CheckVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1249,7 +1187,7 @@ export const CheckVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckVulnerabilityAlertsRequest>;
 
 export interface CheckVulnerabilityAlertsResponse {}
-export const CheckVulnerabilityAlertsResponse =
+const CheckVulnerabilityAlertsResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<CheckVulnerabilityAlertsResponse>;
 
 export interface CodeownersErrorsRequest {
@@ -1260,7 +1198,7 @@ export interface CodeownersErrorsRequest {
   /** A branch, tag or commit name used to determine which version of the CODEOWNERS file to use. Default: the repository's default branch (e.g. `main`) */
   ref?: string;
 }
-export const CodeownersErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CodeownersErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1284,7 +1222,7 @@ export interface CodeownersErrorsErrorsItem {
   /** The path of the file where the error occured. */
   path: string;
 }
-export const CodeownersErrorsErrorsItem = /*@__PURE__*/ S.suspend(() =>
+const CodeownersErrorsErrorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.Number,
     column: S.Number,
@@ -1299,7 +1237,7 @@ export const CodeownersErrorsErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeownersErrorsErrorsItem>;
 
 export type CodeownersErrorsErrorsList = Array<CodeownersErrorsErrorsItem>;
-export const CodeownersErrorsErrorsList = /*@__PURE__*/ S.Array(
+const CodeownersErrorsErrorsList = /*@__PURE__*/ S.Array(
   CodeownersErrorsErrorsItem,
 ) as any as S.Schema<CodeownersErrorsErrorsList>;
 
@@ -1307,7 +1245,7 @@ export const CodeownersErrorsErrorsList = /*@__PURE__*/ S.Array(
 export interface CodeownersErrors {
   errors: CodeownersErrorsErrorsList;
 }
-export const CodeownersErrors = /*@__PURE__*/ S.suspend(() =>
+const CodeownersErrors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: CodeownersErrorsErrorsList,
   }),
@@ -1325,7 +1263,7 @@ export interface CompareCommitsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const CompareCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const CompareCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1341,7 +1279,7 @@ export interface NullableGitUser {
   email?: string;
   date?: string;
 }
-export const NullableGitUser = /*@__PURE__*/ S.suspend(() =>
+const NullableGitUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -1353,7 +1291,7 @@ export interface CommitCommitTree {
   sha: string;
   url: string;
 }
-export const CommitCommitTree = /*@__PURE__*/ S.suspend(() =>
+const CommitCommitTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.String,
@@ -1367,7 +1305,7 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-export const Verification = /*@__PURE__*/ S.suspend(() =>
+const Verification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.Boolean,
     reason: S.String,
@@ -1386,7 +1324,7 @@ export interface CommitCommit {
   tree: CommitCommitTree;
   verification?: Verification;
 }
-export const CommitCommit = /*@__PURE__*/ S.suspend(() =>
+const CommitCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     author: S.NullOr(NullableGitUser),
@@ -1399,17 +1337,17 @@ export const CommitCommit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitCommit" }) as any as S.Schema<CommitCommit>;
 
 export type CommitAuthor = SimpleUser | unknown;
-export const CommitAuthor = S.Unknown as any as S.Schema<CommitAuthor>;
+const CommitAuthor = S.Unknown as any as S.Schema<CommitAuthor>;
 
 export type CommitCommitter = SimpleUser | unknown;
-export const CommitCommitter = S.Unknown as any as S.Schema<CommitCommitter>;
+const CommitCommitter = S.Unknown as any as S.Schema<CommitCommitter>;
 
 export interface CommitParentsItem {
   sha: string;
   url: string;
   html_url?: string;
 }
-export const CommitParentsItem = /*@__PURE__*/ S.suspend(() =>
+const CommitParentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.String,
@@ -1418,7 +1356,7 @@ export const CommitParentsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitParentsItem" }) as any as S.Schema<CommitParentsItem>;
 
 export type CommitParentsList = Array<CommitParentsItem>;
-export const CommitParentsList = /*@__PURE__*/ S.Array(
+const CommitParentsList = /*@__PURE__*/ S.Array(
   CommitParentsItem,
 ) as any as S.Schema<CommitParentsList>;
 
@@ -1427,7 +1365,7 @@ export interface CommitStats {
   deletions?: number;
   total?: number;
 }
-export const CommitStats = /*@__PURE__*/ S.suspend(() =>
+const CommitStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additions: S.optional(S.Number),
     deletions: S.optional(S.Number),
@@ -1443,7 +1381,7 @@ export type DiffEntryStatus =
   | "copied"
   | "changed"
   | "unchanged";
-export const DiffEntryStatus = S.String;
+const DiffEntryStatus = S.String;
 
 /** Diff Entry */
 export interface DiffEntry {
@@ -1459,7 +1397,7 @@ export interface DiffEntry {
   patch?: string;
   previous_filename?: string;
 }
-export const DiffEntry = /*@__PURE__*/ S.suspend(() =>
+const DiffEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.NullOr(S.String),
     filename: S.String,
@@ -1476,7 +1414,7 @@ export const DiffEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiffEntry" }) as any as S.Schema<DiffEntry>;
 
 export type CommitFilesList = Array<DiffEntry>;
-export const CommitFilesList = /*@__PURE__*/ S.Array(DiffEntry) as any as S.Schema<CommitFilesList>;
+const CommitFilesList = /*@__PURE__*/ S.Array(DiffEntry) as any as S.Schema<CommitFilesList>;
 
 /** Commit */
 export interface Commit {
@@ -1492,7 +1430,7 @@ export interface Commit {
   stats?: CommitStats;
   files?: CommitFilesList;
 }
-export const Commit = /*@__PURE__*/ S.suspend(() =>
+const Commit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     sha: S.String,
@@ -1509,15 +1447,15 @@ export const Commit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Commit" }) as any as S.Schema<Commit>;
 
 export type CommitComparisonStatus = "diverged" | "ahead" | "behind" | "identical";
-export const CommitComparisonStatus = S.String;
+const CommitComparisonStatus = S.String;
 
 export type CommitComparisonCommitsList = Array<Commit>;
-export const CommitComparisonCommitsList = /*@__PURE__*/ S.Array(
+const CommitComparisonCommitsList = /*@__PURE__*/ S.Array(
   Commit,
 ) as any as S.Schema<CommitComparisonCommitsList>;
 
 export type CommitComparisonFilesList = Array<DiffEntry>;
-export const CommitComparisonFilesList = /*@__PURE__*/ S.Array(
+const CommitComparisonFilesList = /*@__PURE__*/ S.Array(
   DiffEntry,
 ) as any as S.Schema<CommitComparisonFilesList>;
 
@@ -1537,7 +1475,7 @@ export interface CommitComparison {
   commits: CommitComparisonCommitsList;
   files?: CommitComparisonFilesList;
 }
-export const CommitComparison = /*@__PURE__*/ S.suspend(() =>
+const CommitComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -1558,11 +1496,11 @@ export const CommitComparison = /*@__PURE__*/ S.suspend(() =>
 export type CreateAttestationRequestBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateAttestationRequestBundleVerificationMaterialMap =
+const CreateAttestationRequestBundleVerificationMaterialMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateAttestationRequestBundleVerificationMaterialMap>;
 
 export type CreateAttestationRequestBundleDsseEnvelopeMap = { [key: string]: unknown | undefined };
-export const CreateAttestationRequestBundleDsseEnvelopeMap =
+const CreateAttestationRequestBundleDsseEnvelopeMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateAttestationRequestBundleDsseEnvelopeMap>;
 
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
@@ -1571,7 +1509,7 @@ export interface CreateAttestationRequestBundle {
   verificationMaterial?: CreateAttestationRequestBundleVerificationMaterialMap;
   dsseEnvelope?: CreateAttestationRequestBundleDsseEnvelopeMap;
 }
-export const CreateAttestationRequestBundle = /*@__PURE__*/ S.suspend(() =>
+const CreateAttestationRequestBundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaType: S.optional(S.String),
     verificationMaterial: S.optional(CreateAttestationRequestBundleVerificationMaterialMap),
@@ -1589,7 +1527,7 @@ export interface CreateAttestationRequest {
   /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
   bundle: CreateAttestationRequestBundle;
 }
-export const CreateAttestationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAttestationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1601,7 +1539,7 @@ export interface CreateAttestationResponse {
   /** The ID of the attestation. */
   id?: number;
 }
-export const CreateAttestationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAttestationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }),
@@ -1621,7 +1559,7 @@ export interface CreateAutolinkRequest {
   /** Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters. */
   is_alphanumeric?: boolean;
 }
-export const CreateAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1642,7 +1580,7 @@ export interface Autolink {
   is_alphanumeric: boolean;
   updated_at?: string | null;
 }
-export const Autolink = /*@__PURE__*/ S.suspend(() =>
+const Autolink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key_prefix: S.String,
@@ -1668,7 +1606,7 @@ export interface CreateCommitCommentRequest {
   /** **Closing down notice**. Use **position** parameter instead. Line number in the file to comment on. */
   line?: number;
 }
-export const CreateCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1698,7 +1636,7 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const AuthorAssociation = S.String;
+const AuthorAssociation = S.String;
 
 export interface ReactionRollup {
   url: string;
@@ -1712,7 +1650,7 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-export const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
+const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     total_count: S.Number,
@@ -1744,7 +1682,7 @@ export interface CommitComment {
   author_association: AuthorAssociation;
   reactions?: ReactionRollup;
 }
-export const CommitComment = /*@__PURE__*/ S.suspend(() =>
+const CommitComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     html_url: S.String,
     url: S.String,
@@ -1771,7 +1709,7 @@ export interface CreateCommitSignatureProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const CreateCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1792,7 +1730,7 @@ export interface ProtectedBranchAdminEnforced {
   url: string;
   enabled: boolean;
 }
-export const ProtectedBranchAdminEnforced = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranchAdminEnforced = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     enabled: S.Boolean,
@@ -1803,7 +1741,7 @@ export const ProtectedBranchAdminEnforced = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the status. */
 export type CreateCommitStatusRequestState = "error" | "failure" | "pending" | "success";
-export const CreateCommitStatusRequestState = S.String;
+const CreateCommitStatusRequestState = S.String;
 
 export interface CreateCommitStatusRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1820,7 +1758,7 @@ export interface CreateCommitStatusRequest {
   /** A string label to differentiate this status from the status of other systems. This field is case-insensitive. */
   context?: string;
 }
-export const CreateCommitStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommitStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1848,7 +1786,7 @@ export interface Status {
   updated_at: string;
   creator: SimpleUser | null;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     avatar_url: S.NullOr(S.String),
@@ -1876,7 +1814,7 @@ export interface CreateDeployKeyRequest {
   /** If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write. Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/articles/permission-levels-for-a-user-account-repository/)." */
   read_only?: boolean;
 }
-export const CreateDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1899,7 +1837,7 @@ export interface DeployKey {
   last_used?: string | null;
   enabled?: boolean;
 }
-export const DeployKey = /*@__PURE__*/ S.suspend(() =>
+const DeployKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.String,
@@ -1916,16 +1854,12 @@ export const DeployKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts. */
 export type CreateDeploymentRequestRequiredContextsList = Array<string>;
-export const CreateDeploymentRequestRequiredContextsList =
+const CreateDeploymentRequestRequiredContextsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CreateDeploymentRequestRequiredContextsList>;
 
 export type CreateDeploymentRequestPayloadCase0Map = { [key: string]: unknown | undefined };
-export const CreateDeploymentRequestPayloadCase0Map =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateDeploymentRequestPayloadCase0Map>;
-
 export type CreateDeploymentRequestPayload = CreateDeploymentRequestPayloadCase0Map | string;
-export const CreateDeploymentRequestPayload =
-  S.Unknown as any as S.Schema<CreateDeploymentRequestPayload>;
+const CreateDeploymentRequestPayload = S.Unknown as any as S.Schema<CreateDeploymentRequestPayload>;
 
 export interface CreateDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1950,7 +1884,7 @@ export interface CreateDeploymentRequest {
   /** Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise. */
   production_environment?: boolean;
 }
-export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1967,22 +1901,17 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeploymentRequest" }) as any as S.Schema<CreateDeploymentRequest>;
 
 export type DeploymentPayloadCase0Map = { [key: string]: unknown | undefined };
-export const DeploymentPayloadCase0Map =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<DeploymentPayloadCase0Map>;
-
 export type DeploymentPayload = DeploymentPayloadCase0Map | string;
-export const DeploymentPayload = S.Unknown as any as S.Schema<DeploymentPayload>;
+const DeploymentPayload = S.Unknown as any as S.Schema<DeploymentPayload>;
 
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
-export const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
+const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
 
 /** The set of permissions for the GitHub app */
 export type NullableIntegrationPermissions = IntegrationPermissions;
-export const NullableIntegrationPermissions = IntegrationPermissions;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList =
+const NullableIntegrationEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
@@ -2008,7 +1937,7 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
+const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.optional(S.String),
@@ -2054,7 +1983,7 @@ export interface Deployment {
   production_environment?: boolean;
   performed_via_github_app?: NullableIntegration | null;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     id: S.Number,
@@ -2079,7 +2008,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether this rule targets a branch or tag */
 export type CreateDeploymentBranchPolicyRequestType = "branch" | "tag";
-export const CreateDeploymentBranchPolicyRequestType = S.String;
+const CreateDeploymentBranchPolicyRequestType = S.String;
 
 export interface CreateDeploymentBranchPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2093,7 +2022,7 @@ export interface CreateDeploymentBranchPolicyRequest {
   /** Whether this rule targets a branch or tag */
   type?: CreateDeploymentBranchPolicyRequestType | (string & {});
 }
-export const CreateDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2113,7 +2042,7 @@ export const CreateDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether this rule targets a branch or tag. */
 export type DeploymentBranchPolicyType = "branch" | "tag";
-export const DeploymentBranchPolicyType = S.String;
+const DeploymentBranchPolicyType = S.String;
 
 /** Details of a deployment branch or tag policy. */
 export interface DeploymentBranchPolicy {
@@ -2125,7 +2054,7 @@ export interface DeploymentBranchPolicy {
   /** Whether this rule targets a branch or tag. */
   type?: DeploymentBranchPolicyType;
 }
-export const DeploymentBranchPolicy = /*@__PURE__*/ S.suspend(() =>
+const DeploymentBranchPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     node_id: S.optional(S.String),
@@ -2144,7 +2073,7 @@ export interface CreateDeploymentProtectionRuleRequest {
   /** The ID of the custom app that will be enabled on the environment. */
   integration_id?: number;
 }
-export const CreateDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2172,7 +2101,7 @@ export interface CustomDeploymentRuleApp {
   /** The node ID for the deployment protection rule integration. */
   node_id: string;
 }
-export const CustomDeploymentRuleApp = /*@__PURE__*/ S.suspend(() =>
+const CustomDeploymentRuleApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.String,
@@ -2191,7 +2120,7 @@ export interface DeploymentProtectionRule {
   enabled: boolean;
   app: CustomDeploymentRuleApp;
 }
-export const DeploymentProtectionRule = /*@__PURE__*/ S.suspend(() =>
+const DeploymentProtectionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2209,7 +2138,7 @@ export type CreateDeploymentStatusRequestState =
   | "queued"
   | "pending"
   | "success";
-export const CreateDeploymentStatusRequestState = S.String;
+const CreateDeploymentStatusRequestState = S.String;
 
 export interface CreateDeploymentStatusRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2233,7 +2162,7 @@ export interface CreateDeploymentStatusRequest {
   /** Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true` */
   auto_inactive?: boolean;
 }
-export const CreateDeploymentStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2265,7 +2194,7 @@ export type DeploymentStatusState =
   | "success"
   | "queued"
   | "in_progress";
-export const DeploymentStatusState = S.String;
+const DeploymentStatusState = S.String;
 
 /** The status of a deployment. */
 export interface DeploymentStatus {
@@ -2291,7 +2220,7 @@ export interface DeploymentStatus {
   log_url?: string;
   performed_via_github_app?: NullableIntegration | null;
 }
-export const DeploymentStatus = /*@__PURE__*/ S.suspend(() =>
+const DeploymentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     id: S.Number,
@@ -2313,7 +2242,7 @@ export const DeploymentStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB. */
 export type CreateDispatchEventRequestClientPayloadMap = { [key: string]: unknown | undefined };
-export const CreateDispatchEventRequestClientPayloadMap =
+const CreateDispatchEventRequestClientPayloadMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateDispatchEventRequestClientPayloadMap>;
 
 export interface CreateDispatchEventRequest {
@@ -2326,7 +2255,7 @@ export interface CreateDispatchEventRequest {
   /** JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB. */
   client_payload?: CreateDispatchEventRequestClientPayloadMap;
 }
-export const CreateDispatchEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDispatchEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2338,29 +2267,29 @@ export const CreateDispatchEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDispatchEventRequest>;
 
 export interface CreateDispatchEventResponse {}
-export const CreateDispatchEventResponse =
+const CreateDispatchEventResponse =
   CancelPagesDeploymentResponse as any as S.Schema<CreateDispatchEventResponse>;
 
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type CreateForAuthenticatedUserRequestSquashMergeCommitTitle =
   | "PR_TITLE"
   | "COMMIT_OR_PR_TITLE";
-export const CreateForAuthenticatedUserRequestSquashMergeCommitTitle = S.String;
+const CreateForAuthenticatedUserRequestSquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type CreateForAuthenticatedUserRequestSquashMergeCommitMessage =
   | "PR_BODY"
   | "COMMIT_MESSAGES"
   | "BLANK";
-export const CreateForAuthenticatedUserRequestSquashMergeCommitMessage = S.String;
+const CreateForAuthenticatedUserRequestSquashMergeCommitMessage = S.String;
 
 /** Required when using `merge_commit_message`. The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type CreateForAuthenticatedUserRequestMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const CreateForAuthenticatedUserRequestMergeCommitTitle = S.String;
+const CreateForAuthenticatedUserRequestMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type CreateForAuthenticatedUserRequestMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const CreateForAuthenticatedUserRequestMergeCommitMessage = S.String;
+const CreateForAuthenticatedUserRequestMergeCommitMessage = S.String;
 
 export interface CreateForAuthenticatedUserRequest {
   /** The name of the repository. */
@@ -2414,7 +2343,7 @@ export interface CreateForAuthenticatedUserRequest {
   /** Whether this repository acts as a template that can be used to generate new repositories. */
   is_template?: boolean;
 }
-export const CreateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -2447,12 +2376,12 @@ export const CreateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateForAuthenticatedUserRequest>;
 
 export type FullRepositoryTopicsList = Array<string>;
-export const FullRepositoryTopicsList =
+const FullRepositoryTopicsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<FullRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type FullRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const FullRepositoryPullRequestCreationPolicy = S.String;
+const FullRepositoryPullRequestCreationPolicy = S.String;
 
 export interface FullRepositoryPermissions {
   admin: boolean;
@@ -2461,7 +2390,7 @@ export interface FullRepositoryPermissions {
   triage?: boolean;
   pull: boolean;
 }
-export const FullRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const FullRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     maintain: S.optional(S.Boolean),
@@ -2482,7 +2411,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -2500,7 +2429,7 @@ export interface NullableRepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -2513,35 +2442,35 @@ export const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NullableRepositoryPermissions>;
 
 export type NullableRepositoryTopicsList = Array<string>;
-export const NullableRepositoryTopicsList =
+const NullableRepositoryTopicsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<NullableRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const NullableRepositoryPullRequestCreationPolicy = S.String;
+const NullableRepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type NullableRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const NullableRepositorySquashMergeCommitTitle = S.String;
+const NullableRepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type NullableRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const NullableRepositorySquashMergeCommitMessage = S.String;
+const NullableRepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type NullableRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const NullableRepositoryMergeCommitTitle = S.String;
+const NullableRepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type NullableRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const NullableRepositoryMergeCommitMessage = S.String;
+const NullableRepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface NullableRepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const NullableRepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const NullableRepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -2682,7 +2611,7 @@ export interface NullableRepository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-export const NullableRepository = /*@__PURE__*/ S.suspend(() =>
+const NullableRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2787,51 +2716,47 @@ export const NullableRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type FullRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const FullRepositorySquashMergeCommitTitle = S.String;
+const FullRepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type FullRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const FullRepositorySquashMergeCommitMessage = S.String;
+const FullRepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type FullRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const FullRepositoryMergeCommitTitle = S.String;
+const FullRepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type FullRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const FullRepositoryMergeCommitMessage = S.String;
+const FullRepositoryMergeCommitMessage = S.String;
 
 export type RepositoryPermissions = NullableRepositoryPermissions;
-export const RepositoryPermissions = NullableRepositoryPermissions;
-
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
+const RepositoryTopicsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export type RepositoryCodeSearchIndexStatus = NullableRepositoryCodeSearchIndexStatus;
-export const RepositoryCodeSearchIndexStatus = NullableRepositoryCodeSearchIndexStatus;
-
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -2964,7 +2889,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -3074,7 +2999,7 @@ export interface CodeOfConductSimple {
   name: string;
   html_url: string | null;
 }
-export const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     key: S.String,
@@ -3085,7 +3010,7 @@ export const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type FullRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const FullRepositoryCustomPropertiesMap =
+const FullRepositoryCustomPropertiesMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<FullRepositoryCustomPropertiesMap>;
 
 /** Full Repository */
@@ -3206,7 +3131,7 @@ export interface FullRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: FullRepositoryCustomPropertiesMap;
 }
-export const FullRepository = /*@__PURE__*/ S.suspend(() =>
+const FullRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -3328,7 +3253,7 @@ export interface CreateForkRequest {
   /** When forking from an existing repository, fork with only the default branch. */
   default_branch_only?: boolean;
 }
-export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3339,32 +3264,31 @@ export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateForkRequest" }) as any as S.Schema<CreateForkRequest>;
 
 export interface CreateForkResponse {}
-export const CreateForkResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<CreateForkResponse>;
+const CreateForkResponse = CancelPagesDeploymentResponse as any as S.Schema<CreateForkResponse>;
 
 /** The visibility of the repository. */
 export type CreateInOrgRequestVisibility = "public" | "private";
-export const CreateInOrgRequestVisibility = S.String;
+const CreateInOrgRequestVisibility = S.String;
 
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type CreateInOrgRequestSquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const CreateInOrgRequestSquashMergeCommitTitle = S.String;
+const CreateInOrgRequestSquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type CreateInOrgRequestSquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const CreateInOrgRequestSquashMergeCommitMessage = S.String;
+const CreateInOrgRequestSquashMergeCommitMessage = S.String;
 
 /** Required when using `merge_commit_message`. The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type CreateInOrgRequestMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const CreateInOrgRequestMergeCommitTitle = S.String;
+const CreateInOrgRequestMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type CreateInOrgRequestMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const CreateInOrgRequestMergeCommitMessage = S.String;
+const CreateInOrgRequestMergeCommitMessage = S.String;
 
 /** The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type CreateInOrgRequestCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const CreateInOrgRequestCustomPropertiesMap =
+const CreateInOrgRequestCustomPropertiesMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateInOrgRequestCustomPropertiesMap>;
 
 export interface CreateInOrgRequest {
@@ -3421,7 +3345,7 @@ export interface CreateInOrgRequest {
   /** The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: CreateInOrgRequestCustomPropertiesMap;
 }
-export const CreateInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -3454,11 +3378,11 @@ export const CreateInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The target of the ruleset */
 export type CreateOrgRulesetRequestTarget = "branch" | "tag" | "push" | "repository";
-export const CreateOrgRulesetRequestTarget = S.String;
+const CreateOrgRulesetRequestTarget = S.String;
 
 /** The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise). */
 export type RepositoryRuleEnforcement = "disabled" | "active" | "evaluate";
-export const RepositoryRuleEnforcement = S.String;
+const RepositoryRuleEnforcement = S.String;
 
 /** The type of actor that can bypass a ruleset. */
 export type RepositoryRulesetBypassActorActorType =
@@ -3468,11 +3392,11 @@ export type RepositoryRulesetBypassActorActorType =
   | "Team"
   | "DeployKey"
   | "User";
-export const RepositoryRulesetBypassActorActorType = S.String;
+const RepositoryRulesetBypassActorActorType = S.String;
 
 /** When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created. */
 export type RepositoryRulesetBypassActorBypassMode = "always" | "pull_request" | "exempt";
-export const RepositoryRulesetBypassActorBypassMode = S.String;
+const RepositoryRulesetBypassActorBypassMode = S.String;
 
 /** An actor that can bypass rules in a ruleset */
 export interface RepositoryRulesetBypassActor {
@@ -3483,7 +3407,7 @@ export interface RepositoryRulesetBypassActor {
   /** When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created. */
   bypass_mode?: RepositoryRulesetBypassActorBypassMode | (string & {});
 }
-export const RepositoryRulesetBypassActor = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRulesetBypassActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actor_id: S.optional(S.NullOr(S.Number)),
     actor_type: RepositoryRulesetBypassActorActorType,
@@ -3495,18 +3419,18 @@ export const RepositoryRulesetBypassActor = /*@__PURE__*/ S.suspend(() =>
 
 /** The actors that can bypass the rules in this ruleset */
 export type CreateOrgRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const CreateOrgRulesetRequestBypassActorsList = /*@__PURE__*/ S.Array(
+const CreateOrgRulesetRequestBypassActorsList = /*@__PURE__*/ S.Array(
   RepositoryRulesetBypassActor,
 ) as any as S.Schema<CreateOrgRulesetRequestBypassActorsList>;
 
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase0RefNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase0RefNameIncludeList =
+const OrgRulesetConditionsCase0RefNameIncludeList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RefNameIncludeList>;
 
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase0RefNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase0RefNameExcludeList =
+const OrgRulesetConditionsCase0RefNameExcludeList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RefNameExcludeList>;
 
 export interface OrgRulesetConditionsCase0RefName {
@@ -3515,7 +3439,7 @@ export interface OrgRulesetConditionsCase0RefName {
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: OrgRulesetConditionsCase0RefNameExcludeList;
 }
-export const OrgRulesetConditionsCase0RefName = /*@__PURE__*/ S.suspend(() =>
+const OrgRulesetConditionsCase0RefName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include: S.optional(OrgRulesetConditionsCase0RefNameIncludeList),
     exclude: S.optional(OrgRulesetConditionsCase0RefNameExcludeList),
@@ -3526,14 +3450,8 @@ export const OrgRulesetConditionsCase0RefName = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
 export type OrgRulesetConditionsCase0RepositoryNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase0RepositoryNameIncludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RepositoryNameIncludeList>;
-
 /** Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase0RepositoryNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase0RepositoryNameExcludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RepositoryNameExcludeList>;
-
 export interface OrgRulesetConditionsCase0RepositoryName {
   /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
   include?: OrgRulesetConditionsCase0RepositoryNameIncludeList;
@@ -3542,52 +3460,24 @@ export interface OrgRulesetConditionsCase0RepositoryName {
   /** Whether renaming of target repositories is prevented. */
   protected?: boolean;
 }
-export const OrgRulesetConditionsCase0RepositoryName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(OrgRulesetConditionsCase0RepositoryNameIncludeList),
-    exclude: S.optional(OrgRulesetConditionsCase0RepositoryNameExcludeList),
-    protected: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase0RepositoryName",
-}) as any as S.Schema<OrgRulesetConditionsCase0RepositoryName>;
-
 /** Conditions to target repositories by name and refs by name */
 export interface OrgRulesetConditionsCase0 {
   ref_name?: OrgRulesetConditionsCase0RefName;
   repository_name: OrgRulesetConditionsCase0RepositoryName;
 }
-export const OrgRulesetConditionsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref_name: S.optional(OrgRulesetConditionsCase0RefName),
-    repository_name: OrgRulesetConditionsCase0RepositoryName,
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase0",
-}) as any as S.Schema<OrgRulesetConditionsCase0>;
-
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase1RefNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase1RefNameIncludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase1RefNameIncludeList>;
-
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase1RefNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase1RefNameExcludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase1RefNameExcludeList>;
-
 export interface OrgRulesetConditionsCase1RefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
   include?: OrgRulesetConditionsCase1RefNameIncludeList;
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: OrgRulesetConditionsCase1RefNameExcludeList;
 }
-export const OrgRulesetConditionsCase1RefName =
-  OrgRulesetConditionsCase0RefName as any as S.Schema<OrgRulesetConditionsCase1RefName>;
-
 /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
 export type OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList = Array<number>;
-export const OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList = /*@__PURE__*/ S.Array(
+const OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList>;
 
@@ -3595,58 +3485,29 @@ export interface OrgRulesetConditionsCase1RepositoryId {
   /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
   repository_ids?: OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList;
 }
-export const OrgRulesetConditionsCase1RepositoryId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository_ids: S.optional(OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList),
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase1RepositoryId",
-}) as any as S.Schema<OrgRulesetConditionsCase1RepositoryId>;
-
 /** Conditions to target repositories by id and refs by name */
 export interface OrgRulesetConditionsCase1 {
   ref_name?: OrgRulesetConditionsCase1RefName;
   repository_id: OrgRulesetConditionsCase1RepositoryId;
 }
-export const OrgRulesetConditionsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref_name: S.optional(OrgRulesetConditionsCase1RefName),
-    repository_id: OrgRulesetConditionsCase1RepositoryId,
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase1",
-}) as any as S.Schema<OrgRulesetConditionsCase1>;
-
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase2RefNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase2RefNameIncludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase2RefNameIncludeList>;
-
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase2RefNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase2RefNameExcludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase2RefNameExcludeList>;
-
 export interface OrgRulesetConditionsCase2RefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
   include?: OrgRulesetConditionsCase2RefNameIncludeList;
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: OrgRulesetConditionsCase2RefNameExcludeList;
 }
-export const OrgRulesetConditionsCase2RefName =
-  OrgRulesetConditionsCase0RefName as any as S.Schema<OrgRulesetConditionsCase2RefName>;
-
 /** The values to match for the repository property */
 export type RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList = Array<string>;
-export const RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList>;
+const RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList>;
 
 /** The source of the repository property. Defaults to 'custom' if not specified. */
 export type RepositoryRulesetConditionsRepositoryPropertySpecSource = "custom" | "system";
-export const RepositoryRulesetConditionsRepositoryPropertySpecSource = S.String;
-
 /** Parameters for a targeting a repository property */
 export interface RepositoryRulesetConditionsRepositoryPropertySpec {
   /** The name of the repository property to target */
@@ -3656,201 +3517,88 @@ export interface RepositoryRulesetConditionsRepositoryPropertySpec {
   /** The source of the repository property. Defaults to 'custom' if not specified. */
   source?: RepositoryRulesetConditionsRepositoryPropertySpecSource | (string & {});
 }
-export const RepositoryRulesetConditionsRepositoryPropertySpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    property_values: RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList,
-    source: S.optional(RepositoryRulesetConditionsRepositoryPropertySpecSource),
-  }),
-).annotate({
-  identifier: "RepositoryRulesetConditionsRepositoryPropertySpec",
-}) as any as S.Schema<RepositoryRulesetConditionsRepositoryPropertySpec>;
-
 /** The repository properties and values to include. All of these properties must match for the condition to pass. */
 export type OrgRulesetConditionsCase2RepositoryPropertyIncludeList =
   Array<RepositoryRulesetConditionsRepositoryPropertySpec>;
-export const OrgRulesetConditionsCase2RepositoryPropertyIncludeList = /*@__PURE__*/ S.Array(
-  RepositoryRulesetConditionsRepositoryPropertySpec,
-) as any as S.Schema<OrgRulesetConditionsCase2RepositoryPropertyIncludeList>;
-
 /** The repository properties and values to exclude. The condition will not pass if any of these properties match. */
 export type OrgRulesetConditionsCase2RepositoryPropertyExcludeList =
   Array<RepositoryRulesetConditionsRepositoryPropertySpec>;
-export const OrgRulesetConditionsCase2RepositoryPropertyExcludeList =
-  OrgRulesetConditionsCase2RepositoryPropertyIncludeList as any as S.Schema<OrgRulesetConditionsCase2RepositoryPropertyExcludeList>;
-
 export interface OrgRulesetConditionsCase2RepositoryProperty {
   /** The repository properties and values to include. All of these properties must match for the condition to pass. */
   include?: OrgRulesetConditionsCase2RepositoryPropertyIncludeList;
   /** The repository properties and values to exclude. The condition will not pass if any of these properties match. */
   exclude?: OrgRulesetConditionsCase2RepositoryPropertyExcludeList;
 }
-export const OrgRulesetConditionsCase2RepositoryProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(OrgRulesetConditionsCase2RepositoryPropertyIncludeList),
-    exclude: S.optional(OrgRulesetConditionsCase2RepositoryPropertyExcludeList),
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase2RepositoryProperty",
-}) as any as S.Schema<OrgRulesetConditionsCase2RepositoryProperty>;
-
 /** Conditions to target repositories by property and refs by name */
 export interface OrgRulesetConditionsCase2 {
   ref_name?: OrgRulesetConditionsCase2RefName;
   repository_property: OrgRulesetConditionsCase2RepositoryProperty;
 }
-export const OrgRulesetConditionsCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref_name: S.optional(OrgRulesetConditionsCase2RefName),
-    repository_property: OrgRulesetConditionsCase2RepositoryProperty,
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase2",
-}) as any as S.Schema<OrgRulesetConditionsCase2>;
-
 /** Conditions for an organization ruleset. The branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties. The push rulesets conditions object does not require the `ref_name` property. For repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`. */
 export type OrgRulesetConditions =
   | OrgRulesetConditionsCase0
   | OrgRulesetConditionsCase1
   | OrgRulesetConditionsCase2;
-export const OrgRulesetConditions = S.Unknown as any as S.Schema<OrgRulesetConditions>;
+const OrgRulesetConditions = S.Unknown as any as S.Schema<OrgRulesetConditions>;
 
 export type RepositoryRuleCreationType = "creation";
-export const RepositoryRuleCreationType = S.String;
-
 /** Only allow users with bypass permission to create matching refs. */
 export interface RepositoryRuleCreation {
   type: RepositoryRuleCreationType;
 }
-export const RepositoryRuleCreation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCreationType,
-  }),
-).annotate({ identifier: "RepositoryRuleCreation" }) as any as S.Schema<RepositoryRuleCreation>;
-
 export type RepositoryRuleUpdateType = "update";
-export const RepositoryRuleUpdateType = S.String;
-
 export interface RepositoryRuleUpdateParameters {
   /** Branch can pull changes from its upstream repository */
   update_allows_fetch_and_merge: boolean;
 }
-export const RepositoryRuleUpdateParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    update_allows_fetch_and_merge: S.Boolean,
-  }),
-).annotate({
-  identifier: "RepositoryRuleUpdateParameters",
-}) as any as S.Schema<RepositoryRuleUpdateParameters>;
-
 /** Only allow users with bypass permission to update matching refs. */
 export interface RepositoryRuleUpdate {
   type: RepositoryRuleUpdateType;
   parameters?: RepositoryRuleUpdateParameters;
 }
-export const RepositoryRuleUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleUpdateType,
-    parameters: S.optional(RepositoryRuleUpdateParameters),
-  }),
-).annotate({ identifier: "RepositoryRuleUpdate" }) as any as S.Schema<RepositoryRuleUpdate>;
-
 export type RepositoryRuleDeletionType = "deletion";
-export const RepositoryRuleDeletionType = S.String;
-
 /** Only allow users with bypass permissions to delete matching refs. */
 export interface RepositoryRuleDeletion {
   type: RepositoryRuleDeletionType;
 }
-export const RepositoryRuleDeletion =
-  RepositoryRuleCreation as any as S.Schema<RepositoryRuleDeletion>;
-
 export type RepositoryRuleRequiredLinearHistoryType = "required_linear_history";
-export const RepositoryRuleRequiredLinearHistoryType = S.String;
-
 /** Prevent merge commits from being pushed to matching refs. */
 export interface RepositoryRuleRequiredLinearHistory {
   type: RepositoryRuleRequiredLinearHistoryType;
 }
-export const RepositoryRuleRequiredLinearHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleRequiredLinearHistoryType,
-  }),
-).annotate({
-  identifier: "RepositoryRuleRequiredLinearHistory",
-}) as any as S.Schema<RepositoryRuleRequiredLinearHistory>;
-
 export type RepositoryRuleRequiredDeploymentsType = "required_deployments";
-export const RepositoryRuleRequiredDeploymentsType = S.String;
-
 /** The environments that must be successfully deployed to before branches can be merged. */
 export type RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList =
   Array<string>;
-export const RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList>;
-
 export interface RepositoryRuleRequiredDeploymentsParameters {
   /** The environments that must be successfully deployed to before branches can be merged. */
   required_deployment_environments: RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList;
 }
-export const RepositoryRuleRequiredDeploymentsParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    required_deployment_environments:
-      RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleRequiredDeploymentsParameters",
-}) as any as S.Schema<RepositoryRuleRequiredDeploymentsParameters>;
-
 /** Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule. */
 export interface RepositoryRuleRequiredDeployments {
   type: RepositoryRuleRequiredDeploymentsType;
   parameters?: RepositoryRuleRequiredDeploymentsParameters;
 }
-export const RepositoryRuleRequiredDeployments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleRequiredDeploymentsType,
-    parameters: S.optional(RepositoryRuleRequiredDeploymentsParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleRequiredDeployments",
-}) as any as S.Schema<RepositoryRuleRequiredDeployments>;
-
 export type RepositoryRuleRequiredSignaturesType = "required_signatures";
-export const RepositoryRuleRequiredSignaturesType = S.String;
-
 /** Commits pushed to matching refs must have verified signatures. */
 export interface RepositoryRuleRequiredSignatures {
   type: RepositoryRuleRequiredSignaturesType;
 }
-export const RepositoryRuleRequiredSignatures =
-  RepositoryRuleRequiredLinearHistory as any as S.Schema<RepositoryRuleRequiredSignatures>;
-
 export type RepositoryRulePullRequestType = "pull_request";
-export const RepositoryRulePullRequestType = S.String;
-
 export type RepositoryRulePullRequestParametersAllowedMergeMethodsItem =
   | "merge"
   | "squash"
   | "rebase";
-export const RepositoryRulePullRequestParametersAllowedMergeMethodsItem = S.String;
-
 /** Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
 export type RepositoryRulePullRequestParametersAllowedMergeMethodsList = Array<
   RepositoryRulePullRequestParametersAllowedMergeMethodsItem | (string & {})
 >;
-export const RepositoryRulePullRequestParametersAllowedMergeMethodsList = /*@__PURE__*/ S.Array(
-  RepositoryRulePullRequestParametersAllowedMergeMethodsItem,
-) as any as S.Schema<RepositoryRulePullRequestParametersAllowedMergeMethodsList>;
-
 /** The type of the actor */
 export type RepositoryRuleParamsActorType =
   | "User"
   | "Team"
   | "IntegrationInstallation"
   | "RepositoryRole";
-export const RepositoryRuleParamsActorType = S.String;
-
 /** An actor allowed to dismiss pull request reviews */
 export interface RepositoryRuleParamsActor {
   /** ID of the actor that can dismiss reviews. */
@@ -3858,22 +3606,9 @@ export interface RepositoryRuleParamsActor {
   /** The type of the actor */
   type: RepositoryRuleParamsActorType | (string & {});
 }
-export const RepositoryRuleParamsActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    type: RepositoryRuleParamsActorType,
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsActor",
-}) as any as S.Schema<RepositoryRuleParamsActor>;
-
 /** Specify people, teams, or apps allowed to dismiss pull request reviews. */
 export type RepositoryRuleParamsDismissalRestrictionAllowedActorsList =
   Array<RepositoryRuleParamsActor>;
-export const RepositoryRuleParamsDismissalRestrictionAllowedActorsList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsActor,
-) as any as S.Schema<RepositoryRuleParamsDismissalRestrictionAllowedActorsList>;
-
 /** Specify people, teams, or apps allowed to dismiss pull request reviews. */
 export interface RepositoryRuleParamsDismissalRestriction {
   /** Specify people, teams, or apps allowed to dismiss pull request reviews. */
@@ -3881,24 +3616,10 @@ export interface RepositoryRuleParamsDismissalRestriction {
   /** Whether to restrict review dismissal to specific actors. */
   enabled: boolean;
 }
-export const RepositoryRuleParamsDismissalRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowed_actors: S.optional(RepositoryRuleParamsDismissalRestrictionAllowedActorsList),
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsDismissalRestriction",
-}) as any as S.Schema<RepositoryRuleParamsDismissalRestriction>;
-
 /** Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
 export type RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList = Array<string>;
-export const RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList>;
-
 /** The type of the reviewer */
 export type RepositoryRuleParamsReviewerType = "Team";
-export const RepositoryRuleParamsReviewerType = S.String;
-
 /** A required reviewing team */
 export interface RepositoryRuleParamsReviewer {
   /** ID of the reviewer which must review changes to matching files. */
@@ -3906,9 +3627,6 @@ export interface RepositoryRuleParamsReviewer {
   /** The type of the reviewer */
   type: RepositoryRuleParamsReviewerType | (string & {});
 }
-export const RepositoryRuleParamsReviewer =
-  RepositoryRuleParamsActor as any as S.Schema<RepositoryRuleParamsReviewer>;
-
 /** A reviewing team, and file patterns describing which files they must approve changes to. */
 export interface RepositoryRuleParamsRequiredReviewerConfiguration {
   /** Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
@@ -3917,23 +3635,9 @@ export interface RepositoryRuleParamsRequiredReviewerConfiguration {
   minimum_approvals: number;
   reviewer: RepositoryRuleParamsReviewer;
 }
-export const RepositoryRuleParamsRequiredReviewerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file_patterns: RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList,
-    minimum_approvals: S.Number,
-    reviewer: RepositoryRuleParamsReviewer,
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsRequiredReviewerConfiguration",
-}) as any as S.Schema<RepositoryRuleParamsRequiredReviewerConfiguration>;
-
 /** > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
 export type RepositoryRulePullRequestParametersRequiredReviewersList =
   Array<RepositoryRuleParamsRequiredReviewerConfiguration>;
-export const RepositoryRulePullRequestParametersRequiredReviewersList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsRequiredReviewerConfiguration,
-) as any as S.Schema<RepositoryRulePullRequestParametersRequiredReviewersList>;
-
 export interface RepositoryRulePullRequestParameters {
   /** Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
   allowed_merge_methods?: RepositoryRulePullRequestParametersAllowedMergeMethodsList;
@@ -3951,38 +3655,12 @@ export interface RepositoryRulePullRequestParameters {
   /** > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
   required_reviewers?: RepositoryRulePullRequestParametersRequiredReviewersList;
 }
-export const RepositoryRulePullRequestParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowed_merge_methods: S.optional(RepositoryRulePullRequestParametersAllowedMergeMethodsList),
-    dismiss_stale_reviews_on_push: S.Boolean,
-    dismissal_restriction: S.optional(RepositoryRuleParamsDismissalRestriction),
-    require_code_owner_review: S.Boolean,
-    require_last_push_approval: S.Boolean,
-    required_approving_review_count: S.Number,
-    required_review_thread_resolution: S.Boolean,
-    required_reviewers: S.optional(RepositoryRulePullRequestParametersRequiredReviewersList),
-  }),
-).annotate({
-  identifier: "RepositoryRulePullRequestParameters",
-}) as any as S.Schema<RepositoryRulePullRequestParameters>;
-
 /** Require all commits be made to a non-target branch and submitted via a pull request before they can be merged. */
 export interface RepositoryRulePullRequest {
   type: RepositoryRulePullRequestType;
   parameters?: RepositoryRulePullRequestParameters;
 }
-export const RepositoryRulePullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRulePullRequestType,
-    parameters: S.optional(RepositoryRulePullRequestParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRulePullRequest",
-}) as any as S.Schema<RepositoryRulePullRequest>;
-
 export type RepositoryRuleRequiredStatusChecksType = "required_status_checks";
-export const RepositoryRuleRequiredStatusChecksType = S.String;
-
 /** Required status check */
 export interface RepositoryRuleParamsStatusCheckConfiguration {
   /** The status check context name that must be present on the commit. */
@@ -3990,23 +3668,9 @@ export interface RepositoryRuleParamsStatusCheckConfiguration {
   /** The optional integration ID that this status check must originate from. */
   integration_id?: number;
 }
-export const RepositoryRuleParamsStatusCheckConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    context: S.String,
-    integration_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsStatusCheckConfiguration",
-}) as any as S.Schema<RepositoryRuleParamsStatusCheckConfiguration>;
-
 /** Status checks that are required. */
 export type RepositoryRuleRequiredStatusChecksParametersRequiredStatusChecksList =
   Array<RepositoryRuleParamsStatusCheckConfiguration>;
-export const RepositoryRuleRequiredStatusChecksParametersRequiredStatusChecksList =
-  /*@__PURE__*/ S.Array(
-    RepositoryRuleParamsStatusCheckConfiguration,
-  ) as any as S.Schema<RepositoryRuleRequiredStatusChecksParametersRequiredStatusChecksList>;
-
 export interface RepositoryRuleRequiredStatusChecksParameters {
   /** Allow repositories and branches to be created if a check would otherwise prohibit it. */
   do_not_enforce_on_create?: boolean;
@@ -4015,51 +3679,23 @@ export interface RepositoryRuleRequiredStatusChecksParameters {
   /** Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
   strict_required_status_checks_policy: boolean;
 }
-export const RepositoryRuleRequiredStatusChecksParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    do_not_enforce_on_create: S.optional(S.Boolean),
-    required_status_checks: RepositoryRuleRequiredStatusChecksParametersRequiredStatusChecksList,
-    strict_required_status_checks_policy: S.Boolean,
-  }),
-).annotate({
-  identifier: "RepositoryRuleRequiredStatusChecksParameters",
-}) as any as S.Schema<RepositoryRuleRequiredStatusChecksParameters>;
-
 /** Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass. */
 export interface RepositoryRuleRequiredStatusChecks {
   type: RepositoryRuleRequiredStatusChecksType;
   parameters?: RepositoryRuleRequiredStatusChecksParameters;
 }
-export const RepositoryRuleRequiredStatusChecks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleRequiredStatusChecksType,
-    parameters: S.optional(RepositoryRuleRequiredStatusChecksParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleRequiredStatusChecks",
-}) as any as S.Schema<RepositoryRuleRequiredStatusChecks>;
-
 export type RepositoryRuleNonFastForwardType = "non_fast_forward";
-export const RepositoryRuleNonFastForwardType = S.String;
-
 /** Prevent users with push access from force pushing to refs. */
 export interface RepositoryRuleNonFastForward {
   type: RepositoryRuleNonFastForwardType;
 }
-export const RepositoryRuleNonFastForward =
-  RepositoryRuleRequiredLinearHistory as any as S.Schema<RepositoryRuleNonFastForward>;
-
 export type RepositoryRuleCommitMessagePatternType = "commit_message_pattern";
-export const RepositoryRuleCommitMessagePatternType = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleCommitMessagePatternParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleCommitMessagePatternParametersOperator = S.String;
-
 export interface RepositoryRuleCommitMessagePatternParameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -4070,42 +3706,18 @@ export interface RepositoryRuleCommitMessagePatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleCommitMessagePatternParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    negate: S.optional(S.Boolean),
-    operator: RepositoryRuleCommitMessagePatternParametersOperator,
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleCommitMessagePatternParameters",
-}) as any as S.Schema<RepositoryRuleCommitMessagePatternParameters>;
-
 /** Parameters to be used for the commit_message_pattern rule */
 export interface RepositoryRuleCommitMessagePattern {
   type: RepositoryRuleCommitMessagePatternType;
   parameters?: RepositoryRuleCommitMessagePatternParameters;
 }
-export const RepositoryRuleCommitMessagePattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCommitMessagePatternType,
-    parameters: S.optional(RepositoryRuleCommitMessagePatternParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCommitMessagePattern",
-}) as any as S.Schema<RepositoryRuleCommitMessagePattern>;
-
 export type RepositoryRuleCommitAuthorEmailPatternType = "commit_author_email_pattern";
-export const RepositoryRuleCommitAuthorEmailPatternType = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleCommitAuthorEmailPatternParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleCommitAuthorEmailPatternParametersOperator = S.String;
-
 export interface RepositoryRuleCommitAuthorEmailPatternParameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -4116,28 +3728,18 @@ export interface RepositoryRuleCommitAuthorEmailPatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleCommitAuthorEmailPatternParameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleCommitAuthorEmailPatternParameters>;
-
 /** Parameters to be used for the commit_author_email_pattern rule */
 export interface RepositoryRuleCommitAuthorEmailPattern {
   type: RepositoryRuleCommitAuthorEmailPatternType;
   parameters?: RepositoryRuleCommitAuthorEmailPatternParameters;
 }
-export const RepositoryRuleCommitAuthorEmailPattern =
-  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleCommitAuthorEmailPattern>;
-
 export type RepositoryRuleCommitterEmailPatternType = "committer_email_pattern";
-export const RepositoryRuleCommitterEmailPatternType = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleCommitterEmailPatternParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleCommitterEmailPatternParametersOperator = S.String;
-
 export interface RepositoryRuleCommitterEmailPatternParameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -4148,28 +3750,18 @@ export interface RepositoryRuleCommitterEmailPatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleCommitterEmailPatternParameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleCommitterEmailPatternParameters>;
-
 /** Parameters to be used for the committer_email_pattern rule */
 export interface RepositoryRuleCommitterEmailPattern {
   type: RepositoryRuleCommitterEmailPatternType;
   parameters?: RepositoryRuleCommitterEmailPatternParameters;
 }
-export const RepositoryRuleCommitterEmailPattern =
-  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleCommitterEmailPattern>;
-
 export type RepositoryRuleBranchNamePatternType = "branch_name_pattern";
-export const RepositoryRuleBranchNamePatternType = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleBranchNamePatternParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleBranchNamePatternParametersOperator = S.String;
-
 export interface RepositoryRuleBranchNamePatternParameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -4180,28 +3772,18 @@ export interface RepositoryRuleBranchNamePatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleBranchNamePatternParameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleBranchNamePatternParameters>;
-
 /** Parameters to be used for the branch_name_pattern rule */
 export interface RepositoryRuleBranchNamePattern {
   type: RepositoryRuleBranchNamePatternType;
   parameters?: RepositoryRuleBranchNamePatternParameters;
 }
-export const RepositoryRuleBranchNamePattern =
-  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleBranchNamePattern>;
-
 export type RepositoryRuleTagNamePatternType = "tag_name_pattern";
-export const RepositoryRuleTagNamePatternType = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleTagNamePatternParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleTagNamePatternParametersOperator = S.String;
-
 export interface RepositoryRuleTagNamePatternParameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -4212,148 +3794,57 @@ export interface RepositoryRuleTagNamePatternParameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleTagNamePatternParameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleTagNamePatternParameters>;
-
 /** Parameters to be used for the tag_name_pattern rule */
 export interface RepositoryRuleTagNamePattern {
   type: RepositoryRuleTagNamePatternType;
   parameters?: RepositoryRuleTagNamePatternParameters;
 }
-export const RepositoryRuleTagNamePattern =
-  RepositoryRuleCommitMessagePattern as any as S.Schema<RepositoryRuleTagNamePattern>;
-
 export type RepositoryRuleFilePathRestrictionType = "file_path_restriction";
-export const RepositoryRuleFilePathRestrictionType = S.String;
-
 /** The file paths that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList = Array<string>;
-export const RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList>;
-
 export interface RepositoryRuleFilePathRestrictionParameters {
   /** The file paths that are restricted from being pushed to the commit graph. */
   restricted_file_paths: RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList;
 }
-export const RepositoryRuleFilePathRestrictionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restricted_file_paths: RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleFilePathRestrictionParameters",
-}) as any as S.Schema<RepositoryRuleFilePathRestrictionParameters>;
-
 /** Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names. */
 export interface RepositoryRuleFilePathRestriction {
   type: RepositoryRuleFilePathRestrictionType;
   parameters?: RepositoryRuleFilePathRestrictionParameters;
 }
-export const RepositoryRuleFilePathRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleFilePathRestrictionType,
-    parameters: S.optional(RepositoryRuleFilePathRestrictionParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleFilePathRestriction",
-}) as any as S.Schema<RepositoryRuleFilePathRestriction>;
-
 export type RepositoryRuleMaxFilePathLengthType = "max_file_path_length";
-export const RepositoryRuleMaxFilePathLengthType = S.String;
-
 export interface RepositoryRuleMaxFilePathLengthParameters {
   /** The maximum amount of characters allowed in file paths. */
   max_file_path_length: number;
 }
-export const RepositoryRuleMaxFilePathLengthParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_file_path_length: S.Number,
-  }),
-).annotate({
-  identifier: "RepositoryRuleMaxFilePathLengthParameters",
-}) as any as S.Schema<RepositoryRuleMaxFilePathLengthParameters>;
-
 /** Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph. */
 export interface RepositoryRuleMaxFilePathLength {
   type: RepositoryRuleMaxFilePathLengthType;
   parameters?: RepositoryRuleMaxFilePathLengthParameters;
 }
-export const RepositoryRuleMaxFilePathLength = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleMaxFilePathLengthType,
-    parameters: S.optional(RepositoryRuleMaxFilePathLengthParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleMaxFilePathLength",
-}) as any as S.Schema<RepositoryRuleMaxFilePathLength>;
-
 export type RepositoryRuleFileExtensionRestrictionType = "file_extension_restriction";
-export const RepositoryRuleFileExtensionRestrictionType = S.String;
-
 /** The file extensions that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList =
   Array<string>;
-export const RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList>;
-
 export interface RepositoryRuleFileExtensionRestrictionParameters {
   /** The file extensions that are restricted from being pushed to the commit graph. */
   restricted_file_extensions: RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList;
 }
-export const RepositoryRuleFileExtensionRestrictionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restricted_file_extensions:
-      RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleFileExtensionRestrictionParameters",
-}) as any as S.Schema<RepositoryRuleFileExtensionRestrictionParameters>;
-
 /** Prevent commits that include files with specified file extensions from being pushed to the commit graph. */
 export interface RepositoryRuleFileExtensionRestriction {
   type: RepositoryRuleFileExtensionRestrictionType;
   parameters?: RepositoryRuleFileExtensionRestrictionParameters;
 }
-export const RepositoryRuleFileExtensionRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleFileExtensionRestrictionType,
-    parameters: S.optional(RepositoryRuleFileExtensionRestrictionParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleFileExtensionRestriction",
-}) as any as S.Schema<RepositoryRuleFileExtensionRestriction>;
-
 export type RepositoryRuleMaxFileSizeType = "max_file_size";
-export const RepositoryRuleMaxFileSizeType = S.String;
-
 export interface RepositoryRuleMaxFileSizeParameters {
   /** The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS). */
   max_file_size: number;
 }
-export const RepositoryRuleMaxFileSizeParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_file_size: S.Number,
-  }),
-).annotate({
-  identifier: "RepositoryRuleMaxFileSizeParameters",
-}) as any as S.Schema<RepositoryRuleMaxFileSizeParameters>;
-
 /** Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph. */
 export interface RepositoryRuleMaxFileSize {
   type: RepositoryRuleMaxFileSizeType;
   parameters?: RepositoryRuleMaxFileSizeParameters;
 }
-export const RepositoryRuleMaxFileSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleMaxFileSizeType,
-    parameters: S.optional(RepositoryRuleMaxFileSizeParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleMaxFileSize",
-}) as any as S.Schema<RepositoryRuleMaxFileSize>;
-
 export type RepositoryRuleWorkflowsType = "workflows";
-export const RepositoryRuleWorkflowsType = S.String;
-
 /** A workflow that must run for this rule to pass */
 export interface RepositoryRuleParamsWorkflowFileReference {
   /** The path to the workflow file */
@@ -4365,62 +3856,27 @@ export interface RepositoryRuleParamsWorkflowFileReference {
   /** The commit SHA of the workflow file to use */
   sha?: string;
 }
-export const RepositoryRuleParamsWorkflowFileReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    ref: S.optional(S.String),
-    repository_id: S.Number,
-    sha: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsWorkflowFileReference",
-}) as any as S.Schema<RepositoryRuleParamsWorkflowFileReference>;
-
 /** Workflows that must pass for this rule to pass. */
 export type RepositoryRuleWorkflowsParametersWorkflowsList =
   Array<RepositoryRuleParamsWorkflowFileReference>;
-export const RepositoryRuleWorkflowsParametersWorkflowsList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsWorkflowFileReference,
-) as any as S.Schema<RepositoryRuleWorkflowsParametersWorkflowsList>;
-
 export interface RepositoryRuleWorkflowsParameters {
   /** Allow repositories and branches to be created if a check would otherwise prohibit it. */
   do_not_enforce_on_create?: boolean;
   /** Workflows that must pass for this rule to pass. */
   workflows: RepositoryRuleWorkflowsParametersWorkflowsList;
 }
-export const RepositoryRuleWorkflowsParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    do_not_enforce_on_create: S.optional(S.Boolean),
-    workflows: RepositoryRuleWorkflowsParametersWorkflowsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleWorkflowsParameters",
-}) as any as S.Schema<RepositoryRuleWorkflowsParameters>;
-
 /** Require all changes made to a targeted branch to pass the specified workflows before they can be merged. */
 export interface RepositoryRuleWorkflows {
   type: RepositoryRuleWorkflowsType;
   parameters?: RepositoryRuleWorkflowsParameters;
 }
-export const RepositoryRuleWorkflows = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleWorkflowsType,
-    parameters: S.optional(RepositoryRuleWorkflowsParameters),
-  }),
-).annotate({ identifier: "RepositoryRuleWorkflows" }) as any as S.Schema<RepositoryRuleWorkflows>;
-
 export type RepositoryRuleCodeScanningType = "code_scanning";
-export const RepositoryRuleCodeScanningType = S.String;
-
 /** The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
 export type RepositoryRuleParamsCodeScanningToolAlertsThreshold =
   | "none"
   | "errors"
   | "errors_and_warnings"
   | "all";
-export const RepositoryRuleParamsCodeScanningToolAlertsThreshold = S.String;
-
 /** The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
 export type RepositoryRuleParamsCodeScanningToolSecurityAlertsThreshold =
   | "none"
@@ -4428,8 +3884,6 @@ export type RepositoryRuleParamsCodeScanningToolSecurityAlertsThreshold =
   | "high_or_higher"
   | "medium_or_higher"
   | "all";
-export const RepositoryRuleParamsCodeScanningToolSecurityAlertsThreshold = S.String;
-
 /** A tool that must provide code scanning results for this rule to pass. */
 export interface RepositoryRuleParamsCodeScanningTool {
   /** The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)." */
@@ -4441,81 +3895,30 @@ export interface RepositoryRuleParamsCodeScanningTool {
   /** The name of a code scanning tool */
   tool: string;
 }
-export const RepositoryRuleParamsCodeScanningTool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alerts_threshold: RepositoryRuleParamsCodeScanningToolAlertsThreshold,
-    security_alerts_threshold: RepositoryRuleParamsCodeScanningToolSecurityAlertsThreshold,
-    tool: S.String,
-  }),
-).annotate({
-  identifier: "RepositoryRuleParamsCodeScanningTool",
-}) as any as S.Schema<RepositoryRuleParamsCodeScanningTool>;
-
 /** Tools that must provide code scanning results for this rule to pass. */
 export type RepositoryRuleCodeScanningParametersCodeScanningToolsList =
   Array<RepositoryRuleParamsCodeScanningTool>;
-export const RepositoryRuleCodeScanningParametersCodeScanningToolsList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsCodeScanningTool,
-) as any as S.Schema<RepositoryRuleCodeScanningParametersCodeScanningToolsList>;
-
 export interface RepositoryRuleCodeScanningParameters {
   /** Tools that must provide code scanning results for this rule to pass. */
   code_scanning_tools: RepositoryRuleCodeScanningParametersCodeScanningToolsList;
 }
-export const RepositoryRuleCodeScanningParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code_scanning_tools: RepositoryRuleCodeScanningParametersCodeScanningToolsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleCodeScanningParameters",
-}) as any as S.Schema<RepositoryRuleCodeScanningParameters>;
-
 /** Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated. */
 export interface RepositoryRuleCodeScanning {
   type: RepositoryRuleCodeScanningType;
   parameters?: RepositoryRuleCodeScanningParameters;
 }
-export const RepositoryRuleCodeScanning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCodeScanningType,
-    parameters: S.optional(RepositoryRuleCodeScanningParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCodeScanning",
-}) as any as S.Schema<RepositoryRuleCodeScanning>;
-
 export type RepositoryRuleCopilotCodeReviewType = "copilot_code_review";
-export const RepositoryRuleCopilotCodeReviewType = S.String;
-
 export interface RepositoryRuleCopilotCodeReviewParameters {
   /** Copilot automatically reviews draft pull requests before they are marked as ready for review. */
   review_draft_pull_requests?: boolean;
   /** Copilot automatically reviews each new push to the pull request. */
   review_on_push?: boolean;
 }
-export const RepositoryRuleCopilotCodeReviewParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    review_draft_pull_requests: S.optional(S.Boolean),
-    review_on_push: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCopilotCodeReviewParameters",
-}) as any as S.Schema<RepositoryRuleCopilotCodeReviewParameters>;
-
 /** Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit. */
 export interface RepositoryRuleCopilotCodeReview {
   type: RepositoryRuleCopilotCodeReviewType;
   parameters?: RepositoryRuleCopilotCodeReviewParameters;
 }
-export const RepositoryRuleCopilotCodeReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCopilotCodeReviewType,
-    parameters: S.optional(RepositoryRuleCopilotCodeReviewParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCopilotCodeReview",
-}) as any as S.Schema<RepositoryRuleCopilotCodeReview>;
-
 /** A repository rule. */
 export type OrgRules =
   | RepositoryRuleCreation
@@ -4539,11 +3942,11 @@ export type OrgRules =
   | RepositoryRuleWorkflows
   | RepositoryRuleCodeScanning
   | RepositoryRuleCopilotCodeReview;
-export const OrgRules = S.Unknown as any as S.Schema<OrgRules>;
+const OrgRules = S.Unknown as any as S.Schema<OrgRules>;
 
 /** An array of rules within the ruleset. */
 export type CreateOrgRulesetRequestRulesList = Array<OrgRules>;
-export const CreateOrgRulesetRequestRulesList = /*@__PURE__*/ S.Array(
+const CreateOrgRulesetRequestRulesList = /*@__PURE__*/ S.Array(
   OrgRules,
 ) as any as S.Schema<CreateOrgRulesetRequestRulesList>;
 
@@ -4561,7 +3964,7 @@ export interface CreateOrgRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: CreateOrgRulesetRequestRulesList;
 }
-export const CreateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -4575,15 +3978,15 @@ export const CreateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The target of the ruleset */
 export type RepositoryRulesetTarget = "branch" | "tag" | "push" | "repository";
-export const RepositoryRulesetTarget = S.String;
+const RepositoryRulesetTarget = S.String;
 
 /** The type of the source of the ruleset */
 export type RepositoryRulesetSourceType = "Repository" | "Organization" | "Enterprise";
-export const RepositoryRulesetSourceType = S.String;
+const RepositoryRulesetSourceType = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type RepositoryRulesetBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const RepositoryRulesetBypassActorsList =
+const RepositoryRulesetBypassActorsList =
   CreateOrgRulesetRequestBypassActorsList as any as S.Schema<RepositoryRulesetBypassActorsList>;
 
 /** The bypass type of the user making the API request for this ruleset. This field is only returned when querying the repository-level endpoint. */
@@ -4592,13 +3995,13 @@ export type RepositoryRulesetCurrentUserCanBypass =
   | "pull_requests_only"
   | "never"
   | "exempt";
-export const RepositoryRulesetCurrentUserCanBypass = S.String;
+const RepositoryRulesetCurrentUserCanBypass = S.String;
 
 export interface RepositoryRulesetLinksSelf {
   /** The URL of the ruleset */
   href?: string;
 }
-export const RepositoryRulesetLinksSelf = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRulesetLinksSelf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.optional(S.String),
   }),
@@ -4610,14 +4013,14 @@ export interface RepositoryRulesetLinksHtml {
   /** The html URL of the ruleset */
   href?: string;
 }
-export const RepositoryRulesetLinksHtml =
+const RepositoryRulesetLinksHtml =
   RepositoryRulesetLinksSelf as any as S.Schema<RepositoryRulesetLinksHtml>;
 
 export interface RepositoryRulesetLinks {
   self?: RepositoryRulesetLinksSelf;
   html?: RepositoryRulesetLinksHtml | null;
 }
-export const RepositoryRulesetLinks = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRulesetLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(RepositoryRulesetLinksSelf),
     html: S.optional(S.NullOr(RepositoryRulesetLinksHtml)),
@@ -4626,28 +4029,22 @@ export const RepositoryRulesetLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type RepositoryRulesetConditionsRefNameIncludeList = Array<string>;
-export const RepositoryRulesetConditionsRefNameIncludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryRulesetConditionsRefNameIncludeList>;
-
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type RepositoryRulesetConditionsRefNameExcludeList = Array<string>;
-export const RepositoryRulesetConditionsRefNameExcludeList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryRulesetConditionsRefNameExcludeList>;
-
 export interface RepositoryRulesetConditionsRefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
   include?: RepositoryRulesetConditionsRefNameIncludeList;
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: RepositoryRulesetConditionsRefNameExcludeList;
 }
-export const RepositoryRulesetConditionsRefName =
+const RepositoryRulesetConditionsRefName =
   OrgRulesetConditionsCase0RefName as any as S.Schema<RepositoryRulesetConditionsRefName>;
 
 /** Parameters for a repository ruleset ref name condition */
 export interface RepositoryRulesetConditions {
   ref_name?: RepositoryRulesetConditionsRefName;
 }
-export const RepositoryRulesetConditions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRulesetConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref_name: S.optional(RepositoryRulesetConditionsRefName),
   }),
@@ -4656,20 +4053,13 @@ export const RepositoryRulesetConditions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryRulesetConditions>;
 
 export type RepositoryRulesetConditions2 = RepositoryRulesetConditions | OrgRulesetConditions;
-export const RepositoryRulesetConditions2 =
-  S.Unknown as any as S.Schema<RepositoryRulesetConditions2>;
+const RepositoryRulesetConditions2 = S.Unknown as any as S.Schema<RepositoryRulesetConditions2>;
 
 export type RepositoryRuleMergeQueueType = "merge_queue";
-export const RepositoryRuleMergeQueueType = S.String;
-
 /** When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge. */
 export type RepositoryRuleMergeQueueParametersGroupingStrategy = "ALLGREEN" | "HEADGREEN";
-export const RepositoryRuleMergeQueueParametersGroupingStrategy = S.String;
-
 /** Method to use when merging changes from queued pull requests. */
 export type RepositoryRuleMergeQueueParametersMergeMethod = "MERGE" | "SQUASH" | "REBASE";
-export const RepositoryRuleMergeQueueParametersMergeMethod = S.String;
-
 export interface RepositoryRuleMergeQueueParameters {
   /** Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed */
   check_response_timeout_minutes: number;
@@ -4686,107 +4076,40 @@ export interface RepositoryRuleMergeQueueParameters {
   /** The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged. */
   min_entries_to_merge_wait_minutes: number;
 }
-export const RepositoryRuleMergeQueueParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check_response_timeout_minutes: S.Number,
-    grouping_strategy: RepositoryRuleMergeQueueParametersGroupingStrategy,
-    max_entries_to_build: S.Number,
-    max_entries_to_merge: S.Number,
-    merge_method: RepositoryRuleMergeQueueParametersMergeMethod,
-    min_entries_to_merge: S.Number,
-    min_entries_to_merge_wait_minutes: S.Number,
-  }),
-).annotate({
-  identifier: "RepositoryRuleMergeQueueParameters",
-}) as any as S.Schema<RepositoryRuleMergeQueueParameters>;
-
 /** Merges must be performed via a merge queue. */
 export interface RepositoryRuleMergeQueue {
   type: RepositoryRuleMergeQueueType;
   parameters?: RepositoryRuleMergeQueueParameters;
 }
-export const RepositoryRuleMergeQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleMergeQueueType,
-    parameters: S.optional(RepositoryRuleMergeQueueParameters),
-  }),
-).annotate({ identifier: "RepositoryRuleMergeQueue" }) as any as S.Schema<RepositoryRuleMergeQueue>;
-
 export type RepositoryRuleCodeQualityType = "code_quality";
-export const RepositoryRuleCodeQualityType = S.String;
-
 /** The lowest severity level at which code quality reviews need to be resolved before commits can be merged. */
 export type RepositoryRuleCodeQualityParametersSeverity = "errors" | "warnings" | "notes" | "all";
-export const RepositoryRuleCodeQualityParametersSeverity = S.String;
-
 export interface RepositoryRuleCodeQualityParameters {
   /** The lowest severity level at which code quality reviews need to be resolved before commits can be merged. */
   severity: RepositoryRuleCodeQualityParametersSeverity | (string & {});
 }
-export const RepositoryRuleCodeQualityParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: RepositoryRuleCodeQualityParametersSeverity,
-  }),
-).annotate({
-  identifier: "RepositoryRuleCodeQualityParameters",
-}) as any as S.Schema<RepositoryRuleCodeQualityParameters>;
-
 /** Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged. */
 export interface RepositoryRuleCodeQuality {
   type: RepositoryRuleCodeQualityType;
   parameters?: RepositoryRuleCodeQualityParameters;
 }
-export const RepositoryRuleCodeQuality = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCodeQualityType,
-    parameters: S.optional(RepositoryRuleCodeQualityParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCodeQuality",
-}) as any as S.Schema<RepositoryRuleCodeQuality>;
-
 export type RepositoryRuleCodeCoverageType = "code_coverage";
-export const RepositoryRuleCodeCoverageType = S.String;
-
 export interface RepositoryRuleCodeCoverageParameters {
   /** The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked. */
   max_coverage_drop?: number;
   /** The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked. */
   minimum_coverage?: number;
 }
-export const RepositoryRuleCodeCoverageParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_coverage_drop: S.optional(S.Number),
-    minimum_coverage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCodeCoverageParameters",
-}) as any as S.Schema<RepositoryRuleCodeCoverageParameters>;
-
 /** Enforce minimum line coverage thresholds on pull requests. When configured, uploaded coverage data must meet the specified criteria before changes can be merged. */
 export interface RepositoryRuleCodeCoverage {
   type: RepositoryRuleCodeCoverageType;
   parameters?: RepositoryRuleCodeCoverageParameters;
 }
-export const RepositoryRuleCodeCoverage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleCodeCoverageType,
-    parameters: S.optional(RepositoryRuleCodeCoverageParameters),
-  }),
-).annotate({
-  identifier: "RepositoryRuleCodeCoverage",
-}) as any as S.Schema<RepositoryRuleCodeCoverage>;
-
 export type RepositoryRuleLicenseComplianceScanningType = "license_compliance_scanning";
-export const RepositoryRuleLicenseComplianceScanningType = S.String;
-
 /** Enforce any added or changed dependencies to comply with the organization's license policy. */
 export interface RepositoryRuleLicenseComplianceScanning {
   type: RepositoryRuleLicenseComplianceScanningType;
 }
-export const RepositoryRuleLicenseComplianceScanning =
-  RepositoryRuleRequiredLinearHistory as any as S.Schema<RepositoryRuleLicenseComplianceScanning>;
-
 /** A repository rule. */
 export type RepositoryRule =
   | RepositoryRuleCreation
@@ -4814,10 +4137,10 @@ export type RepositoryRule =
   | RepositoryRuleMaxFilePathLength
   | RepositoryRuleFileExtensionRestriction
   | RepositoryRuleMaxFileSize;
-export const RepositoryRule = S.Unknown as any as S.Schema<RepositoryRule>;
+const RepositoryRule = S.Unknown as any as S.Schema<RepositoryRule>;
 
 export type RepositoryRulesetRulesList = Array<RepositoryRule>;
-export const RepositoryRulesetRulesList = /*@__PURE__*/ S.Array(
+const RepositoryRulesetRulesList = /*@__PURE__*/ S.Array(
   RepositoryRule,
 ) as any as S.Schema<RepositoryRulesetRulesList>;
 
@@ -4845,7 +4168,7 @@ export interface RepositoryRuleset {
   created_at?: string;
   updated_at?: string;
 }
-export const RepositoryRuleset = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -4866,14 +4189,14 @@ export const RepositoryRuleset = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of reviewer. */
 export type DeploymentReviewerType = "User" | "Team";
-export const DeploymentReviewerType = S.String;
+const DeploymentReviewerType = S.String;
 
 export interface CreateOrUpdateEnvironmentRequestReviewersItem {
   type?: DeploymentReviewerType | (string & {});
   /** The id of the user or team who can review the deployment */
   id?: number;
 }
-export const CreateOrUpdateEnvironmentRequestReviewersItem = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateEnvironmentRequestReviewersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DeploymentReviewerType),
     id: S.optional(S.Number),
@@ -4885,7 +4208,7 @@ export const CreateOrUpdateEnvironmentRequestReviewersItem = /*@__PURE__*/ S.sus
 /** The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed. */
 export type CreateOrUpdateEnvironmentRequestReviewersList =
   Array<CreateOrUpdateEnvironmentRequestReviewersItem>;
-export const CreateOrUpdateEnvironmentRequestReviewersList = /*@__PURE__*/ S.Array(
+const CreateOrUpdateEnvironmentRequestReviewersList = /*@__PURE__*/ S.Array(
   CreateOrUpdateEnvironmentRequestReviewersItem,
 ) as any as S.Schema<CreateOrUpdateEnvironmentRequestReviewersList>;
 
@@ -4896,7 +4219,7 @@ export interface DeploymentBranchPolicySettings {
   /** Whether only branches that match the specified name patterns can deploy to this environment. If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`. */
   custom_branch_policies: boolean;
 }
-export const DeploymentBranchPolicySettings = /*@__PURE__*/ S.suspend(() =>
+const DeploymentBranchPolicySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protected_branches: S.Boolean,
     custom_branch_policies: S.Boolean,
@@ -4918,7 +4241,7 @@ export interface CreateOrUpdateEnvironmentRequest {
   reviewers?: CreateOrUpdateEnvironmentRequestReviewersList | null;
   deployment_branch_policy?: DeploymentBranchPolicySettings | null;
 }
-export const CreateOrUpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4944,41 +4267,14 @@ export interface EnvironmentProtectionRulesItemCase0 {
   type: string;
   wait_timer?: number;
 }
-export const EnvironmentProtectionRulesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    type: S.String,
-    wait_timer: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EnvironmentProtectionRulesItemCase0",
-}) as any as S.Schema<EnvironmentProtectionRulesItemCase0>;
-
 export type EnvironmentProtectionRulesItemCase1ReviewersItemReviewer = SimpleUser | Team;
-export const EnvironmentProtectionRulesItemCase1ReviewersItemReviewer =
-  S.Unknown as any as S.Schema<EnvironmentProtectionRulesItemCase1ReviewersItemReviewer>;
-
 export interface EnvironmentProtectionRulesItemCase1ReviewersItem {
   type?: DeploymentReviewerType;
   reviewer?: EnvironmentProtectionRulesItemCase1ReviewersItemReviewer;
 }
-export const EnvironmentProtectionRulesItemCase1ReviewersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DeploymentReviewerType),
-    reviewer: S.optional(EnvironmentProtectionRulesItemCase1ReviewersItemReviewer),
-  }),
-).annotate({
-  identifier: "EnvironmentProtectionRulesItemCase1ReviewersItem",
-}) as any as S.Schema<EnvironmentProtectionRulesItemCase1ReviewersItem>;
-
 /** The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed. */
 export type EnvironmentProtectionRulesItemCase1ReviewersList =
   Array<EnvironmentProtectionRulesItemCase1ReviewersItem>;
-export const EnvironmentProtectionRulesItemCase1ReviewersList = /*@__PURE__*/ S.Array(
-  EnvironmentProtectionRulesItemCase1ReviewersItem,
-) as any as S.Schema<EnvironmentProtectionRulesItemCase1ReviewersList>;
-
 export interface EnvironmentProtectionRulesItemCase1 {
   id: number;
   node_id: string;
@@ -4988,43 +4284,20 @@ export interface EnvironmentProtectionRulesItemCase1 {
   /** The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed. */
   reviewers?: EnvironmentProtectionRulesItemCase1ReviewersList;
 }
-export const EnvironmentProtectionRulesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    prevent_self_review: S.optional(S.Boolean),
-    type: S.String,
-    reviewers: S.optional(EnvironmentProtectionRulesItemCase1ReviewersList),
-  }),
-).annotate({
-  identifier: "EnvironmentProtectionRulesItemCase1",
-}) as any as S.Schema<EnvironmentProtectionRulesItemCase1>;
-
 export interface EnvironmentProtectionRulesItemCase2 {
   id: number;
   node_id: string;
   type: string;
 }
-export const EnvironmentProtectionRulesItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "EnvironmentProtectionRulesItemCase2",
-}) as any as S.Schema<EnvironmentProtectionRulesItemCase2>;
-
 export type EnvironmentProtectionRulesItem =
   | EnvironmentProtectionRulesItemCase0
   | EnvironmentProtectionRulesItemCase1
   | EnvironmentProtectionRulesItemCase2;
-export const EnvironmentProtectionRulesItem =
-  S.Unknown as any as S.Schema<EnvironmentProtectionRulesItem>;
+const EnvironmentProtectionRulesItem = S.Unknown as any as S.Schema<EnvironmentProtectionRulesItem>;
 
 /** Built-in deployment protection rules for the environment. */
 export type EnvironmentProtectionRulesList = Array<EnvironmentProtectionRulesItem>;
-export const EnvironmentProtectionRulesList = /*@__PURE__*/ S.Array(
+const EnvironmentProtectionRulesList = /*@__PURE__*/ S.Array(
   EnvironmentProtectionRulesItem,
 ) as any as S.Schema<EnvironmentProtectionRulesList>;
 
@@ -5045,7 +4318,7 @@ export interface Environment {
   protection_rules?: EnvironmentProtectionRulesList;
   deployment_branch_policy?: DeploymentBranchPolicySettings | null;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -5067,7 +4340,7 @@ export interface CreateOrUpdateFileContentsRequestCommitter {
   email: string;
   date?: string;
 }
-export const CreateOrUpdateFileContentsRequestCommitter = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateFileContentsRequestCommitter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.String,
@@ -5079,8 +4352,6 @@ export const CreateOrUpdateFileContentsRequestCommitter = /*@__PURE__*/ S.suspen
 
 /** The author of the file. Default: The `committer` or the authenticated user if you omit `committer`. */
 export type CreateOrUpdateFileContentsRequestAuthor = CreateOrUpdateFileContentsRequestCommitter;
-export const CreateOrUpdateFileContentsRequestAuthor = CreateOrUpdateFileContentsRequestCommitter;
-
 export interface CreateOrUpdateFileContentsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -5101,7 +4372,7 @@ export interface CreateOrUpdateFileContentsRequest {
   /** The author of the file. Default: The `committer` or the authenticated user if you omit `committer`. */
   author?: CreateOrUpdateFileContentsRequestCommitter;
 }
-export const CreateOrUpdateFileContentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateFileContentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5122,7 +4393,7 @@ export interface FileCommitContentLinks {
   git?: string;
   html?: string;
 }
-export const FileCommitContentLinks = /*@__PURE__*/ S.suspend(() =>
+const FileCommitContentLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(S.String),
     git: S.optional(S.String),
@@ -5142,7 +4413,7 @@ export interface FileCommitContent {
   type?: string;
   _links?: FileCommitContentLinks;
 }
-export const FileCommitContent = /*@__PURE__*/ S.suspend(() =>
+const FileCommitContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     path: S.optional(S.String),
@@ -5162,7 +4433,7 @@ export interface FileCommitCommitAuthor {
   name?: string;
   email?: string;
 }
-export const FileCommitCommitAuthor = /*@__PURE__*/ S.suspend(() =>
+const FileCommitCommitAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     name: S.optional(S.String),
@@ -5171,13 +4442,11 @@ export const FileCommitCommitAuthor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileCommitCommitAuthor" }) as any as S.Schema<FileCommitCommitAuthor>;
 
 export type FileCommitCommitCommitter = FileCommitCommitAuthor;
-export const FileCommitCommitCommitter = FileCommitCommitAuthor;
-
 export interface FileCommitCommitTree {
   url?: string;
   sha?: string;
 }
-export const FileCommitCommitTree = /*@__PURE__*/ S.suspend(() =>
+const FileCommitCommitTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     sha: S.optional(S.String),
@@ -5189,7 +4458,7 @@ export interface FileCommitCommitParentsItem {
   html_url?: string;
   sha?: string;
 }
-export const FileCommitCommitParentsItem = /*@__PURE__*/ S.suspend(() =>
+const FileCommitCommitParentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     html_url: S.optional(S.String),
@@ -5200,7 +4469,7 @@ export const FileCommitCommitParentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileCommitCommitParentsItem>;
 
 export type FileCommitCommitParentsList = Array<FileCommitCommitParentsItem>;
-export const FileCommitCommitParentsList = /*@__PURE__*/ S.Array(
+const FileCommitCommitParentsList = /*@__PURE__*/ S.Array(
   FileCommitCommitParentsItem,
 ) as any as S.Schema<FileCommitCommitParentsList>;
 
@@ -5211,7 +4480,7 @@ export interface FileCommitCommitVerification {
   payload?: string | null;
   verified_at?: string | null;
 }
-export const FileCommitCommitVerification = /*@__PURE__*/ S.suspend(() =>
+const FileCommitCommitVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -5235,7 +4504,7 @@ export interface FileCommitCommit {
   parents?: FileCommitCommitParentsList;
   verification?: FileCommitCommitVerification;
 }
-export const FileCommitCommit = /*@__PURE__*/ S.suspend(() =>
+const FileCommitCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.optional(S.String),
     node_id: S.optional(S.String),
@@ -5255,7 +4524,7 @@ export interface FileCommit {
   content: FileCommitContent | null;
   commit: FileCommitCommit;
 }
-export const FileCommit = /*@__PURE__*/ S.suspend(() =>
+const FileCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.NullOr(FileCommitContent),
     commit: FileCommitCommit,
@@ -5278,7 +4547,7 @@ export interface CreatePagesDeploymentRequest {
   /** The OIDC token issued by GitHub Actions certifying the origin of the deployment. */
   oidc_token: string;
 }
-export const CreatePagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5294,7 +4563,7 @@ export const CreatePagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit. */
 export type PageDeploymentId = number | string;
-export const PageDeploymentId = S.Unknown as any as S.Schema<PageDeploymentId>;
+const PageDeploymentId = S.Unknown as any as S.Schema<PageDeploymentId>;
 
 /** The GitHub Pages deployment status. */
 export interface PageDeployment {
@@ -5307,7 +4576,7 @@ export interface PageDeployment {
   /** The URI to the deployed GitHub Pages preview. */
   preview_url?: string;
 }
-export const PageDeployment = /*@__PURE__*/ S.suspend(() =>
+const PageDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: PageDeploymentId,
     status_url: S.String,
@@ -5318,11 +4587,11 @@ export const PageDeployment = /*@__PURE__*/ S.suspend(() =>
 
 /** The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`. */
 export type CreatePagesSiteRequestBuildType = "legacy" | "workflow";
-export const CreatePagesSiteRequestBuildType = S.String;
+const CreatePagesSiteRequestBuildType = S.String;
 
 /** The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/` */
 export type CreatePagesSiteRequestSourcePath = "/" | "/docs";
-export const CreatePagesSiteRequestSourcePath = S.String;
+const CreatePagesSiteRequestSourcePath = S.String;
 
 /** The source branch and directory used to publish your Pages site. */
 export interface CreatePagesSiteRequestSource {
@@ -5331,7 +4600,7 @@ export interface CreatePagesSiteRequestSource {
   /** The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/` */
   path?: CreatePagesSiteRequestSourcePath | (string & {});
 }
-export const CreatePagesSiteRequestSource = /*@__PURE__*/ S.suspend(() =>
+const CreatePagesSiteRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.String,
     path: S.optional(CreatePagesSiteRequestSourcePath),
@@ -5350,7 +4619,7 @@ export interface CreatePagesSiteRequest {
   /** The source branch and directory used to publish your Pages site. */
   source?: CreatePagesSiteRequestSource;
 }
-export const CreatePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5361,21 +4630,21 @@ export const CreatePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the most recent build of the Page. */
 export type PageStatus = "built" | "building" | "errored";
-export const PageStatus = S.String;
+const PageStatus = S.String;
 
 /** The state if the domain is verified */
 export type PageProtectedDomainState = "pending" | "verified" | "unverified";
-export const PageProtectedDomainState = S.String;
+const PageProtectedDomainState = S.String;
 
 /** The process in which the Page will be built. */
 export type PageBuildType = "legacy" | "workflow";
-export const PageBuildType = S.String;
+const PageBuildType = S.String;
 
 export interface PagesSourceHash {
   branch: string;
   path: string;
 }
-export const PagesSourceHash = /*@__PURE__*/ S.suspend(() =>
+const PagesSourceHash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.String,
     path: S.String,
@@ -5395,11 +4664,11 @@ export type PagesHttpsCertificateState =
   | "bad_authz"
   | "destroy_pending"
   | "dns_changed";
-export const PagesHttpsCertificateState = S.String;
+const PagesHttpsCertificateState = S.String;
 
 /** Array of the domain set and its alternate name (if it is configured) */
 export type PagesHttpsCertificateDomainsList = Array<string>;
-export const PagesHttpsCertificateDomainsList =
+const PagesHttpsCertificateDomainsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<PagesHttpsCertificateDomainsList>;
 
 export interface PagesHttpsCertificate {
@@ -5409,7 +4678,7 @@ export interface PagesHttpsCertificate {
   domains: PagesHttpsCertificateDomainsList;
   expires_at?: string;
 }
-export const PagesHttpsCertificate = /*@__PURE__*/ S.suspend(() =>
+const PagesHttpsCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: PagesHttpsCertificateState,
     description: S.String,
@@ -5443,7 +4712,7 @@ export interface Page {
   /** Whether https is enabled on the domain */
   https_enforced?: boolean;
 }
-export const Page = /*@__PURE__*/ S.suspend(() =>
+const Page = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     status: S.NullOr(PageStatus),
@@ -5462,7 +4731,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version. */
 export type CreateReleaseRequestMakeLatest = "true" | "false" | "legacy";
-export const CreateReleaseRequestMakeLatest = S.String;
+const CreateReleaseRequestMakeLatest = S.String;
 
 export interface CreateReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5488,7 +4757,7 @@ export interface CreateReleaseRequest {
   /** Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version. */
   make_latest?: CreateReleaseRequestMakeLatest | (string & {});
 }
-export const CreateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5506,7 +4775,7 @@ export const CreateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the release asset. */
 export type ReleaseAssetState = "uploaded" | "open";
-export const ReleaseAssetState = S.String;
+const ReleaseAssetState = S.String;
 
 /** Data related to a release. */
 export interface ReleaseAsset {
@@ -5527,7 +4796,7 @@ export interface ReleaseAsset {
   updated_at: string;
   uploader: SimpleUser | null;
 }
-export const ReleaseAsset = /*@__PURE__*/ S.suspend(() =>
+const ReleaseAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     browser_download_url: S.String,
@@ -5547,9 +4816,7 @@ export const ReleaseAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReleaseAsset" }) as any as S.Schema<ReleaseAsset>;
 
 export type ReleaseAssetsList = Array<ReleaseAsset>;
-export const ReleaseAssetsList = /*@__PURE__*/ S.Array(
-  ReleaseAsset,
-) as any as S.Schema<ReleaseAssetsList>;
+const ReleaseAssetsList = /*@__PURE__*/ S.Array(ReleaseAsset) as any as S.Schema<ReleaseAssetsList>;
 
 /** A release. */
 export interface Release {
@@ -5585,7 +4852,7 @@ export interface Release {
   discussion_url?: string;
   reactions?: ReactionRollup;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -5617,16 +4884,16 @@ export const Release = /*@__PURE__*/ S.suspend(() =>
 
 /** The target of the ruleset */
 export type CreateRepoRulesetRequestTarget = "branch" | "tag" | "push";
-export const CreateRepoRulesetRequestTarget = S.String;
+const CreateRepoRulesetRequestTarget = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type CreateRepoRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const CreateRepoRulesetRequestBypassActorsList =
+const CreateRepoRulesetRequestBypassActorsList =
   CreateOrgRulesetRequestBypassActorsList as any as S.Schema<CreateRepoRulesetRequestBypassActorsList>;
 
 /** An array of rules within the ruleset. */
 export type CreateRepoRulesetRequestRulesList = Array<RepositoryRule>;
-export const CreateRepoRulesetRequestRulesList =
+const CreateRepoRulesetRequestRulesList =
   RepositoryRulesetRulesList as any as S.Schema<CreateRepoRulesetRequestRulesList>;
 
 export interface CreateRepoRulesetRequest {
@@ -5645,7 +4912,7 @@ export interface CreateRepoRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: CreateRepoRulesetRequestRulesList;
 }
-export const CreateRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5674,7 +4941,7 @@ export interface CreateUsingTemplateRequest {
   /** Either `true` to create a new private repository or `false` to create a new public one. */
   private?: boolean;
 }
-export const CreateUsingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_owner: S.String.pipe(T.Label()),
     template_repo: S.String.pipe(T.Label()),
@@ -5691,7 +4958,7 @@ export const CreateUsingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUsingTemplateRequest>;
 
 export type WebhookConfigInsecureSsl = string | number;
-export const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
+const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
 
 /** Key/value pairs to provide settings for this webhook. */
 export interface CreateWebhookRequestConfig {
@@ -5700,7 +4967,7 @@ export interface CreateWebhookRequestConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     content_type: S.optional(S.String),
@@ -5713,7 +4980,7 @@ export const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList =
+const CreateWebhookRequestEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
@@ -5730,7 +4997,7 @@ export interface CreateWebhookRequest {
   /** Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications. */
   active?: boolean;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5743,7 +5010,7 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what events the hook is triggered for. Default: ['push']. */
 export type HookEventsList = Array<string>;
-export const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
+const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
 
 /** Configuration object of the webhook */
 export interface WebhookConfig {
@@ -5752,7 +5019,7 @@ export interface WebhookConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     content_type: S.optional(S.String),
@@ -5766,7 +5033,7 @@ export interface HookResponse {
   status: string | null;
   message: string | null;
 }
-export const HookResponse = /*@__PURE__*/ S.suspend(() =>
+const HookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.NullOr(S.Number),
     status: S.NullOr(S.String),
@@ -5794,7 +5061,7 @@ export interface Hook {
   deliveries_url?: string;
   last_response: HookResponse;
 }
-export const Hook = /*@__PURE__*/ S.suspend(() =>
+const Hook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     id: S.Number,
@@ -5813,12 +5080,9 @@ export const Hook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hook" }) as any as S.Schema<Hook>;
 
 export type CustomPropertyValueValueCase1List = Array<string>;
-export const CustomPropertyValueValueCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CustomPropertyValueValueCase1List>;
-
 /** The value assigned to the property */
 export type CustomPropertyValueValue = string | CustomPropertyValueValueCase1List;
-export const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
+const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
 
 /** Custom property name and associated value */
 export interface CustomPropertyValue {
@@ -5827,7 +5091,7 @@ export interface CustomPropertyValue {
   /** The value assigned to the property */
   value: CustomPropertyValueValue | null;
 }
-export const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property_name: S.String,
     value: S.NullOr(CustomPropertyValueValue),
@@ -5837,7 +5101,7 @@ export const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
 /** A list of custom property names and associated values to apply to the repositories. */
 export type CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
-export const CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList =
+const CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList =
   /*@__PURE__*/ S.Array(
     CustomPropertyValue,
   ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList>;
@@ -5850,22 +5114,22 @@ export interface CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest {
   /** A list of custom property names and associated values to apply to the repositories. */
   properties: CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList;
 }
-export const CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      owner: S.String.pipe(T.Label()),
-      repo: S.String.pipe(T.Label()),
-      properties: CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList,
-    }).pipe(T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/properties/values", code: 200 })),
-  ).annotate({
-    identifier: "CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest",
-  }) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest>;
+const CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owner: S.String.pipe(T.Label()),
+    repo: S.String.pipe(T.Label()),
+    properties: CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequestPropertiesList,
+  }).pipe(T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/properties/values", code: 200 })),
+).annotate({
+  identifier: "CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest",
+}) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesRequest>;
 
 export interface CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse {}
-export const CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse",
-  }) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse>;
+const CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse",
+}) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateRepositoryValuesResponse>;
 
 export interface CustomPropertiesForReposGetRepositoryValuesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5873,7 +5137,7 @@ export interface CustomPropertiesForReposGetRepositoryValuesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CustomPropertiesForReposGetRepositoryValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertiesForReposGetRepositoryValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5884,13 +5148,13 @@ export const CustomPropertiesForReposGetRepositoryValuesRequest = /*@__PURE__*/ 
 
 export type CustomPropertiesForReposGetRepositoryValuesResponseBodyList =
   Array<CustomPropertyValue>;
-export const CustomPropertiesForReposGetRepositoryValuesResponseBodyList = /*@__PURE__*/ S.Array(
+const CustomPropertiesForReposGetRepositoryValuesResponseBodyList = /*@__PURE__*/ S.Array(
   CustomPropertyValue,
 ) as any as S.Schema<CustomPropertiesForReposGetRepositoryValuesResponseBodyList>;
 
 export type CustomPropertiesForReposGetRepositoryValuesResponse =
   CustomPropertiesForReposGetRepositoryValuesResponseBodyList;
-export const CustomPropertiesForReposGetRepositoryValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertiesForReposGetRepositoryValuesResponse = /*@__PURE__*/ S.suspend(() =>
   CustomPropertiesForReposGetRepositoryValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CustomPropertiesForReposGetRepositoryValuesResponse",
@@ -5900,7 +5164,7 @@ export interface DeclineInvitationForAuthenticatedUserRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-export const DeclineInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeclineInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitation_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -5911,7 +5175,7 @@ export const DeclineInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeclineInvitationForAuthenticatedUserRequest>;
 
 export interface DeclineInvitationForAuthenticatedUserResponse {}
-export const DeclineInvitationForAuthenticatedUserResponse =
+const DeclineInvitationForAuthenticatedUserResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeclineInvitationForAuthenticatedUserResponse>;
 
 export interface DeleteRequest {
@@ -5920,7 +5184,7 @@ export interface DeleteRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5928,7 +5192,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponse {}
-export const DeleteResponse = CancelPagesDeploymentResponse as any as S.Schema<DeleteResponse>;
+const DeleteResponse = CancelPagesDeploymentResponse as any as S.Schema<DeleteResponse>;
 
 export interface DeleteAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5938,7 +5202,7 @@ export interface DeleteAccessRestrictionsRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const DeleteAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5955,7 +5219,7 @@ export const DeleteAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessRestrictionsRequest>;
 
 export interface DeleteAccessRestrictionsResponse {}
-export const DeleteAccessRestrictionsResponse =
+const DeleteAccessRestrictionsResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteAccessRestrictionsResponse>;
 
 export interface DeleteAdminBranchProtectionRequest {
@@ -5966,7 +5230,7 @@ export interface DeleteAdminBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const DeleteAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5983,7 +5247,7 @@ export const DeleteAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAdminBranchProtectionRequest>;
 
 export interface DeleteAdminBranchProtectionResponse {}
-export const DeleteAdminBranchProtectionResponse =
+const DeleteAdminBranchProtectionResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteAdminBranchProtectionResponse>;
 
 export interface DeleteAnEnvironmentRequest {
@@ -5994,7 +5258,7 @@ export interface DeleteAnEnvironmentRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
-export const DeleteAnEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6011,7 +5275,7 @@ export const DeleteAnEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAnEnvironmentRequest>;
 
 export interface DeleteAnEnvironmentResponse {}
-export const DeleteAnEnvironmentResponse =
+const DeleteAnEnvironmentResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteAnEnvironmentResponse>;
 
 export interface DeleteAutolinkRequest {
@@ -6022,7 +5286,7 @@ export interface DeleteAutolinkRequest {
   /** The unique identifier of the autolink. */
   autolink_id: number;
 }
-export const DeleteAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6033,7 +5297,7 @@ export const DeleteAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAutolinkRequest" }) as any as S.Schema<DeleteAutolinkRequest>;
 
 export interface DeleteAutolinkResponse {}
-export const DeleteAutolinkResponse =
+const DeleteAutolinkResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteAutolinkResponse>;
 
 export interface DeleteBranchProtectionRequest {
@@ -6044,7 +5308,7 @@ export interface DeleteBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const DeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6061,7 +5325,7 @@ export const DeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBranchProtectionRequest>;
 
 export interface DeleteBranchProtectionResponse {}
-export const DeleteBranchProtectionResponse =
+const DeleteBranchProtectionResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteBranchProtectionResponse>;
 
 export interface DeleteCommitCommentRequest {
@@ -6072,7 +5336,7 @@ export interface DeleteCommitCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-export const DeleteCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6085,7 +5349,7 @@ export const DeleteCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommitCommentRequest>;
 
 export interface DeleteCommitCommentResponse {}
-export const DeleteCommitCommentResponse =
+const DeleteCommitCommentResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteCommitCommentResponse>;
 
 export interface DeleteCommitSignatureProtectionRequest {
@@ -6096,7 +5360,7 @@ export interface DeleteCommitSignatureProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const DeleteCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6113,7 +5377,7 @@ export const DeleteCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCommitSignatureProtectionRequest>;
 
 export interface DeleteCommitSignatureProtectionResponse {}
-export const DeleteCommitSignatureProtectionResponse =
+const DeleteCommitSignatureProtectionResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteCommitSignatureProtectionResponse>;
 
 export interface DeleteDeployKeyRequest {
@@ -6124,7 +5388,7 @@ export interface DeleteDeployKeyRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
-export const DeleteDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6133,7 +5397,7 @@ export const DeleteDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeployKeyRequest" }) as any as S.Schema<DeleteDeployKeyRequest>;
 
 export interface DeleteDeployKeyResponse {}
-export const DeleteDeployKeyResponse =
+const DeleteDeployKeyResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteDeployKeyResponse>;
 
 export interface DeleteDeploymentRequest {
@@ -6144,7 +5408,7 @@ export interface DeleteDeploymentRequest {
   /** deployment_id parameter */
   deployment_id: number;
 }
-export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6159,7 +5423,7 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse =
+const DeleteDeploymentResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteDeploymentResponse>;
 
 export interface DeleteDeploymentBranchPolicyRequest {
@@ -6172,7 +5436,7 @@ export interface DeleteDeploymentBranchPolicyRequest {
   /** The unique identifier of the branch policy. */
   branch_policy_id: number;
 }
-export const DeleteDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6190,7 +5454,7 @@ export const DeleteDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDeploymentBranchPolicyRequest>;
 
 export interface DeleteDeploymentBranchPolicyResponse {}
-export const DeleteDeploymentBranchPolicyResponse =
+const DeleteDeploymentBranchPolicyResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteDeploymentBranchPolicyResponse>;
 
 /** object containing information about the committer. */
@@ -6200,7 +5464,7 @@ export interface DeleteFileRequestCommitter {
   /** The email of the author (or committer) of the commit */
   email?: string;
 }
-export const DeleteFileRequestCommitter = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileRequestCommitter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -6211,8 +5475,6 @@ export const DeleteFileRequestCommitter = /*@__PURE__*/ S.suspend(() =>
 
 /** object containing information about the author. */
 export type DeleteFileRequestAuthor = DeleteFileRequestCommitter;
-export const DeleteFileRequestAuthor = DeleteFileRequestCommitter;
-
 export interface DeleteFileRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -6231,7 +5493,7 @@ export interface DeleteFileRequest {
   /** object containing information about the author. */
   author?: DeleteFileRequestCommitter;
 }
-export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6252,7 +5514,7 @@ export interface DeleteInvitationRequest {
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-export const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6267,7 +5529,7 @@ export const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInvitationRequest" }) as any as S.Schema<DeleteInvitationRequest>;
 
 export interface DeleteInvitationResponse {}
-export const DeleteInvitationResponse =
+const DeleteInvitationResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteInvitationResponse>;
 
 export interface DeleteOrgRulesetRequest {
@@ -6276,7 +5538,7 @@ export interface DeleteOrgRulesetRequest {
   /** The ID of the ruleset. */
   ruleset_id: number;
 }
-export const DeleteOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     ruleset_id: S.Number.pipe(T.Label()),
@@ -6284,7 +5546,7 @@ export const DeleteOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgRulesetRequest" }) as any as S.Schema<DeleteOrgRulesetRequest>;
 
 export interface DeleteOrgRulesetResponse {}
-export const DeleteOrgRulesetResponse =
+const DeleteOrgRulesetResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteOrgRulesetResponse>;
 
 export interface DeletePagesSiteRequest {
@@ -6293,7 +5555,7 @@ export interface DeletePagesSiteRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DeletePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6301,7 +5563,7 @@ export const DeletePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePagesSiteRequest" }) as any as S.Schema<DeletePagesSiteRequest>;
 
 export interface DeletePagesSiteResponse {}
-export const DeletePagesSiteResponse =
+const DeletePagesSiteResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeletePagesSiteResponse>;
 
 export interface DeletePullRequestReviewProtectionRequest {
@@ -6312,7 +5574,7 @@ export interface DeletePullRequestReviewProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const DeletePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6329,7 +5591,7 @@ export const DeletePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeletePullRequestReviewProtectionRequest>;
 
 export interface DeletePullRequestReviewProtectionResponse {}
-export const DeletePullRequestReviewProtectionResponse =
+const DeletePullRequestReviewProtectionResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeletePullRequestReviewProtectionResponse>;
 
 export interface DeleteReleaseRequest {
@@ -6340,7 +5602,7 @@ export interface DeleteReleaseRequest {
   /** The unique identifier of the release. */
   release_id: number;
 }
-export const DeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6351,7 +5613,7 @@ export const DeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReleaseRequest" }) as any as S.Schema<DeleteReleaseRequest>;
 
 export interface DeleteReleaseResponse {}
-export const DeleteReleaseResponse =
+const DeleteReleaseResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteReleaseResponse>;
 
 export interface DeleteReleaseAssetRequest {
@@ -6362,7 +5624,7 @@ export interface DeleteReleaseAssetRequest {
   /** The unique identifier of the asset. */
   asset_id: number;
 }
-export const DeleteReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6379,7 +5641,7 @@ export const DeleteReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleaseAssetRequest>;
 
 export interface DeleteReleaseAssetResponse {}
-export const DeleteReleaseAssetResponse =
+const DeleteReleaseAssetResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteReleaseAssetResponse>;
 
 export interface DeleteRepoRulesetRequest {
@@ -6390,7 +5652,7 @@ export interface DeleteRepoRulesetRequest {
   /** The ID of the ruleset. */
   ruleset_id: number;
 }
-export const DeleteRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6401,7 +5663,7 @@ export const DeleteRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoRulesetRequest" }) as any as S.Schema<DeleteRepoRulesetRequest>;
 
 export interface DeleteRepoRulesetResponse {}
-export const DeleteRepoRulesetResponse =
+const DeleteRepoRulesetResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteRepoRulesetResponse>;
 
 export interface DeleteWebhookRequest {
@@ -6412,7 +5674,7 @@ export interface DeleteWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6421,7 +5683,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse =
+const DeleteWebhookResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DisableAutomatedSecurityFixesRequest {
@@ -6430,7 +5692,7 @@ export interface DisableAutomatedSecurityFixesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DisableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6442,7 +5704,7 @@ export const DisableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableAutomatedSecurityFixesRequest>;
 
 export interface DisableAutomatedSecurityFixesResponse {}
-export const DisableAutomatedSecurityFixesResponse =
+const DisableAutomatedSecurityFixesResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableAutomatedSecurityFixesResponse>;
 
 export interface DisableDeploymentProtectionRuleRequest {
@@ -6455,7 +5717,7 @@ export interface DisableDeploymentProtectionRuleRequest {
   /** The unique identifier of the protection rule. */
   protection_rule_id: number;
 }
-export const DisableDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6473,7 +5735,7 @@ export const DisableDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DisableDeploymentProtectionRuleRequest>;
 
 export interface DisableDeploymentProtectionRuleResponse {}
-export const DisableDeploymentProtectionRuleResponse =
+const DisableDeploymentProtectionRuleResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableDeploymentProtectionRuleResponse>;
 
 export interface DisableImmutableReleasesRequest {
@@ -6482,7 +5744,7 @@ export interface DisableImmutableReleasesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DisableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6492,7 +5754,7 @@ export const DisableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableImmutableReleasesRequest>;
 
 export interface DisableImmutableReleasesResponse {}
-export const DisableImmutableReleasesResponse =
+const DisableImmutableReleasesResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableImmutableReleasesResponse>;
 
 export interface DisablePrivateVulnerabilityReportingRequest {
@@ -6501,7 +5763,7 @@ export interface DisablePrivateVulnerabilityReportingRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DisablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspend(() =>
+const DisablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6517,7 +5779,7 @@ export const DisablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DisablePrivateVulnerabilityReportingRequest>;
 
 export interface DisablePrivateVulnerabilityReportingResponse {}
-export const DisablePrivateVulnerabilityReportingResponse =
+const DisablePrivateVulnerabilityReportingResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisablePrivateVulnerabilityReportingResponse>;
 
 export interface DisableVulnerabilityAlertsRequest {
@@ -6526,7 +5788,7 @@ export interface DisableVulnerabilityAlertsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DisableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6538,7 +5800,7 @@ export const DisableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableVulnerabilityAlertsRequest>;
 
 export interface DisableVulnerabilityAlertsResponse {}
-export const DisableVulnerabilityAlertsResponse =
+const DisableVulnerabilityAlertsResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableVulnerabilityAlertsResponse>;
 
 export interface DownloadTarballArchiveRequest {
@@ -6548,7 +5810,7 @@ export interface DownloadTarballArchiveRequest {
   repo: string;
   ref: string;
 }
-export const DownloadTarballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadTarballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6559,7 +5821,7 @@ export const DownloadTarballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadTarballArchiveRequest>;
 
 export interface DownloadTarballArchiveResponse {}
-export const DownloadTarballArchiveResponse =
+const DownloadTarballArchiveResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DownloadTarballArchiveResponse>;
 
 export interface DownloadZipballArchiveRequest {
@@ -6569,7 +5831,7 @@ export interface DownloadZipballArchiveRequest {
   repo: string;
   ref: string;
 }
-export const DownloadZipballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadZipballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6580,7 +5842,7 @@ export const DownloadZipballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadZipballArchiveRequest>;
 
 export interface DownloadZipballArchiveResponse {}
-export const DownloadZipballArchiveResponse =
+const DownloadZipballArchiveResponse =
   CancelPagesDeploymentResponse as any as S.Schema<DownloadZipballArchiveResponse>;
 
 export interface EnableAutomatedSecurityFixesRequest {
@@ -6589,7 +5851,7 @@ export interface EnableAutomatedSecurityFixesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const EnableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6601,7 +5863,7 @@ export const EnableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableAutomatedSecurityFixesRequest>;
 
 export interface EnableAutomatedSecurityFixesResponse {}
-export const EnableAutomatedSecurityFixesResponse =
+const EnableAutomatedSecurityFixesResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnableAutomatedSecurityFixesResponse>;
 
 export interface EnableImmutableReleasesRequest {
@@ -6610,7 +5872,7 @@ export interface EnableImmutableReleasesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const EnableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6620,9 +5882,9 @@ export const EnableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableImmutableReleasesRequest>;
 
 export interface EnableImmutableReleasesResponse {}
-export const EnableImmutableReleasesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "EnableImmutableReleasesResponse" },
-) as any as S.Schema<EnableImmutableReleasesResponse>;
+const EnableImmutableReleasesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "EnableImmutableReleasesResponse",
+}) as any as S.Schema<EnableImmutableReleasesResponse>;
 
 export interface EnablePrivateVulnerabilityReportingRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6630,7 +5892,7 @@ export interface EnablePrivateVulnerabilityReportingRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const EnablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspend(() =>
+const EnablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6646,7 +5908,7 @@ export const EnablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<EnablePrivateVulnerabilityReportingRequest>;
 
 export interface EnablePrivateVulnerabilityReportingResponse {}
-export const EnablePrivateVulnerabilityReportingResponse =
+const EnablePrivateVulnerabilityReportingResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnablePrivateVulnerabilityReportingResponse>;
 
 export interface EnableVulnerabilityAlertsRequest {
@@ -6655,7 +5917,7 @@ export interface EnableVulnerabilityAlertsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const EnableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6665,7 +5927,7 @@ export const EnableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableVulnerabilityAlertsRequest>;
 
 export interface EnableVulnerabilityAlertsResponse {}
-export const EnableVulnerabilityAlertsResponse =
+const EnableVulnerabilityAlertsResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnableVulnerabilityAlertsResponse>;
 
 export interface GenerateReleaseNotesRequest {
@@ -6682,7 +5944,7 @@ export interface GenerateReleaseNotesRequest {
   /** Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used. */
   configuration_file_path?: string;
 }
-export const GenerateReleaseNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateReleaseNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6704,7 +5966,7 @@ export interface ReleaseNotesContent {
   /** The generated body describing the contents of the release supporting markdown formatting */
   body: string;
 }
-export const ReleaseNotesContent = /*@__PURE__*/ S.suspend(() =>
+const ReleaseNotesContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     body: S.String,
@@ -6717,7 +5979,7 @@ export interface GetRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6732,7 +5994,7 @@ export interface GetAccessRestrictionsRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6769,7 +6031,7 @@ export interface BranchRestrictionPolicyUsersItem {
   site_admin?: boolean;
   user_view_type?: string;
 }
-export const BranchRestrictionPolicyUsersItem = /*@__PURE__*/ S.suspend(() =>
+const BranchRestrictionPolicyUsersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.String),
     id: S.optional(S.Number),
@@ -6796,12 +6058,12 @@ export const BranchRestrictionPolicyUsersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BranchRestrictionPolicyUsersItem>;
 
 export type BranchRestrictionPolicyUsersList = Array<BranchRestrictionPolicyUsersItem>;
-export const BranchRestrictionPolicyUsersList = /*@__PURE__*/ S.Array(
+const BranchRestrictionPolicyUsersList = /*@__PURE__*/ S.Array(
   BranchRestrictionPolicyUsersItem,
 ) as any as S.Schema<BranchRestrictionPolicyUsersList>;
 
 export type BranchRestrictionPolicyTeamsList = Array<Team>;
-export const BranchRestrictionPolicyTeamsList =
+const BranchRestrictionPolicyTeamsList =
   AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<BranchRestrictionPolicyTeamsList>;
 
 export interface BranchRestrictionPolicyAppsItemOwner {
@@ -6830,7 +6092,7 @@ export interface BranchRestrictionPolicyAppsItemOwner {
   site_admin?: boolean;
   user_view_type?: string;
 }
-export const BranchRestrictionPolicyAppsItemOwner = /*@__PURE__*/ S.suspend(() =>
+const BranchRestrictionPolicyAppsItemOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.String),
     id: S.optional(S.Number),
@@ -6867,7 +6129,7 @@ export interface BranchRestrictionPolicyAppsItemPermissions {
   issues?: string;
   single_file?: string;
 }
-export const BranchRestrictionPolicyAppsItemPermissions = /*@__PURE__*/ S.suspend(() =>
+const BranchRestrictionPolicyAppsItemPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(S.String),
     contents: S.optional(S.String),
@@ -6879,7 +6141,7 @@ export const BranchRestrictionPolicyAppsItemPermissions = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<BranchRestrictionPolicyAppsItemPermissions>;
 
 export type BranchRestrictionPolicyAppsItemEventsList = Array<string>;
-export const BranchRestrictionPolicyAppsItemEventsList =
+const BranchRestrictionPolicyAppsItemEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<BranchRestrictionPolicyAppsItemEventsList>;
 
 export interface BranchRestrictionPolicyAppsItem {
@@ -6897,7 +6159,7 @@ export interface BranchRestrictionPolicyAppsItem {
   permissions?: BranchRestrictionPolicyAppsItemPermissions;
   events?: BranchRestrictionPolicyAppsItemEventsList;
 }
-export const BranchRestrictionPolicyAppsItem = /*@__PURE__*/ S.suspend(() =>
+const BranchRestrictionPolicyAppsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     slug: S.optional(S.String),
@@ -6918,7 +6180,7 @@ export const BranchRestrictionPolicyAppsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BranchRestrictionPolicyAppsItem>;
 
 export type BranchRestrictionPolicyAppsList = Array<BranchRestrictionPolicyAppsItem>;
-export const BranchRestrictionPolicyAppsList = /*@__PURE__*/ S.Array(
+const BranchRestrictionPolicyAppsList = /*@__PURE__*/ S.Array(
   BranchRestrictionPolicyAppsItem,
 ) as any as S.Schema<BranchRestrictionPolicyAppsList>;
 
@@ -6932,7 +6194,7 @@ export interface BranchRestrictionPolicy {
   teams: BranchRestrictionPolicyTeamsList;
   apps: BranchRestrictionPolicyAppsList;
 }
-export const BranchRestrictionPolicy = /*@__PURE__*/ S.suspend(() =>
+const BranchRestrictionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     users_url: S.String,
@@ -6952,7 +6214,7 @@ export interface GetAdminBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6976,7 +6238,7 @@ export interface GetAllDeploymentProtectionRulesRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
-export const GetAllDeploymentProtectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllDeploymentProtectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6994,7 +6256,7 @@ export const GetAllDeploymentProtectionRulesRequest = /*@__PURE__*/ S.suspend(()
 
 export type GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList =
   Array<DeploymentProtectionRule>;
-export const GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList =
+const GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList =
   /*@__PURE__*/ S.Array(
     DeploymentProtectionRule,
   ) as any as S.Schema<GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList>;
@@ -7004,7 +6266,7 @@ export interface GetAllDeploymentProtectionRulesResponse {
   total_count?: number;
   custom_deployment_protection_rules?: GetAllDeploymentProtectionRulesResponseCustomDeploymentProtectionRulesList;
 }
-export const GetAllDeploymentProtectionRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllDeploymentProtectionRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     custom_deployment_protection_rules: S.optional(
@@ -7025,7 +6287,7 @@ export interface GetAllEnvironmentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetAllEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7037,7 +6299,7 @@ export const GetAllEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAllEnvironmentsRequest>;
 
 export type GetAllEnvironmentsResponseEnvironmentsList = Array<Environment>;
-export const GetAllEnvironmentsResponseEnvironmentsList = /*@__PURE__*/ S.Array(
+const GetAllEnvironmentsResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<GetAllEnvironmentsResponseEnvironmentsList>;
 
@@ -7046,7 +6308,7 @@ export interface GetAllEnvironmentsResponse {
   total_count?: number;
   environments?: GetAllEnvironmentsResponseEnvironmentsList;
 }
-export const GetAllEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     environments: S.optional(GetAllEnvironmentsResponseEnvironmentsList),
@@ -7063,7 +6325,7 @@ export interface GetAllStatusCheckContextsRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetAllStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7080,11 +6342,8 @@ export const GetAllStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAllStatusCheckContextsRequest>;
 
 export type GetAllStatusCheckContextsResponseBodyList = Array<string>;
-export const GetAllStatusCheckContextsResponseBodyList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<GetAllStatusCheckContextsResponseBodyList>;
-
 export type GetAllStatusCheckContextsResponse = GetAllStatusCheckContextsResponseBodyList;
-export const GetAllStatusCheckContextsResponse =
+const GetAllStatusCheckContextsResponse =
   AddStatusCheckContextsResponse as any as S.Schema<GetAllStatusCheckContextsResponse>;
 
 export interface GetAllTopicsRequest {
@@ -7097,7 +6356,7 @@ export interface GetAllTopicsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const GetAllTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7107,13 +6366,13 @@ export const GetAllTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAllTopicsRequest" }) as any as S.Schema<GetAllTopicsRequest>;
 
 export type TopicNamesList = Array<string>;
-export const TopicNamesList = HookEventsList as any as S.Schema<TopicNamesList>;
+const TopicNamesList = HookEventsList as any as S.Schema<TopicNamesList>;
 
 /** A topic aggregates entities that are related to a subject. */
 export interface Topic {
   names: TopicNamesList;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: TopicNamesList,
   }),
@@ -7127,7 +6386,7 @@ export interface GetAppsWithAccessToProtectedBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetAppsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7144,12 +6403,9 @@ export const GetAppsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetAppsWithAccessToProtectedBranchRequest>;
 
 export type GetAppsWithAccessToProtectedBranchResponseBodyList = Array<Integration | null>;
-export const GetAppsWithAccessToProtectedBranchResponseBodyList =
-  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<GetAppsWithAccessToProtectedBranchResponseBodyList>;
-
 export type GetAppsWithAccessToProtectedBranchResponse =
   GetAppsWithAccessToProtectedBranchResponseBodyList;
-export const GetAppsWithAccessToProtectedBranchResponse =
+const GetAppsWithAccessToProtectedBranchResponse =
   AddAppAccessRestrictionsResponse as any as S.Schema<GetAppsWithAccessToProtectedBranchResponse>;
 
 export interface GetAutolinkRequest {
@@ -7160,7 +6416,7 @@ export interface GetAutolinkRequest {
   /** The unique identifier of the autolink. */
   autolink_id: number;
 }
-export const GetAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7178,7 +6434,7 @@ export interface GetBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7190,7 +6446,7 @@ export interface BranchWithProtectionLinks {
   html: string;
   self: string;
 }
-export const BranchWithProtectionLinks = /*@__PURE__*/ S.suspend(() =>
+const BranchWithProtectionLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     html: S.String,
     self: S.String,
@@ -7200,14 +6456,14 @@ export const BranchWithProtectionLinks = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BranchWithProtectionLinks>;
 
 export type ProtectedBranchRequiredStatusCheckContextsList = Array<string>;
-export const ProtectedBranchRequiredStatusCheckContextsList =
+const ProtectedBranchRequiredStatusCheckContextsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<ProtectedBranchRequiredStatusCheckContextsList>;
 
 export interface ProtectedBranchRequiredStatusCheckChecksItem {
   context: string;
   app_id: number | null;
 }
-export const ProtectedBranchRequiredStatusCheckChecksItem = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranchRequiredStatusCheckChecksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.String,
     app_id: S.NullOr(S.Number),
@@ -7218,7 +6474,7 @@ export const ProtectedBranchRequiredStatusCheckChecksItem = /*@__PURE__*/ S.susp
 
 export type ProtectedBranchRequiredStatusCheckChecksList =
   Array<ProtectedBranchRequiredStatusCheckChecksItem>;
-export const ProtectedBranchRequiredStatusCheckChecksList = /*@__PURE__*/ S.Array(
+const ProtectedBranchRequiredStatusCheckChecksList = /*@__PURE__*/ S.Array(
   ProtectedBranchRequiredStatusCheckChecksItem,
 ) as any as S.Schema<ProtectedBranchRequiredStatusCheckChecksList>;
 
@@ -7231,7 +6487,7 @@ export interface ProtectedBranchRequiredStatusCheck {
   contexts_url?: string;
   strict?: boolean;
 }
-export const ProtectedBranchRequiredStatusCheck = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranchRequiredStatusCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     enforcement_level: S.optional(S.String),
@@ -7246,18 +6502,18 @@ export const ProtectedBranchRequiredStatusCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of users with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList = Array<SimpleUser>;
-export const ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList =
+const ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList =
   AddUserAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList>;
 
 /** The list of teams with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList = Array<Team>;
-export const ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList =
+const ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList =
   AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList>;
 
 /** The list of apps with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
   Array<Integration | null>;
-export const ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
+const ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
   AddAppAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList>;
 
 export interface ProtectedBranchPullRequestReviewDismissalRestrictions {
@@ -7271,7 +6527,7 @@ export interface ProtectedBranchPullRequestReviewDismissalRestrictions {
   users_url?: string;
   teams_url?: string;
 }
-export const ProtectedBranchPullRequestReviewDismissalRestrictions = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranchPullRequestReviewDismissalRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList),
     teams: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList),
@@ -7287,25 +6543,22 @@ export const ProtectedBranchPullRequestReviewDismissalRestrictions = /*@__PURE__
 /** The list of users allowed to bypass pull request requirements. */
 export type ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList =
   Array<SimpleUser>;
-export const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList =
-  /*@__PURE__*/ S.Array(
-    SimpleUser,
-  ) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList>;
+const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList = /*@__PURE__*/ S.Array(
+  SimpleUser,
+) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList>;
 
 /** The list of teams allowed to bypass pull request requirements. */
 export type ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList = Array<Team>;
-export const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList =
-  /*@__PURE__*/ S.Array(
-    Team,
-  ) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList>;
+const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList = /*@__PURE__*/ S.Array(
+  Team,
+) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList>;
 
 /** The list of apps allowed to bypass pull request requirements. */
 export type ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList =
   Array<Integration | null>;
-export const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(Integration),
-  ) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList>;
+const ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList = /*@__PURE__*/ S.Array(
+  /*@__PURE__*/ S.NullOr(Integration),
+) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList>;
 
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
 export interface ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
@@ -7316,13 +6569,12 @@ export interface ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
   /** The list of apps allowed to bypass pull request requirements. */
   apps?: ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList;
 }
-export const ProtectedBranchPullRequestReviewBypassPullRequestAllowances = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      users: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList),
-      teams: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList),
-      apps: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList),
-    }),
+const ProtectedBranchPullRequestReviewBypassPullRequestAllowances = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    users: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList),
+    teams: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList),
+    apps: S.optional(ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList),
+  }),
 ).annotate({
   identifier: "ProtectedBranchPullRequestReviewBypassPullRequestAllowances",
 }) as any as S.Schema<ProtectedBranchPullRequestReviewBypassPullRequestAllowances>;
@@ -7339,7 +6591,7 @@ export interface ProtectedBranchPullRequestReview {
   /** Whether the most recent push must be approved by someone other than the person who pushed it. */
   require_last_push_approval?: boolean;
 }
-export const ProtectedBranchPullRequestReview = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranchPullRequestReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     dismissal_restrictions: S.optional(ProtectedBranchPullRequestReviewDismissalRestrictions),
@@ -7358,7 +6610,7 @@ export const ProtectedBranchPullRequestReview = /*@__PURE__*/ S.suspend(() =>
 export interface BranchProtectionRequiredLinearHistory {
   enabled?: boolean;
 }
-export const BranchProtectionRequiredLinearHistory = /*@__PURE__*/ S.suspend(() =>
+const BranchProtectionRequiredLinearHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -7367,32 +6619,20 @@ export const BranchProtectionRequiredLinearHistory = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<BranchProtectionRequiredLinearHistory>;
 
 export type BranchProtectionAllowForcePushes = BranchProtectionRequiredLinearHistory;
-export const BranchProtectionAllowForcePushes = BranchProtectionRequiredLinearHistory;
-
 export type BranchProtectionAllowDeletions = BranchProtectionRequiredLinearHistory;
-export const BranchProtectionAllowDeletions = BranchProtectionRequiredLinearHistory;
-
 export type BranchProtectionBlockCreations = BranchProtectionRequiredLinearHistory;
-export const BranchProtectionBlockCreations = BranchProtectionRequiredLinearHistory;
-
 export type BranchProtectionRequiredConversationResolution = BranchProtectionRequiredLinearHistory;
-export const BranchProtectionRequiredConversationResolution = BranchProtectionRequiredLinearHistory;
-
 export interface BranchProtectionRequiredSignatures {
   url: string;
   enabled: boolean;
 }
-export const BranchProtectionRequiredSignatures =
+const BranchProtectionRequiredSignatures =
   ProtectedBranchAdminEnforced as any as S.Schema<BranchProtectionRequiredSignatures>;
 
 /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
 export type BranchProtectionLockBranch = BranchProtectionRequiredLinearHistory;
-export const BranchProtectionLockBranch = BranchProtectionRequiredLinearHistory;
-
 /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
 export type BranchProtectionAllowForkSyncing = BranchProtectionRequiredLinearHistory;
-export const BranchProtectionAllowForkSyncing = BranchProtectionRequiredLinearHistory;
-
 /** Branch Protection */
 export interface BranchProtection {
   url?: string;
@@ -7414,7 +6654,7 @@ export interface BranchProtection {
   /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
   allow_fork_syncing?: BranchProtectionRequiredLinearHistory;
 }
-export const BranchProtection = /*@__PURE__*/ S.suspend(() =>
+const BranchProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -7446,7 +6686,7 @@ export interface BranchWithProtection {
   pattern?: string;
   required_approving_review_count?: number;
 }
-export const BranchWithProtection = /*@__PURE__*/ S.suspend(() =>
+const BranchWithProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     commit: Commit,
@@ -7467,7 +6707,7 @@ export interface GetBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7491,7 +6731,7 @@ export interface GetBranchRulesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7504,12 +6744,8 @@ export const GetBranchRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBranchRulesRequest" }) as any as S.Schema<GetBranchRulesRequest>;
 
 export type RepositoryRuleDetailedCase0Type = "creation";
-export const RepositoryRuleDetailedCase0Type = S.String;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase0RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase0RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase0 {
   type: RepositoryRuleDetailedCase0Type;
   /** The type of source for the ruleset that includes this rule. */
@@ -7519,27 +6755,10 @@ export interface RepositoryRuleDetailedCase0 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase0Type,
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase0RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase0",
-}) as any as S.Schema<RepositoryRuleDetailedCase0>;
-
 export type RepositoryRuleDetailedCase1Type = "update";
-export const RepositoryRuleDetailedCase1Type = S.String;
-
 export type RepositoryRuleDetailedCase1Parameters = RepositoryRuleUpdateParameters;
-export const RepositoryRuleDetailedCase1Parameters = RepositoryRuleUpdateParameters;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase1RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase1RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase1 {
   type: RepositoryRuleDetailedCase1Type;
   parameters?: RepositoryRuleUpdateParameters;
@@ -7550,25 +6769,9 @@ export interface RepositoryRuleDetailedCase1 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase1Type,
-    parameters: S.optional(RepositoryRuleUpdateParameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase1RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase1",
-}) as any as S.Schema<RepositoryRuleDetailedCase1>;
-
 export type RepositoryRuleDetailedCase2Type = "deletion";
-export const RepositoryRuleDetailedCase2Type = S.String;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase2RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase2RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase2 {
   type: RepositoryRuleDetailedCase2Type;
   /** The type of source for the ruleset that includes this rule. */
@@ -7578,16 +6781,9 @@ export interface RepositoryRuleDetailedCase2 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase2 =
-  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase2>;
-
 export type RepositoryRuleDetailedCase3Type = "required_linear_history";
-export const RepositoryRuleDetailedCase3Type = S.String;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase3RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase3RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase3 {
   type: RepositoryRuleDetailedCase3Type;
   /** The type of source for the ruleset that includes this rule. */
@@ -7597,20 +6793,11 @@ export interface RepositoryRuleDetailedCase3 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase3 =
-  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase3>;
-
 export type RepositoryRuleDetailedCase4Type = "merge_queue";
-export const RepositoryRuleDetailedCase4Type = S.String;
-
 /** When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge. */
 export type RepositoryRuleDetailedCase4ParametersGroupingStrategy = "ALLGREEN" | "HEADGREEN";
-export const RepositoryRuleDetailedCase4ParametersGroupingStrategy = S.String;
-
 /** Method to use when merging changes from queued pull requests. */
 export type RepositoryRuleDetailedCase4ParametersMergeMethod = "MERGE" | "SQUASH" | "REBASE";
-export const RepositoryRuleDetailedCase4ParametersMergeMethod = S.String;
-
 export interface RepositoryRuleDetailedCase4Parameters {
   /** Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed */
   check_response_timeout_minutes: number;
@@ -7627,13 +6814,8 @@ export interface RepositoryRuleDetailedCase4Parameters {
   /** The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged. */
   min_entries_to_merge_wait_minutes: number;
 }
-export const RepositoryRuleDetailedCase4Parameters =
-  RepositoryRuleMergeQueueParameters as any as S.Schema<RepositoryRuleDetailedCase4Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase4RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase4RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase4 {
   type: RepositoryRuleDetailedCase4Type;
   parameters?: RepositoryRuleDetailedCase4Parameters;
@@ -7644,37 +6826,15 @@ export interface RepositoryRuleDetailedCase4 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase4Type,
-    parameters: S.optional(RepositoryRuleDetailedCase4Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase4RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase4",
-}) as any as S.Schema<RepositoryRuleDetailedCase4>;
-
 export type RepositoryRuleDetailedCase5Type = "required_deployments";
-export const RepositoryRuleDetailedCase5Type = S.String;
-
 /** The environments that must be successfully deployed to before branches can be merged. */
 export type RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList = Array<string>;
-export const RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList>;
-
 export interface RepositoryRuleDetailedCase5Parameters {
   /** The environments that must be successfully deployed to before branches can be merged. */
   required_deployment_environments: RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList;
 }
-export const RepositoryRuleDetailedCase5Parameters =
-  RepositoryRuleRequiredDeploymentsParameters as any as S.Schema<RepositoryRuleDetailedCase5Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase5RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase5RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase5 {
   type: RepositoryRuleDetailedCase5Type;
   parameters?: RepositoryRuleDetailedCase5Parameters;
@@ -7685,25 +6845,9 @@ export interface RepositoryRuleDetailedCase5 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase5Type,
-    parameters: S.optional(RepositoryRuleDetailedCase5Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase5RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase5",
-}) as any as S.Schema<RepositoryRuleDetailedCase5>;
-
 export type RepositoryRuleDetailedCase6Type = "required_signatures";
-export const RepositoryRuleDetailedCase6Type = S.String;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase6RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase6RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase6 {
   type: RepositoryRuleDetailedCase6Type;
   /** The type of source for the ruleset that includes this rule. */
@@ -7713,30 +6857,17 @@ export interface RepositoryRuleDetailedCase6 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase6 =
-  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase6>;
-
 export type RepositoryRuleDetailedCase7Type = "pull_request";
-export const RepositoryRuleDetailedCase7Type = S.String;
-
 export type RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsItem =
   | "merge"
   | "squash"
   | "rebase";
-export const RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsItem = S.String;
-
 /** Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
 export type RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList =
   Array<RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsItem>;
-export const RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList =
-  RepositoryRulePullRequestParametersAllowedMergeMethodsList as any as S.Schema<RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList>;
-
 /** > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
 export type RepositoryRuleDetailedCase7ParametersRequiredReviewersList =
   Array<RepositoryRuleParamsRequiredReviewerConfiguration>;
-export const RepositoryRuleDetailedCase7ParametersRequiredReviewersList =
-  RepositoryRulePullRequestParametersRequiredReviewersList as any as S.Schema<RepositoryRuleDetailedCase7ParametersRequiredReviewersList>;
-
 export interface RepositoryRuleDetailedCase7Parameters {
   /** Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
   allowed_merge_methods?: RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList;
@@ -7754,25 +6885,8 @@ export interface RepositoryRuleDetailedCase7Parameters {
   /** > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
   required_reviewers?: RepositoryRuleDetailedCase7ParametersRequiredReviewersList;
 }
-export const RepositoryRuleDetailedCase7Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowed_merge_methods: S.optional(RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList),
-    dismiss_stale_reviews_on_push: S.Boolean,
-    dismissal_restriction: S.optional(RepositoryRuleParamsDismissalRestriction),
-    require_code_owner_review: S.Boolean,
-    require_last_push_approval: S.Boolean,
-    required_approving_review_count: S.Number,
-    required_review_thread_resolution: S.Boolean,
-    required_reviewers: S.optional(RepositoryRuleDetailedCase7ParametersRequiredReviewersList),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase7Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase7Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase7RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase7RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase7 {
   type: RepositoryRuleDetailedCase7Type;
   parameters?: RepositoryRuleDetailedCase7Parameters;
@@ -7783,28 +6897,10 @@ export interface RepositoryRuleDetailedCase7 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase7Type,
-    parameters: S.optional(RepositoryRuleDetailedCase7Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase7RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase7",
-}) as any as S.Schema<RepositoryRuleDetailedCase7>;
-
 export type RepositoryRuleDetailedCase8Type = "required_status_checks";
-export const RepositoryRuleDetailedCase8Type = S.String;
-
 /** Status checks that are required. */
 export type RepositoryRuleDetailedCase8ParametersRequiredStatusChecksList =
   Array<RepositoryRuleParamsStatusCheckConfiguration>;
-export const RepositoryRuleDetailedCase8ParametersRequiredStatusChecksList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsStatusCheckConfiguration,
-) as any as S.Schema<RepositoryRuleDetailedCase8ParametersRequiredStatusChecksList>;
-
 export interface RepositoryRuleDetailedCase8Parameters {
   /** Allow repositories and branches to be created if a check would otherwise prohibit it. */
   do_not_enforce_on_create?: boolean;
@@ -7813,20 +6909,8 @@ export interface RepositoryRuleDetailedCase8Parameters {
   /** Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled. */
   strict_required_status_checks_policy: boolean;
 }
-export const RepositoryRuleDetailedCase8Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    do_not_enforce_on_create: S.optional(S.Boolean),
-    required_status_checks: RepositoryRuleDetailedCase8ParametersRequiredStatusChecksList,
-    strict_required_status_checks_policy: S.Boolean,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase8Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase8Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase8RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase8RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase8 {
   type: RepositoryRuleDetailedCase8Type;
   parameters?: RepositoryRuleDetailedCase8Parameters;
@@ -7837,25 +6921,9 @@ export interface RepositoryRuleDetailedCase8 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase8Type,
-    parameters: S.optional(RepositoryRuleDetailedCase8Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase8RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase8",
-}) as any as S.Schema<RepositoryRuleDetailedCase8>;
-
 export type RepositoryRuleDetailedCase9Type = "non_fast_forward";
-export const RepositoryRuleDetailedCase9Type = S.String;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase9RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase9RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase9 {
   type: RepositoryRuleDetailedCase9Type;
   /** The type of source for the ruleset that includes this rule. */
@@ -7865,20 +6933,13 @@ export interface RepositoryRuleDetailedCase9 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase9 =
-  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase9>;
-
 export type RepositoryRuleDetailedCase10Type = "commit_message_pattern";
-export const RepositoryRuleDetailedCase10Type = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleDetailedCase10ParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleDetailedCase10ParametersOperator = S.String;
-
 export interface RepositoryRuleDetailedCase10Parameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -7889,13 +6950,8 @@ export interface RepositoryRuleDetailedCase10Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase10Parameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase10Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase10RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase10RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase10 {
   type: RepositoryRuleDetailedCase10Type;
   parameters?: RepositoryRuleDetailedCase10Parameters;
@@ -7906,29 +6962,13 @@ export interface RepositoryRuleDetailedCase10 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase10Type,
-    parameters: S.optional(RepositoryRuleDetailedCase10Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase10RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase10",
-}) as any as S.Schema<RepositoryRuleDetailedCase10>;
-
 export type RepositoryRuleDetailedCase11Type = "commit_author_email_pattern";
-export const RepositoryRuleDetailedCase11Type = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleDetailedCase11ParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleDetailedCase11ParametersOperator = S.String;
-
 export interface RepositoryRuleDetailedCase11Parameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -7939,13 +6979,8 @@ export interface RepositoryRuleDetailedCase11Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase11Parameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase11Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase11RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase11RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase11 {
   type: RepositoryRuleDetailedCase11Type;
   parameters?: RepositoryRuleDetailedCase11Parameters;
@@ -7956,20 +6991,13 @@ export interface RepositoryRuleDetailedCase11 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase11 =
-  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase11>;
-
 export type RepositoryRuleDetailedCase12Type = "committer_email_pattern";
-export const RepositoryRuleDetailedCase12Type = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleDetailedCase12ParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleDetailedCase12ParametersOperator = S.String;
-
 export interface RepositoryRuleDetailedCase12Parameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -7980,13 +7008,8 @@ export interface RepositoryRuleDetailedCase12Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase12Parameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase12Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase12RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase12RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase12 {
   type: RepositoryRuleDetailedCase12Type;
   parameters?: RepositoryRuleDetailedCase12Parameters;
@@ -7997,20 +7020,13 @@ export interface RepositoryRuleDetailedCase12 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase12 =
-  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase12>;
-
 export type RepositoryRuleDetailedCase13Type = "branch_name_pattern";
-export const RepositoryRuleDetailedCase13Type = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleDetailedCase13ParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleDetailedCase13ParametersOperator = S.String;
-
 export interface RepositoryRuleDetailedCase13Parameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -8021,13 +7037,8 @@ export interface RepositoryRuleDetailedCase13Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase13Parameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase13Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase13RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase13RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase13 {
   type: RepositoryRuleDetailedCase13Type;
   parameters?: RepositoryRuleDetailedCase13Parameters;
@@ -8038,20 +7049,13 @@ export interface RepositoryRuleDetailedCase13 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase13 =
-  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase13>;
-
 export type RepositoryRuleDetailedCase14Type = "tag_name_pattern";
-export const RepositoryRuleDetailedCase14Type = S.String;
-
 /** The operator to use for matching. */
 export type RepositoryRuleDetailedCase14ParametersOperator =
   | "starts_with"
   | "ends_with"
   | "contains"
   | "regex";
-export const RepositoryRuleDetailedCase14ParametersOperator = S.String;
-
 export interface RepositoryRuleDetailedCase14Parameters {
   /** How this rule appears when configuring it. */
   name?: string;
@@ -8062,13 +7066,8 @@ export interface RepositoryRuleDetailedCase14Parameters {
   /** The pattern to match with. */
   pattern: string;
 }
-export const RepositoryRuleDetailedCase14Parameters =
-  RepositoryRuleCommitMessagePatternParameters as any as S.Schema<RepositoryRuleDetailedCase14Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase14RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase14RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase14 {
   type: RepositoryRuleDetailedCase14Type;
   parameters?: RepositoryRuleDetailedCase14Parameters;
@@ -8079,31 +7078,18 @@ export interface RepositoryRuleDetailedCase14 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase14 =
-  RepositoryRuleDetailedCase10 as any as S.Schema<RepositoryRuleDetailedCase14>;
-
 export type RepositoryRuleDetailedCase15Type = "workflows";
-export const RepositoryRuleDetailedCase15Type = S.String;
-
 /** Workflows that must pass for this rule to pass. */
 export type RepositoryRuleDetailedCase15ParametersWorkflowsList =
   Array<RepositoryRuleParamsWorkflowFileReference>;
-export const RepositoryRuleDetailedCase15ParametersWorkflowsList =
-  RepositoryRuleWorkflowsParametersWorkflowsList as any as S.Schema<RepositoryRuleDetailedCase15ParametersWorkflowsList>;
-
 export interface RepositoryRuleDetailedCase15Parameters {
   /** Allow repositories and branches to be created if a check would otherwise prohibit it. */
   do_not_enforce_on_create?: boolean;
   /** Workflows that must pass for this rule to pass. */
   workflows: RepositoryRuleDetailedCase15ParametersWorkflowsList;
 }
-export const RepositoryRuleDetailedCase15Parameters =
-  RepositoryRuleWorkflowsParameters as any as S.Schema<RepositoryRuleDetailedCase15Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase15RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase15RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase15 {
   type: RepositoryRuleDetailedCase15Type;
   parameters?: RepositoryRuleDetailedCase15Parameters;
@@ -8114,38 +7100,16 @@ export interface RepositoryRuleDetailedCase15 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase15Type,
-    parameters: S.optional(RepositoryRuleDetailedCase15Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase15RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase15",
-}) as any as S.Schema<RepositoryRuleDetailedCase15>;
-
 export type RepositoryRuleDetailedCase16Type = "code_scanning";
-export const RepositoryRuleDetailedCase16Type = S.String;
-
 /** Tools that must provide code scanning results for this rule to pass. */
 export type RepositoryRuleDetailedCase16ParametersCodeScanningToolsList =
   Array<RepositoryRuleParamsCodeScanningTool>;
-export const RepositoryRuleDetailedCase16ParametersCodeScanningToolsList =
-  RepositoryRuleCodeScanningParametersCodeScanningToolsList as any as S.Schema<RepositoryRuleDetailedCase16ParametersCodeScanningToolsList>;
-
 export interface RepositoryRuleDetailedCase16Parameters {
   /** Tools that must provide code scanning results for this rule to pass. */
   code_scanning_tools: RepositoryRuleDetailedCase16ParametersCodeScanningToolsList;
 }
-export const RepositoryRuleDetailedCase16Parameters =
-  RepositoryRuleCodeScanningParameters as any as S.Schema<RepositoryRuleDetailedCase16Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase16RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase16RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase16 {
   type: RepositoryRuleDetailedCase16Type;
   parameters?: RepositoryRuleDetailedCase16Parameters;
@@ -8156,28 +7120,10 @@ export interface RepositoryRuleDetailedCase16 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase16Type,
-    parameters: S.optional(RepositoryRuleDetailedCase16Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase16RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase16",
-}) as any as S.Schema<RepositoryRuleDetailedCase16>;
-
 export type RepositoryRuleDetailedCase17Type = "copilot_code_review";
-export const RepositoryRuleDetailedCase17Type = S.String;
-
 export type RepositoryRuleDetailedCase17Parameters = RepositoryRuleCopilotCodeReviewParameters;
-export const RepositoryRuleDetailedCase17Parameters = RepositoryRuleCopilotCodeReviewParameters;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase17RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase17RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase17 {
   type: RepositoryRuleDetailedCase17Type;
   parameters?: RepositoryRuleCopilotCodeReviewParameters;
@@ -8188,25 +7134,9 @@ export interface RepositoryRuleDetailedCase17 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase17Type,
-    parameters: S.optional(RepositoryRuleCopilotCodeReviewParameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase17RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase17",
-}) as any as S.Schema<RepositoryRuleDetailedCase17>;
-
 export type RepositoryRuleDetailedCase18Type = "license_compliance_scanning";
-export const RepositoryRuleDetailedCase18Type = S.String;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase18RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase18RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase18 {
   type: RepositoryRuleDetailedCase18Type;
   /** The type of source for the ruleset that includes this rule. */
@@ -8216,33 +7146,15 @@ export interface RepositoryRuleDetailedCase18 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase18 =
-  RepositoryRuleDetailedCase0 as any as S.Schema<RepositoryRuleDetailedCase18>;
-
 export type RepositoryRuleDetailedCase19Type = "file_path_restriction";
-export const RepositoryRuleDetailedCase19Type = S.String;
-
 /** The file paths that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList = Array<string>;
-export const RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList>;
-
 export interface RepositoryRuleDetailedCase19Parameters {
   /** The file paths that are restricted from being pushed to the commit graph. */
   restricted_file_paths: RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList;
 }
-export const RepositoryRuleDetailedCase19Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restricted_file_paths: RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase19Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase19Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase19RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase19RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase19 {
   type: RepositoryRuleDetailedCase19Type;
   parameters?: RepositoryRuleDetailedCase19Parameters;
@@ -8253,28 +7165,10 @@ export interface RepositoryRuleDetailedCase19 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase19 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase19Type,
-    parameters: S.optional(RepositoryRuleDetailedCase19Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase19RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase19",
-}) as any as S.Schema<RepositoryRuleDetailedCase19>;
-
 export type RepositoryRuleDetailedCase20Type = "max_file_path_length";
-export const RepositoryRuleDetailedCase20Type = S.String;
-
 export type RepositoryRuleDetailedCase20Parameters = RepositoryRuleMaxFilePathLengthParameters;
-export const RepositoryRuleDetailedCase20Parameters = RepositoryRuleMaxFilePathLengthParameters;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase20RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase20RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase20 {
   type: RepositoryRuleDetailedCase20Type;
   parameters?: RepositoryRuleMaxFilePathLengthParameters;
@@ -8285,42 +7179,15 @@ export interface RepositoryRuleDetailedCase20 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase20 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase20Type,
-    parameters: S.optional(RepositoryRuleMaxFilePathLengthParameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase20RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase20",
-}) as any as S.Schema<RepositoryRuleDetailedCase20>;
-
 export type RepositoryRuleDetailedCase21Type = "file_extension_restriction";
-export const RepositoryRuleDetailedCase21Type = S.String;
-
 /** The file extensions that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList = Array<string>;
-export const RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList =
-  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList>;
-
 export interface RepositoryRuleDetailedCase21Parameters {
   /** The file extensions that are restricted from being pushed to the commit graph. */
   restricted_file_extensions: RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList;
 }
-export const RepositoryRuleDetailedCase21Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restricted_file_extensions: RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase21Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase21Parameters>;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase21RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase21RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase21 {
   type: RepositoryRuleDetailedCase21Type;
   parameters?: RepositoryRuleDetailedCase21Parameters;
@@ -8331,28 +7198,10 @@ export interface RepositoryRuleDetailedCase21 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase21 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase21Type,
-    parameters: S.optional(RepositoryRuleDetailedCase21Parameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase21RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase21",
-}) as any as S.Schema<RepositoryRuleDetailedCase21>;
-
 export type RepositoryRuleDetailedCase22Type = "max_file_size";
-export const RepositoryRuleDetailedCase22Type = S.String;
-
 export type RepositoryRuleDetailedCase22Parameters = RepositoryRuleMaxFileSizeParameters;
-export const RepositoryRuleDetailedCase22Parameters = RepositoryRuleMaxFileSizeParameters;
-
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase22RulesetSourceType = "Repository" | "Organization";
-export const RepositoryRuleDetailedCase22RulesetSourceType = S.String;
-
 export interface RepositoryRuleDetailedCase22 {
   type: RepositoryRuleDetailedCase22Type;
   parameters?: RepositoryRuleMaxFileSizeParameters;
@@ -8363,18 +7212,6 @@ export interface RepositoryRuleDetailedCase22 {
   /** The ID of the ruleset that includes this rule. */
   ruleset_id?: number;
 }
-export const RepositoryRuleDetailedCase22 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RepositoryRuleDetailedCase22Type,
-    parameters: S.optional(RepositoryRuleMaxFileSizeParameters),
-    ruleset_source_type: S.optional(RepositoryRuleDetailedCase22RulesetSourceType),
-    ruleset_source: S.optional(S.String),
-    ruleset_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase22",
-}) as any as S.Schema<RepositoryRuleDetailedCase22>;
-
 /** A repository rule with ruleset details. */
 export type RepositoryRuleDetailed =
   | RepositoryRuleDetailedCase0
@@ -8400,20 +7237,20 @@ export type RepositoryRuleDetailed =
   | RepositoryRuleDetailedCase20
   | RepositoryRuleDetailedCase21
   | RepositoryRuleDetailedCase22;
-export const RepositoryRuleDetailed = S.Unknown as any as S.Schema<RepositoryRuleDetailed>;
+const RepositoryRuleDetailed = S.Unknown as any as S.Schema<RepositoryRuleDetailed>;
 
 export type GetBranchRulesResponseBodyList = Array<RepositoryRuleDetailed>;
-export const GetBranchRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetBranchRulesResponseBodyList = /*@__PURE__*/ S.Array(
   RepositoryRuleDetailed,
 ) as any as S.Schema<GetBranchRulesResponseBodyList>;
 
 export type GetBranchRulesResponse = GetBranchRulesResponseBodyList;
-export const GetBranchRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBranchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   GetBranchRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetBranchRulesResponse" }) as any as S.Schema<GetBranchRulesResponse>;
 
 export type GetClonesRequestPer = "day" | "week";
-export const GetClonesRequestPer = S.String;
+const GetClonesRequestPer = S.String;
 
 export interface GetClonesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -8423,7 +7260,7 @@ export interface GetClonesRequest {
   /** The time frame to display results for. */
   per?: GetClonesRequestPer | (string & {});
 }
-export const GetClonesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8436,7 +7273,7 @@ export interface Traffic {
   uniques: number;
   count: number;
 }
-export const Traffic = /*@__PURE__*/ S.suspend(() =>
+const Traffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.String,
     uniques: S.Number,
@@ -8445,7 +7282,7 @@ export const Traffic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Traffic" }) as any as S.Schema<Traffic>;
 
 export type CloneTrafficClonesList = Array<Traffic>;
-export const CloneTrafficClonesList = /*@__PURE__*/ S.Array(
+const CloneTrafficClonesList = /*@__PURE__*/ S.Array(
   Traffic,
 ) as any as S.Schema<CloneTrafficClonesList>;
 
@@ -8455,7 +7292,7 @@ export interface CloneTraffic {
   uniques: number;
   clones: CloneTrafficClonesList;
 }
-export const CloneTraffic = /*@__PURE__*/ S.suspend(() =>
+const CloneTraffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     uniques: S.Number,
@@ -8469,7 +7306,7 @@ export interface GetCodeFrequencyStatsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetCodeFrequencyStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCodeFrequencyStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8480,16 +7317,16 @@ export const GetCodeFrequencyStatsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Code Frequency Stat */
 export type CodeFrequencyStat = Array<number>;
-export const CodeFrequencyStat =
+const CodeFrequencyStat =
   OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CodeFrequencyStat>;
 
 export type GetCodeFrequencyStatsResponseBodyList = Array<CodeFrequencyStat>;
-export const GetCodeFrequencyStatsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCodeFrequencyStatsResponseBodyList = /*@__PURE__*/ S.Array(
   CodeFrequencyStat,
 ) as any as S.Schema<GetCodeFrequencyStatsResponseBodyList>;
 
 export type GetCodeFrequencyStatsResponse = GetCodeFrequencyStatsResponseBodyList;
-export const GetCodeFrequencyStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCodeFrequencyStatsResponse = /*@__PURE__*/ S.suspend(() =>
   GetCodeFrequencyStatsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetCodeFrequencyStatsResponse",
@@ -8503,7 +7340,7 @@ export interface GetCollaboratorPermissionLevelRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const GetCollaboratorPermissionLevelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollaboratorPermissionLevelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8526,7 +7363,7 @@ export interface NullableCollaboratorPermissions {
   maintain?: boolean;
   admin: boolean;
 }
-export const NullableCollaboratorPermissions = /*@__PURE__*/ S.suspend(() =>
+const NullableCollaboratorPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.optional(S.Boolean),
@@ -8564,7 +7401,7 @@ export interface NullableCollaborator {
   role_name: string;
   user_view_type?: string;
 }
-export const NullableCollaborator = /*@__PURE__*/ S.suspend(() =>
+const NullableCollaborator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -8598,7 +7435,7 @@ export interface RepositoryCollaboratorPermission {
   role_name: string;
   user: NullableCollaborator | null;
 }
-export const RepositoryCollaboratorPermission = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCollaboratorPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission: S.String,
     role_name: S.String,
@@ -8620,7 +7457,7 @@ export interface GetCombinedStatusForRefRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetCombinedStatusForRefRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCombinedStatusForRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8645,7 +7482,7 @@ export interface SimpleCommitStatus {
   created_at: string;
   updated_at: string;
 }
-export const SimpleCommitStatus = /*@__PURE__*/ S.suspend(() =>
+const SimpleCommitStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.NullOr(S.String),
     id: S.Number,
@@ -8662,7 +7499,7 @@ export const SimpleCommitStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleCommitStatus" }) as any as S.Schema<SimpleCommitStatus>;
 
 export type CombinedCommitStatusStatusesList = Array<SimpleCommitStatus>;
-export const CombinedCommitStatusStatusesList = /*@__PURE__*/ S.Array(
+const CombinedCommitStatusStatusesList = /*@__PURE__*/ S.Array(
   SimpleCommitStatus,
 ) as any as S.Schema<CombinedCommitStatusStatusesList>;
 
@@ -8676,7 +7513,7 @@ export interface CombinedCommitStatus {
   commit_url: string;
   url: string;
 }
-export const CombinedCommitStatus = /*@__PURE__*/ S.suspend(() =>
+const CombinedCommitStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.String,
     statuses: CombinedCommitStatusStatusesList,
@@ -8700,7 +7537,7 @@ export interface GetCommitRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const GetCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8716,7 +7553,7 @@ export interface GetCommitActivityStatsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetCommitActivityStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommitActivityStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8726,7 +7563,7 @@ export const GetCommitActivityStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCommitActivityStatsRequest>;
 
 export type CommitActivityDaysList = Array<number>;
-export const CommitActivityDaysList =
+const CommitActivityDaysList =
   OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CommitActivityDaysList>;
 
 /** Commit Activity */
@@ -8735,7 +7572,7 @@ export interface CommitActivity {
   total: number;
   week: number;
 }
-export const CommitActivity = /*@__PURE__*/ S.suspend(() =>
+const CommitActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: CommitActivityDaysList,
     total: S.Number,
@@ -8744,12 +7581,12 @@ export const CommitActivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitActivity" }) as any as S.Schema<CommitActivity>;
 
 export type GetCommitActivityStatsResponseBodyList = Array<CommitActivity>;
-export const GetCommitActivityStatsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCommitActivityStatsResponseBodyList = /*@__PURE__*/ S.Array(
   CommitActivity,
 ) as any as S.Schema<GetCommitActivityStatsResponseBodyList>;
 
 export type GetCommitActivityStatsResponse = GetCommitActivityStatsResponseBodyList;
-export const GetCommitActivityStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCommitActivityStatsResponse = /*@__PURE__*/ S.suspend(() =>
   GetCommitActivityStatsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetCommitActivityStatsResponse",
@@ -8763,7 +7600,7 @@ export interface GetCommitCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-export const GetCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8779,7 +7616,7 @@ export interface GetCommitSignatureProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8801,7 +7638,7 @@ export interface GetCommunityProfileMetricsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetCommunityProfileMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommunityProfileMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8812,13 +7649,11 @@ export const GetCommunityProfileMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Code of Conduct Simple */
 export type NullableCodeOfConductSimple = CodeOfConductSimple;
-export const NullableCodeOfConductSimple = CodeOfConductSimple;
-
 export interface NullableCommunityHealthFile {
   url: string;
   html_url: string;
 }
-export const NullableCommunityHealthFile = /*@__PURE__*/ S.suspend(() =>
+const NullableCommunityHealthFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -8836,7 +7671,7 @@ export interface CommunityProfileFiles {
   issue_template: NullableCommunityHealthFile | null;
   pull_request_template: NullableCommunityHealthFile | null;
 }
-export const CommunityProfileFiles = /*@__PURE__*/ S.suspend(() =>
+const CommunityProfileFiles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code_of_conduct: S.NullOr(CodeOfConductSimple),
     code_of_conduct_file: S.NullOr(NullableCommunityHealthFile),
@@ -8857,7 +7692,7 @@ export interface CommunityProfile {
   updated_at: string | null;
   content_reports_enabled?: boolean;
 }
-export const CommunityProfile = /*@__PURE__*/ S.suspend(() =>
+const CommunityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     health_percentage: S.Number,
     description: S.NullOr(S.String),
@@ -8878,7 +7713,7 @@ export interface GetContentRequest {
   /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
-export const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8888,14 +7723,12 @@ export const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetContentRequest" }) as any as S.Schema<GetContentRequest>;
 
 export type ContentDirectoryItemType = "dir" | "file" | "submodule" | "symlink";
-export const ContentDirectoryItemType = S.String;
-
 export interface ContentDirectoryItemLinks {
   git: string | null;
   html: string | null;
   self: string;
 }
-export const ContentDirectoryItemLinks = /*@__PURE__*/ S.suspend(() =>
+const ContentDirectoryItemLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     git: S.NullOr(S.String),
     html: S.NullOr(S.String),
@@ -8918,34 +7751,12 @@ export interface ContentDirectoryItem {
   download_url: string | null;
   _links: ContentDirectoryItemLinks;
 }
-export const ContentDirectoryItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ContentDirectoryItemType,
-    size: S.Number,
-    name: S.String,
-    path: S.String,
-    content: S.optional(S.String),
-    sha: S.String,
-    url: S.String,
-    git_url: S.NullOr(S.String),
-    html_url: S.NullOr(S.String),
-    download_url: S.NullOr(S.String),
-    _links: ContentDirectoryItemLinks,
-  }),
-).annotate({ identifier: "ContentDirectoryItem" }) as any as S.Schema<ContentDirectoryItem>;
-
 /** A list of directory items */
 export type ContentDirectory = Array<ContentDirectoryItem>;
-export const ContentDirectory = /*@__PURE__*/ S.Array(
-  ContentDirectoryItem,
-) as any as S.Schema<ContentDirectory>;
-
 export type ContentFileType = "file";
-export const ContentFileType = S.String;
+const ContentFileType = S.String;
 
 export type ContentFileLinks = ContentDirectoryItemLinks;
-export const ContentFileLinks = ContentDirectoryItemLinks;
-
 /** Content File */
 export interface ContentFile {
   type: ContentFileType;
@@ -8963,7 +7774,7 @@ export interface ContentFile {
   target?: string;
   submodule_git_url?: string;
 }
-export const ContentFile = /*@__PURE__*/ S.suspend(() =>
+const ContentFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ContentFileType,
     encoding: S.String,
@@ -8983,11 +7794,7 @@ export const ContentFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentFile" }) as any as S.Schema<ContentFile>;
 
 export type ContentSymlinkType = "symlink";
-export const ContentSymlinkType = S.String;
-
 export type ContentSymlinkLinks = ContentDirectoryItemLinks;
-export const ContentSymlinkLinks = ContentDirectoryItemLinks;
-
 /** An object describing a symlink */
 export interface ContentSymlink {
   type: ContentSymlinkType;
@@ -9002,28 +7809,8 @@ export interface ContentSymlink {
   download_url: string | null;
   _links: ContentDirectoryItemLinks;
 }
-export const ContentSymlink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ContentSymlinkType,
-    target: S.String,
-    size: S.Number,
-    name: S.String,
-    path: S.String,
-    sha: S.String,
-    url: S.String,
-    git_url: S.NullOr(S.String),
-    html_url: S.NullOr(S.String),
-    download_url: S.NullOr(S.String),
-    _links: ContentDirectoryItemLinks,
-  }),
-).annotate({ identifier: "ContentSymlink" }) as any as S.Schema<ContentSymlink>;
-
 export type ContentSubmoduleType = "submodule";
-export const ContentSubmoduleType = S.String;
-
 export type ContentSubmoduleLinks = ContentDirectoryItemLinks;
-export const ContentSubmoduleLinks = ContentDirectoryItemLinks;
-
 /** An object describing a submodule */
 export interface ContentSubmodule {
   type: ContentSubmoduleType;
@@ -9038,31 +7825,15 @@ export interface ContentSubmodule {
   download_url: string | null;
   _links: ContentDirectoryItemLinks;
 }
-export const ContentSubmodule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ContentSubmoduleType,
-    submodule_git_url: S.String,
-    size: S.Number,
-    name: S.String,
-    path: S.String,
-    sha: S.String,
-    url: S.String,
-    git_url: S.NullOr(S.String),
-    html_url: S.NullOr(S.String),
-    download_url: S.NullOr(S.String),
-    _links: ContentDirectoryItemLinks,
-  }),
-).annotate({ identifier: "ContentSubmodule" }) as any as S.Schema<ContentSubmodule>;
-
 export type GetContentResponseBody =
   | ContentDirectory
   | ContentFile
   | ContentSymlink
   | ContentSubmodule;
-export const GetContentResponseBody = S.Unknown as any as S.Schema<GetContentResponseBody>;
+const GetContentResponseBody = S.Unknown as any as S.Schema<GetContentResponseBody>;
 
 export type GetContentResponse = GetContentResponseBody;
-export const GetContentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContentResponse = /*@__PURE__*/ S.suspend(() =>
   GetContentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetContentResponse" }) as any as S.Schema<GetContentResponse>;
 
@@ -9072,7 +7843,7 @@ export interface GetContributorsStatsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetContributorsStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContributorsStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9087,7 +7858,7 @@ export interface ContributorActivityWeeksItem {
   d?: number;
   c?: number;
 }
-export const ContributorActivityWeeksItem = /*@__PURE__*/ S.suspend(() =>
+const ContributorActivityWeeksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     w: S.optional(S.Number),
     a: S.optional(S.Number),
@@ -9099,7 +7870,7 @@ export const ContributorActivityWeeksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContributorActivityWeeksItem>;
 
 export type ContributorActivityWeeksList = Array<ContributorActivityWeeksItem>;
-export const ContributorActivityWeeksList = /*@__PURE__*/ S.Array(
+const ContributorActivityWeeksList = /*@__PURE__*/ S.Array(
   ContributorActivityWeeksItem,
 ) as any as S.Schema<ContributorActivityWeeksList>;
 
@@ -9109,7 +7880,7 @@ export interface ContributorActivity {
   total: number;
   weeks: ContributorActivityWeeksList;
 }
-export const ContributorActivity = /*@__PURE__*/ S.suspend(() =>
+const ContributorActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.NullOr(SimpleUser),
     total: S.Number,
@@ -9118,12 +7889,12 @@ export const ContributorActivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContributorActivity" }) as any as S.Schema<ContributorActivity>;
 
 export type GetContributorsStatsResponseBodyList = Array<ContributorActivity>;
-export const GetContributorsStatsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetContributorsStatsResponseBodyList = /*@__PURE__*/ S.Array(
   ContributorActivity,
 ) as any as S.Schema<GetContributorsStatsResponseBodyList>;
 
 export type GetContributorsStatsResponse = GetContributorsStatsResponseBodyList;
-export const GetContributorsStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContributorsStatsResponse = /*@__PURE__*/ S.suspend(() =>
   GetContributorsStatsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetContributorsStatsResponse",
@@ -9139,7 +7910,7 @@ export interface GetCustomDeploymentProtectionRuleRequest {
   /** The unique identifier of the protection rule. */
   protection_rule_id: number;
 }
-export const GetCustomDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9164,7 +7935,7 @@ export interface GetDeployKeyRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
-export const GetDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9180,7 +7951,7 @@ export interface GetDeploymentRequest {
   /** deployment_id parameter */
   deployment_id: number;
 }
-export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9200,7 +7971,7 @@ export interface GetDeploymentBranchPolicyRequest {
   /** The unique identifier of the branch policy. */
   branch_policy_id: number;
 }
-export const GetDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9226,7 +7997,7 @@ export interface GetDeploymentStatusRequest {
   deployment_id: number;
   status_id: number;
 }
-export const GetDeploymentStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9251,7 +8022,7 @@ export interface GetEnvironmentRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9271,7 +8042,7 @@ export interface GetHashAlgorithmRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetHashAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHashAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9280,14 +8051,14 @@ export const GetHashAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Git hash algorithm used by this repository. */
 export type RepositoryHashAlgorithmHashAlgorithm = "sha1" | "sha256";
-export const RepositoryHashAlgorithmHashAlgorithm = S.String;
+const RepositoryHashAlgorithmHashAlgorithm = S.String;
 
 /** Repository hash algorithm */
 export interface RepositoryHashAlgorithm {
   /** The Git hash algorithm used by this repository. */
   hash_algorithm: RepositoryHashAlgorithmHashAlgorithm;
 }
-export const RepositoryHashAlgorithm = /*@__PURE__*/ S.suspend(() =>
+const RepositoryHashAlgorithm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash_algorithm: RepositoryHashAlgorithmHashAlgorithm,
   }),
@@ -9299,7 +8070,7 @@ export interface GetLatestPagesBuildRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetLatestPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9311,7 +8082,7 @@ export const GetLatestPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PageBuildError {
   message: string | null;
 }
-export const PageBuildError = /*@__PURE__*/ S.suspend(() =>
+const PageBuildError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.NullOr(S.String),
   }),
@@ -9328,7 +8099,7 @@ export interface PageBuild {
   created_at: string;
   updated_at: string;
 }
-export const PageBuild = /*@__PURE__*/ S.suspend(() =>
+const PageBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     status: S.String,
@@ -9347,7 +8118,7 @@ export interface GetLatestReleaseRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetLatestReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9360,7 +8131,7 @@ export interface GetOrgRulesetRequest {
   /** The ID of the ruleset. */
   ruleset_id: number;
 }
-export const GetOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     ruleset_id: S.Number.pipe(T.Label()),
@@ -9377,7 +8148,7 @@ export interface GetOrgRulesetsRequest {
   /** A comma-separated list of rule targets to filter by. If provided, only rulesets that apply to the specified targets will be returned. For example, `branch,tag,push`. */
   targets?: string;
 }
-export const GetOrgRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -9387,12 +8158,12 @@ export const GetOrgRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrgRulesetsRequest" }) as any as S.Schema<GetOrgRulesetsRequest>;
 
 export type GetOrgRulesetsResponseBodyList = Array<RepositoryRuleset>;
-export const GetOrgRulesetsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOrgRulesetsResponseBodyList = /*@__PURE__*/ S.Array(
   RepositoryRuleset,
 ) as any as S.Schema<GetOrgRulesetsResponseBodyList>;
 
 export type GetOrgRulesetsResponse = GetOrgRulesetsResponseBodyList;
-export const GetOrgRulesetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRulesetsResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgRulesetsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOrgRulesetsResponse" }) as any as S.Schema<GetOrgRulesetsResponse>;
 
@@ -9402,7 +8173,7 @@ export interface GetOrgRuleSuiteRequest {
   /** The unique identifier of the rule suite result. To get this ID, you can use [GET /repos/{owner}/{repo}/rulesets/rule-suites](https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites) for repositories and [GET /orgs/{org}/rulesets/rule-suites](https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites) for organizations. */
   rule_suite_id: number;
 }
-export const GetOrgRuleSuiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRuleSuiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     rule_suite_id: S.Number.pipe(T.Label()),
@@ -9413,11 +8184,11 @@ export const GetOrgRuleSuiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The result of the rule evaluations for rules with the `active` enforcement status. */
 export type RuleSuiteResult = "pass" | "fail" | "bypass";
-export const RuleSuiteResult = S.String;
+const RuleSuiteResult = S.String;
 
 /** The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run. */
 export type RuleSuiteEvaluationResult = "pass" | "fail" | "bypass";
-export const RuleSuiteEvaluationResult = S.String;
+const RuleSuiteEvaluationResult = S.String;
 
 export interface RuleSuiteRuleEvaluationsItemRuleSource {
   /** The type of rule source. */
@@ -9427,7 +8198,7 @@ export interface RuleSuiteRuleEvaluationsItemRuleSource {
   /** The name of the rule source. */
   name?: string | null;
 }
-export const RuleSuiteRuleEvaluationsItemRuleSource = /*@__PURE__*/ S.suspend(() =>
+const RuleSuiteRuleEvaluationsItemRuleSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     id: S.optional(S.NullOr(S.Number)),
@@ -9439,11 +8210,11 @@ export const RuleSuiteRuleEvaluationsItemRuleSource = /*@__PURE__*/ S.suspend(()
 
 /** The enforcement level of this rule source. */
 export type RuleSuiteRuleEvaluationsItemEnforcement = "active" | "evaluate" | "deleted ruleset";
-export const RuleSuiteRuleEvaluationsItemEnforcement = S.String;
+const RuleSuiteRuleEvaluationsItemEnforcement = S.String;
 
 /** The result of the evaluation of the individual rule. */
 export type RuleSuiteRuleEvaluationsItemResult = "pass" | "fail";
-export const RuleSuiteRuleEvaluationsItemResult = S.String;
+const RuleSuiteRuleEvaluationsItemResult = S.String;
 
 export interface RuleSuiteRuleEvaluationsItem {
   rule_source?: RuleSuiteRuleEvaluationsItemRuleSource;
@@ -9456,7 +8227,7 @@ export interface RuleSuiteRuleEvaluationsItem {
   /** The detailed failure message for the rule. Null if the rule passed. */
   details?: string | null;
 }
-export const RuleSuiteRuleEvaluationsItem = /*@__PURE__*/ S.suspend(() =>
+const RuleSuiteRuleEvaluationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule_source: S.optional(RuleSuiteRuleEvaluationsItemRuleSource),
     enforcement: S.optional(RuleSuiteRuleEvaluationsItemEnforcement),
@@ -9470,7 +8241,7 @@ export const RuleSuiteRuleEvaluationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the evaluated rules. */
 export type RuleSuiteRuleEvaluationsList = Array<RuleSuiteRuleEvaluationsItem>;
-export const RuleSuiteRuleEvaluationsList = /*@__PURE__*/ S.Array(
+const RuleSuiteRuleEvaluationsList = /*@__PURE__*/ S.Array(
   RuleSuiteRuleEvaluationsItem,
 ) as any as S.Schema<RuleSuiteRuleEvaluationsList>;
 
@@ -9500,7 +8271,7 @@ export interface RuleSuite {
   /** Details on the evaluated rules. */
   rule_evaluations?: RuleSuiteRuleEvaluationsList;
 }
-export const RuleSuite = /*@__PURE__*/ S.suspend(() =>
+const RuleSuite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     actor_id: S.optional(S.NullOr(S.Number)),
@@ -9518,13 +8289,13 @@ export const RuleSuite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleSuite" }) as any as S.Schema<RuleSuite>;
 
 export type GetOrgRuleSuitesRequestTimePeriod = "hour" | "day" | "week" | "month";
-export const GetOrgRuleSuitesRequestTimePeriod = S.String;
+const GetOrgRuleSuitesRequestTimePeriod = S.String;
 
 export type GetOrgRuleSuitesRequestRuleSuiteResult = "pass" | "fail" | "bypass" | "all";
-export const GetOrgRuleSuitesRequestRuleSuiteResult = S.String;
+const GetOrgRuleSuitesRequestRuleSuiteResult = S.String;
 
 export type GetOrgRuleSuitesRequestEvaluateStatus = "all" | "active" | "evaluate";
-export const GetOrgRuleSuitesRequestEvaluateStatus = S.String;
+const GetOrgRuleSuitesRequestEvaluateStatus = S.String;
 
 export interface GetOrgRuleSuitesRequest {
   /** The organization name. The name is not case sensitive. */
@@ -9546,7 +8317,7 @@ export interface GetOrgRuleSuitesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetOrgRuleSuitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRuleSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     ref: S.optional(S.String.pipe(T.Query())),
@@ -9562,11 +8333,11 @@ export const GetOrgRuleSuitesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The result of the rule evaluations for rules with the `active` enforcement status. */
 export type RuleSuitesItemResult = "pass" | "fail" | "bypass";
-export const RuleSuitesItemResult = S.String;
+const RuleSuitesItemResult = S.String;
 
 /** The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. */
 export type RuleSuitesItemEvaluationResult = "pass" | "fail" | "bypass";
-export const RuleSuitesItemEvaluationResult = S.String;
+const RuleSuitesItemEvaluationResult = S.String;
 
 export interface RuleSuitesItem {
   /** The unique identifier of the rule insight. */
@@ -9591,7 +8362,7 @@ export interface RuleSuitesItem {
   /** The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. */
   evaluation_result?: RuleSuitesItemEvaluationResult;
 }
-export const RuleSuitesItem = /*@__PURE__*/ S.suspend(() =>
+const RuleSuitesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     actor_id: S.optional(S.Number),
@@ -9609,10 +8380,10 @@ export const RuleSuitesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Response */
 export type RuleSuites = Array<RuleSuitesItem>;
-export const RuleSuites = /*@__PURE__*/ S.Array(RuleSuitesItem) as any as S.Schema<RuleSuites>;
+const RuleSuites = /*@__PURE__*/ S.Array(RuleSuitesItem) as any as S.Schema<RuleSuites>;
 
 export type GetOrgRuleSuitesResponse = RuleSuites;
-export const GetOrgRuleSuitesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRuleSuitesResponse = /*@__PURE__*/ S.suspend(() =>
   RuleSuites.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOrgRuleSuitesResponse" }) as any as S.Schema<GetOrgRuleSuitesResponse>;
 
@@ -9622,7 +8393,7 @@ export interface GetPagesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9636,7 +8407,7 @@ export interface GetPagesBuildRequest {
   repo: string;
   build_id: number;
 }
-export const GetPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9654,7 +8425,7 @@ export interface GetPagesDeploymentRequest {
   /** The ID of the Pages deployment. You can also give the commit SHA of the deployment. */
   pages_deployment_id: string;
 }
-export const GetPagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPagesDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9683,13 +8454,13 @@ export type PagesDeploymentStatusStatus =
   | "deployment_attempt_error"
   | "deployment_lost"
   | "succeed";
-export const PagesDeploymentStatusStatus = S.String;
+const PagesDeploymentStatusStatus = S.String;
 
 export interface PagesDeploymentStatus {
   /** The current status of the deployment. */
   status?: PagesDeploymentStatusStatus;
 }
-export const PagesDeploymentStatus = /*@__PURE__*/ S.suspend(() =>
+const PagesDeploymentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PagesDeploymentStatusStatus),
   }),
@@ -9701,7 +8472,7 @@ export interface GetPagesHealthCheckRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetPagesHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPagesHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9740,7 +8511,7 @@ export interface PagesHealthCheckDomain {
   is_https_eligible?: boolean | null;
   caa_error?: string | null;
 }
-export const PagesHealthCheckDomain = /*@__PURE__*/ S.suspend(() =>
+const PagesHealthCheckDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     uri: S.optional(S.String),
@@ -9774,14 +8545,12 @@ export const PagesHealthCheckDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PagesHealthCheckDomain" }) as any as S.Schema<PagesHealthCheckDomain>;
 
 export type PagesHealthCheckAltDomain = PagesHealthCheckDomain;
-export const PagesHealthCheckAltDomain = PagesHealthCheckDomain;
-
 /** Pages Health Check Status */
 export interface PagesHealthCheck {
   domain?: PagesHealthCheckDomain;
   alt_domain?: PagesHealthCheckDomain | null;
 }
-export const PagesHealthCheck = /*@__PURE__*/ S.suspend(() =>
+const PagesHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(PagesHealthCheckDomain),
     alt_domain: S.optional(S.NullOr(PagesHealthCheckDomain)),
@@ -9794,7 +8563,7 @@ export interface GetParticipationStatsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetParticipationStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetParticipationStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9804,18 +8573,18 @@ export const GetParticipationStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetParticipationStatsRequest>;
 
 export type ParticipationStatsAllList = Array<number>;
-export const ParticipationStatsAllList =
+const ParticipationStatsAllList =
   OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ParticipationStatsAllList>;
 
 export type ParticipationStatsOwnerList = Array<number>;
-export const ParticipationStatsOwnerList =
+const ParticipationStatsOwnerList =
   OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ParticipationStatsOwnerList>;
 
 export interface ParticipationStats {
   all: ParticipationStatsAllList;
   owner: ParticipationStatsOwnerList;
 }
-export const ParticipationStats = /*@__PURE__*/ S.suspend(() =>
+const ParticipationStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: ParticipationStatsAllList,
     owner: ParticipationStatsOwnerList,
@@ -9830,7 +8599,7 @@ export interface GetPullRequestReviewProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetPullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9852,7 +8621,7 @@ export interface GetPunchCardStatsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetPunchCardStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPunchCardStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9860,11 +8629,8 @@ export const GetPunchCardStatsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPunchCardStatsRequest" }) as any as S.Schema<GetPunchCardStatsRequest>;
 
 export type GetPunchCardStatsResponseBodyList = Array<CodeFrequencyStat>;
-export const GetPunchCardStatsResponseBodyList =
-  GetCodeFrequencyStatsResponseBodyList as any as S.Schema<GetPunchCardStatsResponseBodyList>;
-
 export type GetPunchCardStatsResponse = GetPunchCardStatsResponseBodyList;
-export const GetPunchCardStatsResponse =
+const GetPunchCardStatsResponse =
   GetCodeFrequencyStatsResponse as any as S.Schema<GetPunchCardStatsResponse>;
 
 export interface GetReadmeRequest {
@@ -9875,7 +8641,7 @@ export interface GetReadmeRequest {
   /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
-export const GetReadmeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReadmeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9893,7 +8659,7 @@ export interface GetReadmeInDirectoryRequest {
   /** The name of the commit/branch/tag. Default: the repository's default branch. */
   ref?: string;
 }
-export const GetReadmeInDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReadmeInDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9912,7 +8678,7 @@ export interface GetReleaseRequest {
   /** The unique identifier of the release. */
   release_id: number;
 }
-export const GetReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9928,7 +8694,7 @@ export interface GetReleaseAssetRequest {
   /** The unique identifier of the asset. */
   asset_id: number;
 }
-export const GetReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9946,7 +8712,7 @@ export interface GetReleaseByTagRequest {
   /** tag parameter */
   tag: string;
 }
-export const GetReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9964,7 +8730,7 @@ export interface GetRepoRulesetRequest {
   /** Include rulesets configured at higher levels that apply to this repository */
   includes_parents?: boolean;
 }
-export const GetRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -9985,7 +8751,7 @@ export interface GetRepoRulesetHistoryRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetRepoRulesetHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRulesetHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10008,7 +8774,7 @@ export interface RulesetVersionActor {
   id?: number;
   type?: string;
 }
-export const RulesetVersionActor = /*@__PURE__*/ S.suspend(() =>
+const RulesetVersionActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     type: S.optional(S.String),
@@ -10023,7 +8789,7 @@ export interface RulesetVersion {
   actor: RulesetVersionActor;
   updated_at: string;
 }
-export const RulesetVersion = /*@__PURE__*/ S.suspend(() =>
+const RulesetVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number,
     actor: RulesetVersionActor,
@@ -10032,12 +8798,12 @@ export const RulesetVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesetVersion" }) as any as S.Schema<RulesetVersion>;
 
 export type GetRepoRulesetHistoryResponseBodyList = Array<RulesetVersion>;
-export const GetRepoRulesetHistoryResponseBodyList = /*@__PURE__*/ S.Array(
+const GetRepoRulesetHistoryResponseBodyList = /*@__PURE__*/ S.Array(
   RulesetVersion,
 ) as any as S.Schema<GetRepoRulesetHistoryResponseBodyList>;
 
 export type GetRepoRulesetHistoryResponse = GetRepoRulesetHistoryResponseBodyList;
-export const GetRepoRulesetHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRulesetHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   GetRepoRulesetHistoryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetRepoRulesetHistoryResponse",
@@ -10057,7 +8823,7 @@ export interface GetRepoRulesetsRequest {
   /** A comma-separated list of rule targets to filter by. If provided, only rulesets that apply to the specified targets will be returned. For example, `branch,tag,push`. */
   targets?: string;
 }
-export const GetRepoRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10069,12 +8835,8 @@ export const GetRepoRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepoRulesetsRequest" }) as any as S.Schema<GetRepoRulesetsRequest>;
 
 export type GetRepoRulesetsResponseBodyList = Array<RepositoryRuleset>;
-export const GetRepoRulesetsResponseBodyList =
-  GetOrgRulesetsResponseBodyList as any as S.Schema<GetRepoRulesetsResponseBodyList>;
-
 export type GetRepoRulesetsResponse = GetRepoRulesetsResponseBodyList;
-export const GetRepoRulesetsResponse =
-  GetOrgRulesetsResponse as any as S.Schema<GetRepoRulesetsResponse>;
+const GetRepoRulesetsResponse = GetOrgRulesetsResponse as any as S.Schema<GetRepoRulesetsResponse>;
 
 export interface GetRepoRulesetVersionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10086,7 +8848,7 @@ export interface GetRepoRulesetVersionRequest {
   /** The ID of the version */
   version_id: number;
 }
-export const GetRepoRulesetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRulesetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10105,8 +8867,6 @@ export const GetRepoRulesetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor who updated the ruleset */
 export type GetRepoRulesetVersionResponseActor = RulesetVersionActor;
-export const GetRepoRulesetVersionResponseActor = RulesetVersionActor;
-
 export interface GetRepoRulesetVersionResponse {
   /** The ID of the previous version of the ruleset */
   version_id: number;
@@ -10116,7 +8876,7 @@ export interface GetRepoRulesetVersionResponse {
   /** The state of the ruleset version */
   state: unknown;
 }
-export const GetRepoRulesetVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRulesetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number,
     actor: RulesetVersionActor,
@@ -10135,7 +8895,7 @@ export interface GetRepoRuleSuiteRequest {
   /** The unique identifier of the rule suite result. To get this ID, you can use [GET /repos/{owner}/{repo}/rulesets/rule-suites](https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites) for repositories and [GET /orgs/{org}/rulesets/rule-suites](https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites) for organizations. */
   rule_suite_id: number;
 }
-export const GetRepoRuleSuiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRuleSuiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10150,13 +8910,13 @@ export const GetRepoRuleSuiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepoRuleSuiteRequest" }) as any as S.Schema<GetRepoRuleSuiteRequest>;
 
 export type GetRepoRuleSuitesRequestTimePeriod = "hour" | "day" | "week" | "month";
-export const GetRepoRuleSuitesRequestTimePeriod = S.String;
+const GetRepoRuleSuitesRequestTimePeriod = S.String;
 
 export type GetRepoRuleSuitesRequestRuleSuiteResult = "pass" | "fail" | "bypass" | "all";
-export const GetRepoRuleSuitesRequestRuleSuiteResult = S.String;
+const GetRepoRuleSuitesRequestRuleSuiteResult = S.String;
 
 export type GetRepoRuleSuitesRequestEvaluateStatus = "all" | "active" | "evaluate";
-export const GetRepoRuleSuitesRequestEvaluateStatus = S.String;
+const GetRepoRuleSuitesRequestEvaluateStatus = S.String;
 
 export interface GetRepoRuleSuitesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10178,7 +8938,7 @@ export interface GetRepoRuleSuitesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetRepoRuleSuitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRuleSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10193,7 +8953,7 @@ export const GetRepoRuleSuitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepoRuleSuitesRequest" }) as any as S.Schema<GetRepoRuleSuitesRequest>;
 
 export type GetRepoRuleSuitesResponse = RuleSuites;
-export const GetRepoRuleSuitesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRuleSuitesResponse = /*@__PURE__*/ S.suspend(() =>
   RuleSuites.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetRepoRuleSuitesResponse",
@@ -10207,7 +8967,7 @@ export interface GetStatusChecksProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetStatusChecksProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusChecksProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10224,14 +8984,12 @@ export const GetStatusChecksProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStatusChecksProtectionRequest>;
 
 export type StatusCheckPolicyContextsList = Array<string>;
-export const StatusCheckPolicyContextsList =
+const StatusCheckPolicyContextsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<StatusCheckPolicyContextsList>;
 
 export type StatusCheckPolicyChecksItem = ProtectedBranchRequiredStatusCheckChecksItem;
-export const StatusCheckPolicyChecksItem = ProtectedBranchRequiredStatusCheckChecksItem;
-
 export type StatusCheckPolicyChecksList = Array<ProtectedBranchRequiredStatusCheckChecksItem>;
-export const StatusCheckPolicyChecksList =
+const StatusCheckPolicyChecksList =
   ProtectedBranchRequiredStatusCheckChecksList as any as S.Schema<StatusCheckPolicyChecksList>;
 
 /** Status Check Policy */
@@ -10242,7 +9000,7 @@ export interface StatusCheckPolicy {
   checks: StatusCheckPolicyChecksList;
   contexts_url: string;
 }
-export const StatusCheckPolicy = /*@__PURE__*/ S.suspend(() =>
+const StatusCheckPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     strict: S.Boolean,
@@ -10260,7 +9018,7 @@ export interface GetTeamsWithAccessToProtectedBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetTeamsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10277,12 +9035,9 @@ export const GetTeamsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetTeamsWithAccessToProtectedBranchRequest>;
 
 export type GetTeamsWithAccessToProtectedBranchResponseBodyList = Array<Team>;
-export const GetTeamsWithAccessToProtectedBranchResponseBodyList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponseBodyList>;
-
 export type GetTeamsWithAccessToProtectedBranchResponse =
   GetTeamsWithAccessToProtectedBranchResponseBodyList;
-export const GetTeamsWithAccessToProtectedBranchResponse =
+const GetTeamsWithAccessToProtectedBranchResponse =
   AddTeamAccessRestrictionsResponse as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponse>;
 
 export interface GetTopPathsRequest {
@@ -10291,7 +9046,7 @@ export interface GetTopPathsRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetTopPathsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopPathsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10305,7 +9060,7 @@ export interface ContentTraffic {
   count: number;
   uniques: number;
 }
-export const ContentTraffic = /*@__PURE__*/ S.suspend(() =>
+const ContentTraffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     title: S.String,
@@ -10315,12 +9070,12 @@ export const ContentTraffic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentTraffic" }) as any as S.Schema<ContentTraffic>;
 
 export type GetTopPathsResponseBodyList = Array<ContentTraffic>;
-export const GetTopPathsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetTopPathsResponseBodyList = /*@__PURE__*/ S.Array(
   ContentTraffic,
 ) as any as S.Schema<GetTopPathsResponseBodyList>;
 
 export type GetTopPathsResponse = GetTopPathsResponseBodyList;
-export const GetTopPathsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTopPathsResponse = /*@__PURE__*/ S.suspend(() =>
   GetTopPathsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetTopPathsResponse" }) as any as S.Schema<GetTopPathsResponse>;
 
@@ -10330,7 +9085,7 @@ export interface GetTopReferrersRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetTopReferrersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopReferrersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10345,7 +9100,7 @@ export interface ReferrerTraffic {
   count: number;
   uniques: number;
 }
-export const ReferrerTraffic = /*@__PURE__*/ S.suspend(() =>
+const ReferrerTraffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referrer: S.String,
     count: S.Number,
@@ -10354,12 +9109,12 @@ export const ReferrerTraffic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReferrerTraffic" }) as any as S.Schema<ReferrerTraffic>;
 
 export type GetTopReferrersResponseBodyList = Array<ReferrerTraffic>;
-export const GetTopReferrersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetTopReferrersResponseBodyList = /*@__PURE__*/ S.Array(
   ReferrerTraffic,
 ) as any as S.Schema<GetTopReferrersResponseBodyList>;
 
 export type GetTopReferrersResponse = GetTopReferrersResponseBodyList;
-export const GetTopReferrersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTopReferrersResponse = /*@__PURE__*/ S.suspend(() =>
   GetTopReferrersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetTopReferrersResponse" }) as any as S.Schema<GetTopReferrersResponse>;
 
@@ -10371,7 +9126,7 @@ export interface GetUsersWithAccessToProtectedBranchRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const GetUsersWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10388,16 +9143,13 @@ export const GetUsersWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetUsersWithAccessToProtectedBranchRequest>;
 
 export type GetUsersWithAccessToProtectedBranchResponseBodyList = Array<SimpleUser>;
-export const GetUsersWithAccessToProtectedBranchResponseBodyList =
-  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<GetUsersWithAccessToProtectedBranchResponseBodyList>;
-
 export type GetUsersWithAccessToProtectedBranchResponse =
   GetUsersWithAccessToProtectedBranchResponseBodyList;
-export const GetUsersWithAccessToProtectedBranchResponse =
+const GetUsersWithAccessToProtectedBranchResponse =
   AddUserAccessRestrictionsResponse as any as S.Schema<GetUsersWithAccessToProtectedBranchResponse>;
 
 export type GetViewsRequestPer = "day" | "week";
-export const GetViewsRequestPer = S.String;
+const GetViewsRequestPer = S.String;
 
 export interface GetViewsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10407,7 +9159,7 @@ export interface GetViewsRequest {
   /** The time frame to display results for. */
   per?: GetViewsRequestPer | (string & {});
 }
-export const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10416,7 +9168,7 @@ export const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetViewsRequest" }) as any as S.Schema<GetViewsRequest>;
 
 export type ViewTrafficViewsList = Array<Traffic>;
-export const ViewTrafficViewsList = CloneTrafficClonesList as any as S.Schema<ViewTrafficViewsList>;
+const ViewTrafficViewsList = CloneTrafficClonesList as any as S.Schema<ViewTrafficViewsList>;
 
 /** View Traffic */
 export interface ViewTraffic {
@@ -10424,7 +9176,7 @@ export interface ViewTraffic {
   uniques: number;
   views: ViewTrafficViewsList;
 }
-export const ViewTraffic = /*@__PURE__*/ S.suspend(() =>
+const ViewTraffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     uniques: S.Number,
@@ -10440,7 +9192,7 @@ export interface GetWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10456,7 +9208,7 @@ export interface GetWebhookConfigForRepoRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const GetWebhookConfigForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookConfigForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10477,7 +9229,7 @@ export interface GetWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10496,12 +9248,12 @@ export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestHeadersMap =
+const HookDeliveryRequestHeadersMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestHeadersMap>;
 
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestPayloadMap =
+const HookDeliveryRequestPayloadMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
 
 export interface HookDeliveryRequest {
@@ -10510,7 +9262,7 @@ export interface HookDeliveryRequest {
   /** The webhook payload. */
   payload: HookDeliveryRequestPayloadMap | null;
 }
-export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.NullOr(HookDeliveryRequestHeadersMap),
     payload: S.NullOr(HookDeliveryRequestPayloadMap),
@@ -10519,21 +9271,15 @@ export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponseHeadersMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponseHeadersMap>;
-
 /** The response payload received. */
 export type HookDeliveryResponsePayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponsePayloadMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponsePayloadMap>;
-
 export interface HookDeliveryResponse {
   /** The response headers received when the delivery was made. */
   headers: HookDeliveryResponseHeadersMap | null;
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-export const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
+const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
 
 /** Delivery made by a webhook. */
 export interface HookDelivery {
@@ -10566,7 +9312,7 @@ export interface HookDelivery {
   request: HookDeliveryRequest;
   response: HookDeliveryResponse;
 }
-export const HookDelivery = /*@__PURE__*/ S.suspend(() =>
+const HookDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     guid: S.String,
@@ -10587,10 +9333,10 @@ export const HookDelivery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HookDelivery" }) as any as S.Schema<HookDelivery>;
 
 export type ListActivitiesRequestDirection = "asc" | "desc";
-export const ListActivitiesRequestDirection = S.String;
+const ListActivitiesRequestDirection = S.String;
 
 export type ListActivitiesRequestTimePeriod = "day" | "week" | "month" | "quarter" | "year";
-export const ListActivitiesRequestTimePeriod = S.String;
+const ListActivitiesRequestTimePeriod = S.String;
 
 export type ListActivitiesRequestActivityType =
   | "push"
@@ -10599,7 +9345,7 @@ export type ListActivitiesRequestActivityType =
   | "branch_deletion"
   | "pr_merge"
   | "merge_queue_merge";
-export const ListActivitiesRequestActivityType = S.String;
+const ListActivitiesRequestActivityType = S.String;
 
 export interface ListActivitiesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10623,7 +9369,7 @@ export interface ListActivitiesRequest {
   /** The activity type to filter by. For example, you can choose to filter by "force_push", to see all force pushes to the repository. */
   activity_type?: ListActivitiesRequestActivityType | (string & {});
 }
-export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10646,7 +9392,7 @@ export type ActivityActivityType =
   | "branch_creation"
   | "pr_merge"
   | "merge_queue_merge";
-export const ActivityActivityType = S.String;
+const ActivityActivityType = S.String;
 
 /** Activity */
 export interface Activity {
@@ -10664,7 +9410,7 @@ export interface Activity {
   activity_type: ActivityActivityType;
   actor: SimpleUser | null;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -10678,12 +9424,12 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type ListActivitiesResponseBodyList = Array<Activity>;
-export const ListActivitiesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListActivitiesResponseBodyList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<ListActivitiesResponseBodyList>;
 
 export type ListActivitiesResponse = ListActivitiesResponseBodyList;
-export const ListActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
   ListActivitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListActivitiesResponse" }) as any as S.Schema<ListActivitiesResponse>;
 
@@ -10703,7 +9449,7 @@ export interface ListAttestationsRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-export const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10724,7 +9470,7 @@ export const ListAttestationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap =
+const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -10733,7 +9479,7 @@ export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialM
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
+const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
 
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
@@ -10742,7 +9488,7 @@ export interface ListAttestationsResponseAttestationsItemBundle {
   verificationMaterial?: ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap;
 }
-export const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaType: S.optional(S.String),
     verificationMaterial: S.optional(
@@ -10761,7 +9507,7 @@ export interface ListAttestationsResponseAttestationsItem {
   bundle_url?: string;
   initiator?: string;
 }
-export const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundle: S.optional(ListAttestationsResponseAttestationsItemBundle),
     repository_id: S.optional(S.Number),
@@ -10774,14 +9520,14 @@ export const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ S.suspend(
 
 export type ListAttestationsResponseAttestationsList =
   Array<ListAttestationsResponseAttestationsItem>;
-export const ListAttestationsResponseAttestationsList = /*@__PURE__*/ S.Array(
+const ListAttestationsResponseAttestationsList = /*@__PURE__*/ S.Array(
   ListAttestationsResponseAttestationsItem,
 ) as any as S.Schema<ListAttestationsResponseAttestationsList>;
 
 export interface ListAttestationsResponse {
   attestations?: ListAttestationsResponseAttestationsList;
 }
-export const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestations: S.optional(ListAttestationsResponseAttestationsList),
   }),
@@ -10793,7 +9539,7 @@ export interface ListAutolinksRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const ListAutolinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutolinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10801,12 +9547,12 @@ export const ListAutolinksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAutolinksRequest" }) as any as S.Schema<ListAutolinksRequest>;
 
 export type ListAutolinksResponseBodyList = Array<Autolink>;
-export const ListAutolinksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAutolinksResponseBodyList = /*@__PURE__*/ S.Array(
   Autolink,
 ) as any as S.Schema<ListAutolinksResponseBodyList>;
 
 export type ListAutolinksResponse = ListAutolinksResponseBodyList;
-export const ListAutolinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutolinksResponse = /*@__PURE__*/ S.suspend(() =>
   ListAutolinksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAutolinksResponse" }) as any as S.Schema<ListAutolinksResponse>;
 
@@ -10822,7 +9568,7 @@ export interface ListBranchesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10833,8 +9579,6 @@ export const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBranchesRequest" }) as any as S.Schema<ListBranchesRequest>;
 
 export type ShortBranchCommit = CommitCommitTree;
-export const ShortBranchCommit = CommitCommitTree;
-
 /** Short Branch */
 export interface ShortBranch {
   name: string;
@@ -10843,7 +9587,7 @@ export interface ShortBranch {
   protection?: BranchProtection;
   protection_url?: string;
 }
-export const ShortBranch = /*@__PURE__*/ S.suspend(() =>
+const ShortBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     commit: CommitCommitTree,
@@ -10854,12 +9598,12 @@ export const ShortBranch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShortBranch" }) as any as S.Schema<ShortBranch>;
 
 export type ListBranchesResponseBodyList = Array<ShortBranch>;
-export const ListBranchesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBranchesResponseBodyList = /*@__PURE__*/ S.Array(
   ShortBranch,
 ) as any as S.Schema<ListBranchesResponseBodyList>;
 
 export type ListBranchesResponse = ListBranchesResponseBodyList;
-export const ListBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   ListBranchesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListBranchesResponse" }) as any as S.Schema<ListBranchesResponse>;
 
@@ -10871,7 +9615,7 @@ export interface ListBranchesForHeadCommitRequest {
   /** The SHA of the commit. */
   commit_sha: string;
 }
-export const ListBranchesForHeadCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBranchesForHeadCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10888,15 +9632,13 @@ export const ListBranchesForHeadCommitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBranchesForHeadCommitRequest>;
 
 export type BranchShortCommit = CommitCommitTree;
-export const BranchShortCommit = CommitCommitTree;
-
 /** Branch Short */
 export interface BranchShort {
   name: string;
   commit: CommitCommitTree;
   protected: boolean;
 }
-export const BranchShort = /*@__PURE__*/ S.suspend(() =>
+const BranchShort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     commit: CommitCommitTree,
@@ -10905,19 +9647,19 @@ export const BranchShort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BranchShort" }) as any as S.Schema<BranchShort>;
 
 export type ListBranchesForHeadCommitResponseBodyList = Array<BranchShort>;
-export const ListBranchesForHeadCommitResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBranchesForHeadCommitResponseBodyList = /*@__PURE__*/ S.Array(
   BranchShort,
 ) as any as S.Schema<ListBranchesForHeadCommitResponseBodyList>;
 
 export type ListBranchesForHeadCommitResponse = ListBranchesForHeadCommitResponseBodyList;
-export const ListBranchesForHeadCommitResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBranchesForHeadCommitResponse = /*@__PURE__*/ S.suspend(() =>
   ListBranchesForHeadCommitResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListBranchesForHeadCommitResponse",
 }) as any as S.Schema<ListBranchesForHeadCommitResponse>;
 
 export type ListCollaboratorsRequestAffiliation = "outside" | "direct" | "all";
-export const ListCollaboratorsRequestAffiliation = S.String;
+const ListCollaboratorsRequestAffiliation = S.String;
 
 export type ListCollaboratorsRequestPermission =
   | "pull"
@@ -10926,7 +9668,7 @@ export type ListCollaboratorsRequestPermission =
   | "push"
   | "maintain"
   | "admin";
-export const ListCollaboratorsRequestPermission = S.String;
+const ListCollaboratorsRequestPermission = S.String;
 
 export interface ListCollaboratorsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10942,7 +9684,7 @@ export interface ListCollaboratorsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -10954,19 +9696,15 @@ export const ListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCollaboratorsRequest" }) as any as S.Schema<ListCollaboratorsRequest>;
 
 export type CollaboratorPermissions = NullableCollaboratorPermissions;
-export const CollaboratorPermissions = NullableCollaboratorPermissions;
-
 /** Collaborator */
 export type Collaborator = NullableCollaborator;
-export const Collaborator = NullableCollaborator;
-
 export type ListCollaboratorsResponseBodyList = Array<NullableCollaborator>;
-export const ListCollaboratorsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCollaboratorsResponseBodyList = /*@__PURE__*/ S.Array(
   NullableCollaborator,
 ) as any as S.Schema<ListCollaboratorsResponseBodyList>;
 
 export type ListCollaboratorsResponse = ListCollaboratorsResponseBodyList;
-export const ListCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
   ListCollaboratorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCollaboratorsResponse",
@@ -10984,7 +9722,7 @@ export interface ListCommentsForCommitRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCommentsForCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsForCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11003,12 +9741,12 @@ export const ListCommentsForCommitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommentsForCommitRequest>;
 
 export type ListCommentsForCommitResponseBodyList = Array<CommitComment>;
-export const ListCommentsForCommitResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCommentsForCommitResponseBodyList = /*@__PURE__*/ S.Array(
   CommitComment,
 ) as any as S.Schema<ListCommentsForCommitResponseBodyList>;
 
 export type ListCommentsForCommitResponse = ListCommentsForCommitResponseBodyList;
-export const ListCommentsForCommitResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsForCommitResponse = /*@__PURE__*/ S.suspend(() =>
   ListCommentsForCommitResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCommentsForCommitResponse",
@@ -11024,7 +9762,7 @@ export interface ListCommitCommentsForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCommitCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommitCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11036,11 +9774,8 @@ export const ListCommitCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommitCommentsForRepoRequest>;
 
 export type ListCommitCommentsForRepoResponseBodyList = Array<CommitComment>;
-export const ListCommitCommentsForRepoResponseBodyList =
-  ListCommentsForCommitResponseBodyList as any as S.Schema<ListCommitCommentsForRepoResponseBodyList>;
-
 export type ListCommitCommentsForRepoResponse = ListCommitCommentsForRepoResponseBodyList;
-export const ListCommitCommentsForRepoResponse =
+const ListCommitCommentsForRepoResponse =
   ListCommentsForCommitResponse as any as S.Schema<ListCommitCommentsForRepoResponse>;
 
 export interface ListCommitsRequest {
@@ -11065,7 +9800,7 @@ export interface ListCommitsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11081,11 +9816,11 @@ export const ListCommitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommitsRequest" }) as any as S.Schema<ListCommitsRequest>;
 
 export type ListCommitsResponseBodyList = Array<Commit>;
-export const ListCommitsResponseBodyList =
+const ListCommitsResponseBodyList =
   CommitComparisonCommitsList as any as S.Schema<ListCommitsResponseBodyList>;
 
 export type ListCommitsResponse = ListCommitsResponseBodyList;
-export const ListCommitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsResponse = /*@__PURE__*/ S.suspend(() =>
   ListCommitsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListCommitsResponse" }) as any as S.Schema<ListCommitsResponse>;
 
@@ -11101,7 +9836,7 @@ export interface ListCommitStatusesForRefRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCommitStatusesForRefRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommitStatusesForRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11116,12 +9851,12 @@ export const ListCommitStatusesForRefRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommitStatusesForRefRequest>;
 
 export type ListCommitStatusesForRefResponseBodyList = Array<Status>;
-export const ListCommitStatusesForRefResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCommitStatusesForRefResponseBodyList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<ListCommitStatusesForRefResponseBodyList>;
 
 export type ListCommitStatusesForRefResponse = ListCommitStatusesForRefResponseBodyList;
-export const ListCommitStatusesForRefResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommitStatusesForRefResponse = /*@__PURE__*/ S.suspend(() =>
   ListCommitStatusesForRefResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCommitStatusesForRefResponse",
@@ -11139,7 +9874,7 @@ export interface ListContributorsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListContributorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContributorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11174,7 +9909,7 @@ export interface Contributor {
   name?: string;
   user_view_type?: string;
 }
-export const Contributor = /*@__PURE__*/ S.suspend(() =>
+const Contributor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.String),
     id: S.optional(S.Number),
@@ -11202,12 +9937,12 @@ export const Contributor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contributor" }) as any as S.Schema<Contributor>;
 
 export type ListContributorsResponseBodyList = Array<Contributor>;
-export const ListContributorsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListContributorsResponseBodyList = /*@__PURE__*/ S.Array(
   Contributor,
 ) as any as S.Schema<ListContributorsResponseBodyList>;
 
 export type ListContributorsResponse = ListContributorsResponseBodyList;
-export const ListContributorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContributorsResponse = /*@__PURE__*/ S.suspend(() =>
   ListContributorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListContributorsResponse" }) as any as S.Schema<ListContributorsResponse>;
 
@@ -11223,7 +9958,7 @@ export interface ListCustomDeploymentRuleIntegrationsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListCustomDeploymentRuleIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomDeploymentRuleIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11243,7 +9978,7 @@ export const ListCustomDeploymentRuleIntegrationsRequest = /*@__PURE__*/ S.suspe
 
 export type ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList =
   Array<CustomDeploymentRuleApp>;
-export const ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList =
+const ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList =
   /*@__PURE__*/ S.Array(
     CustomDeploymentRuleApp,
   ) as any as S.Schema<ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList>;
@@ -11253,7 +9988,7 @@ export interface ListCustomDeploymentRuleIntegrationsResponse {
   total_count?: number;
   available_custom_deployment_protection_rule_integrations?: ListCustomDeploymentRuleIntegrationsResponseAvailableCustomDeploymentProtectionRuleIntegrationsList;
 }
-export const ListCustomDeploymentRuleIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomDeploymentRuleIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     available_custom_deployment_protection_rule_integrations: S.optional(
@@ -11274,7 +10009,7 @@ export interface ListDeployKeysRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDeployKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeployKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11284,12 +10019,12 @@ export const ListDeployKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDeployKeysRequest" }) as any as S.Schema<ListDeployKeysRequest>;
 
 export type ListDeployKeysResponseBodyList = Array<DeployKey>;
-export const ListDeployKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDeployKeysResponseBodyList = /*@__PURE__*/ S.Array(
   DeployKey,
 ) as any as S.Schema<ListDeployKeysResponseBodyList>;
 
 export type ListDeployKeysResponse = ListDeployKeysResponseBodyList;
-export const ListDeployKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeployKeysResponse = /*@__PURE__*/ S.suspend(() =>
   ListDeployKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDeployKeysResponse" }) as any as S.Schema<ListDeployKeysResponse>;
 
@@ -11305,7 +10040,7 @@ export interface ListDeploymentBranchPoliciesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDeploymentBranchPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentBranchPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11324,7 +10059,7 @@ export const ListDeploymentBranchPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDeploymentBranchPoliciesRequest>;
 
 export type ListDeploymentBranchPoliciesResponseBranchPoliciesList = Array<DeploymentBranchPolicy>;
-export const ListDeploymentBranchPoliciesResponseBranchPoliciesList = /*@__PURE__*/ S.Array(
+const ListDeploymentBranchPoliciesResponseBranchPoliciesList = /*@__PURE__*/ S.Array(
   DeploymentBranchPolicy,
 ) as any as S.Schema<ListDeploymentBranchPoliciesResponseBranchPoliciesList>;
 
@@ -11333,7 +10068,7 @@ export interface ListDeploymentBranchPoliciesResponse {
   total_count: number;
   branch_policies: ListDeploymentBranchPoliciesResponseBranchPoliciesList;
 }
-export const ListDeploymentBranchPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentBranchPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     branch_policies: ListDeploymentBranchPoliciesResponseBranchPoliciesList,
@@ -11360,7 +10095,7 @@ export interface ListDeploymentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11374,12 +10109,12 @@ export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDeploymentsRequest" }) as any as S.Schema<ListDeploymentsRequest>;
 
 export type ListDeploymentsResponseBodyList = Array<Deployment>;
-export const ListDeploymentsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDeploymentsResponseBodyList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<ListDeploymentsResponseBodyList>;
 
 export type ListDeploymentsResponse = ListDeploymentsResponseBodyList;
-export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDeploymentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDeploymentsResponse" }) as any as S.Schema<ListDeploymentsResponse>;
 
@@ -11395,7 +10130,7 @@ export interface ListDeploymentStatusesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDeploymentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11414,28 +10149,28 @@ export const ListDeploymentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDeploymentStatusesRequest>;
 
 export type ListDeploymentStatusesResponseBodyList = Array<DeploymentStatus>;
-export const ListDeploymentStatusesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDeploymentStatusesResponseBodyList = /*@__PURE__*/ S.Array(
   DeploymentStatus,
 ) as any as S.Schema<ListDeploymentStatusesResponseBodyList>;
 
 export type ListDeploymentStatusesResponse = ListDeploymentStatusesResponseBodyList;
-export const ListDeploymentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   ListDeploymentStatusesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDeploymentStatusesResponse",
 }) as any as S.Schema<ListDeploymentStatusesResponse>;
 
 export type ListForAuthenticatedUserRequestVisibility = "all" | "public" | "private";
-export const ListForAuthenticatedUserRequestVisibility = S.String;
+const ListForAuthenticatedUserRequestVisibility = S.String;
 
 export type ListForAuthenticatedUserRequestType = "all" | "owner" | "public" | "private" | "member";
-export const ListForAuthenticatedUserRequestType = S.String;
+const ListForAuthenticatedUserRequestType = S.String;
 
 export type ListForAuthenticatedUserRequestSort = "created" | "updated" | "pushed" | "full_name";
-export const ListForAuthenticatedUserRequestSort = S.String;
+const ListForAuthenticatedUserRequestSort = S.String;
 
 export type ListForAuthenticatedUserRequestDirection = "asc" | "desc";
-export const ListForAuthenticatedUserRequestDirection = S.String;
+const ListForAuthenticatedUserRequestDirection = S.String;
 
 export interface ListForAuthenticatedUserRequest {
   /** Limit results to repositories with the specified visibility. */
@@ -11457,7 +10192,7 @@ export interface ListForAuthenticatedUserRequest {
   /** Only show repositories updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   before?: string;
 }
-export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visibility: S.optional(ListForAuthenticatedUserRequestVisibility.pipe(T.Query())),
     affiliation: S.optional(S.String.pipe(T.Query())),
@@ -11474,19 +10209,19 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseBodyList = Array<Repository>;
-export const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
 
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListForAuthenticatedUserResponse",
 }) as any as S.Schema<ListForAuthenticatedUserResponse>;
 
 export type ListForksRequestSort = "newest" | "oldest" | "stargazers" | "watchers";
-export const ListForksRequestSort = S.String;
+const ListForksRequestSort = S.String;
 
 export interface ListForksRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -11500,7 +10235,7 @@ export interface ListForksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11511,23 +10246,23 @@ export const ListForksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForksRequest" }) as any as S.Schema<ListForksRequest>;
 
 export type ListForksResponseBodyList = Array<MinimalRepository>;
-export const ListForksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForksResponseBodyList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListForksResponseBodyList>;
 
 export type ListForksResponse = ListForksResponseBodyList;
-export const ListForksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForksResponse = /*@__PURE__*/ S.suspend(() =>
   ListForksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListForksResponse" }) as any as S.Schema<ListForksResponse>;
 
 export type ListForOrgRequestType = "all" | "public" | "private" | "forks" | "sources" | "member";
-export const ListForOrgRequestType = S.String;
+const ListForOrgRequestType = S.String;
 
 export type ListForOrgRequestSort = "created" | "updated" | "pushed" | "full_name";
-export const ListForOrgRequestSort = S.String;
+const ListForOrgRequestSort = S.String;
 
 export type ListForOrgRequestDirection = "asc" | "desc";
-export const ListForOrgRequestDirection = S.String;
+const ListForOrgRequestDirection = S.String;
 
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -11543,7 +10278,7 @@ export interface ListForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     type: S.optional(ListForOrgRequestType.pipe(T.Query())),
@@ -11555,20 +10290,17 @@ export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForOrgRequest" }) as any as S.Schema<ListForOrgRequest>;
 
 export type ListForOrgResponseBodyList = Array<MinimalRepository>;
-export const ListForOrgResponseBodyList =
-  ListForksResponseBodyList as any as S.Schema<ListForOrgResponseBodyList>;
-
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-export const ListForOrgResponse = ListForksResponse as any as S.Schema<ListForOrgResponse>;
+const ListForOrgResponse = ListForksResponse as any as S.Schema<ListForOrgResponse>;
 
 export type ListForUserRequestType = "all" | "owner" | "member";
-export const ListForUserRequestType = S.String;
+const ListForUserRequestType = S.String;
 
 export type ListForUserRequestSort = "created" | "updated" | "pushed" | "full_name";
-export const ListForUserRequestSort = S.String;
+const ListForUserRequestSort = S.String;
 
 export type ListForUserRequestDirection = "asc" | "desc";
-export const ListForUserRequestDirection = S.String;
+const ListForUserRequestDirection = S.String;
 
 export interface ListForUserRequest {
   /** The handle for the GitHub user account. */
@@ -11584,7 +10316,7 @@ export interface ListForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     type: S.optional(ListForUserRequestType.pipe(T.Query())),
@@ -11596,11 +10328,8 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<MinimalRepository>;
-export const ListForUserResponseBodyList =
-  ListForksResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
-
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = ListForksResponse as any as S.Schema<ListForUserResponse>;
+const ListForUserResponse = ListForksResponse as any as S.Schema<ListForUserResponse>;
 
 export interface ListInvitationsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -11612,7 +10341,7 @@ export interface ListInvitationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11622,12 +10351,12 @@ export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitationsRequest" }) as any as S.Schema<ListInvitationsRequest>;
 
 export type ListInvitationsResponseBodyList = Array<RepositoryInvitation>;
-export const ListInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
   RepositoryInvitation,
 ) as any as S.Schema<ListInvitationsResponseBodyList>;
 
 export type ListInvitationsResponse = ListInvitationsResponseBodyList;
-export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListInvitationsResponse" }) as any as S.Schema<ListInvitationsResponse>;
 
@@ -11637,7 +10366,7 @@ export interface ListInvitationsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -11647,12 +10376,12 @@ export const ListInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListInvitationsForAuthenticatedUserRequest>;
 
 export type ListInvitationsForAuthenticatedUserResponseBodyList = Array<RepositoryInvitation>;
-export const ListInvitationsForAuthenticatedUserResponseBodyList =
+const ListInvitationsForAuthenticatedUserResponseBodyList =
   ListInvitationsResponseBodyList as any as S.Schema<ListInvitationsForAuthenticatedUserResponseBodyList>;
 
 export type ListInvitationsForAuthenticatedUserResponse =
   ListInvitationsForAuthenticatedUserResponseBodyList;
-export const ListInvitationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListInvitationsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListInvitationsForAuthenticatedUserResponse",
@@ -11664,7 +10393,7 @@ export interface ListIssueTypesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const ListIssueTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11681,7 +10410,7 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeColor = S.String;
+const IssueTypeColor = S.String;
 
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
@@ -11702,7 +10431,7 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-export const IssueType = /*@__PURE__*/ S.suspend(() =>
+const IssueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -11716,12 +10445,12 @@ export const IssueType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueType" }) as any as S.Schema<IssueType>;
 
 export type ListIssueTypesResponseBodyList = Array<IssueType | null>;
-export const ListIssueTypesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIssueTypesResponseBodyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(IssueType),
 ) as any as S.Schema<ListIssueTypesResponseBodyList>;
 
 export type ListIssueTypesResponse = ListIssueTypesResponseBodyList;
-export const ListIssueTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIssueTypesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIssueTypesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListIssueTypesResponse" }) as any as S.Schema<ListIssueTypesResponse>;
 
@@ -11731,7 +10460,7 @@ export interface ListLanguagesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11740,10 +10469,10 @@ export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Language */
 export type Language = { [key: string]: number | undefined };
-export const Language = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<Language>;
+const Language = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<Language>;
 
 export type ListLanguagesResponse = Language;
-export const ListLanguagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLanguagesResponse = /*@__PURE__*/ S.suspend(() =>
   Language.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListLanguagesResponse" }) as any as S.Schema<ListLanguagesResponse>;
 
@@ -11757,7 +10486,7 @@ export interface ListPagesBuildsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPagesBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPagesBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11767,12 +10496,12 @@ export const ListPagesBuildsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPagesBuildsRequest" }) as any as S.Schema<ListPagesBuildsRequest>;
 
 export type ListPagesBuildsResponseBodyList = Array<PageBuild>;
-export const ListPagesBuildsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPagesBuildsResponseBodyList = /*@__PURE__*/ S.Array(
   PageBuild,
 ) as any as S.Schema<ListPagesBuildsResponseBodyList>;
 
 export type ListPagesBuildsResponse = ListPagesBuildsResponseBodyList;
-export const ListPagesBuildsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPagesBuildsResponse = /*@__PURE__*/ S.suspend(() =>
   ListPagesBuildsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPagesBuildsResponse" }) as any as S.Schema<ListPagesBuildsResponse>;
 
@@ -11780,18 +10509,15 @@ export interface ListPublicRequest {
   /** A repository ID. Only return repositories with an ID greater than this ID. */
   since?: number;
 }
-export const ListPublicRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     since: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/repositories", code: 200 })),
 ).annotate({ identifier: "ListPublicRequest" }) as any as S.Schema<ListPublicRequest>;
 
 export type ListPublicResponseBodyList = Array<MinimalRepository>;
-export const ListPublicResponseBodyList =
-  ListForksResponseBodyList as any as S.Schema<ListPublicResponseBodyList>;
-
 export type ListPublicResponse = ListPublicResponseBodyList;
-export const ListPublicResponse = ListForksResponse as any as S.Schema<ListPublicResponse>;
+const ListPublicResponse = ListForksResponse as any as S.Schema<ListPublicResponse>;
 
 export interface ListPullRequestsAssociatedWithCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -11805,7 +10531,7 @@ export interface ListPullRequestsAssociatedWithCommitRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPullRequestsAssociatedWithCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPullRequestsAssociatedWithCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -11830,7 +10556,7 @@ export interface PullRequestSimpleLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: SimpleUser | null;
 }
-export const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -11846,13 +10572,13 @@ export const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PullRequestSimpleLabelsItem>;
 
 export type PullRequestSimpleLabelsList = Array<PullRequestSimpleLabelsItem>;
-export const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
+const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
   PullRequestSimpleLabelsItem,
 ) as any as S.Schema<PullRequestSimpleLabelsList>;
 
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-export const NullableMilestoneState = S.String;
+const NullableMilestoneState = S.String;
 
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
@@ -11876,7 +10602,7 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
+const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -11898,15 +10624,15 @@ export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NullableMilestone" }) as any as S.Schema<NullableMilestone>;
 
 export type PullRequestSimpleAssigneesList = Array<SimpleUser>;
-export const PullRequestSimpleAssigneesList =
+const PullRequestSimpleAssigneesList =
   AddUserAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleAssigneesList>;
 
 export type PullRequestSimpleRequestedReviewersList = Array<SimpleUser>;
-export const PullRequestSimpleRequestedReviewersList =
+const PullRequestSimpleRequestedReviewersList =
   AddUserAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
 
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
-export const PullRequestSimpleRequestedTeamsList =
+const PullRequestSimpleRequestedTeamsList =
   AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
 
 export interface PullRequestSimpleHead {
@@ -11916,7 +10642,7 @@ export interface PullRequestSimpleHead {
   sha: string;
   user: SimpleUser | null;
 }
-export const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     ref: S.String,
@@ -11927,13 +10653,11 @@ export const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullRequestSimpleHead" }) as any as S.Schema<PullRequestSimpleHead>;
 
 export type PullRequestSimpleBase = PullRequestSimpleHead;
-export const PullRequestSimpleBase = PullRequestSimpleHead;
-
 /** Hypermedia Link */
 export interface Link {
   href: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
   }),
@@ -11949,7 +10673,7 @@ export interface PullRequestSimpleLinks {
   review_comment: Link;
   self: Link;
 }
-export const PullRequestSimpleLinks = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimpleLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: Link,
     commits: Link,
@@ -11964,7 +10688,7 @@ export const PullRequestSimpleLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** The merge method to use. */
 export type AutoMergeMergeMethod = "merge" | "squash" | "rebase";
-export const AutoMergeMergeMethod = S.String;
+const AutoMergeMergeMethod = S.String;
 
 /** The status of auto merging a pull request. */
 export interface AutoMerge {
@@ -11976,7 +10700,7 @@ export interface AutoMerge {
   /** Commit message for the merge commit. */
   commit_message: string;
 }
-export const AutoMerge = /*@__PURE__*/ S.suspend(() =>
+const AutoMerge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled_by: SimpleUser,
     merge_method: AutoMergeMergeMethod,
@@ -11991,7 +10715,7 @@ export interface PullRequestStackBase {
   /** The base SHA of the stack this pull request belongs to. */
   sha: string;
 }
-export const PullRequestStackBase = /*@__PURE__*/ S.suspend(() =>
+const PullRequestStackBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String,
     sha: S.String,
@@ -12010,7 +10734,7 @@ export interface PullRequestStack {
   /** The number of the stack that this pull request belongs to. */
   number?: number;
 }
-export const PullRequestStack = /*@__PURE__*/ S.suspend(() =>
+const PullRequestStack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base: PullRequestStackBase,
     size: S.optional(S.Number),
@@ -12061,7 +10785,7 @@ export interface PullRequestSimple {
   /** Indicates whether or not the pull request is a draft. */
   draft?: boolean;
 }
-export const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     id: S.Number,
@@ -12104,13 +10828,13 @@ export const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullRequestSimple" }) as any as S.Schema<PullRequestSimple>;
 
 export type ListPullRequestsAssociatedWithCommitResponseBodyList = Array<PullRequestSimple>;
-export const ListPullRequestsAssociatedWithCommitResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPullRequestsAssociatedWithCommitResponseBodyList = /*@__PURE__*/ S.Array(
   PullRequestSimple,
 ) as any as S.Schema<ListPullRequestsAssociatedWithCommitResponseBodyList>;
 
 export type ListPullRequestsAssociatedWithCommitResponse =
   ListPullRequestsAssociatedWithCommitResponseBodyList;
-export const ListPullRequestsAssociatedWithCommitResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPullRequestsAssociatedWithCommitResponse = /*@__PURE__*/ S.suspend(() =>
   ListPullRequestsAssociatedWithCommitResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPullRequestsAssociatedWithCommitResponse",
@@ -12128,7 +10852,7 @@ export interface ListReleaseAssetsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReleaseAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReleaseAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12141,11 +10865,11 @@ export const ListReleaseAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReleaseAssetsRequest" }) as any as S.Schema<ListReleaseAssetsRequest>;
 
 export type ListReleaseAssetsResponseBodyList = Array<ReleaseAsset>;
-export const ListReleaseAssetsResponseBodyList =
+const ListReleaseAssetsResponseBodyList =
   ReleaseAssetsList as any as S.Schema<ListReleaseAssetsResponseBodyList>;
 
 export type ListReleaseAssetsResponse = ListReleaseAssetsResponseBodyList;
-export const ListReleaseAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleaseAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   ListReleaseAssetsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReleaseAssetsResponse",
@@ -12161,7 +10885,7 @@ export interface ListReleasesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12171,12 +10895,12 @@ export const ListReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReleasesRequest" }) as any as S.Schema<ListReleasesRequest>;
 
 export type ListReleasesResponseBodyList = Array<Release>;
-export const ListReleasesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReleasesResponseBodyList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ListReleasesResponseBodyList>;
 
 export type ListReleasesResponse = ListReleasesResponseBodyList;
-export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   ListReleasesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListReleasesResponse" }) as any as S.Schema<ListReleasesResponse>;
 
@@ -12190,7 +10914,7 @@ export interface ListTagsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12200,8 +10924,6 @@ export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagsRequest" }) as any as S.Schema<ListTagsRequest>;
 
 export type TagCommit = CommitCommitTree;
-export const TagCommit = CommitCommitTree;
-
 /** Tag */
 export interface Tag {
   name: string;
@@ -12210,7 +10932,7 @@ export interface Tag {
   tarball_url: string;
   node_id: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     commit: CommitCommitTree,
@@ -12221,12 +10943,12 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type ListTagsResponseBodyList = Array<Tag>;
-export const ListTagsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTagsResponseBodyList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<ListTagsResponseBodyList>;
 
 export type ListTagsResponse = ListTagsResponseBodyList;
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTagsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 
@@ -12240,7 +10962,7 @@ export interface ListTeamsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12250,16 +10972,16 @@ export const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamsRequest" }) as any as S.Schema<ListTeamsRequest>;
 
 export type ListTeamsResponseBodyList = Array<Team>;
-export const ListTeamsResponseBodyList =
+const ListTeamsResponseBodyList =
   AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<ListTeamsResponseBodyList>;
 
 export type ListTeamsResponse = ListTeamsResponseBodyList;
-export const ListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTeamsResponse" }) as any as S.Schema<ListTeamsResponse>;
 
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
-export const ListWebhookDeliveriesRequestStatus = S.String;
+const ListWebhookDeliveriesRequestStatus = S.String;
 
 export interface ListWebhookDeliveriesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -12275,7 +10997,7 @@ export interface ListWebhookDeliveriesRequest {
   /** Returns webhook deliveries filtered by delivery outcome classification based on `status_code` range. A `status` of `success` returns deliveries with a `status_code` in the 200-399 range (inclusive). A `status` of `failure` returns deliveries with a `status_code` in the 400-599 range (inclusive). */
   status?: ListWebhookDeliveriesRequestStatus | (string & {});
 }
-export const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12317,7 +11039,7 @@ export interface HookDeliveryItem {
   /** Time when the webhook delivery was throttled. */
   throttled_at?: string | null;
 }
-export const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
+const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     guid: S.String,
@@ -12335,12 +11057,12 @@ export const HookDeliveryItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HookDeliveryItem" }) as any as S.Schema<HookDeliveryItem>;
 
 export type ListWebhookDeliveriesResponseBodyList = Array<HookDeliveryItem>;
-export const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ S.Array(
   HookDeliveryItem,
 ) as any as S.Schema<ListWebhookDeliveriesResponseBodyList>;
 
 export type ListWebhookDeliveriesResponse = ListWebhookDeliveriesResponseBodyList;
-export const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhookDeliveriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWebhookDeliveriesResponse",
@@ -12356,7 +11078,7 @@ export interface ListWebhooksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12366,12 +11088,12 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWebhooksRequest" }) as any as S.Schema<ListWebhooksRequest>;
 
 export type ListWebhooksResponseBodyList = Array<Hook>;
-export const ListWebhooksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhooksResponseBodyList = /*@__PURE__*/ S.Array(
   Hook,
 ) as any as S.Schema<ListWebhooksResponseBodyList>;
 
 export type ListWebhooksResponse = ListWebhooksResponseBodyList;
-export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhooksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListWebhooksResponse" }) as any as S.Schema<ListWebhooksResponse>;
 
@@ -12387,7 +11109,7 @@ export interface MergeRequest {
   /** Commit message to use for the merge commit. If omitted, a default message will be used. */
   commit_message?: string;
 }
-export const MergeRequest = /*@__PURE__*/ S.suspend(() =>
+const MergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12405,7 +11127,7 @@ export interface MergeUpstreamRequest {
   /** The name of the branch which should be updated to match upstream. */
   branch: string;
 }
-export const MergeUpstreamRequest = /*@__PURE__*/ S.suspend(() =>
+const MergeUpstreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12414,7 +11136,7 @@ export const MergeUpstreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MergeUpstreamRequest" }) as any as S.Schema<MergeUpstreamRequest>;
 
 export type MergedUpstreamMergeType = "merge" | "fast-forward" | "none";
-export const MergedUpstreamMergeType = S.String;
+const MergedUpstreamMergeType = S.String;
 
 /** Results of a successful merge upstream request */
 export interface MergedUpstream {
@@ -12422,7 +11144,7 @@ export interface MergedUpstream {
   merge_type?: MergedUpstreamMergeType;
   base_branch?: string;
 }
-export const MergedUpstream = /*@__PURE__*/ S.suspend(() =>
+const MergedUpstream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     merge_type: S.optional(MergedUpstreamMergeType),
@@ -12438,7 +11160,7 @@ export interface PingWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12449,8 +11171,7 @@ export const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PingWebhookRequest" }) as any as S.Schema<PingWebhookRequest>;
 
 export interface PingWebhookResponse {}
-export const PingWebhookResponse =
-  CancelPagesDeploymentResponse as any as S.Schema<PingWebhookResponse>;
+const PingWebhookResponse = CancelPagesDeploymentResponse as any as S.Schema<PingWebhookResponse>;
 
 export interface RedeliverWebhookDeliveryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -12461,7 +11182,7 @@ export interface RedeliverWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12479,12 +11200,12 @@ export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
 
 export interface RedeliverWebhookDeliveryResponse {}
-export const RedeliverWebhookDeliveryResponse =
+const RedeliverWebhookDeliveryResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
 
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type RemoveAppAccessRestrictionsRequestAppsList = Array<string>;
-export const RemoveAppAccessRestrictionsRequestAppsList =
+const RemoveAppAccessRestrictionsRequestAppsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveAppAccessRestrictionsRequestAppsList>;
 
 export interface RemoveAppAccessRestrictionsRequest {
@@ -12497,7 +11218,7 @@ export interface RemoveAppAccessRestrictionsRequest {
   /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
   apps: RemoveAppAccessRestrictionsRequestAppsList;
 }
-export const RemoveAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12515,11 +11236,8 @@ export const RemoveAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveAppAccessRestrictionsRequest>;
 
 export type RemoveAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
-export const RemoveAppAccessRestrictionsResponseBodyList =
-  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<RemoveAppAccessRestrictionsResponseBodyList>;
-
 export type RemoveAppAccessRestrictionsResponse = RemoveAppAccessRestrictionsResponseBodyList;
-export const RemoveAppAccessRestrictionsResponse =
+const RemoveAppAccessRestrictionsResponse =
   AddAppAccessRestrictionsResponse as any as S.Schema<RemoveAppAccessRestrictionsResponse>;
 
 export interface RemoveCollaboratorRequest {
@@ -12530,7 +11248,7 @@ export interface RemoveCollaboratorRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RemoveCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12543,30 +11261,21 @@ export const RemoveCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveCollaboratorRequest>;
 
 export interface RemoveCollaboratorResponse {}
-export const RemoveCollaboratorResponse =
+const RemoveCollaboratorResponse =
   CancelPagesDeploymentResponse as any as S.Schema<RemoveCollaboratorResponse>;
 
 /** The name of the status checks */
 export type RemoveStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
-export const RemoveStatusCheckContextsRequestBodyCase0ContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase0ContextsList>;
-
 export interface RemoveStatusCheckContextsRequestBodyCase0 {
   /** The name of the status checks */
   contexts: RemoveStatusCheckContextsRequestBodyCase0ContextsList;
 }
-export const RemoveStatusCheckContextsRequestBodyCase0 =
-  AddStatusCheckContextsRequestBodyCase0 as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase0>;
-
 /** The name of the status checks */
 export type RemoveStatusCheckContextsRequestBodyCase1List = Array<string>;
-export const RemoveStatusCheckContextsRequestBodyCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase1List>;
-
 export type RemoveStatusCheckContextsRequestBody =
   | RemoveStatusCheckContextsRequestBodyCase0
   | RemoveStatusCheckContextsRequestBodyCase1List;
-export const RemoveStatusCheckContextsRequestBody =
+const RemoveStatusCheckContextsRequestBody =
   S.Unknown as any as S.Schema<RemoveStatusCheckContextsRequestBody>;
 
 export interface RemoveStatusCheckContextsRequest {
@@ -12578,7 +11287,7 @@ export interface RemoveStatusCheckContextsRequest {
   branch: string;
   body?: RemoveStatusCheckContextsRequestBody;
 }
-export const RemoveStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12596,11 +11305,8 @@ export const RemoveStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveStatusCheckContextsRequest>;
 
 export type RemoveStatusCheckContextsResponseBodyList = Array<string>;
-export const RemoveStatusCheckContextsResponseBodyList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveStatusCheckContextsResponseBodyList>;
-
 export type RemoveStatusCheckContextsResponse = RemoveStatusCheckContextsResponseBodyList;
-export const RemoveStatusCheckContextsResponse =
+const RemoveStatusCheckContextsResponse =
   AddStatusCheckContextsResponse as any as S.Schema<RemoveStatusCheckContextsResponse>;
 
 export interface RemoveStatusCheckProtectionRequest {
@@ -12611,7 +11317,7 @@ export interface RemoveStatusCheckProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const RemoveStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12628,30 +11334,21 @@ export const RemoveStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveStatusCheckProtectionRequest>;
 
 export interface RemoveStatusCheckProtectionResponse {}
-export const RemoveStatusCheckProtectionResponse =
+const RemoveStatusCheckProtectionResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<RemoveStatusCheckProtectionResponse>;
 
 /** The slug values for teams */
 export type RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
-export const RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList>;
-
 export interface RemoveTeamAccessRestrictionsRequestBodyCase0 {
   /** The slug values for teams */
   teams: RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList;
 }
-export const RemoveTeamAccessRestrictionsRequestBodyCase0 =
-  AddTeamAccessRestrictionsRequestBodyCase0 as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase0>;
-
 /** The slug values for teams */
 export type RemoveTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
-export const RemoveTeamAccessRestrictionsRequestBodyCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase1List>;
-
 export type RemoveTeamAccessRestrictionsRequestBody =
   | RemoveTeamAccessRestrictionsRequestBodyCase0
   | RemoveTeamAccessRestrictionsRequestBodyCase1List;
-export const RemoveTeamAccessRestrictionsRequestBody =
+const RemoveTeamAccessRestrictionsRequestBody =
   S.Unknown as any as S.Schema<RemoveTeamAccessRestrictionsRequestBody>;
 
 export interface RemoveTeamAccessRestrictionsRequest {
@@ -12663,7 +11360,7 @@ export interface RemoveTeamAccessRestrictionsRequest {
   branch: string;
   body?: RemoveTeamAccessRestrictionsRequestBody;
 }
-export const RemoveTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12681,16 +11378,13 @@ export const RemoveTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveTeamAccessRestrictionsRequest>;
 
 export type RemoveTeamAccessRestrictionsResponseBodyList = Array<Team>;
-export const RemoveTeamAccessRestrictionsResponseBodyList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<RemoveTeamAccessRestrictionsResponseBodyList>;
-
 export type RemoveTeamAccessRestrictionsResponse = RemoveTeamAccessRestrictionsResponseBodyList;
-export const RemoveTeamAccessRestrictionsResponse =
+const RemoveTeamAccessRestrictionsResponse =
   AddTeamAccessRestrictionsResponse as any as S.Schema<RemoveTeamAccessRestrictionsResponse>;
 
 /** The username for users */
 export type RemoveUserAccessRestrictionsRequestUsersList = Array<string>;
-export const RemoveUserAccessRestrictionsRequestUsersList =
+const RemoveUserAccessRestrictionsRequestUsersList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveUserAccessRestrictionsRequestUsersList>;
 
 export interface RemoveUserAccessRestrictionsRequest {
@@ -12703,7 +11397,7 @@ export interface RemoveUserAccessRestrictionsRequest {
   /** The username for users */
   users: RemoveUserAccessRestrictionsRequestUsersList;
 }
-export const RemoveUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12721,11 +11415,8 @@ export const RemoveUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveUserAccessRestrictionsRequest>;
 
 export type RemoveUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
-export const RemoveUserAccessRestrictionsResponseBodyList =
-  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<RemoveUserAccessRestrictionsResponseBodyList>;
-
 export type RemoveUserAccessRestrictionsResponse = RemoveUserAccessRestrictionsResponseBodyList;
-export const RemoveUserAccessRestrictionsResponse =
+const RemoveUserAccessRestrictionsResponse =
   AddUserAccessRestrictionsResponse as any as S.Schema<RemoveUserAccessRestrictionsResponse>;
 
 export interface RenameBranchRequest {
@@ -12738,7 +11429,7 @@ export interface RenameBranchRequest {
   /** The new name of the branch. */
   new_name: string;
 }
-export const RenameBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12751,7 +11442,7 @@ export const RenameBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase. */
 export type ReplaceAllTopicsRequestNamesList = Array<string>;
-export const ReplaceAllTopicsRequestNamesList =
+const ReplaceAllTopicsRequestNamesList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<ReplaceAllTopicsRequestNamesList>;
 
 export interface ReplaceAllTopicsRequest {
@@ -12762,7 +11453,7 @@ export interface ReplaceAllTopicsRequest {
   /** An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase. */
   names: ReplaceAllTopicsRequestNamesList;
 }
-export const ReplaceAllTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12776,7 +11467,7 @@ export interface RequestPagesBuildRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const RequestPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestPagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12788,7 +11479,7 @@ export interface PageBuildStatus {
   url: string;
   status: string;
 }
-export const PageBuildStatus = /*@__PURE__*/ S.suspend(() =>
+const PageBuildStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     status: S.String,
@@ -12803,7 +11494,7 @@ export interface SetAdminBranchProtectionRequest {
   /** The name of the branch. Cannot contain wildcard characters. To use wildcard characters in branch names, use [the GraphQL API](https://docs.github.com/graphql). */
   branch: string;
 }
-export const SetAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12821,7 +11512,7 @@ export const SetAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type SetAppAccessRestrictionsRequestAppsList = Array<string>;
-export const SetAppAccessRestrictionsRequestAppsList =
+const SetAppAccessRestrictionsRequestAppsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetAppAccessRestrictionsRequestAppsList>;
 
 export interface SetAppAccessRestrictionsRequest {
@@ -12834,7 +11525,7 @@ export interface SetAppAccessRestrictionsRequest {
   /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
   apps: SetAppAccessRestrictionsRequestAppsList;
 }
-export const SetAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12852,34 +11543,22 @@ export const SetAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetAppAccessRestrictionsRequest>;
 
 export type SetAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
-export const SetAppAccessRestrictionsResponseBodyList =
-  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<SetAppAccessRestrictionsResponseBodyList>;
-
 export type SetAppAccessRestrictionsResponse = SetAppAccessRestrictionsResponseBodyList;
-export const SetAppAccessRestrictionsResponse =
+const SetAppAccessRestrictionsResponse =
   AddAppAccessRestrictionsResponse as any as S.Schema<SetAppAccessRestrictionsResponse>;
 
 /** The name of the status checks */
 export type SetStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
-export const SetStatusCheckContextsRequestBodyCase0ContextsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetStatusCheckContextsRequestBodyCase0ContextsList>;
-
 export interface SetStatusCheckContextsRequestBodyCase0 {
   /** The name of the status checks */
   contexts: SetStatusCheckContextsRequestBodyCase0ContextsList;
 }
-export const SetStatusCheckContextsRequestBodyCase0 =
-  AddStatusCheckContextsRequestBodyCase0 as any as S.Schema<SetStatusCheckContextsRequestBodyCase0>;
-
 /** The name of the status checks */
 export type SetStatusCheckContextsRequestBodyCase1List = Array<string>;
-export const SetStatusCheckContextsRequestBodyCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetStatusCheckContextsRequestBodyCase1List>;
-
 export type SetStatusCheckContextsRequestBody =
   | SetStatusCheckContextsRequestBodyCase0
   | SetStatusCheckContextsRequestBodyCase1List;
-export const SetStatusCheckContextsRequestBody =
+const SetStatusCheckContextsRequestBody =
   S.Unknown as any as S.Schema<SetStatusCheckContextsRequestBody>;
 
 export interface SetStatusCheckContextsRequest {
@@ -12891,7 +11570,7 @@ export interface SetStatusCheckContextsRequest {
   branch: string;
   body?: SetStatusCheckContextsRequestBody;
 }
-export const SetStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12909,34 +11588,22 @@ export const SetStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetStatusCheckContextsRequest>;
 
 export type SetStatusCheckContextsResponseBodyList = Array<string>;
-export const SetStatusCheckContextsResponseBodyList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetStatusCheckContextsResponseBodyList>;
-
 export type SetStatusCheckContextsResponse = SetStatusCheckContextsResponseBodyList;
-export const SetStatusCheckContextsResponse =
+const SetStatusCheckContextsResponse =
   AddStatusCheckContextsResponse as any as S.Schema<SetStatusCheckContextsResponse>;
 
 /** The slug values for teams */
 export type SetTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
-export const SetTeamAccessRestrictionsRequestBodyCase0TeamsList =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase0TeamsList>;
-
 export interface SetTeamAccessRestrictionsRequestBodyCase0 {
   /** The slug values for teams */
   teams: SetTeamAccessRestrictionsRequestBodyCase0TeamsList;
 }
-export const SetTeamAccessRestrictionsRequestBodyCase0 =
-  AddTeamAccessRestrictionsRequestBodyCase0 as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase0>;
-
 /** The slug values for teams */
 export type SetTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
-export const SetTeamAccessRestrictionsRequestBodyCase1List =
-  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase1List>;
-
 export type SetTeamAccessRestrictionsRequestBody =
   | SetTeamAccessRestrictionsRequestBodyCase0
   | SetTeamAccessRestrictionsRequestBodyCase1List;
-export const SetTeamAccessRestrictionsRequestBody =
+const SetTeamAccessRestrictionsRequestBody =
   S.Unknown as any as S.Schema<SetTeamAccessRestrictionsRequestBody>;
 
 export interface SetTeamAccessRestrictionsRequest {
@@ -12948,7 +11615,7 @@ export interface SetTeamAccessRestrictionsRequest {
   branch: string;
   body?: SetTeamAccessRestrictionsRequestBody;
 }
-export const SetTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -12966,16 +11633,13 @@ export const SetTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetTeamAccessRestrictionsRequest>;
 
 export type SetTeamAccessRestrictionsResponseBodyList = Array<Team>;
-export const SetTeamAccessRestrictionsResponseBodyList =
-  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<SetTeamAccessRestrictionsResponseBodyList>;
-
 export type SetTeamAccessRestrictionsResponse = SetTeamAccessRestrictionsResponseBodyList;
-export const SetTeamAccessRestrictionsResponse =
+const SetTeamAccessRestrictionsResponse =
   AddTeamAccessRestrictionsResponse as any as S.Schema<SetTeamAccessRestrictionsResponse>;
 
 /** The username for users */
 export type SetUserAccessRestrictionsRequestUsersList = Array<string>;
-export const SetUserAccessRestrictionsRequestUsersList =
+const SetUserAccessRestrictionsRequestUsersList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetUserAccessRestrictionsRequestUsersList>;
 
 export interface SetUserAccessRestrictionsRequest {
@@ -12988,7 +11652,7 @@ export interface SetUserAccessRestrictionsRequest {
   /** The username for users */
   users: SetUserAccessRestrictionsRequestUsersList;
 }
-export const SetUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13006,11 +11670,8 @@ export const SetUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetUserAccessRestrictionsRequest>;
 
 export type SetUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
-export const SetUserAccessRestrictionsResponseBodyList =
-  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<SetUserAccessRestrictionsResponseBodyList>;
-
 export type SetUserAccessRestrictionsResponse = SetUserAccessRestrictionsResponseBodyList;
-export const SetUserAccessRestrictionsResponse =
+const SetUserAccessRestrictionsResponse =
   AddUserAccessRestrictionsResponse as any as S.Schema<SetUserAccessRestrictionsResponse>;
 
 export interface TestPushWebhookRequest {
@@ -13021,7 +11682,7 @@ export interface TestPushWebhookRequest {
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-export const TestPushWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const TestPushWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13032,12 +11693,12 @@ export const TestPushWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestPushWebhookRequest" }) as any as S.Schema<TestPushWebhookRequest>;
 
 export interface TestPushWebhookResponse {}
-export const TestPushWebhookResponse =
+const TestPushWebhookResponse =
   CancelPagesDeploymentResponse as any as S.Schema<TestPushWebhookResponse>;
 
 /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
 export type TransferRequestTeamIdsList = Array<number>;
-export const TransferRequestTeamIdsList =
+const TransferRequestTeamIdsList =
   OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<TransferRequestTeamIdsList>;
 
 export interface TransferRequest {
@@ -13052,7 +11713,7 @@ export interface TransferRequest {
   /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
   team_ids?: TransferRequestTeamIdsList;
 }
-export const TransferRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13063,18 +11724,18 @@ export const TransferRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferRequest" }) as any as S.Schema<TransferRequest>;
 
 export interface TransferResponse {}
-export const TransferResponse = CancelPagesDeploymentResponse as any as S.Schema<TransferResponse>;
+const TransferResponse = CancelPagesDeploymentResponse as any as S.Schema<TransferResponse>;
 
 /** The visibility of the repository. */
 export type UpdateRequestVisibility = "public" | "private";
-export const UpdateRequestVisibility = S.String;
+const UpdateRequestVisibility = S.String;
 
 /** Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)." For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface UpdateRequestSecurityAndAnalysisAdvancedSecurity {
   /** Can be `enabled` or `disabled`. */
   status?: string;
 }
-export const UpdateRequestSecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestSecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -13085,57 +11746,36 @@ export const UpdateRequestSecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.
 /** Use the `status` property to enable or disable GitHub Code Security for this repository. */
 export type UpdateRequestSecurityAndAnalysisCodeSecurity =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisCodeSecurity =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)." */
 export type UpdateRequestSecurityAndAnalysisSecretScanning =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisSecretScanning =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)." */
 export type UpdateRequestSecurityAndAnalysisSecretScanningPushProtection =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisSecretScanningPushProtection =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** Use the `status` property to enable or disable secret scanning AI detection for this repository. For more information, see "[Responsible detection of generic secrets with AI](https://docs.github.com/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/generic-secret-detection/responsible-ai-generic-secrets)." */
 export type UpdateRequestSecurityAndAnalysisSecretScanningAiDetection =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisSecretScanningAiDetection =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** Use the `status` property to enable or disable secret scanning non-provider patterns for this repository. For more information, see "[Supported secret scanning patterns](/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)." */
 export type UpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** Use the `status` property to enable or disable secret scanning delegated alert dismissal for this repository. */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** Use the `status` property to enable or disable secret scanning delegated bypass for this repository. */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass =
   UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass =
-  UpdateRequestSecurityAndAnalysisAdvancedSecurity;
-
 /** The type of the bypass reviewer */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
+const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   S.String;
 
 /** The bypass mode for the reviewer */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
+const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   S.String;
 
 export interface UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
@@ -13150,7 +11790,7 @@ export interface UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOp
     | UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode
     | (string & {});
 }
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -13167,7 +11807,7 @@ export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOption
 /** The bypass reviewers for secret scanning delegated bypass. If you omit this field, the existing set of reviewers is unchanged. */
 export type UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
+const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   /*@__PURE__*/ S.Array(
     UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
   ) as any as S.Schema<UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
@@ -13177,7 +11817,7 @@ export interface UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOp
   /** The bypass reviewers for secret scanning delegated bypass. If you omit this field, the existing set of reviewers is unchanged. */
   reviewers?: UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions =
+const UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewers: S.optional(
@@ -13209,7 +11849,7 @@ export interface UpdateRequestSecurityAndAnalysis {
   /** Feature options for secret scanning delegated bypass. This object is only honored when `security_and_analysis.secret_scanning_delegated_bypass.status` is set to `enabled`. You can send this object in the same request as `secret_scanning_delegated_bypass`, or update just the options in a separate request. */
   secret_scanning_delegated_bypass_options?: UpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const UpdateRequestSecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestSecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(UpdateRequestSecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(UpdateRequestSecurityAndAnalysisAdvancedSecurity),
@@ -13233,23 +11873,23 @@ export const UpdateRequestSecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The policy that controls who can create pull requests for this repository: `all` or `collaborators_only`. */
 export type UpdateRequestPullRequestCreationPolicy = "all" | "collaborators_only";
-export const UpdateRequestPullRequestCreationPolicy = S.String;
+const UpdateRequestPullRequestCreationPolicy = S.String;
 
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type UpdateRequestSquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const UpdateRequestSquashMergeCommitTitle = S.String;
+const UpdateRequestSquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type UpdateRequestSquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const UpdateRequestSquashMergeCommitMessage = S.String;
+const UpdateRequestSquashMergeCommitMessage = S.String;
 
 /** Required when using `merge_commit_message`. The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type UpdateRequestMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const UpdateRequestMergeCommitTitle = S.String;
+const UpdateRequestMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type UpdateRequestMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const UpdateRequestMergeCommitMessage = S.String;
+const UpdateRequestMergeCommitMessage = S.String;
 
 export interface UpdateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13311,7 +11951,7 @@ export interface UpdateRequest {
   /** Either `true` to require contributors to sign off on web-based commits, or `false` to not require contributors to sign off on web-based commits. */
   web_commit_signoff_required?: boolean;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13347,7 +11987,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** **Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control. */
 export type UpdateBranchProtectionRequestRequiredStatusChecksContextsList = Array<string>;
-export const UpdateBranchProtectionRequestRequiredStatusChecksContextsList =
+const UpdateBranchProtectionRequestRequiredStatusChecksContextsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksContextsList>;
 
 export interface UpdateBranchProtectionRequestRequiredStatusChecksChecksItem {
@@ -13356,12 +11996,11 @@ export interface UpdateBranchProtectionRequestRequiredStatusChecksChecksItem {
   /** The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status. */
   app_id?: number;
 }
-export const UpdateBranchProtectionRequestRequiredStatusChecksChecksItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      context: S.String,
-      app_id: S.optional(S.Number),
-    }),
+const UpdateBranchProtectionRequestRequiredStatusChecksChecksItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    context: S.String,
+    app_id: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "UpdateBranchProtectionRequestRequiredStatusChecksChecksItem",
 }) as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
@@ -13369,7 +12008,7 @@ export const UpdateBranchProtectionRequestRequiredStatusChecksChecksItem = /*@__
 /** The list of status checks to require in order to merge into this branch. */
 export type UpdateBranchProtectionRequestRequiredStatusChecksChecksList =
   Array<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
-export const UpdateBranchProtectionRequestRequiredStatusChecksChecksList = /*@__PURE__*/ S.Array(
+const UpdateBranchProtectionRequestRequiredStatusChecksChecksList = /*@__PURE__*/ S.Array(
   UpdateBranchProtectionRequestRequiredStatusChecksChecksItem,
 ) as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksChecksList>;
 
@@ -13382,7 +12021,7 @@ export interface UpdateBranchProtectionRequestRequiredStatusChecks {
   /** The list of status checks to require in order to merge into this branch. */
   checks?: UpdateBranchProtectionRequestRequiredStatusChecksChecksList;
 }
-export const UpdateBranchProtectionRequestRequiredStatusChecks = /*@__PURE__*/ S.suspend(() =>
+const UpdateBranchProtectionRequestRequiredStatusChecks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strict: S.Boolean,
     contexts: UpdateBranchProtectionRequestRequiredStatusChecksContextsList,
@@ -13395,19 +12034,19 @@ export const UpdateBranchProtectionRequestRequiredStatusChecks = /*@__PURE__*/ S
 /** The list of user `login`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   Array<string>;
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
 
 /** The list of team `slug`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
   Array<string>;
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
 
 /** The list of app `slug`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   Array<string>;
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
 
 /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
@@ -13419,7 +12058,7 @@ export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissa
   /** The list of app `slug`s with dismissal access */
   apps?: UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList;
 }
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       users: S.optional(
@@ -13439,19 +12078,19 @@ export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRes
 /** The list of user `login`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   Array<string>;
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
 
 /** The list of team `slug`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   Array<string>;
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
 
 /** The list of app `slug`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   Array<string>;
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
 
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
@@ -13463,7 +12102,7 @@ export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPu
   /** The list of app `slug`s allowed to bypass pull request requirements. */
   apps?: UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList;
 }
-export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances =
+const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       users: S.optional(
@@ -13496,7 +12135,7 @@ export interface UpdateBranchProtectionRequestRequiredPullRequestReviews {
   /** Allow specific users, teams, or apps to bypass pull request requirements. */
   bypass_pull_request_allowances?: UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances;
 }
-export const UpdateBranchProtectionRequestRequiredPullRequestReviews = /*@__PURE__*/ S.suspend(() =>
+const UpdateBranchProtectionRequestRequiredPullRequestReviews = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dismissal_restrictions: S.optional(
       UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions,
@@ -13515,17 +12154,17 @@ export const UpdateBranchProtectionRequestRequiredPullRequestReviews = /*@__PURE
 
 /** The list of user `login`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsUsersList = Array<string>;
-export const UpdateBranchProtectionRequestRestrictionsUsersList =
+const UpdateBranchProtectionRequestRestrictionsUsersList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsUsersList>;
 
 /** The list of team `slug`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsTeamsList = Array<string>;
-export const UpdateBranchProtectionRequestRestrictionsTeamsList =
+const UpdateBranchProtectionRequestRestrictionsTeamsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsTeamsList>;
 
 /** The list of app `slug`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsAppsList = Array<string>;
-export const UpdateBranchProtectionRequestRestrictionsAppsList =
+const UpdateBranchProtectionRequestRestrictionsAppsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsAppsList>;
 
 /** Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable. */
@@ -13537,7 +12176,7 @@ export interface UpdateBranchProtectionRequestRestrictions {
   /** The list of app `slug`s with push access */
   apps?: UpdateBranchProtectionRequestRestrictionsAppsList;
 }
-export const UpdateBranchProtectionRequestRestrictions = /*@__PURE__*/ S.suspend(() =>
+const UpdateBranchProtectionRequestRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: UpdateBranchProtectionRequestRestrictionsUsersList,
     teams: UpdateBranchProtectionRequestRestrictionsTeamsList,
@@ -13577,7 +12216,7 @@ export interface UpdateBranchProtectionRequest {
   /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. Default: `false`. */
   allow_fork_syncing?: boolean;
 }
-export const UpdateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13604,16 +12243,16 @@ export const UpdateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   Array<SimpleUser>;
-export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
+const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList = Array<Team>;
-export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
+const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
   ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   Array<Integration | null>;
-export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
+const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
 
 export interface ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
@@ -13624,33 +12263,32 @@ export interface ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions 
   teams: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList;
   apps?: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList;
 }
-export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-      users_url: S.String,
-      teams_url: S.String,
-      users: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList,
-      teams: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList,
-      apps: S.optional(ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList),
-    }),
-  ).annotate({
-    identifier: "ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions",
-  }) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions>;
+const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.String,
+    users_url: S.String,
+    teams_url: S.String,
+    users: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList,
+    teams: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList,
+    apps: S.optional(ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList),
+  }),
+).annotate({
+  identifier: "ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions",
+}) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions>;
 
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   Array<SimpleUser>;
-export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
+const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   Array<Team>;
-export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
+const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   Array<Integration | null>;
-export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
+const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
 
 export interface ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances {
@@ -13658,7 +12296,7 @@ export interface ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllow
   teams: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList;
   apps?: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList;
 }
-export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances =
+const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       users: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList,
@@ -13681,7 +12319,7 @@ export interface ProtectedBranchRequiredPullRequestReviews {
   dismissal_restrictions?: ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions;
   bypass_pull_request_allowances?: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances;
 }
-export const ProtectedBranchRequiredPullRequestReviews = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranchRequiredPullRequestReviews = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     dismiss_stale_reviews: S.optional(S.Boolean),
@@ -13700,37 +12338,21 @@ export const ProtectedBranchRequiredPullRequestReviews = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ProtectedBranchRequiredPullRequestReviews>;
 
 export type ProtectedBranchRequiredSignatures = BranchProtectionRequiredSignatures;
-export const ProtectedBranchRequiredSignatures = BranchProtectionRequiredSignatures;
-
 export type ProtectedBranchEnforceAdmins = BranchProtectionRequiredSignatures;
-export const ProtectedBranchEnforceAdmins = BranchProtectionRequiredSignatures;
-
 export interface ProtectedBranchRequiredLinearHistory {
   enabled: boolean;
 }
-export const ProtectedBranchRequiredLinearHistory =
+const ProtectedBranchRequiredLinearHistory =
   CheckPrivateVulnerabilityReportingResponse as any as S.Schema<ProtectedBranchRequiredLinearHistory>;
 
 export type ProtectedBranchAllowForcePushes = ProtectedBranchRequiredLinearHistory;
-export const ProtectedBranchAllowForcePushes = ProtectedBranchRequiredLinearHistory;
-
 export type ProtectedBranchAllowDeletions = ProtectedBranchRequiredLinearHistory;
-export const ProtectedBranchAllowDeletions = ProtectedBranchRequiredLinearHistory;
-
 export type ProtectedBranchRequiredConversationResolution = BranchProtectionRequiredLinearHistory;
-export const ProtectedBranchRequiredConversationResolution = BranchProtectionRequiredLinearHistory;
-
 export type ProtectedBranchBlockCreations = ProtectedBranchRequiredLinearHistory;
-export const ProtectedBranchBlockCreations = ProtectedBranchRequiredLinearHistory;
-
 /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
 export type ProtectedBranchLockBranch = BranchProtectionRequiredLinearHistory;
-export const ProtectedBranchLockBranch = BranchProtectionRequiredLinearHistory;
-
 /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
 export type ProtectedBranchAllowForkSyncing = BranchProtectionRequiredLinearHistory;
-export const ProtectedBranchAllowForkSyncing = BranchProtectionRequiredLinearHistory;
-
 /** Branch protections protect branches */
 export interface ProtectedBranch {
   url: string;
@@ -13749,7 +12371,7 @@ export interface ProtectedBranch {
   /** Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. */
   allow_fork_syncing?: BranchProtectionRequiredLinearHistory;
 }
-export const ProtectedBranch = /*@__PURE__*/ S.suspend(() =>
+const ProtectedBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     required_status_checks: S.optional(StatusCheckPolicy),
@@ -13777,7 +12399,7 @@ export interface UpdateCommitCommentRequest {
   /** The contents of the comment */
   body: string;
 }
-export const UpdateCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13802,7 +12424,7 @@ export interface UpdateDeploymentBranchPolicyRequest {
   /** The name pattern that branches must match in order to deploy to the environment. Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*\/*`. For more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch). */
   name: string;
 }
-export const UpdateDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13822,19 +12444,15 @@ export const UpdateDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch. */
 export type UpdateInformationAboutPagesSiteRequestBuildType = "legacy" | "workflow";
-export const UpdateInformationAboutPagesSiteRequestBuildType = S.String;
+const UpdateInformationAboutPagesSiteRequestBuildType = S.String;
 
 /** Update the source for the repository. Must include the branch name, and may optionally specify the subdirectory `/docs`. Possible values are `"gh-pages"`, `"master"`, and `"master /docs"`. */
 export type UpdateInformationAboutPagesSiteRequestSourceCase0 =
   | "gh-pages"
   | "master"
   | "master /docs";
-export const UpdateInformationAboutPagesSiteRequestSourceCase0 = S.String;
-
 /** The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. */
 export type UpdateInformationAboutPagesSiteRequestSourceCase1Path = "/" | "/docs";
-export const UpdateInformationAboutPagesSiteRequestSourceCase1Path = S.String;
-
 /** Update the source for the repository. Must include the branch name and path. */
 export interface UpdateInformationAboutPagesSiteRequestSourceCase1 {
   /** The repository branch used to publish your site's source files. */
@@ -13842,19 +12460,10 @@ export interface UpdateInformationAboutPagesSiteRequestSourceCase1 {
   /** The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. */
   path: UpdateInformationAboutPagesSiteRequestSourceCase1Path | (string & {});
 }
-export const UpdateInformationAboutPagesSiteRequestSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.String,
-    path: UpdateInformationAboutPagesSiteRequestSourceCase1Path,
-  }),
-).annotate({
-  identifier: "UpdateInformationAboutPagesSiteRequestSourceCase1",
-}) as any as S.Schema<UpdateInformationAboutPagesSiteRequestSourceCase1>;
-
 export type UpdateInformationAboutPagesSiteRequestSource =
   | UpdateInformationAboutPagesSiteRequestSourceCase0
   | UpdateInformationAboutPagesSiteRequestSourceCase1;
-export const UpdateInformationAboutPagesSiteRequestSource =
+const UpdateInformationAboutPagesSiteRequestSource =
   S.Unknown as any as S.Schema<UpdateInformationAboutPagesSiteRequestSource>;
 
 export interface UpdateInformationAboutPagesSiteRequest {
@@ -13870,7 +12479,7 @@ export interface UpdateInformationAboutPagesSiteRequest {
   build_type?: UpdateInformationAboutPagesSiteRequestBuildType | (string & {});
   source?: UpdateInformationAboutPagesSiteRequestSource;
 }
-export const UpdateInformationAboutPagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInformationAboutPagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13884,12 +12493,12 @@ export const UpdateInformationAboutPagesSiteRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateInformationAboutPagesSiteRequest>;
 
 export interface UpdateInformationAboutPagesSiteResponse {}
-export const UpdateInformationAboutPagesSiteResponse =
+const UpdateInformationAboutPagesSiteResponse =
   AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<UpdateInformationAboutPagesSiteResponse>;
 
 /** The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`. */
 export type UpdateInvitationRequestPermissions = "read" | "write" | "maintain" | "triage" | "admin";
-export const UpdateInvitationRequestPermissions = S.String;
+const UpdateInvitationRequestPermissions = S.String;
 
 export interface UpdateInvitationRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13901,7 +12510,7 @@ export interface UpdateInvitationRequest {
   /** The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`. */
   permissions?: UpdateInvitationRequestPermissions | (string & {});
 }
-export const UpdateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -13918,16 +12527,16 @@ export const UpdateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The target of the ruleset */
 export type UpdateOrgRulesetRequestTarget = "branch" | "tag" | "push" | "repository";
-export const UpdateOrgRulesetRequestTarget = S.String;
+const UpdateOrgRulesetRequestTarget = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type UpdateOrgRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const UpdateOrgRulesetRequestBypassActorsList =
+const UpdateOrgRulesetRequestBypassActorsList =
   CreateOrgRulesetRequestBypassActorsList as any as S.Schema<UpdateOrgRulesetRequestBypassActorsList>;
 
 /** An array of rules within the ruleset. */
 export type UpdateOrgRulesetRequestRulesList = Array<OrgRules>;
-export const UpdateOrgRulesetRequestRulesList =
+const UpdateOrgRulesetRequestRulesList =
   CreateOrgRulesetRequestRulesList as any as S.Schema<UpdateOrgRulesetRequestRulesList>;
 
 export interface UpdateOrgRulesetRequest {
@@ -13946,7 +12555,7 @@ export interface UpdateOrgRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: UpdateOrgRulesetRequestRulesList;
 }
-export const UpdateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     ruleset_id: S.Number.pipe(T.Label()),
@@ -13961,17 +12570,17 @@ export const UpdateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of user `login`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList = Array<string>;
-export const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList =
+const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList>;
 
 /** The list of team `slug`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList = Array<string>;
-export const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList =
+const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList>;
 
 /** The list of app `slug`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList = Array<string>;
-export const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList =
+const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList>;
 
 /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
@@ -13983,33 +12592,32 @@ export interface UpdatePullRequestReviewProtectionRequestDismissalRestrictions {
   /** The list of app `slug`s with dismissal access */
   apps?: UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList;
 }
-export const UpdatePullRequestReviewProtectionRequestDismissalRestrictions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      users: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList),
-      teams: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList),
-      apps: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList),
-    }),
-  ).annotate({
-    identifier: "UpdatePullRequestReviewProtectionRequestDismissalRestrictions",
-  }) as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictions>;
+const UpdatePullRequestReviewProtectionRequestDismissalRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    users: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList),
+    teams: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList),
+    apps: S.optional(UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList),
+  }),
+).annotate({
+  identifier: "UpdatePullRequestReviewProtectionRequestDismissalRestrictions",
+}) as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictions>;
 
 /** The list of user `login`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
   Array<string>;
-export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
+const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList>;
 
 /** The list of team `slug`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
   Array<string>;
-export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
+const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList>;
 
 /** The list of app `slug`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
   Array<string>;
-export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
+const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
   RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList>;
 
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
@@ -14021,8 +12629,8 @@ export interface UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowa
   /** The list of app `slug`s allowed to bypass pull request requirements. */
   apps?: UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList;
 }
-export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances =
-  /*@__PURE__*/ S.suspend(() =>
+const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       users: S.optional(
         UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList,
@@ -14032,9 +12640,9 @@ export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances
       ),
       apps: S.optional(UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList),
     }),
-  ).annotate({
-    identifier: "UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances",
-  }) as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances>;
+).annotate({
+  identifier: "UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances",
+}) as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances>;
 
 export interface UpdatePullRequestReviewProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -14056,7 +12664,7 @@ export interface UpdatePullRequestReviewProtectionRequest {
   /** Allow specific users, teams, or apps to bypass pull request requirements. */
   bypass_pull_request_allowances?: UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances;
 }
-export const UpdatePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14084,7 +12692,7 @@ export const UpdatePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version. */
 export type UpdateReleaseRequestMakeLatest = "true" | "false" | "legacy";
-export const UpdateReleaseRequestMakeLatest = S.String;
+const UpdateReleaseRequestMakeLatest = S.String;
 
 export interface UpdateReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -14110,7 +12718,7 @@ export interface UpdateReleaseRequest {
   /** If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)." */
   discussion_category_name?: string;
 }
-export const UpdateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14141,7 +12749,7 @@ export interface UpdateReleaseAssetRequest {
   label?: string;
   state?: string;
 }
-export const UpdateReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14158,16 +12766,16 @@ export const UpdateReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The target of the ruleset */
 export type UpdateRepoRulesetRequestTarget = "branch" | "tag" | "push";
-export const UpdateRepoRulesetRequestTarget = S.String;
+const UpdateRepoRulesetRequestTarget = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type UpdateRepoRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const UpdateRepoRulesetRequestBypassActorsList =
+const UpdateRepoRulesetRequestBypassActorsList =
   CreateOrgRulesetRequestBypassActorsList as any as S.Schema<UpdateRepoRulesetRequestBypassActorsList>;
 
 /** An array of rules within the ruleset. */
 export type UpdateRepoRulesetRequestRulesList = Array<RepositoryRule>;
-export const UpdateRepoRulesetRequestRulesList =
+const UpdateRepoRulesetRequestRulesList =
   RepositoryRulesetRulesList as any as S.Schema<UpdateRepoRulesetRequestRulesList>;
 
 export interface UpdateRepoRulesetRequest {
@@ -14188,7 +12796,7 @@ export interface UpdateRepoRulesetRequest {
   /** An array of rules within the ruleset. */
   rules?: UpdateRepoRulesetRequestRulesList;
 }
-export const UpdateRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14204,18 +12812,15 @@ export const UpdateRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** **Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control. */
 export type UpdateStatusCheckProtectionRequestContextsList = Array<string>;
-export const UpdateStatusCheckProtectionRequestContextsList =
+const UpdateStatusCheckProtectionRequestContextsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateStatusCheckProtectionRequestContextsList>;
 
 export type UpdateStatusCheckProtectionRequestChecksItem =
   UpdateBranchProtectionRequestRequiredStatusChecksChecksItem;
-export const UpdateStatusCheckProtectionRequestChecksItem =
-  UpdateBranchProtectionRequestRequiredStatusChecksChecksItem;
-
 /** The list of status checks to require in order to merge into this branch. */
 export type UpdateStatusCheckProtectionRequestChecksList =
   Array<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
-export const UpdateStatusCheckProtectionRequestChecksList =
+const UpdateStatusCheckProtectionRequestChecksList =
   UpdateBranchProtectionRequestRequiredStatusChecksChecksList as any as S.Schema<UpdateStatusCheckProtectionRequestChecksList>;
 
 export interface UpdateStatusCheckProtectionRequest {
@@ -14232,7 +12837,7 @@ export interface UpdateStatusCheckProtectionRequest {
   /** The list of status checks to require in order to merge into this branch. */
   checks?: UpdateStatusCheckProtectionRequestChecksList;
 }
-export const UpdateStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14253,17 +12858,17 @@ export const UpdateStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList =
+const UpdateWebhookRequestEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 /** Determines a list of events to be added to the list of events that the Hook triggers for. */
 export type UpdateWebhookRequestAddEventsList = Array<string>;
-export const UpdateWebhookRequestAddEventsList =
+const UpdateWebhookRequestAddEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestAddEventsList>;
 
 /** Determines a list of events to be removed from the list of events that the Hook triggers for. */
 export type UpdateWebhookRequestRemoveEventsList = Array<string>;
-export const UpdateWebhookRequestRemoveEventsList =
+const UpdateWebhookRequestRemoveEventsList =
   AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestRemoveEventsList>;
 
 export interface UpdateWebhookRequest {
@@ -14283,7 +12888,7 @@ export interface UpdateWebhookRequest {
   /** Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications. */
   active?: boolean;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14308,7 +12913,7 @@ export interface UpdateWebhookConfigForRepoRequest {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-export const UpdateWebhookConfigForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookConfigForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -14334,7 +12939,7 @@ export interface UploadReleaseAssetRequest {
   name: string;
   label?: string;
 }
-export const UploadReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),

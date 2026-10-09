@@ -19,7 +19,7 @@ export interface AddOnRequest {
   name?: string | null;
   provider?: string | null;
 }
-export const AddOnRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -37,7 +37,7 @@ export const AddOnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOnRequest" }) as any as S.Schema<AddOnRequest>;
 
 export type AddOnResponseReadRegionsList = Array<string>;
-export const AddOnResponseReadRegionsList = /*@__PURE__*/ S.Array(
+const AddOnResponseReadRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddOnResponseReadRegionsList>;
 
@@ -49,7 +49,7 @@ export interface AddOnResponseAddOnPlan {
   maxDataSize: string | null;
   pricePerMonth: number | null;
 }
-export const AddOnResponseAddOnPlan = /*@__PURE__*/ S.suspend(() =>
+const AddOnResponseAddOnPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -78,7 +78,7 @@ export interface AddOnResponseAddOnProvider {
   nameSuffix: string | null;
   provisioningInstructions: string | null;
 }
-export const AddOnResponseAddOnProvider = /*@__PURE__*/ S.suspend(() =>
+const AddOnResponseAddOnProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -110,7 +110,7 @@ export interface AddOnResponseOrganization {
   billable: boolean;
   provisionsBetaExtensions: boolean;
 }
-export const AddOnResponseOrganization = /*@__PURE__*/ S.suspend(() =>
+const AddOnResponseOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -128,7 +128,7 @@ export interface AddOnResponseApp {
   id: string;
   name: string;
 }
-export const AddOnResponseApp = /*@__PURE__*/ S.suspend(() =>
+const AddOnResponseApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -158,7 +158,7 @@ export interface AddOnResponse {
   organization: AddOnResponseOrganization;
   app: AddOnResponseApp | null;
 }
-export const AddOnResponse = /*@__PURE__*/ S.suspend(() =>
+const AddOnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -196,7 +196,7 @@ export type AddOnType =
   | "wafris"
   | "arcjet"
   | "fly_mysql";
-export const AddOnType = S.String;
+const AddOnType = S.String;
 
 export interface AddOnPlansRequest {
   /** Returns the elements in the list that come after the specified cursor. */
@@ -209,7 +209,7 @@ export interface AddOnPlansRequest {
   last?: number | null;
   type?: AddOnType | (string & {}) | null;
 }
-export const AddOnPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOnPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.NullOr(S.String)),
     before: S.optional(S.NullOr(S.String)),
@@ -229,13 +229,11 @@ export const AddOnPlansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOnPlansRequest" }) as any as S.Schema<AddOnPlansRequest>;
 
 export type AddOnPlansResponseEdgesItemNode = AddOnResponseAddOnPlan;
-export const AddOnPlansResponseEdgesItemNode = AddOnResponseAddOnPlan;
-
 export interface AddOnPlansResponseEdgesItem {
   cursor: string;
   node: AddOnResponseAddOnPlan | null;
 }
-export const AddOnPlansResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
+const AddOnPlansResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.String,
     node: S.NullOr(AddOnResponseAddOnPlan),
@@ -245,15 +243,13 @@ export const AddOnPlansResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddOnPlansResponseEdgesItem>;
 
 export type AddOnPlansResponseEdgesList = (AddOnPlansResponseEdgesItem | null)[];
-export const AddOnPlansResponseEdgesList = /*@__PURE__*/ S.Array(
+const AddOnPlansResponseEdgesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(AddOnPlansResponseEdgesItem),
 ) as any as S.Schema<AddOnPlansResponseEdgesList>;
 
 export type AddOnPlansResponseNodesItem = AddOnResponseAddOnPlan;
-export const AddOnPlansResponseNodesItem = AddOnResponseAddOnPlan;
-
 export type AddOnPlansResponseNodesList = (AddOnResponseAddOnPlan | null)[];
-export const AddOnPlansResponseNodesList = /*@__PURE__*/ S.Array(
+const AddOnPlansResponseNodesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(AddOnResponseAddOnPlan),
 ) as any as S.Schema<AddOnPlansResponseNodesList>;
 
@@ -263,7 +259,7 @@ export interface AddOnPlansResponsePageInfo {
   startCursor: string | null;
   endCursor: string | null;
 }
-export const AddOnPlansResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const AddOnPlansResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasNextPage: S.Boolean,
     hasPreviousPage: S.Boolean,
@@ -281,7 +277,7 @@ export interface AddOnPlansResponse {
   pageInfo: AddOnPlansResponsePageInfo;
   totalCount: number;
 }
-export const AddOnPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const AddOnPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edges: S.NullOr(AddOnPlansResponseEdgesList),
     nodes: S.NullOr(AddOnPlansResponseNodesList),
@@ -293,7 +289,7 @@ export const AddOnPlansResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AddOnProviderRequest {
   name: string;
 }
-export const AddOnProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOnProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   })
@@ -327,7 +323,7 @@ export interface AddOnProviderResponse {
   nameSuffix: string | null;
   provisioningInstructions: string | null;
 }
-export const AddOnProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const AddOnProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -359,7 +355,7 @@ export interface AddOnsRequest {
   last?: number | null;
   type?: AddOnType | (string & {}) | null;
 }
-export const AddOnsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.NullOr(S.String)),
     before: S.optional(S.NullOr(S.String)),
@@ -379,21 +375,13 @@ export const AddOnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOnsRequest" }) as any as S.Schema<AddOnsRequest>;
 
 export type AddOnsResponseEdgesItemNodeReadRegionsList = Array<string>;
-export const AddOnsResponseEdgesItemNodeReadRegionsList =
+const AddOnsResponseEdgesItemNodeReadRegionsList =
   AddOnResponseReadRegionsList as any as S.Schema<AddOnsResponseEdgesItemNodeReadRegionsList>;
 
 export type AddOnsResponseEdgesItemNodeAddOnPlan = AddOnResponseAddOnPlan;
-export const AddOnsResponseEdgesItemNodeAddOnPlan = AddOnResponseAddOnPlan;
-
 export type AddOnsResponseEdgesItemNodeAddOnProvider = AddOnResponseAddOnProvider;
-export const AddOnsResponseEdgesItemNodeAddOnProvider = AddOnResponseAddOnProvider;
-
 export type AddOnsResponseEdgesItemNodeOrganization = AddOnResponseOrganization;
-export const AddOnsResponseEdgesItemNodeOrganization = AddOnResponseOrganization;
-
 export type AddOnsResponseEdgesItemNodeApp = AddOnResponseApp;
-export const AddOnsResponseEdgesItemNodeApp = AddOnResponseApp;
-
 export interface AddOnsResponseEdgesItemNode {
   id: string;
   name: string | null;
@@ -416,7 +404,7 @@ export interface AddOnsResponseEdgesItemNode {
   organization: AddOnResponseOrganization;
   app: AddOnResponseApp | null;
 }
-export const AddOnsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
+const AddOnsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -447,7 +435,7 @@ export interface AddOnsResponseEdgesItem {
   cursor: string;
   node: AddOnsResponseEdgesItemNode | null;
 }
-export const AddOnsResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
+const AddOnsResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.String,
     node: S.NullOr(AddOnsResponseEdgesItemNode),
@@ -455,12 +443,12 @@ export const AddOnsResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOnsResponseEdgesItem" }) as any as S.Schema<AddOnsResponseEdgesItem>;
 
 export type AddOnsResponseEdgesList = (AddOnsResponseEdgesItem | null)[];
-export const AddOnsResponseEdgesList = /*@__PURE__*/ S.Array(
+const AddOnsResponseEdgesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(AddOnsResponseEdgesItem),
 ) as any as S.Schema<AddOnsResponseEdgesList>;
 
 export type AddOnsResponseNodesItemReadRegionsList = Array<string>;
-export const AddOnsResponseNodesItemReadRegionsList =
+const AddOnsResponseNodesItemReadRegionsList =
   AddOnResponseReadRegionsList as any as S.Schema<AddOnsResponseNodesItemReadRegionsList>;
 
 export interface AddOnsResponseNodesItem {
@@ -481,7 +469,7 @@ export interface AddOnsResponseNodesItem {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const AddOnsResponseNodesItem = /*@__PURE__*/ S.suspend(() =>
+const AddOnsResponseNodesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -503,13 +491,11 @@ export const AddOnsResponseNodesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOnsResponseNodesItem" }) as any as S.Schema<AddOnsResponseNodesItem>;
 
 export type AddOnsResponseNodesList = (AddOnsResponseNodesItem | null)[];
-export const AddOnsResponseNodesList = /*@__PURE__*/ S.Array(
+const AddOnsResponseNodesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(AddOnsResponseNodesItem),
 ) as any as S.Schema<AddOnsResponseNodesList>;
 
 export type AddOnsResponsePageInfo = AddOnPlansResponsePageInfo;
-export const AddOnsResponsePageInfo = AddOnPlansResponsePageInfo;
-
 /** Selection set for `addOns` (unwrapped from the GraphQL `data` envelope). */
 export interface AddOnsResponse {
   edges: AddOnsResponseEdgesList | null;
@@ -517,7 +503,7 @@ export interface AddOnsResponse {
   pageInfo: AddOnPlansResponsePageInfo;
   totalCount: number;
 }
-export const AddOnsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddOnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edges: S.NullOr(AddOnsResponseEdgesList),
     nodes: S.NullOr(AddOnsResponseNodesList),
@@ -530,7 +516,7 @@ export interface AgreedToProviderTosRequest {
   slug: string;
   providerName: string;
 }
-export const AgreedToProviderTosRequest = /*@__PURE__*/ S.suspend(() =>
+const AgreedToProviderTosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     providerName: S.String,
@@ -549,7 +535,7 @@ export const AgreedToProviderTosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgreedToProviderTosRequest>;
 
 export type AgreedToProviderTosResponse = boolean | null;
-export const AgreedToProviderTosResponse = /*@__PURE__*/ S.suspend(() =>
+const AgreedToProviderTosResponse = /*@__PURE__*/ S.suspend(() =>
   S.NullOr(S.Boolean).pipe(
     T.GraphQLPayloadRoot(),
     T.ResponsePath("organization.agreedToProviderTos"),
@@ -559,7 +545,7 @@ export const AgreedToProviderTosResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgreedToProviderTosResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Autogenerated input type of CreateAddOn */
 export interface CreateAddOnInput {
@@ -584,7 +570,7 @@ export interface CreateAddOnInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
-export const CreateAddOnInput = /*@__PURE__*/ S.suspend(() =>
+const CreateAddOnInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AddOnType,
     name: S.optional(S.NullOr(S.String)),
@@ -603,7 +589,7 @@ export interface CreateAddOnRequest {
   /** Parameters for CreateAddOn */
   input: CreateAddOnInput;
 }
-export const CreateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: CreateAddOnInput,
   })
@@ -619,9 +605,6 @@ export const CreateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAddOnRequest" }) as any as S.Schema<CreateAddOnRequest>;
 
 export type CreateAddOnResponseAddOnReadRegionsList = Array<string>;
-export const CreateAddOnResponseAddOnReadRegionsList =
-  AddOnResponseReadRegionsList as any as S.Schema<CreateAddOnResponseAddOnReadRegionsList>;
-
 export interface CreateAddOnResponseAddOn {
   id: string;
   name: string | null;
@@ -640,7 +623,7 @@ export interface CreateAddOnResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const CreateAddOnResponseAddOn =
+const CreateAddOnResponseAddOn =
   AddOnsResponseNodesItem as any as S.Schema<CreateAddOnResponseAddOn>;
 
 /** Selection set for `createAddOn` (unwrapped from the GraphQL `data` envelope). */
@@ -648,7 +631,7 @@ export interface CreateAddOnResponse {
   addOn: CreateAddOnResponseAddOn;
   clientMutationId: string | null;
 }
-export const CreateAddOnResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAddOnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOn: CreateAddOnResponseAddOn,
     clientMutationId: S.NullOr(S.String),
@@ -664,7 +647,7 @@ export interface CreateExtensionTosAgreementInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
-export const CreateExtensionTosAgreementInput = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionTosAgreementInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnProviderName: S.String,
     organizationId: S.optional(S.NullOr(S.String)),
@@ -678,7 +661,7 @@ export interface CreateExtensionTosAgreementRequest {
   /** Parameters for CreateExtensionTosAgreement */
   input: CreateExtensionTosAgreementInput;
 }
-export const CreateExtensionTosAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionTosAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: CreateExtensionTosAgreementInput,
   })
@@ -699,7 +682,7 @@ export const CreateExtensionTosAgreementRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateExtensionTosAgreementResponse {
   clientMutationId: string | null;
 }
-export const CreateExtensionTosAgreementResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionTosAgreementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientMutationId: S.NullOr(S.String),
   }).pipe(T.ResponsePath("createExtensionTosAgreement")),
@@ -718,7 +701,7 @@ export interface DeleteAddOnInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
-export const DeleteAddOnInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddOnInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnId: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -731,7 +714,7 @@ export interface DeleteAddOnRequest {
   /** Parameters for DeleteAddOn */
   input: DeleteAddOnInput;
 }
-export const DeleteAddOnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: DeleteAddOnInput,
   })
@@ -751,7 +734,7 @@ export interface DeleteAddOnResponse {
   deletedAddOnName: string | null;
   clientMutationId: string | null;
 }
-export const DeleteAddOnResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddOnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedAddOnName: S.NullOr(S.String),
     clientMutationId: S.NullOr(S.String),
@@ -763,7 +746,7 @@ export interface OrganizationRequest {
   name?: string | null;
   slug?: string | null;
 }
-export const OrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const OrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -781,7 +764,7 @@ export const OrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationRequest" }) as any as S.Schema<OrganizationRequest>;
 
 export type OrganizationResponseAddOnsEdgesItemNodeReadRegionsList = Array<string>;
-export const OrganizationResponseAddOnsEdgesItemNodeReadRegionsList =
+const OrganizationResponseAddOnsEdgesItemNodeReadRegionsList =
   AddOnResponseReadRegionsList as any as S.Schema<OrganizationResponseAddOnsEdgesItemNodeReadRegionsList>;
 
 export interface OrganizationResponseAddOnsEdgesItemNode {
@@ -802,7 +785,7 @@ export interface OrganizationResponseAddOnsEdgesItemNode {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const OrganizationResponseAddOnsEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponseAddOnsEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -829,7 +812,7 @@ export interface OrganizationResponseAddOnsEdgesItem {
   cursor: string;
   node: OrganizationResponseAddOnsEdgesItemNode | null;
 }
-export const OrganizationResponseAddOnsEdgesItem = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponseAddOnsEdgesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.String,
     node: S.NullOr(OrganizationResponseAddOnsEdgesItemNode),
@@ -839,19 +822,17 @@ export const OrganizationResponseAddOnsEdgesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationResponseAddOnsEdgesItem>;
 
 export type OrganizationResponseAddOnsEdgesList = (OrganizationResponseAddOnsEdgesItem | null)[];
-export const OrganizationResponseAddOnsEdgesList = /*@__PURE__*/ S.Array(
+const OrganizationResponseAddOnsEdgesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(OrganizationResponseAddOnsEdgesItem),
 ) as any as S.Schema<OrganizationResponseAddOnsEdgesList>;
 
 export type OrganizationResponseAddOnsPageInfo = AddOnPlansResponsePageInfo;
-export const OrganizationResponseAddOnsPageInfo = AddOnPlansResponsePageInfo;
-
 export interface OrganizationResponseAddOns {
   edges: OrganizationResponseAddOnsEdgesList | null;
   pageInfo: AddOnPlansResponsePageInfo;
   totalCount: number;
 }
-export const OrganizationResponseAddOns = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponseAddOns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edges: S.NullOr(OrganizationResponseAddOnsEdgesList),
     pageInfo: AddOnPlansResponsePageInfo,
@@ -872,7 +853,7 @@ export interface OrganizationResponse {
   provisionsBetaExtensions: boolean;
   addOns: OrganizationResponseAddOns;
 }
-export const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -892,7 +873,7 @@ export interface ResetAddOnPasswordInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
-export const ResetAddOnPasswordInput = /*@__PURE__*/ S.suspend(() =>
+const ResetAddOnPasswordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     clientMutationId: S.optional(S.NullOr(S.String)),
@@ -903,7 +884,7 @@ export interface ResetAddOnPasswordRequest {
   /** Parameters for ResetAddOnPassword */
   input: ResetAddOnPasswordInput;
 }
-export const ResetAddOnPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAddOnPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: ResetAddOnPasswordInput,
   })
@@ -921,9 +902,6 @@ export const ResetAddOnPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAddOnPasswordRequest>;
 
 export type ResetAddOnPasswordResponseAddOnReadRegionsList = Array<string>;
-export const ResetAddOnPasswordResponseAddOnReadRegionsList =
-  AddOnResponseReadRegionsList as any as S.Schema<ResetAddOnPasswordResponseAddOnReadRegionsList>;
-
 export interface ResetAddOnPasswordResponseAddOn {
   id: string;
   name: string | null;
@@ -942,7 +920,7 @@ export interface ResetAddOnPasswordResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const ResetAddOnPasswordResponseAddOn =
+const ResetAddOnPasswordResponseAddOn =
   OrganizationResponseAddOnsEdgesItemNode as any as S.Schema<ResetAddOnPasswordResponseAddOn>;
 
 /** Selection set for `resetAddOnPassword` (unwrapped from the GraphQL `data` envelope). */
@@ -950,7 +928,7 @@ export interface ResetAddOnPasswordResponse {
   addOn: ResetAddOnPasswordResponseAddOn;
   clientMutationId: string | null;
 }
-export const ResetAddOnPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetAddOnPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOn: ResetAddOnPasswordResponseAddOn,
     clientMutationId: S.NullOr(S.String),
@@ -980,7 +958,7 @@ export interface UpdateAddOnInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
-export const UpdateAddOnInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateAddOnInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnId: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -998,7 +976,7 @@ export interface UpdateAddOnRequest {
   /** Parameters for UpdateAddOn */
   input: UpdateAddOnInput;
 }
-export const UpdateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: UpdateAddOnInput,
   })
@@ -1014,9 +992,6 @@ export const UpdateAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAddOnRequest" }) as any as S.Schema<UpdateAddOnRequest>;
 
 export type UpdateAddOnResponseAddOnReadRegionsList = Array<string>;
-export const UpdateAddOnResponseAddOnReadRegionsList =
-  AddOnResponseReadRegionsList as any as S.Schema<UpdateAddOnResponseAddOnReadRegionsList>;
-
 export interface UpdateAddOnResponseAddOn {
   id: string;
   name: string | null;
@@ -1035,7 +1010,7 @@ export interface UpdateAddOnResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
-export const UpdateAddOnResponseAddOn =
+const UpdateAddOnResponseAddOn =
   AddOnsResponseNodesItem as any as S.Schema<UpdateAddOnResponseAddOn>;
 
 /** Selection set for `updateAddOn` (unwrapped from the GraphQL `data` envelope). */
@@ -1043,7 +1018,7 @@ export interface UpdateAddOnResponse {
   addOn: UpdateAddOnResponseAddOn;
   clientMutationId: string | null;
 }
-export const UpdateAddOnResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAddOnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOn: UpdateAddOnResponseAddOn,
     clientMutationId: S.NullOr(S.String),

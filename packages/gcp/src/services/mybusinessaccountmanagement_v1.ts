@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request message for AccessControl.AcceptInvitation. */
 export interface AcceptInvitationRequest {}
-export const AcceptInvitationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AcceptInvitationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptInvitationRequest",
 }) as any as S.Schema<AcceptInvitationRequest>;
 
@@ -73,7 +73,7 @@ export interface AcceptAccountsInvitationsRequest {
   /** Request body */
   body?: AcceptInvitationRequest;
 }
-export const AcceptAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AcceptInvitationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const AcceptAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = AcceptInvitationRequest as any as S.Schema<Empty>;
+const Empty = AcceptInvitationRequest as any as S.Schema<Empty>;
 
 export type AccountTypeEnum =
   | "ACCOUNT_TYPE_UNSPECIFIED"
@@ -98,10 +98,10 @@ export type AccountTypeEnum =
   | "LOCATION_GROUP"
   | "USER_GROUP"
   | "ORGANIZATION";
-export const AccountTypeEnum = S.String;
+const AccountTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -128,7 +128,7 @@ export interface PostalAddress {
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
 }
-export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
+const PostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrativeArea: S.optional(S.String),
     postalCode: S.optional(S.String),
@@ -153,7 +153,7 @@ export interface OrganizationInfo {
   /** Output only. The registered domain for the account. */
   registeredDomain?: string;
 }
-export const OrganizationInfo = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(PostalAddress),
     phoneNumber: S.optional(S.String),
@@ -166,13 +166,13 @@ export type AccountVettedStateEnum =
   | "NOT_VETTED"
   | "VETTED"
   | "INVALID";
-export const AccountVettedStateEnum = S.String;
+const AccountVettedStateEnum = S.String;
 
 export type AccountPermissionLevelEnum =
   | "PERMISSION_LEVEL_UNSPECIFIED"
   | "OWNER_LEVEL"
   | "MEMBER_LEVEL";
-export const AccountPermissionLevelEnum = S.String;
+const AccountPermissionLevelEnum = S.String;
 
 export type AccountRoleEnum =
   | "ACCOUNT_ROLE_UNSPECIFIED"
@@ -180,14 +180,14 @@ export type AccountRoleEnum =
   | "OWNER"
   | "MANAGER"
   | "SITE_MANAGER";
-export const AccountRoleEnum = S.String;
+const AccountRoleEnum = S.String;
 
 export type AccountVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFIED"
   | "UNVERIFIED"
   | "VERIFICATION_REQUESTED";
-export const AccountVerificationStateEnum = S.String;
+const AccountVerificationStateEnum = S.String;
 
 /** An account is a container for your location. If you are the only user who manages locations for your business, you can use your personal Google Account. To share management of locations with multiple users, [create a business account] (https://support.google.com/business/answer/6085339?ref_topic=6085325). */
 export interface Account {
@@ -212,7 +212,7 @@ export interface Account {
   /** Required. The name of the account. For an account of type `PERSONAL`, this is the first and last name of the user account. */
   accountName?: string;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(AccountTypeEnum),
     organizationInfo: S.optional(OrganizationInfo),
@@ -231,7 +231,7 @@ export interface CreateAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const CreateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Account.pipe(T.HttpBody())),
   }).pipe(
@@ -249,7 +249,7 @@ export type AdminRoleEnum =
   | "OWNER"
   | "MANAGER"
   | "SITE_MANAGER";
-export const AdminRoleEnum = S.String;
+const AdminRoleEnum = S.String;
 
 /** An administrator of an Account or a location. */
 export interface Admin {
@@ -264,7 +264,7 @@ export interface Admin {
   /** Output only. Indicates whether this admin has a pending invitation for the specified resource. */
   pendingInvitation?: boolean;
 }
-export const Admin = /*@__PURE__*/ S.suspend(() =>
+const Admin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     role: S.optional(AdminRoleEnum),
@@ -280,7 +280,7 @@ export interface CreateAccountsAdminsRequest {
   /** Request body */
   body?: Admin;
 }
-export const CreateAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Admin.pipe(T.HttpBody())),
@@ -301,7 +301,7 @@ export interface CreateLocationsAdminsRequest {
   /** Request body */
   body?: Admin;
 }
-export const CreateLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Admin.pipe(T.HttpBody())),
@@ -318,15 +318,13 @@ export const CreateLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for AccessControl.DeclineInvitation. */
 export type DeclineInvitationRequest = AcceptInvitationRequest;
-export const DeclineInvitationRequest = AcceptInvitationRequest;
-
 export interface DeclineAccountsInvitationsRequest {
   /** Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}` */
   name: string;
   /** Request body */
   body?: AcceptInvitationRequest;
 }
-export const DeclineAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeclineAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AcceptInvitationRequest.pipe(T.HttpBody())),
@@ -345,7 +343,7 @@ export interface DeleteAccountsAdminsRequest {
   /** Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`. */
   name: string;
 }
-export const DeleteAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -363,7 +361,7 @@ export interface DeleteLocationsAdminsRequest {
   /** Required. The resource name of the admin to remove from the location. */
   name: string;
 }
-export const DeleteLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -381,7 +379,7 @@ export interface GetAccountsRequest {
   /** Required. The name of the account to fetch. */
   name: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -403,7 +401,7 @@ export interface ListAccountsRequest {
   /** Optional. If specified, the next page of accounts is retrieved. The `pageToken` is returned when a call to `accounts.list` returns more results than can fit into the requested page size. */
   pageToken?: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentAccount: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -419,7 +417,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = Array<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response message for Accounts.ListAccounts. */
 export interface ListAccountsResponse {
@@ -428,7 +426,7 @@ export interface ListAccountsResponse {
   /** If the number of accounts exceeds the requested page size, this field is populated with a token to fetch the next page of accounts on a subsequent call to `accounts.list`. If there are no more accounts, this field is not present in the response. */
   nextPageToken?: string;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: S.optional(AccountList),
     nextPageToken: S.optional(S.String),
@@ -439,7 +437,7 @@ export interface ListAccountsAdminsRequest {
   /** Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`. */
   parent: string;
 }
-export const ListAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -454,14 +452,14 @@ export const ListAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsAdminsRequest>;
 
 export type AdminList = Array<Admin>;
-export const AdminList = /*@__PURE__*/ S.Array(Admin) as any as S.Schema<AdminList>;
+const AdminList = /*@__PURE__*/ S.Array(Admin) as any as S.Schema<AdminList>;
 
 /** Response message for AccessControl.ListAccountAdmins. */
 export interface ListAccountAdminsResponse {
   /** A collection of Admin instances. */
   accountAdmins?: AdminList;
 }
-export const ListAccountAdminsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountAdminsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountAdmins: S.optional(AdminList),
   }),
@@ -475,7 +473,7 @@ export interface ListAccountsInvitationsRequest {
   /** Optional. Filtering the response is supported via the Invitation.target_type field. */
   filter?: string;
 }
-export const ListAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -496,13 +494,13 @@ export type InvitationRoleEnum =
   | "OWNER"
   | "MANAGER"
   | "SITE_MANAGER";
-export const InvitationRoleEnum = S.String;
+const InvitationRoleEnum = S.String;
 
 export type InvitationTargetTypeEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "ACCOUNTS_ONLY"
   | "LOCATIONS_ONLY";
-export const InvitationTargetTypeEnum = S.String;
+const InvitationTargetTypeEnum = S.String;
 
 /** Represents a target location for a pending invitation. */
 export interface TargetLocation {
@@ -513,7 +511,7 @@ export interface TargetLocation {
   /** The name of the location to which the user is invited. */
   locationName?: string;
 }
-export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
+const TargetLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeId: S.optional(S.String),
     address: S.optional(S.String),
@@ -534,7 +532,7 @@ export interface Invitation {
   /** Required. The resource name for the invitation. `accounts/{account_id}/invitations/{invitation_id}`. */
   name?: string;
 }
-export const Invitation = /*@__PURE__*/ S.suspend(() =>
+const Invitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(InvitationRoleEnum),
     targetType: S.optional(InvitationTargetTypeEnum),
@@ -545,14 +543,14 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
 export type InvitationList = Array<Invitation>;
-export const InvitationList = /*@__PURE__*/ S.Array(Invitation) as any as S.Schema<InvitationList>;
+const InvitationList = /*@__PURE__*/ S.Array(Invitation) as any as S.Schema<InvitationList>;
 
 /** Response message for AccessControl.ListInvitations. */
 export interface ListInvitationsResponse {
   /** A collection of invitations that are pending for the account. The number of invitations listed here cannot exceed 1000. */
   invitations?: InvitationList;
 }
-export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitations: S.optional(InvitationList),
   }),
@@ -562,7 +560,7 @@ export interface ListLocationsAdminsRequest {
   /** Required. The name of the location to list admins of. `locations/{location_id}/admins`. */
   parent: string;
 }
-export const ListLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -581,7 +579,7 @@ export interface ListLocationAdminsResponse {
   /** A collection of Admins. */
   admins?: AdminList;
 }
-export const ListLocationAdminsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationAdminsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admins: S.optional(AdminList),
   }),
@@ -599,7 +597,7 @@ export interface PatchAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -622,7 +620,7 @@ export interface PatchAccountsAdminsRequest {
   /** Request body */
   body?: Admin;
 }
-export const PatchAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -646,7 +644,7 @@ export interface PatchLocationsAdminsRequest {
   /** Request body */
   body?: Admin;
 }
-export const PatchLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -667,7 +665,7 @@ export interface TransferLocationRequest {
   /** Required. Name of the account resource to transfer the location to (for example, "accounts/{account}"). */
   destinationAccount?: string;
 }
-export const TransferLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationAccount: S.optional(S.String),
   }),
@@ -679,7 +677,7 @@ export interface TransferLocationsRequest {
   /** Request body */
   body?: TransferLocationRequest;
 }
-export const TransferLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(TransferLocationRequest.pipe(T.HttpBody())),

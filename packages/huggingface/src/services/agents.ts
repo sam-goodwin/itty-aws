@@ -12,13 +12,13 @@ import * as T from "../traits.ts";
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export interface GetAgentHarnessesRequest {}
-export const GetAgentHarnessesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentHarnessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/agent-harnesses", code: 200 })),
 ).annotate({ identifier: "GetAgentHarnessesRequest" }) as any as S.Schema<GetAgentHarnessesRequest>;
 
 /** Standard environment variables that any agent can set to identify itself. Their value is matched against the harness ids. */
 export type GetAgentHarnessesResponseStandardEnvVarsList = Array<string>;
-export const GetAgentHarnessesResponseStandardEnvVarsList = /*@__PURE__*/ S.Array(
+const GetAgentHarnessesResponseStandardEnvVarsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAgentHarnessesResponseStandardEnvVarsList>;
 
@@ -26,7 +26,7 @@ export const GetAgentHarnessesResponseStandardEnvVarsList = /*@__PURE__*/ S.Arra
 export type GetAgentHarnessesResponseHarnessesValueEnvVarsMap = {
   [key: string]: string | undefined;
 };
-export const GetAgentHarnessesResponseHarnessesValueEnvVarsMap = /*@__PURE__*/ S.Record(
+const GetAgentHarnessesResponseHarnessesValueEnvVarsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetAgentHarnessesResponseHarnessesValueEnvVarsMap>;
@@ -43,7 +43,7 @@ export interface GetAgentHarnessesResponseHarnessesValue {
   /** Environment variable(s) identifying this harness, mapped to the value pattern they must match: "*" (set to any non-empty value), an exact value, or a "<prefix>*" fuzzy match. Detection matches if ANY entry matches. */
   envVars?: GetAgentHarnessesResponseHarnessesValueEnvVarsMap;
 }
-export const GetAgentHarnessesResponseHarnessesValue = /*@__PURE__*/ S.suspend(() =>
+const GetAgentHarnessesResponseHarnessesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prettyLabel: S.String,
     repoUrl: S.optional(S.String),
@@ -59,7 +59,7 @@ export const GetAgentHarnessesResponseHarnessesValue = /*@__PURE__*/ S.suspend((
 export type GetAgentHarnessesResponseHarnessesMap = {
   [key: string]: GetAgentHarnessesResponseHarnessesValue | undefined;
 };
-export const GetAgentHarnessesResponseHarnessesMap = /*@__PURE__*/ S.Record(
+const GetAgentHarnessesResponseHarnessesMap = /*@__PURE__*/ S.Record(
   S.String,
   GetAgentHarnessesResponseHarnessesValue,
 ) as any as S.Schema<GetAgentHarnessesResponseHarnessesMap>;
@@ -70,7 +70,7 @@ export interface GetAgentHarnessesResponse {
   /** Registered harnesses, keyed by id and ordered by detection priority: the first match wins */
   harnesses: GetAgentHarnessesResponseHarnessesMap;
 }
-export const GetAgentHarnessesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAgentHarnessesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     standardEnvVars: GetAgentHarnessesResponseStandardEnvVarsList,
     harnesses: GetAgentHarnessesResponseHarnessesMap,

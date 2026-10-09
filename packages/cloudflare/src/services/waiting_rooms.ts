@@ -81,14 +81,14 @@ export class ZoneNotEntitled
   ) {}
 
 export type EventsCreateRequestTurnstileAction = "log" | "infinite_queue";
-export const EventsCreateRequestTurnstileAction = S.String;
+const EventsCreateRequestTurnstileAction = S.String;
 
 export type EventsCreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsCreateRequestTurnstileMode = S.String;
+const EventsCreateRequestTurnstileMode = S.String;
 
 export interface CreateEventRequest {
   /** Identifier. */
@@ -125,7 +125,7 @@ export interface CreateEventRequest {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsCreateRequestTurnstileMode | (string & {});
 }
-export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -158,14 +158,14 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEventRequest" }) as any as S.Schema<CreateEventRequest>;
 
 export type EventsCreateResponseTurnstileAction = "log" | "infinite_queue";
-export const EventsCreateResponseTurnstileAction = S.String;
+const EventsCreateResponseTurnstileAction = S.String;
 
 export type EventsCreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsCreateResponseTurnstileMode = S.String;
+const EventsCreateResponseTurnstileMode = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEventResponse {
@@ -203,7 +203,7 @@ export interface CreateEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsCreateResponseTurnstileMode | null;
 }
-export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -231,7 +231,7 @@ export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEventResponse" }) as any as S.Schema<CreateEventResponse>;
 
 export type RulesCreateRequestRulesAction = "bypass_waiting_room";
-export const RulesCreateRequestRulesAction = S.String;
+const RulesCreateRequestRulesAction = S.String;
 
 export interface RulesCreateRequestRules {
   /** The action to take when the expression matches. */
@@ -243,7 +243,7 @@ export interface RulesCreateRequestRules {
   /** When set to true, the rule is enabled. */
   enabled?: boolean;
 }
-export const RulesCreateRequestRules = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateRequestRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesCreateRequestRulesAction,
     expression: S.String,
@@ -258,7 +258,7 @@ export interface CreateRuleRequest {
   waitingRoomId: string;
   rules: RulesCreateRequestRules;
 }
-export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -275,7 +275,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResultItemAction = "bypass_waiting_room";
-export const RulesCreateResultItemAction = S.String;
+const RulesCreateResultItemAction = S.String;
 
 export interface RulesCreateResultItem {
   /** The ID of the rule. */
@@ -292,7 +292,7 @@ export interface RulesCreateResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     action: S.optional(S.NullOr(RulesCreateResultItemAction)),
@@ -305,7 +305,7 @@ export const RulesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesCreateResultItem" }) as any as S.Schema<RulesCreateResultItem>;
 
 export type RulesCreateResultList = Array<RulesCreateResultItem>;
-export const RulesCreateResultList = /*@__PURE__*/ S.Array(
+const RulesCreateResultList = /*@__PURE__*/ S.Array(
   RulesCreateResultItem,
 ) as any as S.Schema<RulesCreateResultList>;
 
@@ -315,7 +315,7 @@ export interface CreateRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -328,7 +328,7 @@ export interface CreateRequestAdditionalRoutesItem {
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
   path?: string;
 }
-export const CreateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     path: S.optional(S.String),
@@ -338,15 +338,15 @@ export const CreateRequestAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestAdditionalRoutesItem>;
 
 export type CreateRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-export const CreateRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
+const CreateRequestAdditionalRoutesList = /*@__PURE__*/ S.Array(
   CreateRequestAdditionalRoutesItem,
 ) as any as S.Schema<CreateRequestAdditionalRoutesList>;
 
 export type CreateRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const CreateRequestCookieAttributesSamesite = S.String;
+const CreateRequestCookieAttributesSamesite = S.String;
 
 export type CreateRequestCookieAttributesSecure = "auto" | "always" | "never";
-export const CreateRequestCookieAttributesSecure = S.String;
+const CreateRequestCookieAttributesSecure = S.String;
 
 export interface CreateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
@@ -354,7 +354,7 @@ export interface CreateRequestCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: CreateRequestCookieAttributesSecure | (string & {});
 }
-export const CreateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     samesite: S.optional(CreateRequestCookieAttributesSamesite),
     secure: S.optional(CreateRequestCookieAttributesSecure),
@@ -403,33 +403,33 @@ export type CreateRequestDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const CreateRequestDefaultTemplateLanguage = S.String;
+const CreateRequestDefaultTemplateLanguage = S.String;
 
 export type CreateRequestEnabledOriginCommandsItem = "revoke";
-export const CreateRequestEnabledOriginCommandsItem = S.String;
+const CreateRequestEnabledOriginCommandsItem = S.String;
 
 export type CreateRequestEnabledOriginCommandsList = Array<
   CreateRequestEnabledOriginCommandsItem | (string & {})
 >;
-export const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
+const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
   CreateRequestEnabledOriginCommandsItem,
 ) as any as S.Schema<CreateRequestEnabledOriginCommandsList>;
 
 export type CreateRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const CreateRequestQueueingMethod = S.String;
+const CreateRequestQueueingMethod = S.String;
 
 export type CreateRequestQueueingStatusCode = 200 | 202 | 429;
-export const CreateRequestQueueingStatusCode = S.Number;
+const CreateRequestQueueingStatusCode = S.Number;
 
 export type CreateRequestTurnstileAction = "log" | "infinite_queue";
-export const CreateRequestTurnstileAction = S.String;
+const CreateRequestTurnstileAction = S.String;
 
 export type CreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const CreateRequestTurnstileMode = S.String;
+const CreateRequestTurnstileMode = S.String;
 
 export interface CreateWaitingRoomRequest {
   /** Identifier. */
@@ -477,7 +477,7 @@ export interface CreateWaitingRoomRequest {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: CreateRequestTurnstileMode | (string & {});
 }
-export const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     host: S.String,
@@ -520,7 +520,7 @@ export interface CreateResponseAdditionalRoutesItem {
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
   path?: string | null;
 }
-export const CreateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.NullOr(S.String)),
     path: S.optional(S.NullOr(S.String)),
@@ -530,15 +530,15 @@ export const CreateResponseAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseAdditionalRoutesItem>;
 
 export type CreateResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const CreateResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
+const CreateResponseAdditionalRoutesList = /*@__PURE__*/ S.Array(
   CreateResponseAdditionalRoutesItem,
 ) as any as S.Schema<CreateResponseAdditionalRoutesList>;
 
 export type CreateResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const CreateResponseCookieAttributesSamesite = S.String;
+const CreateResponseCookieAttributesSamesite = S.String;
 
 export type CreateResponseCookieAttributesSecure = "auto" | "always" | "never";
-export const CreateResponseCookieAttributesSecure = S.String;
+const CreateResponseCookieAttributesSecure = S.String;
 
 export interface CreateResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
@@ -546,7 +546,7 @@ export interface CreateResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: CreateResponseCookieAttributesSecure | null;
 }
-export const CreateResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseCookieAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     samesite: S.optional(S.NullOr(CreateResponseCookieAttributesSamesite)),
     secure: S.optional(S.NullOr(CreateResponseCookieAttributesSecure)),
@@ -595,31 +595,29 @@ export type CreateResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const CreateResponseDefaultTemplateLanguage = S.String;
+const CreateResponseDefaultTemplateLanguage = S.String;
 
 export type CreateResponseEnabledOriginCommandsItem = "revoke";
-export const CreateResponseEnabledOriginCommandsItem = S.String;
-
 export type CreateResponseEnabledOriginCommandsList =
   Array<CreateResponseEnabledOriginCommandsItem>;
-export const CreateResponseEnabledOriginCommandsList =
+const CreateResponseEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<CreateResponseEnabledOriginCommandsList>;
 
 export type CreateResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const CreateResponseQueueingMethod = S.String;
+const CreateResponseQueueingMethod = S.String;
 
 export type CreateResponseQueueingStatusCode = 200 | 202 | 429;
-export const CreateResponseQueueingStatusCode = S.Number;
+const CreateResponseQueueingStatusCode = S.Number;
 
 export type CreateResponseTurnstileAction = "log" | "infinite_queue";
-export const CreateResponseTurnstileAction = S.String;
+const CreateResponseTurnstileAction = S.String;
 
 export type CreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const CreateResponseTurnstileMode = S.String;
+const CreateResponseTurnstileMode = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWaitingRoomResponse {
@@ -673,7 +671,7 @@ export interface CreateWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: CreateResponseTurnstileMode | null;
 }
-export const CreateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
@@ -728,7 +726,7 @@ export interface DeleteEventRequest {
   waitingRoomId: string;
   eventId: string;
 }
-export const DeleteEventRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -748,7 +746,7 @@ export const DeleteEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEventResponse {
   id?: string | null;
 }
-export const DeleteEventResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -761,7 +759,7 @@ export interface DeleteRuleRequest {
   /** The ID of the rule. */
   ruleId: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -778,8 +776,6 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export type RulesDeleteResultItemAction = "bypass_waiting_room";
-export const RulesDeleteResultItemAction = S.String;
-
 export interface RulesDeleteResultItem {
   /** The ID of the rule. */
   id?: string | null;
@@ -795,27 +791,21 @@ export interface RulesDeleteResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesDeleteResultItem =
-  RulesCreateResultItem as any as S.Schema<RulesDeleteResultItem>;
-
 export type RulesDeleteResultList = Array<RulesDeleteResultItem>;
-export const RulesDeleteResultList =
-  RulesCreateResultList as any as S.Schema<RulesDeleteResultList>;
-
 export interface DeleteRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesDeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const DeleteRuleResponse = CreateRuleResponse as any as S.Schema<DeleteRuleResponse>;
+const DeleteRuleResponse = CreateRuleResponse as any as S.Schema<DeleteRuleResponse>;
 
 export interface DeleteWaitingRoomRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
 }
-export const DeleteWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -834,7 +824,7 @@ export const DeleteWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWaitingRoomResponse {
   id?: string | null;
 }
-export const DeleteWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -848,7 +838,7 @@ export interface GetEventRequest {
   waitingRoomId: string;
   eventId: string;
 }
-export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -865,15 +855,11 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEventRequest" }) as any as S.Schema<GetEventRequest>;
 
 export type EventsGetResponseTurnstileAction = "log" | "infinite_queue";
-export const EventsGetResponseTurnstileAction = S.String;
-
 export type EventsGetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsGetResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEventResponse {
   id?: string | null;
@@ -910,7 +896,7 @@ export interface GetEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsGetResponseTurnstileMode | null;
 }
-export const GetEventResponse = CreateEventResponse as any as S.Schema<GetEventResponse>;
+const GetEventResponse = CreateEventResponse as any as S.Schema<GetEventResponse>;
 
 export interface GetEventDetailRequest {
   /** Identifier. */
@@ -918,7 +904,7 @@ export interface GetEventDetailRequest {
   waitingRoomId: string;
   eventId: string;
 }
-export const GetEventDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -960,7 +946,7 @@ export interface GetEventDetailResponse {
   suspended?: boolean | null;
   totalActiveUsers?: number | null;
 }
-export const GetEventDetailResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEventDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -986,7 +972,7 @@ export interface GetRuleRequest {
   zoneId: string;
   waitingRoomId: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -1002,8 +988,6 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResultItemAction = "bypass_waiting_room";
-export const RulesGetResultItemAction = S.String;
-
 export interface RulesGetResultItem {
   /** The ID of the rule. */
   id?: string | null;
@@ -1019,24 +1003,20 @@ export interface RulesGetResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesGetResultItem = RulesCreateResultItem as any as S.Schema<RulesGetResultItem>;
-
 export type RulesGetResultList = Array<RulesGetResultItem>;
-export const RulesGetResultList = RulesCreateResultList as any as S.Schema<RulesGetResultList>;
-
 export interface GetRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetRuleResponse = CreateRuleResponse as any as S.Schema<GetRuleResponse>;
+const GetRuleResponse = CreateRuleResponse as any as S.Schema<GetRuleResponse>;
 
 export interface GetSettingRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1049,7 +1029,7 @@ export interface GetSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchEngineCrawlerBypass: S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1060,7 +1040,7 @@ export interface GetStatusRequest {
   zoneId: string;
   waitingRoomId: string;
 }
-export const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -1080,7 +1060,7 @@ export type StatusesGetResponseStatus =
   | "not_queueing"
   | "queueing"
   | "suspended";
-export const StatusesGetResponseStatus = S.String;
+const StatusesGetResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStatusResponse {
@@ -1090,7 +1070,7 @@ export interface GetStatusResponse {
   maxEstimatedTimeMinutes?: number | null;
   status?: StatusesGetResponseStatus | null;
 }
-export const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedQueuedUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("estimated_queued_users"))),
     estimatedTotalActiveUsers: S.optional(
@@ -1109,7 +1089,7 @@ export interface GetWaitingRoomRequest {
   zoneId: string;
   waitingRoomId: string;
 }
-export const GetWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -1121,25 +1101,19 @@ export const GetWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWaitingRoomRequest" }) as any as S.Schema<GetWaitingRoomRequest>;
 
 export type GetResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-export const GetResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-
 export type GetResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const GetResponseAdditionalRoutesList =
+const GetResponseAdditionalRoutesList =
   CreateResponseAdditionalRoutesList as any as S.Schema<GetResponseAdditionalRoutesList>;
 
 export type GetResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const GetResponseCookieAttributesSamesite = S.String;
-
 export type GetResponseCookieAttributesSecure = "auto" | "always" | "never";
-export const GetResponseCookieAttributesSecure = S.String;
-
 export interface GetResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: GetResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: GetResponseCookieAttributesSecure | null;
 }
-export const GetResponseCookieAttributes =
+const GetResponseCookieAttributes =
   CreateResponseCookieAttributes as any as S.Schema<GetResponseCookieAttributes>;
 
 export type GetResponseDefaultTemplateLanguage =
@@ -1182,30 +1156,28 @@ export type GetResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const GetResponseDefaultTemplateLanguage = S.String;
+const GetResponseDefaultTemplateLanguage = S.String;
 
 export type GetResponseEnabledOriginCommandsItem = "revoke";
-export const GetResponseEnabledOriginCommandsItem = S.String;
-
 export type GetResponseEnabledOriginCommandsList = Array<GetResponseEnabledOriginCommandsItem>;
-export const GetResponseEnabledOriginCommandsList =
+const GetResponseEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<GetResponseEnabledOriginCommandsList>;
 
 export type GetResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const GetResponseQueueingMethod = S.String;
+const GetResponseQueueingMethod = S.String;
 
 export type GetResponseQueueingStatusCode = 200 | 202 | 429;
-export const GetResponseQueueingStatusCode = S.Number;
+const GetResponseQueueingStatusCode = S.Number;
 
 export type GetResponseTurnstileAction = "log" | "infinite_queue";
-export const GetResponseTurnstileAction = S.String;
+const GetResponseTurnstileAction = S.String;
 
 export type GetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const GetResponseTurnstileMode = S.String;
+const GetResponseTurnstileMode = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWaitingRoomResponse {
@@ -1259,7 +1231,7 @@ export interface GetWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: GetResponseTurnstileMode | null;
 }
-export const GetWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
@@ -1313,7 +1285,7 @@ export interface ListEventsRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -1331,14 +1303,14 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEventsRequest" }) as any as S.Schema<ListEventsRequest>;
 
 export type EventsListResultItemTurnstileAction = "log" | "infinite_queue";
-export const EventsListResultItemTurnstileAction = S.String;
+const EventsListResultItemTurnstileAction = S.String;
 
 export type EventsListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsListResultItemTurnstileMode = S.String;
+const EventsListResultItemTurnstileMode = S.String;
 
 export interface EventsListResultItem {
   id?: string | null;
@@ -1375,7 +1347,7 @@ export interface EventsListResultItem {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsListResultItemTurnstileMode | null;
 }
-export const EventsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const EventsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -1403,7 +1375,7 @@ export const EventsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventsListResultItem" }) as any as S.Schema<EventsListResultItem>;
 
 export type EventsListResultList = Array<EventsListResultItem>;
-export const EventsListResultList = /*@__PURE__*/ S.Array(
+const EventsListResultList = /*@__PURE__*/ S.Array(
   EventsListResultItem,
 ) as any as S.Schema<EventsListResultList>;
 
@@ -1413,7 +1385,7 @@ export interface ListEventsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: EventsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1428,7 +1400,7 @@ export interface ListWaitingRoomsForAccountRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1441,25 +1413,19 @@ export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWaitingRoomsForAccountRequest>;
 
 export type ListResultItemAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-export const ListResultItemAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-
 export type ListResultItemAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const ListResultItemAdditionalRoutesList =
+const ListResultItemAdditionalRoutesList =
   CreateResponseAdditionalRoutesList as any as S.Schema<ListResultItemAdditionalRoutesList>;
 
 export type ListResultItemCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const ListResultItemCookieAttributesSamesite = S.String;
-
 export type ListResultItemCookieAttributesSecure = "auto" | "always" | "never";
-export const ListResultItemCookieAttributesSecure = S.String;
-
 export interface ListResultItemCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: ListResultItemCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: ListResultItemCookieAttributesSecure | null;
 }
-export const ListResultItemCookieAttributes =
+const ListResultItemCookieAttributes =
   CreateResponseCookieAttributes as any as S.Schema<ListResultItemCookieAttributes>;
 
 export type ListResultItemDefaultTemplateLanguage =
@@ -1502,31 +1468,29 @@ export type ListResultItemDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const ListResultItemDefaultTemplateLanguage = S.String;
+const ListResultItemDefaultTemplateLanguage = S.String;
 
 export type ListResultItemEnabledOriginCommandsItem = "revoke";
-export const ListResultItemEnabledOriginCommandsItem = S.String;
-
 export type ListResultItemEnabledOriginCommandsList =
   Array<ListResultItemEnabledOriginCommandsItem>;
-export const ListResultItemEnabledOriginCommandsList =
+const ListResultItemEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
 
 export type ListResultItemQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const ListResultItemQueueingMethod = S.String;
+const ListResultItemQueueingMethod = S.String;
 
 export type ListResultItemQueueingStatusCode = 200 | 202 | 429;
-export const ListResultItemQueueingStatusCode = S.Number;
+const ListResultItemQueueingStatusCode = S.Number;
 
 export type ListResultItemTurnstileAction = "log" | "infinite_queue";
-export const ListResultItemTurnstileAction = S.String;
+const ListResultItemTurnstileAction = S.String;
 
 export type ListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const ListResultItemTurnstileMode = S.String;
+const ListResultItemTurnstileMode = S.String;
 
 export interface ListResultItem {
   id?: string | null;
@@ -1579,7 +1543,7 @@ export interface ListResultItem {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: ListResultItemTurnstileMode | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
@@ -1627,9 +1591,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListWaitingRoomsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1637,7 +1599,7 @@ export interface ListWaitingRoomsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListWaitingRoomsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWaitingRoomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1652,7 +1614,7 @@ export interface ListWaitingRoomsForZoneRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-export const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1665,14 +1627,14 @@ export const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWaitingRoomsForZoneRequest>;
 
 export type EventsEditRequestTurnstileAction = "log" | "infinite_queue";
-export const EventsEditRequestTurnstileAction = S.String;
+const EventsEditRequestTurnstileAction = S.String;
 
 export type EventsEditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsEditRequestTurnstileMode = S.String;
+const EventsEditRequestTurnstileMode = S.String;
 
 export interface PatchEventRequest {
   /** Identifier. */
@@ -1710,7 +1672,7 @@ export interface PatchEventRequest {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsEditRequestTurnstileMode | (string & {});
 }
-export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -1742,15 +1704,11 @@ export const PatchEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchEventRequest" }) as any as S.Schema<PatchEventRequest>;
 
 export type EventsEditResponseTurnstileAction = "log" | "infinite_queue";
-export const EventsEditResponseTurnstileAction = S.String;
-
 export type EventsEditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsEditResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchEventResponse {
   id?: string | null;
@@ -1787,52 +1745,28 @@ export interface PatchEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsEditResponseTurnstileMode | null;
 }
-export const PatchEventResponse = CreateEventResponse as any as S.Schema<PatchEventResponse>;
+const PatchEventResponse = CreateEventResponse as any as S.Schema<PatchEventResponse>;
 
 export type RulesEditRequestAction = "bypass_waiting_room";
-export const RulesEditRequestAction = S.String;
+const RulesEditRequestAction = S.String;
 
 export interface RulesEditRequestPositionIndex {
   /** Places the rule in the exact position specified by the integer number &lt;POSITION_NUMBER&gt;. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten). */
   index?: number;
 }
-export const RulesEditRequestPositionIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RulesEditRequestPositionIndex",
-}) as any as S.Schema<RulesEditRequestPositionIndex>;
-
 export interface RulesEditRequestPositionBefore {
   /** Places the rule before rule &lt;RULE_ID&gt;. Use this argument with an empty rule ID value ("") to set the rule as the first rule in the ruleset. */
   before?: string;
 }
-export const RulesEditRequestPositionBefore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesEditRequestPositionBefore",
-}) as any as S.Schema<RulesEditRequestPositionBefore>;
-
 export interface RulesEditRequestPositionAfter {
   /** Places the rule after rule &lt;RULE_ID&gt;. Use this argument with an empty rule ID value ("") to set the rule as the last rule in the ruleset. */
   after?: string;
 }
-export const RulesEditRequestPositionAfter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    after: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesEditRequestPositionAfter",
-}) as any as S.Schema<RulesEditRequestPositionAfter>;
-
 export type RulesEditRequestPosition =
   | RulesEditRequestPositionIndex
   | RulesEditRequestPositionBefore
   | RulesEditRequestPositionAfter;
-export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
+const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]),
 );
 
@@ -1853,7 +1787,7 @@ export interface PatchRuleRequest {
   /** Reorder the position of a rule */
   position?: RulesEditRequestPosition;
 }
-export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -1875,8 +1809,6 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchRuleRequest" }) as any as S.Schema<PatchRuleRequest>;
 
 export type RulesEditResultItemAction = "bypass_waiting_room";
-export const RulesEditResultItemAction = S.String;
-
 export interface RulesEditResultItem {
   /** The ID of the rule. */
   id?: string | null;
@@ -1892,18 +1824,14 @@ export interface RulesEditResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesEditResultItem = RulesCreateResultItem as any as S.Schema<RulesEditResultItem>;
-
 export type RulesEditResultList = Array<RulesEditResultItem>;
-export const RulesEditResultList = RulesCreateResultList as any as S.Schema<RulesEditResultList>;
-
 export interface PatchRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesEditResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PatchRuleResponse = CreateRuleResponse as any as S.Schema<PatchRuleResponse>;
+const PatchRuleResponse = CreateRuleResponse as any as S.Schema<PatchRuleResponse>;
 
 export interface PatchSettingRequest {
   /** Identifier. */
@@ -1911,7 +1839,7 @@ export interface PatchSettingRequest {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass?: boolean;
 }
-export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     searchEngineCrawlerBypass: S.optional(S.Boolean.pipe(T.Body("search_engine_crawler_bypass"))),
@@ -1925,28 +1853,22 @@ export interface PatchSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-export const PatchSettingResponse = GetSettingResponse as any as S.Schema<PatchSettingResponse>;
+const PatchSettingResponse = GetSettingResponse as any as S.Schema<PatchSettingResponse>;
 
 export type EditRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
-export const EditRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
-
 export type EditRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-export const EditRequestAdditionalRoutesList =
+const EditRequestAdditionalRoutesList =
   CreateRequestAdditionalRoutesList as any as S.Schema<EditRequestAdditionalRoutesList>;
 
 export type EditRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const EditRequestCookieAttributesSamesite = S.String;
-
 export type EditRequestCookieAttributesSecure = "auto" | "always" | "never";
-export const EditRequestCookieAttributesSecure = S.String;
-
 export interface EditRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: EditRequestCookieAttributesSamesite | (string & {});
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: EditRequestCookieAttributesSecure | (string & {});
 }
-export const EditRequestCookieAttributes =
+const EditRequestCookieAttributes =
   CreateRequestCookieAttributes as any as S.Schema<EditRequestCookieAttributes>;
 
 export type EditRequestDefaultTemplateLanguage =
@@ -1989,32 +1911,30 @@ export type EditRequestDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const EditRequestDefaultTemplateLanguage = S.String;
+const EditRequestDefaultTemplateLanguage = S.String;
 
 export type EditRequestEnabledOriginCommandsItem = "revoke";
-export const EditRequestEnabledOriginCommandsItem = S.String;
-
 export type EditRequestEnabledOriginCommandsList = Array<
   EditRequestEnabledOriginCommandsItem | (string & {})
 >;
-export const EditRequestEnabledOriginCommandsList =
+const EditRequestEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<EditRequestEnabledOriginCommandsList>;
 
 export type EditRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const EditRequestQueueingMethod = S.String;
+const EditRequestQueueingMethod = S.String;
 
 export type EditRequestQueueingStatusCode = 200 | 202 | 429;
-export const EditRequestQueueingStatusCode = S.Number;
+const EditRequestQueueingStatusCode = S.Number;
 
 export type EditRequestTurnstileAction = "log" | "infinite_queue";
-export const EditRequestTurnstileAction = S.String;
+const EditRequestTurnstileAction = S.String;
 
 export type EditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EditRequestTurnstileMode = S.String;
+const EditRequestTurnstileMode = S.String;
 
 export interface PatchWaitingRoomRequest {
   /** Identifier. */
@@ -2063,7 +1983,7 @@ export interface PatchWaitingRoomRequest {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: EditRequestTurnstileMode | (string & {});
 }
-export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -2106,25 +2026,19 @@ export const PatchWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchWaitingRoomRequest" }) as any as S.Schema<PatchWaitingRoomRequest>;
 
 export type EditResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-export const EditResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-
 export type EditResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const EditResponseAdditionalRoutesList =
+const EditResponseAdditionalRoutesList =
   CreateResponseAdditionalRoutesList as any as S.Schema<EditResponseAdditionalRoutesList>;
 
 export type EditResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const EditResponseCookieAttributesSamesite = S.String;
-
 export type EditResponseCookieAttributesSecure = "auto" | "always" | "never";
-export const EditResponseCookieAttributesSecure = S.String;
-
 export interface EditResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: EditResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: EditResponseCookieAttributesSecure | null;
 }
-export const EditResponseCookieAttributes =
+const EditResponseCookieAttributes =
   CreateResponseCookieAttributes as any as S.Schema<EditResponseCookieAttributes>;
 
 export type EditResponseDefaultTemplateLanguage =
@@ -2167,30 +2081,28 @@ export type EditResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const EditResponseDefaultTemplateLanguage = S.String;
+const EditResponseDefaultTemplateLanguage = S.String;
 
 export type EditResponseEnabledOriginCommandsItem = "revoke";
-export const EditResponseEnabledOriginCommandsItem = S.String;
-
 export type EditResponseEnabledOriginCommandsList = Array<EditResponseEnabledOriginCommandsItem>;
-export const EditResponseEnabledOriginCommandsList =
+const EditResponseEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<EditResponseEnabledOriginCommandsList>;
 
 export type EditResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const EditResponseQueueingMethod = S.String;
+const EditResponseQueueingMethod = S.String;
 
 export type EditResponseQueueingStatusCode = 200 | 202 | 429;
-export const EditResponseQueueingStatusCode = S.Number;
+const EditResponseQueueingStatusCode = S.Number;
 
 export type EditResponseTurnstileAction = "log" | "infinite_queue";
-export const EditResponseTurnstileAction = S.String;
+const EditResponseTurnstileAction = S.String;
 
 export type EditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EditResponseTurnstileMode = S.String;
+const EditResponseTurnstileMode = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchWaitingRoomResponse {
@@ -2244,7 +2156,7 @@ export interface PatchWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: EditResponseTurnstileMode | null;
 }
-export const PatchWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(
@@ -2297,7 +2209,7 @@ export interface PreviewPageRequest {
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
   customHtml: string;
 }
-export const PreviewPageRequest = /*@__PURE__*/ S.suspend(() =>
+const PreviewPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customHtml: S.String.pipe(T.Body("custom_html")),
@@ -2311,7 +2223,7 @@ export interface PreviewPageResponse {
   /** URL where the custom waiting room page can temporarily be previewed. */
   previewUrl?: string | null;
 }
-export const PreviewPageResponse = /*@__PURE__*/ S.suspend(() =>
+const PreviewPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2323,7 +2235,7 @@ export interface PutSettingRequest {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass?: boolean;
 }
-export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     searchEngineCrawlerBypass: S.optional(S.Boolean.pipe(T.Body("search_engine_crawler_bypass"))),
@@ -2337,17 +2249,17 @@ export interface PutSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-export const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
+const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
 
 export type EventsUpdateRequestTurnstileAction = "log" | "infinite_queue";
-export const EventsUpdateRequestTurnstileAction = S.String;
+const EventsUpdateRequestTurnstileAction = S.String;
 
 export type EventsUpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsUpdateRequestTurnstileMode = S.String;
+const EventsUpdateRequestTurnstileMode = S.String;
 
 export interface UpdateEventRequest {
   /** Identifier. */
@@ -2385,7 +2297,7 @@ export interface UpdateEventRequest {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsUpdateRequestTurnstileMode | (string & {});
 }
-export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -2419,15 +2331,11 @@ export const UpdateEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateEventRequest" }) as any as S.Schema<UpdateEventRequest>;
 
 export type EventsUpdateResponseTurnstileAction = "log" | "infinite_queue";
-export const EventsUpdateResponseTurnstileAction = S.String;
-
 export type EventsUpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const EventsUpdateResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateEventResponse {
   id?: string | null;
@@ -2464,10 +2372,10 @@ export interface UpdateEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsUpdateResponseTurnstileMode | null;
 }
-export const UpdateEventResponse = CreateEventResponse as any as S.Schema<UpdateEventResponse>;
+const UpdateEventResponse = CreateEventResponse as any as S.Schema<UpdateEventResponse>;
 
 export type RulesUpdateRequestRulesItemAction = "bypass_waiting_room";
-export const RulesUpdateRequestRulesItemAction = S.String;
+const RulesUpdateRequestRulesItemAction = S.String;
 
 export interface RulesUpdateRequestRulesItem {
   /** The action to take when the expression matches. */
@@ -2479,7 +2387,7 @@ export interface RulesUpdateRequestRulesItem {
   /** When set to true, the rule is enabled. */
   enabled?: boolean;
 }
-export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesUpdateRequestRulesItemAction,
     expression: S.String,
@@ -2491,7 +2399,7 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateRequestRulesItem>;
 
 export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
-export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
+const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
 
@@ -2501,7 +2409,7 @@ export interface UpdateRuleRequest {
   waitingRoomId: string;
   rules: RulesUpdateRequestRulesList;
 }
-export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -2518,8 +2426,6 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 
 export type RulesUpdateResultItemAction = "bypass_waiting_room";
-export const RulesUpdateResultItemAction = S.String;
-
 export interface RulesUpdateResultItem {
   /** The ID of the rule. */
   id?: string | null;
@@ -2535,41 +2441,29 @@ export interface RulesUpdateResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-export const RulesUpdateResultItem =
-  RulesCreateResultItem as any as S.Schema<RulesUpdateResultItem>;
-
 export type RulesUpdateResultList = Array<RulesUpdateResultItem>;
-export const RulesUpdateResultList =
-  RulesCreateResultList as any as S.Schema<RulesUpdateResultList>;
-
 export interface UpdateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
+const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
 
 export type UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
-export const UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
-
 export type UpdateRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-export const UpdateRequestAdditionalRoutesList =
+const UpdateRequestAdditionalRoutesList =
   CreateRequestAdditionalRoutesList as any as S.Schema<UpdateRequestAdditionalRoutesList>;
 
 export type UpdateRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const UpdateRequestCookieAttributesSamesite = S.String;
-
 export type UpdateRequestCookieAttributesSecure = "auto" | "always" | "never";
-export const UpdateRequestCookieAttributesSecure = S.String;
-
 export interface UpdateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: UpdateRequestCookieAttributesSamesite | (string & {});
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: UpdateRequestCookieAttributesSecure | (string & {});
 }
-export const UpdateRequestCookieAttributes =
+const UpdateRequestCookieAttributes =
   CreateRequestCookieAttributes as any as S.Schema<UpdateRequestCookieAttributes>;
 
 export type UpdateRequestDefaultTemplateLanguage =
@@ -2612,32 +2506,30 @@ export type UpdateRequestDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const UpdateRequestDefaultTemplateLanguage = S.String;
+const UpdateRequestDefaultTemplateLanguage = S.String;
 
 export type UpdateRequestEnabledOriginCommandsItem = "revoke";
-export const UpdateRequestEnabledOriginCommandsItem = S.String;
-
 export type UpdateRequestEnabledOriginCommandsList = Array<
   UpdateRequestEnabledOriginCommandsItem | (string & {})
 >;
-export const UpdateRequestEnabledOriginCommandsList =
+const UpdateRequestEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;
 
 export type UpdateRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const UpdateRequestQueueingMethod = S.String;
+const UpdateRequestQueueingMethod = S.String;
 
 export type UpdateRequestQueueingStatusCode = 200 | 202 | 429;
-export const UpdateRequestQueueingStatusCode = S.Number;
+const UpdateRequestQueueingStatusCode = S.Number;
 
 export type UpdateRequestTurnstileAction = "log" | "infinite_queue";
-export const UpdateRequestTurnstileAction = S.String;
+const UpdateRequestTurnstileAction = S.String;
 
 export type UpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const UpdateRequestTurnstileMode = S.String;
+const UpdateRequestTurnstileMode = S.String;
 
 export interface UpdateWaitingRoomRequest {
   /** Identifier. */
@@ -2686,7 +2578,7 @@ export interface UpdateWaitingRoomRequest {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: UpdateRequestTurnstileMode | (string & {});
 }
-export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
@@ -2727,25 +2619,19 @@ export const UpdateWaitingRoomRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWaitingRoomRequest" }) as any as S.Schema<UpdateWaitingRoomRequest>;
 
 export type UpdateResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-export const UpdateResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
-
 export type UpdateResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-export const UpdateResponseAdditionalRoutesList =
+const UpdateResponseAdditionalRoutesList =
   CreateResponseAdditionalRoutesList as any as S.Schema<UpdateResponseAdditionalRoutesList>;
 
 export type UpdateResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-export const UpdateResponseCookieAttributesSamesite = S.String;
-
 export type UpdateResponseCookieAttributesSecure = "auto" | "always" | "never";
-export const UpdateResponseCookieAttributesSecure = S.String;
-
 export interface UpdateResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: UpdateResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: UpdateResponseCookieAttributesSecure | null;
 }
-export const UpdateResponseCookieAttributes =
+const UpdateResponseCookieAttributes =
   CreateResponseCookieAttributes as any as S.Schema<UpdateResponseCookieAttributes>;
 
 export type UpdateResponseDefaultTemplateLanguage =
@@ -2788,31 +2674,29 @@ export type UpdateResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-export const UpdateResponseDefaultTemplateLanguage = S.String;
+const UpdateResponseDefaultTemplateLanguage = S.String;
 
 export type UpdateResponseEnabledOriginCommandsItem = "revoke";
-export const UpdateResponseEnabledOriginCommandsItem = S.String;
-
 export type UpdateResponseEnabledOriginCommandsList =
   Array<UpdateResponseEnabledOriginCommandsItem>;
-export const UpdateResponseEnabledOriginCommandsList =
+const UpdateResponseEnabledOriginCommandsList =
   CreateRequestEnabledOriginCommandsList as any as S.Schema<UpdateResponseEnabledOriginCommandsList>;
 
 export type UpdateResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-export const UpdateResponseQueueingMethod = S.String;
+const UpdateResponseQueueingMethod = S.String;
 
 export type UpdateResponseQueueingStatusCode = 200 | 202 | 429;
-export const UpdateResponseQueueingStatusCode = S.Number;
+const UpdateResponseQueueingStatusCode = S.Number;
 
 export type UpdateResponseTurnstileAction = "log" | "infinite_queue";
-export const UpdateResponseTurnstileAction = S.String;
+const UpdateResponseTurnstileAction = S.String;
 
 export type UpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-export const UpdateResponseTurnstileMode = S.String;
+const UpdateResponseTurnstileMode = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateWaitingRoomResponse {
@@ -2866,7 +2750,7 @@ export interface UpdateWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: UpdateResponseTurnstileMode | null;
 }
-export const UpdateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     additionalRoutes: S.optional(

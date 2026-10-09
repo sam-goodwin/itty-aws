@@ -89,7 +89,7 @@ export type PlatformId = string;
 export type Arn = string;
 export type CertificateHash = string;
 export type CertificateHashes = string[];
-export const CertificateHashes = /*@__PURE__*/ S.Array(S.String);
+const CertificateHashes = /*@__PURE__*/ S.Array(S.String);
 export interface GetRevocationStatusRequest {
   signatureTimestamp: Date;
   platformId: string;
@@ -97,7 +97,7 @@ export interface GetRevocationStatusRequest {
   jobArn: string;
   certificateHashes: string[];
 }
-export const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signatureTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
       T.HttpQuery("signatureTimestamp"),
@@ -112,11 +112,11 @@ export const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRevocationStatusRequest>;
 export type RevokedEntity = string;
 export type RevokedEntities = string[];
-export const RevokedEntities = CertificateHashes as any as S.Schema<RevokedEntities>;
+const RevokedEntities = CertificateHashes as any as S.Schema<RevokedEntities>;
 export interface GetRevocationStatusResponse {
   revokedEntities?: string[];
 }
-export const GetRevocationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRevocationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ revokedEntities: S.optional(RevokedEntities) }),
 ).annotate({
   identifier: "GetRevocationStatusResponse",

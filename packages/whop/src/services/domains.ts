@@ -20,7 +20,7 @@ export class Conflict
 
 /** Custom string keys and values. */
 export type CreateDomainRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateDomainRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateDomainRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateDomainRequestMetadataMap>;
@@ -39,7 +39,7 @@ export interface CreateDomainRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     app_id: S.String,
@@ -52,7 +52,7 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS record type. */
 export type DomainDnsRecordType = "TXT" | "CNAME" | "A" | "AAAA";
-export const DomainDnsRecordType = S.String;
+const DomainDnsRecordType = S.String;
 
 export interface DomainDnsRecord {
   /** Full hostname where the record must be published. */
@@ -62,7 +62,7 @@ export interface DomainDnsRecord {
   /** DNS record content. */
   value: string;
 }
-export const DomainDnsRecord = /*@__PURE__*/ S.suspend(() =>
+const DomainDnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: DomainDnsRecordType,
@@ -71,13 +71,13 @@ export const DomainDnsRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainDnsRecord" }) as any as S.Schema<DomainDnsRecord>;
 
 export type DomainDnsRecordsList = Array<DomainDnsRecord>;
-export const DomainDnsRecordsList = /*@__PURE__*/ S.Array(
+const DomainDnsRecordsList = /*@__PURE__*/ S.Array(
   DomainDnsRecord,
 ) as any as S.Schema<DomainDnsRecordsList>;
 
 /** Result of the most recent DNS routing check. Ownership is verified separately. */
 export type DomainDnsStatus = "pending" | "valid" | "invalid" | "unknown";
-export const DomainDnsStatus = S.String;
+const DomainDnsStatus = S.String;
 
 export interface DomainIssue {
   /** The source of the setup issue. */
@@ -85,7 +85,7 @@ export interface DomainIssue {
   /** What needs attention before the domain can serve the website. */
   message: string;
 }
-export const DomainIssue = /*@__PURE__*/ S.suspend(() =>
+const DomainIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -93,14 +93,11 @@ export const DomainIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainIssue" }) as any as S.Schema<DomainIssue>;
 
 export type DomainIssuesList = Array<DomainIssue>;
-export const DomainIssuesList = /*@__PURE__*/ S.Array(
-  DomainIssue,
-) as any as S.Schema<DomainIssuesList>;
+const DomainIssuesList = /*@__PURE__*/ S.Array(DomainIssue) as any as S.Schema<DomainIssuesList>;
 
 /** Custom string keys and values attached to this domain. */
 export type DomainMetadataMap = { [key: string]: string | undefined };
-export const DomainMetadataMap =
-  CreateDomainRequestMetadataMap as any as S.Schema<DomainMetadataMap>;
+const DomainMetadataMap = CreateDomainRequestMetadataMap as any as S.Schema<DomainMetadataMap>;
 
 /** Domain lifecycle. Only active domains resolve to their app. */
 export type DomainStatus =
@@ -110,7 +107,7 @@ export type DomainStatus =
   | "action_required"
   | "deleting"
   | "removed";
-export const DomainStatus = S.String;
+const DomainStatus = S.String;
 
 export interface Domain {
   /** ID of the account claiming or owning this domain, prefixed `biz_`. */
@@ -144,7 +141,7 @@ export interface Domain {
   /** When Whop verified the ownership TXT record, as an ISO 8601 timestamp. */
   verified_at: string | null;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     app_id: S.String,
@@ -169,7 +166,7 @@ export interface DeleteDomainRequest {
   /** Domain ID, prefixed dom_. */
   id: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/domains/{id}", code: 200 })),
@@ -179,7 +176,7 @@ export interface GetDomainRequest {
   /** Domain ID, prefixed dom_. */
   id: string;
 }
-export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domains/{id}", code: 200 })),
@@ -192,13 +189,13 @@ export type ListDomainsRequestStatus =
   | "action_required"
   | "deleting"
   | "removed";
-export const ListDomainsRequestStatus = S.String;
+const ListDomainsRequestStatus = S.String;
 
 export type ListDomainsRequestOrder = "created_at" | "updated_at";
-export const ListDomainsRequestOrder = S.String;
+const ListDomainsRequestOrder = S.String;
 
 export type ListDomainsRequestDirection = "asc" | "desc";
-export const ListDomainsRequestDirection = S.String;
+const ListDomainsRequestDirection = S.String;
 
 export interface ListDomainsRequest {
   /** Only domains belonging to this account, prefixed biz_. */
@@ -220,7 +217,7 @@ export interface ListDomainsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     app_id: S.optional(S.String.pipe(T.Query())),
@@ -235,7 +232,7 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
 
 export type ListDomainsResponseDataList = Array<Domain>;
-export const ListDomainsResponseDataList = /*@__PURE__*/ S.Array(
+const ListDomainsResponseDataList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<ListDomainsResponseDataList>;
 
@@ -245,7 +242,7 @@ export interface ListDomainsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListDomainsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -260,7 +257,7 @@ export interface ListDomainsResponse {
   data: ListDomainsResponseDataList;
   page_info: ListDomainsResponsePageInfo;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListDomainsResponseDataList,
     page_info: ListDomainsResponsePageInfo,
@@ -269,7 +266,7 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replacement custom string keys and values. */
 export type UpdateDomainRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdateDomainRequestMetadataMap =
+const UpdateDomainRequestMetadataMap =
   CreateDomainRequestMetadataMap as any as S.Schema<UpdateDomainRequestMetadataMap>;
 
 export interface UpdateDomainRequest {
@@ -280,7 +277,7 @@ export interface UpdateDomainRequest {
   /** Replacement custom string keys and values. */
   metadata?: UpdateDomainRequestMetadataMap;
 }
-export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     app_id: S.optional(S.String),

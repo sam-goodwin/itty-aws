@@ -74,7 +74,7 @@ export class ValidationException
     ),
   }) {}
 export interface GetAccountCustomizationsInput {}
-export const GetAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
+const GetAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v1/account-customizations" }),
@@ -100,20 +100,20 @@ export type AccountColor =
   | "orange"
   | "red"
   | (string & {});
-export const AccountColor = S.String;
+const AccountColor = S.String;
 
 export type Service = string;
 export type ServiceList = string[];
-export const ServiceList = /*@__PURE__*/ S.Array(S.String);
+const ServiceList = /*@__PURE__*/ S.Array(S.String);
 export type Region = string;
 export type RegionsList = string[];
-export const RegionsList = ServiceList as any as S.Schema<RegionsList>;
+const RegionsList = ServiceList as any as S.Schema<RegionsList>;
 export interface GetAccountCustomizationsOutput {
   accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const GetAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
+const GetAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountColor: S.optional(AccountColor),
     visibleServices: S.optional(ServiceList),
@@ -128,7 +128,7 @@ export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListServicesInput = /*@__PURE__*/ S.suspend(() =>
+const ListServicesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -138,7 +138,7 @@ export interface ListServicesOutput {
   nextToken?: string;
   services?: string[];
 }
-export const ListServicesOutput = /*@__PURE__*/ S.suspend(() =>
+const ListServicesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), services: S.optional(ServiceList) }),
 ).annotate({ identifier: "ListServicesOutput" }) as any as S.Schema<ListServicesOutput>;
 export interface UpdateAccountCustomizationsInput {
@@ -146,7 +146,7 @@ export interface UpdateAccountCustomizationsInput {
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const UpdateAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountColor: S.optional(AccountColor),
     visibleServices: S.optional(ServiceList),
@@ -169,17 +169,17 @@ export interface UpdateAccountCustomizationsOutput {
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const UpdateAccountCustomizationsOutput =
+const UpdateAccountCustomizationsOutput =
   GetAccountCustomizationsOutput as any as S.Schema<UpdateAccountCustomizationsOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ path: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type GetAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException

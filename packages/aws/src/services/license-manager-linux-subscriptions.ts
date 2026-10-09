@@ -94,7 +94,7 @@ export type SubscriptionProviderArn = string;
 export interface DeregisterSubscriptionProviderRequest {
   SubscriptionProviderArn: string;
 }
-export const DeregisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeregisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubscriptionProviderArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/subscription/DeregisterSubscriptionProvider" }),
@@ -109,15 +109,15 @@ export const DeregisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeregisterSubscriptionProviderRequest",
 }) as any as S.Schema<DeregisterSubscriptionProviderRequest>;
 export interface DeregisterSubscriptionProviderResponse {}
-export const DeregisterSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeregisterSubscriptionProviderResponse",
-}) as any as S.Schema<DeregisterSubscriptionProviderResponse>;
+const DeregisterSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "DeregisterSubscriptionProviderResponse",
+  },
+) as any as S.Schema<DeregisterSubscriptionProviderResponse>;
 export interface GetRegisteredSubscriptionProviderRequest {
   SubscriptionProviderArn: string;
 }
-export const GetRegisteredSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubscriptionProviderArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/subscription/GetRegisteredSubscriptionProvider" }),
@@ -142,7 +142,7 @@ export interface GetRegisteredSubscriptionProviderResponse {
   SubscriptionProviderStatusMessage?: string;
   LastSuccessfulDataRetrievalTime?: string;
 }
-export const GetRegisteredSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionProviderArn: S.optional(S.String),
     SubscriptionProviderSource: S.optional(S.String),
@@ -155,7 +155,7 @@ export const GetRegisteredSubscriptionProviderResponse = /*@__PURE__*/ S.suspend
   identifier: "GetRegisteredSubscriptionProviderResponse",
 }) as any as S.Schema<GetRegisteredSubscriptionProviderResponse>;
 export interface GetServiceSettingsRequest {}
-export const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/subscription/GetServiceSettings" }),
@@ -171,20 +171,20 @@ export const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetServiceSettingsRequest>;
 export type LinuxSubscriptionsDiscovery = string;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+const StringList = /*@__PURE__*/ S.Array(S.String);
 export type OrganizationIntegration = string;
 export interface LinuxSubscriptionsDiscoverySettings {
   SourceRegions: string[];
   OrganizationIntegration: string;
 }
-export const LinuxSubscriptionsDiscoverySettings = /*@__PURE__*/ S.suspend(() =>
+const LinuxSubscriptionsDiscoverySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SourceRegions: StringList, OrganizationIntegration: S.String }),
 ).annotate({
   identifier: "LinuxSubscriptionsDiscoverySettings",
 }) as any as S.Schema<LinuxSubscriptionsDiscoverySettings>;
 export type Status = string;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetServiceSettingsResponse {
   LinuxSubscriptionsDiscovery?: string;
   LinuxSubscriptionsDiscoverySettings?: LinuxSubscriptionsDiscoverySettings;
@@ -192,7 +192,7 @@ export interface GetServiceSettingsResponse {
   StatusMessage?: { [key: string]: string | undefined };
   HomeRegions?: string[];
 }
-export const GetServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LinuxSubscriptionsDiscovery: S.optional(S.String),
     LinuxSubscriptionsDiscoverySettings: S.optional(LinuxSubscriptionsDiscoverySettings),
@@ -209,7 +209,7 @@ export interface Filter {
   Values?: string[];
   Operator?: string;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Values: S.optional(StringList),
@@ -217,14 +217,14 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type BoxInteger = number;
 export interface ListLinuxSubscriptionInstancesRequest {
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListLinuxSubscriptionInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinuxSubscriptionInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(FilterList),
     MaxResults: S.optional(S.Number),
@@ -243,7 +243,7 @@ export const ListLinuxSubscriptionInstancesRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "ListLinuxSubscriptionInstancesRequest",
 }) as any as S.Schema<ListLinuxSubscriptionInstancesRequest>;
 export type ProductCodeList = string[];
-export const ProductCodeList = StringList as any as S.Schema<ProductCodeList>;
+const ProductCodeList = StringList as any as S.Schema<ProductCodeList>;
 export interface Instance {
   AmiId?: string;
   InstanceID?: string;
@@ -261,7 +261,7 @@ export interface Instance {
   DualSubscription?: string;
   RegisteredWithSubscriptionProvider?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AmiId: S.optional(S.String),
     InstanceID: S.optional(S.String),
@@ -281,12 +281,12 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
-export const InstanceList = /*@__PURE__*/ S.Array(Instance);
+const InstanceList = /*@__PURE__*/ S.Array(Instance);
 export interface ListLinuxSubscriptionInstancesResponse {
   Instances?: Instance[];
   NextToken?: string;
 }
-export const ListLinuxSubscriptionInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinuxSubscriptionInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Instances: S.optional(InstanceList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListLinuxSubscriptionInstancesResponse",
@@ -296,7 +296,7 @@ export interface ListLinuxSubscriptionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListLinuxSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinuxSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(FilterList),
     MaxResults: S.optional(S.Number),
@@ -320,7 +320,7 @@ export interface Subscription {
   Type?: string;
   InstanceCount?: number;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Type: S.optional(S.String),
@@ -328,25 +328,25 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
-export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription);
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription);
 export interface ListLinuxSubscriptionsResponse {
   Subscriptions?: Subscription[];
   NextToken?: string;
 }
-export const ListLinuxSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinuxSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Subscriptions: S.optional(SubscriptionList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListLinuxSubscriptionsResponse",
 }) as any as S.Schema<ListLinuxSubscriptionsResponse>;
 export type SubscriptionProviderSourceList = string[];
-export const SubscriptionProviderSourceList =
+const SubscriptionProviderSourceList =
   StringList as any as S.Schema<SubscriptionProviderSourceList>;
 export interface ListRegisteredSubscriptionProvidersRequest {
   SubscriptionProviderSources?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListRegisteredSubscriptionProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegisteredSubscriptionProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionProviderSources: S.optional(SubscriptionProviderSourceList),
     MaxResults: S.optional(S.Number),
@@ -372,17 +372,15 @@ export interface RegisteredSubscriptionProvider {
   SubscriptionProviderStatusMessage?: string;
   LastSuccessfulDataRetrievalTime?: string;
 }
-export const RegisteredSubscriptionProvider =
+const RegisteredSubscriptionProvider =
   GetRegisteredSubscriptionProviderResponse as any as S.Schema<RegisteredSubscriptionProvider>;
 export type RegisteredSubscriptionProviderList = RegisteredSubscriptionProvider[];
-export const RegisteredSubscriptionProviderList = /*@__PURE__*/ S.Array(
-  RegisteredSubscriptionProvider,
-);
+const RegisteredSubscriptionProviderList = /*@__PURE__*/ S.Array(RegisteredSubscriptionProvider);
 export interface ListRegisteredSubscriptionProvidersResponse {
   RegisteredSubscriptionProviders?: RegisteredSubscriptionProvider[];
   NextToken?: string;
 }
-export const ListRegisteredSubscriptionProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegisteredSubscriptionProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RegisteredSubscriptionProviders: S.optional(RegisteredSubscriptionProviderList),
     NextToken: S.optional(S.String),
@@ -393,7 +391,7 @@ export const ListRegisteredSubscriptionProvidersResponse = /*@__PURE__*/ S.suspe
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -401,11 +399,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = StringMap as any as S.Schema<Tags>;
+const Tags = StringMap as any as S.Schema<Tags>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(Tags) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -415,7 +413,7 @@ export interface RegisterSubscriptionProviderRequest {
   SecretArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const RegisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionProviderSource: S.String,
     SecretArn: S.String,
@@ -438,7 +436,7 @@ export interface RegisterSubscriptionProviderResponse {
   SubscriptionProviderArn?: string;
   SubscriptionProviderStatus?: string;
 }
-export const RegisterSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionProviderSource: S.optional(S.String),
     SubscriptionProviderArn: S.optional(S.String),
@@ -451,22 +449,22 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
     T.all(T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
+const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -475,13 +473,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateServiceSettingsRequest {
   LinuxSubscriptionsDiscovery: string;
   LinuxSubscriptionsDiscoverySettings: LinuxSubscriptionsDiscoverySettings;
   AllowUpdate?: boolean;
 }
-export const UpdateServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LinuxSubscriptionsDiscovery: S.String,
     LinuxSubscriptionsDiscoverySettings: LinuxSubscriptionsDiscoverySettings,
@@ -506,7 +504,7 @@ export interface UpdateServiceSettingsResponse {
   StatusMessage?: { [key: string]: string | undefined };
   HomeRegions?: string[];
 }
-export const UpdateServiceSettingsResponse =
+const UpdateServiceSettingsResponse =
   GetServiceSettingsResponse as any as S.Schema<UpdateServiceSettingsResponse>;
 export type DeregisterSubscriptionProviderError =
   | InternalServerException

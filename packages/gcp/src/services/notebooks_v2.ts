@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,17 +90,17 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Request message for checking authorization for the instance owner. */
 export interface CheckAuthorizationRequest {
   /** Optional. The details of the OAuth authorization response. This may include additional params such as dry_run, version_info, origin, propagate, etc. */
   authorizationDetails?: StringMap;
 }
-export const CheckAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationDetails: S.optional(StringMap),
   }),
@@ -114,7 +114,7 @@ export interface CheckAuthorizationProjectsLocationsInstancesRequest {
   /** Request body */
   body?: CheckAuthorizationRequest;
 }
-export const CheckAuthorizationProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAuthorizationProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CheckAuthorizationRequest.pipe(T.HttpBody())),
@@ -138,7 +138,7 @@ export interface CheckAuthorizationResponse {
   /** Output only. Timestamp when this Authorization request was created. */
   createTime?: string;
 }
-export const CheckAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_uri: S.optional(S.String),
     success: S.optional(S.Boolean),
@@ -152,7 +152,7 @@ export interface CheckUpgradabilityProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   notebookInstance: string;
 }
-export const CheckUpgradabilityProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUpgradabilityProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebookInstance: S.String.pipe(T.Label()),
   }).pipe(
@@ -177,7 +177,7 @@ export interface CheckInstanceUpgradabilityResponse {
   /** If an instance is upgradeable. */
   upgradeable?: boolean;
 }
-export const CheckInstanceUpgradabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckInstanceUpgradabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeVersion: S.optional(S.String),
     upgradeInfo: S.optional(S.String),
@@ -200,10 +200,10 @@ export type InstanceStateEnum =
   | "INITIALIZING"
   | "SUSPENDING"
   | "SUSPENDED";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type InstanceHealthStateEnum =
   | "HEALTH_STATE_UNSPECIFIED"
@@ -211,26 +211,24 @@ export type InstanceHealthStateEnum =
   | "UNHEALTHY"
   | "AGENT_NOT_INSTALLED"
   | "AGENT_NOT_RUNNING";
-export const InstanceHealthStateEnum = S.String;
+const InstanceHealthStateEnum = S.String;
 
 /** An access configuration attached to an instance's network interface. */
 export interface AccessConfig {
   /** Optional. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance. */
   externalIp?: string;
 }
-export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
+const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalIp: S.optional(S.String),
   }),
 ).annotate({ identifier: "AccessConfig" }) as any as S.Schema<AccessConfig>;
 
 export type AccessConfigList = Array<AccessConfig>;
-export const AccessConfigList = /*@__PURE__*/ S.Array(
-  AccessConfig,
-) as any as S.Schema<AccessConfigList>;
+const AccessConfigList = /*@__PURE__*/ S.Array(AccessConfig) as any as S.Schema<AccessConfigList>;
 
 export type NetworkInterfaceNicTypeEnum = "NIC_TYPE_UNSPECIFIED" | "VIRTIO_NET" | "GVNIC";
-export const NetworkInterfaceNicTypeEnum = S.String;
+const NetworkInterfaceNicTypeEnum = S.String;
 
 /** The definition of a network interface resource attached to a VM. */
 export interface NetworkInterface {
@@ -243,7 +241,7 @@ export interface NetworkInterface {
   /** Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet. */
   nicType?: NetworkInterfaceNicTypeEnum | (string & {});
 }
-export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnet: S.optional(S.String),
     accessConfigs: S.optional(AccessConfigList),
@@ -253,7 +251,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
 
 export type NetworkInterfaceList = Array<NetworkInterface>;
-export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
+const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
 
@@ -264,7 +262,7 @@ export interface ContainerImage {
   /** Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}` */
   repository?: string;
 }
-export const ContainerImage = /*@__PURE__*/ S.suspend(() =>
+const ContainerImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     repository: S.optional(S.String),
@@ -288,7 +286,7 @@ export type AcceleratorConfigTypeEnum =
   | "NVIDIA_TESLA_P4_VWS"
   | "NVIDIA_B200"
   | "NVIDIA_RTX6000";
-export const AcceleratorConfigTypeEnum = S.String;
+const AcceleratorConfigTypeEnum = S.String;
 
 /** An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. */
 export interface AcceleratorConfig {
@@ -297,7 +295,7 @@ export interface AcceleratorConfig {
   /** Optional. Type of this accelerator. */
   type?: AcceleratorConfigTypeEnum | (string & {});
 }
-export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
+const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coreCount: S.optional(S.String),
     type: S.optional(AcceleratorConfigTypeEnum),
@@ -305,12 +303,12 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AcceleratorConfig" }) as any as S.Schema<AcceleratorConfig>;
 
 export type AcceleratorConfigList = Array<AcceleratorConfig>;
-export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
+const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
 
 export type DataDiskDiskEncryptionEnum = "DISK_ENCRYPTION_UNSPECIFIED" | "GMEK" | "CMEK";
-export const DataDiskDiskEncryptionEnum = S.String;
+const DataDiskDiskEncryptionEnum = S.String;
 
 export type DataDiskDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
@@ -323,7 +321,7 @@ export type DataDiskDiskTypeEnum =
   | "HYPERDISK_THROUGHPUT"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
   | "HYPERDISK_ML";
-export const DataDiskDiskTypeEnum = S.String;
+const DataDiskDiskTypeEnum = S.String;
 
 /** An instance-attached disk resource. */
 export interface DataDisk {
@@ -338,7 +336,7 @@ export interface DataDisk {
   /** Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100. */
   diskSizeGb?: string;
 }
-export const DataDisk = /*@__PURE__*/ S.suspend(() =>
+const DataDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePolicies: S.optional(StringList),
     diskEncryption: S.optional(DataDiskDiskEncryptionEnum),
@@ -349,19 +347,19 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataDisk" }) as any as S.Schema<DataDisk>;
 
 export type DataDiskList = Array<DataDisk>;
-export const DataDiskList = /*@__PURE__*/ S.Array(DataDisk) as any as S.Schema<DataDiskList>;
+const DataDiskList = /*@__PURE__*/ S.Array(DataDisk) as any as S.Schema<DataDiskList>;
 
 export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
   | "SEV";
-export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum = S.String;
+const ConfidentialInstanceConfigConfidentialInstanceTypeEnum = S.String;
 
 /** A set of Confidential Instance options. */
 export interface ConfidentialInstanceConfig {
   /** Optional. Defines the type of technology used by the confidential instance. */
   confidentialInstanceType?: ConfidentialInstanceConfigConfidentialInstanceTypeEnum | (string & {});
 }
-export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidentialInstanceType: S.optional(ConfidentialInstanceConfigConfidentialInstanceTypeEnum),
   }),
@@ -376,7 +374,7 @@ export interface GPUDriverConfig {
   /** Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers. */
   customGpuDriverPath?: string;
 }
-export const GPUDriverConfig = /*@__PURE__*/ S.suspend(() =>
+const GPUDriverConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableGpuDriver: S.optional(S.Boolean),
     customGpuDriverPath: S.optional(S.String),
@@ -384,7 +382,7 @@ export const GPUDriverConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GPUDriverConfig" }) as any as S.Schema<GPUDriverConfig>;
 
 export type BootDiskDiskEncryptionEnum = "DISK_ENCRYPTION_UNSPECIFIED" | "GMEK" | "CMEK";
-export const BootDiskDiskEncryptionEnum = S.String;
+const BootDiskDiskEncryptionEnum = S.String;
 
 export type BootDiskDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
@@ -397,7 +395,7 @@ export type BootDiskDiskTypeEnum =
   | "HYPERDISK_THROUGHPUT"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
   | "HYPERDISK_ML";
-export const BootDiskDiskTypeEnum = S.String;
+const BootDiskDiskTypeEnum = S.String;
 
 /** The definition of a boot disk. */
 export interface BootDisk {
@@ -410,7 +408,7 @@ export interface BootDisk {
   /** Optional. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys. */
   kmsKey?: string;
 }
-export const BootDisk = /*@__PURE__*/ S.suspend(() =>
+const BootDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskEncryption: S.optional(BootDiskDiskEncryptionEnum),
     diskType: S.optional(BootDiskDiskTypeEnum),
@@ -426,7 +424,7 @@ export interface ServiceAccount {
   /** Optional. Email address of the service account. */
   email?: string;
 }
-export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(StringList),
     email: S.optional(S.String),
@@ -434,7 +432,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
 export type ServiceAccountList = Array<ServiceAccount>;
-export const ServiceAccountList = /*@__PURE__*/ S.Array(
+const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
 
@@ -447,7 +445,7 @@ export interface ShieldedInstanceConfig {
   /** Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the VM instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM instance is created. */
   enableIntegrityMonitoring?: boolean;
 }
-export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableSecureBoot: S.optional(S.Boolean),
     enableVtpm: S.optional(S.Boolean),
@@ -460,7 +458,7 @@ export type ReservationAffinityConsumeReservationTypeEnum =
   | "RESERVATION_NONE"
   | "RESERVATION_ANY"
   | "RESERVATION_SPECIFIC";
-export const ReservationAffinityConsumeReservationTypeEnum = S.String;
+const ReservationAffinityConsumeReservationTypeEnum = S.String;
 
 /** A reservation that an instance can consume from. */
 export interface ReservationAffinity {
@@ -471,7 +469,7 @@ export interface ReservationAffinity {
   /** Optional. Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
   values?: StringList;
 }
-export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
+const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumeReservationType: S.optional(ReservationAffinityConsumeReservationTypeEnum),
     key: S.optional(S.String),
@@ -490,7 +488,7 @@ export interface VmImage {
   /** Optional. Use VM image name to find the image. */
   name?: string;
 }
-export const VmImage = /*@__PURE__*/ S.suspend(() =>
+const VmImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     family: S.optional(S.String),
     project: S.optional(S.String),
@@ -540,7 +538,7 @@ export interface GceSetup {
   /** Optional. Use a Compute Engine VM image to start the notebook instance. */
   vmImage?: VmImage;
 }
-export const GceSetup = /*@__PURE__*/ S.suspend(() =>
+const GceSetup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineType: S.optional(S.String),
     networkInterfaces: S.optional(NetworkInterfaceList),
@@ -565,10 +563,10 @@ export const GceSetup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GceSetup" }) as any as S.Schema<GceSetup>;
 
 export type UpgradeHistoryEntryStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "SUCCEEDED" | "FAILED";
-export const UpgradeHistoryEntryStateEnum = S.String;
+const UpgradeHistoryEntryStateEnum = S.String;
 
 export type UpgradeHistoryEntryActionEnum = "ACTION_UNSPECIFIED" | "UPGRADE" | "ROLLBACK";
-export const UpgradeHistoryEntryActionEnum = S.String;
+const UpgradeHistoryEntryActionEnum = S.String;
 
 /** The entry of VM image upgrade history. */
 export interface UpgradeHistoryEntry {
@@ -591,7 +589,7 @@ export interface UpgradeHistoryEntry {
   /** Optional. The framework of this notebook instance. */
   framework?: string;
 }
-export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
+const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetVersion: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -606,7 +604,7 @@ export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpgradeHistoryEntry" }) as any as S.Schema<UpgradeHistoryEntry>;
 
 export type UpgradeHistoryEntryList = Array<UpgradeHistoryEntry>;
-export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
+const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
   UpgradeHistoryEntry,
 ) as any as S.Schema<UpgradeHistoryEntryList>;
 
@@ -653,7 +651,7 @@ export interface Instance {
   /** Output only. The upgrade history of this instance. */
   upgradeHistory?: UpgradeHistoryEntryList;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satisfiesPzs: S.optional(S.Boolean),
     labels: S.optional(StringMap),
@@ -688,7 +686,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -706,15 +704,10 @@ export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -725,7 +718,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -746,7 +739,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     response: S.optional(DocumentMap),
@@ -762,7 +755,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. Idempotent request UUID. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -777,7 +770,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -800,7 +793,7 @@ export interface DiagnosticConfig {
   /** Optional. Enables flag to copy all `/home/jupyter` folder contents */
   enableCopyHomeFilesFlag?: boolean;
 }
-export const DiagnosticConfig = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enablePacketCaptureFlag: S.optional(S.Boolean),
     relativePath: S.optional(S.String),
@@ -817,7 +810,7 @@ export interface DiagnoseInstanceRequest {
   /** Required. Defines flags that are used to run the diagnostic tool */
   diagnosticConfig?: DiagnosticConfig;
 }
-export const DiagnoseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DiagnoseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoutMinutes: S.optional(S.Number),
     diagnosticConfig: S.optional(DiagnosticConfig),
@@ -830,7 +823,7 @@ export interface DiagnoseProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DiagnoseInstanceRequest;
 }
-export const DiagnoseProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DiagnoseProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DiagnoseInstanceRequest.pipe(T.HttpBody())),
@@ -850,7 +843,7 @@ export interface GenerateAccessTokenRequest {
   /** Required. The VM identity token (a JWT) for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
   vmToken?: string;
 }
-export const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmToken: S.optional(S.String),
   }),
@@ -864,7 +857,7 @@ export interface GenerateAccessTokenProjectsLocationsInstancesRequest {
   /** Request body */
   body?: GenerateAccessTokenRequest;
 }
-export const GenerateAccessTokenProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessTokenProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
@@ -890,7 +883,7 @@ export interface GenerateAccessTokenResponse {
   /** Type of the returned access token (e.g. "Bearer"). It specifies how the token must be used. Bearer tokens may be used by any entity without proof of identity. */
   token_type?: string;
 }
-export const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expires_in: S.optional(S.Number),
     access_token: S.optional(S.String),
@@ -905,7 +898,7 @@ export interface GetConfigProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}` */
   name: string;
 }
-export const GetConfigProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -924,7 +917,7 @@ export interface DefaultValues {
   /** Output only. The default machine type used by the backend if not provided by the user. */
   machineType?: string;
 }
-export const DefaultValues = /*@__PURE__*/ S.suspend(() =>
+const DefaultValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineType: S.optional(S.String),
   }),
@@ -937,7 +930,7 @@ export interface SupportedValues {
   /** Output only. The accelerator types supported by WbI. */
   acceleratorTypes?: StringList;
 }
-export const SupportedValues = /*@__PURE__*/ S.suspend(() =>
+const SupportedValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineTypes: S.optional(StringList),
     acceleratorTypes: S.optional(StringList),
@@ -955,7 +948,7 @@ export interface ImageRelease {
   /** Output only. The name of the image of the form workbench-instances-vYYYYmmdd-- */
   imageName?: string;
 }
-export const ImageRelease = /*@__PURE__*/ S.suspend(() =>
+const ImageRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseName: S.optional(S.String),
     description: S.optional(S.String),
@@ -965,9 +958,7 @@ export const ImageRelease = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageRelease" }) as any as S.Schema<ImageRelease>;
 
 export type ImageReleaseList = Array<ImageRelease>;
-export const ImageReleaseList = /*@__PURE__*/ S.Array(
-  ImageRelease,
-) as any as S.Schema<ImageReleaseList>;
+const ImageReleaseList = /*@__PURE__*/ S.Array(ImageRelease) as any as S.Schema<ImageReleaseList>;
 
 /** Response for getting WbI configurations in a location */
 export interface Config {
@@ -980,7 +971,7 @@ export interface Config {
   /** Output only. Flag to disable the creation of legacy Workbench notebooks (User-managed notebooks and Google-managed notebooks). */
   disableWorkbenchLegacyCreation?: boolean;
 }
-export const Config = /*@__PURE__*/ S.suspend(() =>
+const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultValues: S.optional(DefaultValues),
     supportedValues: S.optional(SupportedValues),
@@ -995,7 +986,7 @@ export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1021,7 +1012,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -1039,7 +1030,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -1048,7 +1039,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1059,7 +1050,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -1071,7 +1062,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1094,7 +1085,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1108,7 +1099,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1122,7 +1113,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1144,7 +1135,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1163,7 +1154,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1172,7 +1163,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1191,7 +1182,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Maximum return size of the list call. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1210,7 +1201,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response for listing notebook instances. */
 export interface ListInstancesResponse {
@@ -1221,7 +1212,7 @@ export interface ListInstancesResponse {
   /** A list of returned instances. */
   instances?: InstanceList;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1241,7 +1232,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1260,7 +1251,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1271,7 +1262,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -1289,7 +1280,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1309,7 +1300,7 @@ export type EventTypeEnum =
   | "HEALTH"
   | "MAINTENANCE"
   | "METADATA_CHANGE";
-export const EventTypeEnum = S.String;
+const EventTypeEnum = S.String;
 
 /** The definition of an Event for a managed / semi-managed notebook instance. */
 export interface Event {
@@ -1320,7 +1311,7 @@ export interface Event {
   /** Optional. Event type. */
   type?: EventTypeEnum | (string & {});
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportTime: S.optional(S.String),
     details: S.optional(StringMap),
@@ -1335,7 +1326,7 @@ export interface ReportInstanceInfoSystemRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
   vmId?: string;
 }
-export const ReportInstanceInfoSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportInstanceInfoSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(Event),
     vmId: S.optional(S.String),
@@ -1350,7 +1341,7 @@ export interface ReportInfoSystemProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ReportInstanceInfoSystemRequest;
 }
-export const ReportInfoSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportInfoSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ReportInstanceInfoSystemRequest.pipe(T.HttpBody())),
@@ -1367,15 +1358,13 @@ export const ReportInfoSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S
 
 /** Request for resetting a notebook instance */
 export type ResetInstanceRequest = CancelOperationRequest;
-export const ResetInstanceRequest = CancelOperationRequest;
-
 export interface ResetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const ResetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1397,7 +1386,7 @@ export interface ResizeDiskRequest {
   /** Required. The boot disk to be resized. Only disk_size_gb will be used. */
   bootDisk?: BootDisk;
 }
-export const ResizeDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const ResizeDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDisk: S.optional(DataDisk),
     bootDisk: S.optional(BootDisk),
@@ -1410,7 +1399,7 @@ export interface ResizeDiskProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ResizeDiskRequest;
 }
-export const ResizeDiskProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResizeDiskProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebookInstance: S.String.pipe(T.Label()),
     body: S.optional(ResizeDiskRequest.pipe(T.HttpBody())),
@@ -1432,7 +1421,7 @@ export interface Snapshot {
   /** Required. The ID of the snapshot. */
   snapshotId?: string;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     snapshotId: S.optional(S.String),
@@ -1444,7 +1433,7 @@ export interface RestoreInstanceRequest {
   /** Snapshot to be used for restore. */
   snapshot?: Snapshot;
 }
-export const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot: S.optional(Snapshot),
   }),
@@ -1456,7 +1445,7 @@ export interface RestoreProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
@@ -1478,7 +1467,7 @@ export interface RollbackInstanceRequest {
   /** Required. Output only. Revision Id */
   revisionId?: string;
 }
-export const RollbackInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSnapshot: S.optional(S.String),
     revisionId: S.optional(S.String),
@@ -1491,7 +1480,7 @@ export interface RollbackProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RollbackInstanceRequest;
 }
-export const RollbackProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RollbackInstanceRequest.pipe(T.HttpBody())),
@@ -1511,7 +1500,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -1523,7 +1512,7 @@ export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1540,15 +1529,13 @@ export const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.sus
 
 /** Request for starting a notebook instance */
 export type StartInstanceRequest = CancelOperationRequest;
-export const StartInstanceRequest = CancelOperationRequest;
-
 export interface StartProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1565,15 +1552,13 @@ export const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(()
 
 /** Request for stopping a notebook instance */
 export type StopInstanceRequest = CancelOperationRequest;
-export const StopInstanceRequest = CancelOperationRequest;
-
 export interface StopProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1593,7 +1578,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1607,7 +1592,7 @@ export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1627,7 +1612,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 /** Request for upgrading a notebook instance */
@@ -1635,7 +1620,7 @@ export interface UpgradeInstanceRequest {
   /** Optional. The Compute Engine image family resource name to upgrade to. Format: `projects/{project_id}/global/images/family/{image_family}` If specified, the instance will be upgraded to the latest image in the specified image family, allowing upgrades across image families. If not specified, the instance will be upgraded to the latest image in its current image family. */
   imageFamily?: string;
 }
-export const UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageFamily: S.optional(S.String),
   }),
@@ -1647,7 +1632,7 @@ export interface UpgradeProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpgradeInstanceRequest;
 }
-export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
@@ -1667,7 +1652,7 @@ export interface UpgradeInstanceSystemRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
   vmId?: string;
 }
-export const UpgradeInstanceSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeInstanceSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmId: S.optional(S.String),
   }),
@@ -1681,7 +1666,7 @@ export interface UpgradeSystemProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpgradeInstanceSystemRequest;
 }
-export const UpgradeSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpgradeInstanceSystemRequest.pipe(T.HttpBody())),

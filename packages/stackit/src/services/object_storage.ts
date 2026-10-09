@@ -64,7 +64,7 @@ export interface CreateAccessKeyRequest {
   /** Expiration date. Null means never expires. */
   expires?: string | null;
 }
-export const CreateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -94,7 +94,7 @@ export interface CreateAccessKeyResponse {
   /** Secret access key */
   secretAccessKey: string | Redacted.Redacted<string>;
 }
-export const CreateAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKey: S.String,
     displayName: S.String,
@@ -115,7 +115,7 @@ export interface CreateBucketRequest {
   /** Enable S3 Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock. */
   objectLockEnabled?: boolean;
 }
-export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -137,7 +137,7 @@ export interface CreateBucketResponse {
   /** Project ID */
   project: string;
 }
-export const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     project: S.String,
@@ -150,7 +150,7 @@ export interface CreateComplianceLockRequest {
   /** STACKIT Region */
   region: string;
 }
-export const CreateComplianceLockRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateComplianceLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -172,7 +172,7 @@ export interface ComplianceLockResponse {
   /** Project ID */
   project: string;
 }
-export const ComplianceLockResponse = /*@__PURE__*/ S.suspend(() =>
+const ComplianceLockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxRetentionDays: S.Number,
     project: S.String,
@@ -187,7 +187,7 @@ export interface CreateCredentialsGroupRequest {
   /** Name of the group holding credentials */
   displayName: string;
 }
-export const CreateCredentialsGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -212,7 +212,7 @@ export interface CredentialsGroup {
   /** Credentials group URN */
   urn: string;
 }
-export const CredentialsGroup = /*@__PURE__*/ S.suspend(() =>
+const CredentialsGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsGroupId: S.String,
     displayName: S.String,
@@ -225,7 +225,7 @@ export interface CreateCredentialsGroupResponse {
   /** Project ID */
   project: string;
 }
-export const CreateCredentialsGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsGroup: CredentialsGroup,
     project: S.String,
@@ -243,7 +243,7 @@ export interface DeleteAccessKeyRequest {
   keyId: string;
   credentials_group?: string;
 }
-export const DeleteAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -265,7 +265,7 @@ export interface DeleteAccessKeyResponse {
   /** Project ID */
   project: string;
 }
-export const DeleteAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyId: S.String,
     project: S.String,
@@ -280,7 +280,7 @@ export interface DeleteBucketRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
-export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -301,7 +301,7 @@ export interface DeleteBucketResponse {
   /** Project ID */
   project: string;
 }
-export const DeleteBucketResponse = CreateBucketResponse as any as S.Schema<DeleteBucketResponse>;
+const DeleteBucketResponse = CreateBucketResponse as any as S.Schema<DeleteBucketResponse>;
 
 export interface DeleteComplianceLockRequest {
   /** STACKIT project ID */
@@ -309,7 +309,7 @@ export interface DeleteComplianceLockRequest {
   /** STACKIT Region */
   region: string;
 }
-export const DeleteComplianceLockRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteComplianceLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -333,7 +333,7 @@ export interface DeleteCredentialsGroupRequest {
   /** Id of the credentials group */
   groupId: string;
 }
-export const DeleteCredentialsGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -356,7 +356,7 @@ export interface DeleteCredentialsGroupResponse {
   /** Project ID */
   project: string;
 }
-export const DeleteCredentialsGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsGroupId: S.String,
     project: S.String,
@@ -373,7 +373,7 @@ export interface DeleteDefaultRetentionRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
-export const DeleteDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -396,7 +396,7 @@ export interface DeleteDefaultRetentionResponse {
   /** Project ID */
   project: string;
 }
-export const DeleteDefaultRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDefaultRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     project: S.String,
@@ -411,7 +411,7 @@ export interface DisableServiceRequest {
   /** STACKIT Region */
   region: string;
 }
-export const DisableServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -427,14 +427,14 @@ export const DisableServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project labels */
 export type ProjectStatusLabelsMap = { [key: string]: string | undefined };
-export const ProjectStatusLabelsMap = /*@__PURE__*/ S.Record(
+const ProjectStatusLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ProjectStatusLabelsMap>;
 
 /** The scope of a STACKIT project can be public (default) or can have client specific special requirements. */
 export type ProjectScope = "PUBLIC" | "SCHWARZ";
-export const ProjectScope = S.String;
+const ProjectScope = S.String;
 
 export interface ProjectStatus {
   /** Project labels */
@@ -444,7 +444,7 @@ export interface ProjectStatus {
   /** Project Scope */
   scope: ProjectScope;
 }
-export const ProjectStatus = /*@__PURE__*/ S.suspend(() =>
+const ProjectStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(ProjectStatusLabelsMap),
     project: S.String,
@@ -458,7 +458,7 @@ export interface EnableServiceRequest {
   /** STACKIT Region */
   region: string;
 }
-export const EnableServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -480,7 +480,7 @@ export interface GetBucketRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
-export const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -505,7 +505,7 @@ export interface Bucket {
   /** URL in virtual hosted style */
   urlVirtualHostedStyle: string;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     objectLockEnabled: S.Boolean,
@@ -520,7 +520,7 @@ export interface GetBucketResponse {
   /** Project ID */
   project: string;
 }
-export const GetBucketResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: Bucket,
     project: S.String,
@@ -533,7 +533,7 @@ export interface GetComplianceLockRequest {
   /** STACKIT Region */
   region: string;
 }
-export const GetComplianceLockRequest = /*@__PURE__*/ S.suspend(() =>
+const GetComplianceLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -555,7 +555,7 @@ export interface GetCredentialsGroupRequest {
   /** Id of the credentials group */
   groupId: string;
 }
-export const GetCredentialsGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -582,7 +582,7 @@ export interface CredentialsGroupExtended {
   /** StorageGRID user URN */
   userUrn: string;
 }
-export const CredentialsGroupExtended = /*@__PURE__*/ S.suspend(() =>
+const CredentialsGroupExtended = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsGroupId: S.String,
     displayName: S.String,
@@ -596,7 +596,7 @@ export interface GetCredentialsGroupResponse {
   /** Project ID */
   project: string;
 }
-export const GetCredentialsGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsGroup: CredentialsGroupExtended,
     project: S.String,
@@ -613,7 +613,7 @@ export interface GetDefaultRetentionRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
-export const GetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -632,7 +632,7 @@ export const GetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The retention mode for default retention on a bucket. */
 export type RetentionMode = "COMPLIANCE" | "GOVERNANCE";
-export const RetentionMode = S.String;
+const RetentionMode = S.String;
 
 export interface DefaultRetentionResponse {
   /** Name of the bucket */
@@ -643,7 +643,7 @@ export interface DefaultRetentionResponse {
   /** Project ID */
   project: string;
 }
-export const DefaultRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const DefaultRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     days: S.Number,
@@ -658,7 +658,7 @@ export interface GetServiceStatusRequest {
   /** STACKIT Region */
   region: string;
 }
-export const GetServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -679,7 +679,7 @@ export interface ListAccessKeysRequest {
   region: string;
   credentials_group?: string;
 }
-export const ListAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -700,7 +700,7 @@ export interface AccessKey {
   /** Identifies the pair of access key and secret access key for deletion */
   keyId: string;
 }
-export const AccessKey = /*@__PURE__*/ S.suspend(() =>
+const AccessKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     expires: S.NullOr(S.String),
@@ -709,7 +709,7 @@ export const AccessKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessKey" }) as any as S.Schema<AccessKey>;
 
 export type ListAccessKeysResponseAccessKeysList = Array<AccessKey>;
-export const ListAccessKeysResponseAccessKeysList = /*@__PURE__*/ S.Array(
+const ListAccessKeysResponseAccessKeysList = /*@__PURE__*/ S.Array(
   AccessKey,
 ) as any as S.Schema<ListAccessKeysResponseAccessKeysList>;
 
@@ -718,7 +718,7 @@ export interface ListAccessKeysResponse {
   /** Project ID */
   project: string;
 }
-export const ListAccessKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeys: ListAccessKeysResponseAccessKeysList,
     project: S.String,
@@ -731,7 +731,7 @@ export interface ListBucketsRequest {
   /** STACKIT Region */
   region: string;
 }
-export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -746,7 +746,7 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBucketsRequest" }) as any as S.Schema<ListBucketsRequest>;
 
 export type ListBucketsResponseBucketsList = Array<Bucket>;
-export const ListBucketsResponseBucketsList = /*@__PURE__*/ S.Array(
+const ListBucketsResponseBucketsList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<ListBucketsResponseBucketsList>;
 
@@ -755,7 +755,7 @@ export interface ListBucketsResponse {
   /** Project ID */
   project: string;
 }
-export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: ListBucketsResponseBucketsList,
     project: S.String,
@@ -768,7 +768,7 @@ export interface ListCredentialsGroupsRequest {
   /** STACKIT Region */
   region: string;
 }
-export const ListCredentialsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -785,7 +785,7 @@ export const ListCredentialsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCredentialsGroupsRequest>;
 
 export type ListCredentialsGroupsResponseCredentialsGroupsList = Array<CredentialsGroup>;
-export const ListCredentialsGroupsResponseCredentialsGroupsList = /*@__PURE__*/ S.Array(
+const ListCredentialsGroupsResponseCredentialsGroupsList = /*@__PURE__*/ S.Array(
   CredentialsGroup,
 ) as any as S.Schema<ListCredentialsGroupsResponseCredentialsGroupsList>;
 
@@ -794,7 +794,7 @@ export interface ListCredentialsGroupsResponse {
   /** Project ID */
   project: string;
 }
-export const ListCredentialsGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsGroups: ListCredentialsGroupsResponseCredentialsGroupsList,
     project: S.String,
@@ -814,7 +814,7 @@ export interface SetDefaultRetentionRequest {
   days: number;
   mode: RetentionMode | (string & {});
 }
-export const SetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -835,7 +835,7 @@ export const SetDefaultRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project labels */
 export type UpdateServiceRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestLabelsMap =
+const UpdateServiceRequestLabelsMap =
   ProjectStatusLabelsMap as any as S.Schema<UpdateServiceRequestLabelsMap>;
 
 export interface UpdateServiceRequest {
@@ -846,7 +846,7 @@ export interface UpdateServiceRequest {
   /** Project labels */
   labels: UpdateServiceRequestLabelsMap;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

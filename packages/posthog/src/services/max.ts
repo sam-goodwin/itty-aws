@@ -32,7 +32,7 @@ export interface ConversationsCancelPartialUpdateRequest {
   /** A UUID string identifying this conversation. */
   conversation: string;
 }
-export const ConversationsCancelPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsCancelPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -48,7 +48,7 @@ export const ConversationsCancelPartialUpdateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ConversationsCancelPartialUpdateRequest>;
 
 export interface ConversationsCancelPartialUpdateResponse {}
-export const ConversationsCancelPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsCancelPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ConversationsCancelPartialUpdateResponse",
@@ -60,7 +60,7 @@ export interface ConversationsDestroyRequest {
   /** A UUID string identifying this conversation. */
   conversation: string;
 }
-export const ConversationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -76,7 +76,7 @@ export const ConversationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsDestroyRequest>;
 
 export interface ConversationsDestroyResponse {}
-export const ConversationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ConversationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ConversationsDestroyResponse",
 }) as any as S.Schema<ConversationsDestroyResponse>;
 
@@ -87,7 +87,7 @@ export interface ConversationsQueueDestroyRequest {
   conversation: string;
   queue_id: string;
 }
-export const ConversationsQueueDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsQueueDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -104,11 +104,11 @@ export const ConversationsQueueDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsQueueDestroyRequest>;
 
 export interface ConversationsQueueDestroyResponse {}
-export const ConversationsQueueDestroyResponse =
+const ConversationsQueueDestroyResponse =
   ConversationsCancelPartialUpdateResponse as any as S.Schema<ConversationsQueueDestroyResponse>;
 
 export type CreateConversationRequestContextualToolsMap = { [key: string]: unknown | undefined };
-export const CreateConversationRequestContextualToolsMap = /*@__PURE__*/ S.Record(
+const CreateConversationRequestContextualToolsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateConversationRequestContextualToolsMap>;
@@ -128,7 +128,7 @@ export type AgentModeEnum =
   | "sandbox"
   | "user_interview"
   | "customer_analytics";
-export const AgentModeEnum = S.String;
+const AgentModeEnum = S.String;
 
 export interface CreateConversationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -144,7 +144,7 @@ export interface CreateConversationRequest {
   is_sandbox?: boolean;
   resume_payload?: unknown;
 }
-export const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     content: S.optional(S.NullOr(S.String)),
@@ -163,7 +163,7 @@ export const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConversationRequest>;
 
 export type MessageContextualToolsMap = { [key: string]: unknown | undefined };
-export const MessageContextualToolsMap =
+const MessageContextualToolsMap =
   CreateConversationRequestContextualToolsMap as any as S.Schema<MessageContextualToolsMap>;
 
 /** Serializer for appending a message to an existing conversation without triggering AI processing. */
@@ -179,7 +179,7 @@ export interface Message {
   is_sandbox?: boolean;
   resume_payload?: unknown;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.NullOr(S.String)),
     conversation: S.optional(S.String),
@@ -201,7 +201,7 @@ export interface CreateConversationsAppendMessageRequest {
   conversation: string;
   content?: string;
 }
-export const CreateConversationsAppendMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationsAppendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -221,7 +221,7 @@ export const CreateConversationsAppendMessageRequest = /*@__PURE__*/ S.suspend((
 export interface MessageMinimal {
   content?: string;
 }
-export const MessageMinimal = /*@__PURE__*/ S.suspend(() =>
+const MessageMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
   }),
@@ -238,7 +238,7 @@ export type SandboxAttachedContextItemTypeEnum =
   | "instructions"
   | "notebook"
   | "text";
-export const SandboxAttachedContextItemTypeEnum = S.String;
+const SandboxAttachedContextItemTypeEnum = S.String;
 
 /** One typed attachment carried by a sandbox message. DEPRECATED PATH -- do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
 export interface SandboxAttachedContextItem {
@@ -251,7 +251,7 @@ export interface SandboxAttachedContextItem {
   /** Free-text content. Only for `text` and `instructions` attachments. */
   value?: string;
 }
-export const SandboxAttachedContextItem = /*@__PURE__*/ S.suspend(() =>
+const SandboxAttachedContextItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SandboxAttachedContextItemTypeEnum,
     id: S.optional(S.Unknown),
@@ -264,7 +264,7 @@ export const SandboxAttachedContextItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Typed PostHog entities (and free text) attached to this message. */
 export type CreateConversationsOpenRequestAttachedContextList = Array<SandboxAttachedContextItem>;
-export const CreateConversationsOpenRequestAttachedContextList = /*@__PURE__*/ S.Array(
+const CreateConversationsOpenRequestAttachedContextList = /*@__PURE__*/ S.Array(
   SandboxAttachedContextItem,
 ) as any as S.Schema<CreateConversationsOpenRequestAttachedContextList>;
 
@@ -275,7 +275,7 @@ export type InitialPermissionModeEnum =
   | "plan"
   | "bypassPermissions"
   | "auto";
-export const InitialPermissionModeEnum = S.String;
+const InitialPermissionModeEnum = S.String;
 
 export interface CreateConversationsOpenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -293,7 +293,7 @@ export interface CreateConversationsOpenRequest {
   /** Bind a brand-new sandbox conversation to an existing Task so the first message resumes that Task's run. Honored only when this request creates the conversation row; ignored for an already-existing conversation. */
   task_id?: string;
 }
-export const CreateConversationsOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationsOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -326,7 +326,7 @@ export interface SandboxMessageResponse {
   /** True when a new Run was created (first message, terminal resume, or fresh warm); false for an in-progress follow-up or a reused warm Run. */
   just_created_run: boolean;
 }
-export const SandboxMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_id: S.String,
@@ -342,7 +342,7 @@ export interface CreateConversationsQueueRequest {
   /** A UUID string identifying this conversation. */
   conversation: string;
 }
-export const CreateConversationsQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationsQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -359,7 +359,7 @@ export const CreateConversationsQueueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `idle` - Idle * `in_progress` - In progress * `canceling` - Canceling */
 export type ConversationStatusEnum = "idle" | "in_progress" | "canceling";
-export const ConversationStatusEnum = S.String;
+const ConversationStatusEnum = S.String;
 
 /** * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
 export type ConversationTopicEnum =
@@ -372,10 +372,10 @@ export type ConversationTopicEnum =
   | "error_tracking"
   | "data_warehouse"
   | "other";
-export const ConversationTopicEnum = S.String;
+const ConversationTopicEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   CreateConversationRequestContextualToolsMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -389,14 +389,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -409,7 +404,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -425,40 +420,37 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** * `assistant` - Assistant * `tool_call` - Tool call * `deep_research` - Deep research * `slack` - Slack */
 export type ConversationTypeEnum = "assistant" | "tool_call" | "deep_research" | "slack";
-export const ConversationTypeEnum = S.String;
+const ConversationTypeEnum = S.String;
 
 export type ConversationMessagesItemMap = { [key: string]: unknown | undefined };
-export const ConversationMessagesItemMap =
+const ConversationMessagesItemMap =
   CreateConversationRequestContextualToolsMap as any as S.Schema<ConversationMessagesItemMap>;
 
 export type ConversationMessagesList = Array<ConversationMessagesItemMap>;
-export const ConversationMessagesList = /*@__PURE__*/ S.Array(
+const ConversationMessagesList = /*@__PURE__*/ S.Array(
   ConversationMessagesItemMap,
 ) as any as S.Schema<ConversationMessagesList>;
 
 /** * `langgraph` - LangGraph * `sandbox` - Sandbox */
 export type ConversationAgentRuntimeEnum = "langgraph" | "sandbox";
-export const ConversationAgentRuntimeEnum = S.String;
+const ConversationAgentRuntimeEnum = S.String;
 
 export type ConversationPendingApprovalsItemMap = { [key: string]: unknown | undefined };
-export const ConversationPendingApprovalsItemMap =
-  CreateConversationRequestContextualToolsMap as any as S.Schema<ConversationPendingApprovalsItemMap>;
-
 /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
 export type ConversationPendingApprovalsList = Array<ConversationPendingApprovalsItemMap>;
-export const ConversationPendingApprovalsList =
+const ConversationPendingApprovalsList =
   ConversationMessagesList as any as S.Schema<ConversationPendingApprovalsList>;
 
 /** * `acp` - ACP * `pi` - Pi */
 export type TaskRuntimeEnum = "acp" | "pi";
-export const TaskRuntimeEnum = S.String;
+const TaskRuntimeEnum = S.String;
 
 export type ConversationTaskJsonSchemaMap = { [key: string]: unknown | undefined };
-export const ConversationTaskJsonSchemaMap =
+const ConversationTaskJsonSchemaMap =
   CreateConversationRequestContextualToolsMap as any as S.Schema<ConversationTaskJsonSchemaMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap =
+const TaskUserBasicInfoHedgehogConfigMap =
   CreateConversationRequestContextualToolsMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
@@ -473,7 +465,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -513,7 +505,7 @@ export interface ConversationTask {
   created_by?: TaskUserBasicInfo | null;
   ci_prompt: string | null;
 }
-export const ConversationTask = /*@__PURE__*/ S.suspend(() =>
+const ConversationTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_number: S.NullOr(S.Number),
@@ -566,7 +558,7 @@ export interface Conversation {
   pending_approvals?: ConversationPendingApprovalsList;
   task?: ConversationTask | null;
 }
-export const Conversation = /*@__PURE__*/ S.suspend(() =>
+const Conversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(ConversationStatusEnum),
@@ -595,7 +587,7 @@ export interface CreateConversationsQueueClearRequest {
   /** A UUID string identifying this conversation. */
   conversation: string;
 }
-export const CreateConversationsQueueClearRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationsQueueClearRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -616,7 +608,7 @@ export interface GetConversationRequest {
   /** A UUID string identifying this conversation. */
   conversation: string;
 }
-export const GetConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -635,7 +627,7 @@ export interface GetConversationsQueueRequest {
   /** A UUID string identifying this conversation. */
   conversation: string;
 }
-export const GetConversationsQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConversationsQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
@@ -658,7 +650,7 @@ export interface ListConversationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -685,7 +677,7 @@ export interface ConversationMinimal {
   slack_workspace_domain?: string | null;
   task?: ConversationTask | null;
 }
-export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
+const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(ConversationStatusEnum),
@@ -703,7 +695,7 @@ export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversationMinimal" }) as any as S.Schema<ConversationMinimal>;
 
 export type PaginatedConversationMinimalListResultsList = Array<ConversationMinimal>;
-export const PaginatedConversationMinimalListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedConversationMinimalListResultsList = /*@__PURE__*/ S.Array(
   ConversationMinimal,
 ) as any as S.Schema<PaginatedConversationMinimalListResultsList>;
 
@@ -713,7 +705,7 @@ export interface PaginatedConversationMinimalList {
   previous?: string | null;
   results?: PaginatedConversationMinimalListResultsList;
 }
-export const PaginatedConversationMinimalList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedConversationMinimalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -731,7 +723,7 @@ export interface UpdateConversationsQueuePartialRequest {
   conversation: string;
   queue_id: string;
 }
-export const UpdateConversationsQueuePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConversationsQueuePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),

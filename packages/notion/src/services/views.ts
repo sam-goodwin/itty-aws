@@ -21,16 +21,14 @@ export type ViewTypeRequest =
   | "chart"
   | "map"
   | "dashboard";
-export const ViewTypeRequest = S.String;
+const ViewTypeRequest = S.String;
 
 export type ViewSortsRequest = Array<unknown>;
-export const ViewSortsRequest = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ViewSortsRequest>;
+const ViewSortsRequest = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<ViewSortsRequest>;
 
 /** Quick filters to pin in the view's filter bar. Keys are property names or IDs. Values are filter conditions (same shape as a property filter but without the property field). Each quick filter appears as a clickable pill above the view, independent of the advanced filter. */
 export type CreateViewRequestQuickFiltersMap = { [key: string]: unknown | undefined };
-export const CreateViewRequestQuickFiltersMap = /*@__PURE__*/ S.Record(
+const CreateViewRequestQuickFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateViewRequestQuickFiltersMap>;
@@ -42,7 +40,7 @@ export interface CreateDatabaseForViewRequestParent {
   /** The ID of the page to create the database on. */
   page_id: string;
 }
-export const CreateDatabaseForViewRequestParent = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseForViewRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     page_id: S.String,
@@ -58,7 +56,7 @@ export interface CreateDatabaseForViewRequestPosition {
   /** The ID of an existing block in the page. The new database will be placed after this block. */
   block_id: string;
 }
-export const CreateDatabaseForViewRequestPosition = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseForViewRequestPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     block_id: S.String,
@@ -73,7 +71,7 @@ export interface CreateDatabaseForViewRequest {
   /** Where to place the new database block within the parent page. Defaults to appending at the end. */
   position?: CreateDatabaseForViewRequestPosition;
 }
-export const CreateDatabaseForViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseForViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: CreateDatabaseForViewRequestParent,
     position: S.optional(CreateDatabaseForViewRequestPosition),
@@ -84,12 +82,8 @@ export const CreateDatabaseForViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How to display status properties (select dropdown or checkbox). */
 export type ViewPropertyConfigRequestStatusShowAs = "select" | "checkbox";
-export const ViewPropertyConfigRequestStatusShowAs = S.String;
-
 /** Property width mode in compact card layouts (board/gallery). */
 export type ViewPropertyConfigRequestCardPropertyWidthMode = "full_line" | "inline";
-export const ViewPropertyConfigRequestCardPropertyWidthMode = S.String;
-
 /** Date display format (date properties only). */
 export type ViewPropertyConfigRequestDateFormat =
   | "full"
@@ -98,12 +92,8 @@ export type ViewPropertyConfigRequestDateFormat =
   | "day_month_year"
   | "year_month_day"
   | "relative";
-export const ViewPropertyConfigRequestDateFormat = S.String;
-
 /** Time display format (date properties only). */
 export type ViewPropertyConfigRequestTimeFormat = "12_hour" | "24_hour" | "hidden";
-export const ViewPropertyConfigRequestTimeFormat = S.String;
-
 export interface ViewPropertyConfigRequest {
   /** Property ID (stable identifier). */
   property_id: string;
@@ -122,44 +112,15 @@ export interface ViewPropertyConfigRequest {
   /** Time display format (date properties only). */
   time_format?: ViewPropertyConfigRequestTimeFormat | (string & {});
 }
-export const ViewPropertyConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property_id: S.String,
-    visible: S.optional(S.Boolean),
-    width: S.optional(S.Number),
-    wrap: S.optional(S.Boolean),
-    status_show_as: S.optional(ViewPropertyConfigRequestStatusShowAs),
-    card_property_width_mode: S.optional(ViewPropertyConfigRequestCardPropertyWidthMode),
-    date_format: S.optional(ViewPropertyConfigRequestDateFormat),
-    time_format: S.optional(ViewPropertyConfigRequestTimeFormat),
-  }),
-).annotate({
-  identifier: "ViewPropertyConfigRequest",
-}) as any as S.Schema<ViewPropertyConfigRequest>;
-
 export type TableViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const TableViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<TableViewConfigRequestPropertiesList>;
-
 /** The property type for grouping. */
 export type SelectGroupByConfigRequestType = "select" | "multi_select";
-export const SelectGroupByConfigRequestType = S.String;
-
 /** Sort direction for groups. */
 export type GroupSortRequestType = "manual" | "ascending" | "descending";
-export const GroupSortRequestType = S.String;
-
 export interface GroupSortRequest {
   /** Sort direction for groups. */
   type: GroupSortRequestType | (string & {});
 }
-export const GroupSortRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GroupSortRequestType,
-  }),
-).annotate({ identifier: "GroupSortRequest" }) as any as S.Schema<GroupSortRequest>;
-
 export interface SelectGroupByConfigRequest {
   /** The property type for grouping. */
   type: SelectGroupByConfigRequestType | (string & {});
@@ -170,21 +131,8 @@ export interface SelectGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const SelectGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SelectGroupByConfigRequestType,
-    property_id: S.String,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SelectGroupByConfigRequest",
-}) as any as S.Schema<SelectGroupByConfigRequest>;
-
 /** How to group status values. "group" groups by status group (To Do/In Progress/Done), "option" groups by individual option. */
 export type StatusGroupByConfigRequestGroupBy = "group" | "option";
-export const StatusGroupByConfigRequestGroupBy = S.String;
-
 export interface StatusGroupByConfigRequest {
   /** The property type for grouping. */
   type: string;
@@ -197,22 +145,8 @@ export interface StatusGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const StatusGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    group_by: StatusGroupByConfigRequestGroupBy,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StatusGroupByConfigRequest",
-}) as any as S.Schema<StatusGroupByConfigRequest>;
-
 /** The property type for grouping. */
 export type PersonGroupByConfigRequestType = "person" | "created_by" | "last_edited_by";
-export const PersonGroupByConfigRequestType = S.String;
-
 export interface PersonGroupByConfigRequest {
   /** The property type for grouping. */
   type: PersonGroupByConfigRequestType | (string & {});
@@ -223,9 +157,6 @@ export interface PersonGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const PersonGroupByConfigRequest =
-  SelectGroupByConfigRequest as any as S.Schema<PersonGroupByConfigRequest>;
-
 export interface RelationGroupByConfigRequest {
   /** The property type for grouping. */
   type: string;
@@ -236,29 +167,12 @@ export interface RelationGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const RelationGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RelationGroupByConfigRequest",
-}) as any as S.Schema<RelationGroupByConfigRequest>;
-
 /** The property type for grouping. */
 export type DateGroupByConfigRequestType = "date" | "created_time" | "last_edited_time";
-export const DateGroupByConfigRequestType = S.String;
-
 /** Granularity for date grouping. */
 export type DateGroupByConfigRequestGroupBy = "relative" | "day" | "week" | "month" | "year";
-export const DateGroupByConfigRequestGroupBy = S.String;
-
 /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
 export type DateGroupByConfigRequestStartDayOfWeek = 0 | 1;
-export const DateGroupByConfigRequestStartDayOfWeek = S.Number;
-
 export interface DateGroupByConfigRequest {
   /** The property type for grouping. */
   type: DateGroupByConfigRequestType | (string & {});
@@ -273,25 +187,10 @@ export interface DateGroupByConfigRequest {
   /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
   start_day_of_week?: DateGroupByConfigRequestStartDayOfWeek | (number & {});
 }
-export const DateGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DateGroupByConfigRequestType,
-    property_id: S.String,
-    group_by: DateGroupByConfigRequestGroupBy,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-    start_day_of_week: S.optional(DateGroupByConfigRequestStartDayOfWeek),
-  }),
-).annotate({ identifier: "DateGroupByConfigRequest" }) as any as S.Schema<DateGroupByConfigRequest>;
-
 /** The property type for grouping. */
 export type TextGroupByConfigRequestType = "text" | "title" | "url" | "email" | "phone_number";
-export const TextGroupByConfigRequestType = S.String;
-
 /** How to group text values. "exact" = exact match, "alphabet_prefix" = first letter. */
 export type TextGroupByConfigRequestGroupBy = "exact" | "alphabet_prefix";
-export const TextGroupByConfigRequestGroupBy = S.String;
-
 export interface TextGroupByConfigRequest {
   /** The property type for grouping. */
   type: TextGroupByConfigRequestType | (string & {});
@@ -304,16 +203,6 @@ export interface TextGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const TextGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TextGroupByConfigRequestType,
-    property_id: S.String,
-    group_by: TextGroupByConfigRequestGroupBy,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TextGroupByConfigRequest" }) as any as S.Schema<TextGroupByConfigRequest>;
-
 export interface NumberGroupByConfigRequest {
   /** The property type for grouping. */
   type: string;
@@ -330,31 +219,11 @@ export interface NumberGroupByConfigRequest {
   /** Size of each bucket in number grouping. */
   range_size?: number;
 }
-export const NumberGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    sort: GroupSortRequest,
-    hide_empty_groups: S.optional(S.Boolean),
-    range_start: S.optional(S.Number),
-    range_end: S.optional(S.Number),
-    range_size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NumberGroupByConfigRequest",
-}) as any as S.Schema<NumberGroupByConfigRequest>;
-
 export type CheckboxGroupByConfigRequest = RelationGroupByConfigRequest;
-export const CheckboxGroupByConfigRequest = RelationGroupByConfigRequest;
-
 /** Granularity for date grouping. */
 export type FormulaDateSubGroupByRequestGroupBy = "relative" | "day" | "week" | "month" | "year";
-export const FormulaDateSubGroupByRequestGroupBy = S.String;
-
 /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
 export type FormulaDateSubGroupByRequestStartDayOfWeek = 0 | 1;
-export const FormulaDateSubGroupByRequestStartDayOfWeek = S.Number;
-
 export interface FormulaDateSubGroupByRequest {
   /** The formula result type for grouping. */
   type: string;
@@ -365,21 +234,8 @@ export interface FormulaDateSubGroupByRequest {
   /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
   start_day_of_week?: FormulaDateSubGroupByRequestStartDayOfWeek | (number & {});
 }
-export const FormulaDateSubGroupByRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    group_by: FormulaDateSubGroupByRequestGroupBy,
-    sort: GroupSortRequest,
-    start_day_of_week: S.optional(FormulaDateSubGroupByRequestStartDayOfWeek),
-  }),
-).annotate({
-  identifier: "FormulaDateSubGroupByRequest",
-}) as any as S.Schema<FormulaDateSubGroupByRequest>;
-
 /** How to group text values. "exact" = exact match, "alphabet_prefix" = first letter. */
 export type FormulaTextSubGroupByRequestGroupBy = "exact" | "alphabet_prefix";
-export const FormulaTextSubGroupByRequestGroupBy = S.String;
-
 export interface FormulaTextSubGroupByRequest {
   /** The formula result type for grouping. */
   type: string;
@@ -388,16 +244,6 @@ export interface FormulaTextSubGroupByRequest {
   /** Sort order for groups. */
   sort: GroupSortRequest;
 }
-export const FormulaTextSubGroupByRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    group_by: FormulaTextSubGroupByRequestGroupBy,
-    sort: GroupSortRequest,
-  }),
-).annotate({
-  identifier: "FormulaTextSubGroupByRequest",
-}) as any as S.Schema<FormulaTextSubGroupByRequest>;
-
 export interface FormulaNumberSubGroupByRequest {
   /** The formula result type for grouping. */
   type: string;
@@ -410,42 +256,18 @@ export interface FormulaNumberSubGroupByRequest {
   /** Size of each bucket in number grouping. */
   range_size?: number;
 }
-export const FormulaNumberSubGroupByRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    sort: GroupSortRequest,
-    range_start: S.optional(S.Number),
-    range_end: S.optional(S.Number),
-    range_size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FormulaNumberSubGroupByRequest",
-}) as any as S.Schema<FormulaNumberSubGroupByRequest>;
-
 export interface FormulaCheckboxSubGroupByRequest {
   /** The formula result type for grouping. */
   type: string;
   /** Sort order for groups. */
   sort: GroupSortRequest;
 }
-export const FormulaCheckboxSubGroupByRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    sort: GroupSortRequest,
-  }),
-).annotate({
-  identifier: "FormulaCheckboxSubGroupByRequest",
-}) as any as S.Schema<FormulaCheckboxSubGroupByRequest>;
-
 /** Sub-group-by configuration based on the formula result type. */
 export type FormulaGroupByConfigRequestGroupBy =
   | FormulaDateSubGroupByRequest
   | FormulaTextSubGroupByRequest
   | FormulaNumberSubGroupByRequest
   | FormulaCheckboxSubGroupByRequest;
-export const FormulaGroupByConfigRequestGroupBy =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FormulaGroupByConfigRequestGroupBy>;
-
 export interface FormulaGroupByConfigRequest {
   /** The property type for grouping. */
   type: string;
@@ -456,17 +278,6 @@ export interface FormulaGroupByConfigRequest {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const FormulaGroupByConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    group_by: FormulaGroupByConfigRequestGroupBy,
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "FormulaGroupByConfigRequest",
-}) as any as S.Schema<FormulaGroupByConfigRequest>;
-
 /** Group-by configuration based on property type. */
 export type GroupByConfigRequest =
   | SelectGroupByConfigRequest
@@ -478,17 +289,10 @@ export type GroupByConfigRequest =
   | NumberGroupByConfigRequest
   | RelationGroupByConfigRequest
   | FormulaGroupByConfigRequest;
-export const GroupByConfigRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupByConfigRequest>;
-
 /** How sub-items are displayed. "show" renders hierarchically with toggles, "hidden" shows parents with a count, "flattened" shows sub-items with a parent indicator, "disabled" turns off sub-item rendering. */
 export type SubtaskConfigRequestDisplayMode = "show" | "hidden" | "flattened" | "disabled";
-export const SubtaskConfigRequestDisplayMode = S.String;
-
 /** Which items are included when filtering. "parents" includes parent items only, "parents_and_subitems" includes both, "subitems" includes sub-items only. */
 export type SubtaskConfigRequestFilterScope = "parents" | "parents_and_subitems" | "subitems";
-export const SubtaskConfigRequestFilterScope = S.String;
-
 export interface SubtaskConfigRequest {
   /** Relation property ID used for parent-child nesting. */
   property_id?: string;
@@ -499,15 +303,6 @@ export interface SubtaskConfigRequest {
   /** Property ID of the column showing the sub-item expand/collapse toggle. */
   toggle_column_id?: string;
 }
-export const SubtaskConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property_id: S.optional(S.String),
-    display_mode: S.optional(SubtaskConfigRequestDisplayMode),
-    filter_scope: S.optional(SubtaskConfigRequestFilterScope),
-    toggle_column_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "SubtaskConfigRequest" }) as any as S.Schema<SubtaskConfigRequest>;
-
 export interface TableViewConfigRequest {
   /** The view type. Must be "table". */
   type: string;
@@ -524,51 +319,21 @@ export interface TableViewConfigRequest {
   /** Whether to show vertical grid lines between columns. */
   show_vertical_lines?: boolean;
 }
-export const TableViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(S.NullOr(TableViewConfigRequestPropertiesList)),
-    group_by: S.optional(S.NullOr(GroupByConfigRequest)),
-    subtasks: S.optional(S.NullOr(SubtaskConfigRequest)),
-    wrap_cells: S.optional(S.Boolean),
-    frozen_column_index: S.optional(S.Number),
-    show_vertical_lines: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TableViewConfigRequest" }) as any as S.Schema<TableViewConfigRequest>;
-
 export type BoardViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const BoardViewConfigRequestPropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<BoardViewConfigRequestPropertiesList>;
-
 /** Source of the cover image. */
 export type CoverConfigRequestType = "page_cover" | "page_content" | "property";
-export const CoverConfigRequestType = S.String;
-
 export interface CoverConfigRequest {
   /** Source of the cover image. */
   type: CoverConfigRequestType | (string & {});
   /** Property ID when type is "property". */
   property_id?: string;
 }
-export const CoverConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CoverConfigRequestType,
-    property_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoverConfigRequest" }) as any as S.Schema<CoverConfigRequest>;
-
 /** One of: `small`, `medium`, `large` */
 export type BoardViewConfigRequestCoverSize = "small" | "medium" | "large";
-export const BoardViewConfigRequestCoverSize = S.String;
-
 /** One of: `contain`, `cover` */
 export type BoardViewConfigRequestCoverAspect = "contain" | "cover";
-export const BoardViewConfigRequestCoverAspect = S.String;
-
 /** One of: `list`, `compact` */
 export type BoardViewConfigRequestCardLayout = "list" | "compact";
-export const BoardViewConfigRequestCardLayout = S.String;
-
 export interface BoardViewConfigRequest {
   /** The view type. Must be "board". */
   type: string;
@@ -587,27 +352,9 @@ export interface BoardViewConfigRequest {
   /** Card layout mode. "list" shows full cards, "compact" shows condensed cards. Pass null to clear. */
   card_layout?: BoardViewConfigRequestCardLayout | (string & {}) | null;
 }
-export const BoardViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    group_by: GroupByConfigRequest,
-    sub_group_by: S.optional(S.NullOr(GroupByConfigRequest)),
-    properties: S.optional(S.NullOr(BoardViewConfigRequestPropertiesList)),
-    cover: S.optional(S.NullOr(CoverConfigRequest)),
-    cover_size: S.optional(S.NullOr(BoardViewConfigRequestCoverSize)),
-    cover_aspect: S.optional(S.NullOr(BoardViewConfigRequestCoverAspect)),
-    card_layout: S.optional(S.NullOr(BoardViewConfigRequestCardLayout)),
-  }),
-).annotate({ identifier: "BoardViewConfigRequest" }) as any as S.Schema<BoardViewConfigRequest>;
-
 export type CalendarViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const CalendarViewConfigRequestPropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<CalendarViewConfigRequestPropertiesList>;
-
 /** One of: `week`, `month` */
 export type CalendarViewConfigRequestViewRange = "week" | "month";
-export const CalendarViewConfigRequestViewRange = S.String;
-
 export interface CalendarViewConfigRequest {
   /** The view type. Must be "calendar". */
   type: string;
@@ -620,26 +367,8 @@ export interface CalendarViewConfigRequest {
   /** Whether to show weekend days. Pass null to clear. */
   show_weekends?: boolean | null;
 }
-export const CalendarViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date_property_id: S.String,
-    properties: S.optional(S.NullOr(CalendarViewConfigRequestPropertiesList)),
-    view_range: S.optional(S.NullOr(CalendarViewConfigRequestViewRange)),
-    show_weekends: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "CalendarViewConfigRequest",
-}) as any as S.Schema<CalendarViewConfigRequest>;
-
 export type TimelineViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const TimelineViewConfigRequestPropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<TimelineViewConfigRequestPropertiesList>;
-
 export type TimelineViewConfigRequestTablePropertiesList = Array<ViewPropertyConfigRequest>;
-export const TimelineViewConfigRequestTablePropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<TimelineViewConfigRequestTablePropertiesList>;
-
 /** Zoom level for the timeline. */
 export type TimelinePreferenceRequestZoomLevel =
   | "hours"
@@ -650,33 +379,16 @@ export type TimelinePreferenceRequestZoomLevel =
   | "quarter"
   | "year"
   | "5_years";
-export const TimelinePreferenceRequestZoomLevel = S.String;
-
 export interface TimelinePreferenceRequest {
   /** Zoom level for the timeline. */
   zoom_level: TimelinePreferenceRequestZoomLevel | (string & {});
   /** Timestamp (ms) to center the timeline view on. */
   center_timestamp?: number;
 }
-export const TimelinePreferenceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoom_level: TimelinePreferenceRequestZoomLevel,
-    center_timestamp: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TimelinePreferenceRequest",
-}) as any as S.Schema<TimelinePreferenceRequest>;
-
 export interface TimelineArrowsByRequest {
   /** Relation property ID used for dependency arrows, or null to disable arrows. */
   property_id?: string | null;
 }
-export const TimelineArrowsByRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "TimelineArrowsByRequest" }) as any as S.Schema<TimelineArrowsByRequest>;
-
 export interface TimelineViewConfigRequest {
   /** The view type. Must be "timeline". */
   type: string;
@@ -697,38 +409,13 @@ export interface TimelineViewConfigRequest {
   /** Whether to color timeline items by a property. Pass null to clear. */
   color_by?: boolean | null;
 }
-export const TimelineViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date_property_id: S.String,
-    end_date_property_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(TimelineViewConfigRequestPropertiesList)),
-    show_table: S.optional(S.NullOr(S.Boolean)),
-    table_properties: S.optional(S.NullOr(TimelineViewConfigRequestTablePropertiesList)),
-    preference: S.optional(S.NullOr(TimelinePreferenceRequest)),
-    arrows_by: S.optional(S.NullOr(TimelineArrowsByRequest)),
-    color_by: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "TimelineViewConfigRequest",
-}) as any as S.Schema<TimelineViewConfigRequest>;
-
 export type GalleryViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const GalleryViewConfigRequestPropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<GalleryViewConfigRequestPropertiesList>;
-
 /** One of: `small`, `medium`, `large` */
 export type GalleryViewConfigRequestCoverSize = "small" | "medium" | "large";
-export const GalleryViewConfigRequestCoverSize = S.String;
-
 /** One of: `contain`, `cover` */
 export type GalleryViewConfigRequestCoverAspect = "contain" | "cover";
-export const GalleryViewConfigRequestCoverAspect = S.String;
-
 /** One of: `list`, `compact` */
 export type GalleryViewConfigRequestCardLayout = "list" | "compact";
-export const GalleryViewConfigRequestCardLayout = S.String;
-
 export interface GalleryViewConfigRequest {
   /** The view type. Must be "gallery". */
   type: string;
@@ -743,42 +430,16 @@ export interface GalleryViewConfigRequest {
   /** Card layout mode. "list" shows full cards, "compact" shows condensed cards. Pass null to clear. */
   card_layout?: GalleryViewConfigRequestCardLayout | (string & {}) | null;
 }
-export const GalleryViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(S.NullOr(GalleryViewConfigRequestPropertiesList)),
-    cover: S.optional(S.NullOr(CoverConfigRequest)),
-    cover_size: S.optional(S.NullOr(GalleryViewConfigRequestCoverSize)),
-    cover_aspect: S.optional(S.NullOr(GalleryViewConfigRequestCoverAspect)),
-    card_layout: S.optional(S.NullOr(GalleryViewConfigRequestCardLayout)),
-  }),
-).annotate({ identifier: "GalleryViewConfigRequest" }) as any as S.Schema<GalleryViewConfigRequest>;
-
 export type ListViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const ListViewConfigRequestPropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<ListViewConfigRequestPropertiesList>;
-
 export interface ListViewConfigRequest {
   /** The view type. Must be "list". */
   type: string;
   /** Property visibility and display configuration. Pass null to clear. */
   properties?: ListViewConfigRequestPropertiesList | null;
 }
-export const ListViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(S.NullOr(ListViewConfigRequestPropertiesList)),
-  }),
-).annotate({ identifier: "ListViewConfigRequest" }) as any as S.Schema<ListViewConfigRequest>;
-
 /** One of: `small`, `medium`, `large`, `extra_large` */
 export type MapViewConfigRequestHeight = "small" | "medium" | "large" | "extra_large";
-export const MapViewConfigRequestHeight = S.String;
-
 export type MapViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const MapViewConfigRequestPropertiesList =
-  TableViewConfigRequestPropertiesList as any as S.Schema<MapViewConfigRequestPropertiesList>;
-
 export interface MapViewConfigRequest {
   /** The view type. Must be "map". */
   type: string;
@@ -789,15 +450,6 @@ export interface MapViewConfigRequest {
   /** Property visibility and display configuration on map pin cards. Pass null to clear. */
   properties?: MapViewConfigRequestPropertiesList | null;
 }
-export const MapViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    height: S.optional(S.NullOr(MapViewConfigRequestHeight)),
-    map_by: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(MapViewConfigRequestPropertiesList)),
-  }),
-).annotate({ identifier: "MapViewConfigRequest" }) as any as S.Schema<MapViewConfigRequest>;
-
 /** One of: `none`, `comment_only`, `reader`, `read_and_write`, `editor` */
 export type FormViewConfigRequestSubmissionPermissions =
   | "none"
@@ -805,8 +457,6 @@ export type FormViewConfigRequestSubmissionPermissions =
   | "reader"
   | "read_and_write"
   | "editor";
-export const FormViewConfigRequestSubmissionPermissions = S.String;
-
 export interface FormViewConfigRequest {
   /** The view type. Must be "form". */
   type: string;
@@ -817,19 +467,8 @@ export interface FormViewConfigRequest {
   /** Permission level granted to the submitter on the created page after form submission. Pass null to clear. */
   submission_permissions?: FormViewConfigRequestSubmissionPermissions | (string & {}) | null;
 }
-export const FormViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    is_form_closed: S.optional(S.NullOr(S.Boolean)),
-    anonymous_submissions: S.optional(S.NullOr(S.Boolean)),
-    submission_permissions: S.optional(S.NullOr(FormViewConfigRequestSubmissionPermissions)),
-  }),
-).annotate({ identifier: "FormViewConfigRequest" }) as any as S.Schema<FormViewConfigRequest>;
-
 /** The chart type. */
 export type ChartViewConfigRequestChartType = "column" | "bar" | "line" | "donut" | "number";
-export const ChartViewConfigRequestChartType = S.String;
-
 /** The aggregation operator. "count" counts all rows and does not require a property_id. All other operators require a property_id. */
 export type ChartAggregationRequestAggregator =
   | "count"
@@ -852,21 +491,12 @@ export type ChartAggregationRequestAggregator =
   | "earliest_date"
   | "latest_date"
   | "date_range";
-export const ChartAggregationRequestAggregator = S.String;
-
 export interface ChartAggregationRequest {
   /** The aggregation operator. "count" counts all rows and does not require a property_id. All other operators require a property_id. */
   aggregator: ChartAggregationRequestAggregator | (string & {});
   /** The property to aggregate on. Required for all operators except "count". */
   property_id?: string;
 }
-export const ChartAggregationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: ChartAggregationRequestAggregator,
-    property_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChartAggregationRequest" }) as any as S.Schema<ChartAggregationRequest>;
-
 /** One of: `manual`, `x_ascending`, `x_descending`, `y_ascending`, `y_descending` */
 export type ChartViewConfigRequestSort =
   | "manual"
@@ -874,8 +504,6 @@ export type ChartViewConfigRequestSort =
   | "x_descending"
   | "y_ascending"
   | "y_descending";
-export const ChartViewConfigRequestSort = S.String;
-
 /** One of: `gray`, `blue`, `yellow`, `green`, `purple`, `teal`, `orange`, `pink`, `red`, `auto`, `colorful` */
 export type ChartViewConfigRequestColorTheme =
   | "gray"
@@ -889,32 +517,18 @@ export type ChartViewConfigRequestColorTheme =
   | "red"
   | "auto"
   | "colorful";
-export const ChartViewConfigRequestColorTheme = S.String;
-
 /** One of: `small`, `medium`, `large`, `extra_large` */
 export type ChartViewConfigRequestHeight = "small" | "medium" | "large" | "extra_large";
-export const ChartViewConfigRequestHeight = S.String;
-
 /** One of: `off`, `bottom`, `side` */
 export type ChartViewConfigRequestLegendPosition = "off" | "bottom" | "side";
-export const ChartViewConfigRequestLegendPosition = S.String;
-
 /** One of: `none`, `x_axis`, `y_axis`, `both` */
 export type ChartViewConfigRequestAxisLabels = "none" | "x_axis" | "y_axis" | "both";
-export const ChartViewConfigRequestAxisLabels = S.String;
-
 /** One of: `none`, `horizontal`, `vertical`, `both` */
 export type ChartViewConfigRequestGridLines = "none" | "horizontal" | "vertical" | "both";
-export const ChartViewConfigRequestGridLines = S.String;
-
 /** One of: `normal`, `percent`, `side_by_side` */
 export type ChartViewConfigRequestGroupStyle = "normal" | "percent" | "side_by_side";
-export const ChartViewConfigRequestGroupStyle = S.String;
-
 /** One of: `none`, `value`, `name`, `name_and_value` */
 export type ChartViewConfigRequestDonutLabels = "none" | "value" | "name" | "name_and_value";
-export const ChartViewConfigRequestDonutLabels = S.String;
-
 /** Color of the reference line. */
 export type ChartReferenceLineRequestColor =
   | "gray"
@@ -927,12 +541,8 @@ export type ChartReferenceLineRequestColor =
   | "purple"
   | "pink"
   | "red";
-export const ChartReferenceLineRequestColor = S.String;
-
 /** Line style: "solid" for a continuous line, "dash" for a dashed line. */
 export type ChartReferenceLineRequestDashStyle = "solid" | "dash";
-export const ChartReferenceLineRequestDashStyle = S.String;
-
 export interface ChartReferenceLineRequest {
   /** The y-axis value where the reference line is drawn. */
   value: number;
@@ -945,23 +555,7 @@ export interface ChartReferenceLineRequest {
   /** Unique identifier for the reference line. Auto-generated if omitted. */
   id?: string;
 }
-export const ChartReferenceLineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    label: S.String,
-    color: ChartReferenceLineRequestColor,
-    dash_style: ChartReferenceLineRequestDashStyle,
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChartReferenceLineRequest",
-}) as any as S.Schema<ChartReferenceLineRequest>;
-
 export type ChartViewConfigRequestReferenceLinesList = Array<ChartReferenceLineRequest>;
-export const ChartViewConfigRequestReferenceLinesList = /*@__PURE__*/ S.Array(
-  ChartReferenceLineRequest,
-) as any as S.Schema<ChartViewConfigRequestReferenceLinesList>;
-
 export interface ChartViewConfigRequest {
   /** The view type. Must be "chart". */
   type: string;
@@ -1018,38 +612,6 @@ export interface ChartViewConfigRequest {
   /** Whether to color chart elements by their numeric value (gradient coloring). Pass null to clear. */
   color_by_value?: boolean | null;
 }
-export const ChartViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    chart_type: ChartViewConfigRequestChartType,
-    x_axis: S.optional(S.NullOr(GroupByConfigRequest)),
-    y_axis: S.optional(S.NullOr(ChartAggregationRequest)),
-    x_axis_property_id: S.optional(S.NullOr(S.String)),
-    y_axis_property_id: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(ChartAggregationRequest)),
-    sort: S.optional(S.NullOr(ChartViewConfigRequestSort)),
-    color_theme: S.optional(S.NullOr(ChartViewConfigRequestColorTheme)),
-    height: S.optional(S.NullOr(ChartViewConfigRequestHeight)),
-    hide_empty_groups: S.optional(S.NullOr(S.Boolean)),
-    legend_position: S.optional(S.NullOr(ChartViewConfigRequestLegendPosition)),
-    show_data_labels: S.optional(S.NullOr(S.Boolean)),
-    axis_labels: S.optional(S.NullOr(ChartViewConfigRequestAxisLabels)),
-    grid_lines: S.optional(S.NullOr(ChartViewConfigRequestGridLines)),
-    cumulative: S.optional(S.NullOr(S.Boolean)),
-    smooth_line: S.optional(S.NullOr(S.Boolean)),
-    hide_line_fill_area: S.optional(S.NullOr(S.Boolean)),
-    group_style: S.optional(S.NullOr(ChartViewConfigRequestGroupStyle)),
-    y_axis_min: S.optional(S.NullOr(S.Number)),
-    y_axis_max: S.optional(S.NullOr(S.Number)),
-    donut_labels: S.optional(S.NullOr(ChartViewConfigRequestDonutLabels)),
-    hide_title: S.optional(S.NullOr(S.Boolean)),
-    stack_by: S.optional(S.NullOr(GroupByConfigRequest)),
-    reference_lines: S.optional(S.NullOr(ChartViewConfigRequestReferenceLinesList)),
-    caption: S.optional(S.NullOr(S.String)),
-    color_by_value: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "ChartViewConfigRequest" }) as any as S.Schema<ChartViewConfigRequest>;
-
 /** View configuration, discriminated by the type field. */
 export type ViewConfigRequest =
   | TableViewConfigRequest
@@ -1061,44 +623,28 @@ export type ViewConfigRequest =
   | MapViewConfigRequest
   | FormViewConfigRequest
   | ChartViewConfigRequest;
-export const ViewConfigRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewConfigRequest>;
+const ViewConfigRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewConfigRequest>;
 
 export interface ViewPositionRequestCase0 {
   /** Position type. "start" places the view as the first tab. */
   type: string;
 }
-export const ViewPositionRequestCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({ identifier: "ViewPositionRequestCase0" }) as any as S.Schema<ViewPositionRequestCase0>;
-
 export interface ViewPositionRequestCase1 {
   /** Position type. "end" places the view as the last tab. */
   type: string;
 }
-export const ViewPositionRequestCase1 =
-  ViewPositionRequestCase0 as any as S.Schema<ViewPositionRequestCase1>;
-
 export interface ViewPositionRequestCase2 {
   /** Position type. "after_view" places the new view immediately after the specified view. */
   type: string;
   /** The ID of an existing view in the database. The new view will be placed after this view. */
   view_id: string;
 }
-export const ViewPositionRequestCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    view_id: S.String,
-  }),
-).annotate({ identifier: "ViewPositionRequestCase2" }) as any as S.Schema<ViewPositionRequestCase2>;
-
 /** Position of the new view in the database's view tab bar. */
 export type ViewPositionRequest =
   | ViewPositionRequestCase0
   | ViewPositionRequestCase1
   | ViewPositionRequestCase2;
-export const ViewPositionRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewPositionRequest>;
+const ViewPositionRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewPositionRequest>;
 
 export interface WidgetPlacementRequestCase0 {
   /** Placement type. "new_row" creates a new row containing the widget. */
@@ -1106,34 +652,15 @@ export interface WidgetPlacementRequestCase0 {
   /** The 0-based row position to insert the new row at. If omitted, the new row is appended at the end. */
   row_index?: number;
 }
-export const WidgetPlacementRequestCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    row_index: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WidgetPlacementRequestCase0",
-}) as any as S.Schema<WidgetPlacementRequestCase0>;
-
 export interface WidgetPlacementRequestCase1 {
   /** Placement type. "existing_row" adds the widget to an existing row (side-by-side with other widgets). */
   type: string;
   /** The 0-based index of the existing row to add the widget to. */
   row_index: number;
 }
-export const WidgetPlacementRequestCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    row_index: S.Number,
-  }),
-).annotate({
-  identifier: "WidgetPlacementRequestCase1",
-}) as any as S.Schema<WidgetPlacementRequestCase1>;
-
 /** Where to place the new widget in the dashboard. "new_row" creates a new row, "existing_row" adds to an existing row side-by-side with other widgets. */
 export type WidgetPlacementRequest = WidgetPlacementRequestCase0 | WidgetPlacementRequestCase1;
-export const WidgetPlacementRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<WidgetPlacementRequest>;
+const WidgetPlacementRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<WidgetPlacementRequest>;
 
 export interface CreateViewRequest {
   /** The ID of the data source this view should be scoped to. */
@@ -1161,7 +688,7 @@ export interface CreateViewRequest {
   /** Where to place the new widget in a dashboard view. Only applicable when view_id is provided. Defaults to creating a new row at the end. */
   placement?: WidgetPlacementRequest;
 }
-export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_source_id: S.String,
     name: S.String,
@@ -1184,7 +711,7 @@ export interface DatabaseParentResponse {
   /** The ID of the parent database. */
   database_id: string;
 }
-export const DatabaseParentResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseParentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     database_id: S.String,
@@ -1203,7 +730,7 @@ export type PartialDataSourceViewObjectResponseType =
   | "chart"
   | "map"
   | "dashboard";
-export const PartialDataSourceViewObjectResponseType = S.String;
+const PartialDataSourceViewObjectResponseType = S.String;
 
 export interface PartialDataSourceViewObjectResponse {
   /** The object type name. */
@@ -1215,7 +742,7 @@ export interface PartialDataSourceViewObjectResponse {
   /** The view type. */
   type: PartialDataSourceViewObjectResponseType;
 }
-export const PartialDataSourceViewObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const PartialDataSourceViewObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -1238,133 +765,68 @@ export type DataSourceViewObjectResponseType =
   | "chart"
   | "map"
   | "dashboard";
-export const DataSourceViewObjectResponseType = S.String;
-
 export interface PartialUserObjectResponse {
   id: string;
   /** Always `user` */
   object: string;
 }
-export const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-  }),
-).annotate({
-  identifier: "PartialUserObjectResponse",
-}) as any as S.Schema<PartialUserObjectResponse>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export interface ViewFilterResponseCase0 {
   /** The name or ID of the property to filter on. */
   property: string;
 }
-export const ViewFilterResponseCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.String,
-  }),
-).annotate({ identifier: "ViewFilterResponseCase0" }) as any as S.Schema<ViewFilterResponseCase0>;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase1Timestamp = "created_time" | "last_edited_time";
-export const ViewFilterResponseCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase1Timestamp;
 }
-export const ViewFilterResponseCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase1Timestamp,
-  }),
-).annotate({ identifier: "ViewFilterResponseCase1" }) as any as S.Schema<ViewFilterResponseCase1>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2OrItemCase0 = ViewFilterResponseCase0;
-export const ViewFilterResponseCase2OrItemCase0 = ViewFilterResponseCase0;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase2OrItemCase1Timestamp = "created_time" | "last_edited_time";
-export const ViewFilterResponseCase2OrItemCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase2OrItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2OrItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2OrItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: ViewFilterResponseCase2OrItemCase1Timestamp,
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2OrItemCase1",
-}) as any as S.Schema<ViewFilterResponseCase2OrItemCase1>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2OrItemCase2OrItemCase0 = ViewFilterResponseCase0;
-export const ViewFilterResponseCase2OrItemCase2OrItemCase0 = ViewFilterResponseCase0;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase2OrItemCase2OrItemCase1Timestamp =
   | "created_time"
   | "last_edited_time";
-export const ViewFilterResponseCase2OrItemCase2OrItemCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase2OrItemCase2OrItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2OrItemCase2OrItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2OrItemCase2OrItemCase1 =
-  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2OrItemCase2OrItemCase1>;
-
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2OrItemCase2OrItem =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase2OrItemCase2OrItemCase1;
-export const ViewFilterResponseCase2OrItemCase2OrItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponseCase2OrItemCase2OrItem>;
-
 /** Filters combined with OR logic. */
 export type ViewFilterResponseCase2OrItemCase2OrList =
   Array<ViewFilterResponseCase2OrItemCase2OrItem>;
-export const ViewFilterResponseCase2OrItemCase2OrList = /*@__PURE__*/ S.Array(
-  ViewFilterResponseCase2OrItemCase2OrItem,
-) as any as S.Schema<ViewFilterResponseCase2OrItemCase2OrList>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2OrItemCase2AndItemCase0 = ViewFilterResponseCase0;
-export const ViewFilterResponseCase2OrItemCase2AndItemCase0 = ViewFilterResponseCase0;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase2OrItemCase2AndItemCase1Timestamp =
   | "created_time"
   | "last_edited_time";
-export const ViewFilterResponseCase2OrItemCase2AndItemCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase2OrItemCase2AndItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2OrItemCase2AndItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2OrItemCase2AndItemCase1 =
-  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2OrItemCase2AndItemCase1>;
-
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2OrItemCase2AndItem =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase2OrItemCase2AndItemCase1;
-export const ViewFilterResponseCase2OrItemCase2AndItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponseCase2OrItemCase2AndItem>;
-
 /** Filters combined with AND logic. */
 export type ViewFilterResponseCase2OrItemCase2AndList =
   Array<ViewFilterResponseCase2OrItemCase2AndItem>;
-export const ViewFilterResponseCase2OrItemCase2AndList = /*@__PURE__*/ S.Array(
-  ViewFilterResponseCase2OrItemCase2AndItem,
-) as any as S.Schema<ViewFilterResponseCase2OrItemCase2AndList>;
-
 /** A compound filter at the deepest nesting level. Can only contain property or timestamp filters (no further nesting). */
 export interface ViewFilterResponseCase2OrItemCase2 {
   /** Filters combined with OR logic. */
@@ -1372,109 +834,58 @@ export interface ViewFilterResponseCase2OrItemCase2 {
   /** Filters combined with AND logic. */
   and?: ViewFilterResponseCase2OrItemCase2AndList;
 }
-export const ViewFilterResponseCase2OrItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    or: S.optional(ViewFilterResponseCase2OrItemCase2OrList),
-    and: S.optional(ViewFilterResponseCase2OrItemCase2AndList),
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2OrItemCase2",
-}) as any as S.Schema<ViewFilterResponseCase2OrItemCase2>;
-
 /** A filter that can be a property filter, timestamp filter, or nested compound filter. */
 export type ViewFilterResponseCase2OrItem =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase2OrItemCase1
   | ViewFilterResponseCase2OrItemCase2;
-export const ViewFilterResponseCase2OrItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponseCase2OrItem>;
-
 /** Filters combined with OR logic. */
 export type ViewFilterResponseCase2OrList = Array<ViewFilterResponseCase2OrItem>;
-export const ViewFilterResponseCase2OrList = /*@__PURE__*/ S.Array(
-  ViewFilterResponseCase2OrItem,
-) as any as S.Schema<ViewFilterResponseCase2OrList>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2AndItemCase0 = ViewFilterResponseCase0;
-export const ViewFilterResponseCase2AndItemCase0 = ViewFilterResponseCase0;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase2AndItemCase1Timestamp = "created_time" | "last_edited_time";
-export const ViewFilterResponseCase2AndItemCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase2AndItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2AndItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2AndItemCase1 =
-  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2AndItemCase1>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2AndItemCase2OrItemCase0 = ViewFilterResponseCase0;
-export const ViewFilterResponseCase2AndItemCase2OrItemCase0 = ViewFilterResponseCase0;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase2AndItemCase2OrItemCase1Timestamp =
   | "created_time"
   | "last_edited_time";
-export const ViewFilterResponseCase2AndItemCase2OrItemCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase2AndItemCase2OrItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2AndItemCase2OrItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2AndItemCase2OrItemCase1 =
-  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2AndItemCase2OrItemCase1>;
-
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2AndItemCase2OrItem =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase2AndItemCase2OrItemCase1;
-export const ViewFilterResponseCase2AndItemCase2OrItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponseCase2AndItemCase2OrItem>;
-
 /** Filters combined with OR logic. */
 export type ViewFilterResponseCase2AndItemCase2OrList =
   Array<ViewFilterResponseCase2AndItemCase2OrItem>;
-export const ViewFilterResponseCase2AndItemCase2OrList = /*@__PURE__*/ S.Array(
-  ViewFilterResponseCase2AndItemCase2OrItem,
-) as any as S.Schema<ViewFilterResponseCase2AndItemCase2OrList>;
-
 /** A filter condition on a specific property. The property field specifies which property to filter, and an additional field specifies the filter type and condition (e.g., title, rich_text, number, checkbox, select, multi_select, date, people, files, relation, formula, rollup, etc.). */
 export type ViewFilterResponseCase2AndItemCase2AndItemCase0 = ViewFilterResponseCase0;
-export const ViewFilterResponseCase2AndItemCase2AndItemCase0 = ViewFilterResponseCase0;
-
 /** The timestamp to filter on. */
 export type ViewFilterResponseCase2AndItemCase2AndItemCase1Timestamp =
   | "created_time"
   | "last_edited_time";
-export const ViewFilterResponseCase2AndItemCase2AndItemCase1Timestamp = S.String;
-
 /** A filter condition on a timestamp (created_time or last_edited_time). The timestamp field specifies which timestamp, and a matching field contains the date filter condition. */
 export interface ViewFilterResponseCase2AndItemCase2AndItemCase1 {
   /** The timestamp to filter on. */
   timestamp: ViewFilterResponseCase2AndItemCase2AndItemCase1Timestamp;
 }
-export const ViewFilterResponseCase2AndItemCase2AndItemCase1 =
-  ViewFilterResponseCase2OrItemCase1 as any as S.Schema<ViewFilterResponseCase2AndItemCase2AndItemCase1>;
-
 /** A property filter or timestamp filter. */
 export type ViewFilterResponseCase2AndItemCase2AndItem =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase2AndItemCase2AndItemCase1;
-export const ViewFilterResponseCase2AndItemCase2AndItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponseCase2AndItemCase2AndItem>;
-
 /** Filters combined with AND logic. */
 export type ViewFilterResponseCase2AndItemCase2AndList =
   Array<ViewFilterResponseCase2AndItemCase2AndItem>;
-export const ViewFilterResponseCase2AndItemCase2AndList = /*@__PURE__*/ S.Array(
-  ViewFilterResponseCase2AndItemCase2AndItem,
-) as any as S.Schema<ViewFilterResponseCase2AndItemCase2AndList>;
-
 /** A compound filter at the deepest nesting level. Can only contain property or timestamp filters (no further nesting). */
 export interface ViewFilterResponseCase2AndItemCase2 {
   /** Filters combined with OR logic. */
@@ -1482,29 +893,13 @@ export interface ViewFilterResponseCase2AndItemCase2 {
   /** Filters combined with AND logic. */
   and?: ViewFilterResponseCase2AndItemCase2AndList;
 }
-export const ViewFilterResponseCase2AndItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    or: S.optional(ViewFilterResponseCase2AndItemCase2OrList),
-    and: S.optional(ViewFilterResponseCase2AndItemCase2AndList),
-  }),
-).annotate({
-  identifier: "ViewFilterResponseCase2AndItemCase2",
-}) as any as S.Schema<ViewFilterResponseCase2AndItemCase2>;
-
 /** A filter that can be a property filter, timestamp filter, or nested compound filter. */
 export type ViewFilterResponseCase2AndItem =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase2AndItemCase1
   | ViewFilterResponseCase2AndItemCase2;
-export const ViewFilterResponseCase2AndItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponseCase2AndItem>;
-
 /** Filters combined with AND logic. */
 export type ViewFilterResponseCase2AndList = Array<ViewFilterResponseCase2AndItem>;
-export const ViewFilterResponseCase2AndList = /*@__PURE__*/ S.Array(
-  ViewFilterResponseCase2AndItem,
-) as any as S.Schema<ViewFilterResponseCase2AndList>;
-
 /** A compound filter that combines multiple filters with AND or OR logic. Supports up to 2 levels of nesting. */
 export interface ViewFilterResponseCase2 {
   /** Filters combined with OR logic. */
@@ -1512,23 +907,14 @@ export interface ViewFilterResponseCase2 {
   /** Filters combined with AND logic. */
   and?: ViewFilterResponseCase2AndList;
 }
-export const ViewFilterResponseCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    or: S.optional(ViewFilterResponseCase2OrList),
-    and: S.optional(ViewFilterResponseCase2AndList),
-  }),
-).annotate({ identifier: "ViewFilterResponseCase2" }) as any as S.Schema<ViewFilterResponseCase2>;
-
 /** Filter for the view. Can be a property filter (filter by property value), timestamp filter (filter by created_time or last_edited_time), or compound filter (combine filters with and/or logic). Compound filters support up to 2 levels of nesting. */
 export type ViewFilterResponse =
   | ViewFilterResponseCase0
   | ViewFilterResponseCase1
   | ViewFilterResponseCase2;
-export const ViewFilterResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewFilterResponse>;
-
 /** Sort direction. */
 export type PropertySortResponseDirection = "ascending" | "descending";
-export const PropertySortResponseDirection = S.String;
+const PropertySortResponseDirection = S.String;
 
 export interface PropertySortResponse {
   /** The name or ID of the property to sort by. */
@@ -1536,7 +922,7 @@ export interface PropertySortResponse {
   /** Sort direction. */
   direction: PropertySortResponseDirection;
 }
-export const PropertySortResponse = /*@__PURE__*/ S.suspend(() =>
+const PropertySortResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.String,
     direction: PropertySortResponseDirection,
@@ -1545,46 +931,22 @@ export const PropertySortResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The timestamp to sort by. */
 export type TimestampSortResponseTimestamp = "created_time" | "last_edited_time";
-export const TimestampSortResponseTimestamp = S.String;
-
 /** Sort direction. */
 export type TimestampSortResponseDirection = "ascending" | "descending";
-export const TimestampSortResponseDirection = S.String;
-
 export interface TimestampSortResponse {
   /** The timestamp to sort by. */
   timestamp: TimestampSortResponseTimestamp;
   /** Sort direction. */
   direction: TimestampSortResponseDirection;
 }
-export const TimestampSortResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: TimestampSortResponseTimestamp,
-    direction: TimestampSortResponseDirection,
-  }),
-).annotate({ identifier: "TimestampSortResponse" }) as any as S.Schema<TimestampSortResponse>;
-
 /** Sort for the view. Can sort by property or timestamp. */
 export type ViewSortResponse = PropertySortResponse | TimestampSortResponse;
-export const ViewSortResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewSortResponse>;
-
 export type DataSourceViewObjectResponseSortsList = Array<ViewSortResponse>;
-export const DataSourceViewObjectResponseSortsList = /*@__PURE__*/ S.Array(
-  ViewSortResponse,
-) as any as S.Schema<DataSourceViewObjectResponseSortsList>;
-
 export type DataSourceViewObjectResponseQuickFiltersMap = { [key: string]: unknown | undefined };
-export const DataSourceViewObjectResponseQuickFiltersMap =
-  CreateViewRequestQuickFiltersMap as any as S.Schema<DataSourceViewObjectResponseQuickFiltersMap>;
-
 /** How to display status properties (as select dropdown or checkbox). */
 export type ViewPropertyConfigResponseStatusShowAs = "select" | "checkbox";
-export const ViewPropertyConfigResponseStatusShowAs = S.String;
-
 /** Property width mode in compact card layouts (board/gallery). */
 export type ViewPropertyConfigResponseCardPropertyWidthMode = "full_line" | "inline";
-export const ViewPropertyConfigResponseCardPropertyWidthMode = S.String;
-
 /** Date display format (date properties only). "full" = localized full date, "short" = month and day, "month_day_year" = MM/DD/YYYY, "day_month_year" = DD/MM/YYYY, "year_month_day" = YYYY/MM/DD, "relative" = relative dates. */
 export type ViewPropertyConfigResponseDateFormat =
   | "full"
@@ -1593,12 +955,8 @@ export type ViewPropertyConfigResponseDateFormat =
   | "day_month_year"
   | "year_month_day"
   | "relative";
-export const ViewPropertyConfigResponseDateFormat = S.String;
-
 /** Time display format (date properties only). "12_hour" = 12-hour clock with AM/PM, "24_hour" = 24-hour clock, "hidden" = hide time. */
 export type ViewPropertyConfigResponseTimeFormat = "12_hour" | "24_hour" | "hidden";
-export const ViewPropertyConfigResponseTimeFormat = S.String;
-
 export interface ViewPropertyConfigResponse {
   /** Property ID (stable identifier). */
   property_id: string;
@@ -1619,42 +977,16 @@ export interface ViewPropertyConfigResponse {
   /** Time display format (date properties only). "12_hour" = 12-hour clock with AM/PM, "24_hour" = 24-hour clock, "hidden" = hide time. */
   time_format?: ViewPropertyConfigResponseTimeFormat;
 }
-export const ViewPropertyConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property_id: S.String,
-    property_name: S.optional(S.String),
-    visible: S.optional(S.Boolean),
-    width: S.optional(S.Number),
-    wrap: S.optional(S.Boolean),
-    status_show_as: S.optional(ViewPropertyConfigResponseStatusShowAs),
-    card_property_width_mode: S.optional(ViewPropertyConfigResponseCardPropertyWidthMode),
-    date_format: S.optional(ViewPropertyConfigResponseDateFormat),
-    time_format: S.optional(ViewPropertyConfigResponseTimeFormat),
-  }),
-).annotate({
-  identifier: "ViewPropertyConfigResponse",
-}) as any as S.Schema<ViewPropertyConfigResponse>;
-
 /** Columns/properties visible in the table view. */
 export type TableViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const TableViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<TableViewConfigResponsePropertiesList>;
-
 /** The property type for grouping. */
 export type SelectGroupByConfigResponseType = "select" | "multi_select";
-export const SelectGroupByConfigResponseType = S.String;
-
 /** Sort direction for groups. */
 export type GroupSortResponseType = "manual" | "ascending" | "descending";
-export const GroupSortResponseType = S.String;
-
 export interface GroupSortResponse {
   /** Sort direction for groups. */
   type: GroupSortResponseType;
 }
-export const GroupSortResponse = GroupSortRequest as any as S.Schema<GroupSortResponse>;
-
 export interface SelectGroupByConfigResponse {
   /** The property type for grouping. */
   type: SelectGroupByConfigResponseType;
@@ -1667,22 +999,8 @@ export interface SelectGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const SelectGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SelectGroupByConfigResponseType,
-    property_id: S.String,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SelectGroupByConfigResponse",
-}) as any as S.Schema<SelectGroupByConfigResponse>;
-
 /** How to group status values. "group" groups by status group (To Do/In Progress/Done), "option" groups by individual option. */
 export type StatusGroupByConfigResponseGroupBy = "group" | "option";
-export const StatusGroupByConfigResponseGroupBy = S.String;
-
 export interface StatusGroupByConfigResponse {
   /** The property type for grouping. */
   type: string;
@@ -1697,23 +1015,8 @@ export interface StatusGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const StatusGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    group_by: StatusGroupByConfigResponseGroupBy,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StatusGroupByConfigResponse",
-}) as any as S.Schema<StatusGroupByConfigResponse>;
-
 /** The property type for grouping. */
 export type PersonGroupByConfigResponseType = "person" | "created_by" | "last_edited_by";
-export const PersonGroupByConfigResponseType = S.String;
-
 export interface PersonGroupByConfigResponse {
   /** The property type for grouping. */
   type: PersonGroupByConfigResponseType;
@@ -1726,9 +1029,6 @@ export interface PersonGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const PersonGroupByConfigResponse =
-  SelectGroupByConfigResponse as any as S.Schema<PersonGroupByConfigResponse>;
-
 export interface RelationGroupByConfigResponse {
   /** The property type for grouping. */
   type: string;
@@ -1741,30 +1041,12 @@ export interface RelationGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const RelationGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RelationGroupByConfigResponse",
-}) as any as S.Schema<RelationGroupByConfigResponse>;
-
 /** The property type for grouping. */
 export type DateGroupByConfigResponseType = "date" | "created_time" | "last_edited_time";
-export const DateGroupByConfigResponseType = S.String;
-
 /** Granularity for date grouping. */
 export type DateGroupByConfigResponseGroupBy = "relative" | "day" | "week" | "month" | "year";
-export const DateGroupByConfigResponseGroupBy = S.String;
-
 /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
 export type DateGroupByConfigResponseStartDayOfWeek = 0 | 1;
-export const DateGroupByConfigResponseStartDayOfWeek = S.Number;
-
 export interface DateGroupByConfigResponse {
   /** The property type for grouping. */
   type: DateGroupByConfigResponseType;
@@ -1781,28 +1063,10 @@ export interface DateGroupByConfigResponse {
   /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
   start_day_of_week?: DateGroupByConfigResponseStartDayOfWeek;
 }
-export const DateGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DateGroupByConfigResponseType,
-    property_id: S.String,
-    group_by: DateGroupByConfigResponseGroupBy,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-    start_day_of_week: S.optional(DateGroupByConfigResponseStartDayOfWeek),
-  }),
-).annotate({
-  identifier: "DateGroupByConfigResponse",
-}) as any as S.Schema<DateGroupByConfigResponse>;
-
 /** The property type for grouping. */
 export type TextGroupByConfigResponseType = "text" | "title" | "url" | "email" | "phone_number";
-export const TextGroupByConfigResponseType = S.String;
-
 /** How to group text values. "exact" = exact match, "alphabet_prefix" = first letter. */
 export type TextGroupByConfigResponseGroupBy = "exact" | "alphabet_prefix";
-export const TextGroupByConfigResponseGroupBy = S.String;
-
 export interface TextGroupByConfigResponse {
   /** The property type for grouping. */
   type: TextGroupByConfigResponseType;
@@ -1817,19 +1081,6 @@ export interface TextGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const TextGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TextGroupByConfigResponseType,
-    property_id: S.String,
-    group_by: TextGroupByConfigResponseGroupBy,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TextGroupByConfigResponse",
-}) as any as S.Schema<TextGroupByConfigResponse>;
-
 export interface NumberGroupByConfigResponse {
   /** The property type for grouping. */
   type: string;
@@ -1848,21 +1099,6 @@ export interface NumberGroupByConfigResponse {
   /** Size of each bucket in number grouping. */
   range_size?: number;
 }
-export const NumberGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-    range_start: S.optional(S.Number),
-    range_end: S.optional(S.Number),
-    range_size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NumberGroupByConfigResponse",
-}) as any as S.Schema<NumberGroupByConfigResponse>;
-
 export interface CheckboxGroupByConfigResponse {
   /** The property type for grouping. */
   type: string;
@@ -1875,17 +1111,10 @@ export interface CheckboxGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const CheckboxGroupByConfigResponse =
-  RelationGroupByConfigResponse as any as S.Schema<CheckboxGroupByConfigResponse>;
-
 /** Granularity for date grouping. */
 export type FormulaDateSubGroupByResponseGroupBy = "relative" | "day" | "week" | "month" | "year";
-export const FormulaDateSubGroupByResponseGroupBy = S.String;
-
 /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
 export type FormulaDateSubGroupByResponseStartDayOfWeek = 0 | 1;
-export const FormulaDateSubGroupByResponseStartDayOfWeek = S.Number;
-
 export interface FormulaDateSubGroupByResponse {
   /** The formula result type for grouping. */
   type: string;
@@ -1896,13 +1125,8 @@ export interface FormulaDateSubGroupByResponse {
   /** Start day of week for week grouping (0 = Sunday, 1 = Monday). */
   start_day_of_week?: FormulaDateSubGroupByResponseStartDayOfWeek;
 }
-export const FormulaDateSubGroupByResponse =
-  FormulaDateSubGroupByRequest as any as S.Schema<FormulaDateSubGroupByResponse>;
-
 /** How to group text values. "exact" = exact match, "alphabet_prefix" = first letter. */
 export type FormulaTextSubGroupByResponseGroupBy = "exact" | "alphabet_prefix";
-export const FormulaTextSubGroupByResponseGroupBy = S.String;
-
 export interface FormulaTextSubGroupByResponse {
   /** The formula result type for grouping. */
   type: string;
@@ -1911,9 +1135,6 @@ export interface FormulaTextSubGroupByResponse {
   /** Sort order for groups. */
   sort: GroupSortResponse;
 }
-export const FormulaTextSubGroupByResponse =
-  FormulaTextSubGroupByRequest as any as S.Schema<FormulaTextSubGroupByResponse>;
-
 export interface FormulaNumberSubGroupByResponse {
   /** The formula result type for grouping. */
   type: string;
@@ -1926,27 +1147,18 @@ export interface FormulaNumberSubGroupByResponse {
   /** Size of each bucket in number grouping. */
   range_size?: number;
 }
-export const FormulaNumberSubGroupByResponse =
-  FormulaNumberSubGroupByRequest as any as S.Schema<FormulaNumberSubGroupByResponse>;
-
 export interface FormulaCheckboxSubGroupByResponse {
   /** The formula result type for grouping. */
   type: string;
   /** Sort order for groups (only manual for checkbox). */
   sort: GroupSortResponse;
 }
-export const FormulaCheckboxSubGroupByResponse =
-  FormulaCheckboxSubGroupByRequest as any as S.Schema<FormulaCheckboxSubGroupByResponse>;
-
 /** Sub-group-by configuration for formula properties based on result type. */
 export type FormulaSubGroupByResponse =
   | FormulaDateSubGroupByResponse
   | FormulaTextSubGroupByResponse
   | FormulaNumberSubGroupByResponse
   | FormulaCheckboxSubGroupByResponse;
-export const FormulaSubGroupByResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FormulaSubGroupByResponse>;
-
 export interface FormulaGroupByConfigResponse {
   /** The property type for grouping. */
   type: string;
@@ -1959,18 +1171,6 @@ export interface FormulaGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const FormulaGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    group_by: FormulaSubGroupByResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "FormulaGroupByConfigResponse",
-}) as any as S.Schema<FormulaGroupByConfigResponse>;
-
 /** Group-by configuration based on property type. */
 export type GroupByConfigResponse =
   | SelectGroupByConfigResponse
@@ -1982,17 +1182,10 @@ export type GroupByConfigResponse =
   | NumberGroupByConfigResponse
   | CheckboxGroupByConfigResponse
   | FormulaGroupByConfigResponse;
-export const GroupByConfigResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupByConfigResponse>;
-
 /** How sub-items are displayed. "show" renders hierarchically with toggles, "hidden" shows parents with a count, "flattened" shows sub-items with a parent indicator, "disabled" turns off sub-item rendering. */
 export type SubtaskConfigResponseDisplayMode = "show" | "hidden" | "flattened" | "disabled";
-export const SubtaskConfigResponseDisplayMode = S.String;
-
 /** Which items are included when filtering. "parents" includes parent items only, "parents_and_subitems" includes both, "subitems" includes sub-items only. */
 export type SubtaskConfigResponseFilterScope = "parents" | "parents_and_subitems" | "subitems";
-export const SubtaskConfigResponseFilterScope = S.String;
-
 export interface SubtaskConfigResponse {
   /** Relation property ID used for parent-child nesting. */
   property_id?: string;
@@ -2003,8 +1196,6 @@ export interface SubtaskConfigResponse {
   /** Property ID of the column showing the sub-item expand/collapse toggle. */
   toggle_column_id?: string;
 }
-export const SubtaskConfigResponse = SubtaskConfigRequest as any as S.Schema<SubtaskConfigResponse>;
-
 export interface TableViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2021,51 +1212,26 @@ export interface TableViewConfigResponse {
   /** Whether to show vertical lines between columns. */
   show_vertical_lines?: boolean;
 }
-export const TableViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(TableViewConfigResponsePropertiesList),
-    group_by: S.optional(GroupByConfigResponse),
-    subtasks: S.optional(SubtaskConfigResponse),
-    wrap_cells: S.optional(S.Boolean),
-    frozen_column_index: S.optional(S.Number),
-    show_vertical_lines: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TableViewConfigResponse" }) as any as S.Schema<TableViewConfigResponse>;
-
 /** Properties to display on each card. */
 export type BoardViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const BoardViewConfigResponsePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<BoardViewConfigResponsePropertiesList>;
-
 /** Source of the cover image. */
 export type CoverConfigResponseType =
   | "page_cover"
   | "page_content"
   | "page_content_first"
   | "property";
-export const CoverConfigResponseType = S.String;
-
 export interface CoverConfigResponse {
   /** Source of the cover image. */
   type: CoverConfigResponseType;
   /** Property ID when type is "property". */
   property_id?: string;
 }
-export const CoverConfigResponse = CoverConfigRequest as any as S.Schema<CoverConfigResponse>;
-
 /** Cover image size. */
 export type BoardViewConfigResponseCoverSize = "small" | "medium" | "large";
-export const BoardViewConfigResponseCoverSize = S.String;
-
 /** Cover image aspect ratio. */
 export type BoardViewConfigResponseCoverAspect = "contain" | "cover";
-export const BoardViewConfigResponseCoverAspect = S.String;
-
 /** Card layout mode (list shows all properties, compact shows inline). */
 export type BoardViewConfigResponseCardLayout = "list" | "compact";
-export const BoardViewConfigResponseCardLayout = S.String;
-
 export interface BoardViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2084,28 +1250,10 @@ export interface BoardViewConfigResponse {
   /** Card layout mode (list shows all properties, compact shows inline). */
   card_layout?: BoardViewConfigResponseCardLayout;
 }
-export const BoardViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    group_by: GroupByConfigResponse,
-    sub_group_by: S.optional(GroupByConfigResponse),
-    properties: S.optional(BoardViewConfigResponsePropertiesList),
-    cover: S.optional(CoverConfigResponse),
-    cover_size: S.optional(BoardViewConfigResponseCoverSize),
-    cover_aspect: S.optional(BoardViewConfigResponseCoverAspect),
-    card_layout: S.optional(BoardViewConfigResponseCardLayout),
-  }),
-).annotate({ identifier: "BoardViewConfigResponse" }) as any as S.Schema<BoardViewConfigResponse>;
-
 /** Properties to display on calendar event cards. */
 export type CalendarViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const CalendarViewConfigResponsePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<CalendarViewConfigResponsePropertiesList>;
-
 /** Calendar view range. */
 export type CalendarViewConfigResponseViewRange = "week" | "month";
-export const CalendarViewConfigResponseViewRange = S.String;
-
 export interface CalendarViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2120,29 +1268,10 @@ export interface CalendarViewConfigResponse {
   /** Whether to show weekend days. */
   show_weekends?: boolean;
 }
-export const CalendarViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date_property_id: S.String,
-    date_property_name: S.optional(S.String),
-    properties: S.optional(CalendarViewConfigResponsePropertiesList),
-    view_range: S.optional(CalendarViewConfigResponseViewRange),
-    show_weekends: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CalendarViewConfigResponse",
-}) as any as S.Schema<CalendarViewConfigResponse>;
-
 /** Properties to display on timeline items. */
 export type TimelineViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const TimelineViewConfigResponsePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<TimelineViewConfigResponsePropertiesList>;
-
 /** Properties to display in the table panel (when show_table is true). */
 export type TimelineViewConfigResponseTablePropertiesList = Array<ViewPropertyConfigResponse>;
-export const TimelineViewConfigResponseTablePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<TimelineViewConfigResponseTablePropertiesList>;
-
 /** Zoom level for the timeline. */
 export type TimelinePreferenceResponseZoomLevel =
   | "hours"
@@ -2153,24 +1282,16 @@ export type TimelinePreferenceResponseZoomLevel =
   | "quarter"
   | "year"
   | "5_years";
-export const TimelinePreferenceResponseZoomLevel = S.String;
-
 export interface TimelinePreferenceResponse {
   /** Zoom level for the timeline. */
   zoom_level: TimelinePreferenceResponseZoomLevel;
   /** Center timestamp for the timeline view (Unix timestamp in ms). */
   center_timestamp?: number;
 }
-export const TimelinePreferenceResponse =
-  TimelinePreferenceRequest as any as S.Schema<TimelinePreferenceResponse>;
-
 export interface TimelineArrowsByResponse {
   /** Relation property ID used for dependency arrows. */
   property_id?: string | null;
 }
-export const TimelineArrowsByResponse =
-  TimelineArrowsByRequest as any as S.Schema<TimelineArrowsByResponse>;
-
 export interface TimelineViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2195,41 +1316,14 @@ export interface TimelineViewConfigResponse {
   /** Whether to color-code items by property. */
   color_by?: boolean;
 }
-export const TimelineViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date_property_id: S.String,
-    date_property_name: S.optional(S.String),
-    end_date_property_id: S.optional(S.String),
-    end_date_property_name: S.optional(S.String),
-    properties: S.optional(TimelineViewConfigResponsePropertiesList),
-    show_table: S.optional(S.Boolean),
-    table_properties: S.optional(TimelineViewConfigResponseTablePropertiesList),
-    preference: S.optional(TimelinePreferenceResponse),
-    arrows_by: S.optional(TimelineArrowsByResponse),
-    color_by: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TimelineViewConfigResponse",
-}) as any as S.Schema<TimelineViewConfigResponse>;
-
 /** Properties to display on gallery cards. */
 export type GalleryViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const GalleryViewConfigResponsePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<GalleryViewConfigResponsePropertiesList>;
-
 /** Cover image size. */
 export type GalleryViewConfigResponseCoverSize = "small" | "medium" | "large";
-export const GalleryViewConfigResponseCoverSize = S.String;
-
 /** Cover image aspect ratio. */
 export type GalleryViewConfigResponseCoverAspect = "contain" | "cover";
-export const GalleryViewConfigResponseCoverAspect = S.String;
-
 /** Card layout mode (list shows all properties, compact shows inline). */
 export type GalleryViewConfigResponseCardLayout = "list" | "compact";
-export const GalleryViewConfigResponseCardLayout = S.String;
-
 export interface GalleryViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2244,46 +1338,18 @@ export interface GalleryViewConfigResponse {
   /** Card layout mode (list shows all properties, compact shows inline). */
   card_layout?: GalleryViewConfigResponseCardLayout;
 }
-export const GalleryViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(GalleryViewConfigResponsePropertiesList),
-    cover: S.optional(CoverConfigResponse),
-    cover_size: S.optional(GalleryViewConfigResponseCoverSize),
-    cover_aspect: S.optional(GalleryViewConfigResponseCoverAspect),
-    card_layout: S.optional(GalleryViewConfigResponseCardLayout),
-  }),
-).annotate({
-  identifier: "GalleryViewConfigResponse",
-}) as any as S.Schema<GalleryViewConfigResponse>;
-
 /** Properties to display in list items. */
 export type ListViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const ListViewConfigResponsePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<ListViewConfigResponsePropertiesList>;
-
 export interface ListViewConfigResponse {
   /** The view configuration type. */
   type: string;
   /** Properties to display in list items. */
   properties?: ListViewConfigResponsePropertiesList;
 }
-export const ListViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(ListViewConfigResponsePropertiesList),
-  }),
-).annotate({ identifier: "ListViewConfigResponse" }) as any as S.Schema<ListViewConfigResponse>;
-
 /** Map display height. */
 export type MapViewConfigResponseHeight = "small" | "medium" | "large" | "extra_large";
-export const MapViewConfigResponseHeight = S.String;
-
 /** Properties to display on map pin cards. */
 export type MapViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const MapViewConfigResponsePropertiesList =
-  TableViewConfigResponsePropertiesList as any as S.Schema<MapViewConfigResponsePropertiesList>;
-
 export interface MapViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2296,16 +1362,6 @@ export interface MapViewConfigResponse {
   /** Properties to display on map pin cards. */
   properties?: MapViewConfigResponsePropertiesList;
 }
-export const MapViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    height: S.optional(MapViewConfigResponseHeight),
-    map_by: S.optional(S.String),
-    map_by_property_name: S.optional(S.String),
-    properties: S.optional(MapViewConfigResponsePropertiesList),
-  }),
-).annotate({ identifier: "MapViewConfigResponse" }) as any as S.Schema<MapViewConfigResponse>;
-
 /** Permission level granted to the submitter on the created page after form submission. */
 export type FormViewConfigResponseSubmissionPermissions =
   | "none"
@@ -2313,8 +1369,6 @@ export type FormViewConfigResponseSubmissionPermissions =
   | "reader"
   | "read_and_write"
   | "editor";
-export const FormViewConfigResponseSubmissionPermissions = S.String;
-
 export interface FormViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2325,19 +1379,8 @@ export interface FormViewConfigResponse {
   /** Permission level granted to the submitter on the created page after form submission. */
   submission_permissions?: FormViewConfigResponseSubmissionPermissions;
 }
-export const FormViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    is_form_closed: S.optional(S.Boolean),
-    anonymous_submissions: S.optional(S.Boolean),
-    submission_permissions: S.optional(FormViewConfigResponseSubmissionPermissions),
-  }),
-).annotate({ identifier: "FormViewConfigResponse" }) as any as S.Schema<FormViewConfigResponse>;
-
 /** The chart type: column (vertical bars), bar (horizontal bars), line, donut, or number (single value display). */
 export type ChartViewConfigResponseChartType = "column" | "bar" | "line" | "donut" | "number";
-export const ChartViewConfigResponseChartType = S.String;
-
 /** The aggregation operator. "count" counts all rows and does not require a property_id. All other operators require a property_id. */
 export type ChartAggregationResponseAggregator =
   | "count"
@@ -2360,17 +1403,12 @@ export type ChartAggregationResponseAggregator =
   | "earliest_date"
   | "latest_date"
   | "date_range";
-export const ChartAggregationResponseAggregator = S.String;
-
 export interface ChartAggregationResponse {
   /** The aggregation operator. "count" counts all rows and does not require a property_id. All other operators require a property_id. */
   aggregator: ChartAggregationResponseAggregator;
   /** The property to aggregate on. Required for all operators except "count". */
   property_id?: string;
 }
-export const ChartAggregationResponse =
-  ChartAggregationRequest as any as S.Schema<ChartAggregationResponse>;
-
 /** Sort order for chart data. */
 export type ChartViewConfigResponseSort =
   | "manual"
@@ -2378,8 +1416,6 @@ export type ChartViewConfigResponseSort =
   | "x_descending"
   | "y_ascending"
   | "y_descending";
-export const ChartViewConfigResponseSort = S.String;
-
 /** Color theme for the chart. */
 export type ChartViewConfigResponseColorTheme =
   | "gray"
@@ -2393,32 +1429,18 @@ export type ChartViewConfigResponseColorTheme =
   | "red"
   | "auto"
   | "colorful";
-export const ChartViewConfigResponseColorTheme = S.String;
-
 /** Chart height. */
 export type ChartViewConfigResponseHeight = "small" | "medium" | "large" | "extra_large";
-export const ChartViewConfigResponseHeight = S.String;
-
 /** Legend display position. "off" hides the legend. */
 export type ChartViewConfigResponseLegendPosition = "off" | "bottom" | "side";
-export const ChartViewConfigResponseLegendPosition = S.String;
-
 /** Which axis labels to display. */
 export type ChartViewConfigResponseAxisLabels = "none" | "x_axis" | "y_axis" | "both";
-export const ChartViewConfigResponseAxisLabels = S.String;
-
 /** Which grid lines to display. */
 export type ChartViewConfigResponseGridLines = "none" | "horizontal" | "vertical" | "both";
-export const ChartViewConfigResponseGridLines = S.String;
-
 /** How grouped/stacked bars are displayed. "normal" stacks values, "percent" normalizes to 100%, "side_by_side" places bars next to each other. */
 export type ChartViewConfigResponseGroupStyle = "normal" | "percent" | "side_by_side";
-export const ChartViewConfigResponseGroupStyle = S.String;
-
 /** What to display on donut chart slices. */
 export type ChartViewConfigResponseDonutLabels = "none" | "value" | "name" | "name_and_value";
-export const ChartViewConfigResponseDonutLabels = S.String;
-
 /** Color of the reference line. */
 export type ChartReferenceLineResponseColor =
   | "gray"
@@ -2431,12 +1453,8 @@ export type ChartReferenceLineResponseColor =
   | "purple"
   | "pink"
   | "red";
-export const ChartReferenceLineResponseColor = S.String;
-
 /** Line style: "solid" for a continuous line, "dash" for a dashed line. */
 export type ChartReferenceLineResponseDashStyle = "solid" | "dash";
-export const ChartReferenceLineResponseDashStyle = S.String;
-
 export interface ChartReferenceLineResponse {
   /** Unique identifier for the reference line. */
   id: string;
@@ -2449,23 +1467,7 @@ export interface ChartReferenceLineResponse {
   /** Line style: "solid" for a continuous line, "dash" for a dashed line. */
   dash_style: ChartReferenceLineResponseDashStyle;
 }
-export const ChartReferenceLineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    value: S.Number,
-    label: S.String,
-    color: ChartReferenceLineResponseColor,
-    dash_style: ChartReferenceLineResponseDashStyle,
-  }),
-).annotate({
-  identifier: "ChartReferenceLineResponse",
-}) as any as S.Schema<ChartReferenceLineResponse>;
-
 export type ChartViewConfigResponseReferenceLinesList = Array<ChartReferenceLineResponse>;
-export const ChartViewConfigResponseReferenceLinesList = /*@__PURE__*/ S.Array(
-  ChartReferenceLineResponse,
-) as any as S.Schema<ChartViewConfigResponseReferenceLinesList>;
-
 export interface ChartViewConfigResponse {
   /** The view configuration type. */
   type: string;
@@ -2522,38 +1524,6 @@ export interface ChartViewConfigResponse {
   /** Whether chart elements are colored by their numeric value (gradient coloring). */
   color_by_value?: boolean;
 }
-export const ChartViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    chart_type: ChartViewConfigResponseChartType,
-    x_axis: S.optional(S.NullOr(GroupByConfigResponse)),
-    y_axis: S.optional(S.NullOr(ChartAggregationResponse)),
-    x_axis_property_id: S.optional(S.String),
-    y_axis_property_id: S.optional(S.String),
-    value: S.optional(ChartAggregationResponse),
-    sort: S.optional(ChartViewConfigResponseSort),
-    color_theme: S.optional(ChartViewConfigResponseColorTheme),
-    height: S.optional(ChartViewConfigResponseHeight),
-    hide_empty_groups: S.optional(S.Boolean),
-    legend_position: S.optional(ChartViewConfigResponseLegendPosition),
-    show_data_labels: S.optional(S.Boolean),
-    axis_labels: S.optional(ChartViewConfigResponseAxisLabels),
-    grid_lines: S.optional(ChartViewConfigResponseGridLines),
-    cumulative: S.optional(S.Boolean),
-    smooth_line: S.optional(S.Boolean),
-    hide_line_fill_area: S.optional(S.Boolean),
-    group_style: S.optional(ChartViewConfigResponseGroupStyle),
-    y_axis_min: S.optional(S.NullOr(S.Number)),
-    y_axis_max: S.optional(S.NullOr(S.Number)),
-    donut_labels: S.optional(ChartViewConfigResponseDonutLabels),
-    hide_title: S.optional(S.Boolean),
-    stack_by: S.optional(S.NullOr(GroupByConfigResponse)),
-    reference_lines: S.optional(S.NullOr(ChartViewConfigResponseReferenceLinesList)),
-    caption: S.optional(S.NullOr(S.String)),
-    color_by_value: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ChartViewConfigResponse" }) as any as S.Schema<ChartViewConfigResponse>;
-
 export interface DashboardWidgetResponse {
   /** The ID of this widget module. */
   id: string;
@@ -2564,21 +1534,8 @@ export interface DashboardWidgetResponse {
   /** The 0-based index of the row this widget belongs to. Widgets in the same row share the same row_index. */
   row_index?: number;
 }
-export const DashboardWidgetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    view_id: S.String,
-    width: S.optional(S.Number),
-    row_index: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DashboardWidgetResponse" }) as any as S.Schema<DashboardWidgetResponse>;
-
 /** The widget modules within this row. */
 export type DashboardRowResponseWidgetsList = Array<DashboardWidgetResponse>;
-export const DashboardRowResponseWidgetsList = /*@__PURE__*/ S.Array(
-  DashboardWidgetResponse,
-) as any as S.Schema<DashboardRowResponseWidgetsList>;
-
 export interface DashboardRowResponse {
   /** The ID of this row module. */
   id: string;
@@ -2587,35 +1544,14 @@ export interface DashboardRowResponse {
   /** Fixed height of the row in pixels. */
   height?: number;
 }
-export const DashboardRowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    widgets: DashboardRowResponseWidgetsList,
-    height: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DashboardRowResponse" }) as any as S.Schema<DashboardRowResponse>;
-
 /** The rows that make up the dashboard layout. Each row contains one or more widget modules. */
 export type DashboardViewConfigResponseRowsList = Array<DashboardRowResponse>;
-export const DashboardViewConfigResponseRowsList = /*@__PURE__*/ S.Array(
-  DashboardRowResponse,
-) as any as S.Schema<DashboardViewConfigResponseRowsList>;
-
 export interface DashboardViewConfigResponse {
   /** The view configuration type. */
   type: string;
   /** The rows that make up the dashboard layout. Each row contains one or more widget modules. */
   rows: DashboardViewConfigResponseRowsList;
 }
-export const DashboardViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    rows: DashboardViewConfigResponseRowsList,
-  }),
-).annotate({
-  identifier: "DashboardViewConfigResponse",
-}) as any as S.Schema<DashboardViewConfigResponse>;
-
 /** View configuration, typed by view type (table, board, calendar, etc.). */
 export type ViewConfigResponse =
   | TableViewConfigResponse
@@ -2628,8 +1564,6 @@ export type ViewConfigResponse =
   | FormViewConfigResponse
   | ChartViewConfigResponse
   | DashboardViewConfigResponse;
-export const ViewConfigResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewConfigResponse>;
-
 export interface DataSourceViewObjectResponse {
   /** The object type name. */
   object: string;
@@ -2664,37 +1598,13 @@ export interface DataSourceViewObjectResponse {
   /** For dashboard widget views, the ID of the parent dashboard view. Only present when this view is a widget inside a dashboard. */
   dashboard_view_id?: string;
 }
-export const DataSourceViewObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    parent: DatabaseParentResponse,
-    name: S.String,
-    type: DataSourceViewObjectResponseType,
-    created_time: S.String,
-    last_edited_time: S.String,
-    url: S.String,
-    data_source_id: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(S.NullOr(PartialUserObjectResponse)),
-    last_edited_by: S.optional(S.NullOr(PartialUserObjectResponse)),
-    filter: S.optional(S.NullOr(ViewFilterResponse)),
-    sorts: S.optional(S.NullOr(DataSourceViewObjectResponseSortsList)),
-    quick_filters: S.optional(S.NullOr(DataSourceViewObjectResponseQuickFiltersMap)),
-    configuration: S.optional(S.NullOr(ViewConfigResponse)),
-    dashboard_view_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataSourceViewObjectResponse",
-}) as any as S.Schema<DataSourceViewObjectResponse>;
-
 export type CreateViewResponseBody =
   | PartialDataSourceViewObjectResponse
   | DataSourceViewObjectResponse;
-export const CreateViewResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateViewResponseBody>;
+const CreateViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<CreateViewResponseBody>;
 
 export type CreateViewResponse = CreateViewResponseBody;
-export const CreateViewResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateViewResponse = /*@__PURE__*/ S.suspend(() =>
   CreateViewResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateViewResponse" }) as any as S.Schema<CreateViewResponse>;
 
@@ -2703,7 +1613,7 @@ export interface CreateViewQueryRequest {
   /** The number of results to return per page. Maximum: 100 */
   page_size?: number;
 }
-export const CreateViewQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String.pipe(T.Label()),
     page_size: S.optional(S.Number),
@@ -2716,7 +1626,7 @@ export interface PageReferenceResponse {
   /** The object ID. */
   id: string;
 }
-export const PageReferenceResponse = /*@__PURE__*/ S.suspend(() =>
+const PageReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2725,13 +1635,13 @@ export const PageReferenceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The page results for this page. */
 export type ViewQueryResponseResultsList = Array<PageReferenceResponse>;
-export const ViewQueryResponseResultsList = /*@__PURE__*/ S.Array(
+const ViewQueryResponseResultsList = /*@__PURE__*/ S.Array(
   PageReferenceResponse,
 ) as any as S.Schema<ViewQueryResponseResultsList>;
 
 /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
 export type RequestStatusResponseType = "complete" | "incomplete";
-export const RequestStatusResponseType = S.String;
+const RequestStatusResponseType = S.String;
 
 export interface RequestStatusResponse {
   /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
@@ -2739,7 +1649,7 @@ export interface RequestStatusResponse {
   /** Why the result set is incomplete. Only present when `type` is `incomplete`. */
   incomplete_reason?: string;
 }
-export const RequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RequestStatusResponseType,
     incomplete_reason: S.optional(S.String),
@@ -2766,7 +1676,7 @@ export interface ViewQueryResponse {
   /** Set to `{ type: 'incomplete', incomplete_reason: 'query_result_limit_reached' }` when the view's underlying data source has more rows matching this query than the server-side pagination depth limit allows. */
   request_status?: RequestStatusResponse;
 }
-export const ViewQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const ViewQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2783,7 +1693,7 @@ export const ViewQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteViewRequest {
   view_id: string;
 }
-export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/views/{view_id}", code: 200 })),
@@ -2793,7 +1703,7 @@ export interface DeleteViewQueryRequest {
   view_id: string;
   query_id: string;
 }
-export const DeleteViewQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteViewQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String.pipe(T.Label()),
     query_id: S.String.pipe(T.Label()),
@@ -2808,7 +1718,7 @@ export interface DeletedViewQueryResponse {
   /** Whether the view query was deleted. */
   deleted: boolean;
 }
-export const DeletedViewQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletedViewQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2819,7 +1729,7 @@ export const DeletedViewQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetViewRequest {
   view_id: string;
 }
-export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/views/{view_id}", code: 200 })),
@@ -2828,10 +1738,10 @@ export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetViewResponseBody =
   | PartialDataSourceViewObjectResponse
   | DataSourceViewObjectResponse;
-export const GetViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetViewResponseBody>;
+const GetViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetViewResponseBody>;
 
 export type GetViewResponse = GetViewResponseBody;
-export const GetViewResponse = /*@__PURE__*/ S.suspend(() =>
+const GetViewResponse = /*@__PURE__*/ S.suspend(() =>
   GetViewResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetViewResponse" }) as any as S.Schema<GetViewResponse>;
 
@@ -2841,7 +1751,7 @@ export interface GetViewQueryResultsRequest {
   start_cursor?: string;
   page_size?: number;
 }
-export const GetViewQueryResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewQueryResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String.pipe(T.Label()),
     query_id: S.String.pipe(T.Label()),
@@ -2858,7 +1768,7 @@ export interface PartialPageObjectResponse {
   /** The ID of the page. */
   id: string;
 }
-export const PartialPageObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const PartialPageObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2868,7 +1778,7 @@ export const PartialPageObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialPageObjectResponse>;
 
 export type GetViewQueryResultsResponseResultsList = Array<PartialPageObjectResponse>;
-export const GetViewQueryResultsResponseResultsList = /*@__PURE__*/ S.Array(
+const GetViewQueryResultsResponseResultsList = /*@__PURE__*/ S.Array(
   PartialPageObjectResponse,
 ) as any as S.Schema<GetViewQueryResultsResponseResultsList>;
 
@@ -2883,7 +1793,7 @@ export interface GetViewQueryResultsResponse {
   page: unknown;
   request_status?: RequestStatusResponse;
 }
-export const GetViewQueryResultsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetViewQueryResultsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     next_cursor: S.NullOr(S.String),
@@ -2903,7 +1813,7 @@ export interface ListViewsRequest {
   start_cursor?: string;
   page_size?: number;
 }
-export const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_id: S.optional(S.String.pipe(T.Query())),
     data_source_id: S.optional(S.String.pipe(T.Query())),
@@ -2918,11 +1828,8 @@ export interface DataSourceViewReferenceResponse {
   /** The ID of the view. */
   id: string;
 }
-export const DataSourceViewReferenceResponse =
-  PartialPageObjectResponse as any as S.Schema<DataSourceViewReferenceResponse>;
-
 export type ListViewsResponseResultsList = Array<DataSourceViewReferenceResponse>;
-export const ListViewsResponseResultsList =
+const ListViewsResponseResultsList =
   GetViewQueryResultsResponseResultsList as any as S.Schema<ListViewsResponseResultsList>;
 
 export interface ListViewsResponse {
@@ -2936,7 +1843,7 @@ export interface ListViewsResponse {
   view: unknown;
   request_status?: RequestStatusResponse;
 }
-export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     next_cursor: S.NullOr(S.String),
@@ -2950,24 +1857,21 @@ export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** One of: `ascending`, `descending` */
 export type SortDirectionRequest = "ascending" | "descending";
-export const SortDirectionRequest = S.String;
-
 export interface ViewPropertySortRequest {
   /** Property name or ID to sort by. */
   property: string;
   /** Sort direction. */
   direction: SortDirectionRequest | (string & {});
 }
-export const ViewPropertySortRequest =
-  PropertySortResponse as any as S.Schema<ViewPropertySortRequest>;
+const ViewPropertySortRequest = PropertySortResponse as any as S.Schema<ViewPropertySortRequest>;
 
 export type ViewPropertySortsRequest = Array<ViewPropertySortRequest>;
-export const ViewPropertySortsRequest = /*@__PURE__*/ S.Array(
+const ViewPropertySortsRequest = /*@__PURE__*/ S.Array(
   ViewPropertySortRequest,
 ) as any as S.Schema<ViewPropertySortsRequest>;
 
 export type UpdateViewRequestQuickFiltersMap = { [key: string]: unknown | null | undefined };
-export const UpdateViewRequestQuickFiltersMap = /*@__PURE__*/ S.Record(
+const UpdateViewRequestQuickFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<UpdateViewRequestQuickFiltersMap>;
@@ -2985,7 +1889,7 @@ export interface UpdateViewRequest {
   /** View presentation configuration. The type field must match the view type. Individual nullable fields within the configuration can be set to null to clear them. */
   configuration?: ViewConfigRequest;
 }
-export const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -2999,11 +1903,10 @@ export const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateViewResponseBody =
   | PartialDataSourceViewObjectResponse
   | DataSourceViewObjectResponse;
-export const UpdateViewResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateViewResponseBody>;
+const UpdateViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateViewResponseBody>;
 
 export type UpdateViewResponse = UpdateViewResponseBody;
-export const UpdateViewResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateViewResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateViewResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UpdateViewResponse" }) as any as S.Schema<UpdateViewResponse>;
 

@@ -76,7 +76,7 @@ export class SacRealmNotPaired
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request used by the AddAddressGroupItems method. */
 export interface AddAddressGroupItemsRequest {
@@ -85,7 +85,7 @@ export interface AddAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const AddAddressGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAddressGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(StringList),
     requestId: S.optional(S.String),
@@ -100,7 +100,7 @@ export interface AddItemsOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddAddressGroupItemsRequest;
 }
-export const AddItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroup: S.String.pipe(T.Label()),
     body: S.optional(AddAddressGroupItemsRequest.pipe(T.HttpBody())),
@@ -116,15 +116,10 @@ export const AddItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<AddItemsOrganizationsLocationsAddressGroupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -135,7 +130,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -156,7 +151,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -172,7 +167,7 @@ export interface AddItemsProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddAddressGroupItemsRequest;
 }
-export const AddItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroup: S.String.pipe(T.Label()),
     body: S.optional(AddAddressGroupItemsRequest.pipe(T.HttpBody())),
@@ -189,7 +184,7 @@ export const AddItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.sus
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -199,7 +194,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -216,7 +211,7 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -224,7 +219,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -246,7 +241,7 @@ export interface CloneAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const CloneAddressGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneAddressGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceAddressGroup: S.optional(S.String),
     requestId: S.optional(S.String),
@@ -261,7 +256,7 @@ export interface CloneItemsOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: CloneAddressGroupItemsRequest;
 }
-export const CloneItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroup: S.String.pipe(T.Label()),
     body: S.optional(CloneAddressGroupItemsRequest.pipe(T.HttpBody())),
@@ -282,7 +277,7 @@ export interface CloneItemsProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: CloneAddressGroupItemsRequest;
 }
-export const CloneItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroup: S.String.pipe(T.Label()),
     body: S.optional(CloneAddressGroupItemsRequest.pipe(T.HttpBody())),
@@ -298,16 +293,16 @@ export const CloneItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CloneItemsProjectsLocationsAddressGroupsRequest>;
 
 export type AddressGroupTypeEnum = "TYPE_UNSPECIFIED" | "IPV4" | "IPV6";
-export const AddressGroupTypeEnum = S.String;
+const AddressGroupTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type AddressGroupPurposeItemEnum = "PURPOSE_UNSPECIFIED" | "DEFAULT" | "CLOUD_ARMOR";
-export const AddressGroupPurposeItemEnum = S.String;
+const AddressGroupPurposeItemEnum = S.String;
 
 export type AddressGroupPurposeItemEnumList = Array<AddressGroupPurposeItemEnum | (string & {})>;
-export const AddressGroupPurposeItemEnumList = /*@__PURE__*/ S.Array(
+const AddressGroupPurposeItemEnumList = /*@__PURE__*/ S.Array(
   AddressGroupPurposeItemEnum,
 ) as any as S.Schema<AddressGroupPurposeItemEnumList>;
 
@@ -334,7 +329,7 @@ export interface AddressGroup {
   /** Optional. List of supported purposes of the Address Group. */
   purpose?: AddressGroupPurposeItemEnumList;
 }
-export const AddressGroup = /*@__PURE__*/ S.suspend(() =>
+const AddressGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     capacity: S.optional(S.Number),
@@ -359,7 +354,7 @@ export interface CreateOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-export const CreateOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     addressGroupId: S.optional(S.String.pipe(T.Query())),
@@ -395,7 +390,7 @@ export type FirewallEndpointEndpointSettingsContentCloudRegionEnum =
   | "SOUTH_KOREA"
   | "SAUDI_ARABIA"
   | "ITALY";
-export const FirewallEndpointEndpointSettingsContentCloudRegionEnum = S.String;
+const FirewallEndpointEndpointSettingsContentCloudRegionEnum = S.String;
 
 /** Settings for the endpoint. */
 export interface FirewallEndpointEndpointSettings {
@@ -406,7 +401,7 @@ export interface FirewallEndpointEndpointSettings {
   /** Optional. The content cloud region of the endpoint. */
   contentCloudRegion?: FirewallEndpointEndpointSettingsContentCloudRegionEnum | (string & {});
 }
-export const FirewallEndpointEndpointSettings = /*@__PURE__*/ S.suspend(() =>
+const FirewallEndpointEndpointSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpPartialResponseBlocked: S.optional(S.Boolean),
     jumboFramesEnabled: S.optional(S.Boolean),
@@ -420,7 +415,7 @@ export type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsT
   | "WILDFIRE_INLINE_CLOUD_ANALYSIS_TIMEOUT_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum =
+const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum =
   S.String;
 
 /** Settings for WildFire inline cloud analysis. */
@@ -434,8 +429,8 @@ export interface FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSett
   /** Optional. Whether to disable WildFire submission log generation for files that timeout during WildFire inline cloud analysis. */
   submissionTimeoutLoggingDisabled?: boolean;
 }
-export const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings =
-  /*@__PURE__*/ S.suspend(() =>
+const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       timeoutAction: S.optional(
         FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum,
@@ -443,9 +438,9 @@ export const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings
       maxAnalysisDuration: S.optional(S.String),
       submissionTimeoutLoggingDisabled: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings",
-  }) as any as S.Schema<FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings>;
+).annotate({
+  identifier: "FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings",
+}) as any as S.Schema<FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings>;
 
 export type FirewallEndpointWildfireSettingsWildfireRegionEnum =
   | "WILDFIRE_REGION_UNSPECIFIED"
@@ -467,13 +462,13 @@ export type FirewallEndpointWildfireSettingsWildfireRegionEnum =
   | "ISRAEL"
   | "SAUDI_ARABIA"
   | "SPAIN";
-export const FirewallEndpointWildfireSettingsWildfireRegionEnum = S.String;
+const FirewallEndpointWildfireSettingsWildfireRegionEnum = S.String;
 
 export type FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum =
   | "WILDFIRE_REALTIME_SIGNATURE_LOOKUP_TIMEOUT_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum = S.String;
+const FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum = S.String;
 
 /** Settings for WildFire analysis. */
 export interface FirewallEndpointWildfireSettings {
@@ -490,7 +485,7 @@ export interface FirewallEndpointWildfireSettings {
     | FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum
     | (string & {});
 }
-export const FirewallEndpointWildfireSettings = /*@__PURE__*/ S.suspend(() =>
+const FirewallEndpointWildfireSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wildfireInlineCloudAnalysisSettings: S.optional(
       FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings,
@@ -512,7 +507,7 @@ export type FirewallEndpointStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE";
-export const FirewallEndpointStateEnum = S.String;
+const FirewallEndpointStateEnum = S.String;
 
 /** This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer. */
 export interface FirewallEndpointAssociationReference {
@@ -521,7 +516,7 @@ export interface FirewallEndpointAssociationReference {
   /** Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}. */
   network?: string;
 }
-export const FirewallEndpointAssociationReference = /*@__PURE__*/ S.suspend(() =>
+const FirewallEndpointAssociationReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     network: S.optional(S.String),
@@ -531,7 +526,7 @@ export const FirewallEndpointAssociationReference = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<FirewallEndpointAssociationReference>;
 
 export type FirewallEndpointAssociationReferenceList = Array<FirewallEndpointAssociationReference>;
-export const FirewallEndpointAssociationReferenceList = /*@__PURE__*/ S.Array(
+const FirewallEndpointAssociationReferenceList = /*@__PURE__*/ S.Array(
   FirewallEndpointAssociationReference,
 ) as any as S.Schema<FirewallEndpointAssociationReferenceList>;
 
@@ -566,7 +561,7 @@ export interface FirewallEndpoint {
   /** Output only. List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured. */
   associations?: FirewallEndpointAssociationReferenceList;
 }
-export const FirewallEndpoint = /*@__PURE__*/ S.suspend(() =>
+const FirewallEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointSettings: S.optional(FirewallEndpointEndpointSettings),
     associatedNetworks: S.optional(StringList),
@@ -597,7 +592,7 @@ export interface CreateOrganizationsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-export const CreateOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     firewallEndpointId: S.optional(S.String.pipe(T.Query())),
@@ -621,7 +616,7 @@ export type WildfireVerdictChangeRequestFinalVerdictEnum =
   | "MALWARE"
   | "GRAYWARE"
   | "PHISHING";
-export const WildfireVerdictChangeRequestFinalVerdictEnum = S.String;
+const WildfireVerdictChangeRequestFinalVerdictEnum = S.String;
 
 export type WildfireVerdictChangeRequestOldVerdictEnum =
   | "WILDFIRE_SAMPLE_VERDICT_UNKNOWN"
@@ -629,14 +624,14 @@ export type WildfireVerdictChangeRequestOldVerdictEnum =
   | "MALWARE"
   | "GRAYWARE"
   | "PHISHING";
-export const WildfireVerdictChangeRequestOldVerdictEnum = S.String;
+const WildfireVerdictChangeRequestOldVerdictEnum = S.String;
 
 export type WildfireVerdictChangeRequestStateEnum =
   | "VERDICT_CHANGE_REQUEST_STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
   | "PENDING";
-export const WildfireVerdictChangeRequestStateEnum = S.String;
+const WildfireVerdictChangeRequestStateEnum = S.String;
 
 export type WildfireVerdictChangeRequestNewVerdictEnum =
   | "WILDFIRE_SAMPLE_VERDICT_UNKNOWN"
@@ -644,7 +639,7 @@ export type WildfireVerdictChangeRequestNewVerdictEnum =
   | "MALWARE"
   | "GRAYWARE"
   | "PHISHING";
-export const WildfireVerdictChangeRequestNewVerdictEnum = S.String;
+const WildfireVerdictChangeRequestNewVerdictEnum = S.String;
 
 /** Message for a WildfireVerdictChangeRequest. */
 export interface WildfireVerdictChangeRequest {
@@ -677,7 +672,7 @@ export interface WildfireVerdictChangeRequest {
   /** Required. The suggested verdict to apply to the Malware Sample. */
   newVerdict?: WildfireVerdictChangeRequestNewVerdictEnum | (string & {});
 }
-export const WildfireVerdictChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const WildfireVerdictChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalVerdict: S.optional(WildfireVerdictChangeRequestFinalVerdictEnum),
     sourceRegion: S.optional(S.String),
@@ -704,7 +699,7 @@ export interface CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictCha
   /** Request body */
   body?: WildfireVerdictChangeRequest;
 }
-export const CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
+const CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -747,7 +742,7 @@ export interface SecurityProfileGroup {
   /** Optional. An optional description of the profile group. Max length 2048 characters. */
   description?: string;
 }
-export const SecurityProfileGroup = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfileGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     urlFilteringProfile: S.optional(S.String),
@@ -772,19 +767,18 @@ export interface CreateOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-export const CreateOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      securityProfileGroupId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(SecurityProfileGroup.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/securityProfileGroups",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const CreateOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    securityProfileGroupId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SecurityProfileGroup.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/securityProfileGroups",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateOrganizationsLocationsSecurityProfileGroupsRequest",
 }) as any as S.Schema<CreateOrganizationsLocationsSecurityProfileGroupsRequest>;
@@ -796,14 +790,14 @@ export type SecurityProfileTypeEnum =
   | "CUSTOM_INTERCEPT"
   | "URL_FILTERING"
   | "WILDFIRE_ANALYSIS";
-export const SecurityProfileTypeEnum = S.String;
+const SecurityProfileTypeEnum = S.String;
 
 /** CustomInterceptProfile defines in-band integration behavior (intercept). It is used by firewall rules with an APPLY_SECURITY_PROFILE_GROUP action. */
 export interface CustomInterceptProfile {
   /** Required. The target InterceptEndpointGroup. When a firewall rule with this security profile attached matches a packet, the packet will be intercepted to the location-local target in this group. */
   interceptEndpointGroup?: string;
 }
-export const CustomInterceptProfile = /*@__PURE__*/ S.suspend(() =>
+const CustomInterceptProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interceptEndpointGroup: S.optional(S.String),
   }),
@@ -818,7 +812,7 @@ export type AntivirusOverrideProtocolEnum =
   | "HTTP2"
   | "HTTP"
   | "FTP";
-export const AntivirusOverrideProtocolEnum = S.String;
+const AntivirusOverrideProtocolEnum = S.String;
 
 export type AntivirusOverrideActionEnum =
   | "THREAT_ACTION_UNSPECIFIED"
@@ -826,7 +820,7 @@ export type AntivirusOverrideActionEnum =
   | "ALLOW"
   | "ALERT"
   | "DENY";
-export const AntivirusOverrideActionEnum = S.String;
+const AntivirusOverrideActionEnum = S.String;
 
 /** Defines what action to take for antivirus threats per protocol. */
 export interface AntivirusOverride {
@@ -835,7 +829,7 @@ export interface AntivirusOverride {
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
   action?: AntivirusOverrideActionEnum | (string & {});
 }
-export const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
+const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocol: S.optional(AntivirusOverrideProtocolEnum),
     action: S.optional(AntivirusOverrideActionEnum),
@@ -843,7 +837,7 @@ export const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AntivirusOverride" }) as any as S.Schema<AntivirusOverride>;
 
 export type AntivirusOverrideList = Array<AntivirusOverride>;
-export const AntivirusOverrideList = /*@__PURE__*/ S.Array(
+const AntivirusOverrideList = /*@__PURE__*/ S.Array(
   AntivirusOverride,
 ) as any as S.Schema<AntivirusOverrideList>;
 
@@ -853,7 +847,7 @@ export type ThreatOverrideActionEnum =
   | "ALLOW"
   | "ALERT"
   | "DENY";
-export const ThreatOverrideActionEnum = S.String;
+const ThreatOverrideActionEnum = S.String;
 
 export type ThreatOverrideTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
@@ -862,7 +856,7 @@ export type ThreatOverrideTypeEnum =
   | "ANTIVIRUS"
   | "SPYWARE"
   | "DNS";
-export const ThreatOverrideTypeEnum = S.String;
+const ThreatOverrideTypeEnum = S.String;
 
 /** Defines what action to take for a specific threat_id match. */
 export interface ThreatOverride {
@@ -873,7 +867,7 @@ export interface ThreatOverride {
   /** Required. Vendor-specific ID of a threat to override. */
   threatId?: string;
 }
-export const ThreatOverride = /*@__PURE__*/ S.suspend(() =>
+const ThreatOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(ThreatOverrideActionEnum),
     type: S.optional(ThreatOverrideTypeEnum),
@@ -882,7 +876,7 @@ export const ThreatOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThreatOverride" }) as any as S.Schema<ThreatOverride>;
 
 export type ThreatOverrideList = Array<ThreatOverride>;
-export const ThreatOverrideList = /*@__PURE__*/ S.Array(
+const ThreatOverrideList = /*@__PURE__*/ S.Array(
   ThreatOverride,
 ) as any as S.Schema<ThreatOverrideList>;
 
@@ -893,7 +887,7 @@ export type SeverityOverrideSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const SeverityOverrideSeverityEnum = S.String;
+const SeverityOverrideSeverityEnum = S.String;
 
 export type SeverityOverrideActionEnum =
   | "THREAT_ACTION_UNSPECIFIED"
@@ -901,7 +895,7 @@ export type SeverityOverrideActionEnum =
   | "ALLOW"
   | "ALERT"
   | "DENY";
-export const SeverityOverrideActionEnum = S.String;
+const SeverityOverrideActionEnum = S.String;
 
 /** Defines what action to take for a specific severity match. */
 export interface SeverityOverride {
@@ -910,7 +904,7 @@ export interface SeverityOverride {
   /** Required. Threat action override. */
   action?: SeverityOverrideActionEnum | (string & {});
 }
-export const SeverityOverride = /*@__PURE__*/ S.suspend(() =>
+const SeverityOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(SeverityOverrideSeverityEnum),
     action: S.optional(SeverityOverrideActionEnum),
@@ -918,7 +912,7 @@ export const SeverityOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeverityOverride" }) as any as S.Schema<SeverityOverride>;
 
 export type SeverityOverrideList = Array<SeverityOverride>;
-export const SeverityOverrideList = /*@__PURE__*/ S.Array(
+const SeverityOverrideList = /*@__PURE__*/ S.Array(
   SeverityOverride,
 ) as any as S.Schema<SeverityOverrideList>;
 
@@ -931,7 +925,7 @@ export interface ThreatPreventionProfile {
   /** Optional. Configuration for overriding threats actions by severity match. */
   severityOverrides?: SeverityOverrideList;
 }
-export const ThreatPreventionProfile = /*@__PURE__*/ S.suspend(() =>
+const ThreatPreventionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     antivirusOverrides: S.optional(AntivirusOverrideList),
     threatOverrides: S.optional(ThreatOverrideList),
@@ -944,13 +938,13 @@ export type WildfireSubmissionRuleDirectionEnum =
   | "UPLOAD"
   | "DOWNLOAD"
   | "BOTH";
-export const WildfireSubmissionRuleDirectionEnum = S.String;
+const WildfireSubmissionRuleDirectionEnum = S.String;
 
 export type WildfireSubmissionRuleFileSelectionModeEnum =
   | "FILE_SELECTION_MODE_UNSPECIFIED"
   | "ALL_FILE_TYPES"
   | "CUSTOM_FILE_TYPES";
-export const WildfireSubmissionRuleFileSelectionModeEnum = S.String;
+const WildfireSubmissionRuleFileSelectionModeEnum = S.String;
 
 export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum =
   | "FILE_TYPE_UNSPECIFIED"
@@ -964,12 +958,10 @@ export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum =
   | "PDF"
   | "PE"
   | "SCRIPT";
-export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum = S.String;
-
 export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = Array<
   WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum | (string & {})
 >;
-export const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
+const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
   AddressGroupPurposeItemEnumList as any as S.Schema<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList>;
 
 /** The options to submit a custom list of file types for scan. */
@@ -977,7 +969,7 @@ export interface WildfireSubmissionRuleCustomFileTypes {
   /** Required. File types to be submitted for WildFire analysis. */
   fileTypes?: WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList;
 }
-export const WildfireSubmissionRuleCustomFileTypes = /*@__PURE__*/ S.suspend(() =>
+const WildfireSubmissionRuleCustomFileTypes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileTypes: S.optional(WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList),
   }),
@@ -994,7 +986,7 @@ export interface WildfireSubmissionRule {
   /** Submit a custom list of file types for WildFire analysis. */
   customFileTypes?: WildfireSubmissionRuleCustomFileTypes;
 }
-export const WildfireSubmissionRule = /*@__PURE__*/ S.suspend(() =>
+const WildfireSubmissionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(WildfireSubmissionRuleDirectionEnum),
     fileSelectionMode: S.optional(WildfireSubmissionRuleFileSelectionModeEnum),
@@ -1003,7 +995,7 @@ export const WildfireSubmissionRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WildfireSubmissionRule" }) as any as S.Schema<WildfireSubmissionRule>;
 
 export type WildfireSubmissionRuleList = Array<WildfireSubmissionRule>;
-export const WildfireSubmissionRuleList = /*@__PURE__*/ S.Array(
+const WildfireSubmissionRuleList = /*@__PURE__*/ S.Array(
   WildfireSubmissionRule,
 ) as any as S.Schema<WildfireSubmissionRuleList>;
 
@@ -1013,7 +1005,7 @@ export type WildfireOverrideActionEnum =
   | "WILDFIRE_ALLOW"
   | "WILDFIRE_ALERT"
   | "WILDFIRE_DENY";
-export const WildfireOverrideActionEnum = S.String;
+const WildfireOverrideActionEnum = S.String;
 
 export type WildfireOverrideProtocolEnum =
   | "WILDFIRE_PROTOCOL_UNSPECIFIED"
@@ -1024,7 +1016,7 @@ export type WildfireOverrideProtocolEnum =
   | "WILDFIRE_HTTP2"
   | "WILDFIRE_HTTP"
   | "WILDFIRE_FTP";
-export const WildfireOverrideProtocolEnum = S.String;
+const WildfireOverrideProtocolEnum = S.String;
 
 /** Defines what action to take for WildFire threats per protocol. */
 export interface WildfireOverride {
@@ -1033,7 +1025,7 @@ export interface WildfireOverride {
   /** Required. Protocol to match. */
   protocol?: WildfireOverrideProtocolEnum | (string & {});
 }
-export const WildfireOverride = /*@__PURE__*/ S.suspend(() =>
+const WildfireOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(WildfireOverrideActionEnum),
     protocol: S.optional(WildfireOverrideProtocolEnum),
@@ -1041,7 +1033,7 @@ export const WildfireOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WildfireOverride" }) as any as S.Schema<WildfireOverride>;
 
 export type WildfireOverrideList = Array<WildfireOverride>;
-export const WildfireOverrideList = /*@__PURE__*/ S.Array(
+const WildfireOverrideList = /*@__PURE__*/ S.Array(
   WildfireOverride,
 ) as any as S.Schema<WildfireOverrideList>;
 
@@ -1049,41 +1041,40 @@ export type WildfireInlineCloudAnalysisRuleFileSelectionModeEnum =
   | "FILE_SELECTION_MODE_UNSPECIFIED"
   | "ALL_FILE_TYPES"
   | "CUSTOM_FILE_TYPES";
-export const WildfireInlineCloudAnalysisRuleFileSelectionModeEnum = S.String;
+const WildfireInlineCloudAnalysisRuleFileSelectionModeEnum = S.String;
 
 export type WildfireInlineCloudAnalysisRuleActionEnum =
   | "WILDFIRE_INLINE_CLOUD_ANALYSIS_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
   | "ALERT";
-export const WildfireInlineCloudAnalysisRuleActionEnum = S.String;
+const WildfireInlineCloudAnalysisRuleActionEnum = S.String;
 
 export type WildfireInlineCloudAnalysisRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "UPLOAD"
   | "DOWNLOAD"
   | "BOTH";
-export const WildfireInlineCloudAnalysisRuleDirectionEnum = S.String;
+const WildfireInlineCloudAnalysisRuleDirectionEnum = S.String;
 
 export type WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum =
   | "FILE_TYPE_UNSPECIFIED"
   | "PE";
-export const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum = S.String;
+const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum = S.String;
 
 export type WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList = Array<
   WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum | (string & {})
 >;
-export const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum,
-  ) as any as S.Schema<WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList>;
+const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList = /*@__PURE__*/ S.Array(
+  WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum,
+) as any as S.Schema<WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList>;
 
 /** The options to submit a custom list of file types for scan. */
 export interface WildfireInlineCloudAnalysisRuleCustomFileTypes {
   /** Required. File types to be submitted for WildFire inline cloud analysis. */
   fileTypes?: WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList;
 }
-export const WildfireInlineCloudAnalysisRuleCustomFileTypes = /*@__PURE__*/ S.suspend(() =>
+const WildfireInlineCloudAnalysisRuleCustomFileTypes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileTypes: S.optional(WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList),
   }),
@@ -1102,7 +1093,7 @@ export interface WildfireInlineCloudAnalysisRule {
   /** Submit a custom list of file types for WildFire analysis. */
   customFileTypes?: WildfireInlineCloudAnalysisRuleCustomFileTypes;
 }
-export const WildfireInlineCloudAnalysisRule = /*@__PURE__*/ S.suspend(() =>
+const WildfireInlineCloudAnalysisRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSelectionMode: S.optional(WildfireInlineCloudAnalysisRuleFileSelectionModeEnum),
     action: S.optional(WildfireInlineCloudAnalysisRuleActionEnum),
@@ -1114,7 +1105,7 @@ export const WildfireInlineCloudAnalysisRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WildfireInlineCloudAnalysisRule>;
 
 export type WildfireInlineCloudAnalysisRuleList = Array<WildfireInlineCloudAnalysisRule>;
-export const WildfireInlineCloudAnalysisRuleList = /*@__PURE__*/ S.Array(
+const WildfireInlineCloudAnalysisRuleList = /*@__PURE__*/ S.Array(
   WildfireInlineCloudAnalysisRule,
 ) as any as S.Schema<WildfireInlineCloudAnalysisRuleList>;
 
@@ -1124,8 +1115,6 @@ export type WildfireInlineMlOverrideActionEnum =
   | "WILDFIRE_ALLOW"
   | "WILDFIRE_ALERT"
   | "WILDFIRE_DENY";
-export const WildfireInlineMlOverrideActionEnum = S.String;
-
 export type WildfireInlineMlOverrideProtocolEnum =
   | "WILDFIRE_PROTOCOL_UNSPECIFIED"
   | "WILDFIRE_SMTP"
@@ -1135,8 +1124,6 @@ export type WildfireInlineMlOverrideProtocolEnum =
   | "WILDFIRE_HTTP2"
   | "WILDFIRE_HTTP"
   | "WILDFIRE_FTP";
-export const WildfireInlineMlOverrideProtocolEnum = S.String;
-
 /** Defines what action to take for WildFire Inline ML threats per protocol. */
 export interface WildfireInlineMlOverride {
   /** Required. The action to take for WildFire Inline ML override. */
@@ -1144,11 +1131,8 @@ export interface WildfireInlineMlOverride {
   /** Required. Protocol to match for WildFire Inline ML override. */
   protocol?: WildfireInlineMlOverrideProtocolEnum | (string & {});
 }
-export const WildfireInlineMlOverride =
-  WildfireOverride as any as S.Schema<WildfireInlineMlOverride>;
-
 export type WildfireInlineMlOverrideList = Array<WildfireInlineMlOverride>;
-export const WildfireInlineMlOverrideList =
+const WildfireInlineMlOverrideList =
   WildfireOverrideList as any as S.Schema<WildfireInlineMlOverrideList>;
 
 export type WildfireInlineMlSettingsInlineMlConfigFileTypeEnum =
@@ -1161,14 +1145,14 @@ export type WildfireInlineMlSettingsInlineMlConfigFileTypeEnum =
   | "SHELL"
   | "OOXML"
   | "MACHO";
-export const WildfireInlineMlSettingsInlineMlConfigFileTypeEnum = S.String;
+const WildfireInlineMlSettingsInlineMlConfigFileTypeEnum = S.String;
 
 export type WildfireInlineMlSettingsInlineMlConfigActionEnum =
   | "INLINE_ML_ACTION_UNSPECIFIED"
   | "DISABLE"
   | "ALERT"
   | "ENABLE";
-export const WildfireInlineMlSettingsInlineMlConfigActionEnum = S.String;
+const WildfireInlineMlSettingsInlineMlConfigActionEnum = S.String;
 
 /** Configuration for WildFire Inline ML analysis per file type. */
 export interface WildfireInlineMlSettingsInlineMlConfig {
@@ -1177,7 +1161,7 @@ export interface WildfireInlineMlSettingsInlineMlConfig {
   /** Required. Action to take when a threat is detected using Inline ML. */
   action?: WildfireInlineMlSettingsInlineMlConfigActionEnum | (string & {});
 }
-export const WildfireInlineMlSettingsInlineMlConfig = /*@__PURE__*/ S.suspend(() =>
+const WildfireInlineMlSettingsInlineMlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(WildfireInlineMlSettingsInlineMlConfigFileTypeEnum),
     action: S.optional(WildfireInlineMlSettingsInlineMlConfigActionEnum),
@@ -1188,7 +1172,7 @@ export const WildfireInlineMlSettingsInlineMlConfig = /*@__PURE__*/ S.suspend(()
 
 export type WildfireInlineMlSettingsInlineMlConfigList =
   Array<WildfireInlineMlSettingsInlineMlConfig>;
-export const WildfireInlineMlSettingsInlineMlConfigList = /*@__PURE__*/ S.Array(
+const WildfireInlineMlSettingsInlineMlConfigList = /*@__PURE__*/ S.Array(
   WildfireInlineMlSettingsInlineMlConfig,
 ) as any as S.Schema<WildfireInlineMlSettingsInlineMlConfigList>;
 
@@ -1199,7 +1183,7 @@ export interface WildfireInlineMlFileException {
   /** Required. Machine learning partial hash of the file to exclude from WildFire Inline ML analysis. */
   partialHash?: string;
 }
-export const WildfireInlineMlFileException = /*@__PURE__*/ S.suspend(() =>
+const WildfireInlineMlFileException = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     partialHash: S.optional(S.String),
@@ -1209,7 +1193,7 @@ export const WildfireInlineMlFileException = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WildfireInlineMlFileException>;
 
 export type WildfireInlineMlFileExceptionList = Array<WildfireInlineMlFileException>;
-export const WildfireInlineMlFileExceptionList = /*@__PURE__*/ S.Array(
+const WildfireInlineMlFileExceptionList = /*@__PURE__*/ S.Array(
   WildfireInlineMlFileException,
 ) as any as S.Schema<WildfireInlineMlFileExceptionList>;
 
@@ -1220,7 +1204,7 @@ export interface WildfireInlineMlSettings {
   /** Optional. List of files to exclude from WildFire Inline ML analysis. */
   fileExceptions?: WildfireInlineMlFileExceptionList;
 }
-export const WildfireInlineMlSettings = /*@__PURE__*/ S.suspend(() =>
+const WildfireInlineMlSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inlineMlConfigs: S.optional(WildfireInlineMlSettingsInlineMlConfigList),
     fileExceptions: S.optional(WildfireInlineMlFileExceptionList),
@@ -1228,7 +1212,7 @@ export const WildfireInlineMlSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WildfireInlineMlSettings" }) as any as S.Schema<WildfireInlineMlSettings>;
 
 export type WildfireInlineMlSettingsList = Array<WildfireInlineMlSettings>;
-export const WildfireInlineMlSettingsList = /*@__PURE__*/ S.Array(
+const WildfireInlineMlSettingsList = /*@__PURE__*/ S.Array(
   WildfireInlineMlSettings,
 ) as any as S.Schema<WildfireInlineMlSettingsList>;
 
@@ -1238,7 +1222,7 @@ export type WildfireThreatOverrideActionEnum =
   | "WILDFIRE_ALLOW"
   | "WILDFIRE_ALERT"
   | "WILDFIRE_DENY";
-export const WildfireThreatOverrideActionEnum = S.String;
+const WildfireThreatOverrideActionEnum = S.String;
 
 /** Defines what action to take for a specific WildFire threat_id match. */
 export interface WildfireThreatOverride {
@@ -1247,7 +1231,7 @@ export interface WildfireThreatOverride {
   /** Required. Threat action override. */
   action?: WildfireThreatOverrideActionEnum | (string & {});
 }
-export const WildfireThreatOverride = /*@__PURE__*/ S.suspend(() =>
+const WildfireThreatOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threatId: S.optional(S.String),
     action: S.optional(WildfireThreatOverrideActionEnum),
@@ -1255,7 +1239,7 @@ export const WildfireThreatOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WildfireThreatOverride" }) as any as S.Schema<WildfireThreatOverride>;
 
 export type WildfireThreatOverrideList = Array<WildfireThreatOverride>;
-export const WildfireThreatOverrideList = /*@__PURE__*/ S.Array(
+const WildfireThreatOverrideList = /*@__PURE__*/ S.Array(
   WildfireThreatOverride,
 ) as any as S.Schema<WildfireThreatOverrideList>;
 
@@ -1278,7 +1262,7 @@ export interface WildfireAnalysisProfile {
   /** Optional. Configuration for overriding WildFire threats action by threat_id match. */
   wildfireThreatOverrides?: WildfireThreatOverrideList;
 }
-export const WildfireAnalysisProfile = /*@__PURE__*/ S.suspend(() =>
+const WildfireAnalysisProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wildfireSubmissionRules: S.optional(WildfireSubmissionRuleList),
     wildfireOverrides: S.optional(WildfireOverrideList),
@@ -1292,7 +1276,7 @@ export const WildfireAnalysisProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WildfireAnalysisProfile" }) as any as S.Schema<WildfireAnalysisProfile>;
 
 export type UrlFilterFilteringActionEnum = "URL_FILTERING_ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
-export const UrlFilterFilteringActionEnum = S.String;
+const UrlFilterFilteringActionEnum = S.String;
 
 /** A URL filter defines an action to take for some URL match. */
 export interface UrlFilter {
@@ -1303,7 +1287,7 @@ export interface UrlFilter {
   /** Required. The action taken when this filter is applied. */
   filteringAction?: UrlFilterFilteringActionEnum | (string & {});
 }
-export const UrlFilter = /*@__PURE__*/ S.suspend(() =>
+const UrlFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urls: S.optional(StringList),
     priority: S.optional(S.Number),
@@ -1312,14 +1296,14 @@ export const UrlFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UrlFilter" }) as any as S.Schema<UrlFilter>;
 
 export type UrlFilterList = Array<UrlFilter>;
-export const UrlFilterList = /*@__PURE__*/ S.Array(UrlFilter) as any as S.Schema<UrlFilterList>;
+const UrlFilterList = /*@__PURE__*/ S.Array(UrlFilter) as any as S.Schema<UrlFilterList>;
 
 /** UrlFilteringProfile defines filters based on URL. */
 export interface UrlFilteringProfile {
   /** Optional. The list of filtering configs in which each config defines an action to take for some URL match. */
   urlFilters?: UrlFilterList;
 }
-export const UrlFilteringProfile = /*@__PURE__*/ S.suspend(() =>
+const UrlFilteringProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urlFilters: S.optional(UrlFilterList),
   }),
@@ -1330,7 +1314,7 @@ export interface CustomMirroringProfile {
   /** Required. Immutable. The target MirroringEndpointGroup. When a mirroring rule with this security profile attached matches a packet, a replica will be mirrored to the location-local target in this group. */
   mirroringEndpointGroup?: string;
 }
-export const CustomMirroringProfile = /*@__PURE__*/ S.suspend(() =>
+const CustomMirroringProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mirroringEndpointGroup: S.optional(S.String),
   }),
@@ -1363,7 +1347,7 @@ export interface SecurityProfile {
   /** Optional. An optional description of the profile. Max length 512 characters. */
   description?: string;
 }
-export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     etag: S.optional(S.String),
@@ -1388,7 +1372,7 @@ export interface CreateOrganizationsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-export const CreateOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityProfileId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1414,7 +1398,7 @@ export interface CreateProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-export const CreateProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     addressGroupId: S.optional(S.String.pipe(T.Query())),
@@ -1438,7 +1422,7 @@ export interface Source {
   /** Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*\/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure. */
   principals?: StringList;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipBlocks: S.optional(StringList),
     principals: S.optional(StringList),
@@ -1446,7 +1430,7 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 export type SourceList = Array<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
 
 /** Specification of HTTP header match attributes. */
 export interface HttpHeaderMatch {
@@ -1455,7 +1439,7 @@ export interface HttpHeaderMatch {
   /** Required. The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". */
   headerName?: string;
 }
-export const HttpHeaderMatch = /*@__PURE__*/ S.suspend(() =>
+const HttpHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regexMatch: S.optional(S.String),
     headerName: S.optional(S.String),
@@ -1463,7 +1447,7 @@ export const HttpHeaderMatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpHeaderMatch" }) as any as S.Schema<HttpHeaderMatch>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Specification of traffic destination attributes. */
 export interface Destination {
@@ -1476,7 +1460,7 @@ export interface Destination {
   /** Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services. */
   methods?: StringList;
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hosts: S.optional(StringList),
     httpHeaderMatch: S.optional(HttpHeaderMatch),
@@ -1486,9 +1470,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 export type DestinationList = Array<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(
-  Destination,
-) as any as S.Schema<DestinationList>;
+const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
 
 /** Specification of rules. */
 export interface Rule {
@@ -1497,7 +1479,7 @@ export interface Rule {
   /** Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination. */
   destinations?: DestinationList;
 }
-export const Rule = /*@__PURE__*/ S.suspend(() =>
+const Rule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(SourceList),
     destinations: S.optional(DestinationList),
@@ -1505,10 +1487,10 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 export type RuleList = Array<Rule>;
-export const RuleList = /*@__PURE__*/ S.Array(Rule) as any as S.Schema<RuleList>;
+const RuleList = /*@__PURE__*/ S.Array(Rule) as any as S.Schema<RuleList>;
 
 export type AuthorizationPolicyActionEnum = "ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
-export const AuthorizationPolicyActionEnum = S.String;
+const AuthorizationPolicyActionEnum = S.String;
 
 /** AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource. */
 export interface AuthorizationPolicy {
@@ -1527,7 +1509,7 @@ export interface AuthorizationPolicy {
   /** Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY". */
   action?: AuthorizationPolicyActionEnum | (string & {});
 }
-export const AuthorizationPolicy = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1547,7 +1529,7 @@ export interface CreateProjectsLocationsAuthorizationPoliciesRequest {
   /** Request body */
   body?: AuthorizationPolicy;
 }
-export const CreateProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     authorizationPolicyId: S.optional(S.String.pipe(T.Query())),
@@ -1567,7 +1549,7 @@ export type AuthzPolicyPolicyProfileEnum =
   | "POLICY_PROFILE_UNSPECIFIED"
   | "REQUEST_AUTHZ"
   | "CONTENT_AUTHZ";
-export const AuthzPolicyPolicyProfileEnum = S.String;
+const AuthzPolicyPolicyProfileEnum = S.String;
 
 /** Determines how a string value should be matched. */
 export interface AuthzPolicyAuthzRuleStringMatch {
@@ -1582,7 +1564,7 @@ export interface AuthzPolicyAuthzRuleStringMatch {
   /** The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``abc.xyz`` */
   prefix?: string;
 }
-export const AuthzPolicyAuthzRuleStringMatch = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleStringMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suffix: S.optional(S.String),
     ignoreCase: S.optional(S.Boolean),
@@ -1599,7 +1581,7 @@ export interface AuthzPolicyAuthzRuleRequestResourceTagValueIdSet {
   /** Required. A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match. Limited to 5 ids in the Tag value id set. */
   ids?: StringList;
 }
-export const AuthzPolicyAuthzRuleRequestResourceTagValueIdSet = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleRequestResourceTagValueIdSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.optional(StringList),
   }),
@@ -1614,7 +1596,7 @@ export interface AuthzPolicyAuthzRuleRequestResource {
   /** Optional. A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. */
   tagValueIdSet?: AuthzPolicyAuthzRuleRequestResourceTagValueIdSet;
 }
-export const AuthzPolicyAuthzRuleRequestResource = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleRequestResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamServiceAccount: S.optional(AuthzPolicyAuthzRuleStringMatch),
     tagValueIdSet: S.optional(AuthzPolicyAuthzRuleRequestResourceTagValueIdSet),
@@ -1624,7 +1606,7 @@ export const AuthzPolicyAuthzRuleRequestResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleRequestResource>;
 
 export type AuthzPolicyAuthzRuleRequestResourceList = Array<AuthzPolicyAuthzRuleRequestResource>;
-export const AuthzPolicyAuthzRuleRequestResourceList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleRequestResourceList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleRequestResource,
 ) as any as S.Schema<AuthzPolicyAuthzRuleRequestResourceList>;
 
@@ -1635,7 +1617,7 @@ export interface AuthzPolicyAuthzRuleIpBlock {
   /** Required. The address prefix. */
   prefix?: string;
 }
-export const AuthzPolicyAuthzRuleIpBlock = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleIpBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     length: S.optional(S.Number),
     prefix: S.optional(S.String),
@@ -1645,7 +1627,7 @@ export const AuthzPolicyAuthzRuleIpBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleIpBlock>;
 
 export type AuthzPolicyAuthzRuleIpBlockList = Array<AuthzPolicyAuthzRuleIpBlock>;
-export const AuthzPolicyAuthzRuleIpBlockList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleIpBlockList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleIpBlock,
 ) as any as S.Schema<AuthzPolicyAuthzRuleIpBlockList>;
 
@@ -1654,7 +1636,7 @@ export type AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
   | "CLIENT_CERT_URI_SAN"
   | "CLIENT_CERT_DNS_NAME_SAN"
   | "CLIENT_CERT_COMMON_NAME";
-export const AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum = S.String;
+const AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum = S.String;
 
 /** Describes the properties of a principal to be matched against. */
 export interface AuthzPolicyAuthzRulePrincipal {
@@ -1663,7 +1645,7 @@ export interface AuthzPolicyAuthzRulePrincipal {
   /** Optional. An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN. */
   principalSelector?: AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum | (string & {});
 }
-export const AuthzPolicyAuthzRulePrincipal = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRulePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principal: S.optional(AuthzPolicyAuthzRuleStringMatch),
     principalSelector: S.optional(AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum),
@@ -1673,7 +1655,7 @@ export const AuthzPolicyAuthzRulePrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRulePrincipal>;
 
 export type AuthzPolicyAuthzRulePrincipalList = Array<AuthzPolicyAuthzRulePrincipal>;
-export const AuthzPolicyAuthzRulePrincipalList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRulePrincipalList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRulePrincipal,
 ) as any as S.Schema<AuthzPolicyAuthzRulePrincipalList>;
 
@@ -1686,7 +1668,7 @@ export interface AuthzPolicyAuthzRuleFromRequestSource {
   /** Optional. A list of identities derived from the client's certificate. This field will not match on a request unless frontend mutual TLS is enabled for the forwarding rule or Gateway and the client certificate has been successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs, DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches with the rule. Limited to 50 principals per Authorization Policy for regional internal Application Load Balancers, regional external Application Load Balancers, cross-region internal Application Load Balancers, and Cloud Service Mesh while 25 principals per Authorization Policy for global external Application Load Balancers. */
   principals?: AuthzPolicyAuthzRulePrincipalList;
 }
-export const AuthzPolicyAuthzRuleFromRequestSource = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleFromRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AuthzPolicyAuthzRuleRequestResourceList),
     ipBlocks: S.optional(AuthzPolicyAuthzRuleIpBlockList),
@@ -1698,7 +1680,7 @@ export const AuthzPolicyAuthzRuleFromRequestSource = /*@__PURE__*/ S.suspend(() 
 
 export type AuthzPolicyAuthzRuleFromRequestSourceList =
   Array<AuthzPolicyAuthzRuleFromRequestSource>;
-export const AuthzPolicyAuthzRuleFromRequestSourceList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleFromRequestSourceList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleFromRequestSource,
 ) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSourceList>;
 
@@ -1709,7 +1691,7 @@ export interface AuthzPolicyAuthzRuleFrom {
   /** Optional. Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match. */
   sources?: AuthzPolicyAuthzRuleFromRequestSourceList;
 }
-export const AuthzPolicyAuthzRuleFrom = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notSources: S.optional(AuthzPolicyAuthzRuleFromRequestSourceList),
     sources: S.optional(AuthzPolicyAuthzRuleFromRequestSourceList),
@@ -1717,7 +1699,7 @@ export const AuthzPolicyAuthzRuleFrom = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthzPolicyAuthzRuleFrom" }) as any as S.Schema<AuthzPolicyAuthzRuleFrom>;
 
 export type AuthzPolicyAuthzRuleStringMatchList = Array<AuthzPolicyAuthzRuleStringMatch>;
-export const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleStringMatch,
 ) as any as S.Schema<AuthzPolicyAuthzRuleStringMatchList>;
 
@@ -1725,7 +1707,7 @@ export type AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEn
   | "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED"
   | "SKIP_BASE_PROTOCOL_METHODS"
   | "MATCH_BASE_PROTOCOL_METHODS";
-export const AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum = S.String;
+const AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum = S.String;
 
 /** Describes a set of MCP methods to match against. */
 export interface AuthzPolicyAuthzRuleToRequestOperationMCPMethod {
@@ -1734,7 +1716,7 @@ export interface AuthzPolicyAuthzRuleToRequestOperationMCPMethod {
   /** Optional. A list of MCP method parameters to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 MCP method parameters per Authorization Policy. */
   params?: AuthzPolicyAuthzRuleStringMatchList;
 }
-export const AuthzPolicyAuthzRuleToRequestOperationMCPMethod = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleToRequestOperationMCPMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     params: S.optional(AuthzPolicyAuthzRuleStringMatchList),
@@ -1745,7 +1727,7 @@ export const AuthzPolicyAuthzRuleToRequestOperationMCPMethod = /*@__PURE__*/ S.s
 
 export type AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
   Array<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
-export const AuthzPolicyAuthzRuleToRequestOperationMCPMethodList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleToRequestOperationMCPMethodList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleToRequestOperationMCPMethod,
 ) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethodList>;
 
@@ -1758,7 +1740,7 @@ export interface AuthzPolicyAuthzRuleToRequestOperationMCP {
   /** Optional. A list of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per Authorization Policy. */
   methods?: AuthzPolicyAuthzRuleToRequestOperationMCPMethodList;
 }
-export const AuthzPolicyAuthzRuleToRequestOperationMCP = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleToRequestOperationMCP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseProtocolMethodsOption: S.optional(
       AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum,
@@ -1776,7 +1758,7 @@ export interface AuthzPolicyAuthzRuleHeaderMatch {
   /** Optional. Specifies the name of the header in the request. */
   name?: string;
 }
-export const AuthzPolicyAuthzRuleHeaderMatch = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AuthzPolicyAuthzRuleStringMatch),
     name: S.optional(S.String),
@@ -1786,7 +1768,7 @@ export const AuthzPolicyAuthzRuleHeaderMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatch>;
 
 export type AuthzPolicyAuthzRuleHeaderMatchList = Array<AuthzPolicyAuthzRuleHeaderMatch>;
-export const AuthzPolicyAuthzRuleHeaderMatchList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleHeaderMatchList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleHeaderMatch,
 ) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatchList>;
 
@@ -1795,7 +1777,7 @@ export interface AuthzPolicyAuthzRuleToRequestOperationHeaderSet {
   /** Required. A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 headers per Authorization Policy. */
   headers?: AuthzPolicyAuthzRuleHeaderMatchList;
 }
-export const AuthzPolicyAuthzRuleToRequestOperationHeaderSet = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleToRequestOperationHeaderSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(AuthzPolicyAuthzRuleHeaderMatchList),
   }),
@@ -1818,7 +1800,7 @@ export interface AuthzPolicyAuthzRuleToRequestOperation {
   /** Optional. A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 paths per Authorization Policy. Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method. */
   paths?: AuthzPolicyAuthzRuleStringMatchList;
 }
-export const AuthzPolicyAuthzRuleToRequestOperation = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleToRequestOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hosts: S.optional(AuthzPolicyAuthzRuleStringMatchList),
     mcp: S.optional(AuthzPolicyAuthzRuleToRequestOperationMCP),
@@ -1833,7 +1815,7 @@ export const AuthzPolicyAuthzRuleToRequestOperation = /*@__PURE__*/ S.suspend(()
 
 export type AuthzPolicyAuthzRuleToRequestOperationList =
   Array<AuthzPolicyAuthzRuleToRequestOperation>;
-export const AuthzPolicyAuthzRuleToRequestOperationList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleToRequestOperationList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleToRequestOperation,
 ) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationList>;
 
@@ -1844,7 +1826,7 @@ export interface AuthzPolicyAuthzRuleTo {
   /** Optional. Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. */
   notOperations?: AuthzPolicyAuthzRuleToRequestOperationList;
 }
-export const AuthzPolicyAuthzRuleTo = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRuleTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(AuthzPolicyAuthzRuleToRequestOperationList),
     notOperations: S.optional(AuthzPolicyAuthzRuleToRequestOperationList),
@@ -1860,7 +1842,7 @@ export interface AuthzPolicyAuthzRule {
   /** Optional. Describes properties of a target of a request. */
   to?: AuthzPolicyAuthzRuleTo;
 }
-export const AuthzPolicyAuthzRule = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyAuthzRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     when: S.optional(S.String),
     from: S.optional(AuthzPolicyAuthzRuleFrom),
@@ -1869,7 +1851,7 @@ export const AuthzPolicyAuthzRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthzPolicyAuthzRule" }) as any as S.Schema<AuthzPolicyAuthzRule>;
 
 export type AuthzPolicyAuthzRuleList = Array<AuthzPolicyAuthzRule>;
-export const AuthzPolicyAuthzRuleList = /*@__PURE__*/ S.Array(
+const AuthzPolicyAuthzRuleList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRule,
 ) as any as S.Schema<AuthzPolicyAuthzRuleList>;
 
@@ -1879,14 +1861,14 @@ export type AuthzPolicyActionEnum =
   | "DENY"
   | "CUSTOM"
   | "DENY_BY_DEFAULT";
-export const AuthzPolicyActionEnum = S.String;
+const AuthzPolicyActionEnum = S.String;
 
 /** Optional. Delegate authorization decision to user authored extension. Only one of cloudIap or authzExtension can be specified. */
 export interface AuthzPolicyCustomProviderAuthzExtension {
   /** Required. A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider. */
   resources?: StringList;
 }
-export const AuthzPolicyCustomProviderAuthzExtension = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyCustomProviderAuthzExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
   }),
@@ -1896,8 +1878,6 @@ export const AuthzPolicyCustomProviderAuthzExtension = /*@__PURE__*/ S.suspend((
 
 /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
 export type AuthzPolicyCustomProviderCloudIap = CancelOperationRequest;
-export const AuthzPolicyCustomProviderCloudIap = CancelOperationRequest;
-
 /** Allows delegating authorization decisions to Cloud IAP or to Service Extensions. */
 export interface AuthzPolicyCustomProvider {
   /** Optional. Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified. */
@@ -1905,7 +1885,7 @@ export interface AuthzPolicyCustomProvider {
   /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
   cloudIap?: CancelOperationRequest;
 }
-export const AuthzPolicyCustomProvider = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyCustomProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authzExtension: S.optional(AuthzPolicyCustomProviderAuthzExtension),
     cloudIap: S.optional(CancelOperationRequest),
@@ -1919,7 +1899,7 @@ export type AuthzPolicyTargetLoadBalancingSchemeEnum =
   | "INTERNAL_MANAGED"
   | "EXTERNAL_MANAGED"
   | "INTERNAL_SELF_MANAGED";
-export const AuthzPolicyTargetLoadBalancingSchemeEnum = S.String;
+const AuthzPolicyTargetLoadBalancingSchemeEnum = S.String;
 
 /** Specifies the set of targets to which this policy should be applied to. */
 export interface AuthzPolicyTarget {
@@ -1928,7 +1908,7 @@ export interface AuthzPolicyTarget {
   /** Required. A list of references to the Forwarding Rules, Secure Web Proxy Gateways, or Agent Gateways on which this policy will be applied. */
   resources?: StringList;
 }
-export const AuthzPolicyTarget = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicyTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadBalancingScheme: S.optional(AuthzPolicyTargetLoadBalancingSchemeEnum),
     resources: S.optional(StringList),
@@ -1960,7 +1940,7 @@ export interface AuthzPolicy {
   /** Required. Identifier. Name of the `AuthzPolicy` resource in the following format: `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`. */
   name?: string;
 }
-export const AuthzPolicy = /*@__PURE__*/ S.suspend(() =>
+const AuthzPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyProfile: S.optional(AuthzPolicyPolicyProfileEnum),
     updateTime: S.optional(S.String),
@@ -1986,7 +1966,7 @@ export interface CreateProjectsLocationsAuthzPoliciesRequest {
   /** Request body */
   body?: AuthzPolicy;
 }
-export const CreateProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     authzPolicyId: S.optional(S.String.pipe(T.Query())),
@@ -2007,7 +1987,7 @@ export type BackendAuthenticationConfigWellKnownRootsEnum =
   | "WELL_KNOWN_ROOTS_UNSPECIFIED"
   | "NONE"
   | "PUBLIC_ROOTS";
-export const BackendAuthenticationConfigWellKnownRootsEnum = S.String;
+const BackendAuthenticationConfigWellKnownRootsEnum = S.String;
 
 /** BackendAuthenticationConfig message groups the TrustConfig together with other settings that control how the load balancer authenticates, and expresses its identity to, the backend: * `trustConfig` is the attached TrustConfig. * `wellKnownRoots` indicates whether the load balance should trust backend server certificates that are issued by public certificate authorities, in addition to certificates trusted by the TrustConfig. * `clientCertificate` is a client certificate that the load balancer uses to express its identity to the backend, if the connection to the backend uses mTLS. You can attach the BackendAuthenticationConfig to the load balancer's BackendService directly determining how that BackendService negotiates TLS. */
 export interface BackendAuthenticationConfig {
@@ -2030,7 +2010,7 @@ export interface BackendAuthenticationConfig {
   /** Required. Name of the BackendAuthenticationConfig resource. It matches the pattern `projects/*\/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}` */
   name?: string;
 }
-export const BackendAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
+const BackendAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2054,19 +2034,18 @@ export interface CreateProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Request body */
   body?: BackendAuthenticationConfig;
 }
-export const CreateProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      backendAuthenticationConfigId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BackendAuthenticationConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/backendAuthenticationConfigs",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backendAuthenticationConfigId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BackendAuthenticationConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/backendAuthenticationConfigs",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsBackendAuthenticationConfigsRequest",
 }) as any as S.Schema<CreateProjectsLocationsBackendAuthenticationConfigsRequest>;
@@ -2076,7 +2055,7 @@ export interface GoogleCloudNetworksecurityV1GrpcEndpoint {
   /** Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:". */
   targetUri?: string;
 }
-export const GoogleCloudNetworksecurityV1GrpcEndpoint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudNetworksecurityV1GrpcEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetUri: S.optional(S.String),
   }),
@@ -2089,7 +2068,7 @@ export interface CertificateProviderInstance {
   /** Required. Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance. */
   pluginInstance?: string;
 }
-export const CertificateProviderInstance = /*@__PURE__*/ S.suspend(() =>
+const CertificateProviderInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pluginInstance: S.optional(S.String),
   }),
@@ -2104,7 +2083,7 @@ export interface ValidationCA {
   /** The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information. */
   certificateProviderInstance?: CertificateProviderInstance;
 }
-export const ValidationCA = /*@__PURE__*/ S.suspend(() =>
+const ValidationCA = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grpcEndpoint: S.optional(GoogleCloudNetworksecurityV1GrpcEndpoint),
     certificateProviderInstance: S.optional(CertificateProviderInstance),
@@ -2112,9 +2091,7 @@ export const ValidationCA = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidationCA" }) as any as S.Schema<ValidationCA>;
 
 export type ValidationCAList = Array<ValidationCA>;
-export const ValidationCAList = /*@__PURE__*/ S.Array(
-  ValidationCA,
-) as any as S.Schema<ValidationCAList>;
+const ValidationCAList = /*@__PURE__*/ S.Array(ValidationCA) as any as S.Schema<ValidationCAList>;
 
 /** Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication. */
 export interface GoogleCloudNetworksecurityV1CertificateProvider {
@@ -2123,7 +2100,7 @@ export interface GoogleCloudNetworksecurityV1CertificateProvider {
   /** The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information. */
   certificateProviderInstance?: CertificateProviderInstance;
 }
-export const GoogleCloudNetworksecurityV1CertificateProvider = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudNetworksecurityV1CertificateProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grpcEndpoint: S.optional(GoogleCloudNetworksecurityV1GrpcEndpoint),
     certificateProviderInstance: S.optional(CertificateProviderInstance),
@@ -2151,7 +2128,7 @@ export interface ClientTlsPolicy {
   /** Optional. Set of label tags associated with the resource. */
   labels?: StringMap;
 }
-export const ClientTlsPolicy = /*@__PURE__*/ S.suspend(() =>
+const ClientTlsPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     serverValidationCa: S.optional(ValidationCAList),
@@ -2172,7 +2149,7 @@ export interface CreateProjectsLocationsClientTlsPoliciesRequest {
   /** Request body */
   body?: ClientTlsPolicy;
 }
-export const CreateProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientTlsPolicyId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2189,7 +2166,7 @@ export const CreateProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateProjectsLocationsClientTlsPoliciesRequest>;
 
 export type DnsThreatDetectorProviderEnum = "PROVIDER_UNSPECIFIED" | "INFOBLOX";
-export const DnsThreatDetectorProviderEnum = S.String;
+const DnsThreatDetectorProviderEnum = S.String;
 
 /** A DNS threat detector sends DNS query logs to a _provider_ that then analyzes the logs to identify threat events in the DNS queries. By default, all VPC networks in your projects are included. You can exclude specific networks by supplying `excluded_networks`. */
 export interface DnsThreatDetector {
@@ -2206,7 +2183,7 @@ export interface DnsThreatDetector {
   /** Output only. Update time stamp. */
   updateTime?: string;
 }
-export const DnsThreatDetector = /*@__PURE__*/ S.suspend(() =>
+const DnsThreatDetector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(DnsThreatDetectorProviderEnum),
     excludedNetworks: S.optional(StringList),
@@ -2225,7 +2202,7 @@ export interface CreateProjectsLocationsDnsThreatDetectorsRequest {
   /** Request body */
   body?: DnsThreatDetector;
 }
-export const CreateProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     dnsThreatDetectorId: S.optional(S.String.pipe(T.Query())),
@@ -2248,7 +2225,7 @@ export type FirewallEndpointAssociationStateEnum =
   | "DELETING"
   | "INACTIVE"
   | "ORPHAN";
-export const FirewallEndpointAssociationStateEnum = S.String;
+const FirewallEndpointAssociationStateEnum = S.String;
 
 /** Message describing Association object */
 export interface FirewallEndpointAssociation {
@@ -2273,7 +2250,7 @@ export interface FirewallEndpointAssociation {
   /** Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128. */
   reconciling?: boolean;
 }
-export const FirewallEndpointAssociation = /*@__PURE__*/ S.suspend(() =>
+const FirewallEndpointAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsInspectionPolicy: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2300,20 +2277,19 @@ export interface CreateProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Request body */
   body?: FirewallEndpointAssociation;
 }
-export const CreateProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      firewallEndpointAssociationId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(FirewallEndpointAssociation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/firewallEndpointAssociations",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    firewallEndpointAssociationId: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(FirewallEndpointAssociation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/firewallEndpointAssociations",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsFirewallEndpointAssociationsRequest",
 }) as any as S.Schema<CreateProjectsLocationsFirewallEndpointAssociationsRequest>;
@@ -2330,7 +2306,7 @@ export interface CreateProjectsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-export const CreateProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallEndpointId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2354,7 +2330,7 @@ export interface CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRe
   /** Request body */
   body?: WildfireVerdictChangeRequest;
 }
-export const CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
+const CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2383,7 +2359,7 @@ export interface GatewaySecurityPolicy {
   /** Output only. The timestamp when the resource was updated. */
   updateTime?: string;
 }
-export const GatewaySecurityPolicy = /*@__PURE__*/ S.suspend(() =>
+const GatewaySecurityPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tlsInspectionPolicy: S.optional(S.String),
@@ -2401,7 +2377,7 @@ export interface CreateProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Request body */
   body?: GatewaySecurityPolicy;
 }
-export const CreateProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     gatewaySecurityPolicyId: S.optional(S.String.pipe(T.Query())),
@@ -2421,7 +2397,7 @@ export type GatewaySecurityPolicyRuleBasicProfileEnum =
   | "BASIC_PROFILE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GatewaySecurityPolicyRuleBasicProfileEnum = S.String;
+const GatewaySecurityPolicyRuleBasicProfileEnum = S.String;
 
 /** The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents a traffic matching condition and associated action to perform. */
 export interface GatewaySecurityPolicyRule {
@@ -2446,7 +2422,7 @@ export interface GatewaySecurityPolicyRule {
   /** Required. Profile which tells what the primitive action should be. */
   basicProfile?: GatewaySecurityPolicyRuleBasicProfileEnum | (string & {});
 }
-export const GatewaySecurityPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const GatewaySecurityPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationMatcher: S.optional(S.String),
     sessionMatcher: S.optional(S.String),
@@ -2471,19 +2447,18 @@ export interface CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Request body */
   body?: GatewaySecurityPolicyRule;
 }
-export const CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      gatewaySecurityPolicyRuleId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GatewaySecurityPolicyRule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/rules",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewaySecurityPolicyRuleId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GatewaySecurityPolicyRule.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/rules",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest",
 }) as any as S.Schema<CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
@@ -2495,7 +2470,7 @@ export type InterceptDeploymentGroupDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const InterceptDeploymentGroupDeploymentStateEnum = S.String;
+const InterceptDeploymentGroupDeploymentStateEnum = S.String;
 
 /** A deployment belonging to this deployment group. */
 export interface InterceptDeploymentGroupDeployment {
@@ -2504,7 +2479,7 @@ export interface InterceptDeploymentGroupDeployment {
   /** Output only. Most recent known state of the deployment. */
   state?: InterceptDeploymentGroupDeploymentStateEnum | (string & {});
 }
-export const InterceptDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
+const InterceptDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(InterceptDeploymentGroupDeploymentStateEnum),
@@ -2514,12 +2489,12 @@ export const InterceptDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterceptDeploymentGroupDeployment>;
 
 export type InterceptDeploymentGroupDeploymentList = Array<InterceptDeploymentGroupDeployment>;
-export const InterceptDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
+const InterceptDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroupDeployment,
 ) as any as S.Schema<InterceptDeploymentGroupDeploymentList>;
 
 export type InterceptLocationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC";
-export const InterceptLocationStateEnum = S.String;
+const InterceptLocationStateEnum = S.String;
 
 /** Details about intercept in a specific cloud location. */
 export interface InterceptLocation {
@@ -2528,7 +2503,7 @@ export interface InterceptLocation {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
 }
-export const InterceptLocation = /*@__PURE__*/ S.suspend(() =>
+const InterceptLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(InterceptLocationStateEnum),
     location: S.optional(S.String),
@@ -2536,7 +2511,7 @@ export const InterceptLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InterceptLocation" }) as any as S.Schema<InterceptLocation>;
 
 export type InterceptLocationList = Array<InterceptLocation>;
-export const InterceptLocationList = /*@__PURE__*/ S.Array(
+const InterceptLocationList = /*@__PURE__*/ S.Array(
   InterceptLocation,
 ) as any as S.Schema<InterceptLocationList>;
 
@@ -2545,7 +2520,7 @@ export interface InterceptDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
-export const InterceptDeploymentGroupConnectedEndpointGroup = /*@__PURE__*/ S.suspend(() =>
+const InterceptDeploymentGroupConnectedEndpointGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -2555,7 +2530,7 @@ export const InterceptDeploymentGroupConnectedEndpointGroup = /*@__PURE__*/ S.su
 
 export type InterceptDeploymentGroupConnectedEndpointGroupList =
   Array<InterceptDeploymentGroupConnectedEndpointGroup>;
-export const InterceptDeploymentGroupConnectedEndpointGroupList = /*@__PURE__*/ S.Array(
+const InterceptDeploymentGroupConnectedEndpointGroupList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroupConnectedEndpointGroup,
 ) as any as S.Schema<InterceptDeploymentGroupConnectedEndpointGroupList>;
 
@@ -2564,7 +2539,7 @@ export type InterceptDeploymentGroupStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING";
-export const InterceptDeploymentGroupStateEnum = S.String;
+const InterceptDeploymentGroupStateEnum = S.String;
 
 /** A deployment group aggregates many zonal intercept backends (deployments) into a single global intercept service. Consumers can connect this service using an endpoint group. */
 export interface InterceptDeploymentGroup {
@@ -2591,7 +2566,7 @@ export interface InterceptDeploymentGroup {
   /** Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps. */
   createTime?: string;
 }
-export const InterceptDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
+const InterceptDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     nestedDeployments: S.optional(InterceptDeploymentGroupDeploymentList),
@@ -2617,7 +2592,7 @@ export interface CreateProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Request body */
   body?: InterceptDeploymentGroup;
 }
-export const CreateProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     interceptDeploymentGroupId: S.optional(S.String.pipe(T.Query())),
@@ -2641,7 +2616,7 @@ export type InterceptDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const InterceptDeploymentStateEnum = S.String;
+const InterceptDeploymentStateEnum = S.String;
 
 /** A deployment represents a zonal intercept backend ready to accept GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global intercept service. */
 export interface InterceptDeployment {
@@ -2664,7 +2639,7 @@ export interface InterceptDeployment {
   /** Output only. The current state of the resource does not match the user's intended state, and the system is working to reconcile them. This part of the normal operation (e.g. linking a new association to the parent group). See https://google.aip.dev/128. */
   reconciling?: boolean;
 }
-export const InterceptDeployment = /*@__PURE__*/ S.suspend(() =>
+const InterceptDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2688,7 +2663,7 @@ export interface CreateProjectsLocationsInterceptDeploymentsRequest {
   /** Request body */
   body?: InterceptDeployment;
 }
-export const CreateProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2709,7 +2684,7 @@ export type InterceptEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "OUT_OF_SYNC";
-export const InterceptEndpointGroupAssociationLocationDetailsStateEnum = S.String;
+const InterceptEndpointGroupAssociationLocationDetailsStateEnum = S.String;
 
 /** Contains details about the state of an association in a specific cloud location. */
 export interface InterceptEndpointGroupAssociationLocationDetails {
@@ -2718,7 +2693,7 @@ export interface InterceptEndpointGroupAssociationLocationDetails {
   /** Output only. The current state of the association in this location. */
   state?: InterceptEndpointGroupAssociationLocationDetailsStateEnum | (string & {});
 }
-export const InterceptEndpointGroupAssociationLocationDetails = /*@__PURE__*/ S.suspend(() =>
+const InterceptEndpointGroupAssociationLocationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     state: S.optional(InterceptEndpointGroupAssociationLocationDetailsStateEnum),
@@ -2729,7 +2704,7 @@ export const InterceptEndpointGroupAssociationLocationDetails = /*@__PURE__*/ S.
 
 export type InterceptEndpointGroupAssociationLocationDetailsList =
   Array<InterceptEndpointGroupAssociationLocationDetails>;
-export const InterceptEndpointGroupAssociationLocationDetailsList = /*@__PURE__*/ S.Array(
+const InterceptEndpointGroupAssociationLocationDetailsList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroupAssociationLocationDetails,
 ) as any as S.Schema<InterceptEndpointGroupAssociationLocationDetailsList>;
 
@@ -2741,7 +2716,7 @@ export type InterceptEndpointGroupAssociationStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const InterceptEndpointGroupAssociationStateEnum = S.String;
+const InterceptEndpointGroupAssociationStateEnum = S.String;
 
 /** An endpoint group association represents a link between a network and an endpoint group in the organization. Creating an association creates the networking infrastructure linking the network to the endpoint group, but does not enable intercept by itself. To enable intercept, the user must also create a network firewall policy containing intercept rules and associate it with the network. */
 export interface InterceptEndpointGroupAssociation {
@@ -2768,7 +2743,7 @@ export interface InterceptEndpointGroupAssociation {
   /** Optional. Labels are key/value pairs that help to organize and filter resources. */
   labels?: StringMap;
 }
-export const InterceptEndpointGroupAssociation = /*@__PURE__*/ S.suspend(() =>
+const InterceptEndpointGroupAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     locations: S.optional(InterceptLocationList),
@@ -2796,8 +2771,8 @@ export interface CreateProjectsLocationsInterceptEndpointGroupAssociationsReques
   /** Request body */
   body?: InterceptEndpointGroupAssociation;
 }
-export const CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       interceptEndpointGroupAssociationId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -2810,9 +2785,9 @@ export const CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest",
+}) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export type InterceptEndpointGroupStateEnum =
   | "STATE_UNSPECIFIED"
@@ -2822,7 +2797,7 @@ export type InterceptEndpointGroupStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const InterceptEndpointGroupStateEnum = S.String;
+const InterceptEndpointGroupStateEnum = S.String;
 
 /** The endpoint group's view of a connected deployment group. */
 export interface InterceptEndpointGroupConnectedDeploymentGroup {
@@ -2831,7 +2806,7 @@ export interface InterceptEndpointGroupConnectedDeploymentGroup {
   /** Output only. The list of locations where the deployment group is present. */
   locations?: InterceptLocationList;
 }
-export const InterceptEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
+const InterceptEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     locations: S.optional(InterceptLocationList),
@@ -2848,7 +2823,7 @@ export type InterceptEndpointGroupAssociationDetailsStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const InterceptEndpointGroupAssociationDetailsStateEnum = S.String;
+const InterceptEndpointGroupAssociationDetailsStateEnum = S.String;
 
 /** The endpoint group's view of a connected association. */
 export interface InterceptEndpointGroupAssociationDetails {
@@ -2859,7 +2834,7 @@ export interface InterceptEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
   network?: string;
 }
-export const InterceptEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(() =>
+const InterceptEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(InterceptEndpointGroupAssociationDetailsStateEnum),
@@ -2871,7 +2846,7 @@ export const InterceptEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(
 
 export type InterceptEndpointGroupAssociationDetailsList =
   Array<InterceptEndpointGroupAssociationDetails>;
-export const InterceptEndpointGroupAssociationDetailsList = /*@__PURE__*/ S.Array(
+const InterceptEndpointGroupAssociationDetailsList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroupAssociationDetails,
 ) as any as S.Schema<InterceptEndpointGroupAssociationDetailsList>;
 
@@ -2898,7 +2873,7 @@ export interface InterceptEndpointGroup {
   /** Output only. List of associations to this endpoint group. */
   associations?: InterceptEndpointGroupAssociationDetailsList;
 }
-export const InterceptEndpointGroup = /*@__PURE__*/ S.suspend(() =>
+const InterceptEndpointGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -2923,7 +2898,7 @@ export interface CreateProjectsLocationsInterceptEndpointGroupsRequest {
   /** Request body */
   body?: InterceptEndpointGroup;
 }
-export const CreateProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2941,7 +2916,7 @@ export const CreateProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__
 }) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupsRequest>;
 
 export type MirroringLocationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC";
-export const MirroringLocationStateEnum = S.String;
+const MirroringLocationStateEnum = S.String;
 
 /** Details about mirroring in a specific cloud location. */
 export interface MirroringLocation {
@@ -2950,7 +2925,7 @@ export interface MirroringLocation {
   /** Output only. The current state of the association in this location. */
   state?: MirroringLocationStateEnum | (string & {});
 }
-export const MirroringLocation = /*@__PURE__*/ S.suspend(() =>
+const MirroringLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     state: S.optional(MirroringLocationStateEnum),
@@ -2958,7 +2933,7 @@ export const MirroringLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MirroringLocation" }) as any as S.Schema<MirroringLocation>;
 
 export type MirroringLocationList = Array<MirroringLocation>;
-export const MirroringLocationList = /*@__PURE__*/ S.Array(
+const MirroringLocationList = /*@__PURE__*/ S.Array(
   MirroringLocation,
 ) as any as S.Schema<MirroringLocationList>;
 
@@ -2969,7 +2944,7 @@ export type MirroringDeploymentGroupDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const MirroringDeploymentGroupDeploymentStateEnum = S.String;
+const MirroringDeploymentGroupDeploymentStateEnum = S.String;
 
 /** A deployment belonging to this deployment group. */
 export interface MirroringDeploymentGroupDeployment {
@@ -2978,7 +2953,7 @@ export interface MirroringDeploymentGroupDeployment {
   /** Output only. The name of the Mirroring Deployment, in the format: `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`. */
   name?: string;
 }
-export const MirroringDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
+const MirroringDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(MirroringDeploymentGroupDeploymentStateEnum),
     name: S.optional(S.String),
@@ -2988,7 +2963,7 @@ export const MirroringDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MirroringDeploymentGroupDeployment>;
 
 export type MirroringDeploymentGroupDeploymentList = Array<MirroringDeploymentGroupDeployment>;
-export const MirroringDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
+const MirroringDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
   MirroringDeploymentGroupDeployment,
 ) as any as S.Schema<MirroringDeploymentGroupDeploymentList>;
 
@@ -2997,12 +2972,9 @@ export interface MirroringDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
-export const MirroringDeploymentGroupConnectedEndpointGroup =
-  InterceptDeploymentGroupConnectedEndpointGroup as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
-
 export type MirroringDeploymentGroupConnectedEndpointGroupList =
   Array<MirroringDeploymentGroupConnectedEndpointGroup>;
-export const MirroringDeploymentGroupConnectedEndpointGroupList =
+const MirroringDeploymentGroupConnectedEndpointGroupList =
   InterceptDeploymentGroupConnectedEndpointGroupList as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroupList>;
 
 export type MirroringDeploymentGroupStateEnum =
@@ -3011,7 +2983,7 @@ export type MirroringDeploymentGroupStateEnum =
   | "CREATING"
   | "DELETING"
   | "CLOSED";
-export const MirroringDeploymentGroupStateEnum = S.String;
+const MirroringDeploymentGroupStateEnum = S.String;
 
 /** A deployment group aggregates many zonal mirroring backends (deployments) into a single global mirroring service. Consumers can connect this service using an endpoint group. */
 export interface MirroringDeploymentGroup {
@@ -3038,7 +3010,7 @@ export interface MirroringDeploymentGroup {
   /** Output only. The current state of the resource does not match the user's intended state, and the system is working to reconcile them. This is part of the normal operation (e.g. adding a new deployment to the group) See https://google.aip.dev/128. */
   reconciling?: boolean;
 }
-export const MirroringDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
+const MirroringDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(MirroringLocationList),
     network: S.optional(S.String),
@@ -3064,7 +3036,7 @@ export interface CreateProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Request body */
   body?: MirroringDeploymentGroup;
 }
-export const CreateProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     mirroringDeploymentGroupId: S.optional(S.String.pipe(T.Query())),
@@ -3088,7 +3060,7 @@ export type MirroringDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const MirroringDeploymentStateEnum = S.String;
+const MirroringDeploymentStateEnum = S.String;
 
 /** A deployment represents a zonal mirroring backend ready to accept GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global mirroring service. */
 export interface MirroringDeployment {
@@ -3111,7 +3083,7 @@ export interface MirroringDeployment {
   /** Optional. Labels are key/value pairs that help to organize and filter resources. */
   labels?: StringMap;
 }
-export const MirroringDeployment = /*@__PURE__*/ S.suspend(() =>
+const MirroringDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardingRule: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -3135,7 +3107,7 @@ export interface CreateProjectsLocationsMirroringDeploymentsRequest {
   /** Request body */
   body?: MirroringDeployment;
 }
-export const CreateProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mirroringDeploymentId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3156,7 +3128,7 @@ export type MirroringEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "OUT_OF_SYNC";
-export const MirroringEndpointGroupAssociationLocationDetailsStateEnum = S.String;
+const MirroringEndpointGroupAssociationLocationDetailsStateEnum = S.String;
 
 /** Contains details about the state of an association in a specific cloud location. */
 export interface MirroringEndpointGroupAssociationLocationDetails {
@@ -3165,7 +3137,7 @@ export interface MirroringEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
 }
-export const MirroringEndpointGroupAssociationLocationDetails = /*@__PURE__*/ S.suspend(() =>
+const MirroringEndpointGroupAssociationLocationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(MirroringEndpointGroupAssociationLocationDetailsStateEnum),
     location: S.optional(S.String),
@@ -3176,7 +3148,7 @@ export const MirroringEndpointGroupAssociationLocationDetails = /*@__PURE__*/ S.
 
 export type MirroringEndpointGroupAssociationLocationDetailsList =
   Array<MirroringEndpointGroupAssociationLocationDetails>;
-export const MirroringEndpointGroupAssociationLocationDetailsList = /*@__PURE__*/ S.Array(
+const MirroringEndpointGroupAssociationLocationDetailsList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroupAssociationLocationDetails,
 ) as any as S.Schema<MirroringEndpointGroupAssociationLocationDetailsList>;
 
@@ -3188,7 +3160,7 @@ export type MirroringEndpointGroupAssociationStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const MirroringEndpointGroupAssociationStateEnum = S.String;
+const MirroringEndpointGroupAssociationStateEnum = S.String;
 
 /** An endpoint group association represents a link between a network and an endpoint group in the organization. Creating an association creates the networking infrastructure linking the network to the endpoint group, but does not enable mirroring by itself. To enable mirroring, the user must also create a network firewall policy containing mirroring rules and associate it with the network. */
 export interface MirroringEndpointGroupAssociation {
@@ -3215,7 +3187,7 @@ export interface MirroringEndpointGroupAssociation {
   /** Output only. The list of locations where the association is configured. This information is retrieved from the linked endpoint group. */
   locations?: MirroringLocationList;
 }
-export const MirroringEndpointGroupAssociation = /*@__PURE__*/ S.suspend(() =>
+const MirroringEndpointGroupAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     locationsDetails: S.optional(MirroringEndpointGroupAssociationLocationDetailsList),
@@ -3243,8 +3215,8 @@ export interface CreateProjectsLocationsMirroringEndpointGroupAssociationsReques
   /** Request body */
   body?: MirroringEndpointGroupAssociation;
 }
-export const CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -3257,9 +3229,9 @@ export const CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest",
+}) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export type MirroringEndpointGroupStateEnum =
   | "STATE_UNSPECIFIED"
@@ -3269,7 +3241,7 @@ export type MirroringEndpointGroupStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const MirroringEndpointGroupStateEnum = S.String;
+const MirroringEndpointGroupStateEnum = S.String;
 
 export type MirroringEndpointGroupAssociationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
@@ -3279,8 +3251,6 @@ export type MirroringEndpointGroupAssociationDetailsStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-export const MirroringEndpointGroupAssociationDetailsStateEnum = S.String;
-
 /** The endpoint group's view of a connected association. */
 export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The connected association's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`. See https://google.aip.dev/124. */
@@ -3290,12 +3260,9 @@ export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
   network?: string;
 }
-export const MirroringEndpointGroupAssociationDetails =
-  InterceptEndpointGroupAssociationDetails as any as S.Schema<MirroringEndpointGroupAssociationDetails>;
-
 export type MirroringEndpointGroupAssociationDetailsList =
   Array<MirroringEndpointGroupAssociationDetails>;
-export const MirroringEndpointGroupAssociationDetailsList =
+const MirroringEndpointGroupAssociationDetailsList =
   InterceptEndpointGroupAssociationDetailsList as any as S.Schema<MirroringEndpointGroupAssociationDetailsList>;
 
 /** The endpoint group's view of a connected deployment group. */
@@ -3305,7 +3272,7 @@ export interface MirroringEndpointGroupConnectedDeploymentGroup {
   /** Output only. The connected deployment group's resource name, for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
   name?: string;
 }
-export const MirroringEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
+const MirroringEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(MirroringLocationList),
     name: S.optional(S.String),
@@ -3316,12 +3283,12 @@ export const MirroringEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ S.su
 
 export type MirroringEndpointGroupConnectedDeploymentGroupList =
   Array<MirroringEndpointGroupConnectedDeploymentGroup>;
-export const MirroringEndpointGroupConnectedDeploymentGroupList = /*@__PURE__*/ S.Array(
+const MirroringEndpointGroupConnectedDeploymentGroupList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroupConnectedDeploymentGroup,
 ) as any as S.Schema<MirroringEndpointGroupConnectedDeploymentGroupList>;
 
 export type MirroringEndpointGroupTypeEnum = "TYPE_UNSPECIFIED" | "DIRECT";
-export const MirroringEndpointGroupTypeEnum = S.String;
+const MirroringEndpointGroupTypeEnum = S.String;
 
 /** An endpoint group is a consumer frontend for a deployment group (backend). In order to configure mirroring for a network, consumers must create: - An association between their network and the endpoint group. - A security profile that points to the endpoint group. - A mirroring rule that references the security profile (group). */
 export interface MirroringEndpointGroup {
@@ -3348,7 +3315,7 @@ export interface MirroringEndpointGroup {
   /** Output only. The current state of the resource does not match the user's intended state, and the system is working to reconcile them. This is part of the normal operation (e.g. adding a new association to the group). See https://google.aip.dev/128. */
   reconciling?: boolean;
 }
-export const MirroringEndpointGroup = /*@__PURE__*/ S.suspend(() =>
+const MirroringEndpointGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(MirroringEndpointGroupStateEnum),
     description: S.optional(S.String),
@@ -3374,7 +3341,7 @@ export interface CreateProjectsLocationsMirroringEndpointGroupsRequest {
   /** Request body */
   body?: MirroringEndpointGroup;
 }
-export const CreateProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     mirroringEndpointGroupId: S.optional(S.String.pipe(T.Query())),
@@ -3396,7 +3363,7 @@ export type SACAttachmentStateEnum =
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
   | "PARTNER_DETACHED";
-export const SACAttachmentStateEnum = S.String;
+const SACAttachmentStateEnum = S.String;
 
 /** Represents a Secure Access Connect (SAC) attachment resource. A Secure Access Connect attachment enables NCC Gateway to process traffic with an SSE product. */
 export interface SACAttachment {
@@ -3415,7 +3382,7 @@ export interface SACAttachment {
   /** Optional. Optional list of labels applied to the resource. */
   labels?: StringMap;
 }
-export const SACAttachment = /*@__PURE__*/ S.suspend(() =>
+const SACAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     sacRealm: S.optional(S.String),
@@ -3437,7 +3404,7 @@ export interface CreateProjectsLocationsSacAttachmentsRequest {
   /** Request body */
   body?: SACAttachment;
 }
-export const CreateProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sacAttachmentId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3460,12 +3427,12 @@ export type SACRealmStateEnum =
   | "PARTNER_ATTACHED"
   | "PARTNER_DETACHED"
   | "KEY_EXPIRED";
-export const SACRealmStateEnum = S.String;
+const SACRealmStateEnum = S.String;
 
 export type SACRealmSecurityServiceEnum =
   | "SECURITY_SERVICE_UNSPECIFIED"
   | "PALO_ALTO_PRISMA_ACCESS";
-export const SACRealmSecurityServiceEnum = S.String;
+const SACRealmSecurityServiceEnum = S.String;
 
 /** Key to be shared with SSE service provider to establish global handshake. */
 export interface SACRealmPairingKey {
@@ -3474,7 +3441,7 @@ export interface SACRealmPairingKey {
   /** Output only. Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation. */
   expireTime?: string;
 }
-export const SACRealmPairingKey = /*@__PURE__*/ S.suspend(() =>
+const SACRealmPairingKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -3498,7 +3465,7 @@ export interface SACRealm {
   /** Output only. Timestamp when the realm was created. */
   createTime?: string;
 }
-export const SACRealm = /*@__PURE__*/ S.suspend(() =>
+const SACRealm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(SACRealmStateEnum),
@@ -3520,7 +3487,7 @@ export interface CreateProjectsLocationsSacRealmsRequest {
   /** Request body */
   body?: SACRealm;
 }
-export const CreateProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3545,7 +3512,7 @@ export interface CreateProjectsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-export const CreateProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityProfileGroupId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3569,7 +3536,7 @@ export interface CreateProjectsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-export const CreateProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityProfileId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3589,7 +3556,7 @@ export type MTLSPolicyClientValidationModeEnum =
   | "CLIENT_VALIDATION_MODE_UNSPECIFIED"
   | "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
   | "REJECT_INVALID";
-export const MTLSPolicyClientValidationModeEnum = S.String;
+const MTLSPolicyClientValidationModeEnum = S.String;
 
 /** Specification of the MTLSPolicy. */
 export interface MTLSPolicy {
@@ -3600,7 +3567,7 @@ export interface MTLSPolicy {
   /** Required if the policy is to be used with Traffic Director. For Application Load Balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate. */
   clientValidationCa?: ValidationCAList;
 }
-export const MTLSPolicy = /*@__PURE__*/ S.suspend(() =>
+const MTLSPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientValidationTrustConfig: S.optional(S.String),
     clientValidationMode: S.optional(MTLSPolicyClientValidationModeEnum),
@@ -3627,7 +3594,7 @@ export interface ServerTlsPolicy {
   /** Set of label tags associated with the resource. */
   labels?: StringMap;
 }
-export const ServerTlsPolicy = /*@__PURE__*/ S.suspend(() =>
+const ServerTlsPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOpen: S.optional(S.Boolean),
     mtlsPolicy: S.optional(MTLSPolicy),
@@ -3648,7 +3615,7 @@ export interface CreateProjectsLocationsServerTlsPoliciesRequest {
   /** Request body */
   body?: ServerTlsPolicy;
 }
-export const CreateProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverTlsPolicyId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3670,7 +3637,7 @@ export type TlsInspectionPolicyMinTlsVersionEnum =
   | "TLS_1_1"
   | "TLS_1_2"
   | "TLS_1_3";
-export const TlsInspectionPolicyMinTlsVersionEnum = S.String;
+const TlsInspectionPolicyMinTlsVersionEnum = S.String;
 
 export type TlsInspectionPolicyTlsFeatureProfileEnum =
   | "PROFILE_UNSPECIFIED"
@@ -3678,13 +3645,13 @@ export type TlsInspectionPolicyTlsFeatureProfileEnum =
   | "PROFILE_MODERN"
   | "PROFILE_RESTRICTED"
   | "PROFILE_CUSTOM";
-export const TlsInspectionPolicyTlsFeatureProfileEnum = S.String;
+const TlsInspectionPolicyTlsFeatureProfileEnum = S.String;
 
 export type TlsInspectionPolicyCertificateIssuanceModeEnum =
   | "CERTIFICATE_ISSUANCE_MODE_UNSPECIFIED"
   | "DIRECT_LEAF_PROVISIONING"
   | "LOCAL_INTERMEDIATE_CA_SIGNING";
-export const TlsInspectionPolicyCertificateIssuanceModeEnum = S.String;
+const TlsInspectionPolicyCertificateIssuanceModeEnum = S.String;
 
 /** The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated metadata. */
 export interface TlsInspectionPolicy {
@@ -3711,7 +3678,7 @@ export interface TlsInspectionPolicy {
   /** Optional. List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field. */
   customTlsFeatures?: StringList;
 }
-export const TlsInspectionPolicy = /*@__PURE__*/ S.suspend(() =>
+const TlsInspectionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     excludePublicCaSet: S.optional(S.Boolean),
@@ -3735,7 +3702,7 @@ export interface CreateProjectsLocationsTlsInspectionPoliciesRequest {
   /** Request body */
   body?: TlsInspectionPolicy;
 }
-export const CreateProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsInspectionPolicyId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3764,7 +3731,7 @@ export interface UrlList {
   /** Optional. Free-text description of the resource. */
   description?: string;
 }
-export const UrlList = /*@__PURE__*/ S.suspend(() =>
+const UrlList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -3782,7 +3749,7 @@ export interface CreateProjectsLocationsUrlListsRequest {
   /** Request body */
   body?: UrlList;
 }
-export const CreateProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     urlListId: S.optional(S.String.pipe(T.Query())),
@@ -3804,7 +3771,7 @@ export interface DeleteOrganizationsLocationsAddressGroupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3825,7 +3792,7 @@ export interface DeleteOrganizationsLocationsFirewallEndpointsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3844,7 +3811,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3864,18 +3831,17 @@ export interface DeleteOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const DeleteOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    etag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteOrganizationsLocationsSecurityProfileGroupsRequest",
 }) as any as S.Schema<DeleteOrganizationsLocationsSecurityProfileGroupsRequest>;
@@ -3886,7 +3852,7 @@ export interface DeleteOrganizationsLocationsSecurityProfilesRequest {
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -3907,7 +3873,7 @@ export interface DeleteProjectsLocationsAddressGroupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3926,7 +3892,7 @@ export interface DeleteProjectsLocationsAuthorizationPoliciesRequest {
   /** Required. A name of the AuthorizationPolicy to delete. Must be in the format `projects/{project}/locations/{location}/authorizationPolicies/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3946,7 +3912,7 @@ export interface DeleteProjectsLocationsAuthzPoliciesRequest {
   /** Required. The name of the `AuthzPolicy` resource to delete. Must be in the format `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3967,18 +3933,17 @@ export interface DeleteProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Optional. Etag of the resource. If this is provided, it must match the server's etag. */
   etag?: string;
 }
-export const DeleteProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    etag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsBackendAuthenticationConfigsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsBackendAuthenticationConfigsRequest>;
@@ -3987,7 +3952,7 @@ export interface DeleteProjectsLocationsClientTlsPoliciesRequest {
   /** Required. A name of the ClientTlsPolicy to delete. Must be in the format `projects/*\/locations/{location}/clientTlsPolicies/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4005,7 +3970,7 @@ export interface DeleteProjectsLocationsDnsThreatDetectorsRequest {
   /** Required. Name of the DnsThreatDetector resource. */
   name: string;
 }
-export const DeleteProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4025,18 +3990,17 @@ export interface DeleteProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsFirewallEndpointAssociationsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsFirewallEndpointAssociationsRequest>;
@@ -4047,7 +4011,7 @@ export interface DeleteProjectsLocationsFirewallEndpointsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4066,7 +4030,7 @@ export interface DeleteProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. A name of the GatewaySecurityPolicy to delete. Must be in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4084,17 +4048,16 @@ export interface DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Required. A name of the GatewaySecurityPolicyRule to delete. Must be in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}/rules/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
@@ -4105,7 +4068,7 @@ export interface DeleteProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4126,7 +4089,7 @@ export interface DeleteProjectsLocationsInterceptDeploymentsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4147,8 +4110,8 @@ export interface DeleteProjectsLocationsInterceptEndpointGroupAssociationsReques
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -4159,9 +4122,9 @@ export const DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export interface DeleteProjectsLocationsInterceptEndpointGroupsRequest {
   /** Required. The endpoint group to delete. */
@@ -4169,7 +4132,7 @@ export interface DeleteProjectsLocationsInterceptEndpointGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4190,7 +4153,7 @@ export interface DeleteProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4211,7 +4174,7 @@ export interface DeleteProjectsLocationsMirroringDeploymentsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4232,8 +4195,8 @@ export interface DeleteProjectsLocationsMirroringEndpointGroupAssociationsReques
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -4244,9 +4207,9 @@ export const DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export interface DeleteProjectsLocationsMirroringEndpointGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
@@ -4254,7 +4217,7 @@ export interface DeleteProjectsLocationsMirroringEndpointGroupsRequest {
   /** Required. The endpoint group to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4273,7 +4236,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4293,7 +4256,7 @@ export interface DeleteProjectsLocationsSacAttachmentsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4314,7 +4277,7 @@ export interface DeleteProjectsLocationsSacRealmsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4335,7 +4298,7 @@ export interface DeleteProjectsLocationsSecurityProfileGroupsRequest {
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -4356,7 +4319,7 @@ export interface DeleteProjectsLocationsSecurityProfilesRequest {
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -4375,7 +4338,7 @@ export interface DeleteProjectsLocationsServerTlsPoliciesRequest {
   /** Required. A name of the ServerTlsPolicy to delete. Must be in the format `projects/*\/locations/{location}/serverTlsPolicies/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4395,7 +4358,7 @@ export interface DeleteProjectsLocationsTlsInspectionPoliciesRequest {
   /** Required. A name of the TlsInspectionPolicy to delete. Must be in the format `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`. */
   name: string;
 }
-export const DeleteProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4414,7 +4377,7 @@ export interface DeleteProjectsLocationsUrlListsRequest {
   /** Required. A name of the UrlList to delete. Must be in the format `projects/*\/locations/{location}/urlLists/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4434,7 +4397,7 @@ export interface GetIamPolicyProjectsLocationsAddressGroupsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -4454,7 +4417,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -4463,7 +4426,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -4473,7 +4436,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -4484,7 +4447,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
@@ -4492,7 +4455,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -4507,7 +4470,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expression: S.optional(S.String),
@@ -4525,7 +4488,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -4534,7 +4497,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -4549,7 +4512,7 @@ export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: GoogleIamV1BindingList;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     auditConfigs: S.optional(GoogleIamV1AuditConfigList),
@@ -4564,18 +4527,17 @@ export interface GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest>;
@@ -4586,7 +4548,7 @@ export interface GetIamPolicyProjectsLocationsAuthzPoliciesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4607,7 +4569,7 @@ export interface GetIamPolicyProjectsLocationsClientTlsPoliciesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4628,7 +4590,7 @@ export interface GetIamPolicyProjectsLocationsServerTlsPoliciesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4647,7 +4609,7 @@ export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4674,7 +4636,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     name: S.optional(S.String),
@@ -4688,7 +4650,7 @@ export interface GetOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to get. Must be in the format `projects/*\/locations/{location}/addressGroups/*`. */
   name: string;
 }
-export const GetOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4706,7 +4668,7 @@ export interface GetOrganizationsLocationsFirewallEndpointsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4724,7 +4686,7 @@ export interface GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChange
   /** Required. Name of the WildfireVerdictChangeRequest to retrieve. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id} Where {wildfire_verdict_change_request_id} is the ID in the format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ */
   name: string;
 }
-export const GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
+const GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4743,7 +4705,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4761,7 +4723,7 @@ export interface GetOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Required. A name of the SecurityProfileGroup to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
 }
-export const GetOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4779,7 +4741,7 @@ export interface GetOrganizationsLocationsSecurityProfilesRequest {
   /** Required. A name of the SecurityProfile to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile_id}`. */
   name: string;
 }
-export const GetOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4797,7 +4759,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4815,7 +4777,7 @@ export interface GetProjectsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to get. Must be in the format `projects/*\/locations/{location}/addressGroups/*`. */
   name: string;
 }
-export const GetProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4833,7 +4795,7 @@ export interface GetProjectsLocationsAuthorizationPoliciesRequest {
   /** Required. A name of the AuthorizationPolicy to get. Must be in the format `projects/{project}/locations/{location}/authorizationPolicies/*`. */
   name: string;
 }
-export const GetProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4851,7 +4813,7 @@ export interface GetProjectsLocationsAuthzPoliciesRequest {
   /** Required. A name of the `AuthzPolicy` resource to get. Must be in the format `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`. */
   name: string;
 }
-export const GetProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4869,7 +4831,7 @@ export interface GetProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Required. A name of the BackendAuthenticationConfig to get. Must be in the format `projects/*\/locations/{location}/backendAuthenticationConfigs/*`. */
   name: string;
 }
-export const GetProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4887,7 +4849,7 @@ export interface GetProjectsLocationsClientTlsPoliciesRequest {
   /** Required. A name of the ClientTlsPolicy to get. Must be in the format `projects/*\/locations/{location}/clientTlsPolicies/*`. */
   name: string;
 }
-export const GetProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4905,7 +4867,7 @@ export interface GetProjectsLocationsDnsThreatDetectorsRequest {
   /** Required. Name of the DnsThreatDetector resource. */
   name: string;
 }
-export const GetProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4923,7 +4885,7 @@ export interface GetProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4941,7 +4903,7 @@ export interface GetProjectsLocationsFirewallEndpointsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4959,7 +4921,7 @@ export interface GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeReque
   /** Required. Name of the WildfireVerdictChangeRequest to retrieve. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id} Where {wildfire_verdict_change_request_id} is the ID in the format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ */
   name: string;
 }
-export const GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
+const GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4978,7 +4940,7 @@ export interface GetProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. A name of the GatewaySecurityPolicy to get. Must be in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`. */
   name: string;
 }
-export const GetProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4996,7 +4958,7 @@ export interface GetProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Required. The name of the GatewaySecurityPolicyRule to retrieve. Format: projects/{project}/location/{location}/gatewaySecurityPolicies/*\/rules/* */
   name: string;
 }
-export const GetProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5014,7 +4976,7 @@ export interface GetProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Required. The name of the deployment group to retrieve. Format: projects/{project}/locations/{location}/interceptDeploymentGroups/{intercept_deployment_group} */
   name: string;
 }
-export const GetProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5032,7 +4994,7 @@ export interface GetProjectsLocationsInterceptDeploymentsRequest {
   /** Required. The name of the deployment to retrieve. Format: projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment} */
   name: string;
 }
-export const GetProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5050,26 +5012,25 @@ export interface GetProjectsLocationsInterceptEndpointGroupAssociationsRequest {
   /** Required. The name of the association to retrieve. Format: projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{intercept_endpoint_group_association} */
   name: string;
 }
-export const GetProjectsLocationsInterceptEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsInterceptEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
+const GetProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsInterceptEndpointGroupAssociationsRequest",
+}) as any as S.Schema<GetProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export interface GetProjectsLocationsInterceptEndpointGroupsRequest {
   /** Required. The name of the endpoint group to retrieve. Format: projects/{project}/locations/{location}/interceptEndpointGroups/{intercept_endpoint_group} */
   name: string;
 }
-export const GetProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5087,7 +5048,7 @@ export interface GetProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Required. The name of the deployment group to retrieve. Format: projects/{project}/locations/{location}/mirroringDeploymentGroups/{mirroring_deployment_group} */
   name: string;
 }
-export const GetProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5105,7 +5066,7 @@ export interface GetProjectsLocationsMirroringDeploymentsRequest {
   /** Required. The name of the deployment to retrieve. Format: projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment} */
   name: string;
 }
-export const GetProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5123,26 +5084,25 @@ export interface GetProjectsLocationsMirroringEndpointGroupAssociationsRequest {
   /** Required. The name of the association to retrieve. Format: projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroring_endpoint_group_association} */
   name: string;
 }
-export const GetProjectsLocationsMirroringEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsMirroringEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
+const GetProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsMirroringEndpointGroupAssociationsRequest",
+}) as any as S.Schema<GetProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export interface GetProjectsLocationsMirroringEndpointGroupsRequest {
   /** Required. The name of the endpoint group to retrieve. Format: projects/{project}/locations/{location}/mirroringEndpointGroups/{mirroring_endpoint_group} */
   name: string;
 }
-export const GetProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5160,7 +5120,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5178,7 +5138,7 @@ export interface GetProjectsLocationsSacAttachmentsRequest {
   /** Required. Name of the resource, in the form `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`. */
   name: string;
 }
-export const GetProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5196,7 +5156,7 @@ export interface GetProjectsLocationsSacRealmsRequest {
   /** Required. Name of the resource, in the form `projects/{project}/locations/global/sacRealms/{sacRealm}`. */
   name: string;
 }
-export const GetProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5214,7 +5174,7 @@ export interface GetProjectsLocationsSecurityProfileGroupsRequest {
   /** Required. A name of the SecurityProfileGroup to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
 }
-export const GetProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5232,7 +5192,7 @@ export interface GetProjectsLocationsSecurityProfilesRequest {
   /** Required. A name of the SecurityProfile to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile_id}`. */
   name: string;
 }
-export const GetProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5250,7 +5210,7 @@ export interface GetProjectsLocationsServerTlsPoliciesRequest {
   /** Required. A name of the ServerTlsPolicy to get. Must be in the format `projects/*\/locations/{location}/serverTlsPolicies/*`. */
   name: string;
 }
-export const GetProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5268,7 +5228,7 @@ export interface GetProjectsLocationsTlsInspectionPoliciesRequest {
   /** Required. A name of the TlsInspectionPolicy to get. Must be in the format `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`. */
   name: string;
 }
-export const GetProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5286,7 +5246,7 @@ export interface GetProjectsLocationsUrlListsRequest {
   /** Required. A name of the UrlList to get. Must be in the format `projects/*\/locations/{location}/urlLists/*`. */
   name: string;
 }
-export const GetProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5312,7 +5272,7 @@ export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5331,7 +5291,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -5340,7 +5300,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -5357,7 +5317,7 @@ export interface ListOrganizationsLocationsAddressGroupsRequest {
   /** Optional. If true, allow partial responses for multi-regional Aggregated List requests. */
   returnPartialSuccess?: boolean;
 }
-export const ListOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5375,9 +5335,7 @@ export const ListOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListOrganizationsLocationsAddressGroupsRequest>;
 
 export type AddressGroupList = Array<AddressGroup>;
-export const AddressGroupList = /*@__PURE__*/ S.Array(
-  AddressGroup,
-) as any as S.Schema<AddressGroupList>;
+const AddressGroupList = /*@__PURE__*/ S.Array(AddressGroup) as any as S.Schema<AddressGroupList>;
 
 /** Response returned by the ListAddressGroups method. */
 export interface ListAddressGroupsResponse {
@@ -5388,7 +5346,7 @@ export interface ListAddressGroupsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListAddressGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAddressGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroups: S.optional(AddressGroupList),
     nextPageToken: S.optional(S.String),
@@ -5410,7 +5368,7 @@ export interface ListOrganizationsLocationsFirewallEndpointsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5429,7 +5387,7 @@ export const ListOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsRequest>;
 
 export type FirewallEndpointList = Array<FirewallEndpoint>;
-export const FirewallEndpointList = /*@__PURE__*/ S.Array(
+const FirewallEndpointList = /*@__PURE__*/ S.Array(
   FirewallEndpoint,
 ) as any as S.Schema<FirewallEndpointList>;
 
@@ -5442,7 +5400,7 @@ export interface ListFirewallEndpointsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListFirewallEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFirewallEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallEndpoints: S.optional(FirewallEndpointList),
     nextPageToken: S.optional(S.String),
@@ -5462,7 +5420,7 @@ export interface ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChang
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
+const ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
@@ -5481,7 +5439,7 @@ export const ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeReq
   }) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
 
 export type WildfireVerdictChangeRequestList = Array<WildfireVerdictChangeRequest>;
-export const WildfireVerdictChangeRequestList = /*@__PURE__*/ S.Array(
+const WildfireVerdictChangeRequestList = /*@__PURE__*/ S.Array(
   WildfireVerdictChangeRequest,
 ) as any as S.Schema<WildfireVerdictChangeRequestList>;
 
@@ -5494,7 +5452,7 @@ export interface ListWildfireVerdictChangeRequestsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListWildfireVerdictChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWildfireVerdictChangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wildfireVerdictChangeRequests: S.optional(WildfireVerdictChangeRequestList),
     nextPageToken: S.optional(S.String),
@@ -5516,7 +5474,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5535,7 +5493,7 @@ export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -5546,7 +5504,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -5562,7 +5520,7 @@ export interface ListOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Required. The project or organization and location from which the SecurityProfileGroups should be listed, specified in the format `projects|organizations/*\/locations/{location}`. */
   parent: string;
 }
-export const ListOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5579,7 +5537,7 @@ export const ListOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE_
 }) as any as S.Schema<ListOrganizationsLocationsSecurityProfileGroupsRequest>;
 
 export type SecurityProfileGroupList = Array<SecurityProfileGroup>;
-export const SecurityProfileGroupList = /*@__PURE__*/ S.Array(
+const SecurityProfileGroupList = /*@__PURE__*/ S.Array(
   SecurityProfileGroup,
 ) as any as S.Schema<SecurityProfileGroupList>;
 
@@ -5590,7 +5548,7 @@ export interface ListSecurityProfileGroupsResponse {
   /** List of SecurityProfileGroups resources. */
   securityProfileGroups?: SecurityProfileGroupList;
 }
-export const ListSecurityProfileGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityProfileGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     securityProfileGroups: S.optional(SecurityProfileGroupList),
@@ -5607,7 +5565,7 @@ export interface ListOrganizationsLocationsSecurityProfilesRequest {
   /** Optional. Maximum number of SecurityProfiles to return per call. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5624,7 +5582,7 @@ export const ListOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListOrganizationsLocationsSecurityProfilesRequest>;
 
 export type SecurityProfileList = Array<SecurityProfile>;
-export const SecurityProfileList = /*@__PURE__*/ S.Array(
+const SecurityProfileList = /*@__PURE__*/ S.Array(
   SecurityProfile,
 ) as any as S.Schema<SecurityProfileList>;
 
@@ -5635,7 +5593,7 @@ export interface ListSecurityProfilesResponse {
   /** List of SecurityProfile resources. */
   securityProfiles?: SecurityProfileList;
 }
-export const ListSecurityProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     securityProfiles: S.optional(SecurityProfileList),
@@ -5656,7 +5614,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5684,7 +5642,7 @@ export interface ListProjectsLocationsAddressGroupsRequest {
   /** Optional. If true, allow partial responses for multi-regional Aggregated List requests. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5709,7 +5667,7 @@ export interface ListProjectsLocationsAuthorizationPoliciesRequest {
   /** Maximum number of AuthorizationPolicies to return per call. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5726,7 +5684,7 @@ export const ListProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsAuthorizationPoliciesRequest>;
 
 export type AuthorizationPolicyList = Array<AuthorizationPolicy>;
-export const AuthorizationPolicyList = /*@__PURE__*/ S.Array(
+const AuthorizationPolicyList = /*@__PURE__*/ S.Array(
   AuthorizationPolicy,
 ) as any as S.Schema<AuthorizationPolicyList>;
 
@@ -5737,7 +5695,7 @@ export interface ListAuthorizationPoliciesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const ListAuthorizationPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationPolicies: S.optional(AuthorizationPolicyList),
     nextPageToken: S.optional(S.String),
@@ -5758,7 +5716,7 @@ export interface ListProjectsLocationsAuthzPoliciesRequest {
   /** Optional. A token identifying a page of results that the server returns. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5777,9 +5735,7 @@ export const ListProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsAuthzPoliciesRequest>;
 
 export type AuthzPolicyList = Array<AuthzPolicy>;
-export const AuthzPolicyList = /*@__PURE__*/ S.Array(
-  AuthzPolicy,
-) as any as S.Schema<AuthzPolicyList>;
+const AuthzPolicyList = /*@__PURE__*/ S.Array(AuthzPolicy) as any as S.Schema<AuthzPolicyList>;
 
 /** Message for response to listing `AuthzPolicy` resources. */
 export interface ListAuthzPoliciesResponse {
@@ -5790,7 +5746,7 @@ export interface ListAuthzPoliciesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListAuthzPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthzPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authzPolicies: S.optional(AuthzPolicyList),
     nextPageToken: S.optional(S.String),
@@ -5808,25 +5764,24 @@ export interface ListProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Required. The project and location from which the BackendAuthenticationConfigs should be listed, specified in the format `projects/*\/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/backendAuthenticationConfigs",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/backendAuthenticationConfigs",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsBackendAuthenticationConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackendAuthenticationConfigsRequest>;
 
 export type BackendAuthenticationConfigList = Array<BackendAuthenticationConfig>;
-export const BackendAuthenticationConfigList = /*@__PURE__*/ S.Array(
+const BackendAuthenticationConfigList = /*@__PURE__*/ S.Array(
   BackendAuthenticationConfig,
 ) as any as S.Schema<BackendAuthenticationConfigList>;
 
@@ -5839,7 +5794,7 @@ export interface ListBackendAuthenticationConfigsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const ListBackendAuthenticationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackendAuthenticationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backendAuthenticationConfigs: S.optional(BackendAuthenticationConfigList),
     unreachable: S.optional(StringList),
@@ -5857,7 +5812,7 @@ export interface ListProjectsLocationsClientTlsPoliciesRequest {
   /** Required. The project and location from which the ClientTlsPolicies should be listed, specified in the format `projects/*\/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5874,7 +5829,7 @@ export const ListProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsClientTlsPoliciesRequest>;
 
 export type ClientTlsPolicyList = Array<ClientTlsPolicy>;
-export const ClientTlsPolicyList = /*@__PURE__*/ S.Array(
+const ClientTlsPolicyList = /*@__PURE__*/ S.Array(
   ClientTlsPolicy,
 ) as any as S.Schema<ClientTlsPolicyList>;
 
@@ -5885,7 +5840,7 @@ export interface ListClientTlsPoliciesResponse {
   /** List of ClientTlsPolicy resources. */
   clientTlsPolicies?: ClientTlsPolicyList;
 }
-export const ListClientTlsPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientTlsPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     clientTlsPolicies: S.optional(ClientTlsPolicyList),
@@ -5902,7 +5857,7 @@ export interface ListProjectsLocationsDnsThreatDetectorsRequest {
   /** Optional. A page token received from a previous `ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5919,7 +5874,7 @@ export const ListProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsDnsThreatDetectorsRequest>;
 
 export type DnsThreatDetectorList = Array<DnsThreatDetector>;
-export const DnsThreatDetectorList = /*@__PURE__*/ S.Array(
+const DnsThreatDetectorList = /*@__PURE__*/ S.Array(
   DnsThreatDetector,
 ) as any as S.Schema<DnsThreatDetectorList>;
 
@@ -5932,7 +5887,7 @@ export interface ListDnsThreatDetectorsResponse {
   /** Unordered list. Unreachable `DnsThreatDetector` resources. */
   unreachable?: StringList;
 }
-export const ListDnsThreatDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDnsThreatDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsThreatDetectors: S.optional(DnsThreatDetectorList),
     nextPageToken: S.optional(S.String),
@@ -5954,27 +5909,26 @@ export interface ListProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/firewallEndpointAssociations",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/firewallEndpointAssociations",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsFirewallEndpointAssociationsRequest",
 }) as any as S.Schema<ListProjectsLocationsFirewallEndpointAssociationsRequest>;
 
 export type FirewallEndpointAssociationList = Array<FirewallEndpointAssociation>;
-export const FirewallEndpointAssociationList = /*@__PURE__*/ S.Array(
+const FirewallEndpointAssociationList = /*@__PURE__*/ S.Array(
   FirewallEndpointAssociation,
 ) as any as S.Schema<FirewallEndpointAssociationList>;
 
@@ -5987,7 +5941,7 @@ export interface ListFirewallEndpointAssociationsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListFirewallEndpointAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFirewallEndpointAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     firewallEndpointAssociations: S.optional(FirewallEndpointAssociationList),
@@ -6009,7 +5963,7 @@ export interface ListProjectsLocationsFirewallEndpointsRequest {
   /** Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6037,7 +5991,7 @@ export interface ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequ
   /** Optional. Filter expression to filter the results. See AIP-160 for filtering syntax. Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time > "2026-01-01T00:00:00Z"`) */
   filter?: string;
 }
-export const ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
+const ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6063,7 +6017,7 @@ export interface ListProjectsLocationsGatewaySecurityPoliciesRequest {
   /** The value returned by the last 'ListGatewaySecurityPoliciesResponse' Indicates that this is a continuation of a prior 'ListGatewaySecurityPolicies' call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6080,7 +6034,7 @@ export const ListProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRequest>;
 
 export type GatewaySecurityPolicyList = Array<GatewaySecurityPolicy>;
-export const GatewaySecurityPolicyList = /*@__PURE__*/ S.Array(
+const GatewaySecurityPolicyList = /*@__PURE__*/ S.Array(
   GatewaySecurityPolicy,
 ) as any as S.Schema<GatewaySecurityPolicyList>;
 
@@ -6093,7 +6047,7 @@ export interface ListGatewaySecurityPoliciesResponse {
   /** List of GatewaySecurityPolicies resources. */
   gatewaySecurityPolicies?: GatewaySecurityPolicyList;
 }
-export const ListGatewaySecurityPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGatewaySecurityPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -6111,25 +6065,24 @@ export interface ListProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Required. The project, location and GatewaySecurityPolicy from which the GatewaySecurityPolicyRules should be listed, specified in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}`. */
   parent: string;
 }
-export const ListProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/rules",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/rules",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsGatewaySecurityPoliciesRulesRequest",
 }) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
 
 export type GatewaySecurityPolicyRuleList = Array<GatewaySecurityPolicyRule>;
-export const GatewaySecurityPolicyRuleList = /*@__PURE__*/ S.Array(
+const GatewaySecurityPolicyRuleList = /*@__PURE__*/ S.Array(
   GatewaySecurityPolicyRule,
 ) as any as S.Schema<GatewaySecurityPolicyRuleList>;
 
@@ -6142,7 +6095,7 @@ export interface ListGatewaySecurityPolicyRulesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListGatewaySecurityPolicyRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGatewaySecurityPolicyRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewaySecurityPolicyRules: S.optional(GatewaySecurityPolicyRuleList),
     nextPageToken: S.optional(S.String),
@@ -6164,7 +6117,7 @@ export interface ListProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Optional. Filter expression. See https://google.aip.dev/160#filtering for more details. */
   filter?: string;
 }
-export const ListProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6183,7 +6136,7 @@ export const ListProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__
 }) as any as S.Schema<ListProjectsLocationsInterceptDeploymentGroupsRequest>;
 
 export type InterceptDeploymentGroupList = Array<InterceptDeploymentGroup>;
-export const InterceptDeploymentGroupList = /*@__PURE__*/ S.Array(
+const InterceptDeploymentGroupList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroup,
 ) as any as S.Schema<InterceptDeploymentGroupList>;
 
@@ -6194,7 +6147,7 @@ export interface ListInterceptDeploymentGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-export const ListInterceptDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInterceptDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interceptDeploymentGroups: S.optional(InterceptDeploymentGroupList),
     nextPageToken: S.optional(S.String),
@@ -6215,7 +6168,7 @@ export interface ListProjectsLocationsInterceptDeploymentsRequest {
   /** Optional. Filter expression. See https://google.aip.dev/160#filtering for more details. */
   filter?: string;
 }
-export const ListProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6234,7 +6187,7 @@ export const ListProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsInterceptDeploymentsRequest>;
 
 export type InterceptDeploymentList = Array<InterceptDeployment>;
-export const InterceptDeploymentList = /*@__PURE__*/ S.Array(
+const InterceptDeploymentList = /*@__PURE__*/ S.Array(
   InterceptDeployment,
 ) as any as S.Schema<InterceptDeploymentList>;
 
@@ -6247,7 +6200,7 @@ export interface ListInterceptDeploymentsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListInterceptDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInterceptDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interceptDeployments: S.optional(InterceptDeploymentList),
     nextPageToken: S.optional(S.String),
@@ -6269,27 +6222,26 @@ export interface ListProjectsLocationsInterceptEndpointGroupAssociationsRequest 
   /** Optional. Sort expression. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsInterceptEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/interceptEndpointGroupAssociations",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsInterceptEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
+const ListProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/interceptEndpointGroupAssociations",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsInterceptEndpointGroupAssociationsRequest",
+}) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export type InterceptEndpointGroupAssociationList = Array<InterceptEndpointGroupAssociation>;
-export const InterceptEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
+const InterceptEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroupAssociation,
 ) as any as S.Schema<InterceptEndpointGroupAssociationList>;
 
@@ -6300,7 +6252,7 @@ export interface ListInterceptEndpointGroupAssociationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-export const ListInterceptEndpointGroupAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInterceptEndpointGroupAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interceptEndpointGroupAssociations: S.optional(InterceptEndpointGroupAssociationList),
     nextPageToken: S.optional(S.String),
@@ -6321,7 +6273,7 @@ export interface ListProjectsLocationsInterceptEndpointGroupsRequest {
   /** Optional. Filter expression. See https://google.aip.dev/160#filtering for more details. */
   filter?: string;
 }
-export const ListProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -6340,7 +6292,7 @@ export const ListProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupsRequest>;
 
 export type InterceptEndpointGroupList = Array<InterceptEndpointGroup>;
-export const InterceptEndpointGroupList = /*@__PURE__*/ S.Array(
+const InterceptEndpointGroupList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroup,
 ) as any as S.Schema<InterceptEndpointGroupList>;
 
@@ -6351,7 +6303,7 @@ export interface ListInterceptEndpointGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-export const ListInterceptEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInterceptEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interceptEndpointGroups: S.optional(InterceptEndpointGroupList),
     nextPageToken: S.optional(S.String),
@@ -6372,7 +6324,7 @@ export interface ListProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Optional. A page token, received from a previous `ListMirroringDeploymentGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMirroringDeploymentGroups` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
 }
-export const ListProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -6391,7 +6343,7 @@ export const ListProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__
 }) as any as S.Schema<ListProjectsLocationsMirroringDeploymentGroupsRequest>;
 
 export type MirroringDeploymentGroupList = Array<MirroringDeploymentGroup>;
-export const MirroringDeploymentGroupList = /*@__PURE__*/ S.Array(
+const MirroringDeploymentGroupList = /*@__PURE__*/ S.Array(
   MirroringDeploymentGroup,
 ) as any as S.Schema<MirroringDeploymentGroupList>;
 
@@ -6402,7 +6354,7 @@ export interface ListMirroringDeploymentGroupsResponse {
   /** The deployment groups from the specified parent. */
   mirroringDeploymentGroups?: MirroringDeploymentGroupList;
 }
-export const ListMirroringDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMirroringDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     mirroringDeploymentGroups: S.optional(MirroringDeploymentGroupList),
@@ -6423,7 +6375,7 @@ export interface ListProjectsLocationsMirroringDeploymentsRequest {
   /** Required. The parent, which owns this collection of deployments. Example: `projects/123456789/locations/us-central1-a`. See https://google.aip.dev/132 for more details. */
   parent: string;
 }
-export const ListProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -6442,7 +6394,7 @@ export const ListProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsMirroringDeploymentsRequest>;
 
 export type MirroringDeploymentList = Array<MirroringDeployment>;
-export const MirroringDeploymentList = /*@__PURE__*/ S.Array(
+const MirroringDeploymentList = /*@__PURE__*/ S.Array(
   MirroringDeployment,
 ) as any as S.Schema<MirroringDeploymentList>;
 
@@ -6455,7 +6407,7 @@ export interface ListMirroringDeploymentsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-export const ListMirroringDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMirroringDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mirroringDeployments: S.optional(MirroringDeploymentList),
     unreachable: S.optional(StringList),
@@ -6477,27 +6429,26 @@ export interface ListProjectsLocationsMirroringEndpointGroupAssociationsRequest 
   /** Required. The parent, which owns this collection of associations. Example: `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details. */
   parent: string;
 }
-export const ListProjectsLocationsMirroringEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/mirroringEndpointGroupAssociations",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsMirroringEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
+const ListProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/mirroringEndpointGroupAssociations",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsMirroringEndpointGroupAssociationsRequest",
+}) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export type MirroringEndpointGroupAssociationList = Array<MirroringEndpointGroupAssociation>;
-export const MirroringEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
+const MirroringEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroupAssociation,
 ) as any as S.Schema<MirroringEndpointGroupAssociationList>;
 
@@ -6508,7 +6459,7 @@ export interface ListMirroringEndpointGroupAssociationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-export const ListMirroringEndpointGroupAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMirroringEndpointGroupAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mirroringEndpointGroupAssociations: S.optional(MirroringEndpointGroupAssociationList),
     nextPageToken: S.optional(S.String),
@@ -6529,7 +6480,7 @@ export interface ListProjectsLocationsMirroringEndpointGroupsRequest {
   /** Optional. Filter expression. See https://google.aip.dev/160#filtering for more details. */
   filter?: string;
 }
-export const ListProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6548,7 +6499,7 @@ export const ListProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupsRequest>;
 
 export type MirroringEndpointGroupList = Array<MirroringEndpointGroup>;
-export const MirroringEndpointGroupList = /*@__PURE__*/ S.Array(
+const MirroringEndpointGroupList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroup,
 ) as any as S.Schema<MirroringEndpointGroupList>;
 
@@ -6559,7 +6510,7 @@ export interface ListMirroringEndpointGroupsResponse {
   /** The endpoint groups from the specified parent. */
   mirroringEndpointGroups?: MirroringEndpointGroupList;
 }
-export const ListMirroringEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMirroringEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     mirroringEndpointGroups: S.optional(MirroringEndpointGroupList),
@@ -6580,7 +6531,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6610,7 +6561,7 @@ export interface ListProjectsLocationsSacAttachmentsRequest {
   /** Optional. An expression that filters the list of results. */
   filter?: string;
 }
-export const ListProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6629,7 +6580,7 @@ export const ListProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsSacAttachmentsRequest>;
 
 export type SACAttachmentList = Array<SACAttachment>;
-export const SACAttachmentList = /*@__PURE__*/ S.Array(
+const SACAttachmentList = /*@__PURE__*/ S.Array(
   SACAttachment,
 ) as any as S.Schema<SACAttachmentList>;
 
@@ -6642,7 +6593,7 @@ export interface ListSACAttachmentsResponse {
   /** The list of SACAttachments. */
   sacAttachments?: SACAttachmentList;
 }
-export const ListSACAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSACAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -6664,7 +6615,7 @@ export interface ListProjectsLocationsSacRealmsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6683,7 +6634,7 @@ export const ListProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsSacRealmsRequest>;
 
 export type SACRealmList = Array<SACRealm>;
-export const SACRealmList = /*@__PURE__*/ S.Array(SACRealm) as any as S.Schema<SACRealmList>;
+const SACRealmList = /*@__PURE__*/ S.Array(SACRealm) as any as S.Schema<SACRealmList>;
 
 /** Response for `ListSACRealms` method. */
 export interface ListSACRealmsResponse {
@@ -6694,7 +6645,7 @@ export interface ListSACRealmsResponse {
   /** The list of SACRealms. */
   sacRealms?: SACRealmList;
 }
-export const ListSACRealmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSACRealmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -6710,7 +6661,7 @@ export interface ListProjectsLocationsSecurityProfileGroupsRequest {
   /** Optional. The value returned by the last `ListSecurityProfileGroupsResponse` Indicates that this is a continuation of a prior `ListSecurityProfileGroups` call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -6734,7 +6685,7 @@ export interface ListProjectsLocationsSecurityProfilesRequest {
   /** Required. The project or organization and location from which the SecurityProfiles should be listed, specified in the format `projects|organizations/*\/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6760,7 +6711,7 @@ export interface ListProjectsLocationsServerTlsPoliciesRequest {
   /** Required. The project and location from which the ServerTlsPolicies should be listed, specified in the format `projects/*\/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6778,7 +6729,7 @@ export const ListProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsServerTlsPoliciesRequest>;
 
 export type ServerTlsPolicyList = Array<ServerTlsPolicy>;
-export const ServerTlsPolicyList = /*@__PURE__*/ S.Array(
+const ServerTlsPolicyList = /*@__PURE__*/ S.Array(
   ServerTlsPolicy,
 ) as any as S.Schema<ServerTlsPolicyList>;
 
@@ -6791,7 +6742,7 @@ export interface ListServerTlsPoliciesResponse {
   /** List of ServerTlsPolicy resources. */
   serverTlsPolicies?: ServerTlsPolicyList;
 }
-export const ListServerTlsPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServerTlsPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -6809,7 +6760,7 @@ export interface ListProjectsLocationsTlsInspectionPoliciesRequest {
   /** The value returned by the last 'ListTlsInspectionPoliciesResponse' Indicates that this is a continuation of a prior 'ListTlsInspectionPolicies' call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6826,7 +6777,7 @@ export const ListProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsTlsInspectionPoliciesRequest>;
 
 export type TlsInspectionPolicyList = Array<TlsInspectionPolicy>;
-export const TlsInspectionPolicyList = /*@__PURE__*/ S.Array(
+const TlsInspectionPolicyList = /*@__PURE__*/ S.Array(
   TlsInspectionPolicy,
 ) as any as S.Schema<TlsInspectionPolicyList>;
 
@@ -6839,7 +6790,7 @@ export interface ListTlsInspectionPoliciesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
   nextPageToken?: string;
 }
-export const ListTlsInspectionPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTlsInspectionPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsInspectionPolicies: S.optional(TlsInspectionPolicyList),
     unreachable: S.optional(StringList),
@@ -6857,7 +6808,7 @@ export interface ListProjectsLocationsUrlListsRequest {
   /** Required. The project and location from which the UrlLists should be listed, specified in the format `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6874,7 +6825,7 @@ export const ListProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsUrlListsRequest>;
 
 export type UrlListList = Array<UrlList>;
-export const UrlListList = /*@__PURE__*/ S.Array(UrlList) as any as S.Schema<UrlListList>;
+const UrlListList = /*@__PURE__*/ S.Array(UrlList) as any as S.Schema<UrlListList>;
 
 /** Response returned by the ListUrlLists method. */
 export interface ListUrlListsResponse {
@@ -6885,7 +6836,7 @@ export interface ListUrlListsResponse {
   /** List of UrlList resources. */
   urlLists?: UrlListList;
 }
-export const ListUrlListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUrlListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -6901,19 +6852,18 @@ export interface ListReferencesOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to clone items to. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
 }
-export const ListReferencesOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      addressGroup: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+addressGroup}:listReferences",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const ListReferencesOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    addressGroup: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+addressGroup}:listReferences",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListReferencesOrganizationsLocationsAddressGroupsRequest",
 }) as any as S.Schema<ListReferencesOrganizationsLocationsAddressGroupsRequest>;
@@ -6927,7 +6877,7 @@ export interface ListAddressGroupReferencesResponseAddressGroupReference {
   /** Rule priority of the FirewallPolicy that is using the Address Group. */
   rulePriority?: number;
 }
-export const ListAddressGroupReferencesResponseAddressGroupReference = /*@__PURE__*/ S.suspend(() =>
+const ListAddressGroupReferencesResponseAddressGroupReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallPolicy: S.optional(S.String),
     securityPolicy: S.optional(S.String),
@@ -6939,7 +6889,7 @@ export const ListAddressGroupReferencesResponseAddressGroupReference = /*@__PURE
 
 export type ListAddressGroupReferencesResponseAddressGroupReferenceList =
   Array<ListAddressGroupReferencesResponseAddressGroupReference>;
-export const ListAddressGroupReferencesResponseAddressGroupReferenceList = /*@__PURE__*/ S.Array(
+const ListAddressGroupReferencesResponseAddressGroupReferenceList = /*@__PURE__*/ S.Array(
   ListAddressGroupReferencesResponseAddressGroupReference,
 ) as any as S.Schema<ListAddressGroupReferencesResponseAddressGroupReferenceList>;
 
@@ -6950,7 +6900,7 @@ export interface ListAddressGroupReferencesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const ListAddressGroupReferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAddressGroupReferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroupReferences: S.optional(ListAddressGroupReferencesResponseAddressGroupReferenceList),
     nextPageToken: S.optional(S.String),
@@ -6967,7 +6917,7 @@ export interface ListReferencesProjectsLocationsAddressGroupsRequest {
   /** The maximum number of references to return. If unspecified, server will pick an appropriate default. Server may return fewer items than requested. A caller should only rely on response's next_page_token to determine if there are more AddressGroupUsers left to be queried. */
   pageSize?: number;
 }
-export const ListReferencesProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReferencesProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     addressGroup: S.String.pipe(T.Label()),
@@ -6993,7 +6943,7 @@ export interface PatchOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-export const PatchOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -7020,7 +6970,7 @@ export interface PatchOrganizationsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-export const PatchOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -7045,7 +6995,7 @@ export interface PatchOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-export const PatchOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -7069,7 +7019,7 @@ export interface PatchOrganizationsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-export const PatchOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7095,7 +7045,7 @@ export interface PatchProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-export const PatchProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7120,7 +7070,7 @@ export interface PatchProjectsLocationsAuthorizationPoliciesRequest {
   /** Request body */
   body?: AuthorizationPolicy;
 }
-export const PatchProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -7146,7 +7096,7 @@ export interface PatchProjectsLocationsAuthzPoliciesRequest {
   /** Request body */
   body?: AuthzPolicy;
 }
-export const PatchProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7171,19 +7121,18 @@ export interface PatchProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Request body */
   body?: BackendAuthenticationConfig;
 }
-export const PatchProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(BackendAuthenticationConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(BackendAuthenticationConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsBackendAuthenticationConfigsRequest",
 }) as any as S.Schema<PatchProjectsLocationsBackendAuthenticationConfigsRequest>;
@@ -7196,7 +7145,7 @@ export interface PatchProjectsLocationsClientTlsPoliciesRequest {
   /** Request body */
   body?: ClientTlsPolicy;
 }
-export const PatchProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7220,7 +7169,7 @@ export interface PatchProjectsLocationsDnsThreatDetectorsRequest {
   /** Request body */
   body?: DnsThreatDetector;
 }
-export const PatchProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7246,20 +7195,19 @@ export interface PatchProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Request body */
   body?: FirewallEndpointAssociation;
 }
-export const PatchProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(FirewallEndpointAssociation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(FirewallEndpointAssociation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsFirewallEndpointAssociationsRequest",
 }) as any as S.Schema<PatchProjectsLocationsFirewallEndpointAssociationsRequest>;
@@ -7274,7 +7222,7 @@ export interface PatchProjectsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-export const PatchProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -7299,7 +7247,7 @@ export interface PatchProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Request body */
   body?: GatewaySecurityPolicy;
 }
-export const PatchProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7323,19 +7271,18 @@ export interface PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Request body */
   body?: GatewaySecurityPolicyRule;
 }
-export const PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GatewaySecurityPolicyRule.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GatewaySecurityPolicyRule.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest",
 }) as any as S.Schema<PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
@@ -7350,7 +7297,7 @@ export interface PatchProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Request body */
   body?: InterceptDeploymentGroup;
 }
-export const PatchProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -7377,7 +7324,7 @@ export interface PatchProjectsLocationsInterceptDeploymentsRequest {
   /** Request body */
   body?: InterceptDeployment;
 }
-export const PatchProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -7404,8 +7351,8 @@ export interface PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest
   /** Request body */
   body?: InterceptEndpointGroupAssociation;
 }
-export const PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -7418,9 +7365,9 @@ export const PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest",
+}) as any as S.Schema<PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export interface PatchProjectsLocationsInterceptEndpointGroupsRequest {
   /** Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. */
@@ -7432,7 +7379,7 @@ export interface PatchProjectsLocationsInterceptEndpointGroupsRequest {
   /** Request body */
   body?: InterceptEndpointGroup;
 }
-export const PatchProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7459,7 +7406,7 @@ export interface PatchProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Request body */
   body?: MirroringDeploymentGroup;
 }
-export const PatchProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -7486,7 +7433,7 @@ export interface PatchProjectsLocationsMirroringDeploymentsRequest {
   /** Request body */
   body?: MirroringDeployment;
 }
-export const PatchProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7513,8 +7460,8 @@ export interface PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest
   /** Request body */
   body?: MirroringEndpointGroupAssociation;
 }
-export const PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -7527,9 +7474,9 @@ export const PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest",
+}) as any as S.Schema<PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export interface PatchProjectsLocationsMirroringEndpointGroupsRequest {
   /** Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. */
@@ -7541,7 +7488,7 @@ export interface PatchProjectsLocationsMirroringEndpointGroupsRequest {
   /** Request body */
   body?: MirroringEndpointGroup;
 }
-export const PatchProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7566,7 +7513,7 @@ export interface PatchProjectsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-export const PatchProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7590,7 +7537,7 @@ export interface PatchProjectsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-export const PatchProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -7614,7 +7561,7 @@ export interface PatchProjectsLocationsServerTlsPoliciesRequest {
   /** Request body */
   body?: ServerTlsPolicy;
 }
-export const PatchProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7638,7 +7585,7 @@ export interface PatchProjectsLocationsTlsInspectionPoliciesRequest {
   /** Request body */
   body?: TlsInspectionPolicy;
 }
-export const PatchProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -7662,7 +7609,7 @@ export interface PatchProjectsLocationsUrlListsRequest {
   /** Request body */
   body?: UrlList;
 }
-export const PatchProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -7685,7 +7632,7 @@ export interface RemoveAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const RemoveAddressGroupItemsRequest =
+const RemoveAddressGroupItemsRequest =
   AddAddressGroupItemsRequest as any as S.Schema<RemoveAddressGroupItemsRequest>;
 
 export interface RemoveItemsOrganizationsLocationsAddressGroupsRequest {
@@ -7694,7 +7641,7 @@ export interface RemoveItemsOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: RemoveAddressGroupItemsRequest;
 }
-export const RemoveItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroup: S.String.pipe(T.Label()),
     body: S.optional(RemoveAddressGroupItemsRequest.pipe(T.HttpBody())),
@@ -7715,7 +7662,7 @@ export interface RemoveItemsProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: RemoveAddressGroupItemsRequest;
 }
-export const RemoveItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressGroup: S.String.pipe(T.Label()),
     body: S.optional(RemoveAddressGroupItemsRequest.pipe(T.HttpBody())),
@@ -7737,7 +7684,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
 }
-export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(GoogleIamV1Policy),
@@ -7752,7 +7699,7 @@ export interface SetIamPolicyProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -7773,18 +7720,17 @@ export interface SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest>;
@@ -7795,7 +7741,7 @@ export interface SetIamPolicyProjectsLocationsAuthzPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -7816,7 +7762,7 @@ export interface SetIamPolicyProjectsLocationsClientTlsPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -7837,7 +7783,7 @@ export interface SetIamPolicyProjectsLocationsServerTlsPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -7857,7 +7803,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -7871,18 +7817,17 @@ export interface TestIamPermissionsOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsOrganizationsLocationsAddressGroupsRequest",
 }) as any as S.Schema<TestIamPermissionsOrganizationsLocationsAddressGroupsRequest>;
@@ -7892,7 +7837,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse =
+const GoogleIamV1TestIamPermissionsResponse =
   GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsAddressGroupsRequest {
@@ -7901,7 +7846,7 @@ export interface TestIamPermissionsProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -7922,8 +7867,8 @@ export interface TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -7934,9 +7879,9 @@ export const TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest =
         baseUrl: "https://networksecurity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsAuthzPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -7944,7 +7889,7 @@ export interface TestIamPermissionsProjectsLocationsAuthzPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -7965,18 +7910,17 @@ export interface TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest>;
@@ -7987,18 +7931,17 @@ export interface TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://networksecurity.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://networksecurity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest>;

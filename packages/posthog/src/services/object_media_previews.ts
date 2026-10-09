@@ -43,7 +43,7 @@ export interface CreateObjectMediaPreviewRequest {
   exported_asset_id?: string | null;
   event_definition_id?: string | null;
 }
-export const CreateObjectMediaPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateObjectMediaPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     metadata: S.optional(S.Unknown),
@@ -66,7 +66,7 @@ export interface ObjectMediaPreviewOutput {
   media_type?: string;
   metadata?: unknown;
 }
-export const ObjectMediaPreviewOutput = /*@__PURE__*/ S.suspend(() =>
+const ObjectMediaPreviewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -83,7 +83,7 @@ export interface GetObjectMediaPreviewRequest {
   /** A UUID string identifying this object media preview. */
   id: string;
 }
-export const GetObjectMediaPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObjectMediaPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -102,7 +102,7 @@ export interface GetObjectMediaPreviewsPreferredForEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetObjectMediaPreviewsPreferredForEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObjectMediaPreviewsPreferredForEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -124,7 +124,7 @@ export interface ListObjectMediaPreviewsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListObjectMediaPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListObjectMediaPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -137,7 +137,7 @@ export const ListObjectMediaPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListObjectMediaPreviewsRequest>;
 
 export type PaginatedObjectMediaPreviewListOutputResultsList = Array<ObjectMediaPreviewOutput>;
-export const PaginatedObjectMediaPreviewListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedObjectMediaPreviewListOutputResultsList = /*@__PURE__*/ S.Array(
   ObjectMediaPreviewOutput,
 ) as any as S.Schema<PaginatedObjectMediaPreviewListOutputResultsList>;
 
@@ -147,7 +147,7 @@ export interface PaginatedObjectMediaPreviewListOutput {
   previous?: string | null;
   results?: PaginatedObjectMediaPreviewListOutputResultsList;
 }
-export const PaginatedObjectMediaPreviewListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedObjectMediaPreviewListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -164,7 +164,7 @@ export interface ObjectMediaPreviewsDestroyRequest {
   /** A UUID string identifying this object media preview. */
   id: string;
 }
-export const ObjectMediaPreviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ObjectMediaPreviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -180,9 +180,7 @@ export const ObjectMediaPreviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectMediaPreviewsDestroyRequest>;
 
 export interface ObjectMediaPreviewsDestroyResponse {}
-export const ObjectMediaPreviewsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ObjectMediaPreviewsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ObjectMediaPreviewsDestroyResponse",
 }) as any as S.Schema<ObjectMediaPreviewsDestroyResponse>;
 
@@ -196,7 +194,7 @@ export interface UpdateObjectMediaPreviewRequest {
   exported_asset_id?: string | null;
   event_definition_id?: string | null;
 }
-export const UpdateObjectMediaPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateObjectMediaPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -225,7 +223,7 @@ export interface UpdateObjectMediaPreviewsPartialRequest {
   exported_asset_id?: string | null;
   event_definition_id?: string | null;
 }
-export const UpdateObjectMediaPreviewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateObjectMediaPreviewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

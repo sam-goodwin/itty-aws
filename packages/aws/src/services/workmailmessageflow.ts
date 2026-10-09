@@ -97,7 +97,7 @@ export type MessageIdType = string;
 export interface GetRawMessageContentRequest {
   messageId: string;
 }
-export const GetRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/messages/{messageId}" }), svc, auth, proto, ver, rules),
   ),
@@ -107,7 +107,7 @@ export const GetRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRawMessageContentResponse {
   messageContent: T.StreamingOutputBody;
 }
-export const GetRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ messageContent: T.StreamingOutput.pipe(T.HttpPayload()) }),
 ).annotate({
   identifier: "GetRawMessageContentResponse",
@@ -120,20 +120,20 @@ export interface S3Reference {
   key: string;
   objectVersion?: string;
 }
-export const S3Reference = /*@__PURE__*/ S.suspend(() =>
+const S3Reference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, key: S.String, objectVersion: S.optional(S.String) }),
 ).annotate({ identifier: "S3Reference" }) as any as S.Schema<S3Reference>;
 export interface RawMessageContent {
   s3Reference: S3Reference;
 }
-export const RawMessageContent = /*@__PURE__*/ S.suspend(() =>
+const RawMessageContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Reference: S3Reference }),
 ).annotate({ identifier: "RawMessageContent" }) as any as S.Schema<RawMessageContent>;
 export interface PutRawMessageContentRequest {
   messageId: string;
   content: RawMessageContent;
 }
-export const PutRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")), content: RawMessageContent }).pipe(
     T.all(T.Http({ method: "POST", uri: "/messages/{messageId}" }), svc, auth, proto, ver, rules),
   ),
@@ -141,7 +141,7 @@ export const PutRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRawMessageContentRequest",
 }) as any as S.Schema<PutRawMessageContentRequest>;
 export interface PutRawMessageContentResponse {}
-export const PutRawMessageContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PutRawMessageContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PutRawMessageContentResponse",
 }) as any as S.Schema<PutRawMessageContentResponse>;
 export type ErrorMessage = string;

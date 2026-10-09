@@ -9,11 +9,11 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `conversations` - conversations * `error_tracking` - error_tracking * `session_replay` - session_replay */
 export type ProductsEnum = "conversations" | "error_tracking" | "session_replay";
-export const ProductsEnum = S.String;
+const ProductsEnum = S.String;
 
 /** Products to turn on for this project, each enabled with server-owned conservative defaults. */
 export type CreateProductEnablementRequestProductsList = Array<ProductsEnum | (string & {})>;
-export const CreateProductEnablementRequestProductsList = /*@__PURE__*/ S.Array(
+const CreateProductEnablementRequestProductsList = /*@__PURE__*/ S.Array(
   ProductsEnum,
 ) as any as S.Schema<CreateProductEnablementRequestProductsList>;
 
@@ -23,7 +23,7 @@ export interface CreateProductEnablementRequest {
   /** Products to turn on for this project, each enabled with server-owned conservative defaults. */
   products: CreateProductEnablementRequestProductsList;
 }
-export const CreateProductEnablementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductEnablementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     products: CreateProductEnablementRequestProductsList,
@@ -36,7 +36,7 @@ export const CreateProductEnablementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per requested product: "enabled" (just turned on) or "already_enabled". */
 export type ProductEnablementResultResultsMap = { [key: string]: string | undefined };
-export const ProductEnablementResultResultsMap = /*@__PURE__*/ S.Record(
+const ProductEnablementResultResultsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ProductEnablementResultResultsMap>;
@@ -45,7 +45,7 @@ export interface ProductEnablementResult {
   /** Per requested product: "enabled" (just turned on) or "already_enabled". */
   results: ProductEnablementResultResultsMap;
 }
-export const ProductEnablementResult = /*@__PURE__*/ S.suspend(() =>
+const ProductEnablementResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ProductEnablementResultResultsMap,
   }),

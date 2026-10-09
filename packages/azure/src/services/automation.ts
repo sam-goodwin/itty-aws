@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Gets or sets the SKU name of the account. */
 export type SkuNameEnum = "Free" | "Basic";
-export const SkuNameEnum = S.String;
+const SkuNameEnum = S.String;
 
 /** The account SKU. */
 export interface Sku {
@@ -22,7 +22,7 @@ export interface Sku {
   /** Gets or sets the SKU capacity. */
   capacity?: number;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuNameEnum,
     family: S.optional(S.String),
@@ -39,7 +39,7 @@ export interface KeyVaultProperties {
   /** The key version of the key used to encrypt data. */
   keyVersion?: string;
 }
-export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyvaultUri: S.optional(S.String),
     keyName: S.optional(S.String),
@@ -49,14 +49,14 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Encryption Key Source */
 export type EncryptionKeySourceType = "Microsoft.Automation" | "Microsoft.Keyvault";
-export const EncryptionKeySourceType = S.String;
+const EncryptionKeySourceType = S.String;
 
 /** User identity used for CMK. */
 export interface EncryptionPropertiesIdentity {
   /** The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentity?: unknown;
 }
-export const EncryptionPropertiesIdentity = /*@__PURE__*/ S.suspend(() =>
+const EncryptionPropertiesIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentity: S.optional(S.Unknown),
   }),
@@ -73,7 +73,7 @@ export interface EncryptionProperties {
   /** User identity used for CMK. */
   identity?: EncryptionPropertiesIdentity;
 }
-export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyVaultProperties: S.optional(KeyVaultProperties),
     keySource: S.optional(EncryptionKeySourceType),
@@ -96,7 +96,7 @@ export interface AutomationAccountCreateOrUpdateProperties {
   /** Automation account ID (GUID) of the soft-deleted account to recover; required with `createMode: Recover`. */
   automationAccountId?: string;
 }
-export const AutomationAccountCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccountCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(Sku),
     encryption: S.optional(EncryptionProperties),
@@ -115,12 +115,10 @@ export type ResourceIdentityType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ResourceIdentityType = S.String;
+const ResourceIdentityType = S.String;
 
 export interface UserAssignedIdentitiesPropertiesInput {}
-export const UserAssignedIdentitiesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const UserAssignedIdentitiesPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentitiesPropertiesInput",
 }) as any as S.Schema<UserAssignedIdentitiesPropertiesInput>;
 
@@ -128,7 +126,7 @@ export const UserAssignedIdentitiesPropertiesInput = /*@__PURE__*/ S.suspend(() 
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesPropertiesInput | undefined;
 };
-export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentitiesPropertiesInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
@@ -140,7 +138,7 @@ export interface IdentityInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ResourceIdentityType),
     userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
@@ -149,7 +147,7 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags attached to the resource. */
 export type AutomationAccountCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AutomationAccountCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AutomationAccountCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AutomationAccountCreateOrUpdateRequestTagsMap>;
@@ -172,7 +170,7 @@ export interface AutomationAccountCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: AutomationAccountCreateOrUpdateRequestTagsMap;
 }
-export const AutomationAccountCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccountCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -196,11 +194,11 @@ export const AutomationAccountCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -217,7 +215,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -230,19 +228,19 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AutomationAccountCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AutomationAccountCreateOrUpdateResponseTagsMap =
+const AutomationAccountCreateOrUpdateResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<AutomationAccountCreateOrUpdateResponseTagsMap>;
 
 /** Gets status of account. */
 export type AutomationAccountState = "Ok" | "Unavailable" | "Suspended";
-export const AutomationAccountState = S.String;
+const AutomationAccountState = S.String;
 
 /** Private endpoint which the connection belongs to. */
 export interface PrivateEndpointProperty {
   /** Resource id of the private endpoint. */
   id?: string;
 }
-export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -250,7 +248,7 @@ export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the groupIds. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
@@ -263,7 +261,7 @@ export interface PrivateLinkServiceConnectionStateProperty {
   /** Any action that is required beyond basic workflow (approve/ reject/ disconnect) */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionStateProperty = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionStateProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -282,7 +280,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Connection State of the Private Endpoint Connection. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateProperty;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointProperty),
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
@@ -305,7 +303,7 @@ export interface PrivateEndpointConnection {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -320,7 +318,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 /** List of Automation operations supported by the Automation resource provider. */
 export type AutomationAccountPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
-export const AutomationAccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const AutomationAccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<AutomationAccountPropertiesPrivateEndpointConnectionsList>;
 
@@ -349,7 +347,7 @@ export interface AutomationAccountProperties {
   /** URL of automation hybrid service which is used for hybrid worker on-boarding. */
   automationHybridServiceUrl?: string;
 }
-export const AutomationAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(Sku),
     lastModifiedBy: S.optional(S.String),
@@ -375,7 +373,7 @@ export interface UserAssignedIdentitiesProperties {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentitiesProperties = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentitiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -388,7 +386,7 @@ export const UserAssignedIdentitiesProperties = /*@__PURE__*/ S.suspend(() =>
 export type IdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesProperties | undefined;
 };
-export const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentitiesProperties,
 ) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
@@ -404,7 +402,7 @@ export interface Identity {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -433,7 +431,7 @@ export interface AutomationAccountCreateOrUpdateResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const AutomationAccountCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccountCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -460,7 +458,7 @@ export interface CertificateCreateOrUpdateProperties {
   /** Gets or sets the is exportable flag of the certificate. */
   isExportable?: boolean;
 }
-export const CertificateCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CertificateCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base64Value: S.String,
     description: S.optional(S.String),
@@ -485,7 +483,7 @@ export interface CertificateCreateOrUpdateRequest {
   /** Gets or sets the properties of the certificate. */
   properties: CertificateCreateOrUpdateProperties;
 }
-export const CertificateCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CertificateCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -520,7 +518,7 @@ export interface CertificateProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const CertificateProperties = /*@__PURE__*/ S.suspend(() =>
+const CertificateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thumbprint: S.optional(S.String),
     expiryTime: S.optional(S.String),
@@ -543,7 +541,7 @@ export interface CertificateCreateOrUpdateResponse {
   /** Gets or sets the properties of the certificate. */
   properties?: CertificateProperties;
 }
-export const CertificateCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CertificateCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -560,7 +558,7 @@ export interface ConnectionTypeAssociationProperty {
   /** Gets or sets the name of the connection type. */
   name?: string;
 }
-export const ConnectionTypeAssociationProperty = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTypeAssociationProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -572,7 +570,7 @@ export const ConnectionTypeAssociationProperty = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap = {
   [key: string]: string | undefined;
 };
-export const ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap =
+const ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap>;
 
 /** The properties of the create connection properties */
@@ -584,7 +582,7 @@ export interface ConnectionCreateOrUpdateProperties {
   /** Gets or sets the field definition properties of the connection. */
   fieldDefinitionValues?: ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap;
 }
-export const ConnectionCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     connectionType: ConnectionTypeAssociationProperty,
@@ -608,7 +606,7 @@ export interface ConnectionCreateOrUpdateRequest {
   /** Gets or sets the properties of the connection. */
   properties: ConnectionCreateOrUpdateProperties;
 }
-export const ConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -630,7 +628,7 @@ export const ConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the field definition values of the connection. */
 export type ConnectionPropertiesFieldDefinitionValuesMap = { [key: string]: string | undefined };
-export const ConnectionPropertiesFieldDefinitionValuesMap =
+const ConnectionPropertiesFieldDefinitionValuesMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<ConnectionPropertiesFieldDefinitionValuesMap>;
 
 /** Definition of the connection properties. */
@@ -646,7 +644,7 @@ export interface ConnectionProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionType: S.optional(ConnectionTypeAssociationProperty),
     fieldDefinitionValues: S.optional(ConnectionPropertiesFieldDefinitionValuesMap),
@@ -668,7 +666,7 @@ export interface ConnectionCreateOrUpdateResponse {
   /** Gets or sets the properties of the connection. */
   properties?: ConnectionProperties;
 }
-export const ConnectionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -689,7 +687,7 @@ export interface FieldDefinition {
   /** Gets or sets the type of the connection field definition. */
   type: string;
 }
-export const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
+const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEncrypted: S.optional(S.Boolean),
     isOptional: S.optional(S.Boolean),
@@ -701,7 +699,7 @@ export const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap = {
   [key: string]: FieldDefinition | undefined;
 };
-export const ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap = /*@__PURE__*/ S.Record(
+const ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap = /*@__PURE__*/ S.Record(
   S.String,
   FieldDefinition,
 ) as any as S.Schema<ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap>;
@@ -713,7 +711,7 @@ export interface ConnectionTypeCreateOrUpdateProperties {
   /** Gets or sets the field definitions of the connection type. */
   fieldDefinitions: ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap;
 }
-export const ConnectionTypeCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTypeCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isGlobal: S.optional(S.Boolean),
     fieldDefinitions: ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap,
@@ -736,7 +734,7 @@ export interface ConnectionTypeCreateOrUpdateRequest {
   /** Gets or sets the value of the connection type. */
   properties: ConnectionTypeCreateOrUpdateProperties;
 }
-export const ConnectionTypeCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTypeCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -760,7 +758,7 @@ export const ConnectionTypeCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionTypePropertiesFieldDefinitionsMap = {
   [key: string]: FieldDefinition | undefined;
 };
-export const ConnectionTypePropertiesFieldDefinitionsMap =
+const ConnectionTypePropertiesFieldDefinitionsMap =
   ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap as any as S.Schema<ConnectionTypePropertiesFieldDefinitionsMap>;
 
 /** Properties of the connection type. */
@@ -776,7 +774,7 @@ export interface ConnectionTypeProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const ConnectionTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isGlobal: S.optional(S.Boolean),
     fieldDefinitions: S.optional(ConnectionTypePropertiesFieldDefinitionsMap),
@@ -798,7 +796,7 @@ export interface ConnectionTypeCreateOrUpdateResponse {
   /** Gets or sets the properties of the connection type. */
   properties?: ConnectionTypeProperties;
 }
-export const ConnectionTypeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTypeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -812,7 +810,7 @@ export const ConnectionTypeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Runbook Type */
 export type GraphRunbookType = "GraphPowerShell" | "GraphPowerShellWorkflow";
-export const GraphRunbookType = S.String;
+const GraphRunbookType = S.String;
 
 /** Raw Graphical Runbook content */
 export interface RawGraphicalRunbookContent {
@@ -823,7 +821,7 @@ export interface RawGraphicalRunbookContent {
   /** Runbook Type */
   runbookType?: GraphRunbookType | (string & {});
 }
-export const RawGraphicalRunbookContent = /*@__PURE__*/ S.suspend(() =>
+const RawGraphicalRunbookContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaVersion: S.optional(S.String),
     runbookDefinition: S.optional(S.String),
@@ -845,7 +843,7 @@ export interface ConvertGraphRunbookContentRequest {
   /** Graphical Runbook content as JSON */
   graphRunbookJson?: string | null;
 }
-export const ConvertGraphRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertGraphRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -871,7 +869,7 @@ export interface GraphicalRunbookContent {
   /** Graphical Runbook content as JSON */
   graphRunbookJson?: string | null;
 }
-export const GraphicalRunbookContent = /*@__PURE__*/ S.suspend(() =>
+const GraphicalRunbookContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rawContent: S.optional(S.NullOr(RawGraphicalRunbookContent)),
     graphRunbookJson: S.optional(S.NullOr(S.String)),
@@ -883,7 +881,7 @@ export interface HybridRunbookWorkerCreateOrUpdateParameters {
   /** Azure Resource Manager Id for a virtual machine. */
   vmResourceId?: string;
 }
-export const HybridRunbookWorkerCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkerCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmResourceId: S.optional(S.String),
   }),
@@ -905,7 +903,7 @@ export interface CreateHybridRunbookWorkerRequest {
   /** Gets or sets hybrid runbook worker group create or update properties. */
   properties?: HybridRunbookWorkerCreateOrUpdateParameters;
 }
-export const CreateHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -927,12 +925,12 @@ export const CreateHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateHybridRunbookWorkerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateHybridRunbookWorkerResponseTagsMap =
+const CreateHybridRunbookWorkerResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<CreateHybridRunbookWorkerResponseTagsMap>;
 
 /** Type of the HybridWorker. */
 export type WorkerType = "HybridV1" | "HybridV2";
-export const WorkerType = S.String;
+const WorkerType = S.String;
 
 /** Definition of hybrid runbook worker property. */
 export interface HybridRunbookWorkerProperties {
@@ -949,7 +947,7 @@ export interface HybridRunbookWorkerProperties {
   /** Name of the HybridWorker. */
   workerName?: string;
 }
-export const HybridRunbookWorkerProperties = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.optional(S.String),
     registeredDateTime: S.optional(S.String),
@@ -978,7 +976,7 @@ export interface CreateHybridRunbookWorkerResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerProperties;
 }
-export const CreateHybridRunbookWorkerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHybridRunbookWorkerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -997,7 +995,7 @@ export interface RunAsCredentialAssociationProperty {
   /** Gets or sets the name of the credential. */
   name?: string;
 }
-export const RunAsCredentialAssociationProperty =
+const RunAsCredentialAssociationProperty =
   ConnectionTypeAssociationProperty as any as S.Schema<RunAsCredentialAssociationProperty>;
 
 /** The hybrid runbook worker group properties. */
@@ -1005,7 +1003,7 @@ export interface HybridRunbookWorkerGroupCreateOrUpdateProperties {
   /** Sets the credential of a worker group. */
   credential?: RunAsCredentialAssociationProperty;
 }
-export const HybridRunbookWorkerGroupCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkerGroupCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credential: S.optional(RunAsCredentialAssociationProperty),
   }),
@@ -1027,7 +1025,7 @@ export interface CreateHybridRunbookWorkerGroupRequest {
   /** Gets or sets the name of the resource. */
   name?: string;
 }
-export const CreateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1049,12 +1047,12 @@ export const CreateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type CreateHybridRunbookWorkerGroupResponseTagsMap = { [key: string]: string | undefined };
-export const CreateHybridRunbookWorkerGroupResponseTagsMap =
+const CreateHybridRunbookWorkerGroupResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<CreateHybridRunbookWorkerGroupResponseTagsMap>;
 
 /** Type of the HybridWorkerGroup. */
 export type GroupTypeEnum = "User" | "System";
-export const GroupTypeEnum = S.String;
+const GroupTypeEnum = S.String;
 
 /** Definition of hybrid runbook worker group property. */
 export interface HybridRunbookWorkerGroupProperties {
@@ -1063,7 +1061,7 @@ export interface HybridRunbookWorkerGroupProperties {
   /** Sets the credential of a worker group. */
   credential?: RunAsCredentialAssociationProperty;
 }
-export const HybridRunbookWorkerGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkerGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupType: S.optional(GroupTypeEnum),
     credential: S.optional(RunAsCredentialAssociationProperty),
@@ -1088,7 +1086,7 @@ export interface CreateHybridRunbookWorkerGroupResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerGroupProperties;
 }
-export const CreateHybridRunbookWorkerGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHybridRunbookWorkerGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1107,12 +1105,12 @@ export interface RunbookAssociationProperty {
   /** Gets or sets the name of the runbook. */
   name?: string;
 }
-export const RunbookAssociationProperty =
+const RunbookAssociationProperty =
   ConnectionTypeAssociationProperty as any as S.Schema<RunbookAssociationProperty>;
 
 /** Gets or sets the parameters of the job. */
 export type JobCreatePropertiesParametersMap = { [key: string]: string | undefined };
-export const JobCreatePropertiesParametersMap =
+const JobCreatePropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<JobCreatePropertiesParametersMap>;
 
 export interface JobCreateProperties {
@@ -1123,7 +1121,7 @@ export interface JobCreateProperties {
   /** Gets or sets the runOn which specifies the group name where the job is to be executed. */
   runOn?: string;
 }
-export const JobCreateProperties = /*@__PURE__*/ S.suspend(() =>
+const JobCreateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runbook: S.optional(RunbookAssociationProperty),
     parameters: S.optional(JobCreatePropertiesParametersMap),
@@ -1143,7 +1141,7 @@ export interface CreateJobRequest {
   /** Gets or sets the list of job properties. */
   properties: JobCreateProperties;
 }
-export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1165,7 +1163,7 @@ export interface JobRuntimeEnvironment {
   /** Name of Runtime Environment. */
   runtimeEnvironmentName?: string;
 }
-export const JobRuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+const JobRuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtimeEnvironmentName: S.optional(S.String),
   }),
@@ -1186,16 +1184,16 @@ export type JobStatus =
   | "Stopping"
   | "Resuming"
   | "Removing";
-export const JobStatus = S.String;
+const JobStatus = S.String;
 
 /** Gets or sets the parameters of the job. */
 export type JobPropertiesParametersMap = { [key: string]: string | undefined };
-export const JobPropertiesParametersMap =
+const JobPropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<JobPropertiesParametersMap>;
 
 /** The provisioning state of the resource. */
 export type JobProvisioningState = "Failed" | "Succeeded" | "Suspended" | "Processing";
-export const JobProvisioningState = S.String;
+const JobProvisioningState = S.String;
 
 /** Definition of job properties. */
 export interface JobProperties {
@@ -1230,7 +1228,7 @@ export interface JobProperties {
   /** The current provisioning state of the job. */
   provisioningState?: JobProvisioningState;
 }
-export const JobProperties = /*@__PURE__*/ S.suspend(() =>
+const JobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runbook: S.optional(RunbookAssociationProperty),
     startedBy: S.optional(S.String),
@@ -1262,7 +1260,7 @@ export interface CreateJobResponse {
   /** The properties of the job. */
   properties?: JobProperties;
 }
-export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1277,12 +1275,12 @@ export interface ScheduleAssociationProperty {
   /** Gets or sets the name of the Schedule. */
   name?: string;
 }
-export const ScheduleAssociationProperty =
+const ScheduleAssociationProperty =
   ConnectionTypeAssociationProperty as any as S.Schema<ScheduleAssociationProperty>;
 
 /** Gets or sets a list of job properties. */
 export type JobScheduleCreatePropertiesParametersMap = { [key: string]: string | undefined };
-export const JobScheduleCreatePropertiesParametersMap =
+const JobScheduleCreatePropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<JobScheduleCreatePropertiesParametersMap>;
 
 /** The parameters supplied to the create job schedule operation. */
@@ -1296,7 +1294,7 @@ export interface JobScheduleCreateProperties {
   /** Gets or sets a list of job properties. */
   parameters?: JobScheduleCreatePropertiesParametersMap;
 }
-export const JobScheduleCreateProperties = /*@__PURE__*/ S.suspend(() =>
+const JobScheduleCreateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: ScheduleAssociationProperty,
     runbook: RunbookAssociationProperty,
@@ -1319,7 +1317,7 @@ export interface CreateJobScheduleRequest {
   /** Gets or sets the list of job schedule properties. */
   properties: JobScheduleCreateProperties;
 }
-export const CreateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1338,7 +1336,7 @@ export const CreateJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the job schedule. */
 export type JobSchedulePropertiesParametersMap = { [key: string]: string | undefined };
-export const JobSchedulePropertiesParametersMap =
+const JobSchedulePropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<JobSchedulePropertiesParametersMap>;
 
 /** Definition of job schedule parameters. */
@@ -1354,7 +1352,7 @@ export interface JobScheduleProperties {
   /** Gets or sets the parameters of the job schedule. */
   parameters?: JobSchedulePropertiesParametersMap;
 }
-export const JobScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+const JobScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobScheduleId: S.optional(S.String),
     schedule: S.optional(ScheduleAssociationProperty),
@@ -1376,7 +1374,7 @@ export interface CreateJobScheduleResponse {
   /** Gets or sets the properties of the job schedule. */
   properties?: JobScheduleProperties;
 }
-export const CreateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1390,7 +1388,7 @@ export const CreateJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateRuntimeEnvironmentRequestTagsMap = { [key: string]: string | undefined };
-export const CreateRuntimeEnvironmentRequestTagsMap =
+const CreateRuntimeEnvironmentRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<CreateRuntimeEnvironmentRequestTagsMap>;
 
 /** Runtime properties. */
@@ -1400,7 +1398,7 @@ export interface RuntimeProperties {
   /** Version of Language */
   version?: string;
 }
-export const RuntimeProperties = /*@__PURE__*/ S.suspend(() =>
+const RuntimeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.optional(S.String),
     version: S.optional(S.String),
@@ -1409,7 +1407,7 @@ export const RuntimeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Default packages for Environment */
 export type RuntimeEnvironmentPropertiesDefaultPackagesMap = { [key: string]: string | undefined };
-export const RuntimeEnvironmentPropertiesDefaultPackagesMap =
+const RuntimeEnvironmentPropertiesDefaultPackagesMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<RuntimeEnvironmentPropertiesDefaultPackagesMap>;
 
 /** Runtime Environment properties. */
@@ -1421,7 +1419,7 @@ export interface RuntimeEnvironmentProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const RuntimeEnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
+const RuntimeEnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtime: S.optional(RuntimeProperties),
     defaultPackages: S.optional(RuntimeEnvironmentPropertiesDefaultPackagesMap),
@@ -1447,7 +1445,7 @@ export interface CreateRuntimeEnvironmentRequest {
   /** Gets or sets the Runtime Environment properties. */
   properties?: RuntimeEnvironmentProperties;
 }
-export const CreateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1470,7 +1468,7 @@ export const CreateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateRuntimeEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const CreateRuntimeEnvironmentResponseTagsMap =
+const CreateRuntimeEnvironmentResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<CreateRuntimeEnvironmentResponseTagsMap>;
 
 export interface CreateRuntimeEnvironmentResponse {
@@ -1489,7 +1487,7 @@ export interface CreateRuntimeEnvironmentResponse {
   /** Gets or sets the Runtime Environment properties. */
   properties?: RuntimeEnvironmentProperties;
 }
-export const CreateRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1505,7 +1503,7 @@ export const CreateRuntimeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Target operating system for the software update configuration. */
 export type OperatingSystemType = "Windows" | "Linux";
-export const OperatingSystemType = S.String;
+const OperatingSystemType = S.String;
 
 /** Update classification included in the software update configuration. A comma separated string with required values */
 export type WindowsUpdateClasses =
@@ -1518,16 +1516,16 @@ export type WindowsUpdateClasses =
   | "Definition"
   | "Tools"
   | "Updates";
-export const WindowsUpdateClasses = S.String;
+const WindowsUpdateClasses = S.String;
 
 /** KB numbers excluded from the software update configuration. */
 export type WindowsPropertiesExcludedKbNumbersList = Array<string>;
-export const WindowsPropertiesExcludedKbNumbersList =
+const WindowsPropertiesExcludedKbNumbersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WindowsPropertiesExcludedKbNumbersList>;
 
 /** KB numbers included from the software update configuration. */
 export type WindowsPropertiesIncludedKbNumbersList = Array<string>;
-export const WindowsPropertiesIncludedKbNumbersList =
+const WindowsPropertiesIncludedKbNumbersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WindowsPropertiesIncludedKbNumbersList>;
 
 /** Windows specific update configuration. */
@@ -1541,7 +1539,7 @@ export interface WindowsProperties {
   /** Reboot setting for the software update configuration. */
   rebootSetting?: string;
 }
-export const WindowsProperties = /*@__PURE__*/ S.suspend(() =>
+const WindowsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedUpdateClassifications: S.optional(WindowsUpdateClasses),
     excludedKbNumbers: S.optional(WindowsPropertiesExcludedKbNumbersList),
@@ -1552,16 +1550,16 @@ export const WindowsProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Update classifications included in the software update configuration. */
 export type LinuxUpdateClasses = "Unclassified" | "Critical" | "Security" | "Other";
-export const LinuxUpdateClasses = S.String;
+const LinuxUpdateClasses = S.String;
 
 /** packages excluded from the software update configuration. */
 export type LinuxPropertiesExcludedPackageNameMasksList = Array<string>;
-export const LinuxPropertiesExcludedPackageNameMasksList =
+const LinuxPropertiesExcludedPackageNameMasksList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<LinuxPropertiesExcludedPackageNameMasksList>;
 
 /** packages included from the software update configuration. */
 export type LinuxPropertiesIncludedPackageNameMasksList = Array<string>;
-export const LinuxPropertiesIncludedPackageNameMasksList =
+const LinuxPropertiesIncludedPackageNameMasksList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<LinuxPropertiesIncludedPackageNameMasksList>;
 
 /** Linux specific update configuration. */
@@ -1575,7 +1573,7 @@ export interface LinuxProperties {
   /** Reboot setting for the software update configuration. */
   rebootSetting?: string;
 }
-export const LinuxProperties = /*@__PURE__*/ S.suspend(() =>
+const LinuxProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedPackageClassifications: S.optional(LinuxUpdateClasses),
     excludedPackageNameMasks: S.optional(LinuxPropertiesExcludedPackageNameMasksList),
@@ -1586,40 +1584,40 @@ export const LinuxProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of azure resource Ids for azure virtual machines targeted by the software update configuration. */
 export type UpdateConfigurationAzureVirtualMachinesList = Array<string>;
-export const UpdateConfigurationAzureVirtualMachinesList =
+const UpdateConfigurationAzureVirtualMachinesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<UpdateConfigurationAzureVirtualMachinesList>;
 
 /** List of names of non-azure machines targeted by the software update configuration. */
 export type UpdateConfigurationNonAzureComputerNamesList = Array<string>;
-export const UpdateConfigurationNonAzureComputerNamesList =
+const UpdateConfigurationNonAzureComputerNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<UpdateConfigurationNonAzureComputerNamesList>;
 
 /** List of Subscription or Resource Group ARM Ids. */
 export type AzureQueryPropertiesScopeList = Array<string>;
-export const AzureQueryPropertiesScopeList =
+const AzureQueryPropertiesScopeList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AzureQueryPropertiesScopeList>;
 
 /** List of locations to scope the query to. */
 export type AzureQueryPropertiesLocationsList = Array<string>;
-export const AzureQueryPropertiesLocationsList =
+const AzureQueryPropertiesLocationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AzureQueryPropertiesLocationsList>;
 
 export type TagSettingsPropertiesTagsValueList = Array<string>;
-export const TagSettingsPropertiesTagsValueList =
+const TagSettingsPropertiesTagsValueList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TagSettingsPropertiesTagsValueList>;
 
 /** Dictionary of tags with its list of values. */
 export type TagSettingsPropertiesTagsMap = {
   [key: string]: TagSettingsPropertiesTagsValueList | undefined;
 };
-export const TagSettingsPropertiesTagsMap = /*@__PURE__*/ S.Record(
+const TagSettingsPropertiesTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   TagSettingsPropertiesTagsValueList,
 ) as any as S.Schema<TagSettingsPropertiesTagsMap>;
 
 /** Filter VMs by Any or All specified tags. */
 export type TagOperators = "All" | "Any";
-export const TagOperators = S.String;
+const TagOperators = S.String;
 
 /** Tag filter information for the VM. */
 export interface TagSettingsProperties {
@@ -1628,7 +1626,7 @@ export interface TagSettingsProperties {
   /** Filter VMs by Any or All specified tags. */
   filterOperator?: TagOperators | (string & {});
 }
-export const TagSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const TagSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(TagSettingsPropertiesTagsMap),
     filterOperator: S.optional(TagOperators),
@@ -1644,7 +1642,7 @@ export interface AzureQueryProperties {
   /** Tag settings for the VM. */
   tagSettings?: TagSettingsProperties;
 }
-export const AzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
+const AzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(AzureQueryPropertiesScopeList),
     locations: S.optional(AzureQueryPropertiesLocationsList),
@@ -1654,7 +1652,7 @@ export const AzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure queries in the software update configuration. */
 export type TargetPropertiesAzureQueriesList = Array<AzureQueryProperties>;
-export const TargetPropertiesAzureQueriesList = /*@__PURE__*/ S.Array(
+const TargetPropertiesAzureQueriesList = /*@__PURE__*/ S.Array(
   AzureQueryProperties,
 ) as any as S.Schema<TargetPropertiesAzureQueriesList>;
 
@@ -1665,7 +1663,7 @@ export interface NonAzureQueryProperties {
   /** Workspace Id for Log Analytics in which the saved Search is resided. */
   workspaceId?: string;
 }
-export const NonAzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
+const NonAzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionAlias: S.optional(S.String),
     workspaceId: S.optional(S.String),
@@ -1674,7 +1672,7 @@ export const NonAzureQueryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of non Azure queries in the software update configuration. */
 export type TargetPropertiesNonAzureQueriesList = Array<NonAzureQueryProperties>;
-export const TargetPropertiesNonAzureQueriesList = /*@__PURE__*/ S.Array(
+const TargetPropertiesNonAzureQueriesList = /*@__PURE__*/ S.Array(
   NonAzureQueryProperties,
 ) as any as S.Schema<TargetPropertiesNonAzureQueriesList>;
 
@@ -1685,7 +1683,7 @@ export interface TargetProperties {
   /** List of non Azure queries in the software update configuration. */
   nonAzureQueries?: TargetPropertiesNonAzureQueriesList;
 }
-export const TargetProperties = /*@__PURE__*/ S.suspend(() =>
+const TargetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureQueries: S.optional(TargetPropertiesAzureQueriesList),
     nonAzureQueries: S.optional(TargetPropertiesNonAzureQueriesList),
@@ -1709,7 +1707,7 @@ export interface UpdateConfiguration {
   /** Group targets for the software update configuration. */
   targets?: TargetProperties;
 }
-export const UpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatingSystem: OperatingSystemType,
     windows: S.optional(WindowsProperties),
@@ -1723,16 +1721,16 @@ export const UpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the frequency of the schedule. */
 export type ScheduleFrequency = "OneTime" | "Day" | "Hour" | "Week" | "Month" | "Minute";
-export const ScheduleFrequency = S.String;
+const ScheduleFrequency = S.String;
 
 /** Days of the week that the job should execute on. */
 export type AdvancedScheduleWeekDaysList = Array<string>;
-export const AdvancedScheduleWeekDaysList =
+const AdvancedScheduleWeekDaysList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AdvancedScheduleWeekDaysList>;
 
 /** Days of the month that the job should execute on. Must be between 1 and 31. */
 export type AdvancedScheduleMonthDaysList = Array<number>;
-export const AdvancedScheduleMonthDaysList = /*@__PURE__*/ S.Array(
+const AdvancedScheduleMonthDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AdvancedScheduleMonthDaysList>;
 
@@ -1745,7 +1743,7 @@ export type ScheduleDay =
   | "Friday"
   | "Saturday"
   | "Sunday";
-export const ScheduleDay = S.String;
+const ScheduleDay = S.String;
 
 /** The properties of the create advanced schedule monthly occurrence. */
 export interface AdvancedScheduleMonthlyOccurrence {
@@ -1754,7 +1752,7 @@ export interface AdvancedScheduleMonthlyOccurrence {
   /** Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
   day?: ScheduleDay | (string & {});
 }
-export const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
+const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrence: S.optional(S.Number),
     day: S.optional(ScheduleDay),
@@ -1765,7 +1763,7 @@ export const AdvancedScheduleMonthlyOccurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** Occurrences of days within a month. */
 export type AdvancedScheduleMonthlyOccurrencesList = Array<AdvancedScheduleMonthlyOccurrence>;
-export const AdvancedScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
+const AdvancedScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
   AdvancedScheduleMonthlyOccurrence,
 ) as any as S.Schema<AdvancedScheduleMonthlyOccurrencesList>;
 
@@ -1778,7 +1776,7 @@ export interface AdvancedSchedule {
   /** Occurrences of days within a month. */
   monthlyOccurrences?: AdvancedScheduleMonthlyOccurrencesList;
 }
-export const AdvancedSchedule = /*@__PURE__*/ S.suspend(() =>
+const AdvancedSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weekDays: S.optional(AdvancedScheduleWeekDaysList),
     monthDays: S.optional(AdvancedScheduleMonthDaysList),
@@ -1815,7 +1813,7 @@ export interface SUCSchedulePropertiesInput {
   /** Gets or sets the description. */
   description?: string;
 }
-export const SUCSchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SUCSchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     expiryTime: S.optional(S.NullOr(S.String)),
@@ -1842,7 +1840,7 @@ export interface AutomationErrorResponse {
   /** Error message indicating why the operation failed. */
   message?: string;
 }
-export const AutomationErrorResponse = /*@__PURE__*/ S.suspend(() =>
+const AutomationErrorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1851,7 +1849,7 @@ export const AutomationErrorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the task. */
 export type TaskPropertiesParametersMap = { [key: string]: string | undefined };
-export const TaskPropertiesParametersMap =
+const TaskPropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<TaskPropertiesParametersMap>;
 
 /** Task properties of the software update configuration. */
@@ -1861,7 +1859,7 @@ export interface TaskProperties {
   /** Gets or sets the name of the runbook. */
   source?: string;
 }
-export const TaskProperties = /*@__PURE__*/ S.suspend(() =>
+const TaskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(TaskPropertiesParametersMap),
     source: S.optional(S.String),
@@ -1875,7 +1873,7 @@ export interface SoftwareUpdateConfigurationTasks {
   /** Post task properties. */
   postTask?: TaskProperties;
 }
-export const SoftwareUpdateConfigurationTasks = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationTasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preTask: S.optional(TaskProperties),
     postTask: S.optional(TaskProperties),
@@ -1895,7 +1893,7 @@ export interface SoftwareUpdateConfigurationPropertiesInput {
   /** Tasks information for the Software update configuration. */
   tasks?: SoftwareUpdateConfigurationTasks;
 }
-export const SoftwareUpdateConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateConfiguration: UpdateConfiguration,
     scheduleInfo: SUCSchedulePropertiesInput,
@@ -1918,7 +1916,7 @@ export interface CreateSoftwareUpdateConfigurationRequest {
   /** Software update configuration properties. */
   properties: SoftwareUpdateConfigurationPropertiesInput;
 }
-export const CreateSoftwareUpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSoftwareUpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1968,7 +1966,7 @@ export interface SUCScheduleProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const SUCScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+const SUCScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     startTimeOffsetMinutes: S.optional(S.Number),
@@ -2008,7 +2006,7 @@ export interface SoftwareUpdateConfigurationProperties {
   /** Tasks information for the Software update configuration. */
   tasks?: SoftwareUpdateConfigurationTasks;
 }
-export const SoftwareUpdateConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateConfiguration: UpdateConfiguration,
     scheduleInfo: SUCScheduleProperties,
@@ -2036,7 +2034,7 @@ export interface CreateSoftwareUpdateConfigurationResponse {
   /** Software update configuration properties. */
   properties: SoftwareUpdateConfigurationProperties;
 }
-export const CreateSoftwareUpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSoftwareUpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2053,7 +2051,7 @@ export interface SourceControlSyncJobCreateProperties {
   /** The commit id of the source control sync job. If not syncing to a commitId, enter an empty string. */
   commitId: string;
 }
-export const SourceControlSyncJobCreateProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobCreateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitId: S.String,
   }),
@@ -2075,7 +2073,7 @@ export interface CreateSourceControlSyncJobRequest {
   /** The properties of the source control sync job. */
   properties: SourceControlSyncJobCreateProperties;
 }
-export const CreateSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2097,11 +2095,11 @@ export const CreateSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of the job. */
 export type ProvisioningState = "Completed" | "Failed" | "Running";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The sync type. */
 export type SyncType = "PartialSync" | "FullSync";
-export const SyncType = S.String;
+const SyncType = S.String;
 
 /** Definition of source control sync job properties. */
 export interface SourceControlSyncJobProperties {
@@ -2118,7 +2116,7 @@ export interface SourceControlSyncJobProperties {
   /** The sync type. */
   syncType?: SyncType;
 }
-export const SourceControlSyncJobProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceControlSyncJobId: S.optional(S.String),
     creationTime: S.optional(S.String),
@@ -2142,7 +2140,7 @@ export interface SourceControlSyncJob {
   /** The properties of the source control sync job. */
   properties?: SourceControlSyncJobProperties;
 }
-export const SourceControlSyncJob = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2153,7 +2151,7 @@ export const SourceControlSyncJob = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the test job. */
 export type CreateTestJobRequestParametersMap = { [key: string]: string | undefined };
-export const CreateTestJobRequestParametersMap =
+const CreateTestJobRequestParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<CreateTestJobRequestParametersMap>;
 
 export interface CreateTestJobRequest {
@@ -2172,7 +2170,7 @@ export interface CreateTestJobRequest {
   /** The runtime Environment Name on which job needs to be tested */
   runtimeEnvironment?: string;
 }
-export const CreateTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2193,7 +2191,7 @@ export const CreateTestJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the test job. */
 export type TestJobParametersMap = { [key: string]: string | undefined };
-export const TestJobParametersMap =
+const TestJobParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<TestJobParametersMap>;
 
 /** Definition of the test job. */
@@ -2221,7 +2219,7 @@ export interface TestJob {
   /** The activity-level tracing options of the runbook. */
   logActivityTrace?: number;
 }
-export const TestJob = /*@__PURE__*/ S.suspend(() =>
+const TestJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationTime: S.optional(S.String),
     status: S.optional(S.String),
@@ -2246,7 +2244,7 @@ export interface CredentialCreateOrUpdateProperties {
   /** Gets or sets the description of the credential. */
   description?: string;
 }
-export const CredentialCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CredentialCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.String,
     password: S.String.pipe(T.SensitiveValue({})),
@@ -2270,7 +2268,7 @@ export interface CredentialCreateOrUpdateRequest {
   /** Gets or sets the properties of the credential. */
   properties: CredentialCreateOrUpdateProperties;
 }
-export const CredentialCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CredentialCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2301,7 +2299,7 @@ export interface CredentialProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const CredentialProperties = /*@__PURE__*/ S.suspend(() =>
+const CredentialProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.optional(S.String),
     creationTime: S.optional(S.String),
@@ -2322,7 +2320,7 @@ export interface CredentialCreateOrUpdateResponse {
   /** Gets or sets the properties of the credential. */
   properties?: CredentialProperties;
 }
-export const CredentialCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CredentialCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2342,7 +2340,7 @@ export interface DeleteAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const DeleteAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2360,9 +2358,9 @@ export const DeleteAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutomationAccountRequest>;
 
 export interface DeleteAutomationAccountResponse {}
-export const DeleteAutomationAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAutomationAccountResponse" },
-) as any as S.Schema<DeleteAutomationAccountResponse>;
+const DeleteAutomationAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAutomationAccountResponse",
+}) as any as S.Schema<DeleteAutomationAccountResponse>;
 
 export interface DeleteCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2374,7 +2372,7 @@ export interface DeleteCertificateRequest {
   /** The name of certificate. */
   certificateName: string;
 }
-export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2391,7 +2389,7 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCertificateResponse",
 }) as any as S.Schema<DeleteCertificateResponse>;
 
@@ -2405,7 +2403,7 @@ export interface DeleteConnectionRequest {
   /** The name of connection. */
   connectionName: string;
 }
-export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2422,7 +2420,7 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse =
+const DeleteConnectionResponse =
   DeleteCertificateResponse as any as S.Schema<DeleteConnectionResponse>;
 
 export interface DeleteConnectionTypeRequest {
@@ -2435,7 +2433,7 @@ export interface DeleteConnectionTypeRequest {
   /** The name of connection type. */
   connectionTypeName: string;
 }
-export const DeleteConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2454,7 +2452,7 @@ export const DeleteConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectionTypeRequest>;
 
 export interface DeleteConnectionTypeResponse {}
-export const DeleteConnectionTypeResponse =
+const DeleteConnectionTypeResponse =
   DeleteCertificateResponse as any as S.Schema<DeleteConnectionTypeResponse>;
 
 export interface DeleteCredentialRequest {
@@ -2467,7 +2465,7 @@ export interface DeleteCredentialRequest {
   /** The name of credential. */
   credentialName: string;
 }
-export const DeleteCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2484,7 +2482,7 @@ export const DeleteCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCredentialRequest" }) as any as S.Schema<DeleteCredentialRequest>;
 
 export interface DeleteCredentialResponse {}
-export const DeleteCredentialResponse =
+const DeleteCredentialResponse =
   DeleteCertificateResponse as any as S.Schema<DeleteCredentialResponse>;
 
 export interface DeleteDscConfigurationRequest {
@@ -2497,7 +2495,7 @@ export interface DeleteDscConfigurationRequest {
   /** The configuration name. */
   configurationName: string;
 }
-export const DeleteDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2516,7 +2514,7 @@ export const DeleteDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDscConfigurationRequest>;
 
 export interface DeleteDscConfigurationResponse {}
-export const DeleteDscConfigurationResponse =
+const DeleteDscConfigurationResponse =
   DeleteCertificateResponse as any as S.Schema<DeleteDscConfigurationResponse>;
 
 export interface DeleteDscNodeRequest {
@@ -2529,7 +2527,7 @@ export interface DeleteDscNodeRequest {
   /** The node id. */
   nodeId: string;
 }
-export const DeleteDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2546,8 +2544,7 @@ export const DeleteDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDscNodeRequest" }) as any as S.Schema<DeleteDscNodeRequest>;
 
 export interface DeleteDscNodeResponse {}
-export const DeleteDscNodeResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteDscNodeResponse>;
+const DeleteDscNodeResponse = DeleteCertificateResponse as any as S.Schema<DeleteDscNodeResponse>;
 
 export interface DeleteDscNodeConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2559,7 +2556,7 @@ export interface DeleteDscNodeConfigurationRequest {
   /** The Dsc node configuration name. */
   nodeConfigurationName: string;
 }
-export const DeleteDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2578,7 +2575,7 @@ export const DeleteDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDscNodeConfigurationRequest>;
 
 export interface DeleteDscNodeConfigurationResponse {}
-export const DeleteDscNodeConfigurationResponse =
+const DeleteDscNodeConfigurationResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DeleteDscNodeConfigurationResponse>;
 
 export interface DeleteHybridRunbookWorkerRequest {
@@ -2593,7 +2590,7 @@ export interface DeleteHybridRunbookWorkerRequest {
   /** The hybrid runbook worker id */
   hybridRunbookWorkerId: string;
 }
-export const DeleteHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2613,7 +2610,7 @@ export const DeleteHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHybridRunbookWorkerRequest>;
 
 export interface DeleteHybridRunbookWorkerResponse {}
-export const DeleteHybridRunbookWorkerResponse =
+const DeleteHybridRunbookWorkerResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DeleteHybridRunbookWorkerResponse>;
 
 export interface DeleteHybridRunbookWorkerGroupRequest {
@@ -2626,7 +2623,7 @@ export interface DeleteHybridRunbookWorkerGroupRequest {
   /** The hybrid runbook worker group name */
   hybridRunbookWorkerGroupName: string;
 }
-export const DeleteHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2645,7 +2642,7 @@ export const DeleteHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteHybridRunbookWorkerGroupRequest>;
 
 export interface DeleteHybridRunbookWorkerGroupResponse {}
-export const DeleteHybridRunbookWorkerGroupResponse =
+const DeleteHybridRunbookWorkerGroupResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DeleteHybridRunbookWorkerGroupResponse>;
 
 export interface DeleteJobScheduleRequest {
@@ -2658,7 +2655,7 @@ export interface DeleteJobScheduleRequest {
   /** The job schedule name. */
   jobScheduleId: string;
 }
-export const DeleteJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2675,7 +2672,7 @@ export const DeleteJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJobScheduleRequest" }) as any as S.Schema<DeleteJobScheduleRequest>;
 
 export interface DeleteJobScheduleResponse {}
-export const DeleteJobScheduleResponse =
+const DeleteJobScheduleResponse =
   DeleteCertificateResponse as any as S.Schema<DeleteJobScheduleResponse>;
 
 export interface DeleteModuleRequest {
@@ -2688,7 +2685,7 @@ export interface DeleteModuleRequest {
   /** The module name. */
   moduleName: string;
 }
-export const DeleteModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2705,8 +2702,7 @@ export const DeleteModuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModuleRequest" }) as any as S.Schema<DeleteModuleRequest>;
 
 export interface DeleteModuleResponse {}
-export const DeleteModuleResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteModuleResponse>;
+const DeleteModuleResponse = DeleteCertificateResponse as any as S.Schema<DeleteModuleResponse>;
 
 export interface DeletePackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2720,7 +2716,7 @@ export interface DeletePackageRequest {
   /** The Package name. */
   packageName: string;
 }
-export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2738,8 +2734,7 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePackageRequest" }) as any as S.Schema<DeletePackageRequest>;
 
 export interface DeletePackageResponse {}
-export const DeletePackageResponse =
-  DeleteCertificateResponse as any as S.Schema<DeletePackageResponse>;
+const DeletePackageResponse = DeleteCertificateResponse as any as S.Schema<DeletePackageResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2751,7 +2746,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2770,7 +2765,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeletePython2PackageRequest {
@@ -2783,7 +2778,7 @@ export interface DeletePython2PackageRequest {
   /** The python package name. */
   packageName: string;
 }
-export const DeletePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2802,7 +2797,7 @@ export const DeletePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePython2PackageRequest>;
 
 export interface DeletePython2PackageResponse {}
-export const DeletePython2PackageResponse =
+const DeletePython2PackageResponse =
   DeleteCertificateResponse as any as S.Schema<DeletePython2PackageResponse>;
 
 export interface DeletePython3PackageRequest {
@@ -2815,7 +2810,7 @@ export interface DeletePython3PackageRequest {
   /** The python package name. */
   packageName: string;
 }
-export const DeletePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2834,7 +2829,7 @@ export const DeletePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePython3PackageRequest>;
 
 export interface DeletePython3PackageResponse {}
-export const DeletePython3PackageResponse =
+const DeletePython3PackageResponse =
   DeleteCertificateResponse as any as S.Schema<DeletePython3PackageResponse>;
 
 export interface DeleteRunbookRequest {
@@ -2847,7 +2842,7 @@ export interface DeleteRunbookRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const DeleteRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRunbookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2864,8 +2859,7 @@ export const DeleteRunbookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRunbookRequest" }) as any as S.Schema<DeleteRunbookRequest>;
 
 export interface DeleteRunbookResponse {}
-export const DeleteRunbookResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteRunbookResponse>;
+const DeleteRunbookResponse = DeleteCertificateResponse as any as S.Schema<DeleteRunbookResponse>;
 
 export interface DeleteRuntimeEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2877,7 +2871,7 @@ export interface DeleteRuntimeEnvironmentRequest {
   /** The name of the Runtime Environment. */
   runtimeEnvironmentName: string;
 }
-export const DeleteRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2896,7 +2890,7 @@ export const DeleteRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRuntimeEnvironmentRequest>;
 
 export interface DeleteRuntimeEnvironmentResponse {}
-export const DeleteRuntimeEnvironmentResponse =
+const DeleteRuntimeEnvironmentResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DeleteRuntimeEnvironmentResponse>;
 
 export interface DeleteScheduleRequest {
@@ -2909,7 +2903,7 @@ export interface DeleteScheduleRequest {
   /** The schedule name. */
   scheduleName: string;
 }
-export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2926,8 +2920,7 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteScheduleResponse>;
+const DeleteScheduleResponse = DeleteCertificateResponse as any as S.Schema<DeleteScheduleResponse>;
 
 export interface DeleteSoftwareUpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2939,7 +2932,7 @@ export interface DeleteSoftwareUpdateConfigurationRequest {
   /** The name of the software update configuration to be created. */
   softwareUpdateConfigurationName: string;
 }
-export const DeleteSoftwareUpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSoftwareUpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2958,7 +2951,7 @@ export const DeleteSoftwareUpdateConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteSoftwareUpdateConfigurationRequest>;
 
 export interface DeleteSoftwareUpdateConfigurationResponse {}
-export const DeleteSoftwareUpdateConfigurationResponse =
+const DeleteSoftwareUpdateConfigurationResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DeleteSoftwareUpdateConfigurationResponse>;
 
 export interface DeleteSourceControlRequest {
@@ -2971,7 +2964,7 @@ export interface DeleteSourceControlRequest {
   /** The name of source control. */
   sourceControlName: string;
 }
-export const DeleteSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2990,7 +2983,7 @@ export const DeleteSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSourceControlRequest>;
 
 export interface DeleteSourceControlResponse {}
-export const DeleteSourceControlResponse =
+const DeleteSourceControlResponse =
   DeleteCertificateResponse as any as S.Schema<DeleteSourceControlResponse>;
 
 export interface DeleteVariableRequest {
@@ -3003,7 +2996,7 @@ export interface DeleteVariableRequest {
   /** The name of variable. */
   variableName: string;
 }
-export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3020,8 +3013,7 @@ export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVariableRequest" }) as any as S.Schema<DeleteVariableRequest>;
 
 export interface DeleteVariableResponse {}
-export const DeleteVariableResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteVariableResponse>;
+const DeleteVariableResponse = DeleteCertificateResponse as any as S.Schema<DeleteVariableResponse>;
 
 export interface DeleteWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3033,7 +3025,7 @@ export interface DeleteWatcherRequest {
   /** The watcher name. */
   watcherName: string;
 }
-export const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3050,8 +3042,7 @@ export const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWatcherRequest" }) as any as S.Schema<DeleteWatcherRequest>;
 
 export interface DeleteWatcherResponse {}
-export const DeleteWatcherResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteWatcherResponse>;
+const DeleteWatcherResponse = DeleteCertificateResponse as any as S.Schema<DeleteWatcherResponse>;
 
 export interface DeleteWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3063,7 +3054,7 @@ export interface DeleteWebhookRequest {
   /** The webhook name. */
   webhookName: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3080,8 +3071,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse =
-  DeleteCertificateResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = DeleteCertificateResponse as any as S.Schema<DeleteWebhookResponse>;
 
 /** Definition of the runbook property type. */
 export interface ContentHash {
@@ -3090,7 +3080,7 @@ export interface ContentHash {
   /** Gets or sets expected hash value of the content. */
   value: string;
 }
-export const ContentHash = /*@__PURE__*/ S.suspend(() =>
+const ContentHash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.String,
     value: S.String,
@@ -3099,7 +3089,7 @@ export const ContentHash = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the content source type. */
 export type ContentSourceType = "embeddedContent" | "uri";
-export const ContentSourceType = S.String;
+const ContentSourceType = S.String;
 
 /** Definition of the content source. */
 export interface ContentSource {
@@ -3112,7 +3102,7 @@ export interface ContentSource {
   /** Gets or sets the version of the content. */
   version?: string;
 }
-export const ContentSource = /*@__PURE__*/ S.suspend(() =>
+const ContentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.optional(ContentHash),
     type: S.optional(ContentSourceType),
@@ -3132,7 +3122,7 @@ export interface DscConfigurationParameter {
   /** Gets or sets the default value of parameter. */
   defaultValue?: string;
 }
-export const DscConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
+const DscConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     isMandatory: S.optional(S.Boolean),
@@ -3147,7 +3137,7 @@ export const DscConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
 export type DscConfigurationCreateOrUpdatePropertiesParametersMap = {
   [key: string]: DscConfigurationParameter | undefined;
 };
-export const DscConfigurationCreateOrUpdatePropertiesParametersMap = /*@__PURE__*/ S.Record(
+const DscConfigurationCreateOrUpdatePropertiesParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   DscConfigurationParameter,
 ) as any as S.Schema<DscConfigurationCreateOrUpdatePropertiesParametersMap>;
@@ -3165,7 +3155,7 @@ export interface DscConfigurationCreateOrUpdateProperties {
   /** Gets or sets the description of the configuration. */
   description?: string;
 }
-export const DscConfigurationCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const DscConfigurationCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logVerbose: S.optional(S.Boolean),
     logProgress: S.optional(S.Boolean),
@@ -3179,7 +3169,7 @@ export const DscConfigurationCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets the tags attached to the resource. */
 export type DscConfigurationCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DscConfigurationCreateOrUpdateRequestTagsMap =
+const DscConfigurationCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<DscConfigurationCreateOrUpdateRequestTagsMap>;
 
 export interface DscConfigurationCreateOrUpdateRequest {
@@ -3200,7 +3190,7 @@ export interface DscConfigurationCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: DscConfigurationCreateOrUpdateRequestTagsMap;
 }
-export const DscConfigurationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DscConfigurationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3224,23 +3214,23 @@ export const DscConfigurationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type DscConfigurationCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DscConfigurationCreateOrUpdateResponseTagsMap =
+const DscConfigurationCreateOrUpdateResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<DscConfigurationCreateOrUpdateResponseTagsMap>;
 
 /** Gets or sets the provisioning state of the configuration. */
 export type DscConfigurationPropertiesProvisioningState = "Succeeded";
-export const DscConfigurationPropertiesProvisioningState = S.String;
+const DscConfigurationPropertiesProvisioningState = S.String;
 
 /** Gets or sets the configuration parameters. */
 export type DscConfigurationPropertiesParametersMap = {
   [key: string]: DscConfigurationParameter | undefined;
 };
-export const DscConfigurationPropertiesParametersMap =
+const DscConfigurationPropertiesParametersMap =
   DscConfigurationCreateOrUpdatePropertiesParametersMap as any as S.Schema<DscConfigurationPropertiesParametersMap>;
 
 /** Gets or sets the state of the configuration. */
 export type DscConfigurationState = "New" | "Edit" | "Published";
-export const DscConfigurationState = S.String;
+const DscConfigurationState = S.String;
 
 /** Definition of the configuration property type. */
 export interface DscConfigurationProperties {
@@ -3265,7 +3255,7 @@ export interface DscConfigurationProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const DscConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const DscConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(DscConfigurationPropertiesProvisioningState),
     jobCount: S.optional(S.Number),
@@ -3300,7 +3290,7 @@ export interface DscConfigurationCreateOrUpdateResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const DscConfigurationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DscConfigurationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3320,7 +3310,7 @@ export interface DscConfigurationAssociationProperty {
   /** Gets or sets the name of the Dsc configuration. */
   name?: string;
 }
-export const DscConfigurationAssociationProperty =
+const DscConfigurationAssociationProperty =
   ConnectionTypeAssociationProperty as any as S.Schema<DscConfigurationAssociationProperty>;
 
 /** The parameter properties supplied to the create or update node configuration operation. */
@@ -3332,7 +3322,7 @@ export interface DscNodeConfigurationCreateOrUpdateParametersProperties {
   /** If a new build version of NodeConfiguration is required. */
   incrementNodeConfigurationBuild?: boolean;
 }
-export const DscNodeConfigurationCreateOrUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const DscNodeConfigurationCreateOrUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: ContentSource,
     configuration: DscConfigurationAssociationProperty,
@@ -3346,7 +3336,7 @@ export const DscNodeConfigurationCreateOrUpdateParametersProperties = /*@__PURE_
 export type DscNodeConfigurationCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DscNodeConfigurationCreateOrUpdateRequestTagsMap =
+const DscNodeConfigurationCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<DscNodeConfigurationCreateOrUpdateRequestTagsMap>;
 
 export interface DscNodeConfigurationCreateOrUpdateRequest {
@@ -3365,7 +3355,7 @@ export interface DscNodeConfigurationCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: DscNodeConfigurationCreateOrUpdateRequestTagsMap;
 }
-export const DscNodeConfigurationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DscNodeConfigurationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3387,7 +3377,7 @@ export const DscNodeConfigurationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DscNodeConfigurationCreateOrUpdateRequest>;
 
 export interface DscNodeConfigurationCreateOrUpdateResponse {}
-export const DscNodeConfigurationCreateOrUpdateResponse =
+const DscNodeConfigurationCreateOrUpdateResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<DscNodeConfigurationCreateOrUpdateResponse>;
 
 export interface EditRunbookDraftUndoRequest {
@@ -3400,7 +3390,7 @@ export interface EditRunbookDraftUndoRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const EditRunbookDraftUndoRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRunbookDraftUndoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3466,14 +3456,14 @@ export type HttpStatusCode =
   | "ServiceUnavailable"
   | "GatewayTimeout"
   | "HttpVersionNotSupported";
-export const HttpStatusCode = S.String;
+const HttpStatusCode = S.String;
 
 /** The response model for the undo edit runbook operation. */
 export interface EditRunbookDraftUndoResult {
   statusCode?: HttpStatusCode;
   requestId?: string;
 }
-export const EditRunbookDraftUndoResult = /*@__PURE__*/ S.suspend(() =>
+const EditRunbookDraftUndoResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(HttpStatusCode),
     requestId: S.optional(S.String),
@@ -3490,7 +3480,7 @@ export interface GenerateWebhookUriRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const GenerateWebhookUriRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateWebhookUriRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3508,7 +3498,7 @@ export const GenerateWebhookUriRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateWebhookUriRequest>;
 
 export type GenerateWebhookUriResponse = string;
-export const GenerateWebhookUriResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateWebhookUriResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GenerateWebhookUriResponse",
@@ -3526,7 +3516,7 @@ export interface GetActivityRequest {
   /** The name of activity. */
   activityName: string;
 }
-export const GetActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3548,7 +3538,7 @@ export interface ActivityParameterValidationSet {
   /** Gets or sets the name of the activity parameter validation set member. */
   memberValue?: string;
 }
-export const ActivityParameterValidationSet = /*@__PURE__*/ S.suspend(() =>
+const ActivityParameterValidationSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberValue: S.optional(S.String),
   }),
@@ -3558,7 +3548,7 @@ export const ActivityParameterValidationSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the validation set of activity parameter. */
 export type ActivityParameterValidationSetList = Array<ActivityParameterValidationSet>;
-export const ActivityParameterValidationSetList = /*@__PURE__*/ S.Array(
+const ActivityParameterValidationSetList = /*@__PURE__*/ S.Array(
   ActivityParameterValidationSet,
 ) as any as S.Schema<ActivityParameterValidationSetList>;
 
@@ -3585,7 +3575,7 @@ export interface ActivityParameter {
   /** Gets or sets the validation set of activity parameter. */
   validationSet?: ActivityParameterValidationSetList;
 }
-export const ActivityParameter = /*@__PURE__*/ S.suspend(() =>
+const ActivityParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -3602,7 +3592,7 @@ export const ActivityParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the activity parameter set. */
 export type ActivityParameterSetParametersList = Array<ActivityParameter>;
-export const ActivityParameterSetParametersList = /*@__PURE__*/ S.Array(
+const ActivityParameterSetParametersList = /*@__PURE__*/ S.Array(
   ActivityParameter,
 ) as any as S.Schema<ActivityParameterSetParametersList>;
 
@@ -3613,7 +3603,7 @@ export interface ActivityParameterSet {
   /** Gets or sets the parameters of the activity parameter set. */
   parameters?: ActivityParameterSetParametersList;
 }
-export const ActivityParameterSet = /*@__PURE__*/ S.suspend(() =>
+const ActivityParameterSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     parameters: S.optional(ActivityParameterSetParametersList),
@@ -3622,7 +3612,7 @@ export const ActivityParameterSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameter sets of the activity. */
 export type ActivityPropertiesParameterSetsList = Array<ActivityParameterSet>;
-export const ActivityPropertiesParameterSetsList = /*@__PURE__*/ S.Array(
+const ActivityPropertiesParameterSetsList = /*@__PURE__*/ S.Array(
   ActivityParameterSet,
 ) as any as S.Schema<ActivityPropertiesParameterSetsList>;
 
@@ -3633,7 +3623,7 @@ export interface ActivityOutputType {
   /** Gets or sets the type of the activity output type. */
   type?: string;
 }
-export const ActivityOutputType = /*@__PURE__*/ S.suspend(() =>
+const ActivityOutputType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -3642,7 +3632,7 @@ export const ActivityOutputType = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the output types of the activity. */
 export type ActivityPropertiesOutputTypesList = Array<ActivityOutputType>;
-export const ActivityPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
+const ActivityPropertiesOutputTypesList = /*@__PURE__*/ S.Array(
   ActivityOutputType,
 ) as any as S.Schema<ActivityPropertiesOutputTypesList>;
 
@@ -3661,7 +3651,7 @@ export interface ActivityProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const ActivityProperties = /*@__PURE__*/ S.suspend(() =>
+const ActivityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition: S.optional(S.String),
     parameterSets: S.optional(ActivityPropertiesParameterSetsList),
@@ -3681,7 +3671,7 @@ export interface Activity {
   /** Gets or sets the properties of the activity. */
   properties?: ActivityProperties;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3697,7 +3687,7 @@ export interface GetAgentRegistrationInformationRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const GetAgentRegistrationInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentRegistrationInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3721,7 +3711,7 @@ export interface AgentRegistrationKeys {
   /** Gets or sets the secondary key. */
   secondary?: string;
 }
-export const AgentRegistrationKeys = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistrationKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(S.String),
     secondary: S.optional(S.String),
@@ -3739,7 +3729,7 @@ export interface AgentRegistration {
   /** Gets or sets the id. */
   id?: string;
 }
-export const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dscMetaConfiguration: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -3756,7 +3746,7 @@ export interface GetAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const GetAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3775,9 +3765,6 @@ export const GetAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAutomationAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAutomationAccountResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetAutomationAccountResponseTagsMap>;
-
 export interface GetAutomationAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3798,7 +3785,7 @@ export interface GetAutomationAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const GetAutomationAccountResponse =
+const GetAutomationAccountResponse =
   AutomationAccountCreateOrUpdateResponse as any as S.Schema<GetAutomationAccountResponse>;
 
 export interface GetCertificateRequest {
@@ -3811,7 +3798,7 @@ export interface GetCertificateRequest {
   /** The name of certificate. */
   certificateName: string;
 }
-export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3839,7 +3826,7 @@ export interface GetCertificateResponse {
   /** Gets or sets the properties of the certificate. */
   properties?: CertificateProperties;
 }
-export const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3859,7 +3846,7 @@ export interface GetConnectionRequest {
   /** The name of connection. */
   connectionName: string;
 }
-export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3887,7 +3874,7 @@ export interface GetConnectionResponse {
   /** Gets or sets the properties of the connection. */
   properties?: ConnectionProperties;
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3907,7 +3894,7 @@ export interface GetConnectionTypeRequest {
   /** The name of connection type. */
   connectionTypeName: string;
 }
-export const GetConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3935,7 +3922,7 @@ export interface GetConnectionTypeResponse {
   /** Gets or sets the properties of the connection type. */
   properties?: ConnectionTypeProperties;
 }
-export const GetConnectionTypeResponse =
+const GetConnectionTypeResponse =
   ConnectionTypeCreateOrUpdateResponse as any as S.Schema<GetConnectionTypeResponse>;
 
 export interface GetCredentialRequest {
@@ -3948,7 +3935,7 @@ export interface GetCredentialRequest {
   /** The name of credential. */
   credentialName: string;
 }
-export const GetCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3976,7 +3963,7 @@ export interface GetCredentialResponse {
   /** Gets or sets the properties of the credential. */
   properties?: CredentialProperties;
 }
-export const GetCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3996,7 +3983,7 @@ export interface GetDscConfigurationRequest {
   /** The configuration name. */
   configurationName: string;
 }
-export const GetDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4016,9 +4003,6 @@ export const GetDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDscConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetDscConfigurationResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetDscConfigurationResponseTagsMap>;
-
 export interface GetDscConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4037,7 +4021,7 @@ export interface GetDscConfigurationResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const GetDscConfigurationResponse =
+const GetDscConfigurationResponse =
   DscConfigurationCreateOrUpdateResponse as any as S.Schema<GetDscConfigurationResponse>;
 
 export interface GetDscConfigurationContentRequest {
@@ -4050,7 +4034,7 @@ export interface GetDscConfigurationContentRequest {
   /** The configuration name. */
   configurationName: string;
 }
-export const GetDscConfigurationContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDscConfigurationContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4069,7 +4053,7 @@ export const GetDscConfigurationContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDscConfigurationContentRequest>;
 
 export type GetDscConfigurationContentResponse = string;
-export const GetDscConfigurationContentResponse =
+const GetDscConfigurationContentResponse =
   GenerateWebhookUriResponse as any as S.Schema<GetDscConfigurationContentResponse>;
 
 export interface GetDscNodeRequest {
@@ -4082,7 +4066,7 @@ export interface GetDscNodeRequest {
   /** The node id. */
   nodeId: string;
 }
-export const GetDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4103,7 +4087,7 @@ export interface DscNodeConfigurationAssociationProperty {
   /** Gets or sets the name of the dsc node configuration. */
   name?: string;
 }
-export const DscNodeConfigurationAssociationProperty =
+const DscNodeConfigurationAssociationProperty =
   ConnectionTypeAssociationProperty as any as S.Schema<DscNodeConfigurationAssociationProperty>;
 
 /** The dsc extensionHandler property associated with the node */
@@ -4113,7 +4097,7 @@ export interface DscNodeExtensionHandlerAssociationProperty {
   /** Gets or sets the version of the extension handler. */
   version?: string;
 }
-export const DscNodeExtensionHandlerAssociationProperty = /*@__PURE__*/ S.suspend(() =>
+const DscNodeExtensionHandlerAssociationProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -4125,7 +4109,7 @@ export const DscNodeExtensionHandlerAssociationProperty = /*@__PURE__*/ S.suspen
 /** Gets or sets the list of extensionHandler properties for a Node. */
 export type DscNodePropertiesExtensionHandlerList =
   Array<DscNodeExtensionHandlerAssociationProperty>;
-export const DscNodePropertiesExtensionHandlerList = /*@__PURE__*/ S.Array(
+const DscNodePropertiesExtensionHandlerList = /*@__PURE__*/ S.Array(
   DscNodeExtensionHandlerAssociationProperty,
 ) as any as S.Schema<DscNodePropertiesExtensionHandlerList>;
 
@@ -4152,7 +4136,7 @@ export interface DscNodeProperties {
   /** Gets or sets the list of extensionHandler properties for a Node. */
   extensionHandler?: DscNodePropertiesExtensionHandlerList;
 }
-export const DscNodeProperties = /*@__PURE__*/ S.suspend(() =>
+const DscNodeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastSeen: S.optional(S.String),
     registrationTime: S.optional(S.String),
@@ -4179,7 +4163,7 @@ export interface GetDscNodeResponse {
   /** The properties of a DscNode. */
   properties?: DscNodeProperties;
 }
-export const GetDscNodeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDscNodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4199,7 +4183,7 @@ export interface GetDscNodeConfigurationRequest {
   /** The Dsc node configuration name. */
   nodeConfigurationName: string;
 }
-export const GetDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDscNodeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4232,7 +4216,7 @@ export interface DscNodeConfigurationProperties {
   /** If a new build version of NodeConfiguration is required. */
   incrementNodeConfigurationBuild?: boolean;
 }
-export const DscNodeConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const DscNodeConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModifiedTime: S.optional(S.String),
     creationTime: S.optional(S.String),
@@ -4257,7 +4241,7 @@ export interface GetDscNodeConfigurationResponse {
   /** Gets or sets the configuration properties. */
   properties?: DscNodeConfigurationProperties;
 }
-export const GetDscNodeConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDscNodeConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4281,7 +4265,7 @@ export interface GetHybridRunbookWorkerRequest {
   /** The hybrid runbook worker id */
   hybridRunbookWorkerId: string;
 }
-export const GetHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4302,9 +4286,6 @@ export const GetHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetHybridRunbookWorkerResponseTagsMap = { [key: string]: string | undefined };
-export const GetHybridRunbookWorkerResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetHybridRunbookWorkerResponseTagsMap>;
-
 export interface GetHybridRunbookWorkerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4321,7 +4302,7 @@ export interface GetHybridRunbookWorkerResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerProperties;
 }
-export const GetHybridRunbookWorkerResponse =
+const GetHybridRunbookWorkerResponse =
   CreateHybridRunbookWorkerResponse as any as S.Schema<GetHybridRunbookWorkerResponse>;
 
 export interface GetHybridRunbookWorkerGroupRequest {
@@ -4334,7 +4315,7 @@ export interface GetHybridRunbookWorkerGroupRequest {
   /** The hybrid runbook worker group name */
   hybridRunbookWorkerGroupName: string;
 }
-export const GetHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4354,9 +4335,6 @@ export const GetHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetHybridRunbookWorkerGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetHybridRunbookWorkerGroupResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetHybridRunbookWorkerGroupResponseTagsMap>;
-
 export interface GetHybridRunbookWorkerGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4373,7 +4351,7 @@ export interface GetHybridRunbookWorkerGroupResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerGroupProperties;
 }
-export const GetHybridRunbookWorkerGroupResponse =
+const GetHybridRunbookWorkerGroupResponse =
   CreateHybridRunbookWorkerGroupResponse as any as S.Schema<GetHybridRunbookWorkerGroupResponse>;
 
 export interface GetJobRequest {
@@ -4386,7 +4364,7 @@ export interface GetJobRequest {
   /** The job name. */
   jobName: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4414,7 +4392,7 @@ export interface GetJobResponse {
   /** The properties of the job. */
   properties?: JobProperties;
 }
-export const GetJobResponse = CreateJobResponse as any as S.Schema<GetJobResponse>;
+const GetJobResponse = CreateJobResponse as any as S.Schema<GetJobResponse>;
 
 export interface GetJobOutputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4426,7 +4404,7 @@ export interface GetJobOutputRequest {
   /** The job name. */
   jobName: string;
 }
-export const GetJobOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4443,7 +4421,7 @@ export const GetJobOutputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobOutputRequest" }) as any as S.Schema<GetJobOutputRequest>;
 
 export type GetJobOutputResponse = string;
-export const GetJobOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetJobOutputResponse" }) as any as S.Schema<GetJobOutputResponse>;
 
@@ -4457,7 +4435,7 @@ export interface GetJobRunbookContentRequest {
   /** The job name. */
   jobName: string;
 }
-export const GetJobRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4476,7 +4454,7 @@ export const GetJobRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetJobRunbookContentRequest>;
 
 export type GetJobRunbookContentResponse = string;
-export const GetJobRunbookContentResponse =
+const GetJobRunbookContentResponse =
   GenerateWebhookUriResponse as any as S.Schema<GetJobRunbookContentResponse>;
 
 export interface GetJobScheduleRequest {
@@ -4489,7 +4467,7 @@ export interface GetJobScheduleRequest {
   /** The job schedule name. */
   jobScheduleId: string;
 }
-export const GetJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4517,7 +4495,7 @@ export interface GetJobScheduleResponse {
   /** Gets or sets the properties of the job schedule. */
   properties?: JobScheduleProperties;
 }
-export const GetJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4539,7 +4517,7 @@ export interface GetJobStreamRequest {
   /** The job stream id. */
   jobStreamId: string;
 }
-export const GetJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4565,11 +4543,11 @@ export type JobStreamType =
   | "Debug"
   | "Verbose"
   | "Any";
-export const JobStreamType = S.String;
+const JobStreamType = S.String;
 
 /** Gets or sets the values of the job stream. */
 export type JobStreamPropertiesValueMap = { [key: string]: unknown | undefined };
-export const JobStreamPropertiesValueMap = /*@__PURE__*/ S.Record(
+const JobStreamPropertiesValueMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<JobStreamPropertiesValueMap>;
@@ -4589,7 +4567,7 @@ export interface JobStreamProperties {
   /** Gets or sets the values of the job stream. */
   value?: JobStreamPropertiesValueMap;
 }
-export const JobStreamProperties = /*@__PURE__*/ S.suspend(() =>
+const JobStreamProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobStreamId: S.optional(S.String),
     time: S.optional(S.String),
@@ -4607,7 +4585,7 @@ export interface JobStream {
   /** Gets or sets the id of the job stream. */
   properties?: JobStreamProperties;
 }
-export const JobStream = /*@__PURE__*/ S.suspend(() =>
+const JobStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(JobStreamProperties),
@@ -4622,7 +4600,7 @@ export interface GetLinkedWorkspaceRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const GetLinkedWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4644,7 +4622,7 @@ export interface LinkedWorkspace {
   /** Gets the id of the linked workspace. */
   id?: string;
 }
-export const LinkedWorkspace = PrivateEndpointProperty as any as S.Schema<LinkedWorkspace>;
+const LinkedWorkspace = PrivateEndpointProperty as any as S.Schema<LinkedWorkspace>;
 
 export interface GetModuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4656,7 +4634,7 @@ export interface GetModuleRequest {
   /** The module name. */
   moduleName: string;
 }
-export const GetModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4674,7 +4652,7 @@ export const GetModuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetModuleResponseTagsMap = { [key: string]: string | undefined };
-export const GetModuleResponseTagsMap =
+const GetModuleResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetModuleResponseTagsMap>;
 
 /** Gets or sets the provisioning state of the module. */
@@ -4695,7 +4673,7 @@ export type ModuleProvisioningState =
   | "Failed"
   | "Canceled"
   | "Updating";
-export const ModuleProvisioningState = S.String;
+const ModuleProvisioningState = S.String;
 
 /** Definition of the content link. */
 export interface ContentLink {
@@ -4706,7 +4684,7 @@ export interface ContentLink {
   /** Gets or sets the version of the content. */
   version?: string;
 }
-export const ContentLink = /*@__PURE__*/ S.suspend(() =>
+const ContentLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     contentHash: S.optional(ContentHash),
@@ -4721,7 +4699,7 @@ export interface ModuleErrorInfo {
   /** Gets or sets the error message. */
   message?: string;
 }
-export const ModuleErrorInfo = AutomationErrorResponse as any as S.Schema<ModuleErrorInfo>;
+const ModuleErrorInfo = AutomationErrorResponse as any as S.Schema<ModuleErrorInfo>;
 
 /** Definition of the module property type. */
 export interface ModuleProperties {
@@ -4748,7 +4726,7 @@ export interface ModuleProperties {
   /** Gets or sets type of module, if its composite or not. */
   isComposite?: boolean;
 }
-export const ModuleProperties = /*@__PURE__*/ S.suspend(() =>
+const ModuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isGlobal: S.optional(S.Boolean),
     version: S.optional(S.String),
@@ -4782,7 +4760,7 @@ export interface GetModuleResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const GetModuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetModuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4796,7 +4774,7 @@ export const GetModuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetModuleResponse" }) as any as S.Schema<GetModuleResponse>;
 
 export type GetNodeCountInformationRequestCountType = "status" | "nodeconfiguration";
-export const GetNodeCountInformationRequestCountType = S.String;
+const GetNodeCountInformationRequestCountType = S.String;
 
 export interface GetNodeCountInformationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4808,7 +4786,7 @@ export interface GetNodeCountInformationRequest {
   /** The type of counts to retrieve */
   countType: GetNodeCountInformationRequestCountType | (string & {});
 }
-export const GetNodeCountInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodeCountInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4830,7 +4808,7 @@ export interface NodeCountProperties {
   /** Gets the count for the name */
   count?: number;
 }
-export const NodeCountProperties = /*@__PURE__*/ S.suspend(() =>
+const NodeCountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
   }),
@@ -4842,7 +4820,7 @@ export interface NodeCount {
   name?: string;
   properties?: NodeCountProperties;
 }
-export const NodeCount = /*@__PURE__*/ S.suspend(() =>
+const NodeCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(NodeCountProperties),
@@ -4851,7 +4829,7 @@ export const NodeCount = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets an array of counts */
 export type NodeCountsValueList = Array<NodeCount>;
-export const NodeCountsValueList = /*@__PURE__*/ S.Array(
+const NodeCountsValueList = /*@__PURE__*/ S.Array(
   NodeCount,
 ) as any as S.Schema<NodeCountsValueList>;
 
@@ -4862,7 +4840,7 @@ export interface NodeCounts {
   /** Gets the total number of records matching countType criteria. */
   totalCount?: number;
 }
-export const NodeCounts = /*@__PURE__*/ S.suspend(() =>
+const NodeCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NodeCountsValueList),
     totalCount: S.optional(S.Number),
@@ -4881,7 +4859,7 @@ export interface GetNodeReportRequest {
   /** The report id. */
   reportId: string;
 }
-export const GetNodeReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodeReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4913,7 +4891,7 @@ export interface DscReportError {
   /** Gets or sets the error details. */
   errorDetails?: string;
 }
-export const DscReportError = /*@__PURE__*/ S.suspend(() =>
+const DscReportError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorSource: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -4926,7 +4904,7 @@ export const DscReportError = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the errors for the node report. */
 export type DscNodeReportErrorsList = Array<DscReportError>;
-export const DscNodeReportErrorsList = /*@__PURE__*/ S.Array(
+const DscNodeReportErrorsList = /*@__PURE__*/ S.Array(
   DscReportError,
 ) as any as S.Schema<DscNodeReportErrorsList>;
 
@@ -4935,7 +4913,7 @@ export interface DscReportResourceNavigation {
   /** Gets or sets the ID of the resource to navigate to. */
   resourceId?: string;
 }
-export const DscReportResourceNavigation = /*@__PURE__*/ S.suspend(() =>
+const DscReportResourceNavigation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
   }),
@@ -4945,7 +4923,7 @@ export const DscReportResourceNavigation = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the Resource Navigation values for resources the resource depends on. */
 export type DscReportResourceDependsOnList = Array<DscReportResourceNavigation>;
-export const DscReportResourceDependsOnList = /*@__PURE__*/ S.Array(
+const DscReportResourceDependsOnList = /*@__PURE__*/ S.Array(
   DscReportResourceNavigation,
 ) as any as S.Schema<DscReportResourceDependsOnList>;
 
@@ -4972,7 +4950,7 @@ export interface DscReportResource {
   /** Gets or sets the start date of the resource. */
   startDate?: string;
 }
-export const DscReportResource = /*@__PURE__*/ S.suspend(() =>
+const DscReportResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     sourceInfo: S.optional(S.String),
@@ -4989,7 +4967,7 @@ export const DscReportResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the resource for the node report. */
 export type DscNodeReportResourcesList = Array<DscReportResource>;
-export const DscNodeReportResourcesList = /*@__PURE__*/ S.Array(
+const DscNodeReportResourcesList = /*@__PURE__*/ S.Array(
   DscReportResource,
 ) as any as S.Schema<DscNodeReportResourcesList>;
 
@@ -5010,7 +4988,7 @@ export interface DscMetaConfiguration {
   /** Gets or sets the AllowModuleOverwrite value of the meta configuration. */
   allowModuleOverwrite?: boolean;
 }
-export const DscMetaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DscMetaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationModeFrequencyMins: S.optional(S.Number),
     rebootNodeIfNeeded: S.optional(S.Boolean),
@@ -5024,12 +5002,12 @@ export const DscMetaConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the IPv4 address of the node that sent the report. */
 export type DscNodeReportIPV4AddressesList = Array<string>;
-export const DscNodeReportIPV4AddressesList =
+const DscNodeReportIPV4AddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<DscNodeReportIPV4AddressesList>;
 
 /** Gets or sets the IPv6 address of the node that sent the report. */
 export type DscNodeReportIPV6AddressesList = Array<string>;
-export const DscNodeReportIPV6AddressesList =
+const DscNodeReportIPV6AddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<DscNodeReportIPV6AddressesList>;
 
 /** Definition of the dsc node report type. */
@@ -5073,7 +5051,7 @@ export interface DscNodeReport {
   /** Gets or sets the unparsed errors for the node report. */
   rawErrors?: string;
 }
-export const DscNodeReport = /*@__PURE__*/ S.suspend(() =>
+const DscNodeReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.NullOr(S.String)),
     lastModifiedTime: S.optional(S.String),
@@ -5109,7 +5087,7 @@ export interface GetNodeReportContentRequest {
   /** The report id. */
   reportId: string;
 }
-export const GetNodeReportContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodeReportContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5129,7 +5107,7 @@ export const GetNodeReportContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNodeReportContentRequest>;
 
 export type GetNodeReportContentResponse = string;
-export const GetNodeReportContentResponse =
+const GetNodeReportContentResponse =
   GenerateWebhookUriResponse as any as S.Schema<GetNodeReportContentResponse>;
 
 export interface GetPackageRequest {
@@ -5144,7 +5122,7 @@ export interface GetPackageRequest {
   /** The Package name. */
   packageName: string;
 }
-export const GetPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5163,7 +5141,7 @@ export const GetPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPackageResponseTagsMap = { [key: string]: string | undefined };
-export const GetPackageResponseTagsMap =
+const GetPackageResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetPackageResponseTagsMap>;
 
 /** Gets or sets the provisioning state of the Package. */
@@ -5184,7 +5162,7 @@ export type PackageProvisioningState =
   | "Failed"
   | "Canceled"
   | "Updating";
-export const PackageProvisioningState = S.String;
+const PackageProvisioningState = S.String;
 
 /** Definition of the package error info type. */
 export interface PackageErrorInfo {
@@ -5193,7 +5171,7 @@ export interface PackageErrorInfo {
   /** Package import error message. */
   message?: string;
 }
-export const PackageErrorInfo = AutomationErrorResponse as any as S.Schema<PackageErrorInfo>;
+const PackageErrorInfo = AutomationErrorResponse as any as S.Schema<PackageErrorInfo>;
 
 /** The type of identity that created the resource. */
 export type PackagePropertiesAllOfCreatedByType =
@@ -5201,16 +5179,12 @@ export type PackagePropertiesAllOfCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PackagePropertiesAllOfCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PackagePropertiesAllOfLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PackagePropertiesAllOfLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PackagePropertiesAllOf {
   /** The identity that created the resource. */
@@ -5226,7 +5200,7 @@ export interface PackagePropertiesAllOf {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PackagePropertiesAllOf = SystemData as any as S.Schema<PackagePropertiesAllOf>;
+const PackagePropertiesAllOf = SystemData as any as S.Schema<PackagePropertiesAllOf>;
 
 /** Definition of the package property type. */
 export interface PackageProperties {
@@ -5245,7 +5219,7 @@ export interface PackageProperties {
   /** Metadata pertaining to creation and last modification of the resource. */
   allOf?: PackagePropertiesAllOf;
 }
-export const PackageProperties = /*@__PURE__*/ S.suspend(() =>
+const PackageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.Boolean),
     version: S.optional(S.String),
@@ -5273,7 +5247,7 @@ export interface GetPackageResponse {
   /** Gets or sets the Package properties. */
   properties?: PackageProperties;
 }
-export const GetPackageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5295,7 +5269,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5325,7 +5299,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPython2PackageRequest {
@@ -5338,7 +5312,7 @@ export interface GetPython2PackageRequest {
   /** The python package name. */
   packageName: string;
 }
-export const GetPython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5356,7 +5330,7 @@ export const GetPython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPython2PackageResponseTagsMap = { [key: string]: string | undefined };
-export const GetPython2PackageResponseTagsMap =
+const GetPython2PackageResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetPython2PackageResponseTagsMap>;
 
 export interface GetPython2PackageResponse {
@@ -5377,7 +5351,7 @@ export interface GetPython2PackageResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const GetPython2PackageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPython2PackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5402,7 +5376,7 @@ export interface GetPython3PackageRequest {
   /** The python package name. */
   packageName: string;
 }
-export const GetPython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5420,9 +5394,6 @@ export const GetPython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPython3PackageResponseTagsMap = { [key: string]: string | undefined };
-export const GetPython3PackageResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetPython3PackageResponseTagsMap>;
-
 export interface GetPython3PackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5441,7 +5412,7 @@ export interface GetPython3PackageResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const GetPython3PackageResponse =
+const GetPython3PackageResponse =
   GetPython2PackageResponse as any as S.Schema<GetPython3PackageResponse>;
 
 export interface GetRunbookRequest {
@@ -5454,7 +5425,7 @@ export interface GetRunbookRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const GetRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRunbookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5472,7 +5443,7 @@ export const GetRunbookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRunbookResponseTagsMap = { [key: string]: string | undefined };
-export const GetRunbookResponseTagsMap =
+const GetRunbookResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetRunbookResponseTagsMap>;
 
 /** Gets or sets the type of the runbook. */
@@ -5487,36 +5458,34 @@ export type RunbookTypeEnum =
   | "Python3"
   | "Python"
   | "PowerShell72";
-export const RunbookTypeEnum = S.String;
+const RunbookTypeEnum = S.String;
 
 /** Gets or sets the state of the runbook. */
 export type RunbookState = "New" | "Edit" | "Published";
-export const RunbookState = S.String;
+const RunbookState = S.String;
 
 /** Definition of the runbook parameter type. */
 export type RunbookParameter = DscConfigurationParameter;
-export const RunbookParameter = DscConfigurationParameter;
-
 /** Gets or sets the runbook parameters. */
 export type RunbookPropertiesParametersMap = {
   [key: string]: DscConfigurationParameter | undefined;
 };
-export const RunbookPropertiesParametersMap =
+const RunbookPropertiesParametersMap =
   DscConfigurationCreateOrUpdatePropertiesParametersMap as any as S.Schema<RunbookPropertiesParametersMap>;
 
 /** Gets or sets the runbook output types. */
 export type RunbookPropertiesOutputTypesList = Array<string>;
-export const RunbookPropertiesOutputTypesList =
+const RunbookPropertiesOutputTypesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<RunbookPropertiesOutputTypesList>;
 
 /** Gets or sets the runbook draft parameters. */
 export type RunbookDraftParametersMap = { [key: string]: DscConfigurationParameter | undefined };
-export const RunbookDraftParametersMap =
+const RunbookDraftParametersMap =
   DscConfigurationCreateOrUpdatePropertiesParametersMap as any as S.Schema<RunbookDraftParametersMap>;
 
 /** Gets or sets the runbook output types. */
 export type RunbookDraftOutputTypesList = Array<string>;
-export const RunbookDraftOutputTypesList =
+const RunbookDraftOutputTypesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<RunbookDraftOutputTypesList>;
 
 export interface RunbookDraft {
@@ -5533,7 +5502,7 @@ export interface RunbookDraft {
   /** Gets or sets the runbook output types. */
   outputTypes?: RunbookDraftOutputTypesList;
 }
-export const RunbookDraft = /*@__PURE__*/ S.suspend(() =>
+const RunbookDraft = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inEdit: S.optional(S.Boolean),
     draftContentLink: S.optional(ContentLink),
@@ -5546,7 +5515,7 @@ export const RunbookDraft = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the provisioning state of the runbook. */
 export type RunbookPropertiesProvisioningState = "Succeeded";
-export const RunbookPropertiesProvisioningState = S.String;
+const RunbookPropertiesProvisioningState = S.String;
 
 /** Definition of the runbook property type. */
 export interface RunbookProperties {
@@ -5583,7 +5552,7 @@ export interface RunbookProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const RunbookProperties = /*@__PURE__*/ S.suspend(() =>
+const RunbookProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtimeEnvironment: S.optional(S.String),
     runbookType: S.optional(RunbookTypeEnum),
@@ -5622,7 +5591,7 @@ export interface GetRunbookResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const GetRunbookResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRunbookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5645,7 +5614,7 @@ export interface GetRunbookContentRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const GetRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5662,7 +5631,7 @@ export const GetRunbookContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRunbookContentRequest" }) as any as S.Schema<GetRunbookContentRequest>;
 
 export type GetRunbookContentResponse = string;
-export const GetRunbookContentResponse =
+const GetRunbookContentResponse =
   GenerateWebhookUriResponse as any as S.Schema<GetRunbookContentResponse>;
 
 export interface GetRunbookDraftRequest {
@@ -5675,7 +5644,7 @@ export interface GetRunbookDraftRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const GetRunbookDraftRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRunbookDraftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5701,7 +5670,7 @@ export interface GetRunbookDraftContentRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const GetRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5720,7 +5689,7 @@ export const GetRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRunbookDraftContentRequest>;
 
 export type GetRunbookDraftContentResponse = string;
-export const GetRunbookDraftContentResponse =
+const GetRunbookDraftContentResponse =
   GenerateWebhookUriResponse as any as S.Schema<GetRunbookDraftContentResponse>;
 
 export interface GetRuntimeEnvironmentRequest {
@@ -5733,7 +5702,7 @@ export interface GetRuntimeEnvironmentRequest {
   /** The name of the Runtime Environment. */
   runtimeEnvironmentName: string;
 }
-export const GetRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5753,9 +5722,6 @@ export const GetRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRuntimeEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetRuntimeEnvironmentResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetRuntimeEnvironmentResponseTagsMap>;
-
 export interface GetRuntimeEnvironmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5772,7 +5738,7 @@ export interface GetRuntimeEnvironmentResponse {
   /** Gets or sets the Runtime Environment properties. */
   properties?: RuntimeEnvironmentProperties;
 }
-export const GetRuntimeEnvironmentResponse =
+const GetRuntimeEnvironmentResponse =
   CreateRuntimeEnvironmentResponse as any as S.Schema<GetRuntimeEnvironmentResponse>;
 
 export interface GetScheduleRequest {
@@ -5785,7 +5751,7 @@ export interface GetScheduleRequest {
   /** The schedule name. */
   scheduleName: string;
 }
-export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5832,7 +5798,7 @@ export interface ScheduleProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     startTimeOffsetMinutes: S.optional(S.Number),
@@ -5863,7 +5829,7 @@ export interface GetScheduleResponse {
   /** Gets or sets the properties of the schedule. */
   properties?: ScheduleProperties;
 }
-export const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5883,7 +5849,7 @@ export interface GetSoftwareUpdateConfigurationByNameRequest {
   /** The name of the software update configuration to be created. */
   softwareUpdateConfigurationName: string;
 }
-export const GetSoftwareUpdateConfigurationByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSoftwareUpdateConfigurationByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5913,7 +5879,7 @@ export interface GetSoftwareUpdateConfigurationByNameResponse {
   /** Software update configuration properties. */
   properties: SoftwareUpdateConfigurationProperties;
 }
-export const GetSoftwareUpdateConfigurationByNameResponse =
+const GetSoftwareUpdateConfigurationByNameResponse =
   CreateSoftwareUpdateConfigurationResponse as any as S.Schema<GetSoftwareUpdateConfigurationByNameResponse>;
 
 export interface GetSoftwareUpdateConfigurationMachineRunByIdRequest {
@@ -5926,7 +5892,7 @@ export interface GetSoftwareUpdateConfigurationMachineRunByIdRequest {
   /** The Id of the software update configuration machine run. */
   softwareUpdateConfigurationMachineRunId: string;
 }
-export const GetSoftwareUpdateConfigurationMachineRunByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSoftwareUpdateConfigurationMachineRunByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5949,7 +5915,7 @@ export interface UpdateConfigurationNavigation {
   /** Name of the software update configuration triggered the software update configuration run */
   name?: string;
 }
-export const UpdateConfigurationNavigation =
+const UpdateConfigurationNavigation =
   ConnectionTypeAssociationProperty as any as S.Schema<UpdateConfigurationNavigation>;
 
 /** Software update configuration machine run job navigation properties. */
@@ -5957,7 +5923,7 @@ export interface JobNavigation {
   /** Id of the job associated with the software update configuration run */
   id?: string;
 }
-export const JobNavigation = PrivateEndpointProperty as any as S.Schema<JobNavigation>;
+const JobNavigation = PrivateEndpointProperty as any as S.Schema<JobNavigation>;
 
 /** Software update configuration machine run properties. */
 export interface UpdateConfigurationMachineRunProperties {
@@ -5994,7 +5960,7 @@ export interface UpdateConfigurationMachineRunProperties {
   /** Details of provisioning error */
   error?: AutomationErrorResponse;
 }
-export const UpdateConfigurationMachineRunProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationMachineRunProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetComputer: S.optional(S.String),
     targetComputerType: S.optional(S.String),
@@ -6026,7 +5992,7 @@ export interface SoftwareUpdateConfigurationMachineRun {
   /** Software update configuration machine run properties. */
   properties?: UpdateConfigurationMachineRunProperties;
 }
-export const SoftwareUpdateConfigurationMachineRun = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationMachineRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -6046,7 +6012,7 @@ export interface GetSoftwareUpdateConfigurationRunByIdRequest {
   /** The Id of the software update configuration run. */
   softwareUpdateConfigurationRunId: string;
 }
-export const GetSoftwareUpdateConfigurationRunByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSoftwareUpdateConfigurationRunByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6073,7 +6039,7 @@ export interface SoftwareUpdateConfigurationRunTaskProperties {
   /** The job id of the task. */
   jobId?: string;
 }
-export const SoftwareUpdateConfigurationRunTaskProperties = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationRunTaskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     source: S.optional(S.String),
@@ -6090,7 +6056,7 @@ export interface SoftwareUpdateConfigurationRunTasks {
   /** Post task properties. */
   postTask?: SoftwareUpdateConfigurationRunTaskProperties;
 }
-export const SoftwareUpdateConfigurationRunTasks = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationRunTasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preTask: S.optional(SoftwareUpdateConfigurationRunTaskProperties),
     postTask: S.optional(SoftwareUpdateConfigurationRunTaskProperties),
@@ -6128,7 +6094,7 @@ export interface SoftwareUpdateConfigurationRunProperties {
   /** Software update configuration tasks triggered in this run */
   tasks?: SoftwareUpdateConfigurationRunTasks;
 }
-export const SoftwareUpdateConfigurationRunProperties = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationRunProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     softwareUpdateConfiguration: S.optional(UpdateConfigurationNavigation),
     status: S.optional(S.String),
@@ -6157,7 +6123,7 @@ export interface SoftwareUpdateConfigurationRun {
   /** Software update configuration Run properties. */
   properties?: SoftwareUpdateConfigurationRunProperties;
 }
-export const SoftwareUpdateConfigurationRun = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -6177,7 +6143,7 @@ export interface GetSourceControlRequest {
   /** The name of source control. */
   sourceControlName: string;
 }
-export const GetSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6195,7 +6161,7 @@ export const GetSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The source type. Must be one of VsoGit, VsoTfvc, GitHub. */
 export type SourceType = "VsoGit" | "VsoTfvc" | "GitHub";
-export const SourceType = S.String;
+const SourceType = S.String;
 
 /** Definition of the source control properties */
 export interface SourceControlProperties {
@@ -6218,7 +6184,7 @@ export interface SourceControlProperties {
   /** The last modified time. */
   lastModifiedTime?: string;
 }
-export const SourceControlProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoUrl: S.optional(S.String),
     branch: S.optional(S.String),
@@ -6244,7 +6210,7 @@ export interface GetSourceControlResponse {
   /** The properties of the source control. */
   properties?: SourceControlProperties;
 }
-export const GetSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6266,7 +6232,7 @@ export interface GetSourceControlSyncJobRequest {
   /** The source control sync job id. */
   sourceControlSyncJobId: string;
 }
-export const GetSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6302,7 +6268,7 @@ export interface SourceControlSyncJobByIdProperties {
   /** The exceptions that occurred while running the sync job. */
   exception?: string;
 }
-export const SourceControlSyncJobByIdProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobByIdProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceControlSyncJobId: S.optional(S.String),
     creationTime: S.optional(S.String),
@@ -6323,7 +6289,7 @@ export interface SourceControlSyncJobById {
   /** The properties of the source control sync job. */
   properties?: SourceControlSyncJobByIdProperties;
 }
-export const SourceControlSyncJobById = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(SourceControlSyncJobByIdProperties),
@@ -6344,7 +6310,7 @@ export interface GetSourceControlSyncJobStreamRequest {
   /** The id of the sync job stream. */
   streamId: string;
 }
-export const GetSourceControlSyncJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlSyncJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6366,13 +6332,13 @@ export const GetSourceControlSyncJobStreamRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The type of the sync job stream. */
 export type StreamType = "Error" | "Output";
-export const StreamType = S.String;
+const StreamType = S.String;
 
 /** The values of the job stream. */
 export type SourceControlSyncJobStreamByIdPropertiesValueMap = {
   [key: string]: unknown | undefined;
 };
-export const SourceControlSyncJobStreamByIdPropertiesValueMap =
+const SourceControlSyncJobStreamByIdPropertiesValueMap =
   JobStreamPropertiesValueMap as any as S.Schema<SourceControlSyncJobStreamByIdPropertiesValueMap>;
 
 /** Definition of source control sync job stream by id properties. */
@@ -6390,7 +6356,7 @@ export interface SourceControlSyncJobStreamByIdProperties {
   /** The values of the job stream. */
   value?: SourceControlSyncJobStreamByIdPropertiesValueMap;
 }
-export const SourceControlSyncJobStreamByIdProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobStreamByIdProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceControlSyncJobStreamId: S.optional(S.String),
     summary: S.optional(S.String),
@@ -6410,7 +6376,7 @@ export interface SourceControlSyncJobStreamById {
   /** The properties of the source control sync job stream. */
   properties?: SourceControlSyncJobStreamByIdProperties;
 }
-export const SourceControlSyncJobStreamById = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobStreamById = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(SourceControlSyncJobStreamByIdProperties),
@@ -6429,7 +6395,7 @@ export interface GetTestJobRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const GetTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6457,7 +6423,7 @@ export interface GetTestJobStreamRequest {
   /** The job stream id. */
   jobStreamId: string;
 }
-export const GetTestJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestJobStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6484,7 +6450,7 @@ export interface GetVariableRequest {
   /** The name of variable. */
   variableName: string;
 }
-export const GetVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6513,7 +6479,7 @@ export interface VariableProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const VariableProperties = /*@__PURE__*/ S.suspend(() =>
+const VariableProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     isEncrypted: S.optional(S.NullOr(S.Boolean)),
@@ -6535,7 +6501,7 @@ export interface GetVariableResponse {
   /** Gets or sets the properties of the variable. */
   properties?: VariableProperties;
 }
-export const GetVariableResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVariableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6555,7 +6521,7 @@ export interface GetWatcherRequest {
   /** The watcher name. */
   watcherName: string;
 }
-export const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6573,7 +6539,7 @@ export const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the script. */
 export type WatcherPropertiesScriptParametersMap = { [key: string]: string | undefined };
-export const WatcherPropertiesScriptParametersMap =
+const WatcherPropertiesScriptParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WatcherPropertiesScriptParametersMap>;
 
 /** Definition of the watcher properties */
@@ -6597,7 +6563,7 @@ export interface WatcherProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
+const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionFrequencyInSeconds: S.optional(S.Number),
     scriptName: S.optional(S.String),
@@ -6613,7 +6579,7 @@ export const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWatcherResponseTagsMap = { [key: string]: string | undefined };
-export const GetWatcherResponseTagsMap =
+const GetWatcherResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<GetWatcherResponseTagsMap>;
 
 export interface GetWatcherResponse {
@@ -6634,7 +6600,7 @@ export interface GetWatcherResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetWatcherResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWatcherResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6657,7 +6623,7 @@ export interface GetWebhookRequest {
   /** The webhook name. */
   webhookName: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6675,7 +6641,7 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with. */
 export type WebhookPropertiesParametersMap = { [key: string]: string | undefined };
-export const WebhookPropertiesParametersMap =
+const WebhookPropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WebhookPropertiesParametersMap>;
 
 /** Definition of the webhook properties */
@@ -6703,7 +6669,7 @@ export interface WebhookProperties {
   /** Gets or sets the description. */
   description?: string;
 }
-export const WebhookProperties = /*@__PURE__*/ S.suspend(() =>
+const WebhookProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.optional(S.Boolean),
     uri: S.optional(S.String),
@@ -6731,7 +6697,7 @@ export interface GetWebhookResponse {
   /** Gets or sets the webhook properties. */
   properties?: WebhookProperties;
 }
-export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6751,7 +6717,7 @@ export interface ListActivityByModuleRequest {
   /** The module name. */
   moduleName: string;
 }
-export const ListActivityByModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivityByModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6771,7 +6737,7 @@ export const ListActivityByModuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Activity items on this page */
 export type ActivityListResultValueList = Array<Activity>;
-export const ActivityListResultValueList = /*@__PURE__*/ S.Array(
+const ActivityListResultValueList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<ActivityListResultValueList>;
 
@@ -6782,7 +6748,7 @@ export interface ActivityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ActivityListResult = /*@__PURE__*/ S.suspend(() =>
+const ActivityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ActivityListResultValueList,
     nextLink: S.optional(S.String),
@@ -6793,7 +6759,7 @@ export interface ListAutomationAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6810,7 +6776,7 @@ export const ListAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AutomationAccountTagsMap = { [key: string]: string | undefined };
-export const AutomationAccountTagsMap =
+const AutomationAccountTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<AutomationAccountTagsMap>;
 
 /** Definition of the automation account type. */
@@ -6834,7 +6800,7 @@ export interface AutomationAccount {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const AutomationAccount = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6850,7 +6816,7 @@ export const AutomationAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The AutomationAccount items on this page */
 export type AutomationAccountListResultValueList = Array<AutomationAccount>;
-export const AutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
+const AutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
   AutomationAccount,
 ) as any as S.Schema<AutomationAccountListResultValueList>;
 
@@ -6861,7 +6827,7 @@ export interface AutomationAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AutomationAccountListResultValueList,
     nextLink: S.optional(S.String),
@@ -6876,7 +6842,7 @@ export interface ListAutomationAccountByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAutomationAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6900,7 +6866,7 @@ export interface ListAutomationAccountDeletedRunbooksRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListAutomationAccountDeletedRunbooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationAccountDeletedRunbooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6932,7 +6898,7 @@ export interface DeletedRunbookProperties {
   /** Gets or sets the last modified time. */
   deletionTime?: string;
 }
-export const DeletedRunbookProperties = /*@__PURE__*/ S.suspend(() =>
+const DeletedRunbookProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runbookId: S.optional(S.String),
     runbookType: S.optional(S.String),
@@ -6954,7 +6920,7 @@ export interface DeletedRunbook {
   /** Gets or sets the location of the resource. */
   location?: string;
 }
-export const DeletedRunbook = /*@__PURE__*/ S.suspend(() =>
+const DeletedRunbook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DeletedRunbookProperties),
     id: S.optional(S.String),
@@ -6965,7 +6931,7 @@ export const DeletedRunbook = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeletedRunbook items on this page */
 export type DeletedRunbookListResultValueList = Array<DeletedRunbook>;
-export const DeletedRunbookListResultValueList = /*@__PURE__*/ S.Array(
+const DeletedRunbookListResultValueList = /*@__PURE__*/ S.Array(
   DeletedRunbook,
 ) as any as S.Schema<DeletedRunbookListResultValueList>;
 
@@ -6976,7 +6942,7 @@ export interface DeletedRunbookListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DeletedRunbookListResult = /*@__PURE__*/ S.suspend(() =>
+const DeletedRunbookListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DeletedRunbookListResultValueList,
     nextLink: S.optional(S.String),
@@ -6991,7 +6957,7 @@ export interface ListCertificateByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListCertificateByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7021,11 +6987,11 @@ export interface Certificate {
   /** Gets or sets the properties of the certificate. */
   properties?: CertificateProperties;
 }
-export const Certificate = GetCertificateResponse as any as S.Schema<Certificate>;
+const Certificate = GetCertificateResponse as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
 export type CertificateListResultValueList = Array<Certificate>;
-export const CertificateListResultValueList = /*@__PURE__*/ S.Array(
+const CertificateListResultValueList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateListResultValueList>;
 
@@ -7036,7 +7002,7 @@ export interface CertificateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CertificateListResult = /*@__PURE__*/ S.suspend(() =>
+const CertificateListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CertificateListResultValueList,
     nextLink: S.optional(S.String),
@@ -7051,7 +7017,7 @@ export interface ListConnectionByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListConnectionByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7081,11 +7047,11 @@ export interface Connection {
   /** Gets or sets the properties of the connection. */
   properties?: ConnectionProperties;
 }
-export const Connection = GetConnectionResponse as any as S.Schema<Connection>;
+const Connection = GetConnectionResponse as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
 export type ConnectionListResultValueList = Array<Connection>;
-export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
+const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListResultValueList>;
 
@@ -7096,7 +7062,7 @@ export interface ConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -7111,7 +7077,7 @@ export interface ListConnectionTypeByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListConnectionTypeByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionTypeByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7141,7 +7107,7 @@ export interface ConnectionType {
   /** Gets or sets the properties of the connection type. */
   properties?: ConnectionTypeProperties;
 }
-export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
+const ConnectionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7153,7 +7119,7 @@ export const ConnectionType = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectionType items on this page */
 export type ConnectionTypeListResultValueList = Array<ConnectionType>;
-export const ConnectionTypeListResultValueList = /*@__PURE__*/ S.Array(
+const ConnectionTypeListResultValueList = /*@__PURE__*/ S.Array(
   ConnectionType,
 ) as any as S.Schema<ConnectionTypeListResultValueList>;
 
@@ -7164,7 +7130,7 @@ export interface ConnectionTypeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectionTypeListResult = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTypeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectionTypeListResultValueList,
     nextLink: S.optional(S.String),
@@ -7179,7 +7145,7 @@ export interface ListCredentialByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListCredentialByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7209,11 +7175,11 @@ export interface Credential {
   /** Gets or sets the properties of the credential. */
   properties?: CredentialProperties;
 }
-export const Credential = GetCredentialResponse as any as S.Schema<Credential>;
+const Credential = GetCredentialResponse as any as S.Schema<Credential>;
 
 /** The Credential items on this page */
 export type CredentialListResultValueList = Array<Credential>;
-export const CredentialListResultValueList = /*@__PURE__*/ S.Array(
+const CredentialListResultValueList = /*@__PURE__*/ S.Array(
   Credential,
 ) as any as S.Schema<CredentialListResultValueList>;
 
@@ -7224,7 +7190,7 @@ export interface CredentialListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CredentialListResult = /*@__PURE__*/ S.suspend(() =>
+const CredentialListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CredentialListResultValueList,
     nextLink: S.optional(S.String),
@@ -7235,7 +7201,7 @@ export interface ListDeletedAutomationAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListDeletedAutomationAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeletedAutomationAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7261,7 +7227,7 @@ export interface DeletedAutomationAccountProperties {
   /** Gets the deletion time. */
   deletionTime?: string;
 }
-export const DeletedAutomationAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const DeletedAutomationAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automationAccountResourceId: S.optional(S.String.pipe(T.Body("AutomationAccountResourceId"))),
     automationAccountId: S.optional(S.String.pipe(T.Body("AutomationAccountId"))),
@@ -7285,7 +7251,7 @@ export interface DeletedAutomationAccount {
   /** Gets or sets the location of the resource. */
   location?: string;
 }
-export const DeletedAutomationAccount = /*@__PURE__*/ S.suspend(() =>
+const DeletedAutomationAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DeletedAutomationAccountProperties.pipe(T.Body("Properties"))),
     id: S.optional(S.String.pipe(T.Body("Id"))),
@@ -7297,7 +7263,7 @@ export const DeletedAutomationAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of deleted automation accounts. */
 export type DeletedAutomationAccountListResultValueList = Array<DeletedAutomationAccount>;
-export const DeletedAutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
+const DeletedAutomationAccountListResultValueList = /*@__PURE__*/ S.Array(
   DeletedAutomationAccount,
 ) as any as S.Schema<DeletedAutomationAccountListResultValueList>;
 
@@ -7306,7 +7272,7 @@ export interface DeletedAutomationAccountListResult {
   /** Gets or sets the list of deleted automation accounts. */
   value?: DeletedAutomationAccountListResultValueList;
 }
-export const DeletedAutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
+const DeletedAutomationAccountListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DeletedAutomationAccountListResultValueList),
   }),
@@ -7330,7 +7296,7 @@ export interface ListDscConfigurationByAutomationAccountRequest {
   /** Return total rows. */
   _inlinecount?: string;
 }
-export const ListDscConfigurationByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDscConfigurationByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7353,7 +7319,7 @@ export const ListDscConfigurationByAutomationAccountRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type DscConfigurationTagsMap = { [key: string]: string | undefined };
-export const DscConfigurationTagsMap =
+const DscConfigurationTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<DscConfigurationTagsMap>;
 
 /** Definition of the configuration type. */
@@ -7375,7 +7341,7 @@ export interface DscConfiguration {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const DscConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DscConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7390,7 +7356,7 @@ export const DscConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of configurations. */
 export type DscConfigurationListResultValueList = Array<DscConfiguration>;
-export const DscConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const DscConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DscConfiguration,
 ) as any as S.Schema<DscConfigurationListResultValueList>;
 
@@ -7403,7 +7369,7 @@ export interface DscConfigurationListResult {
   /** Gets the total number of configurations matching filter criteria. */
   totalCount?: number;
 }
-export const DscConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const DscConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DscConfigurationListResultValueList),
     nextLink: S.optional(S.String),
@@ -7429,7 +7395,7 @@ export interface ListDscNodeByAutomationAccountRequest {
   /** Return total rows. */
   _inlinecount?: string;
 }
-export const ListDscNodeByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDscNodeByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7463,11 +7429,11 @@ export interface DscNode {
   /** The properties of a DscNode. */
   properties?: DscNodeProperties;
 }
-export const DscNode = GetDscNodeResponse as any as S.Schema<DscNode>;
+const DscNode = GetDscNodeResponse as any as S.Schema<DscNode>;
 
 /** Gets or sets a list of dsc nodes. */
 export type DscNodeListResultValueList = Array<DscNode>;
-export const DscNodeListResultValueList = /*@__PURE__*/ S.Array(
+const DscNodeListResultValueList = /*@__PURE__*/ S.Array(
   DscNode,
 ) as any as S.Schema<DscNodeListResultValueList>;
 
@@ -7480,7 +7446,7 @@ export interface DscNodeListResult {
   /** Gets the total number of nodes matching filter criteria. */
   totalCount?: number;
 }
-export const DscNodeListResult = /*@__PURE__*/ S.suspend(() =>
+const DscNodeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DscNodeListResultValueList),
     nextLink: S.optional(S.String),
@@ -7504,7 +7470,7 @@ export interface ListDscNodeConfigurationByAutomationAccountRequest {
   /** Return total rows. */
   _inlinecount?: string;
 }
-export const ListDscNodeConfigurationByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDscNodeConfigurationByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7538,7 +7504,7 @@ export interface DscNodeConfiguration {
   /** Gets or sets the configuration properties. */
   properties?: DscNodeConfigurationProperties;
 }
-export const DscNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DscNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7550,7 +7516,7 @@ export const DscNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of Dsc node configurations. */
 export type DscNodeConfigurationListResultValueList = Array<DscNodeConfiguration>;
-export const DscNodeConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const DscNodeConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DscNodeConfiguration,
 ) as any as S.Schema<DscNodeConfigurationListResultValueList>;
 
@@ -7563,7 +7529,7 @@ export interface DscNodeConfigurationListResult {
   /** Gets or sets the total rows in query. */
   totalCount?: number;
 }
-export const DscNodeConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const DscNodeConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DscNodeConfigurationListResultValueList),
     nextLink: S.optional(S.String),
@@ -7585,7 +7551,7 @@ export interface ListFieldByTypeRequest {
   /** The name of type. */
   typeName: string;
 }
-export const ListFieldByTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFieldByTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7609,11 +7575,9 @@ export interface TypeField {
   /** Gets or sets the type of the field. */
   type?: string;
 }
-export const TypeField = ActivityOutputType as any as S.Schema<TypeField>;
-
 /** Gets or sets a list of fields. */
 export type TypeFieldListResultValueList = Array<TypeField>;
-export const TypeFieldListResultValueList =
+const TypeFieldListResultValueList =
   ActivityPropertiesOutputTypesList as any as S.Schema<TypeFieldListResultValueList>;
 
 /** The response model for the list fields operation. */
@@ -7622,7 +7586,7 @@ export interface TypeFieldListResult {
   value?: TypeFieldListResultValueList;
   nextLink?: string;
 }
-export const TypeFieldListResult = /*@__PURE__*/ S.suspend(() =>
+const TypeFieldListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TypeFieldListResultValueList),
     nextLink: S.optional(S.String),
@@ -7641,29 +7605,28 @@ export interface ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      automationAccountName: S.String.pipe(T.Label()),
-      hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
-        code: 200,
-        apiVersion: "2024-10-23",
-      }),
-    ),
+const ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    automationAccountName: S.String.pipe(T.Label()),
+    hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
+      code: 200,
+      apiVersion: "2024-10-23",
+    }),
+  ),
 ).annotate({
   identifier: "ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest",
 }) as any as S.Schema<ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest>;
 
 /** Resource tags. */
 export type HybridRunbookWorkerTagsMap = { [key: string]: string | undefined };
-export const HybridRunbookWorkerTagsMap =
+const HybridRunbookWorkerTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<HybridRunbookWorkerTagsMap>;
 
 /** Definition of hybrid runbook worker. */
@@ -7683,7 +7646,7 @@ export interface HybridRunbookWorker {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerProperties;
 }
-export const HybridRunbookWorker = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7697,7 +7660,7 @@ export const HybridRunbookWorker = /*@__PURE__*/ S.suspend(() =>
 
 /** The HybridRunbookWorker items on this page */
 export type HybridRunbookWorkersListResultValueList = Array<HybridRunbookWorker>;
-export const HybridRunbookWorkersListResultValueList = /*@__PURE__*/ S.Array(
+const HybridRunbookWorkersListResultValueList = /*@__PURE__*/ S.Array(
   HybridRunbookWorker,
 ) as any as S.Schema<HybridRunbookWorkersListResultValueList>;
 
@@ -7708,7 +7671,7 @@ export interface HybridRunbookWorkersListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HybridRunbookWorkersListResult = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkersListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HybridRunbookWorkersListResultValueList,
     nextLink: S.optional(S.String),
@@ -7727,7 +7690,7 @@ export interface ListHybridRunbookWorkerGroupByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListHybridRunbookWorkerGroupByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHybridRunbookWorkerGroupByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7747,7 +7710,7 @@ export const ListHybridRunbookWorkerGroupByAutomationAccountRequest = /*@__PURE_
 
 /** Resource tags. */
 export type HybridRunbookWorkerGroupTagsMap = { [key: string]: string | undefined };
-export const HybridRunbookWorkerGroupTagsMap =
+const HybridRunbookWorkerGroupTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<HybridRunbookWorkerGroupTagsMap>;
 
 /** Definition of hybrid runbook worker group. */
@@ -7767,7 +7730,7 @@ export interface HybridRunbookWorkerGroup {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerGroupProperties;
 }
-export const HybridRunbookWorkerGroup = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkerGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7781,7 +7744,7 @@ export const HybridRunbookWorkerGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The HybridRunbookWorkerGroup items on this page */
 export type HybridRunbookWorkerGroupsListResultValueList = Array<HybridRunbookWorkerGroup>;
-export const HybridRunbookWorkerGroupsListResultValueList = /*@__PURE__*/ S.Array(
+const HybridRunbookWorkerGroupsListResultValueList = /*@__PURE__*/ S.Array(
   HybridRunbookWorkerGroup,
 ) as any as S.Schema<HybridRunbookWorkerGroupsListResultValueList>;
 
@@ -7792,7 +7755,7 @@ export interface HybridRunbookWorkerGroupsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HybridRunbookWorkerGroupsListResult = /*@__PURE__*/ S.suspend(() =>
+const HybridRunbookWorkerGroupsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HybridRunbookWorkerGroupsListResultValueList,
     nextLink: S.optional(S.String),
@@ -7811,7 +7774,7 @@ export interface ListJobByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListJobByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7854,7 +7817,7 @@ export interface JobCollectionItemProperties {
   /** Specifies the runOn group name where the job was executed. */
   runOn?: string;
 }
-export const JobCollectionItemProperties = /*@__PURE__*/ S.suspend(() =>
+const JobCollectionItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runbook: S.optional(RunbookAssociationProperty),
     jobId: S.optional(S.String),
@@ -7885,7 +7848,7 @@ export interface JobCollectionItem {
   /** Job properties. */
   properties: JobCollectionItemProperties;
 }
-export const JobCollectionItem = /*@__PURE__*/ S.suspend(() =>
+const JobCollectionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7897,7 +7860,7 @@ export const JobCollectionItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The JobCollectionItem items on this page */
 export type JobListResultV2ValueList = Array<JobCollectionItem>;
-export const JobListResultV2ValueList = /*@__PURE__*/ S.Array(
+const JobListResultV2ValueList = /*@__PURE__*/ S.Array(
   JobCollectionItem,
 ) as any as S.Schema<JobListResultV2ValueList>;
 
@@ -7908,7 +7871,7 @@ export interface JobListResultV2 {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const JobListResultV2 = /*@__PURE__*/ S.suspend(() =>
+const JobListResultV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: JobListResultV2ValueList,
     nextLink: S.optional(S.String),
@@ -7925,7 +7888,7 @@ export interface ListJobScheduleByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListJobScheduleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobScheduleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7956,11 +7919,11 @@ export interface JobSchedule {
   /** Gets or sets the properties of the job schedule. */
   properties?: JobScheduleProperties;
 }
-export const JobSchedule = GetJobScheduleResponse as any as S.Schema<JobSchedule>;
+const JobSchedule = GetJobScheduleResponse as any as S.Schema<JobSchedule>;
 
 /** The JobSchedule items on this page */
 export type JobScheduleListResultValueList = Array<JobSchedule>;
-export const JobScheduleListResultValueList = /*@__PURE__*/ S.Array(
+const JobScheduleListResultValueList = /*@__PURE__*/ S.Array(
   JobSchedule,
 ) as any as S.Schema<JobScheduleListResultValueList>;
 
@@ -7971,7 +7934,7 @@ export interface JobScheduleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const JobScheduleListResult = /*@__PURE__*/ S.suspend(() =>
+const JobScheduleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: JobScheduleListResultValueList,
     nextLink: S.optional(S.String),
@@ -7990,7 +7953,7 @@ export interface ListJobStreamByJobRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListJobStreamByJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobStreamByJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8011,7 +7974,7 @@ export const ListJobStreamByJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The JobStream items on this page */
 export type JobStreamListResultValueList = Array<JobStream>;
-export const JobStreamListResultValueList = /*@__PURE__*/ S.Array(
+const JobStreamListResultValueList = /*@__PURE__*/ S.Array(
   JobStream,
 ) as any as S.Schema<JobStreamListResultValueList>;
 
@@ -8022,7 +7985,7 @@ export interface JobStreamListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const JobStreamListResult = /*@__PURE__*/ S.suspend(() =>
+const JobStreamListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: JobStreamListResultValueList,
     nextLink: S.optional(S.String),
@@ -8037,7 +8000,7 @@ export interface ListKeyByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListKeyByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeyByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8056,11 +8019,11 @@ export const ListKeyByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Automation key name. */
 export type AutomationKeyName = "Primary" | "Secondary";
-export const AutomationKeyName = S.String;
+const AutomationKeyName = S.String;
 
 /** Automation key permissions. */
 export type AutomationKeyPermissions = "Read" | "Full";
-export const AutomationKeyPermissions = S.String;
+const AutomationKeyPermissions = S.String;
 
 /** Automation key which is used to register a DSC Node */
 export interface Key {
@@ -8071,7 +8034,7 @@ export interface Key {
   /** Value of the Automation Key used for registration. */
   Value?: string;
 }
-export const Key = /*@__PURE__*/ S.suspend(() =>
+const Key = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     KeyName: S.optional(AutomationKeyName),
     Permissions: S.optional(AutomationKeyPermissions),
@@ -8081,15 +8044,13 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the automation keys. */
 export type KeyListResultKeysList = Array<Key>;
-export const KeyListResultKeysList = /*@__PURE__*/ S.Array(
-  Key,
-) as any as S.Schema<KeyListResultKeysList>;
+const KeyListResultKeysList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyListResultKeysList>;
 
 export interface KeyListResult {
   /** Lists the automation keys. */
   keys?: KeyListResultKeysList;
 }
-export const KeyListResult = /*@__PURE__*/ S.suspend(() =>
+const KeyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(KeyListResultKeysList),
   }),
@@ -8103,7 +8064,7 @@ export interface ListModuleByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListModuleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListModuleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8122,9 +8083,6 @@ export const ListModuleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ModuleTagsMap = { [key: string]: string | undefined };
-export const ModuleTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<ModuleTagsMap>;
-
 /** Definition of the module type. */
 export interface Module {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8144,11 +8102,11 @@ export interface Module {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const Module = GetModuleResponse as any as S.Schema<Module>;
+const Module = GetModuleResponse as any as S.Schema<Module>;
 
 /** The Module items on this page */
 export type ModuleListResultValueList = Array<Module>;
-export const ModuleListResultValueList = /*@__PURE__*/ S.Array(
+const ModuleListResultValueList = /*@__PURE__*/ S.Array(
   Module,
 ) as any as S.Schema<ModuleListResultValueList>;
 
@@ -8159,7 +8117,7 @@ export interface ModuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ModuleListResult = /*@__PURE__*/ S.suspend(() =>
+const ModuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ModuleListResultValueList,
     nextLink: S.optional(S.String),
@@ -8178,7 +8136,7 @@ export interface ListNodeReportByNodeRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListNodeReportByNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodeReportByNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8199,7 +8157,7 @@ export const ListNodeReportByNodeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The DscNodeReport items on this page */
 export type DscNodeReportListResultValueList = Array<DscNodeReport>;
-export const DscNodeReportListResultValueList = /*@__PURE__*/ S.Array(
+const DscNodeReportListResultValueList = /*@__PURE__*/ S.Array(
   DscNodeReport,
 ) as any as S.Schema<DscNodeReportListResultValueList>;
 
@@ -8210,7 +8168,7 @@ export interface DscNodeReportListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DscNodeReportListResult = /*@__PURE__*/ S.suspend(() =>
+const DscNodeReportListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DscNodeReportListResultValueList,
     nextLink: S.optional(S.String),
@@ -8227,7 +8185,7 @@ export interface ListObjectDataTypeFieldsByTypeRequest {
   /** The name of type. */
   typeName: string;
 }
-export const ListObjectDataTypeFieldsByTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListObjectDataTypeFieldsByTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8246,7 +8204,7 @@ export const ListObjectDataTypeFieldsByTypeRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListObjectDataTypeFieldsByTypeRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -8268,7 +8226,7 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -8284,7 +8242,7 @@ export interface Dimension {
   /** The display name of the dimension. */
   displayName?: string;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -8293,7 +8251,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dimensions. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -8312,7 +8270,7 @@ export interface MetricSpecification {
   /** List of dimensions. */
   dimensions?: MetricSpecificationDimensionsList;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -8326,10 +8284,9 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 /** Operation service specification. */
 export type OperationPropertiesFormatServiceSpecificationMetricSpecificationsList =
   Array<MetricSpecification>;
-export const OperationPropertiesFormatServiceSpecificationMetricSpecificationsList =
-  /*@__PURE__*/ S.Array(
-    MetricSpecification,
-  ) as any as S.Schema<OperationPropertiesFormatServiceSpecificationMetricSpecificationsList>;
+const OperationPropertiesFormatServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+  MetricSpecification,
+) as any as S.Schema<OperationPropertiesFormatServiceSpecificationMetricSpecificationsList>;
 
 /** Description of logging specification. */
 export interface LogSpecification {
@@ -8340,7 +8297,7 @@ export interface LogSpecification {
   /** Duration of the blob. */
   blobDuration?: string;
 }
-export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
+const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -8351,10 +8308,9 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 /** Operation log specification. */
 export type OperationPropertiesFormatServiceSpecificationLogSpecificationsList =
   Array<LogSpecification>;
-export const OperationPropertiesFormatServiceSpecificationLogSpecificationsList =
-  /*@__PURE__*/ S.Array(
-    LogSpecification,
-  ) as any as S.Schema<OperationPropertiesFormatServiceSpecificationLogSpecificationsList>;
+const OperationPropertiesFormatServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+  LogSpecification,
+) as any as S.Schema<OperationPropertiesFormatServiceSpecificationLogSpecificationsList>;
 
 /** Specification of the service. */
 export interface OperationPropertiesFormatServiceSpecification {
@@ -8363,7 +8319,7 @@ export interface OperationPropertiesFormatServiceSpecification {
   /** Operation log specification. */
   logSpecifications?: OperationPropertiesFormatServiceSpecificationLogSpecificationsList;
 }
-export const OperationPropertiesFormatServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationPropertiesFormatServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(
       OperationPropertiesFormatServiceSpecificationMetricSpecificationsList,
@@ -8381,7 +8337,7 @@ export interface OperationPropertiesFormat {
   /** Specification of the service. */
   serviceSpecification?: OperationPropertiesFormatServiceSpecification;
 }
-export const OperationPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const OperationPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(OperationPropertiesFormatServiceSpecification),
   }),
@@ -8400,7 +8356,7 @@ export interface Operation {
   /** Operation properties format. */
   properties?: OperationPropertiesFormat;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -8411,7 +8367,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Automation operations supported by the Automation resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -8422,7 +8378,7 @@ export interface OperationListResult {
   /** The URL to get the next set of results, if any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -8439,7 +8395,7 @@ export interface ListPackageByRuntimeEnvironmentRequest {
   /** The name of the Runtime Environment. */
   runtimeEnvironmentName: string;
 }
-export const ListPackageByRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackageByRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8459,9 +8415,6 @@ export const ListPackageByRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type PackageTagsMap = { [key: string]: string | undefined };
-export const PackageTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<PackageTagsMap>;
-
 /** Definition of the Package type. */
 export interface Package {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8479,11 +8432,11 @@ export interface Package {
   /** Gets or sets the Package properties. */
   properties?: PackageProperties;
 }
-export const Package = GetPackageResponse as any as S.Schema<Package>;
+const Package = GetPackageResponse as any as S.Schema<Package>;
 
 /** The Package items on this page */
 export type PackageListResultValueList = Array<Package>;
-export const PackageListResultValueList = /*@__PURE__*/ S.Array(
+const PackageListResultValueList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageListResultValueList>;
 
@@ -8494,7 +8447,7 @@ export interface PackageListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PackageListResult = /*@__PURE__*/ S.suspend(() =>
+const PackageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PackageListResultValueList,
     nextLink: S.optional(S.String),
@@ -8509,7 +8462,7 @@ export interface ListPrivateEndpointConnectionByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListPrivateEndpointConnectionByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8528,7 +8481,7 @@ export const ListPrivateEndpointConnectionByAutomationAccountRequest = /*@__PURE
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   AutomationAccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** A list of private endpoint connections */
@@ -8537,7 +8490,7 @@ export interface PrivateEndpointConnectionListResult {
   value?: PrivateEndpointConnectionListResultValueList;
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -8554,7 +8507,7 @@ export interface ListPython2PackageByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListPython2PackageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPython2PackageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8579,7 +8532,7 @@ export interface ListPython3PackageByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListPython3PackageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPython3PackageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8604,7 +8557,7 @@ export interface ListRunbookByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListRunbookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRunbookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8623,9 +8576,6 @@ export const ListRunbookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type RunbookTagsMap = { [key: string]: string | undefined };
-export const RunbookTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<RunbookTagsMap>;
-
 /** Definition of the runbook type. */
 export interface Runbook {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8645,11 +8595,11 @@ export interface Runbook {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const Runbook = GetRunbookResponse as any as S.Schema<Runbook>;
+const Runbook = GetRunbookResponse as any as S.Schema<Runbook>;
 
 /** The Runbook items on this page */
 export type RunbookListResultValueList = Array<Runbook>;
-export const RunbookListResultValueList = /*@__PURE__*/ S.Array(
+const RunbookListResultValueList = /*@__PURE__*/ S.Array(
   Runbook,
 ) as any as S.Schema<RunbookListResultValueList>;
 
@@ -8660,7 +8610,7 @@ export interface RunbookListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RunbookListResult = /*@__PURE__*/ S.suspend(() =>
+const RunbookListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RunbookListResultValueList,
     nextLink: S.optional(S.String),
@@ -8675,7 +8625,7 @@ export interface ListRuntimeEnvironmentByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListRuntimeEnvironmentByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRuntimeEnvironmentByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8694,7 +8644,7 @@ export const ListRuntimeEnvironmentByAutomationAccountRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type RuntimeEnvironmentTagsMap = { [key: string]: string | undefined };
-export const RuntimeEnvironmentTagsMap =
+const RuntimeEnvironmentTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<RuntimeEnvironmentTagsMap>;
 
 /** Definition of the Runtime Environment type. */
@@ -8714,7 +8664,7 @@ export interface RuntimeEnvironment {
   /** Gets or sets the Runtime Environment properties. */
   properties?: RuntimeEnvironmentProperties;
 }
-export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8728,7 +8678,7 @@ export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
 
 /** The RuntimeEnvironment items on this page */
 export type RuntimeEnvironmentListResultValueList = Array<RuntimeEnvironment>;
-export const RuntimeEnvironmentListResultValueList = /*@__PURE__*/ S.Array(
+const RuntimeEnvironmentListResultValueList = /*@__PURE__*/ S.Array(
   RuntimeEnvironment,
 ) as any as S.Schema<RuntimeEnvironmentListResultValueList>;
 
@@ -8739,7 +8689,7 @@ export interface RuntimeEnvironmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RuntimeEnvironmentListResult = /*@__PURE__*/ S.suspend(() =>
+const RuntimeEnvironmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RuntimeEnvironmentListResultValueList,
     nextLink: S.optional(S.String),
@@ -8756,7 +8706,7 @@ export interface ListScheduleByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListScheduleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduleByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8786,11 +8736,11 @@ export interface Schedule {
   /** Gets or sets the properties of the schedule. */
   properties?: ScheduleProperties;
 }
-export const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
+const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
 
 /** The Schedule items on this page */
 export type ScheduleListResultValueList = Array<Schedule>;
-export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
+const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleListResultValueList>;
 
@@ -8801,7 +8751,7 @@ export interface ScheduleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
+const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ScheduleListResultValueList,
     nextLink: S.optional(S.String),
@@ -8822,7 +8772,7 @@ export interface ListSoftwareUpdateConfigurationMachineRunsRequest {
   /** Maximum number of entries returned in the results collection */
   _top?: string;
 }
-export const ListSoftwareUpdateConfigurationMachineRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSoftwareUpdateConfigurationMachineRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8845,7 +8795,7 @@ export const ListSoftwareUpdateConfigurationMachineRunsRequest = /*@__PURE__*/ S
 /** The softwareUpdateConfigurationMachineRun items on this page */
 export type SoftwareUpdateConfigurationMachineRunListResultValueList =
   Array<SoftwareUpdateConfigurationMachineRun>;
-export const SoftwareUpdateConfigurationMachineRunListResultValueList = /*@__PURE__*/ S.Array(
+const SoftwareUpdateConfigurationMachineRunListResultValueList = /*@__PURE__*/ S.Array(
   SoftwareUpdateConfigurationMachineRun,
 ) as any as S.Schema<SoftwareUpdateConfigurationMachineRunListResultValueList>;
 
@@ -8856,7 +8806,7 @@ export interface SoftwareUpdateConfigurationMachineRunListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SoftwareUpdateConfigurationMachineRunListResult = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationMachineRunListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SoftwareUpdateConfigurationMachineRunListResultValueList,
     nextLink: S.optional(S.String),
@@ -8879,7 +8829,7 @@ export interface ListSoftwareUpdateConfigurationRunsRequest {
   /** Maximum number of entries returned in the results collection */
   _top?: string;
 }
-export const ListSoftwareUpdateConfigurationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSoftwareUpdateConfigurationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8902,7 +8852,7 @@ export const ListSoftwareUpdateConfigurationRunsRequest = /*@__PURE__*/ S.suspen
 /** The softwareUpdateConfigurationRun items on this page */
 export type SoftwareUpdateConfigurationRunListResultValueList =
   Array<SoftwareUpdateConfigurationRun>;
-export const SoftwareUpdateConfigurationRunListResultValueList = /*@__PURE__*/ S.Array(
+const SoftwareUpdateConfigurationRunListResultValueList = /*@__PURE__*/ S.Array(
   SoftwareUpdateConfigurationRun,
 ) as any as S.Schema<SoftwareUpdateConfigurationRunListResultValueList>;
 
@@ -8913,7 +8863,7 @@ export interface SoftwareUpdateConfigurationRunListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SoftwareUpdateConfigurationRunListResult = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationRunListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SoftwareUpdateConfigurationRunListResultValueList,
     nextLink: S.optional(S.String),
@@ -8932,7 +8882,7 @@ export interface ListSoftwareUpdateConfigurationsRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListSoftwareUpdateConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSoftwareUpdateConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8969,7 +8919,7 @@ export interface SoftwareUpdateConfigurationCollectionItemProperties {
   /** ext run time of the update. */
   nextRun?: string | null;
 }
-export const SoftwareUpdateConfigurationCollectionItemProperties = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationCollectionItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateConfiguration: S.optional(UpdateConfiguration),
     tasks: S.optional(SoftwareUpdateConfigurationTasks),
@@ -8993,7 +8943,7 @@ export interface SoftwareUpdateConfigurationCollectionItem {
   /** Software update configuration properties. */
   properties: SoftwareUpdateConfigurationCollectionItemProperties;
 }
-export const SoftwareUpdateConfigurationCollectionItem = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationCollectionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -9006,7 +8956,7 @@ export const SoftwareUpdateConfigurationCollectionItem = /*@__PURE__*/ S.suspend
 /** outer object returned when listing all software update configurations */
 export type SoftwareUpdateConfigurationListResultValueList =
   Array<SoftwareUpdateConfigurationCollectionItem>;
-export const SoftwareUpdateConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const SoftwareUpdateConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   SoftwareUpdateConfigurationCollectionItem,
 ) as any as S.Schema<SoftwareUpdateConfigurationListResultValueList>;
 
@@ -9015,7 +8965,7 @@ export interface SoftwareUpdateConfigurationListResult {
   /** outer object returned when listing all software update configurations */
   value?: SoftwareUpdateConfigurationListResultValueList;
 }
-export const SoftwareUpdateConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const SoftwareUpdateConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SoftwareUpdateConfigurationListResultValueList),
   }),
@@ -9033,7 +8983,7 @@ export interface ListSourceControlByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListSourceControlByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceControlByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9064,11 +9014,11 @@ export interface SourceControl {
   /** The properties of the source control. */
   properties?: SourceControlProperties;
 }
-export const SourceControl = GetSourceControlResponse as any as S.Schema<SourceControl>;
+const SourceControl = GetSourceControlResponse as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
 export type SourceControlListResultValueList = Array<SourceControl>;
-export const SourceControlListResultValueList = /*@__PURE__*/ S.Array(
+const SourceControlListResultValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlListResultValueList>;
 
@@ -9079,7 +9029,7 @@ export interface SourceControlListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SourceControlListResult = /*@__PURE__*/ S.suspend(() =>
+const SourceControlListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SourceControlListResultValueList,
     nextLink: S.optional(S.String),
@@ -9098,7 +9048,7 @@ export interface ListSourceControlSyncJobByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListSourceControlSyncJobByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceControlSyncJobByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9119,7 +9069,7 @@ export const ListSourceControlSyncJobByAutomationAccountRequest = /*@__PURE__*/ 
 
 /** The SourceControlSyncJob items on this page */
 export type SourceControlSyncJobListResultValueList = Array<SourceControlSyncJob>;
-export const SourceControlSyncJobListResultValueList = /*@__PURE__*/ S.Array(
+const SourceControlSyncJobListResultValueList = /*@__PURE__*/ S.Array(
   SourceControlSyncJob,
 ) as any as S.Schema<SourceControlSyncJobListResultValueList>;
 
@@ -9130,7 +9080,7 @@ export interface SourceControlSyncJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SourceControlSyncJobListResult = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SourceControlSyncJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -9153,7 +9103,7 @@ export interface ListSourceControlSyncJobStreamBySyncJobRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListSourceControlSyncJobStreamBySyncJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceControlSyncJobStreamBySyncJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9184,7 +9134,7 @@ export interface SourceControlSyncJobStreamProperties {
   /** The type of the sync job stream. */
   streamType?: StreamType;
 }
-export const SourceControlSyncJobStreamProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobStreamProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceControlSyncJobStreamId: S.optional(S.String),
     summary: S.optional(S.String),
@@ -9202,7 +9152,7 @@ export interface SourceControlSyncJobStream {
   /** The properties of the source control sync job stream. */
   properties?: SourceControlSyncJobStreamProperties;
 }
-export const SourceControlSyncJobStream = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(SourceControlSyncJobStreamProperties),
@@ -9213,7 +9163,7 @@ export const SourceControlSyncJobStream = /*@__PURE__*/ S.suspend(() =>
 
 /** The SourceControlSyncJobStream items on this page */
 export type SourceControlSyncJobStreamsListBySyncJobValueList = Array<SourceControlSyncJobStream>;
-export const SourceControlSyncJobStreamsListBySyncJobValueList = /*@__PURE__*/ S.Array(
+const SourceControlSyncJobStreamsListBySyncJobValueList = /*@__PURE__*/ S.Array(
   SourceControlSyncJobStream,
 ) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJobValueList>;
 
@@ -9224,7 +9174,7 @@ export interface SourceControlSyncJobStreamsListBySyncJob {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SourceControlSyncJobStreamsListBySyncJob = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSyncJobStreamsListBySyncJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SourceControlSyncJobStreamsListBySyncJobValueList,
     nextLink: S.optional(S.String),
@@ -9243,7 +9193,7 @@ export interface ListStatisticsByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListStatisticsByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStatisticsByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9274,7 +9224,7 @@ export interface Statistics {
   /** Gets the id. */
   id?: string;
 }
-export const Statistics = /*@__PURE__*/ S.suspend(() =>
+const Statistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counterProperty: S.optional(S.String),
     counterValue: S.optional(S.Number),
@@ -9286,7 +9236,7 @@ export const Statistics = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of statistics. */
 export type StatisticsListResultValueList = Array<Statistics>;
-export const StatisticsListResultValueList = /*@__PURE__*/ S.Array(
+const StatisticsListResultValueList = /*@__PURE__*/ S.Array(
   Statistics,
 ) as any as S.Schema<StatisticsListResultValueList>;
 
@@ -9296,7 +9246,7 @@ export interface StatisticsListResult {
   value?: StatisticsListResultValueList;
   nextLink?: string;
 }
-export const StatisticsListResult = /*@__PURE__*/ S.suspend(() =>
+const StatisticsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(StatisticsListResultValueList),
     nextLink: S.optional(S.String),
@@ -9315,7 +9265,7 @@ export interface ListTestJobStreamByTestJobRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListTestJobStreamByTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestJobStreamByTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9342,7 +9292,7 @@ export interface ListUsageByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListUsageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsageByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9366,7 +9316,7 @@ export interface UsageCounterName {
   /** Gets or sets the localized usage counter name. */
   localizedValue?: string;
 }
-export const UsageCounterName = /*@__PURE__*/ S.suspend(() =>
+const UsageCounterName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -9388,7 +9338,7 @@ export interface Usage {
   /** Gets or sets the throttle status. */
   throttleStatus?: string;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(UsageCounterName),
@@ -9401,7 +9351,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets usage. */
 export type UsageListResultValueList = Array<Usage>;
-export const UsageListResultValueList = /*@__PURE__*/ S.Array(
+const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
 
@@ -9411,7 +9361,7 @@ export interface UsageListResult {
   value?: UsageListResultValueList;
   nextLink?: string;
 }
-export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
+const UsageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsageListResultValueList),
     nextLink: S.optional(S.String),
@@ -9426,7 +9376,7 @@ export interface ListVariableByAutomationAccountRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const ListVariableByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVariableByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9456,11 +9406,11 @@ export interface Variable {
   /** Gets or sets the properties of the variable. */
   properties?: VariableProperties;
 }
-export const Variable = GetVariableResponse as any as S.Schema<Variable>;
+const Variable = GetVariableResponse as any as S.Schema<Variable>;
 
 /** The Variable items on this page */
 export type VariableListResultValueList = Array<Variable>;
-export const VariableListResultValueList = /*@__PURE__*/ S.Array(
+const VariableListResultValueList = /*@__PURE__*/ S.Array(
   Variable,
 ) as any as S.Schema<VariableListResultValueList>;
 
@@ -9471,7 +9421,7 @@ export interface VariableListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VariableListResult = /*@__PURE__*/ S.suspend(() =>
+const VariableListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VariableListResultValueList,
     nextLink: S.optional(S.String),
@@ -9488,7 +9438,7 @@ export interface ListWatcherByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListWatcherByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatcherByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9508,9 +9458,6 @@ export const ListWatcherByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type WatcherTagsMap = { [key: string]: string | undefined };
-export const WatcherTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WatcherTagsMap>;
-
 /** Definition of the watcher type. */
 export interface Watcher {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9530,11 +9477,11 @@ export interface Watcher {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const Watcher = GetWatcherResponse as any as S.Schema<Watcher>;
+const Watcher = GetWatcherResponse as any as S.Schema<Watcher>;
 
 /** The Watcher items on this page */
 export type WatcherListResultValueList = Array<Watcher>;
-export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
+const WatcherListResultValueList = /*@__PURE__*/ S.Array(
   Watcher,
 ) as any as S.Schema<WatcherListResultValueList>;
 
@@ -9545,7 +9492,7 @@ export interface WatcherListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WatcherListResult = /*@__PURE__*/ S.suspend(() =>
+const WatcherListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WatcherListResultValueList,
     nextLink: S.optional(S.String),
@@ -9562,7 +9509,7 @@ export interface ListWebhookByAutomationAccountRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
-export const ListWebhookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookByAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9593,11 +9540,11 @@ export interface Webhook {
   /** Gets or sets the webhook properties. */
   properties?: WebhookProperties;
 }
-export const Webhook = GetWebhookResponse as any as S.Schema<Webhook>;
+const Webhook = GetWebhookResponse as any as S.Schema<Webhook>;
 
 /** The Webhook items on this page */
 export type WebhookListResultValueList = Array<Webhook>;
-export const WebhookListResultValueList = /*@__PURE__*/ S.Array(
+const WebhookListResultValueList = /*@__PURE__*/ S.Array(
   Webhook,
 ) as any as S.Schema<WebhookListResultValueList>;
 
@@ -9608,7 +9555,7 @@ export interface WebhookListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebhookListResult = /*@__PURE__*/ S.suspend(() =>
+const WebhookListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebhookListResultValueList,
     nextLink: S.optional(S.String),
@@ -9620,7 +9567,7 @@ export interface ModuleCreateOrUpdateProperties {
   /** Gets or sets the module content link. */
   contentLink: ContentLink;
 }
-export const ModuleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ModuleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentLink: ContentLink,
   }),
@@ -9630,7 +9577,7 @@ export const ModuleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags attached to the resource. */
 export type ModuleCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ModuleCreateOrUpdateRequestTagsMap =
+const ModuleCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<ModuleCreateOrUpdateRequestTagsMap>;
 
 export interface ModuleCreateOrUpdateRequest {
@@ -9651,7 +9598,7 @@ export interface ModuleCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: ModuleCreateOrUpdateRequestTagsMap;
 }
-export const ModuleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ModuleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9675,9 +9622,6 @@ export const ModuleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ModuleCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ModuleCreateOrUpdateResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<ModuleCreateOrUpdateResponseTagsMap>;
-
 export interface ModuleCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9696,7 +9640,7 @@ export interface ModuleCreateOrUpdateResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const ModuleCreateOrUpdateResponse =
+const ModuleCreateOrUpdateResponse =
   GetPython2PackageResponse as any as S.Schema<ModuleCreateOrUpdateResponse>;
 
 export interface MoveHybridRunbookWorkerRequest {
@@ -9711,7 +9655,7 @@ export interface MoveHybridRunbookWorkerRequest {
   /** The hybrid runbook worker id */
   hybridRunbookWorkerId: string;
 }
-export const MoveHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9731,7 +9675,7 @@ export const MoveHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveHybridRunbookWorkerRequest>;
 
 export interface MoveHybridRunbookWorkerResponse {}
-export const MoveHybridRunbookWorkerResponse =
+const MoveHybridRunbookWorkerResponse =
   DeleteAutomationAccountResponse as any as S.Schema<MoveHybridRunbookWorkerResponse>;
 
 export interface ObjectDataTypesListFieldsByModuleAndTypeRequest {
@@ -9746,7 +9690,7 @@ export interface ObjectDataTypesListFieldsByModuleAndTypeRequest {
   /** The name of type. */
   typeName: string;
 }
-export const ObjectDataTypesListFieldsByModuleAndTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ObjectDataTypesListFieldsByModuleAndTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9770,12 +9714,12 @@ export interface PackageCreateOrUpdateProperties {
   /** Gets or sets the package content link. */
   contentLink: ContentLink;
 }
-export const PackageCreateOrUpdateProperties =
+const PackageCreateOrUpdateProperties =
   ModuleCreateOrUpdateProperties as any as S.Schema<PackageCreateOrUpdateProperties>;
 
 /** Resource tags. */
 export type PackageCreateOrUpdateRequestAllOfTagsMap = { [key: string]: string | undefined };
-export const PackageCreateOrUpdateRequestAllOfTagsMap =
+const PackageCreateOrUpdateRequestAllOfTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<PackageCreateOrUpdateRequestAllOfTagsMap>;
 
 /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
@@ -9785,7 +9729,7 @@ export interface PackageCreateOrUpdateRequestAllOf {
   /** The geo-location where the resource lives */
   location: string;
 }
-export const PackageCreateOrUpdateRequestAllOf = /*@__PURE__*/ S.suspend(() =>
+const PackageCreateOrUpdateRequestAllOf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(PackageCreateOrUpdateRequestAllOfTagsMap),
     location: S.String,
@@ -9810,7 +9754,7 @@ export interface PackageCreateOrUpdateRequest {
   /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
   allOf?: PackageCreateOrUpdateRequestAllOf;
 }
-export const PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9833,7 +9777,7 @@ export const PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PackageCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PackageCreateOrUpdateResponseTagsMap =
+const PackageCreateOrUpdateResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<PackageCreateOrUpdateResponseTagsMap>;
 
 export interface PackageCreateOrUpdateResponse {
@@ -9852,7 +9796,7 @@ export interface PackageCreateOrUpdateResponse {
   /** Gets or sets the Package properties. */
   properties?: PackageProperties;
 }
-export const PackageCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PackageCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9880,7 +9824,7 @@ export interface PatchHybridRunbookWorkerRequest {
   /** Gets or sets hybrid runbook worker group create or update properties. */
   properties?: HybridRunbookWorkerCreateOrUpdateParameters;
 }
-export const PatchHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9902,9 +9846,6 @@ export const PatchHybridRunbookWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PatchHybridRunbookWorkerResponseTagsMap = { [key: string]: string | undefined };
-export const PatchHybridRunbookWorkerResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<PatchHybridRunbookWorkerResponseTagsMap>;
-
 export interface PatchHybridRunbookWorkerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9921,12 +9862,12 @@ export interface PatchHybridRunbookWorkerResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerProperties;
 }
-export const PatchHybridRunbookWorkerResponse =
+const PatchHybridRunbookWorkerResponse =
   CreateHybridRunbookWorkerResponse as any as S.Schema<PatchHybridRunbookWorkerResponse>;
 
 /** Gets the groupIds. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+const PrivateEndpointConnectionPropertiesInputGroupIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
 
 /** Connection State of the Private Endpoint Connection. */
@@ -9936,7 +9877,7 @@ export interface PrivateLinkServiceConnectionStatePropertyInput {
   /** The private link service connection description. */
   description?: string;
 }
-export const PrivateLinkServiceConnectionStatePropertyInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionStatePropertyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -9954,7 +9895,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Connection State of the Private Endpoint Connection. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStatePropertyInput;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointProperty),
     groupIds: S.optional(PrivateEndpointConnectionPropertiesInputGroupIdsList),
@@ -9976,7 +9917,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10007,7 +9948,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
   PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface PrivateLinkResourcesAutomationRequest {
@@ -10018,7 +9959,7 @@ export interface PrivateLinkResourcesAutomationRequest {
   /** The name of the automation account. */
   automationAccountName: string;
 }
-export const PrivateLinkResourcesAutomationRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourcesAutomationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10037,7 +9978,7 @@ export const PrivateLinkResourcesAutomationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Properties of a private link resource. */
@@ -10047,7 +9988,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource required member names. */
   requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -10069,7 +10010,7 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10081,7 +10022,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -10091,7 +10032,7 @@ export interface PrivateLinkResourceListResult {
   value?: PrivateLinkResourceListResultValueList;
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceListResultValueList),
     nextLink: S.optional(S.String),
@@ -10110,7 +10051,7 @@ export interface PublishRunbookRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const PublishRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishRunbookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10127,16 +10068,13 @@ export const PublishRunbookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublishRunbookRequest" }) as any as S.Schema<PublishRunbookRequest>;
 
 export interface PublishRunbookResponse {}
-export const PublishRunbookResponse =
-  DeleteCertificateResponse as any as S.Schema<PublishRunbookResponse>;
+const PublishRunbookResponse = DeleteCertificateResponse as any as S.Schema<PublishRunbookResponse>;
 
 /** The parameters supplied to the create or update module properties. */
 export type PythonPackageCreateProperties = ModuleCreateOrUpdateProperties;
-export const PythonPackageCreateProperties = ModuleCreateOrUpdateProperties;
-
 /** Gets or sets the tags attached to the resource. */
 export type Python2PackageCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const Python2PackageCreateOrUpdateRequestTagsMap =
+const Python2PackageCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<Python2PackageCreateOrUpdateRequestTagsMap>;
 
 export interface Python2PackageCreateOrUpdateRequest {
@@ -10153,7 +10091,7 @@ export interface Python2PackageCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: Python2PackageCreateOrUpdateRequestTagsMap;
 }
-export const Python2PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const Python2PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10175,9 +10113,6 @@ export const Python2PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type Python2PackageCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const Python2PackageCreateOrUpdateResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<Python2PackageCreateOrUpdateResponseTagsMap>;
-
 export interface Python2PackageCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -10196,12 +10131,12 @@ export interface Python2PackageCreateOrUpdateResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const Python2PackageCreateOrUpdateResponse =
+const Python2PackageCreateOrUpdateResponse =
   GetPython2PackageResponse as any as S.Schema<Python2PackageCreateOrUpdateResponse>;
 
 /** Gets or sets the tags attached to the resource. */
 export type Python3PackageCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const Python3PackageCreateOrUpdateRequestTagsMap =
+const Python3PackageCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<Python3PackageCreateOrUpdateRequestTagsMap>;
 
 export interface Python3PackageCreateOrUpdateRequest {
@@ -10218,7 +10153,7 @@ export interface Python3PackageCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: Python3PackageCreateOrUpdateRequestTagsMap;
 }
-export const Python3PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const Python3PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10240,9 +10175,6 @@ export const Python3PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type Python3PackageCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const Python3PackageCreateOrUpdateResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<Python3PackageCreateOrUpdateResponseTagsMap>;
-
 export interface Python3PackageCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -10261,12 +10193,12 @@ export interface Python3PackageCreateOrUpdateResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const Python3PackageCreateOrUpdateResponse =
+const Python3PackageCreateOrUpdateResponse =
   GetPython2PackageResponse as any as S.Schema<Python3PackageCreateOrUpdateResponse>;
 
 /** Gets or sets the agent registration key name - primary or secondary. */
 export type AgentRegistrationKeyName = "primary" | "secondary";
-export const AgentRegistrationKeyName = S.String;
+const AgentRegistrationKeyName = S.String;
 
 export interface RegenerateAgentRegistrationInformationKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10278,7 +10210,7 @@ export interface RegenerateAgentRegistrationInformationKeyRequest {
   /** Gets or sets the agent registration key name - primary or secondary. */
   keyName: AgentRegistrationKeyName | (string & {});
 }
-export const RegenerateAgentRegistrationInformationKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateAgentRegistrationInformationKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10307,7 +10239,7 @@ export interface ReplaceRunbookDraftContentRequest {
   runbookName: string;
   body: string;
 }
-export const ReplaceRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10327,7 +10259,7 @@ export const ReplaceRunbookDraftContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceRunbookDraftContentRequest>;
 
 export interface ReplaceRunbookDraftContentResponse {}
-export const ReplaceRunbookDraftContentResponse =
+const ReplaceRunbookDraftContentResponse =
   UserAssignedIdentitiesPropertiesInput as any as S.Schema<ReplaceRunbookDraftContentResponse>;
 
 export interface ResumeJobRequest {
@@ -10340,7 +10272,7 @@ export interface ResumeJobRequest {
   /** The job name. */
   jobName: string;
 }
-export const ResumeJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10357,7 +10289,7 @@ export const ResumeJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeJobRequest" }) as any as S.Schema<ResumeJobRequest>;
 
 export interface ResumeJobResponse {}
-export const ResumeJobResponse = DeleteCertificateResponse as any as S.Schema<ResumeJobResponse>;
+const ResumeJobResponse = DeleteCertificateResponse as any as S.Schema<ResumeJobResponse>;
 
 export interface ResumeTestJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10369,7 +10301,7 @@ export interface ResumeTestJobRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const ResumeTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10386,8 +10318,7 @@ export const ResumeTestJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeTestJobRequest" }) as any as S.Schema<ResumeTestJobRequest>;
 
 export interface ResumeTestJobResponse {}
-export const ResumeTestJobResponse =
-  DeleteCertificateResponse as any as S.Schema<ResumeTestJobResponse>;
+const ResumeTestJobResponse = DeleteCertificateResponse as any as S.Schema<ResumeTestJobResponse>;
 
 /** The parameters supplied to the create or update runbook properties. */
 export interface RunbookCreateOrUpdateProperties {
@@ -10408,7 +10339,7 @@ export interface RunbookCreateOrUpdateProperties {
   /** Gets or sets the activity-level tracing options of the runbook. */
   logActivityTrace?: number;
 }
-export const RunbookCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const RunbookCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logVerbose: S.optional(S.Boolean),
     logProgress: S.optional(S.Boolean),
@@ -10425,7 +10356,7 @@ export const RunbookCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags attached to the resource. */
 export type RunbookCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RunbookCreateOrUpdateRequestTagsMap =
+const RunbookCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<RunbookCreateOrUpdateRequestTagsMap>;
 
 export interface RunbookCreateOrUpdateRequest {
@@ -10446,7 +10377,7 @@ export interface RunbookCreateOrUpdateRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: RunbookCreateOrUpdateRequestTagsMap;
 }
-export const RunbookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RunbookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10470,7 +10401,7 @@ export const RunbookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RunbookCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RunbookCreateOrUpdateResponseTagsMap =
+const RunbookCreateOrUpdateResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<RunbookCreateOrUpdateResponseTagsMap>;
 
 export interface RunbookCreateOrUpdateResponse {
@@ -10491,7 +10422,7 @@ export interface RunbookCreateOrUpdateResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const RunbookCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const RunbookCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10523,7 +10454,7 @@ export interface ScheduleCreateOrUpdateProperties {
   /** Gets or sets the AdvancedSchedule. */
   advancedSchedule?: AdvancedSchedule;
 }
-export const ScheduleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     startTime: S.String,
@@ -10551,7 +10482,7 @@ export interface ScheduleCreateOrUpdateRequest {
   /** Gets or sets the list of schedule properties. */
   properties: ScheduleCreateOrUpdateProperties;
 }
-export const ScheduleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10583,7 +10514,7 @@ export interface ScheduleCreateOrUpdateResponse {
   /** Gets or sets the properties of the schedule. */
   properties?: ScheduleProperties;
 }
-export const ScheduleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ScheduleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10597,7 +10528,7 @@ export const ScheduleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The token type. Must be either PersonalAccessToken or Oauth. */
 export type TokenType = "PersonalAccessToken" | "Oauth";
-export const TokenType = S.String;
+const TokenType = S.String;
 
 export interface SourceControlSecurityTokenProperties {
   /** The access token. */
@@ -10607,7 +10538,7 @@ export interface SourceControlSecurityTokenProperties {
   /** The token type. Must be either PersonalAccessToken or Oauth. */
   tokenType?: TokenType | (string & {});
 }
-export const SourceControlSecurityTokenProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlSecurityTokenProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
     refreshToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -10636,7 +10567,7 @@ export interface SourceControlCreateOrUpdateProperties {
   /** The user description of the source control. */
   description?: string;
 }
-export const SourceControlCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoUrl: S.optional(S.String),
     branch: S.optional(S.String),
@@ -10663,7 +10594,7 @@ export interface SourceControlCreateOrUpdateRequest {
   /** The properties of the source control. */
   properties: SourceControlCreateOrUpdateProperties;
 }
-export const SourceControlCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SourceControlCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10694,7 +10625,7 @@ export interface SourceControlCreateOrUpdateResponse {
   /** The properties of the source control. */
   properties?: SourceControlProperties;
 }
-export const SourceControlCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceControlCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10716,7 +10647,7 @@ export interface StartWatcherRequest {
   /** The watcher name. */
   watcherName: string;
 }
-export const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10733,8 +10664,7 @@ export const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartWatcherRequest" }) as any as S.Schema<StartWatcherRequest>;
 
 export interface StartWatcherResponse {}
-export const StartWatcherResponse =
-  DeleteCertificateResponse as any as S.Schema<StartWatcherResponse>;
+const StartWatcherResponse = DeleteCertificateResponse as any as S.Schema<StartWatcherResponse>;
 
 export interface StopJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10746,7 +10676,7 @@ export interface StopJobRequest {
   /** The job name. */
   jobName: string;
 }
-export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10763,7 +10693,7 @@ export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopJobRequest" }) as any as S.Schema<StopJobRequest>;
 
 export interface StopJobResponse {}
-export const StopJobResponse = DeleteCertificateResponse as any as S.Schema<StopJobResponse>;
+const StopJobResponse = DeleteCertificateResponse as any as S.Schema<StopJobResponse>;
 
 export interface StopTestJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10775,7 +10705,7 @@ export interface StopTestJobRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const StopTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StopTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10792,8 +10722,7 @@ export const StopTestJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopTestJobRequest" }) as any as S.Schema<StopTestJobRequest>;
 
 export interface StopTestJobResponse {}
-export const StopTestJobResponse =
-  DeleteCertificateResponse as any as S.Schema<StopTestJobResponse>;
+const StopTestJobResponse = DeleteCertificateResponse as any as S.Schema<StopTestJobResponse>;
 
 export interface StopWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10805,7 +10734,7 @@ export interface StopWatcherRequest {
   /** The watcher name. */
   watcherName: string;
 }
-export const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10822,8 +10751,7 @@ export const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopWatcherRequest" }) as any as S.Schema<StopWatcherRequest>;
 
 export interface StopWatcherResponse {}
-export const StopWatcherResponse =
-  DeleteCertificateResponse as any as S.Schema<StopWatcherResponse>;
+const StopWatcherResponse = DeleteCertificateResponse as any as S.Schema<StopWatcherResponse>;
 
 export interface SuspendJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10835,7 +10763,7 @@ export interface SuspendJobRequest {
   /** The job name. */
   jobName: string;
 }
-export const SuspendJobRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10852,7 +10780,7 @@ export const SuspendJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendJobRequest" }) as any as S.Schema<SuspendJobRequest>;
 
 export interface SuspendJobResponse {}
-export const SuspendJobResponse = DeleteCertificateResponse as any as S.Schema<SuspendJobResponse>;
+const SuspendJobResponse = DeleteCertificateResponse as any as S.Schema<SuspendJobResponse>;
 
 export interface SuspendTestJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10864,7 +10792,7 @@ export interface SuspendTestJobRequest {
   /** The runbook name. */
   runbookName: string;
 }
-export const SuspendTestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendTestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10881,8 +10809,7 @@ export const SuspendTestJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendTestJobRequest" }) as any as S.Schema<SuspendTestJobRequest>;
 
 export interface SuspendTestJobResponse {}
-export const SuspendTestJobResponse =
-  DeleteCertificateResponse as any as S.Schema<SuspendTestJobResponse>;
+const SuspendTestJobResponse = DeleteCertificateResponse as any as S.Schema<SuspendTestJobResponse>;
 
 /** The parameters supplied to the update account properties. */
 export interface AutomationAccountUpdateProperties {
@@ -10895,7 +10822,7 @@ export interface AutomationAccountUpdateProperties {
   /** Indicates whether requests using non-AAD authentication are blocked */
   disableLocalAuth?: boolean;
 }
-export const AutomationAccountUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const AutomationAccountUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(Sku),
     encryption: S.optional(EncryptionProperties),
@@ -10908,7 +10835,7 @@ export const AutomationAccountUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags attached to the resource. */
 export type UpdateAutomationAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAutomationAccountRequestTagsMap =
+const UpdateAutomationAccountRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAutomationAccountRequestTagsMap>;
 
 export interface UpdateAutomationAccountRequest {
@@ -10929,7 +10856,7 @@ export interface UpdateAutomationAccountRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: UpdateAutomationAccountRequestTagsMap;
 }
-export const UpdateAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10953,9 +10880,6 @@ export const UpdateAutomationAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAutomationAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAutomationAccountResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAutomationAccountResponseTagsMap>;
-
 export interface UpdateAutomationAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -10976,7 +10900,7 @@ export interface UpdateAutomationAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const UpdateAutomationAccountResponse =
+const UpdateAutomationAccountResponse =
   AutomationAccountCreateOrUpdateResponse as any as S.Schema<UpdateAutomationAccountResponse>;
 
 /** The properties of the update certificate operation */
@@ -10984,7 +10908,7 @@ export interface CertificateUpdateProperties {
   /** Gets or sets the description of the certificate. */
   description?: string;
 }
-export const CertificateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CertificateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -11006,7 +10930,7 @@ export interface UpdateCertificateRequest {
   /** Gets or sets the properties of the certificate. */
   properties?: CertificateUpdateProperties;
 }
-export const UpdateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11036,14 +10960,14 @@ export interface UpdateCertificateResponse {
   /** Gets or sets the properties of the certificate. */
   properties?: CertificateProperties;
 }
-export const UpdateCertificateResponse =
+const UpdateCertificateResponse =
   CertificateCreateOrUpdateResponse as any as S.Schema<UpdateCertificateResponse>;
 
 /** Gets or sets the field definition values of the connection. */
 export type ConnectionUpdatePropertiesFieldDefinitionValuesMap = {
   [key: string]: string | undefined;
 };
-export const ConnectionUpdatePropertiesFieldDefinitionValuesMap =
+const ConnectionUpdatePropertiesFieldDefinitionValuesMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<ConnectionUpdatePropertiesFieldDefinitionValuesMap>;
 
 /** The properties of the update connection operation. */
@@ -11053,7 +10977,7 @@ export interface ConnectionUpdateProperties {
   /** Gets or sets the field definition values of the connection. */
   fieldDefinitionValues?: ConnectionUpdatePropertiesFieldDefinitionValuesMap;
 }
-export const ConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     fieldDefinitionValues: S.optional(ConnectionUpdatePropertiesFieldDefinitionValuesMap),
@@ -11076,7 +11000,7 @@ export interface UpdateConnectionRequest {
   /** Gets or sets the properties of the connection. */
   properties?: ConnectionUpdateProperties;
 }
-export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11106,8 +11030,7 @@ export interface UpdateConnectionResponse {
   /** Gets or sets the properties of the connection. */
   properties?: ConnectionProperties;
 }
-export const UpdateConnectionResponse =
-  GetConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
+const UpdateConnectionResponse = GetConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
 
 /** The properties of the Update credential */
 export interface CredentialUpdateProperties {
@@ -11118,7 +11041,7 @@ export interface CredentialUpdateProperties {
   /** Gets or sets the description of the credential. */
   description?: string;
 }
-export const CredentialUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CredentialUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -11142,7 +11065,7 @@ export interface UpdateCredentialRequest {
   /** Gets or sets the properties of the variable. */
   properties?: CredentialUpdateProperties;
 }
-export const UpdateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11172,12 +11095,11 @@ export interface UpdateCredentialResponse {
   /** Gets or sets the properties of the credential. */
   properties?: CredentialProperties;
 }
-export const UpdateCredentialResponse =
-  GetCredentialResponse as any as S.Schema<UpdateCredentialResponse>;
+const UpdateCredentialResponse = GetCredentialResponse as any as S.Schema<UpdateCredentialResponse>;
 
 /** Gets or sets the tags attached to the resource. */
 export type UpdateDscConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDscConfigurationRequestTagsMap =
+const UpdateDscConfigurationRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDscConfigurationRequestTagsMap>;
 
 export interface UpdateDscConfigurationRequest {
@@ -11196,7 +11118,7 @@ export interface UpdateDscConfigurationRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: UpdateDscConfigurationRequestTagsMap;
 }
-export const UpdateDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11219,9 +11141,6 @@ export const UpdateDscConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDscConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDscConfigurationResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDscConfigurationResponseTagsMap>;
-
 export interface UpdateDscConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11240,14 +11159,14 @@ export interface UpdateDscConfigurationResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const UpdateDscConfigurationResponse =
+const UpdateDscConfigurationResponse =
   DscConfigurationCreateOrUpdateResponse as any as S.Schema<UpdateDscConfigurationResponse>;
 
 export interface DscNodeUpdateParametersProperties {
   /** Gets or sets the configuration of the node. */
   nodeConfiguration?: DscNodeConfigurationAssociationProperty;
 }
-export const DscNodeUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const DscNodeUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeConfiguration: S.optional(DscNodeConfigurationAssociationProperty),
   }),
@@ -11266,7 +11185,7 @@ export interface UpdateDscNodeRequest {
   nodeId: string;
   properties?: DscNodeUpdateParametersProperties;
 }
-export const UpdateDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDscNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11295,7 +11214,7 @@ export interface UpdateDscNodeResponse {
   /** The properties of a DscNode. */
   properties?: DscNodeProperties;
 }
-export const UpdateDscNodeResponse = GetDscNodeResponse as any as S.Schema<UpdateDscNodeResponse>;
+const UpdateDscNodeResponse = GetDscNodeResponse as any as S.Schema<UpdateDscNodeResponse>;
 
 export interface UpdateHybridRunbookWorkerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11311,7 +11230,7 @@ export interface UpdateHybridRunbookWorkerGroupRequest {
   /** Gets or sets the name of the resource. */
   name?: string;
 }
-export const UpdateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11333,9 +11252,6 @@ export const UpdateHybridRunbookWorkerGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateHybridRunbookWorkerGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateHybridRunbookWorkerGroupResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateHybridRunbookWorkerGroupResponseTagsMap>;
-
 export interface UpdateHybridRunbookWorkerGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11352,7 +11268,7 @@ export interface UpdateHybridRunbookWorkerGroupResponse {
   /** Gets or sets the hybrid worker group properties. */
   properties?: HybridRunbookWorkerGroupProperties;
 }
-export const UpdateHybridRunbookWorkerGroupResponse =
+const UpdateHybridRunbookWorkerGroupResponse =
   CreateHybridRunbookWorkerGroupResponse as any as S.Schema<UpdateHybridRunbookWorkerGroupResponse>;
 
 /** The parameters supplied to the update properties. */
@@ -11360,7 +11276,7 @@ export interface ModuleUpdateProperties {
   /** Gets or sets the module content link. */
   contentLink?: ContentLink;
 }
-export const ModuleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ModuleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentLink: S.optional(ContentLink),
   }),
@@ -11368,7 +11284,7 @@ export const ModuleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags attached to the resource. */
 export type UpdateModuleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateModuleRequestTagsMap =
+const UpdateModuleRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateModuleRequestTagsMap>;
 
 export interface UpdateModuleRequest {
@@ -11385,7 +11301,7 @@ export interface UpdateModuleRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: UpdateModuleRequestTagsMap;
 }
-export const UpdateModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11405,9 +11321,6 @@ export const UpdateModuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateModuleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateModuleResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateModuleResponseTagsMap>;
-
 export interface UpdateModuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11426,21 +11339,17 @@ export interface UpdateModuleResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const UpdateModuleResponse = GetModuleResponse as any as S.Schema<UpdateModuleResponse>;
+const UpdateModuleResponse = GetModuleResponse as any as S.Schema<UpdateModuleResponse>;
 
 /** The parameters supplied to the update properties. */
 export interface PackageUpdateProperties {
   /** Gets or sets the package content link. */
   contentLink?: ContentLink;
 }
-export const PackageUpdateProperties =
-  ModuleUpdateProperties as any as S.Schema<PackageUpdateProperties>;
+const PackageUpdateProperties = ModuleUpdateProperties as any as S.Schema<PackageUpdateProperties>;
 
 /** Resource tags. */
 export type UpdatePackageRequestAllOfTagsMap = { [key: string]: string | undefined };
-export const UpdatePackageRequestAllOfTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePackageRequestAllOfTagsMap>;
-
 /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
 export interface UpdatePackageRequestAllOf {
   /** Resource tags. */
@@ -11448,7 +11357,7 @@ export interface UpdatePackageRequestAllOf {
   /** The geo-location where the resource lives */
   location: string;
 }
-export const UpdatePackageRequestAllOf =
+const UpdatePackageRequestAllOf =
   PackageCreateOrUpdateRequestAllOf as any as S.Schema<UpdatePackageRequestAllOf>;
 
 export interface UpdatePackageRequest {
@@ -11467,7 +11376,7 @@ export interface UpdatePackageRequest {
   /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
   allOf?: UpdatePackageRequestAllOf;
 }
-export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11488,9 +11397,6 @@ export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePackageResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePackageResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePackageResponseTagsMap>;
-
 export interface UpdatePackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11507,11 +11413,11 @@ export interface UpdatePackageResponse {
   /** Gets or sets the Package properties. */
   properties?: PackageProperties;
 }
-export const UpdatePackageResponse = GetPackageResponse as any as S.Schema<UpdatePackageResponse>;
+const UpdatePackageResponse = GetPackageResponse as any as S.Schema<UpdatePackageResponse>;
 
 /** Gets or sets the tags attached to the resource. */
 export type UpdatePython2PackageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePython2PackageRequestTagsMap =
+const UpdatePython2PackageRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePython2PackageRequestTagsMap>;
 
 export interface UpdatePython2PackageRequest {
@@ -11526,7 +11432,7 @@ export interface UpdatePython2PackageRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: UpdatePython2PackageRequestTagsMap;
 }
-export const UpdatePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11547,9 +11453,6 @@ export const UpdatePython2PackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePython2PackageResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePython2PackageResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePython2PackageResponseTagsMap>;
-
 export interface UpdatePython2PackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11568,12 +11471,12 @@ export interface UpdatePython2PackageResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const UpdatePython2PackageResponse =
+const UpdatePython2PackageResponse =
   GetPython2PackageResponse as any as S.Schema<UpdatePython2PackageResponse>;
 
 /** Gets or sets the tags attached to the resource. */
 export type UpdatePython3PackageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePython3PackageRequestTagsMap =
+const UpdatePython3PackageRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePython3PackageRequestTagsMap>;
 
 export interface UpdatePython3PackageRequest {
@@ -11588,7 +11491,7 @@ export interface UpdatePython3PackageRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: UpdatePython3PackageRequestTagsMap;
 }
-export const UpdatePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11609,9 +11512,6 @@ export const UpdatePython3PackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePython3PackageResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePython3PackageResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePython3PackageResponseTagsMap>;
-
 export interface UpdatePython3PackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11630,7 +11530,7 @@ export interface UpdatePython3PackageResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const UpdatePython3PackageResponse =
+const UpdatePython3PackageResponse =
   GetPython2PackageResponse as any as S.Schema<UpdatePython3PackageResponse>;
 
 /** The parameters supplied to the update runbook properties. */
@@ -11644,7 +11544,7 @@ export interface RunbookUpdateProperties {
   /** Gets or sets the activity-level tracing options of the runbook. */
   logActivityTrace?: number;
 }
-export const RunbookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const RunbookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     logVerbose: S.optional(S.Boolean),
@@ -11655,7 +11555,7 @@ export const RunbookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the tags attached to the resource. */
 export type UpdateRunbookRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateRunbookRequestTagsMap =
+const UpdateRunbookRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateRunbookRequestTagsMap>;
 
 export interface UpdateRunbookRequest {
@@ -11676,7 +11576,7 @@ export interface UpdateRunbookRequest {
   /** Gets or sets the tags attached to the resource. */
   tags?: UpdateRunbookRequestTagsMap;
 }
-export const UpdateRunbookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRunbookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11698,9 +11598,6 @@ export const UpdateRunbookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRunbookResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRunbookResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateRunbookResponseTagsMap>;
-
 export interface UpdateRunbookResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11719,13 +11616,13 @@ export interface UpdateRunbookResponse {
   /** Gets or sets the etag of the resource. */
   etag?: string;
 }
-export const UpdateRunbookResponse = GetRunbookResponse as any as S.Schema<UpdateRunbookResponse>;
+const UpdateRunbookResponse = GetRunbookResponse as any as S.Schema<UpdateRunbookResponse>;
 
 /** List of Default packages for Environment */
 export type RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap = {
   [key: string]: string | undefined;
 };
-export const RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap =
+const RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap>;
 
 /** Gets or sets Runtime update properties. */
@@ -11733,7 +11630,7 @@ export interface RuntimeEnvironmentUpdateProperties {
   /** List of Default packages for Environment */
   defaultPackages?: RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap;
 }
-export const RuntimeEnvironmentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const RuntimeEnvironmentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPackages: S.optional(RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap),
   }),
@@ -11753,7 +11650,7 @@ export interface UpdateRuntimeEnvironmentRequest {
   /** Gets or sets Runtime update properties. */
   properties?: RuntimeEnvironmentUpdateProperties;
 }
-export const UpdateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11774,9 +11671,6 @@ export const UpdateRuntimeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRuntimeEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRuntimeEnvironmentResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateRuntimeEnvironmentResponseTagsMap>;
-
 export interface UpdateRuntimeEnvironmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11793,7 +11687,7 @@ export interface UpdateRuntimeEnvironmentResponse {
   /** Gets or sets the Runtime Environment properties. */
   properties?: RuntimeEnvironmentProperties;
 }
-export const UpdateRuntimeEnvironmentResponse =
+const UpdateRuntimeEnvironmentResponse =
   CreateRuntimeEnvironmentResponse as any as S.Schema<UpdateRuntimeEnvironmentResponse>;
 
 /** The parameters supplied to the update schedule operation. */
@@ -11803,7 +11697,7 @@ export interface ScheduleUpdateProperties {
   /** Gets or sets a value indicating whether this schedule is enabled. */
   isEnabled?: boolean;
 }
-export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     isEnabled: S.optional(S.Boolean),
@@ -11824,7 +11718,7 @@ export interface UpdateScheduleRequest {
   /** Gets or sets the list of schedule properties. */
   properties?: ScheduleUpdateProperties;
 }
-export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11854,8 +11748,7 @@ export interface UpdateScheduleResponse {
   /** Gets or sets the properties of the schedule. */
   properties?: ScheduleProperties;
 }
-export const UpdateScheduleResponse =
-  GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
+const UpdateScheduleResponse = GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
 
 /** The properties of the update source control */
 export interface SourceControlUpdateProperties {
@@ -11872,7 +11765,7 @@ export interface SourceControlUpdateProperties {
   /** The user description of the source control. */
   description?: string;
 }
-export const SourceControlUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.optional(S.String),
     folderPath: S.optional(S.String),
@@ -11897,7 +11790,7 @@ export interface UpdateSourceControlRequest {
   /** The value of the source control. */
   properties?: SourceControlUpdateProperties;
 }
-export const UpdateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11928,7 +11821,7 @@ export interface UpdateSourceControlResponse {
   /** The properties of the source control. */
   properties?: SourceControlProperties;
 }
-export const UpdateSourceControlResponse =
+const UpdateSourceControlResponse =
   SourceControlCreateOrUpdateResponse as any as S.Schema<UpdateSourceControlResponse>;
 
 /** The properties of the update variable */
@@ -11938,7 +11831,7 @@ export interface VariableUpdateProperties {
   /** Gets or sets the description of the variable. */
   description?: string;
 }
-export const VariableUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const VariableUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     description: S.optional(S.String),
@@ -11959,7 +11852,7 @@ export interface UpdateVariableRequest {
   /** Gets or sets the value of the variable. */
   properties?: VariableUpdateProperties;
 }
-export const UpdateVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11989,15 +11882,14 @@ export interface UpdateVariableResponse {
   /** Gets or sets the properties of the variable. */
   properties?: VariableProperties;
 }
-export const UpdateVariableResponse =
-  GetVariableResponse as any as S.Schema<UpdateVariableResponse>;
+const UpdateVariableResponse = GetVariableResponse as any as S.Schema<UpdateVariableResponse>;
 
 /** The properties of the update watcher operation. */
 export interface WatcherUpdateProperties {
   /** Gets or sets the frequency at which the watcher is invoked. */
   executionFrequencyInSeconds?: number;
 }
-export const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionFrequencyInSeconds: S.optional(S.Number),
   }),
@@ -12017,7 +11909,7 @@ export interface UpdateWatcherRequest {
   /** Gets or sets the name of the resource. */
   name?: string;
 }
-export const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12037,9 +11929,6 @@ export const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWatcherResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWatcherResponseTagsMap =
-  AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWatcherResponseTagsMap>;
-
 export interface UpdateWatcherResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -12058,11 +11947,11 @@ export interface UpdateWatcherResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const UpdateWatcherResponse = GetWatcherResponse as any as S.Schema<UpdateWatcherResponse>;
+const UpdateWatcherResponse = GetWatcherResponse as any as S.Schema<UpdateWatcherResponse>;
 
 /** Gets or sets the parameters of the job. */
 export type WebhookUpdatePropertiesParametersMap = { [key: string]: string | undefined };
-export const WebhookUpdatePropertiesParametersMap =
+const WebhookUpdatePropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WebhookUpdatePropertiesParametersMap>;
 
 /** The properties of the update webhook. */
@@ -12076,7 +11965,7 @@ export interface WebhookUpdateProperties {
   /** Gets or sets the description of the webhook. */
   description?: string;
 }
-export const WebhookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const WebhookUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.optional(S.Boolean),
     runOn: S.optional(S.String),
@@ -12099,7 +11988,7 @@ export interface UpdateWebhookRequest {
   /** Gets or sets the value of the webhook. */
   properties?: WebhookUpdateProperties;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12129,7 +12018,7 @@ export interface UpdateWebhookResponse {
   /** Gets or sets the webhook properties. */
   properties?: WebhookProperties;
 }
-export const UpdateWebhookResponse = GetWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
+const UpdateWebhookResponse = GetWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 /** The properties of the create variable operation. */
 export interface VariableCreateOrUpdateProperties {
@@ -12140,7 +12029,7 @@ export interface VariableCreateOrUpdateProperties {
   /** Gets or sets the encrypted flag of the variable. */
   isEncrypted?: boolean;
 }
-export const VariableCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const VariableCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     description: S.optional(S.String),
@@ -12164,7 +12053,7 @@ export interface VariableCreateOrUpdateRequest {
   /** Gets or sets the properties of the variable. */
   properties: VariableCreateOrUpdateProperties;
 }
-export const VariableCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VariableCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12196,7 +12085,7 @@ export interface VariableCreateOrUpdateResponse {
   /** Gets or sets the properties of the variable. */
   properties?: VariableProperties;
 }
-export const VariableCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const VariableCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12210,7 +12099,7 @@ export const VariableCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the script. */
 export type WatcherPropertiesInputScriptParametersMap = { [key: string]: string | undefined };
-export const WatcherPropertiesInputScriptParametersMap =
+const WatcherPropertiesInputScriptParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WatcherPropertiesInputScriptParametersMap>;
 
 /** Definition of the watcher properties */
@@ -12226,7 +12115,7 @@ export interface WatcherPropertiesInput {
   /** Gets or sets the description. */
   description?: string;
 }
-export const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionFrequencyInSeconds: S.optional(S.Number),
     scriptName: S.optional(S.String),
@@ -12238,7 +12127,7 @@ export const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WatcherCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WatcherCreateOrUpdateRequestTagsMap =
+const WatcherCreateOrUpdateRequestTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WatcherCreateOrUpdateRequestTagsMap>;
 
 export interface WatcherCreateOrUpdateRequest {
@@ -12259,7 +12148,7 @@ export interface WatcherCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const WatcherCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WatcherCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12283,7 +12172,7 @@ export const WatcherCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WatcherCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WatcherCreateOrUpdateResponseTagsMap =
+const WatcherCreateOrUpdateResponseTagsMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WatcherCreateOrUpdateResponseTagsMap>;
 
 export interface WatcherCreateOrUpdateResponse {
@@ -12304,7 +12193,7 @@ export interface WatcherCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const WatcherCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WatcherCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12321,7 +12210,7 @@ export const WatcherCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the parameters of the job. */
 export type WebhookCreateOrUpdatePropertiesParametersMap = { [key: string]: string | undefined };
-export const WebhookCreateOrUpdatePropertiesParametersMap =
+const WebhookCreateOrUpdatePropertiesParametersMap =
   AutomationAccountCreateOrUpdateRequestTagsMap as any as S.Schema<WebhookCreateOrUpdatePropertiesParametersMap>;
 
 /** The properties of the create webhook operation. */
@@ -12339,7 +12228,7 @@ export interface WebhookCreateOrUpdateProperties {
   /** Gets or sets the name of the hybrid worker group the webhook job will run on. */
   runOn?: string;
 }
-export const WebhookCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const WebhookCreateOrUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.optional(S.Boolean),
     uri: S.optional(S.String),
@@ -12366,7 +12255,7 @@ export interface WebhookCreateOrUpdateRequest {
   /** Gets or sets the properties of the webhook. */
   properties: WebhookCreateOrUpdateProperties;
 }
-export const WebhookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12398,7 +12287,7 @@ export interface WebhookCreateOrUpdateResponse {
   /** Gets or sets the webhook properties. */
   properties?: WebhookProperties;
 }
-export const WebhookCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

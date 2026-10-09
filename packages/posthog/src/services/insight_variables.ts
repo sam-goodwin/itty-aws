@@ -37,7 +37,7 @@ export class NotFound
 
 /** * `String` - String * `Number` - Number * `Boolean` - Boolean * `List` - List * `Date` - Date */
 export type InsightVariableTypeEnum = "String" | "Number" | "Boolean" | "List" | "Date";
-export const InsightVariableTypeEnum = S.String;
+const InsightVariableTypeEnum = S.String;
 
 export interface CreateInsightVariableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -57,7 +57,7 @@ export interface CreateInsightVariableRequest {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
-export const CreateInsightVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInsightVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -98,7 +98,7 @@ export interface InsightVariable {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
-export const InsightVariable = /*@__PURE__*/ S.suspend(() =>
+const InsightVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -120,7 +120,7 @@ export interface GetInsightVariableRequest {
   /** A UUID string identifying this insight variable. */
   id: string;
 }
-export const GetInsightVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInsightVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -137,7 +137,7 @@ export interface InsightVariablesDestroyRequest {
   /** A UUID string identifying this insight variable. */
   id: string;
 }
-export const InsightVariablesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const InsightVariablesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -153,9 +153,9 @@ export const InsightVariablesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightVariablesDestroyRequest>;
 
 export interface InsightVariablesDestroyResponse {}
-export const InsightVariablesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "InsightVariablesDestroyResponse" },
-) as any as S.Schema<InsightVariablesDestroyResponse>;
+const InsightVariablesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "InsightVariablesDestroyResponse",
+}) as any as S.Schema<InsightVariablesDestroyResponse>;
 
 export interface ListInsightVariablesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -163,7 +163,7 @@ export interface ListInsightVariablesRequest {
   /** A page number within the paginated result set. */
   page?: number;
 }
-export const ListInsightVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInsightVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -175,7 +175,7 @@ export const ListInsightVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInsightVariablesRequest>;
 
 export type PaginatedInsightVariableListResultsList = Array<InsightVariable>;
-export const PaginatedInsightVariableListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedInsightVariableListResultsList = /*@__PURE__*/ S.Array(
   InsightVariable,
 ) as any as S.Schema<PaginatedInsightVariableListResultsList>;
 
@@ -185,7 +185,7 @@ export interface PaginatedInsightVariableList {
   previous?: string | null;
   results?: PaginatedInsightVariableListResultsList;
 }
-export const PaginatedInsightVariableList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedInsightVariableList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -216,7 +216,7 @@ export interface UpdateInsightVariableRequest {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
-export const UpdateInsightVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInsightVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -254,7 +254,7 @@ export interface UpdateInsightVariablesPartialRequest {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
-export const UpdateInsightVariablesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInsightVariablesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

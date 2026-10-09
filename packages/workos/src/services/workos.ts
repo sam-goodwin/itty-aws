@@ -59,7 +59,7 @@ export interface AcceptUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
 }
-export const AcceptUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/invitations/{id}/accept", code: 200 })),
@@ -73,7 +73,7 @@ export type AcceptUserlandUserInvitesControllerResponseState =
   | "accepted"
   | "expired"
   | "revoked";
-export const AcceptUserlandUserInvitesControllerResponseState = S.String;
+const AcceptUserlandUserInvitesControllerResponseState = S.String;
 
 export interface AcceptUserlandUserInvitesControllerResponse {
   /** Distinguishes the invitation object. */
@@ -107,7 +107,7 @@ export interface AcceptUserlandUserInvitesControllerResponse {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url: string;
 }
-export const AcceptUserlandUserInvitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptUserlandUserInvitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -135,7 +135,7 @@ export interface AddAuthorizationOrganizationRolePermissionsControllerPermission
   /** The slug of the role. */
   slug: string;
 }
-export const AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest =
+const AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
@@ -155,12 +155,12 @@ export const AddAuthorizationOrganizationRolePermissionsControllerPermissionRequ
 export type AddAuthorizationOrganizationRolePermissionsControllerPermissionResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponseType = S.String;
+const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList =
   Array<string>;
-export const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList =
+const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList>;
@@ -187,7 +187,7 @@ export interface AddAuthorizationOrganizationRolePermissionsControllerPermission
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse =
+const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.String,
@@ -210,11 +210,10 @@ export interface AddAuthorizationRolePermissionsControllerPermissionRequest {
   /** The slug of the environment role. */
   slug: string;
 }
-export const AddAuthorizationRolePermissionsControllerPermissionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-    }).pipe(T.Http({ method: "POST", uri: "/authorization/roles/{slug}/permissions", code: 200 })),
+const AddAuthorizationRolePermissionsControllerPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slug: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "POST", uri: "/authorization/roles/{slug}/permissions", code: 200 })),
 ).annotate({
   identifier: "AddAuthorizationRolePermissionsControllerPermissionRequest",
 }) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionRequest>;
@@ -223,12 +222,12 @@ export const AddAuthorizationRolePermissionsControllerPermissionRequest = /*@__P
 export type AddAuthorizationRolePermissionsControllerPermissionResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const AddAuthorizationRolePermissionsControllerPermissionResponseType = S.String;
+const AddAuthorizationRolePermissionsControllerPermissionResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
   Array<string>;
-export const AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
+const AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList>;
 
 export interface AddAuthorizationRolePermissionsControllerPermissionResponse {
@@ -253,20 +252,19 @@ export interface AddAuthorizationRolePermissionsControllerPermissionResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const AddAuthorizationRolePermissionsControllerPermissionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      slug: S.String,
-      object: S.String,
-      id: S.String,
-      name: S.String,
-      description: S.NullOr(S.String),
-      type: AddAuthorizationRolePermissionsControllerPermissionResponseType,
-      resource_type_slug: S.String,
-      permissions: AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList,
-      created_at: S.String,
-      updated_at: S.String,
-    }),
+const AddAuthorizationRolePermissionsControllerPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slug: S.String,
+    object: S.String,
+    id: S.String,
+    name: S.String,
+    description: S.NullOr(S.String),
+    type: AddAuthorizationRolePermissionsControllerPermissionResponseType,
+    resource_type_slug: S.String,
+    permissions: AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList,
+    created_at: S.String,
+    updated_at: S.String,
+  }),
 ).annotate({
   identifier: "AddAuthorizationRolePermissionsControllerPermissionResponse",
 }) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponse>;
@@ -279,7 +277,7 @@ export interface AddGroupMembershipsControllerMemberRequest {
   /** The ID of the Organization Membership to add to the group. */
   organization_membership_id?: string;
 }
-export const AddGroupMembershipsControllerMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const AddGroupMembershipsControllerMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     groupId: S.String.pipe(T.Label()),
@@ -311,7 +309,7 @@ export interface Group {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -330,15 +328,14 @@ export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser {
   /** The external ID of the user. */
   external_id: string;
 }
-export const AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-      external_id: S.String,
-    }),
-  ).annotate({
-    identifier: "AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser",
-  }) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>;
+const AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    external_id: S.String,
+  }),
+).annotate({
+  identifier: "AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser",
+}) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>;
 
 export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequest {
   /** The operation to perform on the claim attempt. Currently only `link_external_user` is supported. */
@@ -350,21 +347,20 @@ export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequest {
   /** The organization to place the agent in. Required when the user belongs to more than one organization. */
   organization_id?: string;
 }
-export const AgentAdminControllerLinkClaimAttemptToExternalUserRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.String,
-      claim_attempt_token: S.String,
-      user: AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser,
-      organization_id: S.optional(S.String),
-    }).pipe(T.Http({ method: "PATCH", uri: "/agents/claims/attempts", code: 200 })),
+const AgentAdminControllerLinkClaimAttemptToExternalUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    claim_attempt_token: S.String,
+    user: AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser,
+    organization_id: S.optional(S.String),
+  }).pipe(T.Http({ method: "PATCH", uri: "/agents/claims/attempts", code: 200 })),
 ).annotate({
   identifier: "AgentAdminControllerLinkClaimAttemptToExternalUserRequest",
 }) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequest>;
 
 /** Current status of the agent registration. */
 export type ClaimViewResponseStatus = "unverified" | "verified" | "expired" | "revoked";
-export const ClaimViewResponseStatus = S.String;
+const ClaimViewResponseStatus = S.String;
 
 export interface ClaimViewResponseOrganizationsItem {
   /** The organization ID. */
@@ -372,7 +368,7 @@ export interface ClaimViewResponseOrganizationsItem {
   /** The organization name. */
   name: string;
 }
-export const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
+const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -383,7 +379,7 @@ export const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizations the user belongs to, offered as placement choices. */
 export type ClaimViewResponseOrganizationsList = Array<ClaimViewResponseOrganizationsItem>;
-export const ClaimViewResponseOrganizationsList = /*@__PURE__*/ S.Array(
+const ClaimViewResponseOrganizationsList = /*@__PURE__*/ S.Array(
   ClaimViewResponseOrganizationsItem,
 ) as any as S.Schema<ClaimViewResponseOrganizationsList>;
 
@@ -397,7 +393,7 @@ export interface ClaimViewResponse {
   /** Organizations the user belongs to, offered as placement choices. */
   organizations: ClaimViewResponseOrganizationsList;
 }
-export const ClaimViewResponse = /*@__PURE__*/ S.suspend(() =>
+const ClaimViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: ClaimViewResponseStatus,
@@ -414,16 +410,6 @@ export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase0 {
   /** Optional caller-supplied context, echoed as an object with a `text` field in the `intent` claim of the minted access token. */
   intent?: string;
 }
-export const AgentBlueprintsTokenControllerMintTokenRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user_access_token: S.String,
-    intent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentBlueprintsTokenControllerMintTokenRequestBodyCase0",
-}) as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequestBodyCase0>;
-
 export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase1 {
   /** How the session is minted: `user_delegated`, `autonomous`, `agent_delegated`, or `refresh`. */
   type: string;
@@ -432,16 +418,6 @@ export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase1 {
   /** Optional caller-supplied context, echoed as an object with a `text` field in the `intent` claim of the minted access token. */
   intent?: string;
 }
-export const AgentBlueprintsTokenControllerMintTokenRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    organization_id: S.String,
-    intent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentBlueprintsTokenControllerMintTokenRequestBodyCase1",
-}) as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequestBodyCase1>;
-
 export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase2 {
   /** How the session is minted: `user_delegated`, `autonomous`, `agent_delegated`, or `refresh`. */
   type: string;
@@ -450,16 +426,6 @@ export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase2 {
   /** Optional caller-supplied context, echoed as an object with a `text` field in the `intent` claim of the minted access token. */
   intent?: string;
 }
-export const AgentBlueprintsTokenControllerMintTokenRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    agent_access_token: S.String,
-    intent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentBlueprintsTokenControllerMintTokenRequestBodyCase2",
-}) as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequestBodyCase2>;
-
 export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase3 {
   /** How the session is minted: `user_delegated`, `autonomous`, `agent_delegated`, or `refresh`. */
   type: string;
@@ -468,23 +434,13 @@ export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase3 {
   /** Optional caller-supplied context, echoed as an object with a `text` field in the `intent` claim of the minted access token. */
   intent?: string;
 }
-export const AgentBlueprintsTokenControllerMintTokenRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    refresh_token: S.String.pipe(T.SensitiveValue({})),
-    intent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentBlueprintsTokenControllerMintTokenRequestBodyCase3",
-}) as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequestBodyCase3>;
-
 /** How to mint the agent session, discriminated by `type`. `intent` is optional on every variant. */
 export type AgentBlueprintsTokenControllerMintTokenRequestBody =
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase0
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase1
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase2
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase3;
-export const AgentBlueprintsTokenControllerMintTokenRequestBody =
+const AgentBlueprintsTokenControllerMintTokenRequestBody =
   S.Unknown as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequestBody>;
 
 export interface AgentBlueprintsTokenControllerMintTokenRequest {
@@ -492,7 +448,7 @@ export interface AgentBlueprintsTokenControllerMintTokenRequest {
   agent_blueprint_id: string;
   body: AgentBlueprintsTokenControllerMintTokenRequestBody;
 }
-export const AgentBlueprintsTokenControllerMintTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const AgentBlueprintsTokenControllerMintTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_blueprint_id: S.String.pipe(T.Label()),
     body: AgentBlueprintsTokenControllerMintTokenRequestBody.pipe(T.HttpBody()),
@@ -505,7 +461,7 @@ export const AgentBlueprintsTokenControllerMintTokenRequest = /*@__PURE__*/ S.su
 
 /** The effective permission slugs carried by the token. */
 export type AgentTokenPermissionsList = Array<string>;
-export const AgentTokenPermissionsList = /*@__PURE__*/ S.Array(
+const AgentTokenPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentTokenPermissionsList>;
 
@@ -527,7 +483,7 @@ export interface AgentToken {
   /** The effective permission slugs carried by the token. */
   permissions: AgentTokenPermissionsList;
 }
-export const AgentToken = /*@__PURE__*/ S.suspend(() =>
+const AgentToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     token_type: S.String,
@@ -546,7 +502,7 @@ export interface ApiKeysControllerExpireRequest {
   /** When the API key should expire. If omitted or in the past, the key expires immediately. Use null to clear a scheduled future expiration. */
   expires_at?: string | null;
 }
-export const ApiKeysControllerExpireRequest = /*@__PURE__*/ S.suspend(() =>
+const ApiKeysControllerExpireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -561,7 +517,7 @@ export interface ApiKeyOwnerCase0 {
   /** Unique identifier of the API Key owner. */
   id: string;
 }
-export const ApiKeyOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     id: S.String,
@@ -576,7 +532,7 @@ export interface ApiKeyOwnerCase1 {
   /** Unique identifier of the organization the API Key can access. */
   organization_id: string;
 }
-export const ApiKeyOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     id: S.String,
@@ -586,12 +542,11 @@ export const ApiKeyOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
 
 /** The entity that owns the API Key. */
 export type ApiKeyOwner = ApiKeyOwnerCase0 | ApiKeyOwnerCase1;
-export const ApiKeyOwner = S.Unknown as any as S.Schema<ApiKeyOwner>;
+const ApiKeyOwner = S.Unknown as any as S.Schema<ApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
 export type ApiKeyPermissionsList = Array<string>;
-export const ApiKeyPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<ApiKeyPermissionsList>;
+const ApiKeyPermissionsList = AgentTokenPermissionsList as any as S.Schema<ApiKeyPermissionsList>;
 
 export interface ApiKey {
   /** Distinguishes the API Key object. */
@@ -615,7 +570,7 @@ export interface ApiKey {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const ApiKey = /*@__PURE__*/ S.suspend(() =>
+const ApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -634,7 +589,7 @@ export interface ApplicationsControllerFindRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-export const ApplicationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplicationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/connect/applications/{id}", code: 200 })),
@@ -644,7 +599,7 @@ export const ApplicationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type ApplicationsControllerFindResponseScopesList = Array<string>;
-export const ApplicationsControllerFindResponseScopesList =
+const ApplicationsControllerFindResponseScopesList =
   AgentTokenPermissionsList as any as S.Schema<ApplicationsControllerFindResponseScopesList>;
 
 export interface ApplicationsControllerFindResponseRedirectUrisItem {
@@ -653,7 +608,7 @@ export interface ApplicationsControllerFindResponseRedirectUrisItem {
   /** Whether this is the default redirect URI. */
   default: boolean;
 }
-export const ApplicationsControllerFindResponseRedirectUrisItem = /*@__PURE__*/ S.suspend(() =>
+const ApplicationsControllerFindResponseRedirectUrisItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.String,
     default: S.Boolean,
@@ -665,7 +620,7 @@ export const ApplicationsControllerFindResponseRedirectUrisItem = /*@__PURE__*/ 
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerFindResponseRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const ApplicationsControllerFindResponseRedirectUrisList = /*@__PURE__*/ S.Array(
+const ApplicationsControllerFindResponseRedirectUrisList = /*@__PURE__*/ S.Array(
   ApplicationsControllerFindResponseRedirectUrisItem,
 ) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisList>;
 
@@ -699,7 +654,7 @@ export interface ApplicationsControllerFindResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-export const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -724,7 +679,7 @@ export interface ApproveWaitlistEntriesControllerRequest {
   /** The unique ID of the waitlist entry. */
   id: string;
 }
-export const ApproveWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -736,13 +691,13 @@ export const ApproveWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend((
 
 /** The state of the waitlist entry. */
 export type ApproveWaitlistEntriesControllerResponseState = "pending" | "approved" | "denied";
-export const ApproveWaitlistEntriesControllerResponseState = S.String;
+const ApproveWaitlistEntriesControllerResponseState = S.String;
 
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-export const ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap = /*@__PURE__*/ S.Record(
+const ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap>;
@@ -767,7 +722,7 @@ export interface ApproveWaitlistEntriesControllerResponse {
   /** Distinguishes the Waitlist Entry object. */
   object: string;
 }
-export const ApproveWaitlistEntriesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveWaitlistEntriesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -795,7 +750,7 @@ export interface AssignAuthorizationRoleAssignmentsControllerRoleRequest {
   /** The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
   resource_type_slug?: string;
 }
-export const AssignAuthorizationRoleAssignmentsControllerRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignAuthorizationRoleAssignmentsControllerRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_membership_id: S.String.pipe(T.Label()),
     role_slug: S.String,
@@ -818,7 +773,7 @@ export interface SlimRole {
   /** The slug of the assigned role. */
   slug?: string;
 }
-export const SlimRole = /*@__PURE__*/ S.suspend(() =>
+const SlimRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
   }),
@@ -833,7 +788,7 @@ export interface UserRoleAssignmentResource {
   /** The slug of the resource type this resource belongs to. */
   resource_type_slug: string;
 }
-export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     external_id: S.String,
@@ -845,7 +800,7 @@ export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the role was assigned directly or derived from a group. */
 export type UserRoleAssignmentSourceType = "direct" | "group";
-export const UserRoleAssignmentSourceType = S.String;
+const UserRoleAssignmentSourceType = S.String;
 
 export interface UserRoleAssignmentSourceGroup {
   /** The unique ID of the Group the role was derived from. */
@@ -853,7 +808,7 @@ export interface UserRoleAssignmentSourceGroup {
   /** The name of the Group the role was derived from. */
   name: string;
 }
-export const UserRoleAssignmentSourceGroup =
+const UserRoleAssignmentSourceGroup =
   ClaimViewResponseOrganizationsItem as any as S.Schema<UserRoleAssignmentSourceGroup>;
 
 /** The origin of the role assignment. */
@@ -865,7 +820,7 @@ export interface UserRoleAssignmentSource {
   /** The group the role was derived from, or null if direct. */
   group: UserRoleAssignmentSourceGroup | null;
 }
-export const UserRoleAssignmentSource = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignmentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: UserRoleAssignmentSourceType,
     group_role_assignment_id: S.NullOr(S.String),
@@ -891,7 +846,7 @@ export interface UserRoleAssignment {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -906,27 +861,27 @@ export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions to filter against. */
 export type AuditLogExportsControllerExportsRequestActionsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActionsList =
+const AuditLogExportsControllerExportsRequestActionsList =
   AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActionsList>;
 
 /** Deprecated. Use `actor_names` instead. */
 export type AuditLogExportsControllerExportsRequestActorsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActorsList =
+const AuditLogExportsControllerExportsRequestActorsList =
   AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorsList>;
 
 /** List of actor names to filter against. */
 export type AuditLogExportsControllerExportsRequestActorNamesList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActorNamesList =
+const AuditLogExportsControllerExportsRequestActorNamesList =
   AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorNamesList>;
 
 /** List of actor IDs to filter against. */
 export type AuditLogExportsControllerExportsRequestActorIdsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActorIdsList =
+const AuditLogExportsControllerExportsRequestActorIdsList =
   AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorIdsList>;
 
 /** List of target types to filter against. */
 export type AuditLogExportsControllerExportsRequestTargetsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestTargetsList =
+const AuditLogExportsControllerExportsRequestTargetsList =
   AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestTargetsList>;
 
 export interface AuditLogExportsControllerExportsRequest {
@@ -947,7 +902,7 @@ export interface AuditLogExportsControllerExportsRequest {
   /** List of target types to filter against. */
   targets?: AuditLogExportsControllerExportsRequestTargetsList;
 }
-export const AuditLogExportsControllerExportsRequest = /*@__PURE__*/ S.suspend(() =>
+const AuditLogExportsControllerExportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.optional(S.String),
     range_start: S.optional(S.String),
@@ -964,7 +919,7 @@ export const AuditLogExportsControllerExportsRequest = /*@__PURE__*/ S.suspend((
 
 /** The state of the export. Possible values: pending, ready, error, expired. */
 export type AuditLogExportJsonState = "pending" | "ready" | "error" | "expired";
-export const AuditLogExportJsonState = S.String;
+const AuditLogExportJsonState = S.String;
 
 export interface AuditLogExportJson {
   /** Distinguishes the Audit Log Export object. */
@@ -980,7 +935,7 @@ export interface AuditLogExportJson {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuditLogExportJson = /*@__PURE__*/ S.suspend(() =>
+const AuditLogExportJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -995,7 +950,7 @@ export interface AuditLogsRetentionControllerAuditLogsRetentionRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-export const AuditLogsRetentionControllerAuditLogsRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const AuditLogsRetentionControllerAuditLogsRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{id}/audit_logs_retention", code: 200 })),
@@ -1007,14 +962,14 @@ export interface AuditLogsRetentionJson {
   /** The number of days Audit Log events will be retained before being permanently deleted. Valid values are 30 through 330 in 30-day increments and 365 through 3650 in 365-day increments. */
   retention_period_in_days?: number | null;
 }
-export const AuditLogsRetentionJson = /*@__PURE__*/ S.suspend(() =>
+const AuditLogsRetentionJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retention_period_in_days: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({ identifier: "AuditLogsRetentionJson" }) as any as S.Schema<AuditLogsRetentionJson>;
 
 export type PaginationOrder = "normal" | "desc" | "asc";
-export const PaginationOrder = S.String;
+const PaginationOrder = S.String;
 
 export interface AuditLogValidatorVersionsControllerSchemasRequest {
   /** The name of the Audit Log action. */
@@ -1028,7 +983,7 @@ export interface AuditLogValidatorVersionsControllerSchemasRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const AuditLogValidatorVersionsControllerSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const AuditLogValidatorVersionsControllerSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionName: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -1047,19 +1002,18 @@ export interface AuditLogValidatorVersionsControllerSchemasResponseListMetadata 
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   after: string | null;
 }
-export const AuditLogValidatorVersionsControllerSchemasResponseListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "AuditLogValidatorVersionsControllerSchemasResponseListMetadata",
-  }) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponseListMetadata>;
+const AuditLogValidatorVersionsControllerSchemasResponseListMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    before: S.NullOr(S.String),
+    after: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "AuditLogValidatorVersionsControllerSchemasResponseListMetadata",
+}) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponseListMetadata>;
 
 /** The JSON Schema definition for actor metadata. */
 export type AuditLogSchemaJsonActorMetadataMap = { [key: string]: unknown | undefined };
-export const AuditLogSchemaJsonActorMetadataMap = /*@__PURE__*/ S.Record(
+const AuditLogSchemaJsonActorMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<AuditLogSchemaJsonActorMetadataMap>;
@@ -1069,7 +1023,7 @@ export interface AuditLogSchemaJsonActor {
   /** The JSON Schema definition for actor metadata. */
   metadata: AuditLogSchemaJsonActorMetadataMap;
 }
-export const AuditLogSchemaJsonActor = /*@__PURE__*/ S.suspend(() =>
+const AuditLogSchemaJsonActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: AuditLogSchemaJsonActorMetadataMap,
   }),
@@ -1077,7 +1031,7 @@ export const AuditLogSchemaJsonActor = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional data associated with the event or entity. */
 export type AuditLogSchemaJsonTargetsItemMetadataMap = { [key: string]: unknown | undefined };
-export const AuditLogSchemaJsonTargetsItemMetadataMap =
+const AuditLogSchemaJsonTargetsItemMetadataMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<AuditLogSchemaJsonTargetsItemMetadataMap>;
 
 export interface AuditLogSchemaJsonTargetsItem {
@@ -1086,7 +1040,7 @@ export interface AuditLogSchemaJsonTargetsItem {
   /** Additional data associated with the event or entity. */
   metadata?: AuditLogSchemaJsonTargetsItemMetadataMap;
 }
-export const AuditLogSchemaJsonTargetsItem = /*@__PURE__*/ S.suspend(() =>
+const AuditLogSchemaJsonTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     metadata: S.optional(AuditLogSchemaJsonTargetsItemMetadataMap),
@@ -1097,13 +1051,13 @@ export const AuditLogSchemaJsonTargetsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of targets for the schema. */
 export type AuditLogSchemaJsonTargetsList = Array<AuditLogSchemaJsonTargetsItem>;
-export const AuditLogSchemaJsonTargetsList = /*@__PURE__*/ S.Array(
+const AuditLogSchemaJsonTargetsList = /*@__PURE__*/ S.Array(
   AuditLogSchemaJsonTargetsItem,
 ) as any as S.Schema<AuditLogSchemaJsonTargetsList>;
 
 /** Additional data associated with the event or entity. */
 export type AuditLogSchemaJsonMetadataMap = { [key: string]: unknown | undefined };
-export const AuditLogSchemaJsonMetadataMap =
+const AuditLogSchemaJsonMetadataMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<AuditLogSchemaJsonMetadataMap>;
 
 export interface AuditLogSchemaJson {
@@ -1120,7 +1074,7 @@ export interface AuditLogSchemaJson {
   /** The timestamp when the Audit Log Schema was created. */
   created_at?: string;
 }
-export const AuditLogSchemaJson = /*@__PURE__*/ S.suspend(() =>
+const AuditLogSchemaJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     version: S.optional(S.Number),
@@ -1133,7 +1087,7 @@ export const AuditLogSchemaJson = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type AuditLogValidatorVersionsControllerSchemasResponseDataList = Array<AuditLogSchemaJson>;
-export const AuditLogValidatorVersionsControllerSchemasResponseDataList = /*@__PURE__*/ S.Array(
+const AuditLogValidatorVersionsControllerSchemasResponseDataList = /*@__PURE__*/ S.Array(
   AuditLogSchemaJson,
 ) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponseDataList>;
 
@@ -1145,7 +1099,7 @@ export interface AuditLogValidatorVersionsControllerSchemasResponse {
   /** The list of records for the current page. */
   data?: AuditLogValidatorVersionsControllerSchemasResponseDataList;
 }
-export const AuditLogValidatorVersionsControllerSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+const AuditLogValidatorVersionsControllerSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -1161,7 +1115,7 @@ export interface AuthenticationFactorsControllerChallengeRequest {
   /** A custom template for the SMS message. Use the {{code}} placeholder to include the verification code. Must not contain URLs or domain names. */
   sms_template?: string;
 }
-export const AuthenticationFactorsControllerChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationFactorsControllerChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     sms_template: S.optional(S.String),
@@ -1186,7 +1140,7 @@ export interface AuthenticationChallenge {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuthenticationChallenge = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -1202,7 +1156,7 @@ export interface AuthorizationPermissionsControllerFindRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
   slug: string;
 }
-export const AuthorizationPermissionsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationPermissionsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/authorization/permissions/{slug}", code: 200 })),
@@ -1230,7 +1184,7 @@ export interface AuthorizationPermission {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuthorizationPermission = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -1248,7 +1202,7 @@ export interface AuthorizationResourcesControllerFindByIdRequest {
   /** The ID of the authorization resource. */
   resource_id: string;
 }
-export const AuthorizationResourcesControllerFindByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationResourcesControllerFindByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/authorization/resources/{resource_id}", code: 200 })),
@@ -1278,7 +1232,7 @@ export interface AuthorizationResource {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuthorizationResource = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     name: S.optional(S.String),
@@ -1294,13 +1248,13 @@ export const AuthorizationResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizationResource" }) as any as S.Schema<AuthorizationResource>;
 
 export type AuthorizeSsoControllerRequestProviderScopesList = Array<string>;
-export const AuthorizeSsoControllerRequestProviderScopesList =
+const AuthorizeSsoControllerRequestProviderScopesList =
   AgentTokenPermissionsList as any as S.Schema<AuthorizeSsoControllerRequestProviderScopesList>;
 
 export type AuthorizeSsoControllerRequestProviderQueryParamsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizeSsoControllerRequestProviderQueryParamsMap =
+const AuthorizeSsoControllerRequestProviderQueryParamsMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<AuthorizeSsoControllerRequestProviderQueryParamsMap>;
 
 export type AuthorizeSsoControllerRequestProvider =
@@ -1317,7 +1271,7 @@ export type AuthorizeSsoControllerRequestProvider =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "XeroOAuth";
-export const AuthorizeSsoControllerRequestProvider = S.String;
+const AuthorizeSsoControllerRequestProvider = S.String;
 
 export interface AuthorizeSsoControllerRequest {
   /** Additional scopes to request from the identity provider. Applicable when using OAuth or OpenID Connect connections. */
@@ -1349,7 +1303,7 @@ export interface AuthorizeSsoControllerRequest {
   /** If set to `login`, forces re-authentication at the identity provider. For supported SAML providers this sets `ForceAuthn="true"` in the SAML request; providers that don't support it are unaffected. */
   prompt?: string;
 }
-export const AuthorizeSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider_scopes: S.optional(AuthorizeSsoControllerRequestProviderScopesList.pipe(T.Query())),
     provider_query_params: S.optional(
@@ -1376,7 +1330,7 @@ export interface SsoAuthorizeUrlResponse {
   /** An OAuth 2.0 authorization URL. */
   url?: string;
 }
-export const SsoAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const SsoAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -1385,15 +1339,15 @@ export const SsoAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap =
+const AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap>;
 
 export type AuthorizeUserlandSsoControllerRequestProviderScopesList = Array<string>;
-export const AuthorizeUserlandSsoControllerRequestProviderScopesList =
+const AuthorizeUserlandSsoControllerRequestProviderScopesList =
   AgentTokenPermissionsList as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderScopesList>;
 
 export type AuthorizeUserlandSsoControllerRequestScreenHint = "sign-up" | "sign-in";
-export const AuthorizeUserlandSsoControllerRequestScreenHint = S.String;
+const AuthorizeUserlandSsoControllerRequestScreenHint = S.String;
 
 export type AuthorizeUserlandSsoControllerRequestProvider =
   | "authkit"
@@ -1410,7 +1364,7 @@ export type AuthorizeUserlandSsoControllerRequestProvider =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "XeroOAuth";
-export const AuthorizeUserlandSsoControllerRequestProvider = S.String;
+const AuthorizeUserlandSsoControllerRequestProvider = S.String;
 
 export interface AuthorizeUserlandSsoControllerRequest {
   /** The only valid PKCE code challenge method is `"S256"`. Required when specifying a `code_challenge`. */
@@ -1448,7 +1402,7 @@ export interface AuthorizeUserlandSsoControllerRequest {
   /** The unique identifier of the WorkOS environment client. */
   client_id: string;
 }
-export const AuthorizeUserlandSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeUserlandSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code_challenge_method: S.optional(S.String.pipe(T.Query())),
     code_challenge: S.optional(S.String.pipe(T.Query())),
@@ -1477,11 +1431,11 @@ export const AuthorizeUserlandSsoControllerRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AuthorizeUserlandSsoControllerRequest>;
 
 export interface AuthorizeUserlandSsoControllerResponse {}
-export const AuthorizeUserlandSsoControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AuthorizeUserlandSsoControllerResponse",
-}) as any as S.Schema<AuthorizeUserlandSsoControllerResponse>;
+const AuthorizeUserlandSsoControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "AuthorizeUserlandSsoControllerResponse",
+  },
+) as any as S.Schema<AuthorizeUserlandSsoControllerResponse>;
 
 export interface CheckAuthorizationControllerRequest {
   /** The ID of the organization membership to check. */
@@ -1495,7 +1449,7 @@ export interface CheckAuthorizationControllerRequest {
   /** The slug of the resource type. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
   resource_type_slug?: string;
 }
-export const CheckAuthorizationControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAuthorizationControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_membership_id: S.String.pipe(T.Label()),
     permission_slug: S.String,
@@ -1517,7 +1471,7 @@ export interface AuthorizationCheck {
   /** Whether the organization membership has the specified permission on the resource. */
   authorized?: boolean;
 }
-export const AuthorizationCheck = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorized: S.optional(S.Boolean),
   }),
@@ -1529,7 +1483,7 @@ export interface ClientApiTokenControllerIssueClientApiTokenRequest {
   /** The ID of the user to issue the Client API token for. */
   user_id: string;
 }
-export const ClientApiTokenControllerIssueClientApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ClientApiTokenControllerIssueClientApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String,
     user_id: S.String,
@@ -1542,7 +1496,7 @@ export interface ClientApiTokenResponse {
   /** The Client API token. */
   token: string;
 }
-export const ClientApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ClientApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }),
@@ -1550,7 +1504,7 @@ export const ClientApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of key-value pairs to attach to the user. */
 export type UserObjectMetadataMap = { [key: string]: string | undefined };
-export const UserObjectMetadataMap =
+const UserObjectMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserObjectMetadataMap>;
 
 export interface UserObject {
@@ -1567,7 +1521,7 @@ export interface UserObject {
   /** A set of key-value pairs to attach to the user. */
   metadata?: UserObjectMetadataMap;
 }
-export const UserObject = /*@__PURE__*/ S.suspend(() =>
+const UserObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     email: S.optional(S.String),
@@ -1584,7 +1538,7 @@ export interface UserConsentOptionChoicesItem {
   /** A human-readable label for this choice. */
   label?: string;
 }
-export const UserConsentOptionChoicesItem = /*@__PURE__*/ S.suspend(() =>
+const UserConsentOptionChoicesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     label: S.optional(S.String),
@@ -1595,7 +1549,7 @@ export const UserConsentOptionChoicesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The available choices for this consent option. */
 export type UserConsentOptionChoicesList = Array<UserConsentOptionChoicesItem>;
-export const UserConsentOptionChoicesList = /*@__PURE__*/ S.Array(
+const UserConsentOptionChoicesList = /*@__PURE__*/ S.Array(
   UserConsentOptionChoicesItem,
 ) as any as S.Schema<UserConsentOptionChoicesList>;
 
@@ -1609,7 +1563,7 @@ export interface UserConsentOption {
   /** The available choices for this consent option. */
   choices?: UserConsentOptionChoicesList;
 }
-export const UserConsentOption = /*@__PURE__*/ S.suspend(() =>
+const UserConsentOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claim: S.optional(S.String),
     type: S.optional(S.String),
@@ -1621,10 +1575,9 @@ export const UserConsentOption = /*@__PURE__*/ S.suspend(() =>
 /** Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session. */
 export type CompleteExternalAuthControllerLoginRequestUserConsentOptionsList =
   Array<UserConsentOption>;
-export const CompleteExternalAuthControllerLoginRequestUserConsentOptionsList =
-  /*@__PURE__*/ S.Array(
-    UserConsentOption,
-  ) as any as S.Schema<CompleteExternalAuthControllerLoginRequestUserConsentOptionsList>;
+const CompleteExternalAuthControllerLoginRequestUserConsentOptionsList = /*@__PURE__*/ S.Array(
+  UserConsentOption,
+) as any as S.Schema<CompleteExternalAuthControllerLoginRequestUserConsentOptionsList>;
 
 export interface CompleteExternalAuthControllerLoginRequest {
   /** Identifier provided when AuthKit redirected to your login page. */
@@ -1634,7 +1587,7 @@ export interface CompleteExternalAuthControllerLoginRequest {
   /** Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session. */
   user_consent_options?: CompleteExternalAuthControllerLoginRequestUserConsentOptionsList;
 }
-export const CompleteExternalAuthControllerLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteExternalAuthControllerLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_auth_id: S.optional(S.String),
     user: S.optional(UserObject),
@@ -1650,7 +1603,7 @@ export interface ExternalAuthCompleteResponse {
   /** URI to redirect the user back to AuthKit to complete the OAuth flow. */
   redirect_uri?: string;
 }
-export const ExternalAuthCompleteResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalAuthCompleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirect_uri: S.optional(S.String),
   }),
@@ -1664,7 +1617,7 @@ export interface ConfirmUserlandUsersControllerEmailChangeRequest {
   /** The one-time code used to confirm the email change. */
   code?: string;
 }
-export const ConfirmUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     code: S.optional(S.String),
@@ -1679,11 +1632,10 @@ export const ConfirmUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ S.
 export type ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap = {
   [key: string]: string | undefined;
 };
-export const ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap>;
+const ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap>;
 
 /** The user object. */
 export interface ConfirmUserlandUsersControllerEmailChangeResponseUser {
@@ -1716,7 +1668,7 @@ export interface ConfirmUserlandUsersControllerEmailChangeResponseUser {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ConfirmUserlandUsersControllerEmailChangeResponseUser = /*@__PURE__*/ S.suspend(() =>
+const ConfirmUserlandUsersControllerEmailChangeResponseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -1743,7 +1695,7 @@ export interface ConfirmUserlandUsersControllerEmailChangeResponse {
   /** The user object. */
   user: ConfirmUserlandUsersControllerEmailChangeResponseUser;
 }
-export const ConfirmUserlandUsersControllerEmailChangeResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmUserlandUsersControllerEmailChangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     user: ConfirmUserlandUsersControllerEmailChangeResponseUser,
@@ -1756,7 +1708,7 @@ export interface ConnectionsControllerFindRequest {
   /** Unique identifier for the Connection. */
   id: string;
 }
-export const ConnectionsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/connections/{id}", code: 200 })),
@@ -1816,7 +1768,7 @@ export type ConnectionConnectionType =
   | "VercelOAuth"
   | "VMwareSAML"
   | "XeroOAuth";
-export const ConnectionConnectionType = S.String;
+const ConnectionConnectionType = S.String;
 
 /** Indicates whether a Connection is able to authenticate users. */
 export type ConnectionState =
@@ -1826,11 +1778,11 @@ export type ConnectionState =
   | "validating"
   | "inactive"
   | "deleting";
-export const ConnectionState = S.String;
+const ConnectionState = S.String;
 
 /** Deprecated. Use `state` instead. */
 export type ConnectionStatus = "linked" | "unlinked";
-export const ConnectionStatus = S.String;
+const ConnectionStatus = S.String;
 
 export interface ConnectionDomainsItem {
   /** Unique identifier for the Connection Domain. */
@@ -1840,7 +1792,7 @@ export interface ConnectionDomainsItem {
   /** The domain value. */
   domain: string;
 }
-export const ConnectionDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const ConnectionDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: S.String,
@@ -1850,7 +1802,7 @@ export const ConnectionDomainsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Organization Domains. */
 export type ConnectionDomainsList = Array<ConnectionDomainsItem>;
-export const ConnectionDomainsList = /*@__PURE__*/ S.Array(
+const ConnectionDomainsList = /*@__PURE__*/ S.Array(
   ConnectionDomainsItem,
 ) as any as S.Schema<ConnectionDomainsList>;
 
@@ -1876,7 +1828,7 @@ export interface Connection {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -1893,17 +1845,17 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment. */
 export type CreateAgentBlueprintsControllerRequestPermissionsList = Array<string>;
-export const CreateAgentBlueprintsControllerRequestPermissionsList =
+const CreateAgentBlueprintsControllerRequestPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestPermissionsList>;
 
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
 export type CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = Array<string>;
-export const CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList =
+const CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList =
   AgentTokenPermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
 
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
 export type CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList = Array<string>;
-export const CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList =
+const CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
 
 /** Who may mint sessions from this blueprint. */
@@ -1913,7 +1865,7 @@ export interface CreateAgentBlueprintsControllerRequestInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
   organization_ids?: CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList;
 }
-export const CreateAgentBlueprintsControllerRequestInvocableBy = /*@__PURE__*/ S.suspend(() =>
+const CreateAgentBlueprintsControllerRequestInvocableBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_slugs: S.optional(CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList),
     organization_ids: S.optional(
@@ -1927,23 +1879,22 @@ export const CreateAgentBlueprintsControllerRequestInvocableBy = /*@__PURE__*/ S
 export type CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem =
   | "delegated"
   | "autonomous";
-export const CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem = S.String;
+const CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem = S.String;
 
 /** Instance types that may be minted from this blueprint: `delegated` (a user-delegated session, minted with a user access token) and/or `autonomous` (a session acting as the agent itself, minted with an agent registration credential). Agent-delegated chaining and refreshes are checked against the type of the presenting instance. Defaults to both. */
 export type CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList = Array<
   CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem | (string & {})
 >;
-export const CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList =
-  /*@__PURE__*/ S.Array(
-    CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem,
-  ) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList>;
+const CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList = /*@__PURE__*/ S.Array(
+  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem,
+) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList>;
 
 /** How sessions may be minted from this blueprint. */
 export interface CreateAgentBlueprintsControllerRequestInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` (a user-delegated session, minted with a user access token) and/or `autonomous` (a session acting as the agent itself, minted with an agent registration credential). Agent-delegated chaining and refreshes are checked against the type of the presenting instance. Defaults to both. */
   instance_types?: CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList;
 }
-export const CreateAgentBlueprintsControllerRequestInvocableAs = /*@__PURE__*/ S.suspend(() =>
+const CreateAgentBlueprintsControllerRequestInvocableAs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance_types: S.optional(CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList),
   }),
@@ -1960,7 +1911,7 @@ export interface CreateAgentBlueprintsControllerRequestSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. At most 5,184,000 (60 days). */
   refresh_token_ttl_seconds: number;
 }
-export const CreateAgentBlueprintsControllerRequestSessionSettings = /*@__PURE__*/ S.suspend(() =>
+const CreateAgentBlueprintsControllerRequestSessionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max_age_seconds: S.Number,
     access_token_ttl_seconds: S.Number,
@@ -1984,7 +1935,7 @@ export interface CreateAgentBlueprintsControllerRequest {
   /** Token and session lifetimes for sessions minted from this blueprint. */
   session_settings?: CreateAgentBlueprintsControllerRequestSessionSettings;
 }
-export const CreateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -1999,17 +1950,17 @@ export const CreateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. */
 export type AgentBlueprintPermissionsList = Array<string>;
-export const AgentBlueprintPermissionsList =
+const AgentBlueprintPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<AgentBlueprintPermissionsList>;
 
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. */
 export type AgentBlueprintInvocableByRoleSlugsList = Array<string>;
-export const AgentBlueprintInvocableByRoleSlugsList =
+const AgentBlueprintInvocableByRoleSlugsList =
   AgentTokenPermissionsList as any as S.Schema<AgentBlueprintInvocableByRoleSlugsList>;
 
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. */
 export type AgentBlueprintInvocableByOrganizationIdsList = Array<string>;
-export const AgentBlueprintInvocableByOrganizationIdsList =
+const AgentBlueprintInvocableByOrganizationIdsList =
   AgentTokenPermissionsList as any as S.Schema<AgentBlueprintInvocableByOrganizationIdsList>;
 
 /** Who may mint sessions from this blueprint. */
@@ -2019,7 +1970,7 @@ export interface AgentBlueprintInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. */
   organization_ids: AgentBlueprintInvocableByOrganizationIdsList;
 }
-export const AgentBlueprintInvocableBy = /*@__PURE__*/ S.suspend(() =>
+const AgentBlueprintInvocableBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_slugs: AgentBlueprintInvocableByRoleSlugsList,
     organization_ids: AgentBlueprintInvocableByOrganizationIdsList,
@@ -2029,12 +1980,12 @@ export const AgentBlueprintInvocableBy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentBlueprintInvocableBy>;
 
 export type AgentBlueprintInvocableAsInstanceTypesItem = "delegated" | "autonomous";
-export const AgentBlueprintInvocableAsInstanceTypesItem = S.String;
+const AgentBlueprintInvocableAsInstanceTypesItem = S.String;
 
 /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. */
 export type AgentBlueprintInvocableAsInstanceTypesList =
   Array<AgentBlueprintInvocableAsInstanceTypesItem>;
-export const AgentBlueprintInvocableAsInstanceTypesList = /*@__PURE__*/ S.Array(
+const AgentBlueprintInvocableAsInstanceTypesList = /*@__PURE__*/ S.Array(
   AgentBlueprintInvocableAsInstanceTypesItem,
 ) as any as S.Schema<AgentBlueprintInvocableAsInstanceTypesList>;
 
@@ -2043,7 +1994,7 @@ export interface AgentBlueprintInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. */
   instance_types: AgentBlueprintInvocableAsInstanceTypesList;
 }
-export const AgentBlueprintInvocableAs = /*@__PURE__*/ S.suspend(() =>
+const AgentBlueprintInvocableAs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance_types: AgentBlueprintInvocableAsInstanceTypesList,
   }),
@@ -2060,7 +2011,7 @@ export interface AgentBlueprintSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. */
   refresh_token_ttl_seconds: number;
 }
-export const AgentBlueprintSessionSettings =
+const AgentBlueprintSessionSettings =
   CreateAgentBlueprintsControllerRequestSessionSettings as any as S.Schema<AgentBlueprintSessionSettings>;
 
 export interface AgentBlueprint {
@@ -2085,7 +2036,7 @@ export interface AgentBlueprint {
   /** Timestamp when the agent blueprint was last updated. */
   updated_at: string;
 }
-export const AgentBlueprint = /*@__PURE__*/ S.suspend(() =>
+const AgentBlueprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2104,7 +2055,7 @@ export interface CreateApplicationCredentialsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-export const CreateApplicationCredentialsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationCredentialsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/connect/applications/{id}/client_secrets", code: 200 })),
@@ -2128,7 +2079,7 @@ export interface NewConnectApplicationSecret {
   /** The plaintext secret value. Only returned at creation time and cannot be retrieved later. */
   secret?: string | Redacted.Redacted<string>;
 }
-export const NewConnectApplicationSecret = /*@__PURE__*/ S.suspend(() =>
+const NewConnectApplicationSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -2144,16 +2095,13 @@ export const NewConnectApplicationSecret = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes granted to the application. */
 export type CreateOAuthApplicationDtoScopesList = Array<string>;
-export const CreateOAuthApplicationDtoScopesList =
-  AgentTokenPermissionsList as any as S.Schema<CreateOAuthApplicationDtoScopesList>;
-
 export interface RedirectUriDto {
   /** The redirect URI. */
   uri?: string;
   /** Whether this is the default redirect URI. */
   default?: boolean | null;
 }
-export const RedirectUriDto = /*@__PURE__*/ S.suspend(() =>
+const RedirectUriDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     default: S.optional(S.NullOr(S.Boolean)),
@@ -2162,7 +2110,7 @@ export const RedirectUriDto = /*@__PURE__*/ S.suspend(() =>
 
 /** Redirect URIs for the application. */
 export type CreateOAuthApplicationDtoRedirectUrisList = Array<RedirectUriDto>;
-export const CreateOAuthApplicationDtoRedirectUrisList = /*@__PURE__*/ S.Array(
+const CreateOAuthApplicationDtoRedirectUrisList = /*@__PURE__*/ S.Array(
   RedirectUriDto,
 ) as any as S.Schema<CreateOAuthApplicationDtoRedirectUrisList>;
 
@@ -2184,26 +2132,8 @@ export interface CreateOAuthApplicationDto {
   /** The organization ID this application belongs to. Required when is_first_party is false. */
   organization_id?: string | null;
 }
-export const CreateOAuthApplicationDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    application_type: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(S.NullOr(CreateOAuthApplicationDtoScopesList)),
-    redirect_uris: S.optional(S.NullOr(CreateOAuthApplicationDtoRedirectUrisList)),
-    uses_pkce: S.optional(S.NullOr(S.Boolean)),
-    is_first_party: S.optional(S.Boolean),
-    organization_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateOAuthApplicationDto",
-}) as any as S.Schema<CreateOAuthApplicationDto>;
-
 /** The OAuth scopes granted to the application. */
 export type CreateM2MApplicationDtoScopesList = Array<string>;
-export const CreateM2MApplicationDtoScopesList =
-  AgentTokenPermissionsList as any as S.Schema<CreateM2MApplicationDtoScopesList>;
-
 export interface CreateM2MApplicationDto {
   /** The name of the application. */
   name?: string;
@@ -2216,26 +2146,16 @@ export interface CreateM2MApplicationDto {
   /** The organization ID this application belongs to. */
   organization_id?: string;
 }
-export const CreateM2MApplicationDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    application_type: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(S.NullOr(CreateM2MApplicationDtoScopesList)),
-    organization_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateM2MApplicationDto" }) as any as S.Schema<CreateM2MApplicationDto>;
-
 export type CreateApplicationsControllerRequestBody =
   | CreateOAuthApplicationDto
   | CreateM2MApplicationDto;
-export const CreateApplicationsControllerRequestBody =
+const CreateApplicationsControllerRequestBody =
   S.Unknown as any as S.Schema<CreateApplicationsControllerRequestBody>;
 
 export interface CreateApplicationsControllerRequest {
   body: CreateApplicationsControllerRequestBody;
 }
-export const CreateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: CreateApplicationsControllerRequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/connect/applications", code: 200 })),
@@ -2245,20 +2165,11 @@ export const CreateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type CreateApplicationsControllerResponseScopesList = Array<string>;
-export const CreateApplicationsControllerResponseScopesList =
-  AgentTokenPermissionsList as any as S.Schema<CreateApplicationsControllerResponseScopesList>;
-
 export type CreateApplicationsControllerResponseRedirectUrisItem =
   ApplicationsControllerFindResponseRedirectUrisItem;
-export const CreateApplicationsControllerResponseRedirectUrisItem =
-  ApplicationsControllerFindResponseRedirectUrisItem;
-
 /** The redirect URIs configured for this application. */
 export type CreateApplicationsControllerResponseRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const CreateApplicationsControllerResponseRedirectUrisList =
-  ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<CreateApplicationsControllerResponseRedirectUrisList>;
-
 export interface CreateApplicationsControllerResponse {
   /** Distinguishes the connect application object. */
   object: string;
@@ -2289,7 +2200,7 @@ export interface CreateApplicationsControllerResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-export const CreateApplicationsControllerResponse =
+const CreateApplicationsControllerResponse =
   ApplicationsControllerFindResponse as any as S.Schema<CreateApplicationsControllerResponse>;
 
 export interface AuditLogEventActorDto {
@@ -2302,7 +2213,7 @@ export interface AuditLogEventActorDto {
   /** Additional data associated with the event or entity. */
   metadata?: unknown;
 }
-export const AuditLogEventActorDto = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEventActorDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -2321,12 +2232,11 @@ export interface AuditLogEventTargetDto {
   /** Additional data associated with the event or entity. */
   metadata?: unknown;
 }
-export const AuditLogEventTargetDto =
-  AuditLogEventActorDto as any as S.Schema<AuditLogEventTargetDto>;
+const AuditLogEventTargetDto = AuditLogEventActorDto as any as S.Schema<AuditLogEventTargetDto>;
 
 /** The resources affected by the action. */
 export type AuditLogEventDtoTargetsList = Array<AuditLogEventTargetDto>;
-export const AuditLogEventDtoTargetsList = /*@__PURE__*/ S.Array(
+const AuditLogEventDtoTargetsList = /*@__PURE__*/ S.Array(
   AuditLogEventTargetDto,
 ) as any as S.Schema<AuditLogEventDtoTargetsList>;
 
@@ -2336,7 +2246,7 @@ export interface AuditLogEventContextDto {
   /** User agent string. */
   user_agent?: string;
 }
-export const AuditLogEventContextDto = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEventContextDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     user_agent: S.optional(S.String),
@@ -2359,7 +2269,7 @@ export interface AuditLogEventDto {
   /** What schema version the event is associated with. */
   version?: number;
 }
-export const AuditLogEventDto = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEventDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     occurred_at: S.optional(S.String),
@@ -2377,7 +2287,7 @@ export interface CreateAuditLogEventsControllerRequest {
   /** The audit log event to create. */
   event?: AuditLogEventDto;
 }
-export const CreateAuditLogEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuditLogEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.optional(S.String),
     event: S.optional(AuditLogEventDto),
@@ -2390,7 +2300,7 @@ export interface AuditLogEventCreateResponse {
   /** Whether the Audit Log event was created successfully. */
   success?: boolean;
 }
-export const AuditLogEventCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEventCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
   }),
@@ -2402,7 +2312,7 @@ export interface AuditLogSchemaActorDto {
   /** JSON schema for actor metadata. */
   metadata?: unknown;
 }
-export const AuditLogSchemaActorDto = /*@__PURE__*/ S.suspend(() =>
+const AuditLogSchemaActorDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(S.Unknown),
   }),
@@ -2414,7 +2324,7 @@ export interface AuditLogSchemaTargetDto {
   /** Optional JSON schema for target metadata. */
   metadata?: unknown;
 }
-export const AuditLogSchemaTargetDto = /*@__PURE__*/ S.suspend(() =>
+const AuditLogSchemaTargetDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     metadata: S.optional(S.Unknown),
@@ -2424,7 +2334,7 @@ export const AuditLogSchemaTargetDto = /*@__PURE__*/ S.suspend(() =>
 /** The list of targets for the schema. */
 export type CreateAuditLogValidatorVersionsControllerRequestTargetsList =
   Array<AuditLogSchemaTargetDto>;
-export const CreateAuditLogValidatorVersionsControllerRequestTargetsList = /*@__PURE__*/ S.Array(
+const CreateAuditLogValidatorVersionsControllerRequestTargetsList = /*@__PURE__*/ S.Array(
   AuditLogSchemaTargetDto,
 ) as any as S.Schema<CreateAuditLogValidatorVersionsControllerRequestTargetsList>;
 
@@ -2438,7 +2348,7 @@ export interface CreateAuditLogValidatorVersionsControllerRequest {
   /** Optional JSON schema for event metadata. */
   metadata?: unknown;
 }
-export const CreateAuditLogValidatorVersionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuditLogValidatorVersionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionName: S.String.pipe(T.Label()),
     actor: S.optional(AuditLogSchemaActorDto),
@@ -2451,7 +2361,7 @@ export const CreateAuditLogValidatorVersionsControllerRequest = /*@__PURE__*/ S.
 
 /** The type of factor to enroll. */
 export type CreateAuthenticationFactorsControllerRequestType = "generic_otp" | "sms" | "totp";
-export const CreateAuthenticationFactorsControllerRequestType = S.String;
+const CreateAuthenticationFactorsControllerRequestType = S.String;
 
 export interface CreateAuthenticationFactorsControllerRequest {
   /** The type of factor to enroll. */
@@ -2465,7 +2375,7 @@ export interface CreateAuthenticationFactorsControllerRequest {
   /** The ID of the user to associate the factor with. */
   user_id?: string;
 }
-export const CreateAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateAuthenticationFactorsControllerRequestType,
     phone_number: S.optional(S.String),
@@ -2479,14 +2389,14 @@ export const CreateAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.susp
 
 /** The type of the factor to enroll. */
 export type AuthenticationFactorEnrolledType = "generic_otp" | "sms" | "totp" | "webauthn";
-export const AuthenticationFactorEnrolledType = S.String;
+const AuthenticationFactorEnrolledType = S.String;
 
 /** SMS-based authentication factor details. */
 export interface AuthenticationFactorEnrolledSms {
   /** The user's phone number for SMS-based authentication. */
   phone_number: string;
 }
-export const AuthenticationFactorEnrolledSms = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationFactorEnrolledSms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_number: S.String,
   }),
@@ -2507,7 +2417,7 @@ export interface AuthenticationFactorEnrolledTotp {
   /** The `otpauth` URI that is encoded by the provided `qr_code`. */
   uri: string;
 }
-export const AuthenticationFactorEnrolledTotp = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationFactorEnrolledTotp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     user: S.String,
@@ -2537,7 +2447,7 @@ export interface AuthenticationFactorEnrolled {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuthenticationFactorEnrolled = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationFactorEnrolled = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -2558,7 +2468,7 @@ export interface CreateAuthkitOauthResourcesControllerRequest {
   /** Whether the resource being created becomes the environment default, clearing any previous default. Applies at creation only -- this API has no update endpoint yet, so changing the default on an existing resource is done from the dashboard. A wildcard pattern cannot be the default. */
   default?: boolean;
 }
-export const CreateAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.String,
     default: S.optional(S.Boolean),
@@ -2581,7 +2491,7 @@ export interface AuthkitOauthResource {
   /** The timestamp when the MCP resource indicator was last updated. */
   updated_at: string;
 }
-export const AuthkitOauthResource = /*@__PURE__*/ S.suspend(() =>
+const AuthkitOauthResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2604,29 +2514,26 @@ export interface CreateAuthorizationGroupRoleAssignmentsControllerRequest {
   /** The resource type slug. */
   resource_type_slug?: string;
 }
-export const CreateAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      group_id: S.String.pipe(T.Label()),
-      role_slug: S.String,
-      resource_id: S.optional(S.String),
-      resource_external_id: S.optional(S.String),
-      resource_type_slug: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/authorization/groups/{group_id}/role_assignments",
-        code: 200,
-      }),
-    ),
+const CreateAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    group_id: S.String.pipe(T.Label()),
+    role_slug: S.String,
+    resource_id: S.optional(S.String),
+    resource_external_id: S.optional(S.String),
+    resource_type_slug: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/authorization/groups/{group_id}/role_assignments",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateAuthorizationGroupRoleAssignmentsControllerRequest",
 }) as any as S.Schema<CreateAuthorizationGroupRoleAssignmentsControllerRequest>;
 
 /** The resource the role is assigned on. */
 export type GroupRoleAssignmentResource = UserRoleAssignmentResource;
-export const GroupRoleAssignmentResource = UserRoleAssignmentResource;
-
 export interface GroupRoleAssignment {
   /** Distinguishes the group role assignment object. */
   object: string;
@@ -2643,7 +2550,7 @@ export interface GroupRoleAssignment {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const GroupRoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const GroupRoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2667,7 +2574,7 @@ export interface CreateAuthorizationOrganizationRolesControllerRequest {
   /** The slug of the resource type the role is scoped to. */
   resource_type_slug?: string;
 }
-export const CreateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     slug: S.optional(S.String),
@@ -2689,11 +2596,11 @@ export const CreateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__
 export type CreateAuthorizationOrganizationRolesControllerResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const CreateAuthorizationOrganizationRolesControllerResponseType = S.String;
+const CreateAuthorizationOrganizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type CreateAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
-export const CreateAuthorizationOrganizationRolesControllerResponsePermissionsList =
+const CreateAuthorizationOrganizationRolesControllerResponsePermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
 
 export interface CreateAuthorizationOrganizationRolesControllerResponse {
@@ -2718,7 +2625,7 @@ export interface CreateAuthorizationOrganizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CreateAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     object: S.String,
@@ -2745,7 +2652,7 @@ export interface CreateAuthorizationPermissionsControllerRequest {
   /** The slug of the resource type this permission is scoped to. */
   resource_type_slug?: string;
 }
-export const CreateAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -2776,7 +2683,7 @@ export interface CreateAuthorizationPermissionsControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CreateAuthorizationPermissionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationPermissionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -2810,7 +2717,7 @@ export interface CreateAuthorizationResourcesControllerRequest {
   /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_type_slug?: string;
 }
-export const CreateAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String,
     name: S.String,
@@ -2847,7 +2754,7 @@ export interface CreateAuthorizationResourcesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CreateAuthorizationResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     name: S.String,
@@ -2874,7 +2781,7 @@ export interface CreateAuthorizationRolesControllerRequest {
   /** The slug of the resource type the role is scoped to. */
   resource_type_slug?: string;
 }
-export const CreateAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -2887,11 +2794,11 @@ export const CreateAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type CreateAuthorizationRolesControllerResponseType = "EnvironmentRole" | "OrganizationRole";
-export const CreateAuthorizationRolesControllerResponseType = S.String;
+const CreateAuthorizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type CreateAuthorizationRolesControllerResponsePermissionsList = Array<string>;
-export const CreateAuthorizationRolesControllerResponsePermissionsList =
+const CreateAuthorizationRolesControllerResponsePermissionsList =
   AgentTokenPermissionsList as any as S.Schema<CreateAuthorizationRolesControllerResponsePermissionsList>;
 
 export interface CreateAuthorizationRolesControllerResponse {
@@ -2916,7 +2823,7 @@ export interface CreateAuthorizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CreateAuthorizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     object: S.String,
@@ -2947,7 +2854,7 @@ export interface CreateConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `name` is mapped from. `null` leaves the mapping unset. */
   name?: string | null;
 }
-export const CreateConnectionStandardAttributesDto = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionStandardAttributesDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idp_id: S.optional(S.String),
     email: S.optional(S.String),
@@ -2964,7 +2871,7 @@ export const CreateConnectionStandardAttributesDto = /*@__PURE__*/ S.suspend(() 
 export type CreateConnectionAttributeMapsDtoCustomAttributesMap = {
   [key: string]: string | undefined;
 };
-export const CreateConnectionAttributeMapsDtoCustomAttributesMap =
+const CreateConnectionAttributeMapsDtoCustomAttributesMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateConnectionAttributeMapsDtoCustomAttributesMap>;
 
 export interface CreateConnectionAttributeMapsDto {
@@ -2973,7 +2880,7 @@ export interface CreateConnectionAttributeMapsDto {
   /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. */
   custom_attributes?: CreateConnectionAttributeMapsDtoCustomAttributesMap;
 }
-export const CreateConnectionAttributeMapsDto = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionAttributeMapsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     standard_attributes: S.optional(CreateConnectionStandardAttributesDto),
     custom_attributes: S.optional(CreateConnectionAttributeMapsDtoCustomAttributesMap),
@@ -2984,7 +2891,7 @@ export const CreateConnectionAttributeMapsDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The X.509 certificates used to verify signed SAML responses from the Identity Provider. Required when configuring the connection with manual IdP fields. */
 export type CreateConnectionSamlOptionsDtoIdpSigningCertsList = Array<string>;
-export const CreateConnectionSamlOptionsDtoIdpSigningCertsList =
+const CreateConnectionSamlOptionsDtoIdpSigningCertsList =
   AgentTokenPermissionsList as any as S.Schema<CreateConnectionSamlOptionsDtoIdpSigningCertsList>;
 
 export interface CreateConnectionKeyPairDto {
@@ -2993,7 +2900,7 @@ export interface CreateConnectionKeyPairDto {
   /** The PEM-encoded X.509 certificate for the key. */
   cert: string;
 }
-export const CreateConnectionKeyPairDto = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionKeyPairDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     cert: S.String,
@@ -3005,7 +2912,7 @@ export const CreateConnectionKeyPairDto = /*@__PURE__*/ S.suspend(() =>
 /** The customer-owned key pairs used to decrypt encrypted SAML responses from the Identity Provider. When omitted, WorkOS generates and manages the encryption key pair. */
 export type CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList =
   Array<CreateConnectionKeyPairDto>;
-export const CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList = /*@__PURE__*/ S.Array(
+const CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList = /*@__PURE__*/ S.Array(
   CreateConnectionKeyPairDto,
 ) as any as S.Schema<CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList>;
 
@@ -3027,7 +2934,7 @@ export interface CreateConnectionSamlOptionsDto {
   /** The customer-owned key pairs used to decrypt encrypted SAML responses from the Identity Provider. When omitted, WorkOS generates and manages the encryption key pair. */
   sp_encryption_key_pairs?: CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList;
 }
-export const CreateConnectionSamlOptionsDto = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionSamlOptionsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idp_metadata_url: S.optional(S.String),
     acs_url: S.optional(S.String),
@@ -3047,7 +2954,7 @@ export type CreateConnectionOidcOptionsDtoTokenAuthenticationMethod =
   | "client_secret_post"
   | "client_secret_basic"
   | "private_key_jwt";
-export const CreateConnectionOidcOptionsDtoTokenAuthenticationMethod = S.String;
+const CreateConnectionOidcOptionsDtoTokenAuthenticationMethod = S.String;
 
 /** The ID-token signing algorithm. */
 export type CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
@@ -3064,7 +2971,7 @@ export type CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm = S.String;
+const CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm = S.String;
 
 export interface CreateConnectionOidcOptionsDto {
   /** The OIDC discovery endpoint. */
@@ -3090,7 +2997,7 @@ export interface CreateConnectionOidcOptionsDto {
   /** Whether to fetch additional profile attributes from the userinfo endpoint. */
   fetch_user_info?: boolean;
 }
-export const CreateConnectionOidcOptionsDto = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionOidcOptionsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discovery_endpoint: S.String,
     client_id: S.String,
@@ -3126,7 +3033,7 @@ export interface CreateConnectionsControllerRequest {
   /** Protocol configuration for OIDC connections. Mutually exclusive with `saml_options`. */
   oidc_options?: CreateConnectionOidcOptionsDto;
 }
-export const CreateConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String,
     name: S.optional(S.String),
@@ -3144,7 +3051,7 @@ export interface CreateCorsOriginsControllerCorsOriginRequest {
   /** The origin URL to allow for CORS requests. */
   origin?: string;
 }
-export const CreateCorsOriginsControllerCorsOriginRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCorsOriginsControllerCorsOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/cors_origins", code: 200 })),
@@ -3164,7 +3071,7 @@ export interface CorsOriginResponse {
   /** Timestamp when the CORS origin was last updated. */
   updated_at?: string;
 }
-export const CorsOriginResponse = /*@__PURE__*/ S.suspend(() =>
+const CorsOriginResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -3178,7 +3085,7 @@ export const CorsOriginResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateDataIntegrationsControllerApiKeyConnectionRequestConnectionOwner =
   | "user"
   | "organization";
-export const CreateDataIntegrationsControllerApiKeyConnectionRequestConnectionOwner = S.String;
+const CreateDataIntegrationsControllerApiKeyConnectionRequestConnectionOwner = S.String;
 
 export interface CreateDataIntegrationsControllerApiKeyConnectionRequest {
   /** The identifier of the integration. */
@@ -3200,7 +3107,7 @@ export interface CreateDataIntegrationsControllerApiKeyConnectionRequest {
   /** Must be `add`: this endpoint only creates another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent: string;
 }
-export const CreateDataIntegrationsControllerApiKeyConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataIntegrationsControllerApiKeyConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     account_display_name: S.optional(S.NullOr(S.String)),
@@ -3219,20 +3126,20 @@ export const CreateDataIntegrationsControllerApiKeyConnectionRequest = /*@__PURE
 
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type ConnectedAccountWriteResponseConnectionRole = "compatibility" | "standard";
-export const ConnectedAccountWriteResponseConnectionRole = S.String;
+const ConnectedAccountWriteResponseConnectionRole = S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type ConnectedAccountWriteResponseScopesList = Array<string>;
-export const ConnectedAccountWriteResponseScopesList =
+const ConnectedAccountWriteResponseScopesList =
   AgentTokenPermissionsList as any as S.Schema<ConnectedAccountWriteResponseScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type ConnectedAccountWriteResponseAuthMethod = "oauth" | "api_key" | "client_credentials";
-export const ConnectedAccountWriteResponseAuthMethod = S.String;
+const ConnectedAccountWriteResponseAuthMethod = S.String;
 
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountWriteResponseConfigMap = { [key: string]: string | undefined };
-export const ConnectedAccountWriteResponseConfigMap =
+const ConnectedAccountWriteResponseConfigMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ConnectedAccountWriteResponseConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
@@ -3240,14 +3147,14 @@ export type ConnectedAccountWriteResponseState =
   | "connected"
   | "needs_reauthorization"
   | "disconnected";
-export const ConnectedAccountWriteResponseState = S.String;
+const ConnectedAccountWriteResponseState = S.String;
 
 export interface ConnectedAccountWriteResponseWarningsItem {
   code: string;
   /** A human-readable explanation of the non-blocking warning. */
   message: string;
 }
-export const ConnectedAccountWriteResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
+const ConnectedAccountWriteResponseWarningsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -3259,7 +3166,7 @@ export const ConnectedAccountWriteResponseWarningsItem = /*@__PURE__*/ S.suspend
 /** Non-blocking warnings about an explicitly supplied label, omitted when no duplicate exists. Reads do not include this field. */
 export type ConnectedAccountWriteResponseWarningsList =
   Array<ConnectedAccountWriteResponseWarningsItem>;
-export const ConnectedAccountWriteResponseWarningsList = /*@__PURE__*/ S.Array(
+const ConnectedAccountWriteResponseWarningsList = /*@__PURE__*/ S.Array(
   ConnectedAccountWriteResponseWarningsItem,
 ) as any as S.Schema<ConnectedAccountWriteResponseWarningsList>;
 
@@ -3299,7 +3206,7 @@ export interface ConnectedAccountWriteResponse {
   /** Non-blocking warnings about an explicitly supplied label, omitted when no duplicate exists. Reads do not include this field. */
   warnings?: ConnectedAccountWriteResponseWarningsList;
 }
-export const ConnectedAccountWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectedAccountWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -3327,14 +3234,13 @@ export const ConnectedAccountWriteResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateDataIntegrationsControllerClientCredentialsConnectionRequestConnectionOwner =
   | "user"
   | "organization";
-export const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConnectionOwner =
-  S.String;
+const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConnectionOwner = S.String;
 
 /** Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors. */
 export type CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap = {
   [key: string]: string | undefined;
 };
-export const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap =
+const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap =
   ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap>;
 
 export interface CreateDataIntegrationsControllerClientCredentialsConnectionRequest {
@@ -3361,8 +3267,8 @@ export interface CreateDataIntegrationsControllerClientCredentialsConnectionRequ
   /** Must be `add`: this endpoint only creates another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent: string;
 }
-export const CreateDataIntegrationsControllerClientCredentialsConnectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateDataIntegrationsControllerClientCredentialsConnectionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
       account_display_name: S.optional(S.NullOr(S.String)),
@@ -3381,46 +3287,43 @@ export const CreateDataIntegrationsControllerClientCredentialsConnectionRequest 
     }).pipe(
       T.Http({ method: "POST", uri: "/data-integrations/{slug}/client-credentials", code: 200 }),
     ),
-  ).annotate({
-    identifier: "CreateDataIntegrationsControllerClientCredentialsConnectionRequest",
-  }) as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequest>;
+).annotate({
+  identifier: "CreateDataIntegrationsControllerClientCredentialsConnectionRequest",
+}) as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequest>;
 
 /** Who owns the Data Integration. `user` (the default) creates the integration users connect their own accounts to; `organization` creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of `credentials.type`. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestOwnership =
   | "user"
   | "organization";
-export const CreateDataIntegrationsManagementControllerDataIntegrationRequestOwnership = S.String;
+const CreateDataIntegrationsManagementControllerDataIntegrationRequestOwnership = S.String;
 
 /** The OAuth scopes to request for the Data Integration. Defaults to the provider's configured scopes when omitted. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   Array<string>;
-export const CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
+const CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
 
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem =
   | "oauth"
   | "api_key"
   | "client_credentials";
-export const CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem =
-  S.String;
-
 /** How accounts authenticate with the provider. Defaults to `["oauth"]`. Use `["api_key"]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). Use `["client_credentials"]` to declare a client-credentials integration; `credentials` is likewise not required and client credentials are supplied per-tenant. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList = Array<
   CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem | (string & {})
 >;
-export const CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList =
+const CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList =
   CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList>;
 
 /** Provider-specific config values (e.g. a Snowflake `account`), keyed by the config field. Only fields the built-in provider declares are accepted. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap = {
   [key: string]: string | undefined;
 };
-export const CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap =
+const CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap =
   ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
 export type DataIntegrationCredentialsDtoType = "custom" | "organization";
-export const DataIntegrationCredentialsDtoType = S.String;
+const DataIntegrationCredentialsDtoType = S.String;
 
 export interface DataIntegrationCredentialsDto {
   /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
@@ -3430,7 +3333,7 @@ export interface DataIntegrationCredentialsDto {
   /** OAuth client secret for the provider app. Required when `type` is `custom`; omit for `organization`. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-export const DataIntegrationCredentialsDto = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationCredentialsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DataIntegrationCredentialsDtoType,
     client_id: S.optional(S.String),
@@ -3448,7 +3351,7 @@ export interface ApiKeyInstallationDto {
   /** An Organization identifier to scope the installation to a specific organization. */
   organization_id?: string;
 }
-export const ApiKeyInstallationDto = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyInstallationDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.String.pipe(T.SensitiveValue({})),
     user_id: S.String,
@@ -3460,12 +3363,12 @@ export const ApiKeyInstallationDto = /*@__PURE__*/ S.suspend(() =>
 export type CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
-export const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
+const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
   ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
 
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type CustomProviderDefinitionDtoAuthenticateVia = "request_body" | "basic_auth_header";
-export const CustomProviderDefinitionDtoAuthenticateVia = S.String;
+const CustomProviderDefinitionDtoAuthenticateVia = S.String;
 
 export interface CustomProviderDefinitionDto {
   /** A descriptive name for the custom provider. */
@@ -3491,7 +3394,7 @@ export interface CustomProviderDefinitionDto {
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
   authenticate_via?: CustomProviderDefinitionDtoAuthenticateVia | (string & {});
 }
-export const CustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
+const CustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     authorization_url: S.optional(S.String),
@@ -3535,8 +3438,8 @@ export interface CreateDataIntegrationsManagementControllerDataIntegrationReques
   /** The OAuth definition for a custom provider. Supply this to define a custom provider; omit it to create an integration for a built-in provider. */
   custom_provider?: CustomProviderDefinitionDto;
 }
-export const CreateDataIntegrationsManagementControllerDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       provider: S.String,
       ownership: S.optional(
@@ -3555,33 +3458,31 @@ export const CreateDataIntegrationsManagementControllerDataIntegrationRequest =
       api_key: S.optional(ApiKeyInstallationDto),
       custom_provider: S.optional(CustomProviderDefinitionDto),
     }).pipe(T.Http({ method: "POST", uri: "/data-integrations", code: 200 })),
-  ).annotate({
-    identifier: "CreateDataIntegrationsManagementControllerDataIntegrationRequest",
-  }) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequest>;
+).annotate({
+  identifier: "CreateDataIntegrationsManagementControllerDataIntegrationRequest",
+}) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequest>;
 
 /** Who owns the Data Integration: `user` when users connect their own accounts, `organization` when organizations connect. Fixed at creation. */
 export type DataIntegrationOwnership = "user" | "organization";
-export const DataIntegrationOwnership = S.String;
+const DataIntegrationOwnership = S.String;
 
 /** The state of the Data Integration. */
 export type DataIntegrationState = "valid" | "invalid" | "requested";
-export const DataIntegrationState = S.String;
+const DataIntegrationState = S.String;
 
 export type DataIntegrationScopesList = Array<string>;
-export const DataIntegrationScopesList =
+const DataIntegrationScopesList =
   AgentTokenPermissionsList as any as S.Schema<DataIntegrationScopesList>;
 
 export type DataIntegrationAuthMethodsItem = "oauth" | "api_key" | "client_credentials";
-export const DataIntegrationAuthMethodsItem = S.String;
-
 /** How accounts authenticate with the provider for this Data Integration. */
 export type DataIntegrationAuthMethodsList = Array<DataIntegrationAuthMethodsItem>;
-export const DataIntegrationAuthMethodsList =
+const DataIntegrationAuthMethodsList =
   AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<DataIntegrationAuthMethodsList>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
 export type DataIntegrationCredentialsType = "custom" | "organization";
-export const DataIntegrationCredentialsType = S.String;
+const DataIntegrationCredentialsType = S.String;
 
 export interface DataIntegrationCredentials {
   /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
@@ -3591,7 +3492,7 @@ export interface DataIntegrationCredentials {
   /** The last four characters of the OAuth client secret. The full secret is never returned. Null for `organization` credentials. */
   redacted_client_secret: string | Redacted.Redacted<string> | null;
 }
-export const DataIntegrationCredentials = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DataIntegrationCredentialsType,
     client_id: S.NullOr(S.String),
@@ -3603,7 +3504,7 @@ export const DataIntegrationCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether this is the compatibility connection visible to undeclared clients or a standard connection for plural-aware clients. */
 export type DataIntegrationInstallationConnectionRole = "compatibility" | "standard";
-export const DataIntegrationInstallationConnectionRole = S.String;
+const DataIntegrationInstallationConnectionRole = S.String;
 
 export interface DataIntegrationInstallation {
   /** Unique identifier of the installation. */
@@ -3621,7 +3522,7 @@ export interface DataIntegrationInstallation {
   /** The last four characters of the stored API key. The full key is never returned. */
   api_key_last_4: string | null;
 }
-export const DataIntegrationInstallation = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationInstallation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     connection_role: DataIntegrationInstallationConnectionRole,
@@ -3637,19 +3538,19 @@ export const DataIntegrationInstallation = /*@__PURE__*/ S.suspend(() =>
 
 /** Provider-specific config values set on the Data Integration (e.g. a Snowflake `account`), keyed by config field. Only fields the provider declares are accepted. */
 export type DataIntegrationConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationConfigMap =
+const DataIntegrationConfigMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationConfigMap>;
 
 /** Additional static query parameters appended to the authorization request. */
 export type DataIntegrationCustomProviderAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
+const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
   ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationCustomProviderAdditionalAuthorizationParametersMap>;
 
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type DataIntegrationCustomProviderAuthenticateVia = "request_body" | "basic_auth_header";
-export const DataIntegrationCustomProviderAuthenticateVia = S.String;
+const DataIntegrationCustomProviderAuthenticateVia = S.String;
 
 export interface DataIntegrationCustomProvider {
   /** A descriptive name for the custom provider. */
@@ -3675,7 +3576,7 @@ export interface DataIntegrationCustomProvider {
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
   authenticate_via: DataIntegrationCustomProviderAuthenticateVia;
 }
-export const DataIntegrationCustomProvider = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationCustomProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     authorization_url: S.NullOr(S.String),
@@ -3730,7 +3631,7 @@ export interface DataIntegration {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const DataIntegration = /*@__PURE__*/ S.suspend(() =>
+const DataIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -3755,14 +3656,14 @@ export const DataIntegration = /*@__PURE__*/ S.suspend(() =>
 /** The OAuth scopes granted for this connection. */
 export type CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   Array<string>;
-export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
+const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
+const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
   S.String;
 
 export interface CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
@@ -3791,7 +3692,7 @@ export interface CreateDataIntegrationsOrganizationControllerOrganizationDataIns
   /** Set to `add` to create another connected account. Omit this field for permanent compatibility behavior. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent?: string;
 }
-export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
+const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -3823,15 +3724,14 @@ export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstall
 /** The OAuth scopes granted for this connection. */
 export type CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   Array<string>;
-export const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
+const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-export const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
-  S.String;
+const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState = S.String;
 
 export interface CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
@@ -3859,7 +3759,7 @@ export interface CreateDataIntegrationsUserManagementControllerUserDataInstallat
   /** Set to `add` to create another connected account. Omit this field for permanent compatibility behavior. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent?: string;
 }
-export const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest =
+const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       user_id: S.String.pipe(T.Label()),
@@ -3894,7 +3794,7 @@ export interface CreateFlagTargetsControllerTargetRequest {
   /** The resource ID in format "user_<id>" or "org_<id>". */
   resourceId: string;
 }
-export const CreateFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -3904,7 +3804,7 @@ export const CreateFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateFlagTargetsControllerTargetRequest>;
 
 export interface CreateFlagTargetsControllerTargetResponse {}
-export const CreateFlagTargetsControllerTargetResponse =
+const CreateFlagTargetsControllerTargetResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<CreateFlagTargetsControllerTargetResponse>;
 
 export interface CreateGroupsControllerRequest {
@@ -3915,7 +3815,7 @@ export interface CreateGroupsControllerRequest {
   /** An optional description of the Group. */
   description?: string | null;
 }
-export const CreateGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -3931,7 +3831,7 @@ export interface CreateItContactsControllerRequest {
   /** The email address of the IT contact. */
   email: string;
 }
-export const CreateItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     email: S.String,
@@ -3954,7 +3854,7 @@ export interface ItContact {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ItContact = /*@__PURE__*/ S.suspend(() =>
+const ItContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -3968,7 +3868,7 @@ export const ItContact = /*@__PURE__*/ S.suspend(() =>
 export type CreateJumpWireWebDataVaultControllerRequestKeyContextMap = {
   [key: string]: string | undefined;
 };
-export const CreateJumpWireWebDataVaultControllerRequestKeyContextMap =
+const CreateJumpWireWebDataVaultControllerRequestKeyContextMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateJumpWireWebDataVaultControllerRequestKeyContextMap>;
 
 export interface CreateJumpWireWebDataVaultControllerRequest {
@@ -3979,7 +3879,7 @@ export interface CreateJumpWireWebDataVaultControllerRequest {
   /** Plaintext data to encrypt and store. */
   value: string;
 }
-export const CreateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_context: CreateJumpWireWebDataVaultControllerRequestKeyContextMap,
     name: S.String,
@@ -3991,7 +3891,7 @@ export const CreateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspe
 
 /** Map of values used to determine the encryption key. */
 export type ObjectMetadataContextMap = { [key: string]: string | undefined };
-export const ObjectMetadataContextMap =
+const ObjectMetadataContextMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ObjectMetadataContextMap>;
 
 /** The user or API key that performed an action. */
@@ -4001,7 +3901,7 @@ export interface Actor {
   /** Display name of the actor. */
   name: string;
 }
-export const Actor = /*@__PURE__*/ S.suspend(() =>
+const Actor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4024,7 +3924,7 @@ export interface ObjectMetadata {
   /** Current version identifier of the object. */
   version_id?: string | null;
 }
-export const ObjectMetadata = /*@__PURE__*/ S.suspend(() =>
+const ObjectMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: ObjectMetadataContextMap,
     environment_id: S.String,
@@ -4038,7 +3938,7 @@ export const ObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission slugs to assign to the API key. */
 export type CreateOrganizationApiKeysControllerRequestPermissionsList = Array<string>;
-export const CreateOrganizationApiKeysControllerRequestPermissionsList =
+const CreateOrganizationApiKeysControllerRequestPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<CreateOrganizationApiKeysControllerRequestPermissionsList>;
 
 export interface CreateOrganizationApiKeysControllerRequest {
@@ -4051,7 +3951,7 @@ export interface CreateOrganizationApiKeysControllerRequest {
   /** The timestamp when the API key should expire. Must be a future timestamp. If omitted, the key does not expire. */
   expires_at?: string;
 }
-export const CreateOrganizationApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -4064,11 +3964,9 @@ export const CreateOrganizationApiKeysControllerRequest = /*@__PURE__*/ S.suspen
 
 /** The entity that owns the API Key. */
 export type OrganizationApiKeyWithValueOwner = ApiKeyOwnerCase0;
-export const OrganizationApiKeyWithValueOwner = ApiKeyOwnerCase0;
-
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyWithValuePermissionsList = Array<string>;
-export const OrganizationApiKeyWithValuePermissionsList =
+const OrganizationApiKeyWithValuePermissionsList =
   AgentTokenPermissionsList as any as S.Schema<OrganizationApiKeyWithValuePermissionsList>;
 
 export interface OrganizationApiKeyWithValue {
@@ -4095,7 +3993,7 @@ export interface OrganizationApiKeyWithValue {
   /** The full API Key value. Only returned once at creation time. */
   value: string;
 }
-export const OrganizationApiKeyWithValue = /*@__PURE__*/ S.suspend(() =>
+const OrganizationApiKeyWithValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4119,7 +4017,7 @@ export interface CreateOrganizationDomainsControllerRequest {
   /** The ID of the organization to add the domain to. */
   organization_id?: string;
 }
-export const CreateOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     organization_id: S.optional(S.String),
@@ -4135,11 +4033,11 @@ export type CreateOrganizationDomainsControllerResponseState =
   | "pending"
   | "unverified"
   | "verified";
-export const CreateOrganizationDomainsControllerResponseState = S.String;
+const CreateOrganizationDomainsControllerResponseState = S.String;
 
 /** Strategy used to verify the domain. */
 export type CreateOrganizationDomainsControllerResponseVerificationStrategy = "dns" | "manual";
-export const CreateOrganizationDomainsControllerResponseVerificationStrategy = S.String;
+const CreateOrganizationDomainsControllerResponseVerificationStrategy = S.String;
 
 export interface CreateOrganizationDomainsControllerResponse {
   /** Distinguishes the organization domain object. */
@@ -4163,7 +4061,7 @@ export interface CreateOrganizationDomainsControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CreateOrganizationDomainsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationDomainsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4184,12 +4082,12 @@ export const CreateOrganizationDomainsControllerResponse = /*@__PURE__*/ S.suspe
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type CreateOrganizationsControllerRequestDomainsList = Array<string>;
-export const CreateOrganizationsControllerRequestDomainsList =
+const CreateOrganizationsControllerRequestDomainsList =
   AgentTokenPermissionsList as any as S.Schema<CreateOrganizationsControllerRequestDomainsList>;
 
 /** The verification state of the domain. */
 export type OrganizationDomainDataDtoState = "pending" | "verified";
-export const OrganizationDomainDataDtoState = S.String;
+const OrganizationDomainDataDtoState = S.String;
 
 export interface OrganizationDomainDataDto {
   /** The domain value. */
@@ -4197,7 +4095,7 @@ export interface OrganizationDomainDataDto {
   /** The verification state of the domain. */
   state?: OrganizationDomainDataDtoState | (string & {});
 }
-export const OrganizationDomainDataDto = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDomainDataDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     state: S.optional(OrganizationDomainDataDtoState),
@@ -4208,13 +4106,13 @@ export const OrganizationDomainDataDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The domains associated with the organization, including verification state. */
 export type CreateOrganizationsControllerRequestDomainDataList = Array<OrganizationDomainDataDto>;
-export const CreateOrganizationsControllerRequestDomainDataList = /*@__PURE__*/ S.Array(
+const CreateOrganizationsControllerRequestDomainDataList = /*@__PURE__*/ S.Array(
   OrganizationDomainDataDto,
 ) as any as S.Schema<CreateOrganizationsControllerRequestDomainDataList>;
 
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type CreateOrganizationsControllerRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateOrganizationsControllerRequestMetadataMap =
+const CreateOrganizationsControllerRequestMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateOrganizationsControllerRequestMetadataMap>;
 
 export interface CreateOrganizationsControllerRequest {
@@ -4231,7 +4129,7 @@ export interface CreateOrganizationsControllerRequest {
   /** An external identifier for the Organization. */
   external_id?: string | null;
 }
-export const CreateOrganizationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     allow_profiles_outside_organization: S.optional(S.Boolean),
@@ -4251,11 +4149,11 @@ export type OrganizationDomainsItemState =
   | "pending"
   | "unverified"
   | "verified";
-export const OrganizationDomainsItemState = S.String;
+const OrganizationDomainsItemState = S.String;
 
 /** Strategy used to verify the domain. */
 export type OrganizationDomainsItemVerificationStrategy = "dns" | "manual";
-export const OrganizationDomainsItemVerificationStrategy = S.String;
+const OrganizationDomainsItemVerificationStrategy = S.String;
 
 export interface OrganizationDomainsItem {
   /** Distinguishes the organization domain object. */
@@ -4279,7 +4177,7 @@ export interface OrganizationDomainsItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const OrganizationDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4296,13 +4194,13 @@ export const OrganizationDomainsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Organization Domains. */
 export type OrganizationDomainsList = Array<OrganizationDomainsItem>;
-export const OrganizationDomainsList = /*@__PURE__*/ S.Array(
+const OrganizationDomainsList = /*@__PURE__*/ S.Array(
   OrganizationDomainsItem,
 ) as any as S.Schema<OrganizationDomainsList>;
 
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type OrganizationMetadataMap = { [key: string]: string | undefined };
-export const OrganizationMetadataMap =
+const OrganizationMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<OrganizationMetadataMap>;
 
 export interface Organization {
@@ -4327,7 +4225,7 @@ export interface Organization {
   /** Whether the Organization allows profiles outside of its managed domains. */
   allow_profiles_outside_organization?: boolean;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -4351,11 +4249,11 @@ export type CreatePortalSessionsControllerRequestIntent =
   | "domain_verification"
   | "certificate_renewal"
   | "bring_your_own_key";
-export const CreatePortalSessionsControllerRequestIntent = S.String;
+const CreatePortalSessionsControllerRequestIntent = S.String;
 
 /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
 export type CreatePortalSessionsControllerRequestItContactEmailsList = Array<string>;
-export const CreatePortalSessionsControllerRequestItContactEmailsList =
+const CreatePortalSessionsControllerRequestItContactEmailsList =
   AgentTokenPermissionsList as any as S.Schema<CreatePortalSessionsControllerRequestItContactEmailsList>;
 
 export interface CreatePortalSessionsControllerRequest {
@@ -4370,7 +4268,7 @@ export interface CreatePortalSessionsControllerRequest {
   /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
   it_contact_emails?: CreatePortalSessionsControllerRequestItContactEmailsList;
 }
-export const CreatePortalSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePortalSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     return_url: S.optional(S.String),
     success_url: S.optional(S.String),
@@ -4386,7 +4284,7 @@ export interface PortalLinkResponse {
   /** An ephemeral link to initiate the Admin Portal. */
   link?: string;
 }
-export const PortalLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const PortalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(S.String),
   }),
@@ -4396,7 +4294,7 @@ export interface CreateRedirectUrisControllerRequest {
   /** The redirect URI to create. */
   uri?: string;
 }
-export const CreateRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/redirect_uris", code: 200 })),
@@ -4418,7 +4316,7 @@ export interface RedirectUri {
   /** The timestamp when the redirect URI was last updated. */
   updated_at?: string;
 }
-export const RedirectUri = /*@__PURE__*/ S.suspend(() =>
+const RedirectUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -4435,7 +4333,7 @@ export interface CreateSamlIdpSigningCertificatesControllerRequest {
   /** The PEM-encoded X.509 certificate. */
   value: string;
 }
-export const CreateSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
     value: S.String,
@@ -4464,7 +4362,7 @@ export interface SamlIdpSigningCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-export const SamlIdpSigningCertificate = /*@__PURE__*/ S.suspend(() =>
+const SamlIdpSigningCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4481,7 +4379,7 @@ export interface CreateSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-export const CreateSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4509,14 +4407,14 @@ export interface SamlSpEncryptionCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-export const SamlSpEncryptionCertificate =
+const SamlSpEncryptionCertificate =
   SamlIdpSigningCertificate as any as S.Schema<SamlSpEncryptionCertificate>;
 
 export interface CreateSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-export const CreateSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4540,7 +4438,7 @@ export interface SamlSpSigningCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-export const SamlSpSigningCertificate = /*@__PURE__*/ S.suspend(() =>
+const SamlSpSigningCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4557,7 +4455,7 @@ export interface CreateTeamsControllerTeamRequest {
   /** Name of the team. */
   name: string;
 }
-export const CreateTeamsControllerTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamsControllerTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin_email: S.String,
     name: S.String,
@@ -4568,7 +4466,7 @@ export const CreateTeamsControllerTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the team can host production environments. `Active` means billing is set up. `Inactive` means a team admin must add a payment method in the WorkOS Dashboard. `Suspended` and `Deleting` mean the team can't be provisioned into. */
 export type TeamProductionState = "Active" | "Inactive" | "Suspended" | "Deleting";
-export const TeamProductionState = S.String;
+const TeamProductionState = S.String;
 
 export interface Team {
   /** Distinguishes the team object. */
@@ -4586,7 +4484,7 @@ export interface Team {
   /** The timestamp when the team was last updated. */
   updated_at: string;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4600,7 +4498,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission slugs to assign to the API key. Each permission must be enabled for user API keys. */
 export type CreateUserApiKeysControllerRequestPermissionsList = Array<string>;
-export const CreateUserApiKeysControllerRequestPermissionsList =
+const CreateUserApiKeysControllerRequestPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<CreateUserApiKeysControllerRequestPermissionsList>;
 
 export interface CreateUserApiKeysControllerRequest {
@@ -4615,7 +4513,7 @@ export interface CreateUserApiKeysControllerRequest {
   /** The timestamp when the API key should expire. Must be a future timestamp. If omitted, the key does not expire. */
   expires_at?: string;
 }
-export const CreateUserApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     name: S.String,
@@ -4629,11 +4527,9 @@ export const CreateUserApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The entity that owns the API Key. */
 export type UserApiKeyWithValueOwner = ApiKeyOwnerCase1;
-export const UserApiKeyWithValueOwner = ApiKeyOwnerCase1;
-
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyWithValuePermissionsList = Array<string>;
-export const UserApiKeyWithValuePermissionsList =
+const UserApiKeyWithValuePermissionsList =
   AgentTokenPermissionsList as any as S.Schema<UserApiKeyWithValuePermissionsList>;
 
 export interface UserApiKeyWithValue {
@@ -4660,7 +4556,7 @@ export interface UserApiKeyWithValue {
   /** The full API Key value. Only returned once at creation time. */
   value: string;
 }
-export const UserApiKeyWithValue = /*@__PURE__*/ S.suspend(() =>
+const UserApiKeyWithValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -4768,7 +4664,7 @@ export type CreateUserlandUserInvitesControllerRequestLocale =
   | "zh-HK"
   | "zh-TW"
   | "zu";
-export const CreateUserlandUserInvitesControllerRequestLocale = S.String;
+const CreateUserlandUserInvitesControllerRequestLocale = S.String;
 
 export interface CreateUserlandUserInvitesControllerRequest {
   /** The email address of the recipient. */
@@ -4784,7 +4680,7 @@ export interface CreateUserlandUserInvitesControllerRequest {
   /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
   locale?: CreateUserlandUserInvitesControllerRequestLocale | (string & {});
 }
-export const CreateUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     organization_id: S.optional(S.String),
@@ -4799,7 +4695,7 @@ export const CreateUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspen
 
 /** The state of the invitation. */
 export type UserlandUserInviteState = "pending" | "accepted" | "expired" | "revoked";
-export const UserlandUserInviteState = S.String;
+const UserlandUserInviteState = S.String;
 
 export interface UserlandUserInvite {
   /** Distinguishes the invitation object. */
@@ -4833,7 +4729,7 @@ export interface UserlandUserInvite {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url?: string;
 }
-export const UserlandUserInvite = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserInvite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -4855,7 +4751,7 @@ export const UserlandUserInvite = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList = Array<string>;
-export const CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList =
+const CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList>;
 
 export interface CreateUserlandUserOrganizationMembershipsControllerRequest {
@@ -4868,18 +4764,13 @@ export interface CreateUserlandUserOrganizationMembershipsControllerRequest {
   /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
   role_slugs?: CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList;
 }
-export const CreateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      user_id: S.String,
-      organization_id: S.String,
-      role_slug: S.optional(S.String),
-      role_slugs: S.optional(
-        CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList,
-      ),
-    }).pipe(
-      T.Http({ method: "POST", uri: "/user_management/organization_memberships", code: 200 }),
-    ),
+const CreateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    user_id: S.String,
+    organization_id: S.String,
+    role_slug: S.optional(S.String),
+    role_slugs: S.optional(CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList),
+  }).pipe(T.Http({ method: "POST", uri: "/user_management/organization_memberships", code: 200 })),
 ).annotate({
   identifier: "CreateUserlandUserOrganizationMembershipsControllerRequest",
 }) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequest>;
@@ -4889,13 +4780,13 @@ export type CreateUserlandUserOrganizationMembershipsControllerResponseStatus =
   | "active"
   | "inactive"
   | "pending";
-export const CreateUserlandUserOrganizationMembershipsControllerResponseStatus = S.String;
+const CreateUserlandUserOrganizationMembershipsControllerResponseStatus = S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
+const CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -4903,14 +4794,13 @@ export const CreateUserlandUserOrganizationMembershipsControllerResponseCustomAt
 
 /** The list of roles assigned to the user within the organization. */
 export type CreateUserlandUserOrganizationMembershipsControllerResponseRolesList = Array<SlimRole>;
-export const CreateUserlandUserOrganizationMembershipsControllerResponseRolesList =
-  /*@__PURE__*/ S.Array(
-    SlimRole,
-  ) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
+const CreateUserlandUserOrganizationMembershipsControllerResponseRolesList = /*@__PURE__*/ S.Array(
+  SlimRole,
+) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
 
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUserMetadataMap = { [key: string]: string | undefined };
-export const UserlandUserMetadataMap =
+const UserlandUserMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUserMetadataMap>;
 
 /** The user object. */
@@ -4944,7 +4834,7 @@ export interface UserlandUser {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const UserlandUser = /*@__PURE__*/ S.suspend(() =>
+const UserlandUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -4991,25 +4881,24 @@ export interface CreateUserlandUserOrganizationMembershipsControllerResponse {
   /** The user that belongs to the organization through this membership. */
   user: UserlandUser;
 }
-export const CreateUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      object: S.String,
-      id: S.String,
-      user_id: S.String,
-      organization_id: S.String,
-      status: CreateUserlandUserOrganizationMembershipsControllerResponseStatus,
-      directory_managed: S.Boolean,
-      organization_name: S.optional(S.String),
-      custom_attributes: S.optional(
-        CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap,
-      ),
-      created_at: S.String,
-      updated_at: S.String,
-      role: SlimRole,
-      roles: CreateUserlandUserOrganizationMembershipsControllerResponseRolesList,
-      user: UserlandUser,
-    }),
+const CreateUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    object: S.String,
+    id: S.String,
+    user_id: S.String,
+    organization_id: S.String,
+    status: CreateUserlandUserOrganizationMembershipsControllerResponseStatus,
+    directory_managed: S.Boolean,
+    organization_name: S.optional(S.String),
+    custom_attributes: S.optional(
+      CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap,
+    ),
+    created_at: S.String,
+    updated_at: S.String,
+    role: SlimRole,
+    roles: CreateUserlandUserOrganizationMembershipsControllerResponseRolesList,
+    user: UserlandUser,
+  }),
 ).annotate({
   identifier: "CreateUserlandUserOrganizationMembershipsControllerResponse",
 }) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponse>;
@@ -5018,7 +4907,7 @@ export const CreateUserlandUserOrganizationMembershipsControllerResponse = /*@__
 export type CreateWaitlistsControllerEntryRequestAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-export const CreateWaitlistsControllerEntryRequestAdditionalFieldsMap =
+const CreateWaitlistsControllerEntryRequestAdditionalFieldsMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateWaitlistsControllerEntryRequestAdditionalFieldsMap>;
 
 export interface CreateWaitlistsControllerEntryRequest {
@@ -5031,7 +4920,7 @@ export interface CreateWaitlistsControllerEntryRequest {
   /** Whether to send the waitlist confirmation email to the user. Defaults to `false`. No email is sent when the waitlist confirmation email is disabled in the environment, even if `send_confirmation_email` is `true`. */
   send_confirmation_email?: boolean;
 }
-export const CreateWaitlistsControllerEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWaitlistsControllerEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     email: S.String,
@@ -5044,11 +4933,11 @@ export const CreateWaitlistsControllerEntryRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The state of the waitlist entry. */
 export type WaitlistEntryState = "pending" | "approved" | "denied";
-export const WaitlistEntryState = S.String;
+const WaitlistEntryState = S.String;
 
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntryAdditionalFieldsMap = { [key: string]: string | undefined };
-export const WaitlistEntryAdditionalFieldsMap =
+const WaitlistEntryAdditionalFieldsMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<WaitlistEntryAdditionalFieldsMap>;
 
 export interface WaitlistEntry {
@@ -5071,7 +4960,7 @@ export interface WaitlistEntry {
   /** Distinguishes the Waitlist Entry object. */
   object: string;
 }
-export const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
+const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -5191,13 +5080,11 @@ export type CreateWebhookEndpointsControllerRequestEventsItem =
   | "waitlist_user.approved"
   | "waitlist_user.created"
   | "waitlist_user.denied";
-export const CreateWebhookEndpointsControllerRequestEventsItem = S.String;
-
 /** The events that the Webhook Endpoint is subscribed to. */
 export type CreateWebhookEndpointsControllerRequestEventsList = Array<
   CreateWebhookEndpointsControllerRequestEventsItem | (string & {})
 >;
-export const CreateWebhookEndpointsControllerRequestEventsList =
+const CreateWebhookEndpointsControllerRequestEventsList =
   AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<CreateWebhookEndpointsControllerRequestEventsList>;
 
 export interface CreateWebhookEndpointsControllerRequest {
@@ -5206,7 +5093,7 @@ export interface CreateWebhookEndpointsControllerRequest {
   /** The events that the Webhook Endpoint is subscribed to. */
   events?: CreateWebhookEndpointsControllerRequestEventsList;
 }
-export const CreateWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint_url: S.optional(S.String),
     events: S.optional(CreateWebhookEndpointsControllerRequestEventsList),
@@ -5217,11 +5104,11 @@ export const CreateWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend((
 
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type WebhookEndpointJsonStatus = "enabled" | "disabled";
-export const WebhookEndpointJsonStatus = S.String;
+const WebhookEndpointJsonStatus = S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
 export type WebhookEndpointJsonEventsList = Array<string>;
-export const WebhookEndpointJsonEventsList =
+const WebhookEndpointJsonEventsList =
   AgentTokenPermissionsList as any as S.Schema<WebhookEndpointJsonEventsList>;
 
 export interface WebhookEndpointJson {
@@ -5242,7 +5129,7 @@ export interface WebhookEndpointJson {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const WebhookEndpointJson = /*@__PURE__*/ S.suspend(() =>
+const WebhookEndpointJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -5259,16 +5146,10 @@ export const WebhookEndpointJson = /*@__PURE__*/ S.suspend(() =>
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConnectionOwner =
   | "user"
   | "organization";
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConnectionOwner =
-  S.String;
-
 /** Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration. */
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap>;
-
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -5285,38 +5166,14 @@ export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest
   /** Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration. */
   config?: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap;
 }
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account_display_name: S.optional(S.NullOr(S.String)),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      connection_owner: S.optional(
-        DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConnectionOwner,
-      ),
-      return_to: S.optional(S.String),
-      config: S.optional(
-        DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0",
-  }) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0>;
-
 /** Who will own the connected account. `user` (the default) connects the user's own account. `organization` connects the organization's shared account and requires `organization_id`. */
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConnectionOwner =
   | "user"
   | "organization";
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConnectionOwner =
-  S.String;
-
 /** Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration. */
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap>;
-
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -5335,39 +5192,14 @@ export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest
   /** Create another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration and otherwise returns 404 `multiple_connections_unavailable`. Omit `connection_intent` to use the compatibility connection, or send `reauthorize` with `connected_account_id` to reauthorize one exact connection. */
   connection_intent: string;
 }
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account_display_name: S.optional(S.NullOr(S.String)),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      connection_owner: S.optional(
-        DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConnectionOwner,
-      ),
-      return_to: S.optional(S.String),
-      config: S.optional(
-        DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap,
-      ),
-      connection_intent: S.String,
-    }),
-  ).annotate({
-    identifier: "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1",
-  }) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1>;
-
 /** Who will own the connected account. `user` (the default) connects the user's own account. `organization` connects the organization's shared account and requires `organization_id`. */
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConnectionOwner =
   | "user"
   | "organization";
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConnectionOwner =
-  S.String;
-
 /** Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration. */
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap>;
-
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -5388,31 +5220,11 @@ export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest
   /** The exact connected account to reauthorize. Required with `connection_intent: reauthorize`. */
   connected_account_id: string;
 }
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account_display_name: S.optional(S.NullOr(S.String)),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      connection_owner: S.optional(
-        DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConnectionOwner,
-      ),
-      return_to: S.optional(S.String),
-      config: S.optional(
-        DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap,
-      ),
-      connection_intent: S.String,
-      connected_account_id: S.String,
-    }),
-  ).annotate({
-    identifier: "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2",
-  }) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2>;
-
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody =
   | DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0
   | DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1
   | DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2;
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody =
+const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody =
   S.Unknown as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody>;
 
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest {
@@ -5420,21 +5232,21 @@ export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest
   slug: string;
   body: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody;
 }
-export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
       body: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody.pipe(T.HttpBody()),
     }).pipe(T.Http({ method: "POST", uri: "/data-integrations/{slug}/authorize", code: 200 })),
-  ).annotate({
-    identifier: "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest",
-  }) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest>;
+).annotate({
+  identifier: "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest",
+}) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest>;
 
 export interface DataIntegrationAuthorizeUrlResponse {
   /** The OAuth authorization URL to redirect the user to. */
   url?: string;
 }
-export const DataIntegrationAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -5446,7 +5258,7 @@ export const DataIntegrationAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type DataIntegrationsControllerVendCredentialsRequestConnectionOwner =
   | "user"
   | "organization";
-export const DataIntegrationsControllerVendCredentialsRequestConnectionOwner = S.String;
+const DataIntegrationsControllerVendCredentialsRequestConnectionOwner = S.String;
 
 export interface DataIntegrationsControllerVendCredentialsRequest {
   /** The identifier of the integration. */
@@ -5464,7 +5276,7 @@ export interface DataIntegrationsControllerVendCredentialsRequest {
   /** Set to `true` to use the plural connection contract. If no `connected_account_id` is supplied and several connections match, the request returns `account_selection_required`. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-export const DataIntegrationsControllerVendCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationsControllerVendCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     user_id: S.String,
@@ -5479,19 +5291,10 @@ export const DataIntegrationsControllerVendCredentialsRequest = /*@__PURE__*/ S.
 
 /** The scopes granted to the access token. Present for `oauth` and `client_credentials` credentials; absent for `api_key`. */
 export type DataIntegrationVendedCredentialCase0ScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase0ScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase0ScopesList>;
-
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. Present for `oauth` and `client_credentials` credentials; absent for `api_key`. */
 export type DataIntegrationVendedCredentialCase0MissingScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase0MissingScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase0MissingScopesList>;
-
 /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
 export type DataIntegrationVendedCredentialCase0ConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationVendedCredentialCase0ConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationVendedCredentialCase0ConfigMap>;
-
 export interface DataIntegrationVendedCredentialCase0 {
   /** Distinguishes the credential object. */
   object: string;
@@ -5508,25 +5311,8 @@ export interface DataIntegrationVendedCredentialCase0 {
   /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
   config: DataIntegrationVendedCredentialCase0ConfigMap;
 }
-export const DataIntegrationVendedCredentialCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    auth_method: S.String,
-    value: S.String,
-    expires_at: S.NullOr(S.String),
-    scopes: DataIntegrationVendedCredentialCase0ScopesList,
-    missing_scopes: DataIntegrationVendedCredentialCase0MissingScopesList,
-    config: DataIntegrationVendedCredentialCase0ConfigMap,
-  }),
-).annotate({
-  identifier: "DataIntegrationVendedCredentialCase0",
-}) as any as S.Schema<DataIntegrationVendedCredentialCase0>;
-
 /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
 export type DataIntegrationVendedCredentialCase1ConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationVendedCredentialCase1ConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationVendedCredentialCase1ConfigMap>;
-
 export interface DataIntegrationVendedCredentialCase1 {
   /** Distinguishes the credential object. */
   object: string;
@@ -5537,39 +5323,16 @@ export interface DataIntegrationVendedCredentialCase1 {
   /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
   config: DataIntegrationVendedCredentialCase1ConfigMap;
 }
-export const DataIntegrationVendedCredentialCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    auth_method: S.String,
-    value: S.String,
-    config: DataIntegrationVendedCredentialCase1ConfigMap,
-  }),
-).annotate({
-  identifier: "DataIntegrationVendedCredentialCase1",
-}) as any as S.Schema<DataIntegrationVendedCredentialCase1>;
-
 /** The scopes granted to the access token. */
 export type DataIntegrationVendedCredentialCase2ScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase2ScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase2ScopesList>;
-
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. The scopes granted to a client-credentials token are governed by the connected organization's client application, so the integration's configured scopes are requests or defaults rather than guarantees. */
 export type DataIntegrationVendedCredentialCase2MissingScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase2MissingScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase2MissingScopesList>;
-
 /** Non-sensitive fields captured from the provider token response (e.g. Salesforce `instance_url`), as configured for the provider. Only present for `client_credentials` credentials. */
 export type DataIntegrationVendedCredentialCase2MetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const DataIntegrationVendedCredentialCase2MetadataMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DataIntegrationVendedCredentialCase2MetadataMap>;
-
 /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
 export type DataIntegrationVendedCredentialCase2ConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationVendedCredentialCase2ConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationVendedCredentialCase2ConfigMap>;
-
 export interface DataIntegrationVendedCredentialCase2 {
   /** Distinguishes the credential object. */
   object: string;
@@ -5588,72 +5351,34 @@ export interface DataIntegrationVendedCredentialCase2 {
   /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
   config: DataIntegrationVendedCredentialCase2ConfigMap;
 }
-export const DataIntegrationVendedCredentialCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    auth_method: S.String,
-    value: S.String,
-    expires_at: S.NullOr(S.String),
-    scopes: DataIntegrationVendedCredentialCase2ScopesList,
-    missing_scopes: DataIntegrationVendedCredentialCase2MissingScopesList,
-    metadata: DataIntegrationVendedCredentialCase2MetadataMap,
-    config: DataIntegrationVendedCredentialCase2ConfigMap,
-  }),
-).annotate({
-  identifier: "DataIntegrationVendedCredentialCase2",
-}) as any as S.Schema<DataIntegrationVendedCredentialCase2>;
-
 export type DataIntegrationVendedCredential =
   | DataIntegrationVendedCredentialCase0
   | DataIntegrationVendedCredentialCase1
   | DataIntegrationVendedCredentialCase2;
-export const DataIntegrationVendedCredential =
-  S.Unknown as any as S.Schema<DataIntegrationVendedCredential>;
-
 export interface DataIntegrationCredentialsResponseCase0 {
   /** Indicates credentials are available. */
   active: boolean;
   /** The credential object containing the vended secret. */
   credential: DataIntegrationVendedCredential;
 }
-export const DataIntegrationCredentialsResponseCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    credential: DataIntegrationVendedCredential,
-  }),
-).annotate({
-  identifier: "DataIntegrationCredentialsResponseCase0",
-}) as any as S.Schema<DataIntegrationCredentialsResponseCase0>;
-
 /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationCredentialsResponseCase1Error =
   | "not_installed"
   | "needs_reauthorization";
-export const DataIntegrationCredentialsResponseCase1Error = S.String;
-
 export interface DataIntegrationCredentialsResponseCase1 {
   /** Indicates credentials are not available. */
   active: boolean;
   /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
   error: DataIntegrationCredentialsResponseCase1Error;
 }
-export const DataIntegrationCredentialsResponseCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    error: DataIntegrationCredentialsResponseCase1Error,
-  }),
-).annotate({
-  identifier: "DataIntegrationCredentialsResponseCase1",
-}) as any as S.Schema<DataIntegrationCredentialsResponseCase1>;
-
 export type DataIntegrationCredentialsResponse =
   | DataIntegrationCredentialsResponseCase0
   | DataIntegrationCredentialsResponseCase1;
-export const DataIntegrationCredentialsResponse =
+const DataIntegrationCredentialsResponse =
   S.Unknown as any as S.Schema<DataIntegrationCredentialsResponse>;
 
 export type DataIntegrationsControllerVendCredentialsResponse = DataIntegrationCredentialsResponse;
-export const DataIntegrationsControllerVendCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationsControllerVendCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   DataIntegrationCredentialsResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DataIntegrationsControllerVendCredentialsResponse",
@@ -5663,39 +5388,38 @@ export interface DeactivateUserlandUserOrganizationMembershipsControllerRequest 
   /** The unique ID of the organization membership. */
   id: string;
 }
-export const DeactivateUserlandUserOrganizationMembershipsControllerRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/user_management/organization_memberships/{id}/deactivate",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeactivateUserlandUserOrganizationMembershipsControllerRequest",
-  }) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerRequest>;
+const DeactivateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/user_management/organization_memberships/{id}/deactivate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeactivateUserlandUserOrganizationMembershipsControllerRequest",
+}) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerRequest>;
 
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseStatus =
   | "active"
   | "inactive"
   | "pending";
-export const DeactivateUserlandUserOrganizationMembershipsControllerResponseStatus = S.String;
+const DeactivateUserlandUserOrganizationMembershipsControllerResponseStatus = S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
+const DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
   CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap>;
 
 /** The list of roles assigned to the user within the organization. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
   Array<SlimRole>;
-export const DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
+const DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
   CreateUserlandUserOrganizationMembershipsControllerResponseRolesList as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
 
 export interface DeactivateUserlandUserOrganizationMembershipsControllerResponse {
@@ -5726,8 +5450,8 @@ export interface DeactivateUserlandUserOrganizationMembershipsControllerResponse
   /** The user that belongs to the organization through this membership. */
   user: UserlandUser;
 }
-export const DeactivateUserlandUserOrganizationMembershipsControllerResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const DeactivateUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       object: S.String,
       id: S.String,
@@ -5745,15 +5469,15 @@ export const DeactivateUserlandUserOrganizationMembershipsControllerResponse =
       roles: DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList,
       user: UserlandUser,
     }),
-  ).annotate({
-    identifier: "DeactivateUserlandUserOrganizationMembershipsControllerResponse",
-  }) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponse>;
+).annotate({
+  identifier: "DeactivateUserlandUserOrganizationMembershipsControllerResponse",
+}) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponse>;
 
 export interface DecryptJumpWireWebKeyControllerRequest {
   /** Base64-encoded encrypted data key to decrypt. */
   keys: string;
 }
-export const DecryptJumpWireWebKeyControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DecryptJumpWireWebKeyControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/vault/v1/keys/decrypt", code: 200 })),
@@ -5767,7 +5491,7 @@ export interface DecryptResponse {
   /** Unique identifier of the decrypted data key. */
   id: string;
 }
-export const DecryptResponse = /*@__PURE__*/ S.suspend(() =>
+const DecryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_key: S.String,
     id: S.String,
@@ -5778,7 +5502,7 @@ export interface DeleteAgentBlueprintsControllerRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
 }
-export const DeleteAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_blueprint_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/agents/blueprints/{agent_blueprint_id}", code: 200 })),
@@ -5787,14 +5511,14 @@ export const DeleteAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteAgentBlueprintsControllerRequest>;
 
 export interface DeleteAgentBlueprintsControllerResponse {}
-export const DeleteAgentBlueprintsControllerResponse =
+const DeleteAgentBlueprintsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAgentBlueprintsControllerResponse>;
 
 export interface DeleteAgentInstancesControllerRequest {
   /** The unique ID of the agent instance. */
   agent_instance_id: string;
 }
-export const DeleteAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_instance_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/agents/instances/{agent_instance_id}", code: 200 })),
@@ -5803,14 +5527,14 @@ export const DeleteAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteAgentInstancesControllerRequest>;
 
 export interface DeleteAgentInstancesControllerResponse {}
-export const DeleteAgentInstancesControllerResponse =
+const DeleteAgentInstancesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAgentInstancesControllerResponse>;
 
 export interface DeleteApiKeysControllerRequest {
   /** The unique ID of the API key. */
   id: string;
 }
-export const DeleteApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api_keys/{id}", code: 200 })),
@@ -5819,15 +5543,15 @@ export const DeleteApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiKeysControllerRequest>;
 
 export interface DeleteApiKeysControllerResponse {}
-export const DeleteApiKeysControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteApiKeysControllerResponse" },
-) as any as S.Schema<DeleteApiKeysControllerResponse>;
+const DeleteApiKeysControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteApiKeysControllerResponse",
+}) as any as S.Schema<DeleteApiKeysControllerResponse>;
 
 export interface DeleteApplicationCredentialsControllerRequest {
   /** The unique ID of the client secret. */
   id: string;
 }
-export const DeleteApplicationCredentialsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationCredentialsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/connect/client_secrets/{id}", code: 200 })),
@@ -5836,14 +5560,14 @@ export const DeleteApplicationCredentialsControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteApplicationCredentialsControllerRequest>;
 
 export interface DeleteApplicationCredentialsControllerResponse {}
-export const DeleteApplicationCredentialsControllerResponse =
+const DeleteApplicationCredentialsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteApplicationCredentialsControllerResponse>;
 
 export interface DeleteApplicationsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-export const DeleteApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/connect/applications/{id}", code: 200 })),
@@ -5852,14 +5576,14 @@ export const DeleteApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationsControllerRequest>;
 
 export interface DeleteApplicationsControllerResponse {}
-export const DeleteApplicationsControllerResponse =
+const DeleteApplicationsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteApplicationsControllerResponse>;
 
 export interface DeleteAuthenticationFactorsControllerRequest {
   /** The unique ID of the Factor. */
   id: string;
 }
-export const DeleteAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/auth/factors/{id}", code: 200 })),
@@ -5868,14 +5592,14 @@ export const DeleteAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteAuthenticationFactorsControllerRequest>;
 
 export interface DeleteAuthenticationFactorsControllerResponse {}
-export const DeleteAuthenticationFactorsControllerResponse =
+const DeleteAuthenticationFactorsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthenticationFactorsControllerResponse>;
 
 export interface DeleteAuthkitOauthResourcesControllerRequest {
   /** The ID of the MCP resource indicator to delete. */
   id: string;
 }
-export const DeleteAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -5886,7 +5610,7 @@ export const DeleteAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteAuthkitOauthResourcesControllerRequest>;
 
 export interface DeleteAuthkitOauthResourcesControllerResponse {}
-export const DeleteAuthkitOauthResourcesControllerResponse =
+const DeleteAuthkitOauthResourcesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthkitOauthResourcesControllerResponse>;
 
 export interface DeleteAuthorizationOrganizationRolesControllerRequest {
@@ -5895,7 +5619,7 @@ export interface DeleteAuthorizationOrganizationRolesControllerRequest {
   /** The slug of the role. */
   slug: string;
 }
-export const DeleteAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -5911,14 +5635,14 @@ export const DeleteAuthorizationOrganizationRolesControllerRequest = /*@__PURE__
 }) as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerRequest>;
 
 export interface DeleteAuthorizationOrganizationRolesControllerResponse {}
-export const DeleteAuthorizationOrganizationRolesControllerResponse =
+const DeleteAuthorizationOrganizationRolesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerResponse>;
 
 export interface DeleteAuthorizationPermissionsControllerRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
   slug: string;
 }
-export const DeleteAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/authorization/permissions/{slug}", code: 200 })),
@@ -5927,7 +5651,7 @@ export const DeleteAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteAuthorizationPermissionsControllerRequest>;
 
 export interface DeleteAuthorizationPermissionsControllerResponse {}
-export const DeleteAuthorizationPermissionsControllerResponse =
+const DeleteAuthorizationPermissionsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationPermissionsControllerResponse>;
 
 export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest {
@@ -5940,7 +5664,7 @@ export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdR
   /** If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail. */
   cascade_delete?: boolean;
 }
-export const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest =
+const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -5959,7 +5683,7 @@ export const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdReque
   }) as any as S.Schema<DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest>;
 
 export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse {}
-export const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse =
+const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse",
   }) as any as S.Schema<DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse>;
@@ -5970,7 +5694,7 @@ export interface DeleteAuthorizationResourcesControllerRequest {
   /** If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail. */
   cascade_delete?: boolean;
 }
-export const DeleteAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource_id: S.String.pipe(T.Label()),
     cascade_delete: S.optional(S.Boolean.pipe(T.Query())),
@@ -5980,7 +5704,7 @@ export const DeleteAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteAuthorizationResourcesControllerRequest>;
 
 export interface DeleteAuthorizationResourcesControllerResponse {}
-export const DeleteAuthorizationResourcesControllerResponse =
+const DeleteAuthorizationResourcesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationResourcesControllerResponse>;
 
 export interface DeleteAuthorizedApplicationsControllerRequest {
@@ -5989,7 +5713,7 @@ export interface DeleteAuthorizedApplicationsControllerRequest {
   /** The ID or client ID of the application. */
   application_id: string;
 }
-export const DeleteAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     application_id: S.String.pipe(T.Label()),
@@ -6005,14 +5729,14 @@ export const DeleteAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteAuthorizedApplicationsControllerRequest>;
 
 export interface DeleteAuthorizedApplicationsControllerResponse {}
-export const DeleteAuthorizedApplicationsControllerResponse =
+const DeleteAuthorizedApplicationsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizedApplicationsControllerResponse>;
 
 export interface DeleteConnectionsControllerRequest {
   /** Unique identifier for the Connection. */
   id: string;
 }
-export const DeleteConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/connections/{id}", code: 200 })),
@@ -6021,31 +5745,31 @@ export const DeleteConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectionsControllerRequest>;
 
 export interface DeleteConnectionsControllerResponse {}
-export const DeleteConnectionsControllerResponse =
+const DeleteConnectionsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteConnectionsControllerResponse>;
 
 export interface DeleteDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-export const DeleteDataIntegrationsManagementControllerDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
     }).pipe(T.Http({ method: "DELETE", uri: "/data-integrations/{slug}", code: 200 })),
-  ).annotate({
-    identifier: "DeleteDataIntegrationsManagementControllerDataIntegrationRequest",
-  }) as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationRequest>;
+).annotate({
+  identifier: "DeleteDataIntegrationsManagementControllerDataIntegrationRequest",
+}) as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationRequest>;
 
 export interface DeleteDataIntegrationsManagementControllerDataIntegrationResponse {}
-export const DeleteDataIntegrationsManagementControllerDataIntegrationResponse =
+const DeleteDataIntegrationsManagementControllerDataIntegrationResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationResponse>;
 
 export interface DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-export const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
+const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
@@ -6055,7 +5779,7 @@ export const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrati
   }) as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>;
 
 export interface DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse {}
-export const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse =
+const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse>;
 
 export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
@@ -6068,7 +5792,7 @@ export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataIns
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to delete. */
   connected_account_id?: string;
 }
-export const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
+const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -6087,7 +5811,7 @@ export const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstall
   }) as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>;
 
 export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse {}
-export const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse =
+const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse>;
 
 export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest {
@@ -6102,7 +5826,7 @@ export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallat
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to delete. */
   connected_account_id?: string;
 }
-export const DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest =
+const DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       user_id: S.String.pipe(T.Label()),
@@ -6122,14 +5846,14 @@ export const DeleteDataIntegrationsUserManagementControllerUserDataInstallationR
   }) as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest>;
 
 export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse {}
-export const DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse =
+const DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse>;
 
 export interface DeleteDirectoriesControllerDirectoryRequest {
   /** Unique identifier for the Directory. */
   id: string;
 }
-export const DeleteDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/directories/{id}", code: 200 })),
@@ -6138,7 +5862,7 @@ export const DeleteDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteDirectoriesControllerDirectoryRequest>;
 
 export interface DeleteDirectoriesControllerDirectoryResponse {}
-export const DeleteDirectoriesControllerDirectoryResponse =
+const DeleteDirectoriesControllerDirectoryResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteDirectoriesControllerDirectoryResponse>;
 
 export interface DeleteFlagTargetsControllerTargetRequest {
@@ -6147,7 +5871,7 @@ export interface DeleteFlagTargetsControllerTargetRequest {
   /** The resource ID in format "user_<id>" or "org_<id>". */
   resourceId: string;
 }
-export const DeleteFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -6159,7 +5883,7 @@ export const DeleteFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteFlagTargetsControllerTargetRequest>;
 
 export interface DeleteFlagTargetsControllerTargetResponse {}
-export const DeleteFlagTargetsControllerTargetResponse =
+const DeleteFlagTargetsControllerTargetResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteFlagTargetsControllerTargetResponse>;
 
 export interface DeleteGroupsControllerRequest {
@@ -6168,7 +5892,7 @@ export interface DeleteGroupsControllerRequest {
   /** The ID of the group. */
   groupId: string;
 }
-export const DeleteGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     groupId: S.String.pipe(T.Label()),
@@ -6184,7 +5908,7 @@ export const DeleteGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupsControllerRequest>;
 
 export interface DeleteGroupsControllerResponse {}
-export const DeleteGroupsControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteGroupsControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteGroupsControllerResponse",
 }) as any as S.Schema<DeleteGroupsControllerResponse>;
 
@@ -6194,7 +5918,7 @@ export interface DeleteItContactsControllerRequest {
   /** The ID of the IT contact. */
   contact_id: string;
 }
-export const DeleteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     contact_id: S.String.pipe(T.Label()),
@@ -6210,7 +5934,7 @@ export const DeleteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteItContactsControllerRequest>;
 
 export interface DeleteItContactsControllerResponse {}
-export const DeleteItContactsControllerResponse =
+const DeleteItContactsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteItContactsControllerResponse>;
 
 export interface DeleteJumpWireWebDataVaultControllerRequest {
@@ -6219,7 +5943,7 @@ export interface DeleteJumpWireWebDataVaultControllerRequest {
   /** Expected current version for optimistic locking. */
   version_check?: string;
 }
-export const DeleteJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     version_check: S.optional(S.String.pipe(T.Query())),
@@ -6234,7 +5958,7 @@ export interface DeleteObjectResponse {
   /** Whether the deletion succeeded. */
   success: boolean;
 }
-export const DeleteObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     success: S.Boolean,
@@ -6245,7 +5969,7 @@ export interface DeleteOrganizationDomainsControllerRequest {
   /** Unique identifier of the organization domain. */
   id: string;
 }
-export const DeleteOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/organization_domains/{id}", code: 200 })),
@@ -6254,14 +5978,14 @@ export const DeleteOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteOrganizationDomainsControllerRequest>;
 
 export interface DeleteOrganizationDomainsControllerResponse {}
-export const DeleteOrganizationDomainsControllerResponse =
+const DeleteOrganizationDomainsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteOrganizationDomainsControllerResponse>;
 
 export interface DeleteOrganizationsControllerOrganizationRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-export const DeleteOrganizationsControllerOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsControllerOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/organizations/{id}", code: 200 })),
@@ -6270,14 +5994,14 @@ export const DeleteOrganizationsControllerOrganizationRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteOrganizationsControllerOrganizationRequest>;
 
 export interface DeleteOrganizationsControllerOrganizationResponse {}
-export const DeleteOrganizationsControllerOrganizationResponse =
+const DeleteOrganizationsControllerOrganizationResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteOrganizationsControllerOrganizationResponse>;
 
 export interface DeleteRedirectUrisControllerRequest {
   /** The ID of the redirect URI to delete. */
   id: string;
 }
-export const DeleteRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user_management/redirect_uris/{id}", code: 200 })),
@@ -6286,7 +6010,7 @@ export const DeleteRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRedirectUrisControllerRequest>;
 
 export interface DeleteRedirectUrisControllerResponse {}
-export const DeleteRedirectUrisControllerResponse =
+const DeleteRedirectUrisControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteRedirectUrisControllerResponse>;
 
 export interface DeleteSamlIdpSigningCertificatesControllerRequest {
@@ -6295,7 +6019,7 @@ export interface DeleteSamlIdpSigningCertificatesControllerRequest {
   /** Unique identifier for the Identity Provider signing certificate. */
   certificateId: string;
 }
-export const DeleteSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
     certificateId: S.String.pipe(T.Label()),
@@ -6311,7 +6035,7 @@ export const DeleteSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerRequest>;
 
 export interface DeleteSamlIdpSigningCertificatesControllerResponse {}
-export const DeleteSamlIdpSigningCertificatesControllerResponse =
+const DeleteSamlIdpSigningCertificatesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerResponse>;
 
 export interface DeleteSamlSpEncryptionCertificatesControllerRequest {
@@ -6320,7 +6044,7 @@ export interface DeleteSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Service Provider encryption key pair. WorkOS holds the corresponding private key, which is never exposed. */
   certificateId: string;
 }
-export const DeleteSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
     certificateId: S.String.pipe(T.Label()),
@@ -6336,7 +6060,7 @@ export const DeleteSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerRequest>;
 
 export interface DeleteSamlSpEncryptionCertificatesControllerResponse {}
-export const DeleteSamlSpEncryptionCertificatesControllerResponse =
+const DeleteSamlSpEncryptionCertificatesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerResponse>;
 
 export interface DeleteSamlSpSigningCertificatesControllerRequest {
@@ -6345,7 +6069,7 @@ export interface DeleteSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Service Provider signing key pair. WorkOS holds the corresponding private key, which is never exposed. */
   certificateId: string;
 }
-export const DeleteSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
     certificateId: S.String.pipe(T.Label()),
@@ -6361,31 +6085,30 @@ export const DeleteSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteSamlSpSigningCertificatesControllerRequest>;
 
 export interface DeleteSamlSpSigningCertificatesControllerResponse {}
-export const DeleteSamlSpSigningCertificatesControllerResponse =
+const DeleteSamlSpSigningCertificatesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlSpSigningCertificatesControllerResponse>;
 
 export interface DeleteUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
   id: string;
 }
-export const DeleteUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/user_management/organization_memberships/{id}",
-        code: 200,
-      }),
-    ),
+const DeleteUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/user_management/organization_memberships/{id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteUserlandUserOrganizationMembershipsControllerRequest",
 }) as any as S.Schema<DeleteUserlandUserOrganizationMembershipsControllerRequest>;
 
 export interface DeleteUserlandUserOrganizationMembershipsControllerResponse {}
-export const DeleteUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const DeleteUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteUserlandUserOrganizationMembershipsControllerResponse",
 }) as any as S.Schema<DeleteUserlandUserOrganizationMembershipsControllerResponse>;
@@ -6394,7 +6117,7 @@ export interface DeleteWaitlistEntriesControllerRequest {
   /** The unique ID of the waitlist entry. */
   id: string;
 }
-export const DeleteWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user_management/waitlist_entries/{id}", code: 200 })),
@@ -6403,14 +6126,14 @@ export const DeleteWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWaitlistEntriesControllerRequest>;
 
 export interface DeleteWaitlistEntriesControllerResponse {}
-export const DeleteWaitlistEntriesControllerResponse =
+const DeleteWaitlistEntriesControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteWaitlistEntriesControllerResponse>;
 
 export interface DeleteWebhookEndpointsControllerRequest {
   /** Unique identifier of the Webhook Endpoint. */
   id: string;
 }
-export const DeleteWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/webhook_endpoints/{id}", code: 200 })),
@@ -6419,14 +6142,14 @@ export const DeleteWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteWebhookEndpointsControllerRequest>;
 
 export interface DeleteWebhookEndpointsControllerResponse {}
-export const DeleteWebhookEndpointsControllerResponse =
+const DeleteWebhookEndpointsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteWebhookEndpointsControllerResponse>;
 
 export interface DescribeJumpWireWebDataVaultControllerRequest {
   /** Unique identifier of the object. */
   id: string;
 }
-export const DescribeJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vault/v1/kv/{id}/metadata", code: 200 })),
@@ -6442,7 +6165,7 @@ export interface ObjectWithoutValue {
   /** Unique name of the object. */
   name: string;
 }
-export const ObjectWithoutValue = /*@__PURE__*/ S.suspend(() =>
+const ObjectWithoutValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     metadata: ObjectMetadata,
@@ -6454,7 +6177,7 @@ export interface DirectoriesControllerFindRequest {
   /** Unique identifier for the Directory. */
   id: string;
 }
-export const DirectoriesControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const DirectoriesControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/directories/{id}", code: 200 })),
@@ -6485,7 +6208,7 @@ export type DirectoryType =
   | "sftp"
   | "sftp workday"
   | "workday";
-export const DirectoryType = S.String;
+const DirectoryType = S.String;
 
 /** Describes whether the Directory has been successfully connected to an external provider. */
 export type DirectoryState =
@@ -6494,7 +6217,7 @@ export type DirectoryState =
   | "invalid_credentials"
   | "unlinked"
   | "deleting";
-export const DirectoryState = S.String;
+const DirectoryState = S.String;
 
 /** Counts of active and inactive directory users. */
 export interface DirectoryMetadataUsers {
@@ -6503,7 +6226,7 @@ export interface DirectoryMetadataUsers {
   /** Count of inactive directory users. */
   inactive: number;
 }
-export const DirectoryMetadataUsers = /*@__PURE__*/ S.suspend(() =>
+const DirectoryMetadataUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Number,
     inactive: S.Number,
@@ -6517,7 +6240,7 @@ export interface DirectoryMetadata {
   /** Count of directory groups. */
   groups: number;
 }
-export const DirectoryMetadata = /*@__PURE__*/ S.suspend(() =>
+const DirectoryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: DirectoryMetadataUsers,
     groups: S.Number,
@@ -6548,7 +6271,7 @@ export interface Directory {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const Directory = /*@__PURE__*/ S.suspend(() =>
+const Directory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -6568,7 +6291,7 @@ export interface DirectoryGroupsControllerFindRequest {
   /** Unique identifier for the Directory Group. */
   id: string;
 }
-export const DirectoryGroupsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const DirectoryGroupsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/directory_groups/{id}", code: 200 })),
@@ -6578,7 +6301,7 @@ export const DirectoryGroupsControllerFindRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The raw attributes received from the directory provider. */
 export type DirectoryGroupRawAttributesMap = { [key: string]: unknown | undefined };
-export const DirectoryGroupRawAttributesMap =
+const DirectoryGroupRawAttributesMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryGroupRawAttributesMap>;
 
 export interface DirectoryGroup {
@@ -6601,7 +6324,7 @@ export interface DirectoryGroup {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const DirectoryGroup = /*@__PURE__*/ S.suspend(() =>
+const DirectoryGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -6619,7 +6342,7 @@ export interface DirectoryUsersControllerFindRequest {
   /** Unique identifier for the Directory User. */
   id: string;
 }
-export const DirectoryUsersControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const DirectoryUsersControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/directory_users/{id}", code: 200 })),
@@ -6635,7 +6358,7 @@ export interface DirectoryUserWithGroupsEmailsItem {
   /** The email address value. */
   value?: string | null;
 }
-export const DirectoryUserWithGroupsEmailsItem = /*@__PURE__*/ S.suspend(() =>
+const DirectoryUserWithGroupsEmailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(S.Boolean),
     type: S.optional(S.String),
@@ -6647,33 +6370,33 @@ export const DirectoryUserWithGroupsEmailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of email addresses for the user. */
 export type DirectoryUserWithGroupsEmailsList = Array<DirectoryUserWithGroupsEmailsItem>;
-export const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ S.Array(
+const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ S.Array(
   DirectoryUserWithGroupsEmailsItem,
 ) as any as S.Schema<DirectoryUserWithGroupsEmailsList>;
 
 /** The state of the user. */
 export type DirectoryUserWithGroupsState = "active" | "suspended" | "inactive";
-export const DirectoryUserWithGroupsState = S.String;
+const DirectoryUserWithGroupsState = S.String;
 
 /** The raw attributes received from the directory provider. */
 export type DirectoryUserWithGroupsRawAttributesMap = { [key: string]: unknown | undefined };
-export const DirectoryUserWithGroupsRawAttributesMap =
+const DirectoryUserWithGroupsRawAttributesMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryUserWithGroupsRawAttributesMap>;
 
 /** An object containing the custom attribute mapping for the Directory Provider. */
 export type DirectoryUserWithGroupsCustomAttributesMap = { [key: string]: unknown | undefined };
-export const DirectoryUserWithGroupsCustomAttributesMap =
+const DirectoryUserWithGroupsCustomAttributesMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryUserWithGroupsCustomAttributesMap>;
 
 /** All roles assigned to the user. */
 export type DirectoryUserWithGroupsRolesList = Array<SlimRole>;
-export const DirectoryUserWithGroupsRolesList = /*@__PURE__*/ S.Array(
+const DirectoryUserWithGroupsRolesList = /*@__PURE__*/ S.Array(
   SlimRole,
 ) as any as S.Schema<DirectoryUserWithGroupsRolesList>;
 
 /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance -- the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
 export type DirectoryUserWithGroupsGroupsList = Array<DirectoryGroup>;
-export const DirectoryUserWithGroupsGroupsList = /*@__PURE__*/ S.Array(
+const DirectoryUserWithGroupsGroupsList = /*@__PURE__*/ S.Array(
   DirectoryGroup,
 ) as any as S.Schema<DirectoryUserWithGroupsGroupsList>;
 
@@ -6718,7 +6441,7 @@ export interface DirectoryUserWithGroups {
   /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance -- the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
   groups?: DirectoryUserWithGroupsGroupsList;
 }
-export const DirectoryUserWithGroups = /*@__PURE__*/ S.suspend(() =>
+const DirectoryUserWithGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -6747,7 +6470,7 @@ export interface DisableFeatureFlagsControllerFlagRequest {
   /** A unique key to reference the Feature Flag. */
   slug: string;
 }
-export const DisableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/feature-flags/{slug}/disable", code: 200 })),
@@ -6763,7 +6486,7 @@ export interface DisableFeatureFlagsControllerFlagResponseOwner {
   /** The last name of the flag owner. */
   last_name: string | null;
 }
-export const DisableFeatureFlagsControllerFlagResponseOwner = /*@__PURE__*/ S.suspend(() =>
+const DisableFeatureFlagsControllerFlagResponseOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     first_name: S.NullOr(S.String),
@@ -6775,7 +6498,7 @@ export const DisableFeatureFlagsControllerFlagResponseOwner = /*@__PURE__*/ S.su
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type DisableFeatureFlagsControllerFlagResponseTagsList = Array<string>;
-export const DisableFeatureFlagsControllerFlagResponseTagsList =
+const DisableFeatureFlagsControllerFlagResponseTagsList =
   AgentTokenPermissionsList as any as S.Schema<DisableFeatureFlagsControllerFlagResponseTagsList>;
 
 export interface DisableFeatureFlagsControllerFlagResponse {
@@ -6802,7 +6525,7 @@ export interface DisableFeatureFlagsControllerFlagResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const DisableFeatureFlagsControllerFlagResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableFeatureFlagsControllerFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -6824,7 +6547,7 @@ export interface EnableFeatureFlagsControllerFlagRequest {
   /** A unique key to reference the Feature Flag. */
   slug: string;
 }
-export const EnableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/feature-flags/{slug}/enable", code: 200 })),
@@ -6834,14 +6557,8 @@ export const EnableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ S.suspend((
 
 export type EnableFeatureFlagsControllerFlagResponseOwner =
   DisableFeatureFlagsControllerFlagResponseOwner;
-export const EnableFeatureFlagsControllerFlagResponseOwner =
-  DisableFeatureFlagsControllerFlagResponseOwner;
-
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type EnableFeatureFlagsControllerFlagResponseTagsList = Array<string>;
-export const EnableFeatureFlagsControllerFlagResponseTagsList =
-  AgentTokenPermissionsList as any as S.Schema<EnableFeatureFlagsControllerFlagResponseTagsList>;
-
 export interface EnableFeatureFlagsControllerFlagResponse {
   /** Distinguishes the Feature Flag object. */
   object: string;
@@ -6866,14 +6583,14 @@ export interface EnableFeatureFlagsControllerFlagResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const EnableFeatureFlagsControllerFlagResponse =
+const EnableFeatureFlagsControllerFlagResponse =
   DisableFeatureFlagsControllerFlagResponse as any as S.Schema<EnableFeatureFlagsControllerFlagResponse>;
 
 export interface ExportAuditLogExportsControllerRequest {
   /** The unique ID of the Audit Log Export. */
   auditLogExportId: string;
 }
-export const ExportAuditLogExportsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportAuditLogExportsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogExportId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/audit_logs/exports/{auditLogExportId}", code: 200 })),
@@ -6885,7 +6602,7 @@ export interface FeatureFlagsControllerFindBySlugRequest {
   /** A unique key to reference the Feature Flag. */
   slug: string;
 }
-export const FeatureFlagsControllerFindBySlugRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsControllerFindBySlugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/feature-flags/{slug}", code: 200 })),
@@ -6894,11 +6611,9 @@ export const FeatureFlagsControllerFindBySlugRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<FeatureFlagsControllerFindBySlugRequest>;
 
 export type FlagOwner = DisableFeatureFlagsControllerFlagResponseOwner;
-export const FlagOwner = DisableFeatureFlagsControllerFlagResponseOwner;
-
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type FlagTagsList = Array<string>;
-export const FlagTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlagTagsList>;
+const FlagTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FlagTagsList>;
 
 export interface Flag {
   /** Distinguishes the Feature Flag object. */
@@ -6924,7 +6639,7 @@ export interface Flag {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const Flag = /*@__PURE__*/ S.suspend(() =>
+const Flag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -6944,7 +6659,7 @@ export interface GetAgentAdminControllerRegistrationRequest {
   /** The unique ID of the agent registration. */
   id: string;
 }
-export const GetAgentAdminControllerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentAdminControllerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/agents/registrations/{id}", code: 200 })),
@@ -6963,7 +6678,7 @@ export interface AgentRegistrationAgentIdentity {
   /** The timestamp when the agent identity was last updated. */
   updated_at: string;
 }
-export const AgentRegistrationAgentIdentity = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistrationAgentIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     userland_user_id: S.NullOr(S.String),
@@ -6976,11 +6691,11 @@ export const AgentRegistrationAgentIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The current verification status of the registration. */
 export type AgentRegistrationStatus = "unverified" | "verified" | "expired" | "revoked";
-export const AgentRegistrationStatus = S.String;
+const AgentRegistrationStatus = S.String;
 
 /** The kind of agent registration. */
 export type AgentRegistrationKind = "anonymous" | "service_auth" | "identity_assertion";
-export const AgentRegistrationKind = S.String;
+const AgentRegistrationKind = S.String;
 
 export interface AgentRegistrationClaimClaimCompletion {
   /** Unique identifier of the claim completion. */
@@ -6994,7 +6709,7 @@ export interface AgentRegistrationClaimClaimCompletion {
   /** The timestamp when the claim was completed. */
   claimed_at: string;
 }
-export const AgentRegistrationClaimClaimCompletion = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistrationClaimClaimCompletion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created_at: S.String,
@@ -7018,7 +6733,7 @@ export interface AgentRegistrationClaim {
   /** The timestamp when the claim expires. */
   expires_at: string;
 }
-export const AgentRegistrationClaim = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistrationClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     claim_completion: S.NullOr(AgentRegistrationClaimClaimCompletion),
@@ -7046,7 +6761,7 @@ export interface AgentRegistration {
   /** The timestamp when the registration was last updated. */
   updated_at: string;
 }
-export const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     agent_identity: AgentRegistrationAgentIdentity,
@@ -7063,7 +6778,7 @@ export interface GetAgentBlueprintsControllerRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
 }
-export const GetAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_blueprint_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/agents/blueprints/{agent_blueprint_id}", code: 200 })),
@@ -7075,7 +6790,7 @@ export interface GetAgentInstancesControllerRequest {
   /** The unique ID of the agent instance. */
   agent_instance_id: string;
 }
-export const GetAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_instance_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/agents/instances/{agent_instance_id}", code: 200 })),
@@ -7085,7 +6800,7 @@ export const GetAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the instance acts on behalf of a specific user (`delegated`) or as itself (`autonomous`). */
 export type AgentInstanceType = "delegated" | "autonomous";
-export const AgentInstanceType = S.String;
+const AgentInstanceType = S.String;
 
 export interface AgentInstance {
   /** Distinguishes the agent instance object. */
@@ -7105,7 +6820,7 @@ export interface AgentInstance {
   /** Timestamp when the agent instance was last updated. */
   updated_at: string;
 }
-export const AgentInstance = /*@__PURE__*/ S.suspend(() =>
+const AgentInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -7122,7 +6837,7 @@ export interface GetAgentInstanceSessionsControllerRequest {
   /** The unique ID of the agent instance session. */
   agent_instance_session_id: string;
 }
-export const GetAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_instance_session_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7134,7 +6849,7 @@ export const GetAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend
 
 /** Derived from `revoked_at` and `expires_at` at read time; a revoked session stays `revoked` even after it expires. */
 export type AgentInstanceSessionStatus = "active" | "revoked" | "expired";
-export const AgentInstanceSessionStatus = S.String;
+const AgentInstanceSessionStatus = S.String;
 
 export interface AgentInstanceSession {
   /** Distinguishes the agent instance session object. */
@@ -7154,7 +6869,7 @@ export interface AgentInstanceSession {
   /** Timestamp when the session was last updated. */
   updated_at: string;
 }
-export const AgentInstanceSession = /*@__PURE__*/ S.suspend(() =>
+const AgentInstanceSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -7171,7 +6886,7 @@ export interface GetAuthenticationFactorsControllerRequest {
   /** The unique ID of the Factor. */
   id: string;
 }
-export const GetAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/auth/factors/{id}", code: 200 })),
@@ -7181,12 +6896,10 @@ export const GetAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.suspend
 
 /** The type of the factor to enroll. */
 export type AuthenticationFactorType = "generic_otp" | "sms" | "totp" | "webauthn";
-export const AuthenticationFactorType = S.String;
+const AuthenticationFactorType = S.String;
 
 /** SMS-based authentication factor details. */
 export type AuthenticationFactorSms = AuthenticationFactorEnrolledSms;
-export const AuthenticationFactorSms = AuthenticationFactorEnrolledSms;
-
 /** TOTP-based authentication factor details. */
 export interface AuthenticationFactorTotp {
   /** Your application or company name displayed in the user's authenticator app. Defaults to your WorkOS team name. */
@@ -7194,7 +6907,7 @@ export interface AuthenticationFactorTotp {
   /** The user's account name displayed in their authenticator app. Defaults to the user's email. */
   user: string;
 }
-export const AuthenticationFactorTotp = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationFactorTotp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     user: S.String,
@@ -7219,7 +6932,7 @@ export interface AuthenticationFactor {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuthenticationFactor = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationFactor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -7238,7 +6951,7 @@ export interface GetAuthorizationGroupRoleAssignmentsControllerRequest {
   /** The ID of the group role assignment. */
   role_assignment_id: string;
 }
-export const GetAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_id: S.String.pipe(T.Label()),
     role_assignment_id: S.String.pipe(T.Label()),
@@ -7259,7 +6972,7 @@ export interface GetAuthorizationOrganizationRolesControllerRequest {
   /** The slug of the role. */
   slug: string;
 }
-export const GetAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -7278,11 +6991,11 @@ export const GetAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ 
 export type GetAuthorizationOrganizationRolesControllerResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const GetAuthorizationOrganizationRolesControllerResponseType = S.String;
+const GetAuthorizationOrganizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type GetAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
-export const GetAuthorizationOrganizationRolesControllerResponsePermissionsList =
+const GetAuthorizationOrganizationRolesControllerResponsePermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<GetAuthorizationOrganizationRolesControllerResponsePermissionsList>;
 
 export interface GetAuthorizationOrganizationRolesControllerResponse {
@@ -7307,7 +7020,7 @@ export interface GetAuthorizationOrganizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const GetAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     object: S.String,
@@ -7332,8 +7045,8 @@ export interface GetAuthorizationResourcesByExternalIdControllerByExternalIdRequ
   /** An identifier you provide to reference the resource in your system. */
   external_id: string;
 }
-export const GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       resource_type_slug: S.String.pipe(T.Label()),
@@ -7345,15 +7058,15 @@ export const GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest",
-  }) as any as S.Schema<GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest>;
+).annotate({
+  identifier: "GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest",
+}) as any as S.Schema<GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest>;
 
 export interface GetAuthorizationRolesControllerRequest {
   /** The slug of the environment role. */
   slug: string;
 }
-export const GetAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/authorization/roles/{slug}", code: 200 })),
@@ -7363,12 +7076,11 @@ export const GetAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type RoleType = "EnvironmentRole" | "OrganizationRole";
-export const RoleType = S.String;
+const RoleType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type RolePermissionsList = Array<string>;
-export const RolePermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<RolePermissionsList>;
+const RolePermissionsList = AgentTokenPermissionsList as any as S.Schema<RolePermissionsList>;
 
 export interface Role {
   /** A unique slug for the role. */
@@ -7392,7 +7104,7 @@ export interface Role {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     object: S.optional(S.String),
@@ -7411,7 +7123,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 export type GetDataIntegrationsControllerUserlandUserTokenRequestConnectionOwner =
   | "user"
   | "organization";
-export const GetDataIntegrationsControllerUserlandUserTokenRequestConnectionOwner = S.String;
+const GetDataIntegrationsControllerUserlandUserTokenRequestConnectionOwner = S.String;
 
 export interface GetDataIntegrationsControllerUserlandUserTokenRequest {
   /** The identifier of the integration. */
@@ -7429,7 +7141,7 @@ export interface GetDataIntegrationsControllerUserlandUserTokenRequest {
   /** Set to `true` to use the plural connection contract. If no `connected_account_id` is supplied and several connections match, the request returns `account_selection_required`. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-export const GetDataIntegrationsControllerUserlandUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationsControllerUserlandUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     user_id: S.String,
@@ -7446,14 +7158,8 @@ export const GetDataIntegrationsControllerUserlandUserTokenRequest = /*@__PURE__
 
 /** The scopes granted to the access token. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenScopesList = Array<string>;
-export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessTokenScopesList>;
-
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList = Array<string>;
-export const DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList>;
-
 /** The [access token](/reference/pipes/access-token) object, present when `active` is `true`. */
 export interface DataIntegrationAccessTokenResponseCase0AccessToken {
   /** Distinguishes the access token object. */
@@ -7467,57 +7173,31 @@ export interface DataIntegrationAccessTokenResponseCase0AccessToken {
   /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
   missing_scopes: DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList;
 }
-export const DataIntegrationAccessTokenResponseCase0AccessToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    access_token: S.String.pipe(T.SensitiveValue({})),
-    expires_at: S.NullOr(S.String),
-    scopes: DataIntegrationAccessTokenResponseCase0AccessTokenScopesList,
-    missing_scopes: DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList,
-  }),
-).annotate({
-  identifier: "DataIntegrationAccessTokenResponseCase0AccessToken",
-}) as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessToken>;
-
 export interface DataIntegrationAccessTokenResponseCase0 {
   /** Indicates whether the access token is valid and ready for use, or if reauthorization is required. */
   active: boolean;
   /** The [access token](/reference/pipes/access-token) object, present when `active` is `true`. */
   access_token: DataIntegrationAccessTokenResponseCase0AccessToken;
 }
-export const DataIntegrationAccessTokenResponseCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    access_token: DataIntegrationAccessTokenResponseCase0AccessToken,
-  }),
-).annotate({
-  identifier: "DataIntegrationAccessTokenResponseCase0",
-}) as any as S.Schema<DataIntegrationAccessTokenResponseCase0>;
-
 /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationAccessTokenResponseCase1Error =
   | "needs_reauthorization"
   | "not_installed";
-export const DataIntegrationAccessTokenResponseCase1Error = S.String;
-
 export interface DataIntegrationAccessTokenResponseCase1 {
   /** Indicates whether the access token is valid and ready for use, or if reauthorization is required. */
   active: boolean;
   /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
   error: DataIntegrationAccessTokenResponseCase1Error;
 }
-export const DataIntegrationAccessTokenResponseCase1 =
-  DataIntegrationCredentialsResponseCase1 as any as S.Schema<DataIntegrationAccessTokenResponseCase1>;
-
 export type DataIntegrationAccessTokenResponse =
   | DataIntegrationAccessTokenResponseCase0
   | DataIntegrationAccessTokenResponseCase1;
-export const DataIntegrationAccessTokenResponse =
+const DataIntegrationAccessTokenResponse =
   S.Unknown as any as S.Schema<DataIntegrationAccessTokenResponse>;
 
 export type GetDataIntegrationsControllerUserlandUserTokenResponse =
   DataIntegrationAccessTokenResponse;
-export const GetDataIntegrationsControllerUserlandUserTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationsControllerUserlandUserTokenResponse = /*@__PURE__*/ S.suspend(() =>
   DataIntegrationAccessTokenResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDataIntegrationsControllerUserlandUserTokenResponse",
@@ -7527,20 +7207,19 @@ export interface GetDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-export const GetDataIntegrationsManagementControllerDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-    }).pipe(T.Http({ method: "GET", uri: "/data-integrations/{slug}", code: 200 })),
-  ).annotate({
-    identifier: "GetDataIntegrationsManagementControllerDataIntegrationRequest",
-  }) as any as S.Schema<GetDataIntegrationsManagementControllerDataIntegrationRequest>;
+const GetDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slug: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "/data-integrations/{slug}", code: 200 })),
+).annotate({
+  identifier: "GetDataIntegrationsManagementControllerDataIntegrationRequest",
+}) as any as S.Schema<GetDataIntegrationsManagementControllerDataIntegrationRequest>;
 
 export interface GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-export const GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
+const GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
@@ -7559,7 +7238,7 @@ export interface GetDataIntegrationsOrganizationControllerOrganizationDataInstal
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the organization has several for this provider. */
   connected_account_id?: string;
 }
-export const GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
+const GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -7579,25 +7258,25 @@ export const GetDataIntegrationsOrganizationControllerOrganizationDataInstallati
 
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type ConnectedAccountConnectionRole = "compatibility" | "standard";
-export const ConnectedAccountConnectionRole = S.String;
+const ConnectedAccountConnectionRole = S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type ConnectedAccountScopesList = Array<string>;
-export const ConnectedAccountScopesList =
+const ConnectedAccountScopesList =
   AgentTokenPermissionsList as any as S.Schema<ConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type ConnectedAccountAuthMethod = "oauth" | "api_key" | "client_credentials";
-export const ConnectedAccountAuthMethod = S.String;
+const ConnectedAccountAuthMethod = S.String;
 
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountConfigMap = { [key: string]: string | undefined };
-export const ConnectedAccountConfigMap =
+const ConnectedAccountConfigMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ConnectedAccountConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountState = "connected" | "needs_reauthorization" | "disconnected";
-export const ConnectedAccountState = S.String;
+const ConnectedAccountState = S.String;
 
 export interface ConnectedAccount {
   /** Distinguishes the connected account object. */
@@ -7633,7 +7312,7 @@ export interface ConnectedAccount {
   /** The timestamp when the connection was last updated. */
   updated_at?: string;
 }
-export const ConnectedAccount = /*@__PURE__*/ S.suspend(() =>
+const ConnectedAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -7660,7 +7339,7 @@ export interface GetDataIntegrationsOrganizationControllerOrganizationDataIntegr
   /** Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-export const GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest =
+const GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -7673,38 +7352,36 @@ export const GetDataIntegrationsOrganizationControllerOrganizationDataIntegratio
   }) as any as S.Schema<GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest>;
 
 export type DataIntegrationsListResponseDataItemScopesList = Array<string>;
-export const DataIntegrationsListResponseDataItemScopesList =
+const DataIntegrationsListResponseDataItemScopesList =
   AgentTokenPermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemScopesList>;
 
 export type DataIntegrationsListResponseDataItemAuthMethodsItem =
   | "oauth"
   | "api_key"
   | "client_credentials";
-export const DataIntegrationsListResponseDataItemAuthMethodsItem = S.String;
-
 /** The authentication methods supported by this provider (`oauth`, `api_key`, `client_credentials`, or a combination). Defaults to `["oauth"]` if absent. */
 export type DataIntegrationsListResponseDataItemAuthMethodsList =
   Array<DataIntegrationsListResponseDataItemAuthMethodsItem>;
-export const DataIntegrationsListResponseDataItemAuthMethodsList =
+const DataIntegrationsListResponseDataItemAuthMethodsList =
   AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<DataIntegrationsListResponseDataItemAuthMethodsList>;
 
 /** Who owns connections made through this provider: `user` for connections owned by individual users, or `organization` for a connection shared by every member of the organization. A provider row can exist before any connected account does. */
 export type DataIntegrationsListResponseDataItemConnectionOwner = "user" | "organization";
-export const DataIntegrationsListResponseDataItemConnectionOwner = S.String;
+const DataIntegrationsListResponseDataItemConnectionOwner = S.String;
 
 /** Use `connection_owner` instead. Legacy spelling of the same value: `userland_user` corresponds to `connection_owner: "user"` and `organization` to `connection_owner: "organization"`. */
 export type DataIntegrationsListResponseDataItemOwnership = "userland_user" | "organization";
-export const DataIntegrationsListResponseDataItemOwnership = S.String;
+const DataIntegrationsListResponseDataItemOwnership = S.String;
 
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type DataIntegrationsListResponseDataItemConnectedAccountConnectionRole =
   | "compatibility"
   | "standard";
-export const DataIntegrationsListResponseDataItemConnectedAccountConnectionRole = S.String;
+const DataIntegrationsListResponseDataItemConnectedAccountConnectionRole = S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountScopesList = Array<string>;
-export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
+const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
   AgentTokenPermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
@@ -7712,13 +7389,13 @@ export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   | "oauth"
   | "api_key"
   | "client_credentials";
-export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod = S.String;
+const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod = S.String;
 
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type DataIntegrationsListResponseDataItemConnectedAccountConfigMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationsListResponseDataItemConnectedAccountConfigMap =
+const DataIntegrationsListResponseDataItemConnectedAccountConfigMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
@@ -7726,7 +7403,7 @@ export type DataIntegrationsListResponseDataItemConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
   | "disconnected";
-export const DataIntegrationsListResponseDataItemConnectedAccountState = S.String;
+const DataIntegrationsListResponseDataItemConnectedAccountState = S.String;
 
 export interface DataIntegrationsListResponseDataItemConnectedAccount {
   /** Distinguishes the connected account object. */
@@ -7770,7 +7447,7 @@ export interface DataIntegrationsListResponseDataItemConnectedAccount {
   /** Use `updated_at` instead. */
   updatedAt: string;
 }
-export const DataIntegrationsListResponseDataItemConnectedAccount = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationsListResponseDataItemConnectedAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -7801,11 +7478,11 @@ export const DataIntegrationsListResponseDataItemConnectedAccount = /*@__PURE__*
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole =
   | "compatibility"
   | "standard";
-export const DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole = S.String;
+const DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole = S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList = Array<string>;
-export const DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList =
+const DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
@@ -7813,13 +7490,13 @@ export type DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod 
   | "oauth"
   | "api_key"
   | "client_credentials";
-export const DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod = S.String;
+const DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod = S.String;
 
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap =
+const DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap =
   ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
@@ -7827,7 +7504,7 @@ export type DataIntegrationsListResponseDataItemConnectedAccountsItemState =
   | "connected"
   | "needs_reauthorization"
   | "disconnected";
-export const DataIntegrationsListResponseDataItemConnectedAccountsItemState = S.String;
+const DataIntegrationsListResponseDataItemConnectedAccountsItemState = S.String;
 
 export interface DataIntegrationsListResponseDataItemConnectedAccountsItem {
   /** Distinguishes the connected account object. */
@@ -7871,30 +7548,29 @@ export interface DataIntegrationsListResponseDataItemConnectedAccountsItem {
   /** Use `updated_at` instead. */
   updatedAt: string;
 }
-export const DataIntegrationsListResponseDataItemConnectedAccountsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      object: S.String,
-      id: S.String,
-      connection_role: DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole,
-      account_identifier: S.NullOr(S.String),
-      account_display_name: S.NullOr(S.String),
-      user_id: S.NullOr(S.String),
-      organization_id: S.NullOr(S.String),
-      scopes: DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList,
-      auth_method: S.optional(DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod),
-      api_key_last_4: S.optional(S.NullOr(S.String)),
-      client_id: S.optional(S.NullOr(S.String)),
-      client_secret_last_4: S.optional(S.NullOr(S.String)),
-      config: S.optional(DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap),
-      state: DataIntegrationsListResponseDataItemConnectedAccountsItemState,
-      created_at: S.String,
-      updated_at: S.String,
-      userlandUserId: S.NullOr(S.String),
-      organizationId: S.NullOr(S.String),
-      createdAt: S.String,
-      updatedAt: S.String,
-    }),
+const DataIntegrationsListResponseDataItemConnectedAccountsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    object: S.String,
+    id: S.String,
+    connection_role: DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole,
+    account_identifier: S.NullOr(S.String),
+    account_display_name: S.NullOr(S.String),
+    user_id: S.NullOr(S.String),
+    organization_id: S.NullOr(S.String),
+    scopes: DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList,
+    auth_method: S.optional(DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod),
+    api_key_last_4: S.optional(S.NullOr(S.String)),
+    client_id: S.optional(S.NullOr(S.String)),
+    client_secret_last_4: S.optional(S.NullOr(S.String)),
+    config: S.optional(DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap),
+    state: DataIntegrationsListResponseDataItemConnectedAccountsItemState,
+    created_at: S.String,
+    updated_at: S.String,
+    userlandUserId: S.NullOr(S.String),
+    organizationId: S.NullOr(S.String),
+    createdAt: S.String,
+    updatedAt: S.String,
+  }),
 ).annotate({
   identifier: "DataIntegrationsListResponseDataItemConnectedAccountsItem",
 }) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItem>;
@@ -7902,7 +7578,7 @@ export const DataIntegrationsListResponseDataItemConnectedAccountsItem = /*@__PU
 /** The user's connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless `supports_multiple_connections` is `true`. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsList =
   Array<DataIntegrationsListResponseDataItemConnectedAccountsItem>;
-export const DataIntegrationsListResponseDataItemConnectedAccountsList = /*@__PURE__*/ S.Array(
+const DataIntegrationsListResponseDataItemConnectedAccountsList = /*@__PURE__*/ S.Array(
   DataIntegrationsListResponseDataItemConnectedAccountsItem,
 ) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsList>;
 
@@ -7946,7 +7622,7 @@ export interface DataIntegrationsListResponseDataItem {
   /** The user's connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless `supports_multiple_connections` is `true`. */
   connected_accounts: DataIntegrationsListResponseDataItemConnectedAccountsList;
 }
-export const DataIntegrationsListResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationsListResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -7974,7 +7650,7 @@ export const DataIntegrationsListResponseDataItem = /*@__PURE__*/ S.suspend(() =
 
 /** A list of [providers](/reference/pipes/provider), each including the legacy `connected_account` field and the additive `connected_accounts` collection. */
 export type DataIntegrationsListResponseDataList = Array<DataIntegrationsListResponseDataItem>;
-export const DataIntegrationsListResponseDataList = /*@__PURE__*/ S.Array(
+const DataIntegrationsListResponseDataList = /*@__PURE__*/ S.Array(
   DataIntegrationsListResponseDataItem,
 ) as any as S.Schema<DataIntegrationsListResponseDataList>;
 
@@ -7984,7 +7660,7 @@ export interface DataIntegrationsListResponse {
   /** A list of [providers](/reference/pipes/provider), each including the legacy `connected_account` field and the additive `connected_accounts` collection. */
   data?: DataIntegrationsListResponseDataList;
 }
-export const DataIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DataIntegrationsListResponseDataList),
@@ -8005,7 +7681,7 @@ export interface GetDataIntegrationsUserManagementControllerUserDataInstallation
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider. */
   connected_account_id?: string;
 }
-export const GetDataIntegrationsUserManagementControllerUserDataInstallationRequest =
+const GetDataIntegrationsUserManagementControllerUserDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       user_id: S.String.pipe(T.Label()),
@@ -8032,7 +7708,7 @@ export interface GetDataIntegrationsUserManagementControllerUserDataIntegrations
   /** Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-export const GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest =
+const GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       user_id: S.String.pipe(T.Label()),
@@ -8051,7 +7727,7 @@ export interface GetGroupsControllerRequest {
   /** The ID of the group. */
   groupId: string;
 }
-export const GetGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     groupId: S.String.pipe(T.Label()),
@@ -8063,7 +7739,7 @@ export const GetGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupsControllerRequest>;
 
 export interface GetJwtTemplatesControllerJwtTemplateRequest {}
-export const GetJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user_management/jwt_template", code: 200 })),
 ).annotate({
   identifier: "GetJwtTemplatesControllerJwtTemplateRequest",
@@ -8079,7 +7755,7 @@ export interface JwtTemplate {
   /** The timestamp when the JWT template was last updated. */
   updated_at: string;
 }
-export const JwtTemplate = /*@__PURE__*/ S.suspend(() =>
+const JwtTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     content: S.String,
@@ -8092,7 +7768,7 @@ export interface GetOrganizationDomainsControllerRequest {
   /** Unique identifier of the organization domain. */
   id: string;
 }
-export const GetOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organization_domains/{id}", code: 200 })),
@@ -8107,11 +7783,11 @@ export type OrganizationDomainStandAloneState =
   | "pending"
   | "unverified"
   | "verified";
-export const OrganizationDomainStandAloneState = S.String;
+const OrganizationDomainStandAloneState = S.String;
 
 /** Strategy used to verify the domain. */
 export type OrganizationDomainStandAloneVerificationStrategy = "dns" | "manual";
-export const OrganizationDomainStandAloneVerificationStrategy = S.String;
+const OrganizationDomainStandAloneVerificationStrategy = S.String;
 
 export interface OrganizationDomainStandAlone {
   /** Distinguishes the organization domain object. */
@@ -8135,7 +7811,7 @@ export interface OrganizationDomainStandAlone {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const OrganizationDomainStandAlone = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDomainStandAlone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -8156,7 +7832,7 @@ export interface GetOrganizationsControllerAuditLogConfigurationRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-export const GetOrganizationsControllerAuditLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsControllerAuditLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{id}/audit_log_configuration", code: 200 })),
@@ -8166,7 +7842,7 @@ export const GetOrganizationsControllerAuditLogConfigurationRequest = /*@__PURE_
 
 /** The current state of the audit log configuration for the organization. */
 export type AuditLogConfigurationState = "active" | "inactive" | "disabled";
-export const AuditLogConfigurationState = S.String;
+const AuditLogConfigurationState = S.String;
 
 /** The type of the Audit Log Stream destination. */
 export type AuditLogConfigurationLogStreamType =
@@ -8177,11 +7853,11 @@ export type AuditLogConfigurationLogStreamType =
   | "S3"
   | "Snowflake"
   | "Splunk";
-export const AuditLogConfigurationLogStreamType = S.String;
+const AuditLogConfigurationLogStreamType = S.String;
 
 /** The current state of the Audit Log Stream. */
 export type AuditLogConfigurationLogStreamState = "active" | "inactive" | "error" | "invalid";
-export const AuditLogConfigurationLogStreamState = S.String;
+const AuditLogConfigurationLogStreamState = S.String;
 
 /** The Audit Log Stream currently configured for the organization, if any. */
 export interface AuditLogConfigurationLogStream {
@@ -8196,7 +7872,7 @@ export interface AuditLogConfigurationLogStream {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-export const AuditLogConfigurationLogStream = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfigurationLogStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: AuditLogConfigurationLogStreamType,
@@ -8218,7 +7894,7 @@ export interface AuditLogConfiguration {
   /** The Audit Log Stream currently configured for the organization, if any. */
   log_stream?: AuditLogConfigurationLogStream;
 }
-export const AuditLogConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.optional(S.String),
     retention_period_in_days: S.optional(S.Number),
@@ -8231,7 +7907,7 @@ export interface GetOrganizationsControllerByExternalIdRequest {
   /** The external ID of the Organization. */
   external_id: string;
 }
-export const GetOrganizationsControllerByExternalIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsControllerByExternalIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/external_id/{external_id}", code: 200 })),
@@ -8243,7 +7919,7 @@ export interface GetPublicRadarChallengesControllerRequest {
   /** The unique ID of the Radar Challenge. */
   id: string;
 }
-export const GetPublicRadarChallengesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicRadarChallengesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/radar_challenges/{id}", code: 200 })),
@@ -8271,7 +7947,7 @@ export interface RadarChallenge {
   /** The code used to verify the Radar Challenge. */
   code: string;
 }
-export const RadarChallenge = /*@__PURE__*/ S.suspend(() =>
+const RadarChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -8289,7 +7965,7 @@ export interface GetSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-export const GetSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8300,7 +7976,7 @@ export const GetSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetSamlSpSigningCertificatesControllerRequest>;
 
 export interface GetSsoControllerProfileRequest {}
-export const GetSsoControllerProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSsoControllerProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/sso/profile", code: 200 })),
 ).annotate({
   identifier: "GetSsoControllerProfileRequest",
@@ -8358,24 +8034,23 @@ export type ProfileConnectionType =
   | "VercelOAuth"
   | "VMwareSAML"
   | "XeroOAuth";
-export const ProfileConnectionType = S.String;
+const ProfileConnectionType = S.String;
 
 export type ProfileRolesList = Array<SlimRole>;
-export const ProfileRolesList =
-  DirectoryUserWithGroupsRolesList as any as S.Schema<ProfileRolesList>;
+const ProfileRolesList = DirectoryUserWithGroupsRolesList as any as S.Schema<ProfileRolesList>;
 
 /** The groups the user belongs to, as returned by the identity provider. */
 export type ProfileGroupsList = Array<string>;
-export const ProfileGroupsList = AgentTokenPermissionsList as any as S.Schema<ProfileGroupsList>;
+const ProfileGroupsList = AgentTokenPermissionsList as any as S.Schema<ProfileGroupsList>;
 
 /** Custom attribute mappings defined for the connection, returned as key-value pairs. */
 export type ProfileCustomAttributesMap = { [key: string]: unknown | undefined };
-export const ProfileCustomAttributesMap =
+const ProfileCustomAttributesMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<ProfileCustomAttributesMap>;
 
 /** The complete set of raw attributes returned by the identity provider. */
 export type ProfileRawAttributesMap = { [key: string]: unknown | undefined };
-export const ProfileRawAttributesMap =
+const ProfileRawAttributesMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<ProfileRawAttributesMap>;
 
 export interface Profile {
@@ -8410,7 +8085,7 @@ export interface Profile {
   /** The complete set of raw attributes returned by the identity provider. */
   raw_attributes?: ProfileRawAttributesMap;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
+const Profile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -8434,7 +8109,7 @@ export interface GetTeamsControllerTeamRequest {
   /** The ID of the team. */
   team_id: string;
 }
-export const GetTeamsControllerTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamsControllerTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/platform/teams/{team_id}", code: 200 })),
@@ -8446,7 +8121,7 @@ export interface GetUserlandMagicAuthControllerRequest {
   /** The unique ID of the Magic Auth code. */
   id: string;
 }
-export const GetUserlandMagicAuthControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandMagicAuthControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/magic_auth/{id}", code: 200 })),
@@ -8472,7 +8147,7 @@ export interface MagicAuth {
   /** The code used to verify the Magic Auth code. */
   code?: string;
 }
-export const MagicAuth = /*@__PURE__*/ S.suspend(() =>
+const MagicAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -8489,7 +8164,7 @@ export interface GetUserlandUserIdentitiesControllerRequest {
   /** The unique ID of the user. */
   id: string;
 }
-export const GetUserlandUserIdentitiesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUserIdentitiesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/users/{id}/identities", code: 200 })),
@@ -8512,7 +8187,7 @@ export type GetUserlandUserIdentitiesControllerResponseBodyItemProvider =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "XeroOAuth";
-export const GetUserlandUserIdentitiesControllerResponseBodyItemProvider = S.String;
+const GetUserlandUserIdentitiesControllerResponseBodyItemProvider = S.String;
 
 export interface GetUserlandUserIdentitiesControllerResponseBodyItem {
   /** The unique ID of the user in the external identity provider. */
@@ -8522,7 +8197,7 @@ export interface GetUserlandUserIdentitiesControllerResponseBodyItem {
   /** The type of OAuth provider for the identity. */
   provider: GetUserlandUserIdentitiesControllerResponseBodyItemProvider;
 }
-export const GetUserlandUserIdentitiesControllerResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUserIdentitiesControllerResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idp_id: S.String,
     type: S.String,
@@ -8534,13 +8209,13 @@ export const GetUserlandUserIdentitiesControllerResponseBodyItem = /*@__PURE__*/
 
 export type GetUserlandUserIdentitiesControllerResponseBodyList =
   Array<GetUserlandUserIdentitiesControllerResponseBodyItem>;
-export const GetUserlandUserIdentitiesControllerResponseBodyList = /*@__PURE__*/ S.Array(
+const GetUserlandUserIdentitiesControllerResponseBodyList = /*@__PURE__*/ S.Array(
   GetUserlandUserIdentitiesControllerResponseBodyItem,
 ) as any as S.Schema<GetUserlandUserIdentitiesControllerResponseBodyList>;
 
 export type GetUserlandUserIdentitiesControllerResponse =
   GetUserlandUserIdentitiesControllerResponseBodyList;
-export const GetUserlandUserIdentitiesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUserIdentitiesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   GetUserlandUserIdentitiesControllerResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetUserlandUserIdentitiesControllerResponse",
@@ -8550,7 +8225,7 @@ export interface GetUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
 }
-export const GetUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/invitations/{id}", code: 200 })),
@@ -8562,7 +8237,7 @@ export interface GetUserlandUserInvitesControllerByTokenRequest {
   /** The token used to accept the invitation. */
   token: string;
 }
-export const GetUserlandUserInvitesControllerByTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUserInvitesControllerByTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
   }).pipe(
@@ -8576,7 +8251,7 @@ export interface GetUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
   id: string;
 }
-export const GetUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -8588,18 +8263,18 @@ export const GetUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE
 
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipStatus = "active" | "inactive" | "pending";
-export const UserlandUserOrganizationMembershipStatus = S.String;
+const UserlandUserOrganizationMembershipStatus = S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type UserlandUserOrganizationMembershipCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const UserlandUserOrganizationMembershipCustomAttributesMap =
+const UserlandUserOrganizationMembershipCustomAttributesMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<UserlandUserOrganizationMembershipCustomAttributesMap>;
 
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipRolesList = Array<SlimRole>;
-export const UserlandUserOrganizationMembershipRolesList =
+const UserlandUserOrganizationMembershipRolesList =
   DirectoryUserWithGroupsRolesList as any as S.Schema<UserlandUserOrganizationMembershipRolesList>;
 
 export interface UserlandUserOrganizationMembership {
@@ -8630,7 +8305,7 @@ export interface UserlandUserOrganizationMembership {
   /** The user that belongs to the organization through this membership. */
   user?: UserlandUser;
 }
-export const UserlandUserOrganizationMembership = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserOrganizationMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -8654,7 +8329,7 @@ export interface GetUserlandUsersControllerByExternalIdRequest {
   /** The external ID of the user. */
   external_id: string;
 }
-export const GetUserlandUsersControllerByExternalIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUsersControllerByExternalIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -8668,7 +8343,7 @@ export interface GetUserlandUsersControllerEmailVerificationRequest {
   /** The ID of the email verification code. */
   id: string;
 }
-export const GetUserlandUsersControllerEmailVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserlandUsersControllerEmailVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/email_verification/{id}", code: 200 })),
@@ -8694,7 +8369,7 @@ export interface EmailVerification {
   /** The code used to verify the email. */
   code?: string;
 }
-export const EmailVerification = MagicAuth as any as S.Schema<EmailVerification>;
+const EmailVerification = MagicAuth as any as S.Schema<EmailVerification>;
 
 export type InviteItContactsControllerRequestIntentsItem =
   | "sso"
@@ -8702,13 +8377,11 @@ export type InviteItContactsControllerRequestIntentsItem =
   | "log_streams"
   | "domain_verification"
   | "bring_your_own_key";
-export const InviteItContactsControllerRequestIntentsItem = S.String;
-
 /** The Admin Portal features that the IT contact can configure. */
 export type InviteItContactsControllerRequestIntentsList = Array<
   InviteItContactsControllerRequestIntentsItem | (string & {})
 >;
-export const InviteItContactsControllerRequestIntentsList =
+const InviteItContactsControllerRequestIntentsList =
   AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<InviteItContactsControllerRequestIntentsList>;
 
 export interface InviteItContactsControllerRequest {
@@ -8719,7 +8392,7 @@ export interface InviteItContactsControllerRequest {
   /** The Admin Portal features that the IT contact can configure. */
   intents: InviteItContactsControllerRequestIntentsList;
 }
-export const InviteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     contact_id: S.String.pipe(T.Label()),
@@ -8736,11 +8409,11 @@ export const InviteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteItContactsControllerRequest>;
 
 export interface InviteItContactsControllerResponse {}
-export const InviteItContactsControllerResponse =
+const InviteItContactsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<InviteItContactsControllerResponse>;
 
 export type JumpWireWebDataVaultControllerIndexRequestOrder = "asc" | "desc";
-export const JumpWireWebDataVaultControllerIndexRequestOrder = S.String;
+const JumpWireWebDataVaultControllerIndexRequestOrder = S.String;
 
 export interface JumpWireWebDataVaultControllerIndexRequest {
   /** Upper limit on the number of objects to return. */
@@ -8756,7 +8429,7 @@ export interface JumpWireWebDataVaultControllerIndexRequest {
   /** ISO 8601 timestamp to filter by last modified time. */
   updatedAfter?: string;
 }
-export const JumpWireWebDataVaultControllerIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const JumpWireWebDataVaultControllerIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -8778,7 +8451,7 @@ export interface ObjectSummary {
   /** Timestamp of the last update. */
   updated_at?: string | null;
 }
-export const ObjectSummary = /*@__PURE__*/ S.suspend(() =>
+const ObjectSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -8788,7 +8461,7 @@ export const ObjectSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object summaries. */
 export type ObjectListResponseDataList = Array<ObjectSummary>;
-export const ObjectListResponseDataList = /*@__PURE__*/ S.Array(
+const ObjectListResponseDataList = /*@__PURE__*/ S.Array(
   ObjectSummary,
 ) as any as S.Schema<ObjectListResponseDataList>;
 
@@ -8799,7 +8472,7 @@ export interface ListMetadata {
   /** Cursor for the previous page of results. */
   before?: string | null;
 }
-export const ListMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.NullOr(S.String)),
     before: S.optional(S.NullOr(S.String)),
@@ -8811,7 +8484,7 @@ export interface ObjectListResponse {
   data: ObjectListResponseDataList;
   list_metadata: ListMetadata;
 }
-export const ObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const ObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ObjectListResponseDataList,
     list_metadata: ListMetadata,
@@ -8822,7 +8495,7 @@ export interface JumpWireWebDataVaultControllerShowByIdRequest {
   /** Unique identifier of the object. */
   id: string;
 }
-export const JumpWireWebDataVaultControllerShowByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const JumpWireWebDataVaultControllerShowByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vault/v1/kv/{id}", code: 200 })),
@@ -8840,7 +8513,7 @@ export interface Object {
   /** Decrypted plaintext value. */
   value: string;
 }
-export const Object = /*@__PURE__*/ S.suspend(() =>
+const Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     metadata: ObjectMetadata,
@@ -8853,7 +8526,7 @@ export interface JumpWireWebDataVaultControllerShowByNameRequest {
   /** Unique name of the object. */
   name: string;
 }
-export const JumpWireWebDataVaultControllerShowByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const JumpWireWebDataVaultControllerShowByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vault/v1/kv/name/{name}", code: 200 })),
@@ -8865,7 +8538,7 @@ export interface JumpWireWebDataVaultControllerVersionsRequest {
   /** Unique identifier of the object. */
   id: string;
 }
-export const JumpWireWebDataVaultControllerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const JumpWireWebDataVaultControllerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vault/v1/kv/{id}/versions", code: 200 })),
@@ -8886,7 +8559,7 @@ export interface ObjectVersion {
   /** Number of bytes of stored data. */
   size: number;
 }
-export const ObjectVersion = /*@__PURE__*/ S.suspend(() =>
+const ObjectVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     current_version: S.Boolean,
@@ -8898,7 +8571,7 @@ export const ObjectVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object versions. */
 export type VersionListResponseDataList = Array<ObjectVersion>;
-export const VersionListResponseDataList = /*@__PURE__*/ S.Array(
+const VersionListResponseDataList = /*@__PURE__*/ S.Array(
   ObjectVersion,
 ) as any as S.Schema<VersionListResponseDataList>;
 
@@ -8907,7 +8580,7 @@ export interface VersionListResponse {
   data: VersionListResponseDataList;
   list_metadata: ListMetadata;
 }
-export const VersionListResponse = /*@__PURE__*/ S.suspend(() =>
+const VersionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: VersionListResponseDataList,
     list_metadata: ListMetadata,
@@ -8918,14 +8591,14 @@ export const VersionListResponse = /*@__PURE__*/ S.suspend(() =>
 export type JumpWireWebKeyControllerCreateDataKeyRequestContextMap = {
   [key: string]: string | undefined;
 };
-export const JumpWireWebKeyControllerCreateDataKeyRequestContextMap =
+const JumpWireWebKeyControllerCreateDataKeyRequestContextMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<JumpWireWebKeyControllerCreateDataKeyRequestContextMap>;
 
 export interface JumpWireWebKeyControllerCreateDataKeyRequest {
   /** Map of values used to determine the encryption key. */
   context: JumpWireWebKeyControllerCreateDataKeyRequestContextMap;
 }
-export const JumpWireWebKeyControllerCreateDataKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const JumpWireWebKeyControllerCreateDataKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: JumpWireWebKeyControllerCreateDataKeyRequestContextMap,
   }).pipe(T.Http({ method: "POST", uri: "/vault/v1/keys/data-key", code: 200 })),
@@ -8935,7 +8608,7 @@ export const JumpWireWebKeyControllerCreateDataKeyRequest = /*@__PURE__*/ S.susp
 
 /** Map of values used to determine the encryption key. */
 export type CreateDataKeyResponseContextMap = { [key: string]: string | undefined };
-export const CreateDataKeyResponseContextMap =
+const CreateDataKeyResponseContextMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateDataKeyResponseContextMap>;
 
 export interface CreateDataKeyResponse {
@@ -8948,7 +8621,7 @@ export interface CreateDataKeyResponse {
   /** Unique identifier for the generated data key. */
   id: string;
 }
-export const CreateDataKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: CreateDataKeyResponseContextMap,
     data_key: S.String,
@@ -8959,7 +8632,7 @@ export const CreateDataKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of values used to determine the new encryption key. */
 export type JumpWireWebKeyControllerRekeyRequestContextMap = { [key: string]: string | undefined };
-export const JumpWireWebKeyControllerRekeyRequestContextMap =
+const JumpWireWebKeyControllerRekeyRequestContextMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<JumpWireWebKeyControllerRekeyRequestContextMap>;
 
 export interface JumpWireWebKeyControllerRekeyRequest {
@@ -8968,7 +8641,7 @@ export interface JumpWireWebKeyControllerRekeyRequest {
   /** Base64-encoded encrypted data key blob to re-encrypt. */
   encrypted_keys: string;
 }
-export const JumpWireWebKeyControllerRekeyRequest = /*@__PURE__*/ S.suspend(() =>
+const JumpWireWebKeyControllerRekeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: JumpWireWebKeyControllerRekeyRequestContextMap,
     encrypted_keys: S.String,
@@ -8987,7 +8660,7 @@ export interface ListAgentBlueprintsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9001,12 +8674,9 @@ export const ListAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =
 /** Pagination cursors for navigating between pages of results. */
 export type ListAgentBlueprintsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListAgentBlueprintsControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListAgentBlueprintsControllerResponseDataList = Array<AgentBlueprint>;
-export const ListAgentBlueprintsControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListAgentBlueprintsControllerResponseDataList = /*@__PURE__*/ S.Array(
   AgentBlueprint,
 ) as any as S.Schema<ListAgentBlueprintsControllerResponseDataList>;
 
@@ -9018,7 +8688,7 @@ export interface ListAgentBlueprintsControllerResponse {
   /** The list of records for the current page. */
   data?: ListAgentBlueprintsControllerResponseDataList;
 }
-export const ListAgentBlueprintsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAgentBlueprintsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -9042,7 +8712,7 @@ export interface ListAgentInstancesControllerRequest {
   /** Only return instances minted from this blueprint. */
   agent_blueprint_id?: string;
 }
-export const ListAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9058,12 +8728,9 @@ export const ListAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 /** Pagination cursors for navigating between pages of results. */
 export type ListAgentInstancesControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListAgentInstancesControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListAgentInstancesControllerResponseDataList = Array<AgentInstance>;
-export const ListAgentInstancesControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListAgentInstancesControllerResponseDataList = /*@__PURE__*/ S.Array(
   AgentInstance,
 ) as any as S.Schema<ListAgentInstancesControllerResponseDataList>;
 
@@ -9075,7 +8742,7 @@ export interface ListAgentInstancesControllerResponse {
   /** The list of records for the current page. */
   data?: ListAgentInstancesControllerResponseDataList;
 }
-export const ListAgentInstancesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAgentInstancesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -9101,7 +8768,7 @@ export interface ListAgentInstanceSessionsControllerRequest {
   /** Only return sessions belonging to this agent instance. */
   agent_instance_id?: string;
 }
-export const ListAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9118,12 +8785,9 @@ export const ListAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspen
 /** Pagination cursors for navigating between pages of results. */
 export type ListAgentInstanceSessionsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListAgentInstanceSessionsControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListAgentInstanceSessionsControllerResponseDataList = Array<AgentInstanceSession>;
-export const ListAgentInstanceSessionsControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListAgentInstanceSessionsControllerResponseDataList = /*@__PURE__*/ S.Array(
   AgentInstanceSession,
 ) as any as S.Schema<ListAgentInstanceSessionsControllerResponseDataList>;
 
@@ -9135,7 +8799,7 @@ export interface ListAgentInstanceSessionsControllerResponse {
   /** The list of records for the current page. */
   data?: ListAgentInstanceSessionsControllerResponseDataList;
 }
-export const ListAgentInstanceSessionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAgentInstanceSessionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -9149,7 +8813,7 @@ export interface ListApplicationCredentialsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-export const ListApplicationCredentialsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationCredentialsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/connect/applications/{id}/client_secrets", code: 200 })),
@@ -9171,7 +8835,7 @@ export interface ListApplicationCredentialsControllerResponseBodyItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ListApplicationCredentialsControllerResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationCredentialsControllerResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -9186,25 +8850,23 @@ export const ListApplicationCredentialsControllerResponseBodyItem = /*@__PURE__*
 
 export type ListApplicationCredentialsControllerResponseBodyList =
   Array<ListApplicationCredentialsControllerResponseBodyItem>;
-export const ListApplicationCredentialsControllerResponseBodyList = /*@__PURE__*/ S.Array(
+const ListApplicationCredentialsControllerResponseBodyList = /*@__PURE__*/ S.Array(
   ListApplicationCredentialsControllerResponseBodyItem,
 ) as any as S.Schema<ListApplicationCredentialsControllerResponseBodyList>;
 
 export type ListApplicationCredentialsControllerResponse =
   ListApplicationCredentialsControllerResponseBodyList;
-export const ListApplicationCredentialsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationCredentialsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   ListApplicationCredentialsControllerResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListApplicationCredentialsControllerResponse",
 }) as any as S.Schema<ListApplicationCredentialsControllerResponse>;
 
 export type ListApplicationsControllerRequestRegistrationTypesItem = "dynamic" | "authenticated";
-export const ListApplicationsControllerRequestRegistrationTypesItem = S.String;
-
 export type ListApplicationsControllerRequestRegistrationTypesList = Array<
   ListApplicationsControllerRequestRegistrationTypesItem | (string & {})
 >;
-export const ListApplicationsControllerRequestRegistrationTypesList =
+const ListApplicationsControllerRequestRegistrationTypesList =
   AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<ListApplicationsControllerRequestRegistrationTypesList>;
 
 export interface ListApplicationsControllerRequest {
@@ -9221,7 +8883,7 @@ export interface ListApplicationsControllerRequest {
   /** Filter Connect Applications by organization ID. */
   organization_id?: string;
 }
-export const ListApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9238,17 +8900,14 @@ export const ListApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type ConnectApplicationScopesList = Array<string>;
-export const ConnectApplicationScopesList =
+const ConnectApplicationScopesList =
   AgentTokenPermissionsList as any as S.Schema<ConnectApplicationScopesList>;
 
 export type ConnectApplicationRedirectUrisItem = ApplicationsControllerFindResponseRedirectUrisItem;
-export const ConnectApplicationRedirectUrisItem =
-  ApplicationsControllerFindResponseRedirectUrisItem;
-
 /** The redirect URIs configured for this application. */
 export type ConnectApplicationRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const ConnectApplicationRedirectUrisList =
+const ConnectApplicationRedirectUrisList =
   ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<ConnectApplicationRedirectUrisList>;
 
 export interface ConnectApplication {
@@ -9281,7 +8940,7 @@ export interface ConnectApplication {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-export const ConnectApplication = /*@__PURE__*/ S.suspend(() =>
+const ConnectApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -9302,16 +8961,13 @@ export const ConnectApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type ConnectApplicationListDataList = Array<ConnectApplication>;
-export const ConnectApplicationListDataList = /*@__PURE__*/ S.Array(
+const ConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   ConnectApplication,
 ) as any as S.Schema<ConnectApplicationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type ConnectApplicationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ConnectApplicationListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface ConnectApplicationList {
   /** Indicates this is a list response. */
   object?: string;
@@ -9320,7 +8976,7 @@ export interface ConnectApplicationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const ConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
+const ConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(ConnectApplicationListDataList),
@@ -9338,7 +8994,7 @@ export interface ListAuditLogValidatorsControllerRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuditLogValidatorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditLogValidatorsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9352,9 +9008,6 @@ export const ListAuditLogValidatorsControllerRequest = /*@__PURE__*/ S.suspend((
 /** Pagination cursors for navigating between pages of results. */
 export type ListAuditLogValidatorsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListAuditLogValidatorsControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface AuditLogActionJson {
   /** Distinguishes the Audit Log Action object. */
   object?: string;
@@ -9367,7 +9020,7 @@ export interface AuditLogActionJson {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-export const AuditLogActionJson = /*@__PURE__*/ S.suspend(() =>
+const AuditLogActionJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     name: S.optional(S.String),
@@ -9379,7 +9032,7 @@ export const AuditLogActionJson = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type ListAuditLogValidatorsControllerResponseDataList = Array<AuditLogActionJson>;
-export const ListAuditLogValidatorsControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListAuditLogValidatorsControllerResponseDataList = /*@__PURE__*/ S.Array(
   AuditLogActionJson,
 ) as any as S.Schema<ListAuditLogValidatorsControllerResponseDataList>;
 
@@ -9391,7 +9044,7 @@ export interface ListAuditLogValidatorsControllerResponse {
   /** The list of records for the current page. */
   data?: ListAuditLogValidatorsControllerResponseDataList;
 }
-export const ListAuditLogValidatorsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuditLogValidatorsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -9411,7 +9064,7 @@ export interface ListAuthkitOauthResourcesControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9425,12 +9078,9 @@ export const ListAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.suspen
 /** Pagination cursors for navigating between pages of results. */
 export type ListAuthkitOauthResourcesControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListAuthkitOauthResourcesControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListAuthkitOauthResourcesControllerResponseDataList = Array<AuthkitOauthResource>;
-export const ListAuthkitOauthResourcesControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListAuthkitOauthResourcesControllerResponseDataList = /*@__PURE__*/ S.Array(
   AuthkitOauthResource,
 ) as any as S.Schema<ListAuthkitOauthResourcesControllerResponseDataList>;
 
@@ -9442,7 +9092,7 @@ export interface ListAuthkitOauthResourcesControllerResponse {
   /** The list of records for the current page. */
   data?: ListAuthkitOauthResourcesControllerResponseDataList;
 }
-export const ListAuthkitOauthResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthkitOauthResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -9466,7 +9116,7 @@ export interface ListAuthorizationControllerEffectivePermissionsRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuthorizationControllerEffectivePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationControllerEffectivePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_membership_id: S.String.pipe(T.Label()),
     resource_id: S.String.pipe(T.Label()),
@@ -9487,16 +9137,13 @@ export const ListAuthorizationControllerEffectivePermissionsRequest = /*@__PURE_
 
 /** The list of records for the current page. */
 export type AuthorizationPermissionListDataList = Array<AuthorizationPermission>;
-export const AuthorizationPermissionListDataList = /*@__PURE__*/ S.Array(
+const AuthorizationPermissionListDataList = /*@__PURE__*/ S.Array(
   AuthorizationPermission,
 ) as any as S.Schema<AuthorizationPermissionListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type AuthorizationPermissionListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const AuthorizationPermissionListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface AuthorizationPermissionList {
   /** Indicates this is a list response. */
   object?: string;
@@ -9505,7 +9152,7 @@ export interface AuthorizationPermissionList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const AuthorizationPermissionList = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationPermissionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(AuthorizationPermissionListDataList),
@@ -9531,8 +9178,8 @@ export interface ListAuthorizationControllerEffectivePermissionsByExternalIdRequ
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuthorizationControllerEffectivePermissionsByExternalIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationControllerEffectivePermissionsByExternalIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organization_membership_id: S.String.pipe(T.Label()),
       resource_type_slug: S.String.pipe(T.Label()),
@@ -9548,9 +9195,9 @@ export const ListAuthorizationControllerEffectivePermissionsByExternalIdRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListAuthorizationControllerEffectivePermissionsByExternalIdRequest",
-  }) as any as S.Schema<ListAuthorizationControllerEffectivePermissionsByExternalIdRequest>;
+).annotate({
+  identifier: "ListAuthorizationControllerEffectivePermissionsByExternalIdRequest",
+}) as any as S.Schema<ListAuthorizationControllerEffectivePermissionsByExternalIdRequest>;
 
 export interface ListAuthorizationControllerResourcesForMembershipRequest {
   /** The ID of the organization membership. */
@@ -9572,41 +9219,37 @@ export interface ListAuthorizationControllerResourcesForMembershipRequest {
   /** The application-specific external identifier of the parent resource. Must be provided together with `parent_resource_type_slug`. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_external_id?: string;
 }
-export const ListAuthorizationControllerResourcesForMembershipRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organization_membership_id: S.String.pipe(T.Label()),
-      before: S.optional(S.String.pipe(T.Query())),
-      after: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      order: S.optional(PaginationOrder.pipe(T.Query())),
-      permission_slug: S.String.pipe(T.Query()),
-      parent_resource_id: S.optional(S.String.pipe(T.Query())),
-      parent_resource_type_slug: S.optional(S.String.pipe(T.Query())),
-      parent_resource_external_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/authorization/organization_memberships/{organization_membership_id}/resources",
-        code: 200,
-      }),
-    ),
+const ListAuthorizationControllerResourcesForMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_membership_id: S.String.pipe(T.Label()),
+    before: S.optional(S.String.pipe(T.Query())),
+    after: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    order: S.optional(PaginationOrder.pipe(T.Query())),
+    permission_slug: S.String.pipe(T.Query()),
+    parent_resource_id: S.optional(S.String.pipe(T.Query())),
+    parent_resource_type_slug: S.optional(S.String.pipe(T.Query())),
+    parent_resource_external_id: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/authorization/organization_memberships/{organization_membership_id}/resources",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAuthorizationControllerResourcesForMembershipRequest",
 }) as any as S.Schema<ListAuthorizationControllerResourcesForMembershipRequest>;
 
 /** The list of records for the current page. */
 export type AuthorizationResourceListDataList = Array<AuthorizationResource>;
-export const AuthorizationResourceListDataList = /*@__PURE__*/ S.Array(
+const AuthorizationResourceListDataList = /*@__PURE__*/ S.Array(
   AuthorizationResource,
 ) as any as S.Schema<AuthorizationResourceListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type AuthorizationResourceListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const AuthorizationResourceListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface AuthorizationResourceList {
   /** Indicates this is a list response. */
   object?: string;
@@ -9615,7 +9258,7 @@ export interface AuthorizationResourceList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const AuthorizationResourceList = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(AuthorizationResourceListDataList),
@@ -9637,7 +9280,7 @@ export interface ListAuthorizationGroupRoleAssignmentsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_id: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -9653,16 +9296,13 @@ export const ListAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE_
 
 /** The list of records for the current page. */
 export type GroupRoleAssignmentListDataList = Array<GroupRoleAssignment>;
-export const GroupRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
+const GroupRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
   GroupRoleAssignment,
 ) as any as S.Schema<GroupRoleAssignmentListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type GroupRoleAssignmentListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const GroupRoleAssignmentListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface GroupRoleAssignmentList {
   /** Indicates this is a list response. */
   object: string;
@@ -9671,7 +9311,7 @@ export interface GroupRoleAssignmentList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const GroupRoleAssignmentList = /*@__PURE__*/ S.suspend(() =>
+const GroupRoleAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: GroupRoleAssignmentListDataList,
@@ -9683,7 +9323,7 @@ export interface ListAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
 }
-export const ListAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9699,14 +9339,14 @@ export const ListAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/
 
 /** The list of records for the current page. */
 export type RoleListDataList = Array<Role>;
-export const RoleListDataList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleListDataList>;
+const RoleListDataList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleListDataList>;
 
 export interface RoleList {
   object?: string;
   /** The list of records for the current page. */
   data?: RoleListDataList;
 }
-export const RoleList = /*@__PURE__*/ S.suspend(() =>
+const RoleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(RoleListDataList),
@@ -9723,7 +9363,7 @@ export interface ListAuthorizationPermissionsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9737,7 +9377,7 @@ export const ListAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.sus
 export type ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment =
   | "direct"
   | "indirect";
-export const ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment =
+const ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment =
   S.String;
 
 export interface ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest {
@@ -9762,7 +9402,7 @@ export interface ListAuthorizationResourcesByExternalIdControllerOrganizationMem
     | ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment
     | (string & {});
 }
-export const ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest =
+const ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -9795,13 +9435,13 @@ export type UserlandUserOrganizationMembershipBaseWithUserStatus =
   | "active"
   | "inactive"
   | "pending";
-export const UserlandUserOrganizationMembershipBaseWithUserStatus = S.String;
+const UserlandUserOrganizationMembershipBaseWithUserStatus = S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap =
+const UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap =
   CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap>;
 
 export interface UserlandUserOrganizationMembershipBaseWithUser {
@@ -9828,7 +9468,7 @@ export interface UserlandUserOrganizationMembershipBaseWithUser {
   /** The user that belongs to the organization through this membership. */
   user: UserlandUser;
 }
-export const UserlandUserOrganizationMembershipBaseWithUser = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserOrganizationMembershipBaseWithUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -9851,16 +9491,13 @@ export const UserlandUserOrganizationMembershipBaseWithUser = /*@__PURE__*/ S.su
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseWithUserListDataList =
   Array<UserlandUserOrganizationMembershipBaseWithUser>;
-export const UserlandUserOrganizationMembershipBaseWithUserListDataList = /*@__PURE__*/ S.Array(
+const UserlandUserOrganizationMembershipBaseWithUserListDataList = /*@__PURE__*/ S.Array(
   UserlandUserOrganizationMembershipBaseWithUser,
 ) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserOrganizationMembershipBaseWithUserListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserlandUserOrganizationMembershipBaseWithUserListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserlandUserOrganizationMembershipBaseWithUserList {
   /** Indicates this is a list response. */
   object: string;
@@ -9869,7 +9506,7 @@ export interface UserlandUserOrganizationMembershipBaseWithUserList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserlandUserOrganizationMembershipBaseWithUserList = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserOrganizationMembershipBaseWithUserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserlandUserOrganizationMembershipBaseWithUserListDataList,
@@ -9901,7 +9538,7 @@ export interface ListAuthorizationResourcesControllerRequest {
   /** Filter resources by parent external ID. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
   parent_external_id?: string;
 }
-export const ListAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -9921,7 +9558,7 @@ export const ListAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspe
 export type ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment =
   | "direct"
   | "indirect";
-export const ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment =
+const ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment =
   S.String;
 
 export interface ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest {
@@ -9942,7 +9579,7 @@ export interface ListAuthorizationResourcesControllerOrganizationMembershipsForR
     | ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment
     | (string & {});
 }
-export const ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest =
+const ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource_id: S.String.pipe(T.Label()),
@@ -9985,8 +9622,8 @@ export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsReques
   /** Filter assignments by the slug of the resource type. */
   resource_type_slug?: string;
 }
-export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organization_membership_id: S.String.pipe(T.Label()),
       before: S.optional(S.String.pipe(T.Query())),
@@ -10003,22 +9640,19 @@ export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest",
-  }) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest>;
+).annotate({
+  identifier: "ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest",
+}) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest>;
 
 /** The list of records for the current page. */
 export type UserRoleAssignmentListDataList = Array<UserRoleAssignment>;
-export const UserRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
+const UserRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
   UserRoleAssignment,
 ) as any as S.Schema<UserRoleAssignmentListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserRoleAssignmentListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserRoleAssignmentListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserRoleAssignmentList {
   /** Indicates this is a list response. */
   object: string;
@@ -10027,7 +9661,7 @@ export interface UserRoleAssignmentList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserRoleAssignmentList = /*@__PURE__*/ S.suspend(() =>
+const UserRoleAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserRoleAssignmentListDataList,
@@ -10049,7 +9683,7 @@ export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForRes
   /** Filter assignments by the slug of the role. */
   role_slug?: string;
 }
-export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest =
+const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource_id: S.String.pipe(T.Label()),
@@ -10087,7 +9721,7 @@ export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForRes
   /** Filter assignments by the slug of the role. */
   role_slug?: string;
 }
-export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest =
+const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -10111,7 +9745,7 @@ export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourc
   }) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest>;
 
 export interface ListAuthorizationRolesControllerRequest {}
-export const ListAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/authorization/roles", code: 200 })),
 ).annotate({
   identifier: "ListAuthorizationRolesControllerRequest",
@@ -10129,7 +9763,7 @@ export interface ListAuthorizedApplicationsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -10149,7 +9783,7 @@ export const ListAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspe
 
 /** The scopes granted by the user to the application. */
 export type AuthorizedConnectApplicationListDataItemGrantedScopesList = Array<string>;
-export const AuthorizedConnectApplicationListDataItemGrantedScopesList =
+const AuthorizedConnectApplicationListDataItemGrantedScopesList =
   AgentTokenPermissionsList as any as S.Schema<AuthorizedConnectApplicationListDataItemGrantedScopesList>;
 
 export interface AuthorizedConnectApplicationListDataItem {
@@ -10163,7 +9797,7 @@ export interface AuthorizedConnectApplicationListDataItem {
   oauth_resource?: string;
   application: ConnectApplication;
 }
-export const AuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -10178,16 +9812,13 @@ export const AuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(
 /** The list of records for the current page. */
 export type AuthorizedConnectApplicationListDataList =
   Array<AuthorizedConnectApplicationListDataItem>;
-export const AuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
+const AuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   AuthorizedConnectApplicationListDataItem,
 ) as any as S.Schema<AuthorizedConnectApplicationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type AuthorizedConnectApplicationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const AuthorizedConnectApplicationListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface AuthorizedConnectApplicationList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10196,7 +9827,7 @@ export interface AuthorizedConnectApplicationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const AuthorizedConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(AuthorizedConnectApplicationListDataList),
@@ -10254,7 +9885,7 @@ export type ListConnectionsControllerRequestConnectionType =
   | "VercelOAuth"
   | "VMwareSAML"
   | "XeroOAuth";
-export const ListConnectionsControllerRequestConnectionType = S.String;
+const ListConnectionsControllerRequestConnectionType = S.String;
 
 export interface ListConnectionsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
@@ -10274,7 +9905,7 @@ export interface ListConnectionsControllerRequest {
   /** Searchable text to match against Connection names. */
   search?: string;
 }
-export const ListConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10291,16 +9922,13 @@ export const ListConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type ConnectionListDataList = Array<Connection>;
-export const ConnectionListDataList = /*@__PURE__*/ S.Array(
+const ConnectionListDataList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type ConnectionListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ConnectionListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface ConnectionList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10309,7 +9937,7 @@ export interface ConnectionList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const ConnectionList = /*@__PURE__*/ S.suspend(() =>
+const ConnectionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(ConnectionListDataList),
@@ -10327,7 +9955,7 @@ export interface ListCorsOriginsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListCorsOriginsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCorsOriginsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10341,12 +9969,9 @@ export const ListCorsOriginsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 /** Pagination cursors for navigating between pages of results. */
 export type ListCorsOriginsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListCorsOriginsControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListCorsOriginsControllerResponseDataList = Array<CorsOriginResponse>;
-export const ListCorsOriginsControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListCorsOriginsControllerResponseDataList = /*@__PURE__*/ S.Array(
   CorsOriginResponse,
 ) as any as S.Schema<ListCorsOriginsControllerResponseDataList>;
 
@@ -10358,7 +9983,7 @@ export interface ListCorsOriginsControllerResponse {
   /** The list of records for the current page. */
   data?: ListCorsOriginsControllerResponseDataList;
 }
-export const ListCorsOriginsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCorsOriginsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -10371,7 +9996,7 @@ export const ListCorsOriginsControllerResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership =
   | "user"
   | "organization";
-export const ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership = S.String;
+const ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership = S.String;
 
 export interface ListDataIntegrationsManagementControllerDataIntegrationsRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
@@ -10387,8 +10012,8 @@ export interface ListDataIntegrationsManagementControllerDataIntegrationsRequest
     | ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership
     | (string & {});
 }
-export const ListDataIntegrationsManagementControllerDataIntegrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationsManagementControllerDataIntegrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       before: S.optional(S.String.pipe(T.Query())),
       after: S.optional(S.String.pipe(T.Query())),
@@ -10398,22 +10023,19 @@ export const ListDataIntegrationsManagementControllerDataIntegrationsRequest =
         ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership.pipe(T.Query()),
       ),
     }).pipe(T.Http({ method: "GET", uri: "/data-integrations", code: 200 })),
-  ).annotate({
-    identifier: "ListDataIntegrationsManagementControllerDataIntegrationsRequest",
-  }) as any as S.Schema<ListDataIntegrationsManagementControllerDataIntegrationsRequest>;
+).annotate({
+  identifier: "ListDataIntegrationsManagementControllerDataIntegrationsRequest",
+}) as any as S.Schema<ListDataIntegrationsManagementControllerDataIntegrationsRequest>;
 
 /** The list of records for the current page. */
 export type DataIntegrationListDataList = Array<DataIntegration>;
-export const DataIntegrationListDataList = /*@__PURE__*/ S.Array(
+const DataIntegrationListDataList = /*@__PURE__*/ S.Array(
   DataIntegration,
 ) as any as S.Schema<DataIntegrationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type DataIntegrationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const DataIntegrationListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface DataIntegrationList {
   /** Indicates this is a list response. */
   object: string;
@@ -10422,7 +10044,7 @@ export interface DataIntegrationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const DataIntegrationList = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: DataIntegrationListDataList,
@@ -10446,7 +10068,7 @@ export interface ListDirectoriesControllerRequest {
   /** Filter Directories by their associated domain. */
   domain?: string;
 }
-export const ListDirectoriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10462,16 +10084,13 @@ export const ListDirectoriesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type DirectoryListDataList = Array<Directory>;
-export const DirectoryListDataList = /*@__PURE__*/ S.Array(
+const DirectoryListDataList = /*@__PURE__*/ S.Array(
   Directory,
 ) as any as S.Schema<DirectoryListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const DirectoryListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface DirectoryList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10480,7 +10099,7 @@ export interface DirectoryList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const DirectoryList = /*@__PURE__*/ S.suspend(() =>
+const DirectoryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DirectoryListDataList),
@@ -10502,7 +10121,7 @@ export interface ListDirectoryGroupsControllerRequest {
   /** Unique identifier of the WorkOS Directory User. This value can be obtained from the WorkOS API. */
   user?: string;
 }
-export const ListDirectoryGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoryGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10517,15 +10136,12 @@ export const ListDirectoryGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The list of records for the current page. */
 export type DirectoryGroupListDataList = Array<DirectoryGroup>;
-export const DirectoryGroupListDataList =
+const DirectoryGroupListDataList =
   DirectoryUserWithGroupsGroupsList as any as S.Schema<DirectoryGroupListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryGroupListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const DirectoryGroupListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface DirectoryGroupList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10534,7 +10150,7 @@ export interface DirectoryGroupList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const DirectoryGroupList = /*@__PURE__*/ S.suspend(() =>
+const DirectoryGroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DirectoryGroupListDataList),
@@ -10560,7 +10176,7 @@ export interface ListDirectoryUsersControllerRequest {
   /** Filter Directory Users by their primary email address. Requires the `directory` parameter to also be provided. */
   email?: string;
 }
-export const ListDirectoryUsersControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoryUsersControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10577,16 +10193,13 @@ export const ListDirectoryUsersControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type DirectoryUserListDataList = Array<DirectoryUserWithGroups>;
-export const DirectoryUserListDataList = /*@__PURE__*/ S.Array(
+const DirectoryUserListDataList = /*@__PURE__*/ S.Array(
   DirectoryUserWithGroups,
 ) as any as S.Schema<DirectoryUserListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryUserListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const DirectoryUserListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface DirectoryUserList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10595,7 +10208,7 @@ export interface DirectoryUserList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
+const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DirectoryUserListDataList),
@@ -10604,7 +10217,7 @@ export const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DirectoryUserList" }) as any as S.Schema<DirectoryUserList>;
 
 export type ListEventsControllerRequestEventsList = Array<string>;
-export const ListEventsControllerRequestEventsList =
+const ListEventsControllerRequestEventsList =
   AgentTokenPermissionsList as any as S.Schema<ListEventsControllerRequestEventsList>;
 
 export interface ListEventsControllerRequest {
@@ -10625,7 +10238,7 @@ export interface ListEventsControllerRequest {
   /** Filter events by the [Organization](/reference/organization) that the event is associated with. */
   organization_id?: string;
 }
-export const ListEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10642,12 +10255,12 @@ export const ListEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The event payload. */
 export type EventSchemaDataMap = { [key: string]: unknown | undefined };
-export const EventSchemaDataMap =
+const EventSchemaDataMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<EventSchemaDataMap>;
 
 /** Additional context about the event. */
 export type EventSchemaContextMap = { [key: string]: unknown | undefined };
-export const EventSchemaContextMap =
+const EventSchemaContextMap =
   AuditLogSchemaJsonActorMetadataMap as any as S.Schema<EventSchemaContextMap>;
 
 /** An event emitted by WorkOS. */
@@ -10665,7 +10278,7 @@ export interface EventSchema {
   /** Additional context about the event. */
   context?: EventSchemaContextMap;
 }
-export const EventSchema = /*@__PURE__*/ S.suspend(() =>
+const EventSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -10678,16 +10291,14 @@ export const EventSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type EventListDataList = Array<EventSchema>;
-export const EventListDataList = /*@__PURE__*/ S.Array(
-  EventSchema,
-) as any as S.Schema<EventListDataList>;
+const EventListDataList = /*@__PURE__*/ S.Array(EventSchema) as any as S.Schema<EventListDataList>;
 
 /** Pagination cursor for navigating to the next page of results. */
 export interface EventListListMetadata {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   after: string | null;
 }
-export const EventListListMetadata = /*@__PURE__*/ S.suspend(() =>
+const EventListListMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.NullOr(S.String),
   }),
@@ -10701,7 +10312,7 @@ export interface EventList {
   /** Pagination cursor for navigating to the next page of results. */
   list_metadata?: EventListListMetadata;
 }
-export const EventList = /*@__PURE__*/ S.suspend(() =>
+const EventList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(EventListDataList),
@@ -10719,7 +10330,7 @@ export interface ListFeatureFlagsControllerRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -10732,12 +10343,10 @@ export const ListFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type FlagListDataList = Array<Flag>;
-export const FlagListDataList = /*@__PURE__*/ S.Array(Flag) as any as S.Schema<FlagListDataList>;
+const FlagListDataList = /*@__PURE__*/ S.Array(Flag) as any as S.Schema<FlagListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type FlagListListMetadata = AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const FlagListListMetadata = AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface FlagList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10746,7 +10355,7 @@ export interface FlagList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const FlagList = /*@__PURE__*/ S.suspend(() =>
+const FlagList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(FlagListDataList),
@@ -10768,7 +10377,7 @@ export interface ListGroupMembershipsControllerMembersRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListGroupMembershipsControllerMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupMembershipsControllerMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     groupId: S.String.pipe(T.Label()),
@@ -10792,13 +10401,13 @@ export type UserlandUserOrganizationMembershipBaseListDataItemStatus =
   | "active"
   | "inactive"
   | "pending";
-export const UserlandUserOrganizationMembershipBaseListDataItemStatus = S.String;
+const UserlandUserOrganizationMembershipBaseListDataItemStatus = S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap =
+const UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap =
   CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap>;
 
 export interface UserlandUserOrganizationMembershipBaseListDataItem {
@@ -10823,7 +10432,7 @@ export interface UserlandUserOrganizationMembershipBaseListDataItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UserlandUserOrganizationMembershipBaseListDataItem = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserOrganizationMembershipBaseListDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -10845,16 +10454,13 @@ export const UserlandUserOrganizationMembershipBaseListDataItem = /*@__PURE__*/ 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseListDataList =
   Array<UserlandUserOrganizationMembershipBaseListDataItem>;
-export const UserlandUserOrganizationMembershipBaseListDataList = /*@__PURE__*/ S.Array(
+const UserlandUserOrganizationMembershipBaseListDataList = /*@__PURE__*/ S.Array(
   UserlandUserOrganizationMembershipBaseListDataItem,
 ) as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserOrganizationMembershipBaseListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserlandUserOrganizationMembershipBaseListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserlandUserOrganizationMembershipBaseList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10863,7 +10469,7 @@ export interface UserlandUserOrganizationMembershipBaseList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserlandUserOrganizationMembershipBaseList = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserOrganizationMembershipBaseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(UserlandUserOrganizationMembershipBaseListDataList),
@@ -10887,7 +10493,7 @@ export interface ListGroupsControllerRequest {
   /** Search groups by name or by group ID. */
   search?: string;
 }
-export const ListGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -10902,12 +10508,10 @@ export const ListGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type GroupListDataList = Array<Group>;
-export const GroupListDataList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupListDataList>;
+const GroupListDataList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type GroupListListMetadata = AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const GroupListListMetadata = AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface GroupList {
   /** Indicates this is a list response. */
   object?: string;
@@ -10916,7 +10520,7 @@ export interface GroupList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const GroupList = /*@__PURE__*/ S.suspend(() =>
+const GroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(GroupListDataList),
@@ -10928,7 +10532,7 @@ export interface ListItContactsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
 }
-export const ListItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10940,16 +10544,13 @@ export const ListItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type ItContactListDataList = Array<ItContact>;
-export const ItContactListDataList = /*@__PURE__*/ S.Array(
+const ItContactListDataList = /*@__PURE__*/ S.Array(
   ItContact,
 ) as any as S.Schema<ItContactListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type ItContactListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ItContactListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface ItContactList {
   /** Indicates this is a list response. */
   object: string;
@@ -10958,7 +10559,7 @@ export interface ItContactList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const ItContactList = /*@__PURE__*/ S.suspend(() =>
+const ItContactList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: ItContactListDataList,
@@ -10978,7 +10579,7 @@ export interface ListOrganizationApiKeysControllerRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListOrganizationApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -10992,11 +10593,9 @@ export const ListOrganizationApiKeysControllerRequest = /*@__PURE__*/ S.suspend(
 
 /** The entity that owns the API Key. */
 export type OrganizationApiKeyOwner = ApiKeyOwnerCase0;
-export const OrganizationApiKeyOwner = ApiKeyOwnerCase0;
-
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyPermissionsList = Array<string>;
-export const OrganizationApiKeyPermissionsList =
+const OrganizationApiKeyPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<OrganizationApiKeyPermissionsList>;
 
 export interface OrganizationApiKey {
@@ -11021,7 +10620,7 @@ export interface OrganizationApiKey {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const OrganizationApiKey = /*@__PURE__*/ S.suspend(() =>
+const OrganizationApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -11038,16 +10637,13 @@ export const OrganizationApiKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type OrganizationApiKeyListDataList = Array<OrganizationApiKey>;
-export const OrganizationApiKeyListDataList = /*@__PURE__*/ S.Array(
+const OrganizationApiKeyListDataList = /*@__PURE__*/ S.Array(
   OrganizationApiKey,
 ) as any as S.Schema<OrganizationApiKeyListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type OrganizationApiKeyListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const OrganizationApiKeyListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface OrganizationApiKeyList {
   /** Indicates this is a list response. */
   object: string;
@@ -11056,7 +10652,7 @@ export interface OrganizationApiKeyList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const OrganizationApiKeyList = /*@__PURE__*/ S.suspend(() =>
+const OrganizationApiKeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: OrganizationApiKeyListDataList,
@@ -11076,7 +10672,7 @@ export interface ListOrganizationAuthorizedApplicationsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListOrganizationAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11096,7 +10692,7 @@ export const ListOrganizationAuthorizedApplicationsControllerRequest = /*@__PURE
 
 /** The scopes granted by the user to the application. */
 export type OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList = Array<string>;
-export const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
+const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList>;
 
 export interface OrganizationAuthorizedConnectApplicationListDataItem {
@@ -11112,7 +10708,7 @@ export interface OrganizationAuthorizedConnectApplicationListDataItem {
   /** The ID of the user who authorized the application. */
   user_id: string;
 }
-export const OrganizationAuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(() =>
+const OrganizationAuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -11128,16 +10724,13 @@ export const OrganizationAuthorizedConnectApplicationListDataItem = /*@__PURE__*
 /** The list of records for the current page. */
 export type OrganizationAuthorizedConnectApplicationListDataList =
   Array<OrganizationAuthorizedConnectApplicationListDataItem>;
-export const OrganizationAuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
+const OrganizationAuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   OrganizationAuthorizedConnectApplicationListDataItem,
 ) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type OrganizationAuthorizedConnectApplicationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const OrganizationAuthorizedConnectApplicationListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface OrganizationAuthorizedConnectApplicationList {
   /** Indicates this is a list response. */
   object: string;
@@ -11146,7 +10739,7 @@ export interface OrganizationAuthorizedConnectApplicationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const OrganizationAuthorizedConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
+const OrganizationAuthorizedConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: OrganizationAuthorizedConnectApplicationListDataList,
@@ -11168,7 +10761,7 @@ export interface ListOrganizationFeatureFlagsControllerRequest {
   /** Order the results by the creation time. Defaults to `desc`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListOrganizationFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11194,7 +10787,7 @@ export interface ListOrganizationMembershipGroupsControllerGroupsRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListOrganizationMembershipGroupsControllerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationMembershipGroupsControllerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     omId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11213,7 +10806,7 @@ export const ListOrganizationMembershipGroupsControllerGroupsRequest = /*@__PURE
 }) as any as S.Schema<ListOrganizationMembershipGroupsControllerGroupsRequest>;
 
 export type ListOrganizationsControllerRequestDomainsList = Array<string>;
-export const ListOrganizationsControllerRequestDomainsList =
+const ListOrganizationsControllerRequestDomainsList =
   AgentTokenPermissionsList as any as S.Schema<ListOrganizationsControllerRequestDomainsList>;
 
 export interface ListOrganizationsControllerRequest {
@@ -11230,7 +10823,7 @@ export interface ListOrganizationsControllerRequest {
   /** Searchable text for an Organization. Matches against the organization name. */
   search?: string;
 }
-export const ListOrganizationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -11245,16 +10838,13 @@ export const ListOrganizationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type OrganizationListDataList = Array<Organization>;
-export const OrganizationListDataList = /*@__PURE__*/ S.Array(
+const OrganizationListDataList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type OrganizationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const OrganizationListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface OrganizationList {
   /** Indicates this is a list response. */
   object?: string;
@@ -11263,7 +10853,7 @@ export interface OrganizationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const OrganizationList = /*@__PURE__*/ S.suspend(() =>
+const OrganizationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(OrganizationListDataList),
@@ -11275,7 +10865,7 @@ export interface ListProviderControllerForOrganizationRequest {
   /** An [Organization](/reference/organization) identifier to list provider configurations for. */
   organizationId: string;
 }
-export const ListProviderControllerForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProviderControllerForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -11290,17 +10880,17 @@ export const ListProviderControllerForOrganizationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProviderControllerForOrganizationRequest>;
 
 export type DataIntegrationConfigurationResponseScopesList = Array<string>;
-export const DataIntegrationConfigurationResponseScopesList =
+const DataIntegrationConfigurationResponseScopesList =
   AgentTokenPermissionsList as any as S.Schema<DataIntegrationConfigurationResponseScopesList>;
 
 /** The provider-specific config values in effect for this organization, keyed by config field. Reflects the organization override for organization-credential providers, otherwise the provider root. Empty when none are configured. */
 export type DataIntegrationConfigurationResponseConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationConfigurationResponseConfigMap =
+const DataIntegrationConfigurationResponseConfigMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationConfigurationResponseConfigMap>;
 
 /** The credentials type for this integration (e.g., `shared`, `custom`, or `organization`). */
 export type DataIntegrationCredentialsCredentialsType = "shared" | "custom" | "organization";
-export const DataIntegrationCredentialsCredentialsType = S.String;
+const DataIntegrationCredentialsCredentialsType = S.String;
 
 /** Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise. */
 export interface DataIntegrationCredentials2 {
@@ -11315,7 +10905,7 @@ export interface DataIntegrationCredentials2 {
   /** The redirect URI to register with the provider when configuring the organization-managed OAuth application. */
   redirect_uri: string;
 }
-export const DataIntegrationCredentials2 = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationCredentials2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials_type: DataIntegrationCredentialsCredentialsType,
     has_credentials: S.Boolean,
@@ -11350,7 +10940,7 @@ export interface DataIntegrationConfigurationResponse {
   updated_at: string;
   credentials?: DataIntegrationCredentials2;
 }
-export const DataIntegrationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -11371,7 +10961,7 @@ export const DataIntegrationConfigurationResponse = /*@__PURE__*/ S.suspend(() =
 /** A list of data integration configurations for the organization. */
 export type DataIntegrationConfigurationListResponseDataList =
   Array<DataIntegrationConfigurationResponse>;
-export const DataIntegrationConfigurationListResponseDataList = /*@__PURE__*/ S.Array(
+const DataIntegrationConfigurationListResponseDataList = /*@__PURE__*/ S.Array(
   DataIntegrationConfigurationResponse,
 ) as any as S.Schema<DataIntegrationConfigurationListResponseDataList>;
 
@@ -11381,7 +10971,7 @@ export interface DataIntegrationConfigurationListResponse {
   /** A list of data integration configurations for the organization. */
   data: DataIntegrationConfigurationListResponseDataList;
 }
-export const DataIntegrationConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: DataIntegrationConfigurationListResponseDataList,
@@ -11400,7 +10990,7 @@ export interface ListRedirectUrisControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -11414,12 +11004,9 @@ export const ListRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
 /** Pagination cursors for navigating between pages of results. */
 export type ListRedirectUrisControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListRedirectUrisControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListRedirectUrisControllerResponseDataList = Array<RedirectUri>;
-export const ListRedirectUrisControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListRedirectUrisControllerResponseDataList = /*@__PURE__*/ S.Array(
   RedirectUri,
 ) as any as S.Schema<ListRedirectUrisControllerResponseDataList>;
 
@@ -11431,7 +11018,7 @@ export interface ListRedirectUrisControllerResponse {
   /** The list of records for the current page. */
   data?: ListRedirectUrisControllerResponseDataList;
 }
-export const ListRedirectUrisControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRedirectUrisControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -11445,7 +11032,7 @@ export interface ListSamlIdpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-export const ListSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -11457,7 +11044,7 @@ export const ListSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S.s
 
 /** Every Identity Provider signing certificate on the Connection, including expired ones, oldest first. */
 export type SamlIdpSigningCertificateListDataList = Array<SamlIdpSigningCertificate>;
-export const SamlIdpSigningCertificateListDataList = /*@__PURE__*/ S.Array(
+const SamlIdpSigningCertificateListDataList = /*@__PURE__*/ S.Array(
   SamlIdpSigningCertificate,
 ) as any as S.Schema<SamlIdpSigningCertificateListDataList>;
 
@@ -11466,7 +11053,7 @@ export interface SamlIdpSigningCertificateList {
   /** Every Identity Provider signing certificate on the Connection, including expired ones, oldest first. */
   data: SamlIdpSigningCertificateListDataList;
 }
-export const SamlIdpSigningCertificateList = /*@__PURE__*/ S.suspend(() =>
+const SamlIdpSigningCertificateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: SamlIdpSigningCertificateListDataList,
@@ -11479,7 +11066,7 @@ export interface ListSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-export const ListSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -11495,15 +11082,12 @@ export const ListSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S
 
 /** Every Service Provider encryption certificate on the Connection, including expired ones. */
 export type SamlSpEncryptionCertificateListDataList = Array<SamlSpEncryptionCertificate>;
-export const SamlSpEncryptionCertificateListDataList =
-  SamlIdpSigningCertificateListDataList as any as S.Schema<SamlSpEncryptionCertificateListDataList>;
-
 export interface SamlSpEncryptionCertificateList {
   object: string;
   /** Every Service Provider encryption certificate on the Connection, including expired ones. */
   data: SamlSpEncryptionCertificateListDataList;
 }
-export const SamlSpEncryptionCertificateList =
+const SamlSpEncryptionCertificateList =
   SamlIdpSigningCertificateList as any as S.Schema<SamlSpEncryptionCertificateList>;
 
 export interface ListUserApiKeysControllerRequest {
@@ -11520,7 +11104,7 @@ export interface ListUserApiKeysControllerRequest {
   /** The ID of the organization to filter user API keys by. When provided, only API keys created against that organization membership are returned. */
   organization_id?: string;
 }
-export const ListUserApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11535,11 +11119,9 @@ export const ListUserApiKeysControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The entity that owns the API Key. */
 export type UserApiKeyOwner = ApiKeyOwnerCase1;
-export const UserApiKeyOwner = ApiKeyOwnerCase1;
-
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyPermissionsList = Array<string>;
-export const UserApiKeyPermissionsList =
+const UserApiKeyPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<UserApiKeyPermissionsList>;
 
 export interface UserApiKey {
@@ -11564,7 +11146,7 @@ export interface UserApiKey {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UserApiKey = /*@__PURE__*/ S.suspend(() =>
+const UserApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -11581,16 +11163,13 @@ export const UserApiKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type UserApiKeyListDataList = Array<UserApiKey>;
-export const UserApiKeyListDataList = /*@__PURE__*/ S.Array(
+const UserApiKeyListDataList = /*@__PURE__*/ S.Array(
   UserApiKey,
 ) as any as S.Schema<UserApiKeyListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserApiKeyListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserApiKeyListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserApiKeyList {
   /** Indicates this is a list response. */
   object: string;
@@ -11599,7 +11178,7 @@ export interface UserApiKeyList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserApiKeyList = /*@__PURE__*/ S.suspend(() =>
+const UserApiKeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserApiKeyListDataList,
@@ -11619,7 +11198,7 @@ export interface ListUserlandUserFeatureFlagsControllerRequest {
   /** Order the results by the creation time. Defaults to `desc`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListUserlandUserFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserlandUserFeatureFlagsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11647,7 +11226,7 @@ export interface ListUserlandUserInvitesControllerRequest {
   /** The email address of the recipient. */
   email?: string;
 }
-export const ListUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -11662,16 +11241,13 @@ export const ListUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(
 
 /** The list of records for the current page. */
 export type UserlandUserInviteListDataList = Array<UserlandUserInvite>;
-export const UserlandUserInviteListDataList = /*@__PURE__*/ S.Array(
+const UserlandUserInviteListDataList = /*@__PURE__*/ S.Array(
   UserlandUserInvite,
 ) as any as S.Schema<UserlandUserInviteListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserInviteListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserlandUserInviteListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserlandUserInviteList {
   /** Indicates this is a list response. */
   object: string;
@@ -11680,7 +11256,7 @@ export interface UserlandUserInviteList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserlandUserInviteList = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserInviteList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserlandUserInviteListDataList,
@@ -11692,12 +11268,10 @@ export type ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem
   | "active"
   | "inactive"
   | "pending";
-export const ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem = S.String;
-
 export type ListUserlandUserOrganizationMembershipsControllerRequestStatusesList = Array<
   ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem | (string & {})
 >;
-export const ListUserlandUserOrganizationMembershipsControllerRequestStatusesList =
+const ListUserlandUserOrganizationMembershipsControllerRequestStatusesList =
   CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequestStatusesList>;
 
 export interface ListUserlandUserOrganizationMembershipsControllerRequest {
@@ -11716,19 +11290,18 @@ export interface ListUserlandUserOrganizationMembershipsControllerRequest {
   /** The ID of the [user](/reference/authkit/user). */
   user_id?: string;
 }
-export const ListUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      before: S.optional(S.String.pipe(T.Query())),
-      after: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      order: S.optional(PaginationOrder.pipe(T.Query())),
-      organization_id: S.optional(S.String.pipe(T.Query())),
-      statuses: S.optional(
-        ListUserlandUserOrganizationMembershipsControllerRequestStatusesList.pipe(T.Query()),
-      ),
-      user_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(T.Http({ method: "GET", uri: "/user_management/organization_memberships", code: 200 })),
+const ListUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    before: S.optional(S.String.pipe(T.Query())),
+    after: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    order: S.optional(PaginationOrder.pipe(T.Query())),
+    organization_id: S.optional(S.String.pipe(T.Query())),
+    statuses: S.optional(
+      ListUserlandUserOrganizationMembershipsControllerRequestStatusesList.pipe(T.Query()),
+    ),
+    user_id: S.optional(S.String.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/user_management/organization_memberships", code: 200 })),
 ).annotate({
   identifier: "ListUserlandUserOrganizationMembershipsControllerRequest",
 }) as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequest>;
@@ -11736,16 +11309,13 @@ export const ListUserlandUserOrganizationMembershipsControllerRequest = /*@__PUR
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipListDataList =
   Array<UserlandUserOrganizationMembership>;
-export const UserlandUserOrganizationMembershipListDataList = /*@__PURE__*/ S.Array(
+const UserlandUserOrganizationMembershipListDataList = /*@__PURE__*/ S.Array(
   UserlandUserOrganizationMembership,
 ) as any as S.Schema<UserlandUserOrganizationMembershipListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserOrganizationMembershipListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserlandUserOrganizationMembershipListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserlandUserOrganizationMembershipList {
   /** Indicates this is a list response. */
   object: string;
@@ -11754,7 +11324,7 @@ export interface UserlandUserOrganizationMembershipList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserlandUserOrganizationMembershipList = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserOrganizationMembershipList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserlandUserOrganizationMembershipListDataList,
@@ -11776,7 +11346,7 @@ export interface ListUserlandUserSessionsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `desc`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListUserlandUserSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserlandUserSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11791,9 +11361,6 @@ export const ListUserlandUserSessionsControllerRequest = /*@__PURE__*/ S.suspend
 /** Pagination cursors for navigating between pages of results. */
 export type ListUserlandUserSessionsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListUserlandUserSessionsControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** Information about the impersonator if this session was created via impersonation. */
 export interface ListUserlandUserSessionsControllerResponseDataItemImpersonator {
   /** The email address of the WorkOS Dashboard user who is impersonating the user. */
@@ -11801,15 +11368,14 @@ export interface ListUserlandUserSessionsControllerResponseDataItemImpersonator 
   /** The justification the impersonator gave for impersonating the user. */
   reason: string | null;
 }
-export const ListUserlandUserSessionsControllerResponseDataItemImpersonator =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-      reason: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "ListUserlandUserSessionsControllerResponseDataItemImpersonator",
-  }) as any as S.Schema<ListUserlandUserSessionsControllerResponseDataItemImpersonator>;
+const ListUserlandUserSessionsControllerResponseDataItemImpersonator = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    reason: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "ListUserlandUserSessionsControllerResponseDataItemImpersonator",
+}) as any as S.Schema<ListUserlandUserSessionsControllerResponseDataItemImpersonator>;
 
 /** The authentication method used to create this session. */
 export type ListUserlandUserSessionsControllerResponseDataItemAuthMethod =
@@ -11823,14 +11389,14 @@ export type ListUserlandUserSessionsControllerResponseDataItemAuthMethod =
   | "password"
   | "sso"
   | "unknown";
-export const ListUserlandUserSessionsControllerResponseDataItemAuthMethod = S.String;
+const ListUserlandUserSessionsControllerResponseDataItemAuthMethod = S.String;
 
 /** The current status of the session. */
 export type ListUserlandUserSessionsControllerResponseDataItemStatus =
   | "active"
   | "expired"
   | "revoked";
-export const ListUserlandUserSessionsControllerResponseDataItemStatus = S.String;
+const ListUserlandUserSessionsControllerResponseDataItemStatus = S.String;
 
 export interface ListUserlandUserSessionsControllerResponseDataItem {
   /** Distinguishes the session object. */
@@ -11860,7 +11426,7 @@ export interface ListUserlandUserSessionsControllerResponseDataItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ListUserlandUserSessionsControllerResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListUserlandUserSessionsControllerResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -11883,7 +11449,7 @@ export const ListUserlandUserSessionsControllerResponseDataItem = /*@__PURE__*/ 
 /** The list of records for the current page. */
 export type ListUserlandUserSessionsControllerResponseDataList =
   Array<ListUserlandUserSessionsControllerResponseDataItem>;
-export const ListUserlandUserSessionsControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListUserlandUserSessionsControllerResponseDataList = /*@__PURE__*/ S.Array(
   ListUserlandUserSessionsControllerResponseDataItem,
 ) as any as S.Schema<ListUserlandUserSessionsControllerResponseDataList>;
 
@@ -11895,7 +11461,7 @@ export interface ListUserlandUserSessionsControllerResponse {
   /** The list of records for the current page. */
   data?: ListUserlandUserSessionsControllerResponseDataList;
 }
-export const ListUserlandUserSessionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserlandUserSessionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -11906,7 +11472,7 @@ export const ListUserlandUserSessionsControllerResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListUserlandUserSessionsControllerResponse>;
 
 export interface ListWaitlistsControllerRequest {}
-export const ListWaitlistsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user_management/waitlists", code: 200 })),
 ).annotate({
   identifier: "ListWaitlistsControllerRequest",
@@ -11922,7 +11488,7 @@ export interface Waitlist {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const Waitlist = /*@__PURE__*/ S.suspend(() =>
+const Waitlist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -11933,16 +11499,13 @@ export const Waitlist = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type ListWaitlistsControllerResponseDataList = Array<Waitlist>;
-export const ListWaitlistsControllerResponseDataList = /*@__PURE__*/ S.Array(
+const ListWaitlistsControllerResponseDataList = /*@__PURE__*/ S.Array(
   Waitlist,
 ) as any as S.Schema<ListWaitlistsControllerResponseDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type ListWaitlistsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListWaitlistsControllerResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface ListWaitlistsControllerResponse {
   /** Indicates this is a list response. */
   object: string;
@@ -11951,7 +11514,7 @@ export interface ListWaitlistsControllerResponse {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const ListWaitlistsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: ListWaitlistsControllerResponseDataList,
@@ -11962,7 +11525,7 @@ export const ListWaitlistsControllerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWaitlistsControllerResponse>;
 
 export type ListWaitlistsControllerEntriesRequestState = "pending" | "approved" | "denied";
-export const ListWaitlistsControllerEntriesRequestState = S.String;
+const ListWaitlistsControllerEntriesRequestState = S.String;
 
 export interface ListWaitlistsControllerEntriesRequest {
   /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. The default waitlist is created when its first entry is added, so read requests for `default` return a `404` until then. */
@@ -11980,7 +11543,7 @@ export interface ListWaitlistsControllerEntriesRequest {
   /** Filter waitlist entries by their exact email address. */
   email?: string;
 }
-export const ListWaitlistsControllerEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistsControllerEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -11997,12 +11560,9 @@ export const ListWaitlistsControllerEntriesRequest = /*@__PURE__*/ S.suspend(() 
 /** Pagination cursors for navigating between pages of results. */
 export type ListWaitlistsControllerEntriesResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const ListWaitlistsControllerEntriesResponseListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 /** The list of records for the current page. */
 export type ListWaitlistsControllerEntriesResponseDataList = Array<WaitlistEntry>;
-export const ListWaitlistsControllerEntriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListWaitlistsControllerEntriesResponseDataList = /*@__PURE__*/ S.Array(
   WaitlistEntry,
 ) as any as S.Schema<ListWaitlistsControllerEntriesResponseDataList>;
 
@@ -12014,7 +11574,7 @@ export interface ListWaitlistsControllerEntriesResponse {
   /** The list of records for the current page. */
   data?: ListWaitlistsControllerEntriesResponseDataList;
 }
-export const ListWaitlistsControllerEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistsControllerEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
@@ -12034,7 +11594,7 @@ export interface ListWebhookEndpointsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const ListWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -12047,16 +11607,13 @@ export const ListWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The list of records for the current page. */
 export type WebhookEndpointListDataList = Array<WebhookEndpointJson>;
-export const WebhookEndpointListDataList = /*@__PURE__*/ S.Array(
+const WebhookEndpointListDataList = /*@__PURE__*/ S.Array(
   WebhookEndpointJson,
 ) as any as S.Schema<WebhookEndpointListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type WebhookEndpointListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const WebhookEndpointListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface WebhookEndpointList {
   /** Indicates this is a list response. */
   object?: string;
@@ -12065,7 +11622,7 @@ export interface WebhookEndpointList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const WebhookEndpointList = /*@__PURE__*/ S.suspend(() =>
+const WebhookEndpointList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(WebhookEndpointListDataList),
@@ -12077,7 +11634,7 @@ export interface LogoutSsoControllerRequest {
   /** The logout token returned from the [Logout Authorize](/reference/sso/logout/authorize) endpoint. */
   token: string;
 }
-export const LogoutSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const LogoutSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/sso/logout", code: 200 })),
@@ -12086,7 +11643,7 @@ export const LogoutSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogoutSsoControllerRequest>;
 
 export interface LogoutSsoControllerResponse {}
-export const LogoutSsoControllerResponse =
+const LogoutSsoControllerResponse =
   DeleteGroupsControllerResponse as any as S.Schema<LogoutSsoControllerResponse>;
 
 export interface LogoutUserlandSessionsControllerRequest {
@@ -12095,7 +11652,7 @@ export interface LogoutUserlandSessionsControllerRequest {
   /** The URL to redirect the user to after logout. */
   return_to?: string;
 }
-export const LogoutUserlandSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const LogoutUserlandSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Query()),
     return_to: S.optional(S.String.pipe(T.Query())),
@@ -12105,14 +11662,14 @@ export const LogoutUserlandSessionsControllerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<LogoutUserlandSessionsControllerRequest>;
 
 export interface LogoutUserlandSessionsControllerResponse {}
-export const LogoutUserlandSessionsControllerResponse =
+const LogoutUserlandSessionsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<LogoutUserlandSessionsControllerResponse>;
 
 export interface OrganizationsControllerFindRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-export const OrganizationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{id}", code: 200 })),
@@ -12134,14 +11691,14 @@ export interface PatchConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `name` is mapped from. Set to `null` to unset the mapping. */
   name?: string | null;
 }
-export const PatchConnectionStandardAttributesDto =
+const PatchConnectionStandardAttributesDto =
   CreateConnectionStandardAttributesDto as any as S.Schema<PatchConnectionStandardAttributesDto>;
 
 /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. Only the provided keys are updated; a `null` value unsets that mapping. */
 export type PatchConnectionAttributeMapsDtoCustomAttributesMap = {
   [key: string]: string | null | undefined;
 };
-export const PatchConnectionAttributeMapsDtoCustomAttributesMap = /*@__PURE__*/ S.Record(
+const PatchConnectionAttributeMapsDtoCustomAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<PatchConnectionAttributeMapsDtoCustomAttributesMap>;
@@ -12152,7 +11709,7 @@ export interface PatchConnectionAttributeMapsDto {
   /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. Only the provided keys are updated; a `null` value unsets that mapping. */
   custom_attributes?: PatchConnectionAttributeMapsDtoCustomAttributesMap;
 }
-export const PatchConnectionAttributeMapsDto = /*@__PURE__*/ S.suspend(() =>
+const PatchConnectionAttributeMapsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     standard_attributes: S.optional(PatchConnectionStandardAttributesDto),
     custom_attributes: S.optional(PatchConnectionAttributeMapsDtoCustomAttributesMap),
@@ -12173,7 +11730,7 @@ export interface PatchConnectionSamlOptionsDto {
   /** The Identity Provider SSO URL. */
   idp_sso_url?: string;
 }
-export const PatchConnectionSamlOptionsDto = /*@__PURE__*/ S.suspend(() =>
+const PatchConnectionSamlOptionsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idp_metadata_url: S.optional(S.NullOr(S.String)),
     acs_url: S.optional(S.NullOr(S.String)),
@@ -12190,7 +11747,7 @@ export type PatchConnectionOidcOptionsDtoTokenAuthenticationMethod =
   | "client_secret_post"
   | "client_secret_basic"
   | "private_key_jwt";
-export const PatchConnectionOidcOptionsDtoTokenAuthenticationMethod = S.String;
+const PatchConnectionOidcOptionsDtoTokenAuthenticationMethod = S.String;
 
 /** The ID-token signing algorithm. */
 export type PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
@@ -12207,7 +11764,7 @@ export type PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm = S.String;
+const PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm = S.String;
 
 export interface PatchConnectionOidcOptionsDto {
   /** The OIDC discovery endpoint. */
@@ -12231,7 +11788,7 @@ export interface PatchConnectionOidcOptionsDto {
   /** Whether to fetch additional profile attributes from the userinfo endpoint. */
   fetch_user_info?: boolean;
 }
-export const PatchConnectionOidcOptionsDto = /*@__PURE__*/ S.suspend(() =>
+const PatchConnectionOidcOptionsDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discovery_endpoint: S.optional(S.String),
     client_id: S.optional(S.String),
@@ -12264,7 +11821,7 @@ export interface PatchConnectionsControllerRequest {
   /** Protocol configuration for OIDC connections. Only the provided fields are updated. Mutually exclusive with `saml_options`. */
   oidc_options?: PatchConnectionOidcOptionsDto;
 }
-export const PatchConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -12279,12 +11836,12 @@ export const PatchConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchConnectionsControllerRequest>;
 
 export type ProviderControllerConfigureRequestScopesList = Array<string>;
-export const ProviderControllerConfigureRequestScopesList =
+const ProviderControllerConfigureRequestScopesList =
   AgentTokenPermissionsList as any as S.Schema<ProviderControllerConfigureRequestScopesList>;
 
 /** Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field's pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected. */
 export type ProviderControllerConfigureRequestConfigMap = { [key: string]: string | undefined };
-export const ProviderControllerConfigureRequestConfigMap =
+const ProviderControllerConfigureRequestConfigMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ProviderControllerConfigureRequestConfigMap>;
 
 export interface ProviderControllerConfigureRequest {
@@ -12303,7 +11860,7 @@ export interface ProviderControllerConfigureRequest {
   /** Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field's pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected. */
   config?: ProviderControllerConfigureRequestConfigMap;
 }
-export const ProviderControllerConfigureRequest = /*@__PURE__*/ S.suspend(() =>
+const ProviderControllerConfigureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -12333,11 +11890,11 @@ export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Social"
   | "SSO"
   | "Other";
-export const RadarStandaloneControllerAssessRequestAuthMethod = S.String;
+const RadarStandaloneControllerAssessRequestAuthMethod = S.String;
 
 /** The action being performed. */
 export type RadarStandaloneControllerAssessRequestAction = "sign-up" | "sign-in";
-export const RadarStandaloneControllerAssessRequestAction = S.String;
+const RadarStandaloneControllerAssessRequestAction = S.String;
 
 export interface RadarStandaloneControllerAssessRequest {
   /** The IP address of the request to assess. */
@@ -12353,7 +11910,7 @@ export interface RadarStandaloneControllerAssessRequest {
   /** An optional Radar signals ID for the request. */
   signals_id?: string;
 }
-export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(() =>
+const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip_address: S.String,
     user_agent: S.String,
@@ -12368,7 +11925,7 @@ export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(()
 
 /** The verdict of the risk assessment. */
 export type RadarStandaloneResponseVerdict = "allow" | "block" | "challenge";
-export const RadarStandaloneResponseVerdict = S.String;
+const RadarStandaloneResponseVerdict = S.String;
 
 /** The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`. */
 export type RadarStandaloneResponseControl =
@@ -12379,7 +11936,7 @@ export type RadarStandaloneResponseControl =
   | "stale_account"
   | "unrecognized_device"
   | "restriction";
-export const RadarStandaloneResponseControl = S.String;
+const RadarStandaloneResponseControl = S.String;
 
 /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
 export type RadarStandaloneResponseBlocklistType =
@@ -12390,7 +11947,7 @@ export type RadarStandaloneResponseBlocklistType =
   | "user_agent"
   | "device_fingerprint"
   | "country";
-export const RadarStandaloneResponseBlocklistType = S.String;
+const RadarStandaloneResponseBlocklistType = S.String;
 
 export interface RadarStandaloneResponse {
   /** The verdict of the risk assessment. */
@@ -12404,7 +11961,7 @@ export interface RadarStandaloneResponse {
   /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
   blocklist_type?: RadarStandaloneResponseBlocklistType;
 }
-export const RadarStandaloneResponse = /*@__PURE__*/ S.suspend(() =>
+const RadarStandaloneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verdict: S.optional(RadarStandaloneResponseVerdict),
     reason: S.optional(S.String),
@@ -12422,10 +11979,10 @@ export type RadarStandaloneControllerDeleteRadarListEntryRequestType =
   | "user_agent"
   | "device_fingerprint"
   | "country";
-export const RadarStandaloneControllerDeleteRadarListEntryRequestType = S.String;
+const RadarStandaloneControllerDeleteRadarListEntryRequestType = S.String;
 
 export type RadarStandaloneControllerDeleteRadarListEntryRequestAction = "block" | "allow";
-export const RadarStandaloneControllerDeleteRadarListEntryRequestAction = S.String;
+const RadarStandaloneControllerDeleteRadarListEntryRequestAction = S.String;
 
 export interface RadarStandaloneControllerDeleteRadarListEntryRequest {
   /** The type of the Radar list (e.g. ip_address, domain, email). */
@@ -12435,7 +11992,7 @@ export interface RadarStandaloneControllerDeleteRadarListEntryRequest {
   /** The value to remove from the list. Must match an existing entry. */
   entry: string;
 }
-export const RadarStandaloneControllerDeleteRadarListEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const RadarStandaloneControllerDeleteRadarListEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RadarStandaloneControllerDeleteRadarListEntryRequestType.pipe(T.Label()),
     action: RadarStandaloneControllerDeleteRadarListEntryRequestAction.pipe(T.Label()),
@@ -12446,7 +12003,7 @@ export const RadarStandaloneControllerDeleteRadarListEntryRequest = /*@__PURE__*
 }) as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryRequest>;
 
 export interface RadarStandaloneControllerDeleteRadarListEntryResponse {}
-export const RadarStandaloneControllerDeleteRadarListEntryResponse =
+const RadarStandaloneControllerDeleteRadarListEntryResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryResponse>;
 
 export type RadarStandaloneControllerUpdateRadarListRequestType =
@@ -12457,10 +12014,10 @@ export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "user_agent"
   | "device_fingerprint"
   | "country";
-export const RadarStandaloneControllerUpdateRadarListRequestType = S.String;
+const RadarStandaloneControllerUpdateRadarListRequestType = S.String;
 
 export type RadarStandaloneControllerUpdateRadarListRequestAction = "block" | "allow";
-export const RadarStandaloneControllerUpdateRadarListRequestAction = S.String;
+const RadarStandaloneControllerUpdateRadarListRequestAction = S.String;
 
 export interface RadarStandaloneControllerUpdateRadarListRequest {
   /** The type of the Radar list (e.g. ip_address, domain, email). */
@@ -12470,7 +12027,7 @@ export interface RadarStandaloneControllerUpdateRadarListRequest {
   /** The value to add to the list. Must match the format of the list type (e.g. a valid IP address for `ip_address`, a valid email for `email`). */
   entry: string;
 }
-export const RadarStandaloneControllerUpdateRadarListRequest = /*@__PURE__*/ S.suspend(() =>
+const RadarStandaloneControllerUpdateRadarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RadarStandaloneControllerUpdateRadarListRequestType.pipe(T.Label()),
     action: RadarStandaloneControllerUpdateRadarListRequestAction.pipe(T.Label()),
@@ -12484,7 +12041,7 @@ export interface RadarListEntryAlreadyPresentResponse {
   /** A message indicating the entry already exists. */
   message?: string;
 }
-export const RadarListEntryAlreadyPresentResponse = /*@__PURE__*/ S.suspend(() =>
+const RadarListEntryAlreadyPresentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -12498,7 +12055,7 @@ export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssig
   /** The ID of the group role assignment to remove. */
   role_assignment_id: string;
 }
-export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest =
+const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       group_id: S.String.pipe(T.Label()),
@@ -12515,7 +12072,7 @@ export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmen
   }) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest>;
 
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse {}
-export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse =
+const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse>;
 
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest {
@@ -12530,7 +12087,7 @@ export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssig
   /** The resource type slug. */
   resource_type_slug?: string;
 }
-export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest =
+const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       group_id: S.String.pipe(T.Label()),
@@ -12550,7 +12107,7 @@ export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmen
   }) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest>;
 
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse {}
-export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse =
+const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse>;
 
 export interface RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest {
@@ -12561,7 +12118,7 @@ export interface RemoveAuthorizationOrganizationRolePermissionsControllerPermiss
   /** The slug of the permission to remove. */
   permissionSlug: string;
 }
-export const RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest =
+const RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
@@ -12590,8 +12147,8 @@ export interface RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaReque
   /** The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
   resource_type_slug?: string;
 }
-export const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organization_membership_id: S.String.pipe(T.Label()),
       role_slug: S.String,
@@ -12605,12 +12162,12 @@ export const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest",
-  }) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest>;
+).annotate({
+  identifier: "RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest",
+}) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest>;
 
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse {}
-export const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse =
+const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse =
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse>;
 
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest {
@@ -12619,24 +12176,23 @@ export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest {
   /** The ID of the role assignment to remove. */
   role_assignment_id: string;
 }
-export const RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organization_membership_id: S.String.pipe(T.Label()),
-      role_assignment_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/authorization/organization_memberships/{organization_membership_id}/role_assignments/{role_assignment_id}",
-        code: 200,
-      }),
-    ),
+const RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_membership_id: S.String.pipe(T.Label()),
+    role_assignment_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/authorization/organization_memberships/{organization_membership_id}/role_assignments/{role_assignment_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest",
 }) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest>;
 
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse {}
-export const RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse =
+const RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse =
   DeleteUserlandUserOrganizationMembershipsControllerResponse as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse>;
 
 export interface RemoveGroupMembershipsControllerMemberRequest {
@@ -12647,7 +12203,7 @@ export interface RemoveGroupMembershipsControllerMemberRequest {
   /** Unique identifier of the Organization Membership. */
   omId: string;
 }
-export const RemoveGroupMembershipsControllerMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveGroupMembershipsControllerMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     groupId: S.String.pipe(T.Label()),
@@ -12664,7 +12220,7 @@ export const RemoveGroupMembershipsControllerMemberRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<RemoveGroupMembershipsControllerMemberRequest>;
 
 export interface RemoveGroupMembershipsControllerMemberResponse {}
-export const RemoveGroupMembershipsControllerMemberResponse =
+const RemoveGroupMembershipsControllerMemberResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<RemoveGroupMembershipsControllerMemberResponse>;
 
 export interface ReplaceGroupRoleAssignmentEntryDto {
@@ -12677,7 +12233,7 @@ export interface ReplaceGroupRoleAssignmentEntryDto {
   /** The resource type slug. */
   resource_type_slug?: string;
 }
-export const ReplaceGroupRoleAssignmentEntryDto = /*@__PURE__*/ S.suspend(() =>
+const ReplaceGroupRoleAssignmentEntryDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_slug: S.String,
     resource_id: S.optional(S.String),
@@ -12691,7 +12247,7 @@ export const ReplaceGroupRoleAssignmentEntryDto = /*@__PURE__*/ S.suspend(() =>
 /** The list of role assignments that should exist for the group. All existing assignments will be replaced. */
 export type ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList =
   Array<ReplaceGroupRoleAssignmentEntryDto>;
-export const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList =
+const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList =
   /*@__PURE__*/ S.Array(
     ReplaceGroupRoleAssignmentEntryDto,
   ) as any as S.Schema<ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList>;
@@ -12702,7 +12258,7 @@ export interface ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssi
   /** The list of role assignments that should exist for the group. All existing assignments will be replaced. */
   role_assignments: ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList;
 }
-export const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest =
+const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       group_id: S.String.pipe(T.Label()),
@@ -12811,7 +12367,7 @@ export type ResendUserlandUserInvitesControllerRequestLocale =
   | "zh-HK"
   | "zh-TW"
   | "zu";
-export const ResendUserlandUserInvitesControllerRequestLocale = S.String;
+const ResendUserlandUserInvitesControllerRequestLocale = S.String;
 
 export interface ResendUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
@@ -12819,7 +12375,7 @@ export interface ResendUserlandUserInvitesControllerRequest {
   /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
   locale?: ResendUserlandUserInvitesControllerRequestLocale | (string & {});
 }
-export const ResendUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ResendUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     locale: S.optional(ResendUserlandUserInvitesControllerRequestLocale),
@@ -12834,7 +12390,7 @@ export interface ResetUserlandUsersControllerPassword0Request {
   /** The new password to set for the user. */
   new_password?: string | Redacted.Redacted<string>;
 }
-export const ResetUserlandUsersControllerPassword0Request = /*@__PURE__*/ S.suspend(() =>
+const ResetUserlandUsersControllerPassword0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     new_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -12847,7 +12403,7 @@ export interface ResetPasswordResponse {
   /** The user whose password was reset. */
   user?: UserlandUser;
 }
-export const ResetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(UserlandUser),
   }),
@@ -12857,7 +12413,7 @@ export interface RevokeAgentInstanceSessionsControllerRequest {
   /** The unique ID of the agent instance session. */
   agent_instance_session_id: string;
 }
-export const RevokeAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAgentInstanceSessionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_instance_session_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -12877,7 +12433,7 @@ export interface RevokeItContactsControllerRequest {
   /** The ID of the IT contact. */
   contact_id: string;
 }
-export const RevokeItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     contact_id: S.String.pipe(T.Label()),
@@ -12893,14 +12449,14 @@ export const RevokeItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeItContactsControllerRequest>;
 
 export interface RevokeItContactsControllerResponse {}
-export const RevokeItContactsControllerResponse =
+const RevokeItContactsControllerResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<RevokeItContactsControllerResponse>;
 
 export interface RevokeUserlandSessionsControllerSessionRequest {
   /** The ID of the session to revoke. This can be extracted from the `sid` claim of the access token. */
   session_id?: string;
 }
-export const RevokeUserlandSessionsControllerSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeUserlandSessionsControllerSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/sessions/revoke", code: 200 })),
@@ -12909,14 +12465,14 @@ export const RevokeUserlandSessionsControllerSessionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<RevokeUserlandSessionsControllerSessionRequest>;
 
 export interface RevokeUserlandSessionsControllerSessionResponse {}
-export const RevokeUserlandSessionsControllerSessionResponse =
+const RevokeUserlandSessionsControllerSessionResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<RevokeUserlandSessionsControllerSessionResponse>;
 
 export interface RevokeUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
 }
-export const RevokeUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeUserlandUserInvitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/invitations/{id}/revoke", code: 200 })),
@@ -12930,8 +12486,6 @@ export type RevokeUserlandUserInvitesControllerResponseState =
   | "accepted"
   | "expired"
   | "revoked";
-export const RevokeUserlandUserInvitesControllerResponseState = S.String;
-
 export interface RevokeUserlandUserInvitesControllerResponse {
   /** Distinguishes the invitation object. */
   object: string;
@@ -12964,7 +12518,7 @@ export interface RevokeUserlandUserInvitesControllerResponse {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url: string;
 }
-export const RevokeUserlandUserInvitesControllerResponse =
+const RevokeUserlandUserInvitesControllerResponse =
   AcceptUserlandUserInvitesControllerResponse as any as S.Schema<RevokeUserlandUserInvitesControllerResponse>;
 
 export interface SendPublicRadarChallengesControllerRadarSmsChallengeRequest {
@@ -12979,15 +12533,14 @@ export interface SendPublicRadarChallengesControllerRadarSmsChallengeRequest {
   /** The user agent string from the user's request. */
   user_agent?: string;
 }
-export const SendPublicRadarChallengesControllerRadarSmsChallengeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      user_id: S.String,
-      pending_authentication_token: S.String,
-      phone_number: S.String,
-      ip_address: S.optional(S.String),
-      user_agent: S.optional(S.String),
-    }).pipe(T.Http({ method: "POST", uri: "/user_management/radar_challenges", code: 200 })),
+const SendPublicRadarChallengesControllerRadarSmsChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    user_id: S.String,
+    pending_authentication_token: S.String,
+    phone_number: S.String,
+    ip_address: S.optional(S.String),
+    user_agent: S.optional(S.String),
+  }).pipe(T.Http({ method: "POST", uri: "/user_management/radar_challenges", code: 200 })),
 ).annotate({
   identifier: "SendPublicRadarChallengesControllerRadarSmsChallengeRequest",
 }) as any as S.Schema<SendPublicRadarChallengesControllerRadarSmsChallengeRequest>;
@@ -12998,7 +12551,7 @@ export interface SendRadarSmsChallengeResponse {
   /** The phone number the verification code was sent to. */
   phone_number: string;
 }
-export const SendRadarSmsChallengeResponse = /*@__PURE__*/ S.suspend(() =>
+const SendRadarSmsChallengeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verification_id: S.String,
     phone_number: S.String,
@@ -13013,7 +12566,7 @@ export interface SendUserlandUsersControllerEmailChangeRequest {
   /** The new email address to change to. */
   new_email?: string;
 }
-export const SendUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const SendUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     new_email: S.optional(S.String),
@@ -13035,7 +12588,7 @@ export interface EmailChange {
   /** The timestamp when the email change challenge was created. */
   created_at?: string;
 }
-export const EmailChange = /*@__PURE__*/ S.suspend(() =>
+const EmailChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     user: S.optional(UserlandUser),
@@ -13049,7 +12602,7 @@ export interface SendUserlandUsersControllerVerificationEmail0Request {
   /** The ID of the user. */
   id: string;
 }
-export const SendUserlandUsersControllerVerificationEmail0Request = /*@__PURE__*/ S.suspend(() =>
+const SendUserlandUsersControllerVerificationEmail0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -13067,7 +12620,7 @@ export interface SendVerificationEmailResponse {
   /** The user to whom the verification email was sent. */
   user?: UserlandUser;
 }
-export const SendVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
+const SendVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(UserlandUser),
   }),
@@ -13078,7 +12631,7 @@ export const SendVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
 /** The permission slugs to assign to the role. */
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
   Array<string>;
-export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
+const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList>;
 
 export interface SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest {
@@ -13089,7 +12642,7 @@ export interface SetAuthorizationOrganizationRolePermissionsControllerPermission
   /** The permission slugs to assign to the role. */
   permissions?: SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList;
 }
-export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest =
+const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
@@ -13112,13 +12665,12 @@ export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsReq
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponseType =
-  S.String;
+const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
   Array<string>;
-export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
+const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList>;
 
 export interface SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse {
@@ -13143,7 +12695,7 @@ export interface SetAuthorizationOrganizationRolePermissionsControllerPermission
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse =
+const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.String,
@@ -13165,7 +12717,7 @@ export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRes
 /** The permission slugs to assign to the role. */
 export type SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
   Array<string>;
-export const SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
+const SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList>;
 
 export interface SetAuthorizationRolePermissionsControllerPermissionsRequest {
@@ -13174,14 +12726,13 @@ export interface SetAuthorizationRolePermissionsControllerPermissionsRequest {
   /** The permission slugs to assign to the role. */
   permissions?: SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList;
 }
-export const SetAuthorizationRolePermissionsControllerPermissionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-      permissions: S.optional(
-        SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList,
-      ),
-    }).pipe(T.Http({ method: "PUT", uri: "/authorization/roles/{slug}/permissions", code: 200 })),
+const SetAuthorizationRolePermissionsControllerPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slug: S.String.pipe(T.Label()),
+    permissions: S.optional(
+      SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList,
+    ),
+  }).pipe(T.Http({ method: "PUT", uri: "/authorization/roles/{slug}/permissions", code: 200 })),
 ).annotate({
   identifier: "SetAuthorizationRolePermissionsControllerPermissionsRequest",
 }) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequest>;
@@ -13190,12 +12741,12 @@ export const SetAuthorizationRolePermissionsControllerPermissionsRequest = /*@__
 export type SetAuthorizationRolePermissionsControllerPermissionsResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const SetAuthorizationRolePermissionsControllerPermissionsResponseType = S.String;
+const SetAuthorizationRolePermissionsControllerPermissionsResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
   Array<string>;
-export const SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
+const SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList>;
 
 export interface SetAuthorizationRolePermissionsControllerPermissionsResponse {
@@ -13220,20 +12771,19 @@ export interface SetAuthorizationRolePermissionsControllerPermissionsResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const SetAuthorizationRolePermissionsControllerPermissionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      slug: S.String,
-      object: S.String,
-      id: S.String,
-      name: S.String,
-      description: S.NullOr(S.String),
-      type: SetAuthorizationRolePermissionsControllerPermissionsResponseType,
-      resource_type_slug: S.String,
-      permissions: SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList,
-      created_at: S.String,
-      updated_at: S.String,
-    }),
+const SetAuthorizationRolePermissionsControllerPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slug: S.String,
+    object: S.String,
+    id: S.String,
+    name: S.String,
+    description: S.NullOr(S.String),
+    type: SetAuthorizationRolePermissionsControllerPermissionsResponseType,
+    resource_type_slug: S.String,
+    permissions: SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList,
+    created_at: S.String,
+    updated_at: S.String,
+  }),
 ).annotate({
   identifier: "SetAuthorizationRolePermissionsControllerPermissionsResponse",
 }) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponse>;
@@ -13242,7 +12792,7 @@ export interface SsoControllerJsonWebKeySetRequest {
   /** Identifies the application making the request to the WorkOS server. You can obtain your client ID from the [API Keys](https://dashboard.workos.com/api-keys) page in the dashboard. */
   clientId: string;
 }
-export const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ S.suspend(() =>
+const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sso/jwks/{clientId}", code: 200 })),
@@ -13252,7 +12802,7 @@ export const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** X.509 certificate chain. */
 export type JwksResponseKeysItemX5cList = Array<string>;
-export const JwksResponseKeysItemX5cList =
+const JwksResponseKeysItemX5cList =
   AgentTokenPermissionsList as any as S.Schema<JwksResponseKeysItemX5cList>;
 
 export interface JwksResponseKeysItem {
@@ -13273,7 +12823,7 @@ export interface JwksResponseKeysItem {
   /** X.509 certificate SHA-256 thumbprint. */
   x5t_S256: string;
 }
-export const JwksResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
+const JwksResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alg: S.String,
     kty: S.String,
@@ -13288,7 +12838,7 @@ export const JwksResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The public keys used for verifying access tokens. */
 export type JwksResponseKeysList = Array<JwksResponseKeysItem>;
-export const JwksResponseKeysList = /*@__PURE__*/ S.Array(
+const JwksResponseKeysList = /*@__PURE__*/ S.Array(
   JwksResponseKeysItem,
 ) as any as S.Schema<JwksResponseKeysList>;
 
@@ -13296,7 +12846,7 @@ export interface JwksResponse {
   /** The public keys used for verifying access tokens. */
   keys?: JwksResponseKeysList;
 }
-export const JwksResponse = /*@__PURE__*/ S.suspend(() =>
+const JwksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(JwksResponseKeysList),
   }),
@@ -13306,7 +12856,7 @@ export interface SsoControllerLogoutAuthorizeRequest {
   /** The unique ID of the profile to log out. */
   profile_id: string;
 }
-export const SsoControllerLogoutAuthorizeRequest = /*@__PURE__*/ S.suspend(() =>
+const SsoControllerLogoutAuthorizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profile_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/sso/logout/authorize", code: 200 })),
@@ -13320,7 +12870,7 @@ export interface SsoLogoutAuthorizeResponse {
   /** The logout token to be used in the [Logout Redirect](/reference/sso/logout) endpoint. */
   logout_token?: string;
 }
-export const SsoLogoutAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
+const SsoLogoutAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logout_url: S.optional(S.String),
     logout_token: S.optional(S.String),
@@ -13332,7 +12882,7 @@ export const SsoLogoutAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
 export type SsoControllerTokenRequestGrantType =
   | "authorization_code"
   | "urn:ietf:params:oauth:grant-type:token-exchange";
-export const SsoControllerTokenRequestGrantType = S.String;
+const SsoControllerTokenRequestGrantType = S.String;
 
 export interface SsoControllerTokenRequest {
   /** The client ID of the WorkOS environment. */
@@ -13352,7 +12902,7 @@ export interface SsoControllerTokenRequest {
   /** The ID of the organization whose connection the subject token is validated against. Required when `grant_type` is `urn:ietf:params:oauth:grant-type:token-exchange`. Must be sent in the request body. */
   organization_id?: string;
 }
-export const SsoControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const SsoControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Query()),
     client_secret: S.String.pipe(T.Query()),
@@ -13369,7 +12919,7 @@ export const SsoControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of OAuth scopes for which the access token is authorized. */
 export type SsoTokenResponseOauthTokensScopesList = Array<string>;
-export const SsoTokenResponseOauthTokensScopesList =
+const SsoTokenResponseOauthTokensScopesList =
   AgentTokenPermissionsList as any as S.Schema<SsoTokenResponseOauthTokensScopesList>;
 
 /** OAuth tokens issued by the identity provider, if available. */
@@ -13385,7 +12935,7 @@ export interface SsoTokenResponseOauthTokens {
   /** A list of OAuth scopes for which the access token is authorized. */
   scopes: SsoTokenResponseOauthTokensScopesList;
 }
-export const SsoTokenResponseOauthTokens = /*@__PURE__*/ S.suspend(() =>
+const SsoTokenResponseOauthTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     refresh_token: S.String.pipe(T.SensitiveValue({})),
@@ -13409,7 +12959,7 @@ export interface SsoTokenResponse {
   /** OAuth tokens issued by the identity provider, if available. */
   oauth_tokens?: SsoTokenResponseOauthTokens;
 }
-export const SsoTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const SsoTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_type: S.optional(S.String),
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -13423,7 +12973,7 @@ export interface SyncDirectoriesControllerDirectoryRequest {
   /** Unique identifier for the Directory. */
   id: string;
 }
-export const SyncDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/directories/{id}/sync", code: 200 })),
@@ -13432,24 +12982,18 @@ export const SyncDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<SyncDirectoriesControllerDirectoryRequest>;
 
 export interface SyncDirectoriesControllerDirectoryResponse {}
-export const SyncDirectoriesControllerDirectoryResponse =
+const SyncDirectoriesControllerDirectoryResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<SyncDirectoriesControllerDirectoryResponse>;
 
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment. */
 export type UpdateAgentBlueprintsControllerRequestPermissionsList = Array<string>;
-export const UpdateAgentBlueprintsControllerRequestPermissionsList =
+const UpdateAgentBlueprintsControllerRequestPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestPermissionsList>;
 
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
 export type UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = Array<string>;
-export const UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
-
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
 export type UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList = Array<string>;
-export const UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
-
 /** Who may mint sessions from this blueprint. Omitted lists are left unchanged. */
 export interface UpdateAgentBlueprintsControllerRequestInvocableBy {
   /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
@@ -13457,27 +13001,22 @@ export interface UpdateAgentBlueprintsControllerRequestInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
   organization_ids?: UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList;
 }
-export const UpdateAgentBlueprintsControllerRequestInvocableBy =
+const UpdateAgentBlueprintsControllerRequestInvocableBy =
   CreateAgentBlueprintsControllerRequestInvocableBy as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableBy>;
 
 export type UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem =
   | "delegated"
   | "autonomous";
-export const UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem = S.String;
-
 /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. At least one is required; existing sessions of a removed type are refused at their next refresh. */
 export type UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList = Array<
   UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem | (string & {})
 >;
-export const UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList =
-  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList>;
-
 /** How sessions may be minted from this blueprint. Omitted lists are left unchanged. */
 export interface UpdateAgentBlueprintsControllerRequestInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. At least one is required; existing sessions of a removed type are refused at their next refresh. */
   instance_types?: UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList;
 }
-export const UpdateAgentBlueprintsControllerRequestInvocableAs =
+const UpdateAgentBlueprintsControllerRequestInvocableAs =
   CreateAgentBlueprintsControllerRequestInvocableAs as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAs>;
 
 /** Token and session lifetimes for sessions minted from this blueprint. Omitted fields are left unchanged. */
@@ -13489,7 +13028,7 @@ export interface UpdateAgentBlueprintsControllerRequestSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. At most 5,184,000 (60 days). */
   refresh_token_ttl_seconds?: number;
 }
-export const UpdateAgentBlueprintsControllerRequestSessionSettings = /*@__PURE__*/ S.suspend(() =>
+const UpdateAgentBlueprintsControllerRequestSessionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max_age_seconds: S.optional(S.Number),
     access_token_ttl_seconds: S.optional(S.Number),
@@ -13515,7 +13054,7 @@ export interface UpdateAgentBlueprintsControllerRequest {
   /** Token and session lifetimes for sessions minted from this blueprint. Omitted fields are left unchanged. */
   session_settings?: UpdateAgentBlueprintsControllerRequestSessionSettings;
 }
-export const UpdateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_blueprint_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -13531,12 +13070,12 @@ export const UpdateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** The OAuth scopes granted to the application. */
 export type UpdateApplicationsControllerRequestScopesList = Array<string>;
-export const UpdateApplicationsControllerRequestScopesList =
+const UpdateApplicationsControllerRequestScopesList =
   AgentTokenPermissionsList as any as S.Schema<UpdateApplicationsControllerRequestScopesList>;
 
 /** Updated redirect URIs for the application. OAuth applications only. */
 export type UpdateApplicationsControllerRequestRedirectUrisList = Array<RedirectUriDto>;
-export const UpdateApplicationsControllerRequestRedirectUrisList =
+const UpdateApplicationsControllerRequestRedirectUrisList =
   CreateOAuthApplicationDtoRedirectUrisList as any as S.Schema<UpdateApplicationsControllerRequestRedirectUrisList>;
 
 export interface UpdateApplicationsControllerRequest {
@@ -13551,7 +13090,7 @@ export interface UpdateApplicationsControllerRequest {
   /** Updated redirect URIs for the application. OAuth applications only. */
   redirect_uris?: UpdateApplicationsControllerRequestRedirectUrisList | null;
 }
-export const UpdateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -13565,20 +13104,11 @@ export const UpdateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type UpdateApplicationsControllerResponseScopesList = Array<string>;
-export const UpdateApplicationsControllerResponseScopesList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateApplicationsControllerResponseScopesList>;
-
 export type UpdateApplicationsControllerResponseRedirectUrisItem =
   ApplicationsControllerFindResponseRedirectUrisItem;
-export const UpdateApplicationsControllerResponseRedirectUrisItem =
-  ApplicationsControllerFindResponseRedirectUrisItem;
-
 /** The redirect URIs configured for this application. */
 export type UpdateApplicationsControllerResponseRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const UpdateApplicationsControllerResponseRedirectUrisList =
-  ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<UpdateApplicationsControllerResponseRedirectUrisList>;
-
 export interface UpdateApplicationsControllerResponse {
   /** Distinguishes the connect application object. */
   object: string;
@@ -13609,7 +13139,7 @@ export interface UpdateApplicationsControllerResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-export const UpdateApplicationsControllerResponse =
+const UpdateApplicationsControllerResponse =
   ApplicationsControllerFindResponse as any as S.Schema<UpdateApplicationsControllerResponse>;
 
 /** The period Audit Log events will be retained. Valid values are `1_MONTH` through `11_MONTHS` in one-month increments and `1_YEAR` through `10_YEARS` in one-year increments. Mutually exclusive with `retention_period_in_days`. */
@@ -13635,49 +13165,29 @@ export type UpdateAuditLogsRetentionDtoCase0RetentionPeriod =
   | "8_YEARS"
   | "9_YEARS"
   | "10_YEARS";
-export const UpdateAuditLogsRetentionDtoCase0RetentionPeriod = S.String;
-
 export interface UpdateAuditLogsRetentionDtoCase0 {
   /** The period Audit Log events will be retained. Valid values are `1_MONTH` through `11_MONTHS` in one-month increments and `1_YEAR` through `10_YEARS` in one-year increments. Mutually exclusive with `retention_period_in_days`. */
   retention_period: UpdateAuditLogsRetentionDtoCase0RetentionPeriod | (string & {});
 }
-export const UpdateAuditLogsRetentionDtoCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retention_period: UpdateAuditLogsRetentionDtoCase0RetentionPeriod,
-  }),
-).annotate({
-  identifier: "UpdateAuditLogsRetentionDtoCase0",
-}) as any as S.Schema<UpdateAuditLogsRetentionDtoCase0>;
-
 export interface UpdateAuditLogsRetentionDtoCase1 {
   /** The number of days Audit Log events will be retained. Valid values are `30` through `330` in 30-day increments and `365` through `3650` in 365-day increments. Deprecated: use `retention_period` instead. Mutually exclusive with `retention_period`. */
   retention_period_in_days: number;
 }
-export const UpdateAuditLogsRetentionDtoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retention_period_in_days: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateAuditLogsRetentionDtoCase1",
-}) as any as S.Schema<UpdateAuditLogsRetentionDtoCase1>;
-
 export type UpdateAuditLogsRetentionDto =
   | UpdateAuditLogsRetentionDtoCase0
   | UpdateAuditLogsRetentionDtoCase1;
-export const UpdateAuditLogsRetentionDto =
-  S.Unknown as any as S.Schema<UpdateAuditLogsRetentionDto>;
+const UpdateAuditLogsRetentionDto = S.Unknown as any as S.Schema<UpdateAuditLogsRetentionDto>;
 
 export interface UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest {
   /** Unique identifier of the Organization. */
   id: string;
   body: UpdateAuditLogsRetentionDto;
 }
-export const UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-      body: UpdateAuditLogsRetentionDto.pipe(T.HttpBody()),
-    }).pipe(T.Http({ method: "PUT", uri: "/organizations/{id}/audit_logs_retention", code: 200 })),
+const UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    body: UpdateAuditLogsRetentionDto.pipe(T.HttpBody()),
+  }).pipe(T.Http({ method: "PUT", uri: "/organizations/{id}/audit_logs_retention", code: 200 })),
 ).annotate({
   identifier: "UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest",
 }) as any as S.Schema<UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest>;
@@ -13692,7 +13202,7 @@ export interface UpdateAuthorizationOrganizationRolesControllerRequest {
   /** An optional description of the role's purpose. */
   description?: string | null;
 }
-export const UpdateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -13713,11 +13223,11 @@ export const UpdateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__
 export type UpdateAuthorizationOrganizationRolesControllerResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-export const UpdateAuthorizationOrganizationRolesControllerResponseType = S.String;
+const UpdateAuthorizationOrganizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
-export const UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList =
+const UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
 
 export interface UpdateAuthorizationOrganizationRolesControllerResponse {
@@ -13742,7 +13252,7 @@ export interface UpdateAuthorizationOrganizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UpdateAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     object: S.String,
@@ -13767,7 +13277,7 @@ export interface UpdateAuthorizationPermissionsControllerRequest {
   /** An optional description of the Permission. */
   description?: string | null;
 }
-export const UpdateAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -13795,7 +13305,7 @@ export interface UpdateAuthorizationResourcesByExternalIdControllerByExternalIdR
   /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_type_slug?: string;
 }
-export const UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest =
+const UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -13839,7 +13349,7 @@ export interface UpdateAuthorizationResourcesByExternalIdControllerByExternalIdR
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse =
+const UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       object: S.String,
@@ -13871,7 +13381,7 @@ export interface UpdateAuthorizationResourcesControllerRequest {
   /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_type_slug?: string;
 }
-export const UpdateAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -13906,7 +13416,7 @@ export interface UpdateAuthorizationResourcesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UpdateAuthorizationResourcesControllerResponse =
+const UpdateAuthorizationResourcesControllerResponse =
   CreateAuthorizationResourcesControllerResponse as any as S.Schema<UpdateAuthorizationResourcesControllerResponse>;
 
 export interface UpdateAuthorizationRolesControllerRequest {
@@ -13917,7 +13427,7 @@ export interface UpdateAuthorizationRolesControllerRequest {
   /** An optional description of the role. */
   description?: string | null;
 }
-export const UpdateAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -13929,11 +13439,11 @@ export const UpdateAuthorizationRolesControllerRequest = /*@__PURE__*/ S.suspend
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type UpdateAuthorizationRolesControllerResponseType = "EnvironmentRole" | "OrganizationRole";
-export const UpdateAuthorizationRolesControllerResponseType = S.String;
+const UpdateAuthorizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type UpdateAuthorizationRolesControllerResponsePermissionsList = Array<string>;
-export const UpdateAuthorizationRolesControllerResponsePermissionsList =
+const UpdateAuthorizationRolesControllerResponsePermissionsList =
   AgentTokenPermissionsList as any as S.Schema<UpdateAuthorizationRolesControllerResponsePermissionsList>;
 
 export interface UpdateAuthorizationRolesControllerResponse {
@@ -13958,7 +13468,7 @@ export interface UpdateAuthorizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UpdateAuthorizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuthorizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     object: S.String,
@@ -13978,19 +13488,19 @@ export const UpdateAuthorizationRolesControllerResponse = /*@__PURE__*/ S.suspen
 /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
 export type UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   Array<string>;
-export const UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
+const UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
 
 /** Additional static query parameters appended to the authorization request. */
 export type UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
+const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
   ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
 
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type UpdateCustomProviderDefinitionDtoAuthenticateVia = "request_body" | "basic_auth_header";
-export const UpdateCustomProviderDefinitionDtoAuthenticateVia = S.String;
+const UpdateCustomProviderDefinitionDtoAuthenticateVia = S.String;
 
 export interface UpdateCustomProviderDefinitionDto {
   /** A descriptive name for the custom provider. */
@@ -14016,7 +13526,7 @@ export interface UpdateCustomProviderDefinitionDto {
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
   authenticate_via?: UpdateCustomProviderDefinitionDtoAuthenticateVia | (string & {});
 }
-export const UpdateCustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     authorization_url: S.optional(S.String),
@@ -14052,8 +13562,8 @@ export interface UpdateDataIntegrationsManagementControllerDataIntegrationReques
   /** Updates to a custom provider's OAuth definition. Only valid for custom-provider integrations. */
   custom_provider?: UpdateCustomProviderDefinitionDto;
 }
-export const UpdateDataIntegrationsManagementControllerDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const UpdateDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
       description: S.optional(S.NullOr(S.String)),
@@ -14065,14 +13575,14 @@ export const UpdateDataIntegrationsManagementControllerDataIntegrationRequest =
       api_key: S.optional(ApiKeyInstallationDto),
       custom_provider: S.optional(UpdateCustomProviderDefinitionDto),
     }).pipe(T.Http({ method: "PUT", uri: "/data-integrations/{slug}", code: 200 })),
-  ).annotate({
-    identifier: "UpdateDataIntegrationsManagementControllerDataIntegrationRequest",
-  }) as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequest>;
+).annotate({
+  identifier: "UpdateDataIntegrationsManagementControllerDataIntegrationRequest",
+}) as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequest>;
 
 /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
 export type UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
   Array<string>;
-export const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
+const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList>;
 
 export interface UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
@@ -14091,7 +13601,7 @@ export interface UpdateDataIntegrationsManagementControllerOrganizationDataInteg
   /** Updates to a custom provider's OAuth definition. Only valid for custom-provider integrations. */
   custom_provider?: UpdateCustomProviderDefinitionDto;
 }
-export const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
+const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.String.pipe(T.Label()),
@@ -14113,14 +13623,14 @@ export const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrati
 /** The OAuth scopes granted for this connection. */
 export type UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   Array<string>;
-export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
+const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
+const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
   S.String;
 
 export interface UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
@@ -14153,7 +13663,7 @@ export interface UpdateDataIntegrationsOrganizationControllerOrganizationDataIns
   /** The [User](/reference/authkit/user) identifier of the organization member on whose behalf the connected account is being imported or updated. The user must be an active member of the organization. */
   user_id: string;
 }
-export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
+const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
@@ -14187,15 +13697,14 @@ export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstall
 /** The OAuth scopes granted for this connection. */
 export type UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   Array<string>;
-export const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
+const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-export const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
-  S.String;
+const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState = S.String;
 
 export interface UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
@@ -14227,7 +13736,7 @@ export interface UpdateDataIntegrationsUserManagementControllerUserDataInstallat
     | UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState
     | (string & {});
 }
-export const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest =
+const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       user_id: S.String.pipe(T.Label()),
@@ -14268,7 +13777,7 @@ export interface UpdateGroupsControllerRequest {
   /** An optional description of the Group. */
   description?: string | null;
 }
-export const UpdateGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     groupId: S.String.pipe(T.Label()),
@@ -14289,7 +13798,7 @@ export interface UpdateJumpWireWebDataVaultControllerRequest {
   /** ID of the expected current version for optimistic locking. */
   version_check?: string | null;
 }
-export const UpdateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     value: S.String,
@@ -14303,7 +13812,7 @@ export interface UpdateJwtTemplatesControllerJwtTemplateRequest {
   /** The JWT template content as a Liquid template string. */
   content?: string;
 }
-export const UpdateJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
   }).pipe(T.Http({ method: "PUT", uri: "/user_management/jwt_template", code: 200 })),
@@ -14313,20 +13822,20 @@ export const UpdateJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ S.su
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type UpdateOrganizationsControllerOrganizationRequestDomainsList = Array<string>;
-export const UpdateOrganizationsControllerOrganizationRequestDomainsList =
+const UpdateOrganizationsControllerOrganizationRequestDomainsList =
   AgentTokenPermissionsList as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainsList>;
 
 /** The domains associated with the organization, including verification state. */
 export type UpdateOrganizationsControllerOrganizationRequestDomainDataList =
   Array<OrganizationDomainDataDto>;
-export const UpdateOrganizationsControllerOrganizationRequestDomainDataList =
+const UpdateOrganizationsControllerOrganizationRequestDomainDataList =
   CreateOrganizationsControllerRequestDomainDataList as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainDataList>;
 
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type UpdateOrganizationsControllerOrganizationRequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UpdateOrganizationsControllerOrganizationRequestMetadataMap =
+const UpdateOrganizationsControllerOrganizationRequestMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestMetadataMap>;
 
 export interface UpdateOrganizationsControllerOrganizationRequest {
@@ -14347,7 +13856,7 @@ export interface UpdateOrganizationsControllerOrganizationRequest {
   /** An external identifier for the Organization. */
   external_id?: string | null;
 }
-export const UpdateOrganizationsControllerOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationsControllerOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -14370,7 +13879,7 @@ export interface UpdateRadarStandaloneControllerRadarAttemptRequest {
   /** Set to `"success"` to mark the authentication attempt as successful. */
   attempt_status?: string;
 }
-export const UpdateRadarStandaloneControllerRadarAttemptRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRadarStandaloneControllerRadarAttemptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     challenge_status: S.optional(S.String),
@@ -14381,43 +13890,24 @@ export const UpdateRadarStandaloneControllerRadarAttemptRequest = /*@__PURE__*/ 
 }) as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptRequest>;
 
 export interface UpdateRadarStandaloneControllerRadarAttemptResponse {}
-export const UpdateRadarStandaloneControllerRadarAttemptResponse =
+const UpdateRadarStandaloneControllerRadarAttemptResponse =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptResponse>;
 
 export interface UpdateUserlandUserOrganizationMembershipDtoCase1 {
   /** A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`. */
   role_slug: string;
 }
-export const UpdateUserlandUserOrganizationMembershipDtoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role_slug: S.String,
-  }),
-).annotate({
-  identifier: "UpdateUserlandUserOrganizationMembershipDtoCase1",
-}) as any as S.Schema<UpdateUserlandUserOrganizationMembershipDtoCase1>;
-
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList = Array<string>;
-export const UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList>;
-
 export interface UpdateUserlandUserOrganizationMembershipDtoCase2 {
   /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
   role_slugs: UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList;
 }
-export const UpdateUserlandUserOrganizationMembershipDtoCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role_slugs: UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList,
-  }),
-).annotate({
-  identifier: "UpdateUserlandUserOrganizationMembershipDtoCase2",
-}) as any as S.Schema<UpdateUserlandUserOrganizationMembershipDtoCase2>;
-
 export type UpdateUserlandUserOrganizationMembershipDto =
   | unknown
   | UpdateUserlandUserOrganizationMembershipDtoCase1
   | UpdateUserlandUserOrganizationMembershipDtoCase2;
-export const UpdateUserlandUserOrganizationMembershipDto =
+const UpdateUserlandUserOrganizationMembershipDto =
   S.Unknown as any as S.Schema<UpdateUserlandUserOrganizationMembershipDto>;
 
 export interface UpdateUserlandUserOrganizationMembershipsControllerRequest {
@@ -14425,21 +13915,20 @@ export interface UpdateUserlandUserOrganizationMembershipsControllerRequest {
   id: string;
   body: UpdateUserlandUserOrganizationMembershipDto;
 }
-export const UpdateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-      body: UpdateUserlandUserOrganizationMembershipDto.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({ method: "PUT", uri: "/user_management/organization_memberships/{id}", code: 200 }),
-    ),
+const UpdateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    body: UpdateUserlandUserOrganizationMembershipDto.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "/user_management/organization_memberships/{id}", code: 200 }),
+  ),
 ).annotate({
   identifier: "UpdateUserlandUserOrganizationMembershipsControllerRequest",
 }) as any as S.Schema<UpdateUserlandUserOrganizationMembershipsControllerRequest>;
 
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type UpdateWebhookEndpointsControllerRequestStatus = "enabled" | "disabled";
-export const UpdateWebhookEndpointsControllerRequestStatus = S.String;
+const UpdateWebhookEndpointsControllerRequestStatus = S.String;
 
 export type UpdateWebhookEndpointsControllerRequestEventsItem =
   | "agent.blueprint.created"
@@ -14547,13 +14036,11 @@ export type UpdateWebhookEndpointsControllerRequestEventsItem =
   | "waitlist_user.approved"
   | "waitlist_user.created"
   | "waitlist_user.denied";
-export const UpdateWebhookEndpointsControllerRequestEventsItem = S.String;
-
 /** The events that the Webhook Endpoint is subscribed to. */
 export type UpdateWebhookEndpointsControllerRequestEventsList = Array<
   UpdateWebhookEndpointsControllerRequestEventsItem | (string & {})
 >;
-export const UpdateWebhookEndpointsControllerRequestEventsList =
+const UpdateWebhookEndpointsControllerRequestEventsList =
   AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<UpdateWebhookEndpointsControllerRequestEventsList>;
 
 export interface UpdateWebhookEndpointsControllerRequest {
@@ -14566,7 +14053,7 @@ export interface UpdateWebhookEndpointsControllerRequest {
   /** The events that the Webhook Endpoint is subscribed to. */
   events?: UpdateWebhookEndpointsControllerRequestEventsList;
 }
-export const UpdateWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     endpoint_url: S.optional(S.String),
@@ -14581,8 +14068,6 @@ export const UpdateWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend((
 export type UpsertDataIntegrationsControllerApiKeyRequestBodyCase0ConnectionOwner =
   | "user"
   | "organization";
-export const UpsertDataIntegrationsControllerApiKeyRequestBodyCase0ConnectionOwner = S.String;
-
 export interface UpsertDataIntegrationsControllerApiKeyRequestBodyCase0 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -14599,27 +14084,10 @@ export interface UpsertDataIntegrationsControllerApiKeyRequestBodyCase0 {
   /** The API key secret to store for this integration. */
   secret: string | Redacted.Redacted<string>;
 }
-export const UpsertDataIntegrationsControllerApiKeyRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_display_name: S.optional(S.NullOr(S.String)),
-    account_identifier: S.optional(S.NullOr(S.String)),
-    user_id: S.String,
-    organization_id: S.optional(S.String),
-    connection_owner: S.optional(
-      UpsertDataIntegrationsControllerApiKeyRequestBodyCase0ConnectionOwner,
-    ),
-    secret: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({
-  identifier: "UpsertDataIntegrationsControllerApiKeyRequestBodyCase0",
-}) as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequestBodyCase0>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type UpsertDataIntegrationsControllerApiKeyRequestBodyCase1ConnectionOwner =
   | "user"
   | "organization";
-export const UpsertDataIntegrationsControllerApiKeyRequestBodyCase1ConnectionOwner = S.String;
-
 export interface UpsertDataIntegrationsControllerApiKeyRequestBodyCase1 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -14640,29 +14108,10 @@ export interface UpsertDataIntegrationsControllerApiKeyRequestBodyCase1 {
   /** The exact connected account to reauthorize. Required with `connection_intent: reauthorize`. */
   connected_account_id: string;
 }
-export const UpsertDataIntegrationsControllerApiKeyRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_display_name: S.optional(S.NullOr(S.String)),
-    account_identifier: S.optional(S.NullOr(S.String)),
-    user_id: S.String,
-    organization_id: S.optional(S.String),
-    connection_owner: S.optional(
-      UpsertDataIntegrationsControllerApiKeyRequestBodyCase1ConnectionOwner,
-    ),
-    secret: S.String.pipe(T.SensitiveValue({})),
-    connection_intent: S.String,
-    connected_account_id: S.String,
-  }),
-).annotate({
-  identifier: "UpsertDataIntegrationsControllerApiKeyRequestBodyCase1",
-}) as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequestBodyCase1>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type UpsertDataIntegrationsControllerApiKeyRequestBodyCase2ConnectionOwner =
   | "user"
   | "organization";
-export const UpsertDataIntegrationsControllerApiKeyRequestBodyCase2ConnectionOwner = S.String;
-
 export interface UpsertDataIntegrationsControllerApiKeyRequestBodyCase2 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -14681,27 +14130,11 @@ export interface UpsertDataIntegrationsControllerApiKeyRequestBodyCase2 {
   /** The exact connected account to reauthorize. The reauthorize intent may be omitted for compatibility. */
   connected_account_id: string;
 }
-export const UpsertDataIntegrationsControllerApiKeyRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_display_name: S.optional(S.NullOr(S.String)),
-    account_identifier: S.optional(S.NullOr(S.String)),
-    user_id: S.String,
-    organization_id: S.optional(S.String),
-    connection_owner: S.optional(
-      UpsertDataIntegrationsControllerApiKeyRequestBodyCase2ConnectionOwner,
-    ),
-    secret: S.String.pipe(T.SensitiveValue({})),
-    connected_account_id: S.String,
-  }),
-).annotate({
-  identifier: "UpsertDataIntegrationsControllerApiKeyRequestBodyCase2",
-}) as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequestBodyCase2>;
-
 export type UpsertDataIntegrationsControllerApiKeyRequestBody =
   | UpsertDataIntegrationsControllerApiKeyRequestBodyCase0
   | UpsertDataIntegrationsControllerApiKeyRequestBodyCase1
   | UpsertDataIntegrationsControllerApiKeyRequestBodyCase2;
-export const UpsertDataIntegrationsControllerApiKeyRequestBody =
+const UpsertDataIntegrationsControllerApiKeyRequestBody =
   S.Unknown as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequestBody>;
 
 export interface UpsertDataIntegrationsControllerApiKeyRequest {
@@ -14709,7 +14142,7 @@ export interface UpsertDataIntegrationsControllerApiKeyRequest {
   slug: string;
   body: UpsertDataIntegrationsControllerApiKeyRequestBody;
 }
-export const UpsertDataIntegrationsControllerApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertDataIntegrationsControllerApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     body: UpsertDataIntegrationsControllerApiKeyRequestBody.pipe(T.HttpBody()),
@@ -14722,16 +14155,10 @@ export const UpsertDataIntegrationsControllerApiKeyRequest = /*@__PURE__*/ S.sus
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConnectionOwner =
   | "user"
   | "organization";
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConnectionOwner =
-  S.String;
-
 /** Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors. */
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap = {
   [key: string]: string | undefined;
 };
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap>;
-
 export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -14752,40 +14179,14 @@ export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCas
   /** Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors. */
   config?: UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap;
 }
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account_display_name: S.optional(S.NullOr(S.String)),
-      account_identifier: S.optional(S.NullOr(S.String)),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      connection_owner: S.optional(
-        UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConnectionOwner,
-      ),
-      client_id: S.String,
-      client_secret: S.String.pipe(T.SensitiveValue({})),
-      config: S.optional(
-        UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0",
-  }) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConnectionOwner =
   | "user"
   | "organization";
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConnectionOwner =
-  S.String;
-
 /** Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors. */
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap = {
   [key: string]: string | undefined;
 };
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap>;
-
 export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -14810,42 +14211,14 @@ export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCas
   /** The exact connected account to reauthorize. Required with `connection_intent: reauthorize`. */
   connected_account_id: string;
 }
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account_display_name: S.optional(S.NullOr(S.String)),
-      account_identifier: S.optional(S.NullOr(S.String)),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      connection_owner: S.optional(
-        UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConnectionOwner,
-      ),
-      client_id: S.String,
-      client_secret: S.String.pipe(T.SensitiveValue({})),
-      config: S.optional(
-        UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap,
-      ),
-      connection_intent: S.String,
-      connected_account_id: S.String,
-    }),
-  ).annotate({
-    identifier: "UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1",
-  }) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConnectionOwner =
   | "user"
   | "organization";
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConnectionOwner =
-  S.String;
-
 /** Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors. */
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap = {
   [key: string]: string | undefined;
 };
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap>;
-
 export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
   account_display_name?: string | null;
@@ -14868,32 +14241,11 @@ export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCas
   /** The exact connected account to reauthorize. The reauthorize intent may be omitted for compatibility. */
   connected_account_id: string;
 }
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account_display_name: S.optional(S.NullOr(S.String)),
-      account_identifier: S.optional(S.NullOr(S.String)),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      connection_owner: S.optional(
-        UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConnectionOwner,
-      ),
-      client_id: S.String,
-      client_secret: S.String.pipe(T.SensitiveValue({})),
-      config: S.optional(
-        UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap,
-      ),
-      connected_account_id: S.String,
-    }),
-  ).annotate({
-    identifier: "UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2",
-  }) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2>;
-
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBody =
   | UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0
   | UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1
   | UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2;
-export const UpsertDataIntegrationsControllerClientCredentialsRequestBody =
+const UpsertDataIntegrationsControllerClientCredentialsRequestBody =
   S.Unknown as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBody>;
 
 export interface UpsertDataIntegrationsControllerClientCredentialsRequest {
@@ -14901,14 +14253,13 @@ export interface UpsertDataIntegrationsControllerClientCredentialsRequest {
   slug: string;
   body: UpsertDataIntegrationsControllerClientCredentialsRequestBody;
 }
-export const UpsertDataIntegrationsControllerClientCredentialsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-      body: UpsertDataIntegrationsControllerClientCredentialsRequestBody.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({ method: "PUT", uri: "/data-integrations/{slug}/client-credentials", code: 200 }),
-    ),
+const UpsertDataIntegrationsControllerClientCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slug: S.String.pipe(T.Label()),
+    body: UpsertDataIntegrationsControllerClientCredentialsRequestBody.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "/data-integrations/{slug}/client-credentials", code: 200 }),
+  ),
 ).annotate({
   identifier: "UpsertDataIntegrationsControllerClientCredentialsRequest",
 }) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequest>;
@@ -14927,16 +14278,15 @@ export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest {
   /** An optional Radar signals ID to correlate client-side signals with this request. */
   signals_id?: string;
 }
-export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.optional(S.String),
-      invitation_token: S.optional(S.String),
-      ip_address: S.optional(S.String),
-      user_agent: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
-      signals_id: S.optional(S.String),
-    }).pipe(T.Http({ method: "POST", uri: "/user_management/magic_auth", code: 200 })),
+const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    invitation_token: S.optional(S.String),
+    ip_address: S.optional(S.String),
+    user_agent: S.optional(S.String),
+    radar_auth_attempt_id: S.optional(S.String),
+    signals_id: S.optional(S.String),
+  }).pipe(T.Http({ method: "POST", uri: "/user_management/magic_auth", code: 200 })),
 ).annotate({
   identifier: "UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest",
 }) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest>;
@@ -14961,22 +14311,21 @@ export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse {
   /** The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt. */
   radar_auth_attempt_id?: string;
 }
-export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      object: S.optional(S.String),
-      id: S.optional(S.String),
-      user_id: S.optional(S.String),
-      email: S.optional(S.String),
-      expires_at: S.optional(S.String),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      code: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse",
-  }) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse>;
+const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    object: S.optional(S.String),
+    id: S.optional(S.String),
+    user_id: S.optional(S.String),
+    email: S.optional(S.String),
+    expires_at: S.optional(S.String),
+    created_at: S.optional(S.String),
+    updated_at: S.optional(S.String),
+    code: S.optional(S.String),
+    radar_auth_attempt_id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse",
+}) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse>;
 
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase0 {
   /** The client ID of the application. */
@@ -14999,23 +14348,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase0 {
   /** An optional Radar signals ID to correlate client-side signals with this authentication attempt. */
   signals_id?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    grant_type: S.String,
-    code: S.String,
-    code_verifier: S.optional(S.String),
-    invitation_token: S.optional(S.String),
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-    signals_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase0",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase0>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase1 {
   /** The client ID of the application. */
   client_id: string;
@@ -15039,24 +14371,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase1 {
   /** The ID of an existing Radar authentication attempt to associate with this authentication. */
   radar_auth_attempt_id?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    email: S.String,
-    password: S.String.pipe(T.SensitiveValue({})),
-    invitation_token: S.optional(S.String),
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-    signals_id: S.optional(S.String),
-    radar_auth_attempt_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase1",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase1>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase2 {
   /** The client ID of the application. */
   client_id: string;
@@ -15074,21 +14388,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase2 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    grant_type: S.String,
-    refresh_token: S.String.pipe(T.SensitiveValue({})),
-    organization_id: S.optional(S.String),
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase2",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase2>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase3 {
   /** The client ID of the application. */
   client_id: string;
@@ -15110,23 +14409,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase3 {
   /** The ID of an existing Radar authentication attempt to associate with this authentication. */
   radar_auth_attempt_id?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    code: S.String,
-    email: S.String,
-    invitation_token: S.optional(S.String),
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-    radar_auth_attempt_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase3",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase3>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase4 {
   /** The client ID of the application. */
   client_id: string;
@@ -15144,21 +14426,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase4 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    code: S.String,
-    pending_authentication_token: S.String,
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase4",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase4>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase5 {
   /** The client ID of the application. */
   client_id: string;
@@ -15178,22 +14445,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase5 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    code: S.String,
-    pending_authentication_token: S.String,
-    authentication_challenge_id: S.String,
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase5",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase5>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase6 {
   /** The client ID of the application. */
   client_id: string;
@@ -15213,22 +14464,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase6 {
   /** An optional Radar signals ID to correlate client-side signals with this authentication attempt. */
   signals_id?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    email_completion_token: S.String,
-    email: S.String,
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-    signals_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase6",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase6>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase7 {
   /** The client ID of the application. */
   client_id: string;
@@ -15246,21 +14481,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase7 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    pending_authentication_token: S.String,
-    organization_id: S.String,
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase7",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase7>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase8 {
   /** The client ID of the application. */
   client_id: string;
@@ -15280,22 +14500,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase8 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    code: S.String,
-    radar_challenge_id: S.String,
-    pending_authentication_token: S.String,
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase8",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase8>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase9 {
   /** The client ID of the application. */
   client_id: string;
@@ -15317,23 +14521,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase9 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: S.String,
-    code: S.String,
-    verification_id: S.optional(S.String),
-    phone_number: S.optional(S.String),
-    pending_authentication_token: S.String,
-    ip_address: S.optional(S.String),
-    device_id: S.optional(S.String),
-    user_agent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase9",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase9>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase10 {
   /** The client ID of the application. */
   client_id: string;
@@ -15347,20 +14534,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase10 {
   /** The user agent string from the user's browser. */
   user_agent?: string;
 }
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase10 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      client_id: S.String,
-      grant_type: S.String,
-      device_code: S.String,
-      ip_address: S.optional(S.String),
-      device_id: S.optional(S.String),
-      user_agent: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase10",
-}) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase10>;
-
 export type UserlandSessionsControllerAuthenticate0RequestBody =
   | UserlandSessionsControllerAuthenticate0RequestBodyCase0
   | UserlandSessionsControllerAuthenticate0RequestBodyCase1
@@ -15373,13 +14546,13 @@ export type UserlandSessionsControllerAuthenticate0RequestBody =
   | UserlandSessionsControllerAuthenticate0RequestBodyCase8
   | UserlandSessionsControllerAuthenticate0RequestBodyCase9
   | UserlandSessionsControllerAuthenticate0RequestBodyCase10;
-export const UserlandSessionsControllerAuthenticate0RequestBody =
+const UserlandSessionsControllerAuthenticate0RequestBody =
   S.Unknown as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBody>;
 
 export interface UserlandSessionsControllerAuthenticate0Request {
   body: UserlandSessionsControllerAuthenticate0RequestBody;
 }
-export const UserlandSessionsControllerAuthenticate0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandSessionsControllerAuthenticate0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: UserlandSessionsControllerAuthenticate0RequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/authenticate", code: 200 })),
@@ -15410,19 +14583,13 @@ export type UserlandAuthenticateResponseAuthenticationMethod =
   | "MagicAuth"
   | "Impersonation"
   | "MigratedSession";
-export const UserlandAuthenticateResponseAuthenticationMethod = S.String;
+const UserlandAuthenticateResponseAuthenticationMethod = S.String;
 
 /** Information about the impersonator if this session was created via impersonation. */
 export type UserlandAuthenticateResponseImpersonator =
   ListUserlandUserSessionsControllerResponseDataItemImpersonator;
-export const UserlandAuthenticateResponseImpersonator =
-  ListUserlandUserSessionsControllerResponseDataItemImpersonator;
-
 /** A list of OAuth scopes for which the access token is authorized. */
 export type UserlandAuthenticateResponseOauthTokensScopesList = Array<string>;
-export const UserlandAuthenticateResponseOauthTokensScopesList =
-  AgentTokenPermissionsList as any as S.Schema<UserlandAuthenticateResponseOauthTokensScopesList>;
-
 /** The OAuth tokens from the identity provider, if applicable. */
 export interface UserlandAuthenticateResponseOauthTokens {
   /** The OAuth provider used for authentication. */
@@ -15436,7 +14603,7 @@ export interface UserlandAuthenticateResponseOauthTokens {
   /** A list of OAuth scopes for which the access token is authorized. */
   scopes: UserlandAuthenticateResponseOauthTokensScopesList;
 }
-export const UserlandAuthenticateResponseOauthTokens =
+const UserlandAuthenticateResponseOauthTokens =
   SsoTokenResponseOauthTokens as any as S.Schema<UserlandAuthenticateResponseOauthTokens>;
 
 export interface UserlandAuthenticateResponse {
@@ -15457,7 +14624,7 @@ export interface UserlandAuthenticateResponse {
   /** The OAuth tokens from the identity provider, if applicable. */
   oauth_tokens?: UserlandAuthenticateResponseOauthTokens;
 }
-export const UserlandAuthenticateResponse = /*@__PURE__*/ S.suspend(() =>
+const UserlandAuthenticateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(UserlandUser),
     organization_id: S.optional(S.String),
@@ -15476,7 +14643,7 @@ export interface UserlandSsoControllerDeviceAuthorizationRequest {
   /** The WorkOS client ID for your application. */
   client_id: string;
 }
-export const UserlandSsoControllerDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const UserlandSsoControllerDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/user_management/authorize/device", code: 200 })),
@@ -15498,7 +14665,7 @@ export interface DeviceAuthorizationResponse {
   /** Minimum polling interval in seconds. */
   interval?: number;
 }
-export const DeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device_code: S.optional(S.String),
     user_code: S.optional(S.String),
@@ -15523,21 +14690,20 @@ export interface UserlandUserAuthenticationFactorsControllerCreate0Request {
   /** The Base32-encoded shared secret for TOTP factors. This can be provided when creating the auth factor, otherwise it will be generated. The algorithm used to derive TOTP codes is SHA-1, the code length is 6 digits, and the timestep is 30 seconds - the secret must be compatible with these parameters. */
   totp_secret?: string | Redacted.Redacted<string>;
 }
-export const UserlandUserAuthenticationFactorsControllerCreate0Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userlandUserId: S.String.pipe(T.Label()),
-      type: S.optional(S.String),
-      totp_issuer: S.optional(S.String),
-      totp_user: S.optional(S.String),
-      totp_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/user_management/users/{userlandUserId}/auth_factors",
-        code: 200,
-      }),
-    ),
+const UserlandUserAuthenticationFactorsControllerCreate0Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userlandUserId: S.String.pipe(T.Label()),
+    type: S.optional(S.String),
+    totp_issuer: S.optional(S.String),
+    totp_user: S.optional(S.String),
+    totp_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/user_management/users/{userlandUserId}/auth_factors",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "UserlandUserAuthenticationFactorsControllerCreate0Request",
 }) as any as S.Schema<UserlandUserAuthenticationFactorsControllerCreate0Request>;
@@ -15548,7 +14714,7 @@ export interface UserlandUserAuthenticationFactorEnrollResponse {
   /** The [authentication challenge](/reference/authkit/mfa/authentication-challenge) object that is used to complete the authentication process. */
   authentication_challenge?: AuthenticationChallenge;
 }
-export const UserlandUserAuthenticationFactorEnrollResponse = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserAuthenticationFactorEnrollResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication_factor: S.optional(AuthenticationFactorEnrolled),
     authentication_challenge: S.optional(AuthenticationChallenge),
@@ -15569,7 +14735,7 @@ export interface UserlandUserAuthenticationFactorsControllerList0Request {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-export const UserlandUserAuthenticationFactorsControllerList0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserAuthenticationFactorsControllerList0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userlandUserId: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -15589,16 +14755,13 @@ export const UserlandUserAuthenticationFactorsControllerList0Request = /*@__PURE
 
 /** The list of records for the current page. */
 export type UserlandUserAuthenticationFactorListDataList = Array<AuthenticationFactor>;
-export const UserlandUserAuthenticationFactorListDataList = /*@__PURE__*/ S.Array(
+const UserlandUserAuthenticationFactorListDataList = /*@__PURE__*/ S.Array(
   AuthenticationFactor,
 ) as any as S.Schema<UserlandUserAuthenticationFactorListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserAuthenticationFactorListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserlandUserAuthenticationFactorListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserlandUserAuthenticationFactorList {
   /** Indicates this is a list response. */
   object?: string;
@@ -15607,7 +14770,7 @@ export interface UserlandUserAuthenticationFactorList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserlandUserAuthenticationFactorList = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserAuthenticationFactorList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(UserlandUserAuthenticationFactorListDataList),
@@ -15621,26 +14784,25 @@ export interface UserlandUserOrganizationMembershipsControllerReactivateRequest 
   /** The unique ID of the organization membership. */
   id: string;
 }
-export const UserlandUserOrganizationMembershipsControllerReactivateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/user_management/organization_memberships/{id}/reactivate",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UserlandUserOrganizationMembershipsControllerReactivateRequest",
-  }) as any as S.Schema<UserlandUserOrganizationMembershipsControllerReactivateRequest>;
+const UserlandUserOrganizationMembershipsControllerReactivateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/user_management/organization_memberships/{id}/reactivate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UserlandUserOrganizationMembershipsControllerReactivateRequest",
+}) as any as S.Schema<UserlandUserOrganizationMembershipsControllerReactivateRequest>;
 
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUsersControllerCreate0RequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UserlandUsersControllerCreate0RequestMetadataMap =
+const UserlandUsersControllerCreate0RequestMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerCreate0RequestMetadataMap>;
 
 /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
@@ -15652,11 +14814,11 @@ export type UserlandUsersControllerCreate0RequestPasswordHashType =
   | "scrypt"
   | "pbkdf2"
   | "argon2";
-export const UserlandUsersControllerCreate0RequestPasswordHashType = S.String;
+const UserlandUsersControllerCreate0RequestPasswordHashType = S.String;
 
 /** The position of the salt relative to the password when the `password_hash` digest was computed: `prefix` for `hash(salt + password)` or `suffix` for `hash(password + salt)`. Only supported with the `ssha256` hash type and only valid when a `password_hash` is provided. Defaults to `suffix`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerCreate0RequestPasswordSaltPosition = "prefix" | "suffix";
-export const UserlandUsersControllerCreate0RequestPasswordSaltPosition = S.String;
+const UserlandUsersControllerCreate0RequestPasswordSaltPosition = S.String;
 
 export interface UserlandUsersControllerCreate0Request {
   /** The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it. */
@@ -15690,7 +14852,7 @@ export interface UserlandUsersControllerCreate0Request {
     | UserlandUsersControllerCreate0RequestPasswordSaltPosition
     | (string & {});
 }
-export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     first_name: S.optional(S.NullOr(S.String)),
@@ -15715,7 +14877,7 @@ export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(() 
 export type UserlandUsersControllerCreate0ResponseMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UserlandUsersControllerCreate0ResponseMetadataMap =
+const UserlandUsersControllerCreate0ResponseMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerCreate0ResponseMetadataMap>;
 
 export interface UserlandUsersControllerCreate0Response {
@@ -15750,7 +14912,7 @@ export interface UserlandUsersControllerCreate0Response {
   /** The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt. */
   radar_auth_attempt_id?: string;
 }
-export const UserlandUsersControllerCreate0Response = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerCreate0Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -15776,7 +14938,7 @@ export interface UserlandUsersControllerCreatePasswordResetTokenRequest {
   /** The email address of the user requesting a password reset. */
   email?: string;
 }
-export const UserlandUsersControllerCreatePasswordResetTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerCreatePasswordResetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/user_management/password_reset", code: 200 })),
@@ -15802,7 +14964,7 @@ export interface PasswordReset {
   /** The URL where the user can reset their password. */
   password_reset_url?: string | Redacted.Redacted<string>;
 }
-export const PasswordReset = /*@__PURE__*/ S.suspend(() =>
+const PasswordReset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -15819,7 +14981,7 @@ export interface UserlandUsersControllerDelete0Request {
   /** The unique ID of the user. */
   id: string;
 }
-export const UserlandUsersControllerDelete0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerDelete0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user_management/users/{id}", code: 200 })),
@@ -15828,7 +14990,7 @@ export const UserlandUsersControllerDelete0Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UserlandUsersControllerDelete0Request>;
 
 export interface UserlandUsersControllerDelete0Response {}
-export const UserlandUsersControllerDelete0Response =
+const UserlandUsersControllerDelete0Response =
   AuthorizeUserlandSsoControllerResponse as any as S.Schema<UserlandUsersControllerDelete0Response>;
 
 export interface UserlandUsersControllerEmailVerification0Request {
@@ -15837,7 +14999,7 @@ export interface UserlandUsersControllerEmailVerification0Request {
   /** The one-time email verification code. */
   code?: string;
 }
-export const UserlandUsersControllerEmailVerification0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerEmailVerification0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     code: S.optional(S.String),
@@ -15856,13 +15018,13 @@ export interface VerifyEmailResponse {
   /** The user whose email was verified. */
   user?: UserlandUser;
 }
-export const VerifyEmailResponse = ResetPasswordResponse as any as S.Schema<VerifyEmailResponse>;
+const VerifyEmailResponse = ResetPasswordResponse as any as S.Schema<VerifyEmailResponse>;
 
 export interface UserlandUsersControllerGet0Request {
   /** The unique ID of the user. */
   id: string;
 }
-export const UserlandUsersControllerGet0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerGet0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/users/{id}", code: 200 })),
@@ -15874,7 +15036,7 @@ export interface UserlandUsersControllerGetPasswordResetRequest {
   /** The ID of the password reset token. */
   id: string;
 }
-export const UserlandUsersControllerGetPasswordResetRequest = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerGetPasswordResetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/password_reset/{id}", code: 200 })),
@@ -15898,7 +15060,7 @@ export interface UserlandUsersControllerList0Request {
   /** Filter users by their email address. */
   email?: string;
 }
-export const UserlandUsersControllerList0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerList0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.String.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -15914,16 +15076,13 @@ export const UserlandUsersControllerList0Request = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type UserlandUserListDataList = Array<UserlandUser>;
-export const UserlandUserListDataList = /*@__PURE__*/ S.Array(
+const UserlandUserListDataList = /*@__PURE__*/ S.Array(
   UserlandUser,
 ) as any as S.Schema<UserlandUserListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-export const UserlandUserListListMetadata =
-  AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
-
 export interface UserlandUserList {
   /** Indicates this is a list response. */
   object?: string;
@@ -15932,7 +15091,7 @@ export interface UserlandUserList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-export const UserlandUserList = /*@__PURE__*/ S.suspend(() =>
+const UserlandUserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(UserlandUserListDataList),
@@ -15944,7 +15103,7 @@ export const UserlandUserList = /*@__PURE__*/ S.suspend(() =>
 export type UserlandUsersControllerUpdate0RequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UserlandUsersControllerUpdate0RequestMetadataMap =
+const UserlandUsersControllerUpdate0RequestMetadataMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerUpdate0RequestMetadataMap>;
 
 /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
@@ -15956,11 +15115,11 @@ export type UserlandUsersControllerUpdate0RequestPasswordHashType =
   | "scrypt"
   | "pbkdf2"
   | "argon2";
-export const UserlandUsersControllerUpdate0RequestPasswordHashType = S.String;
+const UserlandUsersControllerUpdate0RequestPasswordHashType = S.String;
 
 /** The position of the salt relative to the password when the `password_hash` digest was computed: `prefix` for `hash(salt + password)` or `suffix` for `hash(password + salt)`. Only supported with the `ssha256` hash type and only valid when a `password_hash` is provided. Defaults to `suffix`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerUpdate0RequestPasswordSaltPosition = "prefix" | "suffix";
-export const UserlandUsersControllerUpdate0RequestPasswordSaltPosition = S.String;
+const UserlandUsersControllerUpdate0RequestPasswordSaltPosition = S.String;
 
 export interface UserlandUsersControllerUpdate0Request {
   /** The unique ID of the user. */
@@ -15992,7 +15151,7 @@ export interface UserlandUsersControllerUpdate0Request {
     | UserlandUsersControllerUpdate0RequestPasswordSaltPosition
     | (string & {});
 }
-export const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ S.suspend(() =>
+const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     email: S.optional(S.String),
@@ -16018,15 +15177,6 @@ export interface ValidateAgentAdminControllerCredentialRequestBodyCase0 {
   /** The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`. */
   credential: string;
 }
-export const ValidateAgentAdminControllerCredentialRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    credential: S.String,
-  }),
-).annotate({
-  identifier: "ValidateAgentAdminControllerCredentialRequestBodyCase0",
-}) as any as S.Schema<ValidateAgentAdminControllerCredentialRequestBodyCase0>;
-
 export interface ValidateAgentAdminControllerCredentialRequestBodyCase1 {
   /** The kind of credential being validated -- an agent API key or an agent access token. */
   type: string;
@@ -16035,27 +15185,17 @@ export interface ValidateAgentAdminControllerCredentialRequestBodyCase1 {
   /** When provided, the access token's `aud` claim is verified against this value. Tokens issued for a different resource are rejected. */
   audience?: string;
 }
-export const ValidateAgentAdminControllerCredentialRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    credential: S.String,
-    audience: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ValidateAgentAdminControllerCredentialRequestBodyCase1",
-}) as any as S.Schema<ValidateAgentAdminControllerCredentialRequestBodyCase1>;
-
 /** The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`. */
 export type ValidateAgentAdminControllerCredentialRequestBody =
   | ValidateAgentAdminControllerCredentialRequestBodyCase0
   | ValidateAgentAdminControllerCredentialRequestBodyCase1;
-export const ValidateAgentAdminControllerCredentialRequestBody =
+const ValidateAgentAdminControllerCredentialRequestBody =
   S.Unknown as any as S.Schema<ValidateAgentAdminControllerCredentialRequestBody>;
 
 export interface ValidateAgentAdminControllerCredentialRequest {
   body: ValidateAgentAdminControllerCredentialRequestBody;
 }
-export const ValidateAgentAdminControllerCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateAgentAdminControllerCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: ValidateAgentAdminControllerCredentialRequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/agents/credentials/validate", code: 200 })),
@@ -16071,7 +15211,7 @@ export interface AgentCredentialValidation {
   /** The timestamp when the credential expires, or `null` when the credential is invalid. */
   expires_at: string | null;
 }
-export const AgentCredentialValidation = /*@__PURE__*/ S.suspend(() =>
+const AgentCredentialValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
     registration_id: S.NullOr(S.String),
@@ -16087,7 +15227,7 @@ export interface ValidateAgentBlueprintsTokenControllerTokenRequest {
   /** The agent access token (a JWT) to validate. */
   agent_access_token: string;
 }
-export const ValidateAgentBlueprintsTokenControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateAgentBlueprintsTokenControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_blueprint_id: S.String.pipe(T.Label()),
     agent_access_token: S.String,
@@ -16104,7 +15244,7 @@ export const ValidateAgentBlueprintsTokenControllerTokenRequest = /*@__PURE__*/ 
 
 /** The effective permission slugs carried by the token. */
 export type AgentTokenValidationPermissionsList = Array<string>;
-export const AgentTokenValidationPermissionsList =
+const AgentTokenValidationPermissionsList =
   AgentTokenPermissionsList as any as S.Schema<AgentTokenValidationPermissionsList>;
 
 export interface AgentTokenValidation {
@@ -16125,7 +15265,7 @@ export interface AgentTokenValidation {
   /** When the backing agent instance session expires. */
   session_expires_at: string;
 }
-export const AgentTokenValidation = /*@__PURE__*/ S.suspend(() =>
+const AgentTokenValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
     agent_instance_id: S.String,
@@ -16142,7 +15282,7 @@ export interface ValidateApiKeysControllerApiKeyRequest {
   /** The value for an API key. */
   value?: string;
 }
-export const ValidateApiKeysControllerApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateApiKeysControllerApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/api_keys/validations", code: 200 })),
@@ -16155,7 +15295,7 @@ export interface ApiKeyValidationResponse {
   /** The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration. */
   agent_registration_id?: string;
 }
-export const ApiKeyValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_key: S.optional(S.NullOr(ApiKey)),
     agent_registration_id: S.optional(S.String),
@@ -16168,7 +15308,7 @@ export interface VerifyAuthenticationChallengesControllerRequest {
   /** The one-time code to verify. */
   code: string;
 }
-export const VerifyAuthenticationChallengesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyAuthenticationChallengesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     code: S.String,
@@ -16183,7 +15323,7 @@ export interface AuthenticationChallengeVerifyResponse {
   /** Whether the code was valid. */
   valid?: boolean;
 }
-export const AuthenticationChallengeVerifyResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationChallengeVerifyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenge: S.optional(AuthenticationChallenge),
     valid: S.optional(S.Boolean),
@@ -16196,7 +15336,7 @@ export interface VerifyOrganizationDomainsControllerRequest {
   /** Unique identifier of the organization domain. */
   id: string;
 }
-export const VerifyOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/organization_domains/{id}/verify", code: 200 })),
@@ -16208,7 +15348,7 @@ export interface WaitlistEntriesControllerDenyRequest {
   /** The unique ID of the waitlist entry. */
   id: string;
 }
-export const WaitlistEntriesControllerDenyRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitlistEntriesControllerDenyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -16220,13 +15360,13 @@ export const WaitlistEntriesControllerDenyRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The state of the waitlist entry. */
 export type WaitlistEntriesControllerDenyResponseState = "pending" | "approved" | "denied";
-export const WaitlistEntriesControllerDenyResponseState = S.String;
+const WaitlistEntriesControllerDenyResponseState = S.String;
 
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntriesControllerDenyResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-export const WaitlistEntriesControllerDenyResponseAdditionalFieldsMap =
+const WaitlistEntriesControllerDenyResponseAdditionalFieldsMap =
   ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<WaitlistEntriesControllerDenyResponseAdditionalFieldsMap>;
 
 export interface WaitlistEntriesControllerDenyResponse {
@@ -16249,7 +15389,7 @@ export interface WaitlistEntriesControllerDenyResponse {
   /** Distinguishes the Waitlist Entry object. */
   object: string;
 }
-export const WaitlistEntriesControllerDenyResponse = /*@__PURE__*/ S.suspend(() =>
+const WaitlistEntriesControllerDenyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -16269,7 +15409,7 @@ export interface WaitlistsControllerFindRequest {
   /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. The default waitlist is created when its first entry is added, so read requests for `default` return a `404` until then. */
   id: string;
 }
-export const WaitlistsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitlistsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user_management/waitlists/{id}", code: 200 })),
@@ -16285,13 +15425,11 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   | "widgets:dsync:manage"
   | "widgets:audit-log-streaming:manage"
   | "widgets:pipes:manage";
-export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem = S.String;
-
 /** The scopes to grant the widget session. */
 export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList = Array<
   WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem | (string & {})
 >;
-export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
+const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
   CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList>;
 
 export interface WidgetsPublicControllerIssueWidgetSessionTokenRequest {
@@ -16302,7 +15440,7 @@ export interface WidgetsPublicControllerIssueWidgetSessionTokenRequest {
   /** The scopes to grant the widget session. */
   scopes?: WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList;
 }
-export const WidgetsPublicControllerIssueWidgetSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const WidgetsPublicControllerIssueWidgetSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.optional(S.String),
     user_id: S.optional(S.String),
@@ -16316,7 +15454,7 @@ export interface WidgetSessionTokenResponse {
   /** The widget session token. */
   token?: string;
 }
-export const WidgetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const WidgetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),

@@ -153,7 +153,7 @@ export interface CreateAlertManagerDefinitionRequest {
   data: Uint8Array;
   clientToken?: string;
 }
-export const CreateAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     data: T.Blob,
@@ -176,7 +176,7 @@ export interface AlertManagerDefinitionStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const AlertManagerDefinitionStatus = /*@__PURE__*/ S.suspend(() =>
+const AlertManagerDefinitionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ statusCode: S.String, statusReason: S.optional(S.String) }),
 ).annotate({
   identifier: "AlertManagerDefinitionStatus",
@@ -184,7 +184,7 @@ export const AlertManagerDefinitionStatus = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAlertManagerDefinitionResponse {
   status: AlertManagerDefinitionStatus;
 }
-export const CreateAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: AlertManagerDefinitionStatus }),
 ).annotate({
   identifier: "CreateAlertManagerDefinitionResponse",
@@ -194,7 +194,7 @@ export type AnomalyDetectorEvaluationInterval = number;
 export type AnomalyDetectorMissingDataAction =
   | { markAsAnomaly: boolean; skip?: never }
   | { markAsAnomaly?: never; skip: boolean };
-export const AnomalyDetectorMissingDataAction = /*@__PURE__*/ S.Union([
+const AnomalyDetectorMissingDataAction = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ markAsAnomaly: S.Boolean }),
   /*@__PURE__*/ S.Struct({ skip: S.Boolean }),
 ]);
@@ -202,7 +202,7 @@ export type RandomCutForestQuery = string;
 export type IgnoreNearExpected =
   | { amount: number; ratio?: never }
   | { amount?: never; ratio: number };
-export const IgnoreNearExpected = /*@__PURE__*/ S.Union([
+const IgnoreNearExpected = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ amount: S.Number }),
   /*@__PURE__*/ S.Struct({ ratio: S.Number }),
 ]);
@@ -213,7 +213,7 @@ export interface RandomCutForestConfiguration {
   ignoreNearExpectedFromAbove?: IgnoreNearExpected;
   ignoreNearExpectedFromBelow?: IgnoreNearExpected;
 }
-export const RandomCutForestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RandomCutForestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.String,
     shingleSize: S.optional(S.Number),
@@ -225,20 +225,20 @@ export const RandomCutForestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "RandomCutForestConfiguration",
 }) as any as S.Schema<RandomCutForestConfiguration>;
 export type AnomalyDetectorConfiguration = { randomCutForest: RandomCutForestConfiguration };
-export const AnomalyDetectorConfiguration = /*@__PURE__*/ S.Union([
+const AnomalyDetectorConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ randomCutForest: RandomCutForestConfiguration }),
 ]);
 export type PrometheusMetricLabelKey = string;
 export type PrometheusMetricLabelValue = string;
 export type PrometheusMetricLabelMap = { [key: string]: string | undefined };
-export const PrometheusMetricLabelMap = /*@__PURE__*/ S.Record(
+const PrometheusMetricLabelMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateAnomalyDetectorRequest {
   workspaceId: string;
   alias: string;
@@ -249,7 +249,7 @@ export interface CreateAnomalyDetectorRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     alias: S.String,
@@ -283,13 +283,13 @@ export type AnomalyDetectorStatusCode =
   | "UPDATE_FAILED"
   | "DELETION_FAILED"
   | (string & {});
-export const AnomalyDetectorStatusCode = S.String;
+const AnomalyDetectorStatusCode = S.String;
 
 export interface AnomalyDetectorStatus {
   statusCode: AnomalyDetectorStatusCode;
   statusReason?: string;
 }
-export const AnomalyDetectorStatus = /*@__PURE__*/ S.suspend(() =>
+const AnomalyDetectorStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ statusCode: AnomalyDetectorStatusCode, statusReason: S.optional(S.String) }),
 ).annotate({ identifier: "AnomalyDetectorStatus" }) as any as S.Schema<AnomalyDetectorStatus>;
 export interface CreateAnomalyDetectorResponse {
@@ -298,7 +298,7 @@ export interface CreateAnomalyDetectorResponse {
   status: AnomalyDetectorStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anomalyDetectorId: S.String,
     arn: S.String,
@@ -314,7 +314,7 @@ export interface CreateLoggingConfigurationRequest {
   logGroupArn: string;
   clientToken?: string;
 }
-export const CreateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     logGroupArn: S.String,
@@ -337,40 +337,40 @@ export interface LoggingConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const LoggingConfigurationStatus =
+const LoggingConfigurationStatus =
   AlertManagerDefinitionStatus as any as S.Schema<LoggingConfigurationStatus>;
 export interface CreateLoggingConfigurationResponse {
   status: LoggingConfigurationStatus;
 }
-export const CreateLoggingConfigurationResponse =
+const CreateLoggingConfigurationResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<CreateLoggingConfigurationResponse>;
 export interface CloudWatchLogDestination {
   logGroupArn: string;
 }
-export const CloudWatchLogDestination = /*@__PURE__*/ S.suspend(() =>
+const CloudWatchLogDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logGroupArn: S.String }),
 ).annotate({ identifier: "CloudWatchLogDestination" }) as any as S.Schema<CloudWatchLogDestination>;
 export interface LoggingFilter {
   qspThreshold: number;
 }
-export const LoggingFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ qspThreshold: S.Number }),
-).annotate({ identifier: "LoggingFilter" }) as any as S.Schema<LoggingFilter>;
+const LoggingFilter = /*@__PURE__*/ S.suspend(() => S.Struct({ qspThreshold: S.Number })).annotate({
+  identifier: "LoggingFilter",
+}) as any as S.Schema<LoggingFilter>;
 export interface LoggingDestination {
   cloudWatchLogs: CloudWatchLogDestination;
   filters: LoggingFilter;
 }
-export const LoggingDestination = /*@__PURE__*/ S.suspend(() =>
+const LoggingDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cloudWatchLogs: CloudWatchLogDestination, filters: LoggingFilter }),
 ).annotate({ identifier: "LoggingDestination" }) as any as S.Schema<LoggingDestination>;
 export type LoggingDestinations = LoggingDestination[];
-export const LoggingDestinations = /*@__PURE__*/ S.Array(LoggingDestination);
+const LoggingDestinations = /*@__PURE__*/ S.Array(LoggingDestination);
 export interface CreateQueryLoggingConfigurationRequest {
   workspaceId: string;
   destinations: LoggingDestination[];
   clientToken?: string;
 }
-export const CreateQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     destinations: LoggingDestinations,
@@ -393,12 +393,12 @@ export interface QueryLoggingConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const QueryLoggingConfigurationStatus =
+const QueryLoggingConfigurationStatus =
   AlertManagerDefinitionStatus as any as S.Schema<QueryLoggingConfigurationStatus>;
 export interface CreateQueryLoggingConfigurationResponse {
   status: QueryLoggingConfigurationStatus;
 }
-export const CreateQueryLoggingConfigurationResponse =
+const CreateQueryLoggingConfigurationResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<CreateQueryLoggingConfigurationResponse>;
 export type RuleGroupsNamespaceName = string;
 export type RuleGroupsNamespaceData = Uint8Array;
@@ -409,7 +409,7 @@ export interface CreateRuleGroupsNamespaceRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     name: S.String,
@@ -435,7 +435,7 @@ export interface RuleGroupsNamespaceStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const RuleGroupsNamespaceStatus =
+const RuleGroupsNamespaceStatus =
   AlertManagerDefinitionStatus as any as S.Schema<RuleGroupsNamespaceStatus>;
 export interface CreateRuleGroupsNamespaceResponse {
   name: string;
@@ -443,7 +443,7 @@ export interface CreateRuleGroupsNamespaceResponse {
   status: RuleGroupsNamespaceStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arn: S.String,
@@ -455,22 +455,22 @@ export const CreateRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRuleGroupsNamespaceResponse>;
 export type ScraperAlias = string;
 export type ScrapeConfiguration = { configurationBlob: Uint8Array };
-export const ScrapeConfiguration = /*@__PURE__*/ S.Union([
+const ScrapeConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ configurationBlob: T.Blob }),
 ]);
 export type ClusterArn = string;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = SecurityGroupIds as any as S.Schema<SubnetIds>;
+const SubnetIds = SecurityGroupIds as any as S.Schema<SubnetIds>;
 export interface EksConfiguration {
   clusterArn: string;
   securityGroupIds?: string[];
   subnetIds: string[];
 }
-export const EksConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EksConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterArn: S.String,
     securityGroupIds: S.optional(SecurityGroupIds),
@@ -481,13 +481,13 @@ export interface VpcConfiguration {
   securityGroupIds: string[];
   subnetIds: string[];
 }
-export const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
+const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ securityGroupIds: SecurityGroupIds, subnetIds: SubnetIds }),
 ).annotate({ identifier: "VpcConfiguration" }) as any as S.Schema<VpcConfiguration>;
 export type Source =
   | { eksConfiguration: EksConfiguration; vpcConfiguration?: never }
   | { eksConfiguration?: never; vpcConfiguration: VpcConfiguration };
-export const Source = /*@__PURE__*/ S.Union([
+const Source = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ eksConfiguration: EksConfiguration }),
   /*@__PURE__*/ S.Struct({ vpcConfiguration: VpcConfiguration }),
 ]);
@@ -495,20 +495,20 @@ export type WorkspaceArn = string;
 export interface AmpConfiguration {
   workspaceArn: string;
 }
-export const AmpConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AmpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceArn: S.String }),
 ).annotate({ identifier: "AmpConfiguration" }) as any as S.Schema<AmpConfiguration>;
 export type CloudWatchDatasetArn = string;
 export interface CloudWatchConfiguration {
   datasetArn: string;
 }
-export const CloudWatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CloudWatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetArn: S.String }),
 ).annotate({ identifier: "CloudWatchConfiguration" }) as any as S.Schema<CloudWatchConfiguration>;
 export type Destination =
   | { ampConfiguration: AmpConfiguration; cloudWatchConfiguration?: never }
   | { ampConfiguration?: never; cloudWatchConfiguration: CloudWatchConfiguration };
-export const Destination = /*@__PURE__*/ S.Union([
+const Destination = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ ampConfiguration: AmpConfiguration }),
   /*@__PURE__*/ S.Struct({ cloudWatchConfiguration: CloudWatchConfiguration }),
 ]);
@@ -517,24 +517,24 @@ export interface RoleConfiguration {
   sourceRoleArn?: string;
   targetRoleArn?: string;
 }
-export const RoleConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RoleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourceRoleArn: S.optional(S.String), targetRoleArn: S.optional(S.String) }),
 ).annotate({ identifier: "RoleConfiguration" }) as any as S.Schema<RoleConfiguration>;
 export type OpenSearchDomainArn = string;
 export interface OpenSearchExporterConfiguration {
   domainArn: string;
 }
-export const OpenSearchExporterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OpenSearchExporterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainArn: S.String }),
 ).annotate({
   identifier: "OpenSearchExporterConfiguration",
 }) as any as S.Schema<OpenSearchExporterConfiguration>;
 export type ExporterConfiguration = { openSearchConfiguration: OpenSearchExporterConfiguration };
-export const ExporterConfiguration = /*@__PURE__*/ S.Union([
+const ExporterConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ openSearchConfiguration: OpenSearchExporterConfiguration }),
 ]);
 export type ExporterList = ExporterConfiguration[];
-export const ExporterList = /*@__PURE__*/ S.Array(ExporterConfiguration);
+const ExporterList = /*@__PURE__*/ S.Array(ExporterConfiguration);
 export interface CreateScraperRequest {
   alias?: string;
   scrapeConfiguration: ScrapeConfiguration;
@@ -545,7 +545,7 @@ export interface CreateScraperRequest {
   tags?: { [key: string]: string | undefined };
   exporters?: ExporterConfiguration[];
 }
-export const CreateScraperRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScraperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     scrapeConfiguration: ScrapeConfiguration,
@@ -563,16 +563,16 @@ export type ScraperStatusCode = string;
 export interface ScraperStatus {
   statusCode: string;
 }
-export const ScraperStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statusCode: S.String }),
-).annotate({ identifier: "ScraperStatus" }) as any as S.Schema<ScraperStatus>;
+const ScraperStatus = /*@__PURE__*/ S.suspend(() => S.Struct({ statusCode: S.String })).annotate({
+  identifier: "ScraperStatus",
+}) as any as S.Schema<ScraperStatus>;
 export interface CreateScraperResponse {
   scraperId: string;
   arn: string;
   status: ScraperStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateScraperResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScraperResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scraperId: S.String, arn: S.String, status: ScraperStatus, tags: S.optional(TagMap) }),
 ).annotate({ identifier: "CreateScraperResponse" }) as any as S.Schema<CreateScraperResponse>;
 export type WorkspaceAlias = string;
@@ -583,7 +583,7 @@ export interface CreateWorkspaceRequest {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
 }
-export const CreateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -595,7 +595,7 @@ export type WorkspaceStatusCode = string;
 export interface WorkspaceStatus {
   statusCode: string;
 }
-export const WorkspaceStatus = ScraperStatus as any as S.Schema<WorkspaceStatus>;
+const WorkspaceStatus = ScraperStatus as any as S.Schema<WorkspaceStatus>;
 export interface CreateWorkspaceResponse {
   workspaceId: string;
   arn: string;
@@ -603,7 +603,7 @@ export interface CreateWorkspaceResponse {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
 }
-export const CreateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String,
     arn: S.String,
@@ -616,7 +616,7 @@ export interface DeleteAlertManagerDefinitionRequest {
   workspaceId: string;
   clientToken?: string;
 }
-export const DeleteAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -634,9 +634,7 @@ export const DeleteAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAlertManagerDefinitionRequest",
 }) as any as S.Schema<DeleteAlertManagerDefinitionRequest>;
 export interface DeleteAlertManagerDefinitionResponse {}
-export const DeleteAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAlertManagerDefinitionResponse",
 }) as any as S.Schema<DeleteAlertManagerDefinitionResponse>;
 export interface DeleteAnomalyDetectorRequest {
@@ -644,7 +642,7 @@ export interface DeleteAnomalyDetectorRequest {
   anomalyDetectorId: string;
   clientToken?: string;
 }
-export const DeleteAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     anomalyDetectorId: S.String.pipe(T.HttpLabel("anomalyDetectorId")),
@@ -666,14 +664,14 @@ export const DeleteAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAnomalyDetectorRequest",
 }) as any as S.Schema<DeleteAnomalyDetectorRequest>;
 export interface DeleteAnomalyDetectorResponse {}
-export const DeleteAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAnomalyDetectorResponse",
 }) as any as S.Schema<DeleteAnomalyDetectorResponse>;
 export interface DeleteLoggingConfigurationRequest {
   workspaceId: string;
   clientToken?: string;
 }
-export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -691,13 +689,13 @@ export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
-export const DeleteLoggingConfigurationResponse =
+const DeleteLoggingConfigurationResponse =
   DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteLoggingConfigurationResponse>;
 export interface DeleteQueryLoggingConfigurationRequest {
   workspaceId: string;
   clientToken?: string;
 }
-export const DeleteQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -715,14 +713,14 @@ export const DeleteQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteQueryLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteQueryLoggingConfigurationRequest>;
 export interface DeleteQueryLoggingConfigurationResponse {}
-export const DeleteQueryLoggingConfigurationResponse =
+const DeleteQueryLoggingConfigurationResponse =
   DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteQueryLoggingConfigurationResponse>;
 export interface DeleteResourcePolicyRequest {
   workspaceId: string;
   clientToken?: string;
   revisionId?: string;
 }
-export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -741,14 +739,14 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
+const DeleteResourcePolicyResponse =
   DeleteAnomalyDetectorResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRuleGroupsNamespaceRequest {
   workspaceId: string;
   name: string;
   clientToken?: string;
 }
-export const DeleteRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -767,13 +765,13 @@ export const DeleteRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleGroupsNamespaceRequest",
 }) as any as S.Schema<DeleteRuleGroupsNamespaceRequest>;
 export interface DeleteRuleGroupsNamespaceResponse {}
-export const DeleteRuleGroupsNamespaceResponse =
+const DeleteRuleGroupsNamespaceResponse =
   DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteRuleGroupsNamespaceResponse>;
 export interface DeleteScraperRequest {
   scraperId: string;
   clientToken?: string;
 }
-export const DeleteScraperRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScraperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scraperId: S.String.pipe(T.HttpLabel("scraperId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -785,14 +783,14 @@ export interface DeleteScraperResponse {
   scraperId: string;
   status: ScraperStatus;
 }
-export const DeleteScraperResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteScraperResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scraperId: S.String, status: ScraperStatus }),
 ).annotate({ identifier: "DeleteScraperResponse" }) as any as S.Schema<DeleteScraperResponse>;
 export interface DeleteScraperLoggingConfigurationRequest {
   scraperId: string;
   clientToken?: string;
 }
-export const DeleteScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scraperId: S.String.pipe(T.HttpLabel("scraperId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -810,13 +808,13 @@ export const DeleteScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteScraperLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteScraperLoggingConfigurationRequest>;
 export interface DeleteScraperLoggingConfigurationResponse {}
-export const DeleteScraperLoggingConfigurationResponse =
+const DeleteScraperLoggingConfigurationResponse =
   DeleteAlertManagerDefinitionResponse as any as S.Schema<DeleteScraperLoggingConfigurationResponse>;
 export interface DeleteWorkspaceRequest {
   workspaceId: string;
   clientToken?: string;
 }
-export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -832,12 +830,12 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse =
+const DeleteWorkspaceResponse =
   DeleteAnomalyDetectorResponse as any as S.Schema<DeleteWorkspaceResponse>;
 export interface DescribeAlertManagerDefinitionRequest {
   workspaceId: string;
 }
-export const DescribeAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/workspaces/{workspaceId}/alertmanager/definition" }),
@@ -857,7 +855,7 @@ export interface AlertManagerDefinitionDescription {
   createdAt: Date;
   modifiedAt: Date;
 }
-export const AlertManagerDefinitionDescription = /*@__PURE__*/ S.suspend(() =>
+const AlertManagerDefinitionDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: AlertManagerDefinitionStatus,
     data: S.optional(T.Blob),
@@ -870,7 +868,7 @@ export const AlertManagerDefinitionDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAlertManagerDefinitionResponse {
   alertManagerDefinition: AlertManagerDefinitionDescription;
 }
-export const DescribeAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAlertManagerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ alertManagerDefinition: AlertManagerDefinitionDescription }),
 ).annotate({
   identifier: "DescribeAlertManagerDefinitionResponse",
@@ -879,7 +877,7 @@ export interface DescribeAnomalyDetectorRequest {
   workspaceId: string;
   anomalyDetectorId: string;
 }
-export const DescribeAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     anomalyDetectorId: S.String.pipe(T.HttpLabel("anomalyDetectorId")),
@@ -912,7 +910,7 @@ export interface AnomalyDetectorDescription {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const AnomalyDetectorDescription = /*@__PURE__*/ S.suspend(() =>
+const AnomalyDetectorDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     anomalyDetectorId: S.String,
@@ -932,7 +930,7 @@ export const AnomalyDetectorDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAnomalyDetectorResponse {
   anomalyDetector: AnomalyDetectorDescription;
 }
-export const DescribeAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ anomalyDetector: AnomalyDetectorDescription }),
 ).annotate({
   identifier: "DescribeAnomalyDetectorResponse",
@@ -940,7 +938,7 @@ export const DescribeAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeLoggingConfigurationRequest {
   workspaceId: string;
 }
-export const DescribeLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/workspaces/{workspaceId}/logging" }),
@@ -961,7 +959,7 @@ export interface LoggingConfigurationMetadata {
   createdAt: Date;
   modifiedAt: Date;
 }
-export const LoggingConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: LoggingConfigurationStatus,
     workspace: S.String,
@@ -975,7 +973,7 @@ export const LoggingConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeLoggingConfigurationResponse {
   loggingConfiguration: LoggingConfigurationMetadata;
 }
-export const DescribeLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ loggingConfiguration: LoggingConfigurationMetadata }),
 ).annotate({
   identifier: "DescribeLoggingConfigurationResponse",
@@ -983,7 +981,7 @@ export const DescribeLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =
 export interface DescribeQueryLoggingConfigurationRequest {
   workspaceId: string;
 }
-export const DescribeQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/workspaces/{workspaceId}/logging/query" }),
@@ -1004,7 +1002,7 @@ export interface QueryLoggingConfigurationMetadata {
   createdAt: Date;
   modifiedAt: Date;
 }
-export const QueryLoggingConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
+const QueryLoggingConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: QueryLoggingConfigurationStatus,
     workspace: S.String,
@@ -1018,7 +1016,7 @@ export const QueryLoggingConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeQueryLoggingConfigurationResponse {
   queryLoggingConfiguration: QueryLoggingConfigurationMetadata;
 }
-export const DescribeQueryLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeQueryLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queryLoggingConfiguration: QueryLoggingConfigurationMetadata }),
 ).annotate({
   identifier: "DescribeQueryLoggingConfigurationResponse",
@@ -1026,7 +1024,7 @@ export const DescribeQueryLoggingConfigurationResponse = /*@__PURE__*/ S.suspend
 export interface DescribeResourcePolicyRequest {
   workspaceId: string;
 }
-export const DescribeResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/workspaces/{workspaceId}/policy" }),
@@ -1046,7 +1044,7 @@ export interface DescribeResourcePolicyResponse {
   policyStatus: string;
   revisionId: string;
 }
-export const DescribeResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyDocument: S.String, policyStatus: S.String, revisionId: S.String }),
 ).annotate({
   identifier: "DescribeResourcePolicyResponse",
@@ -1055,7 +1053,7 @@ export interface DescribeRuleGroupsNamespaceRequest {
   workspaceId: string;
   name: string;
 }
-export const DescribeRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1081,7 +1079,7 @@ export interface RuleGroupsNamespaceDescription {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const RuleGroupsNamespaceDescription = /*@__PURE__*/ S.suspend(() =>
+const RuleGroupsNamespaceDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -1097,7 +1095,7 @@ export const RuleGroupsNamespaceDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeRuleGroupsNamespaceResponse {
   ruleGroupsNamespace: RuleGroupsNamespaceDescription;
 }
-export const DescribeRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ruleGroupsNamespace: RuleGroupsNamespaceDescription }),
 ).annotate({
   identifier: "DescribeRuleGroupsNamespaceResponse",
@@ -1105,7 +1103,7 @@ export const DescribeRuleGroupsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeScraperRequest {
   scraperId: string;
 }
-export const DescribeScraperRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeScraperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scraperId: S.String.pipe(T.HttpLabel("scraperId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/scrapers/{scraperId}" }), svc, auth, proto, ver, rules),
   ),
@@ -1127,7 +1125,7 @@ export interface ScraperDescription {
   roleConfiguration?: RoleConfiguration;
   exporters?: ExporterConfiguration[];
 }
-export const ScraperDescription = /*@__PURE__*/ S.suspend(() =>
+const ScraperDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     scraperId: S.String,
@@ -1148,13 +1146,13 @@ export const ScraperDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeScraperResponse {
   scraper: ScraperDescription;
 }
-export const DescribeScraperResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeScraperResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scraper: ScraperDescription }),
 ).annotate({ identifier: "DescribeScraperResponse" }) as any as S.Schema<DescribeScraperResponse>;
 export interface DescribeScraperLoggingConfigurationRequest {
   scraperId: string;
 }
-export const DescribeScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scraperId: S.String.pipe(T.HttpLabel("scraperId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/scrapers/{scraperId}/logging-configuration" }),
@@ -1173,30 +1171,30 @@ export interface ScraperLoggingConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const ScraperLoggingConfigurationStatus =
+const ScraperLoggingConfigurationStatus =
   AlertManagerDefinitionStatus as any as S.Schema<ScraperLoggingConfigurationStatus>;
 export type ScraperLoggingDestination = { cloudWatchLogs: CloudWatchLogDestination };
-export const ScraperLoggingDestination = /*@__PURE__*/ S.Union([
+const ScraperLoggingDestination = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogDestination }),
 ]);
 export type ScraperComponentType = string;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = TagMap as any as S.Schema<StringMap>;
+const StringMap = TagMap as any as S.Schema<StringMap>;
 export interface ComponentConfig {
   options?: { [key: string]: string | undefined };
 }
-export const ComponentConfig = /*@__PURE__*/ S.suspend(() =>
+const ComponentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ options: S.optional(StringMap) }),
 ).annotate({ identifier: "ComponentConfig" }) as any as S.Schema<ComponentConfig>;
 export interface ScraperComponent {
   type: string;
   config?: ComponentConfig;
 }
-export const ScraperComponent = /*@__PURE__*/ S.suspend(() =>
+const ScraperComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.String, config: S.optional(ComponentConfig) }),
 ).annotate({ identifier: "ScraperComponent" }) as any as S.Schema<ScraperComponent>;
 export type ScraperComponents = ScraperComponent[];
-export const ScraperComponents = /*@__PURE__*/ S.Array(ScraperComponent);
+const ScraperComponents = /*@__PURE__*/ S.Array(ScraperComponent);
 export interface DescribeScraperLoggingConfigurationResponse {
   status: ScraperLoggingConfigurationStatus;
   scraperId: string;
@@ -1204,7 +1202,7 @@ export interface DescribeScraperLoggingConfigurationResponse {
   scraperComponents: ScraperComponent[];
   modifiedAt: Date;
 }
-export const DescribeScraperLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeScraperLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ScraperLoggingConfigurationStatus,
     scraperId: S.String,
@@ -1218,7 +1216,7 @@ export const DescribeScraperLoggingConfigurationResponse = /*@__PURE__*/ S.suspe
 export interface DescribeWorkspaceRequest {
   workspaceId: string;
 }
-export const DescribeWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/workspaces/{workspaceId}" }),
@@ -1241,7 +1239,7 @@ export interface WorkspaceDescription {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
 }
-export const WorkspaceDescription = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String,
     alias: S.optional(S.String),
@@ -1256,7 +1254,7 @@ export const WorkspaceDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeWorkspaceResponse {
   workspace: WorkspaceDescription;
 }
-export const DescribeWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspace: WorkspaceDescription }),
 ).annotate({
   identifier: "DescribeWorkspaceResponse",
@@ -1264,7 +1262,7 @@ export const DescribeWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeWorkspaceConfigurationRequest {
   workspaceId: string;
 }
-export const DescribeWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/workspaces/{workspaceId}/configuration" }),
@@ -1283,27 +1281,27 @@ export interface WorkspaceConfigurationStatus {
   statusCode: string;
   statusReason?: string;
 }
-export const WorkspaceConfigurationStatus =
+const WorkspaceConfigurationStatus =
   AlertManagerDefinitionStatus as any as S.Schema<WorkspaceConfigurationStatus>;
 export interface LimitsPerLabelSetEntry {
   maxSeries?: number;
 }
-export const LimitsPerLabelSetEntry = /*@__PURE__*/ S.suspend(() =>
+const LimitsPerLabelSetEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxSeries: S.optional(S.Number) }),
 ).annotate({ identifier: "LimitsPerLabelSetEntry" }) as any as S.Schema<LimitsPerLabelSetEntry>;
 export type LabelName = string;
 export type LabelValue = string;
 export type LabelSet = { [key: string]: string | undefined };
-export const LabelSet = TagMap as any as S.Schema<LabelSet>;
+const LabelSet = TagMap as any as S.Schema<LabelSet>;
 export interface LimitsPerLabelSet {
   limits: LimitsPerLabelSetEntry;
   labelSet: { [key: string]: string | undefined };
 }
-export const LimitsPerLabelSet = /*@__PURE__*/ S.suspend(() =>
+const LimitsPerLabelSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ limits: LimitsPerLabelSetEntry, labelSet: LabelSet }),
 ).annotate({ identifier: "LimitsPerLabelSet" }) as any as S.Schema<LimitsPerLabelSet>;
 export type LimitsPerLabelSetList = LimitsPerLabelSet[];
-export const LimitsPerLabelSetList = /*@__PURE__*/ S.Array(LimitsPerLabelSet);
+const LimitsPerLabelSetList = /*@__PURE__*/ S.Array(LimitsPerLabelSet);
 export interface WorkspaceConfigurationDescription {
   status: WorkspaceConfigurationStatus;
   limitsPerLabelSet?: LimitsPerLabelSet[];
@@ -1311,7 +1309,7 @@ export interface WorkspaceConfigurationDescription {
   outOfOrderTimeWindowInSeconds?: number;
   ruleQueryOffsetInSeconds?: number;
 }
-export const WorkspaceConfigurationDescription = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceConfigurationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: WorkspaceConfigurationStatus,
     limitsPerLabelSet: S.optional(LimitsPerLabelSetList),
@@ -1325,13 +1323,13 @@ export const WorkspaceConfigurationDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeWorkspaceConfigurationResponse {
   workspaceConfiguration: WorkspaceConfigurationDescription;
 }
-export const DescribeWorkspaceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkspaceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaceConfiguration: WorkspaceConfigurationDescription }),
 ).annotate({
   identifier: "DescribeWorkspaceConfigurationResponse",
 }) as any as S.Schema<DescribeWorkspaceConfigurationResponse>;
 export interface GetDefaultScraperConfigurationRequest {}
-export const GetDefaultScraperConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultScraperConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "GET", uri: "/scraperconfiguration" }), svc, auth, proto, ver, rules),
   ),
@@ -1341,7 +1339,7 @@ export const GetDefaultScraperConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 export interface GetDefaultScraperConfigurationResponse {
   configuration: Uint8Array;
 }
-export const GetDefaultScraperConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultScraperConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ configuration: T.Blob }),
 ).annotate({
   identifier: "GetDefaultScraperConfigurationResponse",
@@ -1353,7 +1351,7 @@ export interface ListAnomalyDetectorsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAnomalyDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnomalyDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     alias: S.optional(S.String).pipe(T.HttpQuery("alias")),
@@ -1381,7 +1379,7 @@ export interface AnomalyDetectorSummary {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const AnomalyDetectorSummary = /*@__PURE__*/ S.suspend(() =>
+const AnomalyDetectorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     anomalyDetectorId: S.String,
@@ -1393,12 +1391,12 @@ export const AnomalyDetectorSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnomalyDetectorSummary" }) as any as S.Schema<AnomalyDetectorSummary>;
 export type AnomalyDetectorSummaryList = AnomalyDetectorSummary[];
-export const AnomalyDetectorSummaryList = /*@__PURE__*/ S.Array(AnomalyDetectorSummary);
+const AnomalyDetectorSummaryList = /*@__PURE__*/ S.Array(AnomalyDetectorSummary);
 export interface ListAnomalyDetectorsResponse {
   anomalyDetectors: AnomalyDetectorSummary[];
   nextToken?: string;
 }
-export const ListAnomalyDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnomalyDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ anomalyDetectors: AnomalyDetectorSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAnomalyDetectorsResponse",
@@ -1409,7 +1407,7 @@ export interface ListRuleGroupsNamespacesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListRuleGroupsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRuleGroupsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     name: S.optional(S.String).pipe(T.HttpQuery("name")),
@@ -1436,7 +1434,7 @@ export interface RuleGroupsNamespaceSummary {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const RuleGroupsNamespaceSummary = /*@__PURE__*/ S.suspend(() =>
+const RuleGroupsNamespaceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -1449,12 +1447,12 @@ export const RuleGroupsNamespaceSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuleGroupsNamespaceSummary",
 }) as any as S.Schema<RuleGroupsNamespaceSummary>;
 export type RuleGroupsNamespaceSummaryList = RuleGroupsNamespaceSummary[];
-export const RuleGroupsNamespaceSummaryList = /*@__PURE__*/ S.Array(RuleGroupsNamespaceSummary);
+const RuleGroupsNamespaceSummaryList = /*@__PURE__*/ S.Array(RuleGroupsNamespaceSummary);
 export interface ListRuleGroupsNamespacesResponse {
   ruleGroupsNamespaces: RuleGroupsNamespaceSummary[];
   nextToken?: string;
 }
-export const ListRuleGroupsNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRuleGroupsNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleGroupsNamespaces: RuleGroupsNamespaceSummaryList,
     nextToken: S.optional(S.String),
@@ -1465,9 +1463,9 @@ export const ListRuleGroupsNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
 export type FilterKey = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = SecurityGroupIds as any as S.Schema<FilterValues>;
+const FilterValues = SecurityGroupIds as any as S.Schema<FilterValues>;
 export type ScraperFilters = { [key: string]: string[] | undefined };
-export const ScraperFilters = /*@__PURE__*/ S.Record(
+const ScraperFilters = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ FilterValues.pipe(S.optional),
 );
@@ -1476,7 +1474,7 @@ export interface ListScrapersRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListScrapersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScrapersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(ScraperFilters).pipe(T.HttpQueryParams()),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1498,7 +1496,7 @@ export interface ScraperSummary {
   roleConfiguration?: RoleConfiguration;
   exporters?: ExporterConfiguration[];
 }
-export const ScraperSummary = /*@__PURE__*/ S.suspend(() =>
+const ScraperSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     scraperId: S.String,
@@ -1516,18 +1514,18 @@ export const ScraperSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScraperSummary" }) as any as S.Schema<ScraperSummary>;
 export type ScraperSummaryList = ScraperSummary[];
-export const ScraperSummaryList = /*@__PURE__*/ S.Array(ScraperSummary);
+const ScraperSummaryList = /*@__PURE__*/ S.Array(ScraperSummary);
 export interface ListScrapersResponse {
   scrapers: ScraperSummary[];
   nextToken?: string;
 }
-export const ListScrapersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScrapersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scrapers: ScraperSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListScrapersResponse" }) as any as S.Schema<ListScrapersResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1537,7 +1535,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1547,7 +1545,7 @@ export interface ListWorkspacesRequest {
   alias?: string;
   maxResults?: number;
 }
-export const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     alias: S.optional(S.String).pipe(T.HttpQuery("alias")),
@@ -1563,7 +1561,7 @@ export interface WorkspaceSummary {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
 }
-export const WorkspaceSummary = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String,
     alias: S.optional(S.String),
@@ -1575,12 +1573,12 @@ export const WorkspaceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkspaceSummary" }) as any as S.Schema<WorkspaceSummary>;
 export type WorkspaceSummaryList = WorkspaceSummary[];
-export const WorkspaceSummaryList = /*@__PURE__*/ S.Array(WorkspaceSummary);
+const WorkspaceSummaryList = /*@__PURE__*/ S.Array(WorkspaceSummary);
 export interface ListWorkspacesResponse {
   workspaces: WorkspaceSummary[];
   nextToken?: string;
 }
-export const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workspaces: WorkspaceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListWorkspacesResponse" }) as any as S.Schema<ListWorkspacesResponse>;
 export interface PutAlertManagerDefinitionRequest {
@@ -1588,7 +1586,7 @@ export interface PutAlertManagerDefinitionRequest {
   data: Uint8Array;
   clientToken?: string;
 }
-export const PutAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     data: T.Blob,
@@ -1609,7 +1607,7 @@ export const PutAlertManagerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAlertManagerDefinitionResponse {
   status: AlertManagerDefinitionStatus;
 }
-export const PutAlertManagerDefinitionResponse =
+const PutAlertManagerDefinitionResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<PutAlertManagerDefinitionResponse>;
 export interface PutAnomalyDetectorRequest {
   workspaceId: string;
@@ -1620,7 +1618,7 @@ export interface PutAnomalyDetectorRequest {
   labels?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const PutAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     anomalyDetectorId: S.String.pipe(T.HttpLabel("anomalyDetectorId")),
@@ -1651,7 +1649,7 @@ export interface PutAnomalyDetectorResponse {
   status: AnomalyDetectorStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const PutAnomalyDetectorResponse =
+const PutAnomalyDetectorResponse =
   CreateAnomalyDetectorResponse as any as S.Schema<PutAnomalyDetectorResponse>;
 export interface PutResourcePolicyRequest {
   workspaceId: string;
@@ -1659,7 +1657,7 @@ export interface PutResourcePolicyRequest {
   clientToken?: string;
   revisionId?: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     policyDocument: S.String,
@@ -1680,7 +1678,7 @@ export interface PutResourcePolicyResponse {
   policyStatus: string;
   revisionId: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyStatus: S.String, revisionId: S.String }),
 ).annotate({
   identifier: "PutResourcePolicyResponse",
@@ -1691,7 +1689,7 @@ export interface PutRuleGroupsNamespaceRequest {
   data: Uint8Array;
   clientToken?: string;
 }
-export const PutRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRuleGroupsNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1716,27 +1714,26 @@ export interface PutRuleGroupsNamespaceResponse {
   status: RuleGroupsNamespaceStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const PutRuleGroupsNamespaceResponse =
+const PutRuleGroupsNamespaceResponse =
   CreateRuleGroupsNamespaceResponse as any as S.Schema<PutRuleGroupsNamespaceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteAnomalyDetectorResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteAnomalyDetectorResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = SecurityGroupIds as any as S.Schema<TagKeys>;
+const TagKeys = SecurityGroupIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -1745,14 +1742,14 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   DeleteAnomalyDetectorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLoggingConfigurationRequest {
   workspaceId: string;
   logGroupArn: string;
   clientToken?: string;
 }
-export const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     logGroupArn: S.String,
@@ -1773,14 +1770,14 @@ export const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLoggingConfigurationResponse {
   status: LoggingConfigurationStatus;
 }
-export const UpdateLoggingConfigurationResponse =
+const UpdateLoggingConfigurationResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateLoggingConfigurationResponse>;
 export interface UpdateQueryLoggingConfigurationRequest {
   workspaceId: string;
   destinations: LoggingDestination[];
   clientToken?: string;
 }
-export const UpdateQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     destinations: LoggingDestinations,
@@ -1801,7 +1798,7 @@ export const UpdateQueryLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(()
 export interface UpdateQueryLoggingConfigurationResponse {
   status: QueryLoggingConfigurationStatus;
 }
-export const UpdateQueryLoggingConfigurationResponse =
+const UpdateQueryLoggingConfigurationResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateQueryLoggingConfigurationResponse>;
 export interface UpdateScraperRequest {
   scraperId: string;
@@ -1812,7 +1809,7 @@ export interface UpdateScraperRequest {
   clientToken?: string;
   exporters?: ExporterConfiguration[];
 }
-export const UpdateScraperRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScraperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scraperId: S.String.pipe(T.HttpLabel("scraperId")),
     alias: S.optional(S.String),
@@ -1831,14 +1828,13 @@ export interface UpdateScraperResponse {
   status: ScraperStatus;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateScraperResponse =
-  CreateScraperResponse as any as S.Schema<UpdateScraperResponse>;
+const UpdateScraperResponse = CreateScraperResponse as any as S.Schema<UpdateScraperResponse>;
 export interface UpdateScraperLoggingConfigurationRequest {
   scraperId: string;
   loggingDestination: ScraperLoggingDestination;
   scraperComponents?: ScraperComponent[];
 }
-export const UpdateScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scraperId: S.String.pipe(T.HttpLabel("scraperId")),
     loggingDestination: ScraperLoggingDestination,
@@ -1859,14 +1855,14 @@ export const UpdateScraperLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(
 export interface UpdateScraperLoggingConfigurationResponse {
   status: ScraperLoggingConfigurationStatus;
 }
-export const UpdateScraperLoggingConfigurationResponse =
+const UpdateScraperLoggingConfigurationResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateScraperLoggingConfigurationResponse>;
 export interface UpdateWorkspaceAliasRequest {
   workspaceId: string;
   alias?: string;
   clientToken?: string;
 }
-export const UpdateWorkspaceAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkspaceAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     alias: S.optional(S.String),
@@ -1885,7 +1881,7 @@ export const UpdateWorkspaceAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspaceAliasRequest",
 }) as any as S.Schema<UpdateWorkspaceAliasRequest>;
 export interface UpdateWorkspaceAliasResponse {}
-export const UpdateWorkspaceAliasResponse =
+const UpdateWorkspaceAliasResponse =
   DeleteAnomalyDetectorResponse as any as S.Schema<UpdateWorkspaceAliasResponse>;
 export interface UpdateWorkspaceConfigurationRequest {
   workspaceId: string;
@@ -1895,7 +1891,7 @@ export interface UpdateWorkspaceConfigurationRequest {
   outOfOrderTimeWindowInSeconds?: number;
   ruleQueryOffsetInSeconds?: number;
 }
-export const UpdateWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1919,18 +1915,18 @@ export const UpdateWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkspaceConfigurationResponse {
   status: WorkspaceConfigurationStatus;
 }
-export const UpdateWorkspaceConfigurationResponse =
+const UpdateWorkspaceConfigurationResponse =
   CreateAlertManagerDefinitionResponse as any as S.Schema<UpdateWorkspaceConfigurationResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type CreateAlertManagerDefinitionError =
   | AccessDeniedException
   | ConflictException

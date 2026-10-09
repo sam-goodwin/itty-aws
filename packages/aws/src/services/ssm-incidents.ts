@@ -144,12 +144,12 @@ export class ValidationException
 export type Arn = string;
 export type FindingId = string;
 export type FindingIdList = string[];
-export const FindingIdList = /*@__PURE__*/ S.Array(S.String);
+const FindingIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetIncidentFindingsInput {
   incidentRecordArn: string;
   findingIds: string[];
 }
-export const BatchGetIncidentFindingsInput = /*@__PURE__*/ S.suspend(() =>
+const BatchGetIncidentFindingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incidentRecordArn: S.String, findingIds: FindingIdList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/batchGetIncidentFindings" }),
@@ -169,7 +169,7 @@ export interface CodeDeployDeployment {
   deploymentGroupArn: string;
   deploymentId: string;
 }
-export const CodeDeployDeployment = /*@__PURE__*/ S.suspend(() =>
+const CodeDeployDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -182,7 +182,7 @@ export interface CloudFormationStackUpdate {
   endTime?: Date;
   stackArn: string;
 }
-export const CloudFormationStackUpdate = /*@__PURE__*/ S.suspend(() =>
+const CloudFormationStackUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -194,7 +194,7 @@ export const CloudFormationStackUpdate = /*@__PURE__*/ S.suspend(() =>
 export type FindingDetails =
   | { codeDeployDeployment: CodeDeployDeployment; cloudFormationStackUpdate?: never }
   | { codeDeployDeployment?: never; cloudFormationStackUpdate: CloudFormationStackUpdate };
-export const FindingDetails = /*@__PURE__*/ S.Union([
+const FindingDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ codeDeployDeployment: CodeDeployDeployment }),
   /*@__PURE__*/ S.Struct({ cloudFormationStackUpdate: CloudFormationStackUpdate }),
 ]);
@@ -204,7 +204,7 @@ export interface Finding {
   lastModifiedTime: Date;
   details?: FindingDetails;
 }
-export const Finding = /*@__PURE__*/ S.suspend(() =>
+const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -213,26 +213,24 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 export type FindingList = Finding[];
-export const FindingList = /*@__PURE__*/ S.Array(Finding);
+const FindingList = /*@__PURE__*/ S.Array(Finding);
 export interface BatchGetIncidentFindingsError_ {
   findingId: string;
   code: string;
   message: string;
 }
-export const BatchGetIncidentFindingsError_ = /*@__PURE__*/ S.suspend(() =>
+const BatchGetIncidentFindingsError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingId: S.String, code: S.String, message: S.String }),
 ).annotate({
   identifier: "BatchGetIncidentFindingsError",
 }) as any as S.Schema<BatchGetIncidentFindingsError_>;
 export type BatchGetIncidentFindingsErrorList = BatchGetIncidentFindingsError_[];
-export const BatchGetIncidentFindingsErrorList = /*@__PURE__*/ S.Array(
-  BatchGetIncidentFindingsError_,
-);
+const BatchGetIncidentFindingsErrorList = /*@__PURE__*/ S.Array(BatchGetIncidentFindingsError_);
 export interface BatchGetIncidentFindingsOutput {
   findings: Finding[];
   errors: BatchGetIncidentFindingsError_[];
 }
-export const BatchGetIncidentFindingsOutput = /*@__PURE__*/ S.suspend(() =>
+const BatchGetIncidentFindingsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findings: FindingList, errors: BatchGetIncidentFindingsErrorList }),
 ).annotate({
   identifier: "BatchGetIncidentFindingsOutput",
@@ -242,11 +240,11 @@ export type SseKmsKey = string;
 export interface RegionMapInputValue {
   sseKmsKeyId?: string;
 }
-export const RegionMapInputValue = /*@__PURE__*/ S.suspend(() =>
+const RegionMapInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sseKmsKeyId: S.optional(S.String) }),
 ).annotate({ identifier: "RegionMapInputValue" }) as any as S.Schema<RegionMapInputValue>;
 export type RegionMapInput = { [key: string]: RegionMapInputValue | undefined };
-export const RegionMapInput = /*@__PURE__*/ S.Record(
+const RegionMapInput = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ RegionMapInputValue.pipe(S.optional),
 );
@@ -254,13 +252,13 @@ export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateReplicationSetInput {
   regions: { [key: string]: RegionMapInputValue | undefined };
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
+const CreateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: RegionMapInput,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -274,7 +272,7 @@ export const CreateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateReplicationSetOutput {
   arn: string;
 }
-export const CreateReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }),
 ).annotate({
   identifier: "CreateReplicationSetOutput",
@@ -286,11 +284,11 @@ export type Impact = number;
 export type IncidentSummary = string;
 export type DedupeString = string;
 export type NotificationTargetItem = { snsTopicArn: string };
-export const NotificationTargetItem = /*@__PURE__*/ S.Union([
+const NotificationTargetItem = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ snsTopicArn: S.String }),
 ]);
 export type NotificationTargetSet = NotificationTargetItem[];
-export const NotificationTargetSet = /*@__PURE__*/ S.Array(NotificationTargetItem);
+const NotificationTargetSet = /*@__PURE__*/ S.Array(NotificationTargetItem);
 export interface IncidentTemplate {
   title: string;
   impact: number;
@@ -299,7 +297,7 @@ export interface IncidentTemplate {
   notificationTargets?: NotificationTargetItem[];
   incidentTags?: { [key: string]: string | undefined };
 }
-export const IncidentTemplate = /*@__PURE__*/ S.suspend(() =>
+const IncidentTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     impact: S.Number,
@@ -310,39 +308,38 @@ export const IncidentTemplate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IncidentTemplate" }) as any as S.Schema<IncidentTemplate>;
 export interface EmptyChatChannel {}
-export const EmptyChatChannel = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const EmptyChatChannel = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EmptyChatChannel",
 }) as any as S.Schema<EmptyChatChannel>;
 export type SnsArn = string;
 export type ChatbotSnsConfigurationSet = string[];
-export const ChatbotSnsConfigurationSet =
-  FindingIdList as any as S.Schema<ChatbotSnsConfigurationSet>;
+const ChatbotSnsConfigurationSet = FindingIdList as any as S.Schema<ChatbotSnsConfigurationSet>;
 export type ChatChannel =
   | { empty: EmptyChatChannel; chatbotSns?: never }
   | { empty?: never; chatbotSns: string[] };
-export const ChatChannel = /*@__PURE__*/ S.Union([
+const ChatChannel = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ empty: EmptyChatChannel }),
   /*@__PURE__*/ S.Struct({ chatbotSns: ChatbotSnsConfigurationSet }),
 ]);
 export type SsmContactsArn = string;
 export type EngagementSet = string[];
-export const EngagementSet = FindingIdList as any as S.Schema<EngagementSet>;
+const EngagementSet = FindingIdList as any as S.Schema<EngagementSet>;
 export type RoleArn = string;
 export type SsmTargetAccount = string;
 export type SsmParameterValues = string[];
-export const SsmParameterValues = FindingIdList as any as S.Schema<SsmParameterValues>;
+const SsmParameterValues = FindingIdList as any as S.Schema<SsmParameterValues>;
 export type SsmParameters = { [key: string]: string[] | undefined };
-export const SsmParameters = /*@__PURE__*/ S.Record(
+const SsmParameters = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ SsmParameterValues.pipe(S.optional),
 );
 export type VariableType = string;
 export type DynamicSsmParameterValue = { variable: string };
-export const DynamicSsmParameterValue = /*@__PURE__*/ S.Union([
+const DynamicSsmParameterValue = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ variable: S.String }),
 ]);
 export type DynamicSsmParameters = { [key: string]: DynamicSsmParameterValue | undefined };
-export const DynamicSsmParameters = /*@__PURE__*/ S.Record(
+const DynamicSsmParameters = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ DynamicSsmParameterValue.pipe(S.optional),
 );
@@ -354,7 +351,7 @@ export interface SsmAutomation {
   parameters?: { [key: string]: string[] | undefined };
   dynamicParameters?: { [key: string]: DynamicSsmParameterValue | undefined };
 }
-export const SsmAutomation = /*@__PURE__*/ S.suspend(() =>
+const SsmAutomation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleArn: S.String,
     documentName: S.String,
@@ -365,15 +362,13 @@ export const SsmAutomation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SsmAutomation" }) as any as S.Schema<SsmAutomation>;
 export type Action = { ssmAutomation: SsmAutomation };
-export const Action = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ ssmAutomation: SsmAutomation }),
-]);
+const Action = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ ssmAutomation: SsmAutomation })]);
 export type ActionsList = Action[];
-export const ActionsList = /*@__PURE__*/ S.Array(Action);
+const ActionsList = /*@__PURE__*/ S.Array(Action);
 export interface PagerDutyIncidentConfiguration {
   serviceId: string;
 }
-export const PagerDutyIncidentConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PagerDutyIncidentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceId: S.String }),
 ).annotate({
   identifier: "PagerDutyIncidentConfiguration",
@@ -383,7 +378,7 @@ export interface PagerDutyConfiguration {
   secretId: string;
   pagerDutyIncidentConfiguration: PagerDutyIncidentConfiguration;
 }
-export const PagerDutyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PagerDutyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     secretId: S.String,
@@ -391,11 +386,11 @@ export const PagerDutyConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PagerDutyConfiguration" }) as any as S.Schema<PagerDutyConfiguration>;
 export type Integration = { pagerDutyConfiguration: PagerDutyConfiguration };
-export const Integration = /*@__PURE__*/ S.Union([
+const Integration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ pagerDutyConfiguration: PagerDutyConfiguration }),
 ]);
 export type Integrations = Integration[];
-export const Integrations = /*@__PURE__*/ S.Array(Integration);
+const Integrations = /*@__PURE__*/ S.Array(Integration);
 export interface CreateResponsePlanInput {
   clientToken?: string;
   name: string;
@@ -407,7 +402,7 @@ export interface CreateResponsePlanInput {
   tags?: { [key: string]: string | undefined };
   integrations?: Integration[];
 }
-export const CreateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
+const CreateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     name: S.String,
@@ -425,7 +420,7 @@ export const CreateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateResponsePlanOutput {
   arn: string;
 }
-export const CreateResponsePlanOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateResponsePlanOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }),
 ).annotate({ identifier: "CreateResponsePlanOutput" }) as any as S.Schema<CreateResponsePlanOutput>;
 export type TimelineEventType = string;
@@ -434,12 +429,12 @@ export type GeneratedId = string;
 export type EventReference =
   | { resource: string; relatedItemId?: never }
   | { resource?: never; relatedItemId: string };
-export const EventReference = /*@__PURE__*/ S.Union([
+const EventReference = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ resource: S.String }),
   /*@__PURE__*/ S.Struct({ relatedItemId: S.String }),
 ]);
 export type EventReferenceList = EventReference[];
-export const EventReferenceList = /*@__PURE__*/ S.Array(EventReference);
+const EventReferenceList = /*@__PURE__*/ S.Array(EventReference);
 export interface CreateTimelineEventInput {
   clientToken?: string;
   incidentRecordArn: string;
@@ -448,7 +443,7 @@ export interface CreateTimelineEventInput {
   eventData: string;
   eventReferences?: EventReference[];
 }
-export const CreateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
+const CreateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     incidentRecordArn: S.String,
@@ -465,7 +460,7 @@ export interface CreateTimelineEventOutput {
   incidentRecordArn: string;
   eventId: string;
 }
-export const CreateTimelineEventOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateTimelineEventOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incidentRecordArn: S.String, eventId: S.String }),
 ).annotate({
   identifier: "CreateTimelineEventOutput",
@@ -473,7 +468,7 @@ export const CreateTimelineEventOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteIncidentRecordInput {
   arn: string;
 }
-export const DeleteIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/deleteIncidentRecord" }), svc, auth, proto, ver, rules),
   ),
@@ -481,12 +476,11 @@ export const DeleteIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIncidentRecordInput",
 }) as any as S.Schema<DeleteIncidentRecordInput>;
 export interface DeleteIncidentRecordOutput {}
-export const DeleteIncidentRecordOutput =
-  EmptyChatChannel as any as S.Schema<DeleteIncidentRecordOutput>;
+const DeleteIncidentRecordOutput = EmptyChatChannel as any as S.Schema<DeleteIncidentRecordOutput>;
 export interface DeleteReplicationSetInput {
   arn: string;
 }
-export const DeleteReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/deleteReplicationSet" }), svc, auth, proto, ver, rules),
   ),
@@ -494,14 +488,13 @@ export const DeleteReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteReplicationSetInput",
 }) as any as S.Schema<DeleteReplicationSetInput>;
 export interface DeleteReplicationSetOutput {}
-export const DeleteReplicationSetOutput =
-  EmptyChatChannel as any as S.Schema<DeleteReplicationSetOutput>;
+const DeleteReplicationSetOutput = EmptyChatChannel as any as S.Schema<DeleteReplicationSetOutput>;
 export type PolicyId = string;
 export interface DeleteResourcePolicyInput {
   resourceArn: string;
   policyId: string;
 }
-export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, policyId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/deleteResourcePolicy" }), svc, auth, proto, ver, rules),
   ),
@@ -509,46 +502,43 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {}
-export const DeleteResourcePolicyOutput =
-  EmptyChatChannel as any as S.Schema<DeleteResourcePolicyOutput>;
+const DeleteResourcePolicyOutput = EmptyChatChannel as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DeleteResponsePlanInput {
   arn: string;
 }
-export const DeleteResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/deleteResponsePlan" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteResponsePlanInput" }) as any as S.Schema<DeleteResponsePlanInput>;
 export interface DeleteResponsePlanOutput {}
-export const DeleteResponsePlanOutput =
-  EmptyChatChannel as any as S.Schema<DeleteResponsePlanOutput>;
+const DeleteResponsePlanOutput = EmptyChatChannel as any as S.Schema<DeleteResponsePlanOutput>;
 export interface DeleteTimelineEventInput {
   incidentRecordArn: string;
   eventId: string;
 }
-export const DeleteTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incidentRecordArn: S.String, eventId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/deleteTimelineEvent" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteTimelineEventInput" }) as any as S.Schema<DeleteTimelineEventInput>;
 export interface DeleteTimelineEventOutput {}
-export const DeleteTimelineEventOutput =
-  EmptyChatChannel as any as S.Schema<DeleteTimelineEventOutput>;
+const DeleteTimelineEventOutput = EmptyChatChannel as any as S.Schema<DeleteTimelineEventOutput>;
 export interface GetIncidentRecordInput {
   arn: string;
 }
-export const GetIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/getIncidentRecord" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetIncidentRecordInput" }) as any as S.Schema<GetIncidentRecordInput>;
 export type IncidentRecordStatus = string;
 export type AutomationExecution = { ssmExecutionArn: string };
-export const AutomationExecution = /*@__PURE__*/ S.Union([
+const AutomationExecution = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ ssmExecutionArn: S.String }),
 ]);
 export type AutomationExecutionSet = AutomationExecution[];
-export const AutomationExecutionSet = /*@__PURE__*/ S.Array(AutomationExecution);
+const AutomationExecutionSet = /*@__PURE__*/ S.Array(AutomationExecution);
 export type ServicePrincipal = string;
 export type IncidentSource = string;
 export interface IncidentRecordSource {
@@ -557,7 +547,7 @@ export interface IncidentRecordSource {
   resourceArn?: string;
   source: string;
 }
-export const IncidentRecordSource = /*@__PURE__*/ S.suspend(() =>
+const IncidentRecordSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.String,
     invokedBy: S.optional(S.String),
@@ -581,7 +571,7 @@ export interface IncidentRecord {
   chatChannel?: ChatChannel;
   notificationTargets?: NotificationTargetItem[];
 }
-export const IncidentRecord = /*@__PURE__*/ S.suspend(() =>
+const IncidentRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     title: S.String,
@@ -602,13 +592,13 @@ export const IncidentRecord = /*@__PURE__*/ S.suspend(() =>
 export interface GetIncidentRecordOutput {
   incidentRecord: IncidentRecord;
 }
-export const GetIncidentRecordOutput = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentRecordOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incidentRecord: IncidentRecord }),
 ).annotate({ identifier: "GetIncidentRecordOutput" }) as any as S.Schema<GetIncidentRecordOutput>;
 export interface GetReplicationSetInput {
   arn: string;
 }
-export const GetReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
+const GetReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/getReplicationSet" }), svc, auth, proto, ver, rules),
   ),
@@ -620,7 +610,7 @@ export interface RegionInfo {
   statusMessage?: string;
   statusUpdateDateTime: Date;
 }
-export const RegionInfo = /*@__PURE__*/ S.suspend(() =>
+const RegionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sseKmsKeyId: S.optional(S.String),
     status: S.String,
@@ -629,10 +619,7 @@ export const RegionInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionInfo" }) as any as S.Schema<RegionInfo>;
 export type RegionInfoMap = { [key: string]: RegionInfo | undefined };
-export const RegionInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ RegionInfo.pipe(S.optional),
-);
+const RegionInfoMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ RegionInfo.pipe(S.optional));
 export type ReplicationSetStatus = string;
 export interface ReplicationSet {
   arn?: string;
@@ -644,7 +631,7 @@ export interface ReplicationSet {
   lastModifiedTime: Date;
   lastModifiedBy: string;
 }
-export const ReplicationSet = /*@__PURE__*/ S.suspend(() =>
+const ReplicationSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     regionMap: RegionInfoMap,
@@ -659,7 +646,7 @@ export const ReplicationSet = /*@__PURE__*/ S.suspend(() =>
 export interface GetReplicationSetOutput {
   replicationSet: ReplicationSet;
 }
-export const GetReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
+const GetReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ replicationSet: ReplicationSet }),
 ).annotate({ identifier: "GetReplicationSetOutput" }) as any as S.Schema<GetReplicationSetOutput>;
 export type MaxResults = number;
@@ -669,7 +656,7 @@ export interface GetResourcePoliciesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const GetResourcePoliciesInput = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePoliciesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
     maxResults: S.optional(S.Number),
@@ -684,16 +671,16 @@ export interface ResourcePolicy {
   policyId: string;
   ramResourceShareRegion: string;
 }
-export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
+const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyDocument: S.String, policyId: S.String, ramResourceShareRegion: S.String }),
 ).annotate({ identifier: "ResourcePolicy" }) as any as S.Schema<ResourcePolicy>;
 export type ResourcePolicyList = ResourcePolicy[];
-export const ResourcePolicyList = /*@__PURE__*/ S.Array(ResourcePolicy);
+const ResourcePolicyList = /*@__PURE__*/ S.Array(ResourcePolicy);
 export interface GetResourcePoliciesOutput {
   resourcePolicies: ResourcePolicy[];
   nextToken?: string;
 }
-export const GetResourcePoliciesOutput = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePoliciesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourcePolicies: ResourcePolicyList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetResourcePoliciesOutput",
@@ -701,7 +688,7 @@ export const GetResourcePoliciesOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetResponsePlanInput {
   arn: string;
 }
-export const GetResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/getResponsePlan" }), svc, auth, proto, ver, rules),
   ),
@@ -716,7 +703,7 @@ export interface GetResponsePlanOutput {
   actions?: Action[];
   integrations?: Integration[];
 }
-export const GetResponsePlanOutput = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePlanOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -732,7 +719,7 @@ export interface GetTimelineEventInput {
   incidentRecordArn: string;
   eventId: string;
 }
-export const GetTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
+const GetTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentRecordArn: S.String.pipe(T.HttpQuery("incidentRecordArn")),
     eventId: S.String.pipe(T.HttpQuery("eventId")),
@@ -747,7 +734,7 @@ export interface TimelineEvent {
   eventData: string;
   eventReferences?: EventReference[];
 }
-export const TimelineEvent = /*@__PURE__*/ S.suspend(() =>
+const TimelineEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentRecordArn: S.String,
     eventId: S.String,
@@ -761,7 +748,7 @@ export const TimelineEvent = /*@__PURE__*/ S.suspend(() =>
 export interface GetTimelineEventOutput {
   event: TimelineEvent;
 }
-export const GetTimelineEventOutput = /*@__PURE__*/ S.suspend(() =>
+const GetTimelineEventOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ event: TimelineEvent }),
 ).annotate({ identifier: "GetTimelineEventOutput" }) as any as S.Schema<GetTimelineEventOutput>;
 export interface ListIncidentFindingsInput {
@@ -769,7 +756,7 @@ export interface ListIncidentFindingsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListIncidentFindingsInput = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentFindingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentRecordArn: S.String,
     maxResults: S.optional(S.Number),
@@ -784,28 +771,28 @@ export interface FindingSummary {
   id: string;
   lastModifiedTime: Date;
 }
-export const FindingSummary = /*@__PURE__*/ S.suspend(() =>
+const FindingSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
 ).annotate({ identifier: "FindingSummary" }) as any as S.Schema<FindingSummary>;
 export type FindingSummaryList = FindingSummary[];
-export const FindingSummaryList = /*@__PURE__*/ S.Array(FindingSummary);
+const FindingSummaryList = /*@__PURE__*/ S.Array(FindingSummary);
 export interface ListIncidentFindingsOutput {
   findings: FindingSummary[];
   nextToken?: string;
 }
-export const ListIncidentFindingsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentFindingsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findings: FindingSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListIncidentFindingsOutput",
 }) as any as S.Schema<ListIncidentFindingsOutput>;
 export type StringList = string[];
-export const StringList = FindingIdList as any as S.Schema<StringList>;
+const StringList = FindingIdList as any as S.Schema<StringList>;
 export type IntegerList = number[];
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
+const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type AttributeValueList =
   | { stringValues: string[]; integerValues?: never }
   | { stringValues?: never; integerValues: number[] };
-export const AttributeValueList = /*@__PURE__*/ S.Union([
+const AttributeValueList = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ stringValues: StringList }),
   /*@__PURE__*/ S.Struct({ integerValues: IntegerList }),
 ]);
@@ -813,7 +800,7 @@ export type Condition =
   | { before: Date; after?: never; equals?: never }
   | { before?: never; after: Date; equals?: never }
   | { before?: never; after?: never; equals: AttributeValueList };
-export const Condition = /*@__PURE__*/ S.Union([
+const Condition = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({
     before: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
   }),
@@ -826,17 +813,17 @@ export interface Filter {
   key: string;
   condition: Condition;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, condition: Condition }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ S.Array(Filter);
 export interface ListIncidentRecordsInput {
   filters?: Filter[];
   maxResults?: number;
   nextToken?: string;
 }
-export const ListIncidentRecordsInput = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentRecordsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(FilterList),
     maxResults: S.optional(S.Number),
@@ -854,7 +841,7 @@ export interface IncidentRecordSummary {
   resolvedTime?: Date;
   incidentRecordSource: IncidentRecordSource;
 }
-export const IncidentRecordSummary = /*@__PURE__*/ S.suspend(() =>
+const IncidentRecordSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     title: S.String,
@@ -866,12 +853,12 @@ export const IncidentRecordSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IncidentRecordSummary" }) as any as S.Schema<IncidentRecordSummary>;
 export type IncidentRecordSummaryList = IncidentRecordSummary[];
-export const IncidentRecordSummaryList = /*@__PURE__*/ S.Array(IncidentRecordSummary);
+const IncidentRecordSummaryList = /*@__PURE__*/ S.Array(IncidentRecordSummary);
 export interface ListIncidentRecordsOutput {
   incidentRecordSummaries: IncidentRecordSummary[];
   nextToken?: string;
 }
-export const ListIncidentRecordsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentRecordsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incidentRecordSummaries: IncidentRecordSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListIncidentRecordsOutput",
@@ -881,7 +868,7 @@ export interface ListRelatedItemsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
+const ListRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentRecordArn: S.String,
     maxResults: S.optional(S.Number),
@@ -897,7 +884,7 @@ export interface PagerDutyIncidentDetail {
   autoResolve?: boolean;
   secretId?: string;
 }
-export const PagerDutyIncidentDetail = /*@__PURE__*/ S.suspend(() =>
+const PagerDutyIncidentDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, autoResolve: S.optional(S.Boolean), secretId: S.optional(S.String) }),
 ).annotate({ identifier: "PagerDutyIncidentDetail" }) as any as S.Schema<PagerDutyIncidentDetail>;
 export type ItemValue =
@@ -910,7 +897,7 @@ export type ItemValue =
       metricDefinition?: never;
       pagerDutyIncidentDetail: PagerDutyIncidentDetail;
     };
-export const ItemValue = /*@__PURE__*/ S.Union([
+const ItemValue = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ arn: S.String }),
   /*@__PURE__*/ S.Struct({ url: S.String }),
   /*@__PURE__*/ S.Struct({ metricDefinition: S.String }),
@@ -921,7 +908,7 @@ export interface ItemIdentifier {
   value: ItemValue;
   type: string;
 }
-export const ItemIdentifier = /*@__PURE__*/ S.suspend(() =>
+const ItemIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: ItemValue, type: S.String }),
 ).annotate({ identifier: "ItemIdentifier" }) as any as S.Schema<ItemIdentifier>;
 export interface RelatedItem {
@@ -929,7 +916,7 @@ export interface RelatedItem {
   title?: string;
   generatedId?: string;
 }
-export const RelatedItem = /*@__PURE__*/ S.suspend(() =>
+const RelatedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: ItemIdentifier,
     title: S.optional(S.String),
@@ -937,30 +924,30 @@ export const RelatedItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedItem" }) as any as S.Schema<RelatedItem>;
 export type RelatedItemList = RelatedItem[];
-export const RelatedItemList = /*@__PURE__*/ S.Array(RelatedItem);
+const RelatedItemList = /*@__PURE__*/ S.Array(RelatedItem);
 export interface ListRelatedItemsOutput {
   relatedItems: RelatedItem[];
   nextToken?: string;
 }
-export const ListRelatedItemsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListRelatedItemsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ relatedItems: RelatedItemList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListRelatedItemsOutput" }) as any as S.Schema<ListRelatedItemsOutput>;
 export interface ListReplicationSetsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListReplicationSetsInput = /*@__PURE__*/ S.suspend(() =>
+const ListReplicationSetsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/listReplicationSets" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "ListReplicationSetsInput" }) as any as S.Schema<ListReplicationSetsInput>;
 export type ReplicationSetArnList = string[];
-export const ReplicationSetArnList = FindingIdList as any as S.Schema<ReplicationSetArnList>;
+const ReplicationSetArnList = FindingIdList as any as S.Schema<ReplicationSetArnList>;
 export interface ListReplicationSetsOutput {
   replicationSetArns: string[];
   nextToken?: string;
 }
-export const ListReplicationSetsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListReplicationSetsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ replicationSetArns: ReplicationSetArnList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListReplicationSetsOutput",
@@ -969,7 +956,7 @@ export interface ListResponsePlansInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResponsePlansInput = /*@__PURE__*/ S.suspend(() =>
+const ListResponsePlansInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/listResponsePlans" }), svc, auth, proto, ver, rules),
   ),
@@ -979,22 +966,22 @@ export interface ResponsePlanSummary {
   name: string;
   displayName?: string;
 }
-export const ResponsePlanSummary = /*@__PURE__*/ S.suspend(() =>
+const ResponsePlanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, name: S.String, displayName: S.optional(S.String) }),
 ).annotate({ identifier: "ResponsePlanSummary" }) as any as S.Schema<ResponsePlanSummary>;
 export type ResponsePlanSummaryList = ResponsePlanSummary[];
-export const ResponsePlanSummaryList = /*@__PURE__*/ S.Array(ResponsePlanSummary);
+const ResponsePlanSummaryList = /*@__PURE__*/ S.Array(ResponsePlanSummary);
 export interface ListResponsePlansOutput {
   responsePlanSummaries: ResponsePlanSummary[];
   nextToken?: string;
 }
-export const ListResponsePlansOutput = /*@__PURE__*/ S.suspend(() =>
+const ListResponsePlansOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ responsePlanSummaries: ResponsePlanSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListResponsePlansOutput" }) as any as S.Schema<ListResponsePlansOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1004,7 +991,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: TagMap }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1019,7 +1006,7 @@ export interface ListTimelineEventsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTimelineEventsInput = /*@__PURE__*/ S.suspend(() =>
+const ListTimelineEventsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentRecordArn: S.String,
     filters: S.optional(FilterList),
@@ -1039,7 +1026,7 @@ export interface EventSummary {
   eventType: string;
   eventReferences?: EventReference[];
 }
-export const EventSummary = /*@__PURE__*/ S.suspend(() =>
+const EventSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentRecordArn: S.String,
     eventId: S.String,
@@ -1050,19 +1037,19 @@ export const EventSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventSummary" }) as any as S.Schema<EventSummary>;
 export type EventSummaryList = EventSummary[];
-export const EventSummaryList = /*@__PURE__*/ S.Array(EventSummary);
+const EventSummaryList = /*@__PURE__*/ S.Array(EventSummary);
 export interface ListTimelineEventsOutput {
   eventSummaries: EventSummary[];
   nextToken?: string;
 }
-export const ListTimelineEventsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTimelineEventsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ eventSummaries: EventSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTimelineEventsOutput" }) as any as S.Schema<ListTimelineEventsOutput>;
 export interface PutResourcePolicyInput {
   resourceArn: string;
   policy: string;
 }
-export const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, policy: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/putResourcePolicy" }), svc, auth, proto, ver, rules),
   ),
@@ -1070,7 +1057,7 @@ export const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutResourcePolicyOutput {
   policyId: string;
 }
-export const PutResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyId: S.String }),
 ).annotate({ identifier: "PutResourcePolicyOutput" }) as any as S.Schema<PutResourcePolicyOutput>;
 export type RawData = string;
@@ -1080,7 +1067,7 @@ export interface TriggerDetails {
   timestamp: Date;
   rawData?: string;
 }
-export const TriggerDetails = /*@__PURE__*/ S.suspend(() =>
+const TriggerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
     triggerArn: S.optional(S.String),
@@ -1096,7 +1083,7 @@ export interface StartIncidentInput {
   triggerDetails?: TriggerDetails;
   relatedItems?: RelatedItem[];
 }
-export const StartIncidentInput = /*@__PURE__*/ S.suspend(() =>
+const StartIncidentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     responsePlanArn: S.String,
@@ -1109,27 +1096,27 @@ export const StartIncidentInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartIncidentOutput {
   incidentRecordArn: string;
 }
-export const StartIncidentOutput = /*@__PURE__*/ S.suspend(() =>
+const StartIncidentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ incidentRecordArn: S.String }),
 ).annotate({ identifier: "StartIncidentOutput" }) as any as S.Schema<StartIncidentOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = EmptyChatChannel as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = EmptyChatChannel as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = FindingIdList as any as S.Schema<TagKeyList>;
+const TagKeyList = FindingIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1138,13 +1125,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = EmptyChatChannel as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = EmptyChatChannel as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeletionProtectionInput {
   arn: string;
   deletionProtected: boolean;
   clientToken?: string;
 }
-export const UpdateDeletionProtectionInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeletionProtectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     deletionProtected: S.Boolean,
@@ -1163,7 +1150,7 @@ export const UpdateDeletionProtectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDeletionProtectionInput",
 }) as any as S.Schema<UpdateDeletionProtectionInput>;
 export interface UpdateDeletionProtectionOutput {}
-export const UpdateDeletionProtectionOutput =
+const UpdateDeletionProtectionOutput =
   EmptyChatChannel as any as S.Schema<UpdateDeletionProtectionOutput>;
 export interface UpdateIncidentRecordInput {
   clientToken?: string;
@@ -1175,7 +1162,7 @@ export interface UpdateIncidentRecordInput {
   chatChannel?: ChatChannel;
   notificationTargets?: NotificationTargetItem[];
 }
-export const UpdateIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     arn: S.String,
@@ -1192,12 +1179,11 @@ export const UpdateIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateIncidentRecordInput",
 }) as any as S.Schema<UpdateIncidentRecordInput>;
 export interface UpdateIncidentRecordOutput {}
-export const UpdateIncidentRecordOutput =
-  EmptyChatChannel as any as S.Schema<UpdateIncidentRecordOutput>;
+const UpdateIncidentRecordOutput = EmptyChatChannel as any as S.Schema<UpdateIncidentRecordOutput>;
 export type RelatedItemsUpdate =
   | { itemToAdd: RelatedItem; itemToRemove?: never }
   | { itemToAdd?: never; itemToRemove: ItemIdentifier };
-export const RelatedItemsUpdate = /*@__PURE__*/ S.Union([
+const RelatedItemsUpdate = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ itemToAdd: RelatedItem }),
   /*@__PURE__*/ S.Struct({ itemToRemove: ItemIdentifier }),
 ]);
@@ -1206,7 +1192,7 @@ export interface UpdateRelatedItemsInput {
   incidentRecordArn: string;
   relatedItemsUpdate: RelatedItemsUpdate;
 }
-export const UpdateRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     incidentRecordArn: S.String,
@@ -1216,36 +1202,35 @@ export const UpdateRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRelatedItemsInput" }) as any as S.Schema<UpdateRelatedItemsInput>;
 export interface UpdateRelatedItemsOutput {}
-export const UpdateRelatedItemsOutput =
-  EmptyChatChannel as any as S.Schema<UpdateRelatedItemsOutput>;
+const UpdateRelatedItemsOutput = EmptyChatChannel as any as S.Schema<UpdateRelatedItemsOutput>;
 export interface AddRegionAction {
   regionName: string;
   sseKmsKeyId?: string;
 }
-export const AddRegionAction = /*@__PURE__*/ S.suspend(() =>
+const AddRegionAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ regionName: S.String, sseKmsKeyId: S.optional(S.String) }),
 ).annotate({ identifier: "AddRegionAction" }) as any as S.Schema<AddRegionAction>;
 export interface DeleteRegionAction {
   regionName: string;
 }
-export const DeleteRegionAction = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ regionName: S.String }),
 ).annotate({ identifier: "DeleteRegionAction" }) as any as S.Schema<DeleteRegionAction>;
 export type UpdateReplicationSetAction =
   | { addRegionAction: AddRegionAction; deleteRegionAction?: never }
   | { addRegionAction?: never; deleteRegionAction: DeleteRegionAction };
-export const UpdateReplicationSetAction = /*@__PURE__*/ S.Union([
+const UpdateReplicationSetAction = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ addRegionAction: AddRegionAction }),
   /*@__PURE__*/ S.Struct({ deleteRegionAction: DeleteRegionAction }),
 ]);
 export type UpdateActionList = UpdateReplicationSetAction[];
-export const UpdateActionList = /*@__PURE__*/ S.Array(UpdateReplicationSetAction);
+const UpdateActionList = /*@__PURE__*/ S.Array(UpdateReplicationSetAction);
 export interface UpdateReplicationSetInput {
   arn: string;
   actions: UpdateReplicationSetAction[];
   clientToken?: string;
 }
-export const UpdateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     actions: UpdateActionList,
@@ -1257,13 +1242,9 @@ export const UpdateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateReplicationSetInput",
 }) as any as S.Schema<UpdateReplicationSetInput>;
 export interface UpdateReplicationSetOutput {}
-export const UpdateReplicationSetOutput =
-  EmptyChatChannel as any as S.Schema<UpdateReplicationSetOutput>;
+const UpdateReplicationSetOutput = EmptyChatChannel as any as S.Schema<UpdateReplicationSetOutput>;
 export type TagMapUpdate = { [key: string]: string | undefined };
-export const TagMapUpdate = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const TagMapUpdate = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface UpdateResponsePlanInput {
   clientToken?: string;
   arn: string;
@@ -1279,7 +1260,7 @@ export interface UpdateResponsePlanInput {
   incidentTemplateTags?: { [key: string]: string | undefined };
   integrations?: Integration[];
 }
-export const UpdateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     arn: S.String,
@@ -1299,8 +1280,7 @@ export const UpdateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateResponsePlanInput" }) as any as S.Schema<UpdateResponsePlanInput>;
 export interface UpdateResponsePlanOutput {}
-export const UpdateResponsePlanOutput =
-  EmptyChatChannel as any as S.Schema<UpdateResponsePlanOutput>;
+const UpdateResponsePlanOutput = EmptyChatChannel as any as S.Schema<UpdateResponsePlanOutput>;
 export interface UpdateTimelineEventInput {
   clientToken?: string;
   incidentRecordArn: string;
@@ -1310,7 +1290,7 @@ export interface UpdateTimelineEventInput {
   eventData?: string;
   eventReferences?: EventReference[];
 }
-export const UpdateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     incidentRecordArn: S.String,
@@ -1324,8 +1304,7 @@ export const UpdateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateTimelineEventInput" }) as any as S.Schema<UpdateTimelineEventInput>;
 export interface UpdateTimelineEventOutput {}
-export const UpdateTimelineEventOutput =
-  EmptyChatChannel as any as S.Schema<UpdateTimelineEventOutput>;
+const UpdateTimelineEventOutput = EmptyChatChannel as any as S.Schema<UpdateTimelineEventOutput>;
 export type ExceptionMessage = string;
 export type ResourceType = string;
 export type ServiceCode = string;

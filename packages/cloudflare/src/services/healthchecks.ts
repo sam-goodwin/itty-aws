@@ -75,32 +75,32 @@ export type CreateRequestCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const CreateRequestCheckRegionsItem = S.String;
+const CreateRequestCheckRegionsItem = S.String;
 
 export type CreateRequestCheckRegionsList = Array<CreateRequestCheckRegionsItem | (string & {})>;
-export const CreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
+const CreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   CreateRequestCheckRegionsItem,
 ) as any as S.Schema<CreateRequestCheckRegionsList>;
 
 export type CreateRequestHttpConfigExpectedCodesList = Array<string>;
-export const CreateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
+const CreateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHttpConfigExpectedCodesList>;
 
 export type CreateRequestHttpConfigHeaderValueList = Array<string>;
-export const CreateRequestHttpConfigHeaderValueList =
+const CreateRequestHttpConfigHeaderValueList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<CreateRequestHttpConfigHeaderValueList>;
 
 export type CreateRequestHttpConfigHeaderMap = {
   [key: string]: CreateRequestHttpConfigHeaderValueList | undefined;
 };
-export const CreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
+const CreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateRequestHttpConfigHeaderValueList,
 ) as any as S.Schema<CreateRequestHttpConfigHeaderMap>;
 
 export type CreateRequestHttpConfigMethod = "GET" | "HEAD";
-export const CreateRequestHttpConfigMethod = S.String;
+const CreateRequestHttpConfigMethod = S.String;
 
 export interface CreateRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -120,7 +120,7 @@ export interface CreateRequestHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const CreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
@@ -136,7 +136,7 @@ export const CreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRequestHttpConfig" }) as any as S.Schema<CreateRequestHttpConfig>;
 
 export type CreateRequestTcpConfigMethod = "connection_established";
-export const CreateRequestTcpConfigMethod = S.String;
+const CreateRequestTcpConfigMethod = S.String;
 
 export interface CreateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -144,7 +144,7 @@ export interface CreateRequestTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const CreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(CreateRequestTcpConfigMethod),
     port: S.optional(S.Number),
@@ -181,7 +181,7 @@ export interface CreateHealthcheckRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const CreateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     address: S.String,
@@ -217,28 +217,23 @@ export type CreateResponseCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const CreateResponseCheckRegionsItem = S.String;
-
 export type CreateResponseCheckRegionsList = Array<CreateResponseCheckRegionsItem>;
-export const CreateResponseCheckRegionsList =
+const CreateResponseCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<CreateResponseCheckRegionsList>;
 
 export type CreateResponseHttpConfigExpectedCodesList = Array<string>;
-export const CreateResponseHttpConfigExpectedCodesList =
+const CreateResponseHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<CreateResponseHttpConfigExpectedCodesList>;
 
 export type CreateResponseHttpConfigHeaderValueList = Array<string>;
-export const CreateResponseHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<CreateResponseHttpConfigHeaderValueList>;
-
 export type CreateResponseHttpConfigHeaderMap = {
   [key: string]: CreateResponseHttpConfigHeaderValueList | undefined;
 };
-export const CreateResponseHttpConfigHeaderMap =
+const CreateResponseHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<CreateResponseHttpConfigHeaderMap>;
 
 export type CreateResponseHttpConfigMethod = "GET" | "HEAD";
-export const CreateResponseHttpConfigMethod = S.String;
+const CreateResponseHttpConfigMethod = S.String;
 
 export interface CreateResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -258,7 +253,7 @@ export interface CreateResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const CreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -274,10 +269,10 @@ export const CreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponseHttpConfig" }) as any as S.Schema<CreateResponseHttpConfig>;
 
 export type CreateResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const CreateResponseStatus = S.String;
+const CreateResponseStatus = S.String;
 
 export type CreateResponseTcpConfigMethod = "connection_established";
-export const CreateResponseTcpConfigMethod = S.String;
+const CreateResponseTcpConfigMethod = S.String;
 
 export interface CreateResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -285,7 +280,7 @@ export interface CreateResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const CreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.NullOr(CreateResponseTcpConfigMethod)),
     port: S.optional(S.NullOr(S.Number)),
@@ -329,7 +324,7 @@ export interface CreateHealthcheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const CreateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -371,30 +366,25 @@ export type PreviewsCreateRequestCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const PreviewsCreateRequestCheckRegionsItem = S.String;
-
 export type PreviewsCreateRequestCheckRegionsList = Array<
   PreviewsCreateRequestCheckRegionsItem | (string & {})
 >;
-export const PreviewsCreateRequestCheckRegionsList =
+const PreviewsCreateRequestCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
 
 export type PreviewsCreateRequestHttpConfigExpectedCodesList = Array<string>;
-export const PreviewsCreateRequestHttpConfigExpectedCodesList =
+const PreviewsCreateRequestHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateRequestHttpConfigExpectedCodesList>;
 
 export type PreviewsCreateRequestHttpConfigHeaderValueList = Array<string>;
-export const PreviewsCreateRequestHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderValueList>;
-
 export type PreviewsCreateRequestHttpConfigHeaderMap = {
   [key: string]: PreviewsCreateRequestHttpConfigHeaderValueList | undefined;
 };
-export const PreviewsCreateRequestHttpConfigHeaderMap =
+const PreviewsCreateRequestHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderMap>;
 
 export type PreviewsCreateRequestHttpConfigMethod = "GET" | "HEAD";
-export const PreviewsCreateRequestHttpConfigMethod = S.String;
+const PreviewsCreateRequestHttpConfigMethod = S.String;
 
 export interface PreviewsCreateRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -414,7 +404,7 @@ export interface PreviewsCreateRequestHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const PreviewsCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const PreviewsCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
@@ -432,7 +422,7 @@ export const PreviewsCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewsCreateRequestHttpConfig>;
 
 export type PreviewsCreateRequestTcpConfigMethod = "connection_established";
-export const PreviewsCreateRequestTcpConfigMethod = S.String;
+const PreviewsCreateRequestTcpConfigMethod = S.String;
 
 export interface PreviewsCreateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -440,7 +430,7 @@ export interface PreviewsCreateRequestTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const PreviewsCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
+const PreviewsCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(PreviewsCreateRequestTcpConfigMethod),
     port: S.optional(S.Number),
@@ -479,7 +469,7 @@ export interface CreatePreviewRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const CreatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     address: S.String,
@@ -515,28 +505,23 @@ export type PreviewsCreateResponseCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const PreviewsCreateResponseCheckRegionsItem = S.String;
-
 export type PreviewsCreateResponseCheckRegionsList = Array<PreviewsCreateResponseCheckRegionsItem>;
-export const PreviewsCreateResponseCheckRegionsList =
+const PreviewsCreateResponseCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
 
 export type PreviewsCreateResponseHttpConfigExpectedCodesList = Array<string>;
-export const PreviewsCreateResponseHttpConfigExpectedCodesList =
+const PreviewsCreateResponseHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateResponseHttpConfigExpectedCodesList>;
 
 export type PreviewsCreateResponseHttpConfigHeaderValueList = Array<string>;
-export const PreviewsCreateResponseHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderValueList>;
-
 export type PreviewsCreateResponseHttpConfigHeaderMap = {
   [key: string]: PreviewsCreateResponseHttpConfigHeaderValueList | undefined;
 };
-export const PreviewsCreateResponseHttpConfigHeaderMap =
+const PreviewsCreateResponseHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderMap>;
 
 export type PreviewsCreateResponseHttpConfigMethod = "GET" | "HEAD";
-export const PreviewsCreateResponseHttpConfigMethod = S.String;
+const PreviewsCreateResponseHttpConfigMethod = S.String;
 
 export interface PreviewsCreateResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -556,7 +541,7 @@ export interface PreviewsCreateResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const PreviewsCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const PreviewsCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -574,10 +559,10 @@ export const PreviewsCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewsCreateResponseHttpConfig>;
 
 export type PreviewsCreateResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const PreviewsCreateResponseStatus = S.String;
+const PreviewsCreateResponseStatus = S.String;
 
 export type PreviewsCreateResponseTcpConfigMethod = "connection_established";
-export const PreviewsCreateResponseTcpConfigMethod = S.String;
+const PreviewsCreateResponseTcpConfigMethod = S.String;
 
 export interface PreviewsCreateResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -585,7 +570,7 @@ export interface PreviewsCreateResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const PreviewsCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
+const PreviewsCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.NullOr(PreviewsCreateResponseTcpConfigMethod)),
     port: S.optional(S.NullOr(S.Number)),
@@ -631,7 +616,7 @@ export interface CreatePreviewResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const CreatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -662,7 +647,7 @@ export interface DeleteHealthcheckRequest {
   /** Identifier */
   healthcheckId: string;
 }
-export const DeleteHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -682,7 +667,7 @@ export interface DeleteHealthcheckResponse {
   /** Identifier */
   id?: string | null;
 }
-export const DeleteHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -696,7 +681,7 @@ export interface DeletePreviewRequest {
   /** Identifier */
   healthcheckId: string;
 }
-export const DeletePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -716,7 +701,7 @@ export interface DeletePreviewResponse {
   /** Identifier */
   id?: string | null;
 }
-export const DeletePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -728,7 +713,7 @@ export interface GetHealthcheckRequest {
   /** Identifier */
   healthcheckId: string;
 }
-export const GetHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -754,28 +739,23 @@ export type GetResponseCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const GetResponseCheckRegionsItem = S.String;
-
 export type GetResponseCheckRegionsList = Array<GetResponseCheckRegionsItem>;
-export const GetResponseCheckRegionsList =
+const GetResponseCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<GetResponseCheckRegionsList>;
 
 export type GetResponseHttpConfigExpectedCodesList = Array<string>;
-export const GetResponseHttpConfigExpectedCodesList =
+const GetResponseHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<GetResponseHttpConfigExpectedCodesList>;
 
 export type GetResponseHttpConfigHeaderValueList = Array<string>;
-export const GetResponseHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<GetResponseHttpConfigHeaderValueList>;
-
 export type GetResponseHttpConfigHeaderMap = {
   [key: string]: GetResponseHttpConfigHeaderValueList | undefined;
 };
-export const GetResponseHttpConfigHeaderMap =
+const GetResponseHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<GetResponseHttpConfigHeaderMap>;
 
 export type GetResponseHttpConfigMethod = "GET" | "HEAD";
-export const GetResponseHttpConfigMethod = S.String;
+const GetResponseHttpConfigMethod = S.String;
 
 export interface GetResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -795,7 +775,7 @@ export interface GetResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const GetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const GetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -811,19 +791,16 @@ export const GetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponseHttpConfig" }) as any as S.Schema<GetResponseHttpConfig>;
 
 export type GetResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 export type GetResponseTcpConfigMethod = "connection_established";
-export const GetResponseTcpConfigMethod = S.String;
-
 export interface GetResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: GetResponseTcpConfigMethod | null;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const GetResponseTcpConfig =
-  CreateResponseTcpConfig as any as S.Schema<GetResponseTcpConfig>;
+const GetResponseTcpConfig = CreateResponseTcpConfig as any as S.Schema<GetResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHealthcheckResponse {
@@ -862,7 +839,7 @@ export interface GetHealthcheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const GetHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -891,7 +868,7 @@ export interface GetPreviewRequest {
   /** Identifier */
   healthcheckId: string;
 }
-export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -921,28 +898,23 @@ export type PreviewsGetResponseCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const PreviewsGetResponseCheckRegionsItem = S.String;
-
 export type PreviewsGetResponseCheckRegionsList = Array<PreviewsGetResponseCheckRegionsItem>;
-export const PreviewsGetResponseCheckRegionsList =
+const PreviewsGetResponseCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
 
 export type PreviewsGetResponseHttpConfigExpectedCodesList = Array<string>;
-export const PreviewsGetResponseHttpConfigExpectedCodesList =
+const PreviewsGetResponseHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsGetResponseHttpConfigExpectedCodesList>;
 
 export type PreviewsGetResponseHttpConfigHeaderValueList = Array<string>;
-export const PreviewsGetResponseHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsGetResponseHttpConfigHeaderValueList>;
-
 export type PreviewsGetResponseHttpConfigHeaderMap = {
   [key: string]: PreviewsGetResponseHttpConfigHeaderValueList | undefined;
 };
-export const PreviewsGetResponseHttpConfigHeaderMap =
+const PreviewsGetResponseHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<PreviewsGetResponseHttpConfigHeaderMap>;
 
 export type PreviewsGetResponseHttpConfigMethod = "GET" | "HEAD";
-export const PreviewsGetResponseHttpConfigMethod = S.String;
+const PreviewsGetResponseHttpConfigMethod = S.String;
 
 export interface PreviewsGetResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -962,7 +934,7 @@ export interface PreviewsGetResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const PreviewsGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const PreviewsGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -980,18 +952,16 @@ export const PreviewsGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewsGetResponseHttpConfig>;
 
 export type PreviewsGetResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const PreviewsGetResponseStatus = S.String;
+const PreviewsGetResponseStatus = S.String;
 
 export type PreviewsGetResponseTcpConfigMethod = "connection_established";
-export const PreviewsGetResponseTcpConfigMethod = S.String;
-
 export interface PreviewsGetResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: PreviewsGetResponseTcpConfigMethod | null;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const PreviewsGetResponseTcpConfig =
+const PreviewsGetResponseTcpConfig =
   PreviewsCreateResponseTcpConfig as any as S.Schema<PreviewsGetResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1031,7 +1001,7 @@ export interface GetPreviewResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -1064,7 +1034,7 @@ export interface ListHealthchecksRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-export const ListHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1089,28 +1059,23 @@ export type ListResultItemCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const ListResultItemCheckRegionsItem = S.String;
-
 export type ListResultItemCheckRegionsList = Array<ListResultItemCheckRegionsItem>;
-export const ListResultItemCheckRegionsList =
+const ListResultItemCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<ListResultItemCheckRegionsList>;
 
 export type ListResultItemHttpConfigExpectedCodesList = Array<string>;
-export const ListResultItemHttpConfigExpectedCodesList =
+const ListResultItemHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<ListResultItemHttpConfigExpectedCodesList>;
 
 export type ListResultItemHttpConfigHeaderValueList = Array<string>;
-export const ListResultItemHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<ListResultItemHttpConfigHeaderValueList>;
-
 export type ListResultItemHttpConfigHeaderMap = {
   [key: string]: ListResultItemHttpConfigHeaderValueList | undefined;
 };
-export const ListResultItemHttpConfigHeaderMap =
+const ListResultItemHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<ListResultItemHttpConfigHeaderMap>;
 
 export type ListResultItemHttpConfigMethod = "GET" | "HEAD";
-export const ListResultItemHttpConfigMethod = S.String;
+const ListResultItemHttpConfigMethod = S.String;
 
 export interface ListResultItemHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -1130,7 +1095,7 @@ export interface ListResultItemHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const ListResultItemHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const ListResultItemHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -1146,19 +1111,16 @@ export const ListResultItemHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemHttpConfig" }) as any as S.Schema<ListResultItemHttpConfig>;
 
 export type ListResultItemStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const ListResultItemStatus = S.String;
+const ListResultItemStatus = S.String;
 
 export type ListResultItemTcpConfigMethod = "connection_established";
-export const ListResultItemTcpConfigMethod = S.String;
-
 export interface ListResultItemTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: ListResultItemTcpConfigMethod | null;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const ListResultItemTcpConfig =
-  CreateResponseTcpConfig as any as S.Schema<ListResultItemTcpConfig>;
+const ListResultItemTcpConfig = CreateResponseTcpConfig as any as S.Schema<ListResultItemTcpConfig>;
 
 export interface ListResultItem {
   /** Identifier */
@@ -1196,7 +1158,7 @@ export interface ListResultItem {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -1222,9 +1184,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListHealthchecksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1232,7 +1192,7 @@ export interface ListHealthchecksResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1254,28 +1214,23 @@ export type EditRequestCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const EditRequestCheckRegionsItem = S.String;
-
 export type EditRequestCheckRegionsList = Array<EditRequestCheckRegionsItem | (string & {})>;
-export const EditRequestCheckRegionsList =
+const EditRequestCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<EditRequestCheckRegionsList>;
 
 export type EditRequestHttpConfigExpectedCodesList = Array<string>;
-export const EditRequestHttpConfigExpectedCodesList =
+const EditRequestHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditRequestHttpConfigExpectedCodesList>;
 
 export type EditRequestHttpConfigHeaderValueList = Array<string>;
-export const EditRequestHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditRequestHttpConfigHeaderValueList>;
-
 export type EditRequestHttpConfigHeaderMap = {
   [key: string]: EditRequestHttpConfigHeaderValueList | undefined;
 };
-export const EditRequestHttpConfigHeaderMap =
+const EditRequestHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<EditRequestHttpConfigHeaderMap>;
 
 export type EditRequestHttpConfigMethod = "GET" | "HEAD";
-export const EditRequestHttpConfigMethod = S.String;
+const EditRequestHttpConfigMethod = S.String;
 
 export interface EditRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -1295,7 +1250,7 @@ export interface EditRequestHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const EditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const EditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
@@ -1311,15 +1266,13 @@ export const EditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRequestHttpConfig" }) as any as S.Schema<EditRequestHttpConfig>;
 
 export type EditRequestTcpConfigMethod = "connection_established";
-export const EditRequestTcpConfigMethod = S.String;
-
 export interface EditRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: EditRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const EditRequestTcpConfig = CreateRequestTcpConfig as any as S.Schema<EditRequestTcpConfig>;
+const EditRequestTcpConfig = CreateRequestTcpConfig as any as S.Schema<EditRequestTcpConfig>;
 
 export interface PatchHealthcheckRequest {
   /** Identifier */
@@ -1353,7 +1306,7 @@ export interface PatchHealthcheckRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const PatchHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -1392,28 +1345,23 @@ export type EditResponseCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const EditResponseCheckRegionsItem = S.String;
-
 export type EditResponseCheckRegionsList = Array<EditResponseCheckRegionsItem>;
-export const EditResponseCheckRegionsList =
+const EditResponseCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<EditResponseCheckRegionsList>;
 
 export type EditResponseHttpConfigExpectedCodesList = Array<string>;
-export const EditResponseHttpConfigExpectedCodesList =
+const EditResponseHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditResponseHttpConfigExpectedCodesList>;
 
 export type EditResponseHttpConfigHeaderValueList = Array<string>;
-export const EditResponseHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditResponseHttpConfigHeaderValueList>;
-
 export type EditResponseHttpConfigHeaderMap = {
   [key: string]: EditResponseHttpConfigHeaderValueList | undefined;
 };
-export const EditResponseHttpConfigHeaderMap =
+const EditResponseHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<EditResponseHttpConfigHeaderMap>;
 
 export type EditResponseHttpConfigMethod = "GET" | "HEAD";
-export const EditResponseHttpConfigMethod = S.String;
+const EditResponseHttpConfigMethod = S.String;
 
 export interface EditResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -1433,7 +1381,7 @@ export interface EditResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const EditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const EditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -1449,19 +1397,16 @@ export const EditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditResponseHttpConfig" }) as any as S.Schema<EditResponseHttpConfig>;
 
 export type EditResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const EditResponseStatus = S.String;
+const EditResponseStatus = S.String;
 
 export type EditResponseTcpConfigMethod = "connection_established";
-export const EditResponseTcpConfigMethod = S.String;
-
 export interface EditResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: EditResponseTcpConfigMethod | null;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const EditResponseTcpConfig =
-  CreateResponseTcpConfig as any as S.Schema<EditResponseTcpConfig>;
+const EditResponseTcpConfig = CreateResponseTcpConfig as any as S.Schema<EditResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchHealthcheckResponse {
@@ -1500,7 +1445,7 @@ export interface PatchHealthcheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const PatchHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -1538,28 +1483,23 @@ export type UpdateRequestCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const UpdateRequestCheckRegionsItem = S.String;
-
 export type UpdateRequestCheckRegionsList = Array<UpdateRequestCheckRegionsItem | (string & {})>;
-export const UpdateRequestCheckRegionsList =
+const UpdateRequestCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<UpdateRequestCheckRegionsList>;
 
 export type UpdateRequestHttpConfigExpectedCodesList = Array<string>;
-export const UpdateRequestHttpConfigExpectedCodesList =
+const UpdateRequestHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateRequestHttpConfigExpectedCodesList>;
 
 export type UpdateRequestHttpConfigHeaderValueList = Array<string>;
-export const UpdateRequestHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateRequestHttpConfigHeaderValueList>;
-
 export type UpdateRequestHttpConfigHeaderMap = {
   [key: string]: UpdateRequestHttpConfigHeaderValueList | undefined;
 };
-export const UpdateRequestHttpConfigHeaderMap =
+const UpdateRequestHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<UpdateRequestHttpConfigHeaderMap>;
 
 export type UpdateRequestHttpConfigMethod = "GET" | "HEAD";
-export const UpdateRequestHttpConfigMethod = S.String;
+const UpdateRequestHttpConfigMethod = S.String;
 
 export interface UpdateRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -1579,7 +1519,7 @@ export interface UpdateRequestHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const UpdateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
@@ -1595,16 +1535,13 @@ export const UpdateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequestHttpConfig" }) as any as S.Schema<UpdateRequestHttpConfig>;
 
 export type UpdateRequestTcpConfigMethod = "connection_established";
-export const UpdateRequestTcpConfigMethod = S.String;
-
 export interface UpdateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: UpdateRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const UpdateRequestTcpConfig =
-  CreateRequestTcpConfig as any as S.Schema<UpdateRequestTcpConfig>;
+const UpdateRequestTcpConfig = CreateRequestTcpConfig as any as S.Schema<UpdateRequestTcpConfig>;
 
 export interface UpdateHealthcheckRequest {
   /** Identifier */
@@ -1638,7 +1575,7 @@ export interface UpdateHealthcheckRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const UpdateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -1677,28 +1614,23 @@ export type UpdateResponseCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-export const UpdateResponseCheckRegionsItem = S.String;
-
 export type UpdateResponseCheckRegionsList = Array<UpdateResponseCheckRegionsItem>;
-export const UpdateResponseCheckRegionsList =
+const UpdateResponseCheckRegionsList =
   CreateRequestCheckRegionsList as any as S.Schema<UpdateResponseCheckRegionsList>;
 
 export type UpdateResponseHttpConfigExpectedCodesList = Array<string>;
-export const UpdateResponseHttpConfigExpectedCodesList =
+const UpdateResponseHttpConfigExpectedCodesList =
   CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateResponseHttpConfigExpectedCodesList>;
 
 export type UpdateResponseHttpConfigHeaderValueList = Array<string>;
-export const UpdateResponseHttpConfigHeaderValueList =
-  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateResponseHttpConfigHeaderValueList>;
-
 export type UpdateResponseHttpConfigHeaderMap = {
   [key: string]: UpdateResponseHttpConfigHeaderValueList | undefined;
 };
-export const UpdateResponseHttpConfigHeaderMap =
+const UpdateResponseHttpConfigHeaderMap =
   CreateRequestHttpConfigHeaderMap as any as S.Schema<UpdateResponseHttpConfigHeaderMap>;
 
 export type UpdateResponseHttpConfigMethod = "GET" | "HEAD";
-export const UpdateResponseHttpConfigMethod = S.String;
+const UpdateResponseHttpConfigMethod = S.String;
 
 export interface UpdateResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
@@ -1718,7 +1650,7 @@ export interface UpdateResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-export const UpdateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
@@ -1734,19 +1666,16 @@ export const UpdateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateResponseHttpConfig" }) as any as S.Schema<UpdateResponseHttpConfig>;
 
 export type UpdateResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-export const UpdateResponseStatus = S.String;
+const UpdateResponseStatus = S.String;
 
 export type UpdateResponseTcpConfigMethod = "connection_established";
-export const UpdateResponseTcpConfigMethod = S.String;
-
 export interface UpdateResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: UpdateResponseTcpConfigMethod | null;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-export const UpdateResponseTcpConfig =
-  CreateResponseTcpConfig as any as S.Schema<UpdateResponseTcpConfig>;
+const UpdateResponseTcpConfig = CreateResponseTcpConfig as any as S.Schema<UpdateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateHealthcheckResponse {
@@ -1785,7 +1714,7 @@ export interface UpdateHealthcheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const UpdateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),

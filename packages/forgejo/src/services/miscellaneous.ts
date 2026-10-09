@@ -27,7 +27,7 @@ export class UnprocessableEntity
   ) {}
 
 export interface GetActionsRunRequest {}
-export const GetActionsRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActionsRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/actions/run", code: 200 })),
 ).annotate({ identifier: "GetActionsRunRequest" }) as any as S.Schema<GetActionsRunRequest>;
 
@@ -42,7 +42,7 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-export const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
+const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_tracker_format: S.optional(S.String),
     external_tracker_regexp_pattern: S.optional(S.String),
@@ -56,7 +56,7 @@ export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-export const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
+const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_wiki_url: S.optional(S.String),
   }),
@@ -71,7 +71,7 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
+const InternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_only_contributors_to_track_time: S.optional(S.Boolean),
     enable_issue_dependencies: S.optional(S.Boolean),
@@ -81,7 +81,7 @@ export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
 
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-export const RepositoryObjectFormatName = S.String;
+const RepositoryObjectFormatName = S.String;
 
 /** User represents a user */
 export interface User {
@@ -127,7 +127,7 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     avatar_url: S.optional(S.String),
@@ -161,7 +161,7 @@ export interface Permission {
   pull?: boolean;
   push?: boolean;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     pull: S.optional(S.Boolean),
@@ -185,7 +185,7 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.String),
     created: S.optional(S.String),
@@ -203,13 +203,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-export const TeamPermission = S.String;
+const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
+const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TeamUnitsMapMap>;
@@ -226,7 +226,7 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_org_repo: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -241,9 +241,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type RepoTransferTeamsList = Array<Team>;
-export const RepoTransferTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RepoTransferTeamsList>;
+const RepoTransferTeamsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<RepoTransferTeamsList>;
 
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
@@ -251,7 +249,7 @@ export interface RepoTransfer {
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
+const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doer: S.optional(User),
     recipient: S.optional(User),
@@ -260,7 +258,7 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
+const RepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepositoryTopicsList>;
 
@@ -336,7 +334,7 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_fast_forward_only_merge: S.optional(S.Boolean),
     allow_merge_commits: S.optional(S.Boolean),
@@ -453,7 +451,7 @@ export interface ActionRun {
   /** the name of workflow file */
   workflow_id?: string;
 }
-export const ActionRun = /*@__PURE__*/ S.suspend(() =>
+const ActionRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScheduleID: S.optional(S.Number),
     approved_by: S.optional(S.Number),
@@ -485,7 +483,7 @@ export interface GetGitignoreTemplateInfoRequest {
   /** name of the template */
   name: string;
 }
-export const GetGitignoreTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGitignoreTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/gitignore/templates/{name}", code: 200 })),
@@ -498,7 +496,7 @@ export interface GitignoreTemplateInfo {
   name?: string;
   source?: string;
 }
-export const GitignoreTemplateInfo = /*@__PURE__*/ S.suspend(() =>
+const GitignoreTemplateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     source: S.optional(S.String),
@@ -509,7 +507,7 @@ export interface GetLabelTemplateInfoRequest {
   /** name of the template */
   name: string;
 }
-export const GetLabelTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLabelTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/label/templates/{name}", code: 200 })),
@@ -524,7 +522,7 @@ export interface LabelTemplate {
   exclusive?: boolean;
   name?: string;
 }
-export const LabelTemplate = /*@__PURE__*/ S.suspend(() =>
+const LabelTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.String),
     description: S.optional(S.String),
@@ -534,12 +532,12 @@ export const LabelTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelTemplate" }) as any as S.Schema<LabelTemplate>;
 
 export type GetLabelTemplateInfoResponseBodyList = Array<LabelTemplate>;
-export const GetLabelTemplateInfoResponseBodyList = /*@__PURE__*/ S.Array(
+const GetLabelTemplateInfoResponseBodyList = /*@__PURE__*/ S.Array(
   LabelTemplate,
 ) as any as S.Schema<GetLabelTemplateInfoResponseBodyList>;
 
 export type GetLabelTemplateInfoResponse = GetLabelTemplateInfoResponseBodyList;
-export const GetLabelTemplateInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLabelTemplateInfoResponse = /*@__PURE__*/ S.suspend(() =>
   GetLabelTemplateInfoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetLabelTemplateInfoResponse",
@@ -549,7 +547,7 @@ export interface GetLicenseTemplateInfoRequest {
   /** name of the license */
   name: string;
 }
-export const GetLicenseTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLicenseTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/licenses/{name}", code: 200 })),
@@ -565,7 +563,7 @@ export interface LicenseTemplateInfo {
   name?: string;
   url?: string;
 }
-export const LicenseTemplateInfo = /*@__PURE__*/ S.suspend(() =>
+const LicenseTemplateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     implementation: S.optional(S.String),
@@ -576,19 +574,19 @@ export const LicenseTemplateInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LicenseTemplateInfo" }) as any as S.Schema<LicenseTemplateInfo>;
 
 export interface GetNodeInfoRequest {}
-export const GetNodeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/nodeinfo", code: 200 })),
 ).annotate({ identifier: "GetNodeInfoRequest" }) as any as S.Schema<GetNodeInfoRequest>;
 
 export type NodeInfoProtocolsList = Array<string>;
-export const NodeInfoProtocolsList = RepositoryTopicsList as any as S.Schema<NodeInfoProtocolsList>;
+const NodeInfoProtocolsList = RepositoryTopicsList as any as S.Schema<NodeInfoProtocolsList>;
 
 export type NodeInfoServicesInboundList = Array<string>;
-export const NodeInfoServicesInboundList =
+const NodeInfoServicesInboundList =
   RepositoryTopicsList as any as S.Schema<NodeInfoServicesInboundList>;
 
 export type NodeInfoServicesOutboundList = Array<string>;
-export const NodeInfoServicesOutboundList =
+const NodeInfoServicesOutboundList =
   RepositoryTopicsList as any as S.Schema<NodeInfoServicesOutboundList>;
 
 /** NodeInfoServices contains the third party sites this server can connect to via their application API */
@@ -596,7 +594,7 @@ export interface NodeInfoServices {
   inbound?: NodeInfoServicesInboundList;
   outbound?: NodeInfoServicesOutboundList;
 }
-export const NodeInfoServices = /*@__PURE__*/ S.suspend(() =>
+const NodeInfoServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inbound: S.optional(NodeInfoServicesInboundList),
     outbound: S.optional(NodeInfoServicesOutboundList),
@@ -610,7 +608,7 @@ export interface NodeInfoSoftware {
   repository?: string;
   version?: string;
 }
-export const NodeInfoSoftware = /*@__PURE__*/ S.suspend(() =>
+const NodeInfoSoftware = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homepage: S.optional(S.String),
     name: S.optional(S.String),
@@ -625,7 +623,7 @@ export interface NodeInfoUsageUsers {
   activeMonth?: number;
   total?: number;
 }
-export const NodeInfoUsageUsers = /*@__PURE__*/ S.suspend(() =>
+const NodeInfoUsageUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeHalfyear: S.optional(S.Number),
     activeMonth: S.optional(S.Number),
@@ -639,7 +637,7 @@ export interface NodeInfoUsage {
   localPosts?: number;
   users?: NodeInfoUsageUsers;
 }
-export const NodeInfoUsage = /*@__PURE__*/ S.suspend(() =>
+const NodeInfoUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localComments: S.optional(S.Number),
     localPosts: S.optional(S.Number),
@@ -657,7 +655,7 @@ export interface NodeInfo {
   usage?: NodeInfoUsage;
   version?: string;
 }
-export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
+const NodeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(S.Unknown),
     openRegistrations: S.optional(S.Boolean),
@@ -670,26 +668,25 @@ export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeInfo" }) as any as S.Schema<NodeInfo>;
 
 export interface GetSigningKeyRequest {}
-export const GetSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/signing-key.gpg", code: 200 })),
 ).annotate({ identifier: "GetSigningKeyRequest" }) as any as S.Schema<GetSigningKeyRequest>;
 
 export type GetSigningKeyResponse = string;
-export const GetSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSigningKeyResponse" }) as any as S.Schema<GetSigningKeyResponse>;
 
 export interface GetSSHSigningKeyRequest {}
-export const GetSSHSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSSHSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/signing-key.ssh", code: 200 })),
 ).annotate({ identifier: "GetSSHSigningKeyRequest" }) as any as S.Schema<GetSSHSigningKeyRequest>;
 
 export type GetSSHSigningKeyResponse = string;
-export const GetSSHSigningKeyResponse =
-  GetSigningKeyResponse as any as S.Schema<GetSSHSigningKeyResponse>;
+const GetSSHSigningKeyResponse = GetSigningKeyResponse as any as S.Schema<GetSSHSigningKeyResponse>;
 
 export interface GetVersionRequest {}
-export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/version", code: 200 })),
 ).annotate({ identifier: "GetVersionRequest" }) as any as S.Schema<GetVersionRequest>;
 
@@ -697,47 +694,44 @@ export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ServerVersion {
   version?: string;
 }
-export const ServerVersion = /*@__PURE__*/ S.suspend(() =>
+const ServerVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
 ).annotate({ identifier: "ServerVersion" }) as any as S.Schema<ServerVersion>;
 
 export interface ListGitignoresTemplatesRequest {}
-export const ListGitignoresTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGitignoresTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/gitignore/templates", code: 200 })),
 ).annotate({
   identifier: "ListGitignoresTemplatesRequest",
 }) as any as S.Schema<ListGitignoresTemplatesRequest>;
 
 export type ListGitignoresTemplatesResponseBodyList = Array<string>;
-export const ListGitignoresTemplatesResponseBodyList =
+const ListGitignoresTemplatesResponseBodyList =
   RepositoryTopicsList as any as S.Schema<ListGitignoresTemplatesResponseBodyList>;
 
 export type ListGitignoresTemplatesResponse = ListGitignoresTemplatesResponseBodyList;
-export const ListGitignoresTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGitignoresTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   ListGitignoresTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListGitignoresTemplatesResponse",
 }) as any as S.Schema<ListGitignoresTemplatesResponse>;
 
 export interface ListLabelTemplatesRequest {}
-export const ListLabelTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabelTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/label/templates", code: 200 })),
 ).annotate({
   identifier: "ListLabelTemplatesRequest",
 }) as any as S.Schema<ListLabelTemplatesRequest>;
 
 export type ListLabelTemplatesResponseBodyList = Array<string>;
-export const ListLabelTemplatesResponseBodyList =
-  RepositoryTopicsList as any as S.Schema<ListLabelTemplatesResponseBodyList>;
-
 export type ListLabelTemplatesResponse = ListLabelTemplatesResponseBodyList;
-export const ListLabelTemplatesResponse =
+const ListLabelTemplatesResponse =
   ListGitignoresTemplatesResponse as any as S.Schema<ListLabelTemplatesResponse>;
 
 export interface ListLicenseTemplatesRequest {}
-export const ListLicenseTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLicenseTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licenses", code: 200 })),
 ).annotate({
   identifier: "ListLicenseTemplatesRequest",
@@ -749,7 +743,7 @@ export interface LicensesTemplateListEntry {
   name?: string;
   url?: string;
 }
-export const LicensesTemplateListEntry = /*@__PURE__*/ S.suspend(() =>
+const LicensesTemplateListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -760,12 +754,12 @@ export const LicensesTemplateListEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicensesTemplateListEntry>;
 
 export type ListLicenseTemplatesResponseBodyList = Array<LicensesTemplateListEntry>;
-export const ListLicenseTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListLicenseTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
   LicensesTemplateListEntry,
 ) as any as S.Schema<ListLicenseTemplatesResponseBodyList>;
 
 export type ListLicenseTemplatesResponse = ListLicenseTemplatesResponseBodyList;
-export const ListLicenseTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLicenseTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   ListLicenseTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListLicenseTemplatesResponse",
@@ -781,7 +775,7 @@ export interface RenderMarkdownRequest {
   /** Is it a wiki page ? */
   Wiki?: boolean;
 }
-export const RenderMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Context: S.optional(S.String),
     Mode: S.optional(S.String),
@@ -791,20 +785,19 @@ export const RenderMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderMarkdownRequest" }) as any as S.Schema<RenderMarkdownRequest>;
 
 export type RenderMarkdownResponse = string;
-export const RenderMarkdownResponse =
-  GetSigningKeyResponse as any as S.Schema<RenderMarkdownResponse>;
+const RenderMarkdownResponse = GetSigningKeyResponse as any as S.Schema<RenderMarkdownResponse>;
 
 export interface RenderMarkdownRawRequest {
   body: string;
 }
-export const RenderMarkdownRawRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderMarkdownRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/markdown/raw", code: 200 })),
 ).annotate({ identifier: "RenderMarkdownRawRequest" }) as any as S.Schema<RenderMarkdownRawRequest>;
 
 export type RenderMarkdownRawResponse = string;
-export const RenderMarkdownRawResponse = /*@__PURE__*/ S.suspend(() =>
+const RenderMarkdownRawResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RenderMarkdownRawResponse",
@@ -824,7 +817,7 @@ export interface RenderMarkupRequest {
   /** Is it a wiki page ? */
   Wiki?: boolean;
 }
-export const RenderMarkupRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderMarkupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BranchPath: S.optional(S.String),
     Context: S.optional(S.String),
@@ -836,7 +829,7 @@ export const RenderMarkupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderMarkupRequest" }) as any as S.Schema<RenderMarkupRequest>;
 
 export type RenderMarkupResponse = string;
-export const RenderMarkupResponse = GetSigningKeyResponse as any as S.Schema<RenderMarkupResponse>;
+const RenderMarkupResponse = GetSigningKeyResponse as any as S.Schema<RenderMarkupResponse>;
 
 export type GetActionsRunError = ForgejoOpError;
 /** Get a workflow run associated with a token The automatic actions token must be used as the authentication mechanism (<code>Authorization: Bearer $&#x7b;&#x7b; forgejo.token &#x7d;&#x7d;</code>); other types of tokens cannot be used. The token is associated with the job, which must be still running for the request to this endpoint to succeed. */

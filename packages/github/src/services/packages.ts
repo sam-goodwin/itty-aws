@@ -42,7 +42,7 @@ export type DeletePackageForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const DeletePackageForAuthenticatedUserRequestPackageType = S.String;
+const DeletePackageForAuthenticatedUserRequestPackageType = S.String;
 
 export interface DeletePackageForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -50,7 +50,7 @@ export interface DeletePackageForAuthenticatedUserRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const DeletePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: DeletePackageForAuthenticatedUserRequestPackageType.pipe(T.Label()),
     package_name: S.String.pipe(T.Label()),
@@ -62,7 +62,7 @@ export const DeletePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeletePackageForAuthenticatedUserRequest>;
 
 export interface DeletePackageForAuthenticatedUserResponse {}
-export const DeletePackageForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePackageForAuthenticatedUserResponse",
@@ -75,7 +75,7 @@ export type DeletePackageForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const DeletePackageForOrgRequestPackageType = S.String;
+const DeletePackageForOrgRequestPackageType = S.String;
 
 export interface DeletePackageForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -85,7 +85,7 @@ export interface DeletePackageForOrgRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const DeletePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: DeletePackageForOrgRequestPackageType.pipe(T.Label()),
@@ -102,7 +102,7 @@ export const DeletePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageForOrgRequest>;
 
 export interface DeletePackageForOrgResponse {}
-export const DeletePackageForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePackageForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePackageForOrgResponse",
 }) as any as S.Schema<DeletePackageForOrgResponse>;
 
@@ -113,7 +113,7 @@ export type DeletePackageForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const DeletePackageForUserRequestPackageType = S.String;
+const DeletePackageForUserRequestPackageType = S.String;
 
 export interface DeletePackageForUserRequest {
   /** The handle for the GitHub user account. */
@@ -123,7 +123,7 @@ export interface DeletePackageForUserRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const DeletePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: DeletePackageForUserRequestPackageType.pipe(T.Label()),
@@ -140,7 +140,7 @@ export const DeletePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageForUserRequest>;
 
 export interface DeletePackageForUserResponse {}
-export const DeletePackageForUserResponse =
+const DeletePackageForUserResponse =
   DeletePackageForOrgResponse as any as S.Schema<DeletePackageForUserResponse>;
 
 export type DeletePackageVersionForAuthenticatedUserRequestPackageType =
@@ -150,7 +150,7 @@ export type DeletePackageVersionForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const DeletePackageVersionForAuthenticatedUserRequestPackageType = S.String;
+const DeletePackageVersionForAuthenticatedUserRequestPackageType = S.String;
 
 export interface DeletePackageVersionForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -160,7 +160,7 @@ export interface DeletePackageVersionForAuthenticatedUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const DeletePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: DeletePackageVersionForAuthenticatedUserRequestPackageType.pipe(T.Label()),
     package_name: S.String.pipe(T.Label()),
@@ -177,7 +177,7 @@ export const DeletePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeletePackageVersionForAuthenticatedUserRequest>;
 
 export interface DeletePackageVersionForAuthenticatedUserResponse {}
-export const DeletePackageVersionForAuthenticatedUserResponse =
+const DeletePackageVersionForAuthenticatedUserResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForAuthenticatedUserResponse>;
 
 export type DeletePackageVersionForOrgRequestPackageType =
@@ -187,7 +187,7 @@ export type DeletePackageVersionForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const DeletePackageVersionForOrgRequestPackageType = S.String;
+const DeletePackageVersionForOrgRequestPackageType = S.String;
 
 export interface DeletePackageVersionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -199,7 +199,7 @@ export interface DeletePackageVersionForOrgRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const DeletePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: DeletePackageVersionForOrgRequestPackageType.pipe(T.Label()),
@@ -217,7 +217,7 @@ export const DeletePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageVersionForOrgRequest>;
 
 export interface DeletePackageVersionForOrgResponse {}
-export const DeletePackageVersionForOrgResponse =
+const DeletePackageVersionForOrgResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForOrgResponse>;
 
 export type DeletePackageVersionForUserRequestPackageType =
@@ -227,7 +227,7 @@ export type DeletePackageVersionForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const DeletePackageVersionForUserRequestPackageType = S.String;
+const DeletePackageVersionForUserRequestPackageType = S.String;
 
 export interface DeletePackageVersionForUserRequest {
   /** The handle for the GitHub user account. */
@@ -239,7 +239,7 @@ export interface DeletePackageVersionForUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const DeletePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: DeletePackageVersionForUserRequestPackageType.pipe(T.Label()),
@@ -257,7 +257,7 @@ export const DeletePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageVersionForUserRequest>;
 
 export interface DeletePackageVersionForUserResponse {}
-export const DeletePackageVersionForUserResponse =
+const DeletePackageVersionForUserResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForUserResponse>;
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType =
@@ -267,12 +267,12 @@ export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackag
   | "docker"
   | "nuget"
   | "container";
-export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType = S.String;
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType = S.String;
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState =
   | "active"
   | "deleted";
-export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState = S.String;
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState = S.String;
 
 export interface GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -288,28 +288,27 @@ export interface GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest 
   /** The state of the package, either active or deleted. */
   state?: GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState | (string & {});
 }
-export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      package_type: GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType.pipe(
-        T.Label(),
-      ),
-      package_name: S.String.pipe(T.Label()),
-      page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
-      state: S.optional(
-        GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/user/packages/{package_type}/{package_name}/versions",
-        code: 200,
-      }),
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    package_type: GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType.pipe(
+      T.Label(),
     ),
-  ).annotate({
-    identifier: "GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest",
-  }) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest>;
+    package_name: S.String.pipe(T.Label()),
+    page: S.optional(S.Number.pipe(T.Query())),
+    per_page: S.optional(S.Number.pipe(T.Query())),
+    state: S.optional(
+      GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/user/packages/{package_type}/{package_name}/versions",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest",
+}) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest>;
 
 export type PackageVersionMetadataPackageType =
   | "npm"
@@ -318,17 +317,17 @@ export type PackageVersionMetadataPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const PackageVersionMetadataPackageType = S.String;
+const PackageVersionMetadataPackageType = S.String;
 
 export type PackageVersionMetadataContainerTagsList = Array<string>;
-export const PackageVersionMetadataContainerTagsList = /*@__PURE__*/ S.Array(
+const PackageVersionMetadataContainerTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PackageVersionMetadataContainerTagsList>;
 
 export interface PackageVersionMetadataContainer {
   tags: PackageVersionMetadataContainerTagsList;
 }
-export const PackageVersionMetadataContainer = /*@__PURE__*/ S.suspend(() =>
+const PackageVersionMetadataContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: PackageVersionMetadataContainerTagsList,
   }),
@@ -337,13 +336,13 @@ export const PackageVersionMetadataContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackageVersionMetadataContainer>;
 
 export type PackageVersionMetadataDockerTagList = Array<string>;
-export const PackageVersionMetadataDockerTagList =
+const PackageVersionMetadataDockerTagList =
   PackageVersionMetadataContainerTagsList as any as S.Schema<PackageVersionMetadataDockerTagList>;
 
 export interface PackageVersionMetadataDocker {
   tag?: PackageVersionMetadataDockerTagList;
 }
-export const PackageVersionMetadataDocker = /*@__PURE__*/ S.suspend(() =>
+const PackageVersionMetadataDocker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(PackageVersionMetadataDockerTagList),
   }),
@@ -356,7 +355,7 @@ export interface PackageVersionMetadata {
   container?: PackageVersionMetadataContainer;
   docker?: PackageVersionMetadataDocker;
 }
-export const PackageVersionMetadata = /*@__PURE__*/ S.suspend(() =>
+const PackageVersionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: PackageVersionMetadataPackageType,
     container: S.optional(PackageVersionMetadataContainer),
@@ -380,7 +379,7 @@ export interface PackageVersion {
   deleted_at?: string;
   metadata?: PackageVersionMetadata;
 }
-export const PackageVersion = /*@__PURE__*/ S.suspend(() =>
+const PackageVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -398,21 +397,21 @@ export const PackageVersion = /*@__PURE__*/ S.suspend(() =>
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList =
   Array<PackageVersion>;
-export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList =
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList =
   /*@__PURE__*/ S.Array(
     PackageVersion,
   ) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList>;
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse =
   GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList;
-export const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(
+  () =>
     GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse",
-  }) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse>;
+).annotate({
+  identifier: "GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse",
+}) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse>;
 
 export type GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType =
   | "npm"
@@ -421,10 +420,10 @@ export type GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType = S.String;
+const GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType = S.String;
 
 export type GetAllPackageVersionsForPackageOwnedByOrgRequestState = "active" | "deleted";
-export const GetAllPackageVersionsForPackageOwnedByOrgRequestState = S.String;
+const GetAllPackageVersionsForPackageOwnedByOrgRequestState = S.String;
 
 export interface GetAllPackageVersionsForPackageOwnedByOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -440,7 +439,7 @@ export interface GetAllPackageVersionsForPackageOwnedByOrgRequest {
   /** The state of the package, either active or deleted. */
   state?: GetAllPackageVersionsForPackageOwnedByOrgRequestState | (string & {});
 }
-export const GetAllPackageVersionsForPackageOwnedByOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllPackageVersionsForPackageOwnedByOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType.pipe(T.Label()),
@@ -460,13 +459,13 @@ export const GetAllPackageVersionsForPackageOwnedByOrgRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgRequest>;
 
 export type GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList = Array<PackageVersion>;
-export const GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList = /*@__PURE__*/ S.Array(
   PackageVersion,
 ) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList>;
 
 export type GetAllPackageVersionsForPackageOwnedByOrgResponse =
   GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList;
-export const GetAllPackageVersionsForPackageOwnedByOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllPackageVersionsForPackageOwnedByOrgResponse = /*@__PURE__*/ S.suspend(() =>
   GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAllPackageVersionsForPackageOwnedByOrgResponse",
@@ -479,7 +478,7 @@ export type GetAllPackageVersionsForPackageOwnedByUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetAllPackageVersionsForPackageOwnedByUserRequestPackageType = S.String;
+const GetAllPackageVersionsForPackageOwnedByUserRequestPackageType = S.String;
 
 export interface GetAllPackageVersionsForPackageOwnedByUserRequest {
   /** The handle for the GitHub user account. */
@@ -489,7 +488,7 @@ export interface GetAllPackageVersionsForPackageOwnedByUserRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const GetAllPackageVersionsForPackageOwnedByUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllPackageVersionsForPackageOwnedByUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: GetAllPackageVersionsForPackageOwnedByUserRequestPackageType.pipe(T.Label()),
@@ -506,12 +505,9 @@ export const GetAllPackageVersionsForPackageOwnedByUserRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserRequest>;
 
 export type GetAllPackageVersionsForPackageOwnedByUserResponseBodyList = Array<PackageVersion>;
-export const GetAllPackageVersionsForPackageOwnedByUserResponseBodyList =
-  GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponseBodyList>;
-
 export type GetAllPackageVersionsForPackageOwnedByUserResponse =
   GetAllPackageVersionsForPackageOwnedByUserResponseBodyList;
-export const GetAllPackageVersionsForPackageOwnedByUserResponse =
+const GetAllPackageVersionsForPackageOwnedByUserResponse =
   GetAllPackageVersionsForPackageOwnedByOrgResponse as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponse>;
 
 export type GetPackageForAuthenticatedUserRequestPackageType =
@@ -521,7 +517,7 @@ export type GetPackageForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetPackageForAuthenticatedUserRequestPackageType = S.String;
+const GetPackageForAuthenticatedUserRequestPackageType = S.String;
 
 export interface GetPackageForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -529,7 +525,7 @@ export interface GetPackageForAuthenticatedUserRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const GetPackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: GetPackageForAuthenticatedUserRequestPackageType.pipe(T.Label()),
     package_name: S.String.pipe(T.Label()),
@@ -541,10 +537,10 @@ export const GetPackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetPackageForAuthenticatedUserRequest>;
 
 export type PackagePackageType = "npm" | "maven" | "rubygems" | "docker" | "nuget" | "container";
-export const PackagePackageType = S.String;
+const PackagePackageType = S.String;
 
 export type PackageVisibility = "private" | "public";
-export const PackageVisibility = S.String;
+const PackageVisibility = S.String;
 
 /** A GitHub user. */
 export interface NullableSimpleUser {
@@ -571,7 +567,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -600,15 +596,13 @@ export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 export type NullableMinimalRepositoryTopicsList = Array<string>;
-export const NullableMinimalRepositoryTopicsList =
+const NullableMinimalRepositoryTopicsList =
   PackageVersionMetadataContainerTagsList as any as S.Schema<NullableMinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableMinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const NullableMinimalRepositoryPullRequestCreationPolicy = S.String;
+const NullableMinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface NullableMinimalRepositoryPermissions {
   admin?: boolean;
@@ -617,7 +611,7 @@ export interface NullableMinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const NullableMinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const NullableMinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -637,7 +631,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -654,7 +648,7 @@ export interface NullableMinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const NullableMinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const NullableMinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -667,13 +661,13 @@ export const NullableMinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NullableMinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -682,98 +676,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -783,7 +761,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -798,16 +776,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -829,7 +806,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -852,7 +829,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type NullableMinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const NullableMinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const NullableMinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<NullableMinimalRepositoryCustomPropertiesMap>;
@@ -953,7 +930,7 @@ export interface NullableMinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: NullableMinimalRepositoryCustomPropertiesMap;
 }
-export const NullableMinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const NullableMinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1067,7 +1044,7 @@ export interface Package {
   created_at: string;
   updated_at: string;
 }
-export const Package = /*@__PURE__*/ S.suspend(() =>
+const Package = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1090,7 +1067,7 @@ export type GetPackageForOrganizationRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetPackageForOrganizationRequestPackageType = S.String;
+const GetPackageForOrganizationRequestPackageType = S.String;
 
 export interface GetPackageForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1100,7 +1077,7 @@ export interface GetPackageForOrganizationRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const GetPackageForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: GetPackageForOrganizationRequestPackageType.pipe(T.Label()),
@@ -1119,7 +1096,7 @@ export type GetPackageForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetPackageForUserRequestPackageType = S.String;
+const GetPackageForUserRequestPackageType = S.String;
 
 export interface GetPackageForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1129,7 +1106,7 @@ export interface GetPackageForUserRequest {
   /** The name of the package. */
   package_name: string;
 }
-export const GetPackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: GetPackageForUserRequestPackageType.pipe(T.Label()),
@@ -1150,7 +1127,7 @@ export type GetPackageVersionForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetPackageVersionForAuthenticatedUserRequestPackageType = S.String;
+const GetPackageVersionForAuthenticatedUserRequestPackageType = S.String;
 
 export interface GetPackageVersionForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -1160,7 +1137,7 @@ export interface GetPackageVersionForAuthenticatedUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const GetPackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: GetPackageVersionForAuthenticatedUserRequestPackageType.pipe(T.Label()),
     package_name: S.String.pipe(T.Label()),
@@ -1183,7 +1160,7 @@ export type GetPackageVersionForOrganizationRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetPackageVersionForOrganizationRequestPackageType = S.String;
+const GetPackageVersionForOrganizationRequestPackageType = S.String;
 
 export interface GetPackageVersionForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1195,7 +1172,7 @@ export interface GetPackageVersionForOrganizationRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const GetPackageVersionForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageVersionForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: GetPackageVersionForOrganizationRequestPackageType.pipe(T.Label()),
@@ -1219,7 +1196,7 @@ export type GetPackageVersionForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const GetPackageVersionForUserRequestPackageType = S.String;
+const GetPackageVersionForUserRequestPackageType = S.String;
 
 export interface GetPackageVersionForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1231,7 +1208,7 @@ export interface GetPackageVersionForUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const GetPackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: GetPackageVersionForUserRequestPackageType.pipe(T.Label()),
@@ -1249,62 +1226,59 @@ export const GetPackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPackageVersionForUserRequest>;
 
 export interface ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest {}
-export const ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/docker/conflicts", code: 200 })),
-  ).annotate({
-    identifier: "ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest",
-  }) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest>;
+const ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/docker/conflicts", code: 200 })),
+).annotate({
+  identifier: "ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest",
+}) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest>;
 
 export type ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList =
   Array<Package>;
-export const ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList =
+const ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList =
   /*@__PURE__*/ S.Array(
     Package,
   ) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList>;
 
 export type ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse =
   ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList;
-export const ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(
+  () =>
     ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse",
-  }) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse>;
+).annotate({
+  identifier: "ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse",
+}) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse>;
 
 export interface ListDockerMigrationConflictingPackagesForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ListDockerMigrationConflictingPackagesForOrganizationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-    }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/docker/conflicts", code: 200 })),
+const ListDockerMigrationConflictingPackagesForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/docker/conflicts", code: 200 })),
 ).annotate({
   identifier: "ListDockerMigrationConflictingPackagesForOrganizationRequest",
 }) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationRequest>;
 
 export type ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList = Array<Package>;
-export const ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList =
+const ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList =
   ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList>;
 
 export type ListDockerMigrationConflictingPackagesForOrganizationResponse =
   ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList;
-export const ListDockerMigrationConflictingPackagesForOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "ListDockerMigrationConflictingPackagesForOrganizationResponse",
-  }) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponse>;
+const ListDockerMigrationConflictingPackagesForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListDockerMigrationConflictingPackagesForOrganizationResponse",
+}) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponse>;
 
 export interface ListDockerMigrationConflictingPackagesForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const ListDockerMigrationConflictingPackagesForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDockerMigrationConflictingPackagesForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{username}/docker/conflicts", code: 200 })),
@@ -1313,13 +1287,13 @@ export const ListDockerMigrationConflictingPackagesForUserRequest = /*@__PURE__*
 }) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserRequest>;
 
 export type ListDockerMigrationConflictingPackagesForUserResponseBodyList = Array<Package>;
-export const ListDockerMigrationConflictingPackagesForUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDockerMigrationConflictingPackagesForUserResponseBodyList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserResponseBodyList>;
 
 export type ListDockerMigrationConflictingPackagesForUserResponse =
   ListDockerMigrationConflictingPackagesForUserResponseBodyList;
-export const ListDockerMigrationConflictingPackagesForUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDockerMigrationConflictingPackagesForUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListDockerMigrationConflictingPackagesForUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDockerMigrationConflictingPackagesForUserResponse",
@@ -1332,10 +1306,10 @@ export type ListPackagesForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const ListPackagesForAuthenticatedUserRequestPackageType = S.String;
+const ListPackagesForAuthenticatedUserRequestPackageType = S.String;
 
 export type ListPackagesForAuthenticatedUserRequestVisibility = "public" | "private" | "internal";
-export const ListPackagesForAuthenticatedUserRequestVisibility = S.String;
+const ListPackagesForAuthenticatedUserRequestVisibility = S.String;
 
 export interface ListPackagesForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -1347,7 +1321,7 @@ export interface ListPackagesForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListPackagesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: ListPackagesForAuthenticatedUserRequestPackageType.pipe(T.Query()),
     visibility: S.optional(ListPackagesForAuthenticatedUserRequestVisibility.pipe(T.Query())),
@@ -1359,12 +1333,9 @@ export const ListPackagesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListPackagesForAuthenticatedUserRequest>;
 
 export type ListPackagesForAuthenticatedUserResponseBodyList = Array<Package>;
-export const ListPackagesForAuthenticatedUserResponseBodyList =
-  ListDockerMigrationConflictingPackagesForUserResponseBodyList as any as S.Schema<ListPackagesForAuthenticatedUserResponseBodyList>;
-
 export type ListPackagesForAuthenticatedUserResponse =
   ListPackagesForAuthenticatedUserResponseBodyList;
-export const ListPackagesForAuthenticatedUserResponse =
+const ListPackagesForAuthenticatedUserResponse =
   ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForAuthenticatedUserResponse>;
 
 export type ListPackagesForOrganizationRequestPackageType =
@@ -1374,10 +1345,10 @@ export type ListPackagesForOrganizationRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const ListPackagesForOrganizationRequestPackageType = S.String;
+const ListPackagesForOrganizationRequestPackageType = S.String;
 
 export type ListPackagesForOrganizationRequestVisibility = "public" | "private" | "internal";
-export const ListPackagesForOrganizationRequestVisibility = S.String;
+const ListPackagesForOrganizationRequestVisibility = S.String;
 
 export interface ListPackagesForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1391,7 +1362,7 @@ export interface ListPackagesForOrganizationRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListPackagesForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: ListPackagesForOrganizationRequestPackageType.pipe(T.Query()),
@@ -1404,11 +1375,8 @@ export const ListPackagesForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackagesForOrganizationRequest>;
 
 export type ListPackagesForOrganizationResponseBodyList = Array<Package>;
-export const ListPackagesForOrganizationResponseBodyList =
-  ListDockerMigrationConflictingPackagesForUserResponseBodyList as any as S.Schema<ListPackagesForOrganizationResponseBodyList>;
-
 export type ListPackagesForOrganizationResponse = ListPackagesForOrganizationResponseBodyList;
-export const ListPackagesForOrganizationResponse =
+const ListPackagesForOrganizationResponse =
   ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForOrganizationResponse>;
 
 export type ListPackagesForUserRequestPackageType =
@@ -1418,10 +1386,10 @@ export type ListPackagesForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const ListPackagesForUserRequestPackageType = S.String;
+const ListPackagesForUserRequestPackageType = S.String;
 
 export type ListPackagesForUserRequestVisibility = "public" | "private" | "internal";
-export const ListPackagesForUserRequestVisibility = S.String;
+const ListPackagesForUserRequestVisibility = S.String;
 
 export interface ListPackagesForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1435,7 +1403,7 @@ export interface ListPackagesForUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListPackagesForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: ListPackagesForUserRequestPackageType.pipe(T.Query()),
@@ -1448,11 +1416,8 @@ export const ListPackagesForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackagesForUserRequest>;
 
 export type ListPackagesForUserResponseBodyList = Array<Package>;
-export const ListPackagesForUserResponseBodyList =
-  ListDockerMigrationConflictingPackagesForUserResponseBodyList as any as S.Schema<ListPackagesForUserResponseBodyList>;
-
 export type ListPackagesForUserResponse = ListPackagesForUserResponseBodyList;
-export const ListPackagesForUserResponse =
+const ListPackagesForUserResponse =
   ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForUserResponse>;
 
 export type RestorePackageForAuthenticatedUserRequestPackageType =
@@ -1462,7 +1427,7 @@ export type RestorePackageForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const RestorePackageForAuthenticatedUserRequestPackageType = S.String;
+const RestorePackageForAuthenticatedUserRequestPackageType = S.String;
 
 export interface RestorePackageForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -1472,7 +1437,7 @@ export interface RestorePackageForAuthenticatedUserRequest {
   /** package token */
   token?: string;
 }
-export const RestorePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: RestorePackageForAuthenticatedUserRequestPackageType.pipe(T.Label()),
     package_name: S.String.pipe(T.Label()),
@@ -1489,7 +1454,7 @@ export const RestorePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RestorePackageForAuthenticatedUserRequest>;
 
 export interface RestorePackageForAuthenticatedUserResponse {}
-export const RestorePackageForAuthenticatedUserResponse =
+const RestorePackageForAuthenticatedUserResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageForAuthenticatedUserResponse>;
 
 export type RestorePackageForOrgRequestPackageType =
@@ -1499,7 +1464,7 @@ export type RestorePackageForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const RestorePackageForOrgRequestPackageType = S.String;
+const RestorePackageForOrgRequestPackageType = S.String;
 
 export interface RestorePackageForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1511,7 +1476,7 @@ export interface RestorePackageForOrgRequest {
   /** package token */
   token?: string;
 }
-export const RestorePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: RestorePackageForOrgRequestPackageType.pipe(T.Label()),
@@ -1529,7 +1494,7 @@ export const RestorePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageForOrgRequest>;
 
 export interface RestorePackageForOrgResponse {}
-export const RestorePackageForOrgResponse =
+const RestorePackageForOrgResponse =
   DeletePackageForOrgResponse as any as S.Schema<RestorePackageForOrgResponse>;
 
 export type RestorePackageForUserRequestPackageType =
@@ -1539,7 +1504,7 @@ export type RestorePackageForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const RestorePackageForUserRequestPackageType = S.String;
+const RestorePackageForUserRequestPackageType = S.String;
 
 export interface RestorePackageForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1551,7 +1516,7 @@ export interface RestorePackageForUserRequest {
   /** package token */
   token?: string;
 }
-export const RestorePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: RestorePackageForUserRequestPackageType.pipe(T.Label()),
@@ -1569,7 +1534,7 @@ export const RestorePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageForUserRequest>;
 
 export interface RestorePackageForUserResponse {}
-export const RestorePackageForUserResponse =
+const RestorePackageForUserResponse =
   DeletePackageForOrgResponse as any as S.Schema<RestorePackageForUserResponse>;
 
 export type RestorePackageVersionForAuthenticatedUserRequestPackageType =
@@ -1579,7 +1544,7 @@ export type RestorePackageVersionForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const RestorePackageVersionForAuthenticatedUserRequestPackageType = S.String;
+const RestorePackageVersionForAuthenticatedUserRequestPackageType = S.String;
 
 export interface RestorePackageVersionForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
@@ -1589,7 +1554,7 @@ export interface RestorePackageVersionForAuthenticatedUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const RestorePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_type: RestorePackageVersionForAuthenticatedUserRequestPackageType.pipe(T.Label()),
     package_name: S.String.pipe(T.Label()),
@@ -1606,7 +1571,7 @@ export const RestorePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RestorePackageVersionForAuthenticatedUserRequest>;
 
 export interface RestorePackageVersionForAuthenticatedUserResponse {}
-export const RestorePackageVersionForAuthenticatedUserResponse =
+const RestorePackageVersionForAuthenticatedUserResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForAuthenticatedUserResponse>;
 
 export type RestorePackageVersionForOrgRequestPackageType =
@@ -1616,7 +1581,7 @@ export type RestorePackageVersionForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const RestorePackageVersionForOrgRequestPackageType = S.String;
+const RestorePackageVersionForOrgRequestPackageType = S.String;
 
 export interface RestorePackageVersionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1628,7 +1593,7 @@ export interface RestorePackageVersionForOrgRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const RestorePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     package_type: RestorePackageVersionForOrgRequestPackageType.pipe(T.Label()),
@@ -1646,7 +1611,7 @@ export const RestorePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageVersionForOrgRequest>;
 
 export interface RestorePackageVersionForOrgResponse {}
-export const RestorePackageVersionForOrgResponse =
+const RestorePackageVersionForOrgResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForOrgResponse>;
 
 export type RestorePackageVersionForUserRequestPackageType =
@@ -1656,7 +1621,7 @@ export type RestorePackageVersionForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
-export const RestorePackageVersionForUserRequestPackageType = S.String;
+const RestorePackageVersionForUserRequestPackageType = S.String;
 
 export interface RestorePackageVersionForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1668,7 +1633,7 @@ export interface RestorePackageVersionForUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
-export const RestorePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     package_type: RestorePackageVersionForUserRequestPackageType.pipe(T.Label()),
@@ -1686,7 +1651,7 @@ export const RestorePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageVersionForUserRequest>;
 
 export interface RestorePackageVersionForUserResponse {}
-export const RestorePackageVersionForUserResponse =
+const RestorePackageVersionForUserResponse =
   DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForUserResponse>;
 
 export type DeletePackageForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;

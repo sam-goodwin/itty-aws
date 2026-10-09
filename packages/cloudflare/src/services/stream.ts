@@ -95,7 +95,7 @@ export interface CopyAudioTrackRequest {
   /** An audio track URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. */
   url?: string;
 }
-export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -113,7 +113,7 @@ export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopyAudioTrackRequest" }) as any as S.Schema<CopyAudioTrackRequest>;
 
 export type AudioTracksCopyResponseStatus = "queued" | "ready" | "error";
-export const AudioTracksCopyResponseStatus = S.String;
+const AudioTracksCopyResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CopyAudioTrackResponse {
@@ -126,7 +126,7 @@ export interface CopyAudioTrackResponse {
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string | null;
 }
-export const CopyAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
+const CopyAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.NullOr(S.Boolean)),
     label: S.optional(S.NullOr(S.String)),
@@ -143,7 +143,7 @@ export interface CreateCaptionLanguageRequest {
   /** The language tag in BCP 47 format. */
   language: string;
 }
-export const CreateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -162,7 +162,7 @@ export const CreateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCaptionLanguageRequest>;
 
 export type CaptionsLanguageCreateResponseStatus = "ready" | "inprogress" | "error";
-export const CaptionsLanguageCreateResponseStatus = S.String;
+const CaptionsLanguageCreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCaptionLanguageResponse {
@@ -175,7 +175,7 @@ export interface CreateCaptionLanguageResponse {
   /** The status of a generated caption. */
   status?: CaptionsLanguageCreateResponseStatus | null;
 }
-export const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generated: S.optional(S.NullOr(S.Boolean)),
     label: S.optional(S.NullOr(S.String)),
@@ -187,7 +187,7 @@ export const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCaptionLanguageResponse>;
 
 export type ClipCreateRequestAllowedOriginsList = Array<string>;
-export const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
+const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClipCreateRequestAllowedOriginsList>;
 
@@ -195,7 +195,7 @@ export interface ClipCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
   uid?: string;
 }
-export const ClipCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
+const ClipCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
   }),
@@ -232,7 +232,7 @@ export interface CreateClipRequest {
   url?: string;
   watermark?: ClipCreateRequestWatermark;
 }
-export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     clippedFromVideoUID: S.String,
@@ -254,7 +254,7 @@ export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateClipRequest" }) as any as S.Schema<CreateClipRequest>;
 
 export type ClipCreateResponseAllowedOriginsList = Array<string>;
-export const ClipCreateResponseAllowedOriginsList =
+const ClipCreateResponseAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<ClipCreateResponseAllowedOriginsList>;
 
 export interface ClipCreateResponseInput {
@@ -263,7 +263,7 @@ export interface ClipCreateResponseInput {
   /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
   width?: number | null;
 }
-export const ClipCreateResponseInput = /*@__PURE__*/ S.suspend(() =>
+const ClipCreateResponseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.NullOr(S.Number)),
     width: S.optional(S.NullOr(S.Number)),
@@ -276,7 +276,7 @@ export interface ClipCreateResponsePlayback {
   /** The HLS manifest for the video. */
   hls?: string | null;
 }
-export const ClipCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
+const ClipCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dash: S.optional(S.NullOr(S.String)),
     hls: S.optional(S.NullOr(S.String)),
@@ -292,7 +292,7 @@ export interface ClipCreateResponsePublicDetails {
   shareLink?: string | null;
   title?: string | null;
 }
-export const ClipCreateResponsePublicDetails = /*@__PURE__*/ S.suspend(() =>
+const ClipCreateResponsePublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
     logo: S.optional(S.NullOr(S.String)),
@@ -312,7 +312,7 @@ export type ClipCreateResponseStatusState =
   | "ready"
   | "error"
   | "live-inprogress";
-export const ClipCreateResponseStatusState = S.String;
+const ClipCreateResponseStatusState = S.String;
 
 export interface ClipCreateResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
@@ -324,7 +324,7 @@ export interface ClipCreateResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: ClipCreateResponseStatusState | null;
 }
-export const ClipCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const ClipCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorReasonCode: S.optional(S.NullOr(S.String)),
     errorReasonText: S.optional(S.NullOr(S.String)),
@@ -357,7 +357,7 @@ export interface ClipCreateResponseWatermark {
   /** The width of the image in pixels. */
   width?: number | null;
 }
-export const ClipCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
+const ClipCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.NullOr(S.String)),
     downloadedFrom: S.optional(S.NullOr(S.String)),
@@ -427,7 +427,7 @@ export interface CreateClipResponse {
   uploadExpiry?: string | null;
   watermark?: ClipCreateResponseWatermark | null;
 }
-export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(ClipCreateResponseAllowedOriginsList)),
     clippedFrom: S.optional(S.NullOr(S.String)),
@@ -459,12 +459,10 @@ export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateClipResponse" }) as any as S.Schema<CreateClipResponse>;
 
 export type CopyCreateRequestAllowedOriginsList = Array<string>;
-export const CopyCreateRequestAllowedOriginsList =
+const CopyCreateRequestAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<CopyCreateRequestAllowedOriginsList>;
 
 export type CopyCreateRequestWatermark = ClipCreateRequestWatermark;
-export const CopyCreateRequestWatermark = ClipCreateRequestWatermark;
-
 export interface CreateCopyRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -490,7 +488,7 @@ export interface CreateCopyRequest {
   /** A user-defined identifier for the media creator. */
   uploadCreator?: string;
 }
-export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     allowedOrigins: S.optional(CopyCreateRequestAllowedOriginsList),
@@ -510,18 +508,12 @@ export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCopyRequest" }) as any as S.Schema<CreateCopyRequest>;
 
 export type CopyCreateResponseAllowedOriginsList = Array<string>;
-export const CopyCreateResponseAllowedOriginsList =
+const CopyCreateResponseAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<CopyCreateResponseAllowedOriginsList>;
 
 export type CopyCreateResponseInput = ClipCreateResponseInput;
-export const CopyCreateResponseInput = ClipCreateResponseInput;
-
 export type CopyCreateResponsePlayback = ClipCreateResponsePlayback;
-export const CopyCreateResponsePlayback = ClipCreateResponsePlayback;
-
 export type CopyCreateResponsePublicDetails = ClipCreateResponsePublicDetails;
-export const CopyCreateResponsePublicDetails = ClipCreateResponsePublicDetails;
-
 export type CopyCreateResponseStatusState =
   | "pendingupload"
   | "downloading"
@@ -530,8 +522,6 @@ export type CopyCreateResponseStatusState =
   | "ready"
   | "error"
   | "live-inprogress";
-export const CopyCreateResponseStatusState = S.String;
-
 export interface CopyCreateResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
   errorReasonCode?: string | null;
@@ -542,12 +532,10 @@ export interface CopyCreateResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: CopyCreateResponseStatusState | null;
 }
-export const CopyCreateResponseStatus =
+const CopyCreateResponseStatus =
   ClipCreateResponseStatus as any as S.Schema<CopyCreateResponseStatus>;
 
 export type CopyCreateResponseWatermark = ClipCreateResponseWatermark;
-export const CopyCreateResponseWatermark = ClipCreateResponseWatermark;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCopyResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -600,7 +588,7 @@ export interface CreateCopyResponse {
   uploadExpiry?: string | null;
   watermark?: ClipCreateResponseWatermark | null;
 }
-export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(CopyCreateResponseAllowedOriginsList)),
     clippedFrom: S.optional(S.NullOr(S.String)),
@@ -632,12 +620,10 @@ export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCopyResponse" }) as any as S.Schema<CreateCopyResponse>;
 
 export type DirectUploadCreateRequestAllowedOriginsList = Array<string>;
-export const DirectUploadCreateRequestAllowedOriginsList =
+const DirectUploadCreateRequestAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<DirectUploadCreateRequestAllowedOriginsList>;
 
 export type DirectUploadCreateRequestWatermark = ClipCreateRequestWatermark;
-export const DirectUploadCreateRequestWatermark = ClipCreateRequestWatermark;
-
 export interface CreateDirectUploadRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -661,7 +647,7 @@ export interface CreateDirectUploadRequest {
   /** A user-defined identifier for the media creator. */
   uploadCreator?: string;
 }
-export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     maxDurationSeconds: S.Number,
@@ -682,8 +668,6 @@ export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDirectUploadRequest>;
 
 export type DirectUploadCreateResponseWatermark = ClipCreateResponseWatermark;
-export const DirectUploadCreateResponseWatermark = ClipCreateResponseWatermark;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDirectUploadResponse {
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
@@ -694,7 +678,7 @@ export interface CreateDirectUploadResponse {
   uploadURL?: string | null;
   watermark?: ClipCreateResponseWatermark | null;
 }
-export const CreateDirectUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledDeletion: S.optional(S.NullOr(S.String)),
     uid: S.optional(S.NullOr(S.String)),
@@ -711,7 +695,7 @@ export interface CreateDownloadRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const CreateDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -727,7 +711,7 @@ export const CreateDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDownloadRequest" }) as any as S.Schema<CreateDownloadRequest>;
 
 export type DownloadsCreateResponseAudioStatus = "ready" | "inprogress" | "error";
-export const DownloadsCreateResponseAudioStatus = S.String;
+const DownloadsCreateResponseAudioStatus = S.String;
 
 export interface DownloadsCreateResponseAudio {
   /** Indicates the progress as a percentage between 0 and 100. */
@@ -737,7 +721,7 @@ export interface DownloadsCreateResponseAudio {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsCreateResponseAudio = /*@__PURE__*/ S.suspend(() =>
+const DownloadsCreateResponseAudio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.Number,
     status: DownloadsCreateResponseAudioStatus,
@@ -748,8 +732,6 @@ export const DownloadsCreateResponseAudio = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadsCreateResponseAudio>;
 
 export type DownloadsCreateResponseDefaultStatus = "ready" | "inprogress" | "error";
-export const DownloadsCreateResponseDefaultStatus = S.String;
-
 export interface DownloadsCreateResponseDefault {
   /** Indicates the progress as a percentage between 0 and 100. */
   percentComplete: number;
@@ -758,7 +740,7 @@ export interface DownloadsCreateResponseDefault {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsCreateResponseDefault =
+const DownloadsCreateResponseDefault =
   DownloadsCreateResponseAudio as any as S.Schema<DownloadsCreateResponseDefault>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -768,7 +750,7 @@ export interface CreateDownloadResponse {
   /** The default video download. Only present if this download type has been created. */
   default?: DownloadsCreateResponseDefault | null;
 }
-export const CreateDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audio: S.optional(S.NullOr(DownloadsCreateResponseAudio)),
     default: S.optional(S.NullOr(DownloadsCreateResponseDefault)),
@@ -779,7 +761,7 @@ export interface CreateKeyRequest {
   /** Identifier. */
   accountId: string;
 }
-export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -798,7 +780,7 @@ export interface CreateKeyResponse {
   /** The signing key in PEM format. */
   pem?: string | null;
 }
-export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     created: S.optional(S.NullOr(S.String)),
@@ -808,11 +790,11 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateKeyResponse" }) as any as S.Schema<CreateKeyResponse>;
 
 export type LiveInputsCreateRequestRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsCreateRequestRecordingAllowedOriginsList =
+const LiveInputsCreateRequestRecordingAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
 
 export type LiveInputsCreateRequestRecordingMode = "off" | "automatic";
-export const LiveInputsCreateRequestRecordingMode = S.String;
+const LiveInputsCreateRequestRecordingMode = S.String;
 
 export interface LiveInputsCreateRequestRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
@@ -826,7 +808,7 @@ export interface LiveInputsCreateRequestRecording {
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
   timeoutSeconds?: number;
 }
-export const LiveInputsCreateRequestRecording = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsCreateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(LiveInputsCreateRequestRecordingAllowedOriginsList),
     hideLiveViewerCount: S.optional(S.Boolean),
@@ -855,7 +837,7 @@ export interface CreateLiveInputRequest {
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
   recording?: LiveInputsCreateRequestRecording;
 }
-export const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -876,7 +858,7 @@ export interface LiveInputsCreateResponsePlayback {
   /** The HLS manifest URL used to play live video, referencing the live input ID. */
   hls: string;
 }
-export const LiveInputsCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dash: S.String,
     hls: S.String,
@@ -886,11 +868,11 @@ export const LiveInputsCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveInputsCreateResponsePlayback>;
 
 export type LiveInputsCreateResponseRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsCreateResponseRecordingAllowedOriginsList =
+const LiveInputsCreateResponseRecordingAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
 
 export type LiveInputsCreateResponseRecordingMode = "off" | "automatic";
-export const LiveInputsCreateResponseRecordingMode = S.String;
+const LiveInputsCreateResponseRecordingMode = S.String;
 
 export interface LiveInputsCreateResponseRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
@@ -904,7 +886,7 @@ export interface LiveInputsCreateResponseRecording {
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
   timeoutSeconds?: number | null;
 }
-export const LiveInputsCreateResponseRecording = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsCreateResponseRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(LiveInputsCreateResponseRecordingAllowedOriginsList)),
     hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
@@ -922,7 +904,7 @@ export interface LiveInputsCreateResponseRtmps {
   /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsCreateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamKey: S.optional(S.NullOr(S.String)),
     url: S.optional(S.NullOr(S.String)),
@@ -937,7 +919,7 @@ export interface LiveInputsCreateResponseRtmpsPlayback {
   /** The URL used to play live video over RTMPS. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseRtmpsPlayback =
+const LiveInputsCreateResponseRtmpsPlayback =
   LiveInputsCreateResponseRtmps as any as S.Schema<LiveInputsCreateResponseRtmpsPlayback>;
 
 export interface LiveInputsCreateResponseSrt {
@@ -948,7 +930,7 @@ export interface LiveInputsCreateResponseSrt {
   /** The SRT URL you provide to the broadcaster, which they stream live video to. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseSrt = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsCreateResponseSrt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passphrase: S.optional(S.NullOr(S.String)),
     streamId: S.optional(S.NullOr(S.String)),
@@ -966,7 +948,7 @@ export interface LiveInputsCreateResponseSrtPlayback {
   /** The URL used to play live video over SRT. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseSrtPlayback =
+const LiveInputsCreateResponseSrtPlayback =
   LiveInputsCreateResponseSrt as any as S.Schema<LiveInputsCreateResponseSrtPlayback>;
 
 export type LiveInputsCreateResponseStatus =
@@ -978,13 +960,13 @@ export type LiveInputsCreateResponseStatus =
   | "failed_to_connect"
   | "failed_to_reconnect"
   | "new_configuration_accepted";
-export const LiveInputsCreateResponseStatus = S.String;
+const LiveInputsCreateResponseStatus = S.String;
 
 export interface LiveInputsCreateResponseWebRTC {
   /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsCreateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
   }),
@@ -996,7 +978,7 @@ export interface LiveInputsCreateResponseWebRTCPlayback {
   /** The URL used to play live video over WebRTC. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseWebRTCPlayback =
+const LiveInputsCreateResponseWebRTCPlayback =
   LiveInputsCreateResponseWebRTC as any as S.Schema<LiveInputsCreateResponseWebRTCPlayback>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1036,7 +1018,7 @@ export interface CreateLiveInputResponse {
   /** Details for playback from a live input using WebRTC. */
   webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback | null;
 }
-export const CreateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.NullOr(S.String)),
     deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
@@ -1070,7 +1052,7 @@ export interface CreateLiveInputOutputRequest {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
   enabled?: boolean;
 }
-export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -1101,7 +1083,7 @@ export interface CreateLiveInputOutputResponse {
   /** The URL an output uses to restream. */
   url?: string | null;
 }
-export const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
     streamKey: S.optional(S.NullOr(S.String)),
@@ -1113,7 +1095,7 @@ export const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLiveInputOutputResponse>;
 
 export type CreateRequestTusResumable = "1.0.0";
-export const CreateRequestTusResumable = S.String;
+const CreateRequestTusResumable = S.String;
 
 export interface CreateStreamRequest {
   /** The account identifier tag. */
@@ -1129,7 +1111,7 @@ export interface CreateStreamRequest {
   /** Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded. Supported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`, `maxdurationseconds`. */
   uploadMetadata?: string;
 }
-export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     directUser: S.optional(S.Boolean.pipe(T.Query("direct_user"))),
@@ -1143,23 +1125,23 @@ export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStreamRequest" }) as any as S.Schema<CreateStreamRequest>;
 
 export interface CreateStreamResponse {}
-export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateStreamResponse" }) as any as S.Schema<CreateStreamResponse>;
 
 export type TokenCreateRequestAccessRulesItemAction = "allow" | "block";
-export const TokenCreateRequestAccessRulesItemAction = S.String;
+const TokenCreateRequestAccessRulesItemAction = S.String;
 
 export type TokenCreateRequestAccessRulesItemCountryList = Array<string>;
-export const TokenCreateRequestAccessRulesItemCountryList =
+const TokenCreateRequestAccessRulesItemCountryList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
 
 export type TokenCreateRequestAccessRulesItemIpList = Array<string>;
-export const TokenCreateRequestAccessRulesItemIpList =
+const TokenCreateRequestAccessRulesItemIpList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
 
 export type TokenCreateRequestAccessRulesItemType = "any" | "ip.src" | "ip.geoip.country";
-export const TokenCreateRequestAccessRulesItemType = S.String;
+const TokenCreateRequestAccessRulesItemType = S.String;
 
 export interface TokenCreateRequestAccessRulesItem {
   /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
@@ -1171,7 +1153,7 @@ export interface TokenCreateRequestAccessRulesItem {
   /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
   type?: TokenCreateRequestAccessRulesItemType | (string & {});
 }
-export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
+const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(TokenCreateRequestAccessRulesItemAction),
     country: S.optional(TokenCreateRequestAccessRulesItemCountryList),
@@ -1183,7 +1165,7 @@ export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenCreateRequestAccessRulesItem>;
 
 export type TokenCreateRequestAccessRulesList = Array<TokenCreateRequestAccessRulesItem>;
-export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
+const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
   TokenCreateRequestAccessRulesItem,
 ) as any as S.Schema<TokenCreateRequestAccessRulesList>;
 
@@ -1191,7 +1173,7 @@ export interface TokenCreateRequestFlags {
   /** Whether to return the original video without transformations. */
   original?: boolean;
 }
-export const TokenCreateRequestFlags = /*@__PURE__*/ S.suspend(() =>
+const TokenCreateRequestFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     original: S.optional(S.Boolean),
   }),
@@ -1217,7 +1199,7 @@ export interface CreateTokenRequest {
   /** The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required. */
   pem?: string;
 }
-export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1244,7 +1226,7 @@ export interface CreateTokenResponse {
   /** The signed token used with the signed URLs feature. */
   token?: string | null;
 }
-export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1266,7 +1248,7 @@ export interface CreateWatermarkRequest {
   /** URL of the watermark image to copy. */
   url?: string;
 }
-export const CreateWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
@@ -1305,7 +1287,7 @@ export interface CreateWatermarkResponse {
   /** The width of the image in pixels. */
   width?: number | null;
 }
-export const CreateWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.NullOr(S.String)),
     downloadedFrom: S.optional(S.NullOr(S.String)),
@@ -1329,7 +1311,7 @@ export interface DeleteAudioTrackRequest {
   /** The unique identifier for an additional audio track. */
   audioIdentifier: string;
 }
-export const DeleteAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1346,7 +1328,7 @@ export const DeleteAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAudioTrackRequest" }) as any as S.Schema<DeleteAudioTrackRequest>;
 
 export type DeleteAudioTrackResponse = string;
-export const DeleteAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteAudioTrackResponse" }) as any as S.Schema<DeleteAudioTrackResponse>;
 
@@ -1358,7 +1340,7 @@ export interface DeleteCaptionLanguageRequest {
   /** The language tag in BCP 47 format. */
   language: string;
 }
-export const DeleteCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1377,7 +1359,7 @@ export const DeleteCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCaptionLanguageRequest>;
 
 export type DeleteCaptionLanguageResponse = string;
-export const DeleteCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteCaptionLanguageResponse",
@@ -1389,7 +1371,7 @@ export interface DeleteDownloadRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1405,8 +1387,7 @@ export const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDownloadRequest" }) as any as S.Schema<DeleteDownloadRequest>;
 
 export type DeleteDownloadResponse = string;
-export const DeleteDownloadResponse =
-  DeleteAudioTrackResponse as any as S.Schema<DeleteDownloadResponse>;
+const DeleteDownloadResponse = DeleteAudioTrackResponse as any as S.Schema<DeleteDownloadResponse>;
 
 export interface DeleteKeyRequest {
   /** Identifier. */
@@ -1414,7 +1395,7 @@ export interface DeleteKeyRequest {
   /** Identifier. */
   identifier: string;
 }
-export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1430,7 +1411,7 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRequest" }) as any as S.Schema<DeleteKeyRequest>;
 
 export type DeleteKeyResponse = string;
-export const DeleteKeyResponse = DeleteAudioTrackResponse as any as S.Schema<DeleteKeyResponse>;
+const DeleteKeyResponse = DeleteAudioTrackResponse as any as S.Schema<DeleteKeyResponse>;
 
 export interface DeleteLiveInputRequest {
   /** Identifier. */
@@ -1438,7 +1419,7 @@ export interface DeleteLiveInputRequest {
   /** A unique identifier for a live input. */
   liveInputIdentifier: string;
 }
-export const DeleteLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -1454,8 +1435,7 @@ export const DeleteLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLiveInputRequest" }) as any as S.Schema<DeleteLiveInputRequest>;
 
 export interface DeleteLiveInputResponse {}
-export const DeleteLiveInputResponse =
-  CreateStreamResponse as any as S.Schema<DeleteLiveInputResponse>;
+const DeleteLiveInputResponse = CreateStreamResponse as any as S.Schema<DeleteLiveInputResponse>;
 
 export interface DeleteLiveInputOutputRequest {
   /** Identifier. */
@@ -1465,7 +1445,7 @@ export interface DeleteLiveInputOutputRequest {
   /** A unique identifier for the output. */
   outputIdentifier: string;
 }
-export const DeleteLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -1484,7 +1464,7 @@ export const DeleteLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveInputOutputRequest>;
 
 export interface DeleteLiveInputOutputResponse {}
-export const DeleteLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteLiveInputOutputResponse",
@@ -1496,7 +1476,7 @@ export interface DeleteStreamRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1508,7 +1488,7 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStreamRequest" }) as any as S.Schema<DeleteStreamRequest>;
 
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
+const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
 
 export interface DeleteWatermarkRequest {
   /** The account identifier tag. */
@@ -1516,7 +1496,7 @@ export interface DeleteWatermarkRequest {
   /** The unique identifier for a watermark profile. */
   identifier: string;
 }
-export const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1532,14 +1512,14 @@ export const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWatermarkRequest" }) as any as S.Schema<DeleteWatermarkRequest>;
 
 export type DeleteWatermarkResponse = string;
-export const DeleteWatermarkResponse =
+const DeleteWatermarkResponse =
   DeleteAudioTrackResponse as any as S.Schema<DeleteWatermarkResponse>;
 
 export interface DeleteWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1548,11 +1528,10 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export type DeleteWebhookResponse = string;
-export const DeleteWebhookResponse =
-  DeleteAudioTrackResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = DeleteAudioTrackResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export type EditRequestAllowedOriginsList = Array<string>;
-export const EditRequestAllowedOriginsList =
+const EditRequestAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<EditRequestAllowedOriginsList>;
 
 export interface EditRequestPublicDetails {
@@ -1561,7 +1540,7 @@ export interface EditRequestPublicDetails {
   shareLink?: string;
   title?: string;
 }
-export const EditRequestPublicDetails = /*@__PURE__*/ S.suspend(() =>
+const EditRequestPublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
     logo: S.optional(S.String),
@@ -1596,7 +1575,7 @@ export interface EditStreamRequest {
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
   uploadExpiry?: string;
 }
-export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1616,18 +1595,12 @@ export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditStreamRequest" }) as any as S.Schema<EditStreamRequest>;
 
 export type EditResponseAllowedOriginsList = Array<string>;
-export const EditResponseAllowedOriginsList =
+const EditResponseAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<EditResponseAllowedOriginsList>;
 
 export type EditResponseInput = ClipCreateResponseInput;
-export const EditResponseInput = ClipCreateResponseInput;
-
 export type EditResponsePlayback = ClipCreateResponsePlayback;
-export const EditResponsePlayback = ClipCreateResponsePlayback;
-
 export type EditResponsePublicDetails = ClipCreateResponsePublicDetails;
-export const EditResponsePublicDetails = ClipCreateResponsePublicDetails;
-
 export type EditResponseStatusState =
   | "pendingupload"
   | "downloading"
@@ -1636,8 +1609,6 @@ export type EditResponseStatusState =
   | "ready"
   | "error"
   | "live-inprogress";
-export const EditResponseStatusState = S.String;
-
 export interface EditResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
   errorReasonCode?: string | null;
@@ -1648,11 +1619,9 @@ export interface EditResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: EditResponseStatusState | null;
 }
-export const EditResponseStatus = ClipCreateResponseStatus as any as S.Schema<EditResponseStatus>;
+const EditResponseStatus = ClipCreateResponseStatus as any as S.Schema<EditResponseStatus>;
 
 export type EditResponseWatermark = ClipCreateResponseWatermark;
-export const EditResponseWatermark = ClipCreateResponseWatermark;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -1705,7 +1674,7 @@ export interface EditStreamResponse {
   uploadExpiry?: string | null;
   watermark?: ClipCreateResponseWatermark | null;
 }
-export const EditStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const EditStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(EditResponseAllowedOriginsList)),
     clippedFrom: S.optional(S.NullOr(S.String)),
@@ -1742,7 +1711,7 @@ export interface GetAudioTrackRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const GetAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1754,7 +1723,7 @@ export const GetAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAudioTrackRequest" }) as any as S.Schema<GetAudioTrackRequest>;
 
 export type AudioTracksGetResponseAudioItemStatus = "queued" | "ready" | "error";
-export const AudioTracksGetResponseAudioItemStatus = S.String;
+const AudioTracksGetResponseAudioItemStatus = S.String;
 
 export interface AudioTracksGetResponseAudioItem {
   /** Denotes whether the audio track will be played by default in a player. */
@@ -1766,7 +1735,7 @@ export interface AudioTracksGetResponseAudioItem {
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string | null;
 }
-export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
+const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.NullOr(S.Boolean)),
     label: S.optional(S.NullOr(S.String)),
@@ -1778,7 +1747,7 @@ export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AudioTracksGetResponseAudioItem>;
 
 export type AudioTracksGetResponseAudioList = Array<AudioTracksGetResponseAudioItem>;
-export const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
+const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
   AudioTracksGetResponseAudioItem,
 ) as any as S.Schema<AudioTracksGetResponseAudioList>;
 
@@ -1787,7 +1756,7 @@ export interface GetAudioTrackResponse {
   /** Array of audio tracks for the video. */
   audio?: AudioTracksGetResponseAudioList | null;
 }
-export const GetAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audio: S.optional(S.NullOr(AudioTracksGetResponseAudioList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1799,7 +1768,7 @@ export interface GetCaptionRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const GetCaptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCaptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1815,7 +1784,7 @@ export const GetCaptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCaptionRequest" }) as any as S.Schema<GetCaptionRequest>;
 
 export type CaptionsGetResultItemStatus = "ready" | "inprogress" | "error";
-export const CaptionsGetResultItemStatus = S.String;
+const CaptionsGetResultItemStatus = S.String;
 
 export interface CaptionsGetResultItem {
   /** Whether the caption was generated via AI. */
@@ -1827,7 +1796,7 @@ export interface CaptionsGetResultItem {
   /** The status of a generated caption. */
   status?: CaptionsGetResultItemStatus | null;
 }
-export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generated: S.optional(S.NullOr(S.Boolean)),
     label: S.optional(S.NullOr(S.String)),
@@ -1837,7 +1806,7 @@ export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CaptionsGetResultItem" }) as any as S.Schema<CaptionsGetResultItem>;
 
 export type CaptionsGetResultList = Array<CaptionsGetResultItem>;
-export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
+const CaptionsGetResultList = /*@__PURE__*/ S.Array(
   CaptionsGetResultItem,
 ) as any as S.Schema<CaptionsGetResultList>;
 
@@ -1847,7 +1816,7 @@ export interface GetCaptionResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetCaptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCaptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CaptionsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1862,7 +1831,7 @@ export interface GetCaptionLanguageRequest {
   /** The language tag in BCP 47 format. */
   language: string;
 }
-export const GetCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1881,8 +1850,6 @@ export const GetCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCaptionLanguageRequest>;
 
 export type CaptionsLanguageGetResponseStatus = "ready" | "inprogress" | "error";
-export const CaptionsLanguageGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
@@ -1894,7 +1861,7 @@ export interface GetCaptionLanguageResponse {
   /** The status of a generated caption. */
   status?: CaptionsLanguageGetResponseStatus | null;
 }
-export const GetCaptionLanguageResponse =
+const GetCaptionLanguageResponse =
   CreateCaptionLanguageResponse as any as S.Schema<GetCaptionLanguageResponse>;
 
 export interface GetCaptionLanguageVttRequest {
@@ -1905,7 +1872,7 @@ export interface GetCaptionLanguageVttRequest {
   /** The language tag in BCP 47 format. */
   language: string;
 }
-export const GetCaptionLanguageVttRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCaptionLanguageVttRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1924,7 +1891,7 @@ export const GetCaptionLanguageVttRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCaptionLanguageVttRequest>;
 
 export interface GetCaptionLanguageVttResponse {}
-export const GetCaptionLanguageVttResponse =
+const GetCaptionLanguageVttResponse =
   DeleteLiveInputOutputResponse as any as S.Schema<GetCaptionLanguageVttResponse>;
 
 export interface GetDownloadRequest {
@@ -1933,7 +1900,7 @@ export interface GetDownloadRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const GetDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1949,8 +1916,6 @@ export const GetDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDownloadRequest" }) as any as S.Schema<GetDownloadRequest>;
 
 export type DownloadsGetResponseAudioStatus = "ready" | "inprogress" | "error";
-export const DownloadsGetResponseAudioStatus = S.String;
-
 export interface DownloadsGetResponseAudio {
   /** Indicates the progress as a percentage between 0 and 100. */
   percentComplete: number;
@@ -1959,12 +1924,7 @@ export interface DownloadsGetResponseAudio {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsGetResponseAudio =
-  DownloadsCreateResponseAudio as any as S.Schema<DownloadsGetResponseAudio>;
-
 export type DownloadsGetResponseDefaultStatus = "ready" | "inprogress" | "error";
-export const DownloadsGetResponseDefaultStatus = S.String;
-
 export interface DownloadsGetResponseDefault {
   /** Indicates the progress as a percentage between 0 and 100. */
   percentComplete: number;
@@ -1973,9 +1933,6 @@ export interface DownloadsGetResponseDefault {
   /** The URL to access the generated download. */
   url?: string | null;
 }
-export const DownloadsGetResponseDefault =
-  DownloadsCreateResponseAudio as any as S.Schema<DownloadsGetResponseDefault>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
@@ -1983,7 +1940,7 @@ export interface GetDownloadResponse {
   /** The default video download. Only present if this download type has been created. */
   default?: DownloadsGetResponseDefault | null;
 }
-export const GetDownloadResponse = CreateDownloadResponse as any as S.Schema<GetDownloadResponse>;
+const GetDownloadResponse = CreateDownloadResponse as any as S.Schema<GetDownloadResponse>;
 
 export interface GetEmbedRequest {
   /** The account identifier tag. */
@@ -1991,7 +1948,7 @@ export interface GetEmbedRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const GetEmbedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -2003,13 +1960,13 @@ export const GetEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedRequest" }) as any as S.Schema<GetEmbedRequest>;
 
 export interface GetEmbedResponse {}
-export const GetEmbedResponse = CreateStreamResponse as any as S.Schema<GetEmbedResponse>;
+const GetEmbedResponse = CreateStreamResponse as any as S.Schema<GetEmbedResponse>;
 
 export interface GetKeyRequest {
   /** Identifier. */
   accountId: string;
 }
-export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -2025,7 +1982,7 @@ export interface KeysGetResultItem {
   /** The unique identifier for the signing key. */
   keyId?: string | null;
 }
-export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     created: S.optional(S.NullOr(S.String)),
@@ -2034,7 +1991,7 @@ export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeysGetResultItem" }) as any as S.Schema<KeysGetResultItem>;
 
 export type KeysGetResultList = Array<KeysGetResultItem>;
-export const KeysGetResultList = /*@__PURE__*/ S.Array(
+const KeysGetResultList = /*@__PURE__*/ S.Array(
   KeysGetResultItem,
 ) as any as S.Schema<KeysGetResultList>;
 
@@ -2044,7 +2001,7 @@ export interface GetKeyResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: KeysGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2057,7 +2014,7 @@ export interface GetLiveInputRequest {
   /** A unique identifier for a live input. */
   liveInputIdentifier: string;
 }
-export const GetLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -2073,14 +2030,12 @@ export const GetLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLiveInputRequest" }) as any as S.Schema<GetLiveInputRequest>;
 
 export type LiveInputsGetResponsePlayback = LiveInputsCreateResponsePlayback;
-export const LiveInputsGetResponsePlayback = LiveInputsCreateResponsePlayback;
-
 export type LiveInputsGetResponseRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsGetResponseRecordingAllowedOriginsList =
+const LiveInputsGetResponseRecordingAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
 
 export type LiveInputsGetResponseRecordingMode = "off" | "automatic";
-export const LiveInputsGetResponseRecordingMode = S.String;
+const LiveInputsGetResponseRecordingMode = S.String;
 
 export interface LiveInputsGetResponseRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
@@ -2094,7 +2049,7 @@ export interface LiveInputsGetResponseRecording {
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
   timeoutSeconds?: number | null;
 }
-export const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(LiveInputsGetResponseRecordingAllowedOriginsList)),
     hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
@@ -2107,17 +2062,9 @@ export const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveInputsGetResponseRecording>;
 
 export type LiveInputsGetResponseRtmps = LiveInputsCreateResponseRtmps;
-export const LiveInputsGetResponseRtmps = LiveInputsCreateResponseRtmps;
-
 export type LiveInputsGetResponseRtmpsPlayback = LiveInputsCreateResponseRtmpsPlayback;
-export const LiveInputsGetResponseRtmpsPlayback = LiveInputsCreateResponseRtmpsPlayback;
-
 export type LiveInputsGetResponseSrt = LiveInputsCreateResponseSrt;
-export const LiveInputsGetResponseSrt = LiveInputsCreateResponseSrt;
-
 export type LiveInputsGetResponseSrtPlayback = LiveInputsCreateResponseSrtPlayback;
-export const LiveInputsGetResponseSrtPlayback = LiveInputsCreateResponseSrtPlayback;
-
 export type LiveInputsGetResponseStatus =
   | "connected"
   | "reconnected"
@@ -2127,14 +2074,10 @@ export type LiveInputsGetResponseStatus =
   | "failed_to_connect"
   | "failed_to_reconnect"
   | "new_configuration_accepted";
-export const LiveInputsGetResponseStatus = S.String;
+const LiveInputsGetResponseStatus = S.String;
 
 export type LiveInputsGetResponseWebRTC = LiveInputsCreateResponseWebRTC;
-export const LiveInputsGetResponseWebRTC = LiveInputsCreateResponseWebRTC;
-
 export type LiveInputsGetResponseWebRTCPlayback = LiveInputsCreateResponseWebRTCPlayback;
-export const LiveInputsGetResponseWebRTCPlayback = LiveInputsCreateResponseWebRTCPlayback;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLiveInputResponse {
   /** The date and time the live input was created. */
@@ -2172,7 +2115,7 @@ export interface GetLiveInputResponse {
   /** Details for playback from a live input using WebRTC. */
   webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback | null;
 }
-export const GetLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.NullOr(S.String)),
     deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
@@ -2200,7 +2143,7 @@ export interface GetStreamRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -2210,18 +2153,12 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStreamRequest" }) as any as S.Schema<GetStreamRequest>;
 
 export type GetResponseAllowedOriginsList = Array<string>;
-export const GetResponseAllowedOriginsList =
+const GetResponseAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<GetResponseAllowedOriginsList>;
 
 export type GetResponseInput = ClipCreateResponseInput;
-export const GetResponseInput = ClipCreateResponseInput;
-
 export type GetResponsePlayback = ClipCreateResponsePlayback;
-export const GetResponsePlayback = ClipCreateResponsePlayback;
-
 export type GetResponsePublicDetails = ClipCreateResponsePublicDetails;
-export const GetResponsePublicDetails = ClipCreateResponsePublicDetails;
-
 export type GetResponseStatusState =
   | "pendingupload"
   | "downloading"
@@ -2230,8 +2167,6 @@ export type GetResponseStatusState =
   | "ready"
   | "error"
   | "live-inprogress";
-export const GetResponseStatusState = S.String;
-
 export interface GetResponseStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
   errorReasonCode?: string | null;
@@ -2242,11 +2177,9 @@ export interface GetResponseStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: GetResponseStatusState | null;
 }
-export const GetResponseStatus = ClipCreateResponseStatus as any as S.Schema<GetResponseStatus>;
+const GetResponseStatus = ClipCreateResponseStatus as any as S.Schema<GetResponseStatus>;
 
 export type GetResponseWatermark = ClipCreateResponseWatermark;
-export const GetResponseWatermark = ClipCreateResponseWatermark;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -2299,7 +2232,7 @@ export interface GetStreamResponse {
   uploadExpiry?: string | null;
   watermark?: ClipCreateResponseWatermark | null;
 }
-export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(GetResponseAllowedOriginsList)),
     clippedFrom: S.optional(S.NullOr(S.String)),
@@ -2336,7 +2269,7 @@ export interface GetWatermarkRequest {
   /** The unique identifier for a watermark profile. */
   identifier: string;
 }
-export const GetWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -2376,14 +2309,13 @@ export interface GetWatermarkResponse {
   /** The width of the image in pixels. */
   width?: number | null;
 }
-export const GetWatermarkResponse =
-  CreateWatermarkResponse as any as S.Schema<GetWatermarkResponse>;
+const GetWatermarkResponse = CreateWatermarkResponse as any as S.Schema<GetWatermarkResponse>;
 
 export interface GetWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -2400,7 +2332,7 @@ export interface GetWebhookResponse {
   /** The secret used to verify webhook signatures. */
   secret?: string | null;
 }
-export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modified: S.optional(S.NullOr(S.String)),
     notificationUrl: S.optional(S.NullOr(S.String)),
@@ -2414,7 +2346,7 @@ export interface ListLiveInputOutputsRequest {
   /** A unique identifier for a live input. */
   liveInputIdentifier: string;
 }
-export const ListLiveInputOutputsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiveInputOutputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -2441,7 +2373,7 @@ export interface LiveInputsOutputsListResultItem {
   /** The URL an output uses to restream. */
   url?: string | null;
 }
-export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
     streamKey: S.optional(S.NullOr(S.String)),
@@ -2453,7 +2385,7 @@ export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveInputsOutputsListResultItem>;
 
 export type LiveInputsOutputsListResultList = Array<LiveInputsOutputsListResultItem>;
-export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
+const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
   LiveInputsOutputsListResultItem,
 ) as any as S.Schema<LiveInputsOutputsListResultList>;
 
@@ -2463,7 +2395,7 @@ export interface ListLiveInputOutputsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListLiveInputOutputsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLiveInputOutputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LiveInputsOutputsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2478,7 +2410,7 @@ export interface ListLiveInputsRequest {
   /** Includes the total number of videos associated with the submitted query parameters. */
   includeCounts?: boolean;
 }
-export const ListLiveInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiveInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     includeCounts: S.optional(S.Boolean.pipe(T.Query("include_counts"))),
@@ -2501,7 +2433,7 @@ export interface LiveInputsListResponseLiveInputsItem {
   /** A unique identifier for a live input. */
   uid?: string | null;
 }
-export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.NullOr(S.String)),
     deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
@@ -2515,7 +2447,7 @@ export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<LiveInputsListResponseLiveInputsItem>;
 
 export type LiveInputsListResponseLiveInputsList = Array<LiveInputsListResponseLiveInputsItem>;
-export const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
+const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
   LiveInputsListResponseLiveInputsItem,
 ) as any as S.Schema<LiveInputsListResponseLiveInputsList>;
 
@@ -2527,7 +2459,7 @@ export interface ListLiveInputsResponse {
   /** The total number of live inputs that match the provided filters. */
   total?: number | null;
 }
-export const ListLiveInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLiveInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liveInputs: S.optional(S.NullOr(LiveInputsListResponseLiveInputsList)),
     range: S.optional(S.NullOr(S.Number)),
@@ -2543,7 +2475,7 @@ export type ListRequestStatus =
   | "ready"
   | "error"
   | "live-inprogress";
-export const ListRequestStatus = S.String;
+const ListRequestStatus = S.String;
 
 export interface ListStreamsRequest {
   /** The account identifier tag. */
@@ -2579,7 +2511,7 @@ export interface ListStreamsRequest {
   /** Provides a fast, exact string match on the `name` key in the `meta` field. */
   videoName?: string;
 }
-export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -2603,18 +2535,12 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStreamsRequest" }) as any as S.Schema<ListStreamsRequest>;
 
 export type ListResultItemAllowedOriginsList = Array<string>;
-export const ListResultItemAllowedOriginsList =
+const ListResultItemAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<ListResultItemAllowedOriginsList>;
 
 export type ListResultItemInput = ClipCreateResponseInput;
-export const ListResultItemInput = ClipCreateResponseInput;
-
 export type ListResultItemPlayback = ClipCreateResponsePlayback;
-export const ListResultItemPlayback = ClipCreateResponsePlayback;
-
 export type ListResultItemPublicDetails = ClipCreateResponsePublicDetails;
-export const ListResultItemPublicDetails = ClipCreateResponsePublicDetails;
-
 export type ListResultItemStatusState =
   | "pendingupload"
   | "downloading"
@@ -2623,8 +2549,6 @@ export type ListResultItemStatusState =
   | "ready"
   | "error"
   | "live-inprogress";
-export const ListResultItemStatusState = S.String;
-
 export interface ListResultItemStatus {
   /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
   errorReasonCode?: string | null;
@@ -2635,12 +2559,9 @@ export interface ListResultItemStatus {
   /** Specifies the processing status for all quality levels for a video. */
   state?: ListResultItemStatusState | null;
 }
-export const ListResultItemStatus =
-  ClipCreateResponseStatus as any as S.Schema<ListResultItemStatus>;
+const ListResultItemStatus = ClipCreateResponseStatus as any as S.Schema<ListResultItemStatus>;
 
 export type ListResultItemWatermark = ClipCreateResponseWatermark;
-export const ListResultItemWatermark = ClipCreateResponseWatermark;
-
 export interface ListResultItem {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
   allowedOrigins?: ListResultItemAllowedOriginsList | null;
@@ -2692,7 +2613,7 @@ export interface ListResultItem {
   uploadExpiry?: string | null;
   watermark?: ClipCreateResponseWatermark | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(ListResultItemAllowedOriginsList)),
     clippedFrom: S.optional(S.NullOr(S.String)),
@@ -2724,9 +2645,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -2734,7 +2653,7 @@ export interface ListStreamsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2745,7 +2664,7 @@ export interface ListWatermarksRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const ListWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -2754,10 +2673,8 @@ export const ListWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWatermarksRequest" }) as any as S.Schema<ListWatermarksRequest>;
 
 export type WatermarksListResultItem = ClipCreateResponseWatermark;
-export const WatermarksListResultItem = ClipCreateResponseWatermark;
-
 export type WatermarksListResultList = Array<ClipCreateResponseWatermark>;
-export const WatermarksListResultList = /*@__PURE__*/ S.Array(
+const WatermarksListResultList = /*@__PURE__*/ S.Array(
   ClipCreateResponseWatermark,
 ) as any as S.Schema<WatermarksListResultList>;
 
@@ -2767,7 +2684,7 @@ export interface ListWatermarksResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListWatermarksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWatermarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: WatermarksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2786,7 +2703,7 @@ export interface PatchAudioTrackRequest {
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
   label?: string;
 }
-export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -2805,8 +2722,6 @@ export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchAudioTrackRequest" }) as any as S.Schema<PatchAudioTrackRequest>;
 
 export type AudioTracksEditResponseStatus = "queued" | "ready" | "error";
-export const AudioTracksEditResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAudioTrackResponse {
   /** Denotes whether the audio track will be played by default in a player. */
@@ -2818,8 +2733,7 @@ export interface PatchAudioTrackResponse {
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string | null;
 }
-export const PatchAudioTrackResponse =
-  CopyAudioTrackResponse as any as S.Schema<PatchAudioTrackResponse>;
+const PatchAudioTrackResponse = CopyAudioTrackResponse as any as S.Schema<PatchAudioTrackResponse>;
 
 export interface PutWebhookRequest {
   /** The account identifier tag. */
@@ -2827,7 +2741,7 @@ export interface PutWebhookRequest {
   /** The URL where webhooks will be sent. */
   notificationUrl?: string;
 }
-export const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     notificationUrl: S.optional(S.String),
@@ -2845,7 +2759,7 @@ export interface PutWebhookResponse {
   /** The secret used to verify webhook signatures. */
   secret?: string | null;
 }
-export const PutWebhookResponse = GetWebhookResponse as any as S.Schema<PutWebhookResponse>;
+const PutWebhookResponse = GetWebhookResponse as any as S.Schema<PutWebhookResponse>;
 
 export interface StorageUsageVideoRequest {
   /** The account identifier tag. */
@@ -2853,7 +2767,7 @@ export interface StorageUsageVideoRequest {
   /** A user-defined identifier for the media creator. */
   creator?: string;
 }
-export const StorageUsageVideoRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageUsageVideoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     creator: S.optional(S.String.pipe(T.Query())),
@@ -2873,7 +2787,7 @@ export interface StorageUsageVideoResponse {
   /** The total count of videos associated with the account. */
   videoCount?: number | null;
 }
-export const StorageUsageVideoResponse = /*@__PURE__*/ S.suspend(() =>
+const StorageUsageVideoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: S.optional(S.NullOr(S.String)),
     totalStorageMinutes: S.optional(S.NullOr(S.Number)),
@@ -2894,7 +2808,7 @@ export interface UpdateCaptionLanguageRequest {
   /** The WebVTT file containing the caption or subtitle content. */
   file: string;
 }
-export const UpdateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -2914,8 +2828,6 @@ export const UpdateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCaptionLanguageRequest>;
 
 export type CaptionsLanguageUpdateResponseStatus = "ready" | "inprogress" | "error";
-export const CaptionsLanguageUpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
@@ -2927,15 +2839,15 @@ export interface UpdateCaptionLanguageResponse {
   /** The status of a generated caption. */
   status?: CaptionsLanguageUpdateResponseStatus | null;
 }
-export const UpdateCaptionLanguageResponse =
+const UpdateCaptionLanguageResponse =
   CreateCaptionLanguageResponse as any as S.Schema<UpdateCaptionLanguageResponse>;
 
 export type LiveInputsUpdateRequestRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsUpdateRequestRecordingAllowedOriginsList =
+const LiveInputsUpdateRequestRecordingAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsUpdateRequestRecordingAllowedOriginsList>;
 
 export type LiveInputsUpdateRequestRecordingMode = "off" | "automatic";
-export const LiveInputsUpdateRequestRecordingMode = S.String;
+const LiveInputsUpdateRequestRecordingMode = S.String;
 
 export interface LiveInputsUpdateRequestRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
@@ -2949,7 +2861,7 @@ export interface LiveInputsUpdateRequestRecording {
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
   timeoutSeconds?: number;
 }
-export const LiveInputsUpdateRequestRecording = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsUpdateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(LiveInputsUpdateRequestRecordingAllowedOriginsList),
     hideLiveViewerCount: S.optional(S.Boolean),
@@ -2979,7 +2891,7 @@ export interface UpdateLiveInputRequest {
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
   recording?: LiveInputsUpdateRequestRecording;
 }
-export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -3001,14 +2913,12 @@ export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateLiveInputRequest" }) as any as S.Schema<UpdateLiveInputRequest>;
 
 export type LiveInputsUpdateResponsePlayback = LiveInputsCreateResponsePlayback;
-export const LiveInputsUpdateResponsePlayback = LiveInputsCreateResponsePlayback;
-
 export type LiveInputsUpdateResponseRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsUpdateResponseRecordingAllowedOriginsList =
+const LiveInputsUpdateResponseRecordingAllowedOriginsList =
   ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsUpdateResponseRecordingAllowedOriginsList>;
 
 export type LiveInputsUpdateResponseRecordingMode = "off" | "automatic";
-export const LiveInputsUpdateResponseRecordingMode = S.String;
+const LiveInputsUpdateResponseRecordingMode = S.String;
 
 export interface LiveInputsUpdateResponseRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
@@ -3022,7 +2932,7 @@ export interface LiveInputsUpdateResponseRecording {
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
   timeoutSeconds?: number | null;
 }
-export const LiveInputsUpdateResponseRecording = /*@__PURE__*/ S.suspend(() =>
+const LiveInputsUpdateResponseRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(S.NullOr(LiveInputsUpdateResponseRecordingAllowedOriginsList)),
     hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
@@ -3035,17 +2945,9 @@ export const LiveInputsUpdateResponseRecording = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveInputsUpdateResponseRecording>;
 
 export type LiveInputsUpdateResponseRtmps = LiveInputsCreateResponseRtmps;
-export const LiveInputsUpdateResponseRtmps = LiveInputsCreateResponseRtmps;
-
 export type LiveInputsUpdateResponseRtmpsPlayback = LiveInputsCreateResponseRtmpsPlayback;
-export const LiveInputsUpdateResponseRtmpsPlayback = LiveInputsCreateResponseRtmpsPlayback;
-
 export type LiveInputsUpdateResponseSrt = LiveInputsCreateResponseSrt;
-export const LiveInputsUpdateResponseSrt = LiveInputsCreateResponseSrt;
-
 export type LiveInputsUpdateResponseSrtPlayback = LiveInputsCreateResponseSrtPlayback;
-export const LiveInputsUpdateResponseSrtPlayback = LiveInputsCreateResponseSrtPlayback;
-
 export type LiveInputsUpdateResponseStatus =
   | "connected"
   | "reconnected"
@@ -3055,14 +2957,10 @@ export type LiveInputsUpdateResponseStatus =
   | "failed_to_connect"
   | "failed_to_reconnect"
   | "new_configuration_accepted";
-export const LiveInputsUpdateResponseStatus = S.String;
+const LiveInputsUpdateResponseStatus = S.String;
 
 export type LiveInputsUpdateResponseWebRTC = LiveInputsCreateResponseWebRTC;
-export const LiveInputsUpdateResponseWebRTC = LiveInputsCreateResponseWebRTC;
-
 export type LiveInputsUpdateResponseWebRTCPlayback = LiveInputsCreateResponseWebRTCPlayback;
-export const LiveInputsUpdateResponseWebRTCPlayback = LiveInputsCreateResponseWebRTCPlayback;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLiveInputResponse {
   /** The date and time the live input was created. */
@@ -3100,7 +2998,7 @@ export interface UpdateLiveInputResponse {
   /** Details for playback from a live input using WebRTC. */
   webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback | null;
 }
-export const UpdateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.NullOr(S.String)),
     deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
@@ -3132,7 +3030,7 @@ export interface UpdateLiveInputOutputRequest {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
   enabled: boolean;
 }
-export const UpdateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -3162,7 +3060,7 @@ export interface UpdateLiveInputOutputResponse {
   /** The URL an output uses to restream. */
   url?: string | null;
 }
-export const UpdateLiveInputOutputResponse =
+const UpdateLiveInputOutputResponse =
   CreateLiveInputOutputResponse as any as S.Schema<UpdateLiveInputOutputResponse>;
 
 export type CopyAudioTrackError = CloudflareOpError;

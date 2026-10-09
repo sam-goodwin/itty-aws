@@ -14,7 +14,7 @@ export interface CreateCustomerJourneyRequest {
   name?: string;
   description?: string | null;
 }
-export const CreateCustomerJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     insight: S.optional(S.Number),
@@ -36,7 +36,7 @@ export interface CustomerJourney {
   created_by?: number | null;
   updated_at?: string | null;
 }
-export const CustomerJourney = /*@__PURE__*/ S.suspend(() =>
+const CustomerJourney = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     insight: S.optional(S.Number),
@@ -53,7 +53,7 @@ export interface CustomerJourneysDestroyRequest {
   project_id: string;
   id: string;
 }
-export const CustomerJourneysDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomerJourneysDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -69,16 +69,16 @@ export const CustomerJourneysDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerJourneysDestroyRequest>;
 
 export interface CustomerJourneysDestroyResponse {}
-export const CustomerJourneysDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CustomerJourneysDestroyResponse" },
-) as any as S.Schema<CustomerJourneysDestroyResponse>;
+const CustomerJourneysDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "CustomerJourneysDestroyResponse",
+}) as any as S.Schema<CustomerJourneysDestroyResponse>;
 
 export interface GetCustomerJourneyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-export const GetCustomerJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -97,7 +97,7 @@ export interface ListCustomerJourneysRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListCustomerJourneysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerJourneysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -110,7 +110,7 @@ export const ListCustomerJourneysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomerJourneysRequest>;
 
 export type PaginatedCustomerJourneyListResultsList = Array<CustomerJourney>;
-export const PaginatedCustomerJourneyListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCustomerJourneyListResultsList = /*@__PURE__*/ S.Array(
   CustomerJourney,
 ) as any as S.Schema<PaginatedCustomerJourneyListResultsList>;
 
@@ -120,7 +120,7 @@ export interface PaginatedCustomerJourneyList {
   previous?: string | null;
   results?: PaginatedCustomerJourneyListResultsList;
 }
-export const PaginatedCustomerJourneyList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCustomerJourneyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -139,7 +139,7 @@ export interface UpdateCustomerJourneyRequest {
   name?: string;
   description?: string | null;
 }
-export const UpdateCustomerJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -161,7 +161,7 @@ export interface UpdateCustomerJourneysPartialRequest {
   name?: string;
   description?: string | null;
 }
-export const UpdateCustomerJourneysPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerJourneysPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

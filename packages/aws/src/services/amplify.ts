@@ -121,7 +121,7 @@ export type Name = string;
 export type Description = string;
 export type Repository = string;
 export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE" | (string & {});
-export const Platform = S.String;
+const Platform = S.String;
 
 export type ComputeRoleArn = string;
 export type ServiceRoleArn = string;
@@ -130,7 +130,7 @@ export type AccessToken = string | redacted.Redacted<string>;
 export type EnvKey = string;
 export type EnvValue = string;
 export type EnvironmentVariables = { [key: string]: string | undefined };
-export const EnvironmentVariables = /*@__PURE__*/ S.Record(
+const EnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -148,7 +148,7 @@ export interface CustomRule {
   status?: string;
   condition?: string;
 }
-export const CustomRule = /*@__PURE__*/ S.suspend(() =>
+const CustomRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
     target: S.String,
@@ -157,17 +157,17 @@ export const CustomRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomRule" }) as any as S.Schema<CustomRule>;
 export type CustomRules = CustomRule[];
-export const CustomRules = /*@__PURE__*/ S.Array(CustomRule);
+const CustomRules = /*@__PURE__*/ S.Array(CustomRule);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type BuildSpec = string | redacted.Redacted<string>;
 export type CustomHeaders = string;
 export type EnableAutoBranchCreation = boolean;
 export type AutoBranchCreationPattern = string;
 export type AutoBranchCreationPatterns = string[];
-export const AutoBranchCreationPatterns = /*@__PURE__*/ S.Array(S.String);
+const AutoBranchCreationPatterns = /*@__PURE__*/ S.Array(S.String);
 export type Stage =
   | "PRODUCTION"
   | "BETA"
@@ -175,7 +175,7 @@ export type Stage =
   | "EXPERIMENTAL"
   | "PULL_REQUEST"
   | (string & {});
-export const Stage = S.String;
+const Stage = S.String;
 
 export type Framework = string;
 export type EnableAutoBuild = boolean;
@@ -194,7 +194,7 @@ export interface AutoBranchCreationConfig {
   enablePullRequestPreview?: boolean;
   pullRequestEnvironmentName?: string;
 }
-export const AutoBranchCreationConfig = /*@__PURE__*/ S.suspend(() =>
+const AutoBranchCreationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: S.optional(Stage),
     framework: S.optional(S.String),
@@ -209,23 +209,23 @@ export const AutoBranchCreationConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AutoBranchCreationConfig" }) as any as S.Schema<AutoBranchCreationConfig>;
 export type BuildComputeType = "STANDARD_8GB" | "LARGE_16GB" | "XLARGE_72GB" | (string & {});
-export const BuildComputeType = S.String;
+const BuildComputeType = S.String;
 
 export interface JobConfig {
   buildComputeType: BuildComputeType;
 }
-export const JobConfig = /*@__PURE__*/ S.suspend(() =>
+const JobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buildComputeType: BuildComputeType }),
 ).annotate({ identifier: "JobConfig" }) as any as S.Schema<JobConfig>;
 export type CacheConfigType = "AMPLIFY_MANAGED" | "AMPLIFY_MANAGED_NO_COOKIES" | (string & {});
-export const CacheConfigType = S.String;
+const CacheConfigType = S.String;
 
 export interface CacheConfig {
   type: CacheConfigType;
 }
-export const CacheConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: CacheConfigType }),
-).annotate({ identifier: "CacheConfig" }) as any as S.Schema<CacheConfig>;
+const CacheConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ type: CacheConfigType })).annotate({
+  identifier: "CacheConfig",
+}) as any as S.Schema<CacheConfig>;
 export interface CreateAppRequest {
   name: string;
   description?: string;
@@ -250,7 +250,7 @@ export interface CreateAppRequest {
   jobConfig?: JobConfig;
   cacheConfig?: CacheConfig;
 }
-export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -290,7 +290,7 @@ export interface ProductionBranch {
   thumbnailUrl?: string;
   branchName?: string;
 }
-export const ProductionBranch = /*@__PURE__*/ S.suspend(() =>
+const ProductionBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastDeployTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     status: S.optional(S.String),
@@ -299,7 +299,7 @@ export const ProductionBranch = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductionBranch" }) as any as S.Schema<ProductionBranch>;
 export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4" | (string & {});
-export const RepositoryCloneMethod = S.String;
+const RepositoryCloneMethod = S.String;
 
 export type WebhookCreateTime = Date;
 export type WebAclArn = string;
@@ -310,7 +310,7 @@ export type WafStatus =
   | "DISASSOCIATING"
   | "DISASSOCIATION_FAILED"
   | (string & {});
-export const WafStatus = S.String;
+const WafStatus = S.String;
 
 export type StatusReason = string;
 export interface WafConfiguration {
@@ -318,7 +318,7 @@ export interface WafConfiguration {
   wafStatus?: WafStatus;
   statusReason?: string;
 }
-export const WafConfiguration = /*@__PURE__*/ S.suspend(() =>
+const WafConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAclArn: S.optional(S.String),
     wafStatus: S.optional(WafStatus),
@@ -356,7 +356,7 @@ export interface App {
   wafConfiguration?: WafConfiguration;
   jobConfig?: JobConfig;
 }
-export const App = /*@__PURE__*/ S.suspend(() =>
+const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     appArn: S.String,
@@ -392,9 +392,9 @@ export const App = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAppResult {
   app: App;
 }
-export const CreateAppResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ app: App }).pipe(ns),
-).annotate({ identifier: "CreateAppResult" }) as any as S.Schema<CreateAppResult>;
+const CreateAppResult = /*@__PURE__*/ S.suspend(() => S.Struct({ app: App }).pipe(ns)).annotate({
+  identifier: "CreateAppResult",
+}) as any as S.Schema<CreateAppResult>;
 export type EnvironmentName = string;
 export type StackName = string;
 export type DeploymentArtifacts = string;
@@ -404,7 +404,7 @@ export interface CreateBackendEnvironmentRequest {
   stackName?: string;
   deploymentArtifacts?: string;
 }
-export const CreateBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String,
@@ -433,7 +433,7 @@ export interface BackendEnvironment {
   createTime: Date;
   updateTime: Date;
 }
-export const BackendEnvironment = /*@__PURE__*/ S.suspend(() =>
+const BackendEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backendEnvironmentArn: S.String,
     environmentName: S.String,
@@ -446,7 +446,7 @@ export const BackendEnvironment = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const CreateBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
+const CreateBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
 ).annotate({
   identifier: "CreateBackendEnvironmentResult",
@@ -459,7 +459,7 @@ export type StackArn = string;
 export interface Backend {
   stackArn?: string;
 }
-export const Backend = /*@__PURE__*/ S.suspend(() =>
+const Backend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ stackArn: S.optional(S.String) }),
 ).annotate({ identifier: "Backend" }) as any as S.Schema<Backend>;
 export interface CreateBranchRequest {
@@ -485,7 +485,7 @@ export interface CreateBranchRequest {
   backend?: Backend;
   computeRoleArn?: string;
 }
-export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String,
@@ -523,13 +523,12 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export type BranchArn = string;
 export type CustomDomain = string;
 export type CustomDomains = string[];
-export const CustomDomains = AutoBranchCreationPatterns as any as S.Schema<CustomDomains>;
+const CustomDomains = AutoBranchCreationPatterns as any as S.Schema<CustomDomains>;
 export type ActiveJobId = string;
 export type TotalNumberOfJobs = string;
 export type AssociatedResource = string;
 export type AssociatedResources = string[];
-export const AssociatedResources =
-  AutoBranchCreationPatterns as any as S.Schema<AssociatedResources>;
+const AssociatedResources = AutoBranchCreationPatterns as any as S.Schema<AssociatedResources>;
 export interface Branch {
   branchArn: string;
   branchName: string;
@@ -562,7 +561,7 @@ export interface Branch {
   backend?: Backend;
   computeRoleArn?: string;
 }
-export const Branch = /*@__PURE__*/ S.suspend(() =>
+const Branch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branchArn: S.String,
     branchName: S.String,
@@ -599,19 +598,19 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBranchResult {
   branch: Branch;
 }
-export const CreateBranchResult = /*@__PURE__*/ S.suspend(() =>
+const CreateBranchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ branch: Branch }).pipe(ns),
 ).annotate({ identifier: "CreateBranchResult" }) as any as S.Schema<CreateBranchResult>;
 export type FileName = string;
 export type MD5Hash = string;
 export type FileMap = { [key: string]: string | undefined };
-export const FileMap = TagMap as any as S.Schema<FileMap>;
+const FileMap = TagMap as any as S.Schema<FileMap>;
 export interface CreateDeploymentRequest {
   appId: string;
   branchName: string;
   fileMap?: { [key: string]: string | undefined };
 }
-export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -631,13 +630,13 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobId = string;
 export type UploadUrl = string;
 export type FileUploadUrls = { [key: string]: string | undefined };
-export const FileUploadUrls = EnvironmentVariables as any as S.Schema<FileUploadUrls>;
+const FileUploadUrls = EnvironmentVariables as any as S.Schema<FileUploadUrls>;
 export interface CreateDeploymentResult {
   jobId?: string;
   fileUploadUrls?: { [key: string]: string | undefined };
   zipUploadUrl: string;
 }
-export const CreateDeploymentResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     fileUploadUrls: S.optional(FileUploadUrls),
@@ -651,25 +650,25 @@ export interface SubDomainSetting {
   prefix: string;
   branchName: string;
 }
-export const SubDomainSetting = /*@__PURE__*/ S.suspend(() =>
+const SubDomainSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ prefix: S.String, branchName: S.String }),
 ).annotate({ identifier: "SubDomainSetting" }) as any as S.Schema<SubDomainSetting>;
 export type SubDomainSettings = SubDomainSetting[];
-export const SubDomainSettings = /*@__PURE__*/ S.Array(SubDomainSetting);
+const SubDomainSettings = /*@__PURE__*/ S.Array(SubDomainSetting);
 export type AutoSubDomainCreationPattern = string;
 export type AutoSubDomainCreationPatterns = string[];
-export const AutoSubDomainCreationPatterns =
+const AutoSubDomainCreationPatterns =
   AutoBranchCreationPatterns as any as S.Schema<AutoSubDomainCreationPatterns>;
 export type AutoSubDomainIAMRole = string;
 export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM" | (string & {});
-export const CertificateType = S.String;
+const CertificateType = S.String;
 
 export type CertificateArn = string;
 export interface CertificateSettings {
   type: CertificateType;
   customCertificateArn?: string;
 }
-export const CertificateSettings = /*@__PURE__*/ S.suspend(() =>
+const CertificateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: CertificateType, customCertificateArn: S.optional(S.String) }),
 ).annotate({ identifier: "CertificateSettings" }) as any as S.Schema<CertificateSettings>;
 export interface CreateDomainAssociationRequest {
@@ -681,7 +680,7 @@ export interface CreateDomainAssociationRequest {
   autoSubDomainIAMRole?: string;
   certificateSettings?: CertificateSettings;
 }
-export const CreateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     domainName: S.String,
@@ -717,7 +716,7 @@ export type DomainStatus =
   | "REQUESTING_CERTIFICATE"
   | "UPDATING"
   | (string & {});
-export const DomainStatus = S.String;
+const DomainStatus = S.String;
 
 export type UpdateStatus =
   | "REQUESTING_CERTIFICATE"
@@ -728,7 +727,7 @@ export type UpdateStatus =
   | "UPDATE_COMPLETE"
   | "UPDATE_FAILED"
   | (string & {});
-export const UpdateStatus = S.String;
+const UpdateStatus = S.String;
 
 export type CertificateVerificationDNSRecord = string;
 export type Verified = boolean;
@@ -738,17 +737,17 @@ export interface SubDomain {
   verified: boolean;
   dnsRecord: string;
 }
-export const SubDomain = /*@__PURE__*/ S.suspend(() =>
+const SubDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ subDomainSetting: SubDomainSetting, verified: S.Boolean, dnsRecord: S.String }),
 ).annotate({ identifier: "SubDomain" }) as any as S.Schema<SubDomain>;
 export type SubDomains = SubDomain[];
-export const SubDomains = /*@__PURE__*/ S.Array(SubDomain);
+const SubDomains = /*@__PURE__*/ S.Array(SubDomain);
 export interface Certificate {
   type: CertificateType;
   customCertificateArn?: string;
   certificateVerificationDNSRecord?: string;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CertificateType,
     customCertificateArn: S.optional(S.String),
@@ -768,7 +767,7 @@ export interface DomainAssociation {
   subDomains: SubDomain[];
   certificate?: Certificate;
 }
-export const DomainAssociation = /*@__PURE__*/ S.suspend(() =>
+const DomainAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainAssociationArn: S.String,
     domainName: S.String,
@@ -786,7 +785,7 @@ export const DomainAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const CreateDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
 ).annotate({
   identifier: "CreateDomainAssociationResult",
@@ -796,7 +795,7 @@ export interface CreateWebhookRequest {
   branchName: string;
   description?: string;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String,
@@ -826,7 +825,7 @@ export interface Webhook {
   createTime: Date;
   updateTime: Date;
 }
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
+const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookArn: S.String,
     webhookId: S.String,
@@ -841,13 +840,13 @@ export const Webhook = /*@__PURE__*/ S.suspend(() =>
 export interface CreateWebhookResult {
   webhook: Webhook;
 }
-export const CreateWebhookResult = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webhook: Webhook }).pipe(ns),
 ).annotate({ identifier: "CreateWebhookResult" }) as any as S.Schema<CreateWebhookResult>;
 export interface DeleteAppRequest {
   appId: string;
 }
-export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ appId: S.String.pipe(T.HttpLabel("appId")) }).pipe(
     T.all(ns, T.Http({ method: "DELETE", uri: "/apps/{appId}" }), svc, auth, proto, ver, rules),
   ),
@@ -855,12 +854,12 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAppResult {
   app: App;
 }
-export const DeleteAppResult = CreateAppResult as any as S.Schema<DeleteAppResult>;
+const DeleteAppResult = CreateAppResult as any as S.Schema<DeleteAppResult>;
 export interface DeleteBackendEnvironmentRequest {
   appId: string;
   environmentName: string;
 }
-export const DeleteBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -881,13 +880,13 @@ export const DeleteBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const DeleteBackendEnvironmentResult =
+const DeleteBackendEnvironmentResult =
   CreateBackendEnvironmentResult as any as S.Schema<DeleteBackendEnvironmentResult>;
 export interface DeleteBranchRequest {
   appId: string;
   branchName: string;
 }
-export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -906,12 +905,12 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBranchResult {
   branch: Branch;
 }
-export const DeleteBranchResult = CreateBranchResult as any as S.Schema<DeleteBranchResult>;
+const DeleteBranchResult = CreateBranchResult as any as S.Schema<DeleteBranchResult>;
 export interface DeleteDomainAssociationRequest {
   appId: string;
   domainName: string;
 }
-export const DeleteDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -932,14 +931,14 @@ export const DeleteDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const DeleteDomainAssociationResult =
+const DeleteDomainAssociationResult =
   CreateDomainAssociationResult as any as S.Schema<DeleteDomainAssociationResult>;
 export interface DeleteJobRequest {
   appId: string;
   branchName: string;
   jobId: string;
 }
-export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -971,15 +970,15 @@ export type JobStatus =
   | "CANCELLING"
   | "CANCELLED"
   | (string & {});
-export const JobStatus = S.String;
+const JobStatus = S.String;
 
 export type EndTime = Date;
 export type JobType = "RELEASE" | "RETRY" | "MANUAL" | "WEB_HOOK" | (string & {});
-export const JobType = S.String;
+const JobType = S.String;
 
 export type SourceUrl = string;
 export type SourceUrlType = "ZIP" | "BUCKET_PREFIX" | (string & {});
-export const SourceUrlType = S.String;
+const SourceUrlType = S.String;
 
 export interface JobSummary {
   jobArn: string;
@@ -994,7 +993,7 @@ export interface JobSummary {
   sourceUrl?: string;
   sourceUrlType?: SourceUrlType;
 }
-export const JobSummary = /*@__PURE__*/ S.suspend(() =>
+const JobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobArn: S.String,
     jobId: S.String,
@@ -1012,13 +1011,13 @@ export const JobSummary = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteJobResult {
   jobSummary: JobSummary;
 }
-export const DeleteJobResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobSummary: JobSummary }).pipe(ns),
 ).annotate({ identifier: "DeleteJobResult" }) as any as S.Schema<DeleteJobResult>;
 export interface DeleteWebhookRequest {
   webhookId: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webhookId: S.String.pipe(T.HttpLabel("webhookId")) }).pipe(
     T.all(
       ns,
@@ -1034,14 +1033,14 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWebhookResult {
   webhook: Webhook;
 }
-export const DeleteWebhookResult = CreateWebhookResult as any as S.Schema<DeleteWebhookResult>;
+const DeleteWebhookResult = CreateWebhookResult as any as S.Schema<DeleteWebhookResult>;
 export interface GenerateAccessLogsRequest {
   startTime?: Date;
   endTime?: Date;
   domainName: string;
   appId: string;
 }
-export const GenerateAccessLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1065,13 +1064,13 @@ export type LogUrl = string;
 export interface GenerateAccessLogsResult {
   logUrl?: string;
 }
-export const GenerateAccessLogsResult = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessLogsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logUrl: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "GenerateAccessLogsResult" }) as any as S.Schema<GenerateAccessLogsResult>;
 export interface GetAppRequest {
   appId: string;
 }
-export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ appId: S.String.pipe(T.HttpLabel("appId")) }).pipe(
     T.all(ns, T.Http({ method: "GET", uri: "/apps/{appId}" }), svc, auth, proto, ver, rules),
   ),
@@ -1079,14 +1078,14 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAppResult {
   app: App;
 }
-export const GetAppResult = /*@__PURE__*/ S.suspend(() => S.Struct({ app: App }).pipe(ns)).annotate(
-  { identifier: "GetAppResult" },
-) as any as S.Schema<GetAppResult>;
+const GetAppResult = /*@__PURE__*/ S.suspend(() => S.Struct({ app: App }).pipe(ns)).annotate({
+  identifier: "GetAppResult",
+}) as any as S.Schema<GetAppResult>;
 export type ArtifactId = string;
 export interface GetArtifactUrlRequest {
   artifactId: string;
 }
-export const GetArtifactUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetArtifactUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ artifactId: S.String.pipe(T.HttpLabel("artifactId")) }).pipe(
     T.all(
       ns,
@@ -1104,14 +1103,14 @@ export interface GetArtifactUrlResult {
   artifactId: string;
   artifactUrl: string;
 }
-export const GetArtifactUrlResult = /*@__PURE__*/ S.suspend(() =>
+const GetArtifactUrlResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ artifactId: S.String, artifactUrl: S.String }).pipe(ns),
 ).annotate({ identifier: "GetArtifactUrlResult" }) as any as S.Schema<GetArtifactUrlResult>;
 export interface GetBackendEnvironmentRequest {
   appId: string;
   environmentName: string;
 }
-export const GetBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -1132,13 +1131,13 @@ export const GetBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const GetBackendEnvironmentResult =
+const GetBackendEnvironmentResult =
   CreateBackendEnvironmentResult as any as S.Schema<GetBackendEnvironmentResult>;
 export interface GetBranchRequest {
   appId: string;
   branchName: string;
 }
-export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1157,12 +1156,12 @@ export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBranchResult {
   branch: Branch;
 }
-export const GetBranchResult = CreateBranchResult as any as S.Schema<GetBranchResult>;
+const GetBranchResult = CreateBranchResult as any as S.Schema<GetBranchResult>;
 export interface GetDomainAssociationRequest {
   appId: string;
   domainName: string;
 }
-export const GetDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -1183,14 +1182,14 @@ export const GetDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const GetDomainAssociationResult =
+const GetDomainAssociationResult =
   CreateDomainAssociationResult as any as S.Schema<GetDomainAssociationResult>;
 export interface GetJobRequest {
   appId: string;
   branchName: string;
   jobId: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1213,7 +1212,7 @@ export type TestArtifactsUrl = string;
 export type TestConfigUrl = string;
 export type ThumbnailName = string;
 export type Screenshots = { [key: string]: string | undefined };
-export const Screenshots = EnvironmentVariables as any as S.Schema<Screenshots>;
+const Screenshots = EnvironmentVariables as any as S.Schema<Screenshots>;
 export type Context = string;
 export interface Step {
   stepName: string;
@@ -1228,7 +1227,7 @@ export interface Step {
   statusReason?: string;
   context?: string;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stepName: S.String,
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1244,24 +1243,24 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 export type Steps = Step[];
-export const Steps = /*@__PURE__*/ S.Array(Step);
+const Steps = /*@__PURE__*/ S.Array(Step);
 export interface Job {
   summary: JobSummary;
   steps: Step[];
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: JobSummary, steps: Steps }),
-).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
+const Job = /*@__PURE__*/ S.suspend(() => S.Struct({ summary: JobSummary, steps: Steps })).annotate(
+  { identifier: "Job" },
+) as any as S.Schema<Job>;
 export interface GetJobResult {
   job: Job;
 }
-export const GetJobResult = /*@__PURE__*/ S.suspend(() => S.Struct({ job: Job }).pipe(ns)).annotate(
-  { identifier: "GetJobResult" },
-) as any as S.Schema<GetJobResult>;
+const GetJobResult = /*@__PURE__*/ S.suspend(() => S.Struct({ job: Job }).pipe(ns)).annotate({
+  identifier: "GetJobResult",
+}) as any as S.Schema<GetJobResult>;
 export interface GetWebhookRequest {
   webhookId: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webhookId: S.String.pipe(T.HttpLabel("webhookId")) }).pipe(
     T.all(
       ns,
@@ -1277,26 +1276,26 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebhookResult {
   webhook: Webhook;
 }
-export const GetWebhookResult = CreateWebhookResult as any as S.Schema<GetWebhookResult>;
+const GetWebhookResult = CreateWebhookResult as any as S.Schema<GetWebhookResult>;
 export type NextToken = string;
 export type MaxResultsForListApps = number;
 export interface ListAppsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
   }).pipe(T.all(ns, T.Http({ method: "GET", uri: "/apps" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListAppsRequest" }) as any as S.Schema<ListAppsRequest>;
 export type Apps = App[];
-export const Apps = /*@__PURE__*/ S.Array(App);
+const Apps = /*@__PURE__*/ S.Array(App);
 export interface ListAppsResult {
   apps: App[];
   nextToken?: string;
 }
-export const ListAppsResult = /*@__PURE__*/ S.suspend(() =>
+const ListAppsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apps: Apps, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListAppsResult" }) as any as S.Schema<ListAppsResult>;
 export type MaxResults = number;
@@ -1307,7 +1306,7 @@ export interface ListArtifactsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1331,16 +1330,16 @@ export interface Artifact {
   artifactFileName: string;
   artifactId: string;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
+const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ artifactFileName: S.String, artifactId: S.String }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 export type Artifacts = Artifact[];
-export const Artifacts = /*@__PURE__*/ S.Array(Artifact);
+const Artifacts = /*@__PURE__*/ S.Array(Artifact);
 export interface ListArtifactsResult {
   artifacts: Artifact[];
   nextToken?: string;
 }
-export const ListArtifactsResult = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ artifacts: Artifacts, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListArtifactsResult" }) as any as S.Schema<ListArtifactsResult>;
 export interface ListBackendEnvironmentsRequest {
@@ -1349,7 +1348,7 @@ export interface ListBackendEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListBackendEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackendEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.optional(S.String).pipe(T.HttpQuery("environmentName")),
@@ -1370,12 +1369,12 @@ export const ListBackendEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBackendEnvironmentsRequest",
 }) as any as S.Schema<ListBackendEnvironmentsRequest>;
 export type BackendEnvironments = BackendEnvironment[];
-export const BackendEnvironments = /*@__PURE__*/ S.Array(BackendEnvironment);
+const BackendEnvironments = /*@__PURE__*/ S.Array(BackendEnvironment);
 export interface ListBackendEnvironmentsResult {
   backendEnvironments: BackendEnvironment[];
   nextToken?: string;
 }
-export const ListBackendEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
+const ListBackendEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ backendEnvironments: BackendEnvironments, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListBackendEnvironmentsResult",
@@ -1385,7 +1384,7 @@ export interface ListBranchesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1403,12 +1402,12 @@ export const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListBranchesRequest" }) as any as S.Schema<ListBranchesRequest>;
 export type Branches = Branch[];
-export const Branches = /*@__PURE__*/ S.Array(Branch);
+const Branches = /*@__PURE__*/ S.Array(Branch);
 export interface ListBranchesResult {
   branches: Branch[];
   nextToken?: string;
 }
-export const ListBranchesResult = /*@__PURE__*/ S.suspend(() =>
+const ListBranchesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ branches: Branches, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListBranchesResult" }) as any as S.Schema<ListBranchesResult>;
 export interface ListDomainAssociationsRequest {
@@ -1416,7 +1415,7 @@ export interface ListDomainAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDomainAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1436,12 +1435,12 @@ export const ListDomainAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainAssociationsRequest",
 }) as any as S.Schema<ListDomainAssociationsRequest>;
 export type DomainAssociations = DomainAssociation[];
-export const DomainAssociations = /*@__PURE__*/ S.Array(DomainAssociation);
+const DomainAssociations = /*@__PURE__*/ S.Array(DomainAssociation);
 export interface ListDomainAssociationsResult {
   domainAssociations: DomainAssociation[];
   nextToken?: string;
 }
-export const ListDomainAssociationsResult = /*@__PURE__*/ S.suspend(() =>
+const ListDomainAssociationsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainAssociations: DomainAssociations, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListDomainAssociationsResult",
@@ -1452,7 +1451,7 @@ export interface ListJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1471,19 +1470,19 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListJobsRequest" }) as any as S.Schema<ListJobsRequest>;
 export type JobSummaries = JobSummary[];
-export const JobSummaries = /*@__PURE__*/ S.Array(JobSummary);
+const JobSummaries = /*@__PURE__*/ S.Array(JobSummary);
 export interface ListJobsResult {
   jobSummaries: JobSummary[];
   nextToken?: string;
 }
-export const ListJobsResult = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobSummaries: JobSummaries, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListJobsResult" }) as any as S.Schema<ListJobsResult>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(ns, T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1493,7 +1492,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1503,7 +1502,7 @@ export interface ListWebhooksRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1521,12 +1520,12 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListWebhooksRequest" }) as any as S.Schema<ListWebhooksRequest>;
 export type Webhooks = Webhook[];
-export const Webhooks = /*@__PURE__*/ S.Array(Webhook);
+const Webhooks = /*@__PURE__*/ S.Array(Webhook);
 export interface ListWebhooksResult {
   webhooks: Webhook[];
   nextToken?: string;
 }
-export const ListWebhooksResult = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webhooks: Webhooks, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListWebhooksResult" }) as any as S.Schema<ListWebhooksResult>;
 export interface StartDeploymentRequest {
@@ -1536,7 +1535,7 @@ export interface StartDeploymentRequest {
   sourceUrl?: string;
   sourceUrlType?: SourceUrlType;
 }
-export const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1558,7 +1557,7 @@ export const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartDeploymentResult {
   jobSummary: JobSummary;
 }
-export const StartDeploymentResult = DeleteJobResult as any as S.Schema<StartDeploymentResult>;
+const StartDeploymentResult = DeleteJobResult as any as S.Schema<StartDeploymentResult>;
 export type JobReason = string;
 export interface StartJobRequest {
   appId: string;
@@ -1570,7 +1569,7 @@ export interface StartJobRequest {
   commitMessage?: string;
   commitTime?: Date;
 }
-export const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1595,13 +1594,13 @@ export const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartJobResult {
   jobSummary: JobSummary;
 }
-export const StartJobResult = DeleteJobResult as any as S.Schema<StartJobResult>;
+const StartJobResult = DeleteJobResult as any as S.Schema<StartJobResult>;
 export interface StopJobRequest {
   appId: string;
   branchName: string;
   jobId: string;
 }
-export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1621,27 +1620,27 @@ export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopJobResult {
   jobSummary: JobSummary;
 }
-export const StopJobResult = DeleteJobResult as any as S.Schema<StopJobResult>;
+const StopJobResult = DeleteJobResult as any as S.Schema<StopJobResult>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = AutoBranchCreationPatterns as any as S.Schema<TagKeyList>;
+const TagKeyList = AutoBranchCreationPatterns as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1658,7 +1657,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAppRequest {
   appId: string;
   name?: string;
@@ -1683,7 +1682,7 @@ export interface UpdateAppRequest {
   jobConfig?: JobConfig;
   cacheConfig?: CacheConfig;
 }
-export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     name: S.optional(S.String),
@@ -1714,7 +1713,7 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAppResult {
   app: App;
 }
-export const UpdateAppResult = CreateAppResult as any as S.Schema<UpdateAppResult>;
+const UpdateAppResult = CreateAppResult as any as S.Schema<UpdateAppResult>;
 export interface UpdateBranchRequest {
   appId: string;
   branchName: string;
@@ -1737,7 +1736,7 @@ export interface UpdateBranchRequest {
   backend?: Backend;
   computeRoleArn?: string;
 }
-export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     branchName: S.String.pipe(T.HttpLabel("branchName")),
@@ -1774,7 +1773,7 @@ export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBranchResult {
   branch: Branch;
 }
-export const UpdateBranchResult = CreateBranchResult as any as S.Schema<UpdateBranchResult>;
+const UpdateBranchResult = CreateBranchResult as any as S.Schema<UpdateBranchResult>;
 export interface UpdateDomainAssociationRequest {
   appId: string;
   domainName: string;
@@ -1784,7 +1783,7 @@ export interface UpdateDomainAssociationRequest {
   autoSubDomainIAMRole?: string;
   certificateSettings?: CertificateSettings;
 }
-export const UpdateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     domainName: S.String.pipe(T.HttpLabel("domainName")),
@@ -1810,14 +1809,14 @@ export const UpdateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const UpdateDomainAssociationResult =
+const UpdateDomainAssociationResult =
   CreateDomainAssociationResult as any as S.Schema<UpdateDomainAssociationResult>;
 export interface UpdateWebhookRequest {
   webhookId: string;
   branchName?: string;
   description?: string;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.HttpLabel("webhookId")),
     branchName: S.optional(S.String),
@@ -1837,7 +1836,7 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWebhookResult {
   webhook: Webhook;
 }
-export const UpdateWebhookResult = CreateWebhookResult as any as S.Schema<UpdateWebhookResult>;
+const UpdateWebhookResult = CreateWebhookResult as any as S.Schema<UpdateWebhookResult>;
 export type ErrorMessage = string;
 export type Code = string;
 export type CreateAppError =

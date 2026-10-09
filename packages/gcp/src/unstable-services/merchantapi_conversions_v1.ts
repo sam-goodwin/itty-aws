@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type ConversionSourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PENDING";
-export const ConversionSourceStateEnum = S.String;
+const ConversionSourceStateEnum = S.String;
 
 /** Message representing the type of a conversion event. */
 export interface ConversionType {
@@ -71,7 +71,7 @@ export interface ConversionType {
   /** Output only. Conversion event name, as it'll be reported by the client. */
   name?: string;
 }
-export const ConversionType = /*@__PURE__*/ S.suspend(() =>
+const ConversionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -79,7 +79,7 @@ export const ConversionType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversionType" }) as any as S.Schema<ConversionType>;
 
 export type ConversionTypeList = Array<ConversionType>;
-export const ConversionTypeList = /*@__PURE__*/ S.Array(
+const ConversionTypeList = /*@__PURE__*/ S.Array(
   ConversionType,
 ) as any as S.Schema<ConversionTypeList>;
 
@@ -92,7 +92,7 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
   | "CROSS_CHANNEL_TIME_DECAY";
-export const AttributionSettingsAttributionModelEnum = S.String;
+const AttributionSettingsAttributionModelEnum = S.String;
 
 /** Represents attribution settings for conversion sources receiving pre-attribution data. */
 export interface AttributionSettings {
@@ -103,7 +103,7 @@ export interface AttributionSettings {
   /** Required. Attribution model. */
   attributionModel?: AttributionSettingsAttributionModelEnum | (string & {});
 }
-export const AttributionSettings = /*@__PURE__*/ S.suspend(() =>
+const AttributionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionType: S.optional(ConversionTypeList),
     attributionLookbackWindowDays: S.optional(S.Number),
@@ -122,7 +122,7 @@ export interface MerchantCenterDestination {
   /** Required. Three-letter currency code (ISO 4217). The currency code defines in which currency the conversions sent to this destination will be reported in Merchant Center. */
   currencyCode?: string;
 }
-export const MerchantCenterDestination = /*@__PURE__*/ S.suspend(() =>
+const MerchantCenterDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributionSettings: S.optional(AttributionSettings),
     destination: S.optional(S.String),
@@ -137,7 +137,7 @@ export type ConversionSourceControllerEnum =
   | "CONTROLLER_UNSPECIFIED"
   | "MERCHANT"
   | "YOUTUBE_AFFILIATES";
-export const ConversionSourceControllerEnum = S.String;
+const ConversionSourceControllerEnum = S.String;
 
 /** "Google Analytics Link" sources can be used to get conversion data from an existing Google Analytics property into the linked Merchant Center account. */
 export interface GoogleAnalyticsLink {
@@ -148,7 +148,7 @@ export interface GoogleAnalyticsLink {
   /** Output only. Attribution settings for the linked Google Analytics property. */
   attributionSettings?: AttributionSettings;
 }
-export const GoogleAnalyticsLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.optional(S.String),
     propertyId: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface ConversionSource {
   /** Immutable. Conversion Source of type "Link to Google Analytics Property". */
   googleAnalyticsLink?: GoogleAnalyticsLink;
 }
-export const ConversionSource = /*@__PURE__*/ S.suspend(() =>
+const ConversionSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ConversionSourceStateEnum),
     expireTime: S.optional(S.String),
@@ -188,7 +188,7 @@ export interface CreateAccountsConversionSourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-export const CreateAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ConversionSource.pipe(T.HttpBody())),
@@ -207,7 +207,7 @@ export interface DeleteAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be deleted. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
 }
-export const DeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -223,7 +223,7 @@ export const DeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(()
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -231,7 +231,7 @@ export interface GetAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be fetched. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
 }
-export const GetAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -255,7 +255,7 @@ export interface ListAccountsConversionSourcesRequest {
   /** Optional. Page token. */
   pageToken?: string;
 }
-export const ListAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -273,7 +273,7 @@ export const ListAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListAccountsConversionSourcesRequest>;
 
 export type ConversionSourceList = Array<ConversionSource>;
-export const ConversionSourceList = /*@__PURE__*/ S.Array(
+const ConversionSourceList = /*@__PURE__*/ S.Array(
   ConversionSource,
 ) as any as S.Schema<ConversionSourceList>;
 
@@ -284,7 +284,7 @@ export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
   conversionSources?: ConversionSourceList;
 }
-export const ListConversionSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConversionSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     conversionSources: S.optional(ConversionSourceList),
@@ -301,7 +301,7 @@ export interface PatchAccountsConversionSourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-export const PatchAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -319,9 +319,9 @@ export const PatchAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Request message for the UndeleteConversionSource method. */
 export interface UndeleteConversionSourceRequest {}
-export const UndeleteConversionSourceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UndeleteConversionSourceRequest" },
-) as any as S.Schema<UndeleteConversionSourceRequest>;
+const UndeleteConversionSourceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UndeleteConversionSourceRequest",
+}) as any as S.Schema<UndeleteConversionSourceRequest>;
 
 export interface UndeleteAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be undeleted. Format: `accounts/{account}/conversionSources/{conversion_source}` */
@@ -329,7 +329,7 @@ export interface UndeleteAccountsConversionSourcesRequest {
   /** Request body */
   body?: UndeleteConversionSourceRequest;
 }
-export const UndeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteConversionSourceRequest.pipe(T.HttpBody())),

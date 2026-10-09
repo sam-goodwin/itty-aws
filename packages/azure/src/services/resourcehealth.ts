@@ -14,7 +14,7 @@ export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTracki
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
 }
-export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest =
+const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -33,11 +33,11 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -54,7 +54,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -74,7 +74,7 @@ export type EventTypeValues =
   | "EmergingIssues"
   | "SecurityAdvisory"
   | "Billing";
-export const EventTypeValues = S.String;
+const EventTypeValues = S.String;
 
 /** Sub-type of event. */
 export type EventSubTypeValues =
@@ -86,23 +86,23 @@ export type EventSubTypeValues =
   | "TaxChanges"
   | "MeterIDChanges"
   | "UnauthorizedPartyAbuse";
-export const EventSubTypeValues = S.String;
+const EventSubTypeValues = S.String;
 
 /** Source of event. */
 export type EventSourceValues = "ResourceHealth" | "ServiceHealth";
-export const EventSourceValues = S.String;
+const EventSourceValues = S.String;
 
 /** Current status of event. */
 export type EventStatusValues = "Active" | "Resolved";
-export const EventStatusValues = S.String;
+const EventStatusValues = S.String;
 
 /** Level of insight. */
 export type LevelValues = "Critical" | "Warning";
-export const LevelValues = S.String;
+const LevelValues = S.String;
 
 /** Level of event. */
 export type EventLevelValues = "Critical" | "Error" | "Warning" | "Informational";
-export const EventLevelValues = S.String;
+const EventLevelValues = S.String;
 
 /** Article of event. */
 export interface EventPropertiesArticle {
@@ -113,7 +113,7 @@ export interface EventPropertiesArticle {
   /** It provides a map of parameter name and value */
   parameters?: unknown;
 }
-export const EventPropertiesArticle = /*@__PURE__*/ S.suspend(() =>
+const EventPropertiesArticle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     articleContent: S.optional(S.String),
     articleId: S.optional(S.String),
@@ -123,7 +123,7 @@ export const EventPropertiesArticle = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of link. */
 export type LinkTypeValues = "Button" | "Hyperlink";
-export const LinkTypeValues = S.String;
+const LinkTypeValues = S.String;
 
 /** Display text of link. */
 export interface LinkDisplayText {
@@ -132,7 +132,7 @@ export interface LinkDisplayText {
   /** Localized display text of link. */
   localizedValue?: string;
 }
-export const LinkDisplayText = /*@__PURE__*/ S.suspend(() =>
+const LinkDisplayText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -152,7 +152,7 @@ export interface Link {
   /** It provides a map of parameter name and value for portal extension blade to produce lik for given service health event. */
   parameters?: unknown;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(LinkTypeValues),
     displayText: S.optional(LinkDisplayText),
@@ -164,24 +164,24 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 
 /** Useful links of event. */
 export type EventPropertiesLinksList = Array<Link>;
-export const EventPropertiesLinksList = /*@__PURE__*/ S.Array(
+const EventPropertiesLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<EventPropertiesLinksList>;
 
 /** List subscription impacted by the service health event. */
 export type ImpactedServiceRegionImpactedSubscriptionsList = Array<string>;
-export const ImpactedServiceRegionImpactedSubscriptionsList = /*@__PURE__*/ S.Array(
+const ImpactedServiceRegionImpactedSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImpactedServiceRegionImpactedSubscriptionsList>;
 
 /** List tenant impacted by the service health event. */
 export type ImpactedServiceRegionImpactedTenantsList = Array<string>;
-export const ImpactedServiceRegionImpactedTenantsList =
+const ImpactedServiceRegionImpactedTenantsList =
   ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<ImpactedServiceRegionImpactedTenantsList>;
 
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
 export type UpdateEventTagsList = Array<string>;
-export const UpdateEventTagsList =
+const UpdateEventTagsList =
   ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<UpdateEventTagsList>;
 
 /** Update for service health event. */
@@ -193,7 +193,7 @@ export interface Update {
   /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
   eventTags?: UpdateEventTagsList;
 }
-export const Update = /*@__PURE__*/ S.suspend(() =>
+const Update = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(S.String),
     updateDateTime: S.optional(S.String),
@@ -203,7 +203,7 @@ export const Update = /*@__PURE__*/ S.suspend(() =>
 
 /** List of updates for given service health event. Use fetchEventDetails endpoint to get updates of sensitive events. */
 export type ImpactedServiceRegionUpdatesList = Array<Update>;
-export const ImpactedServiceRegionUpdatesList = /*@__PURE__*/ S.Array(
+const ImpactedServiceRegionUpdatesList = /*@__PURE__*/ S.Array(
   Update,
 ) as any as S.Schema<ImpactedServiceRegionUpdatesList>;
 
@@ -222,7 +222,7 @@ export interface ImpactedServiceRegion {
   /** List of updates for given service health event. Use fetchEventDetails endpoint to get updates of sensitive events. */
   updates?: ImpactedServiceRegionUpdatesList;
 }
-export const ImpactedServiceRegion = /*@__PURE__*/ S.suspend(() =>
+const ImpactedServiceRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impactedRegion: S.optional(S.String),
     status: S.optional(EventStatusValues),
@@ -235,7 +235,7 @@ export const ImpactedServiceRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** List regions impacted by the service health event. */
 export type ImpactImpactedRegionsList = Array<ImpactedServiceRegion>;
-export const ImpactImpactedRegionsList = /*@__PURE__*/ S.Array(
+const ImpactImpactedRegionsList = /*@__PURE__*/ S.Array(
   ImpactedServiceRegion,
 ) as any as S.Schema<ImpactImpactedRegionsList>;
 
@@ -248,7 +248,7 @@ export interface Impact {
   /** List regions impacted by the service health event. */
   impactedRegions?: ImpactImpactedRegionsList;
 }
-export const Impact = /*@__PURE__*/ S.suspend(() =>
+const Impact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impactedService: S.optional(S.String),
     impactedServiceGuid: S.optional(S.String),
@@ -258,7 +258,7 @@ export const Impact = /*@__PURE__*/ S.suspend(() =>
 
 /** List services impacted by the service health event. */
 export type EventPropertiesImpactList = Array<Impact>;
-export const EventPropertiesImpactList = /*@__PURE__*/ S.Array(
+const EventPropertiesImpactList = /*@__PURE__*/ S.Array(
   Impact,
 ) as any as S.Schema<EventPropertiesImpactList>;
 
@@ -269,7 +269,7 @@ export interface EventPropertiesRecommendedActionsActionsItem {
   /** Recommended action text */
   actionText?: string;
 }
-export const EventPropertiesRecommendedActionsActionsItem = /*@__PURE__*/ S.suspend(() =>
+const EventPropertiesRecommendedActionsActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.Number),
     actionText: S.optional(S.String),
@@ -281,7 +281,7 @@ export const EventPropertiesRecommendedActionsActionsItem = /*@__PURE__*/ S.susp
 /** Recommended actions for the service health event. */
 export type EventPropertiesRecommendedActionsActionsList =
   Array<EventPropertiesRecommendedActionsActionsItem>;
-export const EventPropertiesRecommendedActionsActionsList = /*@__PURE__*/ S.Array(
+const EventPropertiesRecommendedActionsActionsList = /*@__PURE__*/ S.Array(
   EventPropertiesRecommendedActionsActionsItem,
 ) as any as S.Schema<EventPropertiesRecommendedActionsActionsList>;
 
@@ -294,7 +294,7 @@ export interface EventPropertiesRecommendedActions {
   /** Recommended action locale for the service health event. */
   localeCode?: string;
 }
-export const EventPropertiesRecommendedActions = /*@__PURE__*/ S.suspend(() =>
+const EventPropertiesRecommendedActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     actions: S.optional(EventPropertiesRecommendedActionsActionsList),
@@ -313,7 +313,7 @@ export interface Faq {
   /** FAQ locale for the service health event. */
   localeCode?: string;
 }
-export const Faq = /*@__PURE__*/ S.suspend(() =>
+const Faq = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     question: S.optional(S.String),
     answer: S.optional(S.String),
@@ -323,7 +323,7 @@ export const Faq = /*@__PURE__*/ S.suspend(() =>
 
 /** Frequently asked questions for the service health event. */
 export type EventPropertiesFaqsList = Array<Faq>;
-export const EventPropertiesFaqsList = /*@__PURE__*/ S.Array(
+const EventPropertiesFaqsList = /*@__PURE__*/ S.Array(
   Faq,
 ) as any as S.Schema<EventPropertiesFaqsList>;
 
@@ -332,7 +332,7 @@ export interface EventPropertiesAdditionalInformation {
   /** Additional information Message */
   message?: string;
 }
-export const EventPropertiesAdditionalInformation = /*@__PURE__*/ S.suspend(() =>
+const EventPropertiesAdditionalInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -342,7 +342,7 @@ export const EventPropertiesAdditionalInformation = /*@__PURE__*/ S.suspend(() =
 
 /** A list of metadata tags associated with the event. Possible values include: -Action Recommended: Action may be required by you to avoid possible disruptions or mitigate risks for your services. It is recommended to evaluate these actions and the potential impact on your services. - False Positive: After investigation, we've determined your service is healthy and service issues did not impact your services as originally communicated. - Preliminary PIR: For our largest, most impactful service issues a Preliminary Post Incident Review (PIR) is published generally within 72 hours of mitigation, to summarize what we have learned so far from the still-in-progress investigation. - Final PIR: For service issues, a Final Post Incident Review (PIR) may be published to provide additional details or learnings. Sometimes this requires us to complete an internal retrospective, generally within 14 days of mitigation. */
 export type EventPropertiesEventTagsList = Array<string>;
-export const EventPropertiesEventTagsList =
+const EventPropertiesEventTagsList =
   ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<EventPropertiesEventTagsList>;
 
 /** Properties of event. */
@@ -418,7 +418,7 @@ export interface EventProperties {
   /** Billing identifier information. */
   billingId?: string;
 }
-export const EventProperties = /*@__PURE__*/ S.suspend(() =>
+const EventProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventType: S.optional(EventTypeValues),
     eventSubType: S.optional(EventSubTypeValues),
@@ -470,7 +470,7 @@ export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTracki
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse =
+const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -489,7 +489,7 @@ export interface EventFetchDetailsBySubscriptionIdAndTrackingIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
 }
-export const EventFetchDetailsBySubscriptionIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
+const EventFetchDetailsBySubscriptionIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     eventTrackingId: S.String.pipe(T.Label()),
@@ -517,7 +517,7 @@ export interface EventFetchDetailsBySubscriptionIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventFetchDetailsBySubscriptionIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(() =>
+const EventFetchDetailsBySubscriptionIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -533,7 +533,7 @@ export interface EventFetchDetailsByTenantIdAndTrackingIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
 }
-export const EventFetchDetailsByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
+const EventFetchDetailsByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTrackingId: S.String.pipe(T.Label()),
   }).pipe(
@@ -560,7 +560,7 @@ export interface EventFetchDetailsByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventFetchDetailsByTenantIdAndTrackingIdResponse =
+const EventFetchDetailsByTenantIdAndTrackingIdResponse =
   EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>;
 
 export interface EventGetBySubscriptionIdAndTrackingIdRequest {
@@ -573,7 +573,7 @@ export interface EventGetBySubscriptionIdAndTrackingIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-export const EventGetBySubscriptionIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
+const EventGetBySubscriptionIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     eventTrackingId: S.String.pipe(T.Label()),
@@ -603,7 +603,7 @@ export interface EventGetBySubscriptionIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventGetBySubscriptionIdAndTrackingIdResponse =
+const EventGetBySubscriptionIdAndTrackingIdResponse =
   EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>;
 
 export interface EventGetByTenantIdAndTrackingIdRequest {
@@ -614,7 +614,7 @@ export interface EventGetByTenantIdAndTrackingIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-export const EventGetByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
+const EventGetByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTrackingId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -643,7 +643,7 @@ export interface EventGetByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventGetByTenantIdAndTrackingIdResponse =
+const EventGetByTenantIdAndTrackingIdResponse =
   EventFetchDetailsBySubscriptionIdAndTrackingIdResponse as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>;
 
 export interface GetAvailabilityStatusByResourceRequest {
@@ -654,7 +654,7 @@ export interface GetAvailabilityStatusByResourceRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const GetAvailabilityStatusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvailabilityStatusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -673,11 +673,11 @@ export const GetAvailabilityStatusByResourceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Impacted resource status of the resource. */
 export type AvailabilityStateValues = "Available" | "Unavailable" | "Degraded" | "Unknown";
-export const AvailabilityStateValues = S.String;
+const AvailabilityStateValues = S.String;
 
 /** Chronicity of the availability transition. */
 export type ReasonChronicityTypes = "Transient" | "Persistent";
-export const ReasonChronicityTypes = S.String;
+const ReasonChronicityTypes = S.String;
 
 /** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
 export interface AvailabilityStatusPropertiesRecentlyResolved {
@@ -688,7 +688,7 @@ export interface AvailabilityStatusPropertiesRecentlyResolved {
   /** Brief description of cause of the resource becoming unavailable. */
   unavailableSummary?: string;
 }
-export const AvailabilityStatusPropertiesRecentlyResolved = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityStatusPropertiesRecentlyResolved = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unavailableOccuredTime: S.optional(S.String),
     resolvedTime: S.optional(S.String),
@@ -709,7 +709,7 @@ export interface RecommendedAction {
   /** Substring of action, it describes which text should host the action URL. */
   actionUrlText?: string;
 }
-export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
+const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     actionUrl: S.optional(S.String),
@@ -720,7 +720,7 @@ export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists actions the user can take based on the current availabilityState of the resource. */
 export type AvailabilityStatusPropertiesRecommendedActionsList = Array<RecommendedAction>;
-export const AvailabilityStatusPropertiesRecommendedActionsList = /*@__PURE__*/ S.Array(
+const AvailabilityStatusPropertiesRecommendedActionsList = /*@__PURE__*/ S.Array(
   RecommendedAction,
 ) as any as S.Schema<AvailabilityStatusPropertiesRecommendedActionsList>;
 
@@ -729,7 +729,7 @@ export interface ServiceImpactingEventStatus {
   /** Current status of the event */
   value?: string;
 }
-export const ServiceImpactingEventStatus = /*@__PURE__*/ S.suspend(() =>
+const ServiceImpactingEventStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -748,7 +748,7 @@ export interface ServiceImpactingEventIncidentProperties {
   /** Type of Event. */
   incidentType?: string;
 }
-export const ServiceImpactingEventIncidentProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceImpactingEventIncidentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     service: S.optional(S.String),
@@ -772,7 +772,7 @@ export interface ServiceImpactingEvent {
   /** Properties of the service impacting event. */
   incidentProperties?: ServiceImpactingEventIncidentProperties;
 }
-export const ServiceImpactingEvent = /*@__PURE__*/ S.suspend(() =>
+const ServiceImpactingEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventStartTime: S.optional(S.String),
     eventStatusLastModifiedTime: S.optional(S.String),
@@ -784,7 +784,7 @@ export const ServiceImpactingEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the service impacting events that may be affecting the health of the resource. */
 export type AvailabilityStatusPropertiesServiceImpactingEventsList = Array<ServiceImpactingEvent>;
-export const AvailabilityStatusPropertiesServiceImpactingEventsList = /*@__PURE__*/ S.Array(
+const AvailabilityStatusPropertiesServiceImpactingEventsList = /*@__PURE__*/ S.Array(
   ServiceImpactingEvent,
 ) as any as S.Schema<AvailabilityStatusPropertiesServiceImpactingEventsList>;
 
@@ -831,7 +831,7 @@ export interface AvailabilityStatusProperties {
   /** Lists the service impacting events that may be affecting the health of the resource. */
   serviceImpactingEvents?: AvailabilityStatusPropertiesServiceImpactingEventsList;
 }
-export const AvailabilityStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityState: S.optional(AvailabilityStateValues),
     title: S.optional(S.String),
@@ -869,7 +869,7 @@ export interface GetAvailabilityStatusByResourceResponse {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-export const GetAvailabilityStatusByResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAvailabilityStatusByResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -889,7 +889,7 @@ export interface GetChildAvailabilityStatusByResourceRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const GetChildAvailabilityStatusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChildAvailabilityStatusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -917,17 +917,17 @@ export interface GetChildAvailabilityStatusByResourceResponse {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-export const GetChildAvailabilityStatusByResourceResponse =
+const GetChildAvailabilityStatusByResourceResponse =
   GetAvailabilityStatusByResourceResponse as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>;
 
 export type GetEmergingIssueRequestIssueName = "default";
-export const GetEmergingIssueRequestIssueName = S.String;
+const GetEmergingIssueRequestIssueName = S.String;
 
 export interface GetEmergingIssueRequest {
   /** The name of the emerging issue. */
   issueName: GetEmergingIssueRequestIssueName | (string & {});
 }
-export const GetEmergingIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmergingIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueName: GetEmergingIssueRequestIssueName.pipe(T.Label()),
   }).pipe(
@@ -951,7 +951,7 @@ export interface StatusBanner {
   /** The last time modified on this banner. */
   lastModifiedTime?: string;
 }
-export const StatusBanner = /*@__PURE__*/ S.suspend(() =>
+const StatusBanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     message: S.optional(S.String),
@@ -962,17 +962,17 @@ export const StatusBanner = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of emerging issues of banner type. */
 export type EmergingIssueStatusBannersList = Array<StatusBanner>;
-export const EmergingIssueStatusBannersList = /*@__PURE__*/ S.Array(
+const EmergingIssueStatusBannersList = /*@__PURE__*/ S.Array(
   StatusBanner,
 ) as any as S.Schema<EmergingIssueStatusBannersList>;
 
 /** The severity level of this active event. */
 export type SeverityValues = "Information" | "Warning" | "Error";
-export const SeverityValues = S.String;
+const SeverityValues = S.String;
 
 /** The stage of this active event. */
 export type StageValues = "Active" | "Resolve" | "Archived";
-export const StageValues = S.String;
+const StageValues = S.String;
 
 /** Object of impacted region. */
 export interface ImpactedRegion {
@@ -981,7 +981,7 @@ export interface ImpactedRegion {
   /** The impacted region name. */
   name?: string;
 }
-export const ImpactedRegion = /*@__PURE__*/ S.suspend(() =>
+const ImpactedRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -990,7 +990,7 @@ export const ImpactedRegion = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of impacted regions for corresponding emerging issues. */
 export type EmergingIssueImpactRegionsList = Array<ImpactedRegion>;
-export const EmergingIssueImpactRegionsList = /*@__PURE__*/ S.Array(
+const EmergingIssueImpactRegionsList = /*@__PURE__*/ S.Array(
   ImpactedRegion,
 ) as any as S.Schema<EmergingIssueImpactRegionsList>;
 
@@ -1003,7 +1003,7 @@ export interface EmergingIssueImpact {
   /** The list of impacted regions for corresponding emerging issues. */
   regions?: EmergingIssueImpactRegionsList;
 }
-export const EmergingIssueImpact = /*@__PURE__*/ S.suspend(() =>
+const EmergingIssueImpact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1013,7 +1013,7 @@ export const EmergingIssueImpact = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of emerging issues impacts. */
 export type StatusActiveEventImpactsList = Array<EmergingIssueImpact>;
-export const StatusActiveEventImpactsList = /*@__PURE__*/ S.Array(
+const StatusActiveEventImpactsList = /*@__PURE__*/ S.Array(
   EmergingIssueImpact,
 ) as any as S.Schema<StatusActiveEventImpactsList>;
 
@@ -1040,7 +1040,7 @@ export interface StatusActiveEvent {
   /** The list of emerging issues impacts. */
   impacts?: StatusActiveEventImpactsList;
 }
-export const StatusActiveEvent = /*@__PURE__*/ S.suspend(() =>
+const StatusActiveEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -1057,7 +1057,7 @@ export const StatusActiveEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of emerging issues of active event type. */
 export type EmergingIssueStatusActiveEventsList = Array<StatusActiveEvent>;
-export const EmergingIssueStatusActiveEventsList = /*@__PURE__*/ S.Array(
+const EmergingIssueStatusActiveEventsList = /*@__PURE__*/ S.Array(
   StatusActiveEvent,
 ) as any as S.Schema<EmergingIssueStatusActiveEventsList>;
 
@@ -1070,7 +1070,7 @@ export interface EmergingIssue {
   /** The list of emerging issues of active event type. */
   statusActiveEvents?: EmergingIssueStatusActiveEventsList;
 }
-export const EmergingIssue = /*@__PURE__*/ S.suspend(() =>
+const EmergingIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refreshTimestamp: S.optional(S.String),
     statusBanners: S.optional(EmergingIssueStatusBannersList),
@@ -1090,7 +1090,7 @@ export interface GetEmergingIssueResponse {
   /** The emerging issue entity properties. */
   properties?: EmergingIssue;
 }
-export const GetEmergingIssueResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEmergingIssueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1108,7 +1108,7 @@ export interface GetImpactedResourceRequest {
   /** Name of the Impacted Resource. */
   impactedResourceName: string;
 }
-export const GetImpactedResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImpactedResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     eventTrackingId: S.String.pipe(T.Label()),
@@ -1132,7 +1132,7 @@ export interface KeyValueItem {
   /** Value of tuple. */
   value?: string;
 }
-export const KeyValueItem = /*@__PURE__*/ S.suspend(() =>
+const KeyValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -1141,7 +1141,7 @@ export const KeyValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information. */
 export type EventImpactedResourcePropertiesInfoList = Array<KeyValueItem>;
-export const EventImpactedResourcePropertiesInfoList = /*@__PURE__*/ S.Array(
+const EventImpactedResourcePropertiesInfoList = /*@__PURE__*/ S.Array(
   KeyValueItem,
 ) as any as S.Schema<EventImpactedResourcePropertiesInfoList>;
 
@@ -1156,7 +1156,7 @@ export interface EventImpactedResourceProperties {
   /** Additional information. */
   info?: EventImpactedResourcePropertiesInfoList;
 }
-export const EventImpactedResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const EventImpactedResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetResourceType: S.optional(S.String),
     targetResourceId: S.optional(S.String),
@@ -1179,7 +1179,7 @@ export interface GetImpactedResourceResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-export const GetImpactedResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImpactedResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1197,7 +1197,7 @@ export interface GetImpactedResourceByTenantIdRequest {
   /** Name of the Impacted Resource. */
   impactedResourceName: string;
 }
-export const GetImpactedResourceByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImpactedResourceByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTrackingId: S.String.pipe(T.Label()),
     impactedResourceName: S.String.pipe(T.Label()),
@@ -1225,14 +1225,14 @@ export interface GetImpactedResourceByTenantIdResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-export const GetImpactedResourceByTenantIdResponse =
+const GetImpactedResourceByTenantIdResponse =
   GetImpactedResourceResponse as any as S.Schema<GetImpactedResourceByTenantIdResponse>;
 
 export interface GetMetadataEntityRequest {
   /** Name of metadata entity. */
   name: string;
 }
-export const GetMetadataEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1247,21 +1247,21 @@ export const GetMetadataEntityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of keys on which this entity depends on. */
 export type MetadataEntityPropertiesDependsOnList = Array<string>;
-export const MetadataEntityPropertiesDependsOnList =
+const MetadataEntityPropertiesDependsOnList =
   ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
 export type Scenario = "Alerts";
-export const Scenario = S.String;
+const Scenario = S.String;
 
 /** The list of scenarios applicable to this metadata entity. */
 export type MetadataEntityPropertiesApplicableScenariosList = Array<Scenario>;
-export const MetadataEntityPropertiesApplicableScenariosList = /*@__PURE__*/ S.Array(
+const MetadataEntityPropertiesApplicableScenariosList = /*@__PURE__*/ S.Array(
   Scenario,
 ) as any as S.Schema<MetadataEntityPropertiesApplicableScenariosList>;
 
 /** The list of associated resource types. */
 export type MetadataSupportedValueDetailResourceTypesList = Array<string>;
-export const MetadataSupportedValueDetailResourceTypesList =
+const MetadataSupportedValueDetailResourceTypesList =
   ImpactedServiceRegionImpactedSubscriptionsList as any as S.Schema<MetadataSupportedValueDetailResourceTypesList>;
 
 /** The metadata supported value detail. */
@@ -1279,7 +1279,7 @@ export interface MetadataSupportedValueDetail {
   /** Priority of this metadata supported value. Lower number is given higher preference. */
   priority?: number;
 }
-export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
+const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     previousId: S.optional(S.String),
@@ -1294,7 +1294,7 @@ export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported values. */
 export type MetadataEntityPropertiesSupportedValuesList = Array<MetadataSupportedValueDetail>;
-export const MetadataEntityPropertiesSupportedValuesList = /*@__PURE__*/ S.Array(
+const MetadataEntityPropertiesSupportedValuesList = /*@__PURE__*/ S.Array(
   MetadataSupportedValueDetail,
 ) as any as S.Schema<MetadataEntityPropertiesSupportedValuesList>;
 
@@ -1309,7 +1309,7 @@ export interface MetadataEntityProperties {
   /** The list of supported values. */
   supportedValues?: MetadataEntityPropertiesSupportedValuesList;
 }
-export const MetadataEntityProperties = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     dependsOn: S.optional(MetadataEntityPropertiesDependsOnList),
@@ -1330,7 +1330,7 @@ export interface GetMetadataEntityResponse {
   /** The metadata entity properties. */
   properties?: MetadataEntityProperties;
 }
-export const GetMetadataEntityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1350,7 +1350,7 @@ export interface ImpactedResourcesListBySubscriptionIdAndEventIdRequest {
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const ImpactedResourcesListBySubscriptionIdAndEventIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ImpactedResourcesListBySubscriptionIdAndEventIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     eventTrackingId: S.String.pipe(T.Label()),
@@ -1380,7 +1380,7 @@ export interface EventImpactedResource {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-export const EventImpactedResource = /*@__PURE__*/ S.suspend(() =>
+const EventImpactedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1392,7 +1392,7 @@ export const EventImpactedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of eventImpactedResources. */
 export type EventImpactedResourceListResultValueList = Array<EventImpactedResource>;
-export const EventImpactedResourceListResultValueList = /*@__PURE__*/ S.Array(
+const EventImpactedResourceListResultValueList = /*@__PURE__*/ S.Array(
   EventImpactedResource,
 ) as any as S.Schema<EventImpactedResourceListResultValueList>;
 
@@ -1403,7 +1403,7 @@ export interface EventImpactedResourceListResult {
   /** The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource. */
   nextLink?: string;
 }
-export const EventImpactedResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const EventImpactedResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EventImpactedResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1418,7 +1418,7 @@ export interface ImpactedResourcesListByTenantIdAndEventIdRequest {
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const ImpactedResourcesListByTenantIdAndEventIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ImpactedResourcesListByTenantIdAndEventIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTrackingId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1444,7 +1444,7 @@ export interface ListAvailabilityStatusByResourceGroupRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const ListAvailabilityStatusByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailabilityStatusByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1474,7 +1474,7 @@ export interface AvailabilityStatus {
   /** Properties of availability state. */
   properties?: AvailabilityStatusProperties;
 }
-export const AvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1486,7 +1486,7 @@ export const AvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of availabilityStatuses. */
 export type AvailabilityStatusListResultValueList = Array<AvailabilityStatus>;
-export const AvailabilityStatusListResultValueList = /*@__PURE__*/ S.Array(
+const AvailabilityStatusListResultValueList = /*@__PURE__*/ S.Array(
   AvailabilityStatus,
 ) as any as S.Schema<AvailabilityStatusListResultValueList>;
 
@@ -1497,7 +1497,7 @@ export interface AvailabilityStatusListResult {
   /** The URI to fetch the next page of availabilityStatuses. Call ListNext() with this URI to fetch the next page of availabilityStatuses. */
   nextLink?: string;
 }
-export const AvailabilityStatusListResult = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityStatusListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AvailabilityStatusListResultValueList,
     nextLink: S.optional(S.String),
@@ -1514,7 +1514,7 @@ export interface ListAvailabilityStatusBySubscriptionIdRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const ListAvailabilityStatusBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailabilityStatusBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1539,7 +1539,7 @@ export interface ListAvailabilityStatusesRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const ListAvailabilityStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailabilityStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1564,7 +1564,7 @@ export interface ListChildAvailabilityStatusesRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const ListChildAvailabilityStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChildAvailabilityStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1589,7 +1589,7 @@ export interface ListChildResourcesRequest {
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
 }
-export const ListChildResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChildResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1607,7 +1607,7 @@ export const ListChildResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChildResourcesRequest>;
 
 export interface ListEmergingIssuesRequest {}
-export const ListEmergingIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmergingIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1633,12 +1633,12 @@ export interface EmergingIssuesGetResult {
   /** The emerging issue entity properties. */
   properties?: EmergingIssue;
 }
-export const EmergingIssuesGetResult =
+const EmergingIssuesGetResult =
   GetEmergingIssueResponse as any as S.Schema<EmergingIssuesGetResult>;
 
 /** The list of emerging issues. */
 export type EmergingIssueListResultValueList = Array<EmergingIssuesGetResult>;
-export const EmergingIssueListResultValueList = /*@__PURE__*/ S.Array(
+const EmergingIssueListResultValueList = /*@__PURE__*/ S.Array(
   EmergingIssuesGetResult,
 ) as any as S.Schema<EmergingIssueListResultValueList>;
 
@@ -1649,7 +1649,7 @@ export interface EmergingIssueListResult {
   /** The link used to get the next page of emerging issues. */
   nextLink?: string;
 }
-export const EmergingIssueListResult = /*@__PURE__*/ S.suspend(() =>
+const EmergingIssueListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EmergingIssueListResultValueList),
     nextLink: S.optional(S.String),
@@ -1662,7 +1662,7 @@ export interface ListEventBySingleResourceRequest {
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const ListEventBySingleResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventBySingleResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1691,7 +1691,7 @@ export interface Event {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1703,7 +1703,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 
 /** The Event items on this page */
 export type EventsValueList = Array<Event>;
-export const EventsValueList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventsValueList>;
+const EventsValueList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventsValueList>;
 
 /** The List events operation response. */
 export interface Events {
@@ -1712,7 +1712,7 @@ export interface Events {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const Events = /*@__PURE__*/ S.suspend(() =>
+const Events = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EventsValueList,
     nextLink: S.optional(S.String),
@@ -1727,7 +1727,7 @@ export interface ListEventBySubscriptionIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-export const ListEventBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1750,7 +1750,7 @@ export interface ListEventByTenantIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-export const ListEventByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     queryStartTime: S.optional(S.String.pipe(T.Query())),
@@ -1767,7 +1767,7 @@ export const ListEventByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEventByTenantIdRequest>;
 
 export interface ListMetadataRequest {}
-export const ListMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1791,7 +1791,7 @@ export interface MetadataEntity {
   /** The metadata entity properties. */
   properties?: MetadataEntityProperties;
 }
-export const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1803,7 +1803,7 @@ export const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of metadata entities. */
 export type MetadataEntityListResultValueList = Array<MetadataEntity>;
-export const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
+const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
   MetadataEntity,
 ) as any as S.Schema<MetadataEntityListResultValueList>;
 
@@ -1814,7 +1814,7 @@ export interface MetadataEntityListResult {
   /** The link used to get the next page of metadata. */
   nextLink?: string;
 }
-export const MetadataEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MetadataEntityListResultValueList),
     nextLink: S.optional(S.String),
@@ -1822,7 +1822,7 @@ export const MetadataEntityListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataEntityListResult" }) as any as S.Schema<MetadataEntityListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1844,7 +1844,7 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1860,7 +1860,7 @@ export interface Operation {
   /** Properties of the operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1869,7 +1869,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations available in the Microsoft.ResourceHealth resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1878,7 +1878,7 @@ export interface OperationListResult {
   /** List of operations available in the Microsoft.ResourceHealth resource provider. */
   value: OperationListResultValueList;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
   }),
@@ -1892,7 +1892,7 @@ export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest =
+const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1916,8 +1916,8 @@ export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdReques
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       eventTrackingId: S.String.pipe(T.Label()),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1929,9 +1929,9 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest =
         apiVersion: "2025-05-01",
       }),
     ),
-  ).annotate({
-    identifier: "SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest",
-  }) as any as S.Schema<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest>;
+).annotate({
+  identifier: "SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest",
+}) as any as S.Schema<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest>;
 
 export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdError = AzureOpError;
 /** Service health event details specific in the subscription by event tracking id. This can be used to fetch sensitive properties for Billing event type. */

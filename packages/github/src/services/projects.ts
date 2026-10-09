@@ -39,37 +39,16 @@ export interface AddFieldForOrgRequestBodyCase0 {
   /** The ID of the IssueField to create the field for. */
   issue_field_id: number;
 }
-export const AddFieldForOrgRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue_field_id: S.Number,
-  }),
-).annotate({
-  identifier: "AddFieldForOrgRequestBodyCase0",
-}) as any as S.Schema<AddFieldForOrgRequestBodyCase0>;
-
 /** The field's data type. */
 export type AddFieldForOrgRequestBodyCase1DataType = "text" | "number" | "date";
-export const AddFieldForOrgRequestBodyCase1DataType = S.String;
-
 export interface AddFieldForOrgRequestBodyCase1 {
   /** The name of the field. */
   name: string;
   /** The field's data type. */
   data_type: AddFieldForOrgRequestBodyCase1DataType | (string & {});
 }
-export const AddFieldForOrgRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    data_type: AddFieldForOrgRequestBodyCase1DataType,
-  }),
-).annotate({
-  identifier: "AddFieldForOrgRequestBodyCase1",
-}) as any as S.Schema<AddFieldForOrgRequestBodyCase1>;
-
 /** The field's data type. */
 export type AddFieldForOrgRequestBodyCase2DataType = "single_select";
-export const AddFieldForOrgRequestBodyCase2DataType = S.String;
-
 /** The color associated with the option. */
 export type ProjectsV2FieldSingleSelectOptionColor =
   | "BLUE"
@@ -80,8 +59,6 @@ export type ProjectsV2FieldSingleSelectOptionColor =
   | "PURPLE"
   | "RED"
   | "YELLOW";
-export const ProjectsV2FieldSingleSelectOptionColor = S.String;
-
 export interface ProjectsV2FieldSingleSelectOption {
   /** The display name of the option. */
   name?: string;
@@ -90,23 +67,9 @@ export interface ProjectsV2FieldSingleSelectOption {
   /** The description of the option. */
   description?: string;
 }
-export const ProjectsV2FieldSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    color: S.optional(ProjectsV2FieldSingleSelectOptionColor),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectsV2FieldSingleSelectOption",
-}) as any as S.Schema<ProjectsV2FieldSingleSelectOption>;
-
 /** The options available for single select fields. At least one option must be provided when creating a single select field. */
 export type AddFieldForOrgRequestBodyCase2SingleSelectOptionsList =
   Array<ProjectsV2FieldSingleSelectOption>;
-export const AddFieldForOrgRequestBodyCase2SingleSelectOptionsList = /*@__PURE__*/ S.Array(
-  ProjectsV2FieldSingleSelectOption,
-) as any as S.Schema<AddFieldForOrgRequestBodyCase2SingleSelectOptionsList>;
-
 export interface AddFieldForOrgRequestBodyCase2 {
   /** The name of the field. */
   name: string;
@@ -115,20 +78,8 @@ export interface AddFieldForOrgRequestBodyCase2 {
   /** The options available for single select fields. At least one option must be provided when creating a single select field. */
   single_select_options: AddFieldForOrgRequestBodyCase2SingleSelectOptionsList;
 }
-export const AddFieldForOrgRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    data_type: AddFieldForOrgRequestBodyCase2DataType,
-    single_select_options: AddFieldForOrgRequestBodyCase2SingleSelectOptionsList,
-  }),
-).annotate({
-  identifier: "AddFieldForOrgRequestBodyCase2",
-}) as any as S.Schema<AddFieldForOrgRequestBodyCase2>;
-
 /** The field's data type. */
 export type AddFieldForOrgRequestBodyCase3DataType = "iteration";
-export const AddFieldForOrgRequestBodyCase3DataType = S.String;
-
 export interface ProjectsV2FieldIterationConfigurationIterationsItem {
   /** The title of the iteration. */
   title: string;
@@ -137,23 +88,9 @@ export interface ProjectsV2FieldIterationConfigurationIterationsItem {
   /** The duration of the iteration in days. */
   duration: number;
 }
-export const ProjectsV2FieldIterationConfigurationIterationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    start_date: S.String,
-    duration: S.Number,
-  }),
-).annotate({
-  identifier: "ProjectsV2FieldIterationConfigurationIterationsItem",
-}) as any as S.Schema<ProjectsV2FieldIterationConfigurationIterationsItem>;
-
 /** Zero or more iterations for the field. */
 export type ProjectsV2FieldIterationConfigurationIterationsList =
   Array<ProjectsV2FieldIterationConfigurationIterationsItem>;
-export const ProjectsV2FieldIterationConfigurationIterationsList = /*@__PURE__*/ S.Array(
-  ProjectsV2FieldIterationConfigurationIterationsItem,
-) as any as S.Schema<ProjectsV2FieldIterationConfigurationIterationsList>;
-
 /** The configuration for iteration fields. */
 export interface ProjectsV2FieldIterationConfiguration {
   /** The start date of the first iteration. */
@@ -163,16 +100,6 @@ export interface ProjectsV2FieldIterationConfiguration {
   /** Zero or more iterations for the field. */
   iterations?: ProjectsV2FieldIterationConfigurationIterationsList;
 }
-export const ProjectsV2FieldIterationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start_date: S.String,
-    duration: S.Number,
-    iterations: S.optional(ProjectsV2FieldIterationConfigurationIterationsList),
-  }),
-).annotate({
-  identifier: "ProjectsV2FieldIterationConfiguration",
-}) as any as S.Schema<ProjectsV2FieldIterationConfiguration>;
-
 export interface AddFieldForOrgRequestBodyCase3 {
   /** The name of the field. */
   name: string;
@@ -180,22 +107,12 @@ export interface AddFieldForOrgRequestBodyCase3 {
   data_type: AddFieldForOrgRequestBodyCase3DataType;
   iteration_configuration: ProjectsV2FieldIterationConfiguration;
 }
-export const AddFieldForOrgRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    data_type: AddFieldForOrgRequestBodyCase3DataType,
-    iteration_configuration: ProjectsV2FieldIterationConfiguration,
-  }),
-).annotate({
-  identifier: "AddFieldForOrgRequestBodyCase3",
-}) as any as S.Schema<AddFieldForOrgRequestBodyCase3>;
-
 export type AddFieldForOrgRequestBody =
   | AddFieldForOrgRequestBodyCase0
   | AddFieldForOrgRequestBodyCase1
   | AddFieldForOrgRequestBodyCase2
   | AddFieldForOrgRequestBodyCase3;
-export const AddFieldForOrgRequestBody = S.Unknown as any as S.Schema<AddFieldForOrgRequestBody>;
+const AddFieldForOrgRequestBody = S.Unknown as any as S.Schema<AddFieldForOrgRequestBody>;
 
 export interface AddFieldForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -204,7 +121,7 @@ export interface AddFieldForOrgRequest {
   project_number: number;
   body: AddFieldForOrgRequestBody;
 }
-export const AddFieldForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const AddFieldForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -231,14 +148,14 @@ export type ProjectsV2FieldDataType =
   | "issue_type"
   | "parent_issue"
   | "sub_issues_progress";
-export const ProjectsV2FieldDataType = S.String;
+const ProjectsV2FieldDataType = S.String;
 
 /** The display name of the option, in raw text and HTML formats. */
 export interface ProjectsV2SingleSelectOptionsName {
   raw: string;
   html: string;
 }
-export const ProjectsV2SingleSelectOptionsName = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2SingleSelectOptionsName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -249,8 +166,6 @@ export const ProjectsV2SingleSelectOptionsName = /*@__PURE__*/ S.suspend(() =>
 
 /** The description of the option, in raw text and HTML formats. */
 export type ProjectsV2SingleSelectOptionsDescription = ProjectsV2SingleSelectOptionsName;
-export const ProjectsV2SingleSelectOptionsDescription = ProjectsV2SingleSelectOptionsName;
-
 /** An option for a single select field */
 export interface ProjectsV2SingleSelectOptions {
   /** The unique identifier of the option. */
@@ -262,7 +177,7 @@ export interface ProjectsV2SingleSelectOptions {
   /** The color associated with the option. */
   color: string;
 }
-export const ProjectsV2SingleSelectOptions = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2SingleSelectOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: ProjectsV2SingleSelectOptionsName,
@@ -275,14 +190,12 @@ export const ProjectsV2SingleSelectOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The options available for single select fields. */
 export type ProjectsV2FieldOptionsList = Array<ProjectsV2SingleSelectOptions>;
-export const ProjectsV2FieldOptionsList = /*@__PURE__*/ S.Array(
+const ProjectsV2FieldOptionsList = /*@__PURE__*/ S.Array(
   ProjectsV2SingleSelectOptions,
 ) as any as S.Schema<ProjectsV2FieldOptionsList>;
 
 /** The iteration title, in raw text and HTML formats. */
 export type ProjectsV2IterationSettingsTitle = ProjectsV2SingleSelectOptionsName;
-export const ProjectsV2IterationSettingsTitle = ProjectsV2SingleSelectOptionsName;
-
 /** An iteration setting for an iteration field */
 export interface ProjectsV2IterationSettings {
   /** The unique identifier of the iteration setting. */
@@ -296,7 +209,7 @@ export interface ProjectsV2IterationSettings {
   /** Whether the iteration has been completed. */
   completed: boolean;
 }
-export const ProjectsV2IterationSettings = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2IterationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     start_date: S.String,
@@ -309,7 +222,7 @@ export const ProjectsV2IterationSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsV2IterationSettings>;
 
 export type ProjectsV2FieldConfigurationIterationsList = Array<ProjectsV2IterationSettings>;
-export const ProjectsV2FieldConfigurationIterationsList = /*@__PURE__*/ S.Array(
+const ProjectsV2FieldConfigurationIterationsList = /*@__PURE__*/ S.Array(
   ProjectsV2IterationSettings,
 ) as any as S.Schema<ProjectsV2FieldConfigurationIterationsList>;
 
@@ -321,7 +234,7 @@ export interface ProjectsV2FieldConfiguration {
   duration?: number;
   iterations?: ProjectsV2FieldConfigurationIterationsList;
 }
-export const ProjectsV2FieldConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2FieldConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_day: S.optional(S.Number),
     duration: S.optional(S.Number),
@@ -354,7 +267,7 @@ export interface ProjectsV2Field {
   /** The time when the field was last updated. */
   updated_at: string;
 }
-export const ProjectsV2Field = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     issue_field_id: S.optional(S.Number),
@@ -371,27 +284,17 @@ export const ProjectsV2Field = /*@__PURE__*/ S.suspend(() =>
 
 /** The field's data type. */
 export type AddFieldForUserRequestBodyCase0DataType = "text" | "number" | "date";
-export const AddFieldForUserRequestBodyCase0DataType = S.String;
-
 export interface AddFieldForUserRequestBodyCase0 {
   /** The name of the field. */
   name: string;
   /** The field's data type. */
   data_type: AddFieldForUserRequestBodyCase0DataType | (string & {});
 }
-export const AddFieldForUserRequestBodyCase0 =
-  AddFieldForOrgRequestBodyCase1 as any as S.Schema<AddFieldForUserRequestBodyCase0>;
-
 /** The field's data type. */
 export type AddFieldForUserRequestBodyCase1DataType = "single_select";
-export const AddFieldForUserRequestBodyCase1DataType = S.String;
-
 /** The options available for single select fields. At least one option must be provided when creating a single select field. */
 export type AddFieldForUserRequestBodyCase1SingleSelectOptionsList =
   Array<ProjectsV2FieldSingleSelectOption>;
-export const AddFieldForUserRequestBodyCase1SingleSelectOptionsList =
-  AddFieldForOrgRequestBodyCase2SingleSelectOptionsList as any as S.Schema<AddFieldForUserRequestBodyCase1SingleSelectOptionsList>;
-
 export interface AddFieldForUserRequestBodyCase1 {
   /** The name of the field. */
   name: string;
@@ -400,20 +303,8 @@ export interface AddFieldForUserRequestBodyCase1 {
   /** The options available for single select fields. At least one option must be provided when creating a single select field. */
   single_select_options: AddFieldForUserRequestBodyCase1SingleSelectOptionsList;
 }
-export const AddFieldForUserRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    data_type: AddFieldForUserRequestBodyCase1DataType,
-    single_select_options: AddFieldForUserRequestBodyCase1SingleSelectOptionsList,
-  }),
-).annotate({
-  identifier: "AddFieldForUserRequestBodyCase1",
-}) as any as S.Schema<AddFieldForUserRequestBodyCase1>;
-
 /** The field's data type. */
 export type AddFieldForUserRequestBodyCase2DataType = "iteration";
-export const AddFieldForUserRequestBodyCase2DataType = S.String;
-
 export interface AddFieldForUserRequestBodyCase2 {
   /** The name of the field. */
   name: string;
@@ -421,14 +312,11 @@ export interface AddFieldForUserRequestBodyCase2 {
   data_type: AddFieldForUserRequestBodyCase2DataType;
   iteration_configuration: ProjectsV2FieldIterationConfiguration;
 }
-export const AddFieldForUserRequestBodyCase2 =
-  AddFieldForOrgRequestBodyCase3 as any as S.Schema<AddFieldForUserRequestBodyCase2>;
-
 export type AddFieldForUserRequestBody =
   | AddFieldForUserRequestBodyCase0
   | AddFieldForUserRequestBodyCase1
   | AddFieldForUserRequestBodyCase2;
-export const AddFieldForUserRequestBody = S.Unknown as any as S.Schema<AddFieldForUserRequestBody>;
+const AddFieldForUserRequestBody = S.Unknown as any as S.Schema<AddFieldForUserRequestBody>;
 
 export interface AddFieldForUserRequest {
   /** The handle for the GitHub user account. */
@@ -437,7 +325,7 @@ export interface AddFieldForUserRequest {
   project_number: number;
   body: AddFieldForUserRequestBody;
 }
-export const AddFieldForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddFieldForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -453,7 +341,7 @@ export const AddFieldForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of item to add to the project. Must be either Issue or PullRequest. */
 export type AddItemForOrgRequestType = "Issue" | "PullRequest";
-export const AddItemForOrgRequestType = S.String;
+const AddItemForOrgRequestType = S.String;
 
 export interface AddItemForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -471,7 +359,7 @@ export interface AddItemForOrgRequest {
   /** The issue or pull request number. */
   number?: number;
 }
-export const AddItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const AddItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -487,8 +375,6 @@ export const AddItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason for the current state */
 export type IssueStateReason = "completed" | "reopened" | "not_planned" | "duplicate";
-export const IssueStateReason = S.String;
-
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -514,7 +400,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -543,8 +429,6 @@ export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 export interface IssueLabelsItemCase1 {
   id?: number;
   node_id?: string;
@@ -556,37 +440,12 @@ export interface IssueLabelsItemCase1 {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by?: NullableSimpleUser | null;
 }
-export const IssueLabelsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    node_id: S.optional(S.String),
-    url: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    color: S.optional(S.NullOr(S.String)),
-    default: S.optional(S.Boolean),
-    archived_by: S.optional(S.NullOr(NullableSimpleUser)),
-  }),
-).annotate({ identifier: "IssueLabelsItemCase1" }) as any as S.Schema<IssueLabelsItemCase1>;
-
 export type IssueLabelsItem = string | IssueLabelsItemCase1;
-export const IssueLabelsItem = S.Unknown as any as S.Schema<IssueLabelsItem>;
-
 /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
 export type IssueLabelsList = Array<IssueLabelsItem>;
-export const IssueLabelsList = /*@__PURE__*/ S.Array(
-  IssueLabelsItem,
-) as any as S.Schema<IssueLabelsList>;
-
 export type IssueAssigneesList = Array<NullableSimpleUser>;
-export const IssueAssigneesList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<IssueAssigneesList>;
-
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-export const NullableMilestoneState = S.String;
-
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
   url: string;
@@ -609,27 +468,6 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    html_url: S.String,
-    labels_url: S.String,
-    id: S.Number,
-    node_id: S.String,
-    number: S.Number,
-    state: NullableMilestoneState,
-    title: S.String,
-    description: S.NullOr(S.String),
-    creator: S.NullOr(NullableSimpleUser),
-    open_issues: S.Number,
-    closed_issues: S.Number,
-    created_at: S.String,
-    updated_at: S.String,
-    closed_at: S.NullOr(S.String),
-    due_on: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "NullableMilestone" }) as any as S.Schema<NullableMilestone>;
-
 export interface IssuePullRequest {
   merged_at?: string | null;
   diff_url: string | null;
@@ -637,16 +475,6 @@ export interface IssuePullRequest {
   patch_url: string | null;
   url: string | null;
 }
-export const IssuePullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merged_at: S.optional(S.NullOr(S.String)),
-    diff_url: S.NullOr(S.String),
-    html_url: S.NullOr(S.String),
-    patch_url: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "IssuePullRequest" }) as any as S.Schema<IssuePullRequest>;
-
 /** The color of the issue type. */
 export type IssueTypeColor =
   | "gray"
@@ -657,8 +485,6 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeColor = S.String;
-
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
   /** The unique identifier of the issue type. */
@@ -678,19 +504,6 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-export const IssueType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    color: S.optional(S.NullOr(IssueTypeColor)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    is_enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "IssueType" }) as any as S.Schema<IssueType>;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -700,17 +513,6 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    name: S.String,
-    url: S.NullOr(S.String),
-    spdx_id: S.NullOr(S.String),
-    node_id: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({ identifier: "NullableLicenseSimple" }) as any as S.Schema<NullableLicenseSimple>;
-
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -718,55 +520,22 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    admin: S.Boolean,
-    pull: S.Boolean,
-    triage: S.optional(S.Boolean),
-    push: S.Boolean,
-    maintain: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
-
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lexical_search_ok: S.optional(S.Boolean),
-    lexical_commit_sha: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RepositoryCodeSearchIndexStatus",
-}) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
-
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -899,109 +668,6 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    full_name: S.String,
-    license: S.NullOr(NullableLicenseSimple),
-    forks: S.Number,
-    permissions: S.optional(RepositoryPermissions),
-    owner: NullableSimpleUser,
-    private: S.Boolean,
-    html_url: S.String,
-    description: S.NullOr(S.String),
-    fork: S.Boolean,
-    url: S.String,
-    archive_url: S.String,
-    assignees_url: S.String,
-    blobs_url: S.String,
-    branches_url: S.String,
-    collaborators_url: S.String,
-    comments_url: S.String,
-    commits_url: S.String,
-    compare_url: S.String,
-    contents_url: S.String,
-    contributors_url: S.String,
-    deployments_url: S.String,
-    downloads_url: S.String,
-    events_url: S.String,
-    forks_url: S.String,
-    git_commits_url: S.String,
-    git_refs_url: S.String,
-    git_tags_url: S.String,
-    git_url: S.String,
-    issue_comment_url: S.String,
-    issue_events_url: S.String,
-    issues_url: S.String,
-    keys_url: S.String,
-    labels_url: S.String,
-    languages_url: S.String,
-    merges_url: S.String,
-    milestones_url: S.String,
-    notifications_url: S.String,
-    pulls_url: S.String,
-    releases_url: S.String,
-    ssh_url: S.String,
-    stargazers_url: S.String,
-    statuses_url: S.String,
-    subscribers_url: S.String,
-    subscription_url: S.String,
-    tags_url: S.String,
-    teams_url: S.String,
-    trees_url: S.String,
-    clone_url: S.String,
-    mirror_url: S.NullOr(S.String),
-    hooks_url: S.String,
-    svn_url: S.String,
-    homepage: S.NullOr(S.String),
-    language: S.NullOr(S.String),
-    forks_count: S.Number,
-    stargazers_count: S.Number,
-    watchers_count: S.Number,
-    size: S.Number,
-    default_branch: S.String,
-    open_issues_count: S.Number,
-    is_template: S.optional(S.Boolean),
-    topics: S.optional(RepositoryTopicsList),
-    has_issues: S.Boolean,
-    has_projects: S.Boolean,
-    has_wiki: S.Boolean,
-    has_pages: S.Boolean,
-    has_downloads: S.Boolean,
-    has_discussions: S.optional(S.Boolean),
-    has_pull_requests: S.optional(S.Boolean),
-    pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
-    archived: S.Boolean,
-    disabled: S.Boolean,
-    visibility: S.optional(S.String),
-    pushed_at: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    allow_rebase_merge: S.optional(S.Boolean),
-    temp_clone_token: S.optional(S.String),
-    allow_squash_merge: S.optional(S.Boolean),
-    allow_auto_merge: S.optional(S.Boolean),
-    delete_branch_on_merge: S.optional(S.Boolean),
-    allow_update_branch: S.optional(S.Boolean),
-    use_squash_pr_title_as_default: S.optional(S.Boolean),
-    squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
-    squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
-    merge_commit_title: S.optional(RepositoryMergeCommitTitle),
-    merge_commit_message: S.optional(RepositoryMergeCommitMessage),
-    allow_merge_commit: S.optional(S.Boolean),
-    allow_forking: S.optional(S.Boolean),
-    web_commit_signoff_required: S.optional(S.Boolean),
-    open_issues: S.Number,
-    watchers: S.Number,
-    master_branch: S.optional(S.String),
-    starred_at: S.optional(S.String),
-    anonymous_access_enabled: S.optional(S.Boolean),
-    code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
-  }),
-).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
-
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -1020,24 +686,7 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type NullableIntegrationOwner = NullableSimpleUser | Enterprise;
-export const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
   issues?: string;
@@ -1046,23 +695,8 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(S.String),
-    checks: S.optional(S.String),
-    metadata: S.optional(S.String),
-    contents: S.optional(S.String),
-    deployments: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NullableIntegrationPermissions",
-}) as any as S.Schema<NullableIntegrationPermissions>;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList =
-  RepositoryTopicsList as any as S.Schema<NullableIntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
   /** Unique identifier of the GitHub app */
@@ -1086,25 +720,6 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    slug: S.optional(S.String),
-    node_id: S.String,
-    client_id: S.optional(S.String),
-    owner: NullableIntegrationOwner,
-    name: S.String,
-    description: S.NullOr(S.String),
-    external_url: S.String,
-    html_url: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    permissions: NullableIntegrationPermissions,
-    events: NullableIntegrationEventsList,
-    installations_count: S.optional(S.Number),
-  }),
-).annotate({ identifier: "NullableIntegration" }) as any as S.Schema<NullableIntegration>;
-
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -1115,8 +730,6 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const AuthorAssociation = S.String;
-
 export interface ReactionRollup {
   url: string;
   total_count: number;
@@ -1129,61 +742,21 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-export const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    total_count: S.Number,
-    _1: S.Number.pipe(T.Body("+1")),
-    _1_2: S.Number.pipe(T.Body("-1")),
-    laugh: S.Number,
-    confused: S.Number,
-    heart: S.Number,
-    hooray: S.Number,
-    eyes: S.Number,
-    rocket: S.Number,
-  }),
-).annotate({ identifier: "ReactionRollup" }) as any as S.Schema<ReactionRollup>;
-
 export interface SubIssuesSummary {
   total: number;
   completed: number;
   percent_completed: number;
 }
-export const SubIssuesSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-    completed: S.Number,
-    percent_completed: S.Number,
-  }),
-).annotate({ identifier: "SubIssuesSummary" }) as any as S.Schema<SubIssuesSummary>;
-
 /** Context around who pinned an issue comment and when it was pinned. */
 export interface NullablePinnedIssueComment {
   pinned_at: string;
   pinned_by: NullableSimpleUser | null;
 }
-export const NullablePinnedIssueComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pinned_at: S.String,
-    pinned_by: S.NullOr(NullableSimpleUser),
-  }),
-).annotate({
-  identifier: "NullablePinnedIssueComment",
-}) as any as S.Schema<NullablePinnedIssueComment>;
-
 /** Details about why an issue comment was minimized. */
 export interface NullableIssueCommentMinimized {
   /** The reason the comment was minimized. */
   reason: string | null;
 }
-export const NullableIssueCommentMinimized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "NullableIssueCommentMinimized",
-}) as any as S.Schema<NullableIssueCommentMinimized>;
-
 /** Comments provide a way for people to collaborate on an issue. */
 export interface NullableIssueComment {
   /** Unique identifier of the issue comment */
@@ -1206,50 +779,16 @@ export interface NullableIssueComment {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-export const NullableIssueComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    body: S.optional(S.String),
-    body_text: S.optional(S.String),
-    body_html: S.optional(S.String),
-    html_url: S.String,
-    user: S.NullOr(NullableSimpleUser),
-    created_at: S.String,
-    updated_at: S.String,
-    issue_url: S.String,
-    author_association: S.optional(AuthorAssociation),
-    performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-    reactions: S.optional(ReactionRollup),
-    pin: S.optional(S.NullOr(NullablePinnedIssueComment)),
-    minimized: S.optional(S.NullOr(NullableIssueCommentMinimized)),
-  }),
-).annotate({ identifier: "NullableIssueComment" }) as any as S.Schema<NullableIssueComment>;
-
 export interface IssueDependenciesSummary {
   blocked_by: number;
   blocking: number;
   total_blocked_by: number;
   total_blocking: number;
 }
-export const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocked_by: S.Number,
-    blocking: S.Number,
-    total_blocked_by: S.Number,
-    total_blocking: S.Number,
-  }),
-).annotate({ identifier: "IssueDependenciesSummary" }) as any as S.Schema<IssueDependenciesSummary>;
-
 /** The data type of the issue field */
 export type IssueFieldValueDataType = "text" | "single_select" | "multi_select" | "number" | "date";
-export const IssueFieldValueDataType = S.String;
-
 /** The value of the issue field */
 export type IssueFieldValueValue = string | number | number;
-export const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
-
 /** Details about the selected option (only present for single_select fields) */
 export interface IssueFieldValueSingleSelectOption {
   /** Unique identifier for the option. */
@@ -1259,25 +798,9 @@ export interface IssueFieldValueSingleSelectOption {
   /** The color of the option */
   color: string;
 }
-export const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    color: S.String,
-  }),
-).annotate({
-  identifier: "IssueFieldValueSingleSelectOption",
-}) as any as S.Schema<IssueFieldValueSingleSelectOption>;
-
 export type IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-export const IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-
 /** Details about the selected options */
 export type IssueFieldValueMultiSelectOptionsList = Array<IssueFieldValueSingleSelectOption>;
-export const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ S.Array(
-  IssueFieldValueSingleSelectOption,
-) as any as S.Schema<IssueFieldValueMultiSelectOptionsList>;
-
 /** A value assigned to an issue field */
 export interface IssueFieldValue {
   /** Unique identifier for the issue field. */
@@ -1294,23 +817,7 @@ export interface IssueFieldValue {
   /** Details about the selected options */
   multi_select_options?: IssueFieldValueMultiSelectOptionsList | null;
 }
-export const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue_field_id: S.Number,
-    issue_field_name: S.optional(S.String),
-    node_id: S.String,
-    data_type: IssueFieldValueDataType,
-    value: S.NullOr(IssueFieldValueValue),
-    single_select_option: S.optional(S.NullOr(IssueFieldValueSingleSelectOption)),
-    multi_select_options: S.optional(S.NullOr(IssueFieldValueMultiSelectOptionsList)),
-  }),
-).annotate({ identifier: "IssueFieldValue" }) as any as S.Schema<IssueFieldValue>;
-
 export type IssueIssueFieldValuesList = Array<IssueFieldValue>;
-export const IssueIssueFieldValuesList = /*@__PURE__*/ S.Array(
-  IssueFieldValue,
-) as any as S.Schema<IssueIssueFieldValuesList>;
-
 /** Issues are a great way to keep track of tasks, enhancements, and bugs for your projects. */
 export interface Issue {
   id: number;
@@ -1362,51 +869,6 @@ export interface Issue {
   issue_dependencies_summary?: IssueDependenciesSummary;
   issue_field_values?: IssueIssueFieldValuesList;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    repository_url: S.String,
-    labels_url: S.String,
-    comments_url: S.String,
-    events_url: S.String,
-    html_url: S.String,
-    number: S.Number,
-    state: S.String,
-    state_reason: S.optional(S.NullOr(IssueStateReason)),
-    title: S.String,
-    body: S.optional(S.NullOr(S.String)),
-    user: S.NullOr(NullableSimpleUser),
-    labels: IssueLabelsList,
-    assignee: S.NullOr(NullableSimpleUser),
-    assignees: S.optional(IssueAssigneesList),
-    milestone: S.NullOr(NullableMilestone),
-    locked: S.Boolean,
-    active_lock_reason: S.optional(S.NullOr(S.String)),
-    comments: S.Number,
-    pull_request: S.optional(IssuePullRequest),
-    closed_at: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-    draft: S.optional(S.Boolean),
-    closed_by: S.optional(S.NullOr(NullableSimpleUser)),
-    body_html: S.optional(S.String),
-    body_text: S.optional(S.String),
-    timeline_url: S.optional(S.String),
-    type: S.optional(S.NullOr(IssueType)),
-    repository: S.optional(Repository),
-    performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-    author_association: S.optional(AuthorAssociation),
-    reactions: S.optional(ReactionRollup),
-    sub_issues_summary: S.optional(SubIssuesSummary),
-    parent_issue_url: S.optional(S.NullOr(S.String)),
-    pinned_comment: S.optional(S.NullOr(NullableIssueComment)),
-    issue_dependencies_summary: S.optional(IssueDependenciesSummary),
-    issue_field_values: S.optional(IssueIssueFieldValuesList),
-  }),
-).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
-
 export interface PullRequestSimpleLabelsItem {
   id: number;
   node_id: string;
@@ -1418,34 +880,9 @@ export interface PullRequestSimpleLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: NullableSimpleUser | null;
 }
-export const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    name: S.String,
-    description: S.String,
-    color: S.String,
-    default: S.Boolean,
-    archived_by: S.NullOr(NullableSimpleUser),
-  }),
-).annotate({
-  identifier: "PullRequestSimpleLabelsItem",
-}) as any as S.Schema<PullRequestSimpleLabelsItem>;
-
 export type PullRequestSimpleLabelsList = Array<PullRequestSimpleLabelsItem>;
-export const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
-  PullRequestSimpleLabelsItem,
-) as any as S.Schema<PullRequestSimpleLabelsList>;
-
 export type PullRequestSimpleAssigneesList = Array<NullableSimpleUser>;
-export const PullRequestSimpleAssigneesList =
-  IssueAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
-
 export type PullRequestSimpleRequestedReviewersList = Array<NullableSimpleUser>;
-export const PullRequestSimpleRequestedReviewersList =
-  IssueAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
-
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -1453,28 +890,12 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull: S.Boolean,
-    triage: S.Boolean,
-    push: S.Boolean,
-    maintain: S.Boolean,
-    admin: S.Boolean,
-  }),
-).annotate({ identifier: "TeamPermissions" }) as any as S.Schema<TeamPermissions>;
-
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
-
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
-
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -1505,27 +926,6 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    members_url: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    permission: S.String,
-    privacy: S.optional(S.String),
-    notification_setting: S.optional(S.String),
-    html_url: S.String,
-    repositories_url: S.String,
-    slug: S.String,
-    ldap_dn: S.optional(S.String),
-    type: NullableTeamSimpleType,
-    organization_id: S.optional(S.Number),
-    enterprise_id: S.optional(S.Number),
-  }),
-).annotate({ identifier: "NullableTeamSimple" }) as any as S.Schema<NullableTeamSimple>;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -1551,34 +951,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    description: S.NullOr(S.String),
-    privacy: S.optional(S.String),
-    notification_setting: S.optional(S.String),
-    permission: S.String,
-    permissions: S.optional(TeamPermissions),
-    url: S.String,
-    html_url: S.String,
-    members_url: S.String,
-    repositories_url: S.String,
-    type: TeamType,
-    access_source: S.optional(TeamAccessSource),
-    organization_id: S.optional(S.Number),
-    enterprise_id: S.optional(S.Number),
-    parent: S.NullOr(NullableTeamSimple),
-  }),
-).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
-
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
-export const PullRequestSimpleRequestedTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
-
 export interface PullRequestSimpleHead {
   label: string;
   ref: string;
@@ -1586,29 +959,11 @@ export interface PullRequestSimpleHead {
   sha: string;
   user: NullableSimpleUser | null;
 }
-export const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.String,
-    ref: S.String,
-    repo: Repository,
-    sha: S.String,
-    user: S.NullOr(NullableSimpleUser),
-  }),
-).annotate({ identifier: "PullRequestSimpleHead" }) as any as S.Schema<PullRequestSimpleHead>;
-
 export type PullRequestSimpleBase = PullRequestSimpleHead;
-export const PullRequestSimpleBase = PullRequestSimpleHead;
-
 /** Hypermedia Link */
 export interface Link {
   href: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-  }),
-).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
-
 export interface PullRequestSimpleLinks {
   comments: Link;
   commits: Link;
@@ -1619,23 +974,8 @@ export interface PullRequestSimpleLinks {
   review_comment: Link;
   self: Link;
 }
-export const PullRequestSimpleLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comments: Link,
-    commits: Link,
-    statuses: Link,
-    html: Link,
-    issue: Link,
-    review_comments: Link,
-    review_comment: Link,
-    self: Link,
-  }),
-).annotate({ identifier: "PullRequestSimpleLinks" }) as any as S.Schema<PullRequestSimpleLinks>;
-
 /** The merge method to use. */
 export type AutoMergeMergeMethod = "merge" | "squash" | "rebase";
-export const AutoMergeMergeMethod = S.String;
-
 /** The status of auto merging a pull request. */
 export interface AutoMerge {
   enabled_by: NullableSimpleUser;
@@ -1646,28 +986,12 @@ export interface AutoMerge {
   /** Commit message for the merge commit. */
   commit_message: string;
 }
-export const AutoMerge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled_by: NullableSimpleUser,
-    merge_method: AutoMergeMergeMethod,
-    commit_title: S.String,
-    commit_message: S.String,
-  }),
-).annotate({ identifier: "AutoMerge" }) as any as S.Schema<AutoMerge>;
-
 export interface PullRequestStackBase {
   /** The base ref of the stack this pull request belongs to. */
   ref: string;
   /** The base SHA of the stack this pull request belongs to. */
   sha: string;
 }
-export const PullRequestStackBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    sha: S.String,
-  }),
-).annotate({ identifier: "PullRequestStackBase" }) as any as S.Schema<PullRequestStackBase>;
-
 /** The stack information associated with a pull request. */
 export interface PullRequestStack {
   base: PullRequestStackBase;
@@ -1680,16 +1004,6 @@ export interface PullRequestStack {
   /** The number of the stack that this pull request belongs to. */
   number?: number;
 }
-export const PullRequestStack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    base: PullRequestStackBase,
-    size: S.optional(S.Number),
-    position: S.optional(S.Number),
-    id: S.optional(S.Number),
-    number: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PullRequestStack" }) as any as S.Schema<PullRequestStack>;
-
 /** Pull Request Simple */
 export interface PullRequestSimple {
   url: string;
@@ -1731,48 +1045,6 @@ export interface PullRequestSimple {
   /** Indicates whether or not the pull request is a draft. */
   draft?: boolean;
 }
-export const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    id: S.Number,
-    node_id: S.String,
-    html_url: S.String,
-    diff_url: S.String,
-    patch_url: S.String,
-    issue_url: S.String,
-    commits_url: S.String,
-    review_comments_url: S.String,
-    review_comment_url: S.String,
-    comments_url: S.String,
-    statuses_url: S.String,
-    number: S.Number,
-    state: S.String,
-    locked: S.Boolean,
-    title: S.String,
-    user: S.NullOr(NullableSimpleUser),
-    body: S.NullOr(S.String),
-    labels: PullRequestSimpleLabelsList,
-    milestone: S.NullOr(NullableMilestone),
-    active_lock_reason: S.optional(S.NullOr(S.String)),
-    created_at: S.String,
-    updated_at: S.String,
-    closed_at: S.NullOr(S.String),
-    merged_at: S.NullOr(S.String),
-    merge_commit_sha: S.NullOr(S.String),
-    assignee: S.NullOr(NullableSimpleUser),
-    assignees: S.optional(PullRequestSimpleAssigneesList),
-    requested_reviewers: S.optional(PullRequestSimpleRequestedReviewersList),
-    requested_teams: S.optional(PullRequestSimpleRequestedTeamsList),
-    head: PullRequestSimpleHead,
-    base: PullRequestSimpleHead,
-    _links: PullRequestSimpleLinks,
-    author_association: AuthorAssociation,
-    auto_merge: S.NullOr(AutoMerge),
-    stack: S.optional(S.NullOr(PullRequestStack)),
-    draft: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PullRequestSimple" }) as any as S.Schema<PullRequestSimple>;
-
 /** A draft issue in a project */
 export interface ProjectsV2DraftIssue {
   /** The ID of the draft issue */
@@ -1789,26 +1061,13 @@ export interface ProjectsV2DraftIssue {
   /** The time the draft issue was last updated */
   updated_at: string;
 }
-export const ProjectsV2DraftIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    title: S.String,
-    body: S.optional(S.NullOr(S.String)),
-    user: S.NullOr(NullableSimpleUser),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({ identifier: "ProjectsV2DraftIssue" }) as any as S.Schema<ProjectsV2DraftIssue>;
-
 /** The content represented by the item. */
 export type ProjectsV2ItemSimpleContent = Issue | PullRequestSimple | ProjectsV2DraftIssue;
-export const ProjectsV2ItemSimpleContent =
-  S.Unknown as any as S.Schema<ProjectsV2ItemSimpleContent>;
+const ProjectsV2ItemSimpleContent = S.Unknown as any as S.Schema<ProjectsV2ItemSimpleContent>;
 
 /** The type of content tracked in a project item */
 export type ProjectsV2ItemContentType = "Issue" | "PullRequest" | "DraftIssue";
-export const ProjectsV2ItemContentType = S.String;
+const ProjectsV2ItemContentType = S.String;
 
 /** An item belonging to a project */
 export interface ProjectsV2ItemSimple {
@@ -1831,7 +1090,7 @@ export interface ProjectsV2ItemSimple {
   /** The URL of the item in the project. */
   item_url?: string;
 }
-export const ProjectsV2ItemSimple = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2ItemSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.optional(S.String),
@@ -1848,7 +1107,7 @@ export const ProjectsV2ItemSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of item to add to the project. Must be either Issue or PullRequest. */
 export type AddItemForUserRequestType = "Issue" | "PullRequest";
-export const AddItemForUserRequestType = S.String;
+const AddItemForUserRequestType = S.String;
 
 export interface AddItemForUserRequest {
   /** The handle for the GitHub user account. */
@@ -1866,7 +1125,7 @@ export interface AddItemForUserRequest {
   /** The issue or pull request number. */
   number?: number;
 }
-export const AddItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -1894,7 +1153,7 @@ export interface CreateDraftItemForAuthenticatedUserRequest {
   /** The body content of the draft issue item to create in the project. */
   body?: string;
 }
-export const CreateDraftItemForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDraftItemForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -1921,7 +1180,7 @@ export interface CreateDraftItemForOrgRequest {
   /** The body content of the draft issue item to create in the project. */
   body?: string;
 }
-export const CreateDraftItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDraftItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -1936,37 +1195,37 @@ export const CreateDraftItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The layout of the view. */
 export type CreateViewForOrgRequestLayout = "table" | "board" | "roadmap";
-export const CreateViewForOrgRequestLayout = S.String;
+const CreateViewForOrgRequestLayout = S.String;
 
 /** `visible_fields` is not applicable to `roadmap` layout views. For `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used. */
 export type CreateViewForOrgRequestVisibleFieldsList = Array<number>;
-export const CreateViewForOrgRequestVisibleFieldsList = /*@__PURE__*/ S.Array(
+const CreateViewForOrgRequestVisibleFieldsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateViewForOrgRequestVisibleFieldsList>;
 
 export type CreateViewForOrgRequestSortByItemItem = number | string;
-export const CreateViewForOrgRequestSortByItemItem =
+const CreateViewForOrgRequestSortByItemItem =
   S.Unknown as any as S.Schema<CreateViewForOrgRequestSortByItemItem>;
 
 export type CreateViewForOrgRequestSortByItemList = Array<CreateViewForOrgRequestSortByItemItem>;
-export const CreateViewForOrgRequestSortByItemList = /*@__PURE__*/ S.Array(
+const CreateViewForOrgRequestSortByItemList = /*@__PURE__*/ S.Array(
   CreateViewForOrgRequestSortByItemItem,
 ) as any as S.Schema<CreateViewForOrgRequestSortByItemList>;
 
 /** Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order. */
 export type CreateViewForOrgRequestSortByList = Array<CreateViewForOrgRequestSortByItemList>;
-export const CreateViewForOrgRequestSortByList = /*@__PURE__*/ S.Array(
+const CreateViewForOrgRequestSortByList = /*@__PURE__*/ S.Array(
   CreateViewForOrgRequestSortByItemList,
 ) as any as S.Schema<CreateViewForOrgRequestSortByList>;
 
 /** The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForOrgRequestGroupByList = Array<number>;
-export const CreateViewForOrgRequestGroupByList =
+const CreateViewForOrgRequestGroupByList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForOrgRequestGroupByList>;
 
 /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForOrgRequestVerticalGroupByList = Array<number>;
-export const CreateViewForOrgRequestVerticalGroupByList =
+const CreateViewForOrgRequestVerticalGroupByList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForOrgRequestVerticalGroupByList>;
 
 export interface CreateViewForOrgRequest {
@@ -1989,7 +1248,7 @@ export interface CreateViewForOrgRequest {
   /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
   vertical_group_by?: CreateViewForOrgRequestVerticalGroupByList;
 }
-export const CreateViewForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2007,36 +1266,35 @@ export const CreateViewForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The layout of the view. */
 export type ProjectsV2ViewLayout = "table" | "board" | "roadmap";
-export const ProjectsV2ViewLayout = S.String;
+const ProjectsV2ViewLayout = S.String;
 
 /** The list of field IDs that are visible in the view. */
 export type ProjectsV2ViewVisibleFieldsList = Array<number>;
-export const ProjectsV2ViewVisibleFieldsList =
+const ProjectsV2ViewVisibleFieldsList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewVisibleFieldsList>;
 
 export type ProjectsV2ViewSortByItemItem = number | string;
-export const ProjectsV2ViewSortByItemItem =
-  S.Unknown as any as S.Schema<ProjectsV2ViewSortByItemItem>;
+const ProjectsV2ViewSortByItemItem = S.Unknown as any as S.Schema<ProjectsV2ViewSortByItemItem>;
 
 export type ProjectsV2ViewSortByItemList = Array<ProjectsV2ViewSortByItemItem>;
-export const ProjectsV2ViewSortByItemList = /*@__PURE__*/ S.Array(
+const ProjectsV2ViewSortByItemList = /*@__PURE__*/ S.Array(
   ProjectsV2ViewSortByItemItem,
 ) as any as S.Schema<ProjectsV2ViewSortByItemList>;
 
 /** The sorting configuration for the view. Each element is a tuple of [field_id, direction] where direction is "asc" or "desc". */
 export type ProjectsV2ViewSortByList = Array<ProjectsV2ViewSortByItemList>;
-export const ProjectsV2ViewSortByList = /*@__PURE__*/ S.Array(
+const ProjectsV2ViewSortByList = /*@__PURE__*/ S.Array(
   ProjectsV2ViewSortByItemList,
 ) as any as S.Schema<ProjectsV2ViewSortByList>;
 
 /** The list of field IDs used for horizontal grouping. */
 export type ProjectsV2ViewGroupByList = Array<number>;
-export const ProjectsV2ViewGroupByList =
+const ProjectsV2ViewGroupByList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewGroupByList>;
 
 /** The list of field IDs used for vertical grouping (board layout). */
 export type ProjectsV2ViewVerticalGroupByList = Array<number>;
-export const ProjectsV2ViewVerticalGroupByList =
+const ProjectsV2ViewVerticalGroupByList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewVerticalGroupByList>;
 
 /** A view inside a projects v2 project */
@@ -2071,7 +1329,7 @@ export interface ProjectsV2View {
   /** The list of field IDs used for vertical grouping (board layout). */
   vertical_group_by: ProjectsV2ViewVerticalGroupByList;
 }
-export const ProjectsV2View = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     number: S.Number,
@@ -2093,36 +1351,36 @@ export const ProjectsV2View = /*@__PURE__*/ S.suspend(() =>
 
 /** The layout of the view. */
 export type CreateViewForUserRequestLayout = "table" | "board" | "roadmap";
-export const CreateViewForUserRequestLayout = S.String;
+const CreateViewForUserRequestLayout = S.String;
 
 /** `visible_fields` is not applicable to `roadmap` layout views. For `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used. */
 export type CreateViewForUserRequestVisibleFieldsList = Array<number>;
-export const CreateViewForUserRequestVisibleFieldsList =
+const CreateViewForUserRequestVisibleFieldsList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestVisibleFieldsList>;
 
 export type CreateViewForUserRequestSortByItemItem = number | string;
-export const CreateViewForUserRequestSortByItemItem =
+const CreateViewForUserRequestSortByItemItem =
   S.Unknown as any as S.Schema<CreateViewForUserRequestSortByItemItem>;
 
 export type CreateViewForUserRequestSortByItemList = Array<CreateViewForUserRequestSortByItemItem>;
-export const CreateViewForUserRequestSortByItemList = /*@__PURE__*/ S.Array(
+const CreateViewForUserRequestSortByItemList = /*@__PURE__*/ S.Array(
   CreateViewForUserRequestSortByItemItem,
 ) as any as S.Schema<CreateViewForUserRequestSortByItemList>;
 
 /** Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order. */
 export type CreateViewForUserRequestSortByList = Array<CreateViewForUserRequestSortByItemList>;
-export const CreateViewForUserRequestSortByList = /*@__PURE__*/ S.Array(
+const CreateViewForUserRequestSortByList = /*@__PURE__*/ S.Array(
   CreateViewForUserRequestSortByItemList,
 ) as any as S.Schema<CreateViewForUserRequestSortByList>;
 
 /** The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForUserRequestGroupByList = Array<number>;
-export const CreateViewForUserRequestGroupByList =
+const CreateViewForUserRequestGroupByList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestGroupByList>;
 
 /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForUserRequestVerticalGroupByList = Array<number>;
-export const CreateViewForUserRequestVerticalGroupByList =
+const CreateViewForUserRequestVerticalGroupByList =
   CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestVerticalGroupByList>;
 
 export interface CreateViewForUserRequest {
@@ -2145,7 +1403,7 @@ export interface CreateViewForUserRequest {
   /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
   vertical_group_by?: CreateViewForUserRequestVerticalGroupByList;
 }
-export const CreateViewForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2173,7 +1431,7 @@ export interface DeleteItemForOrgRequest {
   /** The unique identifier of the project item. */
   item_id: number;
 }
-export const DeleteItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2188,7 +1446,7 @@ export const DeleteItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteItemForOrgRequest" }) as any as S.Schema<DeleteItemForOrgRequest>;
 
 export interface DeleteItemForOrgResponse {}
-export const DeleteItemForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteItemForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteItemForOrgResponse",
 }) as any as S.Schema<DeleteItemForOrgResponse>;
 
@@ -2200,7 +1458,7 @@ export interface DeleteItemForUserRequest {
   /** The unique identifier of the project item. */
   item_id: number;
 }
-export const DeleteItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2215,7 +1473,7 @@ export const DeleteItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteItemForUserRequest" }) as any as S.Schema<DeleteItemForUserRequest>;
 
 export interface DeleteItemForUserResponse {}
-export const DeleteItemForUserResponse =
+const DeleteItemForUserResponse =
   DeleteItemForOrgResponse as any as S.Schema<DeleteItemForUserResponse>;
 
 export interface GetFieldForOrgRequest {
@@ -2226,7 +1484,7 @@ export interface GetFieldForOrgRequest {
   /** The unique identifier of the field. */
   field_id: number;
 }
-export const GetFieldForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFieldForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2248,7 +1506,7 @@ export interface GetFieldForUserRequest {
   /** The unique identifier of the field. */
   field_id: number;
 }
-export const GetFieldForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFieldForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2268,7 +1526,7 @@ export interface GetForOrgRequest {
   /** The project's number. */
   project_number: number;
 }
-export const GetForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2277,7 +1535,7 @@ export const GetForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the project. */
 export type ProjectsV2State = "open" | "closed";
-export const ProjectsV2State = S.String;
+const ProjectsV2State = S.String;
 
 /** The current status. */
 export type NullableProjectsV2StatusUpdateStatus =
@@ -2286,7 +1544,7 @@ export type NullableProjectsV2StatusUpdateStatus =
   | "AT_RISK"
   | "OFF_TRACK"
   | "COMPLETE";
-export const NullableProjectsV2StatusUpdateStatus = S.String;
+const NullableProjectsV2StatusUpdateStatus = S.String;
 
 /** An status update belonging to a project */
 export interface NullableProjectsV2StatusUpdate {
@@ -2310,7 +1568,7 @@ export interface NullableProjectsV2StatusUpdate {
   /** Body of the status update */
   body?: string | null;
 }
-export const NullableProjectsV2StatusUpdate = /*@__PURE__*/ S.suspend(() =>
+const NullableProjectsV2StatusUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2360,7 +1618,7 @@ export interface ProjectsV2 {
   /** Whether this project is a template */
   is_template?: boolean;
 }
-export const ProjectsV2 = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2388,7 +1646,7 @@ export interface GetForUserRequest {
   /** The project's number. */
   project_number: number;
 }
-export const GetForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2398,11 +1656,8 @@ export const GetForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetForUserRequest" }) as any as S.Schema<GetForUserRequest>;
 
 export type GetOrgItemRequestFieldsCase1List = Array<string>;
-export const GetOrgItemRequestFieldsCase1List =
-  RepositoryTopicsList as any as S.Schema<GetOrgItemRequestFieldsCase1List>;
-
 export type GetOrgItemRequestFields = string | GetOrgItemRequestFieldsCase1List;
-export const GetOrgItemRequestFields = S.Unknown as any as S.Schema<GetOrgItemRequestFields>;
+const GetOrgItemRequestFields = S.Unknown as any as S.Schema<GetOrgItemRequestFields>;
 
 export interface GetOrgItemRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2414,7 +1669,7 @@ export interface GetOrgItemRequest {
   /** Limit results to specific fields, by their IDs. If not specified, the title field will be returned. Example: fields[]=123&fields[]=456&fields[]=789 or fields=123,456,789 */
   fields?: GetOrgItemRequestFields;
 }
-export const GetOrgItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2431,18 +1686,18 @@ export const GetOrgItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The content of the item, which varies by content type. */
 export type ProjectsV2ItemWithContentContentMap = { [key: string]: unknown | undefined };
-export const ProjectsV2ItemWithContentContentMap = /*@__PURE__*/ S.Record(
+const ProjectsV2ItemWithContentContentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ProjectsV2ItemWithContentContentMap>;
 
 export type ProjectsV2ItemWithContentFieldsItemMap = { [key: string]: unknown | undefined };
-export const ProjectsV2ItemWithContentFieldsItemMap =
+const ProjectsV2ItemWithContentFieldsItemMap =
   ProjectsV2ItemWithContentContentMap as any as S.Schema<ProjectsV2ItemWithContentFieldsItemMap>;
 
 /** The fields and values associated with this item. */
 export type ProjectsV2ItemWithContentFieldsList = Array<ProjectsV2ItemWithContentFieldsItemMap>;
-export const ProjectsV2ItemWithContentFieldsList = /*@__PURE__*/ S.Array(
+const ProjectsV2ItemWithContentFieldsList = /*@__PURE__*/ S.Array(
   ProjectsV2ItemWithContentFieldsItemMap,
 ) as any as S.Schema<ProjectsV2ItemWithContentFieldsList>;
 
@@ -2469,7 +1724,7 @@ export interface ProjectsV2ItemWithContent {
   /** The fields and values associated with this item. */
   fields?: ProjectsV2ItemWithContentFieldsList;
 }
-export const ProjectsV2ItemWithContent = /*@__PURE__*/ S.suspend(() =>
+const ProjectsV2ItemWithContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.optional(S.String),
@@ -2488,11 +1743,8 @@ export const ProjectsV2ItemWithContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsV2ItemWithContent>;
 
 export type GetUserItemRequestFieldsCase1List = Array<string>;
-export const GetUserItemRequestFieldsCase1List =
-  RepositoryTopicsList as any as S.Schema<GetUserItemRequestFieldsCase1List>;
-
 export type GetUserItemRequestFields = string | GetUserItemRequestFieldsCase1List;
-export const GetUserItemRequestFields = S.Unknown as any as S.Schema<GetUserItemRequestFields>;
+const GetUserItemRequestFields = S.Unknown as any as S.Schema<GetUserItemRequestFields>;
 
 export interface GetUserItemRequest {
   /** The handle for the GitHub user account. */
@@ -2504,7 +1756,7 @@ export interface GetUserItemRequest {
   /** Limit results to specific fields, by their IDs. If not specified, the title field will be returned. Example: fields[]=123&fields[]=456&fields[]=789 or fields=123,456,789 */
   fields?: GetUserItemRequestFields;
 }
-export const GetUserItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2531,7 +1783,7 @@ export interface ListFieldsForOrgRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-export const ListFieldsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFieldsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2544,12 +1796,12 @@ export const ListFieldsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFieldsForOrgRequest" }) as any as S.Schema<ListFieldsForOrgRequest>;
 
 export type ListFieldsForOrgResponseBodyList = Array<ProjectsV2Field>;
-export const ListFieldsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFieldsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
   ProjectsV2Field,
 ) as any as S.Schema<ListFieldsForOrgResponseBodyList>;
 
 export type ListFieldsForOrgResponse = ListFieldsForOrgResponseBodyList;
-export const ListFieldsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFieldsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListFieldsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListFieldsForOrgResponse" }) as any as S.Schema<ListFieldsForOrgResponse>;
 
@@ -2565,7 +1817,7 @@ export interface ListFieldsForUserRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-export const ListFieldsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFieldsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2582,11 +1834,11 @@ export const ListFieldsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFieldsForUserRequest" }) as any as S.Schema<ListFieldsForUserRequest>;
 
 export type ListFieldsForUserResponseBodyList = Array<ProjectsV2Field>;
-export const ListFieldsForUserResponseBodyList =
+const ListFieldsForUserResponseBodyList =
   ListFieldsForOrgResponseBodyList as any as S.Schema<ListFieldsForUserResponseBodyList>;
 
 export type ListFieldsForUserResponse = ListFieldsForUserResponseBodyList;
-export const ListFieldsForUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFieldsForUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListFieldsForUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFieldsForUserResponse",
@@ -2604,7 +1856,7 @@ export interface ListForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -2615,12 +1867,12 @@ export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForOrgRequest" }) as any as S.Schema<ListForOrgRequest>;
 
 export type ListForOrgResponseBodyList = Array<ProjectsV2>;
-export const ListForOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForOrgResponseBodyList = /*@__PURE__*/ S.Array(
   ProjectsV2,
 ) as any as S.Schema<ListForOrgResponseBodyList>;
 
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-export const ListForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListForOrgResponse" }) as any as S.Schema<ListForOrgResponse>;
 
@@ -2636,7 +1888,7 @@ export interface ListForUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -2647,19 +1899,12 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<ProjectsV2>;
-export const ListForUserResponseBodyList =
-  ListForOrgResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
-
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = ListForOrgResponse as any as S.Schema<ListForUserResponse>;
+const ListForUserResponse = ListForOrgResponse as any as S.Schema<ListForUserResponse>;
 
 export type ListItemsForOrgRequestFieldsCase1List = Array<string>;
-export const ListItemsForOrgRequestFieldsCase1List =
-  RepositoryTopicsList as any as S.Schema<ListItemsForOrgRequestFieldsCase1List>;
-
 export type ListItemsForOrgRequestFields = string | ListItemsForOrgRequestFieldsCase1List;
-export const ListItemsForOrgRequestFields =
-  S.Unknown as any as S.Schema<ListItemsForOrgRequestFields>;
+const ListItemsForOrgRequestFields = S.Unknown as any as S.Schema<ListItemsForOrgRequestFields>;
 
 export interface ListItemsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2677,7 +1922,7 @@ export interface ListItemsForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2692,22 +1937,18 @@ export const ListItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListItemsForOrgRequest" }) as any as S.Schema<ListItemsForOrgRequest>;
 
 export type ListItemsForOrgResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListItemsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListItemsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
   ProjectsV2ItemWithContent,
 ) as any as S.Schema<ListItemsForOrgResponseBodyList>;
 
 export type ListItemsForOrgResponse = ListItemsForOrgResponseBodyList;
-export const ListItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListItemsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListItemsForOrgResponse" }) as any as S.Schema<ListItemsForOrgResponse>;
 
 export type ListItemsForUserRequestFieldsCase1List = Array<string>;
-export const ListItemsForUserRequestFieldsCase1List =
-  RepositoryTopicsList as any as S.Schema<ListItemsForUserRequestFieldsCase1List>;
-
 export type ListItemsForUserRequestFields = string | ListItemsForUserRequestFieldsCase1List;
-export const ListItemsForUserRequestFields =
-  S.Unknown as any as S.Schema<ListItemsForUserRequestFields>;
+const ListItemsForUserRequestFields = S.Unknown as any as S.Schema<ListItemsForUserRequestFields>;
 
 export interface ListItemsForUserRequest {
   /** The handle for the GitHub user account. */
@@ -2725,7 +1966,7 @@ export interface ListItemsForUserRequest {
   /** Limit results to specific fields, by their IDs. If not specified, the title field will be returned. Example: `fields[]=123&fields[]=456&fields[]=789` or `fields=123,456,789` */
   fields?: ListItemsForUserRequestFields;
 }
-export const ListItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2744,19 +1985,13 @@ export const ListItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListItemsForUserRequest" }) as any as S.Schema<ListItemsForUserRequest>;
 
 export type ListItemsForUserResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListItemsForUserResponseBodyList =
-  ListItemsForOrgResponseBodyList as any as S.Schema<ListItemsForUserResponseBodyList>;
-
 export type ListItemsForUserResponse = ListItemsForUserResponseBodyList;
-export const ListItemsForUserResponse =
+const ListItemsForUserResponse =
   ListItemsForOrgResponse as any as S.Schema<ListItemsForUserResponse>;
 
 export type ListViewItemsForOrgRequestFieldsCase1List = Array<string>;
-export const ListViewItemsForOrgRequestFieldsCase1List =
-  RepositoryTopicsList as any as S.Schema<ListViewItemsForOrgRequestFieldsCase1List>;
-
 export type ListViewItemsForOrgRequestFields = string | ListViewItemsForOrgRequestFieldsCase1List;
-export const ListViewItemsForOrgRequestFields =
+const ListViewItemsForOrgRequestFields =
   S.Unknown as any as S.Schema<ListViewItemsForOrgRequestFields>;
 
 export interface ListViewItemsForOrgRequest {
@@ -2775,7 +2010,7 @@ export interface ListViewItemsForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListViewItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViewItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2796,22 +2031,19 @@ export const ListViewItemsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViewItemsForOrgRequest>;
 
 export type ListViewItemsForOrgResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListViewItemsForOrgResponseBodyList =
+const ListViewItemsForOrgResponseBodyList =
   ListItemsForOrgResponseBodyList as any as S.Schema<ListViewItemsForOrgResponseBodyList>;
 
 export type ListViewItemsForOrgResponse = ListViewItemsForOrgResponseBodyList;
-export const ListViewItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListViewItemsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListViewItemsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListViewItemsForOrgResponse",
 }) as any as S.Schema<ListViewItemsForOrgResponse>;
 
 export type ListViewItemsForUserRequestFieldsCase1List = Array<string>;
-export const ListViewItemsForUserRequestFieldsCase1List =
-  RepositoryTopicsList as any as S.Schema<ListViewItemsForUserRequestFieldsCase1List>;
-
 export type ListViewItemsForUserRequestFields = string | ListViewItemsForUserRequestFieldsCase1List;
-export const ListViewItemsForUserRequestFields =
+const ListViewItemsForUserRequestFields =
   S.Unknown as any as S.Schema<ListViewItemsForUserRequestFields>;
 
 export interface ListViewItemsForUserRequest {
@@ -2830,7 +2062,7 @@ export interface ListViewItemsForUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListViewItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViewItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2851,16 +2083,13 @@ export const ListViewItemsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViewItemsForUserRequest>;
 
 export type ListViewItemsForUserResponseBodyList = Array<ProjectsV2ItemWithContent>;
-export const ListViewItemsForUserResponseBodyList =
-  ListItemsForOrgResponseBodyList as any as S.Schema<ListViewItemsForUserResponseBodyList>;
-
 export type ListViewItemsForUserResponse = ListViewItemsForUserResponseBodyList;
-export const ListViewItemsForUserResponse =
+const ListViewItemsForUserResponse =
   ListViewItemsForOrgResponse as any as S.Schema<ListViewItemsForUserResponse>;
 
 /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
 export type UpdateItemForOrgRequestFieldsItemValue = string | number;
-export const UpdateItemForOrgRequestFieldsItemValue =
+const UpdateItemForOrgRequestFieldsItemValue =
   S.Unknown as any as S.Schema<UpdateItemForOrgRequestFieldsItemValue>;
 
 export interface UpdateItemForOrgRequestFieldsItem {
@@ -2869,7 +2098,7 @@ export interface UpdateItemForOrgRequestFieldsItem {
   /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
   value: UpdateItemForOrgRequestFieldsItemValue | null;
 }
-export const UpdateItemForOrgRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemForOrgRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     value: S.NullOr(UpdateItemForOrgRequestFieldsItemValue),
@@ -2880,7 +2109,7 @@ export const UpdateItemForOrgRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of field updates to apply. */
 export type UpdateItemForOrgRequestFieldsList = Array<UpdateItemForOrgRequestFieldsItem>;
-export const UpdateItemForOrgRequestFieldsList = /*@__PURE__*/ S.Array(
+const UpdateItemForOrgRequestFieldsList = /*@__PURE__*/ S.Array(
   UpdateItemForOrgRequestFieldsItem,
 ) as any as S.Schema<UpdateItemForOrgRequestFieldsList>;
 
@@ -2894,7 +2123,7 @@ export interface UpdateItemForOrgRequest {
   /** A list of field updates to apply. */
   fields: UpdateItemForOrgRequestFieldsList;
 }
-export const UpdateItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),
@@ -2911,7 +2140,7 @@ export const UpdateItemForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
 export type UpdateItemForUserRequestFieldsItemValue = string | number;
-export const UpdateItemForUserRequestFieldsItemValue =
+const UpdateItemForUserRequestFieldsItemValue =
   S.Unknown as any as S.Schema<UpdateItemForUserRequestFieldsItemValue>;
 
 export interface UpdateItemForUserRequestFieldsItem {
@@ -2920,7 +2149,7 @@ export interface UpdateItemForUserRequestFieldsItem {
   /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
   value: UpdateItemForUserRequestFieldsItemValue | null;
 }
-export const UpdateItemForUserRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemForUserRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     value: S.NullOr(UpdateItemForUserRequestFieldsItemValue),
@@ -2931,7 +2160,7 @@ export const UpdateItemForUserRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of field updates to apply. */
 export type UpdateItemForUserRequestFieldsList = Array<UpdateItemForUserRequestFieldsItem>;
-export const UpdateItemForUserRequestFieldsList = /*@__PURE__*/ S.Array(
+const UpdateItemForUserRequestFieldsList = /*@__PURE__*/ S.Array(
   UpdateItemForUserRequestFieldsItem,
 ) as any as S.Schema<UpdateItemForUserRequestFieldsList>;
 
@@ -2945,7 +2174,7 @@ export interface UpdateItemForUserRequest {
   /** A list of field updates to apply. */
   fields: UpdateItemForUserRequestFieldsList;
 }
-export const UpdateItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     project_number: S.Number.pipe(T.Label()),

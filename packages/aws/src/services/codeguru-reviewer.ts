@@ -119,9 +119,9 @@ export type Name = string;
 export interface CodeCommitRepository {
   Name: string;
 }
-export const CodeCommitRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String }),
-).annotate({ identifier: "CodeCommitRepository" }) as any as S.Schema<CodeCommitRepository>;
+const CodeCommitRepository = /*@__PURE__*/ S.suspend(() => S.Struct({ Name: S.String })).annotate({
+  identifier: "CodeCommitRepository",
+}) as any as S.Schema<CodeCommitRepository>;
 export type ConnectionArn = string;
 export type Owner = string;
 export interface ThirdPartySourceRepository {
@@ -129,7 +129,7 @@ export interface ThirdPartySourceRepository {
   ConnectionArn: string;
   Owner: string;
 }
-export const ThirdPartySourceRepository = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartySourceRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, ConnectionArn: S.String, Owner: S.String }),
 ).annotate({
   identifier: "ThirdPartySourceRepository",
@@ -139,7 +139,7 @@ export interface S3Repository {
   Name: string;
   BucketName: string;
 }
-export const S3Repository = /*@__PURE__*/ S.suspend(() =>
+const S3Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, BucketName: S.String }),
 ).annotate({ identifier: "S3Repository" }) as any as S.Schema<S3Repository>;
 export interface Repository {
@@ -148,7 +148,7 @@ export interface Repository {
   GitHubEnterpriseServer?: ThirdPartySourceRepository;
   S3Bucket?: S3Repository;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeCommit: S.optional(CodeCommitRepository),
     Bitbucket: S.optional(ThirdPartySourceRepository),
@@ -160,16 +160,16 @@ export type ClientRequestToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type KMSKeyId = string;
 export type EncryptionOption = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK" | (string & {});
-export const EncryptionOption = S.String;
+const EncryptionOption = S.String;
 
 export interface KMSKeyDetails {
   KMSKeyId?: string;
   EncryptionOption?: EncryptionOption;
 }
-export const KMSKeyDetails = /*@__PURE__*/ S.suspend(() =>
+const KMSKeyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KMSKeyId: S.optional(S.String), EncryptionOption: S.optional(EncryptionOption) }),
 ).annotate({ identifier: "KMSKeyDetails" }) as any as S.Schema<KMSKeyDetails>;
 export interface AssociateRepositoryRequest {
@@ -178,7 +178,7 @@ export interface AssociateRepositoryRequest {
   Tags?: { [key: string]: string | undefined };
   KMSKeyDetails?: KMSKeyDetails;
 }
-export const AssociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Repository: Repository,
     ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -197,7 +197,7 @@ export type ProviderType =
   | "GitHubEnterpriseServer"
   | "S3Bucket"
   | (string & {});
-export const ProviderType = S.String;
+const ProviderType = S.String;
 
 export type RepositoryAssociationState =
   | "Associated"
@@ -206,7 +206,7 @@ export type RepositoryAssociationState =
   | "Disassociating"
   | "Disassociated"
   | (string & {});
-export const RepositoryAssociationState = S.String;
+const RepositoryAssociationState = S.String;
 
 export type StateReason = string;
 export type SourceCodeArtifactsObjectKey = string;
@@ -215,7 +215,7 @@ export interface CodeArtifacts {
   SourceCodeArtifactsObjectKey: string;
   BuildArtifactsObjectKey?: string;
 }
-export const CodeArtifacts = /*@__PURE__*/ S.suspend(() =>
+const CodeArtifacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceCodeArtifactsObjectKey: S.String,
     BuildArtifactsObjectKey: S.optional(S.String),
@@ -225,7 +225,7 @@ export interface S3RepositoryDetails {
   BucketName?: string;
   CodeArtifacts?: CodeArtifacts;
 }
-export const S3RepositoryDetails = /*@__PURE__*/ S.suspend(() =>
+const S3RepositoryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketName: S.optional(S.String), CodeArtifacts: S.optional(CodeArtifacts) }),
 ).annotate({ identifier: "S3RepositoryDetails" }) as any as S.Schema<S3RepositoryDetails>;
 export interface RepositoryAssociation {
@@ -242,7 +242,7 @@ export interface RepositoryAssociation {
   KMSKeyDetails?: KMSKeyDetails;
   S3RepositoryDetails?: S3RepositoryDetails;
 }
-export const RepositoryAssociation = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AssociationId: S.optional(S.String),
     AssociationArn: S.optional(S.String),
@@ -262,7 +262,7 @@ export interface AssociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-export const AssociateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RepositoryAssociation: S.optional(RepositoryAssociation), Tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "AssociateRepositoryResponse",
@@ -273,7 +273,7 @@ export type BranchName = string;
 export interface RepositoryHeadSourceCodeType {
   BranchName: string;
 }
-export const RepositoryHeadSourceCodeType = /*@__PURE__*/ S.suspend(() =>
+const RepositoryHeadSourceCodeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BranchName: S.String }),
 ).annotate({
   identifier: "RepositoryHeadSourceCodeType",
@@ -284,7 +284,7 @@ export interface CommitDiffSourceCodeType {
   DestinationCommit?: string;
   MergeBaseCommit?: string;
 }
-export const CommitDiffSourceCodeType = /*@__PURE__*/ S.suspend(() =>
+const CommitDiffSourceCodeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceCommit: S.optional(S.String),
     DestinationCommit: S.optional(S.String),
@@ -295,14 +295,14 @@ export interface BranchDiffSourceCodeType {
   SourceBranchName: string;
   DestinationBranchName: string;
 }
-export const BranchDiffSourceCodeType = /*@__PURE__*/ S.suspend(() =>
+const BranchDiffSourceCodeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SourceBranchName: S.String, DestinationBranchName: S.String }),
 ).annotate({ identifier: "BranchDiffSourceCodeType" }) as any as S.Schema<BranchDiffSourceCodeType>;
 export interface S3BucketRepository {
   Name: string;
   Details?: S3RepositoryDetails;
 }
-export const S3BucketRepository = /*@__PURE__*/ S.suspend(() =>
+const S3BucketRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Details: S.optional(S3RepositoryDetails) }),
 ).annotate({ identifier: "S3BucketRepository" }) as any as S.Schema<S3BucketRepository>;
 export type RequestId = string;
@@ -313,11 +313,11 @@ export interface EventInfo {
   Name?: string;
   State?: string;
 }
-export const EventInfo = /*@__PURE__*/ S.suspend(() =>
+const EventInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), State: S.optional(S.String) }),
 ).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
 export type VendorName = "GitHub" | "GitLab" | "NativeS3" | (string & {});
-export const VendorName = S.String;
+const VendorName = S.String;
 
 export interface RequestMetadata {
   RequestId?: string;
@@ -325,7 +325,7 @@ export interface RequestMetadata {
   EventInfo?: EventInfo;
   VendorName?: VendorName;
 }
-export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RequestId: S.optional(S.String),
     Requester: S.optional(S.String),
@@ -340,7 +340,7 @@ export interface SourceCodeType {
   S3BucketRepository?: S3BucketRepository;
   RequestMetadata?: RequestMetadata;
 }
-export const SourceCodeType = /*@__PURE__*/ S.suspend(() =>
+const SourceCodeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CommitDiff: S.optional(CommitDiffSourceCodeType),
     RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
@@ -353,22 +353,22 @@ export interface RepositoryAnalysis {
   RepositoryHead?: RepositoryHeadSourceCodeType;
   SourceCodeType?: SourceCodeType;
 }
-export const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
     SourceCodeType: S.optional(SourceCodeType),
   }),
 ).annotate({ identifier: "RepositoryAnalysis" }) as any as S.Schema<RepositoryAnalysis>;
 export type AnalysisType = "Security" | "CodeQuality" | (string & {});
-export const AnalysisType = S.String;
+const AnalysisType = S.String;
 
 export type AnalysisTypes = AnalysisType[];
-export const AnalysisTypes = /*@__PURE__*/ S.Array(AnalysisType);
+const AnalysisTypes = /*@__PURE__*/ S.Array(AnalysisType);
 export interface CodeReviewType {
   RepositoryAnalysis: RepositoryAnalysis;
   AnalysisTypes?: AnalysisType[];
 }
-export const CodeReviewType = /*@__PURE__*/ S.suspend(() =>
+const CodeReviewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RepositoryAnalysis: RepositoryAnalysis, AnalysisTypes: S.optional(AnalysisTypes) }),
 ).annotate({ identifier: "CodeReviewType" }) as any as S.Schema<CodeReviewType>;
 export interface CreateCodeReviewRequest {
@@ -377,7 +377,7 @@ export interface CreateCodeReviewRequest {
   Type: CodeReviewType;
   ClientRequestToken?: string;
 }
-export const CreateCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     RepositoryAssociationArn: S.String,
@@ -386,10 +386,10 @@ export const CreateCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/codereviews" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateCodeReviewRequest" }) as any as S.Schema<CreateCodeReviewRequest>;
 export type JobState = "Completed" | "Pending" | "Failed" | "Deleting" | (string & {});
-export const JobState = S.String;
+const JobState = S.String;
 
 export type Type = "PullRequest" | "RepositoryAnalysis" | (string & {});
-export const Type = S.String;
+const Type = S.String;
 
 export type PullRequestId = string;
 export type LinesOfCodeCount = number;
@@ -399,7 +399,7 @@ export interface Metrics {
   SuppressedLinesOfCodeCount?: number;
   FindingsCount?: number;
 }
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
+const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MeteredLinesOfCodeCount: S.optional(S.Number),
     SuppressedLinesOfCodeCount: S.optional(S.Number),
@@ -407,7 +407,7 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 export type ConfigFileState = "Present" | "Absent" | "PresentWithErrors" | (string & {});
-export const ConfigFileState = S.String;
+const ConfigFileState = S.String;
 
 export interface CodeReview {
   Name?: string;
@@ -427,7 +427,7 @@ export interface CodeReview {
   AnalysisTypes?: AnalysisType[];
   ConfigFileState?: ConfigFileState;
 }
-export const CodeReview = /*@__PURE__*/ S.suspend(() =>
+const CodeReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     CodeReviewArn: S.optional(S.String),
@@ -450,13 +450,13 @@ export const CodeReview = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCodeReviewResponse {
   CodeReview?: CodeReview;
 }
-export const CreateCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeReview: S.optional(CodeReview) }),
 ).annotate({ identifier: "CreateCodeReviewResponse" }) as any as S.Schema<CreateCodeReviewResponse>;
 export interface DescribeCodeReviewRequest {
   CodeReviewArn: string;
 }
-export const DescribeCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/codereviews/{CodeReviewArn}" }),
@@ -473,7 +473,7 @@ export const DescribeCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeCodeReviewResponse {
   CodeReview?: CodeReview;
 }
-export const DescribeCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeReview: S.optional(CodeReview) }),
 ).annotate({
   identifier: "DescribeCodeReviewResponse",
@@ -485,7 +485,7 @@ export interface DescribeRecommendationFeedbackRequest {
   RecommendationId: string;
   UserId?: string;
 }
-export const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
     RecommendationId: S.String.pipe(T.HttpQuery("RecommendationId")),
@@ -504,10 +504,8 @@ export const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeRecommendationFeedbackRequest",
 }) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
 export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
-export const Reaction = S.String;
-
 export type Reactions = Reaction[];
-export const Reactions = AnalysisTypes as any as S.Schema<Reactions>;
+const Reactions = AnalysisTypes as any as S.Schema<Reactions>;
 export interface RecommendationFeedback {
   CodeReviewArn?: string;
   RecommendationId?: string;
@@ -516,7 +514,7 @@ export interface RecommendationFeedback {
   CreatedTimeStamp?: Date;
   LastUpdatedTimeStamp?: Date;
 }
-export const RecommendationFeedback = /*@__PURE__*/ S.suspend(() =>
+const RecommendationFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeReviewArn: S.optional(S.String),
     RecommendationId: S.optional(S.String),
@@ -529,7 +527,7 @@ export const RecommendationFeedback = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeRecommendationFeedbackResponse {
   RecommendationFeedback?: RecommendationFeedback;
 }
-export const DescribeRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecommendationFeedback: S.optional(RecommendationFeedback) }),
 ).annotate({
   identifier: "DescribeRecommendationFeedbackResponse",
@@ -537,7 +535,7 @@ export const DescribeRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(()
 export interface DescribeRepositoryAssociationRequest {
   AssociationArn: string;
 }
-export const DescribeRepositoryAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeRepositoryAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AssociationArn: S.String.pipe(T.HttpLabel("AssociationArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/associations/{AssociationArn}" }),
@@ -555,12 +553,12 @@ export interface DescribeRepositoryAssociationResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeRepositoryAssociationResponse =
+const DescribeRepositoryAssociationResponse =
   AssociateRepositoryResponse as any as S.Schema<DescribeRepositoryAssociationResponse>;
 export interface DisassociateRepositoryRequest {
   AssociationArn: string;
 }
-export const DisassociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AssociationArn: S.String.pipe(T.HttpLabel("AssociationArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/associations/{AssociationArn}" }),
@@ -578,14 +576,14 @@ export interface DisassociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-export const DisassociateRepositoryResponse =
+const DisassociateRepositoryResponse =
   AssociateRepositoryResponse as any as S.Schema<DisassociateRepositoryResponse>;
 export type ProviderTypes = ProviderType[];
-export const ProviderTypes = AnalysisTypes as any as S.Schema<ProviderTypes>;
+const ProviderTypes = AnalysisTypes as any as S.Schema<ProviderTypes>;
 export type JobStates = JobState[];
-export const JobStates = AnalysisTypes as any as S.Schema<JobStates>;
+const JobStates = AnalysisTypes as any as S.Schema<JobStates>;
 export type RepositoryNames = string[];
-export const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
+const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
 export type ListCodeReviewsMaxResults = number;
 export type NextToken = string;
 export interface ListCodeReviewsRequest {
@@ -596,7 +594,7 @@ export interface ListCodeReviewsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListCodeReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderTypes")),
     States: S.optional(JobStates).pipe(T.HttpQuery("States")),
@@ -611,7 +609,7 @@ export interface MetricsSummary {
   SuppressedLinesOfCodeCount?: number;
   FindingsCount?: number;
 }
-export const MetricsSummary = Metrics as any as S.Schema<MetricsSummary>;
+const MetricsSummary = Metrics as any as S.Schema<MetricsSummary>;
 export interface CodeReviewSummary {
   Name?: string;
   CodeReviewArn?: string;
@@ -626,7 +624,7 @@ export interface CodeReviewSummary {
   MetricsSummary?: MetricsSummary;
   SourceCodeType?: SourceCodeType;
 }
-export const CodeReviewSummary = /*@__PURE__*/ S.suspend(() =>
+const CodeReviewSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     CodeReviewArn: S.optional(S.String),
@@ -643,12 +641,12 @@ export const CodeReviewSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CodeReviewSummary" }) as any as S.Schema<CodeReviewSummary>;
 export type CodeReviewSummaries = CodeReviewSummary[];
-export const CodeReviewSummaries = /*@__PURE__*/ S.Array(CodeReviewSummary);
+const CodeReviewSummaries = /*@__PURE__*/ S.Array(CodeReviewSummary);
 export interface ListCodeReviewsResponse {
   CodeReviewSummaries?: CodeReviewSummary[];
   NextToken?: string;
 }
-export const ListCodeReviewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCodeReviewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeReviewSummaries: S.optional(CodeReviewSummaries),
     NextToken: S.optional(S.String),
@@ -656,9 +654,9 @@ export const ListCodeReviewsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCodeReviewsResponse" }) as any as S.Schema<ListCodeReviewsResponse>;
 export type MaxResults = number;
 export type UserIds = string[];
-export const UserIds = RepositoryNames as any as S.Schema<UserIds>;
+const UserIds = RepositoryNames as any as S.Schema<UserIds>;
 export type RecommendationIds = string[];
-export const RecommendationIds = RepositoryNames as any as S.Schema<RecommendationIds>;
+const RecommendationIds = RepositoryNames as any as S.Schema<RecommendationIds>;
 export interface ListRecommendationFeedbackRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -666,7 +664,7 @@ export interface ListRecommendationFeedbackRequest {
   UserIds?: string[];
   RecommendationIds?: string[];
 }
-export const ListRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -691,7 +689,7 @@ export interface RecommendationFeedbackSummary {
   Reactions?: Reaction[];
   UserId?: string;
 }
-export const RecommendationFeedbackSummary = /*@__PURE__*/ S.suspend(() =>
+const RecommendationFeedbackSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecommendationId: S.optional(S.String),
     Reactions: S.optional(Reactions),
@@ -701,12 +699,12 @@ export const RecommendationFeedbackSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecommendationFeedbackSummary",
 }) as any as S.Schema<RecommendationFeedbackSummary>;
 export type RecommendationFeedbackSummaries = RecommendationFeedbackSummary[];
-export const RecommendationFeedbackSummaries = /*@__PURE__*/ S.Array(RecommendationFeedbackSummary);
+const RecommendationFeedbackSummaries = /*@__PURE__*/ S.Array(RecommendationFeedbackSummary);
 export interface ListRecommendationFeedbackResponse {
   RecommendationFeedbackSummaries?: RecommendationFeedbackSummary[];
   NextToken?: string;
 }
-export const ListRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecommendationFeedbackSummaries: S.optional(RecommendationFeedbackSummaries),
     NextToken: S.optional(S.String),
@@ -720,7 +718,7 @@ export interface ListRecommendationsRequest {
   MaxResults?: number;
   CodeReviewArn: string;
 }
-export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -754,7 +752,7 @@ export type RecommendationCategory =
   | "SecurityIssues"
   | "CodeInconsistencies"
   | (string & {});
-export const RecommendationCategory = S.String;
+const RecommendationCategory = S.String;
 
 export type RuleId = string;
 export type RuleName = string;
@@ -762,7 +760,7 @@ export type ShortDescription = string;
 export type LongDescription = string;
 export type RuleTag = string;
 export type RuleTags = string[];
-export const RuleTags = RepositoryNames as any as S.Schema<RuleTags>;
+const RuleTags = RepositoryNames as any as S.Schema<RuleTags>;
 export interface RuleMetadata {
   RuleId?: string;
   RuleName?: string;
@@ -770,7 +768,7 @@ export interface RuleMetadata {
   LongDescription?: string;
   RuleTags?: string[];
 }
-export const RuleMetadata = /*@__PURE__*/ S.suspend(() =>
+const RuleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RuleId: S.optional(S.String),
     RuleName: S.optional(S.String),
@@ -780,7 +778,7 @@ export const RuleMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleMetadata" }) as any as S.Schema<RuleMetadata>;
 export type Severity = "Info" | "Low" | "Medium" | "High" | "Critical" | (string & {});
-export const Severity = S.String;
+const Severity = S.String;
 
 export interface RecommendationSummary {
   FilePath?: string;
@@ -792,7 +790,7 @@ export interface RecommendationSummary {
   RuleMetadata?: RuleMetadata;
   Severity?: Severity;
 }
-export const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
+const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FilePath: S.optional(S.String),
     RecommendationId: S.optional(S.String),
@@ -805,12 +803,12 @@ export const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RecommendationSummary" }) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummaries = RecommendationSummary[];
-export const RecommendationSummaries = /*@__PURE__*/ S.Array(RecommendationSummary);
+const RecommendationSummaries = /*@__PURE__*/ S.Array(RecommendationSummary);
 export interface ListRecommendationsResponse {
   RecommendationSummaries?: RecommendationSummary[];
   NextToken?: string;
 }
-export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecommendationSummaries: S.optional(RecommendationSummaries),
     NextToken: S.optional(S.String),
@@ -819,12 +817,11 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
 export type RepositoryAssociationStates = RepositoryAssociationState[];
-export const RepositoryAssociationStates =
-  AnalysisTypes as any as S.Schema<RepositoryAssociationStates>;
+const RepositoryAssociationStates = AnalysisTypes as any as S.Schema<RepositoryAssociationStates>;
 export type Names = string[];
-export const Names = RepositoryNames as any as S.Schema<Names>;
+const Names = RepositoryNames as any as S.Schema<Names>;
 export type Owners = string[];
-export const Owners = RepositoryNames as any as S.Schema<Owners>;
+const Owners = RepositoryNames as any as S.Schema<Owners>;
 export interface ListRepositoryAssociationsRequest {
   ProviderTypes?: ProviderType[];
   States?: RepositoryAssociationState[];
@@ -833,7 +830,7 @@ export interface ListRepositoryAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListRepositoryAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoryAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderType")),
     States: S.optional(RepositoryAssociationStates).pipe(T.HttpQuery("State")),
@@ -855,7 +852,7 @@ export interface RepositoryAssociationSummary {
   ProviderType?: ProviderType;
   State?: RepositoryAssociationState;
 }
-export const RepositoryAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AssociationArn: S.optional(S.String),
     ConnectionArn: S.optional(S.String),
@@ -870,12 +867,12 @@ export const RepositoryAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepositoryAssociationSummary",
 }) as any as S.Schema<RepositoryAssociationSummary>;
 export type RepositoryAssociationSummaries = RepositoryAssociationSummary[];
-export const RepositoryAssociationSummaries = /*@__PURE__*/ S.Array(RepositoryAssociationSummary);
+const RepositoryAssociationSummaries = /*@__PURE__*/ S.Array(RepositoryAssociationSummary);
 export interface ListRepositoryAssociationsResponse {
   RepositoryAssociationSummaries?: RepositoryAssociationSummary[];
   NextToken?: string;
 }
-export const ListRepositoryAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoryAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RepositoryAssociationSummaries: S.optional(RepositoryAssociationSummaries),
     NextToken: S.optional(S.String),
@@ -886,7 +883,7 @@ export const ListRepositoryAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -896,7 +893,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -906,7 +903,7 @@ export interface PutRecommendationFeedbackRequest {
   RecommendationId: string;
   Reactions: Reaction[];
 }
-export const PutRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeReviewArn: S.String, RecommendationId: S.String, Reactions: Reactions }).pipe(
     T.all(T.Http({ method: "PUT", uri: "/feedback" }), svc, auth, proto, ver, rules),
   ),
@@ -914,31 +911,29 @@ export const PutRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRecommendationFeedbackRequest",
 }) as any as S.Schema<PutRecommendationFeedbackRequest>;
 export interface PutRecommendationFeedbackResponse {}
-export const PutRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const PutRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PutRecommendationFeedbackResponse",
 }) as any as S.Schema<PutRecommendationFeedbackResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), Tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = RepositoryNames as any as S.Schema<TagKeyList>;
+const TagKeyList = RepositoryNames as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -947,7 +942,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type AssociateRepositoryError =
   | AccessDeniedException

@@ -795,7 +795,7 @@ export interface CancelCertificateRequest {
   /** Use this parameter to specify your certificate ID (hash). */
   id: string;
 }
-export const CancelCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/certificates/{id}/cancel", code: 200 })),
@@ -805,7 +805,7 @@ export interface CancelCertificateResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
-export const CancelCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Number,
   }),
@@ -825,7 +825,7 @@ export interface CreateCertificateRequest {
   /** Certificate hash of the certificate to be replaced. The certificate to be replaced must be in status `issued` or `expiring_soon`. You can only create one replacement certificate for an existing certificate. This parameter is entirely optional and not yet widely adapted. In the future it might be used in the UI. */
   replacement_for_certificate?: string;
 }
-export const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate_domains: S.String,
     certificate_csr: S.String,
@@ -836,21 +836,21 @@ export const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCertificateRequest" }) as any as S.Schema<CreateCertificateRequest>;
 
 export type CreateCertificateResponseValidationEmailValidationValueList = Array<string>;
-export const CreateCertificateResponseValidationEmailValidationValueList = /*@__PURE__*/ S.Array(
+const CreateCertificateResponseValidationEmailValidationValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCertificateResponseValidationEmailValidationValueList>;
 
 export type CreateCertificateResponseValidationEmailValidationMap = {
   [key: string]: CreateCertificateResponseValidationEmailValidationValueList | undefined;
 };
-export const CreateCertificateResponseValidationEmailValidationMap = /*@__PURE__*/ S.Record(
+const CreateCertificateResponseValidationEmailValidationMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateCertificateResponseValidationEmailValidationValueList,
 ) as any as S.Schema<CreateCertificateResponseValidationEmailValidationMap>;
 
 export type CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
-export const CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList =
+const CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList>;
@@ -867,7 +867,7 @@ export interface CreateCertificateResponseValidationOtherMethodsValue {
   /** Returns the value-part (Point To) of the CNAME-record that must be created as part of domain verification. */
   cname_validation_p2: string;
 }
-export const CreateCertificateResponseValidationOtherMethodsValue = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateResponseValidationOtherMethodsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_validation_url_http: S.String,
     file_validation_url_https: S.String,
@@ -883,7 +883,7 @@ export const CreateCertificateResponseValidationOtherMethodsValue = /*@__PURE__*
 export type CreateCertificateResponseValidationOtherMethodsMap = {
   [key: string]: CreateCertificateResponseValidationOtherMethodsValue | undefined;
 };
-export const CreateCertificateResponseValidationOtherMethodsMap = /*@__PURE__*/ S.Record(
+const CreateCertificateResponseValidationOtherMethodsMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateCertificateResponseValidationOtherMethodsValue,
 ) as any as S.Schema<CreateCertificateResponseValidationOtherMethodsMap>;
@@ -894,7 +894,7 @@ export interface CreateCertificateResponseValidation {
   /** Returns a series of sub-objects (one for each domain in your certificate) containing alternative verification methods. */
   other_methods: CreateCertificateResponseValidationOtherMethodsMap;
 }
-export const CreateCertificateResponseValidation = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateResponseValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_validation: CreateCertificateResponseValidationEmailValidationMap,
     other_methods: CreateCertificateResponseValidationOtherMethodsMap,
@@ -930,7 +930,7 @@ export interface CreateCertificateResponse {
   /** Returns a series of sub-objects related to domain verification. */
   validation: CreateCertificateResponseValidation;
 }
-export const CreateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -957,7 +957,7 @@ export interface DownloadCertificateInlineRequest {
   /** Set this parameter to `1` to include the cross signed certificate in the response [(further information)](https://help.zerossl.com/hc/en-us/articles/360060198034-Legacy-Client-Compatibility-Cross-Signed-Root-Certificates). */
   include_cross_signed?: string;
 }
-export const DownloadCertificateInlineRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadCertificateInlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     include_cross_signed: S.optional(S.String.pipe(T.Query())),
@@ -972,7 +972,7 @@ export interface DownloadCertificateInlineResponse {
   /** Returns your certificate bundle file. */
   "ca_bundle.crt": string;
 }
-export const DownloadCertificateInlineResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadCertificateInlineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "certificate.crt": S.String,
     "ca_bundle.crt": S.String,
@@ -982,7 +982,7 @@ export const DownloadCertificateInlineResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadCertificateInlineResponse>;
 
 export interface GenerateEabCredentialsRequest {}
-export const GenerateEabCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateEabCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/acme/eab-credentials", code: 200 })),
 ).annotate({
   identifier: "GenerateEabCredentialsRequest",
@@ -996,7 +996,7 @@ export interface EabCredentials {
   /** Returns your EAB HMAC key value. */
   eab_hmac_key: import("effect/Redacted").Redacted<string>;
 }
-export const EabCredentials = /*@__PURE__*/ S.suspend(() =>
+const EabCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     eab_kid: S.String,
@@ -1008,27 +1008,18 @@ export interface GetCertificateRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
 }
-export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/certificates/{id}", code: 200 })),
 ).annotate({ identifier: "GetCertificateRequest" }) as any as S.Schema<GetCertificateRequest>;
 
 export type GetCertificateResponseValidationEmailValidationValueList = Array<string>;
-export const GetCertificateResponseValidationEmailValidationValueList =
-  CreateCertificateResponseValidationEmailValidationValueList as any as S.Schema<GetCertificateResponseValidationEmailValidationValueList>;
-
 export type GetCertificateResponseValidationEmailValidationMap = {
   [key: string]: GetCertificateResponseValidationEmailValidationValueList | undefined;
 };
-export const GetCertificateResponseValidationEmailValidationMap =
-  CreateCertificateResponseValidationEmailValidationMap as any as S.Schema<GetCertificateResponseValidationEmailValidationMap>;
-
 export type GetCertificateResponseValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
-export const GetCertificateResponseValidationOtherMethodsValueFileValidationContentList =
-  CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<GetCertificateResponseValidationOtherMethodsValueFileValidationContentList>;
-
 export interface GetCertificateResponseValidationOtherMethodsValue {
   /** Returns the URL (http format) your verification file must be uploaded to as part of domain verification. */
   file_validation_url_http: string;
@@ -1041,22 +1032,16 @@ export interface GetCertificateResponseValidationOtherMethodsValue {
   /** Returns the value-part (Point To) of the CNAME-record that must be created as part of domain verification. */
   cname_validation_p2: string;
 }
-export const GetCertificateResponseValidationOtherMethodsValue =
-  CreateCertificateResponseValidationOtherMethodsValue as any as S.Schema<GetCertificateResponseValidationOtherMethodsValue>;
-
 export type GetCertificateResponseValidationOtherMethodsMap = {
   [key: string]: GetCertificateResponseValidationOtherMethodsValue | undefined;
 };
-export const GetCertificateResponseValidationOtherMethodsMap =
-  CreateCertificateResponseValidationOtherMethodsMap as any as S.Schema<GetCertificateResponseValidationOtherMethodsMap>;
-
 export interface GetCertificateResponseValidation {
   /** Returns an array of eligible domain verification emails. */
   email_validation: GetCertificateResponseValidationEmailValidationMap;
   /** Returns a series of sub-objects (one for each domain in your certificate) containing alternative verification methods. */
   other_methods: GetCertificateResponseValidationOtherMethodsMap;
 }
-export const GetCertificateResponseValidation =
+const GetCertificateResponseValidation =
   CreateCertificateResponseValidation as any as S.Schema<GetCertificateResponseValidation>;
 
 export interface GetCertificateResponse {
@@ -1089,7 +1074,7 @@ export interface GetCertificateResponse {
   /** Returns a series of sub-objects related to domain verification. */
   validation: GetCertificateResponseValidation;
 }
-export const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -1112,7 +1097,7 @@ export interface GetVerificationStatusRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
 }
-export const GetVerificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVerificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/certificates/{id}/status", code: 200 })),
@@ -1126,7 +1111,7 @@ export interface GetVerificationStatusResponseDetailsValue {
   /** Returns the current verification status of the given domain. */
   status: string;
 }
-export const GetVerificationStatusResponseDetailsValue = /*@__PURE__*/ S.suspend(() =>
+const GetVerificationStatusResponseDetailsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.String,
     status: S.String,
@@ -1138,7 +1123,7 @@ export const GetVerificationStatusResponseDetailsValue = /*@__PURE__*/ S.suspend
 export type GetVerificationStatusResponseDetailsMap = {
   [key: string]: GetVerificationStatusResponseDetailsValue | undefined;
 };
-export const GetVerificationStatusResponseDetailsMap = /*@__PURE__*/ S.Record(
+const GetVerificationStatusResponseDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   GetVerificationStatusResponseDetailsValue,
 ) as any as S.Schema<GetVerificationStatusResponseDetailsMap>;
@@ -1149,7 +1134,7 @@ export interface GetVerificationStatusResponse {
   /** Returns a sub-object for each domain (or a pair of www and non-www domains) containing verification information. */
   details: GetVerificationStatusResponseDetailsMap;
 }
-export const GetVerificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVerificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validation_completed: S.Number,
     details: GetVerificationStatusResponseDetailsMap,
@@ -1162,28 +1147,27 @@ export interface ListCertificatesRequest {
   /** Use this parameter to specify one or multiple comma-separated certificate status values. Possible values: `draft`, `pending_validation`, `issued`, `cancelled`, `revoked`, `expired`. You can also send the special status `expiring_soon`. In this case all issued certificates are included, which expire within the next 30 days and should be renewed (in paid ZeroSSL accounts those are not credited anymore). */
   certificate_status?: string;
 }
-export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate_status: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
 ).annotate({ identifier: "ListCertificatesRequest" }) as any as S.Schema<ListCertificatesRequest>;
 
 export type ListCertificatesResponseResultsItemValidationEmailValidationValueList = Array<string>;
-export const ListCertificatesResponseResultsItemValidationEmailValidationValueList =
+const ListCertificatesResponseResultsItemValidationEmailValidationValueList =
   CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationValueList>;
 
 export type ListCertificatesResponseResultsItemValidationEmailValidationMap = {
   [key: string]: ListCertificatesResponseResultsItemValidationEmailValidationValueList | undefined;
 };
-export const ListCertificatesResponseResultsItemValidationEmailValidationMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ListCertificatesResponseResultsItemValidationEmailValidationValueList,
-  ) as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationMap>;
+const ListCertificatesResponseResultsItemValidationEmailValidationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ListCertificatesResponseResultsItemValidationEmailValidationValueList,
+) as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationMap>;
 
 export type ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
-export const ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
+const ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
   CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList>;
 
 export interface ListCertificatesResponseResultsItemValidationOtherMethodsValue {
@@ -1193,24 +1177,23 @@ export interface ListCertificatesResponseResultsItemValidationOtherMethodsValue 
   cname_validation_p1: string;
   cname_validation_p2: string;
 }
-export const ListCertificatesResponseResultsItemValidationOtherMethodsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      file_validation_url_http: S.String,
-      file_validation_url_https: S.String,
-      file_validation_content:
-        ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList,
-      cname_validation_p1: S.String,
-      cname_validation_p2: S.String,
-    }),
-  ).annotate({
-    identifier: "ListCertificatesResponseResultsItemValidationOtherMethodsValue",
-  }) as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValue>;
+const ListCertificatesResponseResultsItemValidationOtherMethodsValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    file_validation_url_http: S.String,
+    file_validation_url_https: S.String,
+    file_validation_content:
+      ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList,
+    cname_validation_p1: S.String,
+    cname_validation_p2: S.String,
+  }),
+).annotate({
+  identifier: "ListCertificatesResponseResultsItemValidationOtherMethodsValue",
+}) as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValue>;
 
 export type ListCertificatesResponseResultsItemValidationOtherMethodsMap = {
   [key: string]: ListCertificatesResponseResultsItemValidationOtherMethodsValue | undefined;
 };
-export const ListCertificatesResponseResultsItemValidationOtherMethodsMap = /*@__PURE__*/ S.Record(
+const ListCertificatesResponseResultsItemValidationOtherMethodsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListCertificatesResponseResultsItemValidationOtherMethodsValue,
 ) as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsMap>;
@@ -1219,7 +1202,7 @@ export interface ListCertificatesResponseResultsItemValidation {
   email_validation: ListCertificatesResponseResultsItemValidationEmailValidationMap;
   other_methods: ListCertificatesResponseResultsItemValidationOtherMethodsMap;
 }
-export const ListCertificatesResponseResultsItemValidation = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesResponseResultsItemValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_validation: ListCertificatesResponseResultsItemValidationEmailValidationMap,
     other_methods: ListCertificatesResponseResultsItemValidationOtherMethodsMap,
@@ -1244,7 +1227,7 @@ export interface ListCertificatesResponseResultsItem {
   signature_algorithm_properties: string;
   validation: ListCertificatesResponseResultsItemValidation;
 }
-export const ListCertificatesResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -1266,7 +1249,7 @@ export const ListCertificatesResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCertificatesResponseResultsItem>;
 
 export type ListCertificatesResponseResultsList = Array<ListCertificatesResponseResultsItem>;
-export const ListCertificatesResponseResultsList = /*@__PURE__*/ S.Array(
+const ListCertificatesResponseResultsList = /*@__PURE__*/ S.Array(
   ListCertificatesResponseResultsItem,
 ) as any as S.Schema<ListCertificatesResponseResultsList>;
 
@@ -1284,7 +1267,7 @@ export interface ListCertificatesResponse {
   /** Returns an array of certificates. For detailed information about certificate response objects, please refer to the [Get Certificate](/documentation/docs/api/get-certificate) section. */
   results: ListCertificatesResponseResultsList;
 }
-export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     result_count: S.Number,
@@ -1300,7 +1283,7 @@ export interface ResendVerificationRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
 }
-export const ResendVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const ResendVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/certificates/{id}/challenges/email", code: 200 })),
@@ -1312,7 +1295,7 @@ export interface ResendVerificationResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
-export const ResendVerificationResponse =
+const ResendVerificationResponse =
   CancelCertificateResponse as any as S.Schema<ResendVerificationResponse>;
 
 export interface RevokeCertificateRequest {
@@ -1321,7 +1304,7 @@ export interface RevokeCertificateRequest {
   /** One of: * `Unspecified`: Default * `keyCompromise`: Compromised private key * `affiliationChanged`: Subjects' name or identity information has changed * `Superseded`: Certificate has been replaced * `cessationOfOperation`: Authorized domain names are no longer owned */
   reason?: string;
 }
-export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     reason: S.optional(S.String),
@@ -1332,21 +1315,21 @@ export interface RevokeCertificateResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
-export const RevokeCertificateResponse =
+const RevokeCertificateResponse =
   CancelCertificateResponse as any as S.Schema<RevokeCertificateResponse>;
 
 export interface ValidateCsrRequest {
   /** The CSR you want to validate. */
   csr: string;
 }
-export const ValidateCsrRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateCsrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/validation/csr", code: 200 })),
 ).annotate({ identifier: "ValidateCsrRequest" }) as any as S.Schema<ValidateCsrRequest>;
 
 export type ValidateCsrResponseCsrResponseList = Array<string>;
-export const ValidateCsrResponseCsrResponseList =
+const ValidateCsrResponseCsrResponseList =
   CreateCertificateResponseValidationEmailValidationValueList as any as S.Schema<ValidateCsrResponseCsrResponseList>;
 
 export interface ValidateCsrResponse {
@@ -1357,7 +1340,7 @@ export interface ValidateCsrResponse {
   /** Returns an array containing the key size and signature algorithm in case the CSR was successfully validated, `null` otherwise. */
   csrResponse: ValidateCsrResponseCsrResponseList;
 }
-export const ValidateCsrResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateCsrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
     error: S.optional(S.NullOr(S.String)),
@@ -1373,7 +1356,7 @@ export interface VerifyDomainsRequest {
   /** If your selected verification method is **email verification**, use this parameter to specify one or multiple comma-seperated verification email addresses. You need to specify one verification email address per domain. */
   validation_email?: string;
 }
-export const VerifyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     validation_method: S.String,
@@ -1393,7 +1376,7 @@ export interface VerifyDomainsResponseErrorDetailsValueValue {
   /** Returns the value-part of the CNAME record found for the given domain. */
   actual_record: string;
 }
-export const VerifyDomainsResponseErrorDetailsValueValue = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainsResponseErrorDetailsValueValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cname_found: S.Number,
     record_correct: S.Number,
@@ -1408,7 +1391,7 @@ export const VerifyDomainsResponseErrorDetailsValueValue = /*@__PURE__*/ S.suspe
 export type VerifyDomainsResponseErrorDetailsValueMap = {
   [key: string]: VerifyDomainsResponseErrorDetailsValueValue | undefined;
 };
-export const VerifyDomainsResponseErrorDetailsValueMap = /*@__PURE__*/ S.Record(
+const VerifyDomainsResponseErrorDetailsValueMap = /*@__PURE__*/ S.Record(
   S.String,
   VerifyDomainsResponseErrorDetailsValueValue,
 ) as any as S.Schema<VerifyDomainsResponseErrorDetailsValueMap>;
@@ -1416,7 +1399,7 @@ export const VerifyDomainsResponseErrorDetailsValueMap = /*@__PURE__*/ S.Record(
 export type VerifyDomainsResponseErrorDetailsMap = {
   [key: string]: VerifyDomainsResponseErrorDetailsValueMap | undefined;
 };
-export const VerifyDomainsResponseErrorDetailsMap = /*@__PURE__*/ S.Record(
+const VerifyDomainsResponseErrorDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   VerifyDomainsResponseErrorDetailsValueMap,
 ) as any as S.Schema<VerifyDomainsResponseErrorDetailsMap>;
@@ -1429,7 +1412,7 @@ export interface VerifyDomainsResponseError {
   /** Returns an object containing error details for each domain (or a pair of www and non-www domains). */
   details: VerifyDomainsResponseErrorDetailsMap;
 }
-export const VerifyDomainsResponseError = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainsResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.Number,
     type: S.String,
@@ -1444,7 +1427,7 @@ export interface VerifyDomainsResponse {
   /** Returns a sub-object containing error details. */
   error: VerifyDomainsResponseError;
 }
-export const VerifyDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     error: VerifyDomainsResponseError,

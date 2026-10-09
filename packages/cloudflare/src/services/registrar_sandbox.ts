@@ -13,7 +13,7 @@ import * as T from "../traits.ts";
 export type { CloudflareOpError, CloudflareOpContext };
 
 export type CheckRequestDomainsList = Array<string>;
-export const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
+const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckRequestDomainsList>;
 
@@ -23,7 +23,7 @@ export interface CheckRequest {
   /** List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension. */
   domains: CheckRequestDomainsList;
 }
-export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domains: CheckRequestDomainsList,
@@ -44,7 +44,7 @@ export interface CheckResponseDomainsItemPricing {
   /** Per-year renewal cost for this domain. Applied to each year beyond the first year of a multi-year registration, and to each annual auto-renewal thereafter. May differ from `registration_cost`, especially for premium domains where initial registration often costs more than renewals. */
   renewalCost: string;
 }
-export const CheckResponseDomainsItemPricing = /*@__PURE__*/ S.suspend(() =>
+const CheckResponseDomainsItemPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     registrationCost: S.String.pipe(T.Body("registration_cost")),
@@ -60,10 +60,10 @@ export type CheckResponseDomainsItemReason =
   | "extension_disallows_registration"
   | "domain_premium"
   | "domain_unavailable";
-export const CheckResponseDomainsItemReason = S.String;
+const CheckResponseDomainsItemReason = S.String;
 
 export type CheckResponseDomainsItemTier = "standard" | "premium";
-export const CheckResponseDomainsItemTier = S.String;
+const CheckResponseDomainsItemTier = S.String;
 
 export interface CheckResponseDomainsItem {
   /** The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs). */
@@ -77,7 +77,7 @@ export interface CheckResponseDomainsItem {
   /** The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it. */
   tier?: CheckResponseDomainsItemTier | null;
 }
-export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
@@ -88,7 +88,7 @@ export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckResponseDomainsItem" }) as any as S.Schema<CheckResponseDomainsItem>;
 
 export type CheckResponseDomainsList = Array<CheckResponseDomainsItem>;
-export const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
+const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
   CheckResponseDomainsItem,
 ) as any as S.Schema<CheckResponseDomainsList>;
 
@@ -97,20 +97,20 @@ export interface CheckResponse {
   /** Array of domain availability results. Results for unsupported extensions contain `registrable: false` and a `reason` field. The response may omit malformed domain names. */
   domains: CheckResponseDomainsList;
 }
-export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: CheckResponseDomainsList,
   }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
 export type CreateRegistrationRequestAcknowledgementsMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationRequestAcknowledgementsMap = /*@__PURE__*/ S.Record(
+const CreateRegistrationRequestAcknowledgementsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateRegistrationRequestAcknowledgementsMap>;
 
 export type CreateRegistrationRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationRequestContactExtensionsMap =
+const CreateRegistrationRequestContactExtensionsMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationRequestContactExtensionsMap>;
 
 export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress {
@@ -125,8 +125,8 @@ export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress
   /** Street address including building/suite number. */
   street: string;
 }
-export const CreateRegistrationRequestContactsAdministratorPostalInfoAddress =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequestContactsAdministratorPostalInfoAddress = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       city: S.String,
       countryCode: S.String.pipe(T.Body("country_code")),
@@ -134,9 +134,9 @@ export const CreateRegistrationRequestContactsAdministratorPostalInfoAddress =
       state: S.String,
       street: S.String,
     }),
-  ).annotate({
-    identifier: "CreateRegistrationRequestContactsAdministratorPostalInfoAddress",
-  }) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfoAddress>;
+).annotate({
+  identifier: "CreateRegistrationRequestContactsAdministratorPostalInfoAddress",
+}) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfoAddress>;
 
 export interface CreateRegistrationRequestContactsAdministratorPostalInfo {
   /** Physical mailing address for the registrant contact. */
@@ -146,13 +146,12 @@ export interface CreateRegistrationRequestContactsAdministratorPostalInfo {
   /** Organization or company name. Optional for individual registrants. */
   organization?: string;
 }
-export const CreateRegistrationRequestContactsAdministratorPostalInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: CreateRegistrationRequestContactsAdministratorPostalInfoAddress,
-      name: S.String,
-      organization: S.optional(S.String),
-    }),
+const CreateRegistrationRequestContactsAdministratorPostalInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: CreateRegistrationRequestContactsAdministratorPostalInfoAddress,
+    name: S.String,
+    organization: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateRegistrationRequestContactsAdministratorPostalInfo",
 }) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfo>;
@@ -167,7 +166,7 @@ export interface CreateRegistrationRequestContactsAdministrator {
   /** Fax number in E.164 format (e.g., `+1.5555555555`). Optional. Most registrations do not require a fax number. */
   fax?: string;
 }
-export const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     phone: S.String,
@@ -182,49 +181,22 @@ export const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ S.su
 
 export type CreateRegistrationRequestContactsBillingPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateRegistrationRequestContactsBillingPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateRegistrationRequestContactsBillingPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateRegistrationRequestContactsBillingPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateRegistrationRequestContactsBilling =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateRegistrationRequestContactsBilling =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateRegistrationRequestContactsRegistrantPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateRegistrationRequestContactsRegistrantPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateRegistrationRequestContactsRegistrantPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateRegistrationRequestContactsRegistrantPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateRegistrationRequestContactsRegistrant =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateRegistrationRequestContactsRegistrant =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateRegistrationRequestContactsTechnicalPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateRegistrationRequestContactsTechnicalPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateRegistrationRequestContactsTechnicalPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateRegistrationRequestContactsTechnicalPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateRegistrationRequestContactsTechnical =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateRegistrationRequestContactsTechnical =
-  CreateRegistrationRequestContactsAdministrator;
-
 export interface CreateRegistrationRequestContacts {
   /** Optional administrator contact. Accepted only when the extension schema includes this role. When the registry requires an omitted contact, Cloudflare may derive it from `contacts.registrant`. */
   administrator?: CreateRegistrationRequestContactsAdministrator;
@@ -235,7 +207,7 @@ export interface CreateRegistrationRequestContacts {
   /** Optional technical contact. Accepted only when the extension schema includes this role. When the registry requires an omitted contact, Cloudflare may derive it from `contacts.registrant`. */
   technical?: CreateRegistrationRequestContactsAdministrator;
 }
-export const CreateRegistrationRequestContacts = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequestContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrator: S.optional(CreateRegistrationRequestContactsAdministrator),
     billing: S.optional(CreateRegistrationRequestContactsAdministrator),
@@ -247,7 +219,7 @@ export const CreateRegistrationRequestContacts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRegistrationRequestContacts>;
 
 export type CreateRegistrationRequestPrivacyMode = "off" | "redaction";
-export const CreateRegistrationRequestPrivacyMode = S.String;
+const CreateRegistrationRequestPrivacyMode = S.String;
 
 export interface CreateRegistrationRequest {
   /** Identifier. */
@@ -268,7 +240,7 @@ export interface CreateRegistrationRequest {
   /** Sets the registration term from 1 to 10 years. When omitted, this field defaults to the registry's minimum registration period for the extension. Most extensions require 1 year, while some require longer minimum terms (e.g., `.ai` requires 2 years). */
   years?: number;
 }
-export const CreateRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
@@ -298,7 +270,7 @@ export interface CreateRegistrationResponseLinks {
   /** URL to the domain resource. */
   resource?: string | null;
 }
-export const CreateRegistrationResponseLinks = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.String,
     resource: S.optional(S.NullOr(S.String)),
@@ -314,10 +286,10 @@ export type CreateRegistrationResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const CreateRegistrationResponseState = S.String;
+const CreateRegistrationResponseState = S.String;
 
 export type CreateRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationResponseContextMap =
+const CreateRegistrationResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationResponseContextMap>;
 
 export interface CreateRegistrationResponseError {
@@ -326,7 +298,7 @@ export interface CreateRegistrationResponseError {
   /** Human-readable explanation of the failure. May include registry-specific details. */
   message: string;
 }
-export const CreateRegistrationResponseError = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -349,7 +321,7 @@ export interface CreateRegistrationResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -364,7 +336,7 @@ export const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRegistrationResponse>;
 
 export type EditRegistrationRequestPrefer = "respond-async";
-export const EditRegistrationRequestPrefer = S.String;
+const EditRegistrationRequestPrefer = S.String;
 
 export interface EditRegistrationRequest {
   /** Identifier. */
@@ -375,7 +347,7 @@ export interface EditRegistrationRequest {
   /** Enable or disable automatic renewal. Setting this field to `true` authorizes Cloudflare to charge the account's default payment method up to 30 days before domain expiry to renew the domain automatically. Renewal pricing may change over time based on registry pricing. */
   autoRenew?: boolean;
 }
-export const EditRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -391,8 +363,6 @@ export const EditRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRegistrationRequest" }) as any as S.Schema<EditRegistrationRequest>;
 
 export type EditRegistrationResponseLinks = CreateRegistrationResponseLinks;
-export const EditRegistrationResponseLinks = CreateRegistrationResponseLinks;
-
 export type EditRegistrationResponseState =
   | "pending"
   | "in_progress"
@@ -400,15 +370,13 @@ export type EditRegistrationResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const EditRegistrationResponseState = S.String;
+const EditRegistrationResponseState = S.String;
 
 export type EditRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-export const EditRegistrationResponseContextMap =
+const EditRegistrationResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<EditRegistrationResponseContextMap>;
 
 export type EditRegistrationResponseError = CreateRegistrationResponseError;
-export const EditRegistrationResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditRegistrationResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -423,7 +391,7 @@ export interface EditRegistrationResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const EditRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const EditRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -440,7 +408,7 @@ export interface GetExtensionRequest {
   accountId: string;
   extension: string;
 }
-export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     extension: S.String.pipe(T.Label()),
@@ -459,7 +427,7 @@ export interface GetExtensionResponseMetadata {
   /** The TLD of the extension. For example, for "co.uk", it is "uk". For "uk", it is "uk". */
   tld: string;
 }
-export const GetExtensionResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tld: S.String,
@@ -477,7 +445,7 @@ export interface GetExtensionResponse {
   /** JSON Schema describing the expected input structure for transfer operations on this extension. */
   transferSchema: unknown;
 }
-export const GetExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: GetExtensionResponseMetadata,
     registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
@@ -491,7 +459,7 @@ export interface GetRegistrationRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -505,7 +473,7 @@ export const GetRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRegistrationRequest" }) as any as S.Schema<GetRegistrationRequest>;
 
 export type GetRegistrationResponsePrivacyMode = "off" | "redaction";
-export const GetRegistrationResponsePrivacyMode = S.String;
+const GetRegistrationResponsePrivacyMode = S.String;
 
 export type GetRegistrationResponseStatus =
   | "active"
@@ -515,7 +483,7 @@ export type GetRegistrationResponseStatus =
   | "suspended"
   | "redemption_period"
   | "pending_delete";
-export const GetRegistrationResponseStatus = S.String;
+const GetRegistrationResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegistrationResponse {
@@ -534,7 +502,7 @@ export interface GetRegistrationResponse {
   /** Current registration status. */
   status: GetRegistrationResponseStatus;
 }
-export const GetRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -552,7 +520,7 @@ export interface GetRegistrationStatusRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -568,8 +536,6 @@ export const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRegistrationStatusRequest>;
 
 export type GetRegistrationStatusResponseLinks = CreateRegistrationResponseLinks;
-export const GetRegistrationStatusResponseLinks = CreateRegistrationResponseLinks;
-
 export type GetRegistrationStatusResponseState =
   | "pending"
   | "in_progress"
@@ -577,15 +543,13 @@ export type GetRegistrationStatusResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const GetRegistrationStatusResponseState = S.String;
+const GetRegistrationStatusResponseState = S.String;
 
 export type GetRegistrationStatusResponseContextMap = { [key: string]: unknown | undefined };
-export const GetRegistrationStatusResponseContextMap =
+const GetRegistrationStatusResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<GetRegistrationStatusResponseContextMap>;
 
 export type GetRegistrationStatusResponseError = CreateRegistrationResponseError;
-export const GetRegistrationStatusResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegistrationStatusResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -600,7 +564,7 @@ export interface GetRegistrationStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -615,10 +579,10 @@ export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRegistrationStatusResponse>;
 
 export type ListExtensionsRequestDirection = "asc" | "desc";
-export const ListExtensionsRequestDirection = S.String;
+const ListExtensionsRequestDirection = S.String;
 
 export type ListExtensionsRequestSortBy = "name" | "created_at" | "updated_at";
-export const ListExtensionsRequestSortBy = S.String;
+const ListExtensionsRequestSortBy = S.String;
 
 export interface ListExtensionsRequest {
   /** Identifier. */
@@ -634,7 +598,7 @@ export interface ListExtensionsRequest {
   /** Column to sort results by. Defaults to `name` when omitted. */
   sortBy?: ListExtensionsRequestSortBy | (string & {});
 }
-export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -652,8 +616,6 @@ export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExtensionsRequest" }) as any as S.Schema<ListExtensionsRequest>;
 
 export type ListExtensionsResultItemMetadata = GetExtensionResponseMetadata;
-export const ListExtensionsResultItemMetadata = GetExtensionResponseMetadata;
-
 export interface ListExtensionsResultItem {
   /** Extension metadata. */
   metadata: GetExtensionResponseMetadata;
@@ -662,24 +624,23 @@ export interface ListExtensionsResultItem {
   /** JSON Schema describing the expected input structure for transfer operations on this extension. */
   transferSchema: unknown;
 }
-export const ListExtensionsResultItem =
-  GetExtensionResponse as any as S.Schema<ListExtensionsResultItem>;
+const ListExtensionsResultItem = GetExtensionResponse as any as S.Schema<ListExtensionsResultItem>;
 
 export type ListExtensionsResultList = Array<ListExtensionsResultItem>;
-export const ListExtensionsResultList = /*@__PURE__*/ S.Array(
+const ListExtensionsResultList = /*@__PURE__*/ S.Array(
   ListExtensionsResultItem,
 ) as any as S.Schema<ListExtensionsResultList>;
 
 export type ListExtensionsResponse = ListExtensionsResultList;
-export const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListExtensionsResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "ListExtensionsResponse" }) as any as S.Schema<ListExtensionsResponse>;
 
 export type ListRegistrationsRequestDirection = "asc" | "desc";
-export const ListRegistrationsRequestDirection = S.String;
+const ListRegistrationsRequestDirection = S.String;
 
 export type ListRegistrationsRequestSortBy = "registry_created_at" | "registry_expires_at" | "name";
-export const ListRegistrationsRequestSortBy = S.String;
+const ListRegistrationsRequestSortBy = S.String;
 
 export interface ListRegistrationsRequest {
   /** Identifier. */
@@ -693,7 +654,7 @@ export interface ListRegistrationsRequest {
   /** Column to sort results by. Defaults to registration date (`registry_created_at`) when omitted. */
   sortBy?: ListRegistrationsRequestSortBy | (string & {});
 }
-export const ListRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -710,7 +671,7 @@ export const ListRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRegistrationsRequest" }) as any as S.Schema<ListRegistrationsRequest>;
 
 export type ListRegistrationsResultItemPrivacyMode = "off" | "redaction";
-export const ListRegistrationsResultItemPrivacyMode = S.String;
+const ListRegistrationsResultItemPrivacyMode = S.String;
 
 export type ListRegistrationsResultItemStatus =
   | "active"
@@ -720,7 +681,7 @@ export type ListRegistrationsResultItemStatus =
   | "suspended"
   | "redemption_period"
   | "pending_delete";
-export const ListRegistrationsResultItemStatus = S.String;
+const ListRegistrationsResultItemStatus = S.String;
 
 export interface ListRegistrationsResultItem {
   /** Whether automatic renewal occurs before expiration. */
@@ -738,7 +699,7 @@ export interface ListRegistrationsResultItem {
   /** Current registration status. */
   status: ListRegistrationsResultItemStatus;
 }
-export const ListRegistrationsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -753,19 +714,19 @@ export const ListRegistrationsResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRegistrationsResultItem>;
 
 export type ListRegistrationsResultList = Array<ListRegistrationsResultItem>;
-export const ListRegistrationsResultList = /*@__PURE__*/ S.Array(
+const ListRegistrationsResultList = /*@__PURE__*/ S.Array(
   ListRegistrationsResultItem,
 ) as any as S.Schema<ListRegistrationsResultList>;
 
 export type ListRegistrationsResponse = ListRegistrationsResultList;
-export const ListRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListRegistrationsResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListRegistrationsResponse",
 }) as any as S.Schema<ListRegistrationsResponse>;
 
 export type SearchRequestExtensionsList = Array<string>;
-export const SearchRequestExtensionsList =
+const SearchRequestExtensionsList =
   CheckRequestDomainsList as any as S.Schema<SearchRequestExtensionsList>;
 
 export interface SearchRequest {
@@ -778,7 +739,7 @@ export interface SearchRequest {
   /** Maximum number of domain suggestions to return. Defaults to 20 if not specified. */
   limit?: number;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     q: S.String.pipe(T.Query()),
@@ -794,18 +755,16 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export type SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
-export const SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
-
 export type SearchResponseDomainsItemReason =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
   | "extension_disallows_registration"
   | "domain_premium"
   | "domain_unavailable";
-export const SearchResponseDomainsItemReason = S.String;
+const SearchResponseDomainsItemReason = S.String;
 
 export type SearchResponseDomainsItemTier = "standard" | "premium";
-export const SearchResponseDomainsItemTier = S.String;
+const SearchResponseDomainsItemTier = S.String;
 
 export interface SearchResponseDomainsItem {
   /** The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs). */
@@ -819,7 +778,7 @@ export interface SearchResponseDomainsItem {
   /** The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it. */
   tier?: SearchResponseDomainsItemTier | null;
 }
-export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
@@ -832,7 +791,7 @@ export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResponseDomainsItem>;
 
 export type SearchResponseDomainsList = Array<SearchResponseDomainsItem>;
-export const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
+const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
   SearchResponseDomainsItem,
 ) as any as S.Schema<SearchResponseDomainsList>;
 
@@ -841,7 +800,7 @@ export interface SearchResponse {
   /** Lists domain suggestions in relevance order. An empty array indicates that the search criteria matched zero domains. */
   domains: SearchResponseDomainsList;
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: SearchResponseDomainsList,
   }),
@@ -853,7 +812,7 @@ export interface UpdateStatusGetRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const UpdateStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -867,8 +826,6 @@ export const UpdateStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateStatusGetRequest" }) as any as S.Schema<UpdateStatusGetRequest>;
 
 export type UpdateStatusGetResponseLinks = CreateRegistrationResponseLinks;
-export const UpdateStatusGetResponseLinks = CreateRegistrationResponseLinks;
-
 export type UpdateStatusGetResponseState =
   | "pending"
   | "in_progress"
@@ -876,15 +833,13 @@ export type UpdateStatusGetResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const UpdateStatusGetResponseState = S.String;
+const UpdateStatusGetResponseState = S.String;
 
 export type UpdateStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-export const UpdateStatusGetResponseContextMap =
+const UpdateStatusGetResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<UpdateStatusGetResponseContextMap>;
 
 export type UpdateStatusGetResponseError = CreateRegistrationResponseError;
-export const UpdateStatusGetResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateStatusGetResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -899,7 +854,7 @@ export interface UpdateStatusGetResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const UpdateStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),

@@ -152,7 +152,7 @@ export interface AckBatchRequest {
   /** The consumer holding (or requesting) the lease, 1 to 256 characters. */
   workerId: string;
 }
-export const AckBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const AckBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
@@ -170,7 +170,7 @@ export const AckBatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AckBatchRequest" }) as any as S.Schema<AckBatchRequest>;
 
 export interface AckBatchResponse {}
-export const AckBatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AckBatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AckBatchResponse",
 }) as any as S.Schema<AckBatchResponse>;
 
@@ -182,7 +182,7 @@ export interface ConsumeRequest {
   /** At most this many records, from 1 to 10000. */
   maxRecords: number;
 }
-export const ConsumeRequest = /*@__PURE__*/ S.suspend(() =>
+const ConsumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
@@ -194,10 +194,7 @@ export const ConsumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsumeRequest" }) as any as S.Schema<ConsumeRequest>;
 
 export type RecordHeaders = { [key: string]: string | undefined };
-export const RecordHeaders = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RecordHeaders>;
+const RecordHeaders = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<RecordHeaders>;
 
 export interface ConsumedRecord {
   /** When K2 received the record, in Unix milliseconds. */
@@ -207,7 +204,7 @@ export interface ConsumedRecord {
   /** The record headers; omitted when it was produced without any. */
   headers?: RecordHeaders | null;
 }
-export const ConsumedRecord = /*@__PURE__*/ S.suspend(() =>
+const ConsumedRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestampMs: S.Number.pipe(T.Body("timestamp_ms")),
     content: S.String,
@@ -216,7 +213,7 @@ export const ConsumedRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsumedRecord" }) as any as S.Schema<ConsumedRecord>;
 
 export type ConsumedRecordList = Array<ConsumedRecord>;
-export const ConsumedRecordList = /*@__PURE__*/ S.Array(
+const ConsumedRecordList = /*@__PURE__*/ S.Array(
   ConsumedRecord,
 ) as any as S.Schema<ConsumedRecordList>;
 
@@ -227,7 +224,7 @@ export interface ConsumeResponse {
   leasedUntilMs?: number | null;
   records: ConsumedRecordList;
 }
-export const ConsumeResponse = /*@__PURE__*/ S.suspend(() =>
+const ConsumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchId: S.optional(S.NullOr(S.String).pipe(T.Body("batch_id"))),
     leasedUntilMs: S.optional(S.NullOr(S.Number).pipe(T.Body("leased_until_ms"))),
@@ -236,13 +233,13 @@ export const ConsumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsumeResponse" }) as any as S.Schema<ConsumeResponse>;
 
 export type CorsOriginList = Array<string>;
-export const CorsOriginList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<CorsOriginList>;
+const CorsOriginList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<CorsOriginList>;
 
 export interface StreamCors {
   /** Origins allowed to produce from a browser: `http(s)://host[:port]` without a path, or `*` alone. Up to five. */
   origins?: CorsOriginList | null;
 }
-export const StreamCors = /*@__PURE__*/ S.suspend(() =>
+const StreamCors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origins: S.optional(S.NullOr(CorsOriginList)),
   }),
@@ -255,7 +252,7 @@ export interface StreamHttpInput {
   authentication?: boolean | null;
   cors?: StreamCors | null;
 }
-export const StreamHttpInput = /*@__PURE__*/ S.suspend(() =>
+const StreamHttpInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     authentication: S.optional(S.NullOr(S.Boolean)),
@@ -267,7 +264,7 @@ export interface StreamWorkerBindingInput {
   /** Whether Workers can produce to the stream through a `k2` binding. */
   enabled: boolean;
 }
-export const StreamWorkerBindingInput = /*@__PURE__*/ S.suspend(() =>
+const StreamWorkerBindingInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
   }),
@@ -283,7 +280,7 @@ export interface CreateStreamRequest {
   /** Defaults to enabled. */
   workerBinding?: StreamWorkerBindingInput;
 }
-export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -307,7 +304,7 @@ export interface CreateStreamResponse {
   createdAt: string;
   modifiedAt: string;
 }
-export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -321,13 +318,13 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStreamResponse" }) as any as S.Schema<CreateStreamResponse>;
 
 export type StartAtType = "earliest" | "latest";
-export const StartAtType = S.String;
+const StartAtType = S.String;
 
 export interface SubscriptionStartAt {
   /** `earliest` reads from the oldest retained record; `latest` from after the newest one. */
   type: StartAtType | (string & {});
 }
-export const SubscriptionStartAt = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionStartAt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StartAtType,
   }),
@@ -339,7 +336,7 @@ export interface CreateSubscriptionRequest {
   name: string;
   startAt: SubscriptionStartAt;
 }
-export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     name: S.String,
@@ -355,7 +352,7 @@ export interface CreateSubscriptionResponse {
   /** The subscription ID. */
   id: string;
 }
-export const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -367,7 +364,7 @@ export interface DeleteStreamRequest {
   accountId: string;
   streamId: string;
 }
-export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
@@ -377,13 +374,13 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStreamRequest" }) as any as S.Schema<DeleteStreamRequest>;
 
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = AckBatchResponse as any as S.Schema<DeleteStreamResponse>;
+const DeleteStreamResponse = AckBatchResponse as any as S.Schema<DeleteStreamResponse>;
 
 export interface DeleteSubscriptionRequest {
   streamId: string;
   subscriptionId: string;
 }
-export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
@@ -398,7 +395,7 @@ export interface DeleteSubscriptionResponse {
   /** The deleted subscription's ID. */
   id: string;
 }
-export const DeleteSubscriptionResponse =
+const DeleteSubscriptionResponse =
   CreateSubscriptionResponse as any as S.Schema<DeleteSubscriptionResponse>;
 
 export interface ExtendLeaseRequest {
@@ -408,7 +405,7 @@ export interface ExtendLeaseRequest {
   /** The consumer holding (or requesting) the lease, 1 to 256 characters. */
   workerId: string;
 }
-export const ExtendLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
@@ -429,7 +426,7 @@ export interface ExtendLeaseResponse {
   /** The new lease expiry, in Unix milliseconds. */
   leasedUntilMs: number;
 }
-export const ExtendLeaseResponse = /*@__PURE__*/ S.suspend(() =>
+const ExtendLeaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leasedUntilMs: S.Number.pipe(T.Body("leased_until_ms")),
   }),
@@ -439,7 +436,7 @@ export interface GetStreamRequest {
   accountId: string;
   streamId: string;
 }
-export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
@@ -462,13 +459,13 @@ export interface GetStreamResponse {
   createdAt: string;
   modifiedAt: string;
 }
-export const GetStreamResponse = CreateStreamResponse as any as S.Schema<GetStreamResponse>;
+const GetStreamResponse = CreateStreamResponse as any as S.Schema<GetStreamResponse>;
 
 export interface GetSubscriptionRequest {
   streamId: string;
   subscriptionId: string;
 }
-export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
@@ -486,7 +483,7 @@ export interface GetSubscriptionResponse {
   createdAt: string;
   modifiedAt: string;
 }
-export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -500,7 +497,7 @@ export interface ListMonitoredSubscriptionsRequest {
   accountId: string;
   streamId: string;
 }
-export const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
@@ -516,14 +513,14 @@ export const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMonitoredSubscriptionsRequest>;
 
 export type ConsumerLagStatus = "available" | "unsupported" | "unavailable";
-export const ConsumerLagStatus = S.String;
+const ConsumerLagStatus = S.String;
 
 export interface ConsumerLag {
   status: ConsumerLagStatus;
   /** Decimal string: records between the subscription's committed position and the stream tail. Null unless `status` is `available`. */
   records?: string | null;
 }
-export const ConsumerLag = /*@__PURE__*/ S.suspend(() =>
+const ConsumerLag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ConsumerLagStatus,
     records: S.optional(S.NullOr(S.String)),
@@ -540,7 +537,7 @@ export interface MonitoredSubscription {
   modifiedAt: string;
   lag: ConsumerLag;
 }
-export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
+const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -552,12 +549,12 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonitoredSubscription" }) as any as S.Schema<MonitoredSubscription>;
 
 export type MonitoredSubscriptionList = Array<MonitoredSubscription>;
-export const MonitoredSubscriptionList = /*@__PURE__*/ S.Array(
+const MonitoredSubscriptionList = /*@__PURE__*/ S.Array(
   MonitoredSubscription,
 ) as any as S.Schema<MonitoredSubscriptionList>;
 
 export type ListMonitoredSubscriptionsResponse = MonitoredSubscriptionList;
-export const ListMonitoredSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   MonitoredSubscriptionList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListMonitoredSubscriptionsResponse",
@@ -568,7 +565,7 @@ export interface ListStreamsRequest {
   page?: number;
   perPage?: number;
 }
-export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -590,17 +587,17 @@ export interface Stream {
   createdAt: string;
   modifiedAt: string;
 }
-export const Stream = CreateStreamResponse as any as S.Schema<Stream>;
+const Stream = CreateStreamResponse as any as S.Schema<Stream>;
 
 export type StreamList = Array<Stream>;
-export const StreamList = /*@__PURE__*/ S.Array(Stream) as any as S.Schema<StreamList>;
+const StreamList = /*@__PURE__*/ S.Array(Stream) as any as S.Schema<StreamList>;
 
 export interface ListStreamsResponse {
   result: StreamList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StreamList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -611,7 +608,7 @@ export interface ListSubscriptionsRequest {
   streamId: string;
   name?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     name: S.optional(S.String.pipe(T.Query())),
@@ -629,15 +626,13 @@ export interface Subscription {
   createdAt: string;
   modifiedAt: string;
 }
-export const Subscription = GetSubscriptionResponse as any as S.Schema<Subscription>;
+const Subscription = GetSubscriptionResponse as any as S.Schema<Subscription>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 export type ListSubscriptionsResponse = SubscriptionList;
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   SubscriptionList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListSubscriptionsResponse",
@@ -650,7 +645,7 @@ export interface NackBatchRequest {
   /** The consumer holding (or requesting) the lease, 1 to 256 characters. */
   workerId: string;
 }
-export const NackBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const NackBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
@@ -668,7 +663,7 @@ export const NackBatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NackBatchRequest" }) as any as S.Schema<NackBatchRequest>;
 
 export interface NackBatchResponse {}
-export const NackBatchResponse = AckBatchResponse as any as S.Schema<NackBatchResponse>;
+const NackBatchResponse = AckBatchResponse as any as S.Schema<NackBatchResponse>;
 
 export interface ProduceRecord {
   /** The record payload as standard (padded, not URL-safe) base64. */
@@ -676,7 +671,7 @@ export interface ProduceRecord {
   /** Up to 32 string headers describing the content. */
   headers?: RecordHeaders;
 }
-export const ProduceRecord = /*@__PURE__*/ S.suspend(() =>
+const ProduceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     headers: S.optional(RecordHeaders),
@@ -684,7 +679,7 @@ export const ProduceRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProduceRecord" }) as any as S.Schema<ProduceRecord>;
 
 export type ProduceRecordList = Array<ProduceRecord>;
-export const ProduceRecordList = /*@__PURE__*/ S.Array(
+const ProduceRecordList = /*@__PURE__*/ S.Array(
   ProduceRecord,
 ) as any as S.Schema<ProduceRecordList>;
 
@@ -692,7 +687,7 @@ export interface ProduceRequest {
   streamId: string;
   records: ProduceRecordList;
 }
-export const ProduceRequest = /*@__PURE__*/ S.suspend(() =>
+const ProduceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.String.pipe(T.Label("stream_id")),
     records: ProduceRecordList,
@@ -702,7 +697,7 @@ export const ProduceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProduceRequest" }) as any as S.Schema<ProduceRequest>;
 
 export interface ProduceResponse {}
-export const ProduceResponse = AckBatchResponse as any as S.Schema<ProduceResponse>;
+const ProduceResponse = AckBatchResponse as any as S.Schema<ProduceResponse>;
 
 export interface UpdateStreamRequest {
   accountId: string;
@@ -711,7 +706,7 @@ export interface UpdateStreamRequest {
   http?: StreamHttpInput;
   workerBinding?: StreamWorkerBindingInput;
 }
-export const UpdateStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
@@ -737,7 +732,7 @@ export interface UpdateStreamResponse {
   createdAt: string;
   modifiedAt: string;
 }
-export const UpdateStreamResponse = CreateStreamResponse as any as S.Schema<UpdateStreamResponse>;
+const UpdateStreamResponse = CreateStreamResponse as any as S.Schema<UpdateStreamResponse>;
 
 export type AckBatchError = K2StreamNotFound | K2SubscriptionNotFound | CloudflareOpError;
 /** Mark a batch processed and release its lease. Acknowledging an unknown or already acknowledged batch succeeds. */

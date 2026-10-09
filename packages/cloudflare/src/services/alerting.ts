@@ -167,7 +167,7 @@ export interface CreateDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-export const CreateDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -188,7 +188,7 @@ export interface CreateDestinationPagerdutyResponse {
   /** token in form of UUID */
   id?: string | null;
 }
-export const CreateDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -206,7 +206,7 @@ export interface CreateDestinationWebhookRequest {
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
-export const CreateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -230,7 +230,7 @@ export interface CreateDestinationWebhookResponse {
   /** UUID */
   id?: string | null;
 }
-export const CreateDestinationWebhookResponse =
+const CreateDestinationWebhookResponse =
   CreateDestinationPagerdutyResponse as any as S.Schema<CreateDestinationWebhookResponse>;
 
 export type PoliciesCreateRequestAlertType =
@@ -303,13 +303,13 @@ export type PoliciesCreateRequestAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-export const PoliciesCreateRequestAlertType = S.String;
+const PoliciesCreateRequestAlertType = S.String;
 
 export interface PoliciesCreateRequestMechanismsEmailItem {
   /** The email address */
   id?: string;
 }
-export const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(() =>
+const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -319,7 +319,7 @@ export const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
 
 export type PoliciesCreateRequestMechanismsEmailList =
   Array<PoliciesCreateRequestMechanismsEmailItem>;
-export const PoliciesCreateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
+const PoliciesCreateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
   PoliciesCreateRequestMechanismsEmailItem,
 ) as any as S.Schema<PoliciesCreateRequestMechanismsEmailList>;
 
@@ -327,22 +327,16 @@ export interface PoliciesCreateRequestMechanismsPagerdutyItem {
   /** UUID */
   id?: string;
 }
-export const PoliciesCreateRequestMechanismsPagerdutyItem =
-  PoliciesCreateRequestMechanismsEmailItem as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyItem>;
-
 export type PoliciesCreateRequestMechanismsPagerdutyList =
   Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-export const PoliciesCreateRequestMechanismsPagerdutyList =
+const PoliciesCreateRequestMechanismsPagerdutyList =
   PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyList>;
 
 export type PoliciesCreateRequestMechanismsWebhooksItem =
   PoliciesCreateRequestMechanismsPagerdutyItem;
-export const PoliciesCreateRequestMechanismsWebhooksItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-
 export type PoliciesCreateRequestMechanismsWebhooksList =
   Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-export const PoliciesCreateRequestMechanismsWebhooksList =
+const PoliciesCreateRequestMechanismsWebhooksList =
   PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksList>;
 
 export interface PoliciesCreateRequestMechanisms {
@@ -350,7 +344,7 @@ export interface PoliciesCreateRequestMechanisms {
   pagerduty?: PoliciesCreateRequestMechanismsPagerdutyList;
   webhooks?: PoliciesCreateRequestMechanismsWebhooksList;
 }
-export const PoliciesCreateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
+const PoliciesCreateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(PoliciesCreateRequestMechanismsEmailList),
     pagerduty: S.optional(PoliciesCreateRequestMechanismsPagerdutyList),
@@ -361,60 +355,60 @@ export const PoliciesCreateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesCreateRequestMechanisms>;
 
 export type PoliciesCreateRequestFiltersActionsList = Array<string>;
-export const PoliciesCreateRequestFiltersActionsList = /*@__PURE__*/ S.Array(
+const PoliciesCreateRequestFiltersActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoliciesCreateRequestFiltersActionsList>;
 
 export type PoliciesCreateRequestFiltersAffectedAsnsList = Array<string>;
-export const PoliciesCreateRequestFiltersAffectedAsnsList =
+const PoliciesCreateRequestFiltersAffectedAsnsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAffectedAsnsList>;
 
 export type PoliciesCreateRequestFiltersAffectedComponentsList = Array<string>;
-export const PoliciesCreateRequestFiltersAffectedComponentsList =
+const PoliciesCreateRequestFiltersAffectedComponentsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAffectedComponentsList>;
 
 export type PoliciesCreateRequestFiltersAffectedLocationsList = Array<string>;
-export const PoliciesCreateRequestFiltersAffectedLocationsList =
+const PoliciesCreateRequestFiltersAffectedLocationsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAffectedLocationsList>;
 
 export type PoliciesCreateRequestFiltersAirportCodeList = Array<string>;
-export const PoliciesCreateRequestFiltersAirportCodeList =
+const PoliciesCreateRequestFiltersAirportCodeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAirportCodeList>;
 
 export type PoliciesCreateRequestFiltersAlertTriggerPreferencesList = Array<string>;
-export const PoliciesCreateRequestFiltersAlertTriggerPreferencesList =
+const PoliciesCreateRequestFiltersAlertTriggerPreferencesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList = Array<string>;
-export const PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
+const PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList>;
 
 export type PoliciesCreateRequestFiltersEnabledList = Array<string>;
-export const PoliciesCreateRequestFiltersEnabledList =
+const PoliciesCreateRequestFiltersEnabledList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEnabledList>;
 
 export type PoliciesCreateRequestFiltersEnvironmentList = Array<string>;
-export const PoliciesCreateRequestFiltersEnvironmentList =
+const PoliciesCreateRequestFiltersEnvironmentList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEnvironmentList>;
 
 export type PoliciesCreateRequestFiltersEventList = Array<string>;
-export const PoliciesCreateRequestFiltersEventList =
+const PoliciesCreateRequestFiltersEventList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEventList>;
 
 export type PoliciesCreateRequestFiltersEventSourceList = Array<string>;
-export const PoliciesCreateRequestFiltersEventSourceList =
+const PoliciesCreateRequestFiltersEventSourceList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEventSourceList>;
 
 export type PoliciesCreateRequestFiltersEventTypeList = Array<string>;
-export const PoliciesCreateRequestFiltersEventTypeList =
+const PoliciesCreateRequestFiltersEventTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersEventTypeList>;
 
 export type PoliciesCreateRequestFiltersGroupByList = Array<string>;
-export const PoliciesCreateRequestFiltersGroupByList =
+const PoliciesCreateRequestFiltersGroupByList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersGroupByList>;
 
 export type PoliciesCreateRequestFiltersHealthCheckIdList = Array<string>;
-export const PoliciesCreateRequestFiltersHealthCheckIdList =
+const PoliciesCreateRequestFiltersHealthCheckIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersHealthCheckIdList>;
 
 export type PoliciesCreateRequestFiltersIncidentImpactItem =
@@ -422,134 +416,132 @@ export type PoliciesCreateRequestFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
   | "INCIDENT_IMPACT_CRITICAL";
-export const PoliciesCreateRequestFiltersIncidentImpactItem = S.String;
+const PoliciesCreateRequestFiltersIncidentImpactItem = S.String;
 
 export type PoliciesCreateRequestFiltersIncidentImpactList = Array<
   PoliciesCreateRequestFiltersIncidentImpactItem | (string & {})
 >;
-export const PoliciesCreateRequestFiltersIncidentImpactList = /*@__PURE__*/ S.Array(
+const PoliciesCreateRequestFiltersIncidentImpactList = /*@__PURE__*/ S.Array(
   PoliciesCreateRequestFiltersIncidentImpactItem,
 ) as any as S.Schema<PoliciesCreateRequestFiltersIncidentImpactList>;
 
 export type PoliciesCreateRequestFiltersInputIdList = Array<string>;
-export const PoliciesCreateRequestFiltersInputIdList =
+const PoliciesCreateRequestFiltersInputIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersInputIdList>;
 
 export type PoliciesCreateRequestFiltersInsightClassList = Array<string>;
-export const PoliciesCreateRequestFiltersInsightClassList =
+const PoliciesCreateRequestFiltersInsightClassList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersInsightClassList>;
 
 export type PoliciesCreateRequestFiltersLimitList = Array<string>;
-export const PoliciesCreateRequestFiltersLimitList =
+const PoliciesCreateRequestFiltersLimitList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersLimitList>;
 
 export type PoliciesCreateRequestFiltersLogoTagList = Array<string>;
-export const PoliciesCreateRequestFiltersLogoTagList =
+const PoliciesCreateRequestFiltersLogoTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersLogoTagList>;
 
 export type PoliciesCreateRequestFiltersMegabitsPerSecondList = Array<string>;
-export const PoliciesCreateRequestFiltersMegabitsPerSecondList =
+const PoliciesCreateRequestFiltersMegabitsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersMegabitsPerSecondList>;
 
 export type PoliciesCreateRequestFiltersNewHealthList = Array<string>;
-export const PoliciesCreateRequestFiltersNewHealthList =
+const PoliciesCreateRequestFiltersNewHealthList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersNewHealthList>;
 
 export type PoliciesCreateRequestFiltersNewStatusList = Array<string>;
-export const PoliciesCreateRequestFiltersNewStatusList =
+const PoliciesCreateRequestFiltersNewStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersNewStatusList>;
 
 export type PoliciesCreateRequestFiltersPacketsPerSecondList = Array<string>;
-export const PoliciesCreateRequestFiltersPacketsPerSecondList =
+const PoliciesCreateRequestFiltersPacketsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersPacketsPerSecondList>;
 
 export type PoliciesCreateRequestFiltersPoolIdList = Array<string>;
-export const PoliciesCreateRequestFiltersPoolIdList =
+const PoliciesCreateRequestFiltersPoolIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersPoolIdList>;
 
 export type PoliciesCreateRequestFiltersPopNamesList = Array<string>;
-export const PoliciesCreateRequestFiltersPopNamesList =
+const PoliciesCreateRequestFiltersPopNamesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersPopNamesList>;
 
 export type PoliciesCreateRequestFiltersProductList = Array<string>;
-export const PoliciesCreateRequestFiltersProductList =
+const PoliciesCreateRequestFiltersProductList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersProductList>;
 
 export type PoliciesCreateRequestFiltersProjectIdList = Array<string>;
-export const PoliciesCreateRequestFiltersProjectIdList =
+const PoliciesCreateRequestFiltersProjectIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersProjectIdList>;
 
 export type PoliciesCreateRequestFiltersProtocolList = Array<string>;
-export const PoliciesCreateRequestFiltersProtocolList =
+const PoliciesCreateRequestFiltersProtocolList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersProtocolList>;
 
 export type PoliciesCreateRequestFiltersQueryTagList = Array<string>;
-export const PoliciesCreateRequestFiltersQueryTagList =
+const PoliciesCreateRequestFiltersQueryTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersQueryTagList>;
 
 export type PoliciesCreateRequestFiltersRequestsPerSecondList = Array<string>;
-export const PoliciesCreateRequestFiltersRequestsPerSecondList =
+const PoliciesCreateRequestFiltersRequestsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersRequestsPerSecondList>;
 
 export type PoliciesCreateRequestFiltersSelectorsList = Array<string>;
-export const PoliciesCreateRequestFiltersSelectorsList =
+const PoliciesCreateRequestFiltersSelectorsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersSelectorsList>;
 
 export type PoliciesCreateRequestFiltersServicesList = Array<string>;
-export const PoliciesCreateRequestFiltersServicesList =
+const PoliciesCreateRequestFiltersServicesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersServicesList>;
 
 export type PoliciesCreateRequestFiltersSloList = Array<string>;
-export const PoliciesCreateRequestFiltersSloList =
+const PoliciesCreateRequestFiltersSloList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersSloList>;
 
 export type PoliciesCreateRequestFiltersStatusList = Array<string>;
-export const PoliciesCreateRequestFiltersStatusList =
+const PoliciesCreateRequestFiltersStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersStatusList>;
 
 export type PoliciesCreateRequestFiltersTargetHostnameList = Array<string>;
-export const PoliciesCreateRequestFiltersTargetHostnameList =
+const PoliciesCreateRequestFiltersTargetHostnameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTargetHostnameList>;
 
 export type PoliciesCreateRequestFiltersTargetIpList = Array<string>;
-export const PoliciesCreateRequestFiltersTargetIpList =
+const PoliciesCreateRequestFiltersTargetIpList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTargetIpList>;
 
 export type PoliciesCreateRequestFiltersTargetZoneNameList = Array<string>;
-export const PoliciesCreateRequestFiltersTargetZoneNameList =
+const PoliciesCreateRequestFiltersTargetZoneNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTargetZoneNameList>;
 
 export type PoliciesCreateRequestFiltersTokenIdList = Array<string>;
-export const PoliciesCreateRequestFiltersTokenIdList =
+const PoliciesCreateRequestFiltersTokenIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTokenIdList>;
 
 export type PoliciesCreateRequestFiltersTrafficExclusionsItem = "security_events";
-export const PoliciesCreateRequestFiltersTrafficExclusionsItem = S.String;
-
 export type PoliciesCreateRequestFiltersTrafficExclusionsList = Array<
   PoliciesCreateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
-export const PoliciesCreateRequestFiltersTrafficExclusionsList =
+const PoliciesCreateRequestFiltersTrafficExclusionsList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesCreateRequestFiltersTrafficExclusionsList>;
 
 export type PoliciesCreateRequestFiltersTunnelIdList = Array<string>;
-export const PoliciesCreateRequestFiltersTunnelIdList =
+const PoliciesCreateRequestFiltersTunnelIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTunnelIdList>;
 
 export type PoliciesCreateRequestFiltersTunnelNameList = Array<string>;
-export const PoliciesCreateRequestFiltersTunnelNameList =
+const PoliciesCreateRequestFiltersTunnelNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTunnelNameList>;
 
 export type PoliciesCreateRequestFiltersTypeList = Array<string>;
-export const PoliciesCreateRequestFiltersTypeList =
+const PoliciesCreateRequestFiltersTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersTypeList>;
 
 export type PoliciesCreateRequestFiltersWhereList = Array<string>;
-export const PoliciesCreateRequestFiltersWhereList =
+const PoliciesCreateRequestFiltersWhereList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersWhereList>;
 
 export type PoliciesCreateRequestFiltersZonesList = Array<string>;
-export const PoliciesCreateRequestFiltersZonesList =
+const PoliciesCreateRequestFiltersZonesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesCreateRequestFiltersZonesList>;
 
 export interface PoliciesCreateRequestFilters {
@@ -642,7 +634,7 @@ export interface PoliciesCreateRequestFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesCreateRequestFiltersZonesList;
 }
-export const PoliciesCreateRequestFilters = /*@__PURE__*/ S.suspend(() =>
+const PoliciesCreateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(PoliciesCreateRequestFiltersActionsList),
     affectedAsns: S.optional(
@@ -747,7 +739,7 @@ export interface CreatePolicyRequest {
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
   filters?: PoliciesCreateRequestFilters;
 }
-export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     alertType: PoliciesCreateRequestAlertType.pipe(T.Body("alert_type")),
@@ -767,7 +759,7 @@ export interface CreatePolicyResponse {
   /** UUID */
   id?: string | null;
 }
-export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -781,7 +773,7 @@ export interface SilencesCreateRequestBodyItem {
   /** When the silence starts. */
   startTime?: string;
 }
-export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String.pipe(T.Body("end_time"))),
     policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
@@ -792,7 +784,7 @@ export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesCreateRequestBodyItem>;
 
 export type SilencesCreateRequestBodyList = Array<SilencesCreateRequestBodyItem>;
-export const SilencesCreateRequestBodyList = /*@__PURE__*/ S.Array(
+const SilencesCreateRequestBodyList = /*@__PURE__*/ S.Array(
   SilencesCreateRequestBodyItem,
 ) as any as S.Schema<SilencesCreateRequestBodyList>;
 
@@ -801,7 +793,7 @@ export interface CreateSilenceRequest {
   accountId: string;
   body: SilencesCreateRequestBodyList;
 }
-export const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesCreateRequestBodyList.pipe(T.HttpBody()),
@@ -811,7 +803,7 @@ export const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSilenceRequest" }) as any as S.Schema<CreateSilenceRequest>;
 
 export interface CreateSilenceResponse {}
-export const CreateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateSilenceResponse" }) as any as S.Schema<CreateSilenceResponse>;
 
@@ -819,7 +811,7 @@ export interface DeleteDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-export const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -836,7 +828,7 @@ export const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDestinationPagerdutyRequest>;
 
 export interface DeleteDestinationPagerdutyResponse {}
-export const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDestinationPagerdutyResponse",
@@ -848,7 +840,7 @@ export interface DeleteDestinationWebhookRequest {
   /** The unique identifier of a webhook */
   webhookId: string;
 }
-export const DeleteDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
@@ -866,7 +858,7 @@ export const DeleteDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDestinationWebhookRequest>;
 
 export interface DeleteDestinationWebhookResponse {}
-export const DeleteDestinationWebhookResponse =
+const DeleteDestinationWebhookResponse =
   DeleteDestinationPagerdutyResponse as any as S.Schema<DeleteDestinationWebhookResponse>;
 
 export interface DeletePolicyRequest {
@@ -875,7 +867,7 @@ export interface DeletePolicyRequest {
   /** The unique identifier of a notification policy */
   policyId: string;
 }
-export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -891,7 +883,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = CreateSilenceResponse as any as S.Schema<DeletePolicyResponse>;
+const DeletePolicyResponse = CreateSilenceResponse as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeleteSilenceRequest {
   /** The account id */
@@ -899,7 +891,7 @@ export interface DeleteSilenceRequest {
   /** Silence ID */
   silenceId: string;
 }
-export const DeleteSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     silenceId: S.String.pipe(T.Label("silence_id")),
@@ -915,14 +907,13 @@ export const DeleteSilenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSilenceRequest" }) as any as S.Schema<DeleteSilenceRequest>;
 
 export interface DeleteSilenceResponse {}
-export const DeleteSilenceResponse =
-  CreateSilenceResponse as any as S.Schema<DeleteSilenceResponse>;
+const DeleteSilenceResponse = CreateSilenceResponse as any as S.Schema<DeleteSilenceResponse>;
 
 export interface GetDestinationEligibleRequest {
   /** The account id */
   accountId: string;
 }
-export const GetDestinationEligibleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationEligibleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -939,7 +930,7 @@ export const GetDestinationEligibleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDestinationEligibleRequest>;
 
 export type DestinationsEligibleGetResultValueItemType = "email" | "pagerduty" | "webhook";
-export const DestinationsEligibleGetResultValueItemType = S.String;
+const DestinationsEligibleGetResultValueItemType = S.String;
 
 export interface DestinationsEligibleGetResultValueItem {
   /** Determines whether or not the account is eligible for the delivery mechanism. */
@@ -949,7 +940,7 @@ export interface DestinationsEligibleGetResultValueItem {
   /** Determines type of delivery mechanism. */
   type?: DestinationsEligibleGetResultValueItemType | null;
 }
-export const DestinationsEligibleGetResultValueItem = /*@__PURE__*/ S.suspend(() =>
+const DestinationsEligibleGetResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eligible: S.optional(S.NullOr(S.Boolean)),
     ready: S.optional(S.NullOr(S.Boolean)),
@@ -960,20 +951,20 @@ export const DestinationsEligibleGetResultValueItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DestinationsEligibleGetResultValueItem>;
 
 export type DestinationsEligibleGetResultValueList = Array<DestinationsEligibleGetResultValueItem>;
-export const DestinationsEligibleGetResultValueList = /*@__PURE__*/ S.Array(
+const DestinationsEligibleGetResultValueList = /*@__PURE__*/ S.Array(
   DestinationsEligibleGetResultValueItem,
 ) as any as S.Schema<DestinationsEligibleGetResultValueList>;
 
 export type DestinationsEligibleGetResultMap = {
   [key: string]: DestinationsEligibleGetResultValueList | undefined;
 };
-export const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
+const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
   S.String,
   DestinationsEligibleGetResultValueList,
 ) as any as S.Schema<DestinationsEligibleGetResultMap>;
 
 export type GetDestinationEligibleResponse = DestinationsEligibleGetResultMap;
-export const GetDestinationEligibleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationEligibleResponse = /*@__PURE__*/ S.suspend(() =>
   DestinationsEligibleGetResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDestinationEligibleResponse",
@@ -983,7 +974,7 @@ export interface GetDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-export const GetDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1005,7 +996,7 @@ export interface DestinationsPagerdutyGetResultItem {
   /** The name of the pagerduty service. */
   name?: string | null;
 }
-export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -1015,7 +1006,7 @@ export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsPagerdutyGetResultItem>;
 
 export type DestinationsPagerdutyGetResultList = Array<DestinationsPagerdutyGetResultItem>;
-export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
+const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
   DestinationsPagerdutyGetResultItem,
 ) as any as S.Schema<DestinationsPagerdutyGetResultList>;
 
@@ -1025,7 +1016,7 @@ export interface GetDestinationPagerdutyResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1040,7 +1031,7 @@ export interface GetDestinationWebhookRequest {
   /** The unique identifier of a webhook */
   webhookId: string;
 }
-export const GetDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
@@ -1066,7 +1057,7 @@ export type DestinationsWebhooksGetResponseType =
   | "opsgenie"
   | "slack"
   | "splunk";
-export const DestinationsWebhooksGetResponseType = S.String;
+const DestinationsWebhooksGetResponseType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDestinationWebhookResponse {
@@ -1087,7 +1078,7 @@ export interface GetDestinationWebhookResponse {
   /** The POST endpoint to call when dispatching a notification. */
   url?: string | null;
 }
-export const GetDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1108,7 +1099,7 @@ export interface GetPolicyRequest {
   /** The unique identifier of a notification policy */
   policyId: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -1193,62 +1184,62 @@ export type PoliciesGetResponseAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-export const PoliciesGetResponseAlertType = S.String;
+const PoliciesGetResponseAlertType = S.String;
 
 export type PoliciesGetResponseFiltersActionsList = Array<string>;
-export const PoliciesGetResponseFiltersActionsList =
+const PoliciesGetResponseFiltersActionsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersActionsList>;
 
 export type PoliciesGetResponseFiltersAffectedAsnsList = Array<string>;
-export const PoliciesGetResponseFiltersAffectedAsnsList =
+const PoliciesGetResponseFiltersAffectedAsnsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAffectedAsnsList>;
 
 export type PoliciesGetResponseFiltersAffectedComponentsList = Array<string>;
-export const PoliciesGetResponseFiltersAffectedComponentsList =
+const PoliciesGetResponseFiltersAffectedComponentsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAffectedComponentsList>;
 
 export type PoliciesGetResponseFiltersAffectedLocationsList = Array<string>;
-export const PoliciesGetResponseFiltersAffectedLocationsList =
+const PoliciesGetResponseFiltersAffectedLocationsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAffectedLocationsList>;
 
 export type PoliciesGetResponseFiltersAirportCodeList = Array<string>;
-export const PoliciesGetResponseFiltersAirportCodeList =
+const PoliciesGetResponseFiltersAirportCodeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAirportCodeList>;
 
 export type PoliciesGetResponseFiltersAlertTriggerPreferencesList = Array<string>;
-export const PoliciesGetResponseFiltersAlertTriggerPreferencesList =
+const PoliciesGetResponseFiltersAlertTriggerPreferencesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesGetResponseFiltersAlertTriggerPreferencesValueList = Array<string>;
-export const PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
+const PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesValueList>;
 
 export type PoliciesGetResponseFiltersEnabledList = Array<string>;
-export const PoliciesGetResponseFiltersEnabledList =
+const PoliciesGetResponseFiltersEnabledList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEnabledList>;
 
 export type PoliciesGetResponseFiltersEnvironmentList = Array<string>;
-export const PoliciesGetResponseFiltersEnvironmentList =
+const PoliciesGetResponseFiltersEnvironmentList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEnvironmentList>;
 
 export type PoliciesGetResponseFiltersEventList = Array<string>;
-export const PoliciesGetResponseFiltersEventList =
+const PoliciesGetResponseFiltersEventList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEventList>;
 
 export type PoliciesGetResponseFiltersEventSourceList = Array<string>;
-export const PoliciesGetResponseFiltersEventSourceList =
+const PoliciesGetResponseFiltersEventSourceList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEventSourceList>;
 
 export type PoliciesGetResponseFiltersEventTypeList = Array<string>;
-export const PoliciesGetResponseFiltersEventTypeList =
+const PoliciesGetResponseFiltersEventTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersEventTypeList>;
 
 export type PoliciesGetResponseFiltersGroupByList = Array<string>;
-export const PoliciesGetResponseFiltersGroupByList =
+const PoliciesGetResponseFiltersGroupByList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersGroupByList>;
 
 export type PoliciesGetResponseFiltersHealthCheckIdList = Array<string>;
-export const PoliciesGetResponseFiltersHealthCheckIdList =
+const PoliciesGetResponseFiltersHealthCheckIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersHealthCheckIdList>;
 
 export type PoliciesGetResponseFiltersIncidentImpactItem =
@@ -1256,131 +1247,127 @@ export type PoliciesGetResponseFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
   | "INCIDENT_IMPACT_CRITICAL";
-export const PoliciesGetResponseFiltersIncidentImpactItem = S.String;
-
 export type PoliciesGetResponseFiltersIncidentImpactList =
   Array<PoliciesGetResponseFiltersIncidentImpactItem>;
-export const PoliciesGetResponseFiltersIncidentImpactList =
+const PoliciesGetResponseFiltersIncidentImpactList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesGetResponseFiltersIncidentImpactList>;
 
 export type PoliciesGetResponseFiltersInputIdList = Array<string>;
-export const PoliciesGetResponseFiltersInputIdList =
+const PoliciesGetResponseFiltersInputIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersInputIdList>;
 
 export type PoliciesGetResponseFiltersInsightClassList = Array<string>;
-export const PoliciesGetResponseFiltersInsightClassList =
+const PoliciesGetResponseFiltersInsightClassList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersInsightClassList>;
 
 export type PoliciesGetResponseFiltersLimitList = Array<string>;
-export const PoliciesGetResponseFiltersLimitList =
+const PoliciesGetResponseFiltersLimitList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersLimitList>;
 
 export type PoliciesGetResponseFiltersLogoTagList = Array<string>;
-export const PoliciesGetResponseFiltersLogoTagList =
+const PoliciesGetResponseFiltersLogoTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersLogoTagList>;
 
 export type PoliciesGetResponseFiltersMegabitsPerSecondList = Array<string>;
-export const PoliciesGetResponseFiltersMegabitsPerSecondList =
+const PoliciesGetResponseFiltersMegabitsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersMegabitsPerSecondList>;
 
 export type PoliciesGetResponseFiltersNewHealthList = Array<string>;
-export const PoliciesGetResponseFiltersNewHealthList =
+const PoliciesGetResponseFiltersNewHealthList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersNewHealthList>;
 
 export type PoliciesGetResponseFiltersNewStatusList = Array<string>;
-export const PoliciesGetResponseFiltersNewStatusList =
+const PoliciesGetResponseFiltersNewStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersNewStatusList>;
 
 export type PoliciesGetResponseFiltersPacketsPerSecondList = Array<string>;
-export const PoliciesGetResponseFiltersPacketsPerSecondList =
+const PoliciesGetResponseFiltersPacketsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersPacketsPerSecondList>;
 
 export type PoliciesGetResponseFiltersPoolIdList = Array<string>;
-export const PoliciesGetResponseFiltersPoolIdList =
+const PoliciesGetResponseFiltersPoolIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersPoolIdList>;
 
 export type PoliciesGetResponseFiltersPopNamesList = Array<string>;
-export const PoliciesGetResponseFiltersPopNamesList =
+const PoliciesGetResponseFiltersPopNamesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersPopNamesList>;
 
 export type PoliciesGetResponseFiltersProductList = Array<string>;
-export const PoliciesGetResponseFiltersProductList =
+const PoliciesGetResponseFiltersProductList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersProductList>;
 
 export type PoliciesGetResponseFiltersProjectIdList = Array<string>;
-export const PoliciesGetResponseFiltersProjectIdList =
+const PoliciesGetResponseFiltersProjectIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersProjectIdList>;
 
 export type PoliciesGetResponseFiltersProtocolList = Array<string>;
-export const PoliciesGetResponseFiltersProtocolList =
+const PoliciesGetResponseFiltersProtocolList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersProtocolList>;
 
 export type PoliciesGetResponseFiltersQueryTagList = Array<string>;
-export const PoliciesGetResponseFiltersQueryTagList =
+const PoliciesGetResponseFiltersQueryTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersQueryTagList>;
 
 export type PoliciesGetResponseFiltersRequestsPerSecondList = Array<string>;
-export const PoliciesGetResponseFiltersRequestsPerSecondList =
+const PoliciesGetResponseFiltersRequestsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersRequestsPerSecondList>;
 
 export type PoliciesGetResponseFiltersSelectorsList = Array<string>;
-export const PoliciesGetResponseFiltersSelectorsList =
+const PoliciesGetResponseFiltersSelectorsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersSelectorsList>;
 
 export type PoliciesGetResponseFiltersServicesList = Array<string>;
-export const PoliciesGetResponseFiltersServicesList =
+const PoliciesGetResponseFiltersServicesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersServicesList>;
 
 export type PoliciesGetResponseFiltersSloList = Array<string>;
-export const PoliciesGetResponseFiltersSloList =
+const PoliciesGetResponseFiltersSloList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersSloList>;
 
 export type PoliciesGetResponseFiltersStatusList = Array<string>;
-export const PoliciesGetResponseFiltersStatusList =
+const PoliciesGetResponseFiltersStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersStatusList>;
 
 export type PoliciesGetResponseFiltersTargetHostnameList = Array<string>;
-export const PoliciesGetResponseFiltersTargetHostnameList =
+const PoliciesGetResponseFiltersTargetHostnameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTargetHostnameList>;
 
 export type PoliciesGetResponseFiltersTargetIpList = Array<string>;
-export const PoliciesGetResponseFiltersTargetIpList =
+const PoliciesGetResponseFiltersTargetIpList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTargetIpList>;
 
 export type PoliciesGetResponseFiltersTargetZoneNameList = Array<string>;
-export const PoliciesGetResponseFiltersTargetZoneNameList =
+const PoliciesGetResponseFiltersTargetZoneNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTargetZoneNameList>;
 
 export type PoliciesGetResponseFiltersTokenIdList = Array<string>;
-export const PoliciesGetResponseFiltersTokenIdList =
+const PoliciesGetResponseFiltersTokenIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTokenIdList>;
 
 export type PoliciesGetResponseFiltersTrafficExclusionsItem = "security_events";
-export const PoliciesGetResponseFiltersTrafficExclusionsItem = S.String;
-
 export type PoliciesGetResponseFiltersTrafficExclusionsList =
   Array<PoliciesGetResponseFiltersTrafficExclusionsItem>;
-export const PoliciesGetResponseFiltersTrafficExclusionsList =
+const PoliciesGetResponseFiltersTrafficExclusionsList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesGetResponseFiltersTrafficExclusionsList>;
 
 export type PoliciesGetResponseFiltersTunnelIdList = Array<string>;
-export const PoliciesGetResponseFiltersTunnelIdList =
+const PoliciesGetResponseFiltersTunnelIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTunnelIdList>;
 
 export type PoliciesGetResponseFiltersTunnelNameList = Array<string>;
-export const PoliciesGetResponseFiltersTunnelNameList =
+const PoliciesGetResponseFiltersTunnelNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTunnelNameList>;
 
 export type PoliciesGetResponseFiltersTypeList = Array<string>;
-export const PoliciesGetResponseFiltersTypeList =
+const PoliciesGetResponseFiltersTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersTypeList>;
 
 export type PoliciesGetResponseFiltersWhereList = Array<string>;
-export const PoliciesGetResponseFiltersWhereList =
+const PoliciesGetResponseFiltersWhereList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersWhereList>;
 
 export type PoliciesGetResponseFiltersZonesList = Array<string>;
-export const PoliciesGetResponseFiltersZonesList =
+const PoliciesGetResponseFiltersZonesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesGetResponseFiltersZonesList>;
 
 export interface PoliciesGetResponseFilters {
@@ -1473,7 +1460,7 @@ export interface PoliciesGetResponseFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesGetResponseFiltersZonesList | null;
 }
-export const PoliciesGetResponseFilters = /*@__PURE__*/ S.suspend(() =>
+const PoliciesGetResponseFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(S.NullOr(PoliciesGetResponseFiltersActionsList)),
     affectedAsns: S.optional(
@@ -1584,7 +1571,7 @@ export interface PoliciesGetResponseMechanismsEmailItem {
   /** The email address */
   id?: string | null;
 }
-export const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ S.suspend(() =>
+const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }),
@@ -1593,7 +1580,7 @@ export const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PoliciesGetResponseMechanismsEmailItem>;
 
 export type PoliciesGetResponseMechanismsEmailList = Array<PoliciesGetResponseMechanismsEmailItem>;
-export const PoliciesGetResponseMechanismsEmailList = /*@__PURE__*/ S.Array(
+const PoliciesGetResponseMechanismsEmailList = /*@__PURE__*/ S.Array(
   PoliciesGetResponseMechanismsEmailItem,
 ) as any as S.Schema<PoliciesGetResponseMechanismsEmailList>;
 
@@ -1601,20 +1588,15 @@ export interface PoliciesGetResponseMechanismsPagerdutyItem {
   /** UUID */
   id?: string | null;
 }
-export const PoliciesGetResponseMechanismsPagerdutyItem =
-  PoliciesGetResponseMechanismsEmailItem as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyItem>;
-
 export type PoliciesGetResponseMechanismsPagerdutyList =
   Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-export const PoliciesGetResponseMechanismsPagerdutyList =
+const PoliciesGetResponseMechanismsPagerdutyList =
   PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyList>;
 
 export type PoliciesGetResponseMechanismsWebhooksItem = PoliciesGetResponseMechanismsPagerdutyItem;
-export const PoliciesGetResponseMechanismsWebhooksItem = PoliciesGetResponseMechanismsPagerdutyItem;
-
 export type PoliciesGetResponseMechanismsWebhooksList =
   Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-export const PoliciesGetResponseMechanismsWebhooksList =
+const PoliciesGetResponseMechanismsWebhooksList =
   PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
 
 export interface PoliciesGetResponseMechanisms {
@@ -1622,7 +1604,7 @@ export interface PoliciesGetResponseMechanisms {
   pagerduty?: PoliciesGetResponseMechanismsPagerdutyList | null;
   webhooks?: PoliciesGetResponseMechanismsWebhooksList | null;
 }
-export const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
+const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(PoliciesGetResponseMechanismsEmailList)),
     pagerduty: S.optional(S.NullOr(PoliciesGetResponseMechanismsPagerdutyList)),
@@ -1653,7 +1635,7 @@ export interface GetPolicyResponse {
   /** Name of the policy. */
   name?: string | null;
 }
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     alertInterval: S.optional(S.NullOr(S.String).pipe(T.Body("alert_interval"))),
@@ -1674,7 +1656,7 @@ export interface GetSilenceRequest {
   /** Silence ID */
   silenceId: string;
 }
-export const GetSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     silenceId: S.String.pipe(T.Label("silence_id")),
@@ -1704,7 +1686,7 @@ export interface GetSilenceResponse {
   /** When the silence was modified. */
   updatedAt?: string | null;
 }
-export const GetSilenceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1721,7 +1703,7 @@ export interface LinkDestinationPagerdutyRequest {
   /** The token integration key */
   tokenId: string;
 }
-export const LinkDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tokenId: S.String.pipe(T.Label("token_id")),
@@ -1743,14 +1725,14 @@ export interface LinkDestinationPagerdutyResponse {
   /** UUID */
   id?: string | null;
 }
-export const LinkDestinationPagerdutyResponse =
+const LinkDestinationPagerdutyResponse =
   CreateDestinationPagerdutyResponse as any as S.Schema<LinkDestinationPagerdutyResponse>;
 
 export interface ListAvailableAlertsRequest {
   /** The account id */
   accountId: string;
 }
-export const ListAvailableAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1767,7 +1749,7 @@ export const ListAvailableAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailableAlertsRequest>;
 
 export type AvailableAlertsListResultValueItemFilterOptionsList = Array<unknown>;
-export const AvailableAlertsListResultValueItemFilterOptionsList = /*@__PURE__*/ S.Array(
+const AvailableAlertsListResultValueItemFilterOptionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AvailableAlertsListResultValueItemFilterOptionsList>;
 
@@ -1781,7 +1763,7 @@ export interface AvailableAlertsListResultValueItem {
   /** Use this value when creating and updating a notification policy. */
   type?: string | null;
 }
-export const AvailableAlertsListResultValueItem = /*@__PURE__*/ S.suspend(() =>
+const AvailableAlertsListResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     displayName: S.optional(S.NullOr(S.String).pipe(T.Body("display_name"))),
@@ -1795,20 +1777,20 @@ export const AvailableAlertsListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableAlertsListResultValueItem>;
 
 export type AvailableAlertsListResultValueList = Array<AvailableAlertsListResultValueItem>;
-export const AvailableAlertsListResultValueList = /*@__PURE__*/ S.Array(
+const AvailableAlertsListResultValueList = /*@__PURE__*/ S.Array(
   AvailableAlertsListResultValueItem,
 ) as any as S.Schema<AvailableAlertsListResultValueList>;
 
 export type AvailableAlertsListResultMap = {
   [key: string]: AvailableAlertsListResultValueList | undefined;
 };
-export const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
+const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
   S.String,
   AvailableAlertsListResultValueList,
 ) as any as S.Schema<AvailableAlertsListResultMap>;
 
 export type ListAvailableAlertsResponse = AvailableAlertsListResultMap;
-export const ListAvailableAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   AvailableAlertsListResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAvailableAlertsResponse",
@@ -1818,7 +1800,7 @@ export interface ListDestinationWebhooksRequest {
   /** The account id */
   accountId: string;
 }
-export const ListDestinationWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDestinationWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1843,7 +1825,7 @@ export type DestinationsWebhooksListResultItemType =
   | "opsgenie"
   | "slack"
   | "splunk";
-export const DestinationsWebhooksListResultItemType = S.String;
+const DestinationsWebhooksListResultItemType = S.String;
 
 export interface DestinationsWebhooksListResultItem {
   /** The unique identifier of a webhook */
@@ -1863,7 +1845,7 @@ export interface DestinationsWebhooksListResultItem {
   /** The POST endpoint to call when dispatching a notification. */
   url?: string | null;
 }
-export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
+const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1879,7 +1861,7 @@ export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsWebhooksListResultItem>;
 
 export type DestinationsWebhooksListResultList = Array<DestinationsWebhooksListResultItem>;
-export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
+const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
   DestinationsWebhooksListResultItem,
 ) as any as S.Schema<DestinationsWebhooksListResultList>;
 
@@ -1889,7 +1871,7 @@ export interface ListDestinationWebhooksResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDestinationWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDestinationWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1910,7 +1892,7 @@ export interface ListHistoriesRequest {
   /** Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339. */
   since?: string;
 }
-export const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     before: S.optional(S.String.pipe(T.Query())),
@@ -1923,7 +1905,7 @@ export const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListHistoriesRequest" }) as any as S.Schema<ListHistoriesRequest>;
 
 export type HistoryListResultItemMechanismType = "email" | "pagerduty" | "webhook";
-export const HistoryListResultItemMechanismType = S.String;
+const HistoryListResultItemMechanismType = S.String;
 
 export interface HistoryListResultItem {
   /** UUID */
@@ -1945,7 +1927,7 @@ export interface HistoryListResultItem {
   /** Timestamp of when the notification was dispatched in ISO 8601 format. */
   sent?: string | null;
 }
-export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
+const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     alertBody: S.optional(S.NullOr(S.String).pipe(T.Body("alert_body"))),
@@ -1962,7 +1944,7 @@ export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistoryListResultItem" }) as any as S.Schema<HistoryListResultItem>;
 
 export type HistoryListResultList = Array<HistoryListResultItem>;
-export const HistoryListResultList = /*@__PURE__*/ S.Array(
+const HistoryListResultList = /*@__PURE__*/ S.Array(
   HistoryListResultItem,
 ) as any as S.Schema<HistoryListResultList>;
 
@@ -1972,7 +1954,7 @@ export interface ListHistoriesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: HistoryListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1983,7 +1965,7 @@ export interface ListPoliciesRequest {
   /** The account id */
   accountId: string;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -2061,62 +2043,62 @@ export type PoliciesListResultItemAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-export const PoliciesListResultItemAlertType = S.String;
+const PoliciesListResultItemAlertType = S.String;
 
 export type PoliciesListResultItemFiltersActionsList = Array<string>;
-export const PoliciesListResultItemFiltersActionsList =
+const PoliciesListResultItemFiltersActionsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersActionsList>;
 
 export type PoliciesListResultItemFiltersAffectedAsnsList = Array<string>;
-export const PoliciesListResultItemFiltersAffectedAsnsList =
+const PoliciesListResultItemFiltersAffectedAsnsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAffectedAsnsList>;
 
 export type PoliciesListResultItemFiltersAffectedComponentsList = Array<string>;
-export const PoliciesListResultItemFiltersAffectedComponentsList =
+const PoliciesListResultItemFiltersAffectedComponentsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAffectedComponentsList>;
 
 export type PoliciesListResultItemFiltersAffectedLocationsList = Array<string>;
-export const PoliciesListResultItemFiltersAffectedLocationsList =
+const PoliciesListResultItemFiltersAffectedLocationsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAffectedLocationsList>;
 
 export type PoliciesListResultItemFiltersAirportCodeList = Array<string>;
-export const PoliciesListResultItemFiltersAirportCodeList =
+const PoliciesListResultItemFiltersAirportCodeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAirportCodeList>;
 
 export type PoliciesListResultItemFiltersAlertTriggerPreferencesList = Array<string>;
-export const PoliciesListResultItemFiltersAlertTriggerPreferencesList =
+const PoliciesListResultItemFiltersAlertTriggerPreferencesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesListResultItemFiltersAlertTriggerPreferencesValueList = Array<string>;
-export const PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
+const PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesValueList>;
 
 export type PoliciesListResultItemFiltersEnabledList = Array<string>;
-export const PoliciesListResultItemFiltersEnabledList =
+const PoliciesListResultItemFiltersEnabledList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEnabledList>;
 
 export type PoliciesListResultItemFiltersEnvironmentList = Array<string>;
-export const PoliciesListResultItemFiltersEnvironmentList =
+const PoliciesListResultItemFiltersEnvironmentList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEnvironmentList>;
 
 export type PoliciesListResultItemFiltersEventList = Array<string>;
-export const PoliciesListResultItemFiltersEventList =
+const PoliciesListResultItemFiltersEventList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEventList>;
 
 export type PoliciesListResultItemFiltersEventSourceList = Array<string>;
-export const PoliciesListResultItemFiltersEventSourceList =
+const PoliciesListResultItemFiltersEventSourceList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEventSourceList>;
 
 export type PoliciesListResultItemFiltersEventTypeList = Array<string>;
-export const PoliciesListResultItemFiltersEventTypeList =
+const PoliciesListResultItemFiltersEventTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersEventTypeList>;
 
 export type PoliciesListResultItemFiltersGroupByList = Array<string>;
-export const PoliciesListResultItemFiltersGroupByList =
+const PoliciesListResultItemFiltersGroupByList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersGroupByList>;
 
 export type PoliciesListResultItemFiltersHealthCheckIdList = Array<string>;
-export const PoliciesListResultItemFiltersHealthCheckIdList =
+const PoliciesListResultItemFiltersHealthCheckIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersHealthCheckIdList>;
 
 export type PoliciesListResultItemFiltersIncidentImpactItem =
@@ -2124,131 +2106,127 @@ export type PoliciesListResultItemFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
   | "INCIDENT_IMPACT_CRITICAL";
-export const PoliciesListResultItemFiltersIncidentImpactItem = S.String;
-
 export type PoliciesListResultItemFiltersIncidentImpactList =
   Array<PoliciesListResultItemFiltersIncidentImpactItem>;
-export const PoliciesListResultItemFiltersIncidentImpactList =
+const PoliciesListResultItemFiltersIncidentImpactList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesListResultItemFiltersIncidentImpactList>;
 
 export type PoliciesListResultItemFiltersInputIdList = Array<string>;
-export const PoliciesListResultItemFiltersInputIdList =
+const PoliciesListResultItemFiltersInputIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersInputIdList>;
 
 export type PoliciesListResultItemFiltersInsightClassList = Array<string>;
-export const PoliciesListResultItemFiltersInsightClassList =
+const PoliciesListResultItemFiltersInsightClassList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersInsightClassList>;
 
 export type PoliciesListResultItemFiltersLimitList = Array<string>;
-export const PoliciesListResultItemFiltersLimitList =
+const PoliciesListResultItemFiltersLimitList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersLimitList>;
 
 export type PoliciesListResultItemFiltersLogoTagList = Array<string>;
-export const PoliciesListResultItemFiltersLogoTagList =
+const PoliciesListResultItemFiltersLogoTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersLogoTagList>;
 
 export type PoliciesListResultItemFiltersMegabitsPerSecondList = Array<string>;
-export const PoliciesListResultItemFiltersMegabitsPerSecondList =
+const PoliciesListResultItemFiltersMegabitsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersMegabitsPerSecondList>;
 
 export type PoliciesListResultItemFiltersNewHealthList = Array<string>;
-export const PoliciesListResultItemFiltersNewHealthList =
+const PoliciesListResultItemFiltersNewHealthList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersNewHealthList>;
 
 export type PoliciesListResultItemFiltersNewStatusList = Array<string>;
-export const PoliciesListResultItemFiltersNewStatusList =
+const PoliciesListResultItemFiltersNewStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersNewStatusList>;
 
 export type PoliciesListResultItemFiltersPacketsPerSecondList = Array<string>;
-export const PoliciesListResultItemFiltersPacketsPerSecondList =
+const PoliciesListResultItemFiltersPacketsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersPacketsPerSecondList>;
 
 export type PoliciesListResultItemFiltersPoolIdList = Array<string>;
-export const PoliciesListResultItemFiltersPoolIdList =
+const PoliciesListResultItemFiltersPoolIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersPoolIdList>;
 
 export type PoliciesListResultItemFiltersPopNamesList = Array<string>;
-export const PoliciesListResultItemFiltersPopNamesList =
+const PoliciesListResultItemFiltersPopNamesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersPopNamesList>;
 
 export type PoliciesListResultItemFiltersProductList = Array<string>;
-export const PoliciesListResultItemFiltersProductList =
+const PoliciesListResultItemFiltersProductList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersProductList>;
 
 export type PoliciesListResultItemFiltersProjectIdList = Array<string>;
-export const PoliciesListResultItemFiltersProjectIdList =
+const PoliciesListResultItemFiltersProjectIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersProjectIdList>;
 
 export type PoliciesListResultItemFiltersProtocolList = Array<string>;
-export const PoliciesListResultItemFiltersProtocolList =
+const PoliciesListResultItemFiltersProtocolList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersProtocolList>;
 
 export type PoliciesListResultItemFiltersQueryTagList = Array<string>;
-export const PoliciesListResultItemFiltersQueryTagList =
+const PoliciesListResultItemFiltersQueryTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersQueryTagList>;
 
 export type PoliciesListResultItemFiltersRequestsPerSecondList = Array<string>;
-export const PoliciesListResultItemFiltersRequestsPerSecondList =
+const PoliciesListResultItemFiltersRequestsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersRequestsPerSecondList>;
 
 export type PoliciesListResultItemFiltersSelectorsList = Array<string>;
-export const PoliciesListResultItemFiltersSelectorsList =
+const PoliciesListResultItemFiltersSelectorsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersSelectorsList>;
 
 export type PoliciesListResultItemFiltersServicesList = Array<string>;
-export const PoliciesListResultItemFiltersServicesList =
+const PoliciesListResultItemFiltersServicesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersServicesList>;
 
 export type PoliciesListResultItemFiltersSloList = Array<string>;
-export const PoliciesListResultItemFiltersSloList =
+const PoliciesListResultItemFiltersSloList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersSloList>;
 
 export type PoliciesListResultItemFiltersStatusList = Array<string>;
-export const PoliciesListResultItemFiltersStatusList =
+const PoliciesListResultItemFiltersStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersStatusList>;
 
 export type PoliciesListResultItemFiltersTargetHostnameList = Array<string>;
-export const PoliciesListResultItemFiltersTargetHostnameList =
+const PoliciesListResultItemFiltersTargetHostnameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTargetHostnameList>;
 
 export type PoliciesListResultItemFiltersTargetIpList = Array<string>;
-export const PoliciesListResultItemFiltersTargetIpList =
+const PoliciesListResultItemFiltersTargetIpList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTargetIpList>;
 
 export type PoliciesListResultItemFiltersTargetZoneNameList = Array<string>;
-export const PoliciesListResultItemFiltersTargetZoneNameList =
+const PoliciesListResultItemFiltersTargetZoneNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTargetZoneNameList>;
 
 export type PoliciesListResultItemFiltersTokenIdList = Array<string>;
-export const PoliciesListResultItemFiltersTokenIdList =
+const PoliciesListResultItemFiltersTokenIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTokenIdList>;
 
 export type PoliciesListResultItemFiltersTrafficExclusionsItem = "security_events";
-export const PoliciesListResultItemFiltersTrafficExclusionsItem = S.String;
-
 export type PoliciesListResultItemFiltersTrafficExclusionsList =
   Array<PoliciesListResultItemFiltersTrafficExclusionsItem>;
-export const PoliciesListResultItemFiltersTrafficExclusionsList =
+const PoliciesListResultItemFiltersTrafficExclusionsList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesListResultItemFiltersTrafficExclusionsList>;
 
 export type PoliciesListResultItemFiltersTunnelIdList = Array<string>;
-export const PoliciesListResultItemFiltersTunnelIdList =
+const PoliciesListResultItemFiltersTunnelIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTunnelIdList>;
 
 export type PoliciesListResultItemFiltersTunnelNameList = Array<string>;
-export const PoliciesListResultItemFiltersTunnelNameList =
+const PoliciesListResultItemFiltersTunnelNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTunnelNameList>;
 
 export type PoliciesListResultItemFiltersTypeList = Array<string>;
-export const PoliciesListResultItemFiltersTypeList =
+const PoliciesListResultItemFiltersTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersTypeList>;
 
 export type PoliciesListResultItemFiltersWhereList = Array<string>;
-export const PoliciesListResultItemFiltersWhereList =
+const PoliciesListResultItemFiltersWhereList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersWhereList>;
 
 export type PoliciesListResultItemFiltersZonesList = Array<string>;
-export const PoliciesListResultItemFiltersZonesList =
+const PoliciesListResultItemFiltersZonesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesListResultItemFiltersZonesList>;
 
 export interface PoliciesListResultItemFilters {
@@ -2341,7 +2319,7 @@ export interface PoliciesListResultItemFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesListResultItemFiltersZonesList | null;
 }
-export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
+const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(S.NullOr(PoliciesListResultItemFiltersActionsList)),
     affectedAsns: S.optional(
@@ -2467,39 +2445,22 @@ export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesListResultItemFilters>;
 
 export type PoliciesListResultItemMechanismsEmailItem = PoliciesGetResponseMechanismsEmailItem;
-export const PoliciesListResultItemMechanismsEmailItem = PoliciesGetResponseMechanismsEmailItem;
-
 export type PoliciesListResultItemMechanismsEmailList =
   Array<PoliciesGetResponseMechanismsEmailItem>;
-export const PoliciesListResultItemMechanismsEmailList =
-  PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesListResultItemMechanismsEmailList>;
-
 export type PoliciesListResultItemMechanismsPagerdutyItem =
   PoliciesGetResponseMechanismsPagerdutyItem;
-export const PoliciesListResultItemMechanismsPagerdutyItem =
-  PoliciesGetResponseMechanismsPagerdutyItem;
-
 export type PoliciesListResultItemMechanismsPagerdutyList =
   Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-export const PoliciesListResultItemMechanismsPagerdutyList =
-  PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyList>;
-
 export type PoliciesListResultItemMechanismsWebhooksItem =
   PoliciesGetResponseMechanismsPagerdutyItem;
-export const PoliciesListResultItemMechanismsWebhooksItem =
-  PoliciesGetResponseMechanismsPagerdutyItem;
-
 export type PoliciesListResultItemMechanismsWebhooksList =
   Array<PoliciesGetResponseMechanismsPagerdutyItem>;
-export const PoliciesListResultItemMechanismsWebhooksList =
-  PoliciesGetResponseMechanismsEmailList as any as S.Schema<PoliciesListResultItemMechanismsWebhooksList>;
-
 export interface PoliciesListResultItemMechanisms {
   email?: PoliciesListResultItemMechanismsEmailList | null;
   pagerduty?: PoliciesListResultItemMechanismsPagerdutyList | null;
   webhooks?: PoliciesListResultItemMechanismsWebhooksList | null;
 }
-export const PoliciesListResultItemMechanisms =
+const PoliciesListResultItemMechanisms =
   PoliciesGetResponseMechanisms as any as S.Schema<PoliciesListResultItemMechanisms>;
 
 export interface PoliciesListResultItem {
@@ -2522,7 +2483,7 @@ export interface PoliciesListResultItem {
   /** Name of the policy. */
   name?: string | null;
 }
-export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     alertInterval: S.optional(S.NullOr(S.String).pipe(T.Body("alert_interval"))),
@@ -2538,7 +2499,7 @@ export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PoliciesListResultItem" }) as any as S.Schema<PoliciesListResultItem>;
 
 export type PoliciesListResultList = Array<PoliciesListResultItem>;
-export const PoliciesListResultList = /*@__PURE__*/ S.Array(
+const PoliciesListResultList = /*@__PURE__*/ S.Array(
   PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
 
@@ -2548,7 +2509,7 @@ export interface ListPoliciesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2559,7 +2520,7 @@ export interface ListSilencesRequest {
   /** The account id */
   accountId: string;
 }
-export const ListSilencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSilencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -2581,7 +2542,7 @@ export interface SilencesListResultItem {
   /** When the silence was modified. */
   updatedAt?: string | null;
 }
-export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -2593,7 +2554,7 @@ export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SilencesListResultItem" }) as any as S.Schema<SilencesListResultItem>;
 
 export type SilencesListResultList = Array<SilencesListResultItem>;
-export const SilencesListResultList = /*@__PURE__*/ S.Array(
+const SilencesListResultList = /*@__PURE__*/ S.Array(
   SilencesListResultItem,
 ) as any as S.Schema<SilencesListResultList>;
 
@@ -2603,7 +2564,7 @@ export interface ListSilencesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListSilencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSilencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SilencesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2622,7 +2583,7 @@ export interface UpdateDestinationWebhookRequest {
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
-export const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
@@ -2647,7 +2608,7 @@ export interface UpdateDestinationWebhookResponse {
   /** UUID */
   id?: string | null;
 }
-export const UpdateDestinationWebhookResponse =
+const UpdateDestinationWebhookResponse =
   CreateDestinationPagerdutyResponse as any as S.Schema<UpdateDestinationWebhookResponse>;
 
 export type PoliciesUpdateRequestAlertType =
@@ -2720,62 +2681,62 @@ export type PoliciesUpdateRequestAlertType =
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
   | "zone_aop_custom_certificate_expiration_type";
-export const PoliciesUpdateRequestAlertType = S.String;
+const PoliciesUpdateRequestAlertType = S.String;
 
 export type PoliciesUpdateRequestFiltersActionsList = Array<string>;
-export const PoliciesUpdateRequestFiltersActionsList =
+const PoliciesUpdateRequestFiltersActionsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersActionsList>;
 
 export type PoliciesUpdateRequestFiltersAffectedAsnsList = Array<string>;
-export const PoliciesUpdateRequestFiltersAffectedAsnsList =
+const PoliciesUpdateRequestFiltersAffectedAsnsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAffectedAsnsList>;
 
 export type PoliciesUpdateRequestFiltersAffectedComponentsList = Array<string>;
-export const PoliciesUpdateRequestFiltersAffectedComponentsList =
+const PoliciesUpdateRequestFiltersAffectedComponentsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAffectedComponentsList>;
 
 export type PoliciesUpdateRequestFiltersAffectedLocationsList = Array<string>;
-export const PoliciesUpdateRequestFiltersAffectedLocationsList =
+const PoliciesUpdateRequestFiltersAffectedLocationsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAffectedLocationsList>;
 
 export type PoliciesUpdateRequestFiltersAirportCodeList = Array<string>;
-export const PoliciesUpdateRequestFiltersAirportCodeList =
+const PoliciesUpdateRequestFiltersAirportCodeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAirportCodeList>;
 
 export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesList = Array<string>;
-export const PoliciesUpdateRequestFiltersAlertTriggerPreferencesList =
+const PoliciesUpdateRequestFiltersAlertTriggerPreferencesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesList>;
 
 export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList = Array<string>;
-export const PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
+const PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList>;
 
 export type PoliciesUpdateRequestFiltersEnabledList = Array<string>;
-export const PoliciesUpdateRequestFiltersEnabledList =
+const PoliciesUpdateRequestFiltersEnabledList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEnabledList>;
 
 export type PoliciesUpdateRequestFiltersEnvironmentList = Array<string>;
-export const PoliciesUpdateRequestFiltersEnvironmentList =
+const PoliciesUpdateRequestFiltersEnvironmentList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEnvironmentList>;
 
 export type PoliciesUpdateRequestFiltersEventList = Array<string>;
-export const PoliciesUpdateRequestFiltersEventList =
+const PoliciesUpdateRequestFiltersEventList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEventList>;
 
 export type PoliciesUpdateRequestFiltersEventSourceList = Array<string>;
-export const PoliciesUpdateRequestFiltersEventSourceList =
+const PoliciesUpdateRequestFiltersEventSourceList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEventSourceList>;
 
 export type PoliciesUpdateRequestFiltersEventTypeList = Array<string>;
-export const PoliciesUpdateRequestFiltersEventTypeList =
+const PoliciesUpdateRequestFiltersEventTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersEventTypeList>;
 
 export type PoliciesUpdateRequestFiltersGroupByList = Array<string>;
-export const PoliciesUpdateRequestFiltersGroupByList =
+const PoliciesUpdateRequestFiltersGroupByList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersGroupByList>;
 
 export type PoliciesUpdateRequestFiltersHealthCheckIdList = Array<string>;
-export const PoliciesUpdateRequestFiltersHealthCheckIdList =
+const PoliciesUpdateRequestFiltersHealthCheckIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersHealthCheckIdList>;
 
 export type PoliciesUpdateRequestFiltersIncidentImpactItem =
@@ -2783,133 +2744,129 @@ export type PoliciesUpdateRequestFiltersIncidentImpactItem =
   | "INCIDENT_IMPACT_MINOR"
   | "INCIDENT_IMPACT_MAJOR"
   | "INCIDENT_IMPACT_CRITICAL";
-export const PoliciesUpdateRequestFiltersIncidentImpactItem = S.String;
-
 export type PoliciesUpdateRequestFiltersIncidentImpactList = Array<
   PoliciesUpdateRequestFiltersIncidentImpactItem | (string & {})
 >;
-export const PoliciesUpdateRequestFiltersIncidentImpactList =
+const PoliciesUpdateRequestFiltersIncidentImpactList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesUpdateRequestFiltersIncidentImpactList>;
 
 export type PoliciesUpdateRequestFiltersInputIdList = Array<string>;
-export const PoliciesUpdateRequestFiltersInputIdList =
+const PoliciesUpdateRequestFiltersInputIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersInputIdList>;
 
 export type PoliciesUpdateRequestFiltersInsightClassList = Array<string>;
-export const PoliciesUpdateRequestFiltersInsightClassList =
+const PoliciesUpdateRequestFiltersInsightClassList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersInsightClassList>;
 
 export type PoliciesUpdateRequestFiltersLimitList = Array<string>;
-export const PoliciesUpdateRequestFiltersLimitList =
+const PoliciesUpdateRequestFiltersLimitList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersLimitList>;
 
 export type PoliciesUpdateRequestFiltersLogoTagList = Array<string>;
-export const PoliciesUpdateRequestFiltersLogoTagList =
+const PoliciesUpdateRequestFiltersLogoTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersLogoTagList>;
 
 export type PoliciesUpdateRequestFiltersMegabitsPerSecondList = Array<string>;
-export const PoliciesUpdateRequestFiltersMegabitsPerSecondList =
+const PoliciesUpdateRequestFiltersMegabitsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersMegabitsPerSecondList>;
 
 export type PoliciesUpdateRequestFiltersNewHealthList = Array<string>;
-export const PoliciesUpdateRequestFiltersNewHealthList =
+const PoliciesUpdateRequestFiltersNewHealthList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersNewHealthList>;
 
 export type PoliciesUpdateRequestFiltersNewStatusList = Array<string>;
-export const PoliciesUpdateRequestFiltersNewStatusList =
+const PoliciesUpdateRequestFiltersNewStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersNewStatusList>;
 
 export type PoliciesUpdateRequestFiltersPacketsPerSecondList = Array<string>;
-export const PoliciesUpdateRequestFiltersPacketsPerSecondList =
+const PoliciesUpdateRequestFiltersPacketsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersPacketsPerSecondList>;
 
 export type PoliciesUpdateRequestFiltersPoolIdList = Array<string>;
-export const PoliciesUpdateRequestFiltersPoolIdList =
+const PoliciesUpdateRequestFiltersPoolIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersPoolIdList>;
 
 export type PoliciesUpdateRequestFiltersPopNamesList = Array<string>;
-export const PoliciesUpdateRequestFiltersPopNamesList =
+const PoliciesUpdateRequestFiltersPopNamesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersPopNamesList>;
 
 export type PoliciesUpdateRequestFiltersProductList = Array<string>;
-export const PoliciesUpdateRequestFiltersProductList =
+const PoliciesUpdateRequestFiltersProductList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersProductList>;
 
 export type PoliciesUpdateRequestFiltersProjectIdList = Array<string>;
-export const PoliciesUpdateRequestFiltersProjectIdList =
+const PoliciesUpdateRequestFiltersProjectIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersProjectIdList>;
 
 export type PoliciesUpdateRequestFiltersProtocolList = Array<string>;
-export const PoliciesUpdateRequestFiltersProtocolList =
+const PoliciesUpdateRequestFiltersProtocolList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersProtocolList>;
 
 export type PoliciesUpdateRequestFiltersQueryTagList = Array<string>;
-export const PoliciesUpdateRequestFiltersQueryTagList =
+const PoliciesUpdateRequestFiltersQueryTagList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersQueryTagList>;
 
 export type PoliciesUpdateRequestFiltersRequestsPerSecondList = Array<string>;
-export const PoliciesUpdateRequestFiltersRequestsPerSecondList =
+const PoliciesUpdateRequestFiltersRequestsPerSecondList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersRequestsPerSecondList>;
 
 export type PoliciesUpdateRequestFiltersSelectorsList = Array<string>;
-export const PoliciesUpdateRequestFiltersSelectorsList =
+const PoliciesUpdateRequestFiltersSelectorsList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersSelectorsList>;
 
 export type PoliciesUpdateRequestFiltersServicesList = Array<string>;
-export const PoliciesUpdateRequestFiltersServicesList =
+const PoliciesUpdateRequestFiltersServicesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersServicesList>;
 
 export type PoliciesUpdateRequestFiltersSloList = Array<string>;
-export const PoliciesUpdateRequestFiltersSloList =
+const PoliciesUpdateRequestFiltersSloList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersSloList>;
 
 export type PoliciesUpdateRequestFiltersStatusList = Array<string>;
-export const PoliciesUpdateRequestFiltersStatusList =
+const PoliciesUpdateRequestFiltersStatusList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersStatusList>;
 
 export type PoliciesUpdateRequestFiltersTargetHostnameList = Array<string>;
-export const PoliciesUpdateRequestFiltersTargetHostnameList =
+const PoliciesUpdateRequestFiltersTargetHostnameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTargetHostnameList>;
 
 export type PoliciesUpdateRequestFiltersTargetIpList = Array<string>;
-export const PoliciesUpdateRequestFiltersTargetIpList =
+const PoliciesUpdateRequestFiltersTargetIpList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTargetIpList>;
 
 export type PoliciesUpdateRequestFiltersTargetZoneNameList = Array<string>;
-export const PoliciesUpdateRequestFiltersTargetZoneNameList =
+const PoliciesUpdateRequestFiltersTargetZoneNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTargetZoneNameList>;
 
 export type PoliciesUpdateRequestFiltersTokenIdList = Array<string>;
-export const PoliciesUpdateRequestFiltersTokenIdList =
+const PoliciesUpdateRequestFiltersTokenIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTokenIdList>;
 
 export type PoliciesUpdateRequestFiltersTrafficExclusionsItem = "security_events";
-export const PoliciesUpdateRequestFiltersTrafficExclusionsItem = S.String;
-
 export type PoliciesUpdateRequestFiltersTrafficExclusionsList = Array<
   PoliciesUpdateRequestFiltersTrafficExclusionsItem | (string & {})
 >;
-export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
+const PoliciesUpdateRequestFiltersTrafficExclusionsList =
   PoliciesCreateRequestFiltersIncidentImpactList as any as S.Schema<PoliciesUpdateRequestFiltersTrafficExclusionsList>;
 
 export type PoliciesUpdateRequestFiltersTunnelIdList = Array<string>;
-export const PoliciesUpdateRequestFiltersTunnelIdList =
+const PoliciesUpdateRequestFiltersTunnelIdList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTunnelIdList>;
 
 export type PoliciesUpdateRequestFiltersTunnelNameList = Array<string>;
-export const PoliciesUpdateRequestFiltersTunnelNameList =
+const PoliciesUpdateRequestFiltersTunnelNameList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTunnelNameList>;
 
 export type PoliciesUpdateRequestFiltersTypeList = Array<string>;
-export const PoliciesUpdateRequestFiltersTypeList =
+const PoliciesUpdateRequestFiltersTypeList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersTypeList>;
 
 export type PoliciesUpdateRequestFiltersWhereList = Array<string>;
-export const PoliciesUpdateRequestFiltersWhereList =
+const PoliciesUpdateRequestFiltersWhereList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersWhereList>;
 
 export type PoliciesUpdateRequestFiltersZonesList = Array<string>;
-export const PoliciesUpdateRequestFiltersZonesList =
+const PoliciesUpdateRequestFiltersZonesList =
   PoliciesCreateRequestFiltersActionsList as any as S.Schema<PoliciesUpdateRequestFiltersZonesList>;
 
 export interface PoliciesUpdateRequestFilters {
@@ -3002,7 +2959,7 @@ export interface PoliciesUpdateRequestFilters {
   /** Usage depends on specific alert type */
   zones?: PoliciesUpdateRequestFiltersZonesList;
 }
-export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
+const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(PoliciesUpdateRequestFiltersActionsList),
     affectedAsns: S.optional(
@@ -3090,39 +3047,22 @@ export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesUpdateRequestFilters>;
 
 export type PoliciesUpdateRequestMechanismsEmailItem = PoliciesCreateRequestMechanismsEmailItem;
-export const PoliciesUpdateRequestMechanismsEmailItem = PoliciesCreateRequestMechanismsEmailItem;
-
 export type PoliciesUpdateRequestMechanismsEmailList =
   Array<PoliciesCreateRequestMechanismsEmailItem>;
-export const PoliciesUpdateRequestMechanismsEmailList =
-  PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesUpdateRequestMechanismsEmailList>;
-
 export type PoliciesUpdateRequestMechanismsPagerdutyItem =
   PoliciesCreateRequestMechanismsPagerdutyItem;
-export const PoliciesUpdateRequestMechanismsPagerdutyItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-
 export type PoliciesUpdateRequestMechanismsPagerdutyList =
   Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-export const PoliciesUpdateRequestMechanismsPagerdutyList =
-  PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyList>;
-
 export type PoliciesUpdateRequestMechanismsWebhooksItem =
   PoliciesCreateRequestMechanismsPagerdutyItem;
-export const PoliciesUpdateRequestMechanismsWebhooksItem =
-  PoliciesCreateRequestMechanismsPagerdutyItem;
-
 export type PoliciesUpdateRequestMechanismsWebhooksList =
   Array<PoliciesCreateRequestMechanismsPagerdutyItem>;
-export const PoliciesUpdateRequestMechanismsWebhooksList =
-  PoliciesCreateRequestMechanismsEmailList as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksList>;
-
 export interface PoliciesUpdateRequestMechanisms {
   email?: PoliciesUpdateRequestMechanismsEmailList;
   pagerduty?: PoliciesUpdateRequestMechanismsPagerdutyList;
   webhooks?: PoliciesUpdateRequestMechanismsWebhooksList;
 }
-export const PoliciesUpdateRequestMechanisms =
+const PoliciesUpdateRequestMechanisms =
   PoliciesCreateRequestMechanisms as any as S.Schema<PoliciesUpdateRequestMechanisms>;
 
 export interface UpdatePolicyRequest {
@@ -3145,7 +3085,7 @@ export interface UpdatePolicyRequest {
   /** Name of the policy. */
   name?: string;
 }
-export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -3172,7 +3112,7 @@ export interface UpdatePolicyResponse {
   /** UUID */
   id?: string | null;
 }
-export const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
+const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 
 export interface SilencesUpdateRequestBodyItem {
   /** Silence ID */
@@ -3182,7 +3122,7 @@ export interface SilencesUpdateRequestBodyItem {
   /** When the silence starts. */
   startTime?: string;
 }
-export const SilencesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const SilencesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     endTime: S.optional(S.String.pipe(T.Body("end_time"))),
@@ -3193,7 +3133,7 @@ export const SilencesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesUpdateRequestBodyItem>;
 
 export type SilencesUpdateRequestBodyList = Array<SilencesUpdateRequestBodyItem>;
-export const SilencesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
+const SilencesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   SilencesUpdateRequestBodyItem,
 ) as any as S.Schema<SilencesUpdateRequestBodyList>;
 
@@ -3202,7 +3142,7 @@ export interface UpdateSilenceRequest {
   accountId: string;
   body: SilencesUpdateRequestBodyList;
 }
-export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesUpdateRequestBodyList.pipe(T.HttpBody()),
@@ -3212,19 +3152,14 @@ export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSilenceRequest" }) as any as S.Schema<UpdateSilenceRequest>;
 
 export type SilencesUpdateResultItem = SilencesListResultItem;
-export const SilencesUpdateResultItem = SilencesListResultItem;
-
 export type SilencesUpdateResultList = Array<SilencesListResultItem>;
-export const SilencesUpdateResultList =
-  SilencesListResultList as any as S.Schema<SilencesUpdateResultList>;
-
 export interface UpdateSilenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SilencesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const UpdateSilenceResponse = ListSilencesResponse as any as S.Schema<UpdateSilenceResponse>;
+const UpdateSilenceResponse = ListSilencesResponse as any as S.Schema<UpdateSilenceResponse>;
 
 export type CreateDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
 /** Creates a new token for integrating with PagerDuty. */

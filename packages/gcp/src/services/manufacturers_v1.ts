@@ -65,7 +65,7 @@ export interface DeleteAccountsLanguagesProductCertificationsRequest {
   /** Required. The name of the product certification to delete. Format: accounts/{account}/languages/{language_code}/productCertifications/{id} */
   name: string;
 }
-export const DeleteAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,7 +81,7 @@ export const DeleteAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -91,7 +91,7 @@ export interface DeleteAccountsProductsRequest {
   /** Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. */
   name: string;
 }
-export const DeleteAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -110,7 +110,7 @@ export interface GetAccountsLanguagesProductCertificationsRequest {
   /** Required. The name of the product certification to get. Format: accounts/{account}/languages/{language_code}/productCertifications/{id} */
   name: string;
 }
-export const GetAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -137,7 +137,7 @@ export interface Certification {
   /** Optional. A URL link to the certification. */
   link?: string;
 }
-export const Certification = /*@__PURE__*/ S.suspend(() =>
+const Certification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     authority: S.optional(S.String),
@@ -150,15 +150,15 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
 export type CertificationList = Array<Certification>;
-export const CertificationList = /*@__PURE__*/ S.Array(
+const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DestinationStatusStatusEnum = "UNKNOWN" | "ACTIVE" | "PENDING" | "DISAPPROVED";
-export const DestinationStatusStatusEnum = S.String;
+const DestinationStatusStatusEnum = S.String;
 
 /** The destination status. */
 export interface DestinationStatus {
@@ -173,7 +173,7 @@ export interface DestinationStatus {
   /** The name of the destination. */
   destination?: string;
 }
-export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvedCountries: S.optional(StringList),
     pendingCountries: S.optional(StringList),
@@ -184,15 +184,15 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestinationStatus" }) as any as S.Schema<DestinationStatus>;
 
 export type DestinationStatusList = Array<DestinationStatus>;
-export const DestinationStatusList = /*@__PURE__*/ S.Array(
+const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
 
 export type IssueResolutionEnum = "RESOLUTION_UNSPECIFIED" | "USER_ACTION" | "PENDING_PROCESSING";
-export const IssueResolutionEnum = S.String;
+const IssueResolutionEnum = S.String;
 
 export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const IssueSeverityEnum = S.String;
+const IssueSeverityEnum = S.String;
 
 /** Product issue. */
 export interface Issue {
@@ -215,7 +215,7 @@ export interface Issue {
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the manufacturer product. */
   applicableCountries?: StringList;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
+const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     description: S.optional(S.String),
@@ -230,7 +230,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type IssueList = Array<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
+const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
 
 /** Product certification data. */
 export interface ProductCertification {
@@ -255,7 +255,7 @@ export interface ProductCertification {
   /** Output only. A server-generated list of issues associated with the product. */
   issues?: IssueList;
 }
-export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
+const ProductCertification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification: S.optional(CertificationList),
     mpn: S.optional(StringList),
@@ -275,12 +275,12 @@ export type GetAccountsProductsIncludeEnum =
   | "ATTRIBUTES"
   | "ISSUES"
   | "DESTINATION_STATUSES";
-export const GetAccountsProductsIncludeEnum = S.String;
+const GetAccountsProductsIncludeEnum = S.String;
 
 export type GetAccountsProductsIncludeEnumList = Array<
   GetAccountsProductsIncludeEnum | (string & {})
 >;
-export const GetAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
+const GetAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
   GetAccountsProductsIncludeEnum,
 ) as any as S.Schema<GetAccountsProductsIncludeEnumList>;
 
@@ -292,7 +292,7 @@ export interface GetAccountsProductsRequest {
   /** Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. */
   name: string;
 }
-export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include: S.optional(GetAccountsProductsIncludeEnumList.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -315,7 +315,7 @@ export interface Count {
   /** The unit in which these products are counted. */
   unit?: string;
 }
-export const Count = /*@__PURE__*/ S.suspend(() =>
+const Count = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     unit: S.optional(S.String),
@@ -329,10 +329,10 @@ export interface Capacity {
   /** The unit of the capacity, i.e., MB, GB, or TB. */
   unit?: string;
 }
-export const Capacity = Count as any as S.Schema<Capacity>;
+const Capacity = Count as any as S.Schema<Capacity>;
 
 export type ImageTypeEnum = "TYPE_UNSPECIFIED" | "CRAWLED" | "UPLOADED";
-export const ImageTypeEnum = S.String;
+const ImageTypeEnum = S.String;
 
 export type ImageStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -348,7 +348,7 @@ export type ImageStatusEnum =
   | "CRAWL_SKIPPED"
   | "HOSTLOADED"
   | "HTTP_404";
-export const ImageStatusEnum = S.String;
+const ImageStatusEnum = S.String;
 
 /** An image. */
 export interface Image {
@@ -359,7 +359,7 @@ export interface Image {
   /** The status of the image. @OutputOnly */
   status?: ImageStatusEnum | (string & {});
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ImageTypeEnum),
     imageUrl: S.optional(S.String),
@@ -376,7 +376,7 @@ export interface ProductDetail {
   /** The name of the attribute. */
   attributeName?: string;
 }
-export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
+const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeValue: S.optional(S.String),
     sectionName: S.optional(S.String),
@@ -385,7 +385,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
 export type ProductDetailList = Array<ProductDetail>;
-export const ProductDetailList = /*@__PURE__*/ S.Array(
+const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
 
@@ -398,7 +398,7 @@ export interface FeatureDescription {
   /** An optional image describing the feature. */
   image?: Image;
 }
-export const FeatureDescription = /*@__PURE__*/ S.suspend(() =>
+const FeatureDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headline: S.optional(S.String),
     text: S.optional(S.String),
@@ -407,7 +407,7 @@ export const FeatureDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeatureDescription" }) as any as S.Schema<FeatureDescription>;
 
 export type FeatureDescriptionList = Array<FeatureDescription>;
-export const FeatureDescriptionList = /*@__PURE__*/ S.Array(
+const FeatureDescriptionList = /*@__PURE__*/ S.Array(
   FeatureDescription,
 ) as any as S.Schema<FeatureDescriptionList>;
 
@@ -431,7 +431,7 @@ export interface Grocery {
   /** Indications. */
   indications?: string;
 }
-export const Grocery = /*@__PURE__*/ S.suspend(() =>
+const Grocery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nutritionClaim: S.optional(StringList),
     alcoholByVolume: S.optional(S.Number),
@@ -446,7 +446,7 @@ export const Grocery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Grocery" }) as any as S.Schema<Grocery>;
 
 export type ImageList = Array<Image>;
-export const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
+const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
 
 /** Combination of float amount and unit. */
 export interface FloatUnit {
@@ -455,7 +455,7 @@ export interface FloatUnit {
   /** unit. */
   unit?: string;
 }
-export const FloatUnit = /*@__PURE__*/ S.suspend(() =>
+const FloatUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -471,7 +471,7 @@ export interface VoluntaryNutritionFact {
   /** Name. */
   name?: string;
 }
-export const VoluntaryNutritionFact = /*@__PURE__*/ S.suspend(() =>
+const VoluntaryNutritionFact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(FloatUnit),
     dailyPercentage: S.optional(S.Number),
@@ -480,7 +480,7 @@ export const VoluntaryNutritionFact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VoluntaryNutritionFact" }) as any as S.Schema<VoluntaryNutritionFact>;
 
 export type VoluntaryNutritionFactList = Array<VoluntaryNutritionFact>;
-export const VoluntaryNutritionFactList = /*@__PURE__*/ S.Array(
+const VoluntaryNutritionFactList = /*@__PURE__*/ S.Array(
   VoluntaryNutritionFact,
 ) as any as S.Schema<VoluntaryNutritionFactList>;
 
@@ -572,7 +572,7 @@ export interface Nutrition {
   /** Calcium. */
   calcium?: FloatUnit;
 }
-export const Nutrition = /*@__PURE__*/ S.suspend(() =>
+const Nutrition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     polyunsaturatedFat: S.optional(FloatUnit),
     totalCarbohydrateDailyPercentage: S.optional(S.Number),
@@ -627,7 +627,7 @@ export interface Price {
   /** The currency in which the price is denoted. */
   currency?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.String),
     currency: S.optional(S.String),
@@ -651,7 +651,7 @@ export interface GoogleShoppingManufacturersV1ProductCertification {
   /** Optional. A URL link to the certification. */
   link?: string;
 }
-export const GoogleShoppingManufacturersV1ProductCertification = /*@__PURE__*/ S.suspend(() =>
+const GoogleShoppingManufacturersV1ProductCertification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authority: S.optional(S.String),
     code: S.optional(S.String),
@@ -667,7 +667,7 @@ export const GoogleShoppingManufacturersV1ProductCertification = /*@__PURE__*/ S
 
 export type GoogleShoppingManufacturersV1ProductCertificationList =
   Array<GoogleShoppingManufacturersV1ProductCertification>;
-export const GoogleShoppingManufacturersV1ProductCertificationList = /*@__PURE__*/ S.Array(
+const GoogleShoppingManufacturersV1ProductCertificationList = /*@__PURE__*/ S.Array(
   GoogleShoppingManufacturersV1ProductCertification,
 ) as any as S.Schema<GoogleShoppingManufacturersV1ProductCertificationList>;
 
@@ -758,7 +758,7 @@ export interface Attributes {
   /** Optional. List of countries to show this product in. Countries provided in this attribute will override any of the countries configured at feed level. The values should be: the [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the countries in which this item will be shown. */
   intendedCountry?: StringList;
 }
-export const Attributes = /*@__PURE__*/ S.suspend(() =>
+const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.String),
     count: S.optional(Count),
@@ -826,7 +826,7 @@ export interface Product {
   /** The target country of the product as a CLDR territory code (for example, US). */
   targetCountry?: string;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(Attributes),
     destinationStatuses: S.optional(DestinationStatusList),
@@ -848,7 +848,7 @@ export interface ListAccountsLanguagesProductCertificationsRequest {
   /** Optional. A page token, received from a previous `ListProductCertifications` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductCertifications` must match the call that provided the page token. Required if requesting the second or higher page. */
   pageToken?: string;
 }
-export const ListAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -865,7 +865,7 @@ export const ListAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>;
 
 export type ProductCertificationList = Array<ProductCertification>;
-export const ProductCertificationList = /*@__PURE__*/ S.Array(
+const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
 
@@ -876,7 +876,7 @@ export interface ListProductCertificationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListProductCertificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductCertificationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productCertifications: S.optional(ProductCertificationList),
     nextPageToken: S.optional(S.String),
@@ -890,12 +890,10 @@ export type ListAccountsProductsIncludeEnum =
   | "ATTRIBUTES"
   | "ISSUES"
   | "DESTINATION_STATUSES";
-export const ListAccountsProductsIncludeEnum = S.String;
-
 export type ListAccountsProductsIncludeEnumList = Array<
   ListAccountsProductsIncludeEnum | (string & {})
 >;
-export const ListAccountsProductsIncludeEnumList =
+const ListAccountsProductsIncludeEnumList =
   GetAccountsProductsIncludeEnumList as any as S.Schema<ListAccountsProductsIncludeEnumList>;
 
 export interface ListAccountsProductsRequest {
@@ -908,7 +906,7 @@ export interface ListAccountsProductsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     include: S.optional(ListAccountsProductsIncludeEnumList.pipe(T.Query())),
@@ -926,7 +924,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
 export type ProductList = Array<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 export interface ListProductsResponse {
   /** List of the products. */
@@ -934,7 +932,7 @@ export interface ListProductsResponse {
   /** The token for the retrieval of the next page of product statuses. */
   nextPageToken?: string;
 }
-export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     products: S.optional(ProductList),
     nextPageToken: S.optional(S.String),
@@ -949,7 +947,7 @@ export interface PatchAccountsLanguagesProductCertificationsRequest {
   /** Request body */
   body?: ProductCertification;
 }
-export const PatchAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -973,7 +971,7 @@ export interface UpdateAccountsProductsRequest {
   /** Request body */
   body?: Attributes;
 }
-export const UpdateAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     parent: S.String.pipe(T.Label()),

@@ -65,7 +65,7 @@ export interface DeleteAccountsLfpStoresRequest {
   /** Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
   name: string;
 }
-export const DeleteAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,7 +81,7 @@ export const DeleteAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -89,7 +89,7 @@ export interface GetAccountsLfpMerchantStatesRequest {
   /** Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
   name: string;
 }
-export const GetAccountsLfpMerchantStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsLfpMerchantStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -108,28 +108,28 @@ export type CountrySettingsInstockServingVerificationStateEnum =
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsInstockServingVerificationStateEnum = S.String;
+const CountrySettingsInstockServingVerificationStateEnum = S.String;
 
 export type CountrySettingsPickupServingVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsPickupServingVerificationStateEnum = S.String;
+const CountrySettingsPickupServingVerificationStateEnum = S.String;
 
 export type CountrySettingsInventoryVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsInventoryVerificationStateEnum = S.String;
+const CountrySettingsInventoryVerificationStateEnum = S.String;
 
 export type CountrySettingsProductPageTypeEnum =
   | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
   | "GOOGLE_HOSTED"
   | "MERCHANT_HOSTED"
   | "MERCHANT_HOSTED_STORE_SPECIFIC";
-export const CountrySettingsProductPageTypeEnum = S.String;
+const CountrySettingsProductPageTypeEnum = S.String;
 
 /** Country-specific settings for the merchant. */
 export interface CountrySettings {
@@ -148,7 +148,7 @@ export interface CountrySettings {
   /** Output only. The product page type selected by this merchant. */
   productPageType?: CountrySettingsProductPageTypeEnum;
 }
-export const CountrySettings = /*@__PURE__*/ S.suspend(() =>
+const CountrySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instockServingVerificationState: S.optional(CountrySettingsInstockServingVerificationStateEnum),
     pickupServingVerificationState: S.optional(CountrySettingsPickupServingVerificationStateEnum),
@@ -161,7 +161,7 @@ export const CountrySettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountrySettings" }) as any as S.Schema<CountrySettings>;
 
 export type CountrySettingsList = Array<CountrySettings>;
-export const CountrySettingsList = /*@__PURE__*/ S.Array(
+const CountrySettingsList = /*@__PURE__*/ S.Array(
   CountrySettings,
 ) as any as S.Schema<CountrySettingsList>;
 
@@ -169,7 +169,7 @@ export type LfpStoreStateMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
   | "STORE_MATCHING_STATE_FAILED";
-export const LfpStoreStateMatchingStateEnum = S.String;
+const LfpStoreStateMatchingStateEnum = S.String;
 
 /** The state of a specific merchant's store. */
 export interface LfpStoreState {
@@ -180,7 +180,7 @@ export interface LfpStoreState {
   /** Required. Immutable. The identifier of this store. */
   storeCode?: string;
 }
-export const LfpStoreState = /*@__PURE__*/ S.suspend(() =>
+const LfpStoreState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchingStateHint: S.optional(S.String),
     matchingState: S.optional(LfpStoreStateMatchingStateEnum),
@@ -189,7 +189,7 @@ export const LfpStoreState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfpStoreState" }) as any as S.Schema<LfpStoreState>;
 
 export type LfpStoreStateList = Array<LfpStoreState>;
-export const LfpStoreStateList = /*@__PURE__*/ S.Array(
+const LfpStoreStateList = /*@__PURE__*/ S.Array(
   LfpStoreState,
 ) as any as S.Schema<LfpStoreStateList>;
 
@@ -204,7 +204,7 @@ export interface InventoryStats {
   /** Number of entries (understanding entry as a pair of product and store) that were built based on provided inventories/sales and submitted to Google. */
   submittedEntries?: string;
 }
-export const InventoryStats = /*@__PURE__*/ S.suspend(() =>
+const InventoryStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     submittedProducts: S.optional(S.String),
     unsubmittedEntries: S.optional(S.String),
@@ -226,7 +226,7 @@ export interface LfpMerchantState {
   /** The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP. */
   inventoryStats?: InventoryStats;
 }
-export const LfpMerchantState = /*@__PURE__*/ S.suspend(() =>
+const LfpMerchantState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     countrySettings: S.optional(CountrySettingsList),
@@ -240,7 +240,7 @@ export interface GetAccountsLfpStoresRequest {
   /** Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
   name: string;
 }
-export const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -255,13 +255,13 @@ export const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountsLfpStoresRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type LfpStoreMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
   | "STORE_MATCHING_STATE_FAILED";
-export const LfpStoreMatchingStateEnum = S.String;
+const LfpStoreMatchingStateEnum = S.String;
 
 /** A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used. */
 export interface LfpStore {
@@ -288,7 +288,7 @@ export interface LfpStore {
   /** Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location. */
   placeId?: string;
 }
-export const LfpStore = /*@__PURE__*/ S.suspend(() =>
+const LfpStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcidCategory: S.optional(StringList),
     phoneNumber: S.optional(S.String),
@@ -311,7 +311,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -349,7 +349,7 @@ export interface LfpInventory {
   /** Optional. The current price of the product. */
   price?: Price;
 }
-export const LfpInventory = /*@__PURE__*/ S.suspend(() =>
+const LfpInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pickupMethod: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -374,7 +374,7 @@ export interface InsertAccountsLfpInventoriesRequest {
   /** Request body */
   body?: LfpInventory;
 }
-export const InsertAccountsLfpInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsLfpInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LfpInventory.pipe(T.HttpBody())),
@@ -416,7 +416,7 @@ export interface LfpSale {
   /** Required. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
   offerId?: string;
 }
-export const LfpSale = /*@__PURE__*/ S.suspend(() =>
+const LfpSale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     saleTime: S.optional(S.String),
     uid: S.optional(S.String),
@@ -439,7 +439,7 @@ export interface InsertAccountsLfpSalesRequest {
   /** Request body */
   body?: LfpSale;
 }
-export const InsertAccountsLfpSalesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsLfpSalesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LfpSale.pipe(T.HttpBody())),
@@ -460,7 +460,7 @@ export interface InsertAccountsLfpStoresRequest {
   /** Request body */
   body?: LfpStore;
 }
-export const InsertAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LfpStore.pipe(T.HttpBody())),
@@ -485,7 +485,7 @@ export interface ListAccountsLfpStoresRequest {
   /** Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. */
   pageSize?: number;
 }
-export const ListAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -503,7 +503,7 @@ export const ListAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsLfpStoresRequest>;
 
 export type LfpStoreList = Array<LfpStore>;
-export const LfpStoreList = /*@__PURE__*/ S.Array(LfpStore) as any as S.Schema<LfpStoreList>;
+const LfpStoreList = /*@__PURE__*/ S.Array(LfpStore) as any as S.Schema<LfpStoreList>;
 
 /** Response message for the ListLfpStores method. */
 export interface ListLfpStoresResponse {
@@ -512,7 +512,7 @@ export interface ListLfpStoresResponse {
   /** The stores from the specified merchant. */
   lfpStores?: LfpStoreList;
 }
-export const ListLfpStoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLfpStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     lfpStores: S.optional(LfpStoreList),

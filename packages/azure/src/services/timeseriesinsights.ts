@@ -10,13 +10,13 @@ export type { AzureOpError, AzureOpContext };
 
 /** A role defining the data plane operations that a principal can perform on a Time Series Insights client. */
 export type AccessPolicyResourcePropertiesRolesItem = "Reader" | "Contributor";
-export const AccessPolicyResourcePropertiesRolesItem = S.String;
+const AccessPolicyResourcePropertiesRolesItem = S.String;
 
 /** The list of roles the principal is assigned on the environment. */
 export type AccessPolicyResourcePropertiesRolesList = Array<
   AccessPolicyResourcePropertiesRolesItem | (string & {})
 >;
-export const AccessPolicyResourcePropertiesRolesList = /*@__PURE__*/ S.Array(
+const AccessPolicyResourcePropertiesRolesList = /*@__PURE__*/ S.Array(
   AccessPolicyResourcePropertiesRolesItem,
 ) as any as S.Schema<AccessPolicyResourcePropertiesRolesList>;
 
@@ -28,7 +28,7 @@ export interface AccessPolicyResourceProperties {
   /** The list of roles the principal is assigned on the environment. */
   roles?: AccessPolicyResourcePropertiesRolesList;
 }
-export const AccessPolicyResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalObjectId: S.optional(S.String),
     description: S.optional(S.String),
@@ -49,7 +49,7 @@ export interface AccessPoliciesCreateOrUpdateRequest {
   accessPolicyName: string;
   properties: AccessPolicyResourceProperties;
 }
-export const AccessPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -77,7 +77,7 @@ export interface AccessPoliciesCreateOrUpdateResponse {
   type?: string;
   properties?: AccessPolicyResourceProperties;
 }
-export const AccessPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -98,7 +98,7 @@ export interface DeleteAccessPolicyRequest {
   /** The name of the Time Series Insights access policy associated with the specified environment. */
   accessPolicyName: string;
 }
-export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -117,7 +117,7 @@ export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessPolicyRequest>;
 
 export interface DeleteAccessPolicyResponse {}
-export const DeleteAccessPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccessPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccessPolicyResponse",
 }) as any as S.Schema<DeleteAccessPolicyResponse>;
 
@@ -129,7 +129,7 @@ export interface DeleteEnvironmentRequest {
   /** The name of the Time Series Insights environment associated with the specified resource group. */
   environmentName: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -145,7 +145,7 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   DeleteAccessPolicyResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteEventSourceRequest {
@@ -158,7 +158,7 @@ export interface DeleteEventSourceRequest {
   /** The name of the Time Series Insights event source associated with the specified environment. */
   eventSourceName: string;
 }
-export const DeleteEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -175,7 +175,7 @@ export const DeleteEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventSourceRequest" }) as any as S.Schema<DeleteEventSourceRequest>;
 
 export interface DeleteEventSourceResponse {}
-export const DeleteEventSourceResponse =
+const DeleteEventSourceResponse =
   DeleteAccessPolicyResponse as any as S.Schema<DeleteEventSourceResponse>;
 
 export interface DeleteReferenceDataSetRequest {
@@ -188,7 +188,7 @@ export interface DeleteReferenceDataSetRequest {
   /** The name of the Time Series Insights reference data set associated with the specified environment. */
   referenceDataSetName: string;
 }
-export const DeleteReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -207,23 +207,23 @@ export const DeleteReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReferenceDataSetRequest>;
 
 export interface DeleteReferenceDataSetResponse {}
-export const DeleteReferenceDataSetResponse =
+const DeleteReferenceDataSetResponse =
   DeleteAccessPolicyResponse as any as S.Schema<DeleteReferenceDataSetResponse>;
 
 /** Key-value pairs of additional properties for the resource. */
 export type EnvironmentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const EnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<EnvironmentsCreateOrUpdateRequestTagsMap>;
 
 /** The kind of the environment. */
 export type EnvironmentsCreateOrUpdateRequestKind = "Gen1" | "Gen2";
-export const EnvironmentsCreateOrUpdateRequestKind = S.String;
+const EnvironmentsCreateOrUpdateRequestKind = S.String;
 
 /** The name of this SKU. */
 export type SkuName = "S1" | "S2" | "P1" | "L1";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
 export interface Sku {
@@ -232,7 +232,7 @@ export interface Sku {
   /** The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created. */
   capacity: number;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
     capacity: S.Number,
@@ -255,7 +255,7 @@ export interface EnvironmentsCreateOrUpdateRequest {
   /** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
   sku: Sku;
 }
-export const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -278,12 +278,12 @@ export const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type EnvironmentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EnvironmentsCreateOrUpdateResponseTagsMap =
+const EnvironmentsCreateOrUpdateResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<EnvironmentsCreateOrUpdateResponseTagsMap>;
 
 /** The kind of the environment. */
 export type EnvironmentsCreateOrUpdateResponseKind = "Gen1" | "Gen2";
-export const EnvironmentsCreateOrUpdateResponseKind = S.String;
+const EnvironmentsCreateOrUpdateResponseKind = S.String;
 
 export interface EnvironmentsCreateOrUpdateResponse {
   /** Resource Id */
@@ -301,7 +301,7 @@ export interface EnvironmentsCreateOrUpdateResponse {
   /** The kind of the environment. */
   kind: EnvironmentsCreateOrUpdateResponseKind;
 }
-export const EnvironmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -317,23 +317,23 @@ export const EnvironmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional properties for the resource. */
 export type EventSourcesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EventSourcesCreateOrUpdateRequestTagsMap =
+const EventSourcesCreateOrUpdateRequestTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<EventSourcesCreateOrUpdateRequestTagsMap>;
 
 /** The kind of the event source. */
 export type EventSourcesCreateOrUpdateRequestKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
-export const EventSourcesCreateOrUpdateRequestKind = S.String;
+const EventSourcesCreateOrUpdateRequestKind = S.String;
 
 /** An enum that represents the format of the local timestamp property that needs to be set. */
 export type LocalTimestampFormat = "Embedded";
-export const LocalTimestampFormat = S.String;
+const LocalTimestampFormat = S.String;
 
 /** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
 export interface LocalTimestampTimeZoneOffset {
   /** The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00) */
   propertyName?: string;
 }
-export const LocalTimestampTimeZoneOffset = /*@__PURE__*/ S.suspend(() =>
+const LocalTimestampTimeZoneOffset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyName: S.optional(S.String),
   }),
@@ -348,7 +348,7 @@ export interface LocalTimestamp {
   /** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
   timeZoneOffset?: LocalTimestampTimeZoneOffset;
 }
-export const LocalTimestamp = /*@__PURE__*/ S.suspend(() =>
+const LocalTimestamp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(LocalTimestampFormat),
     timeZoneOffset: S.optional(LocalTimestampTimeZoneOffset),
@@ -373,7 +373,7 @@ export interface EventSourcesCreateOrUpdateRequest {
   /** An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events. */
   localTimestamp?: LocalTimestamp;
 }
-export const EventSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EventSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -397,12 +397,12 @@ export const EventSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type EventSourcesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EventSourcesCreateOrUpdateResponseTagsMap =
+const EventSourcesCreateOrUpdateResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<EventSourcesCreateOrUpdateResponseTagsMap>;
 
 /** The kind of the event source. */
 export type EventSourcesCreateOrUpdateResponseKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
-export const EventSourcesCreateOrUpdateResponseKind = S.String;
+const EventSourcesCreateOrUpdateResponseKind = S.String;
 
 export interface EventSourcesCreateOrUpdateResponse {
   /** Resource Id */
@@ -418,7 +418,7 @@ export interface EventSourcesCreateOrUpdateResponse {
   /** The kind of the event source. */
   kind: EventSourcesCreateOrUpdateResponseKind;
 }
-export const EventSourcesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EventSourcesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -441,7 +441,7 @@ export interface GetAccessPolicyRequest {
   /** The name of the Time Series Insights access policy associated with the specified environment. */
   accessPolicyName: string;
 }
-export const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -466,7 +466,7 @@ export interface GetAccessPolicyResponse {
   type?: string;
   properties?: AccessPolicyResourceProperties;
 }
-export const GetAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -485,7 +485,7 @@ export interface GetEnvironmentRequest {
   /** Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service. */
   _expand?: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -503,12 +503,12 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnvironmentResponseTagsMap =
+const GetEnvironmentResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetEnvironmentResponseTagsMap>;
 
 /** The kind of the environment. */
 export type GetEnvironmentResponseKind = "Gen1" | "Gen2";
-export const GetEnvironmentResponseKind = S.String;
+const GetEnvironmentResponseKind = S.String;
 
 export interface GetEnvironmentResponse {
   /** Resource Id */
@@ -526,7 +526,7 @@ export interface GetEnvironmentResponse {
   /** The kind of the environment. */
   kind: GetEnvironmentResponseKind;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -548,7 +548,7 @@ export interface GetEventSourceRequest {
   /** The name of the Time Series Insights event source associated with the specified environment. */
   eventSourceName: string;
 }
-export const GetEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -566,12 +566,12 @@ export const GetEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetEventSourceResponseTagsMap = { [key: string]: string | undefined };
-export const GetEventSourceResponseTagsMap =
+const GetEventSourceResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetEventSourceResponseTagsMap>;
 
 /** The kind of the event source. */
 export type GetEventSourceResponseKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
-export const GetEventSourceResponseKind = S.String;
+const GetEventSourceResponseKind = S.String;
 
 export interface GetEventSourceResponse {
   /** Resource Id */
@@ -587,7 +587,7 @@ export interface GetEventSourceResponse {
   /** The kind of the event source. */
   kind: GetEventSourceResponseKind;
 }
-export const GetEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -608,7 +608,7 @@ export interface GetReferenceDataSetRequest {
   /** The name of the Time Series Insights reference data set associated with the specified environment. */
   referenceDataSetName: string;
 }
-export const GetReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -628,12 +628,12 @@ export const GetReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetReferenceDataSetResponseTagsMap = { [key: string]: string | undefined };
-export const GetReferenceDataSetResponseTagsMap =
+const GetReferenceDataSetResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReferenceDataSetResponseTagsMap>;
 
 /** The type of the key property. */
 export type ReferenceDataSetKeyPropertyType = "String" | "Double" | "Bool" | "DateTime";
-export const ReferenceDataSetKeyPropertyType = S.String;
+const ReferenceDataSetKeyPropertyType = S.String;
 
 /** A key property for the reference data set. A reference data set can have multiple key properties. */
 export interface ReferenceDataSetKeyProperty {
@@ -642,7 +642,7 @@ export interface ReferenceDataSetKeyProperty {
   /** The type of the key property. */
   type?: ReferenceDataSetKeyPropertyType | (string & {});
 }
-export const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
+const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ReferenceDataSetKeyPropertyType),
@@ -654,7 +654,7 @@ export const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
 /** The list of key properties for the reference data set. */
 export type ReferenceDataSetResourcePropertiesKeyPropertiesList =
   Array<ReferenceDataSetKeyProperty>;
-export const ReferenceDataSetResourcePropertiesKeyPropertiesList = /*@__PURE__*/ S.Array(
+const ReferenceDataSetResourcePropertiesKeyPropertiesList = /*@__PURE__*/ S.Array(
   ReferenceDataSetKeyProperty,
 ) as any as S.Schema<ReferenceDataSetResourcePropertiesKeyPropertiesList>;
 
@@ -662,7 +662,7 @@ export const ReferenceDataSetResourcePropertiesKeyPropertiesList = /*@__PURE__*/
 export type ReferenceDataSetResourcePropertiesDataStringComparisonBehavior =
   | "Ordinal"
   | "OrdinalIgnoreCase";
-export const ReferenceDataSetResourcePropertiesDataStringComparisonBehavior = S.String;
+const ReferenceDataSetResourcePropertiesDataStringComparisonBehavior = S.String;
 
 /** Provisioning state of the resource. */
 export type ProvisioningState =
@@ -672,7 +672,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Properties of the reference data set. */
 export interface ReferenceDataSetResourceProperties {
@@ -685,7 +685,7 @@ export interface ReferenceDataSetResourceProperties {
   /** The time the resource was created. */
   creationTime?: string;
 }
-export const ReferenceDataSetResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ReferenceDataSetResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyProperties: ReferenceDataSetResourcePropertiesKeyPropertiesList,
     dataStringComparisonBehavior: S.optional(
@@ -711,7 +711,7 @@ export interface GetReferenceDataSetResponse {
   tags?: GetReferenceDataSetResponseTagsMap;
   properties?: ReferenceDataSetResourceProperties;
 }
-export const GetReferenceDataSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReferenceDataSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -732,7 +732,7 @@ export interface ListAccessPolicyByEnvironmentRequest {
   /** The name of the Time Series Insights environment associated with the specified resource group. */
   environmentName: string;
 }
-export const ListAccessPolicyByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPolicyByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -759,12 +759,11 @@ export interface AccessPolicyResource {
   type?: string;
   properties?: AccessPolicyResourceProperties;
 }
-export const AccessPolicyResource =
-  GetAccessPolicyResponse as any as S.Schema<AccessPolicyResource>;
+const AccessPolicyResource = GetAccessPolicyResponse as any as S.Schema<AccessPolicyResource>;
 
 /** Result of the List access policies operation. */
 export type AccessPolicyListResponseValueList = Array<AccessPolicyResource>;
-export const AccessPolicyListResponseValueList = /*@__PURE__*/ S.Array(
+const AccessPolicyListResponseValueList = /*@__PURE__*/ S.Array(
   AccessPolicyResource,
 ) as any as S.Schema<AccessPolicyListResponseValueList>;
 
@@ -773,7 +772,7 @@ export interface AccessPolicyListResponse {
   /** Result of the List access policies operation. */
   value?: AccessPolicyListResponseValueList;
 }
-export const AccessPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AccessPolicyListResponseValueList),
   }),
@@ -785,7 +784,7 @@ export interface ListEnvironmentByResourceGroupRequest {
   /** Name of an Azure Resource group. */
   resourceGroupName: string;
 }
-export const ListEnvironmentByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -803,12 +802,12 @@ export const ListEnvironmentByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags */
 export type EnvironmentResourceTagsMap = { [key: string]: string | undefined };
-export const EnvironmentResourceTagsMap =
+const EnvironmentResourceTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<EnvironmentResourceTagsMap>;
 
 /** The kind of the environment. */
 export type EnvironmentResourceKind = "Gen1" | "Gen2";
-export const EnvironmentResourceKind = S.String;
+const EnvironmentResourceKind = S.String;
 
 /** An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. */
 export interface EnvironmentResource {
@@ -827,7 +826,7 @@ export interface EnvironmentResource {
   /** The kind of the environment. */
   kind: EnvironmentResourceKind;
 }
-export const EnvironmentResource = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -841,7 +840,7 @@ export const EnvironmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List Environments operation. */
 export type EnvironmentListResponseValueList = Array<EnvironmentResource>;
-export const EnvironmentListResponseValueList = /*@__PURE__*/ S.Array(
+const EnvironmentListResponseValueList = /*@__PURE__*/ S.Array(
   EnvironmentResource,
 ) as any as S.Schema<EnvironmentListResponseValueList>;
 
@@ -850,7 +849,7 @@ export interface EnvironmentListResponse {
   /** Result of the List Environments operation. */
   value?: EnvironmentListResponseValueList;
 }
-export const EnvironmentListResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EnvironmentListResponseValueList),
   }),
@@ -860,7 +859,7 @@ export interface ListEnvironmentBySubscriptionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
 }
-export const ListEnvironmentBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -883,7 +882,7 @@ export interface ListEventSourceByEnvironmentRequest {
   /** The name of the Time Series Insights environment associated with the specified resource group. */
   environmentName: string;
 }
-export const ListEventSourceByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSourceByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -902,12 +901,12 @@ export const ListEventSourceByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type EventSourceResourceTagsMap = { [key: string]: string | undefined };
-export const EventSourceResourceTagsMap =
+const EventSourceResourceTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<EventSourceResourceTagsMap>;
 
 /** The kind of the event source. */
 export type EventSourceResourceKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
-export const EventSourceResourceKind = S.String;
+const EventSourceResourceKind = S.String;
 
 /** An environment receives data from one or more event sources. Each event source has associated connection info that allows the Time Series Insights ingress pipeline to connect to and pull data from the event source */
 export interface EventSourceResource {
@@ -924,7 +923,7 @@ export interface EventSourceResource {
   /** The kind of the event source. */
   kind: EventSourceResourceKind;
 }
-export const EventSourceResource = /*@__PURE__*/ S.suspend(() =>
+const EventSourceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -937,7 +936,7 @@ export const EventSourceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List EventSources operation. */
 export type EventSourceListResponseValueList = Array<EventSourceResource>;
-export const EventSourceListResponseValueList = /*@__PURE__*/ S.Array(
+const EventSourceListResponseValueList = /*@__PURE__*/ S.Array(
   EventSourceResource,
 ) as any as S.Schema<EventSourceListResponseValueList>;
 
@@ -946,14 +945,14 @@ export interface EventSourceListResponse {
   /** Result of the List EventSources operation. */
   value?: EventSourceListResponseValueList;
 }
-export const EventSourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const EventSourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EventSourceListResponseValueList),
   }),
 ).annotate({ identifier: "EventSourceListResponse" }) as any as S.Schema<EventSourceListResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -975,7 +974,7 @@ export interface OperationDisplay {
   /** The localized friendly description for the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -991,7 +990,7 @@ export interface Dimension {
   /** Display name of dimension. */
   displayName?: string;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1000,7 +999,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Dimensions of blobs, including blob type and access tier. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -1009,7 +1008,7 @@ export interface MetricAvailability {
   timeGrain?: string;
   blobDuration?: string;
 }
-export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
+const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeGrain: S.optional(S.String),
     blobDuration: S.optional(S.String),
@@ -1018,7 +1017,7 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** Retention policies of a resource metric. */
 export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
-export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
+const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
@@ -1043,7 +1042,7 @@ export interface MetricSpecification {
   /** Account Resource Id. */
   resourceIdDimensionNameOverride?: string;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1059,7 +1058,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -1070,11 +1069,9 @@ export interface LogSpecification {
   /** Log display name. */
   displayName?: string;
 }
-export const LogSpecification = Dimension as any as S.Schema<LogSpecification>;
-
 /** A list of Azure Monitoring log definitions. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-export const ServiceSpecificationLogSpecificationsList =
+const ServiceSpecificationLogSpecificationsList =
   MetricSpecificationDimensionsList as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
 /** One property of operation, include metric specifications. */
@@ -1084,7 +1081,7 @@ export interface ServiceSpecification {
   /** A list of Azure Monitoring log definitions. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
     logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
@@ -1096,7 +1093,7 @@ export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -1111,7 +1108,7 @@ export interface Operation {
   origin?: string;
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1122,7 +1119,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Time Series Insights operations supported by the Microsoft.TimeSeriesInsights resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1133,7 +1130,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1148,7 +1145,7 @@ export interface ListReferenceDataSetByEnvironmentRequest {
   /** The name of the Time Series Insights environment associated with the specified resource group. */
   environmentName: string;
 }
-export const ListReferenceDataSetByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReferenceDataSetByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1167,7 +1164,7 @@ export const ListReferenceDataSetByEnvironmentRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags */
 export type ReferenceDataSetResourceTagsMap = { [key: string]: string | undefined };
-export const ReferenceDataSetResourceTagsMap =
+const ReferenceDataSetResourceTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<ReferenceDataSetResourceTagsMap>;
 
 /** A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs. */
@@ -1184,7 +1181,7 @@ export interface ReferenceDataSetResource {
   tags?: ReferenceDataSetResourceTagsMap;
   properties?: ReferenceDataSetResourceProperties;
 }
-export const ReferenceDataSetResource = /*@__PURE__*/ S.suspend(() =>
+const ReferenceDataSetResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1197,7 +1194,7 @@ export const ReferenceDataSetResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the List Reference Data Sets operation. */
 export type ReferenceDataSetListResponseValueList = Array<ReferenceDataSetResource>;
-export const ReferenceDataSetListResponseValueList = /*@__PURE__*/ S.Array(
+const ReferenceDataSetListResponseValueList = /*@__PURE__*/ S.Array(
   ReferenceDataSetResource,
 ) as any as S.Schema<ReferenceDataSetListResponseValueList>;
 
@@ -1206,7 +1203,7 @@ export interface ReferenceDataSetListResponse {
   /** Result of the List Reference Data Sets operation. */
   value?: ReferenceDataSetListResponseValueList;
 }
-export const ReferenceDataSetListResponse = /*@__PURE__*/ S.suspend(() =>
+const ReferenceDataSetListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReferenceDataSetListResponseValueList),
   }),
@@ -1216,20 +1213,20 @@ export const ReferenceDataSetListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional properties for the resource. */
 export type ReferenceDataSetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ReferenceDataSetsCreateOrUpdateRequestTagsMap =
+const ReferenceDataSetsCreateOrUpdateRequestTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<ReferenceDataSetsCreateOrUpdateRequestTagsMap>;
 
 /** The list of key properties for the reference data set. */
 export type ReferenceDataSetCreationPropertiesKeyPropertiesList =
   Array<ReferenceDataSetKeyProperty>;
-export const ReferenceDataSetCreationPropertiesKeyPropertiesList =
+const ReferenceDataSetCreationPropertiesKeyPropertiesList =
   ReferenceDataSetResourcePropertiesKeyPropertiesList as any as S.Schema<ReferenceDataSetCreationPropertiesKeyPropertiesList>;
 
 /** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
 export type ReferenceDataSetCreationPropertiesDataStringComparisonBehavior =
   | "Ordinal"
   | "OrdinalIgnoreCase";
-export const ReferenceDataSetCreationPropertiesDataStringComparisonBehavior = S.String;
+const ReferenceDataSetCreationPropertiesDataStringComparisonBehavior = S.String;
 
 /** Properties used to create a reference data set. */
 export interface ReferenceDataSetCreationProperties {
@@ -1240,7 +1237,7 @@ export interface ReferenceDataSetCreationProperties {
     | ReferenceDataSetCreationPropertiesDataStringComparisonBehavior
     | (string & {});
 }
-export const ReferenceDataSetCreationProperties = /*@__PURE__*/ S.suspend(() =>
+const ReferenceDataSetCreationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyProperties: ReferenceDataSetCreationPropertiesKeyPropertiesList,
     dataStringComparisonBehavior: S.optional(
@@ -1266,7 +1263,7 @@ export interface ReferenceDataSetsCreateOrUpdateRequest {
   tags?: ReferenceDataSetsCreateOrUpdateRequestTagsMap;
   properties: ReferenceDataSetCreationProperties;
 }
-export const ReferenceDataSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ReferenceDataSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1289,9 +1286,6 @@ export const ReferenceDataSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags */
 export type ReferenceDataSetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ReferenceDataSetsCreateOrUpdateResponseTagsMap =
-  EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<ReferenceDataSetsCreateOrUpdateResponseTagsMap>;
-
 export interface ReferenceDataSetsCreateOrUpdateResponse {
   /** Resource Id */
   id?: string;
@@ -1305,18 +1299,16 @@ export interface ReferenceDataSetsCreateOrUpdateResponse {
   tags?: ReferenceDataSetsCreateOrUpdateResponseTagsMap;
   properties?: ReferenceDataSetResourceProperties;
 }
-export const ReferenceDataSetsCreateOrUpdateResponse =
+const ReferenceDataSetsCreateOrUpdateResponse =
   GetReferenceDataSetResponse as any as S.Schema<ReferenceDataSetsCreateOrUpdateResponse>;
 
 /** A role defining the data plane operations that a principal can perform on a Time Series Insights client. */
 export type AccessPolicyMutablePropertiesRolesItem = "Reader" | "Contributor";
-export const AccessPolicyMutablePropertiesRolesItem = S.String;
-
 /** The list of roles the principal is assigned on the environment. */
 export type AccessPolicyMutablePropertiesRolesList = Array<
   AccessPolicyMutablePropertiesRolesItem | (string & {})
 >;
-export const AccessPolicyMutablePropertiesRolesList =
+const AccessPolicyMutablePropertiesRolesList =
   AccessPolicyResourcePropertiesRolesList as any as S.Schema<AccessPolicyMutablePropertiesRolesList>;
 
 /** An object that represents a set of mutable access policy resource properties. */
@@ -1326,7 +1318,7 @@ export interface AccessPolicyMutableProperties {
   /** The list of roles the principal is assigned on the environment. */
   roles?: AccessPolicyMutablePropertiesRolesList;
 }
-export const AccessPolicyMutableProperties = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyMutableProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     roles: S.optional(AccessPolicyMutablePropertiesRolesList),
@@ -1346,7 +1338,7 @@ export interface UpdateAccessPolicyRequest {
   accessPolicyName: string;
   properties?: AccessPolicyMutableProperties;
 }
-export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1374,16 +1366,16 @@ export interface UpdateAccessPolicyResponse {
   type?: string;
   properties?: AccessPolicyResourceProperties;
 }
-export const UpdateAccessPolicyResponse =
+const UpdateAccessPolicyResponse =
   AccessPoliciesCreateOrUpdateResponse as any as S.Schema<UpdateAccessPolicyResponse>;
 
 /** The kind of the environment. */
 export type UpdateEnvironmentRequestKind = "Gen1" | "Gen2";
-export const UpdateEnvironmentRequestKind = S.String;
+const UpdateEnvironmentRequestKind = S.String;
 
 /** Key-value pairs of additional properties for the environment. */
 export type UpdateEnvironmentRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentRequestTagsMap =
+const UpdateEnvironmentRequestTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnvironmentRequestTagsMap>;
 
 export interface UpdateEnvironmentRequest {
@@ -1398,7 +1390,7 @@ export interface UpdateEnvironmentRequest {
   /** Key-value pairs of additional properties for the environment. */
   tags?: UpdateEnvironmentRequestTagsMap;
 }
-export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1417,12 +1409,12 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentResponseTagsMap =
+const UpdateEnvironmentResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnvironmentResponseTagsMap>;
 
 /** The kind of the environment. */
 export type UpdateEnvironmentResponseKind = "Gen1" | "Gen2";
-export const UpdateEnvironmentResponseKind = S.String;
+const UpdateEnvironmentResponseKind = S.String;
 
 export interface UpdateEnvironmentResponse {
   /** Resource Id */
@@ -1440,7 +1432,7 @@ export interface UpdateEnvironmentResponse {
   /** The kind of the environment. */
   kind: UpdateEnvironmentResponseKind;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1456,11 +1448,11 @@ export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of the event source. */
 export type UpdateEventSourceRequestKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
-export const UpdateEventSourceRequestKind = S.String;
+const UpdateEventSourceRequestKind = S.String;
 
 /** Key-value pairs of additional properties for the event source. */
 export type UpdateEventSourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEventSourceRequestTagsMap =
+const UpdateEventSourceRequestTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEventSourceRequestTagsMap>;
 
 export interface UpdateEventSourceRequest {
@@ -1477,7 +1469,7 @@ export interface UpdateEventSourceRequest {
   /** Key-value pairs of additional properties for the event source. */
   tags?: UpdateEventSourceRequestTagsMap;
 }
-export const UpdateEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1497,12 +1489,12 @@ export const UpdateEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateEventSourceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEventSourceResponseTagsMap =
+const UpdateEventSourceResponseTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEventSourceResponseTagsMap>;
 
 /** The kind of the event source. */
 export type UpdateEventSourceResponseKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
-export const UpdateEventSourceResponseKind = S.String;
+const UpdateEventSourceResponseKind = S.String;
 
 export interface UpdateEventSourceResponse {
   /** Resource Id */
@@ -1518,7 +1510,7 @@ export interface UpdateEventSourceResponse {
   /** The kind of the event source. */
   kind: UpdateEventSourceResponseKind;
 }
-export const UpdateEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1533,7 +1525,7 @@ export const UpdateEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional properties for the reference data set. */
 export type UpdateReferenceDataSetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateReferenceDataSetRequestTagsMap =
+const UpdateReferenceDataSetRequestTagsMap =
   EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateReferenceDataSetRequestTagsMap>;
 
 export interface UpdateReferenceDataSetRequest {
@@ -1548,7 +1540,7 @@ export interface UpdateReferenceDataSetRequest {
   /** Key-value pairs of additional properties for the reference data set. */
   tags?: UpdateReferenceDataSetRequestTagsMap;
 }
-export const UpdateReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1569,9 +1561,6 @@ export const UpdateReferenceDataSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateReferenceDataSetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateReferenceDataSetResponseTagsMap =
-  EnvironmentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateReferenceDataSetResponseTagsMap>;
-
 export interface UpdateReferenceDataSetResponse {
   /** Resource Id */
   id?: string;
@@ -1585,7 +1574,7 @@ export interface UpdateReferenceDataSetResponse {
   tags?: UpdateReferenceDataSetResponseTagsMap;
   properties?: ReferenceDataSetResourceProperties;
 }
-export const UpdateReferenceDataSetResponse =
+const UpdateReferenceDataSetResponse =
   GetReferenceDataSetResponse as any as S.Schema<UpdateReferenceDataSetResponse>;
 
 export type AccessPoliciesCreateOrUpdateError = AzureOpError;

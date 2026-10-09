@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED";
-export const GetItemsProjectionEnum = S.String;
+const GetItemsProjectionEnum = S.String;
 
 export interface GetItemsRequest {
   /** Determines which subset of the item information to return. */
@@ -70,7 +70,7 @@ export interface GetItemsRequest {
   /** Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme. */
   itemId: string;
 }
-export const GetItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projection: S.optional(GetItemsProjectionEnum.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -90,7 +90,7 @@ export interface ItemError {
   /** The human-readable detail message of the error. */
   error_detail?: string;
 }
-export const ItemError = /*@__PURE__*/ S.suspend(() =>
+const ItemError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_code: S.optional(S.String),
     error_detail: S.optional(S.String),
@@ -98,7 +98,7 @@ export const ItemError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemError" }) as any as S.Schema<ItemError>;
 
 export type ItemErrorList = Array<ItemError>;
-export const ItemErrorList = /*@__PURE__*/ S.Array(ItemError) as any as S.Schema<ItemErrorList>;
+const ItemErrorList = /*@__PURE__*/ S.Array(ItemError) as any as S.Schema<ItemErrorList>;
 
 export interface Item {
   /** Detail human-readable status of the operation, in English only. Same error messages are displayed when you upload your app to the Chrome Web Store. */
@@ -114,7 +114,7 @@ export interface Item {
   /** Status of the operation. Possible values are: - \"FAILURE\" - \"IN_PROGRESS\" - \"NOT_FOUND\" - \"SUCCESS\" */
   uploadState?: string;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemError: S.optional(ItemErrorList),
     id: S.optional(S.String),
@@ -129,7 +129,7 @@ export interface InsertItemsRequest {
   /** The email of the publisher who owns the items. Defaults to the caller's email address. */
   publisherEmail?: string;
 }
-export const InsertItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherEmail: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -149,7 +149,7 @@ export interface PublishRequest {
   /** The target deploy percentage of the item. It's only useful for items with big user base. */
   deployPercentage?: number;
 }
-export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.String),
     reviewExemption: S.optional(S.Boolean),
@@ -169,7 +169,7 @@ export interface PublishItemsRequest {
   /** Request body */
   body?: PublishRequest;
 }
-export const PublishItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployPercentage: S.optional(S.Number.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -186,7 +186,7 @@ export const PublishItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublishItemsRequest" }) as any as S.Schema<PublishItemsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface Item2 {
   /** Detailed human-comprehensible explanation of the status code above. */
@@ -198,7 +198,7 @@ export interface Item2 {
   /** Static string value is always "chromewebstore#item". */
   kind?: string;
 }
-export const Item2 = /*@__PURE__*/ S.suspend(() =>
+const Item2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusDetail: S.optional(StringList),
     item_id: S.optional(S.String),
@@ -213,7 +213,7 @@ export interface UpdateItemsRequest {
   /** Request body */
   body?: Item;
 }
-export const UpdateItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     body: S.optional(Item.pipe(T.HttpBody())),

@@ -88,7 +88,7 @@ export interface Catalog {
   /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name?: string;
 }
-export const Catalog = /*@__PURE__*/ S.suspend(() =>
+const Catalog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteTime: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -106,7 +106,7 @@ export interface CreateProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: Catalog;
 }
-export const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     catalogId: S.optional(S.String.pipe(T.Query())),
@@ -123,7 +123,7 @@ export const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Options of a Hive database. */
 export interface HiveDatabaseOptions {
@@ -132,7 +132,7 @@ export interface HiveDatabaseOptions {
   /** Stores user supplied Hive database parameters. */
   parameters?: StringMap;
 }
-export const HiveDatabaseOptions = /*@__PURE__*/ S.suspend(() =>
+const HiveDatabaseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationUri: S.optional(S.String),
     parameters: S.optional(StringMap),
@@ -140,7 +140,7 @@ export const HiveDatabaseOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HiveDatabaseOptions" }) as any as S.Schema<HiveDatabaseOptions>;
 
 export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
-export const DatabaseTypeEnum = S.String;
+const DatabaseTypeEnum = S.String;
 
 /** Database is the container of tables. */
 export interface Database {
@@ -159,7 +159,7 @@ export interface Database {
   /** The database type. */
   type?: DatabaseTypeEnum | (string & {});
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiveOptions: S.optional(HiveDatabaseOptions),
     expireTime: S.optional(S.String),
@@ -179,7 +179,7 @@ export interface CreateProjectsLocationsCatalogsDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const CreateProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     databaseId: S.optional(S.String.pipe(T.Query())),
@@ -200,7 +200,7 @@ export interface SerDeInfo {
   /** The fully qualified Java class name of the serialization library. */
   serializationLib?: string;
 }
-export const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
+const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serializationLib: S.optional(S.String),
   }),
@@ -217,7 +217,7 @@ export interface StorageDescriptor {
   /** Cloud Storage folder URI where the table data is stored, starting with "gs://". */
   locationUri?: string;
 }
-export const StorageDescriptor = /*@__PURE__*/ S.suspend(() =>
+const StorageDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputFormat: S.optional(S.String),
     serdeInfo: S.optional(SerDeInfo),
@@ -235,7 +235,7 @@ export interface HiveTableOptions {
   /** Stores physical storage information of the data. */
   storageDescriptor?: StorageDescriptor;
 }
-export const HiveTableOptions = /*@__PURE__*/ S.suspend(() =>
+const HiveTableOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(StringMap),
     tableType: S.optional(S.String),
@@ -244,7 +244,7 @@ export const HiveTableOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HiveTableOptions" }) as any as S.Schema<HiveTableOptions>;
 
 export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
-export const TableTypeEnum = S.String;
+const TableTypeEnum = S.String;
 
 /** Represents a table. */
 export interface Table {
@@ -265,7 +265,7 @@ export interface Table {
   /** Output only. The last modification time of the table. */
   updateTime?: string;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hiveOptions: S.optional(HiveTableOptions),
     expireTime: S.optional(S.String),
@@ -286,7 +286,7 @@ export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const CreateProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     tableId: S.optional(S.String.pipe(T.Query())),
@@ -306,7 +306,7 @@ export interface DeleteProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -320,7 +320,7 @@ export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The name of the database to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -334,7 +334,7 @@ export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -350,7 +350,7 @@ export interface GetIamPolicyProjectsCatalogsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -370,10 +370,10 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -382,7 +382,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -390,7 +390,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -401,7 +401,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -409,9 +409,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -424,7 +422,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     expression: S.optional(S.String),
@@ -442,7 +440,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -451,7 +449,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -464,7 +462,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -479,7 +477,7 @@ export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -500,7 +498,7 @@ export interface GetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -519,7 +517,7 @@ export interface GetProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
 }
-export const GetProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://biglake.googleapis.com/" })),
@@ -531,7 +529,7 @@ export interface GetProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
 }
-export const GetProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://biglake.googleapis.com/" })),
@@ -543,7 +541,7 @@ export interface GetProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
 }
-export const GetProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://biglake.googleapis.com/" })),
@@ -559,7 +557,7 @@ export interface ListProjectsLocationsCatalogsRequest {
   /** The maximum number of catalogs to return. The service may return fewer than this value. If unspecified, at most 50 catalogs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -576,7 +574,7 @@ export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
 export type CatalogList = Array<Catalog>;
-export const CatalogList = /*@__PURE__*/ S.Array(Catalog) as any as S.Schema<CatalogList>;
+const CatalogList = /*@__PURE__*/ S.Array(Catalog) as any as S.Schema<CatalogList>;
 
 /** Response message for the ListCatalogs method. */
 export interface ListCatalogsResponse {
@@ -585,7 +583,7 @@ export interface ListCatalogsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogs: S.optional(CatalogList),
     nextPageToken: S.optional(S.String),
@@ -600,7 +598,7 @@ export interface ListProjectsLocationsCatalogsDatabasesRequest {
   /** A page token, received from a previous `ListDatabases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatabases` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -617,7 +615,7 @@ export const ListProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>;
 
 export type DatabaseList = Array<Database>;
-export const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
+const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
 
 /** Response message for the ListDatabases method. */
 export interface ListDatabasesResponse {
@@ -626,7 +624,7 @@ export interface ListDatabasesResponse {
   /** The databases from the specified catalog. */
   databases?: DatabaseList;
 }
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     databases: S.optional(DatabaseList),
@@ -637,7 +635,7 @@ export type ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
   | "TABLE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const ListProjectsLocationsCatalogsDatabasesTablesViewEnum = S.String;
+const ListProjectsLocationsCatalogsDatabasesTablesViewEnum = S.String;
 
 export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
   /** The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -649,7 +647,7 @@ export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The parent, which owns this collection of tables. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   parent: string;
 }
-export const ListProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -667,7 +665,7 @@ export const ListProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 export type TableList = Array<Table>;
-export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
+const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
 
 /** Response message for the ListTables method. */
 export interface ListTablesResponse {
@@ -676,7 +674,7 @@ export interface ListTablesResponse {
   /** The tables from the specified database. */
   tables?: TableList;
 }
-export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     tables: S.optional(TableList),
@@ -691,7 +689,7 @@ export interface PatchProjectsLocationsCatalogsDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const PatchProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -711,7 +709,7 @@ export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const PatchProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -728,7 +726,7 @@ export interface RenameTableRequest {
   /** Required. The new `name` for the specified table, must be in the same database. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   newName?: string;
 }
-export const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newName: S.optional(S.String),
   }),
@@ -740,7 +738,7 @@ export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: RenameTableRequest;
 }
-export const RenameProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RenameTableRequest.pipe(T.HttpBody())),
@@ -762,7 +760,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -775,7 +773,7 @@ export interface SetIamPolicyProjectsCatalogsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -796,7 +794,7 @@ export interface SetIamPolicyProjectsCatalogsNamespacesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -817,7 +815,7 @@ export interface SetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -837,7 +835,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -851,7 +849,7 @@ export interface TestIamPermissionsProjectsCatalogsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -871,7 +869,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
@@ -880,7 +878,7 @@ export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -901,18 +899,17 @@ export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://biglake.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://biglake.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsCatalogsNamespacesTablesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>;

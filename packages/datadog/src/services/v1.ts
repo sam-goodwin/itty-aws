@@ -64,7 +64,7 @@ export interface AddSecurityMonitoringSignalToIncidentRequest {
   incident_id: number;
   version?: number;
 }
-export const AddSecurityMonitoringSignalToIncidentRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSecurityMonitoringSignalToIncidentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signal_id: S.String.pipe(T.Label()),
     add_to_signal_timeline: S.optional(S.Boolean),
@@ -86,7 +86,7 @@ export interface SuccessfulSignalUpdateResponse {
   /** Status of the response. */
   status?: string;
 }
-export const SuccessfulSignalUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SuccessfulSignalUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -95,7 +95,7 @@ export const SuccessfulSignalUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuccessfulSignalUpdateResponse>;
 
 export type CheckCanDeleteMonitorRequestMonitorIdsList = Array<number>;
-export const CheckCanDeleteMonitorRequestMonitorIdsList = /*@__PURE__*/ S.Array(
+const CheckCanDeleteMonitorRequestMonitorIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CheckCanDeleteMonitorRequestMonitorIdsList>;
 
@@ -103,7 +103,7 @@ export interface CheckCanDeleteMonitorRequest {
   /** The IDs of the monitor to check. */
   monitor_ids: CheckCanDeleteMonitorRequestMonitorIdsList;
 }
-export const CheckCanDeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCanDeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitor_ids: CheckCanDeleteMonitorRequestMonitorIdsList.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/monitor/can_delete", code: 200 })),
@@ -113,7 +113,7 @@ export const CheckCanDeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Monitor IDs that can be safely deleted. */
 export type CheckCanDeleteMonitorResponseDataOkList = Array<number>;
-export const CheckCanDeleteMonitorResponseDataOkList =
+const CheckCanDeleteMonitorResponseDataOkList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<CheckCanDeleteMonitorResponseDataOkList>;
 
 /** Wrapper object with the list of monitor IDs. */
@@ -121,7 +121,7 @@ export interface CheckCanDeleteMonitorResponseData {
   /** An array of Monitor IDs that can be safely deleted. */
   ok?: CheckCanDeleteMonitorResponseDataOkList;
 }
-export const CheckCanDeleteMonitorResponseData = /*@__PURE__*/ S.suspend(() =>
+const CheckCanDeleteMonitorResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.optional(CheckCanDeleteMonitorResponseDataOkList),
   }),
@@ -131,7 +131,7 @@ export const CheckCanDeleteMonitorResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** Strings denoting where a monitor is used. */
 export type CheckCanDeleteMonitorResponseErrorsValueList = Array<string>;
-export const CheckCanDeleteMonitorResponseErrorsValueList = /*@__PURE__*/ S.Array(
+const CheckCanDeleteMonitorResponseErrorsValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckCanDeleteMonitorResponseErrorsValueList>;
 
@@ -139,7 +139,7 @@ export const CheckCanDeleteMonitorResponseErrorsValueList = /*@__PURE__*/ S.Arra
 export type CheckCanDeleteMonitorResponseErrorsMap = {
   [key: string]: CheckCanDeleteMonitorResponseErrorsValueList | undefined;
 };
-export const CheckCanDeleteMonitorResponseErrorsMap = /*@__PURE__*/ S.Record(
+const CheckCanDeleteMonitorResponseErrorsMap = /*@__PURE__*/ S.Record(
   S.String,
   CheckCanDeleteMonitorResponseErrorsValueList,
 ) as any as S.Schema<CheckCanDeleteMonitorResponseErrorsMap>;
@@ -150,7 +150,7 @@ export interface CheckCanDeleteMonitorResponse {
   /** A mapping of Monitor ID to strings denoting where it's used. */
   errors?: CheckCanDeleteMonitorResponseErrorsMap | null;
 }
-export const CheckCanDeleteMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckCanDeleteMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CheckCanDeleteMonitorResponseData,
     errors: S.optional(S.NullOr(CheckCanDeleteMonitorResponseErrorsMap)),
@@ -163,7 +163,7 @@ export interface CheckCanDeleteSLORequest {
   /** A comma separated list of the IDs of the service level objectives objects. */
   ids: string;
 }
-export const CheckCanDeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCanDeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/slo/can_delete", code: 200 })),
@@ -171,7 +171,7 @@ export const CheckCanDeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of SLO IDs that can be safely deleted. */
 export type CheckCanDeleteSLOResponseDataOkList = Array<string>;
-export const CheckCanDeleteSLOResponseDataOkList =
+const CheckCanDeleteSLOResponseDataOkList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckCanDeleteSLOResponseDataOkList>;
 
 /** An array of service level objective objects. */
@@ -179,7 +179,7 @@ export interface CheckCanDeleteSLOResponseData {
   /** An array of SLO IDs that can be safely deleted. */
   ok?: CheckCanDeleteSLOResponseDataOkList;
 }
-export const CheckCanDeleteSLOResponseData = /*@__PURE__*/ S.suspend(() =>
+const CheckCanDeleteSLOResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.optional(CheckCanDeleteSLOResponseDataOkList),
   }),
@@ -189,7 +189,7 @@ export const CheckCanDeleteSLOResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** A mapping of SLO id to it's current usages. */
 export type CheckCanDeleteSLOResponseErrorsMap = { [key: string]: string | undefined };
-export const CheckCanDeleteSLOResponseErrorsMap = /*@__PURE__*/ S.Record(
+const CheckCanDeleteSLOResponseErrorsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CheckCanDeleteSLOResponseErrorsMap>;
@@ -200,7 +200,7 @@ export interface CheckCanDeleteSLOResponse {
   /** A mapping of SLO id to it's current usages. */
   errors?: CheckCanDeleteSLOResponseErrorsMap;
 }
-export const CheckCanDeleteSLOResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckCanDeleteSLOResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CheckCanDeleteSLOResponseData),
     errors: S.optional(CheckCanDeleteSLOResponseErrorsMap),
@@ -213,7 +213,7 @@ export interface CreateAPIKeyRequest {
   /** Name of your API key. */
   name?: string;
 }
-export const CreateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/api_key", code: 200 })),
@@ -230,7 +230,7 @@ export interface ApiKey {
   /** Name of your API key. */
   name?: string;
 }
-export const ApiKey = /*@__PURE__*/ S.suspend(() =>
+const ApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     created_by: S.optional(S.String),
@@ -243,7 +243,7 @@ export const ApiKey = /*@__PURE__*/ S.suspend(() =>
 export interface ApiKeyResponse {
   api_key?: ApiKey;
 }
-export const ApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_key: S.optional(ApiKey),
   }),
@@ -253,7 +253,7 @@ export interface CreateApplicationKeyRequest {
   /** Name of an application key. */
   name?: string;
 }
-export const CreateApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/application_key", code: 200 })),
@@ -270,7 +270,7 @@ export interface ApplicationKey {
   /** Owner of an application key. */
   owner?: string;
 }
-export const ApplicationKey = /*@__PURE__*/ S.suspend(() =>
+const ApplicationKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.optional(S.String),
     name: S.optional(S.String),
@@ -282,7 +282,7 @@ export const ApplicationKey = /*@__PURE__*/ S.suspend(() =>
 export interface ApplicationKeyResponse {
   application_key?: ApplicationKey;
 }
-export const ApplicationKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplicationKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     application_key: S.optional(ApplicationKey),
   }),
@@ -290,7 +290,7 @@ export const ApplicationKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type CreateAzureIntegrationRequestErrorsList = Array<string>;
-export const CreateAzureIntegrationRequestErrorsList =
+const CreateAzureIntegrationRequestErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateAzureIntegrationRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource provider. */
@@ -300,7 +300,7 @@ export interface ResourceProviderConfig {
   /** The provider namespace to apply this configuration to. */
   namespace?: string;
 }
-export const ResourceProviderConfig = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics_enabled: S.optional(S.Boolean),
     namespace: S.optional(S.String),
@@ -310,7 +310,7 @@ export const ResourceProviderConfig = /*@__PURE__*/ S.suspend(() =>
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type CreateAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const CreateAzureIntegrationRequestResourceProviderConfigsList = /*@__PURE__*/ S.Array(
+const CreateAzureIntegrationRequestResourceProviderConfigsList = /*@__PURE__*/ S.Array(
   ResourceProviderConfig,
 ) as any as S.Schema<CreateAzureIntegrationRequestResourceProviderConfigsList>;
 
@@ -352,7 +352,7 @@ export interface CreateAzureIntegrationRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-export const CreateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_service_plan_filters: S.optional(S.String),
     automute: S.optional(S.Boolean),
@@ -378,7 +378,7 @@ export const CreateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAzureIntegrationRequest>;
 
 export type CreateAzureIntegrationResponse = unknown;
-export const CreateAzureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAzureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateAzureIntegrationResponse",
@@ -389,7 +389,7 @@ export interface OrganizationBilling {
   /** The type of billing. Only `parent_billing` is supported. */
   type?: string;
 }
-export const OrganizationBilling = /*@__PURE__*/ S.suspend(() =>
+const OrganizationBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -400,8 +400,7 @@ export interface OrganizationSubscription {
   /** The subscription type. Types available are `trial`, `free`, and `pro`. */
   type?: string;
 }
-export const OrganizationSubscription =
-  OrganizationBilling as any as S.Schema<OrganizationSubscription>;
+const OrganizationSubscription = OrganizationBilling as any as S.Schema<OrganizationSubscription>;
 
 export interface CreateChildOrgRequest {
   billing?: OrganizationBilling;
@@ -409,7 +408,7 @@ export interface CreateChildOrgRequest {
   name: string;
   subscription?: OrganizationSubscription;
 }
-export const CreateChildOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChildOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing: S.optional(OrganizationBilling),
     name: S.String,
@@ -422,7 +421,7 @@ export interface OrganizationSettingsSaml {
   /** Whether or not SAML is enabled for this organization. */
   enabled?: boolean;
 }
-export const OrganizationSettingsSaml = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSettingsSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -430,11 +429,11 @@ export const OrganizationSettingsSaml = /*@__PURE__*/ S.suspend(() =>
 
 /** The access role of the user. Options are **st** (standard user), **adm** (admin user), or **ro** (read-only user). */
 export type AccessRole = "st" | "adm" | "ro" | "ERROR";
-export const AccessRole = S.String;
+const AccessRole = S.String;
 
 /** List of domains where the SAML automated user creation is enabled. */
 export type OrganizationSettingsSamlAutocreateUsersDomainsDomainsList = Array<string>;
-export const OrganizationSettingsSamlAutocreateUsersDomainsDomainsList =
+const OrganizationSettingsSamlAutocreateUsersDomainsDomainsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<OrganizationSettingsSamlAutocreateUsersDomainsDomainsList>;
 
 /** Has two properties, `enabled` (boolean) and `domains`, which is a list of domains without the @ symbol. */
@@ -444,7 +443,7 @@ export interface OrganizationSettingsSamlAutocreateUsersDomains {
   /** Whether or not the automated user creation based on SAML domain is enabled. */
   enabled?: boolean;
 }
-export const OrganizationSettingsSamlAutocreateUsersDomains = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSettingsSamlAutocreateUsersDomains = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(OrganizationSettingsSamlAutocreateUsersDomainsDomainsList),
     enabled: S.optional(S.Boolean),
@@ -458,7 +457,7 @@ export interface OrganizationSettingsSamlIdpInitiatedLogin {
   /** Whether SAML IdP initiated login is enabled, learn more in the [SAML documentation](https://docs.datadoghq.com/account_management/saml/#idp-initiated-login). */
   enabled?: boolean;
 }
-export const OrganizationSettingsSamlIdpInitiatedLogin = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSettingsSamlIdpInitiatedLogin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -471,7 +470,7 @@ export interface OrganizationSettingsSamlStrictMode {
   /** Whether or not the SAML strict mode is enabled. If true, all users must log in with SAML. Learn more on the [SAML Strict documentation](https://docs.datadoghq.com/account_management/saml/#saml-strict). */
   enabled?: boolean;
 }
-export const OrganizationSettingsSamlStrictMode =
+const OrganizationSettingsSamlStrictMode =
   OrganizationSettingsSamlIdpInitiatedLogin as any as S.Schema<OrganizationSettingsSamlStrictMode>;
 
 /** A JSON array of settings. */
@@ -492,7 +491,7 @@ export interface OrganizationSettings {
   saml_login_url?: string;
   saml_strict_mode?: OrganizationSettingsSamlStrictMode;
 }
-export const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     private_widget_share: S.optional(S.Boolean),
     saml: S.optional(OrganizationSettingsSaml),
@@ -523,7 +522,7 @@ export interface Organization {
   /** Only available for MSP customers. Allows child organizations to be created on a trial plan. */
   trial?: boolean;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing: S.optional(OrganizationBilling),
     created: S.optional(S.String),
@@ -552,7 +551,7 @@ export interface User {
   /** Whether or not the user logged in Datadog at least once. */
   verified?: boolean;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_role: S.optional(S.NullOr(AccessRole)),
     disabled: S.optional(S.Boolean),
@@ -571,7 +570,7 @@ export interface OrganizationCreateResponse {
   org?: Organization;
   user?: User;
 }
-export const OrganizationCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_key: S.optional(ApiKey),
     application_key: S.optional(ApplicationKey),
@@ -584,12 +583,8 @@ export const OrganizationCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of live timeframe. */
 export type DashboardLiveTimeframeType = "live";
-export const DashboardLiveTimeframeType = S.String;
-
 /** Unit of the time span. */
 export type WidgetLiveSpanUnit = "minute" | "hour" | "day" | "week" | "month" | "year";
-export const WidgetLiveSpanUnit = S.String;
-
 /** A live dashboard timeframe. */
 export interface DashboardLiveTimeframe {
   type: DashboardLiveTimeframeType;
@@ -597,18 +592,8 @@ export interface DashboardLiveTimeframe {
   /** Value of the live timeframe span. */
   value: number;
 }
-export const DashboardLiveTimeframe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DashboardLiveTimeframeType,
-    unit: WidgetLiveSpanUnit,
-    value: S.Number,
-  }),
-).annotate({ identifier: "DashboardLiveTimeframe" }) as any as S.Schema<DashboardLiveTimeframe>;
-
 /** Type of fixed timeframe. */
 export type DashboardFixedTimeframeType = "fixed";
-export const DashboardFixedTimeframeType = S.String;
-
 /** A fixed dashboard timeframe. */
 export interface DashboardFixedTimeframe {
   /** Start time in milliseconds since epoch. */
@@ -617,40 +602,32 @@ export interface DashboardFixedTimeframe {
   to: number;
   type: DashboardFixedTimeframeType;
 }
-export const DashboardFixedTimeframe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.Number,
-    to: S.Number,
-    type: DashboardFixedTimeframeType,
-  }),
-).annotate({ identifier: "DashboardFixedTimeframe" }) as any as S.Schema<DashboardFixedTimeframe>;
-
 /** The default timeframe applied when opening the dashboard. Set to `null` to clear the dashboard's default timeframe. */
 export type DashboardDefaultTimeframeSetting = DashboardLiveTimeframe | DashboardFixedTimeframe;
-export const DashboardDefaultTimeframeSetting =
+const DashboardDefaultTimeframeSetting =
   S.Unknown as any as S.Schema<DashboardDefaultTimeframeSetting>;
 
 /** Layout type of the dashboard. */
 export type DashboardLayoutType = "ordered" | "free";
-export const DashboardLayoutType = S.String;
+const DashboardLayoutType = S.String;
 
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type CreateDashboardRequestNotifyListList = Array<string>;
-export const CreateDashboardRequestNotifyListList =
+const CreateDashboardRequestNotifyListList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestNotifyListList>;
 
 /** Reflow type for a **new dashboard layout** dashboard. Set this only when layout type is 'ordered'. If set to 'fixed', the dashboard expects all widgets to have a layout, and if it's set to 'auto', widgets should not have layouts. */
 export type DashboardReflowType = "auto" | "fixed";
-export const DashboardReflowType = S.String;
+const DashboardReflowType = S.String;
 
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type CreateDashboardRequestRestrictedRolesList = Array<string>;
-export const CreateDashboardRequestRestrictedRolesList =
+const CreateDashboardRequestRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestRestrictedRolesList>;
 
 /** List of widget IDs belonging to this tab. The backend also accepts positional references in @N format (1-indexed) as a convenience for Terraform and other declarative tools. */
 export type DashboardTabWidgetIdsList = Array<number>;
-export const DashboardTabWidgetIdsList =
+const DashboardTabWidgetIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<DashboardTabWidgetIdsList>;
 
 /** Dashboard tab for organizing widgets. */
@@ -662,7 +639,7 @@ export interface DashboardTab {
   /** List of widget IDs belonging to this tab. The backend also accepts positional references in @N format (1-indexed) as a convenience for Terraform and other declarative tools. */
   widget_ids: DashboardTabWidgetIdsList;
 }
-export const DashboardTab = /*@__PURE__*/ S.suspend(() =>
+const DashboardTab = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -672,18 +649,18 @@ export const DashboardTab = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tabs for organizing dashboard widgets into groups. */
 export type CreateDashboardRequestTabsList = Array<DashboardTab>;
-export const CreateDashboardRequestTabsList = /*@__PURE__*/ S.Array(
+const CreateDashboardRequestTabsList = /*@__PURE__*/ S.Array(
   DashboardTab,
 ) as any as S.Schema<CreateDashboardRequestTabsList>;
 
 /** List of team names representing ownership of a dashboard. */
 export type CreateDashboardRequestTagsList = Array<string>;
-export const CreateDashboardRequestTagsList =
+const CreateDashboardRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestTagsList>;
 
 /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. Cannot be used in conjunction with `value`. */
 export type DashboardTemplateVariablePresetValueValuesList = Array<string>;
-export const DashboardTemplateVariablePresetValueValuesList =
+const DashboardTemplateVariablePresetValueValuesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariablePresetValueValuesList>;
 
 /** Template variables saved views. */
@@ -695,7 +672,7 @@ export interface DashboardTemplateVariablePresetValue {
   /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. Cannot be used in conjunction with `value`. */
   values?: DashboardTemplateVariablePresetValueValuesList;
 }
-export const DashboardTemplateVariablePresetValue = /*@__PURE__*/ S.suspend(() =>
+const DashboardTemplateVariablePresetValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -708,7 +685,7 @@ export const DashboardTemplateVariablePresetValue = /*@__PURE__*/ S.suspend(() =
 /** List of variables. */
 export type DashboardTemplateVariablePresetTemplateVariablesList =
   Array<DashboardTemplateVariablePresetValue>;
-export const DashboardTemplateVariablePresetTemplateVariablesList = /*@__PURE__*/ S.Array(
+const DashboardTemplateVariablePresetTemplateVariablesList = /*@__PURE__*/ S.Array(
   DashboardTemplateVariablePresetValue,
 ) as any as S.Schema<DashboardTemplateVariablePresetTemplateVariablesList>;
 
@@ -719,7 +696,7 @@ export interface DashboardTemplateVariablePreset {
   /** List of variables. */
   template_variables?: DashboardTemplateVariablePresetTemplateVariablesList;
 }
-export const DashboardTemplateVariablePreset = /*@__PURE__*/ S.suspend(() =>
+const DashboardTemplateVariablePreset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     template_variables: S.optional(DashboardTemplateVariablePresetTemplateVariablesList),
@@ -731,18 +708,18 @@ export const DashboardTemplateVariablePreset = /*@__PURE__*/ S.suspend(() =>
 /** Array of template variables saved views. */
 export type CreateDashboardRequestTemplateVariablePresetsList =
   Array<DashboardTemplateVariablePreset>;
-export const CreateDashboardRequestTemplateVariablePresetsList = /*@__PURE__*/ S.Array(
+const CreateDashboardRequestTemplateVariablePresetsList = /*@__PURE__*/ S.Array(
   DashboardTemplateVariablePreset,
 ) as any as S.Schema<CreateDashboardRequestTemplateVariablePresetsList>;
 
 /** The list of values that the template variable drop-down is limited to. */
 export type DashboardTemplateVariableAvailableValuesList = Array<string>;
-export const DashboardTemplateVariableAvailableValuesList =
+const DashboardTemplateVariableAvailableValuesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariableAvailableValuesList>;
 
 /** One or many default values for template variables on load. If more than one default is specified, they will be unioned together with `OR`. Cannot be used in conjunction with `default`. */
 export type DashboardTemplateVariableDefaultsList = Array<string>;
-export const DashboardTemplateVariableDefaultsList =
+const DashboardTemplateVariableDefaultsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariableDefaultsList>;
 
 /** Template variable. */
@@ -760,7 +737,7 @@ export interface DashboardTemplateVariable {
   /** The type of variable. This is to differentiate between filter variables (interpolated in query) and group by variables (interpolated into group by). */
   type?: string | null;
 }
-export const DashboardTemplateVariable = /*@__PURE__*/ S.suspend(() =>
+const DashboardTemplateVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available_values: S.optional(S.NullOr(DashboardTemplateVariableAvailableValuesList)),
     default: S.optional(S.NullOr(S.String)),
@@ -775,7 +752,7 @@ export const DashboardTemplateVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** List of template variables for this dashboard. */
 export type CreateDashboardRequestTemplateVariablesList = Array<DashboardTemplateVariable>;
-export const CreateDashboardRequestTemplateVariablesList = /*@__PURE__*/ S.Array(
+const CreateDashboardRequestTemplateVariablesList = /*@__PURE__*/ S.Array(
   DashboardTemplateVariable,
 ) as any as S.Schema<CreateDashboardRequestTemplateVariablesList>;
 
@@ -798,25 +775,14 @@ export type WidgetLiveSpan =
   | "month_to_date"
   | "1y"
   | "alert";
-export const WidgetLiveSpan = S.String;
-
 /** Wrapper for live span */
 export interface WidgetLegacyLiveSpan {
   /** Whether to hide incomplete cost data in the widget. */
   hide_incomplete_cost_data?: boolean;
   live_span?: WidgetLiveSpan | (string & {});
 }
-export const WidgetLegacyLiveSpan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hide_incomplete_cost_data: S.optional(S.Boolean),
-    live_span: S.optional(WidgetLiveSpan),
-  }),
-).annotate({ identifier: "WidgetLegacyLiveSpan" }) as any as S.Schema<WidgetLegacyLiveSpan>;
-
 /** Type "live" denotes a live span in the new format. */
 export type WidgetNewLiveSpanType = "live";
-export const WidgetNewLiveSpanType = S.String;
-
 /** Used for arbitrary live span times, such as 17 minutes or 6 hours. */
 export interface WidgetNewLiveSpan {
   /** Whether to hide incomplete cost data in the widget. */
@@ -826,19 +792,8 @@ export interface WidgetNewLiveSpan {
   /** Value of the time span. */
   value: number;
 }
-export const WidgetNewLiveSpan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hide_incomplete_cost_data: S.optional(S.Boolean),
-    type: WidgetNewLiveSpanType,
-    unit: WidgetLiveSpanUnit,
-    value: S.Number,
-  }),
-).annotate({ identifier: "WidgetNewLiveSpan" }) as any as S.Schema<WidgetNewLiveSpan>;
-
 /** Type "fixed" denotes a fixed span. */
 export type WidgetNewFixedSpanType = "fixed";
-export const WidgetNewFixedSpanType = S.String;
-
 /** Used for fixed span times, such as 'March 1 to March 7'. */
 export interface WidgetNewFixedSpan {
   /** Start time in milliseconds since epoch. */
@@ -849,31 +804,14 @@ export interface WidgetNewFixedSpan {
   to: number;
   type: WidgetNewFixedSpanType;
 }
-export const WidgetNewFixedSpan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.Number,
-    hide_incomplete_cost_data: S.optional(S.Boolean),
-    to: S.Number,
-    type: WidgetNewFixedSpanType,
-  }),
-).annotate({ identifier: "WidgetNewFixedSpan" }) as any as S.Schema<WidgetNewFixedSpan>;
-
 /** Time setting for the widget. */
 export type WidgetTime = WidgetLegacyLiveSpan | WidgetNewLiveSpan | WidgetNewFixedSpan;
-export const WidgetTime = S.Unknown as any as S.Schema<WidgetTime>;
-
 /** How to align the text on the widget. */
 export type WidgetTextAlign = "center" | "left" | "right";
-export const WidgetTextAlign = S.String;
-
 /** Type of the alert graph widget. */
 export type AlertGraphWidgetDefinitionType = "alert_graph";
-export const AlertGraphWidgetDefinitionType = S.String;
-
 /** Whether to display the Alert Graph as a timeseries or a top list. */
 export type WidgetVizType = "timeseries" | "toplist";
-export const WidgetVizType = S.String;
-
 /** Alert graphs are timeseries graphs showing the current status of any monitor defined on your system. */
 export interface AlertGraphWidgetDefinition {
   /** ID of the alert to use in the widget. */
@@ -889,25 +827,8 @@ export interface AlertGraphWidgetDefinition {
   type: AlertGraphWidgetDefinitionType;
   viz_type: WidgetVizType | (string & {});
 }
-export const AlertGraphWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_id: S.String,
-    description: S.optional(S.String),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: AlertGraphWidgetDefinitionType,
-    viz_type: WidgetVizType,
-  }),
-).annotate({
-  identifier: "AlertGraphWidgetDefinition",
-}) as any as S.Schema<AlertGraphWidgetDefinition>;
-
 /** Type of the alert value widget. */
 export type AlertValueWidgetDefinitionType = "alert_value";
-export const AlertValueWidgetDefinitionType = S.String;
-
 /** Alert values are query values showing the current value of the metric in any monitor defined on your system. */
 export interface AlertValueWidgetDefinition {
   /** ID of the alert to use in the widget. */
@@ -926,22 +847,6 @@ export interface AlertValueWidgetDefinition {
   /** Unit to display with the value. */
   unit?: string;
 }
-export const AlertValueWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_id: S.String,
-    description: S.optional(S.String),
-    precision: S.optional(S.Number),
-    text_align: S.optional(WidgetTextAlign),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: AlertValueWidgetDefinitionType,
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AlertValueWidgetDefinition",
-}) as any as S.Schema<AlertValueWidgetDefinition>;
-
 /** Custom links help you connect a data value to a URL, like a Datadog page or your AWS console. */
 export interface WidgetCustomLink {
   /** The flag for toggling context menu link visibility. */
@@ -953,21 +858,8 @@ export interface WidgetCustomLink {
   /** The label ID that refers to a context menu link. Can be `logs`, `hosts`, `traces`, `profiles`, `processes`, `containers`, or `rum`. */
   override_label?: string;
 }
-export const WidgetCustomLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_hidden: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    link: S.optional(S.String),
-    override_label: S.optional(S.String),
-  }),
-).annotate({ identifier: "WidgetCustomLink" }) as any as S.Schema<WidgetCustomLink>;
-
 /** List of custom links. */
 export type BarChartWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const BarChartWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<BarChartWidgetDefinitionCustomLinksList>;
-
 /** Define computation for a log query. */
 export interface LogsQueryCompute {
   /** The aggregation method. */
@@ -977,18 +869,8 @@ export interface LogsQueryCompute {
   /** Define a time interval in seconds. */
   interval?: number;
 }
-export const LogsQueryCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.String,
-    facet: S.optional(S.String),
-    interval: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LogsQueryCompute" }) as any as S.Schema<LogsQueryCompute>;
-
 /** Widget sorting methods. */
 export type WidgetSort = "asc" | "desc";
-export const WidgetSort = S.String;
-
 /** Define a sorting method. */
 export interface LogQueryDefinitionGroupBySort {
   /** The aggregation method. */
@@ -997,16 +879,6 @@ export interface LogQueryDefinitionGroupBySort {
   facet?: string;
   order: WidgetSort | (string & {});
 }
-export const LogQueryDefinitionGroupBySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.String,
-    facet: S.optional(S.String),
-    order: WidgetSort,
-  }),
-).annotate({
-  identifier: "LogQueryDefinitionGroupBySort",
-}) as any as S.Schema<LogQueryDefinitionGroupBySort>;
-
 /** Defined items in the group. */
 export interface LogQueryDefinitionGroupBy {
   /** Facet name. */
@@ -1015,39 +887,15 @@ export interface LogQueryDefinitionGroupBy {
   limit?: number;
   sort?: LogQueryDefinitionGroupBySort;
 }
-export const LogQueryDefinitionGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    sort: S.optional(LogQueryDefinitionGroupBySort),
-  }),
-).annotate({
-  identifier: "LogQueryDefinitionGroupBy",
-}) as any as S.Schema<LogQueryDefinitionGroupBy>;
-
 /** List of tag prefixes to group by in the case of a cluster check. */
 export type LogQueryDefinitionGroupByList = Array<LogQueryDefinitionGroupBy>;
-export const LogQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  LogQueryDefinitionGroupBy,
-) as any as S.Schema<LogQueryDefinitionGroupByList>;
-
 /** This field is mutually exclusive with `compute`. */
 export type LogQueryDefinitionMultiComputeList = Array<LogsQueryCompute>;
-export const LogQueryDefinitionMultiComputeList = /*@__PURE__*/ S.Array(
-  LogsQueryCompute,
-) as any as S.Schema<LogQueryDefinitionMultiComputeList>;
-
 /** The query being made on the logs. */
 export interface LogQueryDefinitionSearch {
   /** Search value to apply. */
   query: string;
 }
-export const LogQueryDefinitionSearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.String,
-  }),
-).annotate({ identifier: "LogQueryDefinitionSearch" }) as any as S.Schema<LogQueryDefinitionSearch>;
-
 /** The log query. */
 export interface LogQueryDefinition {
   compute?: LogsQueryCompute;
@@ -1059,20 +907,8 @@ export interface LogQueryDefinition {
   multi_compute?: LogQueryDefinitionMultiComputeList;
   search?: LogQueryDefinitionSearch;
 }
-export const LogQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: S.optional(LogsQueryCompute),
-    group_by: S.optional(LogQueryDefinitionGroupByList),
-    index: S.optional(S.String),
-    multi_compute: S.optional(LogQueryDefinitionMultiComputeList),
-    search: S.optional(LogQueryDefinitionSearch),
-  }),
-).annotate({ identifier: "LogQueryDefinition" }) as any as S.Schema<LogQueryDefinition>;
-
 /** Comparator to apply. */
 export type WidgetComparator = "=" | ">" | ">=" | "<" | "<=";
-export const WidgetComparator = S.String;
-
 /** Color palette to apply. */
 export type WidgetPalette =
   | "blue"
@@ -1094,8 +930,6 @@ export type WidgetPalette =
   | "black_on_light_yellow"
   | "black_on_light_green"
   | "black_on_light_red";
-export const WidgetPalette = S.String;
-
 /** Define a conditional format for the widget. */
 export interface WidgetConditionalFormat {
   comparator: WidgetComparator | (string & {});
@@ -1115,78 +949,31 @@ export interface WidgetConditionalFormat {
   /** Value for the comparator. */
   value: number;
 }
-export const WidgetConditionalFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comparator: WidgetComparator,
-    custom_bg_color: S.optional(S.String),
-    custom_fg_color: S.optional(S.String),
-    hide_value: S.optional(S.Boolean),
-    image_url: S.optional(S.String),
-    metric: S.optional(S.String),
-    palette: WidgetPalette,
-    timeframe: S.optional(S.String),
-    value: S.Number,
-  }),
-).annotate({ identifier: "WidgetConditionalFormat" }) as any as S.Schema<WidgetConditionalFormat>;
-
 /** List of conditional formats. */
 export type BarChartWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const BarChartWidgetRequestConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<BarChartWidgetRequestConditionalFormatsList>;
-
 /** Define a display mode for the table cell. */
 export type TableWidgetCellDisplayMode = "number" | "bar" | "trend";
-export const TableWidgetCellDisplayMode = S.String;
-
 /** Trend type for the cell display mode options. */
 export type WidgetFormulaCellDisplayModeOptionsTrendType = "area" | "line" | "bars";
-export const WidgetFormulaCellDisplayModeOptionsTrendType = S.String;
-
 /** Y scale for the cell display mode options. */
 export type WidgetFormulaCellDisplayModeOptionsYScale = "shared" | "independent";
-export const WidgetFormulaCellDisplayModeOptionsYScale = S.String;
-
 /** Cell display mode options for the widget formula. (only if `cell_display_mode` is set to `trend`). */
 export interface WidgetFormulaCellDisplayModeOptions {
   trend_type?: WidgetFormulaCellDisplayModeOptionsTrendType | (string & {});
   y_scale?: WidgetFormulaCellDisplayModeOptionsYScale | (string & {});
 }
-export const WidgetFormulaCellDisplayModeOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trend_type: S.optional(WidgetFormulaCellDisplayModeOptionsTrendType),
-    y_scale: S.optional(WidgetFormulaCellDisplayModeOptionsYScale),
-  }),
-).annotate({
-  identifier: "WidgetFormulaCellDisplayModeOptions",
-}) as any as S.Schema<WidgetFormulaCellDisplayModeOptions>;
-
 /** List of conditional formats. */
 export type WidgetFormulaConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const WidgetFormulaConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<WidgetFormulaConditionalFormatsList>;
-
 /** Direction of sort. */
 export type QuerySortOrder = "asc" | "desc";
-export const QuerySortOrder = S.String;
-
 /** Options for limiting results returned. */
 export interface WidgetFormulaLimit {
   /** Number of results to return. */
   count?: number;
   order?: QuerySortOrder | (string & {});
 }
-export const WidgetFormulaLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    order: S.optional(QuerySortOrder),
-  }),
-).annotate({ identifier: "WidgetFormulaLimit" }) as any as S.Schema<WidgetFormulaLimit>;
-
 /** The type of unit scale. */
 export type NumberFormatUnitScaleType = "canonical_unit";
-export const NumberFormatUnitScaleType = S.String;
-
 /** Canonical unit. */
 export interface NumberFormatUnitCanonical {
   /** The name of the unit per item. */
@@ -1195,62 +982,27 @@ export interface NumberFormatUnitCanonical {
   /** The name of the unit. */
   unit_name?: string;
 }
-export const NumberFormatUnitCanonical = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    per_unit_name: S.optional(S.String),
-    type: S.optional(NumberFormatUnitScaleType),
-    unit_name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NumberFormatUnitCanonical",
-}) as any as S.Schema<NumberFormatUnitCanonical>;
-
 /** The type of custom unit. */
 export type NumberFormatUnitCustomType = "custom_unit_label";
-export const NumberFormatUnitCustomType = S.String;
-
 /** Custom unit. */
 export interface NumberFormatUnitCustom {
   /** The label for the custom unit. */
   label?: string;
   type?: NumberFormatUnitCustomType | (string & {});
 }
-export const NumberFormatUnitCustom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.String),
-    type: S.optional(NumberFormatUnitCustomType),
-  }),
-).annotate({ identifier: "NumberFormatUnitCustom" }) as any as S.Schema<NumberFormatUnitCustom>;
-
 /** Number format unit. */
 export type NumberFormatUnit = NumberFormatUnitCanonical | NumberFormatUnitCustom;
-export const NumberFormatUnit = S.Unknown as any as S.Schema<NumberFormatUnit>;
-
 /** The definition of `NumberFormatUnitScale` object. */
 export interface NumberFormatUnitScale {
   type?: NumberFormatUnitScaleType | (string & {});
   /** The name of the unit. */
   unit_name?: string;
 }
-export const NumberFormatUnitScale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(NumberFormatUnitScaleType),
-    unit_name: S.optional(S.String),
-  }),
-).annotate({ identifier: "NumberFormatUnitScale" }) as any as S.Schema<NumberFormatUnitScale>;
-
 /** Number format options for the widget. */
 export interface WidgetNumberFormat {
   unit?: NumberFormatUnit;
   unit_scale?: NumberFormatUnitScale | null;
 }
-export const WidgetNumberFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(NumberFormatUnit),
-    unit_scale: S.optional(S.NullOr(NumberFormatUnitScale)),
-  }),
-).annotate({ identifier: "WidgetNumberFormat" }) as any as S.Schema<WidgetNumberFormat>;
-
 /** Styling options for widget formulas. */
 export interface WidgetFormulaStyle {
   /** The color palette used to display the formula. A guide to the available color palettes can be found at https://docs.datadoghq.com/dashboards/guide/widget_colors */
@@ -1258,13 +1010,6 @@ export interface WidgetFormulaStyle {
   /** Index specifying which color to use within the palette. */
   palette_index?: number;
 }
-export const WidgetFormulaStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    palette: S.optional(S.String),
-    palette_index: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WidgetFormulaStyle" }) as any as S.Schema<WidgetFormulaStyle>;
-
 /** Formula to be used in a widget query. */
 export interface WidgetFormula {
   /** Expression alias. */
@@ -1279,30 +1024,10 @@ export interface WidgetFormula {
   number_format?: WidgetNumberFormat;
   style?: WidgetFormulaStyle;
 }
-export const WidgetFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    cell_display_mode: S.optional(TableWidgetCellDisplayMode),
-    cell_display_mode_options: S.optional(WidgetFormulaCellDisplayModeOptions),
-    conditional_formats: S.optional(WidgetFormulaConditionalFormatsList),
-    formula: S.String,
-    limit: S.optional(WidgetFormulaLimit),
-    number_format: S.optional(WidgetNumberFormat),
-    style: S.optional(WidgetFormulaStyle),
-  }),
-).annotate({ identifier: "WidgetFormula" }) as any as S.Schema<WidgetFormula>;
-
 /** List of formulas that operate on queries. */
 export type BarChartWidgetRequestFormulasList = Array<WidgetFormula>;
-export const BarChartWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<BarChartWidgetRequestFormulasList>;
-
 /** List of processes. */
 export type ProcessQueryDefinitionFilterByList = Array<string>;
-export const ProcessQueryDefinitionFilterByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ProcessQueryDefinitionFilterByList>;
-
 /** The process query to use in the widget. */
 export interface ProcessQueryDefinition {
   /** List of processes. */
@@ -1314,15 +1039,6 @@ export interface ProcessQueryDefinition {
   /** Your chosen search term. */
   search_by?: string;
 }
-export const ProcessQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter_by: S.optional(ProcessQueryDefinitionFilterByList),
-    limit: S.optional(S.Number),
-    metric: S.String,
-    search_by: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProcessQueryDefinition" }) as any as S.Schema<ProcessQueryDefinition>;
-
 /** The aggregation methods available for metrics queries. */
 export type FormulaAndFunctionMetricAggregation =
   | "avg"
@@ -1333,20 +1049,14 @@ export type FormulaAndFunctionMetricAggregation =
   | "area"
   | "l2norm"
   | "percentile";
-export const FormulaAndFunctionMetricAggregation = S.String;
-
 /** The source organization UUID for cross organization queries. Feature in Private Beta. */
 export type CrossOrgUuids = Array<string>;
-export const CrossOrgUuids = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<CrossOrgUuids>;
+const CrossOrgUuids = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<CrossOrgUuids>;
 
 /** Data source for metrics queries. */
 export type FormulaAndFunctionMetricDataSource = "metrics";
-export const FormulaAndFunctionMetricDataSource = S.String;
-
 /** Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. */
 export type FormulaAndFunctionMetricSemanticMode = "combined" | "native";
-export const FormulaAndFunctionMetricSemanticMode = S.String;
-
 /** A formula and functions metrics query. */
 export interface FormulaAndFunctionMetricQueryDefinition {
   aggregator?: FormulaAndFunctionMetricAggregation | (string & {});
@@ -1358,19 +1068,6 @@ export interface FormulaAndFunctionMetricQueryDefinition {
   query: string;
   semantic_mode?: FormulaAndFunctionMetricSemanticMode | (string & {});
 }
-export const FormulaAndFunctionMetricQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(FormulaAndFunctionMetricAggregation),
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionMetricDataSource,
-    name: S.String,
-    query: S.String,
-    semantic_mode: S.optional(FormulaAndFunctionMetricSemanticMode),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionMetricQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionMetricQueryDefinition>;
-
 /** Aggregation methods for event platform queries. */
 export type FormulaAndFunctionEventAggregation =
   | "count"
@@ -1385,8 +1082,6 @@ export type FormulaAndFunctionEventAggregation =
   | "min"
   | "max"
   | "avg";
-export const FormulaAndFunctionEventAggregation = S.String;
-
 /** Compute options. */
 export interface FormulaAndFunctionEventQueryDefinitionCompute {
   aggregation: FormulaAndFunctionEventAggregation | (string & {});
@@ -1395,16 +1090,6 @@ export interface FormulaAndFunctionEventQueryDefinitionCompute {
   /** Measurable attribute to compute. */
   metric?: string;
 }
-export const FormulaAndFunctionEventQueryDefinitionCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: FormulaAndFunctionEventAggregation,
-    interval: S.optional(S.Number),
-    metric: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionEventQueryDefinitionCompute",
-}) as any as S.Schema<FormulaAndFunctionEventQueryDefinitionCompute>;
-
 /** Data source for event platform-based queries. */
 export type FormulaAndFunctionEventsDataSource =
   | "logs"
@@ -1422,8 +1107,6 @@ export type FormulaAndFunctionEventsDataSource =
   | "on_call_events"
   | "errors"
   | "llm_observability";
-export const FormulaAndFunctionEventsDataSource = S.String;
-
 /** Options for sorting group by results. */
 export interface FormulaAndFunctionEventQueryGroupBySort {
   aggregation: FormulaAndFunctionEventAggregation | (string & {});
@@ -1431,16 +1114,6 @@ export interface FormulaAndFunctionEventQueryGroupBySort {
   metric?: string;
   order?: QuerySortOrder | (string & {});
 }
-export const FormulaAndFunctionEventQueryGroupBySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: FormulaAndFunctionEventAggregation,
-    metric: S.optional(S.String),
-    order: S.optional(QuerySortOrder),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionEventQueryGroupBySort",
-}) as any as S.Schema<FormulaAndFunctionEventQueryGroupBySort>;
-
 /** List of objects used to group by. */
 export interface FormulaAndFunctionEventQueryGroupBy {
   /** Event facet. */
@@ -1449,27 +1122,10 @@ export interface FormulaAndFunctionEventQueryGroupBy {
   limit?: number;
   sort?: FormulaAndFunctionEventQueryGroupBySort;
 }
-export const FormulaAndFunctionEventQueryGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    sort: S.optional(FormulaAndFunctionEventQueryGroupBySort),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionEventQueryGroupBy",
-}) as any as S.Schema<FormulaAndFunctionEventQueryGroupBy>;
-
 /** List of objects used to group by. */
 export type FormulaAndFunctionEventQueryGroupByList = Array<FormulaAndFunctionEventQueryGroupBy>;
-export const FormulaAndFunctionEventQueryGroupByList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionEventQueryGroupBy,
-) as any as S.Schema<FormulaAndFunctionEventQueryGroupByList>;
-
 /** List of event facets to group by. */
 export type FormulaAndFunctionEventQueryGroupByFieldsFieldsList = Array<string>;
-export const FormulaAndFunctionEventQueryGroupByFieldsFieldsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionEventQueryGroupByFieldsFieldsList>;
-
 /** Flat group by configuration using multiple event facet fields. */
 export interface FormulaAndFunctionEventQueryGroupByFields {
   /** List of event facets to group by. */
@@ -1478,41 +1134,17 @@ export interface FormulaAndFunctionEventQueryGroupByFields {
   limit?: number;
   sort?: FormulaAndFunctionEventQueryGroupBySort;
 }
-export const FormulaAndFunctionEventQueryGroupByFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: FormulaAndFunctionEventQueryGroupByFieldsFieldsList,
-    limit: S.optional(S.Number),
-    sort: S.optional(FormulaAndFunctionEventQueryGroupBySort),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionEventQueryGroupByFields",
-}) as any as S.Schema<FormulaAndFunctionEventQueryGroupByFields>;
-
 /** Group by configuration for a formula and functions events query. Accepts either a list of facet objects or a flat object that specifies a list of facet fields. */
 export type FormulaAndFunctionEventQueryGroupByConfig =
   | FormulaAndFunctionEventQueryGroupByList
   | FormulaAndFunctionEventQueryGroupByFields;
-export const FormulaAndFunctionEventQueryGroupByConfig =
-  S.Unknown as any as S.Schema<FormulaAndFunctionEventQueryGroupByConfig>;
-
 /** An array of index names to query in the stream. Omit or use `[]` to query all indexes at once. */
 export type FormulaAndFunctionEventQueryDefinitionIndexesList = Array<string>;
-export const FormulaAndFunctionEventQueryDefinitionIndexesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionEventQueryDefinitionIndexesList>;
-
 /** Search options. */
 export interface FormulaAndFunctionEventQueryDefinitionSearch {
   /** Events search string. */
   query: string;
 }
-export const FormulaAndFunctionEventQueryDefinitionSearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.String,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionEventQueryDefinitionSearch",
-}) as any as S.Schema<FormulaAndFunctionEventQueryDefinitionSearch>;
-
 /** A formula and functions events query. */
 export interface FormulaAndFunctionEventQueryDefinition {
   compute: FormulaAndFunctionEventQueryDefinitionCompute;
@@ -1527,30 +1159,10 @@ export interface FormulaAndFunctionEventQueryDefinition {
   /** Option for storage location. Feature in Private Beta. */
   storage?: string;
 }
-export const FormulaAndFunctionEventQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: FormulaAndFunctionEventQueryDefinitionCompute,
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionEventsDataSource,
-    group_by: S.optional(FormulaAndFunctionEventQueryGroupByConfig),
-    indexes: S.optional(FormulaAndFunctionEventQueryDefinitionIndexesList),
-    name: S.String,
-    search: S.optional(FormulaAndFunctionEventQueryDefinitionSearch),
-    storage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionEventQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionEventQueryDefinition>;
-
 /** Data sources that rely on the process backend. */
 export type FormulaAndFunctionProcessQueryDataSource = "process" | "container";
-export const FormulaAndFunctionProcessQueryDataSource = S.String;
-
 /** An array of tags to filter by. */
 export type FormulaAndFunctionProcessQueryDefinitionTagFiltersList = Array<string>;
-export const FormulaAndFunctionProcessQueryDefinitionTagFiltersList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionProcessQueryDefinitionTagFiltersList>;
-
 /** Process query using formulas and functions. */
 export interface FormulaAndFunctionProcessQueryDefinition {
   aggregator?: FormulaAndFunctionMetricAggregation | (string & {});
@@ -1570,27 +1182,8 @@ export interface FormulaAndFunctionProcessQueryDefinition {
   /** Text to use as filter. */
   text_filter?: string;
 }
-export const FormulaAndFunctionProcessQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(FormulaAndFunctionMetricAggregation),
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionProcessQueryDataSource,
-    is_normalized_cpu: S.optional(S.Boolean),
-    limit: S.optional(S.Number),
-    metric: S.String,
-    name: S.String,
-    sort: S.optional(QuerySortOrder),
-    tag_filters: S.optional(FormulaAndFunctionProcessQueryDefinitionTagFiltersList),
-    text_filter: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionProcessQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionProcessQueryDefinition>;
-
 /** Data source for APM dependency stats queries. */
 export type FormulaAndFunctionApmDependencyStatsDataSource = "apm_dependency_stats";
-export const FormulaAndFunctionApmDependencyStatsDataSource = S.String;
-
 /** APM statistic. */
 export type FormulaAndFunctionApmDependencyStatName =
   | "avg_duration"
@@ -1600,8 +1193,6 @@ export type FormulaAndFunctionApmDependencyStatName =
   | "pct_exec_time"
   | "pct_of_traces"
   | "total_traces_count";
-export const FormulaAndFunctionApmDependencyStatName = S.String;
-
 /** A formula and functions APM dependency stats query. */
 export interface FormulaAndFunctionApmDependencyStatsQueryDefinition {
   cross_org_uuids?: CrossOrgUuids;
@@ -1624,33 +1215,10 @@ export interface FormulaAndFunctionApmDependencyStatsQueryDefinition {
   service: string;
   stat: FormulaAndFunctionApmDependencyStatName | (string & {});
 }
-export const FormulaAndFunctionApmDependencyStatsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionApmDependencyStatsDataSource,
-    env: S.String,
-    is_upstream: S.optional(S.Boolean),
-    name: S.String,
-    operation_name: S.String,
-    primary_tag_name: S.optional(S.String),
-    primary_tag_value: S.optional(S.String),
-    resource_name: S.String,
-    service: S.String,
-    stat: FormulaAndFunctionApmDependencyStatName,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionApmDependencyStatsQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionApmDependencyStatsQueryDefinition>;
-
 /** Data source for APM resource stats queries. */
 export type FormulaAndFunctionApmResourceStatsDataSource = "apm_resource_stats";
-export const FormulaAndFunctionApmResourceStatsDataSource = S.String;
-
 /** Array of fields to group results by. */
 export type FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList = Array<string>;
-export const FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList>;
-
 /** APM resource stat name. */
 export type FormulaAndFunctionApmResourceStatName =
   | "errors"
@@ -1664,8 +1232,6 @@ export type FormulaAndFunctionApmResourceStatName =
   | "latency_p90"
   | "latency_p95"
   | "latency_p99";
-export const FormulaAndFunctionApmResourceStatName = S.String;
-
 /** APM resource stats query using formulas and functions. Deprecated - Use `apm_metrics` query type instead. */
 export interface FormulaAndFunctionApmResourceStatsQueryDefinition {
   cross_org_uuids?: CrossOrgUuids;
@@ -1688,38 +1254,12 @@ export interface FormulaAndFunctionApmResourceStatsQueryDefinition {
   service: string;
   stat: FormulaAndFunctionApmResourceStatName | (string & {});
 }
-export const FormulaAndFunctionApmResourceStatsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionApmResourceStatsDataSource,
-    env: S.String,
-    group_by: S.optional(FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList),
-    name: S.String,
-    operation_name: S.optional(S.String),
-    primary_tag_name: S.optional(S.String),
-    primary_tag_value: S.optional(S.String),
-    resource_name: S.optional(S.String),
-    service: S.String,
-    stat: FormulaAndFunctionApmResourceStatName,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionApmResourceStatsQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionApmResourceStatsQueryDefinition>;
-
 /** Data source for APM metrics queries. */
 export type FormulaAndFunctionApmMetricsDataSource = "apm_metrics";
-export const FormulaAndFunctionApmMetricsDataSource = S.String;
-
 /** Optional fields to group the query results by. */
 export type FormulaAndFunctionApmMetricsQueryDefinitionGroupByList = Array<string>;
-export const FormulaAndFunctionApmMetricsQueryDefinitionGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinitionGroupByList>;
-
 /** Tags to query for a specific downstream entity (peer.service, peer.db_instance, peer.s3, peer.s3.bucket, etc.). */
 export type FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList = Array<string>;
-export const FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList>;
-
 /** Describes the relationship between the span, its parents, and its children in a trace. */
 export type FormulaAndFunctionApmMetricsSpanKind =
   | "consumer"
@@ -1727,8 +1267,6 @@ export type FormulaAndFunctionApmMetricsSpanKind =
   | "client"
   | "producer"
   | "internal";
-export const FormulaAndFunctionApmMetricsSpanKind = S.String;
-
 /** APM metric stat name. */
 export type FormulaAndFunctionApmMetricStatName =
   | "errors"
@@ -1747,8 +1285,6 @@ export type FormulaAndFunctionApmMetricStatName =
   | "hits_per_second"
   | "total_time"
   | "apdex";
-export const FormulaAndFunctionApmMetricStatName = S.String;
-
 /** A formula and functions APM metrics query. */
 export interface FormulaAndFunctionApmMetricsQueryDefinition {
   data_source: FormulaAndFunctionApmMetricsDataSource;
@@ -1773,33 +1309,10 @@ export interface FormulaAndFunctionApmMetricsQueryDefinition {
   span_kind?: FormulaAndFunctionApmMetricsSpanKind | (string & {});
   stat: FormulaAndFunctionApmMetricStatName | (string & {});
 }
-export const FormulaAndFunctionApmMetricsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: FormulaAndFunctionApmMetricsDataSource,
-    group_by: S.optional(FormulaAndFunctionApmMetricsQueryDefinitionGroupByList),
-    name: S.String,
-    operation_mode: S.optional(S.String),
-    operation_name: S.optional(S.String),
-    peer_tags: S.optional(FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList),
-    query_filter: S.optional(S.String),
-    resource_hash: S.optional(S.String),
-    resource_name: S.optional(S.String),
-    service: S.optional(S.String),
-    span_kind: S.optional(FormulaAndFunctionApmMetricsSpanKind),
-    stat: FormulaAndFunctionApmMetricStatName,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionApmMetricsQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinition>;
-
 /** Data source for SLO measures queries. */
 export type FormulaAndFunctionSLODataSource = "slo";
-export const FormulaAndFunctionSLODataSource = S.String;
-
 /** Group mode to query measures. */
 export type FormulaAndFunctionSLOGroupMode = "overall" | "components";
-export const FormulaAndFunctionSLOGroupMode = S.String;
-
 /** SLO measures queries. */
 export type FormulaAndFunctionSLOMeasure =
   | "good_events"
@@ -1810,12 +1323,8 @@ export type FormulaAndFunctionSLOMeasure =
   | "error_budget_remaining"
   | "burn_rate"
   | "error_budget_burndown";
-export const FormulaAndFunctionSLOMeasure = S.String;
-
 /** Name of the query for use in formulas. */
 export type FormulaAndFunctionSLOQueryType = "metric" | "monitor" | "time_slice";
-export const FormulaAndFunctionSLOQueryType = S.String;
-
 /** A formula and functions metrics query. */
 export interface FormulaAndFunctionSLOQueryDefinition {
   /** Additional filters applied to the SLO query. */
@@ -1830,29 +1339,10 @@ export interface FormulaAndFunctionSLOQueryDefinition {
   slo_id: string;
   slo_query_type?: FormulaAndFunctionSLOQueryType | (string & {});
 }
-export const FormulaAndFunctionSLOQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additional_query_filters: S.optional(S.String),
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionSLODataSource,
-    group_mode: S.optional(FormulaAndFunctionSLOGroupMode),
-    measure: FormulaAndFunctionSLOMeasure,
-    name: S.optional(S.String),
-    slo_id: S.String,
-    slo_query_type: S.optional(FormulaAndFunctionSLOQueryType),
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionSLOQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionSLOQueryDefinition>;
-
 /** Aggregator used for the request. */
 export type WidgetAggregator = "avg" | "last" | "max" | "min" | "sum" | "percentile";
-export const WidgetAggregator = S.String;
-
 /** Data source for Cloud Cost queries. */
 export type FormulaAndFunctionCloudCostDataSource = "cloud_cost";
-export const FormulaAndFunctionCloudCostDataSource = S.String;
-
 /** A formula and functions Cloud Cost query. */
 export interface FormulaAndFunctionCloudCostQueryDefinition {
   aggregator?: WidgetAggregator | (string & {});
@@ -1863,18 +1353,6 @@ export interface FormulaAndFunctionCloudCostQueryDefinition {
   /** Query for Cloud Cost data. */
   query: string;
 }
-export const FormulaAndFunctionCloudCostQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(WidgetAggregator),
-    cross_org_uuids: S.optional(CrossOrgUuids),
-    data_source: FormulaAndFunctionCloudCostDataSource,
-    name: S.String,
-    query: S.String,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionCloudCostQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionCloudCostQueryDefinition>;
-
 /** Product Analytics audience account subquery. */
 export interface ProductAnalyticsAudienceAccountSubquery {
   /** The name of the account subquery. */
@@ -1882,21 +1360,8 @@ export interface ProductAnalyticsAudienceAccountSubquery {
   /** The query string for the account subquery. */
   query?: string;
 }
-export const ProductAnalyticsAudienceAccountSubquery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    query: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsAudienceAccountSubquery",
-}) as any as S.Schema<ProductAnalyticsAudienceAccountSubquery>;
-
 export type ProductAnalyticsAudienceFiltersAccountsList =
   Array<ProductAnalyticsAudienceAccountSubquery>;
-export const ProductAnalyticsAudienceFiltersAccountsList = /*@__PURE__*/ S.Array(
-  ProductAnalyticsAudienceAccountSubquery,
-) as any as S.Schema<ProductAnalyticsAudienceFiltersAccountsList>;
-
 /** Product Analytics audience segment subquery. */
 export interface ProductAnalyticsAudienceSegmentSubquery {
   /** The name of the segment subquery. */
@@ -1904,21 +1369,8 @@ export interface ProductAnalyticsAudienceSegmentSubquery {
   /** The unique identifier of the segment. */
   segment_id?: string;
 }
-export const ProductAnalyticsAudienceSegmentSubquery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    segment_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsAudienceSegmentSubquery",
-}) as any as S.Schema<ProductAnalyticsAudienceSegmentSubquery>;
-
 export type ProductAnalyticsAudienceFiltersSegmentsList =
   Array<ProductAnalyticsAudienceSegmentSubquery>;
-export const ProductAnalyticsAudienceFiltersSegmentsList = /*@__PURE__*/ S.Array(
-  ProductAnalyticsAudienceSegmentSubquery,
-) as any as S.Schema<ProductAnalyticsAudienceFiltersSegmentsList>;
-
 /** Product Analytics audience user subquery. */
 export interface ProductAnalyticsAudienceUserSubquery {
   /** The name of the user subquery. */
@@ -1926,13 +1378,7 @@ export interface ProductAnalyticsAudienceUserSubquery {
   /** The query string for the user subquery. */
   query?: string;
 }
-export const ProductAnalyticsAudienceUserSubquery =
-  ProductAnalyticsAudienceAccountSubquery as any as S.Schema<ProductAnalyticsAudienceUserSubquery>;
-
 export type ProductAnalyticsAudienceFiltersUsersList = Array<ProductAnalyticsAudienceUserSubquery>;
-export const ProductAnalyticsAudienceFiltersUsersList =
-  ProductAnalyticsAudienceFiltersAccountsList as any as S.Schema<ProductAnalyticsAudienceFiltersUsersList>;
-
 /** Product Analytics/RUM audience filters. */
 export interface ProductAnalyticsAudienceFilters {
   accounts?: ProductAnalyticsAudienceFiltersAccountsList;
@@ -1941,17 +1387,6 @@ export interface ProductAnalyticsAudienceFilters {
   segments?: ProductAnalyticsAudienceFiltersSegmentsList;
   users?: ProductAnalyticsAudienceFiltersUsersList;
 }
-export const ProductAnalyticsAudienceFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(ProductAnalyticsAudienceFiltersAccountsList),
-    filter_condition: S.optional(S.String),
-    segments: S.optional(ProductAnalyticsAudienceFiltersSegmentsList),
-    users: S.optional(ProductAnalyticsAudienceFiltersUsersList),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsAudienceFilters",
-}) as any as S.Schema<ProductAnalyticsAudienceFilters>;
-
 /** Type of calendar interval. */
 export type CalendarIntervalType =
   | "day"
@@ -1961,8 +1396,6 @@ export type CalendarIntervalType =
   | "quarter"
   | "minute"
   | "hour";
-export const CalendarIntervalType = S.String;
-
 /** Calendar interval definition. */
 export interface CalendarInterval {
   /** Alignment of the interval. Valid values depend on the interval type. For `day`, use hours (for example, `1am`, `2pm`, or `14`). For `week`, use day names (for example, `monday`). For `month`, use day-of-month ordinals (for example, `1st`, `15th`). For `year` or `quarter`, use month names (for example, `january`). */
@@ -1973,15 +1406,6 @@ export interface CalendarInterval {
   timezone?: string;
   type: CalendarIntervalType | (string & {});
 }
-export const CalendarInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alignment: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    timezone: S.optional(S.String),
-    type: CalendarIntervalType,
-  }),
-).annotate({ identifier: "CalendarInterval" }) as any as S.Schema<CalendarInterval>;
-
 /** Compute configuration for Product Analytics Extended queries. */
 export interface ProductAnalyticsExtendedCompute {
   aggregation: FormulaAndFunctionEventAggregation | (string & {});
@@ -1994,22 +1418,8 @@ export interface ProductAnalyticsExtendedCompute {
   /** Calendar-aligned time bucket for time series queries (for example, day, week, or month boundaries). Mutually exclusive with `interval`. */
   rollup?: CalendarInterval;
 }
-export const ProductAnalyticsExtendedCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: FormulaAndFunctionEventAggregation,
-    interval: S.optional(S.Number),
-    metric: S.optional(S.String),
-    name: S.optional(S.String),
-    rollup: S.optional(CalendarInterval),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsExtendedCompute",
-}) as any as S.Schema<ProductAnalyticsExtendedCompute>;
-
 /** Data source for Product Analytics Extended queries. */
 export type FormulaAndFunctionProductAnalyticsExtendedDataSource = "product_analytics_extended";
-export const FormulaAndFunctionProductAnalyticsExtendedDataSource = S.String;
-
 /** Group by configuration for Product Analytics Extended queries. */
 export interface ProductAnalyticsExtendedGroupBy {
   /** Facet name to group by. */
@@ -2020,64 +1430,27 @@ export interface ProductAnalyticsExtendedGroupBy {
   should_exclude_missing?: boolean;
   sort?: FormulaAndFunctionEventQueryGroupBySort;
 }
-export const ProductAnalyticsExtendedGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    should_exclude_missing: S.optional(S.Boolean),
-    sort: S.optional(FormulaAndFunctionEventQueryGroupBySort),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsExtendedGroupBy",
-}) as any as S.Schema<ProductAnalyticsExtendedGroupBy>;
-
 /** Group by configuration. */
 export type FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionGroupByList =
   Array<ProductAnalyticsExtendedGroupBy>;
-export const FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionGroupByList =
-  /*@__PURE__*/ S.Array(
-    ProductAnalyticsExtendedGroupBy,
-  ) as any as S.Schema<FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionGroupByList>;
-
 /** Use `"*"` to query all indexes. */
 export type FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesItems = "*";
-export const FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesItems = S.String;
-
 /** Event indexes to query. */
 export type FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesList = Array<
   FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesItems | (string & {})
 >;
-export const FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesList =
-  /*@__PURE__*/ S.Array(
-    FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesItems,
-  ) as any as S.Schema<FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesList>;
-
 /** Data source for Product Analytics event queries. */
 export type ProductAnalyticsEventDataSource = "product_analytics";
-export const ProductAnalyticsEventDataSource = S.String;
-
 /** Search configuration for Product Analytics event query. */
 export interface ProductAnalyticsEventQuerySearch {
   /** RUM event search query used to filter views or actions. */
   query: string;
 }
-export const ProductAnalyticsEventQuerySearch =
-  FormulaAndFunctionEventQueryDefinitionSearch as any as S.Schema<ProductAnalyticsEventQuerySearch>;
-
 /** Product Analytics event query. */
 export interface ProductAnalyticsEventQuery {
   data_source: ProductAnalyticsEventDataSource | (string & {});
   search: ProductAnalyticsEventQuerySearch;
 }
-export const ProductAnalyticsEventQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: ProductAnalyticsEventDataSource,
-    search: ProductAnalyticsEventQuerySearch,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsEventQuery",
-}) as any as S.Schema<ProductAnalyticsEventQuery>;
-
 /** A formula and functions Product Analytics Extended query for advanced analytics features. */
 export interface FormulaAndFunctionProductAnalyticsExtendedQueryDefinition {
   audience_filters?: ProductAnalyticsAudienceFilters;
@@ -2091,28 +1464,11 @@ export interface FormulaAndFunctionProductAnalyticsExtendedQueryDefinition {
   name: string;
   query: ProductAnalyticsEventQuery;
 }
-export const FormulaAndFunctionProductAnalyticsExtendedQueryDefinition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      audience_filters: S.optional(ProductAnalyticsAudienceFilters),
-      compute: ProductAnalyticsExtendedCompute,
-      data_source: FormulaAndFunctionProductAnalyticsExtendedDataSource,
-      group_by: S.optional(FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionGroupByList),
-      indexes: S.optional(FormulaAndFunctionProductAnalyticsExtendedQueryDefinitionIndexesList),
-      name: S.String,
-      query: ProductAnalyticsEventQuery,
-    }),
-).annotate({
-  identifier: "FormulaAndFunctionProductAnalyticsExtendedQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionProductAnalyticsExtendedQueryDefinition>;
-
 /** Metric for User Journey formula compute. `__dd.conversion` and `__dd.conversion_rate` accept `count` and `cardinality` as aggregations. `__dd.time_to_convert` accepts `avg`, `median`, `pc75`, `pc95`, `pc98`, `pc99`, `min`, and `max`. */
 export type UserJourneyFormulaComputeMetric =
   | "__dd.conversion"
   | "__dd.conversion_rate"
   | "__dd.time_to_convert";
-export const UserJourneyFormulaComputeMetric = S.String;
-
 /** Target for user journey search. */
 export interface UserJourneySearchTarget {
   /** End value. */
@@ -2124,15 +1480,6 @@ export interface UserJourneySearchTarget {
   /** Target value. */
   value?: string;
 }
-export const UserJourneySearchTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.optional(S.String),
-    start: S.optional(S.String),
-    type: S.String,
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "UserJourneySearchTarget" }) as any as S.Schema<UserJourneySearchTarget>;
-
 /** Compute configuration for User Journey formula queries. */
 export interface UserJourneyFormulaCompute {
   aggregation: FormulaAndFunctionEventAggregation | (string & {});
@@ -2141,21 +1488,8 @@ export interface UserJourneyFormulaCompute {
   metric?: UserJourneyFormulaComputeMetric | (string & {});
   target?: UserJourneySearchTarget;
 }
-export const UserJourneyFormulaCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: FormulaAndFunctionEventAggregation,
-    interval: S.optional(S.Number),
-    metric: S.optional(UserJourneyFormulaComputeMetric),
-    target: S.optional(UserJourneySearchTarget),
-  }),
-).annotate({
-  identifier: "UserJourneyFormulaCompute",
-}) as any as S.Schema<UserJourneyFormulaCompute>;
-
 /** Data source for user journey funnel queries. */
 export type ProductAnalyticsFunnelDataSource = "product_analytics_journey";
-export const ProductAnalyticsFunnelDataSource = S.String;
-
 /** Group by configuration for User Journey formula queries. */
 export interface UserJourneyFormulaGroupBy {
   /** Facet name to group by. */
@@ -2167,25 +1501,9 @@ export interface UserJourneyFormulaGroupBy {
   sort?: FormulaAndFunctionEventQueryGroupBySort;
   target?: UserJourneySearchTarget;
 }
-export const UserJourneyFormulaGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    should_exclude_missing: S.optional(S.Boolean),
-    sort: S.optional(FormulaAndFunctionEventQueryGroupBySort),
-    target: S.optional(UserJourneySearchTarget),
-  }),
-).annotate({
-  identifier: "UserJourneyFormulaGroupBy",
-}) as any as S.Schema<UserJourneyFormulaGroupBy>;
-
 /** Group by configuration. */
 export type FormulaAndFunctionUserJourneyQueryDefinitionGroupByList =
   Array<UserJourneyFormulaGroupBy>;
-export const FormulaAndFunctionUserJourneyQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  UserJourneyFormulaGroupBy,
-) as any as S.Schema<FormulaAndFunctionUserJourneyQueryDefinitionGroupByList>;
-
 /** Graph filter for user journey search. */
 export interface UserJourneySearchGraphFilter {
   /** Filter name. */
@@ -2196,23 +1514,8 @@ export interface UserJourneySearchGraphFilter {
   /** Filter value. */
   value?: number;
 }
-export const UserJourneySearchGraphFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    operator: S.optional(S.String),
-    target: S.optional(UserJourneySearchTarget),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UserJourneySearchGraphFilter",
-}) as any as S.Schema<UserJourneySearchGraphFilter>;
-
 /** Graph filters. */
 export type UserJourneySearchFiltersGraphFiltersList = Array<UserJourneySearchGraphFilter>;
-export const UserJourneySearchFiltersGraphFiltersList = /*@__PURE__*/ S.Array(
-  UserJourneySearchGraphFilter,
-) as any as S.Schema<UserJourneySearchFiltersGraphFiltersList>;
-
 /** Filters for user journey search. */
 export interface UserJourneySearchFilters {
   audience_filters?: ProductAnalyticsAudienceFilters;
@@ -2221,19 +1524,8 @@ export interface UserJourneySearchFilters {
   /** String filter. */
   string_filter?: string;
 }
-export const UserJourneySearchFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audience_filters: S.optional(ProductAnalyticsAudienceFilters),
-    graph_filters: S.optional(UserJourneySearchFiltersGraphFiltersList),
-    string_filter: S.optional(S.String),
-  }),
-).annotate({ identifier: "UserJourneySearchFilters" }) as any as S.Schema<UserJourneySearchFilters>;
-
 /** Secondary join keys. */
 export type UserJourneyJoinKeysSecondaryList = Array<string>;
-export const UserJourneyJoinKeysSecondaryList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UserJourneyJoinKeysSecondaryList>;
-
 /** Join keys for user journey queries. */
 export interface UserJourneyJoinKeys {
   /** Primary join key. */
@@ -2241,27 +1533,12 @@ export interface UserJourneyJoinKeys {
   /** Secondary join keys. */
   secondary?: UserJourneyJoinKeysSecondaryList;
 }
-export const UserJourneyJoinKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primary: S.String,
-    secondary: S.optional(UserJourneyJoinKeysSecondaryList),
-  }),
-).annotate({ identifier: "UserJourneyJoinKeys" }) as any as S.Schema<UserJourneyJoinKeys>;
-
 /** Node objects mapping. */
 export type UserJourneySearchNodeObjectsMap = {
   [key: string]: ProductAnalyticsEventQuery | undefined;
 };
-export const UserJourneySearchNodeObjectsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProductAnalyticsEventQuery,
-) as any as S.Schema<UserJourneySearchNodeObjectsMap>;
-
 /** Step aliases mapping. */
 export type UserJourneySearchStepAliasesMap = { [key: string]: string | undefined };
-export const UserJourneySearchStepAliasesMap =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<UserJourneySearchStepAliasesMap>;
-
 /** User journey search configuration. */
 export interface UserJourneySearch {
   /** Expression string. */
@@ -2273,16 +1550,6 @@ export interface UserJourneySearch {
   /** Step aliases mapping. */
   step_aliases?: UserJourneySearchStepAliasesMap;
 }
-export const UserJourneySearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-    filters: S.optional(UserJourneySearchFilters),
-    join_keys: S.optional(UserJourneyJoinKeys),
-    node_objects: UserJourneySearchNodeObjectsMap,
-    step_aliases: S.optional(UserJourneySearchStepAliasesMap),
-  }),
-).annotate({ identifier: "UserJourneySearch" }) as any as S.Schema<UserJourneySearch>;
-
 /** A formula and functions User Journey query for defining funnel, timeseries, and scalar visualizations over journey data. */
 export interface FormulaAndFunctionUserJourneyQueryDefinition {
   compute: UserJourneyFormulaCompute;
@@ -2293,18 +1560,6 @@ export interface FormulaAndFunctionUserJourneyQueryDefinition {
   name: string;
   search: UserJourneySearch;
 }
-export const FormulaAndFunctionUserJourneyQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: UserJourneyFormulaCompute,
-    data_source: ProductAnalyticsFunnelDataSource,
-    group_by: S.optional(FormulaAndFunctionUserJourneyQueryDefinitionGroupByList),
-    name: S.String,
-    search: UserJourneySearch,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionUserJourneyQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionUserJourneyQueryDefinition>;
-
 /** Standard aggregation types for events-based queries. */
 export type EventsAggregationValue =
   | "avg"
@@ -2318,46 +1573,23 @@ export type EventsAggregationValue =
   | "min"
   | "most_frequent"
   | "sum";
-export const EventsAggregationValue = S.String;
-
 /** The type of aggregation that can be performed on events-based queries. */
 export type EventsAggregation = EventsAggregationValue | string;
-export const EventsAggregation = S.Unknown as any as S.Schema<EventsAggregation>;
-
 /** Metric for retention compute. */
 export type RetentionComputeMetric = "__dd.retention" | "__dd.retention_rate";
-export const RetentionComputeMetric = S.String;
-
 /** Compute configuration for retention queries. */
 export interface RetentionCompute {
   aggregation: EventsAggregation;
   metric: RetentionComputeMetric | (string & {});
 }
-export const RetentionCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: EventsAggregation,
-    metric: RetentionComputeMetric,
-  }),
-).annotate({ identifier: "RetentionCompute" }) as any as S.Schema<RetentionCompute>;
-
 /** Data source for retention queries. */
 export type RetentionDataSource = "product_analytics_retention";
-export const RetentionDataSource = S.String;
-
 /** Sort configuration for retention group by. */
 export interface RetentionGroupBySort {
   order?: WidgetSort | (string & {});
 }
-export const RetentionGroupBySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    order: S.optional(WidgetSort),
-  }),
-).annotate({ identifier: "RetentionGroupBySort" }) as any as S.Schema<RetentionGroupBySort>;
-
 /** Target for retention group by. */
 export type RetentionGroupByTarget = "cohort" | "return_period";
-export const RetentionGroupByTarget = S.String;
-
 /** Group by configuration for retention queries. */
 export interface RetentionGroupBy {
   /** Facet to group by. */
@@ -2371,82 +1603,34 @@ export interface RetentionGroupBy {
   source?: string;
   target: RetentionGroupByTarget | (string & {});
 }
-export const RetentionGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    should_exclude_missing: S.optional(S.Boolean),
-    sort: S.optional(RetentionGroupBySort),
-    source: S.optional(S.String),
-    target: RetentionGroupByTarget,
-  }),
-).annotate({ identifier: "RetentionGroupBy" }) as any as S.Schema<RetentionGroupBy>;
-
 /** Group by configuration. */
 export type FormulaAndFunctionRetentionQueryDefinitionGroupByList = Array<RetentionGroupBy>;
-export const FormulaAndFunctionRetentionQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  RetentionGroupBy,
-) as any as S.Schema<FormulaAndFunctionRetentionQueryDefinitionGroupByList>;
-
 /** Type of time interval for cohort criteria. */
 export type RetentionCohortCriteriaTimeIntervalType = "calendar";
-export const RetentionCohortCriteriaTimeIntervalType = S.String;
-
 /** Time interval for cohort criteria. */
 export interface RetentionCohortCriteriaTimeInterval {
   type: RetentionCohortCriteriaTimeIntervalType | (string & {});
   value: CalendarInterval;
 }
-export const RetentionCohortCriteriaTimeInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RetentionCohortCriteriaTimeIntervalType,
-    value: CalendarInterval,
-  }),
-).annotate({
-  identifier: "RetentionCohortCriteriaTimeInterval",
-}) as any as S.Schema<RetentionCohortCriteriaTimeInterval>;
-
 /** Cohort criteria for retention queries. */
 export interface RetentionCohortCriteria {
   base_query: ProductAnalyticsEventQuery;
   time_interval: RetentionCohortCriteriaTimeInterval;
 }
-export const RetentionCohortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    base_query: ProductAnalyticsEventQuery,
-    time_interval: RetentionCohortCriteriaTimeInterval,
-  }),
-).annotate({ identifier: "RetentionCohortCriteria" }) as any as S.Schema<RetentionCohortCriteria>;
-
 /** Filters for retention queries. */
 export interface RetentionFilters {
   audience_filters?: ProductAnalyticsAudienceFilters;
   /** String filter. */
   string_filter?: string;
 }
-export const RetentionFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audience_filters: S.optional(ProductAnalyticsAudienceFilters),
-    string_filter: S.optional(S.String),
-  }),
-).annotate({ identifier: "RetentionFilters" }) as any as S.Schema<RetentionFilters>;
-
 /** Entity to track for retention. */
 export type RetentionEntity = "@usr.id" | "@account.id";
-export const RetentionEntity = S.String;
-
 /** Condition for counting user return. */
 export type RetentionReturnCondition = "conversion_on" | "conversion_on_or_after";
-export const RetentionReturnCondition = S.String;
-
 /** Type of time interval for return criteria. */
 export type RetentionReturnCriteriaTimeIntervalType = "fixed";
-export const RetentionReturnCriteriaTimeIntervalType = S.String;
-
 /** Unit of time for retention return criteria interval. */
 export type RetentionReturnCriteriaTimeIntervalUnit = "day" | "week" | "month";
-export const RetentionReturnCriteriaTimeIntervalUnit = S.String;
-
 /** Time interval for return criteria. */
 export interface RetentionReturnCriteriaTimeInterval {
   type: RetentionReturnCriteriaTimeIntervalType | (string & {});
@@ -2454,28 +1638,11 @@ export interface RetentionReturnCriteriaTimeInterval {
   /** Value of the time interval. */
   value: number;
 }
-export const RetentionReturnCriteriaTimeInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RetentionReturnCriteriaTimeIntervalType,
-    unit: RetentionReturnCriteriaTimeIntervalUnit,
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "RetentionReturnCriteriaTimeInterval",
-}) as any as S.Schema<RetentionReturnCriteriaTimeInterval>;
-
 /** Return criteria for retention queries. */
 export interface RetentionReturnCriteria {
   base_query: ProductAnalyticsEventQuery;
   time_interval?: RetentionReturnCriteriaTimeInterval;
 }
-export const RetentionReturnCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    base_query: ProductAnalyticsEventQuery,
-    time_interval: S.optional(RetentionReturnCriteriaTimeInterval),
-  }),
-).annotate({ identifier: "RetentionReturnCriteria" }) as any as S.Schema<RetentionReturnCriteria>;
-
 /** Search configuration for retention queries. */
 export interface RetentionSearch {
   cohort_criteria: RetentionCohortCriteria;
@@ -2484,16 +1651,6 @@ export interface RetentionSearch {
   return_condition: RetentionReturnCondition | (string & {});
   return_criteria?: RetentionReturnCriteria;
 }
-export const RetentionSearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cohort_criteria: RetentionCohortCriteria,
-    filters: S.optional(RetentionFilters),
-    retention_entity: RetentionEntity,
-    return_condition: RetentionReturnCondition,
-    return_criteria: S.optional(RetentionReturnCriteria),
-  }),
-).annotate({ identifier: "RetentionSearch" }) as any as S.Schema<RetentionSearch>;
-
 /** A formula and functions Retention query for defining timeseries and scalar visualizations. */
 export interface FormulaAndFunctionRetentionQueryDefinition {
   compute: RetentionCompute;
@@ -2504,18 +1661,6 @@ export interface FormulaAndFunctionRetentionQueryDefinition {
   name: string;
   search: RetentionSearch;
 }
-export const FormulaAndFunctionRetentionQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: RetentionCompute,
-    data_source: RetentionDataSource,
-    group_by: S.optional(FormulaAndFunctionRetentionQueryDefinitionGroupByList),
-    name: S.String,
-    search: RetentionSearch,
-  }),
-).annotate({
-  identifier: "FormulaAndFunctionRetentionQueryDefinition",
-}) as any as S.Schema<FormulaAndFunctionRetentionQueryDefinition>;
-
 /** A formula and function query. */
 export type FormulaAndFunctionQueryDefinition =
   | FormulaAndFunctionMetricQueryDefinition
@@ -2529,23 +1674,12 @@ export type FormulaAndFunctionQueryDefinition =
   | FormulaAndFunctionProductAnalyticsExtendedQueryDefinition
   | FormulaAndFunctionUserJourneyQueryDefinition
   | FormulaAndFunctionRetentionQueryDefinition;
-export const FormulaAndFunctionQueryDefinition =
-  S.Unknown as any as S.Schema<FormulaAndFunctionQueryDefinition>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type BarChartWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const BarChartWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<BarChartWidgetRequestQueriesList>;
-
 /** Timeseries, scalar, or event list response. Event list response formats are supported by Geomap widgets. */
 export type FormulaAndFunctionResponseFormat = "timeseries" | "scalar" | "event_list";
-export const FormulaAndFunctionResponseFormat = S.String;
-
 /** Set the sort type to formula. */
 export type FormulaType = "formula";
-export const FormulaType = S.String;
-
 /** The formula to sort the widget by. */
 export interface WidgetFormulaSort {
   /** The index of the formula to sort by. */
@@ -2553,18 +1687,8 @@ export interface WidgetFormulaSort {
   order: WidgetSort | (string & {});
   type: FormulaType;
 }
-export const WidgetFormulaSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.Number,
-    order: WidgetSort,
-    type: FormulaType,
-  }),
-).annotate({ identifier: "WidgetFormulaSort" }) as any as S.Schema<WidgetFormulaSort>;
-
 /** Set the sort type to group. */
 export type GroupType = "group";
-export const GroupType = S.String;
-
 /** The group to sort the widget by. */
 export interface WidgetGroupSort {
   /** The name of the group. */
@@ -2572,24 +1696,10 @@ export interface WidgetGroupSort {
   order: WidgetSort | (string & {});
   type: GroupType;
 }
-export const WidgetGroupSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    order: WidgetSort,
-    type: GroupType,
-  }),
-).annotate({ identifier: "WidgetGroupSort" }) as any as S.Schema<WidgetGroupSort>;
-
 /** The item to sort the widget by. */
 export type WidgetSortOrderBy = WidgetFormulaSort | WidgetGroupSort;
-export const WidgetSortOrderBy = S.Unknown as any as S.Schema<WidgetSortOrderBy>;
-
 /** The array of items to sort the widget by in order. */
 export type WidgetSortByOrderByList = Array<WidgetSortOrderBy>;
-export const WidgetSortByOrderByList = /*@__PURE__*/ S.Array(
-  WidgetSortOrderBy,
-) as any as S.Schema<WidgetSortByOrderByList>;
-
 /** The controls for sorting the widget. */
 export interface WidgetSortBy {
   /** The number of items to limit the widget to. */
@@ -2597,25 +1707,12 @@ export interface WidgetSortBy {
   /** The array of items to sort the widget by in order. */
   order_by?: WidgetSortByOrderByList;
 }
-export const WidgetSortBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    order_by: S.optional(WidgetSortByOrderByList),
-  }),
-).annotate({ identifier: "WidgetSortBy" }) as any as S.Schema<WidgetSortBy>;
-
 /** Type of lines displayed. */
 export type WidgetLineType = "dashed" | "dotted" | "solid";
-export const WidgetLineType = S.String;
-
 /** Width of line displayed. */
 export type WidgetLineWidth = "normal" | "thick" | "thin";
-export const WidgetLineWidth = S.String;
-
 /** How to order series in timeseries visualizations. - `tags`: Order series alphabetically by tag name (default behavior) - `values`: Order series by their current metric values (typically descending) */
 export type WidgetStyleOrderBy = "tags" | "values";
-export const WidgetStyleOrderBy = S.String;
-
 /** Define request widget style. */
 export interface WidgetRequestStyle {
   line_type?: WidgetLineType | (string & {});
@@ -2624,15 +1721,6 @@ export interface WidgetRequestStyle {
   /** Color palette to apply to the widget. */
   palette?: string;
 }
-export const WidgetRequestStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line_type: S.optional(WidgetLineType),
-    line_width: S.optional(WidgetLineWidth),
-    order_by: S.optional(WidgetStyleOrderBy),
-    palette: S.optional(S.String),
-  }),
-).annotate({ identifier: "WidgetRequestStyle" }) as any as S.Schema<WidgetRequestStyle>;
-
 /** Updated bar chart widget. */
 export interface BarChartWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -2665,75 +1753,27 @@ export interface BarChartWidgetRequest {
   sort?: WidgetSortBy;
   style?: WidgetRequestStyle;
 }
-export const BarChartWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    audit_query: S.optional(LogQueryDefinition),
-    conditional_formats: S.optional(BarChartWidgetRequestConditionalFormatsList),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(BarChartWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(BarChartWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    sort: S.optional(WidgetSortBy),
-    style: S.optional(WidgetRequestStyle),
-  }),
-).annotate({ identifier: "BarChartWidgetRequest" }) as any as S.Schema<BarChartWidgetRequest>;
-
 /** List of bar chart widget requests. */
 export type BarChartWidgetDefinitionRequestsList = Array<BarChartWidgetRequest>;
-export const BarChartWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  BarChartWidgetRequest,
-) as any as S.Schema<BarChartWidgetDefinitionRequestsList>;
-
 /** Bar chart widget stacked legend behavior. */
 export type BarChartWidgetLegend = "automatic" | "inline" | "none";
-export const BarChartWidgetLegend = S.String;
-
 /** Bar chart widget stacked display type. */
 export type BarChartWidgetStackedType = "stacked";
-export const BarChartWidgetStackedType = S.String;
-
 /** Bar chart widget stacked display options. */
 export interface BarChartWidgetStacked {
   legend?: BarChartWidgetLegend | (string & {});
   type: BarChartWidgetStackedType;
 }
-export const BarChartWidgetStacked = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    legend: S.optional(BarChartWidgetLegend),
-    type: BarChartWidgetStackedType,
-  }),
-).annotate({ identifier: "BarChartWidgetStacked" }) as any as S.Schema<BarChartWidgetStacked>;
-
 /** Bar chart widget flat display type. */
 export type BarChartWidgetFlatType = "flat";
-export const BarChartWidgetFlatType = S.String;
-
 /** Bar chart widget flat display. */
 export interface BarChartWidgetFlat {
   type: BarChartWidgetFlatType;
 }
-export const BarChartWidgetFlat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: BarChartWidgetFlatType,
-  }),
-).annotate({ identifier: "BarChartWidgetFlat" }) as any as S.Schema<BarChartWidgetFlat>;
-
 /** Bar chart widget display options. */
 export type BarChartWidgetDisplay = BarChartWidgetStacked | BarChartWidgetFlat;
-export const BarChartWidgetDisplay = S.Unknown as any as S.Schema<BarChartWidgetDisplay>;
-
 /** Bar chart widget scaling definition. */
 export type BarChartWidgetScaling = "absolute" | "relative";
-export const BarChartWidgetScaling = S.String;
-
 /** Style customization for a bar chart widget. */
 export interface BarChartWidgetStyle {
   display?: BarChartWidgetDisplay;
@@ -2741,18 +1781,8 @@ export interface BarChartWidgetStyle {
   palette?: string;
   scaling?: BarChartWidgetScaling | (string & {});
 }
-export const BarChartWidgetStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    display: S.optional(BarChartWidgetDisplay),
-    palette: S.optional(S.String),
-    scaling: S.optional(BarChartWidgetScaling),
-  }),
-).annotate({ identifier: "BarChartWidgetStyle" }) as any as S.Schema<BarChartWidgetStyle>;
-
 /** Type of the bar chart widget. */
 export type BarChartWidgetDefinitionType = "bar_chart";
-export const BarChartWidgetDefinitionType = S.String;
-
 /** The bar chart visualization displays categorical data using vertical bars, allowing you to compare values across different groups. */
 export interface BarChartWidgetDefinition {
   /** List of custom links. */
@@ -2770,47 +1800,18 @@ export interface BarChartWidgetDefinition {
   title_size?: string;
   type: BarChartWidgetDefinitionType;
 }
-export const BarChartWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(BarChartWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    requests: BarChartWidgetDefinitionRequestsList,
-    style: S.optional(BarChartWidgetStyle),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: BarChartWidgetDefinitionType,
-  }),
-).annotate({ identifier: "BarChartWidgetDefinition" }) as any as S.Schema<BarChartWidgetDefinition>;
-
 /** List of custom links. */
 export type ChangeWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ChangeWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ChangeWidgetDefinitionCustomLinksList>;
-
 /** Show the absolute or the relative change. */
 export type WidgetChangeType = "absolute" | "relative";
-export const WidgetChangeType = S.String;
-
 /** Timeframe used for the change comparison. */
 export type WidgetCompareTo = "hour_before" | "day_before" | "week_before" | "month_before";
-export const WidgetCompareTo = S.String;
-
 /** List of formulas that operate on queries. */
 export type ChangeWidgetRequestFormulasList = Array<WidgetFormula>;
-export const ChangeWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<ChangeWidgetRequestFormulasList>;
-
 /** What to order by. */
 export type WidgetOrderBy = "change" | "name" | "present" | "past";
-export const WidgetOrderBy = S.String;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type ChangeWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const ChangeWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<ChangeWidgetRequestQueriesList>;
-
 /** Updated change widget. */
 export interface ChangeWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -2845,39 +1846,10 @@ export interface ChangeWidgetRequest {
   /** Whether to show the present value. */
   show_present?: boolean;
 }
-export const ChangeWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    change_type: S.optional(WidgetChangeType),
-    compare_to: S.optional(WidgetCompareTo),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(ChangeWidgetRequestFormulasList),
-    increase_good: S.optional(S.Boolean),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    order_by: S.optional(WidgetOrderBy),
-    order_dir: S.optional(WidgetSort),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(ChangeWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    show_present: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ChangeWidgetRequest" }) as any as S.Schema<ChangeWidgetRequest>;
-
 /** Array of one request object to display in the widget. See the dedicated [Request JSON schema documentation](https://docs.datadoghq.com/dashboards/graphing_json/request_json) to learn how to build the `REQUEST_SCHEMA`. */
 export type ChangeWidgetDefinitionRequestsList = Array<ChangeWidgetRequest>;
-export const ChangeWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  ChangeWidgetRequest,
-) as any as S.Schema<ChangeWidgetDefinitionRequestsList>;
-
 /** Type of the change widget. */
 export type ChangeWidgetDefinitionType = "change";
-export const ChangeWidgetDefinitionType = S.String;
-
 /** The Change graph shows you the change in a value over the time period chosen. */
 export interface ChangeWidgetDefinition {
   /** List of custom links. */
@@ -2894,37 +1866,14 @@ export interface ChangeWidgetDefinition {
   title_size?: string;
   type: ChangeWidgetDefinitionType;
 }
-export const ChangeWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(ChangeWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    requests: ChangeWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: ChangeWidgetDefinitionType,
-  }),
-).annotate({ identifier: "ChangeWidgetDefinition" }) as any as S.Schema<ChangeWidgetDefinition>;
-
 /** List of tag prefixes to group by in the case of a cluster check. */
 export type CheckStatusWidgetDefinitionGroupByList = Array<string>;
-export const CheckStatusWidgetDefinitionGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckStatusWidgetDefinitionGroupByList>;
-
 /** The kind of grouping to use. */
 export type WidgetGrouping = "check" | "cluster";
-export const WidgetGrouping = S.String;
-
 /** List of tags used to filter the groups reporting a cluster check. */
 export type CheckStatusWidgetDefinitionTagsList = Array<string>;
-export const CheckStatusWidgetDefinitionTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckStatusWidgetDefinitionTagsList>;
-
 /** Type of the check status widget. */
 export type CheckStatusWidgetDefinitionType = "check_status";
-export const CheckStatusWidgetDefinitionType = S.String;
-
 /** Check status shows the current status or number of results for any check performed. */
 export interface CheckStatusWidgetDefinition {
   /** Name of the check to use in the widget. */
@@ -2946,29 +1895,8 @@ export interface CheckStatusWidgetDefinition {
   title_size?: string;
   type: CheckStatusWidgetDefinitionType;
 }
-export const CheckStatusWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check: S.String,
-    description: S.optional(S.String),
-    group: S.optional(S.String),
-    group_by: S.optional(CheckStatusWidgetDefinitionGroupByList),
-    grouping: WidgetGrouping,
-    tags: S.optional(CheckStatusWidgetDefinitionTagsList),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: CheckStatusWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "CheckStatusWidgetDefinition",
-}) as any as S.Schema<CheckStatusWidgetDefinition>;
-
 /** Group by configuration. */
 export type RetentionQueryGroupByList = Array<RetentionGroupBy>;
-export const RetentionQueryGroupByList =
-  FormulaAndFunctionRetentionQueryDefinitionGroupByList as any as S.Schema<RetentionQueryGroupByList>;
-
 /** Retention query definition. */
 export interface RetentionQuery {
   compute: RetentionCompute;
@@ -2980,43 +1908,17 @@ export interface RetentionQuery {
   name?: string;
   search: RetentionSearch;
 }
-export const RetentionQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: RetentionCompute,
-    data_source: RetentionDataSource,
-    filters: S.optional(RetentionFilters),
-    group_by: S.optional(RetentionQueryGroupByList),
-    name: S.optional(S.String),
-    search: RetentionSearch,
-  }),
-).annotate({ identifier: "RetentionQuery" }) as any as S.Schema<RetentionQuery>;
-
 /** Request type for retention grid widget. */
 export type RetentionGridRequestType = "retention_grid";
-export const RetentionGridRequestType = S.String;
-
 /** Retention grid widget request. */
 export interface RetentionGridRequest {
   query: RetentionQuery;
   request_type: RetentionGridRequestType | (string & {});
 }
-export const RetentionGridRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: RetentionQuery,
-    request_type: RetentionGridRequestType,
-  }),
-).annotate({ identifier: "RetentionGridRequest" }) as any as S.Schema<RetentionGridRequest>;
-
 /** List of Cohort widget requests. */
 export type CohortWidgetDefinitionRequestsList = Array<RetentionGridRequest>;
-export const CohortWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  RetentionGridRequest,
-) as any as S.Schema<CohortWidgetDefinitionRequestsList>;
-
 /** Type of the Cohort widget. */
 export type CohortWidgetDefinitionType = "cohort";
-export const CohortWidgetDefinitionType = S.String;
-
 /** The cohort widget visualizes user retention over time. */
 export interface CohortWidgetDefinition {
   /** The description of the widget. */
@@ -3031,23 +1933,8 @@ export interface CohortWidgetDefinition {
   title_size?: string;
   type: CohortWidgetDefinitionType;
 }
-export const CohortWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    requests: CohortWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: CohortWidgetDefinitionType,
-  }),
-).annotate({ identifier: "CohortWidgetDefinition" }) as any as S.Schema<CohortWidgetDefinition>;
-
 /** A list of custom links. */
 export type DistributionWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const DistributionWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<DistributionWidgetDefinitionCustomLinksList>;
-
 /** Markers allow you to add visual conditional formatting for your graphs. */
 export interface WidgetMarker {
   /** Combination of: - A severity error, warning, ok, or info - A line type: dashed, solid, or bold In this case of a Distribution widget, this can be set to be `percentile`. */
@@ -3059,21 +1946,8 @@ export interface WidgetMarker {
   /** Value to apply. Can be a single value y = 15 or a range of values 0 < y < 10. For Distribution widgets with `display_type` set to `percentile`, this should be a numeric percentile value (for example, "90" for P90). */
   value: string;
 }
-export const WidgetMarker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    display_type: S.optional(S.String),
-    label: S.optional(S.String),
-    time: S.optional(S.String),
-    value: S.String,
-  }),
-).annotate({ identifier: "WidgetMarker" }) as any as S.Schema<WidgetMarker>;
-
 /** List of markers. */
 export type DistributionWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const DistributionWidgetDefinitionMarkersList = /*@__PURE__*/ S.Array(
-  WidgetMarker,
-) as any as S.Schema<DistributionWidgetDefinitionMarkersList>;
-
 /** Column properties. */
 export interface ApmStatsQueryColumnType {
   /** A user-assigned alias for the column. */
@@ -3083,25 +1957,10 @@ export interface ApmStatsQueryColumnType {
   name: string;
   order?: WidgetSort | (string & {});
 }
-export const ApmStatsQueryColumnType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    cell_display_mode: S.optional(TableWidgetCellDisplayMode),
-    name: S.String,
-    order: S.optional(WidgetSort),
-  }),
-).annotate({ identifier: "ApmStatsQueryColumnType" }) as any as S.Schema<ApmStatsQueryColumnType>;
-
 /** Column properties used by the front end for display. */
 export type ApmStatsQueryDefinitionColumnsList = Array<ApmStatsQueryColumnType>;
-export const ApmStatsQueryDefinitionColumnsList = /*@__PURE__*/ S.Array(
-  ApmStatsQueryColumnType,
-) as any as S.Schema<ApmStatsQueryDefinitionColumnsList>;
-
 /** The level of detail for the request. */
 export type ApmStatsQueryRowType = "service" | "resource" | "span";
-export const ApmStatsQueryRowType = S.String;
-
 /** The APM stats query for table and distributions widgets. */
 export interface ApmStatsQueryDefinition {
   /** Column properties used by the front end for display. */
@@ -3118,52 +1977,23 @@ export interface ApmStatsQueryDefinition {
   /** Service name. */
   service: string;
 }
-export const ApmStatsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(ApmStatsQueryDefinitionColumnsList),
-    env: S.String,
-    name: S.String,
-    primary_tag: S.String,
-    resource: S.optional(S.String),
-    row_type: ApmStatsQueryRowType,
-    service: S.String,
-  }),
-).annotate({ identifier: "ApmStatsQueryDefinition" }) as any as S.Schema<ApmStatsQueryDefinition>;
-
 /** List of formulas that operate on queries. */
 export type DistributionWidgetRequestFormulasList = Array<WidgetFormula>;
-export const DistributionWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<DistributionWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type DistributionWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const DistributionWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<DistributionWidgetRequestQueriesList>;
-
 /** Query definition for Distribution Widget Histogram Request */
 export type DistributionWidgetHistogramRequestQuery =
   | FormulaAndFunctionMetricQueryDefinition
   | FormulaAndFunctionEventQueryDefinition
   | FormulaAndFunctionApmResourceStatsQueryDefinition
   | FormulaAndFunctionApmMetricsQueryDefinition;
-export const DistributionWidgetHistogramRequestQuery =
-  S.Unknown as any as S.Schema<DistributionWidgetHistogramRequestQuery>;
-
 /** Request type for distribution of point values for distribution metrics. Query space aggregator must be `histogram:<metric name>` for points distributions. */
 export type WidgetHistogramRequestType = "histogram";
-export const WidgetHistogramRequestType = S.String;
-
 /** Widget style definition. */
 export interface WidgetStyle {
   /** Color palette to apply to the widget. */
   palette?: string;
 }
-export const WidgetStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    palette: S.optional(S.String),
-  }),
-).annotate({ identifier: "WidgetStyle" }) as any as S.Schema<WidgetStyle>;
-
 /** Updated distribution widget. */
 export interface DistributionWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -3196,39 +2026,10 @@ export interface DistributionWidgetRequest {
   security_query?: LogQueryDefinition;
   style?: WidgetStyle;
 }
-export const DistributionWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    apm_stats_query: S.optional(ApmStatsQueryDefinition),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(DistributionWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(DistributionWidgetRequestQueriesList),
-    query: S.optional(DistributionWidgetHistogramRequestQuery),
-    request_type: S.optional(WidgetHistogramRequestType),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    style: S.optional(WidgetStyle),
-  }),
-).annotate({
-  identifier: "DistributionWidgetRequest",
-}) as any as S.Schema<DistributionWidgetRequest>;
-
 /** Array of one request object to display in the widget. See the dedicated [Request JSON schema documentation](https://docs.datadoghq.com/dashboards/graphing_json/request_json) to learn how to build the `REQUEST_SCHEMA`. */
 export type DistributionWidgetDefinitionRequestsList = Array<DistributionWidgetRequest>;
-export const DistributionWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  DistributionWidgetRequest,
-) as any as S.Schema<DistributionWidgetDefinitionRequestsList>;
-
 /** Type of the distribution widget. */
 export type DistributionWidgetDefinitionType = "distribution";
-export const DistributionWidgetDefinitionType = S.String;
-
 /** X Axis controls for the distribution widget. */
 export interface DistributionWidgetXAxis {
   /** True includes zero. */
@@ -3242,16 +2043,6 @@ export interface DistributionWidgetXAxis {
   /** Specifies the scale type. Possible values are `linear`. */
   scale?: string;
 }
-export const DistributionWidgetXAxis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include_zero: S.optional(S.Boolean),
-    max: S.optional(S.String),
-    min: S.optional(S.String),
-    num_buckets: S.optional(S.Number),
-    scale: S.optional(S.String),
-  }),
-).annotate({ identifier: "DistributionWidgetXAxis" }) as any as S.Schema<DistributionWidgetXAxis>;
-
 /** Y Axis controls for the distribution widget. */
 export interface DistributionWidgetYAxis {
   /** True includes zero. */
@@ -3265,16 +2056,6 @@ export interface DistributionWidgetYAxis {
   /** Specifies the scale type. Possible values are `linear` or `log`. */
   scale?: string;
 }
-export const DistributionWidgetYAxis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include_zero: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    max: S.optional(S.String),
-    min: S.optional(S.String),
-    scale: S.optional(S.String),
-  }),
-).annotate({ identifier: "DistributionWidgetYAxis" }) as any as S.Schema<DistributionWidgetYAxis>;
-
 /** The Distribution visualization is another way of showing metrics aggregated across one or several tags, such as hosts. Unlike the heat map, a distribution graph's x-axis is quantity rather than time. */
 export interface DistributionWidgetDefinition {
   /** A list of custom links. */
@@ -3299,31 +2080,8 @@ export interface DistributionWidgetDefinition {
   xaxis?: DistributionWidgetXAxis;
   yaxis?: DistributionWidgetYAxis;
 }
-export const DistributionWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(DistributionWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    legend_size: S.optional(S.String),
-    markers: S.optional(DistributionWidgetDefinitionMarkersList),
-    requests: DistributionWidgetDefinitionRequestsList,
-    show_legend: S.optional(S.Boolean),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: DistributionWidgetDefinitionType,
-    xaxis: S.optional(DistributionWidgetXAxis),
-    yaxis: S.optional(DistributionWidgetYAxis),
-  }),
-).annotate({
-  identifier: "DistributionWidgetDefinition",
-}) as any as S.Schema<DistributionWidgetDefinition>;
-
 /** List of custom links. */
 export type EmbeddedAppWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const EmbeddedAppWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<EmbeddedAppWidgetDefinitionCustomLinksList>;
-
 /** An input passed to the embedded app. */
 export interface EmbeddedAppWidgetInput {
   /** Name of the app input. */
@@ -3331,23 +2089,10 @@ export interface EmbeddedAppWidgetInput {
   /** Value of the app input. The API accepts a string, number, boolean, object, or a non-empty homogeneous array of those types. */
   value: unknown;
 }
-export const EmbeddedAppWidgetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.Unknown,
-  }),
-).annotate({ identifier: "EmbeddedAppWidgetInput" }) as any as S.Schema<EmbeddedAppWidgetInput>;
-
 /** Inputs passed to the embedded app. */
 export type EmbeddedAppWidgetDefinitionInputsList = Array<EmbeddedAppWidgetInput>;
-export const EmbeddedAppWidgetDefinitionInputsList = /*@__PURE__*/ S.Array(
-  EmbeddedAppWidgetInput,
-) as any as S.Schema<EmbeddedAppWidgetDefinitionInputsList>;
-
 /** Type of the embedded app widget. */
 export type EmbeddedAppWidgetDefinitionType = "embedded_app";
-export const EmbeddedAppWidgetDefinitionType = S.String;
-
 /** The embedded app widget displays an App Builder app on a dashboard. Exactly one of `app_id` or `template_id` must be provided; they cannot be provided together. */
 export interface EmbeddedAppWidgetDefinition {
   /** UUID of the App Builder app to embed. */
@@ -3368,31 +2113,10 @@ export interface EmbeddedAppWidgetDefinition {
   title_size?: string;
   type: EmbeddedAppWidgetDefinitionType;
 }
-export const EmbeddedAppWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_id: S.optional(S.String),
-    custom_links: S.optional(EmbeddedAppWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    inputs: S.optional(EmbeddedAppWidgetDefinitionInputsList),
-    template_id: S.optional(S.String),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: EmbeddedAppWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "EmbeddedAppWidgetDefinition",
-}) as any as S.Schema<EmbeddedAppWidgetDefinition>;
-
 /** Size to use to display an event. */
 export type WidgetEventSize = "s" | "l";
-export const WidgetEventSize = S.String;
-
 /** Type of the event stream widget. */
 export type EventStreamWidgetDefinitionType = "event_stream";
-export const EventStreamWidgetDefinitionType = S.String;
-
 /** The event stream is a widget version of the stream of events on the Event Stream view. Only available on FREE layout dashboards. */
 export interface EventStreamWidgetDefinition {
   /** The description of the widget. */
@@ -3410,26 +2134,8 @@ export interface EventStreamWidgetDefinition {
   title_size?: string;
   type: EventStreamWidgetDefinitionType;
 }
-export const EventStreamWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    event_size: S.optional(WidgetEventSize),
-    query: S.String,
-    tags_execution: S.optional(S.String),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: EventStreamWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "EventStreamWidgetDefinition",
-}) as any as S.Schema<EventStreamWidgetDefinition>;
-
 /** Type of the event timeline widget. */
 export type EventTimelineWidgetDefinitionType = "event_timeline";
-export const EventTimelineWidgetDefinitionType = S.String;
-
 /** The event timeline is a widget version of the timeline that appears at the top of the Event Stream view. Only available on FREE layout dashboards. */
 export interface EventTimelineWidgetDefinition {
   /** The description of the widget. */
@@ -3446,25 +2152,8 @@ export interface EventTimelineWidgetDefinition {
   title_size?: string;
   type: EventTimelineWidgetDefinitionType;
 }
-export const EventTimelineWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    query: S.String,
-    tags_execution: S.optional(S.String),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: EventTimelineWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "EventTimelineWidgetDefinition",
-}) as any as S.Schema<EventTimelineWidgetDefinition>;
-
 /** Type of the free text widget. */
 export type FreeTextWidgetDefinitionType = "free_text";
-export const FreeTextWidgetDefinitionType = S.String;
-
 /** Free text is a widget that allows you to add headings to your dashboard. Commonly used to state the overall purpose of the dashboard. */
 export interface FreeTextWidgetDefinition {
   background_color?: string;
@@ -3477,25 +2166,10 @@ export interface FreeTextWidgetDefinition {
   text_align?: WidgetTextAlign | (string & {});
   type: FreeTextWidgetDefinitionType;
 }
-export const FreeTextWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    background_color: S.optional(S.String),
-    color: S.optional(S.String),
-    font_size: S.optional(S.String),
-    text: S.String,
-    text_align: S.optional(WidgetTextAlign),
-    type: FreeTextWidgetDefinitionType,
-  }),
-).annotate({ identifier: "FreeTextWidgetDefinition" }) as any as S.Schema<FreeTextWidgetDefinition>;
-
 /** Display mode for grouped funnel results. */
 export type FunnelGroupedDisplay = "stacked" | "side_by_side";
-export const FunnelGroupedDisplay = S.String;
-
 /** Source from which to query items to display in the funnel. */
 export type FunnelSource = "rum";
-export const FunnelSource = S.String;
-
 /** The funnel step. */
 export interface FunnelStep {
   /** The facet of the step. */
@@ -3503,19 +2177,8 @@ export interface FunnelStep {
   /** The value of the step. */
   value: string;
 }
-export const FunnelStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "FunnelStep" }) as any as S.Schema<FunnelStep>;
-
 /** List of funnel steps. */
 export type FunnelQueryStepsList = Array<FunnelStep>;
-export const FunnelQueryStepsList = /*@__PURE__*/ S.Array(
-  FunnelStep,
-) as any as S.Schema<FunnelQueryStepsList>;
-
 /** Updated funnel widget. */
 export interface FunnelQuery {
   data_source: FunnelSource | (string & {});
@@ -3524,40 +2187,17 @@ export interface FunnelQuery {
   /** List of funnel steps. */
   steps: FunnelQueryStepsList;
 }
-export const FunnelQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: FunnelSource,
-    query_string: S.String,
-    steps: FunnelQueryStepsList,
-  }),
-).annotate({ identifier: "FunnelQuery" }) as any as S.Schema<FunnelQuery>;
-
 /** Widget request type. */
 export type FunnelRequestType = "funnel";
-export const FunnelRequestType = S.String;
-
 /** Updated funnel widget. */
 export interface FunnelWidgetRequest {
   query: FunnelQuery;
   request_type: FunnelRequestType | (string & {});
 }
-export const FunnelWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: FunnelQuery,
-    request_type: FunnelRequestType,
-  }),
-).annotate({ identifier: "FunnelWidgetRequest" }) as any as S.Schema<FunnelWidgetRequest>;
-
 /** Request payload used to query items. */
 export type FunnelWidgetDefinitionRequestsList = Array<FunnelWidgetRequest>;
-export const FunnelWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  FunnelWidgetRequest,
-) as any as S.Schema<FunnelWidgetDefinitionRequestsList>;
-
 /** Type of funnel widget. */
 export type FunnelWidgetDefinitionType = "funnel";
-export const FunnelWidgetDefinitionType = S.String;
-
 /** The funnel visualization displays a funnel of user sessions that maps a sequence of view navigation and user interaction in your application. */
 export interface FunnelWidgetDefinition {
   /** The description of the widget. */
@@ -3573,24 +2213,8 @@ export interface FunnelWidgetDefinition {
   title_size?: string;
   type: FunnelWidgetDefinitionType;
 }
-export const FunnelWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    grouped_display: S.optional(FunnelGroupedDisplay),
-    requests: FunnelWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: FunnelWidgetDefinitionType,
-  }),
-).annotate({ identifier: "FunnelWidgetDefinition" }) as any as S.Schema<FunnelWidgetDefinition>;
-
 /** Comparison segments. */
 export type ProductAnalyticsFunnelRequestComparisonSegmentsList = Array<string>;
-export const ProductAnalyticsFunnelRequestComparisonSegmentsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ProductAnalyticsFunnelRequestComparisonSegmentsList>;
-
 /** Custom timeframe for funnel comparison. */
 export interface FunnelComparisonCustomTimeframe {
   /** Start of the custom timeframe. */
@@ -3598,15 +2222,6 @@ export interface FunnelComparisonCustomTimeframe {
   /** End of the custom timeframe. */
   to: number;
 }
-export const FunnelComparisonCustomTimeframe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.Number,
-    to: S.Number,
-  }),
-).annotate({
-  identifier: "FunnelComparisonCustomTimeframe",
-}) as any as S.Schema<FunnelComparisonCustomTimeframe>;
-
 /** Type of comparison duration. */
 export type FunnelComparisonDurationType =
   | "previous_timeframe"
@@ -3614,42 +2229,20 @@ export type FunnelComparisonDurationType =
   | "previous_day"
   | "previous_week"
   | "previous_month";
-export const FunnelComparisonDurationType = S.String;
-
 /** Comparison time configuration for funnel widgets. */
 export interface FunnelComparisonDuration {
   custom_timeframe?: FunnelComparisonCustomTimeframe;
   type: FunnelComparisonDurationType | (string & {});
 }
-export const FunnelComparisonDuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_timeframe: S.optional(FunnelComparisonCustomTimeframe),
-    type: FunnelComparisonDurationType,
-  }),
-).annotate({ identifier: "FunnelComparisonDuration" }) as any as S.Schema<FunnelComparisonDuration>;
-
 /** Aggregation type for user journey funnel compute. */
 export type ProductAnalyticsFunnelComputeAggregation = "cardinality" | "count";
-export const ProductAnalyticsFunnelComputeAggregation = S.String;
-
 /** Metric for user journey funnel compute. `__dd.conversion` and `__dd.conversion_rate` accept `count` (unique users/sessions) and `cardinality` (total users/sessions) as aggregations. */
 export type ProductAnalyticsFunnelComputeMetric = "__dd.conversion" | "__dd.conversion_rate";
-export const ProductAnalyticsFunnelComputeMetric = S.String;
-
 /** Compute configuration for user journey funnel. */
 export interface ProductAnalyticsFunnelCompute {
   aggregation: ProductAnalyticsFunnelComputeAggregation | (string & {});
   metric: ProductAnalyticsFunnelComputeMetric | (string & {});
 }
-export const ProductAnalyticsFunnelCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: ProductAnalyticsFunnelComputeAggregation,
-    metric: ProductAnalyticsFunnelComputeMetric,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsFunnelCompute",
-}) as any as S.Schema<ProductAnalyticsFunnelCompute>;
-
 /** Sort configuration for user journey funnel group by. */
 export interface ProductAnalyticsFunnelGroupBySort {
   /** Aggregation type. */
@@ -3658,16 +2251,6 @@ export interface ProductAnalyticsFunnelGroupBySort {
   metric?: string;
   order?: WidgetSort | (string & {});
 }
-export const ProductAnalyticsFunnelGroupBySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.String,
-    metric: S.optional(S.String),
-    order: S.optional(WidgetSort),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsFunnelGroupBySort",
-}) as any as S.Schema<ProductAnalyticsFunnelGroupBySort>;
-
 /** Group by configuration for user journey funnel. */
 export interface ProductAnalyticsFunnelGroupBy {
   /** Facet to group by. */
@@ -3679,24 +2262,8 @@ export interface ProductAnalyticsFunnelGroupBy {
   sort?: ProductAnalyticsFunnelGroupBySort;
   target?: UserJourneySearchTarget;
 }
-export const ProductAnalyticsFunnelGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    should_exclude_missing: S.optional(S.Boolean),
-    sort: S.optional(ProductAnalyticsFunnelGroupBySort),
-    target: S.optional(UserJourneySearchTarget),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsFunnelGroupBy",
-}) as any as S.Schema<ProductAnalyticsFunnelGroupBy>;
-
 /** Group by configuration. */
 export type ProductAnalyticsFunnelQueryGroupByList = Array<ProductAnalyticsFunnelGroupBy>;
-export const ProductAnalyticsFunnelQueryGroupByList = /*@__PURE__*/ S.Array(
-  ProductAnalyticsFunnelGroupBy,
-) as any as S.Schema<ProductAnalyticsFunnelQueryGroupByList>;
-
 /** User journey funnel query definition. */
 export interface ProductAnalyticsFunnelQuery {
   compute?: ProductAnalyticsFunnelCompute;
@@ -3707,22 +2274,8 @@ export interface ProductAnalyticsFunnelQuery {
   /** Subquery ID. */
   subquery_id?: string;
 }
-export const ProductAnalyticsFunnelQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: S.optional(ProductAnalyticsFunnelCompute),
-    data_source: ProductAnalyticsFunnelDataSource,
-    group_by: S.optional(ProductAnalyticsFunnelQueryGroupByList),
-    search: UserJourneySearch,
-    subquery_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsFunnelQuery",
-}) as any as S.Schema<ProductAnalyticsFunnelQuery>;
-
 /** Request type for user journey funnel widget. */
 export type ProductAnalyticsFunnelRequestType = "user_journey_funnel";
-export const ProductAnalyticsFunnelRequestType = S.String;
-
 /** User journey funnel widget request. */
 export interface ProductAnalyticsFunnelRequest {
   /** Comparison segments. */
@@ -3731,24 +2284,9 @@ export interface ProductAnalyticsFunnelRequest {
   query: ProductAnalyticsFunnelQuery;
   request_type: ProductAnalyticsFunnelRequestType | (string & {});
 }
-export const ProductAnalyticsFunnelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comparison_segments: S.optional(ProductAnalyticsFunnelRequestComparisonSegmentsList),
-    comparison_time: S.optional(FunnelComparisonDuration),
-    query: ProductAnalyticsFunnelQuery,
-    request_type: ProductAnalyticsFunnelRequestType,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsFunnelRequest",
-}) as any as S.Schema<ProductAnalyticsFunnelRequest>;
-
 /** Request payload used to query items. */
 export type ProductAnalyticsFunnelWidgetDefinitionRequestsList =
   Array<ProductAnalyticsFunnelRequest>;
-export const ProductAnalyticsFunnelWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  ProductAnalyticsFunnelRequest,
-) as any as S.Schema<ProductAnalyticsFunnelWidgetDefinitionRequestsList>;
-
 /** The user journey funnel visualization displays conversion funnels based on user journey data from Product Analytics. */
 export interface ProductAnalyticsFunnelWidgetDefinition {
   /** The description of the widget. */
@@ -3764,69 +2302,26 @@ export interface ProductAnalyticsFunnelWidgetDefinition {
   title_size?: string;
   type: FunnelWidgetDefinitionType;
 }
-export const ProductAnalyticsFunnelWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    grouped_display: S.optional(FunnelGroupedDisplay),
-    requests: ProductAnalyticsFunnelWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: FunnelWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsFunnelWidgetDefinition",
-}) as any as S.Schema<ProductAnalyticsFunnelWidgetDefinition>;
-
 /** A list of custom links. */
 export type GeomapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const GeomapWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<GeomapWidgetDefinitionCustomLinksList>;
-
 /** Widget column width. */
 export type ListStreamColumnWidth = "auto" | "compact" | "full";
-export const ListStreamColumnWidth = S.String;
-
 /** Widget column. */
 export interface ListStreamColumn {
   /** Widget column field. */
   field: string;
   width: ListStreamColumnWidth | (string & {});
 }
-export const ListStreamColumn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.String,
-    width: ListStreamColumnWidth,
-  }),
-).annotate({ identifier: "ListStreamColumn" }) as any as S.Schema<ListStreamColumn>;
-
 /** Widget columns. */
 export type GeomapWidgetRequestColumnsList = Array<ListStreamColumn>;
-export const GeomapWidgetRequestColumnsList = /*@__PURE__*/ S.Array(
-  ListStreamColumn,
-) as any as S.Schema<GeomapWidgetRequestColumnsList>;
-
 /** Threshold (numeric) conditional formatting rules may be used by a regions layer. */
 export type GeomapWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const GeomapWidgetRequestConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<GeomapWidgetRequestConditionalFormatsList>;
-
 /** List of formulas that operate on queries. */
 export type GeomapWidgetRequestFormulasList = Array<WidgetFormula>;
-export const GeomapWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<GeomapWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type GeomapWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const GeomapWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<GeomapWidgetRequestQueriesList>;
-
 /** Filter by assignee UUIDs. Usable only with `issue_stream`. */
 export type ListStreamQueryAssigneeUuidsList = Array<string>;
-export const ListStreamQueryAssigneeUuidsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQueryAssigneeUuidsList>;
-
 /** Aggregation value. */
 export type ListStreamComputeAggregation =
   | "count"
@@ -3844,27 +2339,14 @@ export type ListStreamComputeAggregation =
   | "earliest"
   | "latest"
   | "most_frequent";
-export const ListStreamComputeAggregation = S.String;
-
 /** List of facets and aggregations which to compute. */
 export interface ListStreamComputeItems {
   aggregation: ListStreamComputeAggregation | (string & {});
   /** Facet name. */
   facet?: string;
 }
-export const ListStreamComputeItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: ListStreamComputeAggregation,
-    facet: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListStreamComputeItems" }) as any as S.Schema<ListStreamComputeItems>;
-
 /** Compute configuration for the List Stream Widget. Compute can be used only with the logs_transaction_stream (from 1 to 5 items) list stream source. */
 export type ListStreamQueryComputeList = Array<ListStreamComputeItems>;
-export const ListStreamQueryComputeList = /*@__PURE__*/ S.Array(
-  ListStreamComputeItems,
-) as any as S.Schema<ListStreamQueryComputeList>;
-
 /** Source from which to query items to display in the stream. apm_issue_stream, rum_issue_stream, and logs_issue_stream are deprecated. Use issue_stream instead. */
 export type ListStreamSource =
   | "logs_stream"
@@ -3885,71 +2367,39 @@ export type ListStreamSource =
   | "security_signals_stream"
   | "incidents_stream"
   | "case_stream";
-export const ListStreamSource = S.String;
-
 /** List of facets on which to group. */
 export interface ListStreamGroupByItems {
   /** Facet name. */
   facet: string;
 }
-export const ListStreamGroupByItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-  }),
-).annotate({ identifier: "ListStreamGroupByItems" }) as any as S.Schema<ListStreamGroupByItems>;
-
 /** Group by configuration for the List Stream Widget. Group by can be used only with logs_pattern_stream (up to 4 items) or logs_transaction_stream (one group by item is required) list stream source. */
 export type ListStreamQueryGroupByList = Array<ListStreamGroupByItems>;
-export const ListStreamQueryGroupByList = /*@__PURE__*/ S.Array(
-  ListStreamGroupByItems,
-) as any as S.Schema<ListStreamQueryGroupByList>;
-
 /** List of indexes. */
 export type ListStreamQueryIndexesList = Array<string>;
-export const ListStreamQueryIndexesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQueryIndexesList>;
-
 /** Persona filter for the `issue_stream` data source. */
 export type ListStreamIssuePersona = "all" | "browser" | "mobile" | "backend";
-export const ListStreamIssuePersona = S.String;
-
 /** Which column and order to sort by */
 export interface WidgetFieldSort {
   /** Facet path for the column */
   column: string;
   order: WidgetSort | (string & {});
 }
-export const WidgetFieldSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    order: WidgetSort,
-  }),
-).annotate({ identifier: "WidgetFieldSort" }) as any as S.Schema<WidgetFieldSort>;
-
 /** Issue state filter for the `issue_stream` data source. */
 export type ListStreamIssueState = "OPEN" | "IGNORED" | "ACKNOWLEDGED" | "RESOLVED";
-export const ListStreamIssueState = S.String;
+const ListStreamIssueState = S.String;
 
 /** Filter by issue states. Usable only with `issue_stream`. */
 export type ListStreamQueryStatesList = Array<ListStreamIssueState | (string & {})>;
-export const ListStreamQueryStatesList = /*@__PURE__*/ S.Array(
+const ListStreamQueryStatesList = /*@__PURE__*/ S.Array(
   ListStreamIssueState,
 ) as any as S.Schema<ListStreamQueryStatesList>;
 
 /** Filter by suspected causes. Usable only with `issue_stream`. */
 export type ListStreamQuerySuspectedCausesList = Array<string>;
-export const ListStreamQuerySuspectedCausesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQuerySuspectedCausesList>;
-
 /** Filter by team handles. Usable only with `issue_stream`. */
 export type ListStreamQueryTeamHandlesList = Array<string>;
-export const ListStreamQueryTeamHandlesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQueryTeamHandlesList>;
-
 /** Version of the query for the logs transaction stream widget. When omitted, v1 query behavior is preserved. Set to `sequential_query` to use v2 behavior. **This feature is in Preview.** */
 export type ListStreamQueryVersion = "sequential_query";
-export const ListStreamQueryVersion = S.String;
-
 /** Updated list stream widget. */
 export interface ListStreamQuery {
   /** Filter by assignee UUIDs. Usable only with `issue_stream`. */
@@ -3978,37 +2428,11 @@ export interface ListStreamQuery {
   team_handles?: ListStreamQueryTeamHandlesList;
   version?: ListStreamQueryVersion | (string & {});
 }
-export const ListStreamQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignee_uuids: S.optional(ListStreamQueryAssigneeUuidsList),
-    clustering_pattern_field_path: S.optional(S.String),
-    compute: S.optional(ListStreamQueryComputeList),
-    data_source: ListStreamSource,
-    event_size: S.optional(WidgetEventSize),
-    group_by: S.optional(ListStreamQueryGroupByList),
-    indexes: S.optional(ListStreamQueryIndexesList),
-    persona: S.optional(ListStreamIssuePersona),
-    query_string: S.String,
-    sort: S.optional(WidgetFieldSort),
-    states: S.optional(ListStreamQueryStatesList),
-    storage: S.optional(S.String),
-    suspected_causes: S.optional(ListStreamQuerySuspectedCausesList),
-    team_handles: S.optional(ListStreamQueryTeamHandlesList),
-    version: S.optional(ListStreamQueryVersion),
-  }),
-).annotate({ identifier: "ListStreamQuery" }) as any as S.Schema<ListStreamQuery>;
-
 /** The style to apply to the request for points layer. */
 export interface GeomapWidgetRequestStyle {
   /** The category to color the points by. */
   color_by?: string;
 }
-export const GeomapWidgetRequestStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color_by: S.optional(S.String),
-  }),
-).annotate({ identifier: "GeomapWidgetRequestStyle" }) as any as S.Schema<GeomapWidgetRequestStyle>;
-
 /** Match or compare option. */
 export type TableWidgetTextFormatMatchType =
   | "is"
@@ -4017,23 +2441,12 @@ export type TableWidgetTextFormatMatchType =
   | "does_not_contain"
   | "starts_with"
   | "ends_with";
-export const TableWidgetTextFormatMatchType = S.String;
-
 /** Match rule for the table widget text format. */
 export interface TableWidgetTextFormatMatch {
   type: TableWidgetTextFormatMatchType | (string & {});
   /** Table Widget Match String. */
   value: string;
 }
-export const TableWidgetTextFormatMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TableWidgetTextFormatMatchType,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "TableWidgetTextFormatMatch",
-}) as any as S.Schema<TableWidgetTextFormatMatch>;
-
 /** Color-on-color palette to highlight replaced text. */
 export type TableWidgetTextFormatPalette =
   | "white_on_red"
@@ -4047,31 +2460,16 @@ export type TableWidgetTextFormatPalette =
   | "green_on_white"
   | "custom_bg"
   | "custom_text";
-export const TableWidgetTextFormatPalette = S.String;
-
 /** Table widget text format replace all type. */
 export type TableWidgetTextFormatReplaceAllType = "all";
-export const TableWidgetTextFormatReplaceAllType = S.String;
-
 /** Match All definition. */
 export interface TableWidgetTextFormatReplaceAll {
   type: TableWidgetTextFormatReplaceAllType;
   /** Replace All type. */
   with: string;
 }
-export const TableWidgetTextFormatReplaceAll = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TableWidgetTextFormatReplaceAllType,
-    with: S.String,
-  }),
-).annotate({
-  identifier: "TableWidgetTextFormatReplaceAll",
-}) as any as S.Schema<TableWidgetTextFormatReplaceAll>;
-
 /** Table widget text format replace sub-string type. */
 export type TableWidgetTextFormatReplaceSubstringType = "substring";
-export const TableWidgetTextFormatReplaceSubstringType = S.String;
-
 /** Match Sub-string definition. */
 export interface TableWidgetTextFormatReplaceSubstring {
   /** Text that will be replaced. */
@@ -4080,23 +2478,10 @@ export interface TableWidgetTextFormatReplaceSubstring {
   /** Text that will replace original sub-string. */
   with: string;
 }
-export const TableWidgetTextFormatReplaceSubstring = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    substring: S.String,
-    type: TableWidgetTextFormatReplaceSubstringType,
-    with: S.String,
-  }),
-).annotate({
-  identifier: "TableWidgetTextFormatReplaceSubstring",
-}) as any as S.Schema<TableWidgetTextFormatReplaceSubstring>;
-
 /** Replace rule for the table widget text format. */
 export type TableWidgetTextFormatReplace =
   | TableWidgetTextFormatReplaceAll
   | TableWidgetTextFormatReplaceSubstring;
-export const TableWidgetTextFormatReplace =
-  S.Unknown as any as S.Schema<TableWidgetTextFormatReplace>;
-
 /** Text format rules. */
 export interface TableWidgetTextFormatRule {
   /** Hex representation of the custom background color. Used with custom background palette option. */
@@ -4107,24 +2492,8 @@ export interface TableWidgetTextFormatRule {
   palette?: TableWidgetTextFormatPalette | (string & {});
   replace?: TableWidgetTextFormatReplace;
 }
-export const TableWidgetTextFormatRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_bg_color: S.optional(S.String),
-    custom_fg_color: S.optional(S.String),
-    match: TableWidgetTextFormatMatch,
-    palette: S.optional(TableWidgetTextFormatPalette),
-    replace: S.optional(TableWidgetTextFormatReplace),
-  }),
-).annotate({
-  identifier: "TableWidgetTextFormatRule",
-}) as any as S.Schema<TableWidgetTextFormatRule>;
-
 /** Text formatting rules may be used by a points layer. */
 export type GeomapWidgetRequestTextFormatsList = Array<TableWidgetTextFormatRule>;
-export const GeomapWidgetRequestTextFormatsList = /*@__PURE__*/ S.Array(
-  TableWidgetTextFormatRule,
-) as any as S.Schema<GeomapWidgetRequestTextFormatsList>;
-
 /** An updated geomap widget. */
 export interface GeomapWidgetRequest {
   /** Widget columns. */
@@ -4150,30 +2519,8 @@ export interface GeomapWidgetRequest {
   /** Text formatting rules may be used by a points layer. */
   text_formats?: GeomapWidgetRequestTextFormatsList;
 }
-export const GeomapWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(GeomapWidgetRequestColumnsList),
-    conditional_formats: S.optional(GeomapWidgetRequestConditionalFormatsList),
-    formulas: S.optional(GeomapWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(GeomapWidgetRequestQueriesList),
-    query: S.optional(ListStreamQuery),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    sort: S.optional(WidgetSortBy),
-    style: S.optional(GeomapWidgetRequestStyle),
-    text_formats: S.optional(GeomapWidgetRequestTextFormatsList),
-  }),
-).annotate({ identifier: "GeomapWidgetRequest" }) as any as S.Schema<GeomapWidgetRequest>;
-
 /** Array of request objects to display in the widget. May include an optional request for the region layer and/or an optional request for the points layer. Region layer requests must contain a `group-by` tag whose value is a country ISO code. See the [Request JSON schema documentation](https://docs.datadoghq.com/dashboards/graphing_json/request_json) for information about building the `REQUEST_SCHEMA`. */
 export type GeomapWidgetDefinitionRequestsList = Array<GeomapWidgetRequest>;
-export const GeomapWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  GeomapWidgetRequest,
-) as any as S.Schema<GeomapWidgetDefinitionRequestsList>;
-
 /** The style to apply to the widget. */
 export interface GeomapWidgetDefinitionStyle {
   /** The color palette to apply to the widget. */
@@ -4181,32 +2528,13 @@ export interface GeomapWidgetDefinitionStyle {
   /** Whether to flip the palette tones. */
   palette_flip: boolean;
 }
-export const GeomapWidgetDefinitionStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    palette: S.String,
-    palette_flip: S.Boolean,
-  }),
-).annotate({
-  identifier: "GeomapWidgetDefinitionStyle",
-}) as any as S.Schema<GeomapWidgetDefinitionStyle>;
-
 /** Type of the geomap widget. */
 export type GeomapWidgetDefinitionType = "geomap";
-export const GeomapWidgetDefinitionType = S.String;
-
 /** The view of the world that the map should render. */
 export interface GeomapWidgetDefinitionView {
   /** The 2-letter ISO code of a country to focus the map on, or `WORLD` for global view, or a region (`EMEA`, `APAC`, `LATAM`), or a continent (`NORTH_AMERICA`, `SOUTH_AMERICA`, `EUROPE`, `AFRICA`, `ASIA`, `OCEANIA`). */
   focus: string;
 }
-export const GeomapWidgetDefinitionView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    focus: S.String,
-  }),
-).annotate({
-  identifier: "GeomapWidgetDefinitionView",
-}) as any as S.Schema<GeomapWidgetDefinitionView>;
-
 /** This visualization displays a series of values by country on a world map. */
 export interface GeomapWidgetDefinition {
   /** A list of custom links. */
@@ -4225,35 +2553,12 @@ export interface GeomapWidgetDefinition {
   type: GeomapWidgetDefinitionType;
   view: GeomapWidgetDefinitionView;
 }
-export const GeomapWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(GeomapWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    requests: GeomapWidgetDefinitionRequestsList,
-    style: GeomapWidgetDefinitionStyle,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: GeomapWidgetDefinitionType,
-    view: GeomapWidgetDefinitionView,
-  }),
-).annotate({ identifier: "GeomapWidgetDefinition" }) as any as S.Schema<GeomapWidgetDefinition>;
-
 /** Layout type of the group. */
 export type WidgetLayoutType = "ordered";
-export const WidgetLayoutType = S.String;
-
 /** Type of the group widget. */
 export type GroupWidgetDefinitionType = "group";
-export const GroupWidgetDefinitionType = S.String;
-
 /** List of widget groups. */
 export type GroupWidgetDefinitionWidgetsList = Array<Widget>;
-export const GroupWidgetDefinitionWidgetsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => Widget),
-) as any as S.Schema<GroupWidgetDefinitionWidgetsList>;
-
 /** The group widget allows you to keep similar graphs together on your dashboard. Each group has a custom header, can hold one to many graphs, and is collapsible. */
 export interface GroupWidgetDefinition {
   background_color?: string;
@@ -4269,24 +2574,8 @@ export interface GroupWidgetDefinition {
   /** List of widget groups. */
   widgets: GroupWidgetDefinitionWidgetsList;
 }
-export const GroupWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    background_color: S.optional(S.String),
-    banner_img: S.optional(S.String),
-    layout_type: WidgetLayoutType,
-    show_title: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    type: GroupWidgetDefinitionType,
-    widgets: GroupWidgetDefinitionWidgetsList,
-  }),
-).annotate({ identifier: "GroupWidgetDefinition" }) as any as S.Schema<GroupWidgetDefinition>;
-
 /** List of custom links. */
 export type HeatMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const HeatMapWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<HeatMapWidgetDefinitionCustomLinksList>;
-
 /** Event overlay control options. See the dedicated [Events JSON schema documentation](https://docs.datadoghq.com/dashboards/graphing_json/widget_json/#events-schema) to learn how to build the `<EVENTS_SCHEMA>`. */
 export interface WidgetEvent {
   /** Query definition. */
@@ -4294,24 +2583,10 @@ export interface WidgetEvent {
   /** The execution method for multi-value filters. */
   tags_execution?: string;
 }
-export const WidgetEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    q: S.String,
-    tags_execution: S.optional(S.String),
-  }),
-).annotate({ identifier: "WidgetEvent" }) as any as S.Schema<WidgetEvent>;
-
 /** List of widget events. Deprecated - Use `overlay` request type instead. */
 export type HeatMapWidgetDefinitionEventsList = Array<WidgetEvent>;
-export const HeatMapWidgetDefinitionEventsList = /*@__PURE__*/ S.Array(
-  WidgetEvent,
-) as any as S.Schema<HeatMapWidgetDefinitionEventsList>;
-
 /** List of markers. */
 export type HeatMapWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const HeatMapWidgetDefinitionMarkersList =
-  DistributionWidgetDefinitionMarkersList as any as S.Schema<HeatMapWidgetDefinitionMarkersList>;
-
 /** The event query. */
 export interface EventQueryDefinition {
   /** The query being made on the event. */
@@ -4319,23 +2594,10 @@ export interface EventQueryDefinition {
   /** The execution method for multi-value filters. Can be either and or or. */
   tags_execution: string;
 }
-export const EventQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    search: S.String,
-    tags_execution: S.String,
-  }),
-).annotate({ identifier: "EventQueryDefinition" }) as any as S.Schema<EventQueryDefinition>;
-
 /** List of formulas that operate on queries. */
 export type HeatMapWidgetRequestFormulasList = Array<WidgetFormula>;
-export const HeatMapWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<HeatMapWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type HeatMapWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const HeatMapWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<HeatMapWidgetRequestQueriesList>;
-
 /** Updated heat map widget. */
 export interface HeatMapWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -4367,47 +2629,15 @@ export interface HeatMapWidgetRequest {
   security_query?: LogQueryDefinition;
   style?: WidgetStyle;
 }
-export const HeatMapWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    event_query: S.optional(EventQueryDefinition),
-    formulas: S.optional(HeatMapWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(HeatMapWidgetRequestQueriesList),
-    query: S.optional(FormulaAndFunctionMetricQueryDefinition),
-    request_type: S.optional(WidgetHistogramRequestType),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    style: S.optional(WidgetStyle),
-  }),
-).annotate({ identifier: "HeatMapWidgetRequest" }) as any as S.Schema<HeatMapWidgetRequest>;
-
 /** List of widget types. */
 export type HeatMapWidgetDefinitionRequestsList = Array<HeatMapWidgetRequest>;
-export const HeatMapWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  HeatMapWidgetRequest,
-) as any as S.Schema<HeatMapWidgetDefinitionRequestsList>;
-
 /** Type of the heat map widget. */
 export type HeatMapWidgetDefinitionType = "heatmap";
-export const HeatMapWidgetDefinitionType = S.String;
-
 /** X Axis controls for the heat map widget. */
 export interface HeatMapWidgetXAxis {
   /** Number of time buckets to target, also known as the resolution of the time bins. This is only applicable for distribution of points (group distributions use the roll-up modifier). */
   num_buckets?: number;
 }
-export const HeatMapWidgetXAxis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    num_buckets: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HeatMapWidgetXAxis" }) as any as S.Schema<HeatMapWidgetXAxis>;
-
 /** Axis controls for the widget. */
 export interface WidgetAxis {
   /** Set to `true` to include zero. */
@@ -4421,8 +2651,6 @@ export interface WidgetAxis {
   /** Specifies the scale type. Possible values are `linear`, `log`, `sqrt`, and `pow##` (for example `pow2` or `pow0.5`). */
   scale?: string;
 }
-export const WidgetAxis = DistributionWidgetYAxis as any as S.Schema<WidgetAxis>;
-
 /** The heat map visualization shows metrics aggregated across many tags, such as hosts. The more hosts that have a particular value, the darker that square is. */
 export interface HeatMapWidgetDefinition {
   /** List of custom links. */
@@ -4448,49 +2676,17 @@ export interface HeatMapWidgetDefinition {
   xaxis?: HeatMapWidgetXAxis;
   yaxis?: WidgetAxis;
 }
-export const HeatMapWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(HeatMapWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    events: S.optional(HeatMapWidgetDefinitionEventsList),
-    legend_size: S.optional(S.String),
-    markers: S.optional(HeatMapWidgetDefinitionMarkersList),
-    requests: HeatMapWidgetDefinitionRequestsList,
-    show_legend: S.optional(S.Boolean),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: HeatMapWidgetDefinitionType,
-    xaxis: S.optional(HeatMapWidgetXAxis),
-    yaxis: S.optional(WidgetAxis),
-  }),
-).annotate({ identifier: "HeatMapWidgetDefinition" }) as any as S.Schema<HeatMapWidgetDefinition>;
-
 /** List of custom links. */
 export type HostMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const HostMapWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<HostMapWidgetDefinitionCustomLinksList>;
-
 /** Deprecated - Only used by the legacy metric-based format. Use `group_by` (infrastructure) or a `group` dimension (DDSQL) inside `requests` instead. */
 export type HostMapWidgetDefinitionGroupList = Array<string>;
-export const HostMapWidgetDefinitionGroupList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostMapWidgetDefinitionGroupList>;
-
 /** Which type of node to use in the map. */
 export type WidgetNodeType = "host" | "container";
-export const WidgetNodeType = S.String;
-
 /** List of conditional formatting rules applied to fill values. */
 export type HostMapWidgetInfrastructureRequestLeafConditionalFormatsList =
   Array<WidgetConditionalFormat>;
-export const HostMapWidgetInfrastructureRequestLeafConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<HostMapWidgetInfrastructureRequestLeafConditionalFormatsList>;
-
 /** Visual dimension for the host map widget. Used both by infrastructure-backed formulas and by DDSQL projection columns; `group` is only meaningful for DDSQL projection columns, where repeated entries define the grouping hierarchy. */
 export type HostMapWidgetDimension = "node" | "fill" | "size" | "group";
-export const HostMapWidgetDimension = S.String;
-
 /** Formula for the infrastructure host map widget that specifies both the expression and the visual dimension it populates. */
 export interface HostMapWidgetFormula {
   /** Expression alias. */
@@ -4500,30 +2696,12 @@ export interface HostMapWidgetFormula {
   formula: string;
   number_format?: WidgetNumberFormat;
 }
-export const HostMapWidgetFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    dimension: HostMapWidgetDimension,
-    formula: S.String,
-    number_format: S.optional(WidgetNumberFormat),
-  }),
-).annotate({ identifier: "HostMapWidgetFormula" }) as any as S.Schema<HostMapWidgetFormula>;
-
 /** List of formulas that operate on queries, each assigned to a visual dimension. */
 export type HostMapWidgetScalarRequestFormulasList = Array<HostMapWidgetFormula>;
-export const HostMapWidgetScalarRequestFormulasList = /*@__PURE__*/ S.Array(
-  HostMapWidgetFormula,
-) as any as S.Schema<HostMapWidgetScalarRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type HostMapWidgetScalarRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const HostMapWidgetScalarRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<HostMapWidgetScalarRequestQueriesList>;
-
 /** Response format for the scalar formula request. Only `scalar` is supported. */
 export type HostMapWidgetScalarRequestResponseFormat = "scalar";
-export const HostMapWidgetScalarRequestResponseFormat = S.String;
-
 /** Scalar formula request for the infrastructure host map widget. Each formula specifies which visual dimension it drives. */
 export interface HostMapWidgetScalarRequest {
   /** List of formulas that operate on queries, each assigned to a visual dimension. */
@@ -4532,23 +2710,9 @@ export interface HostMapWidgetScalarRequest {
   queries: HostMapWidgetScalarRequestQueriesList;
   response_format: HostMapWidgetScalarRequestResponseFormat | (string & {});
 }
-export const HostMapWidgetScalarRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formulas: HostMapWidgetScalarRequestFormulasList,
-    queries: HostMapWidgetScalarRequestQueriesList,
-    response_format: HostMapWidgetScalarRequestResponseFormat,
-  }),
-).annotate({
-  identifier: "HostMapWidgetScalarRequest",
-}) as any as S.Schema<HostMapWidgetScalarRequest>;
-
 /** Metric or event queries joined to the entity set. Each formula specifies a visual dimension. */
 export type HostMapWidgetInfrastructureRequestLeafEnrichmentsList =
   Array<HostMapWidgetScalarRequest>;
-export const HostMapWidgetInfrastructureRequestLeafEnrichmentsList = /*@__PURE__*/ S.Array(
-  HostMapWidgetScalarRequest,
-) as any as S.Schema<HostMapWidgetInfrastructureRequestLeafEnrichmentsList>;
-
 /** Defines a grouping dimension for the infrastructure host map. */
 export interface HostMapWidgetGroupBy {
   /** Column name from the entity table (for example, `cloud_provider`, `tags`, `labels`). */
@@ -4556,27 +2720,12 @@ export interface HostMapWidgetGroupBy {
   /** Key within the column for nested attribute types (for example, `service` within `tags`). */
   key?: string;
 }
-export const HostMapWidgetGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    key: S.optional(S.String),
-  }),
-).annotate({ identifier: "HostMapWidgetGroupBy" }) as any as S.Schema<HostMapWidgetGroupBy>;
-
 /** Defines how entities are grouped into tiles. The ordering of entries implies the grouping hierarchy. */
 export type HostMapWidgetInfrastructureRequestLeafGroupByList = Array<HostMapWidgetGroupBy>;
-export const HostMapWidgetInfrastructureRequestLeafGroupByList = /*@__PURE__*/ S.Array(
-  HostMapWidgetGroupBy,
-) as any as S.Schema<HostMapWidgetInfrastructureRequestLeafGroupByList>;
-
 /** Which type of infrastructure entity to visualize in the host map. */
 export type HostMapWidgetNodeType = "host" | "container" | "pod" | "cluster";
-export const HostMapWidgetNodeType = S.String;
-
 /** Identifies this as an infrastructure-backed host map request. */
 export type HostMapWidgetInfrastructureRequestRequestType = "infrastructure_hostmap";
-export const HostMapWidgetInfrastructureRequestRequestType = S.String;
-
 /** Style configuration for the infrastructure host map. */
 export interface HostMapWidgetInfrastructureStyle {
   /** Maximum value for the fill color scale. Omit to use automatic scaling. */
@@ -4588,17 +2737,6 @@ export interface HostMapWidgetInfrastructureStyle {
   /** Whether to invert the color palette. */
   palette_flip?: boolean;
 }
-export const HostMapWidgetInfrastructureStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fill_max: S.optional(S.Number),
-    fill_min: S.optional(S.Number),
-    palette: S.optional(S.String),
-    palette_flip: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "HostMapWidgetInfrastructureStyle",
-}) as any as S.Schema<HostMapWidgetInfrastructureStyle>;
-
 /** Infrastructure-backed host map child request (leaf node, no further nesting supported). */
 export interface HostMapWidgetInfrastructureRequestLeaf {
   /** List of conditional formatting rules applied to fill values. */
@@ -4617,38 +2755,13 @@ export interface HostMapWidgetInfrastructureRequestLeaf {
   request_type: HostMapWidgetInfrastructureRequestRequestType | (string & {});
   style?: HostMapWidgetInfrastructureStyle;
 }
-export const HostMapWidgetInfrastructureRequestLeaf = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditional_formats: S.optional(HostMapWidgetInfrastructureRequestLeafConditionalFormatsList),
-    enrichments: HostMapWidgetInfrastructureRequestLeafEnrichmentsList,
-    filter: S.optional(S.String),
-    group_by: S.optional(HostMapWidgetInfrastructureRequestLeafGroupByList),
-    no_group_hosts: S.optional(S.Boolean),
-    no_metric_hosts: S.optional(S.Boolean),
-    node_type: HostMapWidgetNodeType,
-    request_type: HostMapWidgetInfrastructureRequestRequestType,
-    style: S.optional(HostMapWidgetInfrastructureStyle),
-  }),
-).annotate({
-  identifier: "HostMapWidgetInfrastructureRequestLeaf",
-}) as any as S.Schema<HostMapWidgetInfrastructureRequestLeaf>;
-
 /** List of conditional formatting rules applied to fill values. */
 export type HostMapWidgetInfrastructureRequestConditionalFormatsList =
   Array<WidgetConditionalFormat>;
-export const HostMapWidgetInfrastructureRequestConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<HostMapWidgetInfrastructureRequestConditionalFormatsList>;
-
 /** Metric or event queries joined to the entity set. Each formula specifies a visual dimension. */
 export type HostMapWidgetInfrastructureRequestEnrichmentsList = Array<HostMapWidgetScalarRequest>;
-export const HostMapWidgetInfrastructureRequestEnrichmentsList =
-  HostMapWidgetInfrastructureRequestLeafEnrichmentsList as any as S.Schema<HostMapWidgetInfrastructureRequestEnrichmentsList>;
-
 /** Defines how entities are grouped into tiles. The ordering of entries implies the grouping hierarchy. */
 export type HostMapWidgetInfrastructureRequestGroupByList = Array<HostMapWidgetGroupBy>;
-export const HostMapWidgetInfrastructureRequestGroupByList =
-  HostMapWidgetInfrastructureRequestLeafGroupByList as any as S.Schema<HostMapWidgetInfrastructureRequestGroupByList>;
-
 /** Infrastructure-backed request for the host map widget. Supports entity-based visualization with metric query enrichments, tag-based filtering, flexible grouping, and hierarchical views. */
 export interface HostMapWidgetInfrastructureRequest {
   /** Optional child request for hierarchical visualization (for example, hosts containing containers). Maximum one level of nesting. */
@@ -4669,33 +2782,10 @@ export interface HostMapWidgetInfrastructureRequest {
   request_type: HostMapWidgetInfrastructureRequestRequestType | (string & {});
   style?: HostMapWidgetInfrastructureStyle;
 }
-export const HostMapWidgetInfrastructureRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    child: S.optional(HostMapWidgetInfrastructureRequestLeaf),
-    conditional_formats: S.optional(HostMapWidgetInfrastructureRequestConditionalFormatsList),
-    enrichments: HostMapWidgetInfrastructureRequestEnrichmentsList,
-    filter: S.optional(S.String),
-    group_by: S.optional(HostMapWidgetInfrastructureRequestGroupByList),
-    no_group_hosts: S.optional(S.Boolean),
-    no_metric_hosts: S.optional(S.Boolean),
-    node_type: HostMapWidgetNodeType,
-    request_type: HostMapWidgetInfrastructureRequestRequestType,
-    style: S.optional(HostMapWidgetInfrastructureStyle),
-  }),
-).annotate({
-  identifier: "HostMapWidgetInfrastructureRequest",
-}) as any as S.Schema<HostMapWidgetInfrastructureRequest>;
-
 /** List of conditional formatting rules applied to fill values. */
 export type HostMapWidgetDefinitionRequestsConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const HostMapWidgetDefinitionRequestsConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<HostMapWidgetDefinitionRequestsConditionalFormatsList>;
-
 /** Metric or event queries joined to the entity set. Each formula specifies a visual dimension. Only used by the infrastructure-backed format. */
 export type HostMapWidgetDefinitionRequestsEnrichmentsList = Array<HostMapWidgetScalarRequest>;
-export const HostMapWidgetDefinitionRequestsEnrichmentsList =
-  HostMapWidgetInfrastructureRequestLeafEnrichmentsList as any as S.Schema<HostMapWidgetDefinitionRequestsEnrichmentsList>;
-
 /** Deprecated - Legacy metric-based host map request. Use the infrastructure-backed (`request_type: infrastructure_hostmap`) or DDSQL (`request_type: data_projection`) format instead. */
 export interface HostMapRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -4717,25 +2807,8 @@ export interface HostMapRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
   security_query?: LogQueryDefinition;
 }
-export const HostMapRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    event_query: S.optional(LogQueryDefinition),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-  }),
-).annotate({ identifier: "HostMapRequest" }) as any as S.Schema<HostMapRequest>;
-
 /** Defines how entities are grouped into tiles. The ordering of entries implies the grouping hierarchy. Only used by the infrastructure-backed format. */
 export type HostMapWidgetDefinitionRequestsGroupByList = Array<HostMapWidgetGroupBy>;
-export const HostMapWidgetDefinitionRequestsGroupByList =
-  HostMapWidgetInfrastructureRequestLeafGroupByList as any as S.Schema<HostMapWidgetDefinitionRequestsGroupByList>;
-
 /** Maps a dataset column to a host map visual dimension. */
 export interface HostMapWidgetProjectionDimensionMapping {
   /** Alias used to label the column instead of its name. */
@@ -4745,80 +2818,33 @@ export interface HostMapWidgetProjectionDimensionMapping {
   dimension: HostMapWidgetDimension | (string & {});
   number_format?: WidgetNumberFormat;
 }
-export const HostMapWidgetProjectionDimensionMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    column: S.String,
-    dimension: HostMapWidgetDimension,
-    number_format: S.optional(WidgetNumberFormat),
-  }),
-).annotate({
-  identifier: "HostMapWidgetProjectionDimensionMapping",
-}) as any as S.Schema<HostMapWidgetProjectionDimensionMapping>;
-
 /** List of column-to-dimension mappings for the projection. */
 export type HostMapWidgetProjectionDimensionsList = Array<HostMapWidgetProjectionDimensionMapping>;
-export const HostMapWidgetProjectionDimensionsList = /*@__PURE__*/ S.Array(
-  HostMapWidgetProjectionDimensionMapping,
-) as any as S.Schema<HostMapWidgetProjectionDimensionsList>;
-
 /** Type of the host map projection. */
 export type HostMapWidgetProjectionType = "hostmap";
-export const HostMapWidgetProjectionType = S.String;
-
 /** Projection for the DDSQL host map request. Maps dataset columns to map dimensions: `node` identifies the entity, repeated `group` entries define the grouping hierarchy (outermost first), and `fill`/`size` drive the tile color and size. */
 export interface HostMapWidgetProjection {
   /** List of column-to-dimension mappings for the projection. */
   dimensions: HostMapWidgetProjectionDimensionsList;
   type: HostMapWidgetProjectionType | (string & {});
 }
-export const HostMapWidgetProjection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: HostMapWidgetProjectionDimensionsList,
-    type: HostMapWidgetProjectionType,
-  }),
-).annotate({ identifier: "HostMapWidgetProjection" }) as any as S.Schema<HostMapWidgetProjection>;
-
 /** Identifies this as a published-dataset list query. */
 export type DatasetListQueryDataSourceType = "dataset";
-export const DatasetListQueryDataSourceType = S.String;
-
 /** Product page that published the dataset queried by a `DatasetListQuery`. `ddsql_query` is the only provider currently supported for host map widgets. */
 export type PublishedDatasetProvider = "ddsql_query";
-export const PublishedDatasetProvider = S.String;
-
 /** A single sort directive for a `DatasetListQuery`. */
 export interface DatasetListQuerySortField {
   /** Name of the field to sort on. */
   name: string;
   order: QuerySortOrder | (string & {});
 }
-export const DatasetListQuerySortField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    order: QuerySortOrder,
-  }),
-).annotate({
-  identifier: "DatasetListQuerySortField",
-}) as any as S.Schema<DatasetListQuerySortField>;
-
 /** List of fields to sort the rows by, applied in order. */
 export type DatasetListQuerySortFieldsList = Array<DatasetListQuerySortField>;
-export const DatasetListQuerySortFieldsList = /*@__PURE__*/ S.Array(
-  DatasetListQuerySortField,
-) as any as S.Schema<DatasetListQuerySortFieldsList>;
-
 /** Sort configuration for a `DatasetListQuery`. */
 export interface DatasetListQuerySort {
   /** List of fields to sort the rows by, applied in order. */
   fields: DatasetListQuerySortFieldsList;
 }
-export const DatasetListQuerySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: DatasetListQuerySortFieldsList,
-  }),
-).annotate({ identifier: "DatasetListQuerySort" }) as any as S.Schema<DatasetListQuerySort>;
-
 /** Query that lists the rows of a published dataset (a DDSQL query) without aggregation. */
 export interface DatasetListQuery {
   data_source: DatasetListQueryDataSourceType | (string & {});
@@ -4831,21 +2857,8 @@ export interface DatasetListQuery {
   limit?: number;
   sort?: DatasetListQuerySort;
 }
-export const DatasetListQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: DatasetListQueryDataSourceType,
-    dataset_id: S.String,
-    dataset_provider: PublishedDatasetProvider,
-    filter: S.optional(S.String),
-    limit: S.optional(S.Number),
-    sort: S.optional(DatasetListQuerySort),
-  }),
-).annotate({ identifier: "DatasetListQuery" }) as any as S.Schema<DatasetListQuery>;
-
 /** Identifies which host map request format the sibling fields on `HostMapWidgetDefinitionRequests` describe: an infrastructure-backed request or a DDSQL published-dataset request. */
 export type HostMapWidgetDefinitionRequestType = "infrastructure_hostmap" | "data_projection";
-export const HostMapWidgetDefinitionRequestType = S.String;
-
 /** Query definition for the host map widget. Supports three mutually exclusive formats distinguished by `request_type`: the deprecated legacy metric-based format (`fill`/`size`, no `request_type`), the infrastructure-backed format (`request_type: infrastructure_hostmap`), and the DDSQL published-dataset format (`request_type: data_projection`). */
 export interface HostMapWidgetDefinitionRequests {
   /** Optional child entities for hierarchical visualization (for example, host -> container). Only used by the infrastructure-backed format. */
@@ -4877,33 +2890,8 @@ export interface HostMapWidgetDefinitionRequests {
   size?: HostMapRequest;
   style?: HostMapWidgetInfrastructureStyle;
 }
-export const HostMapWidgetDefinitionRequests = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    child: S.optional(HostMapWidgetInfrastructureRequest),
-    conditional_formats: S.optional(HostMapWidgetDefinitionRequestsConditionalFormatsList),
-    enrichments: S.optional(HostMapWidgetDefinitionRequestsEnrichmentsList),
-    fill: S.optional(HostMapRequest),
-    filter: S.optional(S.String),
-    group_by: S.optional(HostMapWidgetDefinitionRequestsGroupByList),
-    limit: S.optional(S.Number),
-    no_group_hosts: S.optional(S.Boolean),
-    no_metric_hosts: S.optional(S.Boolean),
-    node_type: S.optional(HostMapWidgetNodeType),
-    projection: S.optional(HostMapWidgetProjection),
-    query: S.optional(DatasetListQuery),
-    request_type: S.optional(HostMapWidgetDefinitionRequestType),
-    size: S.optional(HostMapRequest),
-    style: S.optional(HostMapWidgetInfrastructureStyle),
-  }),
-).annotate({
-  identifier: "HostMapWidgetDefinitionRequests",
-}) as any as S.Schema<HostMapWidgetDefinitionRequests>;
-
 /** Deprecated - Only used by the legacy metric-based format. Use `filter` inside `requests` instead. */
 export type HostMapWidgetDefinitionScopeList = Array<string>;
-export const HostMapWidgetDefinitionScopeList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostMapWidgetDefinitionScopeList>;
-
 /** Deprecated - The style to apply to the legacy metric-based host map widget. Use `HostMapWidgetInfrastructureStyle` instead. */
 export interface HostMapWidgetDefinitionStyle {
   /** Max value to use to color the map. */
@@ -4915,21 +2903,8 @@ export interface HostMapWidgetDefinitionStyle {
   /** Whether to flip the palette tones. */
   palette_flip?: boolean;
 }
-export const HostMapWidgetDefinitionStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fill_max: S.optional(S.String),
-    fill_min: S.optional(S.String),
-    palette: S.optional(S.String),
-    palette_flip: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "HostMapWidgetDefinitionStyle",
-}) as any as S.Schema<HostMapWidgetDefinitionStyle>;
-
 /** Type of the host map widget. */
 export type HostMapWidgetDefinitionType = "hostmap";
-export const HostMapWidgetDefinitionType = S.String;
-
 /** The host map widget graphs any metric across your hosts using the same visualization available from the main Host Map page. */
 export interface HostMapWidgetDefinition {
   /** List of custom links. */
@@ -4958,50 +2933,18 @@ export interface HostMapWidgetDefinition {
   title_size?: string;
   type: HostMapWidgetDefinitionType;
 }
-export const HostMapWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(HostMapWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    group: S.optional(HostMapWidgetDefinitionGroupList),
-    no_group_hosts: S.optional(S.Boolean),
-    no_metric_hosts: S.optional(S.Boolean),
-    node_type: S.optional(WidgetNodeType),
-    notes: S.optional(S.String),
-    requests: HostMapWidgetDefinitionRequests,
-    scope: S.optional(HostMapWidgetDefinitionScopeList),
-    style: S.optional(HostMapWidgetDefinitionStyle),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: HostMapWidgetDefinitionType,
-  }),
-).annotate({ identifier: "HostMapWidgetDefinition" }) as any as S.Schema<HostMapWidgetDefinition>;
-
 /** Type of the iframe widget. */
 export type IFrameWidgetDefinitionType = "iframe";
-export const IFrameWidgetDefinitionType = S.String;
-
 /** The iframe widget allows you to embed a portion of any other web page on your dashboard. */
 export interface IFrameWidgetDefinition {
   type: IFrameWidgetDefinitionType;
   /** URL of the iframe. */
   url: string;
 }
-export const IFrameWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IFrameWidgetDefinitionType,
-    url: S.String,
-  }),
-).annotate({ identifier: "IFrameWidgetDefinition" }) as any as S.Schema<IFrameWidgetDefinition>;
-
 /** Horizontal alignment. */
 export type WidgetHorizontalAlign = "center" | "left" | "right";
-export const WidgetHorizontalAlign = S.String;
-
 /** Size of the margins around the image. **Note**: `small` and `large` values are deprecated. */
 export type WidgetMargin = "sm" | "md" | "lg" | "small" | "large";
-export const WidgetMargin = S.String;
-
 /** How to size the image on the widget. The values are based on the image `object-fit` CSS properties. **Note**: `zoom`, `fit` and `center` values are deprecated. */
 export type WidgetImageSizing =
   | "fill"
@@ -5012,16 +2955,10 @@ export type WidgetImageSizing =
   | "zoom"
   | "fit"
   | "center";
-export const WidgetImageSizing = S.String;
-
 /** Type of the image widget. */
 export type ImageWidgetDefinitionType = "image";
-export const ImageWidgetDefinitionType = S.String;
-
 /** Vertical alignment. */
 export type WidgetVerticalAlign = "center" | "top" | "bottom";
-export const WidgetVerticalAlign = S.String;
-
 /** The image widget allows you to embed an image on your dashboard. An image can be a PNG, JPG, or animated GIF. */
 export interface ImageWidgetDefinition {
   /** Whether to display a background or not. */
@@ -5038,29 +2975,10 @@ export interface ImageWidgetDefinition {
   url_dark_theme?: string;
   vertical_align?: WidgetVerticalAlign | (string & {});
 }
-export const ImageWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    has_background: S.optional(S.Boolean),
-    has_border: S.optional(S.Boolean),
-    horizontal_align: S.optional(WidgetHorizontalAlign),
-    margin: S.optional(WidgetMargin),
-    sizing: S.optional(WidgetImageSizing),
-    type: ImageWidgetDefinitionType,
-    url: S.String,
-    url_dark_theme: S.optional(S.String),
-    vertical_align: S.optional(WidgetVerticalAlign),
-  }),
-).annotate({ identifier: "ImageWidgetDefinition" }) as any as S.Schema<ImageWidgetDefinition>;
-
 /** Widget columns. */
 export type ListStreamWidgetRequestColumnsList = Array<ListStreamColumn>;
-export const ListStreamWidgetRequestColumnsList =
-  GeomapWidgetRequestColumnsList as any as S.Schema<ListStreamWidgetRequestColumnsList>;
-
 /** Widget response format. */
 export type ListStreamResponseFormat = "event_list";
-export const ListStreamResponseFormat = S.String;
-
 /** Updated list stream widget. */
 export interface ListStreamWidgetRequest {
   /** Widget columns. */
@@ -5068,24 +2986,10 @@ export interface ListStreamWidgetRequest {
   query: ListStreamQuery;
   response_format: ListStreamResponseFormat;
 }
-export const ListStreamWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: ListStreamWidgetRequestColumnsList,
-    query: ListStreamQuery,
-    response_format: ListStreamResponseFormat,
-  }),
-).annotate({ identifier: "ListStreamWidgetRequest" }) as any as S.Schema<ListStreamWidgetRequest>;
-
 /** Request payload used to query items. */
 export type ListStreamWidgetDefinitionRequestsList = Array<ListStreamWidgetRequest>;
-export const ListStreamWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  ListStreamWidgetRequest,
-) as any as S.Schema<ListStreamWidgetDefinitionRequestsList>;
-
 /** Type of the list stream widget. */
 export type ListStreamWidgetDefinitionType = "list_stream";
-export const ListStreamWidgetDefinitionType = S.String;
-
 /** The list stream visualization displays a table of recent events in your application that match a search criteria using user-defined columns. */
 export interface ListStreamWidgetDefinition {
   /** The description of the widget. */
@@ -5103,40 +3007,14 @@ export interface ListStreamWidgetDefinition {
   title_size?: string;
   type: ListStreamWidgetDefinitionType;
 }
-export const ListStreamWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    legend_size: S.optional(S.String),
-    requests: ListStreamWidgetDefinitionRequestsList,
-    show_legend: S.optional(S.Boolean),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: ListStreamWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "ListStreamWidgetDefinition",
-}) as any as S.Schema<ListStreamWidgetDefinition>;
-
 /** Which columns to display on the widget. */
 export type LogStreamWidgetDefinitionColumnsList = Array<string>;
-export const LogStreamWidgetDefinitionColumnsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogStreamWidgetDefinitionColumnsList>;
-
 /** An array of index names to query in the stream. Use [] to query all indexes at once. */
 export type LogStreamWidgetDefinitionIndexesList = Array<string>;
-export const LogStreamWidgetDefinitionIndexesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogStreamWidgetDefinitionIndexesList>;
-
 /** Amount of log lines to display */
 export type WidgetMessageDisplay = "inline" | "expanded-md" | "expanded-lg";
-export const WidgetMessageDisplay = S.String;
-
 /** Type of the log stream widget. */
 export type LogStreamWidgetDefinitionType = "log_stream";
-export const LogStreamWidgetDefinitionType = S.String;
-
 /** The Log Stream displays a log flow matching the defined query. */
 export interface LogStreamWidgetDefinition {
   /** Which columns to display on the widget. */
@@ -5163,35 +3041,10 @@ export interface LogStreamWidgetDefinition {
   title_size?: string;
   type: LogStreamWidgetDefinitionType;
 }
-export const LogStreamWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(LogStreamWidgetDefinitionColumnsList),
-    description: S.optional(S.String),
-    indexes: S.optional(LogStreamWidgetDefinitionIndexesList),
-    logset: S.optional(S.String),
-    message_display: S.optional(WidgetMessageDisplay),
-    query: S.optional(S.String),
-    show_date_column: S.optional(S.Boolean),
-    show_message_column: S.optional(S.Boolean),
-    sort: S.optional(WidgetFieldSort),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: LogStreamWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "LogStreamWidgetDefinition",
-}) as any as S.Schema<LogStreamWidgetDefinition>;
-
 /** Which color to use on the widget. */
 export type WidgetColorPreference = "background" | "text";
-export const WidgetColorPreference = S.String;
-
 /** What to display on the widget. */
 export type WidgetMonitorSummaryDisplayFormat = "counts" | "countsAndList" | "list";
-export const WidgetMonitorSummaryDisplayFormat = S.String;
-
 /** Widget sorting methods. */
 export type WidgetMonitorSummarySort =
   | "name"
@@ -5211,16 +3064,10 @@ export type WidgetMonitorSummarySort =
   | "triggered,desc"
   | "priority,asc"
   | "priority,desc";
-export const WidgetMonitorSummarySort = S.String;
-
 /** Which summary type should be used. */
 export type WidgetSummaryType = "monitors" | "groups" | "combined";
-export const WidgetSummaryType = S.String;
-
 /** Type of the monitor summary widget. */
 export type MonitorSummaryWidgetDefinitionType = "manage_status";
-export const MonitorSummaryWidgetDefinitionType = S.String;
-
 /** The monitor summary widget displays a summary view of all your Datadog monitors, or a subset based on a query. */
 export interface MonitorSummaryWidgetDefinition {
   color_preference?: WidgetColorPreference | (string & {});
@@ -5248,36 +3095,10 @@ export interface MonitorSummaryWidgetDefinition {
   title_size?: string;
   type: MonitorSummaryWidgetDefinitionType;
 }
-export const MonitorSummaryWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color_preference: S.optional(WidgetColorPreference),
-    count: S.optional(S.Number),
-    description: S.optional(S.String),
-    display_format: S.optional(WidgetMonitorSummaryDisplayFormat),
-    hide_zero_counts: S.optional(S.Boolean),
-    query: S.String,
-    show_last_triggered: S.optional(S.Boolean),
-    show_priority: S.optional(S.Boolean),
-    sort: S.optional(WidgetMonitorSummarySort),
-    start: S.optional(S.Number),
-    summary_type: S.optional(WidgetSummaryType),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: MonitorSummaryWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "MonitorSummaryWidgetDefinition",
-}) as any as S.Schema<MonitorSummaryWidgetDefinition>;
-
 /** Define how you want to align the text on the widget. */
 export type WidgetTickEdge = "bottom" | "left" | "right" | "top";
-export const WidgetTickEdge = S.String;
-
 /** Type of the note widget. */
 export type NoteWidgetDefinitionType = "note";
-export const NoteWidgetDefinitionType = S.String;
-
 /** The notes and links widget is similar to free text widget, but allows for more formatting options. */
 export interface NoteWidgetDefinition {
   /** Background color of the note. */
@@ -5297,26 +3118,8 @@ export interface NoteWidgetDefinition {
   type: NoteWidgetDefinitionType;
   vertical_align?: WidgetVerticalAlign | (string & {});
 }
-export const NoteWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    background_color: S.optional(S.String),
-    content: S.String,
-    font_size: S.optional(S.String),
-    has_padding: S.optional(S.Boolean),
-    show_tick: S.optional(S.Boolean),
-    text_align: S.optional(WidgetTextAlign),
-    tick_edge: S.optional(WidgetTickEdge),
-    tick_pos: S.optional(S.String),
-    type: NoteWidgetDefinitionType,
-    vertical_align: S.optional(WidgetVerticalAlign),
-  }),
-).annotate({ identifier: "NoteWidgetDefinition" }) as any as S.Schema<NoteWidgetDefinition>;
-
 /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. */
 export type PowerpackTemplateVariableContentsValuesList = Array<string>;
-export const PowerpackTemplateVariableContentsValuesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<PowerpackTemplateVariableContentsValuesList>;
-
 /** Powerpack template variable contents. */
 export interface PowerpackTemplateVariableContents {
   /** The name of the variable. */
@@ -5326,29 +3129,12 @@ export interface PowerpackTemplateVariableContents {
   /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. */
   values: PowerpackTemplateVariableContentsValuesList;
 }
-export const PowerpackTemplateVariableContents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    prefix: S.optional(S.String),
-    values: PowerpackTemplateVariableContentsValuesList,
-  }),
-).annotate({
-  identifier: "PowerpackTemplateVariableContents",
-}) as any as S.Schema<PowerpackTemplateVariableContents>;
-
 /** Template variables controlled at the powerpack level. */
 export type PowerpackTemplateVariablesControlledByPowerpackList =
   Array<PowerpackTemplateVariableContents>;
-export const PowerpackTemplateVariablesControlledByPowerpackList = /*@__PURE__*/ S.Array(
-  PowerpackTemplateVariableContents,
-) as any as S.Schema<PowerpackTemplateVariablesControlledByPowerpackList>;
-
 /** Template variables controlled by the external resource, such as the dashboard this powerpack is on. */
 export type PowerpackTemplateVariablesControlledExternallyList =
   Array<PowerpackTemplateVariableContents>;
-export const PowerpackTemplateVariablesControlledExternallyList =
-  PowerpackTemplateVariablesControlledByPowerpackList as any as S.Schema<PowerpackTemplateVariablesControlledExternallyList>;
-
 /** Powerpack template variables. */
 export interface PowerpackTemplateVariables {
   /** Template variables controlled at the powerpack level. */
@@ -5356,19 +3142,8 @@ export interface PowerpackTemplateVariables {
   /** Template variables controlled by the external resource, such as the dashboard this powerpack is on. */
   controlled_externally?: PowerpackTemplateVariablesControlledExternallyList;
 }
-export const PowerpackTemplateVariables = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlled_by_powerpack: S.optional(PowerpackTemplateVariablesControlledByPowerpackList),
-    controlled_externally: S.optional(PowerpackTemplateVariablesControlledExternallyList),
-  }),
-).annotate({
-  identifier: "PowerpackTemplateVariables",
-}) as any as S.Schema<PowerpackTemplateVariables>;
-
 /** Type of the powerpack widget. */
 export type PowerpackWidgetDefinitionType = "powerpack";
-export const PowerpackWidgetDefinitionType = S.String;
-
 /** The powerpack widget allows you to keep similar graphs together on your timeboard. Each group has a custom header, can hold one to many graphs, and is collapsible. */
 export interface PowerpackWidgetDefinition {
   /** Background color of the powerpack title. */
@@ -5384,44 +3159,18 @@ export interface PowerpackWidgetDefinition {
   title?: string;
   type: PowerpackWidgetDefinitionType;
 }
-export const PowerpackWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    background_color: S.optional(S.String),
-    banner_img: S.optional(S.String),
-    powerpack_id: S.String,
-    show_title: S.optional(S.Boolean),
-    template_variables: S.optional(PowerpackTemplateVariables),
-    title: S.optional(S.String),
-    type: PowerpackWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "PowerpackWidgetDefinition",
-}) as any as S.Schema<PowerpackWidgetDefinition>;
-
 /** List of custom links. */
 export type PointPlotWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const PointPlotWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<PointPlotWidgetDefinitionCustomLinksList>;
-
 /** Type of legend to show for the point plot widget. */
 export type PointPlotWidgetLegendType = "automatic" | "none";
-export const PointPlotWidgetLegendType = S.String;
-
 /** Legend configuration for the point plot widget. */
 export interface PointPlotWidgetLegend {
   type: PointPlotWidgetLegendType | (string & {});
 }
-export const PointPlotWidgetLegend = BarChartWidgetFlat as any as S.Schema<PointPlotWidgetLegend>;
-
 /** List of markers for the widget. */
 export type PointPlotWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const PointPlotWidgetDefinitionMarkersList =
-  DistributionWidgetDefinitionMarkersList as any as S.Schema<PointPlotWidgetDefinitionMarkersList>;
-
 /** Dimension of the point plot. */
 export type PointPlotDimension = "group" | "time" | "y" | "radius";
-export const PointPlotDimension = S.String;
-
 /** Dimension mapping for the point plot projection. */
 export interface PointPlotProjectionDimension {
   /** Alias for the column. */
@@ -5430,31 +3179,12 @@ export interface PointPlotProjectionDimension {
   column: string;
   dimension: PointPlotDimension | (string & {});
 }
-export const PointPlotProjectionDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    column: S.String,
-    dimension: PointPlotDimension,
-  }),
-).annotate({
-  identifier: "PointPlotProjectionDimension",
-}) as any as S.Schema<PointPlotProjectionDimension>;
-
 /** List of dimension mappings for the projection. */
 export type PointPlotProjectionDimensionsList = Array<PointPlotProjectionDimension>;
-export const PointPlotProjectionDimensionsList = /*@__PURE__*/ S.Array(
-  PointPlotProjectionDimension,
-) as any as S.Schema<PointPlotProjectionDimensionsList>;
-
 /** Additional columns to include in the projection. */
 export type PointPlotProjectionExtraColumnsList = Array<string>;
-export const PointPlotProjectionExtraColumnsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<PointPlotProjectionExtraColumnsList>;
-
 /** Type of the projection. */
 export type PointPlotProjectionType = "point_plot";
-export const PointPlotProjectionType = S.String;
-
 /** Projection configuration for the point plot widget. */
 export interface PointPlotProjection {
   /** List of dimension mappings for the projection. */
@@ -5463,19 +3193,8 @@ export interface PointPlotProjection {
   extra_columns?: PointPlotProjectionExtraColumnsList;
   type: PointPlotProjectionType | (string & {});
 }
-export const PointPlotProjection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: PointPlotProjectionDimensionsList,
-    extra_columns: S.optional(PointPlotProjectionExtraColumnsList),
-    type: PointPlotProjectionType,
-  }),
-).annotate({ identifier: "PointPlotProjection" }) as any as S.Schema<PointPlotProjection>;
-
 /** List of indexes to query. */
 export type DataProjectionQueryIndexesList = Array<string>;
-export const DataProjectionQueryIndexesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DataProjectionQueryIndexesList>;
-
 /** Query configuration for a data projection request. */
 export interface DataProjectionQuery {
   /** Data source for the query. */
@@ -5487,19 +3206,8 @@ export interface DataProjectionQuery {
   /** Storage location for the query. */
   storage?: string;
 }
-export const DataProjectionQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: S.String,
-    indexes: S.optional(DataProjectionQueryIndexesList),
-    query_string: S.String,
-    storage: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataProjectionQuery" }) as any as S.Schema<DataProjectionQuery>;
-
 /** Type of a data projection request. */
 export type DataProjectionRequestType = "data_projection";
-export const DataProjectionRequestType = S.String;
-
 /** Request configuration for the point plot widget. */
 export interface PointPlotWidgetRequest {
   /** Maximum number of data points to return. */
@@ -5508,25 +3216,10 @@ export interface PointPlotWidgetRequest {
   query: DataProjectionQuery;
   request_type: DataProjectionRequestType | (string & {});
 }
-export const PointPlotWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    projection: PointPlotProjection,
-    query: DataProjectionQuery,
-    request_type: DataProjectionRequestType,
-  }),
-).annotate({ identifier: "PointPlotWidgetRequest" }) as any as S.Schema<PointPlotWidgetRequest>;
-
 /** List of request configurations for the widget. */
 export type PointPlotWidgetDefinitionRequestsList = Array<PointPlotWidgetRequest>;
-export const PointPlotWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  PointPlotWidgetRequest,
-) as any as S.Schema<PointPlotWidgetDefinitionRequestsList>;
-
 /** Type of the point plot widget. */
 export type PointPlotWidgetDefinitionType = "point_plot";
-export const PointPlotWidgetDefinitionType = S.String;
-
 /** The point plot displays individual data points over time. */
 export interface PointPlotWidgetDefinition {
   /** List of custom links. */
@@ -5547,36 +3240,13 @@ export interface PointPlotWidgetDefinition {
   type: PointPlotWidgetDefinitionType;
   yaxis?: WidgetAxis;
 }
-export const PointPlotWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(PointPlotWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    legend: S.optional(PointPlotWidgetLegend),
-    markers: S.optional(PointPlotWidgetDefinitionMarkersList),
-    requests: PointPlotWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: PointPlotWidgetDefinitionType,
-    yaxis: S.optional(WidgetAxis),
-  }),
-).annotate({
-  identifier: "PointPlotWidgetDefinition",
-}) as any as S.Schema<PointPlotWidgetDefinition>;
-
 /** List of custom links. */
 export type QueryValueWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const QueryValueWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<QueryValueWidgetDefinitionCustomLinksList>;
-
 /** Color-coding direction: `increase_better` (green on rise), `decrease_better` (green on drop), or `neutral` (no color). */
 export type QueryValueWidgetComparisonDirectionality =
   | "increase_better"
   | "decrease_better"
   | "neutral";
-export const QueryValueWidgetComparisonDirectionality = S.String;
-
 /** Fixed time range for a `custom_timeframe` comparison. */
 export interface ComparisonCustomTimeframe {
   /** Start time in milliseconds since epoch. */
@@ -5584,9 +3254,6 @@ export interface ComparisonCustomTimeframe {
   /** End time in milliseconds since epoch. */
   to: number;
 }
-export const ComparisonCustomTimeframe =
-  FunnelComparisonCustomTimeframe as any as S.Schema<ComparisonCustomTimeframe>;
-
 /** The comparison window type. */
 export type ComparisonDurationType =
   | "previous_timeframe"
@@ -5594,25 +3261,14 @@ export type ComparisonDurationType =
   | "previous_day"
   | "previous_week"
   | "previous_month";
-export const ComparisonDurationType = S.String;
-
 /** The comparison period. Use a preset `type` value or set `type` to `custom_timeframe` and provide `custom_timeframe` with explicit millisecond epoch bounds. */
 export interface ComparisonDuration {
   /** Required when `type` is `custom_timeframe`. Fixed time range to compare against. */
   custom_timeframe?: ComparisonCustomTimeframe;
   type: ComparisonDurationType | (string & {});
 }
-export const ComparisonDuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_timeframe: S.optional(ComparisonCustomTimeframe),
-    type: ComparisonDurationType,
-  }),
-).annotate({ identifier: "ComparisonDuration" }) as any as S.Schema<ComparisonDuration>;
-
 /** How the delta is expressed: `absolute` (raw difference), `relative` (percentage), or `both`. */
 export type QueryValueWidgetComparisonType = "absolute" | "relative" | "both";
-export const QueryValueWidgetComparisonType = S.String;
-
 /** A change indicator that compares the current value to a historical period. */
 export interface QueryValueWidgetComparison {
   /** Which direction of change is considered an improvement, determining the indicator color. */
@@ -5620,31 +3276,12 @@ export interface QueryValueWidgetComparison {
   duration: ComparisonDuration;
   type?: QueryValueWidgetComparisonType | (string & {});
 }
-export const QueryValueWidgetComparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directionality: S.optional(QueryValueWidgetComparisonDirectionality),
-    duration: ComparisonDuration,
-    type: S.optional(QueryValueWidgetComparisonType),
-  }),
-).annotate({
-  identifier: "QueryValueWidgetComparison",
-}) as any as S.Schema<QueryValueWidgetComparison>;
-
 /** List of conditional formats. */
 export type QueryValueWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const QueryValueWidgetRequestConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<QueryValueWidgetRequestConditionalFormatsList>;
-
 /** List of formulas that operate on queries. */
 export type QueryValueWidgetRequestFormulasList = Array<WidgetFormula>;
-export const QueryValueWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<QueryValueWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type QueryValueWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const QueryValueWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<QueryValueWidgetRequestQueriesList>;
-
 /** Updated query value widget. */
 export interface QueryValueWidgetRequest {
   aggregator?: WidgetAggregator | (string & {});
@@ -5678,53 +3315,17 @@ export interface QueryValueWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
   security_query?: LogQueryDefinition;
 }
-export const QueryValueWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(WidgetAggregator),
-    apm_query: S.optional(LogQueryDefinition),
-    audit_query: S.optional(LogQueryDefinition),
-    comparison: S.optional(QueryValueWidgetComparison),
-    conditional_formats: S.optional(QueryValueWidgetRequestConditionalFormatsList),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(QueryValueWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(QueryValueWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-  }),
-).annotate({ identifier: "QueryValueWidgetRequest" }) as any as S.Schema<QueryValueWidgetRequest>;
-
 /** Widget definition. */
 export type QueryValueWidgetDefinitionRequestsList = Array<QueryValueWidgetRequest>;
-export const QueryValueWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  QueryValueWidgetRequest,
-) as any as S.Schema<QueryValueWidgetDefinitionRequestsList>;
-
 /** Timeseries is made using an area or bars. */
 export type TimeseriesBackgroundType = "bars" | "area";
-export const TimeseriesBackgroundType = S.String;
-
 /** Set a timeseries on the widget background. */
 export interface TimeseriesBackground {
   type: TimeseriesBackgroundType | (string & {});
   yaxis?: WidgetAxis;
 }
-export const TimeseriesBackground = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TimeseriesBackgroundType,
-    yaxis: S.optional(WidgetAxis),
-  }),
-).annotate({ identifier: "TimeseriesBackground" }) as any as S.Schema<TimeseriesBackground>;
-
 /** Type of the query value widget. */
 export type QueryValueWidgetDefinitionType = "query_value";
-export const QueryValueWidgetDefinitionType = S.String;
-
 /** Query values display the current value of a given metric, APM, or log query. */
 export interface QueryValueWidgetDefinition {
   /** Whether to use auto-scaling or not. */
@@ -5749,63 +3350,23 @@ export interface QueryValueWidgetDefinition {
   title_size?: string;
   type: QueryValueWidgetDefinitionType;
 }
-export const QueryValueWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscale: S.optional(S.Boolean),
-    custom_links: S.optional(QueryValueWidgetDefinitionCustomLinksList),
-    custom_unit: S.optional(S.String),
-    description: S.optional(S.String),
-    precision: S.optional(S.Number),
-    requests: QueryValueWidgetDefinitionRequestsList,
-    text_align: S.optional(WidgetTextAlign),
-    time: S.optional(WidgetTime),
-    timeseries_background: S.optional(TimeseriesBackground),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: QueryValueWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "QueryValueWidgetDefinition",
-}) as any as S.Schema<QueryValueWidgetDefinition>;
-
 /** Request type for retention curve widget. */
 export type RetentionCurveRequestType = "retention_curve";
-export const RetentionCurveRequestType = S.String;
-
 /** Style configuration for retention curve. */
 export interface RetentionCurveStyle {
   /** Color palette for the retention curve. */
   palette?: string;
 }
-export const RetentionCurveStyle = WidgetStyle as any as S.Schema<RetentionCurveStyle>;
-
 /** Retention curve widget request. */
 export interface RetentionCurveWidgetRequest {
   query: RetentionQuery;
   request_type: RetentionCurveRequestType | (string & {});
   style?: RetentionCurveStyle;
 }
-export const RetentionCurveWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: RetentionQuery,
-    request_type: RetentionCurveRequestType,
-    style: S.optional(RetentionCurveStyle),
-  }),
-).annotate({
-  identifier: "RetentionCurveWidgetRequest",
-}) as any as S.Schema<RetentionCurveWidgetRequest>;
-
 /** List of Retention Curve widget requests. */
 export type RetentionCurveWidgetDefinitionRequestsList = Array<RetentionCurveWidgetRequest>;
-export const RetentionCurveWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  RetentionCurveWidgetRequest,
-) as any as S.Schema<RetentionCurveWidgetDefinitionRequestsList>;
-
 /** Type of the Retention Curve widget. */
 export type RetentionCurveWidgetDefinitionType = "retention_curve";
-export const RetentionCurveWidgetDefinitionType = S.String;
-
 /** The retention curve widget visualizes user retention rates over time. */
 export interface RetentionCurveWidgetDefinition {
   /** The description of the widget. */
@@ -5820,25 +3381,8 @@ export interface RetentionCurveWidgetDefinition {
   title_size?: string;
   type: RetentionCurveWidgetDefinitionType;
 }
-export const RetentionCurveWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    requests: RetentionCurveWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: RetentionCurveWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "RetentionCurveWidgetDefinition",
-}) as any as S.Schema<RetentionCurveWidgetDefinition>;
-
 /** List of custom links. */
 export type RunWorkflowWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const RunWorkflowWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<RunWorkflowWidgetDefinitionCustomLinksList>;
-
 /** Object to map a dashboard template variable to a workflow input. */
 export interface RunWorkflowWidgetInput {
   /** Name of the workflow input. */
@@ -5846,23 +3390,10 @@ export interface RunWorkflowWidgetInput {
   /** Dashboard template variable. Can be suffixed with '.value' or '.key'. */
   value: string;
 }
-export const RunWorkflowWidgetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "RunWorkflowWidgetInput" }) as any as S.Schema<RunWorkflowWidgetInput>;
-
 /** Array of workflow inputs to map to dashboard template variables. */
 export type RunWorkflowWidgetDefinitionInputsList = Array<RunWorkflowWidgetInput>;
-export const RunWorkflowWidgetDefinitionInputsList = /*@__PURE__*/ S.Array(
-  RunWorkflowWidgetInput,
-) as any as S.Schema<RunWorkflowWidgetDefinitionInputsList>;
-
 /** Type of the run workflow widget. */
 export type RunWorkflowWidgetDefinitionType = "run_workflow";
-export const RunWorkflowWidgetDefinitionType = S.String;
-
 /** Run workflow is widget that allows you to run a workflow from a dashboard. */
 export interface RunWorkflowWidgetDefinition {
   /** List of custom links. */
@@ -5881,28 +3412,8 @@ export interface RunWorkflowWidgetDefinition {
   /** Workflow id. */
   workflow_id: string;
 }
-export const RunWorkflowWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(RunWorkflowWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    inputs: S.optional(RunWorkflowWidgetDefinitionInputsList),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: RunWorkflowWidgetDefinitionType,
-    workflow_id: S.String,
-  }),
-).annotate({
-  identifier: "RunWorkflowWidgetDefinition",
-}) as any as S.Schema<RunWorkflowWidgetDefinition>;
-
 /** Options for sorting results. */
 export type SLOListWidgetQuerySortList = Array<WidgetFieldSort>;
-export const SLOListWidgetQuerySortList = /*@__PURE__*/ S.Array(
-  WidgetFieldSort,
-) as any as S.Schema<SLOListWidgetQuerySortList>;
-
 /** Updated SLO List widget. */
 export interface SLOListWidgetQuery {
   /** Maximum number of results to display in the table. */
@@ -5912,40 +3423,17 @@ export interface SLOListWidgetQuery {
   /** Options for sorting results. */
   sort?: SLOListWidgetQuerySortList;
 }
-export const SLOListWidgetQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    query_string: S.String,
-    sort: S.optional(SLOListWidgetQuerySortList),
-  }),
-).annotate({ identifier: "SLOListWidgetQuery" }) as any as S.Schema<SLOListWidgetQuery>;
-
 /** Widget request type. */
 export type SLOListWidgetRequestType = "slo_list";
-export const SLOListWidgetRequestType = S.String;
-
 /** Updated SLO List widget. */
 export interface SLOListWidgetRequest {
   query: SLOListWidgetQuery;
   request_type: SLOListWidgetRequestType | (string & {});
 }
-export const SLOListWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: SLOListWidgetQuery,
-    request_type: SLOListWidgetRequestType,
-  }),
-).annotate({ identifier: "SLOListWidgetRequest" }) as any as S.Schema<SLOListWidgetRequest>;
-
 /** Array of one request object to display in the widget. */
 export type SLOListWidgetDefinitionRequestsList = Array<SLOListWidgetRequest>;
-export const SLOListWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  SLOListWidgetRequest,
-) as any as S.Schema<SLOListWidgetDefinitionRequestsList>;
-
 /** Type of the SLO List widget. */
 export type SLOListWidgetDefinitionType = "slo_list";
-export const SLOListWidgetDefinitionType = S.String;
-
 /** Use the SLO List widget to track your SLOs (Service Level Objectives) on dashboards. */
 export interface SLOListWidgetDefinition {
   /** The description of the widget. */
@@ -5959,17 +3447,6 @@ export interface SLOListWidgetDefinition {
   title_size?: string;
   type: SLOListWidgetDefinitionType;
 }
-export const SLOListWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    requests: SLOListWidgetDefinitionRequestsList,
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: SLOListWidgetDefinitionType,
-  }),
-).annotate({ identifier: "SLOListWidgetDefinition" }) as any as S.Schema<SLOListWidgetDefinition>;
-
 /** Define a time window. */
 export type WidgetTimeWindows =
   | "7d"
@@ -5980,21 +3457,12 @@ export type WidgetTimeWindows =
   | "month_to_date"
   | "previous_month"
   | "global_time";
-export const WidgetTimeWindows = S.String;
-
 /** Times being monitored. */
 export type SLOWidgetDefinitionTimeWindowsList = Array<WidgetTimeWindows | (string & {})>;
-export const SLOWidgetDefinitionTimeWindowsList =
-  ListStreamQueryStatesList as any as S.Schema<SLOWidgetDefinitionTimeWindowsList>;
-
 /** Type of the SLO widget. */
 export type SLOWidgetDefinitionType = "slo";
-export const SLOWidgetDefinitionType = S.String;
-
 /** Define how you want the SLO to be displayed. */
 export type WidgetViewMode = "overall" | "component" | "both";
-export const WidgetViewMode = S.String;
-
 /** Use the SLO and uptime widget to track your SLOs (Service Level Objectives) and uptime on dashboards. */
 export interface SLOWidgetDefinition {
   /** Additional filters applied to the SLO query. */
@@ -6019,37 +3487,12 @@ export interface SLOWidgetDefinition {
   /** Type of view displayed by the widget. */
   view_type: string;
 }
-export const SLOWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additional_query_filters: S.optional(S.String),
-    description: S.optional(S.String),
-    global_time_target: S.optional(S.String),
-    show_error_budget: S.optional(S.Boolean),
-    slo_id: S.optional(S.String),
-    time_windows: S.optional(SLOWidgetDefinitionTimeWindowsList),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: SLOWidgetDefinitionType,
-    view_mode: S.optional(WidgetViewMode),
-    view_type: S.String,
-  }),
-).annotate({ identifier: "SLOWidgetDefinition" }) as any as S.Schema<SLOWidgetDefinition>;
-
 /** List of groups used for colors. */
 export type ScatterPlotWidgetDefinitionColorByGroupsList = Array<string>;
-export const ScatterPlotWidgetDefinitionColorByGroupsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ScatterPlotWidgetDefinitionColorByGroupsList>;
-
 /** List of custom links. */
 export type ScatterPlotWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ScatterPlotWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ScatterPlotWidgetDefinitionCustomLinksList>;
-
 /** Dimension of the Scatterplot. */
 export type ScatterplotDimension = "x" | "y" | "radius" | "color";
-export const ScatterplotDimension = S.String;
-
 /** Formula to be used in a Scatterplot widget query. */
 export interface ScatterplotWidgetFormula {
   /** Expression alias. */
@@ -6058,25 +3501,10 @@ export interface ScatterplotWidgetFormula {
   /** String expression built from queries, formulas, and functions. */
   formula: string;
 }
-export const ScatterplotWidgetFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    dimension: ScatterplotDimension,
-    formula: S.String,
-  }),
-).annotate({ identifier: "ScatterplotWidgetFormula" }) as any as S.Schema<ScatterplotWidgetFormula>;
-
 /** List of Scatterplot formulas that operate on queries. */
 export type ScatterplotTableRequestFormulasList = Array<ScatterplotWidgetFormula>;
-export const ScatterplotTableRequestFormulasList = /*@__PURE__*/ S.Array(
-  ScatterplotWidgetFormula,
-) as any as S.Schema<ScatterplotTableRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type ScatterplotTableRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const ScatterplotTableRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<ScatterplotTableRequestQueriesList>;
-
 /** Scatterplot request containing formulas and functions. */
 export interface ScatterplotTableRequest {
   /** List of Scatterplot formulas that operate on queries. */
@@ -6085,18 +3513,8 @@ export interface ScatterplotTableRequest {
   queries?: ScatterplotTableRequestQueriesList;
   response_format?: FormulaAndFunctionResponseFormat | (string & {});
 }
-export const ScatterplotTableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formulas: S.optional(ScatterplotTableRequestFormulasList),
-    queries: S.optional(ScatterplotTableRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-  }),
-).annotate({ identifier: "ScatterplotTableRequest" }) as any as S.Schema<ScatterplotTableRequest>;
-
 /** Aggregator used for the request. */
 export type ScatterplotWidgetAggregator = "avg" | "last" | "max" | "min" | "sum";
-export const ScatterplotWidgetAggregator = S.String;
-
 /** Updated scatter plot. */
 export interface ScatterPlotRequest {
   aggregator?: ScatterplotWidgetAggregator | (string & {});
@@ -6119,41 +3537,14 @@ export interface ScatterPlotRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
   security_query?: LogQueryDefinition;
 }
-export const ScatterPlotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(ScatterplotWidgetAggregator),
-    apm_query: S.optional(LogQueryDefinition),
-    event_query: S.optional(LogQueryDefinition),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-  }),
-).annotate({ identifier: "ScatterPlotRequest" }) as any as S.Schema<ScatterPlotRequest>;
-
 /** Widget definition. */
 export interface ScatterPlotWidgetDefinitionRequests {
   table?: ScatterplotTableRequest;
   x?: ScatterPlotRequest;
   y?: ScatterPlotRequest;
 }
-export const ScatterPlotWidgetDefinitionRequests = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(ScatterplotTableRequest),
-    x: S.optional(ScatterPlotRequest),
-    y: S.optional(ScatterPlotRequest),
-  }),
-).annotate({
-  identifier: "ScatterPlotWidgetDefinitionRequests",
-}) as any as S.Schema<ScatterPlotWidgetDefinitionRequests>;
-
 /** Type of the scatter plot widget. */
 export type ScatterPlotWidgetDefinitionType = "scatterplot";
-export const ScatterPlotWidgetDefinitionType = S.String;
-
 /** The scatter plot visualization allows you to graph a chosen scope over two different metrics with their respective aggregation. */
 export interface ScatterPlotWidgetDefinition {
   /** List of groups used for colors. */
@@ -6173,33 +3564,10 @@ export interface ScatterPlotWidgetDefinition {
   xaxis?: WidgetAxis;
   yaxis?: WidgetAxis;
 }
-export const ScatterPlotWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color_by_groups: S.optional(ScatterPlotWidgetDefinitionColorByGroupsList),
-    custom_links: S.optional(ScatterPlotWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    requests: ScatterPlotWidgetDefinitionRequests,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: ScatterPlotWidgetDefinitionType,
-    xaxis: S.optional(WidgetAxis),
-    yaxis: S.optional(WidgetAxis),
-  }),
-).annotate({
-  identifier: "ScatterPlotWidgetDefinition",
-}) as any as S.Schema<ScatterPlotWidgetDefinition>;
-
 /** Product Analytics or RUM data source type. */
 export type SankeyRumDataSource = "rum" | "product_analytics";
-export const SankeyRumDataSource = S.String;
-
 /** Secondary join keys. */
 export type SankeyJoinKeysSecondaryList = Array<string>;
-export const SankeyJoinKeysSecondaryList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SankeyJoinKeysSecondaryList>;
-
 /** Join keys. */
 export interface SankeyJoinKeys {
   /** Primary join key. */
@@ -6207,12 +3575,8 @@ export interface SankeyJoinKeys {
   /** Secondary join keys. */
   secondary?: SankeyJoinKeysSecondaryList;
 }
-export const SankeyJoinKeys = UserJourneyJoinKeys as any as S.Schema<SankeyJoinKeys>;
-
 /** Sankey mode for Product Analytics or RUM queries. */
 export type SankeyRumQueryMode = "source" | "target";
-export const SankeyRumQueryMode = S.String;
-
 /** Filter applied to occurrence counts when building a Product Analytics audience. */
 export interface ProductAnalyticsAudienceOccurrenceFilter {
   /** The comparison operator used for the occurrence filter (for example: `gt`, `lt`, `eq`). */
@@ -6220,15 +3584,6 @@ export interface ProductAnalyticsAudienceOccurrenceFilter {
   /** The threshold value to compare occurrence counts against. */
   value?: string;
 }
-export const ProductAnalyticsAudienceOccurrenceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsAudienceOccurrenceFilter",
-}) as any as S.Schema<ProductAnalyticsAudienceOccurrenceFilter>;
-
 /** Query configuration for Product Analytics or RUM Sankey widget. */
 export interface SankeyRumQuery {
   audience_filters?: ProductAnalyticsAudienceFilters;
@@ -6249,79 +3604,31 @@ export interface SankeyRumQuery {
   /** Target. */
   target?: string;
 }
-export const SankeyRumQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audience_filters: S.optional(ProductAnalyticsAudienceFilters),
-    data_source: SankeyRumDataSource,
-    entries_per_step: S.optional(S.Number),
-    join_keys: S.optional(SankeyJoinKeys),
-    mode: SankeyRumQueryMode,
-    number_of_steps: S.optional(S.Number),
-    occurrences: S.optional(ProductAnalyticsAudienceOccurrenceFilter),
-    query_string: S.String,
-    source: S.optional(S.String),
-    subquery_id: S.optional(S.String),
-    target: S.optional(S.String),
-  }),
-).annotate({ identifier: "SankeyRumQuery" }) as any as S.Schema<SankeyRumQuery>;
-
 /** Type of the Sankey widget. */
 export type SankeyWidgetDefinitionType = "sankey";
-export const SankeyWidgetDefinitionType = S.String;
-
 /** Sankey widget request for Product Analytics or RUM data source. */
 export interface SankeyRumRequest {
   query: SankeyRumQuery;
   request_type: SankeyWidgetDefinitionType;
 }
-export const SankeyRumRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: SankeyRumQuery,
-    request_type: SankeyWidgetDefinitionType,
-  }),
-).annotate({ identifier: "SankeyRumRequest" }) as any as S.Schema<SankeyRumRequest>;
-
 /** Compute aggregation for network queries. */
 export interface SankeyNetworkQueryCompute {
   aggregation: EventsAggregation;
   /** Metric to aggregate. */
   metric: string;
 }
-export const SankeyNetworkQueryCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: EventsAggregation,
-    metric: S.String,
-  }),
-).annotate({
-  identifier: "SankeyNetworkQueryCompute",
-}) as any as S.Schema<SankeyNetworkQueryCompute>;
-
 /** Network data source type. */
 export type SankeyNetworkDataSource = "network_device_flows" | "network";
-export const SankeyNetworkDataSource = S.String;
-
 /** Fields to group by. */
 export type SankeyNetworkQueryGroupByList = Array<string>;
-export const SankeyNetworkQueryGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SankeyNetworkQueryGroupByList>;
-
 /** Sankey mode for network queries. */
 export type SankeyNetworkQueryMode = "target";
-export const SankeyNetworkQueryMode = S.String;
-
 /** Sort configuration for network queries. */
 export interface SankeyNetworkQuerySort {
   /** Field to sort by. */
   field?: string;
   order?: WidgetSort | (string & {});
 }
-export const SankeyNetworkQuerySort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    order: S.optional(WidgetSort),
-  }),
-).annotate({ identifier: "SankeyNetworkQuerySort" }) as any as S.Schema<SankeyNetworkQuerySort>;
-
 /** Query configuration for Sankey network widget. */
 export interface SankeyNetworkQuery {
   compute?: SankeyNetworkQueryCompute;
@@ -6337,45 +3644,17 @@ export interface SankeyNetworkQuery {
   should_exclude_missing?: boolean;
   sort?: SankeyNetworkQuerySort;
 }
-export const SankeyNetworkQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: S.optional(SankeyNetworkQueryCompute),
-    data_source: SankeyNetworkDataSource,
-    group_by: SankeyNetworkQueryGroupByList,
-    limit: S.Number,
-    mode: S.optional(SankeyNetworkQueryMode),
-    query_string: S.String,
-    should_exclude_missing: S.optional(S.Boolean),
-    sort: S.optional(SankeyNetworkQuerySort),
-  }),
-).annotate({ identifier: "SankeyNetworkQuery" }) as any as S.Schema<SankeyNetworkQuery>;
-
 /** Type of request for network Sankey widget. */
 export type SankeyNetworkRequestType = "netflow_sankey";
-export const SankeyNetworkRequestType = S.String;
-
 /** Sankey widget request for network data source. */
 export interface SankeyNetworkRequest {
   query: SankeyNetworkQuery;
   request_type: SankeyNetworkRequestType;
 }
-export const SankeyNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: SankeyNetworkQuery,
-    request_type: SankeyNetworkRequestType,
-  }),
-).annotate({ identifier: "SankeyNetworkRequest" }) as any as S.Schema<SankeyNetworkRequest>;
-
 /** Request definition for Sankey widget. */
 export type SankeyWidgetRequest = SankeyRumRequest | SankeyNetworkRequest;
-export const SankeyWidgetRequest = S.Unknown as any as S.Schema<SankeyWidgetRequest>;
-
 /** List of Sankey widget requests. */
 export type SankeyWidgetDefinitionRequestsList = Array<SankeyWidgetRequest>;
-export const SankeyWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  SankeyWidgetRequest,
-) as any as S.Schema<SankeyWidgetDefinitionRequestsList>;
-
 /** The Sankey diagram visualizes the flow of data between categories, stages or sets of values. */
 export interface SankeyWidgetDefinition {
   /** List of Sankey widget requests. */
@@ -6392,33 +3671,12 @@ export interface SankeyWidgetDefinition {
   title_size?: string;
   type: SankeyWidgetDefinitionType;
 }
-export const SankeyWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: SankeyWidgetDefinitionRequestsList,
-    show_other_links: S.optional(S.Boolean),
-    sort_nodes: S.optional(S.Boolean),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: SankeyWidgetDefinitionType,
-  }),
-).annotate({ identifier: "SankeyWidgetDefinition" }) as any as S.Schema<SankeyWidgetDefinition>;
-
 /** List of custom links. */
 export type ServiceMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ServiceMapWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ServiceMapWidgetDefinitionCustomLinksList>;
-
 /** Your environment and primary tag (or * if enabled for your account). */
 export type ServiceMapWidgetDefinitionFiltersList = Array<string>;
-export const ServiceMapWidgetDefinitionFiltersList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceMapWidgetDefinitionFiltersList>;
-
 /** Type of the service map widget. */
 export type ServiceMapWidgetDefinitionType = "servicemap";
-export const ServiceMapWidgetDefinitionType = S.String;
-
 /** This widget displays a map of a service to all of the services that call it, and all of the services that it calls. */
 export interface ServiceMapWidgetDefinition {
   /** List of custom links. */
@@ -6436,33 +3694,12 @@ export interface ServiceMapWidgetDefinition {
   title_size?: string;
   type: ServiceMapWidgetDefinitionType;
 }
-export const ServiceMapWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(ServiceMapWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    filters: ServiceMapWidgetDefinitionFiltersList,
-    service: S.String,
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: ServiceMapWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "ServiceMapWidgetDefinition",
-}) as any as S.Schema<ServiceMapWidgetDefinition>;
-
 /** Number of columns to display. */
 export type WidgetServiceSummaryDisplayFormat = "one_column" | "two_column" | "three_column";
-export const WidgetServiceSummaryDisplayFormat = S.String;
-
 /** Size of the widget. */
 export type WidgetSizeFormat = "small" | "medium" | "large";
-export const WidgetSizeFormat = S.String;
-
 /** Type of the service summary widget. */
 export type ServiceSummaryWidgetDefinitionType = "trace_service";
-export const ServiceSummaryWidgetDefinitionType = S.String;
-
 /** The service summary displays the graphs of a chosen service in your dashboard. */
 export interface ServiceSummaryWidgetDefinition {
   /** The description of the widget. */
@@ -6495,59 +3732,18 @@ export interface ServiceSummaryWidgetDefinition {
   title_size?: string;
   type: ServiceSummaryWidgetDefinitionType;
 }
-export const ServiceSummaryWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    display_format: S.optional(WidgetServiceSummaryDisplayFormat),
-    env: S.String,
-    service: S.String,
-    show_breakdown: S.optional(S.Boolean),
-    show_distribution: S.optional(S.Boolean),
-    show_errors: S.optional(S.Boolean),
-    show_hits: S.optional(S.Boolean),
-    show_latency: S.optional(S.Boolean),
-    show_resource_list: S.optional(S.Boolean),
-    size_format: S.optional(WidgetSizeFormat),
-    span_name: S.String,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: ServiceSummaryWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "ServiceSummaryWidgetDefinition",
-}) as any as S.Schema<ServiceSummaryWidgetDefinition>;
-
 /** Size of the individual graphs in the split. */
 export type SplitGraphVizSize = "xs" | "sm" | "md" | "lg";
-export const SplitGraphVizSize = S.String;
-
 /** List of custom links. */
 export type SunburstWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const SunburstWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<SunburstWidgetDefinitionCustomLinksList>;
-
 /** Whether or not to show a table legend. */
 export type SunburstWidgetLegendTableType = "table" | "none";
-export const SunburstWidgetLegendTableType = S.String;
-
 /** Configuration of table-based legend. */
 export interface SunburstWidgetLegendTable {
   type: SunburstWidgetLegendTableType | (string & {});
 }
-export const SunburstWidgetLegendTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SunburstWidgetLegendTableType,
-  }),
-).annotate({
-  identifier: "SunburstWidgetLegendTable",
-}) as any as S.Schema<SunburstWidgetLegendTable>;
-
 /** Whether to show the legend inline or let it be automatically generated. */
 export type SunburstWidgetLegendInlineAutomaticType = "inline" | "automatic";
-export const SunburstWidgetLegendInlineAutomaticType = S.String;
-
 /** Configuration of inline or automatic legends. */
 export interface SunburstWidgetLegendInlineAutomatic {
   /** Whether to hide the percentages of the groups. */
@@ -6556,30 +3752,12 @@ export interface SunburstWidgetLegendInlineAutomatic {
   hide_value?: boolean;
   type: SunburstWidgetLegendInlineAutomaticType | (string & {});
 }
-export const SunburstWidgetLegendInlineAutomatic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hide_percent: S.optional(S.Boolean),
-    hide_value: S.optional(S.Boolean),
-    type: SunburstWidgetLegendInlineAutomaticType,
-  }),
-).annotate({
-  identifier: "SunburstWidgetLegendInlineAutomatic",
-}) as any as S.Schema<SunburstWidgetLegendInlineAutomatic>;
-
 /** Configuration of the legend. */
 export type SunburstWidgetLegend = SunburstWidgetLegendTable | SunburstWidgetLegendInlineAutomatic;
-export const SunburstWidgetLegend = S.Unknown as any as S.Schema<SunburstWidgetLegend>;
-
 /** List of formulas that operate on queries. */
 export type SunburstWidgetRequestFormulasList = Array<WidgetFormula>;
-export const SunburstWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<SunburstWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type SunburstWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const SunburstWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<SunburstWidgetRequestQueriesList>;
-
 /** Request definition of sunburst widget. */
 export interface SunburstWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -6610,36 +3788,10 @@ export interface SunburstWidgetRequest {
   sort?: WidgetSortBy;
   style?: WidgetStyle;
 }
-export const SunburstWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    audit_query: S.optional(LogQueryDefinition),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(SunburstWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(SunburstWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    sort: S.optional(WidgetSortBy),
-    style: S.optional(WidgetStyle),
-  }),
-).annotate({ identifier: "SunburstWidgetRequest" }) as any as S.Schema<SunburstWidgetRequest>;
-
 /** List of sunburst widget requests. */
 export type SunburstWidgetDefinitionRequestsList = Array<SunburstWidgetRequest>;
-export const SunburstWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  SunburstWidgetRequest,
-) as any as S.Schema<SunburstWidgetDefinitionRequestsList>;
-
 /** Type of the Sunburst widget. */
 export type SunburstWidgetDefinitionType = "sunburst";
-export const SunburstWidgetDefinitionType = S.String;
-
 /** Sunbursts are spot on to highlight how groups contribute to the total of a query. */
 export interface SunburstWidgetDefinition {
   /** List of custom links. */
@@ -6659,63 +3811,24 @@ export interface SunburstWidgetDefinition {
   title_size?: string;
   type: SunburstWidgetDefinitionType;
 }
-export const SunburstWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(SunburstWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    hide_total: S.optional(S.Boolean),
-    legend: S.optional(SunburstWidgetLegend),
-    requests: SunburstWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: SunburstWidgetDefinitionType,
-  }),
-).annotate({ identifier: "SunburstWidgetDefinition" }) as any as S.Schema<SunburstWidgetDefinition>;
-
 /** List of custom links. */
 export type TableWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const TableWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TableWidgetDefinitionCustomLinksList>;
-
 /** Controls the display of the search bar. */
 export type TableWidgetHasSearchBar = "always" | "never" | "auto";
-export const TableWidgetHasSearchBar = S.String;
-
 /** A list of display modes for each table cell. */
 export type TableWidgetRequestCellDisplayModeList = Array<
   TableWidgetCellDisplayMode | (string & {})
 >;
-export const TableWidgetRequestCellDisplayModeList =
-  ListStreamQueryStatesList as any as S.Schema<TableWidgetRequestCellDisplayModeList>;
-
 /** List of conditional formats. */
 export type TableWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const TableWidgetRequestConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<TableWidgetRequestConditionalFormatsList>;
-
 /** List of formulas that operate on queries. */
 export type TableWidgetRequestFormulasList = Array<WidgetFormula>;
-export const TableWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<TableWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type TableWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const TableWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<TableWidgetRequestQueriesList>;
-
 /** Text format rules for a tag-based column within a table widget. */
 export type TableWidgetTextFormat = Array<TableWidgetTextFormatRule>;
-export const TableWidgetTextFormat =
-  GeomapWidgetRequestTextFormatsList as any as S.Schema<TableWidgetTextFormat>;
-
 /** List of text formats for columns produced by tags. */
 export type TableWidgetRequestTextFormatsList = Array<TableWidgetTextFormat>;
-export const TableWidgetRequestTextFormatsList = /*@__PURE__*/ S.Array(
-  TableWidgetTextFormat,
-) as any as S.Schema<TableWidgetRequestTextFormatsList>;
-
 /** Updated table widget. */
 export interface TableWidgetRequest {
   aggregator?: WidgetAggregator | (string & {});
@@ -6756,42 +3869,10 @@ export interface TableWidgetRequest {
   /** List of text formats for columns produced by tags. */
   text_formats?: TableWidgetRequestTextFormatsList;
 }
-export const TableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(WidgetAggregator),
-    alias: S.optional(S.String),
-    apm_query: S.optional(LogQueryDefinition),
-    apm_stats_query: S.optional(ApmStatsQueryDefinition),
-    cell_display_mode: S.optional(TableWidgetRequestCellDisplayModeList),
-    conditional_formats: S.optional(TableWidgetRequestConditionalFormatsList),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(TableWidgetRequestFormulasList),
-    limit: S.optional(S.Number),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    order: S.optional(WidgetSort),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(TableWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    sort: S.optional(WidgetSortBy),
-    text_formats: S.optional(TableWidgetRequestTextFormatsList),
-  }),
-).annotate({ identifier: "TableWidgetRequest" }) as any as S.Schema<TableWidgetRequest>;
-
 /** Widget definition. */
 export type TableWidgetDefinitionRequestsList = Array<TableWidgetRequest>;
-export const TableWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  TableWidgetRequest,
-) as any as S.Schema<TableWidgetDefinitionRequestsList>;
-
 /** Type of the table widget. */
 export type TableWidgetDefinitionType = "query_table";
-export const TableWidgetDefinitionType = S.String;
-
 /** The table visualization is available on dashboards. It displays columns of metrics grouped by tag key. */
 export interface TableWidgetDefinition {
   /** List of custom links. */
@@ -6809,59 +3890,24 @@ export interface TableWidgetDefinition {
   title_size?: string;
   type: TableWidgetDefinitionType;
 }
-export const TableWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(TableWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    has_search_bar: S.optional(TableWidgetHasSearchBar),
-    requests: TableWidgetDefinitionRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: TableWidgetDefinitionType,
-  }),
-).annotate({ identifier: "TableWidgetDefinition" }) as any as S.Schema<TableWidgetDefinition>;
-
 /** List of custom links. */
 export type TimeseriesWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const TimeseriesWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TimeseriesWidgetDefinitionCustomLinksList>;
-
 /** List of widget events. Deprecated - Use `overlay` request type instead. */
 export type TimeseriesWidgetDefinitionEventsList = Array<WidgetEvent>;
-export const TimeseriesWidgetDefinitionEventsList =
-  HeatMapWidgetDefinitionEventsList as any as S.Schema<TimeseriesWidgetDefinitionEventsList>;
-
 /** Legend column. */
 export type TimeseriesWidgetLegendColumn = "value" | "avg" | "sum" | "min" | "max";
-export const TimeseriesWidgetLegendColumn = S.String;
-
 /** Columns displayed in the legend. */
 export type TimeseriesWidgetDefinitionLegendColumnsList = Array<
   TimeseriesWidgetLegendColumn | (string & {})
 >;
-export const TimeseriesWidgetDefinitionLegendColumnsList =
-  ListStreamQueryStatesList as any as S.Schema<TimeseriesWidgetDefinitionLegendColumnsList>;
-
 /** Layout of the legend. */
 export type TimeseriesWidgetLegendLayout = "auto" | "horizontal" | "vertical";
-export const TimeseriesWidgetLegendLayout = S.String;
-
 /** List of markers. */
 export type TimeseriesWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const TimeseriesWidgetDefinitionMarkersList =
-  DistributionWidgetDefinitionMarkersList as any as S.Schema<TimeseriesWidgetDefinitionMarkersList>;
-
 /** Type of display to use for the request. */
 export type WidgetDisplayType = "area" | "bars" | "line" | "overlay";
-export const WidgetDisplayType = S.String;
-
 /** List of formulas that operate on queries. */
 export type TimeseriesWidgetRequestFormulasList = Array<WidgetFormula>;
-export const TimeseriesWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<TimeseriesWidgetRequestFormulasList>;
-
 /** Define an expression alias. */
 export interface TimeseriesWidgetExpressionAlias {
   /** Expression alias. */
@@ -6869,26 +3915,10 @@ export interface TimeseriesWidgetExpressionAlias {
   /** Expression name. */
   expression: string;
 }
-export const TimeseriesWidgetExpressionAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias_name: S.optional(S.String),
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "TimeseriesWidgetExpressionAlias",
-}) as any as S.Schema<TimeseriesWidgetExpressionAlias>;
-
 /** Used to define expression aliases. */
 export type TimeseriesWidgetRequestMetadataList = Array<TimeseriesWidgetExpressionAlias>;
-export const TimeseriesWidgetRequestMetadataList = /*@__PURE__*/ S.Array(
-  TimeseriesWidgetExpressionAlias,
-) as any as S.Schema<TimeseriesWidgetRequestMetadataList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type TimeseriesWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const TimeseriesWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<TimeseriesWidgetRequestQueriesList>;
-
 /** Define request widget style for timeseries widgets. */
 export interface TimeseriesRequestStyle {
   /** If true, the value is displayed as a label relative to the data point. */
@@ -6899,16 +3929,6 @@ export interface TimeseriesRequestStyle {
   /** Color palette to apply to the widget. */
   palette?: string;
 }
-export const TimeseriesRequestStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    has_value_labels: S.optional(S.Boolean),
-    line_type: S.optional(WidgetLineType),
-    line_width: S.optional(WidgetLineWidth),
-    order_by: S.optional(WidgetStyleOrderBy),
-    palette: S.optional(S.String),
-  }),
-).annotate({ identifier: "TimeseriesRequestStyle" }) as any as S.Schema<TimeseriesRequestStyle>;
-
 /** Updated timeseries widget. */
 export interface TimeseriesWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -6943,38 +3963,10 @@ export interface TimeseriesWidgetRequest {
   security_query?: LogQueryDefinition;
   style?: TimeseriesRequestStyle;
 }
-export const TimeseriesWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    audit_query: S.optional(LogQueryDefinition),
-    display_type: S.optional(WidgetDisplayType),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(TimeseriesWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    metadata: S.optional(TimeseriesWidgetRequestMetadataList),
-    network_query: S.optional(LogQueryDefinition),
-    on_right_yaxis: S.optional(S.Boolean),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(TimeseriesWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    style: S.optional(TimeseriesRequestStyle),
-  }),
-).annotate({ identifier: "TimeseriesWidgetRequest" }) as any as S.Schema<TimeseriesWidgetRequest>;
-
 /** List of timeseries widget requests. */
 export type TimeseriesWidgetDefinitionRequestsList = Array<TimeseriesWidgetRequest>;
-export const TimeseriesWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  TimeseriesWidgetRequest,
-) as any as S.Schema<TimeseriesWidgetDefinitionRequestsList>;
-
 /** Type of the timeseries widget. */
 export type TimeseriesWidgetDefinitionType = "timeseries";
-export const TimeseriesWidgetDefinitionType = S.String;
-
 /** The timeseries visualization allows you to display the evolution of one or more metrics, log events, or Indexed Spans over time. */
 export interface TimeseriesWidgetDefinition {
   /** List of custom links. */
@@ -7003,49 +3995,14 @@ export interface TimeseriesWidgetDefinition {
   type: TimeseriesWidgetDefinitionType;
   yaxis?: WidgetAxis;
 }
-export const TimeseriesWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(TimeseriesWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    events: S.optional(TimeseriesWidgetDefinitionEventsList),
-    legend_columns: S.optional(TimeseriesWidgetDefinitionLegendColumnsList),
-    legend_layout: S.optional(TimeseriesWidgetLegendLayout),
-    legend_size: S.optional(S.String),
-    markers: S.optional(TimeseriesWidgetDefinitionMarkersList),
-    requests: TimeseriesWidgetDefinitionRequestsList,
-    right_yaxis: S.optional(WidgetAxis),
-    show_legend: S.optional(S.Boolean),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: TimeseriesWidgetDefinitionType,
-    yaxis: S.optional(WidgetAxis),
-  }),
-).annotate({
-  identifier: "TimeseriesWidgetDefinition",
-}) as any as S.Schema<TimeseriesWidgetDefinition>;
-
 /** List of custom links. */
 export type ToplistWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ToplistWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ToplistWidgetDefinitionCustomLinksList>;
-
 /** List of conditional formats. */
 export type ToplistWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const ToplistWidgetRequestConditionalFormatsList =
-  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<ToplistWidgetRequestConditionalFormatsList>;
-
 /** List of formulas that operate on queries. */
 export type ToplistWidgetRequestFormulasList = Array<WidgetFormula>;
-export const ToplistWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<ToplistWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type ToplistWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const ToplistWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<ToplistWidgetRequestQueriesList>;
-
 /** Updated top list widget. */
 export interface ToplistWidgetRequest {
   /** Deprecated - Use `queries` and `formulas` instead. */
@@ -7078,46 +4035,27 @@ export interface ToplistWidgetRequest {
   sort?: WidgetSortBy;
   style?: WidgetRequestStyle;
 }
-export const ToplistWidgetRequest = BarChartWidgetRequest as any as S.Schema<ToplistWidgetRequest>;
-
 /** List of top list widget requests. */
 export type ToplistWidgetDefinitionRequestsList = Array<ToplistWidgetRequest>;
-export const ToplistWidgetDefinitionRequestsList =
-  BarChartWidgetDefinitionRequestsList as any as S.Schema<ToplistWidgetDefinitionRequestsList>;
-
 /** Top list widget stacked legend behavior. */
 export type ToplistWidgetLegend = "automatic" | "inline" | "none";
-export const ToplistWidgetLegend = S.String;
-
 /** Top list widget stacked display type. */
 export type ToplistWidgetStackedType = "stacked";
-export const ToplistWidgetStackedType = S.String;
-
 /** Top list widget stacked display options. */
 export interface ToplistWidgetStacked {
   legend?: ToplistWidgetLegend | (string & {});
   type: ToplistWidgetStackedType;
 }
-export const ToplistWidgetStacked = BarChartWidgetStacked as any as S.Schema<ToplistWidgetStacked>;
-
 /** Top list widget flat display type. */
 export type ToplistWidgetFlatType = "flat";
-export const ToplistWidgetFlatType = S.String;
-
 /** Top list widget flat display. */
 export interface ToplistWidgetFlat {
   type: ToplistWidgetFlatType;
 }
-export const ToplistWidgetFlat = BarChartWidgetFlat as any as S.Schema<ToplistWidgetFlat>;
-
 /** Top list widget display options. */
 export type ToplistWidgetDisplay = ToplistWidgetStacked | ToplistWidgetFlat;
-export const ToplistWidgetDisplay = S.Unknown as any as S.Schema<ToplistWidgetDisplay>;
-
 /** Top list widget scaling definition. */
 export type ToplistWidgetScaling = "absolute" | "relative";
-export const ToplistWidgetScaling = S.String;
-
 /** Style customization for a top list widget. */
 export interface ToplistWidgetStyle {
   display?: ToplistWidgetDisplay;
@@ -7125,18 +4063,8 @@ export interface ToplistWidgetStyle {
   palette?: string;
   scaling?: ToplistWidgetScaling | (string & {});
 }
-export const ToplistWidgetStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    display: S.optional(ToplistWidgetDisplay),
-    palette: S.optional(S.String),
-    scaling: S.optional(ToplistWidgetScaling),
-  }),
-).annotate({ identifier: "ToplistWidgetStyle" }) as any as S.Schema<ToplistWidgetStyle>;
-
 /** Type of the top list widget. */
 export type ToplistWidgetDefinitionType = "toplist";
-export const ToplistWidgetDefinitionType = S.String;
-
 /** The top list visualization enables you to display a list of Tag value like hostname or service with the most or least of any metric value, such as highest consumers of CPU, hosts with the least disk space, etc. */
 export interface ToplistWidgetDefinition {
   /** List of custom links. */
@@ -7154,43 +4082,16 @@ export interface ToplistWidgetDefinition {
   title_size?: string;
   type: ToplistWidgetDefinitionType;
 }
-export const ToplistWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(ToplistWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    requests: ToplistWidgetDefinitionRequestsList,
-    style: S.optional(ToplistWidgetStyle),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: ToplistWidgetDefinitionType,
-  }),
-).annotate({ identifier: "ToplistWidgetDefinition" }) as any as S.Schema<ToplistWidgetDefinition>;
-
 /** (deprecated) The attribute formerly used to determine color in the widget. */
 export type TreeMapColorBy = "user";
-export const TreeMapColorBy = S.String;
-
 /** List of custom links. */
 export type TreeMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const TreeMapWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TreeMapWidgetDefinitionCustomLinksList>;
-
 /** (deprecated) The attribute formerly used to group elements in the widget. */
 export type TreeMapGroupBy = "user" | "family" | "process";
-export const TreeMapGroupBy = S.String;
-
 /** List of formulas that operate on queries. */
 export type TreeMapWidgetRequestFormulasList = Array<WidgetFormula>;
-export const TreeMapWidgetRequestFormulasList =
-  BarChartWidgetRequestFormulasList as any as S.Schema<TreeMapWidgetRequestFormulasList>;
-
 /** List of queries that can be returned directly or used in formulas. */
 export type TreeMapWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const TreeMapWidgetRequestQueriesList =
-  BarChartWidgetRequestQueriesList as any as S.Schema<TreeMapWidgetRequestQueriesList>;
-
 /** An updated treemap widget. */
 export interface TreeMapWidgetRequest {
   /** List of formulas that operate on queries. */
@@ -7203,31 +4104,12 @@ export interface TreeMapWidgetRequest {
   sort?: WidgetSortBy;
   style?: WidgetRequestStyle;
 }
-export const TreeMapWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formulas: S.optional(TreeMapWidgetRequestFormulasList),
-    q: S.optional(S.String),
-    queries: S.optional(TreeMapWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    sort: S.optional(WidgetSortBy),
-    style: S.optional(WidgetRequestStyle),
-  }),
-).annotate({ identifier: "TreeMapWidgetRequest" }) as any as S.Schema<TreeMapWidgetRequest>;
-
 /** List of treemap widget requests. */
 export type TreeMapWidgetDefinitionRequestsList = Array<TreeMapWidgetRequest>;
-export const TreeMapWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  TreeMapWidgetRequest,
-) as any as S.Schema<TreeMapWidgetDefinitionRequestsList>;
-
 /** (deprecated) The attribute formerly used to determine size in the widget. */
 export type TreeMapSizeBy = "pct_cpu" | "pct_mem";
-export const TreeMapSizeBy = S.String;
-
 /** Type of the treemap widget. */
 export type TreeMapWidgetDefinitionType = "treemap";
-export const TreeMapWidgetDefinitionType = S.String;
-
 /** The treemap visualization enables you to display hierarchical and nested data. It is well suited for queries that describe part-whole relationships, such as resource usage by availability zone, data center, or team. */
 export interface TreeMapWidgetDefinition {
   color_by?: TreeMapColorBy | (string & {});
@@ -7244,20 +4126,6 @@ export interface TreeMapWidgetDefinition {
   title?: string;
   type: TreeMapWidgetDefinitionType;
 }
-export const TreeMapWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    color_by: S.optional(TreeMapColorBy),
-    custom_links: S.optional(TreeMapWidgetDefinitionCustomLinksList),
-    description: S.optional(S.String),
-    group_by: S.optional(TreeMapGroupBy),
-    requests: TreeMapWidgetDefinitionRequestsList,
-    size_by: S.optional(TreeMapSizeBy),
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    type: TreeMapWidgetDefinitionType,
-  }),
-).annotate({ identifier: "TreeMapWidgetDefinition" }) as any as S.Schema<TreeMapWidgetDefinition>;
-
 /** The original widget we are splitting on. */
 export type SplitGraphSourceWidgetDefinition =
   | BarChartWidgetDefinition
@@ -7270,9 +4138,6 @@ export type SplitGraphSourceWidgetDefinition =
   | TimeseriesWidgetDefinition
   | ToplistWidgetDefinition
   | TreeMapWidgetDefinition;
-export const SplitGraphSourceWidgetDefinition =
-  S.Unknown as any as S.Schema<SplitGraphSourceWidgetDefinition>;
-
 /** Defines the metric and aggregation used as the sort value. */
 export interface SplitConfigSortCompute {
   /** How to aggregate the sort metric for the purposes of ordering. */
@@ -7280,47 +4145,20 @@ export interface SplitConfigSortCompute {
   /** The metric to use for sorting graphs. */
   metric: string;
 }
-export const SplitConfigSortCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: S.String,
-    metric: S.String,
-  }),
-).annotate({ identifier: "SplitConfigSortCompute" }) as any as S.Schema<SplitConfigSortCompute>;
-
 /** Controls the order in which graphs appear in the split. */
 export interface SplitSort {
   compute?: SplitConfigSortCompute;
   order: WidgetSort | (string & {});
 }
-export const SplitSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: S.optional(SplitConfigSortCompute),
-    order: WidgetSort,
-  }),
-).annotate({ identifier: "SplitSort" }) as any as S.Schema<SplitSort>;
-
 /** The property by which the graph splits */
 export interface SplitDimension {
   /** The system interprets this attribute differently depending on the data source of the query being split. For metrics, it's a tag. For the events platform, it's an attribute or tag. */
   one_graph_per: string;
 }
-export const SplitDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    one_graph_per: S.String,
-  }),
-).annotate({ identifier: "SplitDimension" }) as any as S.Schema<SplitDimension>;
-
 /** The dimension(s) on which to split the graph */
 export type SplitConfigSplitDimensionsList = Array<SplitDimension>;
-export const SplitConfigSplitDimensionsList = /*@__PURE__*/ S.Array(
-  SplitDimension,
-) as any as S.Schema<SplitConfigSplitDimensionsList>;
-
 /** The tag values. */
 export type SplitVectorEntryItemTagValuesList = Array<string>;
-export const SplitVectorEntryItemTagValuesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SplitVectorEntryItemTagValuesList>;
-
 /** The split graph list contains a graph for each value of the split dimension. */
 export interface SplitVectorEntryItem {
   /** The tag key. */
@@ -7328,25 +4166,10 @@ export interface SplitVectorEntryItem {
   /** The tag values. */
   tag_values: SplitVectorEntryItemTagValuesList;
 }
-export const SplitVectorEntryItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag_key: S.String,
-    tag_values: SplitVectorEntryItemTagValuesList,
-  }),
-).annotate({ identifier: "SplitVectorEntryItem" }) as any as S.Schema<SplitVectorEntryItem>;
-
 /** The widget displays one graph for each entry in this parameter. */
 export type SplitVectorEntry = Array<SplitVectorEntryItem>;
-export const SplitVectorEntry = /*@__PURE__*/ S.Array(
-  SplitVectorEntryItem,
-) as any as S.Schema<SplitVectorEntry>;
-
 /** Manual selection of tags making split graph widget static */
 export type SplitConfigStaticSplitsList = Array<SplitVectorEntry>;
-export const SplitConfigStaticSplitsList = /*@__PURE__*/ S.Array(
-  SplitVectorEntry,
-) as any as S.Schema<SplitConfigStaticSplitsList>;
-
 /** Encapsulates all user choices about how to split a graph. */
 export interface SplitConfig {
   /** Maximum number of graphs to display in the widget. */
@@ -7357,19 +4180,8 @@ export interface SplitConfig {
   /** Manual selection of tags making split graph widget static */
   static_splits?: SplitConfigStaticSplitsList;
 }
-export const SplitConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.Number,
-    sort: SplitSort,
-    split_dimensions: SplitConfigSplitDimensionsList,
-    static_splits: S.optional(SplitConfigStaticSplitsList),
-  }),
-).annotate({ identifier: "SplitConfig" }) as any as S.Schema<SplitConfig>;
-
 /** Type of the split graph widget */
 export type SplitGraphWidgetDefinitionType = "split_group";
-export const SplitGraphWidgetDefinitionType = S.String;
-
 /** The split graph widget allows you to create repeating units of a graph - one for each value in a group (for example: one per service) */
 export interface SplitGraphWidgetDefinition {
   /** Normalize y axes across graphs */
@@ -7382,34 +4194,12 @@ export interface SplitGraphWidgetDefinition {
   title?: string;
   type: SplitGraphWidgetDefinitionType;
 }
-export const SplitGraphWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    has_uniform_y_axes: S.optional(S.Boolean),
-    size: SplitGraphVizSize,
-    source_widget_definition: SplitGraphSourceWidgetDefinition,
-    split_config: SplitConfig,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    type: SplitGraphWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "SplitGraphWidgetDefinition",
-}) as any as S.Schema<SplitGraphWidgetDefinition>;
-
 /** List of custom links. */
 export type TopologyMapWidgetDefinitionDataStreamsCustomLinksList = Array<WidgetCustomLink>;
-export const TopologyMapWidgetDefinitionDataStreamsCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TopologyMapWidgetDefinitionDataStreamsCustomLinksList>;
-
 /** Name of the data source. */
 export type TopologyQueryDataStreamsDataSource = "data_streams";
-export const TopologyQueryDataStreamsDataSource = S.String;
-
 /** Your environment and primary tag (or * if enabled for your account). */
 export type TopologyQueryDataStreamsFiltersList = Array<string>;
-export const TopologyQueryDataStreamsFiltersList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<TopologyQueryDataStreamsFiltersList>;
-
 /** Query to the data streams topology data source. */
 export interface TopologyQueryDataStreams {
   data_source: TopologyQueryDataStreamsDataSource | (string & {});
@@ -7420,43 +4210,17 @@ export interface TopologyQueryDataStreams {
   /** (deprecated) Name of the service. Leave this empty and use query_string instead. */
   service: string;
 }
-export const TopologyQueryDataStreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: TopologyQueryDataStreamsDataSource,
-    filters: TopologyQueryDataStreamsFiltersList,
-    query_string: S.optional(S.String),
-    service: S.String,
-  }),
-).annotate({ identifier: "TopologyQueryDataStreams" }) as any as S.Schema<TopologyQueryDataStreams>;
-
 /** Widget request type. */
 export type TopologyRequestType = "topology";
-export const TopologyRequestType = S.String;
-
 /** Request that returns nodes and edges from the data streams data source. */
 export interface TopologyRequestDataStreams {
   query?: TopologyQueryDataStreams;
   request_type?: TopologyRequestType | (string & {});
 }
-export const TopologyRequestDataStreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(TopologyQueryDataStreams),
-    request_type: S.optional(TopologyRequestType),
-  }),
-).annotate({
-  identifier: "TopologyRequestDataStreams",
-}) as any as S.Schema<TopologyRequestDataStreams>;
-
 /** One Topology request. */
 export type TopologyMapWidgetDefinitionDataStreamsRequestsList = Array<TopologyRequestDataStreams>;
-export const TopologyMapWidgetDefinitionDataStreamsRequestsList = /*@__PURE__*/ S.Array(
-  TopologyRequestDataStreams,
-) as any as S.Schema<TopologyMapWidgetDefinitionDataStreamsRequestsList>;
-
 /** Type of the topology map widget. */
 export type TopologyMapWidgetDefinitionType = "topology_map";
-export const TopologyMapWidgetDefinitionType = S.String;
-
 /** Topology map widget backed by the data streams data source. */
 export interface TopologyMapWidgetDefinitionDataStreams {
   /** List of custom links. */
@@ -7473,35 +4237,12 @@ export interface TopologyMapWidgetDefinitionDataStreams {
   title_size?: string;
   type: TopologyMapWidgetDefinitionType;
 }
-export const TopologyMapWidgetDefinitionDataStreams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(TopologyMapWidgetDefinitionDataStreamsCustomLinksList),
-    description: S.optional(S.String),
-    requests: TopologyMapWidgetDefinitionDataStreamsRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: TopologyMapWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "TopologyMapWidgetDefinitionDataStreams",
-}) as any as S.Schema<TopologyMapWidgetDefinitionDataStreams>;
-
 /** List of custom links. */
 export type TopologyMapWidgetDefinitionServiceMapCustomLinksList = Array<WidgetCustomLink>;
-export const TopologyMapWidgetDefinitionServiceMapCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TopologyMapWidgetDefinitionServiceMapCustomLinksList>;
-
 /** Name of the data source. */
 export type TopologyQueryServiceMapDataSource = "service_map";
-export const TopologyQueryServiceMapDataSource = S.String;
-
 /** Your environment and primary tag (or * if enabled for your account). */
 export type TopologyQueryServiceMapFiltersList = Array<string>;
-export const TopologyQueryServiceMapFiltersList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<TopologyQueryServiceMapFiltersList>;
-
 /** Query to the service map topology data source. */
 export interface TopologyQueryServiceMap {
   data_source: TopologyQueryServiceMapDataSource | (string & {});
@@ -7512,35 +4253,13 @@ export interface TopologyQueryServiceMap {
   /** (deprecated) Name of the service. Leave this empty and use query_string instead. */
   service: string;
 }
-export const TopologyQueryServiceMap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: TopologyQueryServiceMapDataSource,
-    filters: TopologyQueryServiceMapFiltersList,
-    query_string: S.optional(S.String),
-    service: S.String,
-  }),
-).annotate({ identifier: "TopologyQueryServiceMap" }) as any as S.Schema<TopologyQueryServiceMap>;
-
 /** Request that returns nodes and edges from the service map data source. */
 export interface TopologyRequestServiceMap {
   query?: TopologyQueryServiceMap;
   request_type?: TopologyRequestType | (string & {});
 }
-export const TopologyRequestServiceMap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(TopologyQueryServiceMap),
-    request_type: S.optional(TopologyRequestType),
-  }),
-).annotate({
-  identifier: "TopologyRequestServiceMap",
-}) as any as S.Schema<TopologyRequestServiceMap>;
-
 /** One Topology request. */
 export type TopologyMapWidgetDefinitionServiceMapRequestsList = Array<TopologyRequestServiceMap>;
-export const TopologyMapWidgetDefinitionServiceMapRequestsList = /*@__PURE__*/ S.Array(
-  TopologyRequestServiceMap,
-) as any as S.Schema<TopologyMapWidgetDefinitionServiceMapRequestsList>;
-
 /** Topology map widget backed by the service map data source. */
 export interface TopologyMapWidgetDefinitionServiceMap {
   /** List of custom links. */
@@ -7557,70 +4276,30 @@ export interface TopologyMapWidgetDefinitionServiceMap {
   title_size?: string;
   type: TopologyMapWidgetDefinitionType;
 }
-export const TopologyMapWidgetDefinitionServiceMap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(TopologyMapWidgetDefinitionServiceMapCustomLinksList),
-    description: S.optional(S.String),
-    requests: TopologyMapWidgetDefinitionServiceMapRequestsList,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: TopologyMapWidgetDefinitionType,
-  }),
-).annotate({
-  identifier: "TopologyMapWidgetDefinitionServiceMap",
-}) as any as S.Schema<TopologyMapWidgetDefinitionServiceMap>;
-
 /** This widget displays a topology of nodes and edges for different data sources. It replaces the service map widget. */
 export type TopologyMapWidgetDefinition =
   | TopologyMapWidgetDefinitionDataStreams
   | TopologyMapWidgetDefinitionServiceMap;
-export const TopologyMapWidgetDefinition =
-  S.Unknown as any as S.Schema<TopologyMapWidgetDefinition>;
-
 /** List of custom links. */
 export type WildcardWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const WildcardWidgetDefinitionCustomLinksList =
-  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<WildcardWidgetDefinitionCustomLinksList>;
-
 /** Request object for the wildcard widget. Each variant represents a distinct data-fetching pattern: scalar formulas, timeseries formulas, list streams, and histograms. */
 export type WildcardWidgetRequest =
   | TreeMapWidgetRequest
   | TimeseriesWidgetRequest
   | ListStreamWidgetRequest
   | DistributionWidgetRequest;
-export const WildcardWidgetRequest = S.Unknown as any as S.Schema<WildcardWidgetRequest>;
-
 /** List of data requests for the wildcard widget. */
 export type WildcardWidgetDefinitionRequestsList = Array<WildcardWidgetRequest>;
-export const WildcardWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  WildcardWidgetRequest,
-) as any as S.Schema<WildcardWidgetDefinitionRequestsList>;
-
 /** Type of specification used by the wildcard widget. */
 export type WildcardWidgetSpecificationType = "vega" | "vega-lite";
-export const WildcardWidgetSpecificationType = S.String;
-
 /** Vega or Vega-Lite specification for custom visualization rendering. See https://vega.github.io/vega-lite/ for the full grammar reference. */
 export interface WildcardWidgetSpecification {
   /** The Vega or Vega-Lite JSON specification object. */
   contents: unknown;
   type: WildcardWidgetSpecificationType | (string & {});
 }
-export const WildcardWidgetSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.Unknown,
-    type: WildcardWidgetSpecificationType,
-  }),
-).annotate({
-  identifier: "WildcardWidgetSpecification",
-}) as any as S.Schema<WildcardWidgetSpecification>;
-
 /** Type of the wildcard widget. */
 export type WildcardWidgetDefinitionType = "wildcard";
-export const WildcardWidgetDefinitionType = S.String;
-
 /** Custom visualization widget using Vega or Vega-Lite specifications. Combines standard Datadog data requests with a Vega or Vega-Lite JSON specification for flexible, custom visualizations. */
 export interface WildcardWidgetDefinition {
   /** List of custom links. */
@@ -7636,19 +4315,6 @@ export interface WildcardWidgetDefinition {
   title_size?: string;
   type: WildcardWidgetDefinitionType;
 }
-export const WildcardWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_links: S.optional(WildcardWidgetDefinitionCustomLinksList),
-    requests: WildcardWidgetDefinitionRequestsList,
-    specification: WildcardWidgetSpecification,
-    time: S.optional(WidgetTime),
-    title: S.optional(S.String),
-    title_align: S.optional(WidgetTextAlign),
-    title_size: S.optional(S.String),
-    type: WildcardWidgetDefinitionType,
-  }),
-).annotate({ identifier: "WildcardWidgetDefinition" }) as any as S.Schema<WildcardWidgetDefinition>;
-
 /** [Definition of the widget](https://docs.datadoghq.com/dashboards/widgets/). */
 export type WidgetDefinition =
   | AlertGraphWidgetDefinition
@@ -7693,7 +4359,7 @@ export type WidgetDefinition =
   | TopologyMapWidgetDefinition
   | TreeMapWidgetDefinition
   | WildcardWidgetDefinition;
-export const WidgetDefinition = S.Unknown as any as S.Schema<WidgetDefinition>;
+const WidgetDefinition = S.Unknown as any as S.Schema<WidgetDefinition>;
 
 /** The layout for a widget on a `free` or **new dashboard layout** dashboard. */
 export interface WidgetLayout {
@@ -7708,7 +4374,7 @@ export interface WidgetLayout {
   /** The position of the widget on the y (vertical) axis. Should be a non-negative integer. */
   y: number;
 }
-export const WidgetLayout = /*@__PURE__*/ S.suspend(() =>
+const WidgetLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.Number,
     is_column_break: S.optional(S.Boolean),
@@ -7725,7 +4391,7 @@ export interface Widget {
   id?: number;
   layout?: WidgetLayout;
 }
-export const Widget = /*@__PURE__*/ S.suspend(() =>
+const Widget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition: WidgetDefinition,
     id: S.optional(S.Number),
@@ -7735,7 +4401,7 @@ export const Widget = /*@__PURE__*/ S.suspend(() =>
 
 /** List of widgets to display on the dashboard. */
 export type CreateDashboardRequestWidgetsList = Array<Widget>;
-export const CreateDashboardRequestWidgetsList = /*@__PURE__*/ S.Array(
+const CreateDashboardRequestWidgetsList = /*@__PURE__*/ S.Array(
   Widget,
 ) as any as S.Schema<CreateDashboardRequestWidgetsList>;
 
@@ -7765,7 +4431,7 @@ export interface CreateDashboardRequest {
   /** List of widgets to display on the dashboard. */
   widgets: CreateDashboardRequestWidgetsList;
 }
-export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_timeframe: S.optional(S.NullOr(DashboardDefaultTimeframeSetting)),
     description: S.optional(S.NullOr(S.String)),
@@ -7787,41 +4453,40 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The experience type of the dashboard. */
 export type DashboardExperienceType = "default" | "product_analytics";
-export const DashboardExperienceType = S.String;
+const DashboardExperienceType = S.String;
 
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type DashboardNotifyListList = Array<string>;
-export const DashboardNotifyListList =
+const DashboardNotifyListList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardNotifyListList>;
 
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type DashboardRestrictedRolesList = Array<string>;
-export const DashboardRestrictedRolesList =
+const DashboardRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardRestrictedRolesList>;
 
 /** List of tabs for organizing dashboard widgets into groups. */
 export type DashboardTabsList = Array<DashboardTab>;
-export const DashboardTabsList =
-  CreateDashboardRequestTabsList as any as S.Schema<DashboardTabsList>;
+const DashboardTabsList = CreateDashboardRequestTabsList as any as S.Schema<DashboardTabsList>;
 
 /** List of team names representing ownership of a dashboard. */
 export type DashboardTagsList = Array<string>;
-export const DashboardTagsList =
+const DashboardTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTagsList>;
 
 /** Array of template variables saved views. */
 export type DashboardTemplateVariablePresetsList = Array<DashboardTemplateVariablePreset>;
-export const DashboardTemplateVariablePresetsList =
+const DashboardTemplateVariablePresetsList =
   CreateDashboardRequestTemplateVariablePresetsList as any as S.Schema<DashboardTemplateVariablePresetsList>;
 
 /** List of template variables for this dashboard. */
 export type DashboardTemplateVariablesList = Array<DashboardTemplateVariable>;
-export const DashboardTemplateVariablesList =
+const DashboardTemplateVariablesList =
   CreateDashboardRequestTemplateVariablesList as any as S.Schema<DashboardTemplateVariablesList>;
 
 /** List of widgets to display on the dashboard. */
 export type DashboardWidgetsList = Array<Widget>;
-export const DashboardWidgetsList =
+const DashboardWidgetsList =
   CreateDashboardRequestWidgetsList as any as S.Schema<DashboardWidgetsList>;
 
 /** A dashboard is Datadog's tool for visually tracking, analyzing, and displaying key performance metrics, which enable you to monitor the health of your infrastructure. */
@@ -7864,7 +4529,7 @@ export interface Dashboard {
   /** List of widgets to display on the dashboard. */
   widgets: DashboardWidgetsList;
 }
-export const Dashboard = /*@__PURE__*/ S.suspend(() =>
+const Dashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author_handle: S.optional(S.String),
     author_name: S.optional(S.NullOr(S.String)),
@@ -7893,7 +4558,7 @@ export interface CreateDashboardListRequest {
   /** The name of the dashboard list. */
   name: string;
 }
-export const CreateDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/lists/manual", code: 200 })),
@@ -7910,7 +4575,7 @@ export interface Creator {
   /** Name of the creator. */
   name?: string | null;
 }
-export const Creator = /*@__PURE__*/ S.suspend(() =>
+const Creator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     handle: S.optional(S.String),
@@ -7936,7 +4601,7 @@ export interface DashboardList {
   /** The type of dashboard list. */
   type?: string;
 }
-export const DashboardList = /*@__PURE__*/ S.suspend(() =>
+const DashboardList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(Creator),
     created: S.optional(S.String),
@@ -7958,15 +4623,15 @@ export type EventAlertType =
   | "user_update"
   | "recommendation"
   | "snapshot";
-export const EventAlertType = S.String;
+const EventAlertType = S.String;
 
 /** The priority of the event. For example, `normal` or `low`. */
 export type EventPriority = "normal" | "low";
-export const EventPriority = S.String;
+const EventPriority = S.String;
 
 /** A list of tags to apply to the event. */
 export type CreateEventRequestTagsList = Array<string>;
-export const CreateEventRequestTagsList =
+const CreateEventRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateEventRequestTagsList>;
 
 export interface CreateEventRequest {
@@ -7991,7 +4656,7 @@ export interface CreateEventRequest {
   /** The event title. */
   title: string;
 }
-export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregation_key: S.optional(S.String),
     alert_type: S.optional(EventAlertType),
@@ -8008,20 +4673,20 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEventRequest" }) as any as S.Schema<CreateEventRequest>;
 
 export interface CreateEventResponse {}
-export const CreateEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateEventResponse",
 }) as any as S.Schema<CreateEventResponse>;
 
 /** A list of role identifiers that can be pulled from the Roles API, for restricting read and write access. This field is deprecated. Use the restriction policies API to manage permissions. */
 export type SyntheticsRestrictedRoles = Array<string>;
-export const SyntheticsRestrictedRoles =
+const SyntheticsRestrictedRoles =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsRestrictedRoles>;
 
 /** Attributes of the global variable. */
 export interface SyntheticsGlobalVariableAttributes {
   restricted_roles?: SyntheticsRestrictedRoles;
 }
-export const SyntheticsGlobalVariableAttributes = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGlobalVariableAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restricted_roles: S.optional(SyntheticsRestrictedRoles),
   }),
@@ -8031,7 +4696,7 @@ export const SyntheticsGlobalVariableAttributes = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of parser for a Synthetic global variable from a synthetics test. */
 export type SyntheticsGlobalVariableParserType = "raw" | "json_path" | "regex" | "x_path";
-export const SyntheticsGlobalVariableParserType = S.String;
+const SyntheticsGlobalVariableParserType = S.String;
 
 /** Details of the parser to use for the global variable. */
 export interface SyntheticsVariableParser {
@@ -8039,7 +4704,7 @@ export interface SyntheticsVariableParser {
   /** Regex or JSON path used for the parser. Not used with type `raw`. */
   value?: string;
 }
-export const SyntheticsVariableParser = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsVariableParser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SyntheticsGlobalVariableParserType,
     value: S.optional(S.String),
@@ -8052,7 +4717,7 @@ export type SyntheticsGlobalVariableParseTestOptionsType =
   | "http_header"
   | "http_status_code"
   | "local_variable";
-export const SyntheticsGlobalVariableParseTestOptionsType = S.String;
+const SyntheticsGlobalVariableParseTestOptionsType = S.String;
 
 /** Parser options to use for retrieving a Synthetic global variable from a Synthetic test. Used in conjunction with `parse_test_public_id`. */
 export interface SyntheticsGlobalVariableParseTestOptions {
@@ -8063,7 +4728,7 @@ export interface SyntheticsGlobalVariableParseTestOptions {
   parser?: SyntheticsVariableParser;
   type: SyntheticsGlobalVariableParseTestOptionsType | (string & {});
 }
-export const SyntheticsGlobalVariableParseTestOptions = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGlobalVariableParseTestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     localVariableName: S.optional(S.String),
@@ -8076,7 +4741,7 @@ export const SyntheticsGlobalVariableParseTestOptions = /*@__PURE__*/ S.suspend(
 
 /** Tags of the global variable. */
 export type CreateGlobalVariableRequestTagsList = Array<string>;
-export const CreateGlobalVariableRequestTagsList =
+const CreateGlobalVariableRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateGlobalVariableRequestTagsList>;
 
 /** Parameters for the TOTP/MFA variable */
@@ -8086,7 +4751,7 @@ export interface SyntheticsGlobalVariableTOTPParameters {
   /** Interval for which to refresh the token (in seconds). */
   refresh_interval?: number;
 }
-export const SyntheticsGlobalVariableTOTPParameters = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGlobalVariableTOTPParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     digits: S.optional(S.Number),
     refresh_interval: S.optional(S.Number),
@@ -8099,7 +4764,7 @@ export const SyntheticsGlobalVariableTOTPParameters = /*@__PURE__*/ S.suspend(()
 export interface SyntheticsGlobalVariableOptions {
   totp_parameters?: SyntheticsGlobalVariableTOTPParameters;
 }
-export const SyntheticsGlobalVariableOptions = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGlobalVariableOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totp_parameters: S.optional(SyntheticsGlobalVariableTOTPParameters),
   }),
@@ -8115,7 +4780,7 @@ export interface SyntheticsGlobalVariableValue {
   /** Value of the global variable. When reading a global variable, the value will not be present if the variable is hidden with the `secure` property. */
   value?: string;
 }
-export const SyntheticsGlobalVariableValue = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGlobalVariableValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(SyntheticsGlobalVariableOptions),
     secure: S.optional(S.Boolean),
@@ -8142,7 +4807,7 @@ export interface CreateGlobalVariableRequest {
   tags: CreateGlobalVariableRequestTagsList;
   value?: SyntheticsGlobalVariableValue;
 }
-export const CreateGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SyntheticsGlobalVariableAttributes),
     description: S.String,
@@ -8160,7 +4825,7 @@ export const CreateGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the global variable. */
 export type SyntheticsGlobalVariableTagsList = Array<string>;
-export const SyntheticsGlobalVariableTagsList =
+const SyntheticsGlobalVariableTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsGlobalVariableTagsList>;
 
 /** Synthetic global variable. */
@@ -8183,7 +4848,7 @@ export interface SyntheticsGlobalVariable {
   tags: SyntheticsGlobalVariableTagsList;
   value: SyntheticsGlobalVariableValue;
 }
-export const SyntheticsGlobalVariable = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGlobalVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SyntheticsGlobalVariableAttributes),
     description: S.String,
@@ -8200,7 +4865,7 @@ export const SyntheticsGlobalVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with a host. */
 export type CreateHostTagsRequestTagsList = Array<string>;
-export const CreateHostTagsRequestTagsList =
+const CreateHostTagsRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateHostTagsRequestTagsList>;
 
 export interface CreateHostTagsRequest {
@@ -8213,7 +4878,7 @@ export interface CreateHostTagsRequest {
   /** A list of tags associated with a host. */
   tags?: CreateHostTagsRequestTagsList;
 }
-export const CreateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_name: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -8224,7 +4889,7 @@ export const CreateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with a host. */
 export type HostTagsTagsList = Array<string>;
-export const HostTagsTagsList =
+const HostTagsTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostTagsTagsList>;
 
 /** Host name and an array of its tags */
@@ -8234,7 +4899,7 @@ export interface HostTags {
   /** A list of tags associated with a host. */
   tags?: HostTagsTagsList;
 }
-export const HostTags = /*@__PURE__*/ S.suspend(() =>
+const HostTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     tags: S.optional(HostTagsTagsList),
@@ -8248,7 +4913,7 @@ export interface LogsDailyLimitReset {
   /** String in `(-|+)HH:00` format representing the UTC offset to apply to the given reset time. The hours must be between -12 and +14 (inclusive). */
   reset_utc_offset?: string;
 }
-export const LogsDailyLimitReset = /*@__PURE__*/ S.suspend(() =>
+const LogsDailyLimitReset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reset_time: S.optional(S.String),
     reset_utc_offset: S.optional(S.String),
@@ -8264,7 +4929,7 @@ export interface LogsExclusionFilter {
   /** Sample rate to apply to logs going through this exclusion filter, a value of 1.0 excludes all logs matching the query. */
   sample_rate: number;
 }
-export const LogsExclusionFilter = /*@__PURE__*/ S.suspend(() =>
+const LogsExclusionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     sample_attribute: S.optional(S.String),
@@ -8280,7 +4945,7 @@ export interface LogsExclusion {
   /** Name of the index exclusion filter. */
   name: string;
 }
-export const LogsExclusion = /*@__PURE__*/ S.suspend(() =>
+const LogsExclusion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(LogsExclusionFilter),
     is_enabled: S.optional(S.Boolean),
@@ -8290,7 +4955,7 @@ export const LogsExclusion = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type CreateLogsIndexRequestExclusionFiltersList = Array<LogsExclusion>;
-export const CreateLogsIndexRequestExclusionFiltersList = /*@__PURE__*/ S.Array(
+const CreateLogsIndexRequestExclusionFiltersList = /*@__PURE__*/ S.Array(
   LogsExclusion,
 ) as any as S.Schema<CreateLogsIndexRequestExclusionFiltersList>;
 
@@ -8299,7 +4964,7 @@ export interface LogsFilter {
   /** The filter query. */
   query?: string;
 }
-export const LogsFilter = /*@__PURE__*/ S.suspend(() =>
+const LogsFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
   }),
@@ -8307,7 +4972,7 @@ export const LogsFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type CreateLogsIndexRequestTagsList = Array<string>;
-export const CreateLogsIndexRequestTagsList =
+const CreateLogsIndexRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateLogsIndexRequestTagsList>;
 
 export interface CreateLogsIndexRequest {
@@ -8328,7 +4993,7 @@ export interface CreateLogsIndexRequest {
   /** A list of tags associated with the index. Tags must be in `key:value` format. */
   tags?: CreateLogsIndexRequestTagsList;
 }
-export const CreateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daily_limit: S.optional(S.Number),
     daily_limit_reset: S.optional(LogsDailyLimitReset),
@@ -8344,12 +5009,12 @@ export const CreateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type LogsIndexExclusionFiltersList = Array<LogsExclusion>;
-export const LogsIndexExclusionFiltersList =
+const LogsIndexExclusionFiltersList =
   CreateLogsIndexRequestExclusionFiltersList as any as S.Schema<LogsIndexExclusionFiltersList>;
 
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type LogsIndexTagsList = Array<string>;
-export const LogsIndexTagsList =
+const LogsIndexTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsIndexTagsList>;
 
 /** Object describing a Datadog Log index. */
@@ -8373,7 +5038,7 @@ export interface LogsIndex {
   /** A list of tags associated with the index. Tags must be in `key:value` format. */
   tags?: LogsIndexTagsList;
 }
-export const LogsIndex = /*@__PURE__*/ S.suspend(() =>
+const LogsIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daily_limit: S.optional(S.Number),
     daily_limit_reset: S.optional(LogsDailyLimitReset),
@@ -8395,22 +5060,10 @@ export interface LogsGrokParserRules {
   /** List of support rules for the grok parser, separated by a new line. */
   support_rules?: string;
 }
-export const LogsGrokParserRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    match_rules: S.String,
-    support_rules: S.optional(S.String),
-  }),
-).annotate({ identifier: "LogsGrokParserRules" }) as any as S.Schema<LogsGrokParserRules>;
-
 /** List of sample logs to test this grok parser. */
 export type LogsGrokParserSamplesList = Array<string>;
-export const LogsGrokParserSamplesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsGrokParserSamplesList>;
-
 /** Type of logs grok parser. */
 export type LogsGrokParserType = "grok-parser";
-export const LogsGrokParserType = S.String;
-
 /** Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing). */
 export interface LogsGrokParser {
   grok: LogsGrokParserRules;
@@ -8424,26 +5077,10 @@ export interface LogsGrokParser {
   source: string;
   type: LogsGrokParserType;
 }
-export const LogsGrokParser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grok: LogsGrokParserRules,
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    samples: S.optional(LogsGrokParserSamplesList),
-    source: S.String,
-    type: LogsGrokParserType,
-  }),
-).annotate({ identifier: "LogsGrokParser" }) as any as S.Schema<LogsGrokParser>;
-
 /** Array of source attributes. */
 export type LogsDateRemapperSourcesList = Array<string>;
-export const LogsDateRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsDateRemapperSourcesList>;
-
 /** Type of logs date remapper. */
 export type LogsDateRemapperType = "date-remapper";
-export const LogsDateRemapperType = S.String;
-
 /** As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes. - `timestamp` - `date` - `_timestamp` - `Timestamp` - `eventTime` - `published_date` If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164. **Note:** If your logs don't contain any of the default attributes and you haven't defined your own date attribute, Datadog timestamps the logs with the date it received them. If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account. */
 export interface LogsDateRemapper {
   /** Whether or not the processor is enabled. */
@@ -8454,24 +5091,10 @@ export interface LogsDateRemapper {
   sources: LogsDateRemapperSourcesList;
   type: LogsDateRemapperType;
 }
-export const LogsDateRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: LogsDateRemapperSourcesList,
-    type: LogsDateRemapperType,
-  }),
-).annotate({ identifier: "LogsDateRemapper" }) as any as S.Schema<LogsDateRemapper>;
-
 /** Array of source attributes. */
 export type LogsStatusRemapperSourcesList = Array<string>;
-export const LogsStatusRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsStatusRemapperSourcesList>;
-
 /** Type of logs status remapper. */
 export type LogsStatusRemapperType = "status-remapper";
-export const LogsStatusRemapperType = S.String;
-
 /** Use this Processor if you want to assign some attributes as the official status. Each incoming status value is mapped as follows. - Integers from 0 to 7 map to the Syslog severity standards - Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0) - Strings beginning with `a` (case-insensitive) map to `alert` (1) - Strings beginning with `c` (case-insensitive) map to `critical` (2) - Strings beginning with `err` (case-insensitive) map to `error` (3) - Strings beginning with `w` (case-insensitive) map to `warning` (4) - Strings beginning with `n` (case-insensitive) map to `notice` (5) - Strings beginning with `i` (case-insensitive) map to `info` (6) - Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7) - Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK - All others map to `info` (6) **Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account. */
 export interface LogsStatusRemapper {
   /** Whether or not the processor is enabled. */
@@ -8482,24 +5105,10 @@ export interface LogsStatusRemapper {
   sources: LogsStatusRemapperSourcesList;
   type: LogsStatusRemapperType;
 }
-export const LogsStatusRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: LogsStatusRemapperSourcesList,
-    type: LogsStatusRemapperType,
-  }),
-).annotate({ identifier: "LogsStatusRemapper" }) as any as S.Schema<LogsStatusRemapper>;
-
 /** Array of source attributes. */
 export type LogsServiceRemapperSourcesList = Array<string>;
-export const LogsServiceRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsServiceRemapperSourcesList>;
-
 /** Type of logs service remapper. */
 export type LogsServiceRemapperType = "service-remapper";
-export const LogsServiceRemapperType = S.String;
-
 /** Use this processor if you want to assign one or more attributes as the official service. **Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account. */
 export interface LogsServiceRemapper {
   /** Whether or not the processor is enabled. */
@@ -8510,24 +5119,10 @@ export interface LogsServiceRemapper {
   sources: LogsServiceRemapperSourcesList;
   type: LogsServiceRemapperType;
 }
-export const LogsServiceRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: LogsServiceRemapperSourcesList,
-    type: LogsServiceRemapperType,
-  }),
-).annotate({ identifier: "LogsServiceRemapper" }) as any as S.Schema<LogsServiceRemapper>;
-
 /** Array of source attributes. */
 export type LogsMessageRemapperSourcesList = Array<string>;
-export const LogsMessageRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsMessageRemapperSourcesList>;
-
 /** Type of logs message remapper. */
 export type LogsMessageRemapperType = "message-remapper";
-export const LogsMessageRemapperType = S.String;
-
 /** The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message. **Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account. */
 export interface LogsMessageRemapper {
   /** Whether or not the processor is enabled. */
@@ -8538,28 +5133,12 @@ export interface LogsMessageRemapper {
   sources: LogsMessageRemapperSourcesList;
   type: LogsMessageRemapperType;
 }
-export const LogsMessageRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: LogsMessageRemapperSourcesList,
-    type: LogsMessageRemapperType,
-  }),
-).annotate({ identifier: "LogsMessageRemapper" }) as any as S.Schema<LogsMessageRemapper>;
-
 /** Array of source attributes. */
 export type LogsAttributeRemapperSourcesList = Array<string>;
-export const LogsAttributeRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsAttributeRemapperSourcesList>;
-
 /** If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. */
 export type TargetFormatType = "auto" | "string" | "integer" | "double";
-export const TargetFormatType = S.String;
-
 /** Type of logs attribute remapper. */
 export type LogsAttributeRemapperType = "attribute-remapper";
-export const LogsAttributeRemapperType = S.String;
-
 /** The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name. */
 export interface LogsAttributeRemapper {
   /** Whether or not the processor is enabled. */
@@ -8581,30 +5160,10 @@ export interface LogsAttributeRemapper {
   target_type?: string;
   type: LogsAttributeRemapperType;
 }
-export const LogsAttributeRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    override_on_conflict: S.optional(S.Boolean),
-    preserve_source: S.optional(S.Boolean),
-    source_type: S.optional(S.String),
-    sources: LogsAttributeRemapperSourcesList,
-    target: S.String,
-    target_format: S.optional(TargetFormatType),
-    target_type: S.optional(S.String),
-    type: LogsAttributeRemapperType,
-  }),
-).annotate({ identifier: "LogsAttributeRemapper" }) as any as S.Schema<LogsAttributeRemapper>;
-
 /** Array of source attributes. */
 export type LogsURLParserSourcesList = Array<string>;
-export const LogsURLParserSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsURLParserSourcesList>;
-
 /** Type of logs URL parser. */
 export type LogsURLParserType = "url-parser";
-export const LogsURLParserType = S.String;
-
 /** This processor extracts query parameters and other important parameters from a URL. */
 export interface LogsURLParser {
   /** Whether or not the processor is enabled. */
@@ -8619,26 +5178,10 @@ export interface LogsURLParser {
   target: string;
   type: LogsURLParserType;
 }
-export const LogsURLParser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    normalize_ending_slashes: S.optional(S.NullOr(S.Boolean)),
-    sources: LogsURLParserSourcesList,
-    target: S.String,
-    type: LogsURLParserType,
-  }),
-).annotate({ identifier: "LogsURLParser" }) as any as S.Schema<LogsURLParser>;
-
 /** Array of source attributes. */
 export type LogsUserAgentParserSourcesList = Array<string>;
-export const LogsUserAgentParserSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsUserAgentParserSourcesList>;
-
 /** Type of logs User-Agent parser. */
 export type LogsUserAgentParserType = "user-agent-parser";
-export const LogsUserAgentParserType = S.String;
-
 /** The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing. */
 export interface LogsUserAgentParser {
   /** Whether or not the processor is enabled. */
@@ -8653,42 +5196,16 @@ export interface LogsUserAgentParser {
   target: string;
   type: LogsUserAgentParserType;
 }
-export const LogsUserAgentParser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    is_encoded: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: LogsUserAgentParserSourcesList,
-    target: S.String,
-    type: LogsUserAgentParserType,
-  }),
-).annotate({ identifier: "LogsUserAgentParser" }) as any as S.Schema<LogsUserAgentParser>;
-
 /** Object describing the logs filter. */
 export interface LogsCategoryProcessorCategory {
   filter?: LogsFilter;
   /** Value to assign to the target attribute. */
   name?: string;
 }
-export const LogsCategoryProcessorCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(LogsFilter),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LogsCategoryProcessorCategory",
-}) as any as S.Schema<LogsCategoryProcessorCategory>;
-
 /** Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log. */
 export type LogsCategoryProcessorCategoriesList = Array<LogsCategoryProcessorCategory>;
-export const LogsCategoryProcessorCategoriesList = /*@__PURE__*/ S.Array(
-  LogsCategoryProcessorCategory,
-) as any as S.Schema<LogsCategoryProcessorCategoriesList>;
-
 /** Type of logs category processor. */
 export type LogsCategoryProcessorType = "category-processor";
-export const LogsCategoryProcessorType = S.String;
-
 /** Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets. **Notes**: - The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query. - Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries. - The names of the categories must be unique. - Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper. */
 export interface LogsCategoryProcessor {
   /** Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log. */
@@ -8701,20 +5218,8 @@ export interface LogsCategoryProcessor {
   target: string;
   type: LogsCategoryProcessorType;
 }
-export const LogsCategoryProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: LogsCategoryProcessorCategoriesList,
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    target: S.String,
-    type: LogsCategoryProcessorType,
-  }),
-).annotate({ identifier: "LogsCategoryProcessor" }) as any as S.Schema<LogsCategoryProcessor>;
-
 /** Type of logs arithmetic processor. */
 export type LogsArithmeticProcessorType = "arithmetic-processor";
-export const LogsArithmeticProcessorType = S.String;
-
 /** Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log. The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`. By default, the calculation is skipped if an attribute is missing. Select "Replace missing attribute by 0" to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number. *Notes*: - The operator `-` needs to be space split in the formula as it can also be contained in attribute names. - If the target attribute already exists, it is overwritten by the result of the formula. - Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`. - If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter). */
 export interface LogsArithmeticProcessor {
   /** Arithmetic operation between one or more log attributes. */
@@ -8729,21 +5234,8 @@ export interface LogsArithmeticProcessor {
   target: string;
   type: LogsArithmeticProcessorType;
 }
-export const LogsArithmeticProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-    is_enabled: S.optional(S.Boolean),
-    is_replace_missing: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    target: S.String,
-    type: LogsArithmeticProcessorType,
-  }),
-).annotate({ identifier: "LogsArithmeticProcessor" }) as any as S.Schema<LogsArithmeticProcessor>;
-
 /** Type of logs string builder processor. */
 export type LogsStringBuilderProcessorType = "string-builder-processor";
-export const LogsStringBuilderProcessorType = S.String;
-
 /** Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute. The template is defined by both raw text and blocks with the syntax `%{attribute_path}`. **Notes**: - The processor only accepts attributes with values or an array of values in the blocks. - If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection. - If the target attribute already exists, it is overwritten by the result of the template. - Results of the template cannot exceed 256 characters. */
 export interface LogsStringBuilderProcessor {
   /** Whether or not the processor is enabled. */
@@ -8758,34 +5250,12 @@ export interface LogsStringBuilderProcessor {
   template: string;
   type: LogsStringBuilderProcessorType;
 }
-export const LogsStringBuilderProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    is_replace_missing: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    target: S.String,
-    template: S.String,
-    type: LogsStringBuilderProcessorType,
-  }),
-).annotate({
-  identifier: "LogsStringBuilderProcessor",
-}) as any as S.Schema<LogsStringBuilderProcessor>;
-
 /** Ordered list of processors in this pipeline. */
 export type LogsPipelineProcessorProcessorsList = Array<LogsProcessor>;
-export const LogsPipelineProcessorProcessorsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => LogsProcessor),
-) as any as S.Schema<LogsPipelineProcessorProcessorsList>;
-
 /** A list of tags associated with the pipeline. */
 export type LogsPipelineProcessorTagsList = Array<string>;
-export const LogsPipelineProcessorTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelineProcessorTagsList>;
-
 /** Type of logs pipeline processor. */
 export type LogsPipelineProcessorType = "pipeline";
-export const LogsPipelineProcessorType = S.String;
-
 /** Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute. A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors. */
 export interface LogsPipelineProcessor {
   /** A description of the pipeline. */
@@ -8801,27 +5271,10 @@ export interface LogsPipelineProcessor {
   tags?: LogsPipelineProcessorTagsList;
   type: LogsPipelineProcessorType;
 }
-export const LogsPipelineProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    filter: S.optional(LogsFilter),
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    processors: S.optional(LogsPipelineProcessorProcessorsList),
-    tags: S.optional(LogsPipelineProcessorTagsList),
-    type: LogsPipelineProcessorType,
-  }),
-).annotate({ identifier: "LogsPipelineProcessor" }) as any as S.Schema<LogsPipelineProcessor>;
-
 /** Array of source attributes. */
 export type LogsGeoIPParserSourcesList = Array<string>;
-export const LogsGeoIPParserSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsGeoIPParserSourcesList>;
-
 /** Type of GeoIP parser. */
 export type LogsGeoIPParserType = "geo-ip-parser";
-export const LogsGeoIPParserType = S.String;
-
 /** The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path. */
 export interface LogsGeoIPParser {
   /** Whether or not the processor is enabled. */
@@ -8834,25 +5287,10 @@ export interface LogsGeoIPParser {
   target: string;
   type: LogsGeoIPParserType;
 }
-export const LogsGeoIPParser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: LogsGeoIPParserSourcesList,
-    target: S.String,
-    type: LogsGeoIPParserType,
-  }),
-).annotate({ identifier: "LogsGeoIPParser" }) as any as S.Schema<LogsGeoIPParser>;
-
 /** Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]` */
 export type LogsLookupProcessorLookupTableList = Array<string>;
-export const LogsLookupProcessorLookupTableList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsLookupProcessorLookupTableList>;
-
 /** Type of logs lookup processor. */
 export type LogsLookupProcessorType = "lookup-processor";
-export const LogsLookupProcessorType = S.String;
-
 /** Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines. */
 export interface LogsLookupProcessor {
   /** Value to set the target attribute if the source value is not found in the list. */
@@ -8869,18 +5307,6 @@ export interface LogsLookupProcessor {
   target: string;
   type: LogsLookupProcessorType;
 }
-export const LogsLookupProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default_lookup: S.optional(S.String),
-    is_enabled: S.optional(S.Boolean),
-    lookup_table: LogsLookupProcessorLookupTableList,
-    name: S.optional(S.String),
-    source: S.String,
-    target: S.String,
-    type: LogsLookupProcessorType,
-  }),
-).annotate({ identifier: "LogsLookupProcessor" }) as any as S.Schema<LogsLookupProcessor>;
-
 /** **Note**: Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines. */
 export interface ReferenceTableLogsLookupProcessor {
   /** Whether or not the processor is enabled. */
@@ -8895,28 +5321,10 @@ export interface ReferenceTableLogsLookupProcessor {
   target: string;
   type: LogsLookupProcessorType;
 }
-export const ReferenceTableLogsLookupProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    lookup_enrichment_table: S.String,
-    name: S.optional(S.String),
-    source: S.String,
-    target: S.String,
-    type: LogsLookupProcessorType,
-  }),
-).annotate({
-  identifier: "ReferenceTableLogsLookupProcessor",
-}) as any as S.Schema<ReferenceTableLogsLookupProcessor>;
-
 /** Array of source attributes. */
 export type LogsTraceRemapperSourcesList = Array<string>;
-export const LogsTraceRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsTraceRemapperSourcesList>;
-
 /** Type of logs trace remapper. */
 export type LogsTraceRemapperType = "trace-id-remapper";
-export const LogsTraceRemapperType = S.String;
-
 /** There are two ways to improve correlation between application traces and logs. 1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup. 2. Use the Trace remapper processor to define a log attribute as its associated trace ID. */
 export interface LogsTraceRemapper {
   /** Whether or not the processor is enabled. */
@@ -8927,24 +5335,10 @@ export interface LogsTraceRemapper {
   sources?: LogsTraceRemapperSourcesList;
   type: LogsTraceRemapperType;
 }
-export const LogsTraceRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: S.optional(LogsTraceRemapperSourcesList),
-    type: LogsTraceRemapperType,
-  }),
-).annotate({ identifier: "LogsTraceRemapper" }) as any as S.Schema<LogsTraceRemapper>;
-
 /** Array of source attributes. */
 export type LogsSpanRemapperSourcesList = Array<string>;
-export const LogsSpanRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSpanRemapperSourcesList>;
-
 /** Type of logs span remapper. */
 export type LogsSpanRemapperType = "span-id-remapper";
-export const LogsSpanRemapperType = S.String;
-
 /** There are two ways to define correlation between application spans and logs: 1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default. 2. Use the span remapper processor to define a log attribute as its associated span ID. */
 export interface LogsSpanRemapper {
   /** Whether or not the processor is enabled. */
@@ -8955,19 +5349,8 @@ export interface LogsSpanRemapper {
   sources?: LogsSpanRemapperSourcesList;
   type: LogsSpanRemapperType;
 }
-export const LogsSpanRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    sources: S.optional(LogsSpanRemapperSourcesList),
-    type: LogsSpanRemapperType,
-  }),
-).annotate({ identifier: "LogsSpanRemapper" }) as any as S.Schema<LogsSpanRemapper>;
-
 /** Operation type. */
 export type LogsArrayProcessorOperationAppendType = "append";
-export const LogsArrayProcessorOperationAppendType = S.String;
-
 /** Operation that appends a value to a target array attribute. */
 export interface LogsArrayProcessorOperationAppend {
   /** Remove or preserve the remapped source element. */
@@ -8978,21 +5361,8 @@ export interface LogsArrayProcessorOperationAppend {
   target: string;
   type: LogsArrayProcessorOperationAppendType;
 }
-export const LogsArrayProcessorOperationAppend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preserve_source: S.optional(S.Boolean),
-    source: S.String,
-    target: S.String,
-    type: LogsArrayProcessorOperationAppendType,
-  }),
-).annotate({
-  identifier: "LogsArrayProcessorOperationAppend",
-}) as any as S.Schema<LogsArrayProcessorOperationAppend>;
-
 /** Operation type. */
 export type LogsArrayProcessorOperationLengthType = "length";
-export const LogsArrayProcessorOperationLengthType = S.String;
-
 /** Operation that computes the length of a `source` array and stores the result in the `target` attribute. */
 export interface LogsArrayProcessorOperationLength {
   /** Attribute path of the array to measure. */
@@ -9001,20 +5371,8 @@ export interface LogsArrayProcessorOperationLength {
   target: string;
   type: LogsArrayProcessorOperationLengthType;
 }
-export const LogsArrayProcessorOperationLength = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.String,
-    target: S.String,
-    type: LogsArrayProcessorOperationLengthType,
-  }),
-).annotate({
-  identifier: "LogsArrayProcessorOperationLength",
-}) as any as S.Schema<LogsArrayProcessorOperationLength>;
-
 /** Operation type. */
 export type LogsArrayProcessorOperationSelectType = "select";
-export const LogsArrayProcessorOperationSelectType = S.String;
-
 /** Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute. */
 export interface LogsArrayProcessorOperationSelect {
   /** Filter condition expressed as `key:value` used to find the matching element. */
@@ -9027,22 +5385,8 @@ export interface LogsArrayProcessorOperationSelect {
   /** Key of the value to extract from the matching element. */
   value_to_extract: string;
 }
-export const LogsArrayProcessorOperationSelect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.String,
-    source: S.String,
-    target: S.String,
-    type: LogsArrayProcessorOperationSelectType,
-    value_to_extract: S.String,
-  }),
-).annotate({
-  identifier: "LogsArrayProcessorOperationSelect",
-}) as any as S.Schema<LogsArrayProcessorOperationSelect>;
-
 /** Operation type. */
 export type LogsArrayProcessorOperationExtractKeyValueType = "key-value";
-export const LogsArrayProcessorOperationExtractKeyValueType = S.String;
-
 /** Operation that extracts key-value pairs from a `source` array and stores the result in the `target` attribute. */
 export interface LogsArrayProcessorOperationExtractKeyValue {
   /** Key of the attribute in each array element that holds the name to use for the extracted attribute. */
@@ -9057,32 +5401,14 @@ export interface LogsArrayProcessorOperationExtractKeyValue {
   /** Key of the attribute in each array element that holds the value to use for the extracted attribute. */
   value_to_extract: string;
 }
-export const LogsArrayProcessorOperationExtractKeyValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key_to_extract: S.String,
-    override_on_conflict: S.optional(S.Boolean),
-    source: S.String,
-    target: S.optional(S.String),
-    type: LogsArrayProcessorOperationExtractKeyValueType,
-    value_to_extract: S.String,
-  }),
-).annotate({
-  identifier: "LogsArrayProcessorOperationExtractKeyValue",
-}) as any as S.Schema<LogsArrayProcessorOperationExtractKeyValue>;
-
 /** Configuration of the array processor operation to perform. */
 export type LogsArrayProcessorOperation =
   | LogsArrayProcessorOperationAppend
   | LogsArrayProcessorOperationLength
   | LogsArrayProcessorOperationSelect
   | LogsArrayProcessorOperationExtractKeyValue;
-export const LogsArrayProcessorOperation =
-  S.Unknown as any as S.Schema<LogsArrayProcessorOperation>;
-
 /** Type of logs array processor. */
 export type LogsArrayProcessorType = "array-processor";
-export const LogsArrayProcessorType = S.String;
-
 /** A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are: - Select value from matching element - Compute array length - Append a value to an array - Extract key-value pairs from an array */
 export interface LogsArrayProcessor {
   /** Whether or not the processor is enabled. */
@@ -9092,27 +5418,12 @@ export interface LogsArrayProcessor {
   operation: LogsArrayProcessorOperation;
   type: LogsArrayProcessorType;
 }
-export const LogsArrayProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    operation: LogsArrayProcessorOperation,
-    type: LogsArrayProcessorType,
-  }),
-).annotate({ identifier: "LogsArrayProcessor" }) as any as S.Schema<LogsArrayProcessor>;
-
 /** The encoding used to represent the binary data. */
 export type LogsDecoderProcessorBinaryToTextEncoding = "base64" | "base16";
-export const LogsDecoderProcessorBinaryToTextEncoding = S.String;
-
 /** The original representation of input string. */
 export type LogsDecoderProcessorInputRepresentation = "utf_8" | "integer";
-export const LogsDecoderProcessorInputRepresentation = S.String;
-
 /** Type of logs decoder processor. */
 export type LogsDecoderProcessorType = "decoder-processor";
-export const LogsDecoderProcessorType = S.String;
-
 /** The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute. */
 export interface LogsDecoderProcessor {
   binary_to_text_encoding: LogsDecoderProcessorBinaryToTextEncoding | (string & {});
@@ -9127,27 +5438,10 @@ export interface LogsDecoderProcessor {
   target: string;
   type: LogsDecoderProcessorType;
 }
-export const LogsDecoderProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binary_to_text_encoding: LogsDecoderProcessorBinaryToTextEncoding,
-    input_representation: LogsDecoderProcessorInputRepresentation,
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    source: S.String,
-    target: S.String,
-    type: LogsDecoderProcessorType,
-  }),
-).annotate({ identifier: "LogsDecoderProcessor" }) as any as S.Schema<LogsDecoderProcessor>;
-
 /** Array of source attributes. */
 export type LogsSchemaRemapperSourcesList = Array<string>;
-export const LogsSchemaRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSchemaRemapperSourcesList>;
-
 /** Type of logs schema remapper. */
 export type LogsSchemaRemapperType = "schema-remapper";
-export const LogsSchemaRemapperType = S.String;
-
 /** The schema remapper maps source log fields to their correct fields. */
 export interface LogsSchemaRemapper {
   /** Name of the logs schema remapper. */
@@ -9163,18 +5457,6 @@ export interface LogsSchemaRemapper {
   target_format?: TargetFormatType | (string & {});
   type: LogsSchemaRemapperType;
 }
-export const LogsSchemaRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    override_on_conflict: S.optional(S.Boolean),
-    preserve_source: S.optional(S.Boolean),
-    sources: LogsSchemaRemapperSourcesList,
-    target: S.String,
-    target_format: S.optional(TargetFormatType),
-    type: LogsSchemaRemapperType,
-  }),
-).annotate({ identifier: "LogsSchemaRemapper" }) as any as S.Schema<LogsSchemaRemapper>;
-
 /** Object describing the logs filter with corresponding category ID and name assignment. */
 export interface LogsSchemaCategoryMapperCategory {
   filter: LogsFilter;
@@ -9183,38 +5465,15 @@ export interface LogsSchemaCategoryMapperCategory {
   /** Value to assign to target schema field. */
   name: string;
 }
-export const LogsSchemaCategoryMapperCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: LogsFilter,
-    id: S.Number,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "LogsSchemaCategoryMapperCategory",
-}) as any as S.Schema<LogsSchemaCategoryMapperCategory>;
-
 /** Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log. */
 export type LogsSchemaCategoryMapperCategoriesList = Array<LogsSchemaCategoryMapperCategory>;
-export const LogsSchemaCategoryMapperCategoriesList = /*@__PURE__*/ S.Array(
-  LogsSchemaCategoryMapperCategory,
-) as any as S.Schema<LogsSchemaCategoryMapperCategoriesList>;
-
 export type LogsSchemaCategoryMapperFallbackSourcesValueList = Array<string>;
-export const LogsSchemaCategoryMapperFallbackSourcesValueList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSchemaCategoryMapperFallbackSourcesValueList>;
-
 /** Fallback sources used to populate value of field. */
 export type LogsSchemaCategoryMapperFallbackSourcesMap = {
   [key: string]: LogsSchemaCategoryMapperFallbackSourcesValueList | undefined;
 };
-export const LogsSchemaCategoryMapperFallbackSourcesMap =
-  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<LogsSchemaCategoryMapperFallbackSourcesMap>;
-
 /** Values that define when the fallback is used. */
 export type LogsSchemaCategoryMapperFallbackValuesMap = { [key: string]: string | undefined };
-export const LogsSchemaCategoryMapperFallbackValuesMap =
-  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<LogsSchemaCategoryMapperFallbackValuesMap>;
-
 /** Used to override hardcoded category values with a value pulled from a source attribute on the log. */
 export interface LogsSchemaCategoryMapperFallback {
   /** Fallback sources used to populate value of field. */
@@ -9222,15 +5481,6 @@ export interface LogsSchemaCategoryMapperFallback {
   /** Values that define when the fallback is used. */
   values?: LogsSchemaCategoryMapperFallbackValuesMap;
 }
-export const LogsSchemaCategoryMapperFallback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sources: S.optional(LogsSchemaCategoryMapperFallbackSourcesMap),
-    values: S.optional(LogsSchemaCategoryMapperFallbackValuesMap),
-  }),
-).annotate({
-  identifier: "LogsSchemaCategoryMapperFallback",
-}) as any as S.Schema<LogsSchemaCategoryMapperFallback>;
-
 /** Name of the target attributes which value is defined by the matching category. */
 export interface LogsSchemaCategoryMapperTargets {
   /** ID of the field to map log attributes to. */
@@ -9238,19 +5488,8 @@ export interface LogsSchemaCategoryMapperTargets {
   /** Name of the field to map log attributes to. */
   name?: string;
 }
-export const LogsSchemaCategoryMapperTargets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LogsSchemaCategoryMapperTargets",
-}) as any as S.Schema<LogsSchemaCategoryMapperTargets>;
-
 /** Type of logs schema category mapper. */
 export type LogsSchemaCategoryMapperType = "schema-category-mapper";
-export const LogsSchemaCategoryMapperType = S.String;
-
 /** Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name. **Notes**: - The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query. - Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries. - Sibling fields always have a numerical ID field and a human-readable string name. - A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. */
 export interface LogsSchemaCategoryMapper {
   /** Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log. */
@@ -9261,31 +5500,12 @@ export interface LogsSchemaCategoryMapper {
   targets: LogsSchemaCategoryMapperTargets;
   type: LogsSchemaCategoryMapperType;
 }
-export const LogsSchemaCategoryMapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: LogsSchemaCategoryMapperCategoriesList,
-    fallback: S.optional(LogsSchemaCategoryMapperFallback),
-    name: S.String,
-    targets: LogsSchemaCategoryMapperTargets,
-    type: LogsSchemaCategoryMapperType,
-  }),
-).annotate({ identifier: "LogsSchemaCategoryMapper" }) as any as S.Schema<LogsSchemaCategoryMapper>;
-
 /** Configuration of the schema processor mapper to use. */
 export type LogsSchemaMapper = LogsSchemaRemapper | LogsSchemaCategoryMapper;
-export const LogsSchemaMapper = S.Unknown as any as S.Schema<LogsSchemaMapper>;
-
 /** The `LogsSchemaProcessor` `mappers`. */
 export type LogsSchemaProcessorMappersList = Array<LogsSchemaMapper>;
-export const LogsSchemaProcessorMappersList = /*@__PURE__*/ S.Array(
-  LogsSchemaMapper,
-) as any as S.Schema<LogsSchemaProcessorMappersList>;
-
 /** Optional list of profiles to modify the schema. */
 export type LogsSchemaDataProfilesList = Array<string>;
-export const LogsSchemaDataProfilesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSchemaDataProfilesList>;
-
 /** Configuration of the schema data to use. */
 export interface LogsSchemaData {
   /** Class name of the schema to use. */
@@ -9299,20 +5519,8 @@ export interface LogsSchemaData {
   /** Version of the schema to use. */
   version: string;
 }
-export const LogsSchemaData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    class_name: S.String,
-    class_uid: S.Number,
-    profiles: S.optional(LogsSchemaDataProfilesList),
-    schema_type: S.String,
-    version: S.String,
-  }),
-).annotate({ identifier: "LogsSchemaData" }) as any as S.Schema<LogsSchemaData>;
-
 /** Type of logs schema processor. */
 export type LogsSchemaProcessorType = "schema-processor";
-export const LogsSchemaProcessorType = S.String;
-
 /** A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF. */
 export interface LogsSchemaProcessor {
   /** Whether or not the processor is enabled. */
@@ -9324,20 +5532,8 @@ export interface LogsSchemaProcessor {
   schema: LogsSchemaData;
   type: LogsSchemaProcessorType;
 }
-export const LogsSchemaProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    mappers: LogsSchemaProcessorMappersList,
-    name: S.String,
-    schema: LogsSchemaData,
-    type: LogsSchemaProcessorType,
-  }),
-).annotate({ identifier: "LogsSchemaProcessor" }) as any as S.Schema<LogsSchemaProcessor>;
-
 /** Type of logs exclude attribute processor. */
 export type LogsExcludeAttributeProcessorType = "exclude-attribute";
-export const LogsExcludeAttributeProcessorType = S.String;
-
 /** Use this processor to remove an attribute from a log during processing. The processor strips the specified attribute from the log event, which is useful when the attribute contains sensitive data or is no longer needed downstream. */
 export interface LogsExcludeAttributeProcessor {
   /** Name of the log attribute to remove from the log event. */
@@ -9348,22 +5544,8 @@ export interface LogsExcludeAttributeProcessor {
   name?: string;
   type: LogsExcludeAttributeProcessorType;
 }
-export const LogsExcludeAttributeProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute_to_exclude: S.String,
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    type: LogsExcludeAttributeProcessorType,
-  }),
-).annotate({
-  identifier: "LogsExcludeAttributeProcessor",
-}) as any as S.Schema<LogsExcludeAttributeProcessor>;
-
 /** Array of source attribute paths. */
 export type LogsArrayMapAttributeRemapperSourcesList = Array<string>;
-export const LogsArrayMapAttributeRemapperSourcesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsArrayMapAttributeRemapperSourcesList>;
-
 /** An attribute remapper sub-processor for use inside an array-map processor. Unlike the top-level attribute remapper, `is_enabled`, `source_type`, and `target_type` are not supported. */
 export interface LogsArrayMapAttributeRemapper {
   /** Name of the sub-processor. */
@@ -9379,20 +5561,6 @@ export interface LogsArrayMapAttributeRemapper {
   target_format?: TargetFormatType | (string & {});
   type: LogsAttributeRemapperType;
 }
-export const LogsArrayMapAttributeRemapper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    override_on_conflict: S.optional(S.Boolean),
-    preserve_source: S.optional(S.Boolean),
-    sources: LogsArrayMapAttributeRemapperSourcesList,
-    target: S.String,
-    target_format: S.optional(TargetFormatType),
-    type: LogsAttributeRemapperType,
-  }),
-).annotate({
-  identifier: "LogsArrayMapAttributeRemapper",
-}) as any as S.Schema<LogsArrayMapAttributeRemapper>;
-
 /** An arithmetic sub-processor for use inside an array-map processor. Unlike the top-level arithmetic processor, `is_enabled` is not supported. */
 export interface LogsArrayMapArithmeticSubProcessor {
   /** Arithmetic operation to perform. */
@@ -9405,18 +5573,6 @@ export interface LogsArrayMapArithmeticSubProcessor {
   target: string;
   type: LogsArithmeticProcessorType;
 }
-export const LogsArrayMapArithmeticSubProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-    is_replace_missing: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    target: S.String,
-    type: LogsArithmeticProcessorType,
-  }),
-).annotate({
-  identifier: "LogsArrayMapArithmeticSubProcessor",
-}) as any as S.Schema<LogsArrayMapArithmeticSubProcessor>;
-
 /** A string builder sub-processor for use inside an array-map processor. Unlike the top-level string builder processor, `is_enabled` is not supported. */
 export interface LogsArrayMapStringBuilderSubProcessor {
   /** Replace missing attribute values with an empty string. */
@@ -9429,23 +5585,8 @@ export interface LogsArrayMapStringBuilderSubProcessor {
   template: string;
   type: LogsStringBuilderProcessorType;
 }
-export const LogsArrayMapStringBuilderSubProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_replace_missing: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    target: S.String,
-    template: S.String,
-    type: LogsStringBuilderProcessorType,
-  }),
-).annotate({
-  identifier: "LogsArrayMapStringBuilderSubProcessor",
-}) as any as S.Schema<LogsArrayMapStringBuilderSubProcessor>;
-
 /** Array of filters to match against a log and the corresponding value to assign. */
 export type LogsArrayMapCategorySubProcessorCategoriesList = Array<LogsCategoryProcessorCategory>;
-export const LogsArrayMapCategorySubProcessorCategoriesList =
-  LogsCategoryProcessorCategoriesList as any as S.Schema<LogsArrayMapCategorySubProcessorCategoriesList>;
-
 /** A category sub-processor for use inside an array-map processor. Unlike the top-level category processor, `is_enabled` is not supported. */
 export interface LogsArrayMapCategorySubProcessor {
   /** Array of filters to match against a log and the corresponding value to assign. */
@@ -9456,35 +5597,16 @@ export interface LogsArrayMapCategorySubProcessor {
   target: string;
   type: LogsCategoryProcessorType;
 }
-export const LogsArrayMapCategorySubProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: LogsArrayMapCategorySubProcessorCategoriesList,
-    name: S.optional(S.String),
-    target: S.String,
-    type: LogsCategoryProcessorType,
-  }),
-).annotate({
-  identifier: "LogsArrayMapCategorySubProcessor",
-}) as any as S.Schema<LogsArrayMapCategorySubProcessor>;
-
 /** A sub-processor used inside an array-map processor. Allowed types: `attribute-remapper`, `string-builder-processor`, `arithmetic-processor`, `category-processor`. */
 export type LogsArrayMapSubProcessor =
   | LogsArrayMapAttributeRemapper
   | LogsArrayMapArithmeticSubProcessor
   | LogsArrayMapStringBuilderSubProcessor
   | LogsArrayMapCategorySubProcessor;
-export const LogsArrayMapSubProcessor = S.Unknown as any as S.Schema<LogsArrayMapSubProcessor>;
-
 /** Sub-processors applied to each element. Allowed types: `attribute-remapper`, `string-builder-processor`, `arithmetic-processor`, `category-processor`. */
 export type LogsArrayMapProcessorProcessorsList = Array<LogsArrayMapSubProcessor>;
-export const LogsArrayMapProcessorProcessorsList = /*@__PURE__*/ S.Array(
-  LogsArrayMapSubProcessor,
-) as any as S.Schema<LogsArrayMapProcessorProcessorsList>;
-
 /** Type of logs array-map processor. */
 export type LogsArrayMapProcessorType = "array-map-processor";
-export const LogsArrayMapProcessorType = S.String;
-
 /** The array-map processor transforms each element of a source array by applying sub-processors in order and collecting the results into a target array. Results can be written to a new array, to the source array (in-place), or to an existing target array. Sub-processors can read from `$sourceElem.<field>` (object element field), bare `$sourceElem` (primitive element), or any parent log attribute path. Sub-processors write to `$targetElem.<field>` (object output field) or bare `$targetElem` (primitive output). */
 export interface LogsArrayMapProcessor {
   /** Whether or not the processor is enabled. */
@@ -9501,18 +5623,6 @@ export interface LogsArrayMapProcessor {
   target: string;
   type: LogsArrayMapProcessorType;
 }
-export const LogsArrayMapProcessor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_enabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    preserve_source: S.optional(S.Boolean),
-    processors: LogsArrayMapProcessorProcessorsList,
-    source: S.String,
-    target: S.String,
-    type: LogsArrayMapProcessorType,
-  }),
-).annotate({ identifier: "LogsArrayMapProcessor" }) as any as S.Schema<LogsArrayMapProcessor>;
-
 /** Definition of a logs processor. */
 export type LogsProcessor =
   | LogsGrokParser
@@ -9537,17 +5647,17 @@ export type LogsProcessor =
   | LogsSchemaProcessor
   | LogsExcludeAttributeProcessor
   | LogsArrayMapProcessor;
-export const LogsProcessor = S.Unknown as any as S.Schema<LogsProcessor>;
+const LogsProcessor = S.Unknown as any as S.Schema<LogsProcessor>;
 
 /** Ordered list of processors in this pipeline. */
 export type CreateLogsPipelineRequestProcessorsList = Array<LogsProcessor>;
-export const CreateLogsPipelineRequestProcessorsList = /*@__PURE__*/ S.Array(
+const CreateLogsPipelineRequestProcessorsList = /*@__PURE__*/ S.Array(
   LogsProcessor,
 ) as any as S.Schema<CreateLogsPipelineRequestProcessorsList>;
 
 /** A list of tags associated with the pipeline. */
 export type CreateLogsPipelineRequestTagsList = Array<string>;
-export const CreateLogsPipelineRequestTagsList =
+const CreateLogsPipelineRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateLogsPipelineRequestTagsList>;
 
 export interface CreateLogsPipelineRequest {
@@ -9563,7 +5673,7 @@ export interface CreateLogsPipelineRequest {
   /** A list of tags associated with the pipeline. */
   tags?: CreateLogsPipelineRequestTagsList;
 }
-export const CreateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     filter: S.optional(LogsFilter),
@@ -9578,12 +5688,12 @@ export const CreateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of processors in this pipeline. */
 export type LogsPipelineProcessorsList = Array<LogsProcessor>;
-export const LogsPipelineProcessorsList =
+const LogsPipelineProcessorsList =
   CreateLogsPipelineRequestProcessorsList as any as S.Schema<LogsPipelineProcessorsList>;
 
 /** A list of tags associated with the pipeline. */
 export type LogsPipelineTagsList = Array<string>;
-export const LogsPipelineTagsList =
+const LogsPipelineTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelineTagsList>;
 
 /** Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying. **Note**: These endpoints are only available for admin users. Make sure to use an application key created by an admin. */
@@ -9606,7 +5716,7 @@ export interface LogsPipeline {
   /** Type of pipeline. */
   type?: string;
 }
-export const LogsPipeline = /*@__PURE__*/ S.suspend(() =>
+const LogsPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     filter: S.optional(LogsFilter),
@@ -9622,11 +5732,11 @@ export const LogsPipeline = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the type of asset this entity represents on a monitor. */
 export type MonitorAssetCategory = "runbook";
-export const MonitorAssetCategory = S.String;
+const MonitorAssetCategory = S.String;
 
 /** Type of internal Datadog resource associated with a monitor asset. */
 export type MonitorAssetResourceType = "notebook";
-export const MonitorAssetResourceType = S.String;
+const MonitorAssetResourceType = S.String;
 
 /** Represents key links tied to a monitor to help users take action on alerts. This feature is in Preview and only available to users with the feature enabled. */
 export interface MonitorAsset {
@@ -9639,7 +5749,7 @@ export interface MonitorAsset {
   /** URL link for the asset. For links with an internal resource type set, this should be the relative path to where the Datadog domain is appended internally. For external links, this should be the full URL path. */
   url: string;
 }
-export const MonitorAsset = /*@__PURE__*/ S.suspend(() =>
+const MonitorAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: MonitorAssetCategory,
     name: S.String,
@@ -9651,17 +5761,17 @@ export const MonitorAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type CreateMonitorRequestAssetsList = Array<MonitorAsset>;
-export const CreateMonitorRequestAssetsList = /*@__PURE__*/ S.Array(
+const CreateMonitorRequestAssetsList = /*@__PURE__*/ S.Array(
   MonitorAsset,
 ) as any as S.Schema<CreateMonitorRequestAssetsList>;
 
 /** Indicates whether the monitor is in a draft or published state. `draft`: The monitor appears as Draft and does not send notifications. `published`: The monitor is active and evaluates conditions and notify as configured. This field is in preview. The draft value is only available to customers with the feature enabled. */
 export type MonitorDraftStatus = "draft" | "published";
-export const MonitorDraftStatus = S.String;
+const MonitorDraftStatus = S.String;
 
 /** The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`. Provide multiple scopes as a comma-separated list like `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`). */
 export type MatchingDowntimeInputScopeList = Array<string>;
-export const MatchingDowntimeInputScopeList =
+const MatchingDowntimeInputScopeList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MatchingDowntimeInputScopeList>;
 
 /** Object describing a downtime that matches this monitor. */
@@ -9673,7 +5783,7 @@ export interface MatchingDowntimeInput {
   /** POSIX timestamp to start the downtime. */
   start?: number;
 }
-export const MatchingDowntimeInput = /*@__PURE__*/ S.suspend(() =>
+const MatchingDowntimeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.NullOr(S.Number)),
     scope: S.optional(MatchingDowntimeInputScopeList),
@@ -9683,7 +5793,7 @@ export const MatchingDowntimeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of active v1 downtimes that match this monitor. */
 export type CreateMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-export const CreateMonitorRequestMatchingDowntimesList = /*@__PURE__*/ S.Array(
+const CreateMonitorRequestMatchingDowntimesList = /*@__PURE__*/ S.Array(
   MatchingDowntimeInput,
 ) as any as S.Schema<CreateMonitorRequestMatchingDowntimesList>;
 
@@ -9696,11 +5806,11 @@ export type MonitorOptionsNotificationPresets =
   | "hide_query_and_handles"
   | "show_only_snapshot"
   | "hide_handles_and_footer";
-export const MonitorOptionsNotificationPresets = S.String;
+const MonitorOptionsNotificationPresets = S.String;
 
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsInputNotifyByList = Array<string>;
-export const MonitorOptionsInputNotifyByList =
+const MonitorOptionsInputNotifyByList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorOptionsInputNotifyByList>;
 
 /** Controls how groups or monitors are treated if an evaluation does not return any data points. The default option results in different behavior depending on the monitor query type. For monitors using Count queries, an empty monitor evaluation is treated as 0 and is compared to the threshold conditions. For monitors using any query type other than Count, for example Gauge, Measure, or Rate, the monitor shows the last known status. This option is available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors. It is also required for metric monitors that use `scheduling_options.custom_schedule`. */
@@ -9709,17 +5819,15 @@ export type OnMissingDataOption =
   | "show_no_data"
   | "show_and_notify_no_data"
   | "resolve";
-export const OnMissingDataOption = S.String;
+const OnMissingDataOption = S.String;
 
 /** The different statuses for which renotification is supported. */
 export type MonitorRenotifyStatusType = "alert" | "warn" | "no data";
-export const MonitorRenotifyStatusType = S.String;
-
 /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
 export type MonitorOptionsInputRenotifyStatusesList = Array<
   MonitorRenotifyStatusType | (string & {})
 >;
-export const MonitorOptionsInputRenotifyStatusesList =
+const MonitorOptionsInputRenotifyStatusesList =
   ListStreamQueryStatesList as any as S.Schema<MonitorOptionsInputRenotifyStatusesList>;
 
 /** Configuration for a recurrence set on the monitor options for custom schedule. */
@@ -9731,7 +5839,7 @@ export interface MonitorOptionsCustomScheduleRecurrence {
   /** Defines the timezone the schedule runs on. */
   timezone?: string;
 }
-export const MonitorOptionsCustomScheduleRecurrence = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptionsCustomScheduleRecurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rrule: S.optional(S.String),
     start: S.optional(S.String),
@@ -9744,7 +5852,7 @@ export const MonitorOptionsCustomScheduleRecurrence = /*@__PURE__*/ S.suspend(()
 /** Array of custom schedule recurrences. */
 export type MonitorOptionsCustomScheduleRecurrencesList =
   Array<MonitorOptionsCustomScheduleRecurrence>;
-export const MonitorOptionsCustomScheduleRecurrencesList = /*@__PURE__*/ S.Array(
+const MonitorOptionsCustomScheduleRecurrencesList = /*@__PURE__*/ S.Array(
   MonitorOptionsCustomScheduleRecurrence,
 ) as any as S.Schema<MonitorOptionsCustomScheduleRecurrencesList>;
 
@@ -9753,7 +5861,7 @@ export interface MonitorOptionsCustomSchedule {
   /** Array of custom schedule recurrences. */
   recurrences?: MonitorOptionsCustomScheduleRecurrencesList;
 }
-export const MonitorOptionsCustomSchedule = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptionsCustomSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recurrences: S.optional(MonitorOptionsCustomScheduleRecurrencesList),
   }),
@@ -9772,7 +5880,7 @@ export interface MonitorOptionsSchedulingOptionsEvaluationWindow {
   /** The timezone of the time of the day of the cumulative evaluation window start. */
   timezone?: string;
 }
-export const MonitorOptionsSchedulingOptionsEvaluationWindow = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptionsSchedulingOptionsEvaluationWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day_starts: S.optional(S.String),
     hour_starts: S.optional(S.Number),
@@ -9788,7 +5896,7 @@ export interface MonitorOptionsSchedulingOptions {
   custom_schedule?: MonitorOptionsCustomSchedule;
   evaluation_window?: MonitorOptionsSchedulingOptionsEvaluationWindow;
 }
-export const MonitorOptionsSchedulingOptions = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptionsSchedulingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_schedule: S.optional(MonitorOptionsCustomSchedule),
     evaluation_window: S.optional(MonitorOptionsSchedulingOptionsEvaluationWindow),
@@ -9799,7 +5907,7 @@ export const MonitorOptionsSchedulingOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
 export type MonitorOptionsInputSilencedMap = { [key: string]: number | null | undefined };
-export const MonitorOptionsInputSilencedMap = /*@__PURE__*/ S.Record(
+const MonitorOptionsInputSilencedMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<MonitorOptionsInputSilencedMap>;
@@ -9811,7 +5919,7 @@ export interface MonitorThresholdWindowOptions {
   /** Describes how long a metric must be anomalous before an alert triggers. */
   trigger_window?: string | null;
 }
-export const MonitorThresholdWindowOptions = /*@__PURE__*/ S.suspend(() =>
+const MonitorThresholdWindowOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recovery_window: S.optional(S.NullOr(S.String)),
     trigger_window: S.optional(S.NullOr(S.String)),
@@ -9839,7 +5947,7 @@ export interface MonitorThresholds {
   /** The monitor `WARNING` recovery threshold. */
   warning_recovery?: number | null;
 }
-export const MonitorThresholds = /*@__PURE__*/ S.suspend(() =>
+const MonitorThresholds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     critical: S.optional(S.Number),
     critical_query: S.optional(S.String),
@@ -9866,8 +5974,6 @@ export type MonitorFormulaAndFunctionEventAggregation =
   | "min"
   | "max"
   | "avg";
-export const MonitorFormulaAndFunctionEventAggregation = S.String;
-
 /** Compute options. */
 export interface MonitorFormulaAndFunctionEventQueryDefinitionCompute {
   aggregation: MonitorFormulaAndFunctionEventAggregation | (string & {});
@@ -9880,18 +5986,6 @@ export interface MonitorFormulaAndFunctionEventQueryDefinitionCompute {
   /** Source reference for composite query payloads. */
   source?: string;
 }
-export const MonitorFormulaAndFunctionEventQueryDefinitionCompute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregation: MonitorFormulaAndFunctionEventAggregation,
-    interval: S.optional(S.Number),
-    metric: S.optional(S.String),
-    name: S.optional(S.String),
-    source: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionEventQueryDefinitionCompute",
-}) as any as S.Schema<MonitorFormulaAndFunctionEventQueryDefinitionCompute>;
-
 /** Data source for event platform-based queries. */
 export type MonitorFormulaAndFunctionEventsDataSource =
   | "rum"
@@ -9904,8 +5998,6 @@ export type MonitorFormulaAndFunctionEventsDataSource =
   | "database_queries"
   | "network"
   | "network_path";
-export const MonitorFormulaAndFunctionEventsDataSource = S.String;
-
 /** Options for sorting group by results. */
 export interface MonitorFormulaAndFunctionEventQueryGroupBySort {
   aggregation: MonitorFormulaAndFunctionEventAggregation | (string & {});
@@ -9913,9 +6005,6 @@ export interface MonitorFormulaAndFunctionEventQueryGroupBySort {
   metric?: string;
   order?: QuerySortOrder | (string & {});
 }
-export const MonitorFormulaAndFunctionEventQueryGroupBySort =
-  FormulaAndFunctionEventQueryGroupBySort as any as S.Schema<MonitorFormulaAndFunctionEventQueryGroupBySort>;
-
 /** List of objects used to group by. */
 export interface MonitorFormulaAndFunctionEventQueryGroupBy {
   /** Event facet. */
@@ -9926,35 +6015,14 @@ export interface MonitorFormulaAndFunctionEventQueryGroupBy {
   /** Source reference for composite query payloads. */
   source?: string;
 }
-export const MonitorFormulaAndFunctionEventQueryGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-    limit: S.optional(S.Number),
-    sort: S.optional(MonitorFormulaAndFunctionEventQueryGroupBySort),
-    source: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionEventQueryGroupBy",
-}) as any as S.Schema<MonitorFormulaAndFunctionEventQueryGroupBy>;
-
 /** Group by options. */
 export type MonitorFormulaAndFunctionEventQueryDefinitionGroupByList =
   Array<MonitorFormulaAndFunctionEventQueryGroupBy>;
-export const MonitorFormulaAndFunctionEventQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  MonitorFormulaAndFunctionEventQueryGroupBy,
-) as any as S.Schema<MonitorFormulaAndFunctionEventQueryDefinitionGroupByList>;
-
 /** An array of index names to query in the stream. Omit or use `[]` to query all indexes at once. */
 export type MonitorFormulaAndFunctionEventQueryDefinitionIndexesList = Array<string>;
-export const MonitorFormulaAndFunctionEventQueryDefinitionIndexesList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorFormulaAndFunctionEventQueryDefinitionIndexesList>;
-
 /** Search options. */
 export type MonitorFormulaAndFunctionEventQueryDefinitionSearch =
   FormulaAndFunctionEventQueryDefinitionSearch;
-export const MonitorFormulaAndFunctionEventQueryDefinitionSearch =
-  FormulaAndFunctionEventQueryDefinitionSearch;
-
 /** A formula and functions events query. */
 export interface MonitorFormulaAndFunctionEventQueryDefinition {
   compute: MonitorFormulaAndFunctionEventQueryDefinitionCompute;
@@ -9967,19 +6035,6 @@ export interface MonitorFormulaAndFunctionEventQueryDefinition {
   name: string;
   search?: FormulaAndFunctionEventQueryDefinitionSearch;
 }
-export const MonitorFormulaAndFunctionEventQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compute: MonitorFormulaAndFunctionEventQueryDefinitionCompute,
-    data_source: MonitorFormulaAndFunctionEventsDataSource,
-    group_by: S.optional(MonitorFormulaAndFunctionEventQueryDefinitionGroupByList),
-    indexes: S.optional(MonitorFormulaAndFunctionEventQueryDefinitionIndexesList),
-    name: S.String,
-    search: S.optional(FormulaAndFunctionEventQueryDefinitionSearch),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionEventQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionEventQueryDefinition>;
-
 /** Aggregation methods for metric queries. */
 export type MonitorFormulaAndFunctionCostAggregator =
   | "avg"
@@ -9991,12 +6046,8 @@ export type MonitorFormulaAndFunctionCostAggregator =
   | "l2norm"
   | "percentile"
   | "stddev";
-export const MonitorFormulaAndFunctionCostAggregator = S.String;
-
 /** Data source for cost queries. */
 export type MonitorFormulaAndFunctionCostDataSource = "metrics" | "cloud_cost" | "datadog_usage";
-export const MonitorFormulaAndFunctionCostDataSource = S.String;
-
 /** A formula and functions cost query. */
 export interface MonitorFormulaAndFunctionCostQueryDefinition {
   aggregator?: MonitorFormulaAndFunctionCostAggregator | (string & {});
@@ -10006,41 +6057,16 @@ export interface MonitorFormulaAndFunctionCostQueryDefinition {
   /** The monitor query. */
   query: string;
 }
-export const MonitorFormulaAndFunctionCostQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(MonitorFormulaAndFunctionCostAggregator),
-    data_source: MonitorFormulaAndFunctionCostDataSource,
-    name: S.String,
-    query: S.String,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionCostQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionCostQueryDefinition>;
-
 /** Data source for data quality queries. */
 export type MonitorFormulaAndFunctionDataQualityDataSource = "data_quality_metrics";
-export const MonitorFormulaAndFunctionDataQualityDataSource = S.String;
-
 /** Optional grouping fields for aggregation. */
 export type MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList = Array<string>;
-export const MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList>;
-
 /** Columns to group results by. */
 export type MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList = Array<string>;
-export const MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList>;
-
 /** Function applied to the measure before it is compared against the predicted bounds. */
 export type MonitorFormulaAndFunctionDataQualityDiffFunction = "DIFF" | "DIFF_PERCENT";
-export const MonitorFormulaAndFunctionDataQualityDiffFunction = S.String;
-
 /** Restricts which predicted bound the monitor alerts on. `UPPER_ONLY` alerts only when the measure rises above the upper bound, `LOWER_ONLY` only when it falls below the lower bound. When unset, the monitor alerts on both. */
 export type MonitorFormulaAndFunctionDataQualityModelBoundsOverride = "UPPER_ONLY" | "LOWER_ONLY";
-export const MonitorFormulaAndFunctionDataQualityModelBoundsOverride = S.String;
-
 /** Tuning options for the anomaly detection model used by the monitor. */
 export interface MonitorFormulaAndFunctionDataQualityModelConfiguration {
   /** Number of days after which an open alert is automatically resolved. When unset, alerts stay open until the measure returns within bounds. */
@@ -10054,36 +6080,16 @@ export interface MonitorFormulaAndFunctionDataQualityModelConfiguration {
   min_upper_bound_size?: number;
   model_bounds_override?: MonitorFormulaAndFunctionDataQualityModelBoundsOverride | (string & {});
 }
-export const MonitorFormulaAndFunctionDataQualityModelConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auto_resolve_days: S.optional(S.Number),
-    enable_flatline_detection: S.optional(S.Boolean),
-    function: S.optional(MonitorFormulaAndFunctionDataQualityDiffFunction),
-    min_lower_bound_size: S.optional(S.Number),
-    min_upper_bound_size: S.optional(S.Number),
-    model_bounds_override: S.optional(MonitorFormulaAndFunctionDataQualityModelBoundsOverride),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionDataQualityModelConfiguration",
-}) as any as S.Schema<MonitorFormulaAndFunctionDataQualityModelConfiguration>;
-
 /** Override for the model type used in anomaly detection. */
 export type MonitorFormulaAndFunctionDataQualityModelTypeOverride =
   | "freshness"
   | "percentage"
   | "any";
-export const MonitorFormulaAndFunctionDataQualityModelTypeOverride = S.String;
-
 /** How the difference between the source and target measures is computed. `absolute` subtracts the two values, `diff_percent` expresses the difference as a percentage of the source value. */
 export type MonitorFormulaAndFunctionDataQualityDiffType = "absolute" | "diff_percent";
-export const MonitorFormulaAndFunctionDataQualityDiffType = S.String;
-
 /** Columns to group results by when computing the measure for this entity. */
 export type MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList =
   Array<string>;
-export const MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList =
-  MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList as any as S.Schema<MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList>;
-
 /** Measure configuration for one side of a source to target comparison. */
 export interface MonitorFormulaAndFunctionDataQualityEntityMetricConfig {
   /** Custom SQL query used to compute the measure for this entity. */
@@ -10097,20 +6103,6 @@ export interface MonitorFormulaAndFunctionDataQualityEntityMetricConfig {
   /** Columns to group results by when computing the measure for this entity. */
   group_by_columns?: MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList;
 }
-export const MonitorFormulaAndFunctionDataQualityEntityMetricConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_sql: S.optional(S.String),
-    custom_where: S.optional(S.String),
-    entity_id: S.String,
-    entity_type: S.String,
-    group_by_columns: S.optional(
-      MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList,
-    ),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionDataQualityEntityMetricConfig",
-}) as any as S.Schema<MonitorFormulaAndFunctionDataQualityEntityMetricConfig>;
-
 /** Configuration for a source to target monitor, which compares the same measure across two data entities and alerts on the difference between them. */
 export interface MonitorFormulaAndFunctionDataQualitySourceToTargetConfig {
   diff_type: MonitorFormulaAndFunctionDataQualityDiffType | (string & {});
@@ -10119,18 +6111,6 @@ export interface MonitorFormulaAndFunctionDataQualitySourceToTargetConfig {
   source: MonitorFormulaAndFunctionDataQualityEntityMetricConfig;
   target: MonitorFormulaAndFunctionDataQualityEntityMetricConfig;
 }
-export const MonitorFormulaAndFunctionDataQualitySourceToTargetConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      diff_type: MonitorFormulaAndFunctionDataQualityDiffType,
-      entity_type: S.String,
-      source: MonitorFormulaAndFunctionDataQualityEntityMetricConfig,
-      target: MonitorFormulaAndFunctionDataQualityEntityMetricConfig,
-    }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionDataQualitySourceToTargetConfig",
-}) as any as S.Schema<MonitorFormulaAndFunctionDataQualitySourceToTargetConfig>;
-
 /** Monitor configuration options for data quality queries. */
 export interface MonitorFormulaAndFunctionDataQualityMonitorOptions {
   /** Crontab expression to override the default schedule. */
@@ -10147,23 +6127,6 @@ export interface MonitorFormulaAndFunctionDataQualityMonitorOptions {
   sensitivity?: number;
   source_to_target_config?: MonitorFormulaAndFunctionDataQualitySourceToTargetConfig;
 }
-export const MonitorFormulaAndFunctionDataQualityMonitorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    crontab_override: S.optional(S.String),
-    custom_sql: S.optional(S.String),
-    custom_where: S.optional(S.String),
-    group_by_columns: S.optional(
-      MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList,
-    ),
-    model_configuration: S.optional(MonitorFormulaAndFunctionDataQualityModelConfiguration),
-    model_type_override: S.optional(MonitorFormulaAndFunctionDataQualityModelTypeOverride),
-    sensitivity: S.optional(S.Number),
-    source_to_target_config: S.optional(MonitorFormulaAndFunctionDataQualitySourceToTargetConfig),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionDataQualityMonitorOptions",
-}) as any as S.Schema<MonitorFormulaAndFunctionDataQualityMonitorOptions>;
-
 /** A formula and functions data quality query. */
 export interface MonitorFormulaAndFunctionDataQualityQueryDefinition {
   data_source: MonitorFormulaAndFunctionDataQualityDataSource;
@@ -10180,21 +6143,6 @@ export interface MonitorFormulaAndFunctionDataQualityQueryDefinition {
   /** Optional scoping expression to further filter metrics. Uses metrics filter syntax. This is useful when an entity has been configured to emit metrics with additional tags. */
   scope?: string;
 }
-export const MonitorFormulaAndFunctionDataQualityQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: MonitorFormulaAndFunctionDataQualityDataSource,
-    filter: S.String,
-    group_by: S.optional(MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList),
-    measure: S.String,
-    monitor_options: S.optional(MonitorFormulaAndFunctionDataQualityMonitorOptions),
-    name: S.String,
-    schema_version: S.optional(S.String),
-    scope: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionDataQualityQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionDataQualityQueryDefinition>;
-
 /** A formula and functions data jobs query. */
 export interface MonitorFormulaAndFunctionDataJobsQueryDefinition {
   /** The type of job being monitored. Valid values include: `databricks.job`, `spark.application`, `airflow.dag`, `dbt.job`, `dbt.model`, `dbt.test`, `glue.job`. Custom job types are supported with the `custom.ol.` prefix. */
@@ -10206,17 +6154,6 @@ export interface MonitorFormulaAndFunctionDataJobsQueryDefinition {
   /** Query dialect for data jobs queries. Currently only `metric` is supported. */
   query_dialect: string;
 }
-export const MonitorFormulaAndFunctionDataJobsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job_type: S.String,
-    jobs_query: S.String,
-    name: S.String,
-    query_dialect: S.String,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionDataJobsQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionDataJobsQueryDefinition>;
-
 /** A column definition for reference table queries. */
 export interface MonitorFormulaAndFunctionReferenceTableColumn {
   /** Optional alias for the column. */
@@ -10224,27 +6161,11 @@ export interface MonitorFormulaAndFunctionReferenceTableColumn {
   /** Name of the column. */
   name: string;
 }
-export const MonitorFormulaAndFunctionReferenceTableColumn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionReferenceTableColumn",
-}) as any as S.Schema<MonitorFormulaAndFunctionReferenceTableColumn>;
-
 /** List of columns to retrieve from the reference table. */
 export type MonitorFormulaAndFunctionReferenceTableQueryDefinitionColumnsList =
   Array<MonitorFormulaAndFunctionReferenceTableColumn>;
-export const MonitorFormulaAndFunctionReferenceTableQueryDefinitionColumnsList =
-  /*@__PURE__*/ S.Array(
-    MonitorFormulaAndFunctionReferenceTableColumn,
-  ) as any as S.Schema<MonitorFormulaAndFunctionReferenceTableQueryDefinitionColumnsList>;
-
 /** Data source for reference table queries. */
 export type MonitorFormulaAndFunctionReferenceTableDataSource = "reference_table";
-export const MonitorFormulaAndFunctionReferenceTableDataSource = S.String;
-
 /** A reference table query for use in aggregate queries. */
 export interface MonitorFormulaAndFunctionReferenceTableQueryDefinition {
   /** List of columns to retrieve from the reference table. */
@@ -10257,25 +6178,10 @@ export interface MonitorFormulaAndFunctionReferenceTableQueryDefinition {
   /** Name of the reference table. */
   table_name: string;
 }
-export const MonitorFormulaAndFunctionReferenceTableQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(MonitorFormulaAndFunctionReferenceTableQueryDefinitionColumnsList),
-    data_source: MonitorFormulaAndFunctionReferenceTableDataSource,
-    name: S.optional(S.String),
-    query_filter: S.optional(S.String),
-    table_name: S.String,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionReferenceTableQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionReferenceTableQueryDefinition>;
-
 /** Augment query for aggregate augmented queries. Can be an events query or a reference table query. */
 export type MonitorFormulaAndFunctionAggregateAugmentQuery =
   | MonitorFormulaAndFunctionEventQueryDefinition
   | MonitorFormulaAndFunctionReferenceTableQueryDefinition;
-export const MonitorFormulaAndFunctionAggregateAugmentQuery =
-  S.Unknown as any as S.Schema<MonitorFormulaAndFunctionAggregateAugmentQuery>;
-
 /** Aggregator for metrics queries. */
 export type MonitorFormulaAndFunctionMetricsAggregator =
   | "avg"
@@ -10289,12 +6195,8 @@ export type MonitorFormulaAndFunctionMetricsAggregator =
   | "percentile"
   | "stddev"
   | "count_unique";
-export const MonitorFormulaAndFunctionMetricsAggregator = S.String;
-
 /** Data source for metrics queries. */
 export type MonitorFormulaAndFunctionMetricsDataSource = "metrics" | "cloud_cost" | "datadog_usage";
-export const MonitorFormulaAndFunctionMetricsDataSource = S.String;
-
 /** A formula and functions metrics query for use in aggregate queries. */
 export interface MonitorFormulaAndFunctionMetricsQueryDefinition {
   aggregator?: MonitorFormulaAndFunctionMetricsAggregator | (string & {});
@@ -10304,48 +6206,20 @@ export interface MonitorFormulaAndFunctionMetricsQueryDefinition {
   /** The metrics query definition. */
   query: string;
 }
-export const MonitorFormulaAndFunctionMetricsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aggregator: S.optional(MonitorFormulaAndFunctionMetricsAggregator),
-    data_source: MonitorFormulaAndFunctionMetricsDataSource,
-    name: S.optional(S.String),
-    query: S.String,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionMetricsQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionMetricsQueryDefinition>;
-
 /** Base query for aggregate queries. Can be an events query or a metrics query. */
 export type MonitorFormulaAndFunctionAggregateBaseQuery =
   | MonitorFormulaAndFunctionEventQueryDefinition
   | MonitorFormulaAndFunctionMetricsQueryDefinition;
-export const MonitorFormulaAndFunctionAggregateBaseQuery =
-  S.Unknown as any as S.Schema<MonitorFormulaAndFunctionAggregateBaseQuery>;
-
 /** Compute options for the query. */
 export type MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList =
   Array<MonitorFormulaAndFunctionEventQueryDefinitionCompute>;
-export const MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList =
-  /*@__PURE__*/ S.Array(
-    MonitorFormulaAndFunctionEventQueryDefinitionCompute,
-  ) as any as S.Schema<MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList>;
-
 /** Data source for aggregate augmented queries. */
 export type MonitorFormulaAndFunctionAggregateAugmentedDataSource = "aggregate_augmented_query";
-export const MonitorFormulaAndFunctionAggregateAugmentedDataSource = S.String;
-
 /** Group by options for the query. */
 export type MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList =
   Array<MonitorFormulaAndFunctionEventQueryGroupBy>;
-export const MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList =
-  /*@__PURE__*/ S.Array(
-    MonitorFormulaAndFunctionEventQueryGroupBy,
-  ) as any as S.Schema<MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList>;
-
 /** Join type for aggregate query join conditions. */
 export type MonitorFormulaAndFunctionAggregateQueryJoinType = "inner" | "left";
-export const MonitorFormulaAndFunctionAggregateQueryJoinType = S.String;
-
 /** Join condition for aggregate augmented queries. */
 export interface MonitorFormulaAndFunctionAggregateQueryJoinCondition {
   /** Attribute from the augment query to join on. */
@@ -10354,16 +6228,6 @@ export interface MonitorFormulaAndFunctionAggregateQueryJoinCondition {
   base_attribute: string;
   join_type: MonitorFormulaAndFunctionAggregateQueryJoinType | (string & {});
 }
-export const MonitorFormulaAndFunctionAggregateQueryJoinCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    augment_attribute: S.String,
-    base_attribute: S.String,
-    join_type: MonitorFormulaAndFunctionAggregateQueryJoinType,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionAggregateQueryJoinCondition",
-}) as any as S.Schema<MonitorFormulaAndFunctionAggregateQueryJoinCondition>;
-
 /** A formula and functions aggregate augmented query. Used to enrich base query results with data from a reference table. */
 export interface MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition {
   augment_query: MonitorFormulaAndFunctionAggregateAugmentQuery;
@@ -10377,38 +6241,15 @@ export interface MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition {
   /** Name of the query for use in formulas. */
   name?: string;
 }
-export const MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      augment_query: MonitorFormulaAndFunctionAggregateAugmentQuery,
-      base_query: MonitorFormulaAndFunctionAggregateBaseQuery,
-      compute: MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList,
-      data_source: MonitorFormulaAndFunctionAggregateAugmentedDataSource,
-      group_by: MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList,
-      join_condition: MonitorFormulaAndFunctionAggregateQueryJoinCondition,
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition>;
-
 /** Compute options for the query. */
 export type MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList =
   Array<MonitorFormulaAndFunctionEventQueryDefinitionCompute>;
-export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList =
-  MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList>;
-
 /** Data source for aggregate filtered queries. */
 export type MonitorFormulaAndFunctionAggregateFilteredDataSource = "aggregate_filtered_query";
-export const MonitorFormulaAndFunctionAggregateFilteredDataSource = S.String;
-
 /** Filter query for aggregate filtered queries. Can be an events query or a reference table query. */
 export type MonitorFormulaAndFunctionAggregateFilterQuery =
   | MonitorFormulaAndFunctionEventQueryDefinition
   | MonitorFormulaAndFunctionReferenceTableQueryDefinition;
-export const MonitorFormulaAndFunctionAggregateFilterQuery =
-  S.Unknown as any as S.Schema<MonitorFormulaAndFunctionAggregateFilterQuery>;
-
 /** Filter definition for aggregate filtered queries. */
 export interface MonitorFormulaAndFunctionAggregateQueryFilter {
   /** Attribute from the base query to filter on. */
@@ -10418,30 +6259,12 @@ export interface MonitorFormulaAndFunctionAggregateQueryFilter {
   /** Attribute from the filter query to match against. */
   filter_attribute: string;
 }
-export const MonitorFormulaAndFunctionAggregateQueryFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    base_attribute: S.String,
-    exclude: S.optional(S.Boolean),
-    filter_attribute: S.String,
-  }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionAggregateQueryFilter",
-}) as any as S.Schema<MonitorFormulaAndFunctionAggregateQueryFilter>;
-
 /** Filter conditions for the query. */
 export type MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersList =
   Array<MonitorFormulaAndFunctionAggregateQueryFilter>;
-export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersList =
-  /*@__PURE__*/ S.Array(
-    MonitorFormulaAndFunctionAggregateQueryFilter,
-  ) as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersList>;
-
 /** Group by options for the query. */
 export type MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList =
   Array<MonitorFormulaAndFunctionEventQueryGroupBy>;
-export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList =
-  MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList>;
-
 /** A formula and functions aggregate filtered query. Used to filter base query results using data from another source. */
 export interface MonitorFormulaAndFunctionAggregateFilteredQueryDefinition {
   base_query: MonitorFormulaAndFunctionAggregateBaseQuery;
@@ -10456,21 +6279,6 @@ export interface MonitorFormulaAndFunctionAggregateFilteredQueryDefinition {
   /** Name of the query for use in formulas. */
   name?: string;
 }
-export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      base_query: MonitorFormulaAndFunctionAggregateBaseQuery,
-      compute: S.optional(MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList),
-      data_source: MonitorFormulaAndFunctionAggregateFilteredDataSource,
-      filter_query: MonitorFormulaAndFunctionAggregateFilterQuery,
-      filters: MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersList,
-      group_by: S.optional(MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList),
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "MonitorFormulaAndFunctionAggregateFilteredQueryDefinition",
-}) as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinition>;
-
 /** A formula and function query. */
 export type MonitorFormulaAndFunctionQueryDefinition =
   | MonitorFormulaAndFunctionEventQueryDefinition
@@ -10479,12 +6287,12 @@ export type MonitorFormulaAndFunctionQueryDefinition =
   | MonitorFormulaAndFunctionDataJobsQueryDefinition
   | MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition
   | MonitorFormulaAndFunctionAggregateFilteredQueryDefinition;
-export const MonitorFormulaAndFunctionQueryDefinition =
+const MonitorFormulaAndFunctionQueryDefinition =
   S.Unknown as any as S.Schema<MonitorFormulaAndFunctionQueryDefinition>;
 
 /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
 export type MonitorOptionsInputVariablesList = Array<MonitorFormulaAndFunctionQueryDefinition>;
-export const MonitorOptionsInputVariablesList = /*@__PURE__*/ S.Array(
+const MonitorOptionsInputVariablesList = /*@__PURE__*/ S.Array(
   MonitorFormulaAndFunctionQueryDefinition,
 ) as any as S.Schema<MonitorOptionsInputVariablesList>;
 
@@ -10544,7 +6352,7 @@ export interface MonitorOptionsInput {
   /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
   variables?: MonitorOptionsInputVariablesList;
 }
-export const MonitorOptionsInput = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enable_logs_sample: S.optional(S.Boolean),
     enable_samples: S.optional(S.Boolean),
@@ -10580,12 +6388,12 @@ export const MonitorOptionsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type CreateMonitorRequestRestrictedRolesList = Array<string>;
-export const CreateMonitorRequestRestrictedRolesList =
+const CreateMonitorRequestRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type CreateMonitorRequestTagsList = Array<string>;
-export const CreateMonitorRequestTagsList =
+const CreateMonitorRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateMonitorRequestTagsList>;
 
 /** The type of the monitor. For more information about `type`, see the [monitor options](https://docs.datadoghq.com/monitors/guide/monitor_api_options/) docs. */
@@ -10613,7 +6421,7 @@ export type MonitorType =
   | "network-path alert"
   | "data-jobs alert"
   | "llm-observability alert";
-export const MonitorType = S.String;
+const MonitorType = S.String;
 
 export interface CreateMonitorRequest {
   /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
@@ -10636,7 +6444,7 @@ export interface CreateMonitorRequest {
   tags?: CreateMonitorRequestTagsList;
   type: MonitorType | (string & {});
 }
-export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(CreateMonitorRequestAssetsList),
     draft_status: S.optional(MonitorDraftStatus),
@@ -10654,12 +6462,11 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type MonitorAssetsList = Array<MonitorAsset>;
-export const MonitorAssetsList =
-  CreateMonitorRequestAssetsList as any as S.Schema<MonitorAssetsList>;
+const MonitorAssetsList = CreateMonitorRequestAssetsList as any as S.Schema<MonitorAssetsList>;
 
 /** The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`. Provide multiple scopes as a comma-separated list like `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`). */
 export type MatchingDowntimeScopeList = Array<string>;
-export const MatchingDowntimeScopeList =
+const MatchingDowntimeScopeList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MatchingDowntimeScopeList>;
 
 /** Object describing a downtime that matches this monitor. */
@@ -10673,7 +6480,7 @@ export interface MatchingDowntime {
   /** POSIX timestamp to start the downtime. */
   start?: number;
 }
-export const MatchingDowntime = /*@__PURE__*/ S.suspend(() =>
+const MatchingDowntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.NullOr(S.Number)),
     id: S.Number,
@@ -10684,7 +6491,7 @@ export const MatchingDowntime = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of active v1 downtimes that match this monitor. */
 export type MonitorMatchingDowntimesList = Array<MatchingDowntime>;
-export const MonitorMatchingDowntimesList = /*@__PURE__*/ S.Array(
+const MonitorMatchingDowntimesList = /*@__PURE__*/ S.Array(
   MatchingDowntime,
 ) as any as S.Schema<MonitorMatchingDowntimesList>;
 
@@ -10697,7 +6504,7 @@ export interface MonitorOptionsAggregation {
   /** Metric type used in the monitor. */
   type?: string;
 }
-export const MonitorOptionsAggregation = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptionsAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_by: S.optional(S.String),
     metric: S.optional(S.String),
@@ -10718,31 +6525,29 @@ export type MonitorDeviceID =
   | "firefox.laptop_large"
   | "firefox.tablet"
   | "firefox.mobile_small";
-export const MonitorDeviceID = S.String;
-
 /** IDs of the device the Synthetics monitor is running on. */
 export type MonitorOptionsDeviceIdsList = Array<MonitorDeviceID>;
-export const MonitorOptionsDeviceIdsList =
+const MonitorOptionsDeviceIdsList =
   ListStreamQueryStatesList as any as S.Schema<MonitorOptionsDeviceIdsList>;
 
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsNotifyByList = Array<string>;
-export const MonitorOptionsNotifyByList =
+const MonitorOptionsNotifyByList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorOptionsNotifyByList>;
 
 /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
 export type MonitorOptionsRenotifyStatusesList = Array<MonitorRenotifyStatusType>;
-export const MonitorOptionsRenotifyStatusesList =
+const MonitorOptionsRenotifyStatusesList =
   MonitorOptionsInputRenotifyStatusesList as any as S.Schema<MonitorOptionsRenotifyStatusesList>;
 
 /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
 export type MonitorOptionsSilencedMap = { [key: string]: number | null | undefined };
-export const MonitorOptionsSilencedMap =
+const MonitorOptionsSilencedMap =
   MonitorOptionsInputSilencedMap as any as S.Schema<MonitorOptionsSilencedMap>;
 
 /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
 export type MonitorOptionsVariablesList = Array<MonitorFormulaAndFunctionQueryDefinition>;
-export const MonitorOptionsVariablesList =
+const MonitorOptionsVariablesList =
   MonitorOptionsInputVariablesList as any as S.Schema<MonitorOptionsVariablesList>;
 
 /** List of options associated with your monitor. */
@@ -10804,7 +6609,7 @@ export interface MonitorOptions {
   /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
   variables?: MonitorOptionsVariablesList;
 }
-export const MonitorOptions = /*@__PURE__*/ S.suspend(() =>
+const MonitorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregation: S.optional(MonitorOptionsAggregation),
     device_ids: S.optional(MonitorOptionsDeviceIdsList),
@@ -10849,11 +6654,11 @@ export type MonitorOverallStates =
   | "Skipped"
   | "Unknown"
   | "Warn";
-export const MonitorOverallStates = S.String;
+const MonitorOverallStates = S.String;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type MonitorRestrictedRolesList = Array<string>;
-export const MonitorRestrictedRolesList =
+const MonitorRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorRestrictedRolesList>;
 
 /** Monitor state for a single group. */
@@ -10870,7 +6675,7 @@ export interface MonitorStateGroup {
   name?: string;
   status?: MonitorOverallStates;
 }
-export const MonitorStateGroup = /*@__PURE__*/ S.suspend(() =>
+const MonitorStateGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_nodata_ts: S.optional(S.Number),
     last_notified_ts: S.optional(S.Number),
@@ -10883,7 +6688,7 @@ export const MonitorStateGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary where the keys are groups (comma separated lists of tags) and the values are the list of groups your monitor is broken down on. */
 export type MonitorStateGroupsMap = { [key: string]: MonitorStateGroup | undefined };
-export const MonitorStateGroupsMap = /*@__PURE__*/ S.Record(
+const MonitorStateGroupsMap = /*@__PURE__*/ S.Record(
   S.String,
   MonitorStateGroup,
 ) as any as S.Schema<MonitorStateGroupsMap>;
@@ -10893,7 +6698,7 @@ export interface MonitorState {
   /** Dictionary where the keys are groups (comma separated lists of tags) and the values are the list of groups your monitor is broken down on. */
   groups?: MonitorStateGroupsMap;
 }
-export const MonitorState = /*@__PURE__*/ S.suspend(() =>
+const MonitorState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(MonitorStateGroupsMap),
   }),
@@ -10901,7 +6706,7 @@ export const MonitorState = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated to your monitor. */
 export type MonitorTagsList = Array<string>;
-export const MonitorTagsList = CrossOrgUuids as any as S.Schema<MonitorTagsList>;
+const MonitorTagsList = CrossOrgUuids as any as S.Schema<MonitorTagsList>;
 
 /** Object describing a monitor. */
 export interface Monitor {
@@ -10938,7 +6743,7 @@ export interface Monitor {
   tags?: MonitorTagsList;
   type: MonitorType;
 }
-export const Monitor = /*@__PURE__*/ S.suspend(() =>
+const Monitor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(MonitorAssetsList),
     created: S.optional(S.String),
@@ -10964,49 +6769,22 @@ export const Monitor = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the markdown cell. */
 export type NotebookMarkdownCellDefinitionType = "markdown";
-export const NotebookMarkdownCellDefinitionType = S.String;
-
 /** Text in a notebook is formatted with [Markdown](https://daringfireball.net/projects/markdown/), which enables the use of headings, subheadings, links, images, lists, and code blocks. */
 export interface NotebookMarkdownCellDefinition {
   /** The markdown content. */
   text: string;
   type: NotebookMarkdownCellDefinitionType | (string & {});
 }
-export const NotebookMarkdownCellDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: NotebookMarkdownCellDefinitionType,
-  }),
-).annotate({
-  identifier: "NotebookMarkdownCellDefinition",
-}) as any as S.Schema<NotebookMarkdownCellDefinition>;
-
 /** The attributes of a notebook `markdown` cell. */
 export interface NotebookMarkdownCellAttributes {
   definition: NotebookMarkdownCellDefinition;
 }
-export const NotebookMarkdownCellAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: NotebookMarkdownCellDefinition,
-  }),
-).annotate({
-  identifier: "NotebookMarkdownCellAttributes",
-}) as any as S.Schema<NotebookMarkdownCellAttributes>;
-
 /** The size of the graph. */
 export type NotebookGraphSize = "xs" | "s" | "m" | "l" | "xl";
-export const NotebookGraphSize = S.String;
-
 /** Keys to split on. */
 export type NotebookSplitByKeysList = Array<string>;
-export const NotebookSplitByKeysList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookSplitByKeysList>;
-
 /** Tags to split on. */
 export type NotebookSplitByTagsList = Array<string>;
-export const NotebookSplitByTagsList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookSplitByTagsList>;
-
 /** Object describing how to split the graph to display multiple visualizations per request. */
 export interface NotebookSplitBy {
   /** Keys to split on. */
@@ -11014,23 +6792,10 @@ export interface NotebookSplitBy {
   /** Tags to split on. */
   tags: NotebookSplitByTagsList;
 }
-export const NotebookSplitBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: NotebookSplitByKeysList,
-    tags: NotebookSplitByTagsList,
-  }),
-).annotate({ identifier: "NotebookSplitBy" }) as any as S.Schema<NotebookSplitBy>;
-
 /** Relative timeframe. */
 export interface NotebookRelativeTime {
   live_span: WidgetLiveSpan | (string & {});
 }
-export const NotebookRelativeTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    live_span: WidgetLiveSpan,
-  }),
-).annotate({ identifier: "NotebookRelativeTime" }) as any as S.Schema<NotebookRelativeTime>;
-
 /** Absolute timeframe. */
 export interface NotebookAbsoluteTime {
   /** The end time. */
@@ -11040,18 +6805,8 @@ export interface NotebookAbsoluteTime {
   /** The start time. */
   start: string;
 }
-export const NotebookAbsoluteTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.String,
-    live: S.optional(S.Boolean),
-    start: S.String,
-  }),
-).annotate({ identifier: "NotebookAbsoluteTime" }) as any as S.Schema<NotebookAbsoluteTime>;
-
 /** Timeframe for the notebook cell. When 'null', the notebook global time is used. */
 export type NotebookCellTime = NotebookRelativeTime | NotebookAbsoluteTime;
-export const NotebookCellTime = S.Unknown as any as S.Schema<NotebookCellTime>;
-
 /** The attributes of a notebook `timeseries` cell. */
 export interface NotebookTimeseriesCellAttributes {
   definition: TimeseriesWidgetDefinition;
@@ -11059,17 +6814,6 @@ export interface NotebookTimeseriesCellAttributes {
   split_by?: NotebookSplitBy;
   time?: NotebookCellTime | null;
 }
-export const NotebookTimeseriesCellAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: TimeseriesWidgetDefinition,
-    graph_size: S.optional(NotebookGraphSize),
-    split_by: S.optional(NotebookSplitBy),
-    time: S.optional(S.NullOr(NotebookCellTime)),
-  }),
-).annotate({
-  identifier: "NotebookTimeseriesCellAttributes",
-}) as any as S.Schema<NotebookTimeseriesCellAttributes>;
-
 /** The attributes of a notebook `toplist` cell. */
 export interface NotebookToplistCellAttributes {
   definition: ToplistWidgetDefinition;
@@ -11077,17 +6821,6 @@ export interface NotebookToplistCellAttributes {
   split_by?: NotebookSplitBy;
   time?: NotebookCellTime | null;
 }
-export const NotebookToplistCellAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: ToplistWidgetDefinition,
-    graph_size: S.optional(NotebookGraphSize),
-    split_by: S.optional(NotebookSplitBy),
-    time: S.optional(S.NullOr(NotebookCellTime)),
-  }),
-).annotate({
-  identifier: "NotebookToplistCellAttributes",
-}) as any as S.Schema<NotebookToplistCellAttributes>;
-
 /** The attributes of a notebook `heatmap` cell. */
 export interface NotebookHeatMapCellAttributes {
   definition: HeatMapWidgetDefinition;
@@ -11095,17 +6828,6 @@ export interface NotebookHeatMapCellAttributes {
   split_by?: NotebookSplitBy;
   time?: NotebookCellTime | null;
 }
-export const NotebookHeatMapCellAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: HeatMapWidgetDefinition,
-    graph_size: S.optional(NotebookGraphSize),
-    split_by: S.optional(NotebookSplitBy),
-    time: S.optional(S.NullOr(NotebookCellTime)),
-  }),
-).annotate({
-  identifier: "NotebookHeatMapCellAttributes",
-}) as any as S.Schema<NotebookHeatMapCellAttributes>;
-
 /** The attributes of a notebook `distribution` cell. */
 export interface NotebookDistributionCellAttributes {
   definition: DistributionWidgetDefinition;
@@ -11113,33 +6835,12 @@ export interface NotebookDistributionCellAttributes {
   split_by?: NotebookSplitBy;
   time?: NotebookCellTime | null;
 }
-export const NotebookDistributionCellAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: DistributionWidgetDefinition,
-    graph_size: S.optional(NotebookGraphSize),
-    split_by: S.optional(NotebookSplitBy),
-    time: S.optional(S.NullOr(NotebookCellTime)),
-  }),
-).annotate({
-  identifier: "NotebookDistributionCellAttributes",
-}) as any as S.Schema<NotebookDistributionCellAttributes>;
-
 /** The attributes of a notebook `log_stream` cell. */
 export interface NotebookLogStreamCellAttributes {
   definition: LogStreamWidgetDefinition;
   graph_size?: NotebookGraphSize | (string & {});
   time?: NotebookCellTime | null;
 }
-export const NotebookLogStreamCellAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: LogStreamWidgetDefinition,
-    graph_size: S.optional(NotebookGraphSize),
-    time: S.optional(S.NullOr(NotebookCellTime)),
-  }),
-).annotate({
-  identifier: "NotebookLogStreamCellAttributes",
-}) as any as S.Schema<NotebookLogStreamCellAttributes>;
-
 /** The attributes of a notebook cell in create cell request. Valid cell types are `markdown`, `timeseries`, `toplist`, `heatmap`, `distribution`, `log_stream`. [More information on each graph visualization type.](https://docs.datadoghq.com/dashboards/widgets/) */
 export type NotebookCellCreateRequestAttributes =
   | NotebookMarkdownCellAttributes
@@ -11148,19 +6849,19 @@ export type NotebookCellCreateRequestAttributes =
   | NotebookHeatMapCellAttributes
   | NotebookDistributionCellAttributes
   | NotebookLogStreamCellAttributes;
-export const NotebookCellCreateRequestAttributes =
+const NotebookCellCreateRequestAttributes =
   S.Unknown as any as S.Schema<NotebookCellCreateRequestAttributes>;
 
 /** Type of the Notebook Cell resource. */
 export type NotebookCellResourceType = "notebook_cells";
-export const NotebookCellResourceType = S.String;
+const NotebookCellResourceType = S.String;
 
 /** The description of a notebook cell create request. */
 export interface NotebookCellCreateRequest {
   attributes: NotebookCellCreateRequestAttributes;
   type: NotebookCellResourceType;
 }
-export const NotebookCellCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebookCellCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: NotebookCellCreateRequestAttributes,
     type: NotebookCellResourceType,
@@ -11171,7 +6872,7 @@ export const NotebookCellCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cells to display in the notebook. */
 export type NotebookCreateDataAttributesCellsList = Array<NotebookCellCreateRequest>;
-export const NotebookCreateDataAttributesCellsList = /*@__PURE__*/ S.Array(
+const NotebookCreateDataAttributesCellsList = /*@__PURE__*/ S.Array(
   NotebookCellCreateRequest,
 ) as any as S.Schema<NotebookCreateDataAttributesCellsList>;
 
@@ -11182,7 +6883,7 @@ export type NotebookMetadataType =
   | "investigation"
   | "documentation"
   | "report";
-export const NotebookMetadataType = S.String;
+const NotebookMetadataType = S.String;
 
 /** Metadata associated with the notebook. */
 export interface NotebookMetadata {
@@ -11192,7 +6893,7 @@ export interface NotebookMetadata {
   take_snapshots?: boolean;
   type?: NotebookMetadataType | (string & {}) | null;
 }
-export const NotebookMetadata = /*@__PURE__*/ S.suspend(() =>
+const NotebookMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_template: S.optional(S.Boolean),
     take_snapshots: S.optional(S.Boolean),
@@ -11202,11 +6903,11 @@ export const NotebookMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Publication status of the notebook. For now, always "published". */
 export type NotebookStatus = "published";
-export const NotebookStatus = S.String;
+const NotebookStatus = S.String;
 
 /** The list of values that the template variable drop-down is limited to. */
 export type NotebookTemplateVariableAvailableValuesList = Array<string>;
-export const NotebookTemplateVariableAvailableValuesList =
+const NotebookTemplateVariableAvailableValuesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookTemplateVariableAvailableValuesList>;
 
 /** A group-by facet for an available values query. */
@@ -11214,30 +6915,14 @@ export interface NotebookTemplateVariableAvailableValuesQueryGroupBy {
   /** The facet name to group by. */
   facet: string;
 }
-export const NotebookTemplateVariableAvailableValuesQueryGroupBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facet: S.String,
-  }),
-).annotate({
-  identifier: "NotebookTemplateVariableAvailableValuesQueryGroupBy",
-}) as any as S.Schema<NotebookTemplateVariableAvailableValuesQueryGroupBy>;
-
 /** Group-by fields for the query. */
 export type NotebookTemplateVariableAvailableValuesQueryLogRumSpansGroupByList =
   Array<NotebookTemplateVariableAvailableValuesQueryGroupBy>;
-export const NotebookTemplateVariableAvailableValuesQueryLogRumSpansGroupByList =
-  /*@__PURE__*/ S.Array(
-    NotebookTemplateVariableAvailableValuesQueryGroupBy,
-  ) as any as S.Schema<NotebookTemplateVariableAvailableValuesQueryLogRumSpansGroupByList>;
-
 /** Search parameters for an available values query. */
 export interface NotebookTemplateVariableAvailableValuesQuerySearch {
   /** The search query string. */
   query: string;
 }
-export const NotebookTemplateVariableAvailableValuesQuerySearch =
-  FormulaAndFunctionEventQueryDefinitionSearch as any as S.Schema<NotebookTemplateVariableAvailableValuesQuerySearch>;
-
 /** Available values query for logs, RUM, or spans data sources. */
 export interface NotebookTemplateVariableAvailableValuesQueryLogRumSpans {
   /** The data source for the query. Must be one of `logs`, `rum`, or `spans`. */
@@ -11246,16 +6931,6 @@ export interface NotebookTemplateVariableAvailableValuesQueryLogRumSpans {
   group_by: NotebookTemplateVariableAvailableValuesQueryLogRumSpansGroupByList;
   search: NotebookTemplateVariableAvailableValuesQuerySearch;
 }
-export const NotebookTemplateVariableAvailableValuesQueryLogRumSpans = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: S.String,
-    group_by: NotebookTemplateVariableAvailableValuesQueryLogRumSpansGroupByList,
-    search: NotebookTemplateVariableAvailableValuesQuerySearch,
-  }),
-).annotate({
-  identifier: "NotebookTemplateVariableAvailableValuesQueryLogRumSpans",
-}) as any as S.Schema<NotebookTemplateVariableAvailableValuesQueryLogRumSpans>;
-
 /** Available values query for the metrics data source. */
 export interface NotebookTemplateVariableAvailableValuesQueryMetrics {
   /** The data source for the query. Must be `metrics`. */
@@ -11263,30 +6938,21 @@ export interface NotebookTemplateVariableAvailableValuesQueryMetrics {
   /** The metrics query string. */
   query: string;
 }
-export const NotebookTemplateVariableAvailableValuesQueryMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_source: S.String,
-    query: S.String,
-  }),
-).annotate({
-  identifier: "NotebookTemplateVariableAvailableValuesQueryMetrics",
-}) as any as S.Schema<NotebookTemplateVariableAvailableValuesQueryMetrics>;
-
 /** Query used to dynamically populate the list of available values for the template variable. */
 export type NotebookTemplateVariableAvailableValuesQuery =
   | NotebookTemplateVariableAvailableValuesQueryLogRumSpans
   | NotebookTemplateVariableAvailableValuesQueryMetrics;
-export const NotebookTemplateVariableAvailableValuesQuery =
+const NotebookTemplateVariableAvailableValuesQuery =
   S.Unknown as any as S.Schema<NotebookTemplateVariableAvailableValuesQuery>;
 
 /** Mapping of data source names to template variable values. */
 export type NotebookTemplateVariableDataSourceMappingsMap = { [key: string]: string | undefined };
-export const NotebookTemplateVariableDataSourceMappingsMap =
+const NotebookTemplateVariableDataSourceMappingsMap =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<NotebookTemplateVariableDataSourceMappingsMap>;
 
 /** One or many default values for the template variable. Cannot be used in conjunction with `default`. */
 export type NotebookTemplateVariableDefaultsList = Array<string>;
-export const NotebookTemplateVariableDefaultsList =
+const NotebookTemplateVariableDefaultsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookTemplateVariableDefaultsList>;
 
 /** Notebook template variable. */
@@ -11309,7 +6975,7 @@ export interface NotebookTemplateVariable {
   /** The type of the template variable. */
   type?: string;
 }
-export const NotebookTemplateVariable = /*@__PURE__*/ S.suspend(() =>
+const NotebookTemplateVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available_values: S.optional(S.NullOr(NotebookTemplateVariableAvailableValuesList)),
     available_values_query: S.optional(NotebookTemplateVariableAvailableValuesQuery),
@@ -11325,13 +6991,13 @@ export const NotebookTemplateVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** List of template variables for this notebook. */
 export type NotebookCreateDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebookCreateDataAttributesTemplateVariablesList = /*@__PURE__*/ S.Array(
+const NotebookCreateDataAttributesTemplateVariablesList = /*@__PURE__*/ S.Array(
   NotebookTemplateVariable,
 ) as any as S.Schema<NotebookCreateDataAttributesTemplateVariablesList>;
 
 /** Notebook global timeframe. */
 export type NotebookGlobalTime = NotebookRelativeTime | NotebookAbsoluteTime;
-export const NotebookGlobalTime = S.Unknown as any as S.Schema<NotebookGlobalTime>;
+const NotebookGlobalTime = S.Unknown as any as S.Schema<NotebookGlobalTime>;
 
 /** The data attributes of a notebook. */
 export interface NotebookCreateDataAttributes {
@@ -11345,7 +7011,7 @@ export interface NotebookCreateDataAttributes {
   template_variables?: NotebookCreateDataAttributesTemplateVariablesList | null;
   time: NotebookGlobalTime;
 }
-export const NotebookCreateDataAttributes = /*@__PURE__*/ S.suspend(() =>
+const NotebookCreateDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cells: NotebookCreateDataAttributesCellsList,
     metadata: S.optional(NotebookMetadata),
@@ -11360,14 +7026,14 @@ export const NotebookCreateDataAttributes = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Notebook resource. */
 export type NotebookResourceType = "notebooks";
-export const NotebookResourceType = S.String;
+const NotebookResourceType = S.String;
 
 /** The data for a notebook create request. */
 export interface NotebookCreateData {
   attributes: NotebookCreateDataAttributes;
   type: NotebookResourceType | (string & {});
 }
-export const NotebookCreateData = /*@__PURE__*/ S.suspend(() =>
+const NotebookCreateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: NotebookCreateDataAttributes,
     type: NotebookResourceType,
@@ -11377,7 +7043,7 @@ export const NotebookCreateData = /*@__PURE__*/ S.suspend(() =>
 export interface CreateNotebookRequest {
   data: NotebookCreateData;
 }
-export const CreateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: NotebookCreateData,
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/notebooks", code: 200 })),
@@ -11404,7 +7070,7 @@ export interface NotebookAuthor {
   /** Whether the user is verified. */
   verified?: boolean;
 }
-export const NotebookAuthor = /*@__PURE__*/ S.suspend(() =>
+const NotebookAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     disabled: S.optional(S.Boolean),
@@ -11426,8 +7092,7 @@ export type NotebookCellResponseAttributes =
   | NotebookHeatMapCellAttributes
   | NotebookDistributionCellAttributes
   | NotebookLogStreamCellAttributes;
-export const NotebookCellResponseAttributes =
-  S.Unknown as any as S.Schema<NotebookCellResponseAttributes>;
+const NotebookCellResponseAttributes = S.Unknown as any as S.Schema<NotebookCellResponseAttributes>;
 
 /** The description of a notebook cell response. */
 export interface NotebookCellResponse {
@@ -11436,7 +7101,7 @@ export interface NotebookCellResponse {
   id: string;
   type: NotebookCellResourceType;
 }
-export const NotebookCellResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookCellResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: NotebookCellResponseAttributes,
     id: S.String,
@@ -11446,13 +7111,13 @@ export const NotebookCellResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cells to display in the notebook. */
 export type NotebookResponseDataAttributesCellsList = Array<NotebookCellResponse>;
-export const NotebookResponseDataAttributesCellsList = /*@__PURE__*/ S.Array(
+const NotebookResponseDataAttributesCellsList = /*@__PURE__*/ S.Array(
   NotebookCellResponse,
 ) as any as S.Schema<NotebookResponseDataAttributesCellsList>;
 
 /** List of template variables for this notebook. */
 export type NotebookResponseDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebookResponseDataAttributesTemplateVariablesList =
+const NotebookResponseDataAttributesTemplateVariablesList =
   NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebookResponseDataAttributesTemplateVariablesList>;
 
 /** The attributes of a notebook. */
@@ -11472,7 +7137,7 @@ export interface NotebookResponseDataAttributes {
   template_variables?: NotebookResponseDataAttributesTemplateVariablesList | null;
   time: NotebookGlobalTime;
 }
-export const NotebookResponseDataAttributes = /*@__PURE__*/ S.suspend(() =>
+const NotebookResponseDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(NotebookAuthor),
     cells: NotebookResponseDataAttributesCellsList,
@@ -11495,7 +7160,7 @@ export interface NotebookResponseData {
   id: number;
   type: NotebookResourceType;
 }
-export const NotebookResponseData = /*@__PURE__*/ S.suspend(() =>
+const NotebookResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: NotebookResponseDataAttributes,
     id: S.Number,
@@ -11507,7 +7172,7 @@ export const NotebookResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface NotebookResponse {
   data?: NotebookResponseData;
 }
-export const NotebookResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(NotebookResponseData),
   }),
@@ -11519,7 +7184,7 @@ export interface CreatePagerDutyIntegrationServiceRequest {
   /** Your service name associated with a service key in PagerDuty. */
   service_name: string;
 }
-export const CreatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_key: S.String,
     service_name: S.String,
@@ -11539,7 +7204,7 @@ export interface PagerDutyServiceName {
   /** Your service name associated service key in PagerDuty. */
   service_name: string;
 }
-export const PagerDutyServiceName = /*@__PURE__*/ S.suspend(() =>
+const PagerDutyServiceName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.String,
   }),
@@ -11547,11 +7212,9 @@ export const PagerDutyServiceName = /*@__PURE__*/ S.suspend(() =>
 
 /** Object containing metadata about the private location. */
 export type SyntheticsPrivateLocationMetadata = SyntheticsGlobalVariableAttributes;
-export const SyntheticsPrivateLocationMetadata = SyntheticsGlobalVariableAttributes;
-
 /** Array of tags attached to the private location. */
 export type CreatePrivateLocationRequestTagsList = Array<string>;
-export const CreatePrivateLocationRequestTagsList =
+const CreatePrivateLocationRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePrivateLocationRequestTagsList>;
 
 export interface CreatePrivateLocationRequest {
@@ -11563,7 +7226,7 @@ export interface CreatePrivateLocationRequest {
   /** Array of tags attached to the private location. */
   tags: CreatePrivateLocationRequestTagsList;
 }
-export const CreatePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     metadata: S.optional(SyntheticsGlobalVariableAttributes),
@@ -11581,7 +7244,7 @@ export interface SyntheticsPrivateLocationSecretsAuthentication {
   /** Secret access key for the private location. */
   key?: string;
 }
-export const SyntheticsPrivateLocationSecretsAuthentication = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsPrivateLocationSecretsAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     key: S.optional(S.String),
@@ -11595,7 +7258,7 @@ export interface SyntheticsPrivateLocationSecretsConfigDecryption {
   /** Private key for the private location. */
   key?: string;
 }
-export const SyntheticsPrivateLocationSecretsConfigDecryption = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsPrivateLocationSecretsConfigDecryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
   }),
@@ -11608,7 +7271,7 @@ export interface SyntheticsPrivateLocationSecrets {
   authentication?: SyntheticsPrivateLocationSecretsAuthentication;
   config_decryption?: SyntheticsPrivateLocationSecretsConfigDecryption;
 }
-export const SyntheticsPrivateLocationSecrets = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsPrivateLocationSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: S.optional(SyntheticsPrivateLocationSecretsAuthentication),
     config_decryption: S.optional(SyntheticsPrivateLocationSecretsConfigDecryption),
@@ -11619,7 +7282,7 @@ export const SyntheticsPrivateLocationSecrets = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of tags attached to the private location. */
 export type SyntheticsPrivateLocationTagsList = Array<string>;
-export const SyntheticsPrivateLocationTagsList =
+const SyntheticsPrivateLocationTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsPrivateLocationTagsList>;
 
 /** Object containing information about the private location to create. */
@@ -11635,7 +7298,7 @@ export interface SyntheticsPrivateLocation {
   /** Array of tags attached to the private location. */
   tags: SyntheticsPrivateLocationTagsList;
 }
-export const SyntheticsPrivateLocation = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsPrivateLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     id: S.optional(S.String),
@@ -11655,12 +7318,11 @@ export interface SyntheticsPrivateLocationCreationResponseResultEncryption {
   /** Public key for result encryption. */
   key?: string;
 }
-export const SyntheticsPrivateLocationCreationResponseResultEncryption = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      key: S.optional(S.String),
-    }),
+const SyntheticsPrivateLocationCreationResponseResultEncryption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    key: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SyntheticsPrivateLocationCreationResponseResultEncryption",
 }) as any as S.Schema<SyntheticsPrivateLocationCreationResponseResultEncryption>;
@@ -11672,7 +7334,7 @@ export interface SyntheticsPrivateLocationCreationResponse {
   private_location?: SyntheticsPrivateLocation;
   result_encryption?: SyntheticsPrivateLocationCreationResponseResultEncryption;
 }
-export const SyntheticsPrivateLocationCreationResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsPrivateLocationCreationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.Unknown),
     private_location: S.optional(SyntheticsPrivateLocation),
@@ -11684,22 +7346,22 @@ export const SyntheticsPrivateLocationCreationResponse = /*@__PURE__*/ S.suspend
 
 /** The type of the associated private dashboard. */
 export type DashboardType = "custom_timeboard" | "custom_screenboard";
-export const DashboardType = S.String;
+const DashboardType = S.String;
 
 /** The `SharedDashboard` `embeddable_domains`. */
 export type CreatePublicDashboardRequestEmbeddableDomainsList = Array<string>;
-export const CreatePublicDashboardRequestEmbeddableDomainsList =
+const CreatePublicDashboardRequestEmbeddableDomainsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePublicDashboardRequestEmbeddableDomainsList>;
 
 /** Dashboard global time live_span selection */
 export type DashboardGlobalTimeLiveSpan = "15m" | "1h" | "4h" | "1d" | "2d" | "1w" | "1mo" | "3mo";
-export const DashboardGlobalTimeLiveSpan = S.String;
+const DashboardGlobalTimeLiveSpan = S.String;
 
 /** Object containing the live span selection for the dashboard. */
 export interface DashboardGlobalTime {
   live_span?: DashboardGlobalTimeLiveSpan | (string & {});
 }
-export const DashboardGlobalTime = /*@__PURE__*/ S.suspend(() =>
+const DashboardGlobalTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     live_span: S.optional(DashboardGlobalTimeLiveSpan),
   }),
@@ -11712,7 +7374,7 @@ export interface SharedDashboardInviteesItemsInput {
   /** Email of the invitee. */
   email: string;
 }
-export const SharedDashboardInviteesItemsInput = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboardInviteesItemsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_expiration: S.optional(S.NullOr(S.String)),
     email: S.String,
@@ -11723,13 +7385,13 @@ export const SharedDashboardInviteesItemsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The `SharedDashboard` `invitees`. */
 export type CreatePublicDashboardRequestInviteesList = Array<SharedDashboardInviteesItemsInput>;
-export const CreatePublicDashboardRequestInviteesList = /*@__PURE__*/ S.Array(
+const CreatePublicDashboardRequestInviteesList = /*@__PURE__*/ S.Array(
   SharedDashboardInviteesItemsInput,
 ) as any as S.Schema<CreatePublicDashboardRequestInviteesList>;
 
 /** List of visible tag values on the shared dashboard. */
 export type SelectableTemplateVariableItemsVisibleTagsList = Array<string>;
-export const SelectableTemplateVariableItemsVisibleTagsList =
+const SelectableTemplateVariableItemsVisibleTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SelectableTemplateVariableItemsVisibleTagsList>;
 
 /** Object containing the template variable's name, associated tag/attribute, default value and selectable values. */
@@ -11745,7 +7407,7 @@ export interface SelectableTemplateVariableItems {
   /** List of visible tag values on the shared dashboard. */
   visible_tags?: SelectableTemplateVariableItemsVisibleTagsList | null;
 }
-export const SelectableTemplateVariableItems = /*@__PURE__*/ S.suspend(() =>
+const SelectableTemplateVariableItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_value: S.optional(S.String),
     name: S.optional(S.String),
@@ -11760,26 +7422,26 @@ export const SelectableTemplateVariableItems = /*@__PURE__*/ S.suspend(() =>
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type CreatePublicDashboardRequestSelectableTemplateVarsList =
   Array<SelectableTemplateVariableItems>;
-export const CreatePublicDashboardRequestSelectableTemplateVarsList = /*@__PURE__*/ S.Array(
+const CreatePublicDashboardRequestSelectableTemplateVarsList = /*@__PURE__*/ S.Array(
   SelectableTemplateVariableItems,
 ) as any as S.Schema<CreatePublicDashboardRequestSelectableTemplateVarsList>;
 
 /** List of email addresses that can receive an invitation to access to the shared dashboard. */
 export type CreatePublicDashboardRequestShareListList = Array<string>;
-export const CreatePublicDashboardRequestShareListList =
+const CreatePublicDashboardRequestShareListList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePublicDashboardRequestShareListList>;
 
 /** Type of sharing access (either open to anyone who has the public URL or invite-only). */
 export type DashboardShareType = "open" | "invite" | "embed";
-export const DashboardShareType = S.String;
+const DashboardShareType = S.String;
 
 /** Active means the dashboard is publicly available. Paused means the dashboard is not publicly available. */
 export type SharedDashboardStatus = "active" | "paused";
-export const SharedDashboardStatus = S.String;
+const SharedDashboardStatus = S.String;
 
 /** The theme of the shared dashboard view. "system" follows your system's default viewing theme. */
 export type ViewingPreferencesTheme = "system" | "light" | "dark";
-export const ViewingPreferencesTheme = S.String;
+const ViewingPreferencesTheme = S.String;
 
 /** The viewing preferences for a shared dashboard. */
 export interface ViewingPreferences {
@@ -11787,7 +7449,7 @@ export interface ViewingPreferences {
   high_density?: boolean;
   theme?: ViewingPreferencesTheme | (string & {});
 }
-export const ViewingPreferences = /*@__PURE__*/ S.suspend(() =>
+const ViewingPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     high_density: S.optional(S.Boolean),
     theme: S.optional(ViewingPreferencesTheme),
@@ -11817,7 +7479,7 @@ export interface CreatePublicDashboardRequest {
   title?: string;
   viewing_preferences?: ViewingPreferences;
 }
-export const CreatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_id: S.String,
     dashboard_type: DashboardType,
@@ -11846,7 +7508,7 @@ export interface SharedDashboardAuthor {
   /** Name of the user who shared the dashboard. */
   name?: string | null;
 }
-export const SharedDashboardAuthor = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboardAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     handle: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
@@ -11855,7 +7517,7 @@ export const SharedDashboardAuthor = /*@__PURE__*/ S.suspend(() =>
 
 /** The `SharedDashboard` `embeddable_domains`. */
 export type SharedDashboardEmbeddableDomainsList = Array<string>;
-export const SharedDashboardEmbeddableDomainsList =
+const SharedDashboardEmbeddableDomainsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SharedDashboardEmbeddableDomainsList>;
 
 /** The allowlisted invitees for an INVITE-only shared dashboard. */
@@ -11867,7 +7529,7 @@ export interface SharedDashboardInviteesItems {
   /** Email of the invitee. */
   email: string;
 }
-export const SharedDashboardInviteesItems = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboardInviteesItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_expiration: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
@@ -11879,18 +7541,18 @@ export const SharedDashboardInviteesItems = /*@__PURE__*/ S.suspend(() =>
 
 /** The `SharedDashboard` `invitees`. */
 export type SharedDashboardInviteesList = Array<SharedDashboardInviteesItems>;
-export const SharedDashboardInviteesList = /*@__PURE__*/ S.Array(
+const SharedDashboardInviteesList = /*@__PURE__*/ S.Array(
   SharedDashboardInviteesItems,
 ) as any as S.Schema<SharedDashboardInviteesList>;
 
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type SharedDashboardSelectableTemplateVarsList = Array<SelectableTemplateVariableItems>;
-export const SharedDashboardSelectableTemplateVarsList =
+const SharedDashboardSelectableTemplateVarsList =
   CreatePublicDashboardRequestSelectableTemplateVarsList as any as S.Schema<SharedDashboardSelectableTemplateVarsList>;
 
 /** List of email addresses that can receive an invitation to access to the shared dashboard. */
 export type SharedDashboardShareListList = Array<string>;
-export const SharedDashboardShareListList =
+const SharedDashboardShareListList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SharedDashboardShareListList>;
 
 /** The metadata object associated with how a dashboard has been/will be shared. */
@@ -11926,7 +7588,7 @@ export interface SharedDashboard {
   token?: string;
   viewing_preferences?: ViewingPreferences;
 }
-export const SharedDashboard = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(SharedDashboardAuthor),
     created: S.optional(S.String),
@@ -11962,7 +7624,7 @@ export interface SlackIntegrationChannelDisplay {
   /** Show the scopes on which the monitor alerted. */
   tags?: boolean;
 }
-export const SlackIntegrationChannelDisplay = /*@__PURE__*/ S.suspend(() =>
+const SlackIntegrationChannelDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.Boolean),
     mute_buttons: S.optional(S.Boolean),
@@ -11981,7 +7643,7 @@ export interface CreateSlackIntegrationChannelRequest {
   /** Your channel name. */
   name?: string;
 }
-export const CreateSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_name: S.String.pipe(T.Label()),
     display: S.optional(SlackIntegrationChannelDisplay),
@@ -12003,7 +7665,7 @@ export interface SlackIntegrationChannel {
   /** Your channel name. */
   name?: string;
 }
-export const SlackIntegrationChannel = /*@__PURE__*/ S.suspend(() =>
+const SlackIntegrationChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.optional(SlackIntegrationChannelDisplay),
     name: S.optional(S.String),
@@ -12012,12 +7674,12 @@ export const SlackIntegrationChannel = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type CreateSLORequestGroupsList = Array<string>;
-export const CreateSLORequestGroupsList =
+const CreateSLORequestGroupsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSLORequestGroupsList>;
 
 /** A list of monitor IDs that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type CreateSLORequestMonitorIdsList = Array<number>;
-export const CreateSLORequestMonitorIdsList =
+const CreateSLORequestMonitorIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<CreateSLORequestMonitorIdsList>;
 
 /** A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. */
@@ -12027,7 +7689,7 @@ export interface ServiceLevelObjectiveQuery {
   /** A Datadog metric query for good events. */
   numerator: string;
 }
-export const ServiceLevelObjectiveQuery = /*@__PURE__*/ S.suspend(() =>
+const ServiceLevelObjectiveQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denominator: S.String,
     numerator: S.String,
@@ -12038,31 +7700,15 @@ export const ServiceLevelObjectiveQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** The comparator used to compare the SLI value to the threshold. */
 export type SLOTimeSliceComparator = ">" | ">=" | "<" | "<=";
-export const SLOTimeSliceComparator = S.String;
-
 /** A formula that specifies how to combine the results of multiple queries. */
 export interface SLOFormula {
   /** The formula string, which is an expression involving named queries. */
   formula: string;
 }
-export const SLOFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formula: S.String,
-  }),
-).annotate({ identifier: "SLOFormula" }) as any as S.Schema<SLOFormula>;
-
 /** A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO. */
 export type SLOTimeSliceQueryFormulasList = Array<SLOFormula>;
-export const SLOTimeSliceQueryFormulasList = /*@__PURE__*/ S.Array(
-  SLOFormula,
-) as any as S.Schema<SLOTimeSliceQueryFormulasList>;
-
 /** A list of queries that are used to calculate the SLI value. */
 export type SLOTimeSliceQueryQueriesList = Array<FormulaAndFunctionMetricQueryDefinition>;
-export const SLOTimeSliceQueryQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionMetricQueryDefinition,
-) as any as S.Schema<SLOTimeSliceQueryQueriesList>;
-
 /** The queries and formula used to calculate the SLI value. */
 export interface SLOTimeSliceQuery {
   /** A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO. */
@@ -12070,17 +7716,8 @@ export interface SLOTimeSliceQuery {
   /** A list of queries that are used to calculate the SLI value. */
   queries: SLOTimeSliceQueryQueriesList;
 }
-export const SLOTimeSliceQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formulas: SLOTimeSliceQueryFormulasList,
-    queries: SLOTimeSliceQueryQueriesList,
-  }),
-).annotate({ identifier: "SLOTimeSliceQuery" }) as any as S.Schema<SLOTimeSliceQuery>;
-
 /** The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). */
 export type SLOTimeSliceInterval = 60 | 300;
-export const SLOTimeSliceInterval = S.Number;
-
 /** The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided. */
 export interface SLOTimeSliceCondition {
   comparator: SLOTimeSliceComparator | (string & {});
@@ -12089,30 +7726,12 @@ export interface SLOTimeSliceCondition {
   /** The threshold value to which each SLI value will be compared. */
   threshold: number;
 }
-export const SLOTimeSliceCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comparator: SLOTimeSliceComparator,
-    query: SLOTimeSliceQuery,
-    query_interval_seconds: S.optional(SLOTimeSliceInterval),
-    threshold: S.Number,
-  }),
-).annotate({ identifier: "SLOTimeSliceCondition" }) as any as S.Schema<SLOTimeSliceCondition>;
-
 /** A time-slice SLI specification. */
 export interface SLOTimeSliceSpec {
   time_slice: SLOTimeSliceCondition;
 }
-export const SLOTimeSliceSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    time_slice: SLOTimeSliceCondition,
-  }),
-).annotate({ identifier: "SLOTimeSliceSpec" }) as any as S.Schema<SLOTimeSliceSpec>;
-
 export type SLOCountDefinitionWithTotalEventsFormulaQueriesList =
   Array<FormulaAndFunctionMetricQueryDefinition>;
-export const SLOCountDefinitionWithTotalEventsFormulaQueriesList =
-  SLOTimeSliceQueryQueriesList as any as S.Schema<SLOCountDefinitionWithTotalEventsFormulaQueriesList>;
-
 /** SLO count definition using a total events formula alongside a good events formula. */
 export interface SLOCountDefinitionWithTotalEventsFormula {
   good_events_formula: SLOFormula;
@@ -12120,21 +7739,8 @@ export interface SLOCountDefinitionWithTotalEventsFormula {
   /** The total events formula. Bad events queries can be defined using the `bad_events_formula` field as an alternative. Only one of `total_events_formula` or `bad_events_formula` must be provided. */
   total_events_formula: SLOFormula;
 }
-export const SLOCountDefinitionWithTotalEventsFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    good_events_formula: SLOFormula,
-    queries: SLOCountDefinitionWithTotalEventsFormulaQueriesList,
-    total_events_formula: SLOFormula,
-  }),
-).annotate({
-  identifier: "SLOCountDefinitionWithTotalEventsFormula",
-}) as any as S.Schema<SLOCountDefinitionWithTotalEventsFormula>;
-
 export type SLOCountDefinitionWithBadEventsFormulaQueriesList =
   Array<FormulaAndFunctionMetricQueryDefinition>;
-export const SLOCountDefinitionWithBadEventsFormulaQueriesList =
-  SLOTimeSliceQueryQueriesList as any as S.Schema<SLOCountDefinitionWithBadEventsFormulaQueriesList>;
-
 /** SLO count definition using a bad events formula alongside a good events formula. */
 export interface SLOCountDefinitionWithBadEventsFormula {
   /** The bad events formula (recommended). Total events queries can be defined using the `total_events_formula` field as an alternative. Only one of `total_events_formula` or `bad_events_formula` must be provided. */
@@ -12142,44 +7748,26 @@ export interface SLOCountDefinitionWithBadEventsFormula {
   good_events_formula: SLOFormula;
   queries: SLOCountDefinitionWithBadEventsFormulaQueriesList;
 }
-export const SLOCountDefinitionWithBadEventsFormula = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bad_events_formula: SLOFormula,
-    good_events_formula: SLOFormula,
-    queries: SLOCountDefinitionWithBadEventsFormulaQueriesList,
-  }),
-).annotate({
-  identifier: "SLOCountDefinitionWithBadEventsFormula",
-}) as any as S.Schema<SLOCountDefinitionWithBadEventsFormula>;
-
 /** A count-based (metric) SLI specification, composed of three parts: the good events formula, the bad or total events formula, and the underlying queries. Exactly one of `total_events_formula` or `bad_events_formula` must be provided. */
 export type SLOCountDefinition =
   | SLOCountDefinitionWithTotalEventsFormula
   | SLOCountDefinitionWithBadEventsFormula;
-export const SLOCountDefinition = S.Unknown as any as S.Schema<SLOCountDefinition>;
-
 /** A metric SLI specification. */
 export interface SLOCountSpec {
   count: SLOCountDefinition;
 }
-export const SLOCountSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: SLOCountDefinition,
-  }),
-).annotate({ identifier: "SLOCountSpec" }) as any as S.Schema<SLOCountSpec>;
-
 /** A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only. */
 export type SLOSliSpec = SLOTimeSliceSpec | SLOCountSpec;
-export const SLOSliSpec = S.Unknown as any as S.Schema<SLOSliSpec>;
+const SLOSliSpec = S.Unknown as any as S.Schema<SLOSliSpec>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type CreateSLORequestTagsList = Array<string>;
-export const CreateSLORequestTagsList =
+const CreateSLORequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSLORequestTagsList>;
 
 /** The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. */
 export type SLOTimeframe = "7d" | "30d" | "90d" | "custom";
-export const SLOTimeframe = S.String;
+const SLOTimeframe = S.String;
 
 /** SLO thresholds (target and optionally warning) for a single time window. */
 export interface SLOThreshold {
@@ -12193,7 +7781,7 @@ export interface SLOThreshold {
   /** A string representation of the warning target (see the description of the `target_display` field for details). Included in service level objective responses if a warning target exists. Ignored in create/update requests. */
   warning_display?: string;
 }
-export const SLOThreshold = /*@__PURE__*/ S.suspend(() =>
+const SLOThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.Number,
     target_display: S.optional(S.String),
@@ -12205,13 +7793,13 @@ export const SLOThreshold = /*@__PURE__*/ S.suspend(() =>
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type CreateSLORequestThresholdsList = Array<SLOThreshold>;
-export const CreateSLORequestThresholdsList = /*@__PURE__*/ S.Array(
+const CreateSLORequestThresholdsList = /*@__PURE__*/ S.Array(
   SLOThreshold,
 ) as any as S.Schema<CreateSLORequestThresholdsList>;
 
 /** The type of the service level objective. */
 export type SLOType = "metric" | "monitor" | "time_slice";
-export const SLOType = S.String;
+const SLOType = S.String;
 
 export interface CreateSLORequest {
   /** A user-defined description of the service level objective. Always included in service level objective responses (but may be `null`). Optional in create/update requests. */
@@ -12235,7 +7823,7 @@ export interface CreateSLORequest {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-export const CreateSLORequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     groups: S.optional(CreateSLORequestGroupsList),
@@ -12254,27 +7842,27 @@ export const CreateSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type ServiceLevelObjectiveGroupsList = Array<string>;
-export const ServiceLevelObjectiveGroupsList =
+const ServiceLevelObjectiveGroupsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type ServiceLevelObjectiveMonitorIdsList = Array<number>;
-export const ServiceLevelObjectiveMonitorIdsList =
+const ServiceLevelObjectiveMonitorIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<ServiceLevelObjectiveMonitorIdsList>;
 
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type ServiceLevelObjectiveMonitorTagsList = Array<string>;
-export const ServiceLevelObjectiveMonitorTagsList =
+const ServiceLevelObjectiveMonitorTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveMonitorTagsList>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type ServiceLevelObjectiveTagsList = Array<string>;
-export const ServiceLevelObjectiveTagsList =
+const ServiceLevelObjectiveTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveTagsList>;
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type ServiceLevelObjectiveThresholdsList = Array<SLOThreshold>;
-export const ServiceLevelObjectiveThresholdsList =
+const ServiceLevelObjectiveThresholdsList =
   CreateSLORequestThresholdsList as any as S.Schema<ServiceLevelObjectiveThresholdsList>;
 
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.). */
@@ -12309,7 +7897,7 @@ export interface ServiceLevelObjective {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-export const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
+const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.Number),
     creator: S.optional(Creator),
@@ -12333,13 +7921,13 @@ export const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of service level objective objects. */
 export type SLOListResponseDataList = Array<ServiceLevelObjective>;
-export const SLOListResponseDataList = /*@__PURE__*/ S.Array(
+const SLOListResponseDataList = /*@__PURE__*/ S.Array(
   ServiceLevelObjective,
 ) as any as S.Schema<SLOListResponseDataList>;
 
 /** An array of error messages. Each endpoint documents how/whether this field is used. */
 export type SLOListResponseErrorsList = Array<string>;
-export const SLOListResponseErrorsList =
+const SLOListResponseErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOListResponseErrorsList>;
 
 /** The object containing information about the pages of the list of SLOs. */
@@ -12349,7 +7937,7 @@ export interface SLOListResponseMetadataPage {
   /** The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages. */
   total_filtered_count?: number;
 }
-export const SLOListResponseMetadataPage = /*@__PURE__*/ S.suspend(() =>
+const SLOListResponseMetadataPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     total_filtered_count: S.optional(S.Number),
@@ -12362,7 +7950,7 @@ export const SLOListResponseMetadataPage = /*@__PURE__*/ S.suspend(() =>
 export interface SLOListResponseMetadata {
   page?: SLOListResponseMetadataPage;
 }
-export const SLOListResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const SLOListResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(SLOListResponseMetadataPage),
   }),
@@ -12376,7 +7964,7 @@ export interface SLOListResponse {
   errors?: SLOListResponseErrorsList;
   metadata?: SLOListResponseMetadata;
 }
-export const SLOListResponse = /*@__PURE__*/ S.suspend(() =>
+const SLOListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOListResponseDataList),
     errors: S.optional(SLOListResponseErrorsList),
@@ -12390,7 +7978,7 @@ export type SLOCorrectionCategory =
   | "Outside Business Hours"
   | "Deployment"
   | "Other";
-export const SLOCorrectionCategory = S.String;
+const SLOCorrectionCategory = S.String;
 
 /** The attribute object associated with the SLO correction to be created. Exactly one of `slo_id` or `slo_query` must be provided. */
 export interface SLOCorrectionCreateRequestAttributes {
@@ -12412,7 +8000,7 @@ export interface SLOCorrectionCreateRequestAttributes {
   /** The timezone to display in the UI for the correction times (defaults to "UTC"). */
   timezone?: string;
 }
-export const SLOCorrectionCreateRequestAttributes = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionCreateRequestAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: SLOCorrectionCategory,
     description: S.optional(S.String),
@@ -12430,14 +8018,14 @@ export const SLOCorrectionCreateRequestAttributes = /*@__PURE__*/ S.suspend(() =
 
 /** SLO correction resource type. */
 export type SLOCorrectionType = "correction";
-export const SLOCorrectionType = S.String;
+const SLOCorrectionType = S.String;
 
 /** The data object associated with the SLO correction to be created. */
 export interface SLOCorrectionCreateData {
   attributes?: SLOCorrectionCreateRequestAttributes;
   type: SLOCorrectionType | (string & {});
 }
-export const SLOCorrectionCreateData = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionCreateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SLOCorrectionCreateRequestAttributes),
     type: SLOCorrectionType,
@@ -12447,7 +8035,7 @@ export const SLOCorrectionCreateData = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSLOCorrectionRequest {
   data?: SLOCorrectionCreateData;
 }
-export const CreateSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOCorrectionCreateData),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/slo/correction", code: 200 })),
@@ -12464,7 +8052,7 @@ export interface SLOCorrectionResponseAttributesModifier {
   /** Name of the Modifier. */
   name?: string;
 }
-export const SLOCorrectionResponseAttributesModifier = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionResponseAttributesModifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     handle: S.optional(S.String),
@@ -12500,7 +8088,7 @@ export interface SLOCorrectionResponseAttributes {
   /** The timezone to display in the UI for the correction times (defaults to "UTC"). */
   timezone?: string;
 }
-export const SLOCorrectionResponseAttributes = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionResponseAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(SLOCorrectionCategory),
     created_at: S.optional(S.NullOr(S.Number)),
@@ -12527,7 +8115,7 @@ export interface SLOCorrection {
   id?: string;
   type?: SLOCorrectionType;
 }
-export const SLOCorrection = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SLOCorrectionResponseAttributes),
     id: S.optional(S.String),
@@ -12539,7 +8127,7 @@ export const SLOCorrection = /*@__PURE__*/ S.suspend(() =>
 export interface SLOCorrectionResponse {
   data?: SLOCorrection;
 }
-export const SLOCorrectionResponse = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOCorrection),
   }),
@@ -12562,17 +8150,10 @@ export type SyntheticsAssertionOperator =
   | "isInLessThan"
   | "doesNotExist"
   | "isUndefined";
-export const SyntheticsAssertionOperator = S.String;
-
 /** Value used by the operator in assertions. Can be either a number or string. */
 export type SyntheticsAssertionTargetValue = number | string;
-export const SyntheticsAssertionTargetValue =
-  S.Unknown as any as S.Schema<SyntheticsAssertionTargetValue>;
-
 /** Timings scope for response time assertions. */
 export type SyntheticsAssertionTimingsScope = "all" | "withoutDNS";
-export const SyntheticsAssertionTimingsScope = S.String;
-
 /** Type of the assertion. */
 export type SyntheticsAssertionType =
   | "body"
@@ -12598,8 +8179,6 @@ export type SyntheticsAssertionType =
   | "jitter"
   | "mcpToolNameLength"
   | "mcpToolCount";
-export const SyntheticsAssertionType = S.String;
-
 /** An assertion which uses a simple target. */
 export interface SyntheticsAssertionTarget {
   operator: SyntheticsAssertionOperator | (string & {});
@@ -12610,26 +8189,10 @@ export interface SyntheticsAssertionTarget {
   timingsScope?: SyntheticsAssertionTimingsScope | (string & {});
   type: SyntheticsAssertionType | (string & {});
 }
-export const SyntheticsAssertionTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsAssertionOperator,
-    property: S.optional(S.String),
-    target: SyntheticsAssertionTargetValue,
-    timingsScope: S.optional(SyntheticsAssertionTimingsScope),
-    type: SyntheticsAssertionType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionTarget",
-}) as any as S.Schema<SyntheticsAssertionTarget>;
-
 /** Assertion operator to apply. */
 export type SyntheticsAssertionBodyHashOperator = "md5" | "sha1" | "sha256";
-export const SyntheticsAssertionBodyHashOperator = S.String;
-
 /** Type of the assertion. */
 export type SyntheticsAssertionBodyHashType = "bodyHash";
-export const SyntheticsAssertionBodyHashType = S.String;
-
 /** An assertion which targets body hash. */
 export interface SyntheticsAssertionBodyHashTarget {
   operator: SyntheticsAssertionBodyHashOperator | (string & {});
@@ -12637,20 +8200,8 @@ export interface SyntheticsAssertionBodyHashTarget {
   target: SyntheticsAssertionTargetValue;
   type: SyntheticsAssertionBodyHashType;
 }
-export const SyntheticsAssertionBodyHashTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsAssertionBodyHashOperator,
-    target: SyntheticsAssertionTargetValue,
-    type: SyntheticsAssertionBodyHashType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionBodyHashTarget",
-}) as any as S.Schema<SyntheticsAssertionBodyHashTarget>;
-
 /** Assertion operator to apply. */
 export type SyntheticsAssertionJSONPathOperator = "validatesJSONPath";
-export const SyntheticsAssertionJSONPathOperator = S.String;
-
 /** Composed target for `validatesJSONPath` operator. */
 export interface SyntheticsAssertionJSONPathTargetTarget {
   /** The element from the list of results to assert on. To choose from the first element in the list `firstElementMatches`, every element in the list `everyElementMatches`, at least one element in the list `atLeastOneElementMatches` or the serialized value of the list `serializationMatches`. */
@@ -12662,17 +8213,6 @@ export interface SyntheticsAssertionJSONPathTargetTarget {
   /** The path target value to compare to. */
   targetValue?: SyntheticsAssertionTargetValue;
 }
-export const SyntheticsAssertionJSONPathTargetTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elementsOperator: S.optional(S.String),
-    jsonPath: S.optional(S.String),
-    operator: S.optional(S.String),
-    targetValue: S.optional(SyntheticsAssertionTargetValue),
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionJSONPathTargetTarget",
-}) as any as S.Schema<SyntheticsAssertionJSONPathTargetTarget>;
-
 /** An assertion for the `validatesJSONPath` operator. */
 export interface SyntheticsAssertionJSONPathTarget {
   operator: SyntheticsAssertionJSONPathOperator;
@@ -12681,60 +8221,24 @@ export interface SyntheticsAssertionJSONPathTarget {
   target?: SyntheticsAssertionJSONPathTargetTarget;
   type: SyntheticsAssertionType | (string & {});
 }
-export const SyntheticsAssertionJSONPathTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsAssertionJSONPathOperator,
-    property: S.optional(S.String),
-    target: S.optional(SyntheticsAssertionJSONPathTargetTarget),
-    type: SyntheticsAssertionType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionJSONPathTarget",
-}) as any as S.Schema<SyntheticsAssertionJSONPathTarget>;
-
 /** Assertion operator to apply. */
 export type SyntheticsAssertionJSONSchemaOperator = "validatesJSONSchema";
-export const SyntheticsAssertionJSONSchemaOperator = S.String;
-
 /** The JSON Schema meta-schema version used in the assertion. */
 export type SyntheticsAssertionJSONSchemaMetaSchema = "draft-07" | "draft-06";
-export const SyntheticsAssertionJSONSchemaMetaSchema = S.String;
-
 /** Composed target for `validatesJSONSchema` operator. */
 export interface SyntheticsAssertionJSONSchemaTargetTarget {
   /** The JSON Schema to assert. */
   jsonSchema?: string;
   metaSchema?: SyntheticsAssertionJSONSchemaMetaSchema | (string & {});
 }
-export const SyntheticsAssertionJSONSchemaTargetTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jsonSchema: S.optional(S.String),
-    metaSchema: S.optional(SyntheticsAssertionJSONSchemaMetaSchema),
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionJSONSchemaTargetTarget",
-}) as any as S.Schema<SyntheticsAssertionJSONSchemaTargetTarget>;
-
 /** An assertion for the `validatesJSONSchema` operator. */
 export interface SyntheticsAssertionJSONSchemaTarget {
   operator: SyntheticsAssertionJSONSchemaOperator;
   target?: SyntheticsAssertionJSONSchemaTargetTarget;
   type: SyntheticsAssertionType | (string & {});
 }
-export const SyntheticsAssertionJSONSchemaTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsAssertionJSONSchemaOperator,
-    target: S.optional(SyntheticsAssertionJSONSchemaTargetTarget),
-    type: SyntheticsAssertionType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionJSONSchemaTarget",
-}) as any as S.Schema<SyntheticsAssertionJSONSchemaTarget>;
-
 /** Assertion operator to apply. */
 export type SyntheticsAssertionXPathOperator = "validatesXPath";
-export const SyntheticsAssertionXPathOperator = S.String;
-
 /** Composed target for `validatesXPath` operator. */
 export interface SyntheticsAssertionXPathTargetTarget {
   /** The specific operator to use on the path. */
@@ -12744,16 +8248,6 @@ export interface SyntheticsAssertionXPathTargetTarget {
   /** The X path to assert. */
   xPath?: string;
 }
-export const SyntheticsAssertionXPathTargetTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(S.String),
-    targetValue: S.optional(SyntheticsAssertionTargetValue),
-    xPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionXPathTargetTarget",
-}) as any as S.Schema<SyntheticsAssertionXPathTargetTarget>;
-
 /** An assertion for the `validatesXPath` operator. */
 export interface SyntheticsAssertionXPathTarget {
   operator: SyntheticsAssertionXPathOperator;
@@ -12762,36 +8256,14 @@ export interface SyntheticsAssertionXPathTarget {
   target?: SyntheticsAssertionXPathTargetTarget;
   type: SyntheticsAssertionType | (string & {});
 }
-export const SyntheticsAssertionXPathTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsAssertionXPathOperator,
-    property: S.optional(S.String),
-    target: S.optional(SyntheticsAssertionXPathTargetTarget),
-    type: SyntheticsAssertionType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionXPathTarget",
-}) as any as S.Schema<SyntheticsAssertionXPathTarget>;
-
 /** Type of the assertion. */
 export type SyntheticsAssertionJavascriptType = "javascript";
-export const SyntheticsAssertionJavascriptType = S.String;
-
 /** A JavaScript assertion. */
 export interface SyntheticsAssertionJavascript {
   /** The JavaScript code that performs the assertions. */
   code: string;
   type: SyntheticsAssertionJavascriptType;
 }
-export const SyntheticsAssertionJavascript = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    type: SyntheticsAssertionJavascriptType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionJavascript",
-}) as any as S.Schema<SyntheticsAssertionJavascript>;
-
 /** A capability advertised by an MCP server. */
 export type SyntheticsMCPServerCapability =
   | "completions"
@@ -12800,19 +8272,12 @@ export type SyntheticsMCPServerCapability =
   | "prompts"
   | "resources"
   | "tools";
-export const SyntheticsMCPServerCapability = S.String;
-
 /** List of MCP server capabilities to assert against. */
 export type SyntheticsAssertionMCPServerCapabilitiesTargetTargetList = Array<
   SyntheticsMCPServerCapability | (string & {})
 >;
-export const SyntheticsAssertionMCPServerCapabilitiesTargetTargetList =
-  ListStreamQueryStatesList as any as S.Schema<SyntheticsAssertionMCPServerCapabilitiesTargetTargetList>;
-
 /** Type of the assertion. */
 export type SyntheticsAssertionMCPServerCapabilitiesType = "mcpServerCapabilities";
-export const SyntheticsAssertionMCPServerCapabilitiesType = S.String;
-
 /** An assertion that checks that an MCP server advertises the expected capabilities. */
 export interface SyntheticsAssertionMCPServerCapabilitiesTarget {
   operator: SyntheticsAssertionOperator | (string & {});
@@ -12820,27 +8285,12 @@ export interface SyntheticsAssertionMCPServerCapabilitiesTarget {
   target: SyntheticsAssertionMCPServerCapabilitiesTargetTargetList;
   type: SyntheticsAssertionMCPServerCapabilitiesType;
 }
-export const SyntheticsAssertionMCPServerCapabilitiesTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: SyntheticsAssertionOperator,
-    target: SyntheticsAssertionMCPServerCapabilitiesTargetTargetList,
-    type: SyntheticsAssertionMCPServerCapabilitiesType,
-  }),
-).annotate({
-  identifier: "SyntheticsAssertionMCPServerCapabilitiesTarget",
-}) as any as S.Schema<SyntheticsAssertionMCPServerCapabilitiesTarget>;
-
 /** Type of the assertion. */
 export type SyntheticsAssertionMCPRespectsSpecificationType = "mcpRespectsSpecification";
-export const SyntheticsAssertionMCPRespectsSpecificationType = S.String;
-
 /** An assertion that verifies the MCP server response respects the MCP specification. */
 export interface SyntheticsAssertionMCPRespectsSpecification {
   type: SyntheticsAssertionMCPRespectsSpecificationType;
 }
-export const SyntheticsAssertionMCPRespectsSpecification =
-  SunburstWidgetLegendTable as any as S.Schema<SyntheticsAssertionMCPRespectsSpecification>;
-
 /** Object describing the assertions type, their associated operator, which property they apply, and upon which target. */
 export type SyntheticsAssertion =
   | SyntheticsAssertionTarget
@@ -12851,17 +8301,17 @@ export type SyntheticsAssertion =
   | SyntheticsAssertionJavascript
   | SyntheticsAssertionMCPServerCapabilitiesTarget
   | SyntheticsAssertionMCPRespectsSpecification;
-export const SyntheticsAssertion = S.Unknown as any as S.Schema<SyntheticsAssertion>;
+const SyntheticsAssertion = S.Unknown as any as S.Schema<SyntheticsAssertion>;
 
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsAPITestConfigInputAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestConfigInputAssertionsList = /*@__PURE__*/ S.Array(
+const SyntheticsAPITestConfigInputAssertionsList = /*@__PURE__*/ S.Array(
   SyntheticsAssertion,
 ) as any as S.Schema<SyntheticsAPITestConfigInputAssertionsList>;
 
 /** Type of the configuration variable. */
 export type SyntheticsConfigVariableType = "global" | "text" | "email";
-export const SyntheticsConfigVariableType = S.String;
+const SyntheticsConfigVariableType = S.String;
 
 /** Object defining a variable that can be used in your test configuration. */
 export interface SyntheticsConfigVariable {
@@ -12877,7 +8327,7 @@ export interface SyntheticsConfigVariable {
   secure?: boolean;
   type: SyntheticsConfigVariableType | (string & {});
 }
-export const SyntheticsConfigVariable = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsConfigVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     example: S.optional(S.String),
     id: S.optional(S.String),
@@ -12890,14 +8340,12 @@ export const SyntheticsConfigVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of variables used for the test. */
 export type SyntheticsAPITestConfigInputConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsAPITestConfigInputConfigVariablesList = /*@__PURE__*/ S.Array(
+const SyntheticsAPITestConfigInputConfigVariablesList = /*@__PURE__*/ S.Array(
   SyntheticsConfigVariable,
 ) as any as S.Schema<SyntheticsAPITestConfigInputConfigVariablesList>;
 
 /** The type of basic authentication to use when performing the test. */
 export type SyntheticsBasicAuthWebType = "web";
-export const SyntheticsBasicAuthWebType = S.String;
-
 /** Object to handle basic authentication when performing the test. */
 export interface SyntheticsBasicAuthWeb {
   /** Password to use for the basic authentication. */
@@ -12906,18 +8354,8 @@ export interface SyntheticsBasicAuthWeb {
   /** Username to use for the basic authentication. */
   username?: string;
 }
-export const SyntheticsBasicAuthWeb = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: S.optional(SyntheticsBasicAuthWebType),
-    username: S.optional(S.String),
-  }),
-).annotate({ identifier: "SyntheticsBasicAuthWeb" }) as any as S.Schema<SyntheticsBasicAuthWeb>;
-
 /** The type of authentication to use when performing the test. */
 export type SyntheticsBasicAuthSigv4Type = "sigv4";
-export const SyntheticsBasicAuthSigv4Type = S.String;
-
 /** Object to handle `SIGV4` authentication when performing the test. */
 export interface SyntheticsBasicAuthSigv4 {
   /** Access key for the `SIGV4` authentication. */
@@ -12932,21 +8370,8 @@ export interface SyntheticsBasicAuthSigv4 {
   sessionToken?: string | Redacted.Redacted<string>;
   type: SyntheticsBasicAuthSigv4Type;
 }
-export const SyntheticsBasicAuthSigv4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKey: S.String,
-    region: S.optional(S.String),
-    secretKey: S.String.pipe(T.SensitiveValue({})),
-    serviceName: S.optional(S.String),
-    sessionToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: SyntheticsBasicAuthSigv4Type,
-  }),
-).annotate({ identifier: "SyntheticsBasicAuthSigv4" }) as any as S.Schema<SyntheticsBasicAuthSigv4>;
-
 /** The type of authentication to use when performing the test. */
 export type SyntheticsBasicAuthNTLMType = "ntlm";
-export const SyntheticsBasicAuthNTLMType = S.String;
-
 /** Object to handle `NTLM` authentication when performing the test. */
 export interface SyntheticsBasicAuthNTLM {
   /** Domain for the authentication to use when performing the test. */
@@ -12959,20 +8384,8 @@ export interface SyntheticsBasicAuthNTLM {
   /** Workstation for the authentication to use when performing the test. */
   workstation?: string;
 }
-export const SyntheticsBasicAuthNTLM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    type: SyntheticsBasicAuthNTLMType,
-    username: S.optional(S.String),
-    workstation: S.optional(S.String),
-  }),
-).annotate({ identifier: "SyntheticsBasicAuthNTLM" }) as any as S.Schema<SyntheticsBasicAuthNTLM>;
-
 /** The type of basic authentication to use when performing the test. */
 export type SyntheticsBasicAuthDigestType = "digest";
-export const SyntheticsBasicAuthDigestType = S.String;
-
 /** Object to handle digest authentication when performing the test. */
 export interface SyntheticsBasicAuthDigest {
   /** Password to use for the digest authentication. */
@@ -12981,24 +8394,10 @@ export interface SyntheticsBasicAuthDigest {
   /** Username to use for the digest authentication. */
   username: string;
 }
-export const SyntheticsBasicAuthDigest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    password: S.String.pipe(T.SensitiveValue({})),
-    type: SyntheticsBasicAuthDigestType,
-    username: S.String,
-  }),
-).annotate({
-  identifier: "SyntheticsBasicAuthDigest",
-}) as any as S.Schema<SyntheticsBasicAuthDigest>;
-
 /** Type of token to use when performing the authentication. */
 export type SyntheticsBasicAuthOauthTokenApiAuthentication = "header" | "body";
-export const SyntheticsBasicAuthOauthTokenApiAuthentication = S.String;
-
 /** The type of basic authentication to use when performing the test. */
 export type SyntheticsBasicAuthOauthClientType = "oauth-client";
-export const SyntheticsBasicAuthOauthClientType = S.String;
-
 /** Object to handle `oauth client` authentication when performing the test. */
 export interface SyntheticsBasicAuthOauthClient {
   /** Access token URL to use when performing the authentication. */
@@ -13016,25 +8415,8 @@ export interface SyntheticsBasicAuthOauthClient {
   tokenApiAuthentication: SyntheticsBasicAuthOauthTokenApiAuthentication | (string & {});
   type: SyntheticsBasicAuthOauthClientType;
 }
-export const SyntheticsBasicAuthOauthClient = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessTokenUrl: S.String,
-    audience: S.optional(S.String),
-    clientId: S.String,
-    clientSecret: S.String.pipe(T.SensitiveValue({})),
-    resource: S.optional(S.String),
-    scope: S.optional(S.String),
-    tokenApiAuthentication: SyntheticsBasicAuthOauthTokenApiAuthentication,
-    type: SyntheticsBasicAuthOauthClientType,
-  }),
-).annotate({
-  identifier: "SyntheticsBasicAuthOauthClient",
-}) as any as S.Schema<SyntheticsBasicAuthOauthClient>;
-
 /** The type of basic authentication to use when performing the test. */
 export type SyntheticsBasicAuthOauthROPType = "oauth-rop";
-export const SyntheticsBasicAuthOauthROPType = S.String;
-
 /** Object to handle `oauth rop` authentication when performing the test. */
 export interface SyntheticsBasicAuthOauthROP {
   /** Access token URL to use when performing the authentication. */
@@ -13056,23 +8438,6 @@ export interface SyntheticsBasicAuthOauthROP {
   /** Username to use when performing the authentication. */
   username: string;
 }
-export const SyntheticsBasicAuthOauthROP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessTokenUrl: S.String,
-    audience: S.optional(S.String),
-    clientId: S.optional(S.String),
-    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    password: S.String.pipe(T.SensitiveValue({})),
-    resource: S.optional(S.String),
-    scope: S.optional(S.String),
-    tokenApiAuthentication: SyntheticsBasicAuthOauthTokenApiAuthentication,
-    type: SyntheticsBasicAuthOauthROPType,
-    username: S.String,
-  }),
-).annotate({
-  identifier: "SyntheticsBasicAuthOauthROP",
-}) as any as S.Schema<SyntheticsBasicAuthOauthROP>;
-
 /** Standard JWT claims to automatically inject. */
 export interface SyntheticsBasicAuthJWTAddClaims {
   /** Whether to inject the `exp` (expiration) claim. */
@@ -13080,23 +8445,10 @@ export interface SyntheticsBasicAuthJWTAddClaims {
   /** Whether to inject the `iat` (issued at) claim. */
   iat?: boolean;
 }
-export const SyntheticsBasicAuthJWTAddClaims = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exp: S.optional(S.Boolean),
-    iat: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SyntheticsBasicAuthJWTAddClaims",
-}) as any as S.Schema<SyntheticsBasicAuthJWTAddClaims>;
-
 /** Algorithm to use for the JWT authentication. */
 export type SyntheticsBasicAuthJWTAlgorithm = "HS256" | "RS256" | "ES256";
-export const SyntheticsBasicAuthJWTAlgorithm = S.String;
-
 /** The type of authentication to use when performing the test. */
 export type SyntheticsBasicAuthJWTType = "jwt";
-export const SyntheticsBasicAuthJWTType = S.String;
-
 /** Object to handle JWT authentication when performing the test. */
 export interface SyntheticsBasicAuthJWT {
   addClaims?: SyntheticsBasicAuthJWTAddClaims;
@@ -13113,19 +8465,6 @@ export interface SyntheticsBasicAuthJWT {
   tokenPrefix?: string;
   type: SyntheticsBasicAuthJWTType;
 }
-export const SyntheticsBasicAuthJWT = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addClaims: S.optional(SyntheticsBasicAuthJWTAddClaims),
-    algorithm: SyntheticsBasicAuthJWTAlgorithm,
-    expiresIn: S.optional(S.Number),
-    header: S.optional(S.String),
-    payload: S.String,
-    secret: S.String.pipe(T.SensitiveValue({})),
-    tokenPrefix: S.optional(S.String),
-    type: SyntheticsBasicAuthJWTType,
-  }),
-).annotate({ identifier: "SyntheticsBasicAuthJWT" }) as any as S.Schema<SyntheticsBasicAuthJWT>;
-
 /** Object to handle basic authentication when performing the test. */
 export type SyntheticsBasicAuth =
   | SyntheticsBasicAuthWeb
@@ -13135,7 +8474,7 @@ export type SyntheticsBasicAuth =
   | SyntheticsBasicAuthOauthClient
   | SyntheticsBasicAuthOauthROP
   | SyntheticsBasicAuthJWT;
-export const SyntheticsBasicAuth = S.Unknown as any as S.Schema<SyntheticsBasicAuth>;
+const SyntheticsBasicAuth = S.Unknown as any as S.Schema<SyntheticsBasicAuth>;
 
 /** Type of the request body. */
 export type SyntheticsTestRequestBodyType =
@@ -13147,11 +8486,11 @@ export type SyntheticsTestRequestBodyType =
   | "graphql"
   | "application/octet-stream"
   | "multipart/form-data";
-export const SyntheticsTestRequestBodyType = S.String;
+const SyntheticsTestRequestBodyType = S.String;
 
 /** The type of call to perform. Used by gRPC steps (`healthcheck`, `unary`) and MCP steps (`init`, `tool_list`, `tool_call`). Valid values depend on the parent step's `subtype`. */
 export type SyntheticsTestCallType = "healthcheck" | "unary" | "init" | "tool_list" | "tool_call";
-export const SyntheticsTestCallType = S.String;
+const SyntheticsTestCallType = S.String;
 
 /** Define a request certificate. */
 export interface SyntheticsTestRequestCertificateItem {
@@ -13162,7 +8501,7 @@ export interface SyntheticsTestRequestCertificateItem {
   /** Date of update of the certificate or key, ISO format. */
   updatedAt?: string;
 }
-export const SyntheticsTestRequestCertificateItem = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestRequestCertificateItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     filename: S.optional(S.String),
@@ -13177,7 +8516,7 @@ export interface SyntheticsTestRequestCertificate {
   cert?: SyntheticsTestRequestCertificateItem;
   key?: SyntheticsTestRequestCertificateItem;
 }
-export const SyntheticsTestRequestCertificate = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestRequestCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cert: S.optional(SyntheticsTestRequestCertificateItem),
     key: S.optional(SyntheticsTestRequestCertificateItem),
@@ -13188,12 +8527,12 @@ export const SyntheticsTestRequestCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** By default, the client certificate is applied on the domain of the starting URL for browser tests. If you want your client certificate to be applied on other domains instead, add them in `certificateDomains`. */
 export type SyntheticsTestRequestCertificateDomainsList = Array<string>;
-export const SyntheticsTestRequestCertificateDomainsList =
+const SyntheticsTestRequestCertificateDomainsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestRequestCertificateDomainsList>;
 
 /** DNS server port to use for DNS tests. */
 export type SyntheticsTestRequestDNSServerPort = number | string;
-export const SyntheticsTestRequestDNSServerPort =
+const SyntheticsTestRequestDNSServerPort =
   S.Unknown as any as S.Schema<SyntheticsTestRequestDNSServerPort>;
 
 /** Object describing a file to be used as part of the request in the test. */
@@ -13213,7 +8552,7 @@ export interface SyntheticsTestRequestBodyFile {
   /** Type of the file. */
   type?: string;
 }
-export const SyntheticsTestRequestBodyFile = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestRequestBodyFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketKey: S.optional(S.String),
     content: S.optional(S.String),
@@ -13229,36 +8568,36 @@ export const SyntheticsTestRequestBodyFile = /*@__PURE__*/ S.suspend(() =>
 
 /** Files to be used as part of the request in the test. Only valid if `bodyType` is `multipart/form-data`. */
 export type SyntheticsTestRequestFilesList = Array<SyntheticsTestRequestBodyFile>;
-export const SyntheticsTestRequestFilesList = /*@__PURE__*/ S.Array(
+const SyntheticsTestRequestFilesList = /*@__PURE__*/ S.Array(
   SyntheticsTestRequestBodyFile,
 ) as any as S.Schema<SyntheticsTestRequestFilesList>;
 
 /** Form to be used as part of the request in the test. Only valid if `bodyType` is `multipart/form-data`. */
 export type SyntheticsTestRequestFormMap = { [key: string]: string | undefined };
-export const SyntheticsTestRequestFormMap =
+const SyntheticsTestRequestFormMap =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestRequestFormMap>;
 
 /** Headers to include when performing the test. */
 export type SyntheticsTestHeaders = { [key: string]: string | undefined };
-export const SyntheticsTestHeaders =
+const SyntheticsTestHeaders =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestHeaders>;
 
 /** HTTP version to use for a Synthetic test. */
 export type SyntheticsTestOptionsHTTPVersion = "http1" | "http2" | "any";
-export const SyntheticsTestOptionsHTTPVersion = S.String;
+const SyntheticsTestOptionsHTTPVersion = S.String;
 
 /** The MCP protocol version used by the step. See https://modelcontextprotocol.io/specification. */
 export type SyntheticsMCPProtocolVersion = "2025-06-18";
-export const SyntheticsMCPProtocolVersion = S.String;
+const SyntheticsMCPProtocolVersion = S.String;
 
 /** Metadata to include when performing the gRPC test. */
 export type SyntheticsTestMetadata = { [key: string]: string | undefined };
-export const SyntheticsTestMetadata =
+const SyntheticsTestMetadata =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestMetadata>;
 
 /** Port to use when performing the test. */
 export type SyntheticsTestRequestPort = number | string;
-export const SyntheticsTestRequestPort = S.Unknown as any as S.Schema<SyntheticsTestRequestPort>;
+const SyntheticsTestRequestPort = S.Unknown as any as S.Schema<SyntheticsTestRequestPort>;
 
 /** The proxy to perform the test. */
 export interface SyntheticsTestRequestProxy {
@@ -13266,7 +8605,7 @@ export interface SyntheticsTestRequestProxy {
   /** URL of the proxy to perform the test. */
   url: string;
 }
-export const SyntheticsTestRequestProxy = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestRequestProxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(SyntheticsTestHeaders),
     url: S.String,
@@ -13277,7 +8616,7 @@ export const SyntheticsTestRequestProxy = /*@__PURE__*/ S.suspend(() =>
 
 /** Arguments to pass to the MCP tool. Free-form object whose shape depends on the tool. Used when `callType` is `tool_call`. */
 export type SyntheticsTestRequestToolArgsMap = { [key: string]: unknown | undefined };
-export const SyntheticsTestRequestToolArgsMap = /*@__PURE__*/ S.Record(
+const SyntheticsTestRequestToolArgsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SyntheticsTestRequestToolArgsMap>;
@@ -13351,7 +8690,7 @@ export interface SyntheticsTestRequest {
   /** URL to perform the test with. */
   url?: string;
 }
-export const SyntheticsTestRequest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_insecure: S.optional(S.Boolean),
     basicAuth: S.optional(SyntheticsBasicAuth),
@@ -13396,9 +8735,6 @@ export const SyntheticsTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. */
 export type SyntheticsAPITestStepInputAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestStepInputAssertionsList =
-  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestStepInputAssertionsList>;
-
 /** Property of the Synthetic Test Response to extract into a local variable. */
 export type SyntheticsLocalVariableParsingOptionsType =
   | "grpc_message"
@@ -13406,8 +8742,6 @@ export type SyntheticsLocalVariableParsingOptionsType =
   | "http_body"
   | "http_header"
   | "http_status_code";
-export const SyntheticsLocalVariableParsingOptionsType = S.String;
-
 /** Parsing options for variables to extract. */
 export interface SyntheticsParsingOptions {
   /** When type is `http_header` or `grpc_metadata`, name of the header or metadatum to extract. */
@@ -13419,22 +8753,8 @@ export interface SyntheticsParsingOptions {
   secure?: boolean;
   type?: SyntheticsLocalVariableParsingOptionsType | (string & {});
 }
-export const SyntheticsParsingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(S.String),
-    name: S.optional(S.String),
-    parser: S.optional(SyntheticsVariableParser),
-    secure: S.optional(S.Boolean),
-    type: S.optional(SyntheticsLocalVariableParsingOptionsType),
-  }),
-).annotate({ identifier: "SyntheticsParsingOptions" }) as any as S.Schema<SyntheticsParsingOptions>;
-
 /** Array of values to parse and save as variables from the response. */
 export type SyntheticsAPITestStepInputExtractedValuesList = Array<SyntheticsParsingOptions>;
-export const SyntheticsAPITestStepInputExtractedValuesList = /*@__PURE__*/ S.Array(
-  SyntheticsParsingOptions,
-) as any as S.Schema<SyntheticsAPITestStepInputExtractedValuesList>;
-
 /** Object describing the retry strategy to apply to a Synthetic test. */
 export interface SyntheticsTestOptionsRetry {
   /** Number of times a test needs to be retried before marking a location as failed. Defaults to 0. */
@@ -13442,7 +8762,7 @@ export interface SyntheticsTestOptionsRetry {
   /** Time interval between retries (in milliseconds). Defaults to 300ms. */
   interval?: number;
 }
-export const SyntheticsTestOptionsRetry = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestOptionsRetry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     interval: S.optional(S.Number),
@@ -13462,8 +8782,6 @@ export type SyntheticsAPITestStepSubtype =
   | "icmp"
   | "websocket"
   | "mcp";
-export const SyntheticsAPITestStepSubtype = S.String;
-
 /** The Test step used in a Synthetic multi-step API test. */
 export interface SyntheticsAPITestStepInput {
   /** Determines whether or not to continue with test if this step fails. */
@@ -13484,27 +8802,8 @@ export interface SyntheticsAPITestStepInput {
   retry?: SyntheticsTestOptionsRetry;
   subtype: SyntheticsAPITestStepSubtype | (string & {});
 }
-export const SyntheticsAPITestStepInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowFailure: S.optional(S.Boolean),
-    assertions: SyntheticsAPITestStepInputAssertionsList,
-    exitIfSucceed: S.optional(S.Boolean),
-    extractedValues: S.optional(SyntheticsAPITestStepInputExtractedValuesList),
-    extractedValuesFromScript: S.optional(S.String),
-    isCritical: S.optional(S.Boolean),
-    name: S.String,
-    request: SyntheticsTestRequest,
-    retry: S.optional(SyntheticsTestOptionsRetry),
-    subtype: SyntheticsAPITestStepSubtype,
-  }),
-).annotate({
-  identifier: "SyntheticsAPITestStepInput",
-}) as any as S.Schema<SyntheticsAPITestStepInput>;
-
 /** The subtype of the Synthetic multi-step API wait step. */
 export type SyntheticsAPIWaitStepSubtype = "wait";
-export const SyntheticsAPIWaitStepSubtype = S.String;
-
 /** The Wait step used in a Synthetic multi-step API test. */
 export interface SyntheticsAPIWaitStepInput {
   /** The name of the step. */
@@ -13513,20 +8812,8 @@ export interface SyntheticsAPIWaitStepInput {
   /** The time to wait in seconds. Minimum value: 0. Maximum value: 180. */
   value: number;
 }
-export const SyntheticsAPIWaitStepInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    subtype: SyntheticsAPIWaitStepSubtype,
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "SyntheticsAPIWaitStepInput",
-}) as any as S.Schema<SyntheticsAPIWaitStepInput>;
-
 /** The subtype of the Synthetic multi-step API subtest step. */
 export type SyntheticsAPISubtestStepSubtype = "playSubTest";
-export const SyntheticsAPISubtestStepSubtype = S.String;
-
 /** The subtest step used in a Synthetics multi-step API test. */
 export interface SyntheticsAPISubtestStepInput {
   /** Determines whether or not to continue with test if this step fails. */
@@ -13546,32 +8833,16 @@ export interface SyntheticsAPISubtestStepInput {
   subtestPublicId: string;
   subtype: SyntheticsAPISubtestStepSubtype;
 }
-export const SyntheticsAPISubtestStepInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowFailure: S.optional(S.Boolean),
-    alwaysExecute: S.optional(S.Boolean),
-    exitIfSucceed: S.optional(S.Boolean),
-    extractedValuesFromScript: S.optional(S.String),
-    isCritical: S.optional(S.Boolean),
-    name: S.String,
-    retry: S.optional(SyntheticsTestOptionsRetry),
-    subtestPublicId: S.String,
-    subtype: SyntheticsAPISubtestStepSubtype,
-  }),
-).annotate({
-  identifier: "SyntheticsAPISubtestStepInput",
-}) as any as S.Schema<SyntheticsAPISubtestStepInput>;
-
 /** The steps used in a Synthetic multi-step API test. */
 export type SyntheticsAPIStepInput =
   | SyntheticsAPITestStepInput
   | SyntheticsAPIWaitStepInput
   | SyntheticsAPISubtestStepInput;
-export const SyntheticsAPIStepInput = S.Unknown as any as S.Schema<SyntheticsAPIStepInput>;
+const SyntheticsAPIStepInput = S.Unknown as any as S.Schema<SyntheticsAPIStepInput>;
 
 /** When the test subtype is `multi`, the steps of the test. */
 export type SyntheticsAPITestConfigInputStepsList = Array<SyntheticsAPIStepInput>;
-export const SyntheticsAPITestConfigInputStepsList = /*@__PURE__*/ S.Array(
+const SyntheticsAPITestConfigInputStepsList = /*@__PURE__*/ S.Array(
   SyntheticsAPIStepInput,
 ) as any as S.Schema<SyntheticsAPITestConfigInputStepsList>;
 
@@ -13587,7 +8858,7 @@ export interface SyntheticsAPITestConfigInput {
   /** Variables defined from JavaScript code. */
   variablesFromScript?: string;
 }
-export const SyntheticsAPITestConfigInput = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertions: S.optional(SyntheticsAPITestConfigInputAssertionsList),
     configVariables: S.optional(SyntheticsAPITestConfigInputConfigVariablesList),
@@ -13601,23 +8872,23 @@ export const SyntheticsAPITestConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type CreateSyntheticsAPITestRequestLocationsList = Array<string>;
-export const CreateSyntheticsAPITestRequestLocationsList =
+const CreateSyntheticsAPITestRequestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsAPITestRequestLocationsList>;
 
 /** Array of URL patterns to block. */
 export type SyntheticsTestOptionsBlockedRequestPatternsList = Array<string>;
-export const SyntheticsTestOptionsBlockedRequestPatternsList =
+const SyntheticsTestOptionsBlockedRequestPatternsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestOptionsBlockedRequestPatternsList>;
 
 /** Execution rule for a Synthetic test. */
 export type SyntheticsTestExecutionRule = "blocking" | "non_blocking" | "skipped";
-export const SyntheticsTestExecutionRule = S.String;
+const SyntheticsTestExecutionRule = S.String;
 
 /** CI/CD options for a Synthetic test. */
 export interface SyntheticsTestCiOptions {
   executionRule: SyntheticsTestExecutionRule | (string & {});
 }
-export const SyntheticsTestCiOptions = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestCiOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionRule: SyntheticsTestExecutionRule,
   }),
@@ -13625,7 +8896,7 @@ export const SyntheticsTestCiOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** For browser test, array with the different device IDs used to run the test. */
 export type SyntheticsTestOptionsDeviceIdsList = Array<string>;
-export const SyntheticsTestOptionsDeviceIdsList =
+const SyntheticsTestOptionsDeviceIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestOptionsDeviceIdsList>;
 
 /** The name of the preset for the notification for the monitor. */
@@ -13637,7 +8908,7 @@ export type SyntheticsTestOptionsMonitorOptionsNotificationPresetName =
   | "hide_query_and_handles"
   | "show_only_snapshot"
   | "hide_handles_and_footer";
-export const SyntheticsTestOptionsMonitorOptionsNotificationPresetName = S.String;
+const SyntheticsTestOptionsMonitorOptionsNotificationPresetName = S.String;
 
 /** Object containing the options for a Synthetic test as a monitor (for example, renotification). */
 export interface SyntheticsTestOptionsMonitorOptions {
@@ -13651,7 +8922,7 @@ export interface SyntheticsTestOptionsMonitorOptions {
   /** The number of times to renotify if the test is still failing. */
   renotify_occurrences?: number;
 }
-export const SyntheticsTestOptionsMonitorOptions = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestOptionsMonitorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     escalation_message: S.optional(S.String),
     notification_preset_name: S.optional(SyntheticsTestOptionsMonitorOptionsNotificationPresetName),
@@ -13671,7 +8942,7 @@ export interface SyntheticsBrowserTestRumSettings {
   /** Determines whether RUM data is collected during test runs. */
   isEnabled: boolean;
 }
-export const SyntheticsBrowserTestRumSettings = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTestRumSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.optional(S.String),
     clientTokenId: S.optional(S.Number),
@@ -13690,7 +8961,7 @@ export interface SyntheticsTestOptionsSchedulingTimeframe {
   /** The hour of the day on which scheduling ends. */
   to: string;
 }
-export const SyntheticsTestOptionsSchedulingTimeframe = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestOptionsSchedulingTimeframe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.Number,
     from: S.String,
@@ -13703,7 +8974,7 @@ export const SyntheticsTestOptionsSchedulingTimeframe = /*@__PURE__*/ S.suspend(
 /** Array containing objects describing the scheduling pattern to apply to each day. */
 export type SyntheticsTestOptionsSchedulingTimeframesList =
   Array<SyntheticsTestOptionsSchedulingTimeframe>;
-export const SyntheticsTestOptionsSchedulingTimeframesList = /*@__PURE__*/ S.Array(
+const SyntheticsTestOptionsSchedulingTimeframesList = /*@__PURE__*/ S.Array(
   SyntheticsTestOptionsSchedulingTimeframe,
 ) as any as S.Schema<SyntheticsTestOptionsSchedulingTimeframesList>;
 
@@ -13714,7 +8985,7 @@ export interface SyntheticsTestOptionsScheduling {
   /** Timezone in which the timeframe is based. */
   timezone: string;
 }
-export const SyntheticsTestOptionsScheduling = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestOptionsScheduling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeframes: SyntheticsTestOptionsSchedulingTimeframesList,
     timezone: S.String,
@@ -13777,7 +9048,7 @@ export interface SyntheticsTestOptions {
   /** The frequency at which to run the Synthetic test (in seconds). */
   tick_every?: number;
 }
-export const SyntheticsTestOptions = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accept_self_signed: S.optional(S.Boolean),
     allow_insecure: S.optional(S.Boolean),
@@ -13813,7 +9084,7 @@ export const SyntheticsTestOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Define whether you want to start (`live`) or pause (`paused`) a Synthetic test. */
 export type SyntheticsTestPauseStatus = "live" | "paused";
-export const SyntheticsTestPauseStatus = S.String;
+const SyntheticsTestPauseStatus = S.String;
 
 /** The subtype of the Synthetic API test, `http`, `ssl`, `tcp`, `dns`, `icmp`, `udp`, `websocket`, `grpc` or `multi`. */
 export type SyntheticsTestDetailsSubType =
@@ -13826,16 +9097,16 @@ export type SyntheticsTestDetailsSubType =
   | "udp"
   | "websocket"
   | "grpc";
-export const SyntheticsTestDetailsSubType = S.String;
+const SyntheticsTestDetailsSubType = S.String;
 
 /** Array of tags attached to the test. */
 export type CreateSyntheticsAPITestRequestTagsList = Array<string>;
-export const CreateSyntheticsAPITestRequestTagsList =
+const CreateSyntheticsAPITestRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsAPITestRequestTagsList>;
 
 /** Type of the Synthetic test, `api`. */
 export type SyntheticsAPITestType = "api";
-export const SyntheticsAPITestType = S.String;
+const SyntheticsAPITestType = S.String;
 
 export interface CreateSyntheticsAPITestRequest {
   config: SyntheticsAPITestConfigInput;
@@ -13852,7 +9123,7 @@ export interface CreateSyntheticsAPITestRequest {
   tags?: CreateSyntheticsAPITestRequestTagsList;
   type: SyntheticsAPITestType | (string & {});
 }
-export const CreateSyntheticsAPITestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSyntheticsAPITestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsAPITestConfigInput,
     locations: CreateSyntheticsAPITestRequestLocationsList,
@@ -13870,24 +9141,18 @@ export const CreateSyntheticsAPITestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsAPITestConfigAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestConfigAssertionsList =
+const SyntheticsAPITestConfigAssertionsList =
   SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestConfigAssertionsList>;
 
 /** Array of variables used for the test. */
 export type SyntheticsAPITestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsAPITestConfigConfigVariablesList =
+const SyntheticsAPITestConfigConfigVariablesList =
   SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsAPITestConfigConfigVariablesList>;
 
 /** Array of assertions used for the test. */
 export type SyntheticsAPITestStepAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestStepAssertionsList =
-  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestStepAssertionsList>;
-
 /** Array of values to parse and save as variables from the response. */
 export type SyntheticsAPITestStepExtractedValuesList = Array<SyntheticsParsingOptions>;
-export const SyntheticsAPITestStepExtractedValuesList =
-  SyntheticsAPITestStepInputExtractedValuesList as any as S.Schema<SyntheticsAPITestStepExtractedValuesList>;
-
 /** The Test step used in a Synthetic multi-step API test. */
 export interface SyntheticsAPITestStep {
   /** Determines whether or not to continue with test if this step fails. */
@@ -13910,22 +9175,6 @@ export interface SyntheticsAPITestStep {
   retry?: SyntheticsTestOptionsRetry;
   subtype: SyntheticsAPITestStepSubtype;
 }
-export const SyntheticsAPITestStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowFailure: S.optional(S.Boolean),
-    assertions: SyntheticsAPITestStepAssertionsList,
-    exitIfSucceed: S.optional(S.Boolean),
-    extractedValues: S.optional(SyntheticsAPITestStepExtractedValuesList),
-    extractedValuesFromScript: S.optional(S.String),
-    id: S.optional(S.String),
-    isCritical: S.optional(S.Boolean),
-    name: S.String,
-    request: SyntheticsTestRequest,
-    retry: S.optional(SyntheticsTestOptionsRetry),
-    subtype: SyntheticsAPITestStepSubtype,
-  }),
-).annotate({ identifier: "SyntheticsAPITestStep" }) as any as S.Schema<SyntheticsAPITestStep>;
-
 /** The Wait step used in a Synthetic multi-step API test. */
 export interface SyntheticsAPIWaitStep {
   /** ID of the step. */
@@ -13936,15 +9185,6 @@ export interface SyntheticsAPIWaitStep {
   /** The time to wait in seconds. Minimum value: 0. Maximum value: 180. */
   value: number;
 }
-export const SyntheticsAPIWaitStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.String,
-    subtype: SyntheticsAPIWaitStepSubtype,
-    value: S.Number,
-  }),
-).annotate({ identifier: "SyntheticsAPIWaitStep" }) as any as S.Schema<SyntheticsAPIWaitStep>;
-
 /** The subtest step used in a Synthetics multi-step API test. */
 export interface SyntheticsAPISubtestStep {
   /** Determines whether or not to continue with test if this step fails. */
@@ -13966,31 +9206,16 @@ export interface SyntheticsAPISubtestStep {
   subtestPublicId: string;
   subtype: SyntheticsAPISubtestStepSubtype;
 }
-export const SyntheticsAPISubtestStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowFailure: S.optional(S.Boolean),
-    alwaysExecute: S.optional(S.Boolean),
-    exitIfSucceed: S.optional(S.Boolean),
-    extractedValuesFromScript: S.optional(S.String),
-    id: S.optional(S.String),
-    isCritical: S.optional(S.Boolean),
-    name: S.String,
-    retry: S.optional(SyntheticsTestOptionsRetry),
-    subtestPublicId: S.String,
-    subtype: SyntheticsAPISubtestStepSubtype,
-  }),
-).annotate({ identifier: "SyntheticsAPISubtestStep" }) as any as S.Schema<SyntheticsAPISubtestStep>;
-
 /** The steps used in a Synthetic multi-step API test. */
 export type SyntheticsAPIStep =
   | SyntheticsAPITestStep
   | SyntheticsAPIWaitStep
   | SyntheticsAPISubtestStep;
-export const SyntheticsAPIStep = S.Unknown as any as S.Schema<SyntheticsAPIStep>;
+const SyntheticsAPIStep = S.Unknown as any as S.Schema<SyntheticsAPIStep>;
 
 /** When the test subtype is `multi`, the steps of the test. */
 export type SyntheticsAPITestConfigStepsList = Array<SyntheticsAPIStep>;
-export const SyntheticsAPITestConfigStepsList = /*@__PURE__*/ S.Array(
+const SyntheticsAPITestConfigStepsList = /*@__PURE__*/ S.Array(
   SyntheticsAPIStep,
 ) as any as S.Schema<SyntheticsAPITestConfigStepsList>;
 
@@ -14006,7 +9231,7 @@ export interface SyntheticsAPITestConfig {
   /** Variables defined from JavaScript code. */
   variablesFromScript?: string;
 }
-export const SyntheticsAPITestConfig = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertions: S.optional(SyntheticsAPITestConfigAssertionsList),
     configVariables: S.optional(SyntheticsAPITestConfigConfigVariablesList),
@@ -14018,12 +9243,12 @@ export const SyntheticsAPITestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsAPITestLocationsList = Array<string>;
-export const SyntheticsAPITestLocationsList =
+const SyntheticsAPITestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsAPITestLocationsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsAPITestTagsList = Array<string>;
-export const SyntheticsAPITestTagsList =
+const SyntheticsAPITestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsAPITestTagsList>;
 
 /** Object containing details about a Synthetic API test. */
@@ -14046,7 +9271,7 @@ export interface SyntheticsAPITest {
   tags?: SyntheticsAPITestTagsList;
   type: SyntheticsAPITestType;
 }
-export const SyntheticsAPITest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsAPITestConfig,
     locations: SyntheticsAPITestLocationsList,
@@ -14064,17 +9289,17 @@ export const SyntheticsAPITest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. */
 export type SyntheticsBrowserTestConfigAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsBrowserTestConfigAssertionsList =
+const SyntheticsBrowserTestConfigAssertionsList =
   SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsBrowserTestConfigAssertionsList>;
 
 /** Array of variables used for the test. */
 export type SyntheticsBrowserTestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsBrowserTestConfigConfigVariablesList =
+const SyntheticsBrowserTestConfigConfigVariablesList =
   SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsBrowserTestConfigConfigVariablesList>;
 
 /** Type of browser test variable. */
 export type SyntheticsBrowserVariableType = "element" | "email" | "global" | "text";
-export const SyntheticsBrowserVariableType = S.String;
+const SyntheticsBrowserVariableType = S.String;
 
 /** Object defining a variable that can be used in your browser test. See the [Recording Steps documentation](https://docs.datadoghq.com/synthetics/browser_tests/actions/?tab=testanelementontheactivepage#variables). */
 export interface SyntheticsBrowserVariable {
@@ -14090,7 +9315,7 @@ export interface SyntheticsBrowserVariable {
   secure?: boolean;
   type: SyntheticsBrowserVariableType | (string & {});
 }
-export const SyntheticsBrowserVariable = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     example: S.optional(S.String),
     id: S.optional(S.String),
@@ -14105,7 +9330,7 @@ export const SyntheticsBrowserVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of variables used for the test steps. */
 export type SyntheticsBrowserTestConfigVariablesList = Array<SyntheticsBrowserVariable>;
-export const SyntheticsBrowserTestConfigVariablesList = /*@__PURE__*/ S.Array(
+const SyntheticsBrowserTestConfigVariablesList = /*@__PURE__*/ S.Array(
   SyntheticsBrowserVariable,
 ) as any as S.Schema<SyntheticsBrowserTestConfigVariablesList>;
 
@@ -14121,7 +9346,7 @@ export interface SyntheticsBrowserTestConfig {
   /** Array of variables used for the test steps. */
   variables?: SyntheticsBrowserTestConfigVariablesList;
 }
-export const SyntheticsBrowserTestConfig = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertions: SyntheticsBrowserTestConfigAssertionsList,
     configVariables: S.optional(SyntheticsBrowserTestConfigConfigVariablesList),
@@ -14135,7 +9360,7 @@ export const SyntheticsBrowserTestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type CreateSyntheticsBrowserTestRequestLocationsList = Array<string>;
-export const CreateSyntheticsBrowserTestRequestLocationsList =
+const CreateSyntheticsBrowserTestRequestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsBrowserTestRequestLocationsList>;
 
 /** Step type used in your Synthetic test. */
@@ -14169,7 +9394,7 @@ export type SyntheticsStepType =
   | "typeText"
   | "uploadFiles"
   | "wait";
-export const SyntheticsStepType = S.String;
+const SyntheticsStepType = S.String;
 
 /** The steps used in a Synthetic browser test. */
 export interface SyntheticsStep {
@@ -14193,7 +9418,7 @@ export interface SyntheticsStep {
   timeout?: number;
   type?: SyntheticsStepType | (string & {});
 }
-export const SyntheticsStep = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowFailure: S.optional(S.Boolean),
     alwaysExecute: S.optional(S.Boolean),
@@ -14210,18 +9435,18 @@ export const SyntheticsStep = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of steps for the test. */
 export type CreateSyntheticsBrowserTestRequestStepsList = Array<SyntheticsStep>;
-export const CreateSyntheticsBrowserTestRequestStepsList = /*@__PURE__*/ S.Array(
+const CreateSyntheticsBrowserTestRequestStepsList = /*@__PURE__*/ S.Array(
   SyntheticsStep,
 ) as any as S.Schema<CreateSyntheticsBrowserTestRequestStepsList>;
 
 /** Array of tags attached to the test. */
 export type CreateSyntheticsBrowserTestRequestTagsList = Array<string>;
-export const CreateSyntheticsBrowserTestRequestTagsList =
+const CreateSyntheticsBrowserTestRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsBrowserTestRequestTagsList>;
 
 /** Type of the Synthetic test, `browser`. */
 export type SyntheticsBrowserTestType = "browser";
-export const SyntheticsBrowserTestType = S.String;
+const SyntheticsBrowserTestType = S.String;
 
 export interface CreateSyntheticsBrowserTestRequest {
   config: SyntheticsBrowserTestConfig;
@@ -14239,7 +9464,7 @@ export interface CreateSyntheticsBrowserTestRequest {
   tags?: CreateSyntheticsBrowserTestRequestTagsList;
   type: SyntheticsBrowserTestType | (string & {});
 }
-export const CreateSyntheticsBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSyntheticsBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsBrowserTestConfig,
     locations: CreateSyntheticsBrowserTestRequestLocationsList,
@@ -14257,17 +9482,17 @@ export const CreateSyntheticsBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsBrowserTestLocationsList = Array<string>;
-export const SyntheticsBrowserTestLocationsList =
+const SyntheticsBrowserTestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsBrowserTestLocationsList>;
 
 /** Array of steps for the test. */
 export type SyntheticsBrowserTestStepsList = Array<SyntheticsStep>;
-export const SyntheticsBrowserTestStepsList =
+const SyntheticsBrowserTestStepsList =
   CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<SyntheticsBrowserTestStepsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsBrowserTestTagsList = Array<string>;
-export const SyntheticsBrowserTestTagsList =
+const SyntheticsBrowserTestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsBrowserTestTagsList>;
 
 /** Object containing details about a Synthetic browser test. */
@@ -14291,7 +9516,7 @@ export interface SyntheticsBrowserTest {
   tags?: SyntheticsBrowserTestTagsList;
   type: SyntheticsBrowserTestType;
 }
-export const SyntheticsBrowserTest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsBrowserTestConfig,
     locations: SyntheticsBrowserTestLocationsList,
@@ -14309,12 +9534,12 @@ export const SyntheticsBrowserTest = /*@__PURE__*/ S.suspend(() =>
 
 /** Initial application arguments for a mobile test. */
 export type SyntheticsMobileTestInitialApplicationArguments = { [key: string]: string | undefined };
-export const SyntheticsMobileTestInitialApplicationArguments =
+const SyntheticsMobileTestInitialApplicationArguments =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsMobileTestInitialApplicationArguments>;
 
 /** Array of variables used for the test steps. */
 export type SyntheticsMobileTestConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsMobileTestConfigVariablesList =
+const SyntheticsMobileTestConfigVariablesList =
   SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsMobileTestConfigVariablesList>;
 
 /** Configuration object for a Synthetic mobile test. */
@@ -14323,7 +9548,7 @@ export interface SyntheticsMobileTestConfig {
   /** Array of variables used for the test steps. */
   variables?: SyntheticsMobileTestConfigVariablesList;
 }
-export const SyntheticsMobileTestConfig = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileTestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialApplicationArguments: S.optional(SyntheticsMobileTestInitialApplicationArguments),
     variables: S.optional(SyntheticsMobileTestConfigVariablesList),
@@ -14334,24 +9559,24 @@ export const SyntheticsMobileTestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Array with the different device IDs used to run the test. */
 export type CreateSyntheticsMobileTestRequestDeviceIdsList = Array<string>;
-export const CreateSyntheticsMobileTestRequestDeviceIdsList =
+const CreateSyntheticsMobileTestRequestDeviceIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsMobileTestRequestDeviceIdsList>;
 
 /** List of principals for a mobile test binding. */
 export type SyntheticsTestRestrictionPolicyBindingPrincipals = Array<string>;
-export const SyntheticsTestRestrictionPolicyBindingPrincipals =
+const SyntheticsTestRestrictionPolicyBindingPrincipals =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestRestrictionPolicyBindingPrincipals>;
 
 /** The type of relation for the binding. */
 export type SyntheticsTestRestrictionPolicyBindingRelation = "editor" | "viewer";
-export const SyntheticsTestRestrictionPolicyBindingRelation = S.String;
+const SyntheticsTestRestrictionPolicyBindingRelation = S.String;
 
 /** Objects describing the binding used for a mobile test. */
 export interface SyntheticsTestRestrictionPolicyBinding {
   principals?: SyntheticsTestRestrictionPolicyBindingPrincipals;
   relation?: SyntheticsTestRestrictionPolicyBindingRelation | (string & {});
 }
-export const SyntheticsTestRestrictionPolicyBinding = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestRestrictionPolicyBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principals: S.optional(SyntheticsTestRestrictionPolicyBindingPrincipals),
     relation: S.optional(SyntheticsTestRestrictionPolicyBindingRelation),
@@ -14362,18 +9587,18 @@ export const SyntheticsTestRestrictionPolicyBinding = /*@__PURE__*/ S.suspend(()
 
 /** Array of bindings used for the mobile test. */
 export type SyntheticsMobileTestOptionsBindingsList = Array<SyntheticsTestRestrictionPolicyBinding>;
-export const SyntheticsMobileTestOptionsBindingsList = /*@__PURE__*/ S.Array(
+const SyntheticsMobileTestOptionsBindingsList = /*@__PURE__*/ S.Array(
   SyntheticsTestRestrictionPolicyBinding,
 ) as any as S.Schema<SyntheticsMobileTestOptionsBindingsList>;
 
 /** For mobile test, array with the different device IDs used to run the test. */
 export type SyntheticsMobileTestOptionsDeviceIdsList = Array<string>;
-export const SyntheticsMobileTestOptionsDeviceIdsList =
+const SyntheticsMobileTestOptionsDeviceIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestOptionsDeviceIdsList>;
 
 /** Reference type for the mobile application for a mobile synthetics test. */
 export type SyntheticsMobileTestsMobileApplicationReferenceType = "latest" | "version";
-export const SyntheticsMobileTestsMobileApplicationReferenceType = S.String;
+const SyntheticsMobileTestsMobileApplicationReferenceType = S.String;
 
 /** Mobile application for mobile synthetics test. */
 export interface SyntheticsMobileTestsMobileApplication {
@@ -14383,7 +9608,7 @@ export interface SyntheticsMobileTestsMobileApplication {
   referenceId: string;
   referenceType: SyntheticsMobileTestsMobileApplicationReferenceType | (string & {});
 }
-export const SyntheticsMobileTestsMobileApplication = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileTestsMobileApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String,
     referenceId: S.String,
@@ -14426,7 +9651,7 @@ export interface SyntheticsMobileTestOptions {
   /** The level of verbosity for the mobile test. This field can not be set by a user. */
   verbosity?: number;
 }
-export const SyntheticsMobileTestOptions = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileTestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowApplicationCrash: S.optional(S.Boolean),
     bindings: S.optional(SyntheticsMobileTestOptionsBindingsList),
@@ -14467,15 +9692,15 @@ export type SyntheticsCheckType =
   | "between"
   | "isEmpty"
   | "notIsEmpty";
-export const SyntheticsCheckType = S.String;
+const SyntheticsCheckType = S.String;
 
 /** The direction of the scroll for a `scrollToElement` step type. */
 export type SyntheticsMobileStepParamsDirection = "up" | "down" | "left" | "right";
-export const SyntheticsMobileStepParamsDirection = S.String;
+const SyntheticsMobileStepParamsDirection = S.String;
 
 /** Type of the context that the element is in. */
 export type SyntheticsMobileStepParamsElementContextType = "native" | "web";
-export const SyntheticsMobileStepParamsElementContextType = S.String;
+const SyntheticsMobileStepParamsElementContextType = S.String;
 
 /** Position of the action relative to the element. */
 export interface SyntheticsMobileStepParamsElementRelativePosition {
@@ -14484,7 +9709,7 @@ export interface SyntheticsMobileStepParamsElementRelativePosition {
   /** The `relativePosition` on the `y` axis for the element. */
   y?: number;
 }
-export const SyntheticsMobileStepParamsElementRelativePosition = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStepParamsElementRelativePosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -14500,7 +9725,7 @@ export type SyntheticsMobileStepParamsElementUserLocatorValuesItemsType =
   | "ios-predicate-string"
   | "ios-class-chain"
   | "xpath";
-export const SyntheticsMobileStepParamsElementUserLocatorValuesItemsType = S.String;
+const SyntheticsMobileStepParamsElementUserLocatorValuesItemsType = S.String;
 
 /** A single user locator object. */
 export interface SyntheticsMobileStepParamsElementUserLocatorValuesItems {
@@ -14508,7 +9733,7 @@ export interface SyntheticsMobileStepParamsElementUserLocatorValuesItems {
   /** Value of a user locator. */
   value?: string;
 }
-export const SyntheticsMobileStepParamsElementUserLocatorValuesItems = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStepParamsElementUserLocatorValuesItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(SyntheticsMobileStepParamsElementUserLocatorValuesItemsType),
     value: S.optional(S.String),
@@ -14520,7 +9745,7 @@ export const SyntheticsMobileStepParamsElementUserLocatorValuesItems = /*@__PURE
 /** Values of the user locator. */
 export type SyntheticsMobileStepParamsElementUserLocatorValuesList =
   Array<SyntheticsMobileStepParamsElementUserLocatorValuesItems>;
-export const SyntheticsMobileStepParamsElementUserLocatorValuesList = /*@__PURE__*/ S.Array(
+const SyntheticsMobileStepParamsElementUserLocatorValuesList = /*@__PURE__*/ S.Array(
   SyntheticsMobileStepParamsElementUserLocatorValuesItems,
 ) as any as S.Schema<SyntheticsMobileStepParamsElementUserLocatorValuesList>;
 
@@ -14531,7 +9756,7 @@ export interface SyntheticsMobileStepParamsElementUserLocator {
   /** Values of the user locator. */
   values?: SyntheticsMobileStepParamsElementUserLocatorValuesList;
 }
-export const SyntheticsMobileStepParamsElementUserLocator = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStepParamsElementUserLocator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failTestOnCannotLocate: S.optional(S.Boolean),
     values: S.optional(SyntheticsMobileStepParamsElementUserLocatorValuesList),
@@ -14556,7 +9781,7 @@ export interface SyntheticsMobileStepParamsElement {
   /** Name of the view of the element. */
   viewName?: string;
 }
-export const SyntheticsMobileStepParamsElement = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStepParamsElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     contextType: S.optional(SyntheticsMobileStepParamsElementContextType),
@@ -14578,18 +9803,18 @@ export interface SyntheticsMobileStepParamsPositionsItems {
   /** The `y` position for the flick. */
   y?: number;
 }
-export const SyntheticsMobileStepParamsPositionsItems =
+const SyntheticsMobileStepParamsPositionsItems =
   SyntheticsMobileStepParamsElementRelativePosition as any as S.Schema<SyntheticsMobileStepParamsPositionsItems>;
 
 /** List of positions for the `flick` step type. The maximum is 10 flicks per step */
 export type SyntheticsMobileStepParamsPositions = Array<SyntheticsMobileStepParamsPositionsItems>;
-export const SyntheticsMobileStepParamsPositions = /*@__PURE__*/ S.Array(
+const SyntheticsMobileStepParamsPositions = /*@__PURE__*/ S.Array(
   SyntheticsMobileStepParamsPositionsItems,
 ) as any as S.Schema<SyntheticsMobileStepParamsPositions>;
 
 /** Values used in the step for in multiple step types. */
 export type SyntheticsMobileStepParamsValue = string | number;
-export const SyntheticsMobileStepParamsValue =
+const SyntheticsMobileStepParamsValue =
   S.Unknown as any as S.Schema<SyntheticsMobileStepParamsValue>;
 
 /** Variable object for `extractVariable` step type. */
@@ -14599,7 +9824,7 @@ export interface SyntheticsMobileStepParamsVariable {
   /** The variable name. */
   name: string;
 }
-export const SyntheticsMobileStepParamsVariable = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStepParamsVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     example: S.String,
     name: S.String,
@@ -14631,7 +9856,7 @@ export interface SyntheticsMobileStepParams {
   /** Amount to scroll by on the `y` axis for a `scroll` step type. */
   y?: number;
 }
-export const SyntheticsMobileStepParams = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStepParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check: S.optional(SyntheticsCheckType),
     delay: S.optional(S.Number),
@@ -14670,7 +9895,7 @@ export type SyntheticsMobileStepType =
   | "toggleWiFi"
   | "typeText"
   | "wait";
-export const SyntheticsMobileStepType = S.String;
+const SyntheticsMobileStepType = S.String;
 
 /** The steps used in a Synthetic mobile test. */
 export interface SyntheticsMobileStep {
@@ -14691,7 +9916,7 @@ export interface SyntheticsMobileStep {
   timeout?: number;
   type: SyntheticsMobileStepType | (string & {});
 }
-export const SyntheticsMobileStep = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowFailure: S.optional(S.Boolean),
     hasNewStepElement: S.optional(S.Boolean),
@@ -14707,18 +9932,18 @@ export const SyntheticsMobileStep = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of steps for the test. */
 export type CreateSyntheticsMobileTestRequestStepsList = Array<SyntheticsMobileStep>;
-export const CreateSyntheticsMobileTestRequestStepsList = /*@__PURE__*/ S.Array(
+const CreateSyntheticsMobileTestRequestStepsList = /*@__PURE__*/ S.Array(
   SyntheticsMobileStep,
 ) as any as S.Schema<CreateSyntheticsMobileTestRequestStepsList>;
 
 /** Array of tags attached to the test. */
 export type CreateSyntheticsMobileTestRequestTagsList = Array<string>;
-export const CreateSyntheticsMobileTestRequestTagsList =
+const CreateSyntheticsMobileTestRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsMobileTestRequestTagsList>;
 
 /** Type of the Synthetic test, `mobile`. */
 export type SyntheticsMobileTestType = "mobile";
-export const SyntheticsMobileTestType = S.String;
+const SyntheticsMobileTestType = S.String;
 
 export interface CreateSyntheticsMobileTestRequest {
   config: SyntheticsMobileTestConfig;
@@ -14736,7 +9961,7 @@ export interface CreateSyntheticsMobileTestRequest {
   tags?: CreateSyntheticsMobileTestRequestTagsList;
   type: SyntheticsMobileTestType | (string & {});
 }
-export const CreateSyntheticsMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSyntheticsMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsMobileTestConfig,
     device_ids: S.optional(CreateSyntheticsMobileTestRequestDeviceIdsList),
@@ -14754,17 +9979,17 @@ export const CreateSyntheticsMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array with the different device IDs used to run the test. */
 export type SyntheticsMobileTestDeviceIdsList = Array<string>;
-export const SyntheticsMobileTestDeviceIdsList =
+const SyntheticsMobileTestDeviceIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestDeviceIdsList>;
 
 /** Array of steps for the test. */
 export type SyntheticsMobileTestStepsList = Array<SyntheticsMobileStep>;
-export const SyntheticsMobileTestStepsList =
+const SyntheticsMobileTestStepsList =
   CreateSyntheticsMobileTestRequestStepsList as any as S.Schema<SyntheticsMobileTestStepsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsMobileTestTagsList = Array<string>;
-export const SyntheticsMobileTestTagsList =
+const SyntheticsMobileTestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestTagsList>;
 
 /** Object containing details about a Synthetic mobile test. */
@@ -14788,7 +10013,7 @@ export interface SyntheticsMobileTest {
   tags?: SyntheticsMobileTestTagsList;
   type: SyntheticsMobileTestType;
 }
-export const SyntheticsMobileTest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsMobileTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsMobileTestConfig,
     device_ids: S.optional(SyntheticsMobileTestDeviceIdsList),
@@ -14815,7 +10040,7 @@ export interface CreateUserRequest {
   /** The name of the user. */
   name?: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_role: S.optional(S.NullOr(AccessRole)),
     disabled: S.optional(S.Boolean),
@@ -14829,7 +10054,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UserResponse {
   user?: User;
 }
-export const UserResponse = /*@__PURE__*/ S.suspend(() =>
+const UserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(User),
   }),
@@ -14837,7 +10062,7 @@ export const UserResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Encoding type. Can be given either `json` or `form`. */
 export type WebhooksIntegrationEncoding = "json" | "form";
-export const WebhooksIntegrationEncoding = S.String;
+const WebhooksIntegrationEncoding = S.String;
 
 export interface CreateWebhooksIntegrationRequest {
   /** If `null`, uses no header. If given a JSON payload, these will be headers attached to your webhook. */
@@ -14850,7 +10075,7 @@ export interface CreateWebhooksIntegrationRequest {
   /** URL of the webhook. */
   url: string;
 }
-export const CreateWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_headers: S.optional(S.NullOr(S.String)),
     encode_as: S.optional(WebhooksIntegrationEncoding),
@@ -14880,7 +10105,7 @@ export interface WebhooksIntegration {
   /** URL of the webhook. */
   url: string;
 }
-export const WebhooksIntegration = /*@__PURE__*/ S.suspend(() =>
+const WebhooksIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_headers: S.optional(S.NullOr(S.String)),
     encode_as: S.optional(WebhooksIntegrationEncoding),
@@ -14898,7 +10123,7 @@ export interface CreateWebhooksIntegrationCustomVariableRequest {
   /** Value of the custom variable. */
   value: string;
 }
-export const CreateWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_secret: S.Boolean,
     name: S.String,
@@ -14923,7 +10148,7 @@ export interface WebhooksIntegrationCustomVariableResponse {
   /** Value of the custom variable. It won't be returned if the variable is secret. */
   value?: string;
 }
-export const WebhooksIntegrationCustomVariableResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhooksIntegrationCustomVariableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_secret: S.Boolean,
     name: S.String,
@@ -14937,7 +10162,7 @@ export interface DeleteAPIKeyRequest {
   /** The specific API key you are working with. */
   key: string;
 }
-export const DeleteAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/api_key/{key}", code: 200 })),
@@ -14947,7 +10172,7 @@ export interface DeleteApplicationKeyRequest {
   /** The specific APP key you are working with. */
   key: string;
 }
-export const DeleteApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/application_key/{key}", code: 200 })),
@@ -14957,13 +10182,13 @@ export const DeleteApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type DeleteAzureIntegrationRequestErrorsList = Array<string>;
-export const DeleteAzureIntegrationRequestErrorsList =
+const DeleteAzureIntegrationRequestErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DeleteAzureIntegrationRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type DeleteAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const DeleteAzureIntegrationRequestResourceProviderConfigsList =
+const DeleteAzureIntegrationRequestResourceProviderConfigsList =
   CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<DeleteAzureIntegrationRequestResourceProviderConfigsList>;
 
 export interface DeleteAzureIntegrationRequest {
@@ -15004,7 +10229,7 @@ export interface DeleteAzureIntegrationRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-export const DeleteAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_service_plan_filters: S.optional(S.String),
     automute: S.optional(S.Boolean),
@@ -15030,14 +10255,14 @@ export const DeleteAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAzureIntegrationRequest>;
 
 export type DeleteAzureIntegrationResponse = unknown;
-export const DeleteAzureIntegrationResponse =
+const DeleteAzureIntegrationResponse =
   CreateAzureIntegrationResponse as any as S.Schema<DeleteAzureIntegrationResponse>;
 
 export interface DeleteDashboardRequest {
   /** The ID of the dashboard. */
   dashboard_id: string;
 }
-export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/{dashboard_id}", code: 200 })),
@@ -15048,7 +10273,7 @@ export interface DashboardDeleteResponse {
   /** ID of the deleted dashboard. */
   deleted_dashboard_id?: string;
 }
-export const DashboardDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const DashboardDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_dashboard_id: S.optional(S.String),
   }),
@@ -15058,7 +10283,7 @@ export interface DeleteDashboardListRequest {
   /** ID of the dashboard list to delete. */
   list_id: number;
 }
-export const DeleteDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/lists/manual/{list_id}", code: 200 })),
@@ -15071,7 +10296,7 @@ export interface DashboardListDeleteResponse {
   /** ID of the deleted dashboard list. */
   deleted_dashboard_list_id?: number;
 }
-export const DashboardListDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const DashboardListDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_dashboard_list_id: S.optional(S.Number),
   }),
@@ -15081,14 +10306,14 @@ export const DashboardListDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Dashboard resource type. */
 export type DashboardResourceType = "dashboard";
-export const DashboardResourceType = S.String;
+const DashboardResourceType = S.String;
 
 /** Dashboard bulk action request data. */
 export interface DashboardBulkActionData {
   id: string;
   type: DashboardResourceType | (string & {});
 }
-export const DashboardBulkActionData = /*@__PURE__*/ S.suspend(() =>
+const DashboardBulkActionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: DashboardResourceType,
@@ -15097,28 +10322,27 @@ export const DashboardBulkActionData = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dashboard bulk action request data objects. */
 export type DashboardBulkActionDataList = Array<DashboardBulkActionData>;
-export const DashboardBulkActionDataList = /*@__PURE__*/ S.Array(
+const DashboardBulkActionDataList = /*@__PURE__*/ S.Array(
   DashboardBulkActionData,
 ) as any as S.Schema<DashboardBulkActionDataList>;
 
 export interface DeleteDashboardsRequest {
   data: DashboardBulkActionDataList;
 }
-export const DeleteDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DashboardBulkActionDataList,
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard", code: 200 })),
 ).annotate({ identifier: "DeleteDashboardsRequest" }) as any as S.Schema<DeleteDashboardsRequest>;
 
 export interface DeleteDashboardsResponse {}
-export const DeleteDashboardsResponse =
-  CreateEventResponse as any as S.Schema<DeleteDashboardsResponse>;
+const DeleteDashboardsResponse = CreateEventResponse as any as S.Schema<DeleteDashboardsResponse>;
 
 export interface DeleteGlobalVariableRequest {
   /** The ID of the global variable. */
   variable_id: string;
 }
-export const DeleteGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variable_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -15129,7 +10353,7 @@ export const DeleteGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalVariableRequest>;
 
 export interface DeleteGlobalVariableResponse {}
-export const DeleteGlobalVariableResponse =
+const DeleteGlobalVariableResponse =
   CreateEventResponse as any as S.Schema<DeleteGlobalVariableResponse>;
 
 export interface DeleteHostTagsRequest {
@@ -15138,7 +10362,7 @@ export interface DeleteHostTagsRequest {
   /** Source of the tags to be deleted. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. */
   source?: string;
 }
-export const DeleteHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_name: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -15146,28 +10370,26 @@ export const DeleteHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHostTagsRequest" }) as any as S.Schema<DeleteHostTagsRequest>;
 
 export interface DeleteHostTagsResponse {}
-export const DeleteHostTagsResponse =
-  CreateEventResponse as any as S.Schema<DeleteHostTagsResponse>;
+const DeleteHostTagsResponse = CreateEventResponse as any as S.Schema<DeleteHostTagsResponse>;
 
 export interface DeleteLogsIndexRequest {
   /** Name of the log index. */
   name: string;
 }
-export const DeleteLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/logs/config/indexes/{name}", code: 200 })),
 ).annotate({ identifier: "DeleteLogsIndexRequest" }) as any as S.Schema<DeleteLogsIndexRequest>;
 
 export interface DeleteLogsIndexResponse {}
-export const DeleteLogsIndexResponse =
-  CreateEventResponse as any as S.Schema<DeleteLogsIndexResponse>;
+const DeleteLogsIndexResponse = CreateEventResponse as any as S.Schema<DeleteLogsIndexResponse>;
 
 export interface DeleteLogsPipelineRequest {
   /** ID of the pipeline to delete. */
   pipeline_id: string;
 }
-export const DeleteLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -15178,7 +10400,7 @@ export const DeleteLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogsPipelineRequest>;
 
 export interface DeleteLogsPipelineResponse {}
-export const DeleteLogsPipelineResponse =
+const DeleteLogsPipelineResponse =
   CreateEventResponse as any as S.Schema<DeleteLogsPipelineResponse>;
 
 export interface DeleteMonitorRequest {
@@ -15187,7 +10409,7 @@ export interface DeleteMonitorRequest {
   /** Delete the monitor even if it's referenced by other resources (for example SLO, composite monitor). */
   force?: string;
 }
-export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitor_id: S.Number.pipe(T.Label()),
     force: S.optional(S.String.pipe(T.Query())),
@@ -15199,7 +10421,7 @@ export interface DeletedMonitor {
   /** ID of the deleted monitor. */
   deleted_monitor_id?: number;
 }
-export const DeletedMonitor = /*@__PURE__*/ S.suspend(() =>
+const DeletedMonitor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_monitor_id: S.optional(S.Number),
   }),
@@ -15209,21 +10431,20 @@ export interface DeleteNotebookRequest {
   /** Unique ID, assigned when you create the notebook. */
   notebook_id: number;
 }
-export const DeleteNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebook_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/notebooks/{notebook_id}", code: 200 })),
 ).annotate({ identifier: "DeleteNotebookRequest" }) as any as S.Schema<DeleteNotebookRequest>;
 
 export interface DeleteNotebookResponse {}
-export const DeleteNotebookResponse =
-  CreateEventResponse as any as S.Schema<DeleteNotebookResponse>;
+const DeleteNotebookResponse = CreateEventResponse as any as S.Schema<DeleteNotebookResponse>;
 
 export interface DeletePagerDutyIntegrationServiceRequest {
   /** The service name */
   service_name: string;
 }
-export const DeletePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -15238,7 +10459,7 @@ export const DeletePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeletePagerDutyIntegrationServiceRequest>;
 
 export interface DeletePagerDutyIntegrationServiceResponse {}
-export const DeletePagerDutyIntegrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePagerDutyIntegrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePagerDutyIntegrationServiceResponse",
@@ -15248,7 +10469,7 @@ export interface DeletePrivateLocationRequest {
   /** The ID of the private location. */
   location_id: string;
 }
-export const DeletePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -15263,14 +10484,14 @@ export const DeletePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateLocationRequest>;
 
 export interface DeletePrivateLocationResponse {}
-export const DeletePrivateLocationResponse =
+const DeletePrivateLocationResponse =
   CreateEventResponse as any as S.Schema<DeletePrivateLocationResponse>;
 
 export interface DeletePublicDashboardRequest {
   /** The token of the shared dashboard. */
   token: string;
 }
-export const DeletePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/public/{token}", code: 200 })),
@@ -15283,7 +10504,7 @@ export interface DeleteSharedDashboardResponse {
   /** Token associated with the shared dashboard that was revoked. */
   deleted_public_dashboard_token?: string;
 }
-export const DeleteSharedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_public_dashboard_token: S.optional(S.String),
   }),
@@ -15296,43 +10517,20 @@ export interface SharedDashboardInvitesDataObjectAttributesInput {
   /** An email address that an invitation has been (or if used in invitation request, will be) sent to. */
   email?: string;
 }
-export const SharedDashboardInvitesDataObjectAttributesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SharedDashboardInvitesDataObjectAttributesInput",
-}) as any as S.Schema<SharedDashboardInvitesDataObjectAttributesInput>;
-
 /** Type for shared dashboard invitation request body. */
 export type DashboardInviteType = "public_dashboard_invitation";
-export const DashboardInviteType = S.String;
-
 /** Object containing the information for an invitation to a shared dashboard. */
 export interface SharedDashboardInvitesDataObjectInput {
   attributes: SharedDashboardInvitesDataObjectAttributesInput;
   type: DashboardInviteType;
 }
-export const SharedDashboardInvitesDataObjectInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: SharedDashboardInvitesDataObjectAttributesInput,
-    type: DashboardInviteType,
-  }),
-).annotate({
-  identifier: "SharedDashboardInvitesDataObjectInput",
-}) as any as S.Schema<SharedDashboardInvitesDataObjectInput>;
-
 /** A list of objects containing the information for an invitation(s) to a shared dashboard. */
 export type SharedDashboardInvitesDataListInput = Array<SharedDashboardInvitesDataObjectInput>;
-export const SharedDashboardInvitesDataListInput = /*@__PURE__*/ S.Array(
-  SharedDashboardInvitesDataObjectInput,
-) as any as S.Schema<SharedDashboardInvitesDataListInput>;
-
 /** An object or list of objects containing the information for an invitation to a shared dashboard. */
 export type SharedDashboardInvitesDataInput =
   | SharedDashboardInvitesDataObjectInput
   | SharedDashboardInvitesDataListInput;
-export const SharedDashboardInvitesDataInput =
+const SharedDashboardInvitesDataInput =
   S.Unknown as any as S.Schema<SharedDashboardInvitesDataInput>;
 
 export interface DeletePublicDashboardInvitationRequest {
@@ -15340,7 +10538,7 @@ export interface DeletePublicDashboardInvitationRequest {
   token: string;
   data: SharedDashboardInvitesDataInput;
 }
-export const DeletePublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     data: SharedDashboardInvitesDataInput,
@@ -15352,7 +10550,7 @@ export const DeletePublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePublicDashboardInvitationRequest>;
 
 export interface DeletePublicDashboardInvitationResponse {}
-export const DeletePublicDashboardInvitationResponse =
+const DeletePublicDashboardInvitationResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeletePublicDashboardInvitationResponse>;
 
 export interface DeleteSLORequest {
@@ -15361,7 +10559,7 @@ export interface DeleteSLORequest {
   /** Delete the monitor even if it's referenced by other resources (for example SLO, composite monitor). */
   force?: string;
 }
-export const DeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_id: S.String.pipe(T.Label()),
     force: S.optional(S.String.pipe(T.Query())),
@@ -15370,12 +10568,12 @@ export const DeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the ID of the deleted service level objective object. */
 export type SLODeleteResponseDataList = Array<string>;
-export const SLODeleteResponseDataList =
+const SLODeleteResponseDataList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLODeleteResponseDataList>;
 
 /** An dictionary containing the ID of the SLO as key and a deletion error as value. */
 export type SLODeleteResponseErrorsMap = { [key: string]: string | undefined };
-export const SLODeleteResponseErrorsMap =
+const SLODeleteResponseErrorsMap =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SLODeleteResponseErrorsMap>;
 
 /** A response list of all service level objective deleted. */
@@ -15385,7 +10583,7 @@ export interface SLODeleteResponse {
   /** An dictionary containing the ID of the SLO as key and a deletion error as value. */
   errors?: SLODeleteResponseErrorsMap;
 }
-export const SLODeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const SLODeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLODeleteResponseDataList),
     errors: S.optional(SLODeleteResponseErrorsMap),
@@ -15396,7 +10594,7 @@ export interface DeleteSLOCorrectionRequest {
   /** The ID of the SLO correction object. */
   slo_correction_id: string;
 }
-export const DeleteSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_correction_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -15407,17 +10605,16 @@ export const DeleteSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSLOCorrectionRequest>;
 
 export interface DeleteSLOCorrectionResponse {}
-export const DeleteSLOCorrectionResponse =
+const DeleteSLOCorrectionResponse =
   CreateEventResponse as any as S.Schema<DeleteSLOCorrectionResponse>;
 
 /** An array of all SLO timeframes. */
 export type SLOBulkDeleteValueList = Array<SLOTimeframe | (string & {})>;
-export const SLOBulkDeleteValueList =
-  ListStreamQueryStatesList as any as S.Schema<SLOBulkDeleteValueList>;
+const SLOBulkDeleteValueList = ListStreamQueryStatesList as any as S.Schema<SLOBulkDeleteValueList>;
 
 /** A map of service level objective object IDs to arrays of timeframes, which indicate the thresholds to delete for each ID. */
 export type SLOBulkDelete = { [key: string]: SLOBulkDeleteValueList | undefined };
-export const SLOBulkDelete = /*@__PURE__*/ S.Record(
+const SLOBulkDelete = /*@__PURE__*/ S.Record(
   S.String,
   SLOBulkDeleteValueList,
 ) as any as S.Schema<SLOBulkDelete>;
@@ -15425,7 +10622,7 @@ export const SLOBulkDelete = /*@__PURE__*/ S.Record(
 export interface DeleteSLOTimeframeInBulkRequest {
   body: SLOBulkDelete;
 }
-export const DeleteSLOTimeframeInBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSLOTimeframeInBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: SLOBulkDelete.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/slo/bulk_delete", code: 200 })),
@@ -15435,12 +10632,12 @@ export const DeleteSLOTimeframeInBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of service level objective object IDs that indicates which objects that were completely deleted. */
 export type SLOBulkDeleteResponseDataDeletedList = Array<string>;
-export const SLOBulkDeleteResponseDataDeletedList =
+const SLOBulkDeleteResponseDataDeletedList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOBulkDeleteResponseDataDeletedList>;
 
 /** An array of service level objective object IDs that indicates which objects that were modified (objects for which at least one threshold was deleted, but that were not completely deleted). */
 export type SLOBulkDeleteResponseDataUpdatedList = Array<string>;
-export const SLOBulkDeleteResponseDataUpdatedList =
+const SLOBulkDeleteResponseDataUpdatedList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOBulkDeleteResponseDataUpdatedList>;
 
 /** An array of service level objective objects. */
@@ -15450,7 +10647,7 @@ export interface SLOBulkDeleteResponseData {
   /** An array of service level objective object IDs that indicates which objects that were modified (objects for which at least one threshold was deleted, but that were not completely deleted). */
   updated?: SLOBulkDeleteResponseDataUpdatedList;
 }
-export const SLOBulkDeleteResponseData = /*@__PURE__*/ S.suspend(() =>
+const SLOBulkDeleteResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.optional(SLOBulkDeleteResponseDataDeletedList),
     updated: S.optional(SLOBulkDeleteResponseDataUpdatedList),
@@ -15461,7 +10658,7 @@ export const SLOBulkDeleteResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** The timeframe of the threshold associated with this error or "all" if all thresholds are affected. */
 export type SLOErrorTimeframe = "7d" | "30d" | "90d" | "all";
-export const SLOErrorTimeframe = S.String;
+const SLOErrorTimeframe = S.String;
 
 /** Object describing the error. */
 export interface SLOBulkDeleteError {
@@ -15471,7 +10668,7 @@ export interface SLOBulkDeleteError {
   message: string;
   timeframe: SLOErrorTimeframe;
 }
-export const SLOBulkDeleteError = /*@__PURE__*/ S.suspend(() =>
+const SLOBulkDeleteError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     message: S.String,
@@ -15481,7 +10678,7 @@ export const SLOBulkDeleteError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of errors object returned. */
 export type SLOBulkDeleteResponseErrorsList = Array<SLOBulkDeleteError>;
-export const SLOBulkDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
+const SLOBulkDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
   SLOBulkDeleteError,
 ) as any as S.Schema<SLOBulkDeleteResponseErrorsList>;
 
@@ -15491,7 +10688,7 @@ export interface SLOBulkDeleteResponse {
   /** Array of errors object returned. */
   errors?: SLOBulkDeleteResponseErrorsList;
 }
-export const SLOBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const SLOBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOBulkDeleteResponseData),
     errors: S.optional(SLOBulkDeleteResponseErrorsList),
@@ -15500,7 +10697,7 @@ export const SLOBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Synthetic test IDs you want to delete. */
 export type DeleteTestsRequestPublicIdsList = Array<string>;
-export const DeleteTestsRequestPublicIdsList =
+const DeleteTestsRequestPublicIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DeleteTestsRequestPublicIdsList>;
 
 export interface DeleteTestsRequest {
@@ -15509,7 +10706,7 @@ export interface DeleteTestsRequest {
   /** An array of Synthetic test IDs you want to delete. */
   public_ids?: DeleteTestsRequestPublicIdsList;
 }
-export const DeleteTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force_delete_dependencies: S.optional(S.Boolean),
     public_ids: S.optional(DeleteTestsRequestPublicIdsList),
@@ -15523,7 +10720,7 @@ export interface SyntheticsDeletedTest {
   /** The Synthetic test ID deleted. */
   public_id?: string;
 }
-export const SyntheticsDeletedTest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsDeletedTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_at: S.optional(S.String),
     public_id: S.optional(S.String),
@@ -15532,7 +10729,7 @@ export const SyntheticsDeletedTest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of objects containing a deleted Synthetic test ID with the associated deletion timestamp. */
 export type SyntheticsDeleteTestsResponseDeletedTestsList = Array<SyntheticsDeletedTest>;
-export const SyntheticsDeleteTestsResponseDeletedTestsList = /*@__PURE__*/ S.Array(
+const SyntheticsDeleteTestsResponseDeletedTestsList = /*@__PURE__*/ S.Array(
   SyntheticsDeletedTest,
 ) as any as S.Schema<SyntheticsDeleteTestsResponseDeletedTestsList>;
 
@@ -15541,7 +10738,7 @@ export interface SyntheticsDeleteTestsResponse {
   /** Array of objects containing a deleted Synthetic test ID with the associated deletion timestamp. */
   deleted_tests?: SyntheticsDeleteTestsResponseDeletedTestsList;
 }
-export const SyntheticsDeleteTestsResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsDeleteTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted_tests: S.optional(SyntheticsDeleteTestsResponseDeletedTestsList),
   }),
@@ -15553,7 +10750,7 @@ export interface DeleteWebhooksIntegrationRequest {
   /** The name of the webhook. */
   webhook_name: string;
 }
-export const DeleteWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -15568,14 +10765,14 @@ export const DeleteWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhooksIntegrationRequest>;
 
 export interface DeleteWebhooksIntegrationResponse {}
-export const DeleteWebhooksIntegrationResponse =
+const DeleteWebhooksIntegrationResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeleteWebhooksIntegrationResponse>;
 
 export interface DeleteWebhooksIntegrationCustomVariableRequest {
   /** The name of the custom variable. */
   custom_variable_name: string;
 }
-export const DeleteWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_variable_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -15590,14 +10787,14 @@ export const DeleteWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteWebhooksIntegrationCustomVariableRequest>;
 
 export interface DeleteWebhooksIntegrationCustomVariableResponse {}
-export const DeleteWebhooksIntegrationCustomVariableResponse =
+const DeleteWebhooksIntegrationCustomVariableResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeleteWebhooksIntegrationCustomVariableResponse>;
 
 export interface DisableUserRequest {
   /** The handle of the user. */
   user_handle: string;
 }
-export const DisableUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_handle: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/user/{user_handle}", code: 200 })),
@@ -15608,7 +10805,7 @@ export interface UserDisableResponse {
   /** Information pertaining to a user disabled for a given organization. */
   message?: string;
 }
-export const UserDisableResponse = /*@__PURE__*/ S.suspend(() =>
+const UserDisableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -15618,7 +10815,7 @@ export interface DowngradeOrgRequest {
   /** The `public_id` of the organization you are operating within. */
   public_id: string;
 }
-export const DowngradeOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DowngradeOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/org/{public_id}/downgrade", code: 200 })),
@@ -15629,11 +10826,11 @@ export interface OrgDowngradedResponse {
   /** Information pertaining to the downgraded child organization. */
   message?: string;
 }
-export const OrgDowngradedResponse = UserDisableResponse as any as S.Schema<OrgDowngradedResponse>;
+const OrgDowngradedResponse = UserDisableResponse as any as S.Schema<OrgDowngradedResponse>;
 
 /** Tags of the global variable. */
 export type EditGlobalVariableRequestTagsList = Array<string>;
-export const EditGlobalVariableRequestTagsList =
+const EditGlobalVariableRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<EditGlobalVariableRequestTagsList>;
 
 export interface EditGlobalVariableRequest {
@@ -15655,7 +10852,7 @@ export interface EditGlobalVariableRequest {
   tags: EditGlobalVariableRequestTagsList;
   value?: SyntheticsGlobalVariableValue;
 }
-export const EditGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const EditGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variable_id: S.String.pipe(T.Label()),
     attributes: S.optional(SyntheticsGlobalVariableAttributes),
@@ -15674,7 +10871,7 @@ export const EditGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Synthetic test IDs you want uptimes for. */
 export type FetchUptimesRequestPublicIdsList = Array<string>;
-export const FetchUptimesRequestPublicIdsList =
+const FetchUptimesRequestPublicIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FetchUptimesRequestPublicIdsList>;
 
 export interface FetchUptimesRequest {
@@ -15685,7 +10882,7 @@ export interface FetchUptimesRequest {
   /** Timestamp in seconds (Unix epoch) for the end of uptime. */
   to_ts: number;
 }
-export const FetchUptimesRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchUptimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from_ts: S.Number,
     public_ids: FetchUptimesRequestPublicIdsList,
@@ -15700,7 +10897,7 @@ export interface SLOHistoryResponseErrorWithType {
   /** Type of the error. */
   error_type: string;
 }
-export const SLOHistoryResponseErrorWithType = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryResponseErrorWithType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_message: S.String,
     error_type: S.String,
@@ -15711,18 +10908,18 @@ export const SLOHistoryResponseErrorWithType = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SyntheticsUptimeErrorsList = Array<SLOHistoryResponseErrorWithType>;
-export const SyntheticsUptimeErrorsList = /*@__PURE__*/ S.Array(
+const SyntheticsUptimeErrorsList = /*@__PURE__*/ S.Array(
   SLOHistoryResponseErrorWithType,
 ) as any as S.Schema<SyntheticsUptimeErrorsList>;
 
 /** An array of transitions */
 export type SyntheticsUptimeHistoryItemList = Array<number>;
-export const SyntheticsUptimeHistoryItemList =
+const SyntheticsUptimeHistoryItemList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SyntheticsUptimeHistoryItemList>;
 
 /** The state transition history for the monitor, represented as an array of pairs. Each pair is an array where the first element is the transition timestamp in Unix epoch format (integer) and the second element is the state (integer). For the state, an integer value of `0` indicates uptime, `1` indicates downtime, and `2` indicates no data. */
 export type SyntheticsUptimeHistoryList = Array<SyntheticsUptimeHistoryItemList>;
-export const SyntheticsUptimeHistoryList = /*@__PURE__*/ S.Array(
+const SyntheticsUptimeHistoryList = /*@__PURE__*/ S.Array(
   SyntheticsUptimeHistoryItemList,
 ) as any as S.Schema<SyntheticsUptimeHistoryList>;
 
@@ -15739,7 +10936,7 @@ export interface SyntheticsUptime {
   /** The overall uptime. */
   uptime?: number;
 }
-export const SyntheticsUptime = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsUptime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(S.NullOr(SyntheticsUptimeErrorsList)),
     group: S.optional(S.String),
@@ -15759,7 +10956,7 @@ export interface SyntheticsTestUptime {
   /** Timestamp in seconds for the end of uptime. */
   to_ts?: number;
 }
-export const SyntheticsTestUptime = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestUptime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from_ts: S.optional(S.Number),
     overall: S.optional(SyntheticsUptime),
@@ -15769,12 +10966,12 @@ export const SyntheticsTestUptime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyntheticsTestUptime" }) as any as S.Schema<SyntheticsTestUptime>;
 
 export type FetchUptimesResponseBodyList = Array<SyntheticsTestUptime>;
-export const FetchUptimesResponseBodyList = /*@__PURE__*/ S.Array(
+const FetchUptimesResponseBodyList = /*@__PURE__*/ S.Array(
   SyntheticsTestUptime,
 ) as any as S.Schema<FetchUptimesResponseBodyList>;
 
 export type FetchUptimesResponse = FetchUptimesResponseBodyList;
-export const FetchUptimesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchUptimesResponse = /*@__PURE__*/ S.suspend(() =>
   FetchUptimesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "FetchUptimesResponse" }) as any as S.Schema<FetchUptimesResponse>;
 
@@ -15782,7 +10979,7 @@ export interface GetAPIKeyRequest {
   /** The specific API key you are working with. */
   key: string;
 }
-export const GetAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/api_key/{key}", code: 200 })),
@@ -15792,14 +10989,14 @@ export interface GetAPITestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-export const GetAPITestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPITestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/tests/api/{public_id}", code: 200 })),
 ).annotate({ identifier: "GetAPITestRequest" }) as any as S.Schema<GetAPITestRequest>;
 
 export type GetAPITestLatestResultsRequestProbeDcList = Array<string>;
-export const GetAPITestLatestResultsRequestProbeDcList =
+const GetAPITestLatestResultsRequestProbeDcList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetAPITestLatestResultsRequestProbeDcList>;
 
 export interface GetAPITestLatestResultsRequest {
@@ -15812,7 +11009,7 @@ export interface GetAPITestLatestResultsRequest {
   /** Locations for which to query results. */
   probe_dc?: GetAPITestLatestResultsRequestProbeDcList;
 }
-export const GetAPITestLatestResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPITestLatestResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     from_ts: S.optional(S.Number.pipe(T.Query())),
@@ -15846,7 +11043,7 @@ export interface SyntheticsTiming {
   /** Time spent in millisecond waiting for a response. */
   wait?: number;
 }
-export const SyntheticsTiming = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns: S.optional(S.Number),
     download: S.optional(S.Number),
@@ -15866,7 +11063,7 @@ export interface SyntheticsAPITestResultShortResult {
   passed?: boolean;
   timings?: SyntheticsTiming;
 }
-export const SyntheticsAPITestResultShortResult = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestResultShortResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passed: S.optional(S.Boolean),
     timings: S.optional(SyntheticsTiming),
@@ -15877,7 +11074,7 @@ export const SyntheticsAPITestResultShortResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of your Synthetic monitor. * `O` for not triggered * `1` for triggered * `2` for no data */
 export type SyntheticsTestMonitorStatus = 0 | 1 | 2;
-export const SyntheticsTestMonitorStatus = S.Number;
+const SyntheticsTestMonitorStatus = S.Number;
 
 /** Object with the results of a single Synthetic API test. */
 export interface SyntheticsAPITestResultShort {
@@ -15890,7 +11087,7 @@ export interface SyntheticsAPITestResultShort {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-export const SyntheticsAPITestResultShort = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestResultShort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_time: S.optional(S.Number),
     probe_dc: S.optional(S.String),
@@ -15905,7 +11102,7 @@ export const SyntheticsAPITestResultShort = /*@__PURE__*/ S.suspend(() =>
 /** Result of the latest API test run. */
 export type SyntheticsGetAPITestLatestResultsResponseResultsList =
   Array<SyntheticsAPITestResultShort>;
-export const SyntheticsGetAPITestLatestResultsResponseResultsList = /*@__PURE__*/ S.Array(
+const SyntheticsGetAPITestLatestResultsResponseResultsList = /*@__PURE__*/ S.Array(
   SyntheticsAPITestResultShort,
 ) as any as S.Schema<SyntheticsGetAPITestLatestResultsResponseResultsList>;
 
@@ -15916,7 +11113,7 @@ export interface SyntheticsGetAPITestLatestResultsResponse {
   /** Result of the latest API test run. */
   results?: SyntheticsGetAPITestLatestResultsResponseResultsList;
 }
-export const SyntheticsGetAPITestLatestResultsResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGetAPITestLatestResultsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_timestamp_fetched: S.optional(S.Number),
     results: S.optional(SyntheticsGetAPITestLatestResultsResponseResultsList),
@@ -15931,7 +11128,7 @@ export interface GetAPITestResultRequest {
   /** The ID of the result to get. */
   result_id: string;
 }
-export const GetAPITestResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPITestResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     result_id: S.String.pipe(T.Label()),
@@ -15946,17 +11143,17 @@ export const GetAPITestResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsTestConfigAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsTestConfigAssertionsList =
+const SyntheticsTestConfigAssertionsList =
   SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsTestConfigAssertionsList>;
 
 /** Array of variables used for the test. */
 export type SyntheticsTestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsTestConfigConfigVariablesList =
+const SyntheticsTestConfigConfigVariablesList =
   SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsTestConfigConfigVariablesList>;
 
 /** Browser tests only - array of variables used for the test steps. */
 export type SyntheticsTestConfigVariablesList = Array<SyntheticsBrowserVariable>;
-export const SyntheticsTestConfigVariablesList =
+const SyntheticsTestConfigVariablesList =
   SyntheticsBrowserTestConfigVariablesList as any as S.Schema<SyntheticsTestConfigVariablesList>;
 
 /** Configuration object for a Synthetic test. */
@@ -15969,7 +11166,7 @@ export interface SyntheticsTestConfig {
   /** Browser tests only - array of variables used for the test steps. */
   variables?: SyntheticsTestConfigVariablesList;
 }
-export const SyntheticsTestConfig = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertions: S.optional(SyntheticsTestConfigAssertionsList),
     configVariables: S.optional(SyntheticsTestConfigConfigVariablesList),
@@ -15982,7 +11179,7 @@ export const SyntheticsTestConfig = /*@__PURE__*/ S.suspend(() =>
 export interface SyntheticsAPITestResultFullCheck {
   config: SyntheticsTestConfig;
 }
-export const SyntheticsAPITestResultFullCheck = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestResultFullCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: SyntheticsTestConfig,
   }),
@@ -15992,7 +11189,7 @@ export const SyntheticsAPITestResultFullCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of extensions and details used for the certificate. */
 export type SyntheticsSSLCertificateExtKeyUsageList = Array<string>;
-export const SyntheticsSSLCertificateExtKeyUsageList =
+const SyntheticsSSLCertificateExtKeyUsageList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsSSLCertificateExtKeyUsageList>;
 
 /** Object describing the issuer of a SSL certificate. */
@@ -16010,7 +11207,7 @@ export interface SyntheticsSSLCertificateIssuer {
   /** State Or Province Name that issued the certificate. */
   ST?: string;
 }
-export const SyntheticsSSLCertificateIssuer = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsSSLCertificateIssuer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     C: S.optional(S.String),
     CN: S.optional(S.String),
@@ -16040,7 +11237,7 @@ export interface SyntheticsSSLCertificateSubject {
   /** Subject Alternative Name associated with the certificate. */
   altName?: string;
 }
-export const SyntheticsSSLCertificateSubject = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsSSLCertificateSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     C: S.optional(S.String),
     CN: S.optional(S.String),
@@ -16079,7 +11276,7 @@ export interface SyntheticsSSLCertificate {
   /** Date until which the SSL certificate is valid. */
   validTo?: string;
 }
-export const SyntheticsSSLCertificate = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsSSLCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cipher: S.optional(S.String),
     exponent: S.optional(S.Number),
@@ -16102,7 +11299,7 @@ export type SyntheticsTestProcessStatus =
   | "scheduled"
   | "finished"
   | "finished_with_error";
-export const SyntheticsTestProcessStatus = S.String;
+const SyntheticsTestProcessStatus = S.String;
 
 /** Error code that can be returned by a Synthetic test. */
 export type SyntheticsApiTestFailureCode =
@@ -16132,7 +11329,7 @@ export type SyntheticsApiTestFailureCode =
   | "WEBSOCKET"
   | "UNKNOWN"
   | "INTERNAL_ERROR";
-export const SyntheticsApiTestFailureCode = S.String;
+const SyntheticsApiTestFailureCode = S.String;
 
 /** The API test failure details. */
 export interface SyntheticsApiTestResultFailure {
@@ -16140,7 +11337,7 @@ export interface SyntheticsApiTestResultFailure {
   /** The API test error message. */
   message?: string;
 }
-export const SyntheticsApiTestResultFailure = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsApiTestResultFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(SyntheticsApiTestFailureCode),
     message: S.optional(S.String),
@@ -16151,12 +11348,12 @@ export const SyntheticsApiTestResultFailure = /*@__PURE__*/ S.suspend(() =>
 
 /** Request header object used for the API test. */
 export type SyntheticsAPITestResultDataRequestHeadersMap = { [key: string]: unknown | undefined };
-export const SyntheticsAPITestResultDataRequestHeadersMap =
+const SyntheticsAPITestResultDataRequestHeadersMap =
   SyntheticsTestRequestToolArgsMap as any as S.Schema<SyntheticsAPITestResultDataRequestHeadersMap>;
 
 /** Response headers returned for the API test. */
 export type SyntheticsAPITestResultDataResponseHeadersMap = { [key: string]: unknown | undefined };
-export const SyntheticsAPITestResultDataResponseHeadersMap =
+const SyntheticsAPITestResultDataResponseHeadersMap =
   SyntheticsTestRequestToolArgsMap as any as S.Schema<SyntheticsAPITestResultDataResponseHeadersMap>;
 
 /** Object containing results for your Synthetic API test. */
@@ -16176,7 +11373,7 @@ export interface SyntheticsAPITestResultData {
   responseSize?: number;
   timings?: SyntheticsTiming;
 }
-export const SyntheticsAPITestResultData = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestResultData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cert: S.optional(SyntheticsSSLCertificate),
     eventType: S.optional(SyntheticsTestProcessStatus),
@@ -16206,7 +11403,7 @@ export interface SyntheticsAPITestResultFull {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-export const SyntheticsAPITestResultFull = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsAPITestResultFull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check: S.optional(SyntheticsAPITestResultFullCheck),
     check_time: S.optional(S.Number),
@@ -16224,7 +11421,7 @@ export interface GetApplicationKeyRequest {
   /** The specific APP key you are working with. */
   key: string;
 }
-export const GetApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/application_key/{key}", code: 200 })),
@@ -16234,7 +11431,7 @@ export interface GetBrowserTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-export const GetBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -16243,7 +11440,7 @@ export const GetBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBrowserTestRequest" }) as any as S.Schema<GetBrowserTestRequest>;
 
 export type GetBrowserTestLatestResultsRequestProbeDcList = Array<string>;
-export const GetBrowserTestLatestResultsRequestProbeDcList =
+const GetBrowserTestLatestResultsRequestProbeDcList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetBrowserTestLatestResultsRequestProbeDcList>;
 
 export interface GetBrowserTestLatestResultsRequest {
@@ -16256,7 +11453,7 @@ export interface GetBrowserTestLatestResultsRequest {
   /** Locations for which to query results. */
   probe_dc?: GetBrowserTestLatestResultsRequestProbeDcList;
 }
-export const GetBrowserTestLatestResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBrowserTestLatestResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     from_ts: S.optional(S.Number.pipe(T.Query())),
@@ -16285,7 +11482,7 @@ export interface SyntheticsDevice {
   /** Screen width of the device. */
   width: number;
 }
-export const SyntheticsDevice = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.Number,
     id: S.String,
@@ -16307,7 +11504,7 @@ export interface SyntheticsBrowserTestResultShortResult {
   /** Total amount of browser test steps. */
   stepCountTotal?: number;
 }
-export const SyntheticsBrowserTestResultShortResult = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTestResultShortResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(SyntheticsDevice),
     duration: S.optional(S.Number),
@@ -16330,7 +11527,7 @@ export interface SyntheticsBrowserTestResultShort {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-export const SyntheticsBrowserTestResultShort = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTestResultShort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_time: S.optional(S.Number),
     probe_dc: S.optional(S.String),
@@ -16345,7 +11542,7 @@ export const SyntheticsBrowserTestResultShort = /*@__PURE__*/ S.suspend(() =>
 /** Result of the latest browser test run. */
 export type SyntheticsGetBrowserTestLatestResultsResponseResultsList =
   Array<SyntheticsBrowserTestResultShort>;
-export const SyntheticsGetBrowserTestLatestResultsResponseResultsList = /*@__PURE__*/ S.Array(
+const SyntheticsGetBrowserTestLatestResultsResponseResultsList = /*@__PURE__*/ S.Array(
   SyntheticsBrowserTestResultShort,
 ) as any as S.Schema<SyntheticsGetBrowserTestLatestResultsResponseResultsList>;
 
@@ -16356,7 +11553,7 @@ export interface SyntheticsGetBrowserTestLatestResultsResponse {
   /** Result of the latest browser test run. */
   results?: SyntheticsGetBrowserTestLatestResultsResponseResultsList;
 }
-export const SyntheticsGetBrowserTestLatestResultsResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsGetBrowserTestLatestResultsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_timestamp_fetched: S.optional(S.Number),
     results: S.optional(SyntheticsGetBrowserTestLatestResultsResponseResultsList),
@@ -16371,7 +11568,7 @@ export interface GetBrowserTestResultRequest {
   /** The ID of the result to get. */
   result_id: string;
 }
-export const GetBrowserTestResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBrowserTestResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     result_id: S.String.pipe(T.Label()),
@@ -16388,8 +11585,6 @@ export const GetBrowserTestResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Object describing the browser test configuration. */
 export type SyntheticsBrowserTestResultFullCheck = SyntheticsAPITestResultFullCheck;
-export const SyntheticsBrowserTestResultFullCheck = SyntheticsAPITestResultFullCheck;
-
 /** Error code that can be returned by a Synthetic test. */
 export type SyntheticsBrowserTestFailureCode =
   | "API_REQUEST_FAILURE"
@@ -16425,20 +11620,18 @@ export type SyntheticsBrowserTestFailureCode =
   | "UPLOAD_FILES_DIALOG"
   | "UPLOAD_FILES_DYNAMIC_ELEMENT"
   | "UPLOAD_FILES_NAME";
-export const SyntheticsBrowserTestFailureCode = S.String;
-
 /** The browser test failure details. */
 export interface SyntheticsBrowserTestResultFailure {
   code?: SyntheticsBrowserTestFailureCode;
   /** The browser test error message. */
   message?: string;
 }
-export const SyntheticsBrowserTestResultFailure =
+const SyntheticsBrowserTestResultFailure =
   SyntheticsApiTestResultFailure as any as S.Schema<SyntheticsBrowserTestResultFailure>;
 
 /** Error type returned by a browser test. */
 export type SyntheticsBrowserErrorType = "network" | "js";
-export const SyntheticsBrowserErrorType = S.String;
+const SyntheticsBrowserErrorType = S.String;
 
 /** Error response object for a browser test. */
 export interface SyntheticsBrowserError {
@@ -16450,7 +11643,7 @@ export interface SyntheticsBrowserError {
   status?: number;
   type: SyntheticsBrowserErrorType;
 }
-export const SyntheticsBrowserError = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     name: S.String,
@@ -16461,17 +11654,17 @@ export const SyntheticsBrowserError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of errors collected for a browser test. */
 export type SyntheticsStepDetailBrowserErrorsList = Array<SyntheticsBrowserError>;
-export const SyntheticsStepDetailBrowserErrorsList = /*@__PURE__*/ S.Array(
+const SyntheticsStepDetailBrowserErrorsList = /*@__PURE__*/ S.Array(
   SyntheticsBrowserError,
 ) as any as S.Schema<SyntheticsStepDetailBrowserErrorsList>;
 
 /** Navigate between different tabs for your browser test. */
 export type SyntheticsPlayingTab = -1 | 0 | 1 | 2 | 3;
-export const SyntheticsPlayingTab = S.Number;
+const SyntheticsPlayingTab = S.Number;
 
 /** If this step includes a sub-test. [Subtests documentation](https://docs.datadoghq.com/synthetics/browser_tests/advanced_options/#subtests). */
 export type SyntheticsStepDetailSubTestStepDetailsList = Array<SyntheticsStepDetail>;
-export const SyntheticsStepDetailSubTestStepDetailsList = /*@__PURE__*/ S.Array(
+const SyntheticsStepDetailSubTestStepDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => SyntheticsStepDetail),
 ) as any as S.Schema<SyntheticsStepDetailSubTestStepDetailsList>;
 
@@ -16484,7 +11677,7 @@ export interface SyntheticsCoreWebVitals {
   /** URL attached to the metrics. */
   url?: string;
 }
-export const SyntheticsCoreWebVitals = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCoreWebVitals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cls: S.optional(S.Number),
     lcp: S.optional(S.Number),
@@ -16494,13 +11687,13 @@ export const SyntheticsCoreWebVitals = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Core Web Vitals metrics for the step. */
 export type SyntheticsStepDetailVitalsMetricsList = Array<SyntheticsCoreWebVitals>;
-export const SyntheticsStepDetailVitalsMetricsList = /*@__PURE__*/ S.Array(
+const SyntheticsStepDetailVitalsMetricsList = /*@__PURE__*/ S.Array(
   SyntheticsCoreWebVitals,
 ) as any as S.Schema<SyntheticsStepDetailVitalsMetricsList>;
 
 /** User locator used. */
 export type SyntheticsWarningType = "user_locator";
-export const SyntheticsWarningType = S.String;
+const SyntheticsWarningType = S.String;
 
 /** Object collecting warnings for a given step. */
 export interface SyntheticsStepDetailWarning {
@@ -16508,7 +11701,7 @@ export interface SyntheticsStepDetailWarning {
   message: string;
   type: SyntheticsWarningType;
 }
-export const SyntheticsStepDetailWarning = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsStepDetailWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     type: SyntheticsWarningType,
@@ -16519,7 +11712,7 @@ export const SyntheticsStepDetailWarning = /*@__PURE__*/ S.suspend(() =>
 
 /** Warning collected that didn't failed the step. */
 export type SyntheticsStepDetailWarningsList = Array<SyntheticsStepDetailWarning>;
-export const SyntheticsStepDetailWarningsList = /*@__PURE__*/ S.Array(
+const SyntheticsStepDetailWarningsList = /*@__PURE__*/ S.Array(
   SyntheticsStepDetailWarning,
 ) as any as S.Schema<SyntheticsStepDetailWarningsList>;
 
@@ -16560,7 +11753,7 @@ export interface SyntheticsStepDetail {
   /** Warning collected that didn't failed the step. */
   warnings?: SyntheticsStepDetailWarningsList;
 }
-export const SyntheticsStepDetail = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsStepDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowFailure: S.optional(S.Boolean),
     browserErrors: S.optional(SyntheticsStepDetailBrowserErrorsList),
@@ -16586,7 +11779,7 @@ export const SyntheticsStepDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Array containing the different browser test steps. */
 export type SyntheticsBrowserTestResultDataStepDetailsList = Array<SyntheticsStepDetail>;
-export const SyntheticsBrowserTestResultDataStepDetailsList = /*@__PURE__*/ S.Array(
+const SyntheticsBrowserTestResultDataStepDetailsList = /*@__PURE__*/ S.Array(
   SyntheticsStepDetail,
 ) as any as S.Schema<SyntheticsBrowserTestResultDataStepDetailsList>;
 
@@ -16615,7 +11808,7 @@ export interface SyntheticsBrowserTestResultData {
   /** Time in second to wait before the browser test starts after reaching the start URL. */
   timeToInteractive?: number;
 }
-export const SyntheticsBrowserTestResultData = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTestResultData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     browserType: S.optional(S.String),
     browserVersion: S.optional(S.String),
@@ -16648,7 +11841,7 @@ export interface SyntheticsBrowserTestResultFull {
   result_id?: string;
   status?: SyntheticsTestMonitorStatus;
 }
-export const SyntheticsBrowserTestResultFull = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBrowserTestResultFull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check: S.optional(SyntheticsAPITestResultFullCheck),
     check_time: S.optional(S.Number),
@@ -16666,7 +11859,7 @@ export interface GetDashboardRequest {
   /** The ID of the dashboard. */
   dashboard_id: string;
 }
-export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/{dashboard_id}", code: 200 })),
@@ -16676,7 +11869,7 @@ export interface GetDashboardListRequest {
   /** ID of the dashboard list to fetch. */
   list_id: number;
 }
-export const GetDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/lists/manual/{list_id}", code: 200 })),
@@ -16686,7 +11879,7 @@ export interface GetEventRequest {
   /** The ID of the event. */
   event_id: number;
 }
-export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/events/{event_id}", code: 200 })),
@@ -16694,7 +11887,7 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags to apply to the event. */
 export type EventTagsList = Array<string>;
-export const EventTagsList = CrossOrgUuids as any as S.Schema<EventTagsList>;
+const EventTagsList = CrossOrgUuids as any as S.Schema<EventTagsList>;
 
 /** Object representing an event. */
 export interface Event {
@@ -16723,7 +11916,7 @@ export interface Event {
   /** URL of the event. */
   url?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alert_type: S.optional(EventAlertType),
     date_happened: S.optional(S.Number),
@@ -16747,7 +11940,7 @@ export interface EventResponse {
   /** A status. */
   status?: string;
 }
-export const EventResponse = /*@__PURE__*/ S.suspend(() =>
+const EventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(Event),
     status: S.optional(S.String),
@@ -16758,7 +11951,7 @@ export interface GetGlobalVariableRequest {
   /** The ID of the global variable. */
   variable_id: string;
 }
-export const GetGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variable_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/variables/{variable_id}", code: 200 })),
@@ -16782,7 +11975,7 @@ export interface GetGraphSnapshotRequest {
   /** The width of the graph. If no width is specified, the graph's original width is used. */
   width?: number;
 }
-export const GetGraphSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGraphSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_query: S.optional(S.String.pipe(T.Query())),
     start: S.Number.pipe(T.Query()),
@@ -16804,7 +11997,7 @@ export interface GraphSnapshot {
   /** URL of your [graph snapshot](https://docs.datadoghq.com/metrics/explorer/#snapshot). */
   snapshot_url?: string;
 }
-export const GraphSnapshot = /*@__PURE__*/ S.suspend(() =>
+const GraphSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     graph_def: S.optional(S.String),
     metric_query: S.optional(S.String),
@@ -16818,7 +12011,7 @@ export interface GetHostTagsRequest {
   /** Source to filter. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. */
   source?: string;
 }
-export const GetHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_name: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -16829,7 +12022,7 @@ export interface GetHostTotalsRequest {
   /** Number of seconds from which you want to get total number of active hosts. */
   from?: number;
 }
-export const GetHostTotalsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostTotalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/hosts/totals", code: 200 })),
@@ -16842,7 +12035,7 @@ export interface HostTotals {
   /** Number of host that are UP and reporting to Datadog. */
   total_up?: number;
 }
-export const HostTotals = /*@__PURE__*/ S.suspend(() =>
+const HostTotals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_active: S.optional(S.Number),
     total_up: S.optional(S.Number),
@@ -16940,7 +12133,7 @@ export type HourlyUsageAttributionUsageType =
   | "universal_service_monitoring_usage"
   | "vuln_management_hosts_usage"
   | "workflow_executions_usage";
-export const HourlyUsageAttributionUsageType = S.String;
+const HourlyUsageAttributionUsageType = S.String;
 
 export interface GetHourlyUsageAttributionRequest {
   /** Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage beginning at this hour. */
@@ -16956,7 +12149,7 @@ export interface GetHourlyUsageAttributionRequest {
   /** Include child org usage in the response. Defaults to `true`. */
   include_descendants?: boolean;
 }
-export const GetHourlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHourlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_hr: S.String.pipe(T.Query()),
     end_hr: S.optional(S.String.pipe(T.Query())),
@@ -16970,22 +12163,22 @@ export const GetHourlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHourlyUsageAttributionRequest>;
 
 export interface GetHourlyUsageAttributionResponse {}
-export const GetHourlyUsageAttributionResponse =
+const GetHourlyUsageAttributionResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<GetHourlyUsageAttributionResponse>;
 
 export interface GetIPRangesRequest {}
-export const GetIPRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIPRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/", code: 200 })),
 ).annotate({ identifier: "GetIPRangesRequest" }) as any as S.Schema<GetIPRangesRequest>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesAgentsPrefixesIpv4List = Array<string>;
-export const IPPrefixesAgentsPrefixesIpv4List =
+const IPPrefixesAgentsPrefixesIpv4List =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAgentsPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesAgentsPrefixesIpv6List = Array<string>;
-export const IPPrefixesAgentsPrefixesIpv6List =
+const IPPrefixesAgentsPrefixesIpv6List =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAgentsPrefixesIpv6List>;
 
 /** Available prefix information for the Agent endpoints. */
@@ -16995,7 +12188,7 @@ export interface IPPrefixesAgents {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAgentsPrefixesIpv6List;
 }
-export const IPPrefixesAgents = /*@__PURE__*/ S.suspend(() =>
+const IPPrefixesAgents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes_ipv4: S.optional(IPPrefixesAgentsPrefixesIpv4List),
     prefixes_ipv6: S.optional(IPPrefixesAgentsPrefixesIpv6List),
@@ -17004,14 +12197,8 @@ export const IPPrefixesAgents = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesAPIPrefixesIpv4List = Array<string>;
-export const IPPrefixesAPIPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPIPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesAPIPrefixesIpv6List = Array<string>;
-export const IPPrefixesAPIPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPIPrefixesIpv6List>;
-
 /** Available prefix information for the API endpoints. */
 export interface IPPrefixesAPI {
   /** List of IPv4 prefixes. */
@@ -17019,18 +12206,12 @@ export interface IPPrefixesAPI {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAPIPrefixesIpv6List;
 }
-export const IPPrefixesAPI = IPPrefixesAgents as any as S.Schema<IPPrefixesAPI>;
+const IPPrefixesAPI = IPPrefixesAgents as any as S.Schema<IPPrefixesAPI>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesAPMPrefixesIpv4List = Array<string>;
-export const IPPrefixesAPMPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPMPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesAPMPrefixesIpv6List = Array<string>;
-export const IPPrefixesAPMPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPMPrefixesIpv6List>;
-
 /** Available prefix information for the APM endpoints. */
 export interface IPPrefixesAPM {
   /** List of IPv4 prefixes. */
@@ -17038,18 +12219,12 @@ export interface IPPrefixesAPM {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAPMPrefixesIpv6List;
 }
-export const IPPrefixesAPM = IPPrefixesAgents as any as S.Schema<IPPrefixesAPM>;
+const IPPrefixesAPM = IPPrefixesAgents as any as S.Schema<IPPrefixesAPM>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesGlobalPrefixesIpv4List = Array<string>;
-export const IPPrefixesGlobalPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesGlobalPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesGlobalPrefixesIpv6List = Array<string>;
-export const IPPrefixesGlobalPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesGlobalPrefixesIpv6List>;
-
 /** Available prefix information for all Datadog endpoints. */
 export interface IPPrefixesGlobal {
   /** List of IPv4 prefixes. */
@@ -17057,18 +12232,12 @@ export interface IPPrefixesGlobal {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesGlobalPrefixesIpv6List;
 }
-export const IPPrefixesGlobal = IPPrefixesAgents as any as S.Schema<IPPrefixesGlobal>;
+const IPPrefixesGlobal = IPPrefixesAgents as any as S.Schema<IPPrefixesGlobal>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesLogsPrefixesIpv4List = Array<string>;
-export const IPPrefixesLogsPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesLogsPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesLogsPrefixesIpv6List = Array<string>;
-export const IPPrefixesLogsPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesLogsPrefixesIpv6List>;
-
 /** Available prefix information for the Logs endpoints. */
 export interface IPPrefixesLogs {
   /** List of IPv4 prefixes. */
@@ -17076,18 +12245,12 @@ export interface IPPrefixesLogs {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesLogsPrefixesIpv6List;
 }
-export const IPPrefixesLogs = IPPrefixesAgents as any as S.Schema<IPPrefixesLogs>;
+const IPPrefixesLogs = IPPrefixesAgents as any as S.Schema<IPPrefixesLogs>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesOrchestratorPrefixesIpv4List = Array<string>;
-export const IPPrefixesOrchestratorPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesOrchestratorPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesOrchestratorPrefixesIpv6List = Array<string>;
-export const IPPrefixesOrchestratorPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesOrchestratorPrefixesIpv6List>;
-
 /** Available prefix information for the Orchestrator endpoints. */
 export interface IPPrefixesOrchestrator {
   /** List of IPv4 prefixes. */
@@ -17095,18 +12258,12 @@ export interface IPPrefixesOrchestrator {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesOrchestratorPrefixesIpv6List;
 }
-export const IPPrefixesOrchestrator = IPPrefixesAgents as any as S.Schema<IPPrefixesOrchestrator>;
+const IPPrefixesOrchestrator = IPPrefixesAgents as any as S.Schema<IPPrefixesOrchestrator>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesProcessPrefixesIpv4List = Array<string>;
-export const IPPrefixesProcessPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesProcessPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesProcessPrefixesIpv6List = Array<string>;
-export const IPPrefixesProcessPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesProcessPrefixesIpv6List>;
-
 /** Available prefix information for the Process endpoints. */
 export interface IPPrefixesProcess {
   /** List of IPv4 prefixes. */
@@ -17114,16 +12271,16 @@ export interface IPPrefixesProcess {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesProcessPrefixesIpv6List;
 }
-export const IPPrefixesProcess = IPPrefixesAgents as any as S.Schema<IPPrefixesProcess>;
+const IPPrefixesProcess = IPPrefixesAgents as any as S.Schema<IPPrefixesProcess>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesRemoteConfigurationPrefixesIpv4List = Array<string>;
-export const IPPrefixesRemoteConfigurationPrefixesIpv4List =
+const IPPrefixesRemoteConfigurationPrefixesIpv4List =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesRemoteConfigurationPrefixesIpv6List = Array<string>;
-export const IPPrefixesRemoteConfigurationPrefixesIpv6List =
+const IPPrefixesRemoteConfigurationPrefixesIpv6List =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv6List>;
 
 /** Available prefix information for the Remote Configuration endpoints. */
@@ -17133,7 +12290,7 @@ export interface IPPrefixesRemoteConfiguration {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesRemoteConfigurationPrefixesIpv6List;
 }
-export const IPPrefixesRemoteConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IPPrefixesRemoteConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes_ipv4: S.optional(IPPrefixesRemoteConfigurationPrefixesIpv4List),
     prefixes_ipv6: S.optional(IPPrefixesRemoteConfigurationPrefixesIpv6List),
@@ -17144,36 +12301,30 @@ export const IPPrefixesRemoteConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv4List = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv4List =
+const IPPrefixesSyntheticsPrefixesIpv4List =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4List>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList>;
-
 /** List of IPv4 prefixes by location. */
 export type IPPrefixesSyntheticsPrefixesIpv4ByLocationMap = {
   [key: string]: IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList | undefined;
 };
-export const IPPrefixesSyntheticsPrefixesIpv4ByLocationMap =
+const IPPrefixesSyntheticsPrefixesIpv4ByLocationMap =
   CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationMap>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv6List = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv6List =
+const IPPrefixesSyntheticsPrefixesIpv6List =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList>;
-
 /** List of IPv6 prefixes by location. */
 export type IPPrefixesSyntheticsPrefixesIpv6ByLocationMap = {
   [key: string]: IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList | undefined;
 };
-export const IPPrefixesSyntheticsPrefixesIpv6ByLocationMap =
+const IPPrefixesSyntheticsPrefixesIpv6ByLocationMap =
   CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationMap>;
 
 /** Available prefix information for the Synthetics endpoints. */
@@ -17187,7 +12338,7 @@ export interface IPPrefixesSynthetics {
   /** List of IPv6 prefixes by location. */
   prefixes_ipv6_by_location?: IPPrefixesSyntheticsPrefixesIpv6ByLocationMap;
 }
-export const IPPrefixesSynthetics = /*@__PURE__*/ S.suspend(() =>
+const IPPrefixesSynthetics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixes_ipv4: S.optional(IPPrefixesSyntheticsPrefixesIpv4List),
     prefixes_ipv4_by_location: S.optional(IPPrefixesSyntheticsPrefixesIpv4ByLocationMap),
@@ -17198,14 +12349,8 @@ export const IPPrefixesSynthetics = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List = Array<string>;
-export const IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List = Array<string>;
-export const IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List>;
-
 /** Available prefix information for the Synthetics Private Locations endpoints. */
 export interface IPPrefixesSyntheticsPrivateLocations {
   /** List of IPv4 prefixes. */
@@ -17213,19 +12358,13 @@ export interface IPPrefixesSyntheticsPrivateLocations {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List;
 }
-export const IPPrefixesSyntheticsPrivateLocations =
+const IPPrefixesSyntheticsPrivateLocations =
   IPPrefixesRemoteConfiguration as any as S.Schema<IPPrefixesSyntheticsPrivateLocations>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesWebhooksPrefixesIpv4List = Array<string>;
-export const IPPrefixesWebhooksPrefixesIpv4List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesWebhooksPrefixesIpv4List>;
-
 /** List of IPv6 prefixes. */
 export type IPPrefixesWebhooksPrefixesIpv6List = Array<string>;
-export const IPPrefixesWebhooksPrefixesIpv6List =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesWebhooksPrefixesIpv6List>;
-
 /** Available prefix information for the Webhook endpoints. */
 export interface IPPrefixesWebhooks {
   /** List of IPv4 prefixes. */
@@ -17233,7 +12372,7 @@ export interface IPPrefixesWebhooks {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesWebhooksPrefixesIpv6List;
 }
-export const IPPrefixesWebhooks = IPPrefixesAgents as any as S.Schema<IPPrefixesWebhooks>;
+const IPPrefixesWebhooks = IPPrefixesAgents as any as S.Schema<IPPrefixesWebhooks>;
 
 /** IP ranges. */
 export interface IPRanges {
@@ -17253,7 +12392,7 @@ export interface IPRanges {
   version?: number;
   webhooks?: IPPrefixesWebhooks;
 }
-export const IPRanges = /*@__PURE__*/ S.suspend(() =>
+const IPRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agents: S.optional(IPPrefixesAgents),
     api: S.optional(IPPrefixesAPI),
@@ -17279,20 +12418,20 @@ export interface GetLogsIndexRequest {
   /** Name of the log index. */
   name: string;
 }
-export const GetLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/logs/config/indexes/{name}", code: 200 })),
 ).annotate({ identifier: "GetLogsIndexRequest" }) as any as S.Schema<GetLogsIndexRequest>;
 
 export interface GetLogsIndexOrderRequest {}
-export const GetLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/logs/config/index-order", code: 200 })),
 ).annotate({ identifier: "GetLogsIndexOrderRequest" }) as any as S.Schema<GetLogsIndexOrderRequest>;
 
 /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
 export type LogsIndexesOrderIndexNamesList = Array<string>;
-export const LogsIndexesOrderIndexNamesList =
+const LogsIndexesOrderIndexNamesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsIndexesOrderIndexNamesList>;
 
 /** Object containing the ordered list of log index names. */
@@ -17300,7 +12439,7 @@ export interface LogsIndexesOrder {
   /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
   index_names: LogsIndexesOrderIndexNamesList;
 }
-export const LogsIndexesOrder = /*@__PURE__*/ S.suspend(() =>
+const LogsIndexesOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_names: LogsIndexesOrderIndexNamesList,
   }),
@@ -17310,14 +12449,14 @@ export interface GetLogsPipelineRequest {
   /** ID of the pipeline to get. */
   pipeline_id: string;
 }
-export const GetLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/logs/config/pipelines/{pipeline_id}", code: 200 })),
 ).annotate({ identifier: "GetLogsPipelineRequest" }) as any as S.Schema<GetLogsPipelineRequest>;
 
 export interface GetLogsPipelineOrderRequest {}
-export const GetLogsPipelineOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsPipelineOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v1/logs/config/pipeline-order", code: 200 }),
   ),
@@ -17327,7 +12466,7 @@ export const GetLogsPipelineOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
 export type LogsPipelinesOrderPipelineIdsList = Array<string>;
-export const LogsPipelinesOrderPipelineIdsList =
+const LogsPipelinesOrderPipelineIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelinesOrderPipelineIdsList>;
 
 /** Object containing the ordered list of pipeline IDs. */
@@ -17335,7 +12474,7 @@ export interface LogsPipelinesOrder {
   /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
   pipeline_ids: LogsPipelinesOrderPipelineIdsList;
 }
-export const LogsPipelinesOrder = /*@__PURE__*/ S.suspend(() =>
+const LogsPipelinesOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline_ids: LogsPipelinesOrderPipelineIdsList,
   }),
@@ -17345,7 +12484,7 @@ export interface GetMetricMetadataRequest {
   /** Name of the metric for which to get metadata. */
   metric_name: string;
 }
-export const GetMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/metrics/{metric_name}", code: 200 })),
@@ -17368,7 +12507,7 @@ export interface MetricMetadata {
   /** Primary unit of the metric such as `byte` or `operation`. */
   unit?: string;
 }
-export const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
+const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     integration: S.optional(S.String),
@@ -17384,7 +12523,7 @@ export interface GetMobileTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-export const GetMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/tests/mobile/{public_id}", code: 200 })),
@@ -17400,7 +12539,7 @@ export interface GetMonitorRequest {
   /** If this argument is set to `true`, the returned data includes all assets tied to this monitor. */
   with_assets?: boolean;
 }
-export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitor_id: S.Number.pipe(T.Label()),
     group_states: S.optional(S.String.pipe(T.Query())),
@@ -17582,11 +12721,11 @@ export type MonthlyUsageAttributionSupportedMetrics =
   | "sca_fargate_usage"
   | "sca_fargate_percentage"
   | "*";
-export const MonthlyUsageAttributionSupportedMetrics = S.String;
+const MonthlyUsageAttributionSupportedMetrics = S.String;
 
 /** The direction to sort by. */
 export type UsageSortDirection = "desc" | "asc";
-export const UsageSortDirection = S.String;
+const UsageSortDirection = S.String;
 
 export interface GetMonthlyUsageAttributionRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: `[YYYY-MM]` for usage beginning in this month. Maximum of 15 months ago. */
@@ -17606,7 +12745,7 @@ export interface GetMonthlyUsageAttributionRequest {
   /** Include child org usage in the response. Defaults to `true`. */
   include_descendants?: boolean;
 }
-export const GetMonthlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonthlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_month: S.String.pipe(T.Query()),
     end_month: S.optional(S.String.pipe(T.Query())),
@@ -17622,14 +12761,14 @@ export const GetMonthlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMonthlyUsageAttributionRequest>;
 
 export interface GetMonthlyUsageAttributionResponse {}
-export const GetMonthlyUsageAttributionResponse =
+const GetMonthlyUsageAttributionResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<GetMonthlyUsageAttributionResponse>;
 
 export interface GetNotebookRequest {
   /** Unique ID, assigned when you create the notebook. */
   notebook_id: number;
 }
-export const GetNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebook_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/notebooks/{notebook_id}", code: 200 })),
@@ -17639,7 +12778,7 @@ export interface GetOrgRequest {
   /** The `public_id` of the organization you are operating within. */
   public_id: string;
 }
-export const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/org/{public_id}", code: 200 })),
@@ -17649,7 +12788,7 @@ export const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OrganizationResponse {
   org?: Organization;
 }
-export const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.optional(Organization),
   }),
@@ -17659,7 +12798,7 @@ export interface GetPagerDutyIntegrationServiceRequest {
   /** The service name. */
   service_name: string;
 }
-export const GetPagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -17677,7 +12816,7 @@ export interface GetPrivateLocationRequest {
   /** The ID of the private location. */
   location_id: string;
 }
-export const GetPrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -17691,7 +12830,7 @@ export interface GetPublicDashboardRequest {
   /** The token of the shared dashboard. Generated when a dashboard is shared. */
   token: string;
 }
-export const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/public/{token}", code: 200 })),
@@ -17707,7 +12846,7 @@ export interface GetPublicDashboardInvitationsRequest {
   /** The page to access (base 0). */
   page_number?: number;
 }
-export const GetPublicDashboardInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicDashboardInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -17732,51 +12871,25 @@ export interface SharedDashboardInvitesDataObjectAttributes {
   /** The unique token of the shared dashboard that was (or is to be) shared. */
   share_token?: string;
 }
-export const SharedDashboardInvitesDataObjectAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.optional(S.String),
-    email: S.optional(S.String),
-    has_session: S.optional(S.Boolean),
-    invitation_expiry: S.optional(S.String),
-    session_expiry: S.optional(S.NullOr(S.String)),
-    share_token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SharedDashboardInvitesDataObjectAttributes",
-}) as any as S.Schema<SharedDashboardInvitesDataObjectAttributes>;
-
 /** Object containing the information for an invitation to a shared dashboard. */
 export interface SharedDashboardInvitesDataObject {
   attributes: SharedDashboardInvitesDataObjectAttributes;
   type: DashboardInviteType;
 }
-export const SharedDashboardInvitesDataObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: SharedDashboardInvitesDataObjectAttributes,
-    type: DashboardInviteType,
-  }),
-).annotate({
-  identifier: "SharedDashboardInvitesDataObject",
-}) as any as S.Schema<SharedDashboardInvitesDataObject>;
-
 /** A list of objects containing the information for an invitation(s) to a shared dashboard. */
 export type SharedDashboardInvitesDataList = Array<SharedDashboardInvitesDataObject>;
-export const SharedDashboardInvitesDataList = /*@__PURE__*/ S.Array(
-  SharedDashboardInvitesDataObject,
-) as any as S.Schema<SharedDashboardInvitesDataList>;
-
 /** An object or list of objects containing the information for an invitation to a shared dashboard. */
 export type SharedDashboardInvitesData =
   | SharedDashboardInvitesDataObject
   | SharedDashboardInvitesDataList;
-export const SharedDashboardInvitesData = S.Unknown as any as S.Schema<SharedDashboardInvitesData>;
+const SharedDashboardInvitesData = S.Unknown as any as S.Schema<SharedDashboardInvitesData>;
 
 /** Object containing the total count of invitations across all pages */
 export interface SharedDashboardInvitesMetaPage {
   /** The total number of invitations on this shared board, across all pages. */
   total_count?: number;
 }
-export const SharedDashboardInvitesMetaPage = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboardInvitesMetaPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
   }),
@@ -17788,7 +12901,7 @@ export const SharedDashboardInvitesMetaPage = /*@__PURE__*/ S.suspend(() =>
 export interface SharedDashboardInvitesMeta {
   page?: SharedDashboardInvitesMetaPage;
 }
-export const SharedDashboardInvitesMeta = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboardInvitesMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(SharedDashboardInvitesMetaPage),
   }),
@@ -17801,7 +12914,7 @@ export interface SharedDashboardInvites {
   data: SharedDashboardInvitesData;
   meta?: SharedDashboardInvitesMeta;
 }
-export const SharedDashboardInvites = /*@__PURE__*/ S.suspend(() =>
+const SharedDashboardInvites = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: SharedDashboardInvitesData,
     meta: S.optional(SharedDashboardInvitesMeta),
@@ -17814,7 +12927,7 @@ export interface GetSlackIntegrationChannelRequest {
   /** The name of the Slack channel being operated on. */
   channel_name: string;
 }
-export const GetSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_name: S.String.pipe(T.Label()),
     channel_name: S.String.pipe(T.Label()),
@@ -17833,7 +12946,7 @@ export interface GetSlackIntegrationChannelsRequest {
   /** Your Slack account name. */
   account_name: string;
 }
-export const GetSlackIntegrationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSlackIntegrationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -17849,12 +12962,12 @@ export const GetSlackIntegrationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of configured Slack channels. */
 export type SlackIntegrationChannels = Array<SlackIntegrationChannel>;
-export const SlackIntegrationChannels = /*@__PURE__*/ S.Array(
+const SlackIntegrationChannels = /*@__PURE__*/ S.Array(
   SlackIntegrationChannel,
 ) as any as S.Schema<SlackIntegrationChannels>;
 
 export type GetSlackIntegrationChannelsResponse = SlackIntegrationChannels;
-export const GetSlackIntegrationChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSlackIntegrationChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   SlackIntegrationChannels.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSlackIntegrationChannelsResponse",
@@ -17866,7 +12979,7 @@ export interface GetSLORequest {
   /** Get the IDs of SLO monitors that reference this SLO. */
   with_configured_alert_ids?: boolean;
 }
-export const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
+const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_id: S.String.pipe(T.Label()),
     with_configured_alert_ids: S.optional(S.Boolean.pipe(T.Query())),
@@ -17875,32 +12988,32 @@ export const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query. */
 export type SLOResponseDataConfiguredAlertIdsList = Array<number>;
-export const SLOResponseDataConfiguredAlertIdsList =
+const SLOResponseDataConfiguredAlertIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOResponseDataConfiguredAlertIdsList>;
 
 /** A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type SLOResponseDataGroupsList = Array<string>;
-export const SLOResponseDataGroupsList =
+const SLOResponseDataGroupsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type SLOResponseDataMonitorIdsList = Array<number>;
-export const SLOResponseDataMonitorIdsList =
+const SLOResponseDataMonitorIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOResponseDataMonitorIdsList>;
 
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type SLOResponseDataMonitorTagsList = Array<string>;
-export const SLOResponseDataMonitorTagsList =
+const SLOResponseDataMonitorTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataMonitorTagsList>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type SLOResponseDataTagsList = Array<string>;
-export const SLOResponseDataTagsList =
+const SLOResponseDataTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataTagsList>;
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type SLOResponseDataThresholdsList = Array<SLOThreshold>;
-export const SLOResponseDataThresholdsList =
+const SLOResponseDataThresholdsList =
   CreateSLORequestThresholdsList as any as S.Schema<SLOResponseDataThresholdsList>;
 
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.). */
@@ -17939,7 +13052,7 @@ export interface SLOResponseData {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-export const SLOResponseData = /*@__PURE__*/ S.suspend(() =>
+const SLOResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configured_alert_ids: S.optional(SLOResponseDataConfiguredAlertIdsList),
     created_at: S.optional(S.Number),
@@ -17964,7 +13077,7 @@ export const SLOResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of error messages. Each endpoint documents how/whether this field is used. */
 export type SLOResponseErrorsList = Array<string>;
-export const SLOResponseErrorsList =
+const SLOResponseErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseErrorsList>;
 
 /** A service level objective response containing a single service level objective. */
@@ -17973,7 +13086,7 @@ export interface SLOResponse {
   /** An array of error messages. Each endpoint documents how/whether this field is used. */
   errors?: SLOResponseErrorsList;
 }
-export const SLOResponse = /*@__PURE__*/ S.suspend(() =>
+const SLOResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOResponseData),
     errors: S.optional(SLOResponseErrorsList),
@@ -17984,7 +13097,7 @@ export interface GetSLOCorrectionRequest {
   /** The ID of the SLO correction object. */
   slo_correction_id: string;
 }
-export const GetSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_correction_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/slo/correction/{slo_correction_id}", code: 200 })),
@@ -17994,7 +13107,7 @@ export interface GetSLOCorrectionsRequest {
   /** The ID of the service level objective object. */
   slo_id: string;
 }
-export const GetSLOCorrectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSLOCorrectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/slo/{slo_id}/corrections", code: 200 })),
@@ -18002,7 +13115,7 @@ export const GetSLOCorrectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of SLO corrections objects. */
 export type SLOCorrectionListResponseDataList = Array<SLOCorrection>;
-export const SLOCorrectionListResponseDataList = /*@__PURE__*/ S.Array(
+const SLOCorrectionListResponseDataList = /*@__PURE__*/ S.Array(
   SLOCorrection,
 ) as any as S.Schema<SLOCorrectionListResponseDataList>;
 
@@ -18013,7 +13126,7 @@ export interface Pagination {
   /** Total count of elements matched by the filter. */
   total_filtered_count?: number;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
+const Pagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     total_filtered_count: S.optional(S.Number),
@@ -18024,7 +13137,7 @@ export const Pagination = /*@__PURE__*/ S.suspend(() =>
 export interface ResponseMetaAttributes {
   page?: Pagination;
 }
-export const ResponseMetaAttributes = /*@__PURE__*/ S.suspend(() =>
+const ResponseMetaAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(Pagination),
   }),
@@ -18036,7 +13149,7 @@ export interface SLOCorrectionListResponse {
   data?: SLOCorrectionListResponseDataList;
   meta?: ResponseMetaAttributes;
 }
-export const SLOCorrectionListResponse = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOCorrectionListResponseDataList),
     meta: S.optional(ResponseMetaAttributes),
@@ -18057,7 +13170,7 @@ export interface GetSLOHistoryRequest {
   /** Defaults to `true`. If any SLO corrections are applied and this parameter is set to `false`, then the corrections will not be applied and the SLI values will not be affected. */
   apply_correction?: boolean;
 }
-export const GetSLOHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSLOHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_id: S.String.pipe(T.Label()),
     from_ts: S.Number.pipe(T.Query()),
@@ -18069,29 +13182,26 @@ export const GetSLOHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For `metric` based SLOs where the query includes a group-by clause, this represents the list of grouping parameters. This is not included in responses for `monitor` based SLOs. */
 export type SLOHistoryResponseDataGroupByList = Array<string>;
-export const SLOHistoryResponseDataGroupByList =
+const SLOHistoryResponseDataGroupByList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOHistoryResponseDataGroupByList>;
 
 /** A mapping of threshold `timeframe` to the remaining error budget. */
 export type SLOErrorBudgetRemainingData = { [key: string]: number | undefined };
-export const SLOErrorBudgetRemainingData = /*@__PURE__*/ S.Record(
+const SLOErrorBudgetRemainingData = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<SLOErrorBudgetRemainingData>;
 
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SLOHistoryMonitorErrorsList = Array<SLOHistoryResponseErrorWithType>;
-export const SLOHistoryMonitorErrorsList =
+const SLOHistoryMonitorErrorsList =
   SyntheticsUptimeErrorsList as any as S.Schema<SLOHistoryMonitorErrorsList>;
 
 /** Represents an array timeseries data. */
 export type SLOHistoryMonitorHistoryItemList = Array<number>;
-export const SLOHistoryMonitorHistoryItemList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMonitorHistoryItemList>;
-
 /** The state transition history for the monitor. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data are counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information. */
 export type SLOHistoryMonitorHistoryList = Array<SLOHistoryMonitorHistoryItemList>;
-export const SLOHistoryMonitorHistoryList =
+const SLOHistoryMonitorHistoryList =
   SyntheticsUptimeHistoryList as any as S.Schema<SLOHistoryMonitorHistoryList>;
 
 /** An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. */
@@ -18120,7 +13230,7 @@ export interface SLOHistoryMonitor {
   /** Use `sli_value` instead. */
   uptime?: number;
 }
-export const SLOHistoryMonitor = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryMonitor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_budget_remaining: S.optional(SLOErrorBudgetRemainingData),
     errors: S.optional(SLOHistoryMonitorErrorsList),
@@ -18139,33 +13249,30 @@ export const SLOHistoryMonitor = /*@__PURE__*/ S.suspend(() =>
 
 /** For grouped SLOs, this represents SLI data for specific groups. This is not included in the responses for `metric` based SLOs. */
 export type SLOHistoryResponseDataGroupsList = Array<SLOHistoryMonitor>;
-export const SLOHistoryResponseDataGroupsList = /*@__PURE__*/ S.Array(
+const SLOHistoryResponseDataGroupsList = /*@__PURE__*/ S.Array(
   SLOHistoryMonitor,
 ) as any as S.Schema<SLOHistoryResponseDataGroupsList>;
 
 /** For multi-monitor SLOs, this represents SLI data for specific monitors. This is not included in the responses for `metric` based SLOs. */
 export type SLOHistoryResponseDataMonitorsList = Array<SLOHistoryMonitor>;
-export const SLOHistoryResponseDataMonitorsList =
+const SLOHistoryResponseDataMonitorsList =
   SLOHistoryResponseDataGroupsList as any as S.Schema<SLOHistoryResponseDataMonitorsList>;
 
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SLOHistorySLIDataErrorsList = Array<SLOHistoryResponseErrorWithType>;
-export const SLOHistorySLIDataErrorsList =
+const SLOHistorySLIDataErrorsList =
   SyntheticsUptimeErrorsList as any as S.Schema<SLOHistorySLIDataErrorsList>;
 
 /** Represents an array timeseries data. */
 export type SLOHistorySLIDataHistoryItemList = Array<number>;
-export const SLOHistorySLIDataHistoryItemList =
-  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistorySLIDataHistoryItemList>;
-
 /** The state transition history for `monitor` or `time-slice` SLOs. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information. */
 export type SLOHistorySLIDataHistoryList = Array<SLOHistorySLIDataHistoryItemList>;
-export const SLOHistorySLIDataHistoryList =
+const SLOHistorySLIDataHistoryList =
   SyntheticsUptimeHistoryList as any as S.Schema<SLOHistorySLIDataHistoryList>;
 
 /** A mapping of threshold `timeframe` to number of accurate decimals, regardless of the from && to timestamp. */
 export type SLOHistorySLIDataPrecisionMap = { [key: string]: number | undefined };
-export const SLOHistorySLIDataPrecisionMap =
+const SLOHistorySLIDataPrecisionMap =
   SLOErrorBudgetRemainingData as any as S.Schema<SLOHistorySLIDataPrecisionMap>;
 
 /** An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. */
@@ -18194,7 +13301,7 @@ export interface SLOHistorySLIData {
   /** Use `sli_value` instead. */
   uptime?: number | null;
 }
-export const SLOHistorySLIData = /*@__PURE__*/ S.suspend(() =>
+const SLOHistorySLIData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error_budget_remaining: S.optional(SLOErrorBudgetRemainingData),
     errors: S.optional(SLOHistorySLIDataErrorsList),
@@ -18226,7 +13333,7 @@ export interface SLOHistoryMetricsSeriesMetadataUnit {
   /** A shorter and abbreviated version of the metric unit, for instance `B`. */
   short_name?: string | null;
 }
-export const SLOHistoryMetricsSeriesMetadataUnit = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryMetricsSeriesMetadataUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     family: S.optional(S.String),
     id: S.optional(S.Number),
@@ -18242,7 +13349,7 @@ export const SLOHistoryMetricsSeriesMetadataUnit = /*@__PURE__*/ S.suspend(() =>
 /** An array of metric units that contains up to two unit objects. For example, bytes represents one unit object and bytes per second represents two unit objects. If a metric query only has one unit object, the second array element is null. */
 export type SLOHistoryMetricsSeriesMetadataUnitList =
   Array<SLOHistoryMetricsSeriesMetadataUnit | null>;
-export const SLOHistoryMetricsSeriesMetadataUnitList = /*@__PURE__*/ S.Array(
+const SLOHistoryMetricsSeriesMetadataUnitList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(SLOHistoryMetricsSeriesMetadataUnit),
 ) as any as S.Schema<SLOHistoryMetricsSeriesMetadataUnitList>;
 
@@ -18261,7 +13368,7 @@ export interface SLOHistoryMetricsSeriesMetadata {
   /** An array of metric units that contains up to two unit objects. For example, bytes represents one unit object and bytes per second represents two unit objects. If a metric query only has one unit object, the second array element is null. */
   unit?: SLOHistoryMetricsSeriesMetadataUnitList | null;
 }
-export const SLOHistoryMetricsSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryMetricsSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggr: S.optional(S.String),
     expression: S.optional(S.String),
@@ -18276,7 +13383,7 @@ export const SLOHistoryMetricsSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The query values for each metric. */
 export type SLOHistoryMetricsSeriesValuesList = Array<number>;
-export const SLOHistoryMetricsSeriesValuesList =
+const SLOHistoryMetricsSeriesValuesList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMetricsSeriesValuesList>;
 
 /** A representation of `metric` based SLO timeseries for the provided queries. This is the same response type from `batch_query` endpoint. */
@@ -18289,7 +13396,7 @@ export interface SLOHistoryMetricsSeries {
   /** The query values for each metric. */
   values: SLOHistoryMetricsSeriesValuesList;
 }
-export const SLOHistoryMetricsSeries = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryMetricsSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     metadata: S.optional(SLOHistoryMetricsSeriesMetadata),
@@ -18300,7 +13407,7 @@ export const SLOHistoryMetricsSeries = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of query timestamps in EPOCH milliseconds. */
 export type SLOHistoryMetricsTimesList = Array<number>;
-export const SLOHistoryMetricsTimesList =
+const SLOHistoryMetricsTimesList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMetricsTimesList>;
 
 /** A `metric` based SLO history response. This is not included in responses for `monitor` based SLOs. */
@@ -18320,7 +13427,7 @@ export interface SLOHistoryMetrics {
   /** An array of query timestamps in EPOCH milliseconds. */
   times: SLOHistoryMetricsTimesList;
 }
-export const SLOHistoryMetrics = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denominator: SLOHistoryMetricsSeries,
     interval: S.Number,
@@ -18335,14 +13442,14 @@ export const SLOHistoryMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** mapping of string timeframe to the SLO threshold. */
 export type SLOHistoryResponseDataThresholdsMap = { [key: string]: SLOThreshold | undefined };
-export const SLOHistoryResponseDataThresholdsMap = /*@__PURE__*/ S.Record(
+const SLOHistoryResponseDataThresholdsMap = /*@__PURE__*/ S.Record(
   S.String,
   SLOThreshold,
 ) as any as S.Schema<SLOHistoryResponseDataThresholdsMap>;
 
 /** A numeric representation of the type of the service level objective (`0` for monitor, `1` for metric). Always included in service level objective responses. Ignored in create/update requests. */
 export type SLOTypeNumeric = 0 | 1 | 2;
-export const SLOTypeNumeric = S.Number;
+const SLOTypeNumeric = S.Number;
 
 /** An array of service level objective objects. */
 export interface SLOHistoryResponseData {
@@ -18363,7 +13470,7 @@ export interface SLOHistoryResponseData {
   type?: SLOType;
   type_id?: SLOTypeNumeric;
 }
-export const SLOHistoryResponseData = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from_ts: S.optional(S.Number),
     group_by: S.optional(SLOHistoryResponseDataGroupByList),
@@ -18383,7 +13490,7 @@ export interface SLOHistoryResponseError {
   /** Human readable error. */
   error?: string;
 }
-export const SLOHistoryResponseError = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
   }),
@@ -18391,7 +13498,7 @@ export const SLOHistoryResponseError = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors while querying the history data for the service level objective. */
 export type SLOHistoryResponseErrorsList = Array<SLOHistoryResponseError>;
-export const SLOHistoryResponseErrorsList = /*@__PURE__*/ S.Array(
+const SLOHistoryResponseErrorsList = /*@__PURE__*/ S.Array(
   SLOHistoryResponseError,
 ) as any as S.Schema<SLOHistoryResponseErrorsList>;
 
@@ -18401,7 +13508,7 @@ export interface SLOHistoryResponse {
   /** A list of errors while querying the history data for the service level objective. */
   errors?: SLOHistoryResponseErrorsList | null;
 }
-export const SLOHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const SLOHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SLOHistoryResponseData),
     errors: S.optional(S.NullOr(SLOHistoryResponseErrorsList)),
@@ -18412,7 +13519,7 @@ export interface GetSyntheticsCIBatchRequest {
   /** The ID of the batch. */
   batch_id: string;
 }
-export const GetSyntheticsCIBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSyntheticsCIBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/ci/batch/{batch_id}", code: 200 })),
@@ -18425,7 +13532,7 @@ export interface SyntheticsCIBatchMetadataPipeline {
   /** URL of the pipeline. */
   url?: string;
 }
-export const SyntheticsCIBatchMetadataPipeline = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCIBatchMetadataPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -18438,7 +13545,7 @@ export interface SyntheticsCIBatchMetadataProvider {
   /** Name of the CI provider. */
   name?: string;
 }
-export const SyntheticsCIBatchMetadataProvider = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCIBatchMetadataProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -18451,7 +13558,7 @@ export interface SyntheticsCIBatchMetadataCI {
   pipeline?: SyntheticsCIBatchMetadataPipeline;
   provider?: SyntheticsCIBatchMetadataProvider;
 }
-export const SyntheticsCIBatchMetadataCI = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCIBatchMetadataCI = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.optional(SyntheticsCIBatchMetadataPipeline),
     provider: S.optional(SyntheticsCIBatchMetadataProvider),
@@ -18467,7 +13574,7 @@ export interface SyntheticsCIBatchMetadataGit {
   /** The commit SHA. */
   commitSha?: string;
 }
-export const SyntheticsCIBatchMetadataGit = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCIBatchMetadataGit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.optional(S.String),
     commitSha: S.optional(S.String),
@@ -18481,7 +13588,7 @@ export interface SyntheticsCIBatchMetadata {
   ci?: SyntheticsCIBatchMetadataCI;
   git?: SyntheticsCIBatchMetadataGit;
 }
-export const SyntheticsCIBatchMetadata = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCIBatchMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ci: S.optional(SyntheticsCIBatchMetadataCI),
     git: S.optional(SyntheticsCIBatchMetadataGit),
@@ -18492,11 +13599,11 @@ export const SyntheticsCIBatchMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines whether the batch has passed, failed, or is in progress. */
 export type SyntheticsBatchStatus = "passed" | "skipped" | "failed";
-export const SyntheticsBatchStatus = S.String;
+const SyntheticsBatchStatus = S.String;
 
 /** Type of the Synthetic test. */
 export type SyntheticsTestDetailsType = "api" | "browser" | "mobile" | "network";
-export const SyntheticsTestDetailsType = S.String;
+const SyntheticsTestDetailsType = S.String;
 
 /** Object with the results of a Synthetic batch. */
 export interface SyntheticsBatchResult {
@@ -18517,7 +13624,7 @@ export interface SyntheticsBatchResult {
   test_public_id?: string;
   test_type?: SyntheticsTestDetailsType;
 }
-export const SyntheticsBatchResult = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBatchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(S.String),
     duration: S.optional(S.Number),
@@ -18534,7 +13641,7 @@ export const SyntheticsBatchResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of results for the batch. */
 export type SyntheticsBatchDetailsDataResultsList = Array<SyntheticsBatchResult>;
-export const SyntheticsBatchDetailsDataResultsList = /*@__PURE__*/ S.Array(
+const SyntheticsBatchDetailsDataResultsList = /*@__PURE__*/ S.Array(
   SyntheticsBatchResult,
 ) as any as S.Schema<SyntheticsBatchDetailsDataResultsList>;
 
@@ -18545,7 +13652,7 @@ export interface SyntheticsBatchDetailsData {
   results?: SyntheticsBatchDetailsDataResultsList;
   status?: SyntheticsBatchStatus;
 }
-export const SyntheticsBatchDetailsData = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBatchDetailsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SyntheticsCIBatchMetadata),
     results: S.optional(SyntheticsBatchDetailsDataResultsList),
@@ -18559,14 +13666,14 @@ export const SyntheticsBatchDetailsData = /*@__PURE__*/ S.suspend(() =>
 export interface SyntheticsBatchDetails {
   data?: SyntheticsBatchDetailsData;
 }
-export const SyntheticsBatchDetails = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsBatchDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SyntheticsBatchDetailsData),
   }),
 ).annotate({ identifier: "SyntheticsBatchDetails" }) as any as S.Schema<SyntheticsBatchDetails>;
 
 export interface GetSyntheticsDefaultLocationsRequest {}
-export const GetSyntheticsDefaultLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSyntheticsDefaultLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v1/synthetics/settings/default_locations", code: 200 }),
   ),
@@ -18576,11 +13683,11 @@ export const GetSyntheticsDefaultLocationsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of Synthetics default locations settings. */
 export type SyntheticsDefaultLocations = Array<string>;
-export const SyntheticsDefaultLocations =
+const SyntheticsDefaultLocations =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsDefaultLocations>;
 
 export type GetSyntheticsDefaultLocationsResponse = SyntheticsDefaultLocations;
-export const GetSyntheticsDefaultLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSyntheticsDefaultLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   SyntheticsDefaultLocations.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSyntheticsDefaultLocationsResponse",
@@ -18590,7 +13697,7 @@ export interface GetTestRequest {
   /** The public ID of the test to get details from. */
   public_id: string;
 }
-export const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/tests/{public_id}", code: 200 })),
@@ -18598,12 +13705,12 @@ export const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsTestDetailsWithoutStepsLocationsList = Array<string>;
-export const SyntheticsTestDetailsWithoutStepsLocationsList =
+const SyntheticsTestDetailsWithoutStepsLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsWithoutStepsLocationsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsTestDetailsWithoutStepsTagsList = Array<string>;
-export const SyntheticsTestDetailsWithoutStepsTagsList =
+const SyntheticsTestDetailsWithoutStepsTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsWithoutStepsTagsList>;
 
 /** Object containing details about your Synthetic test, without test steps. */
@@ -18627,7 +13734,7 @@ export interface SyntheticsTestDetailsWithoutSteps {
   tags?: SyntheticsTestDetailsWithoutStepsTagsList;
   type?: SyntheticsTestDetailsType;
 }
-export const SyntheticsTestDetailsWithoutSteps = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestDetailsWithoutSteps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(SyntheticsTestConfig),
     creator: S.optional(Creator),
@@ -18652,7 +13759,7 @@ export interface GetUsageBillableSummaryRequest {
   /** Boolean to specify whether to include accounts connected to the current account as partner customers in the Datadog partner network program. Defaults to `false`. */
   include_connected_accounts?: boolean;
 }
-export const GetUsageBillableSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsageBillableSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.String.pipe(T.Query())),
     include_connected_accounts: S.optional(S.Boolean.pipe(T.Query())),
@@ -18662,12 +13769,12 @@ export const GetUsageBillableSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsageBillableSummaryRequest>;
 
 export interface GetUsageBillableSummaryResponse {}
-export const GetUsageBillableSummaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetUsageBillableSummaryResponse" },
-) as any as S.Schema<GetUsageBillableSummaryResponse>;
+const GetUsageBillableSummaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "GetUsageBillableSummaryResponse",
+}) as any as S.Schema<GetUsageBillableSummaryResponse>;
 
 export type GetUsageLogsByIndexRequestIndexNameList = Array<string>;
-export const GetUsageLogsByIndexRequestIndexNameList =
+const GetUsageLogsByIndexRequestIndexNameList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetUsageLogsByIndexRequestIndexNameList>;
 
 export interface GetUsageLogsByIndexRequest {
@@ -18678,7 +13785,7 @@ export interface GetUsageLogsByIndexRequest {
   /** Comma-separated list of log index names. */
   index_name?: GetUsageLogsByIndexRequestIndexNameList;
 }
-export const GetUsageLogsByIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsageLogsByIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_hr: S.String.pipe(T.Query()),
     end_hr: S.optional(S.String.pipe(T.Query())),
@@ -18689,7 +13796,7 @@ export const GetUsageLogsByIndexRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsageLogsByIndexRequest>;
 
 export interface GetUsageLogsByIndexResponse {}
-export const GetUsageLogsByIndexResponse =
+const GetUsageLogsByIndexResponse =
   CreateEventResponse as any as S.Schema<GetUsageLogsByIndexResponse>;
 
 export interface GetUsageSummaryRequest {
@@ -18702,7 +13809,7 @@ export interface GetUsageSummaryRequest {
   /** Boolean to specify whether to include accounts connected to the current account as partner customers in the Datadog partner network program. Defaults to `false`. */
   include_connected_accounts?: boolean;
 }
-export const GetUsageSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsageSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_month: S.String.pipe(T.Query()),
     end_month: S.optional(S.String.pipe(T.Query())),
@@ -18712,11 +13819,10 @@ export const GetUsageSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsageSummaryRequest" }) as any as S.Schema<GetUsageSummaryRequest>;
 
 export interface GetUsageSummaryResponse {}
-export const GetUsageSummaryResponse =
-  CreateEventResponse as any as S.Schema<GetUsageSummaryResponse>;
+const GetUsageSummaryResponse = CreateEventResponse as any as S.Schema<GetUsageSummaryResponse>;
 
 export type GetUsageTopAvgMetricsRequestNamesList = Array<string>;
-export const GetUsageTopAvgMetricsRequestNamesList =
+const GetUsageTopAvgMetricsRequestNamesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetUsageTopAvgMetricsRequestNamesList>;
 
 export interface GetUsageTopAvgMetricsRequest {
@@ -18731,7 +13837,7 @@ export interface GetUsageTopAvgMetricsRequest {
   /** List following results with a next_record_id provided in the previous query. */
   next_record_id?: string;
 }
-export const GetUsageTopAvgMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsageTopAvgMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.String.pipe(T.Query())),
     day: S.optional(S.String.pipe(T.Query())),
@@ -18744,14 +13850,14 @@ export const GetUsageTopAvgMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsageTopAvgMetricsRequest>;
 
 export interface GetUsageTopAvgMetricsResponse {}
-export const GetUsageTopAvgMetricsResponse =
+const GetUsageTopAvgMetricsResponse =
   CreateEventResponse as any as S.Schema<GetUsageTopAvgMetricsResponse>;
 
 export interface GetUserRequest {
   /** The ID of the user. */
   user_handle: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_handle: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/user/{user_handle}", code: 200 })),
@@ -18761,7 +13867,7 @@ export interface GetWebhooksIntegrationRequest {
   /** The name of the webhook. */
   webhook_name: string;
 }
-export const GetWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -18779,7 +13885,7 @@ export interface GetWebhooksIntegrationCustomVariableRequest {
   /** The name of the custom variable. */
   custom_variable_name: string;
 }
-export const GetWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_variable_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -18801,7 +13907,7 @@ export interface ListActiveMetricsRequest {
   /** Filter metrics that have been submitted with the given tags. Supports boolean and wildcard expressions. Cannot be combined with other filters. */
   tag_filter?: string;
 }
-export const ListActiveMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActiveMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.Number.pipe(T.Query()),
     host: S.optional(S.String.pipe(T.Query())),
@@ -18811,7 +13917,7 @@ export const ListActiveMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of metric names. */
 export type MetricsListResponseMetricsList = Array<string>;
-export const MetricsListResponseMetricsList =
+const MetricsListResponseMetricsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsListResponseMetricsList>;
 
 /** Object listing all metric names stored by Datadog since a given time. */
@@ -18821,7 +13927,7 @@ export interface MetricsListResponse {
   /** List of metric names. */
   metrics?: MetricsListResponseMetricsList;
 }
-export const MetricsListResponse = /*@__PURE__*/ S.suspend(() =>
+const MetricsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String),
     metrics: S.optional(MetricsListResponseMetricsList),
@@ -18829,13 +13935,13 @@ export const MetricsListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricsListResponse" }) as any as S.Schema<MetricsListResponse>;
 
 export interface ListAPIKeysRequest {}
-export const ListAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/api_key", code: 200 })),
 ).annotate({ identifier: "ListAPIKeysRequest" }) as any as S.Schema<ListAPIKeysRequest>;
 
 /** Array of API keys. */
 export type ApiKeyListResponseApiKeysList = Array<ApiKey>;
-export const ApiKeyListResponseApiKeysList = /*@__PURE__*/ S.Array(
+const ApiKeyListResponseApiKeysList = /*@__PURE__*/ S.Array(
   ApiKey,
 ) as any as S.Schema<ApiKeyListResponseApiKeysList>;
 
@@ -18844,14 +13950,14 @@ export interface ApiKeyListResponse {
   /** Array of API keys. */
   api_keys?: ApiKeyListResponseApiKeysList;
 }
-export const ApiKeyListResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_keys: S.optional(ApiKeyListResponseApiKeysList),
   }),
 ).annotate({ identifier: "ApiKeyListResponse" }) as any as S.Schema<ApiKeyListResponse>;
 
 export interface ListApplicationKeysRequest {}
-export const ListApplicationKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/application_key", code: 200 })),
 ).annotate({
   identifier: "ListApplicationKeysRequest",
@@ -18859,7 +13965,7 @@ export const ListApplicationKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of application keys. */
 export type ApplicationKeyListResponseApplicationKeysList = Array<ApplicationKey>;
-export const ApplicationKeyListResponseApplicationKeysList = /*@__PURE__*/ S.Array(
+const ApplicationKeyListResponseApplicationKeysList = /*@__PURE__*/ S.Array(
   ApplicationKey,
 ) as any as S.Schema<ApplicationKeyListResponseApplicationKeysList>;
 
@@ -18868,7 +13974,7 @@ export interface ApplicationKeyListResponse {
   /** Array of application keys. */
   application_keys?: ApplicationKeyListResponseApplicationKeysList;
 }
-export const ApplicationKeyListResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplicationKeyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     application_keys: S.optional(ApplicationKeyListResponseApplicationKeysList),
   }),
@@ -18877,7 +13983,7 @@ export const ApplicationKeyListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationKeyListResponse>;
 
 export interface ListAzureIntegrationRequest {}
-export const ListAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/integration/azure", code: 200 })),
 ).annotate({
   identifier: "ListAzureIntegrationRequest",
@@ -18885,12 +13991,12 @@ export const ListAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type AzureAccountErrorsList = Array<string>;
-export const AzureAccountErrorsList =
+const AzureAccountErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<AzureAccountErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type AzureAccountResourceProviderConfigsList = Array<ResourceProviderConfig>;
-export const AzureAccountResourceProviderConfigsList =
+const AzureAccountResourceProviderConfigsList =
   CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<AzureAccountResourceProviderConfigsList>;
 
 /** Datadog-Azure integrations configured for your organization. */
@@ -18932,7 +14038,7 @@ export interface AzureAccount {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-export const AzureAccount = /*@__PURE__*/ S.suspend(() =>
+const AzureAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_service_plan_filters: S.optional(S.String),
     automute: S.optional(S.Boolean),
@@ -18957,19 +14063,19 @@ export const AzureAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Accounts configured for your organization. */
 export type AzureAccountListResponse = Array<AzureAccount>;
-export const AzureAccountListResponse = /*@__PURE__*/ S.Array(
+const AzureAccountListResponse = /*@__PURE__*/ S.Array(
   AzureAccount,
 ) as any as S.Schema<AzureAccountListResponse>;
 
 export type ListAzureIntegrationResponse = AzureAccountListResponse;
-export const ListAzureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAzureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   AzureAccountListResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAzureIntegrationResponse",
 }) as any as S.Schema<ListAzureIntegrationResponse>;
 
 export interface ListDashboardListsRequest {}
-export const ListDashboardListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/lists/manual", code: 200 })),
 ).annotate({
   identifier: "ListDashboardListsRequest",
@@ -18977,7 +14083,7 @@ export const ListDashboardListsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all your dashboard lists. */
 export type DashboardListListResponseDashboardListsList = Array<DashboardList>;
-export const DashboardListListResponseDashboardListsList = /*@__PURE__*/ S.Array(
+const DashboardListListResponseDashboardListsList = /*@__PURE__*/ S.Array(
   DashboardList,
 ) as any as S.Schema<DashboardListListResponseDashboardListsList>;
 
@@ -18986,7 +14092,7 @@ export interface DashboardListListResponse {
   /** List of all your dashboard lists. */
   dashboard_lists?: DashboardListListResponseDashboardListsList;
 }
-export const DashboardListListResponse = /*@__PURE__*/ S.suspend(() =>
+const DashboardListListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_lists: S.optional(DashboardListListResponseDashboardListsList),
   }),
@@ -19004,7 +14110,7 @@ export interface ListDashboardsRequest {
   /** The specific offset to use as the beginning of the returned response. */
   start?: number;
 }
-export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter_shared_: S.optional(S.Boolean.pipe(T.Query("filter[shared]"))),
     filter_deleted_: S.optional(S.Boolean.pipe(T.Query("filter[deleted]"))),
@@ -19033,7 +14139,7 @@ export interface DashboardSummaryDefinition {
   /** URL of the dashboard. */
   url?: string;
 }
-export const DashboardSummaryDefinition = /*@__PURE__*/ S.suspend(() =>
+const DashboardSummaryDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author_handle: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -19051,7 +14157,7 @@ export const DashboardSummaryDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dashboard definitions. */
 export type DashboardSummaryDashboardsList = Array<DashboardSummaryDefinition>;
-export const DashboardSummaryDashboardsList = /*@__PURE__*/ S.Array(
+const DashboardSummaryDashboardsList = /*@__PURE__*/ S.Array(
   DashboardSummaryDefinition,
 ) as any as S.Schema<DashboardSummaryDashboardsList>;
 
@@ -19060,7 +14166,7 @@ export interface DashboardSummary {
   /** List of dashboard definitions. */
   dashboards?: DashboardSummaryDashboardsList;
 }
-export const DashboardSummary = /*@__PURE__*/ S.suspend(() =>
+const DashboardSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(DashboardSummaryDashboardsList),
   }),
@@ -19084,7 +14190,7 @@ export interface ListEventsRequest {
   /** By default 1000 results are returned per request. Set page to the number of the page to return with `0` being the first page. The page parameter can only be used when either unaggregated or exclude_aggregate is set to `true.` */
   page?: number;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.Number.pipe(T.Query()),
     end: S.Number.pipe(T.Query()),
@@ -19099,7 +14205,7 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of events. */
 export type EventListResponseEventsList = Array<Event>;
-export const EventListResponseEventsList = /*@__PURE__*/ S.Array(
+const EventListResponseEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventListResponseEventsList>;
 
@@ -19110,7 +14216,7 @@ export interface EventListResponse {
   /** A status. */
   status?: string;
 }
-export const EventListResponse = /*@__PURE__*/ S.suspend(() =>
+const EventListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(EventListResponseEventsList),
     status: S.optional(S.String),
@@ -19118,7 +14224,7 @@ export const EventListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventListResponse" }) as any as S.Schema<EventListResponse>;
 
 export interface ListGlobalVariablesRequest {}
-export const ListGlobalVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGlobalVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/variables", code: 200 })),
 ).annotate({
   identifier: "ListGlobalVariablesRequest",
@@ -19126,7 +14232,7 @@ export const ListGlobalVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Synthetic global variables. */
 export type SyntheticsListGlobalVariablesResponseVariablesList = Array<SyntheticsGlobalVariable>;
-export const SyntheticsListGlobalVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
+const SyntheticsListGlobalVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
   SyntheticsGlobalVariable,
 ) as any as S.Schema<SyntheticsListGlobalVariablesResponseVariablesList>;
 
@@ -19135,7 +14241,7 @@ export interface SyntheticsListGlobalVariablesResponse {
   /** Array of Synthetic global variables. */
   variables?: SyntheticsListGlobalVariablesResponseVariablesList;
 }
-export const SyntheticsListGlobalVariablesResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsListGlobalVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variables: S.optional(SyntheticsListGlobalVariablesResponseVariablesList),
   }),
@@ -19161,7 +14267,7 @@ export interface ListHostsRequest {
   /** Include additional metadata about the hosts (agent_version, machine, platform, processor, etc.). */
   include_hosts_metadata?: boolean;
 }
-export const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     sort_field: S.optional(S.String.pipe(T.Query())),
@@ -19176,27 +14282,25 @@ export const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Host aliases collected by Datadog. */
 export type HostAliasesList = Array<string>;
-export const HostAliasesList = CrossOrgUuids as any as S.Schema<HostAliasesList>;
+const HostAliasesList = CrossOrgUuids as any as S.Schema<HostAliasesList>;
 
 /** The Datadog integrations reporting metrics for the host. */
 export type HostAppsList = Array<string>;
-export const HostAppsList = CrossOrgUuids as any as S.Schema<HostAppsList>;
+const HostAppsList = CrossOrgUuids as any as S.Schema<HostAppsList>;
 
 /** Array of strings. */
 export type AgentCheck = Array<unknown>;
-export const AgentCheck = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<AgentCheck>;
+const AgentCheck = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<AgentCheck>;
 
 /** A list of Agent checks running on the host. */
 export type HostMetaAgentChecksList = Array<AgentCheck>;
-export const HostMetaAgentChecksList = /*@__PURE__*/ S.Array(
+const HostMetaAgentChecksList = /*@__PURE__*/ S.Array(
   AgentCheck,
 ) as any as S.Schema<HostMetaAgentChecksList>;
 
 /** An array of Mac versions. */
 export type HostMetaFbsdVList = Array<unknown>;
-export const HostMetaFbsdVList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HostMetaFbsdVList>;
+const HostMetaFbsdVList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<HostMetaFbsdVList>;
 
 /** Agent install method. */
 export interface HostMetaInstallMethod {
@@ -19207,7 +14311,7 @@ export interface HostMetaInstallMethod {
   /** The tool version. */
   tool_version?: string;
 }
-export const HostMetaInstallMethod = /*@__PURE__*/ S.suspend(() =>
+const HostMetaInstallMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installer_version: S.optional(S.String),
     tool: S.optional(S.String),
@@ -19217,15 +14321,15 @@ export const HostMetaInstallMethod = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Mac versions. */
 export type HostMetaMacVList = Array<unknown>;
-export const HostMetaMacVList = HostMetaFbsdVList as any as S.Schema<HostMetaMacVList>;
+const HostMetaMacVList = HostMetaFbsdVList as any as S.Schema<HostMetaMacVList>;
 
 /** Array of Unix versions. */
 export type HostMetaNixVList = Array<unknown>;
-export const HostMetaNixVList = HostMetaFbsdVList as any as S.Schema<HostMetaNixVList>;
+const HostMetaNixVList = HostMetaFbsdVList as any as S.Schema<HostMetaNixVList>;
 
 /** An array of Windows versions. */
 export type HostMetaWinVList = Array<unknown>;
-export const HostMetaWinVList = HostMetaFbsdVList as any as S.Schema<HostMetaWinVList>;
+const HostMetaWinVList = HostMetaFbsdVList as any as S.Schema<HostMetaWinVList>;
 
 /** Metadata associated with your host. */
 export interface HostMeta {
@@ -19259,7 +14363,7 @@ export interface HostMeta {
   /** An array of Windows versions. */
   winV?: HostMetaWinVList;
 }
-export const HostMeta = /*@__PURE__*/ S.suspend(() =>
+const HostMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_checks: S.optional(HostMetaAgentChecksList),
     agent_version: S.optional(S.String),
@@ -19288,7 +14392,7 @@ export interface HostMetrics {
   /** The system load over the last 15 minutes. */
   load?: number;
 }
-export const HostMetrics = /*@__PURE__*/ S.suspend(() =>
+const HostMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu: S.optional(S.Number),
     iowait: S.optional(S.Number),
@@ -19298,16 +14402,13 @@ export const HostMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Source or cloud provider associated with your host. */
 export type HostSourcesList = Array<string>;
-export const HostSourcesList = CrossOrgUuids as any as S.Schema<HostSourcesList>;
+const HostSourcesList = CrossOrgUuids as any as S.Schema<HostSourcesList>;
 
 /** Array of tags for a single source. */
 export type HostTagsBySourceValueList = Array<string>;
-export const HostTagsBySourceValueList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostTagsBySourceValueList>;
-
 /** List of tags for each source (AWS, Datadog Agent, Chef..). */
 export type HostTagsBySourceMap = { [key: string]: HostTagsBySourceValueList | undefined };
-export const HostTagsBySourceMap =
+const HostTagsBySourceMap =
   CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<HostTagsBySourceMap>;
 
 /** Object representing a host. */
@@ -19339,7 +14440,7 @@ export interface Host {
   /** Displays UP when the expected metrics are received and displays `???` if no metrics are received. */
   up?: boolean;
 }
-export const Host = /*@__PURE__*/ S.suspend(() =>
+const Host = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliases: S.optional(HostAliasesList),
     apps: S.optional(HostAppsList),
@@ -19360,7 +14461,7 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of hosts. */
 export type HostListResponseHostListList = Array<Host>;
-export const HostListResponseHostListList = /*@__PURE__*/ S.Array(
+const HostListResponseHostListList = /*@__PURE__*/ S.Array(
   Host,
 ) as any as S.Schema<HostListResponseHostListList>;
 
@@ -19373,7 +14474,7 @@ export interface HostListResponse {
   /** Number of host returned. */
   total_returned?: number;
 }
-export const HostListResponse = /*@__PURE__*/ S.suspend(() =>
+const HostListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_list: S.optional(HostListResponseHostListList),
     total_matching: S.optional(S.Number),
@@ -19385,7 +14486,7 @@ export interface ListHostTagsRequest {
   /** Source to filter. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. */
   source?: string;
 }
-export const ListHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/tags/hosts", code: 200 })),
@@ -19393,12 +14494,9 @@ export const ListHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of host names which contain this tag */
 export type TagToHostsTagsValueList = Array<string>;
-export const TagToHostsTagsValueList =
-  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<TagToHostsTagsValueList>;
-
 /** A mapping of tags to host names */
 export type TagToHostsTagsMap = { [key: string]: TagToHostsTagsValueList | undefined };
-export const TagToHostsTagsMap =
+const TagToHostsTagsMap =
   CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<TagToHostsTagsMap>;
 
 /** In this object, the key is the tag, and the value is a list of host names that are reporting that tag. */
@@ -19406,14 +14504,14 @@ export interface TagToHosts {
   /** A mapping of tags to host names */
   tags?: TagToHostsTagsMap;
 }
-export const TagToHosts = /*@__PURE__*/ S.suspend(() =>
+const TagToHosts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(TagToHostsTagsMap),
   }),
 ).annotate({ identifier: "TagToHosts" }) as any as S.Schema<TagToHosts>;
 
 export interface ListLocationsRequest {}
-export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/synthetics/locations", code: 200 })),
 ).annotate({ identifier: "ListLocationsRequest" }) as any as S.Schema<ListLocationsRequest>;
 
@@ -19424,7 +14522,7 @@ export interface SyntheticsLocation {
   /** Name of the location. */
   name?: string;
 }
-export const SyntheticsLocation = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -19433,7 +14531,7 @@ export const SyntheticsLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Synthetic locations. */
 export type SyntheticsLocationsLocationsList = Array<SyntheticsLocation>;
-export const SyntheticsLocationsLocationsList = /*@__PURE__*/ S.Array(
+const SyntheticsLocationsLocationsList = /*@__PURE__*/ S.Array(
   SyntheticsLocation,
 ) as any as S.Schema<SyntheticsLocationsLocationsList>;
 
@@ -19442,20 +14540,20 @@ export interface SyntheticsLocations {
   /** List of Synthetic locations. */
   locations?: SyntheticsLocationsLocationsList;
 }
-export const SyntheticsLocations = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsLocations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(SyntheticsLocationsLocationsList),
   }),
 ).annotate({ identifier: "SyntheticsLocations" }) as any as S.Schema<SyntheticsLocations>;
 
 export interface ListLogIndexesRequest {}
-export const ListLogIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/logs/config/indexes", code: 200 })),
 ).annotate({ identifier: "ListLogIndexesRequest" }) as any as S.Schema<ListLogIndexesRequest>;
 
 /** Array of Log index configurations. */
 export type LogsIndexListResponseIndexesList = Array<LogsIndex>;
-export const LogsIndexListResponseIndexesList = /*@__PURE__*/ S.Array(
+const LogsIndexListResponseIndexesList = /*@__PURE__*/ S.Array(
   LogsIndex,
 ) as any as S.Schema<LogsIndexListResponseIndexesList>;
 
@@ -19464,7 +14562,7 @@ export interface LogsIndexListResponse {
   /** Array of Log index configurations. */
   indexes?: LogsIndexListResponseIndexesList;
 }
-export const LogsIndexListResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsIndexListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexes: S.optional(LogsIndexListResponseIndexesList),
   }),
@@ -19472,7 +14570,7 @@ export const LogsIndexListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Time-ascending `asc` or time-descending `desc` results. */
 export type LogsSort = "asc" | "desc";
-export const LogsSort = S.String;
+const LogsSort = S.String;
 
 /** Timeframe to retrieve the log from. */
 export interface LogsListRequestTime {
@@ -19483,7 +14581,7 @@ export interface LogsListRequestTime {
   /** Maximum timestamp for requested logs. */
   to: string;
 }
-export const LogsListRequestTime = /*@__PURE__*/ S.suspend(() =>
+const LogsListRequestTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.String,
     timezone: S.optional(S.String),
@@ -19503,7 +14601,7 @@ export interface ListLogsRequest {
   startAt?: string;
   time: LogsListRequestTime;
 }
-export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -19516,12 +14614,12 @@ export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON object of attributes from your log. */
 export type LogContentAttributesMap = { [key: string]: unknown | undefined };
-export const LogContentAttributesMap =
+const LogContentAttributesMap =
   SyntheticsTestRequestToolArgsMap as any as S.Schema<LogContentAttributesMap>;
 
 /** Array of tags associated with your log. */
 export type LogContentTagsList = Array<string>;
-export const LogContentTagsList =
+const LogContentTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogContentTagsList>;
 
 /** JSON object containing all log attributes and their associated values. */
@@ -19539,7 +14637,7 @@ export interface LogContent {
   /** Timestamp of your log. */
   timestamp?: string;
 }
-export const LogContent = /*@__PURE__*/ S.suspend(() =>
+const LogContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(LogContentAttributesMap),
     host: S.optional(S.String),
@@ -19556,7 +14654,7 @@ export interface Log {
   /** ID of the Log. */
   id?: string;
 }
-export const Log = /*@__PURE__*/ S.suspend(() =>
+const Log = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(LogContent),
     id: S.optional(S.String),
@@ -19565,7 +14663,7 @@ export const Log = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of logs matching the request and the `nextLogId` if sent. */
 export type LogsListResponseLogsList = Array<Log>;
-export const LogsListResponseLogsList = /*@__PURE__*/ S.Array(
+const LogsListResponseLogsList = /*@__PURE__*/ S.Array(
   Log,
 ) as any as S.Schema<LogsListResponseLogsList>;
 
@@ -19578,7 +14676,7 @@ export interface LogsListResponse {
   /** Status of the response. */
   status?: string;
 }
-export const LogsListResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(LogsListResponseLogsList),
     nextLogId: S.optional(S.NullOr(S.String)),
@@ -19587,18 +14685,16 @@ export const LogsListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsListResponse" }) as any as S.Schema<LogsListResponse>;
 
 export interface ListLogsPipelinesRequest {}
-export const ListLogsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/logs/config/pipelines", code: 200 })),
 ).annotate({ identifier: "ListLogsPipelinesRequest" }) as any as S.Schema<ListLogsPipelinesRequest>;
 
 /** Array of all log pipeline objects configured for the organization. */
 export type LogsPipelineList = Array<LogsPipeline>;
-export const LogsPipelineList = /*@__PURE__*/ S.Array(
-  LogsPipeline,
-) as any as S.Schema<LogsPipelineList>;
+const LogsPipelineList = /*@__PURE__*/ S.Array(LogsPipeline) as any as S.Schema<LogsPipelineList>;
 
 export type ListLogsPipelinesResponse = LogsPipelineList;
-export const ListLogsPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogsPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
   LogsPipelineList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListLogsPipelinesResponse",
@@ -19622,7 +14718,7 @@ export interface ListMonitorsRequest {
   /** The number of monitors to return per page. If the page argument is not specified, the default behavior returns all monitors without a `page_size` limit. However, if page is specified and `page_size` is not, the argument defaults to 100. */
   page_size?: number;
 }
-export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_states: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -19637,12 +14733,12 @@ export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of monitor objects. */
 export type ListMonitorsResponseBodyList = Array<Monitor>;
-export const ListMonitorsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMonitorsResponseBodyList = /*@__PURE__*/ S.Array(
   Monitor,
 ) as any as S.Schema<ListMonitorsResponseBodyList>;
 
 export type ListMonitorsResponse = ListMonitorsResponseBodyList;
-export const ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMonitorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMonitorsResponse" }) as any as S.Schema<ListMonitorsResponse>;
 
@@ -19668,7 +14764,7 @@ export interface ListNotebooksRequest {
   /** If type is provided, returns only notebooks with that metadata type. Default does not have type filtering. */
   type?: string;
 }
-export const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author_handle: S.optional(S.String.pipe(T.Query())),
     exclude_author_handle: S.optional(S.String.pipe(T.Query())),
@@ -19685,12 +14781,12 @@ export const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cells to display in the notebook. */
 export type NotebooksResponseDataAttributesCellsList = Array<NotebookCellResponse>;
-export const NotebooksResponseDataAttributesCellsList =
+const NotebooksResponseDataAttributesCellsList =
   NotebookResponseDataAttributesCellsList as any as S.Schema<NotebooksResponseDataAttributesCellsList>;
 
 /** List of template variables for this notebook. */
 export type NotebooksResponseDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebooksResponseDataAttributesTemplateVariablesList =
+const NotebooksResponseDataAttributesTemplateVariablesList =
   NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebooksResponseDataAttributesTemplateVariablesList>;
 
 /** The attributes of a notebook in get all response. */
@@ -19710,7 +14806,7 @@ export interface NotebooksResponseDataAttributes {
   template_variables?: NotebooksResponseDataAttributesTemplateVariablesList | null;
   time?: NotebookGlobalTime;
 }
-export const NotebooksResponseDataAttributes = /*@__PURE__*/ S.suspend(() =>
+const NotebooksResponseDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(NotebookAuthor),
     cells: S.optional(NotebooksResponseDataAttributesCellsList),
@@ -19733,7 +14829,7 @@ export interface NotebooksResponseData {
   id: number;
   type: NotebookResourceType;
 }
-export const NotebooksResponseData = /*@__PURE__*/ S.suspend(() =>
+const NotebooksResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: NotebooksResponseDataAttributes,
     id: S.Number,
@@ -19743,7 +14839,7 @@ export const NotebooksResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** List of notebook definitions. */
 export type NotebooksResponseDataList = Array<NotebooksResponseData>;
-export const NotebooksResponseDataList = /*@__PURE__*/ S.Array(
+const NotebooksResponseDataList = /*@__PURE__*/ S.Array(
   NotebooksResponseData,
 ) as any as S.Schema<NotebooksResponseDataList>;
 
@@ -19754,14 +14850,11 @@ export interface NotebooksResponsePage {
   /** The total number of notebooks returned. */
   total_filtered_count?: number;
 }
-export const NotebooksResponsePage = Pagination as any as S.Schema<NotebooksResponsePage>;
-
 /** Searches metadata returned by the API. */
 export interface NotebooksResponseMeta {
   page?: NotebooksResponsePage;
 }
-export const NotebooksResponseMeta =
-  ResponseMetaAttributes as any as S.Schema<NotebooksResponseMeta>;
+const NotebooksResponseMeta = ResponseMetaAttributes as any as S.Schema<NotebooksResponseMeta>;
 
 /** Notebooks get all response. */
 export interface NotebooksResponse {
@@ -19769,7 +14862,7 @@ export interface NotebooksResponse {
   data?: NotebooksResponseDataList;
   meta?: NotebooksResponseMeta;
 }
-export const NotebooksResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(NotebooksResponseDataList),
     meta: S.optional(NotebooksResponseMeta),
@@ -19777,13 +14870,13 @@ export const NotebooksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotebooksResponse" }) as any as S.Schema<NotebooksResponse>;
 
 export interface ListOrgsRequest {}
-export const ListOrgsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/org", code: 200 })),
 ).annotate({ identifier: "ListOrgsRequest" }) as any as S.Schema<ListOrgsRequest>;
 
 /** Array of organization objects. */
 export type OrganizationListResponseOrgsList = Array<Organization>;
-export const OrganizationListResponseOrgsList = /*@__PURE__*/ S.Array(
+const OrganizationListResponseOrgsList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationListResponseOrgsList>;
 
@@ -19792,7 +14885,7 @@ export interface OrganizationListResponse {
   /** Array of organization objects. */
   orgs?: OrganizationListResponseOrgsList;
 }
-export const OrganizationListResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgs: S.optional(OrganizationListResponseOrgsList),
   }),
@@ -19804,7 +14897,7 @@ export interface ListSLOCorrectionRequest {
   /** The number of SLO corrections to return in the response. Default is 25. */
   limit?: number;
 }
-export const ListSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -19827,7 +14920,7 @@ export interface ListSLOsRequest {
   /** Whether to return only deleted service level objective objects. */
   is_deleted?: boolean;
 }
-export const ListSLOsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSLOsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -19845,7 +14938,7 @@ export interface ListTestsRequest {
   /** Used for pagination. Which page you want to retrieve. Starts at zero. */
   page_number?: number;
 }
-export const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page_size: S.optional(S.Number.pipe(T.Query())),
     page_number: S.optional(S.Number.pipe(T.Query())),
@@ -19854,7 +14947,7 @@ export const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Synthetic tests configuration. */
 export type SyntheticsListTestsResponseTestsList = Array<SyntheticsTestDetailsWithoutSteps>;
-export const SyntheticsListTestsResponseTestsList = /*@__PURE__*/ S.Array(
+const SyntheticsListTestsResponseTestsList = /*@__PURE__*/ S.Array(
   SyntheticsTestDetailsWithoutSteps,
 ) as any as S.Schema<SyntheticsListTestsResponseTestsList>;
 
@@ -19863,7 +14956,7 @@ export interface SyntheticsListTestsResponse {
   /** Array of Synthetic tests configuration. */
   tests?: SyntheticsListTestsResponseTestsList;
 }
-export const SyntheticsListTestsResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsListTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tests: S.optional(SyntheticsListTestsResponseTestsList),
   }),
@@ -19872,13 +14965,13 @@ export const SyntheticsListTestsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyntheticsListTestsResponse>;
 
 export interface ListUsersRequest {}
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/user", code: 200 })),
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 /** Array of users. */
 export type UserListResponseUsersList = Array<User>;
-export const UserListResponseUsersList = /*@__PURE__*/ S.Array(
+const UserListResponseUsersList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserListResponseUsersList>;
 
@@ -19887,7 +14980,7 @@ export interface UserListResponse {
   /** Array of users. */
   users?: UserListResponseUsersList;
 }
-export const UserListResponse = /*@__PURE__*/ S.suspend(() =>
+const UserListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(UserListResponseUsersList),
   }),
@@ -19903,7 +14996,7 @@ export interface MuteHostRequest {
   /** If true and the host is already muted, replaces existing host mute settings. */
   override?: boolean;
 }
-export const MuteHostRequest = /*@__PURE__*/ S.suspend(() =>
+const MuteHostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_name: S.String.pipe(T.Label()),
     end: S.optional(S.Number),
@@ -19923,7 +15016,7 @@ export interface HostMuteResponse {
   /** Message associated with the mute. */
   message?: string;
 }
-export const HostMuteResponse = /*@__PURE__*/ S.suspend(() =>
+const HostMuteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     end: S.optional(S.Number),
@@ -19940,7 +15033,7 @@ export type SyntheticsPatchTestOperationName =
   | "move"
   | "copy"
   | "test";
-export const SyntheticsPatchTestOperationName = S.String;
+const SyntheticsPatchTestOperationName = S.String;
 
 /** A single [JSON Patch](https://jsonpatch.com) operation to perform on the test */
 export interface SyntheticsPatchTestOperation {
@@ -19950,7 +15043,7 @@ export interface SyntheticsPatchTestOperation {
   /** A value to use in a [JSON Patch](https://jsonpatch.com) operation */
   value?: unknown;
 }
-export const SyntheticsPatchTestOperation = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsPatchTestOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.optional(SyntheticsPatchTestOperationName),
     path: S.optional(S.String),
@@ -19962,7 +15055,7 @@ export const SyntheticsPatchTestOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [JSON Patch](https://jsonpatch.com) operations to perform on the test */
 export type PatchTestRequestDataList = Array<SyntheticsPatchTestOperation>;
-export const PatchTestRequestDataList = /*@__PURE__*/ S.Array(
+const PatchTestRequestDataList = /*@__PURE__*/ S.Array(
   SyntheticsPatchTestOperation,
 ) as any as S.Schema<PatchTestRequestDataList>;
 
@@ -19972,7 +15065,7 @@ export interface PatchTestRequest {
   /** Array of [JSON Patch](https://jsonpatch.com) operations to perform on the test */
   data?: PatchTestRequestDataList;
 }
-export const PatchTestRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     data: S.optional(PatchTestRequestDataList),
@@ -19981,17 +15074,17 @@ export const PatchTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsTestDetailsLocationsList = Array<string>;
-export const SyntheticsTestDetailsLocationsList =
+const SyntheticsTestDetailsLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsLocationsList>;
 
 /** The steps of the test if they exist. */
 export type SyntheticsTestDetailsStepsList = Array<SyntheticsStep>;
-export const SyntheticsTestDetailsStepsList =
+const SyntheticsTestDetailsStepsList =
   CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<SyntheticsTestDetailsStepsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsTestDetailsTagsList = Array<string>;
-export const SyntheticsTestDetailsTagsList =
+const SyntheticsTestDetailsTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsTagsList>;
 
 /** Object containing details about your Synthetic test. */
@@ -20017,7 +15110,7 @@ export interface SyntheticsTestDetails {
   tags?: SyntheticsTestDetailsTagsList;
   type?: SyntheticsTestDetailsType;
 }
-export const SyntheticsTestDetails = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTestDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(SyntheticsTestConfig),
     creator: S.optional(Creator),
@@ -20043,7 +15136,7 @@ export interface QueryMetricsRequest {
   /** Query string. */
   query: string;
 }
-export const QueryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.Number.pipe(T.Query()),
     to: S.Number.pipe(T.Query()),
@@ -20053,24 +15146,22 @@ export const QueryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tag keys on which to group. */
 export type MetricsQueryResponseGroupByList = Array<string>;
-export const MetricsQueryResponseGroupByList =
+const MetricsQueryResponseGroupByList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsQueryResponseGroupByList>;
 
 /** Array of timeseries points. */
 export type Point = Array<number | null>;
-export const Point = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.Number),
-) as any as S.Schema<Point>;
+const Point = /*@__PURE__*/ S.Array(/*@__PURE__*/ S.NullOr(S.Number)) as any as S.Schema<Point>;
 
 /** List of points of the timeseries in milliseconds. */
 export type MetricsQueryMetadataPointlistList = Array<Point>;
-export const MetricsQueryMetadataPointlistList = /*@__PURE__*/ S.Array(
+const MetricsQueryMetadataPointlistList = /*@__PURE__*/ S.Array(
   Point,
 ) as any as S.Schema<MetricsQueryMetadataPointlistList>;
 
 /** Unique tags identifying this series. */
 export type MetricsQueryMetadataTagSetList = Array<string>;
-export const MetricsQueryMetadataTagSetList =
+const MetricsQueryMetadataTagSetList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsQueryMetadataTagSetList>;
 
 /** Object containing the metric unit family, scale factor, name, and short name. */
@@ -20086,7 +15177,7 @@ export interface MetricsQueryUnit {
   /** Abbreviation of the unit. */
   short_name?: string;
 }
-export const MetricsQueryUnit = /*@__PURE__*/ S.suspend(() =>
+const MetricsQueryUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     family: S.optional(S.String),
     name: S.optional(S.String),
@@ -20098,7 +15189,7 @@ export const MetricsQueryUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed information about the metric unit. The first element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
 export type MetricsQueryMetadataUnitList = Array<MetricsQueryUnit | null>;
-export const MetricsQueryMetadataUnitList = /*@__PURE__*/ S.Array(
+const MetricsQueryMetadataUnitList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(MetricsQueryUnit),
 ) as any as S.Schema<MetricsQueryMetadataUnitList>;
 
@@ -20131,7 +15222,7 @@ export interface MetricsQueryMetadata {
   /** Detailed information about the metric unit. The first element describes the "primary unit" (for example, `bytes` in `bytes per second`). The second element describes the "per unit" (for example, `second` in `bytes per second`). If the second element is not present, the API returns null. */
   unit?: MetricsQueryMetadataUnitList;
 }
-export const MetricsQueryMetadata = /*@__PURE__*/ S.suspend(() =>
+const MetricsQueryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggr: S.optional(S.NullOr(S.String)),
     display_name: S.optional(S.String),
@@ -20151,7 +15242,7 @@ export const MetricsQueryMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** List of timeseries queried. */
 export type MetricsQueryResponseSeriesList = Array<MetricsQueryMetadata>;
-export const MetricsQueryResponseSeriesList = /*@__PURE__*/ S.Array(
+const MetricsQueryResponseSeriesList = /*@__PURE__*/ S.Array(
   MetricsQueryMetadata,
 ) as any as S.Schema<MetricsQueryResponseSeriesList>;
 
@@ -20176,7 +15267,7 @@ export interface MetricsQueryResponse {
   /** End of requested time window, milliseconds since Unix epoch. */
   to_date?: number;
 }
-export const MetricsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const MetricsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
     from_date: S.optional(S.Number),
@@ -20196,7 +15287,7 @@ export interface RemoveSlackIntegrationChannelRequest {
   /** The name of the Slack channel being operated on. */
   channel_name: string;
 }
-export const RemoveSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_name: S.String.pipe(T.Label()),
     channel_name: S.String.pipe(T.Label()),
@@ -20212,21 +15303,20 @@ export const RemoveSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveSlackIntegrationChannelRequest>;
 
 export interface RemoveSlackIntegrationChannelResponse {}
-export const RemoveSlackIntegrationChannelResponse =
+const RemoveSlackIntegrationChannelResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<RemoveSlackIntegrationChannelResponse>;
 
 export interface RestoreDashboardsRequest {
   data: DashboardBulkActionDataList;
 }
-export const RestoreDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DashboardBulkActionDataList,
   }).pipe(T.Http({ method: "PATCH", uri: "/api/v1/dashboard", code: 200 })),
 ).annotate({ identifier: "RestoreDashboardsRequest" }) as any as S.Schema<RestoreDashboardsRequest>;
 
 export interface RestoreDashboardsResponse {}
-export const RestoreDashboardsResponse =
-  CreateEventResponse as any as S.Schema<RestoreDashboardsResponse>;
+const RestoreDashboardsResponse = CreateEventResponse as any as S.Schema<RestoreDashboardsResponse>;
 
 export interface SearchMonitorGroupsRequest {
   /** After entering a search query on the [Triggered Monitors page][1], use the query parameter value in the URL of the page as a value for this parameter. For more information, see the [Manage Monitors documentation][2]. The query can contain any number of space-separated monitor attributes, for instance: `query="type:metric group_status:alert"`. [1]: https://app.datadoghq.com/monitors/triggered [2]: /monitors/manage/#triggered-monitors */
@@ -20238,7 +15328,7 @@ export interface SearchMonitorGroupsRequest {
   /** String for sort order, composed of field and sort order separate by a comma, for example `name,asc`. Supported sort directions: `asc`, `desc`. Supported fields: * `name` * `status` * `tags` */
   sort?: string;
 }
-export const SearchMonitorGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchMonitorGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -20256,7 +15346,7 @@ export interface MonitorSearchCountItem {
   /** The facet value. */
   name?: unknown;
 }
-export const MonitorSearchCountItem = /*@__PURE__*/ S.suspend(() =>
+const MonitorSearchCountItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     name: S.optional(S.Unknown),
@@ -20265,7 +15355,7 @@ export const MonitorSearchCountItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Search facets. */
 export type MonitorSearchCount = Array<MonitorSearchCountItem>;
-export const MonitorSearchCount = /*@__PURE__*/ S.Array(
+const MonitorSearchCount = /*@__PURE__*/ S.Array(
   MonitorSearchCountItem,
 ) as any as S.Schema<MonitorSearchCount>;
 
@@ -20274,7 +15364,7 @@ export interface MonitorGroupSearchResponseCounts {
   status?: MonitorSearchCount;
   type?: MonitorSearchCount;
 }
-export const MonitorGroupSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
+const MonitorGroupSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(MonitorSearchCount),
     type: S.optional(MonitorSearchCount),
@@ -20285,7 +15375,7 @@ export const MonitorGroupSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags of the monitor group. */
 export type MonitorGroupSearchResultGroupTagsList = Array<string>;
-export const MonitorGroupSearchResultGroupTagsList =
+const MonitorGroupSearchResultGroupTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorGroupSearchResultGroupTagsList>;
 
 /** A single monitor group search result. */
@@ -20304,7 +15394,7 @@ export interface MonitorGroupSearchResult {
   monitor_name?: string;
   status?: MonitorOverallStates;
 }
-export const MonitorGroupSearchResult = /*@__PURE__*/ S.suspend(() =>
+const MonitorGroupSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     group_tags: S.optional(MonitorGroupSearchResultGroupTagsList),
@@ -20318,7 +15408,7 @@ export const MonitorGroupSearchResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of found monitor groups. */
 export type MonitorGroupSearchResponseGroupsList = Array<MonitorGroupSearchResult>;
-export const MonitorGroupSearchResponseGroupsList = /*@__PURE__*/ S.Array(
+const MonitorGroupSearchResponseGroupsList = /*@__PURE__*/ S.Array(
   MonitorGroupSearchResult,
 ) as any as S.Schema<MonitorGroupSearchResponseGroupsList>;
 
@@ -20333,7 +15423,7 @@ export interface MonitorSearchResponseMetadata {
   /** The total number of monitors. */
   total_count?: number;
 }
-export const MonitorSearchResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const MonitorSearchResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     page_count: S.optional(S.Number),
@@ -20351,7 +15441,7 @@ export interface MonitorGroupSearchResponse {
   groups?: MonitorGroupSearchResponseGroupsList;
   metadata?: MonitorSearchResponseMetadata;
 }
-export const MonitorGroupSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const MonitorGroupSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counts: S.optional(MonitorGroupSearchResponseCounts),
     groups: S.optional(MonitorGroupSearchResponseGroupsList),
@@ -20371,7 +15461,7 @@ export interface SearchMonitorsRequest {
   /** String for sort order, composed of field and sort order separate by a comma, for example `name,asc`. Supported sort directions: `asc`, `desc`. Supported fields: * `name` * `status` * `tags` */
   sort?: string;
 }
-export const SearchMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -20387,7 +15477,7 @@ export interface MonitorSearchResponseCounts {
   tag?: MonitorSearchCount;
   type?: MonitorSearchCount;
 }
-export const MonitorSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
+const MonitorSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     muted: S.optional(MonitorSearchCount),
     status: S.optional(MonitorSearchCount),
@@ -20400,7 +15490,7 @@ export const MonitorSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
 
 /** Metrics used by the monitor. */
 export type MonitorSearchResultMetricsList = Array<string>;
-export const MonitorSearchResultMetricsList =
+const MonitorSearchResultMetricsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultMetricsList>;
 
 /** A notification triggered by the monitor. */
@@ -20410,7 +15500,7 @@ export interface MonitorSearchResultNotification {
   /** The username receiving the notification */
   name?: string;
 }
-export const MonitorSearchResultNotification = /*@__PURE__*/ S.suspend(() =>
+const MonitorSearchResultNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     handle: S.optional(S.String),
     name: S.optional(S.String),
@@ -20421,23 +15511,23 @@ export const MonitorSearchResultNotification = /*@__PURE__*/ S.suspend(() =>
 
 /** The notification triggered by the monitor. */
 export type MonitorSearchResultNotificationsList = Array<MonitorSearchResultNotification>;
-export const MonitorSearchResultNotificationsList = /*@__PURE__*/ S.Array(
+const MonitorSearchResultNotificationsList = /*@__PURE__*/ S.Array(
   MonitorSearchResultNotification,
 ) as any as S.Schema<MonitorSearchResultNotificationsList>;
 
 /** Quality issues detected with the monitor. */
 export type MonitorSearchResultQualityIssuesList = Array<string>;
-export const MonitorSearchResultQualityIssuesList =
+const MonitorSearchResultQualityIssuesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultQualityIssuesList>;
 
 /** The scope(s) to which the downtime applies, for example `host:app2`. Provide multiple scopes as a comma-separated list, for example `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (that is `env:dev AND env:prod`), NOT any of them. */
 export type MonitorSearchResultScopesList = Array<string>;
-export const MonitorSearchResultScopesList =
+const MonitorSearchResultScopesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultScopesList>;
 
 /** Tags associated with the monitor. */
 export type MonitorSearchResultTagsList = Array<string>;
-export const MonitorSearchResultTagsList =
+const MonitorSearchResultTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultTagsList>;
 
 /** Holds search results. */
@@ -20468,7 +15558,7 @@ export interface MonitorSearchResult {
   tags?: MonitorSearchResultTagsList;
   type?: MonitorType;
 }
-export const MonitorSearchResult = /*@__PURE__*/ S.suspend(() =>
+const MonitorSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classification: S.optional(S.String),
     creator: S.optional(Creator),
@@ -20489,7 +15579,7 @@ export const MonitorSearchResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of found monitors. */
 export type MonitorSearchResponseMonitorsList = Array<MonitorSearchResult>;
-export const MonitorSearchResponseMonitorsList = /*@__PURE__*/ S.Array(
+const MonitorSearchResponseMonitorsList = /*@__PURE__*/ S.Array(
   MonitorSearchResult,
 ) as any as S.Schema<MonitorSearchResponseMonitorsList>;
 
@@ -20500,7 +15590,7 @@ export interface MonitorSearchResponse {
   /** The list of found monitors. */
   monitors?: MonitorSearchResponseMonitorsList;
 }
-export const MonitorSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const MonitorSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counts: S.optional(MonitorSearchResponseCounts),
     metadata: S.optional(MonitorSearchResponseMetadata),
@@ -20518,7 +15608,7 @@ export interface SearchSLORequest {
   /** Whether or not to return facet information in the response `[default=false]`. */
   include_facets?: boolean;
 }
-export const SearchSLORequest = /*@__PURE__*/ S.suspend(() =>
+const SearchSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     page_size_: S.optional(S.Number.pipe(T.Query("page[size]"))),
@@ -20534,7 +15624,7 @@ export interface SearchSLOResponseDataAttributesFacetsObjectString {
   /** Facet */
   name?: string;
 }
-export const SearchSLOResponseDataAttributesFacetsObjectString = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseDataAttributesFacetsObjectString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     name: S.optional(S.String),
@@ -20546,26 +15636,26 @@ export const SearchSLOResponseDataAttributesFacetsObjectString = /*@__PURE__*/ S
 /** All tags associated with an SLO. */
 export type SearchSLOResponseDataAttributesFacetsAllTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsAllTagsList = /*@__PURE__*/ S.Array(
+const SearchSLOResponseDataAttributesFacetsAllTagsList = /*@__PURE__*/ S.Array(
   SearchSLOResponseDataAttributesFacetsObjectString,
 ) as any as S.Schema<SearchSLOResponseDataAttributesFacetsAllTagsList>;
 
 /** Creator of an SLO. */
 export type SearchSLOResponseDataAttributesFacetsCreatorNameList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsCreatorNameList =
+const SearchSLOResponseDataAttributesFacetsCreatorNameList =
   SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsCreatorNameList>;
 
 /** Tags with the `env` tag key. */
 export type SearchSLOResponseDataAttributesFacetsEnvTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsEnvTagsList =
+const SearchSLOResponseDataAttributesFacetsEnvTagsList =
   SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsEnvTagsList>;
 
 /** Tags with the `service` tag key. */
 export type SearchSLOResponseDataAttributesFacetsServiceTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsServiceTagsList =
+const SearchSLOResponseDataAttributesFacetsServiceTagsList =
   SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsServiceTagsList>;
 
 /** Facet */
@@ -20575,7 +15665,7 @@ export interface SearchSLOResponseDataAttributesFacetsObjectInt {
   /** Facet */
   name?: number;
 }
-export const SearchSLOResponseDataAttributesFacetsObjectInt = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseDataAttributesFacetsObjectInt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     name: S.optional(S.Number),
@@ -20587,26 +15677,26 @@ export const SearchSLOResponseDataAttributesFacetsObjectInt = /*@__PURE__*/ S.su
 /** Type of SLO. */
 export type SearchSLOResponseDataAttributesFacetsSloTypeList =
   Array<SearchSLOResponseDataAttributesFacetsObjectInt>;
-export const SearchSLOResponseDataAttributesFacetsSloTypeList = /*@__PURE__*/ S.Array(
+const SearchSLOResponseDataAttributesFacetsSloTypeList = /*@__PURE__*/ S.Array(
   SearchSLOResponseDataAttributesFacetsObjectInt,
 ) as any as S.Schema<SearchSLOResponseDataAttributesFacetsSloTypeList>;
 
 /** SLO Target */
 export type SearchSLOResponseDataAttributesFacetsTargetList =
   Array<SearchSLOResponseDataAttributesFacetsObjectInt>;
-export const SearchSLOResponseDataAttributesFacetsTargetList =
+const SearchSLOResponseDataAttributesFacetsTargetList =
   SearchSLOResponseDataAttributesFacetsSloTypeList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTargetList>;
 
 /** Tags with the `team` tag key. */
 export type SearchSLOResponseDataAttributesFacetsTeamTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsTeamTagsList =
+const SearchSLOResponseDataAttributesFacetsTeamTagsList =
   SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTeamTagsList>;
 
 /** Timeframes of SLOs. */
 export type SearchSLOResponseDataAttributesFacetsTimeframeList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsTimeframeList =
+const SearchSLOResponseDataAttributesFacetsTimeframeList =
   SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTimeframeList>;
 
 /** Facets */
@@ -20628,7 +15718,7 @@ export interface SearchSLOResponseDataAttributesFacets {
   /** Timeframes of SLOs. */
   timeframe?: SearchSLOResponseDataAttributesFacetsTimeframeList;
 }
-export const SearchSLOResponseDataAttributesFacets = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseDataAttributesFacets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all_tags: S.optional(SearchSLOResponseDataAttributesFacetsAllTagsList),
     creator_name: S.optional(SearchSLOResponseDataAttributesFacetsCreatorNameList),
@@ -20645,7 +15735,7 @@ export const SearchSLOResponseDataAttributesFacets = /*@__PURE__*/ S.suspend(() 
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). */
 export type SearchServiceLevelObjectiveAttributesAllTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesAllTagsList =
+const SearchServiceLevelObjectiveAttributesAllTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesAllTagsList>;
 
 /** The creator of the SLO */
@@ -20657,7 +15747,7 @@ export interface SLOCreator {
   /** Name of the creator. */
   name?: string | null;
 }
-export const SLOCreator = /*@__PURE__*/ S.suspend(() =>
+const SLOCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     id: S.optional(S.Number),
@@ -20667,17 +15757,17 @@ export const SLOCreator = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags with the `env` tag key. */
 export type SearchServiceLevelObjectiveAttributesEnvTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesEnvTagsList =
+const SearchServiceLevelObjectiveAttributesEnvTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesEnvTagsList>;
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. */
 export type SearchServiceLevelObjectiveAttributesGroupsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesGroupsList =
+const SearchServiceLevelObjectiveAttributesGroupsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. */
 export type SearchServiceLevelObjectiveAttributesMonitorIdsList = Array<number>;
-export const SearchServiceLevelObjectiveAttributesMonitorIdsList =
+const SearchServiceLevelObjectiveAttributesMonitorIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SearchServiceLevelObjectiveAttributesMonitorIdsList>;
 
 /** Error budget remaining for an SLO. */
@@ -20687,7 +15777,7 @@ export interface SLORawErrorBudgetRemaining {
   /** Error budget remaining value. */
   value?: number;
 }
-export const SLORawErrorBudgetRemaining = /*@__PURE__*/ S.suspend(() =>
+const SLORawErrorBudgetRemaining = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -20698,7 +15788,7 @@ export const SLORawErrorBudgetRemaining = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the SLO. */
 export type SLOState = "breached" | "warning" | "ok" | "no_data";
-export const SLOState = S.String;
+const SLOState = S.String;
 
 /** Overall status of the SLO by timeframes. */
 export interface SLOOverallStatuses {
@@ -20718,7 +15808,7 @@ export interface SLOOverallStatuses {
   target?: number;
   timeframe?: SLOTimeframe;
 }
-export const SLOOverallStatuses = /*@__PURE__*/ S.suspend(() =>
+const SLOOverallStatuses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     error_budget_remaining: S.optional(S.NullOr(S.Number)),
@@ -20734,13 +15824,13 @@ export const SLOOverallStatuses = /*@__PURE__*/ S.suspend(() =>
 
 /** calculated status and error budget remaining. */
 export type SearchServiceLevelObjectiveAttributesOverallStatusList = Array<SLOOverallStatuses>;
-export const SearchServiceLevelObjectiveAttributesOverallStatusList = /*@__PURE__*/ S.Array(
+const SearchServiceLevelObjectiveAttributesOverallStatusList = /*@__PURE__*/ S.Array(
   SLOOverallStatuses,
 ) as any as S.Schema<SearchServiceLevelObjectiveAttributesOverallStatusList>;
 
 /** Metric names used in the query's numerator and denominator. This field will return null and will be implemented in the next version of this endpoint. */
 export type SearchSLOQueryMetricsList = Array<string>;
-export const SearchSLOQueryMetricsList =
+const SearchSLOQueryMetricsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchSLOQueryMetricsList>;
 
 /** A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. */
@@ -20752,7 +15842,7 @@ export interface SearchSLOQuery {
   /** A Datadog metric query for good events. */
   numerator?: string;
 }
-export const SearchSLOQuery = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denominator: S.optional(S.String),
     metrics: S.optional(S.NullOr(SearchSLOQueryMetricsList)),
@@ -20762,7 +15852,7 @@ export const SearchSLOQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags with the `service` tag key. */
 export type SearchServiceLevelObjectiveAttributesServiceTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesServiceTagsList =
+const SearchServiceLevelObjectiveAttributesServiceTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesServiceTagsList>;
 
 /** Status of the SLO's primary timeframe. */
@@ -20780,7 +15870,7 @@ export interface SLOStatus {
   span_precision?: number | null;
   state?: SLOState;
 }
-export const SLOStatus = /*@__PURE__*/ S.suspend(() =>
+const SLOStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calculation_error: S.optional(S.NullOr(S.String)),
     error_budget_remaining: S.optional(S.NullOr(S.Number)),
@@ -20794,12 +15884,12 @@ export const SLOStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags with the `team` tag key. */
 export type SearchServiceLevelObjectiveAttributesTeamTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesTeamTagsList =
+const SearchServiceLevelObjectiveAttributesTeamTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesTeamTagsList>;
 
 /** The SLO time window options. */
 export type SearchSLOTimeframe = "7d" | "30d" | "90d";
-export const SearchSLOTimeframe = S.String;
+const SearchSLOTimeframe = S.String;
 
 /** SLO thresholds (target and optionally warning) for a single time window. */
 export interface SearchSLOThreshold {
@@ -20813,7 +15903,7 @@ export interface SearchSLOThreshold {
   /** A string representation of the warning target (see the description of the `target_display` field for details). Included in service level objective responses if a warning target exists. Ignored in create/update requests. */
   warning_display?: string | null;
 }
-export const SearchSLOThreshold = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.Number,
     target_display: S.optional(S.String),
@@ -20825,7 +15915,7 @@ export const SearchSLOThreshold = /*@__PURE__*/ S.suspend(() =>
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type SearchServiceLevelObjectiveAttributesThresholdsList = Array<SearchSLOThreshold>;
-export const SearchServiceLevelObjectiveAttributesThresholdsList = /*@__PURE__*/ S.Array(
+const SearchServiceLevelObjectiveAttributesThresholdsList = /*@__PURE__*/ S.Array(
   SearchSLOThreshold,
 ) as any as S.Schema<SearchServiceLevelObjectiveAttributesThresholdsList>;
 
@@ -20860,7 +15950,7 @@ export interface SearchServiceLevelObjectiveAttributes {
   /** The thresholds (timeframes and associated targets) for this service level objective object. */
   thresholds?: SearchServiceLevelObjectiveAttributesThresholdsList;
 }
-export const SearchServiceLevelObjectiveAttributes = /*@__PURE__*/ S.suspend(() =>
+const SearchServiceLevelObjectiveAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all_tags: S.optional(SearchServiceLevelObjectiveAttributesAllTagsList),
     created_at: S.optional(S.Number),
@@ -20891,7 +15981,7 @@ export interface SearchServiceLevelObjectiveData {
   /** The type of the object, must be `slo`. */
   type?: string;
 }
-export const SearchServiceLevelObjectiveData = /*@__PURE__*/ S.suspend(() =>
+const SearchServiceLevelObjectiveData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SearchServiceLevelObjectiveAttributes),
     id: S.optional(S.String),
@@ -20905,7 +15995,7 @@ export const SearchServiceLevelObjectiveData = /*@__PURE__*/ S.suspend(() =>
 export interface SearchServiceLevelObjective {
   data?: SearchServiceLevelObjectiveData;
 }
-export const SearchServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
+const SearchServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SearchServiceLevelObjectiveData),
   }),
@@ -20915,7 +16005,7 @@ export const SearchServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
 
 /** SLOs */
 export type SearchSLOResponseDataAttributesSlosList = Array<SearchServiceLevelObjective>;
-export const SearchSLOResponseDataAttributesSlosList = /*@__PURE__*/ S.Array(
+const SearchSLOResponseDataAttributesSlosList = /*@__PURE__*/ S.Array(
   SearchServiceLevelObjective,
 ) as any as S.Schema<SearchSLOResponseDataAttributesSlosList>;
 
@@ -20925,7 +16015,7 @@ export interface SearchSLOResponseDataAttributes {
   /** SLOs */
   slos?: SearchSLOResponseDataAttributesSlosList;
 }
-export const SearchSLOResponseDataAttributes = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facets: S.optional(SearchSLOResponseDataAttributesFacets),
     slos: S.optional(SearchSLOResponseDataAttributesSlosList),
@@ -20940,7 +16030,7 @@ export interface SearchSLOResponseData {
   /** Type of service level objective result. */
   type?: string;
 }
-export const SearchSLOResponseData = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SearchSLOResponseDataAttributes),
     type: S.optional(S.String),
@@ -20960,7 +16050,7 @@ export interface SearchSLOResponseLinks {
   /** Link to current page. */
   self?: string;
 }
-export const SearchSLOResponseLinks = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.String),
     last: S.optional(S.NullOr(S.String)),
@@ -20989,7 +16079,7 @@ export interface SearchSLOResponseMetaPage {
   /** Type of pagination. */
   type?: string;
 }
-export const SearchSLOResponseMetaPage = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseMetaPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_number: S.optional(S.Number),
     last_number: S.optional(S.Number),
@@ -21008,7 +16098,7 @@ export const SearchSLOResponseMetaPage = /*@__PURE__*/ S.suspend(() =>
 export interface SearchSLOResponseMeta {
   pagination?: SearchSLOResponseMetaPage;
 }
-export const SearchSLOResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(SearchSLOResponseMetaPage),
   }),
@@ -21020,7 +16110,7 @@ export interface SearchSLOResponse {
   links?: SearchSLOResponseLinks;
   meta?: SearchSLOResponseMeta;
 }
-export const SearchSLOResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchSLOResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SearchSLOResponseData),
     links: S.optional(SearchSLOResponseLinks),
@@ -21042,7 +16132,7 @@ export interface SearchTestsRequest {
   /** The sort order for the results (e.g., `name,asc` or `name,desc`). */
   sort?: string;
 }
-export const SearchTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String.pipe(T.Query())),
     include_full_config: S.optional(S.Boolean.pipe(T.Query())),
@@ -21058,7 +16148,7 @@ export interface SendPublicDashboardInvitationRequest {
   token: string;
   data: SharedDashboardInvitesDataInput;
 }
-export const SendPublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const SendPublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     data: SharedDashboardInvitesDataInput,
@@ -21070,31 +16160,31 @@ export const SendPublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SendPublicDashboardInvitationRequest>;
 
 export interface SubmitDistributionPointsRequest {}
-export const SubmitDistributionPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitDistributionPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/v1/distribution_points", code: 200 })),
 ).annotate({
   identifier: "SubmitDistributionPointsRequest",
 }) as any as S.Schema<SubmitDistributionPointsRequest>;
 
 export interface SubmitDistributionPointsResponse {}
-export const SubmitDistributionPointsResponse =
+const SubmitDistributionPointsResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<SubmitDistributionPointsResponse>;
 
 export interface SubmitMetricsRequest {}
-export const SubmitMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/v1/series", code: 200 })),
 ).annotate({ identifier: "SubmitMetricsRequest" }) as any as S.Schema<SubmitMetricsRequest>;
 
 export interface SubmitMetricsResponse {}
-export const SubmitMetricsResponse = CreateEventResponse as any as S.Schema<SubmitMetricsResponse>;
+const SubmitMetricsResponse = CreateEventResponse as any as S.Schema<SubmitMetricsResponse>;
 
 /** The status of a service check. Set to `0` for OK, `1` for warning, `2` for critical, and `3` for unknown. */
 export type ServiceCheckStatus = 0 | 1 | 2 | 3;
-export const ServiceCheckStatus = S.Number;
+const ServiceCheckStatus = S.Number;
 
 /** Tags related to a check. */
 export type ServiceCheckTagsList = Array<string>;
-export const ServiceCheckTagsList =
+const ServiceCheckTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceCheckTagsList>;
 
 /** An object containing service check and status. */
@@ -21111,7 +16201,7 @@ export interface ServiceCheck {
   /** Time of check. */
   timestamp?: number;
 }
-export const ServiceCheck = /*@__PURE__*/ S.suspend(() =>
+const ServiceCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check: S.String,
     host_name: S.String,
@@ -21124,12 +16214,12 @@ export const ServiceCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** The service checks. */
 export type ServiceChecks = Array<ServiceCheck>;
-export const ServiceChecks = /*@__PURE__*/ S.Array(ServiceCheck) as any as S.Schema<ServiceChecks>;
+const ServiceChecks = /*@__PURE__*/ S.Array(ServiceCheck) as any as S.Schema<ServiceChecks>;
 
 export interface SubmitServiceCheckRequest {
   body: ServiceChecks;
 }
-export const SubmitServiceCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitServiceCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: ServiceChecks.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/check_run", code: 200 })),
@@ -21138,22 +16228,22 @@ export const SubmitServiceCheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitServiceCheckRequest>;
 
 export interface SubmitServiceCheckResponse {}
-export const SubmitServiceCheckResponse =
+const SubmitServiceCheckResponse =
   CreateEventResponse as any as S.Schema<SubmitServiceCheckResponse>;
 
 /** For browser test, array with the different device IDs used to run the test. */
 export type SyntheticsCITestDeviceIdsList = Array<string>;
-export const SyntheticsCITestDeviceIdsList =
+const SyntheticsCITestDeviceIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsCITestDeviceIdsList>;
 
 /** Array of locations used to run the test. */
 export type SyntheticsCITestLocationsList = Array<string>;
-export const SyntheticsCITestLocationsList =
+const SyntheticsCITestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsCITestLocationsList>;
 
 /** Variables to replace in the test. */
 export type SyntheticsCITestVariablesMap = { [key: string]: string | undefined };
-export const SyntheticsCITestVariablesMap =
+const SyntheticsCITestVariablesMap =
   CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsCITestVariablesMap>;
 
 /** Configuration for Continuous Testing. */
@@ -21185,7 +16275,7 @@ export interface SyntheticsCITest {
   /** The version number of the Synthetic test version to trigger. */
   version?: number;
 }
-export const SyntheticsCITest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsCITest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecureCertificates: S.optional(S.Boolean),
     basicAuth: S.optional(SyntheticsBasicAuth),
@@ -21207,7 +16297,7 @@ export const SyntheticsCITest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Synthetic tests with overrides. */
 export type TriggerCITestsRequestTestsList = Array<SyntheticsCITest>;
-export const TriggerCITestsRequestTestsList = /*@__PURE__*/ S.Array(
+const TriggerCITestsRequestTestsList = /*@__PURE__*/ S.Array(
   SyntheticsCITest,
 ) as any as S.Schema<TriggerCITestsRequestTestsList>;
 
@@ -21215,7 +16305,7 @@ export interface TriggerCITestsRequest {
   /** List of Synthetic tests with overrides. */
   tests?: TriggerCITestsRequestTestsList;
 }
-export const TriggerCITestsRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerCITestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tests: S.optional(TriggerCITestsRequestTestsList),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/trigger/ci", code: 200 })),
@@ -21228,7 +16318,7 @@ export interface SyntheticsTriggerCITestLocation {
   /** Name of the location. */
   name?: string;
 }
-export const SyntheticsTriggerCITestLocation = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTriggerCITestLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -21239,7 +16329,7 @@ export const SyntheticsTriggerCITestLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Synthetic locations. */
 export type SyntheticsTriggerCITestsResponseLocationsList = Array<SyntheticsTriggerCITestLocation>;
-export const SyntheticsTriggerCITestsResponseLocationsList = /*@__PURE__*/ S.Array(
+const SyntheticsTriggerCITestsResponseLocationsList = /*@__PURE__*/ S.Array(
   SyntheticsTriggerCITestLocation,
 ) as any as S.Schema<SyntheticsTriggerCITestsResponseLocationsList>;
 
@@ -21253,7 +16343,7 @@ export interface SyntheticsTriggerCITestRunResult {
   /** ID of the result. */
   result_id?: string;
 }
-export const SyntheticsTriggerCITestRunResult = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTriggerCITestRunResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(S.String),
     location: S.optional(S.Number),
@@ -21266,13 +16356,13 @@ export const SyntheticsTriggerCITestRunResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about the tests runs. */
 export type SyntheticsTriggerCITestsResponseResultsList = Array<SyntheticsTriggerCITestRunResult>;
-export const SyntheticsTriggerCITestsResponseResultsList = /*@__PURE__*/ S.Array(
+const SyntheticsTriggerCITestsResponseResultsList = /*@__PURE__*/ S.Array(
   SyntheticsTriggerCITestRunResult,
 ) as any as S.Schema<SyntheticsTriggerCITestsResponseResultsList>;
 
 /** The public IDs of the Synthetic test triggered. */
 export type SyntheticsTriggerCITestsResponseTriggeredCheckIdsList = Array<string>;
-export const SyntheticsTriggerCITestsResponseTriggeredCheckIdsList =
+const SyntheticsTriggerCITestsResponseTriggeredCheckIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTriggerCITestsResponseTriggeredCheckIdsList>;
 
 /** Object containing information about the tests triggered. */
@@ -21286,7 +16376,7 @@ export interface SyntheticsTriggerCITestsResponse {
   /** The public IDs of the Synthetic test triggered. */
   triggered_check_ids?: SyntheticsTriggerCITestsResponseTriggeredCheckIdsList;
 }
-export const SyntheticsTriggerCITestsResponse = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTriggerCITestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch_id: S.optional(S.NullOr(S.String)),
     locations: S.optional(SyntheticsTriggerCITestsResponseLocationsList),
@@ -21303,7 +16393,7 @@ export interface SyntheticsTriggerTest {
   /** The public ID of the Synthetic test to trigger. */
   public_id: string;
 }
-export const SyntheticsTriggerTest = /*@__PURE__*/ S.suspend(() =>
+const SyntheticsTriggerTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SyntheticsCIBatchMetadata),
     public_id: S.String,
@@ -21312,7 +16402,7 @@ export const SyntheticsTriggerTest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Synthetic tests. */
 export type TriggerTestsRequestTestsList = Array<SyntheticsTriggerTest>;
-export const TriggerTestsRequestTestsList = /*@__PURE__*/ S.Array(
+const TriggerTestsRequestTestsList = /*@__PURE__*/ S.Array(
   SyntheticsTriggerTest,
 ) as any as S.Schema<TriggerTestsRequestTestsList>;
 
@@ -21320,7 +16410,7 @@ export interface TriggerTestsRequest {
   /** List of Synthetic tests. */
   tests: TriggerTestsRequestTestsList;
 }
-export const TriggerTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tests: TriggerTestsRequestTestsList,
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/synthetics/tests/trigger", code: 200 })),
@@ -21330,7 +16420,7 @@ export interface UnmuteHostRequest {
   /** Name of the host to unmute. */
   host_name: string;
 }
-export const UnmuteHostRequest = /*@__PURE__*/ S.suspend(() =>
+const UnmuteHostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/host/{host_name}/unmute", code: 200 })),
@@ -21342,7 +16432,7 @@ export interface UpdateAPIKeyRequest {
   /** Name of your API key. */
   name?: string;
 }
-export const UpdateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -21351,12 +16441,12 @@ export const UpdateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type UpdateAPITestRequestLocationsList = Array<string>;
-export const UpdateAPITestRequestLocationsList =
+const UpdateAPITestRequestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAPITestRequestLocationsList>;
 
 /** Array of tags attached to the test. */
 export type UpdateAPITestRequestTagsList = Array<string>;
-export const UpdateAPITestRequestTagsList =
+const UpdateAPITestRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAPITestRequestTagsList>;
 
 export interface UpdateAPITestRequest {
@@ -21376,7 +16466,7 @@ export interface UpdateAPITestRequest {
   tags?: UpdateAPITestRequestTagsList;
   type: SyntheticsAPITestType | (string & {});
 }
-export const UpdateAPITestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAPITestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     config: SyntheticsAPITestConfigInput,
@@ -21397,7 +16487,7 @@ export interface UpdateApplicationKeyRequest {
   /** Name of an application key. */
   name?: string;
 }
-export const UpdateApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -21408,13 +16498,13 @@ export const UpdateApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type UpdateAzureHostFiltersRequestErrorsList = Array<string>;
-export const UpdateAzureHostFiltersRequestErrorsList =
+const UpdateAzureHostFiltersRequestErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAzureHostFiltersRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type UpdateAzureHostFiltersRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const UpdateAzureHostFiltersRequestResourceProviderConfigsList =
+const UpdateAzureHostFiltersRequestResourceProviderConfigsList =
   CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<UpdateAzureHostFiltersRequestResourceProviderConfigsList>;
 
 export interface UpdateAzureHostFiltersRequest {
@@ -21455,7 +16545,7 @@ export interface UpdateAzureHostFiltersRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-export const UpdateAzureHostFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAzureHostFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_service_plan_filters: S.optional(S.String),
     automute: S.optional(S.Boolean),
@@ -21481,18 +16571,18 @@ export const UpdateAzureHostFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAzureHostFiltersRequest>;
 
 export type UpdateAzureHostFiltersResponse = unknown;
-export const UpdateAzureHostFiltersResponse =
+const UpdateAzureHostFiltersResponse =
   CreateAzureIntegrationResponse as any as S.Schema<UpdateAzureHostFiltersResponse>;
 
 /** Errors in your configuration. */
 export type UpdateAzureIntegrationRequestErrorsList = Array<string>;
-export const UpdateAzureIntegrationRequestErrorsList =
+const UpdateAzureIntegrationRequestErrorsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAzureIntegrationRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type UpdateAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const UpdateAzureIntegrationRequestResourceProviderConfigsList =
+const UpdateAzureIntegrationRequestResourceProviderConfigsList =
   CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<UpdateAzureIntegrationRequestResourceProviderConfigsList>;
 
 export interface UpdateAzureIntegrationRequest {
@@ -21533,7 +16623,7 @@ export interface UpdateAzureIntegrationRequest {
   /** Enable azure.usage metrics for your organization. */
   usage_metrics_enabled?: boolean;
 }
-export const UpdateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_service_plan_filters: S.optional(S.String),
     automute: S.optional(S.Boolean),
@@ -21559,22 +16649,22 @@ export const UpdateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAzureIntegrationRequest>;
 
 export type UpdateAzureIntegrationResponse = unknown;
-export const UpdateAzureIntegrationResponse =
+const UpdateAzureIntegrationResponse =
   CreateAzureIntegrationResponse as any as S.Schema<UpdateAzureIntegrationResponse>;
 
 /** Array of locations used to run the test. */
 export type UpdateBrowserTestRequestLocationsList = Array<string>;
-export const UpdateBrowserTestRequestLocationsList =
+const UpdateBrowserTestRequestLocationsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateBrowserTestRequestLocationsList>;
 
 /** Array of steps for the test. */
 export type UpdateBrowserTestRequestStepsList = Array<SyntheticsStep>;
-export const UpdateBrowserTestRequestStepsList =
+const UpdateBrowserTestRequestStepsList =
   CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<UpdateBrowserTestRequestStepsList>;
 
 /** Array of tags attached to the test. */
 export type UpdateBrowserTestRequestTagsList = Array<string>;
-export const UpdateBrowserTestRequestTagsList =
+const UpdateBrowserTestRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateBrowserTestRequestTagsList>;
 
 export interface UpdateBrowserTestRequest {
@@ -21595,7 +16685,7 @@ export interface UpdateBrowserTestRequest {
   tags?: UpdateBrowserTestRequestTagsList;
   type: SyntheticsBrowserTestType | (string & {});
 }
-export const UpdateBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     config: SyntheticsBrowserTestConfig,
@@ -21614,38 +16704,38 @@ export const UpdateBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type UpdateDashboardRequestNotifyListList = Array<string>;
-export const UpdateDashboardRequestNotifyListList =
+const UpdateDashboardRequestNotifyListList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestNotifyListList>;
 
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type UpdateDashboardRequestRestrictedRolesList = Array<string>;
-export const UpdateDashboardRequestRestrictedRolesList =
+const UpdateDashboardRequestRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestRestrictedRolesList>;
 
 /** List of tabs for organizing dashboard widgets into groups. */
 export type UpdateDashboardRequestTabsList = Array<DashboardTab>;
-export const UpdateDashboardRequestTabsList =
+const UpdateDashboardRequestTabsList =
   CreateDashboardRequestTabsList as any as S.Schema<UpdateDashboardRequestTabsList>;
 
 /** List of team names representing ownership of a dashboard. */
 export type UpdateDashboardRequestTagsList = Array<string>;
-export const UpdateDashboardRequestTagsList =
+const UpdateDashboardRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestTagsList>;
 
 /** Array of template variables saved views. */
 export type UpdateDashboardRequestTemplateVariablePresetsList =
   Array<DashboardTemplateVariablePreset>;
-export const UpdateDashboardRequestTemplateVariablePresetsList =
+const UpdateDashboardRequestTemplateVariablePresetsList =
   CreateDashboardRequestTemplateVariablePresetsList as any as S.Schema<UpdateDashboardRequestTemplateVariablePresetsList>;
 
 /** List of template variables for this dashboard. */
 export type UpdateDashboardRequestTemplateVariablesList = Array<DashboardTemplateVariable>;
-export const UpdateDashboardRequestTemplateVariablesList =
+const UpdateDashboardRequestTemplateVariablesList =
   CreateDashboardRequestTemplateVariablesList as any as S.Schema<UpdateDashboardRequestTemplateVariablesList>;
 
 /** List of widgets to display on the dashboard. */
 export type UpdateDashboardRequestWidgetsList = Array<Widget>;
-export const UpdateDashboardRequestWidgetsList =
+const UpdateDashboardRequestWidgetsList =
   CreateDashboardRequestWidgetsList as any as S.Schema<UpdateDashboardRequestWidgetsList>;
 
 export interface UpdateDashboardRequest {
@@ -21676,7 +16766,7 @@ export interface UpdateDashboardRequest {
   /** List of widgets to display on the dashboard. */
   widgets: UpdateDashboardRequestWidgetsList;
 }
-export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_id: S.String.pipe(T.Label()),
     default_timeframe: S.optional(S.NullOr(DashboardDefaultTimeframeSetting)),
@@ -21703,7 +16793,7 @@ export interface UpdateDashboardListRequest {
   /** The name of the dashboard list. */
   name: string;
 }
-export const UpdateDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.Number.pipe(T.Label()),
     name: S.String,
@@ -21714,7 +16804,7 @@ export const UpdateDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with a host. */
 export type UpdateHostTagsRequestTagsList = Array<string>;
-export const UpdateHostTagsRequestTagsList =
+const UpdateHostTagsRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateHostTagsRequestTagsList>;
 
 export interface UpdateHostTagsRequest {
@@ -21727,7 +16817,7 @@ export interface UpdateHostTagsRequest {
   /** A list of tags associated with a host. */
   tags?: UpdateHostTagsRequestTagsList;
 }
-export const UpdateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host_name: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -21738,12 +16828,12 @@ export const UpdateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type UpdateLogsIndexRequestExclusionFiltersList = Array<LogsExclusion>;
-export const UpdateLogsIndexRequestExclusionFiltersList =
+const UpdateLogsIndexRequestExclusionFiltersList =
   CreateLogsIndexRequestExclusionFiltersList as any as S.Schema<UpdateLogsIndexRequestExclusionFiltersList>;
 
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type UpdateLogsIndexRequestTagsList = Array<string>;
-export const UpdateLogsIndexRequestTagsList =
+const UpdateLogsIndexRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsIndexRequestTagsList>;
 
 export interface UpdateLogsIndexRequest {
@@ -21766,7 +16856,7 @@ export interface UpdateLogsIndexRequest {
   /** A list of tags associated with the index. Tags must be in `key:value` format. */
   tags?: UpdateLogsIndexRequestTagsList;
 }
-export const UpdateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     daily_limit: S.optional(S.Number),
@@ -21783,14 +16873,14 @@ export const UpdateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
 export type UpdateLogsIndexOrderRequestIndexNamesList = Array<string>;
-export const UpdateLogsIndexOrderRequestIndexNamesList =
+const UpdateLogsIndexOrderRequestIndexNamesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsIndexOrderRequestIndexNamesList>;
 
 export interface UpdateLogsIndexOrderRequest {
   /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
   index_names: UpdateLogsIndexOrderRequestIndexNamesList;
 }
-export const UpdateLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_names: UpdateLogsIndexOrderRequestIndexNamesList,
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/logs/config/index-order", code: 200 })),
@@ -21800,12 +16890,12 @@ export const UpdateLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of processors in this pipeline. */
 export type UpdateLogsPipelineRequestProcessorsList = Array<LogsProcessor>;
-export const UpdateLogsPipelineRequestProcessorsList =
+const UpdateLogsPipelineRequestProcessorsList =
   CreateLogsPipelineRequestProcessorsList as any as S.Schema<UpdateLogsPipelineRequestProcessorsList>;
 
 /** A list of tags associated with the pipeline. */
 export type UpdateLogsPipelineRequestTagsList = Array<string>;
-export const UpdateLogsPipelineRequestTagsList =
+const UpdateLogsPipelineRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsPipelineRequestTagsList>;
 
 export interface UpdateLogsPipelineRequest {
@@ -21823,7 +16913,7 @@ export interface UpdateLogsPipelineRequest {
   /** A list of tags associated with the pipeline. */
   tags?: UpdateLogsPipelineRequestTagsList;
 }
-export const UpdateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline_id: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -21839,14 +16929,14 @@ export const UpdateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
 export type UpdateLogsPipelineOrderRequestPipelineIdsList = Array<string>;
-export const UpdateLogsPipelineOrderRequestPipelineIdsList =
+const UpdateLogsPipelineOrderRequestPipelineIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsPipelineOrderRequestPipelineIdsList>;
 
 export interface UpdateLogsPipelineOrderRequest {
   /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
   pipeline_ids: UpdateLogsPipelineOrderRequestPipelineIdsList;
 }
-export const UpdateLogsPipelineOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsPipelineOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline_ids: UpdateLogsPipelineOrderRequestPipelineIdsList,
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/logs/config/pipeline-order", code: 200 })),
@@ -21870,7 +16960,7 @@ export interface UpdateMetricMetadataRequest {
   /** Primary unit of the metric such as `byte` or `operation`. */
   unit?: string;
 }
-export const UpdateMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_name: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -21886,17 +16976,17 @@ export const UpdateMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array with the different device IDs used to run the test. */
 export type UpdateMobileTestRequestDeviceIdsList = Array<string>;
-export const UpdateMobileTestRequestDeviceIdsList =
+const UpdateMobileTestRequestDeviceIdsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMobileTestRequestDeviceIdsList>;
 
 /** Array of steps for the test. */
 export type UpdateMobileTestRequestStepsList = Array<SyntheticsMobileStep>;
-export const UpdateMobileTestRequestStepsList =
+const UpdateMobileTestRequestStepsList =
   CreateSyntheticsMobileTestRequestStepsList as any as S.Schema<UpdateMobileTestRequestStepsList>;
 
 /** Array of tags attached to the test. */
 export type UpdateMobileTestRequestTagsList = Array<string>;
-export const UpdateMobileTestRequestTagsList =
+const UpdateMobileTestRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMobileTestRequestTagsList>;
 
 export interface UpdateMobileTestRequest {
@@ -21917,7 +17007,7 @@ export interface UpdateMobileTestRequest {
   tags?: UpdateMobileTestRequestTagsList;
   type: SyntheticsMobileTestType | (string & {});
 }
-export const UpdateMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     config: SyntheticsMobileTestConfig,
@@ -21934,17 +17024,17 @@ export const UpdateMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type UpdateMonitorRequestAssetsList = Array<MonitorAsset>;
-export const UpdateMonitorRequestAssetsList =
+const UpdateMonitorRequestAssetsList =
   CreateMonitorRequestAssetsList as any as S.Schema<UpdateMonitorRequestAssetsList>;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type UpdateMonitorRequestRestrictedRolesList = Array<string>;
-export const UpdateMonitorRequestRestrictedRolesList =
+const UpdateMonitorRequestRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type UpdateMonitorRequestTagsList = Array<string>;
-export const UpdateMonitorRequestTagsList =
+const UpdateMonitorRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMonitorRequestTagsList>;
 
 export interface UpdateMonitorRequest {
@@ -21968,7 +17058,7 @@ export interface UpdateMonitorRequest {
   tags?: UpdateMonitorRequestTagsList;
   type?: MonitorType | (string & {});
 }
-export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitor_id: S.Number.pipe(T.Label()),
     assets: S.optional(S.NullOr(UpdateMonitorRequestAssetsList)),
@@ -21992,9 +17082,6 @@ export type NotebookCellUpdateRequestAttributes =
   | NotebookHeatMapCellAttributes
   | NotebookDistributionCellAttributes
   | NotebookLogStreamCellAttributes;
-export const NotebookCellUpdateRequestAttributes =
-  S.Unknown as any as S.Schema<NotebookCellUpdateRequestAttributes>;
-
 /** The description of a notebook cell update request. */
 export interface NotebookCellUpdateRequest {
   attributes: NotebookCellUpdateRequestAttributes;
@@ -22002,29 +17089,19 @@ export interface NotebookCellUpdateRequest {
   id: string;
   type: NotebookCellResourceType;
 }
-export const NotebookCellUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: NotebookCellUpdateRequestAttributes,
-    id: S.String,
-    type: NotebookCellResourceType,
-  }),
-).annotate({
-  identifier: "NotebookCellUpdateRequest",
-}) as any as S.Schema<NotebookCellUpdateRequest>;
-
 /** Updating a notebook can either insert new cell(s) or update existing cell(s) by including the cell `id`. To delete existing cell(s), simply omit it from the list of cells. */
 export type NotebookUpdateCell = NotebookCellCreateRequest | NotebookCellUpdateRequest;
-export const NotebookUpdateCell = S.Unknown as any as S.Schema<NotebookUpdateCell>;
+const NotebookUpdateCell = S.Unknown as any as S.Schema<NotebookUpdateCell>;
 
 /** List of cells to display in the notebook. */
 export type NotebookUpdateDataAttributesCellsList = Array<NotebookUpdateCell>;
-export const NotebookUpdateDataAttributesCellsList = /*@__PURE__*/ S.Array(
+const NotebookUpdateDataAttributesCellsList = /*@__PURE__*/ S.Array(
   NotebookUpdateCell,
 ) as any as S.Schema<NotebookUpdateDataAttributesCellsList>;
 
 /** List of template variables for this notebook. */
 export type NotebookUpdateDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebookUpdateDataAttributesTemplateVariablesList =
+const NotebookUpdateDataAttributesTemplateVariablesList =
   NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebookUpdateDataAttributesTemplateVariablesList>;
 
 /** The data attributes of a notebook. */
@@ -22039,7 +17116,7 @@ export interface NotebookUpdateDataAttributes {
   template_variables?: NotebookUpdateDataAttributesTemplateVariablesList | null;
   time: NotebookGlobalTime;
 }
-export const NotebookUpdateDataAttributes = /*@__PURE__*/ S.suspend(() =>
+const NotebookUpdateDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cells: NotebookUpdateDataAttributesCellsList,
     metadata: S.optional(NotebookMetadata),
@@ -22057,7 +17134,7 @@ export interface NotebookUpdateData {
   attributes: NotebookUpdateDataAttributes;
   type: NotebookResourceType | (string & {});
 }
-export const NotebookUpdateData = /*@__PURE__*/ S.suspend(() =>
+const NotebookUpdateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: NotebookUpdateDataAttributes,
     type: NotebookResourceType,
@@ -22069,7 +17146,7 @@ export interface UpdateNotebookRequest {
   notebook_id: number;
   data: NotebookUpdateData;
 }
-export const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebook_id: S.Number.pipe(T.Label()),
     data: NotebookUpdateData,
@@ -22089,7 +17166,7 @@ export interface UpdateOrgRequest {
   /** Only available for MSP customers. Allows child organizations to be created on a trial plan. */
   trial?: boolean;
 }
-export const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     billing: S.optional(OrganizationBilling),
@@ -22107,7 +17184,7 @@ export interface UpdatePagerDutyIntegrationServiceRequest {
   /** Your service key in PagerDuty. */
   service_key: string;
 }
-export const UpdatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_name: S.String.pipe(T.Label()),
     service_key: S.String,
@@ -22123,12 +17200,12 @@ export const UpdatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdatePagerDutyIntegrationServiceRequest>;
 
 export interface UpdatePagerDutyIntegrationServiceResponse {}
-export const UpdatePagerDutyIntegrationServiceResponse =
+const UpdatePagerDutyIntegrationServiceResponse =
   DeletePagerDutyIntegrationServiceResponse as any as S.Schema<UpdatePagerDutyIntegrationServiceResponse>;
 
 /** Array of tags attached to the private location. */
 export type UpdatePrivateLocationRequestTagsList = Array<string>;
-export const UpdatePrivateLocationRequestTagsList =
+const UpdatePrivateLocationRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePrivateLocationRequestTagsList>;
 
 export interface UpdatePrivateLocationRequest {
@@ -22142,7 +17219,7 @@ export interface UpdatePrivateLocationRequest {
   /** Array of tags attached to the private location. */
   tags: UpdatePrivateLocationRequestTagsList;
 }
-export const UpdatePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location_id: S.String.pipe(T.Label()),
     description: S.String,
@@ -22158,27 +17235,25 @@ export const UpdatePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The `SharedDashboard` `embeddable_domains`. */
 export type UpdatePublicDashboardRequestEmbeddableDomainsList = Array<string>;
-export const UpdatePublicDashboardRequestEmbeddableDomainsList =
+const UpdatePublicDashboardRequestEmbeddableDomainsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePublicDashboardRequestEmbeddableDomainsList>;
 
 /** Timeframe setting for the shared dashboard. */
 export type SharedDashboardUpdateRequestGlobalTime = DashboardGlobalTime;
-export const SharedDashboardUpdateRequestGlobalTime = DashboardGlobalTime;
-
 /** The `SharedDashboard` `invitees`. */
 export type UpdatePublicDashboardRequestInviteesList = Array<SharedDashboardInviteesItemsInput>;
-export const UpdatePublicDashboardRequestInviteesList =
+const UpdatePublicDashboardRequestInviteesList =
   CreatePublicDashboardRequestInviteesList as any as S.Schema<UpdatePublicDashboardRequestInviteesList>;
 
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type UpdatePublicDashboardRequestSelectableTemplateVarsList =
   Array<SelectableTemplateVariableItems>;
-export const UpdatePublicDashboardRequestSelectableTemplateVarsList =
+const UpdatePublicDashboardRequestSelectableTemplateVarsList =
   CreatePublicDashboardRequestSelectableTemplateVarsList as any as S.Schema<UpdatePublicDashboardRequestSelectableTemplateVarsList>;
 
 /** List of email addresses that can be given access to the shared dashboard. */
 export type UpdatePublicDashboardRequestShareListList = Array<string>;
-export const UpdatePublicDashboardRequestShareListList =
+const UpdatePublicDashboardRequestShareListList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePublicDashboardRequestShareListList>;
 
 export interface UpdatePublicDashboardRequest {
@@ -22203,7 +17278,7 @@ export interface UpdatePublicDashboardRequest {
   title?: string;
   viewing_preferences?: ViewingPreferences;
 }
-export const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     embeddable_domains: S.optional(UpdatePublicDashboardRequestEmbeddableDomainsList),
@@ -22233,7 +17308,7 @@ export interface UpdateSlackIntegrationChannelRequest {
   /** Your channel name. */
   name?: string;
 }
-export const UpdateSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_name: S.String.pipe(T.Label()),
     channel_name: S.String.pipe(T.Label()),
@@ -22252,27 +17327,27 @@ export const UpdateSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type UpdateSLORequestGroupsList = Array<string>;
-export const UpdateSLORequestGroupsList =
+const UpdateSLORequestGroupsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type UpdateSLORequestMonitorIdsList = Array<number>;
-export const UpdateSLORequestMonitorIdsList =
+const UpdateSLORequestMonitorIdsList =
   CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<UpdateSLORequestMonitorIdsList>;
 
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type UpdateSLORequestMonitorTagsList = Array<string>;
-export const UpdateSLORequestMonitorTagsList =
+const UpdateSLORequestMonitorTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestMonitorTagsList>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type UpdateSLORequestTagsList = Array<string>;
-export const UpdateSLORequestTagsList =
+const UpdateSLORequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestTagsList>;
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type UpdateSLORequestThresholdsList = Array<SLOThreshold>;
-export const UpdateSLORequestThresholdsList =
+const UpdateSLORequestThresholdsList =
   CreateSLORequestThresholdsList as any as S.Schema<UpdateSLORequestThresholdsList>;
 
 export interface UpdateSLORequest {
@@ -22301,7 +17376,7 @@ export interface UpdateSLORequest {
   /** The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. */
   warning_threshold?: number;
 }
-export const UpdateSLORequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_id: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -22338,7 +17413,7 @@ export interface SLOCorrectionUpdateRequestAttributes {
   /** The timezone to display in the UI for the correction times (defaults to "UTC"). */
   timezone?: string;
 }
-export const SLOCorrectionUpdateRequestAttributes = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionUpdateRequestAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(SLOCorrectionCategory),
     description: S.optional(S.String),
@@ -22358,7 +17433,7 @@ export interface SLOCorrectionUpdateData {
   attributes?: SLOCorrectionUpdateRequestAttributes;
   type?: SLOCorrectionType | (string & {});
 }
-export const SLOCorrectionUpdateData = /*@__PURE__*/ S.suspend(() =>
+const SLOCorrectionUpdateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(SLOCorrectionUpdateRequestAttributes),
     type: S.optional(SLOCorrectionType),
@@ -22370,7 +17445,7 @@ export interface UpdateSLOCorrectionRequest {
   slo_correction_id: string;
   data?: SLOCorrectionUpdateData;
 }
-export const UpdateSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slo_correction_id: S.String.pipe(T.Label()),
     data: S.optional(SLOCorrectionUpdateData),
@@ -22386,7 +17461,7 @@ export interface UpdateTestPauseStatusRequest {
   public_id: string;
   new_status?: SyntheticsTestPauseStatus | (string & {});
 }
-export const UpdateTestPauseStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTestPauseStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     new_status: S.optional(SyntheticsTestPauseStatus),
@@ -22396,7 +17471,7 @@ export const UpdateTestPauseStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTestPauseStatusRequest>;
 
 export type UpdateTestPauseStatusResponse = boolean;
-export const UpdateTestPauseStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateTestPauseStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateTestPauseStatusResponse",
@@ -22415,7 +17490,7 @@ export interface UpdateUserRequest {
   /** The name of the user. */
   name?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_handle: S.String.pipe(T.Label()),
     access_role: S.optional(S.NullOr(AccessRole)),
@@ -22439,7 +17514,7 @@ export interface UpdateWebhooksIntegrationRequest {
   /** URL of the webhook. */
   url?: string;
 }
-export const UpdateWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_name: S.String.pipe(T.Label()),
     custom_headers: S.optional(S.String),
@@ -22468,7 +17543,7 @@ export interface UpdateWebhooksIntegrationCustomVariableRequest {
   /** Value of the custom variable. */
   value?: string;
 }
-export const UpdateWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_variable_name: S.String.pipe(T.Label()),
     is_secret: S.optional(S.Boolean),
@@ -22491,7 +17566,7 @@ export interface UploadIdPForOrgRequest {
   /** The path to the XML metadata file you wish to upload. */
   idp_file: string;
 }
-export const UploadIdPForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadIdPForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_id: S.String.pipe(T.Label()),
     idp_file: S.String,
@@ -22510,14 +17585,14 @@ export interface IdpResponse {
   /** Identity provider response. */
   message: string;
 }
-export const IdpResponse = /*@__PURE__*/ S.suspend(() =>
+const IdpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }),
 ).annotate({ identifier: "IdpResponse" }) as any as S.Schema<IdpResponse>;
 
 export interface ValidateRequest {}
-export const ValidateRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/validate", code: 200 })),
 ).annotate({ identifier: "ValidateRequest" }) as any as S.Schema<ValidateRequest>;
 
@@ -22526,7 +17601,7 @@ export interface AuthenticationValidationResponse {
   /** Return `true` if the authentication response is valid. */
   valid?: boolean;
 }
-export const AuthenticationValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.Boolean),
   }),
@@ -22536,22 +17611,22 @@ export const AuthenticationValidationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type ValidateExistingMonitorRequestAssetsList = Array<MonitorAsset>;
-export const ValidateExistingMonitorRequestAssetsList =
+const ValidateExistingMonitorRequestAssetsList =
   CreateMonitorRequestAssetsList as any as S.Schema<ValidateExistingMonitorRequestAssetsList>;
 
 /** A list of active v1 downtimes that match this monitor. */
 export type ValidateExistingMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-export const ValidateExistingMonitorRequestMatchingDowntimesList =
+const ValidateExistingMonitorRequestMatchingDowntimesList =
   CreateMonitorRequestMatchingDowntimesList as any as S.Schema<ValidateExistingMonitorRequestMatchingDowntimesList>;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type ValidateExistingMonitorRequestRestrictedRolesList = Array<string>;
-export const ValidateExistingMonitorRequestRestrictedRolesList =
+const ValidateExistingMonitorRequestRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateExistingMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type ValidateExistingMonitorRequestTagsList = Array<string>;
-export const ValidateExistingMonitorRequestTagsList =
+const ValidateExistingMonitorRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateExistingMonitorRequestTagsList>;
 
 export interface ValidateExistingMonitorRequest {
@@ -22577,7 +17652,7 @@ export interface ValidateExistingMonitorRequest {
   tags?: ValidateExistingMonitorRequestTagsList;
   type: MonitorType | (string & {});
 }
-export const ValidateExistingMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateExistingMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitor_id: S.Number.pipe(T.Label()),
     assets: S.optional(ValidateExistingMonitorRequestAssetsList),
@@ -22597,27 +17672,27 @@ export const ValidateExistingMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateExistingMonitorRequest>;
 
 export type ValidateExistingMonitorResponse = unknown;
-export const ValidateExistingMonitorResponse =
+const ValidateExistingMonitorResponse =
   CreateAzureIntegrationResponse as any as S.Schema<ValidateExistingMonitorResponse>;
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type ValidateMonitorRequestAssetsList = Array<MonitorAsset>;
-export const ValidateMonitorRequestAssetsList =
+const ValidateMonitorRequestAssetsList =
   CreateMonitorRequestAssetsList as any as S.Schema<ValidateMonitorRequestAssetsList>;
 
 /** A list of active v1 downtimes that match this monitor. */
 export type ValidateMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-export const ValidateMonitorRequestMatchingDowntimesList =
+const ValidateMonitorRequestMatchingDowntimesList =
   CreateMonitorRequestMatchingDowntimesList as any as S.Schema<ValidateMonitorRequestMatchingDowntimesList>;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type ValidateMonitorRequestRestrictedRolesList = Array<string>;
-export const ValidateMonitorRequestRestrictedRolesList =
+const ValidateMonitorRequestRestrictedRolesList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type ValidateMonitorRequestTagsList = Array<string>;
-export const ValidateMonitorRequestTagsList =
+const ValidateMonitorRequestTagsList =
   CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateMonitorRequestTagsList>;
 
 export interface ValidateMonitorRequest {
@@ -22641,7 +17716,7 @@ export interface ValidateMonitorRequest {
   tags?: ValidateMonitorRequestTagsList;
   type: MonitorType | (string & {});
 }
-export const ValidateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(ValidateMonitorRequestAssetsList),
     draft_status: S.optional(MonitorDraftStatus),
@@ -22658,7 +17733,7 @@ export const ValidateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateMonitorRequest" }) as any as S.Schema<ValidateMonitorRequest>;
 
 export type ValidateMonitorResponse = unknown;
-export const ValidateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ValidateMonitorResponse" }) as any as S.Schema<ValidateMonitorResponse>;
 

@@ -71,7 +71,7 @@ export interface GetCustomerUsageReportsRequest {
   /** Token to specify next page. A report with multiple pages has a `nextPageToken` property in the response. For your follow-on requests getting all of the report's pages, enter the `nextPageToken` value in the `pageToken` query string. */
   pageToken?: string;
 }
-export const GetCustomerUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String.pipe(T.Label()),
     customerId: S.optional(S.String.pipe(T.Query())),
@@ -94,7 +94,7 @@ export interface UsageReportsWarningsItemDataItem {
   /** Key associated with a key-value pair to give detailed information on the warning. */
   key?: string;
 }
-export const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
+const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -104,7 +104,7 @@ export const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageReportsWarningsItemDataItem>;
 
 export type UsageReportsWarningsItemDataItemList = Array<UsageReportsWarningsItemDataItem>;
-export const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(
+const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   UsageReportsWarningsItemDataItem,
 ) as any as S.Schema<UsageReportsWarningsItemDataItemList>;
 
@@ -116,7 +116,7 @@ export interface UsageReportsWarningsItem {
   /** Key-value pairs to give detailed information on the warning. */
   data?: UsageReportsWarningsItemDataItemList;
 }
-export const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
+const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.String),
@@ -125,7 +125,7 @@ export const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReportsWarningsItem" }) as any as S.Schema<UsageReportsWarningsItem>;
 
 export type UsageReportsWarningsItemList = Array<UsageReportsWarningsItem>;
-export const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(
+const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(
   UsageReportsWarningsItem,
 ) as any as S.Schema<UsageReportsWarningsItemList>;
 
@@ -141,7 +141,7 @@ export interface UsageReportEntity {
   /** Output only. The type of item. The value is `user`. */
   type?: string;
 }
-export const UsageReportEntity = /*@__PURE__*/ S.suspend(() =>
+const UsageReportEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String),
     profileId: S.optional(S.String),
@@ -152,15 +152,10 @@ export const UsageReportEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReportEntity" }) as any as S.Schema<UsageReportEntity>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 export interface UsageReportParametersItem {
   /** Output only. Boolean value of the parameter. */
@@ -176,7 +171,7 @@ export interface UsageReportParametersItem {
   /** The name of the parameter. For the User Usage Report parameter names, see the User Usage parameters reference. */
   name?: string;
 }
-export const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
+const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boolValue: S.optional(S.Boolean),
     msgValue: S.optional(DocumentMapList),
@@ -190,7 +185,7 @@ export const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageReportParametersItem>;
 
 export type UsageReportParametersItemList = Array<UsageReportParametersItem>;
-export const UsageReportParametersItemList = /*@__PURE__*/ S.Array(
+const UsageReportParametersItemList = /*@__PURE__*/ S.Array(
   UsageReportParametersItem,
 ) as any as S.Schema<UsageReportParametersItemList>;
 
@@ -207,7 +202,7 @@ export interface UsageReport {
   /** Output only. Parameter value pairs for various applications. For the Entity Usage Report parameters and values, see [the Entity Usage parameters reference](https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-appendix-a/entities). */
   parameters?: UsageReportParametersItemList;
 }
-export const UsageReport = /*@__PURE__*/ S.suspend(() =>
+const UsageReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     entity: S.optional(UsageReportEntity),
@@ -218,9 +213,7 @@ export const UsageReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReport" }) as any as S.Schema<UsageReport>;
 
 export type UsageReportList = Array<UsageReport>;
-export const UsageReportList = /*@__PURE__*/ S.Array(
-  UsageReport,
-) as any as S.Schema<UsageReportList>;
+const UsageReportList = /*@__PURE__*/ S.Array(UsageReport) as any as S.Schema<UsageReportList>;
 
 export interface UsageReports {
   /** The type of API resource. For a usage report, the value is `admin#reports#usageReports`. */
@@ -234,7 +227,7 @@ export interface UsageReports {
   /** ETag of the resource. */
   etag?: string;
 }
-export const UsageReports = /*@__PURE__*/ S.suspend(() =>
+const UsageReports = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     warnings: S.optional(UsageReportsWarningsItemList),
@@ -245,7 +238,7 @@ export const UsageReports = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReports" }) as any as S.Schema<UsageReports>;
 
 export type GetEntityUsageReportsEntityTypeEnum = "gplus_communities";
-export const GetEntityUsageReportsEntityTypeEnum = S.String;
+const GetEntityUsageReportsEntityTypeEnum = S.String;
 
 export interface GetEntityUsageReportsRequest {
   /** The `parameters` query string is a comma-separated list of event parameters that refine a report's results. The parameter is associated with a specific application. The application values for the Entities usage report are only `gplus`. A `parameter` query string is in the CSV form of `[app_name1:param_name1], [app_name2:param_name2]...`. *Note:* The API doesn't accept multiple values of a parameter. If a particular parameter is supplied more than once in the API request, the API only accepts the last value of that request parameter. In addition, if an invalid request parameter is supplied in the API request, the API ignores that request parameter and returns the response corresponding to the remaining valid request parameters. An example of an invalid request parameter is one that does not belong to the application. If no parameters are requested, all parameters are returned. */
@@ -265,7 +258,7 @@ export interface GetEntityUsageReportsRequest {
   /** The `filters` query string is a comma-separated list of an application's event parameters where the parameter's value is manipulated by a relational operator. The `filters` query string includes the name of the application whose usage is returned in the report. The application values for the Entities usage report include `accounts`, `docs`, and `gmail`. Filters are in the form `[application name]:parameter name[parameter value],...`. In this example, the `<>` 'not equal to' operator is URL-encoded in the request's query string (%3C%3E): GET https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/dates/2017-12-01 ?parameters=gplus:community_name,gplus:num_total_members &filters=gplus:num_total_members%3C%3E0 The relational operators include: - `==` - 'equal to'. - `<>` - 'not equal to'. It is URL-encoded (%3C%3E). - `<` - 'less than'. It is URL-encoded (%3C). - `<=` - 'less than or equal to'. It is URL-encoded (%3C=). - `>` - 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal to'. It is URL-encoded (%3E=). Filters can only be applied to numeric parameters. */
   filters?: string;
 }
-export const GetEntityUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntityUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(S.String.pipe(T.Query())),
     entityType: GetEntityUsageReportsEntityTypeEnum.pipe(T.Label()),
@@ -306,7 +299,7 @@ export interface GetUserUsageReportRequest {
   /** Token to specify next page. A report with multiple pages has a `nextPageToken` property in the response. In your follow-on request getting the next page of the report, enter the `nextPageToken` value in the `pageToken` query string. */
   pageToken?: string;
 }
-export const GetUserUsageReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserUsageReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgUnitID: S.optional(S.String.pipe(T.Query())),
     groupIdFilter: S.optional(S.String.pipe(T.Query())),
@@ -371,7 +364,7 @@ export type ListActivitiesApplicationNameEnum =
   | "chrome_sync"
   | "workspace_studio"
   | "gemini_notebook";
-export const ListActivitiesApplicationNameEnum = S.String;
+const ListActivitiesApplicationNameEnum = S.String;
 
 export interface ListActivitiesRequest {
   /** Determines how many activity records are shown on each response page. For example, if the request sets `maxResults=1` and the report has two activities, the report has two pages. The response's `nextPageToken` property has the token to the second page. The `maxResults` query string is optional in the request. The default value is 1000. */
@@ -413,7 +406,7 @@ export interface ListActivitiesRequest {
   /** The unique ID of the customer to retrieve data for. */
   customerId?: string;
 }
-export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -453,7 +446,7 @@ export interface ActivityId {
   /** Application name to which the event belongs. For possible values see the list of applications above in `applicationName`. */
   applicationName?: string;
 }
-export const ActivityId = /*@__PURE__*/ S.suspend(() =>
+const ActivityId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueQualifier: S.optional(S.String),
     time: S.optional(S.String),
@@ -463,14 +456,14 @@ export const ActivityId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityId" }) as any as S.Schema<ActivityId>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Setting a text list value. */
 export interface FieldValueTextListValue {
   /** List of text values. */
   values?: StringList;
 }
-export const FieldValueTextListValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueTextListValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
@@ -481,14 +474,14 @@ export interface FieldValueUserValue {
   /** Email of the user. */
   email?: string;
 }
-export const FieldValueUserValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueUserValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
 ).annotate({ identifier: "FieldValueUserValue" }) as any as S.Schema<FieldValueUserValue>;
 
 export type FieldValueUserValueList = Array<FieldValueUserValue>;
-export const FieldValueUserValueList = /*@__PURE__*/ S.Array(
+const FieldValueUserValueList = /*@__PURE__*/ S.Array(
   FieldValueUserValue,
 ) as any as S.Schema<FieldValueUserValueList>;
 
@@ -497,7 +490,7 @@ export interface FieldValueUserListValue {
   /** List of users. */
   values?: FieldValueUserValueList;
 }
-export const FieldValueUserListValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueUserListValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(FieldValueUserValueList),
   }),
@@ -512,7 +505,7 @@ export interface Admin_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Admin_Date = /*@__PURE__*/ S.suspend(() =>
+const Admin_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -525,7 +518,7 @@ export interface Reason {
   /** The type of the reason. */
   reasonType?: string;
 }
-export const Reason = /*@__PURE__*/ S.suspend(() =>
+const Reason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasonType: S.optional(S.String),
   }),
@@ -540,7 +533,7 @@ export interface FieldValueSelectionValue {
   /** Whether the selection is badged. */
   badged?: boolean;
 }
-export const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     id: S.optional(S.String),
@@ -549,7 +542,7 @@ export const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldValueSelectionValue" }) as any as S.Schema<FieldValueSelectionValue>;
 
 export type FieldValueSelectionValueList = Array<FieldValueSelectionValue>;
-export const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(
+const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(
   FieldValueSelectionValue,
 ) as any as S.Schema<FieldValueSelectionValueList>;
 
@@ -558,7 +551,7 @@ export interface FieldValueSelectionListValue {
   /** List of selections. */
   values?: FieldValueSelectionValueList;
 }
-export const FieldValueSelectionListValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueSelectionListValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(FieldValueSelectionValueList),
   }),
@@ -597,7 +590,7 @@ export interface FieldValue {
   /** Setting a user value by selecting a single user. */
   userValue?: FieldValueUserValue;
 }
-export const FieldValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longTextValue: S.optional(S.String),
     textListValue: S.optional(FieldValueTextListValue),
@@ -617,7 +610,7 @@ export const FieldValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldValue" }) as any as S.Schema<FieldValue>;
 
 export type FieldValueList = Array<FieldValue>;
-export const FieldValueList = /*@__PURE__*/ S.Array(FieldValue) as any as S.Schema<FieldValueList>;
+const FieldValueList = /*@__PURE__*/ S.Array(FieldValue) as any as S.Schema<FieldValueList>;
 
 /** Details of the label applied on the resource. */
 export interface AppliedLabel {
@@ -630,7 +623,7 @@ export interface AppliedLabel {
   /** The reason why the label was applied on the resource. */
   reason?: Reason;
 }
-export const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
+const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldValues: S.optional(FieldValueList),
     title: S.optional(S.String),
@@ -640,16 +633,14 @@ export const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppliedLabel" }) as any as S.Schema<AppliedLabel>;
 
 export type AppliedLabelList = Array<AppliedLabel>;
-export const AppliedLabelList = /*@__PURE__*/ S.Array(
-  AppliedLabel,
-) as any as S.Schema<AppliedLabelList>;
+const AppliedLabelList = /*@__PURE__*/ S.Array(AppliedLabel) as any as S.Schema<AppliedLabelList>;
 
 /** Identity of the Google Workspace customer who owns the resource. */
 export interface CustomerIdentity {
   /** Customer id. */
   id?: string;
 }
-export const CustomerIdentity = /*@__PURE__*/ S.suspend(() =>
+const CustomerIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -662,7 +653,7 @@ export interface UserIdentity {
   /** User email. */
   userEmail?: string;
 }
-export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     userEmail: S.optional(S.String),
@@ -676,7 +667,7 @@ export interface SharedDriveIdentity {
   /** Shared drive gaia id. */
   id?: string;
 }
-export const SharedDriveIdentity = /*@__PURE__*/ S.suspend(() =>
+const SharedDriveIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedDriveName: S.optional(S.String),
     id: S.optional(S.String),
@@ -690,7 +681,7 @@ export interface GroupIdentity {
   /** Group gaia id. */
   id?: string;
 }
-export const GroupIdentity = /*@__PURE__*/ S.suspend(() =>
+const GroupIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupEmail: S.optional(S.String),
     id: S.optional(S.String),
@@ -708,7 +699,7 @@ export interface OwnerIdentity {
   /** Identity of the group who owns the resource. */
   groupIdentity?: GroupIdentity;
 }
-export const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
+const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerIdentity: S.optional(CustomerIdentity),
     userIdentity: S.optional(UserIdentity),
@@ -718,7 +709,7 @@ export const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OwnerIdentity" }) as any as S.Schema<OwnerIdentity>;
 
 export type OwnerIdentityList = Array<OwnerIdentity>;
-export const OwnerIdentityList = /*@__PURE__*/ S.Array(
+const OwnerIdentityList = /*@__PURE__*/ S.Array(
   OwnerIdentity,
 ) as any as S.Schema<OwnerIdentityList>;
 
@@ -729,7 +720,7 @@ export interface OwnerDetails {
   /** Type of the owner of the resource. */
   ownerType?: string;
 }
-export const OwnerDetails = /*@__PURE__*/ S.suspend(() =>
+const OwnerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerIdentity: S.optional(OwnerIdentityList),
     ownerType: S.optional(S.String),
@@ -751,7 +742,7 @@ export interface ResourceDetails {
   /** Title of the resource. For instance, in case of a drive document, this would be the title of the document. In case of an email, this would be the subject. */
   title?: string;
 }
-export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedLabels: S.optional(AppliedLabelList),
     id: S.optional(S.String),
@@ -763,7 +754,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
 
 export type ResourceDetailsList = Array<ResourceDetails>;
-export const ResourceDetailsList = /*@__PURE__*/ S.Array(
+const ResourceDetailsList = /*@__PURE__*/ S.Array(
   ResourceDetails,
 ) as any as S.Schema<ResourceDetailsList>;
 
@@ -778,7 +769,7 @@ export interface ActivityEventsStatus {
   /** Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS - SUCCEEDED - SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED */
   eventStatus?: string;
 }
-export const ActivityEventsStatus = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpStatusCode: S.optional(S.Number),
     errorCode: S.optional(S.String),
@@ -788,7 +779,7 @@ export const ActivityEventsStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityEventsStatus" }) as any as S.Schema<ActivityEventsStatus>;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 /** JSON template for a parameter used in various reports. */
 export interface NestedParameter {
@@ -807,7 +798,7 @@ export interface NestedParameter {
   /** Integer value of the parameter. */
   intValue?: string;
 }
-export const NestedParameter = /*@__PURE__*/ S.suspend(() =>
+const NestedParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiValue: S.optional(StringList),
     value: S.optional(S.String),
@@ -820,7 +811,7 @@ export const NestedParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NestedParameter" }) as any as S.Schema<NestedParameter>;
 
 export type NestedParameterList = Array<NestedParameter>;
-export const NestedParameterList = /*@__PURE__*/ S.Array(
+const NestedParameterList = /*@__PURE__*/ S.Array(
   NestedParameter,
 ) as any as S.Schema<NestedParameterList>;
 
@@ -828,27 +819,22 @@ export interface ActivityEventsItemSensitiveParametersItemMultiMessageValueItem 
   /** Parameter values */
   parameter?: NestedParameterList;
 }
-export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameter: S.optional(NestedParameterList),
-    }),
-  ).annotate({
-    identifier: "ActivityEventsItemSensitiveParametersItemMultiMessageValueItem",
-  }) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
+const ActivityEventsItemSensitiveParametersItemMultiMessageValueItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameter: S.optional(NestedParameterList),
+  }),
+).annotate({
+  identifier: "ActivityEventsItemSensitiveParametersItemMultiMessageValueItem",
+}) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
 
 export type ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
   Array<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
-export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
-  /*@__PURE__*/ S.Array(
-    ActivityEventsItemSensitiveParametersItemMultiMessageValueItem,
-  ) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList>;
+const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(
+  ActivityEventsItemSensitiveParametersItemMultiMessageValueItem,
+) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList>;
 
 export type ActivityEventsItemSensitiveParametersItemMessageValue =
   ActivityEventsItemSensitiveParametersItemMultiMessageValueItem;
-export const ActivityEventsItemSensitiveParametersItemMessageValue =
-  ActivityEventsItemSensitiveParametersItemMultiMessageValueItem;
-
 export interface ActivityEventsItemSensitiveParametersItem {
   /** String value of the parameter. */
   value?: string;
@@ -867,7 +853,7 @@ export interface ActivityEventsItemSensitiveParametersItem {
   /** Integer values of the parameter. */
   multiIntValue?: StringList;
 }
-export const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     multiMessageValue: S.optional(
@@ -886,26 +872,20 @@ export const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend
 
 export type ActivityEventsItemSensitiveParametersItemList =
   Array<ActivityEventsItemSensitiveParametersItem>;
-export const ActivityEventsItemSensitiveParametersItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemSensitiveParametersItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemSensitiveParametersItem,
 ) as any as S.Schema<ActivityEventsItemSensitiveParametersItemList>;
 
 export type ActivityEventsItemParametersItemMultiMessageValueItem =
   ActivityEventsItemSensitiveParametersItemMultiMessageValueItem;
-export const ActivityEventsItemParametersItemMultiMessageValueItem =
-  ActivityEventsItemSensitiveParametersItemMultiMessageValueItem;
-
 export type ActivityEventsItemParametersItemMultiMessageValueItemList =
   Array<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
-export const ActivityEventsItemParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemSensitiveParametersItemMultiMessageValueItem,
 ) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItemList>;
 
 export type ActivityEventsItemParametersItemMessageValue =
   ActivityEventsItemSensitiveParametersItemMultiMessageValueItem;
-export const ActivityEventsItemParametersItemMessageValue =
-  ActivityEventsItemSensitiveParametersItemMultiMessageValueItem;
-
 export interface ActivityEventsItemParametersItem {
   /** List of `messageValue` objects. */
   multiMessageValue?: ActivityEventsItemParametersItemMultiMessageValueItemList;
@@ -924,7 +904,7 @@ export interface ActivityEventsItemParametersItem {
   /** Boolean value of the parameter. */
   boolValue?: boolean;
 }
-export const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiMessageValue: S.optional(ActivityEventsItemParametersItemMultiMessageValueItemList),
     value: S.optional(S.String),
@@ -940,7 +920,7 @@ export const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityEventsItemParametersItem>;
 
 export type ActivityEventsItemParametersItemList = Array<ActivityEventsItemParametersItem>;
-export const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemParametersItem,
 ) as any as S.Schema<ActivityEventsItemParametersItemList>;
 
@@ -958,7 +938,7 @@ export interface ActivityEventsItem {
   /** Type of event. The Google Workspace service or feature that an administrator changes is identified in the `type` property which identifies an event using the `eventName` property. For a full list of the API's `type` categories, see the list of event names for various applications above in `applicationName`. */
   type?: string;
 }
-export const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIds: S.optional(StringList),
     name: S.optional(S.String),
@@ -970,12 +950,12 @@ export const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityEventsItem" }) as any as S.Schema<ActivityEventsItem>;
 
 export type ActivityEventsItemList = Array<ActivityEventsItem>;
-export const ActivityEventsItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItem,
 ) as any as S.Schema<ActivityEventsItemList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Network information of the user doing the action. */
 export interface ActivityNetworkInfo {
@@ -986,7 +966,7 @@ export interface ActivityNetworkInfo {
   /** IP Address of the user doing the action. */
   ipAsn?: IntegerList;
 }
-export const ActivityNetworkInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityNetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     subdivisionCode: S.optional(S.String),
@@ -1002,7 +982,7 @@ export interface ActivityActorApplicationInfo {
   /** Name of the application used to perform the action. */
   applicationName?: string;
 }
-export const ActivityActorApplicationInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityActorApplicationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthClientId: S.optional(S.String),
     impersonation: S.optional(S.Boolean),
@@ -1017,7 +997,7 @@ export interface AgentAttributionInfoAgentOwner {
   /** The email of the agent owner. */
   email?: string;
 }
-export const AgentAttributionInfoAgentOwner = /*@__PURE__*/ S.suspend(() =>
+const AgentAttributionInfoAgentOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
@@ -1036,7 +1016,7 @@ export interface AgentAttributionInfo {
   /** The owner of the agent. */
   agentOwner?: AgentAttributionInfoAgentOwner;
 }
-export const AgentAttributionInfo = /*@__PURE__*/ S.suspend(() =>
+const AgentAttributionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentName: S.optional(S.String),
     agentId: S.optional(S.String),
@@ -1059,7 +1039,7 @@ export interface ActivityActor {
   /** Only present when `callerType` is `KEY`. Can be the `consumer_key` of the requestor for OAuth 2LO API requests or an identifier for robot accounts. */
   key?: string;
 }
-export const ActivityActor = /*@__PURE__*/ S.suspend(() =>
+const ActivityActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationInfo: S.optional(ActivityActorApplicationInfo),
     callerType: S.optional(S.String),
@@ -1079,7 +1059,7 @@ export interface ActivityUserDeviceInfo {
   /** Output only. Device OS version of the user's device. */
   deviceOsVersion?: string;
 }
-export const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceId: S.optional(S.String),
     deviceType: S.optional(S.String),
@@ -1112,7 +1092,7 @@ export interface Activity {
   /** The type of API resource. For an activity report, the value is `audit#activity`. */
   kind?: string;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ActivityId),
     resourceDetails: S.optional(ResourceDetailsList),
@@ -1129,7 +1109,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type ActivityList = Array<Activity>;
-export const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
+const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
 
 /** JSON template for a collection of activities. */
 export interface Activities {
@@ -1142,7 +1122,7 @@ export interface Activities {
   /** Token for retrieving the follow-on next page of the report. The `nextPageToken` value is used in the request's `pageToken` query string. */
   nextPageToken?: string;
 }
-export const Activities = /*@__PURE__*/ S.suspend(() =>
+const Activities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: ActivityList,
@@ -1152,7 +1132,7 @@ export const Activities = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activities" }) as any as S.Schema<Activities>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A notification channel used to watch for resource changes. */
 export interface Channel {
@@ -1177,7 +1157,7 @@ export interface Channel {
   /** Additional parameters controlling delivery channel behavior. Optional. */
   params?: StringMap;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     expiration: S.optional(S.String),
@@ -1196,7 +1176,7 @@ export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Channel.pipe(T.HttpBody())),
   }).pipe(
@@ -1209,7 +1189,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "StopChannelsResponse",
 }) as any as S.Schema<StopChannelsResponse>;
 
@@ -1236,7 +1216,7 @@ export type WatchActivitiesApplicationNameEnum =
   | "data_studio"
   | "keep"
   | "classroom";
-export const WatchActivitiesApplicationNameEnum = S.String;
+const WatchActivitiesApplicationNameEnum = S.String;
 
 export interface WatchActivitiesRequest {
   /** The unique ID of the customer to retrieve data for. */
@@ -1266,7 +1246,7 @@ export interface WatchActivitiesRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     actorIpAddress: S.optional(S.String.pipe(T.Query())),

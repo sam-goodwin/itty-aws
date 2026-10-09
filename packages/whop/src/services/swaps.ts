@@ -46,11 +46,11 @@ export class NotFound
 
 /** Source chain name or chain ID. Defaults to the source token's chain when omitted. */
 export type CreateSwapRequestFromChain = string | number;
-export const CreateSwapRequestFromChain = S.Unknown as any as S.Schema<CreateSwapRequestFromChain>;
+const CreateSwapRequestFromChain = S.Unknown as any as S.Schema<CreateSwapRequestFromChain>;
 
 /** Destination chain name or chain ID. Defaults to the destination token's chain when omitted. */
 export type CreateSwapRequestToChain = string | number;
-export const CreateSwapRequestToChain = S.Unknown as any as S.Schema<CreateSwapRequestToChain>;
+const CreateSwapRequestToChain = S.Unknown as any as S.Schema<CreateSwapRequestToChain>;
 
 export interface CreateSwapRequest {
   /** Business account that makes the swap, prefixed `biz_`. Provide this or `user_id`. */
@@ -74,7 +74,7 @@ export interface CreateSwapRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateSwapRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSwapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     amount: S.optional(S.NullOr(S.String)),
@@ -93,7 +93,7 @@ export const CreateSwapRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSwapResponseFromToken {
   symbol?: string;
 }
-export const CreateSwapResponseFromToken = /*@__PURE__*/ S.suspend(() =>
+const CreateSwapResponseFromToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     symbol: S.optional(S.String),
   }),
@@ -102,16 +102,14 @@ export const CreateSwapResponseFromToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSwapResponseFromToken>;
 
 export type CreateSwapResponseObject = "swap";
-export const CreateSwapResponseObject = S.String;
+const CreateSwapResponseObject = S.String;
 
 /** Swap status. Crypto swaps start `queued`; fiat conversions return `complete`, or `working` while a stablecoin repayment settles. */
 export type CreateSwapResponseStatus = "queued" | "working" | "complete" | "failed";
-export const CreateSwapResponseStatus = S.String;
+const CreateSwapResponseStatus = S.String;
 
 /** Fiat pairs only: the destination currency. */
 export type CreateSwapResponseToToken = CreateSwapResponseFromToken;
-export const CreateSwapResponseToToken = CreateSwapResponseFromToken;
-
 export interface CreateSwapResponse {
   /** Account that owns the swap: a business ID prefixed `biz_`, or the user ID for a personal account. */
   account_id: string;
@@ -139,7 +137,7 @@ export interface CreateSwapResponse {
   /** User whose personal account owns the swap, prefixed `user_`. Null for a business account. */
   user_id: string | null;
 }
-export const CreateSwapResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSwapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     amount_in: S.optional(S.NullOr(S.Number)),
@@ -159,20 +157,19 @@ export const CreateSwapResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Source chain name or chain ID. Defaults to the source token's chain when omitted. */
 export type CreateSwapQuoteRequestFromChain = string | number;
-export const CreateSwapQuoteRequestFromChain =
+const CreateSwapQuoteRequestFromChain =
   S.Unknown as any as S.Schema<CreateSwapQuoteRequestFromChain>;
 
 /** Metadata to include with the quote response. */
 export type CreateSwapQuoteRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateSwapQuoteRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateSwapQuoteRequestMetadataMap>;
 
 /** Destination chain name or chain ID. Defaults to the destination token's chain when omitted. */
 export type CreateSwapQuoteRequestToChain = string | number;
-export const CreateSwapQuoteRequestToChain =
-  S.Unknown as any as S.Schema<CreateSwapQuoteRequestToChain>;
+const CreateSwapQuoteRequestToChain = S.Unknown as any as S.Schema<CreateSwapQuoteRequestToChain>;
 
 export interface CreateSwapQuoteRequest {
   /** Source token amount. */
@@ -196,7 +193,7 @@ export interface CreateSwapQuoteRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateSwapQuoteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSwapQuoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     from_address: S.optional(S.NullOr(S.String)),
@@ -213,20 +210,20 @@ export const CreateSwapQuoteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resolved source token details. */
 export type CreateSwapQuoteResponseFromTokenMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteResponseFromTokenMap =
+const CreateSwapQuoteResponseFromTokenMap =
   CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseFromTokenMap>;
 
 /** Metadata from the request. */
 export type CreateSwapQuoteResponseMetadataMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteResponseMetadataMap =
+const CreateSwapQuoteResponseMetadataMap =
   CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseMetadataMap>;
 
 export type CreateSwapQuoteResponseObject = "swap_quote";
-export const CreateSwapQuoteResponseObject = S.String;
+const CreateSwapQuoteResponseObject = S.String;
 
 /** Resolved destination token details. */
 export type CreateSwapQuoteResponseToTokenMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteResponseToTokenMap =
+const CreateSwapQuoteResponseToTokenMap =
   CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseToTokenMap>;
 
 export interface CreateSwapQuoteResponse {
@@ -258,7 +255,7 @@ export interface CreateSwapQuoteResponse {
   /** Resolved destination token details. */
   to_token: CreateSwapQuoteResponseToTokenMap;
 }
-export const CreateSwapQuoteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSwapQuoteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_in: S.String,
     amount_out: S.String,
@@ -281,22 +278,22 @@ export interface GetSwapRequest {
   /** Swap ID returned from POST /swaps. */
   id: string;
 }
-export const GetSwapRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSwapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/swaps/{id}", code: 200 })),
 ).annotate({ identifier: "GetSwapRequest" }) as any as S.Schema<GetSwapRequest>;
 
 export type GetSwapResponseObject = "swap";
-export const GetSwapResponseObject = S.String;
+const GetSwapResponseObject = S.String;
 
 /** Current swap status. `complete` and `failed` are terminal. */
 export type GetSwapResponseStatus = "queued" | "working" | "complete" | "failed";
-export const GetSwapResponseStatus = S.String;
+const GetSwapResponseStatus = S.String;
 
 /** On-chain transaction hashes produced by the swap. */
 export type GetSwapResponseTxHashesList = Array<string>;
-export const GetSwapResponseTxHashesList = /*@__PURE__*/ S.Array(
+const GetSwapResponseTxHashesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSwapResponseTxHashesList>;
 
@@ -315,7 +312,7 @@ export interface GetSwapResponse {
   /** User whose personal account owns the swap, prefixed `user_`. Null for a business account. */
   user_id: string | null;
 }
-export const GetSwapResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSwapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     error: S.optional(S.NullOr(S.String)),
@@ -333,7 +330,7 @@ export interface ListSwapsRequest {
   /** The caller's own user ID, prefixed `user_`, to list swaps in their personal account. Provide this or `account_id`. */
   user_id?: string;
 }
-export const ListSwapsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSwapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     user_id: S.optional(S.String.pipe(T.Query())),
@@ -341,15 +338,15 @@ export const ListSwapsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSwapsRequest" }) as any as S.Schema<ListSwapsRequest>;
 
 export type ListSwapsResponseDataItemObject = "swap";
-export const ListSwapsResponseDataItemObject = S.String;
+const ListSwapsResponseDataItemObject = S.String;
 
 /** Current swap status. `complete` and `failed` are terminal. */
 export type ListSwapsResponseDataItemStatus = "queued" | "working" | "complete" | "failed";
-export const ListSwapsResponseDataItemStatus = S.String;
+const ListSwapsResponseDataItemStatus = S.String;
 
 /** On-chain transaction hashes produced by the swap. */
 export type ListSwapsResponseDataItemTxHashesList = Array<string>;
-export const ListSwapsResponseDataItemTxHashesList =
+const ListSwapsResponseDataItemTxHashesList =
   GetSwapResponseTxHashesList as any as S.Schema<ListSwapsResponseDataItemTxHashesList>;
 
 export interface ListSwapsResponseDataItem {
@@ -367,7 +364,7 @@ export interface ListSwapsResponseDataItem {
   /** User whose personal account owns the swap, prefixed `user_`. Null for a business account. */
   user_id: string | null;
 }
-export const ListSwapsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListSwapsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     error: S.optional(S.NullOr(S.String)),
@@ -383,7 +380,7 @@ export const ListSwapsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Swaps returned for this account. */
 export type ListSwapsResponseDataList = Array<ListSwapsResponseDataItem>;
-export const ListSwapsResponseDataList = /*@__PURE__*/ S.Array(
+const ListSwapsResponseDataList = /*@__PURE__*/ S.Array(
   ListSwapsResponseDataItem,
 ) as any as S.Schema<ListSwapsResponseDataList>;
 
@@ -391,7 +388,7 @@ export interface ListSwapsResponse {
   /** Swaps returned for this account. */
   data: ListSwapsResponseDataList;
 }
-export const ListSwapsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSwapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListSwapsResponseDataList,
   }),

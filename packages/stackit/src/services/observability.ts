@@ -53,7 +53,7 @@ export interface CreateAlertConfigReceiverRequestEmailConfigsItem {
   /** The email address to send notifications to. `Additional Validators:` * must be a syntactically valid email address */
   to?: string;
 }
-export const CreateAlertConfigReceiverRequestEmailConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertConfigReceiverRequestEmailConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authIdentity: S.optional(S.String),
     authPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -70,7 +70,7 @@ export const CreateAlertConfigReceiverRequestEmailConfigsItem = /*@__PURE__*/ S.
 /** Email configurations */
 export type CreateAlertConfigReceiverRequestEmailConfigsList =
   Array<CreateAlertConfigReceiverRequestEmailConfigsItem>;
-export const CreateAlertConfigReceiverRequestEmailConfigsList = /*@__PURE__*/ S.Array(
+const CreateAlertConfigReceiverRequestEmailConfigsList = /*@__PURE__*/ S.Array(
   CreateAlertConfigReceiverRequestEmailConfigsItem,
 ) as any as S.Schema<CreateAlertConfigReceiverRequestEmailConfigsList>;
 
@@ -86,7 +86,7 @@ export interface CreateAlertConfigReceiverRequestOpsgenieConfigsItem {
   /** Comma separated list of tags attached to the notifications. */
   tags?: string;
 }
-export const CreateAlertConfigReceiverRequestOpsgenieConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertConfigReceiverRequestOpsgenieConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
     apiUrl: S.optional(S.String),
@@ -101,7 +101,7 @@ export const CreateAlertConfigReceiverRequestOpsgenieConfigsItem = /*@__PURE__*/
 /** Configuration for ops genie. */
 export type CreateAlertConfigReceiverRequestOpsgenieConfigsList =
   Array<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
-export const CreateAlertConfigReceiverRequestOpsgenieConfigsList = /*@__PURE__*/ S.Array(
+const CreateAlertConfigReceiverRequestOpsgenieConfigsList = /*@__PURE__*/ S.Array(
   CreateAlertConfigReceiverRequestOpsgenieConfigsItem,
 ) as any as S.Schema<CreateAlertConfigReceiverRequestOpsgenieConfigsList>;
 
@@ -115,7 +115,7 @@ export interface CreateAlertConfigReceiverRequestWebHookConfigsItem {
   /** The endpoint to send HTTP POST requests to. `Additional Validators:` * must be a syntactically valid url address */
   url?: string;
 }
-export const CreateAlertConfigReceiverRequestWebHookConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertConfigReceiverRequestWebHookConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleChat: S.optional(S.Boolean),
     msTeams: S.optional(S.Boolean),
@@ -128,7 +128,7 @@ export const CreateAlertConfigReceiverRequestWebHookConfigsItem = /*@__PURE__*/ 
 
 export type CreateAlertConfigReceiverRequestWebHookConfigsList =
   Array<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
-export const CreateAlertConfigReceiverRequestWebHookConfigsList = /*@__PURE__*/ S.Array(
+const CreateAlertConfigReceiverRequestWebHookConfigsList = /*@__PURE__*/ S.Array(
   CreateAlertConfigReceiverRequestWebHookConfigsItem,
 ) as any as S.Schema<CreateAlertConfigReceiverRequestWebHookConfigsList>;
 
@@ -143,7 +143,7 @@ export interface CreateAlertConfigReceiverRequest {
   opsgenieConfigs?: CreateAlertConfigReceiverRequestOpsgenieConfigsList;
   webHookConfigs?: CreateAlertConfigReceiverRequestWebHookConfigsList;
 }
-export const CreateAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -172,7 +172,7 @@ export interface EmailConfig {
   smarthost?: string;
   to: string;
 }
-export const EmailConfig = /*@__PURE__*/ S.suspend(() =>
+const EmailConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authIdentity: S.optional(S.String),
     authPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -185,7 +185,7 @@ export const EmailConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailConfig" }) as any as S.Schema<EmailConfig>;
 
 export type ReceiversEmailConfigsList = Array<EmailConfig>;
-export const ReceiversEmailConfigsList = /*@__PURE__*/ S.Array(
+const ReceiversEmailConfigsList = /*@__PURE__*/ S.Array(
   EmailConfig,
 ) as any as S.Schema<ReceiversEmailConfigsList>;
 
@@ -196,7 +196,7 @@ export interface OpsgenieConfig {
   sendResolved?: boolean;
   tags?: string;
 }
-export const OpsgenieConfig = /*@__PURE__*/ S.suspend(() =>
+const OpsgenieConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
     apiUrl: S.optional(S.String),
@@ -207,7 +207,7 @@ export const OpsgenieConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OpsgenieConfig" }) as any as S.Schema<OpsgenieConfig>;
 
 export type ReceiversOpsgenieConfigsList = Array<OpsgenieConfig>;
-export const ReceiversOpsgenieConfigsList = /*@__PURE__*/ S.Array(
+const ReceiversOpsgenieConfigsList = /*@__PURE__*/ S.Array(
   OpsgenieConfig,
 ) as any as S.Schema<ReceiversOpsgenieConfigsList>;
 
@@ -217,7 +217,7 @@ export interface WebHook {
   sendResolved?: boolean;
   url: string;
 }
-export const WebHook = /*@__PURE__*/ S.suspend(() =>
+const WebHook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleChat: S.optional(S.Boolean),
     msTeams: S.optional(S.Boolean),
@@ -227,7 +227,7 @@ export const WebHook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebHook" }) as any as S.Schema<WebHook>;
 
 export type ReceiversWebHookConfigsList = Array<WebHook>;
-export const ReceiversWebHookConfigsList = /*@__PURE__*/ S.Array(
+const ReceiversWebHookConfigsList = /*@__PURE__*/ S.Array(
   WebHook,
 ) as any as S.Schema<ReceiversWebHookConfigsList>;
 
@@ -237,7 +237,7 @@ export interface Receivers {
   opsgenieConfigs?: ReceiversOpsgenieConfigsList;
   webHookConfigs?: ReceiversWebHookConfigsList;
 }
-export const Receivers = /*@__PURE__*/ S.suspend(() =>
+const Receivers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailConfigs: S.optional(ReceiversEmailConfigsList),
     name: S.String,
@@ -247,7 +247,7 @@ export const Receivers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Receivers" }) as any as S.Schema<Receivers>;
 
 export type AlertConfigReceiversResponseDataList = Array<Receivers>;
-export const AlertConfigReceiversResponseDataList = /*@__PURE__*/ S.Array(
+const AlertConfigReceiversResponseDataList = /*@__PURE__*/ S.Array(
   Receivers,
 ) as any as S.Schema<AlertConfigReceiversResponseDataList>;
 
@@ -255,7 +255,7 @@ export interface AlertConfigReceiversResponse {
   data: AlertConfigReceiversResponseDataList;
   message: string;
 }
-export const AlertConfigReceiversResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertConfigReceiversResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertConfigReceiversResponseDataList,
     message: S.String,
@@ -266,27 +266,27 @@ export const AlertConfigReceiversResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. */
 export type CreateAlertConfigRouteRequestGroupByList = Array<string>;
-export const CreateAlertConfigRouteRequestGroupByList = /*@__PURE__*/ S.Array(
+const CreateAlertConfigRouteRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAlertConfigRouteRequestGroupByList>;
 
 /** A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics. The syntax of a matcher consists of three tokens: * A valid Prometheus label name. * One of =, !=, =~, or !~. = means equals, != means that the strings are not equal, =~ is used for equality of regex expressions and !~ is used for un-equality of regex expressions. They have the same meaning as known from PromQL selectors. * A UTF-8 string, which may be enclosed in double quotes. Before or after each token, there may be any amount of whitespace. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
 export type CreateAlertConfigRouteRequestMatchersList = Array<string>;
-export const CreateAlertConfigRouteRequestMatchersList =
+const CreateAlertConfigRouteRequestMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateAlertConfigRouteRequestMatchersList>;
 
 export type CreateAlertConfigRouteRequestRoutesItemGroupByList = Array<string>;
-export const CreateAlertConfigRouteRequestRoutesItemGroupByList =
+const CreateAlertConfigRouteRequestRoutesItemGroupByList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateAlertConfigRouteRequestRoutesItemGroupByList>;
 
 /** As in one level above */
 export type CreateAlertConfigRouteRequestRoutesItemMatchersList = Array<string>;
-export const CreateAlertConfigRouteRequestRoutesItemMatchersList =
+const CreateAlertConfigRouteRequestRoutesItemMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateAlertConfigRouteRequestRoutesItemMatchersList>;
 
 /** Another child routes */
 export type CreateAlertConfigRouteRequestRoutesItemRoutesList = Array<unknown>;
-export const CreateAlertConfigRouteRequestRoutesItemRoutesList = /*@__PURE__*/ S.Array(
+const CreateAlertConfigRouteRequestRoutesItemRoutesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateAlertConfigRouteRequestRoutesItemRoutesList>;
 
@@ -312,7 +312,7 @@ export interface CreateAlertConfigRouteRequestRoutesItem {
   /** Another child routes */
   routes?: CreateAlertConfigRouteRequestRoutesItemRoutesList;
 }
-export const CreateAlertConfigRouteRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertConfigRouteRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.Boolean),
     groupBy: S.optional(CreateAlertConfigRouteRequestRoutesItemGroupByList),
@@ -332,7 +332,7 @@ export const CreateAlertConfigRouteRequestRoutesItem = /*@__PURE__*/ S.suspend((
 /** Zero or more child routes. */
 export type CreateAlertConfigRouteRequestRoutesList =
   Array<CreateAlertConfigRouteRequestRoutesItem>;
-export const CreateAlertConfigRouteRequestRoutesList = /*@__PURE__*/ S.Array(
+const CreateAlertConfigRouteRequestRoutesList = /*@__PURE__*/ S.Array(
   CreateAlertConfigRouteRequestRoutesItem,
 ) as any as S.Schema<CreateAlertConfigRouteRequestRoutesList>;
 
@@ -360,7 +360,7 @@ export interface CreateAlertConfigRouteRequest {
   /** Zero or more child routes. */
   routes?: CreateAlertConfigRouteRequestRoutesList;
 }
-export const CreateAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -387,45 +387,41 @@ export const CreateAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAlertConfigRouteRequest>;
 
 export type RouteGroupByList = Array<string>;
-export const RouteGroupByList =
+const RouteGroupByList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteGroupByList>;
 
 export type RouteMatchMap = { [key: string]: string | undefined };
-export const RouteMatchMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RouteMatchMap>;
+const RouteMatchMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<RouteMatchMap>;
 
 export type RouteMatchReMap = { [key: string]: string | undefined };
-export const RouteMatchReMap = RouteMatchMap as any as S.Schema<RouteMatchReMap>;
+const RouteMatchReMap = RouteMatchMap as any as S.Schema<RouteMatchReMap>;
 
 export type RouteMatchersList = Array<string>;
-export const RouteMatchersList =
+const RouteMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteMatchersList>;
 
 export type RouteSerializerGroupByList = Array<string>;
-export const RouteSerializerGroupByList =
+const RouteSerializerGroupByList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteSerializerGroupByList>;
 
 export type RouteSerializerMatchMap = { [key: string]: string | undefined };
-export const RouteSerializerMatchMap = RouteMatchMap as any as S.Schema<RouteSerializerMatchMap>;
+const RouteSerializerMatchMap = RouteMatchMap as any as S.Schema<RouteSerializerMatchMap>;
 
 export type RouteSerializerMatchReMap = { [key: string]: string | undefined };
-export const RouteSerializerMatchReMap =
-  RouteMatchMap as any as S.Schema<RouteSerializerMatchReMap>;
+const RouteSerializerMatchReMap = RouteMatchMap as any as S.Schema<RouteSerializerMatchReMap>;
 
 export type RouteSerializerMatchersList = Array<string>;
-export const RouteSerializerMatchersList =
+const RouteSerializerMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteSerializerMatchersList>;
 
 export type RouteSerializerRoutesItemMap = { [key: string]: string | null | undefined };
-export const RouteSerializerRoutesItemMap = /*@__PURE__*/ S.Record(
+const RouteSerializerRoutesItemMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<RouteSerializerRoutesItemMap>;
 
 export type RouteSerializerRoutesList = Array<RouteSerializerRoutesItemMap>;
-export const RouteSerializerRoutesList = /*@__PURE__*/ S.Array(
+const RouteSerializerRoutesList = /*@__PURE__*/ S.Array(
   RouteSerializerRoutesItemMap,
 ) as any as S.Schema<RouteSerializerRoutesList>;
 
@@ -441,7 +437,7 @@ export interface RouteSerializer {
   repeatInterval?: string;
   routes?: RouteSerializerRoutesList;
 }
-export const RouteSerializer = /*@__PURE__*/ S.suspend(() =>
+const RouteSerializer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.Boolean),
     groupBy: S.optional(RouteSerializerGroupByList),
@@ -457,9 +453,7 @@ export const RouteSerializer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteSerializer" }) as any as S.Schema<RouteSerializer>;
 
 export type RouteRoutesList = Array<RouteSerializer>;
-export const RouteRoutesList = /*@__PURE__*/ S.Array(
-  RouteSerializer,
-) as any as S.Schema<RouteRoutesList>;
+const RouteRoutesList = /*@__PURE__*/ S.Array(RouteSerializer) as any as S.Schema<RouteRoutesList>;
 
 export interface Route {
   continue?: boolean;
@@ -473,7 +467,7 @@ export interface Route {
   repeatInterval?: string;
   routes?: RouteRoutesList;
 }
-export const Route = /*@__PURE__*/ S.suspend(() =>
+const Route = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.Boolean),
     groupBy: S.optional(RouteGroupByList),
@@ -492,7 +486,7 @@ export interface AlertConfigRouteResponse {
   data: Route;
   message: string;
 }
-export const AlertConfigRouteResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertConfigRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Route,
     message: S.String,
@@ -514,7 +508,7 @@ export interface CreateAlertgroupsRequestRulesItem {
   /** The name of the metric. When this attribute is used, an Recording Rule will be created. `Additional Validators:` * is the identifier and so unique in the group * should only include the characters: a-zA-Z0-9:_ * required when 'alert' is not used in this rule, otherwise not allowed */
   record?: string;
 }
-export const CreateAlertgroupsRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertgroupsRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alert: S.optional(S.String),
     annotations: S.optional(S.Unknown),
@@ -529,7 +523,7 @@ export const CreateAlertgroupsRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** rules for the alert group */
 export type CreateAlertgroupsRequestRulesList = Array<CreateAlertgroupsRequestRulesItem>;
-export const CreateAlertgroupsRequestRulesList = /*@__PURE__*/ S.Array(
+const CreateAlertgroupsRequestRulesList = /*@__PURE__*/ S.Array(
   CreateAlertgroupsRequestRulesItem,
 ) as any as S.Schema<CreateAlertgroupsRequestRulesList>;
 
@@ -543,7 +537,7 @@ export interface CreateAlertgroupsRequest {
   /** rules for the alert group */
   rules: CreateAlertgroupsRequestRulesList;
 }
-export const CreateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -561,11 +555,11 @@ export const CreateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAlertgroupsRequest" }) as any as S.Schema<CreateAlertgroupsRequest>;
 
 export type AlertRuleRecordAnnotationsMap = { [key: string]: string | undefined };
-export const AlertRuleRecordAnnotationsMap =
+const AlertRuleRecordAnnotationsMap =
   RouteMatchMap as any as S.Schema<AlertRuleRecordAnnotationsMap>;
 
 export type AlertRuleRecordLabelsMap = { [key: string]: string | undefined };
-export const AlertRuleRecordLabelsMap = RouteMatchMap as any as S.Schema<AlertRuleRecordLabelsMap>;
+const AlertRuleRecordLabelsMap = RouteMatchMap as any as S.Schema<AlertRuleRecordLabelsMap>;
 
 export interface AlertRuleRecord {
   alert?: string;
@@ -575,7 +569,7 @@ export interface AlertRuleRecord {
   labels?: AlertRuleRecordLabelsMap;
   record?: string;
 }
-export const AlertRuleRecord = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alert: S.optional(S.String),
     annotations: S.optional(AlertRuleRecordAnnotationsMap),
@@ -587,7 +581,7 @@ export const AlertRuleRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRuleRecord" }) as any as S.Schema<AlertRuleRecord>;
 
 export type AlertGroupRulesList = Array<AlertRuleRecord>;
-export const AlertGroupRulesList = /*@__PURE__*/ S.Array(
+const AlertGroupRulesList = /*@__PURE__*/ S.Array(
   AlertRuleRecord,
 ) as any as S.Schema<AlertGroupRulesList>;
 
@@ -596,7 +590,7 @@ export interface AlertGroup {
   name: string;
   rules: AlertGroupRulesList;
 }
-export const AlertGroup = /*@__PURE__*/ S.suspend(() =>
+const AlertGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interval: S.optional(S.String),
     name: S.String,
@@ -605,7 +599,7 @@ export const AlertGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertGroup" }) as any as S.Schema<AlertGroup>;
 
 export type AlertGroupsResponseDataList = Array<AlertGroup>;
-export const AlertGroupsResponseDataList = /*@__PURE__*/ S.Array(
+const AlertGroupsResponseDataList = /*@__PURE__*/ S.Array(
   AlertGroup,
 ) as any as S.Schema<AlertGroupsResponseDataList>;
 
@@ -613,7 +607,7 @@ export interface AlertGroupsResponse {
   data: AlertGroupsResponseDataList;
   message: string;
 }
-export const AlertGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertGroupsResponseDataList,
     message: S.String,
@@ -631,7 +625,7 @@ export interface CreateAlertRecordRequest {
   /** The name of the record. `Additional Validators:` * is the identifier and so unique in the group */
   record: string;
 }
-export const CreateAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -650,14 +644,14 @@ export const CreateAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAlertRecordRequest" }) as any as S.Schema<CreateAlertRecordRequest>;
 
 export type AlertRecordLabelsMap = { [key: string]: string | undefined };
-export const AlertRecordLabelsMap = RouteMatchMap as any as S.Schema<AlertRecordLabelsMap>;
+const AlertRecordLabelsMap = RouteMatchMap as any as S.Schema<AlertRecordLabelsMap>;
 
 export interface AlertRecord {
   expr: string;
   labels?: AlertRecordLabelsMap;
   record: string;
 }
-export const AlertRecord = /*@__PURE__*/ S.suspend(() =>
+const AlertRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expr: S.String,
     labels: S.optional(AlertRecordLabelsMap),
@@ -666,7 +660,7 @@ export const AlertRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRecord" }) as any as S.Schema<AlertRecord>;
 
 export type AlertRecordsResponseDataList = Array<AlertRecord>;
-export const AlertRecordsResponseDataList = /*@__PURE__*/ S.Array(
+const AlertRecordsResponseDataList = /*@__PURE__*/ S.Array(
   AlertRecord,
 ) as any as S.Schema<AlertRecordsResponseDataList>;
 
@@ -674,7 +668,7 @@ export interface AlertRecordsResponse {
   data: AlertRecordsResponseDataList;
   message: string;
 }
-export const AlertRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertRecordsResponseDataList,
     message: S.String,
@@ -696,7 +690,7 @@ export interface CreateAlertrulesRequest {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 10 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
-export const CreateAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -717,10 +711,10 @@ export const CreateAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAlertrulesRequest" }) as any as S.Schema<CreateAlertrulesRequest>;
 
 export type AlertRuleAnnotationsMap = { [key: string]: string | undefined };
-export const AlertRuleAnnotationsMap = RouteMatchMap as any as S.Schema<AlertRuleAnnotationsMap>;
+const AlertRuleAnnotationsMap = RouteMatchMap as any as S.Schema<AlertRuleAnnotationsMap>;
 
 export type AlertRuleLabelsMap = { [key: string]: string | undefined };
-export const AlertRuleLabelsMap = RouteMatchMap as any as S.Schema<AlertRuleLabelsMap>;
+const AlertRuleLabelsMap = RouteMatchMap as any as S.Schema<AlertRuleLabelsMap>;
 
 export interface AlertRule {
   alert: string;
@@ -729,7 +723,7 @@ export interface AlertRule {
   for?: string;
   labels?: AlertRuleLabelsMap;
 }
-export const AlertRule = /*@__PURE__*/ S.suspend(() =>
+const AlertRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alert: S.String,
     annotations: S.optional(AlertRuleAnnotationsMap),
@@ -740,7 +734,7 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRule" }) as any as S.Schema<AlertRule>;
 
 export type AlertRulesResponseDataList = Array<AlertRule>;
-export const AlertRulesResponseDataList = /*@__PURE__*/ S.Array(
+const AlertRulesResponseDataList = /*@__PURE__*/ S.Array(
   AlertRule,
 ) as any as S.Schema<AlertRulesResponseDataList>;
 
@@ -748,7 +742,7 @@ export interface AlertRulesResponse {
   data: AlertRulesResponseDataList;
   message: string;
 }
-export const AlertRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertRulesResponseDataList,
     message: S.String,
@@ -760,12 +754,12 @@ export type CreateBackupRequestBackupTargetItem =
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
-export const CreateBackupRequestBackupTargetItem = S.String;
+const CreateBackupRequestBackupTargetItem = S.String;
 
 export type CreateBackupRequestBackupTargetList = Array<
   CreateBackupRequestBackupTargetItem | (string & {})
 >;
-export const CreateBackupRequestBackupTargetList = /*@__PURE__*/ S.Array(
+const CreateBackupRequestBackupTargetList = /*@__PURE__*/ S.Array(
   CreateBackupRequestBackupTargetItem,
 ) as any as S.Schema<CreateBackupRequestBackupTargetList>;
 
@@ -775,7 +769,7 @@ export interface CreateBackupRequest {
   /** List of backup targets */
   backupTarget?: CreateBackupRequestBackupTargetList;
 }
-export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -793,7 +787,7 @@ export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Message {
   message: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }),
@@ -804,12 +798,10 @@ export type CreateBackupScheduleRequestBackupTargetItem =
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
-export const CreateBackupScheduleRequestBackupTargetItem = S.String;
-
 export type CreateBackupScheduleRequestBackupTargetList = Array<
   CreateBackupScheduleRequestBackupTargetItem | (string & {})
 >;
-export const CreateBackupScheduleRequestBackupTargetList =
+const CreateBackupScheduleRequestBackupTargetList =
   CreateBackupRequestBackupTargetList as any as S.Schema<CreateBackupScheduleRequestBackupTargetList>;
 
 export interface CreateBackupScheduleRequest {
@@ -820,7 +812,7 @@ export interface CreateBackupScheduleRequest {
   /** The schedule for how often to create a backup. `Additional Validators:` * must be a valid cronjob format * must run less than hourly */
   schedule: string;
 }
-export const CreateBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -842,7 +834,7 @@ export interface BackupSchedulePostResponse {
   message: string;
   schedule: string;
 }
-export const BackupSchedulePostResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupSchedulePostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     schedule: S.String,
@@ -857,7 +849,7 @@ export interface CreateCertCheckRequest {
   /** cert to check */
   source: string;
 }
-export const CreateCertCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCertCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -876,7 +868,7 @@ export interface CertCheckChildResponse {
   id: string;
   source: string;
 }
-export const CertCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
+const CertCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: S.String,
@@ -884,7 +876,7 @@ export const CertCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CertCheckChildResponse" }) as any as S.Schema<CertCheckChildResponse>;
 
 export type CertCheckResponseCertChecksList = Array<CertCheckChildResponse>;
-export const CertCheckResponseCertChecksList = /*@__PURE__*/ S.Array(
+const CertCheckResponseCertChecksList = /*@__PURE__*/ S.Array(
   CertCheckChildResponse,
 ) as any as S.Schema<CertCheckResponseCertChecksList>;
 
@@ -893,7 +885,7 @@ export interface CertCheckResponse {
   certChecks: CertCheckResponseCertChecksList;
   message: string;
 }
-export const CertCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CertCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certCheck: S.optional(CertCheckChildResponse),
     certChecks: CertCheckResponseCertChecksList,
@@ -907,7 +899,7 @@ export interface CreateCredentialsRequest {
   /** description */
   description?: string;
 }
-export const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -927,7 +919,7 @@ export interface Credentials {
   password: string | Redacted.Redacted<string>;
   username: string;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -939,7 +931,7 @@ export interface CreateCredentialsResponse {
   credentials: Credentials;
   message: string;
 }
-export const CreateCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: Credentials,
     message: S.String,
@@ -958,7 +950,7 @@ export interface CreateElasticsearchCheckRequest {
   /** username */
   username?: string;
 }
-export const CreateElasticsearchCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateElasticsearchCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -983,7 +975,7 @@ export interface ElasticsearchCheckChildResponse {
   server: string;
   username?: string;
 }
-export const ElasticsearchCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -996,7 +988,7 @@ export const ElasticsearchCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ElasticsearchCheckResponseElasticsearchChecksList =
   Array<ElasticsearchCheckChildResponse>;
-export const ElasticsearchCheckResponseElasticsearchChecksList = /*@__PURE__*/ S.Array(
+const ElasticsearchCheckResponseElasticsearchChecksList = /*@__PURE__*/ S.Array(
   ElasticsearchCheckChildResponse,
 ) as any as S.Schema<ElasticsearchCheckResponseElasticsearchChecksList>;
 
@@ -1005,7 +997,7 @@ export interface ElasticsearchCheckResponse {
   elasticsearchChecks: ElasticsearchCheckResponseElasticsearchChecksList;
   message: string;
 }
-export const ElasticsearchCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticsearchCheck: S.optional(ElasticsearchCheckChildResponse),
     elasticsearchChecks: ElasticsearchCheckResponseElasticsearchChecksList,
@@ -1021,7 +1013,7 @@ export interface CreateHttpCheckRequest {
   /** url to check */
   url: string;
 }
-export const CreateHttpCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHttpCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1040,7 +1032,7 @@ export interface HttpCheckChildResponse {
   id: string;
   url: string;
 }
-export const HttpCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
+const HttpCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -1048,7 +1040,7 @@ export const HttpCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpCheckChildResponse" }) as any as S.Schema<HttpCheckChildResponse>;
 
 export type HttpCheckResponseHttpChecksList = Array<HttpCheckChildResponse>;
-export const HttpCheckResponseHttpChecksList = /*@__PURE__*/ S.Array(
+const HttpCheckResponseHttpChecksList = /*@__PURE__*/ S.Array(
   HttpCheckChildResponse,
 ) as any as S.Schema<HttpCheckResponseHttpChecksList>;
 
@@ -1057,7 +1049,7 @@ export interface HttpCheckResponse {
   httpChecks: HttpCheckResponseHttpChecksList;
   message: string;
 }
-export const HttpCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const HttpCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpCheck: S.optional(HttpCheckChildResponse),
     httpChecks: HttpCheckResponseHttpChecksList,
@@ -1076,7 +1068,7 @@ export interface CreateInstanceRequest {
   /** UUID of the plan to create/update */
   planId: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     grafanaAdminEnabled: S.optional(S.Boolean),
@@ -1098,7 +1090,7 @@ export interface CreateInstanceResponse {
   instanceId: string;
   message: string;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardUrl: S.String,
     instanceId: S.String,
@@ -1121,12 +1113,9 @@ export interface CreateLogsAlertgroupsRequestRulesItem {
   /** The name of the metric. When this attribute is used, an Recording Rule will be created. `Additional Validators:` * is the identifier and so unique in the group * should only include the characters: a-zA-Z0-9:_ * required when 'alert' is not used in this rule, otherwise not allowed */
   record?: string;
 }
-export const CreateLogsAlertgroupsRequestRulesItem =
-  CreateAlertgroupsRequestRulesItem as any as S.Schema<CreateLogsAlertgroupsRequestRulesItem>;
-
 /** rules for the alert group */
 export type CreateLogsAlertgroupsRequestRulesList = Array<CreateLogsAlertgroupsRequestRulesItem>;
-export const CreateLogsAlertgroupsRequestRulesList =
+const CreateLogsAlertgroupsRequestRulesList =
   CreateAlertgroupsRequestRulesList as any as S.Schema<CreateLogsAlertgroupsRequestRulesList>;
 
 export interface CreateLogsAlertgroupsRequest {
@@ -1139,7 +1128,7 @@ export interface CreateLogsAlertgroupsRequest {
   /** rules for the alert group */
   rules: CreateLogsAlertgroupsRequestRulesList;
 }
-export const CreateLogsAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1164,7 +1153,7 @@ export interface CreateMongodbCheckRequest {
   /** url to check */
   server: string;
 }
-export const CreateMongodbCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMongodbCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1185,7 +1174,7 @@ export interface MongodbCheckChildResponse {
   id: string;
   server: string;
 }
-export const MongodbCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
+const MongodbCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     server: S.String,
@@ -1195,7 +1184,7 @@ export const MongodbCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MongodbCheckChildResponse>;
 
 export type MongodbCheckResponseMongodbChecksList = Array<MongodbCheckChildResponse>;
-export const MongodbCheckResponseMongodbChecksList = /*@__PURE__*/ S.Array(
+const MongodbCheckResponseMongodbChecksList = /*@__PURE__*/ S.Array(
   MongodbCheckChildResponse,
 ) as any as S.Schema<MongodbCheckResponseMongodbChecksList>;
 
@@ -1204,7 +1193,7 @@ export interface MongodbCheckResponse {
   mongodbCheck?: MongodbCheckChildResponse;
   mongodbChecks: MongodbCheckResponseMongodbChecksList;
 }
-export const MongodbCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const MongodbCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     mongodbCheck: S.optional(MongodbCheckChildResponse),
@@ -1218,7 +1207,7 @@ export interface CreateMysqlCheckRequest {
   /** url to check */
   server: string;
 }
-export const CreateMysqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMysqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1234,10 +1223,8 @@ export const CreateMysqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMysqlCheckRequest" }) as any as S.Schema<CreateMysqlCheckRequest>;
 
 export type MysqlCheckChildResponse = MongodbCheckChildResponse;
-export const MysqlCheckChildResponse = MongodbCheckChildResponse;
-
 export type MysqlCheckResponseMysqlChecksList = Array<MongodbCheckChildResponse>;
-export const MysqlCheckResponseMysqlChecksList =
+const MysqlCheckResponseMysqlChecksList =
   MongodbCheckResponseMongodbChecksList as any as S.Schema<MysqlCheckResponseMysqlChecksList>;
 
 export interface MysqlCheckResponse {
@@ -1245,7 +1232,7 @@ export interface MysqlCheckResponse {
   mysqlCheck?: MongodbCheckChildResponse;
   mysqlChecks: MysqlCheckResponseMysqlChecksList;
 }
-export const MysqlCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const MysqlCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     mysqlCheck: S.optional(MongodbCheckChildResponse),
@@ -1259,7 +1246,7 @@ export interface CreateNetworkCheckRequest {
   /** network to check */
   address: string;
 }
-export const CreateNetworkCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1280,7 +1267,7 @@ export interface NetworkCheckChildResponse {
   address: string;
   id: string;
 }
-export const NetworkCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
+const NetworkCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     id: S.String,
@@ -1290,7 +1277,7 @@ export const NetworkCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkCheckChildResponse>;
 
 export type NetworkCheckResponseNetworkChecksList = Array<NetworkCheckChildResponse>;
-export const NetworkCheckResponseNetworkChecksList = /*@__PURE__*/ S.Array(
+const NetworkCheckResponseNetworkChecksList = /*@__PURE__*/ S.Array(
   NetworkCheckChildResponse,
 ) as any as S.Schema<NetworkCheckResponseNetworkChecksList>;
 
@@ -1299,7 +1286,7 @@ export interface NetworkCheckResponse {
   networkCheck?: NetworkCheckChildResponse;
   networkChecks: NetworkCheckResponseNetworkChecksList;
 }
-export const NetworkCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const NetworkCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     networkCheck: S.optional(NetworkCheckChildResponse),
@@ -1313,7 +1300,7 @@ export interface CreatePingCheckRequest {
   /** domain to check */
   url: string;
 }
-export const CreatePingCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePingCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1329,10 +1316,8 @@ export const CreatePingCheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePingCheckRequest" }) as any as S.Schema<CreatePingCheckRequest>;
 
 export type PingCheckChildResponse = HttpCheckChildResponse;
-export const PingCheckChildResponse = HttpCheckChildResponse;
-
 export type PingCheckResponsePingChecksList = Array<HttpCheckChildResponse>;
-export const PingCheckResponsePingChecksList =
+const PingCheckResponsePingChecksList =
   HttpCheckResponseHttpChecksList as any as S.Schema<PingCheckResponsePingChecksList>;
 
 export interface PingCheckResponse {
@@ -1340,7 +1325,7 @@ export interface PingCheckResponse {
   pingCheck?: HttpCheckChildResponse;
   pingChecks: PingCheckResponsePingChecksList;
 }
-export const PingCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const PingCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     pingCheck: S.optional(HttpCheckChildResponse),
@@ -1354,7 +1339,7 @@ export interface CreatePostgresqlCheckRequest {
   /** url to check */
   address: string;
 }
-export const CreatePostgresqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1372,10 +1357,8 @@ export const CreatePostgresqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresqlCheckRequest>;
 
 export type PostgresqlCheckChildResponse = NetworkCheckChildResponse;
-export const PostgresqlCheckChildResponse = NetworkCheckChildResponse;
-
 export type PostgresqlCheckResponsePostgresqlChecksList = Array<NetworkCheckChildResponse>;
-export const PostgresqlCheckResponsePostgresqlChecksList =
+const PostgresqlCheckResponsePostgresqlChecksList =
   NetworkCheckResponseNetworkChecksList as any as S.Schema<PostgresqlCheckResponsePostgresqlChecksList>;
 
 export interface PostgresqlCheckResponse {
@@ -1383,7 +1366,7 @@ export interface PostgresqlCheckResponse {
   postgresqlCheck?: NetworkCheckChildResponse;
   postgresqlChecks: PostgresqlCheckResponsePostgresqlChecksList;
 }
-export const PostgresqlCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const PostgresqlCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     postgresqlCheck: S.optional(NetworkCheckChildResponse),
@@ -1401,7 +1384,7 @@ export interface CreateRabbitmqCheckRequest {
   /** username */
   username?: string;
 }
-export const CreateRabbitmqCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRabbitmqCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1426,7 +1409,7 @@ export interface RabbitMQCheckChildResponse {
   url: string;
   username?: string;
 }
-export const RabbitMQCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
+const RabbitMQCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1438,7 +1421,7 @@ export const RabbitMQCheckChildResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RabbitMQCheckChildResponse>;
 
 export type RabbitmqCheckResponseRabbitmqChecksList = Array<RabbitMQCheckChildResponse>;
-export const RabbitmqCheckResponseRabbitmqChecksList = /*@__PURE__*/ S.Array(
+const RabbitmqCheckResponseRabbitmqChecksList = /*@__PURE__*/ S.Array(
   RabbitMQCheckChildResponse,
 ) as any as S.Schema<RabbitmqCheckResponseRabbitmqChecksList>;
 
@@ -1447,7 +1430,7 @@ export interface RabbitmqCheckResponse {
   rabbitmqCheck?: RabbitMQCheckChildResponse;
   rabbitmqChecks: RabbitmqCheckResponseRabbitmqChecksList;
 }
-export const RabbitmqCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const RabbitmqCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     rabbitmqCheck: S.optional(RabbitMQCheckChildResponse),
@@ -1465,7 +1448,7 @@ export interface CreateRedisCheckRequest {
   /** username */
   username?: string;
 }
-export const CreateRedisCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRedisCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1483,10 +1466,8 @@ export const CreateRedisCheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRedisCheckRequest" }) as any as S.Schema<CreateRedisCheckRequest>;
 
 export type RedisCheckChildResponse = ElasticsearchCheckChildResponse;
-export const RedisCheckChildResponse = ElasticsearchCheckChildResponse;
-
 export type RedisCheckResponseRedisChecksList = Array<ElasticsearchCheckChildResponse>;
-export const RedisCheckResponseRedisChecksList =
+const RedisCheckResponseRedisChecksList =
   ElasticsearchCheckResponseElasticsearchChecksList as any as S.Schema<RedisCheckResponseRedisChecksList>;
 
 export interface RedisCheckResponse {
@@ -1494,7 +1475,7 @@ export interface RedisCheckResponse {
   redisCheck?: ElasticsearchCheckChildResponse;
   redisChecks: RedisCheckResponseRedisChecksList;
 }
-export const RedisCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const RedisCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     redisCheck: S.optional(ElasticsearchCheckChildResponse),
@@ -1509,7 +1490,7 @@ export interface CreateScrapeConfigRequestBasicAuth {
   /** username */
   username?: string;
 }
-export const CreateScrapeConfigRequestBasicAuth = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeConfigRequestBasicAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     username: S.optional(S.String),
@@ -1521,12 +1502,9 @@ export const CreateScrapeConfigRequestBasicAuth = /*@__PURE__*/ S.suspend(() =>
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type CreateScrapeConfigRequestHttpSdConfigsItemBasicAuth =
   CreateScrapeConfigRequestBasicAuth;
-export const CreateScrapeConfigRequestHttpSdConfigsItemBasicAuth =
-  CreateScrapeConfigRequestBasicAuth;
-
 /** The URL to fetch the token from. */
 export type CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList = Array<string>;
-export const CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList =
+const CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList>;
 
 /** Configures the scrape request's TLS settings. */
@@ -1534,11 +1512,10 @@ export interface CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig {
   /** Disable validation of the server certificate. */
   insecureSkipVerify?: boolean;
 }
-export const CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      insecureSkipVerify: S.optional(S.Boolean),
-    }),
+const CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    insecureSkipVerify: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig",
 }) as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig>;
@@ -1556,7 +1533,7 @@ export interface CreateScrapeConfigRequestHttpSdConfigsItemOauth2 {
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
-export const CreateScrapeConfigRequestHttpSdConfigsItemOauth2 = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeConfigRequestHttpSdConfigsItemOauth2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     clientSecret: S.String.pipe(T.SensitiveValue({})),
@@ -1571,9 +1548,6 @@ export const CreateScrapeConfigRequestHttpSdConfigsItemOauth2 = /*@__PURE__*/ S.
 /** Configures the scrape request's TLS settings. */
 export type CreateScrapeConfigRequestHttpSdConfigsItemTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const CreateScrapeConfigRequestHttpSdConfigsItemTlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 export interface CreateScrapeConfigRequestHttpSdConfigsItem {
   /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
   basicAuth?: CreateScrapeConfigRequestBasicAuth;
@@ -1586,7 +1560,7 @@ export interface CreateScrapeConfigRequestHttpSdConfigsItem {
   /** URL from which the targets are fetched. */
   url: string;
 }
-export const CreateScrapeConfigRequestHttpSdConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeConfigRequestHttpSdConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
     oauth2: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2),
@@ -1601,7 +1575,7 @@ export const CreateScrapeConfigRequestHttpSdConfigsItem = /*@__PURE__*/ S.suspen
 /** HTTP-based service discovery provides a more generic way to configure static targets and serves as an interface to plug in custom service discovery mechanisms. */
 export type CreateScrapeConfigRequestHttpSdConfigsList =
   Array<CreateScrapeConfigRequestHttpSdConfigsItem>;
-export const CreateScrapeConfigRequestHttpSdConfigsList = /*@__PURE__*/ S.Array(
+const CreateScrapeConfigRequestHttpSdConfigsList = /*@__PURE__*/ S.Array(
   CreateScrapeConfigRequestHttpSdConfigsItem,
 ) as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsList>;
 
@@ -1614,14 +1588,13 @@ export type CreateScrapeConfigRequestMetricsRelabelConfigsItemAction =
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
-export const CreateScrapeConfigRequestMetricsRelabelConfigsItemAction = S.String;
+const CreateScrapeConfigRequestMetricsRelabelConfigsItemAction = S.String;
 
 /** The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions. */
 export type CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList = Array<string>;
-export const CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList>;
+const CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList>;
 
 export interface CreateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
@@ -1639,7 +1612,7 @@ export interface CreateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available. */
   targetLabel?: string;
 }
-export const CreateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(CreateScrapeConfigRequestMetricsRelabelConfigsItemAction),
     modulus: S.optional(S.Number),
@@ -1656,21 +1629,15 @@ export const CreateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ 
 /** List of metric relabel configurations */
 export type CreateScrapeConfigRequestMetricsRelabelConfigsList =
   Array<CreateScrapeConfigRequestMetricsRelabelConfigsItem>;
-export const CreateScrapeConfigRequestMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
+const CreateScrapeConfigRequestMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
   CreateScrapeConfigRequestMetricsRelabelConfigsItem,
 ) as any as S.Schema<CreateScrapeConfigRequestMetricsRelabelConfigsList>;
 
 /** The URL to fetch the token from. */
 export type CreateScrapeConfigRequestOauth2ScopesList = Array<string>;
-export const CreateScrapeConfigRequestOauth2ScopesList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateScrapeConfigRequestOauth2ScopesList>;
-
 /** Configures the scrape request's TLS settings. */
 export type CreateScrapeConfigRequestOauth2TlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const CreateScrapeConfigRequestOauth2TlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 /** OAuth 2.0 authentication using the client credentials grant type. Prometheus fetches an access token from the specified endpoint with the given client access and secret keys. `Additional Validators:` * if oauth2 is in the body no other authentication method should be in the body */
 export interface CreateScrapeConfigRequestOauth2 {
   /** clientId */
@@ -1684,16 +1651,16 @@ export interface CreateScrapeConfigRequestOauth2 {
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
-export const CreateScrapeConfigRequestOauth2 =
+const CreateScrapeConfigRequestOauth2 =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2 as any as S.Schema<CreateScrapeConfigRequestOauth2>;
 
 /** Configures the protocol scheme used for requests. https or http */
 export type CreateScrapeConfigRequestScheme = "http" | "https";
-export const CreateScrapeConfigRequestScheme = S.String;
+const CreateScrapeConfigRequestScheme = S.String;
 
 /** The targets specified by the static config. */
 export type CreateScrapeConfigRequestStaticConfigsItemTargetsList = Array<string>;
-export const CreateScrapeConfigRequestStaticConfigsItemTargetsList =
+const CreateScrapeConfigRequestStaticConfigsItemTargetsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateScrapeConfigRequestStaticConfigsItemTargetsList>;
 
 export interface CreateScrapeConfigRequestStaticConfigsItem {
@@ -1702,7 +1669,7 @@ export interface CreateScrapeConfigRequestStaticConfigsItem {
   /** The targets specified by the static config. */
   targets: CreateScrapeConfigRequestStaticConfigsItemTargetsList;
 }
-export const CreateScrapeConfigRequestStaticConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeConfigRequestStaticConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(S.Unknown),
     targets: CreateScrapeConfigRequestStaticConfigsItemTargetsList,
@@ -1714,16 +1681,13 @@ export const CreateScrapeConfigRequestStaticConfigsItem = /*@__PURE__*/ S.suspen
 /** A list of scrape configurations. */
 export type CreateScrapeConfigRequestStaticConfigsList =
   Array<CreateScrapeConfigRequestStaticConfigsItem>;
-export const CreateScrapeConfigRequestStaticConfigsList = /*@__PURE__*/ S.Array(
+const CreateScrapeConfigRequestStaticConfigsList = /*@__PURE__*/ S.Array(
   CreateScrapeConfigRequestStaticConfigsItem,
 ) as any as S.Schema<CreateScrapeConfigRequestStaticConfigsList>;
 
 /** Configures the scrape request's TLS settings. */
 export type CreateScrapeConfigRequestTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const CreateScrapeConfigRequestTlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 export interface CreateScrapeConfigRequest {
   projectId: string;
   instanceId: string;
@@ -1760,7 +1724,7 @@ export interface CreateScrapeConfigRequest {
   /** Configures the scrape request's TLS settings. */
   tlsConfig?: CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
 }
-export const CreateScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -1796,7 +1760,7 @@ export interface BasicAuth {
   password: string | Redacted.Redacted<string>;
   username: string;
 }
-export const BasicAuth = /*@__PURE__*/ S.suspend(() =>
+const BasicAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.String.pipe(T.SensitiveValue({})),
     username: S.String,
@@ -1804,13 +1768,13 @@ export const BasicAuth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BasicAuth" }) as any as S.Schema<BasicAuth>;
 
 export type OAuth2ScopesList = Array<string>;
-export const OAuth2ScopesList =
+const OAuth2ScopesList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<OAuth2ScopesList>;
 
 export interface TLSConfig {
   insecureSkipVerify?: boolean;
 }
-export const TLSConfig = /*@__PURE__*/ S.suspend(() =>
+const TLSConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insecureSkipVerify: S.optional(S.Boolean),
   }),
@@ -1823,7 +1787,7 @@ export interface OAuth2 {
   tlsConfig?: TLSConfig;
   tokenUrl: string;
 }
-export const OAuth2 = /*@__PURE__*/ S.suspend(() =>
+const OAuth2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     clientSecret: S.String.pipe(T.SensitiveValue({})),
@@ -1840,7 +1804,7 @@ export interface HTTPServiceSD {
   tlsConfig?: TLSConfig;
   url: string;
 }
-export const HTTPServiceSD = /*@__PURE__*/ S.suspend(() =>
+const HTTPServiceSD = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basicAuth: S.optional(BasicAuth),
     oauth2: S.optional(OAuth2),
@@ -1851,7 +1815,7 @@ export const HTTPServiceSD = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HTTPServiceSD" }) as any as S.Schema<HTTPServiceSD>;
 
 export type JobHttpSdConfigsList = Array<HTTPServiceSD>;
-export const JobHttpSdConfigsList = /*@__PURE__*/ S.Array(
+const JobHttpSdConfigsList = /*@__PURE__*/ S.Array(
   HTTPServiceSD,
 ) as any as S.Schema<JobHttpSdConfigsList>;
 
@@ -1863,10 +1827,10 @@ export type MetricsRelabelConfigAction =
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
-export const MetricsRelabelConfigAction = S.String;
+const MetricsRelabelConfigAction = S.String;
 
 export type MetricsRelabelConfigSourceLabelsList = Array<string>;
-export const MetricsRelabelConfigSourceLabelsList =
+const MetricsRelabelConfigSourceLabelsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<MetricsRelabelConfigSourceLabelsList>;
 
 export interface MetricsRelabelConfig {
@@ -1878,7 +1842,7 @@ export interface MetricsRelabelConfig {
   sourceLabels: MetricsRelabelConfigSourceLabelsList;
   targetLabel?: string;
 }
-export const MetricsRelabelConfig = /*@__PURE__*/ S.suspend(() =>
+const MetricsRelabelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(MetricsRelabelConfigAction),
     modulus: S.optional(S.Number),
@@ -1891,35 +1855,35 @@ export const MetricsRelabelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricsRelabelConfig" }) as any as S.Schema<MetricsRelabelConfig>;
 
 export type JobMetricsRelabelConfigsList = Array<MetricsRelabelConfig>;
-export const JobMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
+const JobMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
   MetricsRelabelConfig,
 ) as any as S.Schema<JobMetricsRelabelConfigsList>;
 
 export type JobParamsValueList = Array<string>;
-export const JobParamsValueList =
+const JobParamsValueList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<JobParamsValueList>;
 
 export type JobParamsMap = { [key: string]: JobParamsValueList | undefined };
-export const JobParamsMap = /*@__PURE__*/ S.Record(
+const JobParamsMap = /*@__PURE__*/ S.Record(
   S.String,
   JobParamsValueList,
 ) as any as S.Schema<JobParamsMap>;
 
 export type JobScheme = "http" | "https";
-export const JobScheme = S.String;
+const JobScheme = S.String;
 
 export type StaticConfigsLabelsMap = { [key: string]: string | undefined };
-export const StaticConfigsLabelsMap = RouteMatchMap as any as S.Schema<StaticConfigsLabelsMap>;
+const StaticConfigsLabelsMap = RouteMatchMap as any as S.Schema<StaticConfigsLabelsMap>;
 
 export type StaticConfigsTargetsList = Array<string>;
-export const StaticConfigsTargetsList =
+const StaticConfigsTargetsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<StaticConfigsTargetsList>;
 
 export interface StaticConfigs {
   labels?: StaticConfigsLabelsMap;
   targets: StaticConfigsTargetsList;
 }
-export const StaticConfigs = /*@__PURE__*/ S.suspend(() =>
+const StaticConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StaticConfigsLabelsMap),
     targets: StaticConfigsTargetsList,
@@ -1927,7 +1891,7 @@ export const StaticConfigs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticConfigs" }) as any as S.Schema<StaticConfigs>;
 
 export type JobStaticConfigsList = Array<StaticConfigs>;
-export const JobStaticConfigsList = /*@__PURE__*/ S.Array(
+const JobStaticConfigsList = /*@__PURE__*/ S.Array(
   StaticConfigs,
 ) as any as S.Schema<JobStaticConfigsList>;
 
@@ -1949,7 +1913,7 @@ export interface Job {
   staticConfigs: JobStaticConfigsList;
   tlsConfig?: TLSConfig;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basicAuth: S.optional(BasicAuth),
     bearerToken: S.optional(S.String),
@@ -1971,7 +1935,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export type ScrapeConfigsResponseDataList = Array<Job>;
-export const ScrapeConfigsResponseDataList = /*@__PURE__*/ S.Array(
+const ScrapeConfigsResponseDataList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<ScrapeConfigsResponseDataList>;
 
@@ -1979,7 +1943,7 @@ export interface ScrapeConfigsResponse {
   data: ScrapeConfigsResponseDataList;
   message: string;
 }
-export const ScrapeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ScrapeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScrapeConfigsResponseDataList,
     message: S.String,
@@ -1991,7 +1955,7 @@ export interface DeleteAlertConfigReceiverRequest {
   instanceId: string;
   receiver: string;
 }
-export const DeleteAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2013,7 +1977,7 @@ export interface DeleteAlertConfigRouteRequest {
   instanceId: string;
   receiver: string;
 }
-export const DeleteAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2035,7 +1999,7 @@ export interface DeleteAlertgroupRequest {
   instanceId: string;
   groupName: string;
 }
-export const DeleteAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2051,7 +2015,7 @@ export const DeleteAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAlertgroupRequest" }) as any as S.Schema<DeleteAlertgroupRequest>;
 
 export type DeleteAlertgroupsRequestGroupNameList = Array<string>;
-export const DeleteAlertgroupsRequestGroupNameList =
+const DeleteAlertgroupsRequestGroupNameList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteAlertgroupsRequestGroupNameList>;
 
 export interface DeleteAlertgroupsRequest {
@@ -2060,7 +2024,7 @@ export interface DeleteAlertgroupsRequest {
   /** Name of the groups that should be deleted */
   groupName: DeleteAlertgroupsRequestGroupNameList;
 }
-export const DeleteAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2081,7 +2045,7 @@ export interface DeleteAlertRecordRequest {
   groupName: string;
   alertRecord: string;
 }
-export const DeleteAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2098,7 +2062,7 @@ export const DeleteAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAlertRecordRequest" }) as any as S.Schema<DeleteAlertRecordRequest>;
 
 export type DeleteAlertRecordsRequestAlertRecordList = Array<string>;
-export const DeleteAlertRecordsRequestAlertRecordList =
+const DeleteAlertRecordsRequestAlertRecordList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteAlertRecordsRequestAlertRecordList>;
 
 export interface DeleteAlertRecordsRequest {
@@ -2108,7 +2072,7 @@ export interface DeleteAlertRecordsRequest {
   /** Name of the records that should be deleted */
   alertRecord: DeleteAlertRecordsRequestAlertRecordList;
 }
-export const DeleteAlertRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2132,7 +2096,7 @@ export interface DeleteAlertruleRequest {
   groupName: string;
   alertName: string;
 }
-export const DeleteAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2149,7 +2113,7 @@ export const DeleteAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAlertruleRequest" }) as any as S.Schema<DeleteAlertruleRequest>;
 
 export type DeleteAlertrulesRequestAlertNameList = Array<string>;
-export const DeleteAlertrulesRequestAlertNameList =
+const DeleteAlertrulesRequestAlertNameList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteAlertrulesRequestAlertNameList>;
 
 export interface DeleteAlertrulesRequest {
@@ -2159,7 +2123,7 @@ export interface DeleteAlertrulesRequest {
   /** Name of the alert rules that should be deleted */
   alertName: DeleteAlertrulesRequestAlertNameList;
 }
-export const DeleteAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2180,7 +2144,7 @@ export interface DeleteCertCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteCertCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2200,7 +2164,7 @@ export interface DeleteCredentialsRequest {
   instanceId: string;
   username: string;
 }
-export const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2220,7 +2184,7 @@ export interface DeleteCredentialsRemoteWriteConfigRequest {
   instanceId: string;
   username: string;
 }
-export const DeleteCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2241,7 +2205,7 @@ export interface CredentialsRemoteWriteDeleteResponse {
   maxLimit: number;
   message: string;
 }
-export const CredentialsRemoteWriteDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const CredentialsRemoteWriteDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxLimit: S.Number,
     message: S.String,
@@ -2255,7 +2219,7 @@ export interface DeleteElasticsearchCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteElasticsearchCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteElasticsearchCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2277,7 +2241,7 @@ export interface DeleteHttpCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteHttpCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHttpCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2296,7 +2260,7 @@ export interface DeleteInstanceRequest {
   projectId: string;
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2313,14 +2277,14 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceResponse {
   message: string;
 }
-export const InstanceResponse = Message as any as S.Schema<InstanceResponse>;
+const InstanceResponse = Message as any as S.Schema<InstanceResponse>;
 
 export interface DeleteLogsAlertgroupRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
-export const DeleteLogsAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogsAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2342,7 +2306,7 @@ export interface DeleteMongodbCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteMongodbCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMongodbCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2364,7 +2328,7 @@ export interface DeleteMysqlCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteMysqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMysqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2384,7 +2348,7 @@ export interface DeleteNetworkCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteNetworkCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2406,7 +2370,7 @@ export interface DeletePingCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeletePingCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePingCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2426,7 +2390,7 @@ export interface DeletePostgresqlCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeletePostgresqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresqlCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2448,7 +2412,7 @@ export interface DeleteRabbitmqCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteRabbitmqCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRabbitmqCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2470,7 +2434,7 @@ export interface DeleteRedisCheckRequest {
   instanceId: string;
   id: string;
 }
-export const DeleteRedisCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedisCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2490,7 +2454,7 @@ export interface DeleteScrapeConfigRequest {
   instanceId: string;
   jobName: string;
 }
-export const DeleteScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2508,14 +2472,14 @@ export const DeleteScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScrapeConfigRequest>;
 
 export type DeleteScrapeConfigResponseDataList = Array<Job>;
-export const DeleteScrapeConfigResponseDataList =
+const DeleteScrapeConfigResponseDataList =
   ScrapeConfigsResponseDataList as any as S.Schema<DeleteScrapeConfigResponseDataList>;
 
 export interface DeleteScrapeConfigResponse {
   data: DeleteScrapeConfigResponseDataList;
   message: string;
 }
-export const DeleteScrapeConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteScrapeConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DeleteScrapeConfigResponseDataList,
     message: S.String,
@@ -2525,7 +2489,7 @@ export const DeleteScrapeConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScrapeConfigResponse>;
 
 export type DeleteScrapeConfigsRequestJobNameList = Array<string>;
-export const DeleteScrapeConfigsRequestJobNameList =
+const DeleteScrapeConfigsRequestJobNameList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteScrapeConfigsRequestJobNameList>;
 
 export interface DeleteScrapeConfigsRequest {
@@ -2534,7 +2498,7 @@ export interface DeleteScrapeConfigsRequest {
   /** Name of the jobs that should be deleted */
   jobName: DeleteScrapeConfigsRequestJobNameList;
 }
-export const DeleteScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2556,7 +2520,7 @@ export interface GetAlertConfigReceiverRequest {
   instanceId: string;
   receiver: string;
 }
-export const GetAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2577,7 +2541,7 @@ export interface Receiver {
   data: Receivers;
   message: string;
 }
-export const Receiver = /*@__PURE__*/ S.suspend(() =>
+const Receiver = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Receivers,
     message: S.String,
@@ -2589,7 +2553,7 @@ export interface GetAlertConfigRouteRequest {
   instanceId: string;
   receiver: string;
 }
-export const GetAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2610,7 +2574,7 @@ export interface GetAlertConfigsRequest {
   projectId: string;
   instanceId: string;
 }
-export const GetAlertConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2634,7 +2598,7 @@ export interface Global {
   smtpFrom?: string;
   smtpSmarthost?: string;
 }
-export const Global = /*@__PURE__*/ S.suspend(() =>
+const Global = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opsgenieApiKey: S.optional(S.String),
     opsgenieApiUrl: S.optional(S.String),
@@ -2648,31 +2612,27 @@ export const Global = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Global" }) as any as S.Schema<Global>;
 
 export type InhibitRulesEqualList = Array<string>;
-export const InhibitRulesEqualList =
+const InhibitRulesEqualList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<InhibitRulesEqualList>;
 
 export type InhibitRulesSourceMatchMap = { [key: string]: string | undefined };
-export const InhibitRulesSourceMatchMap =
-  RouteMatchMap as any as S.Schema<InhibitRulesSourceMatchMap>;
+const InhibitRulesSourceMatchMap = RouteMatchMap as any as S.Schema<InhibitRulesSourceMatchMap>;
 
 export type InhibitRulesSourceMatchReMap = { [key: string]: string | undefined };
-export const InhibitRulesSourceMatchReMap =
-  RouteMatchMap as any as S.Schema<InhibitRulesSourceMatchReMap>;
+const InhibitRulesSourceMatchReMap = RouteMatchMap as any as S.Schema<InhibitRulesSourceMatchReMap>;
 
 export type InhibitRulesSourceMatchersList = Array<string>;
-export const InhibitRulesSourceMatchersList =
+const InhibitRulesSourceMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<InhibitRulesSourceMatchersList>;
 
 export type InhibitRulesTargetMatchMap = { [key: string]: string | undefined };
-export const InhibitRulesTargetMatchMap =
-  RouteMatchMap as any as S.Schema<InhibitRulesTargetMatchMap>;
+const InhibitRulesTargetMatchMap = RouteMatchMap as any as S.Schema<InhibitRulesTargetMatchMap>;
 
 export type InhibitRulesTargetMatchReMap = { [key: string]: string | undefined };
-export const InhibitRulesTargetMatchReMap =
-  RouteMatchMap as any as S.Schema<InhibitRulesTargetMatchReMap>;
+const InhibitRulesTargetMatchReMap = RouteMatchMap as any as S.Schema<InhibitRulesTargetMatchReMap>;
 
 export type InhibitRulesTargetMatchersList = Array<string>;
-export const InhibitRulesTargetMatchersList =
+const InhibitRulesTargetMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<InhibitRulesTargetMatchersList>;
 
 export interface InhibitRules {
@@ -2684,7 +2644,7 @@ export interface InhibitRules {
   targetMatchRe?: InhibitRulesTargetMatchReMap;
   targetMatchers?: InhibitRulesTargetMatchersList;
 }
-export const InhibitRules = /*@__PURE__*/ S.suspend(() =>
+const InhibitRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     equal: S.optional(InhibitRulesEqualList),
     sourceMatch: S.optional(InhibitRulesSourceMatchMap),
@@ -2697,12 +2657,12 @@ export const InhibitRules = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InhibitRules" }) as any as S.Schema<InhibitRules>;
 
 export type AlertInhibitRulesList = Array<InhibitRules>;
-export const AlertInhibitRulesList = /*@__PURE__*/ S.Array(
+const AlertInhibitRulesList = /*@__PURE__*/ S.Array(
   InhibitRules,
 ) as any as S.Schema<AlertInhibitRulesList>;
 
 export type AlertReceiversList = Array<Receivers>;
-export const AlertReceiversList =
+const AlertReceiversList =
   AlertConfigReceiversResponseDataList as any as S.Schema<AlertReceiversList>;
 
 export interface Alert {
@@ -2711,7 +2671,7 @@ export interface Alert {
   receivers: AlertReceiversList;
   route: Route;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     global: S.optional(Global),
     inhibitRules: S.optional(AlertInhibitRulesList),
@@ -2724,7 +2684,7 @@ export interface GetAlertConfigsResponse {
   data: Alert;
   message: string;
 }
-export const GetAlertConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAlertConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Alert,
     message: S.String,
@@ -2736,7 +2696,7 @@ export interface GetAlertgroupRequest {
   instanceId: string;
   groupName: string;
 }
-export const GetAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2755,7 +2715,7 @@ export interface AlertGroupResponse {
   data: AlertGroup;
   message: string;
 }
-export const AlertGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertGroup,
     message: S.String,
@@ -2768,7 +2728,7 @@ export interface GetAlertRecordRequest {
   groupName: string;
   alertRecord: string;
 }
-export const GetAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2788,7 +2748,7 @@ export interface AlertRecordResponse {
   data: AlertRecord;
   message: string;
 }
-export const AlertRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertRecord,
     message: S.String,
@@ -2801,7 +2761,7 @@ export interface GetAlertruleRequest {
   groupName: string;
   alertName: string;
 }
-export const GetAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2821,7 +2781,7 @@ export interface AlertRuleResponse {
   data: AlertRule;
   message: string;
 }
-export const AlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AlertRule,
     message: S.String,
@@ -2833,7 +2793,7 @@ export interface GetCredentialsRequest {
   instanceId: string;
   username: string;
 }
-export const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2849,7 +2809,7 @@ export const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCredentialsRequest" }) as any as S.Schema<GetCredentialsRequest>;
 
 export type GetCredentialsResponseCredentialsInfoMap = { [key: string]: string | null | undefined };
-export const GetCredentialsResponseCredentialsInfoMap =
+const GetCredentialsResponseCredentialsInfoMap =
   RouteSerializerRoutesItemMap as any as S.Schema<GetCredentialsResponseCredentialsInfoMap>;
 
 export interface GetCredentialsResponse {
@@ -2858,7 +2818,7 @@ export interface GetCredentialsResponse {
   message: string;
   name: string;
 }
-export const GetCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsInfo: S.optional(GetCredentialsResponseCredentialsInfoMap),
     id: S.String,
@@ -2872,7 +2832,7 @@ export interface GetCredentialsRemoteWriteConfigRequest {
   instanceId: string;
   username: string;
 }
-export const GetCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2894,7 +2854,7 @@ export interface CredentialsRemoteWriteConfig {
   maxLimit: number;
   message: string;
 }
-export const CredentialsRemoteWriteConfig = /*@__PURE__*/ S.suspend(() =>
+const CredentialsRemoteWriteConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsMaxLimit: S.Number,
     maxLimit: S.Number,
@@ -2908,7 +2868,7 @@ export interface GetGrafanaConfigsRequest {
   projectId: string;
   instanceId: string;
 }
-export const GetGrafanaConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGrafanaConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -2936,7 +2896,7 @@ export interface GrafanaOauth {
   tokenUrl: string;
   usePkce?: boolean;
 }
-export const GrafanaOauth = /*@__PURE__*/ S.suspend(() =>
+const GrafanaOauth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAssignGrafanaAdmin: S.optional(S.Boolean),
     apiUrl: S.String,
@@ -2959,7 +2919,7 @@ export interface GrafanaConfigs {
   publicReadAccess?: boolean;
   useStackitSso?: boolean;
 }
-export const GrafanaConfigs = /*@__PURE__*/ S.suspend(() =>
+const GrafanaConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     genericOauth: S.optional(GrafanaOauth),
     message: S.String,
@@ -2972,7 +2932,7 @@ export interface GetInstanceRequest {
   projectId: string;
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3007,7 +2967,7 @@ export interface PlanModel {
   totalMetricSamples: number;
   tracesStorage: number;
 }
-export const PlanModel = /*@__PURE__*/ S.suspend(() =>
+const PlanModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertMatchers: S.Number,
     alertReceivers: S.Number,
@@ -3062,7 +3022,7 @@ export interface InstanceSensitiveData {
   targetsUrl: string;
   zipkinSpansUrl: string;
 }
-export const InstanceSensitiveData = /*@__PURE__*/ S.suspend(() =>
+const InstanceSensitiveData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertingUrl: S.String,
     cluster: S.String,
@@ -3097,7 +3057,7 @@ export const InstanceSensitiveData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceSensitiveData" }) as any as S.Schema<InstanceSensitiveData>;
 
 export type GetInstanceResponseParametersMap = { [key: string]: string | null | undefined };
-export const GetInstanceResponseParametersMap =
+const GetInstanceResponseParametersMap =
   RouteSerializerRoutesItemMap as any as S.Schema<GetInstanceResponseParametersMap>;
 
 export type GetInstanceResponseStatus =
@@ -3110,7 +3070,7 @@ export type GetInstanceResponseStatus =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const GetInstanceResponseStatus = S.String;
+const GetInstanceResponseStatus = S.String;
 
 export interface GetInstanceResponse {
   dashboardUrl: string;
@@ -3127,7 +3087,7 @@ export interface GetInstanceResponse {
   serviceName: string;
   status: GetInstanceResponseStatus;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardUrl: S.String,
     error: S.optional(S.NullOr(S.String)),
@@ -3150,7 +3110,7 @@ export interface GetLogsAlertgroupRequest {
   instanceId: string;
   groupName: string;
 }
-export const GetLogsAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3169,7 +3129,7 @@ export interface GetLogsConfigsRequest {
   projectId: string;
   instanceId: string;
 }
-export const GetLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3186,7 +3146,7 @@ export const GetLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LogsConfig {
   retention: string;
 }
-export const LogsConfig = /*@__PURE__*/ S.suspend(() =>
+const LogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retention: S.String,
   }),
@@ -3196,7 +3156,7 @@ export interface LogsConfigResponse {
   config: LogsConfig;
   message: string;
 }
-export const LogsConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const LogsConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: LogsConfig,
     message: S.String,
@@ -3207,7 +3167,7 @@ export interface GetMetricsStorageRetentionRequest {
   projectId: string;
   instanceId: string;
 }
-export const GetMetricsStorageRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsStorageRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3229,7 +3189,7 @@ export interface GetMetricsStorageRetentionResponse {
   metricsRetentionTime5m: string;
   metricsRetentionTimeRaw: string;
 }
-export const GetMetricsStorageRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsStorageRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     metricsRetentionTime1h: S.String,
@@ -3245,7 +3205,7 @@ export interface GetScrapeConfigRequest {
   instanceId: string;
   jobName: string;
 }
-export const GetScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3264,7 +3224,7 @@ export interface GetScrapeConfigResponse {
   data: Job;
   message: string;
 }
-export const GetScrapeConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScrapeConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Job,
     message: S.String,
@@ -3275,7 +3235,7 @@ export interface GetTracesConfigsRequest {
   projectId: string;
   instanceId: string;
 }
-export const GetTracesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTracesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3290,19 +3250,17 @@ export const GetTracesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTracesConfigsRequest" }) as any as S.Schema<GetTracesConfigsRequest>;
 
 export type TraceConfig = LogsConfig;
-export const TraceConfig = LogsConfig;
-
 export interface TracesConfigResponse {
   config: LogsConfig;
   message: string;
 }
-export const TracesConfigResponse = LogsConfigResponse as any as S.Schema<TracesConfigResponse>;
+const TracesConfigResponse = LogsConfigResponse as any as S.Schema<TracesConfigResponse>;
 
 export interface ListACLRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListACLRequest = /*@__PURE__*/ S.suspend(() =>
+const ListACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3317,14 +3275,14 @@ export const ListACLRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListACLRequest" }) as any as S.Schema<ListACLRequest>;
 
 export type ListACLResponseAclList = Array<string>;
-export const ListACLResponseAclList =
+const ListACLResponseAclList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<ListACLResponseAclList>;
 
 export interface ListACLResponse {
   acl: ListACLResponseAclList;
   message: string;
 }
-export const ListACLResponse = /*@__PURE__*/ S.suspend(() =>
+const ListACLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: ListACLResponseAclList,
     message: S.String,
@@ -3335,7 +3293,7 @@ export interface ListAlertConfigReceiversRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListAlertConfigReceiversRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertConfigReceiversRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3355,7 +3313,7 @@ export interface ListAlertConfigRoutesRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListAlertConfigRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertConfigRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3375,7 +3333,7 @@ export interface ListAlertgroupsRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3394,7 +3352,7 @@ export interface ListAlertRecordsRequest {
   instanceId: string;
   groupName: string;
 }
-export const ListAlertRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3414,7 +3372,7 @@ export interface ListAlertrulesRequest {
   instanceId: string;
   groupName: string;
 }
-export const ListAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3433,7 +3391,7 @@ export interface ListBackupRetentionsRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListBackupRetentionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupRetentionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3456,7 +3414,7 @@ export interface BackupRetentionResponse {
   message: string;
   scrapeConfigBackupRetention: string;
 }
-export const BackupRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertConfigBackupRetention: S.String,
     alertRulesBackupRetention: S.String,
@@ -3471,12 +3429,10 @@ export type ListBackupsRequestBackupTargetItem =
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
-export const ListBackupsRequestBackupTargetItem = S.String;
-
 export type ListBackupsRequestBackupTargetList = Array<
   ListBackupsRequestBackupTargetItem | (string & {})
 >;
-export const ListBackupsRequestBackupTargetList =
+const ListBackupsRequestBackupTargetList =
   CreateBackupRequestBackupTargetList as any as S.Schema<ListBackupsRequestBackupTargetList>;
 
 export interface ListBackupsRequest {
@@ -3485,7 +3441,7 @@ export interface ListBackupsRequest {
   /** List of backup targets */
   backupTarget?: ListBackupsRequestBackupTargetList;
 }
-export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3501,19 +3457,19 @@ export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBackupsRequest" }) as any as S.Schema<ListBackupsRequest>;
 
 export type BackupResponseAlertConfigBackupsList = Array<string>;
-export const BackupResponseAlertConfigBackupsList =
+const BackupResponseAlertConfigBackupsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseAlertConfigBackupsList>;
 
 export type BackupResponseAlertRulesBackupsList = Array<string>;
-export const BackupResponseAlertRulesBackupsList =
+const BackupResponseAlertRulesBackupsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseAlertRulesBackupsList>;
 
 export type BackupResponseGrafanaBackupsList = Array<string>;
-export const BackupResponseGrafanaBackupsList =
+const BackupResponseGrafanaBackupsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseGrafanaBackupsList>;
 
 export type BackupResponseScrapeConfigBackupsList = Array<string>;
-export const BackupResponseScrapeConfigBackupsList =
+const BackupResponseScrapeConfigBackupsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseScrapeConfigBackupsList>;
 
 export interface BackupResponse {
@@ -3523,7 +3479,7 @@ export interface BackupResponse {
   message: string;
   scrapeConfigBackups: BackupResponseScrapeConfigBackupsList;
 }
-export const BackupResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertConfigBackups: BackupResponseAlertConfigBackupsList,
     alertRulesBackups: BackupResponseAlertRulesBackupsList,
@@ -3538,12 +3494,10 @@ export type ListBackupSchedulesRequestBackupTargetItem =
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
-export const ListBackupSchedulesRequestBackupTargetItem = S.String;
-
 export type ListBackupSchedulesRequestBackupTargetList = Array<
   ListBackupSchedulesRequestBackupTargetItem | (string & {})
 >;
-export const ListBackupSchedulesRequestBackupTargetList =
+const ListBackupSchedulesRequestBackupTargetList =
   CreateBackupRequestBackupTargetList as any as S.Schema<ListBackupSchedulesRequestBackupTargetList>;
 
 export interface ListBackupSchedulesRequest {
@@ -3552,7 +3506,7 @@ export interface ListBackupSchedulesRequest {
   /** List of backup targets */
   backupTarget?: ListBackupSchedulesRequestBackupTargetList;
 }
-export const ListBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3573,7 +3527,7 @@ export interface BackupSchedule {
   schedule: string;
   scheduleId: string;
 }
-export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.String,
     scheduleId: S.String,
@@ -3581,20 +3535,20 @@ export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupSchedule" }) as any as S.Schema<BackupSchedule>;
 
 export type BackupScheduleResponseAlertConfigBackupSchedulesList = Array<BackupSchedule>;
-export const BackupScheduleResponseAlertConfigBackupSchedulesList = /*@__PURE__*/ S.Array(
+const BackupScheduleResponseAlertConfigBackupSchedulesList = /*@__PURE__*/ S.Array(
   BackupSchedule,
 ) as any as S.Schema<BackupScheduleResponseAlertConfigBackupSchedulesList>;
 
 export type BackupScheduleResponseAlertRulesBackupSchedulesList = Array<BackupSchedule>;
-export const BackupScheduleResponseAlertRulesBackupSchedulesList =
+const BackupScheduleResponseAlertRulesBackupSchedulesList =
   BackupScheduleResponseAlertConfigBackupSchedulesList as any as S.Schema<BackupScheduleResponseAlertRulesBackupSchedulesList>;
 
 export type BackupScheduleResponseGrafanaBackupSchedulesList = Array<BackupSchedule>;
-export const BackupScheduleResponseGrafanaBackupSchedulesList =
+const BackupScheduleResponseGrafanaBackupSchedulesList =
   BackupScheduleResponseAlertConfigBackupSchedulesList as any as S.Schema<BackupScheduleResponseGrafanaBackupSchedulesList>;
 
 export type BackupScheduleResponseScrapeConfigBackupSchedulesList = Array<BackupSchedule>;
-export const BackupScheduleResponseScrapeConfigBackupSchedulesList =
+const BackupScheduleResponseScrapeConfigBackupSchedulesList =
   BackupScheduleResponseAlertConfigBackupSchedulesList as any as S.Schema<BackupScheduleResponseScrapeConfigBackupSchedulesList>;
 
 export interface BackupScheduleResponse {
@@ -3604,7 +3558,7 @@ export interface BackupScheduleResponse {
   message: string;
   scrapeConfigBackupSchedules?: BackupScheduleResponseScrapeConfigBackupSchedulesList;
 }
-export const BackupScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertConfigBackupSchedules: S.optional(BackupScheduleResponseAlertConfigBackupSchedulesList),
     alertRulesBackupSchedules: S.optional(BackupScheduleResponseAlertRulesBackupSchedulesList),
@@ -3618,7 +3572,7 @@ export interface ListCertChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListCertChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3636,7 +3590,7 @@ export interface ListCredentialsRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3651,7 +3605,7 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCredentialsRequest" }) as any as S.Schema<ListCredentialsRequest>;
 
 export type ServiceKeysListCredentialsInfoMap = { [key: string]: string | null | undefined };
-export const ServiceKeysListCredentialsInfoMap =
+const ServiceKeysListCredentialsInfoMap =
   RouteSerializerRoutesItemMap as any as S.Schema<ServiceKeysListCredentialsInfoMap>;
 
 export interface ServiceKeysList {
@@ -3660,7 +3614,7 @@ export interface ServiceKeysList {
   id: string;
   name: string;
 }
-export const ServiceKeysList = /*@__PURE__*/ S.suspend(() =>
+const ServiceKeysList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsInfo: S.optional(ServiceKeysListCredentialsInfoMap),
     description: S.optional(S.String),
@@ -3670,7 +3624,7 @@ export const ServiceKeysList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceKeysList" }) as any as S.Schema<ServiceKeysList>;
 
 export type ListCredentialsResponseCredentialsList = Array<ServiceKeysList>;
-export const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
+const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
   ServiceKeysList,
 ) as any as S.Schema<ListCredentialsResponseCredentialsList>;
 
@@ -3678,7 +3632,7 @@ export interface ListCredentialsResponse {
   credentials: ListCredentialsResponseCredentialsList;
   message: string;
 }
-export const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: ListCredentialsResponseCredentialsList,
     message: S.String,
@@ -3689,7 +3643,7 @@ export interface ListElasticsearchChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListElasticsearchChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListElasticsearchChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3709,7 +3663,7 @@ export interface ListHttpChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListHttpChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHttpChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3726,7 +3680,7 @@ export const ListHttpChecksRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListInstancesRequest {
   projectId: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3749,7 +3703,7 @@ export type ProjectInstanceFullStatus =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const ProjectInstanceFullStatus = S.String;
+const ProjectInstanceFullStatus = S.String;
 
 export interface ProjectInstanceFull {
   error?: string | null;
@@ -3760,7 +3714,7 @@ export interface ProjectInstanceFull {
   serviceName: string;
   status: ProjectInstanceFullStatus;
 }
-export const ProjectInstanceFull = /*@__PURE__*/ S.suspend(() =>
+const ProjectInstanceFull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -3773,7 +3727,7 @@ export const ProjectInstanceFull = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectInstanceFull" }) as any as S.Schema<ProjectInstanceFull>;
 
 export type ListInstancesResponseInstancesList = Array<ProjectInstanceFull>;
-export const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
+const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
   ProjectInstanceFull,
 ) as any as S.Schema<ListInstancesResponseInstancesList>;
 
@@ -3781,7 +3735,7 @@ export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
   message: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: ListInstancesResponseInstancesList,
     message: S.String,
@@ -3792,7 +3746,7 @@ export interface ListLogsAlertgroupsRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListLogsAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3812,7 +3766,7 @@ export interface ListMongodbChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListMongodbChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMongodbChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3830,7 +3784,7 @@ export interface ListMysqlChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListMysqlChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMysqlChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3848,7 +3802,7 @@ export interface ListNetworkChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListNetworkChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3865,7 +3819,7 @@ export const ListNetworkChecksRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListOfferingsRequest {
   projectId: string;
 }
-export const ListOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3902,7 +3856,7 @@ export interface Plan {
   totalMetricSamples: number;
   tracesStorage: number;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertMatchers: S.Number,
     alertReceivers: S.Number,
@@ -3930,12 +3884,10 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 export type OfferingsPlansList = Array<Plan>;
-export const OfferingsPlansList = /*@__PURE__*/ S.Array(
-  Plan,
-) as any as S.Schema<OfferingsPlansList>;
+const OfferingsPlansList = /*@__PURE__*/ S.Array(Plan) as any as S.Schema<OfferingsPlansList>;
 
 export type OfferingsTagsList = Array<string>;
-export const OfferingsTagsList =
+const OfferingsTagsList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<OfferingsTagsList>;
 
 export interface Offerings {
@@ -3946,7 +3898,7 @@ export interface Offerings {
   plans: OfferingsPlansList;
   tags: OfferingsTagsList;
 }
-export const Offerings = /*@__PURE__*/ S.suspend(() =>
+const Offerings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     documentationUrl: S.String,
@@ -3961,7 +3913,7 @@ export interface ListPingChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListPingChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPingChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -3978,7 +3930,7 @@ export const ListPingChecksRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListPlansRequest {
   projectId: string;
 }
-export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3992,13 +3944,13 @@ export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlansRequest" }) as any as S.Schema<ListPlansRequest>;
 
 export type PlansResponsePlansList = Array<Plan>;
-export const PlansResponsePlansList = OfferingsPlansList as any as S.Schema<PlansResponsePlansList>;
+const PlansResponsePlansList = OfferingsPlansList as any as S.Schema<PlansResponsePlansList>;
 
 export interface PlansResponse {
   message: string;
   plans: PlansResponsePlansList;
 }
-export const PlansResponse = /*@__PURE__*/ S.suspend(() =>
+const PlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     plans: PlansResponsePlansList,
@@ -4009,7 +3961,7 @@ export interface ListPostgresqlChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListPostgresqlChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresqlChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4029,7 +3981,7 @@ export interface ListRabbitmqChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListRabbitmqChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRabbitmqChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4049,7 +4001,7 @@ export interface ListRedisChecksRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListRedisChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedisChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4067,7 +4019,7 @@ export interface ListScrapeConfigsRequest {
   projectId: string;
   instanceId: string;
 }
-export const ListScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4082,24 +4034,19 @@ export const ListScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScrapeConfigsRequest" }) as any as S.Schema<ListScrapeConfigsRequest>;
 
 export type ListScrapeConfigsResponseDataList = Array<Job>;
-export const ListScrapeConfigsResponseDataList =
-  ScrapeConfigsResponseDataList as any as S.Schema<ListScrapeConfigsResponseDataList>;
-
 export interface ListScrapeConfigsResponse {
   data: ListScrapeConfigsResponseDataList;
   message: string;
 }
-export const ListScrapeConfigsResponse =
+const ListScrapeConfigsResponse =
   DeleteScrapeConfigResponse as any as S.Schema<ListScrapeConfigsResponse>;
 
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type PartialUpdateAlertgroupsRequestBodyItemRulesItem = CreateAlertgroupsRequestRulesItem;
-export const PartialUpdateAlertgroupsRequestBodyItemRulesItem = CreateAlertgroupsRequestRulesItem;
-
 /** rules for the alert group */
 export type PartialUpdateAlertgroupsRequestBodyItemRulesList =
   Array<CreateAlertgroupsRequestRulesItem>;
-export const PartialUpdateAlertgroupsRequestBodyItemRulesList =
+const PartialUpdateAlertgroupsRequestBodyItemRulesList =
   CreateAlertgroupsRequestRulesList as any as S.Schema<PartialUpdateAlertgroupsRequestBodyItemRulesList>;
 
 /** Alert group that should be created or updated. `Additional Validators:` * total config should not be bigger than 500000 characters as string since this the limitation of prometheus. */
@@ -4111,7 +4058,7 @@ export interface PartialUpdateAlertgroupsRequestBodyItem {
   /** rules for the alert group */
   rules: PartialUpdateAlertgroupsRequestBodyItemRulesList;
 }
-export const PartialUpdateAlertgroupsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateAlertgroupsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interval: S.optional(S.String),
     name: S.String,
@@ -4124,7 +4071,7 @@ export const PartialUpdateAlertgroupsRequestBodyItem = /*@__PURE__*/ S.suspend((
 /** Array of alert groups that should be created or updated */
 export type PartialUpdateAlertgroupsRequestBodyList =
   Array<PartialUpdateAlertgroupsRequestBodyItem>;
-export const PartialUpdateAlertgroupsRequestBodyList = /*@__PURE__*/ S.Array(
+const PartialUpdateAlertgroupsRequestBodyList = /*@__PURE__*/ S.Array(
   PartialUpdateAlertgroupsRequestBodyItem,
 ) as any as S.Schema<PartialUpdateAlertgroupsRequestBodyList>;
 
@@ -4133,7 +4080,7 @@ export interface PartialUpdateAlertgroupsRequest {
   instanceId: string;
   body: PartialUpdateAlertgroupsRequestBodyList;
 }
-export const PartialUpdateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4159,7 +4106,7 @@ export interface PartialUpdateAlertRecordsRequestBodyItem {
   /** The name of the record. `Additional Validators:` * is the identifier and so unique in the group */
   record: string;
 }
-export const PartialUpdateAlertRecordsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateAlertRecordsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expr: S.String,
     labels: S.optional(S.Unknown),
@@ -4172,7 +4119,7 @@ export const PartialUpdateAlertRecordsRequestBodyItem = /*@__PURE__*/ S.suspend(
 /** Array of records that should be created or updated */
 export type PartialUpdateAlertRecordsRequestBodyList =
   Array<PartialUpdateAlertRecordsRequestBodyItem>;
-export const PartialUpdateAlertRecordsRequestBodyList = /*@__PURE__*/ S.Array(
+const PartialUpdateAlertRecordsRequestBodyList = /*@__PURE__*/ S.Array(
   PartialUpdateAlertRecordsRequestBodyItem,
 ) as any as S.Schema<PartialUpdateAlertRecordsRequestBodyList>;
 
@@ -4182,7 +4129,7 @@ export interface PartialUpdateAlertRecordsRequest {
   groupName: string;
   body: PartialUpdateAlertRecordsRequestBodyList;
 }
-export const PartialUpdateAlertRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateAlertRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4213,7 +4160,7 @@ export interface PartialUpdateAlertrulesRequestBodyItem {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 10 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
-export const PartialUpdateAlertrulesRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateAlertrulesRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alert: S.String,
     annotations: S.optional(S.Unknown),
@@ -4227,7 +4174,7 @@ export const PartialUpdateAlertrulesRequestBodyItem = /*@__PURE__*/ S.suspend(()
 
 /** Array of alert rules that should be created or updated */
 export type PartialUpdateAlertrulesRequestBodyList = Array<PartialUpdateAlertrulesRequestBodyItem>;
-export const PartialUpdateAlertrulesRequestBodyList = /*@__PURE__*/ S.Array(
+const PartialUpdateAlertrulesRequestBodyList = /*@__PURE__*/ S.Array(
   PartialUpdateAlertrulesRequestBodyItem,
 ) as any as S.Schema<PartialUpdateAlertrulesRequestBodyList>;
 
@@ -4237,7 +4184,7 @@ export interface PartialUpdateAlertrulesRequest {
   groupName: string;
   body: PartialUpdateAlertrulesRequestBodyList;
 }
-export const PartialUpdateAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4257,27 +4204,18 @@ export const PartialUpdateAlertrulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type PartialUpdateScrapeConfigsRequestBodyItemBasicAuth = CreateScrapeConfigRequestBasicAuth;
-export const PartialUpdateScrapeConfigsRequestBodyItemBasicAuth =
-  CreateScrapeConfigRequestBasicAuth;
-
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemBasicAuth =
   CreateScrapeConfigRequestBasicAuth;
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemBasicAuth =
-  CreateScrapeConfigRequestBasicAuth;
-
 /** The URL to fetch the token from. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList =
   Array<string>;
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList =
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList =
   CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList>;
 
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2TlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2TlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 /** OAuth 2.0 authentication using the client credentials grant type. Prometheus fetches an access token from the specified endpoint with the given client access and secret keys. `Additional Validators:` * if oauth2 is in the body no other authentication method should be in the body */
 export interface PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2 {
   /** clientId */
@@ -4291,8 +4229,8 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2 =
-  /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2 = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       clientId: S.String,
       clientSecret: S.String.pipe(T.SensitiveValue({})),
@@ -4302,16 +4240,13 @@ export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2 =
       tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
       tokenUrl: S.String,
     }),
-  ).annotate({
-    identifier: "PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2",
-  }) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2>;
+).annotate({
+  identifier: "PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2",
+}) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2>;
 
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemTlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 export interface PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem {
   /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
   basicAuth?: CreateScrapeConfigRequestBasicAuth;
@@ -4324,15 +4259,14 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem {
   /** URL from which the targets are fetched. */
   url: string;
 }
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
-      oauth2: S.optional(PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2),
-      refreshInterval: S.optional(S.String),
-      tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
-      url: S.String,
-    }),
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
+    oauth2: S.optional(PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2),
+    refreshInterval: S.optional(S.String),
+    tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
+    url: S.String,
+  }),
 ).annotate({
   identifier: "PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem",
 }) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem>;
@@ -4340,7 +4274,7 @@ export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem = /*@__P
 /** HTTP-based service discovery provides a more generic way to configure static targets and serves as an interface to plug in custom service discovery mechanisms. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList =
   Array<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem>;
-export const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList = /*@__PURE__*/ S.Array(
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList = /*@__PURE__*/ S.Array(
   PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem,
 ) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList>;
 
@@ -4353,12 +4287,12 @@ export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAc
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
-export const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction = S.String;
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction = S.String;
 
 /** The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions. */
 export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList =
   Array<string>;
-export const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList =
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList =
   CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList>;
 
 export interface PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem {
@@ -4377,8 +4311,8 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsI
   /** Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available. */
   targetLabel?: string;
 }
-export const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem =
-  /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       action: S.optional(PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction),
       modulus: S.optional(S.Number),
@@ -4390,29 +4324,22 @@ export const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem 
       ),
       targetLabel: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem",
-  }) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem>;
+).annotate({
+  identifier: "PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem",
+}) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem>;
 
 /** List of metric relabel configurations */
 export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList =
   Array<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem>;
-export const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList =
-  /*@__PURE__*/ S.Array(
-    PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem,
-  ) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList>;
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
+  PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList>;
 
 /** The URL to fetch the token from. */
 export type PartialUpdateScrapeConfigsRequestBodyItemOauth2ScopesList = Array<string>;
-export const PartialUpdateScrapeConfigsRequestBodyItemOauth2ScopesList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemOauth2ScopesList>;
-
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemOauth2TlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const PartialUpdateScrapeConfigsRequestBodyItemOauth2TlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 /** OAuth 2.0 authentication using the client credentials grant type. Prometheus fetches an access token from the specified endpoint with the given client access and secret keys. `Additional Validators:` * if oauth2 is in the body no other authentication method should be in the body */
 export interface PartialUpdateScrapeConfigsRequestBodyItemOauth2 {
   /** clientId */
@@ -4426,16 +4353,16 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemOauth2 {
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
-export const PartialUpdateScrapeConfigsRequestBodyItemOauth2 =
+const PartialUpdateScrapeConfigsRequestBodyItemOauth2 =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2 as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemOauth2>;
 
 /** Configures the protocol scheme used for requests. https or http */
 export type PartialUpdateScrapeConfigsRequestBodyItemScheme = "http" | "https";
-export const PartialUpdateScrapeConfigsRequestBodyItemScheme = S.String;
+const PartialUpdateScrapeConfigsRequestBodyItemScheme = S.String;
 
 /** The targets specified by the static config. */
 export type PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList = Array<string>;
-export const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList =
+const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList =
   CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList>;
 
 export interface PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem {
@@ -4444,12 +4371,11 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem {
   /** The targets specified by the static config. */
   targets: PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList;
 }
-export const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      labels: S.optional(S.Unknown),
-      targets: PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList,
-    }),
+const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    labels: S.optional(S.Unknown),
+    targets: PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList,
+  }),
 ).annotate({
   identifier: "PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem",
 }) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem>;
@@ -4457,16 +4383,13 @@ export const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem = /*@__P
 /** A list of scrape configurations. */
 export type PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList =
   Array<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem>;
-export const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList = /*@__PURE__*/ S.Array(
+const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList = /*@__PURE__*/ S.Array(
   PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem,
 ) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList>;
 
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const PartialUpdateScrapeConfigsRequestBodyItemTlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 export interface PartialUpdateScrapeConfigsRequestBodyItem {
   /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
   basicAuth?: CreateScrapeConfigRequestBasicAuth;
@@ -4501,7 +4424,7 @@ export interface PartialUpdateScrapeConfigsRequestBodyItem {
   /** Configures the scrape request's TLS settings. */
   tlsConfig?: CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
 }
-export const PartialUpdateScrapeConfigsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateScrapeConfigsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
     bearerToken: S.optional(S.String),
@@ -4529,7 +4452,7 @@ export const PartialUpdateScrapeConfigsRequestBodyItem = /*@__PURE__*/ S.suspend
 /** Array of jobs that should be created or updated */
 export type PartialUpdateScrapeConfigsRequestBodyList =
   Array<PartialUpdateScrapeConfigsRequestBodyItem>;
-export const PartialUpdateScrapeConfigsRequestBodyList = /*@__PURE__*/ S.Array(
+const PartialUpdateScrapeConfigsRequestBodyList = /*@__PURE__*/ S.Array(
   PartialUpdateScrapeConfigsRequestBodyItem,
 ) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyList>;
 
@@ -4538,7 +4461,7 @@ export interface PartialUpdateScrapeConfigsRequest {
   instanceId: string;
   body: PartialUpdateScrapeConfigsRequestBodyList;
 }
-export const PartialUpdateScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateScrapeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4560,7 +4483,7 @@ export type RestoreBackupRequestRestoreTarget =
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
-export const RestoreBackupRequestRestoreTarget = S.String;
+const RestoreBackupRequestRestoreTarget = S.String;
 
 export interface RestoreBackupRequest {
   projectId: string;
@@ -4569,7 +4492,7 @@ export interface RestoreBackupRequest {
   /** List of restore targets */
   restoreTarget: RestoreBackupRequestRestoreTarget | (string & {});
 }
-export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4587,7 +4510,7 @@ export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** list of cidr */
 export type UpdateACLRequestAclList = Array<string>;
-export const UpdateACLRequestAclList =
+const UpdateACLRequestAclList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateACLRequestAclList>;
 
 export interface UpdateACLRequest {
@@ -4596,7 +4519,7 @@ export interface UpdateACLRequest {
   /** list of cidr */
   acl: UpdateACLRequestAclList;
 }
-export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4613,34 +4536,25 @@ export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateAlertConfigReceiverRequestEmailConfigsItem =
   CreateAlertConfigReceiverRequestEmailConfigsItem;
-export const UpdateAlertConfigReceiverRequestEmailConfigsItem =
-  CreateAlertConfigReceiverRequestEmailConfigsItem;
-
 /** Email configurations */
 export type UpdateAlertConfigReceiverRequestEmailConfigsList =
   Array<CreateAlertConfigReceiverRequestEmailConfigsItem>;
-export const UpdateAlertConfigReceiverRequestEmailConfigsList =
+const UpdateAlertConfigReceiverRequestEmailConfigsList =
   CreateAlertConfigReceiverRequestEmailConfigsList as any as S.Schema<UpdateAlertConfigReceiverRequestEmailConfigsList>;
 
 export type UpdateAlertConfigReceiverRequestOpsgenieConfigsItem =
   CreateAlertConfigReceiverRequestOpsgenieConfigsItem;
-export const UpdateAlertConfigReceiverRequestOpsgenieConfigsItem =
-  CreateAlertConfigReceiverRequestOpsgenieConfigsItem;
-
 /** Configuration for ops genie. */
 export type UpdateAlertConfigReceiverRequestOpsgenieConfigsList =
   Array<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
-export const UpdateAlertConfigReceiverRequestOpsgenieConfigsList =
+const UpdateAlertConfigReceiverRequestOpsgenieConfigsList =
   CreateAlertConfigReceiverRequestOpsgenieConfigsList as any as S.Schema<UpdateAlertConfigReceiverRequestOpsgenieConfigsList>;
 
 export type UpdateAlertConfigReceiverRequestWebHookConfigsItem =
   CreateAlertConfigReceiverRequestWebHookConfigsItem;
-export const UpdateAlertConfigReceiverRequestWebHookConfigsItem =
-  CreateAlertConfigReceiverRequestWebHookConfigsItem;
-
 export type UpdateAlertConfigReceiverRequestWebHookConfigsList =
   Array<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
-export const UpdateAlertConfigReceiverRequestWebHookConfigsList =
+const UpdateAlertConfigReceiverRequestWebHookConfigsList =
   CreateAlertConfigReceiverRequestWebHookConfigsList as any as S.Schema<UpdateAlertConfigReceiverRequestWebHookConfigsList>;
 
 export interface UpdateAlertConfigReceiverRequest {
@@ -4655,7 +4569,7 @@ export interface UpdateAlertConfigReceiverRequest {
   opsgenieConfigs?: UpdateAlertConfigReceiverRequestOpsgenieConfigsList;
   webHookConfigs?: UpdateAlertConfigReceiverRequestWebHookConfigsList;
 }
-export const UpdateAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4678,28 +4592,19 @@ export const UpdateAlertConfigReceiverRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. */
 export type UpdateAlertConfigRouteRequestGroupByList = Array<string>;
-export const UpdateAlertConfigRouteRequestGroupByList =
+const UpdateAlertConfigRouteRequestGroupByList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigRouteRequestGroupByList>;
 
 /** A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics. The syntax of a matcher consists of three tokens: * A valid Prometheus label name. * One of =, !=, =~, or !~. = means equals, != means that the strings are not equal, =~ is used for equality of regex expressions and !~ is used for un-equality of regex expressions. They have the same meaning as known from PromQL selectors. * A UTF-8 string, which may be enclosed in double quotes. Before or after each token, there may be any amount of whitespace. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
 export type UpdateAlertConfigRouteRequestMatchersList = Array<string>;
-export const UpdateAlertConfigRouteRequestMatchersList =
+const UpdateAlertConfigRouteRequestMatchersList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigRouteRequestMatchersList>;
 
 export type UpdateAlertConfigRouteRequestRoutesItemGroupByList = Array<string>;
-export const UpdateAlertConfigRouteRequestRoutesItemGroupByList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigRouteRequestRoutesItemGroupByList>;
-
 /** As in one level above */
 export type UpdateAlertConfigRouteRequestRoutesItemMatchersList = Array<string>;
-export const UpdateAlertConfigRouteRequestRoutesItemMatchersList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigRouteRequestRoutesItemMatchersList>;
-
 /** Another child routes */
 export type UpdateAlertConfigRouteRequestRoutesItemRoutesList = Array<unknown>;
-export const UpdateAlertConfigRouteRequestRoutesItemRoutesList =
-  CreateAlertConfigRouteRequestRoutesItemRoutesList as any as S.Schema<UpdateAlertConfigRouteRequestRoutesItemRoutesList>;
-
 /** As in one level above */
 export interface UpdateAlertConfigRouteRequestRoutesItem {
   /** Whether an alert should continue matching subsequent sibling nodes. */
@@ -4722,13 +4627,10 @@ export interface UpdateAlertConfigRouteRequestRoutesItem {
   /** Another child routes */
   routes?: UpdateAlertConfigRouteRequestRoutesItemRoutesList;
 }
-export const UpdateAlertConfigRouteRequestRoutesItem =
-  CreateAlertConfigRouteRequestRoutesItem as any as S.Schema<UpdateAlertConfigRouteRequestRoutesItem>;
-
 /** Zero or more child routes. */
 export type UpdateAlertConfigRouteRequestRoutesList =
   Array<UpdateAlertConfigRouteRequestRoutesItem>;
-export const UpdateAlertConfigRouteRequestRoutesList =
+const UpdateAlertConfigRouteRequestRoutesList =
   CreateAlertConfigRouteRequestRoutesList as any as S.Schema<UpdateAlertConfigRouteRequestRoutesList>;
 
 export interface UpdateAlertConfigRouteRequest {
@@ -4754,7 +4656,7 @@ export interface UpdateAlertConfigRouteRequest {
   /** Zero or more child routes. */
   routes?: UpdateAlertConfigRouteRequestRoutesList;
 }
-export const UpdateAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -4799,7 +4701,7 @@ export interface UpdateAlertConfigsRequestGlobal {
   /** The default SMTP smarthost used for sending emails, including port number. Port number usually is 25, or 587 for SMTP over TLS (sometimes referred to as STARTTLS). Example: smtp.example.org:587 `Additional Validators:` * should only include the characters: a-zA-Z0-9_./@&?:- */
   smtpSmarthost?: string;
 }
-export const UpdateAlertConfigsRequestGlobal = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigsRequestGlobal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opsgenieApiKey: S.optional(S.String),
     opsgenieApiUrl: S.optional(S.String),
@@ -4816,7 +4718,7 @@ export const UpdateAlertConfigsRequestGlobal = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels that must have an equal value in the source and target alert for the inhibition to take effect. `Additional Validators:` * should only include the characters: a-zA-Z0-9_./@&?:- */
 export type UpdateAlertConfigsRequestInhibitRulesEqualList = Array<string>;
-export const UpdateAlertConfigsRequestInhibitRulesEqualList =
+const UpdateAlertConfigsRequestInhibitRulesEqualList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigsRequestInhibitRulesEqualList>;
 
 /** A list of inhibition rules. */
@@ -4832,7 +4734,7 @@ export interface UpdateAlertConfigsRequestInhibitRules {
   /** map of key:value. Matchers that have to be fulfilled in the alerts to be muted. Regex. `Additional Validators:` * should not contain more than 5 keys * each key and value should not have more than 200 characters */
   targetMatchRe?: unknown;
 }
-export const UpdateAlertConfigsRequestInhibitRules = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigsRequestInhibitRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     equal: S.optional(UpdateAlertConfigsRequestInhibitRulesEqualList),
     sourceMatch: S.optional(S.Unknown),
@@ -4846,34 +4748,25 @@ export const UpdateAlertConfigsRequestInhibitRules = /*@__PURE__*/ S.suspend(() 
 
 export type UpdateAlertConfigsRequestReceiversItemEmailConfigsItem =
   CreateAlertConfigReceiverRequestEmailConfigsItem;
-export const UpdateAlertConfigsRequestReceiversItemEmailConfigsItem =
-  CreateAlertConfigReceiverRequestEmailConfigsItem;
-
 /** Email configurations */
 export type UpdateAlertConfigsRequestReceiversItemEmailConfigsList =
   Array<CreateAlertConfigReceiverRequestEmailConfigsItem>;
-export const UpdateAlertConfigsRequestReceiversItemEmailConfigsList =
+const UpdateAlertConfigsRequestReceiversItemEmailConfigsList =
   CreateAlertConfigReceiverRequestEmailConfigsList as any as S.Schema<UpdateAlertConfigsRequestReceiversItemEmailConfigsList>;
 
 export type UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsItem =
   CreateAlertConfigReceiverRequestOpsgenieConfigsItem;
-export const UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsItem =
-  CreateAlertConfigReceiverRequestOpsgenieConfigsItem;
-
 /** Configuration for ops genie. */
 export type UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList =
   Array<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
-export const UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList =
+const UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList =
   CreateAlertConfigReceiverRequestOpsgenieConfigsList as any as S.Schema<UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList>;
 
 export type UpdateAlertConfigsRequestReceiversItemWebHookConfigsItem =
   CreateAlertConfigReceiverRequestWebHookConfigsItem;
-export const UpdateAlertConfigsRequestReceiversItemWebHookConfigsItem =
-  CreateAlertConfigReceiverRequestWebHookConfigsItem;
-
 export type UpdateAlertConfigsRequestReceiversItemWebHookConfigsList =
   Array<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
-export const UpdateAlertConfigsRequestReceiversItemWebHookConfigsList =
+const UpdateAlertConfigsRequestReceiversItemWebHookConfigsList =
   CreateAlertConfigReceiverRequestWebHookConfigsList as any as S.Schema<UpdateAlertConfigsRequestReceiversItemWebHookConfigsList>;
 
 /** Receivers */
@@ -4886,7 +4779,7 @@ export interface UpdateAlertConfigsRequestReceiversItem {
   opsgenieConfigs?: UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList;
   webHookConfigs?: UpdateAlertConfigsRequestReceiversItemWebHookConfigsList;
 }
-export const UpdateAlertConfigsRequestReceiversItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigsRequestReceiversItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailConfigs: S.optional(UpdateAlertConfigsRequestReceiversItemEmailConfigsList),
     name: S.String,
@@ -4899,29 +4792,20 @@ export const UpdateAlertConfigsRequestReceiversItem = /*@__PURE__*/ S.suspend(()
 
 /** A list of notification receivers. */
 export type UpdateAlertConfigsRequestReceiversList = Array<UpdateAlertConfigsRequestReceiversItem>;
-export const UpdateAlertConfigsRequestReceiversList = /*@__PURE__*/ S.Array(
+const UpdateAlertConfigsRequestReceiversList = /*@__PURE__*/ S.Array(
   UpdateAlertConfigsRequestReceiversItem,
 ) as any as S.Schema<UpdateAlertConfigsRequestReceiversList>;
 
 /** The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. */
 export type UpdateAlertConfigsRequestRouteGroupByList = Array<string>;
-export const UpdateAlertConfigsRequestRouteGroupByList =
+const UpdateAlertConfigsRequestRouteGroupByList =
   CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigsRequestRouteGroupByList>;
 
 export type UpdateAlertConfigsRequestRouteRoutesItemGroupByList = Array<string>;
-export const UpdateAlertConfigsRequestRouteRoutesItemGroupByList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigsRequestRouteRoutesItemGroupByList>;
-
 /** A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics. The syntax of a matcher consists of three tokens: * A valid Prometheus label name. * One of =, !=, =~, or !~. = means equals, != means that the strings are not equal, =~ is used for equality of regex expressions and !~ is used for un-equality of regex expressions. They have the same meaning as known from PromQL selectors. * A UTF-8 string, which may be enclosed in double quotes. Before or after each token, there may be any amount of whitespace. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
 export type UpdateAlertConfigsRequestRouteRoutesItemMatchersList = Array<string>;
-export const UpdateAlertConfigsRequestRouteRoutesItemMatchersList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigsRequestRouteRoutesItemMatchersList>;
-
 /** Another child routes */
 export type UpdateAlertConfigsRequestRouteRoutesItemRoutesList = Array<unknown>;
-export const UpdateAlertConfigsRequestRouteRoutesItemRoutesList =
-  CreateAlertConfigRouteRequestRoutesItemRoutesList as any as S.Schema<UpdateAlertConfigsRequestRouteRoutesItemRoutesList>;
-
 /** As in one level above */
 export interface UpdateAlertConfigsRequestRouteRoutesItem {
   /** Whether an alert should continue matching subsequent sibling nodes. */
@@ -4944,13 +4828,10 @@ export interface UpdateAlertConfigsRequestRouteRoutesItem {
   /** Another child routes */
   routes?: UpdateAlertConfigsRequestRouteRoutesItemRoutesList;
 }
-export const UpdateAlertConfigsRequestRouteRoutesItem =
-  CreateAlertConfigRouteRequestRoutesItem as any as S.Schema<UpdateAlertConfigsRequestRouteRoutesItem>;
-
 /** Zero or more child routes. */
 export type UpdateAlertConfigsRequestRouteRoutesList =
   Array<UpdateAlertConfigsRequestRouteRoutesItem>;
-export const UpdateAlertConfigsRequestRouteRoutesList =
+const UpdateAlertConfigsRequestRouteRoutesList =
   CreateAlertConfigRouteRequestRoutesList as any as S.Schema<UpdateAlertConfigsRequestRouteRoutesList>;
 
 /** The root node of the routing tree. */
@@ -4974,7 +4855,7 @@ export interface UpdateAlertConfigsRequestRoute {
   /** Zero or more child routes. */
   routes?: UpdateAlertConfigsRequestRouteRoutesList;
 }
-export const UpdateAlertConfigsRequestRoute = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigsRequestRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.Boolean),
     groupBy: S.optional(UpdateAlertConfigsRequestRouteGroupByList),
@@ -5002,7 +4883,7 @@ export interface UpdateAlertConfigsRequest {
   /** The root node of the routing tree. */
   route: UpdateAlertConfigsRequestRoute;
 }
-export const UpdateAlertConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5026,7 +4907,7 @@ export interface UpdateAlertConfigsResponse {
   data: Alert;
   message: string;
 }
-export const UpdateAlertConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Alert,
     message: S.String,
@@ -5037,11 +4918,9 @@ export const UpdateAlertConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type UpdateAlertgroupRequestRulesItem = CreateAlertgroupsRequestRulesItem;
-export const UpdateAlertgroupRequestRulesItem = CreateAlertgroupsRequestRulesItem;
-
 /** rules for the alert group */
 export type UpdateAlertgroupRequestRulesList = Array<CreateAlertgroupsRequestRulesItem>;
-export const UpdateAlertgroupRequestRulesList =
+const UpdateAlertgroupRequestRulesList =
   CreateAlertgroupsRequestRulesList as any as S.Schema<UpdateAlertgroupRequestRulesList>;
 
 export interface UpdateAlertgroupRequest {
@@ -5053,7 +4932,7 @@ export interface UpdateAlertgroupRequest {
   /** rules for the alert group */
   rules: UpdateAlertgroupRequestRulesList;
 }
-export const UpdateAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5072,13 +4951,8 @@ export const UpdateAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type UpdateAlertgroupsRequestBodyItemRulesItem = CreateAlertgroupsRequestRulesItem;
-export const UpdateAlertgroupsRequestBodyItemRulesItem = CreateAlertgroupsRequestRulesItem;
-
 /** rules for the alert group */
 export type UpdateAlertgroupsRequestBodyItemRulesList = Array<CreateAlertgroupsRequestRulesItem>;
-export const UpdateAlertgroupsRequestBodyItemRulesList =
-  CreateAlertgroupsRequestRulesList as any as S.Schema<UpdateAlertgroupsRequestBodyItemRulesList>;
-
 /** Alert group that should be created or updated. `Additional Validators:` * total config should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export interface UpdateAlertgroupsRequestBodyItem {
   /** How often rules in the group are evaluated. `Additional Validators:` * must be a valid time string * should be >=60s */
@@ -5088,12 +4962,9 @@ export interface UpdateAlertgroupsRequestBodyItem {
   /** rules for the alert group */
   rules: UpdateAlertgroupsRequestBodyItemRulesList;
 }
-export const UpdateAlertgroupsRequestBodyItem =
-  PartialUpdateAlertgroupsRequestBodyItem as any as S.Schema<UpdateAlertgroupsRequestBodyItem>;
-
 /** Array of alert groups that should be set. It will override all existing alert groups. */
 export type UpdateAlertgroupsRequestBodyList = Array<UpdateAlertgroupsRequestBodyItem>;
-export const UpdateAlertgroupsRequestBodyList =
+const UpdateAlertgroupsRequestBodyList =
   PartialUpdateAlertgroupsRequestBodyList as any as S.Schema<UpdateAlertgroupsRequestBodyList>;
 
 export interface UpdateAlertgroupsRequest {
@@ -5101,7 +4972,7 @@ export interface UpdateAlertgroupsRequest {
   instanceId: string;
   body: UpdateAlertgroupsRequestBodyList;
 }
-export const UpdateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertgroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5126,7 +4997,7 @@ export interface UpdateAlertRecordRequest {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
-export const UpdateAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5158,7 +5029,7 @@ export interface UpdateAlertruleRequest {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
-export const UpdateAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertruleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5185,7 +5056,7 @@ export interface UpdateCredentialsRemoteWriteConfigRequest {
   /** Remote write metric sample limit for credential to push in a single minute. */
   maxLimit?: number;
 }
-export const UpdateCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5229,7 +5100,7 @@ export interface UpdateGrafanaConfigsRequestGenericOauth {
   /** Enable or disable Proof Key for Code Exchange */
   usePkce?: boolean;
 }
-export const UpdateGrafanaConfigsRequestGenericOauth = /*@__PURE__*/ S.suspend(() =>
+const UpdateGrafanaConfigsRequestGenericOauth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAssignGrafanaAdmin: S.optional(S.Boolean),
     apiUrl: S.String,
@@ -5257,7 +5128,7 @@ export interface UpdateGrafanaConfigsRequest {
   /** If it's true, it overwrites the current genericOauth config and configures STACKIT SSO for this instance. */
   useStackitSso?: boolean;
 }
-export const UpdateGrafanaConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGrafanaConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5288,7 +5159,7 @@ export interface UpdateInstanceRequest {
   /** UUID of the plan to update */
   planId?: string;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5308,11 +5179,9 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type UpdateLogsAlertgroupRequestRulesItem = CreateLogsAlertgroupsRequestRulesItem;
-export const UpdateLogsAlertgroupRequestRulesItem = CreateLogsAlertgroupsRequestRulesItem;
-
 /** rules for the alert group */
 export type UpdateLogsAlertgroupRequestRulesList = Array<CreateLogsAlertgroupsRequestRulesItem>;
-export const UpdateLogsAlertgroupRequestRulesList =
+const UpdateLogsAlertgroupRequestRulesList =
   CreateAlertgroupsRequestRulesList as any as S.Schema<UpdateLogsAlertgroupRequestRulesList>;
 
 export interface UpdateLogsAlertgroupRequest {
@@ -5324,7 +5193,7 @@ export interface UpdateLogsAlertgroupRequest {
   /** rules for the alert group */
   rules: UpdateLogsAlertgroupRequestRulesList;
 }
-export const UpdateLogsAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsAlertgroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5349,7 +5218,7 @@ export interface UpdateLogsConfigsRequest {
   /** How long to keep the logs `Additional Validators:` * Should be a valid time string * Should not be longer than 30 days */
   retention: string;
 }
-export const UpdateLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5374,7 +5243,7 @@ export interface UpdateMetricsStorageRetentionRequest {
   /** Retention time of longtime storage of raw data. After that time the raw data will be deleted permanently. All raw resolution metrics that are older than 40 hours are downsampled at a 5m resolution. The default value is 90 days. `Additional Validators:` * Should be a valid time string (e.g. '90d'). * Should be between '2d' and '780d'. * Note: For compatibility reasons, values between '0d' and '792d' are also accepted. However, these will be automatically adjusted in the backend to the recommended range of '2d' to '780d'. */
   metricsRetentionTimeRaw: string;
 }
-export const UpdateMetricsStorageRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMetricsStorageRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5395,8 +5264,6 @@ export const UpdateMetricsStorageRetentionRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type UpdateScrapeConfigRequestBasicAuth = CreateScrapeConfigRequestBasicAuth;
-export const UpdateScrapeConfigRequestBasicAuth = CreateScrapeConfigRequestBasicAuth;
-
 /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
 export type UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction =
   | "replace"
@@ -5406,11 +5273,11 @@ export type UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction =
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
-export const UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction = S.String;
+const UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction = S.String;
 
 /** The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions. */
 export type UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList = Array<string>;
-export const UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList =
+const UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList =
   CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList>;
 
 export interface UpdateScrapeConfigRequestMetricsRelabelConfigsItem {
@@ -5429,7 +5296,7 @@ export interface UpdateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available. */
   targetLabel?: string;
 }
-export const UpdateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction),
     modulus: S.optional(S.Number),
@@ -5446,40 +5313,31 @@ export const UpdateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ 
 /** List of metric relabel configurations */
 export type UpdateScrapeConfigRequestMetricsRelabelConfigsList =
   Array<UpdateScrapeConfigRequestMetricsRelabelConfigsItem>;
-export const UpdateScrapeConfigRequestMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
+const UpdateScrapeConfigRequestMetricsRelabelConfigsList = /*@__PURE__*/ S.Array(
   UpdateScrapeConfigRequestMetricsRelabelConfigsItem,
 ) as any as S.Schema<UpdateScrapeConfigRequestMetricsRelabelConfigsList>;
 
 /** Configures the protocol scheme used for requests. https or http */
 export type UpdateScrapeConfigRequestScheme = "http" | "https";
-export const UpdateScrapeConfigRequestScheme = S.String;
+const UpdateScrapeConfigRequestScheme = S.String;
 
 /** The targets specified by the static config. */
 export type UpdateScrapeConfigRequestStaticConfigsItemTargetsList = Array<string>;
-export const UpdateScrapeConfigRequestStaticConfigsItemTargetsList =
-  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateScrapeConfigRequestStaticConfigsItemTargetsList>;
-
 export interface UpdateScrapeConfigRequestStaticConfigsItem {
   /** Labels assigned to all metrics scraped from the targets. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
   /** The targets specified by the static config. */
   targets: UpdateScrapeConfigRequestStaticConfigsItemTargetsList;
 }
-export const UpdateScrapeConfigRequestStaticConfigsItem =
-  CreateScrapeConfigRequestStaticConfigsItem as any as S.Schema<UpdateScrapeConfigRequestStaticConfigsItem>;
-
 /** A list of scrape configurations. */
 export type UpdateScrapeConfigRequestStaticConfigsList =
   Array<UpdateScrapeConfigRequestStaticConfigsItem>;
-export const UpdateScrapeConfigRequestStaticConfigsList =
+const UpdateScrapeConfigRequestStaticConfigsList =
   CreateScrapeConfigRequestStaticConfigsList as any as S.Schema<UpdateScrapeConfigRequestStaticConfigsList>;
 
 /** Configures the scrape request's TLS settings. */
 export type UpdateScrapeConfigRequestTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-export const UpdateScrapeConfigRequestTlsConfig =
-  CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
-
 export interface UpdateScrapeConfigRequest {
   projectId: string;
   instanceId: string;
@@ -5511,7 +5369,7 @@ export interface UpdateScrapeConfigRequest {
   /** Configures the scrape request's TLS settings. */
   tlsConfig?: CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
 }
-export const UpdateScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScrapeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -5547,7 +5405,7 @@ export interface UpdateTracesConfigsRequest {
   /** How long to keep the traces `Additional Validators:` * Should be a valid time string * Should not be bigger than 30 days */
   retention: string;
 }
-export const UpdateTracesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTracesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),

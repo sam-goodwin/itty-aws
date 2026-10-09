@@ -58,7 +58,7 @@ export interface InventoryQuantityExpression {
   /** Unique id for the InventoryItem. */
   variantId?: string;
 }
-export const InventoryQuantityExpression = /*@__PURE__*/ S.suspend(() =>
+const InventoryQuantityExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     variantId: S.optional(S.String),
@@ -70,25 +70,25 @@ export const InventoryQuantityExpression = /*@__PURE__*/ S.suspend(() =>
 /** Optional; array of objects. Subtracts stock quantity for InventoryItems. */
 export type AdjustInventoryStockLevelsRequestDecrementOperationsList =
   Array<InventoryQuantityExpression>;
-export const AdjustInventoryStockLevelsRequestDecrementOperationsList = /*@__PURE__*/ S.Array(
+const AdjustInventoryStockLevelsRequestDecrementOperationsList = /*@__PURE__*/ S.Array(
   InventoryQuantityExpression,
 ) as any as S.Schema<AdjustInventoryStockLevelsRequestDecrementOperationsList>;
 
 /** Optional; array of objects. Increments stock quantity for InventoryItems. */
 export type AdjustInventoryStockLevelsRequestIncrementOperationsList =
   Array<InventoryQuantityExpression>;
-export const AdjustInventoryStockLevelsRequestIncrementOperationsList =
+const AdjustInventoryStockLevelsRequestIncrementOperationsList =
   AdjustInventoryStockLevelsRequestDecrementOperationsList as any as S.Schema<AdjustInventoryStockLevelsRequestIncrementOperationsList>;
 
 /** Optional; array of objects. Sets the exact stock quantity for InventoryItems. */
 export type AdjustInventoryStockLevelsRequestSetFiniteOperationsList =
   Array<InventoryQuantityExpression>;
-export const AdjustInventoryStockLevelsRequestSetFiniteOperationsList =
+const AdjustInventoryStockLevelsRequestSetFiniteOperationsList =
   AdjustInventoryStockLevelsRequestDecrementOperationsList as any as S.Schema<AdjustInventoryStockLevelsRequestSetFiniteOperationsList>;
 
 /** Optional; array of InventoryItem ids. Marks stock quantity as "unlimited" for the given InventoryItems. */
 export type AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList = Array<string>;
-export const AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList = /*@__PURE__*/ S.Array(
+const AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList>;
 
@@ -104,7 +104,7 @@ export interface AdjustInventoryStockLevelsRequest {
   /** Optional; array of InventoryItem ids. Marks stock quantity as "unlimited" for the given InventoryItems. */
   setUnlimitedOperations?: AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList;
 }
-export const AdjustInventoryStockLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdjustInventoryStockLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotencyKey: S.String.pipe(T.Header("Idempotency-Key")),
     decrementOperations: S.optional(AdjustInventoryStockLevelsRequestDecrementOperationsList),
@@ -117,9 +117,7 @@ export const AdjustInventoryStockLevelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdjustInventoryStockLevelsRequest>;
 
 export interface AdjustInventoryStockLevelsResponse {}
-export const AdjustInventoryStockLevelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AdjustInventoryStockLevelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AdjustInventoryStockLevelsResponse",
 }) as any as S.Schema<AdjustInventoryStockLevelsResponse>;
 
@@ -128,7 +126,7 @@ export interface ChangeString {
   present?: boolean;
   value?: string;
 }
-export const ChangeString = /*@__PURE__*/ S.suspend(() =>
+const ChangeString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(S.String),
@@ -140,7 +138,7 @@ export interface AssociateProductVariantImageRequest {
   variantId: string;
   imageId: ChangeString;
 }
-export const AssociateProductVariantImageRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateProductVariantImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     variantId: S.String.pipe(T.Label()),
@@ -157,7 +155,7 @@ export const AssociateProductVariantImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateProductVariantImageRequest>;
 
 export interface AssociateProductVariantImageResponse {}
-export const AssociateProductVariantImageResponse =
+const AssociateProductVariantImageResponse =
   AdjustInventoryStockLevelsResponse as any as S.Schema<AssociateProductVariantImageResponse>;
 
 /** ISO 3166 alpha-2 country code string. */
@@ -413,7 +411,7 @@ export type ContactAddressCountryCode =
   | "YE"
   | "ZM"
   | "ZW";
-export const ContactAddressCountryCode = S.String;
+const ContactAddressCountryCode = S.String;
 
 /** Address properties for a contact. */
 export interface ContactAddress {
@@ -436,7 +434,7 @@ export interface ContactAddress {
   /** General region (State, Province, County, etc...) */
   region?: string;
 }
-export const ContactAddress = /*@__PURE__*/ S.suspend(() =>
+const ContactAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     countryCode: ContactAddressCountryCode,
@@ -457,7 +455,7 @@ export interface CreateAddressBookEntryRequest {
   /** Whether this entry should be the default shipping address. If this is the only address book entry for the contact after creation, it becomes the default even when set to false. */
   defaultShipping?: boolean;
 }
-export const CreateAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
     address: ContactAddress,
@@ -475,7 +473,7 @@ export interface AddressBookEntry {
   /** The address book entry's ID. */
   id?: string;
 }
-export const AddressBookEntry = /*@__PURE__*/ S.suspend(() =>
+const AddressBookEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(ContactAddress),
     defaultShipping: S.optional(S.Boolean),
@@ -486,7 +484,7 @@ export const AddressBookEntry = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAddressBookEntryResponse {
   addressBookEntry?: AddressBookEntry;
 }
-export const CreateAddressBookEntryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressBookEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressBookEntry: S.optional(AddressBookEntry),
   }),
@@ -501,7 +499,7 @@ export interface CreateEmail {
   /** The email address. */
   email: string;
 }
-export const CreateEmail = /*@__PURE__*/ S.suspend(() =>
+const CreateEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptsMarketing: S.optional(S.Boolean),
     email: S.String,
@@ -517,7 +515,7 @@ export interface CreateContactRequest {
   locale: string;
   primaryEmail: CreateEmail;
 }
-export const CreateContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.String,
     lastName: S.String,
@@ -535,7 +533,7 @@ export interface AcceptsMarketing {
   /** The date and time the contact left Marketing list */
   leftOn?: string;
 }
-export const AcceptsMarketing = /*@__PURE__*/ S.suspend(() =>
+const AcceptsMarketing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptsMarketing: S.optional(S.Boolean),
     joinedOn: S.optional(S.String),
@@ -551,7 +549,7 @@ export interface Email {
   /** The email address. */
   email?: string;
 }
-export const Email = /*@__PURE__*/ S.suspend(() =>
+const Email = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptsMarketing: S.optional(AcceptsMarketing),
     createdOn: S.optional(S.String),
@@ -574,7 +572,7 @@ export interface Contact {
   locale?: string;
   primaryEmail?: Email;
 }
-export const Contact = /*@__PURE__*/ S.suspend(() =>
+const Contact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.optional(S.String),
     defaultShippingAddress: S.optional(AddressBookEntry),
@@ -589,7 +587,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 export interface CreateContactResponse {
   contact?: Contact;
 }
-export const CreateContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contact: S.optional(Contact),
   }),
@@ -599,30 +597,14 @@ export const CreateContactResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AnyOrderCriteria {
   type: string;
 }
-export const AnyOrderCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({ identifier: "AnyOrderCriteria" }) as any as S.Schema<AnyOrderCriteria>;
-
 /** Specifies the possible targets for a BuyXGetYCriteria buy-side. */
 export type BuyXGetYCriteriaCriteriaAppliesTo = "PRODUCT";
-export const BuyXGetYCriteriaCriteriaAppliesTo = S.String;
-
 /** Product ids the cart must contain. Required if criteriaAppliesTo=PRODUCT. */
 export type BuyXGetYCriteriaCriteriaProductIdsList = Array<string>;
-export const BuyXGetYCriteriaCriteriaProductIdsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<BuyXGetYCriteriaCriteriaProductIdsList>;
-
 /** Specifies the possible targets for a BuyXGetYCriteria reward-side. */
 export type BuyXGetYCriteriaRewardAppliesTo = "PRODUCT";
-export const BuyXGetYCriteriaRewardAppliesTo = S.String;
-
 /** Product ids eligible for the reward. Required if rewardAppliesTo=PRODUCT. */
 export type BuyXGetYCriteriaRewardProductIdsList = Array<string>;
-export const BuyXGetYCriteriaRewardProductIdsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<BuyXGetYCriteriaRewardProductIdsList>;
-
 /** Discount applies when the cart contains a required quantity of qualifying items (buy side), granting a discount on a quantity of eligible items (reward side). */
 export interface BuyXGetYCriteria {
   type: string;
@@ -639,18 +621,6 @@ export interface BuyXGetYCriteria {
   /** Product ids eligible for the reward. Required if rewardAppliesTo=PRODUCT. */
   rewardProductIds?: BuyXGetYCriteriaRewardProductIdsList;
 }
-export const BuyXGetYCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    criteriaAppliesTo: S.optional(BuyXGetYCriteriaCriteriaAppliesTo),
-    criteriaProductIds: S.optional(BuyXGetYCriteriaCriteriaProductIdsList),
-    eligibleForDiscountQuantity: S.Number,
-    requiredFullPriceQuantity: S.Number,
-    rewardAppliesTo: S.optional(BuyXGetYCriteriaRewardAppliesTo),
-    rewardProductIds: S.optional(BuyXGetYCriteriaRewardProductIdsList),
-  }),
-).annotate({ identifier: "BuyXGetYCriteria" }) as any as S.Schema<BuyXGetYCriteria>;
-
 /** ISO 4217 currency code. */
 export interface MonetaryAmountCurrency {
   currencyCode?: string;
@@ -660,7 +630,7 @@ export interface MonetaryAmountCurrency {
   numericCodeAsString?: string;
   symbol?: string;
 }
-export const MonetaryAmountCurrency = /*@__PURE__*/ S.suspend(() =>
+const MonetaryAmountCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     defaultFractionDigits: S.optional(S.Number),
@@ -678,7 +648,7 @@ export interface MonetaryAmount {
   /** Decimal monetary value. */
   value?: number;
 }
-export const MonetaryAmount = /*@__PURE__*/ S.suspend(() =>
+const MonetaryAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(MonetaryAmountCurrency),
     value: S.optional(S.Number),
@@ -690,13 +660,6 @@ export interface CartTotalCriteria {
   type: string;
   minimumCartTotal: MonetaryAmount;
 }
-export const CartTotalCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    minimumCartTotal: MonetaryAmount,
-  }),
-).annotate({ identifier: "CartTotalCriteria" }) as any as S.Schema<CartTotalCriteria>;
-
 /** Discount applies when the cart contains a specific product. */
 export interface ProductCriteria {
   type: string;
@@ -705,32 +668,23 @@ export interface ProductCriteria {
   /** Display-time snapshot of the product name at the time the discount was created. */
   productName?: string;
 }
-export const ProductCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    productId: S.optional(S.String),
-    productName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProductCriteria" }) as any as S.Schema<ProductCriteria>;
-
 export type CreateDiscountRequestCriteria =
   | AnyOrderCriteria
   | BuyXGetYCriteria
   | CartTotalCriteria
   | ProductCriteria;
-export const CreateDiscountRequestCriteria =
-  S.Unknown as any as S.Schema<CreateDiscountRequestCriteria>;
+const CreateDiscountRequestCriteria = S.Unknown as any as S.Schema<CreateDiscountRequestCriteria>;
 
 /** Defines how the discount applies to payment-plan payments. */
 export type PaymentPlanOptionsType = "NONE" | "ALL_PAYMENTS";
-export const PaymentPlanOptionsType = S.String;
+const PaymentPlanOptionsType = S.String;
 
 /** Payment-plan applicability settings for this discount. When omitted from a create or update request, defaults to NONE. */
 export interface PaymentPlanOptions {
   /** Defines how the discount applies to payment-plan payments. */
   type: PaymentPlanOptionsType | (string & {});
 }
-export const PaymentPlanOptions = /*@__PURE__*/ S.suspend(() =>
+const PaymentPlanOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: PaymentPlanOptionsType,
   }),
@@ -738,14 +692,12 @@ export const PaymentPlanOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how the discount applies to subscription payments. */
 export type SubscriptionOptionsType = "EXCLUDED" | "ALL_PAYMENTS" | "LIMITED_PAYMENTS";
-export const SubscriptionOptionsType = S.String;
-
 /** Subscription applicability settings for this discount. When omitted from a create or update request, defaults to EXCLUDED. */
 export interface SubscriptionOptions {
   /** Defines how the discount applies to subscription payments. */
   type: SubscriptionOptionsType | (string & {});
 }
-export const SubscriptionOptions = PaymentPlanOptions as any as S.Schema<SubscriptionOptions>;
+const SubscriptionOptions = PaymentPlanOptions as any as S.Schema<SubscriptionOptions>;
 
 /** Apply a fixed monetary amount off each reward item in a BUY_X_GET_Y discount. */
 export interface BuyXGetYFixedAmountTemplate {
@@ -754,16 +706,6 @@ export interface BuyXGetYFixedAmountTemplate {
   /** Caps how many times the discount can be applied per cart. 0 means unlimited. */
   maxApplicationsPerCart?: number;
 }
-export const BuyXGetYFixedAmountTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    discountAmount: MonetaryAmount,
-    maxApplicationsPerCart: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BuyXGetYFixedAmountTemplate",
-}) as any as S.Schema<BuyXGetYFixedAmountTemplate>;
-
 /** Apply a percentage discount off each reward item in a BUY_X_GET_Y discount. */
 export interface BuyXGetYPercentageTemplate {
   type: string;
@@ -772,35 +714,16 @@ export interface BuyXGetYPercentageTemplate {
   /** Caps how many times the discount can be applied per cart. 0 means unlimited. */
   maxApplicationsPerCart?: number;
 }
-export const BuyXGetYPercentageTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    discountPercentage: S.Number,
-    maxApplicationsPerCart: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BuyXGetYPercentageTemplate",
-}) as any as S.Schema<BuyXGetYPercentageTemplate>;
-
 /** Apply a fixed monetary amount off the cart total. */
 export interface FixedAmountTemplate {
   type: string;
   discountAmount: MonetaryAmount;
 }
-export const FixedAmountTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    discountAmount: MonetaryAmount,
-  }),
-).annotate({ identifier: "FixedAmountTemplate" }) as any as S.Schema<FixedAmountTemplate>;
-
 /** Fulfillment channel a free-shipping discount applies to. */
 export type FreeShippingTemplateAppliesToFulfillmentOptionType =
   | "SHIPPING"
   | "PICKUP"
   | "LOCAL_DELIVERY";
-export const FreeShippingTemplateAppliesToFulfillmentOptionType = S.String;
-
 /** Carrier service eligible for a free-shipping discount. */
 export type SelectedShippingOptionSelectedService =
   | "FEDEX_GROUND"
@@ -823,8 +746,6 @@ export type SelectedShippingOptionSelectedService =
   | "USPS_PRIORITY"
   | "USPS_EXPRESS"
   | "USPS_STANDARD";
-export const SelectedShippingOptionSelectedService = S.String;
-
 /** A shipping option targeted by a free-shipping discount. */
 export interface SelectedShippingOption {
   /** If true, all services within the shipping option are eligible. */
@@ -836,15 +757,6 @@ export interface SelectedShippingOption {
   /** Display-time snapshot of the shipping option name. */
   shippingOptionName: string;
 }
-export const SelectedShippingOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isAllServicesSelected: S.optional(S.Boolean),
-    selectedService: S.optional(SelectedShippingOptionSelectedService),
-    shippingOptionId: S.String,
-    shippingOptionName: S.String,
-  }),
-).annotate({ identifier: "SelectedShippingOption" }) as any as S.Schema<SelectedShippingOption>;
-
 /** Waive shipping cost for eligible carts. */
 export interface FreeShippingTemplate {
   type: string;
@@ -854,56 +766,30 @@ export interface FreeShippingTemplate {
     | (string & {});
   selectedShippingOption?: SelectedShippingOption;
 }
-export const FreeShippingTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    appliesToFulfillmentOptionType: S.optional(FreeShippingTemplateAppliesToFulfillmentOptionType),
-    selectedShippingOption: S.optional(SelectedShippingOption),
-  }),
-).annotate({ identifier: "FreeShippingTemplate" }) as any as S.Schema<FreeShippingTemplate>;
-
 /** Apply a percentage discount off the cart total. */
 export interface PercentageTemplate {
   type: string;
   /** Percentage to subtract from the cart total. Range (0, 100]. */
   percentage: number;
 }
-export const PercentageTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    percentage: S.Number,
-  }),
-).annotate({ identifier: "PercentageTemplate" }) as any as S.Schema<PercentageTemplate>;
-
 export type CreateDiscountRequestTemplate =
   | BuyXGetYFixedAmountTemplate
   | BuyXGetYPercentageTemplate
   | FixedAmountTemplate
   | FreeShippingTemplate
   | PercentageTemplate;
-export const CreateDiscountRequestTemplate =
-  S.Unknown as any as S.Schema<CreateDiscountRequestTemplate>;
+const CreateDiscountRequestTemplate = S.Unknown as any as S.Schema<CreateDiscountRequestTemplate>;
 
 /** Trigger for a discount that is automatically applied; no promo code required. */
 export type AutoTrigger = AnyOrderCriteria;
-export const AutoTrigger = AnyOrderCriteria;
-
 /** Trigger for a discount that is unlocked by a shopper-entered promo code. */
 export interface PromoCodeTrigger {
   type: string;
   /** Shopper-entered promo code. Required, non-empty, 1-50 characters; allowed characters: letters, digits, underscore, hyphen. */
   promoCode: string;
 }
-export const PromoCodeTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    promoCode: S.String,
-  }),
-).annotate({ identifier: "PromoCodeTrigger" }) as any as S.Schema<PromoCodeTrigger>;
-
 export type CreateDiscountRequestTrigger = AnyOrderCriteria | PromoCodeTrigger;
-export const CreateDiscountRequestTrigger =
-  S.Unknown as any as S.Schema<CreateDiscountRequestTrigger>;
+const CreateDiscountRequestTrigger = S.Unknown as any as S.Schema<CreateDiscountRequestTrigger>;
 
 export interface CreateDiscountRequest {
   criteria: CreateDiscountRequestCriteria;
@@ -924,7 +810,7 @@ export interface CreateDiscountRequest {
   /** When the discount expires. Null = no expiry. */
   validTo?: string;
 }
-export const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criteria: CreateDiscountRequestCriteria,
     isLimitedUses: S.optional(S.Boolean),
@@ -945,11 +831,11 @@ export type DiscountCriteria =
   | BuyXGetYCriteria
   | CartTotalCriteria
   | ProductCriteria;
-export const DiscountCriteria = S.Unknown as any as S.Schema<DiscountCriteria>;
+const DiscountCriteria = S.Unknown as any as S.Schema<DiscountCriteria>;
 
 /** Defines the lifecycle status of a discount. */
 export type DiscountStatus = "ACTIVE" | "SCHEDULED" | "EXPIRED";
-export const DiscountStatus = S.String;
+const DiscountStatus = S.String;
 
 export type DiscountTemplate =
   | BuyXGetYFixedAmountTemplate
@@ -957,10 +843,10 @@ export type DiscountTemplate =
   | FixedAmountTemplate
   | FreeShippingTemplate
   | PercentageTemplate;
-export const DiscountTemplate = S.Unknown as any as S.Schema<DiscountTemplate>;
+const DiscountTemplate = S.Unknown as any as S.Schema<DiscountTemplate>;
 
 export type DiscountTrigger = AnyOrderCriteria | PromoCodeTrigger;
-export const DiscountTrigger = S.Unknown as any as S.Schema<DiscountTrigger>;
+const DiscountTrigger = S.Unknown as any as S.Schema<DiscountTrigger>;
 
 /** Discount configured for a Commerce store. */
 export interface Discount {
@@ -992,7 +878,7 @@ export interface Discount {
   /** 24-char website id. */
   websiteId?: string;
 }
-export const Discount = /*@__PURE__*/ S.suspend(() =>
+const Discount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criteria: DiscountCriteria,
     id: S.optional(S.String),
@@ -1017,7 +903,7 @@ export const Discount = /*@__PURE__*/ S.suspend(() =>
 export interface DiscountResponse {
   discount: Discount;
 }
-export const DiscountResponse = /*@__PURE__*/ S.suspend(() =>
+const DiscountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discount: Discount,
   }),
@@ -1035,7 +921,7 @@ export interface AddressRequest {
   postalCode?: string;
   state?: string;
 }
-export const AddressRequest = /*@__PURE__*/ S.suspend(() =>
+const AddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.optional(S.String),
     address2: S.optional(S.String),
@@ -1055,7 +941,7 @@ export interface CreateDiscountLineRequest {
   name?: string;
   promoCode?: string;
 }
-export const CreateDiscountLineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscountLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     name: S.optional(S.String),
@@ -1067,13 +953,13 @@ export const CreateDiscountLineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of discount line items. Describes the promotions redeemed during checkout. */
 export type CreateOrderRequestDiscountLinesList = Array<CreateDiscountLineRequest>;
-export const CreateOrderRequestDiscountLinesList = /*@__PURE__*/ S.Array(
+const CreateOrderRequestDiscountLinesList = /*@__PURE__*/ S.Array(
   CreateDiscountLineRequest,
 ) as any as S.Schema<CreateOrderRequestDiscountLinesList>;
 
 /** Current fulfillment status of the order. Value may be PENDING or FULFILLED. */
 export type OrderCreateFulfillmentStatus = "PENDING" | "FULFILLED";
-export const OrderCreateFulfillmentStatus = S.String;
+const OrderCreateFulfillmentStatus = S.String;
 
 /** Array of shipping fulfillments; up to 100 entries. Describes shipment information for the order. */
 export interface CreateOrderShipmentRequest {
@@ -1088,7 +974,7 @@ export interface CreateOrderShipmentRequest {
   /** URL provided by carrier to track the shipment; must adhere to valid URL formatting. */
   trackingUrl?: string;
 }
-export const CreateOrderShipmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrderShipmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.String,
     service: S.String,
@@ -1102,17 +988,17 @@ export const CreateOrderShipmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of shipping fulfillments; up to 100 entries. Describes shipment information for the order. */
 export type CreateOrderRequestFulfillmentsList = Array<CreateOrderShipmentRequest>;
-export const CreateOrderRequestFulfillmentsList = /*@__PURE__*/ S.Array(
+const CreateOrderRequestFulfillmentsList = /*@__PURE__*/ S.Array(
   CreateOrderShipmentRequest,
 ) as any as S.Schema<CreateOrderRequestFulfillmentsList>;
 
 /** Indicates whether to deduct stock quantity for the product variant upon Order creation. Values may be DEDUCT or SKIP. Defaults to SKIP. */
 export type CreateOrderInventoryBehavior = "DEDUCT" | "SKIP";
-export const CreateOrderInventoryBehavior = S.String;
+const CreateOrderInventoryBehavior = S.String;
 
 /** Product type sold; values may be PHYSICAL_PRODUCT or CUSTOM. */
 export type OrderCreateLineItemType = "PHYSICAL_PRODUCT" | "CUSTOM";
-export const OrderCreateLineItemType = S.String;
+const OrderCreateLineItemType = S.String;
 
 /** Array of purchased line items; cannot be empty. */
 export interface CreateLineItemRequest {
@@ -1126,7 +1012,7 @@ export interface CreateLineItemRequest {
   /** Required if lineItemType is PHYSICAL_PRODUCT. Unique id of the ProductVariant sold. */
   variantId?: string;
 }
-export const CreateLineItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLineItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineItemType: OrderCreateLineItemType,
     nonSaleUnitPrice: S.optional(MonetaryAmount),
@@ -1139,13 +1025,13 @@ export const CreateLineItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of purchased line items; cannot be empty. */
 export type CreateOrderRequestLineItemsList = Array<CreateLineItemRequest>;
-export const CreateOrderRequestLineItemsList = /*@__PURE__*/ S.Array(
+const CreateOrderRequestLineItemsList = /*@__PURE__*/ S.Array(
   CreateLineItemRequest,
 ) as any as S.Schema<CreateOrderRequestLineItemsList>;
 
 /** Indicates that lineItems.unitPricePaid includes tax. Values may be EXCLUSIVE or INCLUSIVE. */
 export type TaxInterpretation = "INCLUSIVE" | "EXCLUSIVE";
-export const TaxInterpretation = S.String;
+const TaxInterpretation = S.String;
 
 /** Array of shipping line items. Describes the shipping options chosen at checkout. Currently accepts only one shipping entry. */
 export interface CreateShippingLineRequest {
@@ -1153,7 +1039,7 @@ export interface CreateShippingLineRequest {
   /** Description of the shipping option. */
   method: string;
 }
-export const CreateShippingLineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShippingLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: MonetaryAmount,
     method: S.String,
@@ -1164,13 +1050,13 @@ export const CreateShippingLineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of shipping line items. Describes the shipping options chosen at checkout. Currently accepts only one shipping entry. */
 export type CreateOrderRequestShippingLinesList = Array<CreateShippingLineRequest>;
-export const CreateOrderRequestShippingLinesList = /*@__PURE__*/ S.Array(
+const CreateOrderRequestShippingLinesList = /*@__PURE__*/ S.Array(
   CreateShippingLineRequest,
 ) as any as S.Schema<CreateOrderRequestShippingLinesList>;
 
 /** Indicates whether to send a fulfillment notification email to the customer. Value may be SEND or SKIP. */
 export type ShopperFulfillmentNotificationBehavior = "SEND" | "SKIP";
-export const ShopperFulfillmentNotificationBehavior = S.String;
+const ShopperFulfillmentNotificationBehavior = S.String;
 
 export interface CreateOrderRequest {
   /** Idempotency key to prevent duplicate order creation. */
@@ -1205,7 +1091,7 @@ export interface CreateOrderRequest {
   subtotal?: MonetaryAmount;
   taxTotal?: MonetaryAmount;
 }
-export const CreateOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotencyKey: S.String.pipe(T.Header("Idempotency-Key")),
     billingAddress: S.optional(AddressRequest),
@@ -1252,7 +1138,7 @@ export interface Address {
   /** State or province */
   state?: string;
 }
-export const Address = AddressRequest as any as S.Schema<Address>;
+const Address = AddressRequest as any as S.Schema<Address>;
 
 /** Array of discount line items; describes the promotions redeemed during checkout. */
 export interface DiscountLine {
@@ -1264,7 +1150,7 @@ export interface DiscountLine {
   /** The user-entered promo code that triggered the discount */
   promoCode?: string;
 }
-export const DiscountLine = /*@__PURE__*/ S.suspend(() =>
+const DiscountLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     description: S.optional(S.String),
@@ -1275,7 +1161,7 @@ export const DiscountLine = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of discount line items; describes the promotions redeemed during checkout. */
 export type OrderDiscountLinesList = Array<DiscountLine>;
-export const OrderDiscountLinesList = /*@__PURE__*/ S.Array(
+const OrderDiscountLinesList = /*@__PURE__*/ S.Array(
   DiscountLine,
 ) as any as S.Schema<OrderDiscountLinesList>;
 
@@ -1286,7 +1172,7 @@ export interface FormItem {
   /** The value of the field, as entered by the shopper */
   value?: string;
 }
-export const FormItem = /*@__PURE__*/ S.suspend(() =>
+const FormItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     value: S.optional(S.String),
@@ -1295,13 +1181,13 @@ export const FormItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of form data submitted via the checkout page. */
 export type OrderFormSubmissionList = Array<FormItem>;
-export const OrderFormSubmissionList = /*@__PURE__*/ S.Array(
+const OrderFormSubmissionList = /*@__PURE__*/ S.Array(
   FormItem,
 ) as any as S.Schema<OrderFormSubmissionList>;
 
 /** Current fulfillment status of the order. Value may be: PENDING, FULFILLED, or CANCELED. */
 export type FulfillmentStatus = "PENDING" | "FULFILLED" | "CANCELED";
-export const FulfillmentStatus = S.String;
+const FulfillmentStatus = S.String;
 
 /** Array of shipping fulfillments; describes shipment information for the order. */
 export interface Fulfillment {
@@ -1316,7 +1202,7 @@ export interface Fulfillment {
   /** URL provided by the carrier to track the shipment. */
   trackingUrl?: string;
 }
-export const Fulfillment = /*@__PURE__*/ S.suspend(() =>
+const Fulfillment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.optional(S.String),
     service: S.optional(S.String),
@@ -1328,7 +1214,7 @@ export const Fulfillment = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of shipping fulfillments; describes shipment information for the order. */
 export type OrderFulfillmentsList = Array<Fulfillment>;
-export const OrderFulfillmentsList = /*@__PURE__*/ S.Array(
+const OrderFulfillmentsList = /*@__PURE__*/ S.Array(
   Fulfillment,
 ) as any as S.Schema<OrderFulfillmentsList>;
 
@@ -1337,7 +1223,7 @@ export interface OrderNote {
   /** Content for the note */
   content?: string;
 }
-export const OrderNote = /*@__PURE__*/ S.suspend(() =>
+const OrderNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
   }),
@@ -1345,13 +1231,13 @@ export const OrderNote = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of internal notes added to the order by the merchant. */
 export type OrderInternalNotesList = Array<OrderNote>;
-export const OrderInternalNotesList = /*@__PURE__*/ S.Array(
+const OrderInternalNotesList = /*@__PURE__*/ S.Array(
   OrderNote,
 ) as any as S.Schema<OrderInternalNotesList>;
 
 /** Array of form data submitted via a product's custom form prior to being added to the cart. */
 export type LineItemCustomizationsList = Array<FormItem>;
-export const LineItemCustomizationsList =
+const LineItemCustomizationsList =
   OrderFormSubmissionList as any as S.Schema<LineItemCustomizationsList>;
 
 /** Array of variant options; represents variant choices made by the customer. Null for download and gift card products. */
@@ -1361,7 +1247,7 @@ export interface VariantOption {
   /** The shopper-selected value for the option (e.g. red, small, cotton) */
   value?: string;
 }
-export const VariantOption = /*@__PURE__*/ S.suspend(() =>
+const VariantOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optionName: S.optional(S.String),
     value: S.optional(S.String),
@@ -1370,7 +1256,7 @@ export const VariantOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of variant options; represents variant choices made by the customer. Null for download and gift card products. */
 export type LineItemVariantOptionsList = Array<VariantOption>;
-export const LineItemVariantOptionsList = /*@__PURE__*/ S.Array(
+const LineItemVariantOptionsList = /*@__PURE__*/ S.Array(
   VariantOption,
 ) as any as S.Schema<LineItemVariantOptionsList>;
 
@@ -1406,7 +1292,7 @@ export interface LineItem {
   /** Shipping width of the physical product variant. 0.0 when not specified or when the variant is not a physical product. */
   width?: number;
 }
-export const LineItem = /*@__PURE__*/ S.suspend(() =>
+const LineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customizations: S.optional(LineItemCustomizationsList),
     height: S.optional(S.Number),
@@ -1428,9 +1314,7 @@ export const LineItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of purchased line items; line items describe what product or product variant was purchased, how many of that item were purchased, and additional details. */
 export type OrderLineItemsList = Array<LineItem>;
-export const OrderLineItemsList = /*@__PURE__*/ S.Array(
-  LineItem,
-) as any as S.Schema<OrderLineItemsList>;
+const OrderLineItemsList = /*@__PURE__*/ S.Array(LineItem) as any as S.Schema<OrderLineItemsList>;
 
 /** Current state of payment for the order. */
 export type PaymentState =
@@ -1443,7 +1327,7 @@ export type PaymentState =
   | "REFUND_PENDING"
   | "REFUND_FAILED"
   | "PARTIALLY_PAID";
-export const PaymentState = S.String;
+const PaymentState = S.String;
 
 /** Array of shipping line items; describes the shipping options chosen at checkout. */
 export interface ShippingLine {
@@ -1451,7 +1335,7 @@ export interface ShippingLine {
   /** Description of the shipping option */
   method?: string;
 }
-export const ShippingLine = /*@__PURE__*/ S.suspend(() =>
+const ShippingLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     method: S.optional(S.String),
@@ -1460,7 +1344,7 @@ export const ShippingLine = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of shipping line items; describes the shipping options chosen at checkout. */
 export type OrderShippingLinesList = Array<ShippingLine>;
-export const OrderShippingLinesList = /*@__PURE__*/ S.Array(
+const OrderShippingLinesList = /*@__PURE__*/ S.Array(
   ShippingLine,
 ) as any as S.Schema<OrderShippingLinesList>;
 
@@ -1500,7 +1384,7 @@ export type OrderShippingOptionServiceType =
   | "USPS_ALL"
   | "USPS_ONLINE"
   | "OTHER";
-export const OrderShippingOptionServiceType = S.String;
+const OrderShippingOptionServiceType = S.String;
 
 export interface Order {
   billingAddress?: Address;
@@ -1554,7 +1438,7 @@ export interface Order {
   /** If true, the order is a test order created using a payment method in test mode. */
   testmode?: boolean;
 }
-export const Order = /*@__PURE__*/ S.suspend(() =>
+const Order = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAddress: S.optional(Address),
     channel: S.optional(S.String),
@@ -1590,36 +1474,14 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type CreateGiftCardProductRequestTagsList = Array<string>;
-export const CreateGiftCardProductRequestTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreateGiftCardProductRequestTagsList>;
-
 export interface SimpleProductPricing {
   basePrice?: MonetaryAmount;
 }
-export const SimpleProductPricing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    basePrice: S.optional(MonetaryAmount),
-  }),
-).annotate({ identifier: "SimpleProductPricing" }) as any as S.Schema<SimpleProductPricing>;
-
 export interface CreateGiftCardProductVariantRequest {
   pricing?: SimpleProductPricing;
   sku?: string;
 }
-export const CreateGiftCardProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pricing: S.optional(SimpleProductPricing),
-    sku: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateGiftCardProductVariantRequest",
-}) as any as S.Schema<CreateGiftCardProductVariantRequest>;
-
 export type CreateGiftCardProductRequestVariantsList = Array<CreateGiftCardProductVariantRequest>;
-export const CreateGiftCardProductRequestVariantsList = /*@__PURE__*/ S.Array(
-  CreateGiftCardProductVariantRequest,
-) as any as S.Schema<CreateGiftCardProductRequestVariantsList>;
-
 /** Request payload to create a GIFT_CARD product. */
 export interface CreateGiftCardProductRequest {
   description?: string;
@@ -1631,33 +1493,12 @@ export interface CreateGiftCardProductRequest {
   urlSlug?: string;
   variants?: CreateGiftCardProductRequestVariantsList;
 }
-export const CreateGiftCardProductRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    isVisible: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    storePageId: S.optional(S.String),
-    tags: S.optional(CreateGiftCardProductRequestTagsList),
-    type: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    variants: S.optional(CreateGiftCardProductRequestVariantsList),
-  }),
-).annotate({
-  identifier: "CreateGiftCardProductRequest",
-}) as any as S.Schema<CreateGiftCardProductRequest>;
-
 export type CreatePhysicalProductRequestTagsList = Array<string>;
-export const CreatePhysicalProductRequestTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreatePhysicalProductRequestTagsList>;
-
 export type CreatePhysicalProductRequestVariantAttributesList = Array<string>;
-export const CreatePhysicalProductRequestVariantAttributesList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreatePhysicalProductRequestVariantAttributesList>;
-
 export type CreatePhysicalProductVariantRequestAttributesMap = {
   [key: string]: string | undefined;
 };
-export const CreatePhysicalProductVariantRequestAttributesMap = /*@__PURE__*/ S.Record(
+const CreatePhysicalProductVariantRequestAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePhysicalProductVariantRequestAttributesMap>;
@@ -1667,7 +1508,7 @@ export interface FullProductPricing {
   onSale?: boolean;
   salePrice?: MonetaryAmount;
 }
-export const FullProductPricing = /*@__PURE__*/ S.suspend(() =>
+const FullProductPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePrice: S.optional(MonetaryAmount),
     onSale: S.optional(S.Boolean),
@@ -1677,7 +1518,7 @@ export const FullProductPricing = /*@__PURE__*/ S.suspend(() =>
 
 /** Unit of measurement. Supported values: `INCH`, `CENTIMETER`. */
 export type ProductDimensionsUnit = "CENTIMETER" | "INCH";
-export const ProductDimensionsUnit = S.String;
+const ProductDimensionsUnit = S.String;
 
 /** Physical dimensions of the variant. */
 export interface ProductDimensions {
@@ -1689,7 +1530,7 @@ export interface ProductDimensions {
   /** Width of the variant. */
   width?: number;
 }
-export const ProductDimensions = /*@__PURE__*/ S.suspend(() =>
+const ProductDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     length: S.optional(S.Number),
@@ -1700,7 +1541,7 @@ export const ProductDimensions = /*@__PURE__*/ S.suspend(() =>
 
 /** Unit of measurement. Supported values: `KILOGRAM`, `POUND`. */
 export type ProductWeightUnit = "KILOGRAM" | "POUND";
-export const ProductWeightUnit = S.String;
+const ProductWeightUnit = S.String;
 
 /** Weight of the variant. */
 export interface ProductWeight {
@@ -1708,7 +1549,7 @@ export interface ProductWeight {
   /** Weight amount. */
   value?: number;
 }
-export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
+const ProductWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(ProductWeightUnit),
     value: S.optional(S.Number),
@@ -1720,7 +1561,7 @@ export interface ProductMeasurements {
   dimensions?: ProductDimensions;
   weight?: ProductWeight;
 }
-export const ProductMeasurements = /*@__PURE__*/ S.suspend(() =>
+const ProductMeasurements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(ProductDimensions),
     weight: S.optional(ProductWeight),
@@ -1734,7 +1575,7 @@ export interface ProductStock {
   /** Indicates whether the variant has unlimited stock. */
   unlimited?: boolean;
 }
-export const ProductStock = /*@__PURE__*/ S.suspend(() =>
+const ProductStock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     unlimited: S.optional(S.Boolean),
@@ -1752,25 +1593,7 @@ export interface CreatePhysicalProductVariantRequest {
   sku?: string;
   stock?: ProductStock;
 }
-export const CreatePhysicalProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(CreatePhysicalProductVariantRequestAttributesMap),
-    gtin: S.optional(S.String),
-    mpn: S.optional(S.String),
-    pricing: S.optional(FullProductPricing),
-    shippingMeasurements: S.optional(ProductMeasurements),
-    sku: S.optional(S.String),
-    stock: S.optional(ProductStock),
-  }),
-).annotate({
-  identifier: "CreatePhysicalProductVariantRequest",
-}) as any as S.Schema<CreatePhysicalProductVariantRequest>;
-
 export type CreatePhysicalProductRequestVariantsList = Array<CreatePhysicalProductVariantRequest>;
-export const CreatePhysicalProductRequestVariantsList = /*@__PURE__*/ S.Array(
-  CreatePhysicalProductVariantRequest,
-) as any as S.Schema<CreatePhysicalProductRequestVariantsList>;
-
 /** Request payload to create a PHYSICAL product. */
 export interface CreatePhysicalProductRequest {
   description?: string;
@@ -1783,56 +1606,16 @@ export interface CreatePhysicalProductRequest {
   variantAttributes?: CreatePhysicalProductRequestVariantAttributesList;
   variants?: CreatePhysicalProductRequestVariantsList;
 }
-export const CreatePhysicalProductRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    isVisible: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    storePageId: S.optional(S.String),
-    tags: S.optional(CreatePhysicalProductRequestTagsList),
-    type: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    variantAttributes: S.optional(CreatePhysicalProductRequestVariantAttributesList),
-    variants: S.optional(CreatePhysicalProductRequestVariantsList),
-  }),
-).annotate({
-  identifier: "CreatePhysicalProductRequest",
-}) as any as S.Schema<CreatePhysicalProductRequest>;
-
 export type CreateServiceProductRequestTagsList = Array<string>;
-export const CreateServiceProductRequestTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreateServiceProductRequestTagsList>;
-
 export type CreateServiceProductRequestVariantAttributesList = Array<string>;
-export const CreateServiceProductRequestVariantAttributesList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreateServiceProductRequestVariantAttributesList>;
-
 export type CreateServiceProductVariantRequestAttributesMap = { [key: string]: string | undefined };
-export const CreateServiceProductVariantRequestAttributesMap =
-  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<CreateServiceProductVariantRequestAttributesMap>;
-
 export interface CreateServiceProductVariantRequest {
   attributes?: CreateServiceProductVariantRequestAttributesMap;
   pricing?: FullProductPricing;
   sku?: string;
   stock?: ProductStock;
 }
-export const CreateServiceProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(CreateServiceProductVariantRequestAttributesMap),
-    pricing: S.optional(FullProductPricing),
-    sku: S.optional(S.String),
-    stock: S.optional(ProductStock),
-  }),
-).annotate({
-  identifier: "CreateServiceProductVariantRequest",
-}) as any as S.Schema<CreateServiceProductVariantRequest>;
-
 export type CreateServiceProductRequestVariantsList = Array<CreateServiceProductVariantRequest>;
-export const CreateServiceProductRequestVariantsList = /*@__PURE__*/ S.Array(
-  CreateServiceProductVariantRequest,
-) as any as S.Schema<CreateServiceProductRequestVariantsList>;
-
 /** Request payload to create a SERVICE product. */
 export interface CreateServiceProductRequest {
   description?: string;
@@ -1845,32 +1628,16 @@ export interface CreateServiceProductRequest {
   variantAttributes?: CreateServiceProductRequestVariantAttributesList;
   variants?: CreateServiceProductRequestVariantsList;
 }
-export const CreateServiceProductRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    isVisible: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    storePageId: S.optional(S.String),
-    tags: S.optional(CreateServiceProductRequestTagsList),
-    type: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    variantAttributes: S.optional(CreateServiceProductRequestVariantAttributesList),
-    variants: S.optional(CreateServiceProductRequestVariantsList),
-  }),
-).annotate({
-  identifier: "CreateServiceProductRequest",
-}) as any as S.Schema<CreateServiceProductRequest>;
-
 export type CreateProductRequestBody =
   | CreateGiftCardProductRequest
   | CreatePhysicalProductRequest
   | CreateServiceProductRequest;
-export const CreateProductRequestBody = S.Unknown as any as S.Schema<CreateProductRequestBody>;
+const CreateProductRequestBody = S.Unknown as any as S.Schema<CreateProductRequestBody>;
 
 export interface CreateProductRequest {
   body: CreateProductRequestBody;
 }
-export const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: CreateProductRequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/v2/commerce/products", code: 200 })),
@@ -1878,7 +1645,7 @@ export const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available image sizes. Use with `images.url` and a `format` query parameter to retrieve the image at a particular width. */
 export type ProductImageAvailableFormatsList = Array<string>;
-export const ProductImageAvailableFormatsList =
+const ProductImageAvailableFormatsList =
   AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ProductImageAvailableFormatsList>;
 
 /** Product image assigned to the variant. */
@@ -1896,7 +1663,7 @@ export interface ProductImage {
   /** Absolute URL of the image hosted on Squarespace. */
   url?: string;
 }
-export const ProductImage = /*@__PURE__*/ S.suspend(() =>
+const ProductImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altText: S.optional(S.String),
     availableFormats: S.optional(ProductImageAvailableFormatsList),
@@ -1908,7 +1675,7 @@ export const ProductImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductImage" }) as any as S.Schema<ProductImage>;
 
 export type ProductV2ImagesList = Array<ProductImage>;
-export const ProductV2ImagesList = /*@__PURE__*/ S.Array(
+const ProductV2ImagesList = /*@__PURE__*/ S.Array(
   ProductImage,
 ) as any as S.Schema<ProductV2ImagesList>;
 
@@ -1917,7 +1684,7 @@ export interface SeoOptions {
   description?: string;
   title?: string;
 }
-export const SeoOptions = /*@__PURE__*/ S.suspend(() =>
+const SeoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -1925,11 +1692,11 @@ export const SeoOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeoOptions" }) as any as S.Schema<SeoOptions>;
 
 export type ProductV2TagsList = Array<string>;
-export const ProductV2TagsList =
+const ProductV2TagsList =
   AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ProductV2TagsList>;
 
 export type ProductTypeV2 = "PHYSICAL" | "SERVICE" | "GIFT_CARD" | "DIGITAL";
-export const ProductTypeV2 = S.String;
+const ProductTypeV2 = S.String;
 
 export interface ProductV2 {
   createdOn: string;
@@ -1946,7 +1713,7 @@ export interface ProductV2 {
   url?: string;
   urlSlug?: string;
 }
-export const ProductV2 = /*@__PURE__*/ S.suspend(() =>
+const ProductV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String,
     description: S.optional(S.String),
@@ -1966,7 +1733,7 @@ export const ProductV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies attribute-value pairs for the variant. 100 char limit per key and per value with no more than six key-value pairs. Supported for PHYSICAL products only. */
 export type CreateProductVariantRequestAttributesMap = { [key: string]: string | undefined };
-export const CreateProductVariantRequestAttributesMap =
+const CreateProductVariantRequestAttributesMap =
   CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<CreateProductVariantRequestAttributesMap>;
 
 /** Present for DIGITAL products only. Digital products don't have variants, so pricing is at the product level. */
@@ -1976,7 +1743,7 @@ export interface ProductPricing {
   onSale?: boolean;
   salePrice?: MonetaryAmount;
 }
-export const ProductPricing = FullProductPricing as any as S.Schema<ProductPricing>;
+const ProductPricing = FullProductPricing as any as S.Schema<ProductPricing>;
 
 export interface CreateProductVariantRequest {
   productId: string;
@@ -1992,7 +1759,7 @@ export interface CreateProductVariantRequest {
   sku: string;
   stock?: ProductStock;
 }
-export const CreateProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     attributes: S.optional(CreateProductVariantRequestAttributesMap),
@@ -2008,9 +1775,6 @@ export const CreateProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProductVariantRequest>;
 
 export type PhysicalProductVariantAttributesMap = { [key: string]: string | undefined };
-export const PhysicalProductVariantAttributesMap =
-  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<PhysicalProductVariantAttributesMap>;
-
 /** A variant of a PHYSICAL product. */
 export interface PhysicalProductVariant {
   attributes?: PhysicalProductVariantAttributesMap;
@@ -2023,20 +1787,6 @@ export interface PhysicalProductVariant {
   sku?: string;
   stock?: ProductStock;
 }
-export const PhysicalProductVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(PhysicalProductVariantAttributesMap),
-    gtin: S.optional(S.String),
-    id: S.optional(S.String),
-    image: S.optional(ProductImage),
-    mpn: S.optional(S.String),
-    pricing: S.optional(FullProductPricing),
-    shippingMeasurements: S.optional(ProductMeasurements),
-    sku: S.optional(S.String),
-    stock: S.optional(ProductStock),
-  }),
-).annotate({ identifier: "PhysicalProductVariant" }) as any as S.Schema<PhysicalProductVariant>;
-
 /** A variant of a GIFT_CARD product. */
 export interface GiftCardProductVariant {
   id?: string;
@@ -2044,19 +1794,7 @@ export interface GiftCardProductVariant {
   pricing?: SimpleProductPricing;
   sku?: string;
 }
-export const GiftCardProductVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    image: S.optional(ProductImage),
-    pricing: S.optional(SimpleProductPricing),
-    sku: S.optional(S.String),
-  }),
-).annotate({ identifier: "GiftCardProductVariant" }) as any as S.Schema<GiftCardProductVariant>;
-
 export type ServiceProductVariantAttributesMap = { [key: string]: string | undefined };
-export const ServiceProductVariantAttributesMap =
-  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<ServiceProductVariantAttributesMap>;
-
 /** A variant of a SERVICE product. */
 export interface ServiceProductVariant {
   attributes?: ServiceProductVariantAttributesMap;
@@ -2066,23 +1804,12 @@ export interface ServiceProductVariant {
   sku?: string;
   stock?: ProductStock;
 }
-export const ServiceProductVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(ServiceProductVariantAttributesMap),
-    id: S.optional(S.String),
-    image: S.optional(ProductImage),
-    pricing: S.optional(FullProductPricing),
-    sku: S.optional(S.String),
-    stock: S.optional(ProductStock),
-  }),
-).annotate({ identifier: "ServiceProductVariant" }) as any as S.Schema<ServiceProductVariant>;
-
 /** A product variant. The shape depends on the product type. */
 export type ProductVariantV2 =
   | PhysicalProductVariant
   | GiftCardProductVariant
   | ServiceProductVariant;
-export const ProductVariantV2 = S.Unknown as any as S.Schema<ProductVariantV2>;
+const ProductVariantV2 = S.Unknown as any as S.Schema<ProductVariantV2>;
 
 /** Description of the event that triggered the notification. * `order.create` - always value for OrderCreatePayload.topic ref * `order.update` - always value for OrderUpdatePayload.topic * `extension.uninstall` - always value for ExtensionUninstallPayload.topic * `contact.create` - always value for ContactCreatePayload.topic * `contact.update` - always value for ContactUpdatePayload.topic * `contact.delete` - always value for ContactDeletePayload.topic * `address.create` - always value for AddressCreatePayload.topic * `address.update` - always value for AddressUpdatePayload.topic * `address.delete` - always value for AddressDeletePayload.topic */
 export type CreateWebhookSubscriptionRequestTopicsItem =
@@ -2095,13 +1822,13 @@ export type CreateWebhookSubscriptionRequestTopicsItem =
   | "address.create"
   | "address.update"
   | "address.delete";
-export const CreateWebhookSubscriptionRequestTopicsItem = S.String;
+const CreateWebhookSubscriptionRequestTopicsItem = S.String;
 
 /** List of event topics that trigger a webhook notification. */
 export type CreateWebhookSubscriptionRequestTopicsList = Array<
   CreateWebhookSubscriptionRequestTopicsItem | (string & {})
 >;
-export const CreateWebhookSubscriptionRequestTopicsList = /*@__PURE__*/ S.Array(
+const CreateWebhookSubscriptionRequestTopicsList = /*@__PURE__*/ S.Array(
   CreateWebhookSubscriptionRequestTopicsItem,
 ) as any as S.Schema<CreateWebhookSubscriptionRequestTopicsList>;
 
@@ -2111,7 +1838,7 @@ export interface CreateWebhookSubscriptionRequest {
   /** List of event topics that trigger a webhook notification. */
   topics?: CreateWebhookSubscriptionRequestTopicsList;
 }
-export const CreateWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointUrl: S.String,
     topics: S.optional(CreateWebhookSubscriptionRequestTopicsList),
@@ -2131,12 +1858,10 @@ export type ExternalCreateWebhookSubscriptionResponseTopicsItem =
   | "address.create"
   | "address.update"
   | "address.delete";
-export const ExternalCreateWebhookSubscriptionResponseTopicsItem = S.String;
-
 /** List of event topics that trigger a webhook notification. */
 export type ExternalCreateWebhookSubscriptionResponseTopicsList =
   Array<ExternalCreateWebhookSubscriptionResponseTopicsItem>;
-export const ExternalCreateWebhookSubscriptionResponseTopicsList =
+const ExternalCreateWebhookSubscriptionResponseTopicsList =
   CreateWebhookSubscriptionRequestTopicsList as any as S.Schema<ExternalCreateWebhookSubscriptionResponseTopicsList>;
 
 export interface ExternalCreateWebhookSubscriptionResponse {
@@ -2157,7 +1882,7 @@ export interface ExternalCreateWebhookSubscriptionResponse {
   /** Unique Webhook Subscription id. */
   websiteId: string;
 }
-export const ExternalCreateWebhookSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalCreateWebhookSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     createdOn: S.String,
@@ -2178,7 +1903,7 @@ export interface DeleteAddressBookEntryRequest {
   /** The address book entry's ID. */
   addressBookEntryId: string;
 }
-export const DeleteAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
     addressBookEntryId: S.String.pipe(T.Label()),
@@ -2194,7 +1919,7 @@ export const DeleteAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddressBookEntryRequest>;
 
 export interface DeleteAddressBookEntryResponse {}
-export const DeleteAddressBookEntryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAddressBookEntryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAddressBookEntryResponse",
 }) as any as S.Schema<DeleteAddressBookEntryResponse>;
 
@@ -2202,48 +1927,48 @@ export interface DeleteContactRequest {
   /** The contact's ID. */
   contactId: string;
 }
-export const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/contacts/{contactId}", code: 200 })),
 ).annotate({ identifier: "DeleteContactRequest" }) as any as S.Schema<DeleteContactRequest>;
 
 export interface DeleteContactResponse {}
-export const DeleteContactResponse =
+const DeleteContactResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<DeleteContactResponse>;
 
 export interface DeleteDiscountRequest {
   /** The discount's ID. */
   discountId: string;
 }
-export const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/commerce/discounts/{discountId}", code: 200 })),
 ).annotate({ identifier: "DeleteDiscountRequest" }) as any as S.Schema<DeleteDiscountRequest>;
 
 export interface DeleteDiscountResponse {}
-export const DeleteDiscountResponse =
+const DeleteDiscountResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<DeleteDiscountResponse>;
 
 export interface DeleteProductRequest {
   productId: string;
 }
-export const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/commerce/products/{productId}", code: 200 })),
 ).annotate({ identifier: "DeleteProductRequest" }) as any as S.Schema<DeleteProductRequest>;
 
 export interface DeleteProductResponse {}
-export const DeleteProductResponse =
+const DeleteProductResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<DeleteProductResponse>;
 
 export interface DeleteProductImageRequest {
   productId: string;
   imageId: string;
 }
-export const DeleteProductImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     imageId: S.String.pipe(T.Label()),
@@ -2259,14 +1984,14 @@ export const DeleteProductImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductImageRequest>;
 
 export interface DeleteProductImageResponse {}
-export const DeleteProductImageResponse =
+const DeleteProductImageResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<DeleteProductImageResponse>;
 
 export interface DeleteProductVariantRequest {
   productId: string;
   variantId: string;
 }
-export const DeleteProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     variantId: S.String.pipe(T.Label()),
@@ -2282,14 +2007,14 @@ export const DeleteProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductVariantRequest>;
 
 export interface DeleteProductVariantResponse {}
-export const DeleteProductVariantResponse =
+const DeleteProductVariantResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<DeleteProductVariantResponse>;
 
 export interface DeleteWebhookSubscriptionRequest {
   /** Specifies the Webhook Subscription to delete. */
   subscriptionId: string;
 }
-export const DeleteWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2300,12 +2025,12 @@ export const DeleteWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhookSubscriptionRequest>;
 
 export interface DeleteWebhookSubscriptionResponse {}
-export const DeleteWebhookSubscriptionResponse =
+const DeleteWebhookSubscriptionResponse =
   AdjustInventoryStockLevelsResponse as any as S.Schema<DeleteWebhookSubscriptionResponse>;
 
 /** Array of shipment data. */
 export type FulfillOrderRequestShipmentsList = Array<CreateOrderShipmentRequest>;
-export const FulfillOrderRequestShipmentsList =
+const FulfillOrderRequestShipmentsList =
   CreateOrderRequestFulfillmentsList as any as S.Schema<FulfillOrderRequestShipmentsList>;
 
 export interface FulfillOrderRequest {
@@ -2316,7 +2041,7 @@ export interface FulfillOrderRequest {
   /** Indicates whether the customer should receive an email notification about the added shipments. */
   shouldSendNotification?: boolean;
 }
-export const FulfillOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const FulfillOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     shipments: S.optional(FulfillOrderRequestShipmentsList),
@@ -2325,7 +2050,7 @@ export const FulfillOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FulfillOrderRequest" }) as any as S.Schema<FulfillOrderRequest>;
 
 export interface FulfillOrderResponse {}
-export const FulfillOrderResponse =
+const FulfillOrderResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<FulfillOrderResponse>;
 
 export interface GetAddressBookRequest {
@@ -2336,7 +2061,7 @@ export interface GetAddressBookRequest {
   /** where next page of results begins. should be {pagination.nextPageCursor} from previous response. */
   cursor?: string;
 }
-export const GetAddressBookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddressBookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2346,7 +2071,7 @@ export const GetAddressBookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Address Book Entries */
 export type AddressBookAddressBookEntriesList = Array<AddressBookEntry>;
-export const AddressBookAddressBookEntriesList = /*@__PURE__*/ S.Array(
+const AddressBookAddressBookEntriesList = /*@__PURE__*/ S.Array(
   AddressBookEntry,
 ) as any as S.Schema<AddressBookAddressBookEntriesList>;
 
@@ -2357,7 +2082,7 @@ export interface AddressBook {
   /** The id of the address book entry that is the default shipping address. */
   defaultShippingAddressId?: string;
 }
-export const AddressBook = /*@__PURE__*/ S.suspend(() =>
+const AddressBook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressBookEntries: S.optional(AddressBookAddressBookEntriesList),
     defaultShippingAddressId: S.optional(S.String),
@@ -2369,7 +2094,7 @@ export interface PaginationDetails {
   nextPageCursor?: string;
   nextPageUrl?: string;
 }
-export const PaginationDetails = /*@__PURE__*/ S.suspend(() =>
+const PaginationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasNextPage: S.optional(S.Boolean),
     nextPageCursor: S.optional(S.String),
@@ -2381,7 +2106,7 @@ export interface GetAddressBookResponse {
   addressBook?: AddressBook;
   pagination?: PaginationDetails;
 }
-export const GetAddressBookResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAddressBookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressBook: S.optional(AddressBook),
     pagination: S.optional(PaginationDetails),
@@ -2394,7 +2119,7 @@ export interface GetAddressBookEntryRequest {
   /** The address book entry's ID. */
   addressBookEntryId: string;
 }
-export const GetAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
     addressBookEntryId: S.String.pipe(T.Label()),
@@ -2412,14 +2137,14 @@ export const GetAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAddressBookEntryResponse {
   addressBookEntry?: AddressBookEntry;
 }
-export const GetAddressBookEntryResponse =
+const GetAddressBookEntryResponse =
   CreateAddressBookEntryResponse as any as S.Schema<GetAddressBookEntryResponse>;
 
 export interface GetContactRequest {
   /** The contact's ID. */
   contactId: string;
 }
-export const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/contacts/{contactId}", code: 200 })),
@@ -2428,7 +2153,7 @@ export const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetContactResponse {
   contact?: Contact;
 }
-export const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
+const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
 
 export interface GetContactsRequest {
   /** number of contacts to retrieve per request */
@@ -2436,7 +2161,7 @@ export interface GetContactsRequest {
   /** where next page of results begins. should be {pagination.nextPageCursor} from previous response. */
   cursor?: string;
 }
-export const GetContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -2445,19 +2170,17 @@ export const GetContactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** paginated list of contacts retrieved */
 export type PaginatedGetContactsResponseContactsList = Array<Contact>;
-export const PaginatedGetContactsResponseContactsList = /*@__PURE__*/ S.Array(
+const PaginatedGetContactsResponseContactsList = /*@__PURE__*/ S.Array(
   Contact,
 ) as any as S.Schema<PaginatedGetContactsResponseContactsList>;
 
 export type PaginatedGetContactsResponsePagination = PaginationDetails;
-export const PaginatedGetContactsResponsePagination = PaginationDetails;
-
 export interface PaginatedGetContactsResponse {
   /** paginated list of contacts retrieved */
   contacts: PaginatedGetContactsResponseContactsList;
   pagination?: PaginationDetails;
 }
-export const PaginatedGetContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedGetContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contacts: PaginatedGetContactsResponseContactsList,
     pagination: S.optional(PaginationDetails),
@@ -2470,7 +2193,7 @@ export interface GetDiscountRequest {
   /** The discount's ID */
   discountId: string;
 }
-export const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/commerce/discounts/{discountId}", code: 200 })),
@@ -2480,7 +2203,7 @@ export interface GetDocumentsByIdRequest {
   /** Specifies the Documents to retrieve. Multiple Documents can be retrieved by providing a comma-separated list of Document ids. */
   documentIds: string;
 }
-export const GetDocumentsByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentIds: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/transactions/{documentIds}", code: 200 })),
@@ -2494,7 +2217,7 @@ export interface TransactionDiscount {
   /** Discount name. */
   name?: string;
 }
-export const TransactionDiscount = /*@__PURE__*/ S.suspend(() =>
+const TransactionDiscount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     description: S.optional(S.String),
@@ -2504,7 +2227,7 @@ export const TransactionDiscount = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of discounts for an order payment transaction; empty for donations. */
 export type TransactionDocumentDiscountsList = Array<TransactionDiscount>;
-export const TransactionDocumentDiscountsList = /*@__PURE__*/ S.Array(
+const TransactionDocumentDiscountsList = /*@__PURE__*/ S.Array(
   TransactionDiscount,
 ) as any as S.Schema<TransactionDocumentDiscountsList>;
 
@@ -2513,14 +2236,14 @@ export type PaymentGatewayError =
   | "GATEWAY_FEE_PROCEESING_ERROR"
   | "GATEWAY_API_PERMISSION_ERROR"
   | "GATEWAY_DISCONNNECTED";
-export const PaymentGatewayError = S.String;
+const PaymentGatewayError = S.String;
 
 /** Array of properties for the payment transaction provided by the payment gateway. Properties are listed in key/value pairs. */
 export interface ExternalTransactionProperty {
   key?: string;
   value?: string;
 }
-export const ExternalTransactionProperty = /*@__PURE__*/ S.suspend(() =>
+const ExternalTransactionProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -2532,7 +2255,7 @@ export const ExternalTransactionProperty = /*@__PURE__*/ S.suspend(() =>
 /** Array of properties for the payment transaction provided by the payment gateway. Properties are listed in key/value pairs. */
 export type TransactionPaymentExternalTransactionPropertiesList =
   Array<ExternalTransactionProperty>;
-export const TransactionPaymentExternalTransactionPropertiesList = /*@__PURE__*/ S.Array(
+const TransactionPaymentExternalTransactionPropertiesList = /*@__PURE__*/ S.Array(
   ExternalTransactionProperty,
 ) as any as S.Schema<TransactionPaymentExternalTransactionPropertiesList>;
 
@@ -2549,7 +2272,7 @@ export interface TransactionProcessingFeeRefund {
   /** ISO 8601 UTC date and time string; represents when the processing fee refund was issued. */
   refundedOn?: string;
 }
-export const TransactionProcessingFeeRefund = /*@__PURE__*/ S.suspend(() =>
+const TransactionProcessingFeeRefund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     amountGatewayCurrency: S.optional(MonetaryAmount),
@@ -2564,7 +2287,7 @@ export const TransactionProcessingFeeRefund = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of processing fee refunds for the payment. */
 export type TransactionProcessingFeeFeeRefundsList = Array<TransactionProcessingFeeRefund>;
-export const TransactionProcessingFeeFeeRefundsList = /*@__PURE__*/ S.Array(
+const TransactionProcessingFeeFeeRefundsList = /*@__PURE__*/ S.Array(
   TransactionProcessingFeeRefund,
 ) as any as S.Schema<TransactionProcessingFeeFeeRefundsList>;
 
@@ -2583,7 +2306,7 @@ export interface TransactionProcessingFee {
   refundedAmount?: MonetaryAmount;
   refundedAmountGatewayCurrency?: MonetaryAmount;
 }
-export const TransactionProcessingFee = /*@__PURE__*/ S.suspend(() =>
+const TransactionProcessingFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     amountGatewayCurrency: S.optional(MonetaryAmount),
@@ -2599,7 +2322,7 @@ export const TransactionProcessingFee = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of processing fees associated with the payment. */
 export type TransactionPaymentProcessingFeesList = Array<TransactionProcessingFee>;
-export const TransactionPaymentProcessingFeesList = /*@__PURE__*/ S.Array(
+const TransactionPaymentProcessingFeesList = /*@__PURE__*/ S.Array(
   TransactionProcessingFee,
 ) as any as S.Schema<TransactionPaymentProcessingFeesList>;
 
@@ -2613,7 +2336,7 @@ export interface TransactionRefund {
   /** ISO 8601 UTC date and time string; represents refund issue date. */
   refundedOn?: string;
 }
-export const TransactionRefund = /*@__PURE__*/ S.suspend(() =>
+const TransactionRefund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     externalTransactionId: S.optional(S.String),
@@ -2624,7 +2347,7 @@ export const TransactionRefund = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of refunds for the payment transaction. */
 export type TransactionPaymentRefundsList = Array<TransactionRefund>;
-export const TransactionPaymentRefundsList = /*@__PURE__*/ S.Array(
+const TransactionPaymentRefundsList = /*@__PURE__*/ S.Array(
   TransactionRefund,
 ) as any as S.Schema<TransactionPaymentRefundsList>;
 
@@ -2654,7 +2377,7 @@ export interface TransactionPayment {
   /** Array of refunds for the payment transaction. */
   refunds?: TransactionPaymentRefundsList;
 }
-export const TransactionPayment = /*@__PURE__*/ S.suspend(() =>
+const TransactionPayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     creditCardType: S.optional(S.String),
@@ -2674,7 +2397,7 @@ export const TransactionPayment = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of payment transactions for the order or donation. */
 export type TransactionDocumentPaymentsList = Array<TransactionPayment>;
-export const TransactionDocumentPaymentsList = /*@__PURE__*/ S.Array(
+const TransactionDocumentPaymentsList = /*@__PURE__*/ S.Array(
   TransactionPayment,
 ) as any as S.Schema<TransactionDocumentPaymentsList>;
 
@@ -2688,7 +2411,7 @@ export interface TransactionTax {
   /** Tax rate as a percent. For example, a value of 7.00 is a 7% tax. */
   rate?: string;
 }
-export const TransactionTax = /*@__PURE__*/ S.suspend(() =>
+const TransactionTax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     jurisdiction: S.optional(S.String),
@@ -2699,7 +2422,7 @@ export const TransactionTax = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of taxes for the sale item. */
 export type TransactionSalesLineItemTaxesList = Array<TransactionTax>;
-export const TransactionSalesLineItemTaxesList = /*@__PURE__*/ S.Array(
+const TransactionSalesLineItemTaxesList = /*@__PURE__*/ S.Array(
   TransactionTax,
 ) as any as S.Schema<TransactionSalesLineItemTaxesList>;
 
@@ -2714,7 +2437,7 @@ export interface TransactionSalesLineItem {
   totalNetSales?: MonetaryAmount;
   totalSales?: MonetaryAmount;
 }
-export const TransactionSalesLineItem = /*@__PURE__*/ S.suspend(() =>
+const TransactionSalesLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discountAmount: S.optional(MonetaryAmount),
     id: S.optional(S.String),
@@ -2727,13 +2450,13 @@ export const TransactionSalesLineItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of sales items for an order payment transaction; empty for donations. */
 export type TransactionDocumentSalesLineItemsList = Array<TransactionSalesLineItem>;
-export const TransactionDocumentSalesLineItemsList = /*@__PURE__*/ S.Array(
+const TransactionDocumentSalesLineItemsList = /*@__PURE__*/ S.Array(
   TransactionSalesLineItem,
 ) as any as S.Schema<TransactionDocumentSalesLineItemsList>;
 
 /** Array of taxes for the shipping line item. */
 export type TransactionShippingLineItemTaxesList = Array<TransactionTax>;
-export const TransactionShippingLineItemTaxesList =
+const TransactionShippingLineItemTaxesList =
   TransactionSalesLineItemTaxesList as any as S.Schema<TransactionShippingLineItemTaxesList>;
 
 /** Array of shipping line items. */
@@ -2748,7 +2471,7 @@ export interface TransactionShippingLineItem {
   /** Array of taxes for the shipping line item. */
   taxes?: TransactionShippingLineItemTaxesList;
 }
-export const TransactionShippingLineItem = /*@__PURE__*/ S.suspend(() =>
+const TransactionShippingLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(MonetaryAmount),
     description: S.optional(S.String),
@@ -2763,7 +2486,7 @@ export const TransactionShippingLineItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of shipping line items. */
 export type TransactionDocumentShippingLineItemsList = Array<TransactionShippingLineItem>;
-export const TransactionDocumentShippingLineItemsList = /*@__PURE__*/ S.Array(
+const TransactionDocumentShippingLineItemsList = /*@__PURE__*/ S.Array(
   TransactionShippingLineItem,
 ) as any as S.Schema<TransactionDocumentShippingLineItemsList>;
 
@@ -2797,7 +2520,7 @@ export interface TransactionDocument {
   /** Flag; indicates order cancellation. */
   voided?: boolean;
 }
-export const TransactionDocument = /*@__PURE__*/ S.suspend(() =>
+const TransactionDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.optional(S.String),
     customerEmail: S.optional(S.String),
@@ -2821,7 +2544,7 @@ export const TransactionDocument = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Document resources. */
 export type TransactionListResponseDocumentsList = Array<TransactionDocument>;
-export const TransactionListResponseDocumentsList = /*@__PURE__*/ S.Array(
+const TransactionListResponseDocumentsList = /*@__PURE__*/ S.Array(
   TransactionDocument,
 ) as any as S.Schema<TransactionListResponseDocumentsList>;
 
@@ -2829,7 +2552,7 @@ export interface TransactionListResponse {
   /** Array of Document resources. */
   documents?: TransactionListResponseDocumentsList;
 }
-export const TransactionListResponse = /*@__PURE__*/ S.suspend(() =>
+const TransactionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: S.optional(TransactionListResponseDocumentsList),
   }),
@@ -2844,7 +2567,7 @@ export interface GetDocumentsByUpdatedOnRequest {
   modifiedBefore?: string;
   orderId?: string;
 }
-export const GetDocumentsByUpdatedOnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentsByUpdatedOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     modifiedAfter: S.optional(S.String.pipe(T.Query())),
@@ -2857,18 +2580,16 @@ export const GetDocumentsByUpdatedOnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Document resources. If the merchant site doesn't have any payment transactions for orders or donations, this array is empty. */
 export type PaginatedTransactionListResponseDocumentsList = Array<TransactionDocument>;
-export const PaginatedTransactionListResponseDocumentsList =
+const PaginatedTransactionListResponseDocumentsList =
   TransactionListResponseDocumentsList as any as S.Schema<PaginatedTransactionListResponseDocumentsList>;
 
 export type PaginatedTransactionListResponsePagination = PaginationDetails;
-export const PaginatedTransactionListResponsePagination = PaginationDetails;
-
 export interface PaginatedTransactionListResponse {
   /** Array of Document resources. If the merchant site doesn't have any payment transactions for orders or donations, this array is empty. */
   documents: PaginatedTransactionListResponseDocumentsList;
   pagination?: PaginationDetails;
 }
-export const PaginatedTransactionListResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTransactionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: PaginatedTransactionListResponseDocumentsList,
     pagination: S.optional(PaginationDetails),
@@ -2878,7 +2599,7 @@ export const PaginatedTransactionListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedTransactionListResponse>;
 
 export interface GetFulfillmentOptionsRequest {}
-export const GetFulfillmentOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFulfillmentOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v1/fulfillments/fulfillment-options", code: 200 }),
   ),
@@ -2893,7 +2614,7 @@ export interface CarrierService {
   /** Carrier service identifier. */
   name: string;
 }
-export const CarrierService = /*@__PURE__*/ S.suspend(() =>
+const CarrierService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     name: S.String,
@@ -2902,13 +2623,13 @@ export const CarrierService = /*@__PURE__*/ S.suspend(() =>
 
 /** Available carrier services. */
 export type FulfillmentOptionAvailableServicesList = Array<CarrierService>;
-export const FulfillmentOptionAvailableServicesList = /*@__PURE__*/ S.Array(
+const FulfillmentOptionAvailableServicesList = /*@__PURE__*/ S.Array(
   CarrierService,
 ) as any as S.Schema<FulfillmentOptionAvailableServicesList>;
 
 /** Fulfillment channel for this option. */
 export type FulfillmentOptionType = "SHIPPING" | "PICKUP" | "LOCAL_DELIVERY";
-export const FulfillmentOptionType = S.String;
+const FulfillmentOptionType = S.String;
 
 /** Fulfillment option IDs and carrier services for a website. */
 export interface FulfillmentOption {
@@ -2921,7 +2642,7 @@ export interface FulfillmentOption {
   /** Fulfillment channel for this option. */
   type: FulfillmentOptionType;
 }
-export const FulfillmentOption = /*@__PURE__*/ S.suspend(() =>
+const FulfillmentOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableServices: FulfillmentOptionAvailableServicesList,
     id: S.String,
@@ -2932,7 +2653,7 @@ export const FulfillmentOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Fulfillment option IDs and carrier services for this website. */
 export type FulfillmentOptionsListFulfillmentOptionsList = Array<FulfillmentOption>;
-export const FulfillmentOptionsListFulfillmentOptionsList = /*@__PURE__*/ S.Array(
+const FulfillmentOptionsListFulfillmentOptionsList = /*@__PURE__*/ S.Array(
   FulfillmentOption,
 ) as any as S.Schema<FulfillmentOptionsListFulfillmentOptionsList>;
 
@@ -2941,7 +2662,7 @@ export interface FulfillmentOptionsList {
   /** Fulfillment option IDs and carrier services for this website. */
   fulfillmentOptions: FulfillmentOptionsListFulfillmentOptionsList;
 }
-export const FulfillmentOptionsList = /*@__PURE__*/ S.suspend(() =>
+const FulfillmentOptionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fulfillmentOptions: FulfillmentOptionsListFulfillmentOptionsList,
   }),
@@ -2951,7 +2672,7 @@ export interface GetInventoryItemsRequest {
   /** Identifies where the next page of results should begin. Should be the value of pagination.nextPageCursor from a previous response. If not present or empty, the endpoint returns up to 50 InventoryItems. */
   cursor?: string;
 }
-export const GetInventoryItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInventoryItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/inventory", code: 200 })),
@@ -2970,7 +2691,7 @@ export interface InventoryItem {
   /** The product variant id, which also serves as a unique id for the InventoryItem. */
   variantId?: string;
 }
-export const InventoryItem = /*@__PURE__*/ S.suspend(() =>
+const InventoryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descriptor: S.optional(S.String),
     isUnlimited: S.optional(S.Boolean),
@@ -2982,19 +2703,17 @@ export const InventoryItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of InventoryItem resources. If the merchant site doesn't have any physical or service product variants, this array is empty. */
 export type PaginatedInventoryItemListResponseInventoryList = Array<InventoryItem>;
-export const PaginatedInventoryItemListResponseInventoryList = /*@__PURE__*/ S.Array(
+const PaginatedInventoryItemListResponseInventoryList = /*@__PURE__*/ S.Array(
   InventoryItem,
 ) as any as S.Schema<PaginatedInventoryItemListResponseInventoryList>;
 
 export type PaginatedInventoryItemListResponsePagination = PaginationDetails;
-export const PaginatedInventoryItemListResponsePagination = PaginationDetails;
-
 export interface PaginatedInventoryItemListResponse {
   /** Array of InventoryItem resources. If the merchant site doesn't have any physical or service product variants, this array is empty. */
   inventory: PaginatedInventoryItemListResponseInventoryList;
   pagination?: PaginationDetails;
 }
-export const PaginatedInventoryItemListResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedInventoryItemListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventory: PaginatedInventoryItemListResponseInventoryList,
     pagination: S.optional(PaginationDetails),
@@ -3004,7 +2723,7 @@ export const PaginatedInventoryItemListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedInventoryItemListResponse>;
 
 export interface GetMemberProfileRequest {}
-export const GetMemberProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemberProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/1.0/authorization/member", code: 200 })),
 ).annotate({ identifier: "GetMemberProfileRequest" }) as any as S.Schema<GetMemberProfileRequest>;
 
@@ -3018,7 +2737,7 @@ export interface MemberProfile {
   /** Profile last name. */
   lastName?: string;
 }
-export const MemberProfile = /*@__PURE__*/ S.suspend(() =>
+const MemberProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     firstName: S.optional(S.String),
@@ -3031,7 +2750,7 @@ export interface GetOrderRequest {
   /** Specifies the Order to retrieve. */
   id: string;
 }
-export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/orders/{id}", code: 200 })),
@@ -3051,7 +2770,7 @@ export interface GetOrdersRequest {
   /** Used to filter Orders by payment state. Accepts a comma-separated list of values. Possible values are: NOT_CHARGED, AUTHORIZED, PAID, REFUNDED, PENDING, FAILED, REFUND_PENDING, REFUND_FAILED, PARTIALLY_PAID. If not specified, defaults to NOT_CHARGED, AUTHORIZED, PAID, and REFUNDED. */
   paymentStates?: string;
 }
-export const GetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     modifiedAfter: S.optional(S.String.pipe(T.Query())),
@@ -3063,10 +2782,8 @@ export const GetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrdersRequest" }) as any as S.Schema<GetOrdersRequest>;
 
 export type OrderListResponsePagination = PaginationDetails;
-export const OrderListResponsePagination = PaginationDetails;
-
 export type OrderListResponseResultList = Array<Order>;
-export const OrderListResponseResultList = /*@__PURE__*/ S.Array(
+const OrderListResponseResultList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderListResponseResultList>;
 
@@ -3074,7 +2791,7 @@ export interface OrderListResponse {
   pagination?: PaginationDetails;
   result: OrderListResponseResultList;
 }
-export const OrderListResponse = /*@__PURE__*/ S.suspend(() =>
+const OrderListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(PaginationDetails),
     result: OrderListResponseResultList,
@@ -3085,7 +2802,7 @@ export interface GetProductImageProcessingStatusRequest {
   productId: string;
   imageId: string;
 }
-export const GetProductImageProcessingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductImageProcessingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     imageId: S.String.pipe(T.Label()),
@@ -3101,13 +2818,13 @@ export const GetProductImageProcessingStatusRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetProductImageProcessingStatusRequest>;
 
 export type ImageProcessingStatus = "QUEUED" | "PROCESSING" | "READY" | "ERROR";
-export const ImageProcessingStatus = S.String;
+const ImageProcessingStatus = S.String;
 
 export interface ProductImageProcessingStatus {
   id?: string;
   status?: ImageProcessingStatus;
 }
-export const ProductImageProcessingStatus = /*@__PURE__*/ S.suspend(() =>
+const ProductImageProcessingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(ImageProcessingStatus),
@@ -3117,7 +2834,7 @@ export const ProductImageProcessingStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductImageProcessingStatus>;
 
 export type GetProductsRequestTypeList = Array<string>;
-export const GetProductsRequestTypeList =
+const GetProductsRequestTypeList =
   AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<GetProductsRequestTypeList>;
 
 export interface GetProductsRequest {
@@ -3127,7 +2844,7 @@ export interface GetProductsRequest {
   query?: string;
   type?: GetProductsRequestTypeList;
 }
-export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modifiedAfter: S.optional(S.String.pipe(T.Query())),
     modifiedBefore: S.optional(S.String.pipe(T.Query())),
@@ -3138,16 +2855,8 @@ export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProductsRequest" }) as any as S.Schema<GetProductsRequest>;
 
 export type PaginatedProductListResponseV2Pagination = PaginationDetails;
-export const PaginatedProductListResponseV2Pagination = PaginationDetails;
-
 export type DigitalProductImagesList = Array<ProductImage>;
-export const DigitalProductImagesList =
-  ProductV2ImagesList as any as S.Schema<DigitalProductImagesList>;
-
 export type DigitalProductTagsList = Array<string>;
-export const DigitalProductTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<DigitalProductTagsList>;
-
 /** Present for DIGITAL products only. */
 export interface DigitalGood {
   /** Filename of the downloadable file. */
@@ -3155,13 +2864,6 @@ export interface DigitalGood {
   /** Unique DigitalGood id. */
   id?: string;
 }
-export const DigitalGood = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filename: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "DigitalGood" }) as any as S.Schema<DigitalGood>;
-
 /** A DIGITAL product. */
 export interface DigitalProduct {
   createdOn: string;
@@ -3180,39 +2882,9 @@ export interface DigitalProduct {
   digitalGood?: DigitalGood;
   pricing?: ProductPricing;
 }
-export const DigitalProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String,
-    description: S.optional(S.String),
-    id: S.String,
-    images: S.optional(DigitalProductImagesList),
-    isVisible: S.optional(S.Boolean),
-    modifiedOn: S.String,
-    name: S.optional(S.String),
-    seoOptions: S.optional(SeoOptions),
-    storePageId: S.String,
-    tags: S.optional(DigitalProductTagsList),
-    type: ProductTypeV2,
-    url: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    digitalGood: S.optional(DigitalGood),
-    pricing: S.optional(ProductPricing),
-  }),
-).annotate({ identifier: "DigitalProduct" }) as any as S.Schema<DigitalProduct>;
-
 export type GiftCardProductImagesList = Array<ProductImage>;
-export const GiftCardProductImagesList =
-  ProductV2ImagesList as any as S.Schema<GiftCardProductImagesList>;
-
 export type GiftCardProductTagsList = Array<string>;
-export const GiftCardProductTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<GiftCardProductTagsList>;
-
 export type GiftCardProductVariantsList = Array<GiftCardProductVariant>;
-export const GiftCardProductVariantsList = /*@__PURE__*/ S.Array(
-  GiftCardProductVariant,
-) as any as S.Schema<GiftCardProductVariantsList>;
-
 /** A GIFT_CARD product. */
 export interface GiftCardProduct {
   createdOn: string;
@@ -3230,42 +2902,10 @@ export interface GiftCardProduct {
   urlSlug?: string;
   variants?: GiftCardProductVariantsList;
 }
-export const GiftCardProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String,
-    description: S.optional(S.String),
-    id: S.String,
-    images: S.optional(GiftCardProductImagesList),
-    isVisible: S.optional(S.Boolean),
-    modifiedOn: S.String,
-    name: S.optional(S.String),
-    seoOptions: S.optional(SeoOptions),
-    storePageId: S.String,
-    tags: S.optional(GiftCardProductTagsList),
-    type: ProductTypeV2,
-    url: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    variants: S.optional(GiftCardProductVariantsList),
-  }),
-).annotate({ identifier: "GiftCardProduct" }) as any as S.Schema<GiftCardProduct>;
-
 export type PhysicalProductImagesList = Array<ProductImage>;
-export const PhysicalProductImagesList =
-  ProductV2ImagesList as any as S.Schema<PhysicalProductImagesList>;
-
 export type PhysicalProductTagsList = Array<string>;
-export const PhysicalProductTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<PhysicalProductTagsList>;
-
 export type PhysicalProductVariantAttributesList = Array<string>;
-export const PhysicalProductVariantAttributesList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<PhysicalProductVariantAttributesList>;
-
 export type PhysicalProductVariantsList = Array<PhysicalProductVariant>;
-export const PhysicalProductVariantsList = /*@__PURE__*/ S.Array(
-  PhysicalProductVariant,
-) as any as S.Schema<PhysicalProductVariantsList>;
-
 /** A PHYSICAL product. */
 export interface PhysicalProduct {
   createdOn: string;
@@ -3284,43 +2924,10 @@ export interface PhysicalProduct {
   variantAttributes?: PhysicalProductVariantAttributesList;
   variants?: PhysicalProductVariantsList;
 }
-export const PhysicalProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String,
-    description: S.optional(S.String),
-    id: S.String,
-    images: S.optional(PhysicalProductImagesList),
-    isVisible: S.optional(S.Boolean),
-    modifiedOn: S.String,
-    name: S.optional(S.String),
-    seoOptions: S.optional(SeoOptions),
-    storePageId: S.String,
-    tags: S.optional(PhysicalProductTagsList),
-    type: ProductTypeV2,
-    url: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    variantAttributes: S.optional(PhysicalProductVariantAttributesList),
-    variants: S.optional(PhysicalProductVariantsList),
-  }),
-).annotate({ identifier: "PhysicalProduct" }) as any as S.Schema<PhysicalProduct>;
-
 export type ServiceProductImagesList = Array<ProductImage>;
-export const ServiceProductImagesList =
-  ProductV2ImagesList as any as S.Schema<ServiceProductImagesList>;
-
 export type ServiceProductTagsList = Array<string>;
-export const ServiceProductTagsList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ServiceProductTagsList>;
-
 export type ServiceProductVariantAttributesList = Array<string>;
-export const ServiceProductVariantAttributesList =
-  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ServiceProductVariantAttributesList>;
-
 export type ServiceProductVariantsList = Array<ServiceProductVariant>;
-export const ServiceProductVariantsList = /*@__PURE__*/ S.Array(
-  ServiceProductVariant,
-) as any as S.Schema<ServiceProductVariantsList>;
-
 /** A SERVICE product. */
 export interface ServiceProduct {
   createdOn: string;
@@ -3339,37 +2946,17 @@ export interface ServiceProduct {
   variantAttributes?: ServiceProductVariantAttributesList;
   variants?: ServiceProductVariantsList;
 }
-export const ServiceProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String,
-    description: S.optional(S.String),
-    id: S.String,
-    images: S.optional(ServiceProductImagesList),
-    isVisible: S.optional(S.Boolean),
-    modifiedOn: S.String,
-    name: S.optional(S.String),
-    seoOptions: S.optional(SeoOptions),
-    storePageId: S.String,
-    tags: S.optional(ServiceProductTagsList),
-    type: ProductTypeV2,
-    url: S.optional(S.String),
-    urlSlug: S.optional(S.String),
-    variantAttributes: S.optional(ServiceProductVariantAttributesList),
-    variants: S.optional(ServiceProductVariantsList),
-  }),
-).annotate({ identifier: "ServiceProduct" }) as any as S.Schema<ServiceProduct>;
-
 export type PaginatedProductListResponseV2ProductsItem =
   | DigitalProduct
   | GiftCardProduct
   | PhysicalProduct
   | ServiceProduct;
-export const PaginatedProductListResponseV2ProductsItem =
+const PaginatedProductListResponseV2ProductsItem =
   S.Unknown as any as S.Schema<PaginatedProductListResponseV2ProductsItem>;
 
 export type PaginatedProductListResponseV2ProductsList =
   Array<PaginatedProductListResponseV2ProductsItem>;
-export const PaginatedProductListResponseV2ProductsList = /*@__PURE__*/ S.Array(
+const PaginatedProductListResponseV2ProductsList = /*@__PURE__*/ S.Array(
   PaginatedProductListResponseV2ProductsItem,
 ) as any as S.Schema<PaginatedProductListResponseV2ProductsList>;
 
@@ -3377,7 +2964,7 @@ export interface PaginatedProductListResponseV2 {
   pagination?: PaginationDetails;
   products: PaginatedProductListResponseV2ProductsList;
 }
-export const PaginatedProductListResponseV2 = /*@__PURE__*/ S.suspend(() =>
+const PaginatedProductListResponseV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(PaginationDetails),
     products: PaginatedProductListResponseV2ProductsList,
@@ -3398,7 +2985,7 @@ export interface GetProfilesRequest {
   /** Identifies where the next page of results should begin. Should be the value of pagination.nextPageCursor from a previous response. Cannot be used with other parameters. */
   cursor?: string;
 }
-export const GetProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortDirection: S.optional(S.String.pipe(T.Query())),
     sortField: S.optional(S.String.pipe(T.Query())),
@@ -3409,8 +2996,6 @@ export const GetProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProfilesRequest" }) as any as S.Schema<GetProfilesRequest>;
 
 export type PaginatedProfileListResponsePagination = PaginationDetails;
-export const PaginatedProfileListResponsePagination = PaginationDetails;
-
 /** Summary of profile's commerce transactions. If a profile has no commerce transactions, the object is still returned with null or 0 values. This information is calculated asynchronously; there may be a slight delay between when an order is created, and when it's reflected in the object. */
 export interface TransactionsSummary {
   /** Count of donations submitted. */
@@ -3429,7 +3014,7 @@ export interface TransactionsSummary {
   totalOrderAmount?: MonetaryAmount;
   totalRefundAmount?: MonetaryAmount;
 }
-export const TransactionsSummary = /*@__PURE__*/ S.suspend(() =>
+const TransactionsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     donationCount: S.optional(S.Number),
     firstDonationSubmittedOn: S.optional(S.String),
@@ -3463,7 +3048,7 @@ export interface Profile {
   lastName?: string;
   transactionsSummary?: TransactionsSummary;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
+const Profile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptsMarketing: S.optional(S.Boolean),
     address: S.optional(Address),
@@ -3479,7 +3064,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 export type PaginatedProfileListResponseProfilesList = Array<Profile>;
-export const PaginatedProfileListResponseProfilesList = /*@__PURE__*/ S.Array(
+const PaginatedProfileListResponseProfilesList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<PaginatedProfileListResponseProfilesList>;
 
@@ -3487,7 +3072,7 @@ export interface PaginatedProfileListResponse {
   pagination?: PaginationDetails;
   profiles: PaginatedProfileListResponseProfilesList;
 }
-export const PaginatedProfileListResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedProfileListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(PaginationDetails),
     profiles: PaginatedProfileListResponseProfilesList,
@@ -3500,7 +3085,7 @@ export interface GetSpecificInventoryItemsRequest {
   /** Specifies the InventoryItems to retrieve. Multiple InventoryItems can be retrieved by providing a comma-separated list: {id1},{id2}..., though the same sequence is not guaranteed in the response. */
   variantIdCsvs: string;
 }
-export const GetSpecificInventoryItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpecificInventoryItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variantIdCsvs: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/inventory/{variantIdCsvs}", code: 200 })),
@@ -3510,14 +3095,14 @@ export const GetSpecificInventoryItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of InventoryItem resources. If the merchant site doesn't have any physical or service products, this array is empty. */
 export type InventoryItemListResponseInventoryList = Array<InventoryItem>;
-export const InventoryItemListResponseInventoryList =
+const InventoryItemListResponseInventoryList =
   PaginatedInventoryItemListResponseInventoryList as any as S.Schema<InventoryItemListResponseInventoryList>;
 
 export interface InventoryItemListResponse {
   /** Array of InventoryItem resources. If the merchant site doesn't have any physical or service products, this array is empty. */
   inventory?: InventoryItemListResponseInventoryList;
 }
-export const InventoryItemListResponse = /*@__PURE__*/ S.suspend(() =>
+const InventoryItemListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventory: S.optional(InventoryItemListResponseInventoryList),
   }),
@@ -3528,7 +3113,7 @@ export const InventoryItemListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSpecificProductsRequest {
   productIdCsvs: string;
 }
-export const GetSpecificProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpecificProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productIdCsvs: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/commerce/products/{productIdCsvs}", code: 200 })),
@@ -3541,18 +3126,18 @@ export type ProductListResponseV2ProductsItem =
   | GiftCardProduct
   | PhysicalProduct
   | ServiceProduct;
-export const ProductListResponseV2ProductsItem =
+const ProductListResponseV2ProductsItem =
   S.Unknown as any as S.Schema<ProductListResponseV2ProductsItem>;
 
 export type ProductListResponseV2ProductsList = Array<ProductListResponseV2ProductsItem>;
-export const ProductListResponseV2ProductsList = /*@__PURE__*/ S.Array(
+const ProductListResponseV2ProductsList = /*@__PURE__*/ S.Array(
   ProductListResponseV2ProductsItem,
 ) as any as S.Schema<ProductListResponseV2ProductsList>;
 
 export interface ProductListResponseV2 {
   products?: ProductListResponseV2ProductsList;
 }
-export const ProductListResponseV2 = /*@__PURE__*/ S.suspend(() =>
+const ProductListResponseV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     products: S.optional(ProductListResponseV2ProductsList),
   }),
@@ -3562,7 +3147,7 @@ export interface GetSpecificProfilesRequest {
   /** Specifies the profiles to retrieve. Multiple Profiles can be retrieved by providing a comma-separated list of profile ids. */
   profileIdCsvs: string;
 }
-export const GetSpecificProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpecificProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileIdCsvs: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/profiles/{profileIdCsvs}", code: 200 })),
@@ -3571,13 +3156,13 @@ export const GetSpecificProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSpecificProfilesRequest>;
 
 export type ProfileListResponseProfilesList = Array<Profile>;
-export const ProfileListResponseProfilesList =
+const ProfileListResponseProfilesList =
   PaginatedProfileListResponseProfilesList as any as S.Schema<ProfileListResponseProfilesList>;
 
 export interface ProfileListResponse {
   profiles?: ProfileListResponseProfilesList;
 }
-export const ProfileListResponse = /*@__PURE__*/ S.suspend(() =>
+const ProfileListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profiles: S.optional(ProfileListResponseProfilesList),
   }),
@@ -3586,22 +3171,20 @@ export const ProfileListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetStorePagesRequest {
   cursor?: string;
 }
-export const GetStorePagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorePagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/store_pages", code: 200 })),
 ).annotate({ identifier: "GetStorePagesRequest" }) as any as S.Schema<GetStorePagesRequest>;
 
 export type PaginatedStorePagesResponsePagination = PaginationDetails;
-export const PaginatedStorePagesResponsePagination = PaginationDetails;
-
 export interface StorePage {
   id?: string;
   isEnabled?: boolean;
   title?: string;
   urlSlug?: string;
 }
-export const StorePage = /*@__PURE__*/ S.suspend(() =>
+const StorePage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     isEnabled: S.optional(S.Boolean),
@@ -3611,7 +3194,7 @@ export const StorePage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorePage" }) as any as S.Schema<StorePage>;
 
 export type PaginatedStorePagesResponseStorePagesList = Array<StorePage>;
-export const PaginatedStorePagesResponseStorePagesList = /*@__PURE__*/ S.Array(
+const PaginatedStorePagesResponseStorePagesList = /*@__PURE__*/ S.Array(
   StorePage,
 ) as any as S.Schema<PaginatedStorePagesResponseStorePagesList>;
 
@@ -3619,7 +3202,7 @@ export interface PaginatedStorePagesResponse {
   pagination?: PaginationDetails;
   storePages: PaginatedStorePagesResponseStorePagesList;
 }
-export const PaginatedStorePagesResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedStorePagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(PaginationDetails),
     storePages: PaginatedStorePagesResponseStorePagesList,
@@ -3629,19 +3212,19 @@ export const PaginatedStorePagesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedStorePagesResponse>;
 
 export type GetTransactionsSummariesRequestContactIdsList = Array<string>;
-export const GetTransactionsSummariesRequestContactIdsList =
+const GetTransactionsSummariesRequestContactIdsList =
   AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<GetTransactionsSummariesRequestContactIdsList>;
 
 /** Field to group results by, should be a contactId */
 export type GetTransactionsSummariesRequestGroupBy = "contactId";
-export const GetTransactionsSummariesRequestGroupBy = S.String;
+const GetTransactionsSummariesRequestGroupBy = S.String;
 
 export interface GetTransactionsSummariesRequest {
   contactIds: GetTransactionsSummariesRequestContactIdsList;
   /** Field to group results by, should be a contactId */
   groupBy: GetTransactionsSummariesRequestGroupBy | (string & {});
 }
-export const GetTransactionsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransactionsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactIds: GetTransactionsSummariesRequestContactIdsList,
     groupBy: GetTransactionsSummariesRequestGroupBy,
@@ -3656,7 +3239,7 @@ export interface TransactionsSummaryWrapper {
   contactId?: string;
   transactionsSummary?: TransactionsSummary;
 }
-export const TransactionsSummaryWrapper = /*@__PURE__*/ S.suspend(() =>
+const TransactionsSummaryWrapper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     transactionsSummary: S.optional(TransactionsSummary),
@@ -3668,16 +3251,15 @@ export const TransactionsSummaryWrapper = /*@__PURE__*/ S.suspend(() =>
 /** List of transaction summary wrappers */
 export type RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList =
   Array<TransactionsSummaryWrapper>;
-export const RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList =
-  /*@__PURE__*/ S.Array(
-    TransactionsSummaryWrapper,
-  ) as any as S.Schema<RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList>;
+const RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList = /*@__PURE__*/ S.Array(
+  TransactionsSummaryWrapper,
+) as any as S.Schema<RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList>;
 
 export interface RetrieveTransactionsSummariesResponse {
   /** List of transaction summary wrappers */
   transactionsSummaryWrappers?: RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList;
 }
-export const RetrieveTransactionsSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveTransactionsSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionsSummaryWrappers: S.optional(
       RetrieveTransactionsSummariesResponseTransactionsSummaryWrappersList,
@@ -3691,7 +3273,7 @@ export interface GetWebhookSubscriptionRequest {
   /** Specifies the Webhook Subscription to retrieve. */
   subscriptionId: string;
 }
-export const GetWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/1.0/webhook_subscriptions/{subscriptionId}", code: 200 })),
@@ -3701,7 +3283,7 @@ export const GetWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event topics that trigger a webhook notification. Possible values include: extension.uninstall, order.create, order.update. */
 export type ExternalWebhookSubscriptionResponseTopicsList = Array<string>;
-export const ExternalWebhookSubscriptionResponseTopicsList =
+const ExternalWebhookSubscriptionResponseTopicsList =
   AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ExternalWebhookSubscriptionResponseTopicsList>;
 
 export interface ExternalWebhookSubscriptionResponse {
@@ -3720,7 +3302,7 @@ export interface ExternalWebhookSubscriptionResponse {
   /** Unique website id. */
   websiteId?: string;
 }
-export const ExternalWebhookSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalWebhookSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     createdOn: S.optional(S.String),
@@ -3735,7 +3317,7 @@ export const ExternalWebhookSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalWebhookSubscriptionResponse>;
 
 export interface GetWebhookSubscriptionsRequest {}
-export const GetWebhookSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/1.0/webhook_subscriptions", code: 200 })),
 ).annotate({
   identifier: "GetWebhookSubscriptionsRequest",
@@ -3744,16 +3326,15 @@ export const GetWebhookSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Array of Webhook Subscription resources. If the merchant site doesn't have any webhook subscriptions, this array is empty. */
 export type ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList =
   Array<ExternalWebhookSubscriptionResponse>;
-export const ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    ExternalWebhookSubscriptionResponse,
-  ) as any as S.Schema<ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList>;
+const ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList = /*@__PURE__*/ S.Array(
+  ExternalWebhookSubscriptionResponse,
+) as any as S.Schema<ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList>;
 
 export interface ExternalWebhookSubscriptionListResponse {
   /** Array of Webhook Subscription resources. If the merchant site doesn't have any webhook subscriptions, this array is empty. */
   webhookSubscriptions?: ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList;
 }
-export const ExternalWebhookSubscriptionListResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalWebhookSubscriptionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookSubscriptions: S.optional(
       ExternalWebhookSubscriptionListResponseWebhookSubscriptionsList,
@@ -3764,7 +3345,7 @@ export const ExternalWebhookSubscriptionListResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ExternalWebhookSubscriptionListResponse>;
 
 export interface GetWebsiteProfileRequest {}
-export const GetWebsiteProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebsiteProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/1.0/authorization/website", code: 200 })),
 ).annotate({ identifier: "GetWebsiteProfileRequest" }) as any as S.Schema<GetWebsiteProfileRequest>;
 
@@ -3772,7 +3353,7 @@ export interface Location {
   country?: string;
   region?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     region: S.optional(S.String),
@@ -3780,7 +3361,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type MeasurementStandard = "IMPERIAL" | "METRIC";
-export const MeasurementStandard = S.String;
+const MeasurementStandard = S.String;
 
 export interface WebsiteProfile {
   currency?: string;
@@ -3793,7 +3374,7 @@ export interface WebsiteProfile {
   title?: string;
   url?: string;
 }
-export const WebsiteProfile = /*@__PURE__*/ S.suspend(() =>
+const WebsiteProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     id: S.optional(S.String),
@@ -3808,25 +3389,23 @@ export const WebsiteProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebsiteProfile" }) as any as S.Schema<WebsiteProfile>;
 
 export type ListDiscountsRequestSortBy = "CREATED_ON" | "PROMO_CODE" | "USES_COUNT";
-export const ListDiscountsRequestSortBy = S.String;
+const ListDiscountsRequestSortBy = S.String;
 
 export type ListDiscountsRequestSortDirection = "ASCENDING" | "DESCENDING";
-export const ListDiscountsRequestSortDirection = S.String;
+const ListDiscountsRequestSortDirection = S.String;
 
 export type ListDiscountsRequestStatus = "ALL" | "ACTIVE" | "EXPIRED" | "SCHEDULED";
-export const ListDiscountsRequestStatus = S.String;
+const ListDiscountsRequestStatus = S.String;
 
 export type ListDiscountsRequestCriteriaItem =
   | "ANY_ORDER"
   | "CART_TOTAL"
   | "PRODUCT"
   | "BUY_X_GET_Y";
-export const ListDiscountsRequestCriteriaItem = S.String;
-
 export type ListDiscountsRequestCriteriaList = Array<
   ListDiscountsRequestCriteriaItem | (string & {})
 >;
-export const ListDiscountsRequestCriteriaList =
+const ListDiscountsRequestCriteriaList =
   CreateWebhookSubscriptionRequestTopicsList as any as S.Schema<ListDiscountsRequestCriteriaList>;
 
 export type ListDiscountsRequestTemplateItem =
@@ -3835,16 +3414,14 @@ export type ListDiscountsRequestTemplateItem =
   | "BUY_X_GET_Y_FIXED_AMOUNT"
   | "BUY_X_GET_Y_PERCENTAGE"
   | "FREE_SHIPPING";
-export const ListDiscountsRequestTemplateItem = S.String;
-
 export type ListDiscountsRequestTemplateList = Array<
   ListDiscountsRequestTemplateItem | (string & {})
 >;
-export const ListDiscountsRequestTemplateList =
+const ListDiscountsRequestTemplateList =
   CreateWebhookSubscriptionRequestTopicsList as any as S.Schema<ListDiscountsRequestTemplateList>;
 
 export type ListDiscountsRequestTrigger = "AUTO" | "CODE";
-export const ListDiscountsRequestTrigger = S.String;
+const ListDiscountsRequestTrigger = S.String;
 
 export interface ListDiscountsRequest {
   /** Sort field for the result set. */
@@ -3868,7 +3445,7 @@ export interface ListDiscountsRequest {
   /** Page size (1-1000; default 50). */
   limit?: number;
 }
-export const ListDiscountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortBy: S.optional(ListDiscountsRequestSortBy.pipe(T.Query())),
     sortDirection: S.optional(ListDiscountsRequestSortDirection.pipe(T.Query())),
@@ -3885,7 +3462,7 @@ export const ListDiscountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Discounts for this page. */
 export type PaginatedDiscountListResponseDiscountsList = Array<Discount>;
-export const PaginatedDiscountListResponseDiscountsList = /*@__PURE__*/ S.Array(
+const PaginatedDiscountListResponseDiscountsList = /*@__PURE__*/ S.Array(
   Discount,
 ) as any as S.Schema<PaginatedDiscountListResponseDiscountsList>;
 
@@ -3898,7 +3475,7 @@ export interface PaginatedDiscountListResponse {
   /** True when a page of results exists before the current window. */
   hasPreviousPage?: boolean;
 }
-export const PaginatedDiscountListResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDiscountListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discounts: PaginatedDiscountListResponseDiscountsList,
     hasNextPage: S.optional(S.Boolean),
@@ -3915,7 +3492,7 @@ export interface DateFilter {
   /** Filter out any dates before */
   before?: string;
 }
-export const DateFilter = /*@__PURE__*/ S.suspend(() =>
+const DateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String),
     before: S.optional(S.String),
@@ -3928,7 +3505,7 @@ export interface AcceptsMarketingWithDate {
   acceptsMarketing?: boolean;
   joinedOn?: DateFilter;
 }
-export const AcceptsMarketingWithDate = /*@__PURE__*/ S.suspend(() =>
+const AcceptsMarketingWithDate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptsMarketing: S.optional(S.Boolean),
     joinedOn: S.optional(DateFilter),
@@ -3942,7 +3519,7 @@ export interface IntegerFilter {
   /** Filter out any numbers lower */
   min?: number;
 }
-export const IntegerFilter = /*@__PURE__*/ S.suspend(() =>
+const IntegerFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max: S.optional(S.Number),
     min: S.optional(S.Number),
@@ -3951,7 +3528,7 @@ export const IntegerFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Direction to sort results, ASCENDING or DESCENDING */
 export type QueryContactsRequestSortDirection = "ASCENDING" | "DESCENDING";
-export const QueryContactsRequestSortDirection = S.String;
+const QueryContactsRequestSortDirection = S.String;
 
 /** Field to sort results by */
 export type QueryContactsRequestSortField =
@@ -3967,7 +3544,7 @@ export type QueryContactsRequestSortField =
   | "DONATION_COUNT"
   | "LAST_DONATION_ON"
   | "DONATION_AMOUNT";
-export const QueryContactsRequestSortField = S.String;
+const QueryContactsRequestSortField = S.String;
 
 export interface QueryContactsRequest {
   acceptsMarketingWithDate?: AcceptsMarketingWithDate;
@@ -3990,7 +3567,7 @@ export interface QueryContactsRequest {
   /** Field to sort results by */
   sortField?: QueryContactsRequestSortField | (string & {});
 }
-export const QueryContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptsMarketingWithDate: S.optional(AcceptsMarketingWithDate),
     cursor: S.optional(S.String),
@@ -4011,25 +3588,20 @@ export const QueryContactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** paginated list of contacts retrieved */
 export type PaginatedQueryContactsResponseContactsList = Array<Contact>;
-export const PaginatedQueryContactsResponseContactsList =
-  PaginatedGetContactsResponseContactsList as any as S.Schema<PaginatedQueryContactsResponseContactsList>;
-
 export type PaginatedQueryContactsResponsePagination = PaginationDetails;
-export const PaginatedQueryContactsResponsePagination = PaginationDetails;
-
 export interface PaginatedQueryContactsResponse {
   /** paginated list of contacts retrieved */
   contacts: PaginatedQueryContactsResponseContactsList;
   pagination?: PaginationDetails;
 }
-export const PaginatedQueryContactsResponse =
+const PaginatedQueryContactsResponse =
   PaginatedGetContactsResponse as any as S.Schema<PaginatedQueryContactsResponse>;
 
 export interface RotateSubscriptionSecretRequest {
   /** Specifies the Webhook Subscription to update. */
   subscriptionId: string;
 }
-export const RotateSubscriptionSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateSubscriptionSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4047,7 +3619,7 @@ export interface ExternalRotateSecretResponse {
   /** Hexadecimal value used to generate a signature for a webhook notification; field is only returned when creating a new subscription or rotating a secret. Store the secret in a safe location to verify notifications from Squarespace. */
   secret?: string | Redacted.Redacted<string>;
 }
-export const ExternalRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -4061,7 +3633,7 @@ export interface SendTestNotificationForWebhookSubscriptionRequest {
   /** Required; Squarespace event topic that triggers a webhook notification. Possible values include: extension.uninstall, order.create, order.update. */
   topic: string;
 }
-export const SendTestNotificationForWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTestNotificationForWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     topic: S.String,
@@ -4080,7 +3652,7 @@ export interface ExternalTestNotificationResponse {
   /** Status code returned by the subscribed webhook endpoint. */
   statusCode?: number;
 }
-export const ExternalTestNotificationResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalTestNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number),
   }),
@@ -4097,7 +3669,7 @@ export interface UpdateAddressBookEntryRequest {
   /** Whether this entry should be the default shipping address. When updating the entry that is currently the default, changing this value from true to false has no effect. */
   defaultShipping?: boolean;
 }
-export const UpdateAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
     addressBookEntryId: S.String.pipe(T.Label()),
@@ -4117,14 +3689,14 @@ export const UpdateAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAddressBookEntryResponse {
   addressBookEntry?: AddressBookEntry;
 }
-export const UpdateAddressBookEntryResponse =
+const UpdateAddressBookEntryResponse =
   CreateAddressBookEntryResponse as any as S.Schema<UpdateAddressBookEntryResponse>;
 
 export interface UpdateContactRequest {
   /** The contact's ID. */
   contactId: string;
 }
-export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PATCH", uri: "/v1/contacts/{contactId}", code: 200 })),
@@ -4133,15 +3705,14 @@ export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchContactResponse {
   contact?: Contact;
 }
-export const PatchContactResponse = CreateContactResponse as any as S.Schema<PatchContactResponse>;
+const PatchContactResponse = CreateContactResponse as any as S.Schema<PatchContactResponse>;
 
 export type UpdateDiscountRequestCriteria =
   | AnyOrderCriteria
   | BuyXGetYCriteria
   | CartTotalCriteria
   | ProductCriteria;
-export const UpdateDiscountRequestCriteria =
-  S.Unknown as any as S.Schema<UpdateDiscountRequestCriteria>;
+const UpdateDiscountRequestCriteria = S.Unknown as any as S.Schema<UpdateDiscountRequestCriteria>;
 
 export type UpdateDiscountRequestTemplate =
   | BuyXGetYFixedAmountTemplate
@@ -4149,12 +3720,10 @@ export type UpdateDiscountRequestTemplate =
   | FixedAmountTemplate
   | FreeShippingTemplate
   | PercentageTemplate;
-export const UpdateDiscountRequestTemplate =
-  S.Unknown as any as S.Schema<UpdateDiscountRequestTemplate>;
+const UpdateDiscountRequestTemplate = S.Unknown as any as S.Schema<UpdateDiscountRequestTemplate>;
 
 export type UpdateDiscountRequestTrigger = AnyOrderCriteria | PromoCodeTrigger;
-export const UpdateDiscountRequestTrigger =
-  S.Unknown as any as S.Schema<UpdateDiscountRequestTrigger>;
+const UpdateDiscountRequestTrigger = S.Unknown as any as S.Schema<UpdateDiscountRequestTrigger>;
 
 export interface UpdateDiscountRequest {
   /** The discount's unique identifier. */
@@ -4177,7 +3746,7 @@ export interface UpdateDiscountRequest {
   /** When the discount expires. Null = no expiry. */
   validTo?: string;
 }
-export const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discountId: S.String.pipe(T.Label()),
     criteria: UpdateDiscountRequestCriteria,
@@ -4198,7 +3767,7 @@ export interface ChangeBoolean {
   present?: boolean;
   value?: boolean;
 }
-export const ChangeBoolean = /*@__PURE__*/ S.suspend(() =>
+const ChangeBoolean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(S.Boolean),
@@ -4209,7 +3778,7 @@ export interface ChangeMonetaryAmount {
   present?: boolean;
   value?: MonetaryAmount;
 }
-export const ChangeMonetaryAmount = /*@__PURE__*/ S.suspend(() =>
+const ChangeMonetaryAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(MonetaryAmount),
@@ -4221,7 +3790,7 @@ export interface UpdateProductPricing {
   onSale?: ChangeBoolean;
   salePrice?: ChangeMonetaryAmount;
 }
-export const UpdateProductPricing = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePrice: S.optional(ChangeMonetaryAmount),
     onSale: S.optional(ChangeBoolean),
@@ -4234,7 +3803,7 @@ export interface ChangeUpdateProductPricing {
   present?: boolean;
   value?: UpdateProductPricing;
 }
-export const ChangeUpdateProductPricing = /*@__PURE__*/ S.suspend(() =>
+const ChangeUpdateProductPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(UpdateProductPricing),
@@ -4244,7 +3813,7 @@ export const ChangeUpdateProductPricing = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeUpdateProductPricing>;
 
 export type ChangeListStringValueList = Array<string>;
-export const ChangeListStringValueList =
+const ChangeListStringValueList =
   AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ChangeListStringValueList>;
 
 /** Optional; list of event topics that trigger a webhook notification. Possible values include: extension.uninstall, order.create, order.update. */
@@ -4252,7 +3821,7 @@ export interface ChangeListString {
   present?: boolean;
   value?: ChangeListStringValueList;
 }
-export const ChangeListString = /*@__PURE__*/ S.suspend(() =>
+const ChangeListString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(ChangeListStringValueList),
@@ -4264,7 +3833,7 @@ export interface ChangeSeoOptions {
   present?: boolean;
   value?: SeoOptions;
 }
-export const ChangeSeoOptions = /*@__PURE__*/ S.suspend(() =>
+const ChangeSeoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(SeoOptions),
@@ -4282,7 +3851,7 @@ export interface UpdateProductRequest {
   tags?: ChangeListString;
   urlSlug?: ChangeString;
 }
-export const UpdateProductRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     description: S.optional(ChangeString),
@@ -4301,7 +3870,7 @@ export interface UpdateProductImageRequest {
   imageId: string;
   altText?: ChangeString;
 }
-export const UpdateProductImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     imageId: S.String.pipe(T.Label()),
@@ -4322,7 +3891,7 @@ export interface UpdateProductImageOrderRequest {
   imageId: string;
   afterImageId?: ChangeString;
 }
-export const UpdateProductImageOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductImageOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     imageId: S.String.pipe(T.Label()),
@@ -4339,12 +3908,12 @@ export const UpdateProductImageOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProductImageOrderRequest>;
 
 export interface UpdateProductImageOrderResponse {}
-export const UpdateProductImageOrderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateProductImageOrderResponse" },
-) as any as S.Schema<UpdateProductImageOrderResponse>;
+const UpdateProductImageOrderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UpdateProductImageOrderResponse",
+}) as any as S.Schema<UpdateProductImageOrderResponse>;
 
 export type ChangeMapStringStringValueMap = { [key: string]: string | undefined };
-export const ChangeMapStringStringValueMap =
+const ChangeMapStringStringValueMap =
   CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<ChangeMapStringStringValueMap>;
 
 /** Specifies attribute-value pairs for the variant. Supported for PHYSICAL products only. */
@@ -4352,7 +3921,7 @@ export interface ChangeMapStringString {
   present?: boolean;
   value?: ChangeMapStringStringValueMap;
 }
-export const ChangeMapStringString = /*@__PURE__*/ S.suspend(() =>
+const ChangeMapStringString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(ChangeMapStringStringValueMap),
@@ -4363,7 +3932,7 @@ export interface ChangeProductDimensions {
   present?: boolean;
   value?: ProductDimensions;
 }
-export const ChangeProductDimensions = /*@__PURE__*/ S.suspend(() =>
+const ChangeProductDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(ProductDimensions),
@@ -4374,7 +3943,7 @@ export interface ChangeProductWeight {
   present?: boolean;
   value?: ProductWeight;
 }
-export const ChangeProductWeight = /*@__PURE__*/ S.suspend(() =>
+const ChangeProductWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(ProductWeight),
@@ -4385,7 +3954,7 @@ export interface UpdateProductMeasurements {
   dimensions?: ChangeProductDimensions;
   weight?: ChangeProductWeight;
 }
-export const UpdateProductMeasurements = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductMeasurements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(ChangeProductDimensions),
     weight: S.optional(ChangeProductWeight),
@@ -4399,7 +3968,7 @@ export interface ChangeUpdateProductMeasurements {
   present?: boolean;
   value?: UpdateProductMeasurements;
 }
-export const ChangeUpdateProductMeasurements = /*@__PURE__*/ S.suspend(() =>
+const ChangeUpdateProductMeasurements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     present: S.optional(S.Boolean),
     value: S.optional(UpdateProductMeasurements),
@@ -4418,7 +3987,7 @@ export interface UpdateProductVariantRequest {
   shippingMeasurements?: ChangeUpdateProductMeasurements;
   sku?: ChangeString;
 }
-export const UpdateProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     variantId: S.String.pipe(T.Label()),
@@ -4445,7 +4014,7 @@ export interface UpdateWebhookSubscriptionRequest {
   endpointUrl?: ChangeString;
   topics?: ChangeListString;
 }
-export const UpdateWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     endpointUrl: S.optional(ChangeString),
@@ -4460,7 +4029,7 @@ export const UpdateWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UploadProductImageRequest {
   productId: string;
 }
-export const UploadProductImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadProductImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4476,7 +4045,7 @@ export const UploadProductImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadProductImageRequest>;
 
 export interface UploadProductImageResponse {}
-export const UploadProductImageResponse =
+const UploadProductImageResponse =
   DeleteAddressBookEntryResponse as any as S.Schema<UploadProductImageResponse>;
 
 export type AdjustInventoryStockLevelsError = BadRequest | NotFound | Conflict | SquarespaceOpError;

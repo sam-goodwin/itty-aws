@@ -10,21 +10,21 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
 
 /** The name of the SKU, in standard format (such as S0). */
 export type SkuInputName = "S0" | "S1" | "G2";
-export const SkuInputName = S.String;
+const SkuInputName = S.String;
 
 /** The SKU of the Maps Account. */
 export interface SkuInput {
   /** The name of the SKU, in standard format (such as S0). */
   name: SkuInputName | (string & {});
 }
-export const SkuInput = /*@__PURE__*/ S.suspend(() =>
+const SkuInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuInputName,
   }),
@@ -32,7 +32,7 @@ export const SkuInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The Kind of the Maps Account. */
 export type Kind = "Gen1" | "Gen2";
-export const Kind = S.String;
+const Kind = S.String;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
@@ -40,17 +40,17 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -60,7 +60,7 @@ export interface AccountsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -76,7 +76,7 @@ export interface LinkedResource {
   /** ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'. */
   id: string;
 }
-export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
+const LinkedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueName: S.String,
     id: S.String,
@@ -85,13 +85,11 @@ export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of associated resources to the Map account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Map Account Managed Identity(s) permissions to those resource(s). */
 export type LinkedResources = Array<LinkedResource>;
-export const LinkedResources = /*@__PURE__*/ S.Array(
-  LinkedResource,
-) as any as S.Schema<LinkedResources>;
+const LinkedResources = /*@__PURE__*/ S.Array(LinkedResource) as any as S.Schema<LinkedResources>;
 
 /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
 export type CorsRuleAllowedOriginsList = Array<string>;
-export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
+const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedOriginsList>;
 
@@ -100,7 +98,7 @@ export interface CorsRule {
   /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
   allowedOrigins: CorsRuleAllowedOriginsList;
 }
-export const CorsRule = /*@__PURE__*/ S.suspend(() =>
+const CorsRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: CorsRuleAllowedOriginsList,
   }),
@@ -108,7 +106,7 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of CORS rules. You can include up to five CorsRule elements in the request. */
 export type CorsRulesCorsRulesList = Array<CorsRule>;
-export const CorsRulesCorsRulesList = /*@__PURE__*/ S.Array(
+const CorsRulesCorsRulesList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsRulesCorsRulesList>;
 
@@ -117,7 +115,7 @@ export interface CorsRules {
   /** The list of CORS rules. You can include up to five CorsRule elements in the request. */
   corsRules?: CorsRulesCorsRulesList;
 }
-export const CorsRules = /*@__PURE__*/ S.suspend(() =>
+const CorsRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     corsRules: S.optional(CorsRulesCorsRulesList),
   }),
@@ -125,14 +123,14 @@ export const CorsRules = /*@__PURE__*/ S.suspend(() =>
 
 /** Values are enabled and disabled. */
 export type MapsAccountPropertiesInputEncryptionInfrastructureEncryption = "enabled" | "disabled";
-export const MapsAccountPropertiesInputEncryptionInfrastructureEncryption = S.String;
+const MapsAccountPropertiesInputEncryptionInfrastructureEncryption = S.String;
 
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
 export type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   | "systemAssignedIdentity"
   | "userAssignedIdentity"
   | "delegatedResourceIdentity";
-export const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType = S.String;
+const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType = S.String;
 
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
@@ -143,7 +141,7 @@ export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
   delegatedIdentityClientId?: string;
 }
-export const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.optional(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType),
     userAssignedIdentityResourceId: S.optional(S.String),
@@ -160,7 +158,7 @@ export interface CustomerManagedKeyEncryption {
   /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyEncryptionKeyUrl?: string;
 }
-export const CustomerManagedKeyEncryption = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKeyEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyEncryptionKeyIdentity: S.optional(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity),
     keyEncryptionKeyUrl: S.optional(S.String),
@@ -178,7 +176,7 @@ export interface MapsAccountPropertiesInputEncryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: CustomerManagedKeyEncryption;
 }
-export const MapsAccountPropertiesInputEncryption = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountPropertiesInputEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infrastructureEncryption: S.optional(
       MapsAccountPropertiesInputEncryptionInfrastructureEncryption,
@@ -199,7 +197,7 @@ export interface MapsAccountPropertiesInput {
   /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
   encryption?: MapsAccountPropertiesInputEncryption;
 }
-export const MapsAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableLocalAuth: S.optional(S.Boolean),
     linkedResources: S.optional(LinkedResources),
@@ -230,7 +228,7 @@ export interface AccountsCreateOrUpdateRequest {
   /** The map account properties. */
   properties?: MapsAccountPropertiesInput;
 }
-export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -255,12 +253,12 @@ export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap =
+const AccountsCreateOrUpdateResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** The name of the SKU, in standard format (such as S0). */
 export type SkuName = "S0" | "S1" | "G2";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The SKU of the Maps Account. */
 export interface Sku {
@@ -269,7 +267,7 @@ export interface Sku {
   /** Gets the sku tier. This is based on the SKU name. */
   tier?: string;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
     tier: S.optional(S.String),
@@ -282,7 +280,7 @@ export type AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AccountsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const AccountsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -290,7 +288,7 @@ export type AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AccountsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+const AccountsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AccountsCreateOrUpdateResponseSystemData {
@@ -307,7 +305,7 @@ export interface AccountsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AccountsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(AccountsCreateOrUpdateResponseSystemDataCreatedByType),
@@ -327,7 +325,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -336,7 +334,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -350,7 +348,7 @@ export interface AccountsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -363,7 +361,7 @@ export const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(()
 
 /** Values are enabled and disabled. */
 export type MapsAccountPropertiesEncryptionInfrastructureEncryption = "enabled" | "disabled";
-export const MapsAccountPropertiesEncryptionInfrastructureEncryption = S.String;
+const MapsAccountPropertiesEncryptionInfrastructureEncryption = S.String;
 
 /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
 export interface MapsAccountPropertiesEncryption {
@@ -372,7 +370,7 @@ export interface MapsAccountPropertiesEncryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: CustomerManagedKeyEncryption;
 }
-export const MapsAccountPropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountPropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infrastructureEncryption: S.optional(MapsAccountPropertiesEncryptionInfrastructureEncryption),
     customerManagedKeyEncryption: S.optional(CustomerManagedKeyEncryption),
@@ -395,7 +393,7 @@ export interface MapsAccountProperties {
   /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
   encryption?: MapsAccountPropertiesEncryption;
 }
-export const MapsAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueId: S.optional(S.String),
     disableLocalAuth: S.optional(S.Boolean),
@@ -428,7 +426,7 @@ export interface AccountsCreateOrUpdateResponse {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
-export const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -447,7 +445,7 @@ export const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreatorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CreatorsCreateOrUpdateRequestTagsMap =
+const CreatorsCreateOrUpdateRequestTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorsCreateOrUpdateRequestTagsMap>;
 
 /** Creator resource properties */
@@ -455,7 +453,7 @@ export interface CreatorPropertiesInput {
   /** The storage units to be allocated. Integer values from 1 to 100, inclusive. */
   storageUnits: number;
 }
-export const CreatorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CreatorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageUnits: S.Number,
   }),
@@ -477,7 +475,7 @@ export interface CreatorsCreateOrUpdateRequest {
   /** The Creator resource properties. */
   properties: CreatorPropertiesInput;
 }
-export const CreatorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -500,7 +498,7 @@ export const CreatorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreatorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CreatorsCreateOrUpdateResponseTagsMap =
+const CreatorsCreateOrUpdateResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorsCreateOrUpdateResponseTagsMap>;
 
 /** Creator resource properties */
@@ -510,7 +508,7 @@ export interface CreatorProperties {
   /** The storage units to be allocated. Integer values from 1 to 100, inclusive. */
   storageUnits: number;
 }
-export const CreatorProperties = /*@__PURE__*/ S.suspend(() =>
+const CreatorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     storageUnits: S.Number,
@@ -523,16 +521,12 @@ export type CreatorsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreatorsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type CreatorsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreatorsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreatorsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -548,7 +542,7 @@ export interface CreatorsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreatorsCreateOrUpdateResponseSystemData =
+const CreatorsCreateOrUpdateResponseSystemData =
   AccountsCreateOrUpdateResponseSystemData as any as S.Schema<CreatorsCreateOrUpdateResponseSystemData>;
 
 export interface CreatorsCreateOrUpdateResponse {
@@ -567,7 +561,7 @@ export interface CreatorsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreatorsCreateOrUpdateResponseSystemData;
 }
-export const CreatorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -589,7 +583,7 @@ export interface DeleteAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -605,8 +599,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
+const DeleteAccountResponse = UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeleteCreatorRequest {
   /** The ID of the target subscription. */
@@ -618,7 +611,7 @@ export interface DeleteCreatorRequest {
   /** The name of the Maps Creator instance. */
   creatorName: string;
 }
-export const DeleteCreatorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCreatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -635,8 +628,7 @@ export const DeleteCreatorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCreatorRequest" }) as any as S.Schema<DeleteCreatorRequest>;
 
 export interface DeleteCreatorResponse {}
-export const DeleteCreatorResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCreatorResponse>;
+const DeleteCreatorResponse = UserAssignedIdentityInput as any as S.Schema<DeleteCreatorResponse>;
 
 export interface GetAccountRequest {
   /** The ID of the target subscription. */
@@ -646,7 +638,7 @@ export interface GetAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -663,7 +655,7 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap =
+const GetAccountResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -672,16 +664,12 @@ export type GetAccountResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetAccountResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetAccountResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetAccountResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetAccountResponseSystemData {
   /** The identity that created the resource. */
@@ -697,13 +685,11 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAccountResponseSystemData =
+const GetAccountResponseSystemData =
   AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -726,7 +712,7 @@ export interface GetAccountResponse {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -751,7 +737,7 @@ export interface GetCreatorRequest {
   /** The name of the Maps Creator instance. */
   creatorName: string;
 }
-export const GetCreatorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCreatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -769,7 +755,7 @@ export const GetCreatorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCreatorResponseTagsMap = { [key: string]: string | undefined };
-export const GetCreatorResponseTagsMap =
+const GetCreatorResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCreatorResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -778,16 +764,12 @@ export type GetCreatorResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetCreatorResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetCreatorResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetCreatorResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetCreatorResponseSystemData {
   /** The identity that created the resource. */
@@ -803,7 +785,7 @@ export interface GetCreatorResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetCreatorResponseSystemData =
+const GetCreatorResponseSystemData =
   AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetCreatorResponseSystemData>;
 
 export interface GetCreatorResponse {
@@ -822,7 +804,7 @@ export interface GetCreatorResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetCreatorResponseSystemData;
 }
-export const GetCreatorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCreatorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -840,7 +822,7 @@ export interface ListAccountByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -858,12 +840,12 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MapsAccountTagsMap = { [key: string]: string | undefined };
-export const MapsAccountTagsMap =
+const MapsAccountTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<MapsAccountTagsMap>;
 
 /** The type of identity that created the resource. */
 export type MapsAccountSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const MapsAccountSystemDataCreatedByType = S.String;
+const MapsAccountSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type MapsAccountSystemDataLastModifiedByType =
@@ -871,7 +853,7 @@ export type MapsAccountSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MapsAccountSystemDataLastModifiedByType = S.String;
+const MapsAccountSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface MapsAccountSystemData {
@@ -888,7 +870,7 @@ export interface MapsAccountSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MapsAccountSystemData = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(MapsAccountSystemDataCreatedByType),
@@ -901,8 +883,6 @@ export const MapsAccountSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
-
 /** An Azure resource which represents access to a suite of Maps REST APIs. */
 export interface MapsAccount {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -926,7 +906,7 @@ export interface MapsAccount {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
-export const MapsAccount = /*@__PURE__*/ S.suspend(() =>
+const MapsAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -943,7 +923,7 @@ export const MapsAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** a Maps Account. */
 export type MapsAccountsValueList = Array<MapsAccount>;
-export const MapsAccountsValueList = /*@__PURE__*/ S.Array(
+const MapsAccountsValueList = /*@__PURE__*/ S.Array(
   MapsAccount,
 ) as any as S.Schema<MapsAccountsValueList>;
 
@@ -954,7 +934,7 @@ export interface MapsAccounts {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export const MapsAccounts = /*@__PURE__*/ S.suspend(() =>
+const MapsAccounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MapsAccountsValueList),
     nextLink: S.optional(S.String),
@@ -965,7 +945,7 @@ export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -988,7 +968,7 @@ export interface ListAccountKeysRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
-export const ListAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1014,7 +994,7 @@ export interface MapsAccountKeys {
   /** The last updated date and time of the secondary key. */
   secondaryKeyLastUpdated?: string;
 }
-export const MapsAccountKeys = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryKeyLastUpdated: S.optional(S.String),
     primaryKey: S.optional(S.String),
@@ -1025,11 +1005,11 @@ export const MapsAccountKeys = /*@__PURE__*/ S.suspend(() =>
 
 /** The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS. */
 export type ListAccountSasRequestSigningKey = "primaryKey" | "secondaryKey" | "managedIdentity";
-export const ListAccountSasRequestSigningKey = S.String;
+const ListAccountSasRequestSigningKey = S.String;
 
 /** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
 export type ListAccountSasRequestRegionsList = Array<string>;
-export const ListAccountSasRequestRegionsList =
+const ListAccountSasRequestRegionsList =
   CorsRuleAllowedOriginsList as any as S.Schema<ListAccountSasRequestRegionsList>;
 
 export interface ListAccountSasRequest {
@@ -1052,7 +1032,7 @@ export interface ListAccountSasRequest {
   /** The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`. */
   expiry: string;
 }
-export const ListAccountSasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountSasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1078,7 +1058,7 @@ export interface MapsAccountSasToken {
   /** The shared access signature access token. */
   accountSasToken?: string;
 }
-export const MapsAccountSasToken = /*@__PURE__*/ S.suspend(() =>
+const MapsAccountSasToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountSasToken: S.optional(S.String),
   }),
@@ -1092,7 +1072,7 @@ export interface ListCreatorByAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
-export const ListCreatorByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreatorByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1111,21 +1091,16 @@ export const ListCreatorByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreatorTagsMap = { [key: string]: string | undefined };
-export const CreatorTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorTagsMap>;
+const CreatorTagsMap = AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorTagsMap>;
 
 /** The type of identity that created the resource. */
 export type CreatorSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const CreatorSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type CreatorSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreatorSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreatorSystemData {
   /** The identity that created the resource. */
@@ -1141,7 +1116,7 @@ export interface CreatorSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreatorSystemData = MapsAccountSystemData as any as S.Schema<CreatorSystemData>;
+const CreatorSystemData = MapsAccountSystemData as any as S.Schema<CreatorSystemData>;
 
 /** An Azure resource which represents Maps Creator product and provides ability to manage private location data. */
 export interface Creator {
@@ -1160,7 +1135,7 @@ export interface Creator {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreatorSystemData;
 }
-export const Creator = /*@__PURE__*/ S.suspend(() =>
+const Creator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1174,7 +1149,7 @@ export const Creator = /*@__PURE__*/ S.suspend(() =>
 
 /** a Creator account. */
 export type CreatorListValueList = Array<Creator>;
-export const CreatorListValueList = /*@__PURE__*/ S.Array(
+const CreatorListValueList = /*@__PURE__*/ S.Array(
   Creator,
 ) as any as S.Schema<CreatorListValueList>;
 
@@ -1185,7 +1160,7 @@ export interface CreatorList {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export const CreatorList = /*@__PURE__*/ S.suspend(() =>
+const CreatorList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CreatorListValueList),
     nextLink: S.optional(S.String),
@@ -1193,7 +1168,7 @@ export const CreatorList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatorList" }) as any as S.Schema<CreatorList>;
 
 export interface ListMapOperationsRequest {}
-export const ListMapOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMapOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1215,7 +1190,7 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1239,7 +1214,7 @@ export interface Dimension {
   /** Flag to indicate exporting to Azure Monitor. */
   toBeExportedToShoebox?: boolean;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1252,7 +1227,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Dimensions of map account. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -1287,7 +1262,7 @@ export interface MetricSpecification {
   /** Allowed aggregation types for metrics. */
   supportedAggregationTypes?: string;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1308,7 +1283,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -1317,7 +1292,7 @@ export interface ServiceSpecification {
   /** Metric specifications of operation. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
   }),
@@ -1328,7 +1303,7 @@ export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -1347,7 +1322,7 @@ export interface OperationDetail {
   /** Properties of the operation */
   properties?: OperationProperties;
 }
-export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
+const OperationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1359,7 +1334,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** An operation available for Maps. */
 export type MapsOperationsValueList = Array<OperationDetail>;
-export const MapsOperationsValueList = /*@__PURE__*/ S.Array(
+const MapsOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<MapsOperationsValueList>;
 
@@ -1370,7 +1345,7 @@ export interface MapsOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export const MapsOperations = /*@__PURE__*/ S.suspend(() =>
+const MapsOperations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MapsOperationsValueList),
     nextLink: S.optional(S.String),
@@ -1381,7 +1356,7 @@ export interface ListMapSubscriptionOperationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListMapSubscriptionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMapSubscriptionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1398,7 +1373,7 @@ export const ListMapSubscriptionOperationsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Whether the operation refers to the primary or secondary key. */
 export type RegenerateAccountKeysRequestKeyType = "primary" | "secondary";
-export const RegenerateAccountKeysRequestKeyType = S.String;
+const RegenerateAccountKeysRequestKeyType = S.String;
 
 export interface RegenerateAccountKeysRequest {
   /** The ID of the target subscription. */
@@ -1410,7 +1385,7 @@ export interface RegenerateAccountKeysRequest {
   /** Whether the operation refers to the primary or secondary key. */
   keyType: RegenerateAccountKeysRequestKeyType | (string & {});
 }
-export const RegenerateAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1430,13 +1405,11 @@ export const RegenerateAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap =
+const UpdateAccountRequestTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountRequestIdentity = AccountsCreateOrUpdateRequestIdentity;
-export const UpdateAccountRequestIdentity = AccountsCreateOrUpdateRequestIdentity;
-
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1455,7 +1428,7 @@ export interface UpdateAccountRequest {
   /** The map account properties. */
   properties?: MapsAccountPropertiesInput;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1477,7 +1450,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap =
+const UpdateAccountResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1486,16 +1459,12 @@ export type UpdateAccountResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateAccountResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateAccountResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateAccountResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateAccountResponseSystemData {
   /** The identity that created the resource. */
@@ -1511,13 +1480,11 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAccountResponseSystemData =
+const UpdateAccountResponseSystemData =
   AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1540,7 +1507,7 @@ export interface UpdateAccountResponse {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1557,7 +1524,7 @@ export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
 export type UpdateCreatorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCreatorRequestTagsMap =
+const UpdateCreatorRequestTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCreatorRequestTagsMap>;
 
 export interface UpdateCreatorRequest {
@@ -1574,7 +1541,7 @@ export interface UpdateCreatorRequest {
   /** Creator resource properties. */
   properties?: CreatorPropertiesInput;
 }
-export const UpdateCreatorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCreatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1594,7 +1561,7 @@ export const UpdateCreatorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCreatorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCreatorResponseTagsMap =
+const UpdateCreatorResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCreatorResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1603,16 +1570,12 @@ export type UpdateCreatorResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateCreatorResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateCreatorResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateCreatorResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateCreatorResponseSystemData {
   /** The identity that created the resource. */
@@ -1628,7 +1591,7 @@ export interface UpdateCreatorResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateCreatorResponseSystemData =
+const UpdateCreatorResponseSystemData =
   AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateCreatorResponseSystemData>;
 
 export interface UpdateCreatorResponse {
@@ -1647,7 +1610,7 @@ export interface UpdateCreatorResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateCreatorResponseSystemData;
 }
-export const UpdateCreatorResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateCreatorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

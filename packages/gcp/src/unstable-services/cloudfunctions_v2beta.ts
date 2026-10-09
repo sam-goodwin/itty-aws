@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request for the `AbortFunctionUpgrade` method. */
 export interface AbortFunctionUpgradeRequest {}
-export const AbortFunctionUpgradeRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AbortFunctionUpgradeRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AbortFunctionUpgradeRequest",
 }) as any as S.Schema<AbortFunctionUpgradeRequest>;
 
@@ -73,7 +73,7 @@ export interface AbortFunctionUpgradeProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const AbortFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AbortFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
@@ -89,15 +89,10 @@ export const AbortFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__
 }) as any as S.Schema<AbortFunctionUpgradeProjectsLocationsFunctionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -108,7 +103,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -129,7 +124,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -141,41 +136,36 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for the `CommitFunctionUpgradeAsGen2` method. */
 export type CommitFunctionUpgradeAsGen2Request = AbortFunctionUpgradeRequest;
-export const CommitFunctionUpgradeAsGen2Request = AbortFunctionUpgradeRequest;
-
 export interface CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest {
   /** Required. The name of the function for which upgrade should be committed to Gen2. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+name}:commitFunctionUpgradeAsGen2",
-        baseUrl: "https://cloudfunctions.googleapis.com/",
-      }),
-    ),
+const CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:commitFunctionUpgradeAsGen2",
+      baseUrl: "https://cloudfunctions.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest",
 }) as any as S.Schema<CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest>;
 
 /** Request for the `CommitFunctionUpgrade` method. */
 export type CommitFunctionUpgradeRequest = AbortFunctionUpgradeRequest;
-export const CommitFunctionUpgradeRequest = AbortFunctionUpgradeRequest;
-
 export interface CommitFunctionUpgradeProjectsLocationsFunctionsRequest {
   /** Required. The name of the function for which upgrade should be finalized. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const CommitFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitFunctionUpgradeProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
@@ -194,7 +184,7 @@ export type EventTriggerRetryPolicyEnum =
   | "RETRY_POLICY_UNSPECIFIED"
   | "RETRY_POLICY_DO_NOT_RETRY"
   | "RETRY_POLICY_RETRY";
-export const EventTriggerRetryPolicyEnum = S.String;
+const EventTriggerRetryPolicyEnum = S.String;
 
 /** Filters events based on exact matches on the CloudEvents attributes. */
 export interface EventFilter {
@@ -205,7 +195,7 @@ export interface EventFilter {
   /** Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`. */
   operator?: string;
 }
-export const EventFilter = /*@__PURE__*/ S.suspend(() =>
+const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.optional(S.String),
     value: S.optional(S.String),
@@ -214,9 +204,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 
 export type EventFilterList = Array<EventFilter>;
-export const EventFilterList = /*@__PURE__*/ S.Array(
-  EventFilter,
-) as any as S.Schema<EventFilterList>;
+const EventFilterList = /*@__PURE__*/ S.Array(EventFilter) as any as S.Schema<EventFilterList>;
 
 /** Describes EventTrigger, used to request events to be sent from another service. */
 export interface EventTrigger {
@@ -239,7 +227,7 @@ export interface EventTrigger {
   /** Required. The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`. */
   eventType?: string;
 }
-export const EventTrigger = /*@__PURE__*/ S.suspend(() =>
+const EventTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryPolicy: S.optional(EventTriggerRetryPolicyEnum),
     trigger: S.optional(S.String),
@@ -254,13 +242,13 @@ export const EventTrigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventTrigger" }) as any as S.Schema<EventTrigger>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ServiceConfigVpcConnectorEgressSettingsEnum =
   | "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
   | "PRIVATE_RANGES_ONLY"
   | "ALL_TRAFFIC";
-export const ServiceConfigVpcConnectorEgressSettingsEnum = S.String;
+const ServiceConfigVpcConnectorEgressSettingsEnum = S.String;
 
 /** Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. */
 export interface SecretEnvVar {
@@ -273,7 +261,7 @@ export interface SecretEnvVar {
   /** Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function. */
   projectId?: string;
 }
-export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
+const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     key: S.optional(S.String),
@@ -283,31 +271,29 @@ export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretEnvVar" }) as any as S.Schema<SecretEnvVar>;
 
 export type SecretEnvVarList = Array<SecretEnvVar>;
-export const SecretEnvVarList = /*@__PURE__*/ S.Array(
-  SecretEnvVar,
-) as any as S.Schema<SecretEnvVarList>;
+const SecretEnvVarList = /*@__PURE__*/ S.Array(SecretEnvVar) as any as S.Schema<SecretEnvVarList>;
 
 export type ServiceConfigIngressSettingsEnum =
   | "INGRESS_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_INTERNAL_ONLY"
   | "ALLOW_INTERNAL_AND_GCLB";
-export const ServiceConfigIngressSettingsEnum = S.String;
+const ServiceConfigIngressSettingsEnum = S.String;
 
 export type ServiceConfigDirectVpcEgressEnum =
   | "DIRECT_VPC_EGRESS_UNSPECIFIED"
   | "VPC_EGRESS_PRIVATE_RANGES_ONLY"
   | "VPC_EGRESS_ALL_TRAFFIC";
-export const ServiceConfigDirectVpcEgressEnum = S.String;
+const ServiceConfigDirectVpcEgressEnum = S.String;
 
 export type ServiceConfigSecurityLevelEnum =
   | "SECURITY_LEVEL_UNSPECIFIED"
   | "SECURE_ALWAYS"
   | "SECURE_OPTIONAL";
-export const ServiceConfigSecurityLevelEnum = S.String;
+const ServiceConfigSecurityLevelEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The Direct VPC network interface. This is mutually exclusive with VPC Connector. */
 export interface DirectVpcNetworkInterface {
@@ -318,7 +304,7 @@ export interface DirectVpcNetworkInterface {
   /** Optional. The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. */
   subnetwork?: string;
 }
-export const DirectVpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const DirectVpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     tags: S.optional(StringList),
@@ -329,7 +315,7 @@ export const DirectVpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectVpcNetworkInterface>;
 
 export type DirectVpcNetworkInterfaceList = Array<DirectVpcNetworkInterface>;
-export const DirectVpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
+const DirectVpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
   DirectVpcNetworkInterface,
 ) as any as S.Schema<DirectVpcNetworkInterfaceList>;
 
@@ -340,7 +326,7 @@ export interface SecretVersion {
   /** Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`. */
   path?: string;
 }
-export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
+const SecretVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     path: S.optional(S.String),
@@ -348,7 +334,7 @@ export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretVersion" }) as any as S.Schema<SecretVersion>;
 
 export type SecretVersionList = Array<SecretVersion>;
-export const SecretVersionList = /*@__PURE__*/ S.Array(
+const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;
 
@@ -363,7 +349,7 @@ export interface SecretVolume {
   /** Name of the secret in secret manager (not the full resource name). */
   secret?: string;
 }
-export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
+const SecretVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: S.optional(SecretVersionList),
     projectId: S.optional(S.String),
@@ -373,9 +359,7 @@ export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretVolume" }) as any as S.Schema<SecretVolume>;
 
 export type SecretVolumeList = Array<SecretVolume>;
-export const SecretVolumeList = /*@__PURE__*/ S.Array(
-  SecretVolume,
-) as any as S.Schema<SecretVolumeList>;
+const SecretVolumeList = /*@__PURE__*/ S.Array(SecretVolume) as any as S.Schema<SecretVolumeList>;
 
 /** Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). */
 export interface ServiceConfig {
@@ -422,7 +406,7 @@ export interface ServiceConfig {
   /** Secret volumes configuration. */
   secretVolumes?: SecretVolumeList;
 }
-export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcConnector: S.optional(S.String),
     maxInstanceCount: S.optional(S.Number),
@@ -463,7 +447,7 @@ export type UpgradeInfoUpgradeStateEnum =
   | "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE"
   | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL"
   | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR";
-export const UpgradeInfoUpgradeStateEnum = S.String;
+const UpgradeInfoUpgradeStateEnum = S.String;
 
 /** Location of the source in a Google Cloud Source Repository. */
 export interface RepoSource {
@@ -480,7 +464,7 @@ export interface RepoSource {
   /** Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
   tagName?: string;
 }
-export const RepoSource = /*@__PURE__*/ S.suspend(() =>
+const RepoSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     branchName: S.optional(S.String),
@@ -502,7 +486,7 @@ export interface StorageSource {
   /** Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build. */
   object?: string;
 }
-export const StorageSource = /*@__PURE__*/ S.suspend(() =>
+const StorageSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     sourceUploadUrl: S.optional(S.String),
@@ -520,7 +504,7 @@ export interface SourceProvenance {
   /** A copy of the build's `source.storage_source`, if exists, with any generations resolved. */
   resolvedStorageSource?: StorageSource;
 }
-export const SourceProvenance = /*@__PURE__*/ S.suspend(() =>
+const SourceProvenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitUri: S.optional(S.String),
     resolvedRepoSource: S.optional(RepoSource),
@@ -532,14 +516,14 @@ export type BuildConfigDockerRegistryEnum =
   | "DOCKER_REGISTRY_UNSPECIFIED"
   | "CONTAINER_REGISTRY"
   | "ARTIFACT_REGISTRY";
-export const BuildConfigDockerRegistryEnum = S.String;
+const BuildConfigDockerRegistryEnum = S.String;
 
 /** Security patches are only applied when a function is redeployed. */
 export interface OnDeployUpdatePolicy {
   /** Output only. contains the runtime version which was used during latest function deployment. */
   runtimeVersion?: string;
 }
-export const OnDeployUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
+const OnDeployUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtimeVersion: S.optional(S.String),
   }),
@@ -547,8 +531,6 @@ export const OnDeployUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Security patches are applied automatically to the runtime without requiring the function to be redeployed. */
 export type AutomaticUpdatePolicy = AbortFunctionUpgradeRequest;
-export const AutomaticUpdatePolicy = AbortFunctionUpgradeRequest;
-
 /** The location of the function source code. */
 export interface Source {
   /** If provided, get the source from this location in Google Cloud Storage. */
@@ -558,7 +540,7 @@ export interface Source {
   /** If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob// */
   gitUri?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageSource: S.optional(StorageSource),
     repoSource: S.optional(RepoSource),
@@ -593,7 +575,7 @@ export interface BuildConfig {
   /** Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`. */
   serviceAccount?: string;
 }
-export const BuildConfig = /*@__PURE__*/ S.suspend(() =>
+const BuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerPool: S.optional(S.String),
     sourceProvenance: S.optional(SourceProvenance),
@@ -622,7 +604,7 @@ export interface UpgradeInfo {
   /** Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade. */
   buildConfig?: BuildConfig;
 }
-export const UpgradeInfo = /*@__PURE__*/ S.suspend(() =>
+const UpgradeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeState: S.optional(UpgradeInfoUpgradeStateEnum),
     serviceConfig: S.optional(ServiceConfig),
@@ -640,17 +622,17 @@ export type Cloudfunctions_FunctionStateEnum =
   | "UNKNOWN"
   | "DETACHING"
   | "DETACH_FAILED";
-export const Cloudfunctions_FunctionStateEnum = S.String;
+const Cloudfunctions_FunctionStateEnum = S.String;
 
 export type Cloudfunctions_FunctionEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-export const Cloudfunctions_FunctionEnvironmentEnum = S.String;
+const Cloudfunctions_FunctionEnvironmentEnum = S.String;
 
 export type GoogleCloudFunctionsV2betaStateMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
   | "INFO";
-export const GoogleCloudFunctionsV2betaStateMessageSeverityEnum = S.String;
+const GoogleCloudFunctionsV2betaStateMessageSeverityEnum = S.String;
 
 /** Informational messages about the state of the Cloud Function or Operation. */
 export interface GoogleCloudFunctionsV2betaStateMessage {
@@ -661,7 +643,7 @@ export interface GoogleCloudFunctionsV2betaStateMessage {
   /** The message. */
   message?: string;
 }
-export const GoogleCloudFunctionsV2betaStateMessage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudFunctionsV2betaStateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(GoogleCloudFunctionsV2betaStateMessageSeverityEnum),
     type: S.optional(S.String),
@@ -673,7 +655,7 @@ export const GoogleCloudFunctionsV2betaStateMessage = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudFunctionsV2betaStateMessageList =
   Array<GoogleCloudFunctionsV2betaStateMessage>;
-export const GoogleCloudFunctionsV2betaStateMessageList = /*@__PURE__*/ S.Array(
+const GoogleCloudFunctionsV2betaStateMessageList = /*@__PURE__*/ S.Array(
   GoogleCloudFunctionsV2betaStateMessage,
 ) as any as S.Schema<GoogleCloudFunctionsV2betaStateMessageList>;
 
@@ -712,7 +694,7 @@ export interface Cloudfunctions_Function {
   /** Describes the Build step of the function that builds a container from the given source. */
   buildConfig?: BuildConfig;
 }
-export const Cloudfunctions_Function = /*@__PURE__*/ S.suspend(() =>
+const Cloudfunctions_Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTrigger: S.optional(EventTrigger),
     updateTime: S.optional(S.String),
@@ -741,7 +723,7 @@ export interface CreateProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: Cloudfunctions_Function;
 }
-export const CreateProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     functionId: S.optional(S.String.pipe(T.Query())),
@@ -761,7 +743,7 @@ export interface DeleteProjectsLocationsFunctionsRequest {
   /** Required. The name of the function which should be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -777,15 +759,13 @@ export const DeleteProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend((
 
 /** Request for the `DetachFunction` method. */
 export type DetachFunctionRequest = AbortFunctionUpgradeRequest;
-export const DetachFunctionRequest = AbortFunctionUpgradeRequest;
-
 export interface DetachFunctionProjectsLocationsFunctionsRequest {
   /** Required. The name of the function for which should be detached. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const DetachFunctionProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachFunctionProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
@@ -802,15 +782,13 @@ export const DetachFunctionProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.s
 
 /** Request of `GenerateDownloadUrl` method. */
 export type GenerateDownloadUrlRequest = AbortFunctionUpgradeRequest;
-export const GenerateDownloadUrlRequest = AbortFunctionUpgradeRequest;
-
 export interface GenerateDownloadUrlProjectsLocationsFunctionsRequest {
   /** Required. The name of function for which source code Google Cloud Storage signed URL should be generated. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const GenerateDownloadUrlProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateDownloadUrlProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
@@ -830,7 +808,7 @@ export interface GenerateDownloadUrlResponse {
   /** The generated Google Cloud Storage signed URL that should be used for function source code download. */
   downloadUrl?: string;
 }
-export const GenerateDownloadUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateDownloadUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadUrl: S.optional(S.String),
   }),
@@ -839,7 +817,7 @@ export const GenerateDownloadUrlResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateDownloadUrlResponse>;
 
 export type GenerateUploadUrlRequestEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-export const GenerateUploadUrlRequestEnvironmentEnum = S.String;
+const GenerateUploadUrlRequestEnvironmentEnum = S.String;
 
 /** Request of `GenerateSourceUploadUrl` method. */
 export interface GenerateUploadUrlRequest {
@@ -848,7 +826,7 @@ export interface GenerateUploadUrlRequest {
   /** Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function source code objects in intermediate Cloud Storage buckets. When you generate an upload url and upload your source code, it gets copied to an intermediate Cloud Storage bucket. The source code is then copied to a versioned directory in the sources bucket in the consumer project during the function deployment. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. The Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). */
   kmsKeyName?: string;
 }
-export const GenerateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(GenerateUploadUrlRequestEnvironmentEnum),
     kmsKeyName: S.optional(S.String),
@@ -861,7 +839,7 @@ export interface GenerateUploadUrlProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: GenerateUploadUrlRequest;
 }
-export const GenerateUploadUrlProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateUploadUrlProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GenerateUploadUrlRequest.pipe(T.HttpBody())),
@@ -883,7 +861,7 @@ export interface GenerateUploadUrlResponse {
   /** The generated Google Cloud Storage signed URL that should be used for a function source code upload. The uploaded file should be a zip archive which contains a function. */
   uploadUrl?: string;
 }
-export const GenerateUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageSource: S.optional(StorageSource),
     uploadUrl: S.optional(S.String),
@@ -898,7 +876,7 @@ export interface GetIamPolicyProjectsLocationsFunctionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -918,7 +896,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -927,7 +905,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -935,7 +913,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -946,7 +924,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -954,9 +932,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -969,7 +945,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -987,7 +963,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -996,7 +972,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1009,7 +985,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(AuditConfigList),
     version: S.optional(S.Number),
@@ -1024,7 +1000,7 @@ export interface GetProjectsLocationsFunctionsRequest {
   /** Required. The name of the function which details should be obtained. */
   name: string;
 }
-export const GetProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revision: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1043,7 +1019,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1069,7 +1045,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1100,7 +1076,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -1111,7 +1087,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1120,7 +1096,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1139,7 +1115,7 @@ export interface ListProjectsLocationsFunctionsRequest {
   /** Maximum number of functions to return per call. The largest allowed page_size is 1,000, if the page_size is omitted or specified as greater than 1,000 then it will be replaced as 1,000. The size of the list response can be less than specified when used with filters. */
   pageSize?: number;
 }
-export const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1158,7 +1134,7 @@ export const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsFunctionsRequest>;
 
 export type Cloudfunctions_FunctionList = Array<Cloudfunctions_Function>;
-export const Cloudfunctions_FunctionList = /*@__PURE__*/ S.Array(
+const Cloudfunctions_FunctionList = /*@__PURE__*/ S.Array(
   Cloudfunctions_Function,
 ) as any as S.Schema<Cloudfunctions_FunctionList>;
 
@@ -1171,7 +1147,7 @@ export interface ListFunctionsResponse {
   /** Locations that could not be reached. The response does not include any functions from these locations. */
   unreachable?: StringList;
 }
-export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functions: S.optional(Cloudfunctions_FunctionList),
     nextPageToken: S.optional(S.String),
@@ -1191,7 +1167,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1210,7 +1186,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1221,7 +1197,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -1235,7 +1211,7 @@ export interface ListProjectsLocationsRuntimesRequest {
   /** The filter for Runtimes that match the filter expression, following the syntax outlined in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1258,7 +1234,7 @@ export type RuntimeStageEnum =
   | "GA"
   | "DEPRECATED"
   | "DECOMMISSIONED";
-export const RuntimeStageEnum = S.String;
+const RuntimeStageEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Cloudfunctions_Date {
@@ -1269,7 +1245,7 @@ export interface Cloudfunctions_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Cloudfunctions_Date = /*@__PURE__*/ S.suspend(() =>
+const Cloudfunctions_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -1278,7 +1254,7 @@ export const Cloudfunctions_Date = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cloudfunctions_Date" }) as any as S.Schema<Cloudfunctions_Date>;
 
 export type RuntimeEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-export const RuntimeEnvironmentEnum = S.String;
+const RuntimeEnvironmentEnum = S.String;
 
 /** Describes a runtime and any special information (e.g., deprecation status) related to it. */
 export interface Runtime {
@@ -1297,7 +1273,7 @@ export interface Runtime {
   /** Warning messages, e.g., a deprecation warning. */
   warnings?: StringList;
 }
-export const Runtime = /*@__PURE__*/ S.suspend(() =>
+const Runtime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: S.optional(RuntimeStageEnum),
     displayName: S.optional(S.String),
@@ -1310,14 +1286,14 @@ export const Runtime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Runtime" }) as any as S.Schema<Runtime>;
 
 export type RuntimeList = Array<Runtime>;
-export const RuntimeList = /*@__PURE__*/ S.Array(Runtime) as any as S.Schema<RuntimeList>;
+const RuntimeList = /*@__PURE__*/ S.Array(Runtime) as any as S.Schema<RuntimeList>;
 
 /** Response for the `ListRuntimes` method. */
 export interface ListRuntimesResponse {
   /** The runtimes that match the request. */
   runtimes?: RuntimeList;
 }
-export const ListRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtimes: S.optional(RuntimeList),
   }),
@@ -1331,7 +1307,7 @@ export interface PatchProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: Cloudfunctions_Function;
 }
-export const PatchProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1349,16 +1325,14 @@ export const PatchProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Request for the `RedirectFunctionUpgradeTraffic` method. */
 export type RedirectFunctionUpgradeTrafficRequest = AbortFunctionUpgradeRequest;
-export const RedirectFunctionUpgradeTrafficRequest = AbortFunctionUpgradeRequest;
-
 export interface RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest {
   /** Required. The name of the function for which traffic target should be changed to 2nd Gen from 1st Gen. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
@@ -1369,22 +1343,20 @@ export const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
         baseUrl: "https://cloudfunctions.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest",
-  }) as any as S.Schema<RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>;
+).annotate({
+  identifier: "RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest",
+}) as any as S.Schema<RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>;
 
 /** Request for the `RollbackFunctionUpgradeTraffic` method. */
 export type RollbackFunctionUpgradeTrafficRequest = AbortFunctionUpgradeRequest;
-export const RollbackFunctionUpgradeTrafficRequest = AbortFunctionUpgradeRequest;
-
 export interface RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest {
   /** Required. The name of the function for which traffic target should be changed back to 1st Gen from 2nd Gen. */
   name: string;
   /** Request body */
   body?: AbortFunctionUpgradeRequest;
 }
-export const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(AbortFunctionUpgradeRequest.pipe(T.HttpBody())),
@@ -1395,9 +1367,9 @@ export const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
         baseUrl: "https://cloudfunctions.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest",
-  }) as any as S.Schema<RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>;
+).annotate({
+  identifier: "RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest",
+}) as any as S.Schema<RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1406,7 +1378,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1419,7 +1391,7 @@ export interface SetIamPolicyProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1439,7 +1411,7 @@ export interface BuildConfigOverrides {
   /** Optional. Specifies the desired runtime for the new Cloud Run function. (e.g., `"nodejs20"`, `"python312"`). Constraints: 1. This field CANNOT be used to change the runtime language (e.g., from `NODEJS` to `PYTHON`). The backend will enforce this. 2. This field can ONLY be used to upgrade the runtime version (e.g., `nodejs18` to `nodejs20`). Downgrading the version is not permitted. The backend will validate the version change. If provided and valid, this overrides the runtime of the Gen1 function. */
   runtime?: string;
 }
-export const BuildConfigOverrides = /*@__PURE__*/ S.suspend(() =>
+const BuildConfigOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtime: S.optional(S.String),
   }),
@@ -1450,7 +1422,7 @@ export interface ServiceConfigOverrides {
   /** Optional. Specifies the maximum number of instances for the new Cloud Run function. If provided, this overrides the max_instance_count setting of the Gen1 function. */
   maxInstanceCount?: number;
 }
-export const ServiceConfigOverrides = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfigOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxInstanceCount: S.optional(S.Number),
   }),
@@ -1465,7 +1437,7 @@ export interface SetupFunctionUpgradeConfigRequest {
   /** Optional. Specifies overrides for the service configuration. */
   serviceConfigOverrides?: ServiceConfigOverrides;
 }
-export const SetupFunctionUpgradeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const SetupFunctionUpgradeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildConfigOverrides: S.optional(BuildConfigOverrides),
     triggerServiceAccount: S.optional(S.String),
@@ -1481,18 +1453,17 @@ export interface SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: SetupFunctionUpgradeConfigRequest;
 }
-export const SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SetupFunctionUpgradeConfigRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2beta/{+name}:setupFunctionUpgradeConfig",
-        baseUrl: "https://cloudfunctions.googleapis.com/",
-      }),
-    ),
+const SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SetupFunctionUpgradeConfigRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:setupFunctionUpgradeConfig",
+      baseUrl: "https://cloudfunctions.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest",
 }) as any as S.Schema<SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest>;
@@ -1502,7 +1473,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1516,7 +1487,7 @@ export interface TestIamPermissionsProjectsLocationsFunctionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1536,7 +1507,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type AbortFunctionUpgradeProjectsLocationsFunctionsError =

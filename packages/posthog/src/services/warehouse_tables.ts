@@ -44,7 +44,7 @@ export type DataWarehouseTableFormatEnum =
   | "JSONEachRow"
   | "Delta"
   | "DeltaS3Wrapper";
-export const DataWarehouseTableFormatEnum = S.String;
+const DataWarehouseTableFormatEnum = S.String;
 
 export interface CredentialInput {
   /** Access key ID for the bucket the files live in (an AWS access key ID, a Google Cloud HMAC key, or the equivalent for another S3-compatible store). */
@@ -52,7 +52,7 @@ export interface CredentialInput {
   /** Secret for the access key. Stored encrypted and never returned by the API. */
   access_secret?: string | Redacted.Redacted<string>;
 }
-export const CredentialInput = /*@__PURE__*/ S.suspend(() =>
+const CredentialInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_key: S.optional(S.String),
     access_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -61,7 +61,7 @@ export const CredentialInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type CreateWarehouseTableRequestOptionsMap = { [key: string]: unknown | undefined };
-export const CreateWarehouseTableRequestOptionsMap = /*@__PURE__*/ S.Record(
+const CreateWarehouseTableRequestOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateWarehouseTableRequestOptionsMap>;
@@ -81,7 +81,7 @@ export interface CreateWarehouseTableRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: CreateWarehouseTableRequestOptionsMap;
 }
-export const CreateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -98,7 +98,7 @@ export const CreateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWarehouseTableRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -112,14 +112,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -132,7 +127,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -156,14 +151,14 @@ export type DataWarehouseTableCreatedViaEnum =
   | "source"
   | "materialized_view"
   | "demo";
-export const DataWarehouseTableCreatedViaEnum = S.String;
+const DataWarehouseTableCreatedViaEnum = S.String;
 
 export interface CredentialOutput {
   id?: string;
   created_by?: UserBasic | null;
   created_at?: string;
 }
-export const CredentialOutput = /*@__PURE__*/ S.suspend(() =>
+const CredentialOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_by: S.optional(S.NullOr(UserBasic)),
@@ -172,11 +167,11 @@ export const CredentialOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CredentialOutput" }) as any as S.Schema<CredentialOutput>;
 
 export type TableOutputColumnsItemMap = { [key: string]: unknown | undefined };
-export const TableOutputColumnsItemMap =
+const TableOutputColumnsItemMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputColumnsItemMap>;
 
 export type TableOutputColumnsList = Array<TableOutputColumnsItemMap>;
-export const TableOutputColumnsList = /*@__PURE__*/ S.Array(
+const TableOutputColumnsList = /*@__PURE__*/ S.Array(
   TableOutputColumnsItemMap,
 ) as any as S.Schema<TableOutputColumnsList>;
 
@@ -1537,7 +1532,7 @@ export type ExternalDataSourceTypeEnum =
   | "ExactOnline"
   | "LettrLabs"
   | "GrafanaIRM";
-export const ExternalDataSourceTypeEnum = S.String;
+const ExternalDataSourceTypeEnum = S.String;
 
 export interface SimpleExternalDataSourceSerializers {
   id?: string;
@@ -1546,7 +1541,7 @@ export interface SimpleExternalDataSourceSerializers {
   status?: string;
   source_type?: ExternalDataSourceTypeEnum;
 }
-export const SimpleExternalDataSourceSerializers = /*@__PURE__*/ S.suspend(() =>
+const SimpleExternalDataSourceSerializers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -1559,12 +1554,12 @@ export const SimpleExternalDataSourceSerializers = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SimpleExternalDataSourceSerializers>;
 
 export type TableOutputExternalSchemaMap = { [key: string]: unknown | undefined };
-export const TableOutputExternalSchemaMap =
+const TableOutputExternalSchemaMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputExternalSchemaMap>;
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type TableOutputOptionsMap = { [key: string]: unknown | undefined };
-export const TableOutputOptionsMap =
+const TableOutputOptionsMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputOptionsMap>;
 
 /** Mixin for serializers to add user access control fields */
@@ -1593,7 +1588,7 @@ export interface TableOutput {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const TableOutput = /*@__PURE__*/ S.suspend(() =>
+const TableOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -1615,7 +1610,7 @@ export const TableOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type CreateWarehouseTablesFileRequestOptionsMap = { [key: string]: unknown | undefined };
-export const CreateWarehouseTablesFileRequestOptionsMap =
+const CreateWarehouseTablesFileRequestOptionsMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<CreateWarehouseTablesFileRequestOptionsMap>;
 
 export interface CreateWarehouseTablesFileRequest {
@@ -1633,7 +1628,7 @@ export interface CreateWarehouseTablesFileRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: CreateWarehouseTablesFileRequestOptionsMap;
 }
-export const CreateWarehouseTablesFileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseTablesFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -1655,9 +1650,7 @@ export const CreateWarehouseTablesFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWarehouseTablesFileRequest>;
 
 export interface CreateWarehouseTablesFileResponse {}
-export const CreateWarehouseTablesFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CreateWarehouseTablesFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateWarehouseTablesFileResponse",
 }) as any as S.Schema<CreateWarehouseTablesFileResponse>;
 
@@ -1667,7 +1660,7 @@ export interface GetWarehouseTableRequest {
   /** A UUID string identifying this data warehouse table. */
   id: string;
 }
-export const GetWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1686,7 +1679,7 @@ export interface ListWarehouseTablesRequest {
   /** A search term. */
   search?: string;
 }
-export const ListWarehouseTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1700,7 +1693,7 @@ export const ListWarehouseTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWarehouseTablesRequest>;
 
 export type PaginatedTableListOutputResultsList = Array<TableOutput>;
-export const PaginatedTableListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTableListOutputResultsList = /*@__PURE__*/ S.Array(
   TableOutput,
 ) as any as S.Schema<PaginatedTableListOutputResultsList>;
 
@@ -1710,7 +1703,7 @@ export interface PaginatedTableListOutput {
   previous?: string | null;
   results?: PaginatedTableListOutputResultsList;
 }
-export const PaginatedTableListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTableListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1721,7 +1714,7 @@ export const PaginatedTableListOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type UpdateWarehouseTableRequestOptionsMap = { [key: string]: unknown | undefined };
-export const UpdateWarehouseTableRequestOptionsMap =
+const UpdateWarehouseTableRequestOptionsMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<UpdateWarehouseTableRequestOptionsMap>;
 
 export interface UpdateWarehouseTableRequest {
@@ -1741,7 +1734,7 @@ export interface UpdateWarehouseTableRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: UpdateWarehouseTableRequestOptionsMap;
 }
-export const UpdateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1760,7 +1753,7 @@ export const UpdateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type UpdateWarehouseTablesPartialRequestOptionsMap = { [key: string]: unknown | undefined };
-export const UpdateWarehouseTablesPartialRequestOptionsMap =
+const UpdateWarehouseTablesPartialRequestOptionsMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<UpdateWarehouseTablesPartialRequestOptionsMap>;
 
 export interface UpdateWarehouseTablesPartialRequest {
@@ -1780,7 +1773,7 @@ export interface UpdateWarehouseTablesPartialRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: UpdateWarehouseTablesPartialRequestOptionsMap;
 }
-export const UpdateWarehouseTablesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseTablesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1803,7 +1796,7 @@ export const UpdateWarehouseTablesPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `csv` - csv * `json` - json * `parquet` - parquet */
 export type CreateTableFromUploadFileFormatEnum = "csv" | "json" | "parquet";
-export const CreateTableFromUploadFileFormatEnum = S.String;
+const CreateTableFromUploadFileFormatEnum = S.String;
 
 export interface WarehouseTablesCreateFromUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1817,7 +1810,7 @@ export interface WarehouseTablesCreateFromUploadCreateRequest {
   /** Name the resulting table is queried by in HogQL. */
   table_name: string;
 }
-export const WarehouseTablesCreateFromUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseTablesCreateFromUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     upload_id: S.String,
@@ -1841,7 +1834,7 @@ export interface WarehouseTablesDestroyRequest {
   /** A UUID string identifying this data warehouse table. */
   id: string;
 }
-export const WarehouseTablesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseTablesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1857,7 +1850,7 @@ export const WarehouseTablesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseTablesDestroyRequest>;
 
 export interface WarehouseTablesDestroyResponse {}
-export const WarehouseTablesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const WarehouseTablesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "WarehouseTablesDestroyResponse",
 }) as any as S.Schema<WarehouseTablesDestroyResponse>;
 
@@ -1867,7 +1860,7 @@ export interface WarehouseTablesRefreshSchemaCreateRequest {
   /** A UUID string identifying this data warehouse table. */
   id: string;
 }
-export const WarehouseTablesRefreshSchemaCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseTablesRefreshSchemaCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1883,14 +1876,14 @@ export const WarehouseTablesRefreshSchemaCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<WarehouseTablesRefreshSchemaCreateRequest>;
 
 export interface WarehouseTablesRefreshSchemaCreateResponse {}
-export const WarehouseTablesRefreshSchemaCreateResponse =
+const WarehouseTablesRefreshSchemaCreateResponse =
   CreateWarehouseTablesFileResponse as any as S.Schema<WarehouseTablesRefreshSchemaCreateResponse>;
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type WarehouseTablesUpdateSchemaCreateRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const WarehouseTablesUpdateSchemaCreateRequestOptionsMap =
+const WarehouseTablesUpdateSchemaCreateRequestOptionsMap =
   CreateWarehouseTableRequestOptionsMap as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequestOptionsMap>;
 
 export interface WarehouseTablesUpdateSchemaCreateRequest {
@@ -1910,7 +1903,7 @@ export interface WarehouseTablesUpdateSchemaCreateRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: WarehouseTablesUpdateSchemaCreateRequestOptionsMap;
 }
-export const WarehouseTablesUpdateSchemaCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseTablesUpdateSchemaCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1932,12 +1925,12 @@ export const WarehouseTablesUpdateSchemaCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequest>;
 
 export interface WarehouseTablesUpdateSchemaCreateResponse {}
-export const WarehouseTablesUpdateSchemaCreateResponse =
+const WarehouseTablesUpdateSchemaCreateResponse =
   CreateWarehouseTablesFileResponse as any as S.Schema<WarehouseTablesUpdateSchemaCreateResponse>;
 
 /** How the file will be read when the table is created. */
 export type WarehouseTablesUploadFileCreateRequestFileFormat = "csv" | "json" | "parquet";
-export const WarehouseTablesUploadFileCreateRequestFileFormat = S.String;
+const WarehouseTablesUploadFileCreateRequestFileFormat = S.String;
 
 export interface WarehouseTablesUploadFileCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1947,7 +1940,7 @@ export interface WarehouseTablesUploadFileCreateRequest {
   /** How the file will be read when the table is created. */
   file_format: WarehouseTablesUploadFileCreateRequestFileFormat | (string & {});
 }
-export const WarehouseTablesUploadFileCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseTablesUploadFileCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     file: S.String,
@@ -1974,7 +1967,7 @@ export interface FileUploadResponse {
   /** Size of the stored file in bytes. */
   size_bytes: number;
 }
-export const FileUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const FileUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upload_id: S.String,
     filename: S.String,

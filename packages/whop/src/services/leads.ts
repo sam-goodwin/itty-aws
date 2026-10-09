@@ -47,7 +47,7 @@ export class UnprocessableEntity
 
 /** A JSON object of custom metadata to attach to the lead for tracking purposes. */
 export type CreateLeadRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateLeadRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateLeadRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateLeadRequestMetadataMap>;
@@ -64,7 +64,7 @@ export interface CreateLeadRequest {
   /** The unique identifier of the user to record as the lead. If authenticated as a user, that user is used automatically. */
   user_id?: string | null;
 }
-export const CreateLeadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLeadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     metadata: S.optional(S.NullOr(CreateLeadRequestMetadataMap)),
@@ -79,7 +79,7 @@ export interface LeadMember {
   /** The unique identifier for the company member. */
   id: string;
 }
-export const LeadMember = /*@__PURE__*/ S.suspend(() =>
+const LeadMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -87,7 +87,7 @@ export const LeadMember = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom key-value pairs attached to this lead. Null if no metadata was provided. */
 export type LeadMetadataMap = { [key: string]: unknown | undefined };
-export const LeadMetadataMap = CreateLeadRequestMetadataMap as any as S.Schema<LeadMetadataMap>;
+const LeadMetadataMap = CreateLeadRequestMetadataMap as any as S.Schema<LeadMetadataMap>;
 
 /** The product the lead expressed interest in. Null if the lead is not associated with a specific product. */
 export interface LeadProduct {
@@ -96,7 +96,7 @@ export interface LeadProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const LeadProduct = /*@__PURE__*/ S.suspend(() =>
+const LeadProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -114,7 +114,7 @@ export interface LeadUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const LeadUser = /*@__PURE__*/ S.suspend(() =>
+const LeadUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     id: S.String,
@@ -142,7 +142,7 @@ export interface Lead {
   /** The user account associated with this lead. */
   user: LeadUser;
 }
-export const Lead = /*@__PURE__*/ S.suspend(() =>
+const Lead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -159,7 +159,7 @@ export interface GetLeadRequest {
   /** The unique identifier of the lead to retrieve. */
   id: string;
 }
-export const GetLeadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLeadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/leads/{id}", code: 200 })),
@@ -167,7 +167,7 @@ export const GetLeadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter leads to only those associated with these specific product identifiers. */
 export type ListLeadRequestProductIdsList = Array<string>;
-export const ListLeadRequestProductIdsList = /*@__PURE__*/ S.Array(
+const ListLeadRequestProductIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListLeadRequestProductIdsList>;
 
@@ -181,7 +181,7 @@ export interface ListLeadRequest {
   product_ids?: ListLeadRequestProductIdsList;
   account_id: string;
 }
-export const ListLeadRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLeadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -196,21 +196,12 @@ export const ListLeadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The company member record if this lead has converted into a paying customer. Null if the lead has not converted. */
 export type LeadListItemMember = LeadMember;
-export const LeadListItemMember = LeadMember;
-
 /** Custom key-value pairs attached to this lead. Null if no metadata was provided. */
 export type LeadListItemMetadataMap = { [key: string]: unknown | undefined };
-export const LeadListItemMetadataMap =
-  CreateLeadRequestMetadataMap as any as S.Schema<LeadListItemMetadataMap>;
-
 /** The product the lead expressed interest in. Null if the lead is not associated with a specific product. */
 export type LeadListItemProduct = LeadProduct;
-export const LeadListItemProduct = LeadProduct;
-
 /** The user account associated with this lead. */
 export type LeadListItemUser = LeadUser;
-export const LeadListItemUser = LeadUser;
-
 /** A prospective customer who has expressed interest in a company or product but has not yet purchased. */
 export interface LeadListItem {
   /** The datetime the lead was created. */
@@ -230,11 +221,11 @@ export interface LeadListItem {
   /** The user account associated with this lead. */
   user: LeadUser;
 }
-export const LeadListItem = Lead as any as S.Schema<LeadListItem>;
+const LeadListItem = Lead as any as S.Schema<LeadListItem>;
 
 /** A list of nodes. */
 export type ListLeadResponseDataList = Array<LeadListItem>;
-export const ListLeadResponseDataList = /*@__PURE__*/ S.Array(
+const ListLeadResponseDataList = /*@__PURE__*/ S.Array(
   LeadListItem,
 ) as any as S.Schema<ListLeadResponseDataList>;
 
@@ -249,7 +240,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -264,7 +255,7 @@ export interface ListLeadResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListLeadResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLeadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListLeadResponseDataList,
     page_info: PageInfo,
@@ -273,7 +264,7 @@ export const ListLeadResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A JSON object of custom metadata to set on the lead, replacing any existing metadata. */
 export type UpdateLeadRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateLeadRequestMetadataMap =
+const UpdateLeadRequestMetadataMap =
   CreateLeadRequestMetadataMap as any as S.Schema<UpdateLeadRequestMetadataMap>;
 
 export interface UpdateLeadRequest {
@@ -284,7 +275,7 @@ export interface UpdateLeadRequest {
   /** The updated referral URL for the lead, such as 'https://example.com/landing'. */
   referrer?: string | null;
 }
-export const UpdateLeadRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLeadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     metadata: S.optional(S.NullOr(UpdateLeadRequestMetadataMap)),

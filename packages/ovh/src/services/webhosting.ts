@@ -16,7 +16,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -34,7 +34,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmHostingWebTerminationRequest {
   /** Service name */
@@ -48,7 +48,7 @@ export interface ConfirmHostingWebTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmHostingWebTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmHostingWebTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -63,7 +63,7 @@ export const ConfirmHostingWebTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfirmHostingWebTerminationRequest>;
 
 export type ConfirmHostingWebTerminationResponse = string;
-export const ConfirmHostingWebTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmHostingWebTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmHostingWebTerminationResponse",
@@ -75,7 +75,7 @@ export interface CopyHostingWebDatabaseRequest {
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-export const CopyHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -88,7 +88,7 @@ export const CopyHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Database copy status */
 export type HostingWebDatabaseCopyStatusEnum = "doing" | "done" | "error" | "todo";
-export const HostingWebDatabaseCopyStatusEnum = S.String;
+const HostingWebDatabaseCopyStatusEnum = S.String;
 
 /** Copy */
 export interface HostingWebDatabaseCopy {
@@ -103,7 +103,7 @@ export interface HostingWebDatabaseCopy {
   /** Copy status */
   status?: HostingWebDatabaseCopyStatusEnum;
 }
-export const HostingWebDatabaseCopy = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDatabaseCopy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     expirationDate: S.optional(S.NullOr(S.String)),
@@ -123,7 +123,7 @@ export interface CopyHostingWebDatabaseRestoreRequest {
   /** If database will be flushed before importing the dump. Default: false */
   flushDatabase?: boolean;
 }
-export const CopyHostingWebDatabaseRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyHostingWebDatabaseRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -170,11 +170,11 @@ export type HostingWebTaskObjectTypeEnum =
   | "Web"
   | "Webd"
   | "Website";
-export const HostingWebTaskObjectTypeEnum = S.String;
+const HostingWebTaskObjectTypeEnum = S.String;
 
 /** Task status enum */
 export type HostingWebTaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo";
-export const HostingWebTaskStatusEnum = S.String;
+const HostingWebTaskStatusEnum = S.String;
 
 /** Tasks */
 export interface HostingWebTask {
@@ -195,7 +195,7 @@ export interface HostingWebTask {
   /** Task status */
   status?: HostingWebTaskStatusEnum;
 }
-export const HostingWebTask = /*@__PURE__*/ S.suspend(() =>
+const HostingWebTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doneDate: S.optional(S.NullOr(S.String)),
     function: S.optional(S.String),
@@ -210,11 +210,11 @@ export const HostingWebTask = /*@__PURE__*/ S.suspend(() =>
 
 /** whether or not the attachedDomain is linked to the hosting cdn */
 export type HostingWebAttachedDomainCdnEnum = "active" | "none";
-export const HostingWebAttachedDomainCdnEnum = S.String;
+const HostingWebAttachedDomainCdnEnum = S.String;
 
 /** Firewall state for this path */
 export type HostingWebAttachedDomainFirewallEnum = "active" | "none";
-export const HostingWebAttachedDomainFirewallEnum = S.String;
+const HostingWebAttachedDomainFirewallEnum = S.String;
 
 /** Available cluster countries */
 export type HostingWebCountryEnum =
@@ -232,7 +232,7 @@ export type HostingWebCountryEnum =
   | "PL"
   | "PT"
   | "UK";
-export const HostingWebCountryEnum = S.String;
+const HostingWebCountryEnum = S.String;
 
 export interface CreateHostingWebAttachedDomainRequest {
   /** Service name */
@@ -256,7 +256,7 @@ export interface CreateHostingWebAttachedDomainRequest {
   /** Whether to put the attached domain in the SSL certificate */
   ssl?: boolean | null;
 }
-export const CreateHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bypassDNSConfiguration: S.optional(S.NullOr(S.Boolean)),
@@ -465,7 +465,7 @@ export type HostingWebTaskFunctionEnum =
   | "website/create"
   | "website/delete"
   | "website/deploy";
-export const HostingWebTaskFunctionEnum = S.String;
+const HostingWebTaskFunctionEnum = S.String;
 
 /** Public task */
 export interface HostingWebPublicTask {
@@ -486,7 +486,7 @@ export interface HostingWebPublicTask {
   /** Task status */
   status?: HostingWebTaskStatusEnum;
 }
-export const HostingWebPublicTask = /*@__PURE__*/ S.suspend(() =>
+const HostingWebPublicTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doneDate: S.optional(S.NullOr(S.String)),
     function: S.optional(HostingWebTaskFunctionEnum),
@@ -505,7 +505,7 @@ export interface CreateHostingWebAttachedDomainSslRequest {
   /** Domain */
   domain: string;
 }
-export const CreateHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -522,7 +522,7 @@ export const CreateHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(
 
 /** Hosted SSL Provider */
 export type HostingWebHostedsslProviderEnum = "COMODO" | "CUSTOM" | "LETSENCRYPT" | "SECTIGO";
-export const HostingWebHostedsslProviderEnum = S.String;
+const HostingWebHostedsslProviderEnum = S.String;
 
 /** Hosted SSL status */
 export type HostingWebHostedsslStatusEnum =
@@ -531,11 +531,11 @@ export type HostingWebHostedsslStatusEnum =
   | "deleting"
   | "importing"
   | "regenerating";
-export const HostingWebHostedsslStatusEnum = S.String;
+const HostingWebHostedsslStatusEnum = S.String;
 
 /** Hosted SSL type */
 export type HostingWebHostedsslTypeEnum = "CUSTOM" | "DV" | "EV";
-export const HostingWebHostedsslTypeEnum = S.String;
+const HostingWebHostedsslTypeEnum = S.String;
 
 /** Hosted SSL properties */
 export interface HostingWebSSL {
@@ -552,7 +552,7 @@ export interface HostingWebSSL {
   /** Type of the Hosted SSL */
   type?: HostingWebHostedsslTypeEnum;
 }
-export const HostingWebSSL = /*@__PURE__*/ S.suspend(() =>
+const HostingWebSSL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isReportable: S.optional(S.Boolean),
     provider: S.optional(HostingWebHostedsslProviderEnum),
@@ -565,15 +565,15 @@ export const HostingWebSSL = /*@__PURE__*/ S.suspend(() =>
 
 /** Option pattern type */
 export type CdnOptionPatternTypeEnum = "extension" | "folder" | "regex" | "uri";
-export const CdnOptionPatternTypeEnum = S.String;
+const CdnOptionPatternTypeEnum = S.String;
 
 /** Option query parameters */
 export type CdnOptionQueryParametersEnum = "ignored" | "sorted";
-export const CdnOptionQueryParametersEnum = S.String;
+const CdnOptionQueryParametersEnum = S.String;
 
 /** List of URI */
 export type CdnDomainOptionConfigResourcesList = Array<string>;
-export const CdnDomainOptionConfigResourcesList = /*@__PURE__*/ S.Array(
+const CdnDomainOptionConfigResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CdnDomainOptionConfigResourcesList>;
 
@@ -598,7 +598,7 @@ export interface CdnDomainOptionConfig {
   /** Cache time in seconds */
   ttl?: number | null;
 }
-export const CdnDomainOptionConfig = /*@__PURE__*/ S.suspend(() =>
+const CdnDomainOptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.NullOr(S.String)),
     followUri: S.optional(S.NullOr(S.Boolean)),
@@ -614,7 +614,7 @@ export const CdnDomainOptionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Option type */
 export type CdnOptionTypePostEnum = "cache_rule";
-export const CdnOptionTypePostEnum = S.String;
+const CdnOptionTypePostEnum = S.String;
 
 export interface CreateHostingWebCdnDomainOptionRequest {
   /** Service name */
@@ -632,7 +632,7 @@ export interface CreateHostingWebCdnDomainOptionRequest {
   /** Option type */
   type: CdnOptionTypePostEnum | (string & {});
 }
-export const CreateHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -659,7 +659,7 @@ export interface CdnDomainOptionExtra {
   /** Current usage of the option */
   usage?: number | null;
 }
-export const CdnDomainOptionExtra = /*@__PURE__*/ S.suspend(() =>
+const CdnDomainOptionExtra = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.optional(S.NullOr(S.Number)),
     usage: S.optional(S.NullOr(S.Number)),
@@ -681,7 +681,7 @@ export type CdnOptionTypeEnum =
   | "prewarm"
   | "querystring"
   | "waf";
-export const CdnOptionTypeEnum = S.String;
+const CdnOptionTypeEnum = S.String;
 
 /** Option details */
 export interface CdnDomainOption {
@@ -698,7 +698,7 @@ export interface CdnDomainOption {
   /** Option type */
   type: CdnOptionTypeEnum;
 }
-export const CdnDomainOption = /*@__PURE__*/ S.suspend(() =>
+const CdnDomainOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.NullOr(CdnDomainOptionConfig)),
     enabled: S.Boolean,
@@ -722,7 +722,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -738,7 +738,7 @@ export interface CreateHostingWebCdnServiceInfosUpdateRequest {
   /** Renew type */
   renew: ServiceRenewType;
 }
-export const CreateHostingWebCdnServiceInfosUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebCdnServiceInfosUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: ServiceRenewType,
@@ -750,7 +750,7 @@ export const CreateHostingWebCdnServiceInfosUpdateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateRequest>;
 
 export interface CreateHostingWebCdnServiceInfosUpdateResponse {}
-export const CreateHostingWebCdnServiceInfosUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebCdnServiceInfosUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateHostingWebCdnServiceInfosUpdateResponse",
@@ -766,7 +766,7 @@ export interface CreateHostingWebChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateHostingWebChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -778,12 +778,12 @@ export const CreateHostingWebChangeContactRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateHostingWebChangeContactRequest>;
 
 export type CreateHostingWebChangeContactResponseBodyList = Array<number>;
-export const CreateHostingWebChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateHostingWebChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateHostingWebChangeContactResponseBodyList>;
 
 export type CreateHostingWebChangeContactResponse = CreateHostingWebChangeContactResponseBodyList;
-export const CreateHostingWebChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateHostingWebChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateHostingWebChangeContactResponse",
@@ -817,11 +817,11 @@ export type HostingWebLanguagesEnum =
   | "python2"
   | "python3"
   | "ruby2.6";
-export const HostingWebLanguagesEnum = S.String;
+const HostingWebLanguagesEnum = S.String;
 
 /** Cron status */
 export type HostingWebCronStatusEnum = "disabled" | "enabled" | "suspended";
-export const HostingWebCronStatusEnum = S.String;
+const HostingWebCronStatusEnum = S.String;
 
 export interface CreateHostingWebCronRequest {
   /** Service name */
@@ -839,7 +839,7 @@ export interface CreateHostingWebCronRequest {
   /** Cron status */
   status?: HostingWebCronStatusEnum | (string & {});
 }
-export const CreateHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     command: S.String,
@@ -861,11 +861,11 @@ export type HostingWebDatabaseDatabaseCapabilitiesTypeEnum =
   | "sqlLocal"
   | "sqlPerso"
   | "sqlPro";
-export const HostingWebDatabaseDatabaseCapabilitiesTypeEnum = S.String;
+const HostingWebDatabaseDatabaseCapabilitiesTypeEnum = S.String;
 
 /** ExtraSqlPerso quota enum */
 export type HostingWebDatabaseExtraSqlQuotaEnum = 25 | 100 | 200 | 256 | 400 | 512 | 800 | 1024;
-export const HostingWebDatabaseExtraSqlQuotaEnum = S.Number;
+const HostingWebDatabaseExtraSqlQuotaEnum = S.Number;
 
 /** Database Type enum */
 export type HostingWebDatabaseDatabaseCreationTypeEnum =
@@ -873,7 +873,7 @@ export type HostingWebDatabaseDatabaseCreationTypeEnum =
   | "mysql"
   | "postgresql"
   | "redis";
-export const HostingWebDatabaseDatabaseCreationTypeEnum = S.String;
+const HostingWebDatabaseDatabaseCreationTypeEnum = S.String;
 
 /** Database Version enum */
 export type HostingWebDatabaseVersionEnum =
@@ -903,7 +903,7 @@ export type HostingWebDatabaseVersionEnum =
   | "9.4"
   | "9.5"
   | "9.6";
-export const HostingWebDatabaseVersionEnum = S.String;
+const HostingWebDatabaseVersionEnum = S.String;
 
 export interface CreateHostingWebDatabaseRequest {
   /** The internal name of your hosting */
@@ -921,7 +921,7 @@ export interface CreateHostingWebDatabaseRequest {
   /** Version you want for your database following the type */
   version?: HostingWebDatabaseVersionEnum | (string & {});
 }
-export const CreateHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     capabilitie: HostingWebDatabaseDatabaseCapabilitiesTypeEnum,
@@ -943,7 +943,7 @@ export interface CreateHostingWebDatabaseChangePasswordRequest {
   /** The new database password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateHostingWebDatabaseChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebDatabaseChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -961,7 +961,7 @@ export const CreateHostingWebDatabaseChangePasswordRequest = /*@__PURE__*/ S.sus
 
 /** List of dump types */
 export type HostingWebDatabaseDumpDateEnum = "daily.1" | "now" | "weekly.1";
-export const HostingWebDatabaseDumpDateEnum = S.String;
+const HostingWebDatabaseDumpDateEnum = S.String;
 
 export interface CreateHostingWebDatabaseDumpRequest {
   /** The internal name of your hosting */
@@ -973,7 +973,7 @@ export interface CreateHostingWebDatabaseDumpRequest {
   /** Send an email when dump will be available? Default: true */
   sendEmail?: boolean;
 }
-export const CreateHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -988,7 +988,7 @@ export const CreateHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Types of action you can request for your database */
 export type HostingWebDatabaseRequestActionEnum = "CHECK_QUOTA";
-export const HostingWebDatabaseRequestActionEnum = S.String;
+const HostingWebDatabaseRequestActionEnum = S.String;
 
 export interface CreateHostingWebDatabaseRequestRequest {
   /** The internal name of your hosting */
@@ -998,7 +998,7 @@ export interface CreateHostingWebDatabaseRequestRequest {
   /** Action you want to request */
   action: HostingWebDatabaseRequestActionEnum | (string & {});
 }
-export const CreateHostingWebDatabaseRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebDatabaseRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1016,7 +1016,7 @@ export const CreateHostingWebDatabaseRequestRequest = /*@__PURE__*/ S.suspend(()
 
 /** Types of action you can request for your mail */
 export type HostingWebMailActionEnum = "BLOCK" | "PURGE" | "UNBLOCK";
-export const HostingWebMailActionEnum = S.String;
+const HostingWebMailActionEnum = S.String;
 
 export interface CreateHostingWebEmailRequestRequest {
   /** The internal name of your hosting */
@@ -1024,7 +1024,7 @@ export interface CreateHostingWebEmailRequestRequest {
   /** Action you want to request */
   action: HostingWebMailActionEnum | (string & {});
 }
-export const CreateHostingWebEmailRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebEmailRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     action: HostingWebMailActionEnum,
@@ -1034,12 +1034,12 @@ export const CreateHostingWebEmailRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateHostingWebEmailRequestRequest>;
 
 export type CreateHostingWebEmailRequestResponse = string;
-export const CreateHostingWebEmailRequestResponse =
+const CreateHostingWebEmailRequestResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<CreateHostingWebEmailRequestResponse>;
 
 /** Filter the value of type property (=) */
 export type HostingWebEnvVarTypeEnum = "integer" | "password" | "string";
-export const HostingWebEnvVarTypeEnum = S.String;
+const HostingWebEnvVarTypeEnum = S.String;
 
 export interface CreateHostingWebEnvVarRequest {
   /** Service name */
@@ -1051,7 +1051,7 @@ export interface CreateHostingWebEnvVarRequest {
   /** Value of the variable */
   value: string;
 }
-export const CreateHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     key: S.String,
@@ -1070,7 +1070,7 @@ export interface CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest {
   /** Renew type */
   renew: ServiceRenewType;
 }
-export const CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1087,14 +1087,14 @@ export const CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest = /*@__PURE_
 }) as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest>;
 
 export interface CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse {}
-export const CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse =
+const CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse>;
 
 export interface CreateHostingWebKeySshRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateHostingWebKeySshRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebKeySshRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/key/ssh", code: 200 })),
@@ -1107,7 +1107,7 @@ export interface HostingWebKey {
   /** Public key */
   publicKey?: string;
 }
-export const HostingWebKey = /*@__PURE__*/ S.suspend(() =>
+const HostingWebKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKey: S.optional(S.String),
   }),
@@ -1121,33 +1121,32 @@ export interface CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest {
   /** Renew type */
   renew: ServiceRenewType;
 }
-export const CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      renew: ServiceRenewType,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate",
-        code: 200,
-      }),
-    ),
+const CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    renew: ServiceRenewType,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest",
 }) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest>;
 
 export interface CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse {}
-export const CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse",
 }) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse>;
 
 /** Location country */
 export type HostingWebLocalSeoLocationCountryEnum = "FR";
-export const HostingWebLocalSeoLocationCountryEnum = S.String;
+const HostingWebLocalSeoLocationCountryEnum = S.String;
 
 export interface CreateHostingWebLocalSeoVisibilityCheckRequest {
   /** Country of the location */
@@ -1159,7 +1158,7 @@ export interface CreateHostingWebLocalSeoVisibilityCheckRequest {
   /** Zipcode of the location */
   zip: string;
 }
-export const CreateHostingWebLocalSeoVisibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebLocalSeoVisibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: HostingWebLocalSeoLocationCountryEnum,
     name: S.String,
@@ -1191,7 +1190,7 @@ export interface HostingWebLocalSeoSearchData {
   /** Zipcode of the location */
   zip?: string;
 }
-export const HostingWebLocalSeoSearchData = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoSearchData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     country: S.optional(S.String),
@@ -1214,7 +1213,7 @@ export interface HostingWebLocalSeoVisibilityCheckResponse {
   /** Searched location data */
   searchData?: HostingWebLocalSeoSearchData;
 }
-export const HostingWebLocalSeoVisibilityCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoVisibilityCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alreadyManaged: S.optional(S.NullOr(S.Boolean)),
     searchData: S.optional(HostingWebLocalSeoSearchData),
@@ -1225,7 +1224,7 @@ export const HostingWebLocalSeoVisibilityCheckResponse = /*@__PURE__*/ S.suspend
 
 /** The type of the dependency. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export type HostingWebModuleDependencyTypeEnum = "mysql";
-export const HostingWebModuleDependencyTypeEnum = S.String;
+const HostingWebModuleDependencyTypeEnum = S.String;
 
 /** Dependency parameters. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export interface HostingWebModuleDependencyType {
@@ -1244,7 +1243,7 @@ export interface HostingWebModuleDependencyType {
   /** The user to use to connect to this dependency */
   user?: string | null;
 }
-export const HostingWebModuleDependencyType = /*@__PURE__*/ S.suspend(() =>
+const HostingWebModuleDependencyType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -1260,7 +1259,7 @@ export const HostingWebModuleDependencyType = /*@__PURE__*/ S.suspend(() =>
 
 /** The dependencies that we have to configure on your module. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export type CreateHostingWebModuleRequestDependenciesList = Array<HostingWebModuleDependencyType>;
-export const CreateHostingWebModuleRequestDependenciesList = /*@__PURE__*/ S.Array(
+const CreateHostingWebModuleRequestDependenciesList = /*@__PURE__*/ S.Array(
   HostingWebModuleDependencyType,
 ) as any as S.Schema<CreateHostingWebModuleRequestDependenciesList>;
 
@@ -1277,7 +1276,7 @@ export type HostingWebModuleLanguageEnum =
   | "nl"
   | "pl"
   | "pt";
-export const HostingWebModuleLanguageEnum = S.String;
+const HostingWebModuleLanguageEnum = S.String;
 
 export interface CreateHostingWebModuleRequest {
   /** The internal name of your hosting */
@@ -1297,7 +1296,7 @@ export interface CreateHostingWebModuleRequest {
   /** Where to install the module, relative to your home directory */
   path?: string;
 }
-export const CreateHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     adminName: S.optional(S.String),
@@ -1320,7 +1319,7 @@ export interface CreateHostingWebModuleUpgradeRequest {
   /** The ID of the module to upgrade to */
   moduleId: number;
 }
-export const CreateHostingWebModuleUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebModuleUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1339,11 +1338,11 @@ export type HostingWebOvhconfigContainerEnum =
   | "stable"
   | "stable64"
   | "testing";
-export const HostingWebOvhconfigContainerEnum = S.String;
+const HostingWebOvhconfigContainerEnum = S.String;
 
 /** Hosting configuration engine */
 export type HostingWebOvhConfigEngineNameEnum = "php" | "phpcgi";
-export const HostingWebOvhConfigEngineNameEnum = S.String;
+const HostingWebOvhConfigEngineNameEnum = S.String;
 
 /** Hosting available configuration version */
 export type HostingWebOvhConfigAvailableEngineVersionEnum =
@@ -1360,15 +1359,15 @@ export type HostingWebOvhConfigAvailableEngineVersionEnum =
   | "8.2"
   | "8.3"
   | "8.4";
-export const HostingWebOvhConfigAvailableEngineVersionEnum = S.String;
+const HostingWebOvhConfigAvailableEngineVersionEnum = S.String;
 
 /** Hosting configuration environment */
 export type HostingWebOvhConfigEnvironmentEnum = "development" | "production";
-export const HostingWebOvhConfigEnvironmentEnum = S.String;
+const HostingWebOvhConfigEnvironmentEnum = S.String;
 
 /** Hosting configuration firewall */
 export type HostingWebOvhConfigHttpFirewallEnum = "none" | "security";
-export const HostingWebOvhConfigHttpFirewallEnum = S.String;
+const HostingWebOvhConfigHttpFirewallEnum = S.String;
 
 export interface CreateHostingWebOvhConfigChangeConfigurationRequest {
   /** The internal name of your hosting */
@@ -1386,7 +1385,7 @@ export interface CreateHostingWebOvhConfigChangeConfigurationRequest {
   /** Configuration you want for http firewall */
   httpFirewall?: HostingWebOvhConfigHttpFirewallEnum | (string & {});
 }
-export const CreateHostingWebOvhConfigChangeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebOvhConfigChangeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1410,7 +1409,7 @@ export interface CreateHostingWebOvhConfigRefreshRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const CreateHostingWebOvhConfigRefreshRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebOvhConfigRefreshRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1428,7 +1427,7 @@ export interface CreateHostingWebOvhConfigRollbackRequest {
   /** The configuration's id you want to rollback */
   rollbackId: number;
 }
-export const CreateHostingWebOvhConfigRollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebOvhConfigRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1458,7 +1457,7 @@ export interface CreateHostingWebOwnLogUserLogRequest {
   /** The new userLogs password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1474,7 +1473,7 @@ export const CreateHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateHostingWebOwnLogUserLogRequest>;
 
 export type CreateHostingWebOwnLogUserLogResponse = string;
-export const CreateHostingWebOwnLogUserLogResponse =
+const CreateHostingWebOwnLogUserLogResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<CreateHostingWebOwnLogUserLogResponse>;
 
 export interface CreateHostingWebOwnLogUserLogChangePasswordRequest {
@@ -1487,7 +1486,7 @@ export interface CreateHostingWebOwnLogUserLogChangePasswordRequest {
   /** The new userLogs password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateHostingWebOwnLogUserLogChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebOwnLogUserLogChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1505,12 +1504,12 @@ export const CreateHostingWebOwnLogUserLogChangePasswordRequest = /*@__PURE__*/ 
 }) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordRequest>;
 
 export type CreateHostingWebOwnLogUserLogChangePasswordResponse = string;
-export const CreateHostingWebOwnLogUserLogChangePasswordResponse =
+const CreateHostingWebOwnLogUserLogChangePasswordResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordResponse>;
 
 /** Types of action you can request for your web hosting */
 export type HostingWebRequestActionEnum = "CHECK_QUOTA" | "FLUSH_CACHE" | "SCAN_ANTIHACK";
-export const HostingWebRequestActionEnum = S.String;
+const HostingWebRequestActionEnum = S.String;
 
 export interface CreateHostingWebRequestRequest {
   /** The internal name of your hosting */
@@ -1518,7 +1517,7 @@ export interface CreateHostingWebRequestRequest {
   /** Action you want to request */
   action: HostingWebRequestActionEnum | (string & {});
 }
-export const CreateHostingWebRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     action: HostingWebRequestActionEnum,
@@ -1541,7 +1540,7 @@ export type HostingWebOfferEnum =
   | "POWER_BETA_1"
   | "PRO"
   | "START";
-export const HostingWebOfferEnum = S.String;
+const HostingWebOfferEnum = S.String;
 
 export interface CreateHostingWebRequestBoostRequest {
   /** Service name */
@@ -1549,7 +1548,7 @@ export interface CreateHostingWebRequestBoostRequest {
   /** Requested boost offer */
   offer?: HostingWebOfferEnum | (string & {}) | null;
 }
-export const CreateHostingWebRequestBoostRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebRequestBoostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     offer: S.optional(S.NullOr(HostingWebOfferEnum)),
@@ -1560,11 +1559,11 @@ export const CreateHostingWebRequestBoostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Runtime env enum */
 export type HostingWebRuntimeEnvEnum = "development" | "production";
-export const HostingWebRuntimeEnvEnum = S.String;
+const HostingWebRuntimeEnvEnum = S.String;
 
 /** The attached domains fqdn to link to this runtime configuration */
 export type CreateHostingWebRuntimeRequestAttachedDomainsList = Array<string>;
-export const CreateHostingWebRuntimeRequestAttachedDomainsList =
+const CreateHostingWebRuntimeRequestAttachedDomainsList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<CreateHostingWebRuntimeRequestAttachedDomainsList>;
 
 /** Runtime backend type enum */
@@ -1585,7 +1584,7 @@ export type HostingWebRuntimeTypeEnum =
   | "python-2"
   | "python-3"
   | "ruby-2.6";
-export const HostingWebRuntimeTypeEnum = S.String;
+const HostingWebRuntimeTypeEnum = S.String;
 
 export interface CreateHostingWebRuntimeRequest {
   /** The internal name of your hosting */
@@ -1605,7 +1604,7 @@ export interface CreateHostingWebRuntimeRequest {
   /** The backend type of a runtime configuration */
   type?: HostingWebRuntimeTypeEnum | (string & {});
 }
-export const CreateHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     appBootstrap: S.optional(S.String),
@@ -1622,7 +1621,7 @@ export const CreateHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Account's ssh state */
 export type HostingWebUserSshStateEnum = "active" | "none" | "sftponly";
-export const HostingWebUserSshStateEnum = S.String;
+const HostingWebUserSshStateEnum = S.String;
 
 export interface CreateHostingWebUserRequest {
   /** The internal name of your hosting */
@@ -1636,7 +1635,7 @@ export interface CreateHostingWebUserRequest {
   /** Ssh state for this user. Default: none */
   sshState?: HostingWebUserSshStateEnum | (string & {});
 }
-export const CreateHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     home: S.String,
@@ -1656,7 +1655,7 @@ export interface CreateHostingWebUserChangePasswordRequest {
   /** The user's new password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateHostingWebUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1682,7 +1681,7 @@ export interface CreateHostingWebWebsiteRequest {
   /** Clone URL of the repository containing the website source code to deploy */
   vcsUrl: string;
 }
-export const CreateHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     path: S.String,
@@ -1701,7 +1700,7 @@ export interface DeleteHostingWebAttachedDomainRequest {
   /** If set to true, DNS zone will not be updated by the operation */
   bypassDNSConfiguration?: boolean;
 }
-export const DeleteHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1723,7 +1722,7 @@ export interface DeleteHostingWebAttachedDomainSslRequest {
   /** Domain */
   domain: string;
 }
-export const DeleteHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1746,7 +1745,7 @@ export interface DeleteHostingWebCdnDomainOptionRequest {
   /** Option name */
   optionName: string;
 }
-export const DeleteHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -1763,7 +1762,7 @@ export const DeleteHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteHostingWebCdnDomainOptionRequest>;
 
 export interface DeleteHostingWebCdnDomainOptionResponse {}
-export const DeleteHostingWebCdnDomainOptionResponse =
+const DeleteHostingWebCdnDomainOptionResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<DeleteHostingWebCdnDomainOptionResponse>;
 
 export interface DeleteHostingWebCronRequest {
@@ -1772,7 +1771,7 @@ export interface DeleteHostingWebCronRequest {
   /** Id */
   id: number;
 }
-export const DeleteHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1787,7 +1786,7 @@ export interface DeleteHostingWebDatabaseRequest {
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-export const DeleteHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1806,7 +1805,7 @@ export interface DeleteHostingWebDatabaseCopyRequest {
   /** Copy id */
   id: string;
 }
-export const DeleteHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1823,7 +1822,7 @@ export const DeleteHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHostingWebDatabaseCopyRequest>;
 
 export interface DeleteHostingWebDatabaseCopyResponse {}
-export const DeleteHostingWebDatabaseCopyResponse =
+const DeleteHostingWebDatabaseCopyResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<DeleteHostingWebDatabaseCopyResponse>;
 
 export interface DeleteHostingWebDatabaseDumpRequest {
@@ -1834,7 +1833,7 @@ export interface DeleteHostingWebDatabaseDumpRequest {
   /** Dump id */
   id: number;
 }
-export const DeleteHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1856,7 +1855,7 @@ export interface DeleteHostingWebDumpRequest {
   /** Dump id */
   id: number;
 }
-export const DeleteHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1871,7 +1870,7 @@ export interface DeleteHostingWebEnvVarRequest {
   /** Key */
   key: string;
 }
-export const DeleteHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -1886,7 +1885,7 @@ export interface DeleteHostingWebModuleRequest {
   /** Installation ID */
   id: number;
 }
-export const DeleteHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1903,7 +1902,7 @@ export interface DeleteHostingWebOwnLogUserLogRequest {
   /** The userLogs login used to connect to logs.ovh.net */
   login: string;
 }
-export const DeleteHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1920,7 +1919,7 @@ export const DeleteHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteHostingWebOwnLogUserLogRequest>;
 
 export type DeleteHostingWebOwnLogUserLogResponse = string;
-export const DeleteHostingWebOwnLogUserLogResponse =
+const DeleteHostingWebOwnLogUserLogResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<DeleteHostingWebOwnLogUserLogResponse>;
 
 export interface DeleteHostingWebRuntimeRequest {
@@ -1929,7 +1928,7 @@ export interface DeleteHostingWebRuntimeRequest {
   /** The runtime configuration ID */
   id: number;
 }
-export const DeleteHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1944,7 +1943,7 @@ export interface DeleteHostingWebUserRequest {
   /** Login used to connect on FTP and SSH */
   login: string;
 }
-export const DeleteHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1961,7 +1960,7 @@ export interface DeleteHostingWebWebsiteRequest {
   /** Whether the website path should be emptied or not */
   deleteFiles: boolean;
 }
-export const DeleteHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1979,7 +1978,7 @@ export interface DeployHostingWebWebsiteRequest {
   /** Whether a reset was requested before deploying */
   reset?: boolean;
 }
-export const DeployHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1995,7 +1994,7 @@ export interface GetHostingWebRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}", code: 200 })),
@@ -2018,7 +2017,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Price with its currency and textual representation */
 export interface OrderPrice {
@@ -2031,7 +2030,7 @@ export interface OrderPrice {
   /** The effective price */
   value?: number;
 }
-export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     priceInUcents: S.optional(S.NullOr(S.Number)),
@@ -2047,7 +2046,7 @@ export interface HostingWebAvailableOfferStruct {
   /** The price in month for this boost offer */
   price?: OrderPrice;
 }
-export const HostingWebAvailableOfferStruct = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAvailableOfferStruct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offer: S.optional(HostingWebOfferEnum),
     price: S.optional(OrderPrice),
@@ -2058,7 +2057,7 @@ export const HostingWebAvailableOfferStruct = /*@__PURE__*/ S.suspend(() =>
 
 /** Available offers for boost option */
 export type HostingWebServiceWithIAMAvailableBoostOfferList = Array<HostingWebAvailableOfferStruct>;
-export const HostingWebServiceWithIAMAvailableBoostOfferList = /*@__PURE__*/ S.Array(
+const HostingWebServiceWithIAMAvailableBoostOfferList = /*@__PURE__*/ S.Array(
   HostingWebAvailableOfferStruct,
 ) as any as S.Schema<HostingWebServiceWithIAMAvailableBoostOfferList>;
 
@@ -2148,7 +2147,7 @@ export type HostingWebOfferCapabilitiesEnum =
   | "starter"
   | "xxlpack"
   | "xxlplan";
-export const HostingWebOfferCapabilitiesEnum = S.String;
+const HostingWebOfferCapabilitiesEnum = S.String;
 
 /** Available clusterIp by country */
 export interface HostingWebCountriesIp {
@@ -2159,7 +2158,7 @@ export interface HostingWebCountriesIp {
   /** The cluster ipv6 */
   ipv6?: string | null;
 }
-export const HostingWebCountriesIp = /*@__PURE__*/ S.suspend(() =>
+const HostingWebCountriesIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(HostingWebCountryEnum),
     ip: S.optional(S.NullOr(S.String)),
@@ -2169,13 +2168,13 @@ export const HostingWebCountriesIp = /*@__PURE__*/ S.suspend(() =>
 
 /** Available clusterIp by countries */
 export type HostingWebServiceWithIAMCountriesIpList = Array<HostingWebCountriesIp>;
-export const HostingWebServiceWithIAMCountriesIpList = /*@__PURE__*/ S.Array(
+const HostingWebServiceWithIAMCountriesIpList = /*@__PURE__*/ S.Array(
   HostingWebCountriesIp,
 ) as any as S.Schema<HostingWebServiceWithIAMCountriesIpList>;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -2191,7 +2190,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -2202,11 +2201,11 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Hosting's OS */
 export type HostingWebOperatingSystemEnum = "linux";
-export const HostingWebOperatingSystemEnum = S.String;
+const HostingWebOperatingSystemEnum = S.String;
 
 /** Different support of PHP versions */
 export type HostingWebPhpVersionStateEnum = "BETA" | "END_OF_LIFE" | "SECURITY_FIXES" | "SUPPORTED";
-export const HostingWebPhpVersionStateEnum = S.String;
+const HostingWebPhpVersionStateEnum = S.String;
 
 /** State of available php versions for this account */
 export interface HostingWebPhpVersion {
@@ -2215,7 +2214,7 @@ export interface HostingWebPhpVersion {
   /** PHP version */
   version?: string;
 }
-export const HostingWebPhpVersion = /*@__PURE__*/ S.suspend(() =>
+const HostingWebPhpVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     support: S.optional(HostingWebPhpVersionStateEnum),
     version: S.optional(S.String),
@@ -2224,7 +2223,7 @@ export const HostingWebPhpVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** State of available php versions for this account */
 export type HostingWebServiceWithIAMPhpVersionsList = Array<HostingWebPhpVersion>;
-export const HostingWebServiceWithIAMPhpVersionsList = /*@__PURE__*/ S.Array(
+const HostingWebServiceWithIAMPhpVersionsList = /*@__PURE__*/ S.Array(
   HostingWebPhpVersion,
 ) as any as S.Schema<HostingWebServiceWithIAMPhpVersionsList>;
 
@@ -2234,7 +2233,7 @@ export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -2245,7 +2244,7 @@ export const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
 
 /** Hosting's type */
 export type HostingWebResourceEnum = "bestEffort" | "cloud" | "dedicated" | "shared";
-export const HostingWebResourceEnum = S.String;
+const HostingWebResourceEnum = S.String;
 
 /** Url and port of a service */
 export interface HostingWebAddress {
@@ -2254,7 +2253,7 @@ export interface HostingWebAddress {
   /** Url to contact the service */
   url?: string;
 }
-export const HostingWebAddress = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     url: S.optional(S.String),
@@ -2270,7 +2269,7 @@ export interface HostingWebServiceAccess {
   /** Address with url and port to manage webhosting by ssh */
   ssh?: HostingWebAddress;
 }
-export const HostingWebServiceAccess = /*@__PURE__*/ S.suspend(() =>
+const HostingWebServiceAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ftp: S.optional(HostingWebAddress),
     http: S.optional(HostingWebAddress),
@@ -2280,11 +2279,11 @@ export const HostingWebServiceAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** Hosting's state */
 export type HostingWebStateEnum = "active" | "bloqued" | "maintenance";
-export const HostingWebStateEnum = S.String;
+const HostingWebStateEnum = S.String;
 
 /** List of updates on your hosting */
 export type HostingWebServiceWithIAMUpdatesList = Array<string>;
-export const HostingWebServiceWithIAMUpdatesList =
+const HostingWebServiceWithIAMUpdatesList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebServiceWithIAMUpdatesList>;
 
 /** Web Hosting */
@@ -2356,7 +2355,7 @@ export interface HostingWebServiceWithIAM {
   /** List of updates on your hosting */
   updates?: HostingWebServiceWithIAMUpdatesList;
 }
-export const HostingWebServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const HostingWebServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableBoostOffer: S.optional(HostingWebServiceWithIAMAvailableBoostOfferList),
     boostOffer: S.optional(S.NullOr(HostingWebOfferCapabilitiesEnum)),
@@ -2400,7 +2399,7 @@ export interface GetHostingWebAttachedDomainRequest {
   /** Domain */
   domain: string;
 }
-export const GetHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2413,7 +2412,7 @@ export const GetHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allowed attachedDomain's capabilities methods */
 export type HostingWebAttachedDomainCapabilityMethodEnum = "DELETE" | "GET" | "POST" | "PUT";
-export const HostingWebAttachedDomainCapabilityMethodEnum = S.String;
+const HostingWebAttachedDomainCapabilityMethodEnum = S.String;
 
 /** Attached domain Capability */
 export interface HostingWebAttachedDomainCapabilities {
@@ -2426,7 +2425,7 @@ export interface HostingWebAttachedDomainCapabilities {
   /** Capability method */
   method?: HostingWebAttachedDomainCapabilityMethodEnum;
 }
-export const HostingWebAttachedDomainCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAttachedDomainCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     href: S.optional(S.String),
@@ -2440,13 +2439,13 @@ export const HostingWebAttachedDomainCapabilities = /*@__PURE__*/ S.suspend(() =
 /** Provides the capabilities related to your attachedDomain */
 export type HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList =
   Array<HostingWebAttachedDomainCapabilities>;
-export const HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList = /*@__PURE__*/ S.Array(
+const HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList = /*@__PURE__*/ S.Array(
   HostingWebAttachedDomainCapabilities,
 ) as any as S.Schema<HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList>;
 
 /** attachedDomain status */
 export type HostingWebAttachedDomainStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebAttachedDomainStatusEnum = S.String;
+const HostingWebAttachedDomainStatusEnum = S.String;
 
 /** AttachedDomain vcs status */
 export type HostingWebAttachedDomainVcsStatusEnum =
@@ -2457,7 +2456,7 @@ export type HostingWebAttachedDomainVcsStatusEnum =
   | "disabled"
   | "error"
   | "initialError";
-export const HostingWebAttachedDomainVcsStatusEnum = S.String;
+const HostingWebAttachedDomainVcsStatusEnum = S.String;
 
 /** Public attached domain */
 export interface HostingWebAttachedDomainPublicAttachedDomain {
@@ -2488,7 +2487,7 @@ export interface HostingWebAttachedDomainPublicAttachedDomain {
   /** The status of the VCS synchronization */
   vcsStatus?: HostingWebAttachedDomainVcsStatusEnum;
 }
-export const HostingWebAttachedDomainPublicAttachedDomain = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAttachedDomainPublicAttachedDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilities: S.optional(HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList),
     cdn: S.optional(HostingWebAttachedDomainCdnEnum),
@@ -2514,7 +2513,7 @@ export interface GetHostingWebAttachedDomainDigStatusRequest {
   /** Domain */
   domain: string;
 }
-export const GetHostingWebAttachedDomainDigStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebAttachedDomainDigStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2531,12 +2530,12 @@ export const GetHostingWebAttachedDomainDigStatusRequest = /*@__PURE__*/ S.suspe
 
 /** Recommended IPV4 */
 export type HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List = Array<string>;
-export const HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List =
+const HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List>;
 
 /** Recommended IPV6 */
 export type HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List = Array<string>;
-export const HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List =
+const HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List>;
 
 /** Recommended IPs for DNS records configuration */
@@ -2546,7 +2545,7 @@ export interface HostingWebAttachedDomainRecommendedIps {
   /** Recommended IPV6 */
   recommendedIpV6?: HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List;
 }
-export const HostingWebAttachedDomainRecommendedIps = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAttachedDomainRecommendedIps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendedIpV4: S.optional(HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List),
     recommendedIpV6: S.optional(HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List),
@@ -2557,7 +2556,7 @@ export const HostingWebAttachedDomainRecommendedIps = /*@__PURE__*/ S.suspend(()
 
 /** DNS Record type */
 export type HostingWebAttachedDomainRecordTypeEnum = "A" | "AAAA";
-export const HostingWebAttachedDomainRecordTypeEnum = S.String;
+const HostingWebAttachedDomainRecordTypeEnum = S.String;
 
 /** Attached domain record status */
 export interface HostingWebAttachedDomainRecordStatus {
@@ -2568,7 +2567,7 @@ export interface HostingWebAttachedDomainRecordStatus {
   /** DNS record type */
   type?: HostingWebAttachedDomainRecordTypeEnum;
 }
-export const HostingWebAttachedDomainRecordStatus = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAttachedDomainRecordStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsConfigured: S.optional(S.Boolean),
     isOvhIp: S.optional(S.Boolean),
@@ -2581,7 +2580,7 @@ export const HostingWebAttachedDomainRecordStatus = /*@__PURE__*/ S.suspend(() =
 export type HostingWebAttachedDomainDigStatusRecordsMap = {
   [key: string]: HostingWebAttachedDomainRecordStatus | undefined;
 };
-export const HostingWebAttachedDomainDigStatusRecordsMap = /*@__PURE__*/ S.Record(
+const HostingWebAttachedDomainDigStatusRecordsMap = /*@__PURE__*/ S.Record(
   S.String,
   HostingWebAttachedDomainRecordStatus,
 ) as any as S.Schema<HostingWebAttachedDomainDigStatusRecordsMap>;
@@ -2593,7 +2592,7 @@ export interface HostingWebAttachedDomainDigStatus {
   recommendedIps?: HostingWebAttachedDomainRecommendedIps;
   records?: HostingWebAttachedDomainDigStatusRecordsMap;
 }
-export const HostingWebAttachedDomainDigStatus = /*@__PURE__*/ S.suspend(() =>
+const HostingWebAttachedDomainDigStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     recommendedIps: S.optional(HostingWebAttachedDomainRecommendedIps),
@@ -2609,7 +2608,7 @@ export interface GetHostingWebAttachedDomainSslRequest {
   /** Domain */
   domain: string;
 }
-export const GetHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebAttachedDomainSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2630,7 +2629,7 @@ export interface GetHostingWebBoostHistoryRequest {
   /** Date */
   date: string;
 }
-export const GetHostingWebBoostHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebBoostHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -2652,7 +2651,7 @@ export interface HostingWebBoostHistory {
   /** Offer when the change was made */
   offer?: HostingWebOfferCapabilitiesEnum;
 }
-export const HostingWebBoostHistory = /*@__PURE__*/ S.suspend(() =>
+const HostingWebBoostHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     boostOffer: S.optional(S.NullOr(HostingWebOfferCapabilitiesEnum)),
@@ -2665,7 +2664,7 @@ export interface GetHostingWebCdnRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingWebCdnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCdnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn", code: 200 })),
@@ -2680,7 +2679,7 @@ export type HostingWebCdnStatusEnum =
   | "reopening"
   | "suspended"
   | "suspending";
-export const HostingWebCdnStatusEnum = S.String;
+const HostingWebCdnStatusEnum = S.String;
 
 /** CDN properties */
 export interface HostingWebCDN {
@@ -2697,7 +2696,7 @@ export interface HostingWebCDN {
   /** Version of the CDN */
   version?: string;
 }
-export const HostingWebCDN = /*@__PURE__*/ S.suspend(() =>
+const HostingWebCDN = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     free: S.optional(S.Boolean),
@@ -2714,7 +2713,7 @@ export interface GetHostingWebCdnDomainRequest {
   /** Domain name */
   domainName: string;
 }
-export const GetHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -2735,7 +2734,7 @@ export type CdnDomainStatusEnum =
   | "to_delete"
   | "to_disable"
   | "to_refresh";
-export const CdnDomainStatusEnum = S.String;
+const CdnDomainStatusEnum = S.String;
 
 /** Domain details */
 export interface CdnDomain {
@@ -2750,7 +2749,7 @@ export interface CdnDomain {
   /** Last update date */
   updatedDate?: string;
 }
-export const CdnDomain = /*@__PURE__*/ S.suspend(() =>
+const CdnDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     name: S.optional(S.String),
@@ -2768,7 +2767,7 @@ export interface GetHostingWebCdnDomainLogsRequest {
   /** Logs date (default is yesterday) */
   date?: string;
 }
-export const GetHostingWebCdnDomainLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCdnDomainLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -2791,7 +2790,7 @@ export interface CdnLogs {
   /** URL validity */
   validity?: string;
 }
-export const CdnLogs = /*@__PURE__*/ S.suspend(() =>
+const CdnLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     validity: S.optional(S.String),
@@ -2806,7 +2805,7 @@ export interface GetHostingWebCdnDomainOptionRequest {
   /** Option name */
   optionName: string;
 }
-export const GetHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -2828,7 +2827,7 @@ export interface GetHostingWebCdnOperationRequest {
   /** Id */
   id: number;
 }
-export const GetHostingWebCdnOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCdnOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2850,11 +2849,11 @@ export type CdnOperationFunctionEnum =
   | "service_install"
   | "ssl_delete"
   | "ssl_install";
-export const CdnOperationFunctionEnum = S.String;
+const CdnOperationFunctionEnum = S.String;
 
 /** Shared CDN offer */
 export type CdnOperationOfferEnum = "advanced" | "basic" | "security";
-export const CdnOperationOfferEnum = S.String;
+const CdnOperationOfferEnum = S.String;
 
 /** Operation parameter */
 export interface CdnOperationParameter {
@@ -2877,7 +2876,7 @@ export interface CdnOperationParameter {
   /** CDN ssl id */
   sslId?: number | null;
 }
-export const CdnOperationParameter = /*@__PURE__*/ S.suspend(() =>
+const CdnOperationParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anycastIp: S.optional(S.NullOr(S.String)),
     cluster: S.optional(S.NullOr(S.String)),
@@ -2893,7 +2892,7 @@ export const CdnOperationParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation status */
 export type CdnOperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo";
-export const CdnOperationStatusEnum = S.String;
+const CdnOperationStatusEnum = S.String;
 
 /** Operation details */
 export interface CdnOperation {
@@ -2916,7 +2915,7 @@ export interface CdnOperation {
   /** Last execution date */
   updatedDate?: string;
 }
-export const CdnOperation = /*@__PURE__*/ S.suspend(() =>
+const CdnOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     creationDate: S.optional(S.String),
@@ -2934,7 +2933,7 @@ export interface GetHostingWebCdnServiceInfosRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const GetHostingWebCdnServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCdnServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/serviceInfos", code: 200 })),
@@ -2944,7 +2943,7 @@ export const GetHostingWebCdnServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Detailed renewal type of a service */
@@ -2956,7 +2955,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 /** service.StateEnum */
 export type ServiceStateEnum =
@@ -2966,7 +2965,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -2987,7 +2986,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -3009,7 +3008,7 @@ export interface GetHostingWebConfigurationRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const GetHostingWebConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/configuration", code: 200 })),
@@ -3019,15 +3018,15 @@ export const GetHostingWebConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration env enum */
 export type HostingWebConfigurationEnvEnum = "development" | "production";
-export const HostingWebConfigurationEnvEnum = S.String;
+const HostingWebConfigurationEnvEnum = S.String;
 
 /** Configuration languages enum */
 export type HostingWebConfigurationLanguageEnum = "nodejs" | "python" | "ruby";
-export const HostingWebConfigurationLanguageEnum = S.String;
+const HostingWebConfigurationLanguageEnum = S.String;
 
 /** Configuration state enum */
 export type HostingWebConfigurationStateEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebConfigurationStateEnum = S.String;
+const HostingWebConfigurationStateEnum = S.String;
 
 /** The Configuration of an hosting Power offer */
 export interface HostingWebConfiguration {
@@ -3046,7 +3045,7 @@ export interface HostingWebConfiguration {
   /** version of the language chosen for the current hosting */
   version?: string;
 }
-export const HostingWebConfiguration = /*@__PURE__*/ S.suspend(() =>
+const HostingWebConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appEnv: S.optional(HostingWebConfigurationEnvEnum),
     entryPoint: S.optional(S.NullOr(S.String)),
@@ -3064,7 +3063,7 @@ export interface GetHostingWebCronRequest {
   /** Id */
   id: number;
 }
-export const GetHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3073,7 +3072,7 @@ export const GetHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Cron state */
 export type HostingWebCronStateEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebCronStateEnum = S.String;
+const HostingWebCronStateEnum = S.String;
 
 /** Cron */
 export interface HostingWebCron {
@@ -3094,7 +3093,7 @@ export interface HostingWebCron {
   /** Cron status */
   status?: HostingWebCronStatusEnum;
 }
-export const HostingWebCron = /*@__PURE__*/ S.suspend(() =>
+const HostingWebCron = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -3113,7 +3112,7 @@ export interface GetHostingWebDatabaseRequest {
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-export const GetHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3124,15 +3123,15 @@ export const GetHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Database Service Type enum */
 export type HostingWebDatabaseDatabaseServiceTypeEnum = "extra" | "included" | "optional";
-export const HostingWebDatabaseDatabaseServiceTypeEnum = S.String;
+const HostingWebDatabaseDatabaseServiceTypeEnum = S.String;
 
 /** Database mode */
 export type HostingWebDatabaseModeEnum = "besteffort" | "classic" | "module";
-export const HostingWebDatabaseModeEnum = S.String;
+const HostingWebDatabaseModeEnum = S.String;
 
 /** Database state */
 export type HostingWebDatabaseStateEnum = "close" | "ok" | "readonly";
-export const HostingWebDatabaseStateEnum = S.String;
+const HostingWebDatabaseStateEnum = S.String;
 
 /** Database status */
 export type HostingWebDatabaseStatusEnum =
@@ -3146,7 +3145,7 @@ export type HostingWebDatabaseStatusEnum =
   | "optimizing"
   | "restoring"
   | "updating";
-export const HostingWebDatabaseStatusEnum = S.String;
+const HostingWebDatabaseStatusEnum = S.String;
 
 /** Database Type enum */
 export type HostingWebDatabaseDatabaseTypeEnum =
@@ -3155,11 +3154,11 @@ export type HostingWebDatabaseDatabaseTypeEnum =
   | "mysql"
   | "postgresql"
   | "redis";
-export const HostingWebDatabaseDatabaseTypeEnum = S.String;
+const HostingWebDatabaseDatabaseTypeEnum = S.String;
 
 /** Indicates the current support state of your database version */
 export type HostingWebDatabaseSupportedVersionEnum = "beta" | "deprecated" | "stable";
-export const HostingWebDatabaseSupportedVersionEnum = S.String;
+const HostingWebDatabaseSupportedVersionEnum = S.String;
 
 /** Database */
 export interface HostingWebDatabase {
@@ -3200,7 +3199,7 @@ export interface HostingWebDatabase {
   /** Indicates the current support state of your database version */
   versionSupport?: HostingWebDatabaseSupportedVersionEnum;
 }
-export const HostingWebDatabase = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseServiceDeprecated: S.optional(S.Boolean),
     databaseType: S.optional(S.NullOr(HostingWebDatabaseDatabaseServiceTypeEnum)),
@@ -3229,7 +3228,7 @@ export interface GetHostingWebDatabaseCapabilitiesRequest {
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-export const GetHostingWebDatabaseCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebDatabaseCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3265,7 +3264,7 @@ export interface HostingWebDatabaseDatabaseCapabilities {
   /** Availability of the restore function */
   restore?: boolean;
 }
-export const HostingWebDatabaseDatabaseCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDatabaseDatabaseCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changePassword: S.optional(S.Boolean),
     changeRight: S.optional(S.Boolean),
@@ -3289,7 +3288,7 @@ export interface GetHostingWebDatabaseCopyRequest {
   /** Copy id */
   id: string;
 }
-export const GetHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3313,7 +3312,7 @@ export interface GetHostingWebDatabaseDumpRequest {
   /** Dump id */
   id: number;
 }
-export const GetHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3331,7 +3330,7 @@ export const GetHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Database dump status */
 export type HostingWebDatabaseDumpStatusEnum = "created" | "creating" | "deleting";
-export const HostingWebDatabaseDumpStatusEnum = S.String;
+const HostingWebDatabaseDumpStatusEnum = S.String;
 
 /** Dump */
 export interface HostingWebDatabaseDump {
@@ -3350,7 +3349,7 @@ export interface HostingWebDatabaseDump {
   /** Dump url access */
   url?: string | null;
 }
-export const HostingWebDatabaseDump = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDatabaseDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     deletionDate: S.optional(S.String),
@@ -3368,7 +3367,7 @@ export interface GetHostingWebDumpRequest {
   /** Dump id */
   id: number;
 }
-export const GetHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3396,7 +3395,7 @@ export interface HostingWebDump {
   /** Dump url access */
   url?: string | null;
 }
-export const HostingWebDump = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     databaseName: S.optional(S.String),
@@ -3414,7 +3413,7 @@ export interface GetHostingWebEmailRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const GetHostingWebEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/email", code: 200 })),
@@ -3424,7 +3423,7 @@ export const GetHostingWebEmailRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Mail state enum */
 export type HostingWebMailStateEnum = "bounce" | "force" | "ko" | "ok" | "purging" | "spam";
-export const HostingWebMailStateEnum = S.String;
+const HostingWebMailStateEnum = S.String;
 
 /** Hosting automated emails */
 export interface HostingWebEmail {
@@ -3441,7 +3440,7 @@ export interface HostingWebEmail {
   /** Email state */
   state?: HostingWebMailStateEnum;
 }
-export const HostingWebEmail = /*@__PURE__*/ S.suspend(() =>
+const HostingWebEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounce: S.optional(S.Number),
     email: S.optional(S.NullOr(S.String)),
@@ -3458,7 +3457,7 @@ export interface GetHostingWebEmailOptionRequest {
   /** Id of the object */
   id: number;
 }
-export const GetHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3476,7 +3475,7 @@ export interface HostingWebEmailoption {
   /** Account id */
   id?: number;
 }
-export const HostingWebEmailoption = /*@__PURE__*/ S.suspend(() =>
+const HostingWebEmailoption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     domain: S.optional(S.String),
@@ -3490,7 +3489,7 @@ export interface GetHostingWebEmailOptionServiceInfosRequest {
   /** Id of the object */
   id: number;
 }
-export const GetHostingWebEmailOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebEmailOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3511,7 +3510,7 @@ export interface GetHostingWebEnvVarRequest {
   /** Key */
   key: string;
 }
-export const GetHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -3522,7 +3521,7 @@ export const GetHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** EnvVar status */
 export type HostingWebEnvVarStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebEnvVarStatusEnum = S.String;
+const HostingWebEnvVarStatusEnum = S.String;
 
 /** Environment variables set into your webhosting account */
 export interface HostingWebEnvVar {
@@ -3537,7 +3536,7 @@ export interface HostingWebEnvVar {
   /** Value of the variable */
   value?: string;
 }
-export const HostingWebEnvVar = /*@__PURE__*/ S.suspend(() =>
+const HostingWebEnvVar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     status: S.optional(HostingWebEnvVarStatusEnum),
@@ -3553,7 +3552,7 @@ export interface GetHostingWebExtraSqlPersoRequest {
   /** The extraSqlPerso option name */
   name: string;
 }
-export const GetHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3566,7 +3565,7 @@ export const GetHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Linked databases */
 export type HostingWebExtrasqlpersoUsageList = Array<string>;
-export const HostingWebExtrasqlpersoUsageList =
+const HostingWebExtrasqlpersoUsageList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebExtrasqlpersoUsageList>;
 
 /** Sqlperso service */
@@ -3584,7 +3583,7 @@ export interface HostingWebExtrasqlperso {
   /** Linked databases */
   usage?: HostingWebExtrasqlpersoUsageList;
 }
-export const HostingWebExtrasqlperso = /*@__PURE__*/ S.suspend(() =>
+const HostingWebExtrasqlperso = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.optional(S.Number),
     name: S.optional(S.String),
@@ -3601,7 +3600,7 @@ export interface GetHostingWebExtraSqlPersoServiceInfosRequest {
   /** The extraSqlPerso option name */
   name: string;
 }
-export const GetHostingWebExtraSqlPersoServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebExtraSqlPersoServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3622,7 +3621,7 @@ export interface GetHostingWebIndyRequest {
   /** Login of the multidomain independent user */
   login: string;
 }
-export const GetHostingWebIndyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebIndyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -3631,12 +3630,12 @@ export const GetHostingWebIndyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** AttachedDomain IDs linked to this multidomain */
 export type HostingWebIndyAttachedDomainsList = Array<string>;
-export const HostingWebIndyAttachedDomainsList =
+const HostingWebIndyAttachedDomainsList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebIndyAttachedDomainsList>;
 
 /** Account's state */
 export type HostingWebUserStateEnum = "off" | "rw";
-export const HostingWebUserStateEnum = S.String;
+const HostingWebUserStateEnum = S.String;
 
 /** Hosting indys */
 export interface HostingWebIndy {
@@ -3649,7 +3648,7 @@ export interface HostingWebIndy {
   /** User status */
   state?: HostingWebUserStateEnum;
 }
-export const HostingWebIndy = /*@__PURE__*/ S.suspend(() =>
+const HostingWebIndy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachedDomains: S.optional(HostingWebIndyAttachedDomainsList),
     home: S.optional(S.String),
@@ -3662,7 +3661,7 @@ export interface GetHostingWebKeySshRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingWebKeySshRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebKeySshRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/key/ssh", code: 200 })),
@@ -3676,7 +3675,7 @@ export interface GetHostingWebLocalSeoAccountRequest {
   /** Account id */
   id: number;
 }
-export const GetHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3689,7 +3688,7 @@ export const GetHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Account status */
 export type HostingWebLocalSeoAccountStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebLocalSeoAccountStatusEnum = S.String;
+const HostingWebLocalSeoAccountStatusEnum = S.String;
 
 /** Local SEO accounts */
 export interface HostingWebLocalSeoAccount {
@@ -3706,7 +3705,7 @@ export interface HostingWebLocalSeoAccount {
   /** Running task associated to the account */
   taskId?: number | null;
 }
-export const HostingWebLocalSeoAccount = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     email: S.optional(S.String),
@@ -3723,7 +3722,7 @@ export interface GetHostingWebLocalSeoEmailAvailabilityRequest {
   /** The email address to check */
   email: string;
 }
-export const GetHostingWebLocalSeoEmailAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebLocalSeoEmailAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/localSeo/emailAvailability", code: 200 })),
@@ -3737,7 +3736,7 @@ export type HostingWebLocalSeoAccountEmailAvailabilityEnum =
   | "merge"
   | "nic"
   | "taken";
-export const HostingWebLocalSeoAccountEmailAvailabilityEnum = S.String;
+const HostingWebLocalSeoAccountEmailAvailabilityEnum = S.String;
 
 /** Struct describing the availability of an email address for a local SEO order */
 export interface HostingWebLocalSeoEmailAvailability {
@@ -3746,7 +3745,7 @@ export interface HostingWebLocalSeoEmailAvailability {
   /** Hosting on which the email address is used */
   serviceName?: string | null;
 }
-export const HostingWebLocalSeoEmailAvailability = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoEmailAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(HostingWebLocalSeoAccountEmailAvailabilityEnum),
     serviceName: S.optional(S.NullOr(S.String)),
@@ -3761,7 +3760,7 @@ export interface GetHostingWebLocalSeoEmailAvailabilityRequest2 {
   /** The email address to check */
   email: string;
 }
-export const GetHostingWebLocalSeoEmailAvailabilityRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebLocalSeoEmailAvailabilityRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     email: S.String.pipe(T.Query()),
@@ -3782,7 +3781,7 @@ export interface GetHostingWebLocalSeoLocationRequest {
   /** Location id */
   id: number;
 }
-export const GetHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3795,11 +3794,11 @@ export const GetHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Location offer */
 export type HostingWebLocalSeoLocationOfferEnum = "normal";
-export const HostingWebLocalSeoLocationOfferEnum = S.String;
+const HostingWebLocalSeoLocationOfferEnum = S.String;
 
 /** Location status */
 export type HostingWebLocalSeoLocationStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebLocalSeoLocationStatusEnum = S.String;
+const HostingWebLocalSeoLocationStatusEnum = S.String;
 
 /** Local SEO locations */
 export interface HostingWebLocalSeoLocation {
@@ -3824,7 +3823,7 @@ export interface HostingWebLocalSeoLocation {
   /** Running task associated to the location */
   taskId?: number | null;
 }
-export const HostingWebLocalSeoLocation = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.NullOr(S.Number)),
     address: S.optional(S.NullOr(S.String)),
@@ -3847,7 +3846,7 @@ export interface GetHostingWebLocalSeoLocationServiceInfosRequest {
   /** Location id */
   id: number;
 }
-export const GetHostingWebLocalSeoLocationServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebLocalSeoLocationServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3866,7 +3865,7 @@ export interface GetHostingWebMetricsTokenRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingWebMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/metricsToken", code: 200 })),
@@ -3883,7 +3882,7 @@ export interface HostingWebMetricsToken {
   /** Generated token */
   token?: string;
 }
-export const HostingWebMetricsToken = /*@__PURE__*/ S.suspend(() =>
+const HostingWebMetricsToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     expiry: S.optional(S.String),
@@ -3897,7 +3896,7 @@ export interface GetHostingWebModuleRequest {
   /** Installation ID */
   id: number;
 }
-export const GetHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3908,12 +3907,12 @@ export const GetHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The dependencies to which the module has access. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export type HostingWebModuleDependenciesList = Array<HostingWebModuleDependencyType>;
-export const HostingWebModuleDependenciesList =
+const HostingWebModuleDependenciesList =
   CreateHostingWebModuleRequestDependenciesList as any as S.Schema<HostingWebModuleDependenciesList>;
 
 /** Module status */
 export type HostingWebModuleStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebModuleStatusEnum = S.String;
+const HostingWebModuleStatusEnum = S.String;
 
 /** Hosting modules installed */
 export interface HostingWebModule {
@@ -3942,7 +3941,7 @@ export interface HostingWebModule {
   /** The task ID working on this module */
   taskId?: number | null;
 }
-export const HostingWebModule = /*@__PURE__*/ S.suspend(() =>
+const HostingWebModule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminFolder: S.optional(S.String),
     adminName: S.optional(S.String),
@@ -3963,7 +3962,7 @@ export interface GetHostingWebModuleListRequest {
   /** The ID of the module */
   id: number;
 }
-export const GetHostingWebModuleListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebModuleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/moduleList/{id}", code: 200 })),
@@ -3973,20 +3972,20 @@ export const GetHostingWebModuleListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the admin name */
 export type HostingWebModuleAdminNameTypeEnum = "email" | "string";
-export const HostingWebModuleAdminNameTypeEnum = S.String;
+const HostingWebModuleAdminNameTypeEnum = S.String;
 
 /** Branch enum */
 export type HostingWebModuleBranchEnum = "old" | "stable" | "testing";
-export const HostingWebModuleBranchEnum = S.String;
+const HostingWebModuleBranchEnum = S.String;
 
 /** The keywords for this module */
 export type HostingWebModuleListKeywordsList = Array<string>;
-export const HostingWebModuleListKeywordsList =
+const HostingWebModuleListKeywordsList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebModuleListKeywordsList>;
 
 /** All available languages for this module */
 export type HostingWebModuleListLanguageList = Array<HostingWebModuleLanguageEnum>;
-export const HostingWebModuleListLanguageList = /*@__PURE__*/ S.Array(
+const HostingWebModuleListLanguageList = /*@__PURE__*/ S.Array(
   HostingWebModuleLanguageEnum,
 ) as any as S.Schema<HostingWebModuleListLanguageList>;
 
@@ -3996,7 +3995,7 @@ export interface ComplexTypeUnitAndValueString {
   unit?: string;
   value?: string;
 }
-export const ComplexTypeUnitAndValueString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.String),
@@ -4007,7 +4006,7 @@ export const ComplexTypeUnitAndValueString = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the module you can upgrade to */
 export type HostingWebModuleListUpgradeFromList = Array<number>;
-export const HostingWebModuleListUpgradeFromList =
+const HostingWebModuleListUpgradeFromList =
   CreateHostingWebChangeContactResponseBodyList as any as S.Schema<HostingWebModuleListUpgradeFromList>;
 
 /** A module specifically packaged by OVH */
@@ -4039,7 +4038,7 @@ export interface HostingWebModuleList {
   /** The version of the module */
   version?: string;
 }
-export const HostingWebModuleList = /*@__PURE__*/ S.suspend(() =>
+const HostingWebModuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     adminNameType: S.optional(HostingWebModuleAdminNameTypeEnum),
@@ -4061,7 +4060,7 @@ export interface GetHostingWebOfferCapabilitiesRequest {
   /** Describe offer capabilities */
   offer: HostingWebOfferCapabilitiesEnum | (string & {});
 }
-export const GetHostingWebOfferCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebOfferCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offer: HostingWebOfferCapabilitiesEnum.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/offerCapabilities", code: 200 })),
@@ -4072,17 +4071,15 @@ export const GetHostingWebOfferCapabilitiesRequest = /*@__PURE__*/ S.suspend(() 
 /** Database software available on this platform */
 export type HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
   Array<HostingWebDatabaseDatabaseTypeEnum>;
-export const HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
+const HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
   HostingWebModuleListLanguageList as any as S.Schema<HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList>;
 
 /** Database Isolation enum */
 export type HostingWebDatabaseDatabaseIsolationEnum = "dedicated" | "local" | "shared";
-export const HostingWebDatabaseDatabaseIsolationEnum = S.String;
+const HostingWebDatabaseDatabaseIsolationEnum = S.String;
 
 /** A numeric value tagged with its unit */
 export type ComplexTypeUnitAndValueLong = ComplexTypeUnitAndValueDouble;
-export const ComplexTypeUnitAndValueLong = ComplexTypeUnitAndValueDouble;
-
 /** Struct which describs quota and available for a specific type of database */
 export interface HostingWebDatabaseCreationDatabaseCapabilities {
   /** Number of database left for creation */
@@ -4096,7 +4093,7 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
   /** Database offer name */
   type?: HostingWebDatabaseDatabaseCapabilitiesTypeEnum;
 }
-export const HostingWebDatabaseCreationDatabaseCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDatabaseCreationDatabaseCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(S.Number),
     engines: S.optional(HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList),
@@ -4111,13 +4108,13 @@ export const HostingWebDatabaseCreationDatabaseCapabilities = /*@__PURE__*/ S.su
 /** Describe all databases type you can have */
 export type HostingWebCapabilitiesDatabasesList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-export const HostingWebCapabilitiesDatabasesList = /*@__PURE__*/ S.Array(
+const HostingWebCapabilitiesDatabasesList = /*@__PURE__*/ S.Array(
   HostingWebDatabaseCreationDatabaseCapabilities,
 ) as any as S.Schema<HostingWebCapabilitiesDatabasesList>;
 
 /** Disk type available */
 export type HostingWebDiskTypeEnum = "HDD" | "SSD";
-export const HostingWebDiskTypeEnum = S.String;
+const HostingWebDiskTypeEnum = S.String;
 
 /** Disk properties (size and type of disk) */
 export interface HostingWebDiskType {
@@ -4128,7 +4125,7 @@ export interface HostingWebDiskType {
   /** Size of the disk */
   value?: number;
 }
-export const HostingWebDiskType = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDiskType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(HostingWebDiskTypeEnum),
     unit: S.optional(S.String),
@@ -4143,7 +4140,7 @@ export interface HostingWebCreationEmailCapabilities {
   /** Email account capacity */
   quota?: ComplexTypeUnitAndValueDouble;
 }
-export const HostingWebCreationEmailCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebCreationEmailCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(S.Number),
     quota: S.optional(ComplexTypeUnitAndValueDouble),
@@ -4154,7 +4151,7 @@ export const HostingWebCreationEmailCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Highlight tips for offer */
 export type HostingWebHighLightEnum = "best-seller" | "new";
-export const HostingWebHighLightEnum = S.String;
+const HostingWebHighLightEnum = S.String;
 
 /** Different NodeJs versions available */
 export type HostingWebNodejsVersionAvailableEnum =
@@ -4163,11 +4160,9 @@ export type HostingWebNodejsVersionAvailableEnum =
   | "nodejs-12"
   | "nodejs-8"
   | "nodejs-9";
-export const HostingWebNodejsVersionAvailableEnum = S.String;
-
 /** NodeJS versions */
 export type HostingWebCronLanguageAvailableNodejsList = Array<HostingWebNodejsVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailableNodejsList =
+const HostingWebCronLanguageAvailableNodejsList =
   HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailableNodejsList>;
 
 /** Different PHP versions available */
@@ -4183,29 +4178,23 @@ export type HostingWebPhpVersionAvailableEnum =
   | "phpfpm-8.2"
   | "phpfpm-8.3"
   | "phpfpm-8.4";
-export const HostingWebPhpVersionAvailableEnum = S.String;
-
 /** Php versions */
 export type HostingWebCronLanguageAvailablePhpList = Array<HostingWebPhpVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailablePhpList =
+const HostingWebCronLanguageAvailablePhpList =
   HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailablePhpList>;
 
 /** Different Python versions available */
 export type HostingWebPythonVersionAvailableEnum = "python-2" | "python-3";
-export const HostingWebPythonVersionAvailableEnum = S.String;
-
 /** Python versions */
 export type HostingWebCronLanguageAvailablePythonList = Array<HostingWebPythonVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailablePythonList =
+const HostingWebCronLanguageAvailablePythonList =
   HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailablePythonList>;
 
 /** Different Ruby versions available */
 export type HostingWebRubyVersionAvailableEnum = "ruby-2.6";
-export const HostingWebRubyVersionAvailableEnum = S.String;
-
 /** Ruby versions */
 export type HostingWebCronLanguageAvailableRubyList = Array<HostingWebRubyVersionAvailableEnum>;
-export const HostingWebCronLanguageAvailableRubyList =
+const HostingWebCronLanguageAvailableRubyList =
   HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailableRubyList>;
 
 /** Language available for cron script */
@@ -4219,7 +4208,7 @@ export interface HostingWebCronLanguageAvailable {
   /** Ruby versions */
   ruby?: HostingWebCronLanguageAvailableRubyList;
 }
-export const HostingWebCronLanguageAvailable = /*@__PURE__*/ S.suspend(() =>
+const HostingWebCronLanguageAvailable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodejs: S.optional(HostingWebCronLanguageAvailableNodejsList),
     php: S.optional(HostingWebCronLanguageAvailablePhpList),
@@ -4233,7 +4222,7 @@ export const HostingWebCronLanguageAvailable = /*@__PURE__*/ S.suspend(() =>
 /** Describe all privateDatabases type you can have */
 export type HostingWebCapabilitiesPrivateDatabasesList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-export const HostingWebCapabilitiesPrivateDatabasesList =
+const HostingWebCapabilitiesPrivateDatabasesList =
   HostingWebCapabilitiesDatabasesList as any as S.Schema<HostingWebCapabilitiesPrivateDatabasesList>;
 
 /** Struct which describs an offer */
@@ -4273,7 +4262,7 @@ export interface HostingWebCapabilities {
   /** Traffic quota size for your hosting ( null for unlimited ) */
   traffic?: ComplexTypeUnitAndValueDouble | null;
 }
-export const HostingWebCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachedDomains: S.optional(S.Number),
     crontab: S.optional(S.Boolean),
@@ -4301,7 +4290,7 @@ export interface GetHostingWebOvhConfigRequest {
   /** Configuration's id */
   id: number;
 }
-export const GetHostingWebOvhConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebOvhConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4331,11 +4320,11 @@ export type HostingWebOvhConfigEngineVersionEnum =
   | "8.3"
   | "8.4"
   | "AUTO";
-export const HostingWebOvhConfigEngineVersionEnum = S.String;
+const HostingWebOvhConfigEngineVersionEnum = S.String;
 
 /** Ovhconfig status */
 export type HostingWebOvhConfigStatusEnum = "created" | "rollbacking" | "updating";
-export const HostingWebOvhConfigStatusEnum = S.String;
+const HostingWebOvhConfigStatusEnum = S.String;
 
 /** Virtual service */
 export interface HostingWebOvhConfig {
@@ -4364,7 +4353,7 @@ export interface HostingWebOvhConfig {
   /** The task ID working on this configuration */
   taskId?: number | null;
 }
-export const HostingWebOvhConfig = /*@__PURE__*/ S.suspend(() =>
+const HostingWebOvhConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.optional(S.String),
     creationDate: S.optional(S.String),
@@ -4385,7 +4374,7 @@ export interface GetHostingWebOvhConfigRecommendedValuesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const GetHostingWebOvhConfigRecommendedValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebOvhConfigRecommendedValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4412,7 +4401,7 @@ export interface HostingWebOvhConfigRecommendedValues {
   /** Configuration for http firewall */
   httpFirewall?: HostingWebOvhConfigHttpFirewallEnum;
 }
-export const HostingWebOvhConfigRecommendedValues = /*@__PURE__*/ S.suspend(() =>
+const HostingWebOvhConfigRecommendedValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.optional(HostingWebOvhconfigContainerEnum),
     engineName: S.optional(HostingWebOvhConfigEngineNameEnum),
@@ -4430,7 +4419,7 @@ export interface GetHostingWebOwnLogRequest {
   /** Id of the object */
   id: number;
 }
-export const GetHostingWebOwnLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebOwnLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4441,7 +4430,7 @@ export const GetHostingWebOwnLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** OwnLogs status */
 export type HostingWebOwnLogsStatusEnum = "created" | "creating" | "deleting";
-export const HostingWebOwnLogsStatusEnum = S.String;
+const HostingWebOwnLogsStatusEnum = S.String;
 
 /** Hosting own logs */
 export interface HostingWebOwnLogs {
@@ -4458,7 +4447,7 @@ export interface HostingWebOwnLogs {
   /** The task ID working on this ownLogs */
   taskId?: number | null;
 }
-export const HostingWebOwnLogs = /*@__PURE__*/ S.suspend(() =>
+const HostingWebOwnLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     id: S.optional(S.Number),
@@ -4477,7 +4466,7 @@ export interface GetHostingWebOwnLogUserLogRequest {
   /** The userLogs login used to connect to logs.ovh.net */
   login: string;
 }
-export const GetHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4495,7 +4484,7 @@ export const GetHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** UserLogs status */
 export type HostingWebUserLogsStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebUserLogsStatusEnum = S.String;
+const HostingWebUserLogsStatusEnum = S.String;
 
 /** Hosting users logs */
 export interface HostingWebUserLogs {
@@ -4512,7 +4501,7 @@ export interface HostingWebUserLogs {
   /** The task ID working on this userLogs */
   taskId?: number | null;
 }
-export const HostingWebUserLogs = /*@__PURE__*/ S.suspend(() =>
+const HostingWebUserLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -4529,7 +4518,7 @@ export interface GetHostingWebRuntimeRequest {
   /** The runtime configuration ID */
   id: number;
 }
-export const GetHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4540,7 +4529,7 @@ export const GetHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Runtime state enum */
 export type HostingWebRuntimeStateEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebRuntimeStateEnum = S.String;
+const HostingWebRuntimeStateEnum = S.String;
 
 /** The runtime configuration of an attached domain for cloud web offer */
 export interface HostingWebRuntime {
@@ -4569,7 +4558,7 @@ export interface HostingWebRuntime {
   /** The backend type of the runtime */
   type?: HostingWebRuntimeTypeEnum;
 }
-export const HostingWebRuntime = /*@__PURE__*/ S.suspend(() =>
+const HostingWebRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appBootstrap: S.optional(S.NullOr(S.String)),
     appEnv: S.optional(HostingWebRuntimeEnvEnum),
@@ -4590,7 +4579,7 @@ export interface GetHostingWebServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingWebServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/serviceInfos", code: 200 })),
@@ -4604,7 +4593,7 @@ export interface GetHostingWebTaskRequest {
   /** Id */
   id: number;
 }
-export const GetHostingWebTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4615,7 +4604,7 @@ export interface GetHostingWebTokenRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const GetHostingWebTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/token", code: 200 })),
@@ -4624,7 +4613,7 @@ export const GetHostingWebTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHostingWebTokenRequest>;
 
 export type GetHostingWebTokenResponse = string;
-export const GetHostingWebTokenResponse =
+const GetHostingWebTokenResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<GetHostingWebTokenResponse>;
 
 export interface GetHostingWebUserRequest {
@@ -4633,7 +4622,7 @@ export interface GetHostingWebUserRequest {
   /** Login used to connect on FTP and SSH */
   login: string;
 }
-export const GetHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -4649,7 +4638,7 @@ export interface HostingWebUserCredentials {
   /** Login to authentificate you on the service */
   user?: string;
 }
-export const HostingWebUserCredentials = /*@__PURE__*/ S.suspend(() =>
+const HostingWebUserCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     url: S.optional(S.String),
@@ -4666,7 +4655,7 @@ export interface HostingWebUserServiceCredentials {
   /** Credentials to manage webhosting by ssh */
   ssh?: HostingWebUserCredentials;
 }
-export const HostingWebUserServiceCredentials = /*@__PURE__*/ S.suspend(() =>
+const HostingWebUserServiceCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ftp: S.optional(HostingWebUserCredentials),
     ssh: S.optional(HostingWebUserCredentials),
@@ -4677,7 +4666,7 @@ export const HostingWebUserServiceCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** User status */
 export type HostingWebUserStatusEnum = "created" | "creating" | "deleting" | "updating";
-export const HostingWebUserStatusEnum = S.String;
+const HostingWebUserStatusEnum = S.String;
 
 /** Hosting users */
 export interface HostingWebUser {
@@ -4698,7 +4687,7 @@ export interface HostingWebUser {
   /** The task ID working on this user */
   taskId?: number | null;
 }
-export const HostingWebUser = /*@__PURE__*/ S.suspend(() =>
+const HostingWebUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     home: S.optional(S.String),
     isPrimaryAccount: S.optional(S.Boolean),
@@ -4721,7 +4710,7 @@ export interface GetHostingWebUserLogsTokenRequest {
   /** Expiration of your token (in seconds) */
   ttl?: number;
 }
-export const GetHostingWebUserLogsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebUserLogsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     attachedDomain: S.optional(S.String.pipe(T.Query())),
@@ -4733,12 +4722,12 @@ export const GetHostingWebUserLogsTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHostingWebUserLogsTokenRequest>;
 
 export type GetHostingWebUserLogsTokenResponse = string;
-export const GetHostingWebUserLogsTokenResponse =
+const GetHostingWebUserLogsTokenResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<GetHostingWebUserLogsTokenResponse>;
 
 /** Supported VCS platforms */
 export type HostingWebSupportedVcsEnum = "github";
-export const HostingWebSupportedVcsEnum = S.String;
+const HostingWebSupportedVcsEnum = S.String;
 
 export interface GetHostingWebVcsWebhooksRequest {
   /** Service name */
@@ -4748,7 +4737,7 @@ export interface GetHostingWebVcsWebhooksRequest {
   /** Filter on VCS platform */
   vcs: HostingWebSupportedVcsEnum | (string & {});
 }
-export const GetHostingWebVcsWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebVcsWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     path: S.String.pipe(T.Query()),
@@ -4763,7 +4752,7 @@ export interface HostingWebVcsWebhooks {
   /** Webhook URL for push events */
   push?: string;
 }
-export const HostingWebVcsWebhooks = /*@__PURE__*/ S.suspend(() =>
+const HostingWebVcsWebhooks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     push: S.optional(S.String),
   }),
@@ -4775,7 +4764,7 @@ export interface GetHostingWebWebsiteRequest {
   /** Id */
   id: number;
 }
-export const GetHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4793,7 +4782,7 @@ export interface HostingWebWebsiteDomain {
   /** If the SSL is currently active */
   ssl?: boolean;
 }
-export const HostingWebWebsiteDomain = /*@__PURE__*/ S.suspend(() =>
+const HostingWebWebsiteDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cdn: S.optional(S.Boolean),
     fqdn: S.optional(S.String),
@@ -4803,7 +4792,7 @@ export const HostingWebWebsiteDomain = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains of the website */
 export type HostingWebWebsiteDomainsList = Array<HostingWebWebsiteDomain>;
-export const HostingWebWebsiteDomainsList = /*@__PURE__*/ S.Array(
+const HostingWebWebsiteDomainsList = /*@__PURE__*/ S.Array(
   HostingWebWebsiteDomain,
 ) as any as S.Schema<HostingWebWebsiteDomainsList>;
 
@@ -4815,7 +4804,7 @@ export type HostingWebWebsiteStatusEnum =
   | "deploying"
   | "error"
   | "initialError";
-export const HostingWebWebsiteStatusEnum = S.String;
+const HostingWebWebsiteStatusEnum = S.String;
 
 /** A website on your hosting */
 export interface HostingWebWebsite {
@@ -4838,7 +4827,7 @@ export interface HostingWebWebsite {
   /** URL of the repository containing the website source code to deploy */
   vcsUrl?: string;
 }
-export const HostingWebWebsite = /*@__PURE__*/ S.suspend(() =>
+const HostingWebWebsite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(HostingWebWebsiteDomainsList),
     hostingDisplayName: S.optional(S.String),
@@ -4856,7 +4845,7 @@ export interface GetHostingWebWebsiteCreationCapabilitiesRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingWebWebsiteCreationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebWebsiteCreationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4877,7 +4866,7 @@ export interface HostingWebWebsiteCreationCapabilities {
   /** Number of existing websites on your hosting */
   existingWebsites?: number;
 }
-export const HostingWebWebsiteCreationCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebWebsiteCreationCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedWebsites: S.optional(S.Number),
     existingWebsites: S.optional(S.Number),
@@ -4894,7 +4883,7 @@ export interface GetHostingWebWebsiteDeploymentRequest {
   /** Deployment ID */
   deploymentId: number;
 }
-export const GetHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4912,7 +4901,7 @@ export const GetHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Website deployment status */
 export type HostingWebWebsiteDeploymentStatusEnum = "doing" | "failed" | "successful";
-export const HostingWebWebsiteDeploymentStatusEnum = S.String;
+const HostingWebWebsiteDeploymentStatusEnum = S.String;
 
 /** A website deployment */
 export interface HostingWebWebsiteDeployment {
@@ -4935,7 +4924,7 @@ export interface HostingWebWebsiteDeployment {
   /** Website numeric identifier */
   websiteId?: number;
 }
-export const HostingWebWebsiteDeployment = /*@__PURE__*/ S.suspend(() =>
+const HostingWebWebsiteDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     id: S.optional(S.Number),
@@ -4963,7 +4952,7 @@ export interface ImportHostingWebDatabaseRequest {
   /** Send an email when the import will be done? Default: false */
   sendEmail?: boolean;
 }
-export const ImportHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4979,19 +4968,19 @@ export const ImportHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListHostingWebRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListHostingWebRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListHostingWebRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListHostingWebRequestIamTagsValueList>;
 
 export type ListHostingWebRequestIamTagsMap = {
   [key: string]: ListHostingWebRequestIamTagsValueList | undefined;
 };
-export const ListHostingWebRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListHostingWebRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListHostingWebRequestIamTagsValueList,
 ) as any as S.Schema<ListHostingWebRequestIamTagsMap>;
@@ -5000,18 +4989,18 @@ export interface ListHostingWebRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListHostingWebRequestIamTagsMap;
 }
-export const ListHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListHostingWebRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web", code: 200 })),
 ).annotate({ identifier: "ListHostingWebRequest" }) as any as S.Schema<ListHostingWebRequest>;
 
 export type ListHostingWebResponseBodyList = Array<string>;
-export const ListHostingWebResponseBodyList =
+const ListHostingWebResponseBodyList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebResponseBodyList>;
 
 export type ListHostingWebResponse = ListHostingWebResponseBodyList;
-export const ListHostingWebResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListHostingWebResponse" }) as any as S.Schema<ListHostingWebResponse>;
 
@@ -5019,7 +5008,7 @@ export interface ListHostingWebAttachedDomainRequest {
   /** Domain used into web hosting attached domains */
   domain: string;
 }
-export const ListHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/attachedDomain", code: 200 })),
@@ -5028,11 +5017,11 @@ export const ListHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebAttachedDomainRequest>;
 
 export type ListHostingWebAttachedDomainResponseBodyList = Array<string>;
-export const ListHostingWebAttachedDomainResponseBodyList =
+const ListHostingWebAttachedDomainResponseBodyList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebAttachedDomainResponseBodyList>;
 
 export type ListHostingWebAttachedDomainResponse = ListHostingWebAttachedDomainResponseBodyList;
-export const ListHostingWebAttachedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebAttachedDomainResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebAttachedDomainResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebAttachedDomainResponse",
@@ -5046,7 +5035,7 @@ export interface ListHostingWebAttachedDomainRequest2 {
   /** Filter the value of path property (like) */
   path?: string;
 }
-export const ListHostingWebAttachedDomainRequest2 = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebAttachedDomainRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.optional(S.String.pipe(T.Query())),
@@ -5057,11 +5046,8 @@ export const ListHostingWebAttachedDomainRequest2 = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListHostingWebAttachedDomainRequest2>;
 
 export type ListHostingWebAttachedDomainResponseBodyList2 = Array<string>;
-export const ListHostingWebAttachedDomainResponseBodyList2 =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebAttachedDomainResponseBodyList2>;
-
 export type ListHostingWebAttachedDomainResponse2 = ListHostingWebAttachedDomainResponseBodyList2;
-export const ListHostingWebAttachedDomainResponse2 =
+const ListHostingWebAttachedDomainResponse2 =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebAttachedDomainResponse2>;
 
 export interface ListHostingWebAvailableConfigurationsRequest {
@@ -5070,7 +5056,7 @@ export interface ListHostingWebAvailableConfigurationsRequest {
   /** Filter on language name */
   language?: HostingWebConfigurationLanguageEnum | (string & {});
 }
-export const ListHostingWebAvailableConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebAvailableConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     language: S.optional(HostingWebConfigurationLanguageEnum.pipe(T.Query())),
@@ -5090,16 +5076,14 @@ export type HostingWebConfigurationVersionEnum =
   | "python-3.9"
   | "ruby-2.6"
   | "ruby-2.7";
-export const HostingWebConfigurationVersionEnum = S.String;
-
 export type ListHostingWebAvailableConfigurationsResponseBodyList =
   Array<HostingWebConfigurationVersionEnum>;
-export const ListHostingWebAvailableConfigurationsResponseBodyList =
+const ListHostingWebAvailableConfigurationsResponseBodyList =
   HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebAvailableConfigurationsResponseBodyList>;
 
 export type ListHostingWebAvailableConfigurationsResponse =
   ListHostingWebAvailableConfigurationsResponseBodyList;
-export const ListHostingWebAvailableConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebAvailableConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebAvailableConfigurationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebAvailableConfigurationsResponse",
@@ -5109,7 +5093,7 @@ export interface ListHostingWebAvailableOfferRequest {
   /** Domain you want to add or upgrade a hosting */
   domain: string;
 }
-export const ListHostingWebAvailableOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebAvailableOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/availableOffer", code: 200 })),
@@ -5118,11 +5102,8 @@ export const ListHostingWebAvailableOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebAvailableOfferRequest>;
 
 export type ListHostingWebAvailableOfferResponseBodyList = Array<HostingWebOfferEnum>;
-export const ListHostingWebAvailableOfferResponseBodyList =
-  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebAvailableOfferResponseBodyList>;
-
 export type ListHostingWebAvailableOfferResponse = ListHostingWebAvailableOfferResponseBodyList;
-export const ListHostingWebAvailableOfferResponse =
+const ListHostingWebAvailableOfferResponse =
   ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebAvailableOfferResponse>;
 
 export interface ListHostingWebBoostHistoryRequest {
@@ -5131,7 +5112,7 @@ export interface ListHostingWebBoostHistoryRequest {
   /** Filter the value of date property (=) */
   date?: string;
 }
-export const ListHostingWebBoostHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebBoostHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     date: S.optional(S.String.pipe(T.Query())),
@@ -5141,18 +5122,15 @@ export const ListHostingWebBoostHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebBoostHistoryRequest>;
 
 export type ListHostingWebBoostHistoryResponseBodyList = Array<string>;
-export const ListHostingWebBoostHistoryResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebBoostHistoryResponseBodyList>;
-
 export type ListHostingWebBoostHistoryResponse = ListHostingWebBoostHistoryResponseBodyList;
-export const ListHostingWebBoostHistoryResponse =
+const ListHostingWebBoostHistoryResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebBoostHistoryResponse>;
 
 export interface ListHostingWebCdnAvailableOptionsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingWebCdnAvailableOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnAvailableOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5164,11 +5142,11 @@ export const ListHostingWebCdnAvailableOptionsRequest = /*@__PURE__*/ S.suspend(
 
 /** Option category */
 export type CdnOptionCategoryEnum = "cache" | "performance" | "security";
-export const CdnOptionCategoryEnum = S.String;
+const CdnOptionCategoryEnum = S.String;
 
 /** Option Config Parameter type */
 export type CdnOptionConfigParamTypeEnum = "bool" | "int" | "list" | "str";
-export const CdnOptionConfigParamTypeEnum = S.String;
+const CdnOptionConfigParamTypeEnum = S.String;
 
 /** Option configuration constraints */
 export interface CdnAvailableOptionsConfigConstraints {
@@ -5183,7 +5161,7 @@ export interface CdnAvailableOptionsConfigConstraints {
   /** Type of value */
   type?: CdnOptionConfigParamTypeEnum | null;
 }
-export const CdnAvailableOptionsConfigConstraints = /*@__PURE__*/ S.suspend(() =>
+const CdnAvailableOptionsConfigConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     length: S.optional(S.NullOr(S.Number)),
     maximum: S.optional(S.NullOr(S.Number)),
@@ -5216,7 +5194,7 @@ export interface CdnAvailableOptionsConfig {
   /** Cache time in seconds */
   ttl?: CdnAvailableOptionsConfigConstraints | null;
 }
-export const CdnAvailableOptionsConfig = /*@__PURE__*/ S.suspend(() =>
+const CdnAvailableOptionsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
     followUri: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
@@ -5243,7 +5221,7 @@ export interface CdnAvailableOptions {
   /** Option type */
   type?: string;
 }
-export const CdnAvailableOptions = /*@__PURE__*/ S.suspend(() =>
+const CdnAvailableOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.NullOr(CdnOptionCategoryEnum)),
     config: S.optional(S.NullOr(CdnAvailableOptionsConfig)),
@@ -5253,13 +5231,13 @@ export const CdnAvailableOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CdnAvailableOptions" }) as any as S.Schema<CdnAvailableOptions>;
 
 export type ListHostingWebCdnAvailableOptionsResponseBodyList = Array<CdnAvailableOptions>;
-export const ListHostingWebCdnAvailableOptionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebCdnAvailableOptionsResponseBodyList = /*@__PURE__*/ S.Array(
   CdnAvailableOptions,
 ) as any as S.Schema<ListHostingWebCdnAvailableOptionsResponseBodyList>;
 
 export type ListHostingWebCdnAvailableOptionsResponse =
   ListHostingWebCdnAvailableOptionsResponseBodyList;
-export const ListHostingWebCdnAvailableOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnAvailableOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebCdnAvailableOptionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebCdnAvailableOptionsResponse",
@@ -5269,7 +5247,7 @@ export interface ListHostingWebCdnDomainRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/domain", code: 200 })),
@@ -5278,12 +5256,12 @@ export const ListHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebCdnDomainRequest>;
 
 export type ListHostingWebCdnDomainResponseBodyList = Array<CdnDomain>;
-export const ListHostingWebCdnDomainResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebCdnDomainResponseBodyList = /*@__PURE__*/ S.Array(
   CdnDomain,
 ) as any as S.Schema<ListHostingWebCdnDomainResponseBodyList>;
 
 export type ListHostingWebCdnDomainResponse = ListHostingWebCdnDomainResponseBodyList;
-export const ListHostingWebCdnDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnDomainResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebCdnDomainResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebCdnDomainResponse",
@@ -5295,7 +5273,7 @@ export interface ListHostingWebCdnDomainOptionRequest {
   /** Domain name */
   domainName: string;
 }
-export const ListHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -5311,12 +5289,12 @@ export const ListHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListHostingWebCdnDomainOptionRequest>;
 
 export type ListHostingWebCdnDomainOptionResponseBodyList = Array<CdnDomainOption>;
-export const ListHostingWebCdnDomainOptionResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebCdnDomainOptionResponseBodyList = /*@__PURE__*/ S.Array(
   CdnDomainOption,
 ) as any as S.Schema<ListHostingWebCdnDomainOptionResponseBodyList>;
 
 export type ListHostingWebCdnDomainOptionResponse = ListHostingWebCdnDomainOptionResponseBodyList;
-export const ListHostingWebCdnDomainOptionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnDomainOptionResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebCdnDomainOptionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebCdnDomainOptionResponse",
@@ -5326,7 +5304,7 @@ export interface ListHostingWebCdnOperationRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingWebCdnOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/operation", code: 200 })),
@@ -5335,12 +5313,12 @@ export const ListHostingWebCdnOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebCdnOperationRequest>;
 
 export type ListHostingWebCdnOperationResponseBodyList = Array<CdnOperation>;
-export const ListHostingWebCdnOperationResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebCdnOperationResponseBodyList = /*@__PURE__*/ S.Array(
   CdnOperation,
 ) as any as S.Schema<ListHostingWebCdnOperationResponseBodyList>;
 
 export type ListHostingWebCdnOperationResponse = ListHostingWebCdnOperationResponseBodyList;
-export const ListHostingWebCdnOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCdnOperationResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebCdnOperationResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebCdnOperationResponse",
@@ -5358,7 +5336,7 @@ export interface ListHostingWebCronRequest {
   /** Filter the value of language property (=) */
   language?: HostingWebLanguagesEnum | (string & {});
 }
-export const ListHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     command: S.optional(S.String.pipe(T.Query())),
@@ -5371,18 +5349,15 @@ export const ListHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebCronRequest>;
 
 export type ListHostingWebCronResponseBodyList = Array<number>;
-export const ListHostingWebCronResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebCronResponseBodyList>;
-
 export type ListHostingWebCronResponse = ListHostingWebCronResponseBodyList;
-export const ListHostingWebCronResponse =
+const ListHostingWebCronResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebCronResponse>;
 
 export interface ListHostingWebCronAvailableLanguageRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingWebCronAvailableLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebCronAvailableLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5393,12 +5368,9 @@ export const ListHostingWebCronAvailableLanguageRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingWebCronAvailableLanguageRequest>;
 
 export type ListHostingWebCronAvailableLanguageResponseBodyList = Array<HostingWebLanguagesEnum>;
-export const ListHostingWebCronAvailableLanguageResponseBodyList =
-  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebCronAvailableLanguageResponseBodyList>;
-
 export type ListHostingWebCronAvailableLanguageResponse =
   ListHostingWebCronAvailableLanguageResponseBodyList;
-export const ListHostingWebCronAvailableLanguageResponse =
+const ListHostingWebCronAvailableLanguageResponse =
   ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>;
 
 export interface ListHostingWebDatabaseRequest {
@@ -5415,7 +5387,7 @@ export interface ListHostingWebDatabaseRequest {
   /** Filter the value of user property (like) */
   user?: string;
 }
-export const ListHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     mode: S.optional(HostingWebDatabaseModeEnum.pipe(T.Query())),
@@ -5429,18 +5401,15 @@ export const ListHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebDatabaseRequest>;
 
 export type ListHostingWebDatabaseResponseBodyList = Array<string>;
-export const ListHostingWebDatabaseResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebDatabaseResponseBodyList>;
-
 export type ListHostingWebDatabaseResponse = ListHostingWebDatabaseResponseBodyList;
-export const ListHostingWebDatabaseResponse =
+const ListHostingWebDatabaseResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebDatabaseResponse>;
 
 export interface ListHostingWebDatabaseAvailableTypeRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebDatabaseAvailableTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseAvailableTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5452,12 +5421,12 @@ export const ListHostingWebDatabaseAvailableTypeRequest = /*@__PURE__*/ S.suspen
 
 export type ListHostingWebDatabaseAvailableTypeResponseBodyList =
   Array<HostingWebDatabaseDatabaseTypeEnum>;
-export const ListHostingWebDatabaseAvailableTypeResponseBodyList =
+const ListHostingWebDatabaseAvailableTypeResponseBodyList =
   HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList as any as S.Schema<ListHostingWebDatabaseAvailableTypeResponseBodyList>;
 
 export type ListHostingWebDatabaseAvailableTypeResponse =
   ListHostingWebDatabaseAvailableTypeResponseBodyList;
-export const ListHostingWebDatabaseAvailableTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseAvailableTypeResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebDatabaseAvailableTypeResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebDatabaseAvailableTypeResponse",
@@ -5469,7 +5438,7 @@ export interface ListHostingWebDatabaseAvailableVersionRequest {
   /** Type of the database */
   type: HostingWebDatabaseDatabaseTypeEnum | (string & {});
 }
-export const ListHostingWebDatabaseAvailableVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseAvailableVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     type: HostingWebDatabaseDatabaseTypeEnum.pipe(T.Query()),
@@ -5486,7 +5455,7 @@ export const ListHostingWebDatabaseAvailableVersionRequest = /*@__PURE__*/ S.sus
 
 /** Database available version */
 export type HostingWebDatabaseAvailableVersionStructListList = Array<HostingWebDatabaseVersionEnum>;
-export const HostingWebDatabaseAvailableVersionStructListList =
+const HostingWebDatabaseAvailableVersionStructListList =
   HostingWebModuleListLanguageList as any as S.Schema<HostingWebDatabaseAvailableVersionStructListList>;
 
 /** Database Available and Default version */
@@ -5496,7 +5465,7 @@ export interface HostingWebDatabaseAvailableVersionStruct {
   /** Database available version */
   list?: HostingWebDatabaseAvailableVersionStructListList;
 }
-export const HostingWebDatabaseAvailableVersionStruct = /*@__PURE__*/ S.suspend(() =>
+const HostingWebDatabaseAvailableVersionStruct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(HostingWebDatabaseVersionEnum),
     list: S.optional(HostingWebDatabaseAvailableVersionStructListList),
@@ -5511,7 +5480,7 @@ export interface ListHostingWebDatabaseCopyRequest {
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-export const ListHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5523,18 +5492,15 @@ export const ListHostingWebDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebDatabaseCopyRequest>;
 
 export type ListHostingWebDatabaseCopyResponseBodyList = Array<string>;
-export const ListHostingWebDatabaseCopyResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebDatabaseCopyResponseBodyList>;
-
 export type ListHostingWebDatabaseCopyResponse = ListHostingWebDatabaseCopyResponseBodyList;
-export const ListHostingWebDatabaseCopyResponse =
+const ListHostingWebDatabaseCopyResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebDatabaseCopyResponse>;
 
 export interface ListHostingWebDatabaseCreationCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -5550,12 +5516,12 @@ export const ListHostingWebDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ S
 
 export type ListHostingWebDatabaseCreationCapabilitiesResponseBodyList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-export const ListHostingWebDatabaseCreationCapabilitiesResponseBodyList =
+const ListHostingWebDatabaseCreationCapabilitiesResponseBodyList =
   HostingWebCapabilitiesDatabasesList as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesResponseBodyList>;
 
 export type ListHostingWebDatabaseCreationCapabilitiesResponse =
   ListHostingWebDatabaseCreationCapabilitiesResponseBodyList;
-export const ListHostingWebDatabaseCreationCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseCreationCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebDatabaseCreationCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebDatabaseCreationCapabilitiesResponse",
@@ -5577,7 +5543,7 @@ export interface ListHostingWebDatabaseDumpRequest {
   /** Filter the value of type property (=) */
   type?: HostingWebDatabaseDumpDateEnum | (string & {});
 }
-export const ListHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5594,20 +5560,17 @@ export const ListHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebDatabaseDumpRequest>;
 
 export type ListHostingWebDatabaseDumpResponseBodyList = Array<number>;
-export const ListHostingWebDatabaseDumpResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebDatabaseDumpResponseBodyList>;
-
 export type ListHostingWebDatabaseDumpResponse = ListHostingWebDatabaseDumpResponseBodyList;
-export const ListHostingWebDatabaseDumpResponse =
+const ListHostingWebDatabaseDumpResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebDatabaseDumpResponse>;
 
 /** Available periods for statistics */
 export type HostingWebStatisticsPeriodEnum = "daily" | "monthly" | "weekly" | "yearly";
-export const HostingWebStatisticsPeriodEnum = S.String;
+const HostingWebStatisticsPeriodEnum = S.String;
 
 /** Types of statistics available for the database */
 export type HostingWebDatabaseStatisticsTypeEnum = "statement" | "statementMeanTime";
-export const HostingWebDatabaseStatisticsTypeEnum = S.String;
+const HostingWebDatabaseStatisticsTypeEnum = S.String;
 
 export interface ListHostingWebDatabaseStatisticsRequest {
   /** The internal name of your hosting */
@@ -5619,7 +5582,7 @@ export interface ListHostingWebDatabaseStatisticsRequest {
   /** Types of statistics available for the database */
   type: HostingWebDatabaseStatisticsTypeEnum | (string & {});
 }
-export const ListHostingWebDatabaseStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5641,7 +5604,7 @@ export interface ComplexTypeChartTimestampValue {
   timestamp?: number;
   value?: number | null;
 }
-export const ComplexTypeChartTimestampValue = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeChartTimestampValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Number),
     value: S.optional(S.NullOr(S.Number)),
@@ -5652,7 +5615,7 @@ export const ComplexTypeChartTimestampValue = /*@__PURE__*/ S.suspend(() =>
 
 export type ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList =
   Array<ComplexTypeChartTimestampValue>;
-export const ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList = /*@__PURE__*/ S.Array(
+const ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList = /*@__PURE__*/ S.Array(
   ComplexTypeChartTimestampValue,
 ) as any as S.Schema<ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList>;
 
@@ -5662,7 +5625,7 @@ export interface ComplexTypeChartSerieComplexTypeChartTimestampValue {
   unit?: string;
   values?: ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList;
 }
-export const ComplexTypeChartSerieComplexTypeChartTimestampValue = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeChartSerieComplexTypeChartTimestampValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serieName: S.optional(S.String),
     unit: S.optional(S.String),
@@ -5674,13 +5637,13 @@ export const ComplexTypeChartSerieComplexTypeChartTimestampValue = /*@__PURE__*/
 
 export type ListHostingWebDatabaseStatisticsResponseBodyList =
   Array<ComplexTypeChartSerieComplexTypeChartTimestampValue>;
-export const ListHostingWebDatabaseStatisticsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebDatabaseStatisticsResponseBodyList = /*@__PURE__*/ S.Array(
   ComplexTypeChartSerieComplexTypeChartTimestampValue,
 ) as any as S.Schema<ListHostingWebDatabaseStatisticsResponseBodyList>;
 
 export type ListHostingWebDatabaseStatisticsResponse =
   ListHostingWebDatabaseStatisticsResponseBodyList;
-export const ListHostingWebDatabaseStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDatabaseStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebDatabaseStatisticsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebDatabaseStatisticsResponse",
@@ -5702,7 +5665,7 @@ export interface ListHostingWebDumpRequest {
   /** Filter the value of orphan property (=) */
   orphan?: boolean;
 }
-export const ListHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     creationDate_from: S.optional(S.String.pipe(T.Query("creationDate.from"))),
@@ -5717,11 +5680,8 @@ export const ListHostingWebDumpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebDumpRequest>;
 
 export type ListHostingWebDumpResponseBodyList = Array<number>;
-export const ListHostingWebDumpResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebDumpResponseBodyList>;
-
 export type ListHostingWebDumpResponse = ListHostingWebDumpResponseBodyList;
-export const ListHostingWebDumpResponse =
+const ListHostingWebDumpResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebDumpResponse>;
 
 export interface ListHostingWebEmailBouncesRequest {
@@ -5730,7 +5690,7 @@ export interface ListHostingWebEmailBouncesRequest {
   /** Maximum bounces limit ( default : 20 / max : 100 ) */
   limit: number;
 }
-export const ListHostingWebEmailBouncesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebEmailBouncesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     limit: S.Number.pipe(T.Query()),
@@ -5748,7 +5708,7 @@ export interface HostingWebMailBounce {
   /** The email where you have the bounce */
   to?: string | null;
 }
-export const HostingWebMailBounce = /*@__PURE__*/ S.suspend(() =>
+const HostingWebMailBounce = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     message: S.optional(S.NullOr(S.String)),
@@ -5757,12 +5717,12 @@ export const HostingWebMailBounce = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostingWebMailBounce" }) as any as S.Schema<HostingWebMailBounce>;
 
 export type ListHostingWebEmailBouncesResponseBodyList = Array<HostingWebMailBounce>;
-export const ListHostingWebEmailBouncesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebEmailBouncesResponseBodyList = /*@__PURE__*/ S.Array(
   HostingWebMailBounce,
 ) as any as S.Schema<ListHostingWebEmailBouncesResponseBodyList>;
 
 export type ListHostingWebEmailBouncesResponse = ListHostingWebEmailBouncesResponseBodyList;
-export const ListHostingWebEmailBouncesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebEmailBouncesResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebEmailBouncesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebEmailBouncesResponse",
@@ -5772,7 +5732,7 @@ export interface ListHostingWebEmailOptionRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/emailOption", code: 200 })),
@@ -5781,18 +5741,15 @@ export const ListHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebEmailOptionRequest>;
 
 export type ListHostingWebEmailOptionResponseBodyList = Array<number>;
-export const ListHostingWebEmailOptionResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebEmailOptionResponseBodyList>;
-
 export type ListHostingWebEmailOptionResponse = ListHostingWebEmailOptionResponseBodyList;
-export const ListHostingWebEmailOptionResponse =
+const ListHostingWebEmailOptionResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebEmailOptionResponse>;
 
 export interface ListHostingWebEmailVolumesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebEmailVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebEmailVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/email/volumes", code: 200 })),
@@ -5807,7 +5764,7 @@ export interface HostingWebMailVolumeHistory {
   /** The volume history size */
   volume?: number | null;
 }
-export const HostingWebMailVolumeHistory = /*@__PURE__*/ S.suspend(() =>
+const HostingWebMailVolumeHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     volume: S.optional(S.NullOr(S.Number)),
@@ -5817,12 +5774,12 @@ export const HostingWebMailVolumeHistory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostingWebMailVolumeHistory>;
 
 export type ListHostingWebEmailVolumesResponseBodyList = Array<HostingWebMailVolumeHistory>;
-export const ListHostingWebEmailVolumesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebEmailVolumesResponseBodyList = /*@__PURE__*/ S.Array(
   HostingWebMailVolumeHistory,
 ) as any as S.Schema<ListHostingWebEmailVolumesResponseBodyList>;
 
 export type ListHostingWebEmailVolumesResponse = ListHostingWebEmailVolumesResponseBodyList;
-export const ListHostingWebEmailVolumesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebEmailVolumesResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebEmailVolumesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebEmailVolumesResponse",
@@ -5834,7 +5791,7 @@ export interface ListHostingWebEnvVarRequest {
   /** Filter the value of type property (=) */
   type?: HostingWebEnvVarTypeEnum | (string & {});
 }
-export const ListHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     type: S.optional(HostingWebEnvVarTypeEnum.pipe(T.Query())),
@@ -5844,18 +5801,15 @@ export const ListHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebEnvVarRequest>;
 
 export type ListHostingWebEnvVarResponseBodyList = Array<string>;
-export const ListHostingWebEnvVarResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebEnvVarResponseBodyList>;
-
 export type ListHostingWebEnvVarResponse = ListHostingWebEnvVarResponseBodyList;
-export const ListHostingWebEnvVarResponse =
+const ListHostingWebEnvVarResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebEnvVarResponse>;
 
 export interface ListHostingWebExtraSqlPersoRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/extraSqlPerso", code: 200 })),
@@ -5864,11 +5818,8 @@ export const ListHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebExtraSqlPersoRequest>;
 
 export type ListHostingWebExtraSqlPersoResponseBodyList = Array<string>;
-export const ListHostingWebExtraSqlPersoResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebExtraSqlPersoResponseBodyList>;
-
 export type ListHostingWebExtraSqlPersoResponse = ListHostingWebExtraSqlPersoResponseBodyList;
-export const ListHostingWebExtraSqlPersoResponse =
+const ListHostingWebExtraSqlPersoResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebExtraSqlPersoResponse>;
 
 export interface ListHostingWebExtraSqlPersoDatabasesRequest {
@@ -5877,7 +5828,7 @@ export interface ListHostingWebExtraSqlPersoDatabasesRequest {
   /** The extraSqlPerso option name */
   name: string;
 }
-export const ListHostingWebExtraSqlPersoDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebExtraSqlPersoDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5893,17 +5844,14 @@ export const ListHostingWebExtraSqlPersoDatabasesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesRequest>;
 
 export type ListHostingWebExtraSqlPersoDatabasesResponseBodyList = Array<string>;
-export const ListHostingWebExtraSqlPersoDatabasesResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesResponseBodyList>;
-
 export type ListHostingWebExtraSqlPersoDatabasesResponse =
   ListHostingWebExtraSqlPersoDatabasesResponseBodyList;
-export const ListHostingWebExtraSqlPersoDatabasesResponse =
+const ListHostingWebExtraSqlPersoDatabasesResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesResponse>;
 
 /** FreeDom status */
 export type HostingWebFreedomStatusEnum = "blockedByCustomer" | "blockedBySystem" | "ok" | "preset";
-export const HostingWebFreedomStatusEnum = S.String;
+const HostingWebFreedomStatusEnum = S.String;
 
 export interface ListHostingWebFreedomRequest {
   /** Service name */
@@ -5911,7 +5859,7 @@ export interface ListHostingWebFreedomRequest {
   /** Filter the freedom status (=) */
   status?: HostingWebFreedomStatusEnum | (string & {});
 }
-export const ListHostingWebFreedomRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebFreedomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: S.optional(HostingWebFreedomStatusEnum.pipe(T.Query())),
@@ -5921,26 +5869,20 @@ export const ListHostingWebFreedomRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebFreedomRequest>;
 
 export type ListHostingWebFreedomResponseBodyList = Array<string>;
-export const ListHostingWebFreedomResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebFreedomResponseBodyList>;
-
 export type ListHostingWebFreedomResponse = ListHostingWebFreedomResponseBodyList;
-export const ListHostingWebFreedomResponse =
+const ListHostingWebFreedomResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebFreedomResponse>;
 
 export interface ListHostingWebIncidentRequest {}
-export const ListHostingWebIncidentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebIncidentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/hosting/web/incident", code: 200 })),
 ).annotate({
   identifier: "ListHostingWebIncidentRequest",
 }) as any as S.Schema<ListHostingWebIncidentRequest>;
 
 export type ListHostingWebIncidentResponseBodyList = Array<string>;
-export const ListHostingWebIncidentResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebIncidentResponseBodyList>;
-
 export type ListHostingWebIncidentResponse = ListHostingWebIncidentResponseBodyList;
-export const ListHostingWebIncidentResponse =
+const ListHostingWebIncidentResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebIncidentResponse>;
 
 export interface ListHostingWebIndyRequest {
@@ -5949,7 +5891,7 @@ export interface ListHostingWebIndyRequest {
   /** Filter the value of login property (like) */
   login?: string;
 }
-export const ListHostingWebIndyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebIndyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.optional(S.String.pipe(T.Query())),
@@ -5959,11 +5901,8 @@ export const ListHostingWebIndyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebIndyRequest>;
 
 export type ListHostingWebIndyResponseBodyList = Array<string>;
-export const ListHostingWebIndyResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebIndyResponseBodyList>;
-
 export type ListHostingWebIndyResponse = ListHostingWebIndyResponseBodyList;
-export const ListHostingWebIndyResponse =
+const ListHostingWebIndyResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebIndyResponse>;
 
 export interface ListHostingWebLocalSeoAccountRequest {
@@ -5972,7 +5911,7 @@ export interface ListHostingWebLocalSeoAccountRequest {
   /** Filter the value of email property (like) */
   email?: string;
 }
-export const ListHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     email: S.optional(S.String.pipe(T.Query())),
@@ -5982,11 +5921,8 @@ export const ListHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListHostingWebLocalSeoAccountRequest>;
 
 export type ListHostingWebLocalSeoAccountResponseBodyList = Array<number>;
-export const ListHostingWebLocalSeoAccountResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebLocalSeoAccountResponseBodyList>;
-
 export type ListHostingWebLocalSeoAccountResponse = ListHostingWebLocalSeoAccountResponseBodyList;
-export const ListHostingWebLocalSeoAccountResponse =
+const ListHostingWebLocalSeoAccountResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebLocalSeoAccountResponse>;
 
 export interface ListHostingWebLocalSeoDirectoriesListRequest {
@@ -5995,7 +5931,7 @@ export interface ListHostingWebLocalSeoDirectoriesListRequest {
   /** Local SEO offer */
   offer: HostingWebLocalSeoLocationOfferEnum | (string & {});
 }
-export const ListHostingWebLocalSeoDirectoriesListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebLocalSeoDirectoriesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: HostingWebLocalSeoLocationCountryEnum.pipe(T.Query()),
     offer: HostingWebLocalSeoLocationOfferEnum.pipe(T.Query()),
@@ -6011,7 +5947,7 @@ export interface HostingWebLocalSeoDirectory {
   /** Human-readable name of the directory */
   displayName?: string;
 }
-export const HostingWebLocalSeoDirectory = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoDirectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -6023,19 +5959,19 @@ export const HostingWebLocalSeoDirectory = /*@__PURE__*/ S.suspend(() =>
 /** Navigation systems */
 export type HostingWebLocalSeoDirectoriesListNavigationSystemsList =
   Array<HostingWebLocalSeoDirectory>;
-export const HostingWebLocalSeoDirectoriesListNavigationSystemsList = /*@__PURE__*/ S.Array(
+const HostingWebLocalSeoDirectoriesListNavigationSystemsList = /*@__PURE__*/ S.Array(
   HostingWebLocalSeoDirectory,
 ) as any as S.Schema<HostingWebLocalSeoDirectoriesListNavigationSystemsList>;
 
 /** Search engines */
 export type HostingWebLocalSeoDirectoriesListSearchEnginesList = Array<HostingWebLocalSeoDirectory>;
-export const HostingWebLocalSeoDirectoriesListSearchEnginesList =
+const HostingWebLocalSeoDirectoriesListSearchEnginesList =
   HostingWebLocalSeoDirectoriesListNavigationSystemsList as any as S.Schema<HostingWebLocalSeoDirectoriesListSearchEnginesList>;
 
 /** Social networks */
 export type HostingWebLocalSeoDirectoriesListSocialNetworksList =
   Array<HostingWebLocalSeoDirectory>;
-export const HostingWebLocalSeoDirectoriesListSocialNetworksList =
+const HostingWebLocalSeoDirectoriesListSocialNetworksList =
   HostingWebLocalSeoDirectoriesListNavigationSystemsList as any as S.Schema<HostingWebLocalSeoDirectoriesListSocialNetworksList>;
 
 /** Struct describing a list of directories ordered by type */
@@ -6047,7 +5983,7 @@ export interface HostingWebLocalSeoDirectoriesList {
   /** Social networks */
   socialNetworks?: HostingWebLocalSeoDirectoriesListSocialNetworksList;
 }
-export const HostingWebLocalSeoDirectoriesList = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoDirectoriesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     navigationSystems: S.optional(HostingWebLocalSeoDirectoriesListNavigationSystemsList),
     searchEngines: S.optional(HostingWebLocalSeoDirectoriesListSearchEnginesList),
@@ -6061,7 +5997,7 @@ export interface ListHostingWebLocalSeoLocationRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6072,11 +6008,8 @@ export const ListHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingWebLocalSeoLocationRequest>;
 
 export type ListHostingWebLocalSeoLocationResponseBodyList = Array<number>;
-export const ListHostingWebLocalSeoLocationResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebLocalSeoLocationResponseBodyList>;
-
 export type ListHostingWebLocalSeoLocationResponse = ListHostingWebLocalSeoLocationResponseBodyList;
-export const ListHostingWebLocalSeoLocationResponse =
+const ListHostingWebLocalSeoLocationResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebLocalSeoLocationResponse>;
 
 export interface ListHostingWebLocalSeoVisibilityCheckResultRequest {
@@ -6087,7 +6020,7 @@ export interface ListHostingWebLocalSeoVisibilityCheckResultRequest {
   /** Token received when requesting the check */
   token: string;
 }
-export const ListHostingWebLocalSeoVisibilityCheckResultRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebLocalSeoVisibilityCheckResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory: S.String.pipe(T.Query()),
     id: S.Number.pipe(T.Query()),
@@ -6104,7 +6037,7 @@ export type HostingWebLocalSeoFieldStatusEnum =
   | "MISSING"
   | "NOT_APPLICABLE"
   | "PRESENT";
-export const HostingWebLocalSeoFieldStatusEnum = S.String;
+const HostingWebLocalSeoFieldStatusEnum = S.String;
 
 /** Status of a listing */
 export type HostingWebLocalSeoFlowStatusEnum =
@@ -6122,7 +6055,7 @@ export type HostingWebLocalSeoFlowStatusEnum =
   | "SUBMISSION_NEEDED"
   | "WAITING_DIRECTORY_ACTION"
   | "WAITING_USER_ACTION";
-export const HostingWebLocalSeoFlowStatusEnum = S.String;
+const HostingWebLocalSeoFlowStatusEnum = S.String;
 
 /** Sync status of a listing */
 export type HostingWebLocalSeoListingStatusEnum =
@@ -6132,7 +6065,7 @@ export type HostingWebLocalSeoListingStatusEnum =
   | "NOT_SUPPORTED"
   | "NO_ONLINE_LISTING"
   | "TECHNICAL_PROBLEMS";
-export const HostingWebLocalSeoListingStatusEnum = S.String;
+const HostingWebLocalSeoListingStatusEnum = S.String;
 
 /** Struct describing a visibility check result */
 export interface HostingWebLocalSeoVisibilityCheckResultResponse {
@@ -6197,7 +6130,7 @@ export interface HostingWebLocalSeoVisibilityCheckResultResponse {
   /** Zipcode of the location (sync status) */
   zipStatus?: HostingWebLocalSeoFieldStatusEnum | null;
 }
-export const HostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
+const HostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     cityStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
@@ -6236,13 +6169,13 @@ export const HostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ S.s
 
 export type ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList =
   Array<HostingWebLocalSeoVisibilityCheckResultResponse>;
-export const ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList = /*@__PURE__*/ S.Array(
   HostingWebLocalSeoVisibilityCheckResultResponse,
 ) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList>;
 
 export type ListHostingWebLocalSeoVisibilityCheckResultResponse =
   ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList;
-export const ListHostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebLocalSeoVisibilityCheckResultResponse",
@@ -6252,7 +6185,7 @@ export interface ListHostingWebModuleRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/module", code: 200 })),
@@ -6261,11 +6194,8 @@ export const ListHostingWebModuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebModuleRequest>;
 
 export type ListHostingWebModuleResponseBodyList = Array<number>;
-export const ListHostingWebModuleResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebModuleResponseBodyList>;
-
 export type ListHostingWebModuleResponse = ListHostingWebModuleResponseBodyList;
-export const ListHostingWebModuleResponse =
+const ListHostingWebModuleResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebModuleResponse>;
 
 export interface ListHostingWebModuleListRequest {
@@ -6276,7 +6206,7 @@ export interface ListHostingWebModuleListRequest {
   /** Filter the value of latest property (=) */
   latest?: boolean;
 }
-export const ListHostingWebModuleListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebModuleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean.pipe(T.Query())),
     branch: S.optional(HostingWebModuleBranchEnum.pipe(T.Query())),
@@ -6287,11 +6217,8 @@ export const ListHostingWebModuleListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebModuleListRequest>;
 
 export type ListHostingWebModuleListResponseBodyList = Array<number>;
-export const ListHostingWebModuleListResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebModuleListResponseBodyList>;
-
 export type ListHostingWebModuleListResponse = ListHostingWebModuleListResponseBodyList;
-export const ListHostingWebModuleListResponse =
+const ListHostingWebModuleListResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebModuleListResponse>;
 
 export interface ListHostingWebOvhConfigRequest {
@@ -6302,7 +6229,7 @@ export interface ListHostingWebOvhConfigRequest {
   /** Filter the value of path property (like) */
   path?: string;
 }
-export const ListHostingWebOvhConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebOvhConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     historical: S.optional(S.Boolean.pipe(T.Query())),
@@ -6313,18 +6240,15 @@ export const ListHostingWebOvhConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebOvhConfigRequest>;
 
 export type ListHostingWebOvhConfigResponseBodyList = Array<number>;
-export const ListHostingWebOvhConfigResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebOvhConfigResponseBodyList>;
-
 export type ListHostingWebOvhConfigResponse = ListHostingWebOvhConfigResponseBodyList;
-export const ListHostingWebOvhConfigResponse =
+const ListHostingWebOvhConfigResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebOvhConfigResponse>;
 
 export interface ListHostingWebOvhConfigCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebOvhConfigCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebOvhConfigCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6336,7 +6260,7 @@ export const ListHostingWebOvhConfigCapabilitiesRequest = /*@__PURE__*/ S.suspen
 
 /** Container image available */
 export type HostingWebOvhConfigCapabilitiesContainerImageList = Array<string>;
-export const HostingWebOvhConfigCapabilitiesContainerImageList =
+const HostingWebOvhConfigCapabilitiesContainerImageList =
   CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebOvhConfigCapabilitiesContainerImageList>;
 
 /** Struct which describes version and container image available */
@@ -6346,7 +6270,7 @@ export interface HostingWebOvhConfigCapabilities {
   /** PHP version */
   version?: HostingWebOvhConfigAvailableEngineVersionEnum;
 }
-export const HostingWebOvhConfigCapabilities = /*@__PURE__*/ S.suspend(() =>
+const HostingWebOvhConfigCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerImage: S.optional(HostingWebOvhConfigCapabilitiesContainerImageList),
     version: S.optional(HostingWebOvhConfigAvailableEngineVersionEnum),
@@ -6357,13 +6281,13 @@ export const HostingWebOvhConfigCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 export type ListHostingWebOvhConfigCapabilitiesResponseBodyList =
   Array<HostingWebOvhConfigCapabilities>;
-export const ListHostingWebOvhConfigCapabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebOvhConfigCapabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
   HostingWebOvhConfigCapabilities,
 ) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesResponseBodyList>;
 
 export type ListHostingWebOvhConfigCapabilitiesResponse =
   ListHostingWebOvhConfigCapabilitiesResponseBodyList;
-export const ListHostingWebOvhConfigCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebOvhConfigCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebOvhConfigCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebOvhConfigCapabilitiesResponse",
@@ -6375,7 +6299,7 @@ export interface ListHostingWebOwnLogsRequest {
   /** Filter the value of fqdn property (like) */
   fqdn?: string;
 }
-export const ListHostingWebOwnLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebOwnLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     fqdn: S.optional(S.String.pipe(T.Query())),
@@ -6385,11 +6309,8 @@ export const ListHostingWebOwnLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebOwnLogsRequest>;
 
 export type ListHostingWebOwnLogsResponseBodyList = Array<number>;
-export const ListHostingWebOwnLogsResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebOwnLogsResponseBodyList>;
-
 export type ListHostingWebOwnLogsResponse = ListHostingWebOwnLogsResponseBodyList;
-export const ListHostingWebOwnLogsResponse =
+const ListHostingWebOwnLogsResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebOwnLogsResponse>;
 
 export interface ListHostingWebOwnLogUserLogsRequest {
@@ -6400,7 +6321,7 @@ export interface ListHostingWebOwnLogUserLogsRequest {
   /** Filter the value of login property (like) */
   login?: string;
 }
-export const ListHostingWebOwnLogUserLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebOwnLogUserLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6413,43 +6334,38 @@ export const ListHostingWebOwnLogUserLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebOwnLogUserLogsRequest>;
 
 export type ListHostingWebOwnLogUserLogsResponseBodyList = Array<string>;
-export const ListHostingWebOwnLogUserLogsResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebOwnLogUserLogsResponseBodyList>;
-
 export type ListHostingWebOwnLogUserLogsResponse = ListHostingWebOwnLogUserLogsResponseBodyList;
-export const ListHostingWebOwnLogUserLogsResponse =
+const ListHostingWebOwnLogUserLogsResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebOwnLogUserLogsResponse>;
 
 export interface ListHostingWebPrivateDatabaseCreationCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebPrivateDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/hosting/web/{serviceName}/privateDatabaseCreationCapabilities",
-        code: 200,
-      }),
-    ),
+const ListHostingWebPrivateDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/hosting/web/{serviceName}/privateDatabaseCreationCapabilities",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListHostingWebPrivateDatabaseCreationCapabilitiesRequest",
 }) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesRequest>;
 
 export type ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-export const ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    HostingWebDatabaseCreationDatabaseCapabilities,
-  ) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList>;
+const ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
+  HostingWebDatabaseCreationDatabaseCapabilities,
+) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList>;
 
 export type ListHostingWebPrivateDatabaseCreationCapabilitiesResponse =
   ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList;
-export const ListHostingWebPrivateDatabaseCreationCapabilitiesResponse = /*@__PURE__*/ S.suspend(
-  () => ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
+const ListHostingWebPrivateDatabaseCreationCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebPrivateDatabaseCreationCapabilitiesResponse",
 }) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponse>;
@@ -6458,7 +6374,7 @@ export interface ListHostingWebPrivateDatabasesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const ListHostingWebPrivateDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebPrivateDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/privateDatabases", code: 200 })),
@@ -6467,11 +6383,8 @@ export const ListHostingWebPrivateDatabasesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingWebPrivateDatabasesRequest>;
 
 export type ListHostingWebPrivateDatabasesResponseBodyList = Array<string>;
-export const ListHostingWebPrivateDatabasesResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebPrivateDatabasesResponseBodyList>;
-
 export type ListHostingWebPrivateDatabasesResponse = ListHostingWebPrivateDatabasesResponseBodyList;
-export const ListHostingWebPrivateDatabasesResponse =
+const ListHostingWebPrivateDatabasesResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebPrivateDatabasesResponse>;
 
 export interface ListHostingWebRuntimeRequest {
@@ -6482,7 +6395,7 @@ export interface ListHostingWebRuntimeRequest {
   /** Filter the value of type property (=) */
   type?: HostingWebRuntimeTypeEnum | (string & {});
 }
-export const ListHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.optional(S.String.pipe(T.Query())),
@@ -6493,11 +6406,8 @@ export const ListHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebRuntimeRequest>;
 
 export type ListHostingWebRuntimeResponseBodyList = Array<number>;
-export const ListHostingWebRuntimeResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebRuntimeResponseBodyList>;
-
 export type ListHostingWebRuntimeResponse = ListHostingWebRuntimeResponseBodyList;
-export const ListHostingWebRuntimeResponse =
+const ListHostingWebRuntimeResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebRuntimeResponse>;
 
 export interface ListHostingWebRuntimeAttachedDomainsRequest {
@@ -6506,7 +6416,7 @@ export interface ListHostingWebRuntimeAttachedDomainsRequest {
   /** The runtime configuration ID */
   id: number;
 }
-export const ListHostingWebRuntimeAttachedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebRuntimeAttachedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6522,12 +6432,9 @@ export const ListHostingWebRuntimeAttachedDomainsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsRequest>;
 
 export type ListHostingWebRuntimeAttachedDomainsResponseBodyList = Array<string>;
-export const ListHostingWebRuntimeAttachedDomainsResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebRuntimeAttachedDomainsResponseBodyList>;
-
 export type ListHostingWebRuntimeAttachedDomainsResponse =
   ListHostingWebRuntimeAttachedDomainsResponseBodyList;
-export const ListHostingWebRuntimeAttachedDomainsResponse =
+const ListHostingWebRuntimeAttachedDomainsResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebRuntimeAttachedDomainsResponse>;
 
 export interface ListHostingWebRuntimeAvailableTypesRequest {
@@ -6536,7 +6443,7 @@ export interface ListHostingWebRuntimeAvailableTypesRequest {
   /** Specific programming language to filter */
   language?: string;
 }
-export const ListHostingWebRuntimeAvailableTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebRuntimeAvailableTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     language: S.optional(S.String.pipe(T.Query())),
@@ -6548,12 +6455,9 @@ export const ListHostingWebRuntimeAvailableTypesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingWebRuntimeAvailableTypesRequest>;
 
 export type ListHostingWebRuntimeAvailableTypesResponseBodyList = Array<HostingWebRuntimeTypeEnum>;
-export const ListHostingWebRuntimeAvailableTypesResponseBodyList =
-  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponseBodyList>;
-
 export type ListHostingWebRuntimeAvailableTypesResponse =
   ListHostingWebRuntimeAvailableTypesResponseBodyList;
-export const ListHostingWebRuntimeAvailableTypesResponse =
+const ListHostingWebRuntimeAvailableTypesResponse =
   ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>;
 
 /** Types of statistics available for the web hosting */
@@ -6564,7 +6468,7 @@ export type HostingWebStatisticsTypeEnum =
   | "out.tcpConn"
   | "sys.cpuUsage"
   | "sys.workerSpawnOverload";
-export const HostingWebStatisticsTypeEnum = S.String;
+const HostingWebStatisticsTypeEnum = S.String;
 
 export interface ListHostingWebStatisticsRequest {
   /** The internal name of your hosting */
@@ -6572,7 +6476,7 @@ export interface ListHostingWebStatisticsRequest {
   period: HostingWebStatisticsPeriodEnum | (string & {});
   type: HostingWebStatisticsTypeEnum | (string & {});
 }
-export const ListHostingWebStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     period: HostingWebStatisticsPeriodEnum.pipe(T.Query()),
@@ -6584,11 +6488,8 @@ export const ListHostingWebStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListHostingWebStatisticsResponseBodyList =
   Array<ComplexTypeChartSerieComplexTypeChartTimestampValue>;
-export const ListHostingWebStatisticsResponseBodyList =
-  ListHostingWebDatabaseStatisticsResponseBodyList as any as S.Schema<ListHostingWebStatisticsResponseBodyList>;
-
 export type ListHostingWebStatisticsResponse = ListHostingWebStatisticsResponseBodyList;
-export const ListHostingWebStatisticsResponse =
+const ListHostingWebStatisticsResponse =
   ListHostingWebDatabaseStatisticsResponse as any as S.Schema<ListHostingWebStatisticsResponse>;
 
 export interface ListHostingWebTasksRequest {
@@ -6599,7 +6500,7 @@ export interface ListHostingWebTasksRequest {
   /** Filter tasks by status (like) */
   status?: HostingWebTaskStatusEnum | (string & {});
 }
-export const ListHostingWebTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     function: S.optional(S.String.pipe(T.Query())),
@@ -6610,11 +6511,8 @@ export const ListHostingWebTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebTasksRequest>;
 
 export type ListHostingWebTasksResponseBodyList = Array<number>;
-export const ListHostingWebTasksResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebTasksResponseBodyList>;
-
 export type ListHostingWebTasksResponse = ListHostingWebTasksResponseBodyList;
-export const ListHostingWebTasksResponse =
+const ListHostingWebTasksResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebTasksResponse>;
 
 export interface ListHostingWebUserRequest {
@@ -6625,7 +6523,7 @@ export interface ListHostingWebUserRequest {
   /** Filter the value of login property (like) */
   login?: string;
 }
-export const ListHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     home: S.optional(S.String.pipe(T.Query())),
@@ -6636,26 +6534,20 @@ export const ListHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebUserRequest>;
 
 export type ListHostingWebUserResponseBodyList = Array<string>;
-export const ListHostingWebUserResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebUserResponseBodyList>;
-
 export type ListHostingWebUserResponse = ListHostingWebUserResponseBodyList;
-export const ListHostingWebUserResponse =
+const ListHostingWebUserResponse =
   ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebUserResponse>;
 
 export interface ListHostingWebVcsSupportedRequest {}
-export const ListHostingWebVcsSupportedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebVcsSupportedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/hosting/web/vcs/supported", code: 200 })),
 ).annotate({
   identifier: "ListHostingWebVcsSupportedRequest",
 }) as any as S.Schema<ListHostingWebVcsSupportedRequest>;
 
 export type ListHostingWebVcsSupportedResponseBodyList = Array<HostingWebSupportedVcsEnum>;
-export const ListHostingWebVcsSupportedResponseBodyList =
-  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebVcsSupportedResponseBodyList>;
-
 export type ListHostingWebVcsSupportedResponse = ListHostingWebVcsSupportedResponseBodyList;
-export const ListHostingWebVcsSupportedResponse =
+const ListHostingWebVcsSupportedResponse =
   ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebVcsSupportedResponse>;
 
 export interface ListHostingWebWebsiteRequest {
@@ -6664,7 +6556,7 @@ export interface ListHostingWebWebsiteRequest {
   /** Filter the value of path property */
   path?: string;
 }
-export const ListHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     path: S.optional(S.String.pipe(T.Query())),
@@ -6674,11 +6566,8 @@ export const ListHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebWebsiteRequest>;
 
 export type ListHostingWebWebsiteResponseBodyList = Array<number>;
-export const ListHostingWebWebsiteResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebWebsiteResponseBodyList>;
-
 export type ListHostingWebWebsiteResponse = ListHostingWebWebsiteResponseBodyList;
-export const ListHostingWebWebsiteResponse =
+const ListHostingWebWebsiteResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebWebsiteResponse>;
 
 export interface ListHostingWebWebsiteDeploymentRequest {
@@ -6687,7 +6576,7 @@ export interface ListHostingWebWebsiteDeploymentRequest {
   /** Id */
   id: number;
 }
-export const ListHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6699,12 +6588,9 @@ export const ListHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListHostingWebWebsiteDeploymentRequest>;
 
 export type ListHostingWebWebsiteDeploymentResponseBodyList = Array<number>;
-export const ListHostingWebWebsiteDeploymentResponseBodyList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ListHostingWebWebsiteDeploymentResponseBodyList>;
-
 export type ListHostingWebWebsiteDeploymentResponse =
   ListHostingWebWebsiteDeploymentResponseBodyList;
-export const ListHostingWebWebsiteDeploymentResponse =
+const ListHostingWebWebsiteDeploymentResponse =
   CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebWebsiteDeploymentResponse>;
 
 export interface ListHostingWebWebsiteDeploymentLogsRequest {
@@ -6715,7 +6601,7 @@ export interface ListHostingWebWebsiteDeploymentLogsRequest {
   /** Deployment ID */
   deploymentId: number;
 }
-export const ListHostingWebWebsiteDeploymentLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebWebsiteDeploymentLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6738,7 +6624,7 @@ export interface HostingWebWebsiteDeploymentLogsMessage {
   /** Content of the message */
   message?: string;
 }
-export const HostingWebWebsiteDeploymentLogsMessage = /*@__PURE__*/ S.suspend(() =>
+const HostingWebWebsiteDeploymentLogsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     message: S.optional(S.String),
@@ -6749,13 +6635,13 @@ export const HostingWebWebsiteDeploymentLogsMessage = /*@__PURE__*/ S.suspend(()
 
 export type ListHostingWebWebsiteDeploymentLogsResponseBodyList =
   Array<HostingWebWebsiteDeploymentLogsMessage>;
-export const ListHostingWebWebsiteDeploymentLogsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingWebWebsiteDeploymentLogsResponseBodyList = /*@__PURE__*/ S.Array(
   HostingWebWebsiteDeploymentLogsMessage,
 ) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsResponseBodyList>;
 
 export type ListHostingWebWebsiteDeploymentLogsResponse =
   ListHostingWebWebsiteDeploymentLogsResponseBodyList;
-export const ListHostingWebWebsiteDeploymentLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebWebsiteDeploymentLogsResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingWebWebsiteDeploymentLogsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebWebsiteDeploymentLogsResponse",
@@ -6767,7 +6653,7 @@ export interface LoginHostingWebLocalSeoAccountRequest {
   /** Account id */
   id: number;
 }
-export const LoginHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const LoginHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6783,7 +6669,7 @@ export const LoginHostingWebLocalSeoAccountRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<LoginHostingWebLocalSeoAccountRequest>;
 
 export type LoginHostingWebLocalSeoAccountResponse = string;
-export const LoginHostingWebLocalSeoAccountResponse =
+const LoginHostingWebLocalSeoAccountResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<LoginHostingWebLocalSeoAccountResponse>;
 
 export interface PurgeHostingWebAttachedDomainCacheRequest {
@@ -6792,7 +6678,7 @@ export interface PurgeHostingWebAttachedDomainCacheRequest {
   /** Domain linked (fqdn) */
   domain: string;
 }
-export const PurgeHostingWebAttachedDomainCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeHostingWebAttachedDomainCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -6809,7 +6695,7 @@ export const PurgeHostingWebAttachedDomainCacheRequest = /*@__PURE__*/ S.suspend
 
 /** Purge type */
 export type CdnPurgeTypeEnum = "extension" | "folder" | "regex" | "uri";
-export const CdnPurgeTypeEnum = S.String;
+const CdnPurgeTypeEnum = S.String;
 
 export interface PurgeHostingWebCdnDomainRequest {
   /** Service name */
@@ -6821,7 +6707,7 @@ export interface PurgeHostingWebCdnDomainRequest {
   /** Purge Pattern Type (default is regex) */
   patternType?: CdnPurgeTypeEnum | (string & {});
 }
-export const PurgeHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -6844,7 +6730,7 @@ export interface PutHostingWebRequest {
   /** Set the name displayed in ManagerV6 for your hosting (max 50 chars, empty string resets to service name) */
   displayName?: string;
 }
-export const PutHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.String),
@@ -6852,8 +6738,7 @@ export const PutHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutHostingWebRequest" }) as any as S.Schema<PutHostingWebRequest>;
 
 export interface PutHostingWebResponse {}
-export const PutHostingWebResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutHostingWebResponse>;
+const PutHostingWebResponse = IamResourceTagFilterInput as any as S.Schema<PutHostingWebResponse>;
 
 export interface PutHostingWebAttachedDomainRequest {
   /** Service name */
@@ -6877,7 +6762,7 @@ export interface PutHostingWebAttachedDomainRequest {
   /** Whether to put the attached domain in the SSL certificate */
   ssl?: boolean | null;
 }
-export const PutHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -6897,7 +6782,7 @@ export const PutHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingWebAttachedDomainRequest>;
 
 export interface PutHostingWebAttachedDomainResponse {}
-export const PutHostingWebAttachedDomainResponse =
+const PutHostingWebAttachedDomainResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebAttachedDomainResponse>;
 
 export interface PutHostingWebCdnDomainOptionRequest {
@@ -6918,7 +6803,7 @@ export interface PutHostingWebCdnDomainOptionRequest {
   /** Option type */
   type: CdnOptionTypeEnum | (string & {});
 }
-export const PutHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebCdnDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -6953,7 +6838,7 @@ export interface PutHostingWebConfigurationRequest {
   /** version of the language chosen for the current hosting */
   version?: string;
 }
-export const PutHostingWebConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     appEnv: S.optional(HostingWebConfigurationEnvEnum),
@@ -6967,7 +6852,7 @@ export const PutHostingWebConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingWebConfigurationRequest>;
 
 export interface PutHostingWebConfigurationResponse {}
-export const PutHostingWebConfigurationResponse =
+const PutHostingWebConfigurationResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebConfigurationResponse>;
 
 export interface PutHostingWebCronRequest {
@@ -6988,7 +6873,7 @@ export interface PutHostingWebCronRequest {
   /** Cron status */
   status?: HostingWebCronStatusEnum | (string & {});
 }
-export const PutHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7002,7 +6887,7 @@ export const PutHostingWebCronRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutHostingWebCronRequest" }) as any as S.Schema<PutHostingWebCronRequest>;
 
 export type PutHostingWebCronResponse = string;
-export const PutHostingWebCronResponse =
+const PutHostingWebCronResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<PutHostingWebCronResponse>;
 
 export interface PutHostingWebEmailRequest {
@@ -7011,7 +6896,7 @@ export interface PutHostingWebEmailRequest {
   /** Email used to receive errors */
   email?: string | null;
 }
-export const PutHostingWebEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     email: S.optional(S.NullOr(S.String)),
@@ -7021,7 +6906,7 @@ export const PutHostingWebEmailRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingWebEmailRequest>;
 
 export interface PutHostingWebEmailResponse {}
-export const PutHostingWebEmailResponse =
+const PutHostingWebEmailResponse =
   IamResourceTagFilterInput as any as S.Schema<PutHostingWebEmailResponse>;
 
 export interface PutHostingWebEnvVarRequest {
@@ -7032,7 +6917,7 @@ export interface PutHostingWebEnvVarRequest {
   /** Value of the variable */
   value?: string;
 }
-export const PutHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -7052,7 +6937,7 @@ export interface PutHostingWebOwnLogUserLogRequest {
   /** Description field for you */
   description?: string | null;
 }
-export const PutHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7070,7 +6955,7 @@ export const PutHostingWebOwnLogUserLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingWebOwnLogUserLogRequest>;
 
 export interface PutHostingWebOwnLogUserLogResponse {}
-export const PutHostingWebOwnLogUserLogResponse =
+const PutHostingWebOwnLogUserLogResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebOwnLogUserLogResponse>;
 
 export interface PutHostingWebRuntimeRequest {
@@ -7091,7 +6976,7 @@ export interface PutHostingWebRuntimeRequest {
   /** The backend type of the runtime */
   type?: HostingWebRuntimeTypeEnum | (string & {});
 }
-export const PutHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7107,7 +6992,7 @@ export const PutHostingWebRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingWebRuntimeRequest>;
 
 export interface PutHostingWebRuntimeResponse {}
-export const PutHostingWebRuntimeResponse =
+const PutHostingWebRuntimeResponse =
   IamResourceTagFilterInput as any as S.Schema<PutHostingWebRuntimeResponse>;
 
 export interface PutHostingWebServiceInfosRequest {
@@ -7116,7 +7001,7 @@ export interface PutHostingWebServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutHostingWebServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -7126,7 +7011,7 @@ export const PutHostingWebServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingWebServiceInfosRequest>;
 
 export interface PutHostingWebServiceInfosResponse {}
-export const PutHostingWebServiceInfosResponse =
+const PutHostingWebServiceInfosResponse =
   CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebServiceInfosResponse>;
 
 export interface PutHostingWebUserRequest {
@@ -7141,7 +7026,7 @@ export interface PutHostingWebUserRequest {
   /** User state */
   state?: HostingWebUserStateEnum | (string & {});
 }
-export const PutHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -7152,7 +7037,7 @@ export const PutHostingWebUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutHostingWebUserRequest" }) as any as S.Schema<PutHostingWebUserRequest>;
 
 export interface PutHostingWebUserResponse {}
-export const PutHostingWebUserResponse =
+const PutHostingWebUserResponse =
   IamResourceTagFilterInput as any as S.Schema<PutHostingWebUserResponse>;
 
 export interface PutHostingWebWebsiteRequest {
@@ -7163,7 +7048,7 @@ export interface PutHostingWebWebsiteRequest {
   /** Branch of the repository containing the website source code to deploy */
   vcsBranch?: string | null;
 }
-export const PutHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingWebWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7179,7 +7064,7 @@ export interface RefreshHostingWebCdnDomainRequest {
   /** Domain name */
   domainName: string;
 }
-export const RefreshHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshHostingWebCdnDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
@@ -7200,7 +7085,7 @@ export interface RestartHostingWebAttachedDomainRequest {
   /** Domain linked (fqdn) */
   domain: string;
 }
-export const RestartHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartHostingWebAttachedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7225,7 +7110,7 @@ export interface RestoreHostingWebDatabaseRequest {
   /** Send an email when the restore will be done? Default: false */
   sendEmail?: boolean;
 }
-export const RestoreHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreHostingWebDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -7250,7 +7135,7 @@ export interface RestoreHostingWebDatabaseDumpRequest {
   /** Dump id */
   id: number;
 }
-export const RestoreHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -7268,7 +7153,7 @@ export const RestoreHostingWebDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of backup types */
 export type HostingWebBackupTypeEnum = "daily.1" | "daily.2" | "daily.3" | "weekly.1" | "weekly.2";
-export const HostingWebBackupTypeEnum = S.String;
+const HostingWebBackupTypeEnum = S.String;
 
 export interface RestoreHostingWebSnapshotRequest {
   /** The internal name of your hosting */
@@ -7276,7 +7161,7 @@ export interface RestoreHostingWebSnapshotRequest {
   /** The backup you want to restore */
   backup: HostingWebBackupTypeEnum | (string & {});
 }
-export const RestoreHostingWebSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreHostingWebSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     backup: HostingWebBackupTypeEnum,
@@ -7289,7 +7174,7 @@ export interface TerminateHostingWebRequest {
   /** Service name */
   serviceName: string;
 }
-export const TerminateHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/terminate", code: 200 })),
@@ -7298,14 +7183,14 @@ export const TerminateHostingWebRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateHostingWebRequest>;
 
 export type TerminateHostingWebResponse = string;
-export const TerminateHostingWebResponse =
+const TerminateHostingWebResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebResponse>;
 
 export interface TerminateHostingWebCdnRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-export const TerminateHostingWebCdnRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateHostingWebCdnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/cdn/terminate", code: 200 })),
@@ -7314,7 +7199,7 @@ export const TerminateHostingWebCdnRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateHostingWebCdnRequest>;
 
 export type TerminateHostingWebCdnResponse = string;
-export const TerminateHostingWebCdnResponse =
+const TerminateHostingWebCdnResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebCdnResponse>;
 
 export interface TerminateHostingWebEmailOptionRequest {
@@ -7323,7 +7208,7 @@ export interface TerminateHostingWebEmailOptionRequest {
   /** Id of the object */
   id: number;
 }
-export const TerminateHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7339,7 +7224,7 @@ export const TerminateHostingWebEmailOptionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<TerminateHostingWebEmailOptionRequest>;
 
 export type TerminateHostingWebEmailOptionResponse = string;
-export const TerminateHostingWebEmailOptionResponse =
+const TerminateHostingWebEmailOptionResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebEmailOptionResponse>;
 
 export interface TerminateHostingWebExtraSqlPersoRequest {
@@ -7348,7 +7233,7 @@ export interface TerminateHostingWebExtraSqlPersoRequest {
   /** The extraSqlPerso option name */
   name: string;
 }
-export const TerminateHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -7364,7 +7249,7 @@ export const TerminateHostingWebExtraSqlPersoRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<TerminateHostingWebExtraSqlPersoRequest>;
 
 export type TerminateHostingWebExtraSqlPersoResponse = string;
-export const TerminateHostingWebExtraSqlPersoResponse =
+const TerminateHostingWebExtraSqlPersoResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebExtraSqlPersoResponse>;
 
 export interface TerminateHostingWebLocalSeoLocationRequest {
@@ -7373,7 +7258,7 @@ export interface TerminateHostingWebLocalSeoLocationRequest {
   /** Location id */
   id: number;
 }
-export const TerminateHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -7389,7 +7274,7 @@ export const TerminateHostingWebLocalSeoLocationRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<TerminateHostingWebLocalSeoLocationRequest>;
 
 export type TerminateHostingWebLocalSeoLocationResponse = string;
-export const TerminateHostingWebLocalSeoLocationResponse =
+const TerminateHostingWebLocalSeoLocationResponse =
   ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebLocalSeoLocationResponse>;
 
 export type ConfirmHostingWebTerminationError = OvhOpError;

@@ -71,7 +71,7 @@ export interface CreateMtlsCertificateRequest {
   /** The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page. */
   privateKey?: string;
 }
-export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ca: S.Boolean,
@@ -86,7 +86,7 @@ export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMtlsCertificateRequest>;
 
 export type CreateResponseType = "custom" | "gateway_managed" | "access_managed";
-export const CreateResponseType = S.String;
+const CreateResponseType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMtlsCertificateResponse {
@@ -113,7 +113,7 @@ export interface CreateMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const CreateMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     ca: S.optional(S.NullOr(S.Boolean)),
@@ -137,7 +137,7 @@ export interface DeleteMtlsCertificateRequest {
   /** Certificate identifier tag. */
   mtlsCertificateId: string;
 }
-export const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
@@ -155,7 +155,7 @@ export const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMtlsCertificateRequest>;
 
 export type DeleteResponseType = "custom" | "gateway_managed" | "access_managed";
-export const DeleteResponseType = S.String;
+const DeleteResponseType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteMtlsCertificateResponse {
@@ -180,7 +180,7 @@ export interface DeleteMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const DeleteMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     ca: S.optional(S.NullOr(S.Boolean)),
@@ -203,7 +203,7 @@ export interface GetAssociationRequest {
   /** Certificate identifier tag. */
   mtlsCertificateId: string;
 }
-export const GetAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
@@ -224,7 +224,7 @@ export interface AssociationsGetResultItem {
   /** Certificate deployment status for the given service. */
   status?: string | null;
 }
-export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(S.String)),
@@ -234,7 +234,7 @@ export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociationsGetResultItem>;
 
 export type AssociationsGetResultList = Array<AssociationsGetResultItem>;
-export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
+const AssociationsGetResultList = /*@__PURE__*/ S.Array(
   AssociationsGetResultItem,
 ) as any as S.Schema<AssociationsGetResultList>;
 
@@ -244,7 +244,7 @@ export interface GetAssociationResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AssociationsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -257,7 +257,7 @@ export interface GetMtlsCertificateRequest {
   /** Certificate identifier tag. */
   mtlsCertificateId: string;
 }
-export const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
@@ -275,8 +275,6 @@ export const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMtlsCertificateRequest>;
 
 export type GetResponseType = "custom" | "gateway_managed" | "access_managed";
-export const GetResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMtlsCertificateResponse {
   /** Certificate identifier tag. */
@@ -300,14 +298,14 @@ export interface GetMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const GetMtlsCertificateResponse =
+const GetMtlsCertificateResponse =
   DeleteMtlsCertificateResponse as any as S.Schema<GetMtlsCertificateResponse>;
 
 export type ListRequestType = "custom" | "gateway_managed" | "access_managed";
-export const ListRequestType = S.String;
+const ListRequestType = S.String;
 
 export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
-export const ListRequestTypeList = /*@__PURE__*/ S.Array(
+const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
 
@@ -317,7 +315,7 @@ export interface ListMtlsCertificatesRequest {
   /** Filters results by certificate type. Multiple types can be comma-separated. */
   type?: ListRequestTypeList;
 }
-export const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
@@ -329,7 +327,7 @@ export const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMtlsCertificatesRequest>;
 
 export type ListResultItemType = "custom" | "gateway_managed" | "access_managed";
-export const ListResultItemType = S.String;
+const ListResultItemType = S.String;
 
 export interface ListResultItem {
   /** Certificate identifier tag. */
@@ -353,7 +351,7 @@ export interface ListResultItem {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     ca: S.optional(S.NullOr(S.Boolean)),
@@ -369,9 +367,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListMtlsCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -379,7 +375,7 @@ export interface ListMtlsCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListMtlsCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMtlsCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

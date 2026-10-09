@@ -67,7 +67,7 @@ export interface HidePlayersRequest {
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
 }
-export const HidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
+const HidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
     playerId: S.String.pipe(T.Label()),
@@ -81,7 +81,7 @@ export const HidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HidePlayersRequest" }) as any as S.Schema<HidePlayersRequest>;
 
 export interface HidePlayersResponse {}
-export const HidePlayersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const HidePlayersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "HidePlayersResponse",
 }) as any as S.Schema<HidePlayersResponse>;
 
@@ -93,7 +93,7 @@ export interface ListHiddenApplicationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
 }
-export const ListHiddenApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHiddenApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -118,7 +118,7 @@ export interface GamesPlayerLevelResource {
   /** The level for the user. */
   level?: number;
 }
-export const GamesPlayerLevelResource = /*@__PURE__*/ S.suspend(() =>
+const GamesPlayerLevelResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minExperiencePoints: S.optional(S.String),
     maxExperiencePoints: S.optional(S.String),
@@ -137,7 +137,7 @@ export interface GamesPlayerExperienceInfoResource {
   /** The next level of the player. If the current level is the maximum level, this should be same as the current level. */
   nextLevel?: GamesPlayerLevelResource;
 }
-export const GamesPlayerExperienceInfoResource = /*@__PURE__*/ S.suspend(() =>
+const GamesPlayerExperienceInfoResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentExperiencePoints: S.optional(S.String),
     lastLevelUpTimestampMillis: S.optional(S.String),
@@ -154,7 +154,7 @@ export interface PlayerName {
   /** The given name of this player. In some places, this is known as the first name. */
   givenName?: string;
 }
-export const PlayerName = /*@__PURE__*/ S.suspend(() =>
+const PlayerName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     familyName: S.optional(S.String),
     givenName: S.optional(S.String),
@@ -167,7 +167,7 @@ export interface ProfileSettings {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#profileSettings`. */
   kind?: string;
 }
-export const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
+const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileVisible: S.optional(S.Boolean),
     kind: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface Player {
   /** The ID of the player. */
   playerId?: string;
 }
-export const Player = /*@__PURE__*/ S.suspend(() =>
+const Player = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experienceInfo: S.optional(GamesPlayerExperienceInfoResource),
     bannerUrlLandscape: S.optional(S.String),
@@ -224,7 +224,7 @@ export interface HiddenPlayer {
   /** Output only. Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayer`. */
   kind?: string;
 }
-export const HiddenPlayer = /*@__PURE__*/ S.suspend(() =>
+const HiddenPlayer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     player: S.optional(Player),
     hiddenTimeMillis: S.optional(S.String),
@@ -233,9 +233,7 @@ export const HiddenPlayer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HiddenPlayer" }) as any as S.Schema<HiddenPlayer>;
 
 export type HiddenPlayerList_ = Array<HiddenPlayer>;
-export const HiddenPlayerList_ = /*@__PURE__*/ S.Array(
-  HiddenPlayer,
-) as any as S.Schema<HiddenPlayerList_>;
+const HiddenPlayerList_ = /*@__PURE__*/ S.Array(HiddenPlayer) as any as S.Schema<HiddenPlayerList_>;
 
 /** A list of hidden players. */
 export interface HiddenPlayerList {
@@ -246,7 +244,7 @@ export interface HiddenPlayerList {
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }
-export const HiddenPlayerList = /*@__PURE__*/ S.suspend(() =>
+const HiddenPlayerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: HiddenPlayerList_,
@@ -258,7 +256,7 @@ export interface ResetAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-export const ResetAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     achievementId: S.String.pipe(T.Label()),
   }).pipe(
@@ -281,7 +279,7 @@ export interface AchievementResetResponse {
   /** The current state of the achievement. This is the same as the initial state of the achievement. Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" - Achievement is unlocked. */
   currentState?: string;
 }
-export const AchievementResetResponse = /*@__PURE__*/ S.suspend(() =>
+const AchievementResetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definitionId: S.optional(S.String),
     updateOccurred: S.optional(S.Boolean),
@@ -291,7 +289,7 @@ export const AchievementResetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AchievementResetResponse" }) as any as S.Schema<AchievementResetResponse>;
 
 export interface ResetAllAchievementsRequest {}
-export const ResetAllAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAllAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -304,7 +302,7 @@ export const ResetAllAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAllAchievementsRequest>;
 
 export type AchievementResetResponseList = Array<AchievementResetResponse>;
-export const AchievementResetResponseList = /*@__PURE__*/ S.Array(
+const AchievementResetResponseList = /*@__PURE__*/ S.Array(
   AchievementResetResponse,
 ) as any as S.Schema<AchievementResetResponseList>;
 
@@ -315,7 +313,7 @@ export interface AchievementResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetAllResponse`. */
   kind?: string;
 }
-export const AchievementResetAllResponse = /*@__PURE__*/ S.suspend(() =>
+const AchievementResetAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(AchievementResetResponseList),
     kind: S.optional(S.String),
@@ -325,7 +323,7 @@ export const AchievementResetAllResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AchievementResetAllResponse>;
 
 export interface ResetAllEventsRequest {}
-export const ResetAllEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAllEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -336,11 +334,10 @@ export const ResetAllEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetAllEventsRequest" }) as any as S.Schema<ResetAllEventsRequest>;
 
 export interface ResetAllEventsResponse {}
-export const ResetAllEventsResponse =
-  HidePlayersResponse as any as S.Schema<ResetAllEventsResponse>;
+const ResetAllEventsResponse = HidePlayersResponse as any as S.Schema<ResetAllEventsResponse>;
 
 export interface ResetAllForAllPlayersAchievementsRequest {}
-export const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -353,14 +350,14 @@ export const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ResetAllForAllPlayersAchievementsRequest>;
 
 export interface ResetAllForAllPlayersAchievementsResponse {}
-export const ResetAllForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetAllForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ResetAllForAllPlayersAchievementsResponse",
 }) as any as S.Schema<ResetAllForAllPlayersAchievementsResponse>;
 
 export interface ResetAllForAllPlayersEventsRequest {}
-export const ResetAllForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAllForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -373,11 +370,11 @@ export const ResetAllForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAllForAllPlayersEventsRequest>;
 
 export interface ResetAllForAllPlayersEventsResponse {}
-export const ResetAllForAllPlayersEventsResponse =
+const ResetAllForAllPlayersEventsResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetAllForAllPlayersEventsResponse>;
 
 export interface ResetAllForAllPlayersScoresRequest {}
-export const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -390,11 +387,11 @@ export const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAllForAllPlayersScoresRequest>;
 
 export interface ResetAllForAllPlayersScoresResponse {}
-export const ResetAllForAllPlayersScoresResponse =
+const ResetAllForAllPlayersScoresResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetAllForAllPlayersScoresResponse>;
 
 export interface ResetAllScoresRequest {}
-export const ResetAllScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAllScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -405,7 +402,7 @@ export const ResetAllScoresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetAllScoresRequest" }) as any as S.Schema<ResetAllScoresRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A list of reset leaderboard entry resources. */
 export interface PlayerScoreResetResponse {
@@ -416,7 +413,7 @@ export interface PlayerScoreResetResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetResponse`. */
   kind?: string;
 }
-export const PlayerScoreResetResponse = /*@__PURE__*/ S.suspend(() =>
+const PlayerScoreResetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definitionId: S.optional(S.String),
     resetScoreTimeSpans: S.optional(StringList),
@@ -425,7 +422,7 @@ export const PlayerScoreResetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlayerScoreResetResponse" }) as any as S.Schema<PlayerScoreResetResponse>;
 
 export type PlayerScoreResetResponseList = Array<PlayerScoreResetResponse>;
-export const PlayerScoreResetResponseList = /*@__PURE__*/ S.Array(
+const PlayerScoreResetResponseList = /*@__PURE__*/ S.Array(
   PlayerScoreResetResponse,
 ) as any as S.Schema<PlayerScoreResetResponseList>;
 
@@ -436,7 +433,7 @@ export interface PlayerScoreResetAllResponse {
   /** The leaderboard reset results. */
   results?: PlayerScoreResetResponseList;
 }
-export const PlayerScoreResetAllResponse = /*@__PURE__*/ S.suspend(() =>
+const PlayerScoreResetAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     results: S.optional(PlayerScoreResetResponseList),
@@ -449,7 +446,7 @@ export interface ResetEventsRequest {
   /** The ID of the event. */
   eventId: string;
 }
-export const ResetEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String.pipe(T.Label()),
   }).pipe(
@@ -462,13 +459,13 @@ export const ResetEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetEventsRequest" }) as any as S.Schema<ResetEventsRequest>;
 
 export interface ResetEventsResponse {}
-export const ResetEventsResponse = HidePlayersResponse as any as S.Schema<ResetEventsResponse>;
+const ResetEventsResponse = HidePlayersResponse as any as S.Schema<ResetEventsResponse>;
 
 export interface ResetForAllPlayersAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-export const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     achievementId: S.String.pipe(T.Label()),
   }).pipe(
@@ -483,14 +480,14 @@ export const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ResetForAllPlayersAchievementsRequest>;
 
 export interface ResetForAllPlayersAchievementsResponse {}
-export const ResetForAllPlayersAchievementsResponse =
+const ResetForAllPlayersAchievementsResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersAchievementsResponse>;
 
 export interface ResetForAllPlayersEventsRequest {
   /** The ID of the event. */
   eventId: string;
 }
-export const ResetForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String.pipe(T.Label()),
   }).pipe(
@@ -505,14 +502,14 @@ export const ResetForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetForAllPlayersEventsRequest>;
 
 export interface ResetForAllPlayersEventsResponse {}
-export const ResetForAllPlayersEventsResponse =
+const ResetForAllPlayersEventsResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersEventsResponse>;
 
 export interface ResetForAllPlayersScoresRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
-export const ResetForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leaderboardId: S.String.pipe(T.Label()),
   }).pipe(
@@ -527,7 +524,7 @@ export const ResetForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetForAllPlayersScoresRequest>;
 
 export interface ResetForAllPlayersScoresResponse {}
-export const ResetForAllPlayersScoresResponse =
+const ResetForAllPlayersScoresResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersScoresResponse>;
 
 export interface AchievementResetMultipleForAllRequest {
@@ -536,7 +533,7 @@ export interface AchievementResetMultipleForAllRequest {
   /** The IDs of achievements to reset. */
   achievement_ids?: StringList;
 }
-export const AchievementResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
+const AchievementResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     achievement_ids: S.optional(StringList),
@@ -549,7 +546,7 @@ export interface ResetMultipleForAllPlayersAchievementsRequest {
   /** Request body */
   body?: AchievementResetMultipleForAllRequest;
 }
-export const ResetMultipleForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetMultipleForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AchievementResetMultipleForAllRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -564,7 +561,7 @@ export const ResetMultipleForAllPlayersAchievementsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ResetMultipleForAllPlayersAchievementsRequest>;
 
 export interface ResetMultipleForAllPlayersAchievementsResponse {}
-export const ResetMultipleForAllPlayersAchievementsResponse =
+const ResetMultipleForAllPlayersAchievementsResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
 
 /** Multiple events reset all request. */
@@ -574,7 +571,7 @@ export interface EventsResetMultipleForAllRequest {
   /** The IDs of events to reset. */
   event_ids?: StringList;
 }
-export const EventsResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
+const EventsResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     event_ids: S.optional(StringList),
@@ -587,7 +584,7 @@ export interface ResetMultipleForAllPlayersEventsRequest {
   /** Request body */
   body?: EventsResetMultipleForAllRequest;
 }
-export const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(EventsResetMultipleForAllRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -602,7 +599,7 @@ export const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ResetMultipleForAllPlayersEventsRequest>;
 
 export interface ResetMultipleForAllPlayersEventsResponse {}
-export const ResetMultipleForAllPlayersEventsResponse =
+const ResetMultipleForAllPlayersEventsResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
 
 export interface ScoresResetMultipleForAllRequest {
@@ -611,7 +608,7 @@ export interface ScoresResetMultipleForAllRequest {
   /** The IDs of leaderboards to reset. */
   leaderboard_ids?: StringList;
 }
-export const ScoresResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ScoresResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     leaderboard_ids: S.optional(StringList),
@@ -624,7 +621,7 @@ export interface ResetMultipleForAllPlayersScoresRequest {
   /** Request body */
   body?: ScoresResetMultipleForAllRequest;
 }
-export const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ScoresResetMultipleForAllRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -639,14 +636,14 @@ export const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ResetMultipleForAllPlayersScoresRequest>;
 
 export interface ResetMultipleForAllPlayersScoresResponse {}
-export const ResetMultipleForAllPlayersScoresResponse =
+const ResetMultipleForAllPlayersScoresResponse =
   ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>;
 
 export interface ResetScoresRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
-export const ResetScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leaderboardId: S.String.pipe(T.Label()),
   }).pipe(
@@ -664,7 +661,7 @@ export interface UnhidePlayersRequest {
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
 }
-export const UnhidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
+const UnhidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
     playerId: S.String.pipe(T.Label()),
@@ -678,7 +675,7 @@ export const UnhidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnhidePlayersRequest" }) as any as S.Schema<UnhidePlayersRequest>;
 
 export interface UnhidePlayersResponse {}
-export const UnhidePlayersResponse = HidePlayersResponse as any as S.Schema<UnhidePlayersResponse>;
+const UnhidePlayersResponse = HidePlayersResponse as any as S.Schema<UnhidePlayersResponse>;
 
 export type HidePlayersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */

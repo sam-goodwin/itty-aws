@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics. */
 export interface MonitoringConfig {
@@ -105,7 +105,7 @@ export interface MonitoringConfig {
   /** Optional. Project used to report Metrics */
   projectId?: string;
 }
-export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
+const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterHash: S.optional(S.String),
     cluster: S.optional(S.String),
@@ -121,7 +121,7 @@ export type OnPremClusterClusterTypeEnum =
   | "HYBRID"
   | "STANDALONE"
   | "USER";
-export const OnPremClusterClusterTypeEnum = S.String;
+const OnPremClusterClusterTypeEnum = S.String;
 
 /** OnPremCluster contains information specific to GKE On-Prem clusters. */
 export interface OnPremCluster {
@@ -134,7 +134,7 @@ export interface OnPremCluster {
   /** Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists. */
   clusterMissing?: boolean;
 }
-export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
+const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminCluster: S.optional(S.Boolean),
     resourceLink: S.optional(S.String),
@@ -158,7 +158,7 @@ export interface KubernetesMetadata {
   /** Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-Google Cloud), the node_count will be zero and the node_provider_id will be empty. */
   nodeProviderId?: string;
 }
-export const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
+const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     memoryMb: S.optional(S.Number),
@@ -174,7 +174,7 @@ export interface EdgeCluster {
   /** Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster */
   resourceLink?: string;
 }
-export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
+const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceLink: S.optional(S.String),
   }),
@@ -187,7 +187,7 @@ export interface GkeCluster {
   /** Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane. */
   clusterMissing?: boolean;
 }
-export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
+const GkeCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceLink: S.optional(S.String),
     clusterMissing: S.optional(S.Boolean),
@@ -199,7 +199,7 @@ export interface ApplianceCluster {
   /** Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance */
   resourceLink?: string;
 }
-export const ApplianceCluster = EdgeCluster as any as S.Schema<ApplianceCluster>;
+const ApplianceCluster = EdgeCluster as any as S.Schema<ApplianceCluster>;
 
 /** MultiCloudCluster contains information specific to GKE Multi-Cloud clusters. */
 export interface MultiCloudCluster {
@@ -208,7 +208,7 @@ export interface MultiCloudCluster {
   /** Output only. If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists. */
   clusterMissing?: boolean;
 }
-export const MultiCloudCluster = GkeCluster as any as S.Schema<MultiCloudCluster>;
+const MultiCloudCluster = GkeCluster as any as S.Schema<MultiCloudCluster>;
 
 /** ResourceManifest represents a single Kubernetes resource to be applied to the cluster. */
 export interface ResourceManifest {
@@ -217,7 +217,7 @@ export interface ResourceManifest {
   /** YAML manifest of the resource. */
   manifest?: string;
 }
-export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
+const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterScoped: S.optional(S.Boolean),
     manifest: S.optional(S.String),
@@ -225,7 +225,7 @@ export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceManifest" }) as any as S.Schema<ResourceManifest>;
 
 export type ResourceManifestList = Array<ResourceManifest>;
-export const ResourceManifestList = /*@__PURE__*/ S.Array(
+const ResourceManifestList = /*@__PURE__*/ S.Array(
   ResourceManifest,
 ) as any as S.Schema<ResourceManifestList>;
 
@@ -240,7 +240,7 @@ export interface ResourceOptions {
   /** Optional. Git version of the Kubernetes cluster. This is only used to gate the Connect Agent migration to svc.id.goog on GDC-SO 1.33.100 patch and above. */
   k8sGitVersion?: string;
 }
-export const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
+const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectVersion: S.optional(S.String),
     v1beta1Crd: S.optional(S.Boolean),
@@ -260,7 +260,7 @@ export interface KubernetesResource {
   /** Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask. */
   membershipResources?: ResourceManifestList;
 }
-export const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
+const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipCrManifest: S.optional(S.String),
     connectResources: S.optional(ResourceManifestList),
@@ -286,7 +286,7 @@ export interface MembershipEndpoint {
   /** Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features. */
   kubernetesResource?: KubernetesResource;
 }
-export const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
+const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onPremCluster: S.optional(OnPremCluster),
     kubernetesMetadata: S.optional(KubernetesMetadata),
@@ -313,7 +313,7 @@ export interface Authority {
   /** Optional. Output only. The name of the scope-tenancy workload identity pool. This pool is set in the fleet-level feature. */
   scopeTenancyWorkloadIdentityPool?: string;
 }
-export const Authority = /*@__PURE__*/ S.suspend(() =>
+const Authority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeTenancyIdentityProvider: S.optional(S.String),
     workloadIdentityPool: S.optional(S.String),
@@ -325,10 +325,10 @@ export const Authority = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Authority" }) as any as S.Schema<Authority>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type MembershipMembershipTypeEnum = "MEMBERSHIP_TYPE_UNSPECIFIED" | "LIGHTWEIGHT";
-export const MembershipMembershipTypeEnum = S.String;
+const MembershipMembershipTypeEnum = S.String;
 
 export type MembershipStateCodeEnum =
   | "CODE_UNSPECIFIED"
@@ -337,7 +337,7 @@ export type MembershipStateCodeEnum =
   | "DELETING"
   | "UPDATING"
   | "SERVICE_UPDATING";
-export const MembershipStateCodeEnum = S.String;
+const MembershipStateCodeEnum = S.String;
 
 /** State of the Membership resource. */
 export interface MembershipState {
@@ -348,7 +348,7 @@ export interface MembershipState {
   /** This field is never set by the Hub Service. */
   description?: string;
 }
-export const MembershipState = /*@__PURE__*/ S.suspend(() =>
+const MembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     code: S.optional(MembershipStateCodeEnum),
@@ -360,7 +360,7 @@ export type MembershipInfrastructureTypeEnum =
   | "INFRASTRUCTURE_TYPE_UNSPECIFIED"
   | "ON_PREM"
   | "MULTI_CLOUD";
-export const MembershipInfrastructureTypeEnum = S.String;
+const MembershipInfrastructureTypeEnum = S.String;
 
 /** Membership contains information about a member cluster. */
 export interface Membership {
@@ -395,7 +395,7 @@ export interface Membership {
   /** Optional. The infrastructure type this Membership is running on. */
   infrastructureType?: MembershipInfrastructureTypeEnum | (string & {});
 }
-export const Membership = /*@__PURE__*/ S.suspend(() =>
+const Membership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -425,7 +425,7 @@ export interface CreateProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -443,15 +443,10 @@ export const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateProjectsLocationsMembershipsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -462,7 +457,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -483,7 +478,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -501,7 +496,7 @@ export interface DeleteProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -517,7 +512,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -545,24 +540,23 @@ export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name the Agent will associate with, in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GenerateConnectManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
-      registry: S.optional(S.String.pipe(T.Query())),
-      "connectAgent.namespace": S.optional(S.String.pipe(T.Query())),
-      "connectAgent.name": S.optional(S.String.pipe(T.Query())),
-      imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
-      version: S.optional(S.String.pipe(T.Query())),
-      "connectAgent.proxy": S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:generateConnectManifest",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
+const GenerateConnectManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
+    registry: S.optional(S.String.pipe(T.Query())),
+    "connectAgent.namespace": S.optional(S.String.pipe(T.Query())),
+    "connectAgent.name": S.optional(S.String.pipe(T.Query())),
+    imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
+    version: S.optional(S.String.pipe(T.Query())),
+    "connectAgent.proxy": S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}:generateConnectManifest",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GenerateConnectManifestProjectsLocationsMembershipsRequest",
 }) as any as S.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
@@ -574,7 +568,7 @@ export interface TypeMeta {
   /** APIVersion of the resource (e.g. v1). */
   apiVersion?: string;
 }
-export const TypeMeta = /*@__PURE__*/ S.suspend(() =>
+const TypeMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     apiVersion: S.optional(S.String),
@@ -588,7 +582,7 @@ export interface ConnectAgentResource {
   /** YAML manifest of the resource. */
   manifest?: string;
 }
-export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
+const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(TypeMeta),
     manifest: S.optional(S.String),
@@ -596,7 +590,7 @@ export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectAgentResource" }) as any as S.Schema<ConnectAgentResource>;
 
 export type ConnectAgentResourceList = Array<ConnectAgentResource>;
-export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
+const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
   ConnectAgentResource,
 ) as any as S.Schema<ConnectAgentResourceList>;
 
@@ -605,7 +599,7 @@ export interface GenerateConnectManifestResponse {
   /** The ordered list of Kubernetes resources that need to be applied to the cluster for GKE Connect agent installation/upgrade. */
   manifest?: ConnectAgentResourceList;
 }
-export const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifest: S.optional(ConnectAgentResourceList),
   }),
@@ -621,22 +615,21 @@ export interface GenerateExclusivityManifestProjectsLocationsMembershipsRequest 
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GenerateExclusivityManifestProjectsLocationsMembershipsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      crManifest: S.optional(S.String.pipe(T.Query())),
-      crdManifest: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}:generateExclusivityManifest",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GenerateExclusivityManifestProjectsLocationsMembershipsRequest",
-  }) as any as S.Schema<GenerateExclusivityManifestProjectsLocationsMembershipsRequest>;
+const GenerateExclusivityManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    crManifest: S.optional(S.String.pipe(T.Query())),
+    crdManifest: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}:generateExclusivityManifest",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateExclusivityManifestProjectsLocationsMembershipsRequest",
+}) as any as S.Schema<GenerateExclusivityManifestProjectsLocationsMembershipsRequest>;
 
 /** The response of the exclusivity artifacts manifests for the client to apply. */
 export interface GenerateExclusivityManifestResponse {
@@ -645,7 +638,7 @@ export interface GenerateExclusivityManifestResponse {
   /** The YAML manifest of the membership CRD to apply if a newer version of the CRD is available. Empty if no update needs to be applied. */
   crdManifest?: string;
 }
-export const GenerateExclusivityManifestResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateExclusivityManifestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crManifest: S.optional(S.String),
     crdManifest: S.optional(S.String),
@@ -660,7 +653,7 @@ export interface GetIamPolicyProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -676,14 +669,14 @@ export const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -692,7 +685,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -700,7 +693,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -711,7 +704,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -719,9 +712,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -734,7 +725,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     expression: S.optional(S.String),
@@ -752,7 +743,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -761,7 +752,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -774,7 +765,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -787,7 +778,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -810,7 +801,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     displayName: S.optional(S.String),
@@ -824,7 +815,7 @@ export interface GetProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -838,7 +829,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -860,7 +851,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -879,7 +870,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -888,7 +879,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -907,7 +898,7 @@ export interface ListProjectsLocationsMembershipsRequest {
   /** Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -926,7 +917,7 @@ export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsMembershipsRequest>;
 
 export type MembershipList = Array<Membership>;
-export const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
+const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
 
 /** Response message for the `GkeHubMembershipService.ListMemberships` method. */
 export interface ListMembershipsResponse {
@@ -937,7 +928,7 @@ export interface ListMembershipsResponse {
   /** A token to request the next page of resources from the `ListMemberships` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
-export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     resources: S.optional(MembershipList),
@@ -957,7 +948,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -976,7 +967,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -987,7 +978,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1005,7 +996,7 @@ export interface PatchProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1025,7 +1016,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -1038,7 +1029,7 @@ export interface SetIamPolicyProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1058,7 +1049,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1072,7 +1063,7 @@ export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1092,7 +1083,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface ValidateExclusivityProjectsLocationsMembershipsRequest {
@@ -1103,7 +1094,7 @@ export interface ValidateExclusivityProjectsLocationsMembershipsRequest {
   /** Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*\/locations/*`. */
   parent: string;
 }
-export const ValidateExclusivityProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateExclusivityProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intendedMembership: S.optional(S.String.pipe(T.Query())),
     crManifest: S.optional(S.String.pipe(T.Query())),
@@ -1124,7 +1115,7 @@ export interface ValidateExclusivityResponse {
   /** The validation result. * `OK` means that exclusivity is validated, assuming the manifest produced by GenerateExclusivityManifest is successfully applied. * `ALREADY_EXISTS` means that the Membership CRD is already owned by another Hub. See `status.message` for more information. */
   status?: GoogleRpcStatus;
 }
-export const ValidateExclusivityResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateExclusivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleRpcStatus),
   }),

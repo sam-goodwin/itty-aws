@@ -48,7 +48,7 @@ export interface GetPayoutAccountRequest {
   /** The unique identifier of the payout account to retrieve. */
   id: string;
 }
-export const GetPayoutAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayoutAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/payout_accounts/{id}", code: 200 })),
@@ -69,7 +69,7 @@ export interface PayoutAccountAddress {
   /** The state of the address. */
   state: string | null;
 }
-export const PayoutAccountAddress = /*@__PURE__*/ S.suspend(() =>
+const PayoutAccountAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country: S.NullOr(S.String),
@@ -91,7 +91,7 @@ export interface PayoutAccountBusinessRepresentative {
   /** The middle name of the business representative. */
   middle_name: string | null;
 }
-export const PayoutAccountBusinessRepresentative = /*@__PURE__*/ S.suspend(() =>
+const PayoutAccountBusinessRepresentative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_of_birth: S.NullOr(S.String),
     first_name: S.NullOr(S.String),
@@ -123,7 +123,7 @@ export type VerificationErrorCodes =
   | "selfie_manipulated"
   | "selfie_unverified_other"
   | "under_supported_age";
-export const VerificationErrorCodes = S.String;
+const VerificationErrorCodes = S.String;
 
 /** A status for a verification. */
 export type VerificationStatuses =
@@ -142,7 +142,7 @@ export type VerificationStatuses =
   | "review"
   | "action_required"
   | "manual_review";
-export const VerificationStatuses = S.String;
+const VerificationStatuses = S.String;
 
 /** The latest verification for the connected account. */
 export interface PayoutAccountLatestVerification {
@@ -155,7 +155,7 @@ export interface PayoutAccountLatestVerification {
   /** The current status of this verification session. */
   status: VerificationStatuses;
 }
-export const PayoutAccountLatestVerification = /*@__PURE__*/ S.suspend(() =>
+const PayoutAccountLatestVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     last_error_code: S.NullOr(VerificationErrorCodes),
@@ -177,7 +177,7 @@ export type PayoutAccountCalculatedStatuses =
   | "denied"
   | "not_started"
   | "blocked_by_parent";
-export const PayoutAccountCalculatedStatuses = S.String;
+const PayoutAccountCalculatedStatuses = S.String;
 
 /** An object representing an account used for payouts. */
 export interface PayoutAccount {
@@ -198,7 +198,7 @@ export interface PayoutAccount {
   /** The granular calculated status of the payout account reflecting its current KYC and payout readiness state. */
   status: PayoutAccountCalculatedStatuses | null;
 }
-export const PayoutAccount = /*@__PURE__*/ S.suspend(() =>
+const PayoutAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.NullOr(PayoutAccountAddress),
     business_name: S.NullOr(S.String),

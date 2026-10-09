@@ -48,7 +48,7 @@ export interface GetOriginPostQuantumEncryptionRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -65,10 +65,10 @@ export const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetOriginPostQuantumEncryptionRequest>;
 
 export type GetResponseId = "origin_pqe";
-export const GetResponseId = S.String;
+const GetResponseId = S.String;
 
 export type GetResponseValue = "preferred" | "supported" | "off";
-export const GetResponseValue = S.String;
+const GetResponseValue = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginPostQuantumEncryptionResponse {
@@ -81,7 +81,7 @@ export interface GetOriginPostQuantumEncryptionResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: GetResponseId,
     editable: S.Boolean,
@@ -93,7 +93,7 @@ export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetOriginPostQuantumEncryptionResponse>;
 
 export type UpdateRequestValue = "preferred" | "supported" | "off";
-export const UpdateRequestValue = S.String;
+const UpdateRequestValue = S.String;
 
 export interface PutOriginPostQuantumEncryptionRequest {
   /** Identifier. */
@@ -101,7 +101,7 @@ export interface PutOriginPostQuantumEncryptionRequest {
   /** Value of the Origin Post Quantum Encryption Setting. */
   value: UpdateRequestValue | (string & {});
 }
-export const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: UpdateRequestValue,
@@ -119,11 +119,7 @@ export const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutOriginPostQuantumEncryptionRequest>;
 
 export type UpdateResponseId = "origin_pqe";
-export const UpdateResponseId = S.String;
-
 export type UpdateResponseValue = "preferred" | "supported" | "off";
-export const UpdateResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
@@ -135,7 +131,7 @@ export interface PutOriginPostQuantumEncryptionResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const PutOriginPostQuantumEncryptionResponse =
+const PutOriginPostQuantumEncryptionResponse =
   GetOriginPostQuantumEncryptionResponse as any as S.Schema<PutOriginPostQuantumEncryptionResponse>;
 
 export type GetOriginPostQuantumEncryptionError =

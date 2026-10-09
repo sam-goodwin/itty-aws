@@ -13,7 +13,7 @@ export interface ConfigurationProfileAssignmentPropertiesInput {
   /** The Automanage configurationProfile ARM Resource URI. */
   configurationProfile?: string;
 }
-export const ConfigurationProfileAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationProfile: S.optional(S.String),
   }),
@@ -33,7 +33,7 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration profile assignment. */
   properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
-export const ConfigurationProfileAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -61,7 +61,7 @@ export interface ConfigurationProfileAssignmentProperties {
   /** The status of onboarding, which only appears in the response. */
   status?: string;
 }
-export const ConfigurationProfileAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationProfile: S.optional(S.String),
     targetId: S.optional(S.String),
@@ -77,8 +77,7 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreat
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  S.String;
+const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -86,8 +85,7 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastM
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
+const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData {
@@ -104,8 +102,8 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       createdBy: S.optional(S.String),
       createdByType: S.optional(
@@ -118,9 +116,9 @@ export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData =
       ),
       lastModifiedAt: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData>;
+).annotate({
+  identifier: "ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData",
+}) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationProfileAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -136,7 +134,7 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData;
 }
-export const ConfigurationProfileAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -161,7 +159,7 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration profile assignment. */
   properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
-export const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -186,18 +184,12 @@ export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCr
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -213,7 +205,7 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemD
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData =
+const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData =
   ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse {
@@ -230,16 +222,15 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData;
 }
-export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ConfigurationProfileAssignmentProperties),
-      managedBy: S.optional(S.String),
-      systemData: S.optional(ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData),
-    }),
+const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ConfigurationProfileAssignmentProperties),
+    managedBy: S.optional(S.String),
+    systemData: S.optional(ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData),
+  }),
 ).annotate({
   identifier: "ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse",
 }) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse>;
@@ -256,22 +247,21 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration profile assignment. */
   properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
-export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-      configurationProfileAssignmentName: S.String.pipe(T.Label()),
-      properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
+const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    machineName: S.String.pipe(T.Label()),
+    configurationProfileAssignmentName: S.String.pipe(T.Label()),
+    properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
 ).annotate({
   identifier: "ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest",
 }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest>;
@@ -282,18 +272,12 @@ export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataC
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -309,9 +293,6 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystem
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData =
-  ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData>;
-
 export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -326,14 +307,14 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData;
 }
-export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse =
+const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse =
   ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type ConfigurationProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ConfigurationProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ConfigurationProfilesCreateOrUpdateRequestTagsMap>;
@@ -343,7 +324,7 @@ export interface ConfigurationProfileProperties {
   /** configuration dictionary of the configuration profile. */
   configuration?: unknown;
 }
-export const ConfigurationProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(S.Unknown),
   }),
@@ -365,7 +346,7 @@ export interface ConfigurationProfilesCreateOrUpdateRequest {
   /** Properties of the configuration profile. */
   properties?: ConfigurationProfileProperties;
 }
-export const ConfigurationProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -389,7 +370,7 @@ export const ConfigurationProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type ConfigurationProfilesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesCreateOrUpdateResponseTagsMap =
+const ConfigurationProfilesCreateOrUpdateResponseTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -398,7 +379,7 @@ export type ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -406,7 +387,7 @@ export type ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByT
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+const ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfilesCreateOrUpdateResponseSystemData {
@@ -423,7 +404,7 @@ export interface ConfigurationProfilesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfilesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfilesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType),
@@ -454,7 +435,7 @@ export interface ConfigurationProfilesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfilesCreateOrUpdateResponseSystemData;
 }
-export const ConfigurationProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -472,7 +453,7 @@ export const ConfigurationProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspe
 export type ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap =
+const ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap>;
 
 export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
@@ -491,7 +472,7 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
   /** Properties of the configuration profile. */
   properties?: ConfigurationProfileProperties;
 }
-export const ConfigurationProfilesVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfilesVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -516,7 +497,7 @@ export const ConfigurationProfilesVersionsCreateOrUpdateRequest = /*@__PURE__*/ 
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap =
+const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -525,17 +506,12 @@ export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreated
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -551,7 +527,7 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData =
+const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData =
   ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationProfilesVersionsCreateOrUpdateResponse {
@@ -570,7 +546,7 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData;
 }
-export const ConfigurationProfilesVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfilesVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -592,7 +568,7 @@ export interface DeleteConfigurationProfileRequest {
   /** Name of the configuration profile */
   configurationProfileName: string;
 }
-export const DeleteConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -610,9 +586,7 @@ export const DeleteConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationProfileRequest>;
 
 export interface DeleteConfigurationProfileResponse {}
-export const DeleteConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConfigurationProfileResponse",
 }) as any as S.Schema<DeleteConfigurationProfileResponse>;
 
@@ -626,7 +600,7 @@ export interface DeleteConfigurationProfileAssignmentRequest {
   /** Name of the configuration profile assignment */
   configurationProfileAssignmentName: string;
 }
-export const DeleteConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -645,7 +619,7 @@ export const DeleteConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteConfigurationProfileAssignmentRequest>;
 
 export interface DeleteConfigurationProfileAssignmentResponse {}
-export const DeleteConfigurationProfileAssignmentResponse =
+const DeleteConfigurationProfileAssignmentResponse =
   DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileAssignmentResponse>;
 
 export interface DeleteConfigurationProfileHCIAssignmentRequest {
@@ -658,7 +632,7 @@ export interface DeleteConfigurationProfileHCIAssignmentRequest {
   /** Name of the configuration profile assignment */
   configurationProfileAssignmentName: string;
 }
-export const DeleteConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -677,7 +651,7 @@ export const DeleteConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteConfigurationProfileHCIAssignmentRequest>;
 
 export interface DeleteConfigurationProfileHCIAssignmentResponse {}
-export const DeleteConfigurationProfileHCIAssignmentResponse =
+const DeleteConfigurationProfileHCIAssignmentResponse =
   DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileHCIAssignmentResponse>;
 
 export interface DeleteConfigurationProfileHCRPAssignmentRequest {
@@ -690,7 +664,7 @@ export interface DeleteConfigurationProfileHCRPAssignmentRequest {
   /** Name of the configuration profile assignment */
   configurationProfileAssignmentName: string;
 }
-export const DeleteConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -709,7 +683,7 @@ export const DeleteConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentRequest>;
 
 export interface DeleteConfigurationProfileHCRPAssignmentResponse {}
-export const DeleteConfigurationProfileHCRPAssignmentResponse =
+const DeleteConfigurationProfileHCRPAssignmentResponse =
   DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentResponse>;
 
 export interface DeleteConfigurationProfilesVersionRequest {
@@ -722,7 +696,7 @@ export interface DeleteConfigurationProfilesVersionRequest {
   /** The configuration profile version name. */
   versionName: string;
 }
-export const DeleteConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -741,14 +715,14 @@ export const DeleteConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteConfigurationProfilesVersionRequest>;
 
 export interface DeleteConfigurationProfilesVersionResponse {}
-export const DeleteConfigurationProfilesVersionResponse =
+const DeleteConfigurationProfilesVersionResponse =
   DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfilesVersionResponse>;
 
 export interface GetBestPracticeRequest {
   /** The Automanage best practice name. */
   bestPracticeName: string;
 }
-export const GetBestPracticeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBestPracticeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bestPracticeName: S.String.pipe(T.Label()),
   }).pipe(
@@ -767,7 +741,7 @@ export type BestPracticeSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const BestPracticeSystemDataCreatedByType = S.String;
+const BestPracticeSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type BestPracticeSystemDataLastModifiedByType =
@@ -775,7 +749,7 @@ export type BestPracticeSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const BestPracticeSystemDataLastModifiedByType = S.String;
+const BestPracticeSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface BestPracticeSystemData {
@@ -792,7 +766,7 @@ export interface BestPracticeSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const BestPracticeSystemData = /*@__PURE__*/ S.suspend(() =>
+const BestPracticeSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(BestPracticeSystemDataCreatedByType),
@@ -816,7 +790,7 @@ export interface BestPractice {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: BestPracticeSystemData;
 }
-export const BestPractice = /*@__PURE__*/ S.suspend(() =>
+const BestPractice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -832,7 +806,7 @@ export interface GetBestPracticesVersionRequest {
   /** The Automanage best practice version name. */
   versionName: string;
 }
-export const GetBestPracticesVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBestPracticesVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bestPracticeName: S.String.pipe(T.Label()),
     versionName: S.String.pipe(T.Label()),
@@ -856,7 +830,7 @@ export interface GetConfigurationProfileRequest {
   /** The configuration profile name. */
   configurationProfileName: string;
 }
-export const GetConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -875,7 +849,7 @@ export const GetConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigurationProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationProfileResponseTagsMap =
+const GetConfigurationProfileResponseTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationProfileResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -884,7 +858,7 @@ export type GetConfigurationProfileResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileResponseSystemDataCreatedByType = S.String;
+const GetConfigurationProfileResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetConfigurationProfileResponseSystemDataLastModifiedByType =
@@ -892,7 +866,7 @@ export type GetConfigurationProfileResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileResponseSystemDataLastModifiedByType = S.String;
+const GetConfigurationProfileResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationProfileResponseSystemData {
@@ -909,7 +883,7 @@ export interface GetConfigurationProfileResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetConfigurationProfileResponseSystemDataCreatedByType),
@@ -938,7 +912,7 @@ export interface GetConfigurationProfileResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileResponseSystemData;
 }
-export const GetConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -962,7 +936,7 @@ export interface GetConfigurationProfileAssignmentRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const GetConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -986,16 +960,12 @@ export type GetConfigurationProfileAssignmentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileAssignmentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationProfileAssignmentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileAssignmentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationProfileAssignmentResponseSystemData {
   /** The identity that created the resource. */
@@ -1011,7 +981,7 @@ export interface GetConfigurationProfileAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileAssignmentResponseSystemData =
+const GetConfigurationProfileAssignmentResponseSystemData =
   ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileAssignmentResponseSystemData>;
 
 export interface GetConfigurationProfileAssignmentResponse {
@@ -1028,7 +998,7 @@ export interface GetConfigurationProfileAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileAssignmentResponseSystemData;
 }
-export const GetConfigurationProfileAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1051,7 +1021,7 @@ export interface GetConfigurationProfileHCIAssignmentRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const GetConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1075,16 +1045,12 @@ export type GetConfigurationProfileHCIAssignmentResponseSystemDataCreatedByType 
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileHCIAssignmentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationProfileHCIAssignmentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileHCIAssignmentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationProfileHCIAssignmentResponseSystemData {
   /** The identity that created the resource. */
@@ -1100,9 +1066,6 @@ export interface GetConfigurationProfileHCIAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileHCIAssignmentResponseSystemData =
-  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileHCIAssignmentResponseSystemData>;
-
 export interface GetConfigurationProfileHCIAssignmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1117,7 +1080,7 @@ export interface GetConfigurationProfileHCIAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileHCIAssignmentResponseSystemData;
 }
-export const GetConfigurationProfileHCIAssignmentResponse =
+const GetConfigurationProfileHCIAssignmentResponse =
   GetConfigurationProfileAssignmentResponse as any as S.Schema<GetConfigurationProfileHCIAssignmentResponse>;
 
 export interface GetConfigurationProfileHCRPAssignmentRequest {
@@ -1130,7 +1093,7 @@ export interface GetConfigurationProfileHCRPAssignmentRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const GetConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1154,16 +1117,12 @@ export type GetConfigurationProfileHCRPAssignmentResponseSystemDataCreatedByType
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileHCRPAssignmentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationProfileHCRPAssignmentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfileHCRPAssignmentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationProfileHCRPAssignmentResponseSystemData {
   /** The identity that created the resource. */
@@ -1179,9 +1138,6 @@ export interface GetConfigurationProfileHCRPAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfileHCRPAssignmentResponseSystemData =
-  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponseSystemData>;
-
 export interface GetConfigurationProfileHCRPAssignmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1196,7 +1152,7 @@ export interface GetConfigurationProfileHCRPAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileHCRPAssignmentResponseSystemData;
 }
-export const GetConfigurationProfileHCRPAssignmentResponse =
+const GetConfigurationProfileHCRPAssignmentResponse =
   GetConfigurationProfileAssignmentResponse as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponse>;
 
 export interface GetConfigurationProfilesVersionRequest {
@@ -1209,7 +1165,7 @@ export interface GetConfigurationProfilesVersionRequest {
   /** The configuration profile version name. */
   versionName: string;
 }
-export const GetConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1229,7 +1185,7 @@ export const GetConfigurationProfilesVersionRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type GetConfigurationProfilesVersionResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationProfilesVersionResponseTagsMap =
+const GetConfigurationProfilesVersionResponseTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationProfilesVersionResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1238,16 +1194,12 @@ export type GetConfigurationProfilesVersionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfilesVersionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationProfilesVersionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationProfilesVersionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationProfilesVersionResponseSystemData {
   /** The identity that created the resource. */
@@ -1263,7 +1215,7 @@ export interface GetConfigurationProfilesVersionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationProfilesVersionResponseSystemData =
+const GetConfigurationProfilesVersionResponseSystemData =
   ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfilesVersionResponseSystemData>;
 
 export interface GetConfigurationProfilesVersionResponse {
@@ -1282,7 +1234,7 @@ export interface GetConfigurationProfilesVersionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfilesVersionResponseSystemData;
 }
-export const GetConfigurationProfilesVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProfilesVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1308,7 +1260,7 @@ export interface GetHCIReportRequest {
   /** The report name. */
   reportName: string;
 }
-export const GetHCIReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHCIReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1327,7 +1279,7 @@ export const GetHCIReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -1338,7 +1290,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -1347,7 +1299,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -1364,7 +1316,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1376,13 +1328,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type ReportResourceErrorDetailsList = Array<ErrorDetail>;
-export const ReportResourceErrorDetailsList = /*@__PURE__*/ S.Array(
+const ReportResourceErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ReportResourceErrorDetailsList>;
 
 /** The error additional info. */
 export type ReportResourceErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ReportResourceErrorAdditionalInfoList =
+const ReportResourceErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<ReportResourceErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -1398,7 +1350,7 @@ export interface ReportResourceError {
   /** The error additional info. */
   additionalInfo?: ReportResourceErrorAdditionalInfoList;
 }
-export const ReportResourceError = /*@__PURE__*/ S.suspend(() =>
+const ReportResourceError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1421,7 +1373,7 @@ export interface ReportResource {
   /** The error detail. */
   error?: ReportResourceError;
 }
-export const ReportResource = /*@__PURE__*/ S.suspend(() =>
+const ReportResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -1433,18 +1385,18 @@ export const ReportResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources processed by the configuration profile assignment. */
 export type AssignmentReportPropertiesResourcesList = Array<ReportResource>;
-export const AssignmentReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
+const AssignmentReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ReportResource,
 ) as any as S.Schema<AssignmentReportPropertiesResourcesList>;
 
 /** The error details. */
 export type AssignmentReportPropertiesErrorDetailsList = Array<ErrorDetail>;
-export const AssignmentReportPropertiesErrorDetailsList =
+const AssignmentReportPropertiesErrorDetailsList =
   ReportResourceErrorDetailsList as any as S.Schema<AssignmentReportPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type AssignmentReportPropertiesErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const AssignmentReportPropertiesErrorAdditionalInfoList =
+const AssignmentReportPropertiesErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<AssignmentReportPropertiesErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -1460,7 +1412,7 @@ export interface AssignmentReportPropertiesError {
   /** The error additional info. */
   additionalInfo?: AssignmentReportPropertiesErrorAdditionalInfoList;
 }
-export const AssignmentReportPropertiesError = /*@__PURE__*/ S.suspend(() =>
+const AssignmentReportPropertiesError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1495,7 +1447,7 @@ export interface AssignmentReportProperties {
   /** Version of the report format */
   reportFormatVersion?: string;
 }
-export const AssignmentReportProperties = /*@__PURE__*/ S.suspend(() =>
+const AssignmentReportProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -1518,16 +1470,12 @@ export type GetHCIReportResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetHCIReportResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetHCIReportResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetHCIReportResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetHCIReportResponseSystemData {
   /** The identity that created the resource. */
@@ -1543,7 +1491,7 @@ export interface GetHCIReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetHCIReportResponseSystemData =
+const GetHCIReportResponseSystemData =
   GetConfigurationProfileResponseSystemData as any as S.Schema<GetHCIReportResponseSystemData>;
 
 export interface GetHCIReportResponse {
@@ -1558,7 +1506,7 @@ export interface GetHCIReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetHCIReportResponseSystemData;
 }
-export const GetHCIReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHCIReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1580,7 +1528,7 @@ export interface GetHCRPReportRequest {
   /** The report name. */
   reportName: string;
 }
-export const GetHCRPReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHCRPReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1603,16 +1551,12 @@ export type GetHCRPReportResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetHCRPReportResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetHCRPReportResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetHCRPReportResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetHCRPReportResponseSystemData {
   /** The identity that created the resource. */
@@ -1628,9 +1572,6 @@ export interface GetHCRPReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetHCRPReportResponseSystemData =
-  GetConfigurationProfileResponseSystemData as any as S.Schema<GetHCRPReportResponseSystemData>;
-
 export interface GetHCRPReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1643,7 +1584,7 @@ export interface GetHCRPReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetHCRPReportResponseSystemData;
 }
-export const GetHCRPReportResponse = GetHCIReportResponse as any as S.Schema<GetHCRPReportResponse>;
+const GetHCRPReportResponse = GetHCIReportResponse as any as S.Schema<GetHCRPReportResponse>;
 
 export interface GetReportRequest {
   /** The ID of the target subscription. */
@@ -1657,7 +1598,7 @@ export interface GetReportRequest {
   /** The report name. */
   reportName: string;
 }
-export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1680,16 +1621,12 @@ export type GetReportResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetReportResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetReportResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetReportResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetReportResponseSystemData {
   /** The identity that created the resource. */
@@ -1705,9 +1642,6 @@ export interface GetReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetReportResponseSystemData =
-  GetConfigurationProfileResponseSystemData as any as S.Schema<GetReportResponseSystemData>;
-
 export interface GetReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1720,13 +1654,13 @@ export interface GetReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetReportResponseSystemData;
 }
-export const GetReportResponse = GetHCIReportResponse as any as S.Schema<GetReportResponse>;
+const GetReportResponse = GetHCIReportResponse as any as S.Schema<GetReportResponse>;
 
 export interface GetServicePrincipalRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const GetServicePrincipalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServicePrincipalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1748,7 +1682,7 @@ export interface ServicePrincipalProperties {
   /** Returns the contributor RBAC Role exist or not for the Service Principal Id. */
   authorizationSet?: boolean;
 }
-export const ServicePrincipalProperties = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePrincipalId: S.optional(S.String),
     authorizationSet: S.optional(S.Boolean),
@@ -1763,16 +1697,12 @@ export type GetServicePrincipalResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetServicePrincipalResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetServicePrincipalResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetServicePrincipalResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetServicePrincipalResponseSystemData {
   /** The identity that created the resource. */
@@ -1788,7 +1718,7 @@ export interface GetServicePrincipalResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetServicePrincipalResponseSystemData =
+const GetServicePrincipalResponseSystemData =
   GetConfigurationProfileResponseSystemData as any as S.Schema<GetServicePrincipalResponseSystemData>;
 
 export interface GetServicePrincipalResponse {
@@ -1803,7 +1733,7 @@ export interface GetServicePrincipalResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetServicePrincipalResponseSystemData;
 }
-export const GetServicePrincipalResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServicePrincipalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1816,7 +1746,7 @@ export const GetServicePrincipalResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetServicePrincipalResponse>;
 
 export interface ListBestPracticeByTenantRequest {}
-export const ListBestPracticeByTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBestPracticeByTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1831,7 +1761,7 @@ export const ListBestPracticeByTenantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list best practice operation. */
 export type BestPracticeListValueList = Array<BestPractice>;
-export const BestPracticeListValueList = /*@__PURE__*/ S.Array(
+const BestPracticeListValueList = /*@__PURE__*/ S.Array(
   BestPractice,
 ) as any as S.Schema<BestPracticeListValueList>;
 
@@ -1840,7 +1770,7 @@ export interface BestPracticeList {
   /** Result of the list best practice operation. */
   value?: BestPracticeListValueList;
 }
-export const BestPracticeList = /*@__PURE__*/ S.suspend(() =>
+const BestPracticeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(BestPracticeListValueList),
   }),
@@ -1850,7 +1780,7 @@ export interface ListBestPracticesVersionByTenantRequest {
   /** The Automanage best practice name. */
   bestPracticeName: string;
 }
-export const ListBestPracticesVersionByTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBestPracticesVersionByTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bestPracticeName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1873,7 +1803,7 @@ export interface ListConfigurationProfileAssignmentByClusterNameRequest {
   /** The name of the Arc machine. */
   clusterName: string;
 }
-export const ListConfigurationProfileAssignmentByClusterNameRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfileAssignmentByClusterNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1896,16 +1826,12 @@ export type ConfigurationProfileAssignmentSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileAssignmentSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileAssignmentSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfileAssignmentSystemData {
   /** The identity that created the resource. */
@@ -1921,7 +1847,7 @@ export interface ConfigurationProfileAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileAssignmentSystemData =
+const ConfigurationProfileAssignmentSystemData =
   GetConfigurationProfileResponseSystemData as any as S.Schema<ConfigurationProfileAssignmentSystemData>;
 
 /** Configuration profile assignment is an association between a VM and automanage profile configuration. */
@@ -1939,7 +1865,7 @@ export interface ConfigurationProfileAssignment {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileAssignmentSystemData;
 }
-export const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1954,7 +1880,7 @@ export const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list configuration profile assignment operation. */
 export type ConfigurationProfileAssignmentListValueList = Array<ConfigurationProfileAssignment>;
-export const ConfigurationProfileAssignmentListValueList = /*@__PURE__*/ S.Array(
+const ConfigurationProfileAssignmentListValueList = /*@__PURE__*/ S.Array(
   ConfigurationProfileAssignment,
 ) as any as S.Schema<ConfigurationProfileAssignmentListValueList>;
 
@@ -1963,7 +1889,7 @@ export interface ConfigurationProfileAssignmentList {
   /** Result of the list configuration profile assignment operation. */
   value?: ConfigurationProfileAssignmentListValueList;
 }
-export const ConfigurationProfileAssignmentList = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ConfigurationProfileAssignmentListValueList),
   }),
@@ -1979,7 +1905,7 @@ export interface ListConfigurationProfileAssignmentByMachineNameRequest {
   /** The name of the Arc machine. */
   machineName: string;
 }
-export const ListConfigurationProfileAssignmentByMachineNameRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfileAssignmentByMachineNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2000,7 +1926,7 @@ export interface ListConfigurationProfileAssignmentBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListConfigurationProfileAssignmentBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfileAssignmentBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2023,20 +1949,19 @@ export interface ListConfigurationProfileAssignmentByVirtualMachinesRequest {
   /** The name of the virtual machine. */
   vmName: string;
 }
-export const ListConfigurationProfileAssignmentByVirtualMachinesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      vmName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments",
-        code: 200,
-        apiVersion: "2022-05-04",
-      }),
-    ),
+const ListConfigurationProfileAssignmentByVirtualMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    vmName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+      code: 200,
+      apiVersion: "2022-05-04",
+    }),
+  ),
 ).annotate({
   identifier: "ListConfigurationProfileAssignmentByVirtualMachinesRequest",
 }) as any as S.Schema<ListConfigurationProfileAssignmentByVirtualMachinesRequest>;
@@ -2047,7 +1972,7 @@ export interface ListConfigurationProfileAssignmentsRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2069,7 +1994,7 @@ export interface ListConfigurationProfileByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListConfigurationProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2087,7 +2012,7 @@ export const ListConfigurationProfileByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type ConfigurationProfileTagsMap = { [key: string]: string | undefined };
-export const ConfigurationProfileTagsMap =
+const ConfigurationProfileTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfileTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -2096,16 +2021,12 @@ export type ConfigurationProfileSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationProfileSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfileSystemData {
   /** The identity that created the resource. */
@@ -2121,7 +2042,7 @@ export interface ConfigurationProfileSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationProfileSystemData =
+const ConfigurationProfileSystemData =
   GetConfigurationProfileResponseSystemData as any as S.Schema<ConfigurationProfileSystemData>;
 
 /** Definition of the configuration profile. */
@@ -2141,7 +2062,7 @@ export interface ConfigurationProfile {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileSystemData;
 }
-export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2155,7 +2076,7 @@ export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list ConfigurationProfile operation. */
 export type ConfigurationProfileListValueList = Array<ConfigurationProfile>;
-export const ConfigurationProfileListValueList = /*@__PURE__*/ S.Array(
+const ConfigurationProfileListValueList = /*@__PURE__*/ S.Array(
   ConfigurationProfile,
 ) as any as S.Schema<ConfigurationProfileListValueList>;
 
@@ -2164,7 +2085,7 @@ export interface ConfigurationProfileList {
   /** Result of the list ConfigurationProfile operation. */
   value?: ConfigurationProfileListValueList;
 }
-export const ConfigurationProfileList = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProfileList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ConfigurationProfileListValueList),
   }),
@@ -2174,7 +2095,7 @@ export interface ListConfigurationProfileBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListConfigurationProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2197,7 +2118,7 @@ export interface ListConfigurationProfilesVersionChildResourcesRequest {
   /** Name of the configuration profile. */
   configurationProfileName: string;
 }
-export const ListConfigurationProfilesVersionChildResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationProfilesVersionChildResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2224,7 +2145,7 @@ export interface ListHCIReportByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const ListHCIReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHCIReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2244,12 +2165,8 @@ export const ListHCIReportByConfigurationProfileAssignmentsRequest = /*@__PURE__
 
 /** The type of identity that created the resource. */
 export type ReportSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ReportSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ReportSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ReportSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ReportSystemData {
   /** The identity that created the resource. */
@@ -2265,7 +2182,7 @@ export interface ReportSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReportSystemData = BestPracticeSystemData as any as S.Schema<ReportSystemData>;
+const ReportSystemData = BestPracticeSystemData as any as S.Schema<ReportSystemData>;
 
 /** Definition of the report. */
 export interface Report {
@@ -2280,7 +2197,7 @@ export interface Report {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ReportSystemData;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2292,16 +2209,14 @@ export const Report = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list report operation. */
 export type ReportListValueList = Array<Report>;
-export const ReportListValueList = /*@__PURE__*/ S.Array(
-  Report,
-) as any as S.Schema<ReportListValueList>;
+const ReportListValueList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportListValueList>;
 
 /** The response of the list report operation. */
 export interface ReportList {
   /** Result of the list report operation. */
   value?: ReportListValueList;
 }
-export const ReportList = /*@__PURE__*/ S.suspend(() =>
+const ReportList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReportListValueList),
   }),
@@ -2317,7 +2232,7 @@ export interface ListHCRPReportByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const ListHCRPReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHCRPReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2336,7 +2251,7 @@ export const ListHCRPReportByConfigurationProfileAssignmentsRequest = /*@__PURE_
 }) as any as S.Schema<ListHCRPReportByConfigurationProfileAssignmentsRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2358,7 +2273,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2369,11 +2284,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -2388,7 +2303,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2400,7 +2315,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2410,7 +2325,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2427,7 +2342,7 @@ export interface ListReportByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
-export const ListReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2449,7 +2364,7 @@ export interface ListServicePrincipalBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListServicePrincipalBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicePrincipalBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2470,16 +2385,12 @@ export type ServicePrincipalSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ServicePrincipalSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ServicePrincipalSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ServicePrincipalSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ServicePrincipalSystemData {
   /** The identity that created the resource. */
@@ -2495,7 +2406,7 @@ export interface ServicePrincipalSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ServicePrincipalSystemData =
+const ServicePrincipalSystemData =
   GetConfigurationProfileResponseSystemData as any as S.Schema<ServicePrincipalSystemData>;
 
 /** The Service Principal Id for the subscription. */
@@ -2511,7 +2422,7 @@ export interface ServicePrincipal {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServicePrincipalSystemData;
 }
-export const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2523,7 +2434,7 @@ export const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of servicePrincipals. */
 export type ServicePrincipalListResultValueList = Array<ServicePrincipal>;
-export const ServicePrincipalListResultValueList = /*@__PURE__*/ S.Array(
+const ServicePrincipalListResultValueList = /*@__PURE__*/ S.Array(
   ServicePrincipal,
 ) as any as S.Schema<ServicePrincipalListResultValueList>;
 
@@ -2532,7 +2443,7 @@ export interface ServicePrincipalListResult {
   /** The list of servicePrincipals. */
   value?: ServicePrincipalListResultValueList;
 }
-export const ServicePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ServicePrincipalListResultValueList),
   }),
@@ -2542,7 +2453,7 @@ export const ServicePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateConfigurationProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationProfileRequestTagsMap =
+const UpdateConfigurationProfileRequestTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationProfileRequestTagsMap>;
 
 export interface UpdateConfigurationProfileRequest {
@@ -2557,7 +2468,7 @@ export interface UpdateConfigurationProfileRequest {
   /** Properties of the configuration profile. */
   properties?: ConfigurationProfileProperties;
 }
-export const UpdateConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2578,7 +2489,7 @@ export const UpdateConfigurationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConfigurationProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationProfileResponseTagsMap =
+const UpdateConfigurationProfileResponseTagsMap =
   ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationProfileResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -2587,16 +2498,12 @@ export type UpdateConfigurationProfileResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateConfigurationProfileResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateConfigurationProfileResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateConfigurationProfileResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateConfigurationProfileResponseSystemData {
   /** The identity that created the resource. */
@@ -2612,7 +2519,7 @@ export interface UpdateConfigurationProfileResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateConfigurationProfileResponseSystemData =
+const UpdateConfigurationProfileResponseSystemData =
   GetConfigurationProfileResponseSystemData as any as S.Schema<UpdateConfigurationProfileResponseSystemData>;
 
 export interface UpdateConfigurationProfileResponse {
@@ -2631,7 +2538,7 @@ export interface UpdateConfigurationProfileResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateConfigurationProfileResponseSystemData;
 }
-export const UpdateConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

@@ -12,7 +12,7 @@ export interface CompletionContext {
   triggerCharacter?: string;
   triggerKind: number;
 }
-export const CompletionContext = /*@__PURE__*/ S.suspend(() =>
+const CompletionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerCharacter: S.optional(S.String),
     triggerKind: S.Number,
@@ -23,7 +23,7 @@ export interface LspPosition {
   character: number;
   line: number;
 }
-export const LspPosition = /*@__PURE__*/ S.suspend(() =>
+const LspPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     character: S.Number,
     line: S.Number,
@@ -37,7 +37,7 @@ export interface CompletionsRequest {
   position: LspPosition;
   uri: string;
 }
-export const CompletionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CompletionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(CompletionContext),
     languageId: S.String,
@@ -56,7 +56,7 @@ export interface CompletionItem {
   label: string;
   sortText?: string;
 }
-export const CompletionItem = /*@__PURE__*/ S.suspend(() =>
+const CompletionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detail: S.optional(S.String),
     documentation: S.optional(S.Unknown),
@@ -69,7 +69,7 @@ export const CompletionItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompletionItem" }) as any as S.Schema<CompletionItem>;
 
 export type CompletionListItemsList = Array<CompletionItem>;
-export const CompletionListItemsList = /*@__PURE__*/ S.Array(
+const CompletionListItemsList = /*@__PURE__*/ S.Array(
   CompletionItem,
 ) as any as S.Schema<CompletionListItemsList>;
 
@@ -77,7 +77,7 @@ export interface CompletionList {
   isIncomplete: boolean;
   items: CompletionListItemsList;
 }
-export const CompletionList = /*@__PURE__*/ S.suspend(() =>
+const CompletionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isIncomplete: S.Boolean,
     items: CompletionListItemsList,
@@ -89,7 +89,7 @@ export interface DidCloseRequest {
   pathToProject: string;
   uri: string;
 }
-export const DidCloseRequest = /*@__PURE__*/ S.suspend(() =>
+const DidCloseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageId: S.String,
     pathToProject: S.String,
@@ -98,7 +98,7 @@ export const DidCloseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DidCloseRequest" }) as any as S.Schema<DidCloseRequest>;
 
 export interface DidCloseResponse {}
-export const DidCloseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DidCloseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DidCloseResponse",
 }) as any as S.Schema<DidCloseResponse>;
 
@@ -107,7 +107,7 @@ export interface DidOpenRequest {
   pathToProject: string;
   uri: string;
 }
-export const DidOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const DidOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageId: S.String,
     pathToProject: S.String,
@@ -116,7 +116,7 @@ export const DidOpenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DidOpenRequest" }) as any as S.Schema<DidOpenRequest>;
 
 export interface DidOpenResponse {}
-export const DidOpenResponse = DidCloseResponse as any as S.Schema<DidOpenResponse>;
+const DidOpenResponse = DidCloseResponse as any as S.Schema<DidOpenResponse>;
 
 export interface DocumentSymbolsRequest {
   /** Language ID (e.g., python, typescript) */
@@ -126,7 +126,7 @@ export interface DocumentSymbolsRequest {
   /** Document URI */
   uri: string;
 }
-export const DocumentSymbolsRequest = /*@__PURE__*/ S.suspend(() =>
+const DocumentSymbolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageId: S.String.pipe(T.Query()),
     pathToProject: S.String.pipe(T.Query()),
@@ -138,7 +138,7 @@ export interface LspRange {
   end: LspPosition;
   start: LspPosition;
 }
-export const LspRange = /*@__PURE__*/ S.suspend(() =>
+const LspRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: LspPosition,
     start: LspPosition,
@@ -149,7 +149,7 @@ export interface LspLocation {
   range: LspRange;
   uri: string;
 }
-export const LspLocation = /*@__PURE__*/ S.suspend(() =>
+const LspLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: LspRange,
     uri: S.String,
@@ -161,7 +161,7 @@ export interface LspSymbol {
   location: LspLocation;
   name: string;
 }
-export const LspSymbol = /*@__PURE__*/ S.suspend(() =>
+const LspSymbol = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.Number,
     location: LspLocation,
@@ -170,12 +170,12 @@ export const LspSymbol = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LspSymbol" }) as any as S.Schema<LspSymbol>;
 
 export type DocumentSymbolsResponseBodyList = Array<LspSymbol>;
-export const DocumentSymbolsResponseBodyList = /*@__PURE__*/ S.Array(
+const DocumentSymbolsResponseBodyList = /*@__PURE__*/ S.Array(
   LspSymbol,
 ) as any as S.Schema<DocumentSymbolsResponseBodyList>;
 
 export type DocumentSymbolsResponse = DocumentSymbolsResponseBodyList;
-export const DocumentSymbolsResponse = /*@__PURE__*/ S.suspend(() =>
+const DocumentSymbolsResponse = /*@__PURE__*/ S.suspend(() =>
   DocumentSymbolsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DocumentSymbolsResponse" }) as any as S.Schema<DocumentSymbolsResponse>;
 
@@ -183,7 +183,7 @@ export interface StartRequest {
   languageId: string;
   pathToProject: string;
 }
-export const StartRequest = /*@__PURE__*/ S.suspend(() =>
+const StartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageId: S.String,
     pathToProject: S.String,
@@ -191,13 +191,13 @@ export const StartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartRequest" }) as any as S.Schema<StartRequest>;
 
 export interface StartResponse {}
-export const StartResponse = DidCloseResponse as any as S.Schema<StartResponse>;
+const StartResponse = DidCloseResponse as any as S.Schema<StartResponse>;
 
 export interface StopRequest {
   languageId: string;
   pathToProject: string;
 }
-export const StopRequest = /*@__PURE__*/ S.suspend(() =>
+const StopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageId: S.String,
     pathToProject: S.String,
@@ -205,7 +205,7 @@ export const StopRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopRequest" }) as any as S.Schema<StopRequest>;
 
 export interface StopResponse {}
-export const StopResponse = DidCloseResponse as any as S.Schema<StopResponse>;
+const StopResponse = DidCloseResponse as any as S.Schema<StopResponse>;
 
 export interface WorkspaceSymbolsRequest {
   /** Search query */
@@ -215,7 +215,7 @@ export interface WorkspaceSymbolsRequest {
   /** Path to project */
   pathToProject: string;
 }
-export const WorkspaceSymbolsRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSymbolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.String.pipe(T.Query()),
     languageId: S.String.pipe(T.Query()),
@@ -224,11 +224,8 @@ export const WorkspaceSymbolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkspaceSymbolsRequest" }) as any as S.Schema<WorkspaceSymbolsRequest>;
 
 export type WorkspaceSymbolsResponseBodyList = Array<LspSymbol>;
-export const WorkspaceSymbolsResponseBodyList =
-  DocumentSymbolsResponseBodyList as any as S.Schema<WorkspaceSymbolsResponseBodyList>;
-
 export type WorkspaceSymbolsResponse = WorkspaceSymbolsResponseBodyList;
-export const WorkspaceSymbolsResponse =
+const WorkspaceSymbolsResponse =
   DocumentSymbolsResponse as any as S.Schema<WorkspaceSymbolsResponse>;
 
 export type CompletionsError = DaytonaOpError;

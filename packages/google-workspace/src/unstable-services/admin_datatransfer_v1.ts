@@ -69,7 +69,7 @@ export interface GetApplicationsRequest {
   /** ID of the application resource to be retrieved. */
   applicationId: string;
 }
-export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -82,7 +82,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApplicationsRequest" }) as any as S.Schema<GetApplicationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Template for application transfer parameters. */
 export interface ApplicationTransferParam {
@@ -91,7 +91,7 @@ export interface ApplicationTransferParam {
   /** The value of the transfer parameter, such as `PRIVATE` or `SHARED`. */
   value?: StringList;
 }
-export const ApplicationTransferParam = /*@__PURE__*/ S.suspend(() =>
+const ApplicationTransferParam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(StringList),
@@ -99,7 +99,7 @@ export const ApplicationTransferParam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationTransferParam" }) as any as S.Schema<ApplicationTransferParam>;
 
 export type ApplicationTransferParamList = Array<ApplicationTransferParam>;
-export const ApplicationTransferParamList = /*@__PURE__*/ S.Array(
+const ApplicationTransferParamList = /*@__PURE__*/ S.Array(
   ApplicationTransferParam,
 ) as any as S.Schema<ApplicationTransferParamList>;
 
@@ -116,7 +116,7 @@ export interface Application {
   /** Identifies the resource as a DataTransfer Application Resource. */
   kind?: string;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     transferParams: S.optional(ApplicationTransferParamList),
@@ -130,7 +130,7 @@ export interface GetTransfersRequest {
   /** ID of the resource to be retrieved. This is returned in the response from the insert method. */
   dataTransferId: string;
 }
-export const GetTransfersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransfersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataTransferId: S.String.pipe(T.Label()),
   }).pipe(
@@ -151,7 +151,7 @@ export interface ApplicationDataTransfer {
   /** The application's ID. */
   applicationId?: string;
 }
-export const ApplicationDataTransfer = /*@__PURE__*/ S.suspend(() =>
+const ApplicationDataTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationTransferParams: S.optional(ApplicationTransferParamList),
     applicationTransferStatus: S.optional(S.String),
@@ -160,7 +160,7 @@ export const ApplicationDataTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationDataTransfer" }) as any as S.Schema<ApplicationDataTransfer>;
 
 export type ApplicationDataTransferList = Array<ApplicationDataTransfer>;
-export const ApplicationDataTransferList = /*@__PURE__*/ S.Array(
+const ApplicationDataTransferList = /*@__PURE__*/ S.Array(
   ApplicationDataTransfer,
 ) as any as S.Schema<ApplicationDataTransferList>;
 
@@ -183,7 +183,7 @@ export interface DataTransfer {
   /** Read-only. The transfer's ID. */
   id?: string;
 }
-export const DataTransfer = /*@__PURE__*/ S.suspend(() =>
+const DataTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     overallTransferStatusCode: S.optional(S.String),
@@ -200,7 +200,7 @@ export interface InsertTransfersRequest {
   /** Request body */
   body?: DataTransfer;
 }
-export const InsertTransfersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTransfersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(DataTransfer.pipe(T.HttpBody())),
   }).pipe(
@@ -220,7 +220,7 @@ export interface ListApplicationsRequest {
   /** Token to specify next page in the list. */
   pageToken?: string;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -235,9 +235,7 @@ export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApplicationsRequest" }) as any as S.Schema<ListApplicationsRequest>;
 
 export type ApplicationList = Array<Application>;
-export const ApplicationList = /*@__PURE__*/ S.Array(
-  Application,
-) as any as S.Schema<ApplicationList>;
+const ApplicationList = /*@__PURE__*/ S.Array(Application) as any as S.Schema<ApplicationList>;
 
 /** Template for a collection of Applications. */
 export interface ApplicationsListResponse {
@@ -250,7 +248,7 @@ export interface ApplicationsListResponse {
   /** The list of applications that support data transfer and are also installed for the customer. */
   applications?: ApplicationList;
 }
-export const ApplicationsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplicationsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     etag: S.optional(S.String),
@@ -273,7 +271,7 @@ export interface ListTransfersRequest {
   /** Status of the transfer. */
   status?: string;
 }
-export const ListTransfersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransfersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newOwnerUserId: S.optional(S.String.pipe(T.Query())),
     oldOwnerUserId: S.optional(S.String.pipe(T.Query())),
@@ -291,9 +289,7 @@ export const ListTransfersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTransfersRequest" }) as any as S.Schema<ListTransfersRequest>;
 
 export type DataTransferList = Array<DataTransfer>;
-export const DataTransferList = /*@__PURE__*/ S.Array(
-  DataTransfer,
-) as any as S.Schema<DataTransferList>;
+const DataTransferList = /*@__PURE__*/ S.Array(DataTransfer) as any as S.Schema<DataTransferList>;
 
 /** Template for a collection of DataTransfer resources. */
 export interface DataTransfersListResponse {
@@ -306,7 +302,7 @@ export interface DataTransfersListResponse {
   /** Token to specify the next page in the list. */
   nextPageToken?: string;
 }
-export const DataTransfersListResponse = /*@__PURE__*/ S.suspend(() =>
+const DataTransfersListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     etag: S.optional(S.String),

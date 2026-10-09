@@ -13,13 +13,13 @@ export type SearchContextRequestChannelTypesItem =
   | "private_channel"
   | "mpim"
   | "im";
-export const SearchContextRequestChannelTypesItem = S.String;
+const SearchContextRequestChannelTypesItem = S.String;
 
 /** Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im`. */
 export type SearchContextRequestChannelTypesList = Array<
   SearchContextRequestChannelTypesItem | (string & {})
 >;
-export const SearchContextRequestChannelTypesList = /*@__PURE__*/ S.Array(
+const SearchContextRequestChannelTypesList = /*@__PURE__*/ S.Array(
   SearchContextRequestChannelTypesItem,
 ) as any as S.Schema<SearchContextRequestChannelTypesList>;
 
@@ -29,26 +29,24 @@ export type SearchContextRequestContentTypesItem =
   | "enterprise"
   | "channels"
   | "users";
-export const SearchContextRequestContentTypesItem = S.String;
-
 /** Content types to include, a comma-separated list of any combination of `messages`, `files`, `channels`, `users`. */
 export type SearchContextRequestContentTypesList = Array<
   SearchContextRequestContentTypesItem | (string & {})
 >;
-export const SearchContextRequestContentTypesList =
+const SearchContextRequestContentTypesList =
   SearchContextRequestChannelTypesList as any as S.Schema<SearchContextRequestContentTypesList>;
 
 /** The field to sort the results by. Defaults to score. Can be one of: score, timestamp. */
 export type SearchContextRequestSort = "score" | "timestamp";
-export const SearchContextRequestSort = S.String;
+const SearchContextRequestSort = S.String;
 
 /** The direction to sort the results by. Defaults to desc. */
 export type SearchContextRequestSortDir = "asc" | "desc";
-export const SearchContextRequestSortDir = S.String;
+const SearchContextRequestSortDir = S.String;
 
 /** A list of term clauses. A term clause is a string with search terms. Search results returned will match every term clause specified (i.e., conjunctive normal form). */
 export type SearchContextRequestTermClausesList = Array<string>;
-export const SearchContextRequestTermClausesList = /*@__PURE__*/ S.Array(
+const SearchContextRequestTermClausesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchContextRequestTermClausesList>;
 
@@ -94,7 +92,7 @@ export interface SearchContextRequest {
   /** Whether to disable semantic search. When true, only keyword-based search is used. Defaults to false. */
   disable_semantic_search?: boolean;
 }
-export const SearchContextRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.String,
     action_token: S.optional(S.String),
@@ -121,14 +119,13 @@ export const SearchContextRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Messages before the current message, if applicable. */
 export type SearchContextResponseResultsMessagesItemContextMessagesBeforeList = Array<unknown>;
-export const SearchContextResponseResultsMessagesItemContextMessagesBeforeList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<SearchContextResponseResultsMessagesItemContextMessagesBeforeList>;
+const SearchContextResponseResultsMessagesItemContextMessagesBeforeList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SearchContextResponseResultsMessagesItemContextMessagesBeforeList>;
 
 /** Messages after the current message. */
 export type SearchContextResponseResultsMessagesItemContextMessagesAfterList = Array<unknown>;
-export const SearchContextResponseResultsMessagesItemContextMessagesAfterList =
+const SearchContextResponseResultsMessagesItemContextMessagesAfterList =
   SearchContextResponseResultsMessagesItemContextMessagesBeforeList as any as S.Schema<SearchContextResponseResultsMessagesItemContextMessagesAfterList>;
 
 export interface SearchContextResponseResultsMessagesItemContextMessages {
@@ -137,7 +134,7 @@ export interface SearchContextResponseResultsMessagesItemContextMessages {
   /** Messages after the current message. */
   after?: SearchContextResponseResultsMessagesItemContextMessagesAfterList;
 }
-export const SearchContextResponseResultsMessagesItemContextMessages = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResultsMessagesItemContextMessages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(SearchContextResponseResultsMessagesItemContextMessagesBeforeList),
     after: S.optional(SearchContextResponseResultsMessagesItemContextMessagesAfterList),
@@ -148,7 +145,7 @@ export const SearchContextResponseResultsMessagesItemContextMessages = /*@__PURE
 
 /** Blocks from the retrieved message. */
 export type SearchContextResponseResultsMessagesItemBlocksList = Array<unknown>;
-export const SearchContextResponseResultsMessagesItemBlocksList = /*@__PURE__*/ S.Array(
+const SearchContextResponseResultsMessagesItemBlocksList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SearchContextResponseResultsMessagesItemBlocksList>;
 
@@ -177,7 +174,7 @@ export interface SearchContextResponseResultsMessagesItem {
   blocks?: SearchContextResponseResultsMessagesItemBlocksList;
   reply_count?: number;
 }
-export const SearchContextResponseResultsMessagesItem = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResultsMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author_name: S.String,
     author_email: S.optional(S.String),
@@ -199,7 +196,7 @@ export const SearchContextResponseResultsMessagesItem = /*@__PURE__*/ S.suspend(
 
 export type SearchContextResponseResultsMessagesList =
   Array<SearchContextResponseResultsMessagesItem>;
-export const SearchContextResponseResultsMessagesList = /*@__PURE__*/ S.Array(
+const SearchContextResponseResultsMessagesList = /*@__PURE__*/ S.Array(
   SearchContextResponseResultsMessagesItem,
 ) as any as S.Schema<SearchContextResponseResultsMessagesList>;
 
@@ -231,7 +228,7 @@ export interface SearchContextResponseResultsFilesItem {
   /** Size of the file in bytes. */
   size?: number;
 }
-export const SearchContextResponseResultsFilesItem = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResultsFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author_name: S.String,
     author_email: S.optional(S.String),
@@ -252,12 +249,12 @@ export const SearchContextResponseResultsFilesItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SearchContextResponseResultsFilesItem>;
 
 export type SearchContextResponseResultsFilesList = Array<SearchContextResponseResultsFilesItem>;
-export const SearchContextResponseResultsFilesList = /*@__PURE__*/ S.Array(
+const SearchContextResponseResultsFilesList = /*@__PURE__*/ S.Array(
   SearchContextResponseResultsFilesItem,
 ) as any as S.Schema<SearchContextResponseResultsFilesList>;
 
 export type SearchContextResponseResultsEnterpriseList = Array<unknown>;
-export const SearchContextResponseResultsEnterpriseList =
+const SearchContextResponseResultsEnterpriseList =
   SearchContextResponseResultsMessagesItemBlocksList as any as S.Schema<SearchContextResponseResultsEnterpriseList>;
 
 export interface SearchContextResponseResultsChannelsItem {
@@ -282,7 +279,7 @@ export interface SearchContextResponseResultsChannelsItem {
   /** Whether the channel is archived. */
   is_archived: boolean;
 }
-export const SearchContextResponseResultsChannelsItem = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResultsChannelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String,
     creator_user_id: S.String,
@@ -301,7 +298,7 @@ export const SearchContextResponseResultsChannelsItem = /*@__PURE__*/ S.suspend(
 
 export type SearchContextResponseResultsChannelsList =
   Array<SearchContextResponseResultsChannelsItem>;
-export const SearchContextResponseResultsChannelsList = /*@__PURE__*/ S.Array(
+const SearchContextResponseResultsChannelsList = /*@__PURE__*/ S.Array(
   SearchContextResponseResultsChannelsItem,
 ) as any as S.Schema<SearchContextResponseResultsChannelsList>;
 
@@ -321,7 +318,7 @@ export interface SearchContextResponseResultsUsersItem {
   /** The user's email address. */
   email: string;
 }
-export const SearchContextResponseResultsUsersItem = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResultsUsersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     permalink: S.String,
@@ -336,7 +333,7 @@ export const SearchContextResponseResultsUsersItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SearchContextResponseResultsUsersItem>;
 
 export type SearchContextResponseResultsUsersList = Array<SearchContextResponseResultsUsersItem>;
-export const SearchContextResponseResultsUsersList = /*@__PURE__*/ S.Array(
+const SearchContextResponseResultsUsersList = /*@__PURE__*/ S.Array(
   SearchContextResponseResultsUsersItem,
 ) as any as S.Schema<SearchContextResponseResultsUsersList>;
 
@@ -347,7 +344,7 @@ export interface SearchContextResponseResults {
   channels?: SearchContextResponseResultsChannelsList;
   users?: SearchContextResponseResultsUsersList;
 }
-export const SearchContextResponseResults = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(SearchContextResponseResultsMessagesList),
     files: S.optional(SearchContextResponseResultsFilesList),
@@ -364,7 +361,7 @@ export interface SearchContextResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const SearchContextResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -379,7 +376,7 @@ export interface SearchContextResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: SearchContextResponseResponseMetadata;
 }
-export const SearchContextResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchContextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     results: SearchContextResponseResults,
@@ -388,7 +385,7 @@ export const SearchContextResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchContextResponse" }) as any as S.Schema<SearchContextResponse>;
 
 export interface SearchInfoRequest {}
-export const SearchInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/assistant.search.info", code: 200 })),
 ).annotate({ identifier: "SearchInfoRequest" }) as any as S.Schema<SearchInfoRequest>;
 
@@ -398,7 +395,7 @@ export interface SearchInfoResponse {
   /** Whether AI search is enabled for the team */
   is_ai_search_enabled: boolean;
 }
-export const SearchInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     is_ai_search_enabled: S.Boolean,
@@ -407,7 +404,7 @@ export const SearchInfoResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of messages to rotate through as a loading indicator. Maximum of 10 messages. */
 export type SetStatusRequestLoadingMessagesList = Array<string>;
-export const SetStatusRequestLoadingMessagesList =
+const SetStatusRequestLoadingMessagesList =
   SearchContextRequestTermClausesList as any as S.Schema<SetStatusRequestLoadingMessagesList>;
 
 export interface SetStatusRequest {
@@ -426,7 +423,7 @@ export interface SetStatusRequest {
   /** The bot's username to display. */
   username?: string;
 }
-export const SetStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const SetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     thread_ts: S.String,
@@ -442,7 +439,7 @@ export interface SetStatusResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -458,7 +455,7 @@ export interface SetSuggestedPromptsRequest {
   /** Title for the list of provided prompts. For example: Suggested Prompts, Related Questions. */
   title?: string;
 }
-export const SetSuggestedPromptsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSuggestedPromptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     thread_ts: S.optional(S.String),
@@ -473,7 +470,7 @@ export interface SetSuggestedPromptsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetSuggestedPromptsResponse = /*@__PURE__*/ S.suspend(() =>
+const SetSuggestedPromptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -489,7 +486,7 @@ export interface SetTitleRequest {
   /** The title to use for the thread. */
   title: string;
 }
-export const SetTitleRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTitleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     thread_ts: S.String,
@@ -501,7 +498,7 @@ export interface SetTitleResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetTitleResponse = SetStatusResponse as any as S.Schema<SetTitleResponse>;
+const SetTitleResponse = SetStatusResponse as any as S.Schema<SetTitleResponse>;
 
 export type SearchContextError = SlackOpError;
 /** Searches messages, files, channels and users across your Slack organization. Required scopes -- user: `search:read.public`, `search:read.private`, `search:read.im`, `search:read.mpim`, `search:read.files`, `search:read.users`; bot: `search:read.public`, `search:read.files`, `search:read.users` Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal error. - `rate_limited` -- Rate limited. - `missing_query` -- Missing query. - `query_too_long` -- Query too long. - `feature_not_enabled` -- The feature is not available on the current workspace. - `invalid_action_token` -- The `action_token` provided is not valid. - `invalid_cursor` -- The cursormark provided is not valid. - `context_channel_not_found` -- Specified `context_channel_id` is invalid or the user lacks permission to view it. - `missing_scope` -- The requested channel types are not allowed by the provided scopes. - `assistant_search_context_disabled` -- We're having issues returning your search results. Please wait and try again. See https://docs.slack.dev/reference/methods/assistant.search.context */

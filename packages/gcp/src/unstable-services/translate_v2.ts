@@ -62,14 +62,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The request message for language detection. */
 export interface DetectLanguageRequest {
   /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
   q?: StringList;
 }
-export const DetectLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+const DetectLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(StringList),
   }),
@@ -83,7 +83,7 @@ export interface DetectDetectionsRequest {
   /** Request body */
   body?: DetectLanguageRequest;
 }
-export const DetectDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DetectDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pp: S.optional(S.Boolean.pipe(T.Query())),
     bearer_token: S.optional(S.String.pipe(T.Query())),
@@ -105,7 +105,7 @@ export interface DetectionsResourceItem {
   /** A boolean to indicate is the language detection result reliable. */
   isReliable?: boolean;
 }
-export const DetectionsResourceItem = /*@__PURE__*/ S.suspend(() =>
+const DetectionsResourceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidence: S.optional(S.Number),
     language: S.optional(S.String),
@@ -115,12 +115,12 @@ export const DetectionsResourceItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of languages which we detect for the given text The most likely language list first. */
 export type DetectionsResource = Array<DetectionsResourceItem>;
-export const DetectionsResource = /*@__PURE__*/ S.Array(
+const DetectionsResource = /*@__PURE__*/ S.Array(
   DetectionsResourceItem,
 ) as any as S.Schema<DetectionsResource>;
 
 export type DetectionsResourceList = Array<DetectionsResource>;
-export const DetectionsResourceList = /*@__PURE__*/ S.Array(
+const DetectionsResourceList = /*@__PURE__*/ S.Array(
   DetectionsResource,
 ) as any as S.Schema<DetectionsResourceList>;
 
@@ -128,7 +128,7 @@ export interface DetectionsListResponse {
   /** A detections contains detection results of several text */
   detections?: DetectionsResourceList;
 }
-export const DetectionsListResponse = /*@__PURE__*/ S.suspend(() =>
+const DetectionsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detections: S.optional(DetectionsResourceList),
   }),
@@ -142,7 +142,7 @@ export interface ListDetectionsRequest {
   /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
   q: StringList;
 }
-export const ListDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pp: S.optional(S.Boolean.pipe(T.Query())),
     bearer_token: S.optional(S.String.pipe(T.Query())),
@@ -166,7 +166,7 @@ export interface ListLanguagesRequest {
   /** The language to use to return localized, human readable names of supported languages. */
   target?: string;
 }
-export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pp: S.optional(S.Boolean.pipe(T.Query())),
     bearer_token: S.optional(S.String.pipe(T.Query())),
@@ -187,7 +187,7 @@ export interface LanguagesResource {
   /** Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') */
   language?: string;
 }
-export const LanguagesResource = /*@__PURE__*/ S.suspend(() =>
+const LanguagesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     language: S.optional(S.String),
@@ -195,7 +195,7 @@ export const LanguagesResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LanguagesResource" }) as any as S.Schema<LanguagesResource>;
 
 export type LanguagesResourceList = Array<LanguagesResource>;
-export const LanguagesResourceList = /*@__PURE__*/ S.Array(
+const LanguagesResourceList = /*@__PURE__*/ S.Array(
   LanguagesResource,
 ) as any as S.Schema<LanguagesResourceList>;
 
@@ -203,14 +203,14 @@ export interface LanguagesListResponse {
   /** List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language. */
   languages?: LanguagesResourceList;
 }
-export const LanguagesListResponse = /*@__PURE__*/ S.suspend(() =>
+const LanguagesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languages: S.optional(LanguagesResourceList),
   }),
 ).annotate({ identifier: "LanguagesListResponse" }) as any as S.Schema<LanguagesListResponse>;
 
 export type ListTranslationsFormatEnum = "html" | "text";
-export const ListTranslationsFormatEnum = S.String;
+const ListTranslationsFormatEnum = S.String;
 
 export interface ListTranslationsRequest {
   /** Pretty-print response. */
@@ -230,7 +230,7 @@ export interface ListTranslationsRequest {
   /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
   source?: string;
 }
-export const ListTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pp: S.optional(S.Boolean.pipe(T.Query())),
     bearer_token: S.optional(S.String.pipe(T.Query())),
@@ -257,7 +257,7 @@ export interface TranslationsResource {
   /** The `model` type used for this translation. Valid values are listed in public documentation. Can be different from requested `model`. Present only if specific model type was explicitly requested. */
   model?: string;
 }
-export const TranslationsResource = /*@__PURE__*/ S.suspend(() =>
+const TranslationsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedSourceLanguage: S.optional(S.String),
     translatedText: S.optional(S.String),
@@ -266,7 +266,7 @@ export const TranslationsResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TranslationsResource" }) as any as S.Schema<TranslationsResource>;
 
 export type TranslationsResourceList = Array<TranslationsResource>;
-export const TranslationsResourceList = /*@__PURE__*/ S.Array(
+const TranslationsResourceList = /*@__PURE__*/ S.Array(
   TranslationsResource,
 ) as any as S.Schema<TranslationsResourceList>;
 
@@ -275,7 +275,7 @@ export interface TranslationsListResponse {
   /** Translations contains list of translation results of given text */
   translations?: TranslationsResourceList;
 }
-export const TranslationsListResponse = /*@__PURE__*/ S.suspend(() =>
+const TranslationsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     translations: S.optional(TranslationsResourceList),
   }),
@@ -294,7 +294,7 @@ export interface TranslateTextRequest {
   /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
   target?: string;
 }
-export const TranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
+const TranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(StringList),
     model: S.optional(S.String),
@@ -312,7 +312,7 @@ export interface TranslateTranslationsRequest {
   /** Request body */
   body?: TranslateTextRequest;
 }
-export const TranslateTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TranslateTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pp: S.optional(S.Boolean.pipe(T.Query())),
     bearer_token: S.optional(S.String.pipe(T.Query())),

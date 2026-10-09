@@ -40,7 +40,7 @@ export interface GetDisputeAlertRequest {
   /** The dispute alert ID, prefixed `dspa_`. */
   id: string;
 }
-export const GetDisputeAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dispute_alerts/{id}", code: 200 })),
@@ -48,7 +48,7 @@ export const GetDisputeAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** What the issuer sent. `early_fraud_warning` is a fraud report on a settled payment (Visa TC40 / Mastercard SAFE) -- refunding still avoids the chargeback, and Whop never charges a fee for one. `dispute_alert` is a pre-dispute notice from the issuer's alert network, which Whop pays for and passes on as a fee. `rapid_dispute_resolution` is a Visa RDR case the network already closed by refunding the payment -- nothing is left to act on. */
 export type DisputeAlertType = "early_fraud_warning" | "dispute_alert" | "rapid_dispute_resolution";
-export const DisputeAlertType = S.String;
+const DisputeAlertType = S.String;
 
 export interface DisputeAlert {
   /** The account the alerted payment belongs to, prefixed `biz_`. `null` while the alert is unmatched. */
@@ -82,7 +82,7 @@ export interface DisputeAlert {
   /** When the alert was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const DisputeAlert = /*@__PURE__*/ S.suspend(() =>
+const DisputeAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     amount: S.Number,
@@ -106,13 +106,13 @@ export type ListDisputeAlertsRequestType =
   | "early_fraud_warning"
   | "dispute_alert"
   | "rapid_dispute_resolution";
-export const ListDisputeAlertsRequestType = S.String;
+const ListDisputeAlertsRequestType = S.String;
 
 export type ListDisputeAlertsRequestOrder = "created_at" | "reported_at" | "amount";
-export const ListDisputeAlertsRequestOrder = S.String;
+const ListDisputeAlertsRequestOrder = S.String;
 
 export type ListDisputeAlertsRequestDirection = "asc" | "desc";
-export const ListDisputeAlertsRequestDirection = S.String;
+const ListDisputeAlertsRequestDirection = S.String;
 
 export interface ListDisputeAlertsRequest {
   /** Only alerts on this account's payments (`biz_` tag). Omit it to cover every account you can read. */
@@ -138,7 +138,7 @@ export interface ListDisputeAlertsRequest {
   /** Only alerts Whop received after this ISO 8601 timestamp. */
   created_after?: string;
 }
-export const ListDisputeAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDisputeAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     payment_id: S.optional(S.String.pipe(T.Query())),
@@ -155,7 +155,7 @@ export const ListDisputeAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDisputeAlertsRequest" }) as any as S.Schema<ListDisputeAlertsRequest>;
 
 export type ListDisputeAlertsResponseDataList = Array<DisputeAlert>;
-export const ListDisputeAlertsResponseDataList = /*@__PURE__*/ S.Array(
+const ListDisputeAlertsResponseDataList = /*@__PURE__*/ S.Array(
   DisputeAlert,
 ) as any as S.Schema<ListDisputeAlertsResponseDataList>;
 
@@ -165,7 +165,7 @@ export interface ListDisputeAlertsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListDisputeAlertsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListDisputeAlertsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -180,7 +180,7 @@ export interface ListDisputeAlertsResponse {
   data: ListDisputeAlertsResponseDataList;
   page_info: ListDisputeAlertsResponsePageInfo;
 }
-export const ListDisputeAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDisputeAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListDisputeAlertsResponseDataList,
     page_info: ListDisputeAlertsResponsePageInfo,

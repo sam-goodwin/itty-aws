@@ -12,14 +12,14 @@ import * as T from "../traits.ts";
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type CreateEmbedRequestRepoType = "datasets";
-export const CreateEmbedRequestRepoType = S.String;
+const CreateEmbedRequestRepoType = S.String;
 
 export interface CreateEmbedRequestViewsItem {
   key: string;
   displayName: string;
   viewName: string;
 }
-export const CreateEmbedRequestViewsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateEmbedRequestViewsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     displayName: S.String,
@@ -30,7 +30,7 @@ export const CreateEmbedRequestViewsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEmbedRequestViewsItem>;
 
 export type CreateEmbedRequestViewsList = Array<CreateEmbedRequestViewsItem>;
-export const CreateEmbedRequestViewsList = /*@__PURE__*/ S.Array(
+const CreateEmbedRequestViewsList = /*@__PURE__*/ S.Array(
   CreateEmbedRequestViewsItem,
 ) as any as S.Schema<CreateEmbedRequestViewsList>;
 
@@ -43,7 +43,7 @@ export interface CreateEmbedRequest {
   private?: boolean;
   views: CreateEmbedRequestViewsList;
 }
-export const CreateEmbedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: CreateEmbedRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -62,10 +62,8 @@ export const CreateEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEmbedRequest" }) as any as S.Schema<CreateEmbedRequest>;
 
 export type CreateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
-export const CreateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
-
 export type CreateEmbedResponseViewsList = Array<CreateEmbedRequestViewsItem>;
-export const CreateEmbedResponseViewsList =
+const CreateEmbedResponseViewsList =
   CreateEmbedRequestViewsList as any as S.Schema<CreateEmbedResponseViewsList>;
 
 export interface CreateEmbedResponse {
@@ -84,7 +82,7 @@ export interface CreateEmbedResponse {
   rating?: number;
   justification?: string;
 }
-export const CreateEmbedResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEmbedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     repoId: S.String,
@@ -101,7 +99,7 @@ export const CreateEmbedResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEmbedResponse" }) as any as S.Schema<CreateEmbedResponse>;
 
 export type DeleteEmbedRequestRepoType = "datasets";
-export const DeleteEmbedRequestRepoType = S.String;
+const DeleteEmbedRequestRepoType = S.String;
 
 export interface DeleteEmbedRequest {
   repoType: DeleteEmbedRequestRepoType | (string & {});
@@ -109,7 +107,7 @@ export interface DeleteEmbedRequest {
   repo: string;
   id: string;
 }
-export const DeleteEmbedRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: DeleteEmbedRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -125,12 +123,12 @@ export const DeleteEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmbedRequest" }) as any as S.Schema<DeleteEmbedRequest>;
 
 export type DeleteEmbedResponse = unknown;
-export const DeleteEmbedResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmbedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteEmbedResponse" }) as any as S.Schema<DeleteEmbedResponse>;
 
 export type HideEmbedRequestRepoType = "datasets";
-export const HideEmbedRequestRepoType = S.String;
+const HideEmbedRequestRepoType = S.String;
 
 export interface HideEmbedRequest {
   repoType: HideEmbedRequestRepoType | (string & {});
@@ -138,7 +136,7 @@ export interface HideEmbedRequest {
   repo: string;
   id: string;
 }
-export const HideEmbedRequest = /*@__PURE__*/ S.suspend(() =>
+const HideEmbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: HideEmbedRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -154,10 +152,10 @@ export const HideEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HideEmbedRequest" }) as any as S.Schema<HideEmbedRequest>;
 
 export type HideEmbedResponse = unknown;
-export const HideEmbedResponse = DeleteEmbedResponse as any as S.Schema<HideEmbedResponse>;
+const HideEmbedResponse = DeleteEmbedResponse as any as S.Schema<HideEmbedResponse>;
 
 export type UpdateEmbedRequestRepoType = "datasets";
-export const UpdateEmbedRequestRepoType = S.String;
+const UpdateEmbedRequestRepoType = S.String;
 
 export interface UpdateEmbedRequest {
   repoType: UpdateEmbedRequestRepoType | (string & {});
@@ -168,7 +166,7 @@ export interface UpdateEmbedRequest {
   private?: boolean;
   sql?: string;
 }
-export const UpdateEmbedRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEmbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: UpdateEmbedRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -187,12 +185,7 @@ export const UpdateEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateEmbedRequest" }) as any as S.Schema<UpdateEmbedRequest>;
 
 export type UpdateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
-export const UpdateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
-
 export type UpdateEmbedResponseViewsList = Array<CreateEmbedRequestViewsItem>;
-export const UpdateEmbedResponseViewsList =
-  CreateEmbedRequestViewsList as any as S.Schema<UpdateEmbedResponseViewsList>;
-
 export interface UpdateEmbedResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -209,7 +202,7 @@ export interface UpdateEmbedResponse {
   rating?: number;
   justification?: string;
 }
-export const UpdateEmbedResponse = CreateEmbedResponse as any as S.Schema<UpdateEmbedResponse>;
+const UpdateEmbedResponse = CreateEmbedResponse as any as S.Schema<UpdateEmbedResponse>;
 
 export type CreateEmbedError = HuggingFaceOpError;
 /** Create embed Create SQL Console embed */

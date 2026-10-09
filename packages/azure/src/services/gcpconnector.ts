@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type BigQueryDatasetsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const BigQueryDatasetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
+const BigQueryDatasetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<BigQueryDatasetsCreateOrReplaceRequestTagsMap>;
@@ -23,7 +23,7 @@ export interface DatasetReference {
   /** The ID of the project containing this dataset */
   projectId: string;
 }
-export const DatasetReference = /*@__PURE__*/ S.suspend(() =>
+const DatasetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String,
     projectId: S.String,
@@ -32,7 +32,7 @@ export const DatasetReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The labels associated with this dataset */
 export type GcpBigQueryDatasetPropertiesLabelsMap = { [key: string]: string | undefined };
-export const GcpBigQueryDatasetPropertiesLabelsMap =
+const GcpBigQueryDatasetPropertiesLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GcpBigQueryDatasetPropertiesLabelsMap>;
 
 /** Definition of EncryptionConfiguration */
@@ -40,7 +40,7 @@ export interface EncryptionConfiguration {
   /** Cloud KMS key name used for encryption */
   kmsKeyName?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -55,7 +55,7 @@ export interface TableReference {
   /** The ID of the table */
   tableId: string;
 }
-export const TableReference = /*@__PURE__*/ S.suspend(() =>
+const TableReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String,
     datasetId: S.String,
@@ -65,11 +65,11 @@ export const TableReference = /*@__PURE__*/ S.suspend(() =>
 
 /** DatasetAccessEntry.targetTypes values, as defined by the Google Cloud API. */
 export type TargetTypes = "TARGET_TYPE_UNSPECIFIED" | "VIEWS" | "ROUTINES";
-export const TargetTypes = S.String;
+const TargetTypes = S.String;
 
 /** Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. */
 export type DatasetAccessEntryTargetTypesList = Array<TargetTypes | (string & {})>;
-export const DatasetAccessEntryTargetTypesList = /*@__PURE__*/ S.Array(
+const DatasetAccessEntryTargetTypesList = /*@__PURE__*/ S.Array(
   TargetTypes,
 ) as any as S.Schema<DatasetAccessEntryTargetTypesList>;
 
@@ -80,7 +80,7 @@ export interface DatasetAccessEntry {
   /** Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. */
   targetTypes?: DatasetAccessEntryTargetTypesList;
 }
-export const DatasetAccessEntry = /*@__PURE__*/ S.suspend(() =>
+const DatasetAccessEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(DatasetReference),
     targetTypes: S.optional(DatasetAccessEntryTargetTypesList),
@@ -96,7 +96,7 @@ export interface RoutineReference {
   /** The ID of the routine */
   routineId: string;
 }
-export const RoutineReference = /*@__PURE__*/ S.suspend(() =>
+const RoutineReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String,
     datasetId: S.String,
@@ -115,7 +115,7 @@ export interface Expr {
   /** Optional location of the expression */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     title: S.optional(S.String),
@@ -147,7 +147,7 @@ export interface DatasetAccess {
   /** An IAM Condition for this access entry */
   condition?: Expr;
 }
-export const DatasetAccess = /*@__PURE__*/ S.suspend(() =>
+const DatasetAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     userByEmail: S.optional(S.String),
@@ -164,7 +164,7 @@ export const DatasetAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of objects that define dataset access for one or more entities */
 export type GcpBigQueryDatasetPropertiesAccessList = Array<DatasetAccess>;
-export const GcpBigQueryDatasetPropertiesAccessList = /*@__PURE__*/ S.Array(
+const GcpBigQueryDatasetPropertiesAccessList = /*@__PURE__*/ S.Array(
   DatasetAccess,
 ) as any as S.Schema<GcpBigQueryDatasetPropertiesAccessList>;
 
@@ -173,7 +173,7 @@ export interface LinkedDatasetSource {
   /** Reference to the source dataset */
   sourceDataset?: DatasetReference;
 }
-export const LinkedDatasetSource = /*@__PURE__*/ S.suspend(() =>
+const LinkedDatasetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDataset: S.optional(DatasetReference),
   }),
@@ -184,7 +184,7 @@ export interface LinkedDatasetMetadata {
   /** Status of the linked dataset */
   status?: string;
 }
-export const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
+const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -197,7 +197,7 @@ export interface ExternalDatasetReference {
   /** External source identifier */
   externalSource?: string;
 }
-export const ExternalDatasetReference = /*@__PURE__*/ S.suspend(() =>
+const ExternalDatasetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     externalSource: S.optional(S.String),
@@ -211,7 +211,7 @@ export interface ExternalCatalogDatasetOptions {
   /** The schema name */
   schema?: string;
 }
-export const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
+const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.String),
     schema: S.optional(S.String),
@@ -227,7 +227,7 @@ export interface GcpTag {
   /** Tag value short name */
   value?: string;
 }
-export const GcpTag = /*@__PURE__*/ S.suspend(() =>
+const GcpTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -236,13 +236,13 @@ export const GcpTag = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags associated with this dataset */
 export type GcpBigQueryDatasetPropertiesTagsList = Array<GcpTag>;
-export const GcpBigQueryDatasetPropertiesTagsList = /*@__PURE__*/ S.Array(
+const GcpBigQueryDatasetPropertiesTagsList = /*@__PURE__*/ S.Array(
   GcpTag,
 ) as any as S.Schema<GcpBigQueryDatasetPropertiesTagsList>;
 
 /** The resource tags associated with this dataset */
 export type GcpBigQueryDatasetPropertiesResourceTagsMap = { [key: string]: string | undefined };
-export const GcpBigQueryDatasetPropertiesResourceTagsMap =
+const GcpBigQueryDatasetPropertiesResourceTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GcpBigQueryDatasetPropertiesResourceTagsMap>;
 
 /** Definition of GcpBigQueryDatasetProperties */
@@ -306,7 +306,7 @@ export interface GcpBigQueryDatasetProperties {
   /** The resource tags associated with this dataset */
   resourceTags?: GcpBigQueryDatasetPropertiesResourceTagsMap;
 }
-export const GcpBigQueryDatasetProperties = /*@__PURE__*/ S.suspend(() =>
+const GcpBigQueryDatasetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     etag: S.optional(S.String),
@@ -344,7 +344,7 @@ export const GcpBigQueryDatasetProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** GCP Tags */
 export type BigQueryDatasetPropertiesInputGcpTagsMap = { [key: string]: string | undefined };
-export const BigQueryDatasetPropertiesInputGcpTagsMap =
+const BigQueryDatasetPropertiesInputGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BigQueryDatasetPropertiesInputGcpTagsMap>;
 
 /** Definition of BigQueryDatasetProperties */
@@ -368,7 +368,7 @@ export interface BigQueryDatasetPropertiesInput {
   /** GCP Tags */
   gcpTags?: BigQueryDatasetPropertiesInputGcpTagsMap;
 }
-export const BigQueryDatasetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpBigQueryDatasetProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -398,7 +398,7 @@ export interface BigQueryDatasetsCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetPropertiesInput;
 }
-export const BigQueryDatasetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -420,11 +420,11 @@ export const BigQueryDatasetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -441,7 +441,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -454,12 +454,12 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BigQueryDatasetsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const BigQueryDatasetsCreateOrReplaceResponseTagsMap =
+const BigQueryDatasetsCreateOrReplaceResponseTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BigQueryDatasetsCreateOrReplaceResponseTagsMap>;
 
 /** GCP Tags */
 export type BigQueryDatasetPropertiesGcpTagsMap = { [key: string]: string | undefined };
-export const BigQueryDatasetPropertiesGcpTagsMap =
+const BigQueryDatasetPropertiesGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BigQueryDatasetPropertiesGcpTagsMap>;
 
 /** The provisioning state of a resource. */
@@ -471,7 +471,7 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Definition of BigQueryDatasetProperties */
 export interface BigQueryDatasetProperties {
@@ -496,7 +496,7 @@ export interface BigQueryDatasetProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const BigQueryDatasetProperties = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpBigQueryDatasetProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -529,7 +529,7 @@ export interface BigQueryDatasetsCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetProperties;
 }
-export const BigQueryDatasetsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -545,7 +545,7 @@ export const BigQueryDatasetsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type CloudFunctionsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const CloudFunctionsCreateOrReplaceRequestTagsMap =
+const CloudFunctionsCreateOrReplaceRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<CloudFunctionsCreateOrReplaceRequestTagsMap>;
 
 /** BuildConfig.dockerRegistry values, as defined by the Google Cloud API. */
@@ -553,11 +553,11 @@ export type DockerRegistry =
   | "DOCKER_REGISTRY_UNSPECIFIED"
   | "CONTAINER_REGISTRY"
   | "ARTIFACT_REGISTRY";
-export const DockerRegistry = S.String;
+const DockerRegistry = S.String;
 
 /** User-provided build-time environment variables for the function */
 export type BuildConfigEnvironmentVariablesMap = { [key: string]: string | undefined };
-export const BuildConfigEnvironmentVariablesMap =
+const BuildConfigEnvironmentVariablesMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BuildConfigEnvironmentVariablesMap>;
 
 /** Security patches are only applied when a function is redeployed. */
@@ -565,7 +565,7 @@ export interface OnDeployUpdatePolicy {
   /** Output only. contains the runtime version which was used during latest function deployment. */
   runtimeVersion?: string;
 }
-export const OnDeployUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
+const OnDeployUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtimeVersion: S.optional(S.String),
   }),
@@ -586,7 +586,7 @@ export interface RepoSource {
   /** Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
   tagName?: string;
 }
-export const RepoSource = /*@__PURE__*/ S.suspend(() =>
+const RepoSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branchName: S.optional(S.String),
     commitSha: S.optional(S.String),
@@ -606,7 +606,7 @@ export interface StorageSource {
   /** Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build. */
   object?: string;
 }
-export const StorageSource = /*@__PURE__*/ S.suspend(() =>
+const StorageSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     generation: S.optional(S.String),
@@ -623,7 +623,7 @@ export interface Source {
   /** If provided, get the source from this location in Google Cloud Storage. */
   storageSource?: StorageSource;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitUri: S.optional(S.String),
     repoSource: S.optional(RepoSource),
@@ -640,7 +640,7 @@ export interface SourceProvenance {
   /** A copy of the build's `source.storage_source`, if exists, with any generations resolved. */
   resolvedStorageSource?: StorageSource;
 }
-export const SourceProvenance = /*@__PURE__*/ S.suspend(() =>
+const SourceProvenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitUri: S.optional(S.String),
     resolvedRepoSource: S.optional(RepoSource),
@@ -677,7 +677,7 @@ export interface BuildConfig {
   /** Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project. */
   workerPool?: string;
 }
-export const BuildConfig = /*@__PURE__*/ S.suspend(() =>
+const BuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automaticUpdatePolicy: S.optional(S.Unknown),
     build: S.optional(S.String),
@@ -697,7 +697,7 @@ export const BuildConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** GcpFunctionProperties.environment values, as defined by the Google Cloud API. */
 export type Environment = "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2";
-export const Environment = S.String;
+const Environment = S.String;
 
 /** Filters events based on exact matches on the CloudEvents attributes. */
 export interface EventFilter {
@@ -708,7 +708,7 @@ export interface EventFilter {
   /** Required. The value for the attribute. */
   value?: string;
 }
-export const EventFilter = /*@__PURE__*/ S.suspend(() =>
+const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.optional(S.String),
     operator: S.optional(S.String),
@@ -718,7 +718,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Criteria used to filter events. */
 export type EventTriggerEventFiltersList = Array<EventFilter>;
-export const EventTriggerEventFiltersList = /*@__PURE__*/ S.Array(
+const EventTriggerEventFiltersList = /*@__PURE__*/ S.Array(
   EventFilter,
 ) as any as S.Schema<EventTriggerEventFiltersList>;
 
@@ -727,7 +727,7 @@ export type RetryPolicy =
   | "RETRY_POLICY_UNSPECIFIED"
   | "RETRY_POLICY_DO_NOT_RETRY"
   | "RETRY_POLICY_RETRY";
-export const RetryPolicy = S.String;
+const RetryPolicy = S.String;
 
 /** Describes EventTrigger, used to request events to be sent from another service. */
 export interface EventTrigger {
@@ -750,7 +750,7 @@ export interface EventTrigger {
   /** The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function. */
   triggerRegion?: string;
 }
-export const EventTrigger = /*@__PURE__*/ S.suspend(() =>
+const EventTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String),
     eventFilters: S.optional(EventTriggerEventFiltersList),
@@ -766,12 +766,12 @@ export const EventTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels associated with this Cloud Function. */
 export type GcpFunctionPropertiesLabelsMap = { [key: string]: string | undefined };
-export const GcpFunctionPropertiesLabelsMap =
+const GcpFunctionPropertiesLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GcpFunctionPropertiesLabelsMap>;
 
 /** Environment variables that shall be available during function execution. */
 export type ServiceConfigEnvironmentVariablesMap = { [key: string]: string | undefined };
-export const ServiceConfigEnvironmentVariablesMap =
+const ServiceConfigEnvironmentVariablesMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<ServiceConfigEnvironmentVariablesMap>;
 
 /** ServiceConfig.ingressSettings values, as defined by the Google Cloud API. */
@@ -780,7 +780,7 @@ export type IngressSettings =
   | "ALLOW_ALL"
   | "ALLOW_INTERNAL_ONLY"
   | "ALLOW_INTERNAL_AND_GCLB";
-export const IngressSettings = S.String;
+const IngressSettings = S.String;
 
 /** Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. */
 export interface SecretEnvVar {
@@ -793,7 +793,7 @@ export interface SecretEnvVar {
   /** Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start. */
   version?: string;
 }
-export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
+const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -804,7 +804,7 @@ export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
 
 /** Secret environment variables configuration. */
 export type ServiceConfigSecretEnvironmentVariablesList = Array<SecretEnvVar>;
-export const ServiceConfigSecretEnvironmentVariablesList = /*@__PURE__*/ S.Array(
+const ServiceConfigSecretEnvironmentVariablesList = /*@__PURE__*/ S.Array(
   SecretEnvVar,
 ) as any as S.Schema<ServiceConfigSecretEnvironmentVariablesList>;
 
@@ -815,7 +815,7 @@ export interface SecretVersion {
   /** Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately. */
   version?: string;
 }
-export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
+const SecretVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     version: S.optional(S.String),
@@ -824,7 +824,7 @@ export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point. */
 export type SecretVolumeVersionsList = Array<SecretVersion>;
-export const SecretVolumeVersionsList = /*@__PURE__*/ S.Array(
+const SecretVolumeVersionsList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVolumeVersionsList>;
 
@@ -839,7 +839,7 @@ export interface SecretVolume {
   /** List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point. */
   versions?: SecretVolumeVersionsList;
 }
-export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
+const SecretVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountPath: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -850,20 +850,20 @@ export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** Secret volumes configuration. */
 export type ServiceConfigSecretVolumesList = Array<SecretVolume>;
-export const ServiceConfigSecretVolumesList = /*@__PURE__*/ S.Array(
+const ServiceConfigSecretVolumesList = /*@__PURE__*/ S.Array(
   SecretVolume,
 ) as any as S.Schema<ServiceConfigSecretVolumesList>;
 
 /** ServiceConfig.securityLevel values, as defined by the Google Cloud API. */
 export type SecurityLevel = "SECURITY_LEVEL_UNSPECIFIED" | "SECURE_ALWAYS" | "SECURE_OPTIONAL";
-export const SecurityLevel = S.String;
+const SecurityLevel = S.String;
 
 /** ServiceConfig.vpcConnectorEgressSettings values, as defined by the Google Cloud API. */
 export type VpcConnectorEgressSettings =
   | "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
   | "PRIVATE_RANGES_ONLY"
   | "ALL_TRAFFIC";
-export const VpcConnectorEgressSettings = S.String;
+const VpcConnectorEgressSettings = S.String;
 
 /** Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). */
 export interface ServiceConfig {
@@ -904,7 +904,7 @@ export interface ServiceConfig {
   /** The egress settings for the connector, controlling what traffic is diverted through it. */
   vpcConnectorEgressSettings?: VpcConnectorEgressSettings | (string & {});
 }
-export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allTrafficOnLatestRevision: S.optional(S.Boolean),
     availableCpu: S.optional(S.String),
@@ -937,11 +937,11 @@ export type GcpFunctionState =
   | "UNKNOWN"
   | "DETACHING"
   | "DETACH_FAILED";
-export const GcpFunctionState = S.String;
+const GcpFunctionState = S.String;
 
 /** GoogleCloudFunctionsV2StateMessage.severity values, as defined by the Google Cloud API. */
 export type StateMessageSeverity = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const StateMessageSeverity = S.String;
+const StateMessageSeverity = S.String;
 
 /** Informational messages about the state of the Cloud Function or Operation. */
 export interface GoogleCloudFunctionsV2StateMessage {
@@ -952,7 +952,7 @@ export interface GoogleCloudFunctionsV2StateMessage {
   /** One-word CamelCase type of the state message. */
   type?: string;
 }
-export const GoogleCloudFunctionsV2StateMessage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudFunctionsV2StateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     severity: S.optional(StateMessageSeverity),
@@ -964,7 +964,7 @@ export const GoogleCloudFunctionsV2StateMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** Output only. State Messages for this Cloud Function. */
 export type GcpFunctionPropertiesStateMessagesList = Array<GoogleCloudFunctionsV2StateMessage>;
-export const GcpFunctionPropertiesStateMessagesList = /*@__PURE__*/ S.Array(
+const GcpFunctionPropertiesStateMessagesList = /*@__PURE__*/ S.Array(
   GoogleCloudFunctionsV2StateMessage,
 ) as any as S.Schema<GcpFunctionPropertiesStateMessagesList>;
 
@@ -1001,7 +1001,7 @@ export interface GcpFunctionProperties {
   /** Output only. The deployed url for the function. */
   url?: string;
 }
-export const GcpFunctionProperties = /*@__PURE__*/ S.suspend(() =>
+const GcpFunctionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildConfig: S.optional(BuildConfig),
     createTime: S.optional(S.String),
@@ -1023,7 +1023,7 @@ export const GcpFunctionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** GCP Tags */
 export type FunctionPropertiesInputGcpTagsMap = { [key: string]: string | undefined };
-export const FunctionPropertiesInputGcpTagsMap =
+const FunctionPropertiesInputGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<FunctionPropertiesInputGcpTagsMap>;
 
 /** Definition of FunctionProperties */
@@ -1047,7 +1047,7 @@ export interface FunctionPropertiesInput {
   /** GCP Tags */
   gcpTags?: FunctionPropertiesInputGcpTagsMap;
 }
-export const FunctionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpFunctionProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -1075,7 +1075,7 @@ export interface CloudFunctionsCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: FunctionPropertiesInput;
 }
-export const CloudFunctionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudFunctionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1097,12 +1097,12 @@ export const CloudFunctionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type CloudFunctionsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const CloudFunctionsCreateOrReplaceResponseTagsMap =
+const CloudFunctionsCreateOrReplaceResponseTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<CloudFunctionsCreateOrReplaceResponseTagsMap>;
 
 /** GCP Tags */
 export type FunctionPropertiesGcpTagsMap = { [key: string]: string | undefined };
-export const FunctionPropertiesGcpTagsMap =
+const FunctionPropertiesGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<FunctionPropertiesGcpTagsMap>;
 
 /** Definition of FunctionProperties */
@@ -1128,7 +1128,7 @@ export interface FunctionProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const FunctionProperties = /*@__PURE__*/ S.suspend(() =>
+const FunctionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpFunctionProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -1159,7 +1159,7 @@ export interface CloudFunctionsCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: FunctionProperties;
 }
-export const CloudFunctionsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CloudFunctionsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1184,7 +1184,7 @@ export interface AdvancedMachineFeatures {
   /** The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width. */
   visibleCoreCount?: number;
 }
-export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
+const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableNestedVirtualization: S.optional(S.Boolean),
     enableUefiNetworking: S.optional(S.Boolean),
@@ -1198,7 +1198,7 @@ export interface ConfidentialInstanceConfig {
   /** Defines whether the instance should have confidential compute enabled. */
   enableConfidentialCompute?: boolean;
 }
-export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableConfidentialCompute: S.optional(S.Boolean),
   }),
@@ -1208,7 +1208,7 @@ export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** AttachedDisk.architecture values, as defined by the Google Cloud API. */
 export type Architecture = "ARCHITECTURE_UNSPECIFIED" | "ARM64" | "X86_64";
-export const Architecture = S.String;
+const Architecture = S.String;
 
 /** Customer Encryption Key. */
 export interface CustomerEncryptionKey {
@@ -1223,7 +1223,7 @@ export interface CustomerEncryptionKey {
   /** [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource. */
   sha256?: string;
 }
-export const CustomerEncryptionKey = /*@__PURE__*/ S.suspend(() =>
+const CustomerEncryptionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     kmsKeyServiceAccount: S.optional(S.String),
@@ -1253,14 +1253,14 @@ export type GuestOsFeatureType =
   | "UEFI_COMPATIBLE"
   | "VIRTIO_SCSI_MULTIQUEUE"
   | "WINDOWS";
-export const GuestOsFeatureType = S.String;
+const GuestOsFeatureType = S.String;
 
 /** Guest OS features. */
 export interface GuestOsFeature {
   /** The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features. */
   type?: GuestOsFeatureType | (string & {});
 }
-export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
+const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GuestOsFeatureType),
   }),
@@ -1268,7 +1268,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
 export type AttachedDiskGuestOsFeaturesList = Array<GuestOsFeature>;
-export const AttachedDiskGuestOsFeaturesList = /*@__PURE__*/ S.Array(
+const AttachedDiskGuestOsFeaturesList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<AttachedDiskGuestOsFeaturesList>;
 
@@ -1277,16 +1277,16 @@ export type AttachedDiskInitializeParamsArchitecture =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
   | "X86_64";
-export const AttachedDiskInitializeParamsArchitecture = S.String;
+const AttachedDiskInitializeParamsArchitecture = S.String;
 
 /** Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks. */
 export type AttachedDiskInitializeParamsLabelsMap = { [key: string]: string | undefined };
-export const AttachedDiskInitializeParamsLabelsMap =
+const AttachedDiskInitializeParamsLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<AttachedDiskInitializeParamsLabelsMap>;
 
 /** A list of publicly visible licenses. Reserved for Google's use. */
 export type AttachedDiskInitializeParamsLicensesList = Array<string>;
-export const AttachedDiskInitializeParamsLicensesList = /*@__PURE__*/ S.Array(
+const AttachedDiskInitializeParamsLicensesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AttachedDiskInitializeParamsLicensesList>;
 
@@ -1295,23 +1295,23 @@ export type OnUpdateAction =
   | "RECREATE_DISK"
   | "RECREATE_DISK_IF_SOURCE_CHANGED"
   | "USE_EXISTING_DISK";
-export const OnUpdateAction = S.String;
+const OnUpdateAction = S.String;
 
 /** Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. */
 export type AttachedDiskInitializeParamsReplicaZonesList = Array<string>;
-export const AttachedDiskInitializeParamsReplicaZonesList =
+const AttachedDiskInitializeParamsReplicaZonesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<AttachedDiskInitializeParamsReplicaZonesList>;
 
 /** Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty. */
 export type AttachedDiskInitializeParamsResourceManagerTagsMap = {
   [key: string]: string | undefined;
 };
-export const AttachedDiskInitializeParamsResourceManagerTagsMap =
+const AttachedDiskInitializeParamsResourceManagerTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<AttachedDiskInitializeParamsResourceManagerTagsMap>;
 
 /** Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name. */
 export type AttachedDiskInitializeParamsResourcePoliciesList = Array<string>;
-export const AttachedDiskInitializeParamsResourcePoliciesList =
+const AttachedDiskInitializeParamsResourcePoliciesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<AttachedDiskInitializeParamsResourcePoliciesList>;
 
 /** [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both. */
@@ -1353,7 +1353,7 @@ export interface AttachedDiskInitializeParams {
   /** The customer-supplied encryption key of the source snapshot. */
   sourceSnapshotEncryptionKey?: CustomerEncryptionKey;
 }
-export const AttachedDiskInitializeParams = /*@__PURE__*/ S.suspend(() =>
+const AttachedDiskInitializeParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     architecture: S.optional(AttachedDiskInitializeParamsArchitecture),
     description: S.optional(S.String),
@@ -1380,24 +1380,24 @@ export const AttachedDiskInitializeParams = /*@__PURE__*/ S.suspend(() =>
 
 /** AttachedDisk.interface values, as defined by the Google Cloud API. */
 export type AttachedDiskInterface = "NVME" | "SCSI";
-export const AttachedDiskInterface = S.String;
+const AttachedDiskInterface = S.String;
 
 /** [Output Only] Any valid publicly visible licenses. */
 export type AttachedDiskLicensesList = Array<string>;
-export const AttachedDiskLicensesList =
+const AttachedDiskLicensesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<AttachedDiskLicensesList>;
 
 /** AttachedDisk.mode values, as defined by the Google Cloud API. */
 export type AttachedDiskMode = "READ_ONLY" | "READ_WRITE";
-export const AttachedDiskMode = S.String;
+const AttachedDiskMode = S.String;
 
 /** AttachedDisk.savedState values, as defined by the Google Cloud API. */
 export type SavedState = "DISK_SAVED_STATE_UNSPECIFIED" | "PRESERVED";
-export const SavedState = S.String;
+const SavedState = S.String;
 
 /** FileContentBuffer.fileType values, as defined by the Google Cloud API. */
 export type FileContentBufferFileType = "BIN" | "UNDEFINED" | "X509";
-export const FileContentBufferFileType = S.String;
+const FileContentBufferFileType = S.String;
 
 /** File Content Buffer. */
 export interface FileContentBuffer {
@@ -1406,7 +1406,7 @@ export interface FileContentBuffer {
   /** The file type of source file. */
   fileType?: FileContentBufferFileType | (string & {});
 }
-export const FileContentBuffer = /*@__PURE__*/ S.suspend(() =>
+const FileContentBuffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     fileType: S.optional(FileContentBufferFileType),
@@ -1415,18 +1415,18 @@ export const FileContentBuffer = /*@__PURE__*/ S.suspend(() =>
 
 /** The Key Database (db). */
 export type InitialStateConfigDbsList = Array<FileContentBuffer>;
-export const InitialStateConfigDbsList = /*@__PURE__*/ S.Array(
+const InitialStateConfigDbsList = /*@__PURE__*/ S.Array(
   FileContentBuffer,
 ) as any as S.Schema<InitialStateConfigDbsList>;
 
 /** The forbidden key database (dbx). */
 export type InitialStateConfigDbxsList = Array<FileContentBuffer>;
-export const InitialStateConfigDbxsList =
+const InitialStateConfigDbxsList =
   InitialStateConfigDbsList as any as S.Schema<InitialStateConfigDbxsList>;
 
 /** The Key Exchange Key (KEK). */
 export type InitialStateConfigKeksList = Array<FileContentBuffer>;
-export const InitialStateConfigKeksList =
+const InitialStateConfigKeksList =
   InitialStateConfigDbsList as any as S.Schema<InitialStateConfigKeksList>;
 
 /** Initial State for shielded instance, these are public keys which are safe to store in public */
@@ -1440,7 +1440,7 @@ export interface InitialStateConfig {
   /** The Platform Key (PK). */
   pk?: FileContentBuffer;
 }
-export const InitialStateConfig = /*@__PURE__*/ S.suspend(() =>
+const InitialStateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbs: S.optional(InitialStateConfigDbsList),
     dbxs: S.optional(InitialStateConfigDbxsList),
@@ -1451,7 +1451,7 @@ export const InitialStateConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** AttachedDisk.type values, as defined by the Google Cloud API. */
 export type AttachedDiskType = "PERSISTENT" | "SCRATCH";
-export const AttachedDiskType = S.String;
+const AttachedDiskType = S.String;
 
 /** An instance-attached disk resource. */
 export interface AttachedDisk {
@@ -1492,7 +1492,7 @@ export interface AttachedDisk {
   /** Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. */
   type?: AttachedDiskType | (string & {});
 }
-export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
+const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     architecture: S.optional(Architecture),
     autoDelete: S.optional(S.Boolean),
@@ -1517,7 +1517,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of disks associated with this instance. Persistent disks must be created before you can assign them. */
 export type GcpComputeInstancePropertiesDisksList = Array<AttachedDisk>;
-export const GcpComputeInstancePropertiesDisksList = /*@__PURE__*/ S.Array(
+const GcpComputeInstancePropertiesDisksList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<GcpComputeInstancePropertiesDisksList>;
 
@@ -1526,7 +1526,7 @@ export interface DisplayDevice {
   /** Defines whether the instance has Display enabled. */
   enableDisplay?: boolean;
 }
-export const DisplayDevice = /*@__PURE__*/ S.suspend(() =>
+const DisplayDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableDisplay: S.optional(S.Boolean),
   }),
@@ -1539,7 +1539,7 @@ export interface AcceleratorConfig {
   /** Full or partial URL of the accelerator type resource to attach to this instance. For example: projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template, specify only the accelerator name. See GPUs on Compute Engine for a full list of accelerator types. */
   acceleratorType?: string;
 }
-export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
+const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceleratorCount: S.optional(S.Number),
     acceleratorType: S.optional(S.String),
@@ -1548,28 +1548,26 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the type and count of accelerator cards attached to the instance. */
 export type GcpComputeInstancePropertiesGuestAcceleratorsList = Array<AcceleratorConfig>;
-export const GcpComputeInstancePropertiesGuestAcceleratorsList = /*@__PURE__*/ S.Array(
+const GcpComputeInstancePropertiesGuestAcceleratorsList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<GcpComputeInstancePropertiesGuestAcceleratorsList>;
 
 /** GcpComputeInstanceProperties.keyRevocationActionType values, as defined by the Google Cloud API. */
 export type KeyRevocationActionType = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED" | "NONE" | "STOP";
-export const KeyRevocationActionType = S.String;
+const KeyRevocationActionType = S.String;
 
 /** Labels to apply to this instance. These can be later modified by the setLabels method. */
 export type GcpComputeInstancePropertiesLabelsMap = { [key: string]: string | undefined };
-export const GcpComputeInstancePropertiesLabelsMap =
+const GcpComputeInstancePropertiesLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GcpComputeInstancePropertiesLabelsMap>;
 
 export interface MetadataItemsItem {
   key?: string;
   value?: string;
 }
-export const MetadataItemsItem = GcpTag as any as S.Schema<MetadataItemsItem>;
-
 /** Array of key/value pairs. The total size of all keys and values must be less than 512 KB. */
 export type MetadataItemsList = Array<MetadataItemsItem>;
-export const MetadataItemsList =
+const MetadataItemsList =
   GcpBigQueryDatasetPropertiesTagsList as any as S.Schema<MetadataItemsList>;
 
 /** A metadata key/value entry. */
@@ -1581,7 +1579,7 @@ export interface Metadata {
   /** [Output Only] Type of the resource. Always compute#metadata for metadata. */
   kind?: string;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fingerprint: S.optional(S.String),
     items: S.optional(MetadataItemsList),
@@ -1595,11 +1593,11 @@ export type NetworkTier =
   | "PREMIUM"
   | "STANDARD"
   | "STANDARD_OVERRIDES_FIXED_STANDARD";
-export const NetworkTier = S.String;
+const NetworkTier = S.String;
 
 /** AccessConfig.type values, as defined by the Google Cloud API. */
 export type AccessType = "DIRECT_IPV6" | "ONE_TO_ONE_NAT";
-export const AccessType = S.String;
+const AccessType = S.String;
 
 /** An access configuration attached to an instance's network interface. Only one access config per instance is supported. */
 export interface AccessConfig {
@@ -1624,7 +1622,7 @@ export interface AccessConfig {
   /** The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6. */
   type?: AccessType | (string & {});
 }
-export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
+const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalIpv6: S.optional(S.String),
     externalIpv6PrefixLength: S.optional(S.Number),
@@ -1641,7 +1639,7 @@ export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access. */
 export type NetworkInterfaceAccessConfigsList = Array<AccessConfig>;
-export const NetworkInterfaceAccessConfigsList = /*@__PURE__*/ S.Array(
+const NetworkInterfaceAccessConfigsList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<NetworkInterfaceAccessConfigsList>;
 
@@ -1652,7 +1650,7 @@ export interface AliasIpRange {
   /** The name of a subnetwork secondary IP range from which to allocate an IP alias range. If not specified, the primary range of the subnetwork is used. */
   subnetworkRangeName?: string;
 }
-export const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
+const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipCidrRange: S.optional(S.String),
     subnetworkRangeName: S.optional(S.String),
@@ -1661,18 +1659,18 @@ export const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks. */
 export type NetworkInterfaceAliasIpRangesList = Array<AliasIpRange>;
-export const NetworkInterfaceAliasIpRangesList = /*@__PURE__*/ S.Array(
+const NetworkInterfaceAliasIpRangesList = /*@__PURE__*/ S.Array(
   AliasIpRange,
 ) as any as S.Schema<NetworkInterfaceAliasIpRangesList>;
 
 /** An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access. */
 export type NetworkInterfaceIpv6AccessConfigsList = Array<AccessConfig>;
-export const NetworkInterfaceIpv6AccessConfigsList =
+const NetworkInterfaceIpv6AccessConfigsList =
   NetworkInterfaceAccessConfigsList as any as S.Schema<NetworkInterfaceIpv6AccessConfigsList>;
 
 /** NetworkInterface.ipv6AccessType values, as defined by the Google Cloud API. */
 export type Ipv6AccessType = "EXTERNAL" | "INTERNAL";
-export const Ipv6AccessType = S.String;
+const Ipv6AccessType = S.String;
 
 /** NetworkInterface.nicType values, as defined by the Google Cloud API. */
 export type NetworkInterfaceNicType =
@@ -1682,11 +1680,11 @@ export type NetworkInterfaceNicType =
   | "MRDMA"
   | "UNSPECIFIED_NIC_TYPE"
   | "VIRTIO_NET";
-export const NetworkInterfaceNicType = S.String;
+const NetworkInterfaceNicType = S.String;
 
 /** NetworkInterface.stackType values, as defined by the Google Cloud API. */
 export type NetworkInterfaceStackType = "IPV4_IPV6" | "IPV4_ONLY" | "IPV6_ONLY";
-export const NetworkInterfaceStackType = S.String;
+const NetworkInterfaceStackType = S.String;
 
 /** A network interface resource attached to an instance. */
 export interface NetworkInterface {
@@ -1723,7 +1721,7 @@ export interface NetworkInterface {
   /** The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork */
   subnetwork?: string;
 }
-export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessConfigs: S.optional(NetworkInterfaceAccessConfigsList),
     aliasIpRanges: S.optional(NetworkInterfaceAliasIpRangesList),
@@ -1746,20 +1744,20 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance. */
 export type GcpComputeInstancePropertiesNetworkInterfacesList = Array<NetworkInterface>;
-export const GcpComputeInstancePropertiesNetworkInterfacesList = /*@__PURE__*/ S.Array(
+const GcpComputeInstancePropertiesNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<GcpComputeInstancePropertiesNetworkInterfacesList>;
 
 /** NetworkPerformanceConfig.totalEgressBandwidthTier values, as defined by the Google Cloud API. */
 export type TotalEgressBandwidthTier = "DEFAULT" | "TIER_1";
-export const TotalEgressBandwidthTier = S.String;
+const TotalEgressBandwidthTier = S.String;
 
 /** Network Performance Config. */
 export interface NetworkPerformanceConfig {
   /** Total Egress Bandwidth Tier. */
   totalEgressBandwidthTier?: TotalEgressBandwidthTier | (string & {});
 }
-export const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
+const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalEgressBandwidthTier: S.optional(TotalEgressBandwidthTier),
   }),
@@ -1767,7 +1765,7 @@ export const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty. */
 export type InstanceParamsResourceManagerTagsMap = { [key: string]: string | undefined };
-export const InstanceParamsResourceManagerTagsMap =
+const InstanceParamsResourceManagerTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<InstanceParamsResourceManagerTagsMap>;
 
 /** Additional instance params. */
@@ -1775,7 +1773,7 @@ export interface InstanceParams {
   /** Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: InstanceParamsResourceManagerTagsMap;
 }
-export const InstanceParams = /*@__PURE__*/ S.suspend(() =>
+const InstanceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceManagerTags: S.optional(InstanceParamsResourceManagerTagsMap),
   }),
@@ -1786,7 +1784,7 @@ export type PrivateIpv6GoogleAccess =
   | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
   | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
   | "INHERIT_FROM_SUBNETWORK";
-export const PrivateIpv6GoogleAccess = S.String;
+const PrivateIpv6GoogleAccess = S.String;
 
 /** ReservationAffinity.consumeReservationType values, as defined by the Google Cloud API. */
 export type ConsumeReservationType =
@@ -1794,11 +1792,11 @@ export type ConsumeReservationType =
   | "NO_RESERVATION"
   | "SPECIFIC_RESERVATION"
   | "UNSPECIFIED";
-export const ConsumeReservationType = S.String;
+const ConsumeReservationType = S.String;
 
 /** Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
 export type ReservationAffinityValuesList = Array<string>;
-export const ReservationAffinityValuesList =
+const ReservationAffinityValuesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<ReservationAffinityValuesList>;
 
 /** Specifies the reservations that this instance can consume from. */
@@ -1810,7 +1808,7 @@ export interface ReservationAffinity {
   /** Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
   values?: ReservationAffinityValuesList;
 }
-export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
+const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumeReservationType: S.optional(ConsumeReservationType),
     key: S.optional(S.String),
@@ -1820,16 +1818,16 @@ export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource policies applied to this instance. */
 export type GcpComputeInstancePropertiesResourcePoliciesList = Array<string>;
-export const GcpComputeInstancePropertiesResourcePoliciesList =
+const GcpComputeInstancePropertiesResourcePoliciesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpComputeInstancePropertiesResourcePoliciesList>;
 
 /** UpcomingMaintenance.maintenanceStatus values, as defined by the Google Cloud API. */
 export type MaintenanceStatus = "ONGOING" | "PENDING" | "UNKNOWN";
-export const MaintenanceStatus = S.String;
+const MaintenanceStatus = S.String;
 
 /** UpcomingMaintenance.type values, as defined by the Google Cloud API. */
 export type UpcomingMaintenanceType = "MULTIPLE" | "SCHEDULED" | "UNKNOWN_TYPE" | "UNSCHEDULED";
-export const UpcomingMaintenanceType = S.String;
+const UpcomingMaintenanceType = S.String;
 
 /** Upcoming Maintenance notification information. */
 export interface UpcomingMaintenance {
@@ -1846,7 +1844,7 @@ export interface UpcomingMaintenance {
   /** The current start time of the maintenance window. This timestamp value is in RFC3339 text format. */
   windowStartTime?: string;
 }
-export const UpcomingMaintenance = /*@__PURE__*/ S.suspend(() =>
+const UpcomingMaintenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canReschedule: S.optional(S.Boolean),
     latestWindowStartTime: S.optional(S.String),
@@ -1864,7 +1862,7 @@ export interface ResourceStatus {
   /** Upcoming Maintenance. */
   upcomingMaintenance?: UpcomingMaintenance;
 }
-export const ResourceStatus = /*@__PURE__*/ S.suspend(() =>
+const ResourceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     physicalHost: S.optional(S.String),
     upcomingMaintenance: S.optional(UpcomingMaintenance),
@@ -1876,7 +1874,7 @@ export type InstanceTerminationAction =
   | "DELETE"
   | "INSTANCE_TERMINATION_ACTION_UNSPECIFIED"
   | "STOP";
-export const InstanceTerminationAction = S.String;
+const InstanceTerminationAction = S.String;
 
 /** A Duration represents a fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". Range is approximately 10,000 years. */
 export interface Duration {
@@ -1885,7 +1883,7 @@ export interface Duration {
   /** Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years */
   seconds?: string;
 }
-export const Duration = /*@__PURE__*/ S.suspend(() =>
+const Duration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     seconds: S.optional(S.String),
@@ -1894,11 +1892,11 @@ export const Duration = /*@__PURE__*/ S.suspend(() =>
 
 /** SchedulingNodeAffinity.operator values, as defined by the Google Cloud API. */
 export type SchedulingNodeAffinityOperator = "IN" | "NOT_IN" | "OPERATOR_UNSPECIFIED";
-export const SchedulingNodeAffinityOperator = S.String;
+const SchedulingNodeAffinityOperator = S.String;
 
 /** Corresponds to the label values of Node resource. */
 export type SchedulingNodeAffinityValuesList = Array<string>;
-export const SchedulingNodeAffinityValuesList =
+const SchedulingNodeAffinityValuesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<SchedulingNodeAffinityValuesList>;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. */
@@ -1910,7 +1908,7 @@ export interface SchedulingNodeAffinity {
   /** Corresponds to the label values of Node resource. */
   values?: SchedulingNodeAffinityValuesList;
 }
-export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
+const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     operator: S.optional(SchedulingNodeAffinityOperator),
@@ -1920,17 +1918,17 @@ export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity. */
 export type SchedulingNodeAffinitiesList = Array<SchedulingNodeAffinity>;
-export const SchedulingNodeAffinitiesList = /*@__PURE__*/ S.Array(
+const SchedulingNodeAffinitiesList = /*@__PURE__*/ S.Array(
   SchedulingNodeAffinity,
 ) as any as S.Schema<SchedulingNodeAffinitiesList>;
 
 /** Scheduling.onHostMaintenance values, as defined by the Google Cloud API. */
 export type OnHostMaintenance = "MIGRATE" | "TERMINATE";
-export const OnHostMaintenance = S.String;
+const OnHostMaintenance = S.String;
 
 /** Scheduling.provisioningModel values, as defined by the Google Cloud API. */
 export type ProvisioningModel = "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD";
-export const ProvisioningModel = S.String;
+const ProvisioningModel = S.String;
 
 /** Sets the scheduling options for an Instance. */
 export interface Scheduling {
@@ -1953,7 +1951,7 @@ export interface Scheduling {
   /** Specifies the provisioning model of the instance. */
   provisioningModel?: ProvisioningModel | (string & {});
 }
-export const Scheduling = /*@__PURE__*/ S.suspend(() =>
+const Scheduling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automaticRestart: S.optional(S.Boolean),
     instanceTerminationAction: S.optional(InstanceTerminationAction),
@@ -1969,7 +1967,7 @@ export const Scheduling = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of scopes to be made available for this service account. */
 export type ServiceAccountScopesList = Array<string>;
-export const ServiceAccountScopesList =
+const ServiceAccountScopesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<ServiceAccountScopesList>;
 
 /** A service account. */
@@ -1979,7 +1977,7 @@ export interface ServiceAccount {
   /** The list of scopes to be made available for this service account. */
   scopes?: ServiceAccountScopesList;
 }
-export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     scopes: S.optional(ServiceAccountScopesList),
@@ -1988,7 +1986,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information. */
 export type GcpComputeInstancePropertiesServiceAccountsList = Array<ServiceAccount>;
-export const GcpComputeInstancePropertiesServiceAccountsList = /*@__PURE__*/ S.Array(
+const GcpComputeInstancePropertiesServiceAccountsList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<GcpComputeInstancePropertiesServiceAccountsList>;
 
@@ -2001,7 +1999,7 @@ export interface ShieldedInstanceConfig {
   /** Defines whether the instance has the vTPM enabled. Enabled by default. */
   enableVtpm?: boolean;
 }
-export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableIntegrityMonitoring: S.optional(S.Boolean),
     enableSecureBoot: S.optional(S.Boolean),
@@ -2014,7 +2012,7 @@ export interface ShieldedInstanceIntegrityPolicy {
   /** Updates the integrity policy baseline using the measurements from the VM instance's most recent boot. */
   updateAutoLearnPolicy?: boolean;
 }
-export const ShieldedInstanceIntegrityPolicy = /*@__PURE__*/ S.suspend(() =>
+const ShieldedInstanceIntegrityPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateAutoLearnPolicy: S.optional(S.Boolean),
   }),
@@ -2036,11 +2034,11 @@ export type GcpComputeInstanceStatus =
   | "SUSPENDED"
   | "SUSPENDING"
   | "TERMINATED";
-export const GcpComputeInstanceStatus = S.String;
+const GcpComputeInstanceStatus = S.String;
 
 /** An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035. */
 export type TagsItemsList = Array<string>;
-export const TagsItemsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TagsItemsList>;
+const TagsItemsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TagsItemsList>;
 
 /** A set of instance tags. */
 export interface Tags {
@@ -2049,7 +2047,7 @@ export interface Tags {
   /** An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035. */
   items?: TagsItemsList;
 }
-export const Tags = /*@__PURE__*/ S.suspend(() =>
+const Tags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fingerprint: S.optional(S.String),
     items: S.optional(TagsItemsList),
@@ -2151,7 +2149,7 @@ export interface GcpComputeInstanceProperties {
   /** [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   zone?: string;
 }
-export const GcpComputeInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const GcpComputeInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advancedMachineFeatures: S.optional(AdvancedMachineFeatures),
     canIpForward: S.optional(S.Boolean),
@@ -2206,7 +2204,7 @@ export const GcpComputeInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** GCP Tags */
 export type InstancePropertiesInputGcpTagsMap = { [key: string]: string | undefined };
-export const InstancePropertiesInputGcpTagsMap =
+const InstancePropertiesInputGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<InstancePropertiesInputGcpTagsMap>;
 
 /** Definition of ComputeInstance */
@@ -2230,7 +2228,7 @@ export interface InstancePropertiesInput {
   /** GCP Tags */
   gcpTags?: InstancePropertiesInputGcpTagsMap;
 }
-export const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpComputeInstanceProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -2250,7 +2248,7 @@ export interface ComputeInstancesCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: InstancePropertiesInput;
 }
-export const ComputeInstancesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ComputeInstancesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(InstancePropertiesInput),
@@ -2268,7 +2266,7 @@ export const ComputeInstancesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** GCP Tags */
 export type InstancePropertiesGcpTagsMap = { [key: string]: string | undefined };
-export const InstancePropertiesGcpTagsMap =
+const InstancePropertiesGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<InstancePropertiesGcpTagsMap>;
 
 /** Definition of ComputeInstance */
@@ -2294,7 +2292,7 @@ export interface InstanceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpComputeInstanceProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -2321,7 +2319,7 @@ export interface ComputeInstancesCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
 }
-export const ComputeInstancesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const ComputeInstancesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2338,7 +2336,7 @@ export interface HttpLoadBalancing {
   /** Whether the HTTP Load Balancing addon is disabled */
   disabled?: boolean;
 }
-export const HttpLoadBalancing = /*@__PURE__*/ S.suspend(() =>
+const HttpLoadBalancing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
   }),
@@ -2349,29 +2347,28 @@ export interface HorizontalPodAutoscaling {
   /** Whether the Horizontal Pod Autoscaling addon is disabled */
   disabled?: boolean;
 }
-export const HorizontalPodAutoscaling =
-  HttpLoadBalancing as any as S.Schema<HorizontalPodAutoscaling>;
+const HorizontalPodAutoscaling = HttpLoadBalancing as any as S.Schema<HorizontalPodAutoscaling>;
 
 /** Configuration for the Kubernetes Dashboard addon */
 export interface KubernetesDashboard {
   /** Whether the Kubernetes Dashboard addon is disabled */
   disabled?: boolean;
 }
-export const KubernetesDashboard = HttpLoadBalancing as any as S.Schema<KubernetesDashboard>;
+const KubernetesDashboard = HttpLoadBalancing as any as S.Schema<KubernetesDashboard>;
 
 /** Configuration for the Network Policy addon */
 export interface NetworkPolicyConfig {
   /** Whether the Network Policy addon is disabled */
   disabled?: boolean;
 }
-export const NetworkPolicyConfig = HttpLoadBalancing as any as S.Schema<NetworkPolicyConfig>;
+const NetworkPolicyConfig = HttpLoadBalancing as any as S.Schema<NetworkPolicyConfig>;
 
 /** Load balancer type options for Cloud Run */
 export type CloudRunLoadBalancerType =
   | "LOAD_BALANCER_TYPE_UNSPECIFIED"
   | "LOAD_BALANCER_TYPE_EXTERNAL"
   | "LOAD_BALANCER_TYPE_INTERNAL";
-export const CloudRunLoadBalancerType = S.String;
+const CloudRunLoadBalancerType = S.String;
 
 /** Configuration for the Cloud Run addon */
 export interface CloudRunConfig {
@@ -2380,7 +2377,7 @@ export interface CloudRunConfig {
   /** The load balancer type for Cloud Run */
   loadBalancerType?: CloudRunLoadBalancerType | (string & {});
 }
-export const CloudRunConfig = /*@__PURE__*/ S.suspend(() =>
+const CloudRunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     loadBalancerType: S.optional(CloudRunLoadBalancerType),
@@ -2392,7 +2389,7 @@ export interface DnsCacheConfig {
   /** Whether the DNS Cache addon is enabled */
   enabled?: boolean;
 }
-export const DnsCacheConfig = /*@__PURE__*/ S.suspend(() =>
+const DnsCacheConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -2403,14 +2400,14 @@ export interface ConfigConnectorConfig {
   /** Whether the Config Connector addon is enabled */
   enabled?: boolean;
 }
-export const ConfigConnectorConfig = DnsCacheConfig as any as S.Schema<ConfigConnectorConfig>;
+const ConfigConnectorConfig = DnsCacheConfig as any as S.Schema<ConfigConnectorConfig>;
 
 /** Configuration for the GCE Persistent Disk CSI Driver addon */
 export interface GcePersistentDiskCsiDriverConfig {
   /** Whether the GCE Persistent Disk CSI Driver addon is enabled */
   enabled?: boolean;
 }
-export const GcePersistentDiskCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
+const GcePersistentDiskCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -2423,7 +2420,7 @@ export interface GcpFilestoreCsiDriverConfig {
   /** Whether the GCP Filestore CSI Driver addon is enabled */
   enabled?: boolean;
 }
-export const GcpFilestoreCsiDriverConfig =
+const GcpFilestoreCsiDriverConfig =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<GcpFilestoreCsiDriverConfig>;
 
 /** Configuration for the GKE Backup Agent addon */
@@ -2431,28 +2428,28 @@ export interface GkeBackupAgentConfig {
   /** Whether the GKE Backup Agent addon is enabled */
   enabled?: boolean;
 }
-export const GkeBackupAgentConfig = DnsCacheConfig as any as S.Schema<GkeBackupAgentConfig>;
+const GkeBackupAgentConfig = DnsCacheConfig as any as S.Schema<GkeBackupAgentConfig>;
 
 /** Configuration for the GCS Fuse CSI Driver addon */
 export interface GcsFuseCsiDriverConfig {
   /** Whether the GCS Fuse CSI Driver addon is enabled */
   enabled?: boolean;
 }
-export const GcsFuseCsiDriverConfig = DnsCacheConfig as any as S.Schema<GcsFuseCsiDriverConfig>;
+const GcsFuseCsiDriverConfig = DnsCacheConfig as any as S.Schema<GcsFuseCsiDriverConfig>;
 
 /** Configuration for the Stateful HA addon */
 export interface StatefulHaConfig {
   /** Whether the Stateful HA addon is enabled */
   enabled?: boolean;
 }
-export const StatefulHaConfig = DnsCacheConfig as any as S.Schema<StatefulHaConfig>;
+const StatefulHaConfig = DnsCacheConfig as any as S.Schema<StatefulHaConfig>;
 
 /** Configuration for the Parallelstore CSI Driver addon */
 export interface ParallelstoreCsiDriverConfig {
   /** Whether the Parallelstore CSI Driver addon is enabled */
   enabled?: boolean;
 }
-export const ParallelstoreCsiDriverConfig =
+const ParallelstoreCsiDriverConfig =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<ParallelstoreCsiDriverConfig>;
 
 /** Configuration for Ray cluster logging */
@@ -2460,14 +2457,14 @@ export interface RayClusterLoggingConfig {
   /** Whether Ray cluster logging is enabled */
   enabled?: boolean;
 }
-export const RayClusterLoggingConfig = DnsCacheConfig as any as S.Schema<RayClusterLoggingConfig>;
+const RayClusterLoggingConfig = DnsCacheConfig as any as S.Schema<RayClusterLoggingConfig>;
 
 /** Configuration for Ray cluster monitoring */
 export interface RayClusterMonitoringConfig {
   /** Whether Ray cluster monitoring is enabled */
   enabled?: boolean;
 }
-export const RayClusterMonitoringConfig =
+const RayClusterMonitoringConfig =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<RayClusterMonitoringConfig>;
 
 /** Configuration for the Ray Operator addon */
@@ -2479,7 +2476,7 @@ export interface RayOperatorConfig {
   /** Configuration for Ray monitoring */
   rayClusterMonitoringConfig?: RayClusterMonitoringConfig;
 }
-export const RayOperatorConfig = /*@__PURE__*/ S.suspend(() =>
+const RayOperatorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     rayClusterLoggingConfig: S.optional(RayClusterLoggingConfig),
@@ -2492,7 +2489,7 @@ export interface HighScaleCheckpointingConfig {
   /** Whether the High Scale Checkpointing addon is enabled */
   enabled?: boolean;
 }
-export const HighScaleCheckpointingConfig =
+const HighScaleCheckpointingConfig =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<HighScaleCheckpointingConfig>;
 
 /** Configuration for the Lustre CSI Driver addon */
@@ -2500,7 +2497,7 @@ export interface LustreCsiDriverConfig {
   /** Whether the Lustre CSI Driver addon is enabled */
   enabled?: boolean;
 }
-export const LustreCsiDriverConfig = DnsCacheConfig as any as S.Schema<LustreCsiDriverConfig>;
+const LustreCsiDriverConfig = DnsCacheConfig as any as S.Schema<LustreCsiDriverConfig>;
 
 /** Configuration for the addons that can be automatically enabled */
 export interface AddonsConfig {
@@ -2537,7 +2534,7 @@ export interface AddonsConfig {
   /** Configuration for the Lustre CSI Driver addon */
   lustreCsiDriverConfig?: LustreCsiDriverConfig;
 }
-export const AddonsConfig = /*@__PURE__*/ S.suspend(() =>
+const AddonsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpLoadBalancing: S.optional(HttpLoadBalancing),
     horizontalPodAutoscaling: S.optional(HorizontalPodAutoscaling),
@@ -2565,7 +2562,7 @@ export interface AuthenticatorGroupsConfig {
   /** The name of the security group for the cluster */
   securityGroup?: string;
 }
-export const AuthenticatorGroupsConfig = /*@__PURE__*/ S.suspend(() =>
+const AuthenticatorGroupsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     securityGroup: S.optional(S.String),
@@ -2579,7 +2576,7 @@ export interface Autopilot {
   /** Whether the cluster is an Autopilot cluster */
   enabled?: boolean;
 }
-export const Autopilot = DnsCacheConfig as any as S.Schema<Autopilot>;
+const Autopilot = DnsCacheConfig as any as S.Schema<Autopilot>;
 
 /** ResourceLimit contains resource type and range specification */
 export interface ResourceLimit {
@@ -2590,7 +2587,7 @@ export interface ResourceLimit {
   /** Maximum amount of the resource in the cluster */
   maximum?: string;
 }
-export const ResourceLimit = /*@__PURE__*/ S.suspend(() =>
+const ResourceLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     minimum: S.optional(S.String),
@@ -2600,17 +2597,17 @@ export const ResourceLimit = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains global constraints regarding minimum and maximum amount of resources in the cluster */
 export type ClusterAutoscalingResourceLimitsList = Array<ResourceLimit>;
-export const ClusterAutoscalingResourceLimitsList = /*@__PURE__*/ S.Array(
+const ClusterAutoscalingResourceLimitsList = /*@__PURE__*/ S.Array(
   ResourceLimit,
 ) as any as S.Schema<ClusterAutoscalingResourceLimitsList>;
 
 /** Autoscaling profile options for the cluster autoscaler */
 export type AutoscalingProfile = "PROFILE_UNSPECIFIED" | "OPTIMIZE_UTILIZATION" | "BALANCED";
-export const AutoscalingProfile = S.String;
+const AutoscalingProfile = S.String;
 
 /** Scopes that are used by NAP when creating node pools */
 export type AutoprovisioningNodePoolDefaultsOauthScopesList = Array<string>;
-export const AutoprovisioningNodePoolDefaultsOauthScopesList =
+const AutoprovisioningNodePoolDefaultsOauthScopesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<AutoprovisioningNodePoolDefaultsOauthScopesList>;
 
 /** Upgrade strategy options. */
@@ -2619,7 +2616,7 @@ export type UpgradeStrategy =
   | "BLUE_GREEN"
   | "SURGE"
   | "SHORT_LIVED";
-export const UpgradeStrategy = S.String;
+const UpgradeStrategy = S.String;
 
 /** Standard rollout policy for blue-green upgrades. */
 export interface StandardRolloutPolicy {
@@ -2630,7 +2627,7 @@ export interface StandardRolloutPolicy {
   /** Soak time after each batch gets drained. */
   batchSoakDuration?: string;
 }
-export const StandardRolloutPolicy = /*@__PURE__*/ S.suspend(() =>
+const StandardRolloutPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchNodeCount: S.optional(S.Number),
     batchPercentage: S.optional(S.Number),
@@ -2645,7 +2642,7 @@ export interface BlueGreenSettings {
   /** Standard policy for the blue-green upgrade. */
   standardRolloutPolicy?: StandardRolloutPolicy;
 }
-export const BlueGreenSettings = /*@__PURE__*/ S.suspend(() =>
+const BlueGreenSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodePoolSoakDuration: S.optional(S.String),
     standardRolloutPolicy: S.optional(StandardRolloutPolicy),
@@ -2663,7 +2660,7 @@ export interface UpgradeSettings {
   /** Settings for blue-green upgrade. */
   blueGreenSettings?: BlueGreenSettings;
 }
-export const UpgradeSettings = /*@__PURE__*/ S.suspend(() =>
+const UpgradeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSurge: S.optional(S.Number),
     maxUnavailable: S.optional(S.Number),
@@ -2679,7 +2676,7 @@ export interface NodeManagement {
   /** A flag that specifies whether the node auto-repair is enabled. */
   autoRepair?: boolean;
 }
-export const NodeManagement = /*@__PURE__*/ S.suspend(() =>
+const NodeManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoUpgrade: S.optional(S.Boolean),
     autoRepair: S.optional(S.Boolean),
@@ -2693,7 +2690,7 @@ export interface ShieldedInstanceConfig_2 {
   /** Defines whether the instance has integrity monitoring enabled */
   enableIntegrityMonitoring?: boolean;
 }
-export const ShieldedInstanceConfig_2 = /*@__PURE__*/ S.suspend(() =>
+const ShieldedInstanceConfig_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableSecureBoot: S.optional(S.Boolean),
     enableIntegrityMonitoring: S.optional(S.Boolean),
@@ -2704,12 +2701,12 @@ export const ShieldedInstanceConfig_2 = /*@__PURE__*/ S.suspend(() =>
 export type AutoprovisioningNodePoolDefaultsResourceLabelsMap = {
   [key: string]: string | undefined;
 };
-export const AutoprovisioningNodePoolDefaultsResourceLabelsMap =
+const AutoprovisioningNodePoolDefaultsResourceLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<AutoprovisioningNodePoolDefaultsResourceLabelsMap>;
 
 /** TagKeyId is the namespaced and unique ID of the tag key */
 export type ResourceManagerTagsTagsMap = { [key: string]: string | undefined };
-export const ResourceManagerTagsTagsMap =
+const ResourceManagerTagsTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<ResourceManagerTagsTagsMap>;
 
 /** A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies */
@@ -2717,7 +2714,7 @@ export interface ResourceManagerTags {
   /** TagKeyId is the namespaced and unique ID of the tag key */
   tags?: ResourceManagerTagsTagsMap;
 }
-export const ResourceManagerTags = /*@__PURE__*/ S.suspend(() =>
+const ResourceManagerTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(ResourceManagerTagsTagsMap),
   }),
@@ -2754,7 +2751,7 @@ export interface AutoprovisioningNodePoolDefaults {
   /** Resource manager tags for NAP created node pools */
   resourceManagerTags?: ResourceManagerTags;
 }
-export const AutoprovisioningNodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
+const AutoprovisioningNodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthScopes: S.optional(AutoprovisioningNodePoolDefaultsOauthScopesList),
     serviceAccount: S.optional(S.String),
@@ -2777,7 +2774,7 @@ export const AutoprovisioningNodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP */
 export type ClusterAutoscalingAutoprovisioningLocationsList = Array<string>;
-export const ClusterAutoscalingAutoprovisioningLocationsList =
+const ClusterAutoscalingAutoprovisioningLocationsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<ClusterAutoscalingAutoprovisioningLocationsList>;
 
 /** Compute class options for node pools */
@@ -2787,14 +2784,14 @@ export type ComputeClass =
   | "BALANCED"
   | "ARM64"
   | "MEMORY_OPTIMIZED";
-export const ComputeClass = S.String;
+const ComputeClass = S.String;
 
 /** Default configuration for the Compute Class of the node pool */
 export interface DefaultComputeClassConfig {
   /** The compute class to use for NAP created node pools */
   computeClass?: ComputeClass | (string & {});
 }
-export const DefaultComputeClassConfig = /*@__PURE__*/ S.suspend(() =>
+const DefaultComputeClassConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeClass: S.optional(ComputeClass),
   }),
@@ -2817,7 +2814,7 @@ export interface ClusterAutoscaling {
   /** Default configuration for the Compute Class of the node pool */
   defaultComputeClassConfig?: DefaultComputeClassConfig;
 }
-export const ClusterAutoscaling = /*@__PURE__*/ S.suspend(() =>
+const ClusterAutoscaling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableNodeAutoprovisioning: S.optional(S.Boolean),
     resourceLimits: S.optional(ClusterAutoscalingResourceLimitsList),
@@ -2833,7 +2830,7 @@ export type EvaluationMode =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "DISABLED"
   | "PROJECT_SINGLETON_POLICY_ENFORCE";
-export const EvaluationMode = S.String;
+const EvaluationMode = S.String;
 
 /** Configuration for Binary Authorization */
 export interface BinaryAuthorization {
@@ -2842,7 +2839,7 @@ export interface BinaryAuthorization {
   /** Mode of operation for Binary Authorization policy evaluation */
   evaluationMode?: EvaluationMode | (string & {});
 }
-export const BinaryAuthorization = /*@__PURE__*/ S.suspend(() =>
+const BinaryAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     evaluationMode: S.optional(EvaluationMode),
@@ -2860,7 +2857,7 @@ export type StatusConditionCode =
   | "CA_EXPIRING"
   | "NODE_SERVICE_ACCOUNT_MISSING_PERMISSIONS"
   | "CLOUD_KMS_KEY_DESTROYED";
-export const StatusConditionCode = S.String;
+const StatusConditionCode = S.String;
 
 /** StatusCondition.canonicalCode values, as defined by the Google Cloud API. */
 export type CanonicalCode =
@@ -2881,7 +2878,7 @@ export type CanonicalCode =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
-export const CanonicalCode = S.String;
+const CanonicalCode = S.String;
 
 /** Cluster condition and state */
 export interface StatusCondition {
@@ -2892,7 +2889,7 @@ export interface StatusCondition {
   /** Canonical code of the condition. */
   canonicalCode?: CanonicalCode | (string & {});
 }
-export const StatusCondition = /*@__PURE__*/ S.suspend(() =>
+const StatusCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(StatusConditionCode),
     message: S.optional(S.String),
@@ -2902,7 +2899,7 @@ export const StatusCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** Which conditions caused the current cluster state. */
 export type GcpContainerClusterPropertiesConditionsList = Array<StatusCondition>;
-export const GcpContainerClusterPropertiesConditionsList = /*@__PURE__*/ S.Array(
+const GcpContainerClusterPropertiesConditionsList = /*@__PURE__*/ S.Array(
   StatusCondition,
 ) as any as S.Schema<GcpContainerClusterPropertiesConditionsList>;
 
@@ -2912,7 +2909,7 @@ export type ConfidentialInstanceType =
   | "SEV"
   | "SEV_SNP"
   | "TDX";
-export const ConfidentialInstanceType = S.String;
+const ConfidentialInstanceType = S.String;
 
 /** Configuration of Confidential Nodes */
 export interface ConfidentialNodes {
@@ -2921,7 +2918,7 @@ export interface ConfidentialNodes {
   /** The type of Confidential Compute offering used by the node pool */
   confidentialInstanceType?: ConfidentialInstanceType | (string & {});
 }
-export const ConfidentialNodes = /*@__PURE__*/ S.suspend(() =>
+const ConfidentialNodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     confidentialInstanceType: S.optional(ConfidentialInstanceType),
@@ -2933,7 +2930,7 @@ export interface CostManagementConfig {
   /** Whether the cost management feature is enabled */
   enabled?: boolean;
 }
-export const CostManagementConfig = DnsCacheConfig as any as S.Schema<CostManagementConfig>;
+const CostManagementConfig = DnsCacheConfig as any as S.Schema<CostManagementConfig>;
 
 /** Database encryption state options */
 export type DatabaseEncryptionState =
@@ -2941,16 +2938,16 @@ export type DatabaseEncryptionState =
   | "ENCRYPTED"
   | "DECRYPTED"
   | "ALL_OBJECTS_ENCRYPTION_ENABLED";
-export const DatabaseEncryptionState = S.String;
+const DatabaseEncryptionState = S.String;
 
 /** List of decryption keys used for encryption */
 export type DatabaseEncryptionDecryptionKeysList = Array<string>;
-export const DatabaseEncryptionDecryptionKeysList =
+const DatabaseEncryptionDecryptionKeysList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<DatabaseEncryptionDecryptionKeysList>;
 
 /** Additional details about the error */
 export type OperationErrorDetailsMap = { [key: string]: string | undefined };
-export const OperationErrorDetailsMap =
+const OperationErrorDetailsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<OperationErrorDetailsMap>;
 
 /** Operation error information */
@@ -2964,7 +2961,7 @@ export interface OperationError {
   /** Additional details about the error */
   details?: OperationErrorDetailsMap;
 }
-export const OperationError = /*@__PURE__*/ S.suspend(() =>
+const OperationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -2975,7 +2972,7 @@ export const OperationError = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors that occurred during the last operation */
 export type DatabaseEncryptionLastOperationErrorsList = Array<OperationError>;
-export const DatabaseEncryptionLastOperationErrorsList = /*@__PURE__*/ S.Array(
+const DatabaseEncryptionLastOperationErrorsList = /*@__PURE__*/ S.Array(
   OperationError,
 ) as any as S.Schema<DatabaseEncryptionLastOperationErrorsList>;
 
@@ -2991,7 +2988,7 @@ export type DatabaseEncryptionCurrentState =
   | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ENABLED"
   | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_PENDING"
   | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ERROR";
-export const DatabaseEncryptionCurrentState = S.String;
+const DatabaseEncryptionCurrentState = S.String;
 
 /** Configuration of etcd encryption */
 export interface DatabaseEncryption {
@@ -3006,7 +3003,7 @@ export interface DatabaseEncryption {
   /** Current state of the database encryption */
   currentState?: DatabaseEncryptionCurrentState | (string & {});
 }
-export const DatabaseEncryption = /*@__PURE__*/ S.suspend(() =>
+const DatabaseEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.optional(S.String),
     state: S.optional(DatabaseEncryptionState),
@@ -3021,7 +3018,7 @@ export interface MaxPodsConstraint {
   /** The maximum number of pods that can run on a node */
   maxPodsPerNode?: string;
 }
-export const MaxPodsConstraint = /*@__PURE__*/ S.suspend(() =>
+const MaxPodsConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPodsPerNode: S.optional(S.String),
   }),
@@ -3029,7 +3026,7 @@ export const MaxPodsConstraint = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed Beta APIs */
 export type K8sBetaApiConfigAllowedBetaApisList = Array<string>;
-export const K8sBetaApiConfigAllowedBetaApisList =
+const K8sBetaApiConfigAllowedBetaApisList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<K8sBetaApiConfigAllowedBetaApisList>;
 
 /** Kubernetes Beta API configuration */
@@ -3039,7 +3036,7 @@ export interface K8sBetaApiConfig {
   /** List of allowed Beta APIs */
   allowedBetaApis?: K8sBetaApiConfigAllowedBetaApisList;
 }
-export const K8sBetaApiConfig = /*@__PURE__*/ S.suspend(() =>
+const K8sBetaApiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableBetaApis: S.optional(S.Boolean),
     allowedBetaApis: S.optional(K8sBetaApiConfigAllowedBetaApisList),
@@ -3048,7 +3045,7 @@ export const K8sBetaApiConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** EnterpriseConfig.enterpriseTier values, as defined by the Google Cloud API. */
 export type EnterpriseTier = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
-export const EnterpriseTier = S.String;
+const EnterpriseTier = S.String;
 
 /** Enterprise features configuration */
 export interface EnterpriseConfig {
@@ -3059,7 +3056,7 @@ export interface EnterpriseConfig {
   /** The enterprise tier level */
   enterpriseTier?: EnterpriseTier | (string & {});
 }
-export const EnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableEnterpriseFeatures: S.optional(S.Boolean),
     enterpriseProjectId: S.optional(S.String),
@@ -3072,7 +3069,7 @@ export interface Fleet {
   /** The project number for the fleet host project */
   project?: string;
 }
-export const Fleet = /*@__PURE__*/ S.suspend(() =>
+const Fleet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
   }),
@@ -3083,11 +3080,11 @@ export interface IdentityServiceConfig {
   /** Whether Identity Service is enabled for this cluster */
   enabled?: boolean;
 }
-export const IdentityServiceConfig = DnsCacheConfig as any as S.Schema<IdentityServiceConfig>;
+const IdentityServiceConfig = DnsCacheConfig as any as S.Schema<IdentityServiceConfig>;
 
 /** Deprecated. Use node_pools.instance_group_urls. */
 export type GcpContainerClusterPropertiesInstanceGroupUrlsList = Array<string>;
-export const GcpContainerClusterPropertiesInstanceGroupUrlsList =
+const GcpContainerClusterPropertiesInstanceGroupUrlsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpContainerClusterPropertiesInstanceGroupUrlsList>;
 
 /** Information for additional pod range. */
@@ -3097,7 +3094,7 @@ export interface RangeInfo {
   /** The utilization of the range. */
   utilization?: number;
 }
-export const RangeInfo = /*@__PURE__*/ S.suspend(() =>
+const RangeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rangeName: S.optional(S.String),
     utilization: S.optional(S.Number),
@@ -3106,13 +3103,13 @@ export const RangeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Output only. [Output only] Information for additional pod range. */
 export type AdditionalPodRangesConfigPodRangeInfoList = Array<RangeInfo>;
-export const AdditionalPodRangesConfigPodRangeInfoList = /*@__PURE__*/ S.Array(
+const AdditionalPodRangesConfigPodRangeInfoList = /*@__PURE__*/ S.Array(
   RangeInfo,
 ) as any as S.Schema<AdditionalPodRangesConfigPodRangeInfoList>;
 
 /** Name for pod secondary ipv4 range which has the actual range defined ahead. */
 export type AdditionalPodRangesConfigPodRangeNamesList = Array<string>;
-export const AdditionalPodRangesConfigPodRangeNamesList =
+const AdditionalPodRangesConfigPodRangeNamesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<AdditionalPodRangesConfigPodRangeNamesList>;
 
 /** AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message. */
@@ -3122,7 +3119,7 @@ export interface AdditionalPodRangesConfig {
   /** Name for pod secondary ipv4 range which has the actual range defined ahead. */
   podRangeNames?: AdditionalPodRangesConfigPodRangeNamesList;
 }
-export const AdditionalPodRangesConfig = /*@__PURE__*/ S.suspend(() =>
+const AdditionalPodRangesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     podRangeInfo: S.optional(AdditionalPodRangesConfigPodRangeInfoList),
     podRangeNames: S.optional(AdditionalPodRangesConfigPodRangeNamesList),
@@ -3133,14 +3130,14 @@ export const AdditionalPodRangesConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** IPv6 access type options for the cluster */
 export type IPv6AccessType = "IPV6_ACCESS_TYPE_UNSPECIFIED" | "INTERNAL" | "EXTERNAL";
-export const IPv6AccessType = S.String;
+const IPv6AccessType = S.String;
 
 /** Configuration for pod CIDR overprovision. */
 export interface PodCidrOverprovisionConfig {
   /** Whether to disable pod CIDR overprovision. */
   disable?: boolean;
 }
-export const PodCidrOverprovisionConfig = /*@__PURE__*/ S.suspend(() =>
+const PodCidrOverprovisionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disable: S.optional(S.Boolean),
   }),
@@ -3150,7 +3147,7 @@ export const PodCidrOverprovisionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** IP stack type options for the cluster */
 export type StackType = "STACK_TYPE_UNSPECIFIED" | "IPV4" | "IPV4_IPV6";
-export const StackType = S.String;
+const StackType = S.String;
 
 /** Configuration for controlling how IPs are allocated in the cluster. */
 export interface IpAllocationPolicy {
@@ -3195,7 +3192,7 @@ export interface IpAllocationPolicy {
   /** Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode */
   useRoutes?: boolean;
 }
-export const IpAllocationPolicy = /*@__PURE__*/ S.suspend(() =>
+const IpAllocationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalPodRangesConfig: S.optional(AdditionalPodRangesConfig),
     clusterIpv4Cidr: S.optional(S.String),
@@ -3227,7 +3224,7 @@ export interface LegacyAbac {
   /** The provider of the legacy ABAC authorization mode */
   provider?: string;
 }
-export const LegacyAbac = /*@__PURE__*/ S.suspend(() =>
+const LegacyAbac = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     provider: S.optional(S.String),
@@ -3236,7 +3233,7 @@ export const LegacyAbac = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed. */
 export type GcpContainerClusterPropertiesLocationsList = Array<string>;
-export const GcpContainerClusterPropertiesLocationsList =
+const GcpContainerClusterPropertiesLocationsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpContainerClusterPropertiesLocationsList>;
 
 /** LoggingComponentConfig.enableComponents values, as defined by the Google Cloud API. */
@@ -3251,11 +3248,9 @@ export type EnableComponents =
   | "KCP_CONNECTION"
   | "KCP_HPA"
   | "KCP_VPA";
-export const EnableComponents = S.String;
-
 /** Select components to collect logs. An empty set would disable all logging. */
 export type LoggingComponentConfigEnableComponentsList = Array<EnableComponents | (string & {})>;
-export const LoggingComponentConfigEnableComponentsList =
+const LoggingComponentConfigEnableComponentsList =
   DatasetAccessEntryTargetTypesList as any as S.Schema<LoggingComponentConfigEnableComponentsList>;
 
 /** LoggingComponentConfig is cluster logging component configuration */
@@ -3263,7 +3258,7 @@ export interface LoggingComponentConfig {
   /** Select components to collect logs. An empty set would disable all logging. */
   enableComponents?: LoggingComponentConfigEnableComponentsList;
 }
-export const LoggingComponentConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingComponentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableComponents: S.optional(LoggingComponentConfigEnableComponentsList),
   }),
@@ -3274,7 +3269,7 @@ export interface LoggingConfig {
   /** Logging components configuration */
   componentConfig?: LoggingComponentConfig;
 }
-export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     componentConfig: S.optional(LoggingComponentConfig),
   }),
@@ -3287,7 +3282,7 @@ export interface DailyMaintenanceWindow {
   /** Duration of the maintenance window */
   duration?: string;
 }
-export const DailyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const DailyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     duration: S.optional(S.String),
@@ -3301,7 +3296,7 @@ export interface TimeWindow {
   /** The end time of the time window */
   endTime?: string;
 }
-export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
+const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -3315,7 +3310,7 @@ export interface RecurringTimeWindow {
   /** An RRULE for how this window recurs */
   recurrence?: string;
 }
-export const RecurringTimeWindow = /*@__PURE__*/ S.suspend(() =>
+const RecurringTimeWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window: S.optional(TimeWindow),
     recurrence: S.optional(S.String),
@@ -3327,14 +3322,14 @@ export type MaintenanceExclusionScope =
   | "NO_UPGRADES"
   | "NO_MINOR_UPGRADES"
   | "NO_MINOR_OR_NODE_UPGRADES";
-export const MaintenanceExclusionScope = S.String;
+const MaintenanceExclusionScope = S.String;
 
 /** Options for maintenance exclusions */
 export interface MaintenanceExclusionOptions {
   /** The scope of automatic upgrades to restrict */
   scope?: MaintenanceExclusionScope | (string & {});
 }
-export const MaintenanceExclusionOptions = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceExclusionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(MaintenanceExclusionScope),
   }),
@@ -3349,7 +3344,7 @@ export interface MaintenanceExclusion {
   /** The scope of the exclusion */
   exclusionOptions?: MaintenanceExclusionOptions;
 }
-export const MaintenanceExclusion = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceExclusion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window: S.optional(TimeWindow),
     exclusionOptions: S.optional(MaintenanceExclusionOptions),
@@ -3360,7 +3355,7 @@ export const MaintenanceExclusion = /*@__PURE__*/ S.suspend(() =>
 export type MaintenanceWindowMaintenanceExclusionsMap = {
   [key: string]: MaintenanceExclusion | undefined;
 };
-export const MaintenanceWindowMaintenanceExclusionsMap = /*@__PURE__*/ S.Record(
+const MaintenanceWindowMaintenanceExclusionsMap = /*@__PURE__*/ S.Record(
   S.String,
   MaintenanceExclusion,
 ) as any as S.Schema<MaintenanceWindowMaintenanceExclusionsMap>;
@@ -3374,7 +3369,7 @@ export interface MaintenanceWindow {
   /** Exceptions to maintenance window */
   maintenanceExclusions?: MaintenanceWindowMaintenanceExclusionsMap;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dailyMaintenanceWindow: S.optional(DailyMaintenanceWindow),
     recurringWindow: S.optional(RecurringTimeWindow),
@@ -3389,7 +3384,7 @@ export interface MaintenancePolicy {
   /** A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally undo intermediate changes */
   resourceVersion?: string;
 }
-export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
+const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window: S.optional(MaintenanceWindow),
     resourceVersion: S.optional(S.String),
@@ -3401,7 +3396,7 @@ export interface ClientCertificateConfig {
   /** Issue a client certificate. */
   issueClientCertificate?: boolean;
 }
-export const ClientCertificateConfig = /*@__PURE__*/ S.suspend(() =>
+const ClientCertificateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueClientCertificate: S.optional(S.Boolean),
   }),
@@ -3422,7 +3417,7 @@ export interface MasterAuth {
   /** Base64-encoded private key used by clients to authenticate to the cluster endpoint. */
   clientKey?: string;
 }
-export const MasterAuth = /*@__PURE__*/ S.suspend(() =>
+const MasterAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3440,7 +3435,7 @@ export interface CidrBlock {
   /** The CIDR block in IPv4 or IPv6 format */
   cidrBlock?: string;
 }
-export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
+const CidrBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     cidrBlock: S.optional(S.String),
@@ -3449,7 +3444,7 @@ export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
 
 /** External networks that can access Kubernetes master through HTTPS */
 export type MasterAuthorizedNetworksConfigCidrBlocksList = Array<CidrBlock>;
-export const MasterAuthorizedNetworksConfigCidrBlocksList = /*@__PURE__*/ S.Array(
+const MasterAuthorizedNetworksConfigCidrBlocksList = /*@__PURE__*/ S.Array(
   CidrBlock,
 ) as any as S.Schema<MasterAuthorizedNetworksConfigCidrBlocksList>;
 
@@ -3464,7 +3459,7 @@ export interface MasterAuthorizedNetworksConfig {
   /** Whether private endpoint enforcement is enabled */
   privateEndpointEnforcementEnabled?: boolean;
 }
-export const MasterAuthorizedNetworksConfig = /*@__PURE__*/ S.suspend(() =>
+const MasterAuthorizedNetworksConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     cidrBlocks: S.optional(MasterAuthorizedNetworksConfigCidrBlocksList),
@@ -3480,7 +3475,7 @@ export interface MeshCertificates {
   /** Whether to enable certificates for service mesh */
   enableCertificates?: boolean;
 }
-export const MeshCertificates = /*@__PURE__*/ S.suspend(() =>
+const MeshCertificates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableCertificates: S.optional(S.Boolean),
   }),
@@ -3503,13 +3498,11 @@ export type MonitoringComponentEnableComponents =
   | "KUBELET"
   | "DCGM"
   | "JOBSET";
-export const MonitoringComponentEnableComponents = S.String;
-
 /** Select components to collect metrics. An empty set would disable all monitoring. */
 export type MonitoringComponentConfigEnableComponentsList = Array<
   MonitoringComponentEnableComponents | (string & {})
 >;
-export const MonitoringComponentConfigEnableComponentsList =
+const MonitoringComponentConfigEnableComponentsList =
   DatasetAccessEntryTargetTypesList as any as S.Schema<MonitoringComponentConfigEnableComponentsList>;
 
 /** MonitoringComponentConfig is cluster monitoring component configuration */
@@ -3517,7 +3510,7 @@ export interface MonitoringComponentConfig {
   /** Select components to collect metrics. An empty set would disable all monitoring. */
   enableComponents?: MonitoringComponentConfigEnableComponentsList;
 }
-export const MonitoringComponentConfig = /*@__PURE__*/ S.suspend(() =>
+const MonitoringComponentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableComponents: S.optional(MonitoringComponentConfigEnableComponentsList),
   }),
@@ -3530,7 +3523,7 @@ export interface MonitoringConfig {
   /** Monitoring components configuration */
   componentConfig?: MonitoringComponentConfig;
 }
-export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
+const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     componentConfig: S.optional(MonitoringComponentConfig),
   }),
@@ -3541,14 +3534,14 @@ export interface DefaultSnatStatus {
   /** Whether SNAT is disabled */
   disabled?: boolean;
 }
-export const DefaultSnatStatus = HttpLoadBalancing as any as S.Schema<DefaultSnatStatus>;
+const DefaultSnatStatus = HttpLoadBalancing as any as S.Schema<DefaultSnatStatus>;
 
 /** Datapath provider options */
 export type DatapathProvider =
   | "DATAPATH_PROVIDER_UNSPECIFIED"
   | "LEGACY_DATAPATH"
   | "ADVANCED_DATAPATH";
-export const DatapathProvider = S.String;
+const DatapathProvider = S.String;
 
 /** Private IPv6 Google Access options */
 export type PrivateIPv6GoogleAccess =
@@ -3556,15 +3549,15 @@ export type PrivateIPv6GoogleAccess =
   | "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"
   | "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"
   | "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL";
-export const PrivateIPv6GoogleAccess = S.String;
+const PrivateIPv6GoogleAccess = S.String;
 
 /** DnsConfig.dnsScope values, as defined by the Google Cloud API. */
 export type DnsScope = "DNS_SCOPE_UNSPECIFIED" | "CLUSTER_SCOPE" | "VPC_SCOPE";
-export const DnsScope = S.String;
+const DnsScope = S.String;
 
 /** Additional DNS search domains */
 export type DnsConfigAdditionalDnsSearchDomainsList = Array<string>;
-export const DnsConfigAdditionalDnsSearchDomainsList =
+const DnsConfigAdditionalDnsSearchDomainsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<DnsConfigAdditionalDnsSearchDomainsList>;
 
 /** DNS configuration for the cluster */
@@ -3576,7 +3569,7 @@ export interface DnsConfig {
   /** Additional DNS search domains */
   additionalDnsSearchDomains?: DnsConfigAdditionalDnsSearchDomainsList;
 }
-export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
+const DnsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsScope: S.optional(DnsScope),
     customDnsEndpoint: S.optional(S.String),
@@ -3589,7 +3582,7 @@ export interface ServiceExternalIpsConfig {
   /** Whether Services with ExternalIPs field are allowed or not. */
   enabled?: boolean;
 }
-export const ServiceExternalIpsConfig = DnsCacheConfig as any as S.Schema<ServiceExternalIpsConfig>;
+const ServiceExternalIpsConfig = DnsCacheConfig as any as S.Schema<ServiceExternalIpsConfig>;
 
 /** GatewayApiConfig.channel values, as defined by the Google Cloud API. */
 export type GatewayApiChannel =
@@ -3597,14 +3590,14 @@ export type GatewayApiChannel =
   | "CHANNEL_DISABLED"
   | "CHANNEL_EXPERIMENTAL"
   | "CHANNEL_STANDARD";
-export const GatewayApiChannel = S.String;
+const GatewayApiChannel = S.String;
 
 /** Gateway API configuration */
 export interface GatewayApiConfig {
   /** The Gateway API release channel to subscribe to */
   channel?: GatewayApiChannel | (string & {});
 }
-export const GatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
+const GatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(GatewayApiChannel),
   }),
@@ -3612,14 +3605,14 @@ export const GatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** ClusterNetworkPerformanceConfig.totalEgressBandwidthTier values, as defined by the Google Cloud API. */
 export type TotalEgressBandwidthTier_2 = "TIER_UNSPECIFIED" | "TIER_1";
-export const TotalEgressBandwidthTier_2 = S.String;
+const TotalEgressBandwidthTier_2 = S.String;
 
 /** Network performance configuration for the cluster */
 export interface ClusterNetworkPerformanceConfig {
   /** Total egress bandwidth tier for the cluster */
   totalEgressBandwidthTier?: TotalEgressBandwidthTier_2 | (string & {});
 }
-export const ClusterNetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ClusterNetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalEgressBandwidthTier: S.optional(TotalEgressBandwidthTier_2),
   }),
@@ -3632,7 +3625,7 @@ export type InTransitEncryptionConfig =
   | "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
   | "IN_TRANSIT_ENCRYPTION_DISABLED"
   | "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT";
-export const InTransitEncryptionConfig = S.String;
+const InTransitEncryptionConfig = S.String;
 
 /** NetworkConfig reports the relative names of network & subnetwork */
 export interface NetworkConfig {
@@ -3671,7 +3664,7 @@ export interface NetworkConfig {
   /** Whether to disable L4 load balancer firewall reconciliation */
   disableL4LbFirewallReconciliation?: boolean;
 }
-export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     subnetwork: S.optional(S.String),
@@ -3695,7 +3688,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** NetworkPolicy.provider values, as defined by the Google Cloud API. */
 export type NetworkPolicyProvider = "PROVIDER_UNSPECIFIED" | "CALICO";
-export const NetworkPolicyProvider = S.String;
+const NetworkPolicyProvider = S.String;
 
 /** Configuration options for the NetworkPolicy feature */
 export interface NetworkPolicy {
@@ -3704,7 +3697,7 @@ export interface NetworkPolicy {
   /** The selected network policy provider */
   provider?: NetworkPolicyProvider | (string & {});
 }
-export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
+const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     provider: S.optional(NetworkPolicyProvider),
@@ -3713,7 +3706,7 @@ export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** GpuSharingConfig.gpuSharingStrategy values, as defined by the Google Cloud API. */
 export type GpuSharingStrategy = "GPU_SHARING_STRATEGY_UNSPECIFIED" | "TIME_SHARING" | "MPS";
-export const GpuSharingStrategy = S.String;
+const GpuSharingStrategy = S.String;
 
 /** GpuSharingConfig represents the GPU sharing configuration for Hardware Accelerators */
 export interface GpuSharingConfig {
@@ -3722,7 +3715,7 @@ export interface GpuSharingConfig {
   /** The max number of containers that can share a physical GPU */
   maxSharedClientsPerGpu?: string;
 }
-export const GpuSharingConfig = /*@__PURE__*/ S.suspend(() =>
+const GpuSharingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpuSharingStrategy: S.optional(GpuSharingStrategy),
     maxSharedClientsPerGpu: S.optional(S.String),
@@ -3735,14 +3728,14 @@ export type GpuDriverVersion =
   | "INSTALLATION_DISABLED"
   | "DEFAULT"
   | "LATEST";
-export const GpuDriverVersion = S.String;
+const GpuDriverVersion = S.String;
 
 /** GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed */
 export interface GpuDriverInstallationConfig {
   /** Mode for how the GPU driver is installed */
   gpuDriverVersion?: GpuDriverVersion | (string & {});
 }
-export const GpuDriverInstallationConfig = /*@__PURE__*/ S.suspend(() =>
+const GpuDriverInstallationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpuDriverVersion: S.optional(GpuDriverVersion),
   }),
@@ -3763,7 +3756,7 @@ export interface AcceleratorConfig_2 {
   /** The configuration for auto-installing GPU driver */
   gpuDriverInstallationConfig?: GpuDriverInstallationConfig;
 }
-export const AcceleratorConfig_2 = /*@__PURE__*/ S.suspend(() =>
+const AcceleratorConfig_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceleratorCount: S.optional(S.String),
     acceleratorType: S.optional(S.String),
@@ -3775,7 +3768,7 @@ export const AcceleratorConfig_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs. */
 export type NodeConfigAcceleratorsList = Array<AcceleratorConfig_2>;
-export const NodeConfigAcceleratorsList = /*@__PURE__*/ S.Array(
+const NodeConfigAcceleratorsList = /*@__PURE__*/ S.Array(
   AcceleratorConfig_2,
 ) as any as S.Schema<NodeConfigAcceleratorsList>;
 
@@ -3786,7 +3779,7 @@ export interface AdvancedMachineFeatures_2 {
   /** Whether or not to enable nested virtualization */
   enableNestedVirtualization?: boolean;
 }
-export const AdvancedMachineFeatures_2 = /*@__PURE__*/ S.suspend(() =>
+const AdvancedMachineFeatures_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threadsPerCore: S.optional(S.String),
     enableNestedVirtualization: S.optional(S.Boolean),
@@ -3800,7 +3793,7 @@ export interface EphemeralStorageLocalSsdConfig {
   /** Number of local SSD disks to use to back ephemeral storage */
   localSsdCount?: number;
 }
-export const EphemeralStorageLocalSsdConfig = /*@__PURE__*/ S.suspend(() =>
+const EphemeralStorageLocalSsdConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localSsdCount: S.optional(S.Number),
   }),
@@ -3813,21 +3806,21 @@ export interface FastSocket {
   /** Whether or not NCCL Fast Socket is enabled */
   enabled?: boolean;
 }
-export const FastSocket = DnsCacheConfig as any as S.Schema<FastSocket>;
+const FastSocket = DnsCacheConfig as any as S.Schema<FastSocket>;
 
 /** Google Container File System (image streaming) configs */
 export interface GcfsConfig {
   /** Whether to use GCFS or not */
   enabled?: boolean;
 }
-export const GcfsConfig = DnsCacheConfig as any as S.Schema<GcfsConfig>;
+const GcfsConfig = DnsCacheConfig as any as S.Schema<GcfsConfig>;
 
 /** Configuration of gVNIC feature */
 export interface VirtualNic {
   /** Whether gVNIC features are enabled in the node pool */
   enabled?: boolean;
 }
-export const VirtualNic = DnsCacheConfig as any as S.Schema<VirtualNic>;
+const VirtualNic = DnsCacheConfig as any as S.Schema<VirtualNic>;
 
 /** Node kubelet configs */
 export interface NodeKubeletConfig {
@@ -3842,7 +3835,7 @@ export interface NodeKubeletConfig {
   /** Set flag to enable/disable the logs verbosity for the node */
   insecureKubeletReadonlyPortEnabled?: boolean;
 }
-export const NodeKubeletConfig = /*@__PURE__*/ S.suspend(() =>
+const NodeKubeletConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuManagerPolicy: S.optional(S.String),
     cpuCfsQuota: S.optional(S.Boolean),
@@ -3854,17 +3847,17 @@ export const NodeKubeletConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ */
 export type NodeConfigLabelsMap = { [key: string]: string | undefined };
-export const NodeConfigLabelsMap =
+const NodeConfigLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<NodeConfigLabelsMap>;
 
 /** The Linux kernel parameters to be applied to the nodes and all pods running on the nodes */
 export type LinuxNodeConfigSysctlsMap = { [key: string]: string | undefined };
-export const LinuxNodeConfigSysctlsMap =
+const LinuxNodeConfigSysctlsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<LinuxNodeConfigSysctlsMap>;
 
 /** LinuxNodeConfig.cgroupMode values, as defined by the Google Cloud API. */
 export type CgroupMode = "CGROUP_MODE_UNSPECIFIED" | "CGROUP_MODE_V1" | "CGROUP_MODE_V2";
-export const CgroupMode = S.String;
+const CgroupMode = S.String;
 
 /** Parameters that can be configured on Linux nodes */
 export interface LinuxNodeConfig {
@@ -3873,7 +3866,7 @@ export interface LinuxNodeConfig {
   /** cgroup_mode specifies the cgroup mode to be used on the node */
   cgroupMode?: CgroupMode | (string & {});
 }
-export const LinuxNodeConfig = /*@__PURE__*/ S.suspend(() =>
+const LinuxNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sysctls: S.optional(LinuxNodeConfigSysctlsMap),
     cgroupMode: S.optional(CgroupMode),
@@ -3885,7 +3878,7 @@ export interface LocalNvmeSsdBlockConfig {
   /** Number of raw-block local NVMe SSD disks to be attached to the node */
   localSsdCount?: number;
 }
-export const LocalNvmeSsdBlockConfig = /*@__PURE__*/ S.suspend(() =>
+const LocalNvmeSsdBlockConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localSsdCount: S.optional(S.Number),
   }),
@@ -3893,14 +3886,14 @@ export const LocalNvmeSsdBlockConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** LoggingVariantConfig.variant values, as defined by the Google Cloud API. */
 export type LoggingVariantVariant = "VARIANT_UNSPECIFIED" | "DEFAULT" | "MAX_THROUGHPUT";
-export const LoggingVariantVariant = S.String;
+const LoggingVariantVariant = S.String;
 
 /** LoggingVariantConfig specifies the behaviour of the logging agent */
 export interface LoggingVariantConfig {
   /** Logging variant deployed on nodes */
   variant?: LoggingVariantVariant | (string & {});
 }
-export const LoggingVariantConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingVariantConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variant: S.optional(LoggingVariantVariant),
   }),
@@ -3911,7 +3904,7 @@ export interface NodePoolLoggingConfig {
   /** Logging variant configuration */
   variantConfig?: LoggingVariantConfig;
 }
-export const NodePoolLoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const NodePoolLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variantConfig: S.optional(LoggingVariantConfig),
   }),
@@ -3919,12 +3912,12 @@ export const NodePoolLoggingConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - \"cluster-location\" - \"cluster-name\" - \"cluster-uid\" - \"configure-sh\" - \"containerd-configure-sh\" - \"enable-os-login\" - \"gci-ensure-gke-docker\" - \"gci-metrics-enabled\" - \"gci-update-strategy\" - \"instance-template\" - \"kube-env\" - \"startup-script\" - \"user-data\" - \"disable-address-manager\" - \"windows-startup-script-ps1\" - \"common-psm1\" - \"k8s-node-setup-psm1\" - \"install-ssh-psm1\" - \"user-profile-psm1\" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB. */
 export type NodeConfigMetadataMap = { [key: string]: string | undefined };
-export const NodeConfigMetadataMap =
+const NodeConfigMetadataMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<NodeConfigMetadataMap>;
 
 /** The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added. */
 export type NodeConfigOauthScopesList = Array<string>;
-export const NodeConfigOauthScopesList =
+const NodeConfigOauthScopesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<NodeConfigOauthScopesList>;
 
 /** ReservationAffinity.consumeReservationType values, as defined by the Google Cloud API. */
@@ -3934,11 +3927,11 @@ export type ConsumeReservationType_2 =
   | "ANY_RESERVATION"
   | "SPECIFIC_RESERVATION"
   | "ANY_RESERVATION_THEN_FAIL";
-export const ConsumeReservationType_2 = S.String;
+const ConsumeReservationType_2 = S.String;
 
 /** Corresponds to the label value(s) of reservation resource(s) */
 export type ReservationAffinityValuesList_2 = Array<string>;
-export const ReservationAffinityValuesList_2 =
+const ReservationAffinityValuesList_2 =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<ReservationAffinityValuesList_2>;
 
 /** ReservationAffinity is the configuration of desired reservation which instances could take capacity from */
@@ -3950,7 +3943,7 @@ export interface ReservationAffinity_2 {
   /** Corresponds to the label value(s) of reservation resource(s) */
   values?: ReservationAffinityValuesList_2;
 }
-export const ReservationAffinity_2 = /*@__PURE__*/ S.suspend(() =>
+const ReservationAffinity_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumeReservationType: S.optional(ConsumeReservationType_2),
     key: S.optional(S.String),
@@ -3960,23 +3953,21 @@ export const ReservationAffinity_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource labels for the node pool to use to annotate any related Google Compute Engine resources. */
 export type NodeConfigResourceLabelsMap = { [key: string]: string | undefined };
-export const NodeConfigResourceLabelsMap =
+const NodeConfigResourceLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<NodeConfigResourceLabelsMap>;
 
 /** SandboxConfig.type values, as defined by the Google Cloud API. */
 export type SandboxType = "UNSPECIFIED" | "GVISOR";
-export const SandboxType = S.String;
-
 /** SandboxConfig contains configurations of the sandbox to use for the node */
 export interface SandboxConfig {
   /** Type of the sandbox to use for the node */
   type?: SandboxType | (string & {});
 }
-export const SandboxConfig = GuestOsFeature as any as S.Schema<SandboxConfig>;
+const SandboxConfig = GuestOsFeature as any as S.Schema<SandboxConfig>;
 
 /** SecondaryBootDisk.mode values, as defined by the Google Cloud API. */
 export type SecondaryBootDiskMode = "MODE_UNSPECIFIED" | "CONTAINER_IMAGE_CACHE";
-export const SecondaryBootDiskMode = S.String;
+const SecondaryBootDiskMode = S.String;
 
 /** SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode */
 export interface SecondaryBootDisk {
@@ -3985,7 +3976,7 @@ export interface SecondaryBootDisk {
   /** Disk boot mode */
   mode?: SecondaryBootDiskMode | (string & {});
 }
-export const SecondaryBootDisk = /*@__PURE__*/ S.suspend(() =>
+const SecondaryBootDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskImage: S.optional(S.String),
     mode: S.optional(SecondaryBootDiskMode),
@@ -3994,17 +3985,17 @@ export const SecondaryBootDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** List of secondary boot disks attached to the nodes. */
 export type NodeConfigSecondaryBootDisksList = Array<SecondaryBootDisk>;
-export const NodeConfigSecondaryBootDisksList = /*@__PURE__*/ S.Array(
+const NodeConfigSecondaryBootDisksList = /*@__PURE__*/ S.Array(
   SecondaryBootDisk,
 ) as any as S.Schema<NodeConfigSecondaryBootDisksList>;
 
 /** NodeAffinity.operator values, as defined by the Google Cloud API. */
 export type NodeAffinityOperator = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
-export const NodeAffinityOperator = S.String;
+const NodeAffinityOperator = S.String;
 
 /** Values for NodeAffinity */
 export type NodeAffinityValuesList = Array<string>;
-export const NodeAffinityValuesList =
+const NodeAffinityValuesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<NodeAffinityValuesList>;
 
 /** Specifies the NodeAffinity key, values, and affinity operator according to shared sole tenant node group affinities */
@@ -4016,7 +4007,7 @@ export interface NodeAffinity {
   /** Values for NodeAffinity */
   values?: NodeAffinityValuesList;
 }
-export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
+const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     operator: S.optional(NodeAffinityOperator),
@@ -4026,7 +4017,7 @@ export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
 
 /** List of node affinities associated with the sole tenant node pool */
 export type SoleTenantConfigNodeAffinitiesList = Array<NodeAffinity>;
-export const SoleTenantConfigNodeAffinitiesList = /*@__PURE__*/ S.Array(
+const SoleTenantConfigNodeAffinitiesList = /*@__PURE__*/ S.Array(
   NodeAffinity,
 ) as any as S.Schema<SoleTenantConfigNodeAffinitiesList>;
 
@@ -4035,7 +4026,7 @@ export interface SoleTenantConfig {
   /** List of node affinities associated with the sole tenant node pool */
   nodeAffinities?: SoleTenantConfigNodeAffinitiesList;
 }
-export const SoleTenantConfig = /*@__PURE__*/ S.suspend(() =>
+const SoleTenantConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeAffinities: S.optional(SoleTenantConfigNodeAffinitiesList),
   }),
@@ -4043,7 +4034,7 @@ export const SoleTenantConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035. */
 export type NodeConfigTagsList = Array<string>;
-export const NodeConfigTagsList =
+const NodeConfigTagsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<NodeConfigTagsList>;
 
 /** NodeTaint.effect values, as defined by the Google Cloud API. */
@@ -4052,7 +4043,7 @@ export type NodeTaintEffect =
   | "NO_SCHEDULE"
   | "PREFER_NO_SCHEDULE"
   | "NO_EXECUTE";
-export const NodeTaintEffect = S.String;
+const NodeTaintEffect = S.String;
 
 /** Kubernetes taint is composed of three fields: key, value, and effect */
 export interface NodeTaint {
@@ -4063,7 +4054,7 @@ export interface NodeTaint {
   /** Effect for taint */
   effect?: NodeTaintEffect | (string & {});
 }
-export const NodeTaint = /*@__PURE__*/ S.suspend(() =>
+const NodeTaint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -4073,7 +4064,7 @@ export const NodeTaint = /*@__PURE__*/ S.suspend(() =>
 
 /** List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/ */
 export type NodeConfigTaintsList = Array<NodeTaint>;
-export const NodeConfigTaintsList = /*@__PURE__*/ S.Array(
+const NodeConfigTaintsList = /*@__PURE__*/ S.Array(
   NodeTaint,
 ) as any as S.Schema<NodeConfigTaintsList>;
 
@@ -4082,14 +4073,14 @@ export type WindowsNodeOsVersion =
   | "OS_VERSION_UNSPECIFIED"
   | "OS_VERSION_LTSC2019"
   | "OS_VERSION_LTSC2022";
-export const WindowsNodeOsVersion = S.String;
+const WindowsNodeOsVersion = S.String;
 
 /** Parameters that can be configured on Windows nodes */
 export interface WindowsNodeConfig {
   /** OSVersion specifies the Windows node config to be used on the node */
   osVersion?: WindowsNodeOsVersion | (string & {});
 }
-export const WindowsNodeConfig = /*@__PURE__*/ S.suspend(() =>
+const WindowsNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osVersion: S.optional(WindowsNodeOsVersion),
   }),
@@ -4097,14 +4088,14 @@ export const WindowsNodeConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** WorkloadMetadataConfig.mode values, as defined by the Google Cloud API. */
 export type WorkloadMetadataMode = "MODE_UNSPECIFIED" | "GCE_METADATA" | "GKE_METADATA";
-export const WorkloadMetadataMode = S.String;
+const WorkloadMetadataMode = S.String;
 
 /** WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool */
 export interface WorkloadMetadataConfig {
   /** Mode is the configuration for how to expose metadata to workloads running on the node pool */
   mode?: WorkloadMetadataMode | (string & {});
 }
-export const WorkloadMetadataConfig = /*@__PURE__*/ S.suspend(() =>
+const WorkloadMetadataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(WorkloadMetadataMode),
   }),
@@ -4187,7 +4178,7 @@ export interface NodeConfig {
   /** The workload metadata configuration for this node. */
   workloadMetadataConfig?: WorkloadMetadataConfig;
 }
-export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
+const NodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accelerators: S.optional(NodeConfigAcceleratorsList),
     advancedMachineFeatures: S.optional(AdvancedMachineFeatures_2),
@@ -4231,7 +4222,7 @@ export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of network tags */
 export type NetworkTagsTagsList = Array<string>;
-export const NetworkTagsTagsList =
+const NetworkTagsTagsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<NetworkTagsTagsList>;
 
 /** The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035. */
@@ -4239,7 +4230,7 @@ export interface NetworkTags {
   /** List of network tags */
   tags?: NetworkTagsTagsList;
 }
-export const NetworkTags = /*@__PURE__*/ S.suspend(() =>
+const NetworkTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(NetworkTagsTagsList),
   }),
@@ -4252,7 +4243,7 @@ export interface NodePoolAutoConfig {
   /** Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. */
   resourceManagerTags?: ResourceManagerTags;
 }
-export const NodePoolAutoConfig = /*@__PURE__*/ S.suspend(() =>
+const NodePoolAutoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkTags: S.optional(NetworkTags),
     resourceManagerTags: S.optional(ResourceManagerTags),
@@ -4264,7 +4255,7 @@ export interface NodeConfigDefaults {
   /** GCFS (Google Container File System, also known as Riptide) options. */
   gcfsConfig?: GcfsConfig;
 }
-export const NodeConfigDefaults = /*@__PURE__*/ S.suspend(() =>
+const NodeConfigDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcfsConfig: S.optional(GcfsConfig),
   }),
@@ -4275,7 +4266,7 @@ export interface NodePoolDefaults {
   /** Subset of NodeConfig message that has defaults. */
   nodeConfigDefaults?: NodeConfigDefaults;
 }
-export const NodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
+const NodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeConfigDefaults: S.optional(NodeConfigDefaults),
   }),
@@ -4283,7 +4274,7 @@ export const NodePoolDefaults = /*@__PURE__*/ S.suspend(() =>
 
 /** Location policy options used when scaling up a nodepool. */
 export type LocationPolicy = "LOCATION_POLICY_UNSPECIFIED" | "BALANCED" | "ANY";
-export const LocationPolicy = S.String;
+const LocationPolicy = S.String;
 
 /** NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage. */
 export interface NodePoolAutoscaling {
@@ -4302,7 +4293,7 @@ export interface NodePoolAutoscaling {
   /** Minimum number of nodes in the node pool. Must be greater than 1 less than total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields. */
   totalMinNodeCount?: number;
 }
-export const NodePoolAutoscaling = /*@__PURE__*/ S.suspend(() =>
+const NodePoolAutoscaling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoprovisioned: S.optional(S.Boolean),
     enabled: S.optional(S.Boolean),
@@ -4321,7 +4312,7 @@ export interface BestEffortProvisioning {
   /** Minimum number of nodes to be provisioned. */
   minProvisionNodes?: number;
 }
-export const BestEffortProvisioning = /*@__PURE__*/ S.suspend(() =>
+const BestEffortProvisioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     minProvisionNodes: S.optional(S.Number),
@@ -4330,17 +4321,17 @@ export const BestEffortProvisioning = /*@__PURE__*/ S.suspend(() =>
 
 /** Which conditions caused the current node pool state. */
 export type NodePoolConditionsList = Array<StatusCondition>;
-export const NodePoolConditionsList =
+const NodePoolConditionsList =
   GcpContainerClusterPropertiesConditionsList as any as S.Schema<NodePoolConditionsList>;
 
 /** [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources. */
 export type NodePoolInstanceGroupUrlsList = Array<string>;
-export const NodePoolInstanceGroupUrlsList =
+const NodePoolInstanceGroupUrlsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<NodePoolInstanceGroupUrlsList>;
 
 /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed. */
 export type NodePoolLocationsList = Array<string>;
-export const NodePoolLocationsList =
+const NodePoolLocationsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<NodePoolLocationsList>;
 
 /** Configuration for additional node network interfaces. */
@@ -4350,7 +4341,7 @@ export interface AdditionalNodeNetworkConfig {
   /** Name of the subnetwork where the additional interface belongs. */
   subnetwork?: string;
 }
-export const AdditionalNodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const AdditionalNodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     subnetwork: S.optional(S.String),
@@ -4361,7 +4352,7 @@ export const AdditionalNodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration of additional node network interfaces. */
 export type NodeNetworkConfigAdditionalNodeNetworkConfigsList = Array<AdditionalNodeNetworkConfig>;
-export const NodeNetworkConfigAdditionalNodeNetworkConfigsList = /*@__PURE__*/ S.Array(
+const NodeNetworkConfigAdditionalNodeNetworkConfigsList = /*@__PURE__*/ S.Array(
   AdditionalNodeNetworkConfig,
 ) as any as S.Schema<NodeNetworkConfigAdditionalNodeNetworkConfigsList>;
 
@@ -4374,7 +4365,7 @@ export interface AdditionalPodNetworkConfig {
   /** The maximum number of pods per node which use this pod network. */
   maxPodsPerNode?: MaxPodsConstraint;
 }
-export const AdditionalPodNetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const AdditionalPodNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetwork: S.optional(S.String),
     secondaryPodRange: S.optional(S.String),
@@ -4386,7 +4377,7 @@ export const AdditionalPodNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration of additional pod network interfaces. */
 export type NodeNetworkConfigAdditionalPodNetworkConfigsList = Array<AdditionalPodNetworkConfig>;
-export const NodeNetworkConfigAdditionalPodNetworkConfigsList = /*@__PURE__*/ S.Array(
+const NodeNetworkConfigAdditionalPodNetworkConfigsList = /*@__PURE__*/ S.Array(
   AdditionalPodNetworkConfig,
 ) as any as S.Schema<NodeNetworkConfigAdditionalPodNetworkConfigsList>;
 
@@ -4407,7 +4398,7 @@ export interface NodeNetworkConfig {
   /** Whether to enable private nodes. */
   enablePrivateNodes?: boolean;
 }
-export const NodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const NodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createPodRange: S.optional(S.Boolean),
     podRange: S.optional(S.String),
@@ -4421,7 +4412,7 @@ export const NodeNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Placement type options. */
 export type PlacementType = "TYPE_UNSPECIFIED" | "COMPACT";
-export const PlacementType = S.String;
+const PlacementType = S.String;
 
 /** Specifies the node placement policy. */
 export interface PlacementPolicy {
@@ -4432,7 +4423,7 @@ export interface PlacementPolicy {
   /** If set, refers to the name of a custom resource policy supplied by the user. */
   policyName?: string;
 }
-export const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
+const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PlacementType),
     tpuTopology: S.optional(S.String),
@@ -4445,7 +4436,7 @@ export interface QueuedProvisioning {
   /** Denotes that this nodepool is QRM specific. */
   enabled?: boolean;
 }
-export const QueuedProvisioning = DnsCacheConfig as any as S.Schema<QueuedProvisioning>;
+const QueuedProvisioning = DnsCacheConfig as any as S.Schema<QueuedProvisioning>;
 
 /** Node pool status options. */
 export type NodePoolStatus =
@@ -4456,7 +4447,7 @@ export type NodePoolStatus =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR";
-export const NodePoolStatus = S.String;
+const NodePoolStatus = S.String;
 
 /** Blue-green upgrade phase options. */
 export type BlueGreenPhase =
@@ -4468,16 +4459,16 @@ export type BlueGreenPhase =
   | "NODE_POOL_SOAKING"
   | "DELETING_BLUE_POOL"
   | "ROLLBACK_STARTED";
-export const BlueGreenPhase = S.String;
+const BlueGreenPhase = S.String;
 
 /** The resource URLs of the managed instance groups associated with blue pool. */
 export type BlueGreenInfoBlueInstanceGroupUrlsList = Array<string>;
-export const BlueGreenInfoBlueInstanceGroupUrlsList =
+const BlueGreenInfoBlueInstanceGroupUrlsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<BlueGreenInfoBlueInstanceGroupUrlsList>;
 
 /** The resource URLs of the managed instance groups associated with green pool. */
 export type BlueGreenInfoGreenInstanceGroupUrlsList = Array<string>;
-export const BlueGreenInfoGreenInstanceGroupUrlsList =
+const BlueGreenInfoGreenInstanceGroupUrlsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<BlueGreenInfoGreenInstanceGroupUrlsList>;
 
 /** Information about a blue-green upgrade. */
@@ -4493,7 +4484,7 @@ export interface BlueGreenInfo {
   /** The resource name of the green pool. */
   greenPoolVersion?: string;
 }
-export const BlueGreenInfo = /*@__PURE__*/ S.suspend(() =>
+const BlueGreenInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: S.optional(BlueGreenPhase),
     blueInstanceGroupUrls: S.optional(BlueGreenInfoBlueInstanceGroupUrlsList),
@@ -4508,7 +4499,7 @@ export interface UpdateInfo {
   /** Information about a blue-green upgrade. */
   blueGreenInfo?: BlueGreenInfo;
 }
-export const UpdateInfo = /*@__PURE__*/ S.suspend(() =>
+const UpdateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueGreenInfo: S.optional(BlueGreenInfo),
   }),
@@ -4559,7 +4550,7 @@ export interface NodePool {
   /** The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version). */
   version?: string;
 }
-export const NodePool = /*@__PURE__*/ S.suspend(() =>
+const NodePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoscaling: S.optional(NodePoolAutoscaling),
     bestEffortProvisioning: S.optional(BestEffortProvisioning),
@@ -4587,7 +4578,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
 
 /** The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified. */
 export type GcpContainerClusterPropertiesNodePoolsList = Array<NodePool>;
-export const GcpContainerClusterPropertiesNodePoolsList = /*@__PURE__*/ S.Array(
+const GcpContainerClusterPropertiesNodePoolsList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<GcpContainerClusterPropertiesNodePoolsList>;
 
@@ -4598,11 +4589,9 @@ export type FilterEventType =
   | "UPGRADE_EVENT"
   | "SECURITY_BULLETIN_EVENT"
   | "UPGRADE_INFO_EVENT";
-export const FilterEventType = S.String;
-
 /** Event types to include in the filter */
 export type FilterEventTypeList = Array<FilterEventType | (string & {})>;
-export const FilterEventTypeList =
+const FilterEventTypeList =
   DatasetAccessEntryTargetTypesList as any as S.Schema<FilterEventTypeList>;
 
 /** Filter configuration for notifications */
@@ -4610,7 +4599,7 @@ export interface Filter {
   /** Event types to include in the filter */
   eventType?: FilterEventTypeList;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventType: S.optional(FilterEventTypeList),
   }),
@@ -4625,7 +4614,7 @@ export interface PubSub {
   /** Filter configuration for notifications */
   filter?: Filter;
 }
-export const PubSub = /*@__PURE__*/ S.suspend(() =>
+const PubSub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     topic: S.optional(S.String),
@@ -4638,7 +4627,7 @@ export interface NotificationConfig {
   /** Configuration for Pub/Sub notifications */
   pubsub?: PubSub;
 }
-export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsub: S.optional(PubSub),
   }),
@@ -4651,7 +4640,7 @@ export interface ParentProductConfig {
   /** The project ID where the parent product is deployed */
   projectId?: string;
 }
-export const ParentProductConfig = /*@__PURE__*/ S.suspend(() =>
+const ParentProductConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -4663,7 +4652,7 @@ export interface PrivateClusterMasterGlobalAccessConfig {
   /** Whether the cluster master is accessible globally or not */
   enabled?: boolean;
 }
-export const PrivateClusterMasterGlobalAccessConfig =
+const PrivateClusterMasterGlobalAccessConfig =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<PrivateClusterMasterGlobalAccessConfig>;
 
 /** Configuration for private clusters */
@@ -4685,7 +4674,7 @@ export interface PrivateClusterConfig {
   /** Subnet to provision the master's private endpoint during cluster creation */
   privateEndpointSubnetwork?: string;
 }
-export const PrivateClusterConfig = /*@__PURE__*/ S.suspend(() =>
+const PrivateClusterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enablePrivateNodes: S.optional(S.Boolean),
     enablePrivateEndpoint: S.optional(S.Boolean),
@@ -4700,18 +4689,16 @@ export const PrivateClusterConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** ReleaseChannel.channel values, as defined by the Google Cloud API. */
 export type ReleaseChannelChannel = "UNSPECIFIED" | "RAPID" | "REGULAR" | "STABLE" | "EXTENDED";
-export const ReleaseChannelChannel = S.String;
-
 /** ReleaseChannel indicates which release channel a cluster is subscribed to */
 export interface ReleaseChannel {
   /** The release channel the cluster is subscribed to */
   channel?: ReleaseChannelChannel | (string & {});
 }
-export const ReleaseChannel = GatewayApiConfig as any as S.Schema<ReleaseChannel>;
+const ReleaseChannel = GatewayApiConfig as any as S.Schema<ReleaseChannel>;
 
 /** The resource labels for the cluster to use to annotate any related Google Compute Engine resources. */
 export type GcpContainerClusterPropertiesResourceLabelsMap = { [key: string]: string | undefined };
-export const GcpContainerClusterPropertiesResourceLabelsMap =
+const GcpContainerClusterPropertiesResourceLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GcpContainerClusterPropertiesResourceLabelsMap>;
 
 /** Configuration for BigQuery destination */
@@ -4719,7 +4706,7 @@ export interface BigQueryDestination {
   /** The BigQuery dataset ID */
   datasetId?: string;
 }
-export const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
   }),
@@ -4730,7 +4717,7 @@ export interface ConsumptionMeteringConfig {
   /** Whether consumption metering is enabled */
   enabled?: boolean;
 }
-export const ConsumptionMeteringConfig =
+const ConsumptionMeteringConfig =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<ConsumptionMeteringConfig>;
 
 /** Configuration for exporting cluster resource usage */
@@ -4742,7 +4729,7 @@ export interface ResourceUsageExportConfig {
   /** Configuration to enable resource consumption metering */
   consumptionMeteringConfig?: ConsumptionMeteringConfig;
 }
-export const ResourceUsageExportConfig = /*@__PURE__*/ S.suspend(() =>
+const ResourceUsageExportConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(BigQueryDestination),
     enableNetworkEgressMetering: S.optional(S.Boolean),
@@ -4754,22 +4741,19 @@ export const ResourceUsageExportConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** SecurityPostureConfig.mode values, as defined by the Google Cloud API. */
 export type SecurityPostureMode = "MODE_UNSPECIFIED" | "DISABLED" | "BASIC" | "ENTERPRISE";
-export const SecurityPostureMode = S.String;
-
 /** Security posture configuration */
 export interface SecurityPostureConfig {
   /** Mode of the security posture */
   mode?: SecurityPostureMode | (string & {});
 }
-export const SecurityPostureConfig =
-  WorkloadMetadataConfig as any as S.Schema<SecurityPostureConfig>;
+const SecurityPostureConfig = WorkloadMetadataConfig as any as S.Schema<SecurityPostureConfig>;
 
 /** Configuration of Shielded Nodes */
 export interface ShieldedNodes {
   /** Whether Shielded Nodes features are enabled on all nodes in this cluster */
   enabled?: boolean;
 }
-export const ShieldedNodes = DnsCacheConfig as any as S.Schema<ShieldedNodes>;
+const ShieldedNodes = DnsCacheConfig as any as S.Schema<ShieldedNodes>;
 
 /** Cluster status options. */
 export type ClusterStatus =
@@ -4780,21 +4764,21 @@ export type ClusterStatus =
   | "STOPPING"
   | "ERROR"
   | "DEGRADED";
-export const ClusterStatus = S.String;
+const ClusterStatus = S.String;
 
 /** Vertical Pod Autoscaling configuration */
 export interface VerticalPodAutoscaling {
   /** Enables vertical pod autoscaling */
   enabled?: boolean;
 }
-export const VerticalPodAutoscaling = DnsCacheConfig as any as S.Schema<VerticalPodAutoscaling>;
+const VerticalPodAutoscaling = DnsCacheConfig as any as S.Schema<VerticalPodAutoscaling>;
 
 /** Configuration for the use of Kubernetes Service Accounts in GCP IAM policies */
 export interface WorkloadIdentityConfig {
   /** The workload pool to attach all Kubernetes service accounts to */
   workloadPool?: string;
 }
-export const WorkloadIdentityConfig = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadPool: S.optional(S.String),
   }),
@@ -4939,7 +4923,7 @@ export interface GcpContainerClusterProperties {
   /** [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead. */
   zone?: string;
 }
-export const GcpContainerClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const GcpContainerClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addonsConfig: S.optional(AddonsConfig),
     authenticatorGroupsConfig: S.optional(AuthenticatorGroupsConfig),
@@ -5016,7 +5000,7 @@ export const GcpContainerClusterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** GCP Tags */
 export type ClusterPropertiesInputGcpTagsMap = { [key: string]: string | undefined };
-export const ClusterPropertiesInputGcpTagsMap =
+const ClusterPropertiesInputGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<ClusterPropertiesInputGcpTagsMap>;
 
 /** Definition of ContainerCluster */
@@ -5040,7 +5024,7 @@ export interface ClusterPropertiesInput {
   /** GCP Tags */
   gcpTags?: ClusterPropertiesInputGcpTagsMap;
 }
-export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpContainerClusterProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -5060,7 +5044,7 @@ export interface ContainerClustersCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: ClusterPropertiesInput;
 }
-export const ContainerClustersCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerClustersCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(ClusterPropertiesInput),
@@ -5078,7 +5062,7 @@ export const ContainerClustersCreateOrReplaceRequest = /*@__PURE__*/ S.suspend((
 
 /** GCP Tags */
 export type ClusterPropertiesGcpTagsMap = { [key: string]: string | undefined };
-export const ClusterPropertiesGcpTagsMap =
+const ClusterPropertiesGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<ClusterPropertiesGcpTagsMap>;
 
 /** Definition of ContainerCluster */
@@ -5104,7 +5088,7 @@ export interface ClusterProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpContainerClusterProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -5131,7 +5115,7 @@ export interface ContainerClustersCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
 }
-export const ContainerClustersCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainerClustersCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5151,7 +5135,7 @@ export interface DeleteBigQueryDatasetRequest {
   /** Name of BigQueryDataset */
   name: string;
 }
-export const DeleteBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5169,7 +5153,7 @@ export const DeleteBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBigQueryDatasetRequest>;
 
 export interface DeleteBigQueryDatasetResponse {}
-export const DeleteBigQueryDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBigQueryDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBigQueryDatasetResponse",
 }) as any as S.Schema<DeleteBigQueryDatasetResponse>;
 
@@ -5181,7 +5165,7 @@ export interface DeleteCloudFunctionRequest {
   /** Name of CloudFunction */
   name: string;
 }
-export const DeleteCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5199,14 +5183,14 @@ export const DeleteCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudFunctionRequest>;
 
 export interface DeleteCloudFunctionResponse {}
-export const DeleteCloudFunctionResponse =
+const DeleteCloudFunctionResponse =
   DeleteBigQueryDatasetResponse as any as S.Schema<DeleteCloudFunctionResponse>;
 
 export interface DeleteComputeInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const DeleteComputeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteComputeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -5222,14 +5206,14 @@ export const DeleteComputeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteComputeInstanceRequest>;
 
 export interface DeleteComputeInstanceResponse {}
-export const DeleteComputeInstanceResponse =
+const DeleteComputeInstanceResponse =
   DeleteBigQueryDatasetResponse as any as S.Schema<DeleteComputeInstanceResponse>;
 
 export interface DeleteContainerClusterRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const DeleteContainerClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContainerClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -5245,7 +5229,7 @@ export const DeleteContainerClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContainerClusterRequest>;
 
 export interface DeleteContainerClusterResponse {}
-export const DeleteContainerClusterResponse =
+const DeleteContainerClusterResponse =
   DeleteBigQueryDatasetResponse as any as S.Schema<DeleteContainerClusterResponse>;
 
 export interface DeleteSQLAdminInstanceRequest {
@@ -5256,7 +5240,7 @@ export interface DeleteSQLAdminInstanceRequest {
   /** Name of SQLAdminInstance */
   name: string;
 }
-export const DeleteSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5274,7 +5258,7 @@ export const DeleteSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSQLAdminInstanceRequest>;
 
 export interface DeleteSQLAdminInstanceResponse {}
-export const DeleteSQLAdminInstanceResponse =
+const DeleteSQLAdminInstanceResponse =
   DeleteBigQueryDatasetResponse as any as S.Schema<DeleteSQLAdminInstanceResponse>;
 
 export interface DeleteStorageBucketRequest {
@@ -5285,7 +5269,7 @@ export interface DeleteStorageBucketRequest {
   /** Name of StorageBucket */
   name: string;
 }
-export const DeleteStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5303,7 +5287,7 @@ export const DeleteStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageBucketRequest>;
 
 export interface DeleteStorageBucketResponse {}
-export const DeleteStorageBucketResponse =
+const DeleteStorageBucketResponse =
   DeleteBigQueryDatasetResponse as any as S.Schema<DeleteStorageBucketResponse>;
 
 export interface GetBigQueryDatasetRequest {
@@ -5314,7 +5298,7 @@ export interface GetBigQueryDatasetRequest {
   /** Name of BigQueryDataset */
   name: string;
 }
-export const GetBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5333,9 +5317,6 @@ export const GetBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBigQueryDatasetResponseTagsMap = { [key: string]: string | undefined };
-export const GetBigQueryDatasetResponseTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GetBigQueryDatasetResponseTagsMap>;
-
 export interface GetBigQueryDatasetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5352,7 +5333,7 @@ export interface GetBigQueryDatasetResponse {
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetProperties;
 }
-export const GetBigQueryDatasetResponse =
+const GetBigQueryDatasetResponse =
   BigQueryDatasetsCreateOrReplaceResponse as any as S.Schema<GetBigQueryDatasetResponse>;
 
 export interface GetCloudFunctionRequest {
@@ -5363,7 +5344,7 @@ export interface GetCloudFunctionRequest {
   /** Name of CloudFunction */
   name: string;
 }
-export const GetCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5380,7 +5361,7 @@ export const GetCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCloudFunctionResponseTagsMap = { [key: string]: string | undefined };
-export const GetCloudFunctionResponseTagsMap =
+const GetCloudFunctionResponseTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GetCloudFunctionResponseTagsMap>;
 
 export interface GetCloudFunctionResponse {
@@ -5399,7 +5380,7 @@ export interface GetCloudFunctionResponse {
   /** The resource-specific properties for this resource. */
   properties?: FunctionProperties;
 }
-export const GetCloudFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloudFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5415,7 +5396,7 @@ export interface GetComputeInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const GetComputeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetComputeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -5442,14 +5423,14 @@ export interface GetComputeInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
 }
-export const GetComputeInstanceResponse =
+const GetComputeInstanceResponse =
   ComputeInstancesCreateOrReplaceResponse as any as S.Schema<GetComputeInstanceResponse>;
 
 export interface GetContainerClusterRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const GetContainerClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -5476,7 +5457,7 @@ export interface GetContainerClusterResponse {
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
 }
-export const GetContainerClusterResponse =
+const GetContainerClusterResponse =
   ContainerClustersCreateOrReplaceResponse as any as S.Schema<GetContainerClusterResponse>;
 
 export interface GetSQLAdminInstanceRequest {
@@ -5487,7 +5468,7 @@ export interface GetSQLAdminInstanceRequest {
   /** Name of SQLAdminInstance */
   name: string;
 }
-export const GetSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5506,7 +5487,7 @@ export const GetSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSQLAdminInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSQLAdminInstanceResponseTagsMap =
+const GetSQLAdminInstanceResponseTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GetSQLAdminInstanceResponseTagsMap>;
 
 /** Disk encryption configuration. */
@@ -5516,7 +5497,7 @@ export interface DiskEncryptionConfiguration {
   /** This is always sql#diskEncryptionConfiguration. */
   kind?: string;
 }
-export const DiskEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DiskEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5532,7 +5513,7 @@ export interface DiskEncryptionStatus {
   /** This is always sql#diskEncryptionStatus. */
   kind?: string;
 }
-export const DiskEncryptionStatus = /*@__PURE__*/ S.suspend(() =>
+const DiskEncryptionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyVersionName: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5546,7 +5527,7 @@ export interface GcpSqlAdminInstancePropertiesFailoverReplica {
   /** The name of the failover replica. This property is applicable only if the instance has a failover replica. */
   name?: string;
 }
-export const GcpSqlAdminInstancePropertiesFailoverReplica = /*@__PURE__*/ S.suspend(() =>
+const GcpSqlAdminInstancePropertiesFailoverReplica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -5562,7 +5543,7 @@ export type IpMappingType =
   | "OUTGOING"
   | "PRIVATE"
   | "MIGRATED_1ST_GEN";
-export const IpMappingType = S.String;
+const IpMappingType = S.String;
 
 /** Database instance IP Mapping. */
 export interface IpMapping {
@@ -5573,7 +5554,7 @@ export interface IpMapping {
   /** The type of this IP address. */
   type?: IpMappingType | (string & {});
 }
-export const IpMapping = /*@__PURE__*/ S.suspend(() =>
+const IpMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     timeToRetire: S.optional(S.String),
@@ -5583,7 +5564,7 @@ export const IpMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The assigned IP addresses for the instance. */
 export type GcpSqlAdminInstancePropertiesIpAddressesList = Array<IpMapping>;
-export const GcpSqlAdminInstancePropertiesIpAddressesList = /*@__PURE__*/ S.Array(
+const GcpSqlAdminInstancePropertiesIpAddressesList = /*@__PURE__*/ S.Array(
   IpMapping,
 ) as any as S.Schema<GcpSqlAdminInstancePropertiesIpAddressesList>;
 
@@ -5606,7 +5587,7 @@ export interface OnPremisesConfiguration {
   /** The username for connecting to on-premises instance. */
   username?: string;
 }
-export const OnPremisesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OnPremisesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caCertificate: S.optional(S.String),
     clientCertificate: S.optional(S.String),
@@ -5644,7 +5625,7 @@ export interface MySqlReplicaConfiguration {
   /** Whether or not to check the primary instance's Common Name value. */
   verifyServerCertificate?: boolean;
 }
-export const MySqlReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MySqlReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caCertificate: S.optional(S.String),
     clientCertificate: S.optional(S.String),
@@ -5671,7 +5652,7 @@ export interface ReplicaConfiguration {
   /** MySQL specific configuration when replicating from a MySQL primary instance. */
   mysqlReplicaConfiguration?: MySqlReplicaConfiguration;
 }
-export const ReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverTarget: S.optional(S.Boolean),
     kind: S.optional(S.String),
@@ -5681,7 +5662,7 @@ export const ReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The replicas of the instance. */
 export type GcpSqlAdminInstancePropertiesReplicaNamesList = Array<string>;
-export const GcpSqlAdminInstancePropertiesReplicaNamesList =
+const GcpSqlAdminInstancePropertiesReplicaNamesList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpSqlAdminInstancePropertiesReplicaNamesList>;
 
 /** SQL Server scheduled maintenance settings. */
@@ -5693,7 +5674,7 @@ export interface SqlScheduledMaintenance {
   /** The start time of any upcoming scheduled maintenance for this instance. */
   startTime?: string;
 }
-export const SqlScheduledMaintenance = /*@__PURE__*/ S.suspend(() =>
+const SqlScheduledMaintenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDefer: S.optional(S.Boolean),
     canReschedule: S.optional(S.Boolean),
@@ -5722,7 +5703,7 @@ export interface SslCert {
   /** SHA-1 fingerprint of the certificate. */
   sha1Fingerprint?: string;
 }
-export const SslCert = /*@__PURE__*/ S.suspend(() =>
+const SslCert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cert: S.optional(S.String),
     certSerialNumber: S.optional(S.String),
@@ -5742,7 +5723,7 @@ export type ActivationPolicy =
   | "ALWAYS"
   | "NEVER"
   | "ON_DEMAND";
-export const ActivationPolicy = S.String;
+const ActivationPolicy = S.String;
 
 /** Active Directory configuration for SQL Server instances. */
 export interface SqlActiveDirectoryConfig {
@@ -5751,7 +5732,7 @@ export interface SqlActiveDirectoryConfig {
   /** This is always sql#activeDirectoryConfig. */
   kind?: string;
 }
-export const SqlActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
+const SqlActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5760,16 +5741,16 @@ export const SqlActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The App Engine app IDs that can access this instance. */
 export type SettingsAuthorizedGaeApplicationsList = Array<string>;
-export const SettingsAuthorizedGaeApplicationsList =
+const SettingsAuthorizedGaeApplicationsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<SettingsAuthorizedGaeApplicationsList>;
 
 /** Settings.availabilityType values, as defined by the Google Cloud API. */
 export type AvailabilityType = "SQL_AVAILABILITY_TYPE_UNSPECIFIED" | "ZONAL" | "REGIONAL";
-export const AvailabilityType = S.String;
+const AvailabilityType = S.String;
 
 /** BackupRetentionSettings.retentionUnit values, as defined by the Google Cloud API. */
 export type RetentionUnit = "RETENTION_UNIT_UNSPECIFIED" | "COUNT";
-export const RetentionUnit = S.String;
+const RetentionUnit = S.String;
 
 /** Backup retention settings. */
 export interface BackupRetentionSettings {
@@ -5778,7 +5759,7 @@ export interface BackupRetentionSettings {
   /** The unit that 'retainedBackups' represents. */
   retentionUnit?: RetentionUnit | (string & {});
 }
-export const BackupRetentionSettings = /*@__PURE__*/ S.suspend(() =>
+const BackupRetentionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retainedBackups: S.optional(S.Number),
     retentionUnit: S.optional(RetentionUnit),
@@ -5804,7 +5785,7 @@ export interface BackupConfiguration {
   /** The number of days of transaction logs we retain for point in time restore. */
   transactionLogRetentionDays?: number;
 }
-export const BackupConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BackupConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupRetentionSettings: S.optional(BackupRetentionSettings),
     enabled: S.optional(S.Boolean),
@@ -5824,7 +5805,7 @@ export type DataDiskType =
   | "PD_HDD"
   | "OBSOLETE_LOCAL_SSD"
   | "HYPERDISK_BALANCED";
-export const DataDiskType = S.String;
+const DataDiskType = S.String;
 
 /** Database flags for Cloud SQL instances. */
 export interface DatabaseFlags {
@@ -5833,7 +5814,7 @@ export interface DatabaseFlags {
   /** The value of the flag. */
   value?: string;
 }
-export const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
+const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -5842,7 +5823,7 @@ export const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
 
 /** The database flags passed to the instance at startup. */
 export type SettingsDatabaseFlagsList = Array<DatabaseFlags>;
-export const SettingsDatabaseFlagsList = /*@__PURE__*/ S.Array(
+const SettingsDatabaseFlagsList = /*@__PURE__*/ S.Array(
   DatabaseFlags,
 ) as any as S.Schema<SettingsDatabaseFlagsList>;
 
@@ -5857,7 +5838,7 @@ export interface AclEntry {
   /** The allowlisted value for the access control list. */
   value?: string;
 }
-export const AclEntry = /*@__PURE__*/ S.suspend(() =>
+const AclEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5868,7 +5849,7 @@ export const AclEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of external networks that are allowed to connect to the instance using the IP. */
 export type IpConfigurationAuthorizedNetworksList = Array<AclEntry>;
-export const IpConfigurationAuthorizedNetworksList = /*@__PURE__*/ S.Array(
+const IpConfigurationAuthorizedNetworksList = /*@__PURE__*/ S.Array(
   AclEntry,
 ) as any as S.Schema<IpConfigurationAuthorizedNetworksList>;
 
@@ -5885,7 +5866,7 @@ export interface IpConfiguration {
   /** Whether SSL connections over IP are enforced or not. */
   requireSsl?: boolean;
 }
-export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocatedIpRange: S.optional(S.String),
     authorizedNetworks: S.optional(IpConfigurationAuthorizedNetworksList),
@@ -5906,7 +5887,7 @@ export interface LocationPreference {
   /** The preferred Compute Engine zone for the instance. */
   zone?: string;
 }
-export const LocationPreference = /*@__PURE__*/ S.suspend(() =>
+const LocationPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     followGaeApplication: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5917,7 +5898,7 @@ export const LocationPreference = /*@__PURE__*/ S.suspend(() =>
 
 /** MaintenanceWindow.updateTrack values, as defined by the Google Cloud API. */
 export type UpdateTrack = "SQL_UPDATE_TRACK_UNSPECIFIED" | "canary" | "stable" | "week5";
-export const UpdateTrack = S.String;
+const UpdateTrack = S.String;
 
 /** Maintenance window for Cloud SQL instances. */
 export interface MaintenanceWindow_2 {
@@ -5930,7 +5911,7 @@ export interface MaintenanceWindow_2 {
   /** Maintenance timing setting. */
   updateTrack?: UpdateTrack | (string & {});
 }
-export const MaintenanceWindow_2 = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     hour: S.optional(S.Number),
@@ -5941,15 +5922,15 @@ export const MaintenanceWindow_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings.pricingPlan values, as defined by the Google Cloud API. */
 export type PricingPlan = "SQL_PRICING_PLAN_UNSPECIFIED" | "PACKAGE" | "PER_USE";
-export const PricingPlan = S.String;
+const PricingPlan = S.String;
 
 /** Settings.replicationType values, as defined by the Google Cloud API. */
 export type ReplicationType = "SQL_REPLICATION_TYPE_UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
-export const ReplicationType = S.String;
+const ReplicationType = S.String;
 
 /** User-provided labels, represented as a dictionary. */
 export type SettingsUserLabelsMap = { [key: string]: string | undefined };
-export const SettingsUserLabelsMap =
+const SettingsUserLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<SettingsUserLabelsMap>;
 
 /** Database instance settings. */
@@ -5999,7 +5980,7 @@ export interface Settings {
   /** The version of instance settings. */
   version?: number;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activationPolicy: S.optional(ActivationPolicy),
     activeDirectoryConfig: S.optional(SqlActiveDirectoryConfig),
@@ -6028,17 +6009,17 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
 
 /** If the instance state is SUSPENDED, the reason for the suspension. */
 export type GcpSqlAdminInstancePropertiesSuspensionReasonList = Array<string>;
-export const GcpSqlAdminInstancePropertiesSuspensionReasonList =
+const GcpSqlAdminInstancePropertiesSuspensionReasonList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpSqlAdminInstancePropertiesSuspensionReasonList>;
 
 /** List of maintenance versions available for this instance. */
 export type GcpSqlAdminInstancePropertiesAvailableMaintenanceVersionsList = Array<string>;
-export const GcpSqlAdminInstancePropertiesAvailableMaintenanceVersionsList =
+const GcpSqlAdminInstancePropertiesAvailableMaintenanceVersionsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpSqlAdminInstancePropertiesAvailableMaintenanceVersionsList>;
 
 /** List of database editions supported. */
 export type AvailableDatabaseVersionSupportedEditionsList = Array<string>;
-export const AvailableDatabaseVersionSupportedEditionsList =
+const AvailableDatabaseVersionSupportedEditionsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<AvailableDatabaseVersionSupportedEditionsList>;
 
 /** Database version that can be used for the instance. */
@@ -6048,7 +6029,7 @@ export interface AvailableDatabaseVersion {
   /** List of database editions supported. */
   supportedEditions?: AvailableDatabaseVersionSupportedEditionsList;
 }
-export const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
+const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     supportedEditions: S.optional(AvailableDatabaseVersionSupportedEditionsList),
@@ -6058,7 +6039,7 @@ export const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
 /** List of database versions to which this instance could be upgraded. */
 export type GcpSqlAdminInstancePropertiesUpgradableDatabaseVersionsList =
   Array<AvailableDatabaseVersion>;
-export const GcpSqlAdminInstancePropertiesUpgradableDatabaseVersionsList = /*@__PURE__*/ S.Array(
+const GcpSqlAdminInstancePropertiesUpgradableDatabaseVersionsList = /*@__PURE__*/ S.Array(
   AvailableDatabaseVersion,
 ) as any as S.Schema<GcpSqlAdminInstancePropertiesUpgradableDatabaseVersionsList>;
 
@@ -6073,7 +6054,7 @@ export type PoolNodeState =
   | "FAILED"
   | "ONLINE_MAINTENANCE"
   | "REPAIRING";
-export const PoolNodeState = S.String;
+const PoolNodeState = S.String;
 
 /** Configuration for a node in the instance pool. */
 export interface PoolNodeConfig {
@@ -6088,7 +6069,7 @@ export interface PoolNodeConfig {
   /** IP address of the node. */
   ipAddress?: string;
 }
-export const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
+const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6100,7 +6081,7 @@ export const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of nodes in the instance. */
 export type GcpSqlAdminInstancePropertiesNodesList = Array<PoolNodeConfig>;
-export const GcpSqlAdminInstancePropertiesNodesList = /*@__PURE__*/ S.Array(
+const GcpSqlAdminInstancePropertiesNodesList = /*@__PURE__*/ S.Array(
   PoolNodeConfig,
 ) as any as S.Schema<GcpSqlAdminInstancePropertiesNodesList>;
 
@@ -6113,7 +6094,7 @@ export interface DnsNameMapping {
   /** The value of the DNS record. */
   value?: string;
 }
-export const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
+const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -6123,13 +6104,13 @@ export const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DNS mappings configured for the instance. */
 export type GcpSqlAdminInstancePropertiesDnsNamesList = Array<DnsNameMapping>;
-export const GcpSqlAdminInstancePropertiesDnsNamesList = /*@__PURE__*/ S.Array(
+const GcpSqlAdminInstancePropertiesDnsNamesList = /*@__PURE__*/ S.Array(
   DnsNameMapping,
 ) as any as S.Schema<GcpSqlAdminInstancePropertiesDnsNamesList>;
 
 /** SqlOutOfDiskReport.sqlOutOfDiskState values, as defined by the Google Cloud API. */
 export type SqlOutOfDiskState = "SQL_OUT_OF_DISK_STATE_UNSPECIFIED" | "NORMAL" | "SOFT_SHUTDOWN";
-export const SqlOutOfDiskState = S.String;
+const SqlOutOfDiskState = S.String;
 
 /** Report about out of disk conditions. */
 export interface SqlOutOfDiskReport {
@@ -6138,7 +6119,7 @@ export interface SqlOutOfDiskReport {
   /** Current out of disk state. */
   sqlOutOfDiskState?: SqlOutOfDiskState | (string & {});
 }
-export const SqlOutOfDiskReport = /*@__PURE__*/ S.suspend(() =>
+const SqlOutOfDiskReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlMinRecommendedIncreaseSizeGb: S.optional(S.Number),
     sqlOutOfDiskState: S.optional(SqlOutOfDiskState),
@@ -6154,7 +6135,7 @@ export interface ReplicationCluster {
   /** Name of the leader instance. */
   leaderInstanceName?: string;
 }
-export const ReplicationCluster = /*@__PURE__*/ S.suspend(() =>
+const ReplicationCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterId: S.optional(S.String),
     status: S.optional(S.String),
@@ -6169,7 +6150,7 @@ export interface GeminiInstanceConfig {
   /** Version of the configuration. */
   configVersion?: string;
 }
-export const GeminiInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const GeminiInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tier: S.optional(S.String),
     configVersion: S.optional(S.String),
@@ -6275,7 +6256,7 @@ export interface GcpSqlAdminInstanceProperties {
   /** Number of nodes in the instance. */
   nodeCount?: number;
 }
-export const GcpSqlAdminInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const GcpSqlAdminInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backendType: S.optional(S.String),
     connectionName: S.optional(S.String),
@@ -6336,7 +6317,7 @@ export const GcpSqlAdminInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** GCP Tags */
 export type SQLAdminInstancePropertiesGcpTagsMap = { [key: string]: string | undefined };
-export const SQLAdminInstancePropertiesGcpTagsMap =
+const SQLAdminInstancePropertiesGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<SQLAdminInstancePropertiesGcpTagsMap>;
 
 /** Definition of SQLAdminInstanceProperties */
@@ -6362,7 +6343,7 @@ export interface SQLAdminInstanceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const SQLAdminInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const SQLAdminInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpSqlAdminInstanceProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -6395,7 +6376,7 @@ export interface GetSQLAdminInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstanceProperties;
 }
-export const GetSQLAdminInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSQLAdminInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6417,7 +6398,7 @@ export interface GetStorageBucketRequest {
   /** Name of StorageBucket */
   name: string;
 }
-export const GetStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6434,7 +6415,7 @@ export const GetStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStorageBucketResponseTagsMap = { [key: string]: string | undefined };
-export const GetStorageBucketResponseTagsMap =
+const GetStorageBucketResponseTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GetStorageBucketResponseTagsMap>;
 
 /** The project team associated with the entity, if any. */
@@ -6444,7 +6425,7 @@ export interface BucketAccessControlProjectTeam {
   /** The team. */
   team?: string;
 }
-export const BucketAccessControlProjectTeam = /*@__PURE__*/ S.suspend(() =>
+const BucketAccessControlProjectTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectNumber: S.optional(S.String),
     team: S.optional(S.String),
@@ -6478,7 +6459,7 @@ export interface BucketAccessControl {
   /** The link to this access-control entry. */
   selfLink?: string;
 }
-export const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
+const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     domain: S.optional(S.String),
@@ -6496,7 +6477,7 @@ export const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
 
 /** Access controls on the bucket. */
 export type GcpBucketPropertiesAclList = Array<BucketAccessControl>;
-export const GcpBucketPropertiesAclList = /*@__PURE__*/ S.Array(
+const GcpBucketPropertiesAclList = /*@__PURE__*/ S.Array(
   BucketAccessControl,
 ) as any as S.Schema<GcpBucketPropertiesAclList>;
 
@@ -6511,7 +6492,7 @@ export interface GcpBucketPropertiesAutoclass {
   /** A date and time in RFC 3339 format representing the instant at which \"enabled\" was last toggled. */
   toggleTime?: string;
 }
-export const GcpBucketPropertiesAutoclass = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesAutoclass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     terminalStorageClass: S.optional(S.String),
@@ -6527,7 +6508,7 @@ export interface GcpBucketPropertiesBilling {
   /** When set to true, Requester Pays is enabled for this bucket. */
   requesterPays?: boolean;
 }
-export const GcpBucketPropertiesBilling = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requesterPays: S.optional(S.Boolean),
   }),
@@ -6537,17 +6518,17 @@ export const GcpBucketPropertiesBilling = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: '*' is permitted in the list of methods, and means 'any method'. */
 export type GcpBucketPropertiesCorsItemMethodList = Array<string>;
-export const GcpBucketPropertiesCorsItemMethodList =
+const GcpBucketPropertiesCorsItemMethodList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpBucketPropertiesCorsItemMethodList>;
 
 /** The list of Origins eligible to receive CORS response headers. Note: '*' is permitted in the list of origins, and means 'any Origin'. */
 export type GcpBucketPropertiesCorsItemOriginList = Array<string>;
-export const GcpBucketPropertiesCorsItemOriginList =
+const GcpBucketPropertiesCorsItemOriginList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpBucketPropertiesCorsItemOriginList>;
 
 /** The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains. */
 export type GcpBucketPropertiesCorsItemResponseHeaderList = Array<string>;
-export const GcpBucketPropertiesCorsItemResponseHeaderList =
+const GcpBucketPropertiesCorsItemResponseHeaderList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpBucketPropertiesCorsItemResponseHeaderList>;
 
 export interface GcpBucketPropertiesCorsItem {
@@ -6560,7 +6541,7 @@ export interface GcpBucketPropertiesCorsItem {
   /** The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains. */
   responseHeader?: GcpBucketPropertiesCorsItemResponseHeaderList;
 }
-export const GcpBucketPropertiesCorsItem = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesCorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxAgeSeconds: S.optional(S.Number),
     method: S.optional(GcpBucketPropertiesCorsItemMethodList),
@@ -6573,13 +6554,13 @@ export const GcpBucketPropertiesCorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The bucket's Cross-Origin Resource Sharing (CORS) configuration. */
 export type GcpBucketPropertiesCorsList = Array<GcpBucketPropertiesCorsItem>;
-export const GcpBucketPropertiesCorsList = /*@__PURE__*/ S.Array(
+const GcpBucketPropertiesCorsList = /*@__PURE__*/ S.Array(
   GcpBucketPropertiesCorsItem,
 ) as any as S.Schema<GcpBucketPropertiesCorsList>;
 
 /** The list of regional locations in which data is placed. */
 export type GcpBucketPropertiesCustomPlacementConfigDataLocationsList = Array<string>;
-export const GcpBucketPropertiesCustomPlacementConfigDataLocationsList =
+const GcpBucketPropertiesCustomPlacementConfigDataLocationsList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpBucketPropertiesCustomPlacementConfigDataLocationsList>;
 
 /** The bucket's custom placement configuration for Custom Dual Regions. */
@@ -6587,7 +6568,7 @@ export interface GcpBucketPropertiesCustomPlacementConfig {
   /** The list of regional locations in which data is placed. */
   dataLocations?: GcpBucketPropertiesCustomPlacementConfigDataLocationsList;
 }
-export const GcpBucketPropertiesCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLocations: S.optional(GcpBucketPropertiesCustomPlacementConfigDataLocationsList),
   }),
@@ -6597,8 +6578,6 @@ export const GcpBucketPropertiesCustomPlacementConfig = /*@__PURE__*/ S.suspend(
 
 /** The project team associated with the entity, if any. */
 export type ObjectAccessControlProjectTeam = BucketAccessControlProjectTeam;
-export const ObjectAccessControlProjectTeam = BucketAccessControlProjectTeam;
-
 /** An access-control entry. */
 export interface ObjectAccessControl {
   /** The name of the bucket. */
@@ -6628,7 +6607,7 @@ export interface ObjectAccessControl {
   /** The link to this access-control entry. */
   selfLink?: string;
 }
-export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
+const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     domain: S.optional(S.String),
@@ -6648,7 +6627,7 @@ export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
 
 /** Default access controls to apply to new objects when no ACL is provided. */
 export type GcpBucketPropertiesDefaultObjectAclList = Array<ObjectAccessControl>;
-export const GcpBucketPropertiesDefaultObjectAclList = /*@__PURE__*/ S.Array(
+const GcpBucketPropertiesDefaultObjectAclList = /*@__PURE__*/ S.Array(
   ObjectAccessControl,
 ) as any as S.Schema<GcpBucketPropertiesDefaultObjectAclList>;
 
@@ -6657,7 +6636,7 @@ export interface GcpBucketPropertiesEncryption {
   /** A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. */
   defaultKmsKeyName?: string;
 }
-export const GcpBucketPropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultKmsKeyName: S.optional(S.String),
   }),
@@ -6670,7 +6649,7 @@ export interface GcpBucketPropertiesHierarchicalNamespace {
   /** When set to true, hierarchical namespace is enabled for this bucket. */
   enabled?: boolean;
 }
-export const GcpBucketPropertiesHierarchicalNamespace =
+const GcpBucketPropertiesHierarchicalNamespace =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<GcpBucketPropertiesHierarchicalNamespace>;
 
 /** The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature. */
@@ -6680,7 +6659,7 @@ export interface GcpBucketPropertiesIamConfigurationBucketPolicyOnly {
   /** The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const GcpBucketPropertiesIamConfigurationBucketPolicyOnly = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesIamConfigurationBucketPolicyOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     lockedTime: S.optional(S.String),
@@ -6696,12 +6675,11 @@ export interface GcpBucketPropertiesIamConfigurationUniformBucketLevelAccess {
   /** The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339 format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const GcpBucketPropertiesIamConfigurationUniformBucketLevelAccess = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      lockedTime: S.optional(S.String),
-    }),
+const GcpBucketPropertiesIamConfigurationUniformBucketLevelAccess = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    lockedTime: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GcpBucketPropertiesIamConfigurationUniformBucketLevelAccess",
 }) as any as S.Schema<GcpBucketPropertiesIamConfigurationUniformBucketLevelAccess>;
@@ -6715,7 +6693,7 @@ export interface GcpBucketPropertiesIamConfiguration {
   /** The bucket's uniform bucket-level access configuration. */
   uniformBucketLevelAccess?: GcpBucketPropertiesIamConfigurationUniformBucketLevelAccess;
 }
-export const GcpBucketPropertiesIamConfiguration = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesIamConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketPolicyOnly: S.optional(GcpBucketPropertiesIamConfigurationBucketPolicyOnly),
     publicAccessPrevention: S.optional(S.String),
@@ -6729,7 +6707,7 @@ export const GcpBucketPropertiesIamConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** User-provided labels, in key/value pairs. */
 export type GcpBucketPropertiesLabelsMap = { [key: string]: string | undefined };
-export const GcpBucketPropertiesLabelsMap =
+const GcpBucketPropertiesLabelsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<GcpBucketPropertiesLabelsMap>;
 
 /** The action to take. */
@@ -6739,7 +6717,7 @@ export interface GcpBucketPropertiesLifecycleRuleItemAction {
   /** Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported. */
   type?: string;
 }
-export const GcpBucketPropertiesLifecycleRuleItemAction = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesLifecycleRuleItemAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageClass: S.optional(S.String),
     type: S.optional(S.String),
@@ -6750,19 +6728,18 @@ export const GcpBucketPropertiesLifecycleRuleItemAction = /*@__PURE__*/ S.suspen
 
 /** List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name. */
 export type GcpBucketPropertiesLifecycleRuleItemConditionMatchesPrefixList = Array<string>;
-export const GcpBucketPropertiesLifecycleRuleItemConditionMatchesPrefixList =
+const GcpBucketPropertiesLifecycleRuleItemConditionMatchesPrefixList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpBucketPropertiesLifecycleRuleItemConditionMatchesPrefixList>;
 
 /** Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY. */
 export type GcpBucketPropertiesLifecycleRuleItemConditionMatchesStorageClassList = Array<string>;
-export const GcpBucketPropertiesLifecycleRuleItemConditionMatchesStorageClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GcpBucketPropertiesLifecycleRuleItemConditionMatchesStorageClassList>;
+const GcpBucketPropertiesLifecycleRuleItemConditionMatchesStorageClassList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GcpBucketPropertiesLifecycleRuleItemConditionMatchesStorageClassList>;
 
 /** List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name. */
 export type GcpBucketPropertiesLifecycleRuleItemConditionMatchesSuffixList = Array<string>;
-export const GcpBucketPropertiesLifecycleRuleItemConditionMatchesSuffixList =
+const GcpBucketPropertiesLifecycleRuleItemConditionMatchesSuffixList =
   AttachedDiskInitializeParamsLicensesList as any as S.Schema<GcpBucketPropertiesLifecycleRuleItemConditionMatchesSuffixList>;
 
 /** The condition(s) under which the action will be taken. */
@@ -6792,7 +6769,7 @@ export interface GcpBucketPropertiesLifecycleRuleItemCondition {
   /** Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object. */
   numNewerVersions?: number;
 }
-export const GcpBucketPropertiesLifecycleRuleItemCondition = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesLifecycleRuleItemCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     age: S.optional(S.Number),
     createdBefore: S.optional(S.String),
@@ -6819,7 +6796,7 @@ export interface GcpBucketPropertiesLifecycleRuleItem {
   /** The condition(s) under which the action will be taken. */
   condition?: GcpBucketPropertiesLifecycleRuleItemCondition;
 }
-export const GcpBucketPropertiesLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(GcpBucketPropertiesLifecycleRuleItemAction),
     condition: S.optional(GcpBucketPropertiesLifecycleRuleItemCondition),
@@ -6830,7 +6807,7 @@ export const GcpBucketPropertiesLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =
 
 /** A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken. */
 export type GcpBucketPropertiesLifecycleRuleList = Array<GcpBucketPropertiesLifecycleRuleItem>;
-export const GcpBucketPropertiesLifecycleRuleList = /*@__PURE__*/ S.Array(
+const GcpBucketPropertiesLifecycleRuleList = /*@__PURE__*/ S.Array(
   GcpBucketPropertiesLifecycleRuleItem,
 ) as any as S.Schema<GcpBucketPropertiesLifecycleRuleList>;
 
@@ -6839,7 +6816,7 @@ export interface GcpBucketPropertiesLifecycle {
   /** A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken. */
   rule?: GcpBucketPropertiesLifecycleRuleList;
 }
-export const GcpBucketPropertiesLifecycle = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(GcpBucketPropertiesLifecycleRuleList),
   }),
@@ -6854,7 +6831,7 @@ export interface GcpBucketPropertiesLogging {
   /** A prefix for log object names. */
   logObjectPrefix?: string;
 }
-export const GcpBucketPropertiesLogging = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesLogging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logBucket: S.optional(S.String),
     logObjectPrefix: S.optional(S.String),
@@ -6868,7 +6845,7 @@ export interface GcpBucketPropertiesObjectRetention {
   /** The bucket's object retention mode. Can be Enabled. */
   mode?: string;
 }
-export const GcpBucketPropertiesObjectRetention = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesObjectRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
   }),
@@ -6883,7 +6860,7 @@ export interface GcpBucketPropertiesOwner {
   /** The ID for the entity. */
   entityId?: string;
 }
-export const GcpBucketPropertiesOwner = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(S.String),
     entityId: S.optional(S.String),
@@ -6899,7 +6876,7 @@ export interface GcpBucketPropertiesRetentionPolicy {
   /** The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes. */
   retentionPeriod?: string;
 }
-export const GcpBucketPropertiesRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveTime: S.optional(S.String),
     isLocked: S.optional(S.Boolean),
@@ -6916,7 +6893,7 @@ export interface GcpBucketPropertiesSoftDeletePolicy {
   /** The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. */
   retentionDurationSeconds?: string;
 }
-export const GcpBucketPropertiesSoftDeletePolicy = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesSoftDeletePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveTime: S.optional(S.String),
     retentionDurationSeconds: S.optional(S.String),
@@ -6930,7 +6907,7 @@ export interface GcpBucketPropertiesVersioning {
   /** While set to true, versioning is fully enabled for this bucket. */
   enabled?: boolean;
 }
-export const GcpBucketPropertiesVersioning =
+const GcpBucketPropertiesVersioning =
   GcePersistentDiskCsiDriverConfig as any as S.Schema<GcpBucketPropertiesVersioning>;
 
 /** The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information. */
@@ -6940,7 +6917,7 @@ export interface GcpBucketPropertiesWebsite {
   /** If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result. */
   notFoundPage?: string;
 }
-export const GcpBucketPropertiesWebsite = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketPropertiesWebsite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mainPageSuffix: S.optional(S.String),
     notFoundPage: S.optional(S.String),
@@ -7020,7 +6997,7 @@ export interface GcpBucketProperties {
   /** The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information. */
   website?: GcpBucketPropertiesWebsite;
 }
-export const GcpBucketProperties = /*@__PURE__*/ S.suspend(() =>
+const GcpBucketProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(GcpBucketPropertiesAclList),
     autoclass: S.optional(GcpBucketPropertiesAutoclass),
@@ -7061,7 +7038,7 @@ export const GcpBucketProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** GCP Tags */
 export type BucketPropertiesGcpTagsMap = { [key: string]: string | undefined };
-export const BucketPropertiesGcpTagsMap =
+const BucketPropertiesGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BucketPropertiesGcpTagsMap>;
 
 /** Definition of BucketProperties */
@@ -7087,7 +7064,7 @@ export interface BucketProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const BucketProperties = /*@__PURE__*/ S.suspend(() =>
+const BucketProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpBucketProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -7118,7 +7095,7 @@ export interface GetStorageBucketResponse {
   /** The resource-specific properties for this resource. */
   properties?: BucketProperties;
 }
-export const GetStorageBucketResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageBucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7136,7 +7113,7 @@ export interface ListBigQueryDatasetByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListBigQueryDatasetByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBigQueryDatasetByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7154,7 +7131,7 @@ export const ListBigQueryDatasetByResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type BigQueryDatasetTagsMap = { [key: string]: string | undefined };
-export const BigQueryDatasetTagsMap =
+const BigQueryDatasetTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BigQueryDatasetTagsMap>;
 
 /** A Microsoft.GcpConnector resource */
@@ -7174,7 +7151,7 @@ export interface BigQueryDataset {
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetProperties;
 }
-export const BigQueryDataset = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7188,7 +7165,7 @@ export const BigQueryDataset = /*@__PURE__*/ S.suspend(() =>
 
 /** The BigQueryDataset items on this page */
 export type BigQueryDatasetListResultValueList = Array<BigQueryDataset>;
-export const BigQueryDatasetListResultValueList = /*@__PURE__*/ S.Array(
+const BigQueryDatasetListResultValueList = /*@__PURE__*/ S.Array(
   BigQueryDataset,
 ) as any as S.Schema<BigQueryDatasetListResultValueList>;
 
@@ -7199,7 +7176,7 @@ export interface BigQueryDatasetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const BigQueryDatasetListResult = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: BigQueryDatasetListResultValueList,
     nextLink: S.optional(S.String),
@@ -7212,7 +7189,7 @@ export interface ListBigQueryDatasetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListBigQueryDatasetBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBigQueryDatasetBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7233,7 +7210,7 @@ export interface ListCloudFunctionByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCloudFunctionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudFunctionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7251,9 +7228,6 @@ export const ListCloudFunctionByResourceGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type CloudFunctionTagsMap = { [key: string]: string | undefined };
-export const CloudFunctionTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<CloudFunctionTagsMap>;
-
 /** A Microsoft.GcpConnector resource */
 export interface CloudFunction {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7271,11 +7245,11 @@ export interface CloudFunction {
   /** The resource-specific properties for this resource. */
   properties?: FunctionProperties;
 }
-export const CloudFunction = GetCloudFunctionResponse as any as S.Schema<CloudFunction>;
+const CloudFunction = GetCloudFunctionResponse as any as S.Schema<CloudFunction>;
 
 /** The CloudFunction items on this page */
 export type CloudFunctionListResultValueList = Array<CloudFunction>;
-export const CloudFunctionListResultValueList = /*@__PURE__*/ S.Array(
+const CloudFunctionListResultValueList = /*@__PURE__*/ S.Array(
   CloudFunction,
 ) as any as S.Schema<CloudFunctionListResultValueList>;
 
@@ -7286,7 +7260,7 @@ export interface CloudFunctionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CloudFunctionListResult = /*@__PURE__*/ S.suspend(() =>
+const CloudFunctionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CloudFunctionListResultValueList,
     nextLink: S.optional(S.String),
@@ -7297,7 +7271,7 @@ export interface ListCloudFunctionBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListCloudFunctionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudFunctionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7316,7 +7290,7 @@ export interface ListComputeInstancesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListComputeInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListComputeInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -7344,7 +7318,7 @@ export interface ComputeInstance {
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
 }
-export const ComputeInstance = /*@__PURE__*/ S.suspend(() =>
+const ComputeInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7356,7 +7330,7 @@ export const ComputeInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The ComputeInstance items on this page */
 export type ComputeInstanceListResultValueList = Array<ComputeInstance>;
-export const ComputeInstanceListResultValueList = /*@__PURE__*/ S.Array(
+const ComputeInstanceListResultValueList = /*@__PURE__*/ S.Array(
   ComputeInstance,
 ) as any as S.Schema<ComputeInstanceListResultValueList>;
 
@@ -7367,7 +7341,7 @@ export interface ComputeInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ComputeInstanceListResult = /*@__PURE__*/ S.suspend(() =>
+const ComputeInstanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ComputeInstanceListResultValueList,
     nextLink: S.optional(S.String),
@@ -7380,7 +7354,7 @@ export interface ListContainerClustersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListContainerClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainerClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -7408,7 +7382,7 @@ export interface ContainerCluster {
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
 }
-export const ContainerCluster = /*@__PURE__*/ S.suspend(() =>
+const ContainerCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7420,7 +7394,7 @@ export const ContainerCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The ContainerCluster items on this page */
 export type ContainerClusterListResultValueList = Array<ContainerCluster>;
-export const ContainerClusterListResultValueList = /*@__PURE__*/ S.Array(
+const ContainerClusterListResultValueList = /*@__PURE__*/ S.Array(
   ContainerCluster,
 ) as any as S.Schema<ContainerClusterListResultValueList>;
 
@@ -7431,7 +7405,7 @@ export interface ContainerClusterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContainerClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const ContainerClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContainerClusterListResultValueList,
     nextLink: S.optional(S.String),
@@ -7441,7 +7415,7 @@ export const ContainerClusterListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerClusterListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -7463,7 +7437,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -7474,11 +7448,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -7493,7 +7467,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -7505,7 +7479,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -7515,7 +7489,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -7528,7 +7502,7 @@ export interface ListSQLAdminInstanceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListSQLAdminInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSQLAdminInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7546,7 +7520,7 @@ export const ListSQLAdminInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type SQLAdminInstanceTagsMap = { [key: string]: string | undefined };
-export const SQLAdminInstanceTagsMap =
+const SQLAdminInstanceTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<SQLAdminInstanceTagsMap>;
 
 /** A Microsoft.GcpConnector resource */
@@ -7566,7 +7540,7 @@ export interface SQLAdminInstance {
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstanceProperties;
 }
-export const SQLAdminInstance = /*@__PURE__*/ S.suspend(() =>
+const SQLAdminInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7580,7 +7554,7 @@ export const SQLAdminInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The SQLAdminInstance items on this page */
 export type SQLAdminInstanceListResultValueList = Array<SQLAdminInstance>;
-export const SQLAdminInstanceListResultValueList = /*@__PURE__*/ S.Array(
+const SQLAdminInstanceListResultValueList = /*@__PURE__*/ S.Array(
   SQLAdminInstance,
 ) as any as S.Schema<SQLAdminInstanceListResultValueList>;
 
@@ -7591,7 +7565,7 @@ export interface SQLAdminInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SQLAdminInstanceListResult = /*@__PURE__*/ S.suspend(() =>
+const SQLAdminInstanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SQLAdminInstanceListResultValueList,
     nextLink: S.optional(S.String),
@@ -7604,7 +7578,7 @@ export interface ListSQLAdminInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListSQLAdminInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSQLAdminInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7625,7 +7599,7 @@ export interface ListStorageBucketByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStorageBucketByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageBucketByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7643,9 +7617,6 @@ export const ListStorageBucketByResourceGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type StorageBucketTagsMap = { [key: string]: string | undefined };
-export const StorageBucketTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<StorageBucketTagsMap>;
-
 /** A Microsoft.GcpConnector resource */
 export interface StorageBucket {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7663,11 +7634,11 @@ export interface StorageBucket {
   /** The resource-specific properties for this resource. */
   properties?: BucketProperties;
 }
-export const StorageBucket = GetStorageBucketResponse as any as S.Schema<StorageBucket>;
+const StorageBucket = GetStorageBucketResponse as any as S.Schema<StorageBucket>;
 
 /** The StorageBucket items on this page */
 export type StorageBucketListResultValueList = Array<StorageBucket>;
-export const StorageBucketListResultValueList = /*@__PURE__*/ S.Array(
+const StorageBucketListResultValueList = /*@__PURE__*/ S.Array(
   StorageBucket,
 ) as any as S.Schema<StorageBucketListResultValueList>;
 
@@ -7678,7 +7649,7 @@ export interface StorageBucketListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageBucketListResult = /*@__PURE__*/ S.suspend(() =>
+const StorageBucketListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageBucketListResultValueList,
     nextLink: S.optional(S.String),
@@ -7689,7 +7660,7 @@ export interface ListStorageBucketBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListStorageBucketBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageBucketBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7706,12 +7677,12 @@ export const ListStorageBucketBySubscriptionRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type SQLAdminInstancesCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const SQLAdminInstancesCreateOrReplaceRequestTagsMap =
+const SQLAdminInstancesCreateOrReplaceRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<SQLAdminInstancesCreateOrReplaceRequestTagsMap>;
 
 /** GCP Tags */
 export type SQLAdminInstancePropertiesInputGcpTagsMap = { [key: string]: string | undefined };
-export const SQLAdminInstancePropertiesInputGcpTagsMap =
+const SQLAdminInstancePropertiesInputGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<SQLAdminInstancePropertiesInputGcpTagsMap>;
 
 /** Definition of SQLAdminInstanceProperties */
@@ -7735,7 +7706,7 @@ export interface SQLAdminInstancePropertiesInput {
   /** GCP Tags */
   gcpTags?: SQLAdminInstancePropertiesInputGcpTagsMap;
 }
-export const SQLAdminInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SQLAdminInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpSqlAdminInstanceProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -7765,7 +7736,7 @@ export interface SQLAdminInstancesCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstancePropertiesInput;
 }
-export const SQLAdminInstancesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const SQLAdminInstancesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7787,9 +7758,6 @@ export const SQLAdminInstancesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type SQLAdminInstancesCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const SQLAdminInstancesCreateOrReplaceResponseTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<SQLAdminInstancesCreateOrReplaceResponseTagsMap>;
-
 export interface SQLAdminInstancesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7806,17 +7774,17 @@ export interface SQLAdminInstancesCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstanceProperties;
 }
-export const SQLAdminInstancesCreateOrReplaceResponse =
+const SQLAdminInstancesCreateOrReplaceResponse =
   GetSQLAdminInstanceResponse as any as S.Schema<SQLAdminInstancesCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type StorageBucketsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const StorageBucketsCreateOrReplaceRequestTagsMap =
+const StorageBucketsCreateOrReplaceRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<StorageBucketsCreateOrReplaceRequestTagsMap>;
 
 /** GCP Tags */
 export type BucketPropertiesInputGcpTagsMap = { [key: string]: string | undefined };
-export const BucketPropertiesInputGcpTagsMap =
+const BucketPropertiesInputGcpTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<BucketPropertiesInputGcpTagsMap>;
 
 /** Definition of BucketProperties */
@@ -7840,7 +7808,7 @@ export interface BucketPropertiesInput {
   /** GCP Tags */
   gcpTags?: BucketPropertiesInputGcpTagsMap;
 }
-export const BucketPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BucketPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProperties: S.optional(GcpBucketProperties),
     publicCloudConnectorsResourceId: S.optional(S.String),
@@ -7868,7 +7836,7 @@ export interface StorageBucketsCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: BucketPropertiesInput;
 }
-export const StorageBucketsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageBucketsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7890,7 +7858,7 @@ export const StorageBucketsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type StorageBucketsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const StorageBucketsCreateOrReplaceResponseTagsMap =
+const StorageBucketsCreateOrReplaceResponseTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<StorageBucketsCreateOrReplaceResponseTagsMap>;
 
 export interface StorageBucketsCreateOrReplaceResponse {
@@ -7909,7 +7877,7 @@ export interface StorageBucketsCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: BucketProperties;
 }
-export const StorageBucketsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const StorageBucketsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7925,7 +7893,7 @@ export const StorageBucketsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateBigQueryDatasetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBigQueryDatasetRequestTagsMap =
+const UpdateBigQueryDatasetRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateBigQueryDatasetRequestTagsMap>;
 
 export interface UpdateBigQueryDatasetRequest {
@@ -7938,7 +7906,7 @@ export interface UpdateBigQueryDatasetRequest {
   /** Resource tags. */
   tags?: UpdateBigQueryDatasetRequestTagsMap;
 }
-export const UpdateBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7958,9 +7926,6 @@ export const UpdateBigQueryDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBigQueryDatasetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBigQueryDatasetResponseTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateBigQueryDatasetResponseTagsMap>;
-
 export interface UpdateBigQueryDatasetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7977,12 +7942,12 @@ export interface UpdateBigQueryDatasetResponse {
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetProperties;
 }
-export const UpdateBigQueryDatasetResponse =
+const UpdateBigQueryDatasetResponse =
   BigQueryDatasetsCreateOrReplaceResponse as any as S.Schema<UpdateBigQueryDatasetResponse>;
 
 /** Resource tags. */
 export type UpdateCloudFunctionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCloudFunctionRequestTagsMap =
+const UpdateCloudFunctionRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateCloudFunctionRequestTagsMap>;
 
 export interface UpdateCloudFunctionRequest {
@@ -7995,7 +7960,7 @@ export interface UpdateCloudFunctionRequest {
   /** Resource tags. */
   tags?: UpdateCloudFunctionRequestTagsMap;
 }
-export const UpdateCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8015,9 +7980,6 @@ export const UpdateCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCloudFunctionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCloudFunctionResponseTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateCloudFunctionResponseTagsMap>;
-
 export interface UpdateCloudFunctionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8034,12 +7996,12 @@ export interface UpdateCloudFunctionResponse {
   /** The resource-specific properties for this resource. */
   properties?: FunctionProperties;
 }
-export const UpdateCloudFunctionResponse =
+const UpdateCloudFunctionResponse =
   CloudFunctionsCreateOrReplaceResponse as any as S.Schema<UpdateCloudFunctionResponse>;
 
 /** Resource tags. */
 export type UpdateSQLAdminInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSQLAdminInstanceRequestTagsMap =
+const UpdateSQLAdminInstanceRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateSQLAdminInstanceRequestTagsMap>;
 
 export interface UpdateSQLAdminInstanceRequest {
@@ -8052,7 +8014,7 @@ export interface UpdateSQLAdminInstanceRequest {
   /** Resource tags. */
   tags?: UpdateSQLAdminInstanceRequestTagsMap;
 }
-export const UpdateSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8072,9 +8034,6 @@ export const UpdateSQLAdminInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSQLAdminInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSQLAdminInstanceResponseTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateSQLAdminInstanceResponseTagsMap>;
-
 export interface UpdateSQLAdminInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8091,12 +8050,12 @@ export interface UpdateSQLAdminInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstanceProperties;
 }
-export const UpdateSQLAdminInstanceResponse =
+const UpdateSQLAdminInstanceResponse =
   GetSQLAdminInstanceResponse as any as S.Schema<UpdateSQLAdminInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateStorageBucketRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageBucketRequestTagsMap =
+const UpdateStorageBucketRequestTagsMap =
   BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateStorageBucketRequestTagsMap>;
 
 export interface UpdateStorageBucketRequest {
@@ -8109,7 +8068,7 @@ export interface UpdateStorageBucketRequest {
   /** Resource tags. */
   tags?: UpdateStorageBucketRequestTagsMap;
 }
-export const UpdateStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8129,9 +8088,6 @@ export const UpdateStorageBucketRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageBucketResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageBucketResponseTagsMap =
-  BigQueryDatasetsCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateStorageBucketResponseTagsMap>;
-
 export interface UpdateStorageBucketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8148,7 +8104,7 @@ export interface UpdateStorageBucketResponse {
   /** The resource-specific properties for this resource. */
   properties?: BucketProperties;
 }
-export const UpdateStorageBucketResponse =
+const UpdateStorageBucketResponse =
   StorageBucketsCreateOrReplaceResponse as any as S.Schema<UpdateStorageBucketResponse>;
 
 export type BigQueryDatasetsCreateOrReplaceError = AzureOpError;

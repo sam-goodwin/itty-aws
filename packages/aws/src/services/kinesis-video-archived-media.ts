@@ -130,13 +130,13 @@ export class UnsupportedStreamMediaTypeException
 export type StreamName = string;
 export type ResourceARN = string;
 export type ClipFragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
-export const ClipFragmentSelectorType = S.String;
+const ClipFragmentSelectorType = S.String;
 
 export interface ClipTimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
-export const ClipTimestampRange = /*@__PURE__*/ S.suspend(() =>
+const ClipTimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -146,7 +146,7 @@ export interface ClipFragmentSelector {
   FragmentSelectorType: ClipFragmentSelectorType;
   TimestampRange: ClipTimestampRange;
 }
-export const ClipFragmentSelector = /*@__PURE__*/ S.suspend(() =>
+const ClipFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FragmentSelectorType: ClipFragmentSelectorType, TimestampRange: ClipTimestampRange }),
 ).annotate({ identifier: "ClipFragmentSelector" }) as any as S.Schema<ClipFragmentSelector>;
 export interface GetClipInput {
@@ -154,7 +154,7 @@ export interface GetClipInput {
   StreamARN?: string;
   ClipFragmentSelector: ClipFragmentSelector;
 }
-export const GetClipInput = /*@__PURE__*/ S.suspend(() =>
+const GetClipInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -166,29 +166,29 @@ export interface GetClipOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-export const GetClipOutput = /*@__PURE__*/ S.suspend(() =>
+const GetClipOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
   }),
 ).annotate({ identifier: "GetClipOutput" }) as any as S.Schema<GetClipOutput>;
 export type DASHPlaybackMode = "LIVE" | "LIVE_REPLAY" | "ON_DEMAND" | (string & {});
-export const DASHPlaybackMode = S.String;
+const DASHPlaybackMode = S.String;
 
 export type DASHDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
-export const DASHDisplayFragmentTimestamp = S.String;
+const DASHDisplayFragmentTimestamp = S.String;
 
 export type DASHDisplayFragmentNumber = "ALWAYS" | "NEVER" | (string & {});
-export const DASHDisplayFragmentNumber = S.String;
+const DASHDisplayFragmentNumber = S.String;
 
 export type DASHFragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
-export const DASHFragmentSelectorType = S.String;
+const DASHFragmentSelectorType = S.String;
 
 export interface DASHTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-export const DASHTimestampRange = /*@__PURE__*/ S.suspend(() =>
+const DASHTimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -198,7 +198,7 @@ export interface DASHFragmentSelector {
   FragmentSelectorType?: DASHFragmentSelectorType;
   TimestampRange?: DASHTimestampRange;
 }
-export const DASHFragmentSelector = /*@__PURE__*/ S.suspend(() =>
+const DASHFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentSelectorType: S.optional(DASHFragmentSelectorType),
     TimestampRange: S.optional(DASHTimestampRange),
@@ -216,7 +216,7 @@ export interface GetDASHStreamingSessionURLInput {
   Expires?: number;
   MaxManifestFragmentResults?: number;
 }
-export const GetDASHStreamingSessionURLInput = /*@__PURE__*/ S.suspend(() =>
+const GetDASHStreamingSessionURLInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -243,40 +243,40 @@ export type DASHStreamingSessionURL = string;
 export interface GetDASHStreamingSessionURLOutput {
   DASHStreamingSessionURL?: string;
 }
-export const GetDASHStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
+const GetDASHStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DASHStreamingSessionURL: S.optional(S.String) }),
 ).annotate({
   identifier: "GetDASHStreamingSessionURLOutput",
 }) as any as S.Schema<GetDASHStreamingSessionURLOutput>;
 export type HLSPlaybackMode = "LIVE" | "LIVE_REPLAY" | "ON_DEMAND" | (string & {});
-export const HLSPlaybackMode = S.String;
+const HLSPlaybackMode = S.String;
 
 export type HLSFragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
-export const HLSFragmentSelectorType = S.String;
+const HLSFragmentSelectorType = S.String;
 
 export interface HLSTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-export const HLSTimestampRange = DASHTimestampRange as any as S.Schema<HLSTimestampRange>;
+const HLSTimestampRange = DASHTimestampRange as any as S.Schema<HLSTimestampRange>;
 export interface HLSFragmentSelector {
   FragmentSelectorType?: HLSFragmentSelectorType;
   TimestampRange?: HLSTimestampRange;
 }
-export const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
+const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentSelectorType: S.optional(HLSFragmentSelectorType),
     TimestampRange: S.optional(HLSTimestampRange),
   }),
 ).annotate({ identifier: "HLSFragmentSelector" }) as any as S.Schema<HLSFragmentSelector>;
 export type ContainerFormat = "FRAGMENTED_MP4" | "MPEG_TS" | (string & {});
-export const ContainerFormat = S.String;
+const ContainerFormat = S.String;
 
 export type HLSDiscontinuityMode = "ALWAYS" | "NEVER" | "ON_DISCONTINUITY" | (string & {});
-export const HLSDiscontinuityMode = S.String;
+const HLSDiscontinuityMode = S.String;
 
 export type HLSDisplayFragmentTimestamp = "ALWAYS" | "NEVER" | (string & {});
-export const HLSDisplayFragmentTimestamp = S.String;
+const HLSDisplayFragmentTimestamp = S.String;
 
 export type HLSMaxResults = number;
 export interface GetHLSStreamingSessionURLInput {
@@ -290,7 +290,7 @@ export interface GetHLSStreamingSessionURLInput {
   Expires?: number;
   MaxMediaPlaylistFragmentResults?: number;
 }
-export const GetHLSStreamingSessionURLInput = /*@__PURE__*/ S.suspend(() =>
+const GetHLSStreamingSessionURLInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -318,24 +318,24 @@ export type HLSStreamingSessionURL = string;
 export interface GetHLSStreamingSessionURLOutput {
   HLSStreamingSessionURL?: string;
 }
-export const GetHLSStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
+const GetHLSStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HLSStreamingSessionURL: S.optional(S.String) }),
 ).annotate({
   identifier: "GetHLSStreamingSessionURLOutput",
 }) as any as S.Schema<GetHLSStreamingSessionURLOutput>;
 export type ImageSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
-export const ImageSelectorType = S.String;
+const ImageSelectorType = S.String;
 
 export type SamplingInterval = number;
 export type Format = "JPEG" | "PNG" | (string & {});
-export const Format = S.String;
+const Format = S.String;
 
 export type FormatConfigKey = "JPEGQuality" | (string & {});
-export const FormatConfigKey = S.String;
+const FormatConfigKey = S.String;
 
 export type FormatConfigValue = string;
 export type FormatConfig = { [key in FormatConfigKey]?: string };
-export const FormatConfig = /*@__PURE__*/ S.Record(
+const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -357,7 +357,7 @@ export interface GetImagesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
+const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -374,7 +374,7 @@ export const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/getImages" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetImagesInput" }) as any as S.Schema<GetImagesInput>;
 export type ImageError = "NO_MEDIA" | "MEDIA_ERROR" | (string & {});
-export const ImageError = S.String;
+const ImageError = S.String;
 
 export type ImageContent = string;
 export interface Image {
@@ -382,7 +382,7 @@ export interface Image {
   Error?: ImageError;
   ImageContent?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Error: S.optional(ImageError),
@@ -390,23 +390,23 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 export type Images = Image[];
-export const Images = /*@__PURE__*/ S.Array(Image);
+const Images = /*@__PURE__*/ S.Array(Image);
 export interface GetImagesOutput {
   Images?: Image[];
   NextToken?: string;
 }
-export const GetImagesOutput = /*@__PURE__*/ S.suspend(() =>
+const GetImagesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Images: S.optional(Images), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetImagesOutput" }) as any as S.Schema<GetImagesOutput>;
 export type FragmentNumberString = string;
 export type FragmentNumberList = string[];
-export const FragmentNumberList = /*@__PURE__*/ S.Array(S.String);
+const FragmentNumberList = /*@__PURE__*/ S.Array(S.String);
 export interface GetMediaForFragmentListInput {
   StreamName?: string;
   StreamARN?: string;
   Fragments: string[];
 }
-export const GetMediaForFragmentListInput = /*@__PURE__*/ S.suspend(() =>
+const GetMediaForFragmentListInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -428,7 +428,7 @@ export interface GetMediaForFragmentListOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-export const GetMediaForFragmentListOutput = /*@__PURE__*/ S.suspend(() =>
+const GetMediaForFragmentListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -438,18 +438,18 @@ export const GetMediaForFragmentListOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMediaForFragmentListOutput>;
 export type ListFragmentsMaxResults = number;
 export type FragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
-export const FragmentSelectorType = S.String;
+const FragmentSelectorType = S.String;
 
 export interface TimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
-export const TimestampRange = ClipTimestampRange as any as S.Schema<TimestampRange>;
+const TimestampRange = ClipTimestampRange as any as S.Schema<TimestampRange>;
 export interface FragmentSelector {
   FragmentSelectorType: FragmentSelectorType;
   TimestampRange: TimestampRange;
 }
-export const FragmentSelector = /*@__PURE__*/ S.suspend(() =>
+const FragmentSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FragmentSelectorType: FragmentSelectorType, TimestampRange: TimestampRange }),
 ).annotate({ identifier: "FragmentSelector" }) as any as S.Schema<FragmentSelector>;
 export interface ListFragmentsInput {
@@ -459,7 +459,7 @@ export interface ListFragmentsInput {
   NextToken?: string;
   FragmentSelector?: FragmentSelector;
 }
-export const ListFragmentsInput = /*@__PURE__*/ S.suspend(() =>
+const ListFragmentsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -475,7 +475,7 @@ export interface Fragment {
   ServerTimestamp?: Date;
   FragmentLengthInMilliseconds?: number;
 }
-export const Fragment = /*@__PURE__*/ S.suspend(() =>
+const Fragment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FragmentNumber: S.optional(S.String),
     FragmentSizeInBytes: S.optional(S.Number),
@@ -485,12 +485,12 @@ export const Fragment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Fragment" }) as any as S.Schema<Fragment>;
 export type FragmentList = Fragment[];
-export const FragmentList = /*@__PURE__*/ S.Array(Fragment);
+const FragmentList = /*@__PURE__*/ S.Array(Fragment);
 export interface ListFragmentsOutput {
   Fragments?: Fragment[];
   NextToken?: string;
 }
-export const ListFragmentsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListFragmentsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Fragments: S.optional(FragmentList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListFragmentsOutput" }) as any as S.Schema<ListFragmentsOutput>;
 export type ErrorMessage = string;

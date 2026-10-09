@@ -19,7 +19,7 @@ export class NotFound
 
 /** * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
 export type CustomerTaskStatusEnum = "open" | "in_progress" | "completed" | "canceled";
-export const CustomerTaskStatusEnum = S.String;
+const CustomerTaskStatusEnum = S.String;
 
 export interface CreateCustomerTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -37,7 +37,7 @@ export interface CreateCustomerTaskRequest {
   /** Initial task status. * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
   status?: CustomerTaskStatusEnum | (string & {});
 }
-export const CreateCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.optional(S.NullOr(S.String)),
@@ -57,7 +57,7 @@ export interface CustomerTaskAccount {
   /** Name of the linked account. */
   name: string;
 }
-export const CustomerTaskAccount = /*@__PURE__*/ S.suspend(() =>
+const CustomerTaskAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -74,7 +74,7 @@ export interface CustomerTaskUser {
   /** Last name of the user. */
   last_name: string;
 }
-export const CustomerTaskUser = /*@__PURE__*/ S.suspend(() =>
+const CustomerTaskUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     email: S.String,
@@ -115,7 +115,7 @@ export interface CustomerTask {
   /** Whether the current user can restore this task. */
   can_restore: boolean;
 }
-export const CustomerTask = /*@__PURE__*/ S.suspend(() =>
+const CustomerTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.NullOr(CustomerTaskAccount),
@@ -140,7 +140,7 @@ export interface CustomerTasksArchiveCreateRequest {
   project_id: string;
   id: string;
 }
-export const CustomerTasksArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomerTasksArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -160,7 +160,7 @@ export interface CustomerTasksRestoreCreateRequest {
   project_id: string;
   id: string;
 }
-export const CustomerTasksRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomerTasksRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -180,7 +180,7 @@ export interface GetCustomerTaskRequest {
   project_id: string;
   id: string;
 }
-export const GetCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -190,7 +190,7 @@ export const GetCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCustomerTaskRequest" }) as any as S.Schema<GetCustomerTaskRequest>;
 
 export type ListCustomerTasksRequestArchiveState = "active" | "archived" | "all";
-export const ListCustomerTasksRequestArchiveState = S.String;
+const ListCustomerTasksRequestArchiveState = S.String;
 
 export type ListCustomerTasksRequestOrdering =
   | "name"
@@ -207,7 +207,7 @@ export type ListCustomerTasksRequestOrdering =
   | "-account"
   | "created_at"
   | "-created_at";
-export const ListCustomerTasksRequestOrdering = S.String;
+const ListCustomerTasksRequestOrdering = S.String;
 
 export interface ListCustomerTasksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -235,7 +235,7 @@ export interface ListCustomerTasksRequest {
   /** Comma-separated task statuses. */
   statuses?: string;
 }
-export const ListCustomerTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -254,7 +254,7 @@ export const ListCustomerTasksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tasks in this page. */
 export type CustomerTaskPageResultsList = Array<CustomerTask>;
-export const CustomerTaskPageResultsList = /*@__PURE__*/ S.Array(
+const CustomerTaskPageResultsList = /*@__PURE__*/ S.Array(
   CustomerTask,
 ) as any as S.Schema<CustomerTaskPageResultsList>;
 
@@ -268,7 +268,7 @@ export interface CustomerTaskPage {
   /** Tasks in this page. */
   results: CustomerTaskPageResultsList;
 }
-export const CustomerTaskPage = /*@__PURE__*/ S.suspend(() =>
+const CustomerTaskPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -286,7 +286,7 @@ export interface ListCustomerTasksActivitiesRequest {
   /** Number of rows to skip. */
   offset?: number;
 }
-export const ListCustomerTasksActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerTasksActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -305,15 +305,15 @@ export const ListCustomerTasksActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `created` - Created * `updated` - Updated * `archived` - Archived * `restored` - Restored */
 export type CustomerTaskActivityTypeEnum = "created" | "updated" | "archived" | "restored";
-export const CustomerTaskActivityTypeEnum = S.String;
+const CustomerTaskActivityTypeEnum = S.String;
 
 /** Value before the change. */
 export type CustomerTaskChangeBefore = string | number | boolean | unknown;
-export const CustomerTaskChangeBefore = S.Unknown as any as S.Schema<CustomerTaskChangeBefore>;
+const CustomerTaskChangeBefore = S.Unknown as any as S.Schema<CustomerTaskChangeBefore>;
 
 /** Value after the change. */
 export type CustomerTaskChangeAfter = string | number | boolean | unknown;
-export const CustomerTaskChangeAfter = S.Unknown as any as S.Schema<CustomerTaskChangeAfter>;
+const CustomerTaskChangeAfter = S.Unknown as any as S.Schema<CustomerTaskChangeAfter>;
 
 export interface CustomerTaskChange {
   /** Semantic task field that changed. */
@@ -323,7 +323,7 @@ export interface CustomerTaskChange {
   /** Value after the change. */
   after: CustomerTaskChangeAfter | null;
 }
-export const CustomerTaskChange = /*@__PURE__*/ S.suspend(() =>
+const CustomerTaskChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.String,
     before: S.NullOr(CustomerTaskChangeBefore),
@@ -333,7 +333,7 @@ export const CustomerTaskChange = /*@__PURE__*/ S.suspend(() =>
 
 /** Semantic field changes in this action. */
 export type CustomerTaskActivityChangesList = Array<CustomerTaskChange>;
-export const CustomerTaskActivityChangesList = /*@__PURE__*/ S.Array(
+const CustomerTaskActivityChangesList = /*@__PURE__*/ S.Array(
   CustomerTaskChange,
 ) as any as S.Schema<CustomerTaskActivityChangesList>;
 
@@ -349,7 +349,7 @@ export interface CustomerTaskActivity {
   /** When the activity was recorded. */
   created_at: string;
 }
-export const CustomerTaskActivity = /*@__PURE__*/ S.suspend(() =>
+const CustomerTaskActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     activity_type: CustomerTaskActivityTypeEnum,
@@ -361,7 +361,7 @@ export const CustomerTaskActivity = /*@__PURE__*/ S.suspend(() =>
 
 /** Activities in this page. */
 export type CustomerTaskActivityPageResultsList = Array<CustomerTaskActivity>;
-export const CustomerTaskActivityPageResultsList = /*@__PURE__*/ S.Array(
+const CustomerTaskActivityPageResultsList = /*@__PURE__*/ S.Array(
   CustomerTaskActivity,
 ) as any as S.Schema<CustomerTaskActivityPageResultsList>;
 
@@ -375,7 +375,7 @@ export interface CustomerTaskActivityPage {
   /** Activities in this page. */
   results: CustomerTaskActivityPageResultsList;
 }
-export const CustomerTaskActivityPage = /*@__PURE__*/ S.suspend(() =>
+const CustomerTaskActivityPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -401,7 +401,7 @@ export interface UpdateCustomerTaskRequest {
   /** Replacement task status. * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
   status?: CustomerTaskStatusEnum | (string & {});
 }
-export const UpdateCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -435,7 +435,7 @@ export interface UpdateCustomerTasksPartialRequest {
   /** Replacement task status. * `open` - Open * `in_progress` - In progress * `completed` - Completed * `canceled` - Canceled */
   status?: CustomerTaskStatusEnum | (string & {});
 }
-export const UpdateCustomerTasksPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerTasksPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

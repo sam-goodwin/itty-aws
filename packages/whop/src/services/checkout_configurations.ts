@@ -38,7 +38,7 @@ export class NotFound
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. Defaults to `payment`. */
 export type CreateCheckoutConfigurationRequestMode = "payment" | "setup";
-export const CreateCheckoutConfigurationRequestMode = S.String;
+const CreateCheckoutConfigurationRequestMode = S.String;
 
 /** The different types of payment methods that can be used. */
 export type PaymentMethodTypes =
@@ -171,13 +171,13 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
-export const PaymentMethodTypes = S.String;
+const PaymentMethodTypes = S.String;
 
 /** Payment method types explicitly disabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList =
+const CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList =
   /*@__PURE__*/ S.Array(
     PaymentMethodTypes,
   ) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList>;
@@ -186,7 +186,7 @@ export const CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisable
 export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList =
+const CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList =
   CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` uses the plan or platform defaults. */
@@ -198,15 +198,12 @@ export interface CreateCheckoutConfigurationRequestPaymentMethodConfiguration {
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const CreateCheckoutConfigurationRequestPaymentMethodConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disabled: S.optional(
-        CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList,
-      ),
-      enabled: S.optional(CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList),
-      include_platform_defaults: S.optional(S.Boolean),
-    }),
+const CreateCheckoutConfigurationRequestPaymentMethodConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList),
+    enabled: S.optional(CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList),
+    include_platform_defaults: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "CreateCheckoutConfigurationRequestPaymentMethodConfiguration",
 }) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfiguration>;
@@ -215,14 +212,14 @@ export const CreateCheckoutConfigurationRequestPaymentMethodConfiguration = /*@_
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList =
+const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList =
   CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList>;
 
 /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList =
+const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList =
   CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for the inline plan. `null` uses platform defaults. */
@@ -234,8 +231,8 @@ export interface CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguratio
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       disabled: S.optional(
         CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList,
@@ -245,24 +242,24 @@ export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration =
       ),
       include_platform_defaults: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration",
-  }) as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration>;
+).annotate({
+  identifier: "CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration",
+}) as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration>;
 
 /** Billing model for the plan. */
 export type CreateCheckoutConfigurationRequestPlanPlanType = "renewal" | "one_time";
-export const CreateCheckoutConfigurationRequestPlanPlanType = S.String;
+const CreateCheckoutConfigurationRequestPlanPlanType = S.String;
 
 /** Sales method for the plan. */
 export type CreateCheckoutConfigurationRequestPlanReleaseMethod = "buy_now" | "waitlist";
-export const CreateCheckoutConfigurationRequestPlanReleaseMethod = S.String;
+const CreateCheckoutConfigurationRequestPlanReleaseMethod = S.String;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type CreateCheckoutConfigurationRequestPlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const CreateCheckoutConfigurationRequestPlanThreeDsLevel = S.String;
+const CreateCheckoutConfigurationRequestPlanThreeDsLevel = S.String;
 
 /** Whether the plan is visible to customers or hidden from public view. */
 export type CreateCheckoutConfigurationRequestPlanVisibility =
@@ -270,7 +267,7 @@ export type CreateCheckoutConfigurationRequestPlanVisibility =
   | "hidden"
   | "archived"
   | "quick_link";
-export const CreateCheckoutConfigurationRequestPlanVisibility = S.String;
+const CreateCheckoutConfigurationRequestPlanVisibility = S.String;
 
 /** Plan attributes used to create or find a plan for this checkout configuration. Mutually exclusive with `plan_id`. */
 export interface CreateCheckoutConfigurationRequestPlan {
@@ -315,7 +312,7 @@ export interface CreateCheckoutConfigurationRequestPlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility?: CreateCheckoutConfigurationRequestPlanVisibility | (string & {}) | null;
 }
-export const CreateCheckoutConfigurationRequestPlan = /*@__PURE__*/ S.suspend(() =>
+const CreateCheckoutConfigurationRequestPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.NullOr(S.String)),
     billing_period: S.optional(S.NullOr(S.Number)),
@@ -349,7 +346,7 @@ export type CreateCheckoutConfigurationRequestThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const CreateCheckoutConfigurationRequestThreeDsLevel = S.String;
+const CreateCheckoutConfigurationRequestThreeDsLevel = S.String;
 
 export interface CreateCheckoutConfigurationRequest {
   /** Account ID, prefixed `biz_`. */
@@ -375,7 +372,7 @@ export interface CreateCheckoutConfigurationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     affiliate_code: S.optional(S.NullOr(S.String)),
@@ -398,7 +395,7 @@ export const CreateCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 /** Payment methods explicitly disabled. */
 export type CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
-export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
+const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList>;
@@ -406,7 +403,7 @@ export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurat
 /** Payment methods explicitly enabled. */
 export type CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
-export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
+const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
 
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
@@ -418,7 +415,7 @@ export interface CreateCheckoutConfigurationResponseEffectivePaymentMethodConfig
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration =
+const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       disabled: S.optional(
@@ -435,18 +432,18 @@ export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurat
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type CreateCheckoutConfigurationResponseMode = "payment" | "setup";
-export const CreateCheckoutConfigurationResponseMode = S.String;
+const CreateCheckoutConfigurationResponseMode = S.String;
 
 /** Payment methods explicitly disabled for checkout. */
 export type CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
   Array<string>;
-export const CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
+const CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled for checkout. */
 export type CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
   Array<string>;
-export const CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
+const CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
@@ -458,33 +455,30 @@ export interface CreateCheckoutConfigurationResponsePaymentMethodConfiguration {
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const CreateCheckoutConfigurationResponsePaymentMethodConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(
-        CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList,
-      ),
-      enabled: S.optional(CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList),
-      include_platform_defaults: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateCheckoutConfigurationResponsePaymentMethodConfiguration",
-  }) as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfiguration>;
+const CreateCheckoutConfigurationResponsePaymentMethodConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList),
+    enabled: S.optional(CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList),
+    include_platform_defaults: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CreateCheckoutConfigurationResponsePaymentMethodConfiguration",
+}) as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfiguration>;
 
 /** Billing model for the plan. */
 export type CreateCheckoutConfigurationResponsePlanPlanType = "renewal" | "one_time";
-export const CreateCheckoutConfigurationResponsePlanPlanType = S.String;
+const CreateCheckoutConfigurationResponsePlanPlanType = S.String;
 
 /** Sales method for the plan. */
 export type CreateCheckoutConfigurationResponsePlanReleaseMethod = "buy_now" | "waitlist";
-export const CreateCheckoutConfigurationResponsePlanReleaseMethod = S.String;
+const CreateCheckoutConfigurationResponsePlanReleaseMethod = S.String;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type CreateCheckoutConfigurationResponsePlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const CreateCheckoutConfigurationResponsePlanThreeDsLevel = S.String;
+const CreateCheckoutConfigurationResponsePlanThreeDsLevel = S.String;
 
 /** Whether the plan is visible to customers or hidden from public view. */
 export type CreateCheckoutConfigurationResponsePlanVisibility =
@@ -492,7 +486,7 @@ export type CreateCheckoutConfigurationResponsePlanVisibility =
   | "hidden"
   | "archived"
   | "quick_link";
-export const CreateCheckoutConfigurationResponsePlanVisibility = S.String;
+const CreateCheckoutConfigurationResponsePlanVisibility = S.String;
 
 /** Plan used for payment checkout. `null` in setup mode. */
 export interface CreateCheckoutConfigurationResponsePlan {
@@ -521,7 +515,7 @@ export interface CreateCheckoutConfigurationResponsePlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: CreateCheckoutConfigurationResponsePlanVisibility;
 }
-export const CreateCheckoutConfigurationResponsePlan = /*@__PURE__*/ S.suspend(() =>
+const CreateCheckoutConfigurationResponsePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptive_pricing_enabled: S.Boolean,
     billing_period: S.NullOr(S.Number),
@@ -545,7 +539,7 @@ export type CreateCheckoutConfigurationResponseThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const CreateCheckoutConfigurationResponseThreeDsLevel = S.String;
+const CreateCheckoutConfigurationResponseThreeDsLevel = S.String;
 
 export interface CreateCheckoutConfigurationResponse {
   /** Account ID, prefixed `biz_`. */
@@ -577,7 +571,7 @@ export interface CreateCheckoutConfigurationResponse {
   /** When the checkout configuration was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CreateCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     affiliate_code: S.optional(S.NullOr(S.String)),
@@ -606,7 +600,7 @@ export interface DeleteCheckoutConfigurationRequest {
   /** The ID of the checkout configuration. */
   id: string;
 }
-export const DeleteCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/checkout_configurations/{id}", code: 200 })),
@@ -620,7 +614,7 @@ export interface DeleteCheckoutConfigurationResponse {
   /** ID of the deleted checkout configuration. */
   id: string;
 }
-export const DeleteCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -633,7 +627,7 @@ export interface GetCheckoutConfigurationRequest {
   /** The ID of the checkout configuration. */
   id: string;
 }
-export const GetCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/checkout_configurations/{id}", code: 200 })),
@@ -644,15 +638,9 @@ export const GetCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 /** Payment methods explicitly disabled. */
 export type GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
-export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
-  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList>;
-
 /** Payment methods explicitly enabled. */
 export type GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
-export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
-  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
-
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration {
   /** Payment methods explicitly disabled. */
@@ -662,21 +650,21 @@ export interface GetCheckoutConfigurationResponseEffectivePaymentMethodConfigura
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration =
+const GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration>;
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type GetCheckoutConfigurationResponseMode = "payment" | "setup";
-export const GetCheckoutConfigurationResponseMode = S.String;
+const GetCheckoutConfigurationResponseMode = S.String;
 
 /** Payment methods explicitly disabled for checkout. */
 export type GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList = Array<string>;
-export const GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
+const GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled for checkout. */
 export type GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList = Array<string>;
-export const GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
+const GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
@@ -688,40 +676,31 @@ export interface GetCheckoutConfigurationResponsePaymentMethodConfiguration {
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const GetCheckoutConfigurationResponsePaymentMethodConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disabled: S.optional(GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList),
-      enabled: S.optional(GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList),
-      include_platform_defaults: S.optional(S.Boolean),
-    }),
+const GetCheckoutConfigurationResponsePaymentMethodConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disabled: S.optional(GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList),
+    enabled: S.optional(GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList),
+    include_platform_defaults: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GetCheckoutConfigurationResponsePaymentMethodConfiguration",
 }) as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfiguration>;
 
 /** Billing model for the plan. */
 export type GetCheckoutConfigurationResponsePlanPlanType = "renewal" | "one_time";
-export const GetCheckoutConfigurationResponsePlanPlanType = S.String;
-
 /** Sales method for the plan. */
 export type GetCheckoutConfigurationResponsePlanReleaseMethod = "buy_now" | "waitlist";
-export const GetCheckoutConfigurationResponsePlanReleaseMethod = S.String;
-
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type GetCheckoutConfigurationResponsePlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const GetCheckoutConfigurationResponsePlanThreeDsLevel = S.String;
-
 /** Whether the plan is visible to customers or hidden from public view. */
 export type GetCheckoutConfigurationResponsePlanVisibility =
   | "visible"
   | "hidden"
   | "archived"
   | "quick_link";
-export const GetCheckoutConfigurationResponsePlanVisibility = S.String;
-
 /** Plan used for payment checkout. `null` in setup mode. */
 export interface GetCheckoutConfigurationResponsePlan {
   /** Whether this plan accepts local currency payments via adaptive pricing. */
@@ -749,7 +728,7 @@ export interface GetCheckoutConfigurationResponsePlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: GetCheckoutConfigurationResponsePlanVisibility;
 }
-export const GetCheckoutConfigurationResponsePlan =
+const GetCheckoutConfigurationResponsePlan =
   CreateCheckoutConfigurationResponsePlan as any as S.Schema<GetCheckoutConfigurationResponsePlan>;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
@@ -757,7 +736,7 @@ export type GetCheckoutConfigurationResponseThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const GetCheckoutConfigurationResponseThreeDsLevel = S.String;
+const GetCheckoutConfigurationResponseThreeDsLevel = S.String;
 
 export interface GetCheckoutConfigurationResponse {
   /** Account ID, prefixed `biz_`. */
@@ -789,7 +768,7 @@ export interface GetCheckoutConfigurationResponse {
   /** When the checkout configuration was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const GetCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     affiliate_code: S.optional(S.NullOr(S.String)),
@@ -815,10 +794,10 @@ export const GetCheckoutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCheckoutConfigurationResponse>;
 
 export type ListCheckoutConfigurationsRequestOrder = "created_at";
-export const ListCheckoutConfigurationsRequestOrder = S.String;
+const ListCheckoutConfigurationsRequestOrder = S.String;
 
 export type ListCheckoutConfigurationsRequestDirection = "asc" | "desc";
-export const ListCheckoutConfigurationsRequestDirection = S.String;
+const ListCheckoutConfigurationsRequestDirection = S.String;
 
 export interface ListCheckoutConfigurationsRequest {
   /** Account ID, prefixed `biz_`. */
@@ -838,7 +817,7 @@ export interface ListCheckoutConfigurationsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListCheckoutConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCheckoutConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Query()),
     plan_id: S.optional(S.String.pipe(T.Query())),
@@ -856,15 +835,9 @@ export const ListCheckoutConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Payment methods explicitly disabled. */
 export type ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
-export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList =
-  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList>;
-
 /** Payment methods explicitly enabled. */
 export type ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
-export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList =
-  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList>;
-
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration {
   /** Payment methods explicitly disabled. */
@@ -874,25 +847,19 @@ export interface ListCheckoutConfigurationsResponseDataItemEffectivePaymentMetho
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration =
+const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration>;
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type ListCheckoutConfigurationsResponseDataItemMode = "payment" | "setup";
-export const ListCheckoutConfigurationsResponseDataItemMode = S.String;
+const ListCheckoutConfigurationsResponseDataItemMode = S.String;
 
 /** Payment methods explicitly disabled for checkout. */
 export type ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList =
   Array<string>;
-export const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList =
-  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList>;
-
 /** Payment methods explicitly enabled for checkout. */
 export type ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList =
   Array<string>;
-export const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList =
-  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList>;
-
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
 export interface ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration {
   /** Payment methods explicitly disabled for checkout. */
@@ -902,32 +869,24 @@ export interface ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigur
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
-export const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration =
+const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration =
   CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration>;
 
 /** Billing model for the plan. */
 export type ListCheckoutConfigurationsResponseDataItemPlanPlanType = "renewal" | "one_time";
-export const ListCheckoutConfigurationsResponseDataItemPlanPlanType = S.String;
-
 /** Sales method for the plan. */
 export type ListCheckoutConfigurationsResponseDataItemPlanReleaseMethod = "buy_now" | "waitlist";
-export const ListCheckoutConfigurationsResponseDataItemPlanReleaseMethod = S.String;
-
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type ListCheckoutConfigurationsResponseDataItemPlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const ListCheckoutConfigurationsResponseDataItemPlanThreeDsLevel = S.String;
-
 /** Whether the plan is visible to customers or hidden from public view. */
 export type ListCheckoutConfigurationsResponseDataItemPlanVisibility =
   | "visible"
   | "hidden"
   | "archived"
   | "quick_link";
-export const ListCheckoutConfigurationsResponseDataItemPlanVisibility = S.String;
-
 /** Plan used for payment checkout. `null` in setup mode. */
 export interface ListCheckoutConfigurationsResponseDataItemPlan {
   /** Whether this plan accepts local currency payments via adaptive pricing. */
@@ -955,7 +914,7 @@ export interface ListCheckoutConfigurationsResponseDataItemPlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: ListCheckoutConfigurationsResponseDataItemPlanVisibility;
 }
-export const ListCheckoutConfigurationsResponseDataItemPlan =
+const ListCheckoutConfigurationsResponseDataItemPlan =
   CreateCheckoutConfigurationResponsePlan as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPlan>;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
@@ -963,7 +922,7 @@ export type ListCheckoutConfigurationsResponseDataItemThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const ListCheckoutConfigurationsResponseDataItemThreeDsLevel = S.String;
+const ListCheckoutConfigurationsResponseDataItemThreeDsLevel = S.String;
 
 export interface ListCheckoutConfigurationsResponseDataItem {
   /** Account ID, prefixed `biz_`. */
@@ -995,7 +954,7 @@ export interface ListCheckoutConfigurationsResponseDataItem {
   /** When the checkout configuration was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ListCheckoutConfigurationsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListCheckoutConfigurationsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     affiliate_code: S.optional(S.NullOr(S.String)),
@@ -1022,7 +981,7 @@ export const ListCheckoutConfigurationsResponseDataItem = /*@__PURE__*/ S.suspen
 
 export type ListCheckoutConfigurationsResponseDataList =
   Array<ListCheckoutConfigurationsResponseDataItem>;
-export const ListCheckoutConfigurationsResponseDataList = /*@__PURE__*/ S.Array(
+const ListCheckoutConfigurationsResponseDataList = /*@__PURE__*/ S.Array(
   ListCheckoutConfigurationsResponseDataItem,
 ) as any as S.Schema<ListCheckoutConfigurationsResponseDataList>;
 
@@ -1032,7 +991,7 @@ export interface ListCheckoutConfigurationsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListCheckoutConfigurationsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListCheckoutConfigurationsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -1047,7 +1006,7 @@ export interface ListCheckoutConfigurationsResponse {
   data: ListCheckoutConfigurationsResponseDataList;
   page_info: ListCheckoutConfigurationsResponsePageInfo;
 }
-export const ListCheckoutConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCheckoutConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCheckoutConfigurationsResponseDataList,
     page_info: ListCheckoutConfigurationsResponsePageInfo,

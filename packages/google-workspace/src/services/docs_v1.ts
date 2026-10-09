@@ -66,7 +66,7 @@ export class NotFound
   ) {}
 
 export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "PT";
-export const DimensionUnitEnum = S.String;
+const DimensionUnitEnum = S.String;
 
 /** A magnitude in a single direction in the specified units. */
 export interface Dimension {
@@ -75,7 +75,7 @@ export interface Dimension {
   /** The magnitude. */
   magnitude?: number;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(DimensionUnitEnum),
     magnitude: S.optional(S.Number),
@@ -87,7 +87,7 @@ export type TextStyleBaselineOffsetEnum =
   | "NONE"
   | "SUPERSCRIPT"
   | "SUBSCRIPT";
-export const TextStyleBaselineOffsetEnum = S.String;
+const TextStyleBaselineOffsetEnum = S.String;
 
 /** An RGB color. */
 export interface RgbColor {
@@ -98,7 +98,7 @@ export interface RgbColor {
   /** The blue component of the color, from 0.0 to 1.0. */
   blue?: number;
 }
-export const RgbColor = /*@__PURE__*/ S.suspend(() =>
+const RgbColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     red: S.optional(S.Number),
     green: S.optional(S.Number),
@@ -111,7 +111,7 @@ export interface Color {
   /** The RGB color value. */
   rgbColor?: RgbColor;
 }
-export const Color = /*@__PURE__*/ S.suspend(() =>
+const Color = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rgbColor: S.optional(RgbColor),
   }),
@@ -122,7 +122,7 @@ export interface OptionalColor {
   /** If set, this will be used as an opaque color. If unset, this represents a transparent color. */
   color?: Color;
 }
-export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
+const OptionalColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(Color),
   }),
@@ -135,7 +135,7 @@ export interface BookmarkLink {
   /** The ID of the tab containing this bookmark. */
   tabId?: string;
 }
-export const BookmarkLink = /*@__PURE__*/ S.suspend(() =>
+const BookmarkLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     tabId: S.optional(S.String),
@@ -149,7 +149,7 @@ export interface HeadingLink {
   /** The ID of the tab containing this heading. */
   tabId?: string;
 }
-export const HeadingLink = BookmarkLink as any as S.Schema<HeadingLink>;
+const HeadingLink = BookmarkLink as any as S.Schema<HeadingLink>;
 
 /** A reference to another portion of a document or an external URL resource. */
 export interface Link {
@@ -166,7 +166,7 @@ export interface Link {
   /** The ID of a heading in this document. Legacy field: Instead, set includeTabsContent to `true` and use Link.heading for read and write operations. This field is only returned when includeTabsContent is set to `false` in documents containing a single tab and links to a heading within the singular tab. Otherwise, Link.heading is returned. If this field is used in a write request, the heading is considered to be from the tab ID specified in the request. If a tab ID is not specified in the request, it is considered to be from the first tab in the document. */
   headingId?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     tabId: S.optional(S.String),
@@ -184,7 +184,7 @@ export interface WeightedFontFamily {
   /** The weight of the font. This field can have any value that's a multiple of `100` between `100` and `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed. The default value is `400` ("normal"). The font weight makes up just one component of the rendered font weight. A combination of the `weight` and the text style's resolved `bold` value determine the rendered weight, after accounting for inheritance: * If the text is bold and the weight is less than `400`, the rendered weight is 400. * If the text is bold and the weight is greater than or equal to `400` but is less than `700`, the rendered weight is `700`. * If the weight is greater than or equal to `700`, the rendered weight is equal to the weight. * If the text is not bold, the rendered weight is equal to the weight. */
   weight?: number;
 }
-export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
+const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fontFamily: S.optional(S.String),
     weight: S.optional(S.Number),
@@ -216,7 +216,7 @@ export interface TextStyle {
   /** The font family and rendered weight of the text. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
   weightedFontFamily?: WeightedFontFamily;
 }
-export const TextStyle = /*@__PURE__*/ S.suspend(() =>
+const TextStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     underline: S.optional(S.Boolean),
     fontSize: S.optional(Dimension),
@@ -243,20 +243,20 @@ export type NamedStyleNamedStyleTypeEnum =
   | "HEADING_4"
   | "HEADING_5"
   | "HEADING_6";
-export const NamedStyleNamedStyleTypeEnum = S.String;
+const NamedStyleNamedStyleTypeEnum = S.String;
 
 export type ParagraphStyleSpacingModeEnum =
   | "SPACING_MODE_UNSPECIFIED"
   | "NEVER_COLLAPSE"
   | "COLLAPSE_LISTS";
-export const ParagraphStyleSpacingModeEnum = S.String;
+const ParagraphStyleSpacingModeEnum = S.String;
 
 /** The shading of a paragraph. */
 export interface Shading {
   /** The background color of this paragraph shading. */
   backgroundColor?: OptionalColor;
 }
-export const Shading = /*@__PURE__*/ S.suspend(() =>
+const Shading = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backgroundColor: S.optional(OptionalColor),
   }),
@@ -273,16 +273,16 @@ export type ParagraphStyleNamedStyleTypeEnum =
   | "HEADING_4"
   | "HEADING_5"
   | "HEADING_6";
-export const ParagraphStyleNamedStyleTypeEnum = S.String;
+const ParagraphStyleNamedStyleTypeEnum = S.String;
 
 export type ParagraphStyleDirectionEnum =
   | "CONTENT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
   | "RIGHT_TO_LEFT";
-export const ParagraphStyleDirectionEnum = S.String;
+const ParagraphStyleDirectionEnum = S.String;
 
 export type ParagraphBorderDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH";
-export const ParagraphBorderDashStyleEnum = S.String;
+const ParagraphBorderDashStyleEnum = S.String;
 
 /** A border around a paragraph. */
 export interface ParagraphBorder {
@@ -295,7 +295,7 @@ export interface ParagraphBorder {
   /** The dash style of the border. */
   dashStyle?: ParagraphBorderDashStyleEnum | (string & {});
 }
-export const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
+const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(OptionalColor),
     padding: S.optional(Dimension),
@@ -305,7 +305,7 @@ export const ParagraphBorder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParagraphBorder" }) as any as S.Schema<ParagraphBorder>;
 
 export type TabStopAlignmentEnum = "TAB_STOP_ALIGNMENT_UNSPECIFIED" | "START" | "CENTER" | "END";
-export const TabStopAlignmentEnum = S.String;
+const TabStopAlignmentEnum = S.String;
 
 /** A tab stop within a paragraph. */
 export interface TabStop {
@@ -314,7 +314,7 @@ export interface TabStop {
   /** The alignment of this tab stop. If unset, the value defaults to START. */
   alignment?: TabStopAlignmentEnum | (string & {});
 }
-export const TabStop = /*@__PURE__*/ S.suspend(() =>
+const TabStop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(Dimension),
     alignment: S.optional(TabStopAlignmentEnum),
@@ -322,7 +322,7 @@ export const TabStop = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TabStop" }) as any as S.Schema<TabStop>;
 
 export type TabStopList = Array<TabStop>;
-export const TabStopList = /*@__PURE__*/ S.Array(TabStop) as any as S.Schema<TabStopList>;
+const TabStopList = /*@__PURE__*/ S.Array(TabStop) as any as S.Schema<TabStopList>;
 
 export type ParagraphStyleAlignmentEnum =
   | "ALIGNMENT_UNSPECIFIED"
@@ -330,7 +330,7 @@ export type ParagraphStyleAlignmentEnum =
   | "CENTER"
   | "END"
   | "JUSTIFIED";
-export const ParagraphStyleAlignmentEnum = S.String;
+const ParagraphStyleAlignmentEnum = S.String;
 
 /** Styles that apply to a whole paragraph. Inherited paragraph styles are represented as unset fields in this message. A paragraph style's parent depends on where the paragraph style is defined: * The ParagraphStyle on a Paragraph inherits from the paragraph's corresponding named style type. * The ParagraphStyle on a named style inherits from the normal text named style. * The ParagraphStyle of the normal text named style inherits from the default paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph element that's contained in a table may inherit its paragraph style from the table style. If the paragraph style does not inherit from a parent, unsetting fields will revert the style to a value matching the defaults in the Docs editor. */
 export interface ParagraphStyle {
@@ -379,7 +379,7 @@ export interface ParagraphStyle {
   /** The amount of space between lines, as a percentage of normal, where normal is represented as 100.0. If unset, the value is inherited from the parent. */
   lineSpacing?: number;
 }
-export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
+const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avoidWidowAndOrphan: S.optional(S.Boolean),
     pageBreakBefore: S.optional(S.Boolean),
@@ -415,7 +415,7 @@ export interface NamedStyle {
   /** The paragraph style of this named style. */
   paragraphStyle?: ParagraphStyle;
 }
-export const NamedStyle = /*@__PURE__*/ S.suspend(() =>
+const NamedStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyle: S.optional(TextStyle),
     namedStyleType: S.optional(NamedStyleNamedStyleTypeEnum),
@@ -432,7 +432,7 @@ export interface UpdateNamedStyleRequest {
   /** The NamedStyle fields that should be updated. At least `named_style_type` must be specified. The root `named_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to include `"text_style"` and `"text_style.bold"`. To update the paragraph style's alignment property, set `fields` to include `"paragraph_style"` and `"paragraph_style.alignment"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. Specifying `"text_style"` or `"paragraph_style"` with an empty TextStyle or ParagraphStyle will reset all of its nested fields. */
   fields?: string;
 }
-export const UpdateNamedStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamedStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabId: S.optional(S.String),
     namedStyle: S.optional(NamedStyle),
@@ -451,7 +451,7 @@ export interface Range {
   /** The zero-based start index of this range, in UTF-16 code units. In all current uses, a start index must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
   startIndex?: number;
 }
-export const Range = /*@__PURE__*/ S.suspend(() =>
+const Range = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segmentId: S.optional(S.String),
     endIndex: S.optional(S.Number),
@@ -465,7 +465,7 @@ export interface DeleteParagraphBulletsRequest {
   /** The range to delete bullets from. */
   range?: Range;
 }
-export const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
   }),
@@ -490,7 +490,7 @@ export type CreateParagraphBulletsRequestBulletPresetEnum =
   | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
   | "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL"
   | "NUMBERED_ZERODECIMAL_ALPHA_ROMAN";
-export const CreateParagraphBulletsRequestBulletPresetEnum = S.String;
+const CreateParagraphBulletsRequestBulletPresetEnum = S.String;
 
 /** Creates bullets for all of the paragraphs that overlap with the given range. The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs being updated are added to that preceding list. */
 export interface CreateParagraphBulletsRequest {
@@ -499,7 +499,7 @@ export interface CreateParagraphBulletsRequest {
   /** The kinds of bullet glyphs to be used. */
   bulletPreset?: CreateParagraphBulletsRequestBulletPresetEnum | (string & {});
 }
-export const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
     bulletPreset: S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
@@ -519,7 +519,7 @@ export interface UpdateCommentPostRequest {
   /** The ID of the CommentThread which the post belongs to. */
   commentId?: string;
 }
-export const UpdateCommentPostRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     suggestionId: S.optional(S.String),
@@ -537,7 +537,7 @@ export interface Location {
   /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     segmentId: S.optional(S.String),
@@ -554,7 +554,7 @@ export interface TableCellLocation {
   /** The zero-based column index. For example, the second column in the table has a column index of 1. */
   columnIndex?: number;
 }
-export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
+const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableStartLocation: S.optional(Location),
     rowIndex: S.optional(S.Number),
@@ -569,7 +569,7 @@ export interface InsertTableColumnRequest {
   /** Whether to insert new column to the right of the reference cell location. - `True`: insert to the right. - `False`: insert to the left. */
   insertRight?: boolean;
 }
-export const InsertTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableCellLocation: S.optional(TableCellLocation),
     insertRight: S.optional(S.Boolean),
@@ -583,14 +583,14 @@ export type DateElementPropertiesDateFormatEnum =
   | "DATE_FORMAT_MONTH_DAY_FULL"
   | "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED"
   | "DATE_FORMAT_ISO8601";
-export const DateElementPropertiesDateFormatEnum = S.String;
+const DateElementPropertiesDateFormatEnum = S.String;
 
 export type DateElementPropertiesTimeFormatEnum =
   | "TIME_FORMAT_UNSPECIFIED"
   | "TIME_FORMAT_DISABLED"
   | "TIME_FORMAT_HOUR_MINUTE"
   | "TIME_FORMAT_HOUR_MINUTE_TIMEZONE";
-export const DateElementPropertiesTimeFormatEnum = S.String;
+const DateElementPropertiesTimeFormatEnum = S.String;
 
 /** Properties of a DateElement. */
 export interface DateElementProperties {
@@ -607,7 +607,7 @@ export interface DateElementProperties {
   /** Output only. Indicates how the DateElement is displayed in the document. */
   displayText?: string;
 }
-export const DateElementProperties = /*@__PURE__*/ S.suspend(() =>
+const DateElementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     locale: S.optional(S.String),
@@ -625,7 +625,7 @@ export interface EndOfSegmentLocation {
   /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
-export const EndOfSegmentLocation = /*@__PURE__*/ S.suspend(() =>
+const EndOfSegmentLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segmentId: S.optional(S.String),
     tabId: S.optional(S.String),
@@ -641,7 +641,7 @@ export interface InsertDateRequest {
   /** Inserts the date at the end of the given header, footer or document body. */
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
-export const InsertDateRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertDateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(Location),
     dateElementProperties: S.optional(DateElementProperties),
@@ -654,7 +654,7 @@ export interface DeleteContentRangeRequest {
   /** The range of content to delete. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged. Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table cell is allowed. */
   range?: Range;
 }
-export const DeleteContentRangeRequest =
+const DeleteContentRangeRequest =
   DeleteParagraphBulletsRequest as any as S.Schema<DeleteContentRangeRequest>;
 
 /** Creates a NamedRange referencing the given range. */
@@ -664,7 +664,7 @@ export interface CreateNamedRangeRequest {
   /** The name of the NamedRange. Names do not need to be unique. Names must be at least 1 character and no more than 256 characters, measured in UTF-16 code units. */
   name?: string;
 }
-export const CreateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
     name: S.optional(S.String),
@@ -680,7 +680,7 @@ export interface UpdateParagraphStyleRequest {
   /** The range overlapping the paragraphs to style. */
   range?: Range;
 }
-export const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.String),
     paragraphStyle: S.optional(ParagraphStyle),
@@ -697,7 +697,7 @@ export interface DeleteFooterRequest {
   /** The id of the footer to delete. If this footer is defined on DocumentStyle, the reference to this footer is removed, resulting in no footer of that type for the first section of the document. If this footer is defined on a SectionStyle, the reference to this footer is removed and the footer of that type is now continued from the previous section. */
   footerId?: string;
 }
-export const DeleteFooterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFooterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabId: S.optional(S.String),
     footerId: S.optional(S.String),
@@ -713,7 +713,7 @@ export interface TableRange {
   /** The row span of the table range. */
   rowSpan?: number;
 }
-export const TableRange = /*@__PURE__*/ S.suspend(() =>
+const TableRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnSpan: S.optional(S.Number),
     tableCellLocation: S.optional(TableCellLocation),
@@ -722,7 +722,7 @@ export const TableRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableRange" }) as any as S.Schema<TableRange>;
 
 export type TableCellBorderDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH";
-export const TableCellBorderDashStyleEnum = S.String;
+const TableCellBorderDashStyleEnum = S.String;
 
 /** A border around a table cell. Table cell borders cannot be transparent. To hide a table cell border, make its width 0. */
 export interface TableCellBorder {
@@ -733,7 +733,7 @@ export interface TableCellBorder {
   /** The width of the border. */
   width?: Dimension;
 }
-export const TableCellBorder = /*@__PURE__*/ S.suspend(() =>
+const TableCellBorder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashStyle: S.optional(TableCellBorderDashStyleEnum),
     color: S.optional(OptionalColor),
@@ -747,7 +747,7 @@ export type TableCellStyleContentAlignmentEnum =
   | "TOP"
   | "MIDDLE"
   | "BOTTOM";
-export const TableCellStyleContentAlignmentEnum = S.String;
+const TableCellStyleContentAlignmentEnum = S.String;
 
 /** The style of a TableCell. Inherited table cell styles are represented as unset fields in this message. A table cell style can inherit from the table's style. */
 export interface TableCellStyle {
@@ -776,7 +776,7 @@ export interface TableCellStyle {
   /** The background color of the cell. */
   backgroundColor?: OptionalColor;
 }
-export const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
+const TableCellStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paddingLeft: S.optional(Dimension),
     borderBottom: S.optional(TableCellBorder),
@@ -804,7 +804,7 @@ export interface UpdateTableCellStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `tableCellStyle` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the table cell background color, set `fields` to `"backgroundColor"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
 }
-export const UpdateTableCellStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableCellStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableRange: S.optional(TableRange),
     tableStartLocation: S.optional(Location),
@@ -820,7 +820,7 @@ export interface AcceptSuggestionRequest {
   /** The ID of the suggestion. */
   suggestionId?: string;
 }
-export const AcceptSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestionId: S.optional(S.String),
   }),
@@ -831,7 +831,7 @@ export interface Background {
   /** The background color. */
   color?: OptionalColor;
 }
-export const Background = /*@__PURE__*/ S.suspend(() =>
+const Background = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(OptionalColor),
   }),
@@ -844,7 +844,7 @@ export interface Size {
   /** The width of the object. */
   width?: Dimension;
 }
-export const Size = /*@__PURE__*/ S.suspend(() =>
+const Size = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(Dimension),
     width: S.optional(Dimension),
@@ -852,14 +852,14 @@ export const Size = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 export type DocumentFormatDocumentModeEnum = "DOCUMENT_MODE_UNSPECIFIED" | "PAGES" | "PAGELESS";
-export const DocumentFormatDocumentModeEnum = S.String;
+const DocumentFormatDocumentModeEnum = S.String;
 
 /** Represents document-level format settings. */
 export interface DocumentFormat {
   /** Whether the document has pages or is pageless. */
   documentMode?: DocumentFormatDocumentModeEnum | (string & {});
 }
-export const DocumentFormat = /*@__PURE__*/ S.suspend(() =>
+const DocumentFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentMode: S.optional(DocumentFormatDocumentModeEnum),
   }),
@@ -908,7 +908,7 @@ export interface DocumentStyle {
   /** The right page margin. Updating the right page margin on the document style clears the right page margin on all section styles. It may also cause columns to resize in all sections. If DocumentMode is PAGELESS, this property will not be rendered. */
   marginRight?: Dimension;
 }
-export const DocumentStyle = /*@__PURE__*/ S.suspend(() =>
+const DocumentStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useCustomHeaderFooterMargins: S.optional(S.Boolean),
     firstPageHeaderId: S.optional(S.String),
@@ -942,7 +942,7 @@ export interface UpdateDocumentStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `document_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the background, set `fields` to `"background"`. */
   fields?: string;
 }
-export const UpdateDocumentStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentStyle: S.optional(DocumentStyle),
     tabId: S.optional(S.String),
@@ -961,7 +961,7 @@ export interface InsertTextRequest {
   /** Inserts the text at a specific index in the document. Text must be inserted inside the bounds of an existing Paragraph. For instance, text cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). The text must be inserted in the preceding paragraph. */
   location?: Location;
 }
-export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endOfSegmentLocation: S.optional(EndOfSegmentLocation),
     text: S.optional(S.String),
@@ -970,14 +970,14 @@ export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertTextRequest" }) as any as S.Schema<InsertTextRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A criteria that specifies in which tabs a request executes. */
 export interface TabsCriteria {
   /** The list of tab IDs in which the request executes. */
   tabIds?: StringList;
 }
-export const TabsCriteria = /*@__PURE__*/ S.suspend(() =>
+const TabsCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabIds: S.optional(StringList),
   }),
@@ -992,7 +992,7 @@ export interface DeleteNamedRangeRequest {
   /** Optional. The criteria used to specify which tab(s) the range deletion should occur in. When omitted, the range deletion is applied to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the range deletion applies to the singular tab. In a document containing multiple tabs: - If provided, the range deletion applies to the specified tabs. - If not provided, the range deletion applies to all tabs. */
   tabsCriteria?: TabsCriteria;
 }
-export const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namedRangeId: S.optional(S.String),
@@ -1005,7 +1005,7 @@ export interface MergeTableCellsRequest {
   /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the "head" cell of the range. This is the upper-left cell of the range when the content direction is left to right, and the upper-right cell of the range otherwise. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged or where the table is non-rectangular), a 400 bad request error is returned. */
   tableRange?: TableRange;
 }
-export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
+const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableRange: S.optional(TableRange),
   }),
@@ -1018,7 +1018,7 @@ export interface CreateFootnoteRequest {
   /** Inserts the footnote reference at a specific index in the document. The footnote reference must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Footnote references cannot be inserted inside an equation, header, footer or footnote. Since footnote references can only be inserted in the body, the segment ID field must be empty. */
   location?: Location;
 }
-export const CreateFootnoteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFootnoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endOfSegmentLocation: S.optional(EndOfSegmentLocation),
     location: S.optional(Location),
@@ -1032,7 +1032,7 @@ export interface DeleteDropdownDefinitionRequest {
   /** The ID of the tab that contains the dropdown definition to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
-export const DeleteDropdownDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDropdownDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownDefinitionId: S.optional(S.String),
     tabId: S.optional(S.String),
@@ -1050,7 +1050,7 @@ export interface DropdownProperties {
   /** The ID of the DropdownDefinition that defines the options for this dropdown. */
   dropdownDefinitionId?: string;
 }
-export const DropdownProperties = /*@__PURE__*/ S.suspend(() =>
+const DropdownProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectedOptionId: S.optional(S.String),
     displayValue: S.optional(S.String),
@@ -1069,7 +1069,7 @@ export interface UpdateDropdownPropertiesRequest {
   /** The ID of the tab that contains the dropdown to update. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
-export const UpdateDropdownPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDropdownPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.String),
     dropdownProperties: S.optional(DropdownProperties),
@@ -1085,7 +1085,7 @@ export interface DeleteTabRequest {
   /** The ID of the tab to delete. */
   tabId?: string;
 }
-export const DeleteTabRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabId: S.optional(S.String),
   }),
@@ -1098,7 +1098,7 @@ export interface DeletePositionedObjectRequest {
   /** The ID of the positioned object to delete. */
   objectId?: string;
 }
-export const DeletePositionedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePositionedObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabId: S.optional(S.String),
     objectId: S.optional(S.String),
@@ -1109,8 +1109,6 @@ export const DeletePositionedObjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Rejects a suggestion. Returns a 403 forbidden error if the requesting user does not have edit access to the document and is not the author of the suggestion. [Developer Preview](https://developers.google.com/workspace/preview). */
 export type RejectSuggestionRequest = AcceptSuggestionRequest;
-export const RejectSuggestionRequest = AcceptSuggestionRequest;
-
 /** Deletes a Header from the document. */
 export interface DeleteHeaderRequest {
   /** The id of the header to delete. If this header is defined on DocumentStyle, the reference to this header is removed, resulting in no header of that type for the first section of the document. If this header is defined on a SectionStyle, the reference to this header is removed and the header of that type is now continued from the previous section. */
@@ -1118,7 +1116,7 @@ export interface DeleteHeaderRequest {
   /** The tab containing the header to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
-export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerId: S.optional(S.String),
     tabId: S.optional(S.String),
@@ -1140,7 +1138,7 @@ export interface TabProperties {
   /** The zero-based index of the tab within the parent. */
   index?: number;
 }
-export const TabProperties = /*@__PURE__*/ S.suspend(() =>
+const TabProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     parentTabId: S.optional(S.String),
@@ -1156,7 +1154,7 @@ export interface AddDocumentTabRequest {
   /** The properties of the tab to add. All properties are optional. */
   tabProperties?: TabProperties;
 }
-export const AddDocumentTabRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDocumentTabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabProperties: S.optional(TabProperties),
   }),
@@ -1169,7 +1167,7 @@ export interface InsertTableRowRequest {
   /** The reference table cell location from which rows will be inserted. A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will be inserted above (or below) the merged cell. */
   tableCellLocation?: TableCellLocation;
 }
-export const InsertTableRowRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTableRowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertBelow: S.optional(S.Boolean),
     tableCellLocation: S.optional(TableCellLocation),
@@ -1187,7 +1185,7 @@ export interface InsertTableRequest {
   /** The number of columns in the table. */
   columns?: number;
 }
-export const InsertTableRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(Location),
     endOfSegmentLocation: S.optional(EndOfSegmentLocation),
@@ -1200,7 +1198,7 @@ export type InsertSectionBreakRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "CONTINUOUS"
   | "NEXT_PAGE";
-export const InsertSectionBreakRequestSectionTypeEnum = S.String;
+const InsertSectionBreakRequestSectionTypeEnum = S.String;
 
 /** Inserts a section break at the given location. A newline character will be inserted before the section break. */
 export interface InsertSectionBreakRequest {
@@ -1211,7 +1209,7 @@ export interface InsertSectionBreakRequest {
   /** Inserts a newline and a section break at the end of the document body. Section breaks cannot be inserted inside a footnote, header or footer. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
-export const InsertSectionBreakRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertSectionBreakRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(Location),
     sectionType: S.optional(InsertSectionBreakRequestSectionTypeEnum),
@@ -1225,7 +1223,7 @@ export type SectionStyleColumnSeparatorStyleEnum =
   | "COLUMN_SEPARATOR_STYLE_UNSPECIFIED"
   | "NONE"
   | "BETWEEN_EACH_COLUMN";
-export const SectionStyleColumnSeparatorStyleEnum = S.String;
+const SectionStyleColumnSeparatorStyleEnum = S.String;
 
 /** Properties that apply to a section's column. */
 export interface SectionColumnProperties {
@@ -1234,7 +1232,7 @@ export interface SectionColumnProperties {
   /** Output only. The width of the column. */
   width?: Dimension;
 }
-export const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
+const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paddingEnd: S.optional(Dimension),
     width: S.optional(Dimension),
@@ -1242,18 +1240,18 @@ export const SectionColumnProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SectionColumnProperties" }) as any as S.Schema<SectionColumnProperties>;
 
 export type SectionColumnPropertiesList = Array<SectionColumnProperties>;
-export const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(
+const SectionColumnPropertiesList = /*@__PURE__*/ S.Array(
   SectionColumnProperties,
 ) as any as S.Schema<SectionColumnPropertiesList>;
 
 export type SectionStyleSectionTypeEnum = "SECTION_TYPE_UNSPECIFIED" | "CONTINUOUS" | "NEXT_PAGE";
-export const SectionStyleSectionTypeEnum = S.String;
+const SectionStyleSectionTypeEnum = S.String;
 
 export type SectionStyleContentDirectionEnum =
   | "CONTENT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
   | "RIGHT_TO_LEFT";
-export const SectionStyleContentDirectionEnum = S.String;
+const SectionStyleContentDirectionEnum = S.String;
 
 /** The styling that applies to a section. */
 export interface SectionStyle {
@@ -1296,7 +1294,7 @@ export interface SectionStyle {
   /** The ID of the header used only for the first page of the section. If use_first_page_header_footer is true, this value is used for the header on the first page of the section. If it's false, the header on the first page of the section uses the default_header_id. If unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's first_page_header_id. If DocumentMode is PAGELESS, this property will not be rendered. This property is read-only. */
   firstPageHeaderId?: string;
 }
-export const SectionStyle = /*@__PURE__*/ S.suspend(() =>
+const SectionStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marginTop: S.optional(Dimension),
     defaultHeaderId: S.optional(S.String),
@@ -1329,7 +1327,7 @@ export interface UpdateSectionStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `section_style` is implied and must not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the left margin, set `fields` to `"margin_left"`. */
   fields?: string;
 }
-export const UpdateSectionStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSectionStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
     sectionStyle: S.optional(SectionStyle),
@@ -1342,7 +1340,7 @@ export const UpdateSectionStyleRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReplaceImageRequestImageReplaceMethodEnum =
   | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
   | "CENTER_CROP";
-export const ReplaceImageRequestImageReplaceMethodEnum = S.String;
+const ReplaceImageRequestImageReplaceMethodEnum = S.String;
 
 /** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image in order to mirror the behavior of the Docs editor. */
 export interface ReplaceImageRequest {
@@ -1355,7 +1353,7 @@ export interface ReplaceImageRequest {
   /** The ID of the existing image that will be replaced. The ID can be retrieved from the response of a get request. */
   imageObjectId?: string;
 }
-export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     tabId: S.optional(S.String),
@@ -1369,7 +1367,7 @@ export interface UnmergeTableCellsRequest {
   /** The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right, and the upper-right otherwise. */
   tableRange?: TableRange;
 }
-export const UnmergeTableCellsRequest =
+const UnmergeTableCellsRequest =
   MergeTableCellsRequest as any as S.Schema<UnmergeTableCellsRequest>;
 
 /** Inserts a page break followed by a newline at the specified location. */
@@ -1379,7 +1377,7 @@ export interface InsertPageBreakRequest {
   /** Inserts the page break at the end of the document body. Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
-export const InsertPageBreakRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPageBreakRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(Location),
     endOfSegmentLocation: S.optional(EndOfSegmentLocation),
@@ -1391,7 +1389,7 @@ export type PostCommentActionEnum =
   | "NO_COMMENT_ACTION_CHANGE"
   | "RESOLVE"
   | "REOPEN";
-export const PostCommentActionEnum = S.String;
+const PostCommentActionEnum = S.String;
 
 /** Represents a user who authored a comment or suggestion post. [Developer Preview](https://developers.google.com/workspace/preview). */
 export interface PostAuthor {
@@ -1404,7 +1402,7 @@ export interface PostAuthor {
   /** The display name of the user. May be absent if the author is anonymous. */
   displayName?: string;
 }
-export const PostAuthor = /*@__PURE__*/ S.suspend(() =>
+const PostAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anonymous: S.optional(S.Boolean),
     user: S.optional(S.String),
@@ -1418,7 +1416,7 @@ export type PostSuggestionActionEnum =
   | "NO_SUGGESTION_ACTION_CHANGE"
   | "ACCEPT"
   | "REJECT";
-export const PostSuggestionActionEnum = S.String;
+const PostSuggestionActionEnum = S.String;
 
 /** Represents a single post in a comment or suggestion thread. [Developer Preview](https://developers.google.com/workspace/preview). */
 export interface Post {
@@ -1449,7 +1447,7 @@ export interface Post {
   /** Output only. The time the post was created. */
   createTime?: string;
 }
-export const Post = /*@__PURE__*/ S.suspend(() =>
+const Post = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentAction: S.optional(PostCommentActionEnum),
     postId: S.optional(S.String),
@@ -1476,7 +1474,7 @@ export interface AddCommentReplyRequest {
   /** The ID of the CommentThread to add the reply to. */
   commentId?: string;
 }
-export const AddCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     post: S.optional(Post),
     suggestionId: S.optional(S.String),
@@ -1495,7 +1493,7 @@ export interface InsertInlineImageRequest {
   /** Inserts the image at a specific index in the document. The image must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Inline images cannot be inserted inside a footnote or equation. */
   location?: Location;
 }
-export const InsertInlineImageRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertInlineImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectSize: S.optional(Size),
     endOfSegmentLocation: S.optional(EndOfSegmentLocation),
@@ -1513,7 +1511,7 @@ export interface SubstringMatchCriteria {
   /** The text to search for in the document. */
   text?: string;
 }
-export const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
+const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchCase: S.optional(S.Boolean),
     searchByRegex: S.optional(S.Boolean),
@@ -1530,7 +1528,7 @@ export interface ReplaceAllTextRequest {
   /** Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs. */
   tabsCriteria?: TabsCriteria;
 }
-export const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replaceText: S.optional(S.String),
     containsText: S.optional(SubstringMatchCriteria),
@@ -1547,7 +1545,7 @@ export interface DeleteCommentReplyRequest {
   /** The ID of the CommentThread which the post belongs to. */
   commentId?: string;
 }
-export const DeleteCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestionId: S.optional(S.String),
     postId: S.optional(S.String),
@@ -1562,7 +1560,7 @@ export interface DeleteCommentRequest {
   /** The ID of the CommentThread that is being deleted. */
   commentId?: string;
 }
-export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.optional(S.String),
   }),
@@ -1570,14 +1568,12 @@ export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deletes a suggestion. Returns a 403 forbidden error if the requesting user is not the author of the suggestion. [Developer Preview](https://developers.google.com/workspace/preview). */
 export type DeleteSuggestionRequest = AcceptSuggestionRequest;
-export const DeleteSuggestionRequest = AcceptSuggestionRequest;
-
 /** Deletes a row from a table. */
 export interface DeleteTableRowRequest {
   /** The reference table cell location from which the row will be deleted. The row this cell spans will be deleted. If this is a merged cell that spans multiple rows, all rows that the cell spans will be deleted. If no rows remain in the table after this deletion, the whole table is deleted. */
   tableCellLocation?: TableCellLocation;
 }
-export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableCellLocation: S.optional(TableCellLocation),
   }),
@@ -1592,7 +1588,7 @@ export interface UpdateTextStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `text_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
 }
-export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
     textStyle: S.optional(TextStyle),
@@ -1607,7 +1603,7 @@ export interface PersonProperties {
   /** The name of the person if it's displayed in the link text instead of the person's email address. */
   name?: string;
 }
-export const PersonProperties = /*@__PURE__*/ S.suspend(() =>
+const PersonProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -1623,7 +1619,7 @@ export interface InsertPersonRequest {
   /** The properties of the person mention to insert. */
   personProperties?: PersonProperties;
 }
-export const InsertPersonRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endOfSegmentLocation: S.optional(EndOfSegmentLocation),
     location: S.optional(Location),
@@ -1636,8 +1632,7 @@ export interface DeleteTableColumnRequest {
   /** The reference table cell location from which the column will be deleted. The column this cell spans will be deleted. If this is a merged cell that spans multiple columns, all columns that the cell spans will be deleted. If no columns remain in the table after this deletion, the whole table is deleted. */
   tableCellLocation?: TableCellLocation;
 }
-export const DeleteTableColumnRequest =
-  DeleteTableRowRequest as any as S.Schema<DeleteTableColumnRequest>;
+const DeleteTableColumnRequest = DeleteTableRowRequest as any as S.Schema<DeleteTableColumnRequest>;
 
 /** Updates the number of pinned table header rows in a table. */
 export interface PinTableHeaderRowsRequest {
@@ -1646,7 +1641,7 @@ export interface PinTableHeaderRowsRequest {
   /** The location where the table starts in the document. */
   tableStartLocation?: Location;
 }
-export const PinTableHeaderRowsRequest = /*@__PURE__*/ S.suspend(() =>
+const PinTableHeaderRowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pinnedHeaderRowsCount: S.optional(S.Number),
     tableStartLocation: S.optional(Location),
@@ -1664,7 +1659,7 @@ export interface DropdownOption {
   /** The text style of this dropdown option. Currently, only the `foreground_color` and `background_color` properties are supported. If other properties are set, a 400 bad request error is returned. */
   textStyle?: TextStyle;
 }
-export const DropdownOption = /*@__PURE__*/ S.suspend(() =>
+const DropdownOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayValue: S.optional(S.String),
     optionId: S.optional(S.String),
@@ -1673,7 +1668,7 @@ export const DropdownOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DropdownOption" }) as any as S.Schema<DropdownOption>;
 
 export type DropdownOptionList = Array<DropdownOption>;
-export const DropdownOptionList = /*@__PURE__*/ S.Array(
+const DropdownOptionList = /*@__PURE__*/ S.Array(
   DropdownOption,
 ) as any as S.Schema<DropdownOptionList>;
 
@@ -1684,7 +1679,7 @@ export interface DropdownDefinitionProperties {
   /** The list of options defined by this dropdown definition. A dropdown definition must have at least 2 options and at most 50 options. */
   options?: DropdownOptionList;
 }
-export const DropdownDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const DropdownDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     options: S.optional(DropdownOptionList),
@@ -1694,7 +1689,7 @@ export const DropdownDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DropdownDefinitionProperties>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Updates the properties of a DropdownDefinition. */
 export interface UpdateDropdownDefinitionPropertiesRequest {
@@ -1709,7 +1704,7 @@ export interface UpdateDropdownDefinitionPropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root `dropdown_definition_properties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. When `dropdown_definition_properties.options` is included in the field mask, the full, complete list of desired options must be provided in `dropdown_definition_properties.options`. */
   fields?: string;
 }
-export const UpdateDropdownDefinitionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDropdownDefinitionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownDefinitionProperties: S.optional(DropdownDefinitionProperties),
     selectedOptionIdReplacements: S.optional(StringMap),
@@ -1732,7 +1727,7 @@ export interface ReplaceNamedRangeContentRequest {
   /** Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs. */
   tabsCriteria?: TabsCriteria;
 }
-export const ReplaceNamedRangeContentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNamedRangeContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namedRangeName: S.optional(S.String),
     text: S.optional(S.String),
@@ -1750,7 +1745,7 @@ export interface UpdateDocumentTabPropertiesRequest {
   /** The tab properties to update. */
   tabProperties?: TabProperties;
 }
-export const UpdateDocumentTabPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentTabPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.String),
     tabProperties: S.optional(TabProperties),
@@ -1768,7 +1763,7 @@ export interface TableRowStyle {
   /** Whether the row is a table header. */
   tableHeader?: boolean;
 }
-export const TableRowStyle = /*@__PURE__*/ S.suspend(() =>
+const TableRowStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preventOverflow: S.optional(S.Boolean),
     minRowHeight: S.optional(Dimension),
@@ -1777,7 +1772,7 @@ export const TableRowStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableRowStyle" }) as any as S.Schema<TableRowStyle>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Updates the TableRowStyle of rows in a table. */
 export interface UpdateTableRowStyleRequest {
@@ -1790,7 +1785,7 @@ export interface UpdateTableRowStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `tableRowStyle` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the minimum row height, set `fields` to `"min_row_height"`. */
   fields?: string;
 }
-export const UpdateTableRowStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableRowStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableRowStyle: S.optional(TableRowStyle),
     rowIndices: S.optional(IntegerList),
@@ -1810,7 +1805,7 @@ export interface RichLinkProperties {
   /** The title of the RichLink as displayed in the link. This title matches the title of the linked resource at the time of the insertion or last update of the link. This field is always present. */
   title?: string;
 }
-export const RichLinkProperties = /*@__PURE__*/ S.suspend(() =>
+const RichLinkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     uri: S.optional(S.String),
@@ -1827,7 +1822,7 @@ export interface InsertRichLinkRequest {
   /** Inserts the rich link at the end of a header, footer, footnote or the document body. */
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
-export const InsertRichLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertRichLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(Location),
     richLinkProperties: S.optional(RichLinkProperties),
@@ -1846,7 +1841,7 @@ export interface InsertDropdownRequest {
   /** Required. The DropdownDefinition ID. */
   dropdownDefinitionId?: string;
 }
-export const InsertDropdownRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertDropdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectedOptionId: S.optional(S.String),
     location: S.optional(Location),
@@ -1864,7 +1859,7 @@ export interface InsertCommentRequest {
   /** The text of the comment, as plain text. This text content will be handled similarly to comments created in the Docs editor. It will have similar behaviors for formatting, notifications, etc. This field cannot be empty, and must not exceed 2048 UTF-8 code units. */
   content?: string;
 }
-export const InsertCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(Range),
     assigneeEmailAddress: S.optional(S.String),
@@ -1873,7 +1868,7 @@ export const InsertCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertCommentRequest" }) as any as S.Schema<InsertCommentRequest>;
 
 export type CreateHeaderRequestTypeEnum = "HEADER_FOOTER_TYPE_UNSPECIFIED" | "DEFAULT";
-export const CreateHeaderRequestTypeEnum = S.String;
+const CreateHeaderRequestTypeEnum = S.String;
 
 /** Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a header of the specified type already exists, a 400 bad request error is returned. */
 export interface CreateHeaderRequest {
@@ -1882,7 +1877,7 @@ export interface CreateHeaderRequest {
   /** The type of header to create. */
   type?: CreateHeaderRequestTypeEnum | (string & {});
 }
-export const CreateHeaderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHeaderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sectionBreakLocation: S.optional(Location),
     type: S.optional(CreateHeaderRequestTypeEnum),
@@ -1890,8 +1885,6 @@ export const CreateHeaderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateHeaderRequest" }) as any as S.Schema<CreateHeaderRequest>;
 
 export type CreateFooterRequestTypeEnum = "HEADER_FOOTER_TYPE_UNSPECIFIED" | "DEFAULT";
-export const CreateFooterRequestTypeEnum = S.String;
-
 /** Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if specified, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a 400 bad request error is returned. */
 export interface CreateFooterRequest {
   /** The location of the SectionBreak immediately preceding the section whose SectionStyle this footer should belong to. If this is unset or refers to the first section break in the document, the footer applies to the document style. */
@@ -1899,7 +1892,7 @@ export interface CreateFooterRequest {
   /** The type of footer to create. */
   type?: CreateFooterRequestTypeEnum | (string & {});
 }
-export const CreateFooterRequest = CreateHeaderRequest as any as S.Schema<CreateFooterRequest>;
+const CreateFooterRequest = CreateHeaderRequest as any as S.Schema<CreateFooterRequest>;
 
 /** A mask that indicates which of the fields on the base DropdownDefinitionProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface DropdownDefinitionPropertiesSuggestionState {
@@ -1908,7 +1901,7 @@ export interface DropdownDefinitionPropertiesSuggestionState {
   /** Indicates if there was a suggested change to options. */
   optionsSuggested?: boolean;
 }
-export const DropdownDefinitionPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const DropdownDefinitionPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     titleSuggested: S.optional(S.Boolean),
     optionsSuggested: S.optional(S.Boolean),
@@ -1924,7 +1917,7 @@ export interface SuggestedDropdownDefinitionProperties {
   /** A DropdownDefinitionProperties that only includes the changes made in this suggestion. This can be used along with the dropdown_definition_properties_suggestion_state to see which fields have changed and their new values. */
   dropdownDefinitionProperties?: DropdownDefinitionProperties;
 }
-export const SuggestedDropdownDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const SuggestedDropdownDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownDefinitionPropertiesSuggestionState: S.optional(
       DropdownDefinitionPropertiesSuggestionState,
@@ -1938,7 +1931,7 @@ export const SuggestedDropdownDefinitionProperties = /*@__PURE__*/ S.suspend(() 
 export type SuggestedDropdownDefinitionPropertiesMap = {
   [key: string]: SuggestedDropdownDefinitionProperties | undefined;
 };
-export const SuggestedDropdownDefinitionPropertiesMap = /*@__PURE__*/ S.Record(
+const SuggestedDropdownDefinitionPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedDropdownDefinitionProperties,
 ) as any as S.Schema<SuggestedDropdownDefinitionPropertiesMap>;
@@ -1956,7 +1949,7 @@ export interface DropdownDefinition {
   /** ID for suggestion that deletes this dropdown definition. */
   suggestedDeletionId?: string;
 }
-export const DropdownDefinition = /*@__PURE__*/ S.suspend(() =>
+const DropdownDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedDropdownDefinitionPropertiesChanges: S.optional(
       SuggestedDropdownDefinitionPropertiesMap,
@@ -1975,7 +1968,7 @@ export interface CreateDropdownDefinitionRequest {
   /** The ID of the tab to create the dropdown definition in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
   tabId?: string;
 }
-export const CreateDropdownDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDropdownDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownDefinition: S.optional(DropdownDefinition),
     tabId: S.optional(S.String),
@@ -1988,7 +1981,7 @@ export type TableColumnPropertiesWidthTypeEnum =
   | "WIDTH_TYPE_UNSPECIFIED"
   | "EVENLY_DISTRIBUTED"
   | "FIXED_WIDTH";
-export const TableColumnPropertiesWidthTypeEnum = S.String;
+const TableColumnPropertiesWidthTypeEnum = S.String;
 
 /** The properties of a column in a table. */
 export interface TableColumnProperties {
@@ -1997,7 +1990,7 @@ export interface TableColumnProperties {
   /** The width type of the column. */
   widthType?: TableColumnPropertiesWidthTypeEnum | (string & {});
 }
-export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
+const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(Dimension),
     widthType: S.optional(TableColumnPropertiesWidthTypeEnum),
@@ -2015,7 +2008,7 @@ export interface UpdateTableColumnPropertiesRequest {
   /** The location where the table starts in the document. */
   tableStartLocation?: Location;
 }
-export const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnIndices: S.optional(IntegerList),
     tableColumnProperties: S.optional(TableColumnProperties),
@@ -2135,7 +2128,7 @@ export interface Request {
   /** Updates the properties of columns in a table. */
   updateTableColumnProperties?: UpdateTableColumnPropertiesRequest;
 }
-export const Request = /*@__PURE__*/ S.suspend(() =>
+const Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateNamedStyle: S.optional(UpdateNamedStyleRequest),
     deleteParagraphBullets: S.optional(DeleteParagraphBulletsRequest),
@@ -2194,10 +2187,10 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 export type RequestList = Array<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
+const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
 
 export type WriteControlWriteModeEnum = "WRITE_MODE_UNSPECIFIED" | "EDIT" | "SUGGEST";
-export const WriteControlWriteModeEnum = S.String;
+const WriteControlWriteModeEnum = S.String;
 
 /** Provides control over how write requests are executed. */
 export interface WriteControl {
@@ -2208,7 +2201,7 @@ export interface WriteControl {
   /** The optional revision ID of the document the write request is applied to. If this is not the latest revision of the document, the request is not processed and returns a 400 bad request error. When a required revision ID is returned in a response, it indicates the revision ID of the document after the request was applied. */
   requiredRevisionId?: string;
 }
-export const WriteControl = /*@__PURE__*/ S.suspend(() =>
+const WriteControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetRevisionId: S.optional(S.String),
     writeMode: S.optional(WriteControlWriteModeEnum),
@@ -2223,7 +2216,7 @@ export interface BatchUpdateDocumentRequest {
   /** Provides control over how write requests are executed. */
   writeControl?: WriteControl;
 }
-export const BatchUpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(RequestList),
     writeControl: S.optional(WriteControl),
@@ -2238,7 +2231,7 @@ export interface BatchUpdateDocumentsRequest {
   /** Request body */
   body?: BatchUpdateDocumentRequest;
 }
-export const BatchUpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdateDocumentRequest.pipe(T.HttpBody())),
@@ -2266,7 +2259,7 @@ export interface SuggestionResponse {
   /** The IDs of suggestions which were accepted during the update. */
   acceptedSuggestionIds?: StringList;
 }
-export const SuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+const SuggestionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rejectedSuggestionIds: S.optional(StringList),
     createdSuggestionIds: S.optional(StringList),
@@ -2277,7 +2270,7 @@ export const SuggestionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestionResponse" }) as any as S.Schema<SuggestionResponse>;
 
 export type SuggestionResponseList = Array<SuggestionResponse>;
-export const SuggestionResponseList = /*@__PURE__*/ S.Array(
+const SuggestionResponseList = /*@__PURE__*/ S.Array(
   SuggestionResponse,
 ) as any as S.Schema<SuggestionResponseList>;
 
@@ -2286,7 +2279,7 @@ export interface AddCommentReplyResponse {
   /** The newly-inserted reply Post. */
   post?: Post;
 }
-export const AddCommentReplyResponse = /*@__PURE__*/ S.suspend(() =>
+const AddCommentReplyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     post: S.optional(Post),
   }),
@@ -2297,17 +2290,17 @@ export interface CreateNamedRangeResponse {
   /** The ID of the created named range. */
   namedRangeId?: string;
 }
-export const CreateNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namedRangeId: S.optional(S.String),
   }),
 ).annotate({ identifier: "CreateNamedRangeResponse" }) as any as S.Schema<CreateNamedRangeResponse>;
 
 export type CommentThreadStatusEnum = "STATUS_UNSPECIFIED" | "OPEN" | "RESOLVED";
-export const CommentThreadStatusEnum = S.String;
+const CommentThreadStatusEnum = S.String;
 
 export type PostList = Array<Post>;
-export const PostList = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList>;
+const PostList = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList>;
 
 /** Represents a single comment thread. [Developer Preview](https://developers.google.com/workspace/preview). */
 export interface CommentThread {
@@ -2324,7 +2317,7 @@ export interface CommentThread {
   /** Replies to the head post. */
   replies?: PostList;
 }
-export const CommentThread = /*@__PURE__*/ S.suspend(() =>
+const CommentThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CommentThreadStatusEnum),
     commentId: S.optional(S.String),
@@ -2340,7 +2333,7 @@ export interface InsertCommentResponse {
   /** The newly-inserted comment thread. */
   commentThread?: CommentThread;
 }
-export const InsertCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const InsertCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentThread: S.optional(CommentThread),
   }),
@@ -2351,7 +2344,7 @@ export interface CreateFootnoteResponse {
   /** The ID of the created footnote. */
   footnoteId?: string;
 }
-export const CreateFootnoteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFootnoteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     footnoteId: S.optional(S.String),
   }),
@@ -2362,7 +2355,7 @@ export interface ReplaceAllTextResponse {
   /** The number of occurrences changed by replacing all text. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrencesChanged: S.optional(S.Number),
   }),
@@ -2393,7 +2386,7 @@ export interface TextStyleSuggestionState {
   /** Indicates if there was a suggested change to background_color. */
   backgroundColorSuggested?: boolean;
 }
-export const TextStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const TextStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     underlineSuggested: S.optional(S.Boolean),
     foregroundColorSuggested: S.optional(S.Boolean),
@@ -2416,7 +2409,7 @@ export interface SuggestedTextStyle {
   /** A TextStyle that only includes the changes made in this suggestion. This can be used along with the text_style_suggestion_state to see which fields have changed and their new values. */
   textStyle?: TextStyle;
 }
-export const SuggestedTextStyle = /*@__PURE__*/ S.suspend(() =>
+const SuggestedTextStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyleSuggestionState: S.optional(TextStyleSuggestionState),
     textStyle: S.optional(TextStyle),
@@ -2424,7 +2417,7 @@ export const SuggestedTextStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedTextStyle" }) as any as S.Schema<SuggestedTextStyle>;
 
 export type SuggestedTextStyleMap = { [key: string]: SuggestedTextStyle | undefined };
-export const SuggestedTextStyleMap = /*@__PURE__*/ S.Record(
+const SuggestedTextStyleMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedTextStyle,
 ) as any as S.Schema<SuggestedTextStyleMap>;
@@ -2434,7 +2427,7 @@ export interface DropdownPropertiesSuggestionState {
   /** Indicates if there was a suggested change to selected_option_id. */
   selectedOptionIdSuggested?: boolean;
 }
-export const DropdownPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const DropdownPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectedOptionIdSuggested: S.optional(S.Boolean),
   }),
@@ -2449,7 +2442,7 @@ export interface SuggestedDropdownProperties {
   /** A mask that indicates which of the fields on the base DropdownProperties have been changed in this suggestion. */
   dropdownPropertiesSuggestionState?: DropdownPropertiesSuggestionState;
 }
-export const SuggestedDropdownProperties = /*@__PURE__*/ S.suspend(() =>
+const SuggestedDropdownProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownProperties: S.optional(DropdownProperties),
     dropdownPropertiesSuggestionState: S.optional(DropdownPropertiesSuggestionState),
@@ -2461,7 +2454,7 @@ export const SuggestedDropdownProperties = /*@__PURE__*/ S.suspend(() =>
 export type SuggestedDropdownPropertiesMap = {
   [key: string]: SuggestedDropdownProperties | undefined;
 };
-export const SuggestedDropdownPropertiesMap = /*@__PURE__*/ S.Record(
+const SuggestedDropdownPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedDropdownProperties,
 ) as any as S.Schema<SuggestedDropdownPropertiesMap>;
@@ -2483,7 +2476,7 @@ export interface Dropdown {
   /** The properties of this dropdown. */
   dropdownProperties?: DropdownProperties;
 }
-export const Dropdown = /*@__PURE__*/ S.suspend(() =>
+const Dropdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownId: S.optional(S.String),
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
@@ -2500,7 +2493,7 @@ export interface InsertDropdownResponse {
   /** The newly-inserted Dropdown. */
   dropdown?: Dropdown;
 }
-export const InsertDropdownResponse = /*@__PURE__*/ S.suspend(() =>
+const InsertDropdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdown: S.optional(Dropdown),
   }),
@@ -2511,7 +2504,7 @@ export interface InsertInlineSheetsChartResponse {
   /** The object ID of the inserted chart. */
   objectId?: string;
 }
-export const InsertInlineSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
+const InsertInlineSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
   }),
@@ -2524,15 +2517,14 @@ export interface AddDocumentTabResponse {
   /** The properties of the newly added tab. */
   tabProperties?: TabProperties;
 }
-export const AddDocumentTabResponse =
-  AddDocumentTabRequest as any as S.Schema<AddDocumentTabResponse>;
+const AddDocumentTabResponse = AddDocumentTabRequest as any as S.Schema<AddDocumentTabResponse>;
 
 /** The result of creating a header. */
 export interface CreateHeaderResponse {
   /** The ID of the created header. */
   headerId?: string;
 }
-export const CreateHeaderResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHeaderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerId: S.optional(S.String),
   }),
@@ -2543,7 +2535,7 @@ export interface CreateFooterResponse {
   /** The ID of the created footer. */
   footerId?: string;
 }
-export const CreateFooterResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFooterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     footerId: S.optional(S.String),
   }),
@@ -2554,7 +2546,7 @@ export interface InsertInlineImageResponse {
   /** The ID of the created InlineObject. */
   objectId?: string;
 }
-export const InsertInlineImageResponse =
+const InsertInlineImageResponse =
   InsertInlineSheetsChartResponse as any as S.Schema<InsertInlineImageResponse>;
 
 /** Response message for creating a dropdown definition. */
@@ -2562,7 +2554,7 @@ export interface CreateDropdownDefinitionResponse {
   /** The newly-created DropdownDefinition. */
   dropdownDefinition?: DropdownDefinition;
 }
-export const CreateDropdownDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDropdownDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dropdownDefinition: S.optional(DropdownDefinition),
   }),
@@ -2597,7 +2589,7 @@ export interface Response {
   /** The result of creating a dropdown definition. */
   createDropdownDefinition?: CreateDropdownDefinitionResponse;
 }
-export const Response = /*@__PURE__*/ S.suspend(() =>
+const Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addCommentReply: S.optional(AddCommentReplyResponse),
     createNamedRange: S.optional(CreateNamedRangeResponse),
@@ -2615,14 +2607,14 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 export type ResponseList = Array<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
+const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
 
 export type BatchUpdateDocumentResponseCommentUpdateStateEnum =
   | "COMMENT_UPDATE_STATE_UNSPECIFIED"
   | "NO_UPDATES_REQUESTED"
   | "ALL_SAVED"
   | "ALL_FAILED_UNKNOWN_REASON";
-export const BatchUpdateDocumentResponseCommentUpdateStateEnum = S.String;
+const BatchUpdateDocumentResponseCommentUpdateStateEnum = S.String;
 
 /** Response message from a BatchUpdateDocument request. */
 export interface BatchUpdateDocumentResponse {
@@ -2637,7 +2629,7 @@ export interface BatchUpdateDocumentResponse {
   /** Whether comment updates were applied in the batch request. [Developer Preview](https://developers.google.com/workspace/preview). */
   commentUpdateState?: BatchUpdateDocumentResponseCommentUpdateStateEnum;
 }
-export const BatchUpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestionResponses: S.optional(SuggestionResponseList),
     writeControl: S.optional(WriteControl),
@@ -2650,7 +2642,7 @@ export const BatchUpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateDocumentResponse>;
 
 export type CommentThreadList = Array<CommentThread>;
-export const CommentThreadList = /*@__PURE__*/ S.Array(
+const CommentThreadList = /*@__PURE__*/ S.Array(
   CommentThread,
 ) as any as S.Schema<CommentThreadList>;
 
@@ -2662,7 +2654,7 @@ export type PositionedObjectPositioningLayoutEnum =
   | "BREAK_LEFT_RIGHT"
   | "IN_FRONT_OF_TEXT"
   | "BEHIND_TEXT";
-export const PositionedObjectPositioningLayoutEnum = S.String;
+const PositionedObjectPositioningLayoutEnum = S.String;
 
 /** The positioning of a PositionedObject. The positioned object is positioned relative to the beginning of the Paragraph it's tethered to. */
 export interface PositionedObjectPositioning {
@@ -2673,7 +2665,7 @@ export interface PositionedObjectPositioning {
   /** The layout of this positioned object. */
   layout?: PositionedObjectPositioningLayoutEnum | (string & {});
 }
-export const PositionedObjectPositioning = /*@__PURE__*/ S.suspend(() =>
+const PositionedObjectPositioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leftOffset: S.optional(Dimension),
     topOffset: S.optional(Dimension),
@@ -2685,7 +2677,7 @@ export const PositionedObjectPositioning = /*@__PURE__*/ S.suspend(() =>
 
 /** The properties of an embedded drawing and used to differentiate the object type. An embedded drawing is one that's created and edited within a document. Note that extensive details are not supported. */
 export interface EmbeddedDrawingProperties {}
-export const EmbeddedDrawingProperties = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const EmbeddedDrawingProperties = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EmbeddedDrawingProperties",
 }) as any as S.Schema<EmbeddedDrawingProperties>;
 
@@ -2696,7 +2688,7 @@ export interface SheetsChartReference {
   /** The ID of the Google Sheets spreadsheet that contains the source chart. */
   spreadsheetId?: string;
 }
-export const SheetsChartReference = /*@__PURE__*/ S.suspend(() =>
+const SheetsChartReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chartId: S.optional(S.Number),
     spreadsheetId: S.optional(S.String),
@@ -2708,17 +2700,17 @@ export interface LinkedContentReference {
   /** A reference to the linked chart. */
   sheetsChartReference?: SheetsChartReference;
 }
-export const LinkedContentReference = /*@__PURE__*/ S.suspend(() =>
+const LinkedContentReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sheetsChartReference: S.optional(SheetsChartReference),
   }),
 ).annotate({ identifier: "LinkedContentReference" }) as any as S.Schema<LinkedContentReference>;
 
 export type EmbeddedObjectBorderPropertyStateEnum = "RENDERED" | "NOT_RENDERED";
-export const EmbeddedObjectBorderPropertyStateEnum = S.String;
+const EmbeddedObjectBorderPropertyStateEnum = S.String;
 
 export type EmbeddedObjectBorderDashStyleEnum = "DASH_STYLE_UNSPECIFIED" | "SOLID" | "DOT" | "DASH";
-export const EmbeddedObjectBorderDashStyleEnum = S.String;
+const EmbeddedObjectBorderDashStyleEnum = S.String;
 
 /** A border around an EmbeddedObject. */
 export interface EmbeddedObjectBorder {
@@ -2731,7 +2723,7 @@ export interface EmbeddedObjectBorder {
   /** The dash style of the border. */
   dashStyle?: EmbeddedObjectBorderDashStyleEnum | (string & {});
 }
-export const EmbeddedObjectBorder = /*@__PURE__*/ S.suspend(() =>
+const EmbeddedObjectBorder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyState: S.optional(EmbeddedObjectBorderPropertyStateEnum),
     width: S.optional(Dimension),
@@ -2753,7 +2745,7 @@ export interface CropProperties {
   /** The clockwise rotation angle of the crop rectangle around its center, in radians. Rotation is applied after the offsets. */
   angle?: number;
 }
-export const CropProperties = /*@__PURE__*/ S.suspend(() =>
+const CropProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offsetLeft: S.optional(S.Number),
     offsetTop: S.optional(S.Number),
@@ -2780,7 +2772,7 @@ export interface ImageProperties {
   /** The crop properties of the image. */
   cropProperties?: CropProperties;
 }
-export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentUri: S.optional(S.String),
     transparency: S.optional(S.Number),
@@ -2817,7 +2809,7 @@ export interface EmbeddedObject {
   /** The left margin of the embedded object. */
   marginLeft?: Dimension;
 }
-export const EmbeddedObject = /*@__PURE__*/ S.suspend(() =>
+const EmbeddedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marginTop: S.optional(Dimension),
     size: S.optional(Size),
@@ -2840,7 +2832,7 @@ export interface PositionedObjectProperties {
   /** The embedded object of this positioned object. */
   embeddedObject?: EmbeddedObject;
 }
-export const PositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
+const PositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     positioning: S.optional(PositionedObjectPositioning),
     embeddedObject: S.optional(EmbeddedObject),
@@ -2858,7 +2850,7 @@ export interface PositionedObjectPositioningSuggestionState {
   /** Indicates if there was a suggested change to top_offset. */
   topOffsetSuggested?: boolean;
 }
-export const PositionedObjectPositioningSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const PositionedObjectPositioningSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leftOffsetSuggested: S.optional(S.Boolean),
     layoutSuggested: S.optional(S.Boolean),
@@ -2881,7 +2873,7 @@ export interface CropPropertiesSuggestionState {
   /** Indicates if there was a suggested change to angle. */
   angleSuggested?: boolean;
 }
-export const CropPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const CropPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offsetLeftSuggested: S.optional(S.Boolean),
     offsetTopSuggested: S.optional(S.Boolean),
@@ -2910,7 +2902,7 @@ export interface ImagePropertiesSuggestionState {
   /** Indicates if there was a suggested change to angle. */
   angleSuggested?: boolean;
 }
-export const ImagePropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const ImagePropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentUriSuggested: S.optional(S.Boolean),
     brightnessSuggested: S.optional(S.Boolean),
@@ -2931,7 +2923,7 @@ export interface SheetsChartReferenceSuggestionState {
   /** Indicates if there was a suggested change to chart_id. */
   chartIdSuggested?: boolean;
 }
-export const SheetsChartReferenceSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const SheetsChartReferenceSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spreadsheetIdSuggested: S.optional(S.Boolean),
     chartIdSuggested: S.optional(S.Boolean),
@@ -2945,7 +2937,7 @@ export interface LinkedContentReferenceSuggestionState {
   /** A mask that indicates which of the fields in sheets_chart_reference have been changed in this suggestion. */
   sheetsChartReferenceSuggestionState?: SheetsChartReferenceSuggestionState;
 }
-export const LinkedContentReferenceSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const LinkedContentReferenceSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sheetsChartReferenceSuggestionState: S.optional(SheetsChartReferenceSuggestionState),
   }),
@@ -2960,7 +2952,7 @@ export interface SizeSuggestionState {
   /** Indicates if there was a suggested change to width. */
   widthSuggested?: boolean;
 }
-export const SizeSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const SizeSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     heightSuggested: S.optional(S.Boolean),
     widthSuggested: S.optional(S.Boolean),
@@ -2969,8 +2961,6 @@ export const SizeSuggestionState = /*@__PURE__*/ S.suspend(() =>
 
 /** A mask that indicates which of the fields on the base EmbeddedDrawingProperties have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export type EmbeddedDrawingPropertiesSuggestionState = EmbeddedDrawingProperties;
-export const EmbeddedDrawingPropertiesSuggestionState = EmbeddedDrawingProperties;
-
 /** A mask that indicates which of the fields on the base EmbeddedObjectBorder have been changed in this suggestion. For any field set to true, there's a new suggested value. */
 export interface EmbeddedObjectBorderSuggestionState {
   /** Indicates if there was a suggested change to property_state. */
@@ -2982,7 +2972,7 @@ export interface EmbeddedObjectBorderSuggestionState {
   /** Indicates if there was a suggested change to dash_style. */
   dashStyleSuggested?: boolean;
 }
-export const EmbeddedObjectBorderSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const EmbeddedObjectBorderSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyStateSuggested: S.optional(S.Boolean),
     widthSuggested: S.optional(S.Boolean),
@@ -3018,7 +3008,7 @@ export interface EmbeddedObjectSuggestionState {
   /** Indicates if there was a suggested change to margin_left. */
   marginLeftSuggested?: boolean;
 }
-export const EmbeddedObjectSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const EmbeddedObjectSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marginRightSuggested: S.optional(S.Boolean),
     descriptionSuggested: S.optional(S.Boolean),
@@ -3043,7 +3033,7 @@ export interface PositionedObjectPropertiesSuggestionState {
   /** A mask that indicates which of the fields in embedded_object have been changed in this suggestion. */
   embeddedObjectSuggestionState?: EmbeddedObjectSuggestionState;
 }
-export const PositionedObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const PositionedObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     positioningSuggestionState: S.optional(PositionedObjectPositioningSuggestionState),
     embeddedObjectSuggestionState: S.optional(EmbeddedObjectSuggestionState),
@@ -3059,7 +3049,7 @@ export interface SuggestedPositionedObjectProperties {
   /** A mask that indicates which of the fields on the base PositionedObjectProperties have been changed in this suggestion. */
   positionedObjectPropertiesSuggestionState?: PositionedObjectPropertiesSuggestionState;
 }
-export const SuggestedPositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
+const SuggestedPositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     positionedObjectProperties: S.optional(PositionedObjectProperties),
     positionedObjectPropertiesSuggestionState: S.optional(
@@ -3073,7 +3063,7 @@ export const SuggestedPositionedObjectProperties = /*@__PURE__*/ S.suspend(() =>
 export type SuggestedPositionedObjectPropertiesMap = {
   [key: string]: SuggestedPositionedObjectProperties | undefined;
 };
-export const SuggestedPositionedObjectPropertiesMap = /*@__PURE__*/ S.Record(
+const SuggestedPositionedObjectPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedPositionedObjectProperties,
 ) as any as S.Schema<SuggestedPositionedObjectPropertiesMap>;
@@ -3091,7 +3081,7 @@ export interface PositionedObject {
   /** The ID of this positioned object. */
   objectId?: string;
 }
-export const PositionedObject = /*@__PURE__*/ S.suspend(() =>
+const PositionedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedDeletionIds: S.optional(StringList),
     suggestedInsertionId: S.optional(S.String),
@@ -3102,13 +3092,13 @@ export const PositionedObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PositionedObject" }) as any as S.Schema<PositionedObject>;
 
 export type PositionedObjectMap = { [key: string]: PositionedObject | undefined };
-export const PositionedObjectMap = /*@__PURE__*/ S.Record(
+const PositionedObjectMap = /*@__PURE__*/ S.Record(
   S.String,
   PositionedObject,
 ) as any as S.Schema<PositionedObjectMap>;
 
 export type TableColumnPropertiesList = Array<TableColumnProperties>;
-export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
+const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
 ) as any as S.Schema<TableColumnPropertiesList>;
 
@@ -3117,7 +3107,7 @@ export interface TableStyle {
   /** The properties of each column. Note that in Docs, tables contain rows and rows contain cells, similar to HTML. So the properties for a row can be found on the row's table_row_style. */
   tableColumnProperties?: TableColumnPropertiesList;
 }
-export const TableStyle = /*@__PURE__*/ S.suspend(() =>
+const TableStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableColumnProperties: S.optional(TableColumnPropertiesList),
   }),
@@ -3128,7 +3118,7 @@ export interface TableRowStyleSuggestionState {
   /** Indicates if there was a suggested change to min_row_height. */
   minRowHeightSuggested?: boolean;
 }
-export const TableRowStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const TableRowStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minRowHeightSuggested: S.optional(S.Boolean),
   }),
@@ -3143,7 +3133,7 @@ export interface SuggestedTableRowStyle {
   /** A TableRowStyle that only includes the changes made in this suggestion. This can be used along with the table_row_style_suggestion_state to see which fields have changed and their new values. */
   tableRowStyle?: TableRowStyle;
 }
-export const SuggestedTableRowStyle = /*@__PURE__*/ S.suspend(() =>
+const SuggestedTableRowStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableRowStyleSuggestionState: S.optional(TableRowStyleSuggestionState),
     tableRowStyle: S.optional(TableRowStyle),
@@ -3151,7 +3141,7 @@ export const SuggestedTableRowStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedTableRowStyle" }) as any as S.Schema<SuggestedTableRowStyle>;
 
 export type SuggestedTableRowStyleMap = { [key: string]: SuggestedTableRowStyle | undefined };
-export const SuggestedTableRowStyleMap = /*@__PURE__*/ S.Record(
+const SuggestedTableRowStyleMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedTableRowStyle,
 ) as any as S.Schema<SuggestedTableRowStyleMap>;
@@ -3183,7 +3173,7 @@ export interface TableCellStyleSuggestionState {
   /** Indicates if there was a suggested change to column_span. */
   columnSpanSuggested?: boolean;
 }
-export const TableCellStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const TableCellStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     borderTopSuggested: S.optional(S.Boolean),
     contentAlignmentSuggested: S.optional(S.Boolean),
@@ -3209,7 +3199,7 @@ export interface SuggestedTableCellStyle {
   /** A TableCellStyle that only includes the changes made in this suggestion. This can be used along with the table_cell_style_suggestion_state to see which fields have changed and their new values. */
   tableCellStyle?: TableCellStyle;
 }
-export const SuggestedTableCellStyle = /*@__PURE__*/ S.suspend(() =>
+const SuggestedTableCellStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableCellStyleSuggestionState: S.optional(TableCellStyleSuggestionState),
     tableCellStyle: S.optional(TableCellStyle),
@@ -3217,7 +3207,7 @@ export const SuggestedTableCellStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedTableCellStyle" }) as any as S.Schema<SuggestedTableCellStyle>;
 
 export type SuggestedTableCellStyleMap = { [key: string]: SuggestedTableCellStyle | undefined };
-export const SuggestedTableCellStyleMap = /*@__PURE__*/ S.Record(
+const SuggestedTableCellStyleMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedTableCellStyle,
 ) as any as S.Schema<SuggestedTableCellStyleMap>;
@@ -3239,7 +3229,7 @@ export interface TableCell {
   /** The style of the cell. */
   tableCellStyle?: TableCellStyle;
 }
-export const TableCell = /*@__PURE__*/ S.suspend(() =>
+const TableCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedDeletionIds: S.optional(StringList),
     content: S.optional(S.suspend(() => StructuralElementList)),
@@ -3252,7 +3242,7 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
 export type TableCellList = Array<TableCell>;
-export const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
+const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
 
 /** The contents and style of a row in a Table. */
 export interface TableRow {
@@ -3271,7 +3261,7 @@ export interface TableRow {
   /** The style of the table row. */
   tableRowStyle?: TableRowStyle;
 }
-export const TableRow = /*@__PURE__*/ S.suspend(() =>
+const TableRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIndex: S.optional(S.Number),
     suggestedTableRowStyleChanges: S.optional(SuggestedTableRowStyleMap),
@@ -3284,7 +3274,7 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
 export type TableRowList = Array<TableRow>;
-export const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
+const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
 
 /** A StructuralElement representing a table. */
 export interface Table {
@@ -3301,7 +3291,7 @@ export interface Table {
   /** The contents and style of each row. */
   tableRows?: TableRowList;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(S.Number),
     suggestedDeletionIds: S.optional(StringList),
@@ -3321,7 +3311,7 @@ export interface TableOfContents {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
   suggestedDeletionIds?: StringList;
 }
-export const TableOfContents = /*@__PURE__*/ S.suspend(() =>
+const TableOfContents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedInsertionIds: S.optional(StringList),
     content: S.optional(S.suspend(() => StructuralElementList)),
@@ -3338,7 +3328,7 @@ export interface SectionBreak {
   /** The suggested insertion IDs. A SectionBreak may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
   suggestedInsertionIds?: StringList;
 }
-export const SectionBreak = /*@__PURE__*/ S.suspend(() =>
+const SectionBreak = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedDeletionIds: S.optional(StringList),
     sectionStyle: S.optional(SectionStyle),
@@ -3355,7 +3345,7 @@ export interface BulletSuggestionState {
   /** Indicates if there was a suggested change to the list_id. */
   listIdSuggested?: boolean;
 }
-export const BulletSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const BulletSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nestingLevelSuggested: S.optional(S.Boolean),
     textStyleSuggestionState: S.optional(TextStyleSuggestionState),
@@ -3372,7 +3362,7 @@ export interface Bullet {
   /** The paragraph-specific text style applied to this bullet. */
   textStyle?: TextStyle;
 }
-export const Bullet = /*@__PURE__*/ S.suspend(() =>
+const Bullet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nestingLevel: S.optional(S.Number),
     listId: S.optional(S.String),
@@ -3387,7 +3377,7 @@ export interface SuggestedBullet {
   /** A Bullet that only includes the changes made in this suggestion. This can be used along with the bullet_suggestion_state to see which fields have changed and their new values. */
   bullet?: Bullet;
 }
-export const SuggestedBullet = /*@__PURE__*/ S.suspend(() =>
+const SuggestedBullet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bulletSuggestionState: S.optional(BulletSuggestionState),
     bullet: S.optional(Bullet),
@@ -3395,7 +3385,7 @@ export const SuggestedBullet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedBullet" }) as any as S.Schema<SuggestedBullet>;
 
 export type SuggestedBulletMap = { [key: string]: SuggestedBullet | undefined };
-export const SuggestedBulletMap = /*@__PURE__*/ S.Record(
+const SuggestedBulletMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedBullet,
 ) as any as S.Schema<SuggestedBulletMap>;
@@ -3415,7 +3405,7 @@ export interface RichLink {
   /** IDs for suggestions that remove this link from the document. A RichLink might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this person link isn't suggested for deletion. */
   suggestedDeletionIds?: StringList;
 }
-export const RichLink = /*@__PURE__*/ S.suspend(() =>
+const RichLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
     suggestedInsertionIds: S.optional(StringList),
@@ -3439,7 +3429,7 @@ export interface TextRun {
   /** The suggested text style changes to this run, keyed by suggestion ID. */
   suggestedTextStyleChanges?: SuggestedTextStyleMap;
 }
-export const TextRun = /*@__PURE__*/ S.suspend(() =>
+const TextRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyle: S.optional(TextStyle),
     content: S.optional(S.String),
@@ -3460,7 +3450,7 @@ export interface PageBreak {
   /** The text style of this PageBreak. Similar to text content, like text runs and footnote references, the text style of a page break can affect content layout as well as the styling of text inserted next to it. */
   textStyle?: TextStyle;
 }
-export const PageBreak = /*@__PURE__*/ S.suspend(() =>
+const PageBreak = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedDeletionIds: S.optional(StringList),
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
@@ -3484,7 +3474,7 @@ export interface FootnoteReference {
   /** The rendered number of this footnote. */
   footnoteNumber?: string;
 }
-export const FootnoteReference = /*@__PURE__*/ S.suspend(() =>
+const FootnoteReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedInsertionIds: S.optional(StringList),
     suggestedDeletionIds: S.optional(StringList),
@@ -3508,7 +3498,7 @@ export interface InlineObjectElement {
   /** The text style of this InlineObjectElement. Similar to text content, like text runs and footnote references, the text style of an inline object element can affect content layout as well as the styling of text inserted next to it. */
   textStyle?: TextStyle;
 }
-export const InlineObjectElement = /*@__PURE__*/ S.suspend(() =>
+const InlineObjectElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inlineObjectId: S.optional(S.String),
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
@@ -3519,7 +3509,7 @@ export const InlineObjectElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InlineObjectElement" }) as any as S.Schema<InlineObjectElement>;
 
 export type AutoTextTypeEnum = "TYPE_UNSPECIFIED" | "PAGE_NUMBER" | "PAGE_COUNT";
-export const AutoTextTypeEnum = S.String;
+const AutoTextTypeEnum = S.String;
 
 /** A ParagraphElement representing a spot in the text that's dynamically replaced with content that can change over time, like a page number. */
 export interface AutoText {
@@ -3534,7 +3524,7 @@ export interface AutoText {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
   suggestedDeletionIds?: StringList;
 }
-export const AutoText = /*@__PURE__*/ S.suspend(() =>
+const AutoText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyle: S.optional(TextStyle),
     type: S.optional(AutoTextTypeEnum),
@@ -3557,7 +3547,7 @@ export interface DateElementPropertiesSuggestionState {
   /** Indicates if there was a suggested change to time_format. */
   timeFormatSuggested?: boolean;
 }
-export const DateElementPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const DateElementPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestampSuggested: S.optional(S.Boolean),
     localeSuggested: S.optional(S.Boolean),
@@ -3576,7 +3566,7 @@ export interface SuggestedDateElementProperties {
   /** DateElementProperties that only includes the changes made in this suggestion. This can be used along with the date_element_properties_suggestion_state to see which fields have changed and their new values. */
   dateElementProperties?: DateElementProperties;
 }
-export const SuggestedDateElementProperties = /*@__PURE__*/ S.suspend(() =>
+const SuggestedDateElementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateElementPropertiesSuggestionState: S.optional(DateElementPropertiesSuggestionState),
     dateElementProperties: S.optional(DateElementProperties),
@@ -3588,7 +3578,7 @@ export const SuggestedDateElementProperties = /*@__PURE__*/ S.suspend(() =>
 export type SuggestedDateElementPropertiesMap = {
   [key: string]: SuggestedDateElementProperties | undefined;
 };
-export const SuggestedDateElementPropertiesMap = /*@__PURE__*/ S.Record(
+const SuggestedDateElementPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedDateElementProperties,
 ) as any as S.Schema<SuggestedDateElementPropertiesMap>;
@@ -3610,7 +3600,7 @@ export interface DateElement {
   /** IDs for suggestions that remove this date from the document. A DateElement might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this date isn't suggested for deletion. */
   suggestedDeletionIds?: StringList;
 }
-export const DateElement = /*@__PURE__*/ S.suspend(() =>
+const DateElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
     dateId: S.optional(S.String),
@@ -3637,7 +3627,7 @@ export interface Person {
   /** IDs for suggestions that insert this person link into the document. A Person might have multiple insertion IDs if it's a nested suggested change (a suggestion within a suggestion made by a different user, for example). If empty, then this person link isn't a suggested insertion. */
   suggestedInsertionIds?: StringList;
 }
-export const Person = /*@__PURE__*/ S.suspend(() =>
+const Person = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyle: S.optional(TextStyle),
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
@@ -3659,7 +3649,7 @@ export interface ColumnBreak {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
   suggestedDeletionIds?: StringList;
 }
-export const ColumnBreak = /*@__PURE__*/ S.suspend(() =>
+const ColumnBreak = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
     textStyle: S.optional(TextStyle),
@@ -3679,7 +3669,7 @@ export interface HorizontalRule {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
   suggestedDeletionIds?: StringList;
 }
-export const HorizontalRule = /*@__PURE__*/ S.suspend(() =>
+const HorizontalRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyle: S.optional(TextStyle),
     suggestedTextStyleChanges: S.optional(SuggestedTextStyleMap),
@@ -3695,7 +3685,7 @@ export interface Equation {
   /** The suggested insertion IDs. An Equation may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
   suggestedInsertionIds?: StringList;
 }
-export const Equation = /*@__PURE__*/ S.suspend(() =>
+const Equation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedDeletionIds: S.optional(StringList),
     suggestedInsertionIds: S.optional(StringList),
@@ -3733,7 +3723,7 @@ export interface ParagraphElement {
   /** A paragraph element that represents a dropdown menu. */
   dropdown?: Dropdown;
 }
-export const ParagraphElement = /*@__PURE__*/ S.suspend(() =>
+const ParagraphElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIndex: S.optional(S.Number),
     richLink: S.optional(RichLink),
@@ -3753,7 +3743,7 @@ export const ParagraphElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParagraphElement" }) as any as S.Schema<ParagraphElement>;
 
 export type ParagraphElementList = Array<ParagraphElement>;
-export const ParagraphElementList = /*@__PURE__*/ S.Array(
+const ParagraphElementList = /*@__PURE__*/ S.Array(
   ParagraphElement,
 ) as any as S.Schema<ParagraphElementList>;
 
@@ -3762,7 +3752,7 @@ export interface ShadingSuggestionState {
   /** Indicates if there was a suggested change to the Shading. */
   backgroundColorSuggested?: boolean;
 }
-export const ShadingSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const ShadingSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backgroundColorSuggested: S.optional(S.Boolean),
   }),
@@ -3813,7 +3803,7 @@ export interface ParagraphStyleSuggestionState {
   /** Indicates if there was a suggested change to space_below. */
   spaceBelowSuggested?: boolean;
 }
-export const ParagraphStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const ParagraphStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indentStartSuggested: S.optional(S.Boolean),
     shadingSuggestionState: S.optional(ShadingSuggestionState),
@@ -3848,7 +3838,7 @@ export interface SuggestedParagraphStyle {
   /** A ParagraphStyle that only includes the changes made in this suggestion. This can be used along with the paragraph_style_suggestion_state to see which fields have changed and their new values. */
   paragraphStyle?: ParagraphStyle;
 }
-export const SuggestedParagraphStyle = /*@__PURE__*/ S.suspend(() =>
+const SuggestedParagraphStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paragraphStyleSuggestionState: S.optional(ParagraphStyleSuggestionState),
     paragraphStyle: S.optional(ParagraphStyle),
@@ -3856,7 +3846,7 @@ export const SuggestedParagraphStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedParagraphStyle" }) as any as S.Schema<SuggestedParagraphStyle>;
 
 export type SuggestedParagraphStyleMap = { [key: string]: SuggestedParagraphStyle | undefined };
-export const SuggestedParagraphStyleMap = /*@__PURE__*/ S.Record(
+const SuggestedParagraphStyleMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedParagraphStyle,
 ) as any as S.Schema<SuggestedParagraphStyleMap>;
@@ -3866,14 +3856,14 @@ export interface ObjectReferences {
   /** The object IDs. */
   objectIds?: StringList;
 }
-export const ObjectReferences = /*@__PURE__*/ S.suspend(() =>
+const ObjectReferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectIds: S.optional(StringList),
   }),
 ).annotate({ identifier: "ObjectReferences" }) as any as S.Schema<ObjectReferences>;
 
 export type ObjectReferencesMap = { [key: string]: ObjectReferences | undefined };
-export const ObjectReferencesMap = /*@__PURE__*/ S.Record(
+const ObjectReferencesMap = /*@__PURE__*/ S.Record(
   S.String,
   ObjectReferences,
 ) as any as S.Schema<ObjectReferencesMap>;
@@ -3895,7 +3885,7 @@ export interface Paragraph {
   /** The IDs of the positioned objects suggested to be attached to this paragraph, keyed by suggestion ID. */
   suggestedPositionedObjectIds?: ObjectReferencesMap;
 }
-export const Paragraph = /*@__PURE__*/ S.suspend(() =>
+const Paragraph = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedBulletChanges: S.optional(SuggestedBulletMap),
     positionedObjectIds: S.optional(StringList),
@@ -3922,7 +3912,7 @@ export interface StructuralElement {
   /** The zero-based end index of this structural element, exclusive, in UTF-16 code units. */
   endIndex?: number;
 }
-export const StructuralElement = /*@__PURE__*/ S.suspend(() =>
+const StructuralElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number),
     table: S.optional(Table),
@@ -3934,7 +3924,7 @@ export const StructuralElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StructuralElement" }) as any as S.Schema<StructuralElement>;
 
 export type StructuralElementList = Array<StructuralElement>;
-export const StructuralElementList = /*@__PURE__*/ S.Array(
+const StructuralElementList = /*@__PURE__*/ S.Array(
   StructuralElement,
 ) as any as S.Schema<StructuralElementList>;
 
@@ -3945,7 +3935,7 @@ export interface Footer {
   /** The contents of the footer. The indexes for a footer's content begin at zero. */
   content?: StructuralElementList;
 }
-export const Footer = /*@__PURE__*/ S.suspend(() =>
+const Footer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     footerId: S.optional(S.String),
     content: S.optional(StructuralElementList),
@@ -3953,10 +3943,10 @@ export const Footer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Footer" }) as any as S.Schema<Footer>;
 
 export type FooterMap = { [key: string]: Footer | undefined };
-export const FooterMap = /*@__PURE__*/ S.Record(S.String, Footer) as any as S.Schema<FooterMap>;
+const FooterMap = /*@__PURE__*/ S.Record(S.String, Footer) as any as S.Schema<FooterMap>;
 
 export type SuggestionThreadStatusEnum = "STATUS_UNSPECIFIED" | "OPEN" | "ACCEPTED" | "REJECTED";
-export const SuggestionThreadStatusEnum = S.String;
+const SuggestionThreadStatusEnum = S.String;
 
 /** Represents a single suggestion thread. Suggestion threads are created as a byproduct of saving changes to the document while in suggestion mode, and cannot be created directly. [Developer Preview](https://developers.google.com/workspace/preview). */
 export interface SuggestionThread {
@@ -3973,7 +3963,7 @@ export interface SuggestionThread {
   /** Whether the thread is open, accepted, or rejected. */
   status?: SuggestionThreadStatusEnum | (string & {});
 }
-export const SuggestionThread = /*@__PURE__*/ S.suspend(() =>
+const SuggestionThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaryText: S.optional(S.String),
     headPost: S.optional(Post),
@@ -3985,19 +3975,19 @@ export const SuggestionThread = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestionThread" }) as any as S.Schema<SuggestionThread>;
 
 export type SuggestionThreadList = Array<SuggestionThread>;
-export const SuggestionThreadList = /*@__PURE__*/ S.Array(
+const SuggestionThreadList = /*@__PURE__*/ S.Array(
   SuggestionThread,
 ) as any as S.Schema<SuggestionThreadList>;
 
 export type NamedStyleList = Array<NamedStyle>;
-export const NamedStyleList = /*@__PURE__*/ S.Array(NamedStyle) as any as S.Schema<NamedStyleList>;
+const NamedStyleList = /*@__PURE__*/ S.Array(NamedStyle) as any as S.Schema<NamedStyleList>;
 
 /** The named styles. Paragraphs in the document can inherit their TextStyle and ParagraphStyle from these named styles. */
 export interface NamedStyles {
   /** The named styles. There's an entry for each of the possible named style types. */
   styles?: NamedStyleList;
 }
-export const NamedStyles = /*@__PURE__*/ S.suspend(() =>
+const NamedStyles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     styles: S.optional(NamedStyleList),
   }),
@@ -4008,7 +3998,7 @@ export interface InlineObjectPropertiesSuggestionState {
   /** A mask that indicates which of the fields in embedded_object have been changed in this suggestion. */
   embeddedObjectSuggestionState?: EmbeddedObjectSuggestionState;
 }
-export const InlineObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const InlineObjectPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     embeddedObjectSuggestionState: S.optional(EmbeddedObjectSuggestionState),
   }),
@@ -4021,7 +4011,7 @@ export interface InlineObjectProperties {
   /** The embedded object of this inline object. */
   embeddedObject?: EmbeddedObject;
 }
-export const InlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
+const InlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     embeddedObject: S.optional(EmbeddedObject),
   }),
@@ -4034,7 +4024,7 @@ export interface SuggestedInlineObjectProperties {
   /** An InlineObjectProperties that only includes the changes made in this suggestion. This can be used along with the inline_object_properties_suggestion_state to see which fields have changed and their new values. */
   inlineObjectProperties?: InlineObjectProperties;
 }
-export const SuggestedInlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
+const SuggestedInlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inlineObjectPropertiesSuggestionState: S.optional(InlineObjectPropertiesSuggestionState),
     inlineObjectProperties: S.optional(InlineObjectProperties),
@@ -4046,7 +4036,7 @@ export const SuggestedInlineObjectProperties = /*@__PURE__*/ S.suspend(() =>
 export type SuggestedInlineObjectPropertiesMap = {
   [key: string]: SuggestedInlineObjectProperties | undefined;
 };
-export const SuggestedInlineObjectPropertiesMap = /*@__PURE__*/ S.Record(
+const SuggestedInlineObjectPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedInlineObjectProperties,
 ) as any as S.Schema<SuggestedInlineObjectPropertiesMap>;
@@ -4064,7 +4054,7 @@ export interface InlineObject {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
   suggestedDeletionIds?: StringList;
 }
-export const InlineObject = /*@__PURE__*/ S.suspend(() =>
+const InlineObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     suggestedInlineObjectPropertiesChanges: S.optional(SuggestedInlineObjectPropertiesMap),
@@ -4075,7 +4065,7 @@ export const InlineObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InlineObject" }) as any as S.Schema<InlineObject>;
 
 export type InlineObjectMap = { [key: string]: InlineObject | undefined };
-export const InlineObjectMap = /*@__PURE__*/ S.Record(
+const InlineObjectMap = /*@__PURE__*/ S.Record(
   S.String,
   InlineObject,
 ) as any as S.Schema<InlineObjectMap>;
@@ -4085,7 +4075,7 @@ export type DocumentSuggestionsViewModeEnum =
   | "SUGGESTIONS_INLINE"
   | "PREVIEW_SUGGESTIONS_ACCEPTED"
   | "PREVIEW_WITHOUT_SUGGESTIONS";
-export const DocumentSuggestionsViewModeEnum = S.String;
+const DocumentSuggestionsViewModeEnum = S.String;
 
 export type NamedStyleSuggestionStateNamedStyleTypeEnum =
   | "NAMED_STYLE_TYPE_UNSPECIFIED"
@@ -4098,7 +4088,7 @@ export type NamedStyleSuggestionStateNamedStyleTypeEnum =
   | "HEADING_4"
   | "HEADING_5"
   | "HEADING_6";
-export const NamedStyleSuggestionStateNamedStyleTypeEnum = S.String;
+const NamedStyleSuggestionStateNamedStyleTypeEnum = S.String;
 
 /** A suggestion state of a NamedStyle message. */
 export interface NamedStyleSuggestionState {
@@ -4109,7 +4099,7 @@ export interface NamedStyleSuggestionState {
   /** A mask that indicates which of the fields in paragraph style have been changed in this suggestion. */
   paragraphStyleSuggestionState?: ParagraphStyleSuggestionState;
 }
-export const NamedStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const NamedStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textStyleSuggestionState: S.optional(TextStyleSuggestionState),
     namedStyleType: S.optional(NamedStyleSuggestionStateNamedStyleTypeEnum),
@@ -4120,7 +4110,7 @@ export const NamedStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamedStyleSuggestionState>;
 
 export type NamedStyleSuggestionStateList = Array<NamedStyleSuggestionState>;
-export const NamedStyleSuggestionStateList = /*@__PURE__*/ S.Array(
+const NamedStyleSuggestionStateList = /*@__PURE__*/ S.Array(
   NamedStyleSuggestionState,
 ) as any as S.Schema<NamedStyleSuggestionStateList>;
 
@@ -4129,7 +4119,7 @@ export interface NamedStylesSuggestionState {
   /** A mask that indicates which of the fields on the corresponding NamedStyle in styles have been changed in this suggestion. The order of these named style suggestion states matches the order of the corresponding named style within the named styles suggestion. */
   stylesSuggestionStates?: NamedStyleSuggestionStateList;
 }
-export const NamedStylesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const NamedStylesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stylesSuggestionStates: S.optional(NamedStyleSuggestionStateList),
   }),
@@ -4144,7 +4134,7 @@ export interface SuggestedNamedStyles {
   /** A NamedStyles that only includes the changes made in this suggestion. This can be used along with the named_styles_suggestion_state to see which fields have changed and their new values. */
   namedStyles?: NamedStyles;
 }
-export const SuggestedNamedStyles = /*@__PURE__*/ S.suspend(() =>
+const SuggestedNamedStyles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namedStylesSuggestionState: S.optional(NamedStylesSuggestionState),
     namedStyles: S.optional(NamedStyles),
@@ -4152,13 +4142,13 @@ export const SuggestedNamedStyles = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedNamedStyles" }) as any as S.Schema<SuggestedNamedStyles>;
 
 export type SuggestedNamedStylesMap = { [key: string]: SuggestedNamedStyles | undefined };
-export const SuggestedNamedStylesMap = /*@__PURE__*/ S.Record(
+const SuggestedNamedStylesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedNamedStyles,
 ) as any as S.Schema<SuggestedNamedStylesMap>;
 
 export type RangeList = Array<Range>;
-export const RangeList = /*@__PURE__*/ S.Array(Range) as any as S.Schema<RangeList>;
+const RangeList = /*@__PURE__*/ S.Array(Range) as any as S.Schema<RangeList>;
 
 /** A collection of Ranges with the same named range ID. Named ranges allow developers to associate parts of a document with an arbitrary user-defined label so their contents can be programmatically read or edited later. A document can contain multiple named ranges with the same name, but every named range has a unique ID. A named range is created with a single Range, and content inserted inside a named range generally expands that range. However, certain document changes can cause the range to be split into multiple ranges. Named ranges are not private. All applications and collaborators that have access to the document can see its named ranges. */
 export interface NamedRange {
@@ -4169,7 +4159,7 @@ export interface NamedRange {
   /** The ranges that belong to this named range. */
   ranges?: RangeList;
 }
-export const NamedRange = /*@__PURE__*/ S.suspend(() =>
+const NamedRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namedRangeId: S.optional(S.String),
@@ -4178,7 +4168,7 @@ export const NamedRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamedRange" }) as any as S.Schema<NamedRange>;
 
 export type NamedRangeList = Array<NamedRange>;
-export const NamedRangeList = /*@__PURE__*/ S.Array(NamedRange) as any as S.Schema<NamedRangeList>;
+const NamedRangeList = /*@__PURE__*/ S.Array(NamedRange) as any as S.Schema<NamedRangeList>;
 
 /** A collection of all the NamedRanges in the document that share a given name. */
 export interface NamedRanges {
@@ -4187,7 +4177,7 @@ export interface NamedRanges {
   /** The NamedRanges that share the same name. */
   namedRanges?: NamedRangeList;
 }
-export const NamedRanges = /*@__PURE__*/ S.suspend(() =>
+const NamedRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namedRanges: S.optional(NamedRangeList),
@@ -4195,7 +4185,7 @@ export const NamedRanges = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamedRanges" }) as any as S.Schema<NamedRanges>;
 
 export type NamedRangesMap = { [key: string]: NamedRanges | undefined };
-export const NamedRangesMap = /*@__PURE__*/ S.Record(
+const NamedRangesMap = /*@__PURE__*/ S.Record(
   S.String,
   NamedRanges,
 ) as any as S.Schema<NamedRangesMap>;
@@ -4205,7 +4195,7 @@ export interface BackgroundSuggestionState {
   /** Indicates whether the current background color has been modified in this suggestion. */
   backgroundColorSuggested?: boolean;
 }
-export const BackgroundSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const BackgroundSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backgroundColorSuggested: S.optional(S.Boolean),
   }),
@@ -4254,7 +4244,7 @@ export interface DocumentStyleSuggestionState {
   /** Indicates if there was a suggested change to use_custom_header_footer_margins. */
   useCustomHeaderFooterMarginsSuggested?: boolean;
 }
-export const DocumentStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const DocumentStyleSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marginRightSuggested: S.optional(S.Boolean),
     marginTopSuggested: S.optional(S.Boolean),
@@ -4287,7 +4277,7 @@ export interface SuggestedDocumentStyle {
   /** A mask that indicates which of the fields on the base DocumentStyle have been changed in this suggestion. */
   documentStyleSuggestionState?: DocumentStyleSuggestionState;
 }
-export const SuggestedDocumentStyle = /*@__PURE__*/ S.suspend(() =>
+const SuggestedDocumentStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentStyle: S.optional(DocumentStyle),
     documentStyleSuggestionState: S.optional(DocumentStyleSuggestionState),
@@ -4295,7 +4285,7 @@ export const SuggestedDocumentStyle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedDocumentStyle" }) as any as S.Schema<SuggestedDocumentStyle>;
 
 export type SuggestedDocumentStyleMap = { [key: string]: SuggestedDocumentStyle | undefined };
-export const SuggestedDocumentStyleMap = /*@__PURE__*/ S.Record(
+const SuggestedDocumentStyleMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedDocumentStyle,
 ) as any as S.Schema<SuggestedDocumentStyleMap>;
@@ -4307,7 +4297,7 @@ export interface Footnote {
   /** The contents of the footnote. The indexes for a footnote's content begin at zero. */
   content?: StructuralElementList;
 }
-export const Footnote = /*@__PURE__*/ S.suspend(() =>
+const Footnote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     footnoteId: S.optional(S.String),
     content: S.optional(StructuralElementList),
@@ -4315,24 +4305,21 @@ export const Footnote = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Footnote" }) as any as S.Schema<Footnote>;
 
 export type FootnoteMap = { [key: string]: Footnote | undefined };
-export const FootnoteMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Footnote,
-) as any as S.Schema<FootnoteMap>;
+const FootnoteMap = /*@__PURE__*/ S.Record(S.String, Footnote) as any as S.Schema<FootnoteMap>;
 
 /** The document body. The body typically contains the full document contents except for headers, footers, and footnotes. */
 export interface Body {
   /** The contents of the body. The indexes for the body's content begin at zero. */
   content?: StructuralElementList;
 }
-export const Body = /*@__PURE__*/ S.suspend(() =>
+const Body = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(StructuralElementList),
   }),
 ).annotate({ identifier: "Body" }) as any as S.Schema<Body>;
 
 export type DropdownDefinitionMap = { [key: string]: DropdownDefinition | undefined };
-export const DropdownDefinitionMap = /*@__PURE__*/ S.Record(
+const DropdownDefinitionMap = /*@__PURE__*/ S.Record(
   S.String,
   DropdownDefinition,
 ) as any as S.Schema<DropdownDefinitionMap>;
@@ -4344,7 +4331,7 @@ export interface CommentAnchor {
   /** A collection of Ranges in the document which are tied to this anchor. */
   ranges?: RangeList;
 }
-export const CommentAnchor = /*@__PURE__*/ S.suspend(() =>
+const CommentAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anchorId: S.optional(S.String),
     ranges: S.optional(RangeList),
@@ -4352,7 +4339,7 @@ export const CommentAnchor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentAnchor" }) as any as S.Schema<CommentAnchor>;
 
 export type CommentAnchorMap = { [key: string]: CommentAnchor | undefined };
-export const CommentAnchorMap = /*@__PURE__*/ S.Record(
+const CommentAnchorMap = /*@__PURE__*/ S.Record(
   S.String,
   CommentAnchor,
 ) as any as S.Schema<CommentAnchorMap>;
@@ -4376,7 +4363,7 @@ export interface NestingLevelSuggestionState {
   /** Indicates if there was a suggested change to bullet_alignment. */
   bulletAlignmentSuggested?: boolean;
 }
-export const NestingLevelSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const NestingLevelSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indentFirstLineSuggested: S.optional(S.Boolean),
     indentStartSuggested: S.optional(S.Boolean),
@@ -4392,7 +4379,7 @@ export const NestingLevelSuggestionState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NestingLevelSuggestionState>;
 
 export type NestingLevelSuggestionStateList = Array<NestingLevelSuggestionState>;
-export const NestingLevelSuggestionStateList = /*@__PURE__*/ S.Array(
+const NestingLevelSuggestionStateList = /*@__PURE__*/ S.Array(
   NestingLevelSuggestionState,
 ) as any as S.Schema<NestingLevelSuggestionStateList>;
 
@@ -4401,7 +4388,7 @@ export interface ListPropertiesSuggestionState {
   /** A mask that indicates which of the fields on the corresponding NestingLevel in nesting_levels have been changed in this suggestion. The nesting level suggestion states are returned in ascending order of the nesting level with the least nested returned first. */
   nestingLevelsSuggestionStates?: NestingLevelSuggestionStateList;
 }
-export const ListPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesSuggestionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nestingLevelsSuggestionStates: S.optional(NestingLevelSuggestionStateList),
   }),
@@ -4418,14 +4405,14 @@ export type NestingLevelGlyphTypeEnum =
   | "ALPHA"
   | "UPPER_ROMAN"
   | "ROMAN";
-export const NestingLevelGlyphTypeEnum = S.String;
+const NestingLevelGlyphTypeEnum = S.String;
 
 export type NestingLevelBulletAlignmentEnum =
   | "BULLET_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
   | "END";
-export const NestingLevelBulletAlignmentEnum = S.String;
+const NestingLevelBulletAlignmentEnum = S.String;
 
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
 export interface NestingLevel {
@@ -4446,7 +4433,7 @@ export interface NestingLevel {
   /** The number of the first list item at this nesting level. A value of 0 is treated as a value of 1 for lettered lists and Roman numeral lists. For values of both 0 and 1, lettered and Roman numeral lists will begin at `a` and `i` respectively. This value is ignored for nesting levels with unordered glyphs. */
   startNumber?: number;
 }
-export const NestingLevel = /*@__PURE__*/ S.suspend(() =>
+const NestingLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     glyphType: S.optional(NestingLevelGlyphTypeEnum),
     glyphFormat: S.optional(S.String),
@@ -4460,16 +4447,14 @@ export const NestingLevel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NestingLevel" }) as any as S.Schema<NestingLevel>;
 
 export type NestingLevelList = Array<NestingLevel>;
-export const NestingLevelList = /*@__PURE__*/ S.Array(
-  NestingLevel,
-) as any as S.Schema<NestingLevelList>;
+const NestingLevelList = /*@__PURE__*/ S.Array(NestingLevel) as any as S.Schema<NestingLevelList>;
 
 /** The properties of a list that describe the look and feel of bullets belonging to paragraphs associated with a list. */
 export interface ListProperties {
   /** Describes the properties of the bullets at the associated level. A list has at most 9 levels of nesting with nesting level 0 corresponding to the top-most level and nesting level 8 corresponding to the most nested level. The nesting levels are returned in ascending order with the least nested returned first. */
   nestingLevels?: NestingLevelList;
 }
-export const ListProperties = /*@__PURE__*/ S.suspend(() =>
+const ListProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nestingLevels: S.optional(NestingLevelList),
   }),
@@ -4482,7 +4467,7 @@ export interface SuggestedListProperties {
   /** A ListProperties that only includes the changes made in this suggestion. This can be used along with the list_properties_suggestion_state to see which fields have changed and their new values. */
   listProperties?: ListProperties;
 }
-export const SuggestedListProperties = /*@__PURE__*/ S.suspend(() =>
+const SuggestedListProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listPropertiesSuggestionState: S.optional(ListPropertiesSuggestionState),
     listProperties: S.optional(ListProperties),
@@ -4490,7 +4475,7 @@ export const SuggestedListProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestedListProperties" }) as any as S.Schema<SuggestedListProperties>;
 
 export type SuggestedListPropertiesMap = { [key: string]: SuggestedListProperties | undefined };
-export const SuggestedListPropertiesMap = /*@__PURE__*/ S.Record(
+const SuggestedListPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   SuggestedListProperties,
 ) as any as S.Schema<SuggestedListPropertiesMap>;
@@ -4506,7 +4491,7 @@ export interface List {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this list. */
   suggestedDeletionIds?: StringList;
 }
-export const List = /*@__PURE__*/ S.suspend(() =>
+const List = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedListPropertiesChanges: S.optional(SuggestedListPropertiesMap),
     listProperties: S.optional(ListProperties),
@@ -4516,7 +4501,7 @@ export const List = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "List" }) as any as S.Schema<List>;
 
 export type ListMap = { [key: string]: List | undefined };
-export const ListMap = /*@__PURE__*/ S.Record(S.String, List) as any as S.Schema<ListMap>;
+const ListMap = /*@__PURE__*/ S.Record(S.String, List) as any as S.Schema<ListMap>;
 
 /** A document header. */
 export interface Header {
@@ -4525,7 +4510,7 @@ export interface Header {
   /** The contents of the header. The indexes for a header's content begin at zero. */
   content?: StructuralElementList;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
+const Header = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerId: S.optional(S.String),
     content: S.optional(StructuralElementList),
@@ -4533,7 +4518,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderMap = { [key: string]: Header | undefined };
-export const HeaderMap = /*@__PURE__*/ S.Record(S.String, Header) as any as S.Schema<HeaderMap>;
+const HeaderMap = /*@__PURE__*/ S.Record(S.String, Header) as any as S.Schema<HeaderMap>;
 
 /** A tab with document contents. */
 export interface DocumentTab {
@@ -4566,7 +4551,7 @@ export interface DocumentTab {
   /** The named styles of the document tab. */
   namedStyles?: NamedStyles;
 }
-export const DocumentTab = /*@__PURE__*/ S.suspend(() =>
+const DocumentTab = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentStyle: S.optional(DocumentStyle),
     footnotes: S.optional(FootnoteMap),
@@ -4594,7 +4579,7 @@ export interface Tab {
   /** A tab with document contents, like text and images. */
   documentTab?: DocumentTab;
 }
-export const Tab = /*@__PURE__*/ S.suspend(() =>
+const Tab = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childTabs: S.optional(S.suspend(() => TabList)),
     tabProperties: S.optional(TabProperties),
@@ -4603,14 +4588,14 @@ export const Tab = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tab" }) as any as S.Schema<Tab>;
 
 export type TabList = Array<Tab>;
-export const TabList = /*@__PURE__*/ S.Array(Tab) as any as S.Schema<TabList>;
+const TabList = /*@__PURE__*/ S.Array(Tab) as any as S.Schema<TabList>;
 
 export type DocumentCommentsViewModeEnum =
   | "COMMENTS_VIEW_MODE_UNSPECIFIED"
   | "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS"
   | "COMMENTS_VIEW_MODE_OMITTED"
   | "COMMENTS_VIEW_MODE_INCLUDED";
-export const DocumentCommentsViewModeEnum = S.String;
+const DocumentCommentsViewModeEnum = S.String;
 
 /** A Google Docs document. */
 export interface Document {
@@ -4655,7 +4640,7 @@ export interface Document {
   /** Output only. The lists in the document, keyed by list ID. Legacy field: Instead, use Document.tabs.documentTab.lists, which exposes the actual document content from all tabs when the includeTabsContent parameter is set to `true`. If `false` or unset, this field contains information about the first tab in the document. */
   lists?: ListMap;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     comments: S.optional(CommentThreadList),
@@ -4684,7 +4669,7 @@ export interface CreateDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const CreateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Document.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "v1/documents", baseUrl: "https://docs.googleapis.com/" })),
@@ -4695,14 +4680,14 @@ export type GetDocumentsSuggestionsViewModeEnum =
   | "SUGGESTIONS_INLINE"
   | "PREVIEW_SUGGESTIONS_ACCEPTED"
   | "PREVIEW_WITHOUT_SUGGESTIONS";
-export const GetDocumentsSuggestionsViewModeEnum = S.String;
+const GetDocumentsSuggestionsViewModeEnum = S.String;
 
 export type GetDocumentsCommentsViewModeEnum =
   | "COMMENTS_VIEW_MODE_UNSPECIFIED"
   | "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS"
   | "COMMENTS_VIEW_MODE_OMITTED"
   | "COMMENTS_VIEW_MODE_INCLUDED";
-export const GetDocumentsCommentsViewModeEnum = S.String;
+const GetDocumentsCommentsViewModeEnum = S.String;
 
 export interface GetDocumentsRequest {
   /** The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. */
@@ -4714,7 +4699,7 @@ export interface GetDocumentsRequest {
   /** Whether to populate the `Document.tabs` field instead of the text content fields like `body` and `documentStyle` on `Document`. - When `true`: Document content populates in the `Document.tabs` field instead of the text content fields in `Document`. - When `false`: The content of the document's first tab populates the content fields in `Document` excluding `Document.tabs`. If a document has only one tab, then that tab is used to populate the document content. `Document.tabs` will be empty. If you use a field mask that references the `Document.tabs` field (or any subfield), the API implicitly treats the request as if you set `include_tabs_content` to `true`. */
   includeTabsContent?: boolean;
 }
-export const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestionsViewMode: S.optional(GetDocumentsSuggestionsViewModeEnum.pipe(T.Query())),
     documentId: S.String.pipe(T.Label()),

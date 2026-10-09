@@ -72,7 +72,7 @@ export interface SshPublicKey {
   /** Output only. The SHA-256 fingerprint of the SSH public key. */
   fingerprint?: string;
 }
-export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
+const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -87,7 +87,7 @@ export interface CreateUsersSshPublicKeysRequest {
   /** Request body */
   body?: SshPublicKey;
 }
-export const CreateUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SshPublicKey.pipe(T.HttpBody())),
@@ -106,7 +106,7 @@ export type DeleteUsersProjectsOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
   | "WINDOWS";
-export const DeleteUsersProjectsOperatingSystemTypeEnum = S.String;
+const DeleteUsersProjectsOperatingSystemTypeEnum = S.String;
 
 export interface DeleteUsersProjectsRequest {
   /** Optional. The type of operating system associated with the account. */
@@ -114,7 +114,7 @@ export interface DeleteUsersProjectsRequest {
   /** Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. */
   name: string;
 }
-export const DeleteUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatingSystemType: S.optional(DeleteUsersProjectsOperatingSystemTypeEnum.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -131,7 +131,7 @@ export const DeleteUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -139,7 +139,7 @@ export interface DeleteUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
 }
-export const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -157,13 +157,13 @@ export type GetLoginProfileUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "SECURITY_KEY";
-export const GetLoginProfileUsersViewEnum = S.String;
+const GetLoginProfileUsersViewEnum = S.String;
 
 export type GetLoginProfileUsersOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
   | "WINDOWS";
-export const GetLoginProfileUsersOperatingSystemTypeEnum = S.String;
+const GetLoginProfileUsersOperatingSystemTypeEnum = S.String;
 
 export interface GetLoginProfileUsersRequest {
   /** The view configures whether to retrieve security keys information. */
@@ -177,7 +177,7 @@ export interface GetLoginProfileUsersRequest {
   /** Optional. The type of operating system associated with the account. */
   operatingSystemType?: GetLoginProfileUsersOperatingSystemTypeEnum | (string & {});
 }
-export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(GetLoginProfileUsersViewEnum.pipe(T.Query())),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -199,7 +199,7 @@ export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
   | "WINDOWS";
-export const PosixAccountOperatingSystemTypeEnum = S.String;
+const PosixAccountOperatingSystemTypeEnum = S.String;
 
 /** The POSIX account information associated with a Google account. */
 export interface PosixAccount {
@@ -226,7 +226,7 @@ export interface PosixAccount {
   /** The username of the POSIX account. */
   username?: string;
 }
-export const PosixAccount = /*@__PURE__*/ S.suspend(() =>
+const PosixAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     systemId: S.optional(S.String),
@@ -243,16 +243,14 @@ export const PosixAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PosixAccount" }) as any as S.Schema<PosixAccount>;
 
 export type PosixAccountList = Array<PosixAccount>;
-export const PosixAccountList = /*@__PURE__*/ S.Array(
-  PosixAccount,
-) as any as S.Schema<PosixAccountList>;
+const PosixAccountList = /*@__PURE__*/ S.Array(PosixAccount) as any as S.Schema<PosixAccountList>;
 
 /** Security key information specific to the U2F protocol. */
 export interface UniversalTwoFactor {
   /** Application ID for the U2F protocol. */
   appId?: string;
 }
-export const UniversalTwoFactor = /*@__PURE__*/ S.suspend(() =>
+const UniversalTwoFactor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }),
@@ -263,7 +261,7 @@ export interface WebAuthn {
   /** Relying party ID for Web Authentication. */
   rpId?: string;
 }
-export const WebAuthn = /*@__PURE__*/ S.suspend(() =>
+const WebAuthn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rpId: S.optional(S.String),
   }),
@@ -282,7 +280,7 @@ export interface SecurityKey {
   /** The Web Authentication protocol type. */
   webAuthn?: WebAuthn;
 }
-export const SecurityKey = /*@__PURE__*/ S.suspend(() =>
+const SecurityKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKey: S.optional(S.String),
     privateKey: S.optional(S.String),
@@ -293,12 +291,10 @@ export const SecurityKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityKey" }) as any as S.Schema<SecurityKey>;
 
 export type SecurityKeyList = Array<SecurityKey>;
-export const SecurityKeyList = /*@__PURE__*/ S.Array(
-  SecurityKey,
-) as any as S.Schema<SecurityKeyList>;
+const SecurityKeyList = /*@__PURE__*/ S.Array(SecurityKey) as any as S.Schema<SecurityKeyList>;
 
 export type SshPublicKeyMap = { [key: string]: SshPublicKey | undefined };
-export const SshPublicKeyMap = /*@__PURE__*/ S.Record(
+const SshPublicKeyMap = /*@__PURE__*/ S.Record(
   S.String,
   SshPublicKey,
 ) as any as S.Schema<SshPublicKeyMap>;
@@ -314,7 +310,7 @@ export interface LoginProfile {
   /** A map from SSH public key fingerprint to the associated key object. */
   sshPublicKeys?: SshPublicKeyMap;
 }
-export const LoginProfile = /*@__PURE__*/ S.suspend(() =>
+const LoginProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posixAccounts: S.optional(PosixAccountList),
     securityKeys: S.optional(SecurityKeyList),
@@ -327,7 +323,7 @@ export interface GetUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
 }
-export const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -338,13 +334,13 @@ export const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersSshPublicKeysRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type ImportSshPublicKeyUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "SECURITY_KEY";
-export const ImportSshPublicKeyUsersViewEnum = S.String;
+const ImportSshPublicKeyUsersViewEnum = S.String;
 
 export interface ImportSshPublicKeyUsersRequest {
   /** Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
@@ -358,7 +354,7 @@ export interface ImportSshPublicKeyUsersRequest {
   /** Request body */
   body?: SshPublicKey;
 }
-export const ImportSshPublicKeyUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportSshPublicKeyUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(StringList.pipe(T.Query())),
     view: S.optional(ImportSshPublicKeyUsersViewEnum.pipe(T.Query())),
@@ -383,7 +379,7 @@ export interface ImportSshPublicKeyResponse {
   /** The login profile information for the user. */
   loginProfile?: LoginProfile;
 }
-export const ImportSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(S.String),
     loginProfile: S.optional(LoginProfile),
@@ -400,7 +396,7 @@ export interface PatchUsersSshPublicKeysRequest {
   /** Request body */
   body?: SshPublicKey;
 }
-export const PatchUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -417,7 +413,7 @@ export interface ProvisionPosixAccountRequest {
   /** Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
   regions?: StringList;
 }
-export const ProvisionPosixAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionPosixAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(StringList),
   }),
@@ -431,7 +427,7 @@ export interface ProvisionPosixAccountUsersProjectsRequest {
   /** Request body */
   body?: ProvisionPosixAccountRequest;
 }
-export const ProvisionPosixAccountUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionPosixAccountUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ProvisionPosixAccountRequest.pipe(T.HttpBody())),
@@ -455,7 +451,7 @@ export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRe
   /** The App Engine instance to sign the SSH public key for. Expected format: apps/{app}/services/{service}/versions/{version}/instances/{instance} */
   appEngineInstance?: string;
 }
-export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest =
+const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sshPublicKey: S.optional(S.String),
@@ -474,7 +470,7 @@ export interface SignSshPublicKeyProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRequest;
 }
-export const SignSshPublicKeyProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignSshPublicKeyProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -496,7 +492,7 @@ export interface GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyRe
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
-export const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse =
+const GoogleCloudOsloginControlplaneRegionalV1alphaSignSshPublicKeyResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       signedSshPublicKey: S.optional(S.String),
@@ -509,7 +505,7 @@ export interface SignSshPublicKeyRequest {
   /** Required. The SSH public key to sign. */
   sshPublicKey?: string;
 }
-export const SignSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshPublicKey: S.optional(S.String),
   }),
@@ -521,7 +517,7 @@ export interface SignSshPublicKeyUsersProjectsLocationsRequest {
   /** Request body */
   body?: SignSshPublicKeyRequest;
 }
-export const SignSshPublicKeyUsersProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SignSshPublicKeyUsersProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SignSshPublicKeyRequest.pipe(T.HttpBody())),
@@ -540,7 +536,7 @@ export interface SignSshPublicKeyResponse {
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
-export const SignSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const SignSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signedSshPublicKey: S.optional(S.String),
   }),
@@ -552,7 +548,7 @@ export interface SignSshPublicKeyUsersProjectsZonesRequest {
   /** Request body */
   body?: SignSshPublicKeyRequest;
 }
-export const SignSshPublicKeyUsersProjectsZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const SignSshPublicKeyUsersProjectsZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SignSshPublicKeyRequest.pipe(T.HttpBody())),

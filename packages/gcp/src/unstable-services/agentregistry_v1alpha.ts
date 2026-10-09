@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,14 +90,14 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** The target of the Binding. */
 export interface Target {
   /** The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}` */
   identifier?: string;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
   }),
@@ -108,10 +108,10 @@ export interface Source {
   /** The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}` */
   identifier?: string;
 }
-export const Source = Target as any as S.Schema<Source>;
+const Source = Target as any as S.Schema<Source>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The AuthProvider of the Binding. */
 export interface AuthProviderBinding {
@@ -122,7 +122,7 @@ export interface AuthProviderBinding {
   /** Optional. The continue URI of the AuthProvider. The URI is used to reauthenticate the user and finalize the managed OAuth flow. */
   continueUri?: string;
 }
-export const AuthProviderBinding = /*@__PURE__*/ S.suspend(() =>
+const AuthProviderBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authProvider: S.optional(S.String),
     scopes: S.optional(StringList),
@@ -149,7 +149,7 @@ export interface Binding {
   /** Output only. Timestamp when this binding was last updated. */
   updateTime?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     target: S.optional(Target),
@@ -172,7 +172,7 @@ export interface CreateProjectsLocationsBindingsRequest {
   /** Request body */
   body?: Binding;
 }
-export const CreateProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindingId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -190,15 +190,10 @@ export const CreateProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateProjectsLocationsBindingsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -209,7 +204,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -230,7 +225,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     metadata: S.optional(DocumentMap),
@@ -241,7 +236,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
-export const EndpointSpecTypeEnum = S.String;
+const EndpointSpecTypeEnum = S.String;
 
 /** The spec of the endpoint. */
 export interface EndpointSpec {
@@ -250,7 +245,7 @@ export interface EndpointSpec {
   /** Required. The type of the endpoint spec content. */
   type?: EndpointSpecTypeEnum | (string & {});
 }
-export const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
+const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(DocumentMap),
     type: S.optional(EndpointSpecTypeEnum),
@@ -258,7 +253,7 @@ export const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointSpec" }) as any as S.Schema<EndpointSpec>;
 
 export type McpServerSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC" | "TOOL_SPEC";
-export const McpServerSpecTypeEnum = S.String;
+const McpServerSpecTypeEnum = S.String;
 
 /** The spec of the MCP Server. */
 export interface McpServerSpec {
@@ -267,7 +262,7 @@ export interface McpServerSpec {
   /** Optional. The content of the MCP Server spec. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
   content?: DocumentMap;
 }
-export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
+const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(McpServerSpecTypeEnum),
     content: S.optional(DocumentMap),
@@ -279,7 +274,7 @@ export type InterfaceProtocolBindingEnum =
   | "JSONRPC"
   | "GRPC"
   | "HTTP_JSON";
-export const InterfaceProtocolBindingEnum = S.String;
+const InterfaceProtocolBindingEnum = S.String;
 
 /** Represents the connection details for an Agent or MCP Server. */
 export interface Interface {
@@ -288,7 +283,7 @@ export interface Interface {
   /** Required. The destination URL. */
   url?: string;
 }
-export const Interface = /*@__PURE__*/ S.suspend(() =>
+const Interface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocolBinding: S.optional(InterfaceProtocolBindingEnum),
     url: S.optional(S.String),
@@ -296,11 +291,9 @@ export const Interface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Interface" }) as any as S.Schema<Interface>;
 
 export type InterfaceList = Array<Interface>;
-export const InterfaceList = /*@__PURE__*/ S.Array(Interface) as any as S.Schema<InterfaceList>;
+const InterfaceList = /*@__PURE__*/ S.Array(Interface) as any as S.Schema<InterfaceList>;
 
 export type AgentSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC" | "A2A_AGENT_CARD";
-export const AgentSpecTypeEnum = S.String;
-
 /** The spec of the agent. */
 export interface AgentSpec {
   /** Optional. The content of the Agent spec in the JSON format. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
@@ -308,7 +301,7 @@ export interface AgentSpec {
   /** Required. The type of the agent spec content. */
   type?: AgentSpecTypeEnum | (string & {});
 }
-export const AgentSpec = EndpointSpec as any as S.Schema<AgentSpec>;
+const AgentSpec = EndpointSpec as any as S.Schema<AgentSpec>;
 
 /** Represents a user-defined Service. */
 export interface Service {
@@ -333,7 +326,7 @@ export interface Service {
   /** Optional. User-defined description of an Service. Can have a maximum length of `2048` characters. */
   description?: string;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointSpec: S.optional(EndpointSpec),
     name: S.optional(S.String),
@@ -358,7 +351,7 @@ export interface CreateProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     serviceId: S.optional(S.String.pipe(T.Query())),
@@ -382,13 +375,13 @@ export type SkillTargetStateEnum =
   | "TARGET_STATE_DISABLED"
   | "TARGET_STATE_DEPRECATED"
   | "TARGET_STATE_DECOMMISSIONED";
-export const SkillTargetStateEnum = S.String;
+const SkillTargetStateEnum = S.String;
 
 export type SkillTypeEnum = "TYPE_UNSPECIFIED" | "SIMPLE";
-export const SkillTypeEnum = S.String;
+const SkillTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Structured metadata attributes extracted from the package's local SKILL.md frontmatter. */
 export interface Frontmatter {
@@ -403,7 +396,7 @@ export interface Frontmatter {
   /** Optional. Extensible flattened map mapping custom tags, authors, and version parameters. */
   metadata?: StringMap;
 }
-export const Frontmatter = /*@__PURE__*/ S.suspend(() =>
+const Frontmatter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -419,7 +412,7 @@ export type SkillRevisionStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "DELETING";
-export const SkillRevisionStateEnum = S.String;
+const SkillRevisionStateEnum = S.String;
 
 /** Specifications for Cloud Storage objects. */
 export interface GcsSource {
@@ -428,7 +421,7 @@ export interface GcsSource {
   /** Required. Cloud Storage object URI. Format: `gs://{bucket_name}/{object_name}` */
   uri?: string;
 }
-export const GcsSource = /*@__PURE__*/ S.suspend(() =>
+const GcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation: S.optional(S.String),
     uri: S.optional(S.String),
@@ -440,7 +433,7 @@ export interface ArchiveUploadSource {
   /** Required. Input only. Write-only raw ZIP/TAR archive payload bytes containing the skill package. */
   archiveContent?: string;
 }
-export const ArchiveUploadSource = /*@__PURE__*/ S.suspend(() =>
+const ArchiveUploadSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveContent: S.optional(S.String),
   }),
@@ -467,7 +460,7 @@ export interface SkillRevision {
   /** Output only. Universally unique identifier (UUID4) for the skill revision. */
   uid?: string;
 }
-export const SkillRevision = /*@__PURE__*/ S.suspend(() =>
+const SkillRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256Hash: S.optional(S.String),
     state: S.optional(SkillRevisionStateEnum),
@@ -490,7 +483,7 @@ export type SkillStateEnum =
   | "STATE_DEPRECATED"
   | "STATE_DECOMMISSIONED"
   | "STATE_DELETING";
-export const SkillStateEnum = S.String;
+const SkillStateEnum = S.String;
 
 /** Represents an Executable Agent Skill or a Composite Tool Suite (Bundle). Sibling resource with Agent and McpServer under agentregistry.googleapis.com. */
 export interface Skill {
@@ -523,7 +516,7 @@ export interface Skill {
   /** Output only. The system-managed state of the skill. */
   state?: SkillStateEnum | (string & {});
 }
-export const Skill = /*@__PURE__*/ S.suspend(() =>
+const Skill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisher: S.optional(S.String),
     targetState: S.optional(SkillTargetStateEnum),
@@ -552,7 +545,7 @@ export interface CreateProjectsLocationsSkillsRequest {
   /** Request body */
   body?: Skill;
 }
-export const CreateProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skillId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -579,7 +572,7 @@ export interface CreateProjectsLocationsSkillsRevisionsRequest {
   /** Request body */
   body?: SkillRevision;
 }
-export const CreateProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skillRevisionId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -602,7 +595,7 @@ export interface DeleteProjectsLocationsBindingsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -621,7 +614,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -641,7 +634,7 @@ export interface DeleteProjectsLocationsServicesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -664,7 +657,7 @@ export interface DeleteProjectsLocationsSkillsRequest {
   /** Optional. If set to true, any child SkillRevisions under this Skill will also be deleted. Otherwise, the request will only succeed if the Skill has no child SkillRevisions. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -686,7 +679,7 @@ export interface DeleteProjectsLocationsSkillsRevisionsRequest {
   /** Optional. Signed UUID request idempotency token. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -713,7 +706,7 @@ export interface FetchAvailableProjectsLocationsBindingsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const FetchAvailableProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchAvailableProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -732,7 +725,7 @@ export const FetchAvailableProjectsLocationsBindingsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<FetchAvailableProjectsLocationsBindingsRequest>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** Message for response to fetching available Bindings. */
 export interface FetchAvailableBindingsResponse {
@@ -741,7 +734,7 @@ export interface FetchAvailableBindingsResponse {
   /** The list of Bindings. */
   bindings?: BindingList;
 }
-export const FetchAvailableBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchAvailableBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     bindings: S.optional(BindingList),
@@ -756,7 +749,7 @@ export interface GetIamPolicyProjectsLocationsAiApplicationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsAiApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsAiApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -782,7 +775,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     location: S.optional(S.String),
@@ -800,7 +793,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -809,7 +802,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -818,7 +811,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -827,7 +820,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -837,7 +830,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -848,7 +841,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
     service: S.optional(S.String),
@@ -856,7 +849,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -871,7 +864,7 @@ export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     bindings: S.optional(GoogleIamV1BindingList),
@@ -886,7 +879,7 @@ export interface GetIamPolicyProjectsLocationsSkillsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -905,7 +898,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -932,7 +925,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -946,7 +939,7 @@ export interface GetProjectsLocationsAgentsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -961,8 +954,6 @@ export const GetProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsAgentsRequest>;
 
 export type CardTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT_CARD";
-export const CardTypeEnum = S.String;
-
 /** Full Agent Card payload, often obtained from the A2A Agent Card. */
 export interface Card {
   /** Output only. The content of the agent card. */
@@ -970,10 +961,10 @@ export interface Card {
   /** Output only. The type of agent card. */
   type?: CardTypeEnum;
 }
-export const Card = EndpointSpec as any as S.Schema<Card>;
+const Card = EndpointSpec as any as S.Schema<Card>;
 
 export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
-export const ProtocolTypeEnum = S.String;
+const ProtocolTypeEnum = S.String;
 
 /** Represents the protocol of an Agent. */
 export interface Protocol {
@@ -984,7 +975,7 @@ export interface Protocol {
   /** Output only. The version of the protocol, for example, the A2A Agent Card version. */
   protocolVersion?: string;
 }
-export const Protocol = /*@__PURE__*/ S.suspend(() =>
+const Protocol = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ProtocolTypeEnum),
     interfaces: S.optional(InterfaceList),
@@ -993,10 +984,10 @@ export const Protocol = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Protocol" }) as any as S.Schema<Protocol>;
 
 export type ProtocolList = Array<Protocol>;
-export const ProtocolList = /*@__PURE__*/ S.Array(Protocol) as any as S.Schema<ProtocolList>;
+const ProtocolList = /*@__PURE__*/ S.Array(Protocol) as any as S.Schema<ProtocolList>;
 
 export type DocumentMapMap = { [key: string]: DocumentMap | undefined };
-export const DocumentMapMap = /*@__PURE__*/ S.Record(
+const DocumentMapMap = /*@__PURE__*/ S.Record(
   S.String,
   DocumentMap,
 ) as any as S.Schema<DocumentMapMap>;
@@ -1014,7 +1005,7 @@ export interface A2ASkill {
   /** Output only. Example prompts or scenarios this skill can handle. */
   examples?: StringList;
 }
-export const A2ASkill = /*@__PURE__*/ S.suspend(() =>
+const A2ASkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1025,7 +1016,7 @@ export const A2ASkill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "A2ASkill" }) as any as S.Schema<A2ASkill>;
 
 export type A2ASkillList = Array<A2ASkill>;
-export const A2ASkillList = /*@__PURE__*/ S.Array(A2ASkill) as any as S.Schema<A2ASkillList>;
+const A2ASkillList = /*@__PURE__*/ S.Array(A2ASkill) as any as S.Schema<A2ASkillList>;
 
 /** Represents an Agent. "A2A" below refers to the Agent-to-Agent protocol. */
 export interface Agent {
@@ -1056,7 +1047,7 @@ export interface Agent {
   /** Output only. Skills the agent possesses, often obtained from the A2A Agent Card. */
   skills?: A2ASkillList;
 }
-export const Agent = /*@__PURE__*/ S.suspend(() =>
+const Agent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     card: S.optional(Card),
@@ -1078,7 +1069,7 @@ export interface GetProjectsLocationsBindingsRequest {
   /** Required. The name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`. */
   name: string;
 }
-export const GetProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1096,7 +1087,7 @@ export interface GetProjectsLocationsEndpointsRequest {
   /** Required. The name of the endpoint to retrieve. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
   name: string;
 }
-export const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1129,7 +1120,7 @@ export interface Endpoint {
   /** Output only. Description of an Endpoint. */
   description?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interfaces: S.optional(InterfaceList),
     updateTime: S.optional(S.String),
@@ -1146,7 +1137,7 @@ export interface GetProjectsLocationsMcpServersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1173,7 +1164,7 @@ export interface Annotations {
   /** Output only. If true, this tool may interact with an "open world" of external entities. If false, the tool's domain of interaction is closed. For example, the world of a web search tool is open, whereas that of a memory tool is not. Default: true */
   openWorldHint?: boolean;
 }
-export const Annotations = /*@__PURE__*/ S.suspend(() =>
+const Annotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotentHint: S.optional(S.Boolean),
     destructiveHint: S.optional(S.Boolean),
@@ -1192,7 +1183,7 @@ export interface Tool {
   /** Output only. Human-readable name of the tool. */
   name?: string;
 }
-export const Tool = /*@__PURE__*/ S.suspend(() =>
+const Tool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(Annotations),
     description: S.optional(S.String),
@@ -1201,7 +1192,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
 export type ToolList = Array<Tool>;
-export const ToolList = /*@__PURE__*/ S.Array(Tool) as any as S.Schema<ToolList>;
+const ToolList = /*@__PURE__*/ S.Array(Tool) as any as S.Schema<ToolList>;
 
 /** Represents an MCP (Model Context Protocol) Server. */
 export interface McpServer {
@@ -1224,7 +1215,7 @@ export interface McpServer {
   /** Output only. The description of the MCP Server. */
   description?: string;
 }
-export const McpServer = /*@__PURE__*/ S.suspend(() =>
+const McpServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interfaces: S.optional(InterfaceList),
     updateTime: S.optional(S.String),
@@ -1242,7 +1233,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1260,7 +1251,7 @@ export interface GetProjectsLocationsPublishersRequest {
   /** Required. Target publisher resource name. Format: `projects/{project}/locations/{location}/publishers/{publisher}` */
   name: string;
 }
-export const GetProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1279,7 +1270,7 @@ export type PublisherPublisherTierEnum =
   | "FIRST_PARTY"
   | "THIRD_PARTY"
   | "PRIVATE";
-export const PublisherPublisherTierEnum = S.String;
+const PublisherPublisherTierEnum = S.String;
 
 /** Represents a verified Publisher of Skills. Prepopulated publishers include `publishers/cloud.google.com` and `publishers/workspace.google.com`. */
 export interface Publisher {
@@ -1296,7 +1287,7 @@ export interface Publisher {
   /** Optional. Human readable display name of the publisher. */
   displayName?: string;
 }
-export const Publisher = /*@__PURE__*/ S.suspend(() =>
+const Publisher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentationUri: S.optional(S.String),
     supportUri: S.optional(S.String),
@@ -1311,7 +1302,7 @@ export interface GetProjectsLocationsServicesRequest {
   /** Required. The name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
   name: string;
 }
-export const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1329,7 +1320,7 @@ export interface GetProjectsLocationsSkillsRequest {
   /** Required. Target resource container name. */
   name: string;
 }
-export const GetProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1347,7 +1338,7 @@ export interface GetProjectsLocationsSkillsRevisionsRequest {
   /** Required. Target revision name. */
   name: string;
 }
-export const GetProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1373,7 +1364,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1392,7 +1383,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1401,7 +1392,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1420,7 +1411,7 @@ export interface ListProjectsLocationsAgentsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1439,7 +1430,7 @@ export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
 
 export type AgentList = Array<Agent>;
-export const AgentList = /*@__PURE__*/ S.Array(Agent) as any as S.Schema<AgentList>;
+const AgentList = /*@__PURE__*/ S.Array(Agent) as any as S.Schema<AgentList>;
 
 /** Message for response to listing Agents */
 export interface ListAgentsResponse {
@@ -1448,7 +1439,7 @@ export interface ListAgentsResponse {
   /** The list of Agents. */
   agents?: AgentList;
 }
-export const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     agents: S.optional(AgentList),
@@ -1467,7 +1458,7 @@ export interface ListProjectsLocationsBindingsRequest {
   /** Required. The project and location to list bindings in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1492,7 +1483,7 @@ export interface ListBindingsResponse {
   /** The list of Binding resources matching the parent and filter criteria in the request. Each Binding resource follows the format: `projects/{project}/locations/{location}/bindings/{binding}`. */
   bindings?: BindingList;
 }
-export const ListBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     bindings: S.optional(BindingList),
@@ -1509,7 +1500,7 @@ export interface ListProjectsLocationsEndpointsRequest {
   /** Required. The project and location to list endpoints in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1527,7 +1518,7 @@ export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
 export type EndpointList = Array<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
+const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
 
 /** Message for response to listing Endpoints */
 export interface ListEndpointsResponse {
@@ -1536,7 +1527,7 @@ export interface ListEndpointsResponse {
   /** The list of Endpoint resources matching the parent and filter criteria in the request. Each Endpoint resource follows the format: `projects/{project}/locations/{location}/endpoints/{endpoint}`. */
   endpoints?: EndpointList;
 }
-export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     endpoints: S.optional(EndpointList),
@@ -1555,7 +1546,7 @@ export interface ListProjectsLocationsMcpServersRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1574,7 +1565,7 @@ export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsMcpServersRequest>;
 
 export type McpServerList = Array<McpServer>;
-export const McpServerList = /*@__PURE__*/ S.Array(McpServer) as any as S.Schema<McpServerList>;
+const McpServerList = /*@__PURE__*/ S.Array(McpServer) as any as S.Schema<McpServerList>;
 
 /** Message for response to listing McpServers */
 export interface ListMcpServersResponse {
@@ -1583,7 +1574,7 @@ export interface ListMcpServersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mcpServers: S.optional(McpServerList),
     nextPageToken: S.optional(S.String),
@@ -1602,7 +1593,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1621,7 +1612,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1632,7 +1623,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -1648,7 +1639,7 @@ export interface ListProjectsLocationsPublishersRequest {
   /** Optional. Page offset token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1665,7 +1656,7 @@ export const ListProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsPublishersRequest>;
 
 export type PublisherList = Array<Publisher>;
-export const PublisherList = /*@__PURE__*/ S.Array(Publisher) as any as S.Schema<PublisherList>;
+const PublisherList = /*@__PURE__*/ S.Array(Publisher) as any as S.Schema<PublisherList>;
 
 /** Response listing Publishers. */
 export interface ListPublishersResponse {
@@ -1674,7 +1665,7 @@ export interface ListPublishersResponse {
   /** Page offset continuation token. */
   nextPageToken?: string;
 }
-export const ListPublishersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublishersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishers: S.optional(PublisherList),
     nextPageToken: S.optional(S.String),
@@ -1691,7 +1682,7 @@ export interface ListProjectsLocationsServicesRequest {
   /** Required. The project and location to list services in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1709,7 +1700,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Message for response to listing Services */
 export interface ListServicesResponse {
@@ -1718,7 +1709,7 @@ export interface ListServicesResponse {
   /** The list of Service resources matching the parent and filter criteria in the request. Each Service resource follows the format: `projects/{project}/locations/{location}/services/{service}`. */
   services?: ServiceList;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     services: S.optional(ServiceList),
@@ -1737,7 +1728,7 @@ export interface ListProjectsLocationsSkillsRequest {
   /** Required. Parent value for ListSkillsRequest */
   parent: string;
 }
-export const ListProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1756,7 +1747,7 @@ export const ListProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSkillsRequest>;
 
 export type SkillList = Array<Skill>;
-export const SkillList = /*@__PURE__*/ S.Array(Skill) as any as S.Schema<SkillList>;
+const SkillList = /*@__PURE__*/ S.Array(Skill) as any as S.Schema<SkillList>;
 
 /** Response structure listing logical Skills. */
 export interface ListSkillsResponse {
@@ -1767,7 +1758,7 @@ export interface ListSkillsResponse {
   /** Returned container list. */
   skills?: SkillList;
 }
-export const ListSkillsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSkillsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1783,7 +1774,7 @@ export interface ListProjectsLocationsSkillsRevisionsRequest {
   /** Optional. Page offset token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1800,7 +1791,7 @@ export const ListProjectsLocationsSkillsRevisionsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsSkillsRevisionsRequest>;
 
 export type SkillRevisionList = Array<SkillRevision>;
-export const SkillRevisionList = /*@__PURE__*/ S.Array(
+const SkillRevisionList = /*@__PURE__*/ S.Array(
   SkillRevision,
 ) as any as S.Schema<SkillRevisionList>;
 
@@ -1811,7 +1802,7 @@ export interface ListSkillRevisionsResponse {
   /** Page offset continuation token. */
   nextPageToken?: string;
 }
-export const ListSkillRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSkillRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skillRevisions: S.optional(SkillRevisionList),
     nextPageToken: S.optional(S.String),
@@ -1830,7 +1821,7 @@ export interface PatchProjectsLocationsBindingsRequest {
   /** Request body */
   body?: Binding;
 }
-export const PatchProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1857,7 +1848,7 @@ export interface PatchProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1884,7 +1875,7 @@ export interface PatchProjectsLocationsSkillsRequest {
   /** Request body */
   body?: Skill;
 }
-export const PatchProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1910,7 +1901,7 @@ export interface SearchAgentsRequest {
   /** Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters, must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const SearchAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchString: S.optional(S.String),
     pageSize: S.optional(S.Number),
@@ -1924,7 +1915,7 @@ export interface SearchProjectsLocationsAgentsRequest {
   /** Request body */
   body?: SearchAgentsRequest;
 }
-export const SearchProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SearchAgentsRequest.pipe(T.HttpBody())),
@@ -1946,7 +1937,7 @@ export interface SearchAgentsResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const SearchAgentsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchAgentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agents: S.optional(AgentList),
     nextPageToken: S.optional(S.String),
@@ -1962,7 +1953,7 @@ export interface SearchMcpServersRequest {
   /** Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used. The server may return fewer results than requested. */
   pageSize?: number;
 }
-export const SearchMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     searchString: S.optional(S.String),
@@ -1976,7 +1967,7 @@ export interface SearchProjectsLocationsMcpServersRequest {
   /** Request body */
   body?: SearchMcpServersRequest;
 }
-export const SearchProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SearchMcpServersRequest.pipe(T.HttpBody())),
@@ -1998,14 +1989,14 @@ export interface SearchMcpServersResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const SearchMcpServersResponse =
+const SearchMcpServersResponse =
   ListMcpServersResponse as any as S.Schema<SearchMcpServersResponse>;
 
 export type SearchProjectsLocationsSkillsSearchTypeEnum =
   | "SEARCH_TYPE_UNSPECIFIED"
   | "KEYWORD"
   | "SEMANTIC";
-export const SearchProjectsLocationsSkillsSearchTypeEnum = S.String;
+const SearchProjectsLocationsSkillsSearchTypeEnum = S.String;
 
 export interface SearchProjectsLocationsSkillsRequest {
   /** Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used. The server may return fewer results than requested. */
@@ -2021,7 +2012,7 @@ export interface SearchProjectsLocationsSkillsRequest {
   /** Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters, must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const SearchProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2047,7 +2038,7 @@ export interface SearchSkillsResponse {
   /** Query page offset continuation token. */
   nextPageToken?: string;
 }
-export const SearchSkillsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchSkillsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skills: S.optional(SkillList),
     nextPageToken: S.optional(S.String),
@@ -2061,7 +2052,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
 }
-export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(GoogleIamV1Policy),
@@ -2076,7 +2067,7 @@ export interface SetIamPolicyProjectsLocationsAiApplicationsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAiApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsAiApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2097,7 +2088,7 @@ export interface SetIamPolicyProjectsLocationsSkillsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2117,7 +2108,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -2131,18 +2122,17 @@ export interface TestIamPermissionsProjectsLocationsAiApplicationsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAiApplicationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+resource}:testIamPermissions",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsAiApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/{+resource}:testIamPermissions",
+      baseUrl: "https://agentregistry.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsAiApplicationsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsAiApplicationsRequest>;
@@ -2152,7 +2142,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse =
+const GoogleIamV1TestIamPermissionsResponse =
   GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsSkillsRequest {
@@ -2161,7 +2151,7 @@ export interface TestIamPermissionsProjectsLocationsSkillsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),

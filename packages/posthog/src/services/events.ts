@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type GetEventRequestFormat = "csv" | "json";
-export const GetEventRequestFormat = S.String;
+const GetEventRequestFormat = S.String;
 
 export interface GetEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -46,7 +46,7 @@ export interface GetEventRequest {
   /** Include person details for the event. Default: false. */
   include_person?: boolean;
 }
-export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -56,23 +56,23 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEventRequest" }) as any as S.Schema<GetEventRequest>;
 
 export type GetEventResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetEventResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetEventResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GetEventResponseBodyMap>;
 
 export type GetEventResponse = GetEventResponseBodyMap;
-export const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
   GetEventResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetEventResponse" }) as any as S.Schema<GetEventResponse>;
 
 export type GetEventsValueRequestEventNameList = Array<string>;
-export const GetEventsValueRequestEventNameList = /*@__PURE__*/ S.Array(
+const GetEventsValueRequestEventNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetEventsValueRequestEventNameList>;
 
 export type GetEventsValueRequestFormat = "csv" | "json";
-export const GetEventsValueRequestFormat = S.String;
+const GetEventsValueRequestFormat = S.String;
 
 export interface GetEventsValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -87,7 +87,7 @@ export interface GetEventsValueRequest {
   /** Only return values that contain this text, ignoring case. */
   value?: string;
 }
-export const GetEventsValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventsValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_name: S.optional(GetEventsValueRequestEventNameList.pipe(T.Query())),
@@ -104,7 +104,7 @@ export interface EventPropertyValue {
   /** How many times the value occurs, when the lookup counts values. */
   count?: number;
 }
-export const EventPropertyValue = /*@__PURE__*/ S.suspend(() =>
+const EventPropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     count: S.optional(S.Number),
@@ -113,7 +113,7 @@ export const EventPropertyValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Values of the property that match the request. */
 export type EventPropertyValuesResponseResultsList = Array<EventPropertyValue>;
-export const EventPropertyValuesResponseResultsList = /*@__PURE__*/ S.Array(
+const EventPropertyValuesResponseResultsList = /*@__PURE__*/ S.Array(
   EventPropertyValue,
 ) as any as S.Schema<EventPropertyValuesResponseResultsList>;
 
@@ -123,7 +123,7 @@ export interface EventPropertyValuesResponse {
   /** True when these results come from a stale cache and a refresh runs in the background. */
   refreshing: boolean;
 }
-export const EventPropertyValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const EventPropertyValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: EventPropertyValuesResponseResultsList,
     refreshing: S.Boolean,
@@ -133,22 +133,16 @@ export const EventPropertyValuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventPropertyValuesResponse>;
 
 export type ListEventsRequestFormat = "csv" | "json";
-export const ListEventsRequestFormat = S.String;
+const ListEventsRequestFormat = S.String;
 
 export type PropertyGroupOperatorEnum = "AND" | "OR";
-export const PropertyGroupOperatorEnum = S.String;
+const PropertyGroupOperatorEnum = S.String;
 
 export type PropertyItemValueCase3Item = string | number;
-export const PropertyItemValueCase3Item = S.Unknown as any as S.Schema<PropertyItemValueCase3Item>;
-
 export type PropertyItemValueCase3List = Array<PropertyItemValueCase3Item>;
-export const PropertyItemValueCase3List = /*@__PURE__*/ S.Array(
-  PropertyItemValueCase3Item,
-) as any as S.Schema<PropertyItemValueCase3List>;
-
 /** Value of your filter. For example `test@example.com` or `https://example.com/test/`. Can be an array for an OR query, like `["test@example.com","ok@example.com"]` */
 export type PropertyItemValue = string | number | boolean | PropertyItemValueCase3List;
-export const PropertyItemValue = S.Unknown as any as S.Schema<PropertyItemValue>;
+const PropertyItemValue = S.Unknown as any as S.Schema<PropertyItemValue>;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `gte` - gte * `lte` - lte * `is_set` - is_set * `is_not_set` - is_not_set * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before * `in` - in * `not_in` - not_in */
 export type PropertyItemOperatorEnum =
@@ -173,13 +167,9 @@ export type PropertyItemOperatorEnum =
   | "is_date_before"
   | "in"
   | "not_in";
-export const PropertyItemOperatorEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
-export const PropertyItemOperator = S.Unknown as any as S.Schema<PropertyItemOperator>;
+const PropertyItemOperator = S.Unknown as any as S.Schema<PropertyItemOperator>;
 
 /** * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
 export type PropertyFilterTypeEnum =
@@ -213,10 +203,8 @@ export type PropertyFilterTypeEnum =
   | "account_custom_property"
   | "flag"
   | "workflow_variable";
-export const PropertyFilterTypeEnum = S.String;
-
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
-export const PropertyItemType = S.Unknown as any as S.Schema<PropertyItemType>;
+const PropertyItemType = S.Unknown as any as S.Schema<PropertyItemType>;
 
 export interface PropertyItem {
   /** Key of the property you're filtering on. For example `email` or `$current_url` */
@@ -226,7 +214,7 @@ export interface PropertyItem {
   operator?: PropertyItemOperator | null;
   type?: PropertyItemType;
 }
-export const PropertyItem = /*@__PURE__*/ S.suspend(() =>
+const PropertyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(PropertyItemValue),
@@ -236,7 +224,7 @@ export const PropertyItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyItem" }) as any as S.Schema<PropertyItem>;
 
 export type PropertyValuesList = Array<PropertyItem>;
-export const PropertyValuesList = /*@__PURE__*/ S.Array(
+const PropertyValuesList = /*@__PURE__*/ S.Array(
   PropertyItem,
 ) as any as S.Schema<PropertyValuesList>;
 
@@ -245,7 +233,7 @@ export interface Property {
   type?: PropertyGroupOperatorEnum | (string & {});
   values?: PropertyValuesList;
 }
-export const Property = /*@__PURE__*/ S.suspend(() =>
+const Property = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PropertyGroupOperatorEnum),
     values: S.optional(PropertyValuesList),
@@ -253,16 +241,16 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
 export type ListEventsRequestPropertiesList = Array<Property>;
-export const ListEventsRequestPropertiesList = /*@__PURE__*/ S.Array(
+const ListEventsRequestPropertiesList = /*@__PURE__*/ S.Array(
   Property,
 ) as any as S.Schema<ListEventsRequestPropertiesList>;
 
 export type ListEventsRequestSelectList = Array<string>;
-export const ListEventsRequestSelectList =
+const ListEventsRequestSelectList =
   GetEventsValueRequestEventNameList as any as S.Schema<ListEventsRequestSelectList>;
 
 export type ListEventsRequestWhereList = Array<string>;
-export const ListEventsRequestWhereList =
+const ListEventsRequestWhereList =
   GetEventsValueRequestEventNameList as any as S.Schema<ListEventsRequestWhereList>;
 
 export interface ListEventsRequest {
@@ -292,7 +280,7 @@ export interface ListEventsRequest {
   /** (Experimental) JSON-serialized array of HogQL expressions that must pass */
   where?: ListEventsRequestWhereList;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     after: S.optional(S.String.pipe(T.Query())),
@@ -311,15 +299,15 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEventsRequest" }) as any as S.Schema<ListEventsRequest>;
 
 export type ClickhouseEventPropertiesMap = { [key: string]: unknown | undefined };
-export const ClickhouseEventPropertiesMap =
+const ClickhouseEventPropertiesMap =
   GetEventResponseBodyMap as any as S.Schema<ClickhouseEventPropertiesMap>;
 
 export type ClickhouseEventPersonMap = { [key: string]: unknown | undefined };
-export const ClickhouseEventPersonMap =
+const ClickhouseEventPersonMap =
   GetEventResponseBodyMap as any as S.Schema<ClickhouseEventPersonMap>;
 
 export type EventElementAttrClassList = Array<string>;
-export const EventElementAttrClassList =
+const EventElementAttrClassList =
   GetEventsValueRequestEventNameList as any as S.Schema<EventElementAttrClassList>;
 
 export interface EventElement {
@@ -334,7 +322,7 @@ export interface EventElement {
   attributes?: unknown;
   order?: number | null;
 }
-export const EventElement = /*@__PURE__*/ S.suspend(() =>
+const EventElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(S.String),
     text: S.optional(S.NullOr(S.String)),
@@ -350,7 +338,7 @@ export const EventElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventElement" }) as any as S.Schema<EventElement>;
 
 export type ClickhouseEventElementsList = Array<EventElement>;
-export const ClickhouseEventElementsList = /*@__PURE__*/ S.Array(
+const ClickhouseEventElementsList = /*@__PURE__*/ S.Array(
   EventElement,
 ) as any as S.Schema<ClickhouseEventElementsList>;
 
@@ -364,7 +352,7 @@ export interface ClickhouseEvent {
   elements?: ClickhouseEventElementsList;
   elements_chain?: string;
 }
-export const ClickhouseEvent = /*@__PURE__*/ S.suspend(() =>
+const ClickhouseEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     distinct_id: S.optional(S.String),
@@ -378,7 +366,7 @@ export const ClickhouseEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClickhouseEvent" }) as any as S.Schema<ClickhouseEvent>;
 
 export type PaginatedClickhouseEventListResultsList = Array<ClickhouseEvent>;
-export const PaginatedClickhouseEventListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedClickhouseEventListResultsList = /*@__PURE__*/ S.Array(
   ClickhouseEvent,
 ) as any as S.Schema<PaginatedClickhouseEventListResultsList>;
 
@@ -386,7 +374,7 @@ export interface PaginatedClickhouseEventList {
   next?: string | null;
   results?: PaginatedClickhouseEventListResultsList;
 }
-export const PaginatedClickhouseEventList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedClickhouseEventList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     results: S.optional(PaginatedClickhouseEventListResultsList),

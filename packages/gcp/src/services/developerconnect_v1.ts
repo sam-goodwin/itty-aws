@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,10 +90,10 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type ProviderOAuthConfigSystemProviderIdEnum =
   | "SYSTEM_PROVIDER_UNSPECIFIED"
@@ -106,7 +106,7 @@ export type ProviderOAuthConfigSystemProviderIdEnum =
   | "DATASTAX"
   | "DYNATRACE"
   | "BITBUCKET_CLOUD";
-export const ProviderOAuthConfigSystemProviderIdEnum = S.String;
+const ProviderOAuthConfigSystemProviderIdEnum = S.String;
 
 /** ProviderOAuthConfig is the OAuth config for a provider. */
 export interface ProviderOAuthConfig {
@@ -115,7 +115,7 @@ export interface ProviderOAuthConfig {
   /** Optional. Immutable. Developer Connect provided OAuth. */
   systemProviderId?: ProviderOAuthConfigSystemProviderIdEnum | (string & {});
 }
-export const ProviderOAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const ProviderOAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(StringList),
     systemProviderId: S.optional(ProviderOAuthConfigSystemProviderIdEnum),
@@ -127,7 +127,7 @@ export interface ServiceDirectoryConfig {
   /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
   service?: string;
 }
-export const ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
   }),
@@ -138,7 +138,7 @@ export type CustomOAuthConfigScmProviderEnum =
   | "GITHUB_ENTERPRISE"
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER";
-export const CustomOAuthConfigScmProviderEnum = S.String;
+const CustomOAuthConfigScmProviderEnum = S.String;
 
 /** Message for a customized OAuth config. */
 export interface CustomOAuthConfig {
@@ -165,7 +165,7 @@ export interface CustomOAuthConfig {
   /** Required. The host URI of the OAuth application. */
   hostUri?: string;
 }
-export const CustomOAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomOAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
     scopes: S.optional(StringList),
@@ -188,7 +188,7 @@ export interface ProxyConfig {
   /** Optional. Setting this to true allows the git and http proxies to perform actions on behalf of the user configured under the account connector. */
   enabled?: boolean;
 }
-export const ProxyConfig = /*@__PURE__*/ S.suspend(() =>
+const ProxyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpProxyBaseUri: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -196,7 +196,7 @@ export const ProxyConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProxyConfig" }) as any as S.Schema<ProxyConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** AccountConnector encapsulates what a platform administrator needs to configure for users to connect to the service providers, which includes, among other fields, the OAuth client ID, client secret, and authorization and token endpoints. */
 export interface AccountConnector {
@@ -223,7 +223,7 @@ export interface AccountConnector {
   /** Output only. A system-assigned unique identifier for the Account Connector. */
   uid?: string;
 }
-export const AccountConnector = /*@__PURE__*/ S.suspend(() =>
+const AccountConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     providerOauthConfig: S.optional(ProviderOAuthConfig),
@@ -251,7 +251,7 @@ export interface CreateProjectsLocationsAccountConnectorsRequest {
   /** Request body */
   body?: AccountConnector;
 }
-export const CreateProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -270,15 +270,10 @@ export const CreateProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateProjectsLocationsAccountConnectorsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -289,7 +284,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -310,7 +305,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     metadata: S.optional(DocumentMap),
@@ -325,7 +320,7 @@ export interface BearerTokenAuthentication {
   /** Optional. The token SecretManager secret version to authenticate as. */
   tokenSecretVersion?: string;
 }
-export const BearerTokenAuthentication = /*@__PURE__*/ S.suspend(() =>
+const BearerTokenAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenSecretVersion: S.optional(S.String),
   }),
@@ -340,7 +335,7 @@ export interface BasicAuthentication {
   /** Required. The username to authenticate as. */
   username?: string;
 }
-export const BasicAuthentication = /*@__PURE__*/ S.suspend(() =>
+const BasicAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordSecretVersion: S.optional(S.String),
     username: S.optional(S.String),
@@ -360,7 +355,7 @@ export interface GenericHTTPEndpointConfig {
   /** Required. Immutable. The service provider's https endpoint. */
   hostUri?: string;
 }
-export const GenericHTTPEndpointConfig = /*@__PURE__*/ S.suspend(() =>
+const GenericHTTPEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bearerTokenAuthentication: S.optional(BearerTokenAuthentication),
     serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
@@ -379,7 +374,7 @@ export interface UserCredential {
   /** Output only. The username associated with this token. */
   username?: string;
 }
-export const UserCredential = /*@__PURE__*/ S.suspend(() =>
+const UserCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userTokenSecretVersion: S.optional(S.String),
     username: S.optional(S.String),
@@ -403,7 +398,7 @@ export interface BitbucketDataCenterConfig {
   /** Required. The URI of the Bitbucket Data Center host this connection is for. */
   hostUri?: string;
 }
-export const BitbucketDataCenterConfig = /*@__PURE__*/ S.suspend(() =>
+const BitbucketDataCenterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sslCaCertificate: S.optional(S.String),
     authorizerCredential: S.optional(UserCredential),
@@ -422,7 +417,7 @@ export interface SecureSourceManagerInstanceConfig {
   /** Required. Immutable. Secure Source Manager instance resource, formatted as `projects/*\/locations/*\/instances/*` */
   instance?: string;
 }
-export const SecureSourceManagerInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const SecureSourceManagerInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(S.String),
   }),
@@ -439,7 +434,7 @@ export interface GitLabConfig {
   /** Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
   webhookSecretSecretVersion?: string;
 }
-export const GitLabConfig = /*@__PURE__*/ S.suspend(() =>
+const GitLabConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizerCredential: S.optional(UserCredential),
     readAuthorizerCredential: S.optional(UserCredential),
@@ -453,7 +448,7 @@ export type GitHubConfigGithubAppEnum =
   | "FIREBASE"
   | "GEMINI_CODE_ASSIST"
   | "DATAFORM";
-export const GitHubConfigGithubAppEnum = S.String;
+const GitHubConfigGithubAppEnum = S.String;
 
 /** Represents an OAuth token of the account that authorized the Connection, and associated metadata. */
 export interface OAuthCredential {
@@ -462,7 +457,7 @@ export interface OAuthCredential {
   /** Output only. The username associated with this token. */
   username?: string;
 }
-export const OAuthCredential = /*@__PURE__*/ S.suspend(() =>
+const OAuthCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthTokenSecretVersion: S.optional(S.String),
     username: S.optional(S.String),
@@ -480,7 +475,7 @@ export interface GitHubConfig {
   /** Optional. OAuth credential of the account that authorized the GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the GitHub App of this config. */
   authorizerCredential?: OAuthCredential;
 }
-export const GitHubConfig = /*@__PURE__*/ S.suspend(() =>
+const GitHubConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installationUri: S.optional(S.String),
     githubApp: S.optional(GitHubConfigGithubAppEnum),
@@ -496,7 +491,7 @@ export interface GitProxyConfig {
   /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-c-h-{shortRegion}.developerconnect.dev` Populated only when enabled is set to true. This endpoint is used by other Google services that integrate with Developer Connect. */
   httpProxyBaseUri?: string;
 }
-export const GitProxyConfig = /*@__PURE__*/ S.suspend(() =>
+const GitProxyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     httpProxyBaseUri: S.optional(S.String),
@@ -514,7 +509,7 @@ export interface BitbucketCloudConfig {
   /** Required. An access token with the minimum `repository`, `pullrequest` and `webhook` scope access. It can either be a workspace, project or repository access token. This is needed to create webhooks. It's recommended to use a system account to generate these credentials. */
   authorizerCredential?: UserCredential;
 }
-export const BitbucketCloudConfig = /*@__PURE__*/ S.suspend(() =>
+const BitbucketCloudConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace: S.optional(S.String),
     webhookSecretSecretVersion: S.optional(S.String),
@@ -529,7 +524,7 @@ export type InstallationStateStageEnum =
   | "PENDING_USER_OAUTH"
   | "PENDING_INSTALL_APP"
   | "COMPLETE";
-export const InstallationStateStageEnum = S.String;
+const InstallationStateStageEnum = S.String;
 
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
 export interface InstallationState {
@@ -540,7 +535,7 @@ export interface InstallationState {
   /** Output only. Link to follow for next action. Empty string if the installation is already complete. */
   actionUri?: string;
 }
-export const InstallationState = /*@__PURE__*/ S.suspend(() =>
+const InstallationState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     stage: S.optional(InstallationStateStageEnum),
@@ -573,7 +568,7 @@ export interface GitHubEnterpriseConfig {
   /** Optional. Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet. */
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
-export const GitHubEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
+const GitHubEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appSlug: S.optional(S.String),
     webhookSecretSecretVersion: S.optional(S.String),
@@ -594,7 +589,7 @@ export interface CryptoKeyConfig {
   /** Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*`. */
   keyReference?: string;
 }
-export const CryptoKeyConfig = /*@__PURE__*/ S.suspend(() =>
+const CryptoKeyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyReference: S.optional(S.String),
   }),
@@ -617,7 +612,7 @@ export interface GitLabEnterpriseConfig {
   /** Optional. SSL Certificate Authority certificate to use for requests to GitLab Enterprise instance. */
   sslCaCertificate?: string;
 }
-export const GitLabEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
+const GitLabEnterpriseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readAuthorizerCredential: S.optional(UserCredential),
     serverVersion: S.optional(S.String),
@@ -674,7 +669,7 @@ export interface Connection {
   /** Configuration for connections to an instance of GitLab Enterprise. */
   gitlabEnterpriseConfig?: GitLabEnterpriseConfig;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpConfig: S.optional(GenericHTTPEndpointConfig),
     reconciling: S.optional(S.Boolean),
@@ -712,7 +707,7 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -757,7 +752,7 @@ export interface GitRepositoryLink {
   /** Output only. URI to access the linked repository through the Git Proxy. This field is only populated if the git proxy is enabled for the connection. */
   gitProxyUri?: string;
 }
-export const GitRepositoryLink = /*@__PURE__*/ S.suspend(() =>
+const GitRepositoryLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.optional(S.String),
     annotations: S.optional(StringMap),
@@ -786,21 +781,20 @@ export interface CreateProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Request body */
   body?: GitRepositoryLink;
 }
-export const CreateProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      gitRepositoryLinkId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GitRepositoryLink.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/gitRepositoryLinks",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    gitRepositoryLinkId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GitRepositoryLink.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/gitRepositoryLinks",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsConnectionsGitRepositoryLinksRequest",
 }) as any as S.Schema<CreateProjectsLocationsConnectionsGitRepositoryLinksRequest>;
@@ -810,14 +804,14 @@ export interface GoogleCloudRun {
   /** Required. Immutable. The name of the Cloud Run service. Format: `projects/{project}/locations/{location}/services/{service}`. */
   serviceUri?: string;
 }
-export const GoogleCloudRun = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceUri: S.optional(S.String),
   }),
 ).annotate({ identifier: "GoogleCloudRun" }) as any as S.Schema<GoogleCloudRun>;
 
 export type RuntimeConfigStateEnum = "STATE_UNSPECIFIED" | "LINKED" | "UNLINKED";
-export const RuntimeConfigStateEnum = S.String;
+const RuntimeConfigStateEnum = S.String;
 
 /** AppHubService represents the App Hub Service. */
 export interface AppHubService {
@@ -828,7 +822,7 @@ export interface AppHubService {
   /** Output only. The environment of the App Hub Service. */
   environment?: string;
 }
-export const AppHubService = /*@__PURE__*/ S.suspend(() =>
+const AppHubService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criticality: S.optional(S.String),
     apphubService: S.optional(S.String),
@@ -843,7 +837,7 @@ export interface GKEWorkload {
   /** Required. Immutable. The name of the GKE cluster. Format: `projects/{project}/locations/{location}/clusters/{cluster}`. */
   cluster?: string;
 }
-export const GKEWorkload = /*@__PURE__*/ S.suspend(() =>
+const GKEWorkload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment: S.optional(S.String),
     cluster: S.optional(S.String),
@@ -859,7 +853,7 @@ export interface AppHubWorkload {
   /** Output only. The environment of the App Hub Workload. */
   environment?: string;
 }
-export const AppHubWorkload = /*@__PURE__*/ S.suspend(() =>
+const AppHubWorkload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criticality: S.optional(S.String),
     workload: S.optional(S.String),
@@ -882,7 +876,7 @@ export interface RuntimeConfig {
   /** Output only. App Hub Workload. */
   appHubWorkload?: AppHubWorkload;
 }
-export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
+const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleCloudRun: S.optional(GoogleCloudRun),
     state: S.optional(RuntimeConfigStateEnum),
@@ -894,12 +888,12 @@ export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
 export type RuntimeConfigList = Array<RuntimeConfig>;
-export const RuntimeConfigList = /*@__PURE__*/ S.Array(
+const RuntimeConfigList = /*@__PURE__*/ S.Array(
   RuntimeConfig,
 ) as any as S.Schema<RuntimeConfigList>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** Google Artifact Registry configurations. */
 export interface GoogleArtifactRegistry {
@@ -908,7 +902,7 @@ export interface GoogleArtifactRegistry {
   /** Required. Immutable. The name of the artifact registry package. */
   artifactRegistryPackage?: string;
 }
-export const GoogleArtifactRegistry = /*@__PURE__*/ S.suspend(() =>
+const GoogleArtifactRegistry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     artifactRegistryPackage: S.optional(S.String),
@@ -920,7 +914,7 @@ export interface GoogleArtifactAnalysis {
   /** Required. The project id of the project where the provenance is stored. */
   projectId?: string;
 }
-export const GoogleArtifactAnalysis = /*@__PURE__*/ S.suspend(() =>
+const GoogleArtifactAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
   }),
@@ -935,7 +929,7 @@ export interface ArtifactConfig {
   /** Required. Immutable. The URI of the artifact that is deployed. e.g. `us-docker.pkg.dev/my-project/my-repo/image`. The URI does not include the tag / digest because it captures a lineage of artifacts. */
   uri?: string;
 }
-export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
+const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleArtifactRegistry: S.optional(GoogleArtifactRegistry),
     googleArtifactAnalysis: S.optional(GoogleArtifactAnalysis),
@@ -944,19 +938,19 @@ export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactConfig" }) as any as S.Schema<ArtifactConfig>;
 
 export type ArtifactConfigList = Array<ArtifactConfig>;
-export const ArtifactConfigList = /*@__PURE__*/ S.Array(
+const ArtifactConfigList = /*@__PURE__*/ S.Array(
   ArtifactConfig,
 ) as any as S.Schema<ArtifactConfigList>;
 
 export type InsightsConfigStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "COMPLETE" | "ERROR";
-export const InsightsConfigStateEnum = S.String;
+const InsightsConfigStateEnum = S.String;
 
 /** Projects represents the projects to track with the InsightsConfig. */
 export interface Projects {
   /** Optional. The project IDs. Format: {project} */
   projectIds?: StringList;
 }
-export const Projects = /*@__PURE__*/ S.suspend(() =>
+const Projects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIds: S.optional(StringList),
   }),
@@ -989,7 +983,7 @@ export interface InsightsConfig {
   /** Optional. The projects to track with the InsightsConfig. */
   projects?: Projects;
 }
-export const InsightsConfig = /*@__PURE__*/ S.suspend(() =>
+const InsightsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appHubApplication: S.optional(S.String),
     runtimeConfigs: S.optional(RuntimeConfigList),
@@ -1016,7 +1010,7 @@ export interface CreateProjectsLocationsInsightsConfigsRequest {
   /** Request body */
   body?: InsightsConfig;
 }
-export const CreateProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     insightsConfigId: S.optional(S.String.pipe(T.Query())),
@@ -1045,7 +1039,7 @@ export interface DeleteProjectsLocationsAccountConnectorsRequest {
   /** Optional. If set to true, any Users from this AccountConnector will also be deleted. (Otherwise, the request will only work if the AccountConnector has no Users.) */
   force?: boolean;
 }
-export const DeleteProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1073,7 +1067,7 @@ export interface DeleteProjectsLocationsAccountConnectorsUsersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1100,7 +1094,7 @@ export interface DeleteProjectsLocationsConnectionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1127,20 +1121,19 @@ export interface DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    etag: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest",
 }) as any as S.Schema<DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest>;
@@ -1155,7 +1148,7 @@ export interface DeleteProjectsLocationsInsightsConfigsRequest {
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1176,7 +1169,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1194,46 +1187,42 @@ export interface DeleteSelfProjectsLocationsAccountConnectorsUsersRequest {
   /** Required. Name of the AccountConnector resource */
   name: string;
 }
-export const DeleteSelfProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}/users:deleteSelf",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const DeleteSelfProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}/users:deleteSelf",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteSelfProjectsLocationsAccountConnectorsUsersRequest",
 }) as any as S.Schema<DeleteSelfProjectsLocationsAccountConnectorsUsersRequest>;
 
 /** Message for fetching an OAuth access token. */
 export type FetchAccessTokenRequest = CancelOperationRequest;
-export const FetchAccessTokenRequest = CancelOperationRequest;
-
 export interface FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest {
   /** Required. The resource name of the AccountConnector in the format `projects/*\/locations/*\/accountConnectors/*`. */
   accountConnector: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountConnector: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+accountConnector}/users:fetchAccessToken",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest",
-  }) as any as S.Schema<FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest>;
+const FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountConnector: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+accountConnector}/users:fetchAccessToken",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest",
+}) as any as S.Schema<FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest>;
 
 /** Message for representing an error from exchanging OAuth tokens. */
 export interface ExchangeError {
@@ -1242,7 +1231,7 @@ export interface ExchangeError {
   /** https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error_description */
   description?: string;
 }
-export const ExchangeError = /*@__PURE__*/ S.suspend(() =>
+const ExchangeError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     description: S.optional(S.String),
@@ -1260,7 +1249,7 @@ export interface FetchAccessTokenResponse {
   /** The error resulted from exchanging OAuth tokens from the service provider. */
   exchangeError?: ExchangeError;
 }
-export const FetchAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     expirationTime: S.optional(S.String),
@@ -1273,17 +1262,16 @@ export interface FetchGitHubInstallationsProjectsLocationsConnectionsRequest {
   /** Required. The resource name of the connection in the format `projects/*\/locations/*\/connections/*`. */
   connection: string;
 }
-export const FetchGitHubInstallationsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connection: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+connection}:fetchGitHubInstallations",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const FetchGitHubInstallationsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connection: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+connection}:fetchGitHubInstallations",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FetchGitHubInstallationsProjectsLocationsConnectionsRequest",
 }) as any as S.Schema<FetchGitHubInstallationsProjectsLocationsConnectionsRequest>;
@@ -1297,7 +1285,7 @@ export interface Installation {
   /** ID of the installation in GitHub. */
   id?: string;
 }
-export const Installation = /*@__PURE__*/ S.suspend(() =>
+const Installation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -1306,16 +1294,14 @@ export const Installation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Installation" }) as any as S.Schema<Installation>;
 
 export type InstallationList = Array<Installation>;
-export const InstallationList = /*@__PURE__*/ S.Array(
-  Installation,
-) as any as S.Schema<InstallationList>;
+const InstallationList = /*@__PURE__*/ S.Array(Installation) as any as S.Schema<InstallationList>;
 
 /** Response of fetching github installations. */
 export interface FetchGitHubInstallationsResponse {
   /** List of installations available to the OAuth user (for github.com) or all the installations (for GitHub enterprise). */
   installations?: InstallationList;
 }
-export const FetchGitHubInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchGitHubInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installations: S.optional(InstallationList),
   }),
@@ -1327,7 +1313,7 @@ export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnu
   | "REF_TYPE_UNSPECIFIED"
   | "TAG"
   | "BRANCH";
-export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnum = S.String;
+const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnum = S.String;
 
 export interface FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The resource name of GitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`. */
@@ -1339,8 +1325,8 @@ export interface FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksReque
   /** Optional. Page start. */
   pageToken?: string;
 }
-export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       gitRepositoryLink: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1355,9 +1341,9 @@ export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest =
         baseUrl: "https://developerconnect.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest",
-  }) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+).annotate({
+  identifier: "FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest",
+}) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 /** Response for fetching git refs. */
 export interface FetchGitRefsResponse {
@@ -1366,7 +1352,7 @@ export interface FetchGitRefsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const FetchGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refNames: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1381,8 +1367,8 @@ export interface FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest
   /** Optional. Page start. */
   pageToken?: string;
 }
-export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       connection: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1394,23 +1380,23 @@ export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest =
         baseUrl: "https://developerconnect.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest>;
+).annotate({
+  identifier: "FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest>;
 
 /** LinkableGitRepository represents a git repository that can be linked to a connection. */
 export interface LinkableGitRepository {
   /** The clone uri of the repository. */
   cloneUri?: string;
 }
-export const LinkableGitRepository = /*@__PURE__*/ S.suspend(() =>
+const LinkableGitRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloneUri: S.optional(S.String),
   }),
 ).annotate({ identifier: "LinkableGitRepository" }) as any as S.Schema<LinkableGitRepository>;
 
 export type LinkableGitRepositoryList = Array<LinkableGitRepository>;
-export const LinkableGitRepositoryList = /*@__PURE__*/ S.Array(
+const LinkableGitRepositoryList = /*@__PURE__*/ S.Array(
   LinkableGitRepository,
 ) as any as S.Schema<LinkableGitRepositoryList>;
 
@@ -1421,7 +1407,7 @@ export interface FetchLinkableGitRepositoriesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const FetchLinkableGitRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchLinkableGitRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkableGitRepositories: S.optional(LinkableGitRepositoryList),
     nextPageToken: S.optional(S.String),
@@ -1432,16 +1418,14 @@ export const FetchLinkableGitRepositoriesResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Message for fetching SCM read token. */
 export type FetchReadTokenRequest = CancelOperationRequest;
-export const FetchReadTokenRequest = CancelOperationRequest;
-
 export interface FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The resource name of the gitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`. */
   gitRepositoryLink: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       gitRepositoryLink: S.String.pipe(T.Label()),
       body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1452,9 +1436,9 @@ export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest
         baseUrl: "https://developerconnect.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest",
-  }) as any as S.Schema<FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+).annotate({
+  identifier: "FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest",
+}) as any as S.Schema<FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 /** Message for responding to get read token. */
 export interface FetchReadTokenResponse {
@@ -1465,7 +1449,7 @@ export interface FetchReadTokenResponse {
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
   expirationTime?: string;
 }
-export const FetchReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gitUsername: S.optional(S.String),
     token: S.optional(S.String),
@@ -1475,15 +1459,13 @@ export const FetchReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Message for fetching SCM read/write token. */
 export type FetchReadWriteTokenRequest = CancelOperationRequest;
-export const FetchReadWriteTokenRequest = CancelOperationRequest;
-
 export interface FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The resource name of the gitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`. */
   gitRepositoryLink: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest =
+const FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       gitRepositoryLink: S.String.pipe(T.Label()),
@@ -1508,7 +1490,7 @@ export interface FetchReadWriteTokenResponse {
   /** The token content. */
   token?: string;
 }
-export const FetchReadWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchReadWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.String),
     gitUsername: S.optional(S.String),
@@ -1522,7 +1504,7 @@ export interface FetchSelfProjectsLocationsAccountConnectorsUsersRequest {
   /** Required. Name of the AccountConnector resource */
   name: string;
 }
-export const FetchSelfProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchSelfProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1547,7 +1529,7 @@ export interface User {
   /** Identifier. Resource name of the user, in the format `projects/*\/locations/*\/accountConnectors/*\/users/*`. */
   name?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTokenRequestTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1566,23 +1548,22 @@ export interface FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest 
   /** Optional. Number of results to return in the list. Defaults to 20. */
   pageSize?: number;
 }
-export const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repository: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      accountConnector: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+accountConnector}:fetchUserRepositories",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest",
-  }) as any as S.Schema<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
+const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repository: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    accountConnector: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+accountConnector}:fetchUserRepositories",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest",
+}) as any as S.Schema<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
 
 /** A user repository that can be linked to the account connector. Consists of the repo name and the git proxy URL to forward requests to this repo. */
 export interface UserRepository {
@@ -1593,7 +1574,7 @@ export interface UserRepository {
   /** Output only. The Git proxy URL for this repo. For example: https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only when `proxy_config.enabled` is set to `true` in the Account Connector. This URL is used by other Google services that integrate with Developer Connect. */
   gitProxyUri?: string;
 }
-export const UserRepository = /*@__PURE__*/ S.suspend(() =>
+const UserRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloneUri: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1602,7 +1583,7 @@ export const UserRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserRepository" }) as any as S.Schema<UserRepository>;
 
 export type UserRepositoryList = Array<UserRepository>;
-export const UserRepositoryList = /*@__PURE__*/ S.Array(
+const UserRepositoryList = /*@__PURE__*/ S.Array(
   UserRepository,
 ) as any as S.Schema<UserRepositoryList>;
 
@@ -1613,7 +1594,7 @@ export interface FetchUserRepositoriesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const FetchUserRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchUserRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userRepos: S.optional(UserRepositoryList),
     nextPageToken: S.optional(S.String),
@@ -1636,32 +1617,31 @@ export interface FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest {
   /** Required. The scopes returned by Google OAuth flow. */
   "googleOauthParams.scopes"?: StringList;
 }
-export const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "googleOauthParams.versionInfo": S.optional(S.String.pipe(T.Query())),
-      "googleOauthParams.ticket": S.optional(S.String.pipe(T.Query())),
-      accountConnector: S.String.pipe(T.Label()),
-      "oauthParams.code": S.optional(S.String.pipe(T.Query())),
-      "oauthParams.ticket": S.optional(S.String.pipe(T.Query())),
-      "googleOauthParams.scopes": S.optional(StringList.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+accountConnector}/users:finishOAuthFlow",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest",
-  }) as any as S.Schema<FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
+const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "googleOauthParams.versionInfo": S.optional(S.String.pipe(T.Query())),
+    "googleOauthParams.ticket": S.optional(S.String.pipe(T.Query())),
+    accountConnector: S.String.pipe(T.Label()),
+    "oauthParams.code": S.optional(S.String.pipe(T.Query())),
+    "oauthParams.ticket": S.optional(S.String.pipe(T.Query())),
+    "googleOauthParams.scopes": S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+accountConnector}/users:finishOAuthFlow",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest",
+}) as any as S.Schema<FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
 
 /** Message for responding to finishing an OAuth flow. */
 export interface FinishOAuthResponse {
   /** The error resulted from exchanging OAuth tokens from the service provider. */
   exchangeError?: ExchangeError;
 }
-export const FinishOAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const FinishOAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exchangeError: S.optional(ExchangeError),
   }),
@@ -1671,7 +1651,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1698,7 +1678,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     displayName: S.optional(S.String),
@@ -1712,7 +1692,7 @@ export interface GetProjectsLocationsAccountConnectorsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1730,7 +1710,7 @@ export interface GetProjectsLocationsConnectionsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1748,17 +1728,16 @@ export interface GetProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsConnectionsGitRepositoryLinksRequest",
 }) as any as S.Schema<GetProjectsLocationsConnectionsGitRepositoryLinksRequest>;
@@ -1767,7 +1746,7 @@ export interface GetProjectsLocationsInsightsConfigsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1785,17 +1764,16 @@ export interface GetProjectsLocationsInsightsConfigsDeploymentEventsRequest {
   /** Required. The name of the deployment event to retrieve. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid} */
   name: string;
 }
-export const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsInsightsConfigsDeploymentEventsRequest",
 }) as any as S.Schema<GetProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
@@ -1819,7 +1797,7 @@ export interface ArtifactDeployment {
   /** Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g. us-docker.pkg.dev/my-project/my-repo/image:1.0.0 */
   artifactAlias?: string;
 }
-export const ArtifactDeployment = /*@__PURE__*/ S.suspend(() =>
+const ArtifactDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceCommitUris: S.optional(StringList),
     sourceCodeUris: S.optional(StringList),
@@ -1833,12 +1811,12 @@ export const ArtifactDeployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactDeployment" }) as any as S.Schema<ArtifactDeployment>;
 
 export type ArtifactDeploymentList = Array<ArtifactDeployment>;
-export const ArtifactDeploymentList = /*@__PURE__*/ S.Array(
+const ArtifactDeploymentList = /*@__PURE__*/ S.Array(
   ArtifactDeployment,
 ) as any as S.Schema<ArtifactDeploymentList>;
 
 export type DeploymentEventStateEnum = "STATE_UNSPECIFIED" | "STATE_ACTIVE" | "STATE_INACTIVE";
-export const DeploymentEventStateEnum = S.String;
+const DeploymentEventStateEnum = S.String;
 
 /** The DeploymentEvent resource represents the deployment of the artifact within the InsightsConfig resource. */
 export interface DeploymentEvent {
@@ -1861,7 +1839,7 @@ export interface DeploymentEvent {
   /** Output only. The time at which the DeploymentEvent was undeployed, all artifacts are considered undeployed once this time is set. This would be the max of all ArtifactDeployment undeploy_times. If any ArtifactDeployment is still active (i.e. does not have an undeploy_time), this field will be empty. */
   undeployTime?: string;
 }
-export const DeploymentEvent = /*@__PURE__*/ S.suspend(() =>
+const DeploymentEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     runtimeConfig: S.optional(RuntimeConfig),
@@ -1879,7 +1857,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1905,7 +1883,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1924,7 +1902,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1933,7 +1911,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1952,7 +1930,7 @@ export interface ListProjectsLocationsAccountConnectorsRequest {
   /** Required. Parent value for ListAccountConnectorsRequest */
   parent: string;
 }
-export const ListProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1971,7 +1949,7 @@ export const ListProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsAccountConnectorsRequest>;
 
 export type AccountConnectorList = Array<AccountConnector>;
-export const AccountConnectorList = /*@__PURE__*/ S.Array(
+const AccountConnectorList = /*@__PURE__*/ S.Array(
   AccountConnector,
 ) as any as S.Schema<AccountConnectorList>;
 
@@ -1984,7 +1962,7 @@ export interface ListAccountConnectorsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListAccountConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accountConnectors: S.optional(AccountConnectorList),
@@ -2006,7 +1984,7 @@ export interface ListProjectsLocationsAccountConnectorsUsersRequest {
   /** Required. Parent value for ListUsersRequest */
   parent: string;
 }
-export const ListProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2025,7 +2003,7 @@ export const ListProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsLocationsAccountConnectorsUsersRequest>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** Message for response to listing Users */
 export interface ListUsersResponse {
@@ -2036,7 +2014,7 @@ export interface ListUsersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(UserList),
     unreachable: S.optional(StringList),
@@ -2056,7 +2034,7 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2075,7 +2053,7 @@ export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
 export type ConnectionList = Array<Connection>;
-export const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
+const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
 
 /** Message for response to listing Connections */
 export interface ListConnectionsResponse {
@@ -2086,7 +2064,7 @@ export interface ListConnectionsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     connections: S.optional(ConnectionList),
@@ -2106,27 +2084,26 @@ export interface ListProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/gitRepositoryLinks",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsConnectionsGitRepositoryLinksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/gitRepositoryLinks",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsConnectionsGitRepositoryLinksRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type GitRepositoryLinkList = Array<GitRepositoryLink>;
-export const GitRepositoryLinkList = /*@__PURE__*/ S.Array(
+const GitRepositoryLinkList = /*@__PURE__*/ S.Array(
   GitRepositoryLink,
 ) as any as S.Schema<GitRepositoryLinkList>;
 
@@ -2139,7 +2116,7 @@ export interface ListGitRepositoryLinksResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListGitRepositoryLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGitRepositoryLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     gitRepositoryLinks: S.optional(GitRepositoryLinkList),
@@ -2161,7 +2138,7 @@ export interface ListProjectsLocationsInsightsConfigsRequest {
   /** Required. Parent value for ListInsightsConfigsRequest. */
   parent: string;
 }
-export const ListProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2180,7 +2157,7 @@ export const ListProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsInsightsConfigsRequest>;
 
 export type InsightsConfigList = Array<InsightsConfig>;
-export const InsightsConfigList = /*@__PURE__*/ S.Array(
+const InsightsConfigList = /*@__PURE__*/ S.Array(
   InsightsConfig,
 ) as any as S.Schema<InsightsConfigList>;
 
@@ -2193,7 +2170,7 @@ export interface ListInsightsConfigsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListInsightsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInsightsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insightsConfigs: S.optional(InsightsConfigList),
     nextPageToken: S.optional(S.String),
@@ -2215,27 +2192,26 @@ export interface ListProjectsLocationsInsightsConfigsDeploymentEventsRequest {
   /** Optional. The maximum number of deployment events to return. The service may return fewer than this value. If unspecified, at most 50 deployment events will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/deploymentEvents",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/deploymentEvents",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsInsightsConfigsDeploymentEventsRequest",
 }) as any as S.Schema<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
 export type DeploymentEventList = Array<DeploymentEvent>;
-export const DeploymentEventList = /*@__PURE__*/ S.Array(
+const DeploymentEventList = /*@__PURE__*/ S.Array(
   DeploymentEvent,
 ) as any as S.Schema<DeploymentEventList>;
 
@@ -2246,7 +2222,7 @@ export interface ListDeploymentEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListDeploymentEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentEvents: S.optional(DeploymentEventList),
     nextPageToken: S.optional(S.String),
@@ -2267,7 +2243,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2286,7 +2262,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2297,7 +2273,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -2319,7 +2295,7 @@ export interface PatchProjectsLocationsAccountConnectorsRequest {
   /** Request body */
   body?: AccountConnector;
 }
-export const PatchProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAccountConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2352,7 +2328,7 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2383,7 +2359,7 @@ export interface PatchProjectsLocationsInsightsConfigsRequest {
   /** Request body */
   body?: InsightsConfig;
 }
-export const PatchProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInsightsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2410,7 +2386,7 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     contentType: S.optional(S.String),
@@ -2423,7 +2399,7 @@ export interface ProcessBitbucketCloudWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
-export const ProcessBitbucketCloudWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const ProcessBitbucketCloudWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(HttpBody),
   }),
@@ -2437,7 +2413,7 @@ export interface ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepo
   /** Request body */
   body?: ProcessBitbucketCloudWebhookRequest;
 }
-export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
+const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2455,15 +2431,13 @@ export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitReposito
 
 /** RPC request object accepted by the ProcessBitbucketDataCenterWebhook RPC method. */
 export type ProcessBitbucketDataCenterWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-export const ProcessBitbucketDataCenterWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-
 export interface ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`. */
   name: string;
   /** Request body */
   body?: ProcessBitbucketCloudWebhookRequest;
 }
-export const ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
+const ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2482,16 +2456,14 @@ export const ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRep
 
 /** RPC request object accepted by the ProcessGitHubEnterpriseWebhook RPC method. */
 export type ProcessGitHubEnterpriseWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-export const ProcessGitHubEnterpriseWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-
 export interface ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest {
   /** Required. Project and location where the webhook will be received. Format: `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: ProcessBitbucketCloudWebhookRequest;
 }
-export const ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(ProcessBitbucketCloudWebhookRequest.pipe(T.HttpBody())),
@@ -2502,21 +2474,19 @@ export const ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest =
         baseUrl: "https://developerconnect.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest>;
+).annotate({
+  identifier: "ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest>;
 
 /** RPC request object accepted by the ProcessGitLabEnterpriseWebhook RPC method. */
 export type ProcessGitLabEnterpriseWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-export const ProcessGitLabEnterpriseWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-
 export interface ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`. */
   name: string;
   /** Request body */
   body?: ProcessBitbucketCloudWebhookRequest;
 }
-export const ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
+const ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2535,15 +2505,13 @@ export const ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitReposi
 
 /** RPC request object accepted by the ProcessGitLabWebhook RPC method. */
 export type ProcessGitLabWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-export const ProcessGitLabWebhookRequest = ProcessBitbucketCloudWebhookRequest;
-
 export interface ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`. */
   name: string;
   /** Request body */
   body?: ProcessBitbucketCloudWebhookRequest;
 }
-export const ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
+const ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2563,17 +2531,16 @@ export interface StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest {
   /** Required. The resource name of the AccountConnector in the format `projects/*\/locations/*\/accountConnectors/*`. */
   accountConnector: string;
 }
-export const StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountConnector: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+accountConnector}/users:startOAuthFlow",
-        baseUrl: "https://developerconnect.googleapis.com/",
-      }),
-    ),
+const StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountConnector: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+accountConnector}/users:startOAuthFlow",
+      baseUrl: "https://developerconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest",
 }) as any as S.Schema<StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
@@ -2589,7 +2556,7 @@ export type StartOAuthResponseSystemProviderIdEnum =
   | "DATASTAX"
   | "DYNATRACE"
   | "BITBUCKET_CLOUD";
-export const StartOAuthResponseSystemProviderIdEnum = S.String;
+const StartOAuthResponseSystemProviderIdEnum = S.String;
 
 /** Message for responding to starting an OAuth flow. */
 export interface StartOAuthResponse {
@@ -2608,7 +2575,7 @@ export interface StartOAuthResponse {
   /** The authorization server URL to the OAuth flow of the service provider. */
   authUri?: string;
 }
-export const StartOAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const StartOAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemProviderId: S.optional(StartOAuthResponseSystemProviderIdEnum),
     ticket: S.optional(S.String),

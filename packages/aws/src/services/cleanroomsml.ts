@@ -126,7 +126,7 @@ export interface CancelTrainedModelRequest {
   trainedModelArn: string;
   versionIdentifier?: string;
 }
-export const CancelTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
@@ -148,7 +148,7 @@ export const CancelTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelTrainedModelRequest",
 }) as any as S.Schema<CancelTrainedModelRequest>;
 export interface CancelTrainedModelResponse {}
-export const CancelTrainedModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelTrainedModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelTrainedModelResponse",
 }) as any as S.Schema<CancelTrainedModelResponse>;
 export type TrainedModelInferenceJobArn = string;
@@ -156,7 +156,7 @@ export interface CancelTrainedModelInferenceJobRequest {
   membershipIdentifier: string;
   trainedModelInferenceJobArn: string;
 }
-export const CancelTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     trainedModelInferenceJobArn: S.String.pipe(T.HttpLabel("trainedModelInferenceJobArn")),
@@ -177,18 +177,18 @@ export const CancelTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "CancelTrainedModelInferenceJobRequest",
 }) as any as S.Schema<CancelTrainedModelInferenceJobRequest>;
 export interface CancelTrainedModelInferenceJobResponse {}
-export const CancelTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelTrainedModelInferenceJobResponse",
-}) as any as S.Schema<CancelTrainedModelInferenceJobResponse>;
+const CancelTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "CancelTrainedModelInferenceJobResponse",
+  },
+) as any as S.Schema<CancelTrainedModelInferenceJobResponse>;
 export type NameString = string;
 export type TrainingDatasetArn = string;
 export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type ResourceDescription = string;
 export interface CreateAudienceModelRequest {
   trainingDataStartTime?: Date;
@@ -199,7 +199,7 @@ export interface CreateAudienceModelRequest {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const CreateAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainingDataStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     trainingDataEndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -216,7 +216,7 @@ export type AudienceModelArn = string;
 export interface CreateAudienceModelResponse {
   audienceModelArn: string;
 }
-export const CreateAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceModelArn: S.String }),
 ).annotate({
   identifier: "CreateAudienceModelResponse",
@@ -225,13 +225,13 @@ export type S3Path = string;
 export interface S3ConfigMap {
   s3Uri: string;
 }
-export const S3ConfigMap = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+const S3ConfigMap = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
   identifier: "S3ConfigMap",
 }) as any as S.Schema<S3ConfigMap>;
 export interface AudienceDestination {
   s3Destination: S3ConfigMap;
 }
-export const AudienceDestination = /*@__PURE__*/ S.suspend(() =>
+const AudienceDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Destination: S3ConfigMap }),
 ).annotate({ identifier: "AudienceDestination" }) as any as S.Schema<AudienceDestination>;
 export type IamRoleArn = string;
@@ -239,32 +239,32 @@ export interface ConfiguredAudienceModelOutputConfig {
   destination: AudienceDestination;
   roleArn: string;
 }
-export const ConfiguredAudienceModelOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfiguredAudienceModelOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ destination: AudienceDestination, roleArn: S.String }),
 ).annotate({
   identifier: "ConfiguredAudienceModelOutputConfig",
 }) as any as S.Schema<ConfiguredAudienceModelOutputConfig>;
 export type SharedAudienceMetrics = "ALL" | "NONE" | (string & {});
-export const SharedAudienceMetrics = S.String;
+const SharedAudienceMetrics = S.String;
 
 export type MetricsList = SharedAudienceMetrics[];
-export const MetricsList = /*@__PURE__*/ S.Array(SharedAudienceMetrics);
+const MetricsList = /*@__PURE__*/ S.Array(SharedAudienceMetrics);
 export type MinMatchingSeedSize = number;
 export type AudienceSizeType = "ABSOLUTE" | "PERCENTAGE" | (string & {});
-export const AudienceSizeType = S.String;
+const AudienceSizeType = S.String;
 
 export type AudienceSizeValue = number;
 export type AudienceSizeBins = number[];
-export const AudienceSizeBins = /*@__PURE__*/ S.Array(S.Number);
+const AudienceSizeBins = /*@__PURE__*/ S.Array(S.Number);
 export interface AudienceSizeConfig {
   audienceSizeType: AudienceSizeType;
   audienceSizeBins: number[];
 }
-export const AudienceSizeConfig = /*@__PURE__*/ S.suspend(() =>
+const AudienceSizeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceSizeType: AudienceSizeType, audienceSizeBins: AudienceSizeBins }),
 ).annotate({ identifier: "AudienceSizeConfig" }) as any as S.Schema<AudienceSizeConfig>;
 export type TagOnCreatePolicy = "FROM_PARENT_RESOURCE" | "NONE" | (string & {});
-export const TagOnCreatePolicy = S.String;
+const TagOnCreatePolicy = S.String;
 
 export interface CreateConfiguredAudienceModelRequest {
   name: string;
@@ -277,7 +277,7 @@ export interface CreateConfiguredAudienceModelRequest {
   tags?: { [key: string]: string | undefined };
   childResourceTagOnCreatePolicy?: TagOnCreatePolicy;
 }
-export const CreateConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     audienceModelArn: S.String,
@@ -305,7 +305,7 @@ export type ConfiguredAudienceModelArn = string;
 export interface CreateConfiguredAudienceModelResponse {
   configuredAudienceModelArn: string;
 }
-export const CreateConfiguredAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConfiguredAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ configuredAudienceModelArn: S.String }),
 ).annotate({
   identifier: "CreateConfiguredAudienceModelResponse",
@@ -313,28 +313,28 @@ export const CreateConfiguredAudienceModelResponse = /*@__PURE__*/ S.suspend(() 
 export type AlgorithmImage = string;
 export type ContainerEntrypointString = string;
 export type ContainerEntrypoint = string[];
-export const ContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
+const ContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
 export type ContainerArgument = string;
 export type ContainerArguments = string[];
-export const ContainerArguments = ContainerEntrypoint as any as S.Schema<ContainerArguments>;
+const ContainerArguments = ContainerEntrypoint as any as S.Schema<ContainerArguments>;
 export type MetricName = string;
 export type MetricRegex = string;
 export interface MetricDefinition {
   name: string;
   regex: string;
 }
-export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
+const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, regex: S.String }),
 ).annotate({ identifier: "MetricDefinition" }) as any as S.Schema<MetricDefinition>;
 export type MetricDefinitionList = MetricDefinition[];
-export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
+const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
 export interface ContainerConfig {
   imageUri: string;
   entrypoint?: string[];
   arguments?: string[];
   metricDefinitions?: MetricDefinition[];
 }
-export const ContainerConfig = /*@__PURE__*/ S.suspend(() =>
+const ContainerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUri: S.String,
     entrypoint: S.optional(ContainerEntrypoint),
@@ -345,7 +345,7 @@ export const ContainerConfig = /*@__PURE__*/ S.suspend(() =>
 export interface InferenceContainerConfig {
   imageUri: string;
 }
-export const InferenceContainerConfig = /*@__PURE__*/ S.suspend(() =>
+const InferenceContainerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageUri: S.String }),
 ).annotate({ identifier: "InferenceContainerConfig" }) as any as S.Schema<InferenceContainerConfig>;
 export interface CreateConfiguredModelAlgorithmRequest {
@@ -357,7 +357,7 @@ export interface CreateConfiguredModelAlgorithmRequest {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
 }
-export const CreateConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -383,40 +383,37 @@ export type ConfiguredModelAlgorithmArn = string;
 export interface CreateConfiguredModelAlgorithmResponse {
   configuredModelAlgorithmArn: string;
 }
-export const CreateConfiguredModelAlgorithmResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConfiguredModelAlgorithmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ configuredModelAlgorithmArn: S.String }),
 ).annotate({
   identifier: "CreateConfiguredModelAlgorithmResponse",
 }) as any as S.Schema<CreateConfiguredModelAlgorithmResponse>;
 export type AccountIdList = string[];
-export const AccountIdList = ContainerEntrypoint as any as S.Schema<AccountIdList>;
+const AccountIdList = ContainerEntrypoint as any as S.Schema<AccountIdList>;
 export type LogType = "ALL" | "ERROR_SUMMARY" | (string & {});
-export const LogType = S.String;
+const LogType = S.String;
 
 export type EntityType =
   | "ALL_PERSONALLY_IDENTIFIABLE_INFORMATION"
   | "NUMBERS"
   | "CUSTOM"
   | (string & {});
-export const EntityType = S.String;
-
 export type EntityTypeList = EntityType[];
-export const EntityTypeList = MetricsList as any as S.Schema<EntityTypeList>;
+const EntityTypeList = MetricsList as any as S.Schema<EntityTypeList>;
 export type CustomDataIdentifier = string;
 export type CustomDataIdentifierList = string[];
-export const CustomDataIdentifierList =
-  ContainerEntrypoint as any as S.Schema<CustomDataIdentifierList>;
+const CustomDataIdentifierList = ContainerEntrypoint as any as S.Schema<CustomDataIdentifierList>;
 export interface CustomEntityConfig {
   customDataIdentifiers: string[];
 }
-export const CustomEntityConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomEntityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ customDataIdentifiers: CustomDataIdentifierList }),
 ).annotate({ identifier: "CustomEntityConfig" }) as any as S.Schema<CustomEntityConfig>;
 export interface LogRedactionConfiguration {
   entitiesToRedact: EntityType[];
   customEntityConfig?: CustomEntityConfig;
 }
-export const LogRedactionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LogRedactionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entitiesToRedact: EntityTypeList,
     customEntityConfig: S.optional(CustomEntityConfig),
@@ -430,7 +427,7 @@ export interface LogsConfigurationPolicy {
   logType?: LogType;
   logRedactionConfiguration?: LogRedactionConfiguration;
 }
-export const LogsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+const LogsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedAccountIds: AccountIdList,
     filterPattern: S.optional(S.String),
@@ -439,27 +436,27 @@ export const LogsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogsConfigurationPolicy" }) as any as S.Schema<LogsConfigurationPolicy>;
 export type LogsConfigurationPolicyList = LogsConfigurationPolicy[];
-export const LogsConfigurationPolicyList = /*@__PURE__*/ S.Array(LogsConfigurationPolicy);
+const LogsConfigurationPolicyList = /*@__PURE__*/ S.Array(LogsConfigurationPolicy);
 export type NoiseLevelType = "HIGH" | "MEDIUM" | "LOW" | "NONE" | (string & {});
-export const NoiseLevelType = S.String;
+const NoiseLevelType = S.String;
 
 export interface MetricsConfigurationPolicy {
   noiseLevel: NoiseLevelType;
 }
-export const MetricsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+const MetricsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ noiseLevel: NoiseLevelType }),
 ).annotate({
   identifier: "MetricsConfigurationPolicy",
 }) as any as S.Schema<MetricsConfigurationPolicy>;
 export type TrainedModelArtifactMaxSizeUnitType = "GB" | (string & {});
-export const TrainedModelArtifactMaxSizeUnitType = S.String;
+const TrainedModelArtifactMaxSizeUnitType = S.String;
 
 export type TrainedModelArtifactMaxSizeValue = number;
 export interface TrainedModelArtifactMaxSize {
   unit: TrainedModelArtifactMaxSizeUnitType;
   value: number;
 }
-export const TrainedModelArtifactMaxSize = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelArtifactMaxSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ unit: TrainedModelArtifactMaxSizeUnitType, value: S.Number }),
 ).annotate({
   identifier: "TrainedModelArtifactMaxSize",
@@ -469,7 +466,7 @@ export interface TrainedModelsConfigurationPolicy {
   containerMetrics?: MetricsConfigurationPolicy;
   maxArtifactSize?: TrainedModelArtifactMaxSize;
 }
-export const TrainedModelsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerLogs: S.optional(LogsConfigurationPolicyList),
     containerMetrics: S.optional(MetricsConfigurationPolicy),
@@ -479,45 +476,39 @@ export const TrainedModelsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrainedModelsConfigurationPolicy",
 }) as any as S.Schema<TrainedModelsConfigurationPolicy>;
 export type TrainedModelExportsMaxSizeUnitType = "GB" | (string & {});
-export const TrainedModelExportsMaxSizeUnitType = S.String;
-
 export type TrainedModelExportsMaxSizeValue = number;
 export interface TrainedModelExportsMaxSize {
   unit: TrainedModelExportsMaxSizeUnitType;
   value: number;
 }
-export const TrainedModelExportsMaxSize =
+const TrainedModelExportsMaxSize =
   TrainedModelArtifactMaxSize as any as S.Schema<TrainedModelExportsMaxSize>;
 export type TrainedModelExportFileType = "MODEL" | "OUTPUT" | (string & {});
-export const TrainedModelExportFileType = S.String;
-
 export type TrainedModelExportFileTypeList = TrainedModelExportFileType[];
-export const TrainedModelExportFileTypeList =
+const TrainedModelExportFileTypeList =
   MetricsList as any as S.Schema<TrainedModelExportFileTypeList>;
 export interface TrainedModelExportsConfigurationPolicy {
   maxSize: TrainedModelExportsMaxSize;
   filesToExport: TrainedModelExportFileType[];
 }
-export const TrainedModelExportsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelExportsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxSize: TrainedModelExportsMaxSize, filesToExport: TrainedModelExportFileTypeList }),
 ).annotate({
   identifier: "TrainedModelExportsConfigurationPolicy",
 }) as any as S.Schema<TrainedModelExportsConfigurationPolicy>;
 export type TrainedModelInferenceMaxOutputSizeUnitType = "GB" | (string & {});
-export const TrainedModelInferenceMaxOutputSizeUnitType = S.String;
-
 export type TrainedModelInferenceMaxOutputSizeValue = number;
 export interface TrainedModelInferenceMaxOutputSize {
   unit: TrainedModelInferenceMaxOutputSizeUnitType;
   value: number;
 }
-export const TrainedModelInferenceMaxOutputSize =
+const TrainedModelInferenceMaxOutputSize =
   TrainedModelArtifactMaxSize as any as S.Schema<TrainedModelInferenceMaxOutputSize>;
 export interface TrainedModelInferenceJobsConfigurationPolicy {
   containerLogs?: LogsConfigurationPolicy[];
   maxOutputSize?: TrainedModelInferenceMaxOutputSize;
 }
-export const TrainedModelInferenceJobsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelInferenceJobsConfigurationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerLogs: S.optional(LogsConfigurationPolicyList),
     maxOutputSize: S.optional(TrainedModelInferenceMaxOutputSize),
@@ -530,7 +521,7 @@ export interface PrivacyConfigurationPolicies {
   trainedModelExports?: TrainedModelExportsConfigurationPolicy;
   trainedModelInferenceJobs?: TrainedModelInferenceJobsConfigurationPolicy;
 }
-export const PrivacyConfigurationPolicies = /*@__PURE__*/ S.suspend(() =>
+const PrivacyConfigurationPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModels: S.optional(TrainedModelsConfigurationPolicy),
     trainedModelExports: S.optional(TrainedModelExportsConfigurationPolicy),
@@ -542,7 +533,7 @@ export const PrivacyConfigurationPolicies = /*@__PURE__*/ S.suspend(() =>
 export interface PrivacyConfiguration {
   policies: PrivacyConfigurationPolicies;
 }
-export const PrivacyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PrivacyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policies: PrivacyConfigurationPolicies }),
 ).annotate({ identifier: "PrivacyConfiguration" }) as any as S.Schema<PrivacyConfiguration>;
 export interface CreateConfiguredModelAlgorithmAssociationRequest {
@@ -553,7 +544,7 @@ export interface CreateConfiguredModelAlgorithmAssociationRequest {
   privacyConfiguration?: PrivacyConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     configuredModelAlgorithmArn: S.String,
@@ -581,28 +572,25 @@ export type ConfiguredModelAlgorithmAssociationArn = string;
 export interface CreateConfiguredModelAlgorithmAssociationResponse {
   configuredModelAlgorithmAssociationArn: string;
 }
-export const CreateConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ configuredModelAlgorithmAssociationArn: S.String }),
 ).annotate({
   identifier: "CreateConfiguredModelAlgorithmAssociationResponse",
 }) as any as S.Schema<CreateConfiguredModelAlgorithmAssociationResponse>;
 export type ConfiguredModelAlgorithmAssociationArnList = string[];
-export const ConfiguredModelAlgorithmAssociationArnList =
+const ConfiguredModelAlgorithmAssociationArnList =
   ContainerEntrypoint as any as S.Schema<ConfiguredModelAlgorithmAssociationArnList>;
 export type AnalysisTemplateArn = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const ParameterMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ProtectedQuerySQLParameters {
   queryString?: string;
   analysisTemplateArn?: string;
   parameters?: { [key: string]: string | undefined };
 }
-export const ProtectedQuerySQLParameters = /*@__PURE__*/ S.suspend(() =>
+const ProtectedQuerySQLParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryString: S.optional(S.String),
     analysisTemplateArn: S.optional(S.String),
@@ -612,14 +600,14 @@ export const ProtectedQuerySQLParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProtectedQuerySQLParameters",
 }) as any as S.Schema<ProtectedQuerySQLParameters>;
 export type WorkerComputeType = "CR.1X" | "CR.4X" | "CR.8X" | (string & {});
-export const WorkerComputeType = S.String;
+const WorkerComputeType = S.String;
 
 export type SparkPropertyKey = string;
 export type SparkPropertyValue = string;
 export type SparkProperties = { [key: string]: string | undefined };
-export const SparkProperties = ParameterMap as any as S.Schema<SparkProperties>;
+const SparkProperties = ParameterMap as any as S.Schema<SparkProperties>;
 export type WorkerComputeConfigurationProperties = { spark: { [key: string]: string | undefined } };
-export const WorkerComputeConfigurationProperties = /*@__PURE__*/ S.Union([
+const WorkerComputeConfigurationProperties = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ spark: SparkProperties }),
 ]);
 export interface WorkerComputeConfiguration {
@@ -627,7 +615,7 @@ export interface WorkerComputeConfiguration {
   number?: number;
   properties?: WorkerComputeConfigurationProperties;
 }
-export const WorkerComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const WorkerComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WorkerComputeType),
     number: S.optional(S.Number),
@@ -637,18 +625,18 @@ export const WorkerComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkerComputeConfiguration",
 }) as any as S.Schema<WorkerComputeConfiguration>;
 export type ComputeConfiguration = { worker: WorkerComputeConfiguration };
-export const ComputeConfiguration = /*@__PURE__*/ S.Union([
+const ComputeConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ worker: WorkerComputeConfiguration }),
 ]);
 export type ResultFormat = "CSV" | "PARQUET" | (string & {});
-export const ResultFormat = S.String;
+const ResultFormat = S.String;
 
 export interface ProtectedQueryInputParameters {
   sqlParameters: ProtectedQuerySQLParameters;
   computeConfiguration?: ComputeConfiguration;
   resultFormat?: ResultFormat;
 }
-export const ProtectedQueryInputParameters = /*@__PURE__*/ S.suspend(() =>
+const ProtectedQueryInputParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlParameters: ProtectedQuerySQLParameters,
     computeConfiguration: S.optional(ComputeConfiguration),
@@ -660,14 +648,14 @@ export const ProtectedQueryInputParameters = /*@__PURE__*/ S.suspend(() =>
 export type InputChannelDataSource = {
   protectedQueryInputParameters: ProtectedQueryInputParameters;
 };
-export const InputChannelDataSource = /*@__PURE__*/ S.Union([
+const InputChannelDataSource = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ protectedQueryInputParameters: ProtectedQueryInputParameters }),
 ]);
 export interface InputChannel {
   dataSource: InputChannelDataSource;
   roleArn: string;
 }
-export const InputChannel = /*@__PURE__*/ S.suspend(() =>
+const InputChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSource: InputChannelDataSource, roleArn: S.String }),
 ).annotate({ identifier: "InputChannel" }) as any as S.Schema<InputChannel>;
 export type AccountId = string;
@@ -675,7 +663,7 @@ export interface PayerConfiguration {
   computePayerAccountId?: string;
   syntheticDataPayerAccountId?: string;
 }
-export const PayerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PayerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computePayerAccountId: S.optional(S.String),
     syntheticDataPayerAccountId: S.optional(S.String),
@@ -692,7 +680,7 @@ export interface CreateMLInputChannelRequest {
   tags?: { [key: string]: string | undefined };
   payerConfiguration?: PayerConfiguration;
 }
-export const CreateMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     configuredModelAlgorithmAssociations: ConfiguredModelAlgorithmAssociationArnList,
@@ -720,15 +708,15 @@ export type MLInputChannelArn = string;
 export interface CreateMLInputChannelResponse {
   mlInputChannelArn: string;
 }
-export const CreateMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mlInputChannelArn: S.String }),
 ).annotate({
   identifier: "CreateMLInputChannelResponse",
 }) as any as S.Schema<CreateMLInputChannelResponse>;
 export type HyperParameters = { [key: string]: string | undefined };
-export const HyperParameters = ParameterMap as any as S.Schema<HyperParameters>;
+const HyperParameters = ParameterMap as any as S.Schema<HyperParameters>;
 export type Environment = { [key: string]: string | undefined };
-export const Environment = ParameterMap as any as S.Schema<Environment>;
+const Environment = ParameterMap as any as S.Schema<Environment>;
 export type InstanceType =
   | "ml.m4.xlarge"
   | "ml.m4.2xlarge"
@@ -864,14 +852,14 @@ export type InstanceType =
   | "ml.p3.16xlarge"
   | "ml.p3dn.24xlarge"
   | (string & {});
-export const InstanceType = S.String;
+const InstanceType = S.String;
 
 export interface ResourceConfig {
   instanceCount?: number;
   instanceType: InstanceType;
   volumeSizeInGB: number;
 }
-export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceCount: S.optional(S.Number),
     instanceType: InstanceType,
@@ -881,7 +869,7 @@ export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
 export interface StoppingCondition {
   maxRuntimeInSeconds?: number;
 }
-export const StoppingCondition = /*@__PURE__*/ S.suspend(() =>
+const StoppingCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxRuntimeInSeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "StoppingCondition" }) as any as S.Schema<StoppingCondition>;
 export type ModelTrainingDataChannelName = string;
@@ -890,7 +878,7 @@ export interface IncrementalTrainingDataChannel {
   versionIdentifier?: string;
   channelName: string;
 }
-export const IncrementalTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
+const IncrementalTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModelArn: S.String,
     versionIdentifier: S.optional(S.String),
@@ -900,18 +888,16 @@ export const IncrementalTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncrementalTrainingDataChannel",
 }) as any as S.Schema<IncrementalTrainingDataChannel>;
 export type IncrementalTrainingDataChannels = IncrementalTrainingDataChannel[];
-export const IncrementalTrainingDataChannels = /*@__PURE__*/ S.Array(
-  IncrementalTrainingDataChannel,
-);
+const IncrementalTrainingDataChannels = /*@__PURE__*/ S.Array(IncrementalTrainingDataChannel);
 export type S3DataDistributionType = "FullyReplicated" | "ShardedByS3Key" | (string & {});
-export const S3DataDistributionType = S.String;
+const S3DataDistributionType = S.String;
 
 export interface ModelTrainingDataChannel {
   mlInputChannelArn: string;
   channelName: string;
   s3DataDistributionType?: S3DataDistributionType;
 }
-export const ModelTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
+const ModelTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mlInputChannelArn: S.String,
     channelName: S.String,
@@ -919,9 +905,9 @@ export const ModelTrainingDataChannel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ModelTrainingDataChannel" }) as any as S.Schema<ModelTrainingDataChannel>;
 export type ModelTrainingDataChannels = ModelTrainingDataChannel[];
-export const ModelTrainingDataChannels = /*@__PURE__*/ S.Array(ModelTrainingDataChannel);
+const ModelTrainingDataChannels = /*@__PURE__*/ S.Array(ModelTrainingDataChannel);
 export type TrainingInputMode = "File" | "FastFile" | "Pipe" | (string & {});
-export const TrainingInputMode = S.String;
+const TrainingInputMode = S.String;
 
 export interface CreateTrainedModelRequest {
   membershipIdentifier: string;
@@ -939,7 +925,7 @@ export interface CreateTrainedModelRequest {
   tags?: { [key: string]: string | undefined };
   mlModelTrainingPayerAccountId?: string;
 }
-export const CreateTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     name: S.String,
@@ -972,13 +958,13 @@ export interface CreateTrainedModelResponse {
   trainedModelArn: string;
   versionIdentifier?: string;
 }
-export const CreateTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trainedModelArn: S.String, versionIdentifier: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateTrainedModelResponse",
 }) as any as S.Schema<CreateTrainedModelResponse>;
 export type DatasetType = "INTERACTIONS" | (string & {});
-export const DatasetType = S.String;
+const DatasetType = S.String;
 
 export type ColumnName = string;
 export type ColumnType =
@@ -988,19 +974,17 @@ export type ColumnType =
   | "CATEGORICAL_FEATURE"
   | "NUMERICAL_FEATURE"
   | (string & {});
-export const ColumnType = S.String;
-
 export type ColumnTypeList = ColumnType[];
-export const ColumnTypeList = MetricsList as any as S.Schema<ColumnTypeList>;
+const ColumnTypeList = MetricsList as any as S.Schema<ColumnTypeList>;
 export interface ColumnSchema {
   columnName: string;
   columnTypes: ColumnType[];
 }
-export const ColumnSchema = /*@__PURE__*/ S.suspend(() =>
+const ColumnSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ columnName: S.String, columnTypes: ColumnTypeList }),
 ).annotate({ identifier: "ColumnSchema" }) as any as S.Schema<ColumnSchema>;
 export type DatasetSchemaList = ColumnSchema[];
-export const DatasetSchemaList = /*@__PURE__*/ S.Array(ColumnSchema);
+const DatasetSchemaList = /*@__PURE__*/ S.Array(ColumnSchema);
 export type GlueTableName = string;
 export type GlueDatabaseName = string;
 export interface GlueDataSource {
@@ -1008,31 +992,31 @@ export interface GlueDataSource {
   databaseName: string;
   catalogId?: string;
 }
-export const GlueDataSource = /*@__PURE__*/ S.suspend(() =>
+const GlueDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tableName: S.String, databaseName: S.String, catalogId: S.optional(S.String) }),
 ).annotate({ identifier: "GlueDataSource" }) as any as S.Schema<GlueDataSource>;
 export interface DataSource {
   glueDataSource: GlueDataSource;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ glueDataSource: GlueDataSource }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 export interface DatasetInputConfig {
   schema: ColumnSchema[];
   dataSource: DataSource;
 }
-export const DatasetInputConfig = /*@__PURE__*/ S.suspend(() =>
+const DatasetInputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ schema: DatasetSchemaList, dataSource: DataSource }),
 ).annotate({ identifier: "DatasetInputConfig" }) as any as S.Schema<DatasetInputConfig>;
 export interface Dataset {
   type: DatasetType;
   inputConfig: DatasetInputConfig;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: DatasetType, inputConfig: DatasetInputConfig }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 export type DatasetList = Dataset[];
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset);
+const DatasetList = /*@__PURE__*/ S.Array(Dataset);
 export interface CreateTrainingDatasetRequest {
   name: string;
   roleArn: string;
@@ -1040,7 +1024,7 @@ export interface CreateTrainingDatasetRequest {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const CreateTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     roleArn: S.String,
@@ -1056,7 +1040,7 @@ export const CreateTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTrainingDatasetResponse {
   trainingDatasetArn: string;
 }
-export const CreateTrainingDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTrainingDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trainingDatasetArn: S.String }),
 ).annotate({
   identifier: "CreateTrainingDatasetResponse",
@@ -1065,7 +1049,7 @@ export type AudienceGenerationJobArn = string;
 export interface DeleteAudienceGenerationJobRequest {
   audienceGenerationJobArn: string;
 }
-export const DeleteAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceGenerationJobArn: S.String.pipe(T.HttpLabel("audienceGenerationJobArn")),
   }).pipe(
@@ -1082,12 +1066,12 @@ export const DeleteAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAudienceGenerationJobRequest",
 }) as any as S.Schema<DeleteAudienceGenerationJobRequest>;
 export interface DeleteAudienceGenerationJobResponse {}
-export const DeleteAudienceGenerationJobResponse =
+const DeleteAudienceGenerationJobResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteAudienceGenerationJobResponse>;
 export interface DeleteAudienceModelRequest {
   audienceModelArn: string;
 }
-export const DeleteAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/audience-model/{audienceModelArn}" }),
@@ -1102,12 +1086,12 @@ export const DeleteAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAudienceModelRequest",
 }) as any as S.Schema<DeleteAudienceModelRequest>;
 export interface DeleteAudienceModelResponse {}
-export const DeleteAudienceModelResponse =
+const DeleteAudienceModelResponse =
   CancelTrainedModelResponse as any as S.Schema<DeleteAudienceModelResponse>;
 export interface DeleteConfiguredAudienceModelRequest {
   configuredAudienceModelArn: string;
 }
-export const DeleteConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
   }).pipe(
@@ -1124,12 +1108,12 @@ export const DeleteConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteConfiguredAudienceModelRequest",
 }) as any as S.Schema<DeleteConfiguredAudienceModelRequest>;
 export interface DeleteConfiguredAudienceModelResponse {}
-export const DeleteConfiguredAudienceModelResponse =
+const DeleteConfiguredAudienceModelResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteConfiguredAudienceModelResponse>;
 export interface DeleteConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
 }
-export const DeleteConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
   }).pipe(
@@ -1149,12 +1133,12 @@ export const DeleteConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspen
   identifier: "DeleteConfiguredAudienceModelPolicyRequest",
 }) as any as S.Schema<DeleteConfiguredAudienceModelPolicyRequest>;
 export interface DeleteConfiguredAudienceModelPolicyResponse {}
-export const DeleteConfiguredAudienceModelPolicyResponse =
+const DeleteConfiguredAudienceModelPolicyResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteConfiguredAudienceModelPolicyResponse>;
 export interface DeleteConfiguredModelAlgorithmRequest {
   configuredModelAlgorithmArn: string;
 }
-export const DeleteConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredModelAlgorithmArn: S.String.pipe(T.HttpLabel("configuredModelAlgorithmArn")),
   }).pipe(
@@ -1174,13 +1158,13 @@ export const DeleteConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteConfiguredModelAlgorithmRequest",
 }) as any as S.Schema<DeleteConfiguredModelAlgorithmRequest>;
 export interface DeleteConfiguredModelAlgorithmResponse {}
-export const DeleteConfiguredModelAlgorithmResponse =
+const DeleteConfiguredModelAlgorithmResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteConfiguredModelAlgorithmResponse>;
 export interface DeleteConfiguredModelAlgorithmAssociationRequest {
   configuredModelAlgorithmAssociationArn: string;
   membershipIdentifier: string;
 }
-export const DeleteConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredModelAlgorithmAssociationArn: S.String.pipe(
       T.HttpLabel("configuredModelAlgorithmAssociationArn"),
@@ -1203,12 +1187,12 @@ export const DeleteConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.
   identifier: "DeleteConfiguredModelAlgorithmAssociationRequest",
 }) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationRequest>;
 export interface DeleteConfiguredModelAlgorithmAssociationResponse {}
-export const DeleteConfiguredModelAlgorithmAssociationResponse =
+const DeleteConfiguredModelAlgorithmAssociationResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationResponse>;
 export interface DeleteMLConfigurationRequest {
   membershipIdentifier: string;
 }
-export const DeleteMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/memberships/{membershipIdentifier}/ml-configurations" }),
@@ -1223,13 +1207,13 @@ export const DeleteMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMLConfigurationRequest",
 }) as any as S.Schema<DeleteMLConfigurationRequest>;
 export interface DeleteMLConfigurationResponse {}
-export const DeleteMLConfigurationResponse =
+const DeleteMLConfigurationResponse =
   CancelTrainedModelResponse as any as S.Schema<DeleteMLConfigurationResponse>;
 export interface DeleteMLInputChannelDataRequest {
   mlInputChannelArn: string;
   membershipIdentifier: string;
 }
-export const DeleteMLInputChannelDataRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMLInputChannelDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -1250,14 +1234,14 @@ export const DeleteMLInputChannelDataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMLInputChannelDataRequest",
 }) as any as S.Schema<DeleteMLInputChannelDataRequest>;
 export interface DeleteMLInputChannelDataResponse {}
-export const DeleteMLInputChannelDataResponse =
+const DeleteMLInputChannelDataResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteMLInputChannelDataResponse>;
 export interface DeleteTrainedModelOutputRequest {
   trainedModelArn: string;
   membershipIdentifier: string;
   versionIdentifier?: string;
 }
-export const DeleteTrainedModelOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrainedModelOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -1279,12 +1263,12 @@ export const DeleteTrainedModelOutputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTrainedModelOutputRequest",
 }) as any as S.Schema<DeleteTrainedModelOutputRequest>;
 export interface DeleteTrainedModelOutputResponse {}
-export const DeleteTrainedModelOutputResponse =
+const DeleteTrainedModelOutputResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<DeleteTrainedModelOutputResponse>;
 export interface DeleteTrainingDatasetRequest {
   trainingDatasetArn: string;
 }
-export const DeleteTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trainingDatasetArn: S.String.pipe(T.HttpLabel("trainingDatasetArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/training-dataset/{trainingDatasetArn}" }),
@@ -1299,12 +1283,12 @@ export const DeleteTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTrainingDatasetRequest",
 }) as any as S.Schema<DeleteTrainingDatasetRequest>;
 export interface DeleteTrainingDatasetResponse {}
-export const DeleteTrainingDatasetResponse =
+const DeleteTrainingDatasetResponse =
   CancelTrainedModelResponse as any as S.Schema<DeleteTrainingDatasetResponse>;
 export interface GetAudienceGenerationJobRequest {
   audienceGenerationJobArn: string;
 }
-export const GetAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceGenerationJobArn: S.String.pipe(T.HttpLabel("audienceGenerationJobArn")),
   }).pipe(
@@ -1329,13 +1313,13 @@ export type AudienceGenerationJobStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const AudienceGenerationJobStatus = S.String;
+const AudienceGenerationJobStatus = S.String;
 
 export interface StatusDetails {
   statusCode?: string;
   message?: string;
 }
-export const StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ statusCode: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "StatusDetails" }) as any as S.Schema<StatusDetails>;
 export interface AudienceGenerationJobDataSource {
@@ -1344,7 +1328,7 @@ export interface AudienceGenerationJobDataSource {
   sqlParameters?: ProtectedQuerySQLParameters;
   sqlComputeConfiguration?: ComputeConfiguration;
 }
-export const AudienceGenerationJobDataSource = /*@__PURE__*/ S.suspend(() =>
+const AudienceGenerationJobDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSource: S.optional(S3ConfigMap),
     roleArn: S.String,
@@ -1358,23 +1342,23 @@ export interface AudienceSize {
   type: AudienceSizeType;
   value: number;
 }
-export const AudienceSize = /*@__PURE__*/ S.suspend(() =>
+const AudienceSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: AudienceSizeType, value: S.Number }),
 ).annotate({ identifier: "AudienceSize" }) as any as S.Schema<AudienceSize>;
 export interface RelevanceMetric {
   audienceSize: AudienceSize;
   score?: number;
 }
-export const RelevanceMetric = /*@__PURE__*/ S.suspend(() =>
+const RelevanceMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceSize: AudienceSize, score: S.optional(S.Number) }),
 ).annotate({ identifier: "RelevanceMetric" }) as any as S.Schema<RelevanceMetric>;
 export type RelevanceMetrics = RelevanceMetric[];
-export const RelevanceMetrics = /*@__PURE__*/ S.Array(RelevanceMetric);
+const RelevanceMetrics = /*@__PURE__*/ S.Array(RelevanceMetric);
 export interface AudienceQualityMetrics {
   relevanceMetrics: RelevanceMetric[];
   recallMetric?: number;
 }
-export const AudienceQualityMetrics = /*@__PURE__*/ S.suspend(() =>
+const AudienceQualityMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ relevanceMetrics: RelevanceMetrics, recallMetric: S.optional(S.Number) }),
 ).annotate({ identifier: "AudienceQualityMetrics" }) as any as S.Schema<AudienceQualityMetrics>;
 export interface GetAudienceGenerationJobResponse {
@@ -1394,7 +1378,7 @@ export interface GetAudienceGenerationJobResponse {
   tags?: { [key: string]: string | undefined };
   protectedQueryIdentifier?: string;
 }
-export const GetAudienceGenerationJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAudienceGenerationJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1418,7 +1402,7 @@ export const GetAudienceGenerationJobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAudienceModelRequest {
   audienceModelArn: string;
 }
-export const GetAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/audience-model/{audienceModelArn}" }),
@@ -1439,7 +1423,7 @@ export type AudienceModelStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
-export const AudienceModelStatus = S.String;
+const AudienceModelStatus = S.String;
 
 export interface GetAudienceModelResponse {
   createTime: Date;
@@ -1455,7 +1439,7 @@ export interface GetAudienceModelResponse {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const GetAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1475,26 +1459,25 @@ export interface GetCollaborationConfiguredModelAlgorithmAssociationRequest {
   configuredModelAlgorithmAssociationArn: string;
   collaborationIdentifier: string;
 }
-export const GetCollaborationConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      configuredModelAlgorithmAssociationArn: S.String.pipe(
-        T.HttpLabel("configuredModelAlgorithmAssociationArn"),
-      ),
-      collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/collaborations/{collaborationIdentifier}/configured-model-algorithm-associations/{configuredModelAlgorithmAssociationArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+const GetCollaborationConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configuredModelAlgorithmAssociationArn: S.String.pipe(
+      T.HttpLabel("configuredModelAlgorithmAssociationArn"),
     ),
+    collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/collaborations/{collaborationIdentifier}/configured-model-algorithm-associations/{configuredModelAlgorithmAssociationArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetCollaborationConfiguredModelAlgorithmAssociationRequest",
 }) as any as S.Schema<GetCollaborationConfiguredModelAlgorithmAssociationRequest>;
@@ -1510,20 +1493,19 @@ export interface GetCollaborationConfiguredModelAlgorithmAssociationResponse {
   creatorAccountId: string;
   privacyConfiguration?: PrivacyConfiguration;
 }
-export const GetCollaborationConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      configuredModelAlgorithmAssociationArn: S.String,
-      membershipIdentifier: S.String,
-      collaborationIdentifier: S.String,
-      configuredModelAlgorithmArn: S.String,
-      name: S.String,
-      description: S.optional(S.String),
-      creatorAccountId: S.String,
-      privacyConfiguration: S.optional(PrivacyConfiguration),
-    }),
+const GetCollaborationConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    configuredModelAlgorithmAssociationArn: S.String,
+    membershipIdentifier: S.String,
+    collaborationIdentifier: S.String,
+    configuredModelAlgorithmArn: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    creatorAccountId: S.String,
+    privacyConfiguration: S.optional(PrivacyConfiguration),
+  }),
 ).annotate({
   identifier: "GetCollaborationConfiguredModelAlgorithmAssociationResponse",
 }) as any as S.Schema<GetCollaborationConfiguredModelAlgorithmAssociationResponse>;
@@ -1531,7 +1513,7 @@ export interface GetCollaborationMLInputChannelRequest {
   mlInputChannelArn: string;
   collaborationIdentifier: string;
 }
-export const GetCollaborationMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollaborationMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
     collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -1561,7 +1543,7 @@ export type MLInputChannelStatus =
   | "DELETE_FAILED"
   | "INACTIVE"
   | (string & {});
-export const MLInputChannelStatus = S.String;
+const MLInputChannelStatus = S.String;
 
 export type BudgetedResourceArn = string;
 export type Budget = number;
@@ -1571,10 +1553,10 @@ export type AccessBudgetType =
   | "CALENDAR_WEEK"
   | "LIFETIME"
   | (string & {});
-export const AccessBudgetType = S.String;
+const AccessBudgetType = S.String;
 
 export type AutoRefreshMode = "ENABLED" | "DISABLED" | (string & {});
-export const AutoRefreshMode = S.String;
+const AutoRefreshMode = S.String;
 
 export interface AccessBudgetDetails {
   startTime: Date;
@@ -1584,7 +1566,7 @@ export interface AccessBudgetDetails {
   budgetType: AccessBudgetType;
   autoRefresh?: AutoRefreshMode;
 }
-export const AccessBudgetDetails = /*@__PURE__*/ S.suspend(() =>
+const AccessBudgetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1595,13 +1577,13 @@ export const AccessBudgetDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessBudgetDetails" }) as any as S.Schema<AccessBudgetDetails>;
 export type AccessBudgetDetailsList = AccessBudgetDetails[];
-export const AccessBudgetDetailsList = /*@__PURE__*/ S.Array(AccessBudgetDetails);
+const AccessBudgetDetailsList = /*@__PURE__*/ S.Array(AccessBudgetDetails);
 export interface AccessBudget {
   resourceArn: string;
   details: AccessBudgetDetails[];
   aggregateRemainingBudget: number;
 }
-export const AccessBudget = /*@__PURE__*/ S.suspend(() =>
+const AccessBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String,
     details: AccessBudgetDetailsList,
@@ -1609,21 +1591,21 @@ export const AccessBudget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessBudget" }) as any as S.Schema<AccessBudget>;
 export type AccessBudgets = AccessBudget[];
-export const AccessBudgets = /*@__PURE__*/ S.Array(AccessBudget);
+const AccessBudgets = /*@__PURE__*/ S.Array(AccessBudget);
 export type PrivacyBudgets = { accessBudgets: AccessBudget[] };
-export const PrivacyBudgets = /*@__PURE__*/ S.Union([
+const PrivacyBudgets = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ accessBudgets: AccessBudgets }),
 ]);
 export type SyntheticDataColumnName = string;
 export type SyntheticDataColumnType = "CATEGORICAL" | "NUMERICAL" | (string & {});
-export const SyntheticDataColumnType = S.String;
+const SyntheticDataColumnType = S.String;
 
 export interface SyntheticDataColumnProperties {
   columnName: string;
   columnType: SyntheticDataColumnType;
   isPredictiveValue: boolean;
 }
-export const SyntheticDataColumnProperties = /*@__PURE__*/ S.suspend(() =>
+const SyntheticDataColumnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnName: S.String,
     columnType: SyntheticDataColumnType,
@@ -1633,11 +1615,11 @@ export const SyntheticDataColumnProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SyntheticDataColumnProperties",
 }) as any as S.Schema<SyntheticDataColumnProperties>;
 export type ColumnMappingList = SyntheticDataColumnProperties[];
-export const ColumnMappingList = /*@__PURE__*/ S.Array(SyntheticDataColumnProperties);
+const ColumnMappingList = /*@__PURE__*/ S.Array(SyntheticDataColumnProperties);
 export interface ColumnClassificationDetails {
   columnMapping: SyntheticDataColumnProperties[];
 }
-export const ColumnClassificationDetails = /*@__PURE__*/ S.suspend(() =>
+const ColumnClassificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ columnMapping: ColumnMappingList }),
 ).annotate({
   identifier: "ColumnClassificationDetails",
@@ -1647,7 +1629,7 @@ export interface MLSyntheticDataParameters {
   maxMembershipInferenceAttackScore: number;
   columnClassification?: ColumnClassificationDetails;
 }
-export const MLSyntheticDataParameters = /*@__PURE__*/ S.suspend(() =>
+const MLSyntheticDataParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     epsilon: S.Number,
     maxMembershipInferenceAttackScore: S.Number,
@@ -1657,31 +1639,29 @@ export const MLSyntheticDataParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "MLSyntheticDataParameters",
 }) as any as S.Schema<MLSyntheticDataParameters>;
 export type MembershipInferenceAttackVersion = "DISTANCE_TO_CLOSEST_RECORD_V1" | (string & {});
-export const MembershipInferenceAttackVersion = S.String;
+const MembershipInferenceAttackVersion = S.String;
 
 export interface MembershipInferenceAttackScore {
   attackVersion: MembershipInferenceAttackVersion;
   score: number;
 }
-export const MembershipInferenceAttackScore = /*@__PURE__*/ S.suspend(() =>
+const MembershipInferenceAttackScore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ attackVersion: MembershipInferenceAttackVersion, score: S.Number }),
 ).annotate({
   identifier: "MembershipInferenceAttackScore",
 }) as any as S.Schema<MembershipInferenceAttackScore>;
 export type MembershipInferenceAttackScoreList = MembershipInferenceAttackScore[];
-export const MembershipInferenceAttackScoreList = /*@__PURE__*/ S.Array(
-  MembershipInferenceAttackScore,
-);
+const MembershipInferenceAttackScoreList = /*@__PURE__*/ S.Array(MembershipInferenceAttackScore);
 export interface DataPrivacyScores {
   membershipInferenceAttackScores: MembershipInferenceAttackScore[];
 }
-export const DataPrivacyScores = /*@__PURE__*/ S.suspend(() =>
+const DataPrivacyScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ membershipInferenceAttackScores: MembershipInferenceAttackScoreList }),
 ).annotate({ identifier: "DataPrivacyScores" }) as any as S.Schema<DataPrivacyScores>;
 export interface SyntheticDataEvaluationScores {
   dataPrivacyScores: DataPrivacyScores;
 }
-export const SyntheticDataEvaluationScores = /*@__PURE__*/ S.suspend(() =>
+const SyntheticDataEvaluationScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataPrivacyScores: DataPrivacyScores }),
 ).annotate({
   identifier: "SyntheticDataEvaluationScores",
@@ -1690,7 +1670,7 @@ export interface SyntheticDataConfiguration {
   syntheticDataParameters: MLSyntheticDataParameters;
   syntheticDataEvaluationScores?: SyntheticDataEvaluationScores;
 }
-export const SyntheticDataConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SyntheticDataConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syntheticDataParameters: MLSyntheticDataParameters,
     syntheticDataEvaluationScores: S.optional(SyntheticDataEvaluationScores),
@@ -1716,7 +1696,7 @@ export interface GetCollaborationMLInputChannelResponse {
   updateTime: Date;
   creatorAccountId: string;
 }
-export const GetCollaborationMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCollaborationMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String,
     collaborationIdentifier: S.String,
@@ -1743,7 +1723,7 @@ export interface GetCollaborationTrainedModelRequest {
   collaborationIdentifier: string;
   versionIdentifier?: string;
 }
-export const GetCollaborationTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollaborationTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
     collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
@@ -1769,13 +1749,13 @@ export interface IncrementalTrainingDataChannelOutput {
   versionIdentifier?: string;
   modelName: string;
 }
-export const IncrementalTrainingDataChannelOutput = /*@__PURE__*/ S.suspend(() =>
+const IncrementalTrainingDataChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelName: S.String, versionIdentifier: S.optional(S.String), modelName: S.String }),
 ).annotate({
   identifier: "IncrementalTrainingDataChannelOutput",
 }) as any as S.Schema<IncrementalTrainingDataChannelOutput>;
 export type IncrementalTrainingDataChannelsOutput = IncrementalTrainingDataChannelOutput[];
-export const IncrementalTrainingDataChannelsOutput = /*@__PURE__*/ S.Array(
+const IncrementalTrainingDataChannelsOutput = /*@__PURE__*/ S.Array(
   IncrementalTrainingDataChannelOutput,
 );
 export type TrainedModelStatus =
@@ -1791,13 +1771,13 @@ export type TrainedModelStatus =
   | "CANCEL_IN_PROGRESS"
   | "CANCEL_FAILED"
   | (string & {});
-export const TrainedModelStatus = S.String;
+const TrainedModelStatus = S.String;
 
 export type MetricsStatus = "PUBLISH_SUCCEEDED" | "PUBLISH_FAILED" | (string & {});
-export const MetricsStatus = S.String;
+const MetricsStatus = S.String;
 
 export type LogsStatus = "PUBLISH_SUCCEEDED" | "PUBLISH_FAILED" | (string & {});
-export const LogsStatus = S.String;
+const LogsStatus = S.String;
 
 export interface GetCollaborationTrainedModelResponse {
   membershipIdentifier: string;
@@ -1823,7 +1803,7 @@ export interface GetCollaborationTrainedModelResponse {
   updateTime: Date;
   creatorAccountId: string;
 }
-export const GetCollaborationTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCollaborationTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String,
     collaborationIdentifier: S.String,
@@ -1854,7 +1834,7 @@ export const GetCollaborationTrainedModelResponse = /*@__PURE__*/ S.suspend(() =
 export interface GetConfiguredAudienceModelRequest {
   configuredAudienceModelArn: string;
 }
-export const GetConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
   }).pipe(
@@ -1871,7 +1851,7 @@ export const GetConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConfiguredAudienceModelRequest",
 }) as any as S.Schema<GetConfiguredAudienceModelRequest>;
 export type ConfiguredAudienceModelStatus = "ACTIVE" | (string & {});
-export const ConfiguredAudienceModelStatus = S.String;
+const ConfiguredAudienceModelStatus = S.String;
 
 export interface GetConfiguredAudienceModelResponse {
   createTime: Date;
@@ -1888,7 +1868,7 @@ export interface GetConfiguredAudienceModelResponse {
   tags?: { [key: string]: string | undefined };
   childResourceTagOnCreatePolicy?: TagOnCreatePolicy;
 }
-export const GetConfiguredAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1910,7 +1890,7 @@ export const GetConfiguredAudienceModelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
 }
-export const GetConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
   }).pipe(
@@ -1936,7 +1916,7 @@ export interface GetConfiguredAudienceModelPolicyResponse {
   configuredAudienceModelPolicy: string;
   policyHash: string;
 }
-export const GetConfiguredAudienceModelPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredAudienceModelPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String,
     configuredAudienceModelPolicy: S.String,
@@ -1948,7 +1928,7 @@ export const GetConfiguredAudienceModelPolicyResponse = /*@__PURE__*/ S.suspend(
 export interface GetConfiguredModelAlgorithmRequest {
   configuredModelAlgorithmArn: string;
 }
-export const GetConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredModelAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredModelAlgorithmArn: S.String.pipe(T.HttpLabel("configuredModelAlgorithmArn")),
   }).pipe(
@@ -1976,7 +1956,7 @@ export interface GetConfiguredModelAlgorithmResponse {
   tags?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
 }
-export const GetConfiguredModelAlgorithmResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredModelAlgorithmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1996,7 +1976,7 @@ export interface GetConfiguredModelAlgorithmAssociationRequest {
   configuredModelAlgorithmAssociationArn: string;
   membershipIdentifier: string;
 }
-export const GetConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredModelAlgorithmAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredModelAlgorithmAssociationArn: S.String.pipe(
       T.HttpLabel("configuredModelAlgorithmAssociationArn"),
@@ -2030,7 +2010,7 @@ export interface GetConfiguredModelAlgorithmAssociationResponse {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2049,7 +2029,7 @@ export const GetConfiguredModelAlgorithmAssociationResponse = /*@__PURE__*/ S.su
 export interface GetMLConfigurationRequest {
   membershipIdentifier: string;
 }
-export const GetMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/memberships/{membershipIdentifier}/ml-configurations" }),
@@ -2066,12 +2046,12 @@ export const GetMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Destination {
   s3Destination: S3ConfigMap;
 }
-export const Destination = AudienceDestination as any as S.Schema<Destination>;
+const Destination = AudienceDestination as any as S.Schema<Destination>;
 export interface MLOutputConfiguration {
   destination?: Destination;
   roleArn: string;
 }
-export const MLOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MLOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ destination: S.optional(Destination), roleArn: S.String }),
 ).annotate({ identifier: "MLOutputConfiguration" }) as any as S.Schema<MLOutputConfiguration>;
 export interface GetMLConfigurationResponse {
@@ -2080,7 +2060,7 @@ export interface GetMLConfigurationResponse {
   createTime: Date;
   updateTime: Date;
 }
-export const GetMLConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMLConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String,
     defaultOutputLocation: MLOutputConfiguration,
@@ -2094,7 +2074,7 @@ export interface GetMLInputChannelRequest {
   mlInputChannelArn: string;
   membershipIdentifier: string;
 }
-export const GetMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMLInputChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -2135,7 +2115,7 @@ export interface GetMLInputChannelResponse {
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMLInputChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String,
     collaborationIdentifier: S.String,
@@ -2167,7 +2147,7 @@ export interface GetTrainedModelRequest {
   membershipIdentifier: string;
   versionIdentifier?: string;
 }
-export const GetTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrainedModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -2214,7 +2194,7 @@ export interface GetTrainedModelResponse {
   tags?: { [key: string]: string | undefined };
   dataChannels: ModelTrainingDataChannel[];
 }
-export const GetTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTrainedModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String,
     collaborationIdentifier: S.String,
@@ -2248,7 +2228,7 @@ export interface GetTrainedModelInferenceJobRequest {
   membershipIdentifier: string;
   trainedModelInferenceJobArn: string;
 }
-export const GetTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     trainedModelInferenceJobArn: S.String.pipe(T.HttpLabel("trainedModelInferenceJobArn")),
@@ -2278,7 +2258,7 @@ export type TrainedModelInferenceJobStatus =
   | "CANCEL_FAILED"
   | "INACTIVE"
   | (string & {});
-export const TrainedModelInferenceJobStatus = S.String;
+const TrainedModelInferenceJobStatus = S.String;
 
 export type InferenceInstanceType =
   | "ml.r7i.48xlarge"
@@ -2376,28 +2356,28 @@ export type InferenceInstanceType =
   | "ml.p3.2xlarge"
   | "ml.p3.8xlarge"
   | (string & {});
-export const InferenceInstanceType = S.String;
+const InferenceInstanceType = S.String;
 
 export interface InferenceResourceConfig {
   instanceType: InferenceInstanceType;
   instanceCount?: number;
 }
-export const InferenceResourceConfig = /*@__PURE__*/ S.suspend(() =>
+const InferenceResourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceType: InferenceInstanceType, instanceCount: S.optional(S.Number) }),
 ).annotate({ identifier: "InferenceResourceConfig" }) as any as S.Schema<InferenceResourceConfig>;
 export interface InferenceReceiverMember {
   accountId: string;
 }
-export const InferenceReceiverMember = /*@__PURE__*/ S.suspend(() =>
+const InferenceReceiverMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String }),
 ).annotate({ identifier: "InferenceReceiverMember" }) as any as S.Schema<InferenceReceiverMember>;
 export type InferenceReceiverMembers = InferenceReceiverMember[];
-export const InferenceReceiverMembers = /*@__PURE__*/ S.Array(InferenceReceiverMember);
+const InferenceReceiverMembers = /*@__PURE__*/ S.Array(InferenceReceiverMember);
 export interface InferenceOutputConfiguration {
   accept?: string;
   members: InferenceReceiverMember[];
 }
-export const InferenceOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
+const InferenceOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accept: S.optional(S.String), members: InferenceReceiverMembers }),
 ).annotate({
   identifier: "InferenceOutputConfiguration",
@@ -2405,19 +2385,19 @@ export const InferenceOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface ModelInferenceDataSource {
   mlInputChannelArn: string;
 }
-export const ModelInferenceDataSource = /*@__PURE__*/ S.suspend(() =>
+const ModelInferenceDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mlInputChannelArn: S.String }),
 ).annotate({ identifier: "ModelInferenceDataSource" }) as any as S.Schema<ModelInferenceDataSource>;
 export interface InferenceContainerExecutionParameters {
   maxPayloadInMB?: number;
 }
-export const InferenceContainerExecutionParameters = /*@__PURE__*/ S.suspend(() =>
+const InferenceContainerExecutionParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxPayloadInMB: S.optional(S.Number) }),
 ).annotate({
   identifier: "InferenceContainerExecutionParameters",
 }) as any as S.Schema<InferenceContainerExecutionParameters>;
 export type InferenceEnvironmentMap = { [key: string]: string | undefined };
-export const InferenceEnvironmentMap = ParameterMap as any as S.Schema<InferenceEnvironmentMap>;
+const InferenceEnvironmentMap = ParameterMap as any as S.Schema<InferenceEnvironmentMap>;
 export interface GetTrainedModelInferenceJobResponse {
   createTime: Date;
   updateTime: Date;
@@ -2444,7 +2424,7 @@ export interface GetTrainedModelInferenceJobResponse {
   tags?: { [key: string]: string | undefined };
   mlModelInferencePayerAccountId?: string;
 }
-export const GetTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2477,7 +2457,7 @@ export const GetTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetTrainingDatasetRequest {
   trainingDatasetArn: string;
 }
-export const GetTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trainingDatasetArn: S.String.pipe(T.HttpLabel("trainingDatasetArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/training-dataset/{trainingDatasetArn}" }),
@@ -2492,7 +2472,7 @@ export const GetTrainingDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTrainingDatasetRequest",
 }) as any as S.Schema<GetTrainingDatasetRequest>;
 export type TrainingDatasetStatus = "ACTIVE" | (string & {});
-export const TrainingDatasetStatus = S.String;
+const TrainingDatasetStatus = S.String;
 
 export interface GetTrainingDatasetResponse {
   createTime: Date;
@@ -2505,7 +2485,7 @@ export interface GetTrainingDatasetResponse {
   tags?: { [key: string]: string | undefined };
   description?: string;
 }
-export const GetTrainingDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTrainingDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2527,7 +2507,7 @@ export interface ListAudienceExportJobsRequest {
   maxResults?: number;
   audienceGenerationJobArn?: string;
 }
-export const ListAudienceExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAudienceExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2544,7 +2524,7 @@ export type AudienceExportJobStatus =
   | "CREATE_FAILED"
   | "ACTIVE"
   | (string & {});
-export const AudienceExportJobStatus = S.String;
+const AudienceExportJobStatus = S.String;
 
 export interface AudienceExportJobSummary {
   createTime: Date;
@@ -2557,7 +2537,7 @@ export interface AudienceExportJobSummary {
   statusDetails?: StatusDetails;
   outputLocation?: string;
 }
-export const AudienceExportJobSummary = /*@__PURE__*/ S.suspend(() =>
+const AudienceExportJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2571,12 +2551,12 @@ export const AudienceExportJobSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudienceExportJobSummary" }) as any as S.Schema<AudienceExportJobSummary>;
 export type AudienceExportJobList = AudienceExportJobSummary[];
-export const AudienceExportJobList = /*@__PURE__*/ S.Array(AudienceExportJobSummary);
+const AudienceExportJobList = /*@__PURE__*/ S.Array(AudienceExportJobSummary);
 export interface ListAudienceExportJobsResponse {
   nextToken?: string;
   audienceExportJobs: AudienceExportJobSummary[];
 }
-export const ListAudienceExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAudienceExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), audienceExportJobs: AudienceExportJobList }),
 ).annotate({
   identifier: "ListAudienceExportJobsResponse",
@@ -2587,7 +2567,7 @@ export interface ListAudienceGenerationJobsRequest {
   configuredAudienceModelArn?: string;
   collaborationId?: string;
 }
-export const ListAudienceGenerationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAudienceGenerationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2612,7 +2592,7 @@ export interface AudienceGenerationJobSummary {
   collaborationId?: string;
   startedBy?: string;
 }
-export const AudienceGenerationJobSummary = /*@__PURE__*/ S.suspend(() =>
+const AudienceGenerationJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2628,12 +2608,12 @@ export const AudienceGenerationJobSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudienceGenerationJobSummary",
 }) as any as S.Schema<AudienceGenerationJobSummary>;
 export type AudienceGenerationJobList = AudienceGenerationJobSummary[];
-export const AudienceGenerationJobList = /*@__PURE__*/ S.Array(AudienceGenerationJobSummary);
+const AudienceGenerationJobList = /*@__PURE__*/ S.Array(AudienceGenerationJobSummary);
 export interface ListAudienceGenerationJobsResponse {
   nextToken?: string;
   audienceGenerationJobs: AudienceGenerationJobSummary[];
 }
-export const ListAudienceGenerationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAudienceGenerationJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), audienceGenerationJobs: AudienceGenerationJobList }),
 ).annotate({
   identifier: "ListAudienceGenerationJobsResponse",
@@ -2642,7 +2622,7 @@ export interface ListAudienceModelsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAudienceModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAudienceModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2659,7 +2639,7 @@ export interface AudienceModelSummary {
   status: AudienceModelStatus;
   description?: string;
 }
-export const AudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
+const AudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2671,12 +2651,12 @@ export const AudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudienceModelSummary" }) as any as S.Schema<AudienceModelSummary>;
 export type AudienceModelList = AudienceModelSummary[];
-export const AudienceModelList = /*@__PURE__*/ S.Array(AudienceModelSummary);
+const AudienceModelList = /*@__PURE__*/ S.Array(AudienceModelSummary);
 export interface ListAudienceModelsResponse {
   nextToken?: string;
   audienceModels: AudienceModelSummary[];
 }
-export const ListAudienceModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAudienceModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), audienceModels: AudienceModelList }),
 ).annotate({
   identifier: "ListAudienceModelsResponse",
@@ -2686,25 +2666,24 @@ export interface ListCollaborationConfiguredModelAlgorithmAssociationsRequest {
   maxResults?: number;
   collaborationIdentifier: string;
 }
-export const ListCollaborationConfiguredModelAlgorithmAssociationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/collaborations/{collaborationIdentifier}/configured-model-algorithm-associations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+const ListCollaborationConfiguredModelAlgorithmAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    collaborationIdentifier: S.String.pipe(T.HttpLabel("collaborationIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/collaborations/{collaborationIdentifier}/configured-model-algorithm-associations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListCollaborationConfiguredModelAlgorithmAssociationsRequest",
 }) as any as S.Schema<ListCollaborationConfiguredModelAlgorithmAssociationsRequest>;
@@ -2719,7 +2698,7 @@ export interface CollaborationConfiguredModelAlgorithmAssociationSummary {
   configuredModelAlgorithmArn: string;
   creatorAccountId: string;
 }
-export const CollaborationConfiguredModelAlgorithmAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+const CollaborationConfiguredModelAlgorithmAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2736,29 +2715,28 @@ export const CollaborationConfiguredModelAlgorithmAssociationSummary = /*@__PURE
 }) as any as S.Schema<CollaborationConfiguredModelAlgorithmAssociationSummary>;
 export type CollaborationConfiguredModelAlgorithmAssociationList =
   CollaborationConfiguredModelAlgorithmAssociationSummary[];
-export const CollaborationConfiguredModelAlgorithmAssociationList = /*@__PURE__*/ S.Array(
+const CollaborationConfiguredModelAlgorithmAssociationList = /*@__PURE__*/ S.Array(
   CollaborationConfiguredModelAlgorithmAssociationSummary,
 );
 export interface ListCollaborationConfiguredModelAlgorithmAssociationsResponse {
   nextToken?: string;
   collaborationConfiguredModelAlgorithmAssociations: CollaborationConfiguredModelAlgorithmAssociationSummary[];
 }
-export const ListCollaborationConfiguredModelAlgorithmAssociationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      collaborationConfiguredModelAlgorithmAssociations:
-        CollaborationConfiguredModelAlgorithmAssociationList,
-    }),
-  ).annotate({
-    identifier: "ListCollaborationConfiguredModelAlgorithmAssociationsResponse",
-  }) as any as S.Schema<ListCollaborationConfiguredModelAlgorithmAssociationsResponse>;
+const ListCollaborationConfiguredModelAlgorithmAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    collaborationConfiguredModelAlgorithmAssociations:
+      CollaborationConfiguredModelAlgorithmAssociationList,
+  }),
+).annotate({
+  identifier: "ListCollaborationConfiguredModelAlgorithmAssociationsResponse",
+}) as any as S.Schema<ListCollaborationConfiguredModelAlgorithmAssociationsResponse>;
 export interface ListCollaborationMLInputChannelsRequest {
   nextToken?: string;
   maxResults?: number;
   collaborationIdentifier: string;
 }
-export const ListCollaborationMLInputChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationMLInputChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2789,7 +2767,7 @@ export interface CollaborationMLInputChannelSummary {
   description?: string;
   payerConfiguration?: PayerConfiguration;
 }
-export const CollaborationMLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
+const CollaborationMLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2807,14 +2785,12 @@ export const CollaborationMLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollaborationMLInputChannelSummary",
 }) as any as S.Schema<CollaborationMLInputChannelSummary>;
 export type CollaborationMLInputChannelsList = CollaborationMLInputChannelSummary[];
-export const CollaborationMLInputChannelsList = /*@__PURE__*/ S.Array(
-  CollaborationMLInputChannelSummary,
-);
+const CollaborationMLInputChannelsList = /*@__PURE__*/ S.Array(CollaborationMLInputChannelSummary);
 export interface ListCollaborationMLInputChannelsResponse {
   nextToken?: string;
   collaborationMLInputChannelsList: CollaborationMLInputChannelSummary[];
 }
-export const ListCollaborationMLInputChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationMLInputChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     collaborationMLInputChannelsList: CollaborationMLInputChannelsList,
@@ -2829,7 +2805,7 @@ export interface ListCollaborationTrainedModelExportJobsRequest {
   trainedModelArn: string;
   trainedModelVersionIdentifier?: string;
 }
-export const ListCollaborationTrainedModelExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationTrainedModelExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2857,19 +2833,17 @@ export const ListCollaborationTrainedModelExportJobsRequest = /*@__PURE__*/ S.su
 export interface TrainedModelExportReceiverMember {
   accountId: string;
 }
-export const TrainedModelExportReceiverMember = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelExportReceiverMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String }),
 ).annotate({
   identifier: "TrainedModelExportReceiverMember",
 }) as any as S.Schema<TrainedModelExportReceiverMember>;
 export type TrainedModelExportReceiverMembers = TrainedModelExportReceiverMember[];
-export const TrainedModelExportReceiverMembers = /*@__PURE__*/ S.Array(
-  TrainedModelExportReceiverMember,
-);
+const TrainedModelExportReceiverMembers = /*@__PURE__*/ S.Array(TrainedModelExportReceiverMember);
 export interface TrainedModelExportOutputConfiguration {
   members: TrainedModelExportReceiverMember[];
 }
-export const TrainedModelExportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelExportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ members: TrainedModelExportReceiverMembers }),
 ).annotate({
   identifier: "TrainedModelExportOutputConfiguration",
@@ -2880,7 +2854,7 @@ export type TrainedModelExportJobStatus =
   | "CREATE_FAILED"
   | "ACTIVE"
   | (string & {});
-export const TrainedModelExportJobStatus = S.String;
+const TrainedModelExportJobStatus = S.String;
 
 export interface CollaborationTrainedModelExportJobSummary {
   createTime: Date;
@@ -2896,7 +2870,7 @@ export interface CollaborationTrainedModelExportJobSummary {
   membershipIdentifier: string;
   collaborationIdentifier: string;
 }
-export const CollaborationTrainedModelExportJobSummary = /*@__PURE__*/ S.suspend(() =>
+const CollaborationTrainedModelExportJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2915,14 +2889,14 @@ export const CollaborationTrainedModelExportJobSummary = /*@__PURE__*/ S.suspend
   identifier: "CollaborationTrainedModelExportJobSummary",
 }) as any as S.Schema<CollaborationTrainedModelExportJobSummary>;
 export type CollaborationTrainedModelExportJobList = CollaborationTrainedModelExportJobSummary[];
-export const CollaborationTrainedModelExportJobList = /*@__PURE__*/ S.Array(
+const CollaborationTrainedModelExportJobList = /*@__PURE__*/ S.Array(
   CollaborationTrainedModelExportJobSummary,
 );
 export interface ListCollaborationTrainedModelExportJobsResponse {
   nextToken?: string;
   collaborationTrainedModelExportJobs: CollaborationTrainedModelExportJobSummary[];
 }
-export const ListCollaborationTrainedModelExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationTrainedModelExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     collaborationTrainedModelExportJobs: CollaborationTrainedModelExportJobList,
@@ -2937,7 +2911,7 @@ export interface ListCollaborationTrainedModelInferenceJobsRequest {
   trainedModelArn?: string;
   trainedModelVersionIdentifier?: string;
 }
-export const ListCollaborationTrainedModelInferenceJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationTrainedModelInferenceJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2982,7 +2956,7 @@ export interface CollaborationTrainedModelInferenceJobSummary {
   updateTime: Date;
   creatorAccountId: string;
 }
-export const CollaborationTrainedModelInferenceJobSummary = /*@__PURE__*/ S.suspend(() =>
+const CollaborationTrainedModelInferenceJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModelInferenceJobArn: S.String,
     configuredModelAlgorithmAssociationArn: S.optional(S.String),
@@ -3008,14 +2982,14 @@ export const CollaborationTrainedModelInferenceJobSummary = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CollaborationTrainedModelInferenceJobSummary>;
 export type CollaborationTrainedModelInferenceJobList =
   CollaborationTrainedModelInferenceJobSummary[];
-export const CollaborationTrainedModelInferenceJobList = /*@__PURE__*/ S.Array(
+const CollaborationTrainedModelInferenceJobList = /*@__PURE__*/ S.Array(
   CollaborationTrainedModelInferenceJobSummary,
 );
 export interface ListCollaborationTrainedModelInferenceJobsResponse {
   nextToken?: string;
   collaborationTrainedModelInferenceJobs: CollaborationTrainedModelInferenceJobSummary[];
 }
-export const ListCollaborationTrainedModelInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationTrainedModelInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     collaborationTrainedModelInferenceJobs: CollaborationTrainedModelInferenceJobList,
@@ -3028,7 +3002,7 @@ export interface ListCollaborationTrainedModelsRequest {
   maxResults?: number;
   collaborationIdentifier: string;
 }
-export const ListCollaborationTrainedModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationTrainedModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3061,7 +3035,7 @@ export interface CollaborationTrainedModelSummary {
   creatorAccountId: string;
   mlModelTrainingPayerAccountId?: string;
 }
-export const CollaborationTrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
+const CollaborationTrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3081,14 +3055,12 @@ export const CollaborationTrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollaborationTrainedModelSummary",
 }) as any as S.Schema<CollaborationTrainedModelSummary>;
 export type CollaborationTrainedModelList = CollaborationTrainedModelSummary[];
-export const CollaborationTrainedModelList = /*@__PURE__*/ S.Array(
-  CollaborationTrainedModelSummary,
-);
+const CollaborationTrainedModelList = /*@__PURE__*/ S.Array(CollaborationTrainedModelSummary);
 export interface ListCollaborationTrainedModelsResponse {
   nextToken?: string;
   collaborationTrainedModels: CollaborationTrainedModelSummary[];
 }
-export const ListCollaborationTrainedModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollaborationTrainedModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     collaborationTrainedModels: CollaborationTrainedModelList,
@@ -3100,7 +3072,7 @@ export interface ListConfiguredAudienceModelsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListConfiguredAudienceModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfiguredAudienceModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3127,7 +3099,7 @@ export interface ConfiguredAudienceModelSummary {
   configuredAudienceModelArn: string;
   status: ConfiguredAudienceModelStatus;
 }
-export const ConfiguredAudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
+const ConfiguredAudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3142,12 +3114,12 @@ export const ConfiguredAudienceModelSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfiguredAudienceModelSummary",
 }) as any as S.Schema<ConfiguredAudienceModelSummary>;
 export type ConfiguredAudienceModelList = ConfiguredAudienceModelSummary[];
-export const ConfiguredAudienceModelList = /*@__PURE__*/ S.Array(ConfiguredAudienceModelSummary);
+const ConfiguredAudienceModelList = /*@__PURE__*/ S.Array(ConfiguredAudienceModelSummary);
 export interface ListConfiguredAudienceModelsResponse {
   nextToken?: string;
   configuredAudienceModels: ConfiguredAudienceModelSummary[];
 }
-export const ListConfiguredAudienceModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfiguredAudienceModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     configuredAudienceModels: ConfiguredAudienceModelList,
@@ -3160,7 +3132,7 @@ export interface ListConfiguredModelAlgorithmAssociationsRequest {
   maxResults?: number;
   membershipIdentifier: string;
 }
-export const ListConfiguredModelAlgorithmAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfiguredModelAlgorithmAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3191,7 +3163,7 @@ export interface ConfiguredModelAlgorithmAssociationSummary {
   membershipIdentifier: string;
   collaborationIdentifier: string;
 }
-export const ConfiguredModelAlgorithmAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+const ConfiguredModelAlgorithmAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3206,14 +3178,14 @@ export const ConfiguredModelAlgorithmAssociationSummary = /*@__PURE__*/ S.suspen
   identifier: "ConfiguredModelAlgorithmAssociationSummary",
 }) as any as S.Schema<ConfiguredModelAlgorithmAssociationSummary>;
 export type ConfiguredModelAlgorithmAssociationList = ConfiguredModelAlgorithmAssociationSummary[];
-export const ConfiguredModelAlgorithmAssociationList = /*@__PURE__*/ S.Array(
+const ConfiguredModelAlgorithmAssociationList = /*@__PURE__*/ S.Array(
   ConfiguredModelAlgorithmAssociationSummary,
 );
 export interface ListConfiguredModelAlgorithmAssociationsResponse {
   nextToken?: string;
   configuredModelAlgorithmAssociations: ConfiguredModelAlgorithmAssociationSummary[];
 }
-export const ListConfiguredModelAlgorithmAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfiguredModelAlgorithmAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     configuredModelAlgorithmAssociations: ConfiguredModelAlgorithmAssociationList,
@@ -3225,7 +3197,7 @@ export interface ListConfiguredModelAlgorithmsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListConfiguredModelAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfiguredModelAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3249,7 +3221,7 @@ export interface ConfiguredModelAlgorithmSummary {
   name: string;
   description?: string;
 }
-export const ConfiguredModelAlgorithmSummary = /*@__PURE__*/ S.suspend(() =>
+const ConfiguredModelAlgorithmSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3261,12 +3233,12 @@ export const ConfiguredModelAlgorithmSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfiguredModelAlgorithmSummary",
 }) as any as S.Schema<ConfiguredModelAlgorithmSummary>;
 export type ConfiguredModelAlgorithmList = ConfiguredModelAlgorithmSummary[];
-export const ConfiguredModelAlgorithmList = /*@__PURE__*/ S.Array(ConfiguredModelAlgorithmSummary);
+const ConfiguredModelAlgorithmList = /*@__PURE__*/ S.Array(ConfiguredModelAlgorithmSummary);
 export interface ListConfiguredModelAlgorithmsResponse {
   nextToken?: string;
   configuredModelAlgorithms: ConfiguredModelAlgorithmSummary[];
 }
-export const ListConfiguredModelAlgorithmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfiguredModelAlgorithmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     configuredModelAlgorithms: ConfiguredModelAlgorithmList,
@@ -3279,7 +3251,7 @@ export interface ListMLInputChannelsRequest {
   maxResults?: number;
   membershipIdentifier: string;
 }
-export const ListMLInputChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMLInputChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3310,7 +3282,7 @@ export interface MLInputChannelSummary {
   description?: string;
   payerConfiguration?: PayerConfiguration;
 }
-export const MLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
+const MLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3326,12 +3298,12 @@ export const MLInputChannelSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MLInputChannelSummary" }) as any as S.Schema<MLInputChannelSummary>;
 export type MLInputChannelsList = MLInputChannelSummary[];
-export const MLInputChannelsList = /*@__PURE__*/ S.Array(MLInputChannelSummary);
+const MLInputChannelsList = /*@__PURE__*/ S.Array(MLInputChannelSummary);
 export interface ListMLInputChannelsResponse {
   nextToken?: string;
   mlInputChannelsList: MLInputChannelSummary[];
 }
-export const ListMLInputChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMLInputChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), mlInputChannelsList: MLInputChannelsList }),
 ).annotate({
   identifier: "ListMLInputChannelsResponse",
@@ -3340,7 +3312,7 @@ export type TaggableArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -3350,7 +3322,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: TagMap }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -3362,7 +3334,7 @@ export interface ListTrainedModelInferenceJobsRequest {
   trainedModelArn?: string;
   trainedModelVersionIdentifier?: string;
 }
-export const ListTrainedModelInferenceJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrainedModelInferenceJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3406,7 +3378,7 @@ export interface TrainedModelInferenceJobSummary {
   createTime: Date;
   updateTime: Date;
 }
-export const TrainedModelInferenceJobSummary = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelInferenceJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trainedModelInferenceJobArn: S.String,
     configuredModelAlgorithmAssociationArn: S.optional(S.String),
@@ -3430,12 +3402,12 @@ export const TrainedModelInferenceJobSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrainedModelInferenceJobSummary",
 }) as any as S.Schema<TrainedModelInferenceJobSummary>;
 export type TrainedModelInferenceJobList = TrainedModelInferenceJobSummary[];
-export const TrainedModelInferenceJobList = /*@__PURE__*/ S.Array(TrainedModelInferenceJobSummary);
+const TrainedModelInferenceJobList = /*@__PURE__*/ S.Array(TrainedModelInferenceJobSummary);
 export interface ListTrainedModelInferenceJobsResponse {
   nextToken?: string;
   trainedModelInferenceJobs: TrainedModelInferenceJobSummary[];
 }
-export const ListTrainedModelInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTrainedModelInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     trainedModelInferenceJobs: TrainedModelInferenceJobList,
@@ -3448,7 +3420,7 @@ export interface ListTrainedModelsRequest {
   maxResults?: number;
   membershipIdentifier: string;
 }
-export const ListTrainedModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrainedModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3478,7 +3450,7 @@ export interface TrainedModelSummary {
   configuredModelAlgorithmAssociationArn: string;
   mlModelTrainingPayerAccountId?: string;
 }
-export const TrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
+const TrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3495,12 +3467,12 @@ export const TrainedModelSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrainedModelSummary" }) as any as S.Schema<TrainedModelSummary>;
 export type TrainedModelList = TrainedModelSummary[];
-export const TrainedModelList = /*@__PURE__*/ S.Array(TrainedModelSummary);
+const TrainedModelList = /*@__PURE__*/ S.Array(TrainedModelSummary);
 export interface ListTrainedModelsResponse {
   nextToken?: string;
   trainedModels: TrainedModelSummary[];
 }
-export const ListTrainedModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTrainedModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), trainedModels: TrainedModelList }),
 ).annotate({
   identifier: "ListTrainedModelsResponse",
@@ -3512,7 +3484,7 @@ export interface ListTrainedModelVersionsRequest {
   trainedModelArn: string;
   status?: TrainedModelStatus;
 }
-export const ListTrainedModelVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrainedModelVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3539,13 +3511,13 @@ export interface ListTrainedModelVersionsResponse {
   nextToken?: string;
   trainedModels: TrainedModelSummary[];
 }
-export const ListTrainedModelVersionsResponse =
+const ListTrainedModelVersionsResponse =
   ListTrainedModelsResponse as any as S.Schema<ListTrainedModelVersionsResponse>;
 export interface ListTrainingDatasetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListTrainingDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrainingDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3561,7 +3533,7 @@ export interface TrainingDatasetSummary {
   status: TrainingDatasetStatus;
   description?: string;
 }
-export const TrainingDatasetSummary = /*@__PURE__*/ S.suspend(() =>
+const TrainingDatasetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -3572,12 +3544,12 @@ export const TrainingDatasetSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrainingDatasetSummary" }) as any as S.Schema<TrainingDatasetSummary>;
 export type TrainingDatasetList = TrainingDatasetSummary[];
-export const TrainingDatasetList = /*@__PURE__*/ S.Array(TrainingDatasetSummary);
+const TrainingDatasetList = /*@__PURE__*/ S.Array(TrainingDatasetSummary);
 export interface ListTrainingDatasetsResponse {
   nextToken?: string;
   trainingDatasets: TrainingDatasetSummary[];
 }
-export const ListTrainingDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTrainingDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), trainingDatasets: TrainingDatasetList }),
 ).annotate({
   identifier: "ListTrainingDatasetsResponse",
@@ -3586,7 +3558,7 @@ export type PolicyExistenceCondition =
   | "POLICY_MUST_EXIST"
   | "POLICY_MUST_NOT_EXIST"
   | (string & {});
-export const PolicyExistenceCondition = S.String;
+const PolicyExistenceCondition = S.String;
 
 export interface PutConfiguredAudienceModelPolicyRequest {
   configuredAudienceModelArn: string;
@@ -3594,7 +3566,7 @@ export interface PutConfiguredAudienceModelPolicyRequest {
   previousPolicyHash?: string;
   policyExistenceCondition?: PolicyExistenceCondition;
 }
-export const PutConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutConfiguredAudienceModelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
     configuredAudienceModelPolicy: S.String,
@@ -3620,7 +3592,7 @@ export interface PutConfiguredAudienceModelPolicyResponse {
   configuredAudienceModelPolicy: string;
   policyHash: string;
 }
-export const PutConfiguredAudienceModelPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const PutConfiguredAudienceModelPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ configuredAudienceModelPolicy: S.String, policyHash: S.String }),
 ).annotate({
   identifier: "PutConfiguredAudienceModelPolicyResponse",
@@ -3629,7 +3601,7 @@ export interface PutMLConfigurationRequest {
   membershipIdentifier: string;
   defaultOutputLocation: MLOutputConfiguration;
 }
-export const PutMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     defaultOutputLocation: MLOutputConfiguration,
@@ -3647,7 +3619,7 @@ export const PutMLConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutMLConfigurationRequest",
 }) as any as S.Schema<PutMLConfigurationRequest>;
 export interface PutMLConfigurationResponse {}
-export const PutMLConfigurationResponse =
+const PutMLConfigurationResponse =
   CancelTrainedModelResponse as any as S.Schema<PutMLConfigurationResponse>;
 export interface StartAudienceExportJobRequest {
   name: string;
@@ -3655,7 +3627,7 @@ export interface StartAudienceExportJobRequest {
   audienceSize: AudienceSize;
   description?: string;
 }
-export const StartAudienceExportJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAudienceExportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     audienceGenerationJobArn: S.String,
@@ -3668,7 +3640,7 @@ export const StartAudienceExportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartAudienceExportJobRequest",
 }) as any as S.Schema<StartAudienceExportJobRequest>;
 export interface StartAudienceExportJobResponse {}
-export const StartAudienceExportJobResponse =
+const StartAudienceExportJobResponse =
   CancelTrainedModelResponse as any as S.Schema<StartAudienceExportJobResponse>;
 export interface StartAudienceGenerationJobRequest {
   name: string;
@@ -3679,7 +3651,7 @@ export interface StartAudienceGenerationJobRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const StartAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     configuredAudienceModelArn: S.String,
@@ -3704,7 +3676,7 @@ export const StartAudienceGenerationJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartAudienceGenerationJobResponse {
   audienceGenerationJobArn: string;
 }
-export const StartAudienceGenerationJobResponse = /*@__PURE__*/ S.suspend(() =>
+const StartAudienceGenerationJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ audienceGenerationJobArn: S.String }),
 ).annotate({
   identifier: "StartAudienceGenerationJobResponse",
@@ -3717,7 +3689,7 @@ export interface StartTrainedModelExportJobRequest {
   outputConfiguration: TrainedModelExportOutputConfiguration;
   description?: string;
 }
-export const StartTrainedModelExportJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTrainedModelExportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
@@ -3742,7 +3714,7 @@ export const StartTrainedModelExportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartTrainedModelExportJobRequest",
 }) as any as S.Schema<StartTrainedModelExportJobRequest>;
 export interface StartTrainedModelExportJobResponse {}
-export const StartTrainedModelExportJobResponse =
+const StartTrainedModelExportJobResponse =
   CancelTrainedModelInferenceJobResponse as any as S.Schema<StartTrainedModelExportJobResponse>;
 export interface StartTrainedModelInferenceJobRequest {
   membershipIdentifier: string;
@@ -3760,7 +3732,7 @@ export interface StartTrainedModelInferenceJobRequest {
   tags?: { [key: string]: string | undefined };
   mlModelInferencePayerAccountId?: string;
 }
-export const StartTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
     name: S.String,
@@ -3795,7 +3767,7 @@ export const StartTrainedModelInferenceJobRequest = /*@__PURE__*/ S.suspend(() =
 export interface StartTrainedModelInferenceJobResponse {
   trainedModelInferenceJobArn: string;
 }
-export const StartTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
+const StartTrainedModelInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ trainedModelInferenceJobArn: S.String }),
 ).annotate({
   identifier: "StartTrainedModelInferenceJobResponse",
@@ -3804,21 +3776,20 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  CancelTrainedModelResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = CancelTrainedModelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = ContainerEntrypoint as any as S.Schema<TagKeys>;
+const TagKeys = ContainerEntrypoint as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -3827,8 +3798,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  CancelTrainedModelResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = CancelTrainedModelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConfiguredAudienceModelRequest {
   configuredAudienceModelArn: string;
   outputConfig?: ConfiguredAudienceModelOutputConfig;
@@ -3838,7 +3808,7 @@ export interface UpdateConfiguredAudienceModelRequest {
   audienceSizeConfig?: AudienceSizeConfig;
   description?: string;
 }
-export const UpdateConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
     outputConfig: S.optional(ConfiguredAudienceModelOutputConfig),
@@ -3863,7 +3833,7 @@ export const UpdateConfiguredAudienceModelRequest = /*@__PURE__*/ S.suspend(() =
 export interface UpdateConfiguredAudienceModelResponse {
   configuredAudienceModelArn: string;
 }
-export const UpdateConfiguredAudienceModelResponse =
+const UpdateConfiguredAudienceModelResponse =
   CreateConfiguredAudienceModelResponse as any as S.Schema<UpdateConfiguredAudienceModelResponse>;
 export type CancelTrainedModelError =
   | AccessDeniedException

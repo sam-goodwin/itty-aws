@@ -51,7 +51,7 @@ export class KeylessSslNotAvailable
   ) {}
 
 export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
-export const CreateRequestBundleMethod = S.String;
+const CreateRequestBundleMethod = S.String;
 
 export interface CreateRequestTunnel {
   /** Private IP of the Key Server Host. */
@@ -59,7 +59,7 @@ export interface CreateRequestTunnel {
   /** Cloudflare Tunnel Virtual Network ID. */
   vnetId: string;
 }
-export const CreateRequestTunnel = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestTunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateIp: S.String.pipe(T.Body("private_ip")),
     vnetId: S.String.pipe(T.Body("vnet_id")),
@@ -82,7 +82,7 @@ export interface CreateKeylessCertificateRequest {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel;
 }
-export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -99,16 +99,14 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateKeylessCertificateRequest>;
 
 export type CreateResponsePermissionsList = Array<string>;
-export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
+const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePermissionsList>;
 
 export type CreateResponseStatus = "active" | "deleted";
-export const CreateResponseStatus = S.String;
+const CreateResponseStatus = S.String;
 
 export type CreateResponseTunnel = CreateRequestTunnel;
-export const CreateResponseTunnel = CreateRequestTunnel;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
@@ -132,7 +130,7 @@ export interface CreateKeylessCertificateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
-export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -155,7 +153,7 @@ export interface DeleteKeylessCertificateRequest {
   /** Keyless certificate identifier tag. */
   keylessCertificateId: string;
 }
-export const DeleteKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
@@ -177,7 +175,7 @@ export interface DeleteKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
   id?: string | null;
 }
-export const DeleteKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -191,7 +189,7 @@ export interface GetKeylessCertificateRequest {
   /** Keyless certificate identifier tag. */
   keylessCertificateId: string;
 }
-export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
@@ -209,15 +207,13 @@ export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKeylessCertificateRequest>;
 
 export type GetResponsePermissionsList = Array<string>;
-export const GetResponsePermissionsList =
+const GetResponsePermissionsList =
   CreateResponsePermissionsList as any as S.Schema<GetResponsePermissionsList>;
 
 export type GetResponseStatus = "active" | "deleted";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 export type GetResponseTunnel = CreateRequestTunnel;
-export const GetResponseTunnel = CreateRequestTunnel;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
@@ -241,7 +237,7 @@ export interface GetKeylessCertificateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
-export const GetKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -262,7 +258,7 @@ export interface ListKeylessCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -273,15 +269,13 @@ export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeylessCertificatesRequest>;
 
 export type ListResultItemPermissionsList = Array<string>;
-export const ListResultItemPermissionsList =
+const ListResultItemPermissionsList =
   CreateResponsePermissionsList as any as S.Schema<ListResultItemPermissionsList>;
 
 export type ListResultItemStatus = "active" | "deleted";
-export const ListResultItemStatus = S.String;
+const ListResultItemStatus = S.String;
 
 export type ListResultItemTunnel = CreateRequestTunnel;
-export const ListResultItemTunnel = CreateRequestTunnel;
-
 export interface ListResultItem {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -304,7 +298,7 @@ export interface ListResultItem {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -320,9 +314,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListKeylessCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -330,7 +322,7 @@ export interface ListKeylessCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListKeylessCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKeylessCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -340,8 +332,6 @@ export const ListKeylessCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeylessCertificatesResponse>;
 
 export type EditRequestTunnel = CreateRequestTunnel;
-export const EditRequestTunnel = CreateRequestTunnel;
-
 export interface PatchKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -358,7 +348,7 @@ export interface PatchKeylessCertificateRequest {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel;
 }
-export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
@@ -381,15 +371,13 @@ export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchKeylessCertificateRequest>;
 
 export type EditResponsePermissionsList = Array<string>;
-export const EditResponsePermissionsList =
+const EditResponsePermissionsList =
   CreateResponsePermissionsList as any as S.Schema<EditResponsePermissionsList>;
 
 export type EditResponseStatus = "active" | "deleted";
-export const EditResponseStatus = S.String;
+const EditResponseStatus = S.String;
 
 export type EditResponseTunnel = CreateRequestTunnel;
-export const EditResponseTunnel = CreateRequestTunnel;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
@@ -413,7 +401,7 @@ export interface PatchKeylessCertificateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
-export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),

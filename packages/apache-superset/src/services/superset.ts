@@ -61,7 +61,7 @@ export class UnprocessableEntity
 
 /** Objects to tag */
 export type TagObjectObjectsToTagList = Array<unknown>;
-export const TagObjectObjectsToTagList = /*@__PURE__*/ S.Array(
+const TagObjectObjectsToTagList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<TagObjectObjectsToTagList>;
 
@@ -71,7 +71,7 @@ export interface TagObject {
   /** Objects to tag */
   objects_to_tag?: TagObjectObjectsToTagList;
 }
-export const TagObject = /*@__PURE__*/ S.suspend(() =>
+const TagObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -80,14 +80,14 @@ export const TagObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagObject" }) as any as S.Schema<TagObject>;
 
 export type BulkTagCreateRequestTagsList = Array<TagObject>;
-export const BulkTagCreateRequestTagsList = /*@__PURE__*/ S.Array(
+const BulkTagCreateRequestTagsList = /*@__PURE__*/ S.Array(
   TagObject,
 ) as any as S.Schema<BulkTagCreateRequestTagsList>;
 
 export interface BulkTagCreateRequest {
   tags?: BulkTagCreateRequestTagsList;
 }
-export const BulkTagCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkTagCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(BulkTagCreateRequestTagsList),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/tag/bulk_create", code: 200 })),
@@ -95,12 +95,12 @@ export const BulkTagCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Objects to tag */
 export type TagPostBulkResponseObjectObjectsSkippedList = Array<unknown>;
-export const TagPostBulkResponseObjectObjectsSkippedList =
+const TagPostBulkResponseObjectObjectsSkippedList =
   TagObjectObjectsToTagList as any as S.Schema<TagPostBulkResponseObjectObjectsSkippedList>;
 
 /** Objects to tag */
 export type TagPostBulkResponseObjectObjectsTaggedList = Array<unknown>;
-export const TagPostBulkResponseObjectObjectsTaggedList =
+const TagPostBulkResponseObjectObjectsTaggedList =
   TagObjectObjectsToTagList as any as S.Schema<TagPostBulkResponseObjectObjectsTaggedList>;
 
 export interface TagPostBulkResponseObject {
@@ -109,7 +109,7 @@ export interface TagPostBulkResponseObject {
   /** Objects to tag */
   objects_tagged?: TagPostBulkResponseObjectObjectsTaggedList;
 }
-export const TagPostBulkResponseObject = /*@__PURE__*/ S.suspend(() =>
+const TagPostBulkResponseObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objects_skipped: S.optional(TagPostBulkResponseObjectObjectsSkippedList),
     objects_tagged: S.optional(TagPostBulkResponseObjectObjectsTaggedList),
@@ -121,7 +121,7 @@ export const TagPostBulkResponseObject = /*@__PURE__*/ S.suspend(() =>
 export interface TagPostBulkResponseSchema {
   result?: TagPostBulkResponseObject;
 }
-export const TagPostBulkResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const TagPostBulkResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TagPostBulkResponseObject),
   }),
@@ -141,7 +141,7 @@ export interface CopyDashboardRequest {
   /** This JSON object is generated dynamically when clicking the save or overwrite button in the dashboard view. It is exposed here for reference and for power users who may want to alter specific parameters. */
   json_metadata: string;
 }
-export const CopyDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
     css: S.optional(S.String),
@@ -155,7 +155,7 @@ export interface CopyDashboardResponse {
   id?: number;
   last_modified_time?: number;
 }
-export const CopyDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const CopyDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     last_modified_time: S.optional(S.Number),
@@ -168,7 +168,7 @@ export interface CreateAnnotationLayerRequest {
   /** The annotation layer name */
   name: string;
 }
-export const CreateAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descr: S.optional(S.NullOr(S.String)),
     name: S.String,
@@ -183,7 +183,7 @@ export interface AnnotationLayerRestApiPost {
   /** The annotation layer name */
   name: string;
 }
-export const AnnotationLayerRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayerRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descr: S.optional(S.NullOr(S.String)),
     name: S.String,
@@ -196,7 +196,7 @@ export interface CreateAnnotationLayerResponse {
   id?: number;
   result?: AnnotationLayerRestApiPost;
 }
-export const CreateAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(AnnotationLayerRestApiPost),
@@ -219,7 +219,7 @@ export interface CreateAnnotationLayerAnnotationRequest {
   /** The annotation start date time */
   start_dttm: string;
 }
-export const CreateAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     end_dttm: S.String,
@@ -244,7 +244,7 @@ export interface AnnotationRestApiPost {
   /** The annotation start date time */
   start_dttm: string;
 }
-export const AnnotationRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_dttm: S.String,
     json_metadata: S.optional(S.NullOr(S.String)),
@@ -258,7 +258,7 @@ export interface CreateAnnotationLayerAnnotationResponse {
   id?: number;
   result?: AnnotationRestApiPost;
 }
-export const CreateAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(AnnotationRestApiPost),
@@ -268,7 +268,7 @@ export const CreateAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateAnnotationLayerAnnotationResponse>;
 
 export type CreateChartRequestDashboardsList = Array<number>;
-export const CreateChartRequestDashboardsList = /*@__PURE__*/ S.Array(
+const CreateChartRequestDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateChartRequestDashboardsList>;
 
@@ -280,14 +280,14 @@ export type CreateChartRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const CreateChartRequestDatasourceType = S.String;
+const CreateChartRequestDatasourceType = S.String;
 
 export type CreateChartRequestEditorsList = Array<number>;
-export const CreateChartRequestEditorsList =
+const CreateChartRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateChartRequestEditorsList>;
 
 export type CreateChartRequestViewersList = Array<number>;
-export const CreateChartRequestViewersList =
+const CreateChartRequestViewersList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateChartRequestViewersList>;
 
 export interface CreateChartRequest {
@@ -322,7 +322,7 @@ export interface CreateChartRequest {
   /** The type of chart visualization used. */
   viz_type?: string;
 }
-export const CreateChartRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.NullOr(S.Number)),
     certification_details: S.optional(S.NullOr(S.String)),
@@ -346,7 +346,7 @@ export const CreateChartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateChartRequest" }) as any as S.Schema<CreateChartRequest>;
 
 export type ChartRestApiPostDashboardsList = Array<number>;
-export const ChartRestApiPostDashboardsList =
+const ChartRestApiPostDashboardsList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPostDashboardsList>;
 
 /** The type of dataset/datasource identified on `datasource_id`. */
@@ -357,14 +357,14 @@ export type ChartRestApiPostDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const ChartRestApiPostDatasourceType = S.String;
+const ChartRestApiPostDatasourceType = S.String;
 
 export type ChartRestApiPostEditorsList = Array<number>;
-export const ChartRestApiPostEditorsList =
+const ChartRestApiPostEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPostEditorsList>;
 
 export type ChartRestApiPostViewersList = Array<number>;
-export const ChartRestApiPostViewersList =
+const ChartRestApiPostViewersList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPostViewersList>;
 
 export interface ChartRestApiPost {
@@ -399,7 +399,7 @@ export interface ChartRestApiPost {
   /** The type of chart visualization used. */
   viz_type?: string;
 }
-export const ChartRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const ChartRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.NullOr(S.Number)),
     certification_details: S.optional(S.NullOr(S.String)),
@@ -426,7 +426,7 @@ export interface CreateChartResponse {
   id?: number;
   result?: ChartRestApiPost;
 }
-export const CreateChartResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(ChartRestApiPost),
@@ -441,7 +441,7 @@ export type ChartDataDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const ChartDataDatasourceType = S.String;
+const ChartDataDatasourceType = S.String;
 
 export interface ChartDataDatasource {
   /** Datasource id or uuid */
@@ -449,7 +449,7 @@ export interface ChartDataDatasource {
   /** Datasource type */
   type?: ChartDataDatasourceType | (string & {});
 }
-export const ChartDataDatasource = /*@__PURE__*/ S.suspend(() =>
+const ChartDataDatasource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Unknown,
     type: S.optional(ChartDataDatasourceType),
@@ -458,32 +458,32 @@ export const ChartDataDatasource = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of annotation layer */
 export type AnnotationLayerAnnotationType = "FORMULA" | "INTERVAL" | "EVENT" | "TIME_SERIES";
-export const AnnotationLayerAnnotationType = S.String;
+const AnnotationLayerAnnotationType = S.String;
 
 /** Columns to use as the description. If none are provided, all will be shown. */
 export type AnnotationLayerDescriptionColumnsList = Array<string>;
-export const AnnotationLayerDescriptionColumnsList = /*@__PURE__*/ S.Array(
+const AnnotationLayerDescriptionColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnnotationLayerDescriptionColumnsList>;
 
 /** Opacity of layer */
 export type AnnotationLayerOpacity = "" | "opacityLow" | "opacityMedium" | "opacityHigh";
-export const AnnotationLayerOpacity = S.String;
+const AnnotationLayerOpacity = S.String;
 
 /** which properties should be overridable */
 export type AnnotationLayerOverridesMap = { [key: string]: unknown | null | undefined };
-export const AnnotationLayerOverridesMap = /*@__PURE__*/ S.Record(
+const AnnotationLayerOverridesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<AnnotationLayerOverridesMap>;
 
 /** Type of source for annotation data */
 export type AnnotationLayerSourceType = "" | "line" | "NATIVE" | "table";
-export const AnnotationLayerSourceType = S.String;
+const AnnotationLayerSourceType = S.String;
 
 /** Line style. Only applies to time-series annotations */
 export type AnnotationLayerStyle = "dashed" | "dotted" | "solid" | "longDashed";
-export const AnnotationLayerStyle = S.String;
+const AnnotationLayerStyle = S.String;
 
 export interface AnnotationLayer {
   /** Type of annotation layer */
@@ -521,7 +521,7 @@ export interface AnnotationLayer {
   /** Width of annotation line */
   width?: number;
 }
-export const AnnotationLayer = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationType: S.optional(AnnotationLayerAnnotationType),
     color: S.optional(S.NullOr(S.String)),
@@ -545,27 +545,27 @@ export const AnnotationLayer = /*@__PURE__*/ S.suspend(() =>
 
 /** Annotation layers to apply to chart */
 export type ChartDataQueryObjectAnnotationLayersList = Array<AnnotationLayer>;
-export const ChartDataQueryObjectAnnotationLayersList = /*@__PURE__*/ S.Array(
+const ChartDataQueryObjectAnnotationLayersList = /*@__PURE__*/ S.Array(
   AnnotationLayer,
 ) as any as S.Schema<ChartDataQueryObjectAnnotationLayersList>;
 
 /** Columns which to select in the query. */
 export type ChartDataQueryObjectColumnsList = Array<unknown>;
-export const ChartDataQueryObjectColumnsList =
+const ChartDataQueryObjectColumnsList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectColumnsList>;
 
 /** Ordered list of column names for result ordering. Used to preserve user's column reordering (including mixed dimension columns and metrics) */
 export type ChartDataExtrasColumnOrderList = Array<string>;
-export const ChartDataExtrasColumnOrderList =
+const ChartDataExtrasColumnOrderList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataExtrasColumnOrderList>;
 
 /** End time for relative time deltas. Default: `config["DEFAULT_RELATIVE_START_TIME"]` */
 export type ChartDataExtrasRelativeEnd = "today" | "now";
-export const ChartDataExtrasRelativeEnd = S.String;
+const ChartDataExtrasRelativeEnd = S.String;
 
 /** Start time for relative time deltas. Default: `config["DEFAULT_RELATIVE_START_TIME"]` */
 export type ChartDataExtrasRelativeStart = "today" | "now";
-export const ChartDataExtrasRelativeStart = S.String;
+const ChartDataExtrasRelativeStart = S.String;
 
 export interface ChartDataExtras {
   /** Ordered list of column names for result ordering. Used to preserve user's column reordering (including mixed dimension columns and metrics) */
@@ -587,7 +587,7 @@ export interface ChartDataExtras {
   /** WHERE clause to be added to queries using AND operator. */
   where?: string;
 }
-export const ChartDataExtras = /*@__PURE__*/ S.suspend(() =>
+const ChartDataExtras = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_order: S.optional(S.NullOr(ChartDataExtrasColumnOrderList)),
     having: S.optional(S.String),
@@ -629,7 +629,7 @@ export type ChartDataFilterOp =
   | "LENGTH_LESS_THAN"
   | "LENGTH_GREATER_THAN_OR_EQUALS"
   | "LENGTH_LESS_THAN_OR_EQUALS";
-export const ChartDataFilterOp = S.String;
+const ChartDataFilterOp = S.String;
 
 export interface ChartDataFilter {
   /** The column to filter by. Can be either a string (physical or saved expression) or an object (adhoc column) */
@@ -643,7 +643,7 @@ export interface ChartDataFilter {
   /** The value or values to compare against. Can be a string, integer, decimal, None or list, depending on the operator. */
   val?: unknown | null;
 }
-export const ChartDataFilter = /*@__PURE__*/ S.suspend(() =>
+const ChartDataFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     col: S.Unknown,
     grain: S.optional(S.String),
@@ -654,33 +654,33 @@ export const ChartDataFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChartDataFilter" }) as any as S.Schema<ChartDataFilter>;
 
 export type ChartDataQueryObjectFiltersList = Array<ChartDataFilter>;
-export const ChartDataQueryObjectFiltersList = /*@__PURE__*/ S.Array(
+const ChartDataQueryObjectFiltersList = /*@__PURE__*/ S.Array(
   ChartDataFilter,
 ) as any as S.Schema<ChartDataQueryObjectFiltersList>;
 
 /** Columns by which to group the query. This field is deprecated, use `columns` instead. */
 export type ChartDataQueryObjectGroupbyList = Array<unknown>;
-export const ChartDataQueryObjectGroupbyList =
+const ChartDataQueryObjectGroupbyList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectGroupbyList>;
 
 export type ChartDataQueryObjectGroupingSetsItemList = Array<string>;
-export const ChartDataQueryObjectGroupingSetsItemList =
+const ChartDataQueryObjectGroupingSetsItemList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataQueryObjectGroupingSetsItemList>;
 
 /** Rollup levels for non-additive totals: each entry is the list of groupby columns to group at that level (e.g. the empty list is the grand total). When set and the engine supports it, the levels are computed in a single GROUPING SETS query. */
 export type ChartDataQueryObjectGroupingSetsList = Array<ChartDataQueryObjectGroupingSetsItemList>;
-export const ChartDataQueryObjectGroupingSetsList = /*@__PURE__*/ S.Array(
+const ChartDataQueryObjectGroupingSetsList = /*@__PURE__*/ S.Array(
   ChartDataQueryObjectGroupingSetsItemList,
 ) as any as S.Schema<ChartDataQueryObjectGroupingSetsList>;
 
 /** Aggregate expressions. Metrics can be passed as both references to datasource metrics (strings), or ad-hoc metricswhich are defined only within the query object. See `ChartDataAdhocMetricSchema` for the structure of ad-hoc metrics. */
 export type ChartDataQueryObjectMetricsList = Array<unknown>;
-export const ChartDataQueryObjectMetricsList =
+const ChartDataQueryObjectMetricsList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectMetricsList>;
 
 /** Expects a list of lists where the first element is the column name which to sort by, and the second element is a boolean. */
 export type ChartDataQueryObjectOrderbyList = Array<unknown>;
-export const ChartDataQueryObjectOrderbyList =
+const ChartDataQueryObjectOrderbyList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectOrderbyList>;
 
 export interface ChartDataPostProcessingOperation {
@@ -689,7 +689,7 @@ export interface ChartDataPostProcessingOperation {
   /** Options specifying how to perform the operation. Please refer to the respective post processing operation option schemas. For example, `ChartDataPostProcessingOperationOptions` specifies the required options for the pivot operation. */
   options?: unknown;
 }
-export const ChartDataPostProcessingOperation = /*@__PURE__*/ S.suspend(() =>
+const ChartDataPostProcessingOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.String,
     options: S.optional(S.Unknown),
@@ -700,7 +700,7 @@ export const ChartDataPostProcessingOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Post processing operations to be applied to the result set. Operations are applied to the result set in sequential order. */
 export type ChartDataQueryObjectPostProcessingList = Array<ChartDataPostProcessingOperation | null>;
-export const ChartDataQueryObjectPostProcessingList = /*@__PURE__*/ S.Array(
+const ChartDataQueryObjectPostProcessingList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(ChartDataPostProcessingOperation),
 ) as any as S.Schema<ChartDataQueryObjectPostProcessingList>;
 
@@ -713,20 +713,20 @@ export type ChartDataQueryObjectResultType =
   | "timegrains"
   | "post_processed"
   | "drill_detail";
-export const ChartDataQueryObjectResultType = S.String;
+const ChartDataQueryObjectResultType = S.String;
 
 /** Columns to use when limiting series count. All columns must be present in the `columns` property. Requires `series_limit` and `series_limit_metric` to be set. */
 export type ChartDataQueryObjectSeriesColumnsList = Array<unknown>;
-export const ChartDataQueryObjectSeriesColumnsList =
+const ChartDataQueryObjectSeriesColumnsList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataQueryObjectSeriesColumnsList>;
 
 export type ChartDataQueryObjectTimeOffsetsList = Array<string>;
-export const ChartDataQueryObjectTimeOffsetsList =
+const ChartDataQueryObjectTimeOffsetsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataQueryObjectTimeOffsetsList>;
 
 /** Optional query parameters passed to a dashboard or Explore view */
 export type ChartDataQueryObjectUrlParamsMap = { [key: string]: string | undefined };
-export const ChartDataQueryObjectUrlParamsMap = /*@__PURE__*/ S.Record(
+const ChartDataQueryObjectUrlParamsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ChartDataQueryObjectUrlParamsMap>;
@@ -797,7 +797,7 @@ export interface ChartDataQueryObject {
   /** WHERE clause to be added to queries using AND operator.This field is deprecated and should be passed to `extras`. */
   where?: string | null;
 }
-export const ChartDataQueryObject = /*@__PURE__*/ S.suspend(() =>
+const ChartDataQueryObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_layers: S.optional(S.NullOr(ChartDataQueryObjectAnnotationLayersList)),
     applied_time_extras: S.optional(S.NullOr(S.Unknown)),
@@ -837,12 +837,12 @@ export const ChartDataQueryObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChartDataQueryObject" }) as any as S.Schema<ChartDataQueryObject>;
 
 export type CreateChartDataRequestQueriesList = Array<ChartDataQueryObject>;
-export const CreateChartDataRequestQueriesList = /*@__PURE__*/ S.Array(
+const CreateChartDataRequestQueriesList = /*@__PURE__*/ S.Array(
   ChartDataQueryObject,
 ) as any as S.Schema<CreateChartDataRequestQueriesList>;
 
 export type CreateChartDataRequestResultFormat = "csv" | "json" | "xlsx" | "arrow";
-export const CreateChartDataRequestResultFormat = S.String;
+const CreateChartDataRequestResultFormat = S.String;
 
 export type CreateChartDataRequestResultType =
   | "columns"
@@ -853,7 +853,7 @@ export type CreateChartDataRequestResultType =
   | "timegrains"
   | "post_processed"
   | "drill_detail";
-export const CreateChartDataRequestResultType = S.String;
+const CreateChartDataRequestResultType = S.String;
 
 export interface CreateChartDataRequest {
   /** Opt this request into asynchronous execution on the Global Task Framework (requires the GLOBAL_ASYNC_QUERIES feature flag). When true the response is HTTP 202 with the query task ids to poll; when absent or false the query runs synchronously (HTTP 200). Default: `false`. */
@@ -872,7 +872,7 @@ export interface CreateChartDataRequest {
   /** Opaque per-browser-tab id (see the frontend `getTabId`). On an async request it ref-counts this tab as a consumer of the shared chart-data task so a cancel/navigate-away from one tab doesn't abort a task another tab still awaits. Read by the API as a request-level routing hint; not part of the query context. */
   tab_id?: string | null;
 }
-export const CreateChartDataRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChartDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     async_mode: S.optional(S.NullOr(S.Boolean)),
     custom_cache_timeout: S.optional(S.NullOr(S.Number)),
@@ -897,7 +897,7 @@ export interface DashboardFilterInfo {
   /** Filter status: 'applied' (default value was included in the query), 'not_applied' (filter had no default value and was omitted, matching dashboard initial-load behavior), or 'not_applied_uses_default_to_first_item_prequery' (filter uses defaultToFirstItem which requires a pre-query to resolve and cannot be applied server-side) */
   status: string;
 }
-export const DashboardFilterInfo = /*@__PURE__*/ S.suspend(() =>
+const DashboardFilterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -908,7 +908,7 @@ export const DashboardFilterInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata about each in-scope dashboard native filter and whether its default value was applied to the query */
 export type DashboardFiltersResponseSchemaFiltersList = Array<DashboardFilterInfo>;
-export const DashboardFiltersResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
+const DashboardFiltersResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
   DashboardFilterInfo,
 ) as any as S.Schema<DashboardFiltersResponseSchemaFiltersList>;
 
@@ -916,7 +916,7 @@ export interface DashboardFiltersResponseSchema {
   /** Metadata about each in-scope dashboard native filter and whether its default value was applied to the query */
   filters?: DashboardFiltersResponseSchemaFiltersList;
 }
-export const DashboardFiltersResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const DashboardFiltersResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(DashboardFiltersResponseSchemaFiltersList),
   }),
@@ -925,39 +925,39 @@ export const DashboardFiltersResponseSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardFiltersResponseSchema>;
 
 export type ChartDataResponseResultAnnotationDataItemMap = { [key: string]: string | undefined };
-export const ChartDataResponseResultAnnotationDataItemMap =
+const ChartDataResponseResultAnnotationDataItemMap =
   ChartDataQueryObjectUrlParamsMap as any as S.Schema<ChartDataResponseResultAnnotationDataItemMap>;
 
 /** All requested annotation data */
 export type ChartDataResponseResultAnnotationDataList =
   Array<ChartDataResponseResultAnnotationDataItemMap>;
-export const ChartDataResponseResultAnnotationDataList = /*@__PURE__*/ S.Array(
+const ChartDataResponseResultAnnotationDataList = /*@__PURE__*/ S.Array(
   ChartDataResponseResultAnnotationDataItemMap,
 ) as any as S.Schema<ChartDataResponseResultAnnotationDataList>;
 
 /** A list with applied filters */
 export type ChartDataResponseResultAppliedFiltersList = Array<unknown>;
-export const ChartDataResponseResultAppliedFiltersList =
+const ChartDataResponseResultAppliedFiltersList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataResponseResultAppliedFiltersList>;
 
 /** A list of column names */
 export type ChartDataResponseResultColnamesList = Array<string>;
-export const ChartDataResponseResultColnamesList =
+const ChartDataResponseResultColnamesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ChartDataResponseResultColnamesList>;
 
 /** A list of generic data types of each column */
 export type ChartDataResponseResultColtypesList = Array<number>;
-export const ChartDataResponseResultColtypesList =
+const ChartDataResponseResultColtypesList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartDataResponseResultColtypesList>;
 
 /** A list with results */
 export type ChartDataResponseResultDataList = Array<unknown>;
-export const ChartDataResponseResultDataList =
+const ChartDataResponseResultDataList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataResponseResultDataList>;
 
 /** A list with rejected filters */
 export type ChartDataResponseResultRejectedFiltersList = Array<unknown>;
-export const ChartDataResponseResultRejectedFiltersList =
+const ChartDataResponseResultRejectedFiltersList =
   TagObjectObjectsToTagList as any as S.Schema<ChartDataResponseResultRejectedFiltersList>;
 
 /** Status of the query */
@@ -969,7 +969,7 @@ export type ChartDataResponseResultStatus =
   | "scheduled"
   | "success"
   | "timed_out";
-export const ChartDataResponseResultStatus = S.String;
+const ChartDataResponseResultStatus = S.String;
 
 export interface ChartDataQueryTiming {
   cache_resolution_ms: number | null;
@@ -978,7 +978,7 @@ export interface ChartDataQueryTiming {
   query_planning_ms: number | null;
   total_ms: number;
 }
-export const ChartDataQueryTiming = /*@__PURE__*/ S.suspend(() =>
+const ChartDataQueryTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_resolution_ms: S.NullOr(S.Number),
     data_acquisition_ms: S.NullOr(S.Number),
@@ -989,13 +989,13 @@ export const ChartDataQueryTiming = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChartDataQueryTiming" }) as any as S.Schema<ChartDataQueryTiming>;
 
 export type ChartDataTimingVersion = 1;
-export const ChartDataTimingVersion = S.Number;
+const ChartDataTimingVersion = S.Number;
 
 export interface ChartDataTiming {
   query: ChartDataQueryTiming;
   version: ChartDataTimingVersion;
 }
-export const ChartDataTiming = /*@__PURE__*/ S.suspend(() =>
+const ChartDataTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: ChartDataQueryTiming,
     version: ChartDataTimingVersion,
@@ -1046,7 +1046,7 @@ export interface ChartDataResponseResult {
   /** Warning message when results were truncated */
   warning?: string | null;
 }
-export const ChartDataResponseResult = /*@__PURE__*/ S.suspend(() =>
+const ChartDataResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_data: S.optional(S.NullOr(ChartDataResponseResultAnnotationDataList)),
     applied_filters: S.optional(ChartDataResponseResultAppliedFiltersList),
@@ -1074,7 +1074,7 @@ export const ChartDataResponseResult = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of results for each corresponding query in the request. */
 export type ChartDataResponseSchemaResultList = Array<ChartDataResponseResult>;
-export const ChartDataResponseSchemaResultList = /*@__PURE__*/ S.Array(
+const ChartDataResponseSchemaResultList = /*@__PURE__*/ S.Array(
   ChartDataResponseResult,
 ) as any as S.Schema<ChartDataResponseSchemaResultList>;
 
@@ -1084,7 +1084,7 @@ export interface ChartDataResponseSchema {
   /** A list of results for each corresponding query in the request. */
   result?: ChartDataResponseSchemaResultList;
 }
-export const ChartDataResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const ChartDataResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_filters: S.optional(DashboardFiltersResponseSchema),
     result: S.optional(ChartDataResponseSchemaResultList),
@@ -1094,7 +1094,7 @@ export const ChartDataResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChartFavoriteRequest {
   pk: number;
 }
-export const CreateChartFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChartFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/chart/{pk}/favorites/", code: 200 })),
@@ -1105,7 +1105,7 @@ export const CreateChartFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChartFavoriteResponse {
   result?: unknown;
 }
-export const CreateChartFavoriteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChartFavoriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown),
   }),
@@ -1117,7 +1117,7 @@ export interface CreateCssTemplateRequest {
   css?: string | null;
   template_name?: string | null;
 }
-export const CreateCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     css: S.optional(S.NullOr(S.String)),
     template_name: S.optional(S.NullOr(S.String)),
@@ -1128,7 +1128,7 @@ export interface CssTemplateRestApiPost {
   css?: string | null;
   template_name?: string | null;
 }
-export const CssTemplateRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const CssTemplateRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     css: S.optional(S.NullOr(S.String)),
     template_name: S.optional(S.NullOr(S.String)),
@@ -1139,7 +1139,7 @@ export interface CreateCssTemplateResponse {
   id?: string;
   result?: CssTemplateRestApiPost;
 }
-export const CreateCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(CssTemplateRestApiPost),
@@ -1149,11 +1149,11 @@ export const CreateCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCssTemplateResponse>;
 
 export type CreateDashboardRequestEditorsList = Array<number>;
-export const CreateDashboardRequestEditorsList =
+const CreateDashboardRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateDashboardRequestEditorsList>;
 
 export type CreateDashboardRequestViewersList = Array<number>;
-export const CreateDashboardRequestViewersList =
+const CreateDashboardRequestViewersList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateDashboardRequestViewersList>;
 
 export interface CreateDashboardRequest {
@@ -1183,7 +1183,7 @@ export interface CreateDashboardRequest {
   uuid?: string | null;
   viewers?: CreateDashboardRequestViewersList;
 }
-export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification_details: S.optional(S.NullOr(S.String)),
     certified_by: S.optional(S.NullOr(S.String)),
@@ -1204,11 +1204,11 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDashboardRequest" }) as any as S.Schema<CreateDashboardRequest>;
 
 export type DashboardRestApiPostEditorsList = Array<number>;
-export const DashboardRestApiPostEditorsList =
+const DashboardRestApiPostEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<DashboardRestApiPostEditorsList>;
 
 export type DashboardRestApiPostViewersList = Array<number>;
-export const DashboardRestApiPostViewersList =
+const DashboardRestApiPostViewersList =
   CreateChartRequestDashboardsList as any as S.Schema<DashboardRestApiPostViewersList>;
 
 export interface DashboardRestApiPost {
@@ -1238,7 +1238,7 @@ export interface DashboardRestApiPost {
   uuid?: string | null;
   viewers?: DashboardRestApiPostViewersList;
 }
-export const DashboardRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const DashboardRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification_details: S.optional(S.NullOr(S.String)),
     certified_by: S.optional(S.NullOr(S.String)),
@@ -1262,7 +1262,7 @@ export interface CreateDashboardResponse {
   id?: number;
   result?: DashboardRestApiPost;
 }
-export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(DashboardRestApiPost),
@@ -1271,21 +1271,21 @@ export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list representing active tabs. */
 export type CreateDashboardCacheDashboardScreenshotRequestActiveTabsList = Array<string>;
-export const CreateDashboardCacheDashboardScreenshotRequestActiveTabsList =
+const CreateDashboardCacheDashboardScreenshotRequestActiveTabsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequestActiveTabsList>;
 
 /** An object representing the data mask. */
 export type CreateDashboardCacheDashboardScreenshotRequestDataMaskMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDashboardCacheDashboardScreenshotRequestDataMaskMap = /*@__PURE__*/ S.Record(
+const CreateDashboardCacheDashboardScreenshotRequestDataMaskMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequestDataMaskMap>;
 
 /** A list of tuples, each containing two strings. */
 export type CreateDashboardCacheDashboardScreenshotRequestUrlParamsList = Array<unknown>;
-export const CreateDashboardCacheDashboardScreenshotRequestUrlParamsList =
+const CreateDashboardCacheDashboardScreenshotRequestUrlParamsList =
   TagObjectObjectsToTagList as any as S.Schema<CreateDashboardCacheDashboardScreenshotRequestUrlParamsList>;
 
 export interface CreateDashboardCacheDashboardScreenshotRequest {
@@ -1299,7 +1299,7 @@ export interface CreateDashboardCacheDashboardScreenshotRequest {
   /** A list of tuples, each containing two strings. */
   urlParams?: CreateDashboardCacheDashboardScreenshotRequestUrlParamsList;
 }
-export const CreateDashboardCacheDashboardScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardCacheDashboardScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     activeTabs: S.optional(CreateDashboardCacheDashboardScreenshotRequestActiveTabsList),
@@ -1331,7 +1331,7 @@ export interface DashboardCacheScreenshotResponseSchema {
   /** The timestamp of the last change in status */
   task_updated_at?: string;
 }
-export const DashboardCacheScreenshotResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const DashboardCacheScreenshotResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_key: S.optional(S.String),
     dashboard_url: S.optional(S.String),
@@ -1345,7 +1345,7 @@ export const DashboardCacheScreenshotResponseSchema = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DashboardCacheScreenshotResponseSchema>;
 
 export type CreateDashboardEmbeddedRequestAllowedDomainsList = Array<string>;
-export const CreateDashboardEmbeddedRequestAllowedDomainsList =
+const CreateDashboardEmbeddedRequestAllowedDomainsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDashboardEmbeddedRequestAllowedDomainsList>;
 
 export interface CreateDashboardEmbeddedRequest {
@@ -1353,7 +1353,7 @@ export interface CreateDashboardEmbeddedRequest {
   id_or_slug: string;
   allowed_domains: CreateDashboardEmbeddedRequestAllowedDomainsList;
 }
-export const CreateDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
     allowed_domains: CreateDashboardEmbeddedRequestAllowedDomainsList,
@@ -1363,7 +1363,7 @@ export const CreateDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardEmbeddedRequest>;
 
 export type EmbeddedDashboardResponseSchemaAllowedDomainsList = Array<string>;
-export const EmbeddedDashboardResponseSchemaAllowedDomainsList =
+const EmbeddedDashboardResponseSchemaAllowedDomainsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<EmbeddedDashboardResponseSchemaAllowedDomainsList>;
 
 export interface User1 {
@@ -1372,7 +1372,7 @@ export interface User1 {
   last_name?: string;
   username?: string;
 }
-export const User1 = /*@__PURE__*/ S.suspend(() =>
+const User1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1388,7 +1388,7 @@ export interface EmbeddedDashboardResponseSchema {
   dashboard_id?: string;
   uuid?: string;
 }
-export const EmbeddedDashboardResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const EmbeddedDashboardResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_domains: S.optional(EmbeddedDashboardResponseSchemaAllowedDomainsList),
     changed_by: S.optional(User1),
@@ -1403,7 +1403,7 @@ export const EmbeddedDashboardResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDashboardEmbeddedResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-export const CreateDashboardEmbeddedResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardEmbeddedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(EmbeddedDashboardResponseSchema),
   }),
@@ -1414,7 +1414,7 @@ export const CreateDashboardEmbeddedResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDashboardFavoriteRequest {
   pk: number;
 }
-export const CreateDashboardFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/{pk}/favorites/", code: 200 })),
@@ -1425,7 +1425,7 @@ export const CreateDashboardFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDashboardFavoriteResponse {
   result?: unknown;
 }
-export const CreateDashboardFavoriteResponse =
+const CreateDashboardFavoriteResponse =
   CreateChartFavoriteResponse as any as S.Schema<CreateDashboardFavoriteResponse>;
 
 export interface CreateDashboardFilterStateRequest {
@@ -1434,7 +1434,7 @@ export interface CreateDashboardFilterStateRequest {
   /** Any type of JSON supported text. */
   value: string;
 }
-export const CreateDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     tab_id: S.optional(S.Number.pipe(T.Query())),
@@ -1448,7 +1448,7 @@ export interface CreateDashboardFilterStateResponse {
   /** The key to retrieve the value. */
   key?: string;
 }
-export const CreateDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
   }),
@@ -1458,13 +1458,13 @@ export const CreateDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Current active dashboard tabs */
 export type CreateDashboardPermalinkRequestActiveTabsList = Array<string | null>;
-export const CreateDashboardPermalinkRequestActiveTabsList = /*@__PURE__*/ S.Array(
+const CreateDashboardPermalinkRequestActiveTabsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<CreateDashboardPermalinkRequestActiveTabsList>;
 
 /** URL Parameters */
 export type CreateDashboardPermalinkRequestUrlParamsList = Array<unknown | null>;
-export const CreateDashboardPermalinkRequestUrlParamsList = /*@__PURE__*/ S.Array(
+const CreateDashboardPermalinkRequestUrlParamsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(S.Unknown),
 ) as any as S.Schema<CreateDashboardPermalinkRequestUrlParamsList>;
 
@@ -1481,7 +1481,7 @@ export interface CreateDashboardPermalinkRequest {
   /** URL Parameters */
   urlParams?: CreateDashboardPermalinkRequestUrlParamsList | null;
 }
-export const CreateDashboardPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.String.pipe(T.Label()),
     activeTabs: S.optional(S.NullOr(CreateDashboardPermalinkRequestActiveTabsList)),
@@ -1500,7 +1500,7 @@ export interface CreateDashboardPermalinkResponse {
   /** permanent link. */
   url?: string;
 }
-export const CreateDashboardPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     url: S.optional(S.String),
@@ -1511,11 +1511,11 @@ export const CreateDashboardPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type CreateDatabaseRequestConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-export const CreateDatabaseRequestConfigurationMethod = S.String;
+const CreateDatabaseRequestConfigurationMethod = S.String;
 
 /** DB-specific parameters for configuration */
 export type CreateDatabaseRequestParametersMap = { [key: string]: unknown | undefined };
-export const CreateDatabaseRequestParametersMap =
+const CreateDatabaseRequestParametersMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<CreateDatabaseRequestParametersMap>;
 
 export interface DatabaseSSHTunnel {
@@ -1530,7 +1530,7 @@ export interface DatabaseSSHTunnel {
   server_port?: number;
   username?: string;
 }
-export const DatabaseSSHTunnel = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSSHTunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1585,7 +1585,7 @@ export interface CreateDatabaseRequest {
   ssh_tunnel?: DatabaseSSHTunnel | null;
   uuid?: string;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_ctas: S.optional(S.Boolean),
     allow_cvas: S.optional(S.Boolean),
@@ -1614,11 +1614,11 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type DatabaseRestApiPostOutputConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-export const DatabaseRestApiPostOutputConfigurationMethod = S.String;
+const DatabaseRestApiPostOutputConfigurationMethod = S.String;
 
 /** DB-specific parameters for configuration */
 export type DatabaseRestApiPostOutputParametersMap = { [key: string]: unknown | undefined };
-export const DatabaseRestApiPostOutputParametersMap =
+const DatabaseRestApiPostOutputParametersMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseRestApiPostOutputParametersMap>;
 
 export interface DatabaseSSHTunnelOutput {
@@ -1630,7 +1630,7 @@ export interface DatabaseSSHTunnelOutput {
   server_port?: number;
   username?: string;
 }
-export const DatabaseSSHTunnelOutput = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSSHTunnelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     server_address: S.optional(S.String),
@@ -1682,7 +1682,7 @@ export interface DatabaseRestApiPostOutput {
   ssh_tunnel?: DatabaseSSHTunnelOutput | null;
   uuid?: string;
 }
-export const DatabaseRestApiPostOutput = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRestApiPostOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_ctas: S.optional(S.Boolean),
     allow_cvas: S.optional(S.Boolean),
@@ -1715,7 +1715,7 @@ export interface CreateDatabaseResponse {
   id?: number;
   result?: DatabaseRestApiPostOutput;
 }
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(DatabaseRestApiPostOutput),
@@ -1723,7 +1723,7 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseResponse" }) as any as S.Schema<CreateDatabaseResponse>;
 
 export type CreateDatasetRequestEditorsList = Array<number>;
-export const CreateDatasetRequestEditorsList =
+const CreateDatasetRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateDatasetRequestEditorsList>;
 
 export interface CreateDatasetRequest {
@@ -1741,7 +1741,7 @@ export interface CreateDatasetRequest {
   template_params?: string | null;
   uuid?: string | null;
 }
-export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     always_filter_main_dttm: S.optional(S.Boolean),
     catalog: S.optional(S.NullOr(S.String)),
@@ -1760,7 +1760,7 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatasetRequest" }) as any as S.Schema<CreateDatasetRequest>;
 
 export type DatasetRestApiPostEditorsList = Array<number>;
-export const DatasetRestApiPostEditorsList =
+const DatasetRestApiPostEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<DatasetRestApiPostEditorsList>;
 
 export interface DatasetRestApiPost {
@@ -1778,7 +1778,7 @@ export interface DatasetRestApiPost {
   template_params?: string | null;
   uuid?: string | null;
 }
-export const DatasetRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     always_filter_main_dttm: S.optional(S.Boolean),
     catalog: S.optional(S.NullOr(S.String)),
@@ -1800,7 +1800,7 @@ export interface CreateDatasetResponse {
   id?: number;
   result?: DatasetRestApiPost;
 }
-export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(DatasetRestApiPost),
@@ -1808,11 +1808,11 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatasetResponse" }) as any as S.Schema<CreateDatasetResponse>;
 
 export type CreateDatasourceCompatibleRequestSelectedDimensionsList = Array<string>;
-export const CreateDatasourceCompatibleRequestSelectedDimensionsList =
+const CreateDatasourceCompatibleRequestSelectedDimensionsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDatasourceCompatibleRequestSelectedDimensionsList>;
 
 export type CreateDatasourceCompatibleRequestSelectedMetricsList = Array<string>;
-export const CreateDatasourceCompatibleRequestSelectedMetricsList =
+const CreateDatasourceCompatibleRequestSelectedMetricsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDatasourceCompatibleRequestSelectedMetricsList>;
 
 export interface CreateDatasourceCompatibleRequest {
@@ -1821,7 +1821,7 @@ export interface CreateDatasourceCompatibleRequest {
   selected_dimensions?: CreateDatasourceCompatibleRequestSelectedDimensionsList;
   selected_metrics?: CreateDatasourceCompatibleRequestSelectedMetricsList;
 }
-export const CreateDatasourceCompatibleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasourceCompatibleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_type: S.String.pipe(T.Label()),
     datasource_id: S.Number.pipe(T.Label()),
@@ -1839,20 +1839,19 @@ export const CreateDatasourceCompatibleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasourceCompatibleRequest>;
 
 export type CreateDatasourceCompatibleResponseResultCompatibleDimensionsList = Array<string>;
-export const CreateDatasourceCompatibleResponseResultCompatibleDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDatasourceCompatibleResponseResultCompatibleDimensionsList>;
+const CreateDatasourceCompatibleResponseResultCompatibleDimensionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateDatasourceCompatibleResponseResultCompatibleDimensionsList>;
 
 export type CreateDatasourceCompatibleResponseResultCompatibleMetricsList = Array<string>;
-export const CreateDatasourceCompatibleResponseResultCompatibleMetricsList =
+const CreateDatasourceCompatibleResponseResultCompatibleMetricsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<CreateDatasourceCompatibleResponseResultCompatibleMetricsList>;
 
 export interface CreateDatasourceCompatibleResponseResult {
   compatible_dimensions?: CreateDatasourceCompatibleResponseResultCompatibleDimensionsList;
   compatible_metrics?: CreateDatasourceCompatibleResponseResultCompatibleMetricsList;
 }
-export const CreateDatasourceCompatibleResponseResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasourceCompatibleResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatible_dimensions: S.optional(
       CreateDatasourceCompatibleResponseResultCompatibleDimensionsList,
@@ -1866,7 +1865,7 @@ export const CreateDatasourceCompatibleResponseResult = /*@__PURE__*/ S.suspend(
 export interface CreateDatasourceCompatibleResponse {
   result?: CreateDatasourceCompatibleResponseResult;
 }
-export const CreateDatasourceCompatibleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasourceCompatibleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CreateDatasourceCompatibleResponseResult),
   }),
@@ -1876,17 +1875,17 @@ export const CreateDatasourceCompatibleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Dimension/column names to group by. */
 export type CreateDatasourceQueryRequestDimensionsList = Array<unknown>;
-export const CreateDatasourceQueryRequestDimensionsList =
+const CreateDatasourceQueryRequestDimensionsList =
   TagObjectObjectsToTagList as any as S.Schema<CreateDatasourceQueryRequestDimensionsList>;
 
 /** Filters to apply, AND-ed together. */
 export type CreateDatasourceQueryRequestFiltersList = Array<ChartDataFilter>;
-export const CreateDatasourceQueryRequestFiltersList =
+const CreateDatasourceQueryRequestFiltersList =
   ChartDataQueryObjectFiltersList as any as S.Schema<CreateDatasourceQueryRequestFiltersList>;
 
 /** Saved metric names, or ad-hoc metric objects (datasets only). See ChartDataAdhocMetricSchema. */
 export type CreateDatasourceQueryRequestMetricsList = Array<unknown>;
-export const CreateDatasourceQueryRequestMetricsList =
+const CreateDatasourceQueryRequestMetricsList =
   TagObjectObjectsToTagList as any as S.Schema<CreateDatasourceQueryRequestMetricsList>;
 
 export interface DatasourceQueryOrder {
@@ -1895,7 +1894,7 @@ export interface DatasourceQueryOrder {
   /** Sort this column descending. */
   descending?: boolean;
 }
-export const DatasourceQueryOrder = /*@__PURE__*/ S.suspend(() =>
+const DatasourceQueryOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.String,
     descending: S.optional(S.Boolean),
@@ -1904,13 +1903,13 @@ export const DatasourceQueryOrder = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordering terms, applied in sequence. Each carries its own direction. */
 export type CreateDatasourceQueryRequestOrderList = Array<DatasourceQueryOrder>;
-export const CreateDatasourceQueryRequestOrderList = /*@__PURE__*/ S.Array(
+const CreateDatasourceQueryRequestOrderList = /*@__PURE__*/ S.Array(
   DatasourceQueryOrder,
 ) as any as S.Schema<CreateDatasourceQueryRequestOrderList>;
 
 /** 'json' (default) or 'arrow' for an Arrow IPC stream. */
 export type CreateDatasourceQueryRequestResultFormat = "csv" | "json" | "xlsx" | "arrow";
-export const CreateDatasourceQueryRequestResultFormat = S.String;
+const CreateDatasourceQueryRequestResultFormat = S.String;
 
 export interface CreateDatasourceQueryRequest {
   datasource_type: string;
@@ -1942,7 +1941,7 @@ export interface CreateDatasourceQueryRequest {
   time_range?: string | null;
   use_cache?: boolean;
 }
-export const CreateDatasourceQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasourceQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_type: S.String.pipe(T.Label()),
     datasource_id: S.Number.pipe(T.Label()),
@@ -1972,13 +1971,13 @@ export const CreateDatasourceQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasourceQueryRequest>;
 
 export type CreateDatasourceQueryResponseResultList = Array<unknown>;
-export const CreateDatasourceQueryResponseResultList =
+const CreateDatasourceQueryResponseResultList =
   TagObjectObjectsToTagList as any as S.Schema<CreateDatasourceQueryResponseResultList>;
 
 export interface CreateDatasourceQueryResponse {
   result?: CreateDatasourceQueryResponseResultList;
 }
-export const CreateDatasourceQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasourceQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CreateDatasourceQueryResponseResultList),
   }),
@@ -1994,7 +1993,7 @@ export type CreateExploreFormDataRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const CreateExploreFormDataRequestDatasourceType = S.String;
+const CreateExploreFormDataRequestDatasourceType = S.String;
 
 export interface CreateExploreFormDataRequest {
   tab_id?: number;
@@ -2007,7 +2006,7 @@ export interface CreateExploreFormDataRequest {
   /** Any type of JSON supported text. */
   form_data: string;
 }
-export const CreateExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tab_id: S.optional(S.Number.pipe(T.Query())),
     chart_id: S.optional(S.Number),
@@ -2023,12 +2022,12 @@ export interface CreateExploreFormDataResponse {
   /** The key to retrieve the form_data. */
   key?: string;
 }
-export const CreateExploreFormDataResponse =
+const CreateExploreFormDataResponse =
   CreateDashboardFilterStateResponse as any as S.Schema<CreateExploreFormDataResponse>;
 
 /** URL Parameters */
 export type CreateExplorePermalinkRequestUrlParamsList = Array<unknown | null>;
-export const CreateExplorePermalinkRequestUrlParamsList =
+const CreateExplorePermalinkRequestUrlParamsList =
   CreateDashboardPermalinkRequestUrlParamsList as any as S.Schema<CreateExplorePermalinkRequestUrlParamsList>;
 
 export interface CreateExplorePermalinkRequest {
@@ -2039,7 +2038,7 @@ export interface CreateExplorePermalinkRequest {
   /** URL Parameters */
   urlParams?: CreateExplorePermalinkRequestUrlParamsList | null;
 }
-export const CreateExplorePermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExplorePermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chartState: S.optional(S.NullOr(S.Unknown)),
     formData: S.Unknown,
@@ -2055,13 +2054,13 @@ export interface CreateExplorePermalinkResponse {
   /** permanent link. */
   url?: string;
 }
-export const CreateExplorePermalinkResponse =
+const CreateExplorePermalinkResponse =
   CreateDashboardPermalinkResponse as any as S.Schema<CreateExplorePermalinkResponse>;
 
 export interface CreateLogRequest {
   id?: number;
 }
-export const CreateLogRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/log/", code: 200 })),
@@ -2070,7 +2069,7 @@ export const CreateLogRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LogRestApiPost {
   id?: number;
 }
-export const LogRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const LogRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }),
@@ -2080,7 +2079,7 @@ export interface CreateLogResponse {
   id?: string;
   result?: LogRestApiPost;
 }
-export const CreateLogResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(LogRestApiPost),
@@ -2089,10 +2088,10 @@ export const CreateLogResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type CreateReportRequestCreationMethod = "charts" | "dashboards" | "alerts_reports";
-export const CreateReportRequestCreationMethod = S.String;
+const CreateReportRequestCreationMethod = S.String;
 
 export type CreateReportRequestEditorsList = Array<number>;
-export const CreateReportRequestEditorsList =
+const CreateReportRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateReportRequestEditorsList>;
 
 export interface ReportRecipientConfigJSON {
@@ -2100,7 +2099,7 @@ export interface ReportRecipientConfigJSON {
   ccTarget?: string;
   target?: string;
 }
-export const ReportRecipientConfigJSON = /*@__PURE__*/ S.suspend(() =>
+const ReportRecipientConfigJSON = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bccTarget: S.optional(S.String),
     ccTarget: S.optional(S.String),
@@ -2112,14 +2111,14 @@ export const ReportRecipientConfigJSON = /*@__PURE__*/ S.suspend(() =>
 
 /** The recipient type, check spec for valid options */
 export type ReportRecipientType = "Email" | "Slack" | "SlackV2" | "Webhook";
-export const ReportRecipientType = S.String;
+const ReportRecipientType = S.String;
 
 export interface ReportRecipient {
   recipient_config_json?: ReportRecipientConfigJSON;
   /** The recipient type, check spec for valid options */
   type: ReportRecipientType | (string & {});
 }
-export const ReportRecipient = /*@__PURE__*/ S.suspend(() =>
+const ReportRecipient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipient_config_json: S.optional(ReportRecipientConfigJSON),
     type: ReportRecipientType,
@@ -2127,12 +2126,12 @@ export const ReportRecipient = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportRecipient" }) as any as S.Schema<ReportRecipient>;
 
 export type CreateReportRequestRecipientsList = Array<ReportRecipient>;
-export const CreateReportRequestRecipientsList = /*@__PURE__*/ S.Array(
+const CreateReportRequestRecipientsList = /*@__PURE__*/ S.Array(
   ReportRecipient,
 ) as any as S.Schema<CreateReportRequestRecipientsList>;
 
 export type CreateReportRequestReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-export const CreateReportRequestReportFormat = S.String;
+const CreateReportRequestReportFormat = S.String;
 
 /** A timezone string that represents the location of the timezone. */
 export type CreateReportRequestTimezone =
@@ -2733,22 +2732,22 @@ export type CreateReportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const CreateReportRequestTimezone = S.String;
+const CreateReportRequestTimezone = S.String;
 
 /** The report schedule type */
 export type CreateReportRequestType = "Alert" | "Report";
-export const CreateReportRequestType = S.String;
+const CreateReportRequestType = S.String;
 
 /** The operation to compare with a threshold to apply to the SQL output */
 export type ValidatorConfigJSONOp = "<" | "<=" | ">" | ">=" | "==" | "!=";
-export const ValidatorConfigJSONOp = S.String;
+const ValidatorConfigJSONOp = S.String;
 
 export interface ValidatorConfigJSON {
   /** The operation to compare with a threshold to apply to the SQL output */
   op?: ValidatorConfigJSONOp | (string & {});
   threshold?: number;
 }
-export const ValidatorConfigJSON = /*@__PURE__*/ S.suspend(() =>
+const ValidatorConfigJSON = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.optional(ValidatorConfigJSONOp),
     threshold: S.optional(S.Number),
@@ -2757,7 +2756,7 @@ export const ValidatorConfigJSON = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type CreateReportRequestValidatorType = "not null" | "operator";
-export const CreateReportRequestValidatorType = S.String;
+const CreateReportRequestValidatorType = S.String;
 
 export interface CreateReportRequest {
   active?: boolean;
@@ -2811,7 +2810,7 @@ export interface CreateReportRequest {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number;
 }
-export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     chart: S.optional(S.NullOr(S.Number)),
@@ -2848,18 +2847,18 @@ export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type ReportScheduleRestApiPostCreationMethod = "charts" | "dashboards" | "alerts_reports";
-export const ReportScheduleRestApiPostCreationMethod = S.String;
+const ReportScheduleRestApiPostCreationMethod = S.String;
 
 export type ReportScheduleRestApiPostEditorsList = Array<number>;
-export const ReportScheduleRestApiPostEditorsList =
+const ReportScheduleRestApiPostEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<ReportScheduleRestApiPostEditorsList>;
 
 export type ReportScheduleRestApiPostRecipientsList = Array<ReportRecipient>;
-export const ReportScheduleRestApiPostRecipientsList =
+const ReportScheduleRestApiPostRecipientsList =
   CreateReportRequestRecipientsList as any as S.Schema<ReportScheduleRestApiPostRecipientsList>;
 
 export type ReportScheduleRestApiPostReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-export const ReportScheduleRestApiPostReportFormat = S.String;
+const ReportScheduleRestApiPostReportFormat = S.String;
 
 /** A timezone string that represents the location of the timezone. */
 export type ReportScheduleRestApiPostTimezone =
@@ -3460,15 +3459,15 @@ export type ReportScheduleRestApiPostTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const ReportScheduleRestApiPostTimezone = S.String;
+const ReportScheduleRestApiPostTimezone = S.String;
 
 /** The report schedule type */
 export type ReportScheduleRestApiPostType = "Alert" | "Report";
-export const ReportScheduleRestApiPostType = S.String;
+const ReportScheduleRestApiPostType = S.String;
 
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type ReportScheduleRestApiPostValidatorType = "not null" | "operator";
-export const ReportScheduleRestApiPostValidatorType = S.String;
+const ReportScheduleRestApiPostValidatorType = S.String;
 
 export interface ReportScheduleRestApiPost {
   active?: boolean;
@@ -3522,7 +3521,7 @@ export interface ReportScheduleRestApiPost {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number;
 }
-export const ReportScheduleRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     chart: S.optional(S.NullOr(S.Number)),
@@ -3563,7 +3562,7 @@ export interface CreateReportResponse {
   id?: number;
   result?: ReportScheduleRestApiPost;
 }
-export const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(ReportScheduleRestApiPost),
@@ -3572,16 +3571,16 @@ export const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** filter_type_description */
 export type CreateRowlevelsecurityRequestFilterType = "Regular" | "Base";
-export const CreateRowlevelsecurityRequestFilterType = S.String;
+const CreateRowlevelsecurityRequestFilterType = S.String;
 
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type CreateRowlevelsecurityRequestSubjectsList = Array<number>;
-export const CreateRowlevelsecurityRequestSubjectsList =
+const CreateRowlevelsecurityRequestSubjectsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateRowlevelsecurityRequestSubjectsList>;
 
 /** tables_description */
 export type CreateRowlevelsecurityRequestTablesList = Array<number>;
-export const CreateRowlevelsecurityRequestTablesList =
+const CreateRowlevelsecurityRequestTablesList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateRowlevelsecurityRequestTablesList>;
 
 export interface CreateRowlevelsecurityRequest {
@@ -3600,7 +3599,7 @@ export interface CreateRowlevelsecurityRequest {
   /** tables_description */
   tables: CreateRowlevelsecurityRequestTablesList;
 }
-export const CreateRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clause: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -3616,16 +3615,16 @@ export const CreateRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** filter_type_description */
 export type RLSRestApiPostFilterType = "Regular" | "Base";
-export const RLSRestApiPostFilterType = S.String;
+const RLSRestApiPostFilterType = S.String;
 
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type RLSRestApiPostSubjectsList = Array<number>;
-export const RLSRestApiPostSubjectsList =
+const RLSRestApiPostSubjectsList =
   CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPostSubjectsList>;
 
 /** tables_description */
 export type RLSRestApiPostTablesList = Array<number>;
-export const RLSRestApiPostTablesList =
+const RLSRestApiPostTablesList =
   CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPostTablesList>;
 
 export interface RLSRestApiPost {
@@ -3644,7 +3643,7 @@ export interface RLSRestApiPost {
   /** tables_description */
   tables: RLSRestApiPostTablesList;
 }
-export const RLSRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const RLSRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clause: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -3660,7 +3659,7 @@ export interface CreateRowlevelsecurityResponse {
   id?: number;
   result?: RLSRestApiPost;
 }
-export const CreateRowlevelsecurityResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRowlevelsecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(RLSRestApiPost),
@@ -3679,7 +3678,7 @@ export interface CreateSavedQueryRequest {
   sql?: string | null;
   template_parameters?: string | null;
 }
-export const CreateSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     db_id: S.optional(S.NullOr(S.Unknown)),
@@ -3702,7 +3701,7 @@ export interface SavedQueryRestApiPost {
   sql?: string | null;
   template_parameters?: string | null;
 }
-export const SavedQueryRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     db_id: S.optional(S.NullOr(S.Unknown)),
@@ -3719,7 +3718,7 @@ export interface CreateSavedQueryResponse {
   id?: string;
   result?: SavedQueryRestApiPost;
 }
-export const CreateSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(SavedQueryRestApiPost),
@@ -3727,30 +3726,30 @@ export const CreateSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSavedQueryResponse" }) as any as S.Schema<CreateSavedQueryResponse>;
 
 export interface CreateSecurityGroupRequest {}
-export const CreateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/v1/security/groups/", code: 200 })),
 ).annotate({
   identifier: "CreateSecurityGroupRequest",
 }) as any as S.Schema<CreateSecurityGroupRequest>;
 
 export interface CreateSecurityGroupResponse {}
-export const CreateSecurityGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateSecurityGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateSecurityGroupResponse",
 }) as any as S.Schema<CreateSecurityGroupResponse>;
 
 /** Optional allowlist of dataset IDs the guest may access. When omitted all datasets linked to the embedded dashboard are accessible, preserving the default behaviour. */
 export type CreateSecurityGuestTokenRequestDatasetsList = Array<number>;
-export const CreateSecurityGuestTokenRequestDatasetsList =
+const CreateSecurityGuestTokenRequestDatasetsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateSecurityGuestTokenRequestDatasetsList>;
 
 export type ResourceType = "dashboard";
-export const ResourceType = S.String;
+const ResourceType = S.String;
 
 export interface Resource {
   id: string;
   type: ResourceType | (string & {});
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: ResourceType,
@@ -3758,7 +3757,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 export type CreateSecurityGuestTokenRequestResourcesList = Array<Resource>;
-export const CreateSecurityGuestTokenRequestResourcesList = /*@__PURE__*/ S.Array(
+const CreateSecurityGuestTokenRequestResourcesList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<CreateSecurityGuestTokenRequestResourcesList>;
 
@@ -3766,7 +3765,7 @@ export interface RlsRule {
   clause: string;
   dataset?: number;
 }
-export const RlsRule = /*@__PURE__*/ S.suspend(() =>
+const RlsRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clause: S.String,
     dataset: S.optional(S.Number),
@@ -3774,13 +3773,12 @@ export const RlsRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RlsRule" }) as any as S.Schema<RlsRule>;
 
 export type CreateSecurityGuestTokenRequestRlsList = Array<RlsRule>;
-export const CreateSecurityGuestTokenRequestRlsList = /*@__PURE__*/ S.Array(
+const CreateSecurityGuestTokenRequestRlsList = /*@__PURE__*/ S.Array(
   RlsRule,
 ) as any as S.Schema<CreateSecurityGuestTokenRequestRlsList>;
 
 export type User2AttributesMap = { [key: string]: unknown | null | undefined };
-export const User2AttributesMap =
-  AnnotationLayerOverridesMap as any as S.Schema<User2AttributesMap>;
+const User2AttributesMap = AnnotationLayerOverridesMap as any as S.Schema<User2AttributesMap>;
 
 export interface User2 {
   attributes?: User2AttributesMap | null;
@@ -3788,7 +3786,7 @@ export interface User2 {
   last_name?: string;
   username?: string;
 }
-export const User2 = /*@__PURE__*/ S.suspend(() =>
+const User2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(S.NullOr(User2AttributesMap)),
     first_name: S.optional(S.String),
@@ -3804,7 +3802,7 @@ export interface CreateSecurityGuestTokenRequest {
   rls: CreateSecurityGuestTokenRequestRlsList;
   user?: User2;
 }
-export const CreateSecurityGuestTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityGuestTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(S.NullOr(CreateSecurityGuestTokenRequestDatasetsList)),
     resources: CreateSecurityGuestTokenRequestResourcesList,
@@ -3818,7 +3816,7 @@ export const CreateSecurityGuestTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSecurityGuestTokenResponse {
   token?: string;
 }
-export const CreateSecurityGuestTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityGuestTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -3830,7 +3828,7 @@ export interface CreateSecurityPermissionsResourceRequest {
   permission_id?: unknown | null;
   view_menu_id?: unknown | null;
 }
-export const CreateSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission_id: S.optional(S.NullOr(S.Unknown)),
     view_menu_id: S.optional(S.NullOr(S.Unknown)),
@@ -3843,7 +3841,7 @@ export interface SupersetPermissionViewMenuApiPost {
   permission_id?: unknown | null;
   view_menu_id?: unknown | null;
 }
-export const SupersetPermissionViewMenuApiPost = /*@__PURE__*/ S.suspend(() =>
+const SupersetPermissionViewMenuApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission_id: S.optional(S.NullOr(S.Unknown)),
     view_menu_id: S.optional(S.NullOr(S.Unknown)),
@@ -3856,7 +3854,7 @@ export interface CreateSecurityPermissionsResourceResponse {
   id?: string;
   result?: SupersetPermissionViewMenuApiPost;
 }
-export const CreateSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(SupersetPermissionViewMenuApiPost),
@@ -3868,7 +3866,7 @@ export const CreateSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend
 export interface CreateSecurityResourceRequest {
   name: string;
 }
-export const CreateSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/security/resources/", code: 200 })),
@@ -3879,7 +3877,7 @@ export const CreateSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ViewMenuApiPost {
   name: string;
 }
-export const ViewMenuApiPost = /*@__PURE__*/ S.suspend(() =>
+const ViewMenuApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -3889,7 +3887,7 @@ export interface CreateSecurityResourceResponse {
   id?: string;
   result?: ViewMenuApiPost;
 }
-export const CreateSecurityResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(ViewMenuApiPost),
@@ -3901,7 +3899,7 @@ export const CreateSecurityResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSecurityRoleRequest {
   name: string;
 }
-export const CreateSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/security/roles/", code: 200 })),
@@ -3910,18 +3908,16 @@ export const CreateSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSecurityRoleRequest>;
 
 export type SupersetRoleApiPost = ViewMenuApiPost;
-export const SupersetRoleApiPost = ViewMenuApiPost;
-
 export interface CreateSecurityRoleResponse {
   id?: string;
   result?: ViewMenuApiPost;
 }
-export const CreateSecurityRoleResponse =
+const CreateSecurityRoleResponse =
   CreateSecurityResourceResponse as any as S.Schema<CreateSecurityRoleResponse>;
 
 /** List of permission view menu id */
 export type CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList = Array<number>;
-export const CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList =
+const CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList>;
 
 export interface CreateSecurityRolePermissionsRequest {
@@ -3929,7 +3925,7 @@ export interface CreateSecurityRolePermissionsRequest {
   /** List of permission view menu id */
   permission_view_menu_ids: CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList;
 }
-export const CreateSecurityRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_id: S.Number.pipe(T.Label()),
     permission_view_menu_ids: CreateSecurityRolePermissionsRequestPermissionViewMenuIdsList,
@@ -3942,14 +3938,14 @@ export const CreateSecurityRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of permission view menu id */
 export type RolePermissionPostSchemaPermissionViewMenuIdsList = Array<number>;
-export const RolePermissionPostSchemaPermissionViewMenuIdsList =
+const RolePermissionPostSchemaPermissionViewMenuIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<RolePermissionPostSchemaPermissionViewMenuIdsList>;
 
 export interface RolePermissionPostSchema {
   /** List of permission view menu id */
   permission_view_menu_ids: RolePermissionPostSchemaPermissionViewMenuIdsList;
 }
-export const RolePermissionPostSchema = /*@__PURE__*/ S.suspend(() =>
+const RolePermissionPostSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission_view_menu_ids: RolePermissionPostSchemaPermissionViewMenuIdsList,
   }),
@@ -3958,7 +3954,7 @@ export const RolePermissionPostSchema = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSecurityRolePermissionsResponse {
   result?: RolePermissionPostSchema;
 }
-export const CreateSecurityRolePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityRolePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RolePermissionPostSchema),
   }),
@@ -3967,14 +3963,14 @@ export const CreateSecurityRolePermissionsResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateSecurityRolePermissionsResponse>;
 
 export interface CreateSecurityUserRequest {}
-export const CreateSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/v1/security/users/", code: 200 })),
 ).annotate({
   identifier: "CreateSecurityUserRequest",
 }) as any as S.Schema<CreateSecurityUserRequest>;
 
 export interface CreateSecurityUserResponse {}
-export const CreateSecurityUserResponse =
+const CreateSecurityUserResponse =
   CreateSecurityGroupResponse as any as S.Schema<CreateSecurityUserResponse>;
 
 export interface CreateSqllabEstimateRequest {
@@ -3989,7 +3985,7 @@ export interface CreateSqllabEstimateRequest {
   /** The SQL query template params */
   template_params?: unknown;
 }
-export const CreateSqllabEstimateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqllabEstimateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     database_id: S.Number,
@@ -4004,7 +4000,7 @@ export const CreateSqllabEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSqllabEstimateResponse {
   result?: unknown;
 }
-export const CreateSqllabEstimateResponse =
+const CreateSqllabEstimateResponse =
   CreateChartFavoriteResponse as any as S.Schema<CreateSqllabEstimateResponse>;
 
 export interface CreateSqllabFormatSqlRequest {
@@ -4015,7 +4011,7 @@ export interface CreateSqllabFormatSqlRequest {
   /** The SQL query template params as JSON string */
   template_params?: string | null;
 }
-export const CreateSqllabFormatSqlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqllabFormatSqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_id: S.optional(S.NullOr(S.Number)),
     engine: S.optional(S.NullOr(S.String)),
@@ -4029,7 +4025,7 @@ export const CreateSqllabFormatSqlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSqllabFormatSqlResponse {
   result?: string;
 }
-export const CreateSqllabFormatSqlResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSqllabFormatSqlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String),
   }),
@@ -4039,7 +4035,7 @@ export const CreateSqllabFormatSqlResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** URL Parameters */
 export type CreateSqllabPermalinkRequestUrlParamsList = Array<unknown | null>;
-export const CreateSqllabPermalinkRequestUrlParamsList =
+const CreateSqllabPermalinkRequestUrlParamsList =
   CreateDashboardPermalinkRequestUrlParamsList as any as S.Schema<CreateSqllabPermalinkRequestUrlParamsList>;
 
 export interface CreateSqllabPermalinkRequest {
@@ -4050,7 +4046,7 @@ export interface CreateSqllabPermalinkRequest {
   /** URL Parameters */
   urlParams?: CreateSqllabPermalinkRequestUrlParamsList | null;
 }
-export const CreateSqllabPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqllabPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chartState: S.optional(S.NullOr(S.Unknown)),
     formData: S.Unknown,
@@ -4066,12 +4062,12 @@ export interface CreateSqllabPermalinkResponse {
   /** permanent link. */
   url?: string;
 }
-export const CreateSqllabPermalinkResponse =
+const CreateSqllabPermalinkResponse =
   CreateDashboardPermalinkResponse as any as S.Schema<CreateSqllabPermalinkResponse>;
 
 /** Objects to tag */
 export type CreateTagRequestObjectsToTagList = Array<unknown>;
-export const CreateTagRequestObjectsToTagList =
+const CreateTagRequestObjectsToTagList =
   TagObjectObjectsToTagList as any as S.Schema<CreateTagRequestObjectsToTagList>;
 
 export interface CreateTagRequest {
@@ -4080,7 +4076,7 @@ export interface CreateTagRequest {
   /** Objects to tag */
   objects_to_tag?: CreateTagRequestObjectsToTagList;
 }
-export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -4090,22 +4086,19 @@ export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Objects to tag */
 export type TagRestApiPostObjectsToTagList = Array<unknown>;
-export const TagRestApiPostObjectsToTagList =
-  TagObjectObjectsToTagList as any as S.Schema<TagRestApiPostObjectsToTagList>;
-
 export interface TagRestApiPost {
   description?: string | null;
   name?: string;
   /** Objects to tag */
   objects_to_tag?: TagRestApiPostObjectsToTagList;
 }
-export const TagRestApiPost = TagObject as any as S.Schema<TagRestApiPost>;
+const TagRestApiPost = TagObject as any as S.Schema<TagRestApiPost>;
 
 export interface CreateTagResponse {
   id?: number;
   result?: TagRestApiPost;
 }
-export const CreateTagResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(TagRestApiPost),
@@ -4115,7 +4108,7 @@ export const CreateTagResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTagFavoriteRequest {
   pk: number;
 }
-export const CreateTagFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/tag/{pk}/favorites/", code: 200 })),
@@ -4124,11 +4117,11 @@ export const CreateTagFavoriteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTagFavoriteResponse {
   result?: unknown;
 }
-export const CreateTagFavoriteResponse =
+const CreateTagFavoriteResponse =
   CreateChartFavoriteResponse as any as S.Schema<CreateTagFavoriteResponse>;
 
 export type CreateThemeRequestEditorsList = Array<number>;
-export const CreateThemeRequestEditorsList =
+const CreateThemeRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<CreateThemeRequestEditorsList>;
 
 export interface CreateThemeRequest {
@@ -4136,7 +4129,7 @@ export interface CreateThemeRequest {
   json_data: string;
   theme_name: string;
 }
-export const CreateThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editors: S.optional(CreateThemeRequestEditorsList),
     json_data: S.String,
@@ -4145,7 +4138,7 @@ export const CreateThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateThemeRequest" }) as any as S.Schema<CreateThemeRequest>;
 
 export type ThemeRestApiPostEditorsList = Array<number>;
-export const ThemeRestApiPostEditorsList =
+const ThemeRestApiPostEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<ThemeRestApiPostEditorsList>;
 
 export interface ThemeRestApiPost {
@@ -4153,7 +4146,7 @@ export interface ThemeRestApiPost {
   json_data: string;
   theme_name: string;
 }
-export const ThemeRestApiPost = /*@__PURE__*/ S.suspend(() =>
+const ThemeRestApiPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editors: S.optional(ThemeRestApiPostEditorsList),
     json_data: S.String,
@@ -4165,7 +4158,7 @@ export interface CreateThemeResponse {
   id?: number;
   result?: ThemeRestApiPost;
 }
-export const CreateThemeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(ThemeRestApiPost),
@@ -4175,7 +4168,7 @@ export const CreateThemeResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAnnotationLayerRequest {
   q?: string;
 }
-export const DeleteAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/annotation_layer/", code: 200 })),
@@ -4186,7 +4179,7 @@ export const DeleteAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAnnotationLayerResponse {
   message?: string;
 }
-export const DeleteAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -4199,7 +4192,7 @@ export interface DeleteAnnotationLayerAnnotationRequest {
   pk: number;
   q?: string;
 }
-export const DeleteAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -4213,7 +4206,7 @@ export const DeleteAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(()
 export interface DeleteAnnotationLayerAnnotationResponse {
   message?: string;
 }
-export const DeleteAnnotationLayerAnnotationResponse =
+const DeleteAnnotationLayerAnnotationResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteAnnotationLayerAnnotationResponse>;
 
 export interface DeleteAnnotationLayerAnnotationByAnnotationIdRequest {
@@ -4222,7 +4215,7 @@ export interface DeleteAnnotationLayerAnnotationByAnnotationIdRequest {
   /** The annotation pk for this annotation */
   annotation_id: number;
 }
-export const DeleteAnnotationLayerAnnotationByAnnotationIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationLayerAnnotationByAnnotationIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     annotation_id: S.Number.pipe(T.Label()),
@@ -4240,14 +4233,14 @@ export const DeleteAnnotationLayerAnnotationByAnnotationIdRequest = /*@__PURE__*
 export interface DeleteAnnotationLayerAnnotationByAnnotationIdResponse {
   message?: string;
 }
-export const DeleteAnnotationLayerAnnotationByAnnotationIdResponse =
+const DeleteAnnotationLayerAnnotationByAnnotationIdResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteAnnotationLayerAnnotationByAnnotationIdResponse>;
 
 export interface DeleteAnnotationLayerByPkRequest {
   /** The annotation layer pk for this annotation */
   pk: number;
 }
-export const DeleteAnnotationLayerByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationLayerByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/annotation_layer/{pk}", code: 200 })),
@@ -4258,13 +4251,13 @@ export const DeleteAnnotationLayerByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAnnotationLayerByPkResponse {
   message?: string;
 }
-export const DeleteAnnotationLayerByPkResponse =
+const DeleteAnnotationLayerByPkResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteAnnotationLayerByPkResponse>;
 
 export interface DeleteChartRequest {
   q?: string;
 }
-export const DeleteChartRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/chart/", code: 200 })),
@@ -4273,7 +4266,7 @@ export const DeleteChartRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteChartResponse {
   message?: string;
 }
-export const DeleteChartResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -4282,7 +4275,7 @@ export const DeleteChartResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteChartByPkRequest {
   pk: number;
 }
-export const DeleteChartByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChartByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/chart/{pk}", code: 200 })),
@@ -4291,13 +4284,12 @@ export const DeleteChartByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteChartByPkResponse {
   message?: string;
 }
-export const DeleteChartByPkResponse =
-  DeleteChartResponse as any as S.Schema<DeleteChartByPkResponse>;
+const DeleteChartByPkResponse = DeleteChartResponse as any as S.Schema<DeleteChartByPkResponse>;
 
 export interface DeleteChartFavoritesRequest {
   pk: number;
 }
-export const DeleteChartFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChartFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/chart/{pk}/favorites/", code: 200 })),
@@ -4308,13 +4300,13 @@ export const DeleteChartFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteChartFavoritesResponse {
   result?: unknown;
 }
-export const DeleteChartFavoritesResponse =
+const DeleteChartFavoritesResponse =
   CreateChartFavoriteResponse as any as S.Schema<DeleteChartFavoritesResponse>;
 
 export interface DeleteCssTemplateRequest {
   q?: string;
 }
-export const DeleteCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/css_template/", code: 200 })),
@@ -4323,13 +4315,13 @@ export const DeleteCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCssTemplateResponse {
   message?: string;
 }
-export const DeleteCssTemplateResponse =
+const DeleteCssTemplateResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteCssTemplateResponse>;
 
 export interface DeleteCssTemplateByPkRequest {
   pk: number;
 }
-export const DeleteCssTemplateByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCssTemplateByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/css_template/{pk}", code: 200 })),
@@ -4340,13 +4332,13 @@ export const DeleteCssTemplateByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCssTemplateByPkResponse {
   message?: string;
 }
-export const DeleteCssTemplateByPkResponse =
+const DeleteCssTemplateByPkResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteCssTemplateByPkResponse>;
 
 export interface DeleteDashboardRequest {
   q?: string;
 }
-export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/", code: 200 })),
@@ -4355,13 +4347,12 @@ export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardResponse {
   message?: string;
 }
-export const DeleteDashboardResponse =
-  DeleteChartResponse as any as S.Schema<DeleteDashboardResponse>;
+const DeleteDashboardResponse = DeleteChartResponse as any as S.Schema<DeleteDashboardResponse>;
 
 export interface DeleteDashboardByPkRequest {
   pk: number;
 }
-export const DeleteDashboardByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/{pk}", code: 200 })),
@@ -4372,14 +4363,14 @@ export const DeleteDashboardByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardByPkResponse {
   message?: string;
 }
-export const DeleteDashboardByPkResponse =
+const DeleteDashboardByPkResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteDashboardByPkResponse>;
 
 export interface DeleteDashboardEmbeddedRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
 }
-export const DeleteDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/{id_or_slug}/embedded", code: 200 })),
@@ -4390,13 +4381,13 @@ export const DeleteDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardEmbeddedResponse {
   message?: string;
 }
-export const DeleteDashboardEmbeddedResponse =
+const DeleteDashboardEmbeddedResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteDashboardEmbeddedResponse>;
 
 export interface DeleteDashboardFavoritesRequest {
   pk: number;
 }
-export const DeleteDashboardFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dashboard/{pk}/favorites/", code: 200 })),
@@ -4407,7 +4398,7 @@ export const DeleteDashboardFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardFavoritesResponse {
   result?: unknown;
 }
-export const DeleteDashboardFavoritesResponse =
+const DeleteDashboardFavoritesResponse =
   CreateChartFavoriteResponse as any as S.Schema<DeleteDashboardFavoritesResponse>;
 
 export interface DeleteDashboardFilterStateRequest {
@@ -4416,7 +4407,7 @@ export interface DeleteDashboardFilterStateRequest {
   key: string;
   tab_id?: number;
 }
-export const DeleteDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -4432,13 +4423,13 @@ export interface DeleteDashboardFilterStateResponse {
   /** The result of the operation */
   message?: string;
 }
-export const DeleteDashboardFilterStateResponse =
+const DeleteDashboardFilterStateResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteDashboardFilterStateResponse>;
 
 export interface DeleteDatabaseRequest {
   pk: number;
 }
-export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/database/{pk}", code: 200 })),
@@ -4447,13 +4438,12 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatabaseResponse {
   message?: string;
 }
-export const DeleteDatabaseResponse =
-  DeleteChartResponse as any as S.Schema<DeleteDatabaseResponse>;
+const DeleteDatabaseResponse = DeleteChartResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDatasetRequest {
   q?: string;
 }
-export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dataset/", code: 200 })),
@@ -4462,12 +4452,12 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetResponse {
   message?: string;
 }
-export const DeleteDatasetResponse = DeleteChartResponse as any as S.Schema<DeleteDatasetResponse>;
+const DeleteDatasetResponse = DeleteChartResponse as any as S.Schema<DeleteDatasetResponse>;
 
 export interface DeleteDatasetByPkRequest {
   pk: number;
 }
-export const DeleteDatasetByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/dataset/{pk}", code: 200 })),
@@ -4476,7 +4466,7 @@ export const DeleteDatasetByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetByPkResponse {
   message?: string;
 }
-export const DeleteDatasetByPkResponse =
+const DeleteDatasetByPkResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteDatasetByPkResponse>;
 
 export interface DeleteDatasetColumnRequest {
@@ -4485,7 +4475,7 @@ export interface DeleteDatasetColumnRequest {
   /** The column id for this dataset */
   column_id: number;
 }
-export const DeleteDatasetColumnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetColumnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     column_id: S.Number.pipe(T.Label()),
@@ -4497,7 +4487,7 @@ export const DeleteDatasetColumnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetColumnResponse {
   message?: string;
 }
-export const DeleteDatasetColumnResponse =
+const DeleteDatasetColumnResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteDatasetColumnResponse>;
 
 export interface DeleteDatasetMetricRequest {
@@ -4506,7 +4496,7 @@ export interface DeleteDatasetMetricRequest {
   /** The metric id for this dataset */
   metric_id: number;
 }
-export const DeleteDatasetMetricRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     metric_id: S.Number.pipe(T.Label()),
@@ -4518,7 +4508,7 @@ export const DeleteDatasetMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetMetricResponse {
   message?: string;
 }
-export const DeleteDatasetMetricResponse =
+const DeleteDatasetMetricResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteDatasetMetricResponse>;
 
 export interface DeleteExploreFormDataRequest {
@@ -4526,7 +4516,7 @@ export interface DeleteExploreFormDataRequest {
   key: string;
   tab_id?: number;
 }
-export const DeleteExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     tab_id: S.optional(S.Number.pipe(T.Query())),
@@ -4539,13 +4529,13 @@ export interface DeleteExploreFormDataResponse {
   /** The result of the operation */
   message?: string;
 }
-export const DeleteExploreFormDataResponse =
+const DeleteExploreFormDataResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteExploreFormDataResponse>;
 
 export interface DeleteReportRequest {
   q?: string;
 }
-export const DeleteReportRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/report/", code: 200 })),
@@ -4554,13 +4544,13 @@ export const DeleteReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteReportResponse {
   message?: string;
 }
-export const DeleteReportResponse = DeleteChartResponse as any as S.Schema<DeleteReportResponse>;
+const DeleteReportResponse = DeleteChartResponse as any as S.Schema<DeleteReportResponse>;
 
 export interface DeleteReportByPkRequest {
   /** The report schedule pk */
   pk: number;
 }
-export const DeleteReportByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReportByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/report/{pk}", code: 200 })),
@@ -4569,13 +4559,12 @@ export const DeleteReportByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteReportByPkResponse {
   message?: string;
 }
-export const DeleteReportByPkResponse =
-  DeleteChartResponse as any as S.Schema<DeleteReportByPkResponse>;
+const DeleteReportByPkResponse = DeleteChartResponse as any as S.Schema<DeleteReportByPkResponse>;
 
 export interface DeleteRowlevelsecurityRequest {
   q?: string;
 }
-export const DeleteRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/rowlevelsecurity/", code: 200 })),
@@ -4586,13 +4575,13 @@ export const DeleteRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRowlevelsecurityResponse {
   message?: string;
 }
-export const DeleteRowlevelsecurityResponse =
+const DeleteRowlevelsecurityResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteRowlevelsecurityResponse>;
 
 export interface DeleteRowlevelsecurityByPkRequest {
   pk: number;
 }
-export const DeleteRowlevelsecurityByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRowlevelsecurityByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/rowlevelsecurity/{pk}", code: 200 })),
@@ -4603,13 +4592,13 @@ export const DeleteRowlevelsecurityByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRowlevelsecurityByPkResponse {
   message?: string;
 }
-export const DeleteRowlevelsecurityByPkResponse =
+const DeleteRowlevelsecurityByPkResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteRowlevelsecurityByPkResponse>;
 
 export interface DeleteSavedQueryRequest {
   q?: string;
 }
-export const DeleteSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/saved_query/", code: 200 })),
@@ -4618,13 +4607,12 @@ export const DeleteSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSavedQueryResponse {
   message?: string;
 }
-export const DeleteSavedQueryResponse =
-  DeleteChartResponse as any as S.Schema<DeleteSavedQueryResponse>;
+const DeleteSavedQueryResponse = DeleteChartResponse as any as S.Schema<DeleteSavedQueryResponse>;
 
 export interface DeleteSavedQueryByPkRequest {
   pk: number;
 }
-export const DeleteSavedQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSavedQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/saved_query/{pk}", code: 200 })),
@@ -4635,13 +4623,13 @@ export const DeleteSavedQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSavedQueryByPkResponse {
   message?: string;
 }
-export const DeleteSavedQueryByPkResponse =
+const DeleteSavedQueryByPkResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSavedQueryByPkResponse>;
 
 export interface DeleteSecurityGroupRequest {
   pk: number;
 }
-export const DeleteSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/security/groups/{pk}", code: 200 })),
@@ -4652,13 +4640,13 @@ export const DeleteSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSecurityGroupResponse {
   message?: string;
 }
-export const DeleteSecurityGroupResponse =
+const DeleteSecurityGroupResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityGroupResponse>;
 
 export interface DeleteSecurityPermissionsResourceRequest {
   pk: number;
 }
-export const DeleteSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(
@@ -4671,13 +4659,13 @@ export const DeleteSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(
 export interface DeleteSecurityPermissionsResourceResponse {
   message?: string;
 }
-export const DeleteSecurityPermissionsResourceResponse =
+const DeleteSecurityPermissionsResourceResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityPermissionsResourceResponse>;
 
 export interface DeleteSecurityResourceRequest {
   pk: number;
 }
-export const DeleteSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/security/resources/{pk}", code: 200 })),
@@ -4688,13 +4676,13 @@ export const DeleteSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSecurityResourceResponse {
   message?: string;
 }
-export const DeleteSecurityResourceResponse =
+const DeleteSecurityResourceResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityResourceResponse>;
 
 export interface DeleteSecurityRoleRequest {
   pk: number;
 }
-export const DeleteSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/security/roles/{pk}", code: 200 })),
@@ -4705,13 +4693,13 @@ export const DeleteSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSecurityRoleResponse {
   message?: string;
 }
-export const DeleteSecurityRoleResponse =
+const DeleteSecurityRoleResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityRoleResponse>;
 
 export interface DeleteSecurityUserRequest {
   pk: number;
 }
-export const DeleteSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/security/users/{pk}", code: 200 })),
@@ -4722,13 +4710,13 @@ export const DeleteSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSecurityUserResponse {
   message?: string;
 }
-export const DeleteSecurityUserResponse =
+const DeleteSecurityUserResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityUserResponse>;
 
 export interface DeleteSecurityUserRegistrationRequest {
   pk: number;
 }
-export const DeleteSecurityUserRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityUserRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/security/user_registrations/{pk}", code: 200 })),
@@ -4739,13 +4727,13 @@ export const DeleteSecurityUserRegistrationRequest = /*@__PURE__*/ S.suspend(() 
 export interface DeleteSecurityUserRegistrationResponse {
   message?: string;
 }
-export const DeleteSecurityUserRegistrationResponse =
+const DeleteSecurityUserRegistrationResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<DeleteSecurityUserRegistrationResponse>;
 
 export interface DeleteSecurityUserSessionsRequest {
   pk: number;
 }
-export const DeleteSecurityUserSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityUserSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/security/users/{pk}/sessions", code: 200 })),
@@ -4754,16 +4742,14 @@ export const DeleteSecurityUserSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSecurityUserSessionsRequest>;
 
 export interface DeleteSecurityUserSessionsResponse {}
-export const DeleteSecurityUserSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteSecurityUserSessionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSecurityUserSessionsResponse",
 }) as any as S.Schema<DeleteSecurityUserSessionsResponse>;
 
 export interface DeleteTagRequest {
   q?: string;
 }
-export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/tag/", code: 200 })),
@@ -4772,14 +4758,14 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTagResponse {
   message?: string;
 }
-export const DeleteTagResponse = DeleteChartResponse as any as S.Schema<DeleteTagResponse>;
+const DeleteTagResponse = DeleteChartResponse as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteTagRequest2 {
   object_type: number;
   object_id: number;
   tag: string;
 }
-export const DeleteTagRequest2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object_type: S.Number.pipe(T.Label()),
     object_id: S.Number.pipe(T.Label()),
@@ -4792,12 +4778,12 @@ export const DeleteTagRequest2 = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTagResponse2 {
   message?: string;
 }
-export const DeleteTagResponse2 = DeleteChartResponse as any as S.Schema<DeleteTagResponse2>;
+const DeleteTagResponse2 = DeleteChartResponse as any as S.Schema<DeleteTagResponse2>;
 
 export interface DeleteTagByPkRequest {
   pk: number;
 }
-export const DeleteTagByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/tag/{pk}", code: 200 })),
@@ -4806,12 +4792,12 @@ export const DeleteTagByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTagByPkResponse {
   message?: string;
 }
-export const DeleteTagByPkResponse = DeleteChartResponse as any as S.Schema<DeleteTagByPkResponse>;
+const DeleteTagByPkResponse = DeleteChartResponse as any as S.Schema<DeleteTagByPkResponse>;
 
 export interface DeleteTagFavoritesRequest {
   pk: number;
 }
-export const DeleteTagFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/tag/{pk}/favorites/", code: 200 })),
@@ -4822,13 +4808,13 @@ export const DeleteTagFavoritesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTagFavoritesResponse {
   result?: unknown;
 }
-export const DeleteTagFavoritesResponse =
+const DeleteTagFavoritesResponse =
   CreateChartFavoriteResponse as any as S.Schema<DeleteTagFavoritesResponse>;
 
 export interface DeleteThemeRequest {
   q?: string;
 }
-export const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/theme/", code: 200 })),
@@ -4837,12 +4823,12 @@ export const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThemeResponse {
   message?: string;
 }
-export const DeleteThemeResponse = DeleteChartResponse as any as S.Schema<DeleteThemeResponse>;
+const DeleteThemeResponse = DeleteChartResponse as any as S.Schema<DeleteThemeResponse>;
 
 export interface DeleteThemeByPkRequest {
   pk: number;
 }
-export const DeleteThemeByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThemeByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/theme/{pk}", code: 200 })),
@@ -4851,11 +4837,10 @@ export const DeleteThemeByPkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThemeByPkResponse {
   message?: string;
 }
-export const DeleteThemeByPkResponse =
-  DeleteChartResponse as any as S.Schema<DeleteThemeByPkResponse>;
+const DeleteThemeByPkResponse = DeleteChartResponse as any as S.Schema<DeleteThemeByPkResponse>;
 
 export interface DeleteThemeUnsetSystemDarkRequest {}
-export const DeleteThemeUnsetSystemDarkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThemeUnsetSystemDarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "DELETE", uri: "/api/v1/theme/unset_system_dark", code: 200 }),
   ),
@@ -4866,11 +4851,11 @@ export const DeleteThemeUnsetSystemDarkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThemeUnsetSystemDarkResponse {
   result?: string;
 }
-export const DeleteThemeUnsetSystemDarkResponse =
+const DeleteThemeUnsetSystemDarkResponse =
   CreateSqllabFormatSqlResponse as any as S.Schema<DeleteThemeUnsetSystemDarkResponse>;
 
 export interface DeleteThemeUnsetSystemDefaultRequest {}
-export const DeleteThemeUnsetSystemDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThemeUnsetSystemDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "DELETE", uri: "/api/v1/theme/unset_system_default", code: 200 }),
   ),
@@ -4881,14 +4866,14 @@ export const DeleteThemeUnsetSystemDefaultRequest = /*@__PURE__*/ S.suspend(() =
 export interface DeleteThemeUnsetSystemDefaultResponse {
   result?: string;
 }
-export const DeleteThemeUnsetSystemDefaultResponse =
+const DeleteThemeUnsetSystemDefaultResponse =
   CreateSqllabFormatSqlResponse as any as S.Schema<DeleteThemeUnsetSystemDefaultResponse>;
 
 export interface DuplicateDatasetRequest {
   base_model_id: number;
   table_name: string;
 }
-export const DuplicateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_model_id: S.Number,
     table_name: S.String,
@@ -4899,7 +4884,7 @@ export interface DatasetDuplicateSchema {
   base_model_id: number;
   table_name: string;
 }
-export const DatasetDuplicateSchema = /*@__PURE__*/ S.suspend(() =>
+const DatasetDuplicateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_model_id: S.Number,
     table_name: S.String,
@@ -4910,7 +4895,7 @@ export interface DuplicateDatasetResponse {
   id?: number;
   result?: DatasetDuplicateSchema;
 }
-export const DuplicateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(DatasetDuplicateSchema),
@@ -4921,7 +4906,7 @@ export interface ExecuteReportRequest {
   /** The report schedule pk */
   pk: number;
 }
-export const ExecuteReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/report/{pk}/execute", code: 200 })),
@@ -4933,7 +4918,7 @@ export interface ExecuteReportResponse {
   /** Success message */
   message?: string;
 }
-export const ExecuteReportResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecuteReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     execution_id: S.optional(S.String),
     message: S.optional(S.String),
@@ -4956,7 +4941,7 @@ export interface ExecuteSqllabRequest {
   templateParams?: string | null;
   tmp_table_name?: string | null;
 }
-export const ExecuteSqllabRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteSqllabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     client_id: S.optional(S.NullOr(S.String)),
@@ -4976,15 +4961,15 @@ export const ExecuteSqllabRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecuteSqllabRequest" }) as any as S.Schema<ExecuteSqllabRequest>;
 
 export type QueryExecutionResponseSchemaColumnsList = Array<unknown>;
-export const QueryExecutionResponseSchemaColumnsList =
+const QueryExecutionResponseSchemaColumnsList =
   TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaColumnsList>;
 
 export type QueryExecutionResponseSchemaDataList = Array<unknown>;
-export const QueryExecutionResponseSchemaDataList =
+const QueryExecutionResponseSchemaDataList =
   TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaDataList>;
 
 export type QueryExecutionResponseSchemaExpandedColumnsList = Array<unknown>;
-export const QueryExecutionResponseSchemaExpandedColumnsList =
+const QueryExecutionResponseSchemaExpandedColumnsList =
   TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaExpandedColumnsList>;
 
 export interface QueryResult {
@@ -5016,7 +5001,7 @@ export interface QueryResult {
   user?: string;
   userId?: number;
 }
-export const QueryResult = /*@__PURE__*/ S.suspend(() =>
+const QueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_on: S.optional(S.String),
     ctas: S.optional(S.Boolean),
@@ -5049,7 +5034,7 @@ export const QueryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryResult" }) as any as S.Schema<QueryResult>;
 
 export type QueryExecutionResponseSchemaSelectedColumnsList = Array<unknown>;
-export const QueryExecutionResponseSchemaSelectedColumnsList =
+const QueryExecutionResponseSchemaSelectedColumnsList =
   TagObjectObjectsToTagList as any as S.Schema<QueryExecutionResponseSchemaSelectedColumnsList>;
 
 export interface QueryExecutionResponseSchema {
@@ -5061,7 +5046,7 @@ export interface QueryExecutionResponseSchema {
   selected_columns?: QueryExecutionResponseSchemaSelectedColumnsList;
   status?: string;
 }
-export const QueryExecutionResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const QueryExecutionResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(QueryExecutionResponseSchemaColumnsList),
     data: S.optional(QueryExecutionResponseSchemaDataList),
@@ -5077,12 +5062,12 @@ export const QueryExecutionResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Live dashboard filter state keyed by native filter id, each carrying an extraFormData object. */
 export type ExportDashboardXlsxRequestActiveDataMaskMap = { [key: string]: unknown | undefined };
-export const ExportDashboardXlsxRequestActiveDataMaskMap =
+const ExportDashboardXlsxRequestActiveDataMaskMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<ExportDashboardXlsxRequestActiveDataMaskMap>;
 
 /** Export mode: 'data' streams each chart's tabular result (default); 'images' embeds non-table charts as rendered images and keeps table charts tabular. */
 export type ExportDashboardXlsxRequestMode = "data" | "images";
-export const ExportDashboardXlsxRequestMode = S.String;
+const ExportDashboardXlsxRequestMode = S.String;
 
 export interface ExportDashboardXlsxRequest {
   /** The dashboard id */
@@ -5092,7 +5077,7 @@ export interface ExportDashboardXlsxRequest {
   /** Export mode: 'data' streams each chart's tabular result (default); 'images' embeds non-table charts as rendered images and keeps table charts tabular. */
   mode?: ExportDashboardXlsxRequestMode | (string & {});
 }
-export const ExportDashboardXlsxRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDashboardXlsxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     active_data_mask: S.optional(ExportDashboardXlsxRequestActiveDataMaskMap),
@@ -5103,7 +5088,7 @@ export const ExportDashboardXlsxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportDashboardXlsxRequest>;
 
 export interface ExportDashboardXlsxResponse {}
-export const ExportDashboardXlsxResponse =
+const ExportDashboardXlsxResponse =
   CreateSecurityGroupResponse as any as S.Schema<ExportDashboardXlsxResponse>;
 
 export interface ExportSqllabStreamingRequest {
@@ -5114,7 +5099,7 @@ export interface ExportSqllabStreamingRequest {
   /** Optional filename for the export */
   filename?: string;
 }
-export const ExportSqllabStreamingRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSqllabStreamingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
     expected_rows: S.optional(S.Number),
@@ -5125,13 +5110,13 @@ export const ExportSqllabStreamingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportSqllabStreamingRequest>;
 
 export interface ExportSqllabStreamingResponse {}
-export const ExportSqllabStreamingResponse =
+const ExportSqllabStreamingResponse =
   CreateSecurityGroupResponse as any as S.Schema<ExportSqllabStreamingResponse>;
 
 export interface GetAnnotationLayerRequest {
   q?: string;
 }
-export const GetAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/annotation_layer/", code: 200 })),
@@ -5143,7 +5128,7 @@ export interface GetAnnotationLayerResponseDescriptionColumns {
   /** The description for the column name. Will be translated by babel */
   column_name?: string;
 }
-export const GetAnnotationLayerResponseDescriptionColumns = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerResponseDescriptionColumns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.optional(S.String),
   }),
@@ -5153,31 +5138,31 @@ export const GetAnnotationLayerResponseDescriptionColumns = /*@__PURE__*/ S.susp
 
 /** A list of item ids, useful when you don't know the column id */
 export type GetAnnotationLayerResponseIdsList = Array<string>;
-export const GetAnnotationLayerResponseIdsList =
+const GetAnnotationLayerResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerResponseIdsList>;
 
 export interface GetAnnotationLayerResponseLabelColumns {
   /** The label for the column name. Will be translated by babel */
   column_name?: string;
 }
-export const GetAnnotationLayerResponseLabelColumns =
+const GetAnnotationLayerResponseLabelColumns =
   GetAnnotationLayerResponseDescriptionColumns as any as S.Schema<GetAnnotationLayerResponseLabelColumns>;
 
 /** A list of columns */
 export type GetAnnotationLayerResponseListColumnsList = Array<string>;
-export const GetAnnotationLayerResponseListColumnsList =
+const GetAnnotationLayerResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetAnnotationLayerResponseOrderColumnsList = Array<string>;
-export const GetAnnotationLayerResponseOrderColumnsList =
+const GetAnnotationLayerResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerResponseOrderColumnsList>;
 
 export interface AnnotationLayerRestApiGetListUser1 {
   first_name: string;
   last_name: string;
 }
-export const AnnotationLayerRestApiGetListUser1 = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayerRestApiGetListUser1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.String,
     last_name: S.String,
@@ -5187,8 +5172,6 @@ export const AnnotationLayerRestApiGetListUser1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnotationLayerRestApiGetListUser1>;
 
 export type AnnotationLayerRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-export const AnnotationLayerRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-
 export interface AnnotationLayerRestApiGetList {
   changed_by?: AnnotationLayerRestApiGetListUser1;
   changed_on?: string | null;
@@ -5199,7 +5182,7 @@ export interface AnnotationLayerRestApiGetList {
   id?: number;
   name?: string | null;
 }
-export const AnnotationLayerRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayerRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
     changed_on: S.optional(S.NullOr(S.String)),
@@ -5216,7 +5199,7 @@ export const AnnotationLayerRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetAnnotationLayerResponseResultList = Array<AnnotationLayerRestApiGetList>;
-export const GetAnnotationLayerResponseResultList = /*@__PURE__*/ S.Array(
+const GetAnnotationLayerResponseResultList = /*@__PURE__*/ S.Array(
   AnnotationLayerRestApiGetList,
 ) as any as S.Schema<GetAnnotationLayerResponseResultList>;
 
@@ -5236,7 +5219,7 @@ export interface GetAnnotationLayerResponse {
   /** The result from the get list query */
   result?: GetAnnotationLayerResponseResultList;
 }
-export const GetAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -5258,7 +5241,7 @@ export interface GetAnnotationLayerAnnotationRequest {
   annotation_id: number;
   q?: string;
 }
-export const GetAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     annotation_id: S.Number.pipe(T.Label()),
@@ -5278,7 +5261,7 @@ export interface AnnotationRestApiGetAnnotationLayer {
   id?: number;
   name?: string | null;
 }
-export const AnnotationRestApiGetAnnotationLayer = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRestApiGetAnnotationLayer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.NullOr(S.String)),
@@ -5296,7 +5279,7 @@ export interface AnnotationRestApiGet {
   short_descr?: string | null;
   start_dttm?: string | null;
 }
-export const AnnotationRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_dttm: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -5313,7 +5296,7 @@ export interface GetAnnotationLayerAnnotationResponse {
   id?: string;
   result?: AnnotationRestApiGet;
 }
-export const GetAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(AnnotationRestApiGet),
@@ -5326,7 +5309,7 @@ export interface GetAnnotationLayerByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetAnnotationLayerByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -5337,18 +5320,13 @@ export const GetAnnotationLayerByPkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetAnnotationLayerByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetAnnotationLayerByPkResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetAnnotationLayerByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetAnnotationLayerByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export interface AnnotationLayerRestApiGet {
   descr?: string | null;
   id?: number;
   name?: string | null;
 }
-export const AnnotationLayerRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayerRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descr: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -5360,7 +5338,7 @@ export const AnnotationLayerRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetAnnotationLayerByPkResponseShowColumnsList = Array<string>;
-export const GetAnnotationLayerByPkResponseShowColumnsList =
+const GetAnnotationLayerByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetAnnotationLayerByPkResponseShowColumnsList>;
 
 export interface GetAnnotationLayerByPkResponse {
@@ -5374,7 +5352,7 @@ export interface GetAnnotationLayerByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetAnnotationLayerByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -5391,7 +5369,7 @@ export interface GetAnnotationLayerRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetAnnotationLayerRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationLayerRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -5410,7 +5388,7 @@ export interface RelatedResultResponse {
   /** The related item identifier */
   value?: number;
 }
-export const RelatedResultResponse = /*@__PURE__*/ S.suspend(() =>
+const RelatedResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extra: S.optional(S.Unknown),
     text: S.optional(S.String),
@@ -5419,7 +5397,7 @@ export const RelatedResultResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedResultResponse" }) as any as S.Schema<RelatedResultResponse>;
 
 export type RelatedResponseSchemaResultList = Array<RelatedResultResponse>;
-export const RelatedResponseSchemaResultList = /*@__PURE__*/ S.Array(
+const RelatedResponseSchemaResultList = /*@__PURE__*/ S.Array(
   RelatedResultResponse,
 ) as any as S.Schema<RelatedResponseSchemaResultList>;
 
@@ -5428,7 +5406,7 @@ export interface RelatedResponseSchema {
   count?: number;
   result?: RelatedResponseSchemaResultList;
 }
-export const RelatedResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const RelatedResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(RelatedResponseSchemaResultList),
@@ -5436,29 +5414,29 @@ export const RelatedResponseSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedResponseSchema" }) as any as S.Schema<RelatedResponseSchema>;
 
 export interface GetAssetExportRequest {}
-export const GetAssetExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssetExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/assets/export/", code: 200 })),
 ).annotate({ identifier: "GetAssetExportRequest" }) as any as S.Schema<GetAssetExportRequest>;
 
 export interface GetAssetExportResponse {}
-export const GetAssetExportResponse =
+const GetAssetExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetAssetExportResponse>;
 
 export interface GetAvailableDomainsRequest {}
-export const GetAvailableDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvailableDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/available_domains/", code: 200 })),
 ).annotate({
   identifier: "GetAvailableDomainsRequest",
 }) as any as S.Schema<GetAvailableDomainsRequest>;
 
 export type AvailableDomainsSchemaDomainsList = Array<string>;
-export const AvailableDomainsSchemaDomainsList =
+const AvailableDomainsSchemaDomainsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<AvailableDomainsSchemaDomainsList>;
 
 export interface AvailableDomainsSchema {
   domains?: AvailableDomainsSchemaDomainsList;
 }
-export const AvailableDomainsSchema = /*@__PURE__*/ S.suspend(() =>
+const AvailableDomainsSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(AvailableDomainsSchemaDomainsList),
   }),
@@ -5467,7 +5445,7 @@ export const AvailableDomainsSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetAvailableDomainsResponse {
   result?: AvailableDomainsSchema;
 }
-export const GetAvailableDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAvailableDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AvailableDomainsSchema),
   }),
@@ -5479,7 +5457,7 @@ export interface GetChartRequest {
   /** Either the id of the chart, or its uuid */
   id_or_uuid: string;
 }
-export const GetChartRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/{id_or_uuid}", code: 200 })),
@@ -5490,7 +5468,7 @@ export interface Dashboard {
   id?: number;
   json_metadata?: string;
 }
-export const Dashboard = /*@__PURE__*/ S.suspend(() =>
+const Dashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_title: S.optional(S.String),
     id: S.optional(S.Number),
@@ -5499,7 +5477,7 @@ export const Dashboard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dashboard" }) as any as S.Schema<Dashboard>;
 
 export type ChartGetResponseSchemaDashboardsList = Array<Dashboard>;
-export const ChartGetResponseSchemaDashboardsList = /*@__PURE__*/ S.Array(
+const ChartGetResponseSchemaDashboardsList = /*@__PURE__*/ S.Array(
   Dashboard,
 ) as any as S.Schema<ChartGetResponseSchemaDashboardsList>;
 
@@ -5510,7 +5488,7 @@ export interface SubjectResponse {
   secondary_label?: string;
   type?: number;
 }
-export const SubjectResponse = /*@__PURE__*/ S.suspend(() =>
+const SubjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     img: S.optional(S.String),
@@ -5521,19 +5499,19 @@ export const SubjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubjectResponse" }) as any as S.Schema<SubjectResponse>;
 
 export type ChartGetResponseSchemaEditorsList = Array<SubjectResponse>;
-export const ChartGetResponseSchemaEditorsList = /*@__PURE__*/ S.Array(
+const ChartGetResponseSchemaEditorsList = /*@__PURE__*/ S.Array(
   SubjectResponse,
 ) as any as S.Schema<ChartGetResponseSchemaEditorsList>;
 
 export type TagType = 1 | 2 | 3 | 4;
-export const TagType = S.Number;
+const TagType = S.Number;
 
 export interface Tag {
   id?: number;
   name?: string;
   type?: TagType;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -5542,12 +5520,12 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type ChartGetResponseSchemaTagsList = Array<Tag>;
-export const ChartGetResponseSchemaTagsList = /*@__PURE__*/ S.Array(
+const ChartGetResponseSchemaTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<ChartGetResponseSchemaTagsList>;
 
 export type ChartGetResponseSchemaViewersList = Array<SubjectResponse>;
-export const ChartGetResponseSchemaViewersList =
+const ChartGetResponseSchemaViewersList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<ChartGetResponseSchemaViewersList>;
 
 export interface ChartGetResponseSchema {
@@ -5576,7 +5554,7 @@ export interface ChartGetResponseSchema {
   viewers?: ChartGetResponseSchemaViewersList;
   viz_type?: string;
 }
-export const ChartGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const ChartGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.String),
     certification_details: S.optional(S.String),
@@ -5607,7 +5585,7 @@ export const ChartGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetChartResponse {
   result?: ChartGetResponseSchema;
 }
-export const GetChartResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ChartGetResponseSchema),
   }),
@@ -5617,7 +5595,7 @@ export interface GetChartCacheScreenshotRequest {
   pk: number;
   q?: string;
 }
-export const GetChartCacheScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartCacheScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -5638,7 +5616,7 @@ export interface ChartCacheScreenshotResponseSchema {
   /** The timestamp of the last change in status */
   task_updated_at?: string;
 }
-export const ChartCacheScreenshotResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const ChartCacheScreenshotResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_key: S.optional(S.String),
     chart_url: S.optional(S.String),
@@ -5653,21 +5631,21 @@ export const ChartCacheScreenshotResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetChartExportRequest {
   q?: string;
 }
-export const GetChartExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/export/", code: 200 })),
 ).annotate({ identifier: "GetChartExportRequest" }) as any as S.Schema<GetChartExportRequest>;
 
 export interface GetChartExportResponse {}
-export const GetChartExportResponse =
+const GetChartExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetChartExportResponse>;
 
 export interface GetChartRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetChartRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -5678,7 +5656,7 @@ export interface GetChartScreenshotRequest {
   pk: number;
   digest: string;
 }
-export const GetChartScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     digest: S.String.pipe(T.Label()),
@@ -5688,7 +5666,7 @@ export const GetChartScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetChartScreenshotRequest>;
 
 export interface GetChartScreenshotResponse {}
-export const GetChartScreenshotResponse =
+const GetChartScreenshotResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetChartScreenshotResponse>;
 
 export interface GetChartThumbnailRequest {
@@ -5696,7 +5674,7 @@ export interface GetChartThumbnailRequest {
   /** A hex digest that makes this chart unique */
   digest: string;
 }
-export const GetChartThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     digest: S.String.pipe(T.Label()),
@@ -5704,7 +5682,7 @@ export const GetChartThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetChartThumbnailRequest" }) as any as S.Schema<GetChartThumbnailRequest>;
 
 export interface GetChartThumbnailResponse {}
-export const GetChartThumbnailResponse =
+const GetChartThumbnailResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetChartThumbnailResponse>;
 
 export interface GetChartVersionRequest {
@@ -5713,7 +5691,7 @@ export interface GetChartVersionRequest {
   /** Version UUID as returned by the list endpoint */
   version_uuid_str: string;
 }
-export const GetChartVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChartVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     version_uuid_str: S.String.pipe(T.Label()),
@@ -5731,7 +5709,7 @@ export interface VersionChangedBy {
   id?: number;
   last_name?: string;
 }
-export const VersionChangedBy = /*@__PURE__*/ S.suspend(() =>
+const VersionChangedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.optional(S.String),
     id: S.optional(S.Number),
@@ -5751,7 +5729,7 @@ export interface VersionChangeRecord {
   /** Value at path after the save; null when the field was removed. */
   to_value?: unknown | null;
 }
-export const VersionChangeRecord = /*@__PURE__*/ S.suspend(() =>
+const VersionChangeRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from_value: S.optional(S.NullOr(S.Unknown)),
     kind: S.optional(S.String),
@@ -5763,7 +5741,7 @@ export const VersionChangeRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Structured diff records describing the atomic field-level changes at this version, ordered by emission sequence. Empty for baseline (op=0) transactions per spec M4. */
 export type VersionListItemSchemaChangesList = Array<VersionChangeRecord>;
-export const VersionListItemSchemaChangesList = /*@__PURE__*/ S.Array(
+const VersionListItemSchemaChangesList = /*@__PURE__*/ S.Array(
   VersionChangeRecord,
 ) as any as S.Schema<VersionListItemSchemaChangesList>;
 
@@ -5783,7 +5761,7 @@ export interface VersionListItemSchema {
   /** Deterministic UUIDv5 derived from the entity UUID and the Continuum transaction id -- stable across replicas and retention pruning. The handle accepted by the get/restore version endpoints. */
   version_uuid?: string;
 }
-export const VersionListItemSchema = /*@__PURE__*/ S.suspend(() =>
+const VersionListItemSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(S.NullOr(VersionChangedBy)),
     changes: S.optional(VersionListItemSchemaChangesList),
@@ -5799,7 +5777,7 @@ export const VersionListItemSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetChartVersionResponseResult {
   _version?: VersionListItemSchema;
 }
-export const GetChartVersionResponseResult = /*@__PURE__*/ S.suspend(() =>
+const GetChartVersionResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _version: S.optional(VersionListItemSchema),
   }),
@@ -5811,7 +5789,7 @@ export interface GetChartVersionResponse {
   /** The chart's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
   result?: GetChartVersionResponseResult;
 }
-export const GetChartVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChartVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetChartVersionResponseResult),
   }),
@@ -5820,32 +5798,27 @@ export const GetChartVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCssTemplateRequest {
   q?: string;
 }
-export const GetCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/css_template/", code: 200 })),
 ).annotate({ identifier: "GetCssTemplateRequest" }) as any as S.Schema<GetCssTemplateRequest>;
 
 export type GetCssTemplateResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetCssTemplateResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetCssTemplateResponseIdsList = Array<string>;
-export const GetCssTemplateResponseIdsList =
+const GetCssTemplateResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateResponseIdsList>;
 
 export type GetCssTemplateResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetCssTemplateResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetCssTemplateResponseListColumnsList = Array<string>;
-export const GetCssTemplateResponseListColumnsList =
+const GetCssTemplateResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetCssTemplateResponseOrderColumnsList = Array<string>;
-export const GetCssTemplateResponseOrderColumnsList =
+const GetCssTemplateResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateResponseOrderColumnsList>;
 
 export interface CssTemplateRestApiGetListUser {
@@ -5853,7 +5826,7 @@ export interface CssTemplateRestApiGetListUser {
   id?: number;
   last_name: string;
 }
-export const CssTemplateRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
+const CssTemplateRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.String,
     id: S.optional(S.Number),
@@ -5864,8 +5837,6 @@ export const CssTemplateRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CssTemplateRestApiGetListUser>;
 
 export type CssTemplateRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-export const CssTemplateRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-
 export interface CssTemplateRestApiGetList {
   changed_by?: CssTemplateRestApiGetListUser;
   changed_on_delta_humanized?: unknown;
@@ -5875,7 +5846,7 @@ export interface CssTemplateRestApiGetList {
   id?: number;
   template_name?: string | null;
 }
-export const CssTemplateRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const CssTemplateRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(CssTemplateRestApiGetListUser),
     changed_on_delta_humanized: S.optional(S.Unknown),
@@ -5891,7 +5862,7 @@ export const CssTemplateRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetCssTemplateResponseResultList = Array<CssTemplateRestApiGetList>;
-export const GetCssTemplateResponseResultList = /*@__PURE__*/ S.Array(
+const GetCssTemplateResponseResultList = /*@__PURE__*/ S.Array(
   CssTemplateRestApiGetList,
 ) as any as S.Schema<GetCssTemplateResponseResultList>;
 
@@ -5911,7 +5882,7 @@ export interface GetCssTemplateResponse {
   /** The result from the get list query */
   result?: GetCssTemplateResponseResultList;
 }
-export const GetCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -5928,7 +5899,7 @@ export interface GetCssTemplateByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetCssTemplateByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCssTemplateByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -5939,18 +5910,9 @@ export const GetCssTemplateByPkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetCssTemplateByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetCssTemplateByPkResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetCssTemplateByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetCssTemplateByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type CssTemplateRestApiGetUser = CssTemplateRestApiGetListUser;
-export const CssTemplateRestApiGetUser = CssTemplateRestApiGetListUser;
-
 export type CssTemplateRestApiGetUser1 = CssTemplateRestApiGetListUser;
-export const CssTemplateRestApiGetUser1 = CssTemplateRestApiGetListUser;
-
 export interface CssTemplateRestApiGet {
   changed_by?: CssTemplateRestApiGetListUser;
   changed_on_delta_humanized?: unknown;
@@ -5959,7 +5921,7 @@ export interface CssTemplateRestApiGet {
   id?: number;
   template_name?: string | null;
 }
-export const CssTemplateRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const CssTemplateRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(CssTemplateRestApiGetListUser),
     changed_on_delta_humanized: S.optional(S.Unknown),
@@ -5972,7 +5934,7 @@ export const CssTemplateRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetCssTemplateByPkResponseShowColumnsList = Array<string>;
-export const GetCssTemplateByPkResponseShowColumnsList =
+const GetCssTemplateByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetCssTemplateByPkResponseShowColumnsList>;
 
 export interface GetCssTemplateByPkResponse {
@@ -5986,7 +5948,7 @@ export interface GetCssTemplateByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetCssTemplateByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCssTemplateByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -6003,7 +5965,7 @@ export interface GetCssTemplateRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetCssTemplateRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCssTemplateRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -6017,7 +5979,7 @@ export interface GetDashboardRequest {
   id_or_slug: string;
   q?: string;
 }
-export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -6025,32 +5987,26 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDashboardRequest" }) as any as S.Schema<GetDashboardRequest>;
 
 export type User = VersionChangedBy;
-export const User = VersionChangedBy;
-
 export type DashboardGetResponseSchemaChartsList = Array<string>;
-export const DashboardGetResponseSchemaChartsList =
+const DashboardGetResponseSchemaChartsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardGetResponseSchemaChartsList>;
 
 export type Tag1Type = 1 | 2 | 3 | 4;
-export const Tag1Type = S.Number;
-
 export interface Tag1 {
   id?: number;
   name?: string;
   type?: Tag1Type;
 }
-export const Tag1 = Tag as any as S.Schema<Tag1>;
-
 export type DashboardGetResponseSchemaCustomTagsList = Array<Tag1>;
-export const DashboardGetResponseSchemaCustomTagsList =
+const DashboardGetResponseSchemaCustomTagsList =
   ChartGetResponseSchemaTagsList as any as S.Schema<DashboardGetResponseSchemaCustomTagsList>;
 
 export type DashboardGetResponseSchemaEditorsList = Array<SubjectResponse>;
-export const DashboardGetResponseSchemaEditorsList =
+const DashboardGetResponseSchemaEditorsList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<DashboardGetResponseSchemaEditorsList>;
 
 export type DashboardGetResponseSchemaTagsList = Array<Tag1>;
-export const DashboardGetResponseSchemaTagsList =
+const DashboardGetResponseSchemaTagsList =
   DashboardGetResponseSchemaCustomTagsList as any as S.Schema<DashboardGetResponseSchemaTagsList>;
 
 export interface Theme {
@@ -6058,7 +6014,7 @@ export interface Theme {
   json_data?: string;
   theme_name?: string;
 }
-export const Theme = /*@__PURE__*/ S.suspend(() =>
+const Theme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     json_data: S.optional(S.String),
@@ -6067,7 +6023,7 @@ export const Theme = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Theme" }) as any as S.Schema<Theme>;
 
 export type DashboardGetResponseSchemaViewersList = Array<SubjectResponse>;
-export const DashboardGetResponseSchemaViewersList =
+const DashboardGetResponseSchemaViewersList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<DashboardGetResponseSchemaViewersList>;
 
 export interface DashboardGetResponseSchema {
@@ -6104,7 +6060,7 @@ export interface DashboardGetResponseSchema {
   uuid?: string | null;
   viewers?: DashboardGetResponseSchemaViewersList;
 }
-export const DashboardGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const DashboardGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification_details: S.optional(S.String),
     certified_by: S.optional(S.String),
@@ -6140,7 +6096,7 @@ export const DashboardGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetDashboardResponse {
   result?: DashboardGetResponseSchema;
 }
-export const GetDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DashboardGetResponseSchema),
   }),
@@ -6150,7 +6106,7 @@ export interface GetDashboardEmbeddedRequest {
   /** The dashboard id or slug */
   id_or_slug: string;
 }
-export const GetDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/{id_or_slug}/embedded", code: 200 })),
@@ -6161,13 +6117,13 @@ export const GetDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDashboardEmbeddedResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-export const GetDashboardEmbeddedResponse =
+const GetDashboardEmbeddedResponse =
   CreateDashboardEmbeddedResponse as any as S.Schema<GetDashboardEmbeddedResponse>;
 
 export interface GetDashboardExportRequest {
   q?: string;
 }
-export const GetDashboardExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/export/", code: 200 })),
@@ -6176,7 +6132,7 @@ export const GetDashboardExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardExportRequest>;
 
 export interface GetDashboardExportResponse {}
-export const GetDashboardExportResponse =
+const GetDashboardExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetDashboardExportResponse>;
 
 export interface GetDashboardExportAsExampleRequest {
@@ -6187,7 +6143,7 @@ export interface GetDashboardExportAsExampleRequest {
   /** Limit data export to this many rows per dataset */
   sample_rows?: number;
 }
-export const GetDashboardExportAsExampleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardExportAsExampleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     export_data: S.optional(S.Boolean.pipe(T.Query())),
@@ -6198,14 +6154,14 @@ export const GetDashboardExportAsExampleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardExportAsExampleRequest>;
 
 export interface GetDashboardExportAsExampleResponse {}
-export const GetDashboardExportAsExampleResponse =
+const GetDashboardExportAsExampleResponse =
   DeleteSecurityUserSessionsResponse as any as S.Schema<GetDashboardExportAsExampleResponse>;
 
 export interface GetDashboardExportXlsxDownloadRequest {
   /** The job_id from the export_xlsx response */
   job_id: string;
 }
-export const GetDashboardExportXlsxDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardExportXlsxDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6216,14 +6172,14 @@ export const GetDashboardExportXlsxDownloadRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetDashboardExportXlsxDownloadRequest>;
 
 export interface GetDashboardExportXlsxDownloadResponse {}
-export const GetDashboardExportXlsxDownloadResponse =
+const GetDashboardExportXlsxDownloadResponse =
   DeleteSecurityUserSessionsResponse as any as S.Schema<GetDashboardExportXlsxDownloadResponse>;
 
 export interface GetDashboardExportXlsxStatusRequest {
   /** The job_id from the export_xlsx response */
   job_id: string;
 }
-export const GetDashboardExportXlsxStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardExportXlsxStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6234,14 +6190,14 @@ export const GetDashboardExportXlsxStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardExportXlsxStatusRequest>;
 
 export interface GetDashboardExportXlsxStatusResponse {}
-export const GetDashboardExportXlsxStatusResponse =
+const GetDashboardExportXlsxStatusResponse =
   DeleteSecurityUserSessionsResponse as any as S.Schema<GetDashboardExportXlsxStatusResponse>;
 
 export interface GetDashboardFilterStateRequest {
   pk: number;
   key: string;
 }
-export const GetDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -6256,7 +6212,7 @@ export interface GetDashboardFilterStateResponse {
   /** The stored value */
   value?: string;
 }
-export const GetDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(S.Unknown),
     value: S.optional(S.String),
@@ -6268,7 +6224,7 @@ export const GetDashboardFilterStateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDashboardPermalinkRequest {
   key: string;
 }
-export const GetDashboardPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/permalink/{key}", code: 200 })),
@@ -6280,7 +6236,7 @@ export interface GetDashboardPermalinkResponse {
   /** The stored state */
   state?: unknown;
 }
-export const GetDashboardPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.Unknown),
   }),
@@ -6292,7 +6248,7 @@ export interface GetDashboardRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetDashboardRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -6302,14 +6258,14 @@ export const GetDashboardRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardRelatedRequest>;
 
 export type GetDashboardScreenshotRequestDownloadFormat = "png" | "pdf";
-export const GetDashboardScreenshotRequestDownloadFormat = S.String;
+const GetDashboardScreenshotRequestDownloadFormat = S.String;
 
 export interface GetDashboardScreenshotRequest {
   pk: number;
   digest: string;
   download_format?: GetDashboardScreenshotRequestDownloadFormat | (string & {});
 }
-export const GetDashboardScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     digest: S.String.pipe(T.Label()),
@@ -6320,7 +6276,7 @@ export const GetDashboardScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardScreenshotRequest>;
 
 export interface GetDashboardScreenshotResponse {}
-export const GetDashboardScreenshotResponse =
+const GetDashboardScreenshotResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetDashboardScreenshotResponse>;
 
 export interface GetDashboardThumbnailRequest {
@@ -6328,7 +6284,7 @@ export interface GetDashboardThumbnailRequest {
   /** A hex digest that makes this dashboard unique */
   digest: string;
 }
-export const GetDashboardThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     digest: S.String.pipe(T.Label()),
@@ -6338,7 +6294,7 @@ export const GetDashboardThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardThumbnailRequest>;
 
 export interface GetDashboardThumbnailResponse {}
-export const GetDashboardThumbnailResponse =
+const GetDashboardThumbnailResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetDashboardThumbnailResponse>;
 
 export interface GetDashboardVersionRequest {
@@ -6347,7 +6303,7 @@ export interface GetDashboardVersionRequest {
   /** Version UUID as returned by the list endpoint */
   version_uuid_str: string;
 }
-export const GetDashboardVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     version_uuid_str: S.String.pipe(T.Label()),
@@ -6364,13 +6320,11 @@ export const GetDashboardVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The dashboard's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
 export type GetDashboardVersionResponseResult = GetChartVersionResponseResult;
-export const GetDashboardVersionResponseResult = GetChartVersionResponseResult;
-
 export interface GetDashboardVersionResponse {
   /** The dashboard's scalar fields at the target version (entity-specific keys), plus a `_version` block with the version-level metadata. */
   result?: GetChartVersionResponseResult;
 }
-export const GetDashboardVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetChartVersionResponseResult),
   }),
@@ -6381,39 +6335,31 @@ export const GetDashboardVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseRequest {
   q?: string;
 }
-export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/", code: 200 })),
 ).annotate({ identifier: "GetDatabaseRequest" }) as any as S.Schema<GetDatabaseRequest>;
 
 export type GetDatabaseResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetDatabaseResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetDatabaseResponseIdsList = Array<string>;
-export const GetDatabaseResponseIdsList =
+const GetDatabaseResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatabaseResponseIdsList>;
 
 export type GetDatabaseResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetDatabaseResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetDatabaseResponseListColumnsList = Array<string>;
-export const GetDatabaseResponseListColumnsList =
+const GetDatabaseResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatabaseResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetDatabaseResponseOrderColumnsList = Array<string>;
-export const GetDatabaseResponseOrderColumnsList =
+const GetDatabaseResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatabaseResponseOrderColumnsList>;
 
 export type DatabaseRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-export const DatabaseRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-
 export type DatabaseRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
-export const DatabaseRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
-
 export interface DatabaseRestApiGetList {
   allow_ctas?: boolean | null;
   allow_cvas?: boolean | null;
@@ -6441,7 +6387,7 @@ export interface DatabaseRestApiGetList {
   id?: number;
   uuid?: string | null;
 }
-export const DatabaseRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_ctas: S.optional(S.NullOr(S.Boolean)),
     allow_cvas: S.optional(S.NullOr(S.Boolean)),
@@ -6473,7 +6419,7 @@ export const DatabaseRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetDatabaseResponseResultList = Array<DatabaseRestApiGetList>;
-export const GetDatabaseResponseResultList = /*@__PURE__*/ S.Array(
+const GetDatabaseResponseResultList = /*@__PURE__*/ S.Array(
   DatabaseRestApiGetList,
 ) as any as S.Schema<GetDatabaseResponseResultList>;
 
@@ -6493,7 +6439,7 @@ export interface GetDatabaseResponse {
   /** The result from the get list query */
   result?: GetDatabaseResponseResultList;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -6510,14 +6456,14 @@ export interface GetDatabaseByPkRequest {
   /** The database id */
   pk: number;
 }
-export const GetDatabaseByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/{pk}", code: 200 })),
 ).annotate({ identifier: "GetDatabaseByPkRequest" }) as any as S.Schema<GetDatabaseByPkRequest>;
 
 export type GetDatabaseByPkResponse = unknown;
-export const GetDatabaseByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDatabaseByPkResponse" }) as any as S.Schema<GetDatabaseByPkResponse>;
 
@@ -6525,7 +6471,7 @@ export interface GetDatabaseConnectionRequest {
   /** The database id */
   pk: number;
 }
-export const GetDatabaseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/{pk}/connection", code: 200 })),
@@ -6541,7 +6487,7 @@ export interface IdentifierQuote {
   /** Character that opens a quoted identifier */
   start?: string;
 }
-export const IdentifierQuote = /*@__PURE__*/ S.suspend(() =>
+const IdentifierQuote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.String),
     escape_by_doubling: S.optional(S.Boolean),
@@ -6565,7 +6511,7 @@ export interface EngineInformation {
   /** The database uses schemas to organize tables */
   supports_schemas?: boolean;
 }
-export const EngineInformation = /*@__PURE__*/ S.suspend(() =>
+const EngineInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disable_ssh_tunneling: S.optional(S.Boolean),
     identifier_quote: S.optional(IdentifierQuote),
@@ -6579,14 +6525,14 @@ export const EngineInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** DB-specific parameters for configuration */
 export type DatabaseConnectionSchemaOutputParametersMap = { [key: string]: unknown | undefined };
-export const DatabaseConnectionSchemaOutputParametersMap =
+const DatabaseConnectionSchemaOutputParametersMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseConnectionSchemaOutputParametersMap>;
 
 /** JSONSchema for configuring the database by parameters instead of SQLAlchemy URI */
 export type DatabaseConnectionSchemaOutputParametersSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseConnectionSchemaOutputParametersSchemaMap =
+const DatabaseConnectionSchemaOutputParametersSchemaMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseConnectionSchemaOutputParametersSchemaMap>;
 
 export interface DatabaseConnectionSchemaOutput {
@@ -6635,7 +6581,7 @@ export interface DatabaseConnectionSchemaOutput {
   ssh_tunnel?: DatabaseSSHTunnelOutput | null;
   uuid?: string;
 }
-export const DatabaseConnectionSchemaOutput = /*@__PURE__*/ S.suspend(() =>
+const DatabaseConnectionSchemaOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_ctas: S.optional(S.Boolean),
     allow_cvas: S.optional(S.Boolean),
@@ -6669,14 +6615,14 @@ export const DatabaseConnectionSchemaOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseExportRequest {
   q?: string;
 }
-export const GetDatabaseExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/export/", code: 200 })),
 ).annotate({ identifier: "GetDatabaseExportRequest" }) as any as S.Schema<GetDatabaseExportRequest>;
 
 export interface GetDatabaseExportResponse {}
-export const GetDatabaseExportResponse =
+const GetDatabaseExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetDatabaseExportResponse>;
 
 export interface GetDatabaseOauth2Request {
@@ -6685,7 +6631,7 @@ export interface GetDatabaseOauth2Request {
   scope?: string;
   error?: string;
 }
-export const GetDatabaseOauth2Request = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseOauth2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String.pipe(T.Query())),
     code: S.optional(S.String.pipe(T.Query())),
@@ -6695,14 +6641,14 @@ export const GetDatabaseOauth2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseOauth2Request" }) as any as S.Schema<GetDatabaseOauth2Request>;
 
 export interface GetDatabaseOauth2Response {}
-export const GetDatabaseOauth2Response =
+const GetDatabaseOauth2Response =
   CreateSecurityGroupResponse as any as S.Schema<GetDatabaseOauth2Response>;
 
 export interface GetDatabaseRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetDatabaseRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -6714,7 +6660,7 @@ export const GetDatabaseRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseRelatedObjectsRequest {
   pk: number;
 }
-export const GetDatabaseRelatedObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRelatedObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/{pk}/related_objects/", code: 200 })),
@@ -6727,7 +6673,7 @@ export interface DatabaseRelatedChart {
   slice_name?: string;
   viz_type?: string;
 }
-export const DatabaseRelatedChart = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     slice_name: S.optional(S.String),
@@ -6737,7 +6683,7 @@ export const DatabaseRelatedChart = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of dashboards */
 export type DatabaseRelatedChartsResultList = Array<DatabaseRelatedChart>;
-export const DatabaseRelatedChartsResultList = /*@__PURE__*/ S.Array(
+const DatabaseRelatedChartsResultList = /*@__PURE__*/ S.Array(
   DatabaseRelatedChart,
 ) as any as S.Schema<DatabaseRelatedChartsResultList>;
 
@@ -6747,7 +6693,7 @@ export interface DatabaseRelatedCharts {
   /** A list of dashboards */
   result?: DatabaseRelatedChartsResultList;
 }
-export const DatabaseRelatedCharts = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedCharts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(DatabaseRelatedChartsResultList),
@@ -6760,7 +6706,7 @@ export interface DatabaseRelatedDashboard {
   slug?: string;
   title?: string;
 }
-export const DatabaseRelatedDashboard = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedDashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     json_metadata: S.optional(S.Unknown),
@@ -6771,7 +6717,7 @@ export const DatabaseRelatedDashboard = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of dashboards */
 export type DatabaseRelatedDashboardsResultList = Array<DatabaseRelatedDashboard>;
-export const DatabaseRelatedDashboardsResultList = /*@__PURE__*/ S.Array(
+const DatabaseRelatedDashboardsResultList = /*@__PURE__*/ S.Array(
   DatabaseRelatedDashboard,
 ) as any as S.Schema<DatabaseRelatedDashboardsResultList>;
 
@@ -6781,7 +6727,7 @@ export interface DatabaseRelatedDashboards {
   /** A list of dashboards */
   result?: DatabaseRelatedDashboardsResultList;
 }
-export const DatabaseRelatedDashboards = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedDashboards = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(DatabaseRelatedDashboardsResultList),
@@ -6795,7 +6741,7 @@ export interface DatabaseRelatedDataset {
   schema?: string;
   table_name?: string;
 }
-export const DatabaseRelatedDataset = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     schema: S.optional(S.String),
@@ -6805,7 +6751,7 @@ export const DatabaseRelatedDataset = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of datasets */
 export type DatabaseRelatedDatasetsResultList = Array<DatabaseRelatedDataset>;
-export const DatabaseRelatedDatasetsResultList = /*@__PURE__*/ S.Array(
+const DatabaseRelatedDatasetsResultList = /*@__PURE__*/ S.Array(
   DatabaseRelatedDataset,
 ) as any as S.Schema<DatabaseRelatedDatasetsResultList>;
 
@@ -6815,7 +6761,7 @@ export interface DatabaseRelatedDatasets {
   /** A list of datasets */
   result?: DatabaseRelatedDatasetsResultList;
 }
-export const DatabaseRelatedDatasets = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedDatasets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(DatabaseRelatedDatasetsResultList),
@@ -6827,7 +6773,7 @@ export interface DatabaseRelatedObjectsResponse {
   dashboards?: DatabaseRelatedDashboards;
   datasets?: DatabaseRelatedDatasets;
 }
-export const DatabaseRelatedObjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRelatedObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charts: S.optional(DatabaseRelatedCharts),
     dashboards: S.optional(DatabaseRelatedDashboards),
@@ -6843,7 +6789,7 @@ export interface GetDatabaseSelectStarRequest {
   /** Table name */
   table_name: string;
 }
-export const GetDatabaseSelectStarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseSelectStarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     table_name: S.String.pipe(T.Label()),
@@ -6858,7 +6804,7 @@ export interface SelectStarResponseSchema {
   /** SQL select star */
   result?: string;
 }
-export const SelectStarResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const SelectStarResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String),
   }),
@@ -6872,7 +6818,7 @@ export interface GetDatabaseSelectStarRequest2 {
   /** Table schema */
   schema_name: string;
 }
-export const GetDatabaseSelectStarRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseSelectStarRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     table_name: S.String.pipe(T.Label()),
@@ -6896,7 +6842,7 @@ export interface GetDatabaseTableRequest {
   /** Table schema */
   schema_name: string;
 }
-export const GetDatabaseTableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     table_name: S.String.pipe(T.Label()),
@@ -6911,7 +6857,7 @@ export const GetDatabaseTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseTableRequest" }) as any as S.Schema<GetDatabaseTableRequest>;
 
 export type TableMetadataColumnsResponseKeysList = Array<string>;
-export const TableMetadataColumnsResponseKeysList =
+const TableMetadataColumnsResponseKeysList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataColumnsResponseKeysList>;
 
 export interface TableMetadataColumnsResponse {
@@ -6924,7 +6870,7 @@ export interface TableMetadataColumnsResponse {
   /** The column type */
   type?: string;
 }
-export const TableMetadataColumnsResponse = /*@__PURE__*/ S.suspend(() =>
+const TableMetadataColumnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duplicates_constraint: S.optional(S.String),
     keys: S.optional(TableMetadataColumnsResponseKeysList),
@@ -6938,12 +6884,12 @@ export const TableMetadataColumnsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns and their metadata */
 export type TableMetadataResponseSchemaColumnsList = Array<TableMetadataColumnsResponse>;
-export const TableMetadataResponseSchemaColumnsList = /*@__PURE__*/ S.Array(
+const TableMetadataResponseSchemaColumnsList = /*@__PURE__*/ S.Array(
   TableMetadataColumnsResponse,
 ) as any as S.Schema<TableMetadataResponseSchemaColumnsList>;
 
 export type TableMetadataForeignKeysIndexesResponseColumnNamesList = Array<string>;
-export const TableMetadataForeignKeysIndexesResponseColumnNamesList =
+const TableMetadataForeignKeysIndexesResponseColumnNamesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataForeignKeysIndexesResponseColumnNamesList>;
 
 export interface TableMetadataOptionsResponse {
@@ -6953,7 +6899,7 @@ export interface TableMetadataOptionsResponse {
   ondelete?: boolean;
   onupdate?: boolean;
 }
-export const TableMetadataOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const TableMetadataOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deferrable: S.optional(S.Boolean),
     initially: S.optional(S.Boolean),
@@ -6966,7 +6912,7 @@ export const TableMetadataOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableMetadataOptionsResponse>;
 
 export type TableMetadataForeignKeysIndexesResponseReferredColumnsList = Array<string>;
-export const TableMetadataForeignKeysIndexesResponseReferredColumnsList =
+const TableMetadataForeignKeysIndexesResponseReferredColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataForeignKeysIndexesResponseReferredColumnsList>;
 
 export interface TableMetadataForeignKeysIndexesResponse {
@@ -6979,7 +6925,7 @@ export interface TableMetadataForeignKeysIndexesResponse {
   referred_table?: string;
   type?: string;
 }
-export const TableMetadataForeignKeysIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+const TableMetadataForeignKeysIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_names: S.optional(TableMetadataForeignKeysIndexesResponseColumnNamesList),
     name: S.optional(S.String),
@@ -6996,17 +6942,17 @@ export const TableMetadataForeignKeysIndexesResponse = /*@__PURE__*/ S.suspend((
 /** A list of foreign keys and their metadata */
 export type TableMetadataResponseSchemaForeignKeysList =
   Array<TableMetadataForeignKeysIndexesResponse>;
-export const TableMetadataResponseSchemaForeignKeysList = /*@__PURE__*/ S.Array(
+const TableMetadataResponseSchemaForeignKeysList = /*@__PURE__*/ S.Array(
   TableMetadataForeignKeysIndexesResponse,
 ) as any as S.Schema<TableMetadataResponseSchemaForeignKeysList>;
 
 /** A list of indexes and their metadata */
 export type TableMetadataResponseSchemaIndexesList = Array<TableMetadataForeignKeysIndexesResponse>;
-export const TableMetadataResponseSchemaIndexesList =
+const TableMetadataResponseSchemaIndexesList =
   TableMetadataResponseSchemaForeignKeysList as any as S.Schema<TableMetadataResponseSchemaIndexesList>;
 
 export type TableMetadataPrimaryKeyResponseColumnNamesList = Array<string>;
-export const TableMetadataPrimaryKeyResponseColumnNamesList =
+const TableMetadataPrimaryKeyResponseColumnNamesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<TableMetadataPrimaryKeyResponseColumnNamesList>;
 
 export interface TableMetadataPrimaryKeyResponse {
@@ -7015,7 +6961,7 @@ export interface TableMetadataPrimaryKeyResponse {
   name?: string;
   type?: string;
 }
-export const TableMetadataPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const TableMetadataPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_names: S.optional(TableMetadataPrimaryKeyResponseColumnNamesList),
     name: S.optional(S.String),
@@ -7039,7 +6985,7 @@ export interface TableMetadataResponseSchema {
   /** SQL select star */
   selectStar?: string;
 }
-export const TableMetadataResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const TableMetadataResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(TableMetadataResponseSchemaColumnsList),
     foreignKeys: S.optional(TableMetadataResponseSchemaForeignKeysList),
@@ -7060,7 +7006,7 @@ export interface GetDatabaseTableExtraRequest {
   /** Table schema */
   schema_name: string;
 }
-export const GetDatabaseTableExtraRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseTableExtraRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     table_name: S.String.pipe(T.Label()),
@@ -7081,7 +7027,7 @@ export interface TableExtraMetadataResponseSchema {
   metadata?: unknown;
   partitions?: unknown;
 }
-export const TableExtraMetadataResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const TableExtraMetadataResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clustering: S.optional(S.Unknown),
     metadata: S.optional(S.Unknown),
@@ -7101,7 +7047,7 @@ export interface GetDatabaseTableMetadataRequest {
   /** Optional table catalog, if not passed default catalog will be used */
   catalog?: string;
 }
-export const GetDatabaseTableMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseTableMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     name: S.String.pipe(T.Query()),
@@ -7122,7 +7068,7 @@ export interface GetDatabaseTableMetadataExtraRequest {
   /** Optional table catalog, if not passed the catalog configured in the database will be used */
   catalog?: string;
 }
-export const GetDatabaseTableMetadataExtraRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseTableMetadataExtraRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     name: S.String.pipe(T.Query()),
@@ -7136,42 +7082,36 @@ export const GetDatabaseTableMetadataExtraRequest = /*@__PURE__*/ S.suspend(() =
 export interface GetDatasetRequest {
   q?: string;
 }
-export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/", code: 200 })),
 ).annotate({ identifier: "GetDatasetRequest" }) as any as S.Schema<GetDatasetRequest>;
 
 export type GetDatasetResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetDatasetResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetDatasetResponseIdsList = Array<string>;
-export const GetDatasetResponseIdsList =
+const GetDatasetResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatasetResponseIdsList>;
 
 export type GetDatasetResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetDatasetResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetDatasetResponseListColumnsList = Array<string>;
-export const GetDatasetResponseListColumnsList =
+const GetDatasetResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatasetResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetDatasetResponseOrderColumnsList = Array<string>;
-export const GetDatasetResponseOrderColumnsList =
+const GetDatasetResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetDatasetResponseOrderColumnsList>;
 
 export type DatasetRestApiGetListUser = CssTemplateRestApiGetListUser;
-export const DatasetRestApiGetListUser = CssTemplateRestApiGetListUser;
-
 export interface DatasetRestApiGetListDatabase {
   database_name: string;
   id?: number;
   uuid?: string | null;
 }
-export const DatasetRestApiGetListDatabase = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGetListDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_name: S.String,
     id: S.optional(S.Number),
@@ -7186,7 +7126,7 @@ export interface DatasetRestApiGetListSubject {
   label: string;
   type: number;
 }
-export const DatasetRestApiGetListSubject = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGetListSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     label: S.String,
@@ -7197,7 +7137,7 @@ export const DatasetRestApiGetListSubject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetRestApiGetListSubject>;
 
 export type DatasetRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-export const DatasetRestApiGetListEditorsList = /*@__PURE__*/ S.Array(
+const DatasetRestApiGetListEditorsList = /*@__PURE__*/ S.Array(
   DatasetRestApiGetListSubject,
 ) as any as S.Schema<DatasetRestApiGetListEditorsList>;
 
@@ -7221,7 +7161,7 @@ export interface DatasetRestApiGetList {
   table_name: string;
   uuid?: string | null;
 }
-export const DatasetRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     changed_by: S.optional(CssTemplateRestApiGetListUser),
@@ -7246,7 +7186,7 @@ export const DatasetRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetDatasetResponseResultList = Array<DatasetRestApiGetList>;
-export const GetDatasetResponseResultList = /*@__PURE__*/ S.Array(
+const GetDatasetResponseResultList = /*@__PURE__*/ S.Array(
   DatasetRestApiGetList,
 ) as any as S.Schema<GetDatasetResponseResultList>;
 
@@ -7266,7 +7206,7 @@ export interface GetDatasetResponse {
   /** The result from the get list query */
   result?: GetDatasetResponseResultList;
 }
-export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -7286,7 +7226,7 @@ export interface GetDatasetByIdOrUuidRequest {
   /** Should Jinja macros from sql, metrics and columns be rendered and included in the response */
   include_rendered_sql?: boolean;
 }
-export const GetDatasetByIdOrUuidRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetByIdOrUuidRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_uuid: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -7297,8 +7237,6 @@ export const GetDatasetByIdOrUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatasetByIdOrUuidRequest>;
 
 export type DatasetRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
-export const DatasetRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
-
 export interface DatasetRestApiGetTableColumn {
   advanced_data_type?: string | null;
   certification_details?: unknown;
@@ -7322,7 +7260,7 @@ export interface DatasetRestApiGetTableColumn {
   verbose_name?: string | null;
   warning_markdown?: unknown;
 }
-export const DatasetRestApiGetTableColumn = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGetTableColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_data_type: S.optional(S.NullOr(S.String)),
     certification_details: S.optional(S.Unknown),
@@ -7351,13 +7289,11 @@ export const DatasetRestApiGetTableColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetRestApiGetTableColumn>;
 
 export type DatasetRestApiGetColumnsList = Array<DatasetRestApiGetTableColumn>;
-export const DatasetRestApiGetColumnsList = /*@__PURE__*/ S.Array(
+const DatasetRestApiGetColumnsList = /*@__PURE__*/ S.Array(
   DatasetRestApiGetTableColumn,
 ) as any as S.Schema<DatasetRestApiGetColumnsList>;
 
 export type DatasetRestApiGetUser = AnnotationLayerRestApiGetListUser1;
-export const DatasetRestApiGetUser = AnnotationLayerRestApiGetListUser1;
-
 export interface DatasetRestApiGetDatabase {
   allow_multi_catalog?: unknown;
   backend?: unknown;
@@ -7365,7 +7301,7 @@ export interface DatasetRestApiGetDatabase {
   id?: number;
   uuid?: string | null;
 }
-export const DatasetRestApiGetDatabase = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGetDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_multi_catalog: S.optional(S.Unknown),
     backend: S.optional(S.Unknown),
@@ -7378,10 +7314,8 @@ export const DatasetRestApiGetDatabase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetRestApiGetDatabase>;
 
 export type DatasetRestApiGetSubject = DatasetRestApiGetListSubject;
-export const DatasetRestApiGetSubject = DatasetRestApiGetListSubject;
-
 export type DatasetRestApiGetEditorsList = Array<DatasetRestApiGetListSubject>;
-export const DatasetRestApiGetEditorsList =
+const DatasetRestApiGetEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<DatasetRestApiGetEditorsList>;
 
 export interface DatasetRestApiGetSqlMetric {
@@ -7403,7 +7337,7 @@ export interface DatasetRestApiGetSqlMetric {
   warning_markdown?: unknown;
   warning_text?: string | null;
 }
-export const DatasetRestApiGetSqlMetric = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGetSqlMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification_details: S.optional(S.Unknown),
     certified_by: S.optional(S.Unknown),
@@ -7428,7 +7362,7 @@ export const DatasetRestApiGetSqlMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetRestApiGetSqlMetric>;
 
 export type DatasetRestApiGetMetricsList = Array<DatasetRestApiGetSqlMetric>;
-export const DatasetRestApiGetMetricsList = /*@__PURE__*/ S.Array(
+const DatasetRestApiGetMetricsList = /*@__PURE__*/ S.Array(
   DatasetRestApiGetSqlMetric,
 ) as any as S.Schema<DatasetRestApiGetMetricsList>;
 
@@ -7477,7 +7411,7 @@ export interface DatasetRestApiGet {
   uuid?: string | null;
   verbose_map?: unknown;
 }
-export const DatasetRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     always_filter_main_dttm: S.optional(S.NullOr(S.Boolean)),
     cache_timeout: S.optional(S.Unknown),
@@ -7530,7 +7464,7 @@ export interface GetDatasetByIdOrUuidResponse {
   id?: string;
   result?: DatasetRestApiGet;
 }
-export const GetDatasetByIdOrUuidResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetByIdOrUuidResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(DatasetRestApiGet),
@@ -7543,7 +7477,7 @@ export interface GetDatasetDistinctRequest {
   column_name: string;
   q?: string;
 }
-export const GetDatasetDistinctRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetDistinctRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -7556,14 +7490,14 @@ export interface DistinctResultResponse {
   /** The distinct item */
   text?: string;
 }
-export const DistinctResultResponse = /*@__PURE__*/ S.suspend(() =>
+const DistinctResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
 ).annotate({ identifier: "DistinctResultResponse" }) as any as S.Schema<DistinctResultResponse>;
 
 export type DistincResponseSchemaResultList = Array<DistinctResultResponse>;
-export const DistincResponseSchemaResultList = /*@__PURE__*/ S.Array(
+const DistincResponseSchemaResultList = /*@__PURE__*/ S.Array(
   DistinctResultResponse,
 ) as any as S.Schema<DistincResponseSchemaResultList>;
 
@@ -7572,7 +7506,7 @@ export interface DistincResponseSchema {
   count?: number;
   result?: DistincResponseSchemaResultList;
 }
-export const DistincResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const DistincResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(DistincResponseSchemaResultList),
@@ -7583,7 +7517,7 @@ export interface GetDatasetDrillInfoRequest {
   /** The dataset ID */
   pk: number;
 }
-export const GetDatasetDrillInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetDrillInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/{pk}/drill_info/", code: 200 })),
@@ -7594,20 +7528,20 @@ export const GetDatasetDrillInfoRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetDrillInfoResponse {
   result?: unknown;
 }
-export const GetDatasetDrillInfoResponse =
+const GetDatasetDrillInfoResponse =
   CreateChartFavoriteResponse as any as S.Schema<GetDatasetDrillInfoResponse>;
 
 export interface GetDatasetExportRequest {
   q?: string;
 }
-export const GetDatasetExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/export/", code: 200 })),
 ).annotate({ identifier: "GetDatasetExportRequest" }) as any as S.Schema<GetDatasetExportRequest>;
 
 export interface GetDatasetExportResponse {}
-export const GetDatasetExportResponse =
+const GetDatasetExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetDatasetExportResponse>;
 
 export interface GetDatasetOrCreateRequest {
@@ -7624,7 +7558,7 @@ export interface GetDatasetOrCreateRequest {
   /** Template params for the table */
   template_params?: string;
 }
-export const GetDatasetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     always_filter_main_dttm: S.optional(S.Boolean),
     catalog: S.optional(S.NullOr(S.String)),
@@ -7641,7 +7575,7 @@ export const GetDatasetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetOrCreateResponseResult {
   table_id?: number;
 }
-export const GetDatasetOrCreateResponseResult = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetOrCreateResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     table_id: S.optional(S.Number),
   }),
@@ -7652,7 +7586,7 @@ export const GetDatasetOrCreateResponseResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetOrCreateResponse {
   result?: GetDatasetOrCreateResponseResult;
 }
-export const GetDatasetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetDatasetOrCreateResponseResult),
   }),
@@ -7663,7 +7597,7 @@ export const GetDatasetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetPurgeImpactRequest {
   uuid: string;
 }
-export const GetDatasetPurgeImpactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetPurgeImpactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/{uuid}/purge-impact", code: 200 })),
@@ -7677,7 +7611,7 @@ export interface DatasetPurgeImpactObject {
   url: string | null;
   uuid: string;
 }
-export const DatasetPurgeImpactObject = /*@__PURE__*/ S.suspend(() =>
+const DatasetPurgeImpactObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archived: S.Boolean,
     name: S.String,
@@ -7687,7 +7621,7 @@ export const DatasetPurgeImpactObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetPurgeImpactObject" }) as any as S.Schema<DatasetPurgeImpactObject>;
 
 export type DatasetPurgeImpactCollectionResultList = Array<DatasetPurgeImpactObject>;
-export const DatasetPurgeImpactCollectionResultList = /*@__PURE__*/ S.Array(
+const DatasetPurgeImpactCollectionResultList = /*@__PURE__*/ S.Array(
   DatasetPurgeImpactObject,
 ) as any as S.Schema<DatasetPurgeImpactCollectionResultList>;
 
@@ -7696,7 +7630,7 @@ export interface DatasetPurgeImpactCollection {
   restricted_count: number;
   result: DatasetPurgeImpactCollectionResultList;
 }
-export const DatasetPurgeImpactCollection = /*@__PURE__*/ S.suspend(() =>
+const DatasetPurgeImpactCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     restricted_count: S.Number,
@@ -7711,7 +7645,7 @@ export interface DatasetPurgeImpactSchema {
   dashboards: DatasetPurgeImpactCollection;
   impact_token: string;
 }
-export const DatasetPurgeImpactSchema = /*@__PURE__*/ S.suspend(() =>
+const DatasetPurgeImpactSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charts: DatasetPurgeImpactCollection,
     dashboards: DatasetPurgeImpactCollection,
@@ -7723,7 +7657,7 @@ export interface GetDatasetRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetDatasetRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -7733,7 +7667,7 @@ export const GetDatasetRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetRelatedObjectsRequest {
   q?: string;
 }
-export const GetDatasetRelatedObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRelatedObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/related_objects/", code: 200 })),
@@ -7742,11 +7676,9 @@ export const GetDatasetRelatedObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatasetRelatedObjectsRequest>;
 
 export type DatasetRelatedChart = DatabaseRelatedChart;
-export const DatasetRelatedChart = DatabaseRelatedChart;
-
 /** A list of dashboards */
 export type DatasetRelatedChartsResultList = Array<DatabaseRelatedChart>;
-export const DatasetRelatedChartsResultList =
+const DatasetRelatedChartsResultList =
   DatabaseRelatedChartsResultList as any as S.Schema<DatasetRelatedChartsResultList>;
 
 export interface DatasetRelatedCharts {
@@ -7757,7 +7689,7 @@ export interface DatasetRelatedCharts {
   /** A list of dashboards */
   result?: DatasetRelatedChartsResultList;
 }
-export const DatasetRelatedCharts = /*@__PURE__*/ S.suspend(() =>
+const DatasetRelatedCharts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     restricted_count: S.optional(S.Number),
@@ -7766,11 +7698,9 @@ export const DatasetRelatedCharts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetRelatedCharts" }) as any as S.Schema<DatasetRelatedCharts>;
 
 export type DatasetRelatedDashboard = DatabaseRelatedDashboard;
-export const DatasetRelatedDashboard = DatabaseRelatedDashboard;
-
 /** A list of dashboards */
 export type DatasetRelatedDashboardsResultList = Array<DatabaseRelatedDashboard>;
-export const DatasetRelatedDashboardsResultList =
+const DatasetRelatedDashboardsResultList =
   DatabaseRelatedDashboardsResultList as any as S.Schema<DatasetRelatedDashboardsResultList>;
 
 export interface DatasetRelatedDashboards {
@@ -7781,7 +7711,7 @@ export interface DatasetRelatedDashboards {
   /** A list of dashboards */
   result?: DatasetRelatedDashboardsResultList;
 }
-export const DatasetRelatedDashboards = /*@__PURE__*/ S.suspend(() =>
+const DatasetRelatedDashboards = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     restricted_count: S.optional(S.Number),
@@ -7793,7 +7723,7 @@ export interface DatasetRelatedObjectsResponse {
   charts?: DatasetRelatedCharts;
   dashboards?: DatasetRelatedDashboards;
 }
-export const DatasetRelatedObjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const DatasetRelatedObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charts: S.optional(DatasetRelatedCharts),
     dashboards: S.optional(DatasetRelatedDashboards),
@@ -7805,7 +7735,7 @@ export const DatasetRelatedObjectsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasetRelatedObjectsRequest2 {
   id_or_uuid: string;
 }
-export const GetDatasetRelatedObjectsRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRelatedObjectsRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -7821,7 +7751,7 @@ export interface GetDatasetVersionRequest {
   /** Version UUID as returned by the list endpoint */
   version_uuid_str: string;
 }
-export const GetDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     version_uuid_str: S.String.pipe(T.Label()),
@@ -7836,33 +7766,30 @@ export const GetDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The dataset's scalar fields at the target version (entity-specific keys), plus `columns` / `metrics` as they were at that version, plus a `_version` block with the version-level metadata. */
 export type GetDatasetVersionResponseResult = GetChartVersionResponseResult;
-export const GetDatasetVersionResponseResult = GetChartVersionResponseResult;
-
 export interface GetDatasetVersionResponse {
   /** The dataset's scalar fields at the target version (entity-specific keys), plus `columns` / `metrics` as they were at that version, plus a `_version` block with the version-level metadata. */
   result?: GetChartVersionResponseResult;
 }
-export const GetDatasetVersionResponse =
+const GetDatasetVersionResponse =
   GetDashboardVersionResponse as any as S.Schema<GetDatasetVersionResponse>;
 
 export interface GetDatasourceRequest {
   q?: string;
 }
-export const GetDatasourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/datasource/", code: 200 })),
 ).annotate({ identifier: "GetDatasourceRequest" }) as any as S.Schema<GetDatasourceRequest>;
 
 export interface GetDatasourceResponse {}
-export const GetDatasourceResponse =
-  CreateSecurityGroupResponse as any as S.Schema<GetDatasourceResponse>;
+const GetDatasourceResponse = CreateSecurityGroupResponse as any as S.Schema<GetDatasourceResponse>;
 
 export interface GetDatasourceByDatasourceIdRequest {
   datasource_type: string;
   datasource_id: number;
 }
-export const GetDatasourceByDatasourceIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasourceByDatasourceIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_type: S.String.pipe(T.Label()),
     datasource_id: S.Number.pipe(T.Label()),
@@ -7880,7 +7807,7 @@ export const GetDatasourceByDatasourceIdRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatasourceByDatasourceIdResponse {
   result?: unknown;
 }
-export const GetDatasourceByDatasourceIdResponse =
+const GetDatasourceByDatasourceIdResponse =
   CreateChartFavoriteResponse as any as S.Schema<GetDatasourceByDatasourceIdResponse>;
 
 export interface GetEmbeddedDashboardRequest {
@@ -7897,7 +7824,7 @@ export interface GetEmbeddedDashboardRequest {
   /** Permalink key to apply filters. (optional). */
   permalink_key?: string;
 }
-export const GetEmbeddedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmbeddedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     uiConfig: S.optional(S.Number.pipe(T.Query())),
@@ -7913,7 +7840,7 @@ export const GetEmbeddedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetEmbeddedDashboardResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-export const GetEmbeddedDashboardResponse =
+const GetEmbeddedDashboardResponse =
   CreateDashboardEmbeddedResponse as any as S.Schema<GetEmbeddedDashboardResponse>;
 
 export interface GetExploreRequest {
@@ -7923,7 +7850,7 @@ export interface GetExploreRequest {
   datasource_id?: number;
   datasource_type?: string;
 }
-export const GetExploreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExploreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     form_data_key: S.optional(S.String.pipe(T.Query())),
     permalink_key: S.optional(S.String.pipe(T.Query())),
@@ -7935,34 +7862,30 @@ export const GetExploreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns metadata. */
 export type DatasetColumnsList = Array<unknown>;
-export const DatasetColumnsList = TagObjectObjectsToTagList as any as S.Schema<DatasetColumnsList>;
+const DatasetColumnsList = TagObjectObjectsToTagList as any as S.Schema<DatasetColumnsList>;
 
 /** List of editors */
 export type DatasetEditorsList = Array<SubjectResponse>;
-export const DatasetEditorsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<DatasetEditorsList>;
+const DatasetEditorsList = ChartGetResponseSchemaEditorsList as any as S.Schema<DatasetEditorsList>;
 
 export type DatasetGranularitySqlaItemList = Array<unknown>;
-export const DatasetGranularitySqlaItemList =
+const DatasetGranularitySqlaItemList =
   TagObjectObjectsToTagList as any as S.Schema<DatasetGranularitySqlaItemList>;
 
 /** Name of temporal column used for time filtering for SQL datasources. This field is deprecated, use `granularity` instead. */
 export type DatasetGranularitySqlaList = Array<DatasetGranularitySqlaItemList>;
-export const DatasetGranularitySqlaList = /*@__PURE__*/ S.Array(
+const DatasetGranularitySqlaList = /*@__PURE__*/ S.Array(
   DatasetGranularitySqlaItemList,
 ) as any as S.Schema<DatasetGranularitySqlaList>;
 
 /** Dataset metrics. */
 export type DatasetMetricsList = Array<unknown>;
-export const DatasetMetricsList = TagObjectObjectsToTagList as any as S.Schema<DatasetMetricsList>;
+const DatasetMetricsList = TagObjectObjectsToTagList as any as S.Schema<DatasetMetricsList>;
 
 export type DatasetOrderByChoicesItemList = Array<string>;
-export const DatasetOrderByChoicesItemList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DatasetOrderByChoicesItemList>;
-
 /** List of order by columns. */
 export type DatasetOrderByChoicesList = Array<DatasetOrderByChoicesItemList>;
-export const DatasetOrderByChoicesList =
+const DatasetOrderByChoicesList =
   ChartDataQueryObjectGroupingSetsList as any as S.Schema<DatasetOrderByChoicesList>;
 
 export interface RlsRole {
@@ -7971,7 +7894,7 @@ export interface RlsRole {
   /** Role name. */
   name?: string;
 }
-export const RlsRole = /*@__PURE__*/ S.suspend(() =>
+const RlsRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -7980,9 +7903,7 @@ export const RlsRole = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles associated with the RLS filter. */
 export type RlsFilterRolesList = Array<RlsRole>;
-export const RlsFilterRolesList = /*@__PURE__*/ S.Array(
-  RlsRole,
-) as any as S.Schema<RlsFilterRolesList>;
+const RlsFilterRolesList = /*@__PURE__*/ S.Array(RlsRole) as any as S.Schema<RlsFilterRolesList>;
 
 export interface RlsFilter {
   /** RLS filter clause. */
@@ -8000,7 +7921,7 @@ export interface RlsFilter {
   /** Roles associated with the RLS filter. */
   roles?: RlsFilterRolesList;
 }
-export const RlsFilter = /*@__PURE__*/ S.suspend(() =>
+const RlsFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clause: S.optional(S.NullOr(S.String)),
     filter_type: S.optional(S.NullOr(S.String)),
@@ -8014,17 +7935,14 @@ export const RlsFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Row-level security filters applied to this dataset. */
 export type DatasetRlsFiltersList = Array<RlsFilter>;
-export const DatasetRlsFiltersList = /*@__PURE__*/ S.Array(
+const DatasetRlsFiltersList = /*@__PURE__*/ S.Array(
   RlsFilter,
 ) as any as S.Schema<DatasetRlsFiltersList>;
 
 export type DatasetTimeGrainSqlaItemList = Array<string>;
-export const DatasetTimeGrainSqlaItemList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DatasetTimeGrainSqlaItemList>;
-
 /** List of temporal granularities supported by the dataset. */
 export type DatasetTimeGrainSqlaList = Array<DatasetTimeGrainSqlaItemList>;
-export const DatasetTimeGrainSqlaList =
+const DatasetTimeGrainSqlaList =
   ChartDataQueryObjectGroupingSetsList as any as S.Schema<DatasetTimeGrainSqlaList>;
 
 export interface Dataset {
@@ -8097,7 +8015,7 @@ export interface Dataset {
   /** Mapping from raw name to verbose name. */
   verbose_map?: unknown;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.Number),
     column_formats: S.optional(S.Unknown),
@@ -8138,8 +8056,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
 
 /** List of editors */
 export type SliceEditorsList = Array<SubjectResponse>;
-export const SliceEditorsList =
-  ChartGetResponseSchemaEditorsList as any as S.Schema<SliceEditorsList>;
+const SliceEditorsList = ChartGetResponseSchemaEditorsList as any as S.Schema<SliceEditorsList>;
 
 export interface Slice {
   /** Duration (in seconds) of the caching timeout for this chart. */
@@ -8177,7 +8094,7 @@ export interface Slice {
   /** The slice URL. */
   slice_url?: string;
 }
-export const Slice = /*@__PURE__*/ S.suspend(() =>
+const Slice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.Number),
     certification_details: S.optional(S.String),
@@ -8207,7 +8124,7 @@ export interface ExploreContextSchema {
   message?: string;
   slice?: Slice;
 }
-export const ExploreContextSchema = /*@__PURE__*/ S.suspend(() =>
+const ExploreContextSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(Dataset),
     form_data: S.optional(S.Unknown),
@@ -8219,7 +8136,7 @@ export const ExploreContextSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetExploreFormDataRequest {
   key: string;
 }
-export const GetExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/explore/form_data/{key}", code: 200 })),
@@ -8231,7 +8148,7 @@ export interface GetExploreFormDataResponse {
   /** The stored form_data */
   form_data?: string;
 }
-export const GetExploreFormDataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExploreFormDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     form_data: S.optional(S.String),
   }),
@@ -8242,7 +8159,7 @@ export const GetExploreFormDataResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetExplorePermalinkRequest {
   key: string;
 }
-export const GetExplorePermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExplorePermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/explore/permalink/{key}", code: 200 })),
@@ -8254,37 +8171,33 @@ export interface GetExplorePermalinkResponse {
   /** The stored state */
   state?: unknown;
 }
-export const GetExplorePermalinkResponse =
+const GetExplorePermalinkResponse =
   GetDashboardPermalinkResponse as any as S.Schema<GetExplorePermalinkResponse>;
 
 export interface GetLogRequest {
   q?: string;
 }
-export const GetLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/log/", code: 200 })),
 ).annotate({ identifier: "GetLogRequest" }) as any as S.Schema<GetLogRequest>;
 
 export type GetLogResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetLogResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetLogResponseIdsList = Array<string>;
-export const GetLogResponseIdsList =
+const GetLogResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogResponseIdsList>;
 
 export type GetLogResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetLogResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetLogResponseListColumnsList = Array<string>;
-export const GetLogResponseListColumnsList =
+const GetLogResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetLogResponseOrderColumnsList = Array<string>;
-export const GetLogResponseOrderColumnsList =
+const GetLogResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogResponseOrderColumnsList>;
 
 export interface LogRestApiGetListUser {
@@ -8292,7 +8205,7 @@ export interface LogRestApiGetListUser {
   last_name: string;
   username: string;
 }
-export const LogRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
+const LogRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.String,
     last_name: S.String,
@@ -8311,7 +8224,7 @@ export interface LogRestApiGetList {
   user?: LogRestApiGetListUser;
   user_id?: unknown | null;
 }
-export const LogRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const LogRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.NullOr(S.String)),
     dashboard_id: S.optional(S.NullOr(S.Number)),
@@ -8327,7 +8240,7 @@ export const LogRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetLogResponseResultList = Array<LogRestApiGetList>;
-export const GetLogResponseResultList = /*@__PURE__*/ S.Array(
+const GetLogResponseResultList = /*@__PURE__*/ S.Array(
   LogRestApiGetList,
 ) as any as S.Schema<GetLogResponseResultList>;
 
@@ -8347,7 +8260,7 @@ export interface GetLogResponse {
   /** The result from the get list query */
   result?: GetLogResponseResultList;
 }
-export const GetLogResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -8364,7 +8277,7 @@ export interface GetLogByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetLogByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -8372,20 +8285,12 @@ export const GetLogByPkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogByPkRequest" }) as any as S.Schema<GetLogByPkRequest>;
 
 export type GetLogByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetLogByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetLogByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetLogByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type LogRestApiGetUser = LogRestApiGetListUser;
-export const LogRestApiGetUser = LogRestApiGetListUser;
-
 export type LogRestApiGet = LogRestApiGetList;
-export const LogRestApiGet = LogRestApiGetList;
-
 /** A list of columns */
 export type GetLogByPkResponseShowColumnsList = Array<string>;
-export const GetLogByPkResponseShowColumnsList =
+const GetLogByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetLogByPkResponseShowColumnsList>;
 
 export interface GetLogByPkResponse {
@@ -8399,7 +8304,7 @@ export interface GetLogByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetLogByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLogByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -8411,7 +8316,7 @@ export const GetLogByPkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogByPkResponse" }) as any as S.Schema<GetLogByPkResponse>;
 
 export interface GetMeRequest {}
-export const GetMeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/me/", code: 200 })),
 ).annotate({ identifier: "GetMeRequest" }) as any as S.Schema<GetMeRequest>;
 
@@ -8419,10 +8324,8 @@ export interface UserGroup {
   id?: number;
   name?: string;
 }
-export const UserGroup = RlsRole as any as S.Schema<UserGroup>;
-
 export type UserResponseSchemaGroupsList = Array<UserGroup>;
-export const UserResponseSchemaGroupsList =
+const UserResponseSchemaGroupsList =
   RlsFilterRolesList as any as S.Schema<UserResponseSchemaGroupsList>;
 
 export interface UserResponseSchema {
@@ -8436,7 +8339,7 @@ export interface UserResponseSchema {
   login_count?: number;
   username?: string;
 }
-export const UserResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const UserResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     first_name: S.optional(S.String),
@@ -8453,56 +8356,52 @@ export const UserResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeResponse {
   result?: UserResponseSchema;
 }
-export const GetMeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UserResponseSchema),
   }),
 ).annotate({ identifier: "GetMeResponse" }) as any as S.Schema<GetMeResponse>;
 
 export interface GetMeRolesRequest {}
-export const GetMeRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/me/roles/", code: 200 })),
 ).annotate({ identifier: "GetMeRolesRequest" }) as any as S.Schema<GetMeRolesRequest>;
 
 export interface GetMeRolesResponse {
   result?: UserResponseSchema;
 }
-export const GetMeRolesResponse = GetMeResponse as any as S.Schema<GetMeRolesResponse>;
+const GetMeRolesResponse = GetMeResponse as any as S.Schema<GetMeRolesResponse>;
 
 export interface GetQueryRequest {
   q?: string;
 }
-export const GetQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/query/", code: 200 })),
 ).annotate({ identifier: "GetQueryRequest" }) as any as S.Schema<GetQueryRequest>;
 
 export type GetQueryResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetQueryResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetQueryResponseIdsList = Array<string>;
-export const GetQueryResponseIdsList =
+const GetQueryResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryResponseIdsList>;
 
 export type GetQueryResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetQueryResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetQueryResponseListColumnsList = Array<string>;
-export const GetQueryResponseListColumnsList =
+const GetQueryResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetQueryResponseOrderColumnsList = Array<string>;
-export const GetQueryResponseOrderColumnsList =
+const GetQueryResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryResponseOrderColumnsList>;
 
 export interface Database1 {
   database_name?: string;
 }
-export const Database1 = /*@__PURE__*/ S.suspend(() =>
+const Database1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_name: S.optional(S.String),
   }),
@@ -8526,7 +8425,7 @@ export interface QueryRestApiGetList {
   tracking_url?: string;
   user?: VersionChangedBy;
 }
-export const QueryRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const QueryRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_on: S.optional(S.String),
     database: S.optional(Database1),
@@ -8549,7 +8448,7 @@ export const QueryRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetQueryResponseResultList = Array<QueryRestApiGetList>;
-export const GetQueryResponseResultList = /*@__PURE__*/ S.Array(
+const GetQueryResponseResultList = /*@__PURE__*/ S.Array(
   QueryRestApiGetList,
 ) as any as S.Schema<GetQueryResponseResultList>;
 
@@ -8569,7 +8468,7 @@ export interface GetQueryResponse {
   /** The result from the get list query */
   result?: GetQueryResponseResultList;
 }
-export const GetQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -8586,7 +8485,7 @@ export interface GetQueryByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -8594,14 +8493,8 @@ export const GetQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetQueryByPkRequest" }) as any as S.Schema<GetQueryByPkRequest>;
 
 export type GetQueryByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetQueryByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetQueryByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetQueryByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type QueryRestApiGetDatabase = LogRestApiPost;
-export const QueryRestApiGetDatabase = LogRestApiPost;
-
 export interface QueryRestApiGet {
   changed_on?: string | null;
   client_id: string;
@@ -8629,7 +8522,7 @@ export interface QueryRestApiGet {
   tmp_table_name?: string | null;
   tracking_url?: unknown;
 }
-export const QueryRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const QueryRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_on: S.optional(S.NullOr(S.String)),
     client_id: S.String,
@@ -8661,7 +8554,7 @@ export const QueryRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetQueryByPkResponseShowColumnsList = Array<string>;
-export const GetQueryByPkResponseShowColumnsList =
+const GetQueryByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetQueryByPkResponseShowColumnsList>;
 
 export interface GetQueryByPkResponse {
@@ -8675,7 +8568,7 @@ export interface GetQueryByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetQueryByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQueryByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -8690,7 +8583,7 @@ export interface GetQueryDistinctRequest {
   column_name: string;
   q?: string;
 }
-export const GetQueryDistinctRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueryDistinctRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -8701,7 +8594,7 @@ export interface GetQueryRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetQueryRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueryRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -8711,51 +8604,41 @@ export const GetQueryRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetReportRequest {
   q?: string;
 }
-export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/report/", code: 200 })),
 ).annotate({ identifier: "GetReportRequest" }) as any as S.Schema<GetReportRequest>;
 
 export type GetReportResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetReportResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetReportResponseIdsList = Array<string>;
-export const GetReportResponseIdsList =
+const GetReportResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportResponseIdsList>;
 
 export type GetReportResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetReportResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetReportResponseListColumnsList = Array<string>;
-export const GetReportResponseListColumnsList =
+const GetReportResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetReportResponseOrderColumnsList = Array<string>;
-export const GetReportResponseOrderColumnsList =
+const GetReportResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportResponseOrderColumnsList>;
 
 export type ReportScheduleRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-export const ReportScheduleRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-
 export type ReportScheduleRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
-export const ReportScheduleRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
-
 export type ReportScheduleRestApiGetListSubject = DatasetRestApiGetListSubject;
-export const ReportScheduleRestApiGetListSubject = DatasetRestApiGetListSubject;
-
 export type ReportScheduleRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-export const ReportScheduleRestApiGetListEditorsList =
+const ReportScheduleRestApiGetListEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<ReportScheduleRestApiGetListEditorsList>;
 
 export interface ReportScheduleRestApiGetListReportRecipients {
   id?: number;
   type: string;
 }
-export const ReportScheduleRestApiGetListReportRecipients = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGetListReportRecipients = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     type: S.String,
@@ -8766,7 +8649,7 @@ export const ReportScheduleRestApiGetListReportRecipients = /*@__PURE__*/ S.susp
 
 export type ReportScheduleRestApiGetListRecipientsList =
   Array<ReportScheduleRestApiGetListReportRecipients>;
-export const ReportScheduleRestApiGetListRecipientsList = /*@__PURE__*/ S.Array(
+const ReportScheduleRestApiGetListRecipientsList = /*@__PURE__*/ S.Array(
   ReportScheduleRestApiGetListReportRecipients,
 ) as any as S.Schema<ReportScheduleRestApiGetListRecipientsList>;
 
@@ -8799,7 +8682,7 @@ export interface ReportScheduleRestApiGetList {
   timezone?: string;
   type: string;
 }
-export const ReportScheduleRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
@@ -8835,7 +8718,7 @@ export const ReportScheduleRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetReportResponseResultList = Array<ReportScheduleRestApiGetList>;
-export const GetReportResponseResultList = /*@__PURE__*/ S.Array(
+const GetReportResponseResultList = /*@__PURE__*/ S.Array(
   ReportScheduleRestApiGetList,
 ) as any as S.Schema<GetReportResponseResultList>;
 
@@ -8855,7 +8738,7 @@ export interface GetReportResponse {
   /** The result from the get list query */
   result?: GetReportResponseResultList;
 }
-export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -8872,7 +8755,7 @@ export interface GetReportByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetReportByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -8880,17 +8763,13 @@ export const GetReportByPkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetReportByPkRequest" }) as any as S.Schema<GetReportByPkRequest>;
 
 export type GetReportByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetReportByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetReportByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetReportByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export interface ReportScheduleRestApiGetSlice {
   id?: number;
   slice_name?: string | null;
   viz_type?: string | null;
 }
-export const ReportScheduleRestApiGetSlice = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGetSlice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     slice_name: S.optional(S.NullOr(S.String)),
@@ -8904,7 +8783,7 @@ export interface ReportScheduleRestApiGetDashboard {
   dashboard_title?: string | null;
   id?: number;
 }
-export const ReportScheduleRestApiGetDashboard = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGetDashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_title: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -8917,7 +8796,7 @@ export interface ReportScheduleRestApiGetDatabase {
   database_name: string;
   id?: number;
 }
-export const ReportScheduleRestApiGetDatabase = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGetDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_name: S.String,
     id: S.optional(S.Number),
@@ -8927,10 +8806,8 @@ export const ReportScheduleRestApiGetDatabase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportScheduleRestApiGetDatabase>;
 
 export type ReportScheduleRestApiGetSubject = DatasetRestApiGetListSubject;
-export const ReportScheduleRestApiGetSubject = DatasetRestApiGetListSubject;
-
 export type ReportScheduleRestApiGetEditorsList = Array<DatasetRestApiGetListSubject>;
-export const ReportScheduleRestApiGetEditorsList =
+const ReportScheduleRestApiGetEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<ReportScheduleRestApiGetEditorsList>;
 
 export interface ReportScheduleRestApiGetReportRecipients {
@@ -8938,7 +8815,7 @@ export interface ReportScheduleRestApiGetReportRecipients {
   recipient_config_json?: string | null;
   type: string;
 }
-export const ReportScheduleRestApiGetReportRecipients = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGetReportRecipients = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     recipient_config_json: S.optional(S.NullOr(S.String)),
@@ -8950,7 +8827,7 @@ export const ReportScheduleRestApiGetReportRecipients = /*@__PURE__*/ S.suspend(
 
 export type ReportScheduleRestApiGetRecipientsList =
   Array<ReportScheduleRestApiGetReportRecipients>;
-export const ReportScheduleRestApiGetRecipientsList = /*@__PURE__*/ S.Array(
+const ReportScheduleRestApiGetRecipientsList = /*@__PURE__*/ S.Array(
   ReportScheduleRestApiGetReportRecipients,
 ) as any as S.Schema<ReportScheduleRestApiGetRecipientsList>;
 
@@ -8991,7 +8868,7 @@ export interface ReportScheduleRestApiGet {
   validator_type?: string | null;
   working_timeout?: number | null;
 }
-export const ReportScheduleRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     chart: S.optional(ReportScheduleRestApiGetSlice),
@@ -9033,7 +8910,7 @@ export const ReportScheduleRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetReportByPkResponseShowColumnsList = Array<string>;
-export const GetReportByPkResponseShowColumnsList =
+const GetReportByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetReportByPkResponseShowColumnsList>;
 
 export interface GetReportByPkResponse {
@@ -9047,7 +8924,7 @@ export interface GetReportByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetReportByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -9065,7 +8942,7 @@ export interface GetReportLogRequest {
   log_id: number;
   q?: string;
 }
-export const GetReportLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     log_id: S.Number.pipe(T.Label()),
@@ -9084,7 +8961,7 @@ export interface ReportExecutionLogRestApiGet {
   value?: number | null;
   value_row_json?: string | null;
 }
-export const ReportExecutionLogRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const ReportExecutionLogRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_dttm: S.optional(S.NullOr(S.String)),
     error_message: S.optional(S.NullOr(S.String)),
@@ -9105,7 +8982,7 @@ export interface GetReportLogResponse {
   id?: string;
   result?: ReportExecutionLogRestApiGet;
 }
-export const GetReportLogResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     result: S.optional(ReportExecutionLogRestApiGet),
@@ -9116,7 +8993,7 @@ export interface GetReportRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetReportRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9126,7 +9003,7 @@ export const GetReportRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRowlevelsecurityRequest {
   q?: string;
 }
-export const GetRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/rowlevelsecurity/", code: 200 })),
@@ -9136,40 +9013,33 @@ export const GetRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetRowlevelsecurityResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetRowlevelsecurityResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetRowlevelsecurityResponseIdsList = Array<string>;
-export const GetRowlevelsecurityResponseIdsList =
+const GetRowlevelsecurityResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityResponseIdsList>;
 
 export type GetRowlevelsecurityResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetRowlevelsecurityResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetRowlevelsecurityResponseListColumnsList = Array<string>;
-export const GetRowlevelsecurityResponseListColumnsList =
+const GetRowlevelsecurityResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetRowlevelsecurityResponseOrderColumnsList = Array<string>;
-export const GetRowlevelsecurityResponseOrderColumnsList =
+const GetRowlevelsecurityResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityResponseOrderColumnsList>;
 
 /** filter_type_description */
 export type RLSRestApiGetListFilterType = "Regular" | "Base";
-export const RLSRestApiGetListFilterType = S.String;
+const RLSRestApiGetListFilterType = S.String;
 
 export type RLSRestApiGetListSubjectsList = Array<SubjectResponse>;
-export const RLSRestApiGetListSubjectsList =
+const RLSRestApiGetListSubjectsList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<RLSRestApiGetListSubjectsList>;
 
 export type Tables = DatabaseRelatedDataset;
-export const Tables = DatabaseRelatedDataset;
-
 export type RLSRestApiGetListTablesList = Array<DatabaseRelatedDataset>;
-export const RLSRestApiGetListTablesList =
+const RLSRestApiGetListTablesList =
   DatabaseRelatedDatasetsResultList as any as S.Schema<RLSRestApiGetListTablesList>;
 
 export interface RLSRestApiGetList {
@@ -9190,7 +9060,7 @@ export interface RLSRestApiGetList {
   subjects?: RLSRestApiGetListSubjectsList;
   tables?: RLSRestApiGetListTablesList;
 }
-export const RLSRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const RLSRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(VersionChangedBy),
     changed_on_delta_humanized: S.optional(S.Unknown),
@@ -9207,7 +9077,7 @@ export const RLSRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetRowlevelsecurityResponseResultList = Array<RLSRestApiGetList>;
-export const GetRowlevelsecurityResponseResultList = /*@__PURE__*/ S.Array(
+const GetRowlevelsecurityResponseResultList = /*@__PURE__*/ S.Array(
   RLSRestApiGetList,
 ) as any as S.Schema<GetRowlevelsecurityResponseResultList>;
 
@@ -9227,7 +9097,7 @@ export interface GetRowlevelsecurityResponse {
   /** The result from the get list query */
   result?: GetRowlevelsecurityResponseResultList;
 }
-export const GetRowlevelsecurityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRowlevelsecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -9246,7 +9116,7 @@ export interface GetRowlevelsecurityByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetRowlevelsecurityByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRowlevelsecurityByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9257,22 +9127,17 @@ export const GetRowlevelsecurityByPkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetRowlevelsecurityByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetRowlevelsecurityByPkResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetRowlevelsecurityByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetRowlevelsecurityByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** filter_type_description */
 export type RLSRestApiGetFilterType = "Regular" | "Base";
-export const RLSRestApiGetFilterType = S.String;
+const RLSRestApiGetFilterType = S.String;
 
 export type RLSRestApiGetSubjectsList = Array<SubjectResponse>;
-export const RLSRestApiGetSubjectsList =
+const RLSRestApiGetSubjectsList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<RLSRestApiGetSubjectsList>;
 
 export type RLSRestApiGetTablesList = Array<DatabaseRelatedDataset>;
-export const RLSRestApiGetTablesList =
+const RLSRestApiGetTablesList =
   DatabaseRelatedDatasetsResultList as any as S.Schema<RLSRestApiGetTablesList>;
 
 export interface RLSRestApiGet {
@@ -9291,7 +9156,7 @@ export interface RLSRestApiGet {
   subjects?: RLSRestApiGetSubjectsList;
   tables?: RLSRestApiGetTablesList;
 }
-export const RLSRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const RLSRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clause: S.optional(S.String),
     description: S.optional(S.String),
@@ -9306,7 +9171,7 @@ export const RLSRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetRowlevelsecurityByPkResponseShowColumnsList = Array<string>;
-export const GetRowlevelsecurityByPkResponseShowColumnsList =
+const GetRowlevelsecurityByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetRowlevelsecurityByPkResponseShowColumnsList>;
 
 export interface GetRowlevelsecurityByPkResponse {
@@ -9320,7 +9185,7 @@ export interface GetRowlevelsecurityByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetRowlevelsecurityByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRowlevelsecurityByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -9337,7 +9202,7 @@ export interface GetRowlevelsecurityRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetRowlevelsecurityRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRowlevelsecurityRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9351,51 +9216,41 @@ export const GetRowlevelsecurityRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSavedQueryRequest {
   q?: string;
 }
-export const GetSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/saved_query/", code: 200 })),
 ).annotate({ identifier: "GetSavedQueryRequest" }) as any as S.Schema<GetSavedQueryRequest>;
 
 export type GetSavedQueryResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetSavedQueryResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSavedQueryResponseIdsList = Array<string>;
-export const GetSavedQueryResponseIdsList =
+const GetSavedQueryResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryResponseIdsList>;
 
 export type GetSavedQueryResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSavedQueryResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSavedQueryResponseListColumnsList = Array<string>;
-export const GetSavedQueryResponseListColumnsList =
+const GetSavedQueryResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSavedQueryResponseOrderColumnsList = Array<string>;
-export const GetSavedQueryResponseOrderColumnsList =
+const GetSavedQueryResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryResponseOrderColumnsList>;
 
 export type SavedQueryRestApiGetListUser = CssTemplateRestApiGetListUser;
-export const SavedQueryRestApiGetListUser = CssTemplateRestApiGetListUser;
-
 export type SavedQueryRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-export const SavedQueryRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-
 export type SavedQueryRestApiGetListDatabase = ReportScheduleRestApiGetDatabase;
-export const SavedQueryRestApiGetListDatabase = ReportScheduleRestApiGetDatabase;
-
 export type SavedQueryRestApiGetListTagType = 1 | 2 | 3 | 4;
-export const SavedQueryRestApiGetListTagType = S.Number;
+const SavedQueryRestApiGetListTagType = S.Number;
 
 export interface SavedQueryRestApiGetListTag {
   id?: number;
   name?: string | null;
   type?: SavedQueryRestApiGetListTagType;
 }
-export const SavedQueryRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.NullOr(S.String)),
@@ -9406,7 +9261,7 @@ export const SavedQueryRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavedQueryRestApiGetListTag>;
 
 export type SavedQueryRestApiGetListTagsList = Array<SavedQueryRestApiGetListTag>;
-export const SavedQueryRestApiGetListTagsList = /*@__PURE__*/ S.Array(
+const SavedQueryRestApiGetListTagsList = /*@__PURE__*/ S.Array(
   SavedQueryRestApiGetListTag,
 ) as any as S.Schema<SavedQueryRestApiGetListTagsList>;
 
@@ -9430,7 +9285,7 @@ export interface SavedQueryRestApiGetList {
   sql_tables?: unknown;
   tags?: SavedQueryRestApiGetListTagsList;
 }
-export const SavedQueryRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     changed_by: S.optional(CssTemplateRestApiGetListUser),
@@ -9455,7 +9310,7 @@ export const SavedQueryRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetSavedQueryResponseResultList = Array<SavedQueryRestApiGetList>;
-export const GetSavedQueryResponseResultList = /*@__PURE__*/ S.Array(
+const GetSavedQueryResponseResultList = /*@__PURE__*/ S.Array(
   SavedQueryRestApiGetList,
 ) as any as S.Schema<GetSavedQueryResponseResultList>;
 
@@ -9475,7 +9330,7 @@ export interface GetSavedQueryResponse {
   /** The result from the get list query */
   result?: GetSavedQueryResponseResultList;
 }
-export const GetSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -9492,7 +9347,7 @@ export interface GetSavedQueryByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetSavedQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9501,21 +9356,10 @@ export const GetSavedQueryByPkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSavedQueryByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSavedQueryByPkResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSavedQueryByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSavedQueryByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type SavedQueryRestApiGetUser = CssTemplateRestApiGetListUser;
-export const SavedQueryRestApiGetUser = CssTemplateRestApiGetListUser;
-
 export type SavedQueryRestApiGetUser1 = CssTemplateRestApiGetListUser;
-export const SavedQueryRestApiGetUser1 = CssTemplateRestApiGetListUser;
-
 export type SavedQueryRestApiGetDatabase = ReportScheduleRestApiGetDatabase;
-export const SavedQueryRestApiGetDatabase = ReportScheduleRestApiGetDatabase;
-
 export interface SavedQueryRestApiGet {
   catalog?: string | null;
   changed_by?: CssTemplateRestApiGetListUser;
@@ -9531,7 +9375,7 @@ export interface SavedQueryRestApiGet {
   sql_tables?: unknown;
   template_parameters?: string | null;
 }
-export const SavedQueryRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     changed_by: S.optional(CssTemplateRestApiGetListUser),
@@ -9551,7 +9395,7 @@ export const SavedQueryRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetSavedQueryByPkResponseShowColumnsList = Array<string>;
-export const GetSavedQueryByPkResponseShowColumnsList =
+const GetSavedQueryByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSavedQueryByPkResponseShowColumnsList>;
 
 export interface GetSavedQueryByPkResponse {
@@ -9565,7 +9409,7 @@ export interface GetSavedQueryByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSavedQueryByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -9582,7 +9426,7 @@ export interface GetSavedQueryDistinctRequest {
   column_name: string;
   q?: string;
 }
-export const GetSavedQueryDistinctRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryDistinctRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9594,7 +9438,7 @@ export const GetSavedQueryDistinctRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSavedQueryExportRequest {
   q?: string;
 }
-export const GetSavedQueryExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/saved_query/export/", code: 200 })),
@@ -9603,14 +9447,14 @@ export const GetSavedQueryExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSavedQueryExportRequest>;
 
 export interface GetSavedQueryExportResponse {}
-export const GetSavedQueryExportResponse =
+const GetSavedQueryExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetSavedQueryExportResponse>;
 
 export interface GetSavedQueryRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetSavedQueryRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueryRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9620,7 +9464,7 @@ export const GetSavedQueryRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSavedQueryRelatedRequest>;
 
 export interface GetSecurityCsrfTokenRequest {}
-export const GetSecurityCsrfTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityCsrfTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/security/csrf_token/", code: 200 })),
 ).annotate({
   identifier: "GetSecurityCsrfTokenRequest",
@@ -9629,14 +9473,14 @@ export const GetSecurityCsrfTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityCsrfTokenResponse {
   result?: string;
 }
-export const GetSecurityCsrfTokenResponse =
+const GetSecurityCsrfTokenResponse =
   CreateSqllabFormatSqlResponse as any as S.Schema<GetSecurityCsrfTokenResponse>;
 
 export interface GetSecurityGroupRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9645,17 +9489,12 @@ export const GetSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityGroupResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityGroupResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityGroupResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityGroupResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export interface SupersetGroupApiGetRole {
   id?: number;
   name: string;
 }
-export const SupersetGroupApiGetRole = /*@__PURE__*/ S.suspend(() =>
+const SupersetGroupApiGetRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.String,
@@ -9663,7 +9502,7 @@ export const SupersetGroupApiGetRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupersetGroupApiGetRole" }) as any as S.Schema<SupersetGroupApiGetRole>;
 
 export type SupersetGroupApiGetRolesList = Array<SupersetGroupApiGetRole>;
-export const SupersetGroupApiGetRolesList = /*@__PURE__*/ S.Array(
+const SupersetGroupApiGetRolesList = /*@__PURE__*/ S.Array(
   SupersetGroupApiGetRole,
 ) as any as S.Schema<SupersetGroupApiGetRolesList>;
 
@@ -9671,7 +9510,7 @@ export interface SupersetGroupApiGetUser {
   id?: number;
   username: string;
 }
-export const SupersetGroupApiGetUser = /*@__PURE__*/ S.suspend(() =>
+const SupersetGroupApiGetUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     username: S.String,
@@ -9679,7 +9518,7 @@ export const SupersetGroupApiGetUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupersetGroupApiGetUser" }) as any as S.Schema<SupersetGroupApiGetUser>;
 
 export type SupersetGroupApiGetUsersList = Array<SupersetGroupApiGetUser>;
-export const SupersetGroupApiGetUsersList = /*@__PURE__*/ S.Array(
+const SupersetGroupApiGetUsersList = /*@__PURE__*/ S.Array(
   SupersetGroupApiGetUser,
 ) as any as S.Schema<SupersetGroupApiGetUsersList>;
 
@@ -9691,7 +9530,7 @@ export interface SupersetGroupApiGet {
   roles?: SupersetGroupApiGetRolesList;
   users?: SupersetGroupApiGetUsersList;
 }
-export const SupersetGroupApiGet = /*@__PURE__*/ S.suspend(() =>
+const SupersetGroupApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -9704,7 +9543,7 @@ export const SupersetGroupApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetSecurityGroupResponseShowColumnsList = Array<string>;
-export const GetSecurityGroupResponseShowColumnsList =
+const GetSecurityGroupResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupResponseShowColumnsList>;
 
 export interface GetSecurityGroupResponse {
@@ -9718,7 +9557,7 @@ export interface GetSecurityGroupResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -9732,7 +9571,7 @@ export const GetSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityGroupsRequest {
   q?: string;
 }
-export const GetSecurityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/groups/", code: 200 })),
@@ -9740,41 +9579,26 @@ export const GetSecurityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityGroupsResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityGroupsResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityGroupsResponseIdsList = Array<string>;
-export const GetSecurityGroupsResponseIdsList =
+const GetSecurityGroupsResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupsResponseIdsList>;
 
 export type GetSecurityGroupsResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityGroupsResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityGroupsResponseListColumnsList = Array<string>;
-export const GetSecurityGroupsResponseListColumnsList =
+const GetSecurityGroupsResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupsResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecurityGroupsResponseOrderColumnsList = Array<string>;
-export const GetSecurityGroupsResponseOrderColumnsList =
+const GetSecurityGroupsResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityGroupsResponseOrderColumnsList>;
 
 export type SupersetGroupApiGetListRole = SupersetGroupApiGetRole;
-export const SupersetGroupApiGetListRole = SupersetGroupApiGetRole;
-
 export type SupersetGroupApiGetListRolesList = Array<SupersetGroupApiGetRole>;
-export const SupersetGroupApiGetListRolesList =
-  SupersetGroupApiGetRolesList as any as S.Schema<SupersetGroupApiGetListRolesList>;
-
 export type SupersetGroupApiGetListUser = SupersetGroupApiGetUser;
-export const SupersetGroupApiGetListUser = SupersetGroupApiGetUser;
-
 export type SupersetGroupApiGetListUsersList = Array<SupersetGroupApiGetUser>;
-export const SupersetGroupApiGetListUsersList =
-  SupersetGroupApiGetUsersList as any as S.Schema<SupersetGroupApiGetListUsersList>;
-
 export interface SupersetGroupApiGetList {
   description?: string | null;
   id?: number;
@@ -9783,12 +9607,11 @@ export interface SupersetGroupApiGetList {
   roles?: SupersetGroupApiGetListRolesList;
   users?: SupersetGroupApiGetListUsersList;
 }
-export const SupersetGroupApiGetList =
-  SupersetGroupApiGet as any as S.Schema<SupersetGroupApiGetList>;
+const SupersetGroupApiGetList = SupersetGroupApiGet as any as S.Schema<SupersetGroupApiGetList>;
 
 /** The result from the get list query */
 export type GetSecurityGroupsResponseResultList = Array<SupersetGroupApiGetList>;
-export const GetSecurityGroupsResponseResultList = /*@__PURE__*/ S.Array(
+const GetSecurityGroupsResponseResultList = /*@__PURE__*/ S.Array(
   SupersetGroupApiGetList,
 ) as any as S.Schema<GetSecurityGroupsResponseResultList>;
 
@@ -9808,7 +9631,7 @@ export interface GetSecurityGroupsResponse {
   /** The result from the get list query */
   result?: GetSecurityGroupsResponseResultList;
 }
-export const GetSecurityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -9826,7 +9649,7 @@ export const GetSecurityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityPermissionsRequest {
   q?: string;
 }
-export const GetSecurityPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/permissions/", code: 200 })),
@@ -9836,33 +9659,26 @@ export const GetSecurityPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityPermissionsResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityPermissionsResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityPermissionsResponseIdsList = Array<string>;
-export const GetSecurityPermissionsResponseIdsList =
+const GetSecurityPermissionsResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResponseIdsList>;
 
 export type GetSecurityPermissionsResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityPermissionsResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityPermissionsResponseListColumnsList = Array<string>;
-export const GetSecurityPermissionsResponseListColumnsList =
+const GetSecurityPermissionsResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecurityPermissionsResponseOrderColumnsList = Array<string>;
-export const GetSecurityPermissionsResponseOrderColumnsList =
+const GetSecurityPermissionsResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResponseOrderColumnsList>;
 
 export type PermissionApiGetList = SupersetGroupApiGetRole;
-export const PermissionApiGetList = SupersetGroupApiGetRole;
-
 /** The result from the get list query */
 export type GetSecurityPermissionsResponseResultList = Array<SupersetGroupApiGetRole>;
-export const GetSecurityPermissionsResponseResultList =
+const GetSecurityPermissionsResponseResultList =
   SupersetGroupApiGetRolesList as any as S.Schema<GetSecurityPermissionsResponseResultList>;
 
 export interface GetSecurityPermissionsResponse {
@@ -9881,7 +9697,7 @@ export interface GetSecurityPermissionsResponse {
   /** The result from the get list query */
   result?: GetSecurityPermissionsResponseResultList;
 }
-export const GetSecurityPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -9900,7 +9716,7 @@ export interface GetSecurityPermissionsByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityPermissionsByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9911,19 +9727,11 @@ export const GetSecurityPermissionsByPkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityPermissionsByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityPermissionsByPkResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityPermissionsByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityPermissionsByPkResponseLabelColumns =
-  GetAnnotationLayerResponseLabelColumns;
-
 export type PermissionApiGet = SupersetGroupApiGetRole;
-export const PermissionApiGet = SupersetGroupApiGetRole;
-
 /** A list of columns */
 export type GetSecurityPermissionsByPkResponseShowColumnsList = Array<string>;
-export const GetSecurityPermissionsByPkResponseShowColumnsList =
+const GetSecurityPermissionsByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsByPkResponseShowColumnsList>;
 
 export interface GetSecurityPermissionsByPkResponse {
@@ -9937,7 +9745,7 @@ export interface GetSecurityPermissionsByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityPermissionsByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -9954,7 +9762,7 @@ export interface GetSecurityPermissionsResourceRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -9965,26 +9773,16 @@ export const GetSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GetSecurityPermissionsResourceResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityPermissionsResourceResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityPermissionsResourceResponseLabelColumns =
   GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityPermissionsResourceResponseLabelColumns =
-  GetAnnotationLayerResponseLabelColumns;
-
 export type SupersetPermissionViewMenuApiGetPermission = ViewMenuApiPost;
-export const SupersetPermissionViewMenuApiGetPermission = ViewMenuApiPost;
-
 export type SupersetPermissionViewMenuApiGetViewMenu = ViewMenuApiPost;
-export const SupersetPermissionViewMenuApiGetViewMenu = ViewMenuApiPost;
-
 export interface SupersetPermissionViewMenuApiGet {
   id?: number;
   permission: ViewMenuApiPost;
   view_menu: ViewMenuApiPost;
 }
-export const SupersetPermissionViewMenuApiGet = /*@__PURE__*/ S.suspend(() =>
+const SupersetPermissionViewMenuApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     permission: ViewMenuApiPost,
@@ -9996,7 +9794,7 @@ export const SupersetPermissionViewMenuApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetSecurityPermissionsResourceResponseShowColumnsList = Array<string>;
-export const GetSecurityPermissionsResourceResponseShowColumnsList =
+const GetSecurityPermissionsResourceResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourceResponseShowColumnsList>;
 
 export interface GetSecurityPermissionsResourceResponse {
@@ -10010,7 +9808,7 @@ export interface GetSecurityPermissionsResourceResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -10026,7 +9824,7 @@ export const GetSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(()
 export interface GetSecurityPermissionsResourcesRequest {
   q?: string;
 }
-export const GetSecurityPermissionsResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/permissions-resources/", code: 200 })),
@@ -10036,42 +9834,30 @@ export const GetSecurityPermissionsResourcesRequest = /*@__PURE__*/ S.suspend(()
 
 export type GetSecurityPermissionsResourcesResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityPermissionsResourcesResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityPermissionsResourcesResponseIdsList = Array<string>;
-export const GetSecurityPermissionsResourcesResponseIdsList =
+const GetSecurityPermissionsResourcesResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourcesResponseIdsList>;
 
 export type GetSecurityPermissionsResourcesResponseLabelColumns =
   GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityPermissionsResourcesResponseLabelColumns =
-  GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityPermissionsResourcesResponseListColumnsList = Array<string>;
-export const GetSecurityPermissionsResourcesResponseListColumnsList =
+const GetSecurityPermissionsResourcesResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourcesResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecurityPermissionsResourcesResponseOrderColumnsList = Array<string>;
-export const GetSecurityPermissionsResourcesResponseOrderColumnsList =
+const GetSecurityPermissionsResourcesResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityPermissionsResourcesResponseOrderColumnsList>;
 
 export type SupersetPermissionViewMenuApiGetListPermission = ViewMenuApiPost;
-export const SupersetPermissionViewMenuApiGetListPermission = ViewMenuApiPost;
-
 export type SupersetPermissionViewMenuApiGetListViewMenu = ViewMenuApiPost;
-export const SupersetPermissionViewMenuApiGetListViewMenu = ViewMenuApiPost;
-
 export type SupersetPermissionViewMenuApiGetList = SupersetPermissionViewMenuApiGet;
-export const SupersetPermissionViewMenuApiGetList = SupersetPermissionViewMenuApiGet;
-
 /** The result from the get list query */
 export type GetSecurityPermissionsResourcesResponseResultList =
   Array<SupersetPermissionViewMenuApiGet>;
-export const GetSecurityPermissionsResourcesResponseResultList = /*@__PURE__*/ S.Array(
+const GetSecurityPermissionsResourcesResponseResultList = /*@__PURE__*/ S.Array(
   SupersetPermissionViewMenuApiGet,
 ) as any as S.Schema<GetSecurityPermissionsResourcesResponseResultList>;
 
@@ -10091,7 +9877,7 @@ export interface GetSecurityPermissionsResourcesResponse {
   /** The result from the get list query */
   result?: GetSecurityPermissionsResourcesResponseResultList;
 }
-export const GetSecurityPermissionsResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityPermissionsResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -10110,7 +9896,7 @@ export interface GetSecurityResourceRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -10121,20 +9907,10 @@ export const GetSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityResourceResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityResourceResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityResourceResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityResourceResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type ViewMenuApiGet = SupersetGroupApiGetRole;
-export const ViewMenuApiGet = SupersetGroupApiGetRole;
-
 /** A list of columns */
 export type GetSecurityResourceResponseShowColumnsList = Array<string>;
-export const GetSecurityResourceResponseShowColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityResourceResponseShowColumnsList>;
-
 export interface GetSecurityResourceResponse {
   description_columns?: GetAnnotationLayerResponseDescriptionColumns;
   /** The item id */
@@ -10146,13 +9922,13 @@ export interface GetSecurityResourceResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityResourceResponse =
+const GetSecurityResourceResponse =
   GetSecurityPermissionsByPkResponse as any as S.Schema<GetSecurityResourceResponse>;
 
 export interface GetSecurityResourcesRequest {
   q?: string;
 }
-export const GetSecurityResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/resources/", code: 200 })),
@@ -10162,35 +9938,16 @@ export const GetSecurityResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityResourcesResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityResourcesResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityResourcesResponseIdsList = Array<string>;
-export const GetSecurityResourcesResponseIdsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityResourcesResponseIdsList>;
-
 export type GetSecurityResourcesResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityResourcesResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityResourcesResponseListColumnsList = Array<string>;
-export const GetSecurityResourcesResponseListColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityResourcesResponseListColumnsList>;
-
 /** A list of allowed columns to sort */
 export type GetSecurityResourcesResponseOrderColumnsList = Array<string>;
-export const GetSecurityResourcesResponseOrderColumnsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityResourcesResponseOrderColumnsList>;
-
 export type ViewMenuApiGetList = SupersetGroupApiGetRole;
-export const ViewMenuApiGetList = SupersetGroupApiGetRole;
-
 /** The result from the get list query */
 export type GetSecurityResourcesResponseResultList = Array<SupersetGroupApiGetRole>;
-export const GetSecurityResourcesResponseResultList =
-  SupersetGroupApiGetRolesList as any as S.Schema<GetSecurityResourcesResponseResultList>;
-
 export interface GetSecurityResourcesResponse {
   /** The total record count on the backend */
   count?: number;
@@ -10207,14 +9964,14 @@ export interface GetSecurityResourcesResponse {
   /** The result from the get list query */
   result?: GetSecurityResourcesResponseResultList;
 }
-export const GetSecurityResourcesResponse =
+const GetSecurityResourcesResponse =
   GetSecurityPermissionsResponse as any as S.Schema<GetSecurityResourcesResponse>;
 
 export interface GetSecurityRoleRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -10223,18 +9980,11 @@ export const GetSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityRoleResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityRoleResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityRoleResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityRoleResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type SupersetRoleApiGet = SupersetGroupApiGetRole;
-export const SupersetRoleApiGet = SupersetGroupApiGetRole;
-
 /** A list of columns */
 export type GetSecurityRoleResponseShowColumnsList = Array<string>;
-export const GetSecurityRoleResponseShowColumnsList =
+const GetSecurityRoleResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRoleResponseShowColumnsList>;
 
 export interface GetSecurityRoleResponse {
@@ -10248,7 +9998,7 @@ export interface GetSecurityRoleResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -10262,7 +10012,7 @@ export const GetSecurityRoleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityRolesRequest {
   q?: string;
 }
-export const GetSecurityRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/roles/", code: 200 })),
@@ -10270,33 +10020,26 @@ export const GetSecurityRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityRolesResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityRolesResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityRolesResponseIdsList = Array<string>;
-export const GetSecurityRolesResponseIdsList =
+const GetSecurityRolesResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRolesResponseIdsList>;
 
 export type GetSecurityRolesResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityRolesResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityRolesResponseListColumnsList = Array<string>;
-export const GetSecurityRolesResponseListColumnsList =
+const GetSecurityRolesResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRolesResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecurityRolesResponseOrderColumnsList = Array<string>;
-export const GetSecurityRolesResponseOrderColumnsList =
+const GetSecurityRolesResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityRolesResponseOrderColumnsList>;
 
 export type SupersetRoleApiGetList = SupersetGroupApiGetRole;
-export const SupersetRoleApiGetList = SupersetGroupApiGetRole;
-
 /** The result from the get list query */
 export type GetSecurityRolesResponseResultList = Array<SupersetGroupApiGetRole>;
-export const GetSecurityRolesResponseResultList =
+const GetSecurityRolesResponseResultList =
   SupersetGroupApiGetRolesList as any as S.Schema<GetSecurityRolesResponseResultList>;
 
 export interface GetSecurityRolesResponse {
@@ -10315,7 +10058,7 @@ export interface GetSecurityRolesResponse {
   /** The result from the get list query */
   result?: GetSecurityRolesResponseResultList;
 }
-export const GetSecurityRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -10331,7 +10074,7 @@ export const GetSecurityRolesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecuritySubjectRequest {
   q?: string;
 }
-export const GetSecuritySubjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySubjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/subject/", code: 200 })),
@@ -10341,30 +10084,23 @@ export const GetSecuritySubjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecuritySubjectResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecuritySubjectResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecuritySubjectResponseIdsList = Array<string>;
-export const GetSecuritySubjectResponseIdsList =
+const GetSecuritySubjectResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectResponseIdsList>;
 
 export type GetSecuritySubjectResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecuritySubjectResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecuritySubjectResponseListColumnsList = Array<string>;
-export const GetSecuritySubjectResponseListColumnsList =
+const GetSecuritySubjectResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecuritySubjectResponseOrderColumnsList = Array<string>;
-export const GetSecuritySubjectResponseOrderColumnsList =
+const GetSecuritySubjectResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectResponseOrderColumnsList>;
 
 export type SubjectRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-export const SubjectRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-
 export interface SubjectRestApiGetList {
   active?: boolean | null;
   changed_by?: AnnotationLayerRestApiGetListUser1;
@@ -10381,7 +10117,7 @@ export interface SubjectRestApiGetList {
   user_id?: unknown | null;
   uuid?: string | null;
 }
-export const SubjectRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const SubjectRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
@@ -10402,7 +10138,7 @@ export const SubjectRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetSecuritySubjectResponseResultList = Array<SubjectRestApiGetList>;
-export const GetSecuritySubjectResponseResultList = /*@__PURE__*/ S.Array(
+const GetSecuritySubjectResponseResultList = /*@__PURE__*/ S.Array(
   SubjectRestApiGetList,
 ) as any as S.Schema<GetSecuritySubjectResponseResultList>;
 
@@ -10422,7 +10158,7 @@ export interface GetSecuritySubjectResponse {
   /** The result from the get list query */
   result?: GetSecuritySubjectResponseResultList;
 }
-export const GetSecuritySubjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySubjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -10441,7 +10177,7 @@ export interface GetSecuritySubjectByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetSecuritySubjectByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySubjectByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -10452,22 +10188,15 @@ export const GetSecuritySubjectByPkRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecuritySubjectByPkResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecuritySubjectByPkResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecuritySubjectByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecuritySubjectByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type SubjectRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
-export const SubjectRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
-
 export interface SubjectRestApiGetGroup {
   description?: string | null;
   id?: number;
   label?: string | null;
   name: string;
 }
-export const SubjectRestApiGetGroup = /*@__PURE__*/ S.suspend(() =>
+const SubjectRestApiGetGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -10477,8 +10206,6 @@ export const SubjectRestApiGetGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubjectRestApiGetGroup" }) as any as S.Schema<SubjectRestApiGetGroup>;
 
 export type SubjectRestApiGetRole = SupersetGroupApiGetRole;
-export const SubjectRestApiGetRole = SupersetGroupApiGetRole;
-
 export interface SubjectRestApiGetUser {
   active?: boolean | null;
   email: string;
@@ -10487,7 +10214,7 @@ export interface SubjectRestApiGetUser {
   last_name: string;
   username: string;
 }
-export const SubjectRestApiGetUser = /*@__PURE__*/ S.suspend(() =>
+const SubjectRestApiGetUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     email: S.String,
@@ -10517,7 +10244,7 @@ export interface SubjectRestApiGet {
   user_id?: unknown | null;
   uuid?: string | null;
 }
-export const SubjectRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const SubjectRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
@@ -10541,7 +10268,7 @@ export const SubjectRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetSecuritySubjectByPkResponseShowColumnsList = Array<string>;
-export const GetSecuritySubjectByPkResponseShowColumnsList =
+const GetSecuritySubjectByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecuritySubjectByPkResponseShowColumnsList>;
 
 export interface GetSecuritySubjectByPkResponse {
@@ -10555,7 +10282,7 @@ export interface GetSecuritySubjectByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecuritySubjectByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySubjectByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -10572,7 +10299,7 @@ export interface GetSecurityUserRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -10581,31 +10308,18 @@ export const GetSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityUserResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityUserResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityUserResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityUserResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type SupersetUserApiGetUser1 = LogRestApiPost;
-export const SupersetUserApiGetUser1 = LogRestApiPost;
-
 export type SupersetUserApiGetUser = LogRestApiPost;
-export const SupersetUserApiGetUser = LogRestApiPost;
-
 export type SupersetUserApiGetGroup = SubjectRestApiGetGroup;
-export const SupersetUserApiGetGroup = SubjectRestApiGetGroup;
-
 export type SupersetUserApiGetGroupsList = Array<SubjectRestApiGetGroup>;
-export const SupersetUserApiGetGroupsList = /*@__PURE__*/ S.Array(
+const SupersetUserApiGetGroupsList = /*@__PURE__*/ S.Array(
   SubjectRestApiGetGroup,
 ) as any as S.Schema<SupersetUserApiGetGroupsList>;
 
 export type SupersetUserApiGetRole = SupersetGroupApiGetRole;
-export const SupersetUserApiGetRole = SupersetGroupApiGetRole;
-
 export type SupersetUserApiGetRolesList = Array<SupersetGroupApiGetRole>;
-export const SupersetUserApiGetRolesList =
+const SupersetUserApiGetRolesList =
   SupersetGroupApiGetRolesList as any as S.Schema<SupersetUserApiGetRolesList>;
 
 export interface SupersetUserApiGet {
@@ -10625,7 +10339,7 @@ export interface SupersetUserApiGet {
   roles?: SupersetUserApiGetRolesList;
   username: string;
 }
-export const SupersetUserApiGet = /*@__PURE__*/ S.suspend(() =>
+const SupersetUserApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     changed_by: S.optional(LogRestApiPost),
@@ -10647,7 +10361,7 @@ export const SupersetUserApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetSecurityUserResponseShowColumnsList = Array<string>;
-export const GetSecurityUserResponseShowColumnsList =
+const GetSecurityUserResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserResponseShowColumnsList>;
 
 export interface GetSecurityUserResponse {
@@ -10661,7 +10375,7 @@ export interface GetSecurityUserResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -10676,7 +10390,7 @@ export interface GetSecurityUserRegistrationRequest {
   pk: number;
   q?: string;
 }
-export const GetSecurityUserRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUserRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -10687,20 +10401,12 @@ export const GetSecurityUserRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityUserRegistrationResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityUserRegistrationResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetSecurityUserRegistrationResponseLabelColumns =
   GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityUserRegistrationResponseLabelColumns =
-  GetAnnotationLayerResponseLabelColumns;
-
 export type UserRegistrationsRestAPIGet = LogRestApiPost;
-export const UserRegistrationsRestAPIGet = LogRestApiPost;
-
 /** A list of columns */
 export type GetSecurityUserRegistrationResponseShowColumnsList = Array<string>;
-export const GetSecurityUserRegistrationResponseShowColumnsList =
+const GetSecurityUserRegistrationResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationResponseShowColumnsList>;
 
 export interface GetSecurityUserRegistrationResponse {
@@ -10714,7 +10420,7 @@ export interface GetSecurityUserRegistrationResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetSecurityUserRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUserRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -10730,7 +10436,7 @@ export const GetSecurityUserRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityUserRegistrationsRequest {
   q?: string;
 }
-export const GetSecurityUserRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUserRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/user_registrations/", code: 200 })),
@@ -10740,27 +10446,21 @@ export const GetSecurityUserRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityUserRegistrationsResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityUserRegistrationsResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityUserRegistrationsResponseIdsList = Array<string>;
-export const GetSecurityUserRegistrationsResponseIdsList =
+const GetSecurityUserRegistrationsResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationsResponseIdsList>;
 
 export type GetSecurityUserRegistrationsResponseLabelColumns =
   GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityUserRegistrationsResponseLabelColumns =
-  GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityUserRegistrationsResponseListColumnsList = Array<string>;
-export const GetSecurityUserRegistrationsResponseListColumnsList =
+const GetSecurityUserRegistrationsResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationsResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecurityUserRegistrationsResponseOrderColumnsList = Array<string>;
-export const GetSecurityUserRegistrationsResponseOrderColumnsList =
+const GetSecurityUserRegistrationsResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUserRegistrationsResponseOrderColumnsList>;
 
 export interface UserRegistrationsRestAPIGetList {
@@ -10771,7 +10471,7 @@ export interface UserRegistrationsRestAPIGetList {
   registration_date?: string | null;
   username: string;
 }
-export const UserRegistrationsRestAPIGetList = /*@__PURE__*/ S.suspend(() =>
+const UserRegistrationsRestAPIGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     first_name: S.String,
@@ -10786,7 +10486,7 @@ export const UserRegistrationsRestAPIGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetSecurityUserRegistrationsResponseResultList = Array<UserRegistrationsRestAPIGetList>;
-export const GetSecurityUserRegistrationsResponseResultList = /*@__PURE__*/ S.Array(
+const GetSecurityUserRegistrationsResponseResultList = /*@__PURE__*/ S.Array(
   UserRegistrationsRestAPIGetList,
 ) as any as S.Schema<GetSecurityUserRegistrationsResponseResultList>;
 
@@ -10806,7 +10506,7 @@ export interface GetSecurityUserRegistrationsResponse {
   /** The result from the get list query */
   result?: GetSecurityUserRegistrationsResponseResultList;
 }
-export const GetSecurityUserRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUserRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -10824,7 +10524,7 @@ export const GetSecurityUserRegistrationsResponse = /*@__PURE__*/ S.suspend(() =
 export interface GetSecurityUsersRequest {
   q?: string;
 }
-export const GetSecurityUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/users/", code: 200 })),
@@ -10832,47 +10532,28 @@ export const GetSecurityUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetSecurityUsersResponseDescriptionColumns =
   GetAnnotationLayerResponseDescriptionColumns;
-export const GetSecurityUsersResponseDescriptionColumns =
-  GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetSecurityUsersResponseIdsList = Array<string>;
-export const GetSecurityUsersResponseIdsList =
+const GetSecurityUsersResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUsersResponseIdsList>;
 
 export type GetSecurityUsersResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetSecurityUsersResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetSecurityUsersResponseListColumnsList = Array<string>;
-export const GetSecurityUsersResponseListColumnsList =
+const GetSecurityUsersResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUsersResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetSecurityUsersResponseOrderColumnsList = Array<string>;
-export const GetSecurityUsersResponseOrderColumnsList =
+const GetSecurityUsersResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetSecurityUsersResponseOrderColumnsList>;
 
 export type SupersetUserApiGetListUser1 = LogRestApiPost;
-export const SupersetUserApiGetListUser1 = LogRestApiPost;
-
 export type SupersetUserApiGetListUser = LogRestApiPost;
-export const SupersetUserApiGetListUser = LogRestApiPost;
-
 export type SupersetUserApiGetListGroup = SubjectRestApiGetGroup;
-export const SupersetUserApiGetListGroup = SubjectRestApiGetGroup;
-
 export type SupersetUserApiGetListGroupsList = Array<SubjectRestApiGetGroup>;
-export const SupersetUserApiGetListGroupsList =
-  SupersetUserApiGetGroupsList as any as S.Schema<SupersetUserApiGetListGroupsList>;
-
 export type SupersetUserApiGetListRole = SupersetGroupApiGetRole;
-export const SupersetUserApiGetListRole = SupersetGroupApiGetRole;
-
 export type SupersetUserApiGetListRolesList = Array<SupersetGroupApiGetRole>;
-export const SupersetUserApiGetListRolesList =
-  SupersetGroupApiGetRolesList as any as S.Schema<SupersetUserApiGetListRolesList>;
-
 export interface SupersetUserApiGetList {
   active?: boolean | null;
   changed_by?: LogRestApiPost;
@@ -10890,11 +10571,11 @@ export interface SupersetUserApiGetList {
   roles?: SupersetUserApiGetListRolesList;
   username: string;
 }
-export const SupersetUserApiGetList = SupersetUserApiGet as any as S.Schema<SupersetUserApiGetList>;
+const SupersetUserApiGetList = SupersetUserApiGet as any as S.Schema<SupersetUserApiGetList>;
 
 /** The result from the get list query */
 export type GetSecurityUsersResponseResultList = Array<SupersetUserApiGetList>;
-export const GetSecurityUsersResponseResultList = /*@__PURE__*/ S.Array(
+const GetSecurityUsersResponseResultList = /*@__PURE__*/ S.Array(
   SupersetUserApiGetList,
 ) as any as S.Schema<GetSecurityUsersResponseResultList>;
 
@@ -10914,7 +10595,7 @@ export interface GetSecurityUsersResponse {
   /** The result from the get list query */
   result?: GetSecurityUsersResponseResultList;
 }
-export const GetSecurityUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -10931,20 +10612,20 @@ export interface GetSqllabExportRequest {
   /** The SQL query result identifier */
   client_id: number;
 }
-export const GetSqllabExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqllabExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/sqllab/export/{client_id}/", code: 200 })),
 ).annotate({ identifier: "GetSqllabExportRequest" }) as any as S.Schema<GetSqllabExportRequest>;
 
 export interface GetSqllabExportResponse {}
-export const GetSqllabExportResponse =
+const GetSqllabExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetSqllabExportResponse>;
 
 export interface GetSqllabPermalinkRequest {
   key: string;
 }
-export const GetSqllabPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqllabPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/sqllab/permalink/{key}", code: 200 })),
@@ -10956,47 +10637,39 @@ export interface GetSqllabPermalinkResponse {
   /** The stored state */
   state?: unknown;
 }
-export const GetSqllabPermalinkResponse =
+const GetSqllabPermalinkResponse =
   GetDashboardPermalinkResponse as any as S.Schema<GetSqllabPermalinkResponse>;
 
 export interface GetTagRequest {
   q?: string;
 }
-export const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/tag/", code: 200 })),
 ).annotate({ identifier: "GetTagRequest" }) as any as S.Schema<GetTagRequest>;
 
 export type GetTagResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetTagResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetTagResponseIdsList = Array<string>;
-export const GetTagResponseIdsList =
+const GetTagResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagResponseIdsList>;
 
 export type GetTagResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetTagResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetTagResponseListColumnsList = Array<string>;
-export const GetTagResponseListColumnsList =
+const GetTagResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetTagResponseOrderColumnsList = Array<string>;
-export const GetTagResponseOrderColumnsList =
+const GetTagResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagResponseOrderColumnsList>;
 
 export type TagRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-export const TagRestApiGetListUser = AnnotationLayerRestApiGetListUser1;
-
 export type TagRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
-export const TagRestApiGetListUser1 = AnnotationLayerRestApiGetListUser1;
-
 export type TagRestApiGetListType = 1 | 2 | 3 | 4;
-export const TagRestApiGetListType = S.Number;
+const TagRestApiGetListType = S.Number;
 
 export interface TagRestApiGetList {
   changed_by?: AnnotationLayerRestApiGetListUser1;
@@ -11008,7 +10681,7 @@ export interface TagRestApiGetList {
   name?: string | null;
   type?: TagRestApiGetListType;
 }
-export const TagRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const TagRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(AnnotationLayerRestApiGetListUser1),
     changed_on_delta_humanized: S.optional(S.Unknown),
@@ -11023,7 +10696,7 @@ export const TagRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetTagResponseResultList = Array<TagRestApiGetList>;
-export const GetTagResponseResultList = /*@__PURE__*/ S.Array(
+const GetTagResponseResultList = /*@__PURE__*/ S.Array(
   TagRestApiGetList,
 ) as any as S.Schema<GetTagResponseResultList>;
 
@@ -11043,7 +10716,7 @@ export interface GetTagResponse {
   /** The result from the get list query */
   result?: GetTagResponseResultList;
 }
-export const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -11060,7 +10733,7 @@ export interface GetTagByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetTagByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -11068,20 +10741,10 @@ export const GetTagByPkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTagByPkRequest" }) as any as S.Schema<GetTagByPkRequest>;
 
 export type GetTagByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetTagByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetTagByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetTagByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type TagRestApiGetUser = AnnotationLayerRestApiGetListUser1;
-export const TagRestApiGetUser = AnnotationLayerRestApiGetListUser1;
-
 export type TagRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
-export const TagRestApiGetUser1 = AnnotationLayerRestApiGetListUser1;
-
 export type TagRestApiGetType = 1 | 2 | 3 | 4;
-export const TagRestApiGetType = S.Number;
-
 export interface TagRestApiGet {
   changed_by?: AnnotationLayerRestApiGetListUser1;
   changed_on_delta_humanized?: unknown;
@@ -11092,11 +10755,11 @@ export interface TagRestApiGet {
   name?: string | null;
   type?: TagRestApiGetType;
 }
-export const TagRestApiGet = TagRestApiGetList as any as S.Schema<TagRestApiGet>;
+const TagRestApiGet = TagRestApiGetList as any as S.Schema<TagRestApiGet>;
 
 /** A list of columns */
 export type GetTagByPkResponseShowColumnsList = Array<string>;
-export const GetTagByPkResponseShowColumnsList =
+const GetTagByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetTagByPkResponseShowColumnsList>;
 
 export interface GetTagByPkResponse {
@@ -11110,7 +10773,7 @@ export interface GetTagByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetTagByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTagByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -11125,7 +10788,7 @@ export interface GetTagRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetTagRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -11135,44 +10798,34 @@ export const GetTagRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetThemeRequest {
   q?: string;
 }
-export const GetThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/theme/", code: 200 })),
 ).annotate({ identifier: "GetThemeRequest" }) as any as S.Schema<GetThemeRequest>;
 
 export type GetThemeResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetThemeResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 /** A list of item ids, useful when you don't know the column id */
 export type GetThemeResponseIdsList = Array<string>;
-export const GetThemeResponseIdsList =
+const GetThemeResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeResponseIdsList>;
 
 export type GetThemeResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetThemeResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 /** A list of columns */
 export type GetThemeResponseListColumnsList = Array<string>;
-export const GetThemeResponseListColumnsList =
+const GetThemeResponseListColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeResponseListColumnsList>;
 
 /** A list of allowed columns to sort */
 export type GetThemeResponseOrderColumnsList = Array<string>;
-export const GetThemeResponseOrderColumnsList =
+const GetThemeResponseOrderColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeResponseOrderColumnsList>;
 
 export type ThemeRestApiGetListUser = CssTemplateRestApiGetListUser;
-export const ThemeRestApiGetListUser = CssTemplateRestApiGetListUser;
-
 export type ThemeRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-export const ThemeRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-
 export type ThemeRestApiGetListSubject = DatasetRestApiGetListSubject;
-export const ThemeRestApiGetListSubject = DatasetRestApiGetListSubject;
-
 export type ThemeRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-export const ThemeRestApiGetListEditorsList =
+const ThemeRestApiGetListEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<ThemeRestApiGetListEditorsList>;
 
 export interface ThemeRestApiGetList {
@@ -11190,7 +10843,7 @@ export interface ThemeRestApiGetList {
   theme_name?: string | null;
   uuid?: string | null;
 }
-export const ThemeRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const ThemeRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(CssTemplateRestApiGetListUser),
     changed_by_name: S.optional(S.Unknown),
@@ -11210,7 +10863,7 @@ export const ThemeRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type GetThemeResponseResultList = Array<ThemeRestApiGetList>;
-export const GetThemeResponseResultList = /*@__PURE__*/ S.Array(
+const GetThemeResponseResultList = /*@__PURE__*/ S.Array(
   ThemeRestApiGetList,
 ) as any as S.Schema<GetThemeResponseResultList>;
 
@@ -11230,7 +10883,7 @@ export interface GetThemeResponse {
   /** The result from the get list query */
   result?: GetThemeResponseResultList;
 }
-export const GetThemeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
@@ -11247,7 +10900,7 @@ export interface GetThemeByPkRequest {
   pk: number;
   q?: string;
 }
-export const GetThemeByPkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThemeByPkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -11255,22 +10908,12 @@ export const GetThemeByPkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetThemeByPkRequest" }) as any as S.Schema<GetThemeByPkRequest>;
 
 export type GetThemeByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-export const GetThemeByPkResponseDescriptionColumns = GetAnnotationLayerResponseDescriptionColumns;
-
 export type GetThemeByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-export const GetThemeByPkResponseLabelColumns = GetAnnotationLayerResponseLabelColumns;
-
 export type ThemeRestApiGetUser = CssTemplateRestApiGetListUser;
-export const ThemeRestApiGetUser = CssTemplateRestApiGetListUser;
-
 export type ThemeRestApiGetUser1 = CssTemplateRestApiGetListUser;
-export const ThemeRestApiGetUser1 = CssTemplateRestApiGetListUser;
-
 export type ThemeRestApiGetSubject = DatasetRestApiGetListSubject;
-export const ThemeRestApiGetSubject = DatasetRestApiGetListSubject;
-
 export type ThemeRestApiGetEditorsList = Array<DatasetRestApiGetListSubject>;
-export const ThemeRestApiGetEditorsList =
+const ThemeRestApiGetEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<ThemeRestApiGetEditorsList>;
 
 export interface ThemeRestApiGet {
@@ -11286,7 +10929,7 @@ export interface ThemeRestApiGet {
   theme_name?: string | null;
   uuid?: string | null;
 }
-export const ThemeRestApiGet = /*@__PURE__*/ S.suspend(() =>
+const ThemeRestApiGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(CssTemplateRestApiGetListUser),
     changed_on_delta_humanized: S.optional(S.Unknown),
@@ -11304,7 +10947,7 @@ export const ThemeRestApiGet = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns */
 export type GetThemeByPkResponseShowColumnsList = Array<string>;
-export const GetThemeByPkResponseShowColumnsList =
+const GetThemeByPkResponseShowColumnsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<GetThemeByPkResponseShowColumnsList>;
 
 export interface GetThemeByPkResponse {
@@ -11318,7 +10961,7 @@ export interface GetThemeByPkResponse {
   /** A title to render. Will be translated by babel */
   show_title?: string;
 }
-export const GetThemeByPkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThemeByPkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description_columns: S.optional(GetAnnotationLayerResponseDescriptionColumns),
     id: S.optional(S.String),
@@ -11332,21 +10975,21 @@ export const GetThemeByPkResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetThemeExportRequest {
   q?: string;
 }
-export const GetThemeExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThemeExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/theme/export/", code: 200 })),
 ).annotate({ identifier: "GetThemeExportRequest" }) as any as S.Schema<GetThemeExportRequest>;
 
 export interface GetThemeExportResponse {}
-export const GetThemeExportResponse =
+const GetThemeExportResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetThemeExportResponse>;
 
 export interface GetThemeRelatedRequest {
   column_name: string;
   q?: string;
 }
-export const GetThemeRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThemeRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -11354,7 +10997,7 @@ export const GetThemeRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetThemeRelatedRequest" }) as any as S.Schema<GetThemeRelatedRequest>;
 
 export interface GetThemeSystemRequest {}
-export const GetThemeSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThemeSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/theme/system", code: 200 })),
 ).annotate({ identifier: "GetThemeSystemRequest" }) as any as S.Schema<GetThemeSystemRequest>;
 
@@ -11364,7 +11007,7 @@ export interface GetThemeSystemResponseResult {
   defaultMode?: string;
   enableUiThemeAdministration?: boolean;
 }
-export const GetThemeSystemResponseResult = /*@__PURE__*/ S.suspend(() =>
+const GetThemeSystemResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dark: S.optional(S.Unknown),
     default: S.optional(S.Unknown),
@@ -11378,7 +11021,7 @@ export const GetThemeSystemResponseResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetThemeSystemResponse {
   result?: GetThemeSystemResponseResult;
 }
-export const GetThemeSystemResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThemeSystemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetThemeSystemResponseResult),
   }),
@@ -11388,14 +11031,14 @@ export interface GetUserAvatarPngRequest {
   /** The ID of the user */
   user_id: string;
 }
-export const GetUserAvatarPngRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserAvatarPngRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/user/{user_id}/avatar.png", code: 200 })),
 ).annotate({ identifier: "GetUserAvatarPngRequest" }) as any as S.Schema<GetUserAvatarPngRequest>;
 
 export interface GetUserAvatarPngResponse {}
-export const GetUserAvatarPngResponse =
+const GetUserAvatarPngResponse =
   CreateSecurityGroupResponse as any as S.Schema<GetUserAvatarPngResponse>;
 
 export interface ImportAssetRequest {
@@ -11416,7 +11059,7 @@ export interface ImportAssetRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-export const ImportAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundle: S.optional(S.String),
     encrypted_extra_secrets: S.optional(S.String),
@@ -11434,7 +11077,7 @@ export const ImportAssetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportAssetResponse {
   message?: string;
 }
-export const ImportAssetResponse = DeleteChartResponse as any as S.Schema<ImportAssetResponse>;
+const ImportAssetResponse = DeleteChartResponse as any as S.Schema<ImportAssetResponse>;
 
 export interface ImportChartRequest {
   /** upload file (ZIP) */
@@ -11450,7 +11093,7 @@ export interface ImportChartRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-export const ImportChartRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formData: S.optional(S.String),
     overwrite: S.optional(S.Boolean),
@@ -11466,7 +11109,7 @@ export const ImportChartRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportChartResponse {
   message?: string;
 }
-export const ImportChartResponse = DeleteChartResponse as any as S.Schema<ImportChartResponse>;
+const ImportChartResponse = DeleteChartResponse as any as S.Schema<ImportChartResponse>;
 
 export interface ImportDashboardRequest {
   /** upload file (ZIP or JSON) */
@@ -11484,7 +11127,7 @@ export interface ImportDashboardRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-export const ImportDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formData: S.optional(S.String),
     overwrite: S.optional(S.Boolean),
@@ -11506,8 +11149,7 @@ export const ImportDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportDashboardResponse {
   message?: string;
 }
-export const ImportDashboardResponse =
-  DeleteChartResponse as any as S.Schema<ImportDashboardResponse>;
+const ImportDashboardResponse = DeleteChartResponse as any as S.Schema<ImportDashboardResponse>;
 
 export interface ImportDatabaseRequest {
   /** JSON map of sensitive values for masked_encrypted_extra fields. Keys are file paths (e.g., "databases/db.yaml") and values are JSON objects mapping JSONPath expressions to secrets. (e.g., `{"databases/MyDatabase.yaml": {"$.credentials_info.private_key": "actual_key"}}`). */
@@ -11525,7 +11167,7 @@ export interface ImportDatabaseRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encrypted_extra_secrets: S.optional(S.String),
     formData: S.optional(S.String),
@@ -11547,8 +11189,7 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportDatabaseResponse {
   message?: string;
 }
-export const ImportDatabaseResponse =
-  DeleteChartResponse as any as S.Schema<ImportDatabaseResponse>;
+const ImportDatabaseResponse = DeleteChartResponse as any as S.Schema<ImportDatabaseResponse>;
 
 export interface ImportDatasetRequest {
   /** upload file (ZIP or YAML) */
@@ -11568,7 +11209,7 @@ export interface ImportDatasetRequest {
   /** sync metrics? */
   sync_metrics?: boolean;
 }
-export const ImportDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formData: S.optional(S.String),
     overwrite: S.optional(S.Boolean),
@@ -11586,7 +11227,7 @@ export const ImportDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportDatasetResponse {
   message?: string;
 }
-export const ImportDatasetResponse = DeleteChartResponse as any as S.Schema<ImportDatasetResponse>;
+const ImportDatasetResponse = DeleteChartResponse as any as S.Schema<ImportDatasetResponse>;
 
 export interface ImportSavedQueryRequest {
   /** upload file (ZIP) */
@@ -11602,7 +11243,7 @@ export interface ImportSavedQueryRequest {
   /** JSON map of private_keys for each ssh_tunnel associated to a featured database in the ZIP file. If the ZIP includes a ssh_tunnel config in the path `databases/MyDatabase.yaml`, the private_key should be provided in the following format: `{"databases/MyDatabase.yaml": "my_private_key"}`. */
   ssh_tunnel_private_keys?: string;
 }
-export const ImportSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formData: S.optional(S.String),
     overwrite: S.optional(S.Boolean),
@@ -11623,14 +11264,13 @@ export const ImportSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportSavedQueryResponse {
   message?: string;
 }
-export const ImportSavedQueryResponse =
-  DeleteChartResponse as any as S.Schema<ImportSavedQueryResponse>;
+const ImportSavedQueryResponse = DeleteChartResponse as any as S.Schema<ImportSavedQueryResponse>;
 
 export interface ImportThemeRequest {
   formData?: string;
   overwrite?: string;
 }
-export const ImportThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formData: S.optional(S.String),
     overwrite: S.optional(S.String),
@@ -11642,11 +11282,11 @@ export const ImportThemeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportThemeResponse {
   message?: string;
 }
-export const ImportThemeResponse = DeleteChartResponse as any as S.Schema<ImportThemeResponse>;
+const ImportThemeResponse = DeleteChartResponse as any as S.Schema<ImportThemeResponse>;
 
 /** The uid of the dataset/datasource this new chart will use. A complete datasource identification needs `datasource_uid` */
 export type InvalidateCachekeyRequestDatasourceUidsList = Array<string>;
-export const InvalidateCachekeyRequestDatasourceUidsList =
+const InvalidateCachekeyRequestDatasourceUidsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<InvalidateCachekeyRequestDatasourceUidsList>;
 
 /** The type of dataset/datasource identified on `datasource_id`. */
@@ -11657,7 +11297,7 @@ export type DatasourceDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const DatasourceDatasourceType = S.String;
+const DatasourceDatasourceType = S.String;
 
 export interface Datasource {
   /** Datasource catalog */
@@ -11671,7 +11311,7 @@ export interface Datasource {
   /** Datasource schema */
   schema?: string;
 }
-export const Datasource = /*@__PURE__*/ S.suspend(() =>
+const Datasource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(S.NullOr(S.String)),
     database_name: S.optional(S.String),
@@ -11683,7 +11323,7 @@ export const Datasource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the data source and database names */
 export type InvalidateCachekeyRequestDatasourcesList = Array<Datasource>;
-export const InvalidateCachekeyRequestDatasourcesList = /*@__PURE__*/ S.Array(
+const InvalidateCachekeyRequestDatasourcesList = /*@__PURE__*/ S.Array(
   Datasource,
 ) as any as S.Schema<InvalidateCachekeyRequestDatasourcesList>;
 
@@ -11693,7 +11333,7 @@ export interface InvalidateCachekeyRequest {
   /** A list of the data source and database names */
   datasources?: InvalidateCachekeyRequestDatasourcesList;
 }
-export const InvalidateCachekeyRequest = /*@__PURE__*/ S.suspend(() =>
+const InvalidateCachekeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_uids: S.optional(InvalidateCachekeyRequestDatasourceUidsList),
     datasources: S.optional(InvalidateCachekeyRequestDatasourcesList),
@@ -11703,13 +11343,13 @@ export const InvalidateCachekeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvalidateCachekeyRequest>;
 
 export interface InvalidateCachekeyResponse {}
-export const InvalidateCachekeyResponse =
+const InvalidateCachekeyResponse =
   CreateSecurityGroupResponse as any as S.Schema<InvalidateCachekeyResponse>;
 
 export interface ListAdvancedDataTypeConvertRequest {
   q?: string;
 }
-export const ListAdvancedDataTypeConvertRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvancedDataTypeConvertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/advanced_data_type/convert", code: 200 })),
@@ -11718,11 +11358,11 @@ export const ListAdvancedDataTypeConvertRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvancedDataTypeConvertRequest>;
 
 export type AdvancedDataTypeSchemaValidFilterOperatorsList = Array<string>;
-export const AdvancedDataTypeSchemaValidFilterOperatorsList =
+const AdvancedDataTypeSchemaValidFilterOperatorsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<AdvancedDataTypeSchemaValidFilterOperatorsList>;
 
 export type AdvancedDataTypeSchemaValuesList = Array<string>;
-export const AdvancedDataTypeSchemaValuesList =
+const AdvancedDataTypeSchemaValuesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<AdvancedDataTypeSchemaValuesList>;
 
 export interface AdvancedDataTypeSchema {
@@ -11732,7 +11372,7 @@ export interface AdvancedDataTypeSchema {
   valid_filter_operators?: AdvancedDataTypeSchemaValidFilterOperatorsList;
   values?: AdvancedDataTypeSchemaValuesList;
 }
-export const AdvancedDataTypeSchema = /*@__PURE__*/ S.suspend(() =>
+const AdvancedDataTypeSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display_value: S.optional(S.String),
     error_message: S.optional(S.String),
@@ -11742,20 +11382,20 @@ export const AdvancedDataTypeSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdvancedDataTypeSchema" }) as any as S.Schema<AdvancedDataTypeSchema>;
 
 export interface ListAdvancedDataTypeTypesRequest {}
-export const ListAdvancedDataTypeTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvancedDataTypeTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/advanced_data_type/types", code: 200 })),
 ).annotate({
   identifier: "ListAdvancedDataTypeTypesRequest",
 }) as any as S.Schema<ListAdvancedDataTypeTypesRequest>;
 
 export type ListAdvancedDataTypeTypesResponseResultList = Array<string>;
-export const ListAdvancedDataTypeTypesResponseResultList =
+const ListAdvancedDataTypeTypesResponseResultList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListAdvancedDataTypeTypesResponseResultList>;
 
 export interface ListAdvancedDataTypeTypesResponse {
   result?: ListAdvancedDataTypeTypesResponseResultList;
 }
-export const ListAdvancedDataTypeTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdvancedDataTypeTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListAdvancedDataTypeTypesResponseResultList),
   }),
@@ -11768,7 +11408,7 @@ export interface ListAnnotationLayerAnnotationRequest {
   pk: number;
   q?: string;
 }
-export const ListAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -11779,14 +11419,14 @@ export const ListAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A list of annotation ids */
 export type ListAnnotationLayerAnnotationResponseIdsList = Array<string>;
-export const ListAnnotationLayerAnnotationResponseIdsList =
+const ListAnnotationLayerAnnotationResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListAnnotationLayerAnnotationResponseIdsList>;
 
 export interface AnnotationRestApiGetListUser {
   first_name: string;
   id?: number;
 }
-export const AnnotationRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.String,
     id: S.optional(S.Number),
@@ -11796,8 +11436,6 @@ export const AnnotationRestApiGetListUser = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnotationRestApiGetListUser>;
 
 export type AnnotationRestApiGetListUser1 = AnnotationRestApiGetListUser;
-export const AnnotationRestApiGetListUser1 = AnnotationRestApiGetListUser;
-
 export interface AnnotationRestApiGetList {
   changed_by?: AnnotationRestApiGetListUser;
   changed_on_delta_humanized?: unknown;
@@ -11808,7 +11446,7 @@ export interface AnnotationRestApiGetList {
   short_descr?: string | null;
   start_dttm?: string | null;
 }
-export const AnnotationRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_by: S.optional(AnnotationRestApiGetListUser),
     changed_on_delta_humanized: S.optional(S.Unknown),
@@ -11823,7 +11461,7 @@ export const AnnotationRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 
 /** The result from the get list query */
 export type ListAnnotationLayerAnnotationResponseResultList = Array<AnnotationRestApiGetList>;
-export const ListAnnotationLayerAnnotationResponseResultList = /*@__PURE__*/ S.Array(
+const ListAnnotationLayerAnnotationResponseResultList = /*@__PURE__*/ S.Array(
   AnnotationRestApiGetList,
 ) as any as S.Schema<ListAnnotationLayerAnnotationResponseResultList>;
 
@@ -11835,7 +11473,7 @@ export interface ListAnnotationLayerAnnotationResponse {
   /** The result from the get list query */
   result?: ListAnnotationLayerAnnotationResponseResultList;
 }
-export const ListAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     ids: S.optional(ListAnnotationLayerAnnotationResponseIdsList),
@@ -11848,7 +11486,7 @@ export const ListAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() 
 export interface ListAnnotationLayerInfoRequest {
   q?: string;
 }
-export const ListAnnotationLayerInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationLayerInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/annotation_layer/_info", code: 200 })),
@@ -11862,7 +11500,7 @@ export interface ListAnnotationLayerInfoResponseFiltersColumnNameItem {
   /** The filter operation key to use on list filters */
   operator?: string;
 }
-export const ListAnnotationLayerInfoResponseFiltersColumnNameItem = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationLayerInfoResponseFiltersColumnNameItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     operator: S.optional(S.String),
@@ -11873,14 +11511,14 @@ export const ListAnnotationLayerInfoResponseFiltersColumnNameItem = /*@__PURE__*
 
 export type ListAnnotationLayerInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListAnnotationLayerInfoResponseFiltersColumnNameList = /*@__PURE__*/ S.Array(
+const ListAnnotationLayerInfoResponseFiltersColumnNameList = /*@__PURE__*/ S.Array(
   ListAnnotationLayerInfoResponseFiltersColumnNameItem,
 ) as any as S.Schema<ListAnnotationLayerInfoResponseFiltersColumnNameList>;
 
 export interface ListAnnotationLayerInfoResponseFilters {
   column_name?: ListAnnotationLayerInfoResponseFiltersColumnNameList;
 }
-export const ListAnnotationLayerInfoResponseFilters = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationLayerInfoResponseFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.optional(ListAnnotationLayerInfoResponseFiltersColumnNameList),
   }),
@@ -11890,7 +11528,7 @@ export const ListAnnotationLayerInfoResponseFilters = /*@__PURE__*/ S.suspend(()
 
 /** The user permissions for this API resource */
 export type ListAnnotationLayerInfoResponsePermissionsList = Array<string>;
-export const ListAnnotationLayerInfoResponsePermissionsList =
+const ListAnnotationLayerInfoResponsePermissionsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListAnnotationLayerInfoResponsePermissionsList>;
 
 export interface ListAnnotationLayerInfoResponse {
@@ -11900,7 +11538,7 @@ export interface ListAnnotationLayerInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListAnnotationLayerInfoResponsePermissionsList;
 }
-export const ListAnnotationLayerInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationLayerInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     add_columns: S.optional(S.Unknown),
     edit_columns: S.optional(S.Unknown),
@@ -11915,45 +11553,35 @@ export interface ListChartRequest {
   /** Rison-encoded list query. viz_type_order may contain up to 256 unique visualization type slugs, each at most 250 characters, in the display-name order to use when sorting by viz_type. */
   q?: string;
 }
-export const ListChartRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/", code: 200 })),
 ).annotate({ identifier: "ListChartRequest" }) as any as S.Schema<ListChartRequest>;
 
 export type ListChartResponseIdsList = Array<number>;
-export const ListChartResponseIdsList =
+const ListChartResponseIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<ListChartResponseIdsList>;
 
 export type ChartRestApiGetListUser = CssTemplateRestApiGetListUser;
-export const ChartRestApiGetListUser = CssTemplateRestApiGetListUser;
-
 export type ChartRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-export const ChartRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-
 export type ChartRestApiGetListDashboard = ReportScheduleRestApiGetDashboard;
-export const ChartRestApiGetListDashboard = ReportScheduleRestApiGetDashboard;
-
 export type ChartRestApiGetListDashboardsList = Array<ReportScheduleRestApiGetDashboard>;
-export const ChartRestApiGetListDashboardsList = /*@__PURE__*/ S.Array(
+const ChartRestApiGetListDashboardsList = /*@__PURE__*/ S.Array(
   ReportScheduleRestApiGetDashboard,
 ) as any as S.Schema<ChartRestApiGetListDashboardsList>;
 
 export type ChartRestApiGetListSubject = DatasetRestApiGetListSubject;
-export const ChartRestApiGetListSubject = DatasetRestApiGetListSubject;
-
 export type ChartRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-export const ChartRestApiGetListEditorsList =
+const ChartRestApiGetListEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<ChartRestApiGetListEditorsList>;
 
 export type ChartRestApiGetListUser2 = CssTemplateRestApiGetListUser;
-export const ChartRestApiGetListUser2 = CssTemplateRestApiGetListUser;
-
 export interface ChartRestApiGetListSqlaTable {
   default_endpoint?: string | null;
   table_name: string;
 }
-export const ChartRestApiGetListSqlaTable = /*@__PURE__*/ S.suspend(() =>
+const ChartRestApiGetListSqlaTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_endpoint: S.optional(S.NullOr(S.String)),
     table_name: S.String,
@@ -11963,14 +11591,14 @@ export const ChartRestApiGetListSqlaTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChartRestApiGetListSqlaTable>;
 
 export type ChartRestApiGetListTagType = 1 | 2 | 3 | 4;
-export const ChartRestApiGetListTagType = S.Number;
+const ChartRestApiGetListTagType = S.Number;
 
 export interface ChartRestApiGetListTag {
   id?: number;
   name?: string | null;
   type?: ChartRestApiGetListTagType;
 }
-export const ChartRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
+const ChartRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.NullOr(S.String)),
@@ -11979,15 +11607,13 @@ export const ChartRestApiGetListTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChartRestApiGetListTag" }) as any as S.Schema<ChartRestApiGetListTag>;
 
 export type ChartRestApiGetListTagsList = Array<ChartRestApiGetListTag>;
-export const ChartRestApiGetListTagsList = /*@__PURE__*/ S.Array(
+const ChartRestApiGetListTagsList = /*@__PURE__*/ S.Array(
   ChartRestApiGetListTag,
 ) as any as S.Schema<ChartRestApiGetListTagsList>;
 
 export type ChartRestApiGetListSubject1 = DatasetRestApiGetListSubject;
-export const ChartRestApiGetListSubject1 = DatasetRestApiGetListSubject;
-
 export type ChartRestApiGetListViewersList = Array<DatasetRestApiGetListSubject>;
-export const ChartRestApiGetListViewersList =
+const ChartRestApiGetListViewersList =
   DatasetRestApiGetListEditorsList as any as S.Schema<ChartRestApiGetListViewersList>;
 
 export interface ChartRestApiGetList {
@@ -12027,7 +11653,7 @@ export interface ChartRestApiGetList {
   viewers?: ChartRestApiGetListViewersList;
   viz_type?: string | null;
 }
-export const ChartRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const ChartRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.NullOr(S.Number)),
     certification_details: S.optional(S.NullOr(S.String)),
@@ -12068,7 +11694,7 @@ export const ChartRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChartRestApiGetList" }) as any as S.Schema<ChartRestApiGetList>;
 
 export type ListChartResponseResultList = Array<ChartRestApiGetList>;
-export const ListChartResponseResultList = /*@__PURE__*/ S.Array(
+const ListChartResponseResultList = /*@__PURE__*/ S.Array(
   ChartRestApiGetList,
 ) as any as S.Schema<ListChartResponseResultList>;
 
@@ -12077,7 +11703,7 @@ export interface ListChartResponse {
   ids?: ListChartResponseIdsList;
   result?: ListChartResponseResultList;
 }
-export const ListChartResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     ids: S.optional(ListChartResponseIdsList),
@@ -12086,7 +11712,7 @@ export const ListChartResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListChartResponse" }) as any as S.Schema<ListChartResponse>;
 
 export type ListChartActivityRequestInclude = "self" | "related" | "all";
-export const ListChartActivityRequestInclude = S.String;
+const ListChartActivityRequestInclude = S.String;
 
 export interface ListChartActivityRequest {
   /** Chart UUID */
@@ -12099,7 +11725,7 @@ export interface ListChartActivityRequest {
   page?: number;
   page_size?: number;
 }
-export const ListChartActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     since: S.optional(S.String.pipe(T.Query())),
@@ -12113,22 +11739,20 @@ export const ListChartActivityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Transaction-level avenue that produced this record's batch: ``restore`` / ``import`` / ``clone``. ``null`` for ordinary saves. All records sharing a ``transaction_id`` share the same action_kind. The schema's third ``*_kind`` column (entity_kind / kind / action_kind), at transaction scope. */
 export type ActivityRecordActionKind = "clone" | "import" | "restore";
-export const ActivityRecordActionKind = S.String;
+const ActivityRecordActionKind = S.String;
 
 export type ActivityChangedBy = VersionChangedBy;
-export const ActivityChangedBy = VersionChangedBy;
-
 /** Set only on the synthetic starting-version record (``kind == "__creation__"``): how the entity came to exist. ``"pre_tracking"`` -- a retroactive baseline for an entity that predates versioning; ``"created"`` -- a creation with tracking on; ``"imported"`` -- an import, attributed to the importing user; ``"unknown"`` -- an unstamped starting version whose creation provenance cannot be established. Machine values: display copy is owned by the client. */
 export type ActivityRecordCreationKind = "pre_tracking" | "created" | "imported" | "unknown";
-export const ActivityRecordCreationKind = S.String;
+const ActivityRecordCreationKind = S.String;
 
 /** Present when the source entity has non-null ``deleted_at`` Absent or ``null`` otherwise. */
 export type ActivityRecordEntityDeletionState = "soft_deleted";
-export const ActivityRecordEntityDeletionState = S.String;
+const ActivityRecordEntityDeletionState = S.String;
 
 /** User-facing kind of the source entity: one of ``"dashboard"`` / ``"chart"`` / ``"dataset"``. */
 export type ActivityRecordEntityKind = "dashboard" | "chart" | "dataset";
-export const ActivityRecordEntityKind = S.String;
+const ActivityRecordEntityKind = S.String;
 
 export interface ActivityImpactChart {
   /** Chart id. */
@@ -12136,11 +11760,9 @@ export interface ActivityImpactChart {
   /** Chart name at the change's transaction -- it may differ from the live name if the chart was renamed since. */
   name?: string;
 }
-export const ActivityImpactChart = RlsRole as any as S.Schema<ActivityImpactChart>;
-
 /** The affected sibling charts (id + name), sorted by name -- the detail behind the ``charts`` count, rendered as the rollup entry's hover tooltip. Capped at 50 entries per record; ``charts`` always carries the full count. */
 export type ActivityImpactAffectedChartsList = Array<ActivityImpactChart>;
-export const ActivityImpactAffectedChartsList =
+const ActivityImpactAffectedChartsList =
   RlsFilterRolesList as any as S.Schema<ActivityImpactAffectedChartsList>;
 
 export interface ActivityImpact {
@@ -12149,7 +11771,7 @@ export interface ActivityImpact {
   /** Number of sibling charts on the path entity affected by the same related-record change at this transaction. */
   charts?: number;
 }
-export const ActivityImpact = /*@__PURE__*/ S.suspend(() =>
+const ActivityImpact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affected_charts: S.optional(ActivityImpactAffectedChartsList),
     charts: S.optional(S.Number),
@@ -12174,20 +11796,20 @@ export type ActivityRecordKind =
   | "field"
   | "__meta__"
   | "__creation__";
-export const ActivityRecordKind = S.String;
+const ActivityRecordKind = S.String;
 
 /** Per-record verb: ``add`` / ``remove`` / ``move`` / ``edit``. Explicit instead of inferred from ``from_value`` / ``to_value`` null-tests. ``move`` only fires for layout records. */
 export type ActivityRecordOperation = "add" | "remove" | "move" | "edit" | "update" | "announce";
-export const ActivityRecordOperation = S.String;
+const ActivityRecordOperation = S.String;
 
 /** Pure navigation address -- no verb or kind embedded. Examples: ``['slice_name']``, ``['params', 'adhoc_filters', 'country']``, ``['CHART-x']`` for a layout add/remove/move, ``['HEADER-y', 'text']`` for a layout edit leaf. The verb lives in ``operation``, the element type in ``kind``. */
 export type ActivityRecordPathList = Array<string>;
-export const ActivityRecordPathList =
+const ActivityRecordPathList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ActivityRecordPathList>;
 
 /** ``"self"`` if ``(entity_kind, entity_id)`` matches the path entity; else ``"related"``. Drives the frontend's no-group-under-save rendering rule. */
 export type ActivityRecordSource = "self" | "related";
-export const ActivityRecordSource = S.String;
+const ActivityRecordSource = S.String;
 
 export interface ActivityRecord {
   /** Transaction-level avenue that produced this record's batch: ``restore`` / ``import`` / ``clone``. ``null`` for ordinary saves. All records sharing a ``transaction_id`` share the same action_kind. The schema's third ``*_kind`` column (entity_kind / kind / action_kind), at transaction scope. */
@@ -12231,7 +11853,7 @@ export interface ActivityRecord {
   /** Stable UUIDv5 identifier for the source version (``derive_version_uuid(entity_uuid, transaction_id)``). Identical to what ``/versions/<version_uuid>/`` would return for the same change. */
   version_uuid?: string;
 }
-export const ActivityRecord = /*@__PURE__*/ S.suspend(() =>
+const ActivityRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action_kind: S.optional(S.NullOr(ActivityRecordActionKind)),
     changed_by: S.optional(S.NullOr(VersionChangedBy)),
@@ -12257,7 +11879,7 @@ export const ActivityRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityRecord" }) as any as S.Schema<ActivityRecord>;
 
 export type ActivityResponseResultList = Array<ActivityRecord>;
-export const ActivityResponseResultList = /*@__PURE__*/ S.Array(
+const ActivityResponseResultList = /*@__PURE__*/ S.Array(
   ActivityRecord,
 ) as any as S.Schema<ActivityResponseResultList>;
 
@@ -12268,7 +11890,7 @@ export interface ActivityResponse {
   /** True when the request hit the per-request fetch ceiling and older records exist beyond the returned window. Narrow the time range (``since``/``until``) to see them. */
   truncated?: boolean;
 }
-export const ActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(ActivityResponseResultList),
@@ -12288,7 +11910,7 @@ export interface ListChartDataRequest {
   /** Dashboard ID whose filter defaults should be applied to the chart's query context. The chart must belong to the specified dashboard. Only in scope filters with static default values are applied; filters that require a database query (I.E. defaultToFirstItem) or have no default are reported in the dashboard_filters response metadata. */
   filters_dashboard_id?: number;
 }
-export const ListChartDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     format: S.optional(S.String.pipe(T.Query())),
@@ -12302,7 +11924,7 @@ export interface ListChartDeckLayersRequest {
   /** The id of the Multiple Layers container chart */
   pk: number;
 }
-export const ListChartDeckLayersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartDeckLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/{pk}/deck_layers/", code: 200 })),
@@ -12317,7 +11939,7 @@ export interface ListChartDeckLayersResponseResultItem {
   slice_id?: number;
   viz_type?: string;
 }
-export const ListChartDeckLayersResponseResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListChartDeckLayersResponseResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_id: S.optional(S.Number),
     datasource_type: S.optional(S.String),
@@ -12330,14 +11952,14 @@ export const ListChartDeckLayersResponseResultItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListChartDeckLayersResponseResultItem>;
 
 export type ListChartDeckLayersResponseResultList = Array<ListChartDeckLayersResponseResultItem>;
-export const ListChartDeckLayersResponseResultList = /*@__PURE__*/ S.Array(
+const ListChartDeckLayersResponseResultList = /*@__PURE__*/ S.Array(
   ListChartDeckLayersResponseResultItem,
 ) as any as S.Schema<ListChartDeckLayersResponseResultList>;
 
 export interface ListChartDeckLayersResponse {
   result?: ListChartDeckLayersResponseResultList;
 }
-export const ListChartDeckLayersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChartDeckLayersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListChartDeckLayersResponseResultList),
   }),
@@ -12348,7 +11970,7 @@ export const ListChartDeckLayersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListChartFavoriteStatusRequest {
   q?: string;
 }
-export const ListChartFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/favorite_status/", code: 200 })),
@@ -12362,7 +11984,7 @@ export interface ChartFavStarResponseResult {
   /** The FaveStar value */
   value?: boolean;
 }
-export const ChartFavStarResponseResult = /*@__PURE__*/ S.suspend(() =>
+const ChartFavStarResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     value: S.optional(S.Boolean),
@@ -12373,7 +11995,7 @@ export const ChartFavStarResponseResult = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of results for each corresponding chart in the request */
 export type GetFavStarIdsSchemaResultList = Array<ChartFavStarResponseResult>;
-export const GetFavStarIdsSchemaResultList = /*@__PURE__*/ S.Array(
+const GetFavStarIdsSchemaResultList = /*@__PURE__*/ S.Array(
   ChartFavStarResponseResult,
 ) as any as S.Schema<GetFavStarIdsSchemaResultList>;
 
@@ -12381,7 +12003,7 @@ export interface GetFavStarIdsSchema {
   /** A list of results for each corresponding chart in the request */
   result?: GetFavStarIdsSchemaResultList;
 }
-export const GetFavStarIdsSchema = /*@__PURE__*/ S.suspend(() =>
+const GetFavStarIdsSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetFavStarIdsSchemaResultList),
   }),
@@ -12390,7 +12012,7 @@ export const GetFavStarIdsSchema = /*@__PURE__*/ S.suspend(() =>
 export interface ListChartInfoRequest {
   q?: string;
 }
-export const ListChartInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/_info", code: 200 })),
@@ -12398,23 +12020,17 @@ export const ListChartInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListChartInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListChartInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListChartInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListChartInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListChartInfoResponseFiltersColumnNameList>;
-
 export interface ListChartInfoResponseFilters {
   column_name?: ListChartInfoResponseFiltersColumnNameList;
 }
-export const ListChartInfoResponseFilters =
+const ListChartInfoResponseFilters =
   ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListChartInfoResponseFilters>;
 
 /** The user permissions for this API resource */
 export type ListChartInfoResponsePermissionsList = Array<string>;
-export const ListChartInfoResponsePermissionsList =
+const ListChartInfoResponsePermissionsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListChartInfoResponsePermissionsList>;
 
 export interface ListChartInfoResponse {
@@ -12424,7 +12040,7 @@ export interface ListChartInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListChartInfoResponsePermissionsList;
 }
-export const ListChartInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChartInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     add_columns: S.optional(S.Unknown),
     edit_columns: S.optional(S.Unknown),
@@ -12437,14 +12053,14 @@ export interface ListChartVersionsRequest {
   /** Chart UUID */
   uuid_str: string;
 }
-export const ListChartVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChartVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/chart/{uuid_str}/versions/", code: 200 })),
 ).annotate({ identifier: "ListChartVersionsRequest" }) as any as S.Schema<ListChartVersionsRequest>;
 
 export type ListChartVersionsResponseResultList = Array<VersionListItemSchema>;
-export const ListChartVersionsResponseResultList = /*@__PURE__*/ S.Array(
+const ListChartVersionsResponseResultList = /*@__PURE__*/ S.Array(
   VersionListItemSchema,
 ) as any as S.Schema<ListChartVersionsResponseResultList>;
 
@@ -12452,7 +12068,7 @@ export interface ListChartVersionsResponse {
   count?: number;
   result?: ListChartVersionsResponseResultList;
 }
-export const ListChartVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChartVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(ListChartVersionsResponseResultList),
@@ -12464,7 +12080,7 @@ export const ListChartVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListCssTemplateInfoRequest {
   q?: string;
 }
-export const ListCssTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCssTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/css_template/_info", code: 200 })),
@@ -12474,25 +12090,13 @@ export const ListCssTemplateInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListCssTemplateInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListCssTemplateInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListCssTemplateInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListCssTemplateInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListCssTemplateInfoResponseFiltersColumnNameList>;
-
 export interface ListCssTemplateInfoResponseFilters {
   column_name?: ListCssTemplateInfoResponseFiltersColumnNameList;
 }
-export const ListCssTemplateInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListCssTemplateInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListCssTemplateInfoResponsePermissionsList = Array<string>;
-export const ListCssTemplateInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListCssTemplateInfoResponsePermissionsList>;
-
 export interface ListCssTemplateInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -12500,55 +12104,42 @@ export interface ListCssTemplateInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListCssTemplateInfoResponsePermissionsList;
 }
-export const ListCssTemplateInfoResponse =
+const ListCssTemplateInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListCssTemplateInfoResponse>;
 
 export interface ListDashboardRequest {
   q?: string;
 }
-export const ListDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/", code: 200 })),
 ).annotate({ identifier: "ListDashboardRequest" }) as any as S.Schema<ListDashboardRequest>;
 
 export type ListDashboardResponseIdsList = Array<number>;
-export const ListDashboardResponseIdsList =
+const ListDashboardResponseIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<ListDashboardResponseIdsList>;
 
 export type DashboardRestApiGetListUser = CssTemplateRestApiGetListUser;
-export const DashboardRestApiGetListUser = CssTemplateRestApiGetListUser;
-
 export type DashboardRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-export const DashboardRestApiGetListUser1 = CssTemplateRestApiGetListUser;
-
 export type DashboardRestApiGetListSubject = DatasetRestApiGetListSubject;
-export const DashboardRestApiGetListSubject = DatasetRestApiGetListSubject;
-
 export type DashboardRestApiGetListEditorsList = Array<DatasetRestApiGetListSubject>;
-export const DashboardRestApiGetListEditorsList =
+const DashboardRestApiGetListEditorsList =
   DatasetRestApiGetListEditorsList as any as S.Schema<DashboardRestApiGetListEditorsList>;
 
 export type DashboardRestApiGetListTagType = 1 | 2 | 3 | 4;
-export const DashboardRestApiGetListTagType = S.Number;
-
 export interface DashboardRestApiGetListTag {
   id?: number;
   name?: string | null;
   type?: DashboardRestApiGetListTagType;
 }
-export const DashboardRestApiGetListTag =
-  SavedQueryRestApiGetListTag as any as S.Schema<DashboardRestApiGetListTag>;
-
 export type DashboardRestApiGetListTagsList = Array<DashboardRestApiGetListTag>;
-export const DashboardRestApiGetListTagsList =
+const DashboardRestApiGetListTagsList =
   SavedQueryRestApiGetListTagsList as any as S.Schema<DashboardRestApiGetListTagsList>;
 
 export type DashboardRestApiGetListSubject1 = DatasetRestApiGetListSubject;
-export const DashboardRestApiGetListSubject1 = DatasetRestApiGetListSubject;
-
 export type DashboardRestApiGetListViewersList = Array<DatasetRestApiGetListSubject>;
-export const DashboardRestApiGetListViewersList =
+const DashboardRestApiGetListViewersList =
   DatasetRestApiGetListEditorsList as any as S.Schema<DashboardRestApiGetListViewersList>;
 
 export interface DashboardRestApiGetList {
@@ -12573,7 +12164,7 @@ export interface DashboardRestApiGetList {
   uuid?: string | null;
   viewers?: DashboardRestApiGetListViewersList;
 }
-export const DashboardRestApiGetList = /*@__PURE__*/ S.suspend(() =>
+const DashboardRestApiGetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification_details: S.optional(S.NullOr(S.String)),
     certified_by: S.optional(S.NullOr(S.String)),
@@ -12599,7 +12190,7 @@ export const DashboardRestApiGetList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardRestApiGetList" }) as any as S.Schema<DashboardRestApiGetList>;
 
 export type ListDashboardResponseResultList = Array<DashboardRestApiGetList>;
-export const ListDashboardResponseResultList = /*@__PURE__*/ S.Array(
+const ListDashboardResponseResultList = /*@__PURE__*/ S.Array(
   DashboardRestApiGetList,
 ) as any as S.Schema<ListDashboardResponseResultList>;
 
@@ -12608,7 +12199,7 @@ export interface ListDashboardResponse {
   ids?: ListDashboardResponseIdsList;
   result?: ListDashboardResponseResultList;
 }
-export const ListDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     ids: S.optional(ListDashboardResponseIdsList),
@@ -12617,7 +12208,7 @@ export const ListDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDashboardResponse" }) as any as S.Schema<ListDashboardResponse>;
 
 export type ListDashboardActivityRequestInclude = "self" | "related" | "all";
-export const ListDashboardActivityRequestInclude = S.String;
+const ListDashboardActivityRequestInclude = S.String;
 
 export interface ListDashboardActivityRequest {
   /** Dashboard UUID */
@@ -12632,7 +12223,7 @@ export interface ListDashboardActivityRequest {
   page?: number;
   page_size?: number;
 }
-export const ListDashboardActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     since: S.optional(S.String.pipe(T.Query())),
@@ -12649,7 +12240,7 @@ export const ListDashboardActivityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListDashboardChartsRequest {
   id_or_slug: string;
 }
-export const ListDashboardChartsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardChartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/{id_or_slug}/charts", code: 200 })),
@@ -12679,7 +12270,7 @@ export interface ChartEntityResponseSchema {
   /** The URL of the chart. */
   slice_url?: string;
 }
-export const ChartEntityResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const ChartEntityResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.Number),
     certification_details: S.optional(S.String),
@@ -12697,14 +12288,14 @@ export const ChartEntityResponseSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChartEntityResponseSchema>;
 
 export type ListDashboardChartsResponseResultList = Array<ChartEntityResponseSchema>;
-export const ListDashboardChartsResponseResultList = /*@__PURE__*/ S.Array(
+const ListDashboardChartsResponseResultList = /*@__PURE__*/ S.Array(
   ChartEntityResponseSchema,
 ) as any as S.Schema<ListDashboardChartsResponseResultList>;
 
 export interface ListDashboardChartsResponse {
   result?: ListDashboardChartsResponseResultList;
 }
-export const ListDashboardChartsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardChartsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListDashboardChartsResponseResultList),
   }),
@@ -12716,7 +12307,7 @@ export interface ListDashboardDatasetsRequest {
   /** Either the id of the dashboard, or its slug */
   id_or_slug: string;
 }
-export const ListDashboardDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/{id_or_slug}/datasets", code: 200 })),
@@ -12725,15 +12316,15 @@ export const ListDashboardDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDashboardDatasetsRequest>;
 
 export type DashboardDatasetSchemaColumnNamesList = Array<string>;
-export const DashboardDatasetSchemaColumnNamesList =
+const DashboardDatasetSchemaColumnNamesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaColumnNamesList>;
 
 export type DashboardDatasetSchemaColumnTypesList = Array<number>;
-export const DashboardDatasetSchemaColumnTypesList =
+const DashboardDatasetSchemaColumnTypesList =
   CreateChartRequestDashboardsList as any as S.Schema<DashboardDatasetSchemaColumnTypesList>;
 
 export type DashboardDatasetSchemaColumnsList = Array<unknown>;
-export const DashboardDatasetSchemaColumnsList =
+const DashboardDatasetSchemaColumnsList =
   TagObjectObjectsToTagList as any as S.Schema<DashboardDatasetSchemaColumnsList>;
 
 export interface Database {
@@ -12748,7 +12339,7 @@ export interface Database {
   id?: number;
   name?: string;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_multi_catalog: S.optional(S.Boolean),
     allows_cost_estimate: S.optional(S.Boolean),
@@ -12764,46 +12355,37 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 export type DashboardDatasetSchemaEditorsList = Array<SubjectResponse>;
-export const DashboardDatasetSchemaEditorsList =
+const DashboardDatasetSchemaEditorsList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<DashboardDatasetSchemaEditorsList>;
 
 export type DashboardDatasetSchemaGranularitySqlaItemList = Array<string>;
-export const DashboardDatasetSchemaGranularitySqlaItemList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaGranularitySqlaItemList>;
-
 export type DashboardDatasetSchemaGranularitySqlaList =
   Array<DashboardDatasetSchemaGranularitySqlaItemList>;
-export const DashboardDatasetSchemaGranularitySqlaList =
+const DashboardDatasetSchemaGranularitySqlaList =
   ChartDataQueryObjectGroupingSetsList as any as S.Schema<DashboardDatasetSchemaGranularitySqlaList>;
 
 export type DashboardDatasetSchemaMetricsList = Array<unknown>;
-export const DashboardDatasetSchemaMetricsList =
+const DashboardDatasetSchemaMetricsList =
   TagObjectObjectsToTagList as any as S.Schema<DashboardDatasetSchemaMetricsList>;
 
 export type DashboardDatasetSchemaOrderByChoicesItemList = Array<string>;
-export const DashboardDatasetSchemaOrderByChoicesItemList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaOrderByChoicesItemList>;
-
 export type DashboardDatasetSchemaOrderByChoicesList =
   Array<DashboardDatasetSchemaOrderByChoicesItemList>;
-export const DashboardDatasetSchemaOrderByChoicesList =
+const DashboardDatasetSchemaOrderByChoicesList =
   ChartDataQueryObjectGroupingSetsList as any as S.Schema<DashboardDatasetSchemaOrderByChoicesList>;
 
 export type DashboardDatasetSchemaSemanticViewFeaturesList = Array<string>;
-export const DashboardDatasetSchemaSemanticViewFeaturesList =
+const DashboardDatasetSchemaSemanticViewFeaturesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaSemanticViewFeaturesList>;
 
 export type DashboardDatasetSchemaTimeGrainSqlaItemList = Array<string>;
-export const DashboardDatasetSchemaTimeGrainSqlaItemList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<DashboardDatasetSchemaTimeGrainSqlaItemList>;
-
 export type DashboardDatasetSchemaTimeGrainSqlaList =
   Array<DashboardDatasetSchemaTimeGrainSqlaItemList>;
-export const DashboardDatasetSchemaTimeGrainSqlaList =
+const DashboardDatasetSchemaTimeGrainSqlaList =
   ChartDataQueryObjectGroupingSetsList as any as S.Schema<DashboardDatasetSchemaTimeGrainSqlaList>;
 
 export type DashboardDatasetSchemaVerboseMapMap = { [key: string]: string | undefined };
-export const DashboardDatasetSchemaVerboseMapMap =
+const DashboardDatasetSchemaVerboseMapMap =
   ChartDataQueryObjectUrlParamsMap as any as S.Schema<DashboardDatasetSchemaVerboseMapMap>;
 
 export interface DashboardDatasetSchema {
@@ -12848,7 +12430,7 @@ export interface DashboardDatasetSchema {
   uid?: string;
   verbose_map?: DashboardDatasetSchemaVerboseMapMap;
 }
-export const DashboardDatasetSchema = /*@__PURE__*/ S.suspend(() =>
+const DashboardDatasetSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     always_filter_main_dttm: S.optional(S.Boolean),
     cache_timeout: S.optional(S.Number),
@@ -12894,14 +12476,14 @@ export const DashboardDatasetSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardDatasetSchema" }) as any as S.Schema<DashboardDatasetSchema>;
 
 export type ListDashboardDatasetsResponseResultList = Array<DashboardDatasetSchema>;
-export const ListDashboardDatasetsResponseResultList = /*@__PURE__*/ S.Array(
+const ListDashboardDatasetsResponseResultList = /*@__PURE__*/ S.Array(
   DashboardDatasetSchema,
 ) as any as S.Schema<ListDashboardDatasetsResponseResultList>;
 
 export interface ListDashboardDatasetsResponse {
   result?: ListDashboardDatasetsResponseResultList;
 }
-export const ListDashboardDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListDashboardDatasetsResponseResultList),
   }),
@@ -12912,7 +12494,7 @@ export const ListDashboardDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListDashboardFavoriteStatusRequest {
   q?: string;
 }
-export const ListDashboardFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/favorite_status/", code: 200 })),
@@ -12923,7 +12505,7 @@ export const ListDashboardFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListDashboardInfoRequest {
   q?: string;
 }
-export const ListDashboardInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/_info", code: 200 })),
@@ -12931,25 +12513,13 @@ export const ListDashboardInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDashboardInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListDashboardInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListDashboardInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListDashboardInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListDashboardInfoResponseFiltersColumnNameList>;
-
 export interface ListDashboardInfoResponseFilters {
   column_name?: ListDashboardInfoResponseFiltersColumnNameList;
 }
-export const ListDashboardInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListDashboardInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListDashboardInfoResponsePermissionsList = Array<string>;
-export const ListDashboardInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListDashboardInfoResponsePermissionsList>;
-
 export interface ListDashboardInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -12957,14 +12527,14 @@ export interface ListDashboardInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListDashboardInfoResponsePermissionsList;
 }
-export const ListDashboardInfoResponse =
+const ListDashboardInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListDashboardInfoResponse>;
 
 export interface ListDashboardTabsRequest {
   /** Either the id of the dashboard, or its slug */
   id_or_slug: string;
 }
-export const ListDashboardTabsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardTabsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/{id_or_slug}/tabs", code: 200 })),
@@ -12973,14 +12543,14 @@ export const ListDashboardTabsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListDashboardTabsResponse {
   result?: unknown;
 }
-export const ListDashboardTabsResponse =
+const ListDashboardTabsResponse =
   CreateChartFavoriteResponse as any as S.Schema<ListDashboardTabsResponse>;
 
 export interface ListDashboardVersionsRequest {
   /** Dashboard UUID */
   uuid_str: string;
 }
-export const ListDashboardVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dashboard/{uuid_str}/versions/", code: 200 })),
@@ -12989,18 +12559,15 @@ export const ListDashboardVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDashboardVersionsRequest>;
 
 export type ListDashboardVersionsResponseResultList = Array<VersionListItemSchema>;
-export const ListDashboardVersionsResponseResultList =
-  ListChartVersionsResponseResultList as any as S.Schema<ListDashboardVersionsResponseResultList>;
-
 export interface ListDashboardVersionsResponse {
   count?: number;
   result?: ListDashboardVersionsResponseResultList;
 }
-export const ListDashboardVersionsResponse =
+const ListDashboardVersionsResponse =
   ListChartVersionsResponse as any as S.Schema<ListDashboardVersionsResponse>;
 
 export interface ListDatabaseAvailableRequest {}
-export const ListDatabaseAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/database/available/", code: 200 })),
 ).annotate({
   identifier: "ListDatabaseAvailableRequest",
@@ -13008,7 +12575,7 @@ export const ListDatabaseAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Installed drivers for the engine */
 export type ListDatabaseAvailableResponseBodyItemAvailableDriversList = Array<string>;
-export const ListDatabaseAvailableResponseBodyItemAvailableDriversList =
+const ListDatabaseAvailableResponseBodyItemAvailableDriversList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListDatabaseAvailableResponseBodyItemAvailableDriversList>;
 
 /** Dict with public properties form the DB Engine */
@@ -13018,7 +12585,7 @@ export interface ListDatabaseAvailableResponseBodyItemEngineInformation {
   /** Whether the engine supports file uploads */
   supports_file_upload?: boolean;
 }
-export const ListDatabaseAvailableResponseBodyItemEngineInformation = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseAvailableResponseBodyItemEngineInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disable_ssh_tunneling: S.optional(S.Boolean),
     supports_file_upload: S.optional(S.Boolean),
@@ -13045,7 +12612,7 @@ export interface ListDatabaseAvailableResponseBodyItem {
   /** Example placeholder for the SQLAlchemy URI */
   sqlalchemy_uri_placeholder?: string;
 }
-export const ListDatabaseAvailableResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseAvailableResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available_drivers: S.optional(ListDatabaseAvailableResponseBodyItemAvailableDriversList),
     default_driver: S.optional(S.String),
@@ -13061,12 +12628,12 @@ export const ListDatabaseAvailableResponseBodyItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListDatabaseAvailableResponseBodyItem>;
 
 export type ListDatabaseAvailableResponseBodyList = Array<ListDatabaseAvailableResponseBodyItem>;
-export const ListDatabaseAvailableResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDatabaseAvailableResponseBodyList = /*@__PURE__*/ S.Array(
   ListDatabaseAvailableResponseBodyItem,
 ) as any as S.Schema<ListDatabaseAvailableResponseBodyList>;
 
 export type ListDatabaseAvailableResponse = ListDatabaseAvailableResponseBodyList;
-export const ListDatabaseAvailableResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseAvailableResponse = /*@__PURE__*/ S.suspend(() =>
   ListDatabaseAvailableResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDatabaseAvailableResponse",
@@ -13077,7 +12644,7 @@ export interface ListDatabaseCatalogsRequest {
   pk: number;
   q?: string;
 }
-export const ListDatabaseCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -13087,13 +12654,13 @@ export const ListDatabaseCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabaseCatalogsRequest>;
 
 export type CatalogsResponseSchemaResultList = Array<string>;
-export const CatalogsResponseSchemaResultList =
+const CatalogsResponseSchemaResultList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<CatalogsResponseSchemaResultList>;
 
 export interface CatalogsResponseSchema {
   result?: CatalogsResponseSchemaResultList;
 }
-export const CatalogsResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const CatalogsResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CatalogsResponseSchemaResultList),
   }),
@@ -13102,7 +12669,7 @@ export const CatalogsResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface ListDatabaseFunctionNamesRequest {
   pk: number;
 }
-export const ListDatabaseFunctionNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseFunctionNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/{pk}/function_names/", code: 200 })),
@@ -13111,13 +12678,13 @@ export const ListDatabaseFunctionNamesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabaseFunctionNamesRequest>;
 
 export type DatabaseFunctionNamesResponseFunctionNamesList = Array<string>;
-export const DatabaseFunctionNamesResponseFunctionNamesList =
+const DatabaseFunctionNamesResponseFunctionNamesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<DatabaseFunctionNamesResponseFunctionNamesList>;
 
 export interface DatabaseFunctionNamesResponse {
   function_names?: DatabaseFunctionNamesResponseFunctionNamesList;
 }
-export const DatabaseFunctionNamesResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseFunctionNamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function_names: S.optional(DatabaseFunctionNamesResponseFunctionNamesList),
   }),
@@ -13128,7 +12695,7 @@ export const DatabaseFunctionNamesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListDatabaseInfoRequest {
   q?: string;
 }
-export const ListDatabaseInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/database/_info", code: 200 })),
@@ -13136,25 +12703,13 @@ export const ListDatabaseInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDatabaseInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListDatabaseInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListDatabaseInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListDatabaseInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListDatabaseInfoResponseFiltersColumnNameList>;
-
 export interface ListDatabaseInfoResponseFilters {
   column_name?: ListDatabaseInfoResponseFiltersColumnNameList;
 }
-export const ListDatabaseInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListDatabaseInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListDatabaseInfoResponsePermissionsList = Array<string>;
-export const ListDatabaseInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListDatabaseInfoResponsePermissionsList>;
-
 export interface ListDatabaseInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13162,15 +12717,14 @@ export interface ListDatabaseInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListDatabaseInfoResponsePermissionsList;
 }
-export const ListDatabaseInfoResponse =
-  ListChartInfoResponse as any as S.Schema<ListDatabaseInfoResponse>;
+const ListDatabaseInfoResponse = ListChartInfoResponse as any as S.Schema<ListDatabaseInfoResponse>;
 
 export interface ListDatabaseSchemasRequest {
   /** The database id */
   pk: number;
   q?: string;
 }
-export const ListDatabaseSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -13180,19 +12734,15 @@ export const ListDatabaseSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabaseSchemasRequest>;
 
 export type SchemasResponseSchemaResultList = Array<string>;
-export const SchemasResponseSchemaResultList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<SchemasResponseSchemaResultList>;
-
 export interface SchemasResponseSchema {
   result?: SchemasResponseSchemaResultList;
 }
-export const SchemasResponseSchema =
-  CatalogsResponseSchema as any as S.Schema<SchemasResponseSchema>;
+const SchemasResponseSchema = CatalogsResponseSchema as any as S.Schema<SchemasResponseSchema>;
 
 export interface ListDatabaseSchemasAccessForFileUploadRequest {
   pk: number;
 }
-export const ListDatabaseSchemasAccessForFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseSchemasAccessForFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(
@@ -13208,14 +12758,14 @@ export const ListDatabaseSchemasAccessForFileUploadRequest = /*@__PURE__*/ S.sus
 
 /** The list of schemas allowed for the database to upload information */
 export type DatabaseSchemaAccessForFileUploadResponseSchemasList = Array<string>;
-export const DatabaseSchemaAccessForFileUploadResponseSchemasList =
+const DatabaseSchemaAccessForFileUploadResponseSchemasList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<DatabaseSchemaAccessForFileUploadResponseSchemasList>;
 
 export interface DatabaseSchemaAccessForFileUploadResponse {
   /** The list of schemas allowed for the database to upload information */
   schemas?: DatabaseSchemaAccessForFileUploadResponseSchemasList;
 }
-export const DatabaseSchemaAccessForFileUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSchemaAccessForFileUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemas: S.optional(DatabaseSchemaAccessForFileUploadResponseSchemasList),
   }),
@@ -13228,7 +12778,7 @@ export interface ListDatabaseTablesRequest {
   pk: number;
   q?: string;
 }
-export const ListDatabaseTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -13245,7 +12795,7 @@ export interface DatabaseTablesResponse {
   /** The table or view name */
   value?: string;
 }
-export const DatabaseTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extra: S.optional(S.Unknown),
     type: S.optional(S.String),
@@ -13255,7 +12805,7 @@ export const DatabaseTablesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A List of tables for given database */
 export type ListDatabaseTablesResponseResultList = Array<DatabaseTablesResponse>;
-export const ListDatabaseTablesResponseResultList = /*@__PURE__*/ S.Array(
+const ListDatabaseTablesResponseResultList = /*@__PURE__*/ S.Array(
   DatabaseTablesResponse,
 ) as any as S.Schema<ListDatabaseTablesResponseResultList>;
 
@@ -13264,7 +12814,7 @@ export interface ListDatabaseTablesResponse {
   /** A List of tables for given database */
   result?: ListDatabaseTablesResponseResultList;
 }
-export const ListDatabaseTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     result: S.optional(ListDatabaseTablesResponseResultList),
@@ -13274,7 +12824,7 @@ export const ListDatabaseTablesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabaseTablesResponse>;
 
 export type ListDatasetActivityRequestInclude = "self" | "related" | "all";
-export const ListDatasetActivityRequestInclude = S.String;
+const ListDatasetActivityRequestInclude = S.String;
 
 export interface ListDatasetActivityRequest {
   /** Dataset UUID */
@@ -13287,7 +12837,7 @@ export interface ListDatasetActivityRequest {
   page?: number;
   page_size?: number;
 }
-export const ListDatasetActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     since: S.optional(S.String.pipe(T.Query())),
@@ -13304,7 +12854,7 @@ export const ListDatasetActivityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListDatasetInfoRequest {
   q?: string;
 }
-export const ListDatasetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/_info", code: 200 })),
@@ -13312,25 +12862,13 @@ export const ListDatasetInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDatasetInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListDatasetInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListDatasetInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListDatasetInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListDatasetInfoResponseFiltersColumnNameList>;
-
 export interface ListDatasetInfoResponseFilters {
   column_name?: ListDatasetInfoResponseFiltersColumnNameList;
 }
-export const ListDatasetInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListDatasetInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListDatasetInfoResponsePermissionsList = Array<string>;
-export const ListDatasetInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListDatasetInfoResponsePermissionsList>;
-
 export interface ListDatasetInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13338,14 +12876,13 @@ export interface ListDatasetInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListDatasetInfoResponsePermissionsList;
 }
-export const ListDatasetInfoResponse =
-  ListChartInfoResponse as any as S.Schema<ListDatasetInfoResponse>;
+const ListDatasetInfoResponse = ListChartInfoResponse as any as S.Schema<ListDatasetInfoResponse>;
 
 export interface ListDatasetVersionsRequest {
   /** Dataset UUID */
   uuid_str: string;
 }
-export const ListDatasetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/dataset/{uuid_str}/versions/", code: 200 })),
@@ -13354,14 +12891,11 @@ export const ListDatasetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetVersionsRequest>;
 
 export type ListDatasetVersionsResponseResultList = Array<VersionListItemSchema>;
-export const ListDatasetVersionsResponseResultList =
-  ListChartVersionsResponseResultList as any as S.Schema<ListDatasetVersionsResponseResultList>;
-
 export interface ListDatasetVersionsResponse {
   count?: number;
   result?: ListDatasetVersionsResponseResultList;
 }
-export const ListDatasetVersionsResponse =
+const ListDatasetVersionsResponse =
   ListChartVersionsResponse as any as S.Schema<ListDatasetVersionsResponse>;
 
 export interface ListDatasourceColumnValuesRequest {
@@ -13374,7 +12908,7 @@ export interface ListDatasourceColumnValuesRequest {
   /** Optional case-insensitive substring; only values containing it are returned. Lets the client search the full column rather than the truncated first page. */
   q?: string;
 }
-export const ListDatasourceColumnValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasourceColumnValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_type: S.String.pipe(T.Label()),
     datasource_id: S.Number.pipe(T.Label()),
@@ -13397,25 +12931,25 @@ export type ListDatasourceColumnValuesResponseResultItem =
   | number
   | boolean
   | unknown;
-export const ListDatasourceColumnValuesResponseResultItem =
+const ListDatasourceColumnValuesResponseResultItem =
   S.Unknown as any as S.Schema<ListDatasourceColumnValuesResponseResultItem>;
 
 export type ListDatasourceColumnValuesResponseResultList =
   Array<ListDatasourceColumnValuesResponseResultItem>;
-export const ListDatasourceColumnValuesResponseResultList = /*@__PURE__*/ S.Array(
+const ListDatasourceColumnValuesResponseResultList = /*@__PURE__*/ S.Array(
   ListDatasourceColumnValuesResponseResultItem,
 ) as any as S.Schema<ListDatasourceColumnValuesResponseResultList>;
 
 /** Suggestions are disabled for versioned semantic views; enter values manually. */
 export type ListDatasourceColumnValuesResponseSuggestionsStatus = "unavailable_versioned_view";
-export const ListDatasourceColumnValuesResponseSuggestionsStatus = S.String;
+const ListDatasourceColumnValuesResponseSuggestionsStatus = S.String;
 
 export interface ListDatasourceColumnValuesResponse {
   result?: ListDatasourceColumnValuesResponseResultList;
   /** Suggestions are disabled for versioned semantic views; enter values manually. */
   suggestions_status?: ListDatasourceColumnValuesResponseSuggestionsStatus;
 }
-export const ListDatasourceColumnValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatasourceColumnValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListDatasourceColumnValuesResponseResultList),
     suggestions_status: S.optional(ListDatasourceColumnValuesResponseSuggestionsStatus),
@@ -13427,7 +12961,7 @@ export const ListDatasourceColumnValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListLogRecentActivityRequest {
   q?: string;
 }
-export const ListLogRecentActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogRecentActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/log/recent_activity/", code: 200 })),
@@ -13449,7 +12983,7 @@ export interface RecentActivity {
   /** Human-readable description of how long ago activity took place. */
   time_delta_humanized?: string;
 }
-export const RecentActivity = /*@__PURE__*/ S.suspend(() =>
+const RecentActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     item_title: S.optional(S.String),
@@ -13462,7 +12996,7 @@ export const RecentActivity = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of recent activity objects */
 export type RecentActivityResponseSchemaResultList = Array<RecentActivity>;
-export const RecentActivityResponseSchemaResultList = /*@__PURE__*/ S.Array(
+const RecentActivityResponseSchemaResultList = /*@__PURE__*/ S.Array(
   RecentActivity,
 ) as any as S.Schema<RecentActivityResponseSchemaResultList>;
 
@@ -13470,7 +13004,7 @@ export interface RecentActivityResponseSchema {
   /** A list of recent activity objects */
   result?: RecentActivityResponseSchemaResultList;
 }
-export const RecentActivityResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const RecentActivityResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RecentActivityResponseSchemaResultList),
   }),
@@ -13479,12 +13013,12 @@ export const RecentActivityResponseSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecentActivityResponseSchema>;
 
 export interface ListMenuRequest {}
-export const ListMenuRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMenuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/menu/", code: 200 })),
 ).annotate({ identifier: "ListMenuRequest" }) as any as S.Schema<ListMenuRequest>;
 
 export type ListMenuResponseResultItemChildsList = Array<unknown>;
-export const ListMenuResponseResultItemChildsList =
+const ListMenuResponseResultItemChildsList =
   TagObjectObjectsToTagList as any as S.Schema<ListMenuResponseResultItemChildsList>;
 
 export interface ListMenuResponseResultItem {
@@ -13498,7 +13032,7 @@ export interface ListMenuResponseResultItem {
   /** The URL for the menu item */
   url?: string;
 }
-export const ListMenuResponseResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListMenuResponseResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childs: S.optional(ListMenuResponseResultItemChildsList),
     icon: S.optional(S.String),
@@ -13512,7 +13046,7 @@ export const ListMenuResponseResultItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Menu items in a forest like data structure */
 export type ListMenuResponseResultList = Array<ListMenuResponseResultItem>;
-export const ListMenuResponseResultList = /*@__PURE__*/ S.Array(
+const ListMenuResponseResultList = /*@__PURE__*/ S.Array(
   ListMenuResponseResultItem,
 ) as any as S.Schema<ListMenuResponseResultList>;
 
@@ -13520,7 +13054,7 @@ export interface ListMenuResponse {
   /** Menu items in a forest like data structure */
   result?: ListMenuResponseResultList;
 }
-export const ListMenuResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMenuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListMenuResponseResultList),
   }),
@@ -13529,7 +13063,7 @@ export const ListMenuResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListQueryUpdatedSinceRequest {
   q?: string;
 }
-export const ListQueryUpdatedSinceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQueryUpdatedSinceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/query/updated_since", code: 200 })),
@@ -13539,7 +13073,7 @@ export const ListQueryUpdatedSinceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A List of queries that changed after last_updated_ms */
 export type ListQueryUpdatedSinceResponseResultList = Array<QueryRestApiGet>;
-export const ListQueryUpdatedSinceResponseResultList = /*@__PURE__*/ S.Array(
+const ListQueryUpdatedSinceResponseResultList = /*@__PURE__*/ S.Array(
   QueryRestApiGet,
 ) as any as S.Schema<ListQueryUpdatedSinceResponseResultList>;
 
@@ -13547,7 +13081,7 @@ export interface ListQueryUpdatedSinceResponse {
   /** A List of queries that changed after last_updated_ms */
   result?: ListQueryUpdatedSinceResponseResultList;
 }
-export const ListQueryUpdatedSinceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQueryUpdatedSinceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListQueryUpdatedSinceResponseResultList),
   }),
@@ -13558,7 +13092,7 @@ export const ListQueryUpdatedSinceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListReportInfoRequest {
   q?: string;
 }
-export const ListReportInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/report/_info", code: 200 })),
@@ -13566,25 +13100,13 @@ export const ListReportInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListReportInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListReportInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListReportInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListReportInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListReportInfoResponseFiltersColumnNameList>;
-
 export interface ListReportInfoResponseFilters {
   column_name?: ListReportInfoResponseFiltersColumnNameList;
 }
-export const ListReportInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListReportInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListReportInfoResponsePermissionsList = Array<string>;
-export const ListReportInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListReportInfoResponsePermissionsList>;
-
 export interface ListReportInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13592,15 +13114,14 @@ export interface ListReportInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListReportInfoResponsePermissionsList;
 }
-export const ListReportInfoResponse =
-  ListChartInfoResponse as any as S.Schema<ListReportInfoResponse>;
+const ListReportInfoResponse = ListChartInfoResponse as any as S.Schema<ListReportInfoResponse>;
 
 export interface ListReportLogRequest {
   /** The report schedule id for these logs */
   pk: number;
   q?: string;
 }
-export const ListReportLogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -13609,15 +13130,13 @@ export const ListReportLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of log ids */
 export type ListReportLogResponseIdsList = Array<string>;
-export const ListReportLogResponseIdsList =
+const ListReportLogResponseIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListReportLogResponseIdsList>;
 
 export type ReportExecutionLogRestApiGetList = ReportExecutionLogRestApiGet;
-export const ReportExecutionLogRestApiGetList = ReportExecutionLogRestApiGet;
-
 /** The result from the get list query */
 export type ListReportLogResponseResultList = Array<ReportExecutionLogRestApiGet>;
-export const ListReportLogResponseResultList = /*@__PURE__*/ S.Array(
+const ListReportLogResponseResultList = /*@__PURE__*/ S.Array(
   ReportExecutionLogRestApiGet,
 ) as any as S.Schema<ListReportLogResponseResultList>;
 
@@ -13629,7 +13148,7 @@ export interface ListReportLogResponse {
   /** The result from the get list query */
   result?: ListReportLogResponseResultList;
 }
-export const ListReportLogResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     ids: S.optional(ListReportLogResponseIdsList),
@@ -13640,7 +13159,7 @@ export const ListReportLogResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListReportSlackChannelsRequest {
   q?: string;
 }
-export const ListReportSlackChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportSlackChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/report/slack_channels/", code: 200 })),
@@ -13652,7 +13171,7 @@ export interface ListReportSlackChannelsResponseResultItem {
   id?: string;
   name?: string;
 }
-export const ListReportSlackChannelsResponseResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListReportSlackChannelsResponseResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13663,14 +13182,14 @@ export const ListReportSlackChannelsResponseResultItem = /*@__PURE__*/ S.suspend
 
 export type ListReportSlackChannelsResponseResultList =
   Array<ListReportSlackChannelsResponseResultItem>;
-export const ListReportSlackChannelsResponseResultList = /*@__PURE__*/ S.Array(
+const ListReportSlackChannelsResponseResultList = /*@__PURE__*/ S.Array(
   ListReportSlackChannelsResponseResultItem,
 ) as any as S.Schema<ListReportSlackChannelsResponseResultList>;
 
 export interface ListReportSlackChannelsResponse {
   result?: ListReportSlackChannelsResponseResultList;
 }
-export const ListReportSlackChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportSlackChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListReportSlackChannelsResponseResultList),
   }),
@@ -13681,7 +13200,7 @@ export const ListReportSlackChannelsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListRowlevelsecurityInfoRequest {
   q?: string;
 }
-export const ListRowlevelsecurityInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRowlevelsecurityInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/rowlevelsecurity/_info", code: 200 })),
@@ -13691,25 +13210,13 @@ export const ListRowlevelsecurityInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListRowlevelsecurityInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListRowlevelsecurityInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListRowlevelsecurityInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListRowlevelsecurityInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListRowlevelsecurityInfoResponseFiltersColumnNameList>;
-
 export interface ListRowlevelsecurityInfoResponseFilters {
   column_name?: ListRowlevelsecurityInfoResponseFiltersColumnNameList;
 }
-export const ListRowlevelsecurityInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListRowlevelsecurityInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListRowlevelsecurityInfoResponsePermissionsList = Array<string>;
-export const ListRowlevelsecurityInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListRowlevelsecurityInfoResponsePermissionsList>;
-
 export interface ListRowlevelsecurityInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13717,13 +13224,13 @@ export interface ListRowlevelsecurityInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListRowlevelsecurityInfoResponsePermissionsList;
 }
-export const ListRowlevelsecurityInfoResponse =
+const ListRowlevelsecurityInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListRowlevelsecurityInfoResponse>;
 
 export interface ListSavedQueryInfoRequest {
   q?: string;
 }
-export const ListSavedQueryInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavedQueryInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/saved_query/_info", code: 200 })),
@@ -13733,25 +13240,13 @@ export const ListSavedQueryInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSavedQueryInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSavedQueryInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSavedQueryInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSavedQueryInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSavedQueryInfoResponseFiltersColumnNameList>;
-
 export interface ListSavedQueryInfoResponseFilters {
   column_name?: ListSavedQueryInfoResponseFiltersColumnNameList;
 }
-export const ListSavedQueryInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSavedQueryInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSavedQueryInfoResponsePermissionsList = Array<string>;
-export const ListSavedQueryInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSavedQueryInfoResponsePermissionsList>;
-
 export interface ListSavedQueryInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13759,13 +13254,13 @@ export interface ListSavedQueryInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSavedQueryInfoResponsePermissionsList;
 }
-export const ListSavedQueryInfoResponse =
+const ListSavedQueryInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSavedQueryInfoResponse>;
 
 export interface ListSecurityGroupInfoRequest {
   q?: string;
 }
-export const ListSecurityGroupInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityGroupInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/groups/_info", code: 200 })),
@@ -13775,25 +13270,13 @@ export const ListSecurityGroupInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSecurityGroupInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityGroupInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityGroupInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityGroupInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecurityGroupInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityGroupInfoResponseFilters {
   column_name?: ListSecurityGroupInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityGroupInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecurityGroupInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityGroupInfoResponsePermissionsList = Array<string>;
-export const ListSecurityGroupInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityGroupInfoResponsePermissionsList>;
-
 export interface ListSecurityGroupInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13801,13 +13284,13 @@ export interface ListSecurityGroupInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityGroupInfoResponsePermissionsList;
 }
-export const ListSecurityGroupInfoResponse =
+const ListSecurityGroupInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityGroupInfoResponse>;
 
 export interface ListSecurityPermissionsInfoRequest {
   q?: string;
 }
-export const ListSecurityPermissionsInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityPermissionsInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/permissions/_info", code: 200 })),
@@ -13817,25 +13300,13 @@ export const ListSecurityPermissionsInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSecurityPermissionsInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityPermissionsInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityPermissionsInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityPermissionsInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecurityPermissionsInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityPermissionsInfoResponseFilters {
   column_name?: ListSecurityPermissionsInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityPermissionsInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecurityPermissionsInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityPermissionsInfoResponsePermissionsList = Array<string>;
-export const ListSecurityPermissionsInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityPermissionsInfoResponsePermissionsList>;
-
 export interface ListSecurityPermissionsInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13843,13 +13314,13 @@ export interface ListSecurityPermissionsInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityPermissionsInfoResponsePermissionsList;
 }
-export const ListSecurityPermissionsInfoResponse =
+const ListSecurityPermissionsInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityPermissionsInfoResponse>;
 
 export interface ListSecurityPermissionsResourceInfoRequest {
   q?: string;
 }
-export const ListSecurityPermissionsResourceInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityPermissionsResourceInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -13861,20 +13332,16 @@ export const ListSecurityPermissionsResourceInfoRequest = /*@__PURE__*/ S.suspen
 
 export type ListSecurityPermissionsResourceInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityPermissionsResourceInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList =
-  /*@__PURE__*/ S.Array(
-    ListAnnotationLayerInfoResponseFiltersColumnNameItem,
-  ) as any as S.Schema<ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList>;
+const ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList = /*@__PURE__*/ S.Array(
+  ListAnnotationLayerInfoResponseFiltersColumnNameItem,
+) as any as S.Schema<ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList>;
 
 export interface ListSecurityPermissionsResourceInfoResponseFilters {
   column_name?: ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityPermissionsResourceInfoResponseFilters = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityPermissionsResourceInfoResponseFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_name: S.optional(ListSecurityPermissionsResourceInfoResponseFiltersColumnNameList),
   }),
@@ -13884,7 +13351,7 @@ export const ListSecurityPermissionsResourceInfoResponseFilters = /*@__PURE__*/ 
 
 /** The user permissions for this API resource */
 export type ListSecurityPermissionsResourceInfoResponsePermissionsList = Array<string>;
-export const ListSecurityPermissionsResourceInfoResponsePermissionsList =
+const ListSecurityPermissionsResourceInfoResponsePermissionsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityPermissionsResourceInfoResponsePermissionsList>;
 
 export interface ListSecurityPermissionsResourceInfoResponse {
@@ -13894,7 +13361,7 @@ export interface ListSecurityPermissionsResourceInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityPermissionsResourceInfoResponsePermissionsList;
 }
-export const ListSecurityPermissionsResourceInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityPermissionsResourceInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     add_columns: S.optional(S.Unknown),
     edit_columns: S.optional(S.Unknown),
@@ -13908,7 +13375,7 @@ export const ListSecurityPermissionsResourceInfoResponse = /*@__PURE__*/ S.suspe
 export interface ListSecurityResourceInfoRequest {
   q?: string;
 }
-export const ListSecurityResourceInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityResourceInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/resources/_info", code: 200 })),
@@ -13918,25 +13385,13 @@ export const ListSecurityResourceInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSecurityResourceInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityResourceInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityResourceInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityResourceInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecurityResourceInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityResourceInfoResponseFilters {
   column_name?: ListSecurityResourceInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityResourceInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecurityResourceInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityResourceInfoResponsePermissionsList = Array<string>;
-export const ListSecurityResourceInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityResourceInfoResponsePermissionsList>;
-
 export interface ListSecurityResourceInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13944,13 +13399,13 @@ export interface ListSecurityResourceInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityResourceInfoResponsePermissionsList;
 }
-export const ListSecurityResourceInfoResponse =
+const ListSecurityResourceInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityResourceInfoResponse>;
 
 export interface ListSecurityRoleInfoRequest {
   q?: string;
 }
-export const ListSecurityRoleInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityRoleInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/roles/_info", code: 200 })),
@@ -13960,25 +13415,13 @@ export const ListSecurityRoleInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSecurityRoleInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityRoleInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityRoleInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityRoleInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecurityRoleInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityRoleInfoResponseFilters {
   column_name?: ListSecurityRoleInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityRoleInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecurityRoleInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityRoleInfoResponsePermissionsList = Array<string>;
-export const ListSecurityRoleInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityRoleInfoResponsePermissionsList>;
-
 export interface ListSecurityRoleInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -13986,13 +13429,13 @@ export interface ListSecurityRoleInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityRoleInfoResponsePermissionsList;
 }
-export const ListSecurityRoleInfoResponse =
+const ListSecurityRoleInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityRoleInfoResponse>;
 
 export interface ListSecurityRolePermissionsRequest {
   role_id: number;
 }
-export const ListSecurityRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -14007,7 +13450,7 @@ export interface RolePermissionListSchema {
   permission_name?: string;
   view_menu_name?: string;
 }
-export const RolePermissionListSchema = /*@__PURE__*/ S.suspend(() =>
+const RolePermissionListSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     permission_name: S.optional(S.String),
@@ -14016,14 +13459,14 @@ export const RolePermissionListSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RolePermissionListSchema" }) as any as S.Schema<RolePermissionListSchema>;
 
 export type ListSecurityRolePermissionsResponseResultList = Array<RolePermissionListSchema>;
-export const ListSecurityRolePermissionsResponseResultList = /*@__PURE__*/ S.Array(
+const ListSecurityRolePermissionsResponseResultList = /*@__PURE__*/ S.Array(
   RolePermissionListSchema,
 ) as any as S.Schema<ListSecurityRolePermissionsResponseResultList>;
 
 export interface ListSecurityRolePermissionsResponse {
   result?: ListSecurityRolePermissionsResponseResultList;
 }
-export const ListSecurityRolePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityRolePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListSecurityRolePermissionsResponseResultList),
   }),
@@ -14032,13 +13475,13 @@ export const ListSecurityRolePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSecurityRolePermissionsResponse>;
 
 export type ListSecurityRoleSearchRequestQFiltersItemCol = "user_ids" | "permission_ids" | "name";
-export const ListSecurityRoleSearchRequestQFiltersItemCol = S.String;
+const ListSecurityRoleSearchRequestQFiltersItemCol = S.String;
 
 export interface ListSecurityRoleSearchRequestQFiltersItem {
   col?: ListSecurityRoleSearchRequestQFiltersItemCol | (string & {});
   value?: string;
 }
-export const ListSecurityRoleSearchRequestQFiltersItem = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityRoleSearchRequestQFiltersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     col: S.optional(ListSecurityRoleSearchRequestQFiltersItemCol),
     value: S.optional(S.String),
@@ -14049,15 +13492,15 @@ export const ListSecurityRoleSearchRequestQFiltersItem = /*@__PURE__*/ S.suspend
 
 export type ListSecurityRoleSearchRequestQFiltersList =
   Array<ListSecurityRoleSearchRequestQFiltersItem>;
-export const ListSecurityRoleSearchRequestQFiltersList = /*@__PURE__*/ S.Array(
+const ListSecurityRoleSearchRequestQFiltersList = /*@__PURE__*/ S.Array(
   ListSecurityRoleSearchRequestQFiltersItem,
 ) as any as S.Schema<ListSecurityRoleSearchRequestQFiltersList>;
 
 export type ListSecurityRoleSearchRequestQOrderColumn = "id" | "name";
-export const ListSecurityRoleSearchRequestQOrderColumn = S.String;
+const ListSecurityRoleSearchRequestQOrderColumn = S.String;
 
 export type ListSecurityRoleSearchRequestQOrderDirection = "asc" | "desc";
-export const ListSecurityRoleSearchRequestQOrderDirection = S.String;
+const ListSecurityRoleSearchRequestQOrderDirection = S.String;
 
 export interface ListSecurityRoleSearchRequestQ {
   filters?: ListSecurityRoleSearchRequestQFiltersList;
@@ -14066,7 +13509,7 @@ export interface ListSecurityRoleSearchRequestQ {
   page?: number;
   page_size?: number;
 }
-export const ListSecurityRoleSearchRequestQ = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityRoleSearchRequestQ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(ListSecurityRoleSearchRequestQFiltersList),
     order_column: S.optional(ListSecurityRoleSearchRequestQOrderColumn),
@@ -14081,7 +13524,7 @@ export const ListSecurityRoleSearchRequestQ = /*@__PURE__*/ S.suspend(() =>
 export interface ListSecurityRoleSearchRequest {
   q?: ListSecurityRoleSearchRequestQ;
 }
-export const ListSecurityRoleSearchRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityRoleSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(ListSecurityRoleSearchRequestQ.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/roles/search/", code: 200 })),
@@ -14090,15 +13533,15 @@ export const ListSecurityRoleSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSecurityRoleSearchRequest>;
 
 export type RolesResponseSchemaIdsList = Array<number>;
-export const RolesResponseSchemaIdsList =
+const RolesResponseSchemaIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<RolesResponseSchemaIdsList>;
 
 export type RoleResponseSchemaPermissionIdsList = Array<number>;
-export const RoleResponseSchemaPermissionIdsList =
+const RoleResponseSchemaPermissionIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<RoleResponseSchemaPermissionIdsList>;
 
 export type RoleResponseSchemaUserIdsList = Array<number>;
-export const RoleResponseSchemaUserIdsList =
+const RoleResponseSchemaUserIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<RoleResponseSchemaUserIdsList>;
 
 export interface RoleResponseSchema {
@@ -14107,7 +13550,7 @@ export interface RoleResponseSchema {
   permission_ids?: RoleResponseSchemaPermissionIdsList;
   user_ids?: RoleResponseSchemaUserIdsList;
 }
-export const RoleResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const RoleResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -14117,7 +13560,7 @@ export const RoleResponseSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoleResponseSchema" }) as any as S.Schema<RoleResponseSchema>;
 
 export type RolesResponseSchemaResultList = Array<RoleResponseSchema>;
-export const RolesResponseSchemaResultList = /*@__PURE__*/ S.Array(
+const RolesResponseSchemaResultList = /*@__PURE__*/ S.Array(
   RoleResponseSchema,
 ) as any as S.Schema<RolesResponseSchemaResultList>;
 
@@ -14126,7 +13569,7 @@ export interface RolesResponseSchema {
   ids?: RolesResponseSchemaIdsList;
   result?: RolesResponseSchemaResultList;
 }
-export const RolesResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const RolesResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     ids: S.optional(RolesResponseSchemaIdsList),
@@ -14137,7 +13580,7 @@ export const RolesResponseSchema = /*@__PURE__*/ S.suspend(() =>
 export interface ListSecuritySubjectInfoRequest {
   q?: string;
 }
-export const ListSecuritySubjectInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecuritySubjectInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/subject/_info", code: 200 })),
@@ -14147,25 +13590,13 @@ export const ListSecuritySubjectInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSecuritySubjectInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecuritySubjectInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecuritySubjectInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecuritySubjectInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecuritySubjectInfoResponseFiltersColumnNameList>;
-
 export interface ListSecuritySubjectInfoResponseFilters {
   column_name?: ListSecuritySubjectInfoResponseFiltersColumnNameList;
 }
-export const ListSecuritySubjectInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecuritySubjectInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecuritySubjectInfoResponsePermissionsList = Array<string>;
-export const ListSecuritySubjectInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecuritySubjectInfoResponsePermissionsList>;
-
 export interface ListSecuritySubjectInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -14173,13 +13604,13 @@ export interface ListSecuritySubjectInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecuritySubjectInfoResponsePermissionsList;
 }
-export const ListSecuritySubjectInfoResponse =
+const ListSecuritySubjectInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecuritySubjectInfoResponse>;
 
 export interface ListSecurityUserInfoRequest {
   q?: string;
 }
-export const ListSecurityUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/users/_info", code: 200 })),
@@ -14189,25 +13620,13 @@ export const ListSecurityUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListSecurityUserInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityUserInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityUserInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityUserInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecurityUserInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityUserInfoResponseFilters {
   column_name?: ListSecurityUserInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityUserInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecurityUserInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityUserInfoResponsePermissionsList = Array<string>;
-export const ListSecurityUserInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityUserInfoResponsePermissionsList>;
-
 export interface ListSecurityUserInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -14215,13 +13634,13 @@ export interface ListSecurityUserInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityUserInfoResponsePermissionsList;
 }
-export const ListSecurityUserInfoResponse =
+const ListSecurityUserInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityUserInfoResponse>;
 
 export interface ListSecurityUserRegistrationInfoRequest {
   q?: string;
 }
-export const ListSecurityUserRegistrationInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityUserRegistrationInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/security/user_registrations/_info", code: 200 })),
@@ -14231,25 +13650,13 @@ export const ListSecurityUserRegistrationInfoRequest = /*@__PURE__*/ S.suspend((
 
 export type ListSecurityUserRegistrationInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListSecurityUserRegistrationInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListSecurityUserRegistrationInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListSecurityUserRegistrationInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListSecurityUserRegistrationInfoResponseFiltersColumnNameList>;
-
 export interface ListSecurityUserRegistrationInfoResponseFilters {
   column_name?: ListSecurityUserRegistrationInfoResponseFiltersColumnNameList;
 }
-export const ListSecurityUserRegistrationInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListSecurityUserRegistrationInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListSecurityUserRegistrationInfoResponsePermissionsList = Array<string>;
-export const ListSecurityUserRegistrationInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListSecurityUserRegistrationInfoResponsePermissionsList>;
-
 export interface ListSecurityUserRegistrationInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -14257,11 +13664,11 @@ export interface ListSecurityUserRegistrationInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListSecurityUserRegistrationInfoResponsePermissionsList;
 }
-export const ListSecurityUserRegistrationInfoResponse =
+const ListSecurityUserRegistrationInfoResponse =
   ListAnnotationLayerInfoResponse as any as S.Schema<ListSecurityUserRegistrationInfoResponse>;
 
 export interface ListSqllabRequest {}
-export const ListSqllabRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqllabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/sqllab/", code: 200 })),
 ).annotate({ identifier: "ListSqllabRequest" }) as any as S.Schema<ListSqllabRequest>;
 
@@ -14274,7 +13681,7 @@ export interface Table {
   tab_state_id?: number;
   table?: string;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_id: S.optional(S.Number),
     description: S.optional(S.String),
@@ -14287,7 +13694,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export type TabStateTableSchemasList = Array<Table>;
-export const TabStateTableSchemasList = /*@__PURE__*/ S.Array(
+const TabStateTableSchemasList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TabStateTableSchemasList>;
 
@@ -14307,7 +13714,7 @@ export interface TabState {
   table_schemas?: TabStateTableSchemasList;
   user_id?: number;
 }
-export const TabState = /*@__PURE__*/ S.suspend(() =>
+const TabState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     autorun: S.optional(S.Boolean),
@@ -14349,7 +13756,7 @@ export interface SQLLabBootstrapDatabase {
   /** The database id */
   id?: number;
 }
-export const SQLLabBootstrapDatabase = /*@__PURE__*/ S.suspend(() =>
+const SQLLabBootstrapDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_ctas: S.optional(S.Boolean),
     allow_cvas: S.optional(S.Boolean),
@@ -14374,19 +13781,19 @@ export const SQLLabBootstrapDatabase = /*@__PURE__*/ S.suspend(() =>
 export type SQLLabBootstrapSchemaDatabasesMap = {
   [key: string]: SQLLabBootstrapDatabase | undefined;
 };
-export const SQLLabBootstrapSchemaDatabasesMap = /*@__PURE__*/ S.Record(
+const SQLLabBootstrapSchemaDatabasesMap = /*@__PURE__*/ S.Record(
   S.String,
   SQLLabBootstrapDatabase,
 ) as any as S.Schema<SQLLabBootstrapSchemaDatabasesMap>;
 
 export type SQLLabBootstrapSchemaQueriesMap = { [key: string]: QueryResult | undefined };
-export const SQLLabBootstrapSchemaQueriesMap = /*@__PURE__*/ S.Record(
+const SQLLabBootstrapSchemaQueriesMap = /*@__PURE__*/ S.Record(
   S.String,
   QueryResult,
 ) as any as S.Schema<SQLLabBootstrapSchemaQueriesMap>;
 
 export type SQLLabBootstrapSchemaTabStateIdsList = Array<string>;
-export const SQLLabBootstrapSchemaTabStateIdsList =
+const SQLLabBootstrapSchemaTabStateIdsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<SQLLabBootstrapSchemaTabStateIdsList>;
 
 export interface SQLLabBootstrapSchema {
@@ -14395,7 +13802,7 @@ export interface SQLLabBootstrapSchema {
   queries?: SQLLabBootstrapSchemaQueriesMap;
   tab_state_ids?: SQLLabBootstrapSchemaTabStateIdsList;
 }
-export const SQLLabBootstrapSchema = /*@__PURE__*/ S.suspend(() =>
+const SQLLabBootstrapSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_tab: S.optional(TabState),
     databases: S.optional(SQLLabBootstrapSchemaDatabasesMap),
@@ -14407,7 +13814,7 @@ export const SQLLabBootstrapSchema = /*@__PURE__*/ S.suspend(() =>
 export interface ListSqllabResultsRequest {
   q?: string;
 }
-export const ListSqllabResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqllabResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/sqllab/results/", code: 200 })),
@@ -14416,7 +13823,7 @@ export const ListSqllabResultsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagFavoriteStatusRequest {
   q?: string;
 }
-export const ListTagFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/tag/favorite_status/", code: 200 })),
@@ -14425,15 +13832,15 @@ export const ListTagFavoriteStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagFavoriteStatusRequest>;
 
 export type ListTagGetObjectsRequestTagIdsList = Array<number>;
-export const ListTagGetObjectsRequestTagIdsList =
+const ListTagGetObjectsRequestTagIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<ListTagGetObjectsRequestTagIdsList>;
 
 export type ListTagGetObjectsRequestTagsList = Array<string>;
-export const ListTagGetObjectsRequestTagsList =
+const ListTagGetObjectsRequestTagsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListTagGetObjectsRequestTagsList>;
 
 export type ListTagGetObjectsRequestTypesList = Array<string>;
-export const ListTagGetObjectsRequestTypesList =
+const ListTagGetObjectsRequestTypesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<ListTagGetObjectsRequestTypesList>;
 
 export interface ListTagGetObjectsRequest {
@@ -14441,7 +13848,7 @@ export interface ListTagGetObjectsRequest {
   tags?: ListTagGetObjectsRequestTagsList;
   types?: ListTagGetObjectsRequestTypesList;
 }
-export const ListTagGetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagGetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagIds: S.optional(ListTagGetObjectsRequestTagIdsList.pipe(T.Query())),
     tags: S.optional(ListTagGetObjectsRequestTagsList.pipe(T.Query())),
@@ -14450,7 +13857,7 @@ export const ListTagGetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagGetObjectsRequest" }) as any as S.Schema<ListTagGetObjectsRequest>;
 
 export type TaggedObjectEntityResponseSchemaEditorsList = Array<SubjectResponse>;
-export const TaggedObjectEntityResponseSchemaEditorsList =
+const TaggedObjectEntityResponseSchemaEditorsList =
   ChartGetResponseSchemaEditorsList as any as S.Schema<TaggedObjectEntityResponseSchemaEditorsList>;
 
 export interface TagGetResponseSchema {
@@ -14458,7 +13865,7 @@ export interface TagGetResponseSchema {
   name?: string;
   type?: string;
 }
-export const TagGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const TagGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -14467,7 +13874,7 @@ export const TagGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagGetResponseSchema" }) as any as S.Schema<TagGetResponseSchema>;
 
 export type TaggedObjectEntityResponseSchemaTagsList = Array<TagGetResponseSchema>;
-export const TaggedObjectEntityResponseSchemaTagsList = /*@__PURE__*/ S.Array(
+const TaggedObjectEntityResponseSchemaTagsList = /*@__PURE__*/ S.Array(
   TagGetResponseSchema,
 ) as any as S.Schema<TaggedObjectEntityResponseSchemaTagsList>;
 
@@ -14482,7 +13889,7 @@ export interface TaggedObjectEntityResponseSchema {
   type?: string;
   url?: string;
 }
-export const TaggedObjectEntityResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const TaggedObjectEntityResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changed_on: S.optional(S.String),
     created_by: S.optional(VersionChangedBy),
@@ -14499,14 +13906,14 @@ export const TaggedObjectEntityResponseSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaggedObjectEntityResponseSchema>;
 
 export type ListTagGetObjectsResponseResultList = Array<TaggedObjectEntityResponseSchema>;
-export const ListTagGetObjectsResponseResultList = /*@__PURE__*/ S.Array(
+const ListTagGetObjectsResponseResultList = /*@__PURE__*/ S.Array(
   TaggedObjectEntityResponseSchema,
 ) as any as S.Schema<ListTagGetObjectsResponseResultList>;
 
 export interface ListTagGetObjectsResponse {
   result?: ListTagGetObjectsResponseResultList;
 }
-export const ListTagGetObjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagGetObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListTagGetObjectsResponseResultList),
   }),
@@ -14517,7 +13924,7 @@ export const ListTagGetObjectsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagInfoRequest {
   q?: string;
 }
-export const ListTagInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/tag/_info", code: 200 })),
@@ -14525,25 +13932,13 @@ export const ListTagInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListTagInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListTagInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListTagInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListTagInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListTagInfoResponseFiltersColumnNameList>;
-
 export interface ListTagInfoResponseFilters {
   column_name?: ListTagInfoResponseFiltersColumnNameList;
 }
-export const ListTagInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListTagInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListTagInfoResponsePermissionsList = Array<string>;
-export const ListTagInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListTagInfoResponsePermissionsList>;
-
 export interface ListTagInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -14551,12 +13946,12 @@ export interface ListTagInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListTagInfoResponsePermissionsList;
 }
-export const ListTagInfoResponse = ListChartInfoResponse as any as S.Schema<ListTagInfoResponse>;
+const ListTagInfoResponse = ListChartInfoResponse as any as S.Schema<ListTagInfoResponse>;
 
 export interface ListThemeInfoRequest {
   q?: string;
 }
-export const ListThemeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThemeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/theme/_info", code: 200 })),
@@ -14564,25 +13959,13 @@ export const ListThemeInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListThemeInfoResponseFiltersColumnNameItem =
   ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-export const ListThemeInfoResponseFiltersColumnNameItem =
-  ListAnnotationLayerInfoResponseFiltersColumnNameItem;
-
 export type ListThemeInfoResponseFiltersColumnNameList =
   Array<ListAnnotationLayerInfoResponseFiltersColumnNameItem>;
-export const ListThemeInfoResponseFiltersColumnNameList =
-  ListAnnotationLayerInfoResponseFiltersColumnNameList as any as S.Schema<ListThemeInfoResponseFiltersColumnNameList>;
-
 export interface ListThemeInfoResponseFilters {
   column_name?: ListThemeInfoResponseFiltersColumnNameList;
 }
-export const ListThemeInfoResponseFilters =
-  ListAnnotationLayerInfoResponseFilters as any as S.Schema<ListThemeInfoResponseFilters>;
-
 /** The user permissions for this API resource */
 export type ListThemeInfoResponsePermissionsList = Array<string>;
-export const ListThemeInfoResponsePermissionsList =
-  AnnotationLayerDescriptionColumnsList as any as S.Schema<ListThemeInfoResponsePermissionsList>;
-
 export interface ListThemeInfoResponse {
   add_columns?: unknown;
   edit_columns?: unknown;
@@ -14590,12 +13973,11 @@ export interface ListThemeInfoResponse {
   /** The user permissions for this API resource */
   permissions?: ListThemeInfoResponsePermissionsList;
 }
-export const ListThemeInfoResponse =
-  ListChartInfoResponse as any as S.Schema<ListThemeInfoResponse>;
+const ListThemeInfoResponse = ListChartInfoResponse as any as S.Schema<ListThemeInfoResponse>;
 
 /** Choose an authentication provider */
 export type LoginSecurityRequestProvider = "db" | "ldap";
-export const LoginSecurityRequestProvider = S.String;
+const LoginSecurityRequestProvider = S.String;
 
 export interface LoginSecurityRequest {
   /** The password for authentication */
@@ -14607,7 +13989,7 @@ export interface LoginSecurityRequest {
   /** The username for authentication */
   username?: string;
 }
-export const LoginSecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const LoginSecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     provider: S.optional(LoginSecurityRequestProvider),
@@ -14620,7 +14002,7 @@ export interface LoginSecurityResponse {
   access_token?: string | Redacted.Redacted<string>;
   refresh_token?: string | Redacted.Redacted<string>;
 }
-export const LoginSecurityResponse = /*@__PURE__*/ S.suspend(() =>
+const LoginSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
     refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -14630,7 +14012,7 @@ export const LoginSecurityResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeChartRequest {
   uuid: string;
 }
-export const PurgeChartRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/chart/{uuid}/purge", code: 200 })),
@@ -14639,12 +14021,12 @@ export const PurgeChartRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeChartResponse {
   message?: string;
 }
-export const PurgeChartResponse = DeleteChartResponse as any as S.Schema<PurgeChartResponse>;
+const PurgeChartResponse = DeleteChartResponse as any as S.Schema<PurgeChartResponse>;
 
 export interface PurgeDashboardRequest {
   uuid: string;
 }
-export const PurgeDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/{uuid}/purge", code: 200 })),
@@ -14653,14 +14035,13 @@ export const PurgeDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeDashboardResponse {
   message?: string;
 }
-export const PurgeDashboardResponse =
-  DeleteChartResponse as any as S.Schema<PurgeDashboardResponse>;
+const PurgeDashboardResponse = DeleteChartResponse as any as S.Schema<PurgeDashboardResponse>;
 
 export interface PurgeDatasetRequest {
   uuid: string;
   confirmed_impact_token: string;
 }
-export const PurgeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     confirmed_impact_token: S.String,
@@ -14670,7 +14051,7 @@ export const PurgeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeDatasetResponse {
   message?: string;
 }
-export const PurgeDatasetResponse = DeleteChartResponse as any as S.Schema<PurgeDatasetResponse>;
+const PurgeDatasetResponse = DeleteChartResponse as any as S.Schema<PurgeDatasetResponse>;
 
 export interface PutAnnotationLayerRequest {
   /** The annotation layer pk for this annotation */
@@ -14680,7 +14061,7 @@ export interface PutAnnotationLayerRequest {
   /** The annotation layer name */
   name?: string;
 }
-export const PutAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAnnotationLayerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     descr: S.optional(S.String),
@@ -14696,7 +14077,7 @@ export interface AnnotationLayerRestApiPut {
   /** The annotation layer name */
   name?: string;
 }
-export const AnnotationLayerRestApiPut = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayerRestApiPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descr: S.optional(S.String),
     name: S.optional(S.String),
@@ -14709,7 +14090,7 @@ export interface PutAnnotationLayerResponse {
   id?: number;
   result?: AnnotationLayerRestApiPut;
 }
-export const PutAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
+const PutAnnotationLayerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(AnnotationLayerRestApiPut),
@@ -14734,7 +14115,7 @@ export interface PutAnnotationLayerAnnotationRequest {
   /** The annotation start date time */
   start_dttm?: string;
 }
-export const PutAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAnnotationLayerAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     annotation_id: S.Number.pipe(T.Label()),
@@ -14766,7 +14147,7 @@ export interface AnnotationRestApiPut {
   /** The annotation start date time */
   start_dttm?: string;
 }
-export const AnnotationRestApiPut = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRestApiPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_dttm: S.optional(S.String),
     json_metadata: S.optional(S.NullOr(S.String)),
@@ -14780,7 +14161,7 @@ export interface PutAnnotationLayerAnnotationResponse {
   id?: number;
   result?: AnnotationRestApiPut;
 }
-export const PutAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const PutAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(AnnotationRestApiPut),
@@ -14790,7 +14171,7 @@ export const PutAnnotationLayerAnnotationResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutAnnotationLayerAnnotationResponse>;
 
 export type PutChartRequestDashboardsList = Array<number>;
-export const PutChartRequestDashboardsList =
+const PutChartRequestDashboardsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestDashboardsList>;
 
 /** The type of dataset/datasource identified on `datasource_id`. */
@@ -14801,10 +14182,10 @@ export type PutChartRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const PutChartRequestDatasourceType = S.String;
+const PutChartRequestDatasourceType = S.String;
 
 export type PutChartRequestEditorsList = Array<number>;
-export const PutChartRequestEditorsList =
+const PutChartRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestEditorsList>;
 
 export interface PutChartRequestNormalizationChangesItem {
@@ -14814,7 +14195,7 @@ export interface PutChartRequestNormalizationChangesItem {
   to_present: boolean;
   to_value?: unknown;
 }
-export const PutChartRequestNormalizationChangesItem = /*@__PURE__*/ S.suspend(() =>
+const PutChartRequestNormalizationChangesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     control: S.String,
     from_present: S.Boolean,
@@ -14829,16 +14210,16 @@ export const PutChartRequestNormalizationChangesItem = /*@__PURE__*/ S.suspend((
 /** Optional advisory Explore hydration transitions used only to remove exact automatic normalization changes from human-readable version history. Invalid metadata is ignored. */
 export type PutChartRequestNormalizationChangesList =
   Array<PutChartRequestNormalizationChangesItem>;
-export const PutChartRequestNormalizationChangesList = /*@__PURE__*/ S.Array(
+const PutChartRequestNormalizationChangesList = /*@__PURE__*/ S.Array(
   PutChartRequestNormalizationChangesItem,
 ) as any as S.Schema<PutChartRequestNormalizationChangesList>;
 
 export type PutChartRequestTagsList = Array<number>;
-export const PutChartRequestTagsList =
+const PutChartRequestTagsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestTagsList>;
 
 export type PutChartRequestViewersList = Array<number>;
-export const PutChartRequestViewersList =
+const PutChartRequestViewersList =
   CreateChartRequestDashboardsList as any as S.Schema<PutChartRequestViewersList>;
 
 export interface PutChartRequest {
@@ -14875,7 +14256,7 @@ export interface PutChartRequest {
   /** The type of chart visualization used. */
   viz_type?: string | null;
 }
-export const PutChartRequest = /*@__PURE__*/ S.suspend(() =>
+const PutChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     cache_timeout: S.optional(S.NullOr(S.Number)),
@@ -14901,7 +14282,7 @@ export const PutChartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutChartRequest" }) as any as S.Schema<PutChartRequest>;
 
 export type ChartRestApiPutOutputDashboardsList = Array<number>;
-export const ChartRestApiPutOutputDashboardsList =
+const ChartRestApiPutOutputDashboardsList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputDashboardsList>;
 
 /** The type of dataset/datasource identified on `datasource_id`. */
@@ -14912,18 +14293,18 @@ export type ChartRestApiPutOutputDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const ChartRestApiPutOutputDatasourceType = S.String;
+const ChartRestApiPutOutputDatasourceType = S.String;
 
 export type ChartRestApiPutOutputEditorsList = Array<number>;
-export const ChartRestApiPutOutputEditorsList =
+const ChartRestApiPutOutputEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputEditorsList>;
 
 export type ChartRestApiPutOutputTagsList = Array<number>;
-export const ChartRestApiPutOutputTagsList =
+const ChartRestApiPutOutputTagsList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputTagsList>;
 
 export type ChartRestApiPutOutputViewersList = Array<number>;
-export const ChartRestApiPutOutputViewersList =
+const ChartRestApiPutOutputViewersList =
   CreateChartRequestDashboardsList as any as S.Schema<ChartRestApiPutOutputViewersList>;
 
 export interface ChartRestApiPutOutput {
@@ -14957,7 +14338,7 @@ export interface ChartRestApiPutOutput {
   /** The type of chart visualization used. */
   viz_type?: string | null;
 }
-export const ChartRestApiPutOutput = /*@__PURE__*/ S.suspend(() =>
+const ChartRestApiPutOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_timeout: S.optional(S.NullOr(S.Number)),
     certification_details: S.optional(S.NullOr(S.String)),
@@ -14996,7 +14377,7 @@ export interface PutChartResponse {
   old_version_uuid?: string | null;
   result?: ChartRestApiPutOutput;
 }
-export const PutChartResponse = /*@__PURE__*/ S.suspend(() =>
+const PutChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     new_transaction_id: S.optional(S.NullOr(S.Number)),
@@ -15017,7 +14398,7 @@ export interface PutChartWarmUpCacheRequest {
   /** Extra filters to apply when warming up cache */
   extra_filters?: string;
 }
-export const PutChartWarmUpCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const PutChartWarmUpCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chart_id: S.Number,
     dashboard_id: S.optional(S.Number),
@@ -15035,7 +14416,7 @@ export interface ChartCacheWarmUpResponseSingle {
   /** Status of the underlying query for the viz */
   viz_status?: string;
 }
-export const ChartCacheWarmUpResponseSingle = /*@__PURE__*/ S.suspend(() =>
+const ChartCacheWarmUpResponseSingle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chart_id: S.optional(S.Number),
     viz_error: S.optional(S.String),
@@ -15047,7 +14428,7 @@ export const ChartCacheWarmUpResponseSingle = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of each chart's warmup status and errors if any */
 export type ChartCacheWarmUpResponseSchemaResultList = Array<ChartCacheWarmUpResponseSingle>;
-export const ChartCacheWarmUpResponseSchemaResultList = /*@__PURE__*/ S.Array(
+const ChartCacheWarmUpResponseSchemaResultList = /*@__PURE__*/ S.Array(
   ChartCacheWarmUpResponseSingle,
 ) as any as S.Schema<ChartCacheWarmUpResponseSchemaResultList>;
 
@@ -15055,7 +14436,7 @@ export interface ChartCacheWarmUpResponseSchema {
   /** A list of each chart's warmup status and errors if any */
   result?: ChartCacheWarmUpResponseSchemaResultList;
 }
-export const ChartCacheWarmUpResponseSchema = /*@__PURE__*/ S.suspend(() =>
+const ChartCacheWarmUpResponseSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ChartCacheWarmUpResponseSchemaResultList),
   }),
@@ -15068,7 +14449,7 @@ export interface PutCssTemplateRequest {
   css?: string | null;
   template_name?: string | null;
 }
-export const PutCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const PutCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     css: S.optional(S.NullOr(S.String)),
@@ -15077,28 +14458,26 @@ export const PutCssTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCssTemplateRequest" }) as any as S.Schema<PutCssTemplateRequest>;
 
 export type CssTemplateRestApiPut = CssTemplateRestApiPost;
-export const CssTemplateRestApiPut = CssTemplateRestApiPost;
-
 export interface PutCssTemplateResponse {
   result?: CssTemplateRestApiPost;
 }
-export const PutCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const PutCssTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CssTemplateRestApiPost),
   }),
 ).annotate({ identifier: "PutCssTemplateResponse" }) as any as S.Schema<PutCssTemplateResponse>;
 
 export type PutDashboardRequestEditorsList = Array<number | null>;
-export const PutDashboardRequestEditorsList = /*@__PURE__*/ S.Array(
+const PutDashboardRequestEditorsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(S.Number),
 ) as any as S.Schema<PutDashboardRequestEditorsList>;
 
 export type PutDashboardRequestTagsList = Array<number | null>;
-export const PutDashboardRequestTagsList =
+const PutDashboardRequestTagsList =
   PutDashboardRequestEditorsList as any as S.Schema<PutDashboardRequestTagsList>;
 
 export type PutDashboardRequestViewersList = Array<number | null>;
-export const PutDashboardRequestViewersList =
+const PutDashboardRequestViewersList =
   PutDashboardRequestEditorsList as any as S.Schema<PutDashboardRequestViewersList>;
 
 export interface PutDashboardRequest {
@@ -15130,7 +14509,7 @@ export interface PutDashboardRequest {
   uuid?: string | null;
   viewers?: PutDashboardRequestViewersList;
 }
-export const PutDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     certification_details: S.optional(S.NullOr(S.String)),
@@ -15153,15 +14532,15 @@ export const PutDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDashboardRequest" }) as any as S.Schema<PutDashboardRequest>;
 
 export type DashboardRestApiPutEditorsList = Array<number | null>;
-export const DashboardRestApiPutEditorsList =
+const DashboardRestApiPutEditorsList =
   PutDashboardRequestEditorsList as any as S.Schema<DashboardRestApiPutEditorsList>;
 
 export type DashboardRestApiPutTagsList = Array<number | null>;
-export const DashboardRestApiPutTagsList =
+const DashboardRestApiPutTagsList =
   PutDashboardRequestEditorsList as any as S.Schema<DashboardRestApiPutTagsList>;
 
 export type DashboardRestApiPutViewersList = Array<number | null>;
-export const DashboardRestApiPutViewersList =
+const DashboardRestApiPutViewersList =
   PutDashboardRequestEditorsList as any as S.Schema<DashboardRestApiPutViewersList>;
 
 export interface DashboardRestApiPut {
@@ -15192,7 +14571,7 @@ export interface DashboardRestApiPut {
   uuid?: string | null;
   viewers?: DashboardRestApiPutViewersList;
 }
-export const DashboardRestApiPut = /*@__PURE__*/ S.suspend(() =>
+const DashboardRestApiPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certification_details: S.optional(S.NullOr(S.String)),
     certified_by: S.optional(S.NullOr(S.String)),
@@ -15230,7 +14609,7 @@ export interface PutDashboardResponse {
   old_version_uuid?: string | null;
   result?: DashboardRestApiPut;
 }
-export const PutDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     last_modified_time: S.optional(S.Number),
@@ -15245,15 +14624,15 @@ export const PutDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDashboardResponse" }) as any as S.Schema<PutDashboardResponse>;
 
 export type PutDashboardChartCustomizationsRequestDeletedList = Array<string>;
-export const PutDashboardChartCustomizationsRequestDeletedList =
+const PutDashboardChartCustomizationsRequestDeletedList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardChartCustomizationsRequestDeletedList>;
 
 export type PutDashboardChartCustomizationsRequestModifiedList = Array<unknown>;
-export const PutDashboardChartCustomizationsRequestModifiedList =
+const PutDashboardChartCustomizationsRequestModifiedList =
   TagObjectObjectsToTagList as any as S.Schema<PutDashboardChartCustomizationsRequestModifiedList>;
 
 export type PutDashboardChartCustomizationsRequestReorderedList = Array<string>;
-export const PutDashboardChartCustomizationsRequestReorderedList =
+const PutDashboardChartCustomizationsRequestReorderedList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardChartCustomizationsRequestReorderedList>;
 
 export interface PutDashboardChartCustomizationsRequest {
@@ -15262,7 +14641,7 @@ export interface PutDashboardChartCustomizationsRequest {
   modified?: PutDashboardChartCustomizationsRequestModifiedList;
   reordered?: PutDashboardChartCustomizationsRequestReorderedList;
 }
-export const PutDashboardChartCustomizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardChartCustomizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     deleted: S.optional(PutDashboardChartCustomizationsRequestDeletedList),
@@ -15274,21 +14653,18 @@ export const PutDashboardChartCustomizationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutDashboardChartCustomizationsRequest>;
 
 export type PutDashboardChartCustomizationsResponseResultList = Array<unknown>;
-export const PutDashboardChartCustomizationsResponseResultList =
-  TagObjectObjectsToTagList as any as S.Schema<PutDashboardChartCustomizationsResponseResultList>;
-
 export interface PutDashboardChartCustomizationsResponse {
   result?: PutDashboardChartCustomizationsResponseResultList;
 }
-export const PutDashboardChartCustomizationsResponse =
+const PutDashboardChartCustomizationsResponse =
   CreateDatasourceQueryResponse as any as S.Schema<PutDashboardChartCustomizationsResponse>;
 
 export type PutDashboardColorsRequestColorSchemeDomainList = Array<string>;
-export const PutDashboardColorsRequestColorSchemeDomainList =
+const PutDashboardColorsRequestColorSchemeDomainList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardColorsRequestColorSchemeDomainList>;
 
 export type PutDashboardColorsRequestSharedLabelColorsList = Array<string>;
-export const PutDashboardColorsRequestSharedLabelColorsList =
+const PutDashboardColorsRequestSharedLabelColorsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardColorsRequestSharedLabelColorsList>;
 
 export interface PutDashboardColorsRequest {
@@ -15301,7 +14677,7 @@ export interface PutDashboardColorsRequest {
   map_label_colors?: unknown;
   shared_label_colors?: PutDashboardColorsRequestSharedLabelColorsList;
 }
-export const PutDashboardColorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardColorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     mark_updated: S.optional(S.Boolean.pipe(T.Query())),
@@ -15317,17 +14693,14 @@ export const PutDashboardColorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDashboardColorsRequest>;
 
 export type PutDashboardColorsResponseResultList = Array<unknown>;
-export const PutDashboardColorsResponseResultList =
-  TagObjectObjectsToTagList as any as S.Schema<PutDashboardColorsResponseResultList>;
-
 export interface PutDashboardColorsResponse {
   result?: PutDashboardColorsResponseResultList;
 }
-export const PutDashboardColorsResponse =
+const PutDashboardColorsResponse =
   CreateDatasourceQueryResponse as any as S.Schema<PutDashboardColorsResponse>;
 
 export type PutDashboardEmbeddedRequestAllowedDomainsList = Array<string>;
-export const PutDashboardEmbeddedRequestAllowedDomainsList =
+const PutDashboardEmbeddedRequestAllowedDomainsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardEmbeddedRequestAllowedDomainsList>;
 
 export interface PutDashboardEmbeddedRequest {
@@ -15335,7 +14708,7 @@ export interface PutDashboardEmbeddedRequest {
   id_or_slug: string;
   allowed_domains: PutDashboardEmbeddedRequestAllowedDomainsList;
 }
-export const PutDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_or_slug: S.String.pipe(T.Label()),
     allowed_domains: PutDashboardEmbeddedRequestAllowedDomainsList,
@@ -15347,19 +14720,19 @@ export const PutDashboardEmbeddedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutDashboardEmbeddedResponse {
   result?: EmbeddedDashboardResponseSchema;
 }
-export const PutDashboardEmbeddedResponse =
+const PutDashboardEmbeddedResponse =
   CreateDashboardEmbeddedResponse as any as S.Schema<PutDashboardEmbeddedResponse>;
 
 export type PutDashboardFiltersRequestDeletedList = Array<string>;
-export const PutDashboardFiltersRequestDeletedList =
+const PutDashboardFiltersRequestDeletedList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardFiltersRequestDeletedList>;
 
 export type PutDashboardFiltersRequestModifiedList = Array<unknown>;
-export const PutDashboardFiltersRequestModifiedList =
+const PutDashboardFiltersRequestModifiedList =
   TagObjectObjectsToTagList as any as S.Schema<PutDashboardFiltersRequestModifiedList>;
 
 export type PutDashboardFiltersRequestReorderedList = Array<string>;
-export const PutDashboardFiltersRequestReorderedList =
+const PutDashboardFiltersRequestReorderedList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<PutDashboardFiltersRequestReorderedList>;
 
 export interface PutDashboardFiltersRequest {
@@ -15368,7 +14741,7 @@ export interface PutDashboardFiltersRequest {
   modified?: PutDashboardFiltersRequestModifiedList;
   reordered?: PutDashboardFiltersRequestReorderedList;
 }
-export const PutDashboardFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     deleted: S.optional(PutDashboardFiltersRequestDeletedList),
@@ -15380,13 +14753,10 @@ export const PutDashboardFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDashboardFiltersRequest>;
 
 export type PutDashboardFiltersResponseResultList = Array<unknown>;
-export const PutDashboardFiltersResponseResultList =
-  TagObjectObjectsToTagList as any as S.Schema<PutDashboardFiltersResponseResultList>;
-
 export interface PutDashboardFiltersResponse {
   result?: PutDashboardFiltersResponseResultList;
 }
-export const PutDashboardFiltersResponse =
+const PutDashboardFiltersResponse =
   CreateDatasourceQueryResponse as any as S.Schema<PutDashboardFiltersResponse>;
 
 export interface PutDashboardFilterStateRequest {
@@ -15396,7 +14766,7 @@ export interface PutDashboardFilterStateRequest {
   /** Any type of JSON supported text. */
   value: string;
 }
-export const PutDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDashboardFilterStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -15411,16 +14781,16 @@ export interface PutDashboardFilterStateResponse {
   /** The key to retrieve the value. */
   key?: string;
 }
-export const PutDashboardFilterStateResponse =
+const PutDashboardFilterStateResponse =
   CreateDashboardFilterStateResponse as any as S.Schema<PutDashboardFilterStateResponse>;
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type PutDatabaseRequestConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-export const PutDatabaseRequestConfigurationMethod = S.String;
+const PutDatabaseRequestConfigurationMethod = S.String;
 
 /** DB-specific parameters for configuration */
 export type PutDatabaseRequestParametersMap = { [key: string]: unknown | undefined };
-export const PutDatabaseRequestParametersMap =
+const PutDatabaseRequestParametersMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<PutDatabaseRequestParametersMap>;
 
 export interface PutDatabaseRequest {
@@ -15466,7 +14836,7 @@ export interface PutDatabaseRequest {
   ssh_tunnel?: DatabaseSSHTunnel | null;
   uuid?: string;
 }
-export const PutDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     allow_ctas: S.optional(S.Boolean),
@@ -15496,11 +14866,11 @@ export const PutDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type DatabaseRestApiPutOutputConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-export const DatabaseRestApiPutOutputConfigurationMethod = S.String;
+const DatabaseRestApiPutOutputConfigurationMethod = S.String;
 
 /** DB-specific parameters for configuration */
 export type DatabaseRestApiPutOutputParametersMap = { [key: string]: unknown | undefined };
-export const DatabaseRestApiPutOutputParametersMap =
+const DatabaseRestApiPutOutputParametersMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<DatabaseRestApiPutOutputParametersMap>;
 
 export interface DatabaseRestApiPutOutput {
@@ -15545,7 +14915,7 @@ export interface DatabaseRestApiPutOutput {
   ssh_tunnel?: DatabaseSSHTunnelOutput | null;
   uuid?: string;
 }
-export const DatabaseRestApiPutOutput = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRestApiPutOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_ctas: S.optional(S.Boolean),
     allow_cvas: S.optional(S.Boolean),
@@ -15576,7 +14946,7 @@ export interface PutDatabaseResponse {
   id?: number;
   result?: DatabaseRestApiPutOutput;
 }
-export const PutDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const PutDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(DatabaseRestApiPutOutput),
@@ -15600,7 +14970,7 @@ export interface DatasetColumnsPut {
   uuid?: string | null;
   verbose_name?: string | null;
 }
-export const DatasetColumnsPut = /*@__PURE__*/ S.suspend(() =>
+const DatasetColumnsPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_data_type: S.optional(S.NullOr(S.String)),
     column_name: S.String,
@@ -15621,21 +14991,21 @@ export const DatasetColumnsPut = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetColumnsPut" }) as any as S.Schema<DatasetColumnsPut>;
 
 export type PutDatasetRequestColumnsList = Array<DatasetColumnsPut>;
-export const PutDatasetRequestColumnsList = /*@__PURE__*/ S.Array(
+const PutDatasetRequestColumnsList = /*@__PURE__*/ S.Array(
   DatasetColumnsPut,
 ) as any as S.Schema<PutDatasetRequestColumnsList>;
 
 export type PutDatasetRequestEditorsList = Array<number>;
-export const PutDatasetRequestEditorsList =
+const PutDatasetRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutDatasetRequestEditorsList>;
 
 export type FolderChildrenList = Array<Folder>;
-export const FolderChildrenList = /*@__PURE__*/ S.Array(
+const FolderChildrenList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => Folder),
 ) as any as S.Schema<FolderChildrenList>;
 
 export type FolderType = "metric" | "column" | "folder";
-export const FolderType = S.String;
+const FolderType = S.String;
 
 export interface Folder {
   children?: FolderChildrenList | null;
@@ -15644,7 +15014,7 @@ export interface Folder {
   type?: FolderType | (string & {});
   uuid: string;
 }
-export const Folder = /*@__PURE__*/ S.suspend(() =>
+const Folder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     children: S.optional(S.NullOr(FolderChildrenList)),
     description: S.optional(S.NullOr(S.String)),
@@ -15655,7 +15025,7 @@ export const Folder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
 
 export type PutDatasetRequestFoldersList = Array<Folder>;
-export const PutDatasetRequestFoldersList = /*@__PURE__*/ S.Array(
+const PutDatasetRequestFoldersList = /*@__PURE__*/ S.Array(
   Folder,
 ) as any as S.Schema<PutDatasetRequestFoldersList>;
 
@@ -15663,7 +15033,7 @@ export interface DatasetMetricCurrencyPut {
   symbol?: string;
   symbolPosition?: string;
 }
-export const DatasetMetricCurrencyPut = /*@__PURE__*/ S.suspend(() =>
+const DatasetMetricCurrencyPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     symbol: S.optional(S.String),
     symbolPosition: S.optional(S.String),
@@ -15683,7 +15053,7 @@ export interface DatasetMetricsPut {
   verbose_name?: string | null;
   warning_text?: string | null;
 }
-export const DatasetMetricsPut = /*@__PURE__*/ S.suspend(() =>
+const DatasetMetricsPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.NullOr(DatasetMetricCurrencyPut)),
     d3format: S.optional(S.NullOr(S.String)),
@@ -15700,7 +15070,7 @@ export const DatasetMetricsPut = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetMetricsPut" }) as any as S.Schema<DatasetMetricsPut>;
 
 export type PutDatasetRequestMetricsList = Array<DatasetMetricsPut>;
-export const PutDatasetRequestMetricsList = /*@__PURE__*/ S.Array(
+const PutDatasetRequestMetricsList = /*@__PURE__*/ S.Array(
   DatasetMetricsPut,
 ) as any as S.Schema<PutDatasetRequestMetricsList>;
 
@@ -15733,7 +15103,7 @@ export interface PutDatasetRequest {
   template_params?: string | null;
   uuid?: string | null;
 }
-export const PutDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     override_columns: S.optional(S.Boolean.pipe(T.Query())),
@@ -15766,19 +15136,19 @@ export const PutDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDatasetRequest" }) as any as S.Schema<PutDatasetRequest>;
 
 export type DatasetRestApiPutColumnsList = Array<DatasetColumnsPut>;
-export const DatasetRestApiPutColumnsList =
+const DatasetRestApiPutColumnsList =
   PutDatasetRequestColumnsList as any as S.Schema<DatasetRestApiPutColumnsList>;
 
 export type DatasetRestApiPutEditorsList = Array<number>;
-export const DatasetRestApiPutEditorsList =
+const DatasetRestApiPutEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<DatasetRestApiPutEditorsList>;
 
 export type DatasetRestApiPutFoldersList = Array<Folder>;
-export const DatasetRestApiPutFoldersList =
+const DatasetRestApiPutFoldersList =
   PutDatasetRequestFoldersList as any as S.Schema<DatasetRestApiPutFoldersList>;
 
 export type DatasetRestApiPutMetricsList = Array<DatasetMetricsPut>;
-export const DatasetRestApiPutMetricsList =
+const DatasetRestApiPutMetricsList =
   PutDatasetRequestMetricsList as any as S.Schema<DatasetRestApiPutMetricsList>;
 
 export interface DatasetRestApiPut {
@@ -15808,7 +15178,7 @@ export interface DatasetRestApiPut {
   template_params?: string | null;
   uuid?: string | null;
 }
-export const DatasetRestApiPut = /*@__PURE__*/ S.suspend(() =>
+const DatasetRestApiPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     always_filter_main_dttm: S.optional(S.Boolean),
     cache_timeout: S.optional(S.NullOr(S.Number)),
@@ -15854,7 +15224,7 @@ export interface PutDatasetResponse {
   old_version_uuid?: string | null;
   result?: DatasetRestApiPut;
 }
-export const PutDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const PutDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     new_transaction_id: S.optional(S.NullOr(S.Number)),
@@ -15870,7 +15240,7 @@ export const PutDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutDatasetRefreshRequest {
   pk: number;
 }
-export const PutDatasetRefreshRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDatasetRefreshRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/dataset/{pk}/refresh", code: 200 })),
@@ -15879,7 +15249,7 @@ export const PutDatasetRefreshRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutDatasetRefreshResponse {
   message?: string;
 }
-export const PutDatasetRefreshResponse =
+const PutDatasetRefreshResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<PutDatasetRefreshResponse>;
 
 export interface PutDatasetWarmUpCacheRequest {
@@ -15892,7 +15262,7 @@ export interface PutDatasetWarmUpCacheRequest {
   /** The name of the table to warm up cache for */
   table_name: string;
 }
-export const PutDatasetWarmUpCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDatasetWarmUpCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard_id: S.optional(S.Number),
     db_name: S.String,
@@ -15904,18 +15274,13 @@ export const PutDatasetWarmUpCacheRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDatasetWarmUpCacheRequest>;
 
 export type DatasetCacheWarmUpResponseSingle = ChartCacheWarmUpResponseSingle;
-export const DatasetCacheWarmUpResponseSingle = ChartCacheWarmUpResponseSingle;
-
 /** A list of each chart's warmup status and errors if any */
 export type DatasetCacheWarmUpResponseSchemaResultList = Array<ChartCacheWarmUpResponseSingle>;
-export const DatasetCacheWarmUpResponseSchemaResultList =
-  ChartCacheWarmUpResponseSchemaResultList as any as S.Schema<DatasetCacheWarmUpResponseSchemaResultList>;
-
 export interface DatasetCacheWarmUpResponseSchema {
   /** A list of each chart's warmup status and errors if any */
   result?: DatasetCacheWarmUpResponseSchemaResultList;
 }
-export const DatasetCacheWarmUpResponseSchema =
+const DatasetCacheWarmUpResponseSchema =
   ChartCacheWarmUpResponseSchema as any as S.Schema<DatasetCacheWarmUpResponseSchema>;
 
 /** The datasource type */
@@ -15926,7 +15291,7 @@ export type PutExploreFormDataRequestDatasourceType =
   | "saved_query"
   | "view"
   | "semantic_view";
-export const PutExploreFormDataRequestDatasourceType = S.String;
+const PutExploreFormDataRequestDatasourceType = S.String;
 
 export interface PutExploreFormDataRequest {
   key: string;
@@ -15940,7 +15305,7 @@ export interface PutExploreFormDataRequest {
   /** Any type of JSON supported text. */
   form_data: string;
 }
-export const PutExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
+const PutExploreFormDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     tab_id: S.optional(S.Number.pipe(T.Query())),
@@ -15957,7 +15322,7 @@ export interface PutExploreFormDataResponse {
   /** The key to retrieve the form_data. */
   key?: string;
 }
-export const PutExploreFormDataResponse =
+const PutExploreFormDataResponse =
   CreateDashboardFilterStateResponse as any as S.Schema<PutExploreFormDataResponse>;
 
 export interface PutMeRequest {
@@ -15970,7 +15335,7 @@ export interface PutMeRequest {
   /** The current user's new password; requires current_password when the account already has one */
   password?: string | Redacted.Redacted<string>;
 }
-export const PutMeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     first_name: S.optional(S.String),
@@ -15982,22 +15347,22 @@ export const PutMeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutMeResponse {
   result?: UserResponseSchema;
 }
-export const PutMeResponse = GetMeResponse as any as S.Schema<PutMeResponse>;
+const PutMeResponse = GetMeResponse as any as S.Schema<PutMeResponse>;
 
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type PutReportRequestCreationMethod = "charts" | "dashboards" | "alerts_reports";
-export const PutReportRequestCreationMethod = S.String;
+const PutReportRequestCreationMethod = S.String;
 
 export type PutReportRequestEditorsList = Array<number>;
-export const PutReportRequestEditorsList =
+const PutReportRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutReportRequestEditorsList>;
 
 export type PutReportRequestRecipientsList = Array<ReportRecipient>;
-export const PutReportRequestRecipientsList =
+const PutReportRequestRecipientsList =
   CreateReportRequestRecipientsList as any as S.Schema<PutReportRequestRecipientsList>;
 
 export type PutReportRequestReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-export const PutReportRequestReportFormat = S.String;
+const PutReportRequestReportFormat = S.String;
 
 /** A timezone string that represents the location of the timezone. */
 export type PutReportRequestTimezone =
@@ -16598,15 +15963,15 @@ export type PutReportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const PutReportRequestTimezone = S.String;
+const PutReportRequestTimezone = S.String;
 
 /** The report schedule type */
 export type PutReportRequestType = "Alert" | "Report";
-export const PutReportRequestType = S.String;
+const PutReportRequestType = S.String;
 
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type PutReportRequestValidatorType = "not null" | "operator";
-export const PutReportRequestValidatorType = S.String;
+const PutReportRequestValidatorType = S.String;
 
 export interface PutReportRequest {
   /** The Report Schedule pk */
@@ -16662,7 +16027,7 @@ export interface PutReportRequest {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number | null;
 }
-export const PutReportRequest = /*@__PURE__*/ S.suspend(() =>
+const PutReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     active: S.optional(S.Boolean),
@@ -16700,18 +16065,18 @@ export const PutReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type ReportScheduleRestApiPutCreationMethod = "charts" | "dashboards" | "alerts_reports";
-export const ReportScheduleRestApiPutCreationMethod = S.String;
+const ReportScheduleRestApiPutCreationMethod = S.String;
 
 export type ReportScheduleRestApiPutEditorsList = Array<number>;
-export const ReportScheduleRestApiPutEditorsList =
+const ReportScheduleRestApiPutEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<ReportScheduleRestApiPutEditorsList>;
 
 export type ReportScheduleRestApiPutRecipientsList = Array<ReportRecipient>;
-export const ReportScheduleRestApiPutRecipientsList =
+const ReportScheduleRestApiPutRecipientsList =
   CreateReportRequestRecipientsList as any as S.Schema<ReportScheduleRestApiPutRecipientsList>;
 
 export type ReportScheduleRestApiPutReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-export const ReportScheduleRestApiPutReportFormat = S.String;
+const ReportScheduleRestApiPutReportFormat = S.String;
 
 /** A timezone string that represents the location of the timezone. */
 export type ReportScheduleRestApiPutTimezone =
@@ -17312,15 +16677,15 @@ export type ReportScheduleRestApiPutTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const ReportScheduleRestApiPutTimezone = S.String;
+const ReportScheduleRestApiPutTimezone = S.String;
 
 /** The report schedule type */
 export type ReportScheduleRestApiPutType = "Alert" | "Report";
-export const ReportScheduleRestApiPutType = S.String;
+const ReportScheduleRestApiPutType = S.String;
 
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type ReportScheduleRestApiPutValidatorType = "not null" | "operator";
-export const ReportScheduleRestApiPutValidatorType = S.String;
+const ReportScheduleRestApiPutValidatorType = S.String;
 
 export interface ReportScheduleRestApiPut {
   active?: boolean;
@@ -17374,7 +16739,7 @@ export interface ReportScheduleRestApiPut {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number | null;
 }
-export const ReportScheduleRestApiPut = /*@__PURE__*/ S.suspend(() =>
+const ReportScheduleRestApiPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     chart: S.optional(S.NullOr(S.Number)),
@@ -17413,7 +16778,7 @@ export interface PutReportResponse {
   id?: number;
   result?: ReportScheduleRestApiPut;
 }
-export const PutReportResponse = /*@__PURE__*/ S.suspend(() =>
+const PutReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(ReportScheduleRestApiPut),
@@ -17422,16 +16787,16 @@ export const PutReportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** filter_type_description */
 export type PutRowlevelsecurityRequestFilterType = "Regular" | "Base";
-export const PutRowlevelsecurityRequestFilterType = S.String;
+const PutRowlevelsecurityRequestFilterType = S.String;
 
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type PutRowlevelsecurityRequestSubjectsList = Array<number>;
-export const PutRowlevelsecurityRequestSubjectsList =
+const PutRowlevelsecurityRequestSubjectsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutRowlevelsecurityRequestSubjectsList>;
 
 /** tables_description */
 export type PutRowlevelsecurityRequestTablesList = Array<number>;
-export const PutRowlevelsecurityRequestTablesList =
+const PutRowlevelsecurityRequestTablesList =
   CreateChartRequestDashboardsList as any as S.Schema<PutRowlevelsecurityRequestTablesList>;
 
 export interface PutRowlevelsecurityRequest {
@@ -17452,7 +16817,7 @@ export interface PutRowlevelsecurityRequest {
   /** tables_description */
   tables?: PutRowlevelsecurityRequestTablesList;
 }
-export const PutRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     clause: S.optional(S.String),
@@ -17469,16 +16834,16 @@ export const PutRowlevelsecurityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** filter_type_description */
 export type RLSRestApiPutFilterType = "Regular" | "Base";
-export const RLSRestApiPutFilterType = S.String;
+const RLSRestApiPutFilterType = S.String;
 
 /** Subjects (users, roles, groups) associated with this RLS rule. For regular filters, the rule applies to these subjects. For base filters, these subjects are excluded from the filter. */
 export type RLSRestApiPutSubjectsList = Array<number>;
-export const RLSRestApiPutSubjectsList =
+const RLSRestApiPutSubjectsList =
   CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPutSubjectsList>;
 
 /** tables_description */
 export type RLSRestApiPutTablesList = Array<number>;
-export const RLSRestApiPutTablesList =
+const RLSRestApiPutTablesList =
   CreateChartRequestDashboardsList as any as S.Schema<RLSRestApiPutTablesList>;
 
 export interface RLSRestApiPut {
@@ -17497,7 +16862,7 @@ export interface RLSRestApiPut {
   /** tables_description */
   tables?: RLSRestApiPutTablesList;
 }
-export const RLSRestApiPut = /*@__PURE__*/ S.suspend(() =>
+const RLSRestApiPut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clause: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -17513,7 +16878,7 @@ export interface PutRowlevelsecurityResponse {
   id?: number;
   result?: RLSRestApiPut;
 }
-export const PutRowlevelsecurityResponse = /*@__PURE__*/ S.suspend(() =>
+const PutRowlevelsecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(RLSRestApiPut),
@@ -17533,7 +16898,7 @@ export interface PutSavedQueryRequest {
   sql?: string | null;
   template_parameters?: string | null;
 }
-export const PutSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     catalog: S.optional(S.NullOr(S.String)),
@@ -17548,12 +16913,10 @@ export const PutSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSavedQueryRequest" }) as any as S.Schema<PutSavedQueryRequest>;
 
 export type SavedQueryRestApiPut = SavedQueryRestApiPost;
-export const SavedQueryRestApiPut = SavedQueryRestApiPost;
-
 export interface PutSavedQueryResponse {
   result?: SavedQueryRestApiPost;
 }
-export const PutSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SavedQueryRestApiPost),
   }),
@@ -17562,14 +16925,14 @@ export const PutSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutSecurityGroupRequest {
   pk: number;
 }
-export const PutSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/security/groups/{pk}", code: 200 })),
 ).annotate({ identifier: "PutSecurityGroupRequest" }) as any as S.Schema<PutSecurityGroupRequest>;
 
 export interface PutSecurityGroupResponse {}
-export const PutSecurityGroupResponse =
+const PutSecurityGroupResponse =
   CreateSecurityGroupResponse as any as S.Schema<PutSecurityGroupResponse>;
 
 export interface PutSecurityPermissionsResourceRequest {
@@ -17577,7 +16940,7 @@ export interface PutSecurityPermissionsResourceRequest {
   permission_id?: unknown | null;
   view_menu_id?: unknown | null;
 }
-export const PutSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     permission_id: S.optional(S.NullOr(S.Unknown)),
@@ -17588,12 +16951,10 @@ export const PutSecurityPermissionsResourceRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutSecurityPermissionsResourceRequest>;
 
 export type SupersetPermissionViewMenuApiPut = SupersetPermissionViewMenuApiPost;
-export const SupersetPermissionViewMenuApiPut = SupersetPermissionViewMenuApiPost;
-
 export interface PutSecurityPermissionsResourceResponse {
   result?: SupersetPermissionViewMenuApiPost;
 }
-export const PutSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityPermissionsResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SupersetPermissionViewMenuApiPost),
   }),
@@ -17605,7 +16966,7 @@ export interface PutSecurityResourceRequest {
   pk: number;
   name: string;
 }
-export const PutSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     name: S.String,
@@ -17615,12 +16976,10 @@ export const PutSecurityResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSecurityResourceRequest>;
 
 export type ViewMenuApiPut = ViewMenuApiPost;
-export const ViewMenuApiPut = ViewMenuApiPost;
-
 export interface PutSecurityResourceResponse {
   result?: ViewMenuApiPost;
 }
-export const PutSecurityResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ViewMenuApiPost),
   }),
@@ -17632,7 +16991,7 @@ export interface PutSecurityRoleRequest {
   pk: number;
   name: string;
 }
-export const PutSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     name: S.String,
@@ -17640,12 +16999,10 @@ export const PutSecurityRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSecurityRoleRequest" }) as any as S.Schema<PutSecurityRoleRequest>;
 
 export type SupersetRoleApiPut = ViewMenuApiPost;
-export const SupersetRoleApiPut = ViewMenuApiPost;
-
 export interface PutSecurityRoleResponse {
   result?: ViewMenuApiPost;
 }
-export const PutSecurityRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ViewMenuApiPost),
   }),
@@ -17653,7 +17010,7 @@ export const PutSecurityRoleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of group ids */
 export type PutSecurityRoleGroupsRequestGroupIdsList = Array<number>;
-export const PutSecurityRoleGroupsRequestGroupIdsList =
+const PutSecurityRoleGroupsRequestGroupIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutSecurityRoleGroupsRequestGroupIdsList>;
 
 export interface PutSecurityRoleGroupsRequest {
@@ -17661,7 +17018,7 @@ export interface PutSecurityRoleGroupsRequest {
   /** List of group ids */
   group_ids: PutSecurityRoleGroupsRequestGroupIdsList;
 }
-export const PutSecurityRoleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityRoleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_id: S.Number.pipe(T.Label()),
     group_ids: PutSecurityRoleGroupsRequestGroupIdsList,
@@ -17672,14 +17029,14 @@ export const PutSecurityRoleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of group ids */
 export type RoleGroupPutSchemaGroupIdsList = Array<number>;
-export const RoleGroupPutSchemaGroupIdsList =
+const RoleGroupPutSchemaGroupIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<RoleGroupPutSchemaGroupIdsList>;
 
 export interface RoleGroupPutSchema {
   /** List of group ids */
   group_ids: RoleGroupPutSchemaGroupIdsList;
 }
-export const RoleGroupPutSchema = /*@__PURE__*/ S.suspend(() =>
+const RoleGroupPutSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_ids: RoleGroupPutSchemaGroupIdsList,
   }),
@@ -17688,7 +17045,7 @@ export const RoleGroupPutSchema = /*@__PURE__*/ S.suspend(() =>
 export interface PutSecurityRoleGroupsResponse {
   result?: RoleGroupPutSchema;
 }
-export const PutSecurityRoleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityRoleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RoleGroupPutSchema),
   }),
@@ -17698,7 +17055,7 @@ export const PutSecurityRoleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user ids */
 export type PutSecurityRoleUsersRequestUserIdsList = Array<number>;
-export const PutSecurityRoleUsersRequestUserIdsList =
+const PutSecurityRoleUsersRequestUserIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutSecurityRoleUsersRequestUserIdsList>;
 
 export interface PutSecurityRoleUsersRequest {
@@ -17706,7 +17063,7 @@ export interface PutSecurityRoleUsersRequest {
   /** List of user ids */
   user_ids: PutSecurityRoleUsersRequestUserIdsList;
 }
-export const PutSecurityRoleUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityRoleUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_id: S.Number.pipe(T.Label()),
     user_ids: PutSecurityRoleUsersRequestUserIdsList,
@@ -17717,14 +17074,14 @@ export const PutSecurityRoleUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user ids */
 export type RoleUserPutSchemaUserIdsList = Array<number>;
-export const RoleUserPutSchemaUserIdsList =
+const RoleUserPutSchemaUserIdsList =
   CreateChartRequestDashboardsList as any as S.Schema<RoleUserPutSchemaUserIdsList>;
 
 export interface RoleUserPutSchema {
   /** List of user ids */
   user_ids: RoleUserPutSchemaUserIdsList;
 }
-export const RoleUserPutSchema = /*@__PURE__*/ S.suspend(() =>
+const RoleUserPutSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_ids: RoleUserPutSchemaUserIdsList,
   }),
@@ -17733,7 +17090,7 @@ export const RoleUserPutSchema = /*@__PURE__*/ S.suspend(() =>
 export interface PutSecurityRoleUsersResponse {
   result?: RoleUserPutSchema;
 }
-export const PutSecurityRoleUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityRoleUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RoleUserPutSchema),
   }),
@@ -17744,19 +17101,19 @@ export const PutSecurityRoleUsersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutSecurityUserRequest {
   pk: number;
 }
-export const PutSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/security/users/{pk}", code: 200 })),
 ).annotate({ identifier: "PutSecurityUserRequest" }) as any as S.Schema<PutSecurityUserRequest>;
 
 export interface PutSecurityUserResponse {}
-export const PutSecurityUserResponse =
+const PutSecurityUserResponse =
   CreateSecurityGroupResponse as any as S.Schema<PutSecurityUserResponse>;
 
 /** Objects to tag */
 export type PutTagRequestObjectsToTagList = Array<unknown>;
-export const PutTagRequestObjectsToTagList =
+const PutTagRequestObjectsToTagList =
   TagObjectObjectsToTagList as any as S.Schema<PutTagRequestObjectsToTagList>;
 
 export interface PutTagRequest {
@@ -17766,7 +17123,7 @@ export interface PutTagRequest {
   /** Objects to tag */
   objects_to_tag?: PutTagRequestObjectsToTagList;
 }
-export const PutTagRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -17777,25 +17134,20 @@ export const PutTagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Objects to tag */
 export type TagRestApiPutObjectsToTagList = Array<unknown>;
-export const TagRestApiPutObjectsToTagList =
-  TagObjectObjectsToTagList as any as S.Schema<TagRestApiPutObjectsToTagList>;
-
 export interface TagRestApiPut {
   description?: string | null;
   name?: string;
   /** Objects to tag */
   objects_to_tag?: TagRestApiPutObjectsToTagList;
 }
-export const TagRestApiPut = TagObject as any as S.Schema<TagRestApiPut>;
-
 export interface PutTagResponse {
   id?: number;
   result?: TagRestApiPut;
 }
-export const PutTagResponse = CreateTagResponse as any as S.Schema<PutTagResponse>;
+const PutTagResponse = CreateTagResponse as any as S.Schema<PutTagResponse>;
 
 export type PutThemeRequestEditorsList = Array<number>;
-export const PutThemeRequestEditorsList =
+const PutThemeRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<PutThemeRequestEditorsList>;
 
 export interface PutThemeRequest {
@@ -17804,7 +17156,7 @@ export interface PutThemeRequest {
   json_data: string;
   theme_name: string;
 }
-export const PutThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     editors: S.optional(PutThemeRequestEditorsList),
@@ -17814,27 +17166,22 @@ export const PutThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutThemeRequest" }) as any as S.Schema<PutThemeRequest>;
 
 export type ThemeRestApiPutEditorsList = Array<number>;
-export const ThemeRestApiPutEditorsList =
-  CreateChartRequestDashboardsList as any as S.Schema<ThemeRestApiPutEditorsList>;
-
 export interface ThemeRestApiPut {
   editors?: ThemeRestApiPutEditorsList;
   json_data: string;
   theme_name: string;
 }
-export const ThemeRestApiPut = ThemeRestApiPost as any as S.Schema<ThemeRestApiPut>;
-
 export interface PutThemeResponse {
   id?: number;
   result?: ThemeRestApiPut;
 }
-export const PutThemeResponse = CreateThemeResponse as any as S.Schema<PutThemeResponse>;
+const PutThemeResponse = CreateThemeResponse as any as S.Schema<PutThemeResponse>;
 
 export interface PutThemeSetSystemDarkRequest {
   /** The theme id */
   pk: number;
 }
-export const PutThemeSetSystemDarkRequest = /*@__PURE__*/ S.suspend(() =>
+const PutThemeSetSystemDarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/theme/{pk}/set_system_dark", code: 200 })),
@@ -17846,7 +17193,7 @@ export interface PutThemeSetSystemDarkResponse {
   id?: number;
   result?: string;
 }
-export const PutThemeSetSystemDarkResponse = /*@__PURE__*/ S.suspend(() =>
+const PutThemeSetSystemDarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     result: S.optional(S.String),
@@ -17859,7 +17206,7 @@ export interface PutThemeSetSystemDefaultRequest {
   /** The theme id */
   pk: number;
 }
-export const PutThemeSetSystemDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+const PutThemeSetSystemDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/api/v1/theme/{pk}/set_system_default", code: 200 })),
@@ -17871,11 +17218,11 @@ export interface PutThemeSetSystemDefaultResponse {
   id?: number;
   result?: string;
 }
-export const PutThemeSetSystemDefaultResponse =
+const PutThemeSetSystemDefaultResponse =
   PutThemeSetSystemDarkResponse as any as S.Schema<PutThemeSetSystemDefaultResponse>;
 
 export interface RefreshSecurityRequest {}
-export const RefreshSecurityRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshSecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/v1/security/refresh", code: 200 })),
 ).annotate({ identifier: "RefreshSecurityRequest" }) as any as S.Schema<RefreshSecurityRequest>;
 
@@ -17883,7 +17230,7 @@ export interface RefreshSecurityResponse {
   /** A new refreshed access token */
   access_token?: string | Redacted.Redacted<string>;
 }
-export const RefreshSecurityResponse = /*@__PURE__*/ S.suspend(() =>
+const RefreshSecurityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -17892,7 +17239,7 @@ export const RefreshSecurityResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreChartRequest {
   uuid: string;
 }
-export const RestoreChartRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/chart/{uuid}/restore", code: 200 })),
@@ -17901,7 +17248,7 @@ export const RestoreChartRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreChartResponse {
   message?: string;
 }
-export const RestoreChartResponse = DeleteChartResponse as any as S.Schema<RestoreChartResponse>;
+const RestoreChartResponse = DeleteChartResponse as any as S.Schema<RestoreChartResponse>;
 
 export interface RestoreChartVersionRequest {
   /** Chart UUID */
@@ -17909,7 +17256,7 @@ export interface RestoreChartVersionRequest {
   /** Version UUID as returned by the list-versions endpoint. Stable across retention pruning. */
   version_uuid_str: string;
 }
-export const RestoreChartVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreChartVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     version_uuid_str: S.String.pipe(T.Label()),
@@ -17927,13 +17274,13 @@ export const RestoreChartVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreChartVersionResponse {
   message?: string;
 }
-export const RestoreChartVersionResponse =
+const RestoreChartVersionResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<RestoreChartVersionResponse>;
 
 export interface RestoreDashboardRequest {
   uuid: string;
 }
-export const RestoreDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/dashboard/{uuid}/restore", code: 200 })),
@@ -17942,8 +17289,7 @@ export const RestoreDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreDashboardResponse {
   message?: string;
 }
-export const RestoreDashboardResponse =
-  DeleteChartResponse as any as S.Schema<RestoreDashboardResponse>;
+const RestoreDashboardResponse = DeleteChartResponse as any as S.Schema<RestoreDashboardResponse>;
 
 export interface RestoreDashboardVersionRequest {
   /** Dashboard UUID */
@@ -17951,7 +17297,7 @@ export interface RestoreDashboardVersionRequest {
   /** Version UUID as returned by the list-versions endpoint. Stable across retention pruning. */
   version_uuid_str: string;
 }
-export const RestoreDashboardVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDashboardVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     version_uuid_str: S.String.pipe(T.Label()),
@@ -17969,13 +17315,13 @@ export const RestoreDashboardVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreDashboardVersionResponse {
   message?: string;
 }
-export const RestoreDashboardVersionResponse =
+const RestoreDashboardVersionResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<RestoreDashboardVersionResponse>;
 
 export interface RestoreDatasetRequest {
   uuid: string;
 }
-export const RestoreDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/dataset/{uuid}/restore", code: 200 })),
@@ -17984,8 +17330,7 @@ export const RestoreDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreDatasetResponse {
   message?: string;
 }
-export const RestoreDatasetResponse =
-  DeleteChartResponse as any as S.Schema<RestoreDatasetResponse>;
+const RestoreDatasetResponse = DeleteChartResponse as any as S.Schema<RestoreDatasetResponse>;
 
 export interface RestoreDatasetVersionRequest {
   /** Dataset UUID */
@@ -17993,7 +17338,7 @@ export interface RestoreDatasetVersionRequest {
   /** Version UUID as returned by the list-versions endpoint. Stable across retention pruning. */
   version_uuid_str: string;
 }
-export const RestoreDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid_str: S.String.pipe(T.Label()),
     version_uuid_str: S.String.pipe(T.Label()),
@@ -18011,13 +17356,13 @@ export const RestoreDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreDatasetVersionResponse {
   message?: string;
 }
-export const RestoreDatasetVersionResponse =
+const RestoreDatasetVersionResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<RestoreDatasetVersionResponse>;
 
 export interface StopQueryRequest {
   client_id?: string;
 }
-export const StopQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const StopQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/query/stop", code: 200 })),
@@ -18026,22 +17371,22 @@ export const StopQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopQueryResponse {
   result?: string;
 }
-export const StopQueryResponse = SelectStarResponseSchema as any as S.Schema<StopQueryResponse>;
+const StopQueryResponse = SelectStarResponseSchema as any as S.Schema<StopQueryResponse>;
 
 /** Creation method is used to inform the frontend whether the report/alert was created in the dashboard, chart, or alerts and reports UI. */
 export type SubscribeReportRequestCreationMethod = "charts" | "dashboards" | "alerts_reports";
-export const SubscribeReportRequestCreationMethod = S.String;
+const SubscribeReportRequestCreationMethod = S.String;
 
 export type SubscribeReportRequestEditorsList = Array<number>;
-export const SubscribeReportRequestEditorsList =
+const SubscribeReportRequestEditorsList =
   CreateChartRequestDashboardsList as any as S.Schema<SubscribeReportRequestEditorsList>;
 
 export type SubscribeReportRequestRecipientsList = Array<ReportRecipient>;
-export const SubscribeReportRequestRecipientsList =
+const SubscribeReportRequestRecipientsList =
   CreateReportRequestRecipientsList as any as S.Schema<SubscribeReportRequestRecipientsList>;
 
 export type SubscribeReportRequestReportFormat = "PDF" | "PNG" | "CSV" | "XLSX" | "TEXT";
-export const SubscribeReportRequestReportFormat = S.String;
+const SubscribeReportRequestReportFormat = S.String;
 
 /** A timezone string that represents the location of the timezone. */
 export type SubscribeReportRequestTimezone =
@@ -18642,15 +17987,15 @@ export type SubscribeReportRequestTimezone =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const SubscribeReportRequestTimezone = S.String;
+const SubscribeReportRequestTimezone = S.String;
 
 /** The report schedule type */
 export type SubscribeReportRequestType = "Alert" | "Report";
-export const SubscribeReportRequestType = S.String;
+const SubscribeReportRequestType = S.String;
 
 /** Determines when to trigger alert based off value from alert query. Alerts will be triggered with these validator types: - Not Null - When the return value is Not NULL, Empty, or 0 - Operator - When `sql_return_value comparison_operator threshold` is True e.g. `50 <= 75`<br>Supports the comparison operators <, <=, >, >=, ==, and != */
 export type SubscribeReportRequestValidatorType = "not null" | "operator";
-export const SubscribeReportRequestValidatorType = S.String;
+const SubscribeReportRequestValidatorType = S.String;
 
 export interface SubscribeReportRequest {
   active?: boolean;
@@ -18704,7 +18049,7 @@ export interface SubscribeReportRequest {
   /** If an alert is staled at a working state, how long until it's state is reset to error */
   working_timeout?: number;
 }
-export const SubscribeReportRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     chart: S.optional(S.NullOr(S.Number)),
@@ -18743,14 +18088,13 @@ export interface SubscribeReportResponse {
   id?: number;
   result?: ReportScheduleRestApiPost;
 }
-export const SubscribeReportResponse =
-  CreateReportResponse as any as S.Schema<SubscribeReportResponse>;
+const SubscribeReportResponse = CreateReportResponse as any as S.Schema<SubscribeReportResponse>;
 
 export interface SyncDatabasePermissionsRequest {
   /** The database connection ID */
   pk: number;
 }
-export const SyncDatabasePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncDatabasePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/database/{pk}/sync_permissions/", code: 200 })),
@@ -18761,16 +18105,16 @@ export const SyncDatabasePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SyncDatabasePermissionsResponse {
   message?: string;
 }
-export const SyncDatabasePermissionsResponse =
+const SyncDatabasePermissionsResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<SyncDatabasePermissionsResponse>;
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type TestDatabaseConnectionRequestConfigurationMethod = "sqlalchemy_form" | "dynamic_form";
-export const TestDatabaseConnectionRequestConfigurationMethod = S.String;
+const TestDatabaseConnectionRequestConfigurationMethod = S.String;
 
 /** DB-specific parameters for configuration */
 export type TestDatabaseConnectionRequestParametersMap = { [key: string]: unknown | undefined };
-export const TestDatabaseConnectionRequestParametersMap =
+const TestDatabaseConnectionRequestParametersMap =
   CreateDashboardCacheDashboardScreenshotRequestDataMaskMap as any as S.Schema<TestDatabaseConnectionRequestParametersMap>;
 
 export interface TestDatabaseConnectionRequest {
@@ -18796,7 +18140,7 @@ export interface TestDatabaseConnectionRequest {
   sqlalchemy_uri?: string;
   ssh_tunnel?: DatabaseSSHTunnel | null;
 }
-export const TestDatabaseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const TestDatabaseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration_method: S.optional(TestDatabaseConnectionRequestConfigurationMethod),
     database_name: S.optional(S.NullOr(S.String)),
@@ -18817,12 +18161,12 @@ export const TestDatabaseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TestDatabaseConnectionResponse {
   message?: string;
 }
-export const TestDatabaseConnectionResponse =
+const TestDatabaseConnectionResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<TestDatabaseConnectionResponse>;
 
 /** list of tag names to add to object */
 export type UpdateTagRequestTagsList = Array<string>;
-export const UpdateTagRequestTagsList =
+const UpdateTagRequestTagsList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<UpdateTagRequestTagsList>;
 
 export interface UpdateTagRequest {
@@ -18831,7 +18175,7 @@ export interface UpdateTagRequest {
   /** list of tag names to add to object */
   tags?: UpdateTagRequestTagsList;
 }
-export const UpdateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object_type: S.Number.pipe(T.Label()),
     object_id: S.Number.pipe(T.Label()),
@@ -18840,30 +18184,30 @@ export const UpdateTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTagRequest" }) as any as S.Schema<UpdateTagRequest>;
 
 export interface UpdateTagResponse {}
-export const UpdateTagResponse = CreateSecurityGroupResponse as any as S.Schema<UpdateTagResponse>;
+const UpdateTagResponse = CreateSecurityGroupResponse as any as S.Schema<UpdateTagResponse>;
 
 /** What to do if the table already exists accepts: fail, replace, append */
 export type UploadDatabaseRequestAlreadyExists = "fail" | "replace" | "append";
-export const UploadDatabaseRequestAlreadyExists = S.String;
+const UploadDatabaseRequestAlreadyExists = S.String;
 
 /** [CSV and Excel only] A list of column names that should be parsed as dates. Example: date,timestamp */
 export type UploadDatabaseRequestColumnDatesList = Array<string>;
-export const UploadDatabaseRequestColumnDatesList =
+const UploadDatabaseRequestColumnDatesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadDatabaseRequestColumnDatesList>;
 
 /** A List of the column names that should be read */
 export type UploadDatabaseRequestColumnsReadList = Array<string>;
-export const UploadDatabaseRequestColumnsReadList =
+const UploadDatabaseRequestColumnsReadList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadDatabaseRequestColumnsReadList>;
 
 /** [CSV and Excel only] A list of strings that should be treated as null. Examples: '' for empty strings, 'None', 'N/A', Warning: Hive database supports only a single value */
 export type UploadDatabaseRequestNullValuesList = Array<string>;
-export const UploadDatabaseRequestNullValuesList =
+const UploadDatabaseRequestNullValuesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadDatabaseRequestNullValuesList>;
 
 /** File type to upload */
 export type UploadDatabaseRequestType = "csv" | "excel" | "columnar";
-export const UploadDatabaseRequestType = S.String;
+const UploadDatabaseRequestType = S.String;
 
 export interface UploadDatabaseRequest {
   pk: number;
@@ -18910,7 +18254,7 @@ export interface UploadDatabaseRequest {
   /** File type to upload */
   type: UploadDatabaseRequestType | (string & {});
 }
-export const UploadDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     already_exists: S.optional(UploadDatabaseRequestAlreadyExists),
@@ -18947,12 +18291,11 @@ export const UploadDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UploadDatabaseResponse {
   message?: string;
 }
-export const UploadDatabaseResponse =
-  DeleteChartResponse as any as S.Schema<UploadDatabaseResponse>;
+const UploadDatabaseResponse = DeleteChartResponse as any as S.Schema<UploadDatabaseResponse>;
 
 /** File type to upload */
 export type UploadDatabaseMetadataRequestType = "csv" | "excel" | "columnar";
-export const UploadDatabaseMetadataRequestType = S.String;
+const UploadDatabaseMetadataRequestType = S.String;
 
 export interface UploadDatabaseMetadataRequest {
   /** The character used to separate values in the CSV file (e.g., a comma, semicolon, or tab). */
@@ -18964,7 +18307,7 @@ export interface UploadDatabaseMetadataRequest {
   /** File type to upload */
   type: UploadDatabaseMetadataRequestType | (string & {});
 }
-export const UploadDatabaseMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDatabaseMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delimiter: S.optional(S.String),
     file: S.String,
@@ -18984,7 +18327,7 @@ export const UploadDatabaseMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns names in the sheet */
 export type UploadFileMetadataItemColumnNamesList = Array<string>;
-export const UploadFileMetadataItemColumnNamesList =
+const UploadFileMetadataItemColumnNamesList =
   AnnotationLayerDescriptionColumnsList as any as S.Schema<UploadFileMetadataItemColumnNamesList>;
 
 export interface UploadFileMetadataItem {
@@ -18993,7 +18336,7 @@ export interface UploadFileMetadataItem {
   /** The name of the sheet */
   sheet_name?: string;
 }
-export const UploadFileMetadataItem = /*@__PURE__*/ S.suspend(() =>
+const UploadFileMetadataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_names: S.optional(UploadFileMetadataItemColumnNamesList),
     sheet_name: S.optional(S.String),
@@ -19001,14 +18344,14 @@ export const UploadFileMetadataItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFileMetadataItem" }) as any as S.Schema<UploadFileMetadataItem>;
 
 export type UploadFileMetadataItemsList = Array<UploadFileMetadataItem>;
-export const UploadFileMetadataItemsList = /*@__PURE__*/ S.Array(
+const UploadFileMetadataItemsList = /*@__PURE__*/ S.Array(
   UploadFileMetadataItem,
 ) as any as S.Schema<UploadFileMetadataItemsList>;
 
 export interface UploadFileMetadata {
   items?: UploadFileMetadataItemsList;
 }
-export const UploadFileMetadata = /*@__PURE__*/ S.suspend(() =>
+const UploadFileMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(UploadFileMetadataItemsList),
   }),
@@ -19017,7 +18360,7 @@ export const UploadFileMetadata = /*@__PURE__*/ S.suspend(() =>
 export interface UploadDatabaseMetadataResponse {
   result?: UploadFileMetadata;
 }
-export const UploadDatabaseMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadDatabaseMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UploadFileMetadata),
   }),
@@ -19029,20 +18372,20 @@ export const UploadDatabaseMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 export type ValidateDatabaseParametersRequestCatalogMap = {
   [key: string]: unknown | null | undefined;
 };
-export const ValidateDatabaseParametersRequestCatalogMap =
+const ValidateDatabaseParametersRequestCatalogMap =
   AnnotationLayerOverridesMap as any as S.Schema<ValidateDatabaseParametersRequestCatalogMap>;
 
 /** Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri. */
 export type ValidateDatabaseParametersRequestConfigurationMethod =
   | "sqlalchemy_form"
   | "dynamic_form";
-export const ValidateDatabaseParametersRequestConfigurationMethod = S.String;
+const ValidateDatabaseParametersRequestConfigurationMethod = S.String;
 
 /** DB-specific parameters for configuration */
 export type ValidateDatabaseParametersRequestParametersMap = {
   [key: string]: unknown | null | undefined;
 };
-export const ValidateDatabaseParametersRequestParametersMap =
+const ValidateDatabaseParametersRequestParametersMap =
   AnnotationLayerOverridesMap as any as S.Schema<ValidateDatabaseParametersRequestParametersMap>;
 
 export interface DatabaseSSHTunnelValidation {
@@ -19056,7 +18399,7 @@ export interface DatabaseSSHTunnelValidation {
   server_port?: number | null;
   username?: string | null;
 }
-export const DatabaseSSHTunnelValidation = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSSHTunnelValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -19096,7 +18439,7 @@ export interface ValidateDatabaseParametersRequest {
   server_cert?: string | null;
   ssh_tunnel?: DatabaseSSHTunnelValidation | null;
 }
-export const ValidateDatabaseParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateDatabaseParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalog: S.optional(ValidateDatabaseParametersRequestCatalogMap),
     configuration_method: ValidateDatabaseParametersRequestConfigurationMethod,
@@ -19118,7 +18461,7 @@ export const ValidateDatabaseParametersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ValidateDatabaseParametersResponse {
   message?: string;
 }
-export const ValidateDatabaseParametersResponse =
+const ValidateDatabaseParametersResponse =
   DeleteAnnotationLayerResponse as any as S.Schema<ValidateDatabaseParametersResponse>;
 
 export interface ValidateDatabaseSqlRequest {
@@ -19129,7 +18472,7 @@ export interface ValidateDatabaseSqlRequest {
   sql: string;
   template_params?: unknown | null;
 }
-export const ValidateDatabaseSqlRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateDatabaseSqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pk: S.Number.pipe(T.Label()),
     catalog: S.optional(S.NullOr(S.String)),
@@ -19147,7 +18490,7 @@ export interface ValidateSQLResponse {
   message?: string;
   start_column?: number;
 }
-export const ValidateSQLResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateSQLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_column: S.optional(S.Number),
     line_number: S.optional(S.Number),
@@ -19158,7 +18501,7 @@ export const ValidateSQLResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A List of SQL errors found on the statement */
 export type ValidateDatabaseSqlResponseResultList = Array<ValidateSQLResponse>;
-export const ValidateDatabaseSqlResponseResultList = /*@__PURE__*/ S.Array(
+const ValidateDatabaseSqlResponseResultList = /*@__PURE__*/ S.Array(
   ValidateSQLResponse,
 ) as any as S.Schema<ValidateDatabaseSqlResponseResultList>;
 
@@ -19166,7 +18509,7 @@ export interface ValidateDatabaseSqlResponse {
   /** A List of SQL errors found on the statement */
   result?: ValidateDatabaseSqlResponseResultList;
 }
-export const ValidateDatabaseSqlResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateDatabaseSqlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ValidateDatabaseSqlResponseResultList),
   }),
@@ -19176,7 +18519,7 @@ export const ValidateDatabaseSqlResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** SQL clause type for filter expressions */
 export type ValidateDatasourceExpressionRequestClause = "WHERE" | "HAVING";
-export const ValidateDatasourceExpressionRequestClause = S.String;
+const ValidateDatasourceExpressionRequestClause = S.String;
 
 /** The type of SQL expression */
 export type ValidateDatasourceExpressionRequestExpressionType =
@@ -19184,7 +18527,7 @@ export type ValidateDatasourceExpressionRequestExpressionType =
   | "metric"
   | "where"
   | "having";
-export const ValidateDatasourceExpressionRequestExpressionType = S.String;
+const ValidateDatasourceExpressionRequestExpressionType = S.String;
 
 export interface ValidateDatasourceExpressionRequest {
   /** The type of datasource */
@@ -19198,7 +18541,7 @@ export interface ValidateDatasourceExpressionRequest {
   /** The type of SQL expression */
   expression_type?: ValidateDatasourceExpressionRequestExpressionType | (string & {});
 }
-export const ValidateDatasourceExpressionRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateDatasourceExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource_type: S.String.pipe(T.Label()),
     datasource_id: S.Number.pipe(T.Label()),
@@ -19217,18 +18560,13 @@ export const ValidateDatasourceExpressionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateDatasourceExpressionRequest>;
 
 export type ValidateDatasourceExpressionResponseResultItem = ValidateSQLResponse;
-export const ValidateDatasourceExpressionResponseResultItem = ValidateSQLResponse;
-
 /** Empty array for success, errors for failure */
 export type ValidateDatasourceExpressionResponseResultList = Array<ValidateSQLResponse>;
-export const ValidateDatasourceExpressionResponseResultList =
-  ValidateDatabaseSqlResponseResultList as any as S.Schema<ValidateDatasourceExpressionResponseResultList>;
-
 export interface ValidateDatasourceExpressionResponse {
   /** Empty array for success, errors for failure */
   result?: ValidateDatasourceExpressionResponseResultList;
 }
-export const ValidateDatasourceExpressionResponse =
+const ValidateDatasourceExpressionResponse =
   ValidateDatabaseSqlResponse as any as S.Schema<ValidateDatasourceExpressionResponse>;
 
 export type BulkTagCreateError = BadRequest | NotFound | ApacheSupersetOpError;

@@ -37,7 +37,7 @@ export interface TracesCreateRequestBody {
   /** Request body as plain text */
   plainText?: string;
 }
-export const TracesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+const TracesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base64: S.optional(S.String),
     json: S.optional(S.Unknown),
@@ -57,7 +57,7 @@ export interface TracesCreateRequestContextGeoloc {
   subdivision_2_iso_code?: string;
   timezone?: string;
 }
-export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
+const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     continent: S.optional(S.String),
@@ -84,7 +84,7 @@ export interface TracesCreateRequestContext {
   /** Threat score used for evaluating tracing request processing */
   threatScore?: number;
 }
-export const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
+const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botScore: S.optional(S.Number.pipe(T.Body("bot_score"))),
     geoloc: S.optional(TracesCreateRequestContextGeoloc),
@@ -96,13 +96,13 @@ export const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TracesCreateRequestContext>;
 
 export type TracesCreateRequestCookiesMap = { [key: string]: string | undefined };
-export const TracesCreateRequestCookiesMap = /*@__PURE__*/ S.Record(
+const TracesCreateRequestCookiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TracesCreateRequestCookiesMap>;
 
 export type TracesCreateRequestHeadersMap = { [key: string]: string | undefined };
-export const TracesCreateRequestHeadersMap =
+const TracesCreateRequestHeadersMap =
   TracesCreateRequestCookiesMap as any as S.Schema<TracesCreateRequestHeadersMap>;
 
 export interface CreateTraceRequest {
@@ -124,7 +124,7 @@ export interface CreateTraceRequest {
   /** Skip sending the request to the Origin server after all rules evaluation */
   skipResponse?: boolean;
 }
-export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     method: S.String,
@@ -161,7 +161,7 @@ export interface TracesCreateResponseTraceItem {
   /** Tracing step type */
   type?: string | null;
 }
-export const TracesCreateResponseTraceItem = /*@__PURE__*/ S.suspend(() =>
+const TracesCreateResponseTraceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.NullOr(S.String)),
     actionParameters: S.optional(S.NullOr(S.Unknown).pipe(T.Body("action_parameters"))),
@@ -179,7 +179,7 @@ export const TracesCreateResponseTraceItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TracesCreateResponseTraceItem>;
 
 export type TracesCreateResponseTraceList = Array<TracesCreateResponseTraceItem>;
-export const TracesCreateResponseTraceList = /*@__PURE__*/ S.Array(
+const TracesCreateResponseTraceList = /*@__PURE__*/ S.Array(
   TracesCreateResponseTraceItem,
 ) as any as S.Schema<TracesCreateResponseTraceList>;
 
@@ -189,7 +189,7 @@ export interface CreateTraceResponse {
   statusCode?: number | null;
   trace?: TracesCreateResponseTraceList | null;
 }
-export const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
     trace: S.optional(S.NullOr(TracesCreateResponseTraceList)),

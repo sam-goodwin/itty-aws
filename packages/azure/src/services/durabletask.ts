@@ -16,7 +16,7 @@ export interface DeleteRetentionPolicyRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const DeleteRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -34,7 +34,7 @@ export const DeleteRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRetentionPolicyRequest>;
 
 export interface DeleteRetentionPolicyResponse {}
-export const DeleteRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRetentionPolicyResponse",
 }) as any as S.Schema<DeleteRetentionPolicyResponse>;
 
@@ -46,7 +46,7 @@ export interface DeleteSchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const DeleteSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -62,7 +62,7 @@ export const DeleteSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSchedulerRequest" }) as any as S.Schema<DeleteSchedulerRequest>;
 
 export interface DeleteSchedulerResponse {}
-export const DeleteSchedulerResponse =
+const DeleteSchedulerResponse =
   DeleteRetentionPolicyResponse as any as S.Schema<DeleteSchedulerResponse>;
 
 export interface DeleteSchedulerPrivateEndpointConnectionRequest {
@@ -75,7 +75,7 @@ export interface DeleteSchedulerPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeleteSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -94,7 +94,7 @@ export const DeleteSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>;
 
 export interface DeleteSchedulerPrivateEndpointConnectionResponse {}
-export const DeleteSchedulerPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulerPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSchedulerPrivateEndpointConnectionResponse",
@@ -110,7 +110,7 @@ export interface DeleteTaskHubRequest {
   /** The name of the TaskHub */
   taskHubName: string;
 }
-export const DeleteTaskHubRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTaskHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -127,7 +127,7 @@ export const DeleteTaskHubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTaskHubRequest" }) as any as S.Schema<DeleteTaskHubRequest>;
 
 export interface DeleteTaskHubResponse {}
-export const DeleteTaskHubResponse =
+const DeleteTaskHubResponse =
   DeleteRetentionPolicyResponse as any as S.Schema<DeleteTaskHubResponse>;
 
 export interface GetRetentionPolicyRequest {
@@ -138,7 +138,7 @@ export interface GetRetentionPolicyRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const GetRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -157,11 +157,11 @@ export const GetRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -178,7 +178,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -198,11 +198,11 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Purgeable orchestration state to be used in retention policies */
 export type PurgeableOrchestrationState = "Completed" | "Failed" | "Terminated" | "Canceled";
-export const PurgeableOrchestrationState = S.String;
+const PurgeableOrchestrationState = S.String;
 
 /** The properties of a retention policy */
 export interface RetentionPolicyDetails {
@@ -211,7 +211,7 @@ export interface RetentionPolicyDetails {
   /** The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states. */
   orchestrationState?: PurgeableOrchestrationState | (string & {});
 }
-export const RetentionPolicyDetails = /*@__PURE__*/ S.suspend(() =>
+const RetentionPolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionPeriodInDays: S.Number,
     orchestrationState: S.optional(PurgeableOrchestrationState),
@@ -220,7 +220,7 @@ export const RetentionPolicyDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The orchestration retention policies */
 export type RetentionPolicyPropertiesRetentionPoliciesList = Array<RetentionPolicyDetails>;
-export const RetentionPolicyPropertiesRetentionPoliciesList = /*@__PURE__*/ S.Array(
+const RetentionPolicyPropertiesRetentionPoliciesList = /*@__PURE__*/ S.Array(
   RetentionPolicyDetails,
 ) as any as S.Schema<RetentionPolicyPropertiesRetentionPoliciesList>;
 
@@ -231,7 +231,7 @@ export interface RetentionPolicyProperties {
   /** The orchestration retention policies */
   retentionPolicies?: RetentionPolicyPropertiesRetentionPoliciesList;
 }
-export const RetentionPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const RetentionPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     retentionPolicies: S.optional(RetentionPolicyPropertiesRetentionPoliciesList),
@@ -252,7 +252,7 @@ export interface GetRetentionPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
-export const GetRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -272,7 +272,7 @@ export interface GetSchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const GetSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -289,24 +289,24 @@ export const GetSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSchedulerResponseTagsMap = { [key: string]: string | undefined };
-export const GetSchedulerResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetSchedulerResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetSchedulerResponseTagsMap>;
 
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesIpAllowlistList = Array<string>;
-export const SchedulerPropertiesIpAllowlistList = /*@__PURE__*/ S.Array(
+const SchedulerPropertiesIpAllowlistList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchedulerPropertiesIpAllowlistList>;
 
 /** The name of the Stock Keeping Unit (SKU) of a Durable Task Scheduler */
 export type SchedulerSkuName = "Dedicated" | "Consumption";
-export const SchedulerSkuName = S.String;
+const SchedulerSkuName = S.String;
 
 /** The state of the resource redundancy */
 export type RedundancyState = "None" | "Zone";
-export const RedundancyState = S.String;
+const RedundancyState = S.String;
 
 /** The SKU (Stock Keeping Unit) assigned to this durable task scheduler */
 export interface SchedulerSku {
@@ -317,7 +317,7 @@ export interface SchedulerSku {
   /** Indicates whether the current SKU configuration is zone redundant */
   redundancyState?: RedundancyState | (string & {});
 }
-export const SchedulerSku = /*@__PURE__*/ S.suspend(() =>
+const SchedulerSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SchedulerSkuName,
     capacity: S.optional(S.Number),
@@ -327,11 +327,11 @@ export const SchedulerSku = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-export const PublicNetworkAccess = S.String;
+const PublicNetworkAccess = S.String;
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
+const PrivateEndpointConnectionPropertiesGroupIdsList =
   SchedulerPropertiesIpAllowlistList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The private endpoint resource. */
@@ -339,7 +339,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -347,7 +347,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -358,7 +358,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -374,7 +374,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -387,7 +387,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -411,7 +411,7 @@ export interface SchedulerPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const SchedulerPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+const SchedulerPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -426,7 +426,7 @@ export const SchedulerPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S
 /** The private endpoints exposed by this resource */
 export type SchedulerPropertiesPrivateEndpointConnectionsList =
   Array<SchedulerPropertiesPrivateEndpointConnectionsItem>;
-export const SchedulerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const SchedulerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   SchedulerPropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<SchedulerPropertiesPrivateEndpointConnectionsList>;
 
@@ -445,7 +445,7 @@ export interface SchedulerProperties {
   /** The private endpoints exposed by this resource */
   privateEndpointConnections?: SchedulerPropertiesPrivateEndpointConnectionsList;
 }
-export const SchedulerProperties = /*@__PURE__*/ S.suspend(() =>
+const SchedulerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     endpoint: S.optional(S.String),
@@ -472,7 +472,7 @@ export interface GetSchedulerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
-export const GetSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -494,7 +494,7 @@ export interface GetSchedulerPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -524,7 +524,7 @@ export interface GetSchedulerPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetSchedulerPrivateEndpointConnectionResponse =
+const GetSchedulerPrivateEndpointConnectionResponse =
   SchedulerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>;
 
 export interface GetSchedulerPrivateLinkRequest {
@@ -537,7 +537,7 @@ export interface GetSchedulerPrivateLinkRequest {
   /** The name of the private link associated with the Azure resource. */
   privateLinkResourceName: string;
 }
-export const GetSchedulerPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulerPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -557,12 +557,12 @@ export const GetSchedulerPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   SchedulerPropertiesIpAllowlistList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   SchedulerPropertiesIpAllowlistList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -574,7 +574,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -596,7 +596,7 @@ export interface GetSchedulerPrivateLinkResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetSchedulerPrivateLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulerPrivateLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -618,7 +618,7 @@ export interface GetTaskHubRequest {
   /** The name of the TaskHub */
   taskHubName: string;
 }
-export const GetTaskHubRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -641,7 +641,7 @@ export interface TaskHubProperties {
   /** URL of the durable task scheduler dashboard */
   dashboardUrl?: string;
 }
-export const TaskHubProperties = /*@__PURE__*/ S.suspend(() =>
+const TaskHubProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     dashboardUrl: S.optional(S.String),
@@ -660,7 +660,7 @@ export interface GetTaskHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
 }
-export const GetTaskHubResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaskHubResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -671,7 +671,7 @@ export const GetTaskHubResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskHubResponse" }) as any as S.Schema<GetTaskHubResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -693,7 +693,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -704,11 +704,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -723,7 +723,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -735,7 +735,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -745,7 +745,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -760,7 +760,7 @@ export interface ListRetentionPolicyBySchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const ListRetentionPolicyBySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRetentionPolicyBySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -790,7 +790,7 @@ export interface RetentionPolicy {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
-export const RetentionPolicy = /*@__PURE__*/ S.suspend(() =>
+const RetentionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -802,7 +802,7 @@ export const RetentionPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The RetentionPolicy items on this page */
 export type RetentionPolicyListResultValueList = Array<RetentionPolicy>;
-export const RetentionPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const RetentionPolicyListResultValueList = /*@__PURE__*/ S.Array(
   RetentionPolicy,
 ) as any as S.Schema<RetentionPolicyListResultValueList>;
 
@@ -813,7 +813,7 @@ export interface RetentionPolicyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RetentionPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const RetentionPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RetentionPolicyListResultValueList,
     nextLink: S.optional(S.String),
@@ -828,7 +828,7 @@ export interface ListSchedulerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListSchedulerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -846,8 +846,6 @@ export const ListSchedulerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SchedulerTagsMap = { [key: string]: string | undefined };
-export const SchedulerTagsMap = GetSchedulerResponseTagsMap as any as S.Schema<SchedulerTagsMap>;
-
 /** A Durable Task Scheduler resource */
 export interface Scheduler {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -865,11 +863,11 @@ export interface Scheduler {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
-export const Scheduler = GetSchedulerResponse as any as S.Schema<Scheduler>;
+const Scheduler = GetSchedulerResponse as any as S.Schema<Scheduler>;
 
 /** The Scheduler items on this page */
 export type SchedulerListResultValueList = Array<Scheduler>;
-export const SchedulerListResultValueList = /*@__PURE__*/ S.Array(
+const SchedulerListResultValueList = /*@__PURE__*/ S.Array(
   Scheduler,
 ) as any as S.Schema<SchedulerListResultValueList>;
 
@@ -880,7 +878,7 @@ export interface SchedulerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SchedulerListResult = /*@__PURE__*/ S.suspend(() =>
+const SchedulerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SchedulerListResultValueList,
     nextLink: S.optional(S.String),
@@ -891,7 +889,7 @@ export interface ListSchedulerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListSchedulerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -914,7 +912,7 @@ export interface ListSchedulerPrivateEndpointConnectionsRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const ListSchedulerPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulerPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -934,13 +932,10 @@ export const ListSchedulerPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.su
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   SchedulerPropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnectionListResultValueItem =
-  SchedulerPropertiesPrivateEndpointConnectionsItem;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<SchedulerPropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   SchedulerPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
@@ -950,7 +945,7 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -967,7 +962,7 @@ export interface ListSchedulerPrivateLinksRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const ListSchedulerPrivateLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulerPrivateLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -997,13 +992,13 @@ export interface SchedulerPrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const SchedulerPrivateLinkResourceListResultValueItem =
+const SchedulerPrivateLinkResourceListResultValueItem =
   GetSchedulerPrivateLinkResponse as any as S.Schema<SchedulerPrivateLinkResourceListResultValueItem>;
 
 /** The SchedulerPrivateLinkResource items on this page */
 export type SchedulerPrivateLinkResourceListResultValueList =
   Array<SchedulerPrivateLinkResourceListResultValueItem>;
-export const SchedulerPrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const SchedulerPrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   SchedulerPrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<SchedulerPrivateLinkResourceListResultValueList>;
 
@@ -1014,7 +1009,7 @@ export interface SchedulerPrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SchedulerPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const SchedulerPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SchedulerPrivateLinkResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1031,7 +1026,7 @@ export interface ListTaskHubBySchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export const ListTaskHubBySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskHubBySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1061,11 +1056,11 @@ export interface TaskHub {
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
 }
-export const TaskHub = GetTaskHubResponse as any as S.Schema<TaskHub>;
+const TaskHub = GetTaskHubResponse as any as S.Schema<TaskHub>;
 
 /** The TaskHub items on this page */
 export type TaskHubListResultValueList = Array<TaskHub>;
-export const TaskHubListResultValueList = /*@__PURE__*/ S.Array(
+const TaskHubListResultValueList = /*@__PURE__*/ S.Array(
   TaskHub,
 ) as any as S.Schema<TaskHubListResultValueList>;
 
@@ -1076,7 +1071,7 @@ export interface TaskHubListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TaskHubListResult = /*@__PURE__*/ S.suspend(() =>
+const TaskHubListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TaskHubListResultValueList,
     nextLink: S.optional(S.String),
@@ -1085,7 +1080,7 @@ export const TaskHubListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The orchestration retention policies */
 export type RetentionPolicyPropertiesInputRetentionPoliciesList = Array<RetentionPolicyDetails>;
-export const RetentionPolicyPropertiesInputRetentionPoliciesList =
+const RetentionPolicyPropertiesInputRetentionPoliciesList =
   RetentionPolicyPropertiesRetentionPoliciesList as any as S.Schema<RetentionPolicyPropertiesInputRetentionPoliciesList>;
 
 /** The retention policy settings for the resource */
@@ -1093,7 +1088,7 @@ export interface RetentionPolicyPropertiesInput {
   /** The orchestration retention policies */
   retentionPolicies?: RetentionPolicyPropertiesInputRetentionPoliciesList;
 }
-export const RetentionPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RetentionPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionPolicies: S.optional(RetentionPolicyPropertiesInputRetentionPoliciesList),
   }),
@@ -1111,7 +1106,7 @@ export interface RetentionPoliciesCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyPropertiesInput;
 }
-export const RetentionPoliciesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const RetentionPoliciesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1141,17 +1136,17 @@ export interface RetentionPoliciesCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
-export const RetentionPoliciesCreateOrReplaceResponse =
+const RetentionPoliciesCreateOrReplaceResponse =
   GetRetentionPolicyResponse as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type SchedulersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SchedulersCreateOrUpdateRequestTagsMap =
+const SchedulersCreateOrUpdateRequestTagsMap =
   GetSchedulerResponseTagsMap as any as S.Schema<SchedulersCreateOrUpdateRequestTagsMap>;
 
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesInputIpAllowlistList = Array<string>;
-export const SchedulerPropertiesInputIpAllowlistList =
+const SchedulerPropertiesInputIpAllowlistList =
   SchedulerPropertiesIpAllowlistList as any as S.Schema<SchedulerPropertiesInputIpAllowlistList>;
 
 /** Details of the Scheduler */
@@ -1163,7 +1158,7 @@ export interface SchedulerPropertiesInput {
   /** Allow or disallow public network access to durable task scheduler */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const SchedulerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SchedulerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAllowlist: SchedulerPropertiesInputIpAllowlistList,
     sku: SchedulerSku,
@@ -1185,7 +1180,7 @@ export interface SchedulersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerPropertiesInput;
 }
-export const SchedulersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SchedulersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1207,7 +1202,7 @@ export const SchedulersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SchedulersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SchedulersCreateOrUpdateResponseTagsMap =
+const SchedulersCreateOrUpdateResponseTagsMap =
   GetSchedulerResponseTagsMap as any as S.Schema<SchedulersCreateOrUpdateResponseTagsMap>;
 
 export interface SchedulersCreateOrUpdateResponse {
@@ -1226,7 +1221,7 @@ export interface SchedulersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
-export const SchedulersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SchedulersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1242,8 +1237,7 @@ export const SchedulersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput =
-  DeleteRetentionPolicyResponse as any as S.Schema<PrivateEndpointInput>;
+const PrivateEndpointInput = DeleteRetentionPolicyResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -1252,7 +1246,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -1273,22 +1267,21 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const SchedulersCreateOrUpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      schedulerName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2026-02-01",
-      }),
-    ),
+const SchedulersCreateOrUpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    schedulerName: S.String.pipe(T.Label()),
+    privateEndpointConnectionName: S.String.pipe(T.Label()),
+    properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      code: 200,
+      apiVersion: "2026-02-01",
+    }),
+  ),
 ).annotate({
   identifier: "SchedulersCreateOrUpdatePrivateEndpointConnectionRequest",
 }) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionRequest>;
@@ -1305,23 +1298,20 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const SchedulersCreateOrUpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
+const SchedulersCreateOrUpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
 ).annotate({
   identifier: "SchedulersCreateOrUpdatePrivateEndpointConnectionResponse",
 }) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionResponse>;
 
 /** The properties of Task Hub */
 export type TaskHubPropertiesInput = PrivateEndpointInput;
-export const TaskHubPropertiesInput = PrivateEndpointInput;
-
 export interface TaskHubsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1334,7 +1324,7 @@ export interface TaskHubsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointInput;
 }
-export const TaskHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1365,7 +1355,7 @@ export interface TaskHubsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
 }
-export const TaskHubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskHubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1387,7 +1377,7 @@ export interface UpdateRetentionPolicyRequest {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyPropertiesInput;
 }
-export const UpdateRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1417,12 +1407,12 @@ export interface UpdateRetentionPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
-export const UpdateRetentionPolicyResponse =
+const UpdateRetentionPolicyResponse =
   GetRetentionPolicyResponse as any as S.Schema<UpdateRetentionPolicyResponse>;
 
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesUpdateInputIpAllowlistList = Array<string>;
-export const SchedulerPropertiesUpdateInputIpAllowlistList =
+const SchedulerPropertiesUpdateInputIpAllowlistList =
   SchedulerPropertiesIpAllowlistList as any as S.Schema<SchedulerPropertiesUpdateInputIpAllowlistList>;
 
 /** The SKU (Stock Keeping Unit) properties to be updated */
@@ -1432,7 +1422,7 @@ export interface SchedulerSkuUpdate {
   /** The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy */
   capacity?: number;
 }
-export const SchedulerSkuUpdate = /*@__PURE__*/ S.suspend(() =>
+const SchedulerSkuUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SchedulerSkuName),
     capacity: S.optional(S.Number),
@@ -1448,7 +1438,7 @@ export interface SchedulerPropertiesUpdateInput {
   /** Allow or disallow public network access to durable task scheduler */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const SchedulerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const SchedulerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAllowlist: S.optional(SchedulerPropertiesUpdateInputIpAllowlistList),
     sku: S.optional(SchedulerSkuUpdate),
@@ -1460,7 +1450,7 @@ export const SchedulerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSchedulerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSchedulerRequestTagsMap =
+const UpdateSchedulerRequestTagsMap =
   GetSchedulerResponseTagsMap as any as S.Schema<UpdateSchedulerRequestTagsMap>;
 
 export interface UpdateSchedulerRequest {
@@ -1475,7 +1465,7 @@ export interface UpdateSchedulerRequest {
   /** Resource tags. */
   tags?: UpdateSchedulerRequestTagsMap;
 }
-export const UpdateSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1494,9 +1484,6 @@ export const UpdateSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSchedulerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSchedulerResponseTagsMap =
-  GetSchedulerResponseTagsMap as any as S.Schema<UpdateSchedulerResponseTagsMap>;
-
 export interface UpdateSchedulerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1513,21 +1500,14 @@ export interface UpdateSchedulerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
-export const UpdateSchedulerResponse =
-  GetSchedulerResponse as any as S.Schema<UpdateSchedulerResponse>;
+const UpdateSchedulerResponse = GetSchedulerResponse as any as S.Schema<UpdateSchedulerResponse>;
 
 /** The private endpoint resource. */
 export type UpdateSchedulerPrivateEndpointConnectionRequestPropertiesPrivateEndpoint =
   PrivateEndpointInput;
-export const UpdateSchedulerPrivateEndpointConnectionRequestPropertiesPrivateEndpoint =
-  PrivateEndpointInput;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export type UpdateSchedulerPrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState =
   PrivateLinkServiceConnectionState;
-export const UpdateSchedulerPrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState =
-  PrivateLinkServiceConnectionState;
-
 /** The private endpoint connection properties */
 export interface UpdateSchedulerPrivateEndpointConnectionRequestProperties {
   /** The private endpoint resource. */
@@ -1535,12 +1515,11 @@ export interface UpdateSchedulerPrivateEndpointConnectionRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
-export const UpdateSchedulerPrivateEndpointConnectionRequestProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
-      privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
-    }),
+const UpdateSchedulerPrivateEndpointConnectionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateEndpoint: S.optional(PrivateEndpointInput),
+    privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+  }),
 ).annotate({
   identifier: "UpdateSchedulerPrivateEndpointConnectionRequestProperties",
 }) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequestProperties>;
@@ -1557,7 +1536,7 @@ export interface UpdateSchedulerPrivateEndpointConnectionRequest {
   /** The private endpoint connection properties */
   properties?: UpdateSchedulerPrivateEndpointConnectionRequestProperties;
 }
-export const UpdateSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1588,7 +1567,7 @@ export interface UpdateSchedulerPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdateSchedulerPrivateEndpointConnectionResponse =
+const UpdateSchedulerPrivateEndpointConnectionResponse =
   SchedulerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>;
 
 export type DeleteRetentionPolicyError = AzureOpError;

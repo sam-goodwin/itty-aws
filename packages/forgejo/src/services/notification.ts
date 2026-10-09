@@ -27,17 +27,17 @@ export class NotFound
   ) {}
 
 export type NotifyGetListRequestStatusTypesList = Array<string>;
-export const NotifyGetListRequestStatusTypesList = /*@__PURE__*/ S.Array(
+const NotifyGetListRequestStatusTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotifyGetListRequestStatusTypesList>;
 
 export type NotifyGetListRequestSubjectTypeItem = "issue" | "pull" | "repository";
-export const NotifyGetListRequestSubjectTypeItem = S.String;
+const NotifyGetListRequestSubjectTypeItem = S.String;
 
 export type NotifyGetListRequestSubjectTypeList = Array<
   NotifyGetListRequestSubjectTypeItem | (string & {})
 >;
-export const NotifyGetListRequestSubjectTypeList = /*@__PURE__*/ S.Array(
+const NotifyGetListRequestSubjectTypeList = /*@__PURE__*/ S.Array(
   NotifyGetListRequestSubjectTypeItem,
 ) as any as S.Schema<NotifyGetListRequestSubjectTypeList>;
 
@@ -57,7 +57,7 @@ export interface NotifyGetListRequest {
   /** page size of results */
   limit?: number;
 }
-export const NotifyGetListRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyGetListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Boolean.pipe(T.Query())),
     status_types: S.optional(NotifyGetListRequestStatusTypesList.pipe(T.Query("status-types"))),
@@ -80,7 +80,7 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-export const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
+const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_tracker_format: S.optional(S.String),
     external_tracker_regexp_pattern: S.optional(S.String),
@@ -94,7 +94,7 @@ export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-export const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
+const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_wiki_url: S.optional(S.String),
   }),
@@ -109,7 +109,7 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
+const InternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_only_contributors_to_track_time: S.optional(S.Boolean),
     enable_issue_dependencies: S.optional(S.Boolean),
@@ -119,7 +119,7 @@ export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
 
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-export const RepositoryObjectFormatName = S.String;
+const RepositoryObjectFormatName = S.String;
 
 /** User represents a user */
 export interface User {
@@ -165,7 +165,7 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     avatar_url: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface Permission {
   pull?: boolean;
   push?: boolean;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     pull: S.optional(S.Boolean),
@@ -223,7 +223,7 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.String),
     created: S.optional(S.String),
@@ -241,13 +241,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-export const TeamPermission = S.String;
+const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
+const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TeamUnitsMapMap>;
@@ -264,7 +264,7 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_org_repo: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -279,9 +279,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type RepoTransferTeamsList = Array<Team>;
-export const RepoTransferTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RepoTransferTeamsList>;
+const RepoTransferTeamsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<RepoTransferTeamsList>;
 
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
@@ -289,7 +287,7 @@ export interface RepoTransfer {
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
+const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doer: S.optional(User),
     recipient: S.optional(User),
@@ -298,7 +296,7 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
+const RepositoryTopicsList =
   NotifyGetListRequestStatusTypesList as any as S.Schema<RepositoryTopicsList>;
 
 /** Repository represents a repository */
@@ -373,7 +371,7 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_fast_forward_only_merge: S.optional(S.Boolean),
     allow_merge_commits: S.optional(S.Boolean),
@@ -454,7 +452,7 @@ export interface NotificationSubject {
   type?: string;
   url?: string;
 }
-export const NotificationSubject = /*@__PURE__*/ S.suspend(() =>
+const NotificationSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     html_url: S.optional(S.String),
     latest_comment_html_url: S.optional(S.String),
@@ -476,7 +474,7 @@ export interface NotificationThread {
   updated_at?: string;
   url?: string;
 }
-export const NotificationThread = /*@__PURE__*/ S.suspend(() =>
+const NotificationThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     pinned: S.optional(S.Boolean),
@@ -489,26 +487,24 @@ export const NotificationThread = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationThread" }) as any as S.Schema<NotificationThread>;
 
 export type NotifyGetListResponseBodyList = Array<NotificationThread>;
-export const NotifyGetListResponseBodyList = /*@__PURE__*/ S.Array(
+const NotifyGetListResponseBodyList = /*@__PURE__*/ S.Array(
   NotificationThread,
 ) as any as S.Schema<NotifyGetListResponseBodyList>;
 
 export type NotifyGetListResponse = NotifyGetListResponseBodyList;
-export const NotifyGetListResponse = /*@__PURE__*/ S.suspend(() =>
+const NotifyGetListResponse = /*@__PURE__*/ S.suspend(() =>
   NotifyGetListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "NotifyGetListResponse" }) as any as S.Schema<NotifyGetListResponse>;
 
 export type NotifyGetRepoListRequestStatusTypesList = Array<string>;
-export const NotifyGetRepoListRequestStatusTypesList =
+const NotifyGetRepoListRequestStatusTypesList =
   NotifyGetListRequestStatusTypesList as any as S.Schema<NotifyGetRepoListRequestStatusTypesList>;
 
 export type NotifyGetRepoListRequestSubjectTypeItem = "issue" | "pull" | "repository";
-export const NotifyGetRepoListRequestSubjectTypeItem = S.String;
-
 export type NotifyGetRepoListRequestSubjectTypeList = Array<
   NotifyGetRepoListRequestSubjectTypeItem | (string & {})
 >;
-export const NotifyGetRepoListRequestSubjectTypeList =
+const NotifyGetRepoListRequestSubjectTypeList =
   NotifyGetListRequestSubjectTypeList as any as S.Schema<NotifyGetRepoListRequestSubjectTypeList>;
 
 export interface NotifyGetRepoListRequest {
@@ -531,7 +527,7 @@ export interface NotifyGetRepoListRequest {
   /** page size of results */
   limit?: number;
 }
-export const NotifyGetRepoListRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyGetRepoListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -546,11 +542,11 @@ export const NotifyGetRepoListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyGetRepoListRequest" }) as any as S.Schema<NotifyGetRepoListRequest>;
 
 export type NotifyGetRepoListResponseBodyList = Array<NotificationThread>;
-export const NotifyGetRepoListResponseBodyList =
+const NotifyGetRepoListResponseBodyList =
   NotifyGetListResponseBodyList as any as S.Schema<NotifyGetRepoListResponseBodyList>;
 
 export type NotifyGetRepoListResponse = NotifyGetRepoListResponseBodyList;
-export const NotifyGetRepoListResponse = /*@__PURE__*/ S.suspend(() =>
+const NotifyGetRepoListResponse = /*@__PURE__*/ S.suspend(() =>
   NotifyGetRepoListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "NotifyGetRepoListResponse",
@@ -560,14 +556,14 @@ export interface NotifyGetThreadRequest {
   /** id of notification thread */
   id: number;
 }
-export const NotifyGetThreadRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyGetThreadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/notifications/threads/{id}", code: 200 })),
 ).annotate({ identifier: "NotifyGetThreadRequest" }) as any as S.Schema<NotifyGetThreadRequest>;
 
 export interface NotifyNewAvailableRequest {}
-export const NotifyNewAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyNewAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/notifications/new", code: 200 })),
 ).annotate({
   identifier: "NotifyNewAvailableRequest",
@@ -577,14 +573,14 @@ export const NotifyNewAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface NotificationCount {
   new?: number;
 }
-export const NotificationCount = /*@__PURE__*/ S.suspend(() =>
+const NotificationCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.Number),
   }),
 ).annotate({ identifier: "NotificationCount" }) as any as S.Schema<NotificationCount>;
 
 export type NotifyReadListRequestStatusTypesList = Array<string>;
-export const NotifyReadListRequestStatusTypesList =
+const NotifyReadListRequestStatusTypesList =
   NotifyGetListRequestStatusTypesList as any as S.Schema<NotifyReadListRequestStatusTypesList>;
 
 export interface NotifyReadListRequest {
@@ -597,7 +593,7 @@ export interface NotifyReadListRequest {
   /** Status to mark notifications as, Defaults to read. */
   to_status?: string;
 }
-export const NotifyReadListRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyReadListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_read_at: S.optional(S.String.pipe(T.Query())),
     all: S.optional(S.Boolean.pipe(T.Query())),
@@ -607,12 +603,12 @@ export const NotifyReadListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyReadListRequest" }) as any as S.Schema<NotifyReadListRequest>;
 
 export interface NotifyReadListResponse {}
-export const NotifyReadListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const NotifyReadListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "NotifyReadListResponse",
 }) as any as S.Schema<NotifyReadListResponse>;
 
 export type NotifyReadRepoListRequestStatusTypesList = Array<string>;
-export const NotifyReadRepoListRequestStatusTypesList =
+const NotifyReadRepoListRequestStatusTypesList =
   NotifyGetListRequestStatusTypesList as any as S.Schema<NotifyReadRepoListRequestStatusTypesList>;
 
 export interface NotifyReadRepoListRequest {
@@ -629,7 +625,7 @@ export interface NotifyReadRepoListRequest {
   /** Describes the last point that notifications were checked. Anything updated since this time will not be updated. */
   last_read_at?: string;
 }
-export const NotifyReadRepoListRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyReadRepoListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -645,7 +641,7 @@ export const NotifyReadRepoListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotifyReadRepoListRequest>;
 
 export interface NotifyReadRepoListResponse {}
-export const NotifyReadRepoListResponse =
+const NotifyReadRepoListResponse =
   NotifyReadListResponse as any as S.Schema<NotifyReadRepoListResponse>;
 
 export interface NotifyReadThreadRequest {
@@ -654,7 +650,7 @@ export interface NotifyReadThreadRequest {
   /** Status to mark notifications as */
   to_status?: string;
 }
-export const NotifyReadThreadRequest = /*@__PURE__*/ S.suspend(() =>
+const NotifyReadThreadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     to_status: S.optional(S.String.pipe(T.Query("to-status"))),
@@ -662,7 +658,7 @@ export const NotifyReadThreadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyReadThreadRequest" }) as any as S.Schema<NotifyReadThreadRequest>;
 
 export interface NotifyReadThreadResponse {}
-export const NotifyReadThreadResponse =
+const NotifyReadThreadResponse =
   NotifyReadListResponse as any as S.Schema<NotifyReadThreadResponse>;
 
 export type NotifyGetListError = ForgejoOpError;

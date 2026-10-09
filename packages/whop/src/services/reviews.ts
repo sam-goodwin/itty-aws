@@ -49,7 +49,7 @@ export interface GetReviewRequest {
   /** The unique identifier of the review to retrieve. */
   id: string;
 }
-export const GetReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/reviews/{id}", code: 200 })),
@@ -66,7 +66,7 @@ export interface ReviewAttachmentsItem {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const ReviewAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const ReviewAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -77,7 +77,7 @@ export const ReviewAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of files and media attached to the review. */
 export type ReviewAttachmentsList = Array<ReviewAttachmentsItem>;
-export const ReviewAttachmentsList = /*@__PURE__*/ S.Array(
+const ReviewAttachmentsList = /*@__PURE__*/ S.Array(
   ReviewAttachmentsItem,
 ) as any as S.Schema<ReviewAttachmentsList>;
 
@@ -90,7 +90,7 @@ export interface ReviewCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
-export const ReviewCompany = /*@__PURE__*/ S.suspend(() =>
+const ReviewCompany = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     route: S.String,
@@ -105,7 +105,7 @@ export interface ReviewProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const ReviewProduct = /*@__PURE__*/ S.suspend(() =>
+const ReviewProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -114,7 +114,7 @@ export const ReviewProduct = /*@__PURE__*/ S.suspend(() =>
 
 /** The statuses a review can have */
 export type ReviewStatus = "pending" | "published" | "removed";
-export const ReviewStatus = S.String;
+const ReviewStatus = S.String;
 
 /** The user account of the person who wrote this review. */
 export interface ReviewUser {
@@ -125,7 +125,7 @@ export interface ReviewUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const ReviewUser = /*@__PURE__*/ S.suspend(() =>
+const ReviewUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -164,7 +164,7 @@ export interface Review {
   /** The user account of the person who wrote this review. */
   user: ReviewUser;
 }
-export const Review = /*@__PURE__*/ S.suspend(() =>
+const Review = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: ReviewAttachmentsList,
     company: ReviewCompany,
@@ -194,7 +194,7 @@ export interface ListReviewRequest {
   created_before?: string;
   created_after?: string;
 }
-export const ListReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -210,17 +210,13 @@ export const ListReviewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents an image attachment */
 export type ReviewListItemAttachmentsItem = ReviewAttachmentsItem;
-export const ReviewListItemAttachmentsItem = ReviewAttachmentsItem;
-
 /** A list of files and media attached to the review. */
 export type ReviewListItemAttachmentsList = Array<ReviewAttachmentsItem>;
-export const ReviewListItemAttachmentsList =
+const ReviewListItemAttachmentsList =
   ReviewAttachmentsList as any as S.Schema<ReviewListItemAttachmentsList>;
 
 /** The user account of the person who wrote this review. */
 export type ReviewListItemUser = ReviewUser;
-export const ReviewListItemUser = ReviewUser;
-
 /** A user-submitted review of a company, including a star rating and optional text feedback. */
 export interface ReviewListItem {
   /** A list of files and media attached to the review. */
@@ -248,7 +244,7 @@ export interface ReviewListItem {
   /** The user account of the person who wrote this review. */
   user: ReviewUser;
 }
-export const ReviewListItem = /*@__PURE__*/ S.suspend(() =>
+const ReviewListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: ReviewListItemAttachmentsList,
     created_at: S.String,
@@ -267,7 +263,7 @@ export const ReviewListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListReviewResponseDataList = Array<ReviewListItem>;
-export const ListReviewResponseDataList = /*@__PURE__*/ S.Array(
+const ListReviewResponseDataList = /*@__PURE__*/ S.Array(
   ReviewListItem,
 ) as any as S.Schema<ListReviewResponseDataList>;
 
@@ -282,7 +278,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -297,7 +293,7 @@ export interface ListReviewResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListReviewResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListReviewResponseDataList,
     page_info: PageInfo,

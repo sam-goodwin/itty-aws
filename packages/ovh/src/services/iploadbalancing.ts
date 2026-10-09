@@ -14,7 +14,7 @@ export interface CancelIpLoadbalancingZoneTerminationRequest {
   /** Name of your zone */
   name: string;
 }
-export const CancelIpLoadbalancingZoneTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelIpLoadbalancingZoneTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -30,7 +30,7 @@ export const CancelIpLoadbalancingZoneTerminationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CancelIpLoadbalancingZoneTerminationRequest>;
 
 export interface CancelIpLoadbalancingZoneTerminationResponse {}
-export const CancelIpLoadbalancingZoneTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelIpLoadbalancingZoneTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CancelIpLoadbalancingZoneTerminationResponse",
@@ -43,7 +43,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -61,7 +61,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmIpLoadbalancingTerminationRequest {
   /** The internal name of your IP load balancing */
@@ -75,7 +75,7 @@ export interface ConfirmIpLoadbalancingTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmIpLoadbalancingTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmIpLoadbalancingTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -90,7 +90,7 @@ export const ConfirmIpLoadbalancingTerminationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfirmIpLoadbalancingTerminationRequest>;
 
 export type ConfirmIpLoadbalancingTerminationResponse = string;
-export const ConfirmIpLoadbalancingTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmIpLoadbalancingTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmIpLoadbalancingTerminationResponse",
@@ -106,7 +106,7 @@ export interface CreateIpLoadbalancingChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateIpLoadbalancingChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -120,13 +120,13 @@ export const CreateIpLoadbalancingChangeContactRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateIpLoadbalancingChangeContactRequest>;
 
 export type CreateIpLoadbalancingChangeContactResponseBodyList = Array<number>;
-export const CreateIpLoadbalancingChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateIpLoadbalancingChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateIpLoadbalancingChangeContactResponseBodyList>;
 
 export type CreateIpLoadbalancingChangeContactResponse =
   CreateIpLoadbalancingChangeContactResponseBodyList;
-export const CreateIpLoadbalancingChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateIpLoadbalancingChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateIpLoadbalancingChangeContactResponse",
@@ -134,7 +134,7 @@ export const CreateIpLoadbalancingChangeContactResponse = /*@__PURE__*/ S.suspen
 
 /** The FQDN for which you want a free certificate. A DCV (Domain Control Validation) http request will be made to http://your_domain.abc, make sure this domain exists and resolves to your iplb ip before ordering */
 export type CreateIpLoadbalancingFreeCertificateRequestFqdnList = Array<string>;
-export const CreateIpLoadbalancingFreeCertificateRequestFqdnList = /*@__PURE__*/ S.Array(
+const CreateIpLoadbalancingFreeCertificateRequestFqdnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateIpLoadbalancingFreeCertificateRequestFqdnList>;
 
@@ -144,7 +144,7 @@ export interface CreateIpLoadbalancingFreeCertificateRequest {
   /** The FQDN for which you want a free certificate. A DCV (Domain Control Validation) http request will be made to http://your_domain.abc, make sure this domain exists and resolves to your iplb ip before ordering */
   fqdn: CreateIpLoadbalancingFreeCertificateRequestFqdnList;
 }
-export const CreateIpLoadbalancingFreeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingFreeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     fqdn: CreateIpLoadbalancingFreeCertificateRequestFqdnList,
@@ -174,7 +174,7 @@ export type IpLoadbalancingTaskActionEnum =
   | "switchToIplbNextGenerationApi"
   | "vrackAttach"
   | "vrackDetach";
-export const IpLoadbalancingTaskActionEnum = S.String;
+const IpLoadbalancingTaskActionEnum = S.String;
 
 /** Possible task status */
 export type IpLoadbalancingTaskStatusEnum =
@@ -184,11 +184,11 @@ export type IpLoadbalancingTaskStatusEnum =
   | "done"
   | "error"
   | "todo";
-export const IpLoadbalancingTaskStatusEnum = S.String;
+const IpLoadbalancingTaskStatusEnum = S.String;
 
 /** Zone of your Load Balancer which are updated by current Task */
 export type IpLoadbalancingTaskTaskZonesList = Array<string>;
-export const IpLoadbalancingTaskTaskZonesList =
+const IpLoadbalancingTaskTaskZonesList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingTaskTaskZonesList>;
 
 /** IP Load Balancing Operations */
@@ -208,7 +208,7 @@ export interface IpLoadbalancingTaskTask {
   /** Zone of your Load Balancer which are updated by current Task */
   zones?: IpLoadbalancingTaskTaskZonesList;
 }
-export const IpLoadbalancingTaskTask = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingTaskTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(IpLoadbalancingTaskActionEnum),
     creationDate: S.optional(S.String),
@@ -227,7 +227,7 @@ export type IpLoadbalancingBalanceHTTPEnum =
   | "roundrobin"
   | "source"
   | "uri";
-export const IpLoadbalancingBalanceHTTPEnum = S.String;
+const IpLoadbalancingBalanceHTTPEnum = S.String;
 
 /** List of possible probe result matches. "status" is only supported for HTTP probes */
 export type IpLoadbalancingProbeExpectMatchEnum =
@@ -236,11 +236,11 @@ export type IpLoadbalancingProbeExpectMatchEnum =
   | "internal"
   | "matches"
   | "status";
-export const IpLoadbalancingProbeExpectMatchEnum = S.String;
+const IpLoadbalancingProbeExpectMatchEnum = S.String;
 
 /** List of possible method for HTTP probes. Consider using HEAD to save bandwidth when possible. */
 export type IpLoadbalancingProbeMethodEnum = "GET" | "HEAD" | "OPTIONS" | "internal";
-export const IpLoadbalancingProbeMethodEnum = S.String;
+const IpLoadbalancingProbeMethodEnum = S.String;
 
 /** Possible values for farm probe */
 export type IpLoadbalancingProbeTypeEnum =
@@ -251,7 +251,7 @@ export type IpLoadbalancingProbeTypeEnum =
   | "pgsql"
   | "smtp"
   | "tcp";
-export const IpLoadbalancingProbeTypeEnum = S.String;
+const IpLoadbalancingProbeTypeEnum = S.String;
 
 /** Probe used to determine if a backend is alive and can handle requests */
 export interface IpLoadbalancingBackendProbe {
@@ -274,7 +274,7 @@ export interface IpLoadbalancingBackendProbe {
   /** URL to use for HTTP probes of the form [www.example.com]/path/to/check. Protocol will be ignored. Defaults to "/" */
   url?: string | null;
 }
-export const IpLoadbalancingBackendProbe = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingBackendProbe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceSsl: S.optional(S.NullOr(S.Boolean)),
     interval: S.optional(S.NullOr(S.Number)),
@@ -292,7 +292,7 @@ export const IpLoadbalancingBackendProbe = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for HTTP backend stickiness */
 export type IpLoadbalancingStickinessHTTPEnum = "cookie" | "sourceIp";
-export const IpLoadbalancingStickinessHTTPEnum = S.String;
+const IpLoadbalancingStickinessHTTPEnum = S.String;
 
 export interface CreateIpLoadbalancingHttpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -312,7 +312,7 @@ export interface CreateIpLoadbalancingHttpFarmRequest {
   /** Zone of your farm */
   zone: string;
 }
-export const CreateIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     balance: S.optional(IpLoadbalancingBalanceHTTPEnum),
@@ -346,7 +346,7 @@ export interface IpLoadbalancingBackendHttpBackendHttp {
   /** Zone of you farm */
   zone?: string;
 }
-export const IpLoadbalancingBackendHttpBackendHttp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingBackendHttpBackendHttp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.optional(S.NullOr(IpLoadbalancingBalanceHTTPEnum)),
     displayName: S.optional(S.NullOr(S.String)),
@@ -363,15 +363,15 @@ export const IpLoadbalancingBackendHttpBackendHttp = /*@__PURE__*/ S.suspend(() 
 
 /** Possible values for OnMarkedDown type */
 export type IpLoadbalancingOnMarkedDownEnum = "shutdown-sessions";
-export const IpLoadbalancingOnMarkedDownEnum = S.String;
+const IpLoadbalancingOnMarkedDownEnum = S.String;
 
 /** Possible values for proxy type */
 export type IpLoadbalancingProxyProtocolVersionEnum = "v1" | "v2" | "v2-ssl" | "v2-ssl-cn";
-export const IpLoadbalancingProxyProtocolVersionEnum = S.String;
+const IpLoadbalancingProxyProtocolVersionEnum = S.String;
 
 /** Possible values for server status */
 export type IpLoadbalancingBackendCustomerServerStatusEnum = "active" | "inactive";
-export const IpLoadbalancingBackendCustomerServerStatusEnum = S.String;
+const IpLoadbalancingBackendCustomerServerStatusEnum = S.String;
 
 export interface CreateIpLoadbalancingHttpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -403,7 +403,7 @@ export interface CreateIpLoadbalancingHttpFarmServerRequest {
   /** Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests. */
   weight?: number;
 }
-export const CreateIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -445,7 +445,7 @@ export interface IpLoadbalancingServerState {
   /** Status */
   status?: string | null;
 }
-export const IpLoadbalancingServerState = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingServerState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkCode: S.optional(S.NullOr(S.String)),
     checkStatus: S.optional(S.NullOr(S.String)),
@@ -461,7 +461,7 @@ export const IpLoadbalancingServerState = /*@__PURE__*/ S.suspend(() =>
 /** Server state */
 export type IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList =
   Array<IpLoadbalancingServerState>;
-export const IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList =
+const IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList =
   /*@__PURE__*/ S.Array(
     IpLoadbalancingServerState,
   ) as any as S.Schema<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList>;
@@ -499,27 +499,26 @@ export interface IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer {
   /** Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests. */
   weight?: number | null;
 }
-export const IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.optional(S.String),
-      backendId: S.optional(S.Number),
-      backup: S.optional(S.Boolean),
-      chain: S.optional(S.NullOr(S.String)),
-      cookie: S.optional(S.NullOr(S.String)),
-      displayName: S.optional(S.NullOr(S.String)),
-      onMarkedDown: S.optional(S.NullOr(IpLoadbalancingOnMarkedDownEnum)),
-      port: S.optional(S.NullOr(S.Number)),
-      probe: S.optional(S.Boolean),
-      proxyProtocolVersion: S.optional(S.NullOr(IpLoadbalancingProxyProtocolVersionEnum)),
-      serverId: S.optional(S.Number),
-      serverState: S.optional(
-        IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList,
-      ),
-      ssl: S.optional(S.Boolean),
-      status: S.optional(IpLoadbalancingBackendCustomerServerStatusEnum),
-      weight: S.optional(S.NullOr(S.Number)),
-    }),
+const IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    backendId: S.optional(S.Number),
+    backup: S.optional(S.Boolean),
+    chain: S.optional(S.NullOr(S.String)),
+    cookie: S.optional(S.NullOr(S.String)),
+    displayName: S.optional(S.NullOr(S.String)),
+    onMarkedDown: S.optional(S.NullOr(IpLoadbalancingOnMarkedDownEnum)),
+    port: S.optional(S.NullOr(S.Number)),
+    probe: S.optional(S.Boolean),
+    proxyProtocolVersion: S.optional(S.NullOr(IpLoadbalancingProxyProtocolVersionEnum)),
+    serverId: S.optional(S.Number),
+    serverState: S.optional(
+      IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList,
+    ),
+    ssl: S.optional(S.Boolean),
+    status: S.optional(IpLoadbalancingBackendCustomerServerStatusEnum),
+    weight: S.optional(S.NullOr(S.Number)),
+  }),
 ).annotate({
   identifier: "IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer",
 }) as any as S.Schema<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>;
@@ -534,7 +533,7 @@ export interface CreateIpLoadbalancingHttpFarmServerTransparentRequest {
   address: string;
   slotId: number;
 }
-export const CreateIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -560,7 +559,7 @@ export interface IpLoadbalancingVrackTransparentIpVrackTransparentIp {
   serverId?: number;
   slotId?: number;
 }
-export const IpLoadbalancingVrackTransparentIpVrackTransparentIp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingVrackTransparentIpVrackTransparentIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     farmId: S.optional(S.Number),
@@ -574,22 +573,22 @@ export const IpLoadbalancingVrackTransparentIpVrackTransparentIp = /*@__PURE__*/
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList =
+const CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList =
+const CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList =
+const CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList =
+const CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList>;
 
 export interface CreateIpLoadbalancingHttpFrontendRequest {
@@ -622,7 +621,7 @@ export interface CreateIpLoadbalancingHttpFrontendRequest {
   /** Zone of your frontend. Use "all" for all owned zone. */
   zone: string;
 }
-export const CreateIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     allowedSource: S.optional(CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList),
@@ -647,22 +646,22 @@ export const CreateIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList =
+const IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList =
+const IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList =
+const IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList =
+const IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList>;
 
 /** Frontend HTTP */
@@ -700,7 +699,7 @@ export interface IpLoadbalancingFrontendHttpFrontendHttp {
   /** Zone of you frontend */
   zone?: string;
 }
-export const IpLoadbalancingFrontendHttpFrontendHttp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingFrontendHttpFrontendHttp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedSource: S.optional(S.NullOr(IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList)),
     dedicatedIpfo: S.optional(S.NullOr(IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList)),
@@ -725,10 +724,9 @@ export const IpLoadbalancingFrontendHttpFrontendHttp = /*@__PURE__*/ S.suspend((
 
 /** Address of the frontend in the vrack. Null to disable */
 export type CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList>;
+const CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList>;
 
 export interface CreateIpLoadbalancingHttpFrontendPrivateRequest {
   /** The internal name of your IP load balancing */
@@ -742,7 +740,7 @@ export interface CreateIpLoadbalancingHttpFrontendPrivateRequest {
   /** Virtual Router Identifier. 1-255 */
   vrackVrouterId?: number;
 }
-export const CreateIpLoadbalancingHttpFrontendPrivateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpFrontendPrivateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -762,27 +760,27 @@ export const CreateIpLoadbalancingHttpFrontendPrivateRequest = /*@__PURE__*/ S.s
 
 /** Restrict iplb access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendFrontendAllowedSourceList = Array<string>;
-export const IpLoadbalancingFrontendFrontendAllowedSourceList =
+const IpLoadbalancingFrontendFrontendAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendFrontendDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendFrontendDedicatedIpfoList =
+const IpLoadbalancingFrontendFrontendDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendDedicatedIpfoList>;
 
 /** Deny iplb access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendFrontendDeniedSourceList = Array<string>;
-export const IpLoadbalancingFrontendFrontendDeniedSourceList =
+const IpLoadbalancingFrontendFrontendDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type IpLoadbalancingFrontendFrontendHttpHeaderList = Array<string>;
-export const IpLoadbalancingFrontendFrontendHttpHeaderList =
+const IpLoadbalancingFrontendFrontendHttpHeaderList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendHttpHeaderList>;
 
 /** Possible values for proxy type */
 export type IpLoadbalancingProxyTypeEnum = "http" | "tcp";
-export const IpLoadbalancingProxyTypeEnum = S.String;
+const IpLoadbalancingProxyTypeEnum = S.String;
 
 /** Frontend */
 export interface IpLoadbalancingFrontendFrontend {
@@ -815,7 +813,7 @@ export interface IpLoadbalancingFrontendFrontend {
   /** Zone of you frontend */
   zone?: string;
 }
-export const IpLoadbalancingFrontendFrontend = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingFrontendFrontend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedSource: S.optional(S.NullOr(IpLoadbalancingFrontendFrontendAllowedSourceList)),
     dedicatedIpfo: S.optional(S.NullOr(IpLoadbalancingFrontendFrontendDedicatedIpfoList)),
@@ -845,7 +843,7 @@ export interface IpLoadbalancingRouteHttpAction {
   /** Action to trigger if all the rules of this route matches */
   type?: string;
 }
-export const IpLoadbalancingRouteHttpAction = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteHttpAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.NullOr(S.Number)),
     target: S.optional(S.NullOr(S.String)),
@@ -867,7 +865,7 @@ export interface CreateIpLoadbalancingHttpRouteRequest {
   /** Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action */
   weight?: number;
 }
-export const CreateIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     action: IpLoadbalancingRouteHttpAction,
@@ -889,7 +887,7 @@ export type IpLoadbalancingRouteRuleMatchesEnum =
   | "is"
   | "matches"
   | "startswith";
-export const IpLoadbalancingRouteRuleMatchesEnum = S.String;
+const IpLoadbalancingRouteRuleMatchesEnum = S.String;
 
 /** Match rule to combine to build routes */
 export interface IpLoadbalancingRouteRule {
@@ -906,7 +904,7 @@ export interface IpLoadbalancingRouteRule {
   /** Name of sub-field, if applicable. This may be a Cookie or Header name for instance */
   subField?: string | null;
 }
-export const IpLoadbalancingRouteRule = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     match: S.optional(IpLoadbalancingRouteRuleMatchesEnum),
@@ -919,7 +917,7 @@ export const IpLoadbalancingRouteRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules to match to trigger action */
 export type IpLoadbalancingRouteHttpRouteHttpRulesList = Array<IpLoadbalancingRouteRule>;
-export const IpLoadbalancingRouteHttpRouteHttpRulesList = /*@__PURE__*/ S.Array(
+const IpLoadbalancingRouteHttpRouteHttpRulesList = /*@__PURE__*/ S.Array(
   IpLoadbalancingRouteRule,
 ) as any as S.Schema<IpLoadbalancingRouteHttpRouteHttpRulesList>;
 
@@ -930,7 +928,7 @@ export type IpLoadbalancingRouteStatusEnum =
   | "internal"
   | "ok"
   | "updating";
-export const IpLoadbalancingRouteStatusEnum = S.String;
+const IpLoadbalancingRouteStatusEnum = S.String;
 
 /** HTTP Route */
 export interface IpLoadbalancingRouteHttpRouteHttp {
@@ -949,7 +947,7 @@ export interface IpLoadbalancingRouteHttpRouteHttp {
   /** Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action */
   weight?: number;
 }
-export const IpLoadbalancingRouteHttpRouteHttp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteHttpRouteHttp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(IpLoadbalancingRouteHttpAction),
     displayName: S.optional(S.NullOr(S.String)),
@@ -981,7 +979,7 @@ export interface CreateIpLoadbalancingHttpRouteRuleRequest {
   /** Name of sub-field, if applicable. This may be a Cookie or Header name for instance */
   subField?: string;
 }
-export const CreateIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -1019,7 +1017,7 @@ export interface IpLoadbalancingRouteRuleRouteRule {
   /** Name of sub-field, if applicable. This may be a Cookie or Header name for instance */
   subField?: string | null;
 }
-export const IpLoadbalancingRouteRuleRouteRule = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteRuleRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     field: S.optional(S.String),
@@ -1041,7 +1039,7 @@ export interface CreateIpLoadbalancingLogSubscriptionRequest {
   /** Id of the destination log stream */
   streamId: string;
 }
-export const CreateIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     kind: S.String,
@@ -1060,7 +1058,7 @@ export interface IpLoadbalancingLogSubscriptionResponse {
   /** The logs account */
   serviceName?: string;
 }
-export const IpLoadbalancingLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -1075,7 +1073,7 @@ export interface CreateIpLoadbalancingLogUrlRequest {
   /** Log kinds for your dedicated cloud */
   kind: string;
 }
-export const CreateIpLoadbalancingLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     kind: S.String,
@@ -1091,7 +1089,7 @@ export interface IpLoadbalancingLogUrl {
   /** URL */
   url?: string;
 }
-export const IpLoadbalancingLogUrl = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingLogUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -1110,7 +1108,7 @@ export interface CreateIpLoadbalancingSslRequest {
   /** Certificate key */
   key: string;
 }
-export const CreateIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     certificate: S.String,
@@ -1124,12 +1122,12 @@ export const CreateIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subject Alternative Name of your SSL certificate */
 export type IpLoadbalancingSslSslSanList = Array<string>;
-export const IpLoadbalancingSslSslSanList =
+const IpLoadbalancingSslSslSanList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingSslSslSanList>;
 
 /** Possible values for ssl type */
 export type IpLoadbalancingSslTypeEnum = "built" | "built_not_routed" | "custom";
-export const IpLoadbalancingSslTypeEnum = S.String;
+const IpLoadbalancingSslTypeEnum = S.String;
 
 /** Ssl */
 export interface IpLoadbalancingSslSsl {
@@ -1150,7 +1148,7 @@ export interface IpLoadbalancingSslSsl {
   /** Type of your SSL certificate. 'built' for SSL certificates managed by the IP Load Balancing. 'custom' for user manager certificates. */
   type?: IpLoadbalancingSslTypeEnum | null;
 }
-export const IpLoadbalancingSslSsl = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingSslSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     expireDate: S.optional(S.String),
@@ -1165,11 +1163,11 @@ export const IpLoadbalancingSslSsl = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for load balancing balance algorithm */
 export type IpLoadbalancingBalanceTCPEnum = "first" | "leastconn" | "roundrobin" | "source";
-export const IpLoadbalancingBalanceTCPEnum = S.String;
+const IpLoadbalancingBalanceTCPEnum = S.String;
 
 /** Possible values for TCP backend stickiness */
 export type IpLoadbalancingStickinessTCPEnum = "sourceIp";
-export const IpLoadbalancingStickinessTCPEnum = S.String;
+const IpLoadbalancingStickinessTCPEnum = S.String;
 
 export interface CreateIpLoadbalancingTcpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -1189,7 +1187,7 @@ export interface CreateIpLoadbalancingTcpFarmRequest {
   /** Zone of your farm */
   zone: string;
 }
-export const CreateIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     balance: S.optional(IpLoadbalancingBalanceTCPEnum),
@@ -1223,7 +1221,7 @@ export interface IpLoadbalancingBackendTcpBackendTcp {
   /** Zone of you farm */
   zone?: string;
 }
-export const IpLoadbalancingBackendTcpBackendTcp =
+const IpLoadbalancingBackendTcpBackendTcp =
   IpLoadbalancingBackendHttpBackendHttp as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>;
 
 export interface CreateIpLoadbalancingTcpFarmServerRequest {
@@ -1254,7 +1252,7 @@ export interface CreateIpLoadbalancingTcpFarmServerRequest {
   /** Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests. */
   weight?: number;
 }
-export const CreateIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -1283,7 +1281,7 @@ export const CreateIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend
 /** Server state */
 export type IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList =
   Array<IpLoadbalancingServerState>;
-export const IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList =
+const IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList =
   IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList as any as S.Schema<IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList>;
 
 /** TCP Farm's Server */
@@ -1317,7 +1315,7 @@ export interface IpLoadbalancingBackendTcpCustomerServerBackendTCPServer {
   /** Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests. */
   weight?: number | null;
 }
-export const IpLoadbalancingBackendTcpCustomerServerBackendTCPServer = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingBackendTcpCustomerServerBackendTCPServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     backendId: S.optional(S.Number),
@@ -1348,7 +1346,7 @@ export interface CreateIpLoadbalancingTcpFarmServerTransparentRequest {
   address: string;
   slotId: number;
 }
-export const CreateIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -1368,17 +1366,17 @@ export const CreateIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList =
+const CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList =
+const CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList =
+const CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList>;
 
 export interface CreateIpLoadbalancingTcpFrontendRequest {
@@ -1405,7 +1403,7 @@ export interface CreateIpLoadbalancingTcpFrontendRequest {
   /** Zone of your frontend. Use "all" for all owned zone. */
   zone: string;
 }
-export const CreateIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     allowedSource: S.optional(CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList),
@@ -1427,17 +1425,17 @@ export const CreateIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend((
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList = Array<string>;
-export const IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList =
+const IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList =
+const IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList = Array<string>;
-export const IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList =
+const IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList>;
 
 /** Frontend TCP */
@@ -1469,7 +1467,7 @@ export interface IpLoadbalancingFrontendTcpFrontendTcp {
   /** Zone of you frontend */
   zone?: string;
 }
-export const IpLoadbalancingFrontendTcpFrontendTcp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingFrontendTcpFrontendTcp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedSource: S.optional(S.NullOr(IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList)),
     dedicatedIpfo: S.optional(S.NullOr(IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList)),
@@ -1491,7 +1489,7 @@ export const IpLoadbalancingFrontendTcpFrontendTcp = /*@__PURE__*/ S.suspend(() 
 
 /** Address of the frontend in the vrack. Null to disable */
 export type CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList =
+const CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList =
   CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList as any as S.Schema<CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList>;
 
 export interface CreateIpLoadbalancingTcpFrontendPrivateRequest {
@@ -1506,7 +1504,7 @@ export interface CreateIpLoadbalancingTcpFrontendPrivateRequest {
   /** Virtual Router Identifier. 1-255 */
   vrackVrouterId?: number;
 }
-export const CreateIpLoadbalancingTcpFrontendPrivateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpFrontendPrivateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -1531,7 +1529,7 @@ export interface IpLoadbalancingRouteTcpAction {
   /** Action to trigger if all the rules of this route matches */
   type?: string;
 }
-export const IpLoadbalancingRouteTcpAction = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteTcpAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.NullOr(S.String)),
     type: S.optional(S.String),
@@ -1552,7 +1550,7 @@ export interface CreateIpLoadbalancingTcpRouteRequest {
   /** Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action */
   weight?: number;
 }
-export const CreateIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     action: IpLoadbalancingRouteTcpAction,
@@ -1566,7 +1564,7 @@ export const CreateIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of rules to match to trigger action */
 export type IpLoadbalancingRouteTcpRouteTcpRulesList = Array<IpLoadbalancingRouteRule>;
-export const IpLoadbalancingRouteTcpRouteTcpRulesList =
+const IpLoadbalancingRouteTcpRouteTcpRulesList =
   IpLoadbalancingRouteHttpRouteHttpRulesList as any as S.Schema<IpLoadbalancingRouteTcpRouteTcpRulesList>;
 
 /** TCP Route */
@@ -1586,7 +1584,7 @@ export interface IpLoadbalancingRouteTcpRouteTcp {
   /** Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action */
   weight?: number;
 }
-export const IpLoadbalancingRouteTcpRouteTcp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteTcpRouteTcp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(IpLoadbalancingRouteTcpAction),
     displayName: S.optional(S.NullOr(S.String)),
@@ -1618,7 +1616,7 @@ export interface CreateIpLoadbalancingTcpRouteRuleRequest {
   /** Name of sub-field, if applicable. This may be a Cookie or Header name for instance */
   subField?: string;
 }
-export const CreateIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -1651,7 +1649,7 @@ export interface CreateIpLoadbalancingUdpFarmRequest {
   /** Zone of your farm */
   zone: string;
 }
-export const CreateIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.String),
@@ -1676,7 +1674,7 @@ export interface IpLoadbalancingBackendUdpBackendUdp {
   /** Zone of you farm */
   zone?: string;
 }
-export const IpLoadbalancingBackendUdpBackendUdp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingBackendUdpBackendUdp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     farmId: S.optional(S.Number),
@@ -1702,7 +1700,7 @@ export interface CreateIpLoadbalancingUdpFarmServerRequest {
   /** Enable or disable your server */
   status: IpLoadbalancingBackendCustomerServerStatusEnum | (string & {});
 }
-export const CreateIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -1736,7 +1734,7 @@ export interface IpLoadbalancingBackendUdpCustomerServerBackendUDPServer {
   /** Status attached to your server */
   status?: IpLoadbalancingBackendCustomerServerStatusEnum;
 }
-export const IpLoadbalancingBackendUdpCustomerServerBackendUDPServer = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingBackendUdpCustomerServerBackendUDPServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     backendId: S.optional(S.Number),
@@ -1751,7 +1749,7 @@ export const IpLoadbalancingBackendUdpCustomerServerBackendUDPServer = /*@__PURE
 
 /** Only attach frontend on these ip. No restriction if null */
 export type CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList =
+const CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList>;
 
 export interface CreateIpLoadbalancingUdpFrontendRequest {
@@ -1770,7 +1768,7 @@ export interface CreateIpLoadbalancingUdpFrontendRequest {
   /** Zone of your frontend. Use "all" for all owned zone. */
   zone: string;
 }
-export const CreateIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dedicatedIpfo: S.optional(CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList),
@@ -1788,7 +1786,7 @@ export const CreateIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend((
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList =
+const IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList>;
 
 /** Frontend UDP */
@@ -1808,7 +1806,7 @@ export interface IpLoadbalancingFrontendUdpFrontendUdp {
   /** Zone of you frontend */
   zone?: string;
 }
-export const IpLoadbalancingFrontendUdpFrontendUdp = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingFrontendUdpFrontendUdp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedIpfo: S.optional(S.NullOr(IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList)),
     defaultFarmId: S.optional(S.NullOr(S.Number)),
@@ -1824,7 +1822,7 @@ export const IpLoadbalancingFrontendUdpFrontendUdp = /*@__PURE__*/ S.suspend(() 
 
 /** Farm Id you want to attach to that vrack network */
 export type CreateIpLoadbalancingVrackNetworkRequestFarmIdList = Array<number>;
-export const CreateIpLoadbalancingVrackNetworkRequestFarmIdList =
+const CreateIpLoadbalancingVrackNetworkRequestFarmIdList =
   CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<CreateIpLoadbalancingVrackNetworkRequestFarmIdList>;
 
 export interface CreateIpLoadbalancingVrackNetworkRequest {
@@ -1841,7 +1839,7 @@ export interface CreateIpLoadbalancingVrackNetworkRequest {
   /** VLAN of the private network in the vRack. 0 if the private network is not in a VLAN */
   vlan?: number;
 }
-export const CreateIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.String),
@@ -1861,7 +1859,7 @@ export interface IpLoadbalancingDefinedFarm {
   id?: number;
   type?: string;
 }
-export const IpLoadbalancingDefinedFarm = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingDefinedFarm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     type: S.optional(S.String),
@@ -1872,7 +1870,7 @@ export const IpLoadbalancingDefinedFarm = /*@__PURE__*/ S.suspend(() =>
 
 /** Farm Id your vrack network is attached to and their type */
 export type IpLoadbalancingVrackNetworkVrackNetworkFarmIdList = Array<IpLoadbalancingDefinedFarm>;
-export const IpLoadbalancingVrackNetworkVrackNetworkFarmIdList = /*@__PURE__*/ S.Array(
+const IpLoadbalancingVrackNetworkVrackNetworkFarmIdList = /*@__PURE__*/ S.Array(
   IpLoadbalancingDefinedFarm,
 ) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetworkFarmIdList>;
 
@@ -1891,7 +1889,7 @@ export interface IpLoadbalancingVrackNetworkVrackNetwork {
   /** Internal Load Balancer identifier of the vRack private network description */
   vrackNetworkId?: number;
 }
-export const IpLoadbalancingVrackNetworkVrackNetwork = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingVrackNetworkVrackNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     farmId: S.optional(IpLoadbalancingVrackNetworkVrackNetworkFarmIdList),
@@ -1910,7 +1908,7 @@ export interface DeleteIpLoadbalancingHttpFarmRequest {
   /** Id of your farm */
   farmId: number;
 }
-export const DeleteIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -1926,7 +1924,7 @@ export const DeleteIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFarmRequest>;
 
 export interface DeleteIpLoadbalancingHttpFarmResponse {}
-export const DeleteIpLoadbalancingHttpFarmResponse =
+const DeleteIpLoadbalancingHttpFarmResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFarmResponse>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerRequest {
@@ -1937,7 +1935,7 @@ export interface DeleteIpLoadbalancingHttpFarmServerRequest {
   /** Id of your server */
   serverId: number;
 }
-export const DeleteIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -1954,7 +1952,7 @@ export const DeleteIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerRequest>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerResponse {}
-export const DeleteIpLoadbalancingHttpFarmServerResponse =
+const DeleteIpLoadbalancingHttpFarmServerResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerResponse>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerTransparentRequest {
@@ -1966,7 +1964,7 @@ export interface DeleteIpLoadbalancingHttpFarmServerTransparentRequest {
   serverId: number;
   transparentId: number;
 }
-export const DeleteIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -1984,7 +1982,7 @@ export const DeleteIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentRequest>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerTransparentResponse {}
-export const DeleteIpLoadbalancingHttpFarmServerTransparentResponse =
+const DeleteIpLoadbalancingHttpFarmServerTransparentResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentResponse>;
 
 export interface DeleteIpLoadbalancingHttpFrontendRequest {
@@ -1993,7 +1991,7 @@ export interface DeleteIpLoadbalancingHttpFrontendRequest {
   /** Id of your frontend */
   frontendId: number;
 }
-export const DeleteIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -2009,7 +2007,7 @@ export const DeleteIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendRequest>;
 
 export interface DeleteIpLoadbalancingHttpFrontendResponse {}
-export const DeleteIpLoadbalancingHttpFrontendResponse =
+const DeleteIpLoadbalancingHttpFrontendResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFrontendResponse>;
 
 export interface DeleteIpLoadbalancingHttpRouteRequest {
@@ -2018,7 +2016,7 @@ export interface DeleteIpLoadbalancingHttpRouteRequest {
   /** Id of your route */
   routeId: number;
 }
-export const DeleteIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -2034,7 +2032,7 @@ export const DeleteIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRequest>;
 
 export interface DeleteIpLoadbalancingHttpRouteResponse {}
-export const DeleteIpLoadbalancingHttpRouteResponse =
+const DeleteIpLoadbalancingHttpRouteResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpRouteResponse>;
 
 export interface DeleteIpLoadbalancingHttpRouteRuleRequest {
@@ -2045,7 +2043,7 @@ export interface DeleteIpLoadbalancingHttpRouteRuleRequest {
   /** Id of your rule */
   ruleId: number;
 }
-export const DeleteIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -2062,7 +2060,7 @@ export const DeleteIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleRequest>;
 
 export interface DeleteIpLoadbalancingHttpRouteRuleResponse {}
-export const DeleteIpLoadbalancingHttpRouteRuleResponse =
+const DeleteIpLoadbalancingHttpRouteRuleResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleResponse>;
 
 export interface DeleteIpLoadbalancingLogSubscriptionRequest {
@@ -2071,7 +2069,7 @@ export interface DeleteIpLoadbalancingLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DeleteIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -2092,7 +2090,7 @@ export interface DeleteIpLoadbalancingSslRequest {
   /** Id of your SSL certificate */
   id: number;
 }
-export const DeleteIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2102,7 +2100,7 @@ export const DeleteIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpLoadbalancingSslRequest>;
 
 export interface DeleteIpLoadbalancingSslResponse {}
-export const DeleteIpLoadbalancingSslResponse =
+const DeleteIpLoadbalancingSslResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingSslResponse>;
 
 export interface DeleteIpLoadbalancingTcpFarmRequest {
@@ -2111,7 +2109,7 @@ export interface DeleteIpLoadbalancingTcpFarmRequest {
   /** Id of your farm */
   farmId: number;
 }
-export const DeleteIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2127,7 +2125,7 @@ export const DeleteIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFarmRequest>;
 
 export interface DeleteIpLoadbalancingTcpFarmResponse {}
-export const DeleteIpLoadbalancingTcpFarmResponse =
+const DeleteIpLoadbalancingTcpFarmResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFarmResponse>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerRequest {
@@ -2138,7 +2136,7 @@ export interface DeleteIpLoadbalancingTcpFarmServerRequest {
   /** Id of your server */
   serverId: number;
 }
-export const DeleteIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2155,7 +2153,7 @@ export const DeleteIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerRequest>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerResponse {}
-export const DeleteIpLoadbalancingTcpFarmServerResponse =
+const DeleteIpLoadbalancingTcpFarmServerResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerResponse>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerTransparentRequest {
@@ -2167,7 +2165,7 @@ export interface DeleteIpLoadbalancingTcpFarmServerTransparentRequest {
   serverId: number;
   transparentId: number;
 }
-export const DeleteIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2185,7 +2183,7 @@ export const DeleteIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentRequest>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerTransparentResponse {}
-export const DeleteIpLoadbalancingTcpFarmServerTransparentResponse =
+const DeleteIpLoadbalancingTcpFarmServerTransparentResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentResponse>;
 
 export interface DeleteIpLoadbalancingTcpFrontendRequest {
@@ -2194,7 +2192,7 @@ export interface DeleteIpLoadbalancingTcpFrontendRequest {
   /** Id of your frontend */
   frontendId: number;
 }
-export const DeleteIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -2210,7 +2208,7 @@ export const DeleteIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendRequest>;
 
 export interface DeleteIpLoadbalancingTcpFrontendResponse {}
-export const DeleteIpLoadbalancingTcpFrontendResponse =
+const DeleteIpLoadbalancingTcpFrontendResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFrontendResponse>;
 
 export interface DeleteIpLoadbalancingTcpRouteRequest {
@@ -2219,7 +2217,7 @@ export interface DeleteIpLoadbalancingTcpRouteRequest {
   /** Id of your route */
   routeId: number;
 }
-export const DeleteIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -2235,7 +2233,7 @@ export const DeleteIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRequest>;
 
 export interface DeleteIpLoadbalancingTcpRouteResponse {}
-export const DeleteIpLoadbalancingTcpRouteResponse =
+const DeleteIpLoadbalancingTcpRouteResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpRouteResponse>;
 
 export interface DeleteIpLoadbalancingTcpRouteRuleRequest {
@@ -2246,7 +2244,7 @@ export interface DeleteIpLoadbalancingTcpRouteRuleRequest {
   /** Id of your rule */
   ruleId: number;
 }
-export const DeleteIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -2263,7 +2261,7 @@ export const DeleteIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleRequest>;
 
 export interface DeleteIpLoadbalancingTcpRouteRuleResponse {}
-export const DeleteIpLoadbalancingTcpRouteRuleResponse =
+const DeleteIpLoadbalancingTcpRouteRuleResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleResponse>;
 
 export interface DeleteIpLoadbalancingUdpFarmRequest {
@@ -2272,7 +2270,7 @@ export interface DeleteIpLoadbalancingUdpFarmRequest {
   /** Id of your farm */
   farmId: number;
 }
-export const DeleteIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2288,7 +2286,7 @@ export const DeleteIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpLoadbalancingUdpFarmRequest>;
 
 export interface DeleteIpLoadbalancingUdpFarmResponse {}
-export const DeleteIpLoadbalancingUdpFarmResponse =
+const DeleteIpLoadbalancingUdpFarmResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingUdpFarmResponse>;
 
 export interface DeleteIpLoadbalancingUdpFarmServerRequest {
@@ -2299,7 +2297,7 @@ export interface DeleteIpLoadbalancingUdpFarmServerRequest {
   /** Id of your server */
   serverId: number;
 }
-export const DeleteIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2316,7 +2314,7 @@ export const DeleteIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerRequest>;
 
 export interface DeleteIpLoadbalancingUdpFarmServerResponse {}
-export const DeleteIpLoadbalancingUdpFarmServerResponse =
+const DeleteIpLoadbalancingUdpFarmServerResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerResponse>;
 
 export interface DeleteIpLoadbalancingUdpFrontendRequest {
@@ -2325,7 +2323,7 @@ export interface DeleteIpLoadbalancingUdpFrontendRequest {
   /** Id of your frontend */
   frontendId: number;
 }
-export const DeleteIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -2341,7 +2339,7 @@ export const DeleteIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendRequest>;
 
 export interface DeleteIpLoadbalancingUdpFrontendResponse {}
-export const DeleteIpLoadbalancingUdpFrontendResponse =
+const DeleteIpLoadbalancingUdpFrontendResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingUdpFrontendResponse>;
 
 export interface DeleteIpLoadbalancingVrackNetworkRequest {
@@ -2350,7 +2348,7 @@ export interface DeleteIpLoadbalancingVrackNetworkRequest {
   /** Internal Load Balancer identifier of the vRack private network description */
   vrackNetworkId: number;
 }
-export const DeleteIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.Number.pipe(T.Label()),
@@ -2366,14 +2364,14 @@ export const DeleteIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkRequest>;
 
 export interface DeleteIpLoadbalancingVrackNetworkResponse {}
-export const DeleteIpLoadbalancingVrackNetworkResponse =
+const DeleteIpLoadbalancingVrackNetworkResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingVrackNetworkResponse>;
 
 export interface GetIpLoadbalancingRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const GetIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}", code: 200 })),
@@ -2383,7 +2381,7 @@ export const GetIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -2399,7 +2397,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -2415,7 +2413,7 @@ export interface IpLoadbalancingOrderableZone {
   /** The billing planCode for this zone */
   planCode?: string;
 }
-export const IpLoadbalancingOrderableZone = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingOrderableZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     planCode: S.optional(S.String),
@@ -2426,13 +2424,13 @@ export const IpLoadbalancingOrderableZone = /*@__PURE__*/ S.suspend(() =>
 
 /** Available additional zone for your Load Balancer */
 export type IpLoadbalancingIpWithIAMOrderableZoneList = Array<IpLoadbalancingOrderableZone>;
-export const IpLoadbalancingIpWithIAMOrderableZoneList = /*@__PURE__*/ S.Array(
+const IpLoadbalancingIpWithIAMOrderableZoneList = /*@__PURE__*/ S.Array(
   IpLoadbalancingOrderableZone,
 ) as any as S.Schema<IpLoadbalancingIpWithIAMOrderableZoneList>;
 
 /** Possible values for ssl ciphers */
 export type IpLoadbalancingSslConfigurationEnum = "intermediate" | "modern";
-export const IpLoadbalancingSslConfigurationEnum = S.String;
+const IpLoadbalancingSslConfigurationEnum = S.String;
 
 /** Possible values for load balancing IP state */
 export type IpLoadbalancingIpStateEnum =
@@ -2442,11 +2440,11 @@ export type IpLoadbalancingIpStateEnum =
   | "ok"
   | "quarantined"
   | "suspended";
-export const IpLoadbalancingIpStateEnum = S.String;
+const IpLoadbalancingIpStateEnum = S.String;
 
 /** Location where your service is */
 export type IpLoadbalancingIpWithIAMZoneList = Array<string>;
-export const IpLoadbalancingIpWithIAMZoneList =
+const IpLoadbalancingIpWithIAMZoneList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingIpWithIAMZoneList>;
 
 /** Your IP load balancing */
@@ -2480,7 +2478,7 @@ export interface IpLoadbalancingIpWithIAM {
   /** Location where your service is */
   zone?: IpLoadbalancingIpWithIAMZoneList;
 }
-export const IpLoadbalancingIpWithIAM = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingIpWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     iam: S.optional(S.NullOr(IamResourceMetadata)),
@@ -2505,7 +2503,7 @@ export interface GetIpLoadbalancingHttpFarmRequest {
   /** Id of your farm */
   farmId: number;
 }
-export const GetIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2524,7 +2522,7 @@ export interface GetIpLoadbalancingHttpFarmServerRequest {
   /** Id of your server */
   serverId: number;
 }
-export const GetIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2549,7 +2547,7 @@ export interface GetIpLoadbalancingHttpFarmServerTransparentRequest {
   serverId: number;
   transparentId: number;
 }
-export const GetIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -2572,7 +2570,7 @@ export interface GetIpLoadbalancingHttpFrontendRequest {
   /** Id of your frontend */
   frontendId: number;
 }
-export const GetIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -2593,7 +2591,7 @@ export interface GetIpLoadbalancingHttpRouteRequest {
   /** Id of your route */
   routeId: number;
 }
-export const GetIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -2616,7 +2614,7 @@ export interface GetIpLoadbalancingHttpRouteRuleRequest {
   /** Id of your rule */
   ruleId: number;
 }
-export const GetIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -2638,7 +2636,7 @@ export interface GetIpLoadbalancingLogKindRequest {
   /** Log kind name */
   name: string;
 }
-export const GetIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2651,7 +2649,7 @@ export const GetIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional log fields managed in this log kind */
 export type IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList = Array<string>;
-export const IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList =
+const IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList>;
 
 /** Log kind for your Load Balancer */
@@ -2669,7 +2667,7 @@ export interface IpLoadbalancingLdpKindLdpKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
-export const IpLoadbalancingLdpKindLdpKind = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingLdpKindLdpKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalReturnedFields: S.optional(IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList),
     createdAt: S.optional(S.String),
@@ -2688,7 +2686,7 @@ export interface GetIpLoadbalancingLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const GetIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -2710,7 +2708,7 @@ export interface IpLoadbalancingLogSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
-export const IpLoadbalancingLogSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingLogSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2736,7 +2734,7 @@ export interface IpLoadbalancingLdpSubscriptionLdpSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-export const IpLoadbalancingLdpSubscriptionLdpSubscription = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingLdpSubscriptionLdpSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2754,7 +2752,7 @@ export interface GetIpLoadbalancingMetricsTokenRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const GetIpLoadbalancingMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/metricsToken", code: 200 })),
@@ -2769,7 +2767,7 @@ export interface IpLoadbalancingMetricsToken {
   /** The metrics token */
   token?: string;
 }
-export const IpLoadbalancingMetricsToken = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingMetricsToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     token: S.optional(S.String),
@@ -2784,7 +2782,7 @@ export interface GetIpLoadbalancingQuotaRequest {
   /** Zone of your quota */
   zone: string;
 }
-export const GetIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     zone: S.String.pipe(T.Label()),
@@ -2808,7 +2806,7 @@ export interface IpLoadbalancingQuotaQuota {
   /** Zone of your quota */
   zone?: string;
 }
-export const IpLoadbalancingQuotaQuota = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingQuotaQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alert: S.optional(S.NullOr(S.Number)),
     included: S.optional(S.NullOr(S.Number)),
@@ -2827,7 +2825,7 @@ export interface GetIpLoadbalancingQuotaHistoryRequest {
   /** Id of your quota */
   id: number;
 }
-export const GetIpLoadbalancingQuotaHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingQuotaHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2853,7 +2851,7 @@ export interface IpLoadbalancingQuotaHistoryQuotaHistory {
   /** Zone of your quota */
   zone?: string;
 }
-export const IpLoadbalancingQuotaHistoryQuotaHistory = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingQuotaHistoryQuotaHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     historizedDate: S.optional(S.String),
     id: S.optional(S.Number),
@@ -2870,7 +2868,7 @@ export interface GetIpLoadbalancingServiceInfosRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const GetIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/serviceInfos", code: 200 })),
@@ -2880,7 +2878,7 @@ export const GetIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -2896,7 +2894,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -2916,7 +2914,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -2925,7 +2923,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -2946,7 +2944,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -2970,7 +2968,7 @@ export interface GetIpLoadbalancingSslRequest {
   /** Id of your SSL certificate */
   id: number;
 }
-export const GetIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2983,7 +2981,7 @@ export interface GetIpLoadbalancingStatusRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const GetIpLoadbalancingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/status", code: 200 })),
@@ -3002,7 +3000,7 @@ export interface IpLoadbalancingStatusComponentStatus {
   /** The number of component with status warn */
   warn?: number;
 }
-export const IpLoadbalancingStatusComponentStatus = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingStatusComponentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.Number),
     ok: S.optional(S.Number),
@@ -3020,7 +3018,7 @@ export interface IpLoadbalancingStatusComponent {
   /** The Load Balancer total component count */
   total?: number;
 }
-export const IpLoadbalancingStatusComponent = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingStatusComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(IpLoadbalancingStatusComponentStatus),
     total: S.optional(S.Number),
@@ -3031,14 +3029,14 @@ export const IpLoadbalancingStatusComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for a Load Balancer status */
 export type IpLoadbalancingStatusEnum = "error" | "ok" | "unknown" | "warn";
-export const IpLoadbalancingStatusEnum = S.String;
+const IpLoadbalancingStatusEnum = S.String;
 
 /** The status of a Load Balancer service */
 export interface IpLoadbalancingStatusService {
   /** The status of your Load Balancer billing domain */
   status?: IpLoadbalancingStatusEnum;
 }
-export const IpLoadbalancingStatusService = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingStatusService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(IpLoadbalancingStatusEnum),
   }),
@@ -3057,7 +3055,7 @@ export interface IpLoadbalancingStatus {
   /** The Load Balancer service status informations */
   service?: IpLoadbalancingStatusService;
 }
-export const IpLoadbalancingStatus = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     farms: S.optional(IpLoadbalancingStatusComponent),
     frontends: S.optional(IpLoadbalancingStatusComponent),
@@ -3072,7 +3070,7 @@ export interface GetIpLoadbalancingTaskRequest {
   /** Id of the operation */
   id: number;
 }
-export const GetIpLoadbalancingTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3087,7 +3085,7 @@ export interface GetIpLoadbalancingTcpFarmRequest {
   /** Id of your farm */
   farmId: number;
 }
-export const GetIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3106,7 +3104,7 @@ export interface GetIpLoadbalancingTcpFarmServerRequest {
   /** Id of your server */
   serverId: number;
 }
-export const GetIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3131,7 +3129,7 @@ export interface GetIpLoadbalancingTcpFarmServerTransparentRequest {
   serverId: number;
   transparentId: number;
 }
-export const GetIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3154,7 +3152,7 @@ export interface GetIpLoadbalancingTcpFrontendRequest {
   /** Id of your frontend */
   frontendId: number;
 }
-export const GetIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -3175,7 +3173,7 @@ export interface GetIpLoadbalancingTcpRouteRequest {
   /** Id of your route */
   routeId: number;
 }
-export const GetIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -3194,7 +3192,7 @@ export interface GetIpLoadbalancingTcpRouteRuleRequest {
   /** Id of your rule */
   ruleId: number;
 }
-export const GetIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -3216,7 +3214,7 @@ export interface GetIpLoadbalancingUdpFarmRequest {
   /** Id of your farm */
   farmId: number;
 }
-export const GetIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3235,7 +3233,7 @@ export interface GetIpLoadbalancingUdpFarmServerRequest {
   /** Id of your server */
   serverId: number;
 }
-export const GetIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3257,7 +3255,7 @@ export interface GetIpLoadbalancingUdpFrontendRequest {
   /** Id of your frontend */
   frontendId: number;
 }
-export const GetIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -3278,7 +3276,7 @@ export interface GetIpLoadbalancingVrackNetworkRequest {
   /** Internal Load Balancer identifier of the vRack private network description */
   vrackNetworkId: number;
 }
-export const GetIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.Number.pipe(T.Label()),
@@ -3297,7 +3295,7 @@ export interface GetIpLoadbalancingVrackNetworkCreationRulesRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const GetIpLoadbalancingVrackNetworkCreationRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingVrackNetworkCreationRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3320,7 +3318,7 @@ export interface IpLoadbalancingVrackNetworkCreationRules {
   /** Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product */
   vrackName?: string;
 }
-export const IpLoadbalancingVrackNetworkCreationRules = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingVrackNetworkCreationRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minNatIps: S.optional(S.Number),
     remainingNetworks: S.optional(S.Number),
@@ -3336,7 +3334,7 @@ export interface GetIpLoadbalancingZoneRequest {
   /** Name of your zone */
   name: string;
 }
-export const GetIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3352,7 +3350,7 @@ export interface IpLoadbalancingZoneZone {
   /** State of your zone */
   state?: string;
 }
-export const IpLoadbalancingZoneZone = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingZoneZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(S.String),
@@ -3361,19 +3359,19 @@ export const IpLoadbalancingZoneZone = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListIpLoadbalancingRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListIpLoadbalancingRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListIpLoadbalancingRequestIamTagsValueList>;
 
 export type ListIpLoadbalancingRequestIamTagsMap = {
   [key: string]: ListIpLoadbalancingRequestIamTagsValueList | undefined;
 };
-export const ListIpLoadbalancingRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListIpLoadbalancingRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListIpLoadbalancingRequestIamTagsValueList,
 ) as any as S.Schema<ListIpLoadbalancingRequestIamTagsMap>;
@@ -3382,7 +3380,7 @@ export interface ListIpLoadbalancingRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListIpLoadbalancingRequestIamTagsMap;
 }
-export const ListIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListIpLoadbalancingRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing", code: 200 })),
@@ -3391,11 +3389,11 @@ export const ListIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingRequest>;
 
 export type ListIpLoadbalancingResponseBodyList = Array<string>;
-export const ListIpLoadbalancingResponseBodyList =
+const ListIpLoadbalancingResponseBodyList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingResponseBodyList>;
 
 export type ListIpLoadbalancingResponse = ListIpLoadbalancingResponseBodyList;
-export const ListIpLoadbalancingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingResponse",
@@ -3405,7 +3403,7 @@ export interface ListIpLoadbalancingAvailableFarmProbesRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingAvailableFarmProbesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableFarmProbesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3417,17 +3415,17 @@ export const ListIpLoadbalancingAvailableFarmProbesRequest = /*@__PURE__*/ S.sus
 
 /** List of possible probe result checkers for this type of probe */
 export type IpLoadbalancingFarmAvailableProbeMatchesList = Array<string>;
-export const IpLoadbalancingFarmAvailableProbeMatchesList =
+const IpLoadbalancingFarmAvailableProbeMatchesList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFarmAvailableProbeMatchesList>;
 
 /** List of available HTTP method, if available */
 export type IpLoadbalancingFarmAvailableProbeMethodList = Array<string>;
-export const IpLoadbalancingFarmAvailableProbeMethodList =
+const IpLoadbalancingFarmAvailableProbeMethodList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFarmAvailableProbeMethodList>;
 
 /** List of matches operators that accept the negate option for this type of probe */
 export type IpLoadbalancingFarmAvailableProbeNegatableMatchesList = Array<string>;
-export const IpLoadbalancingFarmAvailableProbeNegatableMatchesList =
+const IpLoadbalancingFarmAvailableProbeNegatableMatchesList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFarmAvailableProbeNegatableMatchesList>;
 
 /** Available farm probes options */
@@ -3445,7 +3443,7 @@ export interface IpLoadbalancingFarmAvailableProbe {
   /** True is this probe type supports a URL */
   url?: boolean;
 }
-export const IpLoadbalancingFarmAvailableProbe = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingFarmAvailableProbe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: S.optional(IpLoadbalancingFarmAvailableProbeMatchesList),
     method: S.optional(S.NullOr(IpLoadbalancingFarmAvailableProbeMethodList)),
@@ -3460,13 +3458,13 @@ export const IpLoadbalancingFarmAvailableProbe = /*@__PURE__*/ S.suspend(() =>
 
 export type ListIpLoadbalancingAvailableFarmProbesResponseBodyList =
   Array<IpLoadbalancingFarmAvailableProbe>;
-export const ListIpLoadbalancingAvailableFarmProbesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingAvailableFarmProbesResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingFarmAvailableProbe,
 ) as any as S.Schema<ListIpLoadbalancingAvailableFarmProbesResponseBodyList>;
 
 export type ListIpLoadbalancingAvailableFarmProbesResponse =
   ListIpLoadbalancingAvailableFarmProbesResponseBodyList;
-export const ListIpLoadbalancingAvailableFarmProbesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableFarmProbesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingAvailableFarmProbesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingAvailableFarmProbesResponse",
@@ -3476,7 +3474,7 @@ export interface ListIpLoadbalancingAvailableFarmTypeRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingAvailableFarmTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableFarmTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3487,19 +3485,16 @@ export const ListIpLoadbalancingAvailableFarmTypeRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeRequest>;
 
 export type ListIpLoadbalancingAvailableFarmTypeResponseBodyList = Array<string>;
-export const ListIpLoadbalancingAvailableFarmTypeResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponseBodyList>;
-
 export type ListIpLoadbalancingAvailableFarmTypeResponse =
   ListIpLoadbalancingAvailableFarmTypeResponseBodyList;
-export const ListIpLoadbalancingAvailableFarmTypeResponse =
+const ListIpLoadbalancingAvailableFarmTypeResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponse>;
 
 export interface ListIpLoadbalancingAvailableFrontendTypeRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingAvailableFrontendTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableFrontendTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3514,19 +3509,16 @@ export const ListIpLoadbalancingAvailableFrontendTypeRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeRequest>;
 
 export type ListIpLoadbalancingAvailableFrontendTypeResponseBodyList = Array<string>;
-export const ListIpLoadbalancingAvailableFrontendTypeResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponseBodyList>;
-
 export type ListIpLoadbalancingAvailableFrontendTypeResponse =
   ListIpLoadbalancingAvailableFrontendTypeResponseBodyList;
-export const ListIpLoadbalancingAvailableFrontendTypeResponse =
+const ListIpLoadbalancingAvailableFrontendTypeResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponse>;
 
 export interface ListIpLoadbalancingAvailableRouteActionsRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingAvailableRouteActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableRouteActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3542,7 +3534,7 @@ export const ListIpLoadbalancingAvailableRouteActionsRequest = /*@__PURE__*/ S.s
 
 /** List of available HTTP status code if applicable */
 export type IpLoadbalancingRouteAvailableActionStatusList = Array<number>;
-export const IpLoadbalancingRouteAvailableActionStatusList =
+const IpLoadbalancingRouteAvailableActionStatusList =
   CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<IpLoadbalancingRouteAvailableActionStatusList>;
 
 /** Available route actions options */
@@ -3556,7 +3548,7 @@ export interface IpLoadbalancingRouteAvailableAction {
   /** Protocol supported by this action */
   type?: string;
 }
-export const IpLoadbalancingRouteAvailableAction = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteAvailableAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -3569,13 +3561,13 @@ export const IpLoadbalancingRouteAvailableAction = /*@__PURE__*/ S.suspend(() =>
 
 export type ListIpLoadbalancingAvailableRouteActionsResponseBodyList =
   Array<IpLoadbalancingRouteAvailableAction>;
-export const ListIpLoadbalancingAvailableRouteActionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingAvailableRouteActionsResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingRouteAvailableAction,
 ) as any as S.Schema<ListIpLoadbalancingAvailableRouteActionsResponseBodyList>;
 
 export type ListIpLoadbalancingAvailableRouteActionsResponse =
   ListIpLoadbalancingAvailableRouteActionsResponseBodyList;
-export const ListIpLoadbalancingAvailableRouteActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableRouteActionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingAvailableRouteActionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingAvailableRouteActionsResponse",
@@ -3585,7 +3577,7 @@ export interface ListIpLoadbalancingAvailableRouteRulesRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingAvailableRouteRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableRouteRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3597,12 +3589,12 @@ export const ListIpLoadbalancingAvailableRouteRulesRequest = /*@__PURE__*/ S.sus
 
 /** If pattern is "enum", list of available options */
 export type IpLoadbalancingRouteAvailableRuleEnumList = Array<string>;
-export const IpLoadbalancingRouteAvailableRuleEnumList =
+const IpLoadbalancingRouteAvailableRuleEnumList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingRouteAvailableRuleEnumList>;
 
 /** List of match operators compatible with this rule */
 export type IpLoadbalancingRouteAvailableRuleMatchesList = Array<string>;
-export const IpLoadbalancingRouteAvailableRuleMatchesList =
+const IpLoadbalancingRouteAvailableRuleMatchesList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingRouteAvailableRuleMatchesList>;
 
 /** Match rule to combine to build routes */
@@ -3620,7 +3612,7 @@ export interface IpLoadbalancingRouteAvailableRule {
   /** Protocol supported by this action */
   type?: string;
 }
-export const IpLoadbalancingRouteAvailableRule = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingRouteAvailableRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enum: S.optional(S.NullOr(IpLoadbalancingRouteAvailableRuleEnumList)),
     hasSubField: S.optional(S.Boolean),
@@ -3635,13 +3627,13 @@ export const IpLoadbalancingRouteAvailableRule = /*@__PURE__*/ S.suspend(() =>
 
 export type ListIpLoadbalancingAvailableRouteRulesResponseBodyList =
   Array<IpLoadbalancingRouteAvailableRule>;
-export const ListIpLoadbalancingAvailableRouteRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingAvailableRouteRulesResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingRouteAvailableRule,
 ) as any as S.Schema<ListIpLoadbalancingAvailableRouteRulesResponseBodyList>;
 
 export type ListIpLoadbalancingAvailableRouteRulesResponse =
   ListIpLoadbalancingAvailableRouteRulesResponseBodyList;
-export const ListIpLoadbalancingAvailableRouteRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingAvailableRouteRulesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingAvailableRouteRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingAvailableRouteRulesResponse",
@@ -3653,7 +3645,7 @@ export interface ListIpLoadbalancingDefinedFarmsRequest {
   /** The vrack network id you want to filter on */
   vrackNetworkId?: number;
 }
-export const ListIpLoadbalancingDefinedFarmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingDefinedFarmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
@@ -3663,12 +3655,12 @@ export const ListIpLoadbalancingDefinedFarmsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingDefinedFarmsRequest>;
 
 export type ListIpLoadbalancingDefinedFarmsResponseBodyList = Array<IpLoadbalancingDefinedFarm>;
-export const ListIpLoadbalancingDefinedFarmsResponseBodyList =
+const ListIpLoadbalancingDefinedFarmsResponseBodyList =
   IpLoadbalancingVrackNetworkVrackNetworkFarmIdList as any as S.Schema<ListIpLoadbalancingDefinedFarmsResponseBodyList>;
 
 export type ListIpLoadbalancingDefinedFarmsResponse =
   ListIpLoadbalancingDefinedFarmsResponseBodyList;
-export const ListIpLoadbalancingDefinedFarmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingDefinedFarmsResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingDefinedFarmsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingDefinedFarmsResponse",
@@ -3678,7 +3670,7 @@ export interface ListIpLoadbalancingDefinedFrontendsRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingDefinedFrontendsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingDefinedFrontendsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3690,22 +3682,17 @@ export const ListIpLoadbalancingDefinedFrontendsRequest = /*@__PURE__*/ S.suspen
 
 /** a list of {type=>[Frontend ids]} */
 export type IpLoadbalancingDefinedFrontend = IpLoadbalancingDefinedFarm;
-export const IpLoadbalancingDefinedFrontend = IpLoadbalancingDefinedFarm;
-
 export type ListIpLoadbalancingDefinedFrontendsResponseBodyList = Array<IpLoadbalancingDefinedFarm>;
-export const ListIpLoadbalancingDefinedFrontendsResponseBodyList =
-  IpLoadbalancingVrackNetworkVrackNetworkFarmIdList as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponseBodyList>;
-
 export type ListIpLoadbalancingDefinedFrontendsResponse =
   ListIpLoadbalancingDefinedFrontendsResponseBodyList;
-export const ListIpLoadbalancingDefinedFrontendsResponse =
+const ListIpLoadbalancingDefinedFrontendsResponse =
   ListIpLoadbalancingDefinedFarmsResponse as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponse>;
 
 export interface ListIpLoadbalancingDefinedRoutesRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingDefinedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingDefinedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3724,7 +3711,7 @@ export interface IpLoadbalancingDefinedRoute {
   /** Protocol supported by this route */
   type?: string;
 }
-export const IpLoadbalancingDefinedRoute = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingDefinedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     routeId: S.optional(S.Number),
@@ -3735,13 +3722,13 @@ export const IpLoadbalancingDefinedRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpLoadbalancingDefinedRoute>;
 
 export type ListIpLoadbalancingDefinedRoutesResponseBodyList = Array<IpLoadbalancingDefinedRoute>;
-export const ListIpLoadbalancingDefinedRoutesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingDefinedRoutesResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingDefinedRoute,
 ) as any as S.Schema<ListIpLoadbalancingDefinedRoutesResponseBodyList>;
 
 export type ListIpLoadbalancingDefinedRoutesResponse =
   ListIpLoadbalancingDefinedRoutesResponseBodyList;
-export const ListIpLoadbalancingDefinedRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingDefinedRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingDefinedRoutesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingDefinedRoutesResponse",
@@ -3751,7 +3738,7 @@ export interface ListIpLoadbalancingFailoverRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingFailoverRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingFailoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/failover", code: 200 })),
@@ -3760,11 +3747,8 @@ export const ListIpLoadbalancingFailoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingFailoverRequest>;
 
 export type ListIpLoadbalancingFailoverResponseBodyList = Array<string>;
-export const ListIpLoadbalancingFailoverResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingFailoverResponseBodyList>;
-
 export type ListIpLoadbalancingFailoverResponse = ListIpLoadbalancingFailoverResponseBodyList;
-export const ListIpLoadbalancingFailoverResponse =
+const ListIpLoadbalancingFailoverResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingFailoverResponse>;
 
 export interface ListIpLoadbalancingHttpFarmRequest {
@@ -3775,7 +3759,7 @@ export interface ListIpLoadbalancingHttpFarmRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
@@ -3786,11 +3770,8 @@ export const ListIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingHttpFarmRequest>;
 
 export type ListIpLoadbalancingHttpFarmResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFarmResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFarmResponseBodyList>;
-
 export type ListIpLoadbalancingHttpFarmResponse = ListIpLoadbalancingHttpFarmResponseBodyList;
-export const ListIpLoadbalancingHttpFarmResponse =
+const ListIpLoadbalancingHttpFarmResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFarmResponse>;
 
 export interface ListIpLoadbalancingHttpFarmServerRequest {
@@ -3805,7 +3786,7 @@ export interface ListIpLoadbalancingHttpFarmServerRequest {
   /** Filter the value of status property (=) */
   status?: IpLoadbalancingBackendCustomerServerStatusEnum | (string & {});
 }
-export const ListIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3824,12 +3805,9 @@ export const ListIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListIpLoadbalancingHttpFarmServerRequest>;
 
 export type ListIpLoadbalancingHttpFarmServerResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFarmServerResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponseBodyList>;
-
 export type ListIpLoadbalancingHttpFarmServerResponse =
   ListIpLoadbalancingHttpFarmServerResponseBodyList;
-export const ListIpLoadbalancingHttpFarmServerResponse =
+const ListIpLoadbalancingHttpFarmServerResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponse>;
 
 export interface ListIpLoadbalancingHttpFarmServerTransparentRequest {
@@ -3842,7 +3820,7 @@ export interface ListIpLoadbalancingHttpFarmServerTransparentRequest {
   /** Filter the value of slotId property (=) */
   slotId?: number;
 }
-export const ListIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -3860,12 +3838,9 @@ export const ListIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/
 }) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentRequest>;
 
 export type ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList>;
-
 export type ListIpLoadbalancingHttpFarmServerTransparentResponse =
   ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList;
-export const ListIpLoadbalancingHttpFarmServerTransparentResponse =
+const ListIpLoadbalancingHttpFarmServerTransparentResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponse>;
 
 export interface ListIpLoadbalancingHttpFrontendRequest {
@@ -3880,7 +3855,7 @@ export interface ListIpLoadbalancingHttpFrontendRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     defaultFarmId: S.optional(S.Number.pipe(T.Query())),
@@ -3895,12 +3870,9 @@ export const ListIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingHttpFrontendRequest>;
 
 export type ListIpLoadbalancingHttpFrontendResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFrontendResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFrontendResponseBodyList>;
-
 export type ListIpLoadbalancingHttpFrontendResponse =
   ListIpLoadbalancingHttpFrontendResponseBodyList;
-export const ListIpLoadbalancingHttpFrontendResponse =
+const ListIpLoadbalancingHttpFrontendResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFrontendResponse>;
 
 export interface ListIpLoadbalancingHttpRouteRequest {
@@ -3909,7 +3881,7 @@ export interface ListIpLoadbalancingHttpRouteRequest {
   /** Filter the value of frontendId property (=) */
   frontendId?: number;
 }
-export const ListIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.optional(S.Number.pipe(T.Query())),
@@ -3919,11 +3891,8 @@ export const ListIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingHttpRouteRequest>;
 
 export type ListIpLoadbalancingHttpRouteResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpRouteResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpRouteResponseBodyList>;
-
 export type ListIpLoadbalancingHttpRouteResponse = ListIpLoadbalancingHttpRouteResponseBodyList;
-export const ListIpLoadbalancingHttpRouteResponse =
+const ListIpLoadbalancingHttpRouteResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpRouteResponse>;
 
 export interface ListIpLoadbalancingHttpRouteRuleRequest {
@@ -3932,7 +3901,7 @@ export interface ListIpLoadbalancingHttpRouteRuleRequest {
   /** Id of your route */
   routeId: number;
 }
-export const ListIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -3948,19 +3917,16 @@ export const ListIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleRequest>;
 
 export type ListIpLoadbalancingHttpRouteRuleResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpRouteRuleResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponseBodyList>;
-
 export type ListIpLoadbalancingHttpRouteRuleResponse =
   ListIpLoadbalancingHttpRouteRuleResponseBodyList;
-export const ListIpLoadbalancingHttpRouteRuleResponse =
+const ListIpLoadbalancingHttpRouteRuleResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponse>;
 
 export interface ListIpLoadbalancingLogKindRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/log/kind", code: 200 })),
@@ -3969,11 +3935,8 @@ export const ListIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingLogKindRequest>;
 
 export type ListIpLoadbalancingLogKindResponseBodyList = Array<string>;
-export const ListIpLoadbalancingLogKindResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingLogKindResponseBodyList>;
-
 export type ListIpLoadbalancingLogKindResponse = ListIpLoadbalancingLogKindResponseBodyList;
-export const ListIpLoadbalancingLogKindResponse =
+const ListIpLoadbalancingLogKindResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingLogKindResponse>;
 
 export interface ListIpLoadbalancingLogSubscriptionRequest {
@@ -3982,7 +3945,7 @@ export interface ListIpLoadbalancingLogSubscriptionRequest {
   /** Filter the value of kind property (=) */
   kind?: string;
 }
-export const ListIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     kind: S.optional(S.String.pipe(T.Query())),
@@ -3994,19 +3957,16 @@ export const ListIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListIpLoadbalancingLogSubscriptionRequest>;
 
 export type ListIpLoadbalancingLogSubscriptionResponseBodyList = Array<string>;
-export const ListIpLoadbalancingLogSubscriptionResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponseBodyList>;
-
 export type ListIpLoadbalancingLogSubscriptionResponse =
   ListIpLoadbalancingLogSubscriptionResponseBodyList;
-export const ListIpLoadbalancingLogSubscriptionResponse =
+const ListIpLoadbalancingLogSubscriptionResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponse>;
 
 export interface ListIpLoadbalancingNatIpRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingNatIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingNatIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/natIp", code: 200 })),
@@ -4015,7 +3975,7 @@ export const ListIpLoadbalancingNatIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingNatIpRequest>;
 
 export type IpLoadbalancingNatIpsIpList = Array<string>;
-export const IpLoadbalancingNatIpsIpList =
+const IpLoadbalancingNatIpsIpList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingNatIpsIpList>;
 
 /** a list of {zone, nat Ip} */
@@ -4023,7 +3983,7 @@ export interface IpLoadbalancingNatIps {
   ip?: IpLoadbalancingNatIpsIpList;
   zone?: string;
 }
-export const IpLoadbalancingNatIps = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingNatIps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.optional(IpLoadbalancingNatIpsIpList),
     zone: S.optional(S.String),
@@ -4031,12 +3991,12 @@ export const IpLoadbalancingNatIps = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpLoadbalancingNatIps" }) as any as S.Schema<IpLoadbalancingNatIps>;
 
 export type ListIpLoadbalancingNatIpResponseBodyList = Array<IpLoadbalancingNatIps>;
-export const ListIpLoadbalancingNatIpResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingNatIpResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingNatIps,
 ) as any as S.Schema<ListIpLoadbalancingNatIpResponseBodyList>;
 
 export type ListIpLoadbalancingNatIpResponse = ListIpLoadbalancingNatIpResponseBodyList;
-export const ListIpLoadbalancingNatIpResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingNatIpResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingNatIpResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingNatIpResponse",
@@ -4046,7 +4006,7 @@ export interface ListIpLoadbalancingPendingChangesRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingPendingChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingPendingChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4063,7 +4023,7 @@ export interface IpLoadbalancingPendingChanges {
   /** The Load Balancer zone with pending changes */
   zone?: string;
 }
-export const IpLoadbalancingPendingChanges = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingPendingChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.optional(S.Number),
     zone: S.optional(S.String),
@@ -4074,13 +4034,13 @@ export const IpLoadbalancingPendingChanges = /*@__PURE__*/ S.suspend(() =>
 
 export type ListIpLoadbalancingPendingChangesResponseBodyList =
   Array<IpLoadbalancingPendingChanges>;
-export const ListIpLoadbalancingPendingChangesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingPendingChangesResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingPendingChanges,
 ) as any as S.Schema<ListIpLoadbalancingPendingChangesResponseBodyList>;
 
 export type ListIpLoadbalancingPendingChangesResponse =
   ListIpLoadbalancingPendingChangesResponseBodyList;
-export const ListIpLoadbalancingPendingChangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingPendingChangesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingPendingChangesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingPendingChangesResponse",
@@ -4090,7 +4050,7 @@ export interface ListIpLoadbalancingQuotaRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quota", code: 200 })),
@@ -4099,11 +4059,8 @@ export const ListIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingQuotaRequest>;
 
 export type ListIpLoadbalancingQuotaResponseBodyList = Array<string>;
-export const ListIpLoadbalancingQuotaResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingQuotaResponseBodyList>;
-
 export type ListIpLoadbalancingQuotaResponse = ListIpLoadbalancingQuotaResponseBodyList;
-export const ListIpLoadbalancingQuotaResponse =
+const ListIpLoadbalancingQuotaResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingQuotaResponse>;
 
 export interface ListIpLoadbalancingQuotaHistoryRequest {
@@ -4116,7 +4073,7 @@ export interface ListIpLoadbalancingQuotaHistoryRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingQuotaHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingQuotaHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     historizedDate_from: S.optional(S.String.pipe(T.Query("historizedDate.from"))),
@@ -4128,12 +4085,9 @@ export const ListIpLoadbalancingQuotaHistoryRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingQuotaHistoryRequest>;
 
 export type ListIpLoadbalancingQuotaHistoryResponseBodyList = Array<number>;
-export const ListIpLoadbalancingQuotaHistoryResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponseBodyList>;
-
 export type ListIpLoadbalancingQuotaHistoryResponse =
   ListIpLoadbalancingQuotaHistoryResponseBodyList;
-export const ListIpLoadbalancingQuotaHistoryResponse =
+const ListIpLoadbalancingQuotaHistoryResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponse>;
 
 export interface ListIpLoadbalancingSslRequest {
@@ -4148,7 +4102,7 @@ export interface ListIpLoadbalancingSslRequest {
   /** Filter the value of type property (=) */
   type?: IpLoadbalancingSslTypeEnum | (string & {});
 }
-export const ListIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     expireDate: S.optional(S.String.pipe(T.Query())),
@@ -4161,11 +4115,8 @@ export const ListIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingSslRequest>;
 
 export type ListIpLoadbalancingSslResponseBodyList = Array<number>;
-export const ListIpLoadbalancingSslResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingSslResponseBodyList>;
-
 export type ListIpLoadbalancingSslResponse = ListIpLoadbalancingSslResponseBodyList;
-export const ListIpLoadbalancingSslResponse =
+const ListIpLoadbalancingSslResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingSslResponse>;
 
 export interface ListIpLoadbalancingTaskRequest {
@@ -4184,7 +4135,7 @@ export interface ListIpLoadbalancingTaskRequest {
   /** Filter the value of status property (=) */
   status?: IpLoadbalancingTaskStatusEnum | (string & {});
 }
-export const ListIpLoadbalancingTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     action: S.optional(IpLoadbalancingTaskActionEnum.pipe(T.Query())),
@@ -4199,11 +4150,8 @@ export const ListIpLoadbalancingTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingTaskRequest>;
 
 export type ListIpLoadbalancingTaskResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTaskResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTaskResponseBodyList>;
-
 export type ListIpLoadbalancingTaskResponse = ListIpLoadbalancingTaskResponseBodyList;
-export const ListIpLoadbalancingTaskResponse =
+const ListIpLoadbalancingTaskResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTaskResponse>;
 
 export interface ListIpLoadbalancingTcpFarmRequest {
@@ -4214,7 +4162,7 @@ export interface ListIpLoadbalancingTcpFarmRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
@@ -4225,11 +4173,8 @@ export const ListIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingTcpFarmRequest>;
 
 export type ListIpLoadbalancingTcpFarmResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFarmResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFarmResponseBodyList>;
-
 export type ListIpLoadbalancingTcpFarmResponse = ListIpLoadbalancingTcpFarmResponseBodyList;
-export const ListIpLoadbalancingTcpFarmResponse =
+const ListIpLoadbalancingTcpFarmResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFarmResponse>;
 
 export interface ListIpLoadbalancingTcpFarmServerRequest {
@@ -4242,7 +4187,7 @@ export interface ListIpLoadbalancingTcpFarmServerRequest {
   /** Filter the value of status property (=) */
   status?: IpLoadbalancingBackendCustomerServerStatusEnum | (string & {});
 }
-export const ListIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -4260,12 +4205,9 @@ export const ListIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListIpLoadbalancingTcpFarmServerRequest>;
 
 export type ListIpLoadbalancingTcpFarmServerResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFarmServerResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponseBodyList>;
-
 export type ListIpLoadbalancingTcpFarmServerResponse =
   ListIpLoadbalancingTcpFarmServerResponseBodyList;
-export const ListIpLoadbalancingTcpFarmServerResponse =
+const ListIpLoadbalancingTcpFarmServerResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponse>;
 
 export interface ListIpLoadbalancingTcpFarmServerTransparentRequest {
@@ -4278,7 +4220,7 @@ export interface ListIpLoadbalancingTcpFarmServerTransparentRequest {
   /** Filter the value of slotId property (=) */
   slotId?: number;
 }
-export const ListIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -4296,12 +4238,9 @@ export const ListIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentRequest>;
 
 export type ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList>;
-
 export type ListIpLoadbalancingTcpFarmServerTransparentResponse =
   ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList;
-export const ListIpLoadbalancingTcpFarmServerTransparentResponse =
+const ListIpLoadbalancingTcpFarmServerTransparentResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponse>;
 
 export interface ListIpLoadbalancingTcpFrontendRequest {
@@ -4316,7 +4255,7 @@ export interface ListIpLoadbalancingTcpFrontendRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     defaultFarmId: S.optional(S.Number.pipe(T.Query())),
@@ -4329,11 +4268,8 @@ export const ListIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListIpLoadbalancingTcpFrontendRequest>;
 
 export type ListIpLoadbalancingTcpFrontendResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFrontendResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFrontendResponseBodyList>;
-
 export type ListIpLoadbalancingTcpFrontendResponse = ListIpLoadbalancingTcpFrontendResponseBodyList;
-export const ListIpLoadbalancingTcpFrontendResponse =
+const ListIpLoadbalancingTcpFrontendResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFrontendResponse>;
 
 export interface ListIpLoadbalancingTcpRouteRequest {
@@ -4342,7 +4278,7 @@ export interface ListIpLoadbalancingTcpRouteRequest {
   /** Filter the value of frontendId property (=) */
   frontendId?: number;
 }
-export const ListIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.optional(S.Number.pipe(T.Query())),
@@ -4352,11 +4288,8 @@ export const ListIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingTcpRouteRequest>;
 
 export type ListIpLoadbalancingTcpRouteResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpRouteResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpRouteResponseBodyList>;
-
 export type ListIpLoadbalancingTcpRouteResponse = ListIpLoadbalancingTcpRouteResponseBodyList;
-export const ListIpLoadbalancingTcpRouteResponse =
+const ListIpLoadbalancingTcpRouteResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpRouteResponse>;
 
 export interface ListIpLoadbalancingTcpRouteRuleRequest {
@@ -4365,7 +4298,7 @@ export interface ListIpLoadbalancingTcpRouteRuleRequest {
   /** Id of your route */
   routeId: number;
 }
-export const ListIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -4381,12 +4314,9 @@ export const ListIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleRequest>;
 
 export type ListIpLoadbalancingTcpRouteRuleResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpRouteRuleResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponseBodyList>;
-
 export type ListIpLoadbalancingTcpRouteRuleResponse =
   ListIpLoadbalancingTcpRouteRuleResponseBodyList;
-export const ListIpLoadbalancingTcpRouteRuleResponse =
+const ListIpLoadbalancingTcpRouteRuleResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponse>;
 
 export interface ListIpLoadbalancingUdpFarmRequest {
@@ -4397,7 +4327,7 @@ export interface ListIpLoadbalancingUdpFarmRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
@@ -4408,11 +4338,8 @@ export const ListIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingUdpFarmRequest>;
 
 export type ListIpLoadbalancingUdpFarmResponseBodyList = Array<number>;
-export const ListIpLoadbalancingUdpFarmResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingUdpFarmResponseBodyList>;
-
 export type ListIpLoadbalancingUdpFarmResponse = ListIpLoadbalancingUdpFarmResponseBodyList;
-export const ListIpLoadbalancingUdpFarmResponse =
+const ListIpLoadbalancingUdpFarmResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingUdpFarmResponse>;
 
 export interface ListIpLoadbalancingUdpFarmServerRequest {
@@ -4425,7 +4352,7 @@ export interface ListIpLoadbalancingUdpFarmServerRequest {
   /** Filter the value of status property (=) */
   status?: IpLoadbalancingBackendCustomerServerStatusEnum | (string & {});
 }
-export const ListIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -4443,12 +4370,9 @@ export const ListIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListIpLoadbalancingUdpFarmServerRequest>;
 
 export type ListIpLoadbalancingUdpFarmServerResponseBodyList = Array<number>;
-export const ListIpLoadbalancingUdpFarmServerResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponseBodyList>;
-
 export type ListIpLoadbalancingUdpFarmServerResponse =
   ListIpLoadbalancingUdpFarmServerResponseBodyList;
-export const ListIpLoadbalancingUdpFarmServerResponse =
+const ListIpLoadbalancingUdpFarmServerResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponse>;
 
 export interface ListIpLoadbalancingUdpFrontendRequest {
@@ -4461,7 +4385,7 @@ export interface ListIpLoadbalancingUdpFrontendRequest {
   /** Filter the value of zone property (=) */
   zone?: string;
 }
-export const ListIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     defaultFarmId: S.optional(S.Number.pipe(T.Query())),
@@ -4473,11 +4397,8 @@ export const ListIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListIpLoadbalancingUdpFrontendRequest>;
 
 export type ListIpLoadbalancingUdpFrontendResponseBodyList = Array<number>;
-export const ListIpLoadbalancingUdpFrontendResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingUdpFrontendResponseBodyList>;
-
 export type ListIpLoadbalancingUdpFrontendResponse = ListIpLoadbalancingUdpFrontendResponseBodyList;
-export const ListIpLoadbalancingUdpFrontendResponse =
+const ListIpLoadbalancingUdpFrontendResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingUdpFrontendResponse>;
 
 export interface ListIpLoadbalancingVrackNetworkRequest {
@@ -4488,7 +4409,7 @@ export interface ListIpLoadbalancingVrackNetworkRequest {
   /** Filter the value of vlan property (=) */
   vlan?: number;
 }
-export const ListIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     subnet: S.optional(S.String.pipe(T.Query())),
@@ -4501,19 +4422,16 @@ export const ListIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingVrackNetworkRequest>;
 
 export type ListIpLoadbalancingVrackNetworkResponseBodyList = Array<number>;
-export const ListIpLoadbalancingVrackNetworkResponseBodyList =
-  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingVrackNetworkResponseBodyList>;
-
 export type ListIpLoadbalancingVrackNetworkResponse =
   ListIpLoadbalancingVrackNetworkResponseBodyList;
-export const ListIpLoadbalancingVrackNetworkResponse =
+const ListIpLoadbalancingVrackNetworkResponse =
   CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingVrackNetworkResponse>;
 
 export interface ListIpLoadbalancingVrackStatusRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingVrackStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingVrackStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/vrack/status", code: 200 })),
@@ -4523,11 +4441,11 @@ export const ListIpLoadbalancingVrackStatusRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Possible values for load balancing vRack state */
 export type IpLoadbalancingVrackStateEnum = "activating" | "active" | "deactivating" | "inactive";
-export const IpLoadbalancingVrackStateEnum = S.String;
+const IpLoadbalancingVrackStateEnum = S.String;
 
 /** Ongoing task related to vRack installation or uninstallation on your Load Balancer */
 export type IpLoadbalancingVrackInformationTaskList = Array<number>;
-export const IpLoadbalancingVrackInformationTaskList =
+const IpLoadbalancingVrackInformationTaskList =
   CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<IpLoadbalancingVrackInformationTaskList>;
 
 /** Information about vRack for your Load Balancer */
@@ -4539,7 +4457,7 @@ export interface IpLoadbalancingVrackInformation {
   /** Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product */
   vrackName?: string | null;
 }
-export const IpLoadbalancingVrackInformation = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingVrackInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(IpLoadbalancingVrackStateEnum),
     task: S.optional(IpLoadbalancingVrackInformationTaskList),
@@ -4553,7 +4471,7 @@ export interface ListIpLoadbalancingVrackTransparentGatewaysRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingVrackTransparentGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingVrackTransparentGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4576,7 +4494,7 @@ export interface IpLoadbalancingVrackTransparentGateways {
   /** vlan */
   vlan?: number;
 }
-export const IpLoadbalancingVrackTransparentGateways = /*@__PURE__*/ S.suspend(() =>
+const IpLoadbalancingVrackTransparentGateways = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     gateway: S.optional(S.String),
@@ -4588,13 +4506,13 @@ export const IpLoadbalancingVrackTransparentGateways = /*@__PURE__*/ S.suspend((
 
 export type ListIpLoadbalancingVrackTransparentGatewaysResponseBodyList =
   Array<IpLoadbalancingVrackTransparentGateways>;
-export const ListIpLoadbalancingVrackTransparentGatewaysResponseBodyList = /*@__PURE__*/ S.Array(
+const ListIpLoadbalancingVrackTransparentGatewaysResponseBodyList = /*@__PURE__*/ S.Array(
   IpLoadbalancingVrackTransparentGateways,
 ) as any as S.Schema<ListIpLoadbalancingVrackTransparentGatewaysResponseBodyList>;
 
 export type ListIpLoadbalancingVrackTransparentGatewaysResponse =
   ListIpLoadbalancingVrackTransparentGatewaysResponseBodyList;
-export const ListIpLoadbalancingVrackTransparentGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingVrackTransparentGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   ListIpLoadbalancingVrackTransparentGatewaysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIpLoadbalancingVrackTransparentGatewaysResponse",
@@ -4604,7 +4522,7 @@ export interface ListIpLoadbalancingZoneRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const ListIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/zone", code: 200 })),
@@ -4613,11 +4531,8 @@ export const ListIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingZoneRequest>;
 
 export type ListIpLoadbalancingZoneResponseBodyList = Array<string>;
-export const ListIpLoadbalancingZoneResponseBodyList =
-  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingZoneResponseBodyList>;
-
 export type ListIpLoadbalancingZoneResponse = ListIpLoadbalancingZoneResponseBodyList;
-export const ListIpLoadbalancingZoneResponse =
+const ListIpLoadbalancingZoneResponse =
   ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingZoneResponse>;
 
 export interface PutIpLoadbalancingRequest {
@@ -4628,7 +4543,7 @@ export interface PutIpLoadbalancingRequest {
   /** Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null. */
   sslConfiguration?: IpLoadbalancingSslConfigurationEnum | (string & {}) | null;
 }
-export const PutIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.NullOr(S.String)),
@@ -4639,7 +4554,7 @@ export const PutIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingRequest>;
 
 export interface PutIpLoadbalancingResponse {}
-export const PutIpLoadbalancingResponse =
+const PutIpLoadbalancingResponse =
   IamResourceTagFilterInput as any as S.Schema<PutIpLoadbalancingResponse>;
 
 export interface PutIpLoadbalancingHttpFarmRequest {
@@ -4660,7 +4575,7 @@ export interface PutIpLoadbalancingHttpFarmRequest {
   /** Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack */
   vrackNetworkId?: number | null;
 }
-export const PutIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -4678,7 +4593,7 @@ export const PutIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingHttpFarmRequest>;
 
 export interface PutIpLoadbalancingHttpFarmResponse {}
-export const PutIpLoadbalancingHttpFarmResponse =
+const PutIpLoadbalancingHttpFarmResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpFarmResponse>;
 
 export interface PutIpLoadbalancingHttpFarmServerRequest {
@@ -4711,7 +4626,7 @@ export interface PutIpLoadbalancingHttpFarmServerRequest {
   /** Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests. */
   weight?: number | null;
 }
-export const PutIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -4739,27 +4654,27 @@ export const PutIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutIpLoadbalancingHttpFarmServerRequest>;
 
 export interface PutIpLoadbalancingHttpFarmServerResponse {}
-export const PutIpLoadbalancingHttpFarmServerResponse =
+const PutIpLoadbalancingHttpFarmServerResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpFarmServerResponse>;
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingHttpFrontendRequestAllowedSourceList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestAllowedSourceList =
+const PutIpLoadbalancingHttpFrontendRequestAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList =
+const PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingHttpFrontendRequestDeniedSourceList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestDeniedSourceList =
+const PutIpLoadbalancingHttpFrontendRequestDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type PutIpLoadbalancingHttpFrontendRequestHttpHeaderList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestHttpHeaderList =
+const PutIpLoadbalancingHttpFrontendRequestHttpHeaderList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestHttpHeaderList>;
 
 export interface PutIpLoadbalancingHttpFrontendRequest {
@@ -4794,7 +4709,7 @@ export interface PutIpLoadbalancingHttpFrontendRequest {
   /** Zone of you frontend */
   zone?: string;
 }
-export const PutIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -4823,7 +4738,7 @@ export const PutIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequest>;
 
 export interface PutIpLoadbalancingHttpFrontendResponse {}
-export const PutIpLoadbalancingHttpFrontendResponse =
+const PutIpLoadbalancingHttpFrontendResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpFrontendResponse>;
 
 export interface PutIpLoadbalancingHttpRouteRequest {
@@ -4840,7 +4755,7 @@ export interface PutIpLoadbalancingHttpRouteRequest {
   /** Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action */
   weight?: number;
 }
-export const PutIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -4860,7 +4775,7 @@ export const PutIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingHttpRouteRequest>;
 
 export interface PutIpLoadbalancingHttpRouteResponse {}
-export const PutIpLoadbalancingHttpRouteResponse =
+const PutIpLoadbalancingHttpRouteResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpRouteResponse>;
 
 export interface PutIpLoadbalancingHttpRouteRuleRequest {
@@ -4883,7 +4798,7 @@ export interface PutIpLoadbalancingHttpRouteRuleRequest {
   /** Name of sub-field, if applicable. This may be a Cookie or Header name for instance */
   subField?: string | null;
 }
-export const PutIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -4906,7 +4821,7 @@ export const PutIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleRequest>;
 
 export interface PutIpLoadbalancingHttpRouteRuleResponse {}
-export const PutIpLoadbalancingHttpRouteRuleResponse =
+const PutIpLoadbalancingHttpRouteRuleResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpRouteRuleResponse>;
 
 export interface PutIpLoadbalancingQuotaRequest {
@@ -4917,7 +4832,7 @@ export interface PutIpLoadbalancingQuotaRequest {
   /** Quota alert value in bytes. When reached, we will send you an alert. Default : included quota with your offer */
   alert?: number | null;
 }
-export const PutIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     zone: S.String.pipe(T.Label()),
@@ -4928,9 +4843,9 @@ export const PutIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingQuotaRequest>;
 
 export interface PutIpLoadbalancingQuotaResponse {}
-export const PutIpLoadbalancingQuotaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutIpLoadbalancingQuotaResponse" },
-) as any as S.Schema<PutIpLoadbalancingQuotaResponse>;
+const PutIpLoadbalancingQuotaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutIpLoadbalancingQuotaResponse",
+}) as any as S.Schema<PutIpLoadbalancingQuotaResponse>;
 
 export interface PutIpLoadbalancingServiceInfosRequest {
   /** The internal name of your IP load balancing */
@@ -4938,7 +4853,7 @@ export interface PutIpLoadbalancingServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4948,7 +4863,7 @@ export const PutIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingServiceInfosRequest>;
 
 export interface PutIpLoadbalancingServiceInfosResponse {}
-export const PutIpLoadbalancingServiceInfosResponse =
+const PutIpLoadbalancingServiceInfosResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingServiceInfosResponse>;
 
 export interface PutIpLoadbalancingSslRequest {
@@ -4959,7 +4874,7 @@ export interface PutIpLoadbalancingSslRequest {
   /** Human readable name for your ssl certificate, this field is for you */
   displayName?: string | null;
 }
-export const PutIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4970,7 +4885,7 @@ export const PutIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingSslRequest>;
 
 export interface PutIpLoadbalancingSslResponse {}
-export const PutIpLoadbalancingSslResponse =
+const PutIpLoadbalancingSslResponse =
   IamResourceTagFilterInput as any as S.Schema<PutIpLoadbalancingSslResponse>;
 
 export interface PutIpLoadbalancingTcpFarmRequest {
@@ -4991,7 +4906,7 @@ export interface PutIpLoadbalancingTcpFarmRequest {
   /** Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack */
   vrackNetworkId?: number | null;
 }
-export const PutIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -5009,7 +4924,7 @@ export const PutIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingTcpFarmRequest>;
 
 export interface PutIpLoadbalancingTcpFarmResponse {}
-export const PutIpLoadbalancingTcpFarmResponse =
+const PutIpLoadbalancingTcpFarmResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpFarmResponse>;
 
 export interface PutIpLoadbalancingTcpFarmServerRequest {
@@ -5040,7 +4955,7 @@ export interface PutIpLoadbalancingTcpFarmServerRequest {
   /** Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests. */
   weight?: number | null;
 }
-export const PutIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -5067,22 +4982,22 @@ export const PutIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutIpLoadbalancingTcpFarmServerRequest>;
 
 export interface PutIpLoadbalancingTcpFarmServerResponse {}
-export const PutIpLoadbalancingTcpFarmServerResponse =
+const PutIpLoadbalancingTcpFarmServerResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpFarmServerResponse>;
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingTcpFrontendRequestAllowedSourceList = Array<string>;
-export const PutIpLoadbalancingTcpFrontendRequestAllowedSourceList =
+const PutIpLoadbalancingTcpFrontendRequestAllowedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList = Array<string>;
-export const PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList =
+const PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingTcpFrontendRequestDeniedSourceList = Array<string>;
-export const PutIpLoadbalancingTcpFrontendRequestDeniedSourceList =
+const PutIpLoadbalancingTcpFrontendRequestDeniedSourceList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestDeniedSourceList>;
 
 export interface PutIpLoadbalancingTcpFrontendRequest {
@@ -5111,7 +5026,7 @@ export interface PutIpLoadbalancingTcpFrontendRequest {
   /** Zone of you frontend */
   zone?: string;
 }
-export const PutIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -5137,7 +5052,7 @@ export const PutIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequest>;
 
 export interface PutIpLoadbalancingTcpFrontendResponse {}
-export const PutIpLoadbalancingTcpFrontendResponse =
+const PutIpLoadbalancingTcpFrontendResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpFrontendResponse>;
 
 export interface PutIpLoadbalancingTcpRouteRequest {
@@ -5154,7 +5069,7 @@ export interface PutIpLoadbalancingTcpRouteRequest {
   /** Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action */
   weight?: number;
 }
-export const PutIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -5170,7 +5085,7 @@ export const PutIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingTcpRouteRequest>;
 
 export interface PutIpLoadbalancingTcpRouteResponse {}
-export const PutIpLoadbalancingTcpRouteResponse =
+const PutIpLoadbalancingTcpRouteResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpRouteResponse>;
 
 export interface PutIpLoadbalancingTcpRouteRuleRequest {
@@ -5193,7 +5108,7 @@ export interface PutIpLoadbalancingTcpRouteRuleRequest {
   /** Name of sub-field, if applicable. This may be a Cookie or Header name for instance */
   subField?: string | null;
 }
-export const PutIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     routeId: S.Number.pipe(T.Label()),
@@ -5216,7 +5131,7 @@ export const PutIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleRequest>;
 
 export interface PutIpLoadbalancingTcpRouteRuleResponse {}
-export const PutIpLoadbalancingTcpRouteRuleResponse =
+const PutIpLoadbalancingTcpRouteRuleResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpRouteRuleResponse>;
 
 export interface PutIpLoadbalancingUdpFarmRequest {
@@ -5231,7 +5146,7 @@ export interface PutIpLoadbalancingUdpFarmRequest {
   /** Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack */
   vrackNetworkId?: number | null;
 }
-export const PutIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -5246,7 +5161,7 @@ export const PutIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingUdpFarmRequest>;
 
 export interface PutIpLoadbalancingUdpFarmResponse {}
-export const PutIpLoadbalancingUdpFarmResponse =
+const PutIpLoadbalancingUdpFarmResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingUdpFarmResponse>;
 
 export interface PutIpLoadbalancingUdpFarmServerRequest {
@@ -5263,7 +5178,7 @@ export interface PutIpLoadbalancingUdpFarmServerRequest {
   /** Status attached to your server */
   status?: IpLoadbalancingBackendCustomerServerStatusEnum | (string & {});
 }
-export const PutIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     farmId: S.Number.pipe(T.Label()),
@@ -5283,12 +5198,12 @@ export const PutIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutIpLoadbalancingUdpFarmServerRequest>;
 
 export interface PutIpLoadbalancingUdpFarmServerResponse {}
-export const PutIpLoadbalancingUdpFarmServerResponse =
+const PutIpLoadbalancingUdpFarmServerResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingUdpFarmServerResponse>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList = Array<string>;
-export const PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList =
+const PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList =
   CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList>;
 
 export interface PutIpLoadbalancingUdpFrontendRequest {
@@ -5309,7 +5224,7 @@ export interface PutIpLoadbalancingUdpFrontendRequest {
   /** Zone of you frontend */
   zone?: string;
 }
-export const PutIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frontendId: S.Number.pipe(T.Label()),
@@ -5331,7 +5246,7 @@ export const PutIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutIpLoadbalancingUdpFrontendRequest>;
 
 export interface PutIpLoadbalancingUdpFrontendResponse {}
-export const PutIpLoadbalancingUdpFrontendResponse =
+const PutIpLoadbalancingUdpFrontendResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingUdpFrontendResponse>;
 
 export interface PutIpLoadbalancingVrackNetworkRequest {
@@ -5346,7 +5261,7 @@ export interface PutIpLoadbalancingVrackNetworkRequest {
   /** VLAN of the private network in the vRack. 0 if the private network is not in a VLAN */
   vlan?: number;
 }
-export const PutIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const PutIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.Number.pipe(T.Label()),
@@ -5365,7 +5280,7 @@ export const PutIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingVrackNetworkRequest>;
 
 export interface PutIpLoadbalancingVrackNetworkResponse {}
-export const PutIpLoadbalancingVrackNetworkResponse =
+const PutIpLoadbalancingVrackNetworkResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingVrackNetworkResponse>;
 
 export interface RefreshIpLoadbalancingRequest {
@@ -5374,7 +5289,7 @@ export interface RefreshIpLoadbalancingRequest {
   /** The zone(s) of your iplb */
   zone?: string;
 }
-export const RefreshIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     zone: S.optional(S.String),
@@ -5387,7 +5302,7 @@ export interface TerminateIpLoadbalancingRequest {
   /** The internal name of your IP load balancing */
   serviceName: string;
 }
-export const TerminateIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/terminate", code: 200 })),
@@ -5396,7 +5311,7 @@ export const TerminateIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateIpLoadbalancingRequest>;
 
 export type TerminateIpLoadbalancingResponse = string;
-export const TerminateIpLoadbalancingResponse =
+const TerminateIpLoadbalancingResponse =
   ConfirmIpLoadbalancingTerminationResponse as any as S.Schema<TerminateIpLoadbalancingResponse>;
 
 export interface TerminateIpLoadbalancingZoneRequest {
@@ -5405,7 +5320,7 @@ export interface TerminateIpLoadbalancingZoneRequest {
   /** Name of your zone */
   name: string;
 }
-export const TerminateIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5421,12 +5336,12 @@ export const TerminateIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateIpLoadbalancingZoneRequest>;
 
 export interface TerminateIpLoadbalancingZoneResponse {}
-export const TerminateIpLoadbalancingZoneResponse =
+const TerminateIpLoadbalancingZoneResponse =
   CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<TerminateIpLoadbalancingZoneResponse>;
 
 /** Farm Id you want to attach to that vrack network */
 export type UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList = Array<number>;
-export const UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList =
+const UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList =
   CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList>;
 
 export interface UpdateIpLoadbalancingVrackNetworkFarmIdRequest {
@@ -5437,7 +5352,7 @@ export interface UpdateIpLoadbalancingVrackNetworkFarmIdRequest {
   /** Farm Id you want to attach to that vrack network */
   farmId: UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList;
 }
-export const UpdateIpLoadbalancingVrackNetworkFarmIdRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIpLoadbalancingVrackNetworkFarmIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     vrackNetworkId: S.Number.pipe(T.Label()),

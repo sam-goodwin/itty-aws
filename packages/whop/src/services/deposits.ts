@@ -34,7 +34,7 @@ export interface CreateDepositRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateDepositRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDepositRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     destination: S.String,
@@ -48,12 +48,12 @@ export type CreateDepositResponseMethodsBankCurrenciesItemRailsItem =
   | "sepa"
   | "fps"
   | "chaps";
-export const CreateDepositResponseMethodsBankCurrenciesItemRailsItem = S.String;
+const CreateDepositResponseMethodsBankCurrenciesItemRailsItem = S.String;
 
 /** Active deposit rails for this currency. */
 export type CreateDepositResponseMethodsBankCurrenciesItemRailsList =
   Array<CreateDepositResponseMethodsBankCurrenciesItemRailsItem>;
-export const CreateDepositResponseMethodsBankCurrenciesItemRailsList = /*@__PURE__*/ S.Array(
+const CreateDepositResponseMethodsBankCurrenciesItemRailsList = /*@__PURE__*/ S.Array(
   CreateDepositResponseMethodsBankCurrenciesItemRailsItem,
 ) as any as S.Schema<CreateDepositResponseMethodsBankCurrenciesItemRailsList>;
 
@@ -77,7 +77,7 @@ export interface CreateDepositResponseMethodsBankCurrenciesItem {
   /** SWIFT/BIC code for international wires, when available. */
   swift_bic: string | null;
 }
-export const CreateDepositResponseMethodsBankCurrenciesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateDepositResponseMethodsBankCurrenciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_number: S.NullOr(S.String),
     currency: S.String,
@@ -96,7 +96,7 @@ export const CreateDepositResponseMethodsBankCurrenciesItem = /*@__PURE__*/ S.su
 /** Bank transfer currencies available for this deposit. */
 export type CreateDepositResponseMethodsBankCurrenciesList =
   Array<CreateDepositResponseMethodsBankCurrenciesItem>;
-export const CreateDepositResponseMethodsBankCurrenciesList = /*@__PURE__*/ S.Array(
+const CreateDepositResponseMethodsBankCurrenciesList = /*@__PURE__*/ S.Array(
   CreateDepositResponseMethodsBankCurrenciesItem,
 ) as any as S.Schema<CreateDepositResponseMethodsBankCurrenciesList>;
 
@@ -105,7 +105,7 @@ export interface CreateDepositResponseMethodsBank {
   /** Bank transfer currencies available for this deposit. */
   currencies: CreateDepositResponseMethodsBankCurrenciesList;
 }
-export const CreateDepositResponseMethodsBank = /*@__PURE__*/ S.suspend(() =>
+const CreateDepositResponseMethodsBank = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencies: CreateDepositResponseMethodsBankCurrenciesList,
   }),
@@ -126,7 +126,7 @@ export type CreateDepositResponseMethodsCryptoItemName =
   | "Polygon"
   | "Plasma"
   | "Arbitrum";
-export const CreateDepositResponseMethodsCryptoItemName = S.String;
+const CreateDepositResponseMethodsCryptoItemName = S.String;
 
 /** Token symbol. */
 export type CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName =
@@ -150,7 +150,7 @@ export type CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName =
   | "XPL"
   | "pUSD"
   | "wETH";
-export const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName = S.String;
+const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName = S.String;
 
 export interface CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem {
   /** Token icon URL. Null when no icon is available. */
@@ -158,20 +158,19 @@ export interface CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem {
   /** Token symbol. */
   name: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName;
 }
-export const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      icon_url: S.NullOr(S.String),
-      name: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName,
-    }),
-  ).annotate({
-    identifier: "CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem",
-  }) as any as S.Schema<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem>;
+const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    icon_url: S.NullOr(S.String),
+    name: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName,
+  }),
+).annotate({
+  identifier: "CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem",
+}) as any as S.Schema<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem>;
 
 /** Tokens accepted for deposit on this network. */
 export type CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList =
   Array<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem>;
-export const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList = /*@__PURE__*/ S.Array(
+const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList = /*@__PURE__*/ S.Array(
   CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem,
 ) as any as S.Schema<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList>;
 
@@ -185,7 +184,7 @@ export interface CreateDepositResponseMethodsCryptoItem {
   /** Tokens accepted for deposit on this network. */
   supported_currencies: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList;
 }
-export const CreateDepositResponseMethodsCryptoItem = /*@__PURE__*/ S.suspend(() =>
+const CreateDepositResponseMethodsCryptoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deposit_address: S.NullOr(S.String),
     icon_url: S.NullOr(S.String),
@@ -198,7 +197,7 @@ export const CreateDepositResponseMethodsCryptoItem = /*@__PURE__*/ S.suspend(()
 
 /** Crypto networks available for this deposit, each with its on-chain deposit address and the tokens accepted on that network. Crypto deposits require a $10 minimum. */
 export type CreateDepositResponseMethodsCryptoList = Array<CreateDepositResponseMethodsCryptoItem>;
-export const CreateDepositResponseMethodsCryptoList = /*@__PURE__*/ S.Array(
+const CreateDepositResponseMethodsCryptoList = /*@__PURE__*/ S.Array(
   CreateDepositResponseMethodsCryptoItem,
 ) as any as S.Schema<CreateDepositResponseMethodsCryptoList>;
 
@@ -209,7 +208,7 @@ export interface CreateDepositResponseMethods {
   /** Crypto networks available for this deposit, each with its on-chain deposit address and the tokens accepted on that network. Crypto deposits require a $10 minimum. */
   crypto: CreateDepositResponseMethodsCryptoList;
 }
-export const CreateDepositResponseMethods = /*@__PURE__*/ S.suspend(() =>
+const CreateDepositResponseMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bank: S.NullOr(CreateDepositResponseMethodsBank),
     crypto: CreateDepositResponseMethodsCryptoList,
@@ -219,7 +218,7 @@ export const CreateDepositResponseMethods = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDepositResponseMethods>;
 
 export type CreateDepositResponseObject = "deposit";
-export const CreateDepositResponseObject = S.String;
+const CreateDepositResponseObject = S.String;
 
 export interface CreateDepositResponse {
   /** Account ID of the destination owner. */
@@ -232,7 +231,7 @@ export interface CreateDepositResponse {
   methods: CreateDepositResponseMethods;
   object: CreateDepositResponseObject;
 }
-export const CreateDepositResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDepositResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     amount: S.optional(S.String),

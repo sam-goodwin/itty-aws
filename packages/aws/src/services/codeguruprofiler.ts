@@ -114,22 +114,22 @@ export type ChannelId = string;
 export type ChannelUri = string;
 export type EventPublisher = string;
 export type EventPublishers = string[];
-export const EventPublishers = /*@__PURE__*/ S.Array(S.String);
+const EventPublishers = /*@__PURE__*/ S.Array(S.String);
 export interface Channel {
   id?: string;
   uri: string;
   eventPublishers: string[];
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String), uri: S.String, eventPublishers: EventPublishers }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 export type Channels = Channel[];
-export const Channels = /*@__PURE__*/ S.Array(Channel);
+const Channels = /*@__PURE__*/ S.Array(Channel);
 export interface AddNotificationChannelsRequest {
   profilingGroupName: string;
   channels: Channel[];
 }
-export const AddNotificationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNotificationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     channels: Channels,
@@ -152,7 +152,7 @@ export const AddNotificationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface NotificationConfiguration {
   channels?: Channel[];
 }
-export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channels: S.optional(Channels) }),
 ).annotate({
   identifier: "NotificationConfiguration",
@@ -160,7 +160,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface AddNotificationChannelsResponse {
   notificationConfiguration?: NotificationConfiguration;
 }
-export const AddNotificationChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddNotificationChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ notificationConfiguration: S.optional(NotificationConfiguration) }),
 ).annotate({
   identifier: "AddNotificationChannelsResponse",
@@ -169,17 +169,17 @@ export type Period = string;
 export type AggregationPeriod = string;
 export type MetricType = string;
 export type ThreadStates = string[];
-export const ThreadStates = EventPublishers as any as S.Schema<ThreadStates>;
+const ThreadStates = EventPublishers as any as S.Schema<ThreadStates>;
 export interface FrameMetric {
   frameName: string;
   type: string;
   threadStates: string[];
 }
-export const FrameMetric = /*@__PURE__*/ S.suspend(() =>
+const FrameMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ frameName: S.String, type: S.String, threadStates: ThreadStates }),
 ).annotate({ identifier: "FrameMetric" }) as any as S.Schema<FrameMetric>;
 export type FrameMetrics = FrameMetric[];
-export const FrameMetrics = /*@__PURE__*/ S.Array(FrameMetric);
+const FrameMetrics = /*@__PURE__*/ S.Array(FrameMetric);
 export interface BatchGetFrameMetricDataRequest {
   profilingGroupName: string;
   startTime?: Date;
@@ -188,7 +188,7 @@ export interface BatchGetFrameMetricDataRequest {
   targetResolution?: string;
   frameMetrics?: FrameMetric[];
 }
-export const BatchGetFrameMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetFrameMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
@@ -216,28 +216,28 @@ export const BatchGetFrameMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TimestampStructure {
   value: Date;
 }
-export const TimestampStructure = /*@__PURE__*/ S.suspend(() =>
+const TimestampStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
 ).annotate({ identifier: "TimestampStructure" }) as any as S.Schema<TimestampStructure>;
 export type ListOfTimestamps = TimestampStructure[];
-export const ListOfTimestamps = /*@__PURE__*/ S.Array(TimestampStructure);
+const ListOfTimestamps = /*@__PURE__*/ S.Array(TimestampStructure);
 export type UnprocessedEndTimeMap = { [key: string]: TimestampStructure[] | undefined };
-export const UnprocessedEndTimeMap = /*@__PURE__*/ S.Record(
+const UnprocessedEndTimeMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ ListOfTimestamps.pipe(S.optional),
 );
 export type FrameMetricValue = number;
 export type FrameMetricValues = number[];
-export const FrameMetricValues = /*@__PURE__*/ S.Array(S.Number);
+const FrameMetricValues = /*@__PURE__*/ S.Array(S.Number);
 export interface FrameMetricDatum {
   frameMetric: FrameMetric;
   values: number[];
 }
-export const FrameMetricDatum = /*@__PURE__*/ S.suspend(() =>
+const FrameMetricDatum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ frameMetric: FrameMetric, values: FrameMetricValues }),
 ).annotate({ identifier: "FrameMetricDatum" }) as any as S.Schema<FrameMetricDatum>;
 export type FrameMetricData = FrameMetricDatum[];
-export const FrameMetricData = /*@__PURE__*/ S.Array(FrameMetricDatum);
+const FrameMetricData = /*@__PURE__*/ S.Array(FrameMetricDatum);
 export interface BatchGetFrameMetricDataResponse {
   startTime: Date;
   endTime: Date;
@@ -246,7 +246,7 @@ export interface BatchGetFrameMetricDataResponse {
   unprocessedEndTimes: { [key: string]: TimestampStructure[] | undefined };
   frameMetricData: FrameMetricDatum[];
 }
-export const BatchGetFrameMetricDataResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetFrameMetricDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -261,13 +261,13 @@ export const BatchGetFrameMetricDataResponse = /*@__PURE__*/ S.suspend(() =>
 export type FleetInstanceId = string;
 export type MetadataField = string;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ConfigureAgentRequest {
   profilingGroupName: string;
   fleetInstanceId?: string;
   metadata?: { [key: string]: string | undefined };
 }
-export const ConfigureAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigureAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     fleetInstanceId: S.optional(S.String),
@@ -285,16 +285,13 @@ export const ConfigureAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigureAgentRequest" }) as any as S.Schema<ConfigureAgentRequest>;
 export type AgentParameterField = string;
 export type AgentParameters = { [key: string]: string | undefined };
-export const AgentParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const AgentParameters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AgentConfiguration {
   shouldProfile: boolean;
   periodInSeconds: number;
   agentParameters?: { [key: string]: string | undefined };
 }
-export const AgentConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AgentConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shouldProfile: S.Boolean,
     periodInSeconds: S.Number,
@@ -304,7 +301,7 @@ export const AgentConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigureAgentResponse {
   configuration: AgentConfiguration;
 }
-export const ConfigureAgentResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigureAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: AgentConfiguration.pipe(T.HttpPayload()).annotate({
       identifier: "AgentConfiguration",
@@ -316,11 +313,11 @@ export type ClientToken = string;
 export interface AgentOrchestrationConfig {
   profilingEnabled: boolean;
 }
-export const AgentOrchestrationConfig = /*@__PURE__*/ S.suspend(() =>
+const AgentOrchestrationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profilingEnabled: S.Boolean }),
 ).annotate({ identifier: "AgentOrchestrationConfig" }) as any as S.Schema<AgentOrchestrationConfig>;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = Metadata as any as S.Schema<TagsMap>;
+const TagsMap = Metadata as any as S.Schema<TagsMap>;
 export interface CreateProfilingGroupRequest {
   profilingGroupName: string;
   computePlatform?: string;
@@ -328,7 +325,7 @@ export interface CreateProfilingGroupRequest {
   agentOrchestrationConfig?: AgentOrchestrationConfig;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String,
     computePlatform: S.optional(S.String),
@@ -344,7 +341,7 @@ export interface AggregatedProfileTime {
   start?: Date;
   period?: string;
 }
-export const AggregatedProfileTime = /*@__PURE__*/ S.suspend(() =>
+const AggregatedProfileTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     period: S.optional(S.String),
@@ -355,7 +352,7 @@ export interface ProfilingStatus {
   latestAggregatedProfile?: AggregatedProfileTime;
   latestAgentOrchestratedAt?: Date;
 }
-export const ProfilingStatus = /*@__PURE__*/ S.suspend(() =>
+const ProfilingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestAgentProfileReportedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     latestAggregatedProfile: S.optional(AggregatedProfileTime),
@@ -372,7 +369,7 @@ export interface ProfilingGroupDescription {
   computePlatform?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const ProfilingGroupDescription = /*@__PURE__*/ S.suspend(() =>
+const ProfilingGroupDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     agentOrchestrationConfig: S.optional(AgentOrchestrationConfig),
@@ -389,7 +386,7 @@ export const ProfilingGroupDescription = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProfilingGroupResponse {
   profilingGroup: ProfilingGroupDescription;
 }
-export const CreateProfilingGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProfilingGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroup: ProfilingGroupDescription.pipe(T.HttpPayload()).annotate({
       identifier: "ProfilingGroupDescription",
@@ -401,7 +398,7 @@ export const CreateProfilingGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteProfilingGroupRequest {
   profilingGroupName: string;
 }
-export const DeleteProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/profilingGroups/{profilingGroupName}" }),
@@ -416,13 +413,13 @@ export const DeleteProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProfilingGroupRequest",
 }) as any as S.Schema<DeleteProfilingGroupRequest>;
 export interface DeleteProfilingGroupResponse {}
-export const DeleteProfilingGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteProfilingGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteProfilingGroupResponse",
 }) as any as S.Schema<DeleteProfilingGroupResponse>;
 export interface DescribeProfilingGroupRequest {
   profilingGroupName: string;
 }
-export const DescribeProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/profilingGroups/{profilingGroupName}" }),
@@ -439,7 +436,7 @@ export const DescribeProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeProfilingGroupResponse {
   profilingGroup: ProfilingGroupDescription;
 }
-export const DescribeProfilingGroupResponse =
+const DescribeProfilingGroupResponse =
   CreateProfilingGroupResponse as any as S.Schema<DescribeProfilingGroupResponse>;
 export type PaginationToken = string;
 export type MaxResults = number;
@@ -448,7 +445,7 @@ export interface GetFindingsReportAccountSummaryRequest {
   maxResults?: number;
   dailyReportsOnly?: boolean;
 }
-export const GetFindingsReportAccountSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFindingsReportAccountSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -474,7 +471,7 @@ export interface FindingsReportSummary {
   profileEndTime?: Date;
   totalNumberOfFindings?: number;
 }
-export const FindingsReportSummary = /*@__PURE__*/ S.suspend(() =>
+const FindingsReportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     profilingGroupName: S.optional(S.String),
@@ -484,12 +481,12 @@ export const FindingsReportSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FindingsReportSummary" }) as any as S.Schema<FindingsReportSummary>;
 export type FindingsReportSummaries = FindingsReportSummary[];
-export const FindingsReportSummaries = /*@__PURE__*/ S.Array(FindingsReportSummary);
+const FindingsReportSummaries = /*@__PURE__*/ S.Array(FindingsReportSummary);
 export interface GetFindingsReportAccountSummaryResponse {
   reportSummaries: FindingsReportSummary[];
   nextToken?: string;
 }
-export const GetFindingsReportAccountSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFindingsReportAccountSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reportSummaries: FindingsReportSummaries, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetFindingsReportAccountSummaryResponse",
@@ -497,7 +494,7 @@ export const GetFindingsReportAccountSummaryResponse = /*@__PURE__*/ S.suspend((
 export interface GetNotificationConfigurationRequest {
   profilingGroupName: string;
 }
-export const GetNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
     T.all(
       T.Http({
@@ -517,7 +514,7 @@ export const GetNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetNotificationConfigurationResponse {
   notificationConfiguration: NotificationConfiguration;
 }
-export const GetNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ notificationConfiguration: NotificationConfiguration }),
 ).annotate({
   identifier: "GetNotificationConfigurationResponse",
@@ -525,7 +522,7 @@ export const GetNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(() =
 export interface GetPolicyRequest {
   profilingGroupName: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/profilingGroups/{profilingGroupName}/policy" }),
@@ -542,7 +539,7 @@ export interface GetPolicyResponse {
   policy: string;
   revisionId: string;
 }
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policy: S.String, revisionId: S.String }),
 ).annotate({ identifier: "GetPolicyResponse" }) as any as S.Schema<GetPolicyResponse>;
 export type MaxDepth = number;
@@ -554,7 +551,7 @@ export interface GetProfileRequest {
   maxDepth?: number;
   accept?: string;
 }
-export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
@@ -582,7 +579,7 @@ export interface GetProfileResponse {
   contentType: string;
   contentEncoding?: string;
 }
-export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profile: T.StreamingOutput.pipe(T.HttpPayload()),
     contentType: S.String.pipe(T.HttpHeader("Content-Type")),
@@ -596,7 +593,7 @@ export interface GetRecommendationsRequest {
   endTime: Date;
   locale?: string;
 }
-export const GetRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(T.HttpQuery("startTime")),
@@ -619,12 +616,12 @@ export const GetRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRecommendationsRequest",
 }) as any as S.Schema<GetRecommendationsRequest>;
 export type TargetFrame = string[];
-export const TargetFrame = EventPublishers as any as S.Schema<TargetFrame>;
+const TargetFrame = EventPublishers as any as S.Schema<TargetFrame>;
 export type TargetFrames = string[][];
-export const TargetFrames = /*@__PURE__*/ S.Array(TargetFrame);
+const TargetFrames = /*@__PURE__*/ S.Array(TargetFrame);
 export type Percentage = number;
 export type Strings = string[];
-export const Strings = EventPublishers as any as S.Schema<Strings>;
+const Strings = EventPublishers as any as S.Schema<Strings>;
 export interface Pattern {
   id?: string;
   name?: string;
@@ -634,7 +631,7 @@ export interface Pattern {
   thresholdPercent?: number;
   countersToAggregate?: string[];
 }
-export const Pattern = /*@__PURE__*/ S.suspend(() =>
+const Pattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -650,7 +647,7 @@ export interface Match {
   frameAddress?: string;
   thresholdBreachValue?: number;
 }
-export const Match = /*@__PURE__*/ S.suspend(() =>
+const Match = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetFramesIndex: S.optional(S.Number),
     frameAddress: S.optional(S.String),
@@ -658,7 +655,7 @@ export const Match = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Match" }) as any as S.Schema<Match>;
 export type Matches = Match[];
-export const Matches = /*@__PURE__*/ S.Array(Match);
+const Matches = /*@__PURE__*/ S.Array(Match);
 export interface Recommendation {
   allMatchesCount: number;
   allMatchesSum: number;
@@ -667,7 +664,7 @@ export interface Recommendation {
   startTime: Date;
   endTime: Date;
 }
-export const Recommendation = /*@__PURE__*/ S.suspend(() =>
+const Recommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allMatchesCount: S.Number,
     allMatchesSum: S.Number,
@@ -678,18 +675,18 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 export type Recommendations = Recommendation[];
-export const Recommendations = /*@__PURE__*/ S.Array(Recommendation);
+const Recommendations = /*@__PURE__*/ S.Array(Recommendation);
 export interface Metric {
   frameName: string;
   type: string;
   threadStates: string[];
 }
-export const Metric = FrameMetric as any as S.Schema<Metric>;
+const Metric = FrameMetric as any as S.Schema<Metric>;
 export type FeedbackType = string;
 export interface UserFeedback {
   type: string;
 }
-export const UserFeedback = /*@__PURE__*/ S.suspend(() => S.Struct({ type: S.String })).annotate({
+const UserFeedback = /*@__PURE__*/ S.suspend(() => S.Struct({ type: S.String })).annotate({
   identifier: "UserFeedback",
 }) as any as S.Schema<UserFeedback>;
 export interface AnomalyInstance {
@@ -698,7 +695,7 @@ export interface AnomalyInstance {
   endTime?: Date;
   userFeedback?: UserFeedback;
 }
-export const AnomalyInstance = /*@__PURE__*/ S.suspend(() =>
+const AnomalyInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -707,17 +704,17 @@ export const AnomalyInstance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnomalyInstance" }) as any as S.Schema<AnomalyInstance>;
 export type AnomalyInstances = AnomalyInstance[];
-export const AnomalyInstances = /*@__PURE__*/ S.Array(AnomalyInstance);
+const AnomalyInstances = /*@__PURE__*/ S.Array(AnomalyInstance);
 export interface Anomaly {
   metric: Metric;
   reason: string;
   instances: AnomalyInstance[];
 }
-export const Anomaly = /*@__PURE__*/ S.suspend(() =>
+const Anomaly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ metric: Metric, reason: S.String, instances: AnomalyInstances }),
 ).annotate({ identifier: "Anomaly" }) as any as S.Schema<Anomaly>;
 export type Anomalies = Anomaly[];
-export const Anomalies = /*@__PURE__*/ S.Array(Anomaly);
+const Anomalies = /*@__PURE__*/ S.Array(Anomaly);
 export interface GetRecommendationsResponse {
   profilingGroupName: string;
   profileStartTime: Date;
@@ -725,7 +722,7 @@ export interface GetRecommendationsResponse {
   recommendations: Recommendation[];
   anomalies: Anomaly[];
 }
-export const GetRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String,
     profileStartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -744,7 +741,7 @@ export interface ListFindingsReportsRequest {
   maxResults?: number;
   dailyReportsOnly?: boolean;
 }
-export const ListFindingsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(T.HttpQuery("startTime")),
@@ -772,7 +769,7 @@ export interface ListFindingsReportsResponse {
   findingsReportSummaries: FindingsReportSummary[];
   nextToken?: string;
 }
-export const ListFindingsReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingsReportSummaries: FindingsReportSummaries, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFindingsReportsResponse",
@@ -787,7 +784,7 @@ export interface ListProfileTimesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListProfileTimesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProfileTimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(T.HttpQuery("startTime")),
@@ -810,16 +807,16 @@ export const ListProfileTimesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProfileTime {
   start?: Date;
 }
-export const ProfileTime = /*@__PURE__*/ S.suspend(() =>
+const ProfileTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ start: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
 ).annotate({ identifier: "ProfileTime" }) as any as S.Schema<ProfileTime>;
 export type ProfileTimes = ProfileTime[];
-export const ProfileTimes = /*@__PURE__*/ S.Array(ProfileTime);
+const ProfileTimes = /*@__PURE__*/ S.Array(ProfileTime);
 export interface ListProfileTimesResponse {
   profileTimes: ProfileTime[];
   nextToken?: string;
 }
-export const ListProfileTimesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProfileTimesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profileTimes: ProfileTimes, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListProfileTimesResponse" }) as any as S.Schema<ListProfileTimesResponse>;
 export interface ListProfilingGroupsRequest {
@@ -827,7 +824,7 @@ export interface ListProfilingGroupsRequest {
   maxResults?: number;
   includeDescription?: boolean;
 }
-export const ListProfilingGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProfilingGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -837,15 +834,15 @@ export const ListProfilingGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProfilingGroupsRequest",
 }) as any as S.Schema<ListProfilingGroupsRequest>;
 export type ProfilingGroupNames = string[];
-export const ProfilingGroupNames = EventPublishers as any as S.Schema<ProfilingGroupNames>;
+const ProfilingGroupNames = EventPublishers as any as S.Schema<ProfilingGroupNames>;
 export type ProfilingGroupDescriptions = ProfilingGroupDescription[];
-export const ProfilingGroupDescriptions = /*@__PURE__*/ S.Array(ProfilingGroupDescription);
+const ProfilingGroupDescriptions = /*@__PURE__*/ S.Array(ProfilingGroupDescription);
 export interface ListProfilingGroupsResponse {
   profilingGroupNames: string[];
   profilingGroups?: ProfilingGroupDescription[];
   nextToken?: string;
 }
-export const ListProfilingGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProfilingGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupNames: ProfilingGroupNames,
     profilingGroups: S.optional(ProfilingGroupDescriptions),
@@ -857,7 +854,7 @@ export const ListProfilingGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -867,7 +864,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -878,7 +875,7 @@ export interface PostAgentProfileRequest {
   profileToken?: string;
   contentType: string;
 }
-export const PostAgentProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAgentProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     agentProfile: T.StreamingInput.pipe(T.HttpPayload()),
@@ -896,19 +893,19 @@ export const PostAgentProfileRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PostAgentProfileRequest" }) as any as S.Schema<PostAgentProfileRequest>;
 export interface PostAgentProfileResponse {}
-export const PostAgentProfileResponse =
+const PostAgentProfileResponse =
   DeleteProfilingGroupResponse as any as S.Schema<PostAgentProfileResponse>;
 export type ActionGroup = string;
 export type Principal = string;
 export type Principals = string[];
-export const Principals = EventPublishers as any as S.Schema<Principals>;
+const Principals = EventPublishers as any as S.Schema<Principals>;
 export interface PutPermissionRequest {
   profilingGroupName: string;
   actionGroup: string;
   principals: string[];
   revisionId?: string;
 }
-export const PutPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     actionGroup: S.String.pipe(T.HttpLabel("actionGroup")),
@@ -929,12 +926,12 @@ export interface PutPermissionResponse {
   policy: string;
   revisionId: string;
 }
-export const PutPermissionResponse = GetPolicyResponse as any as S.Schema<PutPermissionResponse>;
+const PutPermissionResponse = GetPolicyResponse as any as S.Schema<PutPermissionResponse>;
 export interface RemoveNotificationChannelRequest {
   profilingGroupName: string;
   channelId: string;
 }
-export const RemoveNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     channelId: S.String.pipe(T.HttpLabel("channelId")),
@@ -957,14 +954,14 @@ export const RemoveNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveNotificationChannelResponse {
   notificationConfiguration?: NotificationConfiguration;
 }
-export const RemoveNotificationChannelResponse =
+const RemoveNotificationChannelResponse =
   AddNotificationChannelsResponse as any as S.Schema<RemoveNotificationChannelResponse>;
 export interface RemovePermissionRequest {
   profilingGroupName: string;
   actionGroup: string;
   revisionId: string;
 }
-export const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     actionGroup: S.String.pipe(T.HttpLabel("actionGroup")),
@@ -987,8 +984,7 @@ export interface RemovePermissionResponse {
   policy: string;
   revisionId: string;
 }
-export const RemovePermissionResponse =
-  GetPolicyResponse as any as S.Schema<RemovePermissionResponse>;
+const RemovePermissionResponse = GetPolicyResponse as any as S.Schema<RemovePermissionResponse>;
 export type AnomalyInstanceId = string;
 export interface SubmitFeedbackRequest {
   profilingGroupName: string;
@@ -996,7 +992,7 @@ export interface SubmitFeedbackRequest {
   type: string;
   comment?: string;
 }
-export const SubmitFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     anomalyInstanceId: S.String.pipe(T.HttpLabel("anomalyInstanceId")),
@@ -1017,27 +1013,26 @@ export const SubmitFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SubmitFeedbackRequest" }) as any as S.Schema<SubmitFeedbackRequest>;
 export interface SubmitFeedbackResponse {}
-export const SubmitFeedbackResponse =
+const SubmitFeedbackResponse =
   DeleteProfilingGroupResponse as any as S.Schema<SubmitFeedbackResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteProfilingGroupResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteProfilingGroupResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = EventPublishers as any as S.Schema<TagKeys>;
+const TagKeys = EventPublishers as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -1046,13 +1041,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   DeleteProfilingGroupResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateProfilingGroupRequest {
   profilingGroupName: string;
   agentOrchestrationConfig: AgentOrchestrationConfig;
 }
-export const UpdateProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
     agentOrchestrationConfig: AgentOrchestrationConfig,
@@ -1072,7 +1067,7 @@ export const UpdateProfilingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProfilingGroupResponse {
   profilingGroup: ProfilingGroupDescription;
 }
-export const UpdateProfilingGroupResponse =
+const UpdateProfilingGroupResponse =
   CreateProfilingGroupResponse as any as S.Schema<UpdateProfilingGroupResponse>;
 export type AddNotificationChannelsError =
   | ConflictException

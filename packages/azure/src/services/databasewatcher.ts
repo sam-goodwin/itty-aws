@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The properties with which the alert rule resource was created. */
 export type AlertRuleCreationProperties = "CreatedWithActionGroup" | "None";
-export const AlertRuleCreationProperties = S.String;
+const AlertRuleCreationProperties = S.String;
 
 /** The generic properties of the alert rule proxy resource. */
 export interface AlertRuleResourcePropertiesInput {
@@ -26,7 +26,7 @@ export interface AlertRuleResourcePropertiesInput {
   /** The alert rule template version. */
   alertRuleTemplateVersion: string;
 }
-export const AlertRuleResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertRuleResourceId: S.String,
     createdWithProperties: AlertRuleCreationProperties,
@@ -50,7 +50,7 @@ export interface AlertRuleResourcesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourcePropertiesInput;
 }
-export const AlertRuleResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -71,11 +71,11 @@ export const AlertRuleResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -92,7 +92,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -105,7 +105,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** The generic properties of the alert rule proxy resource. */
 export interface AlertRuleResourceProperties {
@@ -122,7 +122,7 @@ export interface AlertRuleResourceProperties {
   /** The alert rule template version. */
   alertRuleTemplateVersion: string;
 }
-export const AlertRuleResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertRuleResourceId: S.String,
     createdWithProperties: AlertRuleCreationProperties,
@@ -147,7 +147,7 @@ export interface AlertRuleResourcesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourceProperties;
 }
-export const AlertRuleResourcesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResourcesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -170,7 +170,7 @@ export interface SharedPrivateLinkResourcePropertiesInput {
   /** The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'. */
   dnsZone?: string;
 }
-export const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkResourceId: S.String,
     groupId: S.String,
@@ -193,7 +193,7 @@ export interface CreateSharedPrivateLinkResourceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourcePropertiesInput;
 }
-export const CreateSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -214,7 +214,7 @@ export const CreateSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected. */
 export type SharedPrivateLinkResourceStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-export const SharedPrivateLinkResourceStatus = S.String;
+const SharedPrivateLinkResourceStatus = S.String;
 
 /** The generic properties of a Shared Private Link resource. */
 export interface SharedPrivateLinkResourceProperties {
@@ -231,7 +231,7 @@ export interface SharedPrivateLinkResourceProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkResourceId: S.String,
     groupId: S.String,
@@ -256,7 +256,7 @@ export interface CreateSharedPrivateLinkResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const CreateSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -278,7 +278,7 @@ export interface DeleteAlertRuleResourceRequest {
   /** The alert rule proxy resource name. */
   alertRuleResourceName: string;
 }
-export const DeleteAlertRuleResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertRuleResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -297,9 +297,9 @@ export const DeleteAlertRuleResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAlertRuleResourceRequest>;
 
 export interface DeleteAlertRuleResourceResponse {}
-export const DeleteAlertRuleResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAlertRuleResourceResponse" },
-) as any as S.Schema<DeleteAlertRuleResourceResponse>;
+const DeleteAlertRuleResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAlertRuleResourceResponse",
+}) as any as S.Schema<DeleteAlertRuleResourceResponse>;
 
 export interface DeleteSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -311,7 +311,7 @@ export interface DeleteSharedPrivateLinkResourceRequest {
   /** The Shared Private Link resource name. */
   sharedPrivateLinkResourceName: string;
 }
-export const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -330,7 +330,7 @@ export const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteSharedPrivateLinkResourceRequest>;
 
 export interface DeleteSharedPrivateLinkResourceResponse {}
-export const DeleteSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSharedPrivateLinkResourceResponse",
@@ -346,7 +346,7 @@ export interface DeleteTargetRequest {
   /** The target resource name. */
   targetName: string;
 }
-export const DeleteTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -363,7 +363,7 @@ export const DeleteTargetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTargetRequest" }) as any as S.Schema<DeleteTargetRequest>;
 
 export interface DeleteTargetResponse {}
-export const DeleteTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteTargetResponse",
 }) as any as S.Schema<DeleteTargetResponse>;
 
@@ -375,7 +375,7 @@ export interface DeleteWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -391,7 +391,7 @@ export const DeleteWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWatcherRequest" }) as any as S.Schema<DeleteWatcherRequest>;
 
 export interface DeleteWatcherResponse {}
-export const DeleteWatcherResponse = DeleteTargetResponse as any as S.Schema<DeleteWatcherResponse>;
+const DeleteWatcherResponse = DeleteTargetResponse as any as S.Schema<DeleteWatcherResponse>;
 
 export interface GetAlertRuleResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -403,7 +403,7 @@ export interface GetAlertRuleResourceRequest {
   /** The alert rule proxy resource name. */
   alertRuleResourceName: string;
 }
-export const GetAlertRuleResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRuleResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -433,7 +433,7 @@ export interface GetAlertRuleResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourceProperties;
 }
-export const GetAlertRuleResourceResponse =
+const GetAlertRuleResourceResponse =
   AlertRuleResourcesCreateOrUpdateResponse as any as S.Schema<GetAlertRuleResourceResponse>;
 
 export interface GetHealthValidationRequest {
@@ -446,7 +446,7 @@ export interface GetHealthValidationRequest {
   /** The health validation resource name. */
   healthValidationName: string;
 }
-export const GetHealthValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHealthValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -472,7 +472,7 @@ export type ValidationStatus =
   | "Failed"
   | "Canceled"
   | "TimedOut";
-export const ValidationStatus = S.String;
+const ValidationStatus = S.String;
 
 /** The model of a health validation issue. */
 export interface ValidationIssue {
@@ -491,7 +491,7 @@ export interface ValidationIssue {
   /** The type of the Azure resource related to the issue. */
   relatedResourceType?: string;
 }
-export const ValidationIssue = /*@__PURE__*/ S.suspend(() =>
+const ValidationIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.String,
     errorMessage: S.String,
@@ -505,7 +505,7 @@ export const ValidationIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of issues found by health validation. */
 export type HealthValidationPropertiesIssuesList = Array<ValidationIssue>;
-export const HealthValidationPropertiesIssuesList = /*@__PURE__*/ S.Array(
+const HealthValidationPropertiesIssuesList = /*@__PURE__*/ S.Array(
   ValidationIssue,
 ) as any as S.Schema<HealthValidationPropertiesIssuesList>;
 
@@ -522,7 +522,7 @@ export interface HealthValidationProperties {
   /** The provisioning state of the health validation resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const HealthValidationProperties = /*@__PURE__*/ S.suspend(() =>
+const HealthValidationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.String,
     endTime: S.String,
@@ -546,7 +546,7 @@ export interface GetHealthValidationResponse {
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
 }
-export const GetHealthValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHealthValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -568,7 +568,7 @@ export interface GetSharedPrivateLinkResourceRequest {
   /** The Shared Private Link resource name. */
   sharedPrivateLinkResourceName: string;
 }
-export const GetSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -598,7 +598,7 @@ export interface GetSharedPrivateLinkResourceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const GetSharedPrivateLinkResourceResponse =
+const GetSharedPrivateLinkResourceResponse =
   CreateSharedPrivateLinkResourceResponse as any as S.Schema<GetSharedPrivateLinkResourceResponse>;
 
 export interface GetTargetRequest {
@@ -611,7 +611,7 @@ export interface GetTargetRequest {
   /** The target resource name. */
   targetName: string;
 }
-export const GetTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -629,7 +629,7 @@ export const GetTargetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of authentication to use when connecting to a target. */
 export type TargetAuthenticationType = "Aad" | "Sql";
-export const TargetAuthenticationType = S.String;
+const TargetAuthenticationType = S.String;
 
 /** The vault specific details required if using SQL authentication to connect to a target. */
 export interface VaultSecret {
@@ -640,7 +640,7 @@ export interface VaultSecret {
   /** The path to the Key Vault secret storing the password for authentication to a target. */
   akvTargetPassword?: string | Redacted.Redacted<string>;
 }
-export const VaultSecret = /*@__PURE__*/ S.suspend(() =>
+const VaultSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     akvResourceId: S.optional(S.String),
     akvTargetUser: S.optional(S.String),
@@ -673,7 +673,7 @@ export interface TargetProperties {
   /** Set to true to monitor a high availability replica of the specified target, if any (targetType SqlDb / SqlMi). */
   readIntent?: boolean;
 }
-export const TargetProperties = /*@__PURE__*/ S.suspend(() =>
+const TargetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetType: S.String,
     targetAuthenticationType: TargetAuthenticationType,
@@ -701,7 +701,7 @@ export interface GetTargetResponse {
   /** The resource-specific properties for this resource. */
   properties?: TargetProperties;
 }
-export const GetTargetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -719,7 +719,7 @@ export interface GetWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -736,14 +736,14 @@ export const GetWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWatcherResponseTagsMap = { [key: string]: string | undefined };
-export const GetWatcherResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetWatcherResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetWatcherResponseTagsMap>;
 
 /** The type of Kusto offering. */
 export type KustoOfferingType = "adx" | "free" | "fabric";
-export const KustoOfferingType = S.String;
+const KustoOfferingType = S.String;
 
 /** The properties of a data store. */
 export interface Datastore {
@@ -762,7 +762,7 @@ export interface Datastore {
   /** The type of a Kusto offering. */
   kustoOfferingType: KustoOfferingType | (string & {});
 }
-export const Datastore = /*@__PURE__*/ S.suspend(() =>
+const Datastore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adxClusterResourceId: S.optional(S.String),
     kustoClusterDisplayName: S.optional(S.String),
@@ -776,11 +776,11 @@ export const Datastore = /*@__PURE__*/ S.suspend(() =>
 
 /** The monitoring collection status of a watcher. */
 export type WatcherStatus = "Starting" | "Running" | "Stopping" | "Stopped" | "Deleting";
-export const WatcherStatus = S.String;
+const WatcherStatus = S.String;
 
 /** The status of the last provisioning operation performed on the resource. */
 export type DatabaseWatcherProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const DatabaseWatcherProvisioningState = S.String;
+const DatabaseWatcherProvisioningState = S.String;
 
 /** The RP specific properties of the resource. */
 export interface WatcherProperties {
@@ -793,7 +793,7 @@ export interface WatcherProperties {
   /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
   defaultAlertRuleIdentityResourceId?: string;
 }
-export const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
+const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datastore: S.optional(Datastore),
     status: S.optional(WatcherStatus),
@@ -808,7 +808,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -817,7 +817,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -826,7 +826,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -840,7 +840,7 @@ export interface GetWatcherResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const GetWatcherResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetWatcherResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -869,7 +869,7 @@ export interface GetWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-export const GetWatcherResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWatcherResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -890,7 +890,7 @@ export interface ListAlertRuleResourceByParentRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const ListAlertRuleResourceByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertRuleResourceByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -920,7 +920,7 @@ export interface AlertRuleResource {
   /** The resource-specific properties for this resource. */
   properties?: AlertRuleResourceProperties;
 }
-export const AlertRuleResource = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -932,7 +932,7 @@ export const AlertRuleResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AlertRuleResource items on this page */
 export type AlertRuleResourceListResultValueList = Array<AlertRuleResource>;
-export const AlertRuleResourceListResultValueList = /*@__PURE__*/ S.Array(
+const AlertRuleResourceListResultValueList = /*@__PURE__*/ S.Array(
   AlertRuleResource,
 ) as any as S.Schema<AlertRuleResourceListResultValueList>;
 
@@ -943,7 +943,7 @@ export interface AlertRuleResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AlertRuleResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AlertRuleResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -960,7 +960,7 @@ export interface ListHealthValidationByParentRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const ListHealthValidationByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHealthValidationByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -990,7 +990,7 @@ export interface HealthValidation {
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
 }
-export const HealthValidation = /*@__PURE__*/ S.suspend(() =>
+const HealthValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1002,7 +1002,7 @@ export const HealthValidation = /*@__PURE__*/ S.suspend(() =>
 
 /** The HealthValidation items on this page */
 export type HealthValidationListResultValueList = Array<HealthValidation>;
-export const HealthValidationListResultValueList = /*@__PURE__*/ S.Array(
+const HealthValidationListResultValueList = /*@__PURE__*/ S.Array(
   HealthValidation,
 ) as any as S.Schema<HealthValidationListResultValueList>;
 
@@ -1013,7 +1013,7 @@ export interface HealthValidationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HealthValidationListResult = /*@__PURE__*/ S.suspend(() =>
+const HealthValidationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HealthValidationListResultValueList,
     nextLink: S.optional(S.String),
@@ -1023,7 +1023,7 @@ export const HealthValidationListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthValidationListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1045,7 +1045,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1056,11 +1056,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1075,7 +1075,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1087,7 +1087,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1097,7 +1097,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1112,7 +1112,7 @@ export interface ListSharedPrivateLinkResourceByWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const ListSharedPrivateLinkResourceByWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedPrivateLinkResourceByWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1142,12 +1142,12 @@ export interface SharedPrivateLinkResource {
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const SharedPrivateLinkResource =
+const SharedPrivateLinkResource =
   CreateSharedPrivateLinkResourceResponse as any as S.Schema<SharedPrivateLinkResource>;
 
 /** The SharedPrivateLinkResource items on this page */
 export type SharedPrivateLinkResourceListResultValueList = Array<SharedPrivateLinkResource>;
-export const SharedPrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const SharedPrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   SharedPrivateLinkResource,
 ) as any as S.Schema<SharedPrivateLinkResourceListResultValueList>;
 
@@ -1158,7 +1158,7 @@ export interface SharedPrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SharedPrivateLinkResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1175,7 +1175,7 @@ export interface ListTargetByWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const ListTargetByWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTargetByWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1205,11 +1205,11 @@ export interface Target {
   /** The resource-specific properties for this resource. */
   properties?: TargetProperties;
 }
-export const Target = GetTargetResponse as any as S.Schema<Target>;
+const Target = GetTargetResponse as any as S.Schema<Target>;
 
 /** The Target items on this page */
 export type TargetListResultValueList = Array<Target>;
-export const TargetListResultValueList = /*@__PURE__*/ S.Array(
+const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
 
@@ -1220,7 +1220,7 @@ export interface TargetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TargetListResult = /*@__PURE__*/ S.suspend(() =>
+const TargetListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TargetListResultValueList,
     nextLink: S.optional(S.String),
@@ -1233,7 +1233,7 @@ export interface ListWatcherByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListWatcherByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatcherByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1251,12 +1251,8 @@ export const ListWatcherByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WatcherTagsMap = { [key: string]: string | undefined };
-export const WatcherTagsMap = GetWatcherResponseTagsMap as any as S.Schema<WatcherTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WatcherIdentity = GetWatcherResponseIdentity;
-export const WatcherIdentity = GetWatcherResponseIdentity;
-
 /** The DatabaseWatcherProviderHub resource. */
 export interface Watcher {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1276,11 +1272,11 @@ export interface Watcher {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-export const Watcher = GetWatcherResponse as any as S.Schema<Watcher>;
+const Watcher = GetWatcherResponse as any as S.Schema<Watcher>;
 
 /** The Watcher items on this page */
 export type WatcherListResultValueList = Array<Watcher>;
-export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
+const WatcherListResultValueList = /*@__PURE__*/ S.Array(
   Watcher,
 ) as any as S.Schema<WatcherListResultValueList>;
 
@@ -1291,7 +1287,7 @@ export interface WatcherListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WatcherListResult = /*@__PURE__*/ S.suspend(() =>
+const WatcherListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WatcherListResultValueList,
     nextLink: S.optional(S.String),
@@ -1302,7 +1298,7 @@ export interface ListWatcherBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListWatcherBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatcherBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1327,7 +1323,7 @@ export interface StartHealthValidationValidationRequest {
   /** The health validation resource name. */
   healthValidationName: string;
 }
-export const StartHealthValidationValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const StartHealthValidationValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1357,7 +1353,7 @@ export interface StartHealthValidationValidationResponse {
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
 }
-export const StartHealthValidationValidationResponse =
+const StartHealthValidationValidationResponse =
   GetHealthValidationResponse as any as S.Schema<StartHealthValidationValidationResponse>;
 
 export interface StartWatcherRequest {
@@ -1368,7 +1364,7 @@ export interface StartWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1385,13 +1381,8 @@ export const StartWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StartWatcherResponseTagsMap = { [key: string]: string | undefined };
-export const StartWatcherResponseTagsMap =
-  GetWatcherResponseTagsMap as any as S.Schema<StartWatcherResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type StartWatcherResponseIdentity = GetWatcherResponseIdentity;
-export const StartWatcherResponseIdentity = GetWatcherResponseIdentity;
-
 export interface StartWatcherResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1410,7 +1401,7 @@ export interface StartWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-export const StartWatcherResponse = GetWatcherResponse as any as S.Schema<StartWatcherResponse>;
+const StartWatcherResponse = GetWatcherResponse as any as S.Schema<StartWatcherResponse>;
 
 export interface StopWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1420,7 +1411,7 @@ export interface StopWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1437,13 +1428,8 @@ export const StopWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StopWatcherResponseTagsMap = { [key: string]: string | undefined };
-export const StopWatcherResponseTagsMap =
-  GetWatcherResponseTagsMap as any as S.Schema<StopWatcherResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type StopWatcherResponseIdentity = GetWatcherResponseIdentity;
-export const StopWatcherResponseIdentity = GetWatcherResponseIdentity;
-
 export interface StopWatcherResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1462,7 +1448,7 @@ export interface StopWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-export const StopWatcherResponse = GetWatcherResponse as any as S.Schema<StopWatcherResponse>;
+const StopWatcherResponse = GetWatcherResponse as any as S.Schema<StopWatcherResponse>;
 
 /** The generic properties of a target. */
 export interface TargetPropertiesInput {
@@ -1487,7 +1473,7 @@ export interface TargetPropertiesInput {
   /** Set to true to monitor a high availability replica of the specified target, if any (targetType SqlDb / SqlMi). */
   readIntent?: boolean;
 }
-export const TargetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TargetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetType: S.String,
     targetAuthenticationType: TargetAuthenticationType,
@@ -1514,7 +1500,7 @@ export interface TargetsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: TargetPropertiesInput;
 }
-export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1545,7 +1531,7 @@ export interface TargetsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: TargetProperties;
 }
-export const TargetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TargetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1559,12 +1545,12 @@ export const TargetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput =
+const UserAssignedIdentityInput =
   DeleteTargetResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -1574,7 +1560,7 @@ export interface UpdateWatcherRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const UpdateWatcherRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const UpdateWatcherRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -1585,7 +1571,7 @@ export const UpdateWatcherRequestIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWatcherRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWatcherRequestTagsMap =
+const UpdateWatcherRequestTagsMap =
   GetWatcherResponseTagsMap as any as S.Schema<UpdateWatcherRequestTagsMap>;
 
 /** The properties of a data store. */
@@ -1605,7 +1591,7 @@ export interface DatastoreUpdate {
   /** The type of a Kusto offering. */
   kustoOfferingType?: KustoOfferingType | (string & {});
 }
-export const DatastoreUpdate = /*@__PURE__*/ S.suspend(() =>
+const DatastoreUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adxClusterResourceId: S.optional(S.String),
     kustoClusterDisplayName: S.optional(S.String),
@@ -1624,7 +1610,7 @@ export interface WatcherUpdateProperties {
   /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
   defaultAlertRuleIdentityResourceId?: string;
 }
-export const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datastore: S.optional(DatastoreUpdate),
     defaultAlertRuleIdentityResourceId: S.optional(S.String),
@@ -1645,7 +1631,7 @@ export interface UpdateWatcherRequest {
   /** The resource-specific properties for this resource. */
   properties?: WatcherUpdateProperties;
 }
-export const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1665,13 +1651,8 @@ export const UpdateWatcherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWatcherResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWatcherResponseTagsMap =
-  GetWatcherResponseTagsMap as any as S.Schema<UpdateWatcherResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateWatcherResponseIdentity = GetWatcherResponseIdentity;
-export const UpdateWatcherResponseIdentity = GetWatcherResponseIdentity;
-
 export interface UpdateWatcherResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1690,11 +1671,11 @@ export interface UpdateWatcherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-export const UpdateWatcherResponse = GetWatcherResponse as any as S.Schema<UpdateWatcherResponse>;
+const UpdateWatcherResponse = GetWatcherResponse as any as S.Schema<UpdateWatcherResponse>;
 
 /** Resource tags. */
 export type WatchersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WatchersCreateOrUpdateRequestTagsMap =
+const WatchersCreateOrUpdateRequestTagsMap =
   GetWatcherResponseTagsMap as any as S.Schema<WatchersCreateOrUpdateRequestTagsMap>;
 
 /** The RP specific properties of the resource. */
@@ -1704,7 +1685,7 @@ export interface WatcherPropertiesInput {
   /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
   defaultAlertRuleIdentityResourceId?: string;
 }
-export const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datastore: S.optional(Datastore),
     defaultAlertRuleIdentityResourceId: S.optional(S.String),
@@ -1713,8 +1694,6 @@ export const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WatchersCreateOrUpdateRequestIdentity = UpdateWatcherRequestIdentity;
-export const WatchersCreateOrUpdateRequestIdentity = UpdateWatcherRequestIdentity;
-
 export interface WatchersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1731,7 +1710,7 @@ export interface WatchersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateWatcherRequestIdentity;
 }
-export const WatchersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1754,13 +1733,11 @@ export const WatchersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WatchersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WatchersCreateOrUpdateResponseTagsMap =
+const WatchersCreateOrUpdateResponseTagsMap =
   GetWatcherResponseTagsMap as any as S.Schema<WatchersCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type WatchersCreateOrUpdateResponseIdentity = GetWatcherResponseIdentity;
-export const WatchersCreateOrUpdateResponseIdentity = GetWatcherResponseIdentity;
-
 export interface WatchersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1779,7 +1756,7 @@ export interface WatchersCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
 }
-export const WatchersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WatchersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

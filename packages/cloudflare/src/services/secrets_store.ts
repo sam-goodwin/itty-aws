@@ -117,7 +117,7 @@ export interface BulkDeleteStoreSecretsRequest {
   accountId: string;
   storeId: string;
 }
-export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -135,7 +135,7 @@ export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteStoreSecretsRequest>;
 
 export type BulkDeleteStoreSecretsResponse = unknown;
-export const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteStoreSecretsResponse",
@@ -146,7 +146,7 @@ export interface CreateStoreRequest {
   /** The name of the store. */
   name: string;
 }
-export const CreateStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -168,7 +168,7 @@ export interface CreateStoreResponse {
   /** Account Identifier. */
   accountId?: string | null;
 }
-export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -185,12 +185,12 @@ export type StoresSecretsCreateRequestBodyItemScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsCreateRequestBodyItemScopesItem = S.String;
+const StoresSecretsCreateRequestBodyItemScopesItem = S.String;
 
 export type StoresSecretsCreateRequestBodyItemScopesList = Array<
   StoresSecretsCreateRequestBodyItemScopesItem | (string & {})
 >;
-export const StoresSecretsCreateRequestBodyItemScopesList = /*@__PURE__*/ S.Array(
+const StoresSecretsCreateRequestBodyItemScopesList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateRequestBodyItemScopesItem,
 ) as any as S.Schema<StoresSecretsCreateRequestBodyItemScopesList>;
 
@@ -204,7 +204,7 @@ export interface StoresSecretsCreateRequestBodyItem {
   /** Freeform text describing the secret. */
   comment?: string;
 }
-export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     scopes: StoresSecretsCreateRequestBodyItemScopesList,
@@ -216,7 +216,7 @@ export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsCreateRequestBodyItem>;
 
 export type StoresSecretsCreateRequestBodyList = Array<StoresSecretsCreateRequestBodyItem>;
-export const StoresSecretsCreateRequestBodyList = /*@__PURE__*/ S.Array(
+const StoresSecretsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateRequestBodyItem,
 ) as any as S.Schema<StoresSecretsCreateRequestBodyList>;
 
@@ -225,7 +225,7 @@ export interface CreateStoreSecretRequest {
   storeId: string;
   body: StoresSecretsCreateRequestBodyList;
 }
-export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -242,7 +242,7 @@ export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStoreSecretRequest" }) as any as S.Schema<CreateStoreSecretRequest>;
 
 export type StoresSecretsCreateResultItemStatus = "pending" | "active" | "deleted";
-export const StoresSecretsCreateResultItemStatus = S.String;
+const StoresSecretsCreateResultItemStatus = S.String;
 
 export type StoresSecretsCreateResultItemScopesItem =
   | "workers"
@@ -251,11 +251,9 @@ export type StoresSecretsCreateResultItemScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsCreateResultItemScopesItem = S.String;
-
 export type StoresSecretsCreateResultItemScopesList =
   Array<StoresSecretsCreateResultItemScopesItem>;
-export const StoresSecretsCreateResultItemScopesList =
+const StoresSecretsCreateResultItemScopesList =
   StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsCreateResultItemScopesList>;
 
 export interface StoresSecretsCreateResultItem {
@@ -275,7 +273,7 @@ export interface StoresSecretsCreateResultItem {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsCreateResultItemScopesList | null;
 }
-export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -291,7 +289,7 @@ export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsCreateResultItem>;
 
 export type StoresSecretsCreateResultList = Array<StoresSecretsCreateResultItem>;
-export const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
+const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateResultItem,
 ) as any as S.Schema<StoresSecretsCreateResultList>;
 
@@ -301,7 +299,7 @@ export interface CreateStoreSecretResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StoresSecretsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -316,7 +314,7 @@ export interface DeleteStoreRequest {
   /** When true, cascade-deletes all secrets in the store before deleting the store itself. Required when deleting a non-empty store. Without this parameter, attempting to delete a non-empty store returns 409. */
   force?: boolean;
 }
-export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -333,7 +331,7 @@ export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStoreRequest" }) as any as S.Schema<DeleteStoreRequest>;
 
 export type DeleteStoreResponse = unknown;
-export const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteStoreResponse" }) as any as S.Schema<DeleteStoreResponse>;
 
@@ -342,7 +340,7 @@ export interface DeleteStoreSecretRequest {
   storeId: string;
   secretId: string;
 }
-export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -359,7 +357,7 @@ export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStoreSecretRequest" }) as any as S.Schema<DeleteStoreSecretRequest>;
 
 export type DeleteStoreSecretResponse = unknown;
-export const DeleteStoreSecretResponse =
+const DeleteStoreSecretResponse =
   BulkDeleteStoreSecretsResponse as any as S.Schema<DeleteStoreSecretResponse>;
 
 export type StoresSecretsDuplicateRequestScopesItem =
@@ -369,12 +367,10 @@ export type StoresSecretsDuplicateRequestScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsDuplicateRequestScopesItem = S.String;
-
 export type StoresSecretsDuplicateRequestScopesList = Array<
   StoresSecretsDuplicateRequestScopesItem | (string & {})
 >;
-export const StoresSecretsDuplicateRequestScopesList =
+const StoresSecretsDuplicateRequestScopesList =
   StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
 
 export interface DuplicateStoreSecretRequest {
@@ -388,7 +384,7 @@ export interface DuplicateStoreSecretRequest {
   /** Freeform text describing the secret. */
   comment?: string;
 }
-export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -410,7 +406,7 @@ export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateStoreSecretRequest>;
 
 export type StoresSecretsDuplicateResponseStatus = "pending" | "active" | "deleted";
-export const StoresSecretsDuplicateResponseStatus = S.String;
+const StoresSecretsDuplicateResponseStatus = S.String;
 
 export type StoresSecretsDuplicateResponseScopesItem =
   | "workers"
@@ -419,11 +415,9 @@ export type StoresSecretsDuplicateResponseScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsDuplicateResponseScopesItem = S.String;
-
 export type StoresSecretsDuplicateResponseScopesList =
   Array<StoresSecretsDuplicateResponseScopesItem>;
-export const StoresSecretsDuplicateResponseScopesList =
+const StoresSecretsDuplicateResponseScopesList =
   StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsDuplicateResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -444,7 +438,7 @@ export interface DuplicateStoreSecretResponse {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsDuplicateResponseScopesList | null;
 }
-export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -462,7 +456,7 @@ export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetQuotaRequest {
   accountId: string;
 }
-export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -476,7 +470,7 @@ export interface QuotaGetResponseSecrets {
   /** The number of secrets the account is currently using. */
   usage: number;
 }
-export const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
+const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.Number,
     usage: S.Number,
@@ -487,7 +481,7 @@ export const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
 export interface GetQuotaResponse {
   secrets: QuotaGetResponseSecrets;
 }
-export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secrets: QuotaGetResponseSecrets,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -497,7 +491,7 @@ export interface GetStoreRequest {
   accountId: string;
   storeId: string;
 }
-export const GetStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -525,14 +519,14 @@ export interface GetStoreResponse {
   /** Account Identifier. */
   accountId?: string | null;
 }
-export const GetStoreResponse = CreateStoreResponse as any as S.Schema<GetStoreResponse>;
+const GetStoreResponse = CreateStoreResponse as any as S.Schema<GetStoreResponse>;
 
 export interface GetStoreSecretRequest {
   accountId: string;
   storeId: string;
   secretId: string;
 }
-export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -549,7 +543,7 @@ export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStoreSecretRequest" }) as any as S.Schema<GetStoreSecretRequest>;
 
 export type StoresSecretsGetResponseStatus = "pending" | "active" | "deleted";
-export const StoresSecretsGetResponseStatus = S.String;
+const StoresSecretsGetResponseStatus = S.String;
 
 export type StoresSecretsGetResponseScopesItem =
   | "workers"
@@ -558,10 +552,8 @@ export type StoresSecretsGetResponseScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsGetResponseScopesItem = S.String;
-
 export type StoresSecretsGetResponseScopesList = Array<StoresSecretsGetResponseScopesItem>;
-export const StoresSecretsGetResponseScopesList =
+const StoresSecretsGetResponseScopesList =
   StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsGetResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -582,7 +574,7 @@ export interface GetStoreSecretResponse {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsGetResponseScopesList | null;
 }
-export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -596,10 +588,10 @@ export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStoreSecretResponse" }) as any as S.Schema<GetStoreSecretResponse>;
 
 export type StoresListRequestDirection = "asc" | "desc";
-export const StoresListRequestDirection = S.String;
+const StoresListRequestDirection = S.String;
 
 export type StoresListRequestOrder = "name" | "created" | "modified";
-export const StoresListRequestOrder = S.String;
+const StoresListRequestOrder = S.String;
 
 export interface ListStoresRequest {
   accountId: string;
@@ -612,7 +604,7 @@ export interface ListStoresRequest {
   /** Number of objects to return per page. */
   perPage?: number;
 }
-export const ListStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(StoresListRequestDirection.pipe(T.Query())),
@@ -636,7 +628,7 @@ export interface StoresListResultItem {
   /** Account Identifier. */
   accountId?: string | null;
 }
-export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
+const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -647,7 +639,7 @@ export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StoresListResultItem" }) as any as S.Schema<StoresListResultItem>;
 
 export type StoresListResultList = Array<StoresListResultItem>;
-export const StoresListResultList = /*@__PURE__*/ S.Array(
+const StoresListResultList = /*@__PURE__*/ S.Array(
   StoresListResultItem,
 ) as any as S.Schema<StoresListResultList>;
 
@@ -657,7 +649,7 @@ export interface ListStoresResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StoresListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -665,10 +657,10 @@ export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStoresResponse" }) as any as S.Schema<ListStoresResponse>;
 
 export type StoresSecretsListRequestDirection = "asc" | "desc";
-export const StoresSecretsListRequestDirection = S.String;
+const StoresSecretsListRequestDirection = S.String;
 
 export type StoresSecretsListRequestOrder = "name" | "comment" | "created" | "modified" | "status";
-export const StoresSecretsListRequestOrder = S.String;
+const StoresSecretsListRequestOrder = S.String;
 
 export type StoresSecretsListRequestScopes =
   | "workers"
@@ -677,12 +669,10 @@ export type StoresSecretsListRequestScopes =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsListRequestScopes = S.String;
-
 export type StoresSecretsListRequestScopesList = Array<
   StoresSecretsListRequestScopes | (string & {})
 >;
-export const StoresSecretsListRequestScopesList =
+const StoresSecretsListRequestScopesList =
   StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsListRequestScopesList>;
 
 export interface ListStoreSecretsRequest {
@@ -701,7 +691,7 @@ export interface ListStoreSecretsRequest {
   /** Search secrets using a filter string, filtering across name and comment. */
   search?: string;
 }
-export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -723,8 +713,6 @@ export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStoreSecretsRequest" }) as any as S.Schema<ListStoreSecretsRequest>;
 
 export type StoresSecretsListResultItemStatus = "pending" | "active" | "deleted";
-export const StoresSecretsListResultItemStatus = S.String;
-
 export type StoresSecretsListResultItemScopesItem =
   | "workers"
   | "ai_gateway"
@@ -732,12 +720,7 @@ export type StoresSecretsListResultItemScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsListResultItemScopesItem = S.String;
-
 export type StoresSecretsListResultItemScopesList = Array<StoresSecretsListResultItemScopesItem>;
-export const StoresSecretsListResultItemScopesList =
-  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsListResultItemScopesList>;
-
 export interface StoresSecretsListResultItem {
   /** Secret identifier tag. */
   id: string;
@@ -755,11 +738,8 @@ export interface StoresSecretsListResultItem {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsListResultItemScopesList | null;
 }
-export const StoresSecretsListResultItem =
-  StoresSecretsCreateResultItem as any as S.Schema<StoresSecretsListResultItem>;
-
 export type StoresSecretsListResultList = Array<StoresSecretsListResultItem>;
-export const StoresSecretsListResultList =
+const StoresSecretsListResultList =
   StoresSecretsCreateResultList as any as S.Schema<StoresSecretsListResultList>;
 
 export interface ListStoreSecretsResponse {
@@ -768,7 +748,7 @@ export interface ListStoreSecretsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: StoresSecretsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -782,12 +762,10 @@ export type StoresSecretsEditRequestScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsEditRequestScopesItem = S.String;
-
 export type StoresSecretsEditRequestScopesList = Array<
   StoresSecretsEditRequestScopesItem | (string & {})
 >;
-export const StoresSecretsEditRequestScopesList =
+const StoresSecretsEditRequestScopesList =
   StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsEditRequestScopesList>;
 
 export interface PatchStoreSecretRequest {
@@ -801,7 +779,7 @@ export interface PatchStoreSecretRequest {
   /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - the API never returns this value; it exists only to create or modify secrets. */
   value?: string;
 }
-export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -821,8 +799,6 @@ export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchStoreSecretRequest" }) as any as S.Schema<PatchStoreSecretRequest>;
 
 export type StoresSecretsEditResponseStatus = "pending" | "active" | "deleted";
-export const StoresSecretsEditResponseStatus = S.String;
-
 export type StoresSecretsEditResponseScopesItem =
   | "workers"
   | "ai_gateway"
@@ -830,12 +806,7 @@ export type StoresSecretsEditResponseScopesItem =
   | "access"
   | "containers"
   | "websearch";
-export const StoresSecretsEditResponseScopesItem = S.String;
-
 export type StoresSecretsEditResponseScopesList = Array<StoresSecretsEditResponseScopesItem>;
-export const StoresSecretsEditResponseScopesList =
-  StoresSecretsCreateRequestBodyItemScopesList as any as S.Schema<StoresSecretsEditResponseScopesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchStoreSecretResponse {
   /** Secret identifier tag. */
@@ -854,7 +825,7 @@ export interface PatchStoreSecretResponse {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsEditResponseScopesList | null;
 }
-export const PatchStoreSecretResponse =
+const PatchStoreSecretResponse =
   GetStoreSecretResponse as any as S.Schema<PatchStoreSecretResponse>;
 
 export type BulkDeleteStoreSecretsError =

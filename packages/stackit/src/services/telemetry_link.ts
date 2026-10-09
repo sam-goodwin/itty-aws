@@ -38,7 +38,7 @@ export class NotFound
   ) {}
 
 export type CreateFolderBackflushJobRequestRegionId = "eu01" | "eu02";
-export const CreateFolderBackflushJobRequestRegionId = S.String;
+const CreateFolderBackflushJobRequestRegionId = S.String;
 
 export interface CreateFolderBackflushJobRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -50,7 +50,7 @@ export interface CreateFolderBackflushJobRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-export const CreateFolderBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFolderBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: CreateFolderBackflushJobRequestRegionId.pipe(T.Label()),
@@ -70,7 +70,7 @@ export const CreateFolderBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The STACKIT region name the resource is located in. */
 export type BackflushJobResponseRegionId = "eu01" | "eu02";
-export const BackflushJobResponseRegionId = S.String;
+const BackflushJobResponseRegionId = S.String;
 
 /** The current state of the link. */
 export type BackflushJobResponseStatus =
@@ -79,7 +79,7 @@ export type BackflushJobResponseStatus =
   | "failed"
   | "reconciling"
   | "deleting";
-export const BackflushJobResponseStatus = S.String;
+const BackflushJobResponseStatus = S.String;
 
 export interface BackflushJobResponse {
   /** The point in time the resource was created. */
@@ -95,7 +95,7 @@ export interface BackflushJobResponse {
   /** The current state of the link. */
   status: BackflushJobResponseStatus;
 }
-export const BackflushJobResponse = /*@__PURE__*/ S.suspend(() =>
+const BackflushJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.optional(S.String),
@@ -107,7 +107,7 @@ export const BackflushJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackflushJobResponse" }) as any as S.Schema<BackflushJobResponse>;
 
 export type CreateOrganizationBackflushJobRequestRegionId = "eu01" | "eu02";
-export const CreateOrganizationBackflushJobRequestRegionId = S.String;
+const CreateOrganizationBackflushJobRequestRegionId = S.String;
 
 export interface CreateOrganizationBackflushJobRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -119,7 +119,7 @@ export interface CreateOrganizationBackflushJobRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-export const CreateOrganizationBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: CreateOrganizationBackflushJobRequestRegionId.pipe(T.Label()),
@@ -138,7 +138,7 @@ export const CreateOrganizationBackflushJobRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateOrganizationBackflushJobRequest>;
 
 export type CreateOrUpdateFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const CreateOrUpdateFolderTelemetryLinkRequestRegionId = S.String;
+const CreateOrUpdateFolderTelemetryLinkRequestRegionId = S.String;
 
 export interface CreateOrUpdateFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -156,7 +156,7 @@ export interface CreateOrUpdateFolderTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-export const CreateOrUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: CreateOrUpdateFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -179,7 +179,7 @@ export const CreateOrUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(
 
 /** The STACKIT region name the resource is located in. */
 export type TelemetryLinkResponseRegionId = "eu01" | "eu02";
-export const TelemetryLinkResponseRegionId = S.String;
+const TelemetryLinkResponseRegionId = S.String;
 
 /** The current state of the link. */
 export type TelemetryLinkResponseStatus =
@@ -188,7 +188,7 @@ export type TelemetryLinkResponseStatus =
   | "failed"
   | "reconciling"
   | "deleting";
-export const TelemetryLinkResponseStatus = S.String;
+const TelemetryLinkResponseStatus = S.String;
 
 export interface TelemetryLinkResponse {
   /** The access token. */
@@ -210,7 +210,7 @@ export interface TelemetryLinkResponse {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-export const TelemetryLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const TelemetryLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
     createTime: S.String,
@@ -225,7 +225,7 @@ export const TelemetryLinkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelemetryLinkResponse" }) as any as S.Schema<TelemetryLinkResponse>;
 
 export type CreateOrUpdateOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const CreateOrUpdateOrganizationTelemetryLinkRequestRegionId = S.String;
+const CreateOrUpdateOrganizationTelemetryLinkRequestRegionId = S.String;
 
 export interface CreateOrUpdateOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -243,7 +243,7 @@ export interface CreateOrUpdateOrganizationTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-export const CreateOrUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: CreateOrUpdateOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -265,7 +265,7 @@ export const CreateOrUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateOrUpdateOrganizationTelemetryLinkRequest>;
 
 export type CreateOrUpdateProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const CreateOrUpdateProjectTelemetryLinkRequestRegionId = S.String;
+const CreateOrUpdateProjectTelemetryLinkRequestRegionId = S.String;
 
 export interface CreateOrUpdateProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -283,7 +283,7 @@ export interface CreateOrUpdateProjectTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId: string;
 }
-export const CreateOrUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateOrUpdateProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -305,7 +305,7 @@ export const CreateOrUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateOrUpdateProjectTelemetryLinkRequest>;
 
 export type CreateProjectBackflushJobRequestRegionId = "eu01" | "eu02";
-export const CreateProjectBackflushJobRequestRegionId = S.String;
+const CreateProjectBackflushJobRequestRegionId = S.String;
 
 export interface CreateProjectBackflushJobRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -317,7 +317,7 @@ export interface CreateProjectBackflushJobRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-export const CreateProjectBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateProjectBackflushJobRequestRegionId.pipe(T.Label()),
@@ -336,7 +336,7 @@ export const CreateProjectBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectBackflushJobRequest>;
 
 export type DeleteFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const DeleteFolderTelemetryLinkRequestRegionId = S.String;
+const DeleteFolderTelemetryLinkRequestRegionId = S.String;
 
 export interface DeleteFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -344,7 +344,7 @@ export interface DeleteFolderTelemetryLinkRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: DeleteFolderTelemetryLinkRequestRegionId | (string & {});
 }
-export const DeleteFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: DeleteFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -361,14 +361,12 @@ export const DeleteFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFolderTelemetryLinkRequest>;
 
 export interface DeleteFolderTelemetryLinkResponse {}
-export const DeleteFolderTelemetryLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteFolderTelemetryLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteFolderTelemetryLinkResponse",
 }) as any as S.Schema<DeleteFolderTelemetryLinkResponse>;
 
 export type DeleteOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const DeleteOrganizationTelemetryLinkRequestRegionId = S.String;
+const DeleteOrganizationTelemetryLinkRequestRegionId = S.String;
 
 export interface DeleteOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -376,7 +374,7 @@ export interface DeleteOrganizationTelemetryLinkRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: DeleteOrganizationTelemetryLinkRequestRegionId | (string & {});
 }
-export const DeleteOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: DeleteOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -393,11 +391,11 @@ export const DeleteOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteOrganizationTelemetryLinkRequest>;
 
 export interface DeleteOrganizationTelemetryLinkResponse {}
-export const DeleteOrganizationTelemetryLinkResponse =
+const DeleteOrganizationTelemetryLinkResponse =
   DeleteFolderTelemetryLinkResponse as any as S.Schema<DeleteOrganizationTelemetryLinkResponse>;
 
 export type DeleteProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const DeleteProjectTelemetryLinkRequestRegionId = S.String;
+const DeleteProjectTelemetryLinkRequestRegionId = S.String;
 
 export interface DeleteProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -405,7 +403,7 @@ export interface DeleteProjectTelemetryLinkRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: DeleteProjectTelemetryLinkRequestRegionId | (string & {});
 }
-export const DeleteProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -422,11 +420,11 @@ export const DeleteProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectTelemetryLinkRequest>;
 
 export interface DeleteProjectTelemetryLinkResponse {}
-export const DeleteProjectTelemetryLinkResponse =
+const DeleteProjectTelemetryLinkResponse =
   DeleteFolderTelemetryLinkResponse as any as S.Schema<DeleteProjectTelemetryLinkResponse>;
 
 export type GetFolderBackflushJobRequestRegionId = "eu01" | "eu02";
-export const GetFolderBackflushJobRequestRegionId = S.String;
+const GetFolderBackflushJobRequestRegionId = S.String;
 
 export interface GetFolderBackflushJobRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -436,7 +434,7 @@ export interface GetFolderBackflushJobRequest {
   /** The Backflush Job UUID. */
   backflushJobId: string;
 }
-export const GetFolderBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFolderBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: GetFolderBackflushJobRequestRegionId.pipe(T.Label()),
@@ -454,7 +452,7 @@ export const GetFolderBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFolderBackflushJobRequest>;
 
 export type GetFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const GetFolderTelemetryLinkRequestRegionId = S.String;
+const GetFolderTelemetryLinkRequestRegionId = S.String;
 
 export interface GetFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -462,7 +460,7 @@ export interface GetFolderTelemetryLinkRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: GetFolderTelemetryLinkRequestRegionId | (string & {});
 }
-export const GetFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: GetFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -479,7 +477,7 @@ export const GetFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFolderTelemetryLinkRequest>;
 
 export type GetOrganizationBackflushJobRequestRegionId = "eu01" | "eu02";
-export const GetOrganizationBackflushJobRequestRegionId = S.String;
+const GetOrganizationBackflushJobRequestRegionId = S.String;
 
 export interface GetOrganizationBackflushJobRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -489,7 +487,7 @@ export interface GetOrganizationBackflushJobRequest {
   /** The Backflush Job UUID. */
   backflushJobId: string;
 }
-export const GetOrganizationBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: GetOrganizationBackflushJobRequestRegionId.pipe(T.Label()),
@@ -507,7 +505,7 @@ export const GetOrganizationBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationBackflushJobRequest>;
 
 export type GetOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const GetOrganizationTelemetryLinkRequestRegionId = S.String;
+const GetOrganizationTelemetryLinkRequestRegionId = S.String;
 
 export interface GetOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -515,7 +513,7 @@ export interface GetOrganizationTelemetryLinkRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: GetOrganizationTelemetryLinkRequestRegionId | (string & {});
 }
-export const GetOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: GetOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -532,7 +530,7 @@ export const GetOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationTelemetryLinkRequest>;
 
 export type GetProjectBackflushJobRequestRegionId = "eu01" | "eu02";
-export const GetProjectBackflushJobRequestRegionId = S.String;
+const GetProjectBackflushJobRequestRegionId = S.String;
 
 export interface GetProjectBackflushJobRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -542,7 +540,7 @@ export interface GetProjectBackflushJobRequest {
   /** The Backflush Job UUID. */
   backflushJobId: string;
 }
-export const GetProjectBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetProjectBackflushJobRequestRegionId.pipe(T.Label()),
@@ -560,7 +558,7 @@ export const GetProjectBackflushJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectBackflushJobRequest>;
 
 export type GetProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const GetProjectTelemetryLinkRequestRegionId = S.String;
+const GetProjectTelemetryLinkRequestRegionId = S.String;
 
 export interface GetProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -568,7 +566,7 @@ export interface GetProjectTelemetryLinkRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: GetProjectTelemetryLinkRequestRegionId | (string & {});
 }
-export const GetProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetProjectTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -585,7 +583,7 @@ export const GetProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectTelemetryLinkRequest>;
 
 export type ListFolderBackflushJobsRequestRegionId = "eu01" | "eu02";
-export const ListFolderBackflushJobsRequestRegionId = S.String;
+const ListFolderBackflushJobsRequestRegionId = S.String;
 
 export interface ListFolderBackflushJobsRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -597,7 +595,7 @@ export interface ListFolderBackflushJobsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-export const ListFolderBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFolderBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: ListFolderBackflushJobsRequestRegionId.pipe(T.Label()),
@@ -616,7 +614,7 @@ export const ListFolderBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFolderBackflushJobsRequest>;
 
 export type ListBackflushJobsResponseBackflushJobsList = Array<BackflushJobResponse>;
-export const ListBackflushJobsResponseBackflushJobsList = /*@__PURE__*/ S.Array(
+const ListBackflushJobsResponseBackflushJobsList = /*@__PURE__*/ S.Array(
   BackflushJobResponse,
 ) as any as S.Schema<ListBackflushJobsResponseBackflushJobsList>;
 
@@ -625,7 +623,7 @@ export interface ListBackflushJobsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListBackflushJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackflushJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backflushJobs: ListBackflushJobsResponseBackflushJobsList,
     nextPageToken: S.optional(S.String),
@@ -635,7 +633,7 @@ export const ListBackflushJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBackflushJobsResponse>;
 
 export type ListOrganizationBackflushJobsRequestRegionId = "eu01" | "eu02";
-export const ListOrganizationBackflushJobsRequestRegionId = S.String;
+const ListOrganizationBackflushJobsRequestRegionId = S.String;
 
 export interface ListOrganizationBackflushJobsRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -647,7 +645,7 @@ export interface ListOrganizationBackflushJobsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-export const ListOrganizationBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: ListOrganizationBackflushJobsRequestRegionId.pipe(T.Label()),
@@ -666,7 +664,7 @@ export const ListOrganizationBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOrganizationBackflushJobsRequest>;
 
 export type ListProjectBackflushJobsRequestRegionId = "eu01" | "eu02";
-export const ListProjectBackflushJobsRequestRegionId = S.String;
+const ListProjectBackflushJobsRequestRegionId = S.String;
 
 export interface ListProjectBackflushJobsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -678,7 +676,7 @@ export interface ListProjectBackflushJobsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-export const ListProjectBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListProjectBackflushJobsRequestRegionId.pipe(T.Label()),
@@ -697,7 +695,7 @@ export const ListProjectBackflushJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectBackflushJobsRequest>;
 
 export type PartialUpdateFolderTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const PartialUpdateFolderTelemetryLinkRequestRegionId = S.String;
+const PartialUpdateFolderTelemetryLinkRequestRegionId = S.String;
 
 export interface PartialUpdateFolderTelemetryLinkRequest {
   /** The STACKIT portal folder UUID the resource is located in. */
@@ -715,7 +713,7 @@ export interface PartialUpdateFolderTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId?: string;
 }
-export const PartialUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     regionId: PartialUpdateFolderTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -737,7 +735,7 @@ export const PartialUpdateFolderTelemetryLinkRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PartialUpdateFolderTelemetryLinkRequest>;
 
 export type PartialUpdateOrganizationTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const PartialUpdateOrganizationTelemetryLinkRequestRegionId = S.String;
+const PartialUpdateOrganizationTelemetryLinkRequestRegionId = S.String;
 
 export interface PartialUpdateOrganizationTelemetryLinkRequest {
   /** The STACKIT portal organization UUID the resource is located in. */
@@ -755,7 +753,7 @@ export interface PartialUpdateOrganizationTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId?: string;
 }
-export const PartialUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     regionId: PartialUpdateOrganizationTelemetryLinkRequestRegionId.pipe(T.Label()),
@@ -777,7 +775,7 @@ export const PartialUpdateOrganizationTelemetryLinkRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<PartialUpdateOrganizationTelemetryLinkRequest>;
 
 export type PartialUpdateProjectTelemetryLinkRequestRegionId = "eu01" | "eu02";
-export const PartialUpdateProjectTelemetryLinkRequestRegionId = S.String;
+const PartialUpdateProjectTelemetryLinkRequestRegionId = S.String;
 
 export interface PartialUpdateProjectTelemetryLinkRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -795,7 +793,7 @@ export interface PartialUpdateProjectTelemetryLinkRequest {
   /** The ID of the telemetry-router to route the telemetry data. */
   telemetryRouterId?: string;
 }
-export const PartialUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateProjectTelemetryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: PartialUpdateProjectTelemetryLinkRequestRegionId.pipe(T.Label()),

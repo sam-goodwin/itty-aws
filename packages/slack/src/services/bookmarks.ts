@@ -10,7 +10,7 @@ export type { SlackOpError, SlackOpContext };
 
 /** The level that we are setting the file's permission to (read or write) */
 export type AddBookmarkRequestAccessLevel = "read" | "write";
-export const AddBookmarkRequestAccessLevel = S.String;
+const AddBookmarkRequestAccessLevel = S.String;
 
 export interface AddBookmarkRequest {
   /** Channel to add bookmark in. Required for public channels. */
@@ -30,7 +30,7 @@ export interface AddBookmarkRequest {
   /** Id of this bookmark's parent */
   parent_id?: string;
 }
-export const AddBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
+const AddBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.optional(S.String),
     title: S.String,
@@ -48,7 +48,7 @@ export interface AddBookmarkResponse {
   ok: boolean;
   bookmark: unknown;
 }
-export const AddBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
+const AddBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     bookmark: S.Unknown,
@@ -67,7 +67,7 @@ export interface EditBookmarkRequest {
   /** Emoji tag to apply to the link. */
   emoji?: string;
 }
-export const EditBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
+const EditBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.optional(S.String),
     bookmark_id: S.optional(S.String),
@@ -82,20 +82,20 @@ export interface EditBookmarkResponse {
   ok: boolean;
   bookmark: unknown;
 }
-export const EditBookmarkResponse = AddBookmarkResponse as any as S.Schema<EditBookmarkResponse>;
+const EditBookmarkResponse = AddBookmarkResponse as any as S.Schema<EditBookmarkResponse>;
 
 export interface ListBookmarksRequest {
   /** Channel to list bookmarks in. Required for public channels. */
   channel_id?: string;
 }
-export const ListBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/bookmarks.list", code: 200 })),
 ).annotate({ identifier: "ListBookmarksRequest" }) as any as S.Schema<ListBookmarksRequest>;
 
 export type ListBookmarksResponseBookmarksList = Array<unknown>;
-export const ListBookmarksResponseBookmarksList = /*@__PURE__*/ S.Array(
+const ListBookmarksResponseBookmarksList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ListBookmarksResponseBookmarksList>;
 
@@ -104,7 +104,7 @@ export interface ListBookmarksResponse {
   ok: boolean;
   bookmarks: ListBookmarksResponseBookmarksList;
 }
-export const ListBookmarksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBookmarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     bookmarks: ListBookmarksResponseBookmarksList,
@@ -119,7 +119,7 @@ export interface RemoveBookmarkRequest {
   /** Quip section ID to unbookmark */
   quip_section_id?: string;
 }
-export const RemoveBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.optional(S.String),
     bookmark_id: S.optional(S.String),
@@ -131,7 +131,7 @@ export interface RemoveBookmarkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),

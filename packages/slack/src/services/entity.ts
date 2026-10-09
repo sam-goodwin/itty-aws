@@ -10,7 +10,7 @@ export type { SlackOpError, SlackOpContext };
 
 /** The full comment data. Required for edit and post actions. See the [comment schema](/messaging/work-objects-comments#entity-present-comments-method) for the full list of properties. */
 export type AcknowledgeCommentActionRequestCommentMap = { [key: string]: unknown | undefined };
-export const AcknowledgeCommentActionRequestCommentMap = /*@__PURE__*/ S.Record(
+const AcknowledgeCommentActionRequestCommentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<AcknowledgeCommentActionRequestCommentMap>;
@@ -23,7 +23,7 @@ export interface AcknowledgeCommentActionRequest {
   /** Error message if the action failed in the app. When present, signals that the mutation could not be completed. */
   error?: string;
 }
-export const AcknowledgeCommentActionRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeCommentActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trigger_id: S.String,
     comment: S.optional(AcknowledgeCommentActionRequestCommentMap),
@@ -37,7 +37,7 @@ export interface AcknowledgeCommentActionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const AcknowledgeCommentActionResponse = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeCommentActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -46,12 +46,12 @@ export const AcknowledgeCommentActionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcknowledgeCommentActionResponse>;
 
 export type PresentCommentsRequestCommentsItemMap = { [key: string]: unknown | undefined };
-export const PresentCommentsRequestCommentsItemMap =
+const PresentCommentsRequestCommentsItemMap =
   AcknowledgeCommentActionRequestCommentMap as any as S.Schema<PresentCommentsRequestCommentsItemMap>;
 
 /** Array of comments to present to the user. See the [comment schema](/messaging/work-objects-comments#entity-present-comments-method) for the full list of properties. */
 export type PresentCommentsRequestCommentsList = Array<PresentCommentsRequestCommentsItemMap>;
-export const PresentCommentsRequestCommentsList = /*@__PURE__*/ S.Array(
+const PresentCommentsRequestCommentsList = /*@__PURE__*/ S.Array(
   PresentCommentsRequestCommentsItemMap,
 ) as any as S.Schema<PresentCommentsRequestCommentsList>;
 
@@ -72,7 +72,7 @@ export interface PresentCommentsRequest {
   user_auth_url?: string;
   error?: string;
 }
-export const PresentCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PresentCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: PresentCommentsRequestCommentsList,
     cursor: S.optional(S.String),
@@ -90,7 +90,7 @@ export interface PresentCommentsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const PresentCommentsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const PresentCommentsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -104,7 +104,7 @@ export interface PresentCommentsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: PresentCommentsResponseResponseMetadata;
 }
-export const PresentCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const PresentCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     response_metadata: S.optional(PresentCommentsResponseResponseMetadata),
@@ -113,7 +113,7 @@ export const PresentCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** URL-encoded JSON object containing flexpane metadata from the app that will be conformed to a Work Object metadata schema, keyed by entity ID. */
 export type PresentDetailsRequestMetadataMap = { [key: string]: unknown | undefined };
-export const PresentDetailsRequestMetadataMap =
+const PresentDetailsRequestMetadataMap =
   AcknowledgeCommentActionRequestCommentMap as any as S.Schema<PresentDetailsRequestMetadataMap>;
 
 export interface PresentDetailsRequest {
@@ -127,7 +127,7 @@ export interface PresentDetailsRequest {
   user_auth_url?: string;
   error?: string;
 }
-export const PresentDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PresentDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(PresentDetailsRequestMetadataMap),
     trigger_id: S.String,
@@ -141,7 +141,7 @@ export interface PresentDetailsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const PresentDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const PresentDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),

@@ -80,14 +80,13 @@ export interface GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest 
   /** Required. An acknowledgement that the caller of this method understands the terms of user data collection. This field must contain the exact value: "I acknowledge that I have the necessary privacy disclosures and rights from my end users for the collection and processing of their data, including the association of such data with the visitation information Google Analytics collects from my site and/or app property." */
   acknowledgement?: string;
 }
-export const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acknowledgement: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest>;
+const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    acknowledgement: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest",
+}) as any as S.Schema<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest>;
 
 export interface AcknowledgeUserDataCollectionPropertiesRequest {
   /** Required. The property for which to acknowledge user data collection. */
@@ -95,7 +94,7 @@ export interface AcknowledgeUserDataCollectionPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest;
 }
-export const AcknowledgeUserDataCollectionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeUserDataCollectionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.String.pipe(T.Label()),
     body: S.optional(
@@ -114,14 +113,15 @@ export const AcknowledgeUserDataCollectionPropertiesRequest = /*@__PURE__*/ S.su
 
 /** Response message for AcknowledgeUserDataCollection RPC. */
 export interface GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse {}
-export const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse>;
+const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse>;
 
 /** Request message for ArchiveCustomDimension RPC. */
 export interface GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest {}
-export const GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest",
@@ -133,7 +133,7 @@ export interface ArchivePropertiesCustomDimensionsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest;
 }
-export const ArchivePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchivePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest.pipe(T.HttpBody())),
@@ -150,23 +150,20 @@ export const ArchivePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
 /** Request message for ArchiveCustomMetric RPC. */
 export type GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest =
   GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest;
-export const GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest =
-  GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest;
-
 export interface ArchivePropertiesCustomMetricsRequest {
   /** Required. The name of the CustomMetric to archive. Example format: properties/1234/customMetrics/5678 */
   name: string;
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest;
 }
-export const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest.pipe(T.HttpBody())),
@@ -186,7 +183,7 @@ export type GoogleAnalyticsAdminV1betaPropertyPropertyTypeEnum =
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
   | "PROPERTY_TYPE_ROLLUP";
-export const GoogleAnalyticsAdminV1betaPropertyPropertyTypeEnum = S.String;
+const GoogleAnalyticsAdminV1betaPropertyPropertyTypeEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaPropertyIndustryCategoryEnum =
   | "INDUSTRY_CATEGORY_UNSPECIFIED"
@@ -216,13 +213,13 @@ export type GoogleAnalyticsAdminV1betaPropertyIndustryCategoryEnum =
   | "SPORTS"
   | "JOBS_AND_EDUCATION"
   | "SHOPPING";
-export const GoogleAnalyticsAdminV1betaPropertyIndustryCategoryEnum = S.String;
+const GoogleAnalyticsAdminV1betaPropertyIndustryCategoryEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaPropertyServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "GOOGLE_ANALYTICS_STANDARD"
   | "GOOGLE_ANALYTICS_360";
-export const GoogleAnalyticsAdminV1betaPropertyServiceLevelEnum = S.String;
+const GoogleAnalyticsAdminV1betaPropertyServiceLevelEnum = S.String;
 
 /** A resource message representing a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1betaProperty {
@@ -253,7 +250,7 @@ export interface GoogleAnalyticsAdminV1betaProperty {
   /** Output only. If set, the time at which this trashed property will be permanently deleted. If not set, then this property is not currently in the trash can and is not slated to be deleted. */
   expireTime?: string;
 }
-export const GoogleAnalyticsAdminV1betaProperty = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     propertyType: S.optional(GoogleAnalyticsAdminV1betaPropertyPropertyTypeEnum),
@@ -277,7 +274,7 @@ export interface CreatePropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaProperty;
 }
-export const CreatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleAnalyticsAdminV1betaProperty.pipe(T.HttpBody())),
   }).pipe(
@@ -296,21 +293,21 @@ export interface GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
   /** When a conversion event for this event_name has no set currency, this currency will be applied as the default. Must be in ISO 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more information. */
   currencyCode?: string;
 }
-export const GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       value: S.optional(S.Number),
       currencyCode: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue",
+}) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue>;
 
 export type GoogleAnalyticsAdminV1betaConversionEventCountingMethodEnum =
   | "CONVERSION_COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
   | "ONCE_PER_SESSION";
-export const GoogleAnalyticsAdminV1betaConversionEventCountingMethodEnum = S.String;
+const GoogleAnalyticsAdminV1betaConversionEventCountingMethodEnum = S.String;
 
 /** A conversion event in a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1betaConversionEvent {
@@ -329,7 +326,7 @@ export interface GoogleAnalyticsAdminV1betaConversionEvent {
   /** Output only. If set, this event can currently be deleted with DeleteConversionEvent. */
   deletable?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaConversionEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaConversionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -351,7 +348,7 @@ export interface CreatePropertiesConversionEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaConversionEvent;
 }
-export const CreatePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaConversionEvent.pipe(T.HttpBody())),
@@ -371,7 +368,7 @@ export type GoogleAnalyticsAdminV1betaCustomDimensionScopeEnum =
   | "EVENT"
   | "USER"
   | "ITEM";
-export const GoogleAnalyticsAdminV1betaCustomDimensionScopeEnum = S.String;
+const GoogleAnalyticsAdminV1betaCustomDimensionScopeEnum = S.String;
 
 /** A definition for a CustomDimension. */
 export interface GoogleAnalyticsAdminV1betaCustomDimension {
@@ -388,7 +385,7 @@ export interface GoogleAnalyticsAdminV1betaCustomDimension {
   /** Optional. Description for this custom dimension. Max length of 150 characters. */
   description?: string;
 }
-export const GoogleAnalyticsAdminV1betaCustomDimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaCustomDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterName: S.optional(S.String),
     disallowAdsPersonalization: S.optional(S.Boolean),
@@ -407,7 +404,7 @@ export interface CreatePropertiesCustomDimensionsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaCustomDimension;
 }
-export const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaCustomDimension.pipe(T.HttpBody())),
@@ -434,21 +431,21 @@ export type GoogleAnalyticsAdminV1betaCustomMetricMeasurementUnitEnum =
   | "SECONDS"
   | "MINUTES"
   | "HOURS";
-export const GoogleAnalyticsAdminV1betaCustomMetricMeasurementUnitEnum = S.String;
+const GoogleAnalyticsAdminV1betaCustomMetricMeasurementUnitEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaCustomMetricScopeEnum = "METRIC_SCOPE_UNSPECIFIED" | "EVENT";
-export const GoogleAnalyticsAdminV1betaCustomMetricScopeEnum = S.String;
+const GoogleAnalyticsAdminV1betaCustomMetricScopeEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum =
   | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
   | "COST_DATA"
   | "REVENUE_DATA";
-export const GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum = S.String;
+const GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList = Array<
   GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum | (string & {})
 >;
-export const GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList =
+const GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnum,
   ) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList>;
@@ -470,7 +467,7 @@ export interface GoogleAnalyticsAdminV1betaCustomMetric {
   /** Optional. Types of restricted data that this metric may contain. Required for metrics with CURRENCY measurement unit. Must be empty for metrics with a non-CURRENCY measurement unit. */
   restrictedMetricType?: GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList;
 }
-export const GoogleAnalyticsAdminV1betaCustomMetric = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaCustomMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     measurementUnit: S.optional(GoogleAnalyticsAdminV1betaCustomMetricMeasurementUnitEnum),
     displayName: S.optional(S.String),
@@ -492,7 +489,7 @@ export interface CreatePropertiesCustomMetricsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaCustomMetric;
 }
-export const CreatePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaCustomMetric.pipe(T.HttpBody())),
@@ -514,12 +511,11 @@ export interface GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData {
   /** Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app is deleted and recreated. */
   firebaseAppId?: string;
 }
-export const GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.optional(S.String),
-      firebaseAppId: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageName: S.optional(S.String),
+    firebaseAppId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData",
 }) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData>;
@@ -533,7 +529,7 @@ export interface GoogleAnalyticsAdminV1betaDataStreamWebStreamData {
   /** Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is deleted and recreated. */
   firebaseAppId?: string;
 }
-export const GoogleAnalyticsAdminV1betaDataStreamWebStreamData = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaDataStreamWebStreamData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultUri: S.optional(S.String),
     measurementId: S.optional(S.String),
@@ -548,7 +544,7 @@ export type GoogleAnalyticsAdminV1betaDataStreamTypeEnum =
   | "WEB_DATA_STREAM"
   | "ANDROID_APP_DATA_STREAM"
   | "IOS_APP_DATA_STREAM";
-export const GoogleAnalyticsAdminV1betaDataStreamTypeEnum = S.String;
+const GoogleAnalyticsAdminV1betaDataStreamTypeEnum = S.String;
 
 /** Data specific to iOS app streams. */
 export interface GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData {
@@ -557,7 +553,7 @@ export interface GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData {
   /** Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated. */
   firebaseAppId?: string;
 }
-export const GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundleId: S.optional(S.String),
     firebaseAppId: S.optional(S.String),
@@ -585,7 +581,7 @@ export interface GoogleAnalyticsAdminV1betaDataStream {
   /** Data specific to iOS app streams. Must be populated if type is IOS_APP_DATA_STREAM. */
   iosAppStreamData?: GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData;
 }
-export const GoogleAnalyticsAdminV1betaDataStream = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaDataStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -606,7 +602,7 @@ export interface CreatePropertiesDataStreamsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaDataStream;
 }
-export const CreatePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaDataStream.pipe(T.HttpBody())),
@@ -630,7 +626,7 @@ export interface GoogleAnalyticsAdminV1betaMeasurementProtocolSecret {
   /** Required. Human-readable display name for this secret. */
   displayName?: string;
 }
-export const GoogleAnalyticsAdminV1betaMeasurementProtocolSecret = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaMeasurementProtocolSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     secretValue: S.optional(S.String),
@@ -646,18 +642,17 @@ export interface CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 }
-export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/measurementProtocolSecrets",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/measurementProtocolSecrets",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -671,7 +666,7 @@ export interface GoogleAnalyticsAdminV1betaFirebaseLink {
   /** Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this resource name using either a project number or project ID. Once this resource has been created, returned FirebaseLinks will always have a project_name that contains a project number. Format: 'projects/{project number}' Example: 'projects/1234' */
   project?: string;
 }
-export const GoogleAnalyticsAdminV1betaFirebaseLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaFirebaseLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -687,7 +682,7 @@ export interface CreatePropertiesFirebaseLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaFirebaseLink;
 }
-export const CreatePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaFirebaseLink.pipe(T.HttpBody())),
@@ -719,7 +714,7 @@ export interface GoogleAnalyticsAdminV1betaGoogleAdsLink {
   /** Identifier. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID. */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1betaGoogleAdsLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaGoogleAdsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     adsPersonalizationEnabled: S.optional(S.Boolean),
@@ -739,7 +734,7 @@ export interface CreatePropertiesGoogleAdsLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaGoogleAdsLink;
 }
-export const CreatePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaGoogleAdsLink.pipe(T.HttpBody())),
@@ -758,7 +753,7 @@ export type GoogleAnalyticsAdminV1betaKeyEventCountingMethodEnum =
   | "COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
   | "ONCE_PER_SESSION";
-export const GoogleAnalyticsAdminV1betaKeyEventCountingMethodEnum = S.String;
+const GoogleAnalyticsAdminV1betaKeyEventCountingMethodEnum = S.String;
 
 /** Defines a default value/currency for a key event. */
 export interface GoogleAnalyticsAdminV1betaKeyEventDefaultValue {
@@ -767,7 +762,7 @@ export interface GoogleAnalyticsAdminV1betaKeyEventDefaultValue {
   /** Required. When an occurrence of this Key Event (specified by event_name) has no set currency this currency will be applied as the default. Must be in ISO 4217 currency code format. See https://en.wikipedia.org/wiki/ISO_4217 for more information. */
   currencyCode?: string;
 }
-export const GoogleAnalyticsAdminV1betaKeyEventDefaultValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaKeyEventDefaultValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numericValue: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -793,7 +788,7 @@ export interface GoogleAnalyticsAdminV1betaKeyEvent {
   /** Output only. If set to true, this key event refers to a custom event. If set to false, this key event refers to a default event in GA. Default events typically have special meaning in GA. Default events are usually created for you by the GA system, but in some cases can be created by property admins. Custom events count towards the maximum number of custom key events that may be created per property. */
   custom?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaKeyEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaKeyEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -813,7 +808,7 @@ export interface CreatePropertiesKeyEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaKeyEvent;
 }
-export const CreatePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaKeyEvent.pipe(T.HttpBody())),
@@ -832,7 +827,7 @@ export interface DeleteAccountsRequest {
   /** Required. The name of the Account to soft-delete. Format: accounts/{account} Example: "accounts/100" */
   name: string;
 }
-export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -848,7 +843,7 @@ export interface DeletePropertiesRequest {
   /** Required. The name of the Property to soft-delete. Format: properties/{property_id} Example: "properties/1000" */
   name: string;
 }
-export const DeletePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -864,7 +859,7 @@ export interface DeletePropertiesConversionEventsRequest {
   /** Required. The resource name of the conversion event to delete. Format: properties/{property}/conversionEvents/{conversion_event} Example: "properties/123/conversionEvents/456" */
   name: string;
 }
-export const DeletePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -882,7 +877,7 @@ export interface DeletePropertiesDataStreamsRequest {
   /** Required. The name of the DataStream to delete. Example format: properties/1234/dataStreams/5678 */
   name: string;
 }
-export const DeletePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -900,17 +895,16 @@ export interface DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Required. The name of the MeasurementProtocolSecret to delete. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret} */
   name: string;
 }
-export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -919,7 +913,7 @@ export interface DeletePropertiesFirebaseLinksRequest {
   /** Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example: `properties/1234/firebaseLinks/5678` */
   name: string;
 }
-export const DeletePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -937,7 +931,7 @@ export interface DeletePropertiesGoogleAdsLinksRequest {
   /** Required. Example format: properties/1234/googleAdsLinks/5678 */
   name: string;
 }
-export const DeletePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -955,7 +949,7 @@ export interface DeletePropertiesKeyEventsRequest {
   /** Required. The resource name of the Key Event to delete. Format: properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456" */
   name: string;
 }
-export const DeletePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -973,7 +967,7 @@ export interface GetAccountsRequest {
   /** Required. The name of the account to lookup. Format: accounts/{account} Example: "accounts/100" */
   name: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1002,7 +996,7 @@ export interface GoogleAnalyticsAdminV1betaAccount {
   /** Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded from List results unless specifically requested. */
   deleted?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaAccount = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -1020,7 +1014,7 @@ export interface GetDataRetentionSettingsPropertiesRequest {
   /** Required. The name of the settings to lookup. Format: properties/{property}/dataRetentionSettings Example: "properties/1000/dataRetentionSettings" */
   name: string;
 }
-export const GetDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1041,7 +1035,7 @@ export type GoogleAnalyticsAdminV1betaDataRetentionSettingsEventDataRetentionEnu
   | "TWENTY_SIX_MONTHS"
   | "THIRTY_EIGHT_MONTHS"
   | "FIFTY_MONTHS";
-export const GoogleAnalyticsAdminV1betaDataRetentionSettingsEventDataRetentionEnum = S.String;
+const GoogleAnalyticsAdminV1betaDataRetentionSettingsEventDataRetentionEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaDataRetentionSettingsUserDataRetentionEnum =
   | "RETENTION_DURATION_UNSPECIFIED"
@@ -1050,7 +1044,7 @@ export type GoogleAnalyticsAdminV1betaDataRetentionSettingsUserDataRetentionEnum
   | "TWENTY_SIX_MONTHS"
   | "THIRTY_EIGHT_MONTHS"
   | "FIFTY_MONTHS";
-export const GoogleAnalyticsAdminV1betaDataRetentionSettingsUserDataRetentionEnum = S.String;
+const GoogleAnalyticsAdminV1betaDataRetentionSettingsUserDataRetentionEnum = S.String;
 
 /** Settings values for data retention. This is a singleton resource. */
 export interface GoogleAnalyticsAdminV1betaDataRetentionSettings {
@@ -1067,7 +1061,7 @@ export interface GoogleAnalyticsAdminV1betaDataRetentionSettings {
   /** If true, reset the retention period for the user identifier with every event from that user. */
   resetUserDataOnNewActivity?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaDataRetentionSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaDataRetentionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventDataRetention: S.optional(
       GoogleAnalyticsAdminV1betaDataRetentionSettingsEventDataRetentionEnum,
@@ -1086,7 +1080,7 @@ export interface GetDataSharingSettingsAccountsRequest {
   /** Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example: `accounts/1000/dataSharingSettings` */
   name: string;
 }
-export const GetDataSharingSettingsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSharingSettingsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1115,7 +1109,7 @@ export interface GoogleAnalyticsAdminV1betaDataSharingSettings {
   /** Enable features like predictions, modeled data, and benchmarking that can provide you with richer business insights when you contribute aggregated measurement data. The data you share (including information about the property from which it is shared) is aggregated and de-identified before being used to generate business insights. This field maps to the "Modeling contributions & business insights" field in the Google Analytics Admin UI. */
   sharingWithOthersEnabled?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaDataSharingSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaDataSharingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharingWithGoogleProductsEnabled: S.optional(S.Boolean),
     sharingWithGoogleAnySalesEnabled: S.optional(S.Boolean),
@@ -1132,7 +1126,7 @@ export interface GetPropertiesRequest {
   /** Required. The name of the property to lookup. Format: properties/{property_id} Example: "properties/1000" */
   name: string;
 }
-export const GetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1148,7 +1142,7 @@ export interface GetPropertiesConversionEventsRequest {
   /** Required. The resource name of the conversion event to retrieve. Format: properties/{property}/conversionEvents/{conversion_event} Example: "properties/123/conversionEvents/456" */
   name: string;
 }
-export const GetPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1166,7 +1160,7 @@ export interface GetPropertiesCustomDimensionsRequest {
   /** Required. The name of the CustomDimension to get. Example format: properties/1234/customDimensions/5678 */
   name: string;
 }
-export const GetPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1184,7 +1178,7 @@ export interface GetPropertiesCustomMetricsRequest {
   /** Required. The name of the CustomMetric to get. Example format: properties/1234/customMetrics/5678 */
   name: string;
 }
-export const GetPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1202,7 +1196,7 @@ export interface GetPropertiesDataStreamsRequest {
   /** Required. The name of the DataStream to get. Example format: properties/1234/dataStreams/5678 */
   name: string;
 }
-export const GetPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1220,17 +1214,16 @@ export interface GetPropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Required. The name of the measurement protocol secret to lookup. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret} */
   name: string;
 }
-export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetPropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -1239,7 +1232,7 @@ export interface GetPropertiesKeyEventsRequest {
   /** Required. The resource name of the Key Event to retrieve. Format: properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456" */
   name: string;
 }
-export const GetPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1261,7 +1254,7 @@ export interface ListAccountsRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1276,7 +1269,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type GoogleAnalyticsAdminV1betaAccountList = Array<GoogleAnalyticsAdminV1betaAccount>;
-export const GoogleAnalyticsAdminV1betaAccountList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccountList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccount,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccountList>;
 
@@ -1287,7 +1280,7 @@ export interface GoogleAnalyticsAdminV1betaListAccountsResponse {
   /** Results that were accessible to the caller. */
   accounts?: GoogleAnalyticsAdminV1betaAccountList;
 }
-export const GoogleAnalyticsAdminV1betaListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accounts: S.optional(GoogleAnalyticsAdminV1betaAccountList),
@@ -1302,7 +1295,7 @@ export interface ListAccountSummariesRequest {
   /** Optional. A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1322,7 +1315,7 @@ export type GoogleAnalyticsAdminV1betaPropertySummaryPropertyTypeEnum =
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
   | "PROPERTY_TYPE_ROLLUP";
-export const GoogleAnalyticsAdminV1betaPropertySummaryPropertyTypeEnum = S.String;
+const GoogleAnalyticsAdminV1betaPropertySummaryPropertyTypeEnum = S.String;
 
 /** A virtual resource representing metadata for a Google Analytics property. */
 export interface GoogleAnalyticsAdminV1betaPropertySummary {
@@ -1337,7 +1330,7 @@ export interface GoogleAnalyticsAdminV1betaPropertySummary {
   /** The property's property type. */
   propertyType?: GoogleAnalyticsAdminV1betaPropertySummaryPropertyTypeEnum;
 }
-export const GoogleAnalyticsAdminV1betaPropertySummary = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaPropertySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     parent: S.optional(S.String),
@@ -1351,7 +1344,7 @@ export const GoogleAnalyticsAdminV1betaPropertySummary = /*@__PURE__*/ S.suspend
 
 export type GoogleAnalyticsAdminV1betaPropertySummaryList =
   Array<GoogleAnalyticsAdminV1betaPropertySummary>;
-export const GoogleAnalyticsAdminV1betaPropertySummaryList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaPropertySummaryList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaPropertySummary,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaPropertySummaryList>;
 
@@ -1366,7 +1359,7 @@ export interface GoogleAnalyticsAdminV1betaAccountSummary {
   /** Identifier. Resource name for this account summary. Format: accountSummaries/{account_id} Example: "accountSummaries/1000" */
   name?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccountSummary = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertySummaries: S.optional(GoogleAnalyticsAdminV1betaPropertySummaryList),
     displayName: S.optional(S.String),
@@ -1379,7 +1372,7 @@ export const GoogleAnalyticsAdminV1betaAccountSummary = /*@__PURE__*/ S.suspend(
 
 export type GoogleAnalyticsAdminV1betaAccountSummaryList =
   Array<GoogleAnalyticsAdminV1betaAccountSummary>;
-export const GoogleAnalyticsAdminV1betaAccountSummaryList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccountSummaryList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccountSummary,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccountSummaryList>;
 
@@ -1390,7 +1383,7 @@ export interface GoogleAnalyticsAdminV1betaListAccountSummariesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1betaListAccountSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListAccountSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountSummaries: S.optional(GoogleAnalyticsAdminV1betaAccountSummaryList),
     nextPageToken: S.optional(S.String),
@@ -1409,7 +1402,7 @@ export interface ListPropertiesRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1425,7 +1418,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPropertiesRequest" }) as any as S.Schema<ListPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1betaPropertyList = Array<GoogleAnalyticsAdminV1betaProperty>;
-export const GoogleAnalyticsAdminV1betaPropertyList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaPropertyList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaProperty,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaPropertyList>;
 
@@ -1436,7 +1429,7 @@ export interface GoogleAnalyticsAdminV1betaListPropertiesResponse {
   /** Results that matched the filter criteria and were accessible to the caller. */
   properties?: GoogleAnalyticsAdminV1betaPropertyList;
 }
-export const GoogleAnalyticsAdminV1betaListPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     properties: S.optional(GoogleAnalyticsAdminV1betaPropertyList),
@@ -1453,7 +1446,7 @@ export interface ListPropertiesConversionEventsRequest {
   /** Optional. A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1471,7 +1464,7 @@ export const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleAnalyticsAdminV1betaConversionEventList =
   Array<GoogleAnalyticsAdminV1betaConversionEvent>;
-export const GoogleAnalyticsAdminV1betaConversionEventList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaConversionEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaConversionEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaConversionEventList>;
 
@@ -1482,7 +1475,7 @@ export interface GoogleAnalyticsAdminV1betaListConversionEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1betaListConversionEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListConversionEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionEvents: S.optional(GoogleAnalyticsAdminV1betaConversionEventList),
     nextPageToken: S.optional(S.String),
@@ -1499,7 +1492,7 @@ export interface ListPropertiesCustomDimensionsRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1517,7 +1510,7 @@ export const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleAnalyticsAdminV1betaCustomDimensionList =
   Array<GoogleAnalyticsAdminV1betaCustomDimension>;
-export const GoogleAnalyticsAdminV1betaCustomDimensionList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaCustomDimensionList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaCustomDimension,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomDimensionList>;
 
@@ -1528,7 +1521,7 @@ export interface GoogleAnalyticsAdminV1betaListCustomDimensionsResponse {
   /** List of CustomDimensions. */
   customDimensions?: GoogleAnalyticsAdminV1betaCustomDimensionList;
 }
-export const GoogleAnalyticsAdminV1betaListCustomDimensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListCustomDimensionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     customDimensions: S.optional(GoogleAnalyticsAdminV1betaCustomDimensionList),
@@ -1545,7 +1538,7 @@ export interface ListPropertiesCustomMetricsRequest {
   /** The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1563,7 +1556,7 @@ export const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1betaCustomMetricList =
   Array<GoogleAnalyticsAdminV1betaCustomMetric>;
-export const GoogleAnalyticsAdminV1betaCustomMetricList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaCustomMetricList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaCustomMetric,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaCustomMetricList>;
 
@@ -1574,7 +1567,7 @@ export interface GoogleAnalyticsAdminV1betaListCustomMetricsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1betaListCustomMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListCustomMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customMetrics: S.optional(GoogleAnalyticsAdminV1betaCustomMetricList),
     nextPageToken: S.optional(S.String),
@@ -1591,7 +1584,7 @@ export interface ListPropertiesDataStreamsRequest {
   /** Required. Example format: properties/1234 */
   parent: string;
 }
-export const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1608,7 +1601,7 @@ export const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesDataStreamsRequest>;
 
 export type GoogleAnalyticsAdminV1betaDataStreamList = Array<GoogleAnalyticsAdminV1betaDataStream>;
-export const GoogleAnalyticsAdminV1betaDataStreamList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaDataStreamList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaDataStream,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaDataStreamList>;
 
@@ -1619,7 +1612,7 @@ export interface GoogleAnalyticsAdminV1betaListDataStreamsResponse {
   /** List of DataStreams. */
   dataStreams?: GoogleAnalyticsAdminV1betaDataStreamList;
 }
-export const GoogleAnalyticsAdminV1betaListDataStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListDataStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataStreams: S.optional(GoogleAnalyticsAdminV1betaDataStreamList),
@@ -1636,26 +1629,25 @@ export interface ListPropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Required. The resource name of the parent stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets */
   parent: string;
 }
-export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/measurementProtocolSecrets",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/measurementProtocolSecrets",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListPropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type GoogleAnalyticsAdminV1betaMeasurementProtocolSecretList =
   Array<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>;
-export const GoogleAnalyticsAdminV1betaMeasurementProtocolSecretList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaMeasurementProtocolSecretList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaMeasurementProtocolSecret,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaMeasurementProtocolSecretList>;
 
@@ -1666,17 +1658,17 @@ export interface GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       measurementProtocolSecrets: S.optional(
         GoogleAnalyticsAdminV1betaMeasurementProtocolSecretList,
       ),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse",
+}) as any as S.Schema<GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse>;
 
 export interface ListPropertiesFirebaseLinksRequest {
   /** Optional. A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token. */
@@ -1686,7 +1678,7 @@ export interface ListPropertiesFirebaseLinksRequest {
   /** Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum) */
   pageSize?: number;
 }
-export const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1704,7 +1696,7 @@ export const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1betaFirebaseLinkList =
   Array<GoogleAnalyticsAdminV1betaFirebaseLink>;
-export const GoogleAnalyticsAdminV1betaFirebaseLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaFirebaseLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaFirebaseLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaFirebaseLinkList>;
 
@@ -1715,7 +1707,7 @@ export interface GoogleAnalyticsAdminV1betaListFirebaseLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. Currently, Google Analytics supports only one FirebaseLink per property, so this will never be populated. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1betaListFirebaseLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListFirebaseLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firebaseLinks: S.optional(GoogleAnalyticsAdminV1betaFirebaseLinkList),
     nextPageToken: S.optional(S.String),
@@ -1732,7 +1724,7 @@ export interface ListPropertiesGoogleAdsLinksRequest {
   /** Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum). */
   pageSize?: number;
 }
-export const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1750,7 +1742,7 @@ export const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAnalyticsAdminV1betaGoogleAdsLinkList =
   Array<GoogleAnalyticsAdminV1betaGoogleAdsLink>;
-export const GoogleAnalyticsAdminV1betaGoogleAdsLinkList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaGoogleAdsLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaGoogleAdsLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaGoogleAdsLinkList>;
 
@@ -1761,7 +1753,7 @@ export interface GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAdsLinks: S.optional(GoogleAnalyticsAdminV1betaGoogleAdsLinkList),
     nextPageToken: S.optional(S.String),
@@ -1778,7 +1770,7 @@ export interface ListPropertiesKeyEventsRequest {
   /** Optional. A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1795,7 +1787,7 @@ export const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesKeyEventsRequest>;
 
 export type GoogleAnalyticsAdminV1betaKeyEventList = Array<GoogleAnalyticsAdminV1betaKeyEvent>;
-export const GoogleAnalyticsAdminV1betaKeyEventList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaKeyEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaKeyEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaKeyEventList>;
 
@@ -1806,7 +1798,7 @@ export interface GoogleAnalyticsAdminV1betaListKeyEventsResponse {
   /** The requested Key Events */
   keyEvents?: GoogleAnalyticsAdminV1betaKeyEventList;
 }
-export const GoogleAnalyticsAdminV1betaListKeyEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaListKeyEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     keyEvents: S.optional(GoogleAnalyticsAdminV1betaKeyEventList),
@@ -1823,7 +1815,7 @@ export interface PatchAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaAccount;
 }
-export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1845,7 +1837,7 @@ export interface PatchPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaProperty;
 }
-export const PatchPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1867,7 +1859,7 @@ export interface PatchPropertiesConversionEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaConversionEvent;
 }
-export const PatchPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1891,7 +1883,7 @@ export interface PatchPropertiesCustomDimensionsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaCustomDimension;
 }
-export const PatchPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1915,7 +1907,7 @@ export interface PatchPropertiesCustomMetricsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaCustomMetric;
 }
-export const PatchPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1939,7 +1931,7 @@ export interface PatchPropertiesDataStreamsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaDataStream;
 }
-export const PatchPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1963,19 +1955,18 @@ export interface PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 }
-export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://analyticsadmin.googleapis.com/",
-      }),
-    ),
+const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleAnalyticsAdminV1betaMeasurementProtocolSecret.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://analyticsadmin.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest",
 }) as any as S.Schema<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -1988,7 +1979,7 @@ export interface PatchPropertiesGoogleAdsLinksRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaGoogleAdsLink;
 }
-export const PatchPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2012,7 +2003,7 @@ export interface PatchPropertiesKeyEventsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaKeyEvent;
 }
-export const PatchPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2035,7 +2026,7 @@ export interface GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
   /** Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud Console as a Redirect URI. */
   redirectUri?: string;
 }
-export const GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(GoogleAnalyticsAdminV1betaAccount),
     redirectUri: S.optional(S.String),
@@ -2048,7 +2039,7 @@ export interface ProvisionAccountTicketAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest;
 }
-export const ProvisionAccountTicketAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionAccountTicketAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2067,11 +2058,10 @@ export interface GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse {
   /** The param to be passed in the ToS link. */
   accountTicketId?: string;
 }
-export const GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountTicketId: S.optional(S.String),
-    }),
+const GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountTicketId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse>;
@@ -2081,7 +2071,7 @@ export type GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum
   | "ALPHANUMERIC"
   | "CASE_INSENSITIVE_ALPHANUMERIC"
   | "NUMERIC";
-export const GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum = S.String;
+const GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum = S.String;
 
 /** Sorts by dimension values. */
 export interface GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy {
@@ -2090,7 +2080,7 @@ export interface GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy {
   /** Controls the rule for dimension value ordering. */
   orderType?: GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionName: S.optional(S.String),
     orderType: S.optional(GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderByOrderTypeEnum),
@@ -2104,7 +2094,7 @@ export interface GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy {
   /** A metric name in the request to order by. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.optional(S.String),
   }),
@@ -2121,7 +2111,7 @@ export interface GoogleAnalyticsAdminV1betaAccessOrderBy {
   /** If true, sorts by descending order. If false or unspecified, sorts in ascending order. */
   desc?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaAccessOrderBy = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessOrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimension: S.optional(GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy),
     metric: S.optional(GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy),
@@ -2133,7 +2123,7 @@ export const GoogleAnalyticsAdminV1betaAccessOrderBy = /*@__PURE__*/ S.suspend((
 
 export type GoogleAnalyticsAdminV1betaAccessOrderByList =
   Array<GoogleAnalyticsAdminV1betaAccessOrderBy>;
-export const GoogleAnalyticsAdminV1betaAccessOrderByList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessOrderByList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccessOrderBy,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessOrderByList>;
 
@@ -2142,12 +2132,12 @@ export interface GoogleAnalyticsAdminV1betaAccessMetric {
   /** The API name of the metric. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of metrics supported in this API. Metrics are referenced by name in `metricFilter` & `orderBys`. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessMetric =
+const GoogleAnalyticsAdminV1betaAccessMetric =
   GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetric>;
 
 export type GoogleAnalyticsAdminV1betaAccessMetricList =
   Array<GoogleAnalyticsAdminV1betaAccessMetric>;
-export const GoogleAnalyticsAdminV1betaAccessMetricList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessMetricList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccessMetric,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricList>;
 
@@ -2158,7 +2148,7 @@ export interface GoogleAnalyticsAdminV1betaAccessDateRange {
   /** The inclusive start date for the query in the format `YYYY-MM-DD`. Cannot be after `endDate`. The format `NdaysAgo`, `yesterday`, or `today` is also accepted, and in that case, the date is inferred based on the current time in the request's time zone. */
   startDate?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessDateRange = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.String),
     startDate: S.optional(S.String),
@@ -2169,7 +2159,7 @@ export const GoogleAnalyticsAdminV1betaAccessDateRange = /*@__PURE__*/ S.suspend
 
 export type GoogleAnalyticsAdminV1betaAccessDateRangeList =
   Array<GoogleAnalyticsAdminV1betaAccessDateRange>;
-export const GoogleAnalyticsAdminV1betaAccessDateRangeList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessDateRangeList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccessDateRange,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDateRangeList>;
 
@@ -2178,7 +2168,7 @@ export interface GoogleAnalyticsAdminV1betaAccessDimension {
   /** The API name of the dimension. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of dimensions supported in this API. Dimensions are referenced by name in `dimensionFilter` and `orderBys`. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessDimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionName: S.optional(S.String),
   }),
@@ -2188,7 +2178,7 @@ export const GoogleAnalyticsAdminV1betaAccessDimension = /*@__PURE__*/ S.suspend
 
 export type GoogleAnalyticsAdminV1betaAccessDimensionList =
   Array<GoogleAnalyticsAdminV1betaAccessDimension>;
-export const GoogleAnalyticsAdminV1betaAccessDimensionList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessDimensionList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccessDimension,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionList>;
 
@@ -2199,7 +2189,7 @@ export interface GoogleAnalyticsAdminV1betaNumericValue {
   /** Integer value */
   int64Value?: string;
 }
-export const GoogleAnalyticsAdminV1betaNumericValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaNumericValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleValue: S.optional(S.Number),
     int64Value: S.optional(S.String),
@@ -2215,7 +2205,7 @@ export interface GoogleAnalyticsAdminV1betaAccessBetweenFilter {
   /** Ends with this number. */
   toValue?: GoogleAnalyticsAdminV1betaNumericValue;
 }
-export const GoogleAnalyticsAdminV1betaAccessBetweenFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessBetweenFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromValue: S.optional(GoogleAnalyticsAdminV1betaNumericValue),
     toValue: S.optional(GoogleAnalyticsAdminV1betaNumericValue),
@@ -2232,7 +2222,7 @@ export type GoogleAnalyticsAdminV1betaAccessStringFilterMatchTypeEnum =
   | "CONTAINS"
   | "FULL_REGEXP"
   | "PARTIAL_REGEXP";
-export const GoogleAnalyticsAdminV1betaAccessStringFilterMatchTypeEnum = S.String;
+const GoogleAnalyticsAdminV1betaAccessStringFilterMatchTypeEnum = S.String;
 
 /** The filter for strings. */
 export interface GoogleAnalyticsAdminV1betaAccessStringFilter {
@@ -2243,7 +2233,7 @@ export interface GoogleAnalyticsAdminV1betaAccessStringFilter {
   /** The string value used for the matching. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessStringFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessStringFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caseSensitive: S.optional(S.Boolean),
     matchType: S.optional(GoogleAnalyticsAdminV1betaAccessStringFilterMatchTypeEnum),
@@ -2254,7 +2244,7 @@ export const GoogleAnalyticsAdminV1betaAccessStringFilter = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessStringFilter>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The result needs to be in a list of string values. */
 export interface GoogleAnalyticsAdminV1betaAccessInListFilter {
@@ -2263,7 +2253,7 @@ export interface GoogleAnalyticsAdminV1betaAccessInListFilter {
   /** If true, the string value is case sensitive. */
   caseSensitive?: boolean;
 }
-export const GoogleAnalyticsAdminV1betaAccessInListFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessInListFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
     caseSensitive: S.optional(S.Boolean),
@@ -2279,7 +2269,7 @@ export type GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum =
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL";
-export const GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum = S.String;
+const GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum = S.String;
 
 /** Filters for numeric or date values. */
 export interface GoogleAnalyticsAdminV1betaAccessNumericFilter {
@@ -2288,7 +2278,7 @@ export interface GoogleAnalyticsAdminV1betaAccessNumericFilter {
   /** The operation type for this filter. */
   operation?: GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum | (string & {});
 }
-export const GoogleAnalyticsAdminV1betaAccessNumericFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessNumericFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GoogleAnalyticsAdminV1betaNumericValue),
     operation: S.optional(GoogleAnalyticsAdminV1betaAccessNumericFilterOperationEnum),
@@ -2310,7 +2300,7 @@ export interface GoogleAnalyticsAdminV1betaAccessFilter {
   /** A filter for numeric or date values. */
   numericFilter?: GoogleAnalyticsAdminV1betaAccessNumericFilter;
 }
-export const GoogleAnalyticsAdminV1betaAccessFilter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     betweenFilter: S.optional(GoogleAnalyticsAdminV1betaAccessBetweenFilter),
     fieldName: S.optional(S.String),
@@ -2324,7 +2314,7 @@ export const GoogleAnalyticsAdminV1betaAccessFilter = /*@__PURE__*/ S.suspend(()
 
 export type GoogleAnalyticsAdminV1betaAccessFilterExpressionList_ =
   Array<GoogleAnalyticsAdminV1betaAccessFilterExpression>;
-export const GoogleAnalyticsAdminV1betaAccessFilterExpressionList_ = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessFilterExpressionList_ = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GoogleAnalyticsAdminV1betaAccessFilterExpression),
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessFilterExpressionList_>;
 
@@ -2333,7 +2323,7 @@ export interface GoogleAnalyticsAdminV1betaAccessFilterExpressionList {
   /** A list of filter expressions. */
   expressions?: GoogleAnalyticsAdminV1betaAccessFilterExpressionList_;
 }
-export const GoogleAnalyticsAdminV1betaAccessFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessFilterExpressionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expressions: S.optional(GoogleAnalyticsAdminV1betaAccessFilterExpressionList_),
   }),
@@ -2352,7 +2342,7 @@ export interface GoogleAnalyticsAdminV1betaAccessFilterExpression {
   /** Each of the FilterExpressions in the or_group has an OR relationship. */
   orGroup?: GoogleAnalyticsAdminV1betaAccessFilterExpressionList;
 }
-export const GoogleAnalyticsAdminV1betaAccessFilterExpression = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessFilterExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessFilter: S.optional(GoogleAnalyticsAdminV1betaAccessFilter),
     andGroup: S.optional(GoogleAnalyticsAdminV1betaAccessFilterExpressionList),
@@ -2390,7 +2380,7 @@ export interface GoogleAnalyticsAdminV1betaRunAccessReportRequest {
   /** Metric filters allow you to restrict report response to specific metric values which match the filter. Metric filters are applied after aggregating the report's rows, similar to SQL having-clause. Dimensions cannot be used in this filter. */
   metricFilter?: GoogleAnalyticsAdminV1betaAccessFilterExpression;
 }
-export const GoogleAnalyticsAdminV1betaRunAccessReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaRunAccessReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.String),
     expandGroups: S.optional(S.Boolean),
@@ -2415,7 +2405,7 @@ export interface RunAccessReportAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaRunAccessReportRequest;
 }
-export const RunAccessReportAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAccessReportAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaRunAccessReportRequest.pipe(T.HttpBody())),
@@ -2435,12 +2425,9 @@ export interface GoogleAnalyticsAdminV1betaAccessMetricHeader {
   /** The metric's name; for example 'accessCount'. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessMetricHeader =
-  GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
-
 export type GoogleAnalyticsAdminV1betaAccessMetricHeaderList =
   Array<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
-export const GoogleAnalyticsAdminV1betaAccessMetricHeaderList =
+const GoogleAnalyticsAdminV1betaAccessMetricHeaderList =
   GoogleAnalyticsAdminV1betaAccessMetricList as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricHeaderList>;
 
 /** The value of a metric. */
@@ -2448,7 +2435,7 @@ export interface GoogleAnalyticsAdminV1betaAccessMetricValue {
   /** The measurement value. For example, this value may be '13'. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessMetricValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessMetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -2458,7 +2445,7 @@ export const GoogleAnalyticsAdminV1betaAccessMetricValue = /*@__PURE__*/ S.suspe
 
 export type GoogleAnalyticsAdminV1betaAccessMetricValueList =
   Array<GoogleAnalyticsAdminV1betaAccessMetricValue>;
-export const GoogleAnalyticsAdminV1betaAccessMetricValueList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessMetricValueList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccessMetricValue,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricValueList>;
 
@@ -2467,12 +2454,9 @@ export interface GoogleAnalyticsAdminV1betaAccessDimensionValue {
   /** The dimension value. For example, this value may be 'France' for the 'country' dimension. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessDimensionValue =
-  GoogleAnalyticsAdminV1betaAccessMetricValue as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
-
 export type GoogleAnalyticsAdminV1betaAccessDimensionValueList =
   Array<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
-export const GoogleAnalyticsAdminV1betaAccessDimensionValueList =
+const GoogleAnalyticsAdminV1betaAccessDimensionValueList =
   GoogleAnalyticsAdminV1betaAccessMetricValueList as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionValueList>;
 
 /** Access report data for each row. */
@@ -2482,7 +2466,7 @@ export interface GoogleAnalyticsAdminV1betaAccessRow {
   /** List of dimension values. These values are in the same order as specified in the request. */
   dimensionValues?: GoogleAnalyticsAdminV1betaAccessDimensionValueList;
 }
-export const GoogleAnalyticsAdminV1betaAccessRow = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricValues: S.optional(GoogleAnalyticsAdminV1betaAccessMetricValueList),
     dimensionValues: S.optional(GoogleAnalyticsAdminV1betaAccessDimensionValueList),
@@ -2492,7 +2476,7 @@ export const GoogleAnalyticsAdminV1betaAccessRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessRow>;
 
 export type GoogleAnalyticsAdminV1betaAccessRowList = Array<GoogleAnalyticsAdminV1betaAccessRow>;
-export const GoogleAnalyticsAdminV1betaAccessRowList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaAccessRowList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaAccessRow,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessRowList>;
 
@@ -2501,12 +2485,9 @@ export interface GoogleAnalyticsAdminV1betaAccessDimensionHeader {
   /** The dimension's name; for example 'userEmail'. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessDimensionHeader =
-  GoogleAnalyticsAdminV1betaAccessDimension as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
-
 export type GoogleAnalyticsAdminV1betaAccessDimensionHeaderList =
   Array<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
-export const GoogleAnalyticsAdminV1betaAccessDimensionHeaderList =
+const GoogleAnalyticsAdminV1betaAccessDimensionHeaderList =
   GoogleAnalyticsAdminV1betaAccessDimensionList as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionHeaderList>;
 
 /** Current state for a particular quota group. */
@@ -2516,7 +2497,7 @@ export interface GoogleAnalyticsAdminV1betaAccessQuotaStatus {
   /** Quota consumed by this request. */
   consumed?: number;
 }
-export const GoogleAnalyticsAdminV1betaAccessQuotaStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessQuotaStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remaining: S.optional(S.Number),
     consumed: S.optional(S.Number),
@@ -2538,7 +2519,7 @@ export interface GoogleAnalyticsAdminV1betaAccessQuota {
   /** Properties can use 250,000 tokens per day. Most requests consume fewer than 10 tokens. */
   tokensPerDay?: GoogleAnalyticsAdminV1betaAccessQuotaStatus;
 }
-export const GoogleAnalyticsAdminV1betaAccessQuota = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaAccessQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokensPerHour: S.optional(GoogleAnalyticsAdminV1betaAccessQuotaStatus),
     concurrentRequests: S.optional(GoogleAnalyticsAdminV1betaAccessQuotaStatus),
@@ -2563,7 +2544,7 @@ export interface GoogleAnalyticsAdminV1betaRunAccessReportResponse {
   /** The quota state for this Analytics property including this request. This field doesn't work with account-level requests. */
   quota?: GoogleAnalyticsAdminV1betaAccessQuota;
 }
-export const GoogleAnalyticsAdminV1betaRunAccessReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaRunAccessReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricHeaders: S.optional(GoogleAnalyticsAdminV1betaAccessMetricHeaderList),
     rows: S.optional(GoogleAnalyticsAdminV1betaAccessRowList),
@@ -2581,7 +2562,7 @@ export interface RunAccessReportPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaRunAccessReportRequest;
 }
-export const RunAccessReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAccessReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaRunAccessReportRequest.pipe(T.HttpBody())),
@@ -2601,12 +2582,10 @@ export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItem
   | "CREATED"
   | "UPDATED"
   | "DELETED";
-export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnum = S.String;
-
 export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList = Array<
   GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnum | (string & {})
 >;
-export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList =
+const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList =
   GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList>;
 
 export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
@@ -2625,14 +2604,11 @@ export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTy
   | "DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL"
   | "DATA_STREAM"
   | "ATTRIBUTION_SETTINGS";
-export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
-  S.String;
-
 export type GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
   Array<
     GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnum | (string & {})
   >;
-export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
+const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
   GoogleAnalyticsAdminV1betaCustomMetricRestrictedMetricTypeItemEnumList as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
 
 /** Request message for SearchChangeHistoryEvents RPC. */
@@ -2654,22 +2630,21 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
   /** Optional. The maximum number of ChangeHistoryEvent items to return. If unspecified, at most 50 items will be returned. The maximum value is 200 (higher values will be coerced to the maximum). Note that the service may return a page with fewer items than this value specifies (potentially even zero), and that there still may be additional pages. If you want a particular number of items, you'll need to continue requesting additional pages using `page_token` until you get the needed number. */
   pageSize?: number;
 }
-export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: S.optional(
-        GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList,
-      ),
-      actorEmail: S.optional(StringList),
-      resourceType: S.optional(
-        GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList,
-      ),
-      property: S.optional(S.String),
-      earliestChangeTime: S.optional(S.String),
-      pageToken: S.optional(S.String),
-      latestChangeTime: S.optional(S.String),
-      pageSize: S.optional(S.Number),
-    }),
+const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(
+      GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestActionItemEnumList,
+    ),
+    actorEmail: S.optional(StringList),
+    resourceType: S.optional(
+      GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequestResourceTypeItemEnumList,
+    ),
+    property: S.optional(S.String),
+    earliestChangeTime: S.optional(S.String),
+    pageToken: S.optional(S.String),
+    latestChangeTime: S.optional(S.String),
+    pageSize: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest",
 }) as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest>;
@@ -2680,7 +2655,7 @@ export interface SearchChangeHistoryEventsAccountsRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest;
 }
-export const SearchChangeHistoryEventsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchChangeHistoryEventsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.String.pipe(T.Label()),
     body: S.optional(GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest.pipe(T.HttpBody())),
@@ -2700,14 +2675,14 @@ export type GoogleAnalyticsAdminV1betaChangeHistoryEventActorTypeEnum =
   | "USER"
   | "SYSTEM"
   | "SUPPORT";
-export const GoogleAnalyticsAdminV1betaChangeHistoryEventActorTypeEnum = S.String;
+const GoogleAnalyticsAdminV1betaChangeHistoryEventActorTypeEnum = S.String;
 
 export type GoogleAnalyticsAdminV1betaChangeHistoryChangeActionEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "CREATED"
   | "UPDATED"
   | "DELETED";
-export const GoogleAnalyticsAdminV1betaChangeHistoryChangeActionEnum = S.String;
+const GoogleAnalyticsAdminV1betaChangeHistoryChangeActionEnum = S.String;
 
 /** A snapshot of a resource as before or after the result of a change in change history. */
 export interface GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource {
@@ -2728,8 +2703,8 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResou
   /** A snapshot of a Property resource in change history. */
   property?: GoogleAnalyticsAdminV1betaProperty;
 }
-export const GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       googleAdsLink: S.optional(GoogleAnalyticsAdminV1betaGoogleAdsLink),
       conversionEvent: S.optional(GoogleAnalyticsAdminV1betaConversionEvent),
@@ -2740,9 +2715,9 @@ export const GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource 
       dataStream: S.optional(GoogleAnalyticsAdminV1betaDataStream),
       property: S.optional(GoogleAnalyticsAdminV1betaProperty),
     }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource>;
+).annotate({
+  identifier: "GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource",
+}) as any as S.Schema<GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource>;
 
 /** A description of a change to a single Google Analytics resource. */
 export interface GoogleAnalyticsAdminV1betaChangeHistoryChange {
@@ -2755,7 +2730,7 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryChange {
   /** Resource contents from after the change was made. If this resource was deleted in this change, this field will be missing. */
   resourceAfterChange?: GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource;
 }
-export const GoogleAnalyticsAdminV1betaChangeHistoryChange = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaChangeHistoryChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(GoogleAnalyticsAdminV1betaChangeHistoryChangeActionEnum),
     resource: S.optional(S.String),
@@ -2772,7 +2747,7 @@ export const GoogleAnalyticsAdminV1betaChangeHistoryChange = /*@__PURE__*/ S.sus
 
 export type GoogleAnalyticsAdminV1betaChangeHistoryChangeList =
   Array<GoogleAnalyticsAdminV1betaChangeHistoryChange>;
-export const GoogleAnalyticsAdminV1betaChangeHistoryChangeList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaChangeHistoryChangeList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaChangeHistoryChange,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaChangeHistoryChangeList>;
 
@@ -2791,7 +2766,7 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryEvent {
   /** ID of this change history event. This ID is unique across Google Analytics. */
   id?: string;
 }
-export const GoogleAnalyticsAdminV1betaChangeHistoryEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsAdminV1betaChangeHistoryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeTime: S.optional(S.String),
     changesFiltered: S.optional(S.Boolean),
@@ -2806,7 +2781,7 @@ export const GoogleAnalyticsAdminV1betaChangeHistoryEvent = /*@__PURE__*/ S.susp
 
 export type GoogleAnalyticsAdminV1betaChangeHistoryEventList =
   Array<GoogleAnalyticsAdminV1betaChangeHistoryEvent>;
-export const GoogleAnalyticsAdminV1betaChangeHistoryEventList = /*@__PURE__*/ S.Array(
+const GoogleAnalyticsAdminV1betaChangeHistoryEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1betaChangeHistoryEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1betaChangeHistoryEventList>;
 
@@ -2817,12 +2792,11 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse {
   /** Results that were accessible to the caller. */
   changeHistoryEvents?: GoogleAnalyticsAdminV1betaChangeHistoryEventList;
 }
-export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      changeHistoryEvents: S.optional(GoogleAnalyticsAdminV1betaChangeHistoryEventList),
-    }),
+const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    changeHistoryEvents: S.optional(GoogleAnalyticsAdminV1betaChangeHistoryEventList),
+  }),
 ).annotate({
   identifier: "GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse",
 }) as any as S.Schema<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse>;
@@ -2835,7 +2809,7 @@ export interface UpdateDataRetentionSettingsPropertiesRequest {
   /** Request body */
   body?: GoogleAnalyticsAdminV1betaDataRetentionSettings;
 }
-export const UpdateDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataRetentionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

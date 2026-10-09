@@ -276,7 +276,7 @@ export interface AbortEnvironmentUpdateMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-export const AbortEnvironmentUpdateMessage = /*@__PURE__*/ S.suspend(() =>
+const AbortEnvironmentUpdateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -284,7 +284,7 @@ export const AbortEnvironmentUpdateMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbortEnvironmentUpdateMessage",
 }) as any as S.Schema<AbortEnvironmentUpdateMessage>;
 export interface AbortEnvironmentUpdateResponse {}
-export const AbortEnvironmentUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AbortEnvironmentUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "AbortEnvironmentUpdateResponse",
@@ -294,7 +294,7 @@ export interface ApplyEnvironmentManagedActionRequest {
   EnvironmentId?: string;
   ActionId: string;
 }
-export const ApplyEnvironmentManagedActionRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyEnvironmentManagedActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     EnvironmentId: S.optional(S.String),
@@ -304,7 +304,7 @@ export const ApplyEnvironmentManagedActionRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "ApplyEnvironmentManagedActionRequest",
 }) as any as S.Schema<ApplyEnvironmentManagedActionRequest>;
 export type ActionType = "InstanceRefresh" | "PlatformUpdate" | "Unknown" | (string & {});
-export const ActionType = S.String;
+const ActionType = S.String;
 
 export interface ApplyEnvironmentManagedActionResult {
   ActionId?: string;
@@ -312,7 +312,7 @@ export interface ApplyEnvironmentManagedActionResult {
   ActionType?: ActionType;
   Status?: string;
 }
-export const ApplyEnvironmentManagedActionResult = /*@__PURE__*/ S.suspend(() =>
+const ApplyEnvironmentManagedActionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ActionId: S.optional(S.String),
     ActionDescription: S.optional(S.String),
@@ -327,7 +327,7 @@ export interface AssociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
   OperationsRole: string;
 }
-export const AssociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend(() =>
+const AssociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentName: S.String, OperationsRole: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -335,7 +335,7 @@ export const AssociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend
   identifier: "AssociateEnvironmentOperationsRoleMessage",
 }) as any as S.Schema<AssociateEnvironmentOperationsRoleMessage>;
 export interface AssociateEnvironmentOperationsRoleResponse {}
-export const AssociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "AssociateEnvironmentOperationsRoleResponse",
@@ -344,7 +344,7 @@ export type DNSCnamePrefix = string;
 export interface CheckDNSAvailabilityMessage {
   CNAMEPrefix: string;
 }
-export const CheckDNSAvailabilityMessage = /*@__PURE__*/ S.suspend(() =>
+const CheckDNSAvailabilityMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CNAMEPrefix: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -357,7 +357,7 @@ export interface CheckDNSAvailabilityResultMessage {
   Available?: boolean;
   FullyQualifiedCNAME?: string;
 }
-export const CheckDNSAvailabilityResultMessage = /*@__PURE__*/ S.suspend(() =>
+const CheckDNSAvailabilityResultMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Available: S.optional(S.Boolean), FullyQualifiedCNAME: S.optional(S.String) }).pipe(
     ns,
   ),
@@ -368,13 +368,13 @@ export type ApplicationName = string;
 export type GroupName = string;
 export type VersionLabel = string;
 export type VersionLabels = string[];
-export const VersionLabels = /*@__PURE__*/ S.Array(S.String);
+const VersionLabels = /*@__PURE__*/ S.Array(S.String);
 export interface ComposeEnvironmentsMessage {
   ApplicationName?: string;
   GroupName?: string;
   VersionLabels?: string[];
 }
-export const ComposeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
+const ComposeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     GroupName: S.optional(S.String),
@@ -400,11 +400,11 @@ export type EnvironmentStatus =
   | "Terminating"
   | "Terminated"
   | (string & {});
-export const EnvironmentStatus = S.String;
+const EnvironmentStatus = S.String;
 
 export type AbortableOperationInProgress = boolean;
 export type EnvironmentHealth = "Green" | "Yellow" | "Red" | "Grey" | (string & {});
-export const EnvironmentHealth = S.String;
+const EnvironmentHealth = S.String;
 
 export type EnvironmentHealthStatus =
   | "NoData"
@@ -417,23 +417,23 @@ export type EnvironmentHealthStatus =
   | "Severe"
   | "Suspended"
   | (string & {});
-export const EnvironmentHealthStatus = S.String;
+const EnvironmentHealthStatus = S.String;
 
 export interface Listener {
   Protocol?: string;
   Port?: number;
 }
-export const Listener = /*@__PURE__*/ S.suspend(() =>
+const Listener = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Protocol: S.optional(S.String), Port: S.optional(S.Number) }),
 ).annotate({ identifier: "Listener" }) as any as S.Schema<Listener>;
 export type LoadBalancerListenersDescription = Listener[];
-export const LoadBalancerListenersDescription = /*@__PURE__*/ S.Array(Listener);
+const LoadBalancerListenersDescription = /*@__PURE__*/ S.Array(Listener);
 export interface LoadBalancerDescription {
   LoadBalancerName?: string;
   Domain?: string;
   Listeners?: Listener[];
 }
-export const LoadBalancerDescription = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LoadBalancerName: S.optional(S.String),
     Domain: S.optional(S.String),
@@ -443,7 +443,7 @@ export const LoadBalancerDescription = /*@__PURE__*/ S.suspend(() =>
 export interface EnvironmentResourcesDescription {
   LoadBalancer?: LoadBalancerDescription;
 }
-export const EnvironmentResourcesDescription = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentResourcesDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LoadBalancer: S.optional(LoadBalancerDescription) }),
 ).annotate({
   identifier: "EnvironmentResourcesDescription",
@@ -453,7 +453,7 @@ export interface EnvironmentTier {
   Type?: string;
   Version?: string;
 }
-export const EnvironmentTier = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Type: S.optional(S.String),
@@ -464,11 +464,11 @@ export interface EnvironmentLink {
   LinkName?: string;
   EnvironmentName?: string;
 }
-export const EnvironmentLink = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LinkName: S.optional(S.String), EnvironmentName: S.optional(S.String) }),
 ).annotate({ identifier: "EnvironmentLink" }) as any as S.Schema<EnvironmentLink>;
 export type EnvironmentLinks = EnvironmentLink[];
-export const EnvironmentLinks = /*@__PURE__*/ S.Array(EnvironmentLink);
+const EnvironmentLinks = /*@__PURE__*/ S.Array(EnvironmentLink);
 export type EnvironmentArn = string;
 export interface EnvironmentDescription {
   EnvironmentName?: string;
@@ -493,7 +493,7 @@ export interface EnvironmentDescription {
   EnvironmentArn?: string;
   OperationsRole?: string;
 }
-export const EnvironmentDescription = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     EnvironmentId: S.optional(S.String),
@@ -519,13 +519,13 @@ export const EnvironmentDescription = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "EnvironmentDescription" }) as any as S.Schema<EnvironmentDescription>;
 export type EnvironmentDescriptionsList = EnvironmentDescription[];
-export const EnvironmentDescriptionsList = /*@__PURE__*/ S.Array(EnvironmentDescription);
+const EnvironmentDescriptionsList = /*@__PURE__*/ S.Array(EnvironmentDescription);
 export type Token = string;
 export interface EnvironmentDescriptionsMessage {
   Environments?: EnvironmentDescription[];
   NextToken?: string;
 }
-export const EnvironmentDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Environments: S.optional(EnvironmentDescriptionsList),
     NextToken: S.optional(S.String),
@@ -540,7 +540,7 @@ export interface MaxCountRule {
   MaxCount?: number;
   DeleteSourceFromS3?: boolean;
 }
-export const MaxCountRule = /*@__PURE__*/ S.suspend(() =>
+const MaxCountRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.Boolean,
     MaxCount: S.optional(S.Number),
@@ -552,7 +552,7 @@ export interface MaxAgeRule {
   MaxAgeInDays?: number;
   DeleteSourceFromS3?: boolean;
 }
-export const MaxAgeRule = /*@__PURE__*/ S.suspend(() =>
+const MaxAgeRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.Boolean,
     MaxAgeInDays: S.optional(S.Number),
@@ -563,7 +563,7 @@ export interface ApplicationVersionLifecycleConfig {
   MaxCountRule?: MaxCountRule;
   MaxAgeRule?: MaxAgeRule;
 }
-export const ApplicationVersionLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
+const ApplicationVersionLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxCountRule: S.optional(MaxCountRule), MaxAgeRule: S.optional(MaxAgeRule) }),
 ).annotate({
   identifier: "ApplicationVersionLifecycleConfig",
@@ -572,7 +572,7 @@ export interface ApplicationResourceLifecycleConfig {
   ServiceRole?: string;
   VersionLifecycleConfig?: ApplicationVersionLifecycleConfig;
 }
-export const ApplicationResourceLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
+const ApplicationResourceLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceRole: S.optional(S.String),
     VersionLifecycleConfig: S.optional(ApplicationVersionLifecycleConfig),
@@ -586,18 +586,18 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-export const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ S.Array(Tag);
 export interface CreateApplicationMessage {
   ApplicationName: string;
   Description?: string;
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
   Tags?: Tag[];
 }
-export const CreateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     Description: S.optional(S.String),
@@ -607,9 +607,9 @@ export const CreateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateApplicationMessage" }) as any as S.Schema<CreateApplicationMessage>;
 export type ApplicationArn = string;
 export type VersionLabelsList = string[];
-export const VersionLabelsList = /*@__PURE__*/ S.Array(S.String);
+const VersionLabelsList = /*@__PURE__*/ S.Array(S.String);
 export type ConfigurationTemplateNamesList = string[];
-export const ConfigurationTemplateNamesList = /*@__PURE__*/ S.Array(S.String);
+const ConfigurationTemplateNamesList = /*@__PURE__*/ S.Array(S.String);
 export interface ApplicationDescription {
   ApplicationArn?: string;
   ApplicationName?: string;
@@ -620,7 +620,7 @@ export interface ApplicationDescription {
   ConfigurationTemplates?: string[];
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
 }
-export const ApplicationDescription = /*@__PURE__*/ S.suspend(() =>
+const ApplicationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationArn: S.optional(S.String),
     ApplicationName: S.optional(S.String),
@@ -635,16 +635,16 @@ export const ApplicationDescription = /*@__PURE__*/ S.suspend(() =>
 export interface ApplicationDescriptionMessage {
   Application?: ApplicationDescription;
 }
-export const ApplicationDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const ApplicationDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Application: S.optional(ApplicationDescription) }).pipe(ns),
 ).annotate({
   identifier: "ApplicationDescriptionMessage",
 }) as any as S.Schema<ApplicationDescriptionMessage>;
 export type SourceType = "Git" | "Zip" | (string & {});
-export const SourceType = S.String;
+const SourceType = S.String;
 
 export type SourceRepository = "CodeCommit" | "S3" | (string & {});
-export const SourceRepository = S.String;
+const SourceRepository = S.String;
 
 export type SourceLocation = string;
 export interface SourceBuildInformation {
@@ -652,7 +652,7 @@ export interface SourceBuildInformation {
   SourceRepository: SourceRepository;
   SourceLocation: string;
 }
-export const SourceBuildInformation = /*@__PURE__*/ S.suspend(() =>
+const SourceBuildInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceType: SourceType,
     SourceRepository: SourceRepository,
@@ -665,7 +665,7 @@ export interface S3Location {
   S3Bucket?: string;
   S3Key?: string;
 }
-export const S3Location = /*@__PURE__*/ S.suspend(() =>
+const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Bucket: S.optional(S.String), S3Key: S.optional(S.String) }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export type NonEmptyString = string;
@@ -674,7 +674,7 @@ export type ComputeType =
   | "BUILD_GENERAL1_MEDIUM"
   | "BUILD_GENERAL1_LARGE"
   | (string & {});
-export const ComputeType = S.String;
+const ComputeType = S.String;
 
 export interface BuildConfiguration {
   ArtifactName?: string;
@@ -683,7 +683,7 @@ export interface BuildConfiguration {
   Image: string;
   TimeoutInMinutes?: number;
 }
-export const BuildConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BuildConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ArtifactName: S.optional(S.String),
     CodeBuildServiceRole: S.String,
@@ -697,14 +697,14 @@ export type ApplicationVersionProccess = boolean;
 export interface ImageSource {
   Uri?: string;
 }
-export const ImageSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Uri: S.optional(S.String) }),
-).annotate({ identifier: "ImageSource" }) as any as S.Schema<ImageSource>;
+const ImageSource = /*@__PURE__*/ S.suspend(() => S.Struct({ Uri: S.optional(S.String) })).annotate(
+  { identifier: "ImageSource" },
+) as any as S.Schema<ImageSource>;
 export type ImageBuildType = "docker" | "buildpack" | (string & {});
-export const ImageBuildType = S.String;
+const ImageBuildType = S.String;
 
 export type ArchitectureType = "amd64" | "arm64" | (string & {});
-export const ArchitectureType = S.String;
+const ArchitectureType = S.String;
 
 export interface ImageBuildConfiguration {
   Type?: ImageBuildType;
@@ -715,7 +715,7 @@ export interface ImageBuildConfiguration {
   ComputeType?: ComputeType;
   TimeoutInMinutes?: number;
 }
-export const ImageBuildConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ImageBuildConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ImageBuildType),
     DockerfileLocation: S.optional(S.String),
@@ -730,7 +730,7 @@ export interface ImageConfiguration {
   Source?: ImageSource;
   Build?: ImageBuildConfiguration;
 }
-export const ImageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ImageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Source: S.optional(ImageSource), Build: S.optional(ImageBuildConfiguration) }),
 ).annotate({ identifier: "ImageConfiguration" }) as any as S.Schema<ImageConfiguration>;
 export interface CreateApplicationVersionMessage {
@@ -745,7 +745,7 @@ export interface CreateApplicationVersionMessage {
   Tags?: Tag[];
   ImageConfiguration?: ImageConfiguration;
 }
-export const CreateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     VersionLabel: S.String,
@@ -769,7 +769,7 @@ export type ApplicationVersionStatus =
   | "Processing"
   | "Building"
   | (string & {});
-export const ApplicationVersionStatus = S.String;
+const ApplicationVersionStatus = S.String;
 
 export interface ApplicationVersionDescription {
   ApplicationVersionArn?: string;
@@ -786,7 +786,7 @@ export interface ApplicationVersionDescription {
   DateUpdated?: Date;
   Status?: ApplicationVersionStatus;
 }
-export const ApplicationVersionDescription = /*@__PURE__*/ S.suspend(() =>
+const ApplicationVersionDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationVersionArn: S.optional(S.String),
     ApplicationName: S.optional(S.String),
@@ -808,7 +808,7 @@ export const ApplicationVersionDescription = /*@__PURE__*/ S.suspend(() =>
 export interface ApplicationVersionDescriptionMessage {
   ApplicationVersion?: ApplicationVersionDescription;
 }
-export const ApplicationVersionDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const ApplicationVersionDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationVersion: S.optional(ApplicationVersionDescription) }).pipe(ns),
 ).annotate({
   identifier: "ApplicationVersionDescriptionMessage",
@@ -817,7 +817,7 @@ export interface SourceConfiguration {
   ApplicationName?: string;
   TemplateName?: string;
 }
-export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationName: S.optional(S.String), TemplateName: S.optional(S.String) }),
 ).annotate({ identifier: "SourceConfiguration" }) as any as S.Schema<SourceConfiguration>;
 export type ResourceName = string;
@@ -830,7 +830,7 @@ export interface ConfigurationOptionSetting {
   OptionName?: string;
   Value?: string;
 }
-export const ConfigurationOptionSetting = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationOptionSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceName: S.optional(S.String),
     Namespace: S.optional(S.String),
@@ -841,7 +841,7 @@ export const ConfigurationOptionSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationOptionSetting",
 }) as any as S.Schema<ConfigurationOptionSetting>;
 export type ConfigurationOptionSettingsList = ConfigurationOptionSetting[];
-export const ConfigurationOptionSettingsList = /*@__PURE__*/ S.Array(ConfigurationOptionSetting);
+const ConfigurationOptionSettingsList = /*@__PURE__*/ S.Array(ConfigurationOptionSetting);
 export interface CreateConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
@@ -853,7 +853,7 @@ export interface CreateConfigurationTemplateMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   Tags?: Tag[];
 }
-export const CreateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     TemplateName: S.String,
@@ -869,7 +869,7 @@ export const CreateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConfigurationTemplateMessage",
 }) as any as S.Schema<CreateConfigurationTemplateMessage>;
 export type ConfigurationDeploymentStatus = "deployed" | "pending" | "failed" | (string & {});
-export const ConfigurationDeploymentStatus = S.String;
+const ConfigurationDeploymentStatus = S.String;
 
 export interface ConfigurationSettingsDescription {
   SolutionStackName?: string;
@@ -883,7 +883,7 @@ export interface ConfigurationSettingsDescription {
   DateUpdated?: Date;
   OptionSettings?: ConfigurationOptionSetting[];
 }
-export const ConfigurationSettingsDescription = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationSettingsDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SolutionStackName: S.optional(S.String),
     PlatformArn: S.optional(S.String),
@@ -904,7 +904,7 @@ export interface OptionSpecification {
   Namespace?: string;
   OptionName?: string;
 }
-export const OptionSpecification = /*@__PURE__*/ S.suspend(() =>
+const OptionSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceName: S.optional(S.String),
     Namespace: S.optional(S.String),
@@ -912,7 +912,7 @@ export const OptionSpecification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OptionSpecification" }) as any as S.Schema<OptionSpecification>;
 export type OptionsSpecifierList = OptionSpecification[];
-export const OptionsSpecifierList = /*@__PURE__*/ S.Array(OptionSpecification);
+const OptionsSpecifierList = /*@__PURE__*/ S.Array(OptionSpecification);
 export interface CreateEnvironmentMessage {
   ApplicationName: string;
   EnvironmentName?: string;
@@ -929,7 +929,7 @@ export interface CreateEnvironmentMessage {
   OptionsToRemove?: OptionSpecification[];
   OperationsRole?: string;
 }
-export const CreateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     EnvironmentName: S.optional(S.String),
@@ -957,7 +957,7 @@ export interface CreatePlatformVersionRequest {
   OptionSettings?: ConfigurationOptionSetting[];
   Tags?: Tag[];
 }
-export const CreatePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PlatformName: S.String,
     PlatformVersion: S.String,
@@ -977,17 +977,17 @@ export type PlatformStatus =
   | "Deleting"
   | "Deleted"
   | (string & {});
-export const PlatformStatus = S.String;
+const PlatformStatus = S.String;
 
 export type PlatformCategory = string;
 export type OperatingSystemName = string;
 export type OperatingSystemVersion = string;
 export type SupportedTier = string;
 export type SupportedTierList = string[];
-export const SupportedTierList = /*@__PURE__*/ S.Array(S.String);
+const SupportedTierList = /*@__PURE__*/ S.Array(S.String);
 export type SupportedAddon = string;
 export type SupportedAddonList = string[];
-export const SupportedAddonList = /*@__PURE__*/ S.Array(S.String);
+const SupportedAddonList = /*@__PURE__*/ S.Array(S.String);
 export type PlatformLifecycleState = string;
 export type BranchName = string;
 export type PlatformBranchLifecycleState = string;
@@ -1005,7 +1005,7 @@ export interface PlatformSummary {
   PlatformBranchName?: string;
   PlatformBranchLifecycleState?: string;
 }
-export const PlatformSummary = /*@__PURE__*/ S.suspend(() =>
+const PlatformSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PlatformArn: S.optional(S.String),
     PlatformOwner: S.optional(S.String),
@@ -1025,20 +1025,20 @@ export type ARN = string;
 export interface Builder {
   ARN?: string;
 }
-export const Builder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ARN: S.optional(S.String) }),
-).annotate({ identifier: "Builder" }) as any as S.Schema<Builder>;
+const Builder = /*@__PURE__*/ S.suspend(() => S.Struct({ ARN: S.optional(S.String) })).annotate({
+  identifier: "Builder",
+}) as any as S.Schema<Builder>;
 export interface CreatePlatformVersionResult {
   PlatformSummary?: PlatformSummary;
   Builder?: Builder;
 }
-export const CreatePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
+const CreatePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PlatformSummary: S.optional(PlatformSummary), Builder: S.optional(Builder) }).pipe(ns),
 ).annotate({
   identifier: "CreatePlatformVersionResult",
 }) as any as S.Schema<CreatePlatformVersionResult>;
 export interface CreateStorageLocationRequest {}
-export const CreateStorageLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({
   identifier: "CreateStorageLocationRequest",
@@ -1046,7 +1046,7 @@ export const CreateStorageLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateStorageLocationResultMessage {
   S3Bucket?: string;
 }
-export const CreateStorageLocationResultMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateStorageLocationResultMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Bucket: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "CreateStorageLocationResultMessage",
@@ -1056,15 +1056,13 @@ export interface DeleteApplicationMessage {
   ApplicationName: string;
   TerminateEnvByForce?: boolean;
 }
-export const DeleteApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationName: S.String, TerminateEnvByForce: S.optional(S.Boolean) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteApplicationMessage" }) as any as S.Schema<DeleteApplicationMessage>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
 export type DeleteSourceBundle = boolean;
@@ -1073,7 +1071,7 @@ export interface DeleteApplicationVersionMessage {
   VersionLabel: string;
   DeleteSourceBundle?: boolean;
 }
-export const DeleteApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     VersionLabel: S.String,
@@ -1083,7 +1081,7 @@ export const DeleteApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteApplicationVersionMessage",
 }) as any as S.Schema<DeleteApplicationVersionMessage>;
 export interface DeleteApplicationVersionResponse {}
-export const DeleteApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteApplicationVersionResponse",
@@ -1092,7 +1090,7 @@ export interface DeleteConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
 }
-export const DeleteConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationName: S.String, TemplateName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1100,7 +1098,7 @@ export const DeleteConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigurationTemplateMessage",
 }) as any as S.Schema<DeleteConfigurationTemplateMessage>;
 export interface DeleteConfigurationTemplateResponse {}
-export const DeleteConfigurationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteConfigurationTemplateResponse",
@@ -1109,7 +1107,7 @@ export interface DeleteEnvironmentConfigurationMessage {
   ApplicationName: string;
   EnvironmentName: string;
 }
-export const DeleteEnvironmentConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationName: S.String, EnvironmentName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1117,7 +1115,7 @@ export const DeleteEnvironmentConfigurationMessage = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteEnvironmentConfigurationMessage",
 }) as any as S.Schema<DeleteEnvironmentConfigurationMessage>;
 export interface DeleteEnvironmentConfigurationResponse {}
-export const DeleteEnvironmentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteEnvironmentConfigurationResponse",
@@ -1125,7 +1123,7 @@ export const DeleteEnvironmentConfigurationResponse = /*@__PURE__*/ S.suspend(()
 export interface DeletePlatformVersionRequest {
   PlatformArn?: string;
 }
-export const DeletePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1135,13 +1133,13 @@ export const DeletePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePlatformVersionResult {
   PlatformSummary?: PlatformSummary;
 }
-export const DeletePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
+const DeletePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PlatformSummary: S.optional(PlatformSummary) }).pipe(ns),
 ).annotate({
   identifier: "DeletePlatformVersionResult",
 }) as any as S.Schema<DeletePlatformVersionResult>;
 export interface DescribeAccountAttributesRequest {}
-export const DescribeAccountAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAccountAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({
   identifier: "DescribeAccountAttributesRequest",
@@ -1149,7 +1147,7 @@ export const DescribeAccountAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResourceQuota {
   Maximum?: number;
 }
-export const ResourceQuota = /*@__PURE__*/ S.suspend(() =>
+const ResourceQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Maximum: S.optional(S.Number) }),
 ).annotate({ identifier: "ResourceQuota" }) as any as S.Schema<ResourceQuota>;
 export interface ResourceQuotas {
@@ -1159,7 +1157,7 @@ export interface ResourceQuotas {
   ConfigurationTemplateQuota?: ResourceQuota;
   CustomPlatformQuota?: ResourceQuota;
 }
-export const ResourceQuotas = /*@__PURE__*/ S.suspend(() =>
+const ResourceQuotas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationQuota: S.optional(ResourceQuota),
     ApplicationVersionQuota: S.optional(ResourceQuota),
@@ -1171,17 +1169,17 @@ export const ResourceQuotas = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAccountAttributesResult {
   ResourceQuotas?: ResourceQuotas;
 }
-export const DescribeAccountAttributesResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeAccountAttributesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceQuotas: S.optional(ResourceQuotas) }).pipe(ns),
 ).annotate({
   identifier: "DescribeAccountAttributesResult",
 }) as any as S.Schema<DescribeAccountAttributesResult>;
 export type ApplicationNamesList = string[];
-export const ApplicationNamesList = /*@__PURE__*/ S.Array(S.String);
+const ApplicationNamesList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeApplicationsMessage {
   ApplicationNames?: string[];
 }
-export const DescribeApplicationsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeApplicationsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationNames: S.optional(ApplicationNamesList) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1189,11 +1187,11 @@ export const DescribeApplicationsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeApplicationsMessage",
 }) as any as S.Schema<DescribeApplicationsMessage>;
 export type ApplicationDescriptionList = ApplicationDescription[];
-export const ApplicationDescriptionList = /*@__PURE__*/ S.Array(ApplicationDescription);
+const ApplicationDescriptionList = /*@__PURE__*/ S.Array(ApplicationDescription);
 export interface ApplicationDescriptionsMessage {
   Applications?: ApplicationDescription[];
 }
-export const ApplicationDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const ApplicationDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Applications: S.optional(ApplicationDescriptionList) }).pipe(ns),
 ).annotate({
   identifier: "ApplicationDescriptionsMessage",
@@ -1205,7 +1203,7 @@ export interface DescribeApplicationVersionsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeApplicationVersionsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeApplicationVersionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     VersionLabels: S.optional(VersionLabelsList),
@@ -1216,14 +1214,12 @@ export const DescribeApplicationVersionsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeApplicationVersionsMessage",
 }) as any as S.Schema<DescribeApplicationVersionsMessage>;
 export type ApplicationVersionDescriptionList = ApplicationVersionDescription[];
-export const ApplicationVersionDescriptionList = /*@__PURE__*/ S.Array(
-  ApplicationVersionDescription,
-);
+const ApplicationVersionDescriptionList = /*@__PURE__*/ S.Array(ApplicationVersionDescription);
 export interface ApplicationVersionDescriptionsMessage {
   ApplicationVersions?: ApplicationVersionDescription[];
   NextToken?: string;
 }
-export const ApplicationVersionDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const ApplicationVersionDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationVersions: S.optional(ApplicationVersionDescriptionList),
     NextToken: S.optional(S.String),
@@ -1239,7 +1235,7 @@ export interface DescribeConfigurationOptionsMessage {
   PlatformArn?: string;
   Options?: OptionSpecification[];
 }
-export const DescribeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     TemplateName: S.optional(S.String),
@@ -1255,11 +1251,11 @@ export type ConfigurationOptionDefaultValue = string;
 export type ConfigurationOptionSeverity = string;
 export type UserDefinedOption = boolean;
 export type ConfigurationOptionValueType = "Scalar" | "List" | (string & {});
-export const ConfigurationOptionValueType = S.String;
+const ConfigurationOptionValueType = S.String;
 
 export type ConfigurationOptionPossibleValue = string;
 export type ConfigurationOptionPossibleValues = string[];
-export const ConfigurationOptionPossibleValues = /*@__PURE__*/ S.Array(S.String);
+const ConfigurationOptionPossibleValues = /*@__PURE__*/ S.Array(S.String);
 export type OptionRestrictionMinValue = number;
 export type OptionRestrictionMaxValue = number;
 export type OptionRestrictionMaxLength = number;
@@ -1269,7 +1265,7 @@ export interface OptionRestrictionRegex {
   Pattern?: string;
   Label?: string;
 }
-export const OptionRestrictionRegex = /*@__PURE__*/ S.suspend(() =>
+const OptionRestrictionRegex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Pattern: S.optional(S.String), Label: S.optional(S.String) }),
 ).annotate({ identifier: "OptionRestrictionRegex" }) as any as S.Schema<OptionRestrictionRegex>;
 export interface ConfigurationOptionDescription {
@@ -1285,7 +1281,7 @@ export interface ConfigurationOptionDescription {
   MaxLength?: number;
   Regex?: OptionRestrictionRegex;
 }
-export const ConfigurationOptionDescription = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationOptionDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Namespace: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1303,15 +1299,13 @@ export const ConfigurationOptionDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationOptionDescription",
 }) as any as S.Schema<ConfigurationOptionDescription>;
 export type ConfigurationOptionDescriptionsList = ConfigurationOptionDescription[];
-export const ConfigurationOptionDescriptionsList = /*@__PURE__*/ S.Array(
-  ConfigurationOptionDescription,
-);
+const ConfigurationOptionDescriptionsList = /*@__PURE__*/ S.Array(ConfigurationOptionDescription);
 export interface ConfigurationOptionsDescription {
   SolutionStackName?: string;
   PlatformArn?: string;
   Options?: ConfigurationOptionDescription[];
 }
-export const ConfigurationOptionsDescription = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationOptionsDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SolutionStackName: S.optional(S.String),
     PlatformArn: S.optional(S.String),
@@ -1325,7 +1319,7 @@ export interface DescribeConfigurationSettingsMessage {
   TemplateName?: string;
   EnvironmentName?: string;
 }
-export const DescribeConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     TemplateName: S.optional(S.String),
@@ -1335,13 +1329,13 @@ export const DescribeConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeConfigurationSettingsMessage",
 }) as any as S.Schema<DescribeConfigurationSettingsMessage>;
 export type ConfigurationSettingsDescriptionList = ConfigurationSettingsDescription[];
-export const ConfigurationSettingsDescriptionList = /*@__PURE__*/ S.Array(
+const ConfigurationSettingsDescriptionList = /*@__PURE__*/ S.Array(
   ConfigurationSettingsDescription,
 );
 export interface ConfigurationSettingsDescriptions {
   ConfigurationSettings?: ConfigurationSettingsDescription[];
 }
-export const ConfigurationSettingsDescriptions = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationSettingsDescriptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConfigurationSettings: S.optional(ConfigurationSettingsDescriptionList) }).pipe(ns),
 ).annotate({
   identifier: "ConfigurationSettingsDescriptions",
@@ -1356,16 +1350,16 @@ export type EnvironmentHealthAttribute =
   | "HealthStatus"
   | "RefreshedAt"
   | (string & {});
-export const EnvironmentHealthAttribute = S.String;
+const EnvironmentHealthAttribute = S.String;
 
 export type EnvironmentHealthAttributes = EnvironmentHealthAttribute[];
-export const EnvironmentHealthAttributes = /*@__PURE__*/ S.Array(EnvironmentHealthAttribute);
+const EnvironmentHealthAttributes = /*@__PURE__*/ S.Array(EnvironmentHealthAttribute);
 export interface DescribeEnvironmentHealthRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   AttributeNames?: EnvironmentHealthAttribute[];
 }
-export const DescribeEnvironmentHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     EnvironmentId: S.optional(S.String),
@@ -1376,7 +1370,7 @@ export const DescribeEnvironmentHealthRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEnvironmentHealthRequest>;
 export type Cause = string;
 export type Causes = string[];
-export const Causes = /*@__PURE__*/ S.Array(S.String);
+const Causes = /*@__PURE__*/ S.Array(S.String);
 export type RequestCount = number;
 export interface StatusCodes {
   Status2xx?: number;
@@ -1384,7 +1378,7 @@ export interface StatusCodes {
   Status4xx?: number;
   Status5xx?: number;
 }
-export const StatusCodes = /*@__PURE__*/ S.suspend(() =>
+const StatusCodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status2xx: S.optional(S.Number),
     Status3xx: S.optional(S.Number),
@@ -1402,7 +1396,7 @@ export interface Latency {
   P50?: number;
   P10?: number;
 }
-export const Latency = /*@__PURE__*/ S.suspend(() =>
+const Latency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     P999: S.optional(S.Number),
     P99: S.optional(S.Number),
@@ -1420,7 +1414,7 @@ export interface ApplicationMetrics {
   StatusCodes?: StatusCodes;
   Latency?: Latency;
 }
-export const ApplicationMetrics = /*@__PURE__*/ S.suspend(() =>
+const ApplicationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Duration: S.optional(S.Number),
     RequestCount: S.optional(S.Number),
@@ -1438,7 +1432,7 @@ export interface InstanceHealthSummary {
   Degraded?: number;
   Severe?: number;
 }
-export const InstanceHealthSummary = /*@__PURE__*/ S.suspend(() =>
+const InstanceHealthSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NoData: S.optional(S.Number),
     Unknown: S.optional(S.Number),
@@ -1461,7 +1455,7 @@ export interface DescribeEnvironmentHealthResult {
   InstancesHealth?: InstanceHealthSummary;
   RefreshedAt?: Date;
 }
-export const DescribeEnvironmentHealthResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentHealthResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     HealthStatus: S.optional(S.String),
@@ -1482,7 +1476,7 @@ export interface DescribeEnvironmentManagedActionHistoryRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-export const DescribeEnvironmentManagedActionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentManagedActionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentId: S.optional(S.String),
     EnvironmentName: S.optional(S.String),
@@ -1501,10 +1495,10 @@ export type FailureType =
   | "InvalidEnvironmentState"
   | "PermissionsError"
   | (string & {});
-export const FailureType = S.String;
+const FailureType = S.String;
 
 export type ActionHistoryStatus = "Completed" | "Failed" | "Unknown" | (string & {});
-export const ActionHistoryStatus = S.String;
+const ActionHistoryStatus = S.String;
 
 export interface ManagedActionHistoryItem {
   ActionId?: string;
@@ -1516,7 +1510,7 @@ export interface ManagedActionHistoryItem {
   ExecutedTime?: Date;
   FinishedTime?: Date;
 }
-export const ManagedActionHistoryItem = /*@__PURE__*/ S.suspend(() =>
+const ManagedActionHistoryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ActionId: S.optional(S.String),
     ActionType: S.optional(ActionType),
@@ -1529,12 +1523,12 @@ export const ManagedActionHistoryItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ManagedActionHistoryItem" }) as any as S.Schema<ManagedActionHistoryItem>;
 export type ManagedActionHistoryItems = ManagedActionHistoryItem[];
-export const ManagedActionHistoryItems = /*@__PURE__*/ S.Array(ManagedActionHistoryItem);
+const ManagedActionHistoryItems = /*@__PURE__*/ S.Array(ManagedActionHistoryItem);
 export interface DescribeEnvironmentManagedActionHistoryResult {
   ManagedActionHistoryItems?: ManagedActionHistoryItem[];
   NextToken?: string;
 }
-export const DescribeEnvironmentManagedActionHistoryResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentManagedActionHistoryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManagedActionHistoryItems: S.optional(ManagedActionHistoryItems),
     NextToken: S.optional(S.String),
@@ -1543,14 +1537,14 @@ export const DescribeEnvironmentManagedActionHistoryResult = /*@__PURE__*/ S.sus
   identifier: "DescribeEnvironmentManagedActionHistoryResult",
 }) as any as S.Schema<DescribeEnvironmentManagedActionHistoryResult>;
 export type ActionStatus = "Scheduled" | "Pending" | "Running" | "Unknown" | (string & {});
-export const ActionStatus = S.String;
+const ActionStatus = S.String;
 
 export interface DescribeEnvironmentManagedActionsRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   Status?: ActionStatus;
 }
-export const DescribeEnvironmentManagedActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentManagedActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     EnvironmentId: S.optional(S.String),
@@ -1566,7 +1560,7 @@ export interface ManagedAction {
   Status?: ActionStatus;
   WindowStartTime?: Date;
 }
-export const ManagedAction = /*@__PURE__*/ S.suspend(() =>
+const ManagedAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ActionId: S.optional(S.String),
     ActionDescription: S.optional(S.String),
@@ -1576,11 +1570,11 @@ export const ManagedAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ManagedAction" }) as any as S.Schema<ManagedAction>;
 export type ManagedActions = ManagedAction[];
-export const ManagedActions = /*@__PURE__*/ S.Array(ManagedAction);
+const ManagedActions = /*@__PURE__*/ S.Array(ManagedAction);
 export interface DescribeEnvironmentManagedActionsResult {
   ManagedActions?: ManagedAction[];
 }
-export const DescribeEnvironmentManagedActionsResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentManagedActionsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManagedActions: S.optional(ManagedActions) }).pipe(ns),
 ).annotate({
   identifier: "DescribeEnvironmentManagedActionsResult",
@@ -1589,7 +1583,7 @@ export interface DescribeEnvironmentResourcesMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-export const DescribeEnvironmentResourcesMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentResourcesMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1600,66 +1594,66 @@ export type ResourceId = string;
 export interface AutoScalingGroup {
   Name?: string;
 }
-export const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
+const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "AutoScalingGroup" }) as any as S.Schema<AutoScalingGroup>;
 export type AutoScalingGroupList = AutoScalingGroup[];
-export const AutoScalingGroupList = /*@__PURE__*/ S.Array(AutoScalingGroup);
+const AutoScalingGroupList = /*@__PURE__*/ S.Array(AutoScalingGroup);
 export interface Cluster {
   ClusterArn?: string;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ClusterArn: S.optional(S.String) }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 export interface Instance {
   Id?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
+const Instance = /*@__PURE__*/ S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
+  identifier: "Instance",
+}) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
-export const InstanceList = /*@__PURE__*/ S.Array(Instance);
+const InstanceList = /*@__PURE__*/ S.Array(Instance);
 export interface LaunchConfiguration {
   Name?: string;
 }
-export const LaunchConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LaunchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "LaunchConfiguration" }) as any as S.Schema<LaunchConfiguration>;
 export type LaunchConfigurationList = LaunchConfiguration[];
-export const LaunchConfigurationList = /*@__PURE__*/ S.Array(LaunchConfiguration);
+const LaunchConfigurationList = /*@__PURE__*/ S.Array(LaunchConfiguration);
 export interface LaunchTemplate {
   Id?: string;
 }
-export const LaunchTemplate = /*@__PURE__*/ S.suspend(() =>
+const LaunchTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String) }),
 ).annotate({ identifier: "LaunchTemplate" }) as any as S.Schema<LaunchTemplate>;
 export type LaunchTemplateList = LaunchTemplate[];
-export const LaunchTemplateList = /*@__PURE__*/ S.Array(LaunchTemplate);
+const LaunchTemplateList = /*@__PURE__*/ S.Array(LaunchTemplate);
 export interface LoadBalancer {
   Name?: string;
 }
-export const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "LoadBalancer" }) as any as S.Schema<LoadBalancer>;
 export type LoadBalancerList = LoadBalancer[];
-export const LoadBalancerList = /*@__PURE__*/ S.Array(LoadBalancer);
+const LoadBalancerList = /*@__PURE__*/ S.Array(LoadBalancer);
 export interface Trigger {
   Name?: string;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+const Trigger = /*@__PURE__*/ S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+  identifier: "Trigger",
+}) as any as S.Schema<Trigger>;
 export type TriggerList = Trigger[];
-export const TriggerList = /*@__PURE__*/ S.Array(Trigger);
+const TriggerList = /*@__PURE__*/ S.Array(Trigger);
 export interface Queue {
   Name?: string;
   URL?: string;
 }
-export const Queue = /*@__PURE__*/ S.suspend(() =>
+const Queue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), URL: S.optional(S.String) }),
 ).annotate({ identifier: "Queue" }) as any as S.Schema<Queue>;
 export type QueueList = Queue[];
-export const QueueList = /*@__PURE__*/ S.Array(Queue);
+const QueueList = /*@__PURE__*/ S.Array(Queue);
 export interface EnvironmentResourceDescription {
   EnvironmentName?: string;
   AutoScalingGroups?: AutoScalingGroup[];
@@ -1671,7 +1665,7 @@ export interface EnvironmentResourceDescription {
   Triggers?: Trigger[];
   Queues?: Queue[];
 }
-export const EnvironmentResourceDescription = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentResourceDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     AutoScalingGroups: S.optional(AutoScalingGroupList),
@@ -1689,15 +1683,15 @@ export const EnvironmentResourceDescription = /*@__PURE__*/ S.suspend(() =>
 export interface EnvironmentResourceDescriptionsMessage {
   EnvironmentResources?: EnvironmentResourceDescription;
 }
-export const EnvironmentResourceDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentResourceDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentResources: S.optional(EnvironmentResourceDescription) }).pipe(ns),
 ).annotate({
   identifier: "EnvironmentResourceDescriptionsMessage",
 }) as any as S.Schema<EnvironmentResourceDescriptionsMessage>;
 export type EnvironmentIdList = string[];
-export const EnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
+const EnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
 export type EnvironmentNamesList = string[];
-export const EnvironmentNamesList = /*@__PURE__*/ S.Array(S.String);
+const EnvironmentNamesList = /*@__PURE__*/ S.Array(S.String);
 export type IncludeDeleted = boolean;
 export type IncludeDeletedBackTo = Date;
 export interface DescribeEnvironmentsMessage {
@@ -1710,7 +1704,7 @@ export interface DescribeEnvironmentsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     VersionLabel: S.optional(S.String),
@@ -1726,7 +1720,7 @@ export const DescribeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEnvironmentsMessage>;
 export type RequestId = string;
 export type EventSeverity = "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | (string & {});
-export const EventSeverity = S.String;
+const EventSeverity = S.String;
 
 export type TimeFilterStart = Date;
 export type TimeFilterEnd = Date;
@@ -1744,7 +1738,7 @@ export interface DescribeEventsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeEventsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEventsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     VersionLabel: S.optional(S.String),
@@ -1773,7 +1767,7 @@ export interface EventDescription {
   RequestId?: string;
   Severity?: EventSeverity;
 }
-export const EventDescription = /*@__PURE__*/ S.suspend(() =>
+const EventDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EventDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     Message: S.optional(S.String),
@@ -1787,12 +1781,12 @@ export const EventDescription = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventDescription" }) as any as S.Schema<EventDescription>;
 export type EventDescriptionList = EventDescription[];
-export const EventDescriptionList = /*@__PURE__*/ S.Array(EventDescription);
+const EventDescriptionList = /*@__PURE__*/ S.Array(EventDescription);
 export interface EventDescriptionsMessage {
   Events?: EventDescription[];
   NextToken?: string;
 }
-export const EventDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const EventDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Events: S.optional(EventDescriptionList), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "EventDescriptionsMessage" }) as any as S.Schema<EventDescriptionsMessage>;
 export type InstancesHealthAttribute =
@@ -1808,10 +1802,10 @@ export type InstancesHealthAttribute =
   | "InstanceType"
   | "All"
   | (string & {});
-export const InstancesHealthAttribute = S.String;
+const InstancesHealthAttribute = S.String;
 
 export type InstancesHealthAttributes = InstancesHealthAttribute[];
-export const InstancesHealthAttributes = /*@__PURE__*/ S.Array(InstancesHealthAttribute);
+const InstancesHealthAttributes = /*@__PURE__*/ S.Array(InstancesHealthAttribute);
 export type NextToken = string;
 export interface DescribeInstancesHealthRequest {
   EnvironmentName?: string;
@@ -1819,7 +1813,7 @@ export interface DescribeInstancesHealthRequest {
   AttributeNames?: InstancesHealthAttribute[];
   NextToken?: string;
 }
-export const DescribeInstancesHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeInstancesHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentName: S.optional(S.String),
     EnvironmentId: S.optional(S.String),
@@ -1841,7 +1835,7 @@ export interface CPUUtilization {
   SoftIRQ?: number;
   Privileged?: number;
 }
-export const CPUUtilization = /*@__PURE__*/ S.suspend(() =>
+const CPUUtilization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     User: S.optional(S.Number),
     Nice: S.optional(S.Number),
@@ -1855,12 +1849,12 @@ export const CPUUtilization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CPUUtilization" }) as any as S.Schema<CPUUtilization>;
 export type LoadAverageValue = number;
 export type LoadAverage = number[];
-export const LoadAverage = /*@__PURE__*/ S.Array(S.Number);
+const LoadAverage = /*@__PURE__*/ S.Array(S.Number);
 export interface SystemStatus {
   CPUUtilization?: CPUUtilization;
   LoadAverage?: number[];
 }
-export const SystemStatus = /*@__PURE__*/ S.suspend(() =>
+const SystemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CPUUtilization: S.optional(CPUUtilization), LoadAverage: S.optional(LoadAverage) }),
 ).annotate({ identifier: "SystemStatus" }) as any as S.Schema<SystemStatus>;
 export type DeploymentTimestamp = Date;
@@ -1870,7 +1864,7 @@ export interface Deployment {
   Status?: string;
   DeploymentTime?: Date;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VersionLabel: S.optional(S.String),
     DeploymentId: S.optional(S.Number),
@@ -1890,7 +1884,7 @@ export interface SingleInstanceHealth {
   AvailabilityZone?: string;
   InstanceType?: string;
 }
-export const SingleInstanceHealth = /*@__PURE__*/ S.suspend(() =>
+const SingleInstanceHealth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceId: S.optional(S.String),
     HealthStatus: S.optional(S.String),
@@ -1905,13 +1899,13 @@ export const SingleInstanceHealth = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SingleInstanceHealth" }) as any as S.Schema<SingleInstanceHealth>;
 export type InstanceHealthList = SingleInstanceHealth[];
-export const InstanceHealthList = /*@__PURE__*/ S.Array(SingleInstanceHealth);
+const InstanceHealthList = /*@__PURE__*/ S.Array(SingleInstanceHealth);
 export interface DescribeInstancesHealthResult {
   InstanceHealthList?: SingleInstanceHealth[];
   RefreshedAt?: Date;
   NextToken?: string;
 }
-export const DescribeInstancesHealthResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeInstancesHealthResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceHealthList: S.optional(InstanceHealthList),
     RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1923,7 +1917,7 @@ export const DescribeInstancesHealthResult = /*@__PURE__*/ S.suspend(() =>
 export interface DescribePlatformVersionRequest {
   PlatformArn?: string;
 }
-export const DescribePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1935,33 +1929,33 @@ export interface PlatformProgrammingLanguage {
   Name?: string;
   Version?: string;
 }
-export const PlatformProgrammingLanguage = /*@__PURE__*/ S.suspend(() =>
+const PlatformProgrammingLanguage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
 ).annotate({
   identifier: "PlatformProgrammingLanguage",
 }) as any as S.Schema<PlatformProgrammingLanguage>;
 export type PlatformProgrammingLanguages = PlatformProgrammingLanguage[];
-export const PlatformProgrammingLanguages = /*@__PURE__*/ S.Array(PlatformProgrammingLanguage);
+const PlatformProgrammingLanguages = /*@__PURE__*/ S.Array(PlatformProgrammingLanguage);
 export interface PlatformFramework {
   Name?: string;
   Version?: string;
 }
-export const PlatformFramework = /*@__PURE__*/ S.suspend(() =>
+const PlatformFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
 ).annotate({ identifier: "PlatformFramework" }) as any as S.Schema<PlatformFramework>;
 export type PlatformFrameworks = PlatformFramework[];
-export const PlatformFrameworks = /*@__PURE__*/ S.Array(PlatformFramework);
+const PlatformFrameworks = /*@__PURE__*/ S.Array(PlatformFramework);
 export type VirtualizationType = string;
 export type ImageId = string;
 export interface CustomAmi {
   VirtualizationType?: string;
   ImageId?: string;
 }
-export const CustomAmi = /*@__PURE__*/ S.suspend(() =>
+const CustomAmi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VirtualizationType: S.optional(S.String), ImageId: S.optional(S.String) }),
 ).annotate({ identifier: "CustomAmi" }) as any as S.Schema<CustomAmi>;
 export type CustomAmiList = CustomAmi[];
-export const CustomAmiList = /*@__PURE__*/ S.Array(CustomAmi);
+const CustomAmiList = /*@__PURE__*/ S.Array(CustomAmi);
 export interface PlatformDescription {
   PlatformArn?: string;
   PlatformOwner?: string;
@@ -1985,7 +1979,7 @@ export interface PlatformDescription {
   PlatformBranchName?: string;
   PlatformBranchLifecycleState?: string;
 }
-export const PlatformDescription = /*@__PURE__*/ S.suspend(() =>
+const PlatformDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PlatformArn: S.optional(S.String),
     PlatformOwner: S.optional(S.String),
@@ -2013,7 +2007,7 @@ export const PlatformDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribePlatformVersionResult {
   PlatformDescription?: PlatformDescription;
 }
-export const DescribePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
+const DescribePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PlatformDescription: S.optional(PlatformDescription) }).pipe(ns),
 ).annotate({
   identifier: "DescribePlatformVersionResult",
@@ -2021,7 +2015,7 @@ export const DescribePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
 }
-export const DisassociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend(() =>
+const DisassociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2029,39 +2023,39 @@ export const DisassociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.susp
   identifier: "DisassociateEnvironmentOperationsRoleMessage",
 }) as any as S.Schema<DisassociateEnvironmentOperationsRoleMessage>;
 export interface DisassociateEnvironmentOperationsRoleResponse {}
-export const DisassociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const DisassociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DisassociateEnvironmentOperationsRoleResponse",
 }) as any as S.Schema<DisassociateEnvironmentOperationsRoleResponse>;
 export interface ListAvailableSolutionStacksRequest {}
-export const ListAvailableSolutionStacksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableSolutionStacksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({
   identifier: "ListAvailableSolutionStacksRequest",
 }) as any as S.Schema<ListAvailableSolutionStacksRequest>;
 export type AvailableSolutionStackNamesList = string[];
-export const AvailableSolutionStackNamesList = /*@__PURE__*/ S.Array(S.String);
+const AvailableSolutionStackNamesList = /*@__PURE__*/ S.Array(S.String);
 export type FileTypeExtension = string;
 export type SolutionStackFileTypeList = string[];
-export const SolutionStackFileTypeList = /*@__PURE__*/ S.Array(S.String);
+const SolutionStackFileTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface SolutionStackDescription {
   SolutionStackName?: string;
   PermittedFileTypes?: string[];
 }
-export const SolutionStackDescription = /*@__PURE__*/ S.suspend(() =>
+const SolutionStackDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SolutionStackName: S.optional(S.String),
     PermittedFileTypes: S.optional(SolutionStackFileTypeList),
   }),
 ).annotate({ identifier: "SolutionStackDescription" }) as any as S.Schema<SolutionStackDescription>;
 export type AvailableSolutionStackDetailsList = SolutionStackDescription[];
-export const AvailableSolutionStackDetailsList = /*@__PURE__*/ S.Array(SolutionStackDescription);
+const AvailableSolutionStackDetailsList = /*@__PURE__*/ S.Array(SolutionStackDescription);
 export interface ListAvailableSolutionStacksResultMessage {
   SolutionStacks?: string[];
   SolutionStackDetails?: SolutionStackDescription[];
 }
-export const ListAvailableSolutionStacksResultMessage = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableSolutionStacksResultMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SolutionStacks: S.optional(AvailableSolutionStackNamesList),
     SolutionStackDetails: S.optional(AvailableSolutionStackDetailsList),
@@ -2073,13 +2067,13 @@ export type SearchFilterAttribute = string;
 export type SearchFilterOperator = string;
 export type SearchFilterValue = string;
 export type SearchFilterValues = string[];
-export const SearchFilterValues = /*@__PURE__*/ S.Array(S.String);
+const SearchFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SearchFilter {
   Attribute?: string;
   Operator?: string;
   Values?: string[];
 }
-export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
+const SearchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attribute: S.optional(S.String),
     Operator: S.optional(S.String),
@@ -2087,14 +2081,14 @@ export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
 export type SearchFilters = SearchFilter[];
-export const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
+const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
 export type PlatformBranchMaxRecords = number;
 export interface ListPlatformBranchesRequest {
   Filters?: SearchFilter[];
   MaxRecords?: number;
   NextToken?: string;
 }
-export const ListPlatformBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(SearchFilters),
     MaxRecords: S.optional(S.Number),
@@ -2111,7 +2105,7 @@ export interface PlatformBranchSummary {
   BranchOrder?: number;
   SupportedTierList?: string[];
 }
-export const PlatformBranchSummary = /*@__PURE__*/ S.suspend(() =>
+const PlatformBranchSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PlatformName: S.optional(S.String),
     BranchName: S.optional(S.String),
@@ -2121,12 +2115,12 @@ export const PlatformBranchSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlatformBranchSummary" }) as any as S.Schema<PlatformBranchSummary>;
 export type PlatformBranchSummaryList = PlatformBranchSummary[];
-export const PlatformBranchSummaryList = /*@__PURE__*/ S.Array(PlatformBranchSummary);
+const PlatformBranchSummaryList = /*@__PURE__*/ S.Array(PlatformBranchSummary);
 export interface ListPlatformBranchesResult {
   PlatformBranchSummaryList?: PlatformBranchSummary[];
   NextToken?: string;
 }
-export const ListPlatformBranchesResult = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformBranchesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PlatformBranchSummaryList: S.optional(PlatformBranchSummaryList),
     NextToken: S.optional(S.String),
@@ -2138,13 +2132,13 @@ export type PlatformFilterType = string;
 export type PlatformFilterOperator = string;
 export type PlatformFilterValue = string;
 export type PlatformFilterValueList = string[];
-export const PlatformFilterValueList = /*@__PURE__*/ S.Array(S.String);
+const PlatformFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PlatformFilter {
   Type?: string;
   Operator?: string;
   Values?: string[];
 }
-export const PlatformFilter = /*@__PURE__*/ S.suspend(() =>
+const PlatformFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(S.String),
     Operator: S.optional(S.String),
@@ -2152,14 +2146,14 @@ export const PlatformFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlatformFilter" }) as any as S.Schema<PlatformFilter>;
 export type PlatformFilters = PlatformFilter[];
-export const PlatformFilters = /*@__PURE__*/ S.Array(PlatformFilter);
+const PlatformFilters = /*@__PURE__*/ S.Array(PlatformFilter);
 export type PlatformMaxRecords = number;
 export interface ListPlatformVersionsRequest {
   Filters?: PlatformFilter[];
   MaxRecords?: number;
   NextToken?: string;
 }
-export const ListPlatformVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(PlatformFilters),
     MaxRecords: S.optional(S.Number),
@@ -2169,12 +2163,12 @@ export const ListPlatformVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformVersionsRequest",
 }) as any as S.Schema<ListPlatformVersionsRequest>;
 export type PlatformSummaryList = PlatformSummary[];
-export const PlatformSummaryList = /*@__PURE__*/ S.Array(PlatformSummary);
+const PlatformSummaryList = /*@__PURE__*/ S.Array(PlatformSummary);
 export interface ListPlatformVersionsResult {
   PlatformSummaryList?: PlatformSummary[];
   NextToken?: string;
 }
-export const ListPlatformVersionsResult = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformVersionsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PlatformSummaryList: S.optional(PlatformSummaryList),
     NextToken: S.optional(S.String),
@@ -2186,7 +2180,7 @@ export type ResourceArn = string;
 export interface ListTagsForResourceMessage {
   ResourceArn: string;
 }
-export const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2194,12 +2188,12 @@ export const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceMessage",
 }) as any as S.Schema<ListTagsForResourceMessage>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ResourceTagsDescriptionMessage {
   ResourceArn?: string;
   ResourceTags?: Tag[];
 }
-export const ResourceTagsDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const ResourceTagsDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.optional(S.String), ResourceTags: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "ResourceTagsDescriptionMessage",
@@ -2208,7 +2202,7 @@ export interface RebuildEnvironmentMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-export const RebuildEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
+const RebuildEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2216,20 +2210,18 @@ export const RebuildEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "RebuildEnvironmentMessage",
 }) as any as S.Schema<RebuildEnvironmentMessage>;
 export interface RebuildEnvironmentResponse {}
-export const RebuildEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const RebuildEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "RebuildEnvironmentResponse",
 }) as any as S.Schema<RebuildEnvironmentResponse>;
 export type EnvironmentInfoType = "tail" | "bundle" | "analyze" | (string & {});
-export const EnvironmentInfoType = S.String;
+const EnvironmentInfoType = S.String;
 
 export interface RequestEnvironmentInfoMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
   InfoType: EnvironmentInfoType;
 }
-export const RequestEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
+const RequestEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentId: S.optional(S.String),
     EnvironmentName: S.optional(S.String),
@@ -2239,7 +2231,7 @@ export const RequestEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestEnvironmentInfoMessage",
 }) as any as S.Schema<RequestEnvironmentInfoMessage>;
 export interface RequestEnvironmentInfoResponse {}
-export const RequestEnvironmentInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestEnvironmentInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "RequestEnvironmentInfoResponse",
@@ -2248,21 +2240,21 @@ export interface RestartAppServerMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-export const RestartAppServerMessage = /*@__PURE__*/ S.suspend(() =>
+const RestartAppServerMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "RestartAppServerMessage" }) as any as S.Schema<RestartAppServerMessage>;
 export interface RestartAppServerResponse {}
-export const RestartAppServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "RestartAppServerResponse" }) as any as S.Schema<RestartAppServerResponse>;
+const RestartAppServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "RestartAppServerResponse",
+}) as any as S.Schema<RestartAppServerResponse>;
 export interface RetrieveEnvironmentInfoMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
   InfoType: EnvironmentInfoType;
 }
-export const RetrieveEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
+const RetrieveEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentId: S.optional(S.String),
     EnvironmentName: S.optional(S.String),
@@ -2280,7 +2272,7 @@ export interface EnvironmentInfoDescription {
   SampleTimestamp?: Date;
   Message?: string;
 }
-export const EnvironmentInfoDescription = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentInfoDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InfoType: S.optional(EnvironmentInfoType),
     Ec2InstanceId: S.optional(S.String),
@@ -2291,11 +2283,11 @@ export const EnvironmentInfoDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentInfoDescription",
 }) as any as S.Schema<EnvironmentInfoDescription>;
 export type EnvironmentInfoDescriptionList = EnvironmentInfoDescription[];
-export const EnvironmentInfoDescriptionList = /*@__PURE__*/ S.Array(EnvironmentInfoDescription);
+const EnvironmentInfoDescriptionList = /*@__PURE__*/ S.Array(EnvironmentInfoDescription);
 export interface RetrieveEnvironmentInfoResultMessage {
   EnvironmentInfo?: EnvironmentInfoDescription[];
 }
-export const RetrieveEnvironmentInfoResultMessage = /*@__PURE__*/ S.suspend(() =>
+const RetrieveEnvironmentInfoResultMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnvironmentInfo: S.optional(EnvironmentInfoDescriptionList) }).pipe(ns),
 ).annotate({
   identifier: "RetrieveEnvironmentInfoResultMessage",
@@ -2306,7 +2298,7 @@ export interface SwapEnvironmentCNAMEsMessage {
   DestinationEnvironmentId?: string;
   DestinationEnvironmentName?: string;
 }
-export const SwapEnvironmentCNAMEsMessage = /*@__PURE__*/ S.suspend(() =>
+const SwapEnvironmentCNAMEsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceEnvironmentId: S.optional(S.String),
     SourceEnvironmentName: S.optional(S.String),
@@ -2317,11 +2309,11 @@ export const SwapEnvironmentCNAMEsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "SwapEnvironmentCNAMEsMessage",
 }) as any as S.Schema<SwapEnvironmentCNAMEsMessage>;
 export interface SwapEnvironmentCNAMEsResponse {}
-export const SwapEnvironmentCNAMEsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SwapEnvironmentCNAMEsResponse",
-}) as any as S.Schema<SwapEnvironmentCNAMEsResponse>;
+const SwapEnvironmentCNAMEsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
+  {
+    identifier: "SwapEnvironmentCNAMEsResponse",
+  },
+) as any as S.Schema<SwapEnvironmentCNAMEsResponse>;
 export type TerminateEnvironmentResources = boolean;
 export type ForceTerminate = boolean;
 export interface TerminateEnvironmentMessage {
@@ -2330,7 +2322,7 @@ export interface TerminateEnvironmentMessage {
   TerminateResources?: boolean;
   ForceTerminate?: boolean;
 }
-export const TerminateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
+const TerminateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnvironmentId: S.optional(S.String),
     EnvironmentName: S.optional(S.String),
@@ -2344,7 +2336,7 @@ export interface UpdateApplicationMessage {
   ApplicationName: string;
   Description?: string;
 }
-export const UpdateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationName: S.String, Description: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2353,7 +2345,7 @@ export interface UpdateApplicationResourceLifecycleMessage {
   ApplicationName: string;
   ResourceLifecycleConfig: ApplicationResourceLifecycleConfig;
 }
-export const UpdateApplicationResourceLifecycleMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationResourceLifecycleMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     ResourceLifecycleConfig: ApplicationResourceLifecycleConfig,
@@ -2365,7 +2357,7 @@ export interface ApplicationResourceLifecycleDescriptionMessage {
   ApplicationName?: string;
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
 }
-export const ApplicationResourceLifecycleDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const ApplicationResourceLifecycleDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
@@ -2378,7 +2370,7 @@ export interface UpdateApplicationVersionMessage {
   VersionLabel: string;
   Description?: string;
 }
-export const UpdateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     VersionLabel: S.String,
@@ -2394,7 +2386,7 @@ export interface UpdateConfigurationTemplateMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   OptionsToRemove?: OptionSpecification[];
 }
-export const UpdateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     TemplateName: S.String,
@@ -2419,7 +2411,7 @@ export interface UpdateEnvironmentMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   OptionsToRemove?: OptionSpecification[];
 }
-export const UpdateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.optional(S.String),
     EnvironmentId: S.optional(S.String),
@@ -2436,13 +2428,13 @@ export const UpdateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateEnvironmentMessage" }) as any as S.Schema<UpdateEnvironmentMessage>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateTagsForResourceMessage {
   ResourceArn: string;
   TagsToAdd?: Tag[];
   TagsToRemove?: string[];
 }
-export const UpdateTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String,
     TagsToAdd: S.optional(TagList),
@@ -2452,18 +2444,18 @@ export const UpdateTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTagsForResourceMessage",
 }) as any as S.Schema<UpdateTagsForResourceMessage>;
 export interface UpdateTagsForResourceResponse {}
-export const UpdateTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateTagsForResourceResponse",
-}) as any as S.Schema<UpdateTagsForResourceResponse>;
+const UpdateTagsForResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
+  {
+    identifier: "UpdateTagsForResourceResponse",
+  },
+) as any as S.Schema<UpdateTagsForResourceResponse>;
 export interface ValidateConfigurationSettingsMessage {
   ApplicationName: string;
   TemplateName?: string;
   EnvironmentName?: string;
   OptionSettings: ConfigurationOptionSetting[];
 }
-export const ValidateConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =>
+const ValidateConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationName: S.String,
     TemplateName: S.optional(S.String),
@@ -2475,7 +2467,7 @@ export const ValidateConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ValidateConfigurationSettingsMessage>;
 export type ValidationMessageString = string;
 export type ValidationSeverity = "error" | "warning" | (string & {});
-export const ValidationSeverity = S.String;
+const ValidationSeverity = S.String;
 
 export interface ValidationMessage {
   Message?: string;
@@ -2483,7 +2475,7 @@ export interface ValidationMessage {
   Namespace?: string;
   OptionName?: string;
 }
-export const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
+const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Message: S.optional(S.String),
     Severity: S.optional(ValidationSeverity),
@@ -2492,11 +2484,11 @@ export const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValidationMessage" }) as any as S.Schema<ValidationMessage>;
 export type ValidationMessagesList = ValidationMessage[];
-export const ValidationMessagesList = /*@__PURE__*/ S.Array(ValidationMessage);
+const ValidationMessagesList = /*@__PURE__*/ S.Array(ValidationMessage);
 export interface ConfigurationSettingsValidationMessages {
   Messages?: ValidationMessage[];
 }
-export const ConfigurationSettingsValidationMessages = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationSettingsValidationMessages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Messages: S.optional(ValidationMessagesList) }).pipe(ns),
 ).annotate({
   identifier: "ConfigurationSettingsValidationMessages",

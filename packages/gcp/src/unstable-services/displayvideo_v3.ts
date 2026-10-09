@@ -67,7 +67,7 @@ export interface AuditAdvertisersRequest {
   /** Required. The ID of the advertiser to audit. */
   advertiserId: string;
 }
-export const AuditAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const AuditAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.String.pipe(T.Label()),
@@ -99,7 +99,7 @@ export interface AuditAdvertiserResponse {
   /** The number of ACTIVE and PAUSED campaigns under this advertiser. These campaigns count towards the limit of 9999 campaigns per advertiser. */
   usedCampaignsCount?: string;
 }
-export const AuditAdvertiserResponse = /*@__PURE__*/ S.suspend(() =>
+const AuditAdvertiserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelsCount: S.optional(S.String),
     campaignCriteriaCount: S.optional(S.String),
@@ -113,7 +113,7 @@ export const AuditAdvertiserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditAdvertiserResponse" }) as any as S.Schema<AuditAdvertiserResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A single site. Sites are apps or websites belonging to a channel. */
 export interface Site {
@@ -122,7 +122,7 @@ export interface Site {
   /** Output only. The resource name of the site. */
   name?: string;
 }
-export const Site = /*@__PURE__*/ S.suspend(() =>
+const Site = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urlOrAppId: S.optional(S.String),
     name: S.optional(S.String),
@@ -130,7 +130,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 export type SiteList = Array<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
+const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 /** Request message for SiteService.BulkEditSites. */
 export interface BulkEditSitesRequest {
@@ -143,7 +143,7 @@ export interface BulkEditSitesRequest {
   /** The sites to create in batch, specified as a list of Sites. */
   createdSites?: SiteList;
 }
-export const BulkEditSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String),
     deletedSites: S.optional(StringList),
@@ -160,7 +160,7 @@ export interface BulkEditAdvertisersChannelsSitesRequest {
   /** Request body */
   body?: BulkEditSitesRequest;
 }
-export const BulkEditAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -181,7 +181,7 @@ export interface BulkEditSitesResponse {
   /** The list of sites that have been successfully created. This list will be absent if empty. */
   sites?: SiteList;
 }
-export const BulkEditSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sites: S.optional(SiteList),
   }),
@@ -196,7 +196,7 @@ export interface AssignedLocation {
   /** Required. The ID of the targeting option assigned to the location list. */
   targetingOptionId?: string;
 }
-export const AssignedLocation = /*@__PURE__*/ S.suspend(() =>
+const AssignedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedLocationId: S.optional(S.String),
     name: S.optional(S.String),
@@ -205,7 +205,7 @@ export const AssignedLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssignedLocation" }) as any as S.Schema<AssignedLocation>;
 
 export type AssignedLocationList = Array<AssignedLocation>;
-export const AssignedLocationList = /*@__PURE__*/ S.Array(
+const AssignedLocationList = /*@__PURE__*/ S.Array(
   AssignedLocation,
 ) as any as S.Schema<AssignedLocationList>;
 
@@ -216,7 +216,7 @@ export interface BulkEditAssignedLocationsRequest {
   /** The assigned locations to create in bulk, specified as a list of AssignedLocation resources. */
   createdAssignedLocations?: AssignedLocationList;
 }
-export const BulkEditAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedAssignedLocations: S.optional(StringList),
     createdAssignedLocations: S.optional(AssignedLocationList),
@@ -233,19 +233,18 @@ export interface BulkEditAdvertisersLocationListsAssignedLocationsRequest {
   /** Request body */
   body?: BulkEditAssignedLocationsRequest;
 }
-export const BulkEditAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      locationListId: S.String.pipe(T.Label()),
-      body: S.optional(BulkEditAssignedLocationsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const BulkEditAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    locationListId: S.String.pipe(T.Label()),
+    body: S.optional(BulkEditAssignedLocationsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkEditAdvertisersLocationListsAssignedLocationsRequest",
 }) as any as S.Schema<BulkEditAdvertisersLocationListsAssignedLocationsRequest>;
@@ -254,7 +253,7 @@ export interface BulkEditAssignedLocationsResponse {
   /** The list of assigned locations that have been successfully created. This list will be absent if empty. */
   assignedLocations?: AssignedLocationList;
 }
-export const BulkEditAssignedLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedLocations: S.optional(AssignedLocationList),
   }),
@@ -269,7 +268,7 @@ export interface NegativeKeyword {
   /** Output only. The resource name of the negative keyword. */
   name?: string;
 }
-export const NegativeKeyword = /*@__PURE__*/ S.suspend(() =>
+const NegativeKeyword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keywordValue: S.optional(S.String),
     name: S.optional(S.String),
@@ -277,7 +276,7 @@ export const NegativeKeyword = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NegativeKeyword" }) as any as S.Schema<NegativeKeyword>;
 
 export type NegativeKeywordList_ = Array<NegativeKeyword>;
-export const NegativeKeywordList_ = /*@__PURE__*/ S.Array(
+const NegativeKeywordList_ = /*@__PURE__*/ S.Array(
   NegativeKeyword,
 ) as any as S.Schema<NegativeKeywordList_>;
 
@@ -288,7 +287,7 @@ export interface BulkEditNegativeKeywordsRequest {
   /** The negative keywords to create in batch, specified as a list of NegativeKeywords. */
   createdNegativeKeywords?: NegativeKeywordList_;
 }
-export const BulkEditNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedNegativeKeywords: S.optional(StringList),
     createdNegativeKeywords: S.optional(NegativeKeywordList_),
@@ -305,29 +304,28 @@ export interface BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest 
   /** Request body */
   body?: BulkEditNegativeKeywordsRequest;
 }
-export const BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      negativeKeywordListId: S.String.pipe(T.Label()),
-      advertiserId: S.String.pipe(T.Label()),
-      body: S.optional(BulkEditNegativeKeywordsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
-  }) as any as S.Schema<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+const BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    negativeKeywordListId: S.String.pipe(T.Label()),
+    advertiserId: S.String.pipe(T.Label()),
+    body: S.optional(BulkEditNegativeKeywordsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
+}) as any as S.Schema<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 /** Response message for NegativeKeywordService.BulkEditNegativeKeywords. */
 export interface BulkEditNegativeKeywordsResponse {
   /** The list of negative keywords that have been successfully created. This list will be absent if empty. */
   negativeKeywords?: NegativeKeywordList_;
 }
-export const BulkEditNegativeKeywordsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditNegativeKeywordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negativeKeywords: S.optional(NegativeKeywordList_),
   }),
@@ -386,7 +384,7 @@ export type DeleteAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const DeleteAssignedTargetingOptionsRequestTargetingTypeEnum = S.String;
+const DeleteAssignedTargetingOptionsRequestTargetingTypeEnum = S.String;
 
 /** A request listing which assigned targeting options of a given targeting type should be deleted. */
 export interface DeleteAssignedTargetingOptionsRequest {
@@ -395,7 +393,7 @@ export interface DeleteAssignedTargetingOptionsRequest {
   /** Required. The assigned targeting option IDs to delete. */
   assignedTargetingOptionIds?: StringList;
 }
-export const DeleteAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingType: S.optional(DeleteAssignedTargetingOptionsRequestTargetingTypeEnum),
     assignedTargetingOptionIds: S.optional(StringList),
@@ -406,7 +404,7 @@ export const DeleteAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type DeleteAssignedTargetingOptionsRequestList =
   Array<DeleteAssignedTargetingOptionsRequest>;
-export const DeleteAssignedTargetingOptionsRequestList = /*@__PURE__*/ S.Array(
+const DeleteAssignedTargetingOptionsRequestList = /*@__PURE__*/ S.Array(
   DeleteAssignedTargetingOptionsRequest,
 ) as any as S.Schema<DeleteAssignedTargetingOptionsRequestList>;
 
@@ -421,14 +419,14 @@ export type ViewabilityAssignedTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_70_PERCENT_OR_MORE"
   | "VIEWABILITY_80_PERCENT_OR_MORE"
   | "VIEWABILITY_90_PERCENT_OR_MORE";
-export const ViewabilityAssignedTargetingOptionDetailsViewabilityEnum = S.String;
+const ViewabilityAssignedTargetingOptionDetailsViewabilityEnum = S.String;
 
 /** Assigned viewability targeting option details. This will be populated in the viewability_details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`. */
 export interface ViewabilityAssignedTargetingOptionDetails {
   /** Required. The predicted viewability percentage. */
   viewability?: ViewabilityAssignedTargetingOptionDetailsViewabilityEnum | (string & {});
 }
-export const ViewabilityAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ViewabilityAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewability: S.optional(ViewabilityAssignedTargetingOptionDetailsViewabilityEnum),
   }),
@@ -440,7 +438,7 @@ export type DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum =
   | "TIME_ZONE_RESOLUTION_UNSPECIFIED"
   | "TIME_ZONE_RESOLUTION_END_USER"
   | "TIME_ZONE_RESOLUTION_ADVERTISER";
-export const DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum = S.String;
+const DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum = S.String;
 
 export type DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -451,7 +449,7 @@ export type DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum = S.String;
+const DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum = S.String;
 
 /** Representation of a segment of time defined on a specific day of the week and with a start and end time. The time represented by `start_hour` must be before the time represented by `end_hour`. */
 export interface DayAndTimeAssignedTargetingOptionDetails {
@@ -466,7 +464,7 @@ export interface DayAndTimeAssignedTargetingOptionDetails {
   /** Required. The end hour for day and time targeting. Must be between 1 (1 hour after start of day) and 24 (end of day). */
   endHour?: number;
 }
-export const DayAndTimeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const DayAndTimeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZoneResolution: S.optional(DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum),
     dayOfWeek: S.optional(DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum),
@@ -481,8 +479,7 @@ export type AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSeller
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS";
-export const AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum =
-  S.String;
+const AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum = S.String;
 
 /** Represents an assigned authorized seller status. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a resource does not have an `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned targeting option, it is using the "Authorized Direct Sellers and Resellers" option. */
 export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
@@ -493,7 +490,7 @@ export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
     | AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum
     | (string & {});
 }
-export const AuthorizedSellerStatusAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedSellerStatusAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingOptionId: S.optional(S.String),
     authorizedSellerStatus: S.optional(
@@ -511,7 +508,7 @@ export type DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_SMART_PHONE"
   | "DEVICE_TYPE_TABLET"
   | "DEVICE_TYPE_CONNECTED_DEVICE";
-export const DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum = S.String;
+const DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum = S.String;
 
 /** Targeting details for device type. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_TYPE`. */
 export interface DeviceTypeAssignedTargetingOptionDetails {
@@ -520,7 +517,7 @@ export interface DeviceTypeAssignedTargetingOptionDetails {
   /** Required. The display name of the device type. */
   deviceType?: DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum | (string & {});
 }
-export const DeviceTypeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const DeviceTypeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     youtubeAndPartnersBidMultiplier: S.optional(S.Number),
     deviceType: S.optional(DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum),
@@ -538,7 +535,7 @@ export interface DeviceMakeModelAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
-export const DeviceMakeModelAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const DeviceMakeModelAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingOptionId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -551,7 +548,7 @@ export const DeviceMakeModelAssignedTargetingOptionDetails = /*@__PURE__*/ S.sus
 export type SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum =
   | "SESSION_POSITION_UNSPECIFIED"
   | "SESSION_POSITION_FIRST_IMPRESSION";
-export const SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum = S.String;
+const SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum = S.String;
 
 /** Details for session position assigned targeting option. This will be populated in the session_position_details field when targeting_type is `TARGETING_TYPE_SESSION_POSITION`. */
 export interface SessionPositionAssignedTargetingOptionDetails {
@@ -560,7 +557,7 @@ export interface SessionPositionAssignedTargetingOptionDetails {
     | SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum
     | (string & {});
 }
-export const SessionPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const SessionPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionPosition: S.optional(SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum),
   }),
@@ -577,7 +574,7 @@ export interface KeywordAssignedTargetingOptionDetails {
   /** Optional. The policy names to exempt the keyword from. When attempting to target a keyword that violates a policy, the error returned will include the name of the relevant policy. Use that name in this field to exempt the targeted keyword from the policy. This field is only applicable for positively-targeted keywords assigned to Demand Gen resources. Retrieval and management of Demand Gen resources is currently in beta. This field is only available to allowlisted users. */
   exemptedPolicyNames?: StringList;
 }
-export const KeywordAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const KeywordAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyword: S.optional(S.String),
     negative: S.optional(S.Boolean),
@@ -592,7 +589,7 @@ export type ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
   | "AD_TYPE_AUDIO";
-export const ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
+const ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
 
 export type ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum =
   | "CONTENT_INSTREAM_POSITION_UNSPECIFIED"
@@ -600,8 +597,7 @@ export type ContentInstreamPositionAssignedTargetingOptionDetailsContentInstream
   | "CONTENT_INSTREAM_POSITION_MID_ROLL"
   | "CONTENT_INSTREAM_POSITION_POST_ROLL"
   | "CONTENT_INSTREAM_POSITION_UNKNOWN";
-export const ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum =
-  S.String;
+const ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum = S.String;
 
 /** Assigned content instream position targeting option details. This will be populated in the content_instream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`. */
 export interface ContentInstreamPositionAssignedTargetingOptionDetails {
@@ -612,7 +608,7 @@ export interface ContentInstreamPositionAssignedTargetingOptionDetails {
     | ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum
     | (string & {});
 }
-export const ContentInstreamPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentInstreamPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adType: S.optional(ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum),
     contentInstreamPosition: S.optional(
@@ -630,7 +626,7 @@ export interface ChannelAssignedTargetingOptionDetails {
   /** Required. ID of the channel. Should refer to the channel ID field on a [Partner-owned channel](partners.channels#Channel.FIELDS.channel_id) or [advertiser-owned channel](advertisers.channels#Channel.FIELDS.channel_id) resource. */
   channelId?: string;
 }
-export const ChannelAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ChannelAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negative: S.optional(S.Boolean),
     channelId: S.optional(S.String),
@@ -644,7 +640,7 @@ export interface InventorySourceAssignedTargetingOptionDetails {
   /** Required. ID of the inventory source. Should refer to the inventory_source_id field of an InventorySource resource. */
   inventorySourceId?: string;
 }
-export const InventorySourceAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const InventorySourceAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceId: S.optional(S.String),
   }),
@@ -657,14 +653,14 @@ export type OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
   | "AD_TYPE_AUDIO";
-export const OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
+const OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
 
 export type OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum =
   | "ON_SCREEN_POSITION_UNSPECIFIED"
   | "ON_SCREEN_POSITION_UNKNOWN"
   | "ON_SCREEN_POSITION_ABOVE_THE_FOLD"
   | "ON_SCREEN_POSITION_BELOW_THE_FOLD";
-export const OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum = S.String;
+const OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum = S.String;
 
 /** On screen position targeting option details. This will be populated in the on_screen_position_details field when targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`. */
 export interface OnScreenPositionAssignedTargetingOptionDetails {
@@ -677,7 +673,7 @@ export interface OnScreenPositionAssignedTargetingOptionDetails {
     | OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum
     | (string & {});
 }
-export const OnScreenPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const OnScreenPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adType: S.optional(OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum),
     targetingOptionId: S.optional(S.String),
@@ -696,7 +692,7 @@ export interface YoutubeChannelPackAssignedTargetingOptionDetails {
   /** Optional. Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
-export const YoutubeChannelPackAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const YoutubeChannelPackAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelPackId: S.optional(S.String),
     negative: S.optional(S.Boolean),
@@ -709,7 +705,7 @@ export type BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "DISTANCE_UNIT_UNSPECIFIED"
   | "DISTANCE_UNIT_MILES"
   | "DISTANCE_UNIT_KILOMETERS";
-export const BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
+const BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
 
 /** Details for assigned Business chain targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`. */
 export interface BusinessChainAssignedTargetingOptionDetails {
@@ -724,7 +720,7 @@ export interface BusinessChainAssignedTargetingOptionDetails {
     | BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum
     | (string & {});
 }
-export const BusinessChainAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const BusinessChainAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingOptionId: S.optional(S.String),
     proximityRadiusAmount: S.optional(S.Number),
@@ -748,7 +744,7 @@ export type ContentThemeAssignedTargetingOptionDetailsContentThemeEnum =
   | "CONTENT_THEME_RELIGION"
   | "CONTENT_THEME_UNPLEASANT_HEALTH_CONTENT"
   | "CONTENT_THEME_UNPLEASANT_NEWS";
-export const ContentThemeAssignedTargetingOptionDetailsContentThemeEnum = S.String;
+const ContentThemeAssignedTargetingOptionDetailsContentThemeEnum = S.String;
 
 export type ContentThemeAssignedTargetingOptionDetailsExcludedContentThemeEnum =
   | "CONTENT_THEME_UNSPECIFIED"
@@ -761,7 +757,7 @@ export type ContentThemeAssignedTargetingOptionDetailsExcludedContentThemeEnum =
   | "CONTENT_THEME_RELIGION"
   | "CONTENT_THEME_UNPLEASANT_HEALTH_CONTENT"
   | "CONTENT_THEME_UNPLEASANT_NEWS";
-export const ContentThemeAssignedTargetingOptionDetailsExcludedContentThemeEnum = S.String;
+const ContentThemeAssignedTargetingOptionDetailsExcludedContentThemeEnum = S.String;
 
 /** Targeting details for content theme. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`. */
 export interface ContentThemeAssignedTargetingOptionDetails {
@@ -774,7 +770,7 @@ export interface ContentThemeAssignedTargetingOptionDetails {
     | ContentThemeAssignedTargetingOptionDetailsExcludedContentThemeEnum
     | (string & {});
 }
-export const ContentThemeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentThemeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentTheme: S.optional(ContentThemeAssignedTargetingOptionDetailsContentThemeEnum),
     excludedTargetingOptionId: S.optional(S.String),
@@ -795,7 +791,7 @@ export type HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_10_PERCENT";
-export const HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum = S.String;
+const HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum = S.String;
 
 /** Details for assigned household income targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`. */
 export interface HouseholdIncomeAssignedTargetingOptionDetails {
@@ -804,7 +800,7 @@ export interface HouseholdIncomeAssignedTargetingOptionDetails {
     | HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum
     | (string & {});
 }
-export const HouseholdIncomeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const HouseholdIncomeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     householdIncome: S.optional(HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum),
   }),
@@ -815,14 +811,14 @@ export const HouseholdIncomeAssignedTargetingOptionDetails = /*@__PURE__*/ S.sus
 export type OmidAssignedTargetingOptionDetailsOmidEnum =
   | "OMID_UNSPECIFIED"
   | "OMID_FOR_MOBILE_DISPLAY_ADS";
-export const OmidAssignedTargetingOptionDetailsOmidEnum = S.String;
+const OmidAssignedTargetingOptionDetailsOmidEnum = S.String;
 
 /** Represents a targetable Open Measurement enabled inventory type. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_OMID`. */
 export interface OmidAssignedTargetingOptionDetails {
   /** Required. The type of Open Measurement enabled inventory. */
   omid?: OmidAssignedTargetingOptionDetailsOmidEnum | (string & {});
 }
-export const OmidAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const OmidAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     omid: S.optional(OmidAssignedTargetingOptionDetailsOmidEnum),
   }),
@@ -835,7 +831,7 @@ export type AssignedTargetingOptionInheritanceEnum =
   | "NOT_INHERITED"
   | "INHERITED_FROM_PARTNER"
   | "INHERITED_FROM_ADVERTISER";
-export const AssignedTargetingOptionInheritanceEnum = S.String;
+const AssignedTargetingOptionInheritanceEnum = S.String;
 
 export type AppAssignedTargetingOptionDetailsAppPlatformEnum =
   | "APP_PLATFORM_UNSPECIFIED"
@@ -852,7 +848,7 @@ export type AppAssignedTargetingOptionDetailsAppPlatformEnum =
   | "APP_PLATFORM_LG_TV"
   | "APP_PLATFORM_VIZIO_TV"
   | "APP_PLATFORM_VIDAA";
-export const AppAssignedTargetingOptionDetailsAppPlatformEnum = S.String;
+const AppAssignedTargetingOptionDetailsAppPlatformEnum = S.String;
 
 /** Details for assigned app targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP`. */
 export interface AppAssignedTargetingOptionDetails {
@@ -865,7 +861,7 @@ export interface AppAssignedTargetingOptionDetails {
   /** Output only. The display name of the app. */
   displayName?: string;
 }
-export const AppAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AppAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appPlatform: S.optional(AppAssignedTargetingOptionDetailsAppPlatformEnum),
     negative: S.optional(S.Boolean),
@@ -967,14 +963,14 @@ export type ExchangeAssignedTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
-export const ExchangeAssignedTargetingOptionDetailsExchangeEnum = S.String;
+const ExchangeAssignedTargetingOptionDetailsExchangeEnum = S.String;
 
 /** Details for assigned exchange targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_EXCHANGE`. */
 export interface ExchangeAssignedTargetingOptionDetails {
   /** Required. The enum value for the exchange. */
   exchange?: ExchangeAssignedTargetingOptionDetailsExchangeEnum | (string & {});
 }
-export const ExchangeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ExchangeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exchange: S.optional(ExchangeAssignedTargetingOptionDetailsExchangeEnum),
   }),
@@ -991,14 +987,14 @@ export interface ContentGenreAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
-export const ContentGenreAssignedTargetingOptionDetails =
+const ContentGenreAssignedTargetingOptionDetails =
   DeviceMakeModelAssignedTargetingOptionDetails as any as S.Schema<ContentGenreAssignedTargetingOptionDetails>;
 
 export type PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "DISTANCE_UNIT_UNSPECIFIED"
   | "DISTANCE_UNIT_MILES"
   | "DISTANCE_UNIT_KILOMETERS";
-export const PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
+const PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
 
 /** Details for assigned POI targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_POI`. */
 export interface PoiAssignedTargetingOptionDetails {
@@ -1015,7 +1011,7 @@ export interface PoiAssignedTargetingOptionDetails {
   /** Output only. Latitude of the POI rounding to 6th decimal place. */
   latitude?: number;
 }
-export const PoiAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const PoiAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     proximityRadiusAmount: S.optional(S.Number),
@@ -1033,7 +1029,7 @@ export interface InventorySourceGroupAssignedTargetingOptionDetails {
   /** Required. ID of the inventory source group. Should refer to the inventory_source_group_id field of an InventorySourceGroup resource. */
   inventorySourceGroupId?: string;
 }
-export const InventorySourceGroupAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const InventorySourceGroupAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceGroupId: S.optional(S.String),
   }),
@@ -1046,7 +1042,7 @@ export interface GoogleAudienceTargetingSetting {
   /** Required. Google audience id of the Google audience targeting setting. This id is google_audience_id. */
   googleAudienceId?: string;
 }
-export const GoogleAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
+const GoogleAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAudienceId: S.optional(S.String),
   }),
@@ -1055,7 +1051,7 @@ export const GoogleAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAudienceTargetingSetting>;
 
 export type GoogleAudienceTargetingSettingList = Array<GoogleAudienceTargetingSetting>;
-export const GoogleAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
+const GoogleAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   GoogleAudienceTargetingSetting,
 ) as any as S.Schema<GoogleAudienceTargetingSettingList>;
 
@@ -1064,7 +1060,7 @@ export interface GoogleAudienceGroup {
   /** Required. All Google audience targeting settings in Google audience group. Repeated settings with the same id will be ignored. */
   settings?: GoogleAudienceTargetingSettingList;
 }
-export const GoogleAudienceGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleAudienceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(GoogleAudienceTargetingSettingList),
   }),
@@ -1075,7 +1071,7 @@ export interface CombinedAudienceTargetingSetting {
   /** Required. Combined audience id of combined audience targeting setting. This id is combined_audience_id. */
   combinedAudienceId?: string;
 }
-export const CombinedAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
+const CombinedAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     combinedAudienceId: S.optional(S.String),
   }),
@@ -1084,7 +1080,7 @@ export const CombinedAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CombinedAudienceTargetingSetting>;
 
 export type CombinedAudienceTargetingSettingList = Array<CombinedAudienceTargetingSetting>;
-export const CombinedAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
+const CombinedAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   CombinedAudienceTargetingSetting,
 ) as any as S.Schema<CombinedAudienceTargetingSettingList>;
 
@@ -1093,7 +1089,7 @@ export interface CombinedAudienceGroup {
   /** Required. All combined audience targeting settings in combined audience group. Repeated settings with the same id will be ignored. The number of combined audience settings should be no more than five, error will be thrown otherwise. */
   settings?: CombinedAudienceTargetingSettingList;
 }
-export const CombinedAudienceGroup = /*@__PURE__*/ S.suspend(() =>
+const CombinedAudienceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(CombinedAudienceTargetingSettingList),
   }),
@@ -1130,7 +1126,7 @@ export type FirstAndThirdPartyAudienceTargetingSettingRecencyEnum =
   | "RECENCY_180_DAYS"
   | "RECENCY_270_DAYS"
   | "RECENCY_365_DAYS";
-export const FirstAndThirdPartyAudienceTargetingSettingRecencyEnum = S.String;
+const FirstAndThirdPartyAudienceTargetingSettingRecencyEnum = S.String;
 
 /** Details of first and third party audience targeting setting. */
 export interface FirstAndThirdPartyAudienceTargetingSetting {
@@ -1139,7 +1135,7 @@ export interface FirstAndThirdPartyAudienceTargetingSetting {
   /** Required. First and third party audience id of the first and third party audience targeting setting. This id is first_and_third_party_audience_id. */
   firstAndThirdPartyAudienceId?: string;
 }
-export const FirstAndThirdPartyAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
+const FirstAndThirdPartyAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recency: S.optional(FirstAndThirdPartyAudienceTargetingSettingRecencyEnum),
     firstAndThirdPartyAudienceId: S.optional(S.String),
@@ -1150,7 +1146,7 @@ export const FirstAndThirdPartyAudienceTargetingSetting = /*@__PURE__*/ S.suspen
 
 export type FirstAndThirdPartyAudienceTargetingSettingList =
   Array<FirstAndThirdPartyAudienceTargetingSetting>;
-export const FirstAndThirdPartyAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
+const FirstAndThirdPartyAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   FirstAndThirdPartyAudienceTargetingSetting,
 ) as any as S.Schema<FirstAndThirdPartyAudienceTargetingSettingList>;
 
@@ -1159,7 +1155,7 @@ export interface FirstAndThirdPartyAudienceGroup {
   /** Required. All first and third party audience targeting settings in first and third party audience group. Repeated settings with the same id are not allowed. */
   settings?: FirstAndThirdPartyAudienceTargetingSettingList;
 }
-export const FirstAndThirdPartyAudienceGroup = /*@__PURE__*/ S.suspend(() =>
+const FirstAndThirdPartyAudienceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(FirstAndThirdPartyAudienceTargetingSettingList),
   }),
@@ -1168,7 +1164,7 @@ export const FirstAndThirdPartyAudienceGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirstAndThirdPartyAudienceGroup>;
 
 export type FirstAndThirdPartyAudienceGroupList = Array<FirstAndThirdPartyAudienceGroup>;
-export const FirstAndThirdPartyAudienceGroupList = /*@__PURE__*/ S.Array(
+const FirstAndThirdPartyAudienceGroupList = /*@__PURE__*/ S.Array(
   FirstAndThirdPartyAudienceGroup,
 ) as any as S.Schema<FirstAndThirdPartyAudienceGroupList>;
 
@@ -1177,7 +1173,7 @@ export interface CustomListTargetingSetting {
   /** Required. Custom id of custom list targeting setting. This id is custom_list_id. */
   customListId?: string;
 }
-export const CustomListTargetingSetting = /*@__PURE__*/ S.suspend(() =>
+const CustomListTargetingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customListId: S.optional(S.String),
   }),
@@ -1186,7 +1182,7 @@ export const CustomListTargetingSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomListTargetingSetting>;
 
 export type CustomListTargetingSettingList = Array<CustomListTargetingSetting>;
-export const CustomListTargetingSettingList = /*@__PURE__*/ S.Array(
+const CustomListTargetingSettingList = /*@__PURE__*/ S.Array(
   CustomListTargetingSetting,
 ) as any as S.Schema<CustomListTargetingSettingList>;
 
@@ -1195,7 +1191,7 @@ export interface CustomListGroup {
   /** Required. All custom list targeting settings in custom list group. Repeated settings with the same id will be ignored. */
   settings?: CustomListTargetingSettingList;
 }
-export const CustomListGroup = /*@__PURE__*/ S.suspend(() =>
+const CustomListGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(CustomListTargetingSettingList),
   }),
@@ -1216,7 +1212,7 @@ export interface AudienceGroupAssignedTargetingOptionDetails {
   /** Optional. The custom list ids of the included custom list group. Contains custom list ids only. */
   includedCustomListGroup?: CustomListGroup;
 }
-export const AudienceGroupAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AudienceGroupAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedGoogleAudienceGroup: S.optional(GoogleAudienceGroup),
     includedCombinedAudienceGroup: S.optional(CombinedAudienceGroup),
@@ -1239,7 +1235,7 @@ export type AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_WEB_RADIO"
   | "AUDIO_CONTENT_TYPE_VIDEO_GAME"
   | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH";
-export const AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum = S.String;
+const AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum = S.String;
 
 /** Details for audio content type assigned targeting option. This will be populated in the audio_content_type_details field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly targeting all options is not supported. Remove all audio content type targeting options to achieve this effect. */
 export interface AudioContentTypeAssignedTargetingOptionDetails {
@@ -1248,7 +1244,7 @@ export interface AudioContentTypeAssignedTargetingOptionDetails {
     | AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum
     | (string & {});
 }
-export const AudioContentTypeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AudioContentTypeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioContentType: S.optional(
       AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum,
@@ -1265,7 +1261,7 @@ export interface YoutubeChannelAssignedTargetingOptionDetails {
   /** The YouTube uploader channel id or the channel code of a YouTube channel. */
   channelId?: string;
 }
-export const YoutubeChannelAssignedTargetingOptionDetails =
+const YoutubeChannelAssignedTargetingOptionDetails =
   ChannelAssignedTargetingOptionDetails as any as S.Schema<YoutubeChannelAssignedTargetingOptionDetails>;
 
 export type DoubleVerifyAvoidedAgeRatingsItemEnum =
@@ -1276,12 +1272,12 @@ export type DoubleVerifyAvoidedAgeRatingsItemEnum =
   | "APP_AGE_RATE_12_PLUS"
   | "APP_AGE_RATE_17_PLUS"
   | "APP_AGE_RATE_18_PLUS";
-export const DoubleVerifyAvoidedAgeRatingsItemEnum = S.String;
+const DoubleVerifyAvoidedAgeRatingsItemEnum = S.String;
 
 export type DoubleVerifyAvoidedAgeRatingsItemEnumList = Array<
   DoubleVerifyAvoidedAgeRatingsItemEnum | (string & {})
 >;
-export const DoubleVerifyAvoidedAgeRatingsItemEnumList = /*@__PURE__*/ S.Array(
+const DoubleVerifyAvoidedAgeRatingsItemEnumList = /*@__PURE__*/ S.Array(
   DoubleVerifyAvoidedAgeRatingsItemEnum,
 ) as any as S.Schema<DoubleVerifyAvoidedAgeRatingsItemEnumList>;
 
@@ -1307,12 +1303,12 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItem
   | "UNMODERATED_UGC"
   | "INFLAMMATORY_POLITICS_AND_NEWS"
   | "NEGATIVE_NEWS_PHARMACEUTICAL";
-export const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum = S.String;
+const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum = S.String;
 
 export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList = Array<
   DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum | (string & {})
 >;
-export const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList =
+const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum,
   ) as any as S.Schema<DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList>;
@@ -1326,12 +1322,10 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEn
   | "HATE_PROFANITY"
   | "CRIMINAL_SKILLS"
   | "NUISANCE_INCENTIVIZED_MALWARE_CLUTTER";
-export const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum = S.String;
-
 export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList = Array<
   DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum | (string & {})
 >;
-export const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList =
+const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList =
   DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList as any as S.Schema<DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList>;
 
 /** Settings for brand safety controls. */
@@ -1343,7 +1337,7 @@ export interface DoubleVerifyBrandSafetyCategories {
   /** Brand safety high severity avoidance categories. */
   avoidedHighSeverityCategories?: DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList;
 }
-export const DoubleVerifyBrandSafetyCategories = /*@__PURE__*/ S.suspend(() =>
+const DoubleVerifyBrandSafetyCategories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avoidedMediumSeverityCategories: S.optional(
       DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList,
@@ -1362,7 +1356,7 @@ export type DoubleVerifyDisplayViewabilityViewableDuringEnum =
   | "AVERAGE_VIEW_DURATION_5_SEC"
   | "AVERAGE_VIEW_DURATION_10_SEC"
   | "AVERAGE_VIEW_DURATION_15_SEC";
-export const DoubleVerifyDisplayViewabilityViewableDuringEnum = S.String;
+const DoubleVerifyDisplayViewabilityViewableDuringEnum = S.String;
 
 export type DoubleVerifyDisplayViewabilityIabEnum =
   | "IAB_VIEWED_RATE_UNSPECIFIED"
@@ -1375,7 +1369,7 @@ export type DoubleVerifyDisplayViewabilityIabEnum =
   | "IAB_VIEWED_RATE_50_PERCENT_HIGHER"
   | "IAB_VIEWED_RATE_40_PERCENT_HIGHER"
   | "IAB_VIEWED_RATE_30_PERCENT_HIGHER";
-export const DoubleVerifyDisplayViewabilityIabEnum = S.String;
+const DoubleVerifyDisplayViewabilityIabEnum = S.String;
 
 /** Details of DoubleVerify display viewability settings. */
 export interface DoubleVerifyDisplayViewability {
@@ -1384,7 +1378,7 @@ export interface DoubleVerifyDisplayViewability {
   /** Target web and app inventory to maximize IAB viewable rate. */
   iab?: DoubleVerifyDisplayViewabilityIabEnum | (string & {});
 }
-export const DoubleVerifyDisplayViewability = /*@__PURE__*/ S.suspend(() =>
+const DoubleVerifyDisplayViewability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewableDuring: S.optional(DoubleVerifyDisplayViewabilityViewableDuringEnum),
     iab: S.optional(DoubleVerifyDisplayViewabilityIabEnum),
@@ -1399,7 +1393,7 @@ export type DoubleVerifyVideoViewabilityPlayerImpressionRateEnum =
   | "PLAYER_SIZE_400X300_70"
   | "PLAYER_SIZE_400X300_25"
   | "PLAYER_SIZE_400X300_5";
-export const DoubleVerifyVideoViewabilityPlayerImpressionRateEnum = S.String;
+const DoubleVerifyVideoViewabilityPlayerImpressionRateEnum = S.String;
 
 export type DoubleVerifyVideoViewabilityVideoIabEnum =
   | "VIDEO_IAB_UNSPECIFIED"
@@ -1412,7 +1406,7 @@ export type DoubleVerifyVideoViewabilityVideoIabEnum =
   | "IAB_VIEWABILITY_50_PERCENT_HIGHER"
   | "IAB_VIEWABILITY_40_PERCENT_HIHGER"
   | "IAB_VIEWABILITY_30_PERCENT_HIHGER";
-export const DoubleVerifyVideoViewabilityVideoIabEnum = S.String;
+const DoubleVerifyVideoViewabilityVideoIabEnum = S.String;
 
 export type DoubleVerifyVideoViewabilityVideoViewableRateEnum =
   | "VIDEO_VIEWABLE_RATE_UNSPECIFIED"
@@ -1422,7 +1416,7 @@ export type DoubleVerifyVideoViewabilityVideoViewableRateEnum =
   | "VIEWED_PERFORMANCE_25_PERCENT_HIGHER"
   | "VIEWED_PERFORMANCE_20_PERCENT_HIGHER"
   | "VIEWED_PERFORMANCE_10_PERCENT_HIGHER";
-export const DoubleVerifyVideoViewabilityVideoViewableRateEnum = S.String;
+const DoubleVerifyVideoViewabilityVideoViewableRateEnum = S.String;
 
 /** Details of DoubleVerify video viewability settings. */
 export interface DoubleVerifyVideoViewability {
@@ -1433,7 +1427,7 @@ export interface DoubleVerifyVideoViewability {
   /** Target web inventory to maximize fully viewable rate. */
   videoViewableRate?: DoubleVerifyVideoViewabilityVideoViewableRateEnum | (string & {});
 }
-export const DoubleVerifyVideoViewability = /*@__PURE__*/ S.suspend(() =>
+const DoubleVerifyVideoViewability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     playerImpressionRate: S.optional(DoubleVerifyVideoViewabilityPlayerImpressionRateEnum),
     videoIab: S.optional(DoubleVerifyVideoViewabilityVideoIabEnum),
@@ -1452,7 +1446,7 @@ export type DoubleVerifyAppStarRatingAvoidedStarRatingEnum =
   | "APP_STAR_RATE_3_POINT_5_LESS"
   | "APP_STAR_RATE_4_LESS"
   | "APP_STAR_RATE_4_POINT_5_LESS";
-export const DoubleVerifyAppStarRatingAvoidedStarRatingEnum = S.String;
+const DoubleVerifyAppStarRatingAvoidedStarRatingEnum = S.String;
 
 /** Details of DoubleVerify star ratings settings. */
 export interface DoubleVerifyAppStarRating {
@@ -1461,7 +1455,7 @@ export interface DoubleVerifyAppStarRating {
   /** Avoid bidding on apps with the star ratings. */
   avoidedStarRating?: DoubleVerifyAppStarRatingAvoidedStarRatingEnum | (string & {});
 }
-export const DoubleVerifyAppStarRating = /*@__PURE__*/ S.suspend(() =>
+const DoubleVerifyAppStarRating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avoidInsufficientStarRating: S.optional(S.Boolean),
     avoidedStarRating: S.optional(DoubleVerifyAppStarRatingAvoidedStarRatingEnum),
@@ -1480,7 +1474,7 @@ export type DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum =
   | "AD_IMPRESSION_FRAUD_6"
   | "AD_IMPRESSION_FRAUD_4"
   | "AD_IMPRESSION_FRAUD_2";
-export const DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum = S.String;
+const DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum = S.String;
 
 /** DoubleVerify Fraud & Invalid Traffic settings. */
 export interface DoubleVerifyFraudInvalidTraffic {
@@ -1489,7 +1483,7 @@ export interface DoubleVerifyFraudInvalidTraffic {
   /** Avoid Sites and Apps with historical Fraud & IVT. */
   avoidedFraudOption?: DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum | (string & {});
 }
-export const DoubleVerifyFraudInvalidTraffic = /*@__PURE__*/ S.suspend(() =>
+const DoubleVerifyFraudInvalidTraffic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avoidInsufficientOption: S.optional(S.Boolean),
     avoidedFraudOption: S.optional(DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum),
@@ -1515,7 +1509,7 @@ export interface DoubleVerify {
   /** Avoid Sites and Apps with historical Fraud & IVT Rates. */
   fraudInvalidTraffic?: DoubleVerifyFraudInvalidTraffic;
 }
-export const DoubleVerify = /*@__PURE__*/ S.suspend(() =>
+const DoubleVerify = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avoidedAgeRatings: S.optional(DoubleVerifyAvoidedAgeRatingsItemEnumList),
     brandSafetyCategories: S.optional(DoubleVerifyBrandSafetyCategories),
@@ -1533,28 +1527,28 @@ export type IntegralAdScienceDisplayViewabilityEnum =
   | "PERFORMANCE_VIEWABILITY_50"
   | "PERFORMANCE_VIEWABILITY_60"
   | "PERFORMANCE_VIEWABILITY_70";
-export const IntegralAdScienceDisplayViewabilityEnum = S.String;
+const IntegralAdScienceDisplayViewabilityEnum = S.String;
 
 export type IntegralAdScienceExcludedAdultRiskEnum = "ADULT_UNSPECIFIED" | "ADULT_HR" | "ADULT_HMR";
-export const IntegralAdScienceExcludedAdultRiskEnum = S.String;
+const IntegralAdScienceExcludedAdultRiskEnum = S.String;
 
 export type IntegralAdScienceExcludedHateSpeechRiskEnum =
   | "HATE_SPEECH_UNSPECIFIED"
   | "HATE_SPEECH_HR"
   | "HATE_SPEECH_HMR";
-export const IntegralAdScienceExcludedHateSpeechRiskEnum = S.String;
+const IntegralAdScienceExcludedHateSpeechRiskEnum = S.String;
 
 export type IntegralAdScienceExcludedGamblingRiskEnum =
   | "GAMBLING_UNSPECIFIED"
   | "GAMBLING_HR"
   | "GAMBLING_HMR";
-export const IntegralAdScienceExcludedGamblingRiskEnum = S.String;
+const IntegralAdScienceExcludedGamblingRiskEnum = S.String;
 
 export type IntegralAdScienceExcludedOffensiveLanguageRiskEnum =
   | "OFFENSIVE_LANGUAGE_UNSPECIFIED"
   | "OFFENSIVE_LANGUAGE_HR"
   | "OFFENSIVE_LANGUAGE_HMR";
-export const IntegralAdScienceExcludedOffensiveLanguageRiskEnum = S.String;
+const IntegralAdScienceExcludedOffensiveLanguageRiskEnum = S.String;
 
 export type IntegralAdScienceTraqScoreOptionEnum =
   | "TRAQ_UNSPECIFIED"
@@ -1565,26 +1559,26 @@ export type IntegralAdScienceTraqScoreOptionEnum =
   | "TRAQ_750"
   | "TRAQ_875"
   | "TRAQ_1000";
-export const IntegralAdScienceTraqScoreOptionEnum = S.String;
+const IntegralAdScienceTraqScoreOptionEnum = S.String;
 
 export type IntegralAdScienceExcludedAdFraudRiskEnum =
   | "SUSPICIOUS_ACTIVITY_UNSPECIFIED"
   | "SUSPICIOUS_ACTIVITY_HR"
   | "SUSPICIOUS_ACTIVITY_HMR"
   | "SUSPICIOUS_ACTIVITY_FD";
-export const IntegralAdScienceExcludedAdFraudRiskEnum = S.String;
+const IntegralAdScienceExcludedAdFraudRiskEnum = S.String;
 
 export type IntegralAdScienceExcludedViolenceRiskEnum =
   | "VIOLENCE_UNSPECIFIED"
   | "VIOLENCE_HR"
   | "VIOLENCE_HMR";
-export const IntegralAdScienceExcludedViolenceRiskEnum = S.String;
+const IntegralAdScienceExcludedViolenceRiskEnum = S.String;
 
 export type IntegralAdScienceExcludedIllegalDownloadsRiskEnum =
   | "ILLEGAL_DOWNLOADS_UNSPECIFIED"
   | "ILLEGAL_DOWNLOADS_HR"
   | "ILLEGAL_DOWNLOADS_HMR";
-export const IntegralAdScienceExcludedIllegalDownloadsRiskEnum = S.String;
+const IntegralAdScienceExcludedIllegalDownloadsRiskEnum = S.String;
 
 export type IntegralAdScienceVideoViewabilityEnum =
   | "VIDEO_VIEWABILITY_UNSPECIFIED"
@@ -1592,16 +1586,16 @@ export type IntegralAdScienceVideoViewabilityEnum =
   | "VIDEO_VIEWABILITY_50"
   | "VIDEO_VIEWABILITY_60"
   | "VIDEO_VIEWABILITY_70";
-export const IntegralAdScienceVideoViewabilityEnum = S.String;
+const IntegralAdScienceVideoViewabilityEnum = S.String;
 
 export type IntegralAdScienceExcludedDrugsRiskEnum = "DRUGS_UNSPECIFIED" | "DRUGS_HR" | "DRUGS_HMR";
-export const IntegralAdScienceExcludedDrugsRiskEnum = S.String;
+const IntegralAdScienceExcludedDrugsRiskEnum = S.String;
 
 export type IntegralAdScienceExcludedAlcoholRiskEnum =
   | "ALCOHOL_UNSPECIFIED"
   | "ALCOHOL_HR"
   | "ALCOHOL_HMR";
-export const IntegralAdScienceExcludedAlcoholRiskEnum = S.String;
+const IntegralAdScienceExcludedAlcoholRiskEnum = S.String;
 
 /** Details of Integral Ad Science settings. */
 export interface IntegralAdScience {
@@ -1638,7 +1632,7 @@ export interface IntegralAdScience {
   /** Brand Safety - **Alcohol**. */
   excludedAlcoholRisk?: IntegralAdScienceExcludedAlcoholRiskEnum | (string & {});
 }
-export const IntegralAdScience = /*@__PURE__*/ S.suspend(() =>
+const IntegralAdScience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeUnrateable: S.optional(S.Boolean),
     displayViewability: S.optional(IntegralAdScienceDisplayViewabilityEnum),
@@ -1664,7 +1658,7 @@ export type AdlooxIllegalDrugsTobaccoEcigarettesVapingAlcoholContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxIllegalDrugsTobaccoEcigarettesVapingAlcoholContentEnum = S.String;
+const AdlooxIllegalDrugsTobaccoEcigarettesVapingAlcoholContentEnum = S.String;
 
 export type AdlooxDebatedSensitiveSocialIssueContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1672,7 +1666,7 @@ export type AdlooxDebatedSensitiveSocialIssueContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxDebatedSensitiveSocialIssueContentEnum = S.String;
+const AdlooxDebatedSensitiveSocialIssueContentEnum = S.String;
 
 export type AdlooxArmsAmmunitionContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1680,7 +1674,7 @@ export type AdlooxArmsAmmunitionContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxArmsAmmunitionContentEnum = S.String;
+const AdlooxArmsAmmunitionContentEnum = S.String;
 
 export type AdlooxAdultExplicitSexualContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1688,7 +1682,7 @@ export type AdlooxAdultExplicitSexualContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxAdultExplicitSexualContentEnum = S.String;
+const AdlooxAdultExplicitSexualContentEnum = S.String;
 
 export type AdlooxDisplayIabViewabilityEnum =
   | "DISPLAY_IAB_VIEWABILITY_UNSPECIFIED"
@@ -1697,7 +1691,7 @@ export type AdlooxDisplayIabViewabilityEnum =
   | "DISPLAY_IAB_VIEWABILITY_35"
   | "DISPLAY_IAB_VIEWABILITY_50"
   | "DISPLAY_IAB_VIEWABILITY_75";
-export const AdlooxDisplayIabViewabilityEnum = S.String;
+const AdlooxDisplayIabViewabilityEnum = S.String;
 
 export type AdlooxCrimeHarmfulActsIndividualsSocietyHumanRightsViolationsContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1705,7 +1699,7 @@ export type AdlooxCrimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxCrimeHarmfulActsIndividualsSocietyHumanRightsViolationsContentEnum = S.String;
+const AdlooxCrimeHarmfulActsIndividualsSocietyHumanRightsViolationsContentEnum = S.String;
 
 export type AdlooxMisinformationContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1713,7 +1707,7 @@ export type AdlooxMisinformationContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxMisinformationContentEnum = S.String;
+const AdlooxMisinformationContentEnum = S.String;
 
 export type AdlooxOnlinePiracyContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1721,7 +1715,7 @@ export type AdlooxOnlinePiracyContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxOnlinePiracyContentEnum = S.String;
+const AdlooxOnlinePiracyContentEnum = S.String;
 
 export type AdlooxHateSpeechActsAggressionContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1729,17 +1723,15 @@ export type AdlooxHateSpeechActsAggressionContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxHateSpeechActsAggressionContentEnum = S.String;
+const AdlooxHateSpeechActsAggressionContentEnum = S.String;
 
 export type AdlooxExcludedFraudIvtMfaCategoriesItemEnum =
   | "FRAUD_IVT_MFA_CATEGORY_UNSPECIFIED"
   | "FRAUD_IVT_MFA";
-export const AdlooxExcludedFraudIvtMfaCategoriesItemEnum = S.String;
-
 export type AdlooxExcludedFraudIvtMfaCategoriesItemEnumList = Array<
   AdlooxExcludedFraudIvtMfaCategoriesItemEnum | (string & {})
 >;
-export const AdlooxExcludedFraudIvtMfaCategoriesItemEnumList =
+const AdlooxExcludedFraudIvtMfaCategoriesItemEnumList =
   DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<AdlooxExcludedFraudIvtMfaCategoriesItemEnumList>;
 
 export type AdlooxObscenityProfanityContentEnum =
@@ -1748,7 +1740,7 @@ export type AdlooxObscenityProfanityContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxObscenityProfanityContentEnum = S.String;
+const AdlooxObscenityProfanityContentEnum = S.String;
 
 export type AdlooxSpamHarmfulContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1756,7 +1748,7 @@ export type AdlooxSpamHarmfulContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxSpamHarmfulContentEnum = S.String;
+const AdlooxSpamHarmfulContentEnum = S.String;
 
 export type AdlooxDeathInjuryMilitaryConflictContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1764,7 +1756,7 @@ export type AdlooxDeathInjuryMilitaryConflictContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxDeathInjuryMilitaryConflictContentEnum = S.String;
+const AdlooxDeathInjuryMilitaryConflictContentEnum = S.String;
 
 export type AdlooxTerrorismContentEnum =
   | "GARM_RISK_EXCLUSION_UNSPECIFIED"
@@ -1772,7 +1764,7 @@ export type AdlooxTerrorismContentEnum =
   | "GARM_RISK_EXCLUSION_HIGH"
   | "GARM_RISK_EXCLUSION_MEDIUM"
   | "GARM_RISK_EXCLUSION_LOW";
-export const AdlooxTerrorismContentEnum = S.String;
+const AdlooxTerrorismContentEnum = S.String;
 
 export type AdlooxExcludedAdlooxCategoriesItemEnum =
   | "ADLOOX_UNSPECIFIED"
@@ -1784,12 +1776,10 @@ export type AdlooxExcludedAdlooxCategoriesItemEnum =
   | "VIOLENT_CONTENT_WEAPONS"
   | "LOW_VIEWABILITY_DOMAINS"
   | "FRAUD";
-export const AdlooxExcludedAdlooxCategoriesItemEnum = S.String;
-
 export type AdlooxExcludedAdlooxCategoriesItemEnumList = Array<
   AdlooxExcludedAdlooxCategoriesItemEnum | (string & {})
 >;
-export const AdlooxExcludedAdlooxCategoriesItemEnumList =
+const AdlooxExcludedAdlooxCategoriesItemEnumList =
   DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<AdlooxExcludedAdlooxCategoriesItemEnumList>;
 
 export type AdlooxVideoIabViewabilityEnum =
@@ -1799,7 +1789,7 @@ export type AdlooxVideoIabViewabilityEnum =
   | "VIDEO_IAB_VIEWABILITY_35"
   | "VIDEO_IAB_VIEWABILITY_50"
   | "VIDEO_IAB_VIEWABILITY_75";
-export const AdlooxVideoIabViewabilityEnum = S.String;
+const AdlooxVideoIabViewabilityEnum = S.String;
 
 /** Details of Scope3 (previously known as Adloox) brand safety settings. */
 export interface Adloox {
@@ -1840,7 +1830,7 @@ export interface Adloox {
   /** Optional. IAB viewability threshold for video ads. */
   videoIabViewability?: AdlooxVideoIabViewabilityEnum | (string & {});
 }
-export const Adloox = /*@__PURE__*/ S.suspend(() =>
+const Adloox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     illegalDrugsTobaccoEcigarettesVapingAlcoholContent: S.optional(
       AdlooxIllegalDrugsTobaccoEcigarettesVapingAlcoholContentEnum,
@@ -1874,7 +1864,7 @@ export interface ThirdPartyVerifierAssignedTargetingOptionDetails {
   /** Third party brand verifier -- Scope3 (previously known as Adloox). */
   adloox?: Adloox;
 }
-export const ThirdPartyVerifierAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyVerifierAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleVerify: S.optional(DoubleVerify),
     integralAdScience: S.optional(IntegralAdScience),
@@ -1893,7 +1883,7 @@ export interface AppCategoryAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
-export const AppCategoryAssignedTargetingOptionDetails =
+const AppCategoryAssignedTargetingOptionDetails =
   DeviceMakeModelAssignedTargetingOptionDetails as any as S.Schema<AppCategoryAssignedTargetingOptionDetails>;
 
 /** Details for assigned sub-exchange targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`. */
@@ -1901,7 +1891,7 @@ export interface SubExchangeAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_SUB_EXCHANGE`. */
   targetingOptionId?: string;
 }
-export const SubExchangeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const SubExchangeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingOptionId: S.optional(S.String),
   }),
@@ -1917,8 +1907,7 @@ export type DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRati
   | "CONTENT_RATING_TIER_TEENS"
   | "CONTENT_RATING_TIER_MATURE"
   | "CONTENT_RATING_TIER_FAMILIES";
-export const DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum =
-  S.String;
+const DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum = S.String;
 
 /** Targeting details for digital content label. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. */
 export interface DigitalContentLabelAssignedTargetingOptionDetails {
@@ -1927,7 +1916,7 @@ export interface DigitalContentLabelAssignedTargetingOptionDetails {
     | DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum
     | (string & {});
 }
-export const DigitalContentLabelAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const DigitalContentLabelAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedContentRatingTier: S.optional(
       DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum,
@@ -1958,8 +1947,7 @@ export type SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCate
   | "SENSITIVE_CATEGORY_SHOCKING"
   | "SENSITIVE_CATEGORY_EMBEDDED_VIDEO"
   | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO";
-export const SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum =
-  S.String;
+const SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum = S.String;
 
 /** Targeting details for sensitive category. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. */
 export interface SensitiveCategoryAssignedTargetingOptionDetails {
@@ -1968,7 +1956,7 @@ export interface SensitiveCategoryAssignedTargetingOptionDetails {
     | SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum
     | (string & {});
 }
-export const SensitiveCategoryAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const SensitiveCategoryAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedSensitiveCategory: S.optional(
       SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum,
@@ -1997,14 +1985,14 @@ export type AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_50_54"
   | "AGE_RANGE_55_59"
   | "AGE_RANGE_60_64";
-export const AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum = S.String;
+const AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum = S.String;
 
 /** Represents a targetable age range. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AGE_RANGE`. */
 export interface AgeRangeAssignedTargetingOptionDetails {
   /** Required. The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age. */
   ageRange?: AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum | (string & {});
 }
-export const AgeRangeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AgeRangeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ageRange: S.optional(AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum),
   }),
@@ -2021,7 +2009,7 @@ export interface BrowserAssignedTargetingOptionDetails {
   /** Output only. The display name of the browser. */
   displayName?: string;
 }
-export const BrowserAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const BrowserAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negative: S.optional(S.Boolean),
     targetingOptionId: S.optional(S.String),
@@ -2038,7 +2026,7 @@ export interface RegionalLocationListAssignedTargetingOptionDetails {
   /** Required. ID of the regional location list. Should refer to the location_list_id field of a LocationList resource whose type is `TARGETING_LOCATION_TYPE_REGIONAL`. */
   regionalLocationListId?: string;
 }
-export const RegionalLocationListAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const RegionalLocationListAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negative: S.optional(S.Boolean),
     regionalLocationListId: S.optional(S.String),
@@ -2056,7 +2044,7 @@ export type ContentDurationAssignedTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_15_TO_30_MIN"
   | "CONTENT_DURATION_30_TO_60_MIN"
   | "CONTENT_DURATION_OVER_60_MIN";
-export const ContentDurationAssignedTargetingOptionDetailsContentDurationEnum = S.String;
+const ContentDurationAssignedTargetingOptionDetailsContentDurationEnum = S.String;
 
 /** Details for content duration assigned targeting option. This will be populated in the content_duration_details field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not supported. Remove all content duration targeting options to achieve this effect. */
 export interface ContentDurationAssignedTargetingOptionDetails {
@@ -2067,7 +2055,7 @@ export interface ContentDurationAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. */
   targetingOptionId?: string;
 }
-export const ContentDurationAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentDurationAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentDuration: S.optional(ContentDurationAssignedTargetingOptionDetailsContentDurationEnum),
     targetingOptionId: S.optional(S.String),
@@ -2085,7 +2073,7 @@ export interface LanguageAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_LANGUAGE`. */
   targetingOptionId?: string;
 }
-export const LanguageAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const LanguageAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     negative: S.optional(S.Boolean),
@@ -2100,14 +2088,14 @@ export type EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum =
   | "ENVIRONMENT_WEB_OPTIMIZED"
   | "ENVIRONMENT_WEB_NOT_OPTIMIZED"
   | "ENVIRONMENT_APP";
-export const EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum = S.String;
+const EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum = S.String;
 
 /** Assigned environment targeting option details. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_ENVIRONMENT`. */
 export interface EnvironmentAssignedTargetingOptionDetails {
   /** Required. The serving environment. */
   environment?: EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum | (string & {});
 }
-export const EnvironmentAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum),
   }),
@@ -2124,7 +2112,7 @@ export interface CategoryAssignedTargetingOptionDetails {
   /** Output only. The display name of the category. */
   displayName?: string;
 }
-export const CategoryAssignedTargetingOptionDetails =
+const CategoryAssignedTargetingOptionDetails =
   BrowserAssignedTargetingOptionDetails as any as S.Schema<CategoryAssignedTargetingOptionDetails>;
 
 export type NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum =
@@ -2134,7 +2122,7 @@ export type NativeContentPositionAssignedTargetingOptionDetailsContentPositionEn
   | "NATIVE_CONTENT_POSITION_IN_FEED"
   | "NATIVE_CONTENT_POSITION_PERIPHERAL"
   | "NATIVE_CONTENT_POSITION_RECOMMENDATION";
-export const NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum = S.String;
+const NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum = S.String;
 
 /** Details for native content position assigned targeting option. This will be populated in the native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly targeting all options is not supported. Remove all native content position targeting options to achieve this effect. */
 export interface NativeContentPositionAssignedTargetingOptionDetails {
@@ -2143,7 +2131,7 @@ export interface NativeContentPositionAssignedTargetingOptionDetails {
     | NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum
     | (string & {});
 }
-export const NativeContentPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const NativeContentPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentPosition: S.optional(
       NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum,
@@ -2204,21 +2192,21 @@ export type AssignedTargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const AssignedTargetingOptionTargetingTypeEnum = S.String;
+const AssignedTargetingOptionTargetingTypeEnum = S.String;
 
 export type GenderAssignedTargetingOptionDetailsGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_MALE"
   | "GENDER_FEMALE"
   | "GENDER_UNKNOWN";
-export const GenderAssignedTargetingOptionDetailsGenderEnum = S.String;
+const GenderAssignedTargetingOptionDetailsGenderEnum = S.String;
 
 /** Details for assigned gender targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_GENDER`. */
 export interface GenderAssignedTargetingOptionDetails {
   /** Required. The gender of the audience. */
   gender?: GenderAssignedTargetingOptionDetailsGenderEnum | (string & {});
 }
-export const GenderAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const GenderAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gender: S.optional(GenderAssignedTargetingOptionDetailsGenderEnum),
   }),
@@ -2232,7 +2220,7 @@ export type VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum =
   | "VIDEO_PLAYER_SIZE_LARGE"
   | "VIDEO_PLAYER_SIZE_HD"
   | "VIDEO_PLAYER_SIZE_UNKNOWN";
-export const VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum = S.String;
+const VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum = S.String;
 
 /** Video player size targeting option details. This will be populated in the video_player_size_details field when targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not supported. Remove all video player size targeting options to achieve this effect. */
 export interface VideoPlayerSizeAssignedTargetingOptionDetails {
@@ -2241,7 +2229,7 @@ export interface VideoPlayerSizeAssignedTargetingOptionDetails {
     | VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum
     | (string & {});
 }
-export const VideoPlayerSizeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const VideoPlayerSizeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoPlayerSize: S.optional(VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum),
   }),
@@ -2254,7 +2242,7 @@ export interface NegativeKeywordListAssignedTargetingOptionDetails {
   /** Required. ID of the negative keyword list. Should refer to the negative_keyword_list_id field of a NegativeKeywordList resource. */
   negativeKeywordListId?: string;
 }
-export const NegativeKeywordListAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const NegativeKeywordListAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negativeKeywordListId: S.optional(S.String),
   }),
@@ -2271,7 +2259,7 @@ export interface OperatingSystemAssignedTargetingOptionDetails {
   /** Output only. The display name of the operating system. */
   displayName?: string;
 }
-export const OperatingSystemAssignedTargetingOptionDetails =
+const OperatingSystemAssignedTargetingOptionDetails =
   BrowserAssignedTargetingOptionDetails as any as S.Schema<OperatingSystemAssignedTargetingOptionDetails>;
 
 /** Details for assigned URL targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_URL`. */
@@ -2281,7 +2269,7 @@ export interface UrlAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
-export const UrlAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const UrlAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     negative: S.optional(S.Boolean),
@@ -2331,7 +2319,7 @@ export type GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
   | "GEO_REGION_TYPE_WARD";
-export const GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum = S.String;
+const GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum = S.String;
 
 /** Details for assigned geographic region targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_GEO_REGION`. */
 export interface GeoRegionAssignedTargetingOptionDetails {
@@ -2344,7 +2332,7 @@ export interface GeoRegionAssignedTargetingOptionDetails {
   /** Output only. The display name of the geographic region (e.g., "Ontario, Canada"). */
   displayName?: string;
 }
-export const GeoRegionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const GeoRegionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoRegionType: S.optional(GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum),
     targetingOptionId: S.optional(S.String),
@@ -2362,7 +2350,7 @@ export interface YoutubeVideoAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
-export const YoutubeVideoAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const YoutubeVideoAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoId: S.optional(S.String),
     negative: S.optional(S.Boolean),
@@ -2380,14 +2368,14 @@ export interface CarrierAndIspAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. All assigned carrier and ISP targeting options on the same resource must have the same value for this field. */
   negative?: boolean;
 }
-export const CarrierAndIspAssignedTargetingOptionDetails =
+const CarrierAndIspAssignedTargetingOptionDetails =
   DeviceMakeModelAssignedTargetingOptionDetails as any as S.Schema<CarrierAndIspAssignedTargetingOptionDetails>;
 
 export type ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "PROXIMITY_RADIUS_UNIT_UNSPECIFIED"
   | "PROXIMITY_RADIUS_UNIT_MILES"
   | "PROXIMITY_RADIUS_UNIT_KILOMETERS";
-export const ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
+const ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
 
 /** Targeting details for proximity location list. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`. */
 export interface ProximityLocationListAssignedTargetingOptionDetails {
@@ -2400,7 +2388,7 @@ export interface ProximityLocationListAssignedTargetingOptionDetails {
     | ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum
     | (string & {});
 }
-export const ProximityLocationListAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ProximityLocationListAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proximityRadius: S.optional(S.Number),
     proximityLocationListId: S.optional(S.String),
@@ -2416,7 +2404,7 @@ export type UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContent
   | "USER_REWARDED_CONTENT_UNSPECIFIED"
   | "USER_REWARDED_CONTENT_USER_REWARDED"
   | "USER_REWARDED_CONTENT_NOT_USER_REWARDED";
-export const UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum = S.String;
+const UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum = S.String;
 
 /** User rewarded content targeting option details. This will be populated in the user_rewarded_content_details field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
 export interface UserRewardedContentAssignedTargetingOptionDetails {
@@ -2427,7 +2415,7 @@ export interface UserRewardedContentAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
   targetingOptionId?: string;
 }
-export const UserRewardedContentAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const UserRewardedContentAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userRewardedContent: S.optional(
       UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum,
@@ -2445,15 +2433,14 @@ export type ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstre
   | "CONTENT_OUTSTREAM_POSITION_IN_BANNER"
   | "CONTENT_OUTSTREAM_POSITION_IN_FEED"
   | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL";
-export const ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum =
-  S.String;
+const ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum = S.String;
 
 export type ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
   | "AD_TYPE_AUDIO";
-export const ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
+const ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
 
 /** Assigned content outstream position targeting option details. This will be populated in the content_outstream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`. */
 export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
@@ -2464,7 +2451,7 @@ export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
   /** Output only. The ad type to target. Only applicable to insertion order targeting and new line items supporting the specified ad type will inherit this targeting option by default. Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. * `AD_TYPE_VIDEO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. */
   adType?: ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum | (string & {});
 }
-export const ContentOutstreamPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentOutstreamPositionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentOutstreamPosition: S.optional(
       ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum,
@@ -2480,14 +2467,14 @@ export type ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum =
   | "PARENTAL_STATUS_PARENT"
   | "PARENTAL_STATUS_NOT_A_PARENT"
   | "PARENTAL_STATUS_UNKNOWN";
-export const ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum = S.String;
+const ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum = S.String;
 
 /** Details for assigned parental status targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`. */
 export interface ParentalStatusAssignedTargetingOptionDetails {
   /** Required. The parental status of the audience. */
   parentalStatus?: ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum | (string & {});
 }
-export const ParentalStatusAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ParentalStatusAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentalStatus: S.optional(ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum),
   }),
@@ -2499,7 +2486,7 @@ export type ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum
   | "CONTENT_STREAM_TYPE_UNSPECIFIED"
   | "CONTENT_LIVE_STREAM"
   | "CONTENT_ON_DEMAND";
-export const ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum = S.String;
+const ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum = S.String;
 
 /** Details for content stream type assigned targeting option. This will be populated in the content_stream_type_details field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly targeting all options is not supported. Remove all content stream type targeting options to achieve this effect. */
 export interface ContentStreamTypeAssignedTargetingOptionDetails {
@@ -2510,7 +2497,7 @@ export interface ContentStreamTypeAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. */
   targetingOptionId?: string;
 }
-export const ContentStreamTypeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentStreamTypeAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentStreamType: S.optional(
       ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum,
@@ -2634,7 +2621,7 @@ export interface AssignedTargetingOption {
   /** Content duration details. This field will be populated when the TargetingType is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. */
   contentStreamTypeDetails?: ContentStreamTypeAssignedTargetingOptionDetails;
 }
-export const AssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
+const AssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewabilityDetails: S.optional(ViewabilityAssignedTargetingOptionDetails),
     dayAndTimeDetails: S.optional(DayAndTimeAssignedTargetingOptionDetails),
@@ -2701,7 +2688,7 @@ export const AssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssignedTargetingOption" }) as any as S.Schema<AssignedTargetingOption>;
 
 export type AssignedTargetingOptionList = Array<AssignedTargetingOption>;
-export const AssignedTargetingOptionList = /*@__PURE__*/ S.Array(
+const AssignedTargetingOptionList = /*@__PURE__*/ S.Array(
   AssignedTargetingOption,
 ) as any as S.Schema<AssignedTargetingOptionList>;
 
@@ -2756,7 +2743,7 @@ export type CreateAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const CreateAssignedTargetingOptionsRequestTargetingTypeEnum = S.String;
+const CreateAssignedTargetingOptionsRequestTargetingTypeEnum = S.String;
 
 /** A request listing which assigned targeting options of a given targeting type should be created and added. */
 export interface CreateAssignedTargetingOptionsRequest {
@@ -2765,7 +2752,7 @@ export interface CreateAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. */
   targetingType?: CreateAssignedTargetingOptionsRequestTargetingTypeEnum | (string & {});
 }
-export const CreateAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
     targetingType: S.optional(CreateAssignedTargetingOptionsRequestTargetingTypeEnum),
@@ -2776,7 +2763,7 @@ export const CreateAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type CreateAssignedTargetingOptionsRequestList =
   Array<CreateAssignedTargetingOptionsRequest>;
-export const CreateAssignedTargetingOptionsRequestList = /*@__PURE__*/ S.Array(
+const CreateAssignedTargetingOptionsRequestList = /*@__PURE__*/ S.Array(
   CreateAssignedTargetingOptionsRequest,
 ) as any as S.Schema<CreateAssignedTargetingOptionsRequestList>;
 
@@ -2789,7 +2776,7 @@ export interface BulkEditAdGroupAssignedTargetingOptionsRequest {
   /** Optional. The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionRequest`. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` */
   createRequests?: CreateAssignedTargetingOptionsRequestList;
 }
-export const BulkEditAdGroupAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAdGroupAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupIds: S.optional(StringList),
     deleteRequests: S.optional(DeleteAssignedTargetingOptionsRequestList),
@@ -2805,32 +2792,26 @@ export interface BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest {
   /** Request body */
   body?: BulkEditAdGroupAssignedTargetingOptionsRequest;
 }
-export const BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      body: S.optional(BulkEditAdGroupAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    body: S.optional(BulkEditAdGroupAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest",
 }) as any as S.Schema<BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -2841,7 +2822,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -2850,7 +2831,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** Response message for BulkEditAssignedTargetingOptions. */
 export interface BulkEditAdGroupAssignedTargetingOptionsResponse {
@@ -2861,7 +2842,7 @@ export interface BulkEditAdGroupAssignedTargetingOptionsResponse {
   /** Output only. The IDs of the ad groups which were successfully updated. */
   updatedAdGroupIds?: StringList;
 }
-export const BulkEditAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedAdGroupIds: S.optional(StringList),
     errors: S.optional(StatusList),
@@ -2880,7 +2861,7 @@ export interface BulkEditAssignedTargetingOptionsRequest {
   /** Required. The ID of the line items whose targeting is being updated. */
   lineItemIds?: StringList;
 }
-export const BulkEditAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteRequests: S.optional(DeleteAssignedTargetingOptionsRequestList),
     createRequests: S.optional(CreateAssignedTargetingOptionsRequestList),
@@ -2896,18 +2877,17 @@ export interface BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest {
   /** Request body */
   body?: BulkEditAssignedTargetingOptionsRequest;
 }
-export const BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      body: S.optional(BulkEditAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    body: S.optional(BulkEditAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest",
 }) as any as S.Schema<BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest>;
@@ -2920,7 +2900,7 @@ export interface BulkEditAssignedTargetingOptionsResponse {
   /** The error information for each line item that failed to update. */
   errors?: StatusList;
 }
-export const BulkEditAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedLineItemIds: S.optional(StringList),
     updatedLineItemIds: S.optional(StringList),
@@ -2943,7 +2923,7 @@ export type AssignedUserRoleUserRoleEnum =
   | "LIMITED_REPORTING_ONLY"
   | "CREATIVE"
   | "CREATIVE_ADMIN";
-export const AssignedUserRoleUserRoleEnum = S.String;
+const AssignedUserRoleUserRoleEnum = S.String;
 
 /** A single assigned user role, which defines a user's authorized interaction with a specified partner or advertiser. */
 export interface AssignedUserRole {
@@ -2956,7 +2936,7 @@ export interface AssignedUserRole {
   /** Output only. The ID of the assigned user role. */
   assignedUserRoleId?: string;
 }
-export const AssignedUserRole = /*@__PURE__*/ S.suspend(() =>
+const AssignedUserRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String),
     userRole: S.optional(AssignedUserRoleUserRoleEnum),
@@ -2966,7 +2946,7 @@ export const AssignedUserRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssignedUserRole" }) as any as S.Schema<AssignedUserRole>;
 
 export type AssignedUserRoleList = Array<AssignedUserRole>;
-export const AssignedUserRoleList = /*@__PURE__*/ S.Array(
+const AssignedUserRoleList = /*@__PURE__*/ S.Array(
   AssignedUserRole,
 ) as any as S.Schema<AssignedUserRoleList>;
 
@@ -2977,7 +2957,7 @@ export interface BulkEditAssignedUserRolesRequest {
   /** The assigned user roles to create in batch, specified as a list of AssignedUserRoles. */
   createdAssignedUserRoles?: AssignedUserRoleList;
 }
-export const BulkEditAssignedUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedAssignedUserRoles: S.optional(StringList),
     createdAssignedUserRoles: S.optional(AssignedUserRoleList),
@@ -2992,7 +2972,7 @@ export interface BulkEditAssignedUserRolesUsersRequest {
   /** Request body */
   body?: BulkEditAssignedUserRolesRequest;
 }
-export const BulkEditAssignedUserRolesUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedUserRolesUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(BulkEditAssignedUserRolesRequest.pipe(T.HttpBody())),
@@ -3011,7 +2991,7 @@ export interface BulkEditAssignedUserRolesResponse {
   /** The list of assigned user roles that have been successfully created. This list will be absent if empty. */
   createdAssignedUserRoles?: AssignedUserRoleList;
 }
-export const BulkEditAssignedUserRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedUserRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAssignedUserRoles: S.optional(AssignedUserRoleList),
   }),
@@ -3028,7 +3008,7 @@ export interface AssignedInventorySource {
   /** Output only. The resource name of the assigned inventory source. */
   name?: string;
 }
-export const AssignedInventorySource = /*@__PURE__*/ S.suspend(() =>
+const AssignedInventorySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceId: S.optional(S.String),
     assignedInventorySourceId: S.optional(S.String),
@@ -3037,7 +3017,7 @@ export const AssignedInventorySource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssignedInventorySource" }) as any as S.Schema<AssignedInventorySource>;
 
 export type AssignedInventorySourceList = Array<AssignedInventorySource>;
-export const AssignedInventorySourceList = /*@__PURE__*/ S.Array(
+const AssignedInventorySourceList = /*@__PURE__*/ S.Array(
   AssignedInventorySource,
 ) as any as S.Schema<AssignedInventorySourceList>;
 
@@ -3052,7 +3032,7 @@ export interface BulkEditAssignedInventorySourcesRequest {
   /** The ID of the advertiser that owns the parent inventory source group. The parent partner does not have access to these assigned inventory sources. */
   advertiserId?: string;
 }
-export const BulkEditAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAssignedInventorySources: S.optional(AssignedInventorySourceList),
     deletedAssignedInventorySources: S.optional(StringList),
@@ -3069,18 +3049,17 @@ export interface BulkEditInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Request body */
   body?: BulkEditAssignedInventorySourcesRequest;
 }
-export const BulkEditInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      inventorySourceGroupId: S.String.pipe(T.Label()),
-      body: S.optional(BulkEditAssignedInventorySourcesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const BulkEditInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inventorySourceGroupId: S.String.pipe(T.Label()),
+    body: S.optional(BulkEditAssignedInventorySourcesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkEditInventorySourceGroupsAssignedInventorySourcesRequest",
 }) as any as S.Schema<BulkEditInventorySourceGroupsAssignedInventorySourcesRequest>;
@@ -3090,7 +3069,7 @@ export interface BulkEditAssignedInventorySourcesResponse {
   /** The list of assigned inventory sources that have been successfully created. This list will be absent if empty. */
   assignedInventorySources?: AssignedInventorySourceList;
 }
-export const BulkEditAssignedInventorySourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAssignedInventorySourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedInventorySources: S.optional(AssignedInventorySourceList),
   }),
@@ -3106,7 +3085,7 @@ export interface BulkEditPartnersChannelsSitesRequest {
   /** Request body */
   body?: BulkEditSitesRequest;
 }
-export const BulkEditPartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditPartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
     channelId: S.String.pipe(T.Label()),
@@ -3136,8 +3115,8 @@ export interface BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsReque
   /** Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       advertiserId: S.String.pipe(T.Label()),
@@ -3152,9 +3131,9 @@ export const BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest =
         baseUrl: "https://displayvideo.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest",
-  }) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest>;
+).annotate({
+  identifier: "BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest",
+}) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest>;
 
 /** Wrapper object associating an AssignedTargetingOption resource and the ad group it is assigned to. */
 export interface AdGroupAssignedTargetingOption {
@@ -3163,7 +3142,7 @@ export interface AdGroupAssignedTargetingOption {
   /** The assigned targeting option resource. */
   assignedTargetingOption?: AssignedTargetingOption;
 }
-export const AdGroupAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
+const AdGroupAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupId: S.optional(S.String),
     assignedTargetingOption: S.optional(AssignedTargetingOption),
@@ -3173,7 +3152,7 @@ export const AdGroupAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdGroupAssignedTargetingOption>;
 
 export type AdGroupAssignedTargetingOptionList = Array<AdGroupAssignedTargetingOption>;
-export const AdGroupAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
+const AdGroupAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
   AdGroupAssignedTargetingOption,
 ) as any as S.Schema<AdGroupAssignedTargetingOptionList>;
 
@@ -3183,7 +3162,7 @@ export interface BulkListAdGroupAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more AdGroupAssignedTargetingOption resources to return. */
   nextPageToken?: string;
 }
-export const BulkListAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkListAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupAssignedTargetingOptions: S.optional(AdGroupAssignedTargetingOptionList),
     nextPageToken: S.optional(S.String),
@@ -3206,22 +3185,21 @@ export interface BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest {
   /** Field by which to sort the list. Acceptable values are: * `lineItemId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
   orderBy?: string;
 }
-export const BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      advertiserId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      lineItemIds: S.optional(StringList.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    advertiserId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    lineItemIds: S.optional(StringList.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest",
 }) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>;
@@ -3233,7 +3211,7 @@ export interface LineItemAssignedTargetingOption {
   /** The assigned targeting option resource. */
   assignedTargetingOption?: AssignedTargetingOption;
 }
-export const LineItemAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
+const LineItemAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineItemId: S.optional(S.String),
     assignedTargetingOption: S.optional(AssignedTargetingOption),
@@ -3243,7 +3221,7 @@ export const LineItemAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LineItemAssignedTargetingOption>;
 
 export type LineItemAssignedTargetingOptionList = Array<LineItemAssignedTargetingOption>;
-export const LineItemAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
+const LineItemAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
   LineItemAssignedTargetingOption,
 ) as any as S.Schema<LineItemAssignedTargetingOptionList>;
 
@@ -3253,7 +3231,7 @@ export interface BulkListAssignedTargetingOptionsResponse {
   /** The list of wrapper objects, each providing an assigned targeting option and the line item it is assigned to. This list will be absent if empty. */
   lineItemAssignedTargetingOptions?: LineItemAssignedTargetingOptionList;
 }
-export const BulkListAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkListAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     lineItemAssignedTargetingOptions: S.optional(LineItemAssignedTargetingOptionList),
@@ -3286,14 +3264,14 @@ export type LineItemLineItemTypeEnum =
   | "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME"
   | "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
   | "LINE_ITEM_TYPE_DEMAND_GEN";
-export const LineItemLineItemTypeEnum = S.String;
+const LineItemLineItemTypeEnum = S.String;
 
 export type PartnerRevenueModelMarkupTypeEnum =
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP";
-export const PartnerRevenueModelMarkupTypeEnum = S.String;
+const PartnerRevenueModelMarkupTypeEnum = S.String;
 
 /** Settings that control how partner revenue is calculated. */
 export interface PartnerRevenueModel {
@@ -3302,7 +3280,7 @@ export interface PartnerRevenueModel {
   /** Required. The markup amount of the partner revenue model. Must be greater than or equal to 0. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM markup in micros of advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field represents the media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field represents the total media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). */
   markupAmount?: string;
 }
-export const PartnerRevenueModel = /*@__PURE__*/ S.suspend(() =>
+const PartnerRevenueModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     markupType: S.optional(PartnerRevenueModelMarkupTypeEnum),
     markupAmount: S.optional(S.String),
@@ -3316,7 +3294,7 @@ export type LineItemEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const LineItemEntityStatusEnum = S.String;
+const LineItemEntityStatusEnum = S.String;
 
 /** Settings that control the behavior of a single Floodlight activity config. */
 export interface TrackingFloodlightActivityConfig {
@@ -3327,7 +3305,7 @@ export interface TrackingFloodlightActivityConfig {
   /** Required. The number of days after an ad has been clicked in which a conversion may be counted. Must be between 0 and 90 inclusive. */
   postClickLookbackWindowDays?: number;
 }
-export const TrackingFloodlightActivityConfig = /*@__PURE__*/ S.suspend(() =>
+const TrackingFloodlightActivityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postViewLookbackWindowDays: S.optional(S.Number),
     floodlightActivityId: S.optional(S.String),
@@ -3338,7 +3316,7 @@ export const TrackingFloodlightActivityConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrackingFloodlightActivityConfig>;
 
 export type TrackingFloodlightActivityConfigList = Array<TrackingFloodlightActivityConfig>;
-export const TrackingFloodlightActivityConfigList = /*@__PURE__*/ S.Array(
+const TrackingFloodlightActivityConfigList = /*@__PURE__*/ S.Array(
   TrackingFloodlightActivityConfig,
 ) as any as S.Schema<TrackingFloodlightActivityConfigList>;
 
@@ -3351,7 +3329,7 @@ export interface ConversionCountingConfig {
   /** The percentage of post-view conversions to count, in millis (1/1000 of a percent). Must be between 0 and 100000 inclusive. For example, to track 50% of the post-click conversions, set a value of 50000. */
   postViewCountPercentageMillis?: string;
 }
-export const ConversionCountingConfig = /*@__PURE__*/ S.suspend(() =>
+const ConversionCountingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     floodlightActivityConfigs: S.optional(TrackingFloodlightActivityConfigList),
     primaryAttributionModelId: S.optional(S.String),
@@ -3368,7 +3346,7 @@ export interface Displayvideo_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Displayvideo_Date = /*@__PURE__*/ S.suspend(() =>
+const Displayvideo_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -3383,7 +3361,7 @@ export interface DateRange {
   /** The lower bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
   startDate?: Displayvideo_Date;
 }
-export const DateRange = /*@__PURE__*/ S.suspend(() =>
+const DateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(Displayvideo_Date),
     startDate: S.optional(Displayvideo_Date),
@@ -3394,7 +3372,7 @@ export type LineItemFlightFlightDateTypeEnum =
   | "LINE_ITEM_FLIGHT_DATE_TYPE_UNSPECIFIED"
   | "LINE_ITEM_FLIGHT_DATE_TYPE_INHERITED"
   | "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM";
-export const LineItemFlightFlightDateTypeEnum = S.String;
+const LineItemFlightFlightDateTypeEnum = S.String;
 
 /** Settings that control the active duration of a line item. */
 export interface LineItemFlight {
@@ -3403,7 +3381,7 @@ export interface LineItemFlight {
   /** Required. The type of the line item's flight dates. */
   flightDateType?: LineItemFlightFlightDateTypeEnum | (string & {});
 }
-export const LineItemFlight = /*@__PURE__*/ S.suspend(() =>
+const LineItemFlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     flightDateType: S.optional(LineItemFlightFlightDateTypeEnum),
@@ -3417,7 +3395,7 @@ export interface TargetingExpansionConfig {
   /** Required. Whether to enable Optimized Targeting for the line item. Optimized targeting is not compatible with all bid strategies. Attempting to set this field to `true` for a line item using the BiddingStrategy field fixed_bid or one of the following combinations of BiddingStrategy fields and BiddingStrategyPerformanceGoalType will result in an error: maximize_auto_spend_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` performance_goal_auto_bid: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` This also applies if the line item inherits one of the above bid strategies from the parent insertion order. Bid strategies set at the insertion order-level will be inherited by their line items if the `InsertionOrder` budget field automationType is set to `INSERTION_ORDER_AUTOMATION_TYPE_BUDGET` or `INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET`. */
   enableOptimizedTargeting?: boolean;
 }
-export const TargetingExpansionConfig = /*@__PURE__*/ S.suspend(() =>
+const TargetingExpansionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeDemographicExpansion: S.optional(S.Boolean),
     enableOptimizedTargeting: S.optional(S.Boolean),
@@ -3428,14 +3406,14 @@ export type PacingPacingPeriodEnum =
   | "PACING_PERIOD_UNSPECIFIED"
   | "PACING_PERIOD_DAILY"
   | "PACING_PERIOD_FLIGHT";
-export const PacingPacingPeriodEnum = S.String;
+const PacingPacingPeriodEnum = S.String;
 
 export type PacingPacingTypeEnum =
   | "PACING_TYPE_UNSPECIFIED"
   | "PACING_TYPE_AHEAD"
   | "PACING_TYPE_ASAP"
   | "PACING_TYPE_EVEN";
-export const PacingPacingTypeEnum = S.String;
+const PacingPacingTypeEnum = S.String;
 
 /** Settings that control the rate at which a budget is spent. */
 export interface Pacing {
@@ -3448,7 +3426,7 @@ export interface Pacing {
   /** Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. */
   pacingType?: PacingPacingTypeEnum | (string & {});
 }
-export const Pacing = /*@__PURE__*/ S.suspend(() =>
+const Pacing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dailyMaxImpressions: S.optional(S.String),
     pacingPeriod: S.optional(PacingPacingPeriodEnum),
@@ -3461,7 +3439,7 @@ export type LineItemContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
-export const LineItemContainsEuPoliticalAdsEnum = S.String;
+const LineItemContainsEuPoliticalAdsEnum = S.String;
 
 export type PartnerCostCostTypeEnum =
   | "PARTNER_COST_TYPE_UNSPECIFIED"
@@ -3495,19 +3473,19 @@ export type PartnerCostCostTypeEnum =
   | "PARTNER_COST_TYPE_CUSTOM_FEE_4"
   | "PARTNER_COST_TYPE_CUSTOM_FEE_5"
   | "PARTNER_COST_TYPE_SCIBIDS_FEE";
-export const PartnerCostCostTypeEnum = S.String;
+const PartnerCostCostTypeEnum = S.String;
 
 export type PartnerCostInvoiceTypeEnum =
   | "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED"
   | "PARTNER_COST_INVOICE_TYPE_DV360"
   | "PARTNER_COST_INVOICE_TYPE_PARTNER";
-export const PartnerCostInvoiceTypeEnum = S.String;
+const PartnerCostInvoiceTypeEnum = S.String;
 
 export type PartnerCostFeeTypeEnum =
   | "PARTNER_COST_FEE_TYPE_UNSPECIFIED"
   | "PARTNER_COST_FEE_TYPE_CPM_FEE"
   | "PARTNER_COST_FEE_TYPE_MEDIA_FEE";
-export const PartnerCostFeeTypeEnum = S.String;
+const PartnerCostFeeTypeEnum = S.String;
 
 /** Settings that control a partner cost. A partner cost is any type of expense involved in running a campaign, other than the costs of purchasing impressions (which is called the media cost) and using third-party audience segment data (data fee). Some examples of partner costs include the fees for using DV360, a third-party ad server, or a third-party ad serving verification service. */
 export interface PartnerCost {
@@ -3522,7 +3500,7 @@ export interface PartnerCost {
   /** Required. The fee type for this partner cost. */
   feeType?: PartnerCostFeeTypeEnum | (string & {});
 }
-export const PartnerCost = /*@__PURE__*/ S.suspend(() =>
+const PartnerCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costType: S.optional(PartnerCostCostTypeEnum),
     invoiceType: S.optional(PartnerCostInvoiceTypeEnum),
@@ -3533,9 +3511,7 @@ export const PartnerCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartnerCost" }) as any as S.Schema<PartnerCost>;
 
 export type PartnerCostList = Array<PartnerCost>;
-export const PartnerCostList = /*@__PURE__*/ S.Array(
-  PartnerCost,
-) as any as S.Schema<PartnerCostList>;
+const PartnerCostList = /*@__PURE__*/ S.Array(PartnerCost) as any as S.Schema<PartnerCostList>;
 
 export type FrequencyCapTimeUnitEnum =
   | "TIME_UNIT_UNSPECIFIED"
@@ -3545,7 +3521,7 @@ export type FrequencyCapTimeUnitEnum =
   | "TIME_UNIT_DAYS"
   | "TIME_UNIT_HOURS"
   | "TIME_UNIT_MINUTES";
-export const FrequencyCapTimeUnitEnum = S.String;
+const FrequencyCapTimeUnitEnum = S.String;
 
 /** Settings that control the number of times a user may be shown with the same ad during a given time period. */
 export interface FrequencyCap {
@@ -3560,7 +3536,7 @@ export interface FrequencyCap {
   /** The maximum number of times a user may be shown the same ad during this period. Must be greater than 0. Required when unlimited is `false` and max_views is not set. */
   maxImpressions?: number;
 }
-export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
+const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeUnit: S.optional(FrequencyCapTimeUnitEnum),
     maxViews: S.optional(S.Number),
@@ -3577,20 +3553,20 @@ export type LineItemReservationTypeEnum =
   | "RESERVATION_TYPE_TAG_GUARANTEED"
   | "RESERVATION_TYPE_PETRA_VIRAL"
   | "RESERVATION_TYPE_INSTANT_RESERVE";
-export const LineItemReservationTypeEnum = S.String;
+const LineItemReservationTypeEnum = S.String;
 
 export type LineItemBudgetBudgetAllocationTypeEnum =
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED";
-export const LineItemBudgetBudgetAllocationTypeEnum = S.String;
+const LineItemBudgetBudgetAllocationTypeEnum = S.String;
 
 export type LineItemBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
   | "BUDGET_UNIT_IMPRESSIONS";
-export const LineItemBudgetBudgetUnitEnum = S.String;
+const LineItemBudgetBudgetUnitEnum = S.String;
 
 /** Settings that control how budget is allocated. */
 export interface LineItemBudget {
@@ -3601,7 +3577,7 @@ export interface LineItemBudget {
   /** The maximum budget amount the line item will spend. Must be greater than 0. When budget_allocation_type is: * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and is set by the system. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if budget_unit is: - `BUDGET_UNIT_CURRENCY`, this field represents maximum budget amount to spend, in micros of the advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. - `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number of impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is not applicable and will be ignored by the system. */
   maxAmount?: string;
 }
-export const LineItemBudget = /*@__PURE__*/ S.suspend(() =>
+const LineItemBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budgetAllocationType: S.optional(LineItemBudgetBudgetAllocationTypeEnum),
     budgetUnit: S.optional(LineItemBudgetBudgetUnitEnum),
@@ -3618,7 +3594,7 @@ export interface YoutubeAndPartnersInventorySourceConfig {
   /** Optional. Whether to target inventory in video apps available with Google TV. */
   includeGoogleTv?: boolean;
 }
-export const YoutubeAndPartnersInventorySourceConfig = /*@__PURE__*/ S.suspend(() =>
+const YoutubeAndPartnersInventorySourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeYoutubeVideoPartners: S.optional(S.Boolean),
     includeYoutube: S.optional(S.Boolean),
@@ -3639,7 +3615,7 @@ export interface VideoAdInventoryControl {
   /** Optional. Whether ads can serve as shorts format. */
   allowShorts?: boolean;
 }
-export const VideoAdInventoryControl = /*@__PURE__*/ S.suspend(() =>
+const VideoAdInventoryControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInFeed: S.optional(S.Boolean),
     allowNonSkippableInStream: S.optional(S.Boolean),
@@ -3671,7 +3647,7 @@ export type ThirdPartyVendorConfigVendorEnum =
   | "THIRD_PARTY_VENDOR_MACROMILL"
   | "THIRD_PARTY_VENDOR_VIDEO_RESEARCH"
   | "THIRD_PARTY_VENDOR_AQUILA";
-export const ThirdPartyVendorConfigVendorEnum = S.String;
+const ThirdPartyVendorConfigVendorEnum = S.String;
 
 /** Settings that control how third-party measurement vendors are configured. */
 export interface ThirdPartyVendorConfig {
@@ -3680,7 +3656,7 @@ export interface ThirdPartyVendorConfig {
   /** The third-party measurement vendor. */
   vendor?: ThirdPartyVendorConfigVendorEnum | (string & {});
 }
-export const ThirdPartyVendorConfig = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyVendorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placementId: S.optional(S.String),
     vendor: S.optional(ThirdPartyVendorConfigVendorEnum),
@@ -3688,7 +3664,7 @@ export const ThirdPartyVendorConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThirdPartyVendorConfig" }) as any as S.Schema<ThirdPartyVendorConfig>;
 
 export type ThirdPartyVendorConfigList = Array<ThirdPartyVendorConfig>;
-export const ThirdPartyVendorConfigList = /*@__PURE__*/ S.Array(
+const ThirdPartyVendorConfigList = /*@__PURE__*/ S.Array(
   ThirdPartyVendorConfig,
 ) as any as S.Schema<ThirdPartyVendorConfigList>;
 
@@ -3703,7 +3679,7 @@ export interface ThirdPartyMeasurementConfigs {
   /** Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS` */
   reachVendorConfigs?: ThirdPartyVendorConfigList;
 }
-export const ThirdPartyMeasurementConfigs = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyMeasurementConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewabilityVendorConfigs: S.optional(ThirdPartyVendorConfigList),
     brandLiftVendorConfigs: S.optional(ThirdPartyVendorConfigList),
@@ -3719,7 +3695,7 @@ export type YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
-export const YoutubeAndPartnersSettingsEffectiveContentCategoryEnum = S.String;
+const YoutubeAndPartnersSettingsEffectiveContentCategoryEnum = S.String;
 
 export type TargetFrequencyTimeUnitEnum =
   | "TIME_UNIT_UNSPECIFIED"
@@ -3729,7 +3705,7 @@ export type TargetFrequencyTimeUnitEnum =
   | "TIME_UNIT_DAYS"
   | "TIME_UNIT_HOURS"
   | "TIME_UNIT_MINUTES";
-export const TargetFrequencyTimeUnitEnum = S.String;
+const TargetFrequencyTimeUnitEnum = S.String;
 
 /** Setting that controls the average number of times the ads will show to the same person over a certain period of time. */
 export interface TargetFrequency {
@@ -3740,7 +3716,7 @@ export interface TargetFrequency {
   /** The unit of time in which the target frequency will be applied. The following time unit is applicable: * `TIME_UNIT_WEEKS` * `TIME_UNIT_MONTHS` */
   timeUnit?: TargetFrequencyTimeUnitEnum | (string & {});
 }
-export const TargetFrequency = /*@__PURE__*/ S.suspend(() =>
+const TargetFrequency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetCount: S.optional(S.String),
     timeUnitCount: S.optional(S.Number),
@@ -3753,13 +3729,13 @@ export type YoutubeAndPartnersSettingsContentCategoryEnum =
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
-export const YoutubeAndPartnersSettingsContentCategoryEnum = S.String;
+const YoutubeAndPartnersSettingsContentCategoryEnum = S.String;
 
 export type VideoAdSequenceSettingsMinimumDurationEnum =
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED"
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK"
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH";
-export const VideoAdSequenceSettingsMinimumDurationEnum = S.String;
+const VideoAdSequenceSettingsMinimumDurationEnum = S.String;
 
 export type VideoAdSequenceStepInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
@@ -3767,7 +3743,7 @@ export type VideoAdSequenceStepInteractionTypeEnum =
   | "INTERACTION_TYPE_SKIP"
   | "INTERACTION_TYPE_IMPRESSION"
   | "INTERACTION_TYPE_ENGAGED_IMPRESSION";
-export const VideoAdSequenceStepInteractionTypeEnum = S.String;
+const VideoAdSequenceStepInteractionTypeEnum = S.String;
 
 /** The detail of a single step in a VideoAdSequence. */
 export interface VideoAdSequenceStep {
@@ -3780,7 +3756,7 @@ export interface VideoAdSequenceStep {
   /** The ID of the step. */
   stepId?: string;
 }
-export const VideoAdSequenceStep = /*@__PURE__*/ S.suspend(() =>
+const VideoAdSequenceStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupId: S.optional(S.String),
     interactionType: S.optional(VideoAdSequenceStepInteractionTypeEnum),
@@ -3790,7 +3766,7 @@ export const VideoAdSequenceStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoAdSequenceStep" }) as any as S.Schema<VideoAdSequenceStep>;
 
 export type VideoAdSequenceStepList = Array<VideoAdSequenceStep>;
-export const VideoAdSequenceStepList = /*@__PURE__*/ S.Array(
+const VideoAdSequenceStepList = /*@__PURE__*/ S.Array(
   VideoAdSequenceStep,
 ) as any as S.Schema<VideoAdSequenceStepList>;
 
@@ -3801,7 +3777,7 @@ export interface VideoAdSequenceSettings {
   /** The steps of which the sequence consists. */
   steps?: VideoAdSequenceStepList;
 }
-export const VideoAdSequenceSettings = /*@__PURE__*/ S.suspend(() =>
+const VideoAdSequenceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumDuration: S.optional(VideoAdSequenceSettingsMinimumDurationEnum),
     steps: S.optional(VideoAdSequenceStepList),
@@ -3833,7 +3809,7 @@ export interface YoutubeAndPartnersSettings {
   /** Optional. The settings related to VideoAdSequence. */
   videoAdSequenceSettings?: VideoAdSequenceSettings;
 }
-export const YoutubeAndPartnersSettings = /*@__PURE__*/ S.suspend(() =>
+const YoutubeAndPartnersSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedMerchantId: S.optional(S.String),
     inventorySourceSettings: S.optional(YoutubeAndPartnersInventorySourceConfig),
@@ -3855,7 +3831,7 @@ export type YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum
   | "BIDDING_SOURCE_UNSPECIFIED"
   | "BIDDING_SOURCE_LINE_ITEM"
   | "BIDDING_SOURCE_AD_GROUP";
-export const YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum = S.String;
+const YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum = S.String;
 
 export type YoutubeAndPartnersBiddingStrategyTypeEnum =
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
@@ -3869,7 +3845,7 @@ export type YoutubeAndPartnersBiddingStrategyTypeEnum =
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE";
-export const YoutubeAndPartnersBiddingStrategyTypeEnum = S.String;
+const YoutubeAndPartnersBiddingStrategyTypeEnum = S.String;
 
 /** Settings that control the bid strategy for YouTube and Partners resources. */
 export interface YoutubeAndPartnersBiddingStrategy {
@@ -3884,7 +3860,7 @@ export interface YoutubeAndPartnersBiddingStrategy {
   /** The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding strategy is assigned at the ad group level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an applicable strategy, the value of this field will be 0. */
   value?: string;
 }
-export const YoutubeAndPartnersBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+const YoutubeAndPartnersBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupEffectiveTargetCpaSource: S.optional(
       YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum,
@@ -3902,7 +3878,7 @@ export interface FixedBidStrategy {
   /** The fixed bid amount, in micros of the advertiser's currency. For insertion order entity, bid_amount_micros should be set as 0. For line item entity, bid_amount_micros must be greater than or equal to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example, 1500000 represents 1.5 standard units of the currency. */
   bidAmountMicros?: string;
 }
-export const FixedBidStrategy = /*@__PURE__*/ S.suspend(() =>
+const FixedBidStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidAmountMicros: S.optional(S.String),
   }),
@@ -3912,7 +3888,7 @@ export type DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
   | "BIDDING_SOURCE_UNSPECIFIED"
   | "BIDDING_SOURCE_LINE_ITEM"
   | "BIDDING_SOURCE_AD_GROUP";
-export const DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum = S.String;
+const DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum = S.String;
 
 export type DemandGenBiddingStrategyTypeEnum =
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
@@ -3922,7 +3898,7 @@ export type DemandGenBiddingStrategyTypeEnum =
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CLICKS"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC";
-export const DemandGenBiddingStrategyTypeEnum = S.String;
+const DemandGenBiddingStrategyTypeEnum = S.String;
 
 /** Settings that control the bid strategy for Demand Gen resources. */
 export interface DemandGenBiddingStrategy {
@@ -3937,7 +3913,7 @@ export interface DemandGenBiddingStrategy {
   /** Optional. The type of the bidding strategy. This can only be set when assigned to a line item. Ad groups will inherit this value from their line item. */
   type?: DemandGenBiddingStrategyTypeEnum | (string & {});
 }
-export const DemandGenBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+const DemandGenBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     effectiveBiddingValueSource: S.optional(
@@ -3957,7 +3933,7 @@ export type PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED";
-export const PerformanceGoalBidStrategyPerformanceGoalTypeEnum = S.String;
+const PerformanceGoalBidStrategyPerformanceGoalTypeEnum = S.String;
 
 /** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. */
 export interface PerformanceGoalBidStrategy {
@@ -3970,7 +3946,7 @@ export interface PerformanceGoalBidStrategy {
   /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. Not applicable when performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000 represents 1.5 standard units of the currency. */
   maxAverageCpmBidAmountMicros?: string;
 }
-export const PerformanceGoalBidStrategy = /*@__PURE__*/ S.suspend(() =>
+const PerformanceGoalBidStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmId: S.optional(S.String),
     performanceGoalAmountMicros: S.optional(S.String),
@@ -3990,7 +3966,7 @@ export type MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED";
-export const MaximizeSpendBidStrategyPerformanceGoalTypeEnum = S.String;
+const MaximizeSpendBidStrategyPerformanceGoalTypeEnum = S.String;
 
 /** A strategy that automatically adjusts the bid to optimize a specified performance goal while spending the full budget. */
 export interface MaximizeSpendBidStrategy {
@@ -4003,7 +3979,7 @@ export interface MaximizeSpendBidStrategy {
   /** Required. The type of the performance goal that the bidding strategy tries to minimize while spending the full budget. `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for this strategy. */
   performanceGoalType?: MaximizeSpendBidStrategyPerformanceGoalTypeEnum | (string & {});
 }
-export const MaximizeSpendBidStrategy = /*@__PURE__*/ S.suspend(() =>
+const MaximizeSpendBidStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raiseBidForDeals: S.optional(S.Boolean),
     customBiddingAlgorithmId: S.optional(S.String),
@@ -4025,7 +4001,7 @@ export interface BiddingStrategy {
   /** A strategy that automatically adjusts the bid to optimize to your performance goal while spending the full budget. At insertion order level, the markup_type of line items cannot be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`. In addition, the performance_goal_type value assigned to an insertion order determines the possible line_item_type values available for line items under that insertion order: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, and `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED` only allow for `LINE_ITEM_TYPE_DISPLAY_DEFAULT` or `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA` and `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` only allow for `LINE_ITEM_TYPE_VIDEO_DEFAULT` line items. * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_REACH` only allows for `LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP` line items. */
   maximizeSpendAutoBid?: MaximizeSpendBidStrategy;
 }
-export const BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+const BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     youtubeAndPartnersBid: S.optional(YoutubeAndPartnersBiddingStrategy),
     fixedBid: S.optional(FixedBidStrategy),
@@ -4044,7 +4020,7 @@ export interface DemandGenSettings {
   /** Optional. The third party measurement settings for the Demand Gen line item. */
   thirdPartyMeasurementConfigs?: ThirdPartyMeasurementConfigs;
 }
-export const DemandGenSettings = /*@__PURE__*/ S.suspend(() =>
+const DemandGenSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoLanguageTargetingEnabled: S.optional(S.Boolean),
     linkedMerchantId: S.optional(S.String),
@@ -4059,7 +4035,7 @@ export interface IntegrationDetails {
   /** Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more than 1000 characters. */
   details?: string;
 }
-export const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
+const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationCode: S.optional(S.String),
     details: S.optional(S.String),
@@ -4067,7 +4043,7 @@ export const IntegrationDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntegrationDetails" }) as any as S.Schema<IntegrationDetails>;
 
 export type MobileAppPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID";
-export const MobileAppPlatformEnum = S.String;
+const MobileAppPlatformEnum = S.String;
 
 /** A mobile app promoted by a mobile app install line item. */
 export interface MobileApp {
@@ -4080,7 +4056,7 @@ export interface MobileApp {
   /** Output only. The app publisher. */
   publisher?: string;
 }
-export const MobileApp = /*@__PURE__*/ S.suspend(() =>
+const MobileApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     platform: S.optional(MobileAppPlatformEnum),
     displayName: S.optional(S.String),
@@ -4101,12 +4077,10 @@ export type LineItemWarningMessagesItemEnum =
   | "NO_VALID_CREATIVE"
   | "PARENT_INSERTION_ORDER_PAUSED"
   | "PARENT_INSERTION_ORDER_EXPIRED";
-export const LineItemWarningMessagesItemEnum = S.String;
-
 export type LineItemWarningMessagesItemEnumList = Array<
   LineItemWarningMessagesItemEnum | (string & {})
 >;
-export const LineItemWarningMessagesItemEnumList =
+const LineItemWarningMessagesItemEnumList =
   DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<LineItemWarningMessagesItemEnumList>;
 
 /** A single line item. */
@@ -4168,7 +4142,7 @@ export interface LineItem {
   /** Output only. The warning messages generated by the line item. These warnings do not block saving the line item, but some may block the line item from running. */
   warningMessages?: LineItemWarningMessagesItemEnumList;
 }
-export const LineItem = /*@__PURE__*/ S.suspend(() =>
+const LineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineItemType: S.optional(LineItemLineItemTypeEnum),
     insertionOrderId: S.optional(S.String),
@@ -4210,7 +4184,7 @@ export interface BulkUpdateLineItemsRequest {
   /** Required. A field mask identifying which fields to update. Only the following fields are currently supported: * entityStatus * containsEuPoliticalAds */
   updateMask?: string;
 }
-export const BulkUpdateLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineItemIds: S.optional(StringList),
     targetLineItem: S.optional(LineItem),
@@ -4226,7 +4200,7 @@ export interface BulkUpdateAdvertisersLineItemsRequest {
   /** Request body */
   body?: BulkUpdateLineItemsRequest;
 }
-export const BulkUpdateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(BulkUpdateLineItemsRequest.pipe(T.HttpBody())),
@@ -4252,7 +4226,7 @@ export interface BulkUpdateLineItemsResponse {
   /** The IDs of line items that are skipped for updates. For example, unnecessary mutates that will result in effectively no changes to line items will be skipped and corresponding line item IDs can be tracked here. */
   skippedLineItemIds?: StringList;
 }
-export const BulkUpdateLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(StatusList),
     failedLineItemIds: S.optional(StringList),
@@ -4272,7 +4246,7 @@ export interface AdvertiserGeneralConfig {
   /** Required. The domain URL of the advertiser's primary website. The system will send this information to publishers that require website URL to associate a campaign with an advertiser. Provide a URL with no path or query string, beginning with `http:` or `https:`. For example, http://www.example.com */
   domainUrl?: string;
 }
-export const AdvertiserGeneralConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserGeneralConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -4297,7 +4271,7 @@ export interface CmHybridConfig {
   /** Whether or not to report DV360 cost to CM360. */
   dv360ToCmCostReportingEnabled?: boolean;
 }
-export const CmHybridConfig = /*@__PURE__*/ S.suspend(() =>
+const CmHybridConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dv360ToCmDataSharingEnabled: S.optional(S.Boolean),
     cmFloodlightConfigId: S.optional(S.String),
@@ -4314,7 +4288,7 @@ export interface ThirdPartyOnlyConfig {
   /** Whether or not order ID reporting for pixels is enabled. This value cannot be changed once set to `true`. */
   pixelOrderIdReportingEnabled?: boolean;
 }
-export const ThirdPartyOnlyConfig = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyOnlyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pixelOrderIdReportingEnabled: S.optional(S.Boolean),
   }),
@@ -4327,7 +4301,7 @@ export interface AdvertiserAdServerConfig {
   /** The configuration for advertisers that use third-party ad servers only. */
   thirdPartyOnlyConfig?: ThirdPartyOnlyConfig;
 }
-export const AdvertiserAdServerConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserAdServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmHybridConfig: S.optional(CmHybridConfig),
     thirdPartyOnlyConfig: S.optional(ThirdPartyOnlyConfig),
@@ -4339,7 +4313,7 @@ export interface AdvertiserTargetingConfig {
   /** Whether or not connected TV devices are exempt from viewability targeting for all video line items under the advertiser. */
   exemptTvFromViewabilityTargeting?: boolean;
 }
-export const AdvertiserTargetingConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserTargetingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptTvFromViewabilityTargeting: S.optional(S.Boolean),
   }),
@@ -4351,7 +4325,7 @@ export type AdvertiserContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
-export const AdvertiserContainsEuPoliticalAdsEnum = S.String;
+const AdvertiserContainsEuPoliticalAdsEnum = S.String;
 
 export type SdfConfigVersionEnum =
   | "SDF_VERSION_UNSPECIFIED"
@@ -4375,7 +4349,7 @@ export type SdfConfigVersionEnum =
   | "SDF_VERSION_9_2"
   | "SDF_VERSION_10"
   | "SDF_VERSION_10_1";
-export const SdfConfigVersionEnum = S.String;
+const SdfConfigVersionEnum = S.String;
 
 /** Structured Data File (SDF) related settings. */
 export interface SdfConfig {
@@ -4384,7 +4358,7 @@ export interface SdfConfig {
   /** Required. The version of SDF being used. */
   version?: SdfConfigVersionEnum | (string & {});
 }
-export const SdfConfig = /*@__PURE__*/ S.suspend(() =>
+const SdfConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminEmail: S.optional(S.String),
     version: S.optional(SdfConfigVersionEnum),
@@ -4398,7 +4372,7 @@ export interface AdvertiserSdfConfig {
   /** Whether or not this advertiser overrides the SDF configuration of its parent partner. By default, an advertiser inherits the SDF configuration from the parent partner. To override the partner configuration, set this field to `true` and provide the new configuration in sdfConfig. */
   overridePartnerSdfConfig?: boolean;
 }
-export const AdvertiserSdfConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserSdfConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdfConfig: S.optional(SdfConfig),
     overridePartnerSdfConfig: S.optional(S.Boolean),
@@ -4410,7 +4384,7 @@ export interface AdvertiserDataAccessConfig {
   /** Structured Data Files (SDF) settings for the advertiser. If not specified, the SDF settings of the parent partner are used. */
   sdfConfig?: AdvertiserSdfConfig;
 }
-export const AdvertiserDataAccessConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserDataAccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdfConfig: S.optional(AdvertiserSdfConfig),
   }),
@@ -4429,7 +4403,7 @@ export interface AdvertiserCreativeConfig {
   /** Whether or not the advertiser is enabled for dynamic creatives. */
   dynamicCreativeEnabled?: boolean;
 }
-export const AdvertiserCreativeConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserCreativeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iasClientId: S.optional(S.String),
     obaComplianceDisabled: S.optional(S.Boolean),
@@ -4445,14 +4419,14 @@ export type AdvertiserEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const AdvertiserEntityStatusEnum = S.String;
+const AdvertiserEntityStatusEnum = S.String;
 
 /** Billing related settings of an advertiser. */
 export interface AdvertiserBillingConfig {
   /** Required. The ID of a billing profile assigned to the advertiser. */
   billingProfileId?: string;
 }
-export const AdvertiserBillingConfig = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserBillingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingProfileId: S.optional(S.String),
   }),
@@ -4495,7 +4469,7 @@ export interface Advertiser {
   /** Required. Billing related settings of the advertiser. */
   billingConfig?: AdvertiserBillingConfig;
 }
-export const Advertiser = /*@__PURE__*/ S.suspend(() =>
+const Advertiser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generalConfig: S.optional(AdvertiserGeneralConfig),
     adServerConfig: S.optional(AdvertiserAdServerConfig),
@@ -4521,7 +4495,7 @@ export interface CreateAdvertisersRequest {
   /** Request body */
   body?: Advertiser;
 }
-export const CreateAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Advertiser.pipe(T.HttpBody())),
   }).pipe(
@@ -4534,7 +4508,7 @@ export const CreateAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAdvertisersRequest" }) as any as S.Schema<CreateAdvertisersRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Dimensions. */
 export interface Dimensions {
@@ -4543,7 +4517,7 @@ export interface Dimensions {
   /** The height in pixels. */
   heightPixels?: number;
 }
-export const Dimensions = /*@__PURE__*/ S.suspend(() =>
+const Dimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     widthPixels: S.optional(S.Number),
     heightPixels: S.optional(S.Number),
@@ -4561,7 +4535,7 @@ export interface ImageAsset {
   /** Output only. Metadata for this image at its original size. */
   fullSize?: Dimensions;
 }
-export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
+const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetId: S.optional(S.String),
     fileSize: S.optional(S.String),
@@ -4574,7 +4548,7 @@ export type YoutubeVideoDetailsUnavailableReasonEnum =
   | "VIDEO_UNAVAILABLE_REASON_UNSPECIFIED"
   | "VIDEO_UNAVAILABLE_REASON_PRIVATE"
   | "VIDEO_UNAVAILABLE_REASON_DELETED";
-export const YoutubeVideoDetailsUnavailableReasonEnum = S.String;
+const YoutubeVideoDetailsUnavailableReasonEnum = S.String;
 
 /** Details of a YouTube video. */
 export interface YoutubeVideoDetails {
@@ -4585,7 +4559,7 @@ export interface YoutubeVideoDetails {
   /** Output only. The YouTube video ID which can be searched on YouTube webpage. */
   id?: string;
 }
-export const YoutubeVideoDetails = /*@__PURE__*/ S.suspend(() =>
+const YoutubeVideoDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unavailableReason: S.optional(YoutubeVideoDetailsUnavailableReasonEnum),
     videoAssetId: S.optional(S.String),
@@ -4610,7 +4584,7 @@ export interface CommonInStreamAttribute {
   /** Output only. The URL address loaded in the background for tracking purposes. */
   trackingUrl?: string;
 }
-export const CommonInStreamAttribute = /*@__PURE__*/ S.suspend(() =>
+const CommonInStreamAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionHeadline: S.optional(S.String),
     finalUrl: S.optional(S.String),
@@ -4629,7 +4603,7 @@ export interface NonSkippableAd {
   /** Required. Common ad attributes. */
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
-export const NonSkippableAd = /*@__PURE__*/ S.suspend(() =>
+const NonSkippableAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customParameters: S.optional(StringMap),
     commonInStreamAttribute: S.optional(CommonInStreamAttribute),
@@ -4653,7 +4627,7 @@ export interface CarouselCard {
   /** Optional. The URL address of the webpage that people reach after they click the card on a mobile device. */
   finalMobileUrl?: string;
 }
-export const CarouselCard = /*@__PURE__*/ S.suspend(() =>
+const CarouselCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headline: S.optional(S.String),
     marketingImage: S.optional(ImageAsset),
@@ -4666,9 +4640,7 @@ export const CarouselCard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CarouselCard" }) as any as S.Schema<CarouselCard>;
 
 export type CarouselCardList = Array<CarouselCard>;
-export const CarouselCardList = /*@__PURE__*/ S.Array(
-  CarouselCard,
-) as any as S.Schema<CarouselCardList>;
+const CarouselCardList = /*@__PURE__*/ S.Array(CarouselCard) as any as S.Schema<CarouselCardList>;
 
 /** Details for a Demand Gen carousel ad. */
 export interface DemandGenCarouselAd {
@@ -4693,7 +4665,7 @@ export interface DemandGenCarouselAd {
   /** Output only. The URL address loaded in the background for tracking purposes. */
   trackingUrl?: string;
 }
-export const DemandGenCarouselAd = /*@__PURE__*/ S.suspend(() =>
+const DemandGenCarouselAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalUrlSuffix: S.optional(S.String),
     customParameters: S.optional(StringMap),
@@ -4709,12 +4681,12 @@ export const DemandGenCarouselAd = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DemandGenCarouselAd" }) as any as S.Schema<DemandGenCarouselAd>;
 
 export type YoutubeVideoDetailsList = Array<YoutubeVideoDetails>;
-export const YoutubeVideoDetailsList = /*@__PURE__*/ S.Array(
+const YoutubeVideoDetailsList = /*@__PURE__*/ S.Array(
   YoutubeVideoDetails,
 ) as any as S.Schema<YoutubeVideoDetailsList>;
 
 export type ImageAssetList = Array<ImageAsset>;
-export const ImageAssetList = /*@__PURE__*/ S.Array(ImageAsset) as any as S.Schema<ImageAssetList>;
+const ImageAssetList = /*@__PURE__*/ S.Array(ImageAsset) as any as S.Schema<ImageAssetList>;
 
 /** Details for a video performance ad. */
 export interface VideoPerformanceAd {
@@ -4743,7 +4715,7 @@ export interface VideoPerformanceAd {
   /** Optional. The second piece after the domain in the display URL. */
   displayUrlBreadcrumb2?: string;
 }
-export const VideoPerformanceAd = /*@__PURE__*/ S.suspend(() =>
+const VideoPerformanceAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionButtonLabels: S.optional(StringList),
     domain: S.optional(S.String),
@@ -4762,8 +4734,6 @@ export const VideoPerformanceAd = /*@__PURE__*/ S.suspend(() =>
 
 /** Details for an in-stream ad. */
 export type InStreamAd = NonSkippableAd;
-export const InStreamAd = NonSkippableAd;
-
 export type DemandGenVideoAdCallToActionEnum =
   | "CALL_TO_ACTION_UNSPECIFIED"
   | "AUTOMATED"
@@ -4784,7 +4754,7 @@ export type DemandGenVideoAdCallToActionEnum =
   | "START_NOW"
   | "VISIT_SITE"
   | "WATCH_NOW";
-export const DemandGenVideoAdCallToActionEnum = S.String;
+const DemandGenVideoAdCallToActionEnum = S.String;
 
 /** Details for a Demand Gen video ad. */
 export interface DemandGenVideoAd {
@@ -4821,7 +4791,7 @@ export interface DemandGenVideoAd {
   /** Optional. The URL address of the webpage that people reach after they click the ad on a mobile device. */
   finalMobileUrl?: string;
 }
-export const DemandGenVideoAd = /*@__PURE__*/ S.suspend(() =>
+const DemandGenVideoAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callToAction: S.optional(DemandGenVideoAdCallToActionEnum),
     userSpecifiedTrackingUrl: S.optional(S.String),
@@ -4873,7 +4843,7 @@ export interface DemandGenImageAd {
   /** Required. The list of descriptions shown on the ad. */
   descriptions?: StringList;
 }
-export const DemandGenImageAd = /*@__PURE__*/ S.suspend(() =>
+const DemandGenImageAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalUrlSuffix: S.optional(S.String),
     headlines: S.optional(StringList),
@@ -4897,7 +4867,7 @@ export interface DisplayVideoSourceAd {
   /** The ID of the source creative. */
   creativeId?: string;
 }
-export const DisplayVideoSourceAd = /*@__PURE__*/ S.suspend(() =>
+const DisplayVideoSourceAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeId: S.optional(S.String),
   }),
@@ -4912,7 +4882,7 @@ export interface DcmTrackingInfo {
   /** Required. The DCM tracking ad id. */
   trackingAdId?: string;
 }
-export const DcmTrackingInfo = /*@__PURE__*/ S.suspend(() =>
+const DcmTrackingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placementId: S.optional(S.String),
     creativeId: S.optional(S.String),
@@ -4926,7 +4896,7 @@ export type AdPolicyAdPolicyApprovalStatusEnum =
   | "APPROVED_LIMITED"
   | "APPROVED"
   | "AREA_OF_INTEREST_ONLY";
-export const AdPolicyAdPolicyApprovalStatusEnum = S.String;
+const AdPolicyAdPolicyApprovalStatusEnum = S.String;
 
 export type AdPolicyAdPolicyReviewStatusEnum =
   | "AD_POLICY_REVIEW_STATUS_UNKNOWN"
@@ -4934,14 +4904,14 @@ export type AdPolicyAdPolicyReviewStatusEnum =
   | "REVIEWED"
   | "UNDER_APPEAL"
   | "ELIGIBLE_MAY_SERVE";
-export const AdPolicyAdPolicyReviewStatusEnum = S.String;
+const AdPolicyAdPolicyReviewStatusEnum = S.String;
 
 /** A list of fragments of text that violated the policy. */
 export interface AdPolicyTopicEvidenceTextList {
   /** The fragments of text from the resource that caused the policy finding. */
   texts?: StringList;
 }
-export const AdPolicyTopicEvidenceTextList = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceTextList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     texts: S.optional(StringList),
   }),
@@ -4956,7 +4926,7 @@ export interface AdPolicyCriterionRestriction {
   /** Localized name for the country. May be empty. */
   countryLabel?: string;
 }
-export const AdPolicyCriterionRestriction = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyCriterionRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCriterionId: S.optional(S.String),
     countryLabel: S.optional(S.String),
@@ -4966,7 +4936,7 @@ export const AdPolicyCriterionRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdPolicyCriterionRestriction>;
 
 export type AdPolicyCriterionRestrictionList = Array<AdPolicyCriterionRestriction>;
-export const AdPolicyCriterionRestrictionList = /*@__PURE__*/ S.Array(
+const AdPolicyCriterionRestrictionList = /*@__PURE__*/ S.Array(
   AdPolicyCriterionRestriction,
 ) as any as S.Schema<AdPolicyCriterionRestrictionList>;
 
@@ -4979,7 +4949,7 @@ export interface AdPolicyTopicEvidenceTrademark {
   /** Countries where the policy violation is relevant. */
   countryRestrictions?: AdPolicyCriterionRestrictionList;
 }
-export const AdPolicyTopicEvidenceTrademark = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceTrademark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.optional(S.String),
     term: S.optional(S.String),
@@ -4996,19 +4966,19 @@ export interface AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEn
   /** The countries restricted due to the legal policy. */
   countryRestrictions?: AdPolicyCriterionRestrictionList;
 }
-export const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry =
-  /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       legalPolicy: S.optional(S.String),
       countryRestrictions: S.optional(AdPolicyCriterionRestrictionList),
     }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry",
-  }) as any as S.Schema<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
+).annotate({
+  identifier: "AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry",
+}) as any as S.Schema<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
 
 export type AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntryList =
   Array<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
-export const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntryList =
+const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntryList =
   /*@__PURE__*/ S.Array(
     AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry,
   ) as any as S.Schema<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntryList>;
@@ -5018,7 +4988,7 @@ export interface AdPolicyTopicEvidenceRegionalRequirements {
   /** List of regional requirements. */
   regionalRequirementsEntries?: AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntryList;
 }
-export const AdPolicyTopicEvidenceRegionalRequirements = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceRegionalRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalRequirementsEntries: S.optional(
       AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntryList,
@@ -5033,13 +5003,13 @@ export type AdPolicyTopicEvidenceDestinationNotWorkingDeviceEnum =
   | "DESKTOP"
   | "ANDROID"
   | "IOS";
-export const AdPolicyTopicEvidenceDestinationNotWorkingDeviceEnum = S.String;
+const AdPolicyTopicEvidenceDestinationNotWorkingDeviceEnum = S.String;
 
 export type AdPolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum =
   | "AD_POLICY_TOPIC_EVIDENCE_DESTINATION_NOT_WORKING_DNS_ERROR_TYPE_UNKNOWN"
   | "HOSTNAME_NOT_FOUND"
   | "GOOGLE_CRAWLER_DNS_ISSUE";
-export const AdPolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum = S.String;
+const AdPolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum = S.String;
 
 /** Details for on HTTP or DNS errors related to the ad destination. */
 export interface AdPolicyTopicEvidenceDestinationNotWorking {
@@ -5054,7 +5024,7 @@ export interface AdPolicyTopicEvidenceDestinationNotWorking {
   /** The type of DNS error. */
   dnsErrorType?: AdPolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum | (string & {});
 }
-export const AdPolicyTopicEvidenceDestinationNotWorking = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceDestinationNotWorking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastCheckedTime: S.optional(S.String),
     expandedUri: S.optional(S.String),
@@ -5073,12 +5043,10 @@ export type AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnum =
   | "FINAL_MOBILE_URL"
   | "TRACKING_URL"
   | "MOBILE_TRACKING_URL";
-export const AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnum = S.String;
-
 export type AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnumList = Array<
   AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnum | (string & {})
 >;
-export const AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnumList =
+const AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnumList =
   DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnumList>;
 
 /** Details on a mismatch between destination URL types. */
@@ -5086,7 +5054,7 @@ export interface AdPolicyTopicEvidenceDestinationMismatch {
   /** The set of URLs that do not match. The list can include single or multiple uri types. Example 1: [`DISPLAY_URL`, `FINAL_URL`] means ad display URL does not match with the ad final URL. Example 2: [`FINAL_URL`] means ad final URL did not match the crawled url, which is also considered as destination mismatch. */
   uriTypes?: AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnumList;
 }
-export const AdPolicyTopicEvidenceDestinationMismatch = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceDestinationMismatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriTypes: S.optional(AdPolicyTopicEvidenceDestinationMismatchUriTypesItemEnumList),
   }),
@@ -5099,7 +5067,7 @@ export interface AdPolicyTopicEvidenceLegalRemovalLocalLegal {
   /** Type of law for the legal notice. */
   lawType?: string;
 }
-export const AdPolicyTopicEvidenceLegalRemovalLocalLegal = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceLegalRemovalLocalLegal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lawType: S.optional(S.String),
   }),
@@ -5112,14 +5080,14 @@ export type AdPolicyTopicEvidenceLegalRemovalComplaintTypeEnum =
   | "COPYRIGHT"
   | "COURT_ORDER"
   | "LOCAL_LEGAL";
-export const AdPolicyTopicEvidenceLegalRemovalComplaintTypeEnum = S.String;
+const AdPolicyTopicEvidenceLegalRemovalComplaintTypeEnum = S.String;
 
 /** DMCA complaint details. */
 export interface AdPolicyTopicEvidenceLegalRemovalDmca {
   /** The entity who made the legal complaint. */
   complainant?: string;
 }
-export const AdPolicyTopicEvidenceLegalRemovalDmca = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceLegalRemovalDmca = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     complainant: S.optional(S.String),
   }),
@@ -5140,7 +5108,7 @@ export interface AdPolicyTopicEvidenceLegalRemoval {
   /** Details on the DMCA regulation legal removal. */
   dmca?: AdPolicyTopicEvidenceLegalRemovalDmca;
 }
-export const AdPolicyTopicEvidenceLegalRemoval = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceLegalRemoval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localLegal: S.optional(AdPolicyTopicEvidenceLegalRemovalLocalLegal),
     complaintType: S.optional(AdPolicyTopicEvidenceLegalRemovalComplaintTypeEnum),
@@ -5157,7 +5125,7 @@ export interface AdPolicyTopicEvidenceCounterfeit {
   /** The content or product owners that made a complaint. */
   owners?: StringList;
 }
-export const AdPolicyTopicEvidenceCounterfeit = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceCounterfeit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owners: S.optional(StringList),
   }),
@@ -5170,7 +5138,7 @@ export interface AdPolicyTopicEvidenceDestinationTextList {
   /** Destination text that caused the policy finding. */
   destinationTexts?: StringList;
 }
-export const AdPolicyTopicEvidenceDestinationTextList = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceDestinationTextList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationTexts: S.optional(StringList),
   }),
@@ -5183,7 +5151,7 @@ export interface AdPolicyTopicEvidenceWebsiteList {
   /** Websites that caused the policy finding. */
   websites?: StringList;
 }
-export const AdPolicyTopicEvidenceWebsiteList = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidenceWebsiteList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     websites: S.optional(StringList),
   }),
@@ -5216,7 +5184,7 @@ export interface AdPolicyTopicEvidence {
   /** HTTP code returned when the final URL was crawled. */
   httpCode?: number;
 }
-export const AdPolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textList: S.optional(AdPolicyTopicEvidenceTextList),
     trademark: S.optional(AdPolicyTopicEvidenceTrademark),
@@ -5233,7 +5201,7 @@ export const AdPolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdPolicyTopicEvidence" }) as any as S.Schema<AdPolicyTopicEvidence>;
 
 export type AdPolicyTopicEvidenceList = Array<AdPolicyTopicEvidence>;
-export const AdPolicyTopicEvidenceList = /*@__PURE__*/ S.Array(
+const AdPolicyTopicEvidenceList = /*@__PURE__*/ S.Array(
   AdPolicyTopicEvidence,
 ) as any as S.Schema<AdPolicyTopicEvidenceList>;
 
@@ -5241,7 +5209,7 @@ export type AdPolicyTopicAppealInfoAppealTypeEnum =
   | "AD_POLICY_APPEAL_TYPE_UNKNOWN"
   | "SELF_SERVICE_APPEAL"
   | "APPEAL_FORM";
-export const AdPolicyTopicAppealInfoAppealTypeEnum = S.String;
+const AdPolicyTopicAppealInfoAppealTypeEnum = S.String;
 
 /** Information on how to appeal a policy decision. */
 export interface AdPolicyTopicAppealInfo {
@@ -5250,7 +5218,7 @@ export interface AdPolicyTopicAppealInfo {
   /** Whether the decision can be appealed through a self-service appeal or an appeal form. */
   appealType?: AdPolicyTopicAppealInfoAppealTypeEnum | (string & {});
 }
-export const AdPolicyTopicAppealInfo = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicAppealInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appealFormLink: S.optional(S.String),
     appealType: S.optional(AdPolicyTopicAppealInfoAppealTypeEnum),
@@ -5265,14 +5233,14 @@ export type AdPolicyTopicEntryPolicyTopicTypeEnum =
   | "DESCRIPTIVE"
   | "BROADENING"
   | "AREA_OF_INTEREST_ONLY";
-export const AdPolicyTopicEntryPolicyTopicTypeEnum = S.String;
+const AdPolicyTopicEntryPolicyTopicTypeEnum = S.String;
 
 /** A list of countries where the ad cannot serve due to policy constraints. */
 export interface AdPolicyTopicConstraintAdPolicyCountryConstraintList {
   /** Countries where the ad cannot serve. */
   countries?: AdPolicyCriterionRestrictionList;
 }
-export const AdPolicyTopicConstraintAdPolicyCountryConstraintList = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicConstraintAdPolicyCountryConstraintList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countries: S.optional(AdPolicyCriterionRestrictionList),
   }),
@@ -5282,7 +5250,7 @@ export const AdPolicyTopicConstraintAdPolicyCountryConstraintList = /*@__PURE__*
 
 /** Certificate is required to serve in any country and the existing certificate does not cover the ad's domain. */
 export interface AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint {}
-export const AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint =
+const AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint",
   }) as any as S.Schema<AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint>;
@@ -5290,15 +5258,9 @@ export const AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConst
 /** Policy topic was constrained due to disapproval of the website for reseller purposes. */
 export type AdPolicyTopicConstraintAdPolicyResellerConstraint =
   AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint;
-export const AdPolicyTopicConstraintAdPolicyResellerConstraint =
-  AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint;
-
 /** Certificate is required to serve in any country. */
 export type AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint =
   AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint;
-export const AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint =
-  AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint;
-
 /** Details on ad serving constraints. */
 export interface AdPolicyTopicConstraint {
   /** Countries where a certificate is required for serving. */
@@ -5316,7 +5278,7 @@ export interface AdPolicyTopicConstraint {
   /** Certificate is required to serve in any country. */
   globalCertificateMissing?: AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint;
 }
-export const AdPolicyTopicConstraint = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateMissingCountryList: S.optional(AdPolicyTopicConstraintAdPolicyCountryConstraintList),
     requestCertificateFormLink: S.optional(S.String),
@@ -5337,7 +5299,7 @@ export const AdPolicyTopicConstraint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdPolicyTopicConstraint" }) as any as S.Schema<AdPolicyTopicConstraint>;
 
 export type AdPolicyTopicConstraintList = Array<AdPolicyTopicConstraint>;
-export const AdPolicyTopicConstraintList = /*@__PURE__*/ S.Array(
+const AdPolicyTopicConstraintList = /*@__PURE__*/ S.Array(
   AdPolicyTopicConstraint,
 ) as any as S.Schema<AdPolicyTopicConstraintList>;
 
@@ -5345,13 +5307,13 @@ export type AdPolicyTopicEntryPolicyEnforcementMeansEnum =
   | "AD_POLICY_ENFORCEMENT_MEANS_UNKNOWN"
   | "AUTOMATED"
   | "HUMAN_REVIEW";
-export const AdPolicyTopicEntryPolicyEnforcementMeansEnum = S.String;
+const AdPolicyTopicEntryPolicyEnforcementMeansEnum = S.String;
 
 export type AdPolicyTopicEntryPolicyDecisionTypeEnum =
   | "AD_POLICY_DECISION_TYPE_UNKNOWN"
   | "PURSUANT_TO_NOTICE"
   | "GOOGLE_INVESTIGATION";
-export const AdPolicyTopicEntryPolicyDecisionTypeEnum = S.String;
+const AdPolicyTopicEntryPolicyDecisionTypeEnum = S.String;
 
 /** An entry describing how an ad has been identified as relating to an ad policy. */
 export interface AdPolicyTopicEntry {
@@ -5376,7 +5338,7 @@ export interface AdPolicyTopicEntry {
   /** The source of the policy decision. */
   policyDecisionType?: AdPolicyTopicEntryPolicyDecisionTypeEnum | (string & {});
 }
-export const AdPolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
+const AdPolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyTopicEvidences: S.optional(AdPolicyTopicEvidenceList),
     policyLabel: S.optional(S.String),
@@ -5392,7 +5354,7 @@ export const AdPolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdPolicyTopicEntry" }) as any as S.Schema<AdPolicyTopicEntry>;
 
 export type AdPolicyTopicEntryList = Array<AdPolicyTopicEntry>;
-export const AdPolicyTopicEntryList = /*@__PURE__*/ S.Array(
+const AdPolicyTopicEntryList = /*@__PURE__*/ S.Array(
   AdPolicyTopicEntry,
 ) as any as S.Schema<AdPolicyTopicEntryList>;
 
@@ -5405,7 +5367,7 @@ export interface AdPolicy {
   /** The entries for each policy topic identified as relating to the ad. Each entry includes the topic, restriction level, and guidance on how to fix policy issues. */
   adPolicyTopicEntry?: AdPolicyTopicEntryList;
 }
-export const AdPolicy = /*@__PURE__*/ S.suspend(() =>
+const AdPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adPolicyApprovalStatus: S.optional(AdPolicyAdPolicyApprovalStatusEnum),
     adPolicyReviewStatus: S.optional(AdPolicyAdPolicyReviewStatusEnum),
@@ -5420,14 +5382,14 @@ export type AdGroupAdEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const AdGroupAdEntityStatusEnum = S.String;
+const AdGroupAdEntityStatusEnum = S.String;
 
 /** Details for a bumper ad. */
 export interface BumperAd {
   /** Required. Common ad attributes. */
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
-export const BumperAd = /*@__PURE__*/ S.suspend(() =>
+const BumperAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonInStreamAttribute: S.optional(CommonInStreamAttribute),
   }),
@@ -5437,7 +5399,7 @@ export type MastheadAdVideoAspectRatioEnum =
   | "VIDEO_ASPECT_RATIO_UNSPECIFIED"
   | "VIDEO_ASPECT_RATIO_WIDESCREEN"
   | "VIDEO_ASPECT_RATIO_FIXED_16_9";
-export const MastheadAdVideoAspectRatioEnum = S.String;
+const MastheadAdVideoAspectRatioEnum = S.String;
 
 /** Details for a Masthead Ad. */
 export interface MastheadAd {
@@ -5464,7 +5426,7 @@ export interface MastheadAd {
   /** The amount of time in milliseconds after which the video will start to play. */
   autoplayVideoStartMillisecond?: string;
 }
-export const MastheadAd = /*@__PURE__*/ S.suspend(() =>
+const MastheadAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoplayVideoDuration: S.optional(S.String),
     showChannelArt: S.optional(S.Boolean),
@@ -5486,7 +5448,7 @@ export type VideoDiscoveryAdThumbnailEnum =
   | "THUMBNAIL_1"
   | "THUMBNAIL_2"
   | "THUMBNAIL_3";
-export const VideoDiscoveryAdThumbnailEnum = S.String;
+const VideoDiscoveryAdThumbnailEnum = S.String;
 
 /** Details for a video discovery ad. */
 export interface VideoDiscoveryAd {
@@ -5501,7 +5463,7 @@ export interface VideoDiscoveryAd {
   /** Second text line for the ad. */
   description2?: string;
 }
-export const VideoDiscoveryAd = /*@__PURE__*/ S.suspend(() =>
+const VideoDiscoveryAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     video: S.optional(YoutubeVideoDetails),
     thumbnail: S.optional(VideoDiscoveryAdThumbnailEnum),
@@ -5522,7 +5484,7 @@ export interface AudioAd {
   /** The URL address loaded in the background for tracking purposes. */
   trackingUrl?: string;
 }
-export const AudioAd = /*@__PURE__*/ S.suspend(() =>
+const AudioAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     video: S.optional(YoutubeVideoDetails),
     finalUrl: S.optional(S.String),
@@ -5551,7 +5513,7 @@ export type DemandGenProductAdCallToActionEnum =
   | "START_NOW"
   | "VISIT_SITE"
   | "WATCH_NOW";
-export const DemandGenProductAdCallToActionEnum = S.String;
+const DemandGenProductAdCallToActionEnum = S.String;
 
 /** Details for a Demand Gen product ad. */
 export interface DemandGenProductAd {
@@ -5580,7 +5542,7 @@ export interface DemandGenProductAd {
   /** Optional. The business name shown on the ad. This setting is required unless a default value is set at the advertiser level. If left unset, the default value will be applied. */
   businessName?: string;
 }
-export const DemandGenProductAd = /*@__PURE__*/ S.suspend(() =>
+const DemandGenProductAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSpecifiedTrackingUrl: S.optional(S.String),
     finalUrl: S.optional(S.String),
@@ -5603,7 +5565,7 @@ export type AdUrlTypeEnum =
   | "AD_URL_TYPE_BEACON_EXPANDABLE_DCM_IMPRESSION"
   | "AD_URL_TYPE_BEACON_CLICK"
   | "AD_URL_TYPE_BEACON_SKIP";
-export const AdUrlTypeEnum = S.String;
+const AdUrlTypeEnum = S.String;
 
 /** Additional URLs related to the ad, including beacons. */
 export interface AdUrl {
@@ -5612,7 +5574,7 @@ export interface AdUrl {
   /** The type of the Ad URL. */
   type?: AdUrlTypeEnum | (string & {});
 }
-export const AdUrl = /*@__PURE__*/ S.suspend(() =>
+const AdUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     type: S.optional(AdUrlTypeEnum),
@@ -5620,7 +5582,7 @@ export const AdUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdUrl" }) as any as S.Schema<AdUrl>;
 
 export type AdUrlList = Array<AdUrl>;
-export const AdUrlList = /*@__PURE__*/ S.Array(AdUrl) as any as S.Schema<AdUrlList>;
+const AdUrlList = /*@__PURE__*/ S.Array(AdUrl) as any as S.Schema<AdUrlList>;
 
 /** LINT: LEGACY_NAMES A single ad associated with an ad group. */
 export interface AdGroupAd {
@@ -5667,7 +5629,7 @@ export interface AdGroupAd {
   /** Output only. The unique ID of the advertiser the ad belongs to. */
   advertiserId?: string;
 }
-export const AdGroupAd = /*@__PURE__*/ S.suspend(() =>
+const AdGroupAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonSkippableAd: S.optional(NonSkippableAd),
     demandGenCarouselAd: S.optional(DemandGenCarouselAd),
@@ -5699,7 +5661,7 @@ export interface CreateAdvertisersAdGroupAdsRequest {
   /** Request body */
   body?: AdGroupAd;
 }
-export const CreateAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(AdGroupAd.pipe(T.HttpBody())),
@@ -5721,7 +5683,7 @@ export type CustomLabelKeyEnum =
   | "CUSTOM_LABEL_KEY_2"
   | "CUSTOM_LABEL_KEY_3"
   | "CUSTOM_LABEL_KEY_4";
-export const CustomLabelKeyEnum = S.String;
+const CustomLabelKeyEnum = S.String;
 
 /** The key and value of a custom label. */
 export interface CustomLabel {
@@ -5730,7 +5692,7 @@ export interface CustomLabel {
   /** The value of the label. */
   value?: string;
 }
-export const CustomLabel = /*@__PURE__*/ S.suspend(() =>
+const CustomLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(CustomLabelKeyEnum),
     value: S.optional(S.String),
@@ -5744,7 +5706,7 @@ export interface ProductMatchDimension {
   /** The custom label to match all the products with the label. */
   customLabel?: CustomLabel;
 }
-export const ProductMatchDimension = /*@__PURE__*/ S.suspend(() =>
+const ProductMatchDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productOfferId: S.optional(S.String),
     customLabel: S.optional(CustomLabel),
@@ -5752,7 +5714,7 @@ export const ProductMatchDimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductMatchDimension" }) as any as S.Schema<ProductMatchDimension>;
 
 export type ProductMatchDimensionList = Array<ProductMatchDimension>;
-export const ProductMatchDimensionList = /*@__PURE__*/ S.Array(
+const ProductMatchDimensionList = /*@__PURE__*/ S.Array(
   ProductMatchDimension,
 ) as any as S.Schema<ProductMatchDimensionList>;
 
@@ -5761,7 +5723,7 @@ export type ProductFeedDataProductMatchTypeEnum =
   | "PRODUCT_MATCH_TYPE_ALL_PRODUCTS"
   | "PRODUCT_MATCH_TYPE_SPECIFIC_PRODUCTS"
   | "PRODUCT_MATCH_TYPE_CUSTOM_LABEL";
-export const ProductFeedDataProductMatchTypeEnum = S.String;
+const ProductFeedDataProductMatchTypeEnum = S.String;
 
 /** The details of product feed. */
 export interface ProductFeedData {
@@ -5772,7 +5734,7 @@ export interface ProductFeedData {
   /** Whether the product feed has opted-out of showing products. */
   isFeedDisabled?: boolean;
 }
-export const ProductFeedData = /*@__PURE__*/ S.suspend(() =>
+const ProductFeedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productMatchDimensions: S.optional(ProductMatchDimensionList),
     productMatchType: S.optional(ProductFeedDataProductMatchTypeEnum),
@@ -5791,7 +5753,7 @@ export type AdGroupAdGroupFormatEnum =
   | "AD_GROUP_FORMAT_REACH"
   | "AD_GROUP_FORMAT_MASTHEAD"
   | "AD_GROUP_FORMAT_DEMAND_GEN";
-export const AdGroupAdGroupFormatEnum = S.String;
+const AdGroupAdGroupFormatEnum = S.String;
 
 export type AdGroupEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
@@ -5800,13 +5762,13 @@ export type AdGroupEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const AdGroupEntityStatusEnum = S.String;
+const AdGroupEntityStatusEnum = S.String;
 
 export type AdGroupInventoryControlAdGroupInventoryStrategyEnum =
   | "AD_GROUP_INVENTORY_STRATEGY_UNSPECIFIED"
   | "AD_GROUP_INVENTORY_STRATEGY_ALL_GOOGLE_AND_DISPLAY_NETWORK_INVENTORY"
   | "AD_GROUP_INVENTORY_STRATEGY_ALL_GOOGLE_INVENTORY";
-export const AdGroupInventoryControlAdGroupInventoryStrategyEnum = S.String;
+const AdGroupInventoryControlAdGroupInventoryStrategyEnum = S.String;
 
 /** The inventory control of the ad group. */
 export interface SelectedInventories {
@@ -5823,7 +5785,7 @@ export interface SelectedInventories {
   /** Whether the ad group is opted-in to Google Display Network inventory. */
   allowGoogleDisplayNetwork?: boolean;
 }
-export const SelectedInventories = /*@__PURE__*/ S.suspend(() =>
+const SelectedInventories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowYoutubeStream: S.optional(S.Boolean),
     allowGmail: S.optional(S.Boolean),
@@ -5841,7 +5803,7 @@ export interface AdGroupInventoryControl {
   /** The selected inventories. */
   selectedInventories?: SelectedInventories;
 }
-export const AdGroupInventoryControl = /*@__PURE__*/ S.suspend(() =>
+const AdGroupInventoryControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupInventoryStrategy: S.optional(AdGroupInventoryControlAdGroupInventoryStrategyEnum),
     selectedInventories: S.optional(SelectedInventories),
@@ -5873,7 +5835,7 @@ export interface AdGroup {
   /** Output only. The unique ID of the advertiser the ad group belongs to. */
   advertiserId?: string;
 }
-export const AdGroup = /*@__PURE__*/ S.suspend(() =>
+const AdGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     targetingExpansion: S.optional(TargetingExpansionConfig),
@@ -5895,7 +5857,7 @@ export interface CreateAdvertisersAdGroupsRequest {
   /** Request body */
   body?: AdGroup;
 }
-export const CreateAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(AdGroup.pipe(T.HttpBody())),
@@ -5961,8 +5923,7 @@ export type CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTarge
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the ad group the assigned targeting option will belong to. */
@@ -5976,7 +5937,7 @@ export interface CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions
   /** Request body */
   body?: AssignedTargetingOption;
 }
-export const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
+const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       adGroupId: S.String.pipe(T.Label()),
@@ -6004,7 +5965,7 @@ export type CampaignEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const CampaignEntityStatusEnum = S.String;
+const CampaignEntityStatusEnum = S.String;
 
 /** Settings that track the planned spend and duration of a campaign. */
 export interface CampaignFlight {
@@ -6013,7 +5974,7 @@ export interface CampaignFlight {
   /** Required. The dates that the campaign is expected to run. They are resolved relative to the parent advertiser's time zone. * The dates specified here will not affect serving. They are used to generate alerts and warnings. For example, if the flight date of any child insertion order is outside the range of these dates, the user interface will show a warning. * `start_date` is required and must be the current date or later. * `end_date` is optional. If specified, it must be the `start_date` or later. * Any specified date must be before the year 2037. */
   plannedDates?: DateRange;
 }
-export const CampaignFlight = /*@__PURE__*/ S.suspend(() =>
+const CampaignFlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plannedSpendAmountMicros: S.optional(S.String),
     plannedDates: S.optional(DateRange),
@@ -6037,7 +5998,7 @@ export type PerformanceGoalPerformanceGoalTypeEnum =
   | "PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE"
   | "PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE"
   | "PERFORMANCE_GOAL_TYPE_OTHER";
-export const PerformanceGoalPerformanceGoalTypeEnum = S.String;
+const PerformanceGoalPerformanceGoalTypeEnum = S.String;
 
 /** Settings that control the performance goal of a campaign. */
 export interface PerformanceGoal {
@@ -6050,7 +6011,7 @@ export interface PerformanceGoal {
   /** A key performance indicator (KPI) string, which can be empty. Must be UTF-8 encoded with a length of no more than 100 characters. Applicable when performance_goal_type is set to `PERFORMANCE_GOAL_TYPE_OTHER`. */
   performanceGoalString?: string;
 }
-export const PerformanceGoal = /*@__PURE__*/ S.suspend(() =>
+const PerformanceGoal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     performanceGoalAmountMicros: S.optional(S.String),
     performanceGoalPercentageMicros: S.optional(S.String),
@@ -6065,7 +6026,7 @@ export type CampaignGoalCampaignGoalTypeEnum =
   | "CAMPAIGN_GOAL_TYPE_BRAND_AWARENESS"
   | "CAMPAIGN_GOAL_TYPE_OFFLINE_ACTION"
   | "CAMPAIGN_GOAL_TYPE_ONLINE_ACTION";
-export const CampaignGoalCampaignGoalTypeEnum = S.String;
+const CampaignGoalCampaignGoalTypeEnum = S.String;
 
 /** Settings that control the goal of a campaign. */
 export interface CampaignGoal {
@@ -6074,7 +6035,7 @@ export interface CampaignGoal {
   /** Required. The type of the campaign goal. */
   campaignGoalType?: CampaignGoalCampaignGoalTypeEnum | (string & {});
 }
-export const CampaignGoal = /*@__PURE__*/ S.suspend(() =>
+const CampaignGoal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     performanceGoal: S.optional(PerformanceGoal),
     campaignGoalType: S.optional(CampaignGoalCampaignGoalTypeEnum),
@@ -6089,7 +6050,7 @@ export type PrismaConfigPrismaTypeEnum =
   | "PRISMA_TYPE_AUDIO"
   | "PRISMA_TYPE_SOCIAL"
   | "PRISMA_TYPE_FEE";
-export const PrismaConfigPrismaTypeEnum = S.String;
+const PrismaConfigPrismaTypeEnum = S.String;
 
 /** Google Payments Center supports searching and filtering on the component fields of this code. */
 export interface PrismaCpeCode {
@@ -6100,7 +6061,7 @@ export interface PrismaCpeCode {
   /** The Prisma client code. */
   prismaClientCode?: string;
 }
-export const PrismaCpeCode = /*@__PURE__*/ S.suspend(() =>
+const PrismaCpeCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prismaEstimateCode: S.optional(S.String),
     prismaProductCode: S.optional(S.String),
@@ -6117,7 +6078,7 @@ export interface PrismaConfig {
   /** Required. Relevant client, product, and estimate codes from the Mediaocean Prisma tool. */
   prismaCpeCode?: PrismaCpeCode;
 }
-export const PrismaConfig = /*@__PURE__*/ S.suspend(() =>
+const PrismaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supplier: S.optional(S.String),
     prismaType: S.optional(PrismaConfigPrismaTypeEnum),
@@ -6129,13 +6090,13 @@ export type CampaignBudgetExternalBudgetSourceEnum =
   | "EXTERNAL_BUDGET_SOURCE_UNSPECIFIED"
   | "EXTERNAL_BUDGET_SOURCE_NONE"
   | "EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN";
-export const CampaignBudgetExternalBudgetSourceEnum = S.String;
+const CampaignBudgetExternalBudgetSourceEnum = S.String;
 
 export type CampaignBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
   | "BUDGET_UNIT_IMPRESSIONS";
-export const CampaignBudgetBudgetUnitEnum = S.String;
+const CampaignBudgetBudgetUnitEnum = S.String;
 
 /** Settings that control how the campaign budget is allocated. */
 export interface CampaignBudget {
@@ -6158,7 +6119,7 @@ export interface CampaignBudget {
   /** Required. The display name of the budget. Must be UTF-8 encoded with a maximum size of 240 bytes. */
   displayName?: string;
 }
-export const CampaignBudget = /*@__PURE__*/ S.suspend(() =>
+const CampaignBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budgetId: S.optional(S.String),
     externalBudgetId: S.optional(S.String),
@@ -6173,7 +6134,7 @@ export const CampaignBudget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CampaignBudget" }) as any as S.Schema<CampaignBudget>;
 
 export type CampaignBudgetList = Array<CampaignBudget>;
-export const CampaignBudgetList = /*@__PURE__*/ S.Array(
+const CampaignBudgetList = /*@__PURE__*/ S.Array(
   CampaignBudget,
 ) as any as S.Schema<CampaignBudgetList>;
 
@@ -6200,7 +6161,7 @@ export interface Campaign {
   /** Output only. The resource name of the campaign. */
   name?: string;
 }
-export const Campaign = /*@__PURE__*/ S.suspend(() =>
+const Campaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequencyCap: S.optional(FrequencyCap),
     entityStatus: S.optional(CampaignEntityStatusEnum),
@@ -6221,7 +6182,7 @@ export interface CreateAdvertisersCampaignsRequest {
   /** Request body */
   body?: Campaign;
 }
-export const CreateAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(Campaign.pipe(T.HttpBody())),
@@ -6253,7 +6214,7 @@ export interface Channel {
   /** Required. The display name of the channel. Must be UTF-8 encoded with a maximum length of 240 bytes. */
   displayName?: string;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     positivelyTargetedLineItemCount: S.optional(S.String),
     channelId: S.optional(S.String),
@@ -6273,7 +6234,7 @@ export interface CreateAdvertisersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const CreateAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -6299,7 +6260,7 @@ export interface CreateAdvertisersChannelsSitesRequest {
   /** Request body */
   body?: Site;
 }
-export const CreateAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String.pipe(T.Query())),
     channelId: S.String.pipe(T.Label()),
@@ -6323,7 +6284,7 @@ export type CreativeEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const CreativeEntityStatusEnum = S.String;
+const CreativeEntityStatusEnum = S.String;
 
 export type CreativeHostingSourceEnum =
   | "HOSTING_SOURCE_UNSPECIFIED"
@@ -6331,13 +6292,13 @@ export type CreativeHostingSourceEnum =
   | "HOSTING_SOURCE_THIRD_PARTY"
   | "HOSTING_SOURCE_HOSTED"
   | "HOSTING_SOURCE_RICH_MEDIA";
-export const CreativeHostingSourceEnum = S.String;
+const CreativeHostingSourceEnum = S.String;
 
 export type ExitEventTypeEnum =
   | "EXIT_EVENT_TYPE_UNSPECIFIED"
   | "EXIT_EVENT_TYPE_DEFAULT"
   | "EXIT_EVENT_TYPE_BACKUP";
-export const ExitEventTypeEnum = S.String;
+const ExitEventTypeEnum = S.String;
 
 /** Exit event of the creative. */
 export interface ExitEvent {
@@ -6350,7 +6311,7 @@ export interface ExitEvent {
   /** Required. The type of the exit event. */
   type?: ExitEventTypeEnum | (string & {});
 }
-export const ExitEvent = /*@__PURE__*/ S.suspend(() =>
+const ExitEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     url: S.optional(S.String),
@@ -6360,7 +6321,7 @@ export const ExitEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExitEvent" }) as any as S.Schema<ExitEvent>;
 
 export type ExitEventList = Array<ExitEvent>;
-export const ExitEventList = /*@__PURE__*/ S.Array(ExitEvent) as any as S.Schema<ExitEventList>;
+const ExitEventList = /*@__PURE__*/ S.Array(ExitEvent) as any as S.Schema<ExitEventList>;
 
 /** Counter event of the creative. */
 export interface CounterEvent {
@@ -6369,7 +6330,7 @@ export interface CounterEvent {
   /** Required. The name of the counter event. */
   name?: string;
 }
-export const CounterEvent = /*@__PURE__*/ S.suspend(() =>
+const CounterEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportingName: S.optional(S.String),
     name: S.optional(S.String),
@@ -6377,9 +6338,7 @@ export const CounterEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CounterEvent" }) as any as S.Schema<CounterEvent>;
 
 export type CounterEventList = Array<CounterEvent>;
-export const CounterEventList = /*@__PURE__*/ S.Array(
-  CounterEvent,
-) as any as S.Schema<CounterEventList>;
+const CounterEventList = /*@__PURE__*/ S.Array(CounterEvent) as any as S.Schema<CounterEventList>;
 
 export type ReviewStatusInfoApprovalStatusEnum =
   | "APPROVAL_STATUS_UNSPECIFIED"
@@ -6387,21 +6346,21 @@ export type ReviewStatusInfoApprovalStatusEnum =
   | "APPROVAL_STATUS_PENDING_SERVABLE"
   | "APPROVAL_STATUS_APPROVED_SERVABLE"
   | "APPROVAL_STATUS_REJECTED_NOT_SERVABLE";
-export const ReviewStatusInfoApprovalStatusEnum = S.String;
+const ReviewStatusInfoApprovalStatusEnum = S.String;
 
 export type ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
-export const ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum = S.String;
+const ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum = S.String;
 
 export type PublisherReviewStatusStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
-export const PublisherReviewStatusStatusEnum = S.String;
+const PublisherReviewStatusStatusEnum = S.String;
 
 /** Publisher review status for the creative. */
 export interface PublisherReviewStatus {
@@ -6410,7 +6369,7 @@ export interface PublisherReviewStatus {
   /** The publisher reviewing the creative. */
   publisherName?: string;
 }
-export const PublisherReviewStatus = /*@__PURE__*/ S.suspend(() =>
+const PublisherReviewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PublisherReviewStatusStatusEnum),
     publisherName: S.optional(S.String),
@@ -6418,7 +6377,7 @@ export const PublisherReviewStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublisherReviewStatus" }) as any as S.Schema<PublisherReviewStatus>;
 
 export type PublisherReviewStatusList = Array<PublisherReviewStatus>;
-export const PublisherReviewStatusList = /*@__PURE__*/ S.Array(
+const PublisherReviewStatusList = /*@__PURE__*/ S.Array(
   PublisherReviewStatus,
 ) as any as S.Schema<PublisherReviewStatusList>;
 
@@ -6427,7 +6386,7 @@ export type ReviewStatusInfoContentAndPolicyReviewStatusEnum =
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
-export const ReviewStatusInfoContentAndPolicyReviewStatusEnum = S.String;
+const ReviewStatusInfoContentAndPolicyReviewStatusEnum = S.String;
 
 export type ExchangeReviewStatusExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
@@ -6520,14 +6479,14 @@ export type ExchangeReviewStatusExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
-export const ExchangeReviewStatusExchangeEnum = S.String;
+const ExchangeReviewStatusExchangeEnum = S.String;
 
 export type ExchangeReviewStatusStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
-export const ExchangeReviewStatusStatusEnum = S.String;
+const ExchangeReviewStatusStatusEnum = S.String;
 
 /** Exchange review status for the creative. */
 export interface ExchangeReviewStatus {
@@ -6536,7 +6495,7 @@ export interface ExchangeReviewStatus {
   /** Status of the exchange review. */
   status?: ExchangeReviewStatusStatusEnum | (string & {});
 }
-export const ExchangeReviewStatus = /*@__PURE__*/ S.suspend(() =>
+const ExchangeReviewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exchange: S.optional(ExchangeReviewStatusExchangeEnum),
     status: S.optional(ExchangeReviewStatusStatusEnum),
@@ -6544,7 +6503,7 @@ export const ExchangeReviewStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExchangeReviewStatus" }) as any as S.Schema<ExchangeReviewStatus>;
 
 export type ExchangeReviewStatusList = Array<ExchangeReviewStatus>;
-export const ExchangeReviewStatusList = /*@__PURE__*/ S.Array(
+const ExchangeReviewStatusList = /*@__PURE__*/ S.Array(
   ExchangeReviewStatus,
 ) as any as S.Schema<ExchangeReviewStatusList>;
 
@@ -6563,7 +6522,7 @@ export interface ReviewStatusInfo {
   /** Exchange review statuses for the creative. */
   exchangeReviewStatuses?: ExchangeReviewStatusList;
 }
-export const ReviewStatusInfo = /*@__PURE__*/ S.suspend(() =>
+const ReviewStatusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvalStatus: S.optional(ReviewStatusInfoApprovalStatusEnum),
     creativeAndLandingPageReviewStatus: S.optional(
@@ -6589,10 +6548,10 @@ export type CreativeExpandingDirectionEnum =
   | "EXPANDING_DIRECTION_UP_OR_DOWN"
   | "EXPANDING_DIRECTION_LEFT_OR_RIGHT"
   | "EXPANDING_DIRECTION_ANY_DIAGONAL";
-export const CreativeExpandingDirectionEnum = S.String;
+const CreativeExpandingDirectionEnum = S.String;
 
 export type DimensionsList = Array<Dimensions>;
-export const DimensionsList = /*@__PURE__*/ S.Array(Dimensions) as any as S.Schema<DimensionsList>;
+const DimensionsList = /*@__PURE__*/ S.Array(Dimensions) as any as S.Schema<DimensionsList>;
 
 /** Timer event of the creative. */
 export interface TimerEvent {
@@ -6601,10 +6560,10 @@ export interface TimerEvent {
   /** Required. The name of the timer event. */
   name?: string;
 }
-export const TimerEvent = CounterEvent as any as S.Schema<TimerEvent>;
+const TimerEvent = CounterEvent as any as S.Schema<TimerEvent>;
 
 export type TimerEventList = Array<TimerEvent>;
-export const TimerEventList = /*@__PURE__*/ S.Array(TimerEvent) as any as S.Schema<TimerEventList>;
+const TimerEventList = /*@__PURE__*/ S.Array(TimerEvent) as any as S.Schema<TimerEventList>;
 
 /** The length an audio or a video has been played. */
 export interface AudioVideoOffset {
@@ -6613,7 +6572,7 @@ export interface AudioVideoOffset {
   /** Optional. The offset in seconds from the start of the audio or video. */
   seconds?: string;
 }
-export const AudioVideoOffset = /*@__PURE__*/ S.suspend(() =>
+const AudioVideoOffset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.optional(S.String),
     seconds: S.optional(S.String),
@@ -6626,7 +6585,7 @@ export type ObaIconPositionEnum =
   | "OBA_ICON_POSITION_UPPER_LEFT"
   | "OBA_ICON_POSITION_LOWER_RIGHT"
   | "OBA_ICON_POSITION_LOWER_LEFT";
-export const ObaIconPositionEnum = S.String;
+const ObaIconPositionEnum = S.String;
 
 /** OBA Icon for a Creative */
 export interface ObaIcon {
@@ -6647,7 +6606,7 @@ export interface ObaIcon {
   /** Required. The landing page URL of the OBA icon. Only URLs of the following domains are allowed: * `https://info.evidon.com` * `https://l.betrad.com` */
   landingPageUrl?: string;
 }
-export const ObaIcon = /*@__PURE__*/ S.suspend(() =>
+const ObaIcon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUrl: S.optional(S.String),
     dimensions: S.optional(Dimensions),
@@ -6677,7 +6636,7 @@ export type ThirdPartyUrlTypeEnum =
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_CUSTOM"
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_SKIP"
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PROGRESS";
-export const ThirdPartyUrlTypeEnum = S.String;
+const ThirdPartyUrlTypeEnum = S.String;
 
 /** Tracking URLs from third parties to track interactions with an audio or a video creative. */
 export interface ThirdPartyUrl {
@@ -6686,7 +6645,7 @@ export interface ThirdPartyUrl {
   /** Optional. Tracking URL used to track the interaction. Provide a URL with optional path or query string, beginning with `https:`. For example, `https://www.example.com/path` */
   url?: string;
 }
-export const ThirdPartyUrl = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ThirdPartyUrlTypeEnum),
     url: S.optional(S.String),
@@ -6694,7 +6653,7 @@ export const ThirdPartyUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThirdPartyUrl" }) as any as S.Schema<ThirdPartyUrl>;
 
 export type ThirdPartyUrlList = Array<ThirdPartyUrl>;
-export const ThirdPartyUrlList = /*@__PURE__*/ S.Array(
+const ThirdPartyUrlList = /*@__PURE__*/ S.Array(
   ThirdPartyUrl,
 ) as any as S.Schema<ThirdPartyUrlList>;
 
@@ -6719,7 +6678,7 @@ export interface Transcode {
   /** Optional. The dimensions of the transcoded video. */
   dimensions?: Dimensions;
 }
-export const Transcode = /*@__PURE__*/ S.suspend(() =>
+const Transcode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     audioBitRateKbps: S.optional(S.String),
@@ -6734,19 +6693,17 @@ export const Transcode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transcode" }) as any as S.Schema<Transcode>;
 
 export type TranscodeList = Array<Transcode>;
-export const TranscodeList = /*@__PURE__*/ S.Array(Transcode) as any as S.Schema<TranscodeList>;
+const TranscodeList = /*@__PURE__*/ S.Array(Transcode) as any as S.Schema<TranscodeList>;
 
 export type CreativeCreativeAttributesItemEnum =
   | "CREATIVE_ATTRIBUTE_UNSPECIFIED"
   | "CREATIVE_ATTRIBUTE_VAST"
   | "CREATIVE_ATTRIBUTE_VPAID_LINEAR"
   | "CREATIVE_ATTRIBUTE_VPAID_NON_LINEAR";
-export const CreativeCreativeAttributesItemEnum = S.String;
-
 export type CreativeCreativeAttributesItemEnumList = Array<
   CreativeCreativeAttributesItemEnum | (string & {})
 >;
-export const CreativeCreativeAttributesItemEnumList =
+const CreativeCreativeAttributesItemEnumList =
   DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<CreativeCreativeAttributesItemEnumList>;
 
 export type UniversalAdIdRegistryEnum =
@@ -6756,7 +6713,7 @@ export type UniversalAdIdRegistryEnum =
   | "UNIVERSAL_AD_REGISTRY_CLEARCAST"
   | "UNIVERSAL_AD_REGISTRY_DV360"
   | "UNIVERSAL_AD_REGISTRY_CM";
-export const UniversalAdIdRegistryEnum = S.String;
+const UniversalAdIdRegistryEnum = S.String;
 
 /** A creative identifier provided by a registry that is unique across all platforms. This is part of the VAST 4.0 standard. */
 export interface UniversalAdId {
@@ -6765,7 +6722,7 @@ export interface UniversalAdId {
   /** Optional. The unique creative identifier. */
   id?: string;
 }
-export const UniversalAdId = /*@__PURE__*/ S.suspend(() =>
+const UniversalAdId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registry: S.optional(UniversalAdIdRegistryEnum),
     id: S.optional(S.String),
@@ -6781,7 +6738,7 @@ export interface CmTrackingAd {
   /** Optional. The placement ID of the campaign manager 360 tracking Ad. */
   cmPlacementId?: string;
 }
-export const CmTrackingAd = /*@__PURE__*/ S.suspend(() =>
+const CmTrackingAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmAdId: S.optional(S.String),
     cmCreativeId: S.optional(S.String),
@@ -6812,7 +6769,7 @@ export type AssetAssociationRoleEnum =
   | "ASSET_ROLE_REQUIRE_LOGO"
   | "ASSET_ROLE_REQUIRE_IMAGE"
   | "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS";
-export const AssetAssociationRoleEnum = S.String;
+const AssetAssociationRoleEnum = S.String;
 
 /** A single asset. */
 export interface Asset {
@@ -6821,7 +6778,7 @@ export interface Asset {
   /** The asset content. For uploaded assets, the content is the serving path. */
   content?: string;
 }
-export const Asset = /*@__PURE__*/ S.suspend(() =>
+const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaId: S.optional(S.String),
     content: S.optional(S.String),
@@ -6835,7 +6792,7 @@ export interface AssetAssociation {
   /** Optional. The associated asset. */
   asset?: Asset;
 }
-export const AssetAssociation = /*@__PURE__*/ S.suspend(() =>
+const AssetAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(AssetAssociationRoleEnum),
     asset: S.optional(Asset),
@@ -6843,7 +6800,7 @@ export const AssetAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssetAssociation" }) as any as S.Schema<AssetAssociation>;
 
 export type AssetAssociationList = Array<AssetAssociation>;
-export const AssetAssociationList = /*@__PURE__*/ S.Array(
+const AssetAssociationList = /*@__PURE__*/ S.Array(
   AssetAssociation,
 ) as any as S.Schema<AssetAssociationList>;
 
@@ -6851,7 +6808,7 @@ export type CreativeSyntheticContentAttestationStatusEnum =
   | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
   | "NOT_SYNTHETIC"
   | "IS_SYNTHETIC";
-export const CreativeSyntheticContentAttestationStatusEnum = S.String;
+const CreativeSyntheticContentAttestationStatusEnum = S.String;
 
 export type CreativeCreativeTypeEnum =
   | "CREATIVE_TYPE_UNSPECIFIED"
@@ -6870,7 +6827,7 @@ export type CreativeCreativeTypeEnum =
   | "CREATIVE_TYPE_NATIVE_VIDEO"
   | "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO"
   | "CREATIVE_TYPE_ASSET_BASED_CREATIVE";
-export const CreativeCreativeTypeEnum = S.String;
+const CreativeCreativeTypeEnum = S.String;
 
 /** A single Creative. */
 export interface Creative {
@@ -6971,7 +6928,7 @@ export interface Creative {
   /** Required. Immutable. The type of the creative. */
   creativeType?: CreativeCreativeTypeEnum | (string & {});
 }
-export const Creative = /*@__PURE__*/ S.suspend(() =>
+const Creative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityStatus: S.optional(CreativeEntityStatusEnum),
     requireMraid: S.optional(S.Boolean),
@@ -7030,7 +6987,7 @@ export interface CreateAdvertisersCreativesRequest {
   /** Request body */
   body?: Creative;
 }
-export const CreateAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(Creative.pipe(T.HttpBody())),
@@ -7052,7 +7009,7 @@ export type InsertionOrderReservationTypeEnum =
   | "RESERVATION_TYPE_TAG_GUARANTEED"
   | "RESERVATION_TYPE_PETRA_VIRAL"
   | "RESERVATION_TYPE_INSTANT_RESERVE";
-export const InsertionOrderReservationTypeEnum = S.String;
+const InsertionOrderReservationTypeEnum = S.String;
 
 export type KpiKpiTypeEnum =
   | "KPI_TYPE_UNSPECIFIED"
@@ -7076,7 +7033,7 @@ export type KpiKpiTypeEnum =
   | "KPI_TYPE_MAXIMIZE_PACING"
   | "KPI_TYPE_CUSTOM_IMPRESSION_VALUE_OVER_COST"
   | "KPI_TYPE_OTHER";
-export const KpiKpiTypeEnum = S.String;
+const KpiKpiTypeEnum = S.String;
 
 /** Settings that control the key performance indicator, or KPI, of an insertion order. */
 export interface Kpi {
@@ -7091,7 +7048,7 @@ export interface Kpi {
   /** Optional. Custom Bidding Algorithm ID associated with KPI_CUSTOM_IMPRESSION_VALUE_OVER_COST. This field is ignored if the proper KPI is not selected. */
   kpiAlgorithmId?: string;
 }
-export const Kpi = /*@__PURE__*/ S.suspend(() =>
+const Kpi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kpiAmountMicros: S.optional(S.String),
     kpiPercentageMicros: S.optional(S.String),
@@ -7108,26 +7065,26 @@ export type InsertionOrderEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const InsertionOrderEntityStatusEnum = S.String;
+const InsertionOrderEntityStatusEnum = S.String;
 
 export type InsertionOrderInsertionOrderTypeEnum =
   | "INSERTION_ORDER_TYPE_UNSPECIFIED"
   | "RTB"
   | "OVER_THE_TOP";
-export const InsertionOrderInsertionOrderTypeEnum = S.String;
+const InsertionOrderInsertionOrderTypeEnum = S.String;
 
 export type InsertionOrderBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
   | "BUDGET_UNIT_IMPRESSIONS";
-export const InsertionOrderBudgetBudgetUnitEnum = S.String;
+const InsertionOrderBudgetBudgetUnitEnum = S.String;
 
 export type InsertionOrderBudgetAutomationTypeEnum =
   | "INSERTION_ORDER_AUTOMATION_TYPE_UNSPECIFIED"
   | "INSERTION_ORDER_AUTOMATION_TYPE_BUDGET"
   | "INSERTION_ORDER_AUTOMATION_TYPE_NONE"
   | "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET";
-export const InsertionOrderBudgetAutomationTypeEnum = S.String;
+const InsertionOrderBudgetAutomationTypeEnum = S.String;
 
 /** Settings that control the budget of a single budget segment. */
 export interface InsertionOrderBudgetSegment {
@@ -7140,7 +7097,7 @@ export interface InsertionOrderBudgetSegment {
   /** Required. The budget amount the insertion order will spend for the given date_range. The amount is in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency. */
   budgetAmountMicros?: string;
 }
-export const InsertionOrderBudgetSegment = /*@__PURE__*/ S.suspend(() =>
+const InsertionOrderBudgetSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRange: S.optional(DateRange),
     description: S.optional(S.String),
@@ -7152,7 +7109,7 @@ export const InsertionOrderBudgetSegment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertionOrderBudgetSegment>;
 
 export type InsertionOrderBudgetSegmentList = Array<InsertionOrderBudgetSegment>;
-export const InsertionOrderBudgetSegmentList = /*@__PURE__*/ S.Array(
+const InsertionOrderBudgetSegmentList = /*@__PURE__*/ S.Array(
   InsertionOrderBudgetSegment,
 ) as any as S.Schema<InsertionOrderBudgetSegmentList>;
 
@@ -7165,7 +7122,7 @@ export interface InsertionOrderBudget {
   /** Required. The list of budget segments. Use a budget segment to specify a specific budget for a given period of time an insertion order is running. */
   budgetSegments?: InsertionOrderBudgetSegmentList;
 }
-export const InsertionOrderBudget = /*@__PURE__*/ S.suspend(() =>
+const InsertionOrderBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budgetUnit: S.optional(InsertionOrderBudgetBudgetUnitEnum),
     automationType: S.optional(InsertionOrderBudgetAutomationTypeEnum),
@@ -7180,7 +7137,7 @@ export type InsertionOrderOptimizationObjectiveEnum =
   | "BRAND_AWARENESS"
   | "CUSTOM"
   | "NO_OBJECTIVE";
-export const InsertionOrderOptimizationObjectiveEnum = S.String;
+const InsertionOrderOptimizationObjectiveEnum = S.String;
 
 /** A single insertion order. */
 export interface InsertionOrder {
@@ -7219,7 +7176,7 @@ export interface InsertionOrder {
   /** Required. The frequency capping setting of the insertion order. */
   frequencyCap?: FrequencyCap;
 }
-export const InsertionOrder = /*@__PURE__*/ S.suspend(() =>
+const InsertionOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationType: S.optional(InsertionOrderReservationTypeEnum),
     kpi: S.optional(Kpi),
@@ -7247,7 +7204,7 @@ export interface CreateAdvertisersInsertionOrdersRequest {
   /** Request body */
   body?: InsertionOrder;
 }
-export const CreateAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(InsertionOrder.pipe(T.HttpBody())),
@@ -7268,7 +7225,7 @@ export interface CreateAdvertisersLineItemsRequest {
   /** Request body */
   body?: LineItem;
 }
-export const CreateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(LineItem.pipe(T.HttpBody())),
@@ -7334,8 +7291,7 @@ export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarg
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` */
@@ -7349,7 +7305,7 @@ export interface CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOption
   /** Request body */
   body?: AssignedTargetingOption;
 }
-export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
+const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetingType:
@@ -7374,7 +7330,7 @@ export type LocationListLocationTypeEnum =
   | "TARGETING_LOCATION_TYPE_UNSPECIFIED"
   | "TARGETING_LOCATION_TYPE_PROXIMITY"
   | "TARGETING_LOCATION_TYPE_REGIONAL";
-export const LocationListLocationTypeEnum = S.String;
+const LocationListLocationTypeEnum = S.String;
 
 /** A list of locations used for targeting. */
 export interface LocationList {
@@ -7389,7 +7345,7 @@ export interface LocationList {
   /** Required. The display name of the location list. Must be UTF-8 encoded with a maximum size of 240 bytes. */
   displayName?: string;
 }
-export const LocationList = /*@__PURE__*/ S.suspend(() =>
+const LocationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationListId: S.optional(S.String),
     advertiserId: S.optional(S.String),
@@ -7405,7 +7361,7 @@ export interface CreateAdvertisersLocationListsRequest {
   /** Request body */
   body?: LocationList;
 }
-export const CreateAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(LocationList.pipe(T.HttpBody())),
@@ -7428,7 +7384,7 @@ export interface CreateAdvertisersLocationListsAssignedLocationsRequest {
   /** Request body */
   body?: AssignedLocation;
 }
-export const CreateAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     locationListId: S.String.pipe(T.Label()),
@@ -7457,7 +7413,7 @@ export interface NegativeKeywordList {
   /** Output only. The resource name of the negative keyword list. */
   name?: string;
 }
-export const NegativeKeywordList = /*@__PURE__*/ S.suspend(() =>
+const NegativeKeywordList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedLineItemCount: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -7473,7 +7429,7 @@ export interface CreateAdvertisersNegativeKeywordListsRequest {
   /** Request body */
   body?: NegativeKeywordList;
 }
-export const CreateAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(NegativeKeywordList.pipe(T.HttpBody())),
@@ -7496,19 +7452,18 @@ export interface CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Request body */
   body?: NegativeKeyword;
 }
-export const CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      negativeKeywordListId: S.String.pipe(T.Label()),
-      advertiserId: S.String.pipe(T.Label()),
-      body: S.optional(NegativeKeyword.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    negativeKeywordListId: S.String.pipe(T.Label()),
+    advertiserId: S.String.pipe(T.Label()),
+    body: S.optional(NegativeKeyword.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
 }) as any as S.Schema<CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
@@ -7564,7 +7519,7 @@ export type CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingType
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the advertiser. */
@@ -7576,24 +7531,23 @@ export interface CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest 
   /** Request body */
   body?: AssignedTargetingOption;
 }
-export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      targetingType: CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-      body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    targetingType: CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
-  ).annotate({
-    identifier: "CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
-  }) as any as S.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+    body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
+}) as any as S.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export type CustomBiddingModelDetailsReadinessStateEnum =
   | "READINESS_STATE_UNSPECIFIED"
@@ -7602,14 +7556,14 @@ export type CustomBiddingModelDetailsReadinessStateEnum =
   | "READINESS_STATE_TRAINING"
   | "READINESS_STATE_NO_VALID_SCRIPT"
   | "READINESS_STATE_EVALUATION_FAILURE";
-export const CustomBiddingModelDetailsReadinessStateEnum = S.String;
+const CustomBiddingModelDetailsReadinessStateEnum = S.String;
 
 export type CustomBiddingModelDetailsSuspensionStateEnum =
   | "SUSPENSION_STATE_UNSPECIFIED"
   | "SUSPENSION_STATE_ENABLED"
   | "SUSPENSION_STATE_DORMANT"
   | "SUSPENSION_STATE_SUSPENDED";
-export const CustomBiddingModelDetailsSuspensionStateEnum = S.String;
+const CustomBiddingModelDetailsSuspensionStateEnum = S.String;
 
 /** The details of a custom bidding algorithm model for a single shared advertiser. */
 export interface CustomBiddingModelDetails {
@@ -7620,7 +7574,7 @@ export interface CustomBiddingModelDetails {
   /** The unique ID of the relevant advertiser. */
   advertiserId?: string;
 }
-export const CustomBiddingModelDetails = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingModelDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readinessState: S.optional(CustomBiddingModelDetailsReadinessStateEnum),
     suspensionState: S.optional(CustomBiddingModelDetailsSuspensionStateEnum),
@@ -7631,7 +7585,7 @@ export const CustomBiddingModelDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomBiddingModelDetails>;
 
 export type CustomBiddingModelDetailsList = Array<CustomBiddingModelDetails>;
-export const CustomBiddingModelDetailsList = /*@__PURE__*/ S.Array(
+const CustomBiddingModelDetailsList = /*@__PURE__*/ S.Array(
   CustomBiddingModelDetails,
 ) as any as S.Schema<CustomBiddingModelDetailsList>;
 
@@ -7641,7 +7595,7 @@ export type CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum =
   | "ADS_DATA_HUB_BASED"
   | "GOAL_BUILDER_BASED"
   | "RULE_BASED";
-export const CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum = S.String;
+const CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum = S.String;
 
 export type CustomBiddingAlgorithmEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
@@ -7650,7 +7604,7 @@ export type CustomBiddingAlgorithmEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const CustomBiddingAlgorithmEntityStatusEnum = S.String;
+const CustomBiddingAlgorithmEntityStatusEnum = S.String;
 
 /** A single custom bidding algorithm. */
 export interface CustomBiddingAlgorithm {
@@ -7673,7 +7627,7 @@ export interface CustomBiddingAlgorithm {
   /** Output only. The resource name of the custom bidding algorithm. */
   name?: string;
 }
-export const CustomBiddingAlgorithm = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingAlgorithm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelDetails: S.optional(CustomBiddingModelDetailsList),
     displayName: S.optional(S.String),
@@ -7691,7 +7645,7 @@ export interface CreateCustomBiddingAlgorithmsRequest {
   /** Request body */
   body?: CustomBiddingAlgorithm;
 }
-export const CreateCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CustomBiddingAlgorithm.pipe(T.HttpBody())),
   }).pipe(
@@ -7706,14 +7660,14 @@ export const CreateCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateCustomBiddingAlgorithmsRequest>;
 
 export type CustomBiddingAlgorithmRulesStateEnum = "STATE_UNSPECIFIED" | "ACCEPTED" | "REJECTED";
-export const CustomBiddingAlgorithmRulesStateEnum = S.String;
+const CustomBiddingAlgorithmRulesStateEnum = S.String;
 
 /** The reference to the uploaded AlgorithmRules file. Retrieve the location to upload new AlgorithmRules file to using customBiddingAlgorithms.uploadRules. */
 export interface CustomBiddingAlgorithmRulesRef {
   /** A resource name to be used in media.download to download the rules files. Or media.upload to upload the rules files. Resource names have the format `customBiddingAlgorithms/{custom_bidding_algorithm_id}/rulesRef/{ref_id}`. */
   resourceName?: string;
 }
-export const CustomBiddingAlgorithmRulesRef = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingAlgorithmRulesRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
   }),
@@ -7726,14 +7680,14 @@ export type CustomBiddingAlgorithmRulesErrorErrorCodeEnum =
   | "SYNTAX_ERROR"
   | "CONSTRAINT_VIOLATION_ERROR"
   | "INTERNAL_ERROR";
-export const CustomBiddingAlgorithmRulesErrorErrorCodeEnum = S.String;
+const CustomBiddingAlgorithmRulesErrorErrorCodeEnum = S.String;
 
 /** An error message for a CustomBiddingAlgorithmRules resource. */
 export interface CustomBiddingAlgorithmRulesError {
   /** The type of error. */
   errorCode?: CustomBiddingAlgorithmRulesErrorErrorCodeEnum | (string & {});
 }
-export const CustomBiddingAlgorithmRulesError = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingAlgorithmRulesError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(CustomBiddingAlgorithmRulesErrorErrorCodeEnum),
   }),
@@ -7760,7 +7714,7 @@ export interface CustomBiddingAlgorithmRules {
   /** Output only. Error code of the rejected rules resource. This field will only be populated when the state is `REJECTED`. */
   error?: CustomBiddingAlgorithmRulesError;
 }
-export const CustomBiddingAlgorithmRules = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingAlgorithmRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmRulesId: S.optional(S.String),
     customBiddingAlgorithmId: S.optional(S.String),
@@ -7785,7 +7739,7 @@ export interface CreateCustomBiddingAlgorithmsRulesRequest {
   /** Request body */
   body?: CustomBiddingAlgorithmRules;
 }
-export const CreateCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -7807,14 +7761,14 @@ export type CustomBiddingScriptStateEnum =
   | "ACCEPTED"
   | "REJECTED"
   | "PENDING";
-export const CustomBiddingScriptStateEnum = S.String;
+const CustomBiddingScriptStateEnum = S.String;
 
 export type ScriptErrorErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "SYNTAX_ERROR"
   | "DEPRECATED_SYNTAX"
   | "INTERNAL_ERROR";
-export const ScriptErrorErrorCodeEnum = S.String;
+const ScriptErrorErrorCodeEnum = S.String;
 
 /** An error message for a custom bidding script. */
 export interface ScriptError {
@@ -7827,7 +7781,7 @@ export interface ScriptError {
   /** The type of error. */
   errorCode?: ScriptErrorErrorCodeEnum | (string & {});
 }
-export const ScriptError = /*@__PURE__*/ S.suspend(() =>
+const ScriptError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     column: S.optional(S.String),
@@ -7837,16 +7791,14 @@ export const ScriptError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptError" }) as any as S.Schema<ScriptError>;
 
 export type ScriptErrorList = Array<ScriptError>;
-export const ScriptErrorList = /*@__PURE__*/ S.Array(
-  ScriptError,
-) as any as S.Schema<ScriptErrorList>;
+const ScriptErrorList = /*@__PURE__*/ S.Array(ScriptError) as any as S.Schema<ScriptErrorList>;
 
 /** The reference to the uploaded custom bidding script file. */
 export interface CustomBiddingScriptRef {
   /** A resource name to be used in media.download to Download the script files. Or media.upload to Upload the script files. Resource names have the format `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`. */
   resourceName?: string;
 }
-export const CustomBiddingScriptRef = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingScriptRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
   }),
@@ -7871,7 +7823,7 @@ export interface CustomBiddingScript {
   /** The reference to the uploaded script file. */
   script?: CustomBiddingScriptRef;
 }
-export const CustomBiddingScript = /*@__PURE__*/ S.suspend(() =>
+const CustomBiddingScript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmId: S.optional(S.String),
     name: S.optional(S.String),
@@ -7894,7 +7846,7 @@ export interface CreateCustomBiddingAlgorithmsScriptsRequest {
   /** Request body */
   body?: CustomBiddingScript;
 }
-export const CreateCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -7915,7 +7867,7 @@ export type GuaranteedOrderStatusConfigStatusEnum =
   | "GUARANTEED_ORDER_CONFIG_STATUS_UNSPECIFIED"
   | "PENDING"
   | "COMPLETED";
-export const GuaranteedOrderStatusConfigStatusEnum = S.String;
+const GuaranteedOrderStatusConfigStatusEnum = S.String;
 
 export type GuaranteedOrderStatusEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
@@ -7924,7 +7876,7 @@ export type GuaranteedOrderStatusEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const GuaranteedOrderStatusEntityStatusEnum = S.String;
+const GuaranteedOrderStatusEntityStatusEnum = S.String;
 
 /** The status settings of the guaranteed order. */
 export interface GuaranteedOrderStatus {
@@ -7935,7 +7887,7 @@ export interface GuaranteedOrderStatus {
   /** Whether or not the guaranteed order is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`. */
   entityStatus?: GuaranteedOrderStatusEntityStatusEnum | (string & {});
 }
-export const GuaranteedOrderStatus = /*@__PURE__*/ S.suspend(() =>
+const GuaranteedOrderStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configStatus: S.optional(GuaranteedOrderStatusConfigStatusEnum),
     entityPauseReason: S.optional(S.String),
@@ -8034,7 +7986,7 @@ export type GuaranteedOrderExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
-export const GuaranteedOrderExchangeEnum = S.String;
+const GuaranteedOrderExchangeEnum = S.String;
 
 /** A guaranteed order. Guaranteed orders are parent entity of guaranteed inventory sources. When creating a guaranteed inventory source, a guaranteed order ID must be assigned to the inventory source. */
 export interface GuaranteedOrder {
@@ -8067,7 +8019,7 @@ export interface GuaranteedOrder {
   /** The ID of the default campaign that is assigned to the guaranteed order. The default campaign must belong to the default advertiser. */
   defaultCampaignId?: string;
 }
-export const GuaranteedOrder = /*@__PURE__*/ S.suspend(() =>
+const GuaranteedOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     readAdvertiserIds: S.optional(StringList),
@@ -8094,7 +8046,7 @@ export interface CreateGuaranteedOrdersRequest {
   /** Request body */
   body?: GuaranteedOrder;
 }
-export const CreateGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -8119,7 +8071,7 @@ export interface InventorySourceGroup {
   /** Required. The display name of the inventory source group. Must be UTF-8 encoded with a maximum size of 240 bytes. */
   displayName?: string;
 }
-export const InventorySourceGroup = /*@__PURE__*/ S.suspend(() =>
+const InventorySourceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceGroupId: S.optional(S.String),
     name: S.optional(S.String),
@@ -8135,7 +8087,7 @@ export interface CreateInventorySourceGroupsRequest {
   /** Request body */
   body?: InventorySourceGroup;
 }
-export const CreateInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -8161,20 +8113,19 @@ export interface CreateInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Request body */
   body?: AssignedInventorySource;
 }
-export const CreateInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.optional(S.String.pipe(T.Query())),
-      partnerId: S.optional(S.String.pipe(T.Query())),
-      inventorySourceGroupId: S.String.pipe(T.Label()),
-      body: S.optional(AssignedInventorySource.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const CreateInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.optional(S.String.pipe(T.Query())),
+    partnerId: S.optional(S.String.pipe(T.Query())),
+    inventorySourceGroupId: S.String.pipe(T.Label()),
+    body: S.optional(AssignedInventorySource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateInventorySourceGroupsAssignedInventorySourcesRequest",
 }) as any as S.Schema<CreateInventorySourceGroupsAssignedInventorySourcesRequest>;
@@ -8187,7 +8138,7 @@ export interface CreatePartnersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const CreatePartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     partnerId: S.String.pipe(T.Label()),
@@ -8213,7 +8164,7 @@ export interface CreatePartnersChannelsSitesRequest {
   /** Request body */
   body?: Site;
 }
-export const CreatePartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -8281,7 +8232,7 @@ export type CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface CreatePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
@@ -8293,21 +8244,20 @@ export interface CreatePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Request body */
   body?: AssignedTargetingOption;
 }
-export const CreatePartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetingType: CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-      partnerId: S.String.pipe(T.Label()),
-      body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const CreatePartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetingType: CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
+    partnerId: S.String.pipe(T.Label()),
+    body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreatePartnersTargetingTypesAssignedTargetingOptionsRequest",
 }) as any as S.Schema<CreatePartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -8320,7 +8270,7 @@ export type ParentEntityFilterFilterTypeEnum =
   | "FILTER_TYPE_MEDIA_PRODUCT_ID"
   | "FILTER_TYPE_INSERTION_ORDER_ID"
   | "FILTER_TYPE_LINE_ITEM_ID";
-export const ParentEntityFilterFilterTypeEnum = S.String;
+const ParentEntityFilterFilterTypeEnum = S.String;
 
 export type ParentEntityFilterFileTypeItemEnum =
   | "FILE_TYPE_UNSPECIFIED"
@@ -8332,12 +8282,10 @@ export type ParentEntityFilterFileTypeItemEnum =
   | "FILE_TYPE_AD"
   | "FILE_TYPE_LINE_ITEM_QA"
   | "FILE_TYPE_AD_GROUP_QA";
-export const ParentEntityFilterFileTypeItemEnum = S.String;
-
 export type ParentEntityFilterFileTypeItemEnumList = Array<
   ParentEntityFilterFileTypeItemEnum | (string & {})
 >;
-export const ParentEntityFilterFileTypeItemEnumList =
+const ParentEntityFilterFileTypeItemEnumList =
   DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<ParentEntityFilterFileTypeItemEnumList>;
 
 /** A filtering option that filters on selected file types belonging to a chosen set of filter entities. */
@@ -8349,7 +8297,7 @@ export interface ParentEntityFilter {
   /** Required. File types that will be returned. */
   fileType?: ParentEntityFilterFileTypeItemEnumList;
 }
-export const ParentEntityFilter = /*@__PURE__*/ S.suspend(() =>
+const ParentEntityFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterType: S.optional(ParentEntityFilterFilterTypeEnum),
     filterIds: S.optional(StringList),
@@ -8376,7 +8324,7 @@ export interface IdFilter {
   /** Optional. YouTube Ad Groups, by ID, to download in QA format. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
   adGroupQaIds?: StringList;
 }
-export const IdFilter = /*@__PURE__*/ S.suspend(() =>
+const IdFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupAdIds: S.optional(StringList),
     lineItemIds: S.optional(StringList),
@@ -8394,7 +8342,7 @@ export interface InventorySourceFilter {
   /** Inventory Sources to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Leave empty to download all Inventory Sources for the selected Advertiser or Partner. */
   inventorySourceIds?: StringList;
 }
-export const InventorySourceFilter = /*@__PURE__*/ S.suspend(() =>
+const InventorySourceFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceIds: S.optional(StringList),
   }),
@@ -8422,7 +8370,7 @@ export type CreateSdfDownloadTaskRequestVersionEnum =
   | "SDF_VERSION_9_2"
   | "SDF_VERSION_10"
   | "SDF_VERSION_10_1";
-export const CreateSdfDownloadTaskRequestVersionEnum = S.String;
+const CreateSdfDownloadTaskRequestVersionEnum = S.String;
 
 /** Request message for [SdfDownloadTaskService.CreateSdfDownloadTask]. */
 export interface CreateSdfDownloadTaskRequest {
@@ -8439,7 +8387,7 @@ export interface CreateSdfDownloadTaskRequest {
   /** Required. The SDF version of the downloaded file. If set to `SDF_VERSION_UNSPECIFIED`, this will default to the version specified by the advertiser or partner identified by `root_id`. An advertiser inherits its SDF version from its partner unless configured otherwise. */
   version?: CreateSdfDownloadTaskRequestVersionEnum | (string & {});
 }
-export const CreateSdfDownloadTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSdfDownloadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentEntityFilter: S.optional(ParentEntityFilter),
     partnerId: S.optional(S.String),
@@ -8456,7 +8404,7 @@ export interface CreateSdfdownloadtasksRequest {
   /** Request body */
   body?: CreateSdfDownloadTaskRequest;
 }
-export const CreateSdfdownloadtasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSdfdownloadtasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CreateSdfDownloadTaskRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -8483,7 +8431,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -8508,7 +8456,7 @@ export interface User {
   /** The assigned user roles. Required in CreateUser. Output only in UpdateUser. Can only be updated through BulkEditAssignedUserRoles. */
   assignedUserRoles?: AssignedUserRoleList;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     userId: S.optional(S.String),
@@ -8523,7 +8471,7 @@ export interface CreateUsersRequest {
   /** Request body */
   body?: User;
 }
-export const CreateUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(User.pipe(T.HttpBody())),
   }).pipe(
@@ -8535,7 +8483,7 @@ export interface DeleteAdvertisersRequest {
   /** The ID of the advertiser we need to delete. */
   advertiserId: string;
 }
-export const DeleteAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8549,7 +8497,7 @@ export const DeleteAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -8559,7 +8507,7 @@ export interface DeleteAdvertisersAdGroupAdsRequest {
   /** Required. The ID of the ad to delete. Only Demand Gen ads are supported. */
   adGroupAdId: string;
 }
-export const DeleteAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     adGroupAdId: S.String.pipe(T.Label()),
@@ -8580,7 +8528,7 @@ export interface DeleteAdvertisersAdGroupsRequest {
   /** Required. The ID of the ad group to delete. */
   adGroupId: string;
 }
-export const DeleteAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     adGroupId: S.String.pipe(T.Label()),
@@ -8646,8 +8594,7 @@ export type DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTarge
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the assigned targeting option to delete. */
@@ -8661,7 +8608,7 @@ export interface DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions
     | DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum
     | (string & {});
 }
-export const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
+const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       assignedTargetingOptionId: S.String.pipe(T.Label()),
@@ -8688,7 +8635,7 @@ export interface DeleteAdvertisersCampaignsRequest {
   /** The ID of the advertiser this campaign belongs to. */
   advertiserId: string;
 }
-export const DeleteAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaignId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -8713,7 +8660,7 @@ export interface DeleteAdvertisersChannelsSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId: string;
 }
-export const DeleteAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Label()),
     urlOrAppId: S.String.pipe(T.Label()),
@@ -8736,7 +8683,7 @@ export interface DeleteAdvertisersCreativesRequest {
   /** The ID of the advertiser this creative belongs to. */
   advertiserId: string;
 }
-export const DeleteAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -8757,7 +8704,7 @@ export interface DeleteAdvertisersInsertionOrdersRequest {
   /** The ID of the insertion order to delete. */
   insertionOrderId: string;
 }
-export const DeleteAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     insertionOrderId: S.String.pipe(T.Label()),
@@ -8778,7 +8725,7 @@ export interface DeleteAdvertisersLineItemsRequest {
   /** The ID of the line item to delete. */
   lineItemId: string;
 }
-export const DeleteAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     lineItemId: S.String.pipe(T.Label()),
@@ -8844,8 +8791,7 @@ export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarg
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the line item the assigned targeting option belongs to. */
@@ -8859,7 +8805,7 @@ export interface DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOption
     | DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum
     | (string & {});
 }
-export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
+const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lineItemId: S.String.pipe(T.Label()),
@@ -8888,7 +8834,7 @@ export interface DeleteAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the DV360 advertiser to which the location list belongs. */
   advertiserId: string;
 }
-export const DeleteAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationListId: S.String.pipe(T.Label()),
     assignedLocationId: S.String.pipe(T.Label()),
@@ -8910,7 +8856,7 @@ export interface DeleteAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the DV360 advertiser to which the negative keyword list belongs. */
   advertiserId: string;
 }
-export const DeleteAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negativeKeywordListId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -8933,19 +8879,18 @@ export interface DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Required. The ID of the parent negative keyword list to which the negative keyword belongs. */
   negativeKeywordListId: string;
 }
-export const DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      keywordValue: S.String.pipe(T.Label()),
-      negativeKeywordListId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    keywordValue: S.String.pipe(T.Label()),
+    negativeKeywordListId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
 }) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
@@ -9001,7 +8946,7 @@ export type DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingType
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
@@ -9013,24 +8958,23 @@ export interface DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest 
   /** Required. The ID of the assigned targeting option to delete. */
   assignedTargetingOptionId: string;
 }
-export const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetingType: DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-      advertiserId: S.String.pipe(T.Label()),
-      assignedTargetingOptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetingType: DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
-  ).annotate({
-    identifier: "DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
-  }) as any as S.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+    advertiserId: S.String.pipe(T.Label()),
+    assignedTargetingOptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
+}) as any as S.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
 
 export interface DeleteInventorySourceGroupsRequest {
   /** Required. The ID of the inventory source group to delete. */
@@ -9040,7 +8984,7 @@ export interface DeleteInventorySourceGroupsRequest {
   /** The ID of the partner that owns the inventory source group. Only this partner has write access to this group. */
   partnerId?: string;
 }
-export const DeleteInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceGroupId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -9066,20 +9010,19 @@ export interface DeleteInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Required. The ID of the inventory source group to which this assignment is assigned. */
   inventorySourceGroupId: string;
 }
-export const DeleteInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      assignedInventorySourceId: S.String.pipe(T.Label()),
-      advertiserId: S.optional(S.String.pipe(T.Query())),
-      partnerId: S.optional(S.String.pipe(T.Query())),
-      inventorySourceGroupId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const DeleteInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assignedInventorySourceId: S.String.pipe(T.Label()),
+    advertiserId: S.optional(S.String.pipe(T.Query())),
+    partnerId: S.optional(S.String.pipe(T.Query())),
+    inventorySourceGroupId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteInventorySourceGroupsAssignedInventorySourcesRequest",
 }) as any as S.Schema<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>;
@@ -9094,7 +9037,7 @@ export interface DeletePartnersChannelsSitesRequest {
   /** Required. The ID of the parent channel to which the site belongs. */
   channelId: string;
 }
-export const DeletePartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
     urlOrAppId: S.String.pipe(T.Label()),
@@ -9162,7 +9105,7 @@ export type DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface DeletePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
@@ -9174,21 +9117,20 @@ export interface DeletePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the partner. */
   partnerId: string;
 }
-export const DeletePartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetingType: DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-      assignedTargetingOptionId: S.String.pipe(T.Label()),
-      partnerId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const DeletePartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetingType: DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
+    assignedTargetingOptionId: S.String.pipe(T.Label()),
+    partnerId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeletePartnersTargetingTypesAssignedTargetingOptionsRequest",
 }) as any as S.Schema<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -9197,7 +9139,7 @@ export interface DeleteUsersRequest {
   /** Required. The ID of the user to delete. */
   userId: string;
 }
-export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9213,7 +9155,7 @@ export interface DownloadMediaRequest {
   /** Name of the media that is being downloaded. See ReadRequest.resource_name. */
   resourceName: string;
 }
-export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -9230,14 +9172,13 @@ export interface GoogleBytestreamMedia {
   /** Name of the media resource. */
   resourceName?: string;
 }
-export const GoogleBytestreamMedia =
-  CustomBiddingScriptRef as any as S.Schema<GoogleBytestreamMedia>;
+const GoogleBytestreamMedia = CustomBiddingScriptRef as any as S.Schema<GoogleBytestreamMedia>;
 
 export type DuplicateLineItemRequestContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
-export const DuplicateLineItemRequestContainsEuPoliticalAdsEnum = S.String;
+const DuplicateLineItemRequestContainsEuPoliticalAdsEnum = S.String;
 
 /** Request message for LineItemService.DuplicateLineItem. */
 export interface DuplicateLineItemRequest {
@@ -9246,7 +9187,7 @@ export interface DuplicateLineItemRequest {
   /** The display name of the new line item. Must be UTF-8 encoded with a maximum size of 240 bytes. */
   targetDisplayName?: string;
 }
-export const DuplicateLineItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateLineItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containsEuPoliticalAds: S.optional(DuplicateLineItemRequestContainsEuPoliticalAdsEnum),
     targetDisplayName: S.optional(S.String),
@@ -9261,7 +9202,7 @@ export interface DuplicateAdvertisersLineItemsRequest {
   /** Request body */
   body?: DuplicateLineItemRequest;
 }
-export const DuplicateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     lineItemId: S.String.pipe(T.Label()),
@@ -9281,7 +9222,7 @@ export interface DuplicateLineItemResponse {
   /** The ID of the created line item. */
   duplicateLineItemId?: string;
 }
-export const DuplicateLineItemResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateLineItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duplicateLineItemId: S.optional(S.String),
   }),
@@ -9296,7 +9237,7 @@ export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
   createRequests?: CreateAssignedTargetingOptionsRequestList;
 }
-export const BulkEditAdvertiserAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAdvertiserAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteRequests: S.optional(DeleteAssignedTargetingOptionsRequestList),
     createRequests: S.optional(CreateAssignedTargetingOptionsRequestList),
@@ -9311,7 +9252,7 @@ export interface EditAssignedTargetingOptionsAdvertisersRequest {
   /** Request body */
   body?: BulkEditAdvertiserAssignedTargetingOptionsRequest;
 }
-export const EditAssignedTargetingOptionsAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const EditAssignedTargetingOptionsAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(BulkEditAdvertiserAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
@@ -9330,7 +9271,7 @@ export interface BulkEditAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const BulkEditAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEditAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAssignedTargetingOptions: S.optional(AssignedTargetingOptionList),
   }),
@@ -9345,7 +9286,7 @@ export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
   createRequests?: CreateAssignedTargetingOptionsRequestList;
 }
-export const BulkEditPartnerAssignedTargetingOptionsRequest =
+const BulkEditPartnerAssignedTargetingOptionsRequest =
   BulkEditAdvertiserAssignedTargetingOptionsRequest as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsRequest>;
 
 export interface EditAssignedTargetingOptionsPartnersRequest {
@@ -9354,7 +9295,7 @@ export interface EditAssignedTargetingOptionsPartnersRequest {
   /** Request body */
   body?: BulkEditPartnerAssignedTargetingOptionsRequest;
 }
-export const EditAssignedTargetingOptionsPartnersRequest = /*@__PURE__*/ S.suspend(() =>
+const EditAssignedTargetingOptionsPartnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
     body: S.optional(BulkEditPartnerAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
@@ -9373,7 +9314,7 @@ export interface BulkEditPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const BulkEditPartnerAssignedTargetingOptionsResponse =
+const BulkEditPartnerAssignedTargetingOptionsResponse =
   BulkEditAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>;
 
 /** Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors. */
@@ -9387,7 +9328,7 @@ export interface EditGuaranteedOrderReadAccessorsRequest {
   /** Whether to give all advertisers of the read/write accessor partner read access to the guaranteed order. Only applicable if read_write_partner_id is set in the guaranteed order. */
   readAccessInherited?: boolean;
 }
-export const EditGuaranteedOrderReadAccessorsRequest = /*@__PURE__*/ S.suspend(() =>
+const EditGuaranteedOrderReadAccessorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String),
     removedAdvertisers: S.optional(StringList),
@@ -9404,7 +9345,7 @@ export interface EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest {
   /** Request body */
   body?: EditGuaranteedOrderReadAccessorsRequest;
 }
-export const EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guaranteedOrderId: S.String.pipe(T.Label()),
     body: S.optional(EditGuaranteedOrderReadAccessorsRequest.pipe(T.HttpBody())),
@@ -9425,7 +9366,7 @@ export interface EditGuaranteedOrderReadAccessorsResponse {
   /** The IDs of advertisers with read access to the guaranteed order. */
   readAdvertiserIds?: StringList;
 }
-export const EditGuaranteedOrderReadAccessorsResponse = /*@__PURE__*/ S.suspend(() =>
+const EditGuaranteedOrderReadAccessorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readAccessInherited: S.optional(S.Boolean),
     readAdvertiserIds: S.optional(StringList),
@@ -9438,7 +9379,7 @@ export interface GetAdvertisersRequest {
   /** Required. The ID of the advertiser to fetch. */
   advertiserId: string;
 }
-export const GetAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9456,7 +9397,7 @@ export interface GetAdvertisersAdGroupAdsRequest {
   /** Required. The ID of the ad to fetch. */
   adGroupAdId: string;
 }
-export const GetAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     adGroupAdId: S.String.pipe(T.Label()),
@@ -9477,7 +9418,7 @@ export interface GetAdvertisersAdGroupsRequest {
   /** Required. The ID of the ad group to fetch. */
   adGroupId: string;
 }
-export const GetAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     adGroupId: S.String.pipe(T.Label()),
@@ -9543,8 +9484,7 @@ export type GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetin
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. An identifier unique to the targeting type in this line item that identifies the assigned targeting option being requested. */
@@ -9558,8 +9498,8 @@ export interface GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsReq
   /** Required. The ID of the advertiser the ad group belongs to. */
   advertiserId: string;
 }
-export const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       assignedTargetingOptionId: S.String.pipe(T.Label()),
       targetingType:
@@ -9575,9 +9515,9 @@ export const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest
         baseUrl: "https://displayvideo.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
-  }) as any as S.Schema<GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
+).annotate({
+  identifier: "GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest",
+}) as any as S.Schema<GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
 
 export interface GetAdvertisersCampaignsRequest {
   /** Required. The ID of the campaign to fetch. */
@@ -9585,7 +9525,7 @@ export interface GetAdvertisersCampaignsRequest {
   /** Required. The ID of the advertiser this campaign belongs to. */
   advertiserId: string;
 }
-export const GetAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaignId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -9608,7 +9548,7 @@ export interface GetAdvertisersChannelsRequest {
   /** The ID of the advertiser that owns the fetched channel. */
   advertiserId: string;
 }
-export const GetAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -9630,7 +9570,7 @@ export interface GetAdvertisersCreativesRequest {
   /** Required. The ID of the creative to fetch. */
   creativeId: string;
 }
-export const GetAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     creativeId: S.String.pipe(T.Label()),
@@ -9651,7 +9591,7 @@ export interface GetAdvertisersInsertionOrdersRequest {
   /** Required. The ID of the advertiser this insertion order belongs to. */
   advertiserId: string;
 }
-export const GetAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertionOrderId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -9672,7 +9612,7 @@ export interface GetAdvertisersLineItemsRequest {
   /** Required. The ID of the line item to fetch. */
   lineItemId: string;
 }
-export const GetAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     lineItemId: S.String.pipe(T.Label()),
@@ -9738,8 +9678,7 @@ export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargeti
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the advertiser the line item belongs to. */
@@ -9753,7 +9692,7 @@ export interface GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRe
   /** Required. An identifier unique to the targeting type in this line item that identifies the assigned targeting option being requested. */
   assignedTargetingOptionId: string;
 }
-export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
+const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       advertiserId: S.String.pipe(T.Label()),
@@ -9780,7 +9719,7 @@ export interface GetAdvertisersLocationListsRequest {
   /** Required. The ID of the location list to fetch. */
   locationListId: string;
 }
-export const GetAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     locationListId: S.String.pipe(T.Label()),
@@ -9801,7 +9740,7 @@ export interface GetAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the negative keyword list to fetch. */
   negativeKeywordListId: string;
 }
-export const GetAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     negativeKeywordListId: S.String.pipe(T.Label()),
@@ -9867,7 +9806,7 @@ export type GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION` */
@@ -9879,21 +9818,20 @@ export interface GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. An identifier unique to the targeting type in this advertiser that identifies the assigned targeting option being requested. */
   assignedTargetingOptionId: string;
 }
-export const GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetingType: GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-      advertiserId: S.String.pipe(T.Label()),
-      assignedTargetingOptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetingType: GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
+    advertiserId: S.String.pipe(T.Label()),
+    assignedTargetingOptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
 }) as any as S.Schema<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -9906,7 +9844,7 @@ export interface GetCombinedAudiencesRequest {
   /** The ID of the advertiser that has access to the fetched combined audience. */
   advertiserId?: string;
 }
-export const GetCombinedAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCombinedAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     combinedAudienceId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -9931,7 +9869,7 @@ export interface CombinedAudience {
   /** Output only. The resource name of the combined audience. */
   name?: string;
 }
-export const CombinedAudience = /*@__PURE__*/ S.suspend(() =>
+const CombinedAudience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     combinedAudienceId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -9947,7 +9885,7 @@ export interface GetCustomBiddingAlgorithmsRequest {
   /** Required. The ID of the custom bidding algorithm to fetch. */
   customBiddingAlgorithmId: string;
 }
-export const GetCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -9973,7 +9911,7 @@ export interface GetCustomBiddingAlgorithmsRulesRequest {
   /** The ID of the partner that owns the parent custom bidding algorithm. */
   partnerId?: string;
 }
-export const GetCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmRulesId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -10000,7 +9938,7 @@ export interface GetCustomBiddingAlgorithmsScriptsRequest {
   /** Required. The ID of the custom bidding script to fetch. */
   customBiddingScriptId: string;
 }
-export const GetCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -10023,7 +9961,7 @@ export interface GetCustomListsRequest {
   /** The ID of the DV360 advertiser that has access to the fetched custom lists. */
   advertiserId?: string;
 }
-export const GetCustomListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customListId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -10045,7 +9983,7 @@ export interface CustomList {
   /** Output only. The resource name of the custom list. */
   name?: string;
 }
-export const CustomList = /*@__PURE__*/ S.suspend(() =>
+const CustomList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customListId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -10059,7 +9997,7 @@ export interface GetFloodlightGroupsRequest {
   /** Required. The ID of the Floodlight group to fetch. */
   floodlightGroupId: string;
 }
-export const GetFloodlightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFloodlightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String.pipe(T.Query())),
     floodlightGroupId: S.String.pipe(T.Label()),
@@ -10081,7 +10019,7 @@ export interface LookbackWindow {
   /** Lookback window, in days, from the last time a given user viewed one of your ads. */
   impressionDays?: number;
 }
-export const LookbackWindow = /*@__PURE__*/ S.suspend(() =>
+const LookbackWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clickDays: S.optional(S.Number),
     impressionDays: S.optional(S.Number),
@@ -10093,13 +10031,13 @@ export type FloodlightGroupWebTagTypeEnum =
   | "WEB_TAG_TYPE_NONE"
   | "WEB_TAG_TYPE_IMAGE"
   | "WEB_TAG_TYPE_DYNAMIC";
-export const FloodlightGroupWebTagTypeEnum = S.String;
+const FloodlightGroupWebTagTypeEnum = S.String;
 
 export type ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum =
   | "VIDEO_VOLUME_PERCENT_UNSPECIFIED"
   | "VIDEO_VOLUME_PERCENT_0"
   | "VIDEO_VOLUME_PERCENT_10";
-export const ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum = S.String;
+const ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum = S.String;
 
 export type ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum =
   | "VIEWABILITY_PERCENT_UNSPECIFIED"
@@ -10108,7 +10046,7 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum =
   | "VIEWABILITY_PERCENT_50"
   | "VIEWABILITY_PERCENT_75"
   | "VIEWABILITY_PERCENT_100";
-export const ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum = S.String;
+const ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum = S.String;
 
 export type ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum =
   | "VIDEO_DURATION_QUARTILE_UNSPECIFIED"
@@ -10117,7 +10055,7 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum =
   | "VIDEO_DURATION_QUARTILE_SECOND"
   | "VIDEO_DURATION_QUARTILE_THIRD"
   | "VIDEO_DURATION_QUARTILE_FOURTH";
-export const ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum = S.String;
+const ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum = S.String;
 
 export type ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum =
   | "VIDEO_DURATION_UNSPECIFIED"
@@ -10141,7 +10079,7 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum =
   | "VIDEO_DURATION_SECONDS_30"
   | "VIDEO_DURATION_SECONDS_45"
   | "VIDEO_DURATION_SECONDS_60";
-export const ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum = S.String;
+const ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum = S.String;
 
 /** Configuration for custom Active View video viewability metrics. */
 export interface ActiveViewVideoViewabilityMetricConfig {
@@ -10156,7 +10094,7 @@ export interface ActiveViewVideoViewabilityMetricConfig {
   /** The minimum visible video duration required (in seconds) in order for an impression to be recorded. You must specify minimum_duration, minimum_quartile or both. If both are specified, an impression meets the metric criteria if either requirement is met (whichever happens first). */
   minimumDuration?: ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum | (string & {});
 }
-export const ActiveViewVideoViewabilityMetricConfig = /*@__PURE__*/ S.suspend(() =>
+const ActiveViewVideoViewabilityMetricConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumVolume: S.optional(ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum),
     minimumViewability: S.optional(ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum),
@@ -10185,7 +10123,7 @@ export interface FloodlightGroup {
   /** Required. The display name of the Floodlight group. */
   displayName?: string;
 }
-export const FloodlightGroup = /*@__PURE__*/ S.suspend(() =>
+const FloodlightGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookbackWindow: S.optional(LookbackWindow),
     webTagType: S.optional(FloodlightGroupWebTagTypeEnum),
@@ -10205,7 +10143,7 @@ export interface GetFloodlightGroupsFloodlightActivitiesRequest {
   /** Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs. */
   floodlightGroupId: string;
 }
-export const GetFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     floodlightActivityId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -10228,7 +10166,7 @@ export interface RemarketingConfig {
   /** Output only. Whether the Floodlight activity remarketing user list is available to the identified advertiser. */
   remarketingEnabled?: boolean;
 }
-export const RemarketingConfig = /*@__PURE__*/ S.suspend(() =>
+const RemarketingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String),
     remarketingEnabled: S.optional(S.Boolean),
@@ -10236,7 +10174,7 @@ export const RemarketingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemarketingConfig" }) as any as S.Schema<RemarketingConfig>;
 
 export type RemarketingConfigList = Array<RemarketingConfig>;
-export const RemarketingConfigList = /*@__PURE__*/ S.Array(
+const RemarketingConfigList = /*@__PURE__*/ S.Array(
   RemarketingConfig,
 ) as any as S.Schema<RemarketingConfigList>;
 
@@ -10244,7 +10182,7 @@ export type FloodlightActivityServingStatusEnum =
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_UNSPECIFIED"
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_ENABLED"
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED";
-export const FloodlightActivityServingStatusEnum = S.String;
+const FloodlightActivityServingStatusEnum = S.String;
 
 /** A single Floodlight activity. */
 export interface FloodlightActivity {
@@ -10265,7 +10203,7 @@ export interface FloodlightActivity {
   /** Optional. Whether the Floodlight activity is served. */
   servingStatus?: FloodlightActivityServingStatusEnum;
 }
-export const FloodlightActivity = /*@__PURE__*/ S.suspend(() =>
+const FloodlightActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sslRequired: S.optional(S.Boolean),
     displayName: S.optional(S.String),
@@ -10286,7 +10224,7 @@ export interface GetGoogleAudiencesRequest {
   /** The ID of the partner that has access to the fetched Google audience. */
   partnerId?: string;
 }
-export const GetGoogleAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAudienceId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -10310,7 +10248,7 @@ export type GoogleAudienceGoogleAudienceTypeEnum =
   | "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES"
   | "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT"
   | "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC";
-export const GoogleAudienceGoogleAudienceTypeEnum = S.String;
+const GoogleAudienceGoogleAudienceTypeEnum = S.String;
 
 /** Describes a Google audience resource. Includes Google audience lists. */
 export interface GoogleAudience {
@@ -10323,7 +10261,7 @@ export interface GoogleAudience {
   /** Output only. The unique ID of the Google audience. Assigned by the system. */
   googleAudienceId?: string;
 }
-export const GoogleAudience = /*@__PURE__*/ S.suspend(() =>
+const GoogleAudience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -10340,7 +10278,7 @@ export interface GetGuaranteedOrdersRequest {
   /** The ID of the partner that has access to the guaranteed order. */
   partnerId?: string;
 }
-export const GetGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guaranteedOrderId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -10364,7 +10302,7 @@ export interface GetInventorySourceGroupsRequest {
   /** The ID of the advertiser that has access to the inventory source group. If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared can access the group. */
   advertiserId?: string;
 }
-export const GetInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceGroupId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -10384,7 +10322,7 @@ export interface GetPartnersRequest {
   /** Required. The ID of the partner to fetch. */
   partnerId: string;
 }
-export const GetPartnersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
   }).pipe(
@@ -10401,8 +10339,7 @@ export interface PartnerBillingConfig {
   /** The ID of a partner default billing profile. */
   billingProfileId?: string;
 }
-export const PartnerBillingConfig =
-  AdvertiserBillingConfig as any as S.Schema<PartnerBillingConfig>;
+const PartnerBillingConfig = AdvertiserBillingConfig as any as S.Schema<PartnerBillingConfig>;
 
 /** Measurement settings of a partner. */
 export interface MeasurementConfig {
@@ -10411,7 +10348,7 @@ export interface MeasurementConfig {
   /** Whether or not to include DV360 data in CM360 data transfer reports. */
   dv360ToCmDataSharingEnabled?: boolean;
 }
-export const MeasurementConfig = /*@__PURE__*/ S.suspend(() =>
+const MeasurementConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dv360ToCmCostReportingEnabled: S.optional(S.Boolean),
     dv360ToCmDataSharingEnabled: S.optional(S.Boolean),
@@ -10423,7 +10360,7 @@ export interface PartnerAdServerConfig {
   /** Measurement settings of a partner. */
   measurementConfig?: MeasurementConfig;
 }
-export const PartnerAdServerConfig = /*@__PURE__*/ S.suspend(() =>
+const PartnerAdServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     measurementConfig: S.optional(MeasurementConfig),
   }),
@@ -10520,7 +10457,7 @@ export type ExchangeConfigEnabledExchangeExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
-export const ExchangeConfigEnabledExchangeExchangeEnum = S.String;
+const ExchangeConfigEnabledExchangeExchangeEnum = S.String;
 
 /** An enabled exchange in the partner. */
 export interface ExchangeConfigEnabledExchange {
@@ -10533,7 +10470,7 @@ export interface ExchangeConfigEnabledExchange {
   /** The enabled exchange. */
   exchange?: ExchangeConfigEnabledExchangeExchangeEnum;
 }
-export const ExchangeConfigEnabledExchange = /*@__PURE__*/ S.suspend(() =>
+const ExchangeConfigEnabledExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAdManagerBuyerNetworkId: S.optional(S.String),
     seatId: S.optional(S.String),
@@ -10545,7 +10482,7 @@ export const ExchangeConfigEnabledExchange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExchangeConfigEnabledExchange>;
 
 export type ExchangeConfigEnabledExchangeList = Array<ExchangeConfigEnabledExchange>;
-export const ExchangeConfigEnabledExchangeList = /*@__PURE__*/ S.Array(
+const ExchangeConfigEnabledExchangeList = /*@__PURE__*/ S.Array(
   ExchangeConfigEnabledExchange,
 ) as any as S.Schema<ExchangeConfigEnabledExchangeList>;
 
@@ -10554,7 +10491,7 @@ export interface ExchangeConfig {
   /** All enabled exchanges in the partner. Duplicate enabled exchanges will be ignored. */
   enabledExchanges?: ExchangeConfigEnabledExchangeList;
 }
-export const ExchangeConfig = /*@__PURE__*/ S.suspend(() =>
+const ExchangeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledExchanges: S.optional(ExchangeConfigEnabledExchangeList),
   }),
@@ -10567,14 +10504,14 @@ export type PartnerEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
-export const PartnerEntityStatusEnum = S.String;
+const PartnerEntityStatusEnum = S.String;
 
 /** Settings that control how partner related data may be accessed. */
 export interface PartnerDataAccessConfig {
   /** Structured Data Files (SDF) settings for the partner. The SDF configuration for the partner. */
   sdfConfig?: SdfConfig;
 }
-export const PartnerDataAccessConfig = /*@__PURE__*/ S.suspend(() =>
+const PartnerDataAccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdfConfig: S.optional(SdfConfig),
   }),
@@ -10587,7 +10524,7 @@ export interface PartnerGeneralConfig {
   /** Immutable. The standard TZ database name of the partner's time zone. For example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones */
   timeZone?: string;
 }
-export const PartnerGeneralConfig = /*@__PURE__*/ S.suspend(() =>
+const PartnerGeneralConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     timeZone: S.optional(S.String),
@@ -10617,7 +10554,7 @@ export interface Partner {
   /** General settings of the partner. */
   generalConfig?: PartnerGeneralConfig;
 }
-export const Partner = /*@__PURE__*/ S.suspend(() =>
+const Partner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String),
     billingConfig: S.optional(PartnerBillingConfig),
@@ -10640,7 +10577,7 @@ export interface GetPartnersChannelsRequest {
   /** Required. The ID of the channel to fetch. */
   channelId: string;
 }
-export const GetPartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -10707,7 +10644,7 @@ export type GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface GetPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the partner. */
@@ -10717,21 +10654,20 @@ export interface GetPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
   targetingType: GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum | (string & {});
 }
-export const GetPartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      partnerId: S.String.pipe(T.Label()),
-      assignedTargetingOptionId: S.String.pipe(T.Label()),
-      targetingType: GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const GetPartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    partnerId: S.String.pipe(T.Label()),
+    assignedTargetingOptionId: S.String.pipe(T.Label()),
+    targetingType: GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetPartnersTargetingTypesAssignedTargetingOptionsRequest",
 }) as any as S.Schema<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -10740,7 +10676,7 @@ export interface GetSdfdownloadtasksOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetSdfdownloadtasksOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSdfdownloadtasksOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10801,7 +10737,7 @@ export type GetTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const GetTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
+const GetTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface GetTargetingTypesTargetingOptionsRequest {
   /** Required. The Advertiser this request is being made in the context of. */
@@ -10811,7 +10747,7 @@ export interface GetTargetingTypesTargetingOptionsRequest {
   /** Required. The ID of the of targeting option to retrieve. */
   targetingOptionId: string;
 }
-export const GetTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     targetingType: GetTargetingTypesTargetingOptionsTargetingTypeEnum.pipe(T.Label()),
@@ -10832,14 +10768,12 @@ export type EnvironmentTargetingOptionDetailsEnvironmentEnum =
   | "ENVIRONMENT_WEB_OPTIMIZED"
   | "ENVIRONMENT_WEB_NOT_OPTIMIZED"
   | "ENVIRONMENT_APP";
-export const EnvironmentTargetingOptionDetailsEnvironmentEnum = S.String;
-
 /** Represents a targetable environment. This will be populated in the environment_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_ENVIRONMENT`. */
 export interface EnvironmentTargetingOptionDetails {
   /** Output only. The serving environment. */
   environment?: EnvironmentTargetingOptionDetailsEnvironmentEnum;
 }
-export const EnvironmentTargetingOptionDetails =
+const EnvironmentTargetingOptionDetails =
   EnvironmentAssignedTargetingOptionDetails as any as S.Schema<EnvironmentTargetingOptionDetails>;
 
 export type HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum =
@@ -10851,14 +10785,12 @@ export type HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_10_PERCENT";
-export const HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum = S.String;
-
 /** Represents a targetable household income. This will be populated in the household_income_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`. */
 export interface HouseholdIncomeTargetingOptionDetails {
   /** Output only. The household income of an audience. */
   householdIncome?: HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum;
 }
-export const HouseholdIncomeTargetingOptionDetails =
+const HouseholdIncomeTargetingOptionDetails =
   HouseholdIncomeAssignedTargetingOptionDetails as any as S.Schema<HouseholdIncomeTargetingOptionDetails>;
 
 export type ParentalStatusTargetingOptionDetailsParentalStatusEnum =
@@ -10866,14 +10798,12 @@ export type ParentalStatusTargetingOptionDetailsParentalStatusEnum =
   | "PARENTAL_STATUS_PARENT"
   | "PARENTAL_STATUS_NOT_A_PARENT"
   | "PARENTAL_STATUS_UNKNOWN";
-export const ParentalStatusTargetingOptionDetailsParentalStatusEnum = S.String;
-
 /** Represents a targetable parental status. This will be populated in the parental_status_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`. */
 export interface ParentalStatusTargetingOptionDetails {
   /** Output only. The parental status of an audience. */
   parentalStatus?: ParentalStatusTargetingOptionDetailsParentalStatusEnum;
 }
-export const ParentalStatusTargetingOptionDetails =
+const ParentalStatusTargetingOptionDetails =
   ParentalStatusAssignedTargetingOptionDetails as any as S.Schema<ParentalStatusTargetingOptionDetails>;
 
 export type ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum =
@@ -10883,14 +10813,14 @@ export type ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositi
   | "CONTENT_OUTSTREAM_POSITION_IN_BANNER"
   | "CONTENT_OUTSTREAM_POSITION_IN_FEED"
   | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL";
-export const ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum = S.String;
+const ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum = S.String;
 
 /** Represents a targetable content outstream position, which could be used by display and video ads. This will be populated in the content_outstream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`. */
 export interface ContentOutstreamPositionTargetingOptionDetails {
   /** Output only. The content outstream position. */
   contentOutstreamPosition?: ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum;
 }
-export const ContentOutstreamPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentOutstreamPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentOutstreamPosition: S.optional(
       ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum,
@@ -10921,14 +10851,14 @@ export type SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum =
   | "SENSITIVE_CATEGORY_SHOCKING"
   | "SENSITIVE_CATEGORY_EMBEDDED_VIDEO"
   | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO";
-export const SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum = S.String;
+const SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum = S.String;
 
 /** Represents a targetable sensitive category. This will be populated in the sensitive_category_details field of the TargetingOption when targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. */
 export interface SensitiveCategoryTargetingOptionDetails {
   /** Output only. An enum for the Display & Video 360 Sensitive category content classifier. */
   sensitiveCategory?: SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum;
 }
-export const SensitiveCategoryTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const SensitiveCategoryTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sensitiveCategory: S.optional(SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum),
   }),
@@ -10941,14 +10871,12 @@ export type GenderTargetingOptionDetailsGenderEnum =
   | "GENDER_MALE"
   | "GENDER_FEMALE"
   | "GENDER_UNKNOWN";
-export const GenderTargetingOptionDetailsGenderEnum = S.String;
-
 /** Represents a targetable gender. This will be populated in the gender_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_GENDER`. */
 export interface GenderTargetingOptionDetails {
   /** Output only. The gender of an audience. */
   gender?: GenderTargetingOptionDetailsGenderEnum;
 }
-export const GenderTargetingOptionDetails =
+const GenderTargetingOptionDetails =
   GenderAssignedTargetingOptionDetails as any as S.Schema<GenderTargetingOptionDetails>;
 
 export type VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum =
@@ -10957,14 +10885,12 @@ export type VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum =
   | "VIDEO_PLAYER_SIZE_LARGE"
   | "VIDEO_PLAYER_SIZE_HD"
   | "VIDEO_PLAYER_SIZE_UNKNOWN";
-export const VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum = S.String;
-
 /** Represents a targetable video player size. This will be populated in the video_player_size_details field when targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. */
 export interface VideoPlayerSizeTargetingOptionDetails {
   /** Output only. The video player size. */
   videoPlayerSize?: VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum;
 }
-export const VideoPlayerSizeTargetingOptionDetails =
+const VideoPlayerSizeTargetingOptionDetails =
   VideoPlayerSizeAssignedTargetingOptionDetails as any as S.Schema<VideoPlayerSizeTargetingOptionDetails>;
 
 /** Represents a targetable category. This will be populated in the category_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_CATEGORY`. */
@@ -10972,7 +10898,7 @@ export interface CategoryTargetingOptionDetails {
   /** Output only. The display name of the category. */
   displayName?: string;
 }
-export const CategoryTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const CategoryTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -10985,7 +10911,7 @@ export interface LanguageTargetingOptionDetails {
   /** Output only. The display name of the language (e.g., "French"). */
   displayName?: string;
 }
-export const LanguageTargetingOptionDetails =
+const LanguageTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<LanguageTargetingOptionDetails>;
 
 export type OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum =
@@ -10993,14 +10919,14 @@ export type OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum =
   | "ON_SCREEN_POSITION_UNKNOWN"
   | "ON_SCREEN_POSITION_ABOVE_THE_FOLD"
   | "ON_SCREEN_POSITION_BELOW_THE_FOLD";
-export const OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum = S.String;
+const OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum = S.String;
 
 /** Represents a targetable on screen position, which could be used by display and video ads. This will be populated in the on_screen_position_details field when targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`. */
 export interface OnScreenPositionTargetingOptionDetails {
   /** Output only. The on screen position. */
   onScreenPosition?: OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum;
 }
-export const OnScreenPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const OnScreenPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onScreenPosition: S.optional(OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum),
   }),
@@ -11012,7 +10938,7 @@ export type CarrierAndIspTargetingOptionDetailsTypeEnum =
   | "CARRIER_AND_ISP_TYPE_UNSPECIFIED"
   | "CARRIER_AND_ISP_TYPE_ISP"
   | "CARRIER_AND_ISP_TYPE_CARRIER";
-export const CarrierAndIspTargetingOptionDetailsTypeEnum = S.String;
+const CarrierAndIspTargetingOptionDetailsTypeEnum = S.String;
 
 /** Represents a targetable carrier or ISP. This will be populated in the carrier_and_isp_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`. */
 export interface CarrierAndIspTargetingOptionDetails {
@@ -11021,7 +10947,7 @@ export interface CarrierAndIspTargetingOptionDetails {
   /** Output only. The type indicating if it's carrier or ISP. */
   type?: CarrierAndIspTargetingOptionDetailsTypeEnum;
 }
-export const CarrierAndIspTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const CarrierAndIspTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     type: S.optional(CarrierAndIspTargetingOptionDetailsTypeEnum),
@@ -11034,14 +10960,14 @@ export type ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum =
   | "CONTENT_STREAM_TYPE_UNSPECIFIED"
   | "CONTENT_LIVE_STREAM"
   | "CONTENT_ON_DEMAND";
-export const ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum = S.String;
+const ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum = S.String;
 
 /** Represents a targetable content stream type. This will be populated in the content_stream_type_details field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. */
 export interface ContentStreamTypeTargetingOptionDetails {
   /** Output only. The content stream type. */
   contentStreamType?: ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum;
 }
-export const ContentStreamTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentStreamTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentStreamType: S.optional(ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum),
   }),
@@ -11054,7 +10980,7 @@ export interface ContentGenreTargetingOptionDetails {
   /** Output only. The display name of the content genre */
   displayName?: string;
 }
-export const ContentGenreTargetingOptionDetails =
+const ContentGenreTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<ContentGenreTargetingOptionDetails>;
 
 /** Represents a targetable operating system. This will be populated in the operating_system_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`. */
@@ -11062,7 +10988,7 @@ export interface OperatingSystemTargetingOptionDetails {
   /** Output only. The display name of the operating system. */
   displayName?: string;
 }
-export const OperatingSystemTargetingOptionDetails =
+const OperatingSystemTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<OperatingSystemTargetingOptionDetails>;
 
 /** Represents a targetable sub-exchange. This will be populated in the sub_exchange_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`. */
@@ -11070,7 +10996,7 @@ export interface SubExchangeTargetingOptionDetails {
   /** Output only. The display name of the sub-exchange. */
   displayName?: string;
 }
-export const SubExchangeTargetingOptionDetails =
+const SubExchangeTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<SubExchangeTargetingOptionDetails>;
 
 export type AgeRangeTargetingOptionDetailsAgeRangeEnum =
@@ -11092,14 +11018,12 @@ export type AgeRangeTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_50_54"
   | "AGE_RANGE_55_59"
   | "AGE_RANGE_60_64";
-export const AgeRangeTargetingOptionDetailsAgeRangeEnum = S.String;
-
 /** Represents a targetable age range. This will be populated in the age_range_details field when targeting_type is `TARGETING_TYPE_AGE_RANGE`. */
 export interface AgeRangeTargetingOptionDetails {
   /** Output only. The age range of an audience. */
   ageRange?: AgeRangeTargetingOptionDetailsAgeRangeEnum;
 }
-export const AgeRangeTargetingOptionDetails =
+const AgeRangeTargetingOptionDetails =
   AgeRangeAssignedTargetingOptionDetails as any as S.Schema<AgeRangeTargetingOptionDetails>;
 
 export type DeviceTypeTargetingOptionDetailsDeviceTypeEnum =
@@ -11109,14 +11033,14 @@ export type DeviceTypeTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_SMART_PHONE"
   | "DEVICE_TYPE_TABLET"
   | "DEVICE_TYPE_CONNECTED_DEVICE";
-export const DeviceTypeTargetingOptionDetailsDeviceTypeEnum = S.String;
+const DeviceTypeTargetingOptionDetailsDeviceTypeEnum = S.String;
 
 /** Represents a targetable device type. This will be populated in the device_type_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_TYPE`. */
 export interface DeviceTypeTargetingOptionDetails {
   /** Output only. The device type that is used to be targeted. */
   deviceType?: DeviceTypeTargetingOptionDetailsDeviceTypeEnum;
 }
-export const DeviceTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const DeviceTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceType: S.optional(DeviceTypeTargetingOptionDetailsDeviceTypeEnum),
   }),
@@ -11135,14 +11059,12 @@ export type ViewabilityTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_70_PERCENT_OR_MORE"
   | "VIEWABILITY_80_PERCENT_OR_MORE"
   | "VIEWABILITY_90_PERCENT_OR_MORE";
-export const ViewabilityTargetingOptionDetailsViewabilityEnum = S.String;
-
 /** Represents a targetable viewability. This will be populated in the viewability_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`. */
 export interface ViewabilityTargetingOptionDetails {
   /** Output only. The predicted viewability percentage. */
   viewability?: ViewabilityTargetingOptionDetailsViewabilityEnum;
 }
-export const ViewabilityTargetingOptionDetails =
+const ViewabilityTargetingOptionDetails =
   ViewabilityAssignedTargetingOptionDetails as any as S.Schema<ViewabilityTargetingOptionDetails>;
 
 /** Represents a targetable point of interest(POI). This will be populated in the poi_details field when targeting_type is `TARGETING_TYPE_POI`. */
@@ -11154,7 +11076,7 @@ export interface PoiTargetingOptionDetails {
   /** Output only. The display name of a POI(e.g. "Times Square", "Space Needle"), followed by its full address if available. */
   displayName?: string;
 }
-export const PoiTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const PoiTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -11169,7 +11091,7 @@ export interface AppCategoryTargetingOptionDetails {
   /** Output only. The name of the app collection. */
   displayName?: string;
 }
-export const AppCategoryTargetingOptionDetails =
+const AppCategoryTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<AppCategoryTargetingOptionDetails>;
 
 /** Represents a targetable device make and model. This will be populated in the device_make_model_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`. */
@@ -11177,7 +11099,7 @@ export interface DeviceMakeModelTargetingOptionDetails {
   /** Output only. The display name of the device make and model. */
   displayName?: string;
 }
-export const DeviceMakeModelTargetingOptionDetails =
+const DeviceMakeModelTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<DeviceMakeModelTargetingOptionDetails>;
 
 export type ExchangeTargetingOptionDetailsExchangeEnum =
@@ -11271,14 +11193,12 @@ export type ExchangeTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
-export const ExchangeTargetingOptionDetailsExchangeEnum = S.String;
-
 /** Represents a targetable exchange. This will be populated in the exchange_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_EXCHANGE`. */
 export interface ExchangeTargetingOptionDetails {
   /** Output only. The type of exchange. */
   exchange?: ExchangeTargetingOptionDetailsExchangeEnum;
 }
-export const ExchangeTargetingOptionDetails =
+const ExchangeTargetingOptionDetails =
   ExchangeAssignedTargetingOptionDetails as any as S.Schema<ExchangeTargetingOptionDetails>;
 
 export type NativeContentPositionTargetingOptionDetailsContentPositionEnum =
@@ -11288,14 +11208,14 @@ export type NativeContentPositionTargetingOptionDetailsContentPositionEnum =
   | "NATIVE_CONTENT_POSITION_IN_FEED"
   | "NATIVE_CONTENT_POSITION_PERIPHERAL"
   | "NATIVE_CONTENT_POSITION_RECOMMENDATION";
-export const NativeContentPositionTargetingOptionDetailsContentPositionEnum = S.String;
+const NativeContentPositionTargetingOptionDetailsContentPositionEnum = S.String;
 
 /** Represents a targetable native content position. This will be populated in the native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. */
 export interface NativeContentPositionTargetingOptionDetails {
   /** Output only. The content position. */
   contentPosition?: NativeContentPositionTargetingOptionDetailsContentPositionEnum;
 }
-export const NativeContentPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const NativeContentPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentPosition: S.optional(NativeContentPositionTargetingOptionDetailsContentPositionEnum),
   }),
@@ -11311,14 +11231,14 @@ export type DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum =
   | "CONTENT_RATING_TIER_TEENS"
   | "CONTENT_RATING_TIER_MATURE"
   | "CONTENT_RATING_TIER_FAMILIES";
-export const DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum = S.String;
+const DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum = S.String;
 
 /** Represents a targetable digital content label rating tier. This will be populated in the digital_content_label_details field of the TargetingOption when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. */
 export interface DigitalContentLabelTargetingOptionDetails {
   /** Output only. An enum for the content label brand safety tiers. */
   contentRatingTier?: DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum;
 }
-export const DigitalContentLabelTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const DigitalContentLabelTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentRatingTier: S.optional(DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum),
   }),
@@ -11332,14 +11252,14 @@ export type ContentInstreamPositionTargetingOptionDetailsContentInstreamPosition
   | "CONTENT_INSTREAM_POSITION_MID_ROLL"
   | "CONTENT_INSTREAM_POSITION_POST_ROLL"
   | "CONTENT_INSTREAM_POSITION_UNKNOWN";
-export const ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum = S.String;
+const ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum = S.String;
 
 /** Represents a targetable content instream position, which could be used by video and audio ads. This will be populated in the content_instream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`. */
 export interface ContentInstreamPositionTargetingOptionDetails {
   /** Output only. The content instream position. */
   contentInstreamPosition?: ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum;
 }
-export const ContentInstreamPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentInstreamPositionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentInstreamPosition: S.optional(
       ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum,
@@ -11353,14 +11273,14 @@ export type AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEn
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS";
-export const AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum = S.String;
+const AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum = S.String;
 
 /** Represents a targetable authorized seller status. This will be populated in the authorized_seller_status_details field when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. */
 export interface AuthorizedSellerStatusTargetingOptionDetails {
   /** Output only. The authorized seller status. */
   authorizedSellerStatus?: AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum;
 }
-export const AuthorizedSellerStatusTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedSellerStatusTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizedSellerStatus: S.optional(
       AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum,
@@ -11380,14 +11300,14 @@ export type AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_WEB_RADIO"
   | "AUDIO_CONTENT_TYPE_VIDEO_GAME"
   | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH";
-export const AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum = S.String;
+const AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum = S.String;
 
 /** Represents a targetable audio content type. This will be populated in the audio_content_type_details field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. */
 export interface AudioContentTypeTargetingOptionDetails {
   /** Output only. The audio content type. */
   audioContentType?: AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum;
 }
-export const AudioContentTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const AudioContentTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioContentType: S.optional(AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum),
   }),
@@ -11446,17 +11366,15 @@ export type TargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const TargetingOptionTargetingTypeEnum = S.String;
+const TargetingOptionTargetingTypeEnum = S.String;
 
 export type OmidTargetingOptionDetailsOmidEnum = "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS";
-export const OmidTargetingOptionDetailsOmidEnum = S.String;
-
 /** Represents a targetable Open Measurement enabled inventory type. This will be populated in the omid_details field when targeting_type is `TARGETING_TYPE_OMID`. */
 export interface OmidTargetingOptionDetails {
   /** Output only. The type of Open Measurement enabled inventory. */
   omid?: OmidTargetingOptionDetailsOmidEnum;
 }
-export const OmidTargetingOptionDetails =
+const OmidTargetingOptionDetails =
   OmidAssignedTargetingOptionDetails as any as S.Schema<OmidTargetingOptionDetails>;
 
 export type BusinessChainTargetingOptionDetailsGeoRegionTypeEnum =
@@ -11500,7 +11418,7 @@ export type BusinessChainTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
   | "GEO_REGION_TYPE_WARD";
-export const BusinessChainTargetingOptionDetailsGeoRegionTypeEnum = S.String;
+const BusinessChainTargetingOptionDetailsGeoRegionTypeEnum = S.String;
 
 /** Represents a targetable business chain within a geo region. This will be populated in the business_chain_details field when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`. */
 export interface BusinessChainTargetingOptionDetails {
@@ -11511,7 +11429,7 @@ export interface BusinessChainTargetingOptionDetails {
   /** Output only. The type of the geographic region. */
   geoRegionType?: BusinessChainTargetingOptionDetailsGeoRegionTypeEnum;
 }
-export const BusinessChainTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const BusinessChainTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businessChain: S.optional(S.String),
     geoRegion: S.optional(S.String),
@@ -11525,14 +11443,14 @@ export type UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum =
   | "USER_REWARDED_CONTENT_UNSPECIFIED"
   | "USER_REWARDED_CONTENT_USER_REWARDED"
   | "USER_REWARDED_CONTENT_NOT_USER_REWARDED";
-export const UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum = S.String;
+const UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum = S.String;
 
 /** Represents a targetable user rewarded content status for video ads only. This will be populated in the user_rewarded_content_details field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
 export interface UserRewardedContentTargetingOptionDetails {
   /** Output only. User rewarded content status for video ads. */
   userRewardedContent?: UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum;
 }
-export const UserRewardedContentTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const UserRewardedContentTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userRewardedContent: S.optional(
       UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum,
@@ -11551,14 +11469,14 @@ export type ContentDurationTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_15_TO_30_MIN"
   | "CONTENT_DURATION_30_TO_60_MIN"
   | "CONTENT_DURATION_OVER_60_MIN";
-export const ContentDurationTargetingOptionDetailsContentDurationEnum = S.String;
+const ContentDurationTargetingOptionDetailsContentDurationEnum = S.String;
 
 /** Represents a targetable content duration. This will be populated in the content_duration_details field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. */
 export interface ContentDurationTargetingOptionDetails {
   /** Output only. The content duration. */
   contentDuration?: ContentDurationTargetingOptionDetailsContentDurationEnum;
 }
-export const ContentDurationTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentDurationTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentDuration: S.optional(ContentDurationTargetingOptionDetailsContentDurationEnum),
   }),
@@ -11571,7 +11489,7 @@ export interface BrowserTargetingOptionDetails {
   /** Output only. The display name of the browser. */
   displayName?: string;
 }
-export const BrowserTargetingOptionDetails =
+const BrowserTargetingOptionDetails =
   CategoryTargetingOptionDetails as any as S.Schema<BrowserTargetingOptionDetails>;
 
 export type ContentThemeTargetingOptionDetailsContentThemeEnum =
@@ -11585,14 +11503,14 @@ export type ContentThemeTargetingOptionDetailsContentThemeEnum =
   | "CONTENT_THEME_RELIGION"
   | "CONTENT_THEME_UNPLEASANT_HEALTH_CONTENT"
   | "CONTENT_THEME_UNPLEASANT_NEWS";
-export const ContentThemeTargetingOptionDetailsContentThemeEnum = S.String;
+const ContentThemeTargetingOptionDetailsContentThemeEnum = S.String;
 
 /** Represents a targetable content theme. This will be populated in the content_theme_details field of the TargetingOption when targeting_type is `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`. */
 export interface ContentThemeTargetingOptionDetails {
   /** Output only. An enum for the DV360 content theme content classifier. */
   contentTheme?: ContentThemeTargetingOptionDetailsContentThemeEnum;
 }
-export const ContentThemeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ContentThemeTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentTheme: S.optional(ContentThemeTargetingOptionDetailsContentThemeEnum),
   }),
@@ -11641,7 +11559,7 @@ export type GeoRegionTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
   | "GEO_REGION_TYPE_WARD";
-export const GeoRegionTargetingOptionDetailsGeoRegionTypeEnum = S.String;
+const GeoRegionTargetingOptionDetailsGeoRegionTypeEnum = S.String;
 
 /** Represents a targetable geographic region. This will be populated in the geo_region_details field when targeting_type is `TARGETING_TYPE_GEO_REGION`. */
 export interface GeoRegionTargetingOptionDetails {
@@ -11650,7 +11568,7 @@ export interface GeoRegionTargetingOptionDetails {
   /** Output only. The display name of the geographic region (e.g., "Ontario, Canada"). */
   displayName?: string;
 }
-export const GeoRegionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
+const GeoRegionTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoRegionType: S.optional(GeoRegionTargetingOptionDetailsGeoRegionTypeEnum),
     displayName: S.optional(S.String),
@@ -11736,7 +11654,7 @@ export interface TargetingOption {
   /** Geographic region resource details. */
   geoRegionDetails?: GeoRegionTargetingOptionDetails;
 }
-export const TargetingOption = /*@__PURE__*/ S.suspend(() =>
+const TargetingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     environmentDetails: S.optional(EnvironmentTargetingOptionDetails),
@@ -11782,7 +11700,7 @@ export interface GetUsersRequest {
   /** Required. The ID of the user to fetch. */
   userId: string;
 }
-export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -11806,7 +11724,7 @@ export interface ListAdvertisersRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdvertisers` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -11823,7 +11741,7 @@ export const ListAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAdvertisersRequest" }) as any as S.Schema<ListAdvertisersRequest>;
 
 export type AdvertiserList = Array<Advertiser>;
-export const AdvertiserList = /*@__PURE__*/ S.Array(Advertiser) as any as S.Schema<AdvertiserList>;
+const AdvertiserList = /*@__PURE__*/ S.Array(Advertiser) as any as S.Schema<AdvertiserList>;
 
 export interface ListAdvertisersResponse {
   /** The list of advertisers. This list will be absent if empty. */
@@ -11831,7 +11749,7 @@ export interface ListAdvertisersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdvertisers` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListAdvertisersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertisers: S.optional(AdvertiserList),
     nextPageToken: S.optional(S.String),
@@ -11850,7 +11768,7 @@ export interface ListAdvertisersAdGroupAdsRequest {
   /** Optional. Allows filtering by ad group ad fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName` * `entityStatus` * `adGroupAdId` * `parentCreativeId` Examples: * All ad group ads under an ad group: `adGroupId="1234"` * All ad group ads under an ad group with an entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` * All ad group ads under a parent creative: `parentCreativeId="12345"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11869,7 +11787,7 @@ export const ListAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersAdGroupAdsRequest>;
 
 export type AdGroupAdList = Array<AdGroupAd>;
-export const AdGroupAdList = /*@__PURE__*/ S.Array(AdGroupAd) as any as S.Schema<AdGroupAdList>;
+const AdGroupAdList = /*@__PURE__*/ S.Array(AdGroupAd) as any as S.Schema<AdGroupAdList>;
 
 export interface ListAdGroupAdsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdGroupAds` method to retrieve the next page of results. */
@@ -11877,7 +11795,7 @@ export interface ListAdGroupAdsResponse {
   /** The list of ads. This list will be absent if empty. */
   adGroupAds?: AdGroupAdList;
 }
-export const ListAdGroupAdsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdGroupAdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     adGroupAds: S.optional(AdGroupAdList),
@@ -11896,7 +11814,7 @@ export interface ListAdvertisersAdGroupsRequest {
   /** Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroups` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -11915,7 +11833,7 @@ export const ListAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersAdGroupsRequest>;
 
 export type AdGroupList = Array<AdGroup>;
-export const AdGroupList = /*@__PURE__*/ S.Array(AdGroup) as any as S.Schema<AdGroupList>;
+const AdGroupList = /*@__PURE__*/ S.Array(AdGroup) as any as S.Schema<AdGroupList>;
 
 export interface ListAdGroupsResponse {
   /** The list of ad groups. This list will be absent if empty. */
@@ -11923,7 +11841,7 @@ export interface ListAdGroupsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdGroups` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListAdGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroups: S.optional(AdGroupList),
     nextPageToken: S.optional(S.String),
@@ -11981,8 +11899,7 @@ export type ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargeti
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` */
@@ -12002,7 +11919,7 @@ export interface ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRe
   /** Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
+const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetingType:
@@ -12033,7 +11950,7 @@ export interface ListAdGroupAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListAdGroupAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more AssignedTargetingOption resources to return. */
   nextPageToken?: string;
 }
-export const ListAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
     nextPageToken: S.optional(S.String),
@@ -12054,7 +11971,7 @@ export interface ListAdvertisersCampaignsRequest {
   /** Allows filtering by campaign fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `campaignId` * `displayName` * `entityStatus` * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")` * All campaigns with an update time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-04T18:54:47Z"` * All campaigns with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -12073,7 +11990,7 @@ export const ListAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersCampaignsRequest>;
 
 export type CampaignList = Array<Campaign>;
-export const CampaignList = /*@__PURE__*/ S.Array(Campaign) as any as S.Schema<CampaignList>;
+const CampaignList = /*@__PURE__*/ S.Array(Campaign) as any as S.Schema<CampaignList>;
 
 export interface ListCampaignsResponse {
   /** The list of campaigns. This list will be absent if empty. */
@@ -12081,7 +11998,7 @@ export interface ListCampaignsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCampaigns` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaigns: S.optional(CampaignList),
     nextPageToken: S.optional(S.String),
@@ -12102,7 +12019,7 @@ export interface ListAdvertisersChannelsRequest {
   /** The ID of the advertiser that owns the channels. */
   advertiserId: string;
 }
-export const ListAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -12122,7 +12039,7 @@ export const ListAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersChannelsRequest>;
 
 export type ChannelList = Array<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
+const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
 
 export interface ListChannelsResponse {
   /** The list of channels. This list will be absent if empty. */
@@ -12130,7 +12047,7 @@ export interface ListChannelsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListChannels` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(ChannelList),
     nextPageToken: S.optional(S.String),
@@ -12153,7 +12070,7 @@ export interface ListAdvertisersChannelsSitesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListSites` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -12180,7 +12097,7 @@ export interface ListSitesResponse {
   /** The list of sites. This list will be absent if empty. */
   sites?: SiteList;
 }
-export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     sites: S.optional(SiteList),
@@ -12199,7 +12116,7 @@ export interface ListAdvertisersCreativesRequest {
   /** Allows filtering by creative fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `lineItemIds` field must use the `HAS (:)` operator. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. * For `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, and `dynamic` fields, there may be at most one restriction. Supported Fields: * `approvalStatus` * `creativeId` * `creativeType` * `dimensions` (input in the form of `{width}x{height}`) * `dynamic` * `entityStatus` * `exchangeReviewStatus` (input in the form of `{exchange}-{reviewStatus}`) * `lineItemIds` * `maxDuration` (input in the form of `{duration}s`. Only seconds are supported) * `minDuration` (input in the form of `{duration}s`. Only seconds are supported) * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Notes: * For `updateTime`, a creative resource's field value reflects the last time that a creative has been updated, which includes updates made by the system (e.g. creative review updates). Examples: * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms: `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` * All creatives with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.String.pipe(T.Label()),
@@ -12218,7 +12135,7 @@ export const ListAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersCreativesRequest>;
 
 export type CreativeList = Array<Creative>;
-export const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
+const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
 
 export interface ListCreativesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCreativesRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
@@ -12226,7 +12143,7 @@ export interface ListCreativesResponse {
   /** The list of creatives. This list will be absent if empty. */
   creatives?: CreativeList;
 }
-export const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     creatives: S.optional(CreativeList),
@@ -12245,7 +12162,7 @@ export interface ListAdvertisersInsertionOrdersRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListInsertionOrders` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12264,7 +12181,7 @@ export const ListAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListAdvertisersInsertionOrdersRequest>;
 
 export type InsertionOrderList = Array<InsertionOrder>;
-export const InsertionOrderList = /*@__PURE__*/ S.Array(
+const InsertionOrderList = /*@__PURE__*/ S.Array(
   InsertionOrder,
 ) as any as S.Schema<InsertionOrderList>;
 
@@ -12274,7 +12191,7 @@ export interface ListInsertionOrdersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInsertionOrders` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListInsertionOrdersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInsertionOrdersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertionOrders: S.optional(InsertionOrderList),
     nextPageToken: S.optional(S.String),
@@ -12287,7 +12204,7 @@ export type ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum =
   | "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED"
   | "LOI_SAPIN_INVOICE_TYPE_MEDIA"
   | "LOI_SAPIN_INVOICE_TYPE_PLATFORM";
-export const ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum = S.String;
+const ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum = S.String;
 
 export interface ListAdvertisersInvoicesRequest {
   /** Required. The ID of the advertiser to list invoices for. */
@@ -12301,7 +12218,7 @@ export interface ListAdvertisersInvoicesRequest {
   /** Select type of invoice to retrieve for Loi Sapin advertisers. Only applicable to Loi Sapin advertisers. Will be ignored otherwise. */
   loiSapinInvoiceType?: ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum | (string & {});
 }
-export const ListAdvertisersInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12332,7 +12249,7 @@ export interface BudgetSummary {
   /** Corresponds to the external_budget_id of a campaign budget. If the value is not set in the campaign budget, this field will be empty. */
   externalBudgetId?: string;
 }
-export const BudgetSummary = /*@__PURE__*/ S.suspend(() =>
+const BudgetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxAmountMicros: S.optional(S.String),
     preTaxAmountMicros: S.optional(S.String),
@@ -12343,7 +12260,7 @@ export const BudgetSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BudgetSummary" }) as any as S.Schema<BudgetSummary>;
 
 export type BudgetSummaryList = Array<BudgetSummary>;
-export const BudgetSummaryList = /*@__PURE__*/ S.Array(
+const BudgetSummaryList = /*@__PURE__*/ S.Array(
   BudgetSummary,
 ) as any as S.Schema<BudgetSummaryList>;
 
@@ -12351,7 +12268,7 @@ export type InvoiceInvoiceTypeEnum =
   | "INVOICE_TYPE_UNSPECIFIED"
   | "INVOICE_TYPE_CREDIT"
   | "INVOICE_TYPE_INVOICE";
-export const InvoiceInvoiceTypeEnum = S.String;
+const InvoiceInvoiceTypeEnum = S.String;
 
 /** A single invoice. */
 export interface Invoice {
@@ -12396,7 +12313,7 @@ export interface Invoice {
   /** Purchase order number associated with the invoice. */
   purchaseOrderNumber?: string;
 }
-export const Invoice = /*@__PURE__*/ S.suspend(() =>
+const Invoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonBudgetMicros: S.optional(S.String),
     totalTaxAmountMicros: S.optional(S.String),
@@ -12422,7 +12339,7 @@ export const Invoice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
 
 export type InvoiceList = Array<Invoice>;
-export const InvoiceList = /*@__PURE__*/ S.Array(Invoice) as any as S.Schema<InvoiceList>;
+const InvoiceList = /*@__PURE__*/ S.Array(Invoice) as any as S.Schema<InvoiceList>;
 
 export interface ListInvoicesResponse {
   /** The list of invoices. This list will be absent if empty. */
@@ -12430,7 +12347,7 @@ export interface ListInvoicesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInvoices` method to retrieve the next page of results. This token will be absent if there are no more invoices to return. */
   nextPageToken?: string;
 }
-export const ListInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoices: S.optional(InvoiceList),
     nextPageToken: S.optional(S.String),
@@ -12449,7 +12366,7 @@ export interface ListAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser to list line items for. */
   advertiserId: string;
 }
-export const ListAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -12468,7 +12385,7 @@ export const ListAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersLineItemsRequest>;
 
 export type LineItemList = Array<LineItem>;
-export const LineItemList = /*@__PURE__*/ S.Array(LineItem) as any as S.Schema<LineItemList>;
+const LineItemList = /*@__PURE__*/ S.Array(LineItem) as any as S.Schema<LineItemList>;
 
 export interface ListLineItemsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListLineItems` method to retrieve the next page of results. */
@@ -12476,7 +12393,7 @@ export interface ListLineItemsResponse {
   /** The list of line items. This list will be absent if empty. */
   lineItems?: LineItemList;
 }
-export const ListLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     lineItems: S.optional(LineItemList),
@@ -12534,8 +12451,7 @@ export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarget
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
-  S.String;
+const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLineItemAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
@@ -12555,7 +12471,7 @@ export interface ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsR
   /** Required. The ID of the advertiser the line item belongs to. */
   advertiserId: string;
 }
-export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
+const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -12586,7 +12502,7 @@ export interface ListLineItemAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListLineItemAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
-export const ListLineItemAssignedTargetingOptionsResponse =
+const ListLineItemAssignedTargetingOptionsResponse =
   ListAdGroupAssignedTargetingOptionsResponse as any as S.Schema<ListLineItemAssignedTargetingOptionsResponse>;
 
 export interface ListAdvertisersLocationListsRequest {
@@ -12601,7 +12517,7 @@ export interface ListAdvertisersLocationListsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLocationLists` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -12620,9 +12536,7 @@ export const ListAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvertisersLocationListsRequest>;
 
 export type LocationListList = Array<LocationList>;
-export const LocationListList = /*@__PURE__*/ S.Array(
-  LocationList,
-) as any as S.Schema<LocationListList>;
+const LocationListList = /*@__PURE__*/ S.Array(LocationList) as any as S.Schema<LocationListList>;
 
 export interface ListLocationListsResponse {
   /** The list of location lists. This list will be absent if empty. */
@@ -12630,7 +12544,7 @@ export interface ListLocationListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListLocationLists` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListLocationListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationLists: S.optional(LocationListList),
     nextPageToken: S.optional(S.String),
@@ -12653,7 +12567,7 @@ export interface ListAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the location list to which these assignments are assigned. */
   locationListId: string;
 }
-export const ListAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -12679,7 +12593,7 @@ export interface ListAssignedLocationsResponse {
   /** The list of assigned locations. This list will be absent if empty. */
   assignedLocations?: AssignedLocationList;
 }
-export const ListAssignedLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssignedLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     assignedLocations: S.optional(AssignedLocationList),
@@ -12696,7 +12610,7 @@ export interface ListAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the DV360 advertiser to which the fetched negative keyword lists belong. */
   advertiserId: string;
 }
-export const ListAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -12713,7 +12627,7 @@ export const ListAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListAdvertisersNegativeKeywordListsRequest>;
 
 export type NegativeKeywordListList = Array<NegativeKeywordList>;
-export const NegativeKeywordListList = /*@__PURE__*/ S.Array(
+const NegativeKeywordListList = /*@__PURE__*/ S.Array(
   NegativeKeywordList,
 ) as any as S.Schema<NegativeKeywordListList>;
 
@@ -12724,7 +12638,7 @@ export interface ListNegativeKeywordListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListNegativeKeywordLists` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListNegativeKeywordListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNegativeKeywordListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negativeKeywordLists: S.optional(NegativeKeywordListList),
     nextPageToken: S.optional(S.String),
@@ -12747,22 +12661,21 @@ export interface ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Allows filtering by negative keyword fields. Supported syntax: * Filter expressions for negative keywords can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `keywordValue` Examples: * All negative keywords for which the keyword value contains "google": `keywordValue : "google"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      negativeKeywordListId: S.String.pipe(T.Label()),
-      advertiserId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    negativeKeywordListId: S.String.pipe(T.Label()),
+    advertiserId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
 }) as any as S.Schema<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
@@ -12774,7 +12687,7 @@ export interface ListNegativeKeywordsResponse {
   /** The list of negative keywords. This list will be absent if empty. */
   negativeKeywords?: NegativeKeywordList_;
 }
-export const ListNegativeKeywordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNegativeKeywordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     negativeKeywords: S.optional(NegativeKeywordList_),
@@ -12834,7 +12747,7 @@ export type ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEn
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
@@ -12852,24 +12765,23 @@ export interface ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
     | ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum
     | (string & {});
 }
-export const ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      advertiserId: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      targetingType: ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    advertiserId: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    targetingType: ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest",
 }) as any as S.Schema<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -12881,7 +12793,7 @@ export interface ListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const ListAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
@@ -12902,7 +12814,7 @@ export interface ListAssignedTargetingOptionsAdvertisersRequest {
   /** Required. The ID of the advertiser the line item belongs to. */
   advertiserId: string;
 }
-export const ListAssignedTargetingOptionsAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssignedTargetingOptionsAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -12926,7 +12838,7 @@ export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
-export const BulkListAdvertiserAssignedTargetingOptionsResponse =
+const BulkListAdvertiserAssignedTargetingOptionsResponse =
   ListAdGroupAssignedTargetingOptionsResponse as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>;
 
 export interface ListCombinedAudiencesRequest {
@@ -12943,7 +12855,7 @@ export interface ListCombinedAudiencesRequest {
   /** Allows filtering by combined audience fields. Supported syntax: * Filter expressions for combined audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All combined audiences for which the display name contains "Google": `displayName : "Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListCombinedAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCombinedAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -12963,7 +12875,7 @@ export const ListCombinedAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCombinedAudiencesRequest>;
 
 export type CombinedAudienceList = Array<CombinedAudience>;
-export const CombinedAudienceList = /*@__PURE__*/ S.Array(
+const CombinedAudienceList = /*@__PURE__*/ S.Array(
   CombinedAudience,
 ) as any as S.Schema<CombinedAudienceList>;
 
@@ -12973,7 +12885,7 @@ export interface ListCombinedAudiencesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCombinedAudiences` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCombinedAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCombinedAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     combinedAudiences: S.optional(CombinedAudienceList),
     nextPageToken: S.optional(S.String),
@@ -12996,7 +12908,7 @@ export interface ListCustomBiddingAlgorithmsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
 }
-export const ListCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -13016,7 +12928,7 @@ export const ListCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomBiddingAlgorithmsRequest>;
 
 export type CustomBiddingAlgorithmList = Array<CustomBiddingAlgorithm>;
-export const CustomBiddingAlgorithmList = /*@__PURE__*/ S.Array(
+const CustomBiddingAlgorithmList = /*@__PURE__*/ S.Array(
   CustomBiddingAlgorithm,
 ) as any as S.Schema<CustomBiddingAlgorithmList>;
 
@@ -13026,7 +12938,7 @@ export interface ListCustomBiddingAlgorithmsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingAlgorithmsRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
-export const ListCustomBiddingAlgorithmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomBiddingAlgorithmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithms: S.optional(CustomBiddingAlgorithmList),
     nextPageToken: S.optional(S.String),
@@ -13049,7 +12961,7 @@ export interface ListCustomBiddingAlgorithmsRulesRequest {
   /** The ID of the advertiser that owns the parent custom bidding algorithm. */
   advertiserId?: string;
 }
-export const ListCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -13069,7 +12981,7 @@ export const ListCustomBiddingAlgorithmsRulesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListCustomBiddingAlgorithmsRulesRequest>;
 
 export type CustomBiddingAlgorithmRulesList = Array<CustomBiddingAlgorithmRules>;
-export const CustomBiddingAlgorithmRulesList = /*@__PURE__*/ S.Array(
+const CustomBiddingAlgorithmRulesList = /*@__PURE__*/ S.Array(
   CustomBiddingAlgorithmRules,
 ) as any as S.Schema<CustomBiddingAlgorithmRulesList>;
 
@@ -13079,7 +12991,7 @@ export interface ListCustomBiddingAlgorithmRulesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingAlgorithmRulesRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
-export const ListCustomBiddingAlgorithmRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomBiddingAlgorithmRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingRules: S.optional(CustomBiddingAlgorithmRulesList),
     nextPageToken: S.optional(S.String),
@@ -13102,7 +13014,7 @@ export interface ListCustomBiddingAlgorithmsScriptsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingScripts` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -13122,7 +13034,7 @@ export const ListCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCustomBiddingAlgorithmsScriptsRequest>;
 
 export type CustomBiddingScriptList = Array<CustomBiddingScript>;
-export const CustomBiddingScriptList = /*@__PURE__*/ S.Array(
+const CustomBiddingScriptList = /*@__PURE__*/ S.Array(
   CustomBiddingScript,
 ) as any as S.Schema<CustomBiddingScriptList>;
 
@@ -13132,7 +13044,7 @@ export interface ListCustomBiddingScriptsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingScriptsRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
-export const ListCustomBiddingScriptsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomBiddingScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingScripts: S.optional(CustomBiddingScriptList),
     nextPageToken: S.optional(S.String),
@@ -13153,7 +13065,7 @@ export interface ListCustomListsRequest {
   /** The ID of the DV360 advertiser that has access to the fetched custom lists. */
   advertiserId?: string;
 }
-export const ListCustomListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -13170,7 +13082,7 @@ export const ListCustomListsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCustomListsRequest" }) as any as S.Schema<ListCustomListsRequest>;
 
 export type CustomListList = Array<CustomList>;
-export const CustomListList = /*@__PURE__*/ S.Array(CustomList) as any as S.Schema<CustomListList>;
+const CustomListList = /*@__PURE__*/ S.Array(CustomList) as any as S.Schema<CustomListList>;
 
 export interface ListCustomListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomLists` method to retrieve the next page of results. */
@@ -13178,7 +13090,7 @@ export interface ListCustomListsResponse {
   /** The list of custom lists. This list will be absent if empty. */
   customLists?: CustomListList;
 }
-export const ListCustomListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     customLists: S.optional(CustomListList),
@@ -13197,7 +13109,7 @@ export interface ListFloodlightGroupsFloodlightActivitiesRequest {
   /** Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListFloodlightActivities` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     floodlightGroupId: S.String.pipe(T.Label()),
@@ -13216,7 +13128,7 @@ export const ListFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>;
 
 export type FloodlightActivityList = Array<FloodlightActivity>;
-export const FloodlightActivityList = /*@__PURE__*/ S.Array(
+const FloodlightActivityList = /*@__PURE__*/ S.Array(
   FloodlightActivity,
 ) as any as S.Schema<FloodlightActivityList>;
 
@@ -13226,7 +13138,7 @@ export interface ListFloodlightActivitiesResponse {
   /** The list of Floodlight activities. This list will be absent if empty. */
   floodlightActivities?: FloodlightActivityList;
 }
-export const ListFloodlightActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFloodlightActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     floodlightActivities: S.optional(FloodlightActivityList),
@@ -13249,7 +13161,7 @@ export interface ListGoogleAudiencesRequest {
   /** Field by which to sort the list. Acceptable values are: * `googleAudienceId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. */
   orderBy?: string;
 }
-export const ListGoogleAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGoogleAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -13269,7 +13181,7 @@ export const ListGoogleAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGoogleAudiencesRequest>;
 
 export type GoogleAudienceList = Array<GoogleAudience>;
-export const GoogleAudienceList = /*@__PURE__*/ S.Array(
+const GoogleAudienceList = /*@__PURE__*/ S.Array(
   GoogleAudience,
 ) as any as S.Schema<GoogleAudienceList>;
 
@@ -13279,7 +13191,7 @@ export interface ListGoogleAudiencesResponse {
   /** The list of Google audiences. This list will be absent if empty. */
   googleAudiences?: GoogleAudienceList;
 }
-export const ListGoogleAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGoogleAudiencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     googleAudiences: S.optional(GoogleAudienceList),
@@ -13302,7 +13214,7 @@ export interface ListGuaranteedOrdersRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListGuaranteedOrders` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const ListGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -13322,7 +13234,7 @@ export const ListGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGuaranteedOrdersRequest>;
 
 export type GuaranteedOrderList = Array<GuaranteedOrder>;
-export const GuaranteedOrderList = /*@__PURE__*/ S.Array(
+const GuaranteedOrderList = /*@__PURE__*/ S.Array(
   GuaranteedOrder,
 ) as any as S.Schema<GuaranteedOrderList>;
 
@@ -13332,7 +13244,7 @@ export interface ListGuaranteedOrdersResponse {
   /** The list of guaranteed orders. This list will be absent if empty. */
   guaranteedOrders?: GuaranteedOrderList;
 }
-export const ListGuaranteedOrdersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGuaranteedOrdersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     guaranteedOrders: S.optional(GuaranteedOrderList),
@@ -13355,7 +13267,7 @@ export interface ListInventorySourceGroupsRequest {
   /** Allows filtering by inventory source group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `inventorySourceGroupId` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -13375,7 +13287,7 @@ export const ListInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInventorySourceGroupsRequest>;
 
 export type InventorySourceGroupList = Array<InventorySourceGroup>;
-export const InventorySourceGroupList = /*@__PURE__*/ S.Array(
+const InventorySourceGroupList = /*@__PURE__*/ S.Array(
   InventorySourceGroup,
 ) as any as S.Schema<InventorySourceGroupList>;
 
@@ -13386,7 +13298,7 @@ export interface ListInventorySourceGroupsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInventorySourceGroups` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListInventorySourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInventorySourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceGroups: S.optional(InventorySourceGroupList),
     nextPageToken: S.optional(S.String),
@@ -13411,23 +13323,22 @@ export interface ListInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Field by which to sort the list. Acceptable values are: * `assignedInventorySourceId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `assignedInventorySourceId desc`. */
   orderBy?: string;
 }
-export const ListInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      inventorySourceGroupId: S.String.pipe(T.Label()),
-      advertiserId: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      partnerId: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
+const ListInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inventorySourceGroupId: S.String.pipe(T.Label()),
+    advertiserId: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    partnerId: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListInventorySourceGroupsAssignedInventorySourcesRequest",
 }) as any as S.Schema<ListInventorySourceGroupsAssignedInventorySourcesRequest>;
@@ -13439,7 +13350,7 @@ export interface ListAssignedInventorySourcesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAssignedInventorySources` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListAssignedInventorySourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssignedInventorySourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedInventorySources: S.optional(AssignedInventorySourceList),
     nextPageToken: S.optional(S.String),
@@ -13458,7 +13369,7 @@ export interface ListPartnersRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`. */
   orderBy?: string;
 }
-export const ListPartnersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -13470,7 +13381,7 @@ export const ListPartnersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPartnersRequest" }) as any as S.Schema<ListPartnersRequest>;
 
 export type PartnerList = Array<Partner>;
-export const PartnerList = /*@__PURE__*/ S.Array(Partner) as any as S.Schema<PartnerList>;
+const PartnerList = /*@__PURE__*/ S.Array(Partner) as any as S.Schema<PartnerList>;
 
 export interface ListPartnersResponse {
   /** The list of partners. This list will be absent if empty. */
@@ -13478,7 +13389,7 @@ export interface ListPartnersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListPartners` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListPartnersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPartnersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partners: S.optional(PartnerList),
     nextPageToken: S.optional(S.String),
@@ -13499,7 +13410,7 @@ export interface ListPartnersChannelsRequest {
   /** Allows filtering by channel fields. Supported syntax: * Filter expressions for channel can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All channels for which the display name contains "google": `displayName : "google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListPartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     partnerId: S.String.pipe(T.Label()),
@@ -13534,7 +13445,7 @@ export interface ListPartnersChannelsSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId?: string;
 }
-export const ListPartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -13605,7 +13516,7 @@ export type ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum 
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+const ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface ListPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
@@ -13623,24 +13534,23 @@ export interface ListPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resource with ID 123456: `assignedTargetingOptionId="123456"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListPartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      targetingType: ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
-        T.Label(),
-      ),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      partnerId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
+const ListPartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    targetingType: ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+      T.Label(),
     ),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    partnerId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListPartnersTargetingTypesAssignedTargetingOptionsRequest",
 }) as any as S.Schema<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -13651,7 +13561,7 @@ export interface ListPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
-export const ListPartnerAssignedTargetingOptionsResponse =
+const ListPartnerAssignedTargetingOptionsResponse =
   ListAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>;
 
 export type ListTargetingTypesTargetingOptionsTargetingTypeEnum =
@@ -13705,7 +13615,7 @@ export type ListTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const ListTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
+const ListTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
 
 export interface ListTargetingTypesTargetingOptionsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
@@ -13721,7 +13631,7 @@ export interface ListTargetingTypesTargetingOptionsRequest {
   /** Allows filtering by targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `carrierAndIspDetails.type` * `geoRegionDetails.geoRegionType` * `targetingOptionId` Examples: * All `GEO REGION` targeting options that belong to sub type `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`: `geoRegionDetails.geoRegionType="GEO_REGION_TYPE_COUNTRY" OR geoRegionDetails.geoRegionType="GEO_REGION_TYPE_STATE"` * All `CARRIER AND ISP` targeting options that belong to sub type `CARRIER_AND_ISP_TYPE_CARRIER`: `carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
-export const ListTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -13741,7 +13651,7 @@ export const ListTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListTargetingTypesTargetingOptionsRequest>;
 
 export type TargetingOptionList = Array<TargetingOption>;
-export const TargetingOptionList = /*@__PURE__*/ S.Array(
+const TargetingOptionList = /*@__PURE__*/ S.Array(
   TargetingOption,
 ) as any as S.Schema<TargetingOptionList>;
 
@@ -13752,7 +13662,7 @@ export interface ListTargetingOptionsResponse {
   /** The list of targeting options. This list will be absent if empty. */
   targetingOptions?: TargetingOptionList;
 }
-export const ListTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     targetingOptions: S.optional(TargetingOptionList),
@@ -13771,7 +13681,7 @@ export interface ListUsersRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`. */
   orderBy?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -13783,7 +13693,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 export interface ListUsersResponse {
   /** The list of users. This list will be absent if empty. */
@@ -13791,7 +13701,7 @@ export interface ListUsersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListUsers` method to retrieve the next page of results. This token will be absent if there are no more results to return. */
   nextPageToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(UserList),
     nextPageToken: S.optional(S.String),
@@ -13804,7 +13714,7 @@ export interface LookupInvoiceCurrencyAdvertisersInvoicesRequest {
   /** Required. The ID of the advertiser to lookup currency for. */
   advertiserId: string;
 }
-export const LookupInvoiceCurrencyAdvertisersInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupInvoiceCurrencyAdvertisersInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceMonth: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.String.pipe(T.Label()),
@@ -13823,7 +13733,7 @@ export interface LookupInvoiceCurrencyResponse {
   /** Currency used by the advertiser in ISO 4217 format. */
   currencyCode?: string;
 }
-export const LookupInvoiceCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupInvoiceCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
   }),
@@ -13839,7 +13749,7 @@ export interface PatchAdvertisersRequest {
   /** Request body */
   body?: Advertiser;
 }
-export const PatchAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.String.pipe(T.Label()),
@@ -13863,7 +13773,7 @@ export interface PatchAdvertisersAdGroupAdsRequest {
   /** Request body */
   body?: AdGroupAd;
 }
-export const PatchAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersAdGroupAdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     advertiserId: S.String.pipe(T.Label()),
@@ -13890,7 +13800,7 @@ export interface PatchAdvertisersAdGroupsRequest {
   /** Request body */
   body?: AdGroup;
 }
-export const PatchAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersAdGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     adGroupId: S.String.pipe(T.Label()),
@@ -13917,7 +13827,7 @@ export interface PatchAdvertisersCampaignsRequest {
   /** Request body */
   body?: Campaign;
 }
-export const PatchAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaignId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -13946,7 +13856,7 @@ export interface PatchAdvertisersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const PatchAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     channelId: S.String.pipe(T.Label()),
@@ -13974,7 +13884,7 @@ export interface PatchAdvertisersCreativesRequest {
   /** Request body */
   body?: Creative;
 }
-export const PatchAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14001,7 +13911,7 @@ export interface PatchAdvertisersInsertionOrdersRequest {
   /** Request body */
   body?: InsertionOrder;
 }
-export const PatchAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertionOrderId: S.String.pipe(T.Label()),
     advertiserId: S.String.pipe(T.Label()),
@@ -14028,7 +13938,7 @@ export interface PatchAdvertisersLineItemsRequest {
   /** Request body */
   body?: LineItem;
 }
-export const PatchAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     lineItemId: S.String.pipe(T.Label()),
@@ -14055,7 +13965,7 @@ export interface PatchAdvertisersLocationListsRequest {
   /** Request body */
   body?: LocationList;
 }
-export const PatchAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14082,7 +13992,7 @@ export interface PatchAdvertisersNegativeKeywordListsRequest {
   /** Request body */
   body?: NegativeKeywordList;
 }
-export const PatchAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     negativeKeywordListId: S.String.pipe(T.Label()),
@@ -14107,7 +14017,7 @@ export interface PatchCustomBiddingAlgorithmsRequest {
   /** Request body */
   body?: CustomBiddingAlgorithm;
 }
-export const PatchCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14133,7 +14043,7 @@ export interface PatchFloodlightGroupsRequest {
   /** Request body */
   body?: FloodlightGroup;
 }
-export const PatchFloodlightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFloodlightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14162,7 +14072,7 @@ export interface PatchGuaranteedOrdersRequest {
   /** Request body */
   body?: GuaranteedOrder;
 }
-export const PatchGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14192,7 +14102,7 @@ export interface PatchInventorySourceGroupsRequest {
   /** Request body */
   body?: InventorySourceGroup;
 }
-export const PatchInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySourceGroupId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14222,7 +14132,7 @@ export interface PatchPartnersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const PatchPartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPartnersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerId: S.String.pipe(T.Label()),
     advertiserId: S.optional(S.String.pipe(T.Query())),
@@ -14248,7 +14158,7 @@ export interface PatchUsersRequest {
   /** Request body */
   body?: User;
 }
-export const PatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     userId: S.String.pipe(T.Label()),
@@ -14271,7 +14181,7 @@ export interface ReplaceSitesRequest {
   /** The sites that will replace the existing sites assigned to the channel, specified as a list of Sites. */
   newSites?: SiteList;
 }
-export const ReplaceSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String),
     partnerId: S.optional(S.String),
@@ -14287,7 +14197,7 @@ export interface ReplaceAdvertisersChannelsSitesRequest {
   /** Request body */
   body?: ReplaceSitesRequest;
 }
-export const ReplaceAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAdvertisersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     channelId: S.String.pipe(T.Label()),
@@ -14308,14 +14218,14 @@ export interface ReplaceSitesResponse {
   /** The list of sites in the channel after replacing. */
   sites?: SiteList;
 }
-export const ReplaceSitesResponse = BulkEditSitesResponse as any as S.Schema<ReplaceSitesResponse>;
+const ReplaceSitesResponse = BulkEditSitesResponse as any as S.Schema<ReplaceSitesResponse>;
 
 /** Request message for NegativeKeywordService.ReplaceNegativeKeywords. */
 export interface ReplaceNegativeKeywordsRequest {
   /** The negative keywords that will replace the existing keywords in the negative keyword list, specified as a list of NegativeKeywords. */
   newNegativeKeywords?: NegativeKeywordList_;
 }
-export const ReplaceNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newNegativeKeywords: S.optional(NegativeKeywordList_),
   }),
@@ -14331,29 +14241,28 @@ export interface ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Request body */
   body?: ReplaceNegativeKeywordsRequest;
 }
-export const ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      advertiserId: S.String.pipe(T.Label()),
-      negativeKeywordListId: S.String.pipe(T.Label()),
-      body: S.optional(ReplaceNegativeKeywordsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace",
-        baseUrl: "https://displayvideo.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
-  }) as any as S.Schema<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+const ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advertiserId: S.String.pipe(T.Label()),
+    negativeKeywordListId: S.String.pipe(T.Label()),
+    body: S.optional(ReplaceNegativeKeywordsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace",
+      baseUrl: "https://displayvideo.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest",
+}) as any as S.Schema<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
 
 /** Response message for NegativeKeywordService.ReplaceNegativeKeywords. */
 export interface ReplaceNegativeKeywordsResponse {
   /** The full list of negative keywords now present in the negative keyword list. */
   negativeKeywords?: NegativeKeywordList_;
 }
-export const ReplaceNegativeKeywordsResponse =
+const ReplaceNegativeKeywordsResponse =
   BulkEditNegativeKeywordsResponse as any as S.Schema<ReplaceNegativeKeywordsResponse>;
 
 export interface ReplacePartnersChannelsSitesRequest {
@@ -14364,7 +14273,7 @@ export interface ReplacePartnersChannelsSitesRequest {
   /** Request body */
   body?: ReplaceSitesRequest;
 }
-export const ReplacePartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplacePartnersChannelsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.String.pipe(T.Label()),
     partnerId: S.String.pipe(T.Label()),
@@ -14431,14 +14340,14 @@ export type SearchTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_CONTENT_THEME_EXCLUSION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
-export const SearchTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
+const SearchTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
 
 /** Search terms for geo region targeting options. */
 export interface GeoRegionSearchTerms {
   /** The search query for the desired geo region. The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc. */
   geoRegionQuery?: string;
 }
-export const GeoRegionSearchTerms = /*@__PURE__*/ S.suspend(() =>
+const GeoRegionSearchTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoRegionQuery: S.optional(S.String),
   }),
@@ -14451,7 +14360,7 @@ export interface BusinessChainSearchTerms {
   /** The search query for the desired business chain. The query must be the full name of the business, e.g. "KFC", "mercedes-benz". */
   businessChainQuery?: string;
 }
-export const BusinessChainSearchTerms = /*@__PURE__*/ S.suspend(() =>
+const BusinessChainSearchTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionQuery: S.optional(S.String),
     businessChainQuery: S.optional(S.String),
@@ -14463,7 +14372,7 @@ export interface PoiSearchTerms {
   /** The search query for the desired POI name, street address, or coordinate of the desired POI. The query can be a prefix, e.g. "Times squar", "40.7505045,-73.99562", "315 W 44th St", etc. */
   poiQuery?: string;
 }
-export const PoiSearchTerms = /*@__PURE__*/ S.suspend(() =>
+const PoiSearchTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     poiQuery: S.optional(S.String),
   }),
@@ -14484,7 +14393,7 @@ export interface SearchTargetingOptionsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `SearchTargetingOptions` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
-export const SearchTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoRegionSearchTerms: S.optional(GeoRegionSearchTerms),
     businessChainSearchTerms: S.optional(BusinessChainSearchTerms),
@@ -14503,7 +14412,7 @@ export interface SearchTargetingTypesTargetingOptionsRequest {
   /** Request body */
   body?: SearchTargetingOptionsRequest;
 }
-export const SearchTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingType: SearchTargetingTypesTargetingOptionsTargetingTypeEnum.pipe(T.Label()),
     body: S.optional(SearchTargetingOptionsRequest.pipe(T.HttpBody())),
@@ -14525,7 +14434,7 @@ export interface SearchTargetingOptionsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `SearchTargetingOptions` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const SearchTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchTargetingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingOptions: S.optional(TargetingOptionList),
     nextPageToken: S.optional(S.String),
@@ -14539,7 +14448,7 @@ export interface CreateAssetRequest {
   /** Required. The filename of the asset, including the file extension. The filename must be UTF-8 encoded with a maximum size of 240 bytes. */
   filename?: string;
 }
-export const CreateAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
   }),
@@ -14551,7 +14460,7 @@ export interface UploadAdvertisersAssetsRequest {
   /** Request body */
   body?: CreateAssetRequest;
 }
-export const UploadAdvertisersAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadAdvertisersAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     body: S.optional(CreateAssetRequest.pipe(T.HttpBody())),
@@ -14571,7 +14480,7 @@ export interface CreateAssetResponse {
   /** The uploaded asset, if successful. */
   asset?: Asset;
 }
-export const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset: S.optional(Asset),
   }),
@@ -14583,7 +14492,7 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: GoogleBytestreamMedia;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String.pipe(T.Label()),
     body: S.optional(GoogleBytestreamMedia.pipe(T.HttpBody())),
@@ -14604,7 +14513,7 @@ export interface UploadRulesCustomBiddingAlgorithmsRequest {
   /** The ID of the advertiser that owns the parent custom bidding algorithm. */
   advertiserId?: string;
 }
-export const UploadRulesCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadRulesCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),
@@ -14628,7 +14537,7 @@ export interface UploadScriptCustomBiddingAlgorithmsRequest {
   /** The ID of the advertiser that owns the parent custom bidding algorithm. */
   advertiserId?: string;
 }
-export const UploadScriptCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadScriptCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customBiddingAlgorithmId: S.String.pipe(T.Label()),
     partnerId: S.optional(S.String.pipe(T.Query())),

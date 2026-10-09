@@ -14,7 +14,7 @@ export interface CheckDomainAvailabilityRequest {
   /** Name of the object. */
   name?: string;
 }
-export const CheckDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -32,7 +32,7 @@ export const CheckDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this domain will simply restore it and this operation will not cost anything. */
 export type DomainType = "Regular" | "SoftDeleted";
-export const DomainType = S.String;
+const DomainType = S.String;
 
 /** Domain availability check result. */
 export interface DomainAvailabilityCheckResult {
@@ -43,7 +43,7 @@ export interface DomainAvailabilityCheckResult {
   /** Valid values are Regular domain: Azure will charge the full price of domain registration, SoftDeleted: Purchasing this domain will simply restore it and this operation will not cost anything. */
   domainType?: DomainType;
 }
-export const DomainAvailabilityCheckResult = /*@__PURE__*/ S.suspend(() =>
+const DomainAvailabilityCheckResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     available: S.optional(S.Boolean),
@@ -63,7 +63,7 @@ export interface DeleteDomainRequest {
   /** Specify <code>true</code> to delete the domain immediately. The default is <code>false</code> which deletes the domain after 24 hours. */
   forceHardDeleteDomain?: boolean;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -80,7 +80,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDomainResponse",
 }) as any as S.Schema<DeleteDomainResponse>;
 
@@ -94,7 +94,7 @@ export interface DeleteDomainOwnershipIdentifierRequest {
   /** Name of identifier. */
   name: string;
 }
-export const DeleteDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -113,7 +113,7 @@ export const DeleteDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteDomainOwnershipIdentifierRequest>;
 
 export interface DeleteDomainOwnershipIdentifierResponse {}
-export const DeleteDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteDomainOwnershipIdentifierResponse",
@@ -121,7 +121,7 @@ export const DeleteDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
@@ -141,7 +141,7 @@ export interface Address {
   /** The state or province for the address. */
   state: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.String,
     address2: S.optional(S.String),
@@ -173,7 +173,7 @@ export interface Contact {
   /** Phone number. */
   phone: string;
 }
-export const Contact = /*@__PURE__*/ S.suspend(() =>
+const Contact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressMailing: S.optional(Address),
     email: S.String,
@@ -189,7 +189,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 
 /** List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource. */
 export type DomainPurchaseConsentAgreementKeysList = Array<string>;
-export const DomainPurchaseConsentAgreementKeysList = /*@__PURE__*/ S.Array(
+const DomainPurchaseConsentAgreementKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DomainPurchaseConsentAgreementKeysList>;
 
@@ -202,7 +202,7 @@ export interface DomainPurchaseConsent {
   /** Timestamp when the agreements were accepted. */
   agreedAt?: string;
 }
-export const DomainPurchaseConsent = /*@__PURE__*/ S.suspend(() =>
+const DomainPurchaseConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreementKeys: S.optional(DomainPurchaseConsentAgreementKeysList),
     agreedBy: S.optional(S.String),
@@ -212,7 +212,7 @@ export const DomainPurchaseConsent = /*@__PURE__*/ S.suspend(() =>
 
 /** Current DNS type */
 export type DnsType = "AzureDns" | "DefaultDomainRegistrarDns";
-export const DnsType = S.String;
+const DnsType = S.String;
 
 /** Domain resource specific properties */
 export interface DomainPropertiesInput {
@@ -239,7 +239,7 @@ export interface DomainPropertiesInput {
   /** Authorization code for the domain. */
   authCode?: string;
 }
-export const DomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactAdmin: Contact,
     contactBilling: Contact,
@@ -271,7 +271,7 @@ export interface DomainsCreateOrUpdateRequest {
   /** Kind of resource */
   kind?: string;
 }
-export const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -294,11 +294,11 @@ export const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -315,7 +315,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -328,7 +328,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateResponseTagsMap =
+const DomainsCreateOrUpdateResponseTagsMap =
   DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
 
 /** Domain registration status. */
@@ -354,33 +354,33 @@ export type DomainStatus =
   | "Unparked"
   | "Updated"
   | "JsonConverterFailed";
-export const DomainStatus = S.String;
+const DomainStatus = S.String;
 
 /** Domain provisioning state. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress" | "Deleting";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Name servers. */
 export type DomainPropertiesNameServersList = Array<string>;
-export const DomainPropertiesNameServersList =
+const DomainPropertiesNameServersList =
   DomainPurchaseConsentAgreementKeysList as any as S.Schema<DomainPropertiesNameServersList>;
 
 /** List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager. */
 export type HostNameSiteNamesList = Array<string>;
-export const HostNameSiteNamesList =
+const HostNameSiteNamesList =
   DomainPurchaseConsentAgreementKeysList as any as S.Schema<HostNameSiteNamesList>;
 
 /** Type of the Azure resource the hostname is assigned to. */
 export type AzureResourceType = "Website" | "TrafficManager";
-export const AzureResourceType = S.String;
+const AzureResourceType = S.String;
 
 /** Type of the DNS record. */
 export type CustomHostNameDnsRecordType = "CName" | "A";
-export const CustomHostNameDnsRecordType = S.String;
+const CustomHostNameDnsRecordType = S.String;
 
 /** Type of the hostname. */
 export type HostNameType = "Verified" | "Managed";
-export const HostNameType = S.String;
+const HostNameType = S.String;
 
 /** Details of a hostname derived from a domain. */
 export interface HostName {
@@ -397,7 +397,7 @@ export interface HostName {
   /** Type of the hostname. */
   hostNameType?: HostNameType;
 }
-export const HostName = /*@__PURE__*/ S.suspend(() =>
+const HostName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     siteNames: S.optional(HostNameSiteNamesList),
@@ -410,7 +410,7 @@ export const HostName = /*@__PURE__*/ S.suspend(() =>
 
 /** All hostnames derived from the domain and assigned to Azure resources. */
 export type DomainPropertiesManagedHostNamesList = Array<HostName>;
-export const DomainPropertiesManagedHostNamesList = /*@__PURE__*/ S.Array(
+const DomainPropertiesManagedHostNamesList = /*@__PURE__*/ S.Array(
   HostName,
 ) as any as S.Schema<DomainPropertiesManagedHostNamesList>;
 
@@ -419,11 +419,11 @@ export type ResourceNotRenewableReason =
   | "RegistrationStatusNotSupportedForRenewal"
   | "ExpirationNotInRenewalTimeRange"
   | "SubscriptionNotActive";
-export const ResourceNotRenewableReason = S.String;
+const ResourceNotRenewableReason = S.String;
 
 /** Reasons why domain is not renewable. */
 export type DomainPropertiesDomainNotRenewableReasonsList = Array<ResourceNotRenewableReason>;
-export const DomainPropertiesDomainNotRenewableReasonsList = /*@__PURE__*/ S.Array(
+const DomainPropertiesDomainNotRenewableReasonsList = /*@__PURE__*/ S.Array(
   ResourceNotRenewableReason,
 ) as any as S.Schema<DomainPropertiesDomainNotRenewableReasonsList>;
 
@@ -470,7 +470,7 @@ export interface DomainProperties {
   /** Authorization code for the domain. */
   authCode?: string;
 }
-export const DomainProperties = /*@__PURE__*/ S.suspend(() =>
+const DomainProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactAdmin: Contact,
     contactBilling: Contact,
@@ -513,7 +513,7 @@ export interface DomainsCreateOrUpdateResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const DomainsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -533,7 +533,7 @@ export interface DomainOwnershipIdentifierProperties {
   /** Ownership Id. */
   ownershipId?: string;
 }
-export const DomainOwnershipIdentifierProperties = /*@__PURE__*/ S.suspend(() =>
+const DomainOwnershipIdentifierProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownershipId: S.optional(S.String),
   }),
@@ -555,7 +555,7 @@ export interface DomainsCreateOrUpdateOwnershipIdentifierRequest {
   /** Kind of resource */
   kind?: string;
 }
-export const DomainsCreateOrUpdateOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainsCreateOrUpdateOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -589,7 +589,7 @@ export interface DomainsCreateOrUpdateOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const DomainsCreateOrUpdateOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainsCreateOrUpdateOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -610,7 +610,7 @@ export interface GetDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -627,7 +627,7 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainResponseTagsMap =
+const GetDomainResponseTagsMap =
   DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
 
 export interface GetDomainResponse {
@@ -648,7 +648,7 @@ export interface GetDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -665,7 +665,7 @@ export interface GetDomainControlCenterSsoRequestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const GetDomainControlCenterSsoRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainControlCenterSsoRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -689,7 +689,7 @@ export interface DomainControlCenterSsoRequest {
   /** Post parameter value. Client should use 'application/x-www-form-urlencoded' encoding for this value. */
   postParameterValue?: string;
 }
-export const DomainControlCenterSsoRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainControlCenterSsoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     postParameterKey: S.optional(S.String),
@@ -709,7 +709,7 @@ export interface GetDomainOwnershipIdentifierRequest {
   /** Name of identifier. */
   name: string;
 }
-export const GetDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -741,7 +741,7 @@ export interface GetDomainOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const GetDomainOwnershipIdentifierResponse =
+const GetDomainOwnershipIdentifierResponse =
   DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<GetDomainOwnershipIdentifierResponse>;
 
 export interface GetTopLevelDomainRequest {
@@ -750,7 +750,7 @@ export interface GetTopLevelDomainRequest {
   /** Name of the top-level domain. */
   name: string;
 }
-export const GetTopLevelDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopLevelDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -769,7 +769,7 @@ export interface TopLevelDomainProperties {
   /** If <code>true</code>, then the top level domain supports domain privacy; otherwise, <code>false</code>. */
   privacy?: boolean;
 }
-export const TopLevelDomainProperties = /*@__PURE__*/ S.suspend(() =>
+const TopLevelDomainProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privacy: S.optional(S.Boolean),
   }),
@@ -789,7 +789,7 @@ export interface GetTopLevelDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const GetTopLevelDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTopLevelDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -808,7 +808,7 @@ export interface ListDomainByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -826,8 +826,6 @@ export const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DomainTagsMap = { [key: string]: string | undefined };
-export const DomainTagsMap = DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<DomainTagsMap>;
-
 /** Information about a domain. */
 export interface Domain {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -847,11 +845,11 @@ export interface Domain {
   /** Kind of resource */
   kind?: string;
 }
-export const Domain = GetDomainResponse as any as S.Schema<Domain>;
+const Domain = GetDomainResponse as any as S.Schema<Domain>;
 
 /** The Domain items on this page */
 export type DomainCollectionValueList = Array<Domain>;
-export const DomainCollectionValueList = /*@__PURE__*/ S.Array(
+const DomainCollectionValueList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainCollectionValueList>;
 
@@ -862,7 +860,7 @@ export interface DomainCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DomainCollection = /*@__PURE__*/ S.suspend(() =>
+const DomainCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DomainCollectionValueList,
     nextLink: S.optional(S.String),
@@ -877,7 +875,7 @@ export interface ListDomainOwnershipIdentifiersRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const ListDomainOwnershipIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainOwnershipIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -909,12 +907,12 @@ export interface DomainOwnershipIdentifier {
   /** Kind of resource */
   kind?: string;
 }
-export const DomainOwnershipIdentifier =
+const DomainOwnershipIdentifier =
   DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<DomainOwnershipIdentifier>;
 
 /** The DomainOwnershipIdentifier items on this page */
 export type DomainOwnershipIdentifierCollectionValueList = Array<DomainOwnershipIdentifier>;
-export const DomainOwnershipIdentifierCollectionValueList = /*@__PURE__*/ S.Array(
+const DomainOwnershipIdentifierCollectionValueList = /*@__PURE__*/ S.Array(
   DomainOwnershipIdentifier,
 ) as any as S.Schema<DomainOwnershipIdentifierCollectionValueList>;
 
@@ -925,7 +923,7 @@ export interface DomainOwnershipIdentifierCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DomainOwnershipIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
+const DomainOwnershipIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DomainOwnershipIdentifierCollectionValueList,
     nextLink: S.optional(S.String),
@@ -942,7 +940,7 @@ export interface ListDomainRecommendationsRequest {
   /** Maximum number of recommendations. */
   maxDomainRecommendations?: number;
 }
-export const ListDomainRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     keywords: S.optional(S.String),
@@ -964,7 +962,7 @@ export interface NameIdentifier {
   /** Name of the object. */
   name?: string;
 }
-export const NameIdentifier = /*@__PURE__*/ S.suspend(() =>
+const NameIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -972,7 +970,7 @@ export const NameIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** The NameIdentifier items on this page */
 export type NameIdentifierCollectionValueList = Array<NameIdentifier>;
-export const NameIdentifierCollectionValueList = /*@__PURE__*/ S.Array(
+const NameIdentifierCollectionValueList = /*@__PURE__*/ S.Array(
   NameIdentifier,
 ) as any as S.Schema<NameIdentifierCollectionValueList>;
 
@@ -983,7 +981,7 @@ export interface NameIdentifierCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const NameIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
+const NameIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: NameIdentifierCollectionValueList,
     nextLink: S.optional(S.String),
@@ -991,7 +989,7 @@ export const NameIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NameIdentifierCollection" }) as any as S.Schema<NameIdentifierCollection>;
 
 export interface ListDomainRegistrationProviderOperationsRequest {}
-export const ListDomainRegistrationProviderOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRegistrationProviderOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1015,7 +1013,7 @@ export interface CsmOperationDisplay {
   /** Operation description. */
   description?: string;
 }
-export const CsmOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const CsmOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1035,7 +1033,7 @@ export interface Dimension {
   /** Dimension to be exported for shoebox. */
   toBeExportedForShoebox?: boolean;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1046,7 +1044,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource metric dimensions. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -1057,7 +1055,7 @@ export interface MetricAvailability {
   /** Metric availability blob duration. */
   blobDuration?: string;
 }
-export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
+const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeGrain: S.optional(S.String),
     blobDuration: S.optional(S.String),
@@ -1066,18 +1064,18 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource metric availability. */
 export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
-export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
+const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
 /** Resource metric supported time grain types. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList =
+const MetricSpecificationSupportedTimeGrainTypesList =
   DomainPurchaseConsentAgreementKeysList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Resource metric supported aggregation types. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList =
+const MetricSpecificationSupportedAggregationTypesList =
   DomainPurchaseConsentAgreementKeysList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Definition of a single resource metric. */
@@ -1117,7 +1115,7 @@ export interface MetricSpecification {
   /** Resource metric supported aggregation types. */
   supportedAggregationTypes?: MetricSpecificationSupportedAggregationTypesList;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1141,7 +1139,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource metrics service name. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -1156,7 +1154,7 @@ export interface LogSpecification {
   /** Log filtered pattern of the log. */
   logFilterPattern?: string;
 }
-export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
+const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1167,7 +1165,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource logs service provided by Microsoft.Insights resource provider. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
@@ -1178,7 +1176,7 @@ export interface ServiceSpecification {
   /** Resource logs service provided by Microsoft.Insights resource provider. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
     logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
@@ -1190,7 +1188,7 @@ export interface CsmOperationDescriptionProperties {
   /** Resource metrics service provided by Microsoft.Insights resource provider. */
   serviceSpecification?: ServiceSpecification;
 }
-export const CsmOperationDescriptionProperties = /*@__PURE__*/ S.suspend(() =>
+const CsmOperationDescriptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -1211,7 +1209,7 @@ export interface CsmOperationDescription {
   /** Properties available for a Microsoft.Web resource provider operation. */
   properties?: CsmOperationDescriptionProperties;
 }
-export const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
+const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1223,7 +1221,7 @@ export const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of resources. */
 export type CsmOperationCollectionValueList = Array<CsmOperationDescription>;
-export const CsmOperationCollectionValueList = /*@__PURE__*/ S.Array(
+const CsmOperationCollectionValueList = /*@__PURE__*/ S.Array(
   CsmOperationDescription,
 ) as any as S.Schema<CsmOperationCollectionValueList>;
 
@@ -1234,7 +1232,7 @@ export interface CsmOperationCollection {
   /** Link to next page of resources. */
   nextLink?: string;
 }
-export const CsmOperationCollection = /*@__PURE__*/ S.suspend(() =>
+const CsmOperationCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CsmOperationCollectionValueList,
     nextLink: S.optional(S.String),
@@ -1245,7 +1243,7 @@ export interface ListDomainsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1268,7 +1266,7 @@ export interface ListTopLevelDomainAgreementsRequest {
   /** If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>. */
   forTransfer?: boolean;
 }
-export const ListTopLevelDomainAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopLevelDomainAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1297,7 +1295,7 @@ export interface TldLegalAgreement {
   /** URL where a copy of the agreement details is hosted. */
   url?: string;
 }
-export const TldLegalAgreement = /*@__PURE__*/ S.suspend(() =>
+const TldLegalAgreement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreementKey: S.String,
     title: S.String,
@@ -1308,7 +1306,7 @@ export const TldLegalAgreement = /*@__PURE__*/ S.suspend(() =>
 
 /** The TldLegalAgreement items on this page */
 export type TldLegalAgreementCollectionValueList = Array<TldLegalAgreement>;
-export const TldLegalAgreementCollectionValueList = /*@__PURE__*/ S.Array(
+const TldLegalAgreementCollectionValueList = /*@__PURE__*/ S.Array(
   TldLegalAgreement,
 ) as any as S.Schema<TldLegalAgreementCollectionValueList>;
 
@@ -1319,7 +1317,7 @@ export interface TldLegalAgreementCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TldLegalAgreementCollection = /*@__PURE__*/ S.suspend(() =>
+const TldLegalAgreementCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TldLegalAgreementCollectionValueList,
     nextLink: S.optional(S.String),
@@ -1332,7 +1330,7 @@ export interface ListTopLevelDomainsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListTopLevelDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopLevelDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1362,7 +1360,7 @@ export interface TopLevelDomain {
   /** Kind of resource */
   kind?: string;
 }
-export const TopLevelDomain = /*@__PURE__*/ S.suspend(() =>
+const TopLevelDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1375,7 +1373,7 @@ export const TopLevelDomain = /*@__PURE__*/ S.suspend(() =>
 
 /** The TopLevelDomain items on this page */
 export type TopLevelDomainCollectionValueList = Array<TopLevelDomain>;
-export const TopLevelDomainCollectionValueList = /*@__PURE__*/ S.Array(
+const TopLevelDomainCollectionValueList = /*@__PURE__*/ S.Array(
   TopLevelDomain,
 ) as any as S.Schema<TopLevelDomainCollectionValueList>;
 
@@ -1386,7 +1384,7 @@ export interface TopLevelDomainCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TopLevelDomainCollection = /*@__PURE__*/ S.suspend(() =>
+const TopLevelDomainCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TopLevelDomainCollectionValueList,
     nextLink: S.optional(S.String),
@@ -1401,7 +1399,7 @@ export interface RenewDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1417,7 +1415,7 @@ export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenewDomainRequest" }) as any as S.Schema<RenewDomainRequest>;
 
 export interface RenewDomainResponse {}
-export const RenewDomainResponse = DeleteDomainResponse as any as S.Schema<RenewDomainResponse>;
+const RenewDomainResponse = DeleteDomainResponse as any as S.Schema<RenewDomainResponse>;
 
 export interface TransferDomainOutRequest {
   /** The ID of the target subscription. */
@@ -1427,7 +1425,7 @@ export interface TransferDomainOutRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const TransferDomainOutRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferDomainOutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1444,9 +1442,6 @@ export const TransferDomainOutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TransferDomainOutResponseTagsMap = { [key: string]: string | undefined };
-export const TransferDomainOutResponseTagsMap =
-  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<TransferDomainOutResponseTagsMap>;
-
 export interface TransferDomainOutResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1465,13 +1460,11 @@ export interface TransferDomainOutResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const TransferDomainOutResponse =
+const TransferDomainOutResponse =
   DomainsCreateOrUpdateResponse as any as S.Schema<TransferDomainOutResponse>;
 
 /** DomainPatchResource resource specific properties */
 export type DomainPatchResourcePropertiesInput = DomainPropertiesInput;
-export const DomainPatchResourcePropertiesInput = DomainPropertiesInput;
-
 export interface UpdateDomainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1484,7 +1477,7 @@ export interface UpdateDomainRequest {
   /** DomainPatchResource resource specific properties */
   properties?: DomainPropertiesInput;
 }
-export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1503,9 +1496,6 @@ export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDomainResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainResponseTagsMap =
-  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDomainResponseTagsMap>;
-
 export interface UpdateDomainResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1524,7 +1514,7 @@ export interface UpdateDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateDomainResponse = GetDomainResponse as any as S.Schema<UpdateDomainResponse>;
+const UpdateDomainResponse = GetDomainResponse as any as S.Schema<UpdateDomainResponse>;
 
 export interface UpdateDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. */
@@ -1540,7 +1530,7 @@ export interface UpdateDomainOwnershipIdentifierRequest {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1574,7 +1564,7 @@ export interface UpdateDomainOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateDomainOwnershipIdentifierResponse =
+const UpdateDomainOwnershipIdentifierResponse =
   DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>;
 
 export type CheckDomainAvailabilityError = AzureOpError;

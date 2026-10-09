@@ -10,13 +10,13 @@ export type { AzureOpError, AzureOpContext };
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type AddAddsServiceRequestCustomNotificationEmailsList = Array<string>;
-export const AddAddsServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ S.Array(
+const AddAddsServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddAddsServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type AddAddsServiceRequestNotificationEmailsList = Array<string>;
-export const AddAddsServiceRequestNotificationEmailsList =
+const AddAddsServiceRequestNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddAddsServiceRequestNotificationEmailsList>;
 
 export interface AddAddsServiceRequest {
@@ -69,7 +69,7 @@ export interface AddAddsServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const AddAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     activeAlerts: S.optional(S.Number),
@@ -107,12 +107,12 @@ export const AddAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type ServicePropertiesCustomNotificationEmailsList = Array<string>;
-export const ServicePropertiesCustomNotificationEmailsList =
+const ServicePropertiesCustomNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type ServicePropertiesNotificationEmailsList = Array<string>;
-export const ServicePropertiesNotificationEmailsList =
+const ServicePropertiesNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ServicePropertiesNotificationEmailsList>;
 
 /** The service properties for a given service. */
@@ -166,7 +166,7 @@ export interface ServiceProperties {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     activeAlerts: S.optional(S.Number),
@@ -200,7 +200,7 @@ export type AddAddsServicesServiceMemberRequestServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
   | "Off";
-export const AddAddsServicesServiceMemberRequestServerReportedMonitoringLevel = S.String;
+const AddAddsServicesServiceMemberRequestServerReportedMonitoringLevel = S.String;
 
 export interface AddAddsServicesServiceMemberRequest {
   /** The name of the service under which the server is to be onboarded. */
@@ -260,7 +260,7 @@ export interface AddAddsServicesServiceMemberRequest {
   /** The health status of the server. */
   status?: string;
 }
-export const AddAddsServicesServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAddsServicesServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.optional(S.String),
@@ -305,7 +305,7 @@ export const AddAddsServicesServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The monitoring level reported by the server. */
 export type ServiceMemberServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
-export const ServiceMemberServerReportedMonitoringLevel = S.String;
+const ServiceMemberServerReportedMonitoringLevel = S.String;
 
 /** The server properties for a given service. */
 export interface ServiceMember {
@@ -362,7 +362,7 @@ export interface ServiceMember {
   /** The health status of the server. */
   status?: string;
 }
-export const ServiceMember = /*@__PURE__*/ S.suspend(() =>
+const ServiceMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceMemberId: S.optional(S.String),
     serviceId: S.optional(S.String),
@@ -395,7 +395,7 @@ export const ServiceMember = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the metric. */
 export type AddAddsServicesUserPreferenceRequestMetricNamesList = Array<string>;
-export const AddAddsServicesUserPreferenceRequestMetricNamesList =
+const AddAddsServicesUserPreferenceRequestMetricNamesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddAddsServicesUserPreferenceRequestMetricNamesList>;
 
 export interface AddAddsServicesUserPreferenceRequest {
@@ -406,7 +406,7 @@ export interface AddAddsServicesUserPreferenceRequest {
   /** The name of the metric. */
   metricNames?: AddAddsServicesUserPreferenceRequestMetricNamesList;
 }
-export const AddAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     featureName: S.String.pipe(T.Label()),
@@ -424,14 +424,12 @@ export const AddAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AddAddsServicesUserPreferenceRequest>;
 
 export interface AddAddsServicesUserPreferenceResponse {}
-export const AddAddsServicesUserPreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AddAddsServicesUserPreferenceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddAddsServicesUserPreferenceResponse",
 }) as any as S.Schema<AddAddsServicesUserPreferenceResponse>;
 
 export interface AddConfigurationRequest {}
-export const AddConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const AddConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -444,7 +442,7 @@ export const AddConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of global administrators for the tenant. */
 export type TenantGlobalAdminsEmailList = Array<string>;
-export const TenantGlobalAdminsEmailList =
+const TenantGlobalAdminsEmailList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<TenantGlobalAdminsEmailList>;
 
 /** The details of the onboarded tenant. */
@@ -492,7 +490,7 @@ export interface Tenant {
   /** The name of the tenant. */
   tenantName?: string;
 }
-export const Tenant = /*@__PURE__*/ S.suspend(() =>
+const Tenant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     aadLicense: S.optional(S.String),
@@ -520,12 +518,12 @@ export const Tenant = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type AddServiceRequestCustomNotificationEmailsList = Array<string>;
-export const AddServiceRequestCustomNotificationEmailsList =
+const AddServiceRequestCustomNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type AddServiceRequestNotificationEmailsList = Array<string>;
-export const AddServiceRequestNotificationEmailsList =
+const AddServiceRequestNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddServiceRequestNotificationEmailsList>;
 
 export interface AddServiceRequest {
@@ -578,7 +576,7 @@ export interface AddServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const AddServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const AddServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     activeAlerts: S.optional(S.Number),
@@ -634,7 +632,7 @@ export interface AddServiceAlertFeedbackRequest {
   /** The date and time,in UTC,when the alert was created. */
   createdDate?: string;
 }
-export const AddServiceAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const AddServiceAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     level: S.optional(S.String),
@@ -676,7 +674,7 @@ export interface AlertFeedback {
   /** The date and time,in UTC,when the alert was created. */
   createdDate?: string;
 }
-export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
+const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(S.String),
     state: S.optional(S.String),
@@ -691,7 +689,7 @@ export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
 
 /** The monitoring level reported by the server. */
 export type AddServiceMemberRequestServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
-export const AddServiceMemberRequestServerReportedMonitoringLevel = S.String;
+const AddServiceMemberRequestServerReportedMonitoringLevel = S.String;
 
 export interface AddServiceMemberRequest {
   /** The name of the service under which the server is to be onboarded. */
@@ -751,7 +749,7 @@ export interface AddServiceMemberRequest {
   /** The health status of the server. */
   status?: string;
 }
-export const AddServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const AddServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.optional(S.String),
@@ -796,7 +794,7 @@ export interface DeleteAddsServiceRequest {
   /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-export const DeleteAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     confirm: S.optional(S.Boolean.pipe(T.Query())),
@@ -811,7 +809,7 @@ export const DeleteAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAddsServiceRequest" }) as any as S.Schema<DeleteAddsServiceRequest>;
 
 export interface DeleteAddsServiceResponse {}
-export const DeleteAddsServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAddsServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAddsServiceResponse",
 }) as any as S.Schema<DeleteAddsServiceResponse>;
 
@@ -823,7 +821,7 @@ export interface DeleteAddsServiceMemberRequest {
   /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-export const DeleteAddsServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddsServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -841,9 +839,9 @@ export const DeleteAddsServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddsServiceMemberRequest>;
 
 export interface DeleteAddsServiceMemberResponse {}
-export const DeleteAddsServiceMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAddsServiceMemberResponse" },
-) as any as S.Schema<DeleteAddsServiceMemberResponse>;
+const DeleteAddsServiceMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAddsServiceMemberResponse",
+}) as any as S.Schema<DeleteAddsServiceMemberResponse>;
 
 export interface DeleteAddsServicesUserPreferenceRequest {
   /** The name of the service. */
@@ -851,7 +849,7 @@ export interface DeleteAddsServicesUserPreferenceRequest {
   /** The name of the feature. */
   featureName: string;
 }
-export const DeleteAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     featureName: S.String.pipe(T.Label()),
@@ -868,7 +866,7 @@ export const DeleteAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAddsServicesUserPreferenceRequest>;
 
 export interface DeleteAddsServicesUserPreferenceResponse {}
-export const DeleteAddsServicesUserPreferenceResponse =
+const DeleteAddsServicesUserPreferenceResponse =
   AddAddsServicesUserPreferenceResponse as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>;
 
 export interface DeleteServiceRequest {
@@ -877,7 +875,7 @@ export interface DeleteServiceRequest {
   /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     confirm: S.optional(S.Boolean.pipe(T.Query())),
@@ -892,8 +890,7 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse =
-  DeleteAddsServiceResponse as any as S.Schema<DeleteServiceResponse>;
+const DeleteServiceResponse = DeleteAddsServiceResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteServiceMemberRequest {
   /** The name of the service. */
@@ -903,7 +900,7 @@ export interface DeleteServiceMemberRequest {
   /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
   confirm?: boolean;
 }
-export const DeleteServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -921,7 +918,7 @@ export const DeleteServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceMemberRequest>;
 
 export interface DeleteServiceMemberResponse {}
-export const DeleteServiceMemberResponse =
+const DeleteServiceMemberResponse =
   DeleteAddsServiceResponse as any as S.Schema<DeleteServiceMemberResponse>;
 
 export interface DeleteServiceMemberDataRequest {
@@ -930,7 +927,7 @@ export interface DeleteServiceMemberDataRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const DeleteServiceMemberDataRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceMemberDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -947,14 +944,14 @@ export const DeleteServiceMemberDataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceMemberDataRequest>;
 
 export interface DeleteServiceMemberDataResponse {}
-export const DeleteServiceMemberDataResponse =
+const DeleteServiceMemberDataResponse =
   DeleteAddsServiceMemberResponse as any as S.Schema<DeleteServiceMemberDataResponse>;
 
 export interface GetAddsServiceRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const GetAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -971,7 +968,7 @@ export interface GetAddsServiceForestSummaryRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const GetAddsServiceForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServiceForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -988,12 +985,12 @@ export const GetAddsServiceForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of domain controller names. */
 export type ForestSummaryDomainsList = Array<string>;
-export const ForestSummaryDomainsList =
+const ForestSummaryDomainsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ForestSummaryDomainsList>;
 
 /** The list of site names. */
 export type ForestSummarySitesList = Array<string>;
-export const ForestSummarySitesList =
+const ForestSummarySitesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ForestSummarySitesList>;
 
 /** The forest summary for an ADDS domain. */
@@ -1013,7 +1010,7 @@ export interface ForestSummary {
   /** The list of site names. */
   sites?: ForestSummarySitesList;
 }
-export const ForestSummary = /*@__PURE__*/ S.suspend(() =>
+const ForestSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forestName: S.optional(S.String),
     domainCount: S.optional(S.Number),
@@ -1031,7 +1028,7 @@ export interface GetAddsServiceMemberRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const GetAddsServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1053,7 +1050,7 @@ export interface GetAddsServiceMetricMetadataRequest {
   /** The metric name */
   metricName: string;
 }
-export const GetAddsServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1078,7 +1075,7 @@ export interface MetricGroup {
   /** indicates if the metric group is displayed in Azure Active Directory Connect Health UI. */
   invisibleForUi?: boolean;
 }
-export const MetricGroup = /*@__PURE__*/ S.suspend(() =>
+const MetricGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1088,7 +1085,7 @@ export const MetricGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The groupings for the metrics. */
 export type MetricMetadataGroupingsList = Array<MetricGroup>;
-export const MetricMetadataGroupingsList = /*@__PURE__*/ S.Array(
+const MetricMetadataGroupingsList = /*@__PURE__*/ S.Array(
   MetricGroup,
 ) as any as S.Schema<MetricMetadataGroupingsList>;
 
@@ -1117,7 +1114,7 @@ export interface MetricMetadata {
   /** Indicates if the metric is visible to DevOps or not. */
   isDevOps?: boolean;
 }
-export const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
+const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsProcessorClassName: S.optional(S.String),
     metricName: S.optional(S.String),
@@ -1147,7 +1144,7 @@ export interface GetAddsServiceMetricMetadataForGroupRequest {
   /** The end date. */
   toDate?: string;
 }
-export const GetAddsServiceMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServiceMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1169,9 +1166,7 @@ export const GetAddsServiceMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspe
 
 /** The list of the metric values. */
 export type MetricSetValuesList = Array<number>;
-export const MetricSetValuesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MetricSetValuesList>;
+const MetricSetValuesList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<MetricSetValuesList>;
 
 /** The set of metric values. Example of a MetricSet are Values of token requests for a Server1 or RelyingParty1. */
 export interface MetricSet {
@@ -1180,7 +1175,7 @@ export interface MetricSet {
   /** The list of the metric values. */
   values?: MetricSetValuesList;
 }
-export const MetricSet = /*@__PURE__*/ S.suspend(() =>
+const MetricSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setName: S.optional(S.String),
     values: S.optional(MetricSetValuesList),
@@ -1189,13 +1184,11 @@ export const MetricSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of metric set. */
 export type MetricSetsSetsList = Array<MetricSet>;
-export const MetricSetsSetsList = /*@__PURE__*/ S.Array(
-  MetricSet,
-) as any as S.Schema<MetricSetsSetsList>;
+const MetricSetsSetsList = /*@__PURE__*/ S.Array(MetricSet) as any as S.Schema<MetricSetsSetsList>;
 
 /** The list of timestamps for each metric in the metric set. */
 export type MetricSetsTimeStampsList = Array<string>;
-export const MetricSetsTimeStampsList =
+const MetricSetsTimeStampsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<MetricSetsTimeStampsList>;
 
 /** The metrics data represented set. */
@@ -1205,7 +1198,7 @@ export interface MetricSets {
   /** The list of timestamps for each metric in the metric set. */
   timeStamps?: MetricSetsTimeStampsList;
 }
-export const MetricSets = /*@__PURE__*/ S.suspend(() =>
+const MetricSets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sets: S.optional(MetricSetsSetsList),
     timeStamps: S.optional(MetricSetsTimeStampsList),
@@ -1226,7 +1219,7 @@ export interface GetAddsServiceMetricsRequest {
   /** The end date. */
   toDate?: string;
 }
-export const GetAddsServiceMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServiceMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1250,7 +1243,7 @@ export interface GetAddsServicesReplicationStatusRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const GetAddsServicesReplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServicesReplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1274,7 +1267,7 @@ export interface ReplicationStatus {
   /** The total number of domain controllers with error in a given forest. */
   errorDcCount?: number;
 }
-export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forestName: S.optional(S.String),
     totalDcCount: S.optional(S.Number),
@@ -1288,7 +1281,7 @@ export interface GetAddsServicesUserPreferenceRequest {
   /** The name of the feature. */
   featureName: string;
 }
-export const GetAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     featureName: S.String.pipe(T.Label()),
@@ -1306,7 +1299,7 @@ export const GetAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The name of the metric. */
 export type UserPreferenceMetricNamesList = Array<string>;
-export const UserPreferenceMetricNamesList =
+const UserPreferenceMetricNamesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UserPreferenceMetricNamesList>;
 
 /** The user preference for a given feature. */
@@ -1314,14 +1307,14 @@ export interface UserPreference {
   /** The name of the metric. */
   metricNames?: UserPreferenceMetricNamesList;
 }
-export const UserPreference = /*@__PURE__*/ S.suspend(() =>
+const UserPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricNames: S.optional(UserPreferenceMetricNamesList),
   }),
 ).annotate({ identifier: "UserPreference" }) as any as S.Schema<UserPreference>;
 
 export interface GetConfigurationRequest {}
-export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1333,7 +1326,7 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigurationRequest" }) as any as S.Schema<GetConfigurationRequest>;
 
 export interface GetReportDevOpsRequest {}
-export const GetReportDevOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportDevOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1349,7 +1342,7 @@ export interface Result {
   /** The value. */
   value?: boolean;
 }
-export const Result = /*@__PURE__*/ S.suspend(() =>
+const Result = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Boolean),
   }),
@@ -1359,7 +1352,7 @@ export interface GetServiceRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1378,7 +1371,7 @@ export interface GetServiceFeatureAvailibilityRequest {
   /** The name of the feature. */
   featureName: string;
 }
-export const GetServiceFeatureAvailibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceFeatureAvailibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     featureName: S.String.pipe(T.Label()),
@@ -1400,7 +1393,7 @@ export interface GetServiceMemberRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const GetServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1422,7 +1415,7 @@ export interface GetServiceMemberConnectorMetadataRequest {
   /** The name of the metric. */
   metricName: string;
 }
-export const GetServiceMemberConnectorMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMemberConnectorMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1446,7 +1439,7 @@ export interface ConnectorMetadataDetails {
   /** The Connector Display Name */
   connectorDisplayName?: string;
 }
-export const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
+const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorId: S.optional(S.String),
     connectorDisplayName: S.optional(S.String),
@@ -1455,13 +1448,13 @@ export const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of connectors. */
 export type ConnectorMetadataConnectorsList = Array<ConnectorMetadataDetails>;
-export const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
+const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
   ConnectorMetadataDetails,
 ) as any as S.Schema<ConnectorMetadataConnectorsList>;
 
 /** The list of run profile names. */
 export type ConnectorMetadataRunProfileNamesList = Array<string>;
-export const ConnectorMetadataRunProfileNamesList =
+const ConnectorMetadataRunProfileNamesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
 
 /** Gets the list of connectors and run profile names. */
@@ -1471,7 +1464,7 @@ export interface ConnectorMetadata {
   /** The list of run profile names. */
   runProfileNames?: ConnectorMetadataRunProfileNamesList;
 }
-export const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectors: S.optional(ConnectorMetadataConnectorsList),
     runProfileNames: S.optional(ConnectorMetadataRunProfileNamesList),
@@ -1494,7 +1487,7 @@ export interface GetServiceMemberMetricsRequest {
   /** The end date. */
   toDate?: string;
 }
-export const GetServiceMemberMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMemberMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1521,7 +1514,7 @@ export interface GetServiceMemberServiceConfigurationRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const GetServiceMemberServiceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMemberServiceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1558,7 +1551,7 @@ export interface ServiceConfiguration {
   /** The SQL database size. */
   sqlDatabaseSize?: number;
 }
-export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     serviceType: S.optional(S.Number),
@@ -1578,7 +1571,7 @@ export interface GetServiceMetricMetadataRequest {
   /** The metric name */
   metricName: string;
 }
-export const GetServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1608,7 +1601,7 @@ export interface GetServiceMetricMetadataForGroupRequest {
   /** The end date. */
   toDate?: string;
 }
-export const GetServiceMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1642,7 +1635,7 @@ export interface GetServiceMetricsRequest {
   /** The end date. */
   toDate?: string;
 }
-export const GetServiceMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1666,7 +1659,7 @@ export interface GetServiceTenantWhitelistingRequest {
   /** The name of the feature. */
   featureName: string;
 }
-export const GetServiceTenantWhitelistingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceTenantWhitelistingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     featureName: S.String.pipe(T.Label()),
@@ -1683,10 +1676,10 @@ export const GetServiceTenantWhitelistingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetServiceTenantWhitelistingRequest>;
 
 export type ListAdDomainServiceMembersRequestNextPartitionKey = " ";
-export const ListAdDomainServiceMembersRequestNextPartitionKey = S.String;
+const ListAdDomainServiceMembersRequestNextPartitionKey = S.String;
 
 export type ListAdDomainServiceMembersRequestNextRowKey = " ";
-export const ListAdDomainServiceMembersRequestNextRowKey = S.String;
+const ListAdDomainServiceMembersRequestNextRowKey = S.String;
 
 export interface ListAdDomainServiceMembersRequest {
   /** The name of the service. */
@@ -1704,7 +1697,7 @@ export interface ListAdDomainServiceMembersRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const ListAdDomainServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdDomainServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1727,12 +1720,12 @@ export const ListAdDomainServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of ADDS roles. */
 export type AddsServiceMemberAddsRolesList = Array<string>;
-export const AddsServiceMemberAddsRolesList =
+const AddsServiceMemberAddsRolesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddsServiceMemberAddsRolesList>;
 
 /** The list of domain controller types. */
 export type AddsServiceMemberDcTypesList = Array<string>;
-export const AddsServiceMemberDcTypesList =
+const AddsServiceMemberDcTypesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddsServiceMemberDcTypesList>;
 
 /** The key value pair for properties. */
@@ -1742,7 +1735,7 @@ export interface Item {
   /** The value for the key. */
   value?: string;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -1751,7 +1744,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 
 /** The server specific configuration related dimensions. */
 export type AddsServiceMemberDimensionsList = Array<Item>;
-export const AddsServiceMemberDimensionsList = /*@__PURE__*/ S.Array(
+const AddsServiceMemberDimensionsList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsServiceMemberDimensionsList>;
 
@@ -1764,7 +1757,7 @@ export interface Hotfix {
   /** The date and time, in UTC, when the KB was installed in the server. */
   installedDate?: string;
 }
-export const Hotfix = /*@__PURE__*/ S.suspend(() =>
+const Hotfix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kbName: S.optional(S.String),
     link: S.optional(S.String),
@@ -1774,33 +1767,33 @@ export const Hotfix = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of installed QFEs for the server. */
 export type AddsServiceMemberInstalledQfesList = Array<Hotfix>;
-export const AddsServiceMemberInstalledQfesList = /*@__PURE__*/ S.Array(
+const AddsServiceMemberInstalledQfesList = /*@__PURE__*/ S.Array(
   Hotfix,
 ) as any as S.Schema<AddsServiceMemberInstalledQfesList>;
 
 /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsComputedList = Array<Item>;
-export const AddsServiceMemberMonitoringConfigurationsComputedList =
+const AddsServiceMemberMonitoringConfigurationsComputedList =
   AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberMonitoringConfigurationsComputedList>;
 
 /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsCustomizedList = Array<Item>;
-export const AddsServiceMemberMonitoringConfigurationsCustomizedList =
+const AddsServiceMemberMonitoringConfigurationsCustomizedList =
   AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberMonitoringConfigurationsCustomizedList>;
 
 /** Server specific properties. */
 export type AddsServiceMemberPropertiesList = Array<Item>;
-export const AddsServiceMemberPropertiesList =
+const AddsServiceMemberPropertiesList =
   AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberPropertiesList>;
 
 /** The list of recommended hotfixes for the server. */
 export type AddsServiceMemberRecommendedQfesList = Array<Hotfix>;
-export const AddsServiceMemberRecommendedQfesList =
+const AddsServiceMemberRecommendedQfesList =
   AddsServiceMemberInstalledQfesList as any as S.Schema<AddsServiceMemberRecommendedQfesList>;
 
 /** The monitoring level reported by the server. */
 export type AddsServiceMemberServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
-export const AddsServiceMemberServerReportedMonitoringLevel = S.String;
+const AddsServiceMemberServerReportedMonitoringLevel = S.String;
 
 /** The server details for ADDS service. */
 export interface AddsServiceMember {
@@ -1873,7 +1866,7 @@ export interface AddsServiceMember {
   /** The health status of the server. */
   status?: string;
 }
-export const AddsServiceMember = /*@__PURE__*/ S.suspend(() =>
+const AddsServiceMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     siteName: S.optional(S.String),
@@ -1918,7 +1911,7 @@ export const AddsServiceMember = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type AddsServiceMembersValueList = Array<AddsServiceMember>;
-export const AddsServiceMembersValueList = /*@__PURE__*/ S.Array(
+const AddsServiceMembersValueList = /*@__PURE__*/ S.Array(
   AddsServiceMember,
 ) as any as S.Schema<AddsServiceMembersValueList>;
 
@@ -1933,7 +1926,7 @@ export interface AddsServiceMembers {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const AddsServiceMembers = /*@__PURE__*/ S.suspend(() =>
+const AddsServiceMembers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AddsServiceMembersValueList),
@@ -1950,7 +1943,7 @@ export interface ListAddsServiceMemberCredentialsRequest {
   /** The property filter to apply. */
   _filter?: string;
 }
-export const ListAddsServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1969,7 +1962,7 @@ export const ListAddsServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend((
 
 /** The credential data. */
 export type CredentialCredentialDataList = Array<string>;
-export const CredentialCredentialDataList =
+const CredentialCredentialDataList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<CredentialCredentialDataList>;
 
 /** The credential for a given server. */
@@ -1981,7 +1974,7 @@ export interface Credential {
   /** The credential data. */
   credentialData?: CredentialCredentialDataList;
 }
-export const Credential = /*@__PURE__*/ S.suspend(() =>
+const Credential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     type: S.optional(S.String),
@@ -1991,7 +1984,7 @@ export const Credential = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type CredentialsValueList = Array<Credential>;
-export const CredentialsValueList = /*@__PURE__*/ S.Array(
+const CredentialsValueList = /*@__PURE__*/ S.Array(
   Credential,
 ) as any as S.Schema<CredentialsValueList>;
 
@@ -2000,7 +1993,7 @@ export interface Credentials {
   /** The value returned by the operation. */
   value?: CredentialsValueList;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CredentialsValueList),
   }),
@@ -2012,7 +2005,7 @@ export interface ListAddsServiceMembersRequest {
   /** The server property filter to apply. */
   _filter?: string;
 }
-export const ListAddsServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2036,7 +2029,7 @@ export interface ListAddsServiceMetricMetadataRequest {
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
 }
-export const ListAddsServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2055,7 +2048,7 @@ export const ListAddsServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The value returned by the operation. */
 export type MetricMetadataListValueList = Array<MetricMetadata>;
-export const MetricMetadataListValueList = /*@__PURE__*/ S.Array(
+const MetricMetadataListValueList = /*@__PURE__*/ S.Array(
   MetricMetadata,
 ) as any as S.Schema<MetricMetadataListValueList>;
 
@@ -2070,7 +2063,7 @@ export interface MetricMetadataList {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const MetricMetadataList = /*@__PURE__*/ S.suspend(() =>
+const MetricMetadataList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(MetricMetadataListValueList),
@@ -2087,7 +2080,7 @@ export interface ListAddsServiceMetricsAverageRequest {
   /** The group name */
   groupName: string;
 }
-export const ListAddsServiceMetricsAverageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceMetricsAverageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -2106,7 +2099,7 @@ export const ListAddsServiceMetricsAverageRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The value returned by the operation. */
 export type MetricsValueList = Array<Item>;
-export const MetricsValueList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<MetricsValueList>;
+const MetricsValueList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<MetricsValueList>;
 
 /** The list of metric items. */
 export interface Metrics {
@@ -2119,7 +2112,7 @@ export interface Metrics {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
+const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(MetricsValueList),
@@ -2136,7 +2129,7 @@ export interface ListAddsServiceMetricsSumRequest {
   /** The group name */
   groupName: string;
 }
-export const ListAddsServiceMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -2163,7 +2156,7 @@ export interface ListAddsServicePremiumServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const ListAddsServicePremiumServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServicePremiumServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     serviceType: S.optional(S.String.pipe(T.Query())),
@@ -2183,7 +2176,7 @@ export const ListAddsServicePremiumServicesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The value returned by the operation. */
 export type ServicesValueList = Array<ServiceProperties>;
-export const ServicesValueList = /*@__PURE__*/ S.Array(
+const ServicesValueList = /*@__PURE__*/ S.Array(
   ServiceProperties,
 ) as any as S.Schema<ServicesValueList>;
 
@@ -2198,7 +2191,7 @@ export interface Services {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const Services = /*@__PURE__*/ S.suspend(() =>
+const Services = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ServicesValueList),
@@ -2215,7 +2208,7 @@ export interface ListAddsServiceReplicationDetailsRequest {
   /** Indicates if InboundReplicationNeighbor details are required or not. */
   withDetails?: boolean;
 }
-export const ListAddsServiceReplicationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceReplicationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2261,7 +2254,7 @@ export interface InboundReplicationNeighbor {
   /** The additional details. */
   additionalInfo?: string;
 }
-export const InboundReplicationNeighbor = /*@__PURE__*/ S.suspend(() =>
+const InboundReplicationNeighbor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDomainController: S.optional(S.String),
     consecutiveFailureCount: S.optional(S.Number),
@@ -2283,7 +2276,7 @@ export const InboundReplicationNeighbor = /*@__PURE__*/ S.suspend(() =>
 
 /** List of individual domain controller neighbor's inbound replication status. */
 export type ReplicationSummaryInboundNeighborCollectionList = Array<InboundReplicationNeighbor>;
-export const ReplicationSummaryInboundNeighborCollectionList = /*@__PURE__*/ S.Array(
+const ReplicationSummaryInboundNeighborCollectionList = /*@__PURE__*/ S.Array(
   InboundReplicationNeighbor,
 ) as any as S.Schema<ReplicationSummaryInboundNeighborCollectionList>;
 
@@ -2304,7 +2297,7 @@ export interface ReplicationSummary {
   /** List of individual domain controller neighbor's inbound replication status. */
   inboundNeighborCollection?: ReplicationSummaryInboundNeighborCollectionList;
 }
-export const ReplicationSummary = /*@__PURE__*/ S.suspend(() =>
+const ReplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetServer: S.optional(S.String),
     site: S.optional(S.String),
@@ -2318,7 +2311,7 @@ export const ReplicationSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type ReplicationDetailsListValueList = Array<ReplicationSummary>;
-export const ReplicationDetailsListValueList = /*@__PURE__*/ S.Array(
+const ReplicationDetailsListValueList = /*@__PURE__*/ S.Array(
   ReplicationSummary,
 ) as any as S.Schema<ReplicationDetailsListValueList>;
 
@@ -2333,7 +2326,7 @@ export interface ReplicationDetailsList {
   /** The link used to get the next page of operations. */
   nextLink?: string;
 }
-export const ReplicationDetailsList = /*@__PURE__*/ S.suspend(() =>
+const ReplicationDetailsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReplicationDetailsListValueList),
     totalCount: S.optional(S.Number),
@@ -2343,10 +2336,10 @@ export const ReplicationDetailsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicationDetailsList" }) as any as S.Schema<ReplicationDetailsList>;
 
 export type ListAddsServiceReplicationSummaryRequestNextPartitionKey = " ";
-export const ListAddsServiceReplicationSummaryRequestNextPartitionKey = S.String;
+const ListAddsServiceReplicationSummaryRequestNextPartitionKey = S.String;
 
 export type ListAddsServiceReplicationSummaryRequestNextRowKey = " ";
-export const ListAddsServiceReplicationSummaryRequestNextRowKey = S.String;
+const ListAddsServiceReplicationSummaryRequestNextRowKey = S.String;
 
 export interface ListAddsServiceReplicationSummaryRequest {
   /** The name of the service. */
@@ -2364,7 +2357,7 @@ export interface ListAddsServiceReplicationSummaryRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const ListAddsServiceReplicationSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceReplicationSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2387,7 +2380,7 @@ export const ListAddsServiceReplicationSummaryRequest = /*@__PURE__*/ S.suspend(
 
 /** The value returned by the operation. */
 export type ReplicationSummaryListValueList = Array<ReplicationSummary>;
-export const ReplicationSummaryListValueList =
+const ReplicationSummaryListValueList =
   ReplicationDetailsListValueList as any as S.Schema<ReplicationSummaryListValueList>;
 
 /** The list of replication summary details. */
@@ -2395,7 +2388,7 @@ export interface ReplicationSummaryList {
   /** The value returned by the operation. */
   value?: ReplicationSummaryListValueList;
 }
-export const ReplicationSummaryList = /*@__PURE__*/ S.suspend(() =>
+const ReplicationSummaryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReplicationSummaryListValueList),
   }),
@@ -2411,7 +2404,7 @@ export interface ListAddsServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const ListAddsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     serviceType: S.optional(S.String.pipe(T.Query())),
@@ -2441,7 +2434,7 @@ export interface ListAddsServiceServerAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const ListAddsServiceServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServiceServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -2463,7 +2456,7 @@ export const ListAddsServiceServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The alert level which indicates the severity of the alert. */
 export type AlertLevel = "Warning" | "Error" | "PreWarning";
-export const AlertLevel = S.String;
+const AlertLevel = S.String;
 
 /** The alert state which can be either active or resolved with multiple resolution types. */
 export type AlertState =
@@ -2472,7 +2465,7 @@ export type AlertState =
   | "ResolvedManually"
   | "ResolvedByTimer"
   | "ResolvedByStateChange";
-export const AlertState = S.String;
+const AlertState = S.String;
 
 /** The help link which contains more information related to an alert. */
 export interface HelpLink {
@@ -2481,7 +2474,7 @@ export interface HelpLink {
   /** The url for the help document. */
   url?: string;
 }
-export const HelpLink = /*@__PURE__*/ S.suspend(() =>
+const HelpLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     url: S.optional(S.String),
@@ -2490,7 +2483,7 @@ export const HelpLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The help links to get more information related to the alert. */
 export type AlertRelatedLinksList = Array<HelpLink>;
-export const AlertRelatedLinksList = /*@__PURE__*/ S.Array(
+const AlertRelatedLinksList = /*@__PURE__*/ S.Array(
   HelpLink,
 ) as any as S.Schema<AlertRelatedLinksList>;
 
@@ -2505,7 +2498,7 @@ export interface AdditionalInformation {
   /** Indicates if properties are present or not. */
   hasProperties?: boolean;
 }
-export const AdditionalInformation = /*@__PURE__*/ S.suspend(() =>
+const AdditionalInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     titleName: S.optional(S.String),
     titleValue: S.optional(S.String),
@@ -2516,18 +2509,18 @@ export const AdditionalInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information related to the alert. */
 export type AlertAdditionalInformationList = Array<AdditionalInformation>;
-export const AlertAdditionalInformationList = /*@__PURE__*/ S.Array(
+const AlertAdditionalInformationList = /*@__PURE__*/ S.Array(
   AdditionalInformation,
 ) as any as S.Schema<AlertAdditionalInformationList>;
 
 /** The active alert properties. */
 export type AlertActiveAlertPropertiesList = Array<Item>;
-export const AlertActiveAlertPropertiesList =
+const AlertActiveAlertPropertiesList =
   AddsServiceMemberDimensionsList as any as S.Schema<AlertActiveAlertPropertiesList>;
 
 /** The resolved alert properties. */
 export type AlertResolvedAlertPropertiesList = Array<Item>;
-export const AlertResolvedAlertPropertiesList =
+const AlertResolvedAlertPropertiesList =
   AddsServiceMemberDimensionsList as any as S.Schema<AlertResolvedAlertPropertiesList>;
 
 /** The alert details indicating an issue with service or server. */
@@ -2571,7 +2564,7 @@ export interface Alert {
   /** The server Id. */
   serviceMemberId?: string;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(S.String),
     level: S.optional(AlertLevel),
@@ -2597,7 +2590,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type AlertsValueList = Array<Alert>;
-export const AlertsValueList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertsValueList>;
+const AlertsValueList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertsValueList>;
 
 /** The list of alerts for a service. */
 export interface Alerts {
@@ -2610,7 +2603,7 @@ export interface Alerts {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const Alerts = /*@__PURE__*/ S.suspend(() =>
+const Alerts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AlertsValueList),
     nextLink: S.optional(S.String),
@@ -2629,7 +2622,7 @@ export interface ListAddsServicesServiceMembersRequest {
   /** The value of the dimension. */
   dimensionSignature?: string;
 }
-export const ListAddsServicesServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddsServicesServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2649,7 +2642,7 @@ export const ListAddsServicesServiceMembersRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The value returned by the operation. */
 export type ServiceMembersValueList = Array<ServiceMember>;
-export const ServiceMembersValueList = /*@__PURE__*/ S.Array(
+const ServiceMembersValueList = /*@__PURE__*/ S.Array(
   ServiceMember,
 ) as any as S.Schema<ServiceMembersValueList>;
 
@@ -2664,7 +2657,7 @@ export interface ServiceMembers {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const ServiceMembers = /*@__PURE__*/ S.suspend(() =>
+const ServiceMembers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ServiceMembersValueList),
@@ -2685,7 +2678,7 @@ export interface ListAlertAddsAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const ListAlertAddsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertAddsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2710,7 +2703,7 @@ export interface ListConfigurationAddsConfigurationsRequest {
   /** The grouping for configurations. */
   grouping?: string;
 }
-export const ListConfigurationAddsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationAddsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     grouping: S.optional(S.String.pipe(T.Query())),
@@ -2728,7 +2721,7 @@ export const ListConfigurationAddsConfigurationsRequest = /*@__PURE__*/ S.suspen
 
 /** The value returned by the operation. */
 export type AddsConfigurationValueList = Array<Item>;
-export const AddsConfigurationValueList =
+const AddsConfigurationValueList =
   AddsServiceMemberDimensionsList as any as S.Schema<AddsConfigurationValueList>;
 
 /** The list of key value properties. */
@@ -2742,7 +2735,7 @@ export interface AddsConfiguration {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const AddsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AddsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AddsConfigurationValueList),
@@ -2757,7 +2750,7 @@ export interface ListDimensionAddsDimensionsRequest {
   /** The dimension type. */
   dimension: string;
 }
-export const ListDimensionAddsDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDimensionAddsDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dimension: S.String.pipe(T.Label()),
@@ -2775,7 +2768,7 @@ export const ListDimensionAddsDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The health status for the domain controller. */
 export type DimensionHealth = "Healthy" | "Warning" | "Error" | "NotMonitored" | "Missing";
-export const DimensionHealth = S.String;
+const DimensionHealth = S.String;
 
 /** The connector object error. */
 export interface Dimension {
@@ -2798,7 +2791,7 @@ export interface Dimension {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     health: S.optional(DimensionHealth),
     simpleProperties: S.optional(S.Unknown),
@@ -2814,7 +2807,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type DimensionsValueList = Array<Dimension>;
-export const DimensionsValueList = /*@__PURE__*/ S.Array(
+const DimensionsValueList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionsValueList>;
 
@@ -2829,7 +2822,7 @@ export interface Dimensions {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const Dimensions = /*@__PURE__*/ S.suspend(() =>
+const Dimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(DimensionsValueList),
@@ -2844,7 +2837,7 @@ export interface ListIPAddressAggregatesByServiceRequest {
   /** A continuationtoken value returned in paginated result to load different pages. */
   skiptoken?: string;
 }
-export const ListIPAddressAggregatesByServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIPAddressAggregatesByServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     skiptoken: S.optional(S.String.pipe(T.Query())),
@@ -2897,7 +2890,7 @@ export interface IPAddressAggregate {
   /** The geographic location. */
   geographicLocation?: string;
 }
-export const IPAddressAggregate = /*@__PURE__*/ S.suspend(() =>
+const IPAddressAggregate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2921,7 +2914,7 @@ export const IPAddressAggregate = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type IPAddressAggregatesValueList = Array<IPAddressAggregate>;
-export const IPAddressAggregatesValueList = /*@__PURE__*/ S.Array(
+const IPAddressAggregatesValueList = /*@__PURE__*/ S.Array(
   IPAddressAggregate,
 ) as any as S.Schema<IPAddressAggregatesValueList>;
 
@@ -2936,7 +2929,7 @@ export interface IPAddressAggregates {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const IPAddressAggregates = /*@__PURE__*/ S.suspend(() =>
+const IPAddressAggregates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(IPAddressAggregatesValueList),
     nextLink: S.optional(S.String),
@@ -2949,7 +2942,7 @@ export interface ListIPAddressAggregateSettingsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ListIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2979,7 +2972,7 @@ export interface IPAddressAggregateSetting {
   /** A value indicating whether email notification has been enabled. */
   emailNotificationEnabled?: boolean;
 }
-export const IPAddressAggregateSetting = /*@__PURE__*/ S.suspend(() =>
+const IPAddressAggregateSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     badPasswordAndExtranetLockoutCombinedDailyThreshold: S.optional(S.Number),
@@ -2993,7 +2986,7 @@ export const IPAddressAggregateSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPAddressAggregateSetting>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -3011,7 +3004,7 @@ export interface Operation {
   /** The display details for the operation. */
   display?: unknown;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(S.Unknown),
@@ -3020,7 +3013,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the Microsoft.ADHybridHealthService resource provider. */
 export type OperationListResponseValueList = Array<Operation>;
-export const OperationListResponseValueList = /*@__PURE__*/ S.Array(
+const OperationListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResponseValueList>;
 
@@ -3035,7 +3028,7 @@ export interface OperationListResponse {
   /** The continuation token to get next set of operations. */
   continuationToken?: string;
 }
-export const OperationListResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(OperationListResponseValueList),
@@ -3050,7 +3043,7 @@ export interface ListServiceAlertFeedbackRequest {
   /** The name of the alert. */
   shortName: string;
 }
-export const ListServiceAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     shortName: S.String.pipe(T.Label()),
@@ -3068,7 +3061,7 @@ export const ListServiceAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type AlertFeedbacksValueList = Array<AlertFeedback>;
-export const AlertFeedbacksValueList = /*@__PURE__*/ S.Array(
+const AlertFeedbacksValueList = /*@__PURE__*/ S.Array(
   AlertFeedback,
 ) as any as S.Schema<AlertFeedbacksValueList>;
 
@@ -3077,7 +3070,7 @@ export interface AlertFeedbacks {
   /** The value returned by the operation. */
   value?: AlertFeedbacksValueList;
 }
-export const AlertFeedbacks = /*@__PURE__*/ S.suspend(() =>
+const AlertFeedbacks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AlertFeedbacksValueList),
   }),
@@ -3095,7 +3088,7 @@ export interface ListServiceAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const ListServiceAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -3126,7 +3119,7 @@ export interface ListServiceMemberAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const ListServiceMemberAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMemberAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3152,7 +3145,7 @@ export interface ListServiceMemberConnectorsRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const ListServiceMemberConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMemberConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3170,17 +3163,17 @@ export const ListServiceMemberConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The in-scope object classes. */
 export type PartitionScopeObjectClassesList = Array<string>;
-export const PartitionScopeObjectClassesList =
+const PartitionScopeObjectClassesList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeObjectClassesList>;
 
 /** The list of containers included. */
 export type PartitionScopeContainersIncludedList = Array<string>;
-export const PartitionScopeContainersIncludedList =
+const PartitionScopeContainersIncludedList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeContainersIncludedList>;
 
 /** The list of containers excluded. */
 export type PartitionScopeContainersExcludedList = Array<string>;
-export const PartitionScopeContainersExcludedList =
+const PartitionScopeContainersExcludedList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeContainersExcludedList>;
 
 /** The connector partition scope. */
@@ -3194,7 +3187,7 @@ export interface PartitionScope {
   /** The list of containers excluded. */
   containersExcluded?: PartitionScopeContainersExcludedList;
 }
-export const PartitionScope = /*@__PURE__*/ S.suspend(() =>
+const PartitionScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDefault: S.optional(S.Boolean),
     objectClasses: S.optional(PartitionScopeObjectClassesList),
@@ -3224,7 +3217,7 @@ export interface Partition {
   /** The partition type. */
   type?: string;
 }
-export const Partition = /*@__PURE__*/ S.suspend(() =>
+const Partition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     dn: S.optional(S.String),
@@ -3240,7 +3233,7 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
 
 /** The partitions of the connector. */
 export type ConnectorPartitionsList = Array<Partition>;
-export const ConnectorPartitionsList = /*@__PURE__*/ S.Array(
+const ConnectorPartitionsList = /*@__PURE__*/ S.Array(
   Partition,
 ) as any as S.Schema<ConnectorPartitionsList>;
 
@@ -3261,7 +3254,7 @@ export interface RunStep {
   /** The operation timeout. */
   timeout?: number;
 }
-export const RunStep = /*@__PURE__*/ S.suspend(() =>
+const RunStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchSize: S.optional(S.Number),
     objectProcessLimit: S.optional(S.Number),
@@ -3275,7 +3268,7 @@ export const RunStep = /*@__PURE__*/ S.suspend(() =>
 
 /** The run steps of the run profile. */
 export type RunProfileRunStepsList = Array<RunStep>;
-export const RunProfileRunStepsList = /*@__PURE__*/ S.Array(
+const RunProfileRunStepsList = /*@__PURE__*/ S.Array(
   RunStep,
 ) as any as S.Schema<RunProfileRunStepsList>;
 
@@ -3288,7 +3281,7 @@ export interface RunProfile {
   /** The run steps of the run profile. */
   runSteps?: RunProfileRunStepsList;
 }
-export const RunProfile = /*@__PURE__*/ S.suspend(() =>
+const RunProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3298,18 +3291,18 @@ export const RunProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The run profiles of the connector. */
 export type ConnectorRunProfilesList = Array<RunProfile>;
-export const ConnectorRunProfilesList = /*@__PURE__*/ S.Array(
+const ConnectorRunProfilesList = /*@__PURE__*/ S.Array(
   RunProfile,
 ) as any as S.Schema<ConnectorRunProfilesList>;
 
 /** The class inclusion list of the connector. */
 export type ConnectorClassesIncludedList = Array<string>;
-export const ConnectorClassesIncludedList =
+const ConnectorClassesIncludedList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorClassesIncludedList>;
 
 /** The attribute inclusion list of the connector. */
 export type ConnectorAttributesIncludedList = Array<string>;
-export const ConnectorAttributesIncludedList =
+const ConnectorAttributesIncludedList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorAttributesIncludedList>;
 
 /** The connect details. */
@@ -3345,7 +3338,7 @@ export interface Connector {
   /** The attribute inclusion list of the connector. */
   attributesIncluded?: ConnectorAttributesIncludedList;
 }
-export const Connector = /*@__PURE__*/ S.suspend(() =>
+const Connector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorId: S.optional(S.String),
     id: S.optional(S.String),
@@ -3367,7 +3360,7 @@ export const Connector = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type ConnectorsValueList = Array<Connector>;
-export const ConnectorsValueList = /*@__PURE__*/ S.Array(
+const ConnectorsValueList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorsValueList>;
 
@@ -3376,7 +3369,7 @@ export interface Connectors {
   /** The value returned by the operation. */
   value?: ConnectorsValueList;
 }
-export const Connectors = /*@__PURE__*/ S.suspend(() =>
+const Connectors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ConnectorsValueList),
   }),
@@ -3390,7 +3383,7 @@ export interface ListServiceMemberCredentialsRequest {
   /** The property filter to apply. */
   _filter?: string;
 }
-export const ListServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3413,7 +3406,7 @@ export interface ListServiceMemberDataFreshnessRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const ListServiceMemberDataFreshnessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMemberDataFreshnessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3431,7 +3424,7 @@ export const ListServiceMemberDataFreshnessRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The value returned by the operation. */
 export type DataFreshnessDetailsValueList = Array<Item>;
-export const DataFreshnessDetailsValueList =
+const DataFreshnessDetailsValueList =
   AddsServiceMemberDimensionsList as any as S.Schema<DataFreshnessDetailsValueList>;
 
 /** The data freshness details for the server. */
@@ -3439,7 +3432,7 @@ export interface DataFreshnessDetails {
   /** The value returned by the operation. */
   value?: DataFreshnessDetailsValueList;
 }
-export const DataFreshnessDetails = /*@__PURE__*/ S.suspend(() =>
+const DataFreshnessDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DataFreshnessDetailsValueList),
   }),
@@ -3451,7 +3444,7 @@ export interface ListServiceMemberGlobalConfigurationRequest {
   /** The server id. */
   serviceMemberId: string;
 }
-export const ListServiceMemberGlobalConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMemberGlobalConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3469,7 +3462,7 @@ export const ListServiceMemberGlobalConfigurationRequest = /*@__PURE__*/ S.suspe
 
 /** The list of additional feature sets. */
 export type GlobalConfigurationFeatureSetList = Array<Item>;
-export const GlobalConfigurationFeatureSetList =
+const GlobalConfigurationFeatureSetList =
   AddsServiceMemberDimensionsList as any as S.Schema<GlobalConfigurationFeatureSetList>;
 
 /** The global configuration settings. */
@@ -3485,7 +3478,7 @@ export interface GlobalConfiguration {
   /** The list of additional feature sets. */
   featureSet?: GlobalConfigurationFeatureSetList;
 }
-export const GlobalConfiguration = /*@__PURE__*/ S.suspend(() =>
+const GlobalConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     schemaXml: S.optional(S.String),
@@ -3497,7 +3490,7 @@ export const GlobalConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type GlobalConfigurationsValueList = Array<GlobalConfiguration>;
-export const GlobalConfigurationsValueList = /*@__PURE__*/ S.Array(
+const GlobalConfigurationsValueList = /*@__PURE__*/ S.Array(
   GlobalConfiguration,
 ) as any as S.Schema<GlobalConfigurationsValueList>;
 
@@ -3506,7 +3499,7 @@ export interface GlobalConfigurations {
   /** The value returned by the operation. */
   value?: GlobalConfigurationsValueList;
 }
-export const GlobalConfigurations = /*@__PURE__*/ S.suspend(() =>
+const GlobalConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GlobalConfigurationsValueList),
   }),
@@ -3522,7 +3515,7 @@ export interface ListServiceMembersRequest {
   /** The value of the dimension. */
   dimensionSignature?: string;
 }
-export const ListServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -3548,7 +3541,7 @@ export interface ListServiceMetricMetadataRequest {
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
 }
-export const ListServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -3573,7 +3566,7 @@ export interface ListServiceMetricsAverageRequest {
   /** The group name */
   groupName: string;
 }
-export const ListServiceMetricsAverageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMetricsAverageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -3598,7 +3591,7 @@ export interface ListServiceMetricsSumRequest {
   /** The group name */
   groupName: string;
 }
-export const ListServiceMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -3619,7 +3612,7 @@ export interface ListServiceMonitoringConfigurationsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ListServiceMonitoringConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceMonitoringConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3636,14 +3629,14 @@ export const ListServiceMonitoringConfigurationsRequest = /*@__PURE__*/ S.suspen
 
 /** The value returned by the operation. */
 export type ItemsValueList = Array<Item>;
-export const ItemsValueList = MetricsValueList as any as S.Schema<ItemsValueList>;
+const ItemsValueList = MetricsValueList as any as S.Schema<ItemsValueList>;
 
 /** The list of key value properties. */
 export interface Items {
   /** The value returned by the operation. */
   value?: ItemsValueList;
 }
-export const Items = /*@__PURE__*/ S.suspend(() =>
+const Items = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ItemsValueList),
   }),
@@ -3659,7 +3652,7 @@ export interface ListServicePremiumRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const ListServicePremiumRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicePremiumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     serviceType: S.optional(S.String.pipe(T.Query())),
@@ -3687,7 +3680,7 @@ export interface ListServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     serviceType: S.optional(S.String.pipe(T.Query())),
@@ -3709,7 +3702,7 @@ export interface ListServiceUserBadPasswordReportRequest {
   /** The source of data, if its test data or customer data. */
   dataSource?: string;
 }
-export const ListServiceUserBadPasswordReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceUserBadPasswordReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dataSource: S.optional(S.String.pipe(T.Query())),
@@ -3738,7 +3731,7 @@ export interface ErrorReportUsersEntry {
   /** The total count of specific error events. */
   totalErrorAttempts?: number;
 }
-export const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
+const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     ipAddress: S.optional(S.String),
@@ -3750,7 +3743,7 @@ export const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type ErrorReportUsersEntriesValueList = Array<ErrorReportUsersEntry>;
-export const ErrorReportUsersEntriesValueList = /*@__PURE__*/ S.Array(
+const ErrorReportUsersEntriesValueList = /*@__PURE__*/ S.Array(
   ErrorReportUsersEntry,
 ) as any as S.Schema<ErrorReportUsersEntriesValueList>;
 
@@ -3759,7 +3752,7 @@ export interface ErrorReportUsersEntries {
   /** The value returned by the operation. */
   value?: ErrorReportUsersEntriesValueList;
 }
-export const ErrorReportUsersEntries = /*@__PURE__*/ S.suspend(() =>
+const ErrorReportUsersEntries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ErrorReportUsersEntriesValueList),
   }),
@@ -3771,7 +3764,7 @@ export interface ServiceMembersListExportStatusRequest {
   /** The server Id. */
   serviceMemberId: string;
 }
-export const ServiceMembersListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceMembersListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3798,7 +3791,7 @@ export interface ExportStatus {
   /** The run step result Id. */
   runStepResultId?: string;
 }
-export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
+const ExportStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.optional(S.String),
     serviceMemberId: S.optional(S.String),
@@ -3809,7 +3802,7 @@ export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type ExportStatusesValueList = Array<ExportStatus>;
-export const ExportStatusesValueList = /*@__PURE__*/ S.Array(
+const ExportStatusesValueList = /*@__PURE__*/ S.Array(
   ExportStatus,
 ) as any as S.Schema<ExportStatusesValueList>;
 
@@ -3824,7 +3817,7 @@ export interface ExportStatuses {
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const ExportStatuses = /*@__PURE__*/ S.suspend(() =>
+const ExportStatuses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ExportStatusesValueList),
@@ -3837,7 +3830,7 @@ export interface ServicesListAllRiskyIpDownloadReportRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ServicesListAllRiskyIpDownloadReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesListAllRiskyIpDownloadReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3867,7 +3860,7 @@ export interface RiskyIPBlobUri {
   /** Status of the Risky IP report generation. */
   status?: string;
 }
-export const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
+const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     serviceId: S.optional(S.String),
@@ -3880,7 +3873,7 @@ export const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of blob uris. */
 export type RiskyIPBlobUrisValueList = Array<RiskyIPBlobUri>;
-export const RiskyIPBlobUrisValueList = /*@__PURE__*/ S.Array(
+const RiskyIPBlobUrisValueList = /*@__PURE__*/ S.Array(
   RiskyIPBlobUri,
 ) as any as S.Schema<RiskyIPBlobUrisValueList>;
 
@@ -3889,7 +3882,7 @@ export interface RiskyIPBlobUris {
   /** The list of blob uris. */
   value?: RiskyIPBlobUrisValueList;
 }
-export const RiskyIPBlobUris = /*@__PURE__*/ S.suspend(() =>
+const RiskyIPBlobUris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RiskyIPBlobUrisValueList),
   }),
@@ -3899,7 +3892,7 @@ export interface ServicesListCurrentRiskyIpDownloadReportRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ServicesListCurrentRiskyIpDownloadReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesListCurrentRiskyIpDownloadReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3918,7 +3911,7 @@ export interface ServicesListExportErrorsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ServicesListExportErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesListExportErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3942,7 +3935,7 @@ export interface ErrorCount {
   /** Indicates if the error count is truncated or not. */
   truncated?: boolean;
 }
-export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
+const ErrorCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorBucket: S.optional(S.String),
     count: S.optional(S.Number),
@@ -3952,7 +3945,7 @@ export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type ErrorCountsValueList = Array<ErrorCount>;
-export const ErrorCountsValueList = /*@__PURE__*/ S.Array(
+const ErrorCountsValueList = /*@__PURE__*/ S.Array(
   ErrorCount,
 ) as any as S.Schema<ErrorCountsValueList>;
 
@@ -3961,7 +3954,7 @@ export interface ErrorCounts {
   /** The value returned by the operation. */
   value?: ErrorCountsValueList;
 }
-export const ErrorCounts = /*@__PURE__*/ S.suspend(() =>
+const ErrorCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ErrorCountsValueList),
   }),
@@ -3973,7 +3966,7 @@ export interface ServicesListExportErrorsV2Request {
   /** The error category to query for. */
   errorBucket: string;
 }
-export const ServicesListExportErrorsV2Request = /*@__PURE__*/ S.suspend(() =>
+const ServicesListExportErrorsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     errorBucket: S.String.pipe(T.Query()),
@@ -4016,7 +4009,7 @@ export interface AssociatedObject {
   /** The UPN. */
   userPrincipalName?: string;
 }
-export const AssociatedObject = /*@__PURE__*/ S.suspend(() =>
+const AssociatedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     distinguishedName: S.optional(S.String),
@@ -4080,7 +4073,7 @@ export interface MergedExportError {
   /** The export error status. */
   exportErrorStatus?: number;
 }
-export const MergedExportError = /*@__PURE__*/ S.suspend(() =>
+const MergedExportError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     incomingObjectDisplayName: S.optional(S.String),
@@ -4109,7 +4102,7 @@ export const MergedExportError = /*@__PURE__*/ S.suspend(() =>
 
 /** The value returned by the operation. */
 export type MergedExportErrorsValueList = Array<MergedExportError>;
-export const MergedExportErrorsValueList = /*@__PURE__*/ S.Array(
+const MergedExportErrorsValueList = /*@__PURE__*/ S.Array(
   MergedExportError,
 ) as any as S.Schema<MergedExportErrorsValueList>;
 
@@ -4118,7 +4111,7 @@ export interface MergedExportErrors {
   /** The value returned by the operation. */
   value?: MergedExportErrorsValueList;
 }
-export const MergedExportErrors = /*@__PURE__*/ S.suspend(() =>
+const MergedExportErrors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MergedExportErrorsValueList),
   }),
@@ -4128,7 +4121,7 @@ export interface ServicesListExportStatusRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ServicesListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4145,12 +4138,12 @@ export const ServicesListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateAddsServiceRequestCustomNotificationEmailsList = Array<string>;
-export const UpdateAddsServiceRequestCustomNotificationEmailsList =
+const UpdateAddsServiceRequestCustomNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateAddsServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type UpdateAddsServiceRequestNotificationEmailsList = Array<string>;
-export const UpdateAddsServiceRequestNotificationEmailsList =
+const UpdateAddsServiceRequestNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateAddsServiceRequestNotificationEmailsList>;
 
 export interface UpdateAddsServiceRequest {
@@ -4203,7 +4196,7 @@ export interface UpdateAddsServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const UpdateAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -4241,7 +4234,7 @@ export const UpdateAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of global administrators for the tenant. */
 export type UpdateConfigurationRequestGlobalAdminsEmailList = Array<string>;
-export const UpdateConfigurationRequestGlobalAdminsEmailList =
+const UpdateConfigurationRequestGlobalAdminsEmailList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateConfigurationRequestGlobalAdminsEmailList>;
 
 export interface UpdateConfigurationRequest {
@@ -4288,7 +4281,7 @@ export interface UpdateConfigurationRequest {
   /** The name of the tenant. */
   tenantName?: string;
 }
-export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     aadLicense: S.optional(S.String),
@@ -4339,7 +4332,7 @@ export interface UpdateIPAddressAggregateSettingsRequest {
   /** A value indicating whether email notification has been enabled. */
   emailNotificationEnabled?: boolean;
 }
-export const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -4362,12 +4355,12 @@ export const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend((
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateServiceRequestCustomNotificationEmailsList = Array<string>;
-export const UpdateServiceRequestCustomNotificationEmailsList =
+const UpdateServiceRequestCustomNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type UpdateServiceRequestNotificationEmailsList = Array<string>;
-export const UpdateServiceRequestNotificationEmailsList =
+const UpdateServiceRequestNotificationEmailsList =
   AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateServiceRequestNotificationEmailsList>;
 
 export interface UpdateServiceRequest {
@@ -4420,7 +4413,7 @@ export interface UpdateServiceRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -4464,7 +4457,7 @@ export interface UpdateServiceMonitoringConfigurationRequest {
   /** The value for the key. */
   value?: string;
 }
-export const UpdateServiceMonitoringConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceMonitoringConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     key: S.optional(S.String),
@@ -4482,7 +4475,7 @@ export const UpdateServiceMonitoringConfigurationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>;
 
 export interface UpdateServiceMonitoringConfigurationResponse {}
-export const UpdateServiceMonitoringConfigurationResponse =
+const UpdateServiceMonitoringConfigurationResponse =
   AddAddsServicesUserPreferenceResponse as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>;
 
 export type AddAddsServiceError = AzureOpError;

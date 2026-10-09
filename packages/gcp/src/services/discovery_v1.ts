@@ -41,7 +41,7 @@ export interface GetRestApisRequest {
   /** The version of the API. */
   version: string;
 }
-export const GetRestApisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRestApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api: S.String.pipe(T.Label()),
     version: S.String.pipe(T.Label()),
@@ -55,16 +55,16 @@ export const GetRestApisRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRestApisRequest" }) as any as S.Schema<GetRestApisRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 export interface JsonSchemaAnnotations {
   /** A list of methods for which this property is required on requests. */
   required?: StringList;
 }
-export const JsonSchemaAnnotations = /*@__PURE__*/ S.suspend(() =>
+const JsonSchemaAnnotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     required: S.optional(StringList),
   }),
@@ -74,7 +74,7 @@ export interface JsonSchemaVariantMapItem {
   $ref?: string;
   type_value?: string;
 }
-export const JsonSchemaVariantMapItem = /*@__PURE__*/ S.suspend(() =>
+const JsonSchemaVariantMapItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     $ref: S.optional(S.String),
     type_value: S.optional(S.String),
@@ -82,7 +82,7 @@ export const JsonSchemaVariantMapItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JsonSchemaVariantMapItem" }) as any as S.Schema<JsonSchemaVariantMapItem>;
 
 export type JsonSchemaVariantMapItemList = Array<JsonSchemaVariantMapItem>;
-export const JsonSchemaVariantMapItemList = /*@__PURE__*/ S.Array(
+const JsonSchemaVariantMapItemList = /*@__PURE__*/ S.Array(
   JsonSchemaVariantMapItem,
 ) as any as S.Schema<JsonSchemaVariantMapItemList>;
 
@@ -92,7 +92,7 @@ export interface JsonSchemaVariant {
   /** The map of discriminant value to schema to use for parsing.. */
   map?: JsonSchemaVariantMapItemList;
 }
-export const JsonSchemaVariant = /*@__PURE__*/ S.suspend(() =>
+const JsonSchemaVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discriminant: S.optional(S.String),
     map: S.optional(JsonSchemaVariantMapItemList),
@@ -145,7 +145,7 @@ export interface JsonSchema {
   /** The value type for this schema. A list of values can be found here: http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1 */
   type?: string;
 }
-export const JsonSchema = /*@__PURE__*/ S.suspend(() =>
+const JsonSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readOnly: S.optional(S.Boolean),
     format: S.optional(S.String),
@@ -173,7 +173,7 @@ export const JsonSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JsonSchema" }) as any as S.Schema<JsonSchema>;
 
 export type JsonSchemaMap = { [key: string]: JsonSchema | undefined };
-export const JsonSchemaMap = /*@__PURE__*/ S.Record(
+const JsonSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   JsonSchema,
 ) as any as S.Schema<JsonSchemaMap>;
@@ -182,7 +182,7 @@ export interface RestDescriptionAuthOauth2ScopesValue {
   /** Description of scope. */
   description?: string;
 }
-export const RestDescriptionAuthOauth2ScopesValue = /*@__PURE__*/ S.suspend(() =>
+const RestDescriptionAuthOauth2ScopesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -193,7 +193,7 @@ export const RestDescriptionAuthOauth2ScopesValue = /*@__PURE__*/ S.suspend(() =
 export type RestDescriptionAuthOauth2ScopesValueMap = {
   [key: string]: RestDescriptionAuthOauth2ScopesValue | undefined;
 };
-export const RestDescriptionAuthOauth2ScopesValueMap = /*@__PURE__*/ S.Record(
+const RestDescriptionAuthOauth2ScopesValueMap = /*@__PURE__*/ S.Record(
   S.String,
   RestDescriptionAuthOauth2ScopesValue,
 ) as any as S.Schema<RestDescriptionAuthOauth2ScopesValueMap>;
@@ -202,7 +202,7 @@ export interface RestDescriptionAuthOauth2 {
   /** Available OAuth 2.0 scopes. */
   scopes?: RestDescriptionAuthOauth2ScopesValueMap;
 }
-export const RestDescriptionAuthOauth2 = /*@__PURE__*/ S.suspend(() =>
+const RestDescriptionAuthOauth2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(RestDescriptionAuthOauth2ScopesValueMap),
   }),
@@ -214,7 +214,7 @@ export interface RestDescriptionAuth {
   /** OAuth 2.0 authentication information. */
   oauth2?: RestDescriptionAuthOauth2;
 }
-export const RestDescriptionAuth = /*@__PURE__*/ S.suspend(() =>
+const RestDescriptionAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth2: S.optional(RestDescriptionAuthOauth2),
   }),
@@ -226,7 +226,7 @@ export interface RestMethodRequest {
   /** parameter name. */
   parameterName?: string;
 }
-export const RestMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const RestMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     $ref: S.optional(S.String),
     parameterName: S.optional(S.String),
@@ -239,7 +239,7 @@ export interface RestMethodMediaUploadProtocolsResumable {
   /** The URI path to be used for upload. Should be used in conjunction with the basePath property at the api-level. */
   path?: string;
 }
-export const RestMethodMediaUploadProtocolsResumable = /*@__PURE__*/ S.suspend(() =>
+const RestMethodMediaUploadProtocolsResumable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multipart: S.optional(S.Boolean),
     path: S.optional(S.String),
@@ -254,7 +254,7 @@ export interface RestMethodMediaUploadProtocolsSimple {
   /** True if this endpoint supports upload multipart media. */
   multipart?: boolean;
 }
-export const RestMethodMediaUploadProtocolsSimple = /*@__PURE__*/ S.suspend(() =>
+const RestMethodMediaUploadProtocolsSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     multipart: S.optional(S.Boolean),
@@ -269,7 +269,7 @@ export interface RestMethodMediaUploadProtocols {
   /** Supports uploading as a single HTTP request. */
   simple?: RestMethodMediaUploadProtocolsSimple;
 }
-export const RestMethodMediaUploadProtocols = /*@__PURE__*/ S.suspend(() =>
+const RestMethodMediaUploadProtocols = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resumable: S.optional(RestMethodMediaUploadProtocolsResumable),
     simple: S.optional(RestMethodMediaUploadProtocolsSimple),
@@ -286,7 +286,7 @@ export interface RestMethodMediaUpload {
   /** Maximum size of a media upload, such as "1MB", "2GB" or "3TB". */
   maxSize?: string;
 }
-export const RestMethodMediaUpload = /*@__PURE__*/ S.suspend(() =>
+const RestMethodMediaUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accept: S.optional(StringList),
     protocols: S.optional(RestMethodMediaUploadProtocols),
@@ -298,7 +298,7 @@ export interface RestMethodResponse {
   /** Schema ID for the response schema. */
   $ref?: string;
 }
-export const RestMethodResponse = /*@__PURE__*/ S.suspend(() =>
+const RestMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     $ref: S.optional(S.String),
   }),
@@ -342,7 +342,7 @@ export interface RestMethod {
   /** Whether this method supports media downloads. */
   supportsMediaDownload?: boolean;
 }
-export const RestMethod = /*@__PURE__*/ S.suspend(() =>
+const RestMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etagRequired: S.optional(S.Boolean),
     parameterOrder: S.optional(StringList),
@@ -366,7 +366,7 @@ export const RestMethod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestMethod" }) as any as S.Schema<RestMethod>;
 
 export type RestMethodMap = { [key: string]: RestMethod | undefined };
-export const RestMethodMap = /*@__PURE__*/ S.Record(
+const RestMethodMap = /*@__PURE__*/ S.Record(
   S.String,
   RestMethod,
 ) as any as S.Schema<RestMethodMap>;
@@ -379,7 +379,7 @@ export interface RestResource {
   /** Whether this resource is deprecated. */
   deprecated?: boolean;
 }
-export const RestResource = /*@__PURE__*/ S.suspend(() =>
+const RestResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methods: S.optional(RestMethodMap),
     resources: S.optional(S.suspend(() => RestResourceMap)),
@@ -388,7 +388,7 @@ export const RestResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestResource" }) as any as S.Schema<RestResource>;
 
 export type RestResourceMap = { [key: string]: RestResource | undefined };
-export const RestResourceMap = /*@__PURE__*/ S.Record(
+const RestResourceMap = /*@__PURE__*/ S.Record(
   S.String,
   RestResource,
 ) as any as S.Schema<RestResourceMap>;
@@ -403,7 +403,7 @@ export interface RestDescriptionEndpointsItem {
   /** Whether this endpoint is deprecated */
   deprecated?: boolean;
 }
-export const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
+const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     endpointUrl: S.optional(S.String),
@@ -415,7 +415,7 @@ export const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestDescriptionEndpointsItem>;
 
 export type RestDescriptionEndpointsItemList = Array<RestDescriptionEndpointsItem>;
-export const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(
+const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(
   RestDescriptionEndpointsItem,
 ) as any as S.Schema<RestDescriptionEndpointsItemList>;
 
@@ -425,7 +425,7 @@ export interface RestDescriptionIcons {
   /** The URL of the 32x32 icon. */
   x32?: string;
 }
-export const RestDescriptionIcons = /*@__PURE__*/ S.suspend(() =>
+const RestDescriptionIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x16: S.optional(S.String),
     x32: S.optional(S.String),
@@ -495,7 +495,7 @@ export interface RestDescription {
   /** Links to 16x16 and 32x32 icons representing the API. */
   icons?: RestDescriptionIcons;
 }
-export const RestDescription = /*@__PURE__*/ S.suspend(() =>
+const RestDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packagePath: S.optional(S.String),
     schemas: S.optional(JsonSchemaMap),
@@ -537,7 +537,7 @@ export interface ListApisRequest {
   /** Only include APIs with the given name. */
   name?: string;
 }
-export const ListApisRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferred: S.optional(S.Boolean.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -547,8 +547,6 @@ export const ListApisRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApisRequest" }) as any as S.Schema<ListApisRequest>;
 
 export type DirectoryListItemsItemIcons = RestDescriptionIcons;
-export const DirectoryListItemsItemIcons = RestDescriptionIcons;
-
 export interface DirectoryListItemsItem {
   /** Labels for the status of this API, such as labs or deprecated. */
   labels?: StringList;
@@ -575,7 +573,7 @@ export interface DirectoryListItemsItem {
   /** A link to the discovery document. */
   discoveryLink?: string;
 }
-export const DirectoryListItemsItem = /*@__PURE__*/ S.suspend(() =>
+const DirectoryListItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringList),
     description: S.optional(S.String),
@@ -593,7 +591,7 @@ export const DirectoryListItemsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DirectoryListItemsItem" }) as any as S.Schema<DirectoryListItemsItem>;
 
 export type DirectoryListItemsItemList = Array<DirectoryListItemsItem>;
-export const DirectoryListItemsItemList = /*@__PURE__*/ S.Array(
+const DirectoryListItemsItemList = /*@__PURE__*/ S.Array(
   DirectoryListItemsItem,
 ) as any as S.Schema<DirectoryListItemsItemList>;
 
@@ -605,7 +603,7 @@ export interface DirectoryList {
   /** Indicate the version of the Discovery API used to generate this doc. */
   discoveryVersion?: string;
 }
-export const DirectoryList = /*@__PURE__*/ S.suspend(() =>
+const DirectoryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(DirectoryListItemsItemList),
     kind: S.optional(S.String),

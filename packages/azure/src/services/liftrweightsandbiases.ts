@@ -16,7 +16,7 @@ export interface DeleteInstanceRequest {
   /** Name of the Instance resource */
   instancename: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -32,7 +32,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteInstanceResponse",
 }) as any as S.Schema<DeleteInstanceResponse>;
 
@@ -44,7 +44,7 @@ export interface GetInstanceRequest {
   /** Name of the Instance resource */
   instancename: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -61,11 +61,11 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -82,7 +82,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -95,7 +95,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetInstanceResponseTagsMap>;
@@ -106,7 +106,7 @@ export type LiftrBaseMarketplaceSubscriptionStatus =
   | "Subscribed"
   | "Suspended"
   | "Unsubscribed";
-export const LiftrBaseMarketplaceSubscriptionStatus = S.String;
+const LiftrBaseMarketplaceSubscriptionStatus = S.String;
 
 /** Offer details for the marketplace that is selected by the user */
 export interface LiftrBaseOfferDetails {
@@ -123,7 +123,7 @@ export interface LiftrBaseOfferDetails {
   /** Plan Display Name for the marketplace offer */
   termId?: string;
 }
-export const LiftrBaseOfferDetails = /*@__PURE__*/ S.suspend(() =>
+const LiftrBaseOfferDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherId: S.String,
     offerId: S.String,
@@ -143,7 +143,7 @@ export interface LiftrBaseMarketplaceDetails {
   /** Offer details for the marketplace that is selected by the user */
   offerDetails: LiftrBaseOfferDetails;
 }
-export const LiftrBaseMarketplaceDetails = /*@__PURE__*/ S.suspend(() =>
+const LiftrBaseMarketplaceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     subscriptionStatus: S.optional(LiftrBaseMarketplaceSubscriptionStatus),
@@ -166,7 +166,7 @@ export interface LiftrBaseUserDetails {
   /** User's phone number */
   phoneNumber?: string;
 }
-export const LiftrBaseUserDetails = /*@__PURE__*/ S.suspend(() =>
+const LiftrBaseUserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.optional(S.String),
     lastName: S.optional(S.String),
@@ -178,7 +178,7 @@ export const LiftrBaseUserDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** The available regions */
 export type Region =
@@ -188,7 +188,7 @@ export type Region =
   | "westeurope"
   | "japaneast"
   | "koreacentral";
-export const Region = S.String;
+const Region = S.String;
 
 /** Partner's specific Properties */
 export interface PartnerProperties {
@@ -197,7 +197,7 @@ export interface PartnerProperties {
   /** The subdomain of the instance */
   subdomain: string;
 }
-export const PartnerProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: Region,
     subdomain: S.String,
@@ -206,15 +206,15 @@ export const PartnerProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the type of Single Sign-On (SSO) mechanism being used */
 export type LiftrBaseSingleSignOnType = "Saml" | "OpenId";
-export const LiftrBaseSingleSignOnType = S.String;
+const LiftrBaseSingleSignOnType = S.String;
 
 /** Various states of the SSO resource */
 export type LiftrBaseSingleSignOnStates = "Initial" | "Enable" | "Disable";
-export const LiftrBaseSingleSignOnStates = S.String;
+const LiftrBaseSingleSignOnStates = S.String;
 
 /** List of AAD domains fetched from Microsoft Graph for user. */
 export type LiftrBaseSingleSignOnPropertiesV2AadDomainsList = Array<string>;
-export const LiftrBaseSingleSignOnPropertiesV2AadDomainsList = /*@__PURE__*/ S.Array(
+const LiftrBaseSingleSignOnPropertiesV2AadDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LiftrBaseSingleSignOnPropertiesV2AadDomainsList>;
 
@@ -231,7 +231,7 @@ export interface LiftrBaseSingleSignOnPropertiesV2 {
   /** List of AAD domains fetched from Microsoft Graph for user. */
   aadDomains?: LiftrBaseSingleSignOnPropertiesV2AadDomainsList;
 }
-export const LiftrBaseSingleSignOnPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
+const LiftrBaseSingleSignOnPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: LiftrBaseSingleSignOnType,
     state: S.optional(LiftrBaseSingleSignOnStates),
@@ -256,7 +256,7 @@ export interface InstanceProperties {
   /** Single sign-on properties */
   singleSignOnProperties?: LiftrBaseSingleSignOnPropertiesV2;
 }
-export const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplace: LiftrBaseMarketplaceDetails,
     user: LiftrBaseUserDetails,
@@ -272,7 +272,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -281,7 +281,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -290,7 +290,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -304,7 +304,7 @@ export interface GetInstanceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const GetInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -333,7 +333,7 @@ export interface GetInstanceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -348,7 +348,7 @@ export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const InstancesCreateOrUpdateRequestTagsMap =
+const InstancesCreateOrUpdateRequestTagsMap =
   GetInstanceResponseTagsMap as any as S.Schema<InstancesCreateOrUpdateRequestTagsMap>;
 
 /** Properties specific to Instance */
@@ -362,7 +362,7 @@ export interface InstancePropertiesInput {
   /** Single sign-on properties */
   singleSignOnProperties?: LiftrBaseSingleSignOnPropertiesV2;
 }
-export const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplace: LiftrBaseMarketplaceDetails,
     user: LiftrBaseUserDetails,
@@ -373,14 +373,14 @@ export const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput =
+const UserAssignedIdentityInput =
   DeleteInstanceResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -390,7 +390,7 @@ export interface InstancesCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const InstancesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const InstancesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -415,7 +415,7 @@ export interface InstancesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: InstancesCreateOrUpdateRequestIdentity;
 }
-export const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -438,13 +438,11 @@ export const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const InstancesCreateOrUpdateResponseTagsMap =
+const InstancesCreateOrUpdateResponseTagsMap =
   GetInstanceResponseTagsMap as any as S.Schema<InstancesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstancesCreateOrUpdateResponseIdentity = GetInstanceResponseIdentity;
-export const InstancesCreateOrUpdateResponseIdentity = GetInstanceResponseIdentity;
-
 export interface InstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -463,7 +461,7 @@ export interface InstancesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
-export const InstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const InstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -484,7 +482,7 @@ export interface ListInstanceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -502,13 +500,8 @@ export const ListInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstanceResourceTagsMap = { [key: string]: string | undefined };
-export const InstanceResourceTagsMap =
-  GetInstanceResponseTagsMap as any as S.Schema<InstanceResourceTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstanceResourceIdentity = GetInstanceResponseIdentity;
-export const InstanceResourceIdentity = GetInstanceResponseIdentity;
-
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface InstanceResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -528,11 +521,11 @@ export interface InstanceResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
-export const InstanceResource = GetInstanceResponse as any as S.Schema<InstanceResource>;
+const InstanceResource = GetInstanceResponse as any as S.Schema<InstanceResource>;
 
 /** The InstanceResource items on this page */
 export type InstanceResourceListResultValueList = Array<InstanceResource>;
-export const InstanceResourceListResultValueList = /*@__PURE__*/ S.Array(
+const InstanceResourceListResultValueList = /*@__PURE__*/ S.Array(
   InstanceResource,
 ) as any as S.Schema<InstanceResourceListResultValueList>;
 
@@ -543,7 +536,7 @@ export interface InstanceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const InstanceResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const InstanceResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: InstanceResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -556,7 +549,7 @@ export interface ListInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -572,7 +565,7 @@ export const ListInstanceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInstanceBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -594,7 +587,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -605,11 +598,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -624,7 +617,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -636,7 +629,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -646,7 +639,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -655,7 +648,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceRequestTagsMap =
+const UpdateInstanceRequestTagsMap =
   GetInstanceResponseTagsMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -664,18 +657,15 @@ export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType = S.String;
+const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType = S.String;
 
 /** User assigned identity properties */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
   UserAssignedIdentityInput;
-export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
-  UserAssignedIdentityInput;
-
 /** The identities assigned to this resource by the user. */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   { [key: string]: UserAssignedIdentityInput | undefined };
-export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
+const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     UserAssignedIdentityInput,
@@ -688,17 +678,17 @@ export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInpu
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
-export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput =
-  /*@__PURE__*/ S.suspend(() =>
+const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       type: S.optional(AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType),
       userAssignedIdentities: S.optional(
         AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap,
       ),
     }),
-  ).annotate({
-    identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
-  }) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput>;
+).annotate({
+  identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
+}) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput>;
 
 export interface UpdateInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -712,7 +702,7 @@ export interface UpdateInstanceRequest {
   /** The managed service identities assigned to this resource. */
   identity?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -731,13 +721,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceResponseTagsMap =
-  GetInstanceResponseTagsMap as any as S.Schema<UpdateInstanceResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateInstanceResponseIdentity = GetInstanceResponseIdentity;
-export const UpdateInstanceResponseIdentity = GetInstanceResponseIdentity;
-
 export interface UpdateInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -756,8 +741,7 @@ export interface UpdateInstanceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
-export const UpdateInstanceResponse =
-  GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+const UpdateInstanceResponse = GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type DeleteInstanceError = AzureOpError;
 /** Delete a InstanceResource */

@@ -12,7 +12,7 @@ export type { AzureOpError, AzureOpContext };
 export type ResourceType =
   | "Microsoft.Network/frontDoors"
   | "Microsoft.Network/frontDoors/frontendEndpoints";
-export const ResourceType = S.String;
+const ResourceType = S.String;
 
 export interface CheckFrontDoorNameAvailabilityRequest {
   /** The resource name to validate. */
@@ -20,7 +20,7 @@ export interface CheckFrontDoorNameAvailabilityRequest {
   /** The type of the resource whose name is to be validated. */
   type: ResourceType | (string & {});
 }
-export const CheckFrontDoorNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckFrontDoorNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: ResourceType,
@@ -38,7 +38,7 @@ export const CheckFrontDoorNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Indicates whether the name is available. */
 export type Availability = "Available" | "Unavailable";
-export const Availability = S.String;
+const Availability = S.String;
 
 /** Output of check name availability API. */
 export interface CheckNameAvailabilityOutput {
@@ -49,7 +49,7 @@ export interface CheckNameAvailabilityOutput {
   /** The detailed error message describing why the name is not available. */
   message?: string;
 }
-export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailability: S.optional(Availability),
     reason: S.optional(S.String),
@@ -67,7 +67,7 @@ export interface CheckFrontDoorNameAvailabilityWithSubscriptionRequest {
   /** The type of the resource whose name is to be validated. */
   type: ResourceType | (string & {});
 }
-export const CheckFrontDoorNameAvailabilityWithSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckFrontDoorNameAvailabilityWithSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -94,7 +94,7 @@ export interface DeleteExperimentRequest {
   /** The Experiment identifier associated with the Experiment */
   experimentName: string;
 }
-export const DeleteExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -111,7 +111,7 @@ export const DeleteExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExperimentRequest" }) as any as S.Schema<DeleteExperimentRequest>;
 
 export interface DeleteExperimentResponse {}
-export const DeleteExperimentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteExperimentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteExperimentResponse",
 }) as any as S.Schema<DeleteExperimentResponse>;
 
@@ -123,7 +123,7 @@ export interface DeleteFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
-export const DeleteFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -139,7 +139,7 @@ export const DeleteFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFrontDoorRequest" }) as any as S.Schema<DeleteFrontDoorRequest>;
 
 export interface DeleteFrontDoorResponse {}
-export const DeleteFrontDoorResponse =
+const DeleteFrontDoorResponse =
   DeleteExperimentResponse as any as S.Schema<DeleteFrontDoorResponse>;
 
 export interface DeleteNetworkExperimentProfileRequest {
@@ -150,7 +150,7 @@ export interface DeleteNetworkExperimentProfileRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
-export const DeleteNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -168,11 +168,11 @@ export const DeleteNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteNetworkExperimentProfileRequest>;
 
 export interface DeleteNetworkExperimentProfileResponse {}
-export const DeleteNetworkExperimentProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNetworkExperimentProfileResponse",
-}) as any as S.Schema<DeleteNetworkExperimentProfileResponse>;
+const DeleteNetworkExperimentProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "DeleteNetworkExperimentProfileResponse",
+  },
+) as any as S.Schema<DeleteNetworkExperimentProfileResponse>;
 
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. */
@@ -182,7 +182,7 @@ export interface DeletePolicyRequest {
   /** The name of the Web Application Firewall Policy. */
   policyName: string;
 }
-export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -198,8 +198,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse =
-  DeleteExperimentResponse as any as S.Schema<DeletePolicyResponse>;
+const DeletePolicyResponse = DeleteExperimentResponse as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeleteRulesEngineRequest {
   /** The ID of the target subscription. */
@@ -211,7 +210,7 @@ export interface DeleteRulesEngineRequest {
   /** Name of the Rules Engine which is unique within the Front Door. */
   rulesEngineName: string;
 }
-export const DeleteRulesEngineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRulesEngineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -228,7 +227,7 @@ export const DeleteRulesEngineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRulesEngineRequest" }) as any as S.Schema<DeleteRulesEngineRequest>;
 
 export interface DeleteRulesEngineResponse {}
-export const DeleteRulesEngineResponse =
+const DeleteRulesEngineResponse =
   DeleteExperimentResponse as any as S.Schema<DeleteRulesEngineResponse>;
 
 export interface DisableFrontendEndpointHttpsRequest {
@@ -241,7 +240,7 @@ export interface DisableFrontendEndpointHttpsRequest {
   /** Name of the Frontend endpoint which is unique within the Front Door. */
   frontendEndpointName: string;
 }
-export const DisableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -260,27 +259,27 @@ export const DisableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableFrontendEndpointHttpsRequest>;
 
 export interface DisableFrontendEndpointHttpsResponse {}
-export const DisableFrontendEndpointHttpsResponse =
+const DisableFrontendEndpointHttpsResponse =
   DeleteNetworkExperimentProfileResponse as any as S.Schema<DisableFrontendEndpointHttpsResponse>;
 
 /** Defines the source of the SSL certificate */
 export type FrontDoorCertificateSource = "AzureKeyVault" | "FrontDoor";
-export const FrontDoorCertificateSource = S.String;
+const FrontDoorCertificateSource = S.String;
 
 /** Defines the TLS extension protocol that is used for secure delivery */
 export type FrontDoorTlsProtocolType = "ServerNameIndication";
-export const FrontDoorTlsProtocolType = S.String;
+const FrontDoorTlsProtocolType = S.String;
 
 /** The minimum TLS version required from the clients to establish an SSL handshake with Front Door. */
 export type MinimumTLSVersion = "1.0" | "1.2";
-export const MinimumTLSVersion = S.String;
+const MinimumTLSVersion = S.String;
 
 /** The Key Vault containing the SSL certificate */
 export interface KeyVaultCertificateSourceParametersVault {
   /** Resource ID. */
   id?: string;
 }
-export const KeyVaultCertificateSourceParametersVault = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultCertificateSourceParametersVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -297,7 +296,7 @@ export interface KeyVaultCertificateSourceParameters {
   /** The version of the Key Vault secret representing the full certificate PFX */
   secretVersion?: string;
 }
-export const KeyVaultCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vault: S.optional(KeyVaultCertificateSourceParametersVault),
     secretName: S.optional(S.String),
@@ -309,14 +308,14 @@ export const KeyVaultCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the type of the certificate used for secure connections to a frontendEndpoint */
 export type FrontDoorCertificateType = "Dedicated";
-export const FrontDoorCertificateType = S.String;
+const FrontDoorCertificateType = S.String;
 
 /** Parameters required for enabling SSL with Front Door-managed certificates */
 export interface FrontDoorCertificateSourceParameters {
   /** Defines the type of the certificate used for secure connections to a frontendEndpoint */
   certificateType?: FrontDoorCertificateType | (string & {});
 }
-export const FrontDoorCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
+const FrontDoorCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateType: S.optional(FrontDoorCertificateType),
   }),
@@ -344,7 +343,7 @@ export interface EnableFrontendEndpointHttpsRequest {
   /** Parameters required for enabling SSL with Front Door-managed certificates (if certificateSource=FrontDoor) */
   frontDoorCertificateSourceParameters?: FrontDoorCertificateSourceParameters;
 }
-export const EnableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -368,12 +367,12 @@ export const EnableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableFrontendEndpointHttpsRequest>;
 
 export interface EnableFrontendEndpointHttpsResponse {}
-export const EnableFrontendEndpointHttpsResponse =
+const EnableFrontendEndpointHttpsResponse =
   DeleteNetworkExperimentProfileResponse as any as S.Schema<EnableFrontendEndpointHttpsResponse>;
 
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ExperimentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ExperimentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ExperimentsCreateOrUpdateRequestTagsMap>;
@@ -385,7 +384,7 @@ export interface Endpoint {
   /** The endpoint URL */
   endpoint?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -394,7 +393,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the Experiment */
 export type State = "Enabled" | "Disabled";
-export const State = S.String;
+const State = S.String;
 
 /** Defines the properties of an experiment */
 export interface ExperimentPropertiesInput {
@@ -407,7 +406,7 @@ export interface ExperimentPropertiesInput {
   /** The state of the Experiment */
   enabledState?: State | (string & {});
 }
-export const ExperimentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ExperimentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     endpointA: S.optional(Endpoint),
@@ -434,7 +433,7 @@ export interface ExperimentsCreateOrUpdateRequest {
   /** The properties of an Experiment */
   properties?: ExperimentPropertiesInput;
 }
-export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -457,7 +456,7 @@ export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ExperimentsCreateOrUpdateResponseTagsMap =
+const ExperimentsCreateOrUpdateResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
 
 /** Defines the server side resource status */
@@ -468,7 +467,7 @@ export type NetworkExperimentResourceState =
   | "Disabling"
   | "Disabled"
   | "Deleting";
-export const NetworkExperimentResourceState = S.String;
+const NetworkExperimentResourceState = S.String;
 
 /** Defines the properties of an experiment */
 export interface ExperimentProperties {
@@ -487,7 +486,7 @@ export interface ExperimentProperties {
   /** The uri to the Script used in the Experiment */
   scriptFileUri?: string;
 }
-export const ExperimentProperties = /*@__PURE__*/ S.suspend(() =>
+const ExperimentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     endpointA: S.optional(Endpoint),
@@ -513,7 +512,7 @@ export interface ExperimentsCreateOrUpdateResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
-export const ExperimentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -528,45 +527,43 @@ export const ExperimentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FrontDoorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FrontDoorsCreateOrUpdateRequestTagsMap =
+const FrontDoorsCreateOrUpdateRequestTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorsCreateOrUpdateRequestTagsMap>;
 
 /** Reference to another subresource. */
 export type SubResource = KeyVaultCertificateSourceParametersVault;
-export const SubResource = KeyVaultCertificateSourceParametersVault;
-
 /** Frontend endpoints associated with this rule */
 export type RoutingRulePropertiesFrontendEndpointsList =
   Array<KeyVaultCertificateSourceParametersVault>;
-export const RoutingRulePropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
+const RoutingRulePropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
   KeyVaultCertificateSourceParametersVault,
 ) as any as S.Schema<RoutingRulePropertiesFrontendEndpointsList>;
 
 /** Accepted protocol schemes. */
 export type FrontDoorProtocol = "Http" | "Https";
-export const FrontDoorProtocol = S.String;
+const FrontDoorProtocol = S.String;
 
 /** Protocol schemes to match for this rule */
 export type RoutingRulePropertiesAcceptedProtocolsList = Array<FrontDoorProtocol | (string & {})>;
-export const RoutingRulePropertiesAcceptedProtocolsList = /*@__PURE__*/ S.Array(
+const RoutingRulePropertiesAcceptedProtocolsList = /*@__PURE__*/ S.Array(
   FrontDoorProtocol,
 ) as any as S.Schema<RoutingRulePropertiesAcceptedProtocolsList>;
 
 /** The route patterns of the rule. */
 export type RoutingRulePropertiesPatternsToMatchList = Array<string>;
-export const RoutingRulePropertiesPatternsToMatchList = /*@__PURE__*/ S.Array(
+const RoutingRulePropertiesPatternsToMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutingRulePropertiesPatternsToMatchList>;
 
 /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
 export type RoutingRuleEnabledState = "Enabled" | "Disabled";
-export const RoutingRuleEnabledState = S.String;
+const RoutingRuleEnabledState = S.String;
 
 /** Base class for all types of Route. */
 export interface RouteConfiguration {
   _odata_type: string;
 }
-export const RouteConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RouteConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _odata_type: S.String.pipe(T.Body("@odata.type")),
   }),
@@ -575,9 +572,6 @@ export const RouteConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** Defines the Web Application Firewall policy for each routing rule (if applicable) */
 export type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink =
   KeyVaultCertificateSourceParametersVault;
-export const RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink =
-  KeyVaultCertificateSourceParametersVault;
-
 /** Resource status of the Front Door or Front Door SubResource. */
 export type FrontDoorResourceState =
   | "Creating"
@@ -588,7 +582,7 @@ export type FrontDoorResourceState =
   | "Deleting"
   | "Migrating"
   | "Migrated";
-export const FrontDoorResourceState = S.String;
+const FrontDoorResourceState = S.String;
 
 /** The JSON object that contains the properties required to create a routing rule. */
 export interface RoutingRuleProperties {
@@ -609,7 +603,7 @@ export interface RoutingRuleProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
-export const RoutingRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frontendEndpoints: S.optional(RoutingRulePropertiesFrontendEndpointsList),
     acceptedProtocols: S.optional(RoutingRulePropertiesAcceptedProtocolsList),
@@ -631,7 +625,7 @@ export interface RoutingRuleInput {
   /** Resource name. */
   name?: string;
 }
-export const RoutingRuleInput = /*@__PURE__*/ S.suspend(() =>
+const RoutingRuleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(RoutingRuleProperties),
@@ -641,7 +635,7 @@ export const RoutingRuleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Routing rules associated with this Front Door. */
 export type FrontDoorPropertiesInputRoutingRulesList = Array<RoutingRuleInput>;
-export const FrontDoorPropertiesInputRoutingRulesList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesInputRoutingRulesList = /*@__PURE__*/ S.Array(
   RoutingRuleInput,
 ) as any as S.Schema<FrontDoorPropertiesInputRoutingRulesList>;
 
@@ -656,7 +650,7 @@ export interface LoadBalancingSettingsProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
-export const LoadBalancingSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancingSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sampleSize: S.optional(S.Number),
     successfulSamplesRequired: S.optional(S.Number),
@@ -676,7 +670,7 @@ export interface LoadBalancingSettingsModelInput {
   /** Resource name. */
   name?: string;
 }
-export const LoadBalancingSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancingSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(LoadBalancingSettingsProperties),
@@ -689,17 +683,17 @@ export const LoadBalancingSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
 /** Load balancing settings associated with this Front Door instance. */
 export type FrontDoorPropertiesInputLoadBalancingSettingsList =
   Array<LoadBalancingSettingsModelInput>;
-export const FrontDoorPropertiesInputLoadBalancingSettingsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesInputLoadBalancingSettingsList = /*@__PURE__*/ S.Array(
   LoadBalancingSettingsModelInput,
 ) as any as S.Schema<FrontDoorPropertiesInputLoadBalancingSettingsList>;
 
 /** Configures which HTTP method to use to probe the backends defined under backendPools. */
 export type HealthProbeSettingsPropertiesHealthProbeMethod = "GET" | "HEAD";
-export const HealthProbeSettingsPropertiesHealthProbeMethod = S.String;
+const HealthProbeSettingsPropertiesHealthProbeMethod = S.String;
 
 /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
 export type HealthProbeEnabled = "Enabled" | "Disabled";
-export const HealthProbeEnabled = S.String;
+const HealthProbeEnabled = S.String;
 
 /** The JSON object that contains the properties required to create a health probe settings. */
 export interface HealthProbeSettingsProperties {
@@ -716,7 +710,7 @@ export interface HealthProbeSettingsProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
-export const HealthProbeSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const HealthProbeSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     protocol: S.optional(FrontDoorProtocol),
@@ -738,7 +732,7 @@ export interface HealthProbeSettingsModelInput {
   /** Resource name. */
   name?: string;
 }
-export const HealthProbeSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
+const HealthProbeSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(HealthProbeSettingsProperties),
@@ -750,7 +744,7 @@ export const HealthProbeSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Health probe settings associated with this Front Door instance. */
 export type FrontDoorPropertiesInputHealthProbeSettingsList = Array<HealthProbeSettingsModelInput>;
-export const FrontDoorPropertiesInputHealthProbeSettingsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesInputHealthProbeSettingsList = /*@__PURE__*/ S.Array(
   HealthProbeSettingsModelInput,
 ) as any as S.Schema<FrontDoorPropertiesInputHealthProbeSettingsList>;
 
@@ -761,11 +755,11 @@ export type PrivateEndpointStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
-export const PrivateEndpointStatus = S.String;
+const PrivateEndpointStatus = S.String;
 
 /** Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled' */
 export type BackendEnabledState = "Enabled" | "Disabled";
-export const BackendEnabledState = S.String;
+const BackendEnabledState = S.String;
 
 /** Backend address of a frontDoor load balancer. */
 export interface Backend {
@@ -794,7 +788,7 @@ export interface Backend {
   /** The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host. */
   backendHostHeader?: string;
 }
-export const Backend = /*@__PURE__*/ S.suspend(() =>
+const Backend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     privateLinkAlias: S.optional(S.String),
@@ -813,7 +807,7 @@ export const Backend = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of backends for this pool */
 export type BackendPoolPropertiesBackendsList = Array<Backend>;
-export const BackendPoolPropertiesBackendsList = /*@__PURE__*/ S.Array(
+const BackendPoolPropertiesBackendsList = /*@__PURE__*/ S.Array(
   Backend,
 ) as any as S.Schema<BackendPoolPropertiesBackendsList>;
 
@@ -828,7 +822,7 @@ export interface BackendPoolProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
-export const BackendPoolProperties = /*@__PURE__*/ S.suspend(() =>
+const BackendPoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backends: S.optional(BackendPoolPropertiesBackendsList),
     loadBalancingSettings: S.optional(KeyVaultCertificateSourceParametersVault),
@@ -846,7 +840,7 @@ export interface BackendPoolInput {
   /** Resource name. */
   name?: string;
 }
-export const BackendPoolInput = /*@__PURE__*/ S.suspend(() =>
+const BackendPoolInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(BackendPoolProperties),
@@ -856,20 +850,17 @@ export const BackendPoolInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Backend pools available to routing rules. */
 export type FrontDoorPropertiesInputBackendPoolsList = Array<BackendPoolInput>;
-export const FrontDoorPropertiesInputBackendPoolsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesInputBackendPoolsList = /*@__PURE__*/ S.Array(
   BackendPoolInput,
 ) as any as S.Schema<FrontDoorPropertiesInputBackendPoolsList>;
 
 /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
 export type SessionAffinityEnabledState = "Enabled" | "Disabled";
-export const SessionAffinityEnabledState = S.String;
+const SessionAffinityEnabledState = S.String;
 
 /** Defines the Web Application Firewall policy for each host (if applicable) */
 export type FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink =
   KeyVaultCertificateSourceParametersVault;
-export const FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink =
-  KeyVaultCertificateSourceParametersVault;
-
 /** Provisioning status of Custom Https of the frontendEndpoint. */
 export type CustomHttpsProvisioningState =
   | "Enabling"
@@ -877,7 +868,7 @@ export type CustomHttpsProvisioningState =
   | "Disabling"
   | "Disabled"
   | "Failed";
-export const CustomHttpsProvisioningState = S.String;
+const CustomHttpsProvisioningState = S.String;
 
 /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. */
 export type CustomHttpsProvisioningSubstate =
@@ -891,7 +882,7 @@ export type CustomHttpsProvisioningSubstate =
   | "CertificateDeployed"
   | "DeletingCertificate"
   | "CertificateDeleted";
-export const CustomHttpsProvisioningSubstate = S.String;
+const CustomHttpsProvisioningSubstate = S.String;
 
 /** Https settings for a domain */
 export interface CustomHttpsConfiguration {
@@ -906,7 +897,7 @@ export interface CustomHttpsConfiguration {
   /** Parameters required for enabling SSL with Front Door-managed certificates (if certificateSource=FrontDoor) */
   frontDoorCertificateSourceParameters?: FrontDoorCertificateSourceParameters;
 }
-export const CustomHttpsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CustomHttpsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateSource: FrontDoorCertificateSource,
     protocolType: FrontDoorTlsProtocolType,
@@ -935,7 +926,7 @@ export interface FrontendEndpointProperties {
   /** The configuration specifying how to enable HTTPS */
   customHttpsConfiguration?: CustomHttpsConfiguration;
 }
-export const FrontendEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const FrontendEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.optional(S.String),
     sessionAffinityEnabledState: S.optional(SessionAffinityEnabledState),
@@ -959,7 +950,7 @@ export interface FrontendEndpointInput {
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
-export const FrontendEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const FrontendEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -969,13 +960,13 @@ export const FrontendEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Frontend endpoints available to routing rules. */
 export type FrontDoorPropertiesInputFrontendEndpointsList = Array<FrontendEndpointInput>;
-export const FrontDoorPropertiesInputFrontendEndpointsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesInputFrontendEndpointsList = /*@__PURE__*/ S.Array(
   FrontendEndpointInput,
 ) as any as S.Schema<FrontDoorPropertiesInputFrontendEndpointsList>;
 
 /** Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests. */
 export type BackendPoolsSettingsEnforceCertificateNameCheck = "Enabled" | "Disabled";
-export const BackendPoolsSettingsEnforceCertificateNameCheck = S.String;
+const BackendPoolsSettingsEnforceCertificateNameCheck = S.String;
 
 /** Settings that apply to all backend pools. */
 export interface BackendPoolsSettings {
@@ -984,7 +975,7 @@ export interface BackendPoolsSettings {
   /** Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns. */
   sendRecvTimeoutSeconds?: number;
 }
-export const BackendPoolsSettings = /*@__PURE__*/ S.suspend(() =>
+const BackendPoolsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforceCertificateNameCheck: S.optional(BackendPoolsSettingsEnforceCertificateNameCheck),
     sendRecvTimeoutSeconds: S.optional(S.Number),
@@ -993,7 +984,7 @@ export const BackendPoolsSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled' */
 export type FrontDoorEnabledState = "Enabled" | "Disabled";
-export const FrontDoorEnabledState = S.String;
+const FrontDoorEnabledState = S.String;
 
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface FrontDoorPropertiesInput {
@@ -1014,7 +1005,7 @@ export interface FrontDoorPropertiesInput {
   /** Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: FrontDoorEnabledState | (string & {});
 }
-export const FrontDoorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FrontDoorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
     routingRules: S.optional(FrontDoorPropertiesInputRoutingRulesList),
@@ -1041,7 +1032,7 @@ export interface FrontDoorsCreateOrUpdateRequest {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorPropertiesInput;
 }
-export const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1063,7 +1054,7 @@ export const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FrontDoorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FrontDoorsCreateOrUpdateResponseTagsMap =
+const FrontDoorsCreateOrUpdateResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorsCreateOrUpdateResponseTagsMap>;
 
 /** A routing rule represents a specification for traffic to treat and where to send it, along with health probe information. */
@@ -1077,7 +1068,7 @@ export interface RoutingRule {
   /** Resource type. */
   type?: string;
 }
-export const RoutingRule = /*@__PURE__*/ S.suspend(() =>
+const RoutingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(RoutingRuleProperties),
@@ -1088,7 +1079,7 @@ export const RoutingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Routing rules associated with this Front Door. */
 export type FrontDoorPropertiesRoutingRulesList = Array<RoutingRule>;
-export const FrontDoorPropertiesRoutingRulesList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesRoutingRulesList = /*@__PURE__*/ S.Array(
   RoutingRule,
 ) as any as S.Schema<FrontDoorPropertiesRoutingRulesList>;
 
@@ -1103,7 +1094,7 @@ export interface LoadBalancingSettingsModel {
   /** Resource type. */
   type?: string;
 }
-export const LoadBalancingSettingsModel = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancingSettingsModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(LoadBalancingSettingsProperties),
@@ -1116,7 +1107,7 @@ export const LoadBalancingSettingsModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Load balancing settings associated with this Front Door instance. */
 export type FrontDoorPropertiesLoadBalancingSettingsList = Array<LoadBalancingSettingsModel>;
-export const FrontDoorPropertiesLoadBalancingSettingsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesLoadBalancingSettingsList = /*@__PURE__*/ S.Array(
   LoadBalancingSettingsModel,
 ) as any as S.Schema<FrontDoorPropertiesLoadBalancingSettingsList>;
 
@@ -1131,7 +1122,7 @@ export interface HealthProbeSettingsModel {
   /** Resource type. */
   type?: string;
 }
-export const HealthProbeSettingsModel = /*@__PURE__*/ S.suspend(() =>
+const HealthProbeSettingsModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(HealthProbeSettingsProperties),
@@ -1142,7 +1133,7 @@ export const HealthProbeSettingsModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Health probe settings associated with this Front Door instance. */
 export type FrontDoorPropertiesHealthProbeSettingsList = Array<HealthProbeSettingsModel>;
-export const FrontDoorPropertiesHealthProbeSettingsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesHealthProbeSettingsList = /*@__PURE__*/ S.Array(
   HealthProbeSettingsModel,
 ) as any as S.Schema<FrontDoorPropertiesHealthProbeSettingsList>;
 
@@ -1157,7 +1148,7 @@ export interface BackendPool {
   /** Resource type. */
   type?: string;
 }
-export const BackendPool = /*@__PURE__*/ S.suspend(() =>
+const BackendPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(BackendPoolProperties),
@@ -1168,7 +1159,7 @@ export const BackendPool = /*@__PURE__*/ S.suspend(() =>
 
 /** Backend pools available to routing rules. */
 export type FrontDoorPropertiesBackendPoolsList = Array<BackendPool>;
-export const FrontDoorPropertiesBackendPoolsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesBackendPoolsList = /*@__PURE__*/ S.Array(
   BackendPool,
 ) as any as S.Schema<FrontDoorPropertiesBackendPoolsList>;
 
@@ -1183,7 +1174,7 @@ export interface FrontendEndpoint {
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
-export const FrontendEndpoint = /*@__PURE__*/ S.suspend(() =>
+const FrontendEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1194,13 +1185,13 @@ export const FrontendEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Frontend endpoints available to routing rules. */
 export type FrontDoorPropertiesFrontendEndpointsList = Array<FrontendEndpoint>;
-export const FrontDoorPropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
   FrontendEndpoint,
 ) as any as S.Schema<FrontDoorPropertiesFrontendEndpointsList>;
 
 /** Which type of manipulation to apply to the header. */
 export type HeaderActionType = "Append" | "Delete" | "Overwrite";
-export const HeaderActionType = S.String;
+const HeaderActionType = S.String;
 
 /** An action that can manipulate an http header. */
 export interface HeaderAction {
@@ -1211,7 +1202,7 @@ export interface HeaderAction {
   /** The value to update the given header name with. This value is not used if the actionType is Delete. */
   value?: string;
 }
-export const HeaderAction = /*@__PURE__*/ S.suspend(() =>
+const HeaderAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerActionType: HeaderActionType,
     headerName: S.String,
@@ -1221,13 +1212,13 @@ export const HeaderAction = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of header actions to apply from the request from AFD to the origin. */
 export type RulesEngineActionRequestHeaderActionsList = Array<HeaderAction>;
-export const RulesEngineActionRequestHeaderActionsList = /*@__PURE__*/ S.Array(
+const RulesEngineActionRequestHeaderActionsList = /*@__PURE__*/ S.Array(
   HeaderAction,
 ) as any as S.Schema<RulesEngineActionRequestHeaderActionsList>;
 
 /** A list of header actions to apply from the response from AFD to the client. */
 export type RulesEngineActionResponseHeaderActionsList = Array<HeaderAction>;
-export const RulesEngineActionResponseHeaderActionsList =
+const RulesEngineActionResponseHeaderActionsList =
   RulesEngineActionRequestHeaderActionsList as any as S.Schema<RulesEngineActionResponseHeaderActionsList>;
 
 /** One or more actions that will execute, modifying the request and/or response. */
@@ -1239,7 +1230,7 @@ export interface RulesEngineAction {
   /** Override the route configuration. */
   routeConfigurationOverride?: RouteConfiguration;
 }
-export const RulesEngineAction = /*@__PURE__*/ S.suspend(() =>
+const RulesEngineAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestHeaderActions: S.optional(RulesEngineActionRequestHeaderActionsList),
     responseHeaderActions: S.optional(RulesEngineActionResponseHeaderActionsList),
@@ -1261,7 +1252,7 @@ export type RulesEngineMatchVariable =
   | "RequestHeader"
   | "RequestBody"
   | "RequestScheme";
-export const RulesEngineMatchVariable = S.String;
+const RulesEngineMatchVariable = S.String;
 
 /** Describes operator to apply to the match condition. */
 export type RulesEngineOperator =
@@ -1276,11 +1267,11 @@ export type RulesEngineOperator =
   | "GreaterThanOrEqual"
   | "BeginsWith"
   | "EndsWith";
-export const RulesEngineOperator = S.String;
+const RulesEngineOperator = S.String;
 
 /** Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match. */
 export type RulesEngineMatchConditionRulesEngineMatchValueList = Array<string>;
-export const RulesEngineMatchConditionRulesEngineMatchValueList =
+const RulesEngineMatchConditionRulesEngineMatchValueList =
   RoutingRulePropertiesPatternsToMatchList as any as S.Schema<RulesEngineMatchConditionRulesEngineMatchValueList>;
 
 /** Describes what transforms are applied before matching */
@@ -1291,11 +1282,9 @@ export type Transform =
   | "UrlDecode"
   | "UrlEncode"
   | "RemoveNulls";
-export const Transform = S.String;
-
 /** List of transforms */
 export type RulesEngineMatchConditionTransformsList = Array<Transform | (string & {})>;
-export const RulesEngineMatchConditionTransformsList =
+const RulesEngineMatchConditionTransformsList =
   RoutingRulePropertiesAcceptedProtocolsList as any as S.Schema<RulesEngineMatchConditionTransformsList>;
 
 /** Define a match condition */
@@ -1313,7 +1302,7 @@ export interface RulesEngineMatchCondition {
   /** List of transforms */
   transforms?: RulesEngineMatchConditionTransformsList;
 }
-export const RulesEngineMatchCondition = /*@__PURE__*/ S.suspend(() =>
+const RulesEngineMatchCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rulesEngineMatchVariable: RulesEngineMatchVariable,
     selector: S.optional(S.String),
@@ -1328,13 +1317,13 @@ export const RulesEngineMatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run. */
 export type RulesEngineRuleMatchConditionsList = Array<RulesEngineMatchCondition>;
-export const RulesEngineRuleMatchConditionsList = /*@__PURE__*/ S.Array(
+const RulesEngineRuleMatchConditionsList = /*@__PURE__*/ S.Array(
   RulesEngineMatchCondition,
 ) as any as S.Schema<RulesEngineRuleMatchConditionsList>;
 
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type MatchProcessingBehavior = "Continue" | "Stop";
-export const MatchProcessingBehavior = S.String;
+const MatchProcessingBehavior = S.String;
 
 /** Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation. */
 export interface RulesEngineRule {
@@ -1349,7 +1338,7 @@ export interface RulesEngineRule {
   /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
   matchProcessingBehavior?: MatchProcessingBehavior | (string & {});
 }
-export const RulesEngineRule = /*@__PURE__*/ S.suspend(() =>
+const RulesEngineRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     priority: S.Number,
@@ -1361,7 +1350,7 @@ export const RulesEngineRule = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of rules that define a particular Rules Engine Configuration. */
 export type RulesEnginePropertiesRulesList = Array<RulesEngineRule>;
-export const RulesEnginePropertiesRulesList = /*@__PURE__*/ S.Array(
+const RulesEnginePropertiesRulesList = /*@__PURE__*/ S.Array(
   RulesEngineRule,
 ) as any as S.Schema<RulesEnginePropertiesRulesList>;
 
@@ -1372,7 +1361,7 @@ export interface RulesEngineProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
-export const RulesEngineProperties = /*@__PURE__*/ S.suspend(() =>
+const RulesEngineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(RulesEnginePropertiesRulesList),
     resourceState: S.optional(FrontDoorResourceState),
@@ -1390,7 +1379,7 @@ export interface RulesEngine {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
-export const RulesEngine = /*@__PURE__*/ S.suspend(() =>
+const RulesEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1401,13 +1390,13 @@ export const RulesEngine = /*@__PURE__*/ S.suspend(() =>
 
 /** Rules Engine Configurations available to routing rules. */
 export type FrontDoorPropertiesRulesEnginesList = Array<RulesEngine>;
-export const FrontDoorPropertiesRulesEnginesList = /*@__PURE__*/ S.Array(
+const FrontDoorPropertiesRulesEnginesList = /*@__PURE__*/ S.Array(
   RulesEngine,
 ) as any as S.Schema<FrontDoorPropertiesRulesEnginesList>;
 
 /** Key-Value pair representing additional properties for frontdoor. */
 export type FrontDoorPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
-export const FrontDoorPropertiesExtendedPropertiesMap =
+const FrontDoorPropertiesExtendedPropertiesMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorPropertiesExtendedPropertiesMap>;
 
 /** The JSON object that contains the properties required to create an endpoint. */
@@ -1441,7 +1430,7 @@ export interface FrontDoorProperties {
   /** Key-Value pair representing additional properties for frontdoor. */
   extendedProperties?: FrontDoorPropertiesExtendedPropertiesMap;
 }
-export const FrontDoorProperties = /*@__PURE__*/ S.suspend(() =>
+const FrontDoorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
     routingRules: S.optional(FrontDoorPropertiesRoutingRulesList),
@@ -1474,7 +1463,7 @@ export interface FrontDoorsCreateOrUpdateResponse {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
-export const FrontDoorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FrontDoorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1497,7 +1486,7 @@ export interface GetExperimentRequest {
   /** The Experiment identifier associated with the Experiment */
   experimentName: string;
 }
-export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1515,7 +1504,7 @@ export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetExperimentResponseTagsMap = { [key: string]: string | undefined };
-export const GetExperimentResponseTagsMap =
+const GetExperimentResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetExperimentResponseTagsMap>;
 
 export interface GetExperimentResponse {
@@ -1532,7 +1521,7 @@ export interface GetExperimentResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
-export const GetExperimentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1551,7 +1540,7 @@ export interface GetFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
-export const GetFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1568,7 +1557,7 @@ export const GetFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFrontDoorResponseTagsMap = { [key: string]: string | undefined };
-export const GetFrontDoorResponseTagsMap =
+const GetFrontDoorResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetFrontDoorResponseTagsMap>;
 
 export interface GetFrontDoorResponse {
@@ -1585,7 +1574,7 @@ export interface GetFrontDoorResponse {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
-export const GetFrontDoorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFrontDoorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1606,7 +1595,7 @@ export interface GetFrontendEndpointRequest {
   /** Name of the Frontend endpoint which is unique within the Front Door. */
   frontendEndpointName: string;
 }
-export const GetFrontendEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFrontendEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1634,7 +1623,7 @@ export interface GetFrontendEndpointResponse {
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
-export const GetFrontendEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFrontendEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1653,7 +1642,7 @@ export interface GetNetworkExperimentProfileRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
-export const GetNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1672,7 +1661,7 @@ export const GetNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkExperimentProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkExperimentProfileResponseTagsMap =
+const GetNetworkExperimentProfileResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkExperimentProfileResponseTagsMap>;
 
 /** Defines the properties of an experiment */
@@ -1682,7 +1671,7 @@ export interface ProfileProperties {
   /** The state of the Experiment */
   enabledState?: State | (string & {});
 }
-export const ProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const ProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceState: S.optional(NetworkExperimentResourceState),
     enabledState: S.optional(State),
@@ -1705,7 +1694,7 @@ export interface GetNetworkExperimentProfileResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const GetNetworkExperimentProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkExperimentProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1727,7 +1716,7 @@ export interface GetPolicyRequest {
   /** The name of the Web Application Firewall Policy. */
   policyName: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1744,24 +1733,24 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyResponseTagsMap =
+const GetPolicyResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPolicyResponseTagsMap>;
 
 /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type PolicyEnabledState = "Disabled" | "Enabled";
-export const PolicyEnabledState = S.String;
+const PolicyEnabledState = S.String;
 
 /** Describes if it is in detection mode or prevention mode at policy level. */
 export type PolicyMode = "Prevention" | "Detection";
-export const PolicyMode = S.String;
+const PolicyMode = S.String;
 
 /** Describes if policy managed rules will inspect the request body content. */
 export type PolicyRequestBodyCheck = "Disabled" | "Enabled";
-export const PolicyRequestBodyCheck = S.String;
+const PolicyRequestBodyCheck = S.String;
 
 /** State of the log scrubbing config. Default value is Enabled. */
 export type WebApplicationFirewallScrubbingState = "Enabled" | "Disabled";
-export const WebApplicationFirewallScrubbingState = S.String;
+const WebApplicationFirewallScrubbingState = S.String;
 
 /** The variable to be scrubbed from the logs. */
 export type ScrubbingRuleEntryMatchVariable =
@@ -1772,15 +1761,15 @@ export type ScrubbingRuleEntryMatchVariable =
   | "RequestCookieNames"
   | "RequestBodyPostArgNames"
   | "RequestBodyJsonArgNames";
-export const ScrubbingRuleEntryMatchVariable = S.String;
+const ScrubbingRuleEntryMatchVariable = S.String;
 
 /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
 export type ScrubbingRuleEntryMatchOperator = "EqualsAny" | "Equals";
-export const ScrubbingRuleEntryMatchOperator = S.String;
+const ScrubbingRuleEntryMatchOperator = S.String;
 
 /** Defines the state of a log scrubbing rule. Default value is enabled. */
 export type ScrubbingRuleEntryState = "Enabled" | "Disabled";
-export const ScrubbingRuleEntryState = S.String;
+const ScrubbingRuleEntryState = S.String;
 
 /** Defines the contents of the log scrubbing rules. */
 export interface WebApplicationFirewallScrubbingRules {
@@ -1793,7 +1782,7 @@ export interface WebApplicationFirewallScrubbingRules {
   /** Defines the state of a log scrubbing rule. Default value is enabled. */
   state?: ScrubbingRuleEntryState | (string & {});
 }
-export const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchVariable: ScrubbingRuleEntryMatchVariable,
     selectorMatchOperator: ScrubbingRuleEntryMatchOperator,
@@ -1807,7 +1796,7 @@ export const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ S.suspend(() =
 /** List of log scrubbing rules applied to the Web Application Firewall logs. */
 export type PolicySettingsLogScrubbingScrubbingRulesList =
   Array<WebApplicationFirewallScrubbingRules>;
-export const PolicySettingsLogScrubbingScrubbingRulesList = /*@__PURE__*/ S.Array(
+const PolicySettingsLogScrubbingScrubbingRulesList = /*@__PURE__*/ S.Array(
   WebApplicationFirewallScrubbingRules,
 ) as any as S.Schema<PolicySettingsLogScrubbingScrubbingRulesList>;
 
@@ -1818,7 +1807,7 @@ export interface PolicySettingsLogScrubbing {
   /** List of log scrubbing rules applied to the Web Application Firewall logs. */
   scrubbingRules?: PolicySettingsLogScrubbingScrubbingRulesList;
 }
-export const PolicySettingsLogScrubbing = /*@__PURE__*/ S.suspend(() =>
+const PolicySettingsLogScrubbing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(WebApplicationFirewallScrubbingState),
     scrubbingRules: S.optional(PolicySettingsLogScrubbingScrubbingRulesList),
@@ -1848,7 +1837,7 @@ export interface PolicySettings {
   /** Defines rules that scrub sensitive fields in the Web Application Firewall logs. */
   logScrubbing?: PolicySettingsLogScrubbing;
 }
-export const PolicySettings = /*@__PURE__*/ S.suspend(() =>
+const PolicySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledState: S.optional(PolicyEnabledState),
     mode: S.optional(PolicyMode),
@@ -1864,22 +1853,22 @@ export const PolicySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type CustomRuleEnabledState = "Disabled" | "Enabled";
-export const CustomRuleEnabledState = S.String;
+const CustomRuleEnabledState = S.String;
 
 /** Describes type of rule. */
 export type RuleType = "MatchRule" | "RateLimitRule";
-export const RuleType = S.String;
+const RuleType = S.String;
 
 /** Describes the supported variable for group by */
 export type VariableName = "SocketAddr" | "GeoLocation" | "None" | "Asn" | "Ja4";
-export const VariableName = S.String;
+const VariableName = S.String;
 
 /** Describes the variables available to group the rate limit requests */
 export interface GroupByVariable {
   /** Describes the supported variable for group by */
   variableName: VariableName | (string & {});
 }
-export const GroupByVariable = /*@__PURE__*/ S.suspend(() =>
+const GroupByVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variableName: VariableName,
   }),
@@ -1887,7 +1876,7 @@ export const GroupByVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the list of variables to group the rate limit requests */
 export type CustomRuleGroupByList = Array<GroupByVariable>;
-export const CustomRuleGroupByList = /*@__PURE__*/ S.Array(
+const CustomRuleGroupByList = /*@__PURE__*/ S.Array(
   GroupByVariable,
 ) as any as S.Schema<CustomRuleGroupByList>;
 
@@ -1903,7 +1892,7 @@ export type MatchVariable =
   | "Cookies"
   | "SocketAddr"
   | "JA4";
-export const MatchVariable = S.String;
+const MatchVariable = S.String;
 
 /** Comparison type to use for matching with the variable value. */
 export type Operator =
@@ -1922,11 +1911,11 @@ export type Operator =
   | "ServiceTagMatch"
   | "AsnMatch"
   | "ClientFingerprint";
-export const Operator = S.String;
+const Operator = S.String;
 
 /** List of possible match values. */
 export type MatchConditionMatchValueList = Array<string>;
-export const MatchConditionMatchValueList =
+const MatchConditionMatchValueList =
   RoutingRulePropertiesPatternsToMatchList as any as S.Schema<MatchConditionMatchValueList>;
 
 /** Describes what transforms applied before matching. */
@@ -1937,11 +1926,9 @@ export type TransformType =
   | "UrlDecode"
   | "UrlEncode"
   | "RemoveNulls";
-export const TransformType = S.String;
-
 /** List of transforms. */
 export type MatchConditionTransformsList = Array<TransformType | (string & {})>;
-export const MatchConditionTransformsList =
+const MatchConditionTransformsList =
   RoutingRulePropertiesAcceptedProtocolsList as any as S.Schema<MatchConditionTransformsList>;
 
 /** Define a match condition. */
@@ -1959,7 +1946,7 @@ export interface MatchCondition {
   /** List of transforms. */
   transforms?: MatchConditionTransformsList;
 }
-export const MatchCondition = /*@__PURE__*/ S.suspend(() =>
+const MatchCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchVariable: MatchVariable,
     selector: S.optional(S.String),
@@ -1972,7 +1959,7 @@ export const MatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of match conditions. */
 export type CustomRuleMatchConditionsList = Array<MatchCondition>;
-export const CustomRuleMatchConditionsList = /*@__PURE__*/ S.Array(
+const CustomRuleMatchConditionsList = /*@__PURE__*/ S.Array(
   MatchCondition,
 ) as any as S.Schema<CustomRuleMatchConditionsList>;
 
@@ -1985,7 +1972,7 @@ export type ActionType =
   | "AnomalyScoring"
   | "JSChallenge"
   | "CAPTCHA";
-export const ActionType = S.String;
+const ActionType = S.String;
 
 /** Defines contents of a web application rule */
 export interface CustomRule {
@@ -2008,7 +1995,7 @@ export interface CustomRule {
   /** Describes what action to be applied when rule matches. */
   action: ActionType | (string & {});
 }
-export const CustomRule = /*@__PURE__*/ S.suspend(() =>
+const CustomRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     priority: S.Number,
@@ -2024,7 +2011,7 @@ export const CustomRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules */
 export type CustomRuleListRulesList = Array<CustomRule>;
-export const CustomRuleListRulesList = /*@__PURE__*/ S.Array(
+const CustomRuleListRulesList = /*@__PURE__*/ S.Array(
   CustomRule,
 ) as any as S.Schema<CustomRuleListRulesList>;
 
@@ -2033,7 +2020,7 @@ export interface CustomRuleList {
   /** List of rules */
   rules?: CustomRuleListRulesList;
 }
-export const CustomRuleList = /*@__PURE__*/ S.suspend(() =>
+const CustomRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(CustomRuleListRulesList),
   }),
@@ -2041,7 +2028,7 @@ export const CustomRuleList = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the action to take when a managed rule set score threshold is met. */
 export type ManagedRuleSetActionType = "Block" | "Log" | "Redirect";
-export const ManagedRuleSetActionType = S.String;
+const ManagedRuleSetActionType = S.String;
 
 /** The variable type to be excluded. */
 export type ManagedRuleExclusionMatchVariable =
@@ -2050,7 +2037,7 @@ export type ManagedRuleExclusionMatchVariable =
   | "QueryStringArgNames"
   | "RequestBodyPostArgNames"
   | "RequestBodyJsonArgNames";
-export const ManagedRuleExclusionMatchVariable = S.String;
+const ManagedRuleExclusionMatchVariable = S.String;
 
 /** Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. */
 export type ManagedRuleExclusionSelectorMatchOperator =
@@ -2059,7 +2046,7 @@ export type ManagedRuleExclusionSelectorMatchOperator =
   | "StartsWith"
   | "EndsWith"
   | "EqualsAny";
-export const ManagedRuleExclusionSelectorMatchOperator = S.String;
+const ManagedRuleExclusionSelectorMatchOperator = S.String;
 
 /** Exclude variables from managed rule evaluation. */
 export interface ManagedRuleExclusion {
@@ -2070,7 +2057,7 @@ export interface ManagedRuleExclusion {
   /** Selector value for which elements in the collection this exclusion applies to. */
   selector: string;
 }
-export const ManagedRuleExclusion = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleExclusion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchVariable: ManagedRuleExclusionMatchVariable,
     selectorMatchOperator: ManagedRuleExclusionSelectorMatchOperator,
@@ -2080,26 +2067,26 @@ export const ManagedRuleExclusion = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the exclusions that are applied to all rules in the set. */
 export type ManagedRuleSetExclusionsList = Array<ManagedRuleExclusion>;
-export const ManagedRuleSetExclusionsList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetExclusionsList = /*@__PURE__*/ S.Array(
   ManagedRuleExclusion,
 ) as any as S.Schema<ManagedRuleSetExclusionsList>;
 
 /** Describes the exclusions that are applied to all rules in the group. */
 export type ManagedRuleGroupOverrideExclusionsList = Array<ManagedRuleExclusion>;
-export const ManagedRuleGroupOverrideExclusionsList =
+const ManagedRuleGroupOverrideExclusionsList =
   ManagedRuleSetExclusionsList as any as S.Schema<ManagedRuleGroupOverrideExclusionsList>;
 
 /** Describes if the managed rule is in enabled or disabled state. */
 export type ManagedRuleEnabledState = "Disabled" | "Enabled";
-export const ManagedRuleEnabledState = S.String;
+const ManagedRuleEnabledState = S.String;
 
 /** Defines the sensitivity for the rule. */
 export type SensitivityType = "Low" | "Medium" | "High";
-export const SensitivityType = S.String;
+const SensitivityType = S.String;
 
 /** Describes the exclusions that are applied to this specific rule. */
 export type ManagedRuleOverrideExclusionsList = Array<ManagedRuleExclusion>;
-export const ManagedRuleOverrideExclusionsList =
+const ManagedRuleOverrideExclusionsList =
   ManagedRuleSetExclusionsList as any as S.Schema<ManagedRuleOverrideExclusionsList>;
 
 /** Defines a managed rule group override setting. */
@@ -2115,7 +2102,7 @@ export interface ManagedRuleOverride {
   /** Describes the exclusions that are applied to this specific rule. */
   exclusions?: ManagedRuleOverrideExclusionsList;
 }
-export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String,
     enabledState: S.optional(ManagedRuleEnabledState),
@@ -2127,7 +2114,7 @@ export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules that will be disabled. If none specified, all rules in the group will be disabled. */
 export type ManagedRuleGroupOverrideRulesList = Array<ManagedRuleOverride>;
-export const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ S.Array(
+const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleOverride,
 ) as any as S.Schema<ManagedRuleGroupOverrideRulesList>;
 
@@ -2140,7 +2127,7 @@ export interface ManagedRuleGroupOverride {
   /** List of rules that will be disabled. If none specified, all rules in the group will be disabled. */
   rules?: ManagedRuleGroupOverrideRulesList;
 }
-export const ManagedRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleGroupName: S.String,
     exclusions: S.optional(ManagedRuleGroupOverrideExclusionsList),
@@ -2150,7 +2137,7 @@ export const ManagedRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the rule group overrides to apply to the rule set. */
 export type ManagedRuleSetRuleGroupOverridesList = Array<ManagedRuleGroupOverride>;
-export const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ S.Array(
   ManagedRuleGroupOverride,
 ) as any as S.Schema<ManagedRuleSetRuleGroupOverridesList>;
 
@@ -2167,7 +2154,7 @@ export interface ManagedRuleSet {
   /** Defines the rule group overrides to apply to the rule set. */
   ruleGroupOverrides?: ManagedRuleSetRuleGroupOverridesList;
 }
-export const ManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleSetType: S.String,
     ruleSetVersion: S.String,
@@ -2179,17 +2166,17 @@ export const ManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rule sets. */
 export type ManagedRuleSetListManagedRuleSetsList = Array<ManagedRuleSet>;
-export const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ S.Array(
   ManagedRuleSet,
 ) as any as S.Schema<ManagedRuleSetListManagedRuleSetsList>;
 
 /** The variable to be evaluated for excluding the request. */
 export type ExceptionMatchVariable = "RequestUri" | "SocketAddr" | "RequestHeaderNames";
-export const ExceptionMatchVariable = S.String;
+const ExceptionMatchVariable = S.String;
 
 /** Comparison operator to apply to the selector when specifying which elements in the collection this exception applies to.. */
 export type ExceptionSelectorMatchOperator = "Equals";
-export const ExceptionSelectorMatchOperator = S.String;
+const ExceptionSelectorMatchOperator = S.String;
 
 /** Comparison operator to apply to the value to be matched.. */
 export type ExceptionValueMatchOperator =
@@ -2199,11 +2186,11 @@ export type ExceptionValueMatchOperator =
   | "EndsWith"
   | "EqualsAny"
   | "IPMatch";
-export const ExceptionValueMatchOperator = S.String;
+const ExceptionValueMatchOperator = S.String;
 
 /** List of values to be matched with. */
 export type ManagedRuleSetExceptionMatchValuesList = Array<string>;
-export const ManagedRuleSetExceptionMatchValuesList =
+const ManagedRuleSetExceptionMatchValuesList =
   RoutingRulePropertiesPatternsToMatchList as any as S.Schema<ManagedRuleSetExceptionMatchValuesList>;
 
 /** Defines the scope of the rule. */
@@ -2211,7 +2198,7 @@ export interface RuleScope {
   /** Defines the rule id. */
   ruleId: string;
 }
-export const RuleScope = /*@__PURE__*/ S.suspend(() =>
+const RuleScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String,
   }),
@@ -2219,7 +2206,7 @@ export const RuleScope = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rule scopes. */
 export type RuleGroupScopeRuleScopesList = Array<RuleScope>;
-export const RuleGroupScopeRuleScopesList = /*@__PURE__*/ S.Array(
+const RuleGroupScopeRuleScopesList = /*@__PURE__*/ S.Array(
   RuleScope,
 ) as any as S.Schema<RuleGroupScopeRuleScopesList>;
 
@@ -2230,7 +2217,7 @@ export interface RuleGroupScope {
   /** List of rule scopes. */
   ruleScopes?: RuleGroupScopeRuleScopesList;
 }
-export const RuleGroupScope = /*@__PURE__*/ S.suspend(() =>
+const RuleGroupScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleGroupName: S.String,
     ruleScopes: S.optional(RuleGroupScopeRuleScopesList),
@@ -2239,7 +2226,7 @@ export const RuleGroupScope = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rule group scopes. */
 export type ManagedRuleSetScopeRuleGroupScopesList = Array<RuleGroupScope>;
-export const ManagedRuleSetScopeRuleGroupScopesList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetScopeRuleGroupScopesList = /*@__PURE__*/ S.Array(
   RuleGroupScope,
 ) as any as S.Schema<ManagedRuleSetScopeRuleGroupScopesList>;
 
@@ -2252,7 +2239,7 @@ export interface ManagedRuleSetScope {
   /** List of rule group scopes. */
   ruleGroupScopes?: ManagedRuleSetScopeRuleGroupScopesList;
 }
-export const ManagedRuleSetScope = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleSetType: S.String,
     ruleSetVersion: S.String,
@@ -2262,7 +2249,7 @@ export const ManagedRuleSetScope = /*@__PURE__*/ S.suspend(() =>
 
 /** Scope(s) of the exception. */
 export type ManagedRuleSetExceptionScopesList = Array<ManagedRuleSetScope>;
-export const ManagedRuleSetExceptionScopesList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetExceptionScopesList = /*@__PURE__*/ S.Array(
   ManagedRuleSetScope,
 ) as any as S.Schema<ManagedRuleSetExceptionScopesList>;
 
@@ -2281,7 +2268,7 @@ export interface ManagedRuleSetException {
   /** Scope(s) of the exception. */
   scopes: ManagedRuleSetExceptionScopesList;
 }
-export const ManagedRuleSetException = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetException = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchVariable: ExceptionMatchVariable,
     selectorMatchOperator: S.optional(ExceptionSelectorMatchOperator),
@@ -2294,7 +2281,7 @@ export const ManagedRuleSetException = /*@__PURE__*/ S.suspend(() =>
 
 /** List of exceptions. */
 export type ManagedRuleSetExceptionListExceptionsList = Array<ManagedRuleSetException>;
-export const ManagedRuleSetExceptionListExceptionsList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetExceptionListExceptionsList = /*@__PURE__*/ S.Array(
   ManagedRuleSetException,
 ) as any as S.Schema<ManagedRuleSetExceptionListExceptionsList>;
 
@@ -2303,7 +2290,7 @@ export interface ManagedRuleSetExceptionList {
   /** List of exceptions. */
   exceptions?: ManagedRuleSetExceptionListExceptionsList;
 }
-export const ManagedRuleSetExceptionList = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetExceptionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exceptions: S.optional(ManagedRuleSetExceptionListExceptionsList),
   }),
@@ -2318,7 +2305,7 @@ export interface ManagedRuleSetList {
   /** List of exceptions applied on the managed rule sets. */
   exceptionsList?: ManagedRuleSetExceptionList;
 }
-export const ManagedRuleSetList = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedRuleSets: S.optional(ManagedRuleSetListManagedRuleSetsList),
     exceptionsList: S.optional(ManagedRuleSetExceptionList),
@@ -2327,34 +2314,27 @@ export const ManagedRuleSetList = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the Resource ID for a Frontend Endpoint. */
 export type FrontendEndpointLink = KeyVaultCertificateSourceParametersVault;
-export const FrontendEndpointLink = KeyVaultCertificateSourceParametersVault;
-
 /** Describes Frontend Endpoints associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
-export const WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
-  /*@__PURE__*/ S.Array(
-    KeyVaultCertificateSourceParametersVault,
-  ) as any as S.Schema<WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList>;
+const WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList = /*@__PURE__*/ S.Array(
+  KeyVaultCertificateSourceParametersVault,
+) as any as S.Schema<WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList>;
 
 /** Defines the Resource ID for a Routing Rule. */
 export type RoutingRuleLink = KeyVaultCertificateSourceParametersVault;
-export const RoutingRuleLink = KeyVaultCertificateSourceParametersVault;
-
 /** Describes Routing Rules associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
-export const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
+const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
   RoutingRulePropertiesFrontendEndpointsList as any as S.Schema<WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList>;
 
 /** Defines the Resource ID for a Security Policy. */
 export type SecurityPolicyLink = KeyVaultCertificateSourceParametersVault;
-export const SecurityPolicyLink = KeyVaultCertificateSourceParametersVault;
-
 /** Describes Security Policy associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
-export const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
+const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
   RoutingRulePropertiesFrontendEndpointsList as any as S.Schema<WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList>;
 
 /** Resource status of the policy. */
@@ -2365,7 +2345,7 @@ export type PolicyResourceState =
   | "Disabling"
   | "Disabled"
   | "Deleting";
-export const PolicyResourceState = S.String;
+const PolicyResourceState = S.String;
 
 /** Defines web application firewall policy properties. */
 export interface WebApplicationFirewallPolicyProperties {
@@ -2386,7 +2366,7 @@ export interface WebApplicationFirewallPolicyProperties {
   /** Resource status of the policy. */
   resourceState?: PolicyResourceState;
 }
-export const WebApplicationFirewallPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationFirewallPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policySettings: S.optional(PolicySettings),
     customRules: S.optional(CustomRuleList),
@@ -2408,14 +2388,14 @@ export type SkuName =
   | "Classic_AzureFrontDoor"
   | "Standard_AzureFrontDoor"
   | "Premium_AzureFrontDoor";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The pricing tier of the web application firewall policy. */
 export interface Sku {
   /** Name of the pricing tier. */
   name?: SkuName | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SkuName),
   }),
@@ -2439,7 +2419,7 @@ export interface GetPolicyResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2453,7 +2433,7 @@ export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPolicyResponse" }) as any as S.Schema<GetPolicyResponse>;
 
 export type GetReportLatencyScorecardsRequestAggregationInterval = "Daily" | "Weekly" | "Monthly";
-export const GetReportLatencyScorecardsRequestAggregationInterval = S.String;
+const GetReportLatencyScorecardsRequestAggregationInterval = S.String;
 
 export interface GetReportLatencyScorecardsRequest {
   /** The ID of the target subscription. */
@@ -2471,7 +2451,7 @@ export interface GetReportLatencyScorecardsRequest {
   /** The aggregation interval of the Latency Scorecard */
   aggregationInterval: GetReportLatencyScorecardsRequestAggregationInterval | (string & {});
 }
-export const GetReportLatencyScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportLatencyScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2494,7 +2474,7 @@ export const GetReportLatencyScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetReportLatencyScorecardsResponseTagsMap = { [key: string]: string | undefined };
-export const GetReportLatencyScorecardsResponseTagsMap =
+const GetReportLatencyScorecardsResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReportLatencyScorecardsResponseTagsMap>;
 
 /** Defines the properties of a latency metric used in the latency scorecard */
@@ -2520,7 +2500,7 @@ export interface LatencyMetric {
   /** The upper end of the 95% confidence interval for endpoint B */
   bUpper95CI?: number;
 }
-export const LatencyMetric = /*@__PURE__*/ S.suspend(() =>
+const LatencyMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     endDateTimeUTC: S.optional(S.String),
@@ -2537,7 +2517,7 @@ export const LatencyMetric = /*@__PURE__*/ S.suspend(() =>
 
 /** The latency metrics of the Latency Scorecard */
 export type LatencyScorecardPropertiesLatencyMetricsList = Array<LatencyMetric>;
-export const LatencyScorecardPropertiesLatencyMetricsList = /*@__PURE__*/ S.Array(
+const LatencyScorecardPropertiesLatencyMetricsList = /*@__PURE__*/ S.Array(
   LatencyMetric,
 ) as any as S.Schema<LatencyScorecardPropertiesLatencyMetricsList>;
 
@@ -2562,7 +2542,7 @@ export interface LatencyScorecardProperties {
   /** The latency metrics of the Latency Scorecard */
   latencyMetrics?: LatencyScorecardPropertiesLatencyMetricsList;
 }
-export const LatencyScorecardProperties = /*@__PURE__*/ S.suspend(() =>
+const LatencyScorecardProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2592,7 +2572,7 @@ export interface GetReportLatencyScorecardsResponse {
   /** The properties of a latency scorecard */
   properties?: LatencyScorecardProperties;
 }
-export const GetReportLatencyScorecardsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportLatencyScorecardsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2606,14 +2586,14 @@ export const GetReportLatencyScorecardsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReportLatencyScorecardsResponse>;
 
 export type GetReportTimeseriesRequestAggregationInterval = "Hourly" | "Daily";
-export const GetReportTimeseriesRequestAggregationInterval = S.String;
+const GetReportTimeseriesRequestAggregationInterval = S.String;
 
 export type GetReportTimeseriesRequestTimeseriesType =
   | "MeasurementCounts"
   | "LatencyP50"
   | "LatencyP75"
   | "LatencyP95";
-export const GetReportTimeseriesRequestTimeseriesType = S.String;
+const GetReportTimeseriesRequestTimeseriesType = S.String;
 
 export interface GetReportTimeseriesRequest {
   /** The ID of the target subscription. */
@@ -2637,7 +2617,7 @@ export interface GetReportTimeseriesRequest {
   /** The country associated with the Timeseries. Values are country ISO codes as specified here- https://www.iso.org/iso-3166-country-codes.html */
   country?: string;
 }
-export const GetReportTimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportTimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2663,16 +2643,16 @@ export const GetReportTimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetReportTimeseriesResponseTagsMap = { [key: string]: string | undefined };
-export const GetReportTimeseriesResponseTagsMap =
+const GetReportTimeseriesResponseTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReportTimeseriesResponseTagsMap>;
 
 /** The aggregation interval of the Timeseries */
 export type AggregationInterval = "Hourly" | "Daily";
-export const AggregationInterval = S.String;
+const AggregationInterval = S.String;
 
 /** The type of Timeseries */
 export type TimeseriesType = "MeasurementCounts" | "LatencyP50" | "LatencyP75" | "LatencyP95";
-export const TimeseriesType = S.String;
+const TimeseriesType = S.String;
 
 /** Defines a timeseries datapoint used in a timeseries */
 export interface TimeseriesDataPoint {
@@ -2681,7 +2661,7 @@ export interface TimeseriesDataPoint {
   /** The Value of the Timeseries data point */
   value?: number;
 }
-export const TimeseriesDataPoint = /*@__PURE__*/ S.suspend(() =>
+const TimeseriesDataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateTimeUTC: S.optional(S.String),
     value: S.optional(S.Number),
@@ -2690,7 +2670,7 @@ export const TimeseriesDataPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of data points for the timeseries */
 export type TimeseriesPropertiesTimeseriesDataList = Array<TimeseriesDataPoint>;
-export const TimeseriesPropertiesTimeseriesDataList = /*@__PURE__*/ S.Array(
+const TimeseriesPropertiesTimeseriesDataList = /*@__PURE__*/ S.Array(
   TimeseriesDataPoint,
 ) as any as S.Schema<TimeseriesPropertiesTimeseriesDataList>;
 
@@ -2711,7 +2691,7 @@ export interface TimeseriesProperties {
   /** The set of data points for the timeseries */
   timeseriesData?: TimeseriesPropertiesTimeseriesDataList;
 }
-export const TimeseriesProperties = /*@__PURE__*/ S.suspend(() =>
+const TimeseriesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     startDateTimeUTC: S.optional(S.String),
@@ -2737,7 +2717,7 @@ export interface GetReportTimeseriesResponse {
   /** The properties of a Timeseries */
   properties?: TimeseriesProperties;
 }
-export const GetReportTimeseriesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportTimeseriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2760,7 +2740,7 @@ export interface GetRulesEngineRequest {
   /** Name of the Rules Engine which is unique within the Front Door. */
   rulesEngineName: string;
 }
-export const GetRulesEngineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRulesEngineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2786,7 +2766,7 @@ export interface GetRulesEngineResponse {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
-export const GetRulesEngineResponse = RulesEngine as any as S.Schema<GetRulesEngineResponse>;
+const GetRulesEngineResponse = RulesEngine as any as S.Schema<GetRulesEngineResponse>;
 
 export interface ListExperimentByProfileRequest {
   /** The ID of the target subscription. */
@@ -2796,7 +2776,7 @@ export interface ListExperimentByProfileRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
-export const ListExperimentByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentByProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2815,9 +2795,6 @@ export const ListExperimentByProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExperimentTagsMap = { [key: string]: string | undefined };
-export const ExperimentTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentTagsMap>;
-
 /** Defines the properties of an Experiment */
 export interface Experiment {
   /** Resource ID. */
@@ -2833,11 +2810,11 @@ export interface Experiment {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
-export const Experiment = GetExperimentResponse as any as S.Schema<Experiment>;
+const Experiment = GetExperimentResponse as any as S.Schema<Experiment>;
 
 /** The Experiment items on this page */
 export type ExperimentListValueList = Array<Experiment>;
-export const ExperimentListValueList = /*@__PURE__*/ S.Array(
+const ExperimentListValueList = /*@__PURE__*/ S.Array(
   Experiment,
 ) as any as S.Schema<ExperimentListValueList>;
 
@@ -2848,7 +2825,7 @@ export interface ExperimentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ExperimentList = /*@__PURE__*/ S.suspend(() =>
+const ExperimentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ExperimentListValueList,
     nextLink: S.optional(S.String),
@@ -2861,7 +2838,7 @@ export interface ListFrontDoorByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListFrontDoorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFrontDoorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2879,9 +2856,6 @@ export const ListFrontDoorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FrontDoorTagsMap = { [key: string]: string | undefined };
-export const FrontDoorTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorTagsMap>;
-
 /** Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there. */
 export interface FrontDoor {
   /** Resource ID. */
@@ -2897,11 +2871,11 @@ export interface FrontDoor {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
-export const FrontDoor = GetFrontDoorResponse as any as S.Schema<FrontDoor>;
+const FrontDoor = GetFrontDoorResponse as any as S.Schema<FrontDoor>;
 
 /** The FrontDoor items on this page */
 export type FrontDoorListResultValueList = Array<FrontDoor>;
-export const FrontDoorListResultValueList = /*@__PURE__*/ S.Array(
+const FrontDoorListResultValueList = /*@__PURE__*/ S.Array(
   FrontDoor,
 ) as any as S.Schema<FrontDoorListResultValueList>;
 
@@ -2912,7 +2886,7 @@ export interface FrontDoorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FrontDoorListResult = /*@__PURE__*/ S.suspend(() =>
+const FrontDoorListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FrontDoorListResultValueList,
     nextLink: S.optional(S.String),
@@ -2923,7 +2897,7 @@ export interface ListFrontDoorsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListFrontDoorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFrontDoorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2944,7 +2918,7 @@ export interface ListFrontendEndpointByFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
-export const ListFrontendEndpointByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFrontendEndpointByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2963,7 +2937,7 @@ export const ListFrontendEndpointByFrontDoorRequest = /*@__PURE__*/ S.suspend(()
 
 /** The FrontendEndpoint items on this page */
 export type FrontendEndpointsListResultValueList = Array<FrontendEndpoint>;
-export const FrontendEndpointsListResultValueList =
+const FrontendEndpointsListResultValueList =
   FrontDoorPropertiesFrontendEndpointsList as any as S.Schema<FrontendEndpointsListResultValueList>;
 
 /** Paged collection of FrontendEndpoint items */
@@ -2973,7 +2947,7 @@ export interface FrontendEndpointsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FrontendEndpointsListResult = /*@__PURE__*/ S.suspend(() =>
+const FrontendEndpointsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FrontendEndpointsListResultValueList,
     nextLink: S.optional(S.String),
@@ -2986,7 +2960,7 @@ export interface ListManagedRuleSetsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3003,12 +2977,12 @@ export const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ManagedRuleSetDefinitionTagsMap = { [key: string]: string | undefined };
-export const ManagedRuleSetDefinitionTagsMap =
+const ManagedRuleSetDefinitionTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ManagedRuleSetDefinitionTagsMap>;
 
 /** OWASP CRS paranoia level of a managed rule. Applicable only for DRS rules. */
 export type ParanoiaLevel = "PL1" | "PL2" | "PL3" | "PL4";
-export const ParanoiaLevel = S.String;
+const ParanoiaLevel = S.String;
 
 /** Describes a managed rule definition. */
 export interface ManagedRuleDefinition {
@@ -3025,7 +2999,7 @@ export interface ManagedRuleDefinition {
   /** Describes the paranoia level of the managed rule. Applicable only for DRS rules. Omitted for Bot Manager, DDoS, and AI rules. */
   paranoiaLevel?: ParanoiaLevel;
 }
-export const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.optional(S.String),
     defaultState: S.optional(ManagedRuleEnabledState),
@@ -3038,7 +3012,7 @@ export const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules within the managed rule group. */
 export type ManagedRuleGroupDefinitionRulesList = Array<ManagedRuleDefinition>;
-export const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ S.Array(
+const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleDefinition,
 ) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
 
@@ -3051,7 +3025,7 @@ export interface ManagedRuleGroupDefinition {
   /** List of rules within the managed rule group. */
   rules?: ManagedRuleGroupDefinitionRulesList;
 }
-export const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleGroupName: S.optional(S.String),
     description: S.optional(S.String),
@@ -3063,13 +3037,13 @@ export const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule groups of the managed rule set. */
 export type ManagedRuleSetDefinitionPropertiesRuleGroupsList = Array<ManagedRuleGroupDefinition>;
-export const ManagedRuleSetDefinitionPropertiesRuleGroupsList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetDefinitionPropertiesRuleGroupsList = /*@__PURE__*/ S.Array(
   ManagedRuleGroupDefinition,
 ) as any as S.Schema<ManagedRuleSetDefinitionPropertiesRuleGroupsList>;
 
 /** Status of a managed rule set. */
 export type ManagedRuleSetStatus = "Preview" | "GA" | "Deprecated" | "Supported";
-export const ManagedRuleSetStatus = S.String;
+const ManagedRuleSetStatus = S.String;
 
 /** Properties for a managed rule set definition. */
 export interface ManagedRuleSetDefinitionProperties {
@@ -3088,7 +3062,7 @@ export interface ManagedRuleSetDefinitionProperties {
   /** Describes the lifecycle status of the managed rule set version. */
   status?: ManagedRuleSetStatus;
 }
-export const ManagedRuleSetDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     ruleSetId: S.optional(S.String),
@@ -3117,7 +3091,7 @@ export interface ManagedRuleSetDefinition {
   /** Properties for a managed rule set definition. */
   properties?: ManagedRuleSetDefinitionProperties;
 }
-export const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3130,7 +3104,7 @@ export const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedRuleSetDefinition items on this page */
 export type ManagedRuleSetDefinitionListValueList = Array<ManagedRuleSetDefinition>;
-export const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ S.Array(
+const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ S.Array(
   ManagedRuleSetDefinition,
 ) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
 
@@ -3141,7 +3115,7 @@ export interface ManagedRuleSetDefinitionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ManagedRuleSetDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const ManagedRuleSetDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ManagedRuleSetDefinitionListValueList,
     nextLink: S.optional(S.String),
@@ -3156,7 +3130,7 @@ export interface ListNetworkExperimentProfileByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListNetworkExperimentProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkExperimentProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3174,8 +3148,7 @@ export const ListNetworkExperimentProfileByResourceGroupRequest = /*@__PURE__*/ 
 
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
-export const ProfileTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ProfileTagsMap>;
+const ProfileTagsMap = ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ProfileTagsMap>;
 
 /** Defines an Network Experiment Profile and lists of Experiments */
 export interface Profile {
@@ -3194,7 +3167,7 @@ export interface Profile {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
+const Profile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3208,7 +3181,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 
 /** The Profile items on this page */
 export type ProfileListValueList = Array<Profile>;
-export const ProfileListValueList = /*@__PURE__*/ S.Array(
+const ProfileListValueList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileListValueList>;
 
@@ -3219,7 +3192,7 @@ export interface ProfileList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProfileList = /*@__PURE__*/ S.suspend(() =>
+const ProfileList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProfileListValueList,
     nextLink: S.optional(S.String),
@@ -3230,7 +3203,7 @@ export interface ListNetworkExperimentProfilesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListNetworkExperimentProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkExperimentProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3251,7 +3224,7 @@ export interface ListPoliciesRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3267,7 +3240,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebApplicationFirewallPolicyTagsMap = { [key: string]: string | undefined };
-export const WebApplicationFirewallPolicyTagsMap =
+const WebApplicationFirewallPolicyTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<WebApplicationFirewallPolicyTagsMap>;
 
 /** Defines web application firewall policy. */
@@ -3289,7 +3262,7 @@ export interface WebApplicationFirewallPolicy {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const WebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3306,7 +3279,7 @@ export const WebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebApplicationFirewallPolicy items on this page */
 export type WebApplicationFirewallPolicyListValueList = Array<WebApplicationFirewallPolicy>;
-export const WebApplicationFirewallPolicyListValueList = /*@__PURE__*/ S.Array(
+const WebApplicationFirewallPolicyListValueList = /*@__PURE__*/ S.Array(
   WebApplicationFirewallPolicy,
 ) as any as S.Schema<WebApplicationFirewallPolicyListValueList>;
 
@@ -3317,7 +3290,7 @@ export interface WebApplicationFirewallPolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebApplicationFirewallPolicyList = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationFirewallPolicyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebApplicationFirewallPolicyListValueList,
     nextLink: S.optional(S.String),
@@ -3330,7 +3303,7 @@ export interface ListPolicyBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPolicyBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPolicyBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3353,7 +3326,7 @@ export interface ListPreconfiguredEndpointsRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
-export const ListPreconfiguredEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPreconfiguredEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3372,12 +3345,12 @@ export const ListPreconfiguredEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PreconfiguredEndpointTagsMap = { [key: string]: string | undefined };
-export const PreconfiguredEndpointTagsMap =
+const PreconfiguredEndpointTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PreconfiguredEndpointTagsMap>;
 
 /** The type of endpoint */
 export type EndpointType = "AFD" | "AzureRegion" | "CDN" | "ATM";
-export const EndpointType = S.String;
+const EndpointType = S.String;
 
 /** Defines the properties of a preconfigured endpoint */
 export interface PreconfiguredEndpointProperties {
@@ -3390,7 +3363,7 @@ export interface PreconfiguredEndpointProperties {
   /** The preconfigured endpoint backend */
   backend?: string;
 }
-export const PreconfiguredEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const PreconfiguredEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -3416,7 +3389,7 @@ export interface PreconfiguredEndpoint {
   /** The properties of a preconfiguredEndpoint */
   properties?: PreconfiguredEndpointProperties;
 }
-export const PreconfiguredEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PreconfiguredEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3429,7 +3402,7 @@ export const PreconfiguredEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The PreconfiguredEndpoint items on this page */
 export type PreconfiguredEndpointListValueList = Array<PreconfiguredEndpoint>;
-export const PreconfiguredEndpointListValueList = /*@__PURE__*/ S.Array(
+const PreconfiguredEndpointListValueList = /*@__PURE__*/ S.Array(
   PreconfiguredEndpoint,
 ) as any as S.Schema<PreconfiguredEndpointListValueList>;
 
@@ -3440,7 +3413,7 @@ export interface PreconfiguredEndpointList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PreconfiguredEndpointList = /*@__PURE__*/ S.suspend(() =>
+const PreconfiguredEndpointList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PreconfiguredEndpointListValueList,
     nextLink: S.optional(S.String),
@@ -3457,7 +3430,7 @@ export interface ListRulesEngineByFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
-export const ListRulesEngineByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesEngineByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3476,7 +3449,7 @@ export const ListRulesEngineByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The RulesEngine items on this page */
 export type RulesEngineListResultValueList = Array<RulesEngine>;
-export const RulesEngineListResultValueList =
+const RulesEngineListResultValueList =
   FrontDoorPropertiesRulesEnginesList as any as S.Schema<RulesEngineListResultValueList>;
 
 /** Paged collection of RulesEngine items */
@@ -3486,7 +3459,7 @@ export interface RulesEngineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RulesEngineListResult = /*@__PURE__*/ S.suspend(() =>
+const RulesEngineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RulesEngineListResultValueList,
     nextLink: S.optional(S.String),
@@ -3497,7 +3470,7 @@ export const RulesEngineListResult = /*@__PURE__*/ S.suspend(() =>
 export type NetworkExperimentProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkExperimentProfilesCreateOrUpdateRequestTagsMap =
+const NetworkExperimentProfilesCreateOrUpdateRequestTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequestTagsMap>;
 
 export interface NetworkExperimentProfilesCreateOrUpdateRequest {
@@ -3516,7 +3489,7 @@ export interface NetworkExperimentProfilesCreateOrUpdateRequest {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const NetworkExperimentProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkExperimentProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3541,9 +3514,6 @@ export const NetworkExperimentProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type NetworkExperimentProfilesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkExperimentProfilesCreateOrUpdateResponseTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponseTagsMap>;
-
 export interface NetworkExperimentProfilesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -3560,12 +3530,12 @@ export interface NetworkExperimentProfilesCreateOrUpdateResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const NetworkExperimentProfilesCreateOrUpdateResponse =
+const NetworkExperimentProfilesCreateOrUpdateResponse =
   GetNetworkExperimentProfileResponse as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateRequestTagsMap =
+const PoliciesCreateOrUpdateRequestTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
 
 /** Defines web application firewall policy properties. */
@@ -3577,7 +3547,7 @@ export interface WebApplicationFirewallPolicyPropertiesInput {
   /** Describes managed rules inside the policy. */
   managedRules?: ManagedRuleSetList;
 }
-export const WebApplicationFirewallPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationFirewallPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policySettings: S.optional(PolicySettings),
     customRules: S.optional(CustomRuleList),
@@ -3605,7 +3575,7 @@ export interface PoliciesCreateOrUpdateRequest {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3629,9 +3599,6 @@ export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateResponseTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
-
 export interface PoliciesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -3650,12 +3617,12 @@ export interface PoliciesCreateOrUpdateResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const PoliciesCreateOrUpdateResponse =
+const PoliciesCreateOrUpdateResponse =
   WebApplicationFirewallPolicy as any as S.Schema<PoliciesCreateOrUpdateResponse>;
 
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type PurgeEndpointContentRequestContentPathsList = Array<string>;
-export const PurgeEndpointContentRequestContentPathsList =
+const PurgeEndpointContentRequestContentPathsList =
   RoutingRulePropertiesPatternsToMatchList as any as S.Schema<PurgeEndpointContentRequestContentPathsList>;
 
 export interface PurgeEndpointContentRequest {
@@ -3668,7 +3635,7 @@ export interface PurgeEndpointContentRequest {
   /** The path to the content to be purged. Can describe a file path or a wild card directory. */
   contentPaths: PurgeEndpointContentRequestContentPathsList;
 }
-export const PurgeEndpointContentRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeEndpointContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3687,7 +3654,7 @@ export const PurgeEndpointContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeEndpointContentRequest>;
 
 export interface PurgeEndpointContentResponse {}
-export const PurgeEndpointContentResponse =
+const PurgeEndpointContentResponse =
   DeleteExperimentResponse as any as S.Schema<PurgeEndpointContentResponse>;
 
 export interface RulesEnginesCreateOrUpdateRequest {
@@ -3702,7 +3669,7 @@ export interface RulesEnginesCreateOrUpdateRequest {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
-export const RulesEnginesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RulesEnginesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3731,7 +3698,7 @@ export interface RulesEnginesCreateOrUpdateResponse {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
-export const RulesEnginesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const RulesEnginesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3744,7 +3711,7 @@ export const RulesEnginesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExperimentRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateExperimentRequestTagsMap =
+const UpdateExperimentRequestTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentRequestTagsMap>;
 
 /** Defines the properties of an experiment */
@@ -3754,7 +3721,7 @@ export interface ExperimentUpdateProperties {
   /** The state of the Experiment */
   enabledState?: State | (string & {});
 }
-export const ExperimentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ExperimentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     enabledState: S.optional(State),
@@ -3777,7 +3744,7 @@ export interface UpdateExperimentRequest {
   /** The properties of a Profile */
   properties?: ExperimentUpdateProperties;
 }
-export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3797,9 +3764,6 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExperimentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateExperimentResponseTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentResponseTagsMap>;
-
 export interface UpdateExperimentResponse {
   /** Resource ID. */
   id?: string;
@@ -3814,15 +3778,14 @@ export interface UpdateExperimentResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
-export const UpdateExperimentResponse =
-  GetExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
+const UpdateExperimentResponse = GetExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
 
 /** Defines the properties of an experiment */
 export interface ProfileUpdateProperties {
   /** The enabled state of the Profile */
   enabledState?: State | (string & {});
 }
-export const ProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledState: S.optional(State),
   }),
@@ -3830,7 +3793,7 @@ export const ProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNetworkExperimentProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkExperimentProfileRequestTagsMap =
+const UpdateNetworkExperimentProfileRequestTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkExperimentProfileRequestTagsMap>;
 
 export interface UpdateNetworkExperimentProfileRequest {
@@ -3845,7 +3808,7 @@ export interface UpdateNetworkExperimentProfileRequest {
   /** Resource tags. */
   tags?: UpdateNetworkExperimentProfileRequestTagsMap;
 }
-export const UpdateNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3866,9 +3829,6 @@ export const UpdateNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateNetworkExperimentProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkExperimentProfileResponseTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkExperimentProfileResponseTagsMap>;
-
 export interface UpdateNetworkExperimentProfileResponse {
   /** Resource ID. */
   id?: string;
@@ -3885,12 +3845,12 @@ export interface UpdateNetworkExperimentProfileResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const UpdateNetworkExperimentProfileResponse =
+const UpdateNetworkExperimentProfileResponse =
   GetNetworkExperimentProfileResponse as any as S.Schema<UpdateNetworkExperimentProfileResponse>;
 
 /** Resource tags. */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePolicyRequestTagsMap =
+const UpdatePolicyRequestTagsMap =
   ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyRequestTagsMap>;
 
 export interface UpdatePolicyRequest {
@@ -3903,7 +3863,7 @@ export interface UpdatePolicyRequest {
   /** Resource tags. */
   tags?: UpdatePolicyRequestTagsMap;
 }
-export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3921,9 +3881,6 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePolicyResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePolicyResponseTagsMap =
-  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyResponseTagsMap>;
-
 export interface UpdatePolicyResponse {
   /** Resource ID. */
   id?: string;
@@ -3942,7 +3899,7 @@ export interface UpdatePolicyResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
+const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 
 export interface ValidateFrontDoorCustomDomainRequest {
   /** The ID of the target subscription. */
@@ -3954,7 +3911,7 @@ export interface ValidateFrontDoorCustomDomainRequest {
   /** The host name of the custom domain. Must be a domain name. */
   hostName: string;
 }
-export const ValidateFrontDoorCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateFrontDoorCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3981,7 +3938,7 @@ export interface ValidateCustomDomainOutput {
   /** Error message describing why the custom domain is not valid. */
   message?: string;
 }
-export const ValidateCustomDomainOutput = /*@__PURE__*/ S.suspend(() =>
+const ValidateCustomDomainOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomainValidated: S.optional(S.Boolean),
     reason: S.optional(S.String),

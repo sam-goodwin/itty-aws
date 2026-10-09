@@ -52,7 +52,7 @@ export interface CapturePaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CapturePaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CapturePaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -65,7 +65,7 @@ export interface AccountSummary {
   /** Account display name. */
   title: string;
 }
-export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -160,7 +160,7 @@ export type PaymentLastPaymentErrorDeclineCode =
   | "sepa_disputed"
   | "sepa_refused_by_customer"
   | "sepa_generic_decline";
-export const PaymentLastPaymentErrorDeclineCode = S.String;
+const PaymentLastPaymentErrorDeclineCode = S.String;
 
 export interface PaymentLastPaymentError {
   /** A machine-readable classification of the failure. */
@@ -170,7 +170,7 @@ export interface PaymentLastPaymentError {
   /** A human-readable explanation of the failure. */
   message: string | null;
 }
-export const PaymentLastPaymentError = /*@__PURE__*/ S.suspend(() =>
+const PaymentLastPaymentError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.NullOr(S.String),
     decline_code: S.NullOr(PaymentLastPaymentErrorDeclineCode),
@@ -184,28 +184,11 @@ export interface PaymentNextActionRedirectData {
   /** The provider's page for this payment, as an absolute URL -- take the buyer there. */
   url: string;
 }
-export const PaymentNextActionRedirectData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frame_max_width: S.NullOr(S.Number),
-    url: S.String,
-  }),
-).annotate({
-  identifier: "PaymentNextActionRedirectData",
-}) as any as S.Schema<PaymentNextActionRedirectData>;
-
 /** Where this step can be presented: `inline` inside your own page, `full_page` as a top-level navigation. Pick whichever listed mode suits your surface. */
 export type PaymentNextActionRedirectRenderItem = "inline" | "full_page";
-export const PaymentNextActionRedirectRenderItem = S.String;
-
 export type PaymentNextActionRedirectRenderList = Array<PaymentNextActionRedirectRenderItem>;
-export const PaymentNextActionRedirectRenderList = /*@__PURE__*/ S.Array(
-  PaymentNextActionRedirectRenderItem,
-) as any as S.Schema<PaymentNextActionRedirectRenderList>;
-
 /** Always `redirect`: send the buyer to `data.url`. The provider hands them back to `return_url` when they are done. */
 export type PaymentNextActionRedirectType = "redirect";
-export const PaymentNextActionRedirectType = S.String;
-
 export interface PaymentNextActionRedirect {
   /** Where to send the buyer. */
   data: PaymentNextActionRedirectData;
@@ -213,20 +196,8 @@ export interface PaymentNextActionRedirect {
   /** Always `redirect`: send the buyer to `data.url`. The provider hands them back to `return_url` when they are done. */
   type: PaymentNextActionRedirectType;
 }
-export const PaymentNextActionRedirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PaymentNextActionRedirectData,
-    render: PaymentNextActionRedirectRenderList,
-    type: PaymentNextActionRedirectType,
-  }),
-).annotate({
-  identifier: "PaymentNextActionRedirect",
-}) as any as S.Schema<PaymentNextActionRedirect>;
-
 /** Always `voucher`: a code the buyer pays in person, at a convenience store or bank counter. */
 export type PaymentVoucherInstructionsKind = "voucher";
-export const PaymentVoucherInstructionsKind = S.String;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -237,7 +208,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -266,39 +237,14 @@ export interface PaymentVoucher {
   /** The voucher's number -- what the buyer reads out or types at the counter to pay. */
   reference?: string;
 }
-export const PaymentVoucher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Money),
-    barcode: S.optional(S.String),
-    barcode_format: S.optional(S.String),
-    company_name: S.optional(S.String),
-    document_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    provider_logo: S.optional(S.String),
-    provider_name: S.optional(S.String),
-    reference: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentVoucher" }) as any as S.Schema<PaymentVoucher>;
-
 export interface PaymentVoucherInstructions {
   /** Always `voucher`: a code the buyer pays in person, at a convenience store or bank counter. */
   kind: PaymentVoucherInstructionsKind;
   /** The voucher to show. */
   voucher: PaymentVoucher;
 }
-export const PaymentVoucherInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: PaymentVoucherInstructionsKind,
-    voucher: PaymentVoucher,
-  }),
-).annotate({
-  identifier: "PaymentVoucherInstructions",
-}) as any as S.Schema<PaymentVoucherInstructions>;
-
 /** Always `qr`: a code the buyer scans with their banking app. */
 export type PaymentQrInstructionsKind = "qr";
-export const PaymentQrInstructionsKind = S.String;
-
 export interface PaymentQr {
   /** Exactly what the buyer must pay, in the charged currency. */
   amount?: Money;
@@ -313,30 +259,12 @@ export interface PaymentQr {
   /** How `qr_code` is encoded. */
   qr_format?: string;
 }
-export const PaymentQr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Money),
-    document_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    key: S.optional(S.String),
-    qr_code: S.optional(S.String),
-    qr_format: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentQr" }) as any as S.Schema<PaymentQr>;
-
 export interface PaymentQrInstructions {
   /** Always `qr`: a code the buyer scans with their banking app. */
   kind: PaymentQrInstructionsKind;
   /** The code to show. */
   qr: PaymentQr;
 }
-export const PaymentQrInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: PaymentQrInstructionsKind,
-    qr: PaymentQr,
-  }),
-).annotate({ identifier: "PaymentQrInstructions" }) as any as S.Schema<PaymentQrInstructions>;
-
 export interface PaymentBankTransfer {
   /** The account to send to, in the local scheme's format -- `account_number_label` says what to call it. */
   account_number?: string;
@@ -377,69 +305,25 @@ export interface PaymentBankTransfer {
   /** What to call `secondary_account_number` when showing it. */
   secondary_account_number_label?: string;
 }
-export const PaymentBankTransfer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_number: S.optional(S.String),
-    account_number_label: S.optional(S.String),
-    amount: S.optional(Money),
-    bank_account_type: S.optional(S.String),
-    bank_address: S.optional(S.String),
-    bank_branch: S.optional(S.String),
-    bank_code: S.optional(S.String),
-    bank_code_label: S.optional(S.String),
-    bank_name: S.optional(S.String),
-    beneficiary_document: S.optional(S.String),
-    beneficiary_document_type: S.optional(S.String),
-    beneficiary_name: S.optional(S.String),
-    document_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    instructions: S.optional(S.String),
-    reference: S.optional(S.String),
-    routing_number: S.optional(S.String),
-    secondary_account_number: S.optional(S.String),
-    secondary_account_number_label: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentBankTransfer" }) as any as S.Schema<PaymentBankTransfer>;
-
 /** Always `bank_transfer`: account details the buyer sends money to from their own bank. */
 export type PaymentBankTransferInstructionsKind = "bank_transfer";
-export const PaymentBankTransferInstructionsKind = S.String;
-
 export interface PaymentBankTransferInstructions {
   /** The account details to show. */
   bank_transfer: PaymentBankTransfer;
   /** Always `bank_transfer`: account details the buyer sends money to from their own bank. */
   kind: PaymentBankTransferInstructionsKind;
 }
-export const PaymentBankTransferInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bank_transfer: PaymentBankTransfer,
-    kind: PaymentBankTransferInstructionsKind,
-  }),
-).annotate({
-  identifier: "PaymentBankTransferInstructions",
-}) as any as S.Schema<PaymentBankTransferInstructions>;
-
 /** What to show the buyer so they can pay. `kind` picks the shape and the details sit under the key named for it, so switching on `kind` gives you exactly that kind's payload. Every detail field is optional -- the rails behind these methods publish them unevenly -- but a kind that arrives with `document_url` can always fall back to sending the buyer to that hosted copy of the instructions. */
 export type PaymentInstructions =
   | PaymentVoucherInstructions
   | PaymentQrInstructions
   | PaymentBankTransferInstructions;
-export const PaymentInstructions = S.Unknown as any as S.Schema<PaymentInstructions>;
-
 /** Where this step can be presented: `inline` inside your own page, `full_page` as a top-level navigation. Pick whichever listed mode suits your surface. */
 export type PaymentNextActionDisplayInstructionsRenderItem = "inline" | "full_page";
-export const PaymentNextActionDisplayInstructionsRenderItem = S.String;
-
 export type PaymentNextActionDisplayInstructionsRenderList =
   Array<PaymentNextActionDisplayInstructionsRenderItem>;
-export const PaymentNextActionDisplayInstructionsRenderList =
-  PaymentNextActionRedirectRenderList as any as S.Schema<PaymentNextActionDisplayInstructionsRenderList>;
-
 /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
 export type PaymentNextActionDisplayInstructionsType = "display_instructions";
-export const PaymentNextActionDisplayInstructionsType = S.String;
-
 export interface PaymentNextActionDisplayInstructions {
   /** The instructions. `kind` picks the shape, and the details sit under the key named for it: `voucher`, `qr`, or `bank_transfer`. */
   data: PaymentInstructions;
@@ -447,41 +331,16 @@ export interface PaymentNextActionDisplayInstructions {
   /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
   type: PaymentNextActionDisplayInstructionsType;
 }
-export const PaymentNextActionDisplayInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PaymentInstructions,
-    render: PaymentNextActionDisplayInstructionsRenderList,
-    type: PaymentNextActionDisplayInstructionsType,
-  }),
-).annotate({
-  identifier: "PaymentNextActionDisplayInstructions",
-}) as any as S.Schema<PaymentNextActionDisplayInstructions>;
-
 export interface PaymentNextActionAwaitConfirmationData {
   /** When the confirmation window closes, as an ISO 8601 timestamp. A payment still unconfirmed by then will not succeed -- watch `status` for the failed attempt. */
   expires_at: string;
 }
-export const PaymentNextActionAwaitConfirmationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expires_at: S.String,
-  }),
-).annotate({
-  identifier: "PaymentNextActionAwaitConfirmationData",
-}) as any as S.Schema<PaymentNextActionAwaitConfirmationData>;
-
 /** Where this step can be presented: `inline` inside your own page, `full_page` as a top-level navigation. Pick whichever listed mode suits your surface. */
 export type PaymentNextActionAwaitConfirmationRenderItem = "inline" | "full_page";
-export const PaymentNextActionAwaitConfirmationRenderItem = S.String;
-
 export type PaymentNextActionAwaitConfirmationRenderList =
   Array<PaymentNextActionAwaitConfirmationRenderItem>;
-export const PaymentNextActionAwaitConfirmationRenderList =
-  PaymentNextActionRedirectRenderList as any as S.Schema<PaymentNextActionAwaitConfirmationRenderList>;
-
 /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
 export type PaymentNextActionAwaitConfirmationType = "await_confirmation";
-export const PaymentNextActionAwaitConfirmationType = S.String;
-
 export interface PaymentNextActionAwaitConfirmation {
   /** How long the wait can last. */
   data: PaymentNextActionAwaitConfirmationData;
@@ -489,28 +348,18 @@ export interface PaymentNextActionAwaitConfirmation {
   /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
   type: PaymentNextActionAwaitConfirmationType;
 }
-export const PaymentNextActionAwaitConfirmation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PaymentNextActionAwaitConfirmationData,
-    render: PaymentNextActionAwaitConfirmationRenderList,
-    type: PaymentNextActionAwaitConfirmationType,
-  }),
-).annotate({
-  identifier: "PaymentNextActionAwaitConfirmation",
-}) as any as S.Schema<PaymentNextActionAwaitConfirmation>;
-
 /** What the buyer must do to finish. `type` picks the shape and each type carries only its own `data`, so switching on `type` gives you exactly that step's payload. */
 export type PaymentNextAction =
   | PaymentNextActionRedirect
   | PaymentNextActionDisplayInstructions
   | PaymentNextActionAwaitConfirmation;
-export const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
+const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
 
 export interface PaymentProcessingDetails {
   /** When the payment is expected to settle, as an ISO 8601 timestamp. */
   expected_by: string | null;
 }
-export const PaymentProcessingDetails = /*@__PURE__*/ S.suspend(() =>
+const PaymentProcessingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expected_by: S.NullOr(S.String),
   }),
@@ -525,7 +374,7 @@ export type PaymentStatusStatus =
   | "processing"
   | "succeeded"
   | "canceled";
-export const PaymentStatusStatus = S.String;
+const PaymentStatusStatus = S.String;
 
 export interface PaymentStatus {
   /** The account receiving this payment, or `null` when the payment has no associated account. */
@@ -549,7 +398,7 @@ export interface PaymentStatus {
   /** How far the payment has got. `requires_confirmation` -- nothing attempted yet, or the last attempt failed and can be retried. `requires_action` -- the buyer has a step outstanding; see `next_action`. `requires_capture` -- the card authorization is holding funds and must be captured. `confirming` -- the buyer has done their part and the processor is deciding. `processing` -- with `processing_details`, the money is moving; without them, the charge is still being decided and the status should be read again. `succeeded` -- collected. `canceled` -- voided or written off. */
   status: PaymentStatusStatus;
 }
-export const PaymentStatus = /*@__PURE__*/ S.suspend(() =>
+const PaymentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(AccountSummary),
     auto_capture_at: S.NullOr(S.String),
@@ -570,7 +419,7 @@ export interface CreatePaymentRequestLineItemsItem {
   /** How many units of the plan to purchase. Defaults to 1; more than 1 requires the plan to allow multiple quantities. */
   quantity?: number | null;
 }
-export const CreatePaymentRequestLineItemsItem = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentRequestLineItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan_id: S.String,
     quantity: S.optional(S.NullOr(S.Number)),
@@ -581,13 +430,13 @@ export const CreatePaymentRequestLineItemsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** What the buyer is purchasing. One entry charges that plan; several entries form a cart, which requires every plan to be a compatible plan from this account in the same currency. */
 export type CreatePaymentRequestLineItemsList = Array<CreatePaymentRequestLineItemsItem>;
-export const CreatePaymentRequestLineItemsList = /*@__PURE__*/ S.Array(
+const CreatePaymentRequestLineItemsList = /*@__PURE__*/ S.Array(
   CreatePaymentRequestLineItemsItem,
 ) as any as S.Schema<CreatePaymentRequestLineItemsList>;
 
 /** Custom metadata to attach to the payment. */
 export type CreatePaymentRequestMetadataMap = { [key: string]: string | undefined };
-export const CreatePaymentRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreatePaymentRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePaymentRequestMetadataMap>;
@@ -684,15 +533,15 @@ export type CreatePaymentRequestPlanCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-export const CreatePaymentRequestPlanCurrency = S.String;
+const CreatePaymentRequestPlanCurrency = S.String;
 
 /** Billing model for the plan. */
 export type CreatePaymentRequestPlanPlanType = "renewal" | "one_time";
-export const CreatePaymentRequestPlanPlanType = S.String;
+const CreatePaymentRequestPlanPlanType = S.String;
 
 /** Global affiliate program status. */
 export type CreatePaymentRequestPlanProductGlobalAffiliateStatus = "enabled" | "disabled";
-export const CreatePaymentRequestPlanProductGlobalAffiliateStatus = S.String;
+const CreatePaymentRequestPlanProductGlobalAffiliateStatus = S.String;
 
 /** Product visibility. Defaults to hidden. */
 export type CreatePaymentRequestPlanProductVisibility =
@@ -700,7 +549,7 @@ export type CreatePaymentRequestPlanProductVisibility =
   | "hidden"
   | "archived"
   | "quick_link";
-export const CreatePaymentRequestPlanProductVisibility = S.String;
+const CreatePaymentRequestPlanProductVisibility = S.String;
 
 /** Find or create a product by external identifier. Mutually exclusive with product_id. */
 export interface CreatePaymentRequestPlanProduct {
@@ -732,7 +581,7 @@ export interface CreatePaymentRequestPlanProduct {
   /** Product visibility. Defaults to hidden. */
   visibility?: CreatePaymentRequestPlanProductVisibility | (string & {});
 }
-export const CreatePaymentRequestPlanProduct = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentRequestPlanProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collect_shipping_address: S.optional(S.NullOr(S.Boolean)),
     custom_statement_descriptor: S.optional(S.NullOr(S.String)),
@@ -755,7 +604,7 @@ export const CreatePaymentRequestPlanProduct = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the plan is visible to customers. */
 export type CreatePaymentRequestPlanVisibility = "visible" | "hidden" | "archived" | "quick_link";
-export const CreatePaymentRequestPlanVisibility = S.String;
+const CreatePaymentRequestPlanVisibility = S.String;
 
 /** Find or create a plan for this payment. Mutually exclusive with `plan_id` and `line_items`. Creating a plan requires plan:create; creating or updating a product requires the corresponding product permission. */
 export interface CreatePaymentRequestPlan {
@@ -790,7 +639,7 @@ export interface CreatePaymentRequestPlan {
   /** Whether the plan is visible to customers. */
   visibility?: CreatePaymentRequestPlanVisibility | (string & {}) | null;
 }
-export const CreatePaymentRequestPlan = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentRequestPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     application_fee_amount: S.optional(S.NullOr(S.Number)),
     billing_period: S.optional(S.NullOr(S.Number)),
@@ -827,7 +676,7 @@ export interface CreatePaymentRequestShippingAddress {
   /** State, province, or region code, such as `CA`. */
   state?: string | null;
 }
-export const CreatePaymentRequestShippingAddress = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentRequestShippingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     country: S.optional(S.NullOr(S.String)),
@@ -875,7 +724,7 @@ export interface CreatePaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreatePaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     auto_capture_after_minutes: S.optional(S.NullOr(S.Number)),
@@ -912,7 +761,7 @@ export interface PaymentAddress {
   /** The state, province or region. */
   state: string | null;
 }
-export const PaymentAddress = /*@__PURE__*/ S.suspend(() =>
+const PaymentAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country: S.NullOr(S.String),
@@ -932,7 +781,7 @@ export type BillingReasons =
   | "one_time"
   | "manual"
   | "subscription";
-export const BillingReasons = S.String;
+const BillingReasons = S.String;
 
 /** The available currencies on the platform */
 export type Currencies =
@@ -1026,7 +875,7 @@ export type Currencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const Currencies = S.String;
+const Currencies = S.String;
 
 /** The reason a payment was declined. */
 export type PaymentDeclineCodes =
@@ -1116,11 +965,11 @@ export type PaymentDeclineCodes =
   | "sepa_disputed"
   | "sepa_refused_by_customer"
   | "sepa_generic_decline";
-export const PaymentDeclineCodes = S.String;
+const PaymentDeclineCodes = S.String;
 
 /** The reason funds are held: `reserve`, `bnpl`, `sequra`, `fraud_hold`, or `preshipment_hold`. */
 export type PaymentHoldType = "reserve" | "bnpl" | "sequra" | "fraud_hold" | "preshipment_hold";
-export const PaymentHoldType = S.String;
+const PaymentHoldType = S.String;
 
 export interface PaymentHold {
   /** The amount currently held, in the hold's currency. */
@@ -1132,7 +981,7 @@ export interface PaymentHold {
   /** The reason funds are held: `reserve`, `bnpl`, `sequra`, `fraud_hold`, or `preshipment_hold`. */
   type: PaymentHoldType;
 }
-export const PaymentHold = /*@__PURE__*/ S.suspend(() =>
+const PaymentHold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: Money,
     percentage: S.NullOr(S.Number),
@@ -1142,9 +991,7 @@ export const PaymentHold = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentHold" }) as any as S.Schema<PaymentHold>;
 
 export type PaymentHoldsList = Array<PaymentHold>;
-export const PaymentHoldsList = /*@__PURE__*/ S.Array(
-  PaymentHold,
-) as any as S.Schema<PaymentHoldsList>;
+const PaymentHoldsList = /*@__PURE__*/ S.Array(PaymentHold) as any as S.Schema<PaymentHoldsList>;
 
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
@@ -1164,7 +1011,7 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
-export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
+const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.NullOr(S.String),
     label: S.NullOr(S.String),
@@ -1178,7 +1025,7 @@ export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReceiptLineItem" }) as any as S.Schema<ReceiptLineItem>;
 
 export type PaymentLineItemsList = Array<ReceiptLineItem>;
-export const PaymentLineItemsList = /*@__PURE__*/ S.Array(
+const PaymentLineItemsList = /*@__PURE__*/ S.Array(
   ReceiptLineItem,
 ) as any as S.Schema<PaymentLineItemsList>;
 
@@ -1194,7 +1041,7 @@ export interface PaymentInstrumentCard {
   /** The card's last four digits, when captured. */
   last4: string | null;
 }
-export const PaymentInstrumentCard = /*@__PURE__*/ S.suspend(() =>
+const PaymentInstrumentCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.NullOr(S.String),
     exp_month: S.NullOr(S.Number),
@@ -1214,7 +1061,7 @@ export interface PaymentMethodIconFiles {
   /** The vector file. Prefer this everywhere SVG renders. */
   svg: string;
 }
-export const PaymentMethodIconFiles = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIconFiles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     png_1x: S.String,
     png_2x: S.String,
@@ -1229,7 +1076,7 @@ export interface PaymentMethodIconVariants {
   /** The colorway for light surfaces. */
   light: PaymentMethodIconFiles;
 }
-export const PaymentMethodIconVariants = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIconVariants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dark: PaymentMethodIconFiles,
     light: PaymentMethodIconFiles,
@@ -1244,7 +1091,7 @@ export interface PaymentMethodIcons {
   /** The square tile (32x32). */
   square: PaymentMethodIconVariants;
 }
-export const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: PaymentMethodIconVariants,
     square: PaymentMethodIconVariants,
@@ -1263,7 +1110,7 @@ export interface PaymentInstrument {
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
 }
-export const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
+const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.NullOr(PaymentInstrumentCard),
     display_name: S.String,
@@ -1404,11 +1251,11 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
-export const PaymentMethodTypes = S.String;
+const PaymentMethodTypes = S.String;
 
 /** What the rule asked for. */
 export type PaymentRuleMatchAction = "allow" | "block" | "review" | "enforce_3ds";
-export const PaymentRuleMatchAction = S.String;
+const PaymentRuleMatchAction = S.String;
 
 export interface PaymentRuleMatch {
   /** What the rule asked for. */
@@ -1418,7 +1265,7 @@ export interface PaymentRuleMatch {
   /** The rule's name when it matched. Renaming the rule afterwards does not rewrite this. */
   name: string | null;
 }
-export const PaymentRuleMatch = /*@__PURE__*/ S.suspend(() =>
+const PaymentRuleMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: PaymentRuleMatchAction,
     id: S.String,
@@ -1427,7 +1274,7 @@ export const PaymentRuleMatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentRuleMatch" }) as any as S.Schema<PaymentRuleMatch>;
 
 export type PaymentPaymentRuleMatchesList = Array<PaymentRuleMatch>;
-export const PaymentPaymentRuleMatchesList = /*@__PURE__*/ S.Array(
+const PaymentPaymentRuleMatchesList = /*@__PURE__*/ S.Array(
   PaymentRuleMatch,
 ) as any as S.Schema<PaymentPaymentRuleMatchesList>;
 
@@ -1441,7 +1288,7 @@ export type ReceiptStatus =
   | "uncollectible"
   | "unresolved"
   | "void";
-export const ReceiptStatus = S.String;
+const ReceiptStatus = S.String;
 
 /** The friendly status of a payment. This is a derived status that provides a human-readable summary of the payment state, combining the underlying status and substatus fields. */
 export type FriendlyReceiptStatus =
@@ -1475,17 +1322,17 @@ export type FriendlyReceiptStatus =
   | "unresolved"
   | "open_dispute"
   | "open_resolution";
-export const FriendlyReceiptStatus = S.String;
+const FriendlyReceiptStatus = S.String;
 
 /** The type of tax inclusivity applied to the receipt, for determining whether the tax is included in the final price, or paid on top. */
 export type ReceiptTaxBehaviors = "exclusive" | "inclusive" | "unspecified" | "unable_to_collect";
-export const ReceiptTaxBehaviors = S.String;
+const ReceiptTaxBehaviors = S.String;
 
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -1501,7 +1348,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -1522,7 +1369,7 @@ export interface PaymentVerificationChecks {
   /** The Address Verification Service (AVS) result for the billing postal code. */
   zip_code: string | null;
 }
-export const PaymentVerificationChecks = /*@__PURE__*/ S.suspend(() =>
+const PaymentVerificationChecks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line1: S.NullOr(S.String),
     authorization_code: S.NullOr(S.String),
@@ -1647,7 +1494,7 @@ export interface Payment {
   /** True when the payment can be voided or canceled. The request is rejected if the payment is no longer eligible -- see `POST /payments/{id}/void`. */
   voidable: boolean;
 }
-export const Payment = /*@__PURE__*/ S.suspend(() =>
+const Payment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     amount_after_fees: Money,
@@ -1713,7 +1560,7 @@ export interface GetPaymentRequest {
   /** The payment to retrieve, prefixed `pay_`. */
   id: string;
 }
-export const GetPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/payments/{id}", code: 200 })),
@@ -1723,7 +1570,7 @@ export interface GetStatusPaymentRequest {
   /** The unique identifier of the payment. */
   payment_id: string;
 }
-export const GetStatusPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/payments/{payment_id}/status", code: 200 })),
@@ -1733,7 +1580,7 @@ export interface ListPaymentFeesRequest {
   /** The payment whose fees to list, prefixed `pay_`. */
   id: string;
 }
-export const ListPaymentFeesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentFeesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/payments/{id}/fees", code: 200 })),
@@ -1775,11 +1622,11 @@ export type PaymentFeeOrigin =
   | "application_fee"
   | "high_risk_merchant_fee"
   | "economic_intelligence_percentage_fee";
-export const PaymentFeeOrigin = S.String;
+const PaymentFeeOrigin = S.String;
 
 /** The family the fee belongs to: `whop_fee`, `processing_fee`, `affiliate_program_fee`, or `other_fee`. */
 export type PaymentFeeType = "whop_fee" | "processing_fee" | "affiliate_program_fee" | "other_fee";
-export const PaymentFeeType = S.String;
+const PaymentFeeType = S.String;
 
 export interface PaymentFee {
   /** The fee in the currency it was collected in. */
@@ -1797,7 +1644,7 @@ export interface PaymentFee {
   /** The family the fee belongs to: `whop_fee`, `processing_fee`, `affiliate_program_fee`, or `other_fee`. */
   type: PaymentFeeType;
 }
-export const PaymentFee = /*@__PURE__*/ S.suspend(() =>
+const PaymentFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: Money,
     collected_at: S.NullOr(S.String),
@@ -1810,7 +1657,7 @@ export const PaymentFee = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentFee" }) as any as S.Schema<PaymentFee>;
 
 export type ListPaymentFeesResponseDataList = Array<PaymentFee>;
-export const ListPaymentFeesResponseDataList = /*@__PURE__*/ S.Array(
+const ListPaymentFeesResponseDataList = /*@__PURE__*/ S.Array(
   PaymentFee,
 ) as any as S.Schema<ListPaymentFeesResponseDataList>;
 
@@ -1820,7 +1667,7 @@ export interface ListPaymentFeesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListPaymentFeesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentFeesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -1835,7 +1682,7 @@ export interface ListPaymentFeesResponse {
   data: ListPaymentFeesResponseDataList;
   page_info: ListPaymentFeesResponsePageInfo;
 }
-export const ListPaymentFeesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentFeesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPaymentFeesResponseDataList,
     page_info: ListPaymentFeesResponsePageInfo,
@@ -1850,7 +1697,7 @@ export type ListPaymentsRequestStatus =
   | "uncollectible"
   | "unresolved"
   | "void";
-export const ListPaymentsRequestStatus = S.String;
+const ListPaymentsRequestStatus = S.String;
 
 export type ListPaymentsRequestBillingReason =
   | "subscription_create"
@@ -1859,13 +1706,13 @@ export type ListPaymentsRequestBillingReason =
   | "one_time"
   | "manual"
   | "subscription";
-export const ListPaymentsRequestBillingReason = S.String;
+const ListPaymentsRequestBillingReason = S.String;
 
 export type ListPaymentsRequestOrder = "created_at" | "paid_at";
-export const ListPaymentsRequestOrder = S.String;
+const ListPaymentsRequestOrder = S.String;
 
 export type ListPaymentsRequestDirection = "asc" | "desc";
-export const ListPaymentsRequestDirection = S.String;
+const ListPaymentsRequestDirection = S.String;
 
 export interface ListPaymentsRequest {
   /** Only payments charged by this account, prefixed `biz_`. */
@@ -1905,7 +1752,7 @@ export interface ListPaymentsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListPaymentsRequestStatus.pipe(T.Query())),
@@ -1929,18 +1776,16 @@ export const ListPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPaymentsRequest" }) as any as S.Schema<ListPaymentsRequest>;
 
 export type ListPaymentsResponseDataList = Array<Payment>;
-export const ListPaymentsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPaymentsResponseDataList = /*@__PURE__*/ S.Array(
   Payment,
 ) as any as S.Schema<ListPaymentsResponseDataList>;
 
 export type ListPaymentsResponsePageInfo = ListPaymentFeesResponsePageInfo;
-export const ListPaymentsResponsePageInfo = ListPaymentFeesResponsePageInfo;
-
 export interface ListPaymentsResponse {
   data: ListPaymentsResponseDataList;
   page_info: ListPaymentFeesResponsePageInfo;
 }
-export const ListPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPaymentsResponseDataList,
     page_info: ListPaymentFeesResponsePageInfo,
@@ -1955,7 +1800,7 @@ export interface RefundPaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const RefundPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const RefundPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     partial_amount: S.optional(S.NullOr(S.Number)),
@@ -1969,7 +1814,7 @@ export interface ResumePaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ResumePaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumePaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payment_id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1982,7 +1827,7 @@ export interface RetryPaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const RetryPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1995,7 +1840,7 @@ export interface UpdateReturnUrlPaymentRequest {
   /** Where the buyer continues after completing an off-site step. Must be an absolute https URL without credentials (http is allowed for localhost), at most 2,048 characters. */
   return_url: string;
 }
-export const UpdateReturnUrlPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReturnUrlPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payment_id: S.String.pipe(T.Label()),
     return_url: S.String,
@@ -2010,7 +1855,7 @@ export interface VoidPaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const VoidPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const VoidPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),

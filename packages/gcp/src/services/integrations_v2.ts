@@ -69,7 +69,7 @@ export interface ExecuteProjectsLocationsIntegrationsRequest {
   /** Optional. This is used to de-dup incoming request: if the duplicate request was detected, the response from the previous execution is returned. */
   requestId?: string;
 }
-export const ExecuteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     triggerId: S.optional(S.String.pipe(T.Query())),
@@ -86,15 +86,10 @@ export const ExecuteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ExecuteProjectsLocationsIntegrationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface GoogleApiHttpBody {
@@ -105,7 +100,7 @@ export interface GoogleApiHttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-export const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     extensions: S.optional(DocumentMapList),
@@ -126,7 +121,7 @@ export interface GoogleCloudIntegrationsV2DuetNextTask {
   /** Task number of the next task. */
   taskId?: string;
 }
-export const GoogleCloudIntegrationsV2DuetNextTask = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetNextTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     taskConfigId: S.optional(S.String),
@@ -140,7 +135,7 @@ export const GoogleCloudIntegrationsV2DuetNextTask = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudIntegrationsV2DuetNextTaskList =
   Array<GoogleCloudIntegrationsV2DuetNextTask>;
-export const GoogleCloudIntegrationsV2DuetNextTaskList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetNextTaskList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetNextTask,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetNextTaskList>;
 
@@ -148,17 +143,17 @@ export type GoogleCloudIntegrationsV2DuetTaskConfigExternalTaskTypeEnum =
   | "EXTERNAL_TASK_TYPE_UNSPECIFIED"
   | "NORMAL_TASK"
   | "ERROR_TASK";
-export const GoogleCloudIntegrationsV2DuetTaskConfigExternalTaskTypeEnum = S.String;
+const GoogleCloudIntegrationsV2DuetTaskConfigExternalTaskTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** This message only contains a field of string array. */
 export interface GoogleCloudIntegrationsV2DuetStringParameterArray {
   /** String array. */
   stringValues?: StringList;
 }
-export const GoogleCloudIntegrationsV2DuetStringParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetStringParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValues: S.optional(StringList),
   }),
@@ -171,7 +166,7 @@ export interface GoogleCloudIntegrationsV2DuetIntParameterArray {
   /** Integer array. */
   intValues?: StringList;
 }
-export const GoogleCloudIntegrationsV2DuetIntParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intValues: S.optional(StringList),
   }),
@@ -180,14 +175,14 @@ export const GoogleCloudIntegrationsV2DuetIntParameterArray = /*@__PURE__*/ S.su
 }) as any as S.Schema<GoogleCloudIntegrationsV2DuetIntParameterArray>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** This message only contains a field of double number array. */
 export interface GoogleCloudIntegrationsV2DuetDoubleParameterArray {
   /** Double number array. */
   doubleValues?: DoubleList;
 }
-export const GoogleCloudIntegrationsV2DuetDoubleParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetDoubleParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleValues: S.optional(DoubleList),
   }),
@@ -196,14 +191,14 @@ export const GoogleCloudIntegrationsV2DuetDoubleParameterArray = /*@__PURE__*/ S
 }) as any as S.Schema<GoogleCloudIntegrationsV2DuetDoubleParameterArray>;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 /** This message only contains a field of boolean array. */
 export interface GoogleCloudIntegrationsV2DuetBooleanParameterArray {
   /** Boolean array. */
   booleanValues?: BooleanList;
 }
-export const GoogleCloudIntegrationsV2DuetBooleanParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetBooleanParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     booleanValues: S.optional(BooleanList),
   }),
@@ -232,7 +227,7 @@ export interface GoogleCloudIntegrationsV2DuetValueType {
   /** Boolean. */
   booleanValue?: boolean;
 }
-export const GoogleCloudIntegrationsV2DuetValueType = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringArray: S.optional(GoogleCloudIntegrationsV2DuetStringParameterArray),
     intArray: S.optional(GoogleCloudIntegrationsV2DuetIntParameterArray),
@@ -255,7 +250,7 @@ export interface GoogleCloudIntegrationsV2DuetEventParameter {
   /** Values for the defined keys. Each value can either be string, int, double or any proto message. */
   value?: GoogleCloudIntegrationsV2DuetValueType;
 }
-export const GoogleCloudIntegrationsV2DuetEventParameter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetEventParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(GoogleCloudIntegrationsV2DuetValueType),
@@ -267,7 +262,7 @@ export const GoogleCloudIntegrationsV2DuetEventParameter = /*@__PURE__*/ S.suspe
 export type GoogleCloudIntegrationsV2DuetEventParameterMap = {
   [key: string]: GoogleCloudIntegrationsV2DuetEventParameter | undefined;
 };
-export const GoogleCloudIntegrationsV2DuetEventParameterMap = /*@__PURE__*/ S.Record(
+const GoogleCloudIntegrationsV2DuetEventParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudIntegrationsV2DuetEventParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetEventParameterMap>;
@@ -291,7 +286,7 @@ export interface GoogleCloudIntegrationsV2DuetTaskConfig {
   /** Optional. The customized parameters the user can pass to this task. */
   parameters?: GoogleCloudIntegrationsV2DuetEventParameterMap;
 }
-export const GoogleCloudIntegrationsV2DuetTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     nextTasks: S.optional(GoogleCloudIntegrationsV2DuetNextTaskList),
@@ -308,7 +303,7 @@ export const GoogleCloudIntegrationsV2DuetTaskConfig = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudIntegrationsV2DuetTaskConfigList =
   Array<GoogleCloudIntegrationsV2DuetTaskConfig>;
-export const GoogleCloudIntegrationsV2DuetTaskConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetTaskConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetTaskConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetTaskConfigList>;
 
@@ -317,7 +312,7 @@ export type GoogleCloudIntegrationsV2DuetIntegrationParameterInputOutputTypeEnum
   | "IN"
   | "OUT"
   | "IN_OUT";
-export const GoogleCloudIntegrationsV2DuetIntegrationParameterInputOutputTypeEnum = S.String;
+const GoogleCloudIntegrationsV2DuetIntegrationParameterInputOutputTypeEnum = S.String;
 
 export type GoogleCloudIntegrationsV2DuetIntegrationParameterDataTypeEnum =
   | "INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"
@@ -332,7 +327,7 @@ export type GoogleCloudIntegrationsV2DuetIntegrationParameterDataTypeEnum =
   | "JSON_VALUE"
   | "PROTO_VALUE"
   | "PROTO_ARRAY";
-export const GoogleCloudIntegrationsV2DuetIntegrationParameterDataTypeEnum = S.String;
+const GoogleCloudIntegrationsV2DuetIntegrationParameterDataTypeEnum = S.String;
 
 /** Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition. */
 export interface GoogleCloudIntegrationsV2DuetIntegrationParameter {
@@ -355,7 +350,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationParameter {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition. */
   key?: string;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationParameter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     jsonSchema: S.optional(S.String),
@@ -374,7 +369,7 @@ export const GoogleCloudIntegrationsV2DuetIntegrationParameter = /*@__PURE__*/ S
 
 export type GoogleCloudIntegrationsV2DuetIntegrationParameterList =
   Array<GoogleCloudIntegrationsV2DuetIntegrationParameter>;
-export const GoogleCloudIntegrationsV2DuetIntegrationParameterList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetIntegrationParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetIntegrationParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetIntegrationParameterList>;
 
@@ -387,7 +382,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationBranchRequest {
   /** Optional. A list of all the workflow parameters of the current integration. */
   integrationParameters?: GoogleCloudIntegrationsV2DuetIntegrationParameterList;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branchCondition: S.optional(S.String),
     taskConfigs: S.optional(GoogleCloudIntegrationsV2DuetTaskConfigList),
@@ -404,15 +399,14 @@ export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest {
   /** Required. The integration branch request payload. */
   integrationBranchRequest?: GoogleCloudIntegrationsV2DuetIntegrationBranchRequest;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prompt: S.optional(S.String),
-      integrationBranchRequest: S.optional(GoogleCloudIntegrationsV2DuetIntegrationBranchRequest),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest",
-  }) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest>;
+const GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prompt: S.optional(S.String),
+    integrationBranchRequest: S.optional(GoogleCloudIntegrationsV2DuetIntegrationBranchRequest),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest",
+}) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest>;
 
 export interface GenerateIntegrationBranchProjectsLocationsIntegrationsRequest {
   /** Required. Format: `projects/{project}/locations/{location}/integrations/{integration}` */
@@ -420,23 +414,22 @@ export interface GenerateIntegrationBranchProjectsLocationsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest;
 }
-export const GenerateIntegrationBranchProjectsLocationsIntegrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+parent}:generateIntegrationBranch",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
+const GenerateIntegrationBranchProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchRequest.pipe(T.HttpBody()),
     ),
-  ).annotate({
-    identifier: "GenerateIntegrationBranchProjectsLocationsIntegrationsRequest",
-  }) as any as S.Schema<GenerateIntegrationBranchProjectsLocationsIntegrationsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+parent}:generateIntegrationBranch",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateIntegrationBranchProjectsLocationsIntegrationsRequest",
+}) as any as S.Schema<GenerateIntegrationBranchProjectsLocationsIntegrationsRequest>;
 
 /** An integration branch skeleton containing basic fields which can be used to create an integration branch on the UI. */
 export interface GoogleCloudIntegrationsV2DuetIntegrationBranch {
@@ -449,7 +442,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationBranch {
   /** Explanation of why this integration branch was generated. */
   explanation?: string;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationBranch = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskConfigs: S.optional(GoogleCloudIntegrationsV2DuetTaskConfigList),
     integrationParameters: S.optional(GoogleCloudIntegrationsV2DuetIntegrationParameterList),
@@ -465,14 +458,13 @@ export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse 
   /** The integration branch returned by Duet */
   integrationBranch?: GoogleCloudIntegrationsV2DuetIntegrationBranch;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationBranch: S.optional(GoogleCloudIntegrationsV2DuetIntegrationBranch),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse>;
+const GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationBranch: S.optional(GoogleCloudIntegrationsV2DuetIntegrationBranch),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationBranchResponse>;
 
 /** Configuration detail of a error catch task */
 export interface GoogleCloudIntegrationsV2DuetErrorCatcherConfig {
@@ -487,7 +479,7 @@ export interface GoogleCloudIntegrationsV2DuetErrorCatcherConfig {
   /** Required. A number to uniquely identify each error catcher config within the workflow on UI. */
   errorCatcherNumber?: string;
 }
-export const GoogleCloudIntegrationsV2DuetErrorCatcherConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetErrorCatcherConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     description: S.optional(S.String),
@@ -501,7 +493,7 @@ export const GoogleCloudIntegrationsV2DuetErrorCatcherConfig = /*@__PURE__*/ S.s
 
 export type GoogleCloudIntegrationsV2DuetErrorCatcherConfigList =
   Array<GoogleCloudIntegrationsV2DuetErrorCatcherConfig>;
-export const GoogleCloudIntegrationsV2DuetErrorCatcherConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetErrorCatcherConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetErrorCatcherConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetErrorCatcherConfigList>;
 
@@ -510,7 +502,7 @@ export interface GoogleCloudIntegrationsV2DuetTriggerConfigVariables {
   /** Optional. List of variable names. */
   names?: StringList;
 }
-export const GoogleCloudIntegrationsV2DuetTriggerConfigVariables = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetTriggerConfigVariables = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
   }),
@@ -529,7 +521,7 @@ export interface GoogleCloudIntegrationsV2DuetCloudSchedulerConfig {
   /** Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations */
   errorMessage?: string;
 }
-export const GoogleCloudIntegrationsV2DuetCloudSchedulerConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetCloudSchedulerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     cronTab: S.optional(S.String),
@@ -541,7 +533,7 @@ export const GoogleCloudIntegrationsV2DuetCloudSchedulerConfig = /*@__PURE__*/ S
 }) as any as S.Schema<GoogleCloudIntegrationsV2DuetCloudSchedulerConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type GoogleCloudIntegrationsV2DuetTriggerConfigTriggerTypeEnum =
   | "TRIGGER_TYPE_UNSPECIFIED"
@@ -553,7 +545,7 @@ export type GoogleCloudIntegrationsV2DuetTriggerConfigTriggerTypeEnum =
   | "CLOUD_SCHEDULER"
   | "INTEGRATION_CONNECTOR_TRIGGER"
   | "PRIVATE_TRIGGER";
-export const GoogleCloudIntegrationsV2DuetTriggerConfigTriggerTypeEnum = S.String;
+const GoogleCloudIntegrationsV2DuetTriggerConfigTriggerTypeEnum = S.String;
 
 /** Configuration detail of a trigger. */
 export interface GoogleCloudIntegrationsV2DuetTriggerConfig {
@@ -582,7 +574,7 @@ export interface GoogleCloudIntegrationsV2DuetTriggerConfig {
   /** Optional. User-provided description intended to give additional business context about the task. */
   description?: string;
 }
-export const GoogleCloudIntegrationsV2DuetTriggerConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetTriggerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputVariables: S.optional(GoogleCloudIntegrationsV2DuetTriggerConfigVariables),
     outputVariables: S.optional(GoogleCloudIntegrationsV2DuetTriggerConfigVariables),
@@ -603,7 +595,7 @@ export const GoogleCloudIntegrationsV2DuetTriggerConfig = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudIntegrationsV2DuetTriggerConfigList =
   Array<GoogleCloudIntegrationsV2DuetTriggerConfig>;
-export const GoogleCloudIntegrationsV2DuetTriggerConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetTriggerConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetTriggerConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetTriggerConfigList>;
 
@@ -614,7 +606,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationConfigParameter {
   /** Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables. */
   parameter?: GoogleCloudIntegrationsV2DuetIntegrationParameter;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationConfigParameter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationConfigParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GoogleCloudIntegrationsV2DuetValueType),
     parameter: S.optional(GoogleCloudIntegrationsV2DuetIntegrationParameter),
@@ -625,7 +617,7 @@ export const GoogleCloudIntegrationsV2DuetIntegrationConfigParameter = /*@__PURE
 
 export type GoogleCloudIntegrationsV2DuetIntegrationConfigParameterList =
   Array<GoogleCloudIntegrationsV2DuetIntegrationConfigParameter>;
-export const GoogleCloudIntegrationsV2DuetIntegrationConfigParameterList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetIntegrationConfigParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetIntegrationConfigParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetIntegrationConfigParameterList>;
 
@@ -635,7 +627,7 @@ export type GoogleCloudIntegrationsV2DuetIntegrationVersionStateEnum =
   | "ACTIVE"
   | "ARCHIVED"
   | "SNAPSHOT";
-export const GoogleCloudIntegrationsV2DuetIntegrationVersionStateEnum = S.String;
+const GoogleCloudIntegrationsV2DuetIntegrationVersionStateEnum = S.String;
 
 /** The integration version definition. */
 export interface GoogleCloudIntegrationsV2DuetIntegrationVersion {
@@ -660,7 +652,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationVersion {
   /** Optional. Auto-generated primary key. */
   name?: string;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationVersion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskConfigs: S.optional(GoogleCloudIntegrationsV2DuetTaskConfigList),
     errorCatcherConfigs: S.optional(GoogleCloudIntegrationsV2DuetErrorCatcherConfigList),
@@ -684,7 +676,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationDocumentRequest {
   /** Required. The current integrtion on the canvas. */
   integrationVersion?: GoogleCloudIntegrationsV2DuetIntegrationVersion;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationVersion: S.optional(GoogleCloudIntegrationsV2DuetIntegrationVersion),
   }),
@@ -697,16 +689,16 @@ export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest
   /** Required. The integration document request payload. */
   integrationDocumentRequest?: GoogleCloudIntegrationsV2DuetIntegrationDocumentRequest;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       integrationDocumentRequest: S.optional(
         GoogleCloudIntegrationsV2DuetIntegrationDocumentRequest,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest",
-  }) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest>;
+).annotate({
+  identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest",
+}) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest>;
 
 export interface GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest {
   /** Required. Format: `projects/{project}/locations/{location}/integrations/{integration}` */
@@ -714,8 +706,8 @@ export interface GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest
   /** Request body */
   body?: GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentRequest;
 }
-export const GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(
@@ -728,23 +720,23 @@ export const GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest =
         baseUrl: "https://integrations.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest",
-  }) as any as S.Schema<GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest>;
+).annotate({
+  identifier: "GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest",
+}) as any as S.Schema<GenerateIntegrationDocumentProjectsLocationsIntegrationsRequest>;
 
 /** Response message containing generated integration documentation text. */
 export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse {
   /** The description of the integration returned by Duet AI. */
   document?: string;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       document: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse>;
+).annotate({
+  identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationDocumentResponse>;
 
 /** Request for generating an integration. */
 export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationRequest {
@@ -753,7 +745,7 @@ export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationRequest {
   /** Required. The natural language prompt based on which the integration will be generated. */
   prompt?: string;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetGenerateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     copilotEnabled: S.optional(S.Boolean),
     prompt: S.optional(S.String),
@@ -768,7 +760,7 @@ export interface GenerateIntegrationProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV2DuetGenerateIntegrationRequest;
 }
-export const GenerateIntegrationProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateIntegrationProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV2DuetGenerateIntegrationRequest.pipe(T.HttpBody())),
@@ -794,7 +786,7 @@ export interface GoogleCloudIntegrationsV2DuetIntegrationSkeleton {
   /** The name of the integration. */
   name?: string;
 }
-export const GoogleCloudIntegrationsV2DuetIntegrationSkeleton = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetIntegrationSkeleton = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     explanation: S.optional(S.String),
@@ -807,7 +799,7 @@ export const GoogleCloudIntegrationsV2DuetIntegrationSkeleton = /*@__PURE__*/ S.
 
 export type GoogleCloudIntegrationsV2DuetIntegrationSkeletonList =
   Array<GoogleCloudIntegrationsV2DuetIntegrationSkeleton>;
-export const GoogleCloudIntegrationsV2DuetIntegrationSkeletonList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetIntegrationSkeletonList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetIntegrationSkeleton,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetIntegrationSkeletonList>;
 
@@ -816,11 +808,10 @@ export interface GoogleCloudIntegrationsV2DuetGenerateIntegrationResponse {
   /** The list of integration skeletons returned. */
   skeletonIntegrations?: GoogleCloudIntegrationsV2DuetIntegrationSkeletonList;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      skeletonIntegrations: S.optional(GoogleCloudIntegrationsV2DuetIntegrationSkeletonList),
-    }),
+const GoogleCloudIntegrationsV2DuetGenerateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skeletonIntegrations: S.optional(GoogleCloudIntegrationsV2DuetIntegrationSkeletonList),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV2DuetGenerateIntegrationResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV2DuetGenerateIntegrationResponse>;
@@ -836,7 +827,7 @@ export interface GoogleCloudIntegrationsV2DuetJavascriptRequest {
   /** Optional. Whether to use the current javascript task config (JS code) to generate the Javascript code. */
   useCurrentScript?: boolean;
 }
-export const GoogleCloudIntegrationsV2DuetJavascriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetJavascriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     copilotEnabled: S.optional(S.Boolean),
     taskId: S.optional(S.String),
@@ -854,7 +845,7 @@ export interface GoogleCloudIntegrationsV2DuetGenerateJavascriptRequest {
   /** Required. The javascript request payload. */
   javascriptRequest?: GoogleCloudIntegrationsV2DuetJavascriptRequest;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateJavascriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetGenerateJavascriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(S.String),
     javascriptRequest: S.optional(GoogleCloudIntegrationsV2DuetJavascriptRequest),
@@ -869,7 +860,7 @@ export interface GenerateJavascriptProjectsLocationsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV2DuetGenerateJavascriptRequest;
 }
-export const GenerateJavascriptProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateJavascriptProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV2DuetGenerateJavascriptRequest.pipe(T.HttpBody())),
@@ -893,7 +884,7 @@ export interface GoogleCloudIntegrationsV2DuetJavascriptRecommendation {
   /** The explanation of the Javascript code. */
   explanation?: string;
 }
-export const GoogleCloudIntegrationsV2DuetJavascriptRecommendation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetJavascriptRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationParameters: S.optional(GoogleCloudIntegrationsV2DuetIntegrationParameterList),
     taskConfig: S.optional(GoogleCloudIntegrationsV2DuetTaskConfig),
@@ -905,7 +896,7 @@ export const GoogleCloudIntegrationsV2DuetJavascriptRecommendation = /*@__PURE__
 
 export type GoogleCloudIntegrationsV2DuetJavascriptRecommendationList =
   Array<GoogleCloudIntegrationsV2DuetJavascriptRecommendation>;
-export const GoogleCloudIntegrationsV2DuetJavascriptRecommendationList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetJavascriptRecommendationList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetJavascriptRecommendation,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetJavascriptRecommendationList>;
 
@@ -914,7 +905,7 @@ export interface GoogleCloudIntegrationsV2DuetGenerateJavascriptResponse {
   /** List of the Javascript recommendations. */
   recommendations?: GoogleCloudIntegrationsV2DuetJavascriptRecommendationList;
 }
-export const GoogleCloudIntegrationsV2DuetGenerateJavascriptResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetGenerateJavascriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendations: S.optional(GoogleCloudIntegrationsV2DuetJavascriptRecommendationList),
   }),
@@ -926,16 +917,16 @@ export interface GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest
   /** Required. The TaskExecution to retrieve. Format: projects/{project}/locations/{location}/integrations/{integration}/executions/{execution}/taskExecutions/{task_execution} */
   name: string;
 }
-export const GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest",
+}) as any as S.Schema<GetProjectsLocationsIntegrationsExecutionsTaskExecutionsRequest>;
 
 /** Metadata of the task execution. */
 export interface GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata {
@@ -956,18 +947,17 @@ export interface GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata {
   /** The task number associated with this execution. */
   taskNumber?: string;
 }
-export const GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionAttempt: S.optional(S.Number),
-      ancestorTaskNumbers: S.optional(StringList),
-      taskLabel: S.optional(S.String),
-      ancestorIterationNumbers: S.optional(StringList),
-      task: S.optional(S.String),
-      privateIntegrationName: S.optional(S.String),
-      taskAttempt: S.optional(S.Number),
-      taskNumber: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionAttempt: S.optional(S.Number),
+    ancestorTaskNumbers: S.optional(StringList),
+    taskLabel: S.optional(S.String),
+    ancestorIterationNumbers: S.optional(StringList),
+    task: S.optional(S.String),
+    privateIntegrationName: S.optional(S.String),
+    taskAttempt: S.optional(S.Number),
+    taskNumber: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata",
 }) as any as S.Schema<GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata>;
@@ -979,7 +969,7 @@ export interface GoogleCloudIntegrationsV2AttemptStats {
   /** The end time of the execution for the current attempt. */
   endTime?: string;
 }
-export const GoogleCloudIntegrationsV2AttemptStats = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2AttemptStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -990,7 +980,7 @@ export const GoogleCloudIntegrationsV2AttemptStats = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudIntegrationsV2AttemptStatsList =
   Array<GoogleCloudIntegrationsV2AttemptStats>;
-export const GoogleCloudIntegrationsV2AttemptStatsList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2AttemptStatsList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2AttemptStats,
 ) as any as S.Schema<GoogleCloudIntegrationsV2AttemptStatsList>;
 
@@ -1003,7 +993,7 @@ export type GoogleCloudIntegrationsV2TaskExecutionDetailsTaskExecutionStateEnum 
   | "RETRY_ON_HOLD"
   | "CANCELLED"
   | "SUSPENDED";
-export const GoogleCloudIntegrationsV2TaskExecutionDetailsTaskExecutionStateEnum = S.String;
+const GoogleCloudIntegrationsV2TaskExecutionDetailsTaskExecutionStateEnum = S.String;
 
 /** Details of the task execution. */
 export interface GoogleCloudIntegrationsV2TaskExecutionDetails {
@@ -1014,7 +1004,7 @@ export interface GoogleCloudIntegrationsV2TaskExecutionDetails {
   /** Output only. The execution state of this task. */
   taskExecutionState?: GoogleCloudIntegrationsV2TaskExecutionDetailsTaskExecutionStateEnum;
 }
-export const GoogleCloudIntegrationsV2TaskExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2TaskExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskNumber: S.optional(S.String),
     taskAttemptStats: S.optional(GoogleCloudIntegrationsV2AttemptStatsList),
@@ -1028,7 +1018,7 @@ export const GoogleCloudIntegrationsV2TaskExecutionDetails = /*@__PURE__*/ S.sus
 
 export type GoogleCloudIntegrationsV2TaskExecutionDetailsList =
   Array<GoogleCloudIntegrationsV2TaskExecutionDetails>;
-export const GoogleCloudIntegrationsV2TaskExecutionDetailsList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2TaskExecutionDetailsList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2TaskExecutionDetails,
 ) as any as S.Schema<GoogleCloudIntegrationsV2TaskExecutionDetailsList>;
 
@@ -1043,7 +1033,7 @@ export interface GoogleCloudIntegrationsV2TaskExecution {
   /** Identifier. Task execution resource name. */
   name?: string;
 }
-export const GoogleCloudIntegrationsV2TaskExecution = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2TaskExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskExecutionMetadata: S.optional(GoogleCloudIntegrationsV2TaskExecutionTaskExecutionMetadata),
     variables: S.optional(DocumentMap),
@@ -1066,7 +1056,7 @@ export interface ListProjectsLocationsIntegrationsExecutionsRequest {
   /** Optional. The token returned in the previous response. */
   pageToken?: string;
 }
-export const ListProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -1089,7 +1079,7 @@ export type GoogleCloudIntegrationsV2CloudLoggingDetailsCloudLoggingSeverityEnum
   | "INFO"
   | "ERROR"
   | "WARNING";
-export const GoogleCloudIntegrationsV2CloudLoggingDetailsCloudLoggingSeverityEnum = S.String;
+const GoogleCloudIntegrationsV2CloudLoggingDetailsCloudLoggingSeverityEnum = S.String;
 
 /** Cloud Logging details for execution info */
 export interface GoogleCloudIntegrationsV2CloudLoggingDetails {
@@ -1098,7 +1088,7 @@ export interface GoogleCloudIntegrationsV2CloudLoggingDetails {
   /** Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed. */
   enableCloudLogging?: boolean;
 }
-export const GoogleCloudIntegrationsV2CloudLoggingDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2CloudLoggingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudLoggingSeverity: S.optional(
       GoogleCloudIntegrationsV2CloudLoggingDetailsCloudLoggingSeverityEnum,
@@ -1111,7 +1101,7 @@ export const GoogleCloudIntegrationsV2CloudLoggingDetails = /*@__PURE__*/ S.susp
 
 export type GoogleCloudIntegrationsV2TaskExecutionList =
   Array<GoogleCloudIntegrationsV2TaskExecution>;
-export const GoogleCloudIntegrationsV2TaskExecutionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2TaskExecutionList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2TaskExecution,
 ) as any as S.Schema<GoogleCloudIntegrationsV2TaskExecutionList>;
 
@@ -1124,13 +1114,13 @@ export type GoogleCloudIntegrationsV2ExecutionStateEnum =
   | "CANCELLED"
   | "RETRY_ON_HOLD"
   | "SUSPENDED";
-export const GoogleCloudIntegrationsV2ExecutionStateEnum = S.String;
+const GoogleCloudIntegrationsV2ExecutionStateEnum = S.String;
 
 export type GoogleCloudIntegrationsV2ExecutionReplayInfoReplayModeEnum =
   | "REPLAY_MODE_UNSPECIFIED"
   | "REPLAY_MODE_FROM_BEGINNING"
   | "REPLAY_MODE_POINT_OF_FAILURE";
-export const GoogleCloudIntegrationsV2ExecutionReplayInfoReplayModeEnum = S.String;
+const GoogleCloudIntegrationsV2ExecutionReplayInfoReplayModeEnum = S.String;
 
 /** Contains the details of the execution info: this includes the replay reason and replay tree connecting executions in a parent-child relationship */
 export interface GoogleCloudIntegrationsV2ExecutionReplayInfo {
@@ -1143,7 +1133,7 @@ export interface GoogleCloudIntegrationsV2ExecutionReplayInfo {
   /** Replay mode for the execution */
   replayMode?: GoogleCloudIntegrationsV2ExecutionReplayInfoReplayModeEnum;
 }
-export const GoogleCloudIntegrationsV2ExecutionReplayInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2ExecutionReplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replayedExecutionIds: S.optional(StringList),
     originalExecutionId: S.optional(S.String),
@@ -1185,7 +1175,7 @@ export interface GoogleCloudIntegrationsV2Execution {
   /** Output only. Replay info for the execution */
   replayInfo?: GoogleCloudIntegrationsV2ExecutionReplayInfo;
 }
-export const GoogleCloudIntegrationsV2Execution = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2Execution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationVersionUserLabel: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1207,7 +1197,7 @@ export const GoogleCloudIntegrationsV2Execution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudIntegrationsV2Execution>;
 
 export type GoogleCloudIntegrationsV2ExecutionList = Array<GoogleCloudIntegrationsV2Execution>;
-export const GoogleCloudIntegrationsV2ExecutionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2ExecutionList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2Execution,
 ) as any as S.Schema<GoogleCloudIntegrationsV2ExecutionList>;
 
@@ -1218,7 +1208,7 @@ export interface GoogleCloudIntegrationsV2ListExecutionsResponse {
   /** Required. The list of executions. */
   executions?: GoogleCloudIntegrationsV2ExecutionList;
 }
-export const GoogleCloudIntegrationsV2ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     executions: S.optional(GoogleCloudIntegrationsV2ExecutionList),
@@ -1231,15 +1221,14 @@ export type GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnum =
   | "TASK_TYPE_UNSPECIFIED"
   | "CONNECTOR_TASK"
   | "REST_TASK";
-export const GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnum = S.String;
+const GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnum = S.String;
 
 export type GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnumList = Array<
   GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnum | (string & {})
 >;
-export const GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnum,
-  ) as any as S.Schema<GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnumList>;
+const GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnumList = /*@__PURE__*/ S.Array(
+  GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnum,
+) as any as S.Schema<GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnumList>;
 
 /** Message for Replace Task Scenario. */
 export interface GoogleCloudIntegrationsV2DuetReplaceTaskRequest {
@@ -1250,7 +1239,7 @@ export interface GoogleCloudIntegrationsV2DuetReplaceTaskRequest {
   /** Required. The current task selected on the UI. */
   taskConfig?: GoogleCloudIntegrationsV2DuetTaskConfig;
 }
-export const GoogleCloudIntegrationsV2DuetReplaceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetReplaceTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskTypes: S.optional(GoogleCloudIntegrationsV2DuetReplaceTaskRequestTaskTypesItemEnumList),
     copilotEnabled: S.optional(S.Boolean),
@@ -1267,7 +1256,7 @@ export interface GoogleCloudIntegrationsV2DuetRecommendTasksRequest {
   /** Required. The current task to replace and options. */
   replaceTaskRequest?: GoogleCloudIntegrationsV2DuetReplaceTaskRequest;
 }
-export const GoogleCloudIntegrationsV2DuetRecommendTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetRecommendTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(S.String),
     replaceTaskRequest: S.optional(GoogleCloudIntegrationsV2DuetReplaceTaskRequest),
@@ -1282,7 +1271,7 @@ export interface RecommendTasksProjectsLocationsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV2DuetRecommendTasksRequest;
 }
-export const RecommendTasksProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RecommendTasksProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV2DuetRecommendTasksRequest.pipe(T.HttpBody())),
@@ -1301,7 +1290,7 @@ export type GoogleCloudIntegrationsV2DuetTaskResponseStatusTaskTypeEnum =
   | "TASK_TYPE_UNSPECIFIED"
   | "CONNECTOR_TASK"
   | "REST_TASK";
-export const GoogleCloudIntegrationsV2DuetTaskResponseStatusTaskTypeEnum = S.String;
+const GoogleCloudIntegrationsV2DuetTaskResponseStatusTaskTypeEnum = S.String;
 
 /** Message for task response status. */
 export interface GoogleCloudIntegrationsV2DuetTaskResponseStatus {
@@ -1312,7 +1301,7 @@ export interface GoogleCloudIntegrationsV2DuetTaskResponseStatus {
   /** The error message of the task response in case of failure. */
   errorMessage?: string;
 }
-export const GoogleCloudIntegrationsV2DuetTaskResponseStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetTaskResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpCode: S.optional(S.Number),
     taskType: S.optional(GoogleCloudIntegrationsV2DuetTaskResponseStatusTaskTypeEnum),
@@ -1324,7 +1313,7 @@ export const GoogleCloudIntegrationsV2DuetTaskResponseStatus = /*@__PURE__*/ S.s
 
 export type GoogleCloudIntegrationsV2DuetTaskResponseStatusList =
   Array<GoogleCloudIntegrationsV2DuetTaskResponseStatus>;
-export const GoogleCloudIntegrationsV2DuetTaskResponseStatusList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV2DuetTaskResponseStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV2DuetTaskResponseStatus,
 ) as any as S.Schema<GoogleCloudIntegrationsV2DuetTaskResponseStatusList>;
 
@@ -1335,7 +1324,7 @@ export interface GoogleCloudIntegrationsV2DuetRecommendTasksResponse {
   /** The list of recommended tasks. */
   taskConfigs?: GoogleCloudIntegrationsV2DuetTaskConfigList;
 }
-export const GoogleCloudIntegrationsV2DuetRecommendTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV2DuetRecommendTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskResponseStatuses: S.optional(GoogleCloudIntegrationsV2DuetTaskResponseStatusList),
     taskConfigs: S.optional(GoogleCloudIntegrationsV2DuetTaskConfigList),
@@ -1354,7 +1343,7 @@ export interface ScheduleProjectsLocationsIntegrationsRequest {
   /** Optional. The time that the integration should be executed. If the time is less or equal to the current time, the integration is executed immediately. */
   scheduleTime?: string;
 }
-export const ScheduleProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1375,17 +1364,16 @@ export interface TroubleshootProjectsLocationsIntegrationsExecutionsRequest {
   /** Required. Execution resource name. Format: `projects/{project}/locations/{location}/integrations/{integration}/executions/{execution_id}` */
   name: string;
 }
-export const TroubleshootProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+name}:troubleshoot",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const TroubleshootProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}:troubleshoot",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TroubleshootProjectsLocationsIntegrationsExecutionsRequest",
 }) as any as S.Schema<TroubleshootProjectsLocationsIntegrationsExecutionsRequest>;
@@ -1403,15 +1391,14 @@ export interface GoogleCloudIntegrationsV2DuetTroubleshootExecutionResponse {
   /** Root cause of the integration execution failure. */
   rootCause?: string;
 }
-export const GoogleCloudIntegrationsV2DuetTroubleshootExecutionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionId: S.optional(S.String),
-      errorMessage: S.optional(S.String),
-      detailedExplanation: S.optional(S.String),
-      displayMessage: S.optional(S.String),
-      rootCause: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV2DuetTroubleshootExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionId: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+    detailedExplanation: S.optional(S.String),
+    displayMessage: S.optional(S.String),
+    rootCause: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV2DuetTroubleshootExecutionResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV2DuetTroubleshootExecutionResponse>;

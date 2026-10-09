@@ -85,7 +85,7 @@ export type ProductAccountAccountTypeEnum =
   | "GOOGLE_AD_MANAGER_AUDIENCE_LINK"
   | "FLOODLIGHT_CONFIG"
   | "GOOGLE_AD_MANAGER";
-export const ProductAccountAccountTypeEnum = S.String;
+const ProductAccountAccountTypeEnum = S.String;
 
 export type ProductAccountProductEnum =
   | "PRODUCT_UNSPECIFIED"
@@ -93,14 +93,14 @@ export type ProductAccountProductEnum =
   | "DISPLAY_VIDEO_PARTNER"
   | "DISPLAY_VIDEO_ADVERTISER"
   | "DATA_PARTNER";
-export const ProductAccountProductEnum = S.String;
+const ProductAccountProductEnum = S.String;
 
 export interface ProductAccount {
   accountType?: ProductAccountAccountTypeEnum | (string & {});
   accountId?: string;
   product?: ProductAccountProductEnum | (string & {});
 }
-export const ProductAccount = /*@__PURE__*/ S.suspend(() =>
+const ProductAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountType: S.optional(ProductAccountAccountTypeEnum),
     accountId: S.optional(S.String),
@@ -112,14 +112,14 @@ export type PartnerLinkFeatureSetEnum =
   | "FEATURE_SET_UNSPECIFIED"
   | "FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT"
   | "FEATURE_SET_AD_EVENT_MANAGEMENT";
-export const PartnerLinkFeatureSetEnum = S.String;
+const PartnerLinkFeatureSetEnum = S.String;
 
 export interface PartnerCustomerAccount {
   accountId?: string;
   accountName?: string;
   accountType?: string;
 }
-export const PartnerCustomerAccount = /*@__PURE__*/ S.suspend(() =>
+const PartnerCustomerAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     accountName: S.optional(S.String),
@@ -128,14 +128,14 @@ export const PartnerCustomerAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartnerCustomerAccount" }) as any as S.Schema<PartnerCustomerAccount>;
 
 export type PartnerCustomerAccountList = Array<PartnerCustomerAccount>;
-export const PartnerCustomerAccountList = /*@__PURE__*/ S.Array(
+const PartnerCustomerAccountList = /*@__PURE__*/ S.Array(
   PartnerCustomerAccount,
 ) as any as S.Schema<PartnerCustomerAccountList>;
 
 export interface PartnerLinkMetadata {
   implicitAccounts?: PartnerCustomerAccountList;
 }
-export const PartnerLinkMetadata = /*@__PURE__*/ S.suspend(() =>
+const PartnerLinkMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     implicitAccounts: S.optional(PartnerCustomerAccountList),
   }),
@@ -150,7 +150,7 @@ export interface PartnerLink {
   name?: string;
   partnerLinkMetadata?: PartnerLinkMetadata;
 }
-export const PartnerLink = /*@__PURE__*/ S.suspend(() =>
+const PartnerLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerAccount: S.optional(ProductAccount),
     featureSet: S.optional(PartnerLinkFeatureSetEnum),
@@ -167,7 +167,7 @@ export interface CreateAccountTypesAccountsPartnerLinksRequest {
   /** Request body */
   body?: PartnerLink;
 }
-export const CreateAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PartnerLink.pipe(T.HttpBody())),
@@ -186,7 +186,7 @@ export type UserListDirectLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
   | "USER_LIST_LICENSE_STATUS_DISABLED";
-export const UserListDirectLicenseStatusEnum = S.String;
+const UserListDirectLicenseStatusEnum = S.String;
 
 export type UserListDirectLicenseClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_UNKNOWN"
@@ -194,7 +194,7 @@ export type UserListDirectLicenseClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK";
-export const UserListDirectLicenseClientAccountTypeEnum = S.String;
+const UserListDirectLicenseClientAccountTypeEnum = S.String;
 
 export interface UserListLicenseMetrics {
   impressionCount?: string;
@@ -203,7 +203,7 @@ export interface UserListLicenseMetrics {
   revenueUsdMicros?: string;
   startDate?: string;
 }
-export const UserListLicenseMetrics = /*@__PURE__*/ S.suspend(() =>
+const UserListLicenseMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impressionCount: S.optional(S.String),
     endDate: S.optional(S.String),
@@ -218,14 +218,14 @@ export type UserListLicensePricingCostTypeEnum =
   | "CPC"
   | "CPM"
   | "MEDIA_SHARE";
-export const UserListLicensePricingCostTypeEnum = S.String;
+const UserListLicensePricingCostTypeEnum = S.String;
 
 export type UserListLicensePricingBuyerApprovalStateEnum =
   | "USER_LIST_PRICING_BUYER_APPROVAL_STATE_UNSPECIFIED"
   | "PENDING"
   | "APPROVED"
   | "REJECTED";
-export const UserListLicensePricingBuyerApprovalStateEnum = S.String;
+const UserListLicensePricingBuyerApprovalStateEnum = S.String;
 
 export interface UserListLicensePricing {
   maxCostMicros?: string;
@@ -238,7 +238,7 @@ export interface UserListLicensePricing {
   buyerApprovalState?: UserListLicensePricingBuyerApprovalStateEnum | (string & {});
   endTime?: string;
 }
-export const UserListLicensePricing = /*@__PURE__*/ S.suspend(() =>
+const UserListLicensePricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxCostMicros: S.optional(S.String),
     pricingId: S.optional(S.String),
@@ -253,7 +253,7 @@ export const UserListLicensePricing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListLicensePricing" }) as any as S.Schema<UserListLicensePricing>;
 
 export type UserListLicensePricingList = Array<UserListLicensePricing>;
-export const UserListLicensePricingList = /*@__PURE__*/ S.Array(
+const UserListLicensePricingList = /*@__PURE__*/ S.Array(
   UserListLicensePricing,
 ) as any as S.Schema<UserListLicensePricingList>;
 
@@ -269,7 +269,7 @@ export interface UserListDirectLicense {
   userListDisplayName?: string;
   name?: string;
 }
-export const UserListDirectLicense = /*@__PURE__*/ S.suspend(() =>
+const UserListDirectLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(UserListDirectLicenseStatusEnum),
     userListId: S.optional(S.String),
@@ -289,7 +289,7 @@ export interface CreateAccountTypesAccountsUserListDirectLicensesRequest {
   /** Request body */
   body?: UserListDirectLicense;
 }
-export const CreateAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UserListDirectLicense.pipe(T.HttpBody())),
@@ -308,14 +308,14 @@ export type UserListGlobalLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
   | "USER_LIST_LICENSE_STATUS_DISABLED";
-export const UserListGlobalLicenseStatusEnum = S.String;
+const UserListGlobalLicenseStatusEnum = S.String;
 
 export type UserListGlobalLicenseLicenseTypeEnum =
   | "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE";
-export const UserListGlobalLicenseLicenseTypeEnum = S.String;
+const UserListGlobalLicenseLicenseTypeEnum = S.String;
 
 export interface UserListGlobalLicense {
   userListDisplayName?: string;
@@ -327,7 +327,7 @@ export interface UserListGlobalLicense {
   metrics?: UserListLicenseMetrics;
   licenseType?: UserListGlobalLicenseLicenseTypeEnum | (string & {});
 }
-export const UserListGlobalLicense = /*@__PURE__*/ S.suspend(() =>
+const UserListGlobalLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userListDisplayName: S.optional(S.String),
     pricing: S.optional(UserListLicensePricing),
@@ -345,7 +345,7 @@ export interface CreateAccountTypesAccountsUserListGlobalLicensesRequest {
   /** Request body */
   body?: UserListGlobalLicense;
 }
-export const CreateAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UserListGlobalLicense.pipe(T.HttpBody())),
@@ -367,10 +367,10 @@ export type UserListAccessReasonEnum =
   | "LICENSED"
   | "SUBSCRIBED"
   | "AFFILIATED";
-export const UserListAccessReasonEnum = S.String;
+const UserListAccessReasonEnum = S.String;
 
 export type UserListClosingReasonEnum = "CLOSING_REASON_UNSPECIFIED" | "UNUSED";
-export const UserListClosingReasonEnum = S.String;
+const UserListClosingReasonEnum = S.String;
 
 export interface SizeInfo {
   gmailMembersCount?: string;
@@ -378,7 +378,7 @@ export interface SizeInfo {
   displayNetworkMembersCount?: string;
   searchNetworkMembersCount?: string;
 }
-export const SizeInfo = /*@__PURE__*/ S.suspend(() =>
+const SizeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gmailMembersCount: S.optional(S.String),
     youtubeMembersCount: S.optional(S.String),
@@ -388,16 +388,16 @@ export const SizeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SizeInfo" }) as any as S.Schema<SizeInfo>;
 
 export type UserListMembershipStatusEnum = "MEMBERSHIP_STATUS_UNSPECIFIED" | "OPEN" | "CLOSED";
-export const UserListMembershipStatusEnum = S.String;
+const UserListMembershipStatusEnum = S.String;
 
 export type UserListAccountAccessStatusEnum = "ACCESS_STATUS_UNSPECIFIED" | "ENABLED" | "DISABLED";
-export const UserListAccountAccessStatusEnum = S.String;
+const UserListAccountAccessStatusEnum = S.String;
 
 export interface TargetNetworkInfo {
   eligibleForDisplay?: boolean;
   eligibleForSearch?: boolean;
 }
-export const TargetNetworkInfo = /*@__PURE__*/ S.suspend(() =>
+const TargetNetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eligibleForDisplay: S.optional(S.Boolean),
     eligibleForSearch: S.optional(S.Boolean),
@@ -409,13 +409,13 @@ export type PartnerAudienceInfoPartnerAudienceSourceEnum =
   | "COMMERCE_AUDIENCE"
   | "LINEAR_TV_AUDIENCE"
   | "AGENCY_PROVIDER_AUDIENCE";
-export const PartnerAudienceInfoPartnerAudienceSourceEnum = S.String;
+const PartnerAudienceInfoPartnerAudienceSourceEnum = S.String;
 
 export interface PartnerAudienceInfo {
   partnerAudienceSource?: PartnerAudienceInfoPartnerAudienceSourceEnum | (string & {});
   commercePartner?: string;
 }
-export const PartnerAudienceInfo = /*@__PURE__*/ S.suspend(() =>
+const PartnerAudienceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerAudienceSource: S.optional(PartnerAudienceInfoPartnerAudienceSourceEnum),
     commercePartner: S.optional(S.String),
@@ -429,7 +429,7 @@ export interface PairIdInfo {
   advertiserIdentifierCount?: string;
   publisherName?: string;
 }
-export const PairIdInfo = /*@__PURE__*/ S.suspend(() =>
+const PairIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchRatePercentage: S.optional(S.Number),
     cleanRoomIdentifier: S.optional(S.String),
@@ -440,7 +440,7 @@ export const PairIdInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PairIdInfo" }) as any as S.Schema<PairIdInfo>;
 
 export type MobileIdInfoKeySpaceEnum = "KEY_SPACE_UNSPECIFIED" | "IOS" | "ANDROID";
-export const MobileIdInfoKeySpaceEnum = S.String;
+const MobileIdInfoKeySpaceEnum = S.String;
 
 export type MobileIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_UNSPECIFIED"
@@ -448,14 +448,14 @@ export type MobileIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
-export const MobileIdInfoDataSourceTypeEnum = S.String;
+const MobileIdInfoDataSourceTypeEnum = S.String;
 
 export interface MobileIdInfo {
   keySpace?: MobileIdInfoKeySpaceEnum | (string & {});
   dataSourceType?: MobileIdInfoDataSourceTypeEnum | (string & {});
   appId?: string;
 }
-export const MobileIdInfo = /*@__PURE__*/ S.suspend(() =>
+const MobileIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keySpace: S.optional(MobileIdInfoKeySpaceEnum),
     dataSourceType: S.optional(MobileIdInfoDataSourceTypeEnum),
@@ -469,13 +469,13 @@ export type ContactIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
-export const ContactIdInfoDataSourceTypeEnum = S.String;
+const ContactIdInfoDataSourceTypeEnum = S.String;
 
 export interface ContactIdInfo {
   dataSourceType?: ContactIdInfoDataSourceTypeEnum | (string & {});
   matchRatePercentage?: number;
 }
-export const ContactIdInfo = /*@__PURE__*/ S.suspend(() =>
+const ContactIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceType: S.optional(ContactIdInfoDataSourceTypeEnum),
     matchRatePercentage: S.optional(S.Number),
@@ -487,13 +487,13 @@ export type PseudonymousIdInfoSyncStatusEnum =
   | "CREATED"
   | "READY_FOR_USE"
   | "FAILED";
-export const PseudonymousIdInfoSyncStatusEnum = S.String;
+const PseudonymousIdInfoSyncStatusEnum = S.String;
 
 export interface PseudonymousIdInfo {
   syncStatus?: PseudonymousIdInfoSyncStatusEnum | (string & {});
   billableRecordCount?: string;
 }
-export const PseudonymousIdInfo = /*@__PURE__*/ S.suspend(() =>
+const PseudonymousIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncStatus: S.optional(PseudonymousIdInfoSyncStatusEnum),
     billableRecordCount: S.optional(S.String),
@@ -506,12 +506,12 @@ export type UserIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
-export const UserIdInfoDataSourceTypeEnum = S.String;
+const UserIdInfoDataSourceTypeEnum = S.String;
 
 export interface UserIdInfo {
   dataSourceType?: UserIdInfoDataSourceTypeEnum | (string & {});
 }
-export const UserIdInfo = /*@__PURE__*/ S.suspend(() =>
+const UserIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceType: S.optional(UserIdInfoDataSourceTypeEnum),
   }),
@@ -524,12 +524,12 @@ export type IngestedUserListInfoUploadKeyTypesItemEnum =
   | "USER_ID"
   | "PAIR_ID"
   | "PSEUDONYMOUS_ID";
-export const IngestedUserListInfoUploadKeyTypesItemEnum = S.String;
+const IngestedUserListInfoUploadKeyTypesItemEnum = S.String;
 
 export type IngestedUserListInfoUploadKeyTypesItemEnumList = Array<
   IngestedUserListInfoUploadKeyTypesItemEnum | (string & {})
 >;
-export const IngestedUserListInfoUploadKeyTypesItemEnumList = /*@__PURE__*/ S.Array(
+const IngestedUserListInfoUploadKeyTypesItemEnumList = /*@__PURE__*/ S.Array(
   IngestedUserListInfoUploadKeyTypesItemEnum,
 ) as any as S.Schema<IngestedUserListInfoUploadKeyTypesItemEnumList>;
 
@@ -542,7 +542,7 @@ export interface IngestedUserListInfo {
   userIdInfo?: UserIdInfo;
   uploadKeyTypes?: IngestedUserListInfoUploadKeyTypesItemEnumList;
 }
-export const IngestedUserListInfo = /*@__PURE__*/ S.suspend(() =>
+const IngestedUserListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerAudienceInfo: S.optional(PartnerAudienceInfo),
     pairIdInfo: S.optional(PairIdInfo),
@@ -570,7 +570,7 @@ export interface UserList {
   ingestedUserListInfo?: IngestedUserListInfo;
   readOnly?: boolean;
 }
-export const UserList = /*@__PURE__*/ S.suspend(() =>
+const UserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessReason: S.optional(UserListAccessReasonEnum),
     displayName: S.optional(S.String),
@@ -595,7 +595,7 @@ export interface CreateAccountTypesAccountsUserListsRequest {
   /** Request body */
   body?: UserList;
 }
-export const CreateAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -614,7 +614,7 @@ export const CreateAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspen
 export interface DeleteAccountTypesAccountsPartnerLinksRequest {
   name: string;
 }
-export const DeleteAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -625,7 +625,7 @@ export const DeleteAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>;
 
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -633,7 +633,7 @@ export interface DeleteAccountTypesAccountsUserListsRequest {
   validateOnly?: boolean;
   name: string;
 }
-export const DeleteAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -645,12 +645,12 @@ export const DeleteAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteAccountTypesAccountsUserListsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface Location {
   regionCodes?: StringList;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCodes: S.optional(StringList),
   }),
@@ -660,7 +660,7 @@ export interface Baseline {
   baselineLocation?: Location;
   locationAutoDetectionEnabled?: boolean;
 }
-export const Baseline = /*@__PURE__*/ S.suspend(() =>
+const Baseline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baselineLocation: S.optional(Location),
     locationAutoDetectionEnabled: S.optional(S.Boolean),
@@ -671,7 +671,7 @@ export interface RetrieveInsightsRequest {
   userListId?: string;
   baseline?: Baseline;
 }
-export const RetrieveInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const RetrieveInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userListId: S.optional(S.String),
     baseline: S.optional(Baseline),
@@ -683,7 +683,7 @@ export interface GetAccountTypesAccountsInsightsRequest {
   /** Request body */
   body?: RetrieveInsightsRequest;
 }
-export const GetAccountTypesAccountsInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountTypesAccountsInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RetrieveInsightsRequest.pipe(T.HttpBody())),
@@ -707,14 +707,14 @@ export type MarketingDataInsightsAttributeAgeRangeEnum =
   | "AGE_RANGE_45_54"
   | "AGE_RANGE_55_64"
   | "AGE_RANGE_65_UP";
-export const MarketingDataInsightsAttributeAgeRangeEnum = S.String;
+const MarketingDataInsightsAttributeAgeRangeEnum = S.String;
 
 export type MarketingDataInsightsAttributeGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_UNKNOWN"
   | "GENDER_MALE"
   | "GENDER_FEMALE";
-export const MarketingDataInsightsAttributeGenderEnum = S.String;
+const MarketingDataInsightsAttributeGenderEnum = S.String;
 
 export interface MarketingDataInsightsAttribute {
   ageRange?: MarketingDataInsightsAttributeAgeRangeEnum;
@@ -722,7 +722,7 @@ export interface MarketingDataInsightsAttribute {
   userInterestId?: string;
   lift?: number;
 }
-export const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
+const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ageRange: S.optional(MarketingDataInsightsAttributeAgeRangeEnum),
     gender: S.optional(MarketingDataInsightsAttributeGenderEnum),
@@ -734,7 +734,7 @@ export const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketingDataInsightsAttribute>;
 
 export type MarketingDataInsightsAttributeList = Array<MarketingDataInsightsAttribute>;
-export const MarketingDataInsightsAttributeList = /*@__PURE__*/ S.Array(
+const MarketingDataInsightsAttributeList = /*@__PURE__*/ S.Array(
   MarketingDataInsightsAttribute,
 ) as any as S.Schema<MarketingDataInsightsAttributeList>;
 
@@ -745,13 +745,13 @@ export type MarketingDataInsightDimensionEnum =
   | "IN_MARKET_USER_INTEREST"
   | "AGE_RANGE"
   | "GENDER";
-export const MarketingDataInsightDimensionEnum = S.String;
+const MarketingDataInsightDimensionEnum = S.String;
 
 export interface MarketingDataInsight {
   attributes?: MarketingDataInsightsAttributeList;
   dimension?: MarketingDataInsightDimensionEnum;
 }
-export const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
+const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(MarketingDataInsightsAttributeList),
     dimension: S.optional(MarketingDataInsightDimensionEnum),
@@ -759,14 +759,14 @@ export const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketingDataInsight" }) as any as S.Schema<MarketingDataInsight>;
 
 export type MarketingDataInsightList = Array<MarketingDataInsight>;
-export const MarketingDataInsightList = /*@__PURE__*/ S.Array(
+const MarketingDataInsightList = /*@__PURE__*/ S.Array(
   MarketingDataInsight,
 ) as any as S.Schema<MarketingDataInsightList>;
 
 export interface RetrieveInsightsResponse {
   marketingDataInsights?: MarketingDataInsightList;
 }
-export const RetrieveInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketingDataInsights: S.optional(MarketingDataInsightList),
   }),
@@ -775,7 +775,7 @@ export const RetrieveInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccountTypesAccountsUserListDirectLicensesRequest {
   name: string;
 }
-export const GetAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -788,7 +788,7 @@ export const GetAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*
 export interface GetAccountTypesAccountsUserListGlobalLicensesRequest {
   name: string;
 }
-export const GetAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -801,7 +801,7 @@ export const GetAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*
 export interface GetAccountTypesAccountsUserListsRequest {
   name: string;
 }
-export const GetAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -814,7 +814,7 @@ export const GetAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend((
 export interface GetRequestStatusRequest {
   requestId?: string;
 }
-export const GetRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -832,7 +832,7 @@ export type RequestStatusPerDestinationRequestStatusEnum =
   | "PROCESSING"
   | "FAILED"
   | "PARTIAL_SUCCESS";
-export const RequestStatusPerDestinationRequestStatusEnum = S.String;
+const RequestStatusPerDestinationRequestStatusEnum = S.String;
 
 export type WarningCountReasonEnum =
   | "PROCESSING_WARNING_REASON_UNSPECIFIED"
@@ -845,13 +845,13 @@ export type WarningCountReasonEnum =
   | "PROCESSING_WARNING_REASON_USER_IDENTIFIER_DECRYPTION_ERROR"
   | "PROCESSING_WARNING_REASON_INTERNAL_ERROR"
   | "PROCESSING_WARNING_REASON_AWS_AUTH_FAILED";
-export const WarningCountReasonEnum = S.String;
+const WarningCountReasonEnum = S.String;
 
 export interface WarningCount {
   recordCount?: string;
   reason?: WarningCountReasonEnum;
 }
-export const WarningCount = /*@__PURE__*/ S.suspend(() =>
+const WarningCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
     reason: S.optional(WarningCountReasonEnum),
@@ -859,14 +859,12 @@ export const WarningCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WarningCount" }) as any as S.Schema<WarningCount>;
 
 export type WarningCountList = Array<WarningCount>;
-export const WarningCountList = /*@__PURE__*/ S.Array(
-  WarningCount,
-) as any as S.Schema<WarningCountList>;
+const WarningCountList = /*@__PURE__*/ S.Array(WarningCount) as any as S.Schema<WarningCountList>;
 
 export interface WarningInfo {
   warningCounts?: WarningCountList;
 }
-export const WarningInfo = /*@__PURE__*/ S.suspend(() =>
+const WarningInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warningCounts: S.optional(WarningCountList),
   }),
@@ -876,7 +874,7 @@ export interface RemoveUserIdDataStatus {
   recordCount?: string;
   userIdCount?: string;
 }
-export const RemoveUserIdDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserIdDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
     userIdCount: S.optional(S.String),
@@ -887,7 +885,7 @@ export interface RemoveUserDataStatus {
   recordCount?: string;
   userIdentifierCount?: string;
 }
-export const RemoveUserDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
     userIdentifierCount: S.optional(S.String),
@@ -898,7 +896,7 @@ export interface RemovePairDataStatus {
   recordCount?: string;
   pairIdCount?: string;
 }
-export const RemovePairDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemovePairDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
     pairIdCount: S.optional(S.String),
@@ -909,7 +907,7 @@ export interface RemovePpidDataStatus {
   ppidCount?: string;
   recordCount?: string;
 }
-export const RemovePpidDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemovePpidDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ppidCount: S.optional(S.String),
     recordCount: S.optional(S.String),
@@ -922,13 +920,13 @@ export type DataTypeCountTypeEnum =
   | "PHONE_NUMBER"
   | "ADDRESS"
   | "IP_ADDRESS";
-export const DataTypeCountTypeEnum = S.String;
+const DataTypeCountTypeEnum = S.String;
 
 export interface DataTypeCount {
   type?: DataTypeCountTypeEnum;
   count?: string;
 }
-export const DataTypeCount = /*@__PURE__*/ S.suspend(() =>
+const DataTypeCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DataTypeCountTypeEnum),
     count: S.optional(S.String),
@@ -936,7 +934,7 @@ export const DataTypeCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataTypeCount" }) as any as S.Schema<DataTypeCount>;
 
 export type DataTypeCountList = Array<DataTypeCount>;
-export const DataTypeCountList = /*@__PURE__*/ S.Array(
+const DataTypeCountList = /*@__PURE__*/ S.Array(
   DataTypeCount,
 ) as any as S.Schema<DataTypeCountList>;
 
@@ -944,7 +942,7 @@ export interface RemoveCompositeDataStatus {
   dataTypeCounts?: DataTypeCountList;
   recordCount?: string;
 }
-export const RemoveCompositeDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemoveCompositeDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataTypeCounts: S.optional(DataTypeCountList),
     recordCount: S.optional(S.String),
@@ -957,7 +955,7 @@ export interface RemoveGoogleUserIdDataStatus {
   googleUserIdCount?: string;
   recordCount?: string;
 }
-export const RemoveGoogleUserIdDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemoveGoogleUserIdDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleUserIdCount: S.optional(S.String),
     recordCount: S.optional(S.String),
@@ -970,7 +968,7 @@ export interface RemoveMobileDataStatus {
   recordCount?: string;
   mobileIdCount?: string;
 }
-export const RemoveMobileDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemoveMobileDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
     mobileIdCount: S.optional(S.String),
@@ -981,7 +979,7 @@ export interface RemovePartnerProvidedIdDataStatus {
   recordCount?: string;
   partnerProvidedIdCount?: string;
 }
-export const RemovePartnerProvidedIdDataStatus = /*@__PURE__*/ S.suspend(() =>
+const RemovePartnerProvidedIdDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
     partnerProvidedIdCount: S.optional(S.String),
@@ -1000,7 +998,7 @@ export interface RemoveAudienceMembersStatus {
   mobileDataRemovalStatus?: RemoveMobileDataStatus;
   partnerProvidedIdDataRemovalStatus?: RemovePartnerProvidedIdDataStatus;
 }
-export const RemoveAudienceMembersStatus = /*@__PURE__*/ S.suspend(() =>
+const RemoveAudienceMembersStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userIdDataRemovalStatus: S.optional(RemoveUserIdDataStatus),
     userDataRemovalStatus: S.optional(RemoveUserDataStatus),
@@ -1016,14 +1014,13 @@ export const RemoveAudienceMembersStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveAudienceMembersStatus>;
 
 export interface RemoveAllAudienceMembersStatus {}
-export const RemoveAllAudienceMembersStatus =
-  Empty as any as S.Schema<RemoveAllAudienceMembersStatus>;
+const RemoveAllAudienceMembersStatus = Empty as any as S.Schema<RemoveAllAudienceMembersStatus>;
 
 export interface IngestMobileDataStatus {
   mobileIdCount?: string;
   recordCount?: string;
 }
-export const IngestMobileDataStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestMobileDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobileIdCount: S.optional(S.String),
     recordCount: S.optional(S.String),
@@ -1031,13 +1028,11 @@ export const IngestMobileDataStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngestMobileDataStatus" }) as any as S.Schema<IngestMobileDataStatus>;
 
 export type IngestUserIdDataStatus = RemoveUserIdDataStatus;
-export const IngestUserIdDataStatus = RemoveUserIdDataStatus;
-
 export interface IngestPartnerProvidedIdDataStatus {
   partnerProvidedIdCount?: string;
   recordCount?: string;
 }
-export const IngestPartnerProvidedIdDataStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestPartnerProvidedIdDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerProvidedIdCount: S.optional(S.String),
     recordCount: S.optional(S.String),
@@ -1058,14 +1053,14 @@ export type IngestUserDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_71_TO_80"
   | "MATCH_RATE_RANGE_81_TO_90"
   | "MATCH_RATE_RANGE_91_TO_100";
-export const IngestUserDataStatusUploadMatchRateRangeEnum = S.String;
+const IngestUserDataStatusUploadMatchRateRangeEnum = S.String;
 
 export interface IngestUserDataStatus {
   uploadMatchRateRange?: IngestUserDataStatusUploadMatchRateRangeEnum;
   userIdentifierCount?: string;
   recordCount?: string;
 }
-export const IngestUserDataStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestUserDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uploadMatchRateRange: S.optional(IngestUserDataStatusUploadMatchRateRangeEnum),
     userIdentifierCount: S.optional(S.String),
@@ -1077,7 +1072,7 @@ export interface IngestPairDataStatus {
   pairIdCount?: string;
   recordCount?: string;
 }
-export const IngestPairDataStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestPairDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pairIdCount: S.optional(S.String),
     recordCount: S.optional(S.String),
@@ -1085,8 +1080,6 @@ export const IngestPairDataStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngestPairDataStatus" }) as any as S.Schema<IngestPairDataStatus>;
 
 export type IngestPpidDataStatus = RemovePpidDataStatus;
-export const IngestPpidDataStatus = RemovePpidDataStatus;
-
 export type IngestCompositeDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_UNKNOWN"
   | "MATCH_RATE_RANGE_NOT_ELIGIBLE"
@@ -1099,14 +1092,14 @@ export type IngestCompositeDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_71_TO_80"
   | "MATCH_RATE_RANGE_81_TO_90"
   | "MATCH_RATE_RANGE_91_TO_100";
-export const IngestCompositeDataStatusUploadMatchRateRangeEnum = S.String;
+const IngestCompositeDataStatusUploadMatchRateRangeEnum = S.String;
 
 export interface IngestCompositeDataStatus {
   uploadMatchRateRange?: IngestCompositeDataStatusUploadMatchRateRangeEnum;
   recordCount?: string;
   dataTypeCounts?: DataTypeCountList;
 }
-export const IngestCompositeDataStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestCompositeDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uploadMatchRateRange: S.optional(IngestCompositeDataStatusUploadMatchRateRangeEnum),
     recordCount: S.optional(S.String),
@@ -1117,8 +1110,6 @@ export const IngestCompositeDataStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestCompositeDataStatus>;
 
 export type IngestGoogleUserIdDataStatus = RemoveGoogleUserIdDataStatus;
-export const IngestGoogleUserIdDataStatus = RemoveGoogleUserIdDataStatus;
-
 export interface IngestAudienceMembersStatus {
   mobileDataIngestionStatus?: IngestMobileDataStatus;
   userIdDataIngestionStatus?: RemoveUserIdDataStatus;
@@ -1129,7 +1120,7 @@ export interface IngestAudienceMembersStatus {
   compositeDataIngestionStatus?: IngestCompositeDataStatus;
   googleUserIdDataIngestionStatus?: RemoveGoogleUserIdDataStatus;
 }
-export const IngestAudienceMembersStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestAudienceMembersStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobileDataIngestionStatus: S.optional(IngestMobileDataStatus),
     userIdDataIngestionStatus: S.optional(RemoveUserIdDataStatus),
@@ -1151,7 +1142,7 @@ export interface Destination {
   operatingAccount?: ProductAccount;
   linkedAccount?: ProductAccount;
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reference: S.optional(S.String),
     productDestinationId: S.optional(S.String),
@@ -1164,7 +1155,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 export interface IngestEventsStatus {
   recordCount?: string;
 }
-export const IngestEventsStatus = /*@__PURE__*/ S.suspend(() =>
+const IngestEventsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordCount: S.optional(S.String),
   }),
@@ -1218,21 +1209,19 @@ export type ErrorCountReasonEnum =
   | "PROCESSING_ERROR_REASON_EXTERNAL_ATTRIBUTION_DATA_MISSING"
   | "PROCESSING_ERROR_REASON_DESTINATION_TOO_RECENTLY_CREATED"
   | "PROCESSING_ERROR_REASON_EXPIRED_CLICK";
-export const ErrorCountReasonEnum = S.String;
-
 export interface ErrorCount {
   recordCount?: string;
   reason?: ErrorCountReasonEnum;
 }
-export const ErrorCount = WarningCount as any as S.Schema<ErrorCount>;
+const ErrorCount = WarningCount as any as S.Schema<ErrorCount>;
 
 export type ErrorCountList = Array<ErrorCount>;
-export const ErrorCountList = /*@__PURE__*/ S.Array(ErrorCount) as any as S.Schema<ErrorCountList>;
+const ErrorCountList = /*@__PURE__*/ S.Array(ErrorCount) as any as S.Schema<ErrorCountList>;
 
 export interface ErrorInfo {
   errorCounts?: ErrorCountList;
 }
-export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCounts: S.optional(ErrorCountList),
   }),
@@ -1248,7 +1237,7 @@ export interface RequestStatusPerDestination {
   eventsIngestionStatus?: IngestEventsStatus;
   errorInfo?: ErrorInfo;
 }
-export const RequestStatusPerDestination = /*@__PURE__*/ S.suspend(() =>
+const RequestStatusPerDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestStatus: S.optional(RequestStatusPerDestinationRequestStatusEnum),
     warningInfo: S.optional(WarningInfo),
@@ -1264,14 +1253,14 @@ export const RequestStatusPerDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestStatusPerDestination>;
 
 export type RequestStatusPerDestinationList = Array<RequestStatusPerDestination>;
-export const RequestStatusPerDestinationList = /*@__PURE__*/ S.Array(
+const RequestStatusPerDestinationList = /*@__PURE__*/ S.Array(
   RequestStatusPerDestination,
 ) as any as S.Schema<RequestStatusPerDestinationList>;
 
 export interface GetRequestStatusResponse {
   requestStatusPerDestination?: RequestStatusPerDestinationList;
 }
-export const GetRequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestStatusPerDestination: S.optional(RequestStatusPerDestinationList),
   }),
@@ -1281,13 +1270,13 @@ export type AdEventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "EVENT_TYPE_VIEW"
   | "EVENT_TYPE_CLICK";
-export const AdEventEventTypeEnum = S.String;
+const AdEventEventTypeEnum = S.String;
 
 export type AdEventAttributionHintEnum =
   | "ATTRIBUTION_HINT_UNSPECIFIED"
   | "ATTRIBUTION_HINT_CONVERTED"
   | "ATTRIBUTION_HINT_NOT_CONVERTED";
-export const AdEventAttributionHintEnum = S.String;
+const AdEventAttributionHintEnum = S.String;
 
 export type AdEventAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
@@ -1298,7 +1287,7 @@ export type AdEventAdTypeEnum =
   | "AD_TYPE_HTML"
   | "AD_TYPE_AUDIO"
   | "AD_TYPE_VIDEO";
-export const AdEventAdTypeEnum = S.String;
+const AdEventAdTypeEnum = S.String;
 
 export type AdEventEventSubtypeEnum =
   | "EVENT_SUBTYPE_UNSPECIFIED"
@@ -1306,7 +1295,7 @@ export type AdEventEventSubtypeEnum =
   | "EVENT_SUBTYPE_ENGAGED_VIEW"
   | "EVENT_SUBTYPE_ONSITE_CLICK"
   | "EVENT_SUBTYPE_OUTBOUND_CLICK";
-export const AdEventEventSubtypeEnum = S.String;
+const AdEventEventSubtypeEnum = S.String;
 
 export type AdEventPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
@@ -1315,7 +1304,7 @@ export type AdEventPlatformTypeEnum =
   | "PLATFORM_TYPE_CTV"
   | "PLATFORM_TYPE_PHONE"
   | "PLATFORM_TYPE_TABLET";
-export const AdEventPlatformTypeEnum = S.String;
+const AdEventPlatformTypeEnum = S.String;
 
 export interface AddressInfo {
   addressLine?: string;
@@ -1326,7 +1315,7 @@ export interface AddressInfo {
   givenName?: string;
   regionCode?: string;
 }
-export const AddressInfo = /*@__PURE__*/ S.suspend(() =>
+const AddressInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressLine: S.optional(S.String),
     city: S.optional(S.String),
@@ -1343,7 +1332,7 @@ export interface UserIdentifier {
   phoneNumber?: string;
   address?: AddressInfo;
 }
-export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
+const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(S.String),
     phoneNumber: S.optional(S.String),
@@ -1352,14 +1341,14 @@ export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserIdentifier" }) as any as S.Schema<UserIdentifier>;
 
 export type UserIdentifierList = Array<UserIdentifier>;
-export const UserIdentifierList = /*@__PURE__*/ S.Array(
+const UserIdentifierList = /*@__PURE__*/ S.Array(
   UserIdentifier,
 ) as any as S.Schema<UserIdentifierList>;
 
 export interface UserData {
   userIdentifiers?: UserIdentifierList;
 }
-export const UserData = /*@__PURE__*/ S.suspend(() =>
+const UserData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userIdentifiers: S.optional(UserIdentifierList),
   }),
@@ -1375,7 +1364,7 @@ export type AdEventTargetingTypeEnum =
   | "TARGETING_TYPE_INTEREST"
   | "TARGETING_TYPE_PURCHASE_INTENT"
   | "TARGETING_TYPE_REMARKETING";
-export const AdEventTargetingTypeEnum = S.String;
+const AdEventTargetingTypeEnum = S.String;
 
 export type ViewabilityInfoMediaQuartileEnum =
   | "MEDIA_QUARTILE_UNSPECIFIED"
@@ -1384,13 +1373,13 @@ export type ViewabilityInfoMediaQuartileEnum =
   | "MEDIA_QUARTILE_MIDPOINT"
   | "MEDIA_QUARTILE_THIRD_QUARTILE"
   | "MEDIA_QUARTILE_COMPLETE";
-export const ViewabilityInfoMediaQuartileEnum = S.String;
+const ViewabilityInfoMediaQuartileEnum = S.String;
 
 export type ViewabilityInfoViewTypeEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "VIEW_TYPE_MRC_VIEWED"
   | "VIEW_TYPE_MRC_RENDERED";
-export const ViewabilityInfoViewTypeEnum = S.String;
+const ViewabilityInfoViewTypeEnum = S.String;
 
 export interface ViewabilityInfo {
   mediaQuartile?: ViewabilityInfoMediaQuartileEnum | (string & {});
@@ -1402,7 +1391,7 @@ export interface ViewabilityInfo {
   mediaSkippable?: boolean;
   playbackDuration?: string;
 }
-export const ViewabilityInfo = /*@__PURE__*/ S.suspend(() =>
+const ViewabilityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaQuartile: S.optional(ViewabilityInfoMediaQuartileEnum),
     mediaVolumePercent: S.optional(S.Number),
@@ -1426,7 +1415,7 @@ export type AdEventAdPlacementEnum =
   | "AD_PLACEMENT_PROMOTED"
   | "AD_PLACEMENT_SEARCH"
   | "AD_PLACEMENT_STORY";
-export const AdEventAdPlacementEnum = S.String;
+const AdEventAdPlacementEnum = S.String;
 
 export type AdEventAdFormatEnum =
   | "AD_FORMAT_UNSPECIFIED"
@@ -1448,14 +1437,14 @@ export type AdEventAdFormatEnum =
   | "AD_FORMAT_STORY"
   | "AD_FORMAT_SPONSORED"
   | "AD_FORMAT_VIDEO";
-export const AdEventAdFormatEnum = S.String;
+const AdEventAdFormatEnum = S.String;
 
 export type AdEventPlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "PLATFORM_IOS"
   | "PLATFORM_ANDROID"
   | "PLATFORM_WEB";
-export const AdEventPlatformEnum = S.String;
+const AdEventPlatformEnum = S.String;
 
 export interface DeviceInfo {
   browser?: string;
@@ -1471,7 +1460,7 @@ export interface DeviceInfo {
   model?: string;
   languageCode?: string;
 }
-export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
+const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     browser: S.optional(S.String),
     screenWidth: S.optional(S.Number),
@@ -1524,7 +1513,7 @@ export interface AdEvent {
   eventId?: string;
   adWidth?: number;
 }
-export const AdEvent = /*@__PURE__*/ S.suspend(() =>
+const AdEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     measurementAllowed: S.optional(S.Boolean),
@@ -1564,10 +1553,10 @@ export const AdEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdEvent" }) as any as S.Schema<AdEvent>;
 
 export type AdEventList = Array<AdEvent>;
-export const AdEventList = /*@__PURE__*/ S.Array(AdEvent) as any as S.Schema<AdEventList>;
+const AdEventList = /*@__PURE__*/ S.Array(AdEvent) as any as S.Schema<AdEventList>;
 
 export type AwsWrappedKeyInfoKeyTypeEnum = "KEY_TYPE_UNSPECIFIED" | "XCHACHA20_POLY1305";
-export const AwsWrappedKeyInfoKeyTypeEnum = S.String;
+const AwsWrappedKeyInfoKeyTypeEnum = S.String;
 
 export interface AwsWrappedKeyInfo {
   roleArn?: string;
@@ -1575,7 +1564,7 @@ export interface AwsWrappedKeyInfo {
   keyType?: AwsWrappedKeyInfoKeyTypeEnum | (string & {});
   encryptedDek?: string;
 }
-export const AwsWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
+const AwsWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleArn: S.optional(S.String),
     kekUri: S.optional(S.String),
@@ -1585,7 +1574,7 @@ export const AwsWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsWrappedKeyInfo" }) as any as S.Schema<AwsWrappedKeyInfo>;
 
 export type GcpWrappedKeyInfoKeyTypeEnum = "KEY_TYPE_UNSPECIFIED" | "XCHACHA20_POLY1305";
-export const GcpWrappedKeyInfoKeyTypeEnum = S.String;
+const GcpWrappedKeyInfoKeyTypeEnum = S.String;
 
 export interface GcpWrappedKeyInfo {
   encryptedDek?: string;
@@ -1593,7 +1582,7 @@ export interface GcpWrappedKeyInfo {
   keyType?: GcpWrappedKeyInfoKeyTypeEnum | (string & {});
   kekUri?: string;
 }
-export const GcpWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
+const GcpWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedDek: S.optional(S.String),
     wipProvider: S.optional(S.String),
@@ -1605,7 +1594,7 @@ export const GcpWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
 export interface CoordinatorKeyInfo {
   keyId?: string;
 }
-export const CoordinatorKeyInfo = /*@__PURE__*/ S.suspend(() =>
+const CoordinatorKeyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyId: S.optional(S.String),
   }),
@@ -1616,7 +1605,7 @@ export interface EncryptionInfo {
   gcpWrappedKeyInfo?: GcpWrappedKeyInfo;
   coordinatorKeyInfo?: CoordinatorKeyInfo;
 }
-export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
+const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     awsWrappedKeyInfo: S.optional(AwsWrappedKeyInfo),
     gcpWrappedKeyInfo: S.optional(GcpWrappedKeyInfo),
@@ -1629,7 +1618,7 @@ export interface IngestAdEventsRequest {
   validateOnly?: boolean;
   encryptionInfo?: EncryptionInfo;
 }
-export const IngestAdEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestAdEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adEvents: S.optional(AdEventList),
     validateOnly: S.optional(S.Boolean),
@@ -1641,7 +1630,7 @@ export interface IngestAdEventsRequest_ {
   /** Request body */
   body?: IngestAdEventsRequest;
 }
-export const IngestAdEventsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const IngestAdEventsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(IngestAdEventsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1654,12 +1643,12 @@ export const IngestAdEventsRequest_ = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngestAdEventsRequest_" }) as any as S.Schema<IngestAdEventsRequest_>;
 
 export interface IngestAdEventsResponse {}
-export const IngestAdEventsResponse = Empty as any as S.Schema<IngestAdEventsResponse>;
+const IngestAdEventsResponse = Empty as any as S.Schema<IngestAdEventsResponse>;
 
 export interface PartnerProvidedIdData {
   partnerProvidedIds?: StringList;
 }
-export const PartnerProvidedIdData = /*@__PURE__*/ S.suspend(() =>
+const PartnerProvidedIdData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerProvidedIds: S.optional(StringList),
   }),
@@ -1668,7 +1657,7 @@ export const PartnerProvidedIdData = /*@__PURE__*/ S.suspend(() =>
 export interface GoogleUserIdData {
   googleUserIds?: StringList;
 }
-export const GoogleUserIdData = /*@__PURE__*/ S.suspend(() =>
+const GoogleUserIdData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleUserIds: S.optional(StringList),
   }),
@@ -1677,7 +1666,7 @@ export const GoogleUserIdData = /*@__PURE__*/ S.suspend(() =>
 export interface PairData {
   pairIds?: StringList;
 }
-export const PairData = /*@__PURE__*/ S.suspend(() =>
+const PairData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pairIds: S.optional(StringList),
   }),
@@ -1686,7 +1675,7 @@ export const PairData = /*@__PURE__*/ S.suspend(() =>
 export interface MobileData {
   mobileIds?: StringList;
 }
-export const MobileData = /*@__PURE__*/ S.suspend(() =>
+const MobileData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobileIds: S.optional(StringList),
   }),
@@ -1695,7 +1684,7 @@ export const MobileData = /*@__PURE__*/ S.suspend(() =>
 export interface PpidData {
   ppids?: StringList;
 }
-export const PpidData = /*@__PURE__*/ S.suspend(() =>
+const PpidData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ppids: S.optional(StringList),
   }),
@@ -1705,19 +1694,19 @@ export type ConsentAdUserDataEnum =
   | "CONSENT_STATUS_UNSPECIFIED"
   | "CONSENT_GRANTED"
   | "CONSENT_DENIED";
-export const ConsentAdUserDataEnum = S.String;
+const ConsentAdUserDataEnum = S.String;
 
 export type ConsentAdPersonalizationEnum =
   | "CONSENT_STATUS_UNSPECIFIED"
   | "CONSENT_GRANTED"
   | "CONSENT_DENIED";
-export const ConsentAdPersonalizationEnum = S.String;
+const ConsentAdPersonalizationEnum = S.String;
 
 export interface Consent {
   adUserData?: ConsentAdUserDataEnum | (string & {});
   adPersonalization?: ConsentAdPersonalizationEnum | (string & {});
 }
-export const Consent = /*@__PURE__*/ S.suspend(() =>
+const Consent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adUserData: S.optional(ConsentAdUserDataEnum),
     adPersonalization: S.optional(ConsentAdPersonalizationEnum),
@@ -1729,7 +1718,7 @@ export interface IpData {
   observeStartTime?: string;
   observeEndTime?: string;
 }
-export const IpData = /*@__PURE__*/ S.suspend(() =>
+const IpData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     observeStartTime: S.optional(S.String),
@@ -1738,13 +1727,13 @@ export const IpData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpData" }) as any as S.Schema<IpData>;
 
 export type IpDataList = Array<IpData>;
-export const IpDataList = /*@__PURE__*/ S.Array(IpData) as any as S.Schema<IpDataList>;
+const IpDataList = /*@__PURE__*/ S.Array(IpData) as any as S.Schema<IpDataList>;
 
 export interface CompositeData {
   ipData?: IpDataList;
   userData?: UserData;
 }
-export const CompositeData = /*@__PURE__*/ S.suspend(() =>
+const CompositeData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipData: S.optional(IpDataList),
     userData: S.optional(UserData),
@@ -1754,7 +1743,7 @@ export const CompositeData = /*@__PURE__*/ S.suspend(() =>
 export interface UserIdData {
   userId?: string;
 }
-export const UserIdData = /*@__PURE__*/ S.suspend(() =>
+const UserIdData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
   }),
@@ -1772,7 +1761,7 @@ export interface AudienceMember {
   compositeData?: CompositeData;
   userIdData?: UserIdData;
 }
-export const AudienceMember = /*@__PURE__*/ S.suspend(() =>
+const AudienceMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationReferences: S.optional(StringList),
     partnerProvidedIdData: S.optional(PartnerProvidedIdData),
@@ -1788,30 +1777,28 @@ export const AudienceMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AudienceMember" }) as any as S.Schema<AudienceMember>;
 
 export type AudienceMemberList = Array<AudienceMember>;
-export const AudienceMemberList = /*@__PURE__*/ S.Array(
+const AudienceMemberList = /*@__PURE__*/ S.Array(
   AudienceMember,
 ) as any as S.Schema<AudienceMemberList>;
 
 export type IngestAudienceMembersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-export const IngestAudienceMembersRequestEncodingEnum = S.String;
+const IngestAudienceMembersRequestEncodingEnum = S.String;
 
 export type DestinationList = Array<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(
-  Destination,
-) as any as S.Schema<DestinationList>;
+const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
 
 export type TermsOfServiceCustomerMatchTermsOfServiceStatusEnum =
   | "TERMS_OF_SERVICE_STATUS_UNSPECIFIED"
   | "ACCEPTED"
   | "REJECTED";
-export const TermsOfServiceCustomerMatchTermsOfServiceStatusEnum = S.String;
+const TermsOfServiceCustomerMatchTermsOfServiceStatusEnum = S.String;
 
 export interface TermsOfService {
   customerMatchTermsOfServiceStatus?:
     | TermsOfServiceCustomerMatchTermsOfServiceStatusEnum
     | (string & {});
 }
-export const TermsOfService = /*@__PURE__*/ S.suspend(() =>
+const TermsOfService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerMatchTermsOfServiceStatus: S.optional(
       TermsOfServiceCustomerMatchTermsOfServiceStatusEnum,
@@ -1828,7 +1815,7 @@ export interface IngestAudienceMembersRequest {
   validateOnly?: boolean;
   encryptionInfo?: EncryptionInfo;
 }
-export const IngestAudienceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestAudienceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceMembers: S.optional(AudienceMemberList),
     encoding: S.optional(IngestAudienceMembersRequestEncodingEnum),
@@ -1846,7 +1833,7 @@ export interface IngestAudienceMembersRequest_ {
   /** Request body */
   body?: IngestAudienceMembersRequest;
 }
-export const IngestAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
+const IngestAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(IngestAudienceMembersRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1876,14 +1863,14 @@ export type FieldWarningReasonEnum =
   | "WARNING_REASON_INVALID_DEVICE_CATEGORY"
   | "WARNING_REASON_INVALID_DEVICE_SCREEN_RESOLUTION"
   | "WARNING_REASON_INVALID_MERCHANT_ID";
-export const FieldWarningReasonEnum = S.String;
+const FieldWarningReasonEnum = S.String;
 
 export interface FieldWarning {
   reason?: FieldWarningReasonEnum;
   field?: string;
   description?: string;
 }
-export const FieldWarning = /*@__PURE__*/ S.suspend(() =>
+const FieldWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(FieldWarningReasonEnum),
     field: S.optional(S.String),
@@ -1892,15 +1879,13 @@ export const FieldWarning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldWarning" }) as any as S.Schema<FieldWarning>;
 
 export type FieldWarningList = Array<FieldWarning>;
-export const FieldWarningList = /*@__PURE__*/ S.Array(
-  FieldWarning,
-) as any as S.Schema<FieldWarningList>;
+const FieldWarningList = /*@__PURE__*/ S.Array(FieldWarning) as any as S.Schema<FieldWarningList>;
 
 export interface IngestAudienceMembersResponse {
   fieldWarnings?: FieldWarningList;
   requestId?: string;
 }
-export const IngestAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const IngestAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldWarnings: S.optional(FieldWarningList),
     requestId: S.optional(S.String),
@@ -1917,27 +1902,27 @@ export type EventEventSourceEnum =
   | "PHONE"
   | "MESSAGE"
   | "OTHER";
-export const EventEventSourceEnum = S.String;
+const EventEventSourceEnum = S.String;
 
 export type UserPropertiesCustomerValueBucketEnum =
   | "CUSTOMER_VALUE_BUCKET_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const UserPropertiesCustomerValueBucketEnum = S.String;
+const UserPropertiesCustomerValueBucketEnum = S.String;
 
 export type UserPropertiesCustomerTypeEnum =
   | "CUSTOMER_TYPE_UNSPECIFIED"
   | "NEW"
   | "RETURNING"
   | "REENGAGED";
-export const UserPropertiesCustomerTypeEnum = S.String;
+const UserPropertiesCustomerTypeEnum = S.String;
 
 export interface UserProperty {
   propertyName?: string;
   value?: string;
 }
-export const UserProperty = /*@__PURE__*/ S.suspend(() =>
+const UserProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyName: S.optional(S.String),
     value: S.optional(S.String),
@@ -1945,16 +1930,14 @@ export const UserProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserProperty" }) as any as S.Schema<UserProperty>;
 
 export type UserPropertyList = Array<UserProperty>;
-export const UserPropertyList = /*@__PURE__*/ S.Array(
-  UserProperty,
-) as any as S.Schema<UserPropertyList>;
+const UserPropertyList = /*@__PURE__*/ S.Array(UserProperty) as any as S.Schema<UserPropertyList>;
 
 export interface UserProperties {
   customerValueBucket?: UserPropertiesCustomerValueBucketEnum | (string & {});
   customerType?: UserPropertiesCustomerTypeEnum | (string & {});
   additionalUserProperties?: UserPropertyList;
 }
-export const UserProperties = /*@__PURE__*/ S.suspend(() =>
+const UserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerValueBucket: S.optional(UserPropertiesCustomerValueBucketEnum),
     customerType: S.optional(UserPropertiesCustomerTypeEnum),
@@ -1967,7 +1950,7 @@ export interface CustomVariable {
   value?: string;
   destinationReferences?: StringList;
 }
-export const CustomVariable = /*@__PURE__*/ S.suspend(() =>
+const CustomVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variable: S.optional(S.String),
     value: S.optional(S.String),
@@ -1976,7 +1959,7 @@ export const CustomVariable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomVariable" }) as any as S.Schema<CustomVariable>;
 
 export type CustomVariableList = Array<CustomVariable>;
-export const CustomVariableList = /*@__PURE__*/ S.Array(
+const CustomVariableList = /*@__PURE__*/ S.Array(
   CustomVariable,
 ) as any as S.Schema<CustomVariableList>;
 
@@ -1984,7 +1967,7 @@ export interface ItemParameter {
   parameterName?: string;
   value?: string;
 }
-export const ItemParameter = /*@__PURE__*/ S.suspend(() =>
+const ItemParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterName: S.optional(S.String),
     value: S.optional(S.String),
@@ -1992,7 +1975,7 @@ export const ItemParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemParameter" }) as any as S.Schema<ItemParameter>;
 
 export type ItemParameterList = Array<ItemParameter>;
-export const ItemParameterList = /*@__PURE__*/ S.Array(
+const ItemParameterList = /*@__PURE__*/ S.Array(
   ItemParameter,
 ) as any as S.Schema<ItemParameterList>;
 
@@ -2001,7 +1984,7 @@ export interface ItemCustomVariable {
   value?: string;
   variable?: string;
 }
-export const ItemCustomVariable = /*@__PURE__*/ S.suspend(() =>
+const ItemCustomVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationReferences: S.optional(StringList),
     value: S.optional(S.String),
@@ -2010,7 +1993,7 @@ export const ItemCustomVariable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemCustomVariable" }) as any as S.Schema<ItemCustomVariable>;
 
 export type ItemCustomVariableList = Array<ItemCustomVariable>;
-export const ItemCustomVariableList = /*@__PURE__*/ S.Array(
+const ItemCustomVariableList = /*@__PURE__*/ S.Array(
   ItemCustomVariable,
 ) as any as S.Schema<ItemCustomVariableList>;
 
@@ -2026,7 +2009,7 @@ export interface Item {
   merchantFeedLanguageCode?: string;
   merchantId?: string;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionValue: S.optional(S.Number),
     additionalItemParameters: S.optional(ItemParameterList),
@@ -2042,7 +2025,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 export type ItemList = Array<Item>;
-export const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
+const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
 
 export interface CartData {
   couponCodes?: StringList;
@@ -2052,7 +2035,7 @@ export interface CartData {
   items?: ItemList;
   merchantFeedLabel?: string;
 }
-export const CartData = /*@__PURE__*/ S.suspend(() =>
+const CartData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     couponCodes: S.optional(StringList),
     merchantFeedLanguageCode: S.optional(S.String),
@@ -2067,7 +2050,7 @@ export interface ExperimentalField {
   field?: string;
   value?: string;
 }
-export const ExperimentalField = /*@__PURE__*/ S.suspend(() =>
+const ExperimentalField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     value: S.optional(S.String),
@@ -2075,7 +2058,7 @@ export const ExperimentalField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExperimentalField" }) as any as S.Schema<ExperimentalField>;
 
 export type ExperimentalFieldList = Array<ExperimentalField>;
-export const ExperimentalFieldList = /*@__PURE__*/ S.Array(
+const ExperimentalFieldList = /*@__PURE__*/ S.Array(
   ExperimentalField,
 ) as any as S.Schema<ExperimentalFieldList>;
 
@@ -2083,7 +2066,7 @@ export interface EventParameter {
   value?: string;
   parameterName?: string;
 }
-export const EventParameter = /*@__PURE__*/ S.suspend(() =>
+const EventParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     parameterName: S.optional(S.String),
@@ -2091,7 +2074,7 @@ export const EventParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventParameter" }) as any as S.Schema<EventParameter>;
 
 export type EventParameterList = Array<EventParameter>;
-export const EventParameterList = /*@__PURE__*/ S.Array(
+const EventParameterList = /*@__PURE__*/ S.Array(
   EventParameter,
 ) as any as S.Schema<EventParameterList>;
 
@@ -2103,13 +2086,13 @@ export type EncryptedUserIdEntityTypeEnum =
   | "DISPLAY_VIDEO_ADVERTISER"
   | "GOOGLE_ADS_CUSTOMER"
   | "GOOGLE_AD_MANAGER_NETWORK_CODE";
-export const EncryptedUserIdEntityTypeEnum = S.String;
+const EncryptedUserIdEntityTypeEnum = S.String;
 
 export type EncryptedUserIdSourceEnum =
   | "ENCRYPTION_SOURCE_UNSPECIFIED"
   | "AD_SERVING"
   | "DATA_TRANSFER";
-export const EncryptedUserIdSourceEnum = S.String;
+const EncryptedUserIdSourceEnum = S.String;
 
 export interface EncryptedUserId {
   entityType?: EncryptedUserIdEntityTypeEnum | (string & {});
@@ -2117,7 +2100,7 @@ export interface EncryptedUserId {
   entityId?: string;
   encryptedId?: string;
 }
-export const EncryptedUserId = /*@__PURE__*/ S.suspend(() =>
+const EncryptedUserId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: S.optional(EncryptedUserIdEntityTypeEnum),
     source: S.optional(EncryptedUserIdSourceEnum),
@@ -2127,7 +2110,7 @@ export const EncryptedUserId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EncryptedUserId" }) as any as S.Schema<EncryptedUserId>;
 
 export type EncryptedUserIdList = Array<EncryptedUserId>;
-export const EncryptedUserIdList = /*@__PURE__*/ S.Array(
+const EncryptedUserIdList = /*@__PURE__*/ S.Array(
   EncryptedUserId,
 ) as any as S.Schema<EncryptedUserIdList>;
 
@@ -2145,7 +2128,7 @@ export interface AdIdentifiers {
   matchId?: string;
   ppid?: string;
 }
-export const AdIdentifiers = /*@__PURE__*/ S.suspend(() =>
+const AdIdentifiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionAttributes: S.optional(S.String),
     visitorPpid: S.optional(S.String),
@@ -2170,7 +2153,7 @@ export interface EventLocation {
   regionCode?: string;
   continentCode?: string;
 }
-export const EventLocation = /*@__PURE__*/ S.suspend(() =>
+const EventLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     subcontinentCode: S.optional(S.String),
@@ -2206,7 +2189,7 @@ export interface Event {
   eventDeviceInfo?: DeviceInfo;
   transactionId?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     userId: S.optional(S.String),
@@ -2235,10 +2218,10 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export type EventList = Array<Event>;
-export const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
+const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
 
 export type IngestEventsRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-export const IngestEventsRequestEncodingEnum = S.String;
+const IngestEventsRequestEncodingEnum = S.String;
 
 export interface IngestEventsRequest {
   events?: EventList;
@@ -2248,7 +2231,7 @@ export interface IngestEventsRequest {
   validateOnly?: boolean;
   encryptionInfo?: EncryptionInfo;
 }
-export const IngestEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(EventList),
     destinations: S.optional(DestinationList),
@@ -2263,7 +2246,7 @@ export interface IngestEventsRequest_ {
   /** Request body */
   body?: IngestEventsRequest;
 }
-export const IngestEventsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const IngestEventsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(IngestEventsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2279,7 +2262,7 @@ export interface IngestEventsResponse {
   fieldWarnings?: FieldWarningList;
   requestId?: string;
 }
-export const IngestEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const IngestEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldWarnings: S.optional(FieldWarningList),
     requestId: S.optional(S.String),
@@ -2290,7 +2273,7 @@ export interface User {
   mobileData?: MobileData;
   userData?: UserData;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobileData: S.optional(MobileData),
     userData: S.optional(UserData),
@@ -2298,10 +2281,10 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export type UserList_ = Array<User>;
-export const UserList_ = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList_>;
+const UserList_ = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList_>;
 
 export type IngestUsersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-export const IngestUsersRequestEncodingEnum = S.String;
+const IngestUsersRequestEncodingEnum = S.String;
 
 export interface IngestUsersRequest {
   encryptionInfo?: EncryptionInfo;
@@ -2310,7 +2293,7 @@ export interface IngestUsersRequest {
   encoding?: IngestUsersRequestEncodingEnum | (string & {});
   validateOnly?: boolean;
 }
-export const IngestUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionInfo: S.optional(EncryptionInfo),
     users: S.optional(UserList_),
@@ -2324,7 +2307,7 @@ export interface IngestUsersRequest_ {
   /** Request body */
   body?: IngestUsersRequest;
 }
-export const IngestUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
+const IngestUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(IngestUsersRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2339,7 +2322,7 @@ export const IngestUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
 export interface IngestUsersResponse {
   requestId?: string;
 }
-export const IngestUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const IngestUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -2351,7 +2334,7 @@ export interface ListAccountTypesAccountsUserListDirectLicensesRequest {
   parent: string;
   pageToken?: string;
 }
-export const ListAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2369,7 +2352,7 @@ export const ListAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__
 }) as any as S.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>;
 
 export type UserListDirectLicenseList = Array<UserListDirectLicense>;
-export const UserListDirectLicenseList = /*@__PURE__*/ S.Array(
+const UserListDirectLicenseList = /*@__PURE__*/ S.Array(
   UserListDirectLicense,
 ) as any as S.Schema<UserListDirectLicenseList>;
 
@@ -2377,7 +2360,7 @@ export interface ListUserListDirectLicensesResponse {
   userListDirectLicenses?: UserListDirectLicenseList;
   nextPageToken?: string;
 }
-export const ListUserListDirectLicensesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserListDirectLicensesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userListDirectLicenses: S.optional(UserListDirectLicenseList),
     nextPageToken: S.optional(S.String),
@@ -2392,7 +2375,7 @@ export interface ListAccountTypesAccountsUserListGlobalLicensesRequest {
   pageSize?: number;
   filter?: string;
 }
-export const ListAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2410,7 +2393,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__
 }) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
 
 export type UserListGlobalLicenseList = Array<UserListGlobalLicense>;
-export const UserListGlobalLicenseList = /*@__PURE__*/ S.Array(
+const UserListGlobalLicenseList = /*@__PURE__*/ S.Array(
   UserListGlobalLicense,
 ) as any as S.Schema<UserListGlobalLicenseList>;
 
@@ -2418,7 +2401,7 @@ export interface ListUserListGlobalLicensesResponse {
   userListGlobalLicenses?: UserListGlobalLicenseList;
   nextPageToken?: string;
 }
-export const ListUserListGlobalLicensesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserListGlobalLicensesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userListGlobalLicenses: S.optional(UserListGlobalLicenseList),
     nextPageToken: S.optional(S.String),
@@ -2433,7 +2416,7 @@ export interface ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLic
   pageToken?: string;
   filter?: string;
 }
-export const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest =
+const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2456,7 +2439,7 @@ export type UserListGlobalLicenseCustomerInfoStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
   | "USER_LIST_LICENSE_STATUS_DISABLED";
-export const UserListGlobalLicenseCustomerInfoStatusEnum = S.String;
+const UserListGlobalLicenseCustomerInfoStatusEnum = S.String;
 
 export type UserListGlobalLicenseCustomerInfoClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_UNKNOWN"
@@ -2464,14 +2447,14 @@ export type UserListGlobalLicenseCustomerInfoClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK";
-export const UserListGlobalLicenseCustomerInfoClientAccountTypeEnum = S.String;
+const UserListGlobalLicenseCustomerInfoClientAccountTypeEnum = S.String;
 
 export type UserListGlobalLicenseCustomerInfoLicenseTypeEnum =
   | "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE";
-export const UserListGlobalLicenseCustomerInfoLicenseTypeEnum = S.String;
+const UserListGlobalLicenseCustomerInfoLicenseTypeEnum = S.String;
 
 export interface UserListGlobalLicenseCustomerInfo {
   userListId?: string;
@@ -2486,7 +2469,7 @@ export interface UserListGlobalLicenseCustomerInfo {
   clientAccountType?: UserListGlobalLicenseCustomerInfoClientAccountTypeEnum;
   licenseType?: UserListGlobalLicenseCustomerInfoLicenseTypeEnum;
 }
-export const UserListGlobalLicenseCustomerInfo = /*@__PURE__*/ S.suspend(() =>
+const UserListGlobalLicenseCustomerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userListId: S.optional(S.String),
     status: S.optional(UserListGlobalLicenseCustomerInfoStatusEnum),
@@ -2505,7 +2488,7 @@ export const UserListGlobalLicenseCustomerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserListGlobalLicenseCustomerInfo>;
 
 export type UserListGlobalLicenseCustomerInfoList = Array<UserListGlobalLicenseCustomerInfo>;
-export const UserListGlobalLicenseCustomerInfoList = /*@__PURE__*/ S.Array(
+const UserListGlobalLicenseCustomerInfoList = /*@__PURE__*/ S.Array(
   UserListGlobalLicenseCustomerInfo,
 ) as any as S.Schema<UserListGlobalLicenseCustomerInfoList>;
 
@@ -2513,7 +2496,7 @@ export interface ListUserListGlobalLicenseCustomerInfosResponse {
   userListGlobalLicenseCustomerInfos?: UserListGlobalLicenseCustomerInfoList;
   nextPageToken?: string;
 }
-export const ListUserListGlobalLicenseCustomerInfosResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserListGlobalLicenseCustomerInfosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userListGlobalLicenseCustomerInfos: S.optional(UserListGlobalLicenseCustomerInfoList),
     nextPageToken: S.optional(S.String),
@@ -2528,7 +2511,7 @@ export interface ListAccountTypesAccountsUserListsRequest {
   parent: string;
   pageSize?: number;
 }
-export const ListAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2546,13 +2529,13 @@ export const ListAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>;
 
 export type UserListList = Array<UserList>;
-export const UserListList = /*@__PURE__*/ S.Array(UserList) as any as S.Schema<UserListList>;
+const UserListList = /*@__PURE__*/ S.Array(UserList) as any as S.Schema<UserListList>;
 
 export interface ListUserListsResponse {
   userLists?: UserListList;
   nextPageToken?: string;
 }
-export const ListUserListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userLists: S.optional(UserListList),
     nextPageToken: S.optional(S.String),
@@ -2565,7 +2548,7 @@ export interface PatchAccountTypesAccountsUserListDirectLicensesRequest {
   /** Request body */
   body?: UserListDirectLicense;
 }
-export const PatchAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2583,7 +2566,7 @@ export interface PatchAccountTypesAccountsUserListGlobalLicensesRequest {
   /** Request body */
   body?: UserListGlobalLicense;
 }
-export const PatchAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2602,7 +2585,7 @@ export interface PatchAccountTypesAccountsUserListsRequest {
   /** Request body */
   body?: UserList;
 }
-export const PatchAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2620,7 +2603,7 @@ export interface RemoveAllAudienceMembersRequest {
   validateOnly?: boolean;
   removeAsOfTime?: string;
 }
-export const RemoveAllAudienceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAllAudienceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: S.optional(DestinationList),
     validateOnly: S.optional(S.Boolean),
@@ -2634,7 +2617,7 @@ export interface RemoveAllAudienceMembersRequest_ {
   /** Request body */
   body?: RemoveAllAudienceMembersRequest;
 }
-export const RemoveAllAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
+const RemoveAllAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(RemoveAllAudienceMembersRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2651,7 +2634,7 @@ export const RemoveAllAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveAllAudienceMembersResponse {
   requestId?: string;
 }
-export const RemoveAllAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveAllAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -2660,7 +2643,7 @@ export const RemoveAllAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveAllAudienceMembersResponse>;
 
 export type RemoveAudienceMembersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-export const RemoveAudienceMembersRequestEncodingEnum = S.String;
+const RemoveAudienceMembersRequestEncodingEnum = S.String;
 
 export interface RemoveAudienceMembersRequest {
   destinations?: DestinationList;
@@ -2669,7 +2652,7 @@ export interface RemoveAudienceMembersRequest {
   validateOnly?: boolean;
   encoding?: RemoveAudienceMembersRequestEncodingEnum | (string & {});
 }
-export const RemoveAudienceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAudienceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: S.optional(DestinationList),
     encryptionInfo: S.optional(EncryptionInfo),
@@ -2685,7 +2668,7 @@ export interface RemoveAudienceMembersRequest_ {
   /** Request body */
   body?: RemoveAudienceMembersRequest;
 }
-export const RemoveAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
+const RemoveAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(RemoveAudienceMembersRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2702,14 +2685,14 @@ export const RemoveAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveAudienceMembersResponse {
   requestId?: string;
 }
-export const RemoveAudienceMembersResponse =
+const RemoveAudienceMembersResponse =
   RemoveAllAudienceMembersResponse as any as S.Schema<RemoveAudienceMembersResponse>;
 
 export type RemoveUsersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-export const RemoveUsersRequestEncodingEnum = S.String;
+const RemoveUsersRequestEncodingEnum = S.String;
 
 export type UserDataList = Array<UserData>;
-export const UserDataList = /*@__PURE__*/ S.Array(UserData) as any as S.Schema<UserDataList>;
+const UserDataList = /*@__PURE__*/ S.Array(UserData) as any as S.Schema<UserDataList>;
 
 export interface RemoveUsersRequest {
   destinations?: DestinationList;
@@ -2718,7 +2701,7 @@ export interface RemoveUsersRequest {
   validateOnly?: boolean;
   userData?: UserDataList;
 }
-export const RemoveUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: S.optional(DestinationList),
     encoding: S.optional(RemoveUsersRequestEncodingEnum),
@@ -2732,7 +2715,7 @@ export interface RemoveUsersRequest_ {
   /** Request body */
   body?: RemoveUsersRequest;
 }
-export const RemoveUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
+const RemoveUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(RemoveUsersRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2747,7 +2730,7 @@ export const RemoveUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveUsersResponse {
   requestId?: string;
 }
-export const RemoveUsersResponse = IngestUsersResponse as any as S.Schema<RemoveUsersResponse>;
+const RemoveUsersResponse = IngestUsersResponse as any as S.Schema<RemoveUsersResponse>;
 
 export interface SearchAccountTypesAccountsPartnerLinksRequest {
   filter?: string;
@@ -2755,7 +2738,7 @@ export interface SearchAccountTypesAccountsPartnerLinksRequest {
   pageSize?: number;
   parent: string;
 }
-export const SearchAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2773,15 +2756,13 @@ export const SearchAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>;
 
 export type PartnerLinkList = Array<PartnerLink>;
-export const PartnerLinkList = /*@__PURE__*/ S.Array(
-  PartnerLink,
-) as any as S.Schema<PartnerLinkList>;
+const PartnerLinkList = /*@__PURE__*/ S.Array(PartnerLink) as any as S.Schema<PartnerLinkList>;
 
 export interface SearchPartnerLinksResponse {
   nextPageToken?: string;
   partnerLinks?: PartnerLinkList;
 }
-export const SearchPartnerLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchPartnerLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     partnerLinks: S.optional(PartnerLinkList),

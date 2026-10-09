@@ -154,7 +154,7 @@ export class ProjectNotFound
   ) {}
 
 export type AssetsCheckMissingRequestHashesList = Array<string>;
-export const AssetsCheckMissingRequestHashesList = /*@__PURE__*/ S.Array(
+const AssetsCheckMissingRequestHashesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssetsCheckMissingRequestHashesList>;
 
@@ -162,7 +162,7 @@ export interface AssetsCheckMissingRequest {
   /** List of file content hashes to check for existence in the asset store. */
   hashes: AssetsCheckMissingRequestHashesList;
 }
-export const AssetsCheckMissingRequest = /*@__PURE__*/ S.suspend(() =>
+const AssetsCheckMissingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashes: AssetsCheckMissingRequestHashesList,
   })
@@ -173,25 +173,25 @@ export const AssetsCheckMissingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsCheckMissingRequest>;
 
 export type AssetsCheckMissingResultList = Array<string>;
-export const AssetsCheckMissingResultList =
+const AssetsCheckMissingResultList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<AssetsCheckMissingResultList>;
 
 export type AssetsCheckMissingResponse = AssetsCheckMissingResultList;
-export const AssetsCheckMissingResponse = /*@__PURE__*/ S.suspend(() =>
+const AssetsCheckMissingResponse = /*@__PURE__*/ S.suspend(() =>
   AssetsCheckMissingResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AssetsCheckMissingResponse",
 }) as any as S.Schema<AssetsCheckMissingResponse>;
 
 export type AssetsUpsertHashesRequestHashesList = Array<string>;
-export const AssetsUpsertHashesRequestHashesList =
+const AssetsUpsertHashesRequestHashesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<AssetsUpsertHashesRequestHashesList>;
 
 export interface AssetsUpsertHashesRequest {
   /** List of file content hashes to register in the asset store. */
   hashes: AssetsUpsertHashesRequestHashesList;
 }
-export const AssetsUpsertHashesRequest = /*@__PURE__*/ S.suspend(() =>
+const AssetsUpsertHashesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashes: AssetsUpsertHashesRequestHashesList,
   })
@@ -202,7 +202,7 @@ export const AssetsUpsertHashesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsUpsertHashesRequest>;
 
 export interface AssetsUpsertHashesResponse {}
-export const AssetsUpsertHashesResponse = /*@__PURE__*/ S.suspend(() =>
+const AssetsUpsertHashesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "AssetsUpsertHashesResponse",
@@ -222,7 +222,7 @@ export interface ProjectsCreateRequestBuildConfig {
   /** The auth token for analytics. */
   webAnalyticsToken?: string;
 }
-export const ProjectsCreateRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildCaching: S.optional(S.Boolean.pipe(T.Body("build_caching"))),
     buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
@@ -238,11 +238,10 @@ export const ProjectsCreateRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue {
   projectId: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Body("project_id")),
-    }),
+const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projectId: S.String.pipe(T.Body("project_id")),
+  }),
 ).annotate({
   identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue",
 }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue>;
@@ -250,7 +249,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue = /*@_
 export type ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
+const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
 ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap>;
@@ -259,7 +258,7 @@ export interface ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDat
   /** Name of the dataset. */
   dataset: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
+const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataset: S.String,
@@ -273,7 +272,7 @@ export type ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasets
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
@@ -282,28 +281,27 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDataset
 export type ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
+const ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
-export const ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
+const ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap =
+const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue {
   /** ID of the Durable Object namespace. */
   namespaceId: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
+const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespaceId: S.String.pipe(T.Body("namespace_id")),
@@ -317,20 +315,20 @@ export type ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespaces
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
+const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type UntypedBindingMap = { [key: string]: unknown | undefined };
-export const UntypedBindingMap =
+const UntypedBindingMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<UntypedBindingMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue =
+const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
@@ -342,23 +340,22 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValu
 export type ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
+const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap =
+const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewLimits {
   /** CPU time limit in milliseconds. */
   cpuMs: number;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewLimits = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsPreviewLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuMs: S.Number.pipe(T.Body("cpu_ms")),
   }),
@@ -369,29 +366,28 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewLimits = /*@__PURE__*/
 export interface ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue {
   certificateId: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue =
-  /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       certificateId: S.String.pipe(T.Body("certificate_id")),
     }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue>;
+).annotate({
+  identifier: "ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue",
+}) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
+const ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewPlacement {
   /** Placement mode. */
   mode: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewPlacement = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsPreviewPlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.String,
   }),
@@ -403,28 +399,27 @@ export interface ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValu
   /** Name of the Queue. */
   name: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue =
-  /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String,
     }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue>;
+).annotate({
+  identifier: "ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue",
+}) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap>;
+const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap =
+const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
@@ -435,13 +430,12 @@ export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
   /** The Service environment. */
   environment?: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewServicesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      service: S.String,
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-    }),
+const ProjectsCreateRequestDeploymentConfigsPreviewServicesValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    service: S.String,
+    entrypoint: S.optional(S.String),
+    environment: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ProjectsCreateRequestDeploymentConfigsPreviewServicesValue",
 }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewServicesValue>;
@@ -449,7 +443,7 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewServicesValue = /*@__P
 export type ProjectsCreateRequestDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
+const ProjectsCreateRequestDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue,
 ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewServicesMap>;
@@ -458,28 +452,27 @@ export type ProjectsCreateRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsCreateRequestDeploymentConfigsPreviewUsageModel = S.String;
+const ProjectsCreateRequestDeploymentConfigsPreviewUsageModel = S.String;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue {
   indexName: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue =
-  /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       indexName: S.String.pipe(T.Body("index_name")),
     }),
-  ).annotate({
-    identifier: "ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue",
-  }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue>;
+).annotate({
+  identifier: "ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue",
+}) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue>;
 
 export type ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
+const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreview {
   /** Constellation bindings used for Pages Functions. */
@@ -527,7 +520,7 @@ export interface ProjectsCreateRequestDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiBindings: S.optional(
       ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap.pipe(T.Body("ai_bindings")),
@@ -598,141 +591,110 @@ export const ProjectsCreateRequestDeploymentConfigsPreview = /*@__PURE__*/ S.sus
 
 export type ProjectsCreateRequestDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap =
+const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+const ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap =
+const ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
-export const ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList =
+const ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap>;
+const ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
+const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap =
+const ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap =
+const ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsCreateRequestDeploymentConfigsProductionLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap =
+const ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsCreateRequestDeploymentConfigsProductionPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap =
+const ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap =
+const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionServicesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionServicesMap =
+const ProjectsCreateRequestDeploymentConfigsProductionServicesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsCreateRequestDeploymentConfigsProductionUsageModel = S.String;
+const ProjectsCreateRequestDeploymentConfigsProductionUsageModel = S.String;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap =
+const ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsProduction {
@@ -781,7 +743,7 @@ export interface ProjectsCreateRequestDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
-export const ProjectsCreateRequestDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiBindings: S.optional(
       ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap.pipe(T.Body("ai_bindings")),
@@ -856,7 +818,7 @@ export interface ProjectsCreateRequestDeploymentConfigs {
   /** Configs for production deploys. */
   production?: ProjectsCreateRequestDeploymentConfigsProduction;
 }
-export const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preview: S.optional(ProjectsCreateRequestDeploymentConfigsPreview),
     production: S.optional(ProjectsCreateRequestDeploymentConfigsProduction),
@@ -866,23 +828,23 @@ export const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigs>;
 
 export type ProjectsCreateRequestSourceConfigPathExcludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPathExcludesList =
+const ProjectsCreateRequestSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPathExcludesList>;
 
 export type ProjectsCreateRequestSourceConfigPathIncludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPathIncludesList =
+const ProjectsCreateRequestSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPathIncludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPreviewBranchExcludesList =
+const ProjectsCreateRequestSourceConfigPreviewBranchExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
+const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
-export const ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsCreateRequestSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -914,7 +876,7 @@ export interface ProjectsCreateRequestSourceConfig {
   /** The name of the repository. */
   repoName?: string;
 }
-export const ProjectsCreateRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
     owner: S.optional(S.String),
@@ -953,14 +915,14 @@ export const ProjectsCreateRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsCreateRequestSourceConfig>;
 
 export type ProjectsCreateRequestSourceType = "github" | "gitlab";
-export const ProjectsCreateRequestSourceType = S.String;
+const ProjectsCreateRequestSourceType = S.String;
 
 export interface ProjectsCreateRequestSource {
   config: ProjectsCreateRequestSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateRequestSourceType | (string & {});
 }
-export const ProjectsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsCreateRequestSourceConfig,
     type: ProjectsCreateRequestSourceType,
@@ -983,7 +945,7 @@ export interface CreateProjectRequest {
   /** Configs for the project source control. */
   source?: ProjectsCreateRequestSource;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -999,7 +961,7 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateProjectRequest" }) as any as S.Schema<CreateProjectRequest>;
 
 export type ProjectsCreateResponseCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsCreateResponseCanonicalDeploymentAliasesList =
+const ProjectsCreateResponseCanonicalDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentAliasesList>;
 
 export interface ProjectsCreateResponseCanonicalDeploymentBuildConfig {
@@ -1016,7 +978,7 @@ export interface ProjectsCreateResponseCanonicalDeploymentBuildConfig {
   /** Directory to run the command. */
   rootDir?: string | null;
 }
-export const ProjectsCreateResponseCanonicalDeploymentBuildConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseCanonicalDeploymentBuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAnalyticsTag: S.String.pipe(T.Body("web_analytics_tag")),
     webAnalyticsToken: S.String.pipe(T.Body("web_analytics_token")),
@@ -1039,23 +1001,23 @@ export interface ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetad
   /** Message of the deployment trigger commit. */
   commitMessage: string;
 }
-export const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       branch: S.String,
       commitDirty: S.Boolean.pipe(T.Body("commit_dirty")),
       commitHash: S.String.pipe(T.Body("commit_hash")),
       commitMessage: S.String.pipe(T.Body("commit_message")),
     }),
-  ).annotate({
-    identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata",
-  }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata>;
+).annotate({
+  identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata",
+}) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata>;
 
 export type ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType = S.String;
+const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType = S.String;
 
 export interface ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
@@ -1063,18 +1025,17 @@ export interface ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
-      type: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType,
-    }),
+const ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
+    type: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType,
+  }),
 ).annotate({
   identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger",
 }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsCreateResponseCanonicalDeploymentEnvironment = "preview" | "production";
-export const ProjectsCreateResponseCanonicalDeploymentEnvironment = S.String;
+const ProjectsCreateResponseCanonicalDeploymentEnvironment = S.String;
 
 export type ProjectsCreateResponseCanonicalDeploymentLatestStageName =
   | "queued"
@@ -1082,7 +1043,7 @@ export type ProjectsCreateResponseCanonicalDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsCreateResponseCanonicalDeploymentLatestStageName = S.String;
+const ProjectsCreateResponseCanonicalDeploymentLatestStageName = S.String;
 
 export type ProjectsCreateResponseCanonicalDeploymentLatestStageStatus =
   | "success"
@@ -1091,7 +1052,7 @@ export type ProjectsCreateResponseCanonicalDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsCreateResponseCanonicalDeploymentLatestStageStatus = S.String;
+const ProjectsCreateResponseCanonicalDeploymentLatestStageStatus = S.String;
 
 export interface ProjectsCreateResponseCanonicalDeploymentLatestStage {
   /** When the stage ended. */
@@ -1103,7 +1064,7 @@ export interface ProjectsCreateResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsCreateResponseCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsCreateResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endedOn: S.String.pipe(T.Body("ended_on")),
     name: ProjectsCreateResponseCanonicalDeploymentLatestStageName,
@@ -1115,29 +1076,28 @@ export const ProjectsCreateResponseCanonicalDeploymentLatestStage = /*@__PURE__*
 }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList =
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList =
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  S.String;
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsCreateResponseCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -1167,7 +1127,7 @@ export interface ProjectsCreateResponseCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsCreateResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -1201,14 +1161,14 @@ export const ProjectsCreateResponseCanonicalDeploymentSourceConfig = /*@__PURE__
 }) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfig>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceType = "github" | "gitlab";
-export const ProjectsCreateResponseCanonicalDeploymentSourceType = S.String;
+const ProjectsCreateResponseCanonicalDeploymentSourceType = S.String;
 
 export interface ProjectsCreateResponseCanonicalDeploymentSource {
   config: ProjectsCreateResponseCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateResponseCanonicalDeploymentSourceType;
 }
-export const ProjectsCreateResponseCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsCreateResponseCanonicalDeploymentSourceConfig,
     type: ProjectsCreateResponseCanonicalDeploymentSourceType,
@@ -1223,8 +1183,6 @@ export type ProjectsCreateResponseCanonicalDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsCreateResponseCanonicalDeploymentStagesItemName = S.String;
-
 export type ProjectsCreateResponseCanonicalDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -1232,8 +1190,6 @@ export type ProjectsCreateResponseCanonicalDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsCreateResponseCanonicalDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsCreateResponseCanonicalDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -1244,12 +1200,12 @@ export interface ProjectsCreateResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsCreateResponseCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsCreateResponseCanonicalDeploymentStagesItem =
+const ProjectsCreateResponseCanonicalDeploymentStagesItem =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
 
 export type ProjectsCreateResponseCanonicalDeploymentStagesList =
   Array<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
-export const ProjectsCreateResponseCanonicalDeploymentStagesList = /*@__PURE__*/ S.Array(
+const ProjectsCreateResponseCanonicalDeploymentStagesList = /*@__PURE__*/ S.Array(
   ProjectsCreateResponseCanonicalDeploymentStagesItem,
 ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesList>;
 
@@ -1261,7 +1217,7 @@ export type ProjectsCreateResponseCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsCreateResponseCanonicalDeploymentSkipReason = S.String;
+const ProjectsCreateResponseCanonicalDeploymentSkipReason = S.String;
 
 export interface ProjectsCreateResponseCanonicalDeployment {
   /** Id of the deployment. */
@@ -1301,7 +1257,7 @@ export interface ProjectsCreateResponseCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsCreateResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsCreateResponseCanonicalDeploymentAliasesList,
@@ -1331,117 +1287,93 @@ export const ProjectsCreateResponseCanonicalDeployment = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ProjectsCreateResponseCanonicalDeployment>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
-export const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList =
+const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsCreateResponseDeploymentConfigsPreviewUsageModel = S.String;
+const ProjectsCreateResponseDeploymentConfigsPreviewUsageModel = S.String;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsCreateResponseDeploymentConfigsPreviewLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsCreateResponseDeploymentConfigsPreviewPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreviewServicesValue {
@@ -1452,13 +1384,12 @@ export interface ProjectsCreateResponseDeploymentConfigsPreviewServicesValue {
   /** The entrypoint to bind to. */
   entrypoint?: string | null;
 }
-export const ProjectsCreateResponseDeploymentConfigsPreviewServicesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environment: S.String,
-      service: S.String,
-      entrypoint: S.optional(S.NullOr(S.String)),
-    }),
+const ProjectsCreateResponseDeploymentConfigsPreviewServicesValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environment: S.String,
+    service: S.String,
+    entrypoint: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "ProjectsCreateResponseDeploymentConfigsPreviewServicesValue",
 }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewServicesValue>;
@@ -1466,20 +1397,17 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewServicesValue = /*@__
 export type ProjectsCreateResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
+const ProjectsCreateResponseDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
 ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap =
+const ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreview {
@@ -1528,7 +1456,7 @@ export interface ProjectsCreateResponseDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsCreateResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -1604,142 +1532,111 @@ export const ProjectsCreateResponseDeploymentConfigsPreview = /*@__PURE__*/ S.su
 }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreview>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
-export const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList =
+const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsCreateResponseDeploymentConfigsProductionUsageModel = S.String;
+const ProjectsCreateResponseDeploymentConfigsProductionUsageModel = S.String;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap>;
+const ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+const ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap =
+const ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap =
+const ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
+const ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap =
+const ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap =
+const ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsCreateResponseDeploymentConfigsProductionLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap =
+const ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsCreateResponseDeploymentConfigsProductionPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap =
+const ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap =
+const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionServicesMap =
+const ProjectsCreateResponseDeploymentConfigsProductionServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap =
+const ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsProduction {
@@ -1788,7 +1685,7 @@ export interface ProjectsCreateResponseDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsCreateResponseDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -1870,7 +1767,7 @@ export interface ProjectsCreateResponseDeploymentConfigs {
   /** Configs for production deploys. */
   production: ProjectsCreateResponseDeploymentConfigsProduction;
 }
-export const ProjectsCreateResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preview: ProjectsCreateResponseDeploymentConfigsPreview,
     production: ProjectsCreateResponseDeploymentConfigsProduction,
@@ -1880,24 +1777,18 @@ export const ProjectsCreateResponseDeploymentConfigs = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigs>;
 
 export type ProjectsCreateResponseLatestDeploymentAliasesList = Array<string>;
-export const ProjectsCreateResponseLatestDeploymentAliasesList =
+const ProjectsCreateResponseLatestDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseLatestDeploymentAliasesList>;
 
 export type ProjectsCreateResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsCreateResponseLatestDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsCreateResponseLatestDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsCreateResponseLatestDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsCreateResponseLatestDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsCreateResponseLatestDeploymentDeploymentTriggerType = S.String;
+const ProjectsCreateResponseLatestDeploymentDeploymentTriggerType = S.String;
 
 export interface ProjectsCreateResponseLatestDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
@@ -1905,7 +1796,7 @@ export interface ProjectsCreateResponseLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsCreateResponseLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsCreateResponseLatestDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseLatestDeploymentDeploymentTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
     type: ProjectsCreateResponseLatestDeploymentDeploymentTriggerType,
@@ -1915,38 +1806,21 @@ export const ProjectsCreateResponseLatestDeploymentDeploymentTrigger = /*@__PURE
 }) as any as S.Schema<ProjectsCreateResponseLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
-export const ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainTextType = S.String;
-
 export interface ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainTextType;
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainTextType,
-      value: S.String,
-    }),
-).annotate({
-  identifier: "ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText",
-}) as any as S.Schema<ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText>;
-
 export type ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
-export const ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretTextType = S.String;
-
 export interface ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText {
   type: ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretTextType;
   /** Secret value. */
   value: string;
 }
-export const ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText>;
-
 export type ProjectsCreateResponseLatestDeploymentEnvVarsValue =
   | ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText;
-export const ProjectsCreateResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
+const ProjectsCreateResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
@@ -1959,13 +1833,13 @@ export const ProjectsCreateResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ 
 export type ProjectsCreateResponseLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsCreateResponseLatestDeploymentEnvVarsValue | undefined;
 };
-export const ProjectsCreateResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
+const ProjectsCreateResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsCreateResponseLatestDeploymentEnvVarsValue,
 ) as any as S.Schema<ProjectsCreateResponseLatestDeploymentEnvVarsMap>;
 
 export type ProjectsCreateResponseLatestDeploymentEnvironment = "preview" | "production";
-export const ProjectsCreateResponseLatestDeploymentEnvironment = S.String;
+const ProjectsCreateResponseLatestDeploymentEnvironment = S.String;
 
 export type ProjectsCreateResponseLatestDeploymentLatestStageName =
   | "queued"
@@ -1973,8 +1847,6 @@ export type ProjectsCreateResponseLatestDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsCreateResponseLatestDeploymentLatestStageName = S.String;
-
 export type ProjectsCreateResponseLatestDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -1982,8 +1854,6 @@ export type ProjectsCreateResponseLatestDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsCreateResponseLatestDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsCreateResponseLatestDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -1994,32 +1864,32 @@ export interface ProjectsCreateResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsCreateResponseLatestDeploymentLatestStageStatus;
 }
-export const ProjectsCreateResponseLatestDeploymentLatestStage =
+const ProjectsCreateResponseLatestDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseLatestDeploymentLatestStage>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList =
+const ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList =
+const ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsCreateResponseLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -2049,7 +1919,7 @@ export interface ProjectsCreateResponseLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsCreateResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -2083,14 +1953,14 @@ export const ProjectsCreateResponseLatestDeploymentSourceConfig = /*@__PURE__*/ 
 }) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfig>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceType = "github" | "gitlab";
-export const ProjectsCreateResponseLatestDeploymentSourceType = S.String;
+const ProjectsCreateResponseLatestDeploymentSourceType = S.String;
 
 export interface ProjectsCreateResponseLatestDeploymentSource {
   config: ProjectsCreateResponseLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateResponseLatestDeploymentSourceType;
 }
-export const ProjectsCreateResponseLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsCreateResponseLatestDeploymentSourceConfig,
     type: ProjectsCreateResponseLatestDeploymentSourceType,
@@ -2105,8 +1975,6 @@ export type ProjectsCreateResponseLatestDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsCreateResponseLatestDeploymentStagesItemName = S.String;
-
 export type ProjectsCreateResponseLatestDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -2114,8 +1982,6 @@ export type ProjectsCreateResponseLatestDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsCreateResponseLatestDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsCreateResponseLatestDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -2126,12 +1992,9 @@ export interface ProjectsCreateResponseLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsCreateResponseLatestDeploymentStagesItemStatus;
 }
-export const ProjectsCreateResponseLatestDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesItem>;
-
 export type ProjectsCreateResponseLatestDeploymentStagesList =
   Array<ProjectsCreateResponseLatestDeploymentStagesItem>;
-export const ProjectsCreateResponseLatestDeploymentStagesList =
+const ProjectsCreateResponseLatestDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSkipReason =
@@ -2142,7 +2005,7 @@ export type ProjectsCreateResponseLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsCreateResponseLatestDeploymentSkipReason = S.String;
+const ProjectsCreateResponseLatestDeploymentSkipReason = S.String;
 
 export interface ProjectsCreateResponseLatestDeployment {
   /** Id of the deployment. */
@@ -2182,7 +2045,7 @@ export interface ProjectsCreateResponseLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsCreateResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsCreateResponseLatestDeploymentAliasesList,
@@ -2213,31 +2076,28 @@ export const ProjectsCreateResponseLatestDeployment = /*@__PURE__*/ S.suspend(()
 
 export type ProjectsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsCreateResponseBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsCreateResponseDomainsList = Array<string>;
-export const ProjectsCreateResponseDomainsList =
+const ProjectsCreateResponseDomainsList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseDomainsList>;
 
 export type ProjectsCreateResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPathExcludesList =
+const ProjectsCreateResponseSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPathIncludesList =
+const ProjectsCreateResponseSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsCreateResponseSourceConfigPreviewBranchExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
-export const ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsCreateResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -2267,7 +2127,7 @@ export interface ProjectsCreateResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsCreateResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -2294,14 +2154,14 @@ export const ProjectsCreateResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsCreateResponseSourceConfig>;
 
 export type ProjectsCreateResponseSourceType = "github" | "gitlab";
-export const ProjectsCreateResponseSourceType = S.String;
+const ProjectsCreateResponseSourceType = S.String;
 
 export interface ProjectsCreateResponseSource {
   config: ProjectsCreateResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateResponseSourceType;
 }
-export const ProjectsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsCreateResponseSourceConfig,
     type: ProjectsCreateResponseSourceType,
@@ -2345,7 +2205,7 @@ export interface CreateProjectResponse {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
-export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     canonicalDeployment: ProjectsCreateResponseCanonicalDeployment.pipe(
@@ -2402,7 +2262,7 @@ export interface CreateProjectDeploymentRequest {
   /** Hash of the Wrangler configuration file used for this deployment. */
   wranglerConfigHash?: string;
 }
-export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -2436,36 +2296,28 @@ export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsCreateResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseAliasesList =
+const ProjectsDeploymentsCreateResponseAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseAliasesList>;
 
 export type ProjectsDeploymentsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsDeploymentsCreateResponseBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsDeploymentsCreateResponseDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsDeploymentsCreateResponseDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsDeploymentsCreateResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsDeploymentsCreateResponseDeploymentTriggerType = S.String;
-
 export interface ProjectsDeploymentsCreateResponseDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsDeploymentsCreateResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsCreateResponseDeploymentTrigger =
+const ProjectsDeploymentsCreateResponseDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsCreateResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsCreateResponseEnvironment = "preview" | "production";
-export const ProjectsDeploymentsCreateResponseEnvironment = S.String;
+const ProjectsDeploymentsCreateResponseEnvironment = S.String;
 
 export type ProjectsDeploymentsCreateResponseLatestStageName =
   | "queued"
@@ -2473,8 +2325,6 @@ export type ProjectsDeploymentsCreateResponseLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsCreateResponseLatestStageName = S.String;
-
 export type ProjectsDeploymentsCreateResponseLatestStageStatus =
   | "success"
   | "idle"
@@ -2482,8 +2332,6 @@ export type ProjectsDeploymentsCreateResponseLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsCreateResponseLatestStageStatus = S.String;
-
 export interface ProjectsDeploymentsCreateResponseLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -2494,30 +2342,30 @@ export interface ProjectsDeploymentsCreateResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsCreateResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsCreateResponseLatestStage =
+const ProjectsDeploymentsCreateResponseLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsCreateResponseLatestStage>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
+const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList =
+const ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsDeploymentsCreateResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -2547,7 +2395,7 @@ export interface ProjectsDeploymentsCreateResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsDeploymentsCreateResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsCreateResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -2581,14 +2429,14 @@ export const ProjectsDeploymentsCreateResponseSourceConfig = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfig>;
 
 export type ProjectsDeploymentsCreateResponseSourceType = "github" | "gitlab";
-export const ProjectsDeploymentsCreateResponseSourceType = S.String;
+const ProjectsDeploymentsCreateResponseSourceType = S.String;
 
 export interface ProjectsDeploymentsCreateResponseSource {
   config: ProjectsDeploymentsCreateResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsCreateResponseSourceType;
 }
-export const ProjectsDeploymentsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsDeploymentsCreateResponseSourceConfig,
     type: ProjectsDeploymentsCreateResponseSourceType,
@@ -2603,8 +2451,6 @@ export type ProjectsDeploymentsCreateResponseStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsCreateResponseStagesItemName = S.String;
-
 export type ProjectsDeploymentsCreateResponseStagesItemStatus =
   | "success"
   | "idle"
@@ -2612,8 +2458,6 @@ export type ProjectsDeploymentsCreateResponseStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsCreateResponseStagesItemStatus = S.String;
-
 export interface ProjectsDeploymentsCreateResponseStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -2624,12 +2468,9 @@ export interface ProjectsDeploymentsCreateResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsCreateResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsCreateResponseStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsCreateResponseStagesItem>;
-
 export type ProjectsDeploymentsCreateResponseStagesList =
   Array<ProjectsDeploymentsCreateResponseStagesItem>;
-export const ProjectsDeploymentsCreateResponseStagesList =
+const ProjectsDeploymentsCreateResponseStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsCreateResponseStagesList>;
 
 export type ProjectsDeploymentsCreateResponseSkipReason =
@@ -2640,7 +2481,7 @@ export type ProjectsDeploymentsCreateResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsDeploymentsCreateResponseSkipReason = S.String;
+const ProjectsDeploymentsCreateResponseSkipReason = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProjectDeploymentResponse {
@@ -2681,7 +2522,7 @@ export interface CreateProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const CreateProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsDeploymentsCreateResponseAliasesList,
@@ -2718,7 +2559,7 @@ export interface CreateProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   name: string;
 }
-export const CreateProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -2737,7 +2578,7 @@ export const CreateProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectDomainRequest>;
 
 export type ProjectsDomainsCreateResponseCertificateAuthority = "google" | "lets_encrypt";
-export const ProjectsDomainsCreateResponseCertificateAuthority = S.String;
+const ProjectsDomainsCreateResponseCertificateAuthority = S.String;
 
 export type ProjectsDomainsCreateResponseStatus =
   | "initializing"
@@ -2746,10 +2587,10 @@ export type ProjectsDomainsCreateResponseStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsCreateResponseStatus = S.String;
+const ProjectsDomainsCreateResponseStatus = S.String;
 
 export type ProjectsDomainsCreateResponseValidationDataMethod = "http" | "txt";
-export const ProjectsDomainsCreateResponseValidationDataMethod = S.String;
+const ProjectsDomainsCreateResponseValidationDataMethod = S.String;
 
 export type ProjectsDomainsCreateResponseValidationDataStatus =
   | "initializing"
@@ -2757,7 +2598,7 @@ export type ProjectsDomainsCreateResponseValidationDataStatus =
   | "active"
   | "deactivated"
   | "error";
-export const ProjectsDomainsCreateResponseValidationDataStatus = S.String;
+const ProjectsDomainsCreateResponseValidationDataStatus = S.String;
 
 export interface ProjectsDomainsCreateResponseValidationData {
   method: ProjectsDomainsCreateResponseValidationDataMethod;
@@ -2766,7 +2607,7 @@ export interface ProjectsDomainsCreateResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsCreateResponseValidationData = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDomainsCreateResponseValidationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: ProjectsDomainsCreateResponseValidationDataMethod,
     status: ProjectsDomainsCreateResponseValidationDataStatus,
@@ -2784,13 +2625,13 @@ export type ProjectsDomainsCreateResponseVerificationDataStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsCreateResponseVerificationDataStatus = S.String;
+const ProjectsDomainsCreateResponseVerificationDataStatus = S.String;
 
 export interface ProjectsDomainsCreateResponseVerificationData {
   status: ProjectsDomainsCreateResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsCreateResponseVerificationData = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDomainsCreateResponseVerificationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ProjectsDomainsCreateResponseVerificationDataStatus,
     errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
@@ -2812,7 +2653,7 @@ export interface CreateProjectDomainResponse {
   verificationData: ProjectsDomainsCreateResponseVerificationData;
   zoneTag: string;
 }
-export const CreateProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificateAuthority: ProjectsDomainsCreateResponseCertificateAuthority.pipe(
@@ -2835,12 +2676,12 @@ export const CreateProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateProjectsDeploymentsTailRequestFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateProjectsDeploymentsTailRequestFiltersItemMap =
+const CreateProjectsDeploymentsTailRequestFiltersItemMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
 
 export type CreateProjectsDeploymentsTailRequestFiltersList =
   Array<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
-export const CreateProjectsDeploymentsTailRequestFiltersList = /*@__PURE__*/ S.Array(
+const CreateProjectsDeploymentsTailRequestFiltersList = /*@__PURE__*/ S.Array(
   CreateProjectsDeploymentsTailRequestFiltersItemMap,
 ) as any as S.Schema<CreateProjectsDeploymentsTailRequestFiltersList>;
 
@@ -2854,7 +2695,7 @@ export interface CreateProjectsDeploymentsTailRequest {
   /** Filters to apply to the tail session. */
   filters?: CreateProjectsDeploymentsTailRequestFiltersList;
 }
-export const CreateProjectsDeploymentsTailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDeploymentsTailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -2880,7 +2721,7 @@ export interface CreateProjectsDeploymentsTailResponse {
   /** Optional WebSocket URL to connect to for receiving tail events, when returned by the tail service. */
   url?: string | null;
 }
-export const CreateProjectsDeploymentsTailResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDeploymentsTailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.optional(S.NullOr(S.String)),
@@ -2895,7 +2736,7 @@ export interface DeleteProjectRequest {
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -2911,7 +2752,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export type DeleteProjectResponse = unknown;
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteProjectResponse" }) as any as S.Schema<DeleteProjectResponse>;
 
@@ -2925,7 +2766,7 @@ export interface DeleteProjectDeploymentRequest {
   /** Allow deletion when a non-production deployment has an active alias. */
   force?: boolean;
 }
-export const DeleteProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -2945,7 +2786,7 @@ export const DeleteProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectDeploymentRequest>;
 
 export type DeleteProjectDeploymentResponse = unknown;
-export const DeleteProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteProjectDeploymentResponse",
@@ -2959,7 +2800,7 @@ export interface DeleteProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   domainName: string;
 }
-export const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -2978,7 +2819,7 @@ export const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectDomainRequest>;
 
 export type DeleteProjectDomainResponse = unknown;
-export const DeleteProjectDomainResponse =
+const DeleteProjectDomainResponse =
   DeleteProjectDeploymentResponse as any as S.Schema<DeleteProjectDomainResponse>;
 
 export interface DeleteProjectsDeploymentsTailRequest {
@@ -2991,7 +2832,7 @@ export interface DeleteProjectsDeploymentsTailRequest {
   /** Identifier. */
   tailId: string;
 }
-export const DeleteProjectsDeploymentsTailRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDeploymentsTailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -3011,7 +2852,7 @@ export const DeleteProjectsDeploymentsTailRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteProjectsDeploymentsTailRequest>;
 
 export type DeleteProjectsDeploymentsTailResponse = unknown;
-export const DeleteProjectsDeploymentsTailResponse =
+const DeleteProjectsDeploymentsTailResponse =
   DeleteProjectDeploymentResponse as any as S.Schema<DeleteProjectsDeploymentsTailResponse>;
 
 export interface GetProjectRequest {
@@ -3020,7 +2861,7 @@ export interface GetProjectRequest {
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -3036,36 +2877,28 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectRequest" }) as any as S.Schema<GetProjectRequest>;
 
 export type ProjectsGetResponseCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsGetResponseCanonicalDeploymentAliasesList =
+const ProjectsGetResponseCanonicalDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentAliasesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsGetResponseCanonicalDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsGetResponseCanonicalDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsGetResponseCanonicalDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType = S.String;
-
 export interface ProjectsGetResponseCanonicalDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger =
+const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsGetResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsGetResponseCanonicalDeploymentEnvironment = "preview" | "production";
-export const ProjectsGetResponseCanonicalDeploymentEnvironment = S.String;
+const ProjectsGetResponseCanonicalDeploymentEnvironment = S.String;
 
 export type ProjectsGetResponseCanonicalDeploymentLatestStageName =
   | "queued"
@@ -3073,8 +2906,6 @@ export type ProjectsGetResponseCanonicalDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsGetResponseCanonicalDeploymentLatestStageName = S.String;
-
 export type ProjectsGetResponseCanonicalDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -3082,8 +2913,6 @@ export type ProjectsGetResponseCanonicalDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsGetResponseCanonicalDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsGetResponseCanonicalDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -3094,32 +2923,32 @@ export interface ProjectsGetResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsGetResponseCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsGetResponseCanonicalDeploymentLatestStage =
+const ProjectsGetResponseCanonicalDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList =
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsGetResponseCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -3149,7 +2978,7 @@ export interface ProjectsGetResponseCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsGetResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -3183,14 +3012,14 @@ export const ProjectsGetResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ 
 }) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfig>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceType = "github" | "gitlab";
-export const ProjectsGetResponseCanonicalDeploymentSourceType = S.String;
+const ProjectsGetResponseCanonicalDeploymentSourceType = S.String;
 
 export interface ProjectsGetResponseCanonicalDeploymentSource {
   config: ProjectsGetResponseCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsGetResponseCanonicalDeploymentSourceType;
 }
-export const ProjectsGetResponseCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsGetResponseCanonicalDeploymentSourceConfig,
     type: ProjectsGetResponseCanonicalDeploymentSourceType,
@@ -3205,8 +3034,6 @@ export type ProjectsGetResponseCanonicalDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsGetResponseCanonicalDeploymentStagesItemName = S.String;
-
 export type ProjectsGetResponseCanonicalDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -3214,8 +3041,6 @@ export type ProjectsGetResponseCanonicalDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsGetResponseCanonicalDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsGetResponseCanonicalDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -3226,12 +3051,9 @@ export interface ProjectsGetResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsGetResponseCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsGetResponseCanonicalDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesItem>;
-
 export type ProjectsGetResponseCanonicalDeploymentStagesList =
   Array<ProjectsGetResponseCanonicalDeploymentStagesItem>;
-export const ProjectsGetResponseCanonicalDeploymentStagesList =
+const ProjectsGetResponseCanonicalDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSkipReason =
@@ -3242,7 +3064,7 @@ export type ProjectsGetResponseCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsGetResponseCanonicalDeploymentSkipReason = S.String;
+const ProjectsGetResponseCanonicalDeploymentSkipReason = S.String;
 
 export interface ProjectsGetResponseCanonicalDeployment {
   /** Id of the deployment. */
@@ -3282,7 +3104,7 @@ export interface ProjectsGetResponseCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsGetResponseCanonicalDeploymentAliasesList,
@@ -3312,111 +3134,87 @@ export const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProjectsGetResponseCanonicalDeployment>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
-export const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
+const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsGetResponseDeploymentConfigsPreviewUsageModel = S.String;
+const ProjectsGetResponseDeploymentConfigsPreviewUsageModel = S.String;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap =
+const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+const ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap =
+const ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap =
+const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
+const ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
+const ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap =
+const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsGetResponseDeploymentConfigsPreviewLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap =
+const ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsGetResponseDeploymentConfigsPreviewPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ S.Record(
+const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
 ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap>;
@@ -3424,29 +3222,23 @@ export const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = /*@_
 export type ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap =
+const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewServicesMap =
+const ProjectsGetResponseDeploymentConfigsPreviewServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap =
+const ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsPreview {
@@ -3495,7 +3287,7 @@ export interface ProjectsGetResponseDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsGetResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -3567,139 +3359,109 @@ export const ProjectsGetResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreview>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
-export const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList =
+const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsGetResponseDeploymentConfigsProductionUsageModel = S.String;
+const ProjectsGetResponseDeploymentConfigsProductionUsageModel = S.String;
 
 export type ProjectsGetResponseDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsGetResponseDeploymentConfigsProductionAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap =
+const ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+const ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionBrowsersMap =
+const ProjectsGetResponseDeploymentConfigsProductionBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap =
+const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
+const ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap =
+const ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap =
+const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsGetResponseDeploymentConfigsProductionLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap =
+const ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsGetResponseDeploymentConfigsProductionPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsGetResponseDeploymentConfigsProductionQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsGetResponseDeploymentConfigsProductionQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap =
+const ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap =
+const ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsGetResponseDeploymentConfigsProductionServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionServicesMap =
+const ProjectsGetResponseDeploymentConfigsProductionServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap =
+const ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsProduction {
@@ -3748,7 +3510,7 @@ export interface ProjectsGetResponseDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsGetResponseDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -3829,7 +3591,7 @@ export interface ProjectsGetResponseDeploymentConfigs {
   /** Configs for production deploys. */
   production: ProjectsGetResponseDeploymentConfigsProduction;
 }
-export const ProjectsGetResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preview: ProjectsGetResponseDeploymentConfigsPreview,
     production: ProjectsGetResponseDeploymentConfigsProduction,
@@ -3839,60 +3601,42 @@ export const ProjectsGetResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ProjectsGetResponseDeploymentConfigs>;
 
 export type ProjectsGetResponseLatestDeploymentAliasesList = Array<string>;
-export const ProjectsGetResponseLatestDeploymentAliasesList =
+const ProjectsGetResponseLatestDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseLatestDeploymentAliasesList>;
 
 export type ProjectsGetResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsGetResponseLatestDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsGetResponseLatestDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsGetResponseLatestDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsGetResponseLatestDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsGetResponseLatestDeploymentDeploymentTriggerType = S.String;
-
 export interface ProjectsGetResponseLatestDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsGetResponseLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsGetResponseLatestDeploymentDeploymentTrigger =
+const ProjectsGetResponseLatestDeploymentDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsGetResponseLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
-export const ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType = S.String;
-
 export interface ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType;
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText>;
-
 export type ProjectsGetResponseLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
-export const ProjectsGetResponseLatestDeploymentEnvVarsValueSecretTextType = S.String;
-
 export interface ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText {
   type: ProjectsGetResponseLatestDeploymentEnvVarsValueSecretTextType;
   /** Secret value. */
   value: string;
 }
-export const ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText>;
-
 export type ProjectsGetResponseLatestDeploymentEnvVarsValue =
   | ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText;
-export const ProjectsGetResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
+const ProjectsGetResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
@@ -3905,13 +3649,13 @@ export const ProjectsGetResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.U
 export type ProjectsGetResponseLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsGetResponseLatestDeploymentEnvVarsValue | undefined;
 };
-export const ProjectsGetResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
+const ProjectsGetResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsGetResponseLatestDeploymentEnvVarsValue,
 ) as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsMap>;
 
 export type ProjectsGetResponseLatestDeploymentEnvironment = "preview" | "production";
-export const ProjectsGetResponseLatestDeploymentEnvironment = S.String;
+const ProjectsGetResponseLatestDeploymentEnvironment = S.String;
 
 export type ProjectsGetResponseLatestDeploymentLatestStageName =
   | "queued"
@@ -3919,8 +3663,6 @@ export type ProjectsGetResponseLatestDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsGetResponseLatestDeploymentLatestStageName = S.String;
-
 export type ProjectsGetResponseLatestDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -3928,8 +3670,6 @@ export type ProjectsGetResponseLatestDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsGetResponseLatestDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsGetResponseLatestDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -3940,32 +3680,32 @@ export interface ProjectsGetResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsGetResponseLatestDeploymentLatestStageStatus;
 }
-export const ProjectsGetResponseLatestDeploymentLatestStage =
+const ProjectsGetResponseLatestDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseLatestDeploymentLatestStage>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList =
+const ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList =
+const ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsGetResponseLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -3995,7 +3735,7 @@ export interface ProjectsGetResponseLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsGetResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -4029,14 +3769,14 @@ export const ProjectsGetResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.s
 }) as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfig>;
 
 export type ProjectsGetResponseLatestDeploymentSourceType = "github" | "gitlab";
-export const ProjectsGetResponseLatestDeploymentSourceType = S.String;
+const ProjectsGetResponseLatestDeploymentSourceType = S.String;
 
 export interface ProjectsGetResponseLatestDeploymentSource {
   config: ProjectsGetResponseLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsGetResponseLatestDeploymentSourceType;
 }
-export const ProjectsGetResponseLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsGetResponseLatestDeploymentSourceConfig,
     type: ProjectsGetResponseLatestDeploymentSourceType,
@@ -4051,8 +3791,6 @@ export type ProjectsGetResponseLatestDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsGetResponseLatestDeploymentStagesItemName = S.String;
-
 export type ProjectsGetResponseLatestDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -4060,8 +3798,6 @@ export type ProjectsGetResponseLatestDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsGetResponseLatestDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsGetResponseLatestDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -4072,12 +3808,9 @@ export interface ProjectsGetResponseLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsGetResponseLatestDeploymentStagesItemStatus;
 }
-export const ProjectsGetResponseLatestDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesItem>;
-
 export type ProjectsGetResponseLatestDeploymentStagesList =
   Array<ProjectsGetResponseLatestDeploymentStagesItem>;
-export const ProjectsGetResponseLatestDeploymentStagesList =
+const ProjectsGetResponseLatestDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesList>;
 
 export type ProjectsGetResponseLatestDeploymentSkipReason =
@@ -4088,7 +3821,7 @@ export type ProjectsGetResponseLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsGetResponseLatestDeploymentSkipReason = S.String;
+const ProjectsGetResponseLatestDeploymentSkipReason = S.String;
 
 export interface ProjectsGetResponseLatestDeployment {
   /** Id of the deployment. */
@@ -4128,7 +3861,7 @@ export interface ProjectsGetResponseLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsGetResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsGetResponseLatestDeploymentAliasesList,
@@ -4158,30 +3891,28 @@ export const ProjectsGetResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsGetResponseLatestDeployment>;
 
 export type ProjectsGetResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsGetResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsGetResponseDomainsList = Array<string>;
-export const ProjectsGetResponseDomainsList =
+const ProjectsGetResponseDomainsList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseDomainsList>;
 
 export type ProjectsGetResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPathExcludesList =
+const ProjectsGetResponseSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPathIncludesList =
+const ProjectsGetResponseSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsGetResponseSourceConfigPreviewBranchExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
-export const ProjectsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsGetResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -4211,7 +3942,7 @@ export interface ProjectsGetResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsGetResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -4238,14 +3969,14 @@ export const ProjectsGetResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsGetResponseSourceConfig>;
 
 export type ProjectsGetResponseSourceType = "github" | "gitlab";
-export const ProjectsGetResponseSourceType = S.String;
+const ProjectsGetResponseSourceType = S.String;
 
 export interface ProjectsGetResponseSource {
   config: ProjectsGetResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsGetResponseSourceType;
 }
-export const ProjectsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsGetResponseSourceConfig,
     type: ProjectsGetResponseSourceType,
@@ -4289,7 +4020,7 @@ export interface GetProjectResponse {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     canonicalDeployment: ProjectsGetResponseCanonicalDeployment.pipe(
@@ -4322,7 +4053,7 @@ export interface GetProjectDeploymentRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
-export const GetProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -4341,36 +4072,28 @@ export const GetProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsGetResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsGetResponseAliasesList =
+const ProjectsDeploymentsGetResponseAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseAliasesList>;
 
 export type ProjectsDeploymentsGetResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsDeploymentsGetResponseBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsDeploymentsGetResponseDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsDeploymentsGetResponseDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsDeploymentsGetResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsDeploymentsGetResponseDeploymentTriggerType = S.String;
-
 export interface ProjectsDeploymentsGetResponseDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsDeploymentsGetResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsGetResponseDeploymentTrigger =
+const ProjectsDeploymentsGetResponseDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsGetResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsGetResponseEnvironment = "preview" | "production";
-export const ProjectsDeploymentsGetResponseEnvironment = S.String;
+const ProjectsDeploymentsGetResponseEnvironment = S.String;
 
 export type ProjectsDeploymentsGetResponseLatestStageName =
   | "queued"
@@ -4378,8 +4101,6 @@ export type ProjectsDeploymentsGetResponseLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsGetResponseLatestStageName = S.String;
-
 export type ProjectsDeploymentsGetResponseLatestStageStatus =
   | "success"
   | "idle"
@@ -4387,8 +4108,6 @@ export type ProjectsDeploymentsGetResponseLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsGetResponseLatestStageStatus = S.String;
-
 export interface ProjectsDeploymentsGetResponseLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -4399,30 +4118,30 @@ export interface ProjectsDeploymentsGetResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsGetResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsGetResponseLatestStage =
+const ProjectsDeploymentsGetResponseLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsGetResponseLatestStage>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
+const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsGetResponseSourceConfigPathIncludesList =
+const ProjectsDeploymentsGetResponseSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsDeploymentsGetResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -4452,7 +4171,7 @@ export interface ProjectsDeploymentsGetResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsDeploymentsGetResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsGetResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -4484,14 +4203,14 @@ export const ProjectsDeploymentsGetResponseSourceConfig = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfig>;
 
 export type ProjectsDeploymentsGetResponseSourceType = "github" | "gitlab";
-export const ProjectsDeploymentsGetResponseSourceType = S.String;
+const ProjectsDeploymentsGetResponseSourceType = S.String;
 
 export interface ProjectsDeploymentsGetResponseSource {
   config: ProjectsDeploymentsGetResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsGetResponseSourceType;
 }
-export const ProjectsDeploymentsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsDeploymentsGetResponseSourceConfig,
     type: ProjectsDeploymentsGetResponseSourceType,
@@ -4506,8 +4225,6 @@ export type ProjectsDeploymentsGetResponseStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsGetResponseStagesItemName = S.String;
-
 export type ProjectsDeploymentsGetResponseStagesItemStatus =
   | "success"
   | "idle"
@@ -4515,8 +4232,6 @@ export type ProjectsDeploymentsGetResponseStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsGetResponseStagesItemStatus = S.String;
-
 export interface ProjectsDeploymentsGetResponseStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -4527,12 +4242,9 @@ export interface ProjectsDeploymentsGetResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsGetResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsGetResponseStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsGetResponseStagesItem>;
-
 export type ProjectsDeploymentsGetResponseStagesList =
   Array<ProjectsDeploymentsGetResponseStagesItem>;
-export const ProjectsDeploymentsGetResponseStagesList =
+const ProjectsDeploymentsGetResponseStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsGetResponseStagesList>;
 
 export type ProjectsDeploymentsGetResponseSkipReason =
@@ -4543,7 +4255,7 @@ export type ProjectsDeploymentsGetResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsDeploymentsGetResponseSkipReason = S.String;
+const ProjectsDeploymentsGetResponseSkipReason = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProjectDeploymentResponse {
@@ -4584,7 +4296,7 @@ export interface GetProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const GetProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsDeploymentsGetResponseAliasesList,
@@ -4621,7 +4333,7 @@ export interface GetProjectDeploymentHistoryLogRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
-export const GetProjectDeploymentHistoryLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectDeploymentHistoryLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -4643,7 +4355,7 @@ export interface ProjectsDeploymentsHistoryLogsGetResponseDataItem {
   line: string;
   ts: string;
 }
-export const ProjectsDeploymentsHistoryLogsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsHistoryLogsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.String,
     ts: S.String,
@@ -4654,7 +4366,7 @@ export const ProjectsDeploymentsHistoryLogsGetResponseDataItem = /*@__PURE__*/ S
 
 export type ProjectsDeploymentsHistoryLogsGetResponseDataList =
   Array<ProjectsDeploymentsHistoryLogsGetResponseDataItem>;
-export const ProjectsDeploymentsHistoryLogsGetResponseDataList = /*@__PURE__*/ S.Array(
+const ProjectsDeploymentsHistoryLogsGetResponseDataList = /*@__PURE__*/ S.Array(
   ProjectsDeploymentsHistoryLogsGetResponseDataItem,
 ) as any as S.Schema<ProjectsDeploymentsHistoryLogsGetResponseDataList>;
 
@@ -4664,7 +4376,7 @@ export interface GetProjectDeploymentHistoryLogResponse {
   includesContainerLogs: boolean;
   total: number;
 }
-export const GetProjectDeploymentHistoryLogResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectDeploymentHistoryLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ProjectsDeploymentsHistoryLogsGetResponseDataList,
     includesContainerLogs: S.Boolean.pipe(T.Body("includes_container_logs")),
@@ -4682,7 +4394,7 @@ export interface GetProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   domainName: string;
 }
-export const GetProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -4699,7 +4411,7 @@ export const GetProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectDomainRequest" }) as any as S.Schema<GetProjectDomainRequest>;
 
 export type ProjectsDomainsGetResponseCertificateAuthority = "google" | "lets_encrypt";
-export const ProjectsDomainsGetResponseCertificateAuthority = S.String;
+const ProjectsDomainsGetResponseCertificateAuthority = S.String;
 
 export type ProjectsDomainsGetResponseStatus =
   | "initializing"
@@ -4708,19 +4420,15 @@ export type ProjectsDomainsGetResponseStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsGetResponseStatus = S.String;
+const ProjectsDomainsGetResponseStatus = S.String;
 
 export type ProjectsDomainsGetResponseValidationDataMethod = "http" | "txt";
-export const ProjectsDomainsGetResponseValidationDataMethod = S.String;
-
 export type ProjectsDomainsGetResponseValidationDataStatus =
   | "initializing"
   | "pending"
   | "active"
   | "deactivated"
   | "error";
-export const ProjectsDomainsGetResponseValidationDataStatus = S.String;
-
 export interface ProjectsDomainsGetResponseValidationData {
   method: ProjectsDomainsGetResponseValidationDataMethod;
   status: ProjectsDomainsGetResponseValidationDataStatus;
@@ -4728,7 +4436,7 @@ export interface ProjectsDomainsGetResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsGetResponseValidationData =
+const ProjectsDomainsGetResponseValidationData =
   ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsGetResponseValidationData>;
 
 export type ProjectsDomainsGetResponseVerificationDataStatus =
@@ -4737,13 +4445,11 @@ export type ProjectsDomainsGetResponseVerificationDataStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsGetResponseVerificationDataStatus = S.String;
-
 export interface ProjectsDomainsGetResponseVerificationData {
   status: ProjectsDomainsGetResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsGetResponseVerificationData =
+const ProjectsDomainsGetResponseVerificationData =
   ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsGetResponseVerificationData>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4759,7 +4465,7 @@ export interface GetProjectDomainResponse {
   verificationData: ProjectsDomainsGetResponseVerificationData;
   zoneTag: string;
 }
-export const GetProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificateAuthority: ProjectsDomainsGetResponseCertificateAuthority.pipe(
@@ -4776,7 +4482,7 @@ export const GetProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectDomainResponse" }) as any as S.Schema<GetProjectDomainResponse>;
 
 export type ProjectsDeploymentsListRequestEnv = "production" | "preview";
-export const ProjectsDeploymentsListRequestEnv = S.String;
+const ProjectsDeploymentsListRequestEnv = S.String;
 
 export interface ListProjectDeploymentsRequest {
   /** Identifier. */
@@ -4790,7 +4496,7 @@ export interface ListProjectDeploymentsRequest {
   /** Number of results to return per page. */
   perPage?: number;
 }
-export const ListProjectDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -4811,36 +4517,28 @@ export const ListProjectDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectDeploymentsRequest>;
 
 export type ProjectsDeploymentsListResultItemAliasesList = Array<string>;
-export const ProjectsDeploymentsListResultItemAliasesList =
+const ProjectsDeploymentsListResultItemAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemAliasesList>;
 
 export type ProjectsDeploymentsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsDeploymentsListResultItemBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsDeploymentsListResultItemDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsDeploymentsListResultItemDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsDeploymentsListResultItemDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsDeploymentsListResultItemDeploymentTriggerType = S.String;
-
 export interface ProjectsDeploymentsListResultItemDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsDeploymentsListResultItemDeploymentTriggerType;
 }
-export const ProjectsDeploymentsListResultItemDeploymentTrigger =
+const ProjectsDeploymentsListResultItemDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsListResultItemDeploymentTrigger>;
 
 export type ProjectsDeploymentsListResultItemEnvironment = "preview" | "production";
-export const ProjectsDeploymentsListResultItemEnvironment = S.String;
+const ProjectsDeploymentsListResultItemEnvironment = S.String;
 
 export type ProjectsDeploymentsListResultItemLatestStageName =
   | "queued"
@@ -4848,8 +4546,6 @@ export type ProjectsDeploymentsListResultItemLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsListResultItemLatestStageName = S.String;
-
 export type ProjectsDeploymentsListResultItemLatestStageStatus =
   | "success"
   | "idle"
@@ -4857,8 +4553,6 @@ export type ProjectsDeploymentsListResultItemLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsListResultItemLatestStageStatus = S.String;
-
 export interface ProjectsDeploymentsListResultItemLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -4869,30 +4563,30 @@ export interface ProjectsDeploymentsListResultItemLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsListResultItemLatestStageStatus;
 }
-export const ProjectsDeploymentsListResultItemLatestStage =
+const ProjectsDeploymentsListResultItemLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsListResultItemLatestStage>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
+const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsListResultItemSourceConfigPathIncludesList =
+const ProjectsDeploymentsListResultItemSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList =
+const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList =
+const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsDeploymentsListResultItemSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -4922,7 +4616,7 @@ export interface ProjectsDeploymentsListResultItemSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsDeploymentsListResultItemSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsListResultItemSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -4956,14 +4650,14 @@ export const ProjectsDeploymentsListResultItemSourceConfig = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfig>;
 
 export type ProjectsDeploymentsListResultItemSourceType = "github" | "gitlab";
-export const ProjectsDeploymentsListResultItemSourceType = S.String;
+const ProjectsDeploymentsListResultItemSourceType = S.String;
 
 export interface ProjectsDeploymentsListResultItemSource {
   config: ProjectsDeploymentsListResultItemSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsListResultItemSourceType;
 }
-export const ProjectsDeploymentsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsDeploymentsListResultItemSourceConfig,
     type: ProjectsDeploymentsListResultItemSourceType,
@@ -4978,8 +4672,6 @@ export type ProjectsDeploymentsListResultItemStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsListResultItemStagesItemName = S.String;
-
 export type ProjectsDeploymentsListResultItemStagesItemStatus =
   | "success"
   | "idle"
@@ -4987,8 +4679,6 @@ export type ProjectsDeploymentsListResultItemStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsListResultItemStagesItemStatus = S.String;
-
 export interface ProjectsDeploymentsListResultItemStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -4999,12 +4689,9 @@ export interface ProjectsDeploymentsListResultItemStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsListResultItemStagesItemStatus;
 }
-export const ProjectsDeploymentsListResultItemStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsListResultItemStagesItem>;
-
 export type ProjectsDeploymentsListResultItemStagesList =
   Array<ProjectsDeploymentsListResultItemStagesItem>;
-export const ProjectsDeploymentsListResultItemStagesList =
+const ProjectsDeploymentsListResultItemStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsListResultItemStagesList>;
 
 export type ProjectsDeploymentsListResultItemSkipReason =
@@ -5015,7 +4702,7 @@ export type ProjectsDeploymentsListResultItemSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsDeploymentsListResultItemSkipReason = S.String;
+const ProjectsDeploymentsListResultItemSkipReason = S.String;
 
 export interface ProjectsDeploymentsListResultItem {
   /** Id of the deployment. */
@@ -5055,7 +4742,7 @@ export interface ProjectsDeploymentsListResultItem {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsDeploymentsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsDeploymentsListResultItemAliasesList,
@@ -5085,7 +4772,7 @@ export const ProjectsDeploymentsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsDeploymentsListResultItem>;
 
 export type ProjectsDeploymentsListResultList = Array<ProjectsDeploymentsListResultItem>;
-export const ProjectsDeploymentsListResultList = /*@__PURE__*/ S.Array(
+const ProjectsDeploymentsListResultList = /*@__PURE__*/ S.Array(
   ProjectsDeploymentsListResultItem,
 ) as any as S.Schema<ProjectsDeploymentsListResultList>;
 
@@ -5095,7 +4782,7 @@ export interface ListProjectDeploymentsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProjectsDeploymentsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5110,7 +4797,7 @@ export interface ListProjectDomainsRequest {
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
-export const ListProjectDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -5128,7 +4815,7 @@ export const ListProjectDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectDomainsRequest>;
 
 export type ProjectsDomainsListResultItemCertificateAuthority = "google" | "lets_encrypt";
-export const ProjectsDomainsListResultItemCertificateAuthority = S.String;
+const ProjectsDomainsListResultItemCertificateAuthority = S.String;
 
 export type ProjectsDomainsListResultItemStatus =
   | "initializing"
@@ -5137,19 +4824,15 @@ export type ProjectsDomainsListResultItemStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsListResultItemStatus = S.String;
+const ProjectsDomainsListResultItemStatus = S.String;
 
 export type ProjectsDomainsListResultItemValidationDataMethod = "http" | "txt";
-export const ProjectsDomainsListResultItemValidationDataMethod = S.String;
-
 export type ProjectsDomainsListResultItemValidationDataStatus =
   | "initializing"
   | "pending"
   | "active"
   | "deactivated"
   | "error";
-export const ProjectsDomainsListResultItemValidationDataStatus = S.String;
-
 export interface ProjectsDomainsListResultItemValidationData {
   method: ProjectsDomainsListResultItemValidationDataMethod;
   status: ProjectsDomainsListResultItemValidationDataStatus;
@@ -5157,7 +4840,7 @@ export interface ProjectsDomainsListResultItemValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsListResultItemValidationData =
+const ProjectsDomainsListResultItemValidationData =
   ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsListResultItemValidationData>;
 
 export type ProjectsDomainsListResultItemVerificationDataStatus =
@@ -5166,13 +4849,11 @@ export type ProjectsDomainsListResultItemVerificationDataStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsListResultItemVerificationDataStatus = S.String;
-
 export interface ProjectsDomainsListResultItemVerificationData {
   status: ProjectsDomainsListResultItemVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsListResultItemVerificationData =
+const ProjectsDomainsListResultItemVerificationData =
   ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsListResultItemVerificationData>;
 
 export interface ProjectsDomainsListResultItem {
@@ -5187,7 +4868,7 @@ export interface ProjectsDomainsListResultItem {
   verificationData: ProjectsDomainsListResultItemVerificationData;
   zoneTag: string;
 }
-export const ProjectsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificateAuthority: ProjectsDomainsListResultItemCertificateAuthority.pipe(
@@ -5208,7 +4889,7 @@ export const ProjectsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsDomainsListResultItem>;
 
 export type ProjectsDomainsListResultList = Array<ProjectsDomainsListResultItem>;
-export const ProjectsDomainsListResultList = /*@__PURE__*/ S.Array(
+const ProjectsDomainsListResultList = /*@__PURE__*/ S.Array(
   ProjectsDomainsListResultItem,
 ) as any as S.Schema<ProjectsDomainsListResultList>;
 
@@ -5218,7 +4899,7 @@ export interface ListProjectDomainsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListProjectDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProjectsDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5235,7 +4916,7 @@ export interface ListProjectsRequest {
   /** Number of results to return per page. */
   perPage?: number;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -5246,36 +4927,28 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectsListResultItemCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsListResultItemCanonicalDeploymentAliasesList =
+const ProjectsListResultItemCanonicalDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentAliasesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsListResultItemCanonicalDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsListResultItemCanonicalDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsListResultItemCanonicalDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType = S.String;
-
 export interface ProjectsListResultItemCanonicalDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger =
+const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger as any as S.Schema<ProjectsListResultItemCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsListResultItemCanonicalDeploymentEnvironment = "preview" | "production";
-export const ProjectsListResultItemCanonicalDeploymentEnvironment = S.String;
+const ProjectsListResultItemCanonicalDeploymentEnvironment = S.String;
 
 export type ProjectsListResultItemCanonicalDeploymentLatestStageName =
   | "queued"
@@ -5283,8 +4956,6 @@ export type ProjectsListResultItemCanonicalDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsListResultItemCanonicalDeploymentLatestStageName = S.String;
-
 export type ProjectsListResultItemCanonicalDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -5292,8 +4963,6 @@ export type ProjectsListResultItemCanonicalDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsListResultItemCanonicalDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsListResultItemCanonicalDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -5304,33 +4973,32 @@ export interface ProjectsListResultItemCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsListResultItemCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsListResultItemCanonicalDeploymentLatestStage =
+const ProjectsListResultItemCanonicalDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemCanonicalDeploymentLatestStage>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList =
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
-  S.String;
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsListResultItemCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -5360,7 +5028,7 @@ export interface ProjectsListResultItemCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsListResultItemCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -5394,14 +5062,14 @@ export const ProjectsListResultItemCanonicalDeploymentSourceConfig = /*@__PURE__
 }) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfig>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceType = "github" | "gitlab";
-export const ProjectsListResultItemCanonicalDeploymentSourceType = S.String;
+const ProjectsListResultItemCanonicalDeploymentSourceType = S.String;
 
 export interface ProjectsListResultItemCanonicalDeploymentSource {
   config: ProjectsListResultItemCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsListResultItemCanonicalDeploymentSourceType;
 }
-export const ProjectsListResultItemCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsListResultItemCanonicalDeploymentSourceConfig,
     type: ProjectsListResultItemCanonicalDeploymentSourceType,
@@ -5416,8 +5084,6 @@ export type ProjectsListResultItemCanonicalDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsListResultItemCanonicalDeploymentStagesItemName = S.String;
-
 export type ProjectsListResultItemCanonicalDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -5425,8 +5091,6 @@ export type ProjectsListResultItemCanonicalDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsListResultItemCanonicalDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsListResultItemCanonicalDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -5437,12 +5101,9 @@ export interface ProjectsListResultItemCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsListResultItemCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsListResultItemCanonicalDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesItem>;
-
 export type ProjectsListResultItemCanonicalDeploymentStagesList =
   Array<ProjectsListResultItemCanonicalDeploymentStagesItem>;
-export const ProjectsListResultItemCanonicalDeploymentStagesList =
+const ProjectsListResultItemCanonicalDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSkipReason =
@@ -5453,7 +5114,7 @@ export type ProjectsListResultItemCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsListResultItemCanonicalDeploymentSkipReason = S.String;
+const ProjectsListResultItemCanonicalDeploymentSkipReason = S.String;
 
 export interface ProjectsListResultItemCanonicalDeployment {
   /** Id of the deployment. */
@@ -5493,7 +5154,7 @@ export interface ProjectsListResultItemCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsListResultItemCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsListResultItemCanonicalDeploymentAliasesList,
@@ -5523,139 +5184,109 @@ export const ProjectsListResultItemCanonicalDeployment = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ProjectsListResultItemCanonicalDeployment>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
-export const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList =
+const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsListResultItemDeploymentConfigsPreviewUsageModel = S.String;
+const ProjectsListResultItemDeploymentConfigsPreviewUsageModel = S.String;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap =
+const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+const ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap =
+const ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap =
+const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap =
+const ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap =
+const ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap =
+const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsListResultItemDeploymentConfigsPreviewLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap =
+const ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsListResultItemDeploymentConfigsPreviewPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap =
+const ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap =
+const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewServicesMap =
+const ProjectsListResultItemDeploymentConfigsPreviewServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap =
+const ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsPreview {
@@ -5704,7 +5335,7 @@ export interface ProjectsListResultItemDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsListResultItemDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -5780,139 +5411,109 @@ export const ProjectsListResultItemDeploymentConfigsPreview = /*@__PURE__*/ S.su
 }) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreview>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
-export const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList =
+const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsListResultItemDeploymentConfigsProductionUsageModel = S.String;
+const ProjectsListResultItemDeploymentConfigsProductionUsageModel = S.String;
 
 export type ProjectsListResultItemDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsListResultItemDeploymentConfigsProductionAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap =
+const ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap =
   ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+const ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionBrowsersMap =
+const ProjectsListResultItemDeploymentConfigsProductionBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap =
+const ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap =
+const ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap =
+const ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap =
+const ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsListResultItemDeploymentConfigsProductionLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap =
+const ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsListResultItemDeploymentConfigsProductionPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsListResultItemDeploymentConfigsProductionQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsListResultItemDeploymentConfigsProductionQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap =
+const ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap =
+const ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsListResultItemDeploymentConfigsProductionServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionServicesMap =
+const ProjectsListResultItemDeploymentConfigsProductionServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap =
+const ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsProduction {
@@ -5961,7 +5562,7 @@ export interface ProjectsListResultItemDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsListResultItemDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -6043,7 +5644,7 @@ export interface ProjectsListResultItemDeploymentConfigs {
   /** Configs for production deploys. */
   production: ProjectsListResultItemDeploymentConfigsProduction;
 }
-export const ProjectsListResultItemDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preview: ProjectsListResultItemDeploymentConfigsPreview,
     production: ProjectsListResultItemDeploymentConfigsProduction,
@@ -6053,60 +5654,42 @@ export const ProjectsListResultItemDeploymentConfigs = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ProjectsListResultItemDeploymentConfigs>;
 
 export type ProjectsListResultItemLatestDeploymentAliasesList = Array<string>;
-export const ProjectsListResultItemLatestDeploymentAliasesList =
+const ProjectsListResultItemLatestDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemLatestDeploymentAliasesList>;
 
 export type ProjectsListResultItemLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsListResultItemLatestDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsListResultItemLatestDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsListResultItemLatestDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsListResultItemLatestDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsListResultItemLatestDeploymentDeploymentTriggerType = S.String;
-
 export interface ProjectsListResultItemLatestDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsListResultItemLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsListResultItemLatestDeploymentDeploymentTrigger =
+const ProjectsListResultItemLatestDeploymentDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsListResultItemLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
-export const ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType = S.String;
-
 export interface ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType;
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText>;
-
 export type ProjectsListResultItemLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
-export const ProjectsListResultItemLatestDeploymentEnvVarsValueSecretTextType = S.String;
-
 export interface ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText {
   type: ProjectsListResultItemLatestDeploymentEnvVarsValueSecretTextType;
   /** Secret value. */
   value: string;
 }
-export const ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText>;
-
 export type ProjectsListResultItemLatestDeploymentEnvVarsValue =
   | ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText
   | ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText;
-export const ProjectsListResultItemLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
+const ProjectsListResultItemLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
@@ -6119,13 +5702,13 @@ export const ProjectsListResultItemLatestDeploymentEnvVarsValue = /*@__PURE__*/ 
 export type ProjectsListResultItemLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsListResultItemLatestDeploymentEnvVarsValue | undefined;
 };
-export const ProjectsListResultItemLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
+const ProjectsListResultItemLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsListResultItemLatestDeploymentEnvVarsValue,
 ) as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsMap>;
 
 export type ProjectsListResultItemLatestDeploymentEnvironment = "preview" | "production";
-export const ProjectsListResultItemLatestDeploymentEnvironment = S.String;
+const ProjectsListResultItemLatestDeploymentEnvironment = S.String;
 
 export type ProjectsListResultItemLatestDeploymentLatestStageName =
   | "queued"
@@ -6133,8 +5716,6 @@ export type ProjectsListResultItemLatestDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsListResultItemLatestDeploymentLatestStageName = S.String;
-
 export type ProjectsListResultItemLatestDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -6142,8 +5723,6 @@ export type ProjectsListResultItemLatestDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsListResultItemLatestDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsListResultItemLatestDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -6154,32 +5733,32 @@ export interface ProjectsListResultItemLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsListResultItemLatestDeploymentLatestStageStatus;
 }
-export const ProjectsListResultItemLatestDeploymentLatestStage =
+const ProjectsListResultItemLatestDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemLatestDeploymentLatestStage>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList =
+const ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList =
+const ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsListResultItemLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -6209,7 +5788,7 @@ export interface ProjectsListResultItemLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsListResultItemLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -6243,14 +5822,14 @@ export const ProjectsListResultItemLatestDeploymentSourceConfig = /*@__PURE__*/ 
 }) as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfig>;
 
 export type ProjectsListResultItemLatestDeploymentSourceType = "github" | "gitlab";
-export const ProjectsListResultItemLatestDeploymentSourceType = S.String;
+const ProjectsListResultItemLatestDeploymentSourceType = S.String;
 
 export interface ProjectsListResultItemLatestDeploymentSource {
   config: ProjectsListResultItemLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsListResultItemLatestDeploymentSourceType;
 }
-export const ProjectsListResultItemLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsListResultItemLatestDeploymentSourceConfig,
     type: ProjectsListResultItemLatestDeploymentSourceType,
@@ -6265,8 +5844,6 @@ export type ProjectsListResultItemLatestDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsListResultItemLatestDeploymentStagesItemName = S.String;
-
 export type ProjectsListResultItemLatestDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -6274,8 +5851,6 @@ export type ProjectsListResultItemLatestDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsListResultItemLatestDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsListResultItemLatestDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -6286,12 +5861,9 @@ export interface ProjectsListResultItemLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsListResultItemLatestDeploymentStagesItemStatus;
 }
-export const ProjectsListResultItemLatestDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesItem>;
-
 export type ProjectsListResultItemLatestDeploymentStagesList =
   Array<ProjectsListResultItemLatestDeploymentStagesItem>;
-export const ProjectsListResultItemLatestDeploymentStagesList =
+const ProjectsListResultItemLatestDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesList>;
 
 export type ProjectsListResultItemLatestDeploymentSkipReason =
@@ -6302,7 +5874,7 @@ export type ProjectsListResultItemLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsListResultItemLatestDeploymentSkipReason = S.String;
+const ProjectsListResultItemLatestDeploymentSkipReason = S.String;
 
 export interface ProjectsListResultItemLatestDeployment {
   /** Id of the deployment. */
@@ -6342,7 +5914,7 @@ export interface ProjectsListResultItemLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsListResultItemLatestDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemLatestDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsListResultItemLatestDeploymentAliasesList,
@@ -6373,31 +5945,28 @@ export const ProjectsListResultItemLatestDeployment = /*@__PURE__*/ S.suspend(()
 
 export type ProjectsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsListResultItemBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsListResultItemDomainsList = Array<string>;
-export const ProjectsListResultItemDomainsList =
+const ProjectsListResultItemDomainsList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemDomainsList>;
 
 export type ProjectsListResultItemSourceConfigPathExcludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPathExcludesList =
+const ProjectsListResultItemSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemSourceConfigPathIncludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPathIncludesList =
+const ProjectsListResultItemSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPreviewBranchExcludesList =
+const ProjectsListResultItemSourceConfigPreviewBranchExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
+const ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
-export const ProjectsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsListResultItemSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -6427,7 +5996,7 @@ export interface ProjectsListResultItemSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsListResultItemSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -6454,14 +6023,14 @@ export const ProjectsListResultItemSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsListResultItemSourceConfig>;
 
 export type ProjectsListResultItemSourceType = "github" | "gitlab";
-export const ProjectsListResultItemSourceType = S.String;
+const ProjectsListResultItemSourceType = S.String;
 
 export interface ProjectsListResultItemSource {
   config: ProjectsListResultItemSourceConfig;
   /** The source control management provider. */
   type: ProjectsListResultItemSourceType;
 }
-export const ProjectsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsListResultItemSourceConfig,
     type: ProjectsListResultItemSourceType,
@@ -6504,7 +6073,7 @@ export interface ProjectsListResultItem {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
-export const ProjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ProjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     canonicalDeployment: ProjectsListResultItemCanonicalDeployment.pipe(
@@ -6530,7 +6099,7 @@ export const ProjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectsListResultItem" }) as any as S.Schema<ProjectsListResultItem>;
 
 export type ProjectsListResultList = Array<ProjectsListResultItem>;
-export const ProjectsListResultList = /*@__PURE__*/ S.Array(
+const ProjectsListResultList = /*@__PURE__*/ S.Array(
   ProjectsListResultItem,
 ) as any as S.Schema<ProjectsListResultList>;
 
@@ -6540,7 +6109,7 @@ export interface ListProjectsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ProjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -6548,142 +6117,110 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsResponse" }) as any as S.Schema<ListProjectsResponse>;
 
 export type ProjectsEditRequestBuildConfig = ProjectsCreateRequestBuildConfig;
-export const ProjectsEditRequestBuildConfig = ProjectsCreateRequestBuildConfig;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap =
+const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+const ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap =
+const ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
-export const ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
+const ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap =
+const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
+const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap =
+const ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap =
+const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsEditRequestDeploymentConfigsPreviewLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap =
+const ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsEditRequestDeploymentConfigsPreviewPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap =
+const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap =
   ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap =
+const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewServicesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewServicesMap =
+const ProjectsEditRequestDeploymentConfigsPreviewServicesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsEditRequestDeploymentConfigsPreviewUsageModel = S.String;
+const ProjectsEditRequestDeploymentConfigsPreviewUsageModel = S.String;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap =
+const ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsPreview {
@@ -6732,7 +6269,7 @@ export interface ProjectsEditRequestDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
-export const ProjectsEditRequestDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditRequestDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiBindings: S.optional(
       ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap.pipe(T.Body("ai_bindings")),
@@ -6801,138 +6338,108 @@ export const ProjectsEditRequestDeploymentConfigsPreview = /*@__PURE__*/ S.suspe
 
 export type ProjectsEditRequestDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsEditRequestDeploymentConfigsProductionAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap =
+const ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+const ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionBrowsersMap =
+const ProjectsEditRequestDeploymentConfigsProductionBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
-export const ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList =
+const ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap =
+const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
+const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap =
+const ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap =
+const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsEditRequestDeploymentConfigsProductionLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap =
+const ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsEditRequestDeploymentConfigsProductionPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsEditRequestDeploymentConfigsProductionQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsEditRequestDeploymentConfigsProductionQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap =
+const ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap =
+const ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
-export const ProjectsEditRequestDeploymentConfigsProductionServicesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionServicesMap =
+const ProjectsEditRequestDeploymentConfigsProductionServicesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsEditRequestDeploymentConfigsProductionUsageModel = S.String;
+const ProjectsEditRequestDeploymentConfigsProductionUsageModel = S.String;
 
 export type ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap =
+const ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsProduction {
@@ -6981,7 +6488,7 @@ export interface ProjectsEditRequestDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
-export const ProjectsEditRequestDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditRequestDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiBindings: S.optional(
       ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap.pipe(T.Body("ai_bindings")),
@@ -7056,7 +6563,7 @@ export interface ProjectsEditRequestDeploymentConfigs {
   /** Configs for production deploys. */
   production?: ProjectsEditRequestDeploymentConfigsProduction;
 }
-export const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preview: S.optional(ProjectsEditRequestDeploymentConfigsPreview),
     production: S.optional(ProjectsEditRequestDeploymentConfigsProduction),
@@ -7066,23 +6573,23 @@ export const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ProjectsEditRequestDeploymentConfigs>;
 
 export type ProjectsEditRequestSourceConfigPathExcludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPathExcludesList =
+const ProjectsEditRequestSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPathExcludesList>;
 
 export type ProjectsEditRequestSourceConfigPathIncludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPathIncludesList =
+const ProjectsEditRequestSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPathIncludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPreviewBranchExcludesList =
+const ProjectsEditRequestSourceConfigPreviewBranchExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
+const ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
-export const ProjectsEditRequestSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsEditRequestSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsEditRequestSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -7114,7 +6621,7 @@ export interface ProjectsEditRequestSourceConfig {
   /** The name of the repository. */
   repoName?: string;
 }
-export const ProjectsEditRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
     owner: S.optional(S.String),
@@ -7153,14 +6660,14 @@ export const ProjectsEditRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsEditRequestSourceConfig>;
 
 export type ProjectsEditRequestSourceType = "github" | "gitlab";
-export const ProjectsEditRequestSourceType = S.String;
+const ProjectsEditRequestSourceType = S.String;
 
 export interface ProjectsEditRequestSource {
   config: ProjectsEditRequestSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditRequestSourceType | (string & {});
 }
-export const ProjectsEditRequestSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsEditRequestSourceConfig,
     type: ProjectsEditRequestSourceType,
@@ -7185,7 +6692,7 @@ export interface PatchProjectRequest {
   /** Configs for the project source control. */
   source?: ProjectsEditRequestSource;
 }
-export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -7208,36 +6715,28 @@ export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchProjectRequest" }) as any as S.Schema<PatchProjectRequest>;
 
 export type ProjectsEditResponseCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsEditResponseCanonicalDeploymentAliasesList =
+const ProjectsEditResponseCanonicalDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentAliasesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsEditResponseCanonicalDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsEditResponseCanonicalDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsEditResponseCanonicalDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType = S.String;
-
 export interface ProjectsEditResponseCanonicalDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType;
 }
-export const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger =
+const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger as any as S.Schema<ProjectsEditResponseCanonicalDeploymentDeploymentTrigger>;
 
 export type ProjectsEditResponseCanonicalDeploymentEnvironment = "preview" | "production";
-export const ProjectsEditResponseCanonicalDeploymentEnvironment = S.String;
+const ProjectsEditResponseCanonicalDeploymentEnvironment = S.String;
 
 export type ProjectsEditResponseCanonicalDeploymentLatestStageName =
   | "queued"
@@ -7245,8 +6744,6 @@ export type ProjectsEditResponseCanonicalDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsEditResponseCanonicalDeploymentLatestStageName = S.String;
-
 export type ProjectsEditResponseCanonicalDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -7254,8 +6751,6 @@ export type ProjectsEditResponseCanonicalDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsEditResponseCanonicalDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsEditResponseCanonicalDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -7266,32 +6761,32 @@ export interface ProjectsEditResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsEditResponseCanonicalDeploymentLatestStageStatus;
 }
-export const ProjectsEditResponseCanonicalDeploymentLatestStage =
+const ProjectsEditResponseCanonicalDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseCanonicalDeploymentLatestStage>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList =
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsEditResponseCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -7321,7 +6816,7 @@ export interface ProjectsEditResponseCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsEditResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -7355,14 +6850,14 @@ export const ProjectsEditResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/
 }) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfig>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceType = "github" | "gitlab";
-export const ProjectsEditResponseCanonicalDeploymentSourceType = S.String;
+const ProjectsEditResponseCanonicalDeploymentSourceType = S.String;
 
 export interface ProjectsEditResponseCanonicalDeploymentSource {
   config: ProjectsEditResponseCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditResponseCanonicalDeploymentSourceType;
 }
-export const ProjectsEditResponseCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseCanonicalDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsEditResponseCanonicalDeploymentSourceConfig,
     type: ProjectsEditResponseCanonicalDeploymentSourceType,
@@ -7377,8 +6872,6 @@ export type ProjectsEditResponseCanonicalDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsEditResponseCanonicalDeploymentStagesItemName = S.String;
-
 export type ProjectsEditResponseCanonicalDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -7386,8 +6879,6 @@ export type ProjectsEditResponseCanonicalDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsEditResponseCanonicalDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsEditResponseCanonicalDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -7398,12 +6889,9 @@ export interface ProjectsEditResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsEditResponseCanonicalDeploymentStagesItemStatus;
 }
-export const ProjectsEditResponseCanonicalDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesItem>;
-
 export type ProjectsEditResponseCanonicalDeploymentStagesList =
   Array<ProjectsEditResponseCanonicalDeploymentStagesItem>;
-export const ProjectsEditResponseCanonicalDeploymentStagesList =
+const ProjectsEditResponseCanonicalDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSkipReason =
@@ -7414,7 +6902,7 @@ export type ProjectsEditResponseCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsEditResponseCanonicalDeploymentSkipReason = S.String;
+const ProjectsEditResponseCanonicalDeploymentSkipReason = S.String;
 
 export interface ProjectsEditResponseCanonicalDeployment {
   /** Id of the deployment. */
@@ -7454,7 +6942,7 @@ export interface ProjectsEditResponseCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsEditResponseCanonicalDeploymentAliasesList,
@@ -7484,139 +6972,109 @@ export const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ProjectsEditResponseCanonicalDeployment>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
-export const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList =
+const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsEditResponseDeploymentConfigsPreviewUsageModel = S.String;
+const ProjectsEditResponseDeploymentConfigsPreviewUsageModel = S.String;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap =
+const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+const ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap =
+const ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap =
+const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
+const ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
+const ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap =
+const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsEditResponseDeploymentConfigsPreviewLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap =
+const ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsEditResponseDeploymentConfigsPreviewPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap =
+const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap =
   ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap =
+const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewServicesMap =
+const ProjectsEditResponseDeploymentConfigsPreviewServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap =
+const ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsPreview {
@@ -7665,7 +7123,7 @@ export interface ProjectsEditResponseDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsEditResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -7737,139 +7195,109 @@ export const ProjectsEditResponseDeploymentConfigsPreview = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreview>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
-export const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList =
+const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const ProjectsEditResponseDeploymentConfigsProductionUsageModel = S.String;
+const ProjectsEditResponseDeploymentConfigsProductionUsageModel = S.String;
 
 export type ProjectsEditResponseDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-export const ProjectsEditResponseDeploymentConfigsProductionAiBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap =
+const ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-export const ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+const ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionBrowsersMap =
+const ProjectsEditResponseDeploymentConfigsProductionBrowsersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap =
+const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-export const ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
+const ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-export const ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap =
+const ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap =
+const ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap =
   ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-export const ProjectsEditResponseDeploymentConfigsProductionLimits =
-  ProjectsCreateRequestDeploymentConfigsPreviewLimits;
-
 export type ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-export const ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap =
+const ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap =
   ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-export const ProjectsEditResponseDeploymentConfigsProductionPlacement =
-  ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
-
 export type ProjectsEditResponseDeploymentConfigsProductionQueueProducersValue =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-export const ProjectsEditResponseDeploymentConfigsProductionQueueProducersValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap =
+const ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap =
   ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap =
+const ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-export const ProjectsEditResponseDeploymentConfigsProductionServicesValue =
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionServicesMap =
+const ProjectsEditResponseDeploymentConfigsProductionServicesMap =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-export const ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsValue =
-  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
-
 export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap =
+const ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsProduction {
@@ -7918,7 +7346,7 @@ export interface ProjectsEditResponseDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
-export const ProjectsEditResponseDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseDeploymentConfigsProduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
       T.Body("always_use_latest_compatibility_date"),
@@ -7999,7 +7427,7 @@ export interface ProjectsEditResponseDeploymentConfigs {
   /** Configs for production deploys. */
   production: ProjectsEditResponseDeploymentConfigsProduction;
 }
-export const ProjectsEditResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preview: ProjectsEditResponseDeploymentConfigsPreview,
     production: ProjectsEditResponseDeploymentConfigsProduction,
@@ -8009,60 +7437,42 @@ export const ProjectsEditResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProjectsEditResponseDeploymentConfigs>;
 
 export type ProjectsEditResponseLatestDeploymentAliasesList = Array<string>;
-export const ProjectsEditResponseLatestDeploymentAliasesList =
+const ProjectsEditResponseLatestDeploymentAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseLatestDeploymentAliasesList>;
 
 export type ProjectsEditResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsEditResponseLatestDeploymentBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsEditResponseLatestDeploymentDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsEditResponseLatestDeploymentDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsEditResponseLatestDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsEditResponseLatestDeploymentDeploymentTriggerType = S.String;
-
 export interface ProjectsEditResponseLatestDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsEditResponseLatestDeploymentDeploymentTriggerType;
 }
-export const ProjectsEditResponseLatestDeploymentDeploymentTrigger =
+const ProjectsEditResponseLatestDeploymentDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsEditResponseLatestDeploymentDeploymentTrigger>;
 
 export type ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
-export const ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType = S.String;
-
 export interface ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType;
   /** Environment variable value. */
   value: string;
 }
-export const ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText>;
-
 export type ProjectsEditResponseLatestDeploymentEnvVarsValueSecretTextType = "secret_text";
-export const ProjectsEditResponseLatestDeploymentEnvVarsValueSecretTextType = S.String;
-
 export interface ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText {
   type: ProjectsEditResponseLatestDeploymentEnvVarsValueSecretTextType;
   /** Secret value. */
   value: string;
 }
-export const ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText =
-  ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText>;
-
 export type ProjectsEditResponseLatestDeploymentEnvVarsValue =
   | ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText;
-export const ProjectsEditResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
+const ProjectsEditResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
@@ -8075,13 +7485,13 @@ export const ProjectsEditResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ S.
 export type ProjectsEditResponseLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsEditResponseLatestDeploymentEnvVarsValue | undefined;
 };
-export const ProjectsEditResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
+const ProjectsEditResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectsEditResponseLatestDeploymentEnvVarsValue,
 ) as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsMap>;
 
 export type ProjectsEditResponseLatestDeploymentEnvironment = "preview" | "production";
-export const ProjectsEditResponseLatestDeploymentEnvironment = S.String;
+const ProjectsEditResponseLatestDeploymentEnvironment = S.String;
 
 export type ProjectsEditResponseLatestDeploymentLatestStageName =
   | "queued"
@@ -8089,8 +7499,6 @@ export type ProjectsEditResponseLatestDeploymentLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsEditResponseLatestDeploymentLatestStageName = S.String;
-
 export type ProjectsEditResponseLatestDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -8098,8 +7506,6 @@ export type ProjectsEditResponseLatestDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsEditResponseLatestDeploymentLatestStageStatus = S.String;
-
 export interface ProjectsEditResponseLatestDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -8110,32 +7516,32 @@ export interface ProjectsEditResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsEditResponseLatestDeploymentLatestStageStatus;
 }
-export const ProjectsEditResponseLatestDeploymentLatestStage =
+const ProjectsEditResponseLatestDeploymentLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseLatestDeploymentLatestStage>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
-export const ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList =
+const ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
-export const ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList =
+const ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
+const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
+const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsEditResponseLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -8165,7 +7571,7 @@ export interface ProjectsEditResponseLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsEditResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -8199,14 +7605,14 @@ export const ProjectsEditResponseLatestDeploymentSourceConfig = /*@__PURE__*/ S.
 }) as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfig>;
 
 export type ProjectsEditResponseLatestDeploymentSourceType = "github" | "gitlab";
-export const ProjectsEditResponseLatestDeploymentSourceType = S.String;
+const ProjectsEditResponseLatestDeploymentSourceType = S.String;
 
 export interface ProjectsEditResponseLatestDeploymentSource {
   config: ProjectsEditResponseLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditResponseLatestDeploymentSourceType;
 }
-export const ProjectsEditResponseLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseLatestDeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsEditResponseLatestDeploymentSourceConfig,
     type: ProjectsEditResponseLatestDeploymentSourceType,
@@ -8221,8 +7627,6 @@ export type ProjectsEditResponseLatestDeploymentStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsEditResponseLatestDeploymentStagesItemName = S.String;
-
 export type ProjectsEditResponseLatestDeploymentStagesItemStatus =
   | "success"
   | "idle"
@@ -8230,8 +7634,6 @@ export type ProjectsEditResponseLatestDeploymentStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsEditResponseLatestDeploymentStagesItemStatus = S.String;
-
 export interface ProjectsEditResponseLatestDeploymentStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -8242,12 +7644,9 @@ export interface ProjectsEditResponseLatestDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsEditResponseLatestDeploymentStagesItemStatus;
 }
-export const ProjectsEditResponseLatestDeploymentStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesItem>;
-
 export type ProjectsEditResponseLatestDeploymentStagesList =
   Array<ProjectsEditResponseLatestDeploymentStagesItem>;
-export const ProjectsEditResponseLatestDeploymentStagesList =
+const ProjectsEditResponseLatestDeploymentStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesList>;
 
 export type ProjectsEditResponseLatestDeploymentSkipReason =
@@ -8258,7 +7657,7 @@ export type ProjectsEditResponseLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsEditResponseLatestDeploymentSkipReason = S.String;
+const ProjectsEditResponseLatestDeploymentSkipReason = S.String;
 
 export interface ProjectsEditResponseLatestDeployment {
   /** Id of the deployment. */
@@ -8298,7 +7697,7 @@ export interface ProjectsEditResponseLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const ProjectsEditResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsEditResponseLatestDeploymentAliasesList,
@@ -8328,30 +7727,28 @@ export const ProjectsEditResponseLatestDeployment = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ProjectsEditResponseLatestDeployment>;
 
 export type ProjectsEditResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsEditResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsEditResponseDomainsList = Array<string>;
-export const ProjectsEditResponseDomainsList =
+const ProjectsEditResponseDomainsList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseDomainsList>;
 
 export type ProjectsEditResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPathExcludesList =
+const ProjectsEditResponseSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPathIncludesList =
+const ProjectsEditResponseSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsEditResponseSourceConfigPreviewBranchExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
-export const ProjectsEditResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsEditResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsEditResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -8381,7 +7778,7 @@ export interface ProjectsEditResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsEditResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -8408,14 +7805,14 @@ export const ProjectsEditResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsEditResponseSourceConfig>;
 
 export type ProjectsEditResponseSourceType = "github" | "gitlab";
-export const ProjectsEditResponseSourceType = S.String;
+const ProjectsEditResponseSourceType = S.String;
 
 export interface ProjectsEditResponseSource {
   config: ProjectsEditResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditResponseSourceType;
 }
-export const ProjectsEditResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsEditResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsEditResponseSourceConfig,
     type: ProjectsEditResponseSourceType,
@@ -8459,7 +7856,7 @@ export interface PatchProjectResponse {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
-export const PatchProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     canonicalDeployment: ProjectsEditResponseCanonicalDeployment.pipe(
@@ -8492,7 +7889,7 @@ export interface PatchProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   domainName: string;
 }
-export const PatchProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -8511,7 +7908,7 @@ export const PatchProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchProjectDomainRequest>;
 
 export type ProjectsDomainsEditResponseCertificateAuthority = "google" | "lets_encrypt";
-export const ProjectsDomainsEditResponseCertificateAuthority = S.String;
+const ProjectsDomainsEditResponseCertificateAuthority = S.String;
 
 export type ProjectsDomainsEditResponseStatus =
   | "initializing"
@@ -8520,19 +7917,15 @@ export type ProjectsDomainsEditResponseStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsEditResponseStatus = S.String;
+const ProjectsDomainsEditResponseStatus = S.String;
 
 export type ProjectsDomainsEditResponseValidationDataMethod = "http" | "txt";
-export const ProjectsDomainsEditResponseValidationDataMethod = S.String;
-
 export type ProjectsDomainsEditResponseValidationDataStatus =
   | "initializing"
   | "pending"
   | "active"
   | "deactivated"
   | "error";
-export const ProjectsDomainsEditResponseValidationDataStatus = S.String;
-
 export interface ProjectsDomainsEditResponseValidationData {
   method: ProjectsDomainsEditResponseValidationDataMethod;
   status: ProjectsDomainsEditResponseValidationDataStatus;
@@ -8540,7 +7933,7 @@ export interface ProjectsDomainsEditResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
-export const ProjectsDomainsEditResponseValidationData =
+const ProjectsDomainsEditResponseValidationData =
   ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsEditResponseValidationData>;
 
 export type ProjectsDomainsEditResponseVerificationDataStatus =
@@ -8549,13 +7942,11 @@ export type ProjectsDomainsEditResponseVerificationDataStatus =
   | "deactivated"
   | "blocked"
   | "error";
-export const ProjectsDomainsEditResponseVerificationDataStatus = S.String;
-
 export interface ProjectsDomainsEditResponseVerificationData {
   status: ProjectsDomainsEditResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
-export const ProjectsDomainsEditResponseVerificationData =
+const ProjectsDomainsEditResponseVerificationData =
   ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsEditResponseVerificationData>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8571,7 +7962,7 @@ export interface PatchProjectDomainResponse {
   verificationData: ProjectsDomainsEditResponseVerificationData;
   zoneTag: string;
 }
-export const PatchProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     certificateAuthority: ProjectsDomainsEditResponseCertificateAuthority.pipe(
@@ -8595,7 +7986,7 @@ export interface ProjectsGetUploadTokenRequest {
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
-export const ProjectsGetUploadTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetUploadTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -8617,7 +8008,7 @@ export interface ProjectsGetUploadTokenResponse {
   /** Short-lived JWT used to authenticate Pages Direct Upload asset operations. */
   jwt: string;
 }
-export const ProjectsGetUploadTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectsGetUploadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8631,7 +8022,7 @@ export interface PurgeBuildCacheProjectRequest {
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
-export const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -8649,7 +8040,7 @@ export const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeBuildCacheProjectRequest>;
 
 export type PurgeBuildCacheProjectResponse = unknown;
-export const PurgeBuildCacheProjectResponse =
+const PurgeBuildCacheProjectResponse =
   DeleteProjectDeploymentResponse as any as S.Schema<PurgeBuildCacheProjectResponse>;
 
 export interface RetryProjectDeploymentRequest {
@@ -8660,7 +8051,7 @@ export interface RetryProjectDeploymentRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
-export const RetryProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -8679,36 +8070,28 @@ export const RetryProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetryProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsRetryResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseAliasesList =
+const ProjectsDeploymentsRetryResponseAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseAliasesList>;
 
 export type ProjectsDeploymentsRetryResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsDeploymentsRetryResponseBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsDeploymentsRetryResponseDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsDeploymentsRetryResponseDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsDeploymentsRetryResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsDeploymentsRetryResponseDeploymentTriggerType = S.String;
-
 export interface ProjectsDeploymentsRetryResponseDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsDeploymentsRetryResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsRetryResponseDeploymentTrigger =
+const ProjectsDeploymentsRetryResponseDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsRetryResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsRetryResponseEnvironment = "preview" | "production";
-export const ProjectsDeploymentsRetryResponseEnvironment = S.String;
+const ProjectsDeploymentsRetryResponseEnvironment = S.String;
 
 export type ProjectsDeploymentsRetryResponseLatestStageName =
   | "queued"
@@ -8716,8 +8099,6 @@ export type ProjectsDeploymentsRetryResponseLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsRetryResponseLatestStageName = S.String;
-
 export type ProjectsDeploymentsRetryResponseLatestStageStatus =
   | "success"
   | "idle"
@@ -8725,8 +8106,6 @@ export type ProjectsDeploymentsRetryResponseLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsRetryResponseLatestStageStatus = S.String;
-
 export interface ProjectsDeploymentsRetryResponseLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -8737,30 +8116,30 @@ export interface ProjectsDeploymentsRetryResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsRetryResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsRetryResponseLatestStage =
+const ProjectsDeploymentsRetryResponseLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRetryResponseLatestStage>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
+const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList =
+const ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsDeploymentsRetryResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -8790,7 +8169,7 @@ export interface ProjectsDeploymentsRetryResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsDeploymentsRetryResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsRetryResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -8824,14 +8203,14 @@ export const ProjectsDeploymentsRetryResponseSourceConfig = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfig>;
 
 export type ProjectsDeploymentsRetryResponseSourceType = "github" | "gitlab";
-export const ProjectsDeploymentsRetryResponseSourceType = S.String;
+const ProjectsDeploymentsRetryResponseSourceType = S.String;
 
 export interface ProjectsDeploymentsRetryResponseSource {
   config: ProjectsDeploymentsRetryResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsRetryResponseSourceType;
 }
-export const ProjectsDeploymentsRetryResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsRetryResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsDeploymentsRetryResponseSourceConfig,
     type: ProjectsDeploymentsRetryResponseSourceType,
@@ -8846,8 +8225,6 @@ export type ProjectsDeploymentsRetryResponseStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsRetryResponseStagesItemName = S.String;
-
 export type ProjectsDeploymentsRetryResponseStagesItemStatus =
   | "success"
   | "idle"
@@ -8855,8 +8232,6 @@ export type ProjectsDeploymentsRetryResponseStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsRetryResponseStagesItemStatus = S.String;
-
 export interface ProjectsDeploymentsRetryResponseStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -8867,12 +8242,9 @@ export interface ProjectsDeploymentsRetryResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsRetryResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsRetryResponseStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRetryResponseStagesItem>;
-
 export type ProjectsDeploymentsRetryResponseStagesList =
   Array<ProjectsDeploymentsRetryResponseStagesItem>;
-export const ProjectsDeploymentsRetryResponseStagesList =
+const ProjectsDeploymentsRetryResponseStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsRetryResponseStagesList>;
 
 export type ProjectsDeploymentsRetryResponseSkipReason =
@@ -8883,7 +8255,7 @@ export type ProjectsDeploymentsRetryResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsDeploymentsRetryResponseSkipReason = S.String;
+const ProjectsDeploymentsRetryResponseSkipReason = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RetryProjectDeploymentResponse {
@@ -8924,7 +8296,7 @@ export interface RetryProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const RetryProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const RetryProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsDeploymentsRetryResponseAliasesList,
@@ -8961,7 +8333,7 @@ export interface RollbackProjectDeploymentRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
-export const RollbackProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
@@ -8980,36 +8352,28 @@ export const RollbackProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RollbackProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsRollbackResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsRollbackResponseAliasesList =
+const ProjectsDeploymentsRollbackResponseAliasesList =
   AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRollbackResponseAliasesList>;
 
 export type ProjectsDeploymentsRollbackResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-export const ProjectsDeploymentsRollbackResponseBuildConfig =
-  ProjectsCreateResponseCanonicalDeploymentBuildConfig;
-
 export type ProjectsDeploymentsRollbackResponseDeploymentTriggerMetadata =
   ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-export const ProjectsDeploymentsRollbackResponseDeploymentTriggerMetadata =
-  ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
-
 export type ProjectsDeploymentsRollbackResponseDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
-export const ProjectsDeploymentsRollbackResponseDeploymentTriggerType = S.String;
-
 export interface ProjectsDeploymentsRollbackResponseDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsDeploymentsRollbackResponseDeploymentTriggerType;
 }
-export const ProjectsDeploymentsRollbackResponseDeploymentTrigger =
+const ProjectsDeploymentsRollbackResponseDeploymentTrigger =
   ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsRollbackResponseDeploymentTrigger>;
 
 export type ProjectsDeploymentsRollbackResponseEnvironment = "preview" | "production";
-export const ProjectsDeploymentsRollbackResponseEnvironment = S.String;
+const ProjectsDeploymentsRollbackResponseEnvironment = S.String;
 
 export type ProjectsDeploymentsRollbackResponseLatestStageName =
   | "queued"
@@ -9017,8 +8381,6 @@ export type ProjectsDeploymentsRollbackResponseLatestStageName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsRollbackResponseLatestStageName = S.String;
-
 export type ProjectsDeploymentsRollbackResponseLatestStageStatus =
   | "success"
   | "idle"
@@ -9026,8 +8388,6 @@ export type ProjectsDeploymentsRollbackResponseLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsRollbackResponseLatestStageStatus = S.String;
-
 export interface ProjectsDeploymentsRollbackResponseLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -9038,32 +8398,32 @@ export interface ProjectsDeploymentsRollbackResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsRollbackResponseLatestStageStatus;
 }
-export const ProjectsDeploymentsRollbackResponseLatestStage =
+const ProjectsDeploymentsRollbackResponseLatestStage =
   ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRollbackResponseLatestStage>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
+const ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList =
+const ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
   Array<string>;
-export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
+const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
   Array<string>;
-export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
+const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
   ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
-export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting = S.String;
+const ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting = S.String;
 
 export interface ProjectsDeploymentsRollbackResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
@@ -9093,7 +8453,7 @@ export interface ProjectsDeploymentsRollbackResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
-export const ProjectsDeploymentsRollbackResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsRollbackResponseSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
     owner: S.String,
@@ -9127,14 +8487,14 @@ export const ProjectsDeploymentsRollbackResponseSourceConfig = /*@__PURE__*/ S.s
 }) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfig>;
 
 export type ProjectsDeploymentsRollbackResponseSourceType = "github" | "gitlab";
-export const ProjectsDeploymentsRollbackResponseSourceType = S.String;
+const ProjectsDeploymentsRollbackResponseSourceType = S.String;
 
 export interface ProjectsDeploymentsRollbackResponseSource {
   config: ProjectsDeploymentsRollbackResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsRollbackResponseSourceType;
 }
-export const ProjectsDeploymentsRollbackResponseSource = /*@__PURE__*/ S.suspend(() =>
+const ProjectsDeploymentsRollbackResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: ProjectsDeploymentsRollbackResponseSourceConfig,
     type: ProjectsDeploymentsRollbackResponseSourceType,
@@ -9149,8 +8509,6 @@ export type ProjectsDeploymentsRollbackResponseStagesItemName =
   | "clone_repo"
   | "build"
   | "deploy";
-export const ProjectsDeploymentsRollbackResponseStagesItemName = S.String;
-
 export type ProjectsDeploymentsRollbackResponseStagesItemStatus =
   | "success"
   | "idle"
@@ -9158,8 +8516,6 @@ export type ProjectsDeploymentsRollbackResponseStagesItemStatus =
   | "failure"
   | "canceled"
   | "skipped";
-export const ProjectsDeploymentsRollbackResponseStagesItemStatus = S.String;
-
 export interface ProjectsDeploymentsRollbackResponseStagesItem {
   /** When the stage ended. */
   endedOn: string;
@@ -9170,12 +8526,9 @@ export interface ProjectsDeploymentsRollbackResponseStagesItem {
   /** State of the current stage. */
   status: ProjectsDeploymentsRollbackResponseStagesItemStatus;
 }
-export const ProjectsDeploymentsRollbackResponseStagesItem =
-  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesItem>;
-
 export type ProjectsDeploymentsRollbackResponseStagesList =
   Array<ProjectsDeploymentsRollbackResponseStagesItem>;
-export const ProjectsDeploymentsRollbackResponseStagesList =
+const ProjectsDeploymentsRollbackResponseStagesList =
   ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesList>;
 
 export type ProjectsDeploymentsRollbackResponseSkipReason =
@@ -9186,7 +8539,7 @@ export type ProjectsDeploymentsRollbackResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
-export const ProjectsDeploymentsRollbackResponseSkipReason = S.String;
+const ProjectsDeploymentsRollbackResponseSkipReason = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RollbackProjectDeploymentResponse {
@@ -9227,7 +8580,7 @@ export interface RollbackProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
-export const RollbackProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     aliases: ProjectsDeploymentsRollbackResponseAliasesList,
@@ -9260,7 +8613,7 @@ export interface UploadAssetRequestBodyItemMetadata {
   /** MIME type for the uploaded file. */
   contentType: string;
 }
-export const UploadAssetRequestBodyItemMetadata = /*@__PURE__*/ S.suspend(() =>
+const UploadAssetRequestBodyItemMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.String,
   }),
@@ -9277,7 +8630,7 @@ export interface UploadAssetRequestBodyItem {
   /** File content. When base64 is true, this value is base64 encoded. */
   value: string;
 }
-export const UploadAssetRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const UploadAssetRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base64: S.Boolean,
     key: S.String,
@@ -9289,14 +8642,14 @@ export const UploadAssetRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadAssetRequestBodyItem>;
 
 export type UploadAssetRequestBodyList = Array<UploadAssetRequestBodyItem>;
-export const UploadAssetRequestBodyList = /*@__PURE__*/ S.Array(
+const UploadAssetRequestBodyList = /*@__PURE__*/ S.Array(
   UploadAssetRequestBodyItem,
 ) as any as S.Schema<UploadAssetRequestBodyList>;
 
 export interface UploadAssetRequest {
   body: UploadAssetRequestBodyList;
 }
-export const UploadAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: UploadAssetRequestBodyList.pipe(T.HttpBody()),
   })
@@ -9305,7 +8658,7 @@ export const UploadAssetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadAssetRequest" }) as any as S.Schema<UploadAssetRequest>;
 
 export interface UploadAssetResponse {}
-export const UploadAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UploadAssetResponse" }) as any as S.Schema<UploadAssetResponse>;
 

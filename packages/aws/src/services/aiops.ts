@@ -126,42 +126,42 @@ export type EncryptionConfigurationType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
-export const EncryptionConfigurationType = S.String;
+const EncryptionConfigurationType = S.String;
 
 export type KmsKeyId = string;
 export interface EncryptionConfiguration {
   type?: EncryptionConfigurationType;
   kmsKeyId?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.optional(EncryptionConfigurationType), kmsKeyId: S.optional(S.String) }),
 ).annotate({ identifier: "EncryptionConfiguration" }) as any as S.Schema<EncryptionConfiguration>;
 export type Retention = number;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type TagKeyBoundaries = string[];
-export const TagKeyBoundaries = /*@__PURE__*/ S.Array(S.String);
+const TagKeyBoundaries = /*@__PURE__*/ S.Array(S.String);
 export type SNSTopicArn = string;
 export type ChatConfigurationArn = string;
 export type ChatConfigurationArns = string[];
-export const ChatConfigurationArns = TagKeyBoundaries as any as S.Schema<ChatConfigurationArns>;
+const ChatConfigurationArns = TagKeyBoundaries as any as S.Schema<ChatConfigurationArns>;
 export type ChatbotNotificationChannel = { [key: string]: string[] | undefined };
-export const ChatbotNotificationChannel = /*@__PURE__*/ S.Record(
+const ChatbotNotificationChannel = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ ChatConfigurationArns.pipe(S.optional),
 );
 export interface CrossAccountConfiguration {
   sourceRoleArn?: string;
 }
-export const CrossAccountConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CrossAccountConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourceRoleArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CrossAccountConfiguration",
 }) as any as S.Schema<CrossAccountConfiguration>;
 export type CrossAccountConfigurations = CrossAccountConfiguration[];
-export const CrossAccountConfigurations = /*@__PURE__*/ S.Array(CrossAccountConfiguration);
+const CrossAccountConfigurations = /*@__PURE__*/ S.Array(CrossAccountConfiguration);
 export interface CreateInvestigationGroupInput {
   name: string;
   roleArn: string;
@@ -173,7 +173,7 @@ export interface CreateInvestigationGroupInput {
   isCloudTrailEventHistoryEnabled?: boolean;
   crossAccountConfigurations?: CrossAccountConfiguration[];
 }
-export const CreateInvestigationGroupInput = /*@__PURE__*/ S.suspend(() =>
+const CreateInvestigationGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     roleArn: S.String,
@@ -194,7 +194,7 @@ export type InvestigationGroupArn = string;
 export interface CreateInvestigationGroupOutput {
   arn?: string;
 }
-export const CreateInvestigationGroupOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateInvestigationGroupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateInvestigationGroupOutput",
@@ -203,7 +203,7 @@ export type InvestigationGroupIdentifier = string;
 export interface DeleteInvestigationGroupRequest {
   identifier: string;
 }
-export const DeleteInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/investigationGroups/{identifier}" }),
@@ -218,15 +218,13 @@ export const DeleteInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteInvestigationGroupRequest",
 }) as any as S.Schema<DeleteInvestigationGroupRequest>;
 export interface DeleteInvestigationGroupResponse {}
-export const DeleteInvestigationGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteInvestigationGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteInvestigationGroupResponse",
 }) as any as S.Schema<DeleteInvestigationGroupResponse>;
 export interface DeleteInvestigationGroupPolicyRequest {
   identifier: string;
 }
-export const DeleteInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/investigationGroups/{identifier}/policy" }),
@@ -241,12 +239,12 @@ export const DeleteInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteInvestigationGroupPolicyRequest",
 }) as any as S.Schema<DeleteInvestigationGroupPolicyRequest>;
 export interface DeleteInvestigationGroupPolicyOutput {}
-export const DeleteInvestigationGroupPolicyOutput =
+const DeleteInvestigationGroupPolicyOutput =
   DeleteInvestigationGroupResponse as any as S.Schema<DeleteInvestigationGroupPolicyOutput>;
 export interface GetInvestigationGroupRequest {
   identifier: string;
 }
-export const GetInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/investigationGroups/{identifier}" }),
@@ -276,7 +274,7 @@ export interface GetInvestigationGroupResponse {
   isCloudTrailEventHistoryEnabled?: boolean;
   crossAccountConfigurations?: CrossAccountConfiguration[];
 }
-export const GetInvestigationGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInvestigationGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -298,7 +296,7 @@ export const GetInvestigationGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvestigationGroupPolicyRequest {
   identifier: string;
 }
-export const GetInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/investigationGroups/{identifier}/policy" }),
@@ -317,7 +315,7 @@ export interface GetInvestigationGroupPolicyResponse {
   investigationGroupArn?: string;
   policy?: string;
 }
-export const GetInvestigationGroupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInvestigationGroupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ investigationGroupArn: S.optional(S.String), policy: S.optional(S.String) }),
 ).annotate({
   identifier: "GetInvestigationGroupPolicyResponse",
@@ -327,7 +325,7 @@ export interface ListInvestigationGroupsInput {
   nextToken?: string | redacted.Redacted<string>;
   maxResults?: number;
 }
-export const ListInvestigationGroupsInput = /*@__PURE__*/ S.suspend(() =>
+const ListInvestigationGroupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(SensitiveString).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -341,18 +339,18 @@ export interface ListInvestigationGroupsModel {
   arn?: string;
   name?: string;
 }
-export const ListInvestigationGroupsModel = /*@__PURE__*/ S.suspend(() =>
+const ListInvestigationGroupsModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.optional(S.String), name: S.optional(S.String) }),
 ).annotate({
   identifier: "ListInvestigationGroupsModel",
 }) as any as S.Schema<ListInvestigationGroupsModel>;
 export type InvestigationGroups = ListInvestigationGroupsModel[];
-export const InvestigationGroups = /*@__PURE__*/ S.Array(ListInvestigationGroupsModel);
+const InvestigationGroups = /*@__PURE__*/ S.Array(ListInvestigationGroupsModel);
 export interface ListInvestigationGroupsOutput {
   nextToken?: string | redacted.Redacted<string>;
   investigationGroups?: ListInvestigationGroupsModel[];
 }
-export const ListInvestigationGroupsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListInvestigationGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(SensitiveString),
     investigationGroups: S.optional(InvestigationGroups),
@@ -363,7 +361,7 @@ export const ListInvestigationGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -373,7 +371,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(Tags) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
@@ -382,7 +380,7 @@ export interface PutInvestigationGroupPolicyRequest {
   identifier: string;
   policy: string;
 }
-export const PutInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")), policy: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/investigationGroups/{identifier}/policy" }),
@@ -399,7 +397,7 @@ export const PutInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutInvestigationGroupPolicyResponse {
   investigationGroupArn?: string;
 }
-export const PutInvestigationGroupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const PutInvestigationGroupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ investigationGroupArn: S.optional(S.String) }),
 ).annotate({
   identifier: "PutInvestigationGroupPolicyResponse",
@@ -408,22 +406,22 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = TagKeyBoundaries as any as S.Schema<TagKeys>;
+const TagKeys = TagKeyBoundaries as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -432,7 +430,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateInvestigationGroupRequest {
   identifier: string;
   roleArn?: string;
@@ -442,7 +440,7 @@ export interface UpdateInvestigationGroupRequest {
   isCloudTrailEventHistoryEnabled?: boolean;
   crossAccountConfigurations?: CrossAccountConfiguration[];
 }
-export const UpdateInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String.pipe(T.HttpLabel("identifier")),
     roleArn: S.optional(S.String),
@@ -465,7 +463,7 @@ export const UpdateInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateInvestigationGroupRequest",
 }) as any as S.Schema<UpdateInvestigationGroupRequest>;
 export interface UpdateInvestigationGroupOutput {}
-export const UpdateInvestigationGroupOutput =
+const UpdateInvestigationGroupOutput =
   TagResourceResponse as any as S.Schema<UpdateInvestigationGroupOutput>;
 export type CreateInvestigationGroupError =
   | AccessDeniedException

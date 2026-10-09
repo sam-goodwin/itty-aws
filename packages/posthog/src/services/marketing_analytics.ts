@@ -39,7 +39,7 @@ export interface CreateMarketingAnalyticsTestMappingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateMarketingAnalyticsTestMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMarketingAnalyticsTestMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -54,7 +54,7 @@ export const CreateMarketingAnalyticsTestMappingRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateMarketingAnalyticsTestMappingRequest>;
 
 export interface CreateMarketingAnalyticsTestMappingResponse {}
-export const CreateMarketingAnalyticsTestMappingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMarketingAnalyticsTestMappingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateMarketingAnalyticsTestMappingResponse",
@@ -65,7 +65,7 @@ export interface DeleteMarketingAnalyticsConversionGoalDestroyRequest {
   project_id: string;
   conversion_goal_id: string;
 }
-export const DeleteMarketingAnalyticsConversionGoalDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMarketingAnalyticsConversionGoalDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversion_goal_id: S.String.pipe(T.Label()),
@@ -119,24 +119,13 @@ export type PropertyOperator =
   | "semver_wildcard"
   | "icontains_multi"
   | "not_icontains_multi";
-export const PropertyOperator = S.String;
-
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
-export const EventPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
-
 export type EventPropertyFilterValueCase0List = Array<EventPropertyFilterValueCase0Item>;
-export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  EventPropertyFilterValueCase0Item,
-) as any as S.Schema<EventPropertyFilterValueCase0List>;
-
 export type EventPropertyFilterValue =
   | EventPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const EventPropertyFilterValue = S.Unknown as any as S.Schema<EventPropertyFilterValue>;
-
 export interface EventPropertyFilter {
   key?: string;
   label?: string | null;
@@ -145,32 +134,13 @@ export interface EventPropertyFilter {
   type?: string;
   value?: EventPropertyFilterValue | null;
 }
-export const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(EventPropertyFilterValue)),
-  }),
-).annotate({ identifier: "EventPropertyFilter" }) as any as S.Schema<EventPropertyFilter>;
-
 export type PersonPropertyFilterValueCase0Item = string | number | boolean;
-export const PersonPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
-
 export type PersonPropertyFilterValueCase0List = Array<PersonPropertyFilterValueCase0Item>;
-export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonPropertyFilterValueCase0List>;
-
 export type PersonPropertyFilterValue =
   | PersonPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const PersonPropertyFilterValue = S.Unknown as any as S.Schema<PersonPropertyFilterValue>;
-
 export interface PersonPropertyFilter {
   key?: string;
   label?: string | null;
@@ -179,34 +149,14 @@ export interface PersonPropertyFilter {
   type?: string;
   value?: PersonPropertyFilterValue | null;
 }
-export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonPropertyFilterValue)),
-  }),
-).annotate({ identifier: "PersonPropertyFilter" }) as any as S.Schema<PersonPropertyFilter>;
-
 export type PersonMetadataPropertyFilterValueCase0Item = string | number | boolean;
-export const PersonMetadataPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
-
 export type PersonMetadataPropertyFilterValueCase0List =
   Array<PersonMetadataPropertyFilterValueCase0Item>;
-export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
-
 export type PersonMetadataPropertyFilterValue =
   | PersonMetadataPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const PersonMetadataPropertyFilterValue =
-  S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValue>;
-
 export interface PersonMetadataPropertyFilter {
   key: string;
   label?: string | null;
@@ -215,37 +165,14 @@ export interface PersonMetadataPropertyFilter {
   type?: string;
   value?: PersonMetadataPropertyFilterValue | null;
 }
-export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "PersonMetadataPropertyFilter",
-}) as any as S.Schema<PersonMetadataPropertyFilter>;
-
 export type Key10 = "tag_name" | "text" | "href" | "selector";
-export const Key10 = S.String;
-
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
-export const ElementPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
-
 export type ElementPropertyFilterValueCase0List = Array<ElementPropertyFilterValueCase0Item>;
-export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ElementPropertyFilterValueCase0Item,
-) as any as S.Schema<ElementPropertyFilterValueCase0List>;
-
 export type ElementPropertyFilterValue =
   | ElementPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const ElementPropertyFilterValue = S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
-
 export interface ElementPropertyFilter {
   key?: Key10 | (string & {});
   label?: string | null;
@@ -253,34 +180,14 @@ export interface ElementPropertyFilter {
   type?: string;
   value?: ElementPropertyFilterValue | null;
 }
-export const ElementPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(Key10),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(ElementPropertyFilterValue)),
-  }),
-).annotate({ identifier: "ElementPropertyFilter" }) as any as S.Schema<ElementPropertyFilter>;
-
 export type EventMetadataPropertyFilterValueCase0Item = string | number | boolean;
-export const EventMetadataPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
-
 export type EventMetadataPropertyFilterValueCase0List =
   Array<EventMetadataPropertyFilterValueCase0Item>;
-export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  EventMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
-
 export type EventMetadataPropertyFilterValue =
   | EventMetadataPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const EventMetadataPropertyFilterValue =
-  S.Unknown as any as S.Schema<EventMetadataPropertyFilterValue>;
-
 export interface EventMetadataPropertyFilter {
   key?: string;
   label?: string | null;
@@ -288,34 +195,13 @@ export interface EventMetadataPropertyFilter {
   type?: string;
   value?: EventMetadataPropertyFilterValue | null;
 }
-export const EventMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(EventMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "EventMetadataPropertyFilter",
-}) as any as S.Schema<EventMetadataPropertyFilter>;
-
 export type SessionPropertyFilterValueCase0Item = string | number | boolean;
-export const SessionPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
-
 export type SessionPropertyFilterValueCase0List = Array<SessionPropertyFilterValueCase0Item>;
-export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  SessionPropertyFilterValueCase0Item,
-) as any as S.Schema<SessionPropertyFilterValueCase0List>;
-
 export type SessionPropertyFilterValue =
   | SessionPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const SessionPropertyFilterValue = S.Unknown as any as S.Schema<SessionPropertyFilterValue>;
-
 export interface SessionPropertyFilter {
   key?: string;
   label?: string | null;
@@ -323,16 +209,6 @@ export interface SessionPropertyFilter {
   type?: string;
   value?: SessionPropertyFilterValue | null;
 }
-export const SessionPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(SessionPropertyFilterValue)),
-  }),
-).annotate({ identifier: "SessionPropertyFilter" }) as any as S.Schema<SessionPropertyFilter>;
-
 export interface CohortPropertyFilter {
   cohort_name?: string | null;
   key?: string;
@@ -341,40 +217,15 @@ export interface CohortPropertyFilter {
   type?: string;
   value?: number;
 }
-export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cohort_name: S.optional(S.NullOr(S.String)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CohortPropertyFilter" }) as any as S.Schema<CohortPropertyFilter>;
-
 export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
-export const DurationType = S.String;
-
 export type RecordingPropertyFilterKey = DurationType | string;
-export const RecordingPropertyFilterKey = S.Unknown as any as S.Schema<RecordingPropertyFilterKey>;
-
 export type RecordingPropertyFilterValueCase0Item = string | number | boolean;
-export const RecordingPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
-
 export type RecordingPropertyFilterValueCase0List = Array<RecordingPropertyFilterValueCase0Item>;
-export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  RecordingPropertyFilterValueCase0Item,
-) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
-
 export type RecordingPropertyFilterValue =
   | RecordingPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const RecordingPropertyFilterValue =
-  S.Unknown as any as S.Schema<RecordingPropertyFilterValue>;
-
 export interface RecordingPropertyFilter {
   key?: RecordingPropertyFilterKey;
   label?: string | null;
@@ -382,33 +233,13 @@ export interface RecordingPropertyFilter {
   type?: string;
   value?: RecordingPropertyFilterValue | null;
 }
-export const RecordingPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(RecordingPropertyFilterKey),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(RecordingPropertyFilterValue)),
-  }),
-).annotate({ identifier: "RecordingPropertyFilter" }) as any as S.Schema<RecordingPropertyFilter>;
-
 export type LogEntryPropertyFilterValueCase0Item = string | number | boolean;
-export const LogEntryPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
-
 export type LogEntryPropertyFilterValueCase0List = Array<LogEntryPropertyFilterValueCase0Item>;
-export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  LogEntryPropertyFilterValueCase0Item,
-) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
-
 export type LogEntryPropertyFilterValue =
   | LogEntryPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const LogEntryPropertyFilterValue =
-  S.Unknown as any as S.Schema<LogEntryPropertyFilterValue>;
-
 export interface LogEntryPropertyFilter {
   key?: string;
   label?: string | null;
@@ -416,38 +247,14 @@ export interface LogEntryPropertyFilter {
   type?: string;
   value?: LogEntryPropertyFilterValue | null;
 }
-export const LogEntryPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(LogEntryPropertyFilterValue)),
-  }),
-).annotate({ identifier: "LogEntryPropertyFilter" }) as any as S.Schema<LogEntryPropertyFilter>;
-
 export type GroupPropertyFilterGroupKeyNamesMap = { [key: string]: string | undefined };
-export const GroupPropertyFilterGroupKeyNamesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GroupPropertyFilterGroupKeyNamesMap>;
-
 export type GroupPropertyFilterValueCase0Item = string | number | boolean;
-export const GroupPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
-
 export type GroupPropertyFilterValueCase0List = Array<GroupPropertyFilterValueCase0Item>;
-export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  GroupPropertyFilterValueCase0Item,
-) as any as S.Schema<GroupPropertyFilterValueCase0List>;
-
 export type GroupPropertyFilterValue =
   | GroupPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const GroupPropertyFilterValue = S.Unknown as any as S.Schema<GroupPropertyFilterValue>;
-
 export interface GroupPropertyFilter {
   group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
   group_type_index?: number | null;
@@ -457,34 +264,13 @@ export interface GroupPropertyFilter {
   type?: string;
   value?: GroupPropertyFilterValue | null;
 }
-export const GroupPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(GroupPropertyFilterValue)),
-  }),
-).annotate({ identifier: "GroupPropertyFilter" }) as any as S.Schema<GroupPropertyFilter>;
-
 export type FeaturePropertyFilterValueCase0Item = string | number | boolean;
-export const FeaturePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
-
 export type FeaturePropertyFilterValueCase0List = Array<FeaturePropertyFilterValueCase0Item>;
-export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  FeaturePropertyFilterValueCase0Item,
-) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
-
 export type FeaturePropertyFilterValue =
   | FeaturePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const FeaturePropertyFilterValue = S.Unknown as any as S.Schema<FeaturePropertyFilterValue>;
-
 export interface FeaturePropertyFilter {
   key?: string;
   label?: string | null;
@@ -493,20 +279,8 @@ export interface FeaturePropertyFilter {
   type?: string;
   value?: FeaturePropertyFilterValue | null;
 }
-export const FeaturePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(FeaturePropertyFilterValue)),
-  }),
-).annotate({ identifier: "FeaturePropertyFilter" }) as any as S.Schema<FeaturePropertyFilter>;
-
 /** The value can be true, false, or a variant name */
 export type FlagPropertyFilterValue = boolean | string;
-export const FlagPropertyFilterValue = S.Unknown as any as S.Schema<FlagPropertyFilterValue>;
-
 export interface FlagPropertyFilter {
   /** The key should be the flag ID */
   key?: string;
@@ -518,74 +292,30 @@ export interface FlagPropertyFilter {
   /** The value can be true, false, or a variant name */
   value?: FlagPropertyFilterValue;
 }
-export const FlagPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.String),
-    type: S.optional(S.String),
-    value: S.optional(FlagPropertyFilterValue),
-  }),
-).annotate({ identifier: "FlagPropertyFilter" }) as any as S.Schema<FlagPropertyFilter>;
-
 export type HogQLPropertyFilterValueCase0Item = string | number | boolean;
-export const HogQLPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
-
 export type HogQLPropertyFilterValueCase0List = Array<HogQLPropertyFilterValueCase0Item>;
-export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  HogQLPropertyFilterValueCase0Item,
-) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
-
 export type HogQLPropertyFilterValue =
   | HogQLPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const HogQLPropertyFilterValue = S.Unknown as any as S.Schema<HogQLPropertyFilterValue>;
-
 export interface HogQLPropertyFilter {
   key?: string;
   label?: string | null;
   type?: string;
   value?: HogQLPropertyFilterValue | null;
 }
-export const HogQLPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(HogQLPropertyFilterValue)),
-  }),
-).annotate({ identifier: "HogQLPropertyFilter" }) as any as S.Schema<HogQLPropertyFilter>;
-
 export interface EmptyPropertyFilter {
   type?: string;
 }
-export const EmptyPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmptyPropertyFilter" }) as any as S.Schema<EmptyPropertyFilter>;
-
 export type DataWarehousePropertyFilterValueCase0Item = string | number | boolean;
-export const DataWarehousePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
-
 export type DataWarehousePropertyFilterValueCase0List =
   Array<DataWarehousePropertyFilterValueCase0Item>;
-export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  DataWarehousePropertyFilterValueCase0Item,
-) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
-
 export type DataWarehousePropertyFilterValue =
   | DataWarehousePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const DataWarehousePropertyFilterValue =
-  S.Unknown as any as S.Schema<DataWarehousePropertyFilterValue>;
-
 export interface DataWarehousePropertyFilter {
   key?: string;
   label?: string | null;
@@ -593,36 +323,14 @@ export interface DataWarehousePropertyFilter {
   type?: string;
   value?: DataWarehousePropertyFilterValue | null;
 }
-export const DataWarehousePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(DataWarehousePropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "DataWarehousePropertyFilter",
-}) as any as S.Schema<DataWarehousePropertyFilter>;
-
 export type DataWarehousePersonPropertyFilterValueCase0Item = string | number | boolean;
-export const DataWarehousePersonPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
-
 export type DataWarehousePersonPropertyFilterValueCase0List =
   Array<DataWarehousePersonPropertyFilterValueCase0Item>;
-export const DataWarehousePersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  DataWarehousePersonPropertyFilterValueCase0Item,
-) as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0List>;
-
 export type DataWarehousePersonPropertyFilterValue =
   | DataWarehousePersonPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const DataWarehousePersonPropertyFilterValue =
-  S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValue>;
-
 export interface DataWarehousePersonPropertyFilter {
   key?: string;
   label?: string | null;
@@ -630,35 +338,13 @@ export interface DataWarehousePersonPropertyFilter {
   type?: string;
   value?: DataWarehousePersonPropertyFilterValue | null;
 }
-export const DataWarehousePersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(DataWarehousePersonPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "DataWarehousePersonPropertyFilter",
-}) as any as S.Schema<DataWarehousePersonPropertyFilter>;
-
 export type ErrorTrackingIssueFilterValueCase0Item = string | number | boolean;
-export const ErrorTrackingIssueFilterValueCase0Item =
-  S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
-
 export type ErrorTrackingIssueFilterValueCase0List = Array<ErrorTrackingIssueFilterValueCase0Item>;
-export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ErrorTrackingIssueFilterValueCase0Item,
-) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
-
 export type ErrorTrackingIssueFilterValue =
   | ErrorTrackingIssueFilterValueCase0List
   | string
   | number
   | boolean;
-export const ErrorTrackingIssueFilterValue =
-  S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValue>;
-
 export interface ErrorTrackingIssueFilter {
   key?: string;
   label?: string | null;
@@ -666,31 +352,10 @@ export interface ErrorTrackingIssueFilter {
   type?: string;
   value?: ErrorTrackingIssueFilterValue | null;
 }
-export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(ErrorTrackingIssueFilterValue)),
-  }),
-).annotate({ identifier: "ErrorTrackingIssueFilter" }) as any as S.Schema<ErrorTrackingIssueFilter>;
-
 export type LogPropertyFilterType = "log" | "log_attribute" | "log_resource_attribute";
-export const LogPropertyFilterType = S.String;
-
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
-export const LogPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
-
 export type LogPropertyFilterValueCase0List = Array<LogPropertyFilterValueCase0Item>;
-export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  LogPropertyFilterValueCase0Item,
-) as any as S.Schema<LogPropertyFilterValueCase0List>;
-
 export type LogPropertyFilterValue = LogPropertyFilterValueCase0List | string | number | boolean;
-export const LogPropertyFilterValue = S.Unknown as any as S.Schema<LogPropertyFilterValue>;
-
 export interface LogPropertyFilter {
   key?: string;
   label?: string | null;
@@ -698,32 +363,13 @@ export interface LogPropertyFilter {
   type?: LogPropertyFilterType | (string & {});
   value?: LogPropertyFilterValue | null;
 }
-export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(LogPropertyFilterType),
-    value: S.optional(S.NullOr(LogPropertyFilterValue)),
-  }),
-).annotate({ identifier: "LogPropertyFilter" }) as any as S.Schema<LogPropertyFilter>;
-
 export type MetricPropertyFilterValueCase0Item = string | number | boolean;
-export const MetricPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
-
 export type MetricPropertyFilterValueCase0List = Array<MetricPropertyFilterValueCase0Item>;
-export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  MetricPropertyFilterValueCase0Item,
-) as any as S.Schema<MetricPropertyFilterValueCase0List>;
-
 export type MetricPropertyFilterValue =
   | MetricPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const MetricPropertyFilterValue = S.Unknown as any as S.Schema<MetricPropertyFilterValue>;
-
 export interface MetricPropertyFilter {
   key: string;
   label?: string | null;
@@ -731,31 +377,10 @@ export interface MetricPropertyFilter {
   type?: string;
   value?: MetricPropertyFilterValue | null;
 }
-export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(MetricPropertyFilterValue)),
-  }),
-).annotate({ identifier: "MetricPropertyFilter" }) as any as S.Schema<MetricPropertyFilter>;
-
 export type SpanPropertyFilterType = "span" | "span_attribute" | "span_resource_attribute";
-export const SpanPropertyFilterType = S.String;
-
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
-export const SpanPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
-
 export type SpanPropertyFilterValueCase0List = Array<SpanPropertyFilterValueCase0Item>;
-export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  SpanPropertyFilterValueCase0Item,
-) as any as S.Schema<SpanPropertyFilterValueCase0List>;
-
 export type SpanPropertyFilterValue = SpanPropertyFilterValueCase0List | string | number | boolean;
-export const SpanPropertyFilterValue = S.Unknown as any as S.Schema<SpanPropertyFilterValue>;
-
 export interface SpanPropertyFilter {
   key?: string;
   label?: string | null;
@@ -763,34 +388,14 @@ export interface SpanPropertyFilter {
   type?: SpanPropertyFilterType | (string & {});
   value?: SpanPropertyFilterValue | null;
 }
-export const SpanPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(SpanPropertyFilterType),
-    value: S.optional(S.NullOr(SpanPropertyFilterValue)),
-  }),
-).annotate({ identifier: "SpanPropertyFilter" }) as any as S.Schema<SpanPropertyFilter>;
-
 export type RevenueAnalyticsPropertyFilterValueCase0Item = string | number | boolean;
-export const RevenueAnalyticsPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
-
 export type RevenueAnalyticsPropertyFilterValueCase0List =
   Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
-export const RevenueAnalyticsPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  RevenueAnalyticsPropertyFilterValueCase0Item,
-) as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0List>;
-
 export type RevenueAnalyticsPropertyFilterValue =
   | RevenueAnalyticsPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const RevenueAnalyticsPropertyFilterValue =
-  S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValue>;
-
 export interface RevenueAnalyticsPropertyFilter {
   key?: string;
   label?: string | null;
@@ -798,36 +403,14 @@ export interface RevenueAnalyticsPropertyFilter {
   type?: string;
   value?: RevenueAnalyticsPropertyFilterValue | null;
 }
-export const RevenueAnalyticsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(RevenueAnalyticsPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "RevenueAnalyticsPropertyFilter",
-}) as any as S.Schema<RevenueAnalyticsPropertyFilter>;
-
 export type AccountCustomPropertyFilterValueCase0Item = string | number | boolean;
-export const AccountCustomPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
-
 export type AccountCustomPropertyFilterValueCase0List =
   Array<AccountCustomPropertyFilterValueCase0Item>;
-export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  AccountCustomPropertyFilterValueCase0Item,
-) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
-
 export type AccountCustomPropertyFilterValue =
   | AccountCustomPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const AccountCustomPropertyFilterValue =
-  S.Unknown as any as S.Schema<AccountCustomPropertyFilterValue>;
-
 export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
@@ -836,36 +419,14 @@ export interface AccountCustomPropertyFilter {
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
-export const AccountCustomPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(AccountCustomPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "AccountCustomPropertyFilter",
-}) as any as S.Schema<AccountCustomPropertyFilter>;
-
 export type WorkflowVariablePropertyFilterValueCase0Item = string | number | boolean;
-export const WorkflowVariablePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
-
 export type WorkflowVariablePropertyFilterValueCase0List =
   Array<WorkflowVariablePropertyFilterValueCase0Item>;
-export const WorkflowVariablePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  WorkflowVariablePropertyFilterValueCase0Item,
-) as any as S.Schema<WorkflowVariablePropertyFilterValueCase0List>;
-
 export type WorkflowVariablePropertyFilterValue =
   | WorkflowVariablePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const WorkflowVariablePropertyFilterValue =
-  S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValue>;
-
 export interface WorkflowVariablePropertyFilter {
   key?: string;
   label?: string | null;
@@ -873,42 +434,17 @@ export interface WorkflowVariablePropertyFilter {
   type?: string;
   value?: WorkflowVariablePropertyFilterValue | null;
 }
-export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(WorkflowVariablePropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "WorkflowVariablePropertyFilter",
-}) as any as S.Schema<WorkflowVariablePropertyFilter>;
-
 export type BehavioralPropertyFilterEventFiltersItem =
   | EventPropertyFilter
   | PersonPropertyFilter
   | ElementPropertyFilter
   | FeaturePropertyFilter
   | HogQLPropertyFilter;
-export const BehavioralPropertyFilterEventFiltersItem =
-  S.Unknown as any as S.Schema<BehavioralPropertyFilterEventFiltersItem>;
-
 export type BehavioralPropertyFilterEventFiltersList =
   Array<BehavioralPropertyFilterEventFiltersItem>;
-export const BehavioralPropertyFilterEventFiltersList = /*@__PURE__*/ S.Array(
-  BehavioralPropertyFilterEventFiltersItem,
-) as any as S.Schema<BehavioralPropertyFilterEventFiltersList>;
-
 export type BehavioralEventSource = "events" | "actions";
-export const BehavioralEventSource = S.String;
-
 export type TimeUnitType = "day" | "week" | "month" | "year";
-export const TimeUnitType = S.String;
-
 export type InlineBehavioralType = "performed_event" | "performed_event_multiple";
-export const InlineBehavioralType = S.String;
-
 export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
@@ -932,24 +468,6 @@ export interface BehavioralPropertyFilter {
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
-export const BehavioralPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event_filters: S.optional(S.NullOr(BehavioralPropertyFilterEventFiltersList)),
-    event_type: BehavioralEventSource,
-    explicit_datetime: S.optional(S.NullOr(S.String)),
-    explicit_datetime_to: S.optional(S.NullOr(S.String)),
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    negation: S.optional(S.NullOr(S.Boolean)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    operator_value: S.optional(S.NullOr(S.Number)),
-    time_interval: S.optional(S.NullOr(TimeUnitType)),
-    time_value: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    value: InlineBehavioralType,
-  }),
-).annotate({ identifier: "BehavioralPropertyFilter" }) as any as S.Schema<BehavioralPropertyFilter>;
-
 export type ConversionGoalFilter1FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -975,15 +493,8 @@ export type ConversionGoalFilter1FixedPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ConversionGoalFilter1FixedPropertiesItem =
-  S.Unknown as any as S.Schema<ConversionGoalFilter1FixedPropertiesItem>;
-
 export type ConversionGoalFilter1FixedPropertiesList =
   Array<ConversionGoalFilter1FixedPropertiesItem>;
-export const ConversionGoalFilter1FixedPropertiesList = /*@__PURE__*/ S.Array(
-  ConversionGoalFilter1FixedPropertiesItem,
-) as any as S.Schema<ConversionGoalFilter1FixedPropertiesList>;
-
 export type BaseMathType =
   | "total"
   | "dau"
@@ -992,11 +503,7 @@ export type BaseMathType =
   | "unique_session"
   | "first_time_for_user"
   | "first_matching_event_for_user";
-export const BaseMathType = S.String;
-
 export type FunnelMathType = "total" | "first_time_for_user" | "first_time_for_user_with_filters";
-export const FunnelMathType = S.String;
-
 export type PropertyMathType =
   | "avg"
   | "sum"
@@ -1007,8 +514,6 @@ export type PropertyMathType =
   | "p90"
   | "p95"
   | "p99";
-export const PropertyMathType = S.String;
-
 export type CountPerActorMathType =
   | "avg_count_per_actor"
   | "min_count_per_actor"
@@ -1018,14 +523,10 @@ export type CountPerActorMathType =
   | "p90_count_per_actor"
   | "p95_count_per_actor"
   | "p99_count_per_actor";
-export const CountPerActorMathType = S.String;
-
 export type GroupMathType =
   | "unique_group"
   | "first_time_for_group"
   | "first_matching_event_for_group";
-export const GroupMathType = S.String;
-
 export type ExperimentMetricMathType =
   | "total"
   | "sum"
@@ -1036,11 +537,7 @@ export type ExperimentMetricMathType =
   | "dau"
   | "unique_group"
   | "hogql";
-export const ExperimentMetricMathType = S.String;
-
 export type CalendarHeatmapMathType = "total" | "dau";
-export const CalendarHeatmapMathType = S.String;
-
 export type ConversionGoalFilter1Math =
   | BaseMathType
   | FunnelMathType
@@ -1050,11 +547,7 @@ export type ConversionGoalFilter1Math =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const ConversionGoalFilter1Math = S.Unknown as any as S.Schema<ConversionGoalFilter1Math>;
-
 export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
-export const MathGroupTypeIndex = S.Number;
-
 export type CurrencyCode =
   | "AED"
   | "AFN"
@@ -1208,23 +701,12 @@ export type CurrencyCode =
   | "YER"
   | "ZAR"
   | "ZMW";
-export const CurrencyCode = S.String;
-
 export interface RevenueCurrencyPropertyConfig {
   property?: string | null;
   static?: CurrencyCode | (string & {}) | null;
 }
-export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(S.NullOr(S.String)),
-    static: S.optional(S.NullOr(CurrencyCode)),
-  }),
-).annotate({
-  identifier: "RevenueCurrencyPropertyConfig",
-}) as any as S.Schema<RevenueCurrencyPropertyConfig>;
-
 export type ConversionGoalFilter1OrderByList = Array<string>;
-export const ConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
+const ConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConversionGoalFilter1OrderByList>;
 
@@ -1253,32 +735,12 @@ export type ConversionGoalFilter1PropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ConversionGoalFilter1PropertiesItem =
-  S.Unknown as any as S.Schema<ConversionGoalFilter1PropertiesItem>;
-
 export type ConversionGoalFilter1PropertiesList = Array<ConversionGoalFilter1PropertiesItem>;
-export const ConversionGoalFilter1PropertiesList = /*@__PURE__*/ S.Array(
-  ConversionGoalFilter1PropertiesItem,
-) as any as S.Schema<ConversionGoalFilter1PropertiesList>;
-
 export type ConversionGoalFilter1ResponseMap = { [key: string]: unknown | undefined };
-export const ConversionGoalFilter1ResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversionGoalFilter1ResponseMap>;
-
 export type ConversionGoalFilter1SchemaMapValue = string | unknown;
-export const ConversionGoalFilter1SchemaMapValue =
-  S.Unknown as any as S.Schema<ConversionGoalFilter1SchemaMapValue>;
-
 export type ConversionGoalFilter1SchemaMapMap = {
   [key: string]: ConversionGoalFilter1SchemaMapValue | undefined;
 };
-export const ConversionGoalFilter1SchemaMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConversionGoalFilter1SchemaMapValue,
-) as any as S.Schema<ConversionGoalFilter1SchemaMapMap>;
-
 export interface ConversionGoalFilter1 {
   conversion_goal_id?: string;
   conversion_goal_name?: string;
@@ -1311,34 +773,6 @@ export interface ConversionGoalFilter1 {
   /** version of the node, used for schema migrations */
   version?: number | null;
 }
-export const ConversionGoalFilter1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversion_goal_id: S.optional(S.String),
-    conversion_goal_name: S.optional(S.String),
-    counts_as_customer: S.optional(S.NullOr(S.Boolean)),
-    counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(ConversionGoalFilter1FixedPropertiesList)),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(S.NullOr(ConversionGoalFilter1Math)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(S.NullOr(RevenueCurrencyPropertyConfig)),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(ConversionGoalFilter1OrderByList)),
-    properties: S.optional(S.NullOr(ConversionGoalFilter1PropertiesList)),
-    response: S.optional(S.NullOr(ConversionGoalFilter1ResponseMap)),
-    schema_map: S.optional(ConversionGoalFilter1SchemaMapMap),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ConversionGoalFilter1" }) as any as S.Schema<ConversionGoalFilter1>;
-
 export type ConversionGoalFilter2FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -1364,15 +798,8 @@ export type ConversionGoalFilter2FixedPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ConversionGoalFilter2FixedPropertiesItem =
-  S.Unknown as any as S.Schema<ConversionGoalFilter2FixedPropertiesItem>;
-
 export type ConversionGoalFilter2FixedPropertiesList =
   Array<ConversionGoalFilter2FixedPropertiesItem>;
-export const ConversionGoalFilter2FixedPropertiesList = /*@__PURE__*/ S.Array(
-  ConversionGoalFilter2FixedPropertiesItem,
-) as any as S.Schema<ConversionGoalFilter2FixedPropertiesList>;
-
 export type ConversionGoalFilter2Math =
   | BaseMathType
   | FunnelMathType
@@ -1382,8 +809,6 @@ export type ConversionGoalFilter2Math =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const ConversionGoalFilter2Math = S.Unknown as any as S.Schema<ConversionGoalFilter2Math>;
-
 export type ConversionGoalFilter2PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -1409,30 +834,12 @@ export type ConversionGoalFilter2PropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ConversionGoalFilter2PropertiesItem =
-  S.Unknown as any as S.Schema<ConversionGoalFilter2PropertiesItem>;
-
 export type ConversionGoalFilter2PropertiesList = Array<ConversionGoalFilter2PropertiesItem>;
-export const ConversionGoalFilter2PropertiesList = /*@__PURE__*/ S.Array(
-  ConversionGoalFilter2PropertiesItem,
-) as any as S.Schema<ConversionGoalFilter2PropertiesList>;
-
 export type ConversionGoalFilter2ResponseMap = { [key: string]: unknown | undefined };
-export const ConversionGoalFilter2ResponseMap =
-  ConversionGoalFilter1ResponseMap as any as S.Schema<ConversionGoalFilter2ResponseMap>;
-
 export type ConversionGoalFilter2SchemaMapValue = string | unknown;
-export const ConversionGoalFilter2SchemaMapValue =
-  S.Unknown as any as S.Schema<ConversionGoalFilter2SchemaMapValue>;
-
 export type ConversionGoalFilter2SchemaMapMap = {
   [key: string]: ConversionGoalFilter2SchemaMapValue | undefined;
 };
-export const ConversionGoalFilter2SchemaMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConversionGoalFilter2SchemaMapValue,
-) as any as S.Schema<ConversionGoalFilter2SchemaMapMap>;
-
 export interface ConversionGoalFilter2 {
   conversion_goal_id?: string;
   conversion_goal_name?: string;
@@ -1461,32 +868,6 @@ export interface ConversionGoalFilter2 {
   /** version of the node, used for schema migrations */
   version?: number | null;
 }
-export const ConversionGoalFilter2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversion_goal_id: S.optional(S.String),
-    conversion_goal_name: S.optional(S.String),
-    counts_as_customer: S.optional(S.NullOr(S.Boolean)),
-    counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(ConversionGoalFilter2FixedPropertiesList)),
-    id: S.optional(S.Number),
-    kind: S.optional(S.String),
-    math: S.optional(S.NullOr(ConversionGoalFilter2Math)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(S.NullOr(RevenueCurrencyPropertyConfig)),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    properties: S.optional(S.NullOr(ConversionGoalFilter2PropertiesList)),
-    response: S.optional(S.NullOr(ConversionGoalFilter2ResponseMap)),
-    schema_map: S.optional(ConversionGoalFilter2SchemaMapMap),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ConversionGoalFilter2" }) as any as S.Schema<ConversionGoalFilter2>;
-
 export type ConversionGoalFilter3FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -1512,15 +893,8 @@ export type ConversionGoalFilter3FixedPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ConversionGoalFilter3FixedPropertiesItem =
-  S.Unknown as any as S.Schema<ConversionGoalFilter3FixedPropertiesItem>;
-
 export type ConversionGoalFilter3FixedPropertiesList =
   Array<ConversionGoalFilter3FixedPropertiesItem>;
-export const ConversionGoalFilter3FixedPropertiesList = /*@__PURE__*/ S.Array(
-  ConversionGoalFilter3FixedPropertiesItem,
-) as any as S.Schema<ConversionGoalFilter3FixedPropertiesList>;
-
 export type ConversionGoalFilter3Math =
   | BaseMathType
   | FunnelMathType
@@ -1530,8 +904,6 @@ export type ConversionGoalFilter3Math =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const ConversionGoalFilter3Math = S.Unknown as any as S.Schema<ConversionGoalFilter3Math>;
-
 export type ConversionGoalFilter3PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -1557,30 +929,12 @@ export type ConversionGoalFilter3PropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ConversionGoalFilter3PropertiesItem =
-  S.Unknown as any as S.Schema<ConversionGoalFilter3PropertiesItem>;
-
 export type ConversionGoalFilter3PropertiesList = Array<ConversionGoalFilter3PropertiesItem>;
-export const ConversionGoalFilter3PropertiesList = /*@__PURE__*/ S.Array(
-  ConversionGoalFilter3PropertiesItem,
-) as any as S.Schema<ConversionGoalFilter3PropertiesList>;
-
 export type ConversionGoalFilter3ResponseMap = { [key: string]: unknown | undefined };
-export const ConversionGoalFilter3ResponseMap =
-  ConversionGoalFilter1ResponseMap as any as S.Schema<ConversionGoalFilter3ResponseMap>;
-
 export type ConversionGoalFilter3SchemaMapValue = string | unknown;
-export const ConversionGoalFilter3SchemaMapValue =
-  S.Unknown as any as S.Schema<ConversionGoalFilter3SchemaMapValue>;
-
 export type ConversionGoalFilter3SchemaMapMap = {
   [key: string]: ConversionGoalFilter3SchemaMapValue | undefined;
 };
-export const ConversionGoalFilter3SchemaMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConversionGoalFilter3SchemaMapValue,
-) as any as S.Schema<ConversionGoalFilter3SchemaMapMap>;
-
 export interface ConversionGoalFilter3 {
   conversion_goal_id?: string;
   conversion_goal_name?: string;
@@ -1614,51 +968,19 @@ export interface ConversionGoalFilter3 {
   /** version of the node, used for schema migrations */
   version?: number | null;
 }
-export const ConversionGoalFilter3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversion_goal_id: S.optional(S.String),
-    conversion_goal_name: S.optional(S.String),
-    counts_as_customer: S.optional(S.NullOr(S.Boolean)),
-    counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    distinct_id_field: S.optional(S.String),
-    dw_source_type: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(ConversionGoalFilter3FixedPropertiesList)),
-    id: S.optional(S.String),
-    id_field: S.optional(S.String),
-    kind: S.optional(S.String),
-    math: S.optional(S.NullOr(ConversionGoalFilter3Math)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(S.NullOr(RevenueCurrencyPropertyConfig)),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    properties: S.optional(S.NullOr(ConversionGoalFilter3PropertiesList)),
-    response: S.optional(S.NullOr(ConversionGoalFilter3ResponseMap)),
-    schema_map: S.optional(ConversionGoalFilter3SchemaMapMap),
-    table_name: S.optional(S.String),
-    timestamp_field: S.optional(S.String),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ConversionGoalFilter3" }) as any as S.Schema<ConversionGoalFilter3>;
-
 /** Wrapper for OpenAPI schema generation - one goal, in any of the three node shapes. */
 export type ConversionGoal = ConversionGoalFilter1 | ConversionGoalFilter2 | ConversionGoalFilter3;
-export const ConversionGoal = S.Unknown as any as S.Schema<ConversionGoal>;
+const ConversionGoal = S.Unknown as any as S.Schema<ConversionGoal>;
 
 export type ConversionGoalWrittenListItem =
   | ConversionGoalFilter1
   | ConversionGoalFilter2
   | ConversionGoalFilter3;
-export const ConversionGoalWrittenListItem =
-  S.Unknown as any as S.Schema<ConversionGoalWrittenListItem>;
+const ConversionGoalWrittenListItem = S.Unknown as any as S.Schema<ConversionGoalWrittenListItem>;
 
 /** List wrapper for OpenAPI schema generation - the response carries every configured goal. */
 export type ConversionGoalWrittenList = Array<ConversionGoalWrittenListItem>;
-export const ConversionGoalWrittenList = /*@__PURE__*/ S.Array(
+const ConversionGoalWrittenList = /*@__PURE__*/ S.Array(
   ConversionGoalWrittenListItem,
 ) as any as S.Schema<ConversionGoalWrittenList>;
 
@@ -1668,7 +990,7 @@ export interface ConversionGoalWriteResponse {
   /** Every configured goal after the write, in display order */
   conversion_goals: ConversionGoalWrittenList;
 }
-export const ConversionGoalWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversionGoalWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     goal: ConversionGoal,
     conversion_goals: ConversionGoalWrittenList,
@@ -1681,7 +1003,7 @@ export interface GetMarketingAnalyticsConversionGoalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetMarketingAnalyticsConversionGoalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsConversionGoalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1697,7 +1019,7 @@ export const GetMarketingAnalyticsConversionGoalRequest = /*@__PURE__*/ S.suspen
 
 /** * `EventsNode` - EventsNode * `ActionsNode` - ActionsNode * `DataWarehouseNode` - DataWarehouseNode */
 export type ConversionGoalKindEnum = "EventsNode" | "ActionsNode" | "DataWarehouseNode";
-export const ConversionGoalKindEnum = S.String;
+const ConversionGoalKindEnum = S.String;
 
 export interface ConversionGoalSummary {
   /** Id of the goal. Pass this to the explain, update and delete endpoints. */
@@ -1729,7 +1051,7 @@ export interface ConversionGoalSummary {
   /** Explanation when is_approximate is true */
   approximation_reason: string | null;
 }
-export const ConversionGoalSummary = /*@__PURE__*/ S.suspend(() =>
+const ConversionGoalSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversion_goal_id: S.String,
     name: S.String,
@@ -1750,7 +1072,7 @@ export const ConversionGoalSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** One summary entry per configured conversion goal */
 export type ConversionGoalsListResponseGoalsList = Array<ConversionGoalSummary>;
-export const ConversionGoalsListResponseGoalsList = /*@__PURE__*/ S.Array(
+const ConversionGoalsListResponseGoalsList = /*@__PURE__*/ S.Array(
   ConversionGoalSummary,
 ) as any as S.Schema<ConversionGoalsListResponseGoalsList>;
 
@@ -1764,7 +1086,7 @@ export interface ConversionGoalsListResponse {
   /** True if any goal is misconfigured */
   has_misconfigured: boolean;
 }
-export const ConversionGoalsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversionGoalsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     goals: ConversionGoalsListResponseGoalsList,
     attribution_window_days: S.Number,
@@ -1781,7 +1103,7 @@ export interface GetMarketingAnalyticsDataSourceRequest {
   /** Optional. Restrict to one integration (e.g. 'GoogleAds'). */
   source_type?: string;
 }
-export const GetMarketingAnalyticsDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     source_type: S.optional(S.String.pipe(T.Query())),
@@ -1798,12 +1120,12 @@ export const GetMarketingAnalyticsDataSourceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Schema columns currently mapped for this source */
 export type DataSourceHealthEntrySchemaColumnsMappedList = Array<string>;
-export const DataSourceHealthEntrySchemaColumnsMappedList =
+const DataSourceHealthEntrySchemaColumnsMappedList =
   ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthEntrySchemaColumnsMappedList>;
 
 /** Required schema columns that are not yet mapped */
 export type DataSourceHealthEntrySchemaColumnsRequiredMissingList = Array<string>;
-export const DataSourceHealthEntrySchemaColumnsRequiredMissingList =
+const DataSourceHealthEntrySchemaColumnsRequiredMissingList =
   ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthEntrySchemaColumnsRequiredMissingList>;
 
 export interface RequiredTableStatus {
@@ -1818,7 +1140,7 @@ export interface RequiredTableStatus {
   /** When this table last completed a sync */
   last_synced_at: string | null;
 }
-export const RequiredTableStatus = /*@__PURE__*/ S.suspend(() =>
+const RequiredTableStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     table_name: S.String,
     present: S.Boolean,
@@ -1830,7 +1152,7 @@ export const RequiredTableStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-required-table sync status for this integration */
 export type DataSourceHealthEntryRequiredTablesList = Array<RequiredTableStatus>;
-export const DataSourceHealthEntryRequiredTablesList = /*@__PURE__*/ S.Array(
+const DataSourceHealthEntryRequiredTablesList = /*@__PURE__*/ S.Array(
   RequiredTableStatus,
 ) as any as S.Schema<DataSourceHealthEntryRequiredTablesList>;
 
@@ -1870,7 +1192,7 @@ export interface DataSourceHealthEntry {
   /** Suggested fix when the source is unhealthy */
   fix_suggestion: string | null;
 }
-export const DataSourceHealthEntry = /*@__PURE__*/ S.suspend(() =>
+const DataSourceHealthEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_type: S.String,
     is_native: S.Boolean,
@@ -1894,13 +1216,13 @@ export const DataSourceHealthEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** One health entry per native integration */
 export type DataSourceHealthResponseIntegrationsList = Array<DataSourceHealthEntry>;
-export const DataSourceHealthResponseIntegrationsList = /*@__PURE__*/ S.Array(
+const DataSourceHealthResponseIntegrationsList = /*@__PURE__*/ S.Array(
   DataSourceHealthEntry,
 ) as any as S.Schema<DataSourceHealthResponseIntegrationsList>;
 
 /** Short human-readable summary of detected issues */
 export type DataSourceHealthResponseIssuesSummaryList = Array<string>;
-export const DataSourceHealthResponseIssuesSummaryList =
+const DataSourceHealthResponseIssuesSummaryList =
   ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthResponseIssuesSummaryList>;
 
 export interface DataSourceHealthResponse {
@@ -1913,7 +1235,7 @@ export interface DataSourceHealthResponse {
   /** Short human-readable summary of detected issues */
   issues_summary: DataSourceHealthResponseIssuesSummaryList;
 }
-export const DataSourceHealthResponse = /*@__PURE__*/ S.suspend(() =>
+const DataSourceHealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrations: DataSourceHealthResponseIntegrationsList,
     has_any_data: S.Boolean,
@@ -1932,7 +1254,7 @@ export interface GetMarketingAnalyticsDiagnoseRequest {
   /** Optional integration filter */
   source_type?: string;
 }
-export const GetMarketingAnalyticsDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     attribution_lookback_days: S.optional(S.Number.pipe(T.Query())),
@@ -1957,7 +1279,7 @@ export interface UnmatchedUtmSample {
   /** Integration suggested by token match, if any */
   suggested_integration: string | null;
 }
-export const UnmatchedUtmSample = /*@__PURE__*/ S.suspend(() =>
+const UnmatchedUtmSample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw_value: S.String,
     event_count: S.Number,
@@ -1967,7 +1289,7 @@ export const UnmatchedUtmSample = /*@__PURE__*/ S.suspend(() =>
 
 /** Sample of likely-yours unmatched utm_source values */
 export type AttributionHealthEntrySampleUnmatchedUtmSourcesList = Array<UnmatchedUtmSample>;
-export const AttributionHealthEntrySampleUnmatchedUtmSourcesList = /*@__PURE__*/ S.Array(
+const AttributionHealthEntrySampleUnmatchedUtmSourcesList = /*@__PURE__*/ S.Array(
   UnmatchedUtmSample,
 ) as any as S.Schema<AttributionHealthEntrySampleUnmatchedUtmSourcesList>;
 
@@ -1993,7 +1315,7 @@ export interface AttributionHealthEntry {
   /** Matched events carrying any utm_medium in the lookback window. Zero means no matched event carried a medium, including when no events matched. Missing paid signals do not prove organic traffic. */
   events_matched_tagged_medium_last_7d: number;
 }
-export const AttributionHealthEntry = /*@__PURE__*/ S.suspend(() =>
+const AttributionHealthEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_key: S.String,
     display_name: S.String,
@@ -2018,7 +1340,7 @@ export interface RecommendedAction {
   /** Follow-up tool to call next, if any */
   target_tool: string | null;
 }
-export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
+const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     detail: S.String,
@@ -2029,7 +1351,7 @@ export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Recommended next steps for this integration */
 export type IntegrationDiagnosticRecommendedActionsList = Array<RecommendedAction>;
-export const IntegrationDiagnosticRecommendedActionsList = /*@__PURE__*/ S.Array(
+const IntegrationDiagnosticRecommendedActionsList = /*@__PURE__*/ S.Array(
   RecommendedAction,
 ) as any as S.Schema<IntegrationDiagnosticRecommendedActionsList>;
 
@@ -2051,7 +1373,7 @@ export interface IntegrationDiagnostic {
   /** Recommended next steps for this integration */
   recommended_actions: IntegrationDiagnosticRecommendedActionsList;
 }
-export const IntegrationDiagnostic = /*@__PURE__*/ S.suspend(() =>
+const IntegrationDiagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_key: S.String,
     source_type: S.String,
@@ -2066,13 +1388,13 @@ export const IntegrationDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-integration cross-domain diagnostics */
 export type MarketingDiagnosticResponseIntegrationsList = Array<IntegrationDiagnostic>;
-export const MarketingDiagnosticResponseIntegrationsList = /*@__PURE__*/ S.Array(
+const MarketingDiagnosticResponseIntegrationsList = /*@__PURE__*/ S.Array(
   IntegrationDiagnostic,
 ) as any as S.Schema<MarketingDiagnosticResponseIntegrationsList>;
 
 /** Top global recommended actions across all integrations */
 export type MarketingDiagnosticResponseRecommendedActionsList = Array<RecommendedAction>;
-export const MarketingDiagnosticResponseRecommendedActionsList =
+const MarketingDiagnosticResponseRecommendedActionsList =
   IntegrationDiagnosticRecommendedActionsList as any as S.Schema<MarketingDiagnosticResponseRecommendedActionsList>;
 
 export interface MarketingDiagnosticResponse {
@@ -2087,7 +1409,7 @@ export interface MarketingDiagnosticResponse {
   /** Top global recommended actions across all integrations */
   recommended_actions: MarketingDiagnosticResponseRecommendedActionsList;
 }
-export const MarketingDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
+const MarketingDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrations: MarketingDiagnosticResponseIntegrationsList,
     overall_status: S.String,
@@ -2109,7 +1431,7 @@ export interface GetMarketingAnalyticsExplainConversionGoalRequest {
   /** ISO end; defaults to now */
   date_to?: string;
 }
-export const GetMarketingAnalyticsExplainConversionGoalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsExplainConversionGoalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversion_goal_id: S.String.pipe(T.Query()),
@@ -2132,7 +1454,7 @@ export interface GoalExplanationPeriod {
   /** End of the analyzed period (ISO) */
   date_to: string | null;
 }
-export const GoalExplanationPeriod = /*@__PURE__*/ S.suspend(() =>
+const GoalExplanationPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.NullOr(S.String),
     date_to: S.NullOr(S.String),
@@ -2140,33 +1462,27 @@ export const GoalExplanationPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoalExplanationPeriod" }) as any as S.Schema<GoalExplanationPeriod>;
 
 export type GoalExplanationByEventItemList = Array<unknown>;
-export const GoalExplanationByEventItemList = /*@__PURE__*/ S.Array(
+const GoalExplanationByEventItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GoalExplanationByEventItemList>;
 
 /** List of [event_name, count] pairs */
 export type GoalExplanationByEventList = Array<GoalExplanationByEventItemList>;
-export const GoalExplanationByEventList = /*@__PURE__*/ S.Array(
+const GoalExplanationByEventList = /*@__PURE__*/ S.Array(
   GoalExplanationByEventItemList,
 ) as any as S.Schema<GoalExplanationByEventList>;
 
 export type GoalExplanationByUtmSourceItemList = Array<unknown>;
-export const GoalExplanationByUtmSourceItemList =
-  GoalExplanationByEventItemList as any as S.Schema<GoalExplanationByUtmSourceItemList>;
-
 /** List of [utm_source, count] pairs */
 export type GoalExplanationByUtmSourceList = Array<GoalExplanationByUtmSourceItemList>;
-export const GoalExplanationByUtmSourceList =
+const GoalExplanationByUtmSourceList =
   GoalExplanationByEventList as any as S.Schema<GoalExplanationByUtmSourceList>;
 
 export type GoalExplanationByMatchedIntegrationItemList = Array<unknown>;
-export const GoalExplanationByMatchedIntegrationItemList =
-  GoalExplanationByEventItemList as any as S.Schema<GoalExplanationByMatchedIntegrationItemList>;
-
 /** List of [integration, count] pairs */
 export type GoalExplanationByMatchedIntegrationList =
   Array<GoalExplanationByMatchedIntegrationItemList>;
-export const GoalExplanationByMatchedIntegrationList =
+const GoalExplanationByMatchedIntegrationList =
   GoalExplanationByEventList as any as S.Schema<GoalExplanationByMatchedIntegrationList>;
 
 export interface GoalEventSample {
@@ -2183,7 +1499,7 @@ export interface GoalEventSample {
   /** Integration the utm_source matched, if any */
   matched_integration: string | null;
 }
-export const GoalEventSample = /*@__PURE__*/ S.suspend(() =>
+const GoalEventSample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_uuid: S.String,
     timestamp: S.String,
@@ -2196,13 +1512,13 @@ export const GoalEventSample = /*@__PURE__*/ S.suspend(() =>
 
 /** A small sample of matching events */
 export type GoalExplanationSamplesList = Array<GoalEventSample>;
-export const GoalExplanationSamplesList = /*@__PURE__*/ S.Array(
+const GoalExplanationSamplesList = /*@__PURE__*/ S.Array(
   GoalEventSample,
 ) as any as S.Schema<GoalExplanationSamplesList>;
 
 /** Caveats about the breakdown (sampling, attribution, etc.) */
 export type GoalExplanationNotesList = Array<string>;
-export const GoalExplanationNotesList =
+const GoalExplanationNotesList =
   ConversionGoalFilter1OrderByList as any as S.Schema<GoalExplanationNotesList>;
 
 export interface GoalExplanation {
@@ -2235,7 +1551,7 @@ export interface GoalExplanation {
   /** Caveats about the breakdown (sampling, attribution, etc.) */
   notes: GoalExplanationNotesList;
 }
-export const GoalExplanation = /*@__PURE__*/ S.suspend(() =>
+const GoalExplanation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversion_goal_id: S.String,
     goal_name: S.String,
@@ -2262,7 +1578,7 @@ export interface GetMarketingAnalyticsSetupPlanRequest {
   /** Re-run every check instead of serving a recent result. Use right after changing something. */
   refresh?: boolean;
 }
-export const GetMarketingAnalyticsSetupPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsSetupPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -2280,12 +1596,12 @@ export const GetMarketingAnalyticsSetupPlanRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Capabilities this unblocks: cost, attribution, roas, cac */
 export type SuggestionUnlocksList = Array<string>;
-export const SuggestionUnlocksList =
+const SuggestionUnlocksList =
   ConversionGoalFilter1OrderByList as any as S.Schema<SuggestionUnlocksList>;
 
 /** Advice shown alongside the action. Mapping suggestions always carry a 'fix_platform_urls' entry, because a mapping is a workaround and correcting the ad platform's tracking template is the real fix. */
 export type SuggestionAlsoRecommendedList = Array<unknown>;
-export const SuggestionAlsoRecommendedList =
+const SuggestionAlsoRecommendedList =
   GoalExplanationByEventItemList as any as S.Schema<SuggestionAlsoRecommendedList>;
 
 export interface Suggestion {
@@ -2324,7 +1640,7 @@ export interface Suggestion {
   /** Events affected in the window */
   event_volume: number;
 }
-export const Suggestion = /*@__PURE__*/ S.suspend(() =>
+const Suggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.String,
@@ -2348,13 +1664,13 @@ export const Suggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Ranked suggestions, most important first */
 export type SetupPlanResponseSuggestionsList = Array<Suggestion>;
-export const SetupPlanResponseSuggestionsList = /*@__PURE__*/ S.Array(
+const SetupPlanResponseSuggestionsList = /*@__PURE__*/ S.Array(
   Suggestion,
 ) as any as S.Schema<SetupPlanResponseSuggestionsList>;
 
 /** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
 export type CapabilityReadinessBlockedByList = Array<string>;
-export const CapabilityReadinessBlockedByList =
+const CapabilityReadinessBlockedByList =
   ConversionGoalFilter1OrderByList as any as S.Schema<CapabilityReadinessBlockedByList>;
 
 export interface CapabilityReadiness {
@@ -2367,7 +1683,7 @@ export interface CapabilityReadiness {
   /** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
   blocked_by: CapabilityReadinessBlockedByList;
 }
-export const CapabilityReadiness = /*@__PURE__*/ S.suspend(() =>
+const CapabilityReadiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capability: S.String,
     status: S.String,
@@ -2378,13 +1694,13 @@ export const CapabilityReadiness = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-capability readiness, with the suggestions blocking each */
 export type SetupPlanResponseReadinessList = Array<CapabilityReadiness>;
-export const SetupPlanResponseReadinessList = /*@__PURE__*/ S.Array(
+const SetupPlanResponseReadinessList = /*@__PURE__*/ S.Array(
   CapabilityReadiness,
 ) as any as S.Schema<SetupPlanResponseReadinessList>;
 
 /** Sub-services that failed. Their suggestions are missing, so do NOT present the plan as a complete clean bill of health when this is non-empty. */
 export type SetupPlanResponseDegradedList = Array<string>;
-export const SetupPlanResponseDegradedList =
+const SetupPlanResponseDegradedList =
   ConversionGoalFilter1OrderByList as any as S.Schema<SetupPlanResponseDegradedList>;
 
 export interface SetupPlanResponse {
@@ -2399,7 +1715,7 @@ export interface SetupPlanResponse {
   /** One-line summary of the plan */
   summary: string;
 }
-export const SetupPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const SetupPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestions: SetupPlanResponseSuggestionsList,
     readiness: SetupPlanResponseReadinessList,
@@ -2413,7 +1729,7 @@ export interface GetMarketingAnalyticsSourceValidationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetMarketingAnalyticsSourceValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsSourceValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2428,14 +1744,14 @@ export const GetMarketingAnalyticsSourceValidationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetMarketingAnalyticsSourceValidationRequest>;
 
 export type SourceValidationErrorsBySourceValueList = Array<string>;
-export const SourceValidationErrorsBySourceValueList =
+const SourceValidationErrorsBySourceValueList =
   ConversionGoalFilter1OrderByList as any as S.Schema<SourceValidationErrorsBySourceValueList>;
 
 /** Validation errors keyed by the source or mapped table ID. Valid sources are omitted. */
 export type SourceValidationErrorsBySourceMap = {
   [key: string]: SourceValidationErrorsBySourceValueList | undefined;
 };
-export const SourceValidationErrorsBySourceMap = /*@__PURE__*/ S.Record(
+const SourceValidationErrorsBySourceMap = /*@__PURE__*/ S.Record(
   S.String,
   SourceValidationErrorsBySourceValueList,
 ) as any as S.Schema<SourceValidationErrorsBySourceMap>;
@@ -2444,7 +1760,7 @@ export interface SourceValidation {
   /** Validation errors keyed by the source or mapped table ID. Valid sources are omitted. */
   errors_by_source: SourceValidationErrorsBySourceMap;
 }
-export const SourceValidation = /*@__PURE__*/ S.suspend(() =>
+const SourceValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors_by_source: SourceValidationErrorsBySourceMap,
   }),
@@ -2458,7 +1774,7 @@ export interface GetMarketingAnalyticsSuggestConversionGoalRequest {
   /** Max candidates to return */
   top_n?: number;
 }
-export const GetMarketingAnalyticsSuggestConversionGoalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsSuggestConversionGoalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     min_count: S.optional(S.Number.pipe(T.Query())),
@@ -2475,12 +1791,9 @@ export const GetMarketingAnalyticsSuggestConversionGoalRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetMarketingAnalyticsSuggestConversionGoalRequest>;
 
 export type CandidateEventTopUtmSourcesItemList = Array<unknown>;
-export const CandidateEventTopUtmSourcesItemList =
-  GoalExplanationByEventItemList as any as S.Schema<CandidateEventTopUtmSourcesItemList>;
-
 /** List of [utm_source, count] pairs */
 export type CandidateEventTopUtmSourcesList = Array<CandidateEventTopUtmSourcesItemList>;
-export const CandidateEventTopUtmSourcesList =
+const CandidateEventTopUtmSourcesList =
   GoalExplanationByEventList as any as S.Schema<CandidateEventTopUtmSourcesList>;
 
 export interface CandidateEvent {
@@ -2503,7 +1816,7 @@ export interface CandidateEvent {
   /** Human-readable rationale for the suggestion */
   suggestion_reason: string;
 }
-export const CandidateEvent = /*@__PURE__*/ S.suspend(() =>
+const CandidateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_name: S.String,
     last_30d_count: S.Number,
@@ -2519,7 +1832,7 @@ export const CandidateEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Ranked candidate events for conversion goals */
 export type EventSuggestionsResponseCandidatesList = Array<CandidateEvent>;
-export const EventSuggestionsResponseCandidatesList = /*@__PURE__*/ S.Array(
+const EventSuggestionsResponseCandidatesList = /*@__PURE__*/ S.Array(
   CandidateEvent,
 ) as any as S.Schema<EventSuggestionsResponseCandidatesList>;
 
@@ -2531,7 +1844,7 @@ export interface EventSuggestionsResponse {
   /** Number of system/autocaptured events excluded */
   excluded_events_count: number;
 }
-export const EventSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const EventSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     candidates: EventSuggestionsResponseCandidatesList,
     lookback_days: S.Number,
@@ -2547,7 +1860,7 @@ export interface GetMarketingAnalyticsSuggestUtmMappingRequest {
   /** Only suggest for raw values with >= this many events */
   min_event_count?: number;
 }
-export const GetMarketingAnalyticsSuggestUtmMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsSuggestUtmMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     lookback_days: S.optional(S.Number.pipe(T.Query())),
@@ -2575,7 +1888,7 @@ export interface SourceMappingSuggestion {
   /** Events carrying this raw utm_source in the window. Suggestions are ordered by it. */
   event_count_30d: number;
 }
-export const SourceMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
+const SourceMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw_utm_source: S.String,
     suggested_target: S.String,
@@ -2587,13 +1900,13 @@ export const SourceMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested custom_source_mappings entries */
 export type UtmMappingSuggestionsResponseSourceSuggestionsList = Array<SourceMappingSuggestion>;
-export const UtmMappingSuggestionsResponseSourceSuggestionsList = /*@__PURE__*/ S.Array(
+const UtmMappingSuggestionsResponseSourceSuggestionsList = /*@__PURE__*/ S.Array(
   SourceMappingSuggestion,
 ) as any as S.Schema<UtmMappingSuggestionsResponseSourceSuggestionsList>;
 
 /** Raw campaign values clustered under this clean name */
 export type CampaignMappingSuggestionRawCampaignValuesList = Array<string>;
-export const CampaignMappingSuggestionRawCampaignValuesList =
+const CampaignMappingSuggestionRawCampaignValuesList =
   ConversionGoalFilter1OrderByList as any as S.Schema<CampaignMappingSuggestionRawCampaignValuesList>;
 
 export interface CampaignMappingSuggestion {
@@ -2614,7 +1927,7 @@ export interface CampaignMappingSuggestion {
   /** Events across every raw value folded into this suggestion. Suggestions are ordered by it. */
   event_count_30d: number;
 }
-export const CampaignMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
+const CampaignMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String,
     integration_display_name: S.String,
@@ -2631,7 +1944,7 @@ export const CampaignMappingSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** campaign_name_mappings entries for orphaned utm_campaign values that fuzzy-match a real campaign. Near-ties are withheld, so an absent campaign may still be mappable by hand. */
 export type UtmMappingSuggestionsResponseCampaignSuggestionsList = Array<CampaignMappingSuggestion>;
-export const UtmMappingSuggestionsResponseCampaignSuggestionsList = /*@__PURE__*/ S.Array(
+const UtmMappingSuggestionsResponseCampaignSuggestionsList = /*@__PURE__*/ S.Array(
   CampaignMappingSuggestion,
 ) as any as S.Schema<UtmMappingSuggestionsResponseCampaignSuggestionsList>;
 
@@ -2643,7 +1956,7 @@ export interface RawUnmatchedSample {
   /** Integration suggested by token match, if any */
   suggested_integration: string | null;
 }
-export const RawUnmatchedSample = /*@__PURE__*/ S.suspend(() =>
+const RawUnmatchedSample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw_utm_source: S.String,
     event_count: S.Number,
@@ -2653,7 +1966,7 @@ export const RawUnmatchedSample = /*@__PURE__*/ S.suspend(() =>
 
 /** All unmatched raw utm_source values worth reviewing */
 export type UtmMappingSuggestionsResponseRawUnmatchedSamplesList = Array<RawUnmatchedSample>;
-export const UtmMappingSuggestionsResponseRawUnmatchedSamplesList = /*@__PURE__*/ S.Array(
+const UtmMappingSuggestionsResponseRawUnmatchedSamplesList = /*@__PURE__*/ S.Array(
   RawUnmatchedSample,
 ) as any as S.Schema<UtmMappingSuggestionsResponseRawUnmatchedSamplesList>;
 
@@ -2669,7 +1982,7 @@ export interface CatalogueEntry {
   /** Integration suggested by token match, if any */
   suggested_integration: string | null;
 }
-export const CatalogueEntry = /*@__PURE__*/ S.suspend(() =>
+const CatalogueEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw_utm_source: S.String,
     event_count: S.Number,
@@ -2681,7 +1994,7 @@ export const CatalogueEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Every utm_source value seen in the window, matched or not */
 export type UtmMappingSuggestionsResponseFullUtmSourceCatalogueList = Array<CatalogueEntry>;
-export const UtmMappingSuggestionsResponseFullUtmSourceCatalogueList = /*@__PURE__*/ S.Array(
+const UtmMappingSuggestionsResponseFullUtmSourceCatalogueList = /*@__PURE__*/ S.Array(
   CatalogueEntry,
 ) as any as S.Schema<UtmMappingSuggestionsResponseFullUtmSourceCatalogueList>;
 
@@ -2695,7 +2008,7 @@ export interface CurrentMapping {
   /** canonical or team_custom */
   source: string;
 }
-export const CurrentMapping = /*@__PURE__*/ S.suspend(() =>
+const CurrentMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw_utm_source: S.String,
     target: S.String,
@@ -2706,13 +2019,13 @@ export const CurrentMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Mappings already in effect (canonical + team_custom) */
 export type UtmMappingSuggestionsResponseCurrentMappingsList = Array<CurrentMapping>;
-export const UtmMappingSuggestionsResponseCurrentMappingsList = /*@__PURE__*/ S.Array(
+const UtmMappingSuggestionsResponseCurrentMappingsList = /*@__PURE__*/ S.Array(
   CurrentMapping,
 ) as any as S.Schema<UtmMappingSuggestionsResponseCurrentMappingsList>;
 
 /** Caveats and guidance about the suggestions */
 export type UtmMappingSuggestionsResponseNotesList = Array<string>;
-export const UtmMappingSuggestionsResponseNotesList =
+const UtmMappingSuggestionsResponseNotesList =
   ConversionGoalFilter1OrderByList as any as S.Schema<UtmMappingSuggestionsResponseNotesList>;
 
 export interface UtmMappingSuggestionsResponse {
@@ -2735,7 +2048,7 @@ export interface UtmMappingSuggestionsResponse {
   /** Caveats and guidance about the suggestions */
   notes: UtmMappingSuggestionsResponseNotesList;
 }
-export const UtmMappingSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const UtmMappingSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_suggestions: UtmMappingSuggestionsResponseSourceSuggestionsList,
     campaign_suggestions: UtmMappingSuggestionsResponseCampaignSuggestionsList,
@@ -2759,7 +2072,7 @@ export interface GetMarketingAnalyticsUtmAuditRequest {
   /** End date for the audit period */
   date_to?: string;
 }
-export const GetMarketingAnalyticsUtmAuditRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMarketingAnalyticsUtmAuditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -2777,7 +2090,7 @@ export const GetMarketingAnalyticsUtmAuditRequest = /*@__PURE__*/ S.suspend(() =
 
 /** * `error` - error * `warning` - warning */
 export type DiagnosticSeverityEnum = "error" | "warning";
-export const DiagnosticSeverityEnum = S.String;
+const DiagnosticSeverityEnum = S.String;
 
 /** * `not_linked` - not_linked * `name_collision` - name_collision * `no_tagged_events` - no_tagged_events * `unknown_source` - unknown_source * `missing_source` - missing_source */
 export type UtmIssueKindEnum =
@@ -2786,7 +2099,7 @@ export type UtmIssueKindEnum =
   | "no_tagged_events"
   | "unknown_source"
   | "missing_source";
-export const UtmIssueKindEnum = S.String;
+const UtmIssueKindEnum = S.String;
 
 export interface UtmAlternativeSource {
   /** A utm_source value found on this campaign's pageviews */
@@ -2794,7 +2107,7 @@ export interface UtmAlternativeSource {
   /** Number of pageview events with this utm_source */
   event_count: number;
 }
-export const UtmAlternativeSource = /*@__PURE__*/ S.suspend(() =>
+const UtmAlternativeSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utm_source: S.String,
     event_count: S.Number,
@@ -2803,13 +2116,13 @@ export const UtmAlternativeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** utm_source values actually found on this campaign's pageviews, ordered by event count */
 export type UtmIssueAlternativeSourcesList = Array<UtmAlternativeSource>;
-export const UtmIssueAlternativeSourcesList = /*@__PURE__*/ S.Array(
+const UtmIssueAlternativeSourcesList = /*@__PURE__*/ S.Array(
   UtmAlternativeSource,
 ) as any as S.Schema<UtmIssueAlternativeSourcesList>;
 
 /** Other integrations whose campaigns share this campaign's name (name_collision only) */
 export type UtmIssueSharedWithIntegrationsList = Array<string>;
-export const UtmIssueSharedWithIntegrationsList =
+const UtmIssueSharedWithIntegrationsList =
   ConversionGoalFilter1OrderByList as any as S.Schema<UtmIssueSharedWithIntegrationsList>;
 
 /** * `fix_platform_urls` - fix_platform_urls * `add_source_mapping` - add_source_mapping * `switch_to_id_match` - switch_to_id_match * `add_campaign_name_mapping` - add_campaign_name_mapping */
@@ -2818,11 +2131,11 @@ export type SuggestedActionsEnum =
   | "add_source_mapping"
   | "switch_to_id_match"
   | "add_campaign_name_mapping";
-export const SuggestedActionsEnum = S.String;
+const SuggestedActionsEnum = S.String;
 
 /** Recommended remediations, most-recommended first. fix_platform_urls cures the tagging bug itself; the others are workarounds that leave the bad URLs in place. */
 export type UtmIssueSuggestedActionsList = Array<SuggestedActionsEnum>;
-export const UtmIssueSuggestedActionsList = /*@__PURE__*/ S.Array(
+const UtmIssueSuggestedActionsList = /*@__PURE__*/ S.Array(
   SuggestedActionsEnum,
 ) as any as S.Schema<UtmIssueSuggestedActionsList>;
 
@@ -2846,7 +2159,7 @@ export interface UtmIssue {
   /** The orphaned utm_campaign value that looks like a typo of this campaign, when one was found confidently. Set only alongside add_campaign_name_mapping; empty otherwise, including when several candidates tie and picking one could misattribute spend. */
   mapping_candidate: string;
 }
-export const UtmIssue = /*@__PURE__*/ S.suspend(() =>
+const UtmIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.String,
     severity: DiagnosticSeverityEnum,
@@ -2862,7 +2175,7 @@ export const UtmIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of detected UTM configuration issues */
 export type CampaignAuditResultIssuesList = Array<UtmIssue>;
-export const CampaignAuditResultIssuesList = /*@__PURE__*/ S.Array(
+const CampaignAuditResultIssuesList = /*@__PURE__*/ S.Array(
   UtmIssue,
 ) as any as S.Schema<CampaignAuditResultIssuesList>;
 
@@ -2886,7 +2199,7 @@ export interface CampaignAuditResult {
   /** List of detected UTM configuration issues */
   issues: CampaignAuditResultIssuesList;
 }
-export const CampaignAuditResult = /*@__PURE__*/ S.suspend(() =>
+const CampaignAuditResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaign_name: S.String,
     campaign_id: S.String,
@@ -2902,13 +2215,13 @@ export const CampaignAuditResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Audit results per campaign */
 export type UtmAuditResponseResultsList = Array<CampaignAuditResult>;
-export const UtmAuditResponseResultsList = /*@__PURE__*/ S.Array(
+const UtmAuditResponseResultsList = /*@__PURE__*/ S.Array(
   CampaignAuditResult,
 ) as any as S.Schema<UtmAuditResponseResultsList>;
 
 /** * `none` - none * `auto` - auto * `mapped` - mapped */
 export type SourceMatchEnum = "none" | "auto" | "mapped";
-export const SourceMatchEnum = S.String;
+const SourceMatchEnum = S.String;
 
 export interface UtmEvent {
   /** UTM campaign value from pageview events */
@@ -2924,7 +2237,7 @@ export interface UtmEvent {
   /** Name of the matched campaign, if any */
   matched_campaign: string | null;
 }
-export const UtmEvent = /*@__PURE__*/ S.suspend(() =>
+const UtmEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utm_campaign: S.String,
     utm_source: S.String,
@@ -2937,7 +2250,7 @@ export const UtmEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** All UTM events with match status */
 export type UtmAuditResponseAllUtmEventsList = Array<UtmEvent>;
-export const UtmAuditResponseAllUtmEventsList = /*@__PURE__*/ S.Array(
+const UtmAuditResponseAllUtmEventsList = /*@__PURE__*/ S.Array(
   UtmEvent,
 ) as any as S.Schema<UtmAuditResponseAllUtmEventsList>;
 
@@ -2955,7 +2268,7 @@ export interface UtmAuditResponse {
   /** All UTM events with match status */
   all_utm_events: UtmAuditResponseAllUtmEventsList;
 }
-export const UtmAuditResponse = /*@__PURE__*/ S.suspend(() =>
+const UtmAuditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_campaigns: S.Number,
     campaigns_with_issues: S.Number,
@@ -2972,7 +2285,7 @@ export interface CompareFilter {
   /** The date range to compare to. The value is a relative date. Examples of relative dates are: `-1y` for 1 year ago, `-14m` for 14 months ago, `-100w` for 100 weeks ago, `-14d` for 14 days ago, `-30h` for 30 hours ago. */
   compare_to?: string | null;
 }
-export const CompareFilter = /*@__PURE__*/ S.suspend(() =>
+const CompareFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compare: S.optional(S.NullOr(S.Boolean)),
     compare_to: S.optional(S.NullOr(S.String)),
@@ -2984,63 +2297,33 @@ export type ActionConversionGoalPropertiesItem =
   | PersonPropertyFilter
   | SessionPropertyFilter
   | CohortPropertyFilter;
-export const ActionConversionGoalPropertiesItem =
-  S.Unknown as any as S.Schema<ActionConversionGoalPropertiesItem>;
-
 export type ActionConversionGoalPropertiesList = Array<ActionConversionGoalPropertiesItem>;
-export const ActionConversionGoalPropertiesList = /*@__PURE__*/ S.Array(
-  ActionConversionGoalPropertiesItem,
-) as any as S.Schema<ActionConversionGoalPropertiesList>;
-
 export interface ActionConversionGoal {
   actionId?: number;
   properties?: ActionConversionGoalPropertiesList | null;
 }
-export const ActionConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.Number),
-    properties: S.optional(S.NullOr(ActionConversionGoalPropertiesList)),
-  }),
-).annotate({ identifier: "ActionConversionGoal" }) as any as S.Schema<ActionConversionGoal>;
-
 export type CustomEventConversionGoalPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
   | SessionPropertyFilter
   | CohortPropertyFilter;
-export const CustomEventConversionGoalPropertiesItem =
-  S.Unknown as any as S.Schema<CustomEventConversionGoalPropertiesItem>;
-
 export type CustomEventConversionGoalPropertiesList =
   Array<CustomEventConversionGoalPropertiesItem>;
-export const CustomEventConversionGoalPropertiesList = /*@__PURE__*/ S.Array(
-  CustomEventConversionGoalPropertiesItem,
-) as any as S.Schema<CustomEventConversionGoalPropertiesList>;
-
 export interface CustomEventConversionGoal {
   customEventName?: string;
   properties?: CustomEventConversionGoalPropertiesList | null;
 }
-export const CustomEventConversionGoal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customEventName: S.optional(S.String),
-    properties: S.optional(S.NullOr(CustomEventConversionGoalPropertiesList)),
-  }),
-).annotate({
-  identifier: "CustomEventConversionGoal",
-}) as any as S.Schema<CustomEventConversionGoal>;
-
 export type MarketingAnalyticsTableQueryConversionGoal =
   | ActionConversionGoal
   | CustomEventConversionGoal;
-export const MarketingAnalyticsTableQueryConversionGoal =
+const MarketingAnalyticsTableQueryConversionGoal =
   S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryConversionGoal>;
 
 export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-export const DaysOfWeekEnum = S.Number;
+const DaysOfWeekEnum = S.Number;
 
 export type DateRangeDaysOfWeekList = Array<DaysOfWeekEnum | (number & {})>;
-export const DateRangeDaysOfWeekList = /*@__PURE__*/ S.Array(
+const DateRangeDaysOfWeekList = /*@__PURE__*/ S.Array(
   DaysOfWeekEnum,
 ) as any as S.Schema<DateRangeDaysOfWeekList>;
 
@@ -3056,7 +2339,7 @@ export interface DateRange {
   /** Whether the date_from and date_to should be used verbatim. Disables rounding to the start and end of period. */
   explicitDate?: boolean | null;
 }
-export const DateRange = /*@__PURE__*/ S.suspend(() =>
+const DateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.NullOr(S.String)),
     date_to: S.optional(S.NullOr(S.String)),
@@ -3071,7 +2354,7 @@ export type MarketingAnalyticsTableQueryDraftConversionGoal =
   | ConversionGoalFilter1
   | ConversionGoalFilter2
   | ConversionGoalFilter3;
-export const MarketingAnalyticsTableQueryDraftConversionGoal =
+const MarketingAnalyticsTableQueryDraftConversionGoal =
   S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryDraftConversionGoal>;
 
 export type MarketingAnalyticsDrillDownLevel =
@@ -3084,10 +2367,10 @@ export type MarketingAnalyticsDrillDownLevel =
   | "medium"
   | "content"
   | "term";
-export const MarketingAnalyticsDrillDownLevel = S.String;
+const MarketingAnalyticsDrillDownLevel = S.String;
 
 export type IntegrationFilterIntegrationSourceIdsList = Array<string>;
-export const IntegrationFilterIntegrationSourceIdsList =
+const IntegrationFilterIntegrationSourceIdsList =
   ConversionGoalFilter1OrderByList as any as S.Schema<IntegrationFilterIntegrationSourceIdsList>;
 
 export interface IntegrationFilter {
@@ -3096,7 +2379,7 @@ export interface IntegrationFilter {
   /** Selected integration source IDs to filter by (e.g., table IDs or source map IDs) */
   integrationSourceIds?: IntegrationFilterIntegrationSourceIdsList | null;
 }
-export const IntegrationFilter = /*@__PURE__*/ S.suspend(() =>
+const IntegrationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeNonIntegrated: S.optional(S.NullOr(S.Boolean)),
     integrationSourceIds: S.optional(S.NullOr(IntegrationFilterIntegrationSourceIdsList)),
@@ -3112,16 +2395,16 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
-export const IntervalType = S.String;
+const IntervalType = S.String;
 
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
   | "uniq_page_screen_autocaptures";
-export const BounceRatePageViewMode = S.String;
+const BounceRatePageViewMode = S.String;
 
 export type FilterLogicalOperator = "AND" | "OR";
-export const FilterLogicalOperator = S.String;
+const FilterLogicalOperator = S.String;
 
 export type CustomBotField =
   | "$raw_user_agent"
@@ -3138,10 +2421,10 @@ export type CustomBotField =
   | "$geoip_country_code"
   | "$referrer"
   | "$referring_domain";
-export const CustomBotField = S.String;
+const CustomBotField = S.String;
 
 export type CustomBotMatcher = "contains" | "regex" | "exact" | "cidr";
-export const CustomBotMatcher = S.String;
+const CustomBotMatcher = S.String;
 
 export interface CustomBotCondition {
   id: string;
@@ -3151,7 +2434,7 @@ export interface CustomBotCondition {
   /** Matched against the property named by `key`. */
   pattern: string;
 }
-export const CustomBotCondition = /*@__PURE__*/ S.suspend(() =>
+const CustomBotCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     key: CustomBotField,
@@ -3161,7 +2444,7 @@ export const CustomBotCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomBotCondition" }) as any as S.Schema<CustomBotCondition>;
 
 export type CustomBotRuleItemsList = Array<CustomBotCondition>;
-export const CustomBotRuleItemsList = /*@__PURE__*/ S.Array(
+const CustomBotRuleItemsList = /*@__PURE__*/ S.Array(
   CustomBotCondition,
 ) as any as S.Schema<CustomBotRuleItemsList>;
 
@@ -3175,7 +2458,7 @@ export interface CustomBotRule {
   /** Reported by `$virt_bot_name` and `$virt_bot_operator` when the rule matches. */
   name: string;
 }
-export const CustomBotRule = /*@__PURE__*/ S.suspend(() =>
+const CustomBotRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.NullOr(S.String)),
     combiner: FilterLogicalOperator,
@@ -3186,7 +2469,7 @@ export const CustomBotRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomBotRule" }) as any as S.Schema<CustomBotRule>;
 
 export type HogQLQueryModifiersCustomBotDefinitionsList = Array<CustomBotRule>;
-export const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ S.Array(
+const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ S.Array(
   CustomBotRule,
 ) as any as S.Schema<HogQLQueryModifiersCustomBotDefinitionsList>;
 
@@ -3198,7 +2481,7 @@ export type CustomChannelField =
   | "url"
   | "pathname"
   | "hostname";
-export const CustomChannelField = S.String;
+const CustomChannelField = S.String;
 
 export type CustomChannelOperator =
   | "exact"
@@ -3209,15 +2492,11 @@ export type CustomChannelOperator =
   | "not_icontains"
   | "regex"
   | "not_regex";
-export const CustomChannelOperator = S.String;
+const CustomChannelOperator = S.String;
 
 export type CustomChannelConditionValueCase1List = Array<string>;
-export const CustomChannelConditionValueCase1List =
-  ConversionGoalFilter1OrderByList as any as S.Schema<CustomChannelConditionValueCase1List>;
-
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
-export const CustomChannelConditionValue =
-  S.Unknown as any as S.Schema<CustomChannelConditionValue>;
+const CustomChannelConditionValue = S.Unknown as any as S.Schema<CustomChannelConditionValue>;
 
 export interface CustomChannelCondition {
   id?: string;
@@ -3225,7 +2504,7 @@ export interface CustomChannelCondition {
   op?: CustomChannelOperator | (string & {});
   value?: CustomChannelConditionValue | null;
 }
-export const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
+const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     key: S.optional(CustomChannelField),
@@ -3235,7 +2514,7 @@ export const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomChannelCondition" }) as any as S.Schema<CustomChannelCondition>;
 
 export type CustomChannelRuleItemsList = Array<CustomChannelCondition>;
-export const CustomChannelRuleItemsList = /*@__PURE__*/ S.Array(
+const CustomChannelRuleItemsList = /*@__PURE__*/ S.Array(
   CustomChannelCondition,
 ) as any as S.Schema<CustomChannelRuleItemsList>;
 
@@ -3245,7 +2524,7 @@ export interface CustomChannelRule {
   id?: string;
   items?: CustomChannelRuleItemsList;
 }
-export const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
+const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_type: S.optional(S.String),
     combiner: S.optional(FilterLogicalOperator),
@@ -3255,7 +2534,7 @@ export const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomChannelRule" }) as any as S.Schema<CustomChannelRule>;
 
 export type HogQLQueryModifiersCustomChannelTypeRulesList = Array<CustomChannelRule>;
-export const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ S.Array(
+const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ S.Array(
   CustomChannelRule,
 ) as any as S.Schema<HogQLQueryModifiersCustomChannelTypeRulesList>;
 
@@ -3265,7 +2544,7 @@ export interface DataWarehouseEventsModifier {
   table_name?: string;
   timestamp_field?: string;
 }
-export const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distinct_id_field: S.optional(S.String),
     id_field: S.optional(S.String),
@@ -3278,29 +2557,29 @@ export const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
 
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
   Array<DataWarehouseEventsModifier>;
-export const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ S.Array(
+const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ S.Array(
   DataWarehouseEventsModifier,
 ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
+const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
   ConversionGoalFilter1OrderByList as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
 
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
-export const InCohortVia = S.String;
+const InCohortVia = S.String;
 
 export type InlineCohortCalculation = "off" | "auto" | "always";
-export const InlineCohortCalculation = S.String;
+const InlineCohortCalculation = S.String;
 
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
   | "disabled";
-export const MaterializationMode = S.String;
+const MaterializationMode = S.String;
 
 export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
-export const MaterializedColumnsOptimizationMode = S.String;
+const MaterializedColumnsOptimizationMode = S.String;
 
 export type ParserMode =
   | "cpp_only"
@@ -3310,29 +2589,29 @@ export type ParserMode =
   | "rust_only"
   | "rust_py_only"
   | "rust_py_with_cpp_shadow";
-export const ParserMode = S.String;
+const ParserMode = S.String;
 
 export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
-export const PersonsArgMaxVersion = S.String;
+const PersonsArgMaxVersion = S.String;
 
 export type PersonsJoinMode = "inner" | "left";
-export const PersonsJoinMode = S.String;
+const PersonsJoinMode = S.String;
 
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
   | "person_id_override_properties_joined";
-export const PersonsOnEventsMode = S.String;
+const PersonsOnEventsMode = S.String;
 
 export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
-export const PropertyGroupsMode = S.String;
+const PropertyGroupsMode = S.String;
 
 export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
-export const SessionTableVersion = S.String;
+const SessionTableVersion = S.String;
 
 export type SessionsV2JoinMode = "string" | "uuid";
-export const SessionsV2JoinMode = S.String;
+const SessionsV2JoinMode = S.String;
 
 export interface HogQLQueryModifiers {
   bounceRateDurationSeconds?: number | null;
@@ -3384,7 +2663,7 @@ export interface HogQLQueryModifiers {
   /** Serve filters on the stored session-entry attribution properties (`$channel_type`, `$entry_utm_*`, `$entry_referring_domain`) by recomputing the value from the session's first pageview. Resolved server-side; not intended to be set by clients. */
   webAnalyticsFirstPageviewFilters?: boolean | null;
 }
-export const HogQLQueryModifiers = /*@__PURE__*/ S.suspend(() =>
+const HogQLQueryModifiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
     bounceRatePageViewMode: S.optional(S.NullOr(BounceRatePageViewMode)),
@@ -3431,21 +2710,19 @@ export const HogQLQueryModifiers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogQLQueryModifiers" }) as any as S.Schema<HogQLQueryModifiers>;
 
 export type MarketingAnalyticsOrderByEnum = "ASC" | "DESC";
-export const MarketingAnalyticsOrderByEnum = S.String;
-
 export type MarketingAnalyticsTableQueryOrderByItemItem = string | MarketingAnalyticsOrderByEnum;
-export const MarketingAnalyticsTableQueryOrderByItemItem =
+const MarketingAnalyticsTableQueryOrderByItemItem =
   S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemItem>;
 
 export type MarketingAnalyticsTableQueryOrderByItemList =
   Array<MarketingAnalyticsTableQueryOrderByItemItem>;
-export const MarketingAnalyticsTableQueryOrderByItemList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryOrderByItemList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryOrderByItemItem,
 ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemList>;
 
 export type MarketingAnalyticsTableQueryOrderByList =
   Array<MarketingAnalyticsTableQueryOrderByItemList>;
-export const MarketingAnalyticsTableQueryOrderByList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryOrderByItemList,
 ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByList>;
 
@@ -3454,21 +2731,21 @@ export type MarketingAnalyticsTableQueryPropertiesItem =
   | PersonPropertyFilter
   | SessionPropertyFilter
   | CohortPropertyFilter;
-export const MarketingAnalyticsTableQueryPropertiesItem =
+const MarketingAnalyticsTableQueryPropertiesItem =
   S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryPropertiesItem>;
 
 export type MarketingAnalyticsTableQueryPropertiesList =
   Array<MarketingAnalyticsTableQueryPropertiesItem>;
-export const MarketingAnalyticsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryPropertiesItem,
 ) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesList>;
 
 export type MarketingAnalyticsTableQueryResponseColumnsList = Array<unknown>;
-export const MarketingAnalyticsTableQueryResponseColumnsList =
+const MarketingAnalyticsTableQueryResponseColumnsList =
   GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsTableQueryResponseColumnsList>;
 
 export type QueryStatusLabelsList = Array<string>;
-export const QueryStatusLabelsList =
+const QueryStatusLabelsList =
   ConversionGoalFilter1OrderByList as any as S.Schema<QueryStatusLabelsList>;
 
 export interface ClickhouseQueryProgress {
@@ -3478,7 +2755,7 @@ export interface ClickhouseQueryProgress {
   rows_read?: number;
   time_elapsed?: number;
 }
-export const ClickhouseQueryProgress = /*@__PURE__*/ S.suspend(() =>
+const ClickhouseQueryProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_cpu_time: S.optional(S.Number),
     bytes_read: S.optional(S.Number),
@@ -3494,10 +2771,10 @@ export type QueryScanFixLocation =
   | "view"
   | "insight_date_range"
   | "dashboard_date_filter";
-export const QueryScanFixLocation = S.String;
+const QueryScanFixLocation = S.String;
 
 export type QueryScanFindingKind = "no_event_filter" | "no_start_date" | "persons_join";
-export const QueryScanFindingKind = S.String;
+const QueryScanFindingKind = S.String;
 
 export interface QueryScanWarning {
   /** Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and "Fix with AI" only when a finding is actionable. */
@@ -3516,7 +2793,7 @@ export interface QueryScanWarning {
   /** Shown to the person: what happened and what to do. */
   message: string;
 }
-export const QueryScanWarning = /*@__PURE__*/ S.suspend(() =>
+const QueryScanWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionable: S.Boolean,
     by_design: S.optional(S.NullOr(S.Boolean)),
@@ -3531,7 +2808,7 @@ export const QueryScanWarning = /*@__PURE__*/ S.suspend(() =>
 
 /** Every finding, fixable or not. Empty when the analysis found none. */
 export type QueryScanAnalysisFindingsList = Array<QueryScanWarning>;
-export const QueryScanAnalysisFindingsList = /*@__PURE__*/ S.Array(
+const QueryScanAnalysisFindingsList = /*@__PURE__*/ S.Array(
   QueryScanWarning,
 ) as any as S.Schema<QueryScanAnalysisFindingsList>;
 
@@ -3545,7 +2822,7 @@ export interface QueryScanAnalysis {
   /** How much of the project's events in the query's date range the query read, 0 to 1. */
   range_share?: number | null;
 }
-export const QueryScanAnalysis = /*@__PURE__*/ S.suspend(() =>
+const QueryScanAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assistant_prompt: S.optional(S.NullOr(S.String)),
     findings: QueryScanAnalysisFindingsList,
@@ -3566,7 +2843,7 @@ export interface QueryScanSummary {
   /** Rows ClickHouse read for the last fresh run, all tables included. */
   rows_read: number;
 }
-export const QueryScanSummary = /*@__PURE__*/ S.suspend(() =>
+const QueryScanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysis: S.optional(S.NullOr(QueryScanAnalysis)),
     analysis_requested: S.optional(S.NullOr(S.Boolean)),
@@ -3607,7 +2884,7 @@ export interface QueryStatus {
   task_id?: string | null;
   team_id?: number;
 }
-export const QueryStatus = /*@__PURE__*/ S.suspend(() =>
+const QueryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budget_remaining_bytes: S.optional(S.NullOr(S.Number)),
     bytes_read: S.optional(S.NullOr(S.Number)),
@@ -3637,7 +2914,7 @@ export interface ResolvedDateRangeResponse {
   date_from?: string;
   date_to?: string;
 }
-export const ResolvedDateRangeResponse = /*@__PURE__*/ S.suspend(() =>
+const ResolvedDateRangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String),
     date_to: S.optional(S.String),
@@ -3647,15 +2924,13 @@ export const ResolvedDateRangeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolvedDateRangeResponse>;
 
 export type WebAnalyticsItemKind = "unit" | "duration_s" | "percentage" | "currency";
-export const WebAnalyticsItemKind = S.String;
+const WebAnalyticsItemKind = S.String;
 
 export type MarketingAnalyticsItemPrevious = number | string;
-export const MarketingAnalyticsItemPrevious =
-  S.Unknown as any as S.Schema<MarketingAnalyticsItemPrevious>;
+const MarketingAnalyticsItemPrevious = S.Unknown as any as S.Schema<MarketingAnalyticsItemPrevious>;
 
 export type MarketingAnalyticsItemValue = number | string;
-export const MarketingAnalyticsItemValue =
-  S.Unknown as any as S.Schema<MarketingAnalyticsItemValue>;
+const MarketingAnalyticsItemValue = S.Unknown as any as S.Schema<MarketingAnalyticsItemValue>;
 
 export interface MarketingAnalyticsItem {
   changeFromPreviousPct?: number | null;
@@ -3666,7 +2941,7 @@ export interface MarketingAnalyticsItem {
   previous?: MarketingAnalyticsItemPrevious | null;
   value?: MarketingAnalyticsItemValue | null;
 }
-export const MarketingAnalyticsItem = /*@__PURE__*/ S.suspend(() =>
+const MarketingAnalyticsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeFromPreviousPct: S.optional(S.NullOr(S.Number)),
     hasComparison: S.optional(S.NullOr(S.Boolean)),
@@ -3679,13 +2954,13 @@ export const MarketingAnalyticsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketingAnalyticsItem" }) as any as S.Schema<MarketingAnalyticsItem>;
 
 export type MarketingAnalyticsTableQueryResponseResultsItemList = Array<MarketingAnalyticsItem>;
-export const MarketingAnalyticsTableQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsItem,
 ) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsItemList>;
 
 export type MarketingAnalyticsTableQueryResponseResultsList =
   Array<MarketingAnalyticsTableQueryResponseResultsItemList>;
-export const MarketingAnalyticsTableQueryResponseResultsList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryResponseResultsList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryResponseResultsItemList,
 ) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsList>;
 
@@ -3693,7 +2968,7 @@ export interface SamplingRate {
   denominator?: number | null;
   numerator?: number;
 }
-export const SamplingRate = /*@__PURE__*/ S.suspend(() =>
+const SamplingRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denominator: S.optional(S.NullOr(S.Number)),
     numerator: S.optional(S.Number),
@@ -3706,7 +2981,7 @@ export interface QueryTiming {
   /** Time in seconds. Shortened to 't' to save on data. */
   t?: number;
 }
-export const QueryTiming = /*@__PURE__*/ S.suspend(() =>
+const QueryTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     k: S.optional(S.String),
     t: S.optional(S.Number),
@@ -3714,12 +2989,12 @@ export const QueryTiming = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryTiming" }) as any as S.Schema<QueryTiming>;
 
 export type MarketingAnalyticsTableQueryResponseTimingsList = Array<QueryTiming>;
-export const MarketingAnalyticsTableQueryResponseTimingsList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTimingsList>;
 
 export type MarketingAnalyticsTableQueryResponseTypesList = Array<unknown>;
-export const MarketingAnalyticsTableQueryResponseTypesList =
+const MarketingAnalyticsTableQueryResponseTypesList =
   GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
 
 export interface DataWarehouseSourceUsage {
@@ -3730,7 +3005,7 @@ export interface DataWarehouseSourceUsage {
   /** Warehouse table name that was referenced */
   table_name: string;
 }
-export const DataWarehouseSourceUsage = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseSourceUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source_type: S.optional(S.NullOr(S.String)),
@@ -3740,10 +3015,9 @@ export const DataWarehouseSourceUsage = /*@__PURE__*/ S.suspend(() =>
 
 export type MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
   Array<DataWarehouseSourceUsage>;
-export const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList>;
+const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
+  DataWarehouseSourceUsage,
+) as any as S.Schema<MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList>;
 
 export interface DataWarehouseSyncWarning {
   /** Human-readable warning shown to the user */
@@ -3761,23 +3035,8 @@ export interface DataWarehouseSyncWarning {
   /** Tells warning kinds apart in the shared `warnings` list */
   type?: string;
 }
-export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    schema_name: S.String,
-    source_id: S.optional(S.NullOr(S.String)),
-    source_type: S.String,
-    status: S.String,
-    table_name: S.String,
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataWarehouseSyncWarning" }) as any as S.Schema<DataWarehouseSyncWarning>;
-
 /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
 export type AccessControlFilterWarningResourcesList = Array<string>;
-export const AccessControlFilterWarningResourcesList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<AccessControlFilterWarningResourcesList>;
-
 export interface AccessControlFilterWarning {
   /** Human-readable warning shown to the user */
   message: string;
@@ -3786,25 +3045,15 @@ export interface AccessControlFilterWarning {
   /** Tells warning kinds apart in the shared `warnings` list */
   type?: string;
 }
-export const AccessControlFilterWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    resources: AccessControlFilterWarningResourcesList,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessControlFilterWarning",
-}) as any as S.Schema<AccessControlFilterWarning>;
-
 export type MarketingAnalyticsTableQueryResponseWarningsItem =
   | DataWarehouseSyncWarning
   | AccessControlFilterWarning;
-export const MarketingAnalyticsTableQueryResponseWarningsItem =
+const MarketingAnalyticsTableQueryResponseWarningsItem =
   S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsTableQueryResponseWarningsList =
   Array<MarketingAnalyticsTableQueryResponseWarningsItem>;
-export const MarketingAnalyticsTableQueryResponseWarningsList = /*@__PURE__*/ S.Array(
+const MarketingAnalyticsTableQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryResponseWarningsItem,
 ) as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsList>;
 
@@ -3839,7 +3088,7 @@ export interface MarketingAnalyticsTableQueryResponse {
   /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response -- so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
   warnings?: MarketingAnalyticsTableQueryResponseWarningsList | null;
 }
-export const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(S.NullOr(MarketingAnalyticsTableQueryResponseColumnsList)),
     dataComputedAt: S.optional(S.NullOr(S.String)),
@@ -3870,7 +3119,7 @@ export interface WebAnalyticsSampling {
   enabled?: boolean | null;
   forceSamplingRate?: SamplingRate | null;
 }
-export const WebAnalyticsSampling = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsSampling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
     forceSamplingRate: S.optional(S.NullOr(SamplingRate)),
@@ -3878,7 +3127,7 @@ export const WebAnalyticsSampling = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebAnalyticsSampling" }) as any as S.Schema<WebAnalyticsSampling>;
 
 export type MarketingAnalyticsTableQuerySelectList = Array<string>;
-export const MarketingAnalyticsTableQuerySelectList =
+const MarketingAnalyticsTableQuerySelectList =
   ConversionGoalFilter1OrderByList as any as S.Schema<MarketingAnalyticsTableQuerySelectList>;
 
 export interface QueryLogTags {
@@ -3891,7 +3140,7 @@ export interface QueryLogTags {
   /** Scene where this query is shown in the UI. Use string, there's no need to churn the Schema when we add a new Scene * */
   scene?: string | null;
 }
-export const QueryLogTags = /*@__PURE__*/ S.suspend(() =>
+const QueryLogTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     presetId: S.optional(S.NullOr(S.String)),
@@ -3942,7 +3191,7 @@ export interface MarketingAnalyticsTableQuery {
   /** version of the node, used for schema migrations */
   version?: number | null;
 }
-export const MarketingAnalyticsTableQuery = /*@__PURE__*/ S.suspend(() =>
+const MarketingAnalyticsTableQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
     compareFilter: S.optional(S.NullOr(CompareFilter)),
@@ -3994,7 +3243,7 @@ export interface ListMarketingAnalyticsConversionRecordingsRequest {
   /** The maximum number of conversion session IDs to return. */
   limit?: number;
 }
-export const ListMarketingAnalyticsConversionRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketingAnalyticsConversionRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     client_query_id: S.optional(S.String),
@@ -4018,7 +3267,7 @@ export const ListMarketingAnalyticsConversionRecordingsRequest = /*@__PURE__*/ S
 
 /** Sessions in which the attributed conversions occurred. A session might not have a recording. */
 export type ConversionRecordingsResponseSessionIdsList = Array<string>;
-export const ConversionRecordingsResponseSessionIdsList =
+const ConversionRecordingsResponseSessionIdsList =
   ConversionGoalFilter1OrderByList as any as S.Schema<ConversionRecordingsResponseSessionIdsList>;
 
 export interface ConversionRecordingsResponse {
@@ -4029,7 +3278,7 @@ export interface ConversionRecordingsResponse {
   /** Whether the conversion data is still being prepared. */
   preparing: boolean;
 }
-export const ConversionRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversionRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_ids: ConversionRecordingsResponseSessionIdsList,
     has_more: S.Boolean,
@@ -4041,12 +3290,12 @@ export const ConversionRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan -- never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
 export type MarketingAnalyticsApplySetupOpsCreateRequestOpsList = Array<unknown>;
-export const MarketingAnalyticsApplySetupOpsCreateRequestOpsList =
+const MarketingAnalyticsApplySetupOpsCreateRequestOpsList =
   GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequestOpsList>;
 
 /** * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
 export type ApplySetupOpsSourceEnum = "setup_tab" | "apply_all_safe" | "mcp";
-export const ApplySetupOpsSourceEnum = S.String;
+const ApplySetupOpsSourceEnum = S.String;
 
 export interface MarketingAnalyticsApplySetupOpsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4056,7 +3305,7 @@ export interface MarketingAnalyticsApplySetupOpsCreateRequest {
   /** Where the request came from, recorded in the activity log * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
   source?: ApplySetupOpsSourceEnum | (string & {});
 }
-export const MarketingAnalyticsApplySetupOpsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MarketingAnalyticsApplySetupOpsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ops: MarketingAnalyticsApplySetupOpsCreateRequestOpsList,
@@ -4074,12 +3323,12 @@ export const MarketingAnalyticsApplySetupOpsCreateRequest = /*@__PURE__*/ S.susp
 
 /** The operations that were applied */
 export type ApplySetupOpsResponseAppliedList = Array<unknown>;
-export const ApplySetupOpsResponseAppliedList =
+const ApplySetupOpsResponseAppliedList =
   GoalExplanationByEventItemList as any as S.Schema<ApplySetupOpsResponseAppliedList>;
 
 /** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state -- POST them back to undo. */
 export type ApplySetupOpsResponseUndoOpsList = Array<unknown>;
-export const ApplySetupOpsResponseUndoOpsList =
+const ApplySetupOpsResponseUndoOpsList =
   GoalExplanationByEventItemList as any as S.Schema<ApplySetupOpsResponseUndoOpsList>;
 
 export interface ApplySetupOpsResponse {
@@ -4090,7 +3339,7 @@ export interface ApplySetupOpsResponse {
   /** The config as it now stands */
   marketing_analytics_config: unknown;
 }
-export const ApplySetupOpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplySetupOpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applied: ApplySetupOpsResponseAppliedList,
     undo_ops: ApplySetupOpsResponseUndoOpsList,
@@ -4104,7 +3353,7 @@ export interface MarketingAnalyticsConversionGoalsCreateCreateRequest {
   /** The conversion goal. Must match one of the ConversionGoalFilter shapes: an events node, an actions node or a data warehouse node. conversion_goal_id is assigned by the server and any value sent is ignored. */
   goal: ConversionGoal;
 }
-export const MarketingAnalyticsConversionGoalsCreateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MarketingAnalyticsConversionGoalsCreateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     goal: ConversionGoal,
@@ -4144,15 +3393,8 @@ export type PartialConversionGoalFilter1FixedPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PartialConversionGoalFilter1FixedPropertiesItem =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter1FixedPropertiesItem>;
-
 export type PartialConversionGoalFilter1FixedPropertiesList =
   Array<PartialConversionGoalFilter1FixedPropertiesItem>;
-export const PartialConversionGoalFilter1FixedPropertiesList = /*@__PURE__*/ S.Array(
-  PartialConversionGoalFilter1FixedPropertiesItem,
-) as any as S.Schema<PartialConversionGoalFilter1FixedPropertiesList>;
-
 export type PartialConversionGoalFilter1Math =
   | BaseMathType
   | FunnelMathType
@@ -4162,13 +3404,7 @@ export type PartialConversionGoalFilter1Math =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const PartialConversionGoalFilter1Math =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter1Math>;
-
 export type PartialConversionGoalFilter1OrderByList = Array<string>;
-export const PartialConversionGoalFilter1OrderByList =
-  ConversionGoalFilter1OrderByList as any as S.Schema<PartialConversionGoalFilter1OrderByList>;
-
 export type PartialConversionGoalFilter1PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -4194,31 +3430,13 @@ export type PartialConversionGoalFilter1PropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PartialConversionGoalFilter1PropertiesItem =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter1PropertiesItem>;
-
 export type PartialConversionGoalFilter1PropertiesList =
   Array<PartialConversionGoalFilter1PropertiesItem>;
-export const PartialConversionGoalFilter1PropertiesList = /*@__PURE__*/ S.Array(
-  PartialConversionGoalFilter1PropertiesItem,
-) as any as S.Schema<PartialConversionGoalFilter1PropertiesList>;
-
 export type PartialConversionGoalFilter1ResponseMap = { [key: string]: unknown | undefined };
-export const PartialConversionGoalFilter1ResponseMap =
-  ConversionGoalFilter1ResponseMap as any as S.Schema<PartialConversionGoalFilter1ResponseMap>;
-
 export type PartialConversionGoalFilter1SchemaMapValue = string | unknown;
-export const PartialConversionGoalFilter1SchemaMapValue =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter1SchemaMapValue>;
-
 export type PartialConversionGoalFilter1SchemaMapMap = {
   [key: string]: PartialConversionGoalFilter1SchemaMapValue | undefined;
 };
-export const PartialConversionGoalFilter1SchemaMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PartialConversionGoalFilter1SchemaMapValue,
-) as any as S.Schema<PartialConversionGoalFilter1SchemaMapMap>;
-
 /** ConversionGoalFilter1 with every field optional - the fields you send are merged into the stored goal. */
 export interface PartialConversionGoalFilter1 {
   conversion_goal_id?: string | null;
@@ -4245,36 +3463,6 @@ export interface PartialConversionGoalFilter1 {
   schema_map?: PartialConversionGoalFilter1SchemaMapMap | null;
   version?: number | null;
 }
-export const PartialConversionGoalFilter1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversion_goal_id: S.optional(S.NullOr(S.String)),
-    conversion_goal_name: S.optional(S.NullOr(S.String)),
-    counts_as_customer: S.optional(S.NullOr(S.Boolean)),
-    counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(PartialConversionGoalFilter1FixedPropertiesList)),
-    kind: S.optional(S.NullOr(S.String)),
-    limit: S.optional(S.NullOr(S.Number)),
-    math: S.optional(S.NullOr(PartialConversionGoalFilter1Math)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(S.NullOr(RevenueCurrencyPropertyConfig)),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    orderBy: S.optional(S.NullOr(PartialConversionGoalFilter1OrderByList)),
-    properties: S.optional(S.NullOr(PartialConversionGoalFilter1PropertiesList)),
-    response: S.optional(S.NullOr(PartialConversionGoalFilter1ResponseMap)),
-    schema_map: S.optional(S.NullOr(PartialConversionGoalFilter1SchemaMapMap)),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PartialConversionGoalFilter1",
-}) as any as S.Schema<PartialConversionGoalFilter1>;
-
 export type PartialConversionGoalFilter2FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -4300,15 +3488,8 @@ export type PartialConversionGoalFilter2FixedPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PartialConversionGoalFilter2FixedPropertiesItem =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter2FixedPropertiesItem>;
-
 export type PartialConversionGoalFilter2FixedPropertiesList =
   Array<PartialConversionGoalFilter2FixedPropertiesItem>;
-export const PartialConversionGoalFilter2FixedPropertiesList = /*@__PURE__*/ S.Array(
-  PartialConversionGoalFilter2FixedPropertiesItem,
-) as any as S.Schema<PartialConversionGoalFilter2FixedPropertiesList>;
-
 export type PartialConversionGoalFilter2Math =
   | BaseMathType
   | FunnelMathType
@@ -4318,9 +3499,6 @@ export type PartialConversionGoalFilter2Math =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const PartialConversionGoalFilter2Math =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter2Math>;
-
 export type PartialConversionGoalFilter2PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -4346,31 +3524,13 @@ export type PartialConversionGoalFilter2PropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PartialConversionGoalFilter2PropertiesItem =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter2PropertiesItem>;
-
 export type PartialConversionGoalFilter2PropertiesList =
   Array<PartialConversionGoalFilter2PropertiesItem>;
-export const PartialConversionGoalFilter2PropertiesList = /*@__PURE__*/ S.Array(
-  PartialConversionGoalFilter2PropertiesItem,
-) as any as S.Schema<PartialConversionGoalFilter2PropertiesList>;
-
 export type PartialConversionGoalFilter2ResponseMap = { [key: string]: unknown | undefined };
-export const PartialConversionGoalFilter2ResponseMap =
-  ConversionGoalFilter1ResponseMap as any as S.Schema<PartialConversionGoalFilter2ResponseMap>;
-
 export type PartialConversionGoalFilter2SchemaMapValue = string | unknown;
-export const PartialConversionGoalFilter2SchemaMapValue =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter2SchemaMapValue>;
-
 export type PartialConversionGoalFilter2SchemaMapMap = {
   [key: string]: PartialConversionGoalFilter2SchemaMapValue | undefined;
 };
-export const PartialConversionGoalFilter2SchemaMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PartialConversionGoalFilter2SchemaMapValue,
-) as any as S.Schema<PartialConversionGoalFilter2SchemaMapMap>;
-
 /** ConversionGoalFilter2 with every field optional - the fields you send are merged into the stored goal. */
 export interface PartialConversionGoalFilter2 {
   conversion_goal_id?: string | null;
@@ -4395,34 +3555,6 @@ export interface PartialConversionGoalFilter2 {
   schema_map?: PartialConversionGoalFilter2SchemaMapMap | null;
   version?: number | null;
 }
-export const PartialConversionGoalFilter2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversion_goal_id: S.optional(S.NullOr(S.String)),
-    conversion_goal_name: S.optional(S.NullOr(S.String)),
-    counts_as_customer: S.optional(S.NullOr(S.Boolean)),
-    counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(PartialConversionGoalFilter2FixedPropertiesList)),
-    id: S.optional(S.NullOr(S.Number)),
-    kind: S.optional(S.NullOr(S.String)),
-    math: S.optional(S.NullOr(PartialConversionGoalFilter2Math)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(S.NullOr(RevenueCurrencyPropertyConfig)),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    properties: S.optional(S.NullOr(PartialConversionGoalFilter2PropertiesList)),
-    response: S.optional(S.NullOr(PartialConversionGoalFilter2ResponseMap)),
-    schema_map: S.optional(S.NullOr(PartialConversionGoalFilter2SchemaMapMap)),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PartialConversionGoalFilter2",
-}) as any as S.Schema<PartialConversionGoalFilter2>;
-
 export type PartialConversionGoalFilter3FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -4448,15 +3580,8 @@ export type PartialConversionGoalFilter3FixedPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PartialConversionGoalFilter3FixedPropertiesItem =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter3FixedPropertiesItem>;
-
 export type PartialConversionGoalFilter3FixedPropertiesList =
   Array<PartialConversionGoalFilter3FixedPropertiesItem>;
-export const PartialConversionGoalFilter3FixedPropertiesList = /*@__PURE__*/ S.Array(
-  PartialConversionGoalFilter3FixedPropertiesItem,
-) as any as S.Schema<PartialConversionGoalFilter3FixedPropertiesList>;
-
 export type PartialConversionGoalFilter3Math =
   | BaseMathType
   | FunnelMathType
@@ -4466,9 +3591,6 @@ export type PartialConversionGoalFilter3Math =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const PartialConversionGoalFilter3Math =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter3Math>;
-
 export type PartialConversionGoalFilter3PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -4494,31 +3616,13 @@ export type PartialConversionGoalFilter3PropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const PartialConversionGoalFilter3PropertiesItem =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter3PropertiesItem>;
-
 export type PartialConversionGoalFilter3PropertiesList =
   Array<PartialConversionGoalFilter3PropertiesItem>;
-export const PartialConversionGoalFilter3PropertiesList = /*@__PURE__*/ S.Array(
-  PartialConversionGoalFilter3PropertiesItem,
-) as any as S.Schema<PartialConversionGoalFilter3PropertiesList>;
-
 export type PartialConversionGoalFilter3ResponseMap = { [key: string]: unknown | undefined };
-export const PartialConversionGoalFilter3ResponseMap =
-  ConversionGoalFilter1ResponseMap as any as S.Schema<PartialConversionGoalFilter3ResponseMap>;
-
 export type PartialConversionGoalFilter3SchemaMapValue = string | unknown;
-export const PartialConversionGoalFilter3SchemaMapValue =
-  S.Unknown as any as S.Schema<PartialConversionGoalFilter3SchemaMapValue>;
-
 export type PartialConversionGoalFilter3SchemaMapMap = {
   [key: string]: PartialConversionGoalFilter3SchemaMapValue | undefined;
 };
-export const PartialConversionGoalFilter3SchemaMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PartialConversionGoalFilter3SchemaMapValue,
-) as any as S.Schema<PartialConversionGoalFilter3SchemaMapMap>;
-
 /** ConversionGoalFilter3 with every field optional - the fields you send are merged into the stored goal. */
 export interface PartialConversionGoalFilter3 {
   conversion_goal_id?: string | null;
@@ -4548,44 +3652,11 @@ export interface PartialConversionGoalFilter3 {
   timestamp_field?: string | null;
   version?: number | null;
 }
-export const PartialConversionGoalFilter3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversion_goal_id: S.optional(S.NullOr(S.String)),
-    conversion_goal_name: S.optional(S.NullOr(S.String)),
-    counts_as_customer: S.optional(S.NullOr(S.Boolean)),
-    counts_as_revenue: S.optional(S.NullOr(S.Boolean)),
-    custom_name: S.optional(S.NullOr(S.String)),
-    distinct_id_field: S.optional(S.NullOr(S.String)),
-    dw_source_type: S.optional(S.NullOr(S.String)),
-    fixedProperties: S.optional(S.NullOr(PartialConversionGoalFilter3FixedPropertiesList)),
-    id: S.optional(S.NullOr(S.String)),
-    id_field: S.optional(S.NullOr(S.String)),
-    kind: S.optional(S.NullOr(S.String)),
-    math: S.optional(S.NullOr(PartialConversionGoalFilter3Math)),
-    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
-    math_hogql: S.optional(S.NullOr(S.String)),
-    math_multiplier: S.optional(S.NullOr(S.Number)),
-    math_property: S.optional(S.NullOr(S.String)),
-    math_property_revenue_currency: S.optional(S.NullOr(RevenueCurrencyPropertyConfig)),
-    math_property_type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
-    properties: S.optional(S.NullOr(PartialConversionGoalFilter3PropertiesList)),
-    response: S.optional(S.NullOr(PartialConversionGoalFilter3ResponseMap)),
-    schema_map: S.optional(S.NullOr(PartialConversionGoalFilter3SchemaMapMap)),
-    table_name: S.optional(S.NullOr(S.String)),
-    timestamp_field: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PartialConversionGoalFilter3",
-}) as any as S.Schema<PartialConversionGoalFilter3>;
-
 export type ConversionGoalPatch =
   | PartialConversionGoalFilter1
   | PartialConversionGoalFilter2
   | PartialConversionGoalFilter3;
-export const ConversionGoalPatch = S.Unknown as any as S.Schema<ConversionGoalPatch>;
+const ConversionGoalPatch = S.Unknown as any as S.Schema<ConversionGoalPatch>;
 
 export interface MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4594,19 +3665,18 @@ export interface MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest {
   /** The fields to change, merged into the stored goal -- anything you leave out is kept, and the goal keeps its position in the list. schema_map is merged key by key. The merged result must still match one of the ConversionGoalFilter shapes. Send `kind` only to change the goal's shape, in which case the goal is replaced rather than merged and the whole new shape is required. conversion_goal_id comes from the URL and any value sent is ignored. */
   goal?: ConversionGoalPatch;
 }
-export const MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      conversion_goal_id: S.String.pipe(T.Label()),
-      goal: S.optional(ConversionGoalPatch),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/{conversion_goal_id}/update/",
-        code: 200,
-      }),
-    ),
+const MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    conversion_goal_id: S.String.pipe(T.Label()),
+    goal: S.optional(ConversionGoalPatch),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/{conversion_goal_id}/update/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest",
 }) as any as S.Schema<MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest>;

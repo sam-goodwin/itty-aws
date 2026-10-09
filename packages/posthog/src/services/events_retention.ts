@@ -11,7 +11,7 @@ export interface GetEventsRetentionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventsRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventsRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -29,7 +29,7 @@ export interface EventsRetention2 {
   /** Where the events retention policy is documented. */
   docs_url: string;
 }
-export const EventsRetention2 = /*@__PURE__*/ S.suspend(() =>
+const EventsRetention2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retention_months: S.NullOr(S.Number),
     retained_from: S.NullOr(S.String),

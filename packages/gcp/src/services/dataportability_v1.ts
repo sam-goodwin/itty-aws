@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request to kick off an Archive job. */
 export interface ArchiveInitiatePortabilityRequest {
@@ -73,7 +73,7 @@ export interface ArchiveInitiatePortabilityRequest {
   /** Optional. The timestamp that represents the end point for the data you are exporting. If the end_time is not specified in the InitiatePortabilityArchiveRequest, this field is set to the latest available data. */
   endTime?: string;
 }
-export const ArchiveInitiatePortabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveInitiatePortabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
     startTime: S.optional(S.String),
@@ -87,7 +87,7 @@ export interface ArchiveInitiatePortabilityRequest_ {
   /** Request body */
   body?: ArchiveInitiatePortabilityRequest;
 }
-export const ArchiveInitiatePortabilityRequest_ = /*@__PURE__*/ S.suspend(() =>
+const ArchiveInitiatePortabilityRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ArchiveInitiatePortabilityRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -105,7 +105,7 @@ export type ArchiveInitiatePortabilityResponseAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "ACCESS_TYPE_ONE_TIME"
   | "ACCESS_TYPE_TIME_BASED";
-export const ArchiveInitiatePortabilityResponseAccessTypeEnum = S.String;
+const ArchiveInitiatePortabilityResponseAccessTypeEnum = S.String;
 
 /** Response from initiating an Archive job. */
 export interface ArchiveInitiatePortabilityResponse {
@@ -114,7 +114,7 @@ export interface ArchiveInitiatePortabilityResponse {
   /** The access type of the Archive job initiated by the API. */
   accessType?: ArchiveInitiatePortabilityResponseAccessTypeEnum;
 }
-export const ArchiveInitiatePortabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const ArchiveInitiatePortabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveJobId: S.optional(S.String),
     accessType: S.optional(ArchiveInitiatePortabilityResponseAccessTypeEnum),
@@ -125,9 +125,9 @@ export const ArchiveInitiatePortabilityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to cancel a Portability Archive job. */
 export interface CancelPortabilityArchiveRequest {}
-export const CancelPortabilityArchiveRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CancelPortabilityArchiveRequest" },
-) as any as S.Schema<CancelPortabilityArchiveRequest>;
+const CancelPortabilityArchiveRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "CancelPortabilityArchiveRequest",
+}) as any as S.Schema<CancelPortabilityArchiveRequest>;
 
 export interface CancelArchiveJobsRequest {
   /** Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. */
@@ -135,7 +135,7 @@ export interface CancelArchiveJobsRequest {
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-export const CancelArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
@@ -150,21 +150,17 @@ export const CancelArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response to canceling a Data Portability Archive job. */
 export interface CancelPortabilityArchiveResponse {}
-export const CancelPortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelPortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelPortabilityArchiveResponse",
 }) as any as S.Schema<CancelPortabilityArchiveResponse>;
 
 /** Request to check the token's access type. All required information is derived from the attached OAuth token. */
 export type CheckAccessTypeRequest = CancelPortabilityArchiveRequest;
-export const CheckAccessTypeRequest = CancelPortabilityArchiveRequest;
-
 export interface CheckAccessTypeRequest_ {
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-export const CheckAccessTypeRequest_ = /*@__PURE__*/ S.suspend(() =>
+const CheckAccessTypeRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -183,7 +179,7 @@ export interface CheckAccessTypeResponse {
   /** Jobs initiated with this token will be time-based if all requested resources have time-based access. */
   timeBasedResources?: StringList;
 }
-export const CheckAccessTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckAccessTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oneTimeResources: S.optional(StringList),
     timeBasedResources: S.optional(StringList),
@@ -194,7 +190,7 @@ export interface GetPortabilityArchiveStateArchiveJobsRequest {
   /** Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. */
   name: string;
 }
-export const GetPortabilityArchiveStateArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortabilityArchiveStateArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -214,7 +210,7 @@ export type PortabilityArchiveStateStateEnum =
   | "COMPLETE"
   | "FAILED"
   | "CANCELLED";
-export const PortabilityArchiveStateStateEnum = S.String;
+const PortabilityArchiveStateStateEnum = S.String;
 
 /** Resource that contains the state of an Archive job. */
 export interface PortabilityArchiveState {
@@ -229,7 +225,7 @@ export interface PortabilityArchiveState {
   /** The timestamp that represents the end point for the data you are exporting. If the end_time value is set in the InitiatePortabilityArchiveRequest, this field is set to that value. If end_time is not set, this value is set to the time the export was requested. */
   exportTime?: string;
 }
-export const PortabilityArchiveState = /*@__PURE__*/ S.suspend(() =>
+const PortabilityArchiveState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urls: S.optional(StringList),
     startTime: S.optional(S.String),
@@ -241,13 +237,11 @@ export const PortabilityArchiveState = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to reset exhausted OAuth scopes. */
 export type ResetAuthorizationRequest = CancelPortabilityArchiveRequest;
-export const ResetAuthorizationRequest = CancelPortabilityArchiveRequest;
-
 export interface ResetAuthorizationRequest_ {
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-export const ResetAuthorizationRequest_ = /*@__PURE__*/ S.suspend(() =>
+const ResetAuthorizationRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -263,21 +257,19 @@ export const ResetAuthorizationRequest_ = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 /** Request to retry a failed Portability Archive job. */
 export type RetryPortabilityArchiveRequest = CancelPortabilityArchiveRequest;
-export const RetryPortabilityArchiveRequest = CancelPortabilityArchiveRequest;
-
 export interface RetryArchiveJobsRequest {
   /** Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed. */
   name: string;
   /** Request body */
   body?: CancelPortabilityArchiveRequest;
 }
-export const RetryArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryArchiveJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelPortabilityArchiveRequest.pipe(T.HttpBody())),
@@ -295,7 +287,7 @@ export interface RetryPortabilityArchiveResponse {
   /** The archive job ID that is initiated by the retry endpoint. This can be used to get the state of the new job. */
   archiveJobId?: string;
 }
-export const RetryPortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() =>
+const RetryPortabilityArchiveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveJobId: S.optional(S.String),
   }),

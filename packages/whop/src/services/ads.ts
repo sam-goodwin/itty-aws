@@ -60,7 +60,7 @@ export type CreateAdRequestCallToAction =
   | "sign_up"
   | "subscribe"
   | "watch_more";
-export const CreateAdRequestCallToAction = S.String;
+const CreateAdRequestCallToAction = S.String;
 
 /** The saved crop window for this creative, in source image pixels. Omit it for the original asset or for a format that has not been cropped. */
 export interface CreateAdRequestCreativesItemCrop {
@@ -69,7 +69,7 @@ export interface CreateAdRequestCreativesItemCrop {
   x?: number;
   y?: number;
 }
-export const CreateAdRequestCreativesItemCrop = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestCreativesItemCrop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     width: S.optional(S.Number),
@@ -81,7 +81,7 @@ export const CreateAdRequestCreativesItemCrop = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAdRequestCreativesItemCrop>;
 
 export type CreateAdRequestCreativesItemFormat = "square" | "vertical" | "horizontal";
-export const CreateAdRequestCreativesItemFormat = S.String;
+const CreateAdRequestCreativesItemFormat = S.String;
 
 export interface CreateAdRequestCreativesItem {
   /** The saved crop window for this creative, in source image pixels. Omit it for the original asset or for a format that has not been cropped. */
@@ -92,7 +92,7 @@ export interface CreateAdRequestCreativesItem {
   /** ISO 639 code of the language this image or video is shown for, such as `es`. Required on every entry of an ad with `translations`, where the ad's own creative uses `translations.source_language`. Another language's creative is the same type as the ad's own, with no format. Leave it out on an ad without translations. */
   language?: string;
 }
-export const CreateAdRequestCreativesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestCreativesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crop: S.optional(CreateAdRequestCreativesItemCrop),
     format: S.optional(CreateAdRequestCreativesItemFormat),
@@ -105,7 +105,7 @@ export const CreateAdRequestCreativesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Entries with no format become a carousel's ordered cards, sharing the ad's copy -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
 export type CreateAdRequestCreativesList = Array<CreateAdRequestCreativesItem>;
-export const CreateAdRequestCreativesList = /*@__PURE__*/ S.Array(
+const CreateAdRequestCreativesList = /*@__PURE__*/ S.Array(
   CreateAdRequestCreativesItem,
 ) as any as S.Schema<CreateAdRequestCreativesList>;
 
@@ -115,7 +115,7 @@ export interface CreateAdRequestDescriptionsItem {
   /** The text shown to viewers. */
   text: string;
 }
-export const CreateAdRequestDescriptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestDescriptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.optional(S.NullOr(S.String)),
     text: S.String,
@@ -126,20 +126,18 @@ export const CreateAdRequestDescriptionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The description shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type CreateAdRequestDescriptionsList = Array<CreateAdRequestDescriptionsItem>;
-export const CreateAdRequestDescriptionsList = /*@__PURE__*/ S.Array(
+const CreateAdRequestDescriptionsList = /*@__PURE__*/ S.Array(
   CreateAdRequestDescriptionsItem,
 ) as any as S.Schema<CreateAdRequestDescriptionsList>;
 
 export type CreateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
-export const CreateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
-
 /** The headline shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type CreateAdRequestHeadlinesList = Array<CreateAdRequestDescriptionsItem>;
-export const CreateAdRequestHeadlinesList =
+const CreateAdRequestHeadlinesList =
   CreateAdRequestDescriptionsList as any as S.Schema<CreateAdRequestHeadlinesList>;
 
 export type CreateAdRequestLeadFormCompletionButtonType = "website" | "call" | "download";
-export const CreateAdRequestLeadFormCompletionButtonType = S.String;
+const CreateAdRequestLeadFormCompletionButtonType = S.String;
 
 /** Optional completion screen shown after submission. Its button needs a destination: url for button_type website (the default), phone_number for call, file_url for download. */
 export interface CreateAdRequestLeadFormCompletion {
@@ -151,7 +149,7 @@ export interface CreateAdRequestLeadFormCompletion {
   phone_number?: string;
   url?: string;
 }
-export const CreateAdRequestLeadFormCompletion = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormCompletion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     button_text: S.optional(S.String),
     button_type: S.optional(CreateAdRequestLeadFormCompletionButtonType),
@@ -171,7 +169,7 @@ export interface CreateAdRequestLeadFormDisclaimerCheckboxesItem {
   required?: boolean;
   text?: string;
 }
-export const CreateAdRequestLeadFormDisclaimerCheckboxesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormDisclaimerCheckboxesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checked_by_default: S.optional(S.Boolean),
     key: S.optional(S.String),
@@ -184,7 +182,7 @@ export const CreateAdRequestLeadFormDisclaimerCheckboxesItem = /*@__PURE__*/ S.s
 
 export type CreateAdRequestLeadFormDisclaimerCheckboxesList =
   Array<CreateAdRequestLeadFormDisclaimerCheckboxesItem>;
-export const CreateAdRequestLeadFormDisclaimerCheckboxesList = /*@__PURE__*/ S.Array(
+const CreateAdRequestLeadFormDisclaimerCheckboxesList = /*@__PURE__*/ S.Array(
   CreateAdRequestLeadFormDisclaimerCheckboxesItem,
 ) as any as S.Schema<CreateAdRequestLeadFormDisclaimerCheckboxesList>;
 
@@ -194,7 +192,7 @@ export interface CreateAdRequestLeadFormDisclaimer {
   checkboxes?: CreateAdRequestLeadFormDisclaimerCheckboxesList;
   title?: string;
 }
-export const CreateAdRequestLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     checkboxes: S.optional(CreateAdRequestLeadFormDisclaimerCheckboxesList),
@@ -206,14 +204,14 @@ export const CreateAdRequestLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
 
 /** more_volume (default) is quickest to submit; higher_intent adds a confirmation step. */
 export type CreateAdRequestLeadFormFormType = "more_volume" | "higher_intent";
-export const CreateAdRequestLeadFormFormType = S.String;
+const CreateAdRequestLeadFormFormType = S.String;
 
 /** Optional intro screen shown before the questions. */
 export interface CreateAdRequestLeadFormIntro {
   description?: string;
   headline?: string;
 }
-export const CreateAdRequestLeadFormIntro = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormIntro = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     headline: S.optional(S.String),
@@ -227,7 +225,7 @@ export interface CreateAdRequestLeadFormPrivacyPolicy {
   link_text?: string;
   url?: string;
 }
-export const CreateAdRequestLeadFormPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link_text: S.optional(S.String),
     url: S.optional(S.String),
@@ -240,20 +238,20 @@ export type CreateAdRequestLeadFormQuestionsItemFormat =
   | "short_answer"
   | "multiple_choice"
   | "appointment";
-export const CreateAdRequestLeadFormQuestionsItemFormat = S.String;
+const CreateAdRequestLeadFormQuestionsItemFormat = S.String;
 
 export type CreateAdRequestLeadFormQuestionsItemOptionsItemLogicAction =
   | "go_to_question"
   | "submit_form"
   | "close_form";
-export const CreateAdRequestLeadFormQuestionsItemOptionsItemLogicAction = S.String;
+const CreateAdRequestLeadFormQuestionsItemOptionsItemLogicAction = S.String;
 
 export interface CreateAdRequestLeadFormQuestionsItemOptionsItemLogic {
   action?: CreateAdRequestLeadFormQuestionsItemOptionsItemLogicAction | (string & {});
   target_end_page_index?: number;
   target_question_index?: number;
 }
-export const CreateAdRequestLeadFormQuestionsItemOptionsItemLogic = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormQuestionsItemOptionsItemLogic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(CreateAdRequestLeadFormQuestionsItemOptionsItemLogicAction),
     target_end_page_index: S.optional(S.Number),
@@ -268,7 +266,7 @@ export interface CreateAdRequestLeadFormQuestionsItemOptionsItem {
   logic?: CreateAdRequestLeadFormQuestionsItemOptionsItemLogic;
   value?: string;
 }
-export const CreateAdRequestLeadFormQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     logic: S.optional(CreateAdRequestLeadFormQuestionsItemOptionsItemLogic),
@@ -280,7 +278,7 @@ export const CreateAdRequestLeadFormQuestionsItemOptionsItem = /*@__PURE__*/ S.s
 
 export type CreateAdRequestLeadFormQuestionsItemOptionsList =
   Array<CreateAdRequestLeadFormQuestionsItemOptionsItem>;
-export const CreateAdRequestLeadFormQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
+const CreateAdRequestLeadFormQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
   CreateAdRequestLeadFormQuestionsItemOptionsItem,
 ) as any as S.Schema<CreateAdRequestLeadFormQuestionsItemOptionsList>;
 
@@ -306,7 +304,7 @@ export type CreateAdRequestLeadFormQuestionsItemType =
   | "military_status"
   | "date_time"
   | "custom";
-export const CreateAdRequestLeadFormQuestionsItemType = S.String;
+const CreateAdRequestLeadFormQuestionsItemType = S.String;
 
 export interface CreateAdRequestLeadFormQuestionsItem {
   format?: CreateAdRequestLeadFormQuestionsItemFormat | (string & {});
@@ -314,7 +312,7 @@ export interface CreateAdRequestLeadFormQuestionsItem {
   options?: CreateAdRequestLeadFormQuestionsItemOptionsList;
   type?: CreateAdRequestLeadFormQuestionsItemType | (string & {});
 }
-export const CreateAdRequestLeadFormQuestionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadFormQuestionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(CreateAdRequestLeadFormQuestionsItemFormat),
     label: S.optional(S.String),
@@ -327,7 +325,7 @@ export const CreateAdRequestLeadFormQuestionsItem = /*@__PURE__*/ S.suspend(() =
 
 /** The questions on the form. Standard prefill types need only a type; a custom question needs a label and a format (plus options for multiple_choice). Options carry an optional key and answer-routing logic. */
 export type CreateAdRequestLeadFormQuestionsList = Array<CreateAdRequestLeadFormQuestionsItem>;
-export const CreateAdRequestLeadFormQuestionsList = /*@__PURE__*/ S.Array(
+const CreateAdRequestLeadFormQuestionsList = /*@__PURE__*/ S.Array(
   CreateAdRequestLeadFormQuestionsItem,
 ) as any as S.Schema<CreateAdRequestLeadFormQuestionsList>;
 
@@ -350,7 +348,7 @@ export interface CreateAdRequestLeadForm {
   /** The questions on the form. Standard prefill types need only a type; a custom question needs a label and a format (plus options for multiple_choice). Options carry an optional key and answer-routing logic. */
   questions?: CreateAdRequestLeadFormQuestionsList;
 }
-export const CreateAdRequestLeadForm = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestLeadForm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completion: S.optional(CreateAdRequestLeadFormCompletion),
     disclaimer: S.optional(CreateAdRequestLeadFormDisclaimer),
@@ -368,7 +366,7 @@ export interface CreateAdRequestMessagingConfig {
   keyword?: string;
   message?: string;
 }
-export const CreateAdRequestMessagingConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestMessagingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyword: S.optional(S.String),
     message: S.optional(S.String),
@@ -382,7 +380,7 @@ export interface CreateAdRequestMusic {
   /** Uploaded MP3 file ID, prefixed `file_`. */
   id: string;
 }
-export const CreateAdRequestMusic = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestMusic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -390,21 +388,19 @@ export const CreateAdRequestMusic = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifies the network that owns `existing_post_id`. The source is inferred from the ID shape when omitted. */
 export type CreateAdRequestPostSource = "facebook" | "instagram";
-export const CreateAdRequestPostSource = S.String;
+const CreateAdRequestPostSource = S.String;
 
 export type CreateAdRequestPrimaryTextsItem = CreateAdRequestDescriptionsItem;
-export const CreateAdRequestPrimaryTextsItem = CreateAdRequestDescriptionsItem;
-
 /** The primary text shown in the ad body. Entries without a language are the ad's own copy (several make text variations); add one entry per other language on a Meta ad with `translations`. */
 export type CreateAdRequestPrimaryTextsList = Array<CreateAdRequestDescriptionsItem>;
-export const CreateAdRequestPrimaryTextsList =
+const CreateAdRequestPrimaryTextsList =
   CreateAdRequestDescriptionsList as any as S.Schema<CreateAdRequestPrimaryTextsList>;
 
 export interface CreateAdRequestSocialAccountsItem {
   /** Social account ID, prefixed `sacc_`. */
   id?: string;
 }
-export const CreateAdRequestSocialAccountsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestSocialAccountsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -414,13 +410,13 @@ export const CreateAdRequestSocialAccountsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
 export type CreateAdRequestSocialAccountsList = Array<CreateAdRequestSocialAccountsItem>;
-export const CreateAdRequestSocialAccountsList = /*@__PURE__*/ S.Array(
+const CreateAdRequestSocialAccountsList = /*@__PURE__*/ S.Array(
   CreateAdRequestSocialAccountsItem,
 ) as any as S.Schema<CreateAdRequestSocialAccountsList>;
 
 /** ISO 639 codes Meta translates the ad's own copy into automatically. English copy translates into `es`, `fr`, `de`, `pt`, `it`, `ar`, `nl`, `ms`, `sv`, `id`, `pl`, `hi`, `da`, `tr`, `fil`, and `ro`; `de`, `ar`, `he`, `es`, `ja`, `no`, `fr`, `nl`, and `sv` copy translate into `en`. */
 export type CreateAdRequestTranslationsAutomaticLanguagesList = Array<string>;
-export const CreateAdRequestTranslationsAutomaticLanguagesList = /*@__PURE__*/ S.Array(
+const CreateAdRequestTranslationsAutomaticLanguagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAdRequestTranslationsAutomaticLanguagesList>;
 
@@ -431,7 +427,7 @@ export interface CreateAdRequestTranslations {
   /** ISO 639 code the ad's own copy is written in, such as `en`. */
   source_language: string;
 }
-export const CreateAdRequestTranslations = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequestTranslations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic_languages: S.optional(CreateAdRequestTranslationsAutomaticLanguagesList),
     source_language: S.String,
@@ -482,7 +478,7 @@ export interface CreateAdRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateAdRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ad_group: S.optional(S.Unknown),
     ad_group_id: S.optional(S.String),
@@ -511,7 +507,7 @@ export interface AdEntityReference {
   /** The referenced entity's id. */
   id: string;
 }
-export const AdEntityReference = CreateAdRequestMusic as any as S.Schema<AdEntityReference>;
+const AdEntityReference = CreateAdRequestMusic as any as S.Schema<AdEntityReference>;
 
 /** The call-to-action button shown on the ad. */
 export type AdCallToAction =
@@ -546,7 +542,7 @@ export type AdCallToAction =
   | "event_rsvp"
   | "see_details"
   | "view_instagram_profile";
-export const AdCallToAction = S.String;
+const AdCallToAction = S.String;
 
 export interface AdCreativeCrop {
   /** Height of the crop window in source pixels. */
@@ -558,7 +554,7 @@ export interface AdCreativeCrop {
   /** Top edge of the crop window in source pixels. */
   y: number;
 }
-export const AdCreativeCrop = /*@__PURE__*/ S.suspend(() =>
+const AdCreativeCrop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.Number,
     width: S.Number,
@@ -569,7 +565,7 @@ export const AdCreativeCrop = /*@__PURE__*/ S.suspend(() =>
 
 /** The placement variant this asset covers, or null for the original asset. */
 export type AdCreativeFormat = "square" | "vertical" | "horizontal";
-export const AdCreativeFormat = S.String;
+const AdCreativeFormat = S.String;
 
 export interface AdCreative {
   /** The saved crop window for this creative, in source image pixels. Null for the original asset or a format that has not been cropped. */
@@ -585,7 +581,7 @@ export interface AdCreative {
   /** CDN url of the asset. */
   url: string | null;
 }
-export const AdCreative = /*@__PURE__*/ S.suspend(() =>
+const AdCreative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crop: S.NullOr(AdCreativeCrop),
     format: S.NullOr(AdCreativeFormat),
@@ -597,9 +593,7 @@ export const AdCreative = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdCreative" }) as any as S.Schema<AdCreative>;
 
 export type AdCreativesList = Array<AdCreative>;
-export const AdCreativesList = /*@__PURE__*/ S.Array(
-  AdCreative,
-) as any as S.Schema<AdCreativesList>;
+const AdCreativesList = /*@__PURE__*/ S.Array(AdCreative) as any as S.Schema<AdCreativesList>;
 
 /** Whether the ad is delivering right now, and if not, why. When several states apply at once, the highest-precedence one is returned. */
 export type AdDeliveryStatus =
@@ -616,7 +610,7 @@ export type AdDeliveryStatus =
   | "learning_limited"
   | "learning"
   | "active";
-export const AdDeliveryStatus = S.String;
+const AdDeliveryStatus = S.String;
 
 export interface AdText {
   /** ISO 639 code of the language this text is in, such as `es`. On an ad with translations, the ad's own copy carries `translations.source_language`. It's `null` on an ad without translations. */
@@ -624,7 +618,7 @@ export interface AdText {
   /** The text shown to viewers. */
   text: string;
 }
-export const AdText = /*@__PURE__*/ S.suspend(() =>
+const AdText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.NullOr(S.String),
     text: S.String,
@@ -632,16 +626,14 @@ export const AdText = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdText" }) as any as S.Schema<AdText>;
 
 export type AdDescriptionsList = Array<AdText>;
-export const AdDescriptionsList = /*@__PURE__*/ S.Array(
-  AdText,
-) as any as S.Schema<AdDescriptionsList>;
+const AdDescriptionsList = /*@__PURE__*/ S.Array(AdText) as any as S.Schema<AdDescriptionsList>;
 
 export type AdHeadlinesList = Array<AdText>;
-export const AdHeadlinesList = /*@__PURE__*/ S.Array(AdText) as any as S.Schema<AdHeadlinesList>;
+const AdHeadlinesList = /*@__PURE__*/ S.Array(AdText) as any as S.Schema<AdHeadlinesList>;
 
 /** The type of resource the issue is attached to. */
 export type AdPlatformIssueResourceType = "ad_campaign" | "ad_group" | "ad";
-export const AdPlatformIssueResourceType = S.String;
+const AdPlatformIssueResourceType = S.String;
 
 export interface AdPlatformIssue {
   /** Unique identifier for the issue. */
@@ -653,7 +645,7 @@ export interface AdPlatformIssue {
   /** The type of resource the issue is attached to. */
   resource_type: AdPlatformIssueResourceType;
 }
-export const AdPlatformIssue = /*@__PURE__*/ S.suspend(() =>
+const AdPlatformIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     message: S.String,
@@ -663,11 +655,11 @@ export const AdPlatformIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdPlatformIssue" }) as any as S.Schema<AdPlatformIssue>;
 
 export type AdIssuesList = Array<AdPlatformIssue>;
-export const AdIssuesList = /*@__PURE__*/ S.Array(AdPlatformIssue) as any as S.Schema<AdIssuesList>;
+const AdIssuesList = /*@__PURE__*/ S.Array(AdPlatformIssue) as any as S.Schema<AdIssuesList>;
 
 /** What the follow-up button does. `null` on forms saved before the button was configurable. */
 export type AdLeadFormCompletionButtonType = "website" | "call" | "download";
-export const AdLeadFormCompletionButtonType = S.String;
+const AdLeadFormCompletionButtonType = S.String;
 
 export interface AdLeadFormCompletion {
   /** Text of the follow-up button. */
@@ -685,7 +677,7 @@ export interface AdLeadFormCompletion {
   /** Website the follow-up button opens. Set when `button_type` is `website`. */
   url: string | null;
 }
-export const AdLeadFormCompletion = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormCompletion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     button_text: S.NullOr(S.String),
     button_type: S.NullOr(AdLeadFormCompletionButtonType),
@@ -707,7 +699,7 @@ export interface AdLeadFormDisclaimerCheckbox {
   /** Consent text next to the checkbox. */
   text: string;
 }
-export const AdLeadFormDisclaimerCheckbox = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormDisclaimerCheckbox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checked_by_default: S.NullOr(S.Boolean),
     key: S.NullOr(S.String),
@@ -719,7 +711,7 @@ export const AdLeadFormDisclaimerCheckbox = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdLeadFormDisclaimerCheckbox>;
 
 export type AdLeadFormDisclaimerCheckboxesList = Array<AdLeadFormDisclaimerCheckbox>;
-export const AdLeadFormDisclaimerCheckboxesList = /*@__PURE__*/ S.Array(
+const AdLeadFormDisclaimerCheckboxesList = /*@__PURE__*/ S.Array(
   AdLeadFormDisclaimerCheckbox,
 ) as any as S.Schema<AdLeadFormDisclaimerCheckboxesList>;
 
@@ -730,7 +722,7 @@ export interface AdLeadFormDisclaimer {
   /** Disclaimer title. */
   title: string | null;
 }
-export const AdLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.NullOr(S.String),
     checkboxes: AdLeadFormDisclaimerCheckboxesList,
@@ -740,7 +732,7 @@ export const AdLeadFormDisclaimer = /*@__PURE__*/ S.suspend(() =>
 
 /** `more_volume` is quickest to submit; `higher_intent` adds a confirmation step before submission. */
 export type AdLeadFormFormType = "more_volume" | "higher_intent";
-export const AdLeadFormFormType = S.String;
+const AdLeadFormFormType = S.String;
 
 export interface AdLeadFormIntro {
   /** Body text under the headline. */
@@ -748,7 +740,7 @@ export interface AdLeadFormIntro {
   /** Headline of the intro screen. */
   headline: string | null;
 }
-export const AdLeadFormIntro = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormIntro = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.NullOr(S.String),
     headline: S.NullOr(S.String),
@@ -761,7 +753,7 @@ export interface AdLeadFormPrivacyPolicy {
   /** URL of your privacy policy. */
   url: string;
 }
-export const AdLeadFormPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link_text: S.NullOr(S.String),
     url: S.String,
@@ -770,7 +762,7 @@ export const AdLeadFormPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** What happens when the choice is selected. */
 export type AdLeadFormOptionLogicAction = "go_to_question" | "submit_form" | "close_form";
-export const AdLeadFormOptionLogicAction = S.String;
+const AdLeadFormOptionLogicAction = S.String;
 
 export interface AdLeadFormOptionLogic {
   /** What happens when the choice is selected. */
@@ -780,7 +772,7 @@ export interface AdLeadFormOptionLogic {
   /** Zero-based index of the question to jump to, for `go_to_question`. */
   target_question_index?: number;
 }
-export const AdLeadFormOptionLogic = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormOptionLogic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AdLeadFormOptionLogicAction,
     target_end_page_index: S.optional(S.Number),
@@ -796,7 +788,7 @@ export interface AdLeadFormQuestionOption {
   /** Choice text shown to the person. */
   value: string;
 }
-export const AdLeadFormQuestionOption = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormQuestionOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
     logic: S.optional(AdLeadFormOptionLogic),
@@ -805,7 +797,7 @@ export const AdLeadFormQuestionOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdLeadFormQuestionOption" }) as any as S.Schema<AdLeadFormQuestionOption>;
 
 export type AdLeadFormQuestionOptionsList = Array<AdLeadFormQuestionOption>;
-export const AdLeadFormQuestionOptionsList = /*@__PURE__*/ S.Array(
+const AdLeadFormQuestionOptionsList = /*@__PURE__*/ S.Array(
   AdLeadFormQuestionOption,
 ) as any as S.Schema<AdLeadFormQuestionOptionsList>;
 
@@ -818,7 +810,7 @@ export interface AdLeadFormQuestion {
   /** Question type: a standard prefill type such as `email`, `phone`, or `full_name`, or `custom` for your own question. */
   type: string;
 }
-export const AdLeadFormQuestion = /*@__PURE__*/ S.suspend(() =>
+const AdLeadFormQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(S.String),
     label: S.optional(S.String),
@@ -828,7 +820,7 @@ export const AdLeadFormQuestion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdLeadFormQuestion" }) as any as S.Schema<AdLeadFormQuestion>;
 
 export type AdLeadFormQuestionsList = Array<AdLeadFormQuestion>;
-export const AdLeadFormQuestionsList = /*@__PURE__*/ S.Array(
+const AdLeadFormQuestionsList = /*@__PURE__*/ S.Array(
   AdLeadFormQuestion,
 ) as any as S.Schema<AdLeadFormQuestionsList>;
 
@@ -849,7 +841,7 @@ export interface AdLeadForm {
   privacy_policy: AdLeadFormPrivacyPolicy | null;
   questions: AdLeadFormQuestionsList;
 }
-export const AdLeadForm = /*@__PURE__*/ S.suspend(() =>
+const AdLeadForm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completion: S.NullOr(AdLeadFormCompletion),
     disclaimer: S.NullOr(AdLeadFormDisclaimer),
@@ -868,7 +860,7 @@ export interface AdMessagingConfig {
   /** Greeting shown when the conversation opens. */
   message: string | null;
 }
-export const AdMessagingConfig = /*@__PURE__*/ S.suspend(() =>
+const AdMessagingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyword: S.NullOr(S.String),
     message: S.NullOr(S.String),
@@ -883,7 +875,7 @@ export interface AdMusic {
   /** CDN url of the MP3. */
   url: string | null;
 }
-export const AdMusic = /*@__PURE__*/ S.suspend(() =>
+const AdMusic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -893,14 +885,14 @@ export const AdMusic = /*@__PURE__*/ S.suspend(() =>
 
 /** The ad platform this ad runs on. */
 export type AdPlatform = "meta" | "tiktok" | "google";
-export const AdPlatform = S.String;
+const AdPlatform = S.String;
 
 /** Identifies the network that owns `existing_post_id`; `null` when the ad uses uploaded creatives. */
 export type AdPostSource = "facebook" | "instagram";
-export const AdPostSource = S.String;
+const AdPostSource = S.String;
 
 export type AdPrimaryTextsList = Array<AdText>;
-export const AdPrimaryTextsList = AdDescriptionsList as any as S.Schema<AdPrimaryTextsList>;
+const AdPrimaryTextsList = AdDescriptionsList as any as S.Schema<AdPrimaryTextsList>;
 
 /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdResultEvent =
@@ -914,19 +906,19 @@ export type AdResultEvent =
   | "add_to_cart"
   | "custom"
   | "messaging_conversation";
-export const AdResultEvent = S.String;
+const AdResultEvent = S.String;
 
 export type AdSocialAccountsList = Array<AdEntityReference>;
-export const AdSocialAccountsList = /*@__PURE__*/ S.Array(
+const AdSocialAccountsList = /*@__PURE__*/ S.Array(
   AdEntityReference,
 ) as any as S.Schema<AdSocialAccountsList>;
 
 /** Whether the ad is enabled. `active` and `paused` are set by you; `in_review` and `rejected` come from ad review. */
 export type AdStatus = "active" | "paused" | "in_review" | "rejected";
-export const AdStatus = S.String;
+const AdStatus = S.String;
 
 export type AdTranslationsAutomaticLanguagesList = Array<string>;
-export const AdTranslationsAutomaticLanguagesList =
+const AdTranslationsAutomaticLanguagesList =
   CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<AdTranslationsAutomaticLanguagesList>;
 
 export interface AdTranslations {
@@ -934,7 +926,7 @@ export interface AdTranslations {
   /** ISO 639 code of the language the ad's own copy is written in, such as `en`. Viewers whose language has no version of its own see the ad's own copy. */
   source_language: string;
 }
-export const AdTranslations = /*@__PURE__*/ S.suspend(() =>
+const AdTranslations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic_languages: AdTranslationsAutomaticLanguagesList,
     source_language: S.String,
@@ -1083,7 +1075,7 @@ export interface Ad {
   /** Whop pixel-attributed view-content events, last-click. */
   viewed_contents: number;
 }
-export const Ad = /*@__PURE__*/ S.suspend(() =>
+const Ad = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ad_campaign: AdEntityReference,
     ad_group: AdEntityReference,
@@ -1165,7 +1157,7 @@ export interface DeleteAdRequest {
   /** The ad ID. */
   id: string;
 }
-export const DeleteAdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/ads/{id}", code: 200 })),
@@ -1177,7 +1169,7 @@ export interface DeleteAdResponse {
   /** ID of the deleted ad. */
   id: string;
 }
-export const DeleteAdResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -1196,7 +1188,7 @@ export interface DuplicateAdRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DuplicateAdRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     count: S.optional(S.Number),
@@ -1207,21 +1199,21 @@ export const DuplicateAdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DuplicateAdRequest" }) as any as S.Schema<DuplicateAdRequest>;
 
 export type DuplicateAdResponseDataList = Array<Ad>;
-export const DuplicateAdResponseDataList = /*@__PURE__*/ S.Array(
+const DuplicateAdResponseDataList = /*@__PURE__*/ S.Array(
   Ad,
 ) as any as S.Schema<DuplicateAdResponseDataList>;
 
 export interface DuplicateAdResponse {
   data: DuplicateAdResponseDataList;
 }
-export const DuplicateAdResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateAdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DuplicateAdResponseDataList,
   }),
 ).annotate({ identifier: "DuplicateAdResponse" }) as any as S.Schema<DuplicateAdResponse>;
 
 export type GetAdRequestAttributionModel = "last_touch" | "first_touch";
-export const GetAdRequestAttributionModel = S.String;
+const GetAdRequestAttributionModel = S.String;
 
 export interface GetAdRequest {
   /** The ad ID. */
@@ -1235,7 +1227,7 @@ export interface GetAdRequest {
   /** Attribution model the conversion stats count under (defaults to last_touch). Under both models a journey with any whop ad touch attributes to whop; the model picks which whop touch credits the entity and which non-whop source wins otherwise. */
   attribution_model?: GetAdRequestAttributionModel | (string & {});
 }
-export const GetAdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     stats_from: S.optional(S.String.pipe(T.Query())),
@@ -1246,15 +1238,15 @@ export const GetAdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAdRequest" }) as any as S.Schema<GetAdRequest>;
 
 export type ListAdsRequestAdCampaignIdsList = Array<string>;
-export const ListAdsRequestAdCampaignIdsList =
+const ListAdsRequestAdCampaignIdsList =
   CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<ListAdsRequestAdCampaignIdsList>;
 
 export type ListAdsRequestAdGroupIdsList = Array<string>;
-export const ListAdsRequestAdGroupIdsList =
+const ListAdsRequestAdGroupIdsList =
   CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<ListAdsRequestAdGroupIdsList>;
 
 export type ListAdsRequestStatus = "active" | "paused" | "in_review" | "rejected";
-export const ListAdsRequestStatus = S.String;
+const ListAdsRequestStatus = S.String;
 
 export type ListAdsRequestOrder =
   | "created_at"
@@ -1272,13 +1264,13 @@ export type ListAdsRequestOrder =
   | "cost_per_click"
   | "cost_per_result"
   | "return_on_ad_spend";
-export const ListAdsRequestOrder = S.String;
+const ListAdsRequestOrder = S.String;
 
 export type ListAdsRequestDirection = "asc" | "desc";
-export const ListAdsRequestDirection = S.String;
+const ListAdsRequestDirection = S.String;
 
 export type ListAdsRequestAttributionModel = "last_touch" | "first_touch";
-export const ListAdsRequestAttributionModel = S.String;
+const ListAdsRequestAttributionModel = S.String;
 
 export interface ListAdsRequest {
   /** The account the ads belong to. Defaults to the account-scoped key's own account. */
@@ -1320,7 +1312,7 @@ export interface ListAdsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListAdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     ad_campaign_id: S.optional(S.String.pipe(T.Query())),
@@ -1345,7 +1337,7 @@ export const ListAdsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAdsRequest" }) as any as S.Schema<ListAdsRequest>;
 
 export type ListAdsResponseDataList = Array<Ad>;
-export const ListAdsResponseDataList =
+const ListAdsResponseDataList =
   DuplicateAdResponseDataList as any as S.Schema<ListAdsResponseDataList>;
 
 export interface ListAdsResponsePageInfo {
@@ -1354,7 +1346,7 @@ export interface ListAdsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListAdsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAdsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -1367,7 +1359,7 @@ export interface ListAdsResponse {
   data: ListAdsResponseDataList;
   page_info: ListAdsResponsePageInfo;
 }
-export const ListAdsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAdsResponseDataList,
     page_info: ListAdsResponsePageInfo,
@@ -1380,7 +1372,7 @@ export interface PauseAdRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const PauseAdRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1393,7 +1385,7 @@ export interface UnpauseAdRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const UnpauseAdRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpauseAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1424,15 +1416,11 @@ export type UpdateAdRequestCallToAction =
   | "sign_up"
   | "subscribe"
   | "watch_more";
-export const UpdateAdRequestCallToAction = S.String;
+const UpdateAdRequestCallToAction = S.String;
 
 /** The saved crop window for this creative, in source image pixels. Omit it for the original asset or for a format that has not been cropped. */
 export type UpdateAdRequestCreativesItemCrop = CreateAdRequestCreativesItemCrop;
-export const UpdateAdRequestCreativesItemCrop = CreateAdRequestCreativesItemCrop;
-
 export type UpdateAdRequestCreativesItemFormat = "square" | "vertical" | "horizontal";
-export const UpdateAdRequestCreativesItemFormat = S.String;
-
 export interface UpdateAdRequestCreativesItem {
   /** The saved crop window for this creative, in source image pixels. Omit it for the original asset or for a format that has not been cropped. */
   crop?: CreateAdRequestCreativesItemCrop;
@@ -1442,33 +1430,24 @@ export interface UpdateAdRequestCreativesItem {
   /** ISO 639 code of the language this image or video is shown for, such as `es`. Required on every entry of an ad with `translations`, where the ad's own creative uses `translations.source_language`. Another language's creative is the same type as the ad's own, with no format. Leave it out on an ad without translations. */
   language?: string;
 }
-export const UpdateAdRequestCreativesItem =
-  CreateAdRequestCreativesItem as any as S.Schema<UpdateAdRequestCreativesItem>;
-
 /** The ad's creative assets. Each entry is an uploaded file id with an optional format; omit format for the original asset. Replaces a live ad's creative on the platform. Entries with no format replace it with a carousel's ordered cards -- 2-10 of them on Meta, while TikTok runs even a single image as a one-card carousel. */
 export type UpdateAdRequestCreativesList = Array<UpdateAdRequestCreativesItem>;
-export const UpdateAdRequestCreativesList =
+const UpdateAdRequestCreativesList =
   CreateAdRequestCreativesList as any as S.Schema<UpdateAdRequestCreativesList>;
 
 export type UpdateAdRequestDescriptionsItem = CreateAdRequestDescriptionsItem;
-export const UpdateAdRequestDescriptionsItem = CreateAdRequestDescriptionsItem;
-
 /** The description shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type UpdateAdRequestDescriptionsList = Array<CreateAdRequestDescriptionsItem>;
-export const UpdateAdRequestDescriptionsList =
+const UpdateAdRequestDescriptionsList =
   CreateAdRequestDescriptionsList as any as S.Schema<UpdateAdRequestDescriptionsList>;
 
 export type UpdateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
-export const UpdateAdRequestHeadlinesItem = CreateAdRequestDescriptionsItem;
-
 /** The headline shown on the ad. Entries without a language are the ad's own copy; add one entry per other language on a Meta ad with `translations`. */
 export type UpdateAdRequestHeadlinesList = Array<CreateAdRequestDescriptionsItem>;
-export const UpdateAdRequestHeadlinesList =
+const UpdateAdRequestHeadlinesList =
   CreateAdRequestDescriptionsList as any as S.Schema<UpdateAdRequestHeadlinesList>;
 
 export type UpdateAdRequestLeadFormCompletionButtonType = "website" | "call" | "download";
-export const UpdateAdRequestLeadFormCompletionButtonType = S.String;
-
 /** Optional completion screen shown after submission. Its button needs a destination: url for button_type website (the default), phone_number for call, file_url for download. */
 export interface UpdateAdRequestLeadFormCompletion {
   button_text?: string;
@@ -1479,73 +1458,50 @@ export interface UpdateAdRequestLeadFormCompletion {
   phone_number?: string;
   url?: string;
 }
-export const UpdateAdRequestLeadFormCompletion =
+const UpdateAdRequestLeadFormCompletion =
   CreateAdRequestLeadFormCompletion as any as S.Schema<UpdateAdRequestLeadFormCompletion>;
 
 export type UpdateAdRequestLeadFormDisclaimerCheckboxesItem =
   CreateAdRequestLeadFormDisclaimerCheckboxesItem;
-export const UpdateAdRequestLeadFormDisclaimerCheckboxesItem =
-  CreateAdRequestLeadFormDisclaimerCheckboxesItem;
-
 export type UpdateAdRequestLeadFormDisclaimerCheckboxesList =
   Array<CreateAdRequestLeadFormDisclaimerCheckboxesItem>;
-export const UpdateAdRequestLeadFormDisclaimerCheckboxesList =
-  CreateAdRequestLeadFormDisclaimerCheckboxesList as any as S.Schema<UpdateAdRequestLeadFormDisclaimerCheckboxesList>;
-
 /** Optional custom consent disclaimer with checkboxes. */
 export interface UpdateAdRequestLeadFormDisclaimer {
   body?: string;
   checkboxes?: UpdateAdRequestLeadFormDisclaimerCheckboxesList;
   title?: string;
 }
-export const UpdateAdRequestLeadFormDisclaimer =
+const UpdateAdRequestLeadFormDisclaimer =
   CreateAdRequestLeadFormDisclaimer as any as S.Schema<UpdateAdRequestLeadFormDisclaimer>;
 
 /** more_volume (default) is quickest to submit; higher_intent adds a confirmation step. */
 export type UpdateAdRequestLeadFormFormType = "more_volume" | "higher_intent";
-export const UpdateAdRequestLeadFormFormType = S.String;
+const UpdateAdRequestLeadFormFormType = S.String;
 
 /** Optional intro screen shown before the questions. */
 export type UpdateAdRequestLeadFormIntro = CreateAdRequestLeadFormIntro;
-export const UpdateAdRequestLeadFormIntro = CreateAdRequestLeadFormIntro;
-
 /** Your privacy policy. url is required by the ad platform. */
 export type UpdateAdRequestLeadFormPrivacyPolicy = CreateAdRequestLeadFormPrivacyPolicy;
-export const UpdateAdRequestLeadFormPrivacyPolicy = CreateAdRequestLeadFormPrivacyPolicy;
-
 export type UpdateAdRequestLeadFormQuestionsItemFormat =
   | "short_answer"
   | "multiple_choice"
   | "appointment";
-export const UpdateAdRequestLeadFormQuestionsItemFormat = S.String;
-
 export type UpdateAdRequestLeadFormQuestionsItemOptionsItemLogicAction =
   | "go_to_question"
   | "submit_form"
   | "close_form";
-export const UpdateAdRequestLeadFormQuestionsItemOptionsItemLogicAction = S.String;
-
 export interface UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic {
   action?: UpdateAdRequestLeadFormQuestionsItemOptionsItemLogicAction | (string & {});
   target_end_page_index?: number;
   target_question_index?: number;
 }
-export const UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic =
-  CreateAdRequestLeadFormQuestionsItemOptionsItemLogic as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic>;
-
 export interface UpdateAdRequestLeadFormQuestionsItemOptionsItem {
   key?: string;
   logic?: UpdateAdRequestLeadFormQuestionsItemOptionsItemLogic;
   value?: string;
 }
-export const UpdateAdRequestLeadFormQuestionsItemOptionsItem =
-  CreateAdRequestLeadFormQuestionsItemOptionsItem as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsItem>;
-
 export type UpdateAdRequestLeadFormQuestionsItemOptionsList =
   Array<UpdateAdRequestLeadFormQuestionsItemOptionsItem>;
-export const UpdateAdRequestLeadFormQuestionsItemOptionsList =
-  CreateAdRequestLeadFormQuestionsItemOptionsList as any as S.Schema<UpdateAdRequestLeadFormQuestionsItemOptionsList>;
-
 export type UpdateAdRequestLeadFormQuestionsItemType =
   | "email"
   | "phone"
@@ -1568,20 +1524,15 @@ export type UpdateAdRequestLeadFormQuestionsItemType =
   | "military_status"
   | "date_time"
   | "custom";
-export const UpdateAdRequestLeadFormQuestionsItemType = S.String;
-
 export interface UpdateAdRequestLeadFormQuestionsItem {
   format?: UpdateAdRequestLeadFormQuestionsItemFormat | (string & {});
   label?: string;
   options?: UpdateAdRequestLeadFormQuestionsItemOptionsList;
   type?: UpdateAdRequestLeadFormQuestionsItemType | (string & {});
 }
-export const UpdateAdRequestLeadFormQuestionsItem =
-  CreateAdRequestLeadFormQuestionsItem as any as S.Schema<UpdateAdRequestLeadFormQuestionsItem>;
-
 /** The questions on the form. Standard prefill types need only a type; a custom question needs a label and a format (plus options for multiple_choice). Options carry an optional key and answer-routing logic. */
 export type UpdateAdRequestLeadFormQuestionsList = Array<UpdateAdRequestLeadFormQuestionsItem>;
-export const UpdateAdRequestLeadFormQuestionsList =
+const UpdateAdRequestLeadFormQuestionsList =
   CreateAdRequestLeadFormQuestionsList as any as S.Schema<UpdateAdRequestLeadFormQuestionsList>;
 
 /** Instant lead form for the ad. Only allowed when the ad group's conversion_location is an instant-form destination (instant_forms, instant_forms_and_messenger, website_and_instant_forms). Mutually exclusive with lead_form_id. */
@@ -1603,7 +1554,7 @@ export interface UpdateAdRequestLeadForm {
   /** The questions on the form. Standard prefill types need only a type; a custom question needs a label and a format (plus options for multiple_choice). Options carry an optional key and answer-routing logic. */
   questions?: UpdateAdRequestLeadFormQuestionsList;
 }
-export const UpdateAdRequestLeadForm = /*@__PURE__*/ S.suspend(() =>
+const UpdateAdRequestLeadForm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completion: S.optional(UpdateAdRequestLeadFormCompletion),
     disclaimer: S.optional(UpdateAdRequestLeadFormDisclaimer),
@@ -1618,37 +1569,26 @@ export const UpdateAdRequestLeadForm = /*@__PURE__*/ S.suspend(() =>
 
 /** Click-to-message welcome copy: the greeting (message) and the ice-breaker prompt (keyword). */
 export type UpdateAdRequestMessagingConfig = CreateAdRequestMessagingConfig;
-export const UpdateAdRequestMessagingConfig = CreateAdRequestMessagingConfig;
-
 /** The looping track a TikTok carousel ad plays -- an MP3 you uploaded, no larger than 10MB. Omitted leaves the ad's music untouched. Null removes it before launch; a submitted carousel takes a replacement track instead. TikTok-only. */
 export type UpdateAdRequestMusic = CreateAdRequestMusic;
-export const UpdateAdRequestMusic = CreateAdRequestMusic;
-
 /** Identifies the network that owns `existing_post_id`. The source is inferred from the ID shape when omitted. */
 export type UpdateAdRequestPostSource = "facebook" | "instagram";
-export const UpdateAdRequestPostSource = S.String;
+const UpdateAdRequestPostSource = S.String;
 
 export type UpdateAdRequestPrimaryTextsItem = CreateAdRequestDescriptionsItem;
-export const UpdateAdRequestPrimaryTextsItem = CreateAdRequestDescriptionsItem;
-
 /** The primary text shown in the ad body. Entries without a language are the ad's own copy (several make text variations); add one entry per other language on a Meta ad with `translations`. */
 export type UpdateAdRequestPrimaryTextsList = Array<CreateAdRequestDescriptionsItem>;
-export const UpdateAdRequestPrimaryTextsList =
+const UpdateAdRequestPrimaryTextsList =
   CreateAdRequestDescriptionsList as any as S.Schema<UpdateAdRequestPrimaryTextsList>;
 
 export type UpdateAdRequestSocialAccountsItem = CreateAdRequestSocialAccountsItem;
-export const UpdateAdRequestSocialAccountsItem = CreateAdRequestSocialAccountsItem;
-
 /** The social accounts the ad runs under -- a connected Facebook page and, optionally, an Instagram profile. */
 export type UpdateAdRequestSocialAccountsList = Array<CreateAdRequestSocialAccountsItem>;
-export const UpdateAdRequestSocialAccountsList =
+const UpdateAdRequestSocialAccountsList =
   CreateAdRequestSocialAccountsList as any as S.Schema<UpdateAdRequestSocialAccountsList>;
 
 /** ISO 639 codes Meta translates the ad's own copy into automatically. English copy translates into `es`, `fr`, `de`, `pt`, `it`, `ar`, `nl`, `ms`, `sv`, `id`, `pl`, `hi`, `da`, `tr`, `fil`, and `ro`; `de`, `ar`, `he`, `es`, `ja`, `no`, `fr`, `nl`, and `sv` copy translate into `en`. */
 export type UpdateAdRequestTranslationsAutomaticLanguagesList = Array<string>;
-export const UpdateAdRequestTranslationsAutomaticLanguagesList =
-  CreateAdRequestTranslationsAutomaticLanguagesList as any as S.Schema<UpdateAdRequestTranslationsAutomaticLanguagesList>;
-
 /** Shows a Meta ad in other languages. Each viewer sees the version for their language; everyone else sees the ad's own copy. Tag every copy and creatives entry with its language: the ad's own with `source_language`, and give every other language a `primary_texts` and `headlines` entry (a `descriptions` entry and a `creatives` entry are optional), or list it in `automatic_languages`. Needs a website destination, one image or video, and exactly one primary text and headline of the ad's own (and at most one description), with no Dynamic Creative or crops. Replaced as a whole when sent, so send `automatic_languages` with `source_language`. null turns translations off and deletes their media. Meta-only. */
 export interface UpdateAdRequestTranslations {
   /** ISO 639 codes Meta translates the ad's own copy into automatically. English copy translates into `es`, `fr`, `de`, `pt`, `it`, `ar`, `nl`, `ms`, `sv`, `id`, `pl`, `hi`, `da`, `tr`, `fil`, and `ro`; `de`, `ar`, `he`, `es`, `ja`, `no`, `fr`, `nl`, and `sv` copy translate into `en`. */
@@ -1656,7 +1596,7 @@ export interface UpdateAdRequestTranslations {
   /** ISO 639 code the ad's own copy is written in, such as `en`. */
   source_language: string;
 }
-export const UpdateAdRequestTranslations =
+const UpdateAdRequestTranslations =
   CreateAdRequestTranslations as any as S.Schema<UpdateAdRequestTranslations>;
 
 export interface UpdateAdRequest {
@@ -1697,7 +1637,7 @@ export interface UpdateAdRequest {
   /** Query parameters to append to the destination URL, keyed by parameter name. Merged with any query string on `url`. Whop adds its own click-attribution parameters; those are reserved and rejected if you set them. Which keys are reserved depends on the ad's network -- Meta: utm_meta_ad_id, utm_meta_adset_id, utm_meta_campaign_id, utm_source, utm_placement, utm_medium, utm_content, utm_adset, utm_whop, wacid, wasid, waid, tw_source, tw_adid; TikTok: waid, wasid, wacid, ad_id, adset_id, campaign_id, utm_source, utm_medium, utm_placement, utm_whop, tw_source, tw_adid. */
   url_parameters?: unknown;
 }
-export const UpdateAdRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     call_to_action: S.optional(UpdateAdRequestCallToAction),

@@ -86,7 +86,7 @@ export type IntegrationKindEnum =
   | "twilio"
   | "vercel"
   | "youtube-analytics";
-export const IntegrationKindEnum = S.String;
+const IntegrationKindEnum = S.String;
 
 export interface CreateIntegrationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -94,7 +94,7 @@ export interface CreateIntegrationRequest {
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-export const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: S.optional(IntegrationKindEnum),
@@ -103,7 +103,7 @@ export const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateIntegrationRequest" }) as any as S.Schema<CreateIntegrationRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -119,14 +119,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -139,7 +134,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -155,7 +150,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** * `connected` - connected * `unavailable` - unavailable */
 export type InstallationStatusEnum = "connected" | "unavailable";
-export const InstallationStatusEnum = S.String;
+const InstallationStatusEnum = S.String;
 
 /** Standard Integration serializer. */
 export interface IntegrationConfig {
@@ -173,7 +168,7 @@ export interface IntegrationConfig {
   /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. */
   installation_status?: InstallationStatusEnum | null;
 }
-export const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
+const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     kind: S.optional(IntegrationKindEnum),
@@ -198,7 +193,7 @@ export interface CreateIntegrationsGithubLinkExistingRequest {
   /** GitHub installation ID to link; resolved within the organization when source_team_id is omitted. */
   installation_id?: string | null;
 }
-export const CreateIntegrationsGithubLinkExistingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsGithubLinkExistingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     discovery_id: S.optional(S.NullOr(S.String)),
@@ -223,7 +218,7 @@ export interface CreateIntegrationsGithubPrepareCallbackRequest {
   /** GitHub installation ID being managed; binds the seeded update state so a callback can't swap in a different installation. */
   installation_id?: string;
 }
-export const CreateIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     next: S.optional(S.String),
@@ -240,7 +235,7 @@ export const CreateIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackRequest>;
 
 export interface CreateIntegrationsGithubPrepareCallbackResponse {}
-export const CreateIntegrationsGithubPrepareCallbackResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsGithubPrepareCallbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateIntegrationsGithubPrepareCallbackResponse",
@@ -254,7 +249,7 @@ export interface CreateIntegrationsRequestAccessRequest {
   /** Explanation from the requester of why this integration is needed. Shown to admins in the notification email. */
   reason: string;
 }
-export const CreateIntegrationsRequestAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsRequestAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: IntegrationKindEnum,
@@ -274,7 +269,7 @@ export interface IntegrationAccessRequestResponse {
   /** Whether the access request was accepted and the project admins were notified. */
   success: boolean;
 }
-export const IntegrationAccessRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationAccessRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -288,7 +283,7 @@ export interface GetIntegrationRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -303,7 +298,7 @@ export interface GetIntegrationsAnthropicManagedAgentRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsAnthropicManagedAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsAnthropicManagedAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -319,7 +314,7 @@ export const GetIntegrationsAnthropicManagedAgentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetIntegrationsAnthropicManagedAgentRequest>;
 
 export interface GetIntegrationsAnthropicManagedAgentResponse {}
-export const GetIntegrationsAnthropicManagedAgentResponse =
+const GetIntegrationsAnthropicManagedAgentResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>;
 
 export interface GetIntegrationsAnthropicManagedAgentEnvRequest {
@@ -328,7 +323,7 @@ export interface GetIntegrationsAnthropicManagedAgentEnvRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsAnthropicManagedAgentEnvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsAnthropicManagedAgentEnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -344,7 +339,7 @@ export const GetIntegrationsAnthropicManagedAgentEnvRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvRequest>;
 
 export interface GetIntegrationsAnthropicManagedAgentEnvResponse {}
-export const GetIntegrationsAnthropicManagedAgentEnvResponse =
+const GetIntegrationsAnthropicManagedAgentEnvResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>;
 
 export interface GetIntegrationsAnthropicManagedAgentVaultRequest {
@@ -353,7 +348,7 @@ export interface GetIntegrationsAnthropicManagedAgentVaultRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsAnthropicManagedAgentVaultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsAnthropicManagedAgentVaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -369,7 +364,7 @@ export const GetIntegrationsAnthropicManagedAgentVaultRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultRequest>;
 
 export interface GetIntegrationsAnthropicManagedAgentVaultResponse {}
-export const GetIntegrationsAnthropicManagedAgentVaultResponse =
+const GetIntegrationsAnthropicManagedAgentVaultResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>;
 
 export interface GetIntegrationsChannelRequest {
@@ -384,7 +379,7 @@ export interface GetIntegrationsChannelRequest {
   /** Optional case-insensitive channel name or ID search query. */
   search?: string;
 }
-export const GetIntegrationsChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -416,7 +411,7 @@ export interface SlackChannel {
   /** True if the channel is private and the PostHog Slack app cannot access it. */
   is_private_without_access: boolean;
 }
-export const SlackChannel = /*@__PURE__*/ S.suspend(() =>
+const SlackChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -429,7 +424,7 @@ export const SlackChannel = /*@__PURE__*/ S.suspend(() =>
 
 /** Slack channels visible to the PostHog Slack app. */
 export type SlackChannelsResponseChannelsList = Array<SlackChannel>;
-export const SlackChannelsResponseChannelsList = /*@__PURE__*/ S.Array(
+const SlackChannelsResponseChannelsList = /*@__PURE__*/ S.Array(
   SlackChannel,
 ) as any as S.Schema<SlackChannelsResponseChannelsList>;
 
@@ -441,7 +436,7 @@ export interface SlackChannelsResponse {
   /** Whether more channels match the current search beyond this page. */
   has_more?: boolean;
 }
-export const SlackChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const SlackChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: SlackChannelsResponseChannelsList,
     lastRefreshedAt: S.optional(S.NullOr(S.String)),
@@ -455,7 +450,7 @@ export interface GetIntegrationsClickupListRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsClickupListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsClickupListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -471,7 +466,7 @@ export const GetIntegrationsClickupListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationsClickupListRequest>;
 
 export interface GetIntegrationsClickupListResponse {}
-export const GetIntegrationsClickupListResponse =
+const GetIntegrationsClickupListResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupListResponse>;
 
 export interface GetIntegrationsClickupSpaceRequest {
@@ -480,7 +475,7 @@ export interface GetIntegrationsClickupSpaceRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsClickupSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsClickupSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -496,7 +491,7 @@ export const GetIntegrationsClickupSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationsClickupSpaceRequest>;
 
 export interface GetIntegrationsClickupSpaceResponse {}
-export const GetIntegrationsClickupSpaceResponse =
+const GetIntegrationsClickupSpaceResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupSpaceResponse>;
 
 export interface GetIntegrationsClickupWorkspaceRequest {
@@ -505,7 +500,7 @@ export interface GetIntegrationsClickupWorkspaceRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsClickupWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsClickupWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -521,14 +516,14 @@ export const GetIntegrationsClickupWorkspaceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetIntegrationsClickupWorkspaceRequest>;
 
 export interface GetIntegrationsClickupWorkspaceResponse {}
-export const GetIntegrationsClickupWorkspaceResponse =
+const GetIntegrationsClickupWorkspaceResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>;
 
 export interface GetIntegrationsGithubAvailableInstallationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetIntegrationsGithubAvailableInstallationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsGithubAvailableInstallationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -544,7 +539,7 @@ export const GetIntegrationsGithubAvailableInstallationRequest = /*@__PURE__*/ S
 
 /** * `ok` - Ok * `not_connected` - Not Connected * `unavailable` - Unavailable */
 export type GitHubPersonalDiscoveryStatusEnum = "ok" | "not_connected" | "unavailable";
-export const GitHubPersonalDiscoveryStatusEnum = S.String;
+const GitHubPersonalDiscoveryStatusEnum = S.String;
 
 export interface GitHubAvailableInstallation {
   /** GitHub installation ID to pass to github/link_existing when linking this installation. */
@@ -558,7 +553,7 @@ export interface GitHubAvailableInstallation {
   /** Name of the project in source_team_id, so the picker can say where the installation comes from. Null for an installation no project has linked yet. */
   source_team_name: string | null;
 }
-export const GitHubAvailableInstallation = /*@__PURE__*/ S.suspend(() =>
+const GitHubAvailableInstallation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_id: S.String,
     account_name: S.NullOr(S.String),
@@ -573,7 +568,7 @@ export const GitHubAvailableInstallation = /*@__PURE__*/ S.suspend(() =>
 /** GitHub installations available to link to this project: the organization's existing installations plus any the user's personal GitHub link can see but that aren't linked to any project yet. */
 export type GitHubAvailableInstallationsResponseInstallationsList =
   Array<GitHubAvailableInstallation>;
-export const GitHubAvailableInstallationsResponseInstallationsList = /*@__PURE__*/ S.Array(
+const GitHubAvailableInstallationsResponseInstallationsList = /*@__PURE__*/ S.Array(
   GitHubAvailableInstallation,
 ) as any as S.Schema<GitHubAvailableInstallationsResponseInstallationsList>;
 
@@ -591,7 +586,7 @@ export interface GitHubAvailableInstallationsResponse {
   /** Whether the requesting user has a personal GitHub account linked (via Linked Accounts). Used to prompt for that link when it would surface more installations to adopt. */
   personal_github_connected: boolean;
 }
-export const GitHubAvailableInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubAvailableInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discovery_id: S.String,
     discovered_at: S.String,
@@ -618,7 +613,7 @@ export interface GetIntegrationsGithubBranchRequest {
   /** Optional case-insensitive branch name search query. */
   search?: string;
 }
-export const GetIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -639,7 +634,7 @@ export const GetIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of branch names */
 export type GitHubBranchesResponseBranchesList = Array<string>;
-export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
+const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GitHubBranchesResponseBranchesList>;
 
@@ -651,7 +646,7 @@ export interface GitHubBranchesResponse {
   /** Whether more branches exist beyond the returned page */
   has_more?: boolean;
 }
-export const GitHubBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branches: S.optional(GitHubBranchesResponseBranchesList),
     default_branch: S.optional(S.NullOr(S.String)),
@@ -673,7 +668,7 @@ export interface GetIntegrationsGithubReposRequest {
   /** Optional case-insensitive repository name search query. */
   search?: string;
 }
-export const GetIntegrationsGithubReposRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsGithubReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -712,7 +707,7 @@ export interface GitHubRepo {
   /** Whether the PostHog GitHub App has write access -- required to open pull requests. */
   can_push?: boolean;
 }
-export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
+const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -727,7 +722,7 @@ export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
 export type GitHubReposResponseRepositoriesList = Array<GitHubRepo>;
-export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposResponseRepositoriesList>;
 
@@ -740,7 +735,7 @@ export interface GitHubReposResponse {
   /** Total number of repositories matching the search query, across all pages. */
   total?: number;
 }
-export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposResponseRepositoriesList),
     has_more: S.optional(S.Boolean),
@@ -761,7 +756,7 @@ export interface GetIntegrationsGithubTeamRequest {
   /** Optional case-insensitive team name or slug search query. */
   search?: string;
 }
-export const GetIntegrationsGithubTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsGithubTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -787,7 +782,7 @@ export interface GitHubTeam {
   /** GitHub team display name. */
   name: string;
 }
-export const GitHubTeam = /*@__PURE__*/ S.suspend(() =>
+const GitHubTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.String,
@@ -797,7 +792,7 @@ export const GitHubTeam = /*@__PURE__*/ S.suspend(() =>
 
 /** List of GitHub teams available to the installation organization. */
 export type GitHubTeamsResponseTeamsList = Array<GitHubTeam>;
-export const GitHubTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
+const GitHubTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   GitHubTeam,
 ) as any as S.Schema<GitHubTeamsResponseTeamsList>;
 
@@ -807,7 +802,7 @@ export interface GitHubTeamsResponse {
   /** Whether more teams are available beyond this page. */
   has_more: boolean;
 }
-export const GitHubTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teams: GitHubTeamsResponseTeamsList,
     has_more: S.Boolean,
@@ -820,7 +815,7 @@ export interface GetIntegrationsGoogleAccessibleAccountRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsGoogleAccessibleAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsGoogleAccessibleAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -836,7 +831,7 @@ export const GetIntegrationsGoogleAccessibleAccountRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountRequest>;
 
 export interface GetIntegrationsGoogleAccessibleAccountResponse {}
-export const GetIntegrationsGoogleAccessibleAccountResponse =
+const GetIntegrationsGoogleAccessibleAccountResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>;
 
 export interface GetIntegrationsGoogleConversionActionRequest {
@@ -845,7 +840,7 @@ export interface GetIntegrationsGoogleConversionActionRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsGoogleConversionActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsGoogleConversionActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -861,7 +856,7 @@ export const GetIntegrationsGoogleConversionActionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetIntegrationsGoogleConversionActionRequest>;
 
 export interface GetIntegrationsGoogleConversionActionResponse {}
-export const GetIntegrationsGoogleConversionActionResponse =
+const GetIntegrationsGoogleConversionActionResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>;
 
 export interface GetIntegrationsJiraProjectRequest {
@@ -870,7 +865,7 @@ export interface GetIntegrationsJiraProjectRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsJiraProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsJiraProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -893,7 +888,7 @@ export interface JiraProject {
   /** Jira project display name. */
   name: string;
 }
-export const JiraProject = /*@__PURE__*/ S.suspend(() =>
+const JiraProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     key: S.String,
@@ -903,7 +898,7 @@ export const JiraProject = /*@__PURE__*/ S.suspend(() =>
 
 /** Jira projects available to this integration. */
 export type JiraProjectsResponseProjectsList = Array<JiraProject>;
-export const JiraProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
+const JiraProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   JiraProject,
 ) as any as S.Schema<JiraProjectsResponseProjectsList>;
 
@@ -911,7 +906,7 @@ export interface JiraProjectsResponse {
   /** Jira projects available to this integration. */
   projects: JiraProjectsResponseProjectsList;
 }
-export const JiraProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const JiraProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: JiraProjectsResponseProjectsList,
   }),
@@ -923,7 +918,7 @@ export interface GetIntegrationsLinearTeamRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsLinearTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsLinearTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -944,7 +939,7 @@ export interface LinearTeam {
   /** Linear team display name. */
   name: string;
 }
-export const LinearTeam = /*@__PURE__*/ S.suspend(() =>
+const LinearTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -953,7 +948,7 @@ export const LinearTeam = /*@__PURE__*/ S.suspend(() =>
 
 /** Linear teams available to this integration. */
 export type LinearTeamsResponseTeamsList = Array<LinearTeam>;
-export const LinearTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
+const LinearTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   LinearTeam,
 ) as any as S.Schema<LinearTeamsResponseTeamsList>;
 
@@ -961,7 +956,7 @@ export interface LinearTeamsResponse {
   /** Linear teams available to this integration. */
   teams: LinearTeamsResponseTeamsList;
 }
-export const LinearTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const LinearTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teams: LinearTeamsResponseTeamsList,
   }),
@@ -973,7 +968,7 @@ export interface GetIntegrationsLinkedinAdsAccountRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsLinkedinAdsAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsLinkedinAdsAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -989,7 +984,7 @@ export const GetIntegrationsLinkedinAdsAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIntegrationsLinkedinAdsAccountRequest>;
 
 export interface GetIntegrationsLinkedinAdsAccountResponse {}
-export const GetIntegrationsLinkedinAdsAccountResponse =
+const GetIntegrationsLinkedinAdsAccountResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>;
 
 export interface GetIntegrationsLinkedinAdsConversionRuleRequest {
@@ -998,7 +993,7 @@ export interface GetIntegrationsLinkedinAdsConversionRuleRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsLinkedinAdsConversionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsLinkedinAdsConversionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1014,7 +1009,7 @@ export const GetIntegrationsLinkedinAdsConversionRuleRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleRequest>;
 
 export interface GetIntegrationsLinkedinAdsConversionRuleResponse {}
-export const GetIntegrationsLinkedinAdsConversionRuleResponse =
+const GetIntegrationsLinkedinAdsConversionRuleResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>;
 
 export interface GetIntegrationsTwilioPhoneNumberRequest {
@@ -1023,7 +1018,7 @@ export interface GetIntegrationsTwilioPhoneNumberRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const GetIntegrationsTwilioPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsTwilioPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1039,7 +1034,7 @@ export const GetIntegrationsTwilioPhoneNumberRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetIntegrationsTwilioPhoneNumberRequest>;
 
 export interface GetIntegrationsTwilioPhoneNumberResponse {}
-export const GetIntegrationsTwilioPhoneNumberResponse =
+const GetIntegrationsTwilioPhoneNumberResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>;
 
 export interface GetIntegrationsUserRequest {
@@ -1058,7 +1053,7 @@ export interface GetIntegrationsUserRequest {
   /** Look up one member directly by Slack member ID (e.g. U0123ABC). When set, `search`, `limit`, and `offset` are ignored and the response holds at most that member. */
   user_id?: string;
 }
-export const GetIntegrationsUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1086,7 +1081,7 @@ export interface SlackUser {
   /** Name to show in pickers: the member's display name, falling back to their real name or handle. */
   display_name: string;
 }
-export const SlackUser = /*@__PURE__*/ S.suspend(() =>
+const SlackUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1096,7 +1091,7 @@ export const SlackUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Human Slack workspace members the PostHog Slack app can DM. */
 export type SlackUsersResponseUsersList = Array<SlackUser>;
-export const SlackUsersResponseUsersList = /*@__PURE__*/ S.Array(
+const SlackUsersResponseUsersList = /*@__PURE__*/ S.Array(
   SlackUser,
 ) as any as S.Schema<SlackUsersResponseUsersList>;
 
@@ -1108,7 +1103,7 @@ export interface SlackUsersResponse {
   /** Whether more members match the current search beyond this page. */
   has_more?: boolean;
 }
-export const SlackUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const SlackUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: SlackUsersResponseUsersList,
     lastRefreshedAt: S.optional(S.NullOr(S.String)),
@@ -1120,7 +1115,7 @@ export interface IntegrationsAuthorizeRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const IntegrationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1131,7 +1126,7 @@ export const IntegrationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<IntegrationsAuthorizeRetrieveRequest>;
 
 export interface IntegrationsAuthorizeRetrieveResponse {}
-export const IntegrationsAuthorizeRetrieveResponse =
+const IntegrationsAuthorizeRetrieveResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>;
 
 export interface IntegrationsDestroyRequest {
@@ -1140,7 +1135,7 @@ export interface IntegrationsDestroyRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const IntegrationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1152,7 +1147,7 @@ export const IntegrationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationsDestroyRequest>;
 
 export interface IntegrationsDestroyResponse {}
-export const IntegrationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IntegrationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IntegrationsDestroyResponse",
 }) as any as S.Schema<IntegrationsDestroyResponse>;
 
@@ -1162,7 +1157,7 @@ export interface IntegrationsDomainConnectApplyUrlCreateRequest {
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-export const IntegrationsDomainConnectApplyUrlCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsDomainConnectApplyUrlCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: S.optional(IntegrationKindEnum),
@@ -1179,14 +1174,14 @@ export const IntegrationsDomainConnectApplyUrlCreateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateRequest>;
 
 export interface IntegrationsDomainConnectApplyUrlCreateResponse {}
-export const IntegrationsDomainConnectApplyUrlCreateResponse =
+const IntegrationsDomainConnectApplyUrlCreateResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>;
 
 export interface IntegrationsDomainConnectCheckRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const IntegrationsDomainConnectCheckRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsDomainConnectCheckRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1201,7 +1196,7 @@ export const IntegrationsDomainConnectCheckRetrieveRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveRequest>;
 
 export interface IntegrationsDomainConnectCheckRetrieveResponse {}
-export const IntegrationsDomainConnectCheckRetrieveResponse =
+const IntegrationsDomainConnectCheckRetrieveResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>;
 
 export interface IntegrationsEmailVerifyCreateRequest {
@@ -1212,7 +1207,7 @@ export interface IntegrationsEmailVerifyCreateRequest {
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-export const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1230,12 +1225,12 @@ export const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<IntegrationsEmailVerifyCreateRequest>;
 
 export interface IntegrationsEmailVerifyCreateResponse {}
-export const IntegrationsEmailVerifyCreateResponse =
+const IntegrationsEmailVerifyCreateResponse =
   CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsEmailVerifyCreateResponse>;
 
 /** * `posthog_code` - posthog_code */
 export type ConnectFromEnum = "posthog_code";
-export const ConnectFromEnum = S.String;
+const ConnectFromEnum = S.String;
 
 export interface IntegrationsGithubOauthAuthorizeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1247,7 +1242,7 @@ export interface IntegrationsGithubOauthAuthorizeCreateRequest {
   /** Originating surface for the connect flow; only 'posthog_code' is recognized. * `posthog_code` - posthog_code */
   connect_from?: ConnectFromEnum | (string & {});
 }
-export const IntegrationsGithubOauthAuthorizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsGithubOauthAuthorizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     installation_id: S.optional(S.String),
@@ -1268,7 +1263,7 @@ export interface GitHubOAuthAuthorizeResponse {
   /** GitHub User OAuth URL the client should redirect to. */
   oauth_url: string;
 }
-export const GitHubOAuthAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_url: S.String,
   }),
@@ -1282,7 +1277,7 @@ export interface IntegrationsGithubReposRefreshCreateRequest {
   /** A unique integer value identifying this integration. */
   id: number;
 }
-export const IntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1299,7 +1294,7 @@ export const IntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.suspe
 
 /** The refreshed repository cache. */
 export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
-export const GitHubReposRefreshResponseRepositoriesList =
+const GitHubReposRefreshResponseRepositoriesList =
   GitHubReposResponseRepositoriesList as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
 
 export interface GitHubReposRefreshResponse {
@@ -1308,7 +1303,7 @@ export interface GitHubReposRefreshResponse {
   /** `unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one. * `connected` - connected * `unavailable` - unavailable */
   installation_status?: InstallationStatusEnum;
 }
-export const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
     installation_status: S.optional(InstallationStatusEnum),
@@ -1367,7 +1362,7 @@ export type ListIntegrationsRequestKind =
   | "twitter-ads"
   | "vercel"
   | "youtube-analytics";
-export const ListIntegrationsRequestKind = S.String;
+const ListIntegrationsRequestKind = S.String;
 
 export interface ListIntegrationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1379,7 +1374,7 @@ export interface ListIntegrationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: S.optional(ListIntegrationsRequestKind.pipe(T.Query())),
@@ -1389,7 +1384,7 @@ export const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIntegrationsRequest" }) as any as S.Schema<ListIntegrationsRequest>;
 
 export type PaginatedIntegrationConfigListResultsList = Array<IntegrationConfig>;
-export const PaginatedIntegrationConfigListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedIntegrationConfigListResultsList = /*@__PURE__*/ S.Array(
   IntegrationConfig,
 ) as any as S.Schema<PaginatedIntegrationConfigListResultsList>;
 
@@ -1399,7 +1394,7 @@ export interface PaginatedIntegrationConfigList {
   previous?: string | null;
   results?: PaginatedIntegrationConfigListResultsList;
 }
-export const PaginatedIntegrationConfigList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedIntegrationConfigList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1418,7 +1413,7 @@ export interface UpdateIntegrationsEmailPartialRequest {
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-export const UpdateIntegrationsEmailPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationsEmailPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

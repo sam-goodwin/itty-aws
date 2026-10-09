@@ -62,7 +62,7 @@ export interface CreateAuthorizedUserRequestElevation {
   /** Reuse an existing elevated session (for SMS/email 2FA users). */
   use_finance_session?: boolean | null;
 }
-export const CreateAuthorizedUserRequestElevation = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizedUserRequestElevation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticator_data: S.optional(S.NullOr(S.String)),
     client_data_json: S.optional(S.NullOr(S.String)),
@@ -84,7 +84,7 @@ export type GrantableAuthorizedUserRoles =
   | "sales_manager"
   | "moderator"
   | "advertiser";
-export const GrantableAuthorizedUserRoles = S.String;
+const GrantableAuthorizedUserRoles = S.String;
 
 export interface CreateAuthorizedUserRequest {
   /** The ID of the company to add the authorized user to. */
@@ -98,7 +98,7 @@ export interface CreateAuthorizedUserRequest {
   /** The ID of the user to add as an authorized user. */
   user_id: string;
 }
-export const CreateAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     elevation: S.optional(S.NullOr(CreateAuthorizedUserRequestElevation)),
@@ -117,7 +117,7 @@ export interface AuthorizedUserCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
-export const AuthorizedUserCompany = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedUserCompany = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -137,7 +137,7 @@ export type AuthorizedUserRoles =
   | "manager"
   | "workforce"
   | "custom";
-export const AuthorizedUserRoles = S.String;
+const AuthorizedUserRoles = S.String;
 
 /** The user account linked to this authorized user record. */
 export interface AuthorizedUserUser {
@@ -150,7 +150,7 @@ export interface AuthorizedUserUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const AuthorizedUserUser = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedUserUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     id: S.String,
@@ -170,7 +170,7 @@ export interface AuthorizedUser {
   /** The user account linked to this authorized user record. */
   user: AuthorizedUserUser;
 }
-export const AuthorizedUser = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company: AuthorizedUserCompany,
     id: S.String,
@@ -184,7 +184,7 @@ export interface DeleteAuthorizedUserRequest {
   id: string;
   account_id?: string;
 }
-export const DeleteAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -194,7 +194,7 @@ export const DeleteAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizedUserRequest>;
 
 export type DeleteAuthorizedUserResponse = boolean;
-export const DeleteAuthorizedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteAuthorizedUserResponse",
@@ -204,7 +204,7 @@ export interface GetAuthorizedUserRequest {
   /** The unique identifier of the authorized user to retrieve. */
   id: string;
 }
-export const GetAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/authorized_users/{id}", code: 200 })),
@@ -221,7 +221,7 @@ export interface ListAuthorizedUserRequest {
   created_after?: string;
   account_id?: string;
 }
-export const ListAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -239,12 +239,8 @@ export const ListAuthorizedUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The company this authorized user has access to. */
 export type AuthorizedUserListItemCompany = AuthorizedUserCompany;
-export const AuthorizedUserListItemCompany = AuthorizedUserCompany;
-
 /** The user account linked to this authorized user record. */
 export type AuthorizedUserListItemUser = AuthorizedUserUser;
-export const AuthorizedUserListItemUser = AuthorizedUserUser;
-
 /** A user who belongs to a company's team with access determined by their assigned role. */
 export interface AuthorizedUserListItem {
   /** The company this authorized user has access to. */
@@ -256,11 +252,11 @@ export interface AuthorizedUserListItem {
   /** The user account linked to this authorized user record. */
   user: AuthorizedUserUser;
 }
-export const AuthorizedUserListItem = AuthorizedUser as any as S.Schema<AuthorizedUserListItem>;
+const AuthorizedUserListItem = AuthorizedUser as any as S.Schema<AuthorizedUserListItem>;
 
 /** A list of nodes. */
 export type ListAuthorizedUserResponseDataList = Array<AuthorizedUserListItem>;
-export const ListAuthorizedUserResponseDataList = /*@__PURE__*/ S.Array(
+const ListAuthorizedUserResponseDataList = /*@__PURE__*/ S.Array(
   AuthorizedUserListItem,
 ) as any as S.Schema<ListAuthorizedUserResponseDataList>;
 
@@ -275,7 +271,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -290,7 +286,7 @@ export interface ListAuthorizedUserResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListAuthorizedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAuthorizedUserResponseDataList,
     page_info: PageInfo,

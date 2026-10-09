@@ -14,7 +14,7 @@ export interface ArchiveConversationRequest {
   /** Timestamp of a message in the code channel to share back as a thread reply on the origin message. Requires the channel to have an `origin_link` set. */
   summary_message_ts?: string;
 }
-export const ArchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     summary_message_ts: S.optional(S.String),
@@ -27,7 +27,7 @@ export interface ArchiveConversationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ArchiveConversationResponse = /*@__PURE__*/ S.suspend(() =>
+const ArchiveConversationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -49,7 +49,7 @@ export interface CreateConversationRequest {
   /** The message timestamp in the origin channel that started the agent session. Must be provided together with `origin_channel_id`. The author of this message is automatically invited to the newly created code channel. */
   origin_message_ts?: string;
 }
-export const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.optional(S.String),
     session_id: S.optional(S.String),
@@ -68,7 +68,7 @@ export interface CreateConversationResponse {
   /** The encoded ID of the newly created code channel. */
   channel_id: string;
 }
-export const CreateConversationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel_id: S.String,
@@ -79,7 +79,7 @@ export const CreateConversationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Format to render the canvas content in. Defaults to markdown. */
 export type GetCanvasRequestContentFormat = "markdown";
-export const GetCanvasRequestContentFormat = S.String;
+const GetCanvasRequestContentFormat = S.String;
 
 export interface GetCanvasRequest {
   /** ID of the agent session channel the canvas belongs to. */
@@ -91,7 +91,7 @@ export interface GetCanvasRequest {
   /** Whether to include resolved comment threads in the response. Defaults to false. */
   include_resolved?: boolean;
 }
-export const GetCanvasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCanvasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     canvas_id: S.String,
@@ -108,7 +108,7 @@ export interface GetCanvasResponseCommentsItemRepliesItem {
   /** Text of the reply. */
   text: string;
 }
-export const GetCanvasResponseCommentsItemRepliesItem = /*@__PURE__*/ S.suspend(() =>
+const GetCanvasResponseCommentsItemRepliesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ts: S.String,
     user_id: S.String,
@@ -121,7 +121,7 @@ export const GetCanvasResponseCommentsItemRepliesItem = /*@__PURE__*/ S.suspend(
 /** Threaded replies to the comment, ordered oldest first. Capped to the most recent 100 replies; older replies are dropped first. */
 export type GetCanvasResponseCommentsItemRepliesList =
   Array<GetCanvasResponseCommentsItemRepliesItem>;
-export const GetCanvasResponseCommentsItemRepliesList = /*@__PURE__*/ S.Array(
+const GetCanvasResponseCommentsItemRepliesList = /*@__PURE__*/ S.Array(
   GetCanvasResponseCommentsItemRepliesItem,
 ) as any as S.Schema<GetCanvasResponseCommentsItemRepliesList>;
 
@@ -143,7 +143,7 @@ export interface GetCanvasResponseCommentsItem {
   /** True if the thread had more replies than the cap and older replies were dropped from the response. */
   has_more_replies: boolean;
 }
-export const GetCanvasResponseCommentsItem = /*@__PURE__*/ S.suspend(() =>
+const GetCanvasResponseCommentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ts: S.String,
@@ -160,7 +160,7 @@ export const GetCanvasResponseCommentsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Comment threads on the canvas, ordered oldest first. Resolved threads are excluded unless include_resolved is true. */
 export type GetCanvasResponseCommentsList = Array<GetCanvasResponseCommentsItem>;
-export const GetCanvasResponseCommentsList = /*@__PURE__*/ S.Array(
+const GetCanvasResponseCommentsList = /*@__PURE__*/ S.Array(
   GetCanvasResponseCommentsItem,
 ) as any as S.Schema<GetCanvasResponseCommentsList>;
 
@@ -178,7 +178,7 @@ export interface GetCanvasResponse {
   /** True if the canvas had more comment threads than the cap and older threads were dropped from the response. */
   has_more_comments: boolean;
 }
-export const GetCanvasResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCanvasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     canvas_id: S.String,
@@ -193,7 +193,7 @@ export interface ListViewsRequest {
   /** ID of the code channel to list views for. */
   channel_id: string;
 }
-export const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.listViews", code: 200 })),
@@ -213,7 +213,7 @@ export interface ListViewsResponseViewsItem {
   /** Unix timestamp of when the view was first created. */
   date_added: number;
 }
-export const ListViewsResponseViewsItem = /*@__PURE__*/ S.suspend(() =>
+const ListViewsResponseViewsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.String,
     view_key: S.String,
@@ -228,7 +228,7 @@ export const ListViewsResponseViewsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent views attached to the channel, in creation order. */
 export type ListViewsResponseViewsList = Array<ListViewsResponseViewsItem>;
-export const ListViewsResponseViewsList = /*@__PURE__*/ S.Array(
+const ListViewsResponseViewsList = /*@__PURE__*/ S.Array(
   ListViewsResponseViewsItem,
 ) as any as S.Schema<ListViewsResponseViewsList>;
 
@@ -238,7 +238,7 @@ export interface ListViewsResponse {
   /** The agent views attached to the channel, in creation order. */
   views: ListViewsResponseViewsList;
 }
-export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     views: ListViewsResponseViewsList,
@@ -253,7 +253,7 @@ export interface RemoveViewRequest {
   /** Encoded channel tab ID of the view to remove. Provide exactly one of view_key or view_id. */
   view_id?: string;
 }
-export const RemoveViewRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     view_key: S.optional(S.String),
@@ -269,7 +269,7 @@ export interface RemoveViewResponse {
   /** The encoded channel tab ID of the removed view. */
   view_id: string;
 }
-export const RemoveViewResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel_id: S.String,
@@ -285,7 +285,7 @@ export interface RenameSessionRequest {
   /** Timestamp of the thread root message the session is scoped to. Required for thread-based sessions in regular channels and DMs. Must be omitted for session channels. */
   thread_ts?: string;
 }
-export const RenameSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.optional(S.String),
     title: S.String,
@@ -301,7 +301,7 @@ export interface RenameSessionResponse {
   /** The encoded ID of the channel, returned when an agent channel was renamed. */
   channel_id?: string;
 }
-export const RenameSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const RenameSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     title: S.optional(S.String),
@@ -317,7 +317,7 @@ export interface SetCanvasContentRequest {
   /** The full new canvas content as markdown. The server diffs this against the current content and applies only the changed sections. */
   content: string;
 }
-export const SetCanvasContentRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCanvasContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     canvas_id: S.String,
@@ -333,7 +333,7 @@ export interface SetCanvasContentResponse {
   /** Number of section-level edit operations applied (replaced + inserted + deleted). Zero when the new content was identical to the current content. */
   sections_changed_count: number;
 }
-export const SetCanvasContentResponse = /*@__PURE__*/ S.suspend(() =>
+const SetCanvasContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     canvas_id: S.String,
@@ -343,7 +343,7 @@ export const SetCanvasContentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Full set of commands to register for the calling agent in this channel, replacing that agent's previously registered set. Pass an empty array to clear the agent's commands. At most 10 commands may exist across all agents in the channel; names must be unique within the set and must not collide with builtin Slack commands. */
 export type SetCommandsRequestCommandsList = Array<unknown>;
-export const SetCommandsRequestCommandsList = /*@__PURE__*/ S.Array(
+const SetCommandsRequestCommandsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SetCommandsRequestCommandsList>;
 
@@ -353,7 +353,7 @@ export interface SetCommandsRequest {
   /** Full set of commands to register for the calling agent in this channel, replacing that agent's previously registered set. Pass an empty array to clear the agent's commands. At most 10 commands may exist across all agents in the channel; names must be unique within the set and must not collide with builtin Slack commands. */
   commands: SetCommandsRequestCommandsList;
 }
-export const SetCommandsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCommandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     commands: SetCommandsRequestCommandsList,
@@ -368,7 +368,7 @@ export interface SetCommandsResponse {
   /** The number of commands now registered for the calling agent in this channel. */
   command_count: number;
 }
-export const SetCommandsResponse = /*@__PURE__*/ S.suspend(() =>
+const SetCommandsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel_id: S.String,
@@ -378,17 +378,17 @@ export const SetCommandsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** New status for the agent session. */
 export type SetPropertiesRequestStatus = "active" | "processing" | "suspended" | "closed";
-export const SetPropertiesRequestStatus = S.String;
+const SetPropertiesRequestStatus = S.String;
 
 /** List of file paths relevant to this session. */
 export type SetPropertiesRequestCodeChannelFilePathsList = Array<string>;
-export const SetPropertiesRequestCodeChannelFilePathsList = /*@__PURE__*/ S.Array(
+const SetPropertiesRequestCodeChannelFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SetPropertiesRequestCodeChannelFilePathsList>;
 
 /** Configurable items to display in the channel context bar. A maximum of 5 items will be applied; any beyond that will be silently truncated and a warning returned. */
 export type SetPropertiesRequestCodeChannelContextBarItemsList = Array<unknown>;
-export const SetPropertiesRequestCodeChannelContextBarItemsList =
+const SetPropertiesRequestCodeChannelContextBarItemsList =
   SetCommandsRequestCommandsList as any as S.Schema<SetPropertiesRequestCodeChannelContextBarItemsList>;
 
 /** Points to the current summary message for this code channel. Must reference a message within this channel. When the channel is archived with a summary_message_ts, this property is also set to record where the summary lives so clients can fetch it. */
@@ -398,7 +398,7 @@ export interface SetPropertiesRequestCodeChannelSummaryMessage {
   /** Thread timestamp if the summary message is a thread reply. Clients need this to fetch the message via conversations.replies. */
   thread_ts?: string;
 }
-export const SetPropertiesRequestCodeChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
+const SetPropertiesRequestCodeChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message_ts: S.String,
     thread_ts: S.optional(S.String),
@@ -444,7 +444,7 @@ export interface SetPropertiesRequestCodeChannel {
   /** Points to the current summary message for this code channel. Must reference a message within this channel. When the channel is archived with a summary_message_ts, this property is also set to record where the summary lives so clients can fetch it. */
   summary_message?: SetPropertiesRequestCodeChannelSummaryMessage;
 }
-export const SetPropertiesRequestCodeChannel = /*@__PURE__*/ S.suspend(() =>
+const SetPropertiesRequestCodeChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     repo: S.optional(S.String),
@@ -479,7 +479,7 @@ export interface SetPropertiesRequestAgentResource {
   /** Provider of the external resource. */
   provider?: string;
 }
-export const SetPropertiesRequestAgentResource = /*@__PURE__*/ S.suspend(() =>
+const SetPropertiesRequestAgentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     resource_type: S.optional(S.String),
@@ -502,7 +502,7 @@ export interface SetPropertiesRequest {
   /** Agent resource properties to set. Only provided fields are updated. */
   agent_resource?: SetPropertiesRequestAgentResource;
 }
-export const SetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     title: S.optional(S.String),
@@ -518,7 +518,7 @@ export interface SetPropertiesResponse {
   /** The encoded ID of the updated code channel. */
   channel_id: string;
 }
-export const SetPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const SetPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel_id: S.String,
@@ -527,7 +527,7 @@ export const SetPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The lifecycle status to set. */
 export type SetStatusRequestStatus = "active" | "processing" | "suspended" | "closed";
-export const SetStatusRequestStatus = S.String;
+const SetStatusRequestStatus = S.String;
 
 export interface SetStatusRequest {
   /** ID of the channel containing the agent session. Required for public channels. */
@@ -547,7 +547,7 @@ export interface SetStatusRequest {
   /** Display name override for the agent (max 200 characters). Remains in effect until you clear it (pass `null`) or set a new value. Requires the `chat:write.customize` scope. */
   username?: string;
 }
-export const SetStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const SetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.optional(S.String),
     status: SetStatusRequestStatus,
@@ -570,7 +570,7 @@ export interface SetStatusResponse {
   /** The current title of the agent session, if set. */
   title?: string;
 }
-export const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     status: S.optional(S.Unknown),
@@ -581,16 +581,16 @@ export const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** For canvas views: access level granted to the channel for the canvas tab. Defaults to write. Use 'comment' to grant channel members comment access (read and comment, no editing) so the agent remains the sole author of the canvas text. */
 export type SetViewRequestAccessLevel = "read" | "write" | "comment";
-export const SetViewRequestAccessLevel = S.String;
+const SetViewRequestAccessLevel = S.String;
 
 /** Origins the view may fetch()/XHR/WebSocket to. Accepted and stored, but not honored at render time yet. */
 export type SetViewRequestCspConnectDomainsList = Array<string>;
-export const SetViewRequestCspConnectDomainsList =
+const SetViewRequestCspConnectDomainsList =
   SetPropertiesRequestCodeChannelFilePathsList as any as S.Schema<SetViewRequestCspConnectDomainsList>;
 
 /** Origins the view may load scripts/styles/fonts/images/media from, merged into the curated CDN allowlist at render time. */
 export type SetViewRequestCspResourceDomainsList = Array<string>;
-export const SetViewRequestCspResourceDomainsList =
+const SetViewRequestCspResourceDomainsList =
   SetPropertiesRequestCodeChannelFilePathsList as any as S.Schema<SetViewRequestCspResourceDomainsList>;
 
 /** Content-Security-Policy domain declarations for the view. Domains are validated server-side (https-only, no private/internal hosts) and persisted. Only resource_domains is honored at render time today; connect_domains is accepted and stored for forward-compatibility but NOT honored yet. */
@@ -600,7 +600,7 @@ export interface SetViewRequestCsp {
   /** Origins the view may load scripts/styles/fonts/images/media from, merged into the curated CDN allowlist at render time. */
   resource_domains?: SetViewRequestCspResourceDomainsList;
 }
-export const SetViewRequestCsp = /*@__PURE__*/ S.suspend(() =>
+const SetViewRequestCsp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connect_domains: S.optional(SetViewRequestCspConnectDomainsList),
     resource_domains: S.optional(SetViewRequestCspResourceDomainsList),
@@ -637,7 +637,7 @@ export interface SetViewRequest {
   /** Content-Security-Policy domain declarations for the view. Domains are validated server-side (https-only, no private/internal hosts) and persisted. Only resource_domains is honored at render time today; connect_domains is accepted and stored for forward-compatibility but NOT honored yet. */
   csp?: SetViewRequestCsp;
 }
-export const SetViewRequest = /*@__PURE__*/ S.suspend(() =>
+const SetViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     type: S.optional(S.Unknown),
@@ -672,7 +672,7 @@ export interface SetViewResponse {
   /** For canvas views, the encoded ID of the attached canvas. Absent for other view types. */
   canvas_id?: string;
 }
-export const SetViewResponse = /*@__PURE__*/ S.suspend(() =>
+const SetViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel_id: S.String,

@@ -62,14 +62,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
   /** The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty. */
   ackIds?: StringList;
 }
-export const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackIds: S.optional(StringList),
   }),
@@ -81,7 +81,7 @@ export interface AcknowledgeProjectsSubscriptionsRequest {
   /** Request body */
   body?: AcknowledgeRequest;
 }
-export const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
     body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
@@ -98,7 +98,7 @@ export const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend((
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -109,7 +109,7 @@ export interface OidcToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account. */
   serviceAccountEmail?: string;
 }
-export const OidcToken = /*@__PURE__*/ S.suspend(() =>
+const OidcToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.String),
     serviceAccountEmail: S.optional(S.String),
@@ -117,7 +117,7 @@ export const OidcToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OidcToken" }) as any as S.Schema<OidcToken>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Configuration for a push delivery endpoint. */
 export interface PushConfig {
@@ -128,7 +128,7 @@ export interface PushConfig {
   /** Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. */
   attributes?: StringMap;
 }
-export const PushConfig = /*@__PURE__*/ S.suspend(() =>
+const PushConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oidcToken: S.optional(OidcToken),
     pushEndpoint: S.optional(S.String),
@@ -147,7 +147,7 @@ export interface Subscription {
   /** The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
   name?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pushConfig: S.optional(PushConfig),
     ackDeadlineSeconds: S.optional(S.Number),
@@ -162,7 +162,7 @@ export interface CreateProjectsSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Subscription.pipe(T.HttpBody())),
@@ -178,7 +178,7 @@ export interface Topic {
   /** The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
   name?: string;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -190,7 +190,7 @@ export interface CreateProjectsTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const CreateProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Topic.pipe(T.HttpBody())),
@@ -205,7 +205,7 @@ export interface DeleteProjectsSubscriptionsRequest {
   /** The subscription to delete. */
   subscription: string;
 }
-export const DeleteProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
   }).pipe(
@@ -223,7 +223,7 @@ export interface DeleteProjectsTopicsRequest {
   /** Name of the topic to delete. */
   topic: string;
 }
-export const DeleteProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.String.pipe(T.Label()),
   }).pipe(
@@ -243,7 +243,7 @@ export interface GetIamPolicyProjectsSubscriptionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -269,7 +269,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -287,7 +287,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     condition: S.optional(Expr),
@@ -296,7 +296,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -307,7 +307,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -321,7 +321,7 @@ export interface GetIamPolicyProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -340,7 +340,7 @@ export interface GetProjectsSubscriptionsRequest {
   /** The name of the subscription to get. */
   subscription: string;
 }
-export const GetProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
   }).pipe(
@@ -358,7 +358,7 @@ export interface GetProjectsTopicsRequest {
   /** The name of the topic to get. */
   topic: string;
 }
-export const GetProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.String.pipe(T.Label()),
   }).pipe(
@@ -374,7 +374,7 @@ export interface ListProjectsSubscriptionsRequest {
   /** The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -391,9 +391,7 @@ export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** Response for the `ListSubscriptions` method. */
 export interface ListSubscriptionsResponse {
@@ -402,7 +400,7 @@ export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
   subscriptions?: SubscriptionList;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     subscriptions: S.optional(SubscriptionList),
@@ -419,7 +417,7 @@ export interface ListProjectsTopicsRequest {
   /** Maximum number of topics to return. */
   pageSize?: number;
 }
-export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
@@ -436,7 +434,7 @@ export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsTopicsRequest>;
 
 export type TopicList = Array<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
 
 /** Response for the `ListTopics` method. */
 export interface ListTopicsResponse {
@@ -445,7 +443,7 @@ export interface ListTopicsResponse {
   /** If not empty, indicates that there may be more topics that match the request; this value should be passed in a new `ListTopicsRequest`. */
   nextPageToken?: string;
 }
-export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(TopicList),
     nextPageToken: S.optional(S.String),
@@ -460,7 +458,7 @@ export interface ListProjectsTopicsSubscriptionsRequest {
   /** The name of the topic that subscriptions are attached to. */
   topic: string;
 }
-export const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -483,7 +481,7 @@ export interface ListTopicSubscriptionsResponse {
   /** The names of the subscriptions that match the request. */
   subscriptions?: StringList;
 }
-export const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     subscriptions: S.optional(StringList),
@@ -501,7 +499,7 @@ export interface ModifyAckDeadlineRequest {
   /** List of acknowledgment IDs. */
   ackIds?: StringList;
 }
-export const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackDeadlineSeconds: S.optional(S.Number),
     ackId: S.optional(S.String),
@@ -515,7 +513,7 @@ export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-export const ModifyAckDeadlineProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAckDeadlineProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
     body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
@@ -535,7 +533,7 @@ export interface ModifyPushConfigRequest {
   /** The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` is not called. */
   pushConfig?: PushConfig;
 }
-export const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pushConfig: S.optional(PushConfig),
   }),
@@ -547,7 +545,7 @@ export interface ModifyPushConfigProjectsSubscriptionsRequest {
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-export const ModifyPushConfigProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyPushConfigProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
     body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
@@ -573,7 +571,7 @@ export interface PubsubMessage {
   /** The time at which the message was published, populated by the server when it receives the `Publish` call. It must not be populated by the publisher in a `Publish` call. */
   publishTime?: string;
 }
-export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
+const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     messageId: S.optional(S.String),
@@ -583,7 +581,7 @@ export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
 export type PubsubMessageList = Array<PubsubMessage>;
-export const PubsubMessageList = /*@__PURE__*/ S.Array(
+const PubsubMessageList = /*@__PURE__*/ S.Array(
   PubsubMessage,
 ) as any as S.Schema<PubsubMessageList>;
 
@@ -592,7 +590,7 @@ export interface PublishRequest {
   /** The messages to publish. */
   messages?: PubsubMessageList;
 }
-export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(PubsubMessageList),
   }),
@@ -604,7 +602,7 @@ export interface PublishProjectsTopicsRequest {
   /** Request body */
   body?: PublishRequest;
 }
-export const PublishProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.String.pipe(T.Label()),
     body: S.optional(PublishRequest.pipe(T.HttpBody())),
@@ -624,7 +622,7 @@ export interface PublishResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
   messageIds?: StringList;
 }
-export const PublishResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageIds: S.optional(StringList),
   }),
@@ -637,7 +635,7 @@ export interface PullRequest {
   /** Optional. If this is specified as true the system will respond immediately even if it is not able to return a message in the `Pull` response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response. Warning: setting this field to `true` is discouraged because it adversely impacts the performance of `Pull` operations. We recommend that users do not set this field. */
   returnImmediately?: boolean;
 }
-export const PullRequest = /*@__PURE__*/ S.suspend(() =>
+const PullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxMessages: S.optional(S.Number),
     returnImmediately: S.optional(S.Boolean),
@@ -650,7 +648,7 @@ export interface PullProjectsSubscriptionsRequest {
   /** Request body */
   body?: PullRequest;
 }
-export const PullProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PullProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
     body: S.optional(PullRequest.pipe(T.HttpBody())),
@@ -672,7 +670,7 @@ export interface ReceivedMessage {
   /** The message. */
   message?: PubsubMessage;
 }
-export const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
+const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackId: S.optional(S.String),
     message: S.optional(PubsubMessage),
@@ -680,7 +678,7 @@ export const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReceivedMessage" }) as any as S.Schema<ReceivedMessage>;
 
 export type ReceivedMessageList = Array<ReceivedMessage>;
-export const ReceivedMessageList = /*@__PURE__*/ S.Array(
+const ReceivedMessageList = /*@__PURE__*/ S.Array(
   ReceivedMessage,
 ) as any as S.Schema<ReceivedMessageList>;
 
@@ -689,7 +687,7 @@ export interface PullResponse {
   /** Received Pub/Sub messages. The Pub/Sub system will return zero messages if there are no more available in the backlog. The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages available in the backlog. */
   receivedMessages?: ReceivedMessageList;
 }
-export const PullResponse = /*@__PURE__*/ S.suspend(() =>
+const PullResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     receivedMessages: S.optional(ReceivedMessageList),
   }),
@@ -700,7 +698,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -712,7 +710,7 @@ export interface SetIamPolicyProjectsSubscriptionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -733,7 +731,7 @@ export interface SetIamPolicyProjectsTopicsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -753,7 +751,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -767,7 +765,7 @@ export interface TestIamPermissionsProjectsSubscriptionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -787,7 +785,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsTopicsRequest {
@@ -796,7 +794,7 @@ export interface TestIamPermissionsProjectsTopicsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),

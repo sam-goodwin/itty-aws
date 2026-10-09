@@ -12,7 +12,7 @@ export interface FetchServerRequestRequestTail {
   /** Number of most recent requests to return. Must be between 1 and 1000. */
   count?: number;
 }
-export const FetchServerRequestRequestTail = /*@__PURE__*/ S.suspend(() =>
+const FetchServerRequestRequestTail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
   }),
@@ -24,7 +24,7 @@ export interface FetchServerRequestRequest {
   functionId?: string;
   tail?: FetchServerRequestRequestTail;
 }
-export const FetchServerRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchServerRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     tail: S.optional(FetchServerRequestRequestTail),
@@ -42,7 +42,7 @@ export interface ServerRequestInfo {
   durationSeconds?: number;
   status?: number;
 }
-export const ServerRequestInfo = /*@__PURE__*/ S.suspend(() =>
+const ServerRequestInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     route: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -53,7 +53,7 @@ export const ServerRequestInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerRequestInfo" }) as any as S.Schema<ServerRequestInfo>;
 
 export type ServerRequestInfoList = Array<ServerRequestInfo>;
-export const ServerRequestInfoList = /*@__PURE__*/ S.Array(
+const ServerRequestInfoList = /*@__PURE__*/ S.Array(
   ServerRequestInfo,
 ) as any as S.Schema<ServerRequestInfoList>;
 
@@ -61,7 +61,7 @@ export interface FetchServerRequestResponse {
   /** The requested number of most recent requests from the last seven days, ordered from newest to oldest. */
   requests?: ServerRequestInfoList;
 }
-export const FetchServerRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchServerRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(ServerRequestInfoList),
   }),
@@ -77,7 +77,7 @@ export interface ServerGetTimeRangeStatsRequest {
   /** Exclusive. Filter stats for a specific container */
   containerId?: string;
 }
-export const ServerGetTimeRangeStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerGetTimeRangeStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     since: S.optional(S.String),
@@ -94,7 +94,7 @@ export interface ServerGetTimeRangeStatsResponseServerStatusCodeCount {
   statusCode?: number;
   count?: string;
 }
-export const ServerGetTimeRangeStatsResponseServerStatusCodeCount = /*@__PURE__*/ S.suspend(() =>
+const ServerGetTimeRangeStatsResponseServerStatusCodeCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number),
     count: S.optional(S.String),
@@ -105,7 +105,7 @@ export const ServerGetTimeRangeStatsResponseServerStatusCodeCount = /*@__PURE__*
 
 export type ServerGetTimeRangeStatsResponseServerStatusCodeCountList =
   Array<ServerGetTimeRangeStatsResponseServerStatusCodeCount>;
-export const ServerGetTimeRangeStatsResponseServerStatusCodeCountList = /*@__PURE__*/ S.Array(
+const ServerGetTimeRangeStatsResponseServerStatusCodeCountList = /*@__PURE__*/ S.Array(
   ServerGetTimeRangeStatsResponseServerStatusCodeCount,
 ) as any as S.Schema<ServerGetTimeRangeStatsResponseServerStatusCodeCountList>;
 
@@ -114,7 +114,7 @@ export interface StatsPercentile {
   percentileBasisPoints?: number;
   value?: number;
 }
-export const StatsPercentile = /*@__PURE__*/ S.suspend(() =>
+const StatsPercentile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentileBasisPoints: S.optional(S.Number),
     value: S.optional(S.Number),
@@ -122,7 +122,7 @@ export const StatsPercentile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatsPercentile" }) as any as S.Schema<StatsPercentile>;
 
 export type StatsPercentileList = Array<StatsPercentile>;
-export const StatsPercentileList = /*@__PURE__*/ S.Array(
+const StatsPercentileList = /*@__PURE__*/ S.Array(
   StatsPercentile,
 ) as any as S.Schema<StatsPercentileList>;
 
@@ -131,7 +131,7 @@ export interface StatsPercentileDistribution {
   unit?: string;
   percentiles?: StatsPercentileList;
 }
-export const StatsPercentileDistribution = /*@__PURE__*/ S.suspend(() =>
+const StatsPercentileDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     percentiles: S.optional(StatsPercentileList),
@@ -143,23 +143,23 @@ export const StatsPercentileDistribution = /*@__PURE__*/ S.suspend(() =>
 export type StatsPercentileDistributionMap = {
   [key: string]: StatsPercentileDistribution | undefined;
 };
-export const StatsPercentileDistributionMap = /*@__PURE__*/ S.Record(
+const StatsPercentileDistributionMap = /*@__PURE__*/ S.Record(
   S.String,
   StatsPercentileDistribution,
 ) as any as S.Schema<StatsPercentileDistributionMap>;
 
 export type LLMEngine = "LLM_ENGINE_UNSPECIFIED" | "LLM_ENGINE_SGLANG" | "LLM_ENGINE_VLLM";
-export const LLMEngine = S.String;
+const LLMEngine = S.String;
 
 export type ServerInferenceStatsStatus =
   | "SERVER_INFERENCE_STATS_STATUS_UNSPECIFIED"
   | "SERVER_INFERENCE_STATS_STATUS_AVAILABLE"
   | "SERVER_INFERENCE_STATS_STATUS_NO_DATA"
   | "SERVER_INFERENCE_STATS_STATUS_UNAVAILABLE";
-export const ServerInferenceStatsStatus = S.String;
+const ServerInferenceStatsStatus = S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
 
 export interface ServerGetTimeRangeStatsResponseServerInferenceStats {
   engine?: LLMEngine;
@@ -169,7 +169,7 @@ export interface ServerGetTimeRangeStatsResponseServerInferenceStats {
   /** Metrics include input_tokens_per_second, cached_input_tokens_per_second, and output_tokens_per_second, subject to change as requirements evolve. */
   scalarStats?: DoubleMap;
 }
-export const ServerGetTimeRangeStatsResponseServerInferenceStats = /*@__PURE__*/ S.suspend(() =>
+const ServerGetTimeRangeStatsResponseServerInferenceStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engine: S.optional(LLMEngine),
     status: S.optional(ServerInferenceStatsStatus),
@@ -201,7 +201,7 @@ export interface ServerGetTimeRangeStatsResponse {
   /** Number of containers that were active (published heartbeats) in the time range. */
   containerTotalCount?: string;
 }
-export const ServerGetTimeRangeStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ServerGetTimeRangeStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     since: S.optional(S.String),
     until: S.optional(S.String),

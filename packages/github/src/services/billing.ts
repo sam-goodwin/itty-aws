@@ -46,10 +46,9 @@ export class UnprocessableEntity
 
 /** Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them. */
 export type CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList = Array<string>;
-export const CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList>;
+const CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList>;
 
 export interface CreateOrganizationBudgetRequestBudgetAlerting {
   /** Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them. */
@@ -57,7 +56,7 @@ export interface CreateOrganizationBudgetRequestBudgetAlerting {
   /** Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them. */
   alert_recipients?: CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList;
 }
-export const CreateOrganizationBudgetRequestBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationBudgetRequestBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     will_alert: S.optional(S.Boolean),
     alert_recipients: S.optional(CreateOrganizationBudgetRequestBudgetAlertingAlertRecipientsList),
@@ -72,23 +71,17 @@ export type CreateOrganizationBudgetRequestBudgetScope =
   | "repository"
   | "multi_user_customer"
   | "user";
-export const CreateOrganizationBudgetRequestBudgetScope = S.String;
+const CreateOrganizationBudgetRequestBudgetScope = S.String;
 
 export type CreateOrganizationBudgetRequestBudgetTypeCase0 = "BundlePricing";
-export const CreateOrganizationBudgetRequestBudgetTypeCase0 = S.String;
-
 export type CreateOrganizationBudgetRequestBudgetTypeCase1 = "ProductPricing";
-export const CreateOrganizationBudgetRequestBudgetTypeCase1 = S.String;
-
 export type CreateOrganizationBudgetRequestBudgetTypeCase2 = "SkuPricing";
-export const CreateOrganizationBudgetRequestBudgetTypeCase2 = S.String;
-
 /** The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted. - `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`. - `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`. - `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`. */
 export type CreateOrganizationBudgetRequestBudgetType =
   | CreateOrganizationBudgetRequestBudgetTypeCase0
   | CreateOrganizationBudgetRequestBudgetTypeCase1
   | CreateOrganizationBudgetRequestBudgetTypeCase2;
-export const CreateOrganizationBudgetRequestBudgetType =
+const CreateOrganizationBudgetRequestBudgetType =
   S.Unknown as any as S.Schema<CreateOrganizationBudgetRequestBudgetType>;
 
 export interface CreateOrganizationBudgetRequest {
@@ -112,7 +105,7 @@ export interface CreateOrganizationBudgetRequest {
   /** The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not provided, the budget will not expire. Only supported for budgets with `budget_scope` of `user` */
   expires_at?: string;
 }
-export const CreateOrganizationBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     budget_amount: S.optional(S.Number),
@@ -140,24 +133,19 @@ export type CreateBudgetBudgetBudgetScope =
   | "multi_user_customer"
   | "multi_user_cost_center"
   | "user";
-export const CreateBudgetBudgetBudgetScope = S.String;
+const CreateBudgetBudgetBudgetScope = S.String;
 
 export type CreateBudgetBudgetBudgetTypeCase0 = "ProductPricing";
-export const CreateBudgetBudgetBudgetTypeCase0 = S.String;
-
 export type CreateBudgetBudgetBudgetTypeCase1 = "SkuPricing";
-export const CreateBudgetBudgetBudgetTypeCase1 = S.String;
-
 /** The type of pricing for the budget */
 export type CreateBudgetBudgetBudgetType =
   | CreateBudgetBudgetBudgetTypeCase0
   | CreateBudgetBudgetBudgetTypeCase1;
-export const CreateBudgetBudgetBudgetType =
-  S.Unknown as any as S.Schema<CreateBudgetBudgetBudgetType>;
+const CreateBudgetBudgetBudgetType = S.Unknown as any as S.Schema<CreateBudgetBudgetBudgetType>;
 
 /** Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them. */
 export type CreateBudgetBudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const CreateBudgetBudgetBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
+const CreateBudgetBudgetBudgetAlertingAlertRecipientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateBudgetBudgetBudgetAlertingAlertRecipientsList>;
 
@@ -167,7 +155,7 @@ export interface CreateBudgetBudgetBudgetAlerting {
   /** Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them. */
   alert_recipients?: CreateBudgetBudgetBudgetAlertingAlertRecipientsList;
 }
-export const CreateBudgetBudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
+const CreateBudgetBudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     will_alert: S.optional(S.Boolean),
     alert_recipients: S.optional(CreateBudgetBudgetBudgetAlertingAlertRecipientsList),
@@ -195,7 +183,7 @@ export interface CreateBudgetBudget {
   /** The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not provided, the budget will not expire. Only supported for budgets with `budget_scope` of `user` */
   expires_at?: string;
 }
-export const CreateBudgetBudget = /*@__PURE__*/ S.suspend(() =>
+const CreateBudgetBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     budget_scope: S.optional(CreateBudgetBudgetBudgetScope),
@@ -214,7 +202,7 @@ export interface CreateBudget {
   message: string;
   budget: CreateBudgetBudget;
 }
-export const CreateBudget = /*@__PURE__*/ S.suspend(() =>
+const CreateBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     budget: CreateBudgetBudget,
@@ -227,7 +215,7 @@ export interface DeleteBudgetOrgRequest {
   /** The ID corresponding to the budget. */
   budget_id: string;
 }
-export const DeleteBudgetOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBudgetOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     budget_id: S.String.pipe(T.Label()),
@@ -246,7 +234,7 @@ export interface DeleteBudget {
   /** The ID of the deleted budget */
   id: string;
 }
-export const DeleteBudget = /*@__PURE__*/ S.suspend(() =>
+const DeleteBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     id: S.String,
@@ -260,7 +248,7 @@ export type GetAllBudgetsOrgRequestScope =
   | "cost_center"
   | "multi_user_customer"
   | "user";
-export const GetAllBudgetsOrgRequestScope = S.String;
+const GetAllBudgetsOrgRequestScope = S.String;
 
 export interface GetAllBudgetsOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -274,7 +262,7 @@ export interface GetAllBudgetsOrgRequest {
   /** Filter consumed amount details for budgets by the specified user login. */
   user?: string;
 }
-export const GetAllBudgetsOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllBudgetsOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -287,14 +275,10 @@ export const GetAllBudgetsOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAllBudgetsOrgRequest" }) as any as S.Schema<GetAllBudgetsOrgRequest>;
 
 export type BudgetBudgetTypeCase0 = "SkuPricing";
-export const BudgetBudgetTypeCase0 = S.String;
-
 export type BudgetBudgetTypeCase1 = "ProductPricing";
-export const BudgetBudgetTypeCase1 = S.String;
-
 /** The type of pricing for the budget */
 export type BudgetBudgetType = BudgetBudgetTypeCase0 | BudgetBudgetTypeCase1;
-export const BudgetBudgetType = S.Unknown as any as S.Schema<BudgetBudgetType>;
+const BudgetBudgetType = S.Unknown as any as S.Schema<BudgetBudgetType>;
 
 /** The scope of the budget */
 export type BudgetBudgetScope =
@@ -305,11 +289,11 @@ export type BudgetBudgetScope =
   | "multi_user_customer"
   | "multi_user_cost_center"
   | "user";
-export const BudgetBudgetScope = S.String;
+const BudgetBudgetScope = S.String;
 
 /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them. */
 export type BudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const BudgetBudgetAlertingAlertRecipientsList =
+const BudgetBudgetAlertingAlertRecipientsList =
   CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<BudgetBudgetAlertingAlertRecipientsList>;
 
 export interface BudgetBudgetAlerting {
@@ -318,7 +302,7 @@ export interface BudgetBudgetAlerting {
   /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them. */
   alert_recipients: BudgetBudgetAlertingAlertRecipientsList;
 }
-export const BudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
+const BudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     will_alert: S.Boolean,
     alert_recipients: BudgetBudgetAlertingAlertRecipientsList,
@@ -348,7 +332,7 @@ export interface Budget {
   /** The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not provided, the budget will not expire. Only supported for budgets with `budget_scope` of `user` */
   expires_at?: string;
 }
-export const Budget = /*@__PURE__*/ S.suspend(() =>
+const Budget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     budget_type: BudgetBudgetType,
@@ -366,7 +350,7 @@ export const Budget = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of budget objects for the enterprise */
 export type GetAllBudgetsBudgetsList = Array<Budget>;
-export const GetAllBudgetsBudgetsList = /*@__PURE__*/ S.Array(
+const GetAllBudgetsBudgetsList = /*@__PURE__*/ S.Array(
   Budget,
 ) as any as S.Schema<GetAllBudgetsBudgetsList>;
 
@@ -379,7 +363,7 @@ export interface GetAllBudgetsEffectiveBudget {
   /** The consumed amount for the specified user within the effective budget. */
   consumed_amount: number;
 }
-export const GetAllBudgetsEffectiveBudget = /*@__PURE__*/ S.suspend(() =>
+const GetAllBudgetsEffectiveBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     budget_amount: S.Number,
@@ -401,7 +385,7 @@ export interface GetAllBudgets {
   /** Total number of budgets matching the query */
   total_count?: number;
 }
-export const GetAllBudgets = /*@__PURE__*/ S.suspend(() =>
+const GetAllBudgets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budgets: GetAllBudgetsBudgetsList,
     user: S.optional(S.String),
@@ -417,7 +401,7 @@ export interface GetBudgetOrgRequest {
   /** The ID corresponding to the budget. */
   budget_id: string;
 }
-export const GetBudgetOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBudgetOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     budget_id: S.String.pipe(T.Label()),
@@ -439,21 +423,17 @@ export type GetBudgetBudgetScope =
   | "multi_user_customer"
   | "multi_user_cost_center"
   | "user";
-export const GetBudgetBudgetScope = S.String;
+const GetBudgetBudgetScope = S.String;
 
 export type GetBudgetBudgetTypeCase0 = "ProductPricing";
-export const GetBudgetBudgetTypeCase0 = S.String;
-
 export type GetBudgetBudgetTypeCase1 = "SkuPricing";
-export const GetBudgetBudgetTypeCase1 = S.String;
-
 /** The type of pricing for the budget */
 export type GetBudgetBudgetType = GetBudgetBudgetTypeCase0 | GetBudgetBudgetTypeCase1;
-export const GetBudgetBudgetType = S.Unknown as any as S.Schema<GetBudgetBudgetType>;
+const GetBudgetBudgetType = S.Unknown as any as S.Schema<GetBudgetBudgetType>;
 
 /** Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them. */
 export type GetBudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const GetBudgetBudgetAlertingAlertRecipientsList =
+const GetBudgetBudgetAlertingAlertRecipientsList =
   CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<GetBudgetBudgetAlertingAlertRecipientsList>;
 
 export interface GetBudgetBudgetAlerting {
@@ -462,7 +442,7 @@ export interface GetBudgetBudgetAlerting {
   /** Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them. */
   alert_recipients?: GetBudgetBudgetAlertingAlertRecipientsList;
 }
-export const GetBudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
+const GetBudgetBudgetAlerting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     will_alert: S.optional(S.Boolean),
     alert_recipients: S.optional(GetBudgetBudgetAlertingAlertRecipientsList),
@@ -490,7 +470,7 @@ export interface GetBudget {
   /** The current usage amount counted toward the budget. How usage is calculated may vary by budget type. */
   consumed_amount?: number;
 }
-export const GetBudget = /*@__PURE__*/ S.suspend(() =>
+const GetBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     budget_scope: GetBudgetBudgetScope,
@@ -521,7 +501,7 @@ export interface GetGithubBillingAiCreditUsageReportOrgRequest {
   /** The product name to query usage for. The name is not case sensitive. */
   product?: string;
 }
-export const GetGithubBillingAiCreditUsageReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingAiCreditUsageReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -549,7 +529,7 @@ export interface BillingAiCreditUsageReportOrgTimePeriod {
   /** The day for the usage report. */
   day?: number;
 }
-export const BillingAiCreditUsageReportOrgTimePeriod = /*@__PURE__*/ S.suspend(() =>
+const BillingAiCreditUsageReportOrgTimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.Number,
     month: S.optional(S.Number),
@@ -583,7 +563,7 @@ export interface BillingAiCreditUsageReportOrgUsageItemsItem {
   /** Net amount of the usage line item. */
   netAmount: number;
 }
-export const BillingAiCreditUsageReportOrgUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
+const BillingAiCreditUsageReportOrgUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.String,
     sku: S.String,
@@ -603,7 +583,7 @@ export const BillingAiCreditUsageReportOrgUsageItemsItem = /*@__PURE__*/ S.suspe
 
 export type BillingAiCreditUsageReportOrgUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingAiCreditUsageReportOrgUsageItemsList = /*@__PURE__*/ S.Array(
+const BillingAiCreditUsageReportOrgUsageItemsList = /*@__PURE__*/ S.Array(
   BillingAiCreditUsageReportOrgUsageItemsItem,
 ) as any as S.Schema<BillingAiCreditUsageReportOrgUsageItemsList>;
 
@@ -619,7 +599,7 @@ export interface BillingAiCreditUsageReportOrg {
   model?: string;
   usageItems: BillingAiCreditUsageReportOrgUsageItemsList;
 }
-export const BillingAiCreditUsageReportOrg = /*@__PURE__*/ S.suspend(() =>
+const BillingAiCreditUsageReportOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timePeriod: BillingAiCreditUsageReportOrgTimePeriod,
     organization: S.String,
@@ -646,7 +626,7 @@ export interface GetGithubBillingAiCreditUsageReportUserRequest {
   /** The product name to query usage for. The name is not case sensitive. */
   product?: string;
 }
-export const GetGithubBillingAiCreditUsageReportUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingAiCreditUsageReportUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -662,16 +642,11 @@ export const GetGithubBillingAiCreditUsageReportUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GetGithubBillingAiCreditUsageReportUserRequest>;
 
 export type BillingAiCreditUsageReportUserTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-export const BillingAiCreditUsageReportUserTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-
 export type BillingAiCreditUsageReportUserUsageItemsItem =
   BillingAiCreditUsageReportOrgUsageItemsItem;
-export const BillingAiCreditUsageReportUserUsageItemsItem =
-  BillingAiCreditUsageReportOrgUsageItemsItem;
-
 export type BillingAiCreditUsageReportUserUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingAiCreditUsageReportUserUsageItemsList =
+const BillingAiCreditUsageReportUserUsageItemsList =
   BillingAiCreditUsageReportOrgUsageItemsList as any as S.Schema<BillingAiCreditUsageReportUserUsageItemsList>;
 
 export interface BillingAiCreditUsageReportUser {
@@ -684,7 +659,7 @@ export interface BillingAiCreditUsageReportUser {
   model?: string;
   usageItems: BillingAiCreditUsageReportUserUsageItemsList;
 }
-export const BillingAiCreditUsageReportUser = /*@__PURE__*/ S.suspend(() =>
+const BillingAiCreditUsageReportUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timePeriod: BillingAiCreditUsageReportOrgTimePeriod,
     user: S.String,
@@ -712,7 +687,7 @@ export interface GetGithubBillingPremiumRequestUsageReportOrgRequest {
   /** The product name to query usage for. The name is not case sensitive. */
   product?: string;
 }
-export const GetGithubBillingPremiumRequestUsageReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingPremiumRequestUsageReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -733,19 +708,10 @@ export const GetGithubBillingPremiumRequestUsageReportOrgRequest = /*@__PURE__*/
 }) as any as S.Schema<GetGithubBillingPremiumRequestUsageReportOrgRequest>;
 
 export type BillingPremiumRequestUsageReportOrgTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-export const BillingPremiumRequestUsageReportOrgTimePeriod =
-  BillingAiCreditUsageReportOrgTimePeriod;
-
 export type BillingPremiumRequestUsageReportOrgUsageItemsItem =
   BillingAiCreditUsageReportOrgUsageItemsItem;
-export const BillingPremiumRequestUsageReportOrgUsageItemsItem =
-  BillingAiCreditUsageReportOrgUsageItemsItem;
-
 export type BillingPremiumRequestUsageReportOrgUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingPremiumRequestUsageReportOrgUsageItemsList =
-  BillingAiCreditUsageReportOrgUsageItemsList as any as S.Schema<BillingPremiumRequestUsageReportOrgUsageItemsList>;
-
 export interface BillingPremiumRequestUsageReportOrg {
   timePeriod: BillingAiCreditUsageReportOrgTimePeriod;
   /** The unique identifier of the organization. */
@@ -758,7 +724,7 @@ export interface BillingPremiumRequestUsageReportOrg {
   model?: string;
   usageItems: BillingPremiumRequestUsageReportOrgUsageItemsList;
 }
-export const BillingPremiumRequestUsageReportOrg =
+const BillingPremiumRequestUsageReportOrg =
   BillingAiCreditUsageReportOrg as any as S.Schema<BillingPremiumRequestUsageReportOrg>;
 
 export interface GetGithubBillingPremiumRequestUsageReportUserRequest {
@@ -775,7 +741,7 @@ export interface GetGithubBillingPremiumRequestUsageReportUserRequest {
   /** The product name to query usage for. The name is not case sensitive. */
   product?: string;
 }
-export const GetGithubBillingPremiumRequestUsageReportUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingPremiumRequestUsageReportUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -796,19 +762,10 @@ export const GetGithubBillingPremiumRequestUsageReportUserRequest = /*@__PURE__*
 
 export type BillingPremiumRequestUsageReportUserTimePeriod =
   BillingAiCreditUsageReportOrgTimePeriod;
-export const BillingPremiumRequestUsageReportUserTimePeriod =
-  BillingAiCreditUsageReportOrgTimePeriod;
-
 export type BillingPremiumRequestUsageReportUserUsageItemsItem =
   BillingAiCreditUsageReportOrgUsageItemsItem;
-export const BillingPremiumRequestUsageReportUserUsageItemsItem =
-  BillingAiCreditUsageReportOrgUsageItemsItem;
-
 export type BillingPremiumRequestUsageReportUserUsageItemsList =
   Array<BillingAiCreditUsageReportOrgUsageItemsItem>;
-export const BillingPremiumRequestUsageReportUserUsageItemsList =
-  BillingAiCreditUsageReportOrgUsageItemsList as any as S.Schema<BillingPremiumRequestUsageReportUserUsageItemsList>;
-
 export interface BillingPremiumRequestUsageReportUser {
   timePeriod: BillingAiCreditUsageReportOrgTimePeriod;
   /** The unique identifier of the user. */
@@ -819,7 +776,7 @@ export interface BillingPremiumRequestUsageReportUser {
   model?: string;
   usageItems: BillingPremiumRequestUsageReportUserUsageItemsList;
 }
-export const BillingPremiumRequestUsageReportUser =
+const BillingPremiumRequestUsageReportUser =
   BillingAiCreditUsageReportUser as any as S.Schema<BillingPremiumRequestUsageReportUser>;
 
 export interface GetGithubBillingUsageReportOrgRequest {
@@ -832,7 +789,7 @@ export interface GetGithubBillingUsageReportOrgRequest {
   /** If specified, only return results for a single day. The value of `day` is an integer between `1` and `31`. If no `year` or `month` is specified, the default `year` and `month` are used. */
   day?: number;
 }
-export const GetGithubBillingUsageReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingUsageReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -867,7 +824,7 @@ export interface BillingUsageReportUsageItemsItem {
   /** Name of the repository. */
   repositoryName?: string;
 }
-export const BillingUsageReportUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageReportUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     product: S.String,
@@ -886,14 +843,14 @@ export const BillingUsageReportUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingUsageReportUsageItemsItem>;
 
 export type BillingUsageReportUsageItemsList = Array<BillingUsageReportUsageItemsItem>;
-export const BillingUsageReportUsageItemsList = /*@__PURE__*/ S.Array(
+const BillingUsageReportUsageItemsList = /*@__PURE__*/ S.Array(
   BillingUsageReportUsageItemsItem,
 ) as any as S.Schema<BillingUsageReportUsageItemsList>;
 
 export interface BillingUsageReport {
   usageItems?: BillingUsageReportUsageItemsList;
 }
-export const BillingUsageReport = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usageItems: S.optional(BillingUsageReportUsageItemsList),
   }),
@@ -909,7 +866,7 @@ export interface GetGithubBillingUsageReportUserRequest {
   /** If specified, only return results for a single day. The value of `day` is an integer between `1` and `31`. If no `year` or `month` is specified, the default `year` and `month` are used. */
   day?: number;
 }
-export const GetGithubBillingUsageReportUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingUsageReportUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -942,7 +899,7 @@ export interface BillingUsageReportUserUsageItemsItem {
   /** Name of the repository. */
   repositoryName?: string;
 }
-export const BillingUsageReportUserUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageReportUserUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     product: S.String,
@@ -960,14 +917,14 @@ export const BillingUsageReportUserUsageItemsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BillingUsageReportUserUsageItemsItem>;
 
 export type BillingUsageReportUserUsageItemsList = Array<BillingUsageReportUserUsageItemsItem>;
-export const BillingUsageReportUserUsageItemsList = /*@__PURE__*/ S.Array(
+const BillingUsageReportUserUsageItemsList = /*@__PURE__*/ S.Array(
   BillingUsageReportUserUsageItemsItem,
 ) as any as S.Schema<BillingUsageReportUserUsageItemsList>;
 
 export interface BillingUsageReportUser {
   usageItems?: BillingUsageReportUserUsageItemsList;
 }
-export const BillingUsageReportUser = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageReportUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usageItems: S.optional(BillingUsageReportUserUsageItemsList),
   }),
@@ -989,7 +946,7 @@ export interface GetGithubBillingUsageSummaryReportOrgRequest {
   /** The SKU to query for usage. */
   sku?: string;
 }
-export const GetGithubBillingUsageSummaryReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingUsageSummaryReportOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -1010,8 +967,6 @@ export const GetGithubBillingUsageSummaryReportOrgRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetGithubBillingUsageSummaryReportOrgRequest>;
 
 export type BillingUsageSummaryReportOrgTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-export const BillingUsageSummaryReportOrgTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-
 export interface BillingUsageSummaryReportOrgUsageItemsItem {
   /** Product name. */
   product: string;
@@ -1034,7 +989,7 @@ export interface BillingUsageSummaryReportOrgUsageItemsItem {
   /** Net amount of the usage line item. */
   netAmount: number;
 }
-export const BillingUsageSummaryReportOrgUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageSummaryReportOrgUsageItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.String,
     sku: S.String,
@@ -1053,7 +1008,7 @@ export const BillingUsageSummaryReportOrgUsageItemsItem = /*@__PURE__*/ S.suspen
 
 export type BillingUsageSummaryReportOrgUsageItemsList =
   Array<BillingUsageSummaryReportOrgUsageItemsItem>;
-export const BillingUsageSummaryReportOrgUsageItemsList = /*@__PURE__*/ S.Array(
+const BillingUsageSummaryReportOrgUsageItemsList = /*@__PURE__*/ S.Array(
   BillingUsageSummaryReportOrgUsageItemsItem,
 ) as any as S.Schema<BillingUsageSummaryReportOrgUsageItemsList>;
 
@@ -1069,7 +1024,7 @@ export interface BillingUsageSummaryReportOrg {
   sku?: string;
   usageItems: BillingUsageSummaryReportOrgUsageItemsList;
 }
-export const BillingUsageSummaryReportOrg = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageSummaryReportOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timePeriod: BillingAiCreditUsageReportOrgTimePeriod,
     organization: S.String,
@@ -1098,7 +1053,7 @@ export interface GetGithubBillingUsageSummaryReportUserRequest {
   /** The SKU to query for usage. */
   sku?: string;
 }
-export const GetGithubBillingUsageSummaryReportUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGithubBillingUsageSummaryReportUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     year: S.optional(S.Number.pipe(T.Query())),
@@ -1115,16 +1070,11 @@ export const GetGithubBillingUsageSummaryReportUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetGithubBillingUsageSummaryReportUserRequest>;
 
 export type BillingUsageSummaryReportUserTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-export const BillingUsageSummaryReportUserTimePeriod = BillingAiCreditUsageReportOrgTimePeriod;
-
 export type BillingUsageSummaryReportUserUsageItemsItem =
   BillingUsageSummaryReportOrgUsageItemsItem;
-export const BillingUsageSummaryReportUserUsageItemsItem =
-  BillingUsageSummaryReportOrgUsageItemsItem;
-
 export type BillingUsageSummaryReportUserUsageItemsList =
   Array<BillingUsageSummaryReportOrgUsageItemsItem>;
-export const BillingUsageSummaryReportUserUsageItemsList =
+const BillingUsageSummaryReportUserUsageItemsList =
   BillingUsageSummaryReportOrgUsageItemsList as any as S.Schema<BillingUsageSummaryReportUserUsageItemsList>;
 
 export interface BillingUsageSummaryReportUser {
@@ -1139,7 +1089,7 @@ export interface BillingUsageSummaryReportUser {
   sku?: string;
   usageItems: BillingUsageSummaryReportUserUsageItemsList;
 }
-export const BillingUsageSummaryReportUser = /*@__PURE__*/ S.suspend(() =>
+const BillingUsageSummaryReportUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timePeriod: BillingAiCreditUsageReportOrgTimePeriod,
     user: S.String,
@@ -1154,24 +1104,19 @@ export const BillingUsageSummaryReportUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user login names who will receive alerts. Ignored for user-scopes as alerting is always disabled for them. */
 export type UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList = Array<string>;
-export const UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList =
-  CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList>;
-
 export interface UpdateBudgetOrgRequestBudgetAlerting {
   /** Whether alerts are enabled for this budget. Ignored for user-scopes as alerting is always disabled for them. */
   will_alert?: boolean;
   /** Array of user login names who will receive alerts. Ignored for user-scopes as alerting is always disabled for them. */
   alert_recipients?: UpdateBudgetOrgRequestBudgetAlertingAlertRecipientsList;
 }
-export const UpdateBudgetOrgRequestBudgetAlerting =
+const UpdateBudgetOrgRequestBudgetAlerting =
   CreateBudgetBudgetBudgetAlerting as any as S.Schema<UpdateBudgetOrgRequestBudgetAlerting>;
 
 export type UpdateBudgetOrgRequestExpiresAtCase1 = 0;
-export const UpdateBudgetOrgRequestExpiresAtCase1 = S.Number;
-
 /** The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set. Only supported for existing user-scoped budgets. */
 export type UpdateBudgetOrgRequestExpiresAt = string | UpdateBudgetOrgRequestExpiresAtCase1;
-export const UpdateBudgetOrgRequestExpiresAt =
+const UpdateBudgetOrgRequestExpiresAt =
   S.Unknown as any as S.Schema<UpdateBudgetOrgRequestExpiresAt>;
 
 export interface UpdateBudgetOrgRequest {
@@ -1187,7 +1132,7 @@ export interface UpdateBudgetOrgRequest {
   /** The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set. Only supported for existing user-scoped budgets. */
   expires_at?: UpdateBudgetOrgRequestExpiresAt;
 }
-export const UpdateBudgetOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBudgetOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     budget_id: S.String.pipe(T.Label()),
@@ -1213,33 +1158,25 @@ export type UpdateBudgetBudgetBudgetScope =
   | "multi_user_customer"
   | "multi_user_cost_center"
   | "user";
-export const UpdateBudgetBudgetBudgetScope = S.String;
+const UpdateBudgetBudgetBudgetScope = S.String;
 
 export type UpdateBudgetBudgetBudgetTypeCase0 = "ProductPricing";
-export const UpdateBudgetBudgetBudgetTypeCase0 = S.String;
-
 export type UpdateBudgetBudgetBudgetTypeCase1 = "SkuPricing";
-export const UpdateBudgetBudgetBudgetTypeCase1 = S.String;
-
 /** The type of pricing for the budget */
 export type UpdateBudgetBudgetBudgetType =
   | UpdateBudgetBudgetBudgetTypeCase0
   | UpdateBudgetBudgetBudgetTypeCase1;
-export const UpdateBudgetBudgetBudgetType =
-  S.Unknown as any as S.Schema<UpdateBudgetBudgetBudgetType>;
+const UpdateBudgetBudgetBudgetType = S.Unknown as any as S.Schema<UpdateBudgetBudgetBudgetType>;
 
 /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them. */
 export type UpdateBudgetBudgetBudgetAlertingAlertRecipientsList = Array<string>;
-export const UpdateBudgetBudgetBudgetAlertingAlertRecipientsList =
-  CreateBudgetBudgetBudgetAlertingAlertRecipientsList as any as S.Schema<UpdateBudgetBudgetBudgetAlertingAlertRecipientsList>;
-
 export interface UpdateBudgetBudgetBudgetAlerting {
   /** Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them. */
   will_alert?: boolean;
   /** Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them. */
   alert_recipients?: UpdateBudgetBudgetBudgetAlertingAlertRecipientsList;
 }
-export const UpdateBudgetBudgetBudgetAlerting =
+const UpdateBudgetBudgetBudgetAlerting =
   CreateBudgetBudgetBudgetAlerting as any as S.Schema<UpdateBudgetBudgetBudgetAlerting>;
 
 export interface UpdateBudgetBudget {
@@ -1265,7 +1202,7 @@ export interface UpdateBudgetBudget {
   /** The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted. If not provided, the budget will not expire. Only supported for budgets with `budget_scope` of `user` */
   expires_at?: string;
 }
-export const UpdateBudgetBudget = /*@__PURE__*/ S.suspend(() =>
+const UpdateBudgetBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     budget_scope: S.optional(UpdateBudgetBudgetBudgetScope),
@@ -1286,7 +1223,7 @@ export interface UpdateBudget {
   message: string;
   budget: UpdateBudgetBudget;
 }
-export const UpdateBudget = /*@__PURE__*/ S.suspend(() =>
+const UpdateBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     budget: UpdateBudgetBudget,

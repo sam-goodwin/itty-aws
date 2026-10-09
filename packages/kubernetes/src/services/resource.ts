@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface IoK8sApiResourceV1alpha3DeviceTaintSelector {
   /** pool is the pool name. If pool is set, only devices in that pool are selected. Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name. */
   pool?: string;
 }
-export const IoK8sApiResourceV1alpha3DeviceTaintSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3DeviceTaintSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(S.String),
     driver: S.optional(S.String),
@@ -220,7 +220,7 @@ export interface IoK8sApiResourceV1alpha3DeviceTaint {
   /** value is the taint value corresponding to the taint key. Must be a label value. */
   value?: string;
 }
-export const IoK8sApiResourceV1alpha3DeviceTaint = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3DeviceTaint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effect: S.String,
     key: S.String,
@@ -238,7 +238,7 @@ export interface IoK8sApiResourceV1alpha3DeviceTaintRuleSpec {
   /** taint is the taint that gets applied to matching devices. */
   taint: IoK8sApiResourceV1alpha3DeviceTaint;
 }
-export const IoK8sApiResourceV1alpha3DeviceTaintRuleSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3DeviceTaintRuleSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceSelector: S.optional(IoK8sApiResourceV1alpha3DeviceTaintSelector),
     taint: IoK8sApiResourceV1alpha3DeviceTaint,
@@ -262,7 +262,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** type of condition in CamelCase or in foo.example.com/CamelCase. */
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.String,
     message: S.optional(S.String),
@@ -278,7 +278,7 @@ export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend((
 /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
 export type IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1Condition,
 ) as any as S.Schema<IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList>;
 
@@ -287,7 +287,7 @@ export interface IoK8sApiResourceV1alpha3DeviceTaintRuleStatus {
   /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
   conditions?: IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList;
 }
-export const IoK8sApiResourceV1alpha3DeviceTaintRuleStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3DeviceTaintRuleStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList),
   }),
@@ -315,7 +315,7 @@ export interface CreateResourceV1alpha3DeviceTaintRuleRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1alpha3DeviceTaintRuleStatus;
 }
-export const CreateResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -346,7 +346,7 @@ export interface IoK8sApiResourceV1alpha3DeviceTaintRule {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1alpha3DeviceTaintRuleStatus;
 }
-export const IoK8sApiResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3DeviceTaintRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -369,7 +369,7 @@ export interface IoK8sApiResourceV1alpha3ResourcePoolStatusRequestSpec {
   /** poolName optionally filters to a specific pool name. If not specified, all pools from the specified driver are included. When specified, must be a non-empty valid resource pool name (DNS subdomains separated by "/"). */
   poolName?: string;
 }
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPartitionTypeAttribute: S.optional(S.String),
     driver: S.String,
@@ -383,10 +383,9 @@ export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestSpec = /*@__PURE__
 /** conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated. Known condition types: - "Complete": True when the request has been processed successfully - "Failed": True when the request could not be processed */
 export type IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1Condition,
-  ) as any as S.Schema<IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusConditionsList>;
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusConditionsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1Condition,
+) as any as S.Schema<IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusConditionsList>;
 
 /** PartitionTypeStatus reports allocatability for a single partition type, identified by the value of a grouping attribute. */
 export interface IoK8sApiResourceV1alpha3PartitionTypeStatus {
@@ -399,7 +398,7 @@ export interface IoK8sApiResourceV1alpha3PartitionTypeStatus {
   /** type is the partition type value (e.g. "Full" or "Half"). */
   type: string;
 }
-export const IoK8sApiResourceV1alpha3PartitionTypeStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3PartitionTypeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocatable: S.Number,
     attribute: S.String,
@@ -413,7 +412,7 @@ export const IoK8sApiResourceV1alpha3PartitionTypeStatus = /*@__PURE__*/ S.suspe
 /** partitionSummary reports allocatability per (attribute, partition type) for a partitionable pool that publishes SharedCounters. Each entry names the grouping attribute it was resolved from: the PartitionTypeAttribute declared by a device's own slice, or for devices whose slice declares none, the default named in the request. A pool that mixes partitions declared under different attributes reports each independently. When no slice declares an attribute and the request names no default, the pool reports no partition summary. */
 export type IoK8sApiResourceV1alpha3PoolStatusPartitionSummaryList =
   Array<IoK8sApiResourceV1alpha3PartitionTypeStatus>;
-export const IoK8sApiResourceV1alpha3PoolStatusPartitionSummaryList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1alpha3PoolStatusPartitionSummaryList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1alpha3PartitionTypeStatus,
 ) as any as S.Schema<IoK8sApiResourceV1alpha3PoolStatusPartitionSummaryList>;
 
@@ -428,7 +427,7 @@ export interface IoK8sApiResourceV1alpha3ShareableCapacityStatus {
   /** total is the sum of this capacity across shareable devices in the pool. */
   total: string;
 }
-export const IoK8sApiResourceV1alpha3ShareableCapacityStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3ShareableCapacityStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.String,
     consumed: S.String,
@@ -442,7 +441,7 @@ export const IoK8sApiResourceV1alpha3ShareableCapacityStatus = /*@__PURE__*/ S.s
 /** capacity reports aggregate total, consumed, and available amounts per shareable capacity key across the pool. */
 export type IoK8sApiResourceV1alpha3ShareableSummaryStatusCapacityList =
   Array<IoK8sApiResourceV1alpha3ShareableCapacityStatus>;
-export const IoK8sApiResourceV1alpha3ShareableSummaryStatusCapacityList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1alpha3ShareableSummaryStatusCapacityList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1alpha3ShareableCapacityStatus,
 ) as any as S.Schema<IoK8sApiResourceV1alpha3ShareableSummaryStatusCapacityList>;
 
@@ -455,7 +454,7 @@ export interface IoK8sApiResourceV1alpha3ShareableSummaryStatus {
   /** partiallyAvailableDevices is the number of shareable devices with some but not all capacity consumed. */
   partiallyAvailableDevices: number;
 }
-export const IoK8sApiResourceV1alpha3ShareableSummaryStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3ShareableSummaryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(IoK8sApiResourceV1alpha3ShareableSummaryStatusCapacityList),
     fullyAvailableDevices: S.Number,
@@ -492,7 +491,7 @@ export interface IoK8sApiResourceV1alpha3PoolStatus {
   /** validationError is set when the pool's data could not be fully validated (e.g., incomplete slice publication). When set, device count fields and ResourceSliceCount may be unset. */
   validationError?: string;
 }
-export const IoK8sApiResourceV1alpha3PoolStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3PoolStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocatedDevices: S.optional(S.Number),
     availableDevices: S.optional(S.Number),
@@ -514,10 +513,9 @@ export const IoK8sApiResourceV1alpha3PoolStatus = /*@__PURE__*/ S.suspend(() =>
 /** pools contains the first `spec.limit` matching pools, sorted by driver then pool name. If `len(pools) < poolCount`, the list was truncated. When omitted, no pools matched the request filters. */
 export type IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusPoolsList =
   Array<IoK8sApiResourceV1alpha3PoolStatus>;
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusPoolsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiResourceV1alpha3PoolStatus,
-  ) as any as S.Schema<IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusPoolsList>;
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusPoolsList = /*@__PURE__*/ S.Array(
+  IoK8sApiResourceV1alpha3PoolStatus,
+) as any as S.Schema<IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusPoolsList>;
 
 /** ResourcePoolStatusRequestStatus contains the calculated pool status information. */
 export interface IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus {
@@ -528,7 +526,7 @@ export interface IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus {
   /** pools contains the first `spec.limit` matching pools, sorted by driver then pool name. If `len(pools) < poolCount`, the list was truncated. When omitted, no pools matched the request filters. */
   pools?: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusPoolsList;
 }
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatusConditionsList),
     poolCount: S.Number,
@@ -558,7 +556,7 @@ export interface CreateResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable. */
   status?: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus;
 }
-export const CreateResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -593,7 +591,7 @@ export interface IoK8sApiResourceV1alpha3ResourcePoolStatusRequest {
   /** status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable. */
   status?: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus;
 }
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -612,7 +610,7 @@ export interface IoK8sApiResourceV1beta1OpaqueDeviceConfiguration {
   /** parameters can contain arbitrary data. It is the responsibility of the driver developer to handle validation and versioning. Typically this includes self-identification and a version ("kind" + "apiVersion" for Kubernetes types), with conversion between different versions. The length of the raw data must be smaller or equal to 10 Ki. */
   parameters: unknown;
 }
-export const IoK8sApiResourceV1beta1OpaqueDeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1OpaqueDeviceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driver: S.String,
     parameters: S.Unknown,
@@ -626,7 +624,7 @@ export interface IoK8sApiResourceV1beta1DeviceClassConfiguration {
   /** opaque provides driver-specific configuration parameters. */
   opaque?: IoK8sApiResourceV1beta1OpaqueDeviceConfiguration;
 }
-export const IoK8sApiResourceV1beta1DeviceClassConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceClassConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
   }),
@@ -637,7 +635,7 @@ export const IoK8sApiResourceV1beta1DeviceClassConfiguration = /*@__PURE__*/ S.s
 /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
 export type IoK8sApiResourceV1beta1DeviceClassSpecConfigList =
   Array<IoK8sApiResourceV1beta1DeviceClassConfiguration>;
-export const IoK8sApiResourceV1beta1DeviceClassSpecConfigList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceClassSpecConfigList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceClassConfiguration,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClassSpecConfigList>;
 
@@ -646,7 +644,7 @@ export interface IoK8sApiResourceV1beta1CELDeviceSelector {
   /** expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort. The expression's input is an object named "device", which carries the following properties: - driver (string): the name of the driver which defines this device. - attributes (map[string]object): the device's attributes, grouped by prefix (e.g. device.attributes["dra.example.com"] evaluates to an object with all of the attributes which were prefixed by "dra.example.com"). - capacity (map[string]object): the device's capacities, grouped by prefix. - allowMultipleAllocations (bool): the allowMultipleAllocations property of the device (v1.34+ with the DRAConsumableCapacity feature enabled). Example: Consider a device with driver="dra.example.com", which exposes two attributes named "model" and "ext.example.com/family" and which exposes one capacity named "modules". This input to this expression would have the following fields: device.driver device.attributes["dra.example.com"].model device.attributes["ext.example.com"].family device.capacity["dra.example.com"].modules The device.driver field can be used to check for a specific driver, either as a high-level precondition (i.e. you only want to consider devices from this driver) or as part of a multi-clause expression that is meant to consider devices from different drivers. The value type of each attribute is defined by the device definition, and users who write these expressions must consult the documentation for their specific drivers. The value type of each capacity is Quantity. If an unknown prefix is used as a lookup in either device.attributes or device.capacity, an empty map will be returned. Any reference to an unknown field will cause an evaluation error and allocation to abort. A robust expression should check for the existence of attributes before referencing them. Common errors: - "no such key": Use optional chaining (.? followed by orValue()) or guarding the check with has() for optional fields. See CEL Optional Types for details: https://pkg.go.dev/github.com/google/cel-go@v0.17.4/cel#OptionalTypes For more CEL expression syntax and examples, see: https://kubernetes.io/docs/reference/using-api/cel/ For ease of use, the cel.bind() function is enabled, and can be used to simplify expressions that access multiple attributes with the same domain. For example: cel.bind(dra, device.attributes["dra.example.com"], dra.someBool && dra.anotherBool) When the DRAListTypeAttributes feature gate is enabled, the includes() helper is available and it can work for both scalar and list-type attributes. It was introduced to support smooth migration from scalar attributes to list-type attributes while keeping CEL expressions simple. For example: device.attributes["dra.example.com"].models.includes("some-model") The length of the expression must be smaller or equal to 10 Ki. The cost of evaluating it is also limited based on the estimated number of logical steps. */
   expression: string;
 }
-export const IoK8sApiResourceV1beta1CELDeviceSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1CELDeviceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
   }),
@@ -659,7 +657,7 @@ export interface IoK8sApiResourceV1beta1DeviceSelector {
   /** cel contains a CEL expression for selecting a device. */
   cel?: IoK8sApiResourceV1beta1CELDeviceSelector;
 }
-export const IoK8sApiResourceV1beta1DeviceSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cel: S.optional(IoK8sApiResourceV1beta1CELDeviceSelector),
   }),
@@ -670,7 +668,7 @@ export const IoK8sApiResourceV1beta1DeviceSelector = /*@__PURE__*/ S.suspend(() 
 /** selectors must be satisfied by a device which is claimed via this class. */
 export type IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceSelector,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList>;
 
@@ -683,7 +681,7 @@ export interface IoK8sApiResourceV1beta1DeviceClassSpec {
   /** selectors must be satisfied by a device which is claimed via this class. */
   selectors?: IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList;
 }
-export const IoK8sApiResourceV1beta1DeviceClassSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceClassSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(IoK8sApiResourceV1beta1DeviceClassSpecConfigList),
     extendedResourceName: S.optional(S.String),
@@ -711,7 +709,7 @@ export interface CreateResourceV1beta1DeviceClassRequest {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta1DeviceClassSpec;
 }
-export const CreateResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -739,7 +737,7 @@ export interface IoK8sApiResourceV1beta1DeviceClass {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta1DeviceClassSpec;
 }
-export const IoK8sApiResourceV1beta1DeviceClass = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -752,7 +750,7 @@ export const IoK8sApiResourceV1beta1DeviceClass = /*@__PURE__*/ S.suspend(() =>
 
 /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList =
+const IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList>;
 
 /** DeviceClaimConfiguration is used for configuration parameters in DeviceClaim. */
@@ -762,7 +760,7 @@ export interface IoK8sApiResourceV1beta1DeviceClaimConfiguration {
   /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
   requests?: IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList;
 }
-export const IoK8sApiResourceV1beta1DeviceClaimConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceClaimConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
     requests: S.optional(IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList),
@@ -774,13 +772,13 @@ export const IoK8sApiResourceV1beta1DeviceClaimConfiguration = /*@__PURE__*/ S.s
 /** config holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim. */
 export type IoK8sApiResourceV1beta1DeviceClaimConfigList =
   Array<IoK8sApiResourceV1beta1DeviceClaimConfiguration>;
-export const IoK8sApiResourceV1beta1DeviceClaimConfigList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceClaimConfigList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceClaimConfiguration,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClaimConfigList>;
 
 /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
 export type IoK8sApiResourceV1beta1DeviceConstraintRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceConstraintRequestsList =
+const IoK8sApiResourceV1beta1DeviceConstraintRequestsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceConstraintRequestsList>;
 
 /** DeviceConstraint must have exactly one field set besides Requests. */
@@ -792,7 +790,7 @@ export interface IoK8sApiResourceV1beta1DeviceConstraint {
   /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
   requests?: IoK8sApiResourceV1beta1DeviceConstraintRequestsList;
 }
-export const IoK8sApiResourceV1beta1DeviceConstraint = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distinctAttribute: S.optional(S.String),
     matchAttribute: S.optional(S.String),
@@ -805,7 +803,7 @@ export const IoK8sApiResourceV1beta1DeviceConstraint = /*@__PURE__*/ S.suspend((
 /** constraints must be satisfied by the set of devices that get allocated for the claim. */
 export type IoK8sApiResourceV1beta1DeviceClaimConstraintsList =
   Array<IoK8sApiResourceV1beta1DeviceConstraint>;
-export const IoK8sApiResourceV1beta1DeviceClaimConstraintsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceClaimConstraintsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceConstraint,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClaimConstraintsList>;
 
@@ -813,7 +811,7 @@ export const IoK8sApiResourceV1beta1DeviceClaimConstraintsList = /*@__PURE__*/ S
 export type IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap =
+const IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap>;
 
 /** CapacityRequirements defines the capacity requirements for a specific device request. */
@@ -821,7 +819,7 @@ export interface IoK8sApiResourceV1beta1CapacityRequirements {
   /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
   requests?: IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap;
 }
-export const IoK8sApiResourceV1beta1CapacityRequirements = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1CapacityRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap),
   }),
@@ -836,7 +834,7 @@ export interface IoK8sApiResourceV1beta1DeviceDerivedAttribute {
   /** name is the identifier for this derived attribute, used in constraints. It must be a DNS subdomain followed by a slash ("/") followed by a C identifier (e.g. "example.com/numaNode" or "derived/numaNode"). If the chosen name matches an existing physical attribute from a driver, the derived attribute's expression will shadow the physical attribute, and its evaluated value will be used in constraints instead. When the goal is to define a derived attribute that is only used within the ResourceClaim and not meant to shadow an existing attribute, use a domain prefix that no DRA driver should be using (e.g. "derived/myAttribute"). It is not valid to define a derived attribute that isn't used in at least one constraint. */
   name: string;
 }
-export const IoK8sApiResourceV1beta1DeviceDerivedAttribute = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceDerivedAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     name: S.String,
@@ -848,20 +846,20 @@ export const IoK8sApiResourceV1beta1DeviceDerivedAttribute = /*@__PURE__*/ S.sus
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceDerivedAttribute,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList>;
 
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList =
+const IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList =
   IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList =
+const IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList =
   IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList>;
 
 /** The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
@@ -877,7 +875,7 @@ export interface IoK8sApiResourceV1beta1DeviceToleration {
   /** value is the taint value the toleration matches to. If the operator is Exists, the value must be empty, otherwise just a regular string. Must be a label value. */
   value?: string;
 }
-export const IoK8sApiResourceV1beta1DeviceToleration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceToleration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effect: S.optional(S.String),
     key: S.optional(S.String),
@@ -892,7 +890,7 @@ export const IoK8sApiResourceV1beta1DeviceToleration = /*@__PURE__*/ S.suspend((
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceToleration,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList>;
 
@@ -915,7 +913,7 @@ export interface IoK8sApiResourceV1beta1DeviceSubRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList;
 }
-export const IoK8sApiResourceV1beta1DeviceSubRequest = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceSubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocationMode: S.optional(S.String),
     capacity: S.optional(IoK8sApiResourceV1beta1CapacityRequirements),
@@ -933,20 +931,20 @@ export const IoK8sApiResourceV1beta1DeviceSubRequest = /*@__PURE__*/ S.suspend((
 /** firstAvailable contains subrequests, of which exactly one will be satisfied by the scheduler to satisfy this request. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one cannot be used. This field may only be set in the entries of DeviceClaim.Requests. DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later. */
 export type IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList =
   Array<IoK8sApiResourceV1beta1DeviceSubRequest>;
-export const IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceSubRequest,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered. This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list. */
 export type IoK8sApiResourceV1beta1DeviceRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta1DeviceRequestSelectorsList =
+const IoK8sApiResourceV1beta1DeviceRequestSelectorsList =
   IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestSelectorsList>;
 
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta1DeviceRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta1DeviceRequestTolerationsList =
+const IoK8sApiResourceV1beta1DeviceRequestTolerationsList =
   IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestTolerationsList>;
 
 /** DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. */
@@ -972,7 +970,7 @@ export interface IoK8sApiResourceV1beta1DeviceRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta1DeviceRequestTolerationsList;
 }
-export const IoK8sApiResourceV1beta1DeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminAccess: S.optional(S.Boolean),
     allocationMode: S.optional(S.String),
@@ -992,7 +990,7 @@ export const IoK8sApiResourceV1beta1DeviceRequest = /*@__PURE__*/ S.suspend(() =
 /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
 export type IoK8sApiResourceV1beta1DeviceClaimRequestsList =
   Array<IoK8sApiResourceV1beta1DeviceRequest>;
-export const IoK8sApiResourceV1beta1DeviceClaimRequestsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceClaimRequestsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceRequest,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClaimRequestsList>;
 
@@ -1005,7 +1003,7 @@ export interface IoK8sApiResourceV1beta1DeviceClaim {
   /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
   requests?: IoK8sApiResourceV1beta1DeviceClaimRequestsList;
 }
-export const IoK8sApiResourceV1beta1DeviceClaim = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(IoK8sApiResourceV1beta1DeviceClaimConfigList),
     constraints: S.optional(IoK8sApiResourceV1beta1DeviceClaimConstraintsList),
@@ -1020,7 +1018,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimSpec {
   /** devices defines how to request devices. */
   devices?: IoK8sApiResourceV1beta1DeviceClaim;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devices: S.optional(IoK8sApiResourceV1beta1DeviceClaim),
   }),
@@ -1030,10 +1028,9 @@ export const IoK8sApiResourceV1beta1ResourceClaimSpec = /*@__PURE__*/ S.suspend(
 
 /** requests lists the names of requests where the configuration applies. If empty, its applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList>;
+const IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList>;
 
 /** DeviceAllocationConfiguration gets embedded in an AllocationResult. */
 export interface IoK8sApiResourceV1beta1DeviceAllocationConfiguration {
@@ -1044,7 +1041,7 @@ export interface IoK8sApiResourceV1beta1DeviceAllocationConfiguration {
   /** source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim. */
   source: string;
 }
-export const IoK8sApiResourceV1beta1DeviceAllocationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceAllocationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
     requests: S.optional(IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList),
@@ -1057,27 +1054,27 @@ export const IoK8sApiResourceV1beta1DeviceAllocationConfiguration = /*@__PURE__*
 /** config is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag. This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters. */
 export type IoK8sApiResourceV1beta1DeviceAllocationResultConfigList =
   Array<IoK8sApiResourceV1beta1DeviceAllocationConfiguration>;
-export const IoK8sApiResourceV1beta1DeviceAllocationResultConfigList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceAllocationResultConfigList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceAllocationConfiguration,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAllocationResultConfigList>;
 
 /** bindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList =
   Array<string>;
-export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList =
+const IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList>;
 
 /** bindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList =
   Array<string>;
-export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList =
+const IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList>;
 
 /** consumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device's requestPolicy if applicable (i.e., may not be less than the requested amount). The total consumed capacity for each device must not exceed the DeviceCapacity's Value. This field is populated only for devices that allow multiple allocations. All capacity entries are included, even if the consumed amount is zero. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap =
+const IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
@@ -1086,16 +1083,15 @@ export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacit
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for this allocated device when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. It is a copy of the ResourceSlice.spec.skipNodeOperations value at the time when the device was allocated. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList =
   Array<string>;
-export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList =
+const IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList>;
 
 /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiResourceV1beta1DeviceToleration,
-  ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList>;
+const IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList = /*@__PURE__*/ S.Array(
+  IoK8sApiResourceV1beta1DeviceToleration,
+) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList>;
 
 /** DeviceRequestAllocationResult contains the allocation result for one request. */
 export interface IoK8sApiResourceV1beta1DeviceRequestAllocationResult {
@@ -1122,7 +1118,7 @@ export interface IoK8sApiResourceV1beta1DeviceRequestAllocationResult {
   /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList;
 }
-export const IoK8sApiResourceV1beta1DeviceRequestAllocationResult = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceRequestAllocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminAccess: S.optional(S.Boolean),
     bindingConditions: S.optional(
@@ -1151,7 +1147,7 @@ export const IoK8sApiResourceV1beta1DeviceRequestAllocationResult = /*@__PURE__*
 /** results lists all allocated devices. */
 export type IoK8sApiResourceV1beta1DeviceAllocationResultResultsList =
   Array<IoK8sApiResourceV1beta1DeviceRequestAllocationResult>;
-export const IoK8sApiResourceV1beta1DeviceAllocationResultResultsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceAllocationResultResultsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceRequestAllocationResult,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAllocationResultResultsList>;
 
@@ -1162,7 +1158,7 @@ export interface IoK8sApiResourceV1beta1DeviceAllocationResult {
   /** results lists all allocated devices. */
   results?: IoK8sApiResourceV1beta1DeviceAllocationResultResultsList;
 }
-export const IoK8sApiResourceV1beta1DeviceAllocationResult = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceAllocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(IoK8sApiResourceV1beta1DeviceAllocationResultConfigList),
     results: S.optional(IoK8sApiResourceV1beta1DeviceAllocationResultResultsList),
@@ -1173,7 +1169,7 @@ export const IoK8sApiResourceV1beta1DeviceAllocationResult = /*@__PURE__*/ S.sus
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
-export const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
+const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
 
 /** A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
@@ -1185,7 +1181,7 @@ export interface IoK8sApiCoreV1NodeSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
   values?: IoK8sApiCoreV1NodeSelectorRequirementValuesList;
 }
-export const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: S.String,
@@ -1198,14 +1194,14 @@ export const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ S.suspend(() 
 /** matchExpressions is a list of node selector requirements by node's labels. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ S.Array(
+const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1NodeSelectorRequirement,
 ) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList>;
 
 /** matchFields is a list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
+const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
 
 /** A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm. */
@@ -1215,7 +1211,7 @@ export interface IoK8sApiCoreV1NodeSelectorTerm {
   /** matchFields is a list of node selector requirements by node's fields. */
   matchFields?: IoK8sApiCoreV1NodeSelectorTermMatchFieldsList;
 }
-export const IoK8sApiCoreV1NodeSelectorTerm = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoreV1NodeSelectorTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchExpressions: S.optional(IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList),
     matchFields: S.optional(IoK8sApiCoreV1NodeSelectorTermMatchFieldsList),
@@ -1226,7 +1222,7 @@ export const IoK8sApiCoreV1NodeSelectorTerm = /*@__PURE__*/ S.suspend(() =>
 
 /** nodeSelectorTerms is a list of node selector terms. The terms are ORed. Required. A list of node selector terms. The terms are ORed. */
 export type IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = Array<IoK8sApiCoreV1NodeSelectorTerm>;
-export const IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = /*@__PURE__*/ S.Array(
+const IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1NodeSelectorTerm,
 ) as any as S.Schema<IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList>;
 
@@ -1235,7 +1231,7 @@ export interface IoK8sApiCoreV1NodeSelector {
   /** nodeSelectorTerms is a list of node selector terms. The terms are ORed. Required. A list of node selector terms. The terms are ORed. */
   nodeSelectorTerms: IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList;
 }
-export const IoK8sApiCoreV1NodeSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoreV1NodeSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeSelectorTerms: IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList,
   }),
@@ -1252,7 +1248,7 @@ export interface IoK8sApiResourceV1beta1AllocationResult {
   /** nodeSelector defines where the allocated resources are available. If unset, they are available everywhere. */
   nodeSelector?: IoK8sApiCoreV1NodeSelector;
 }
-export const IoK8sApiResourceV1beta1AllocationResult = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1AllocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocationTimestamp: S.optional(S.String),
     devices: S.optional(IoK8sApiResourceV1beta1DeviceAllocationResult),
@@ -1265,12 +1261,12 @@ export const IoK8sApiResourceV1beta1AllocationResult = /*@__PURE__*/ S.suspend((
 /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
 export type IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList =
+const IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList =
   IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList>;
 
 /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. Must not contain more than 16 entries. */
 export type IoK8sApiResourceV1beta1NetworkDeviceDataIpsList = Array<string>;
-export const IoK8sApiResourceV1beta1NetworkDeviceDataIpsList =
+const IoK8sApiResourceV1beta1NetworkDeviceDataIpsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1NetworkDeviceDataIpsList>;
 
 /** NetworkDeviceData provides network-related details for the allocated device. This information may be filled by drivers or other components to configure or identify the device within a network context. */
@@ -1282,7 +1278,7 @@ export interface IoK8sApiResourceV1beta1NetworkDeviceData {
   /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. Must not contain more than 16 entries. */
   ips?: IoK8sApiResourceV1beta1NetworkDeviceDataIpsList;
 }
-export const IoK8sApiResourceV1beta1NetworkDeviceData = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1NetworkDeviceData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareAddress: S.optional(S.String),
     interfaceName: S.optional(S.String),
@@ -1309,7 +1305,7 @@ export interface IoK8sApiResourceV1beta1AllocatedDeviceStatus {
   /** ShareID uniquely identifies an individual allocation share of the device. */
   shareID?: string;
 }
-export const IoK8sApiResourceV1beta1AllocatedDeviceStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1AllocatedDeviceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList),
     data: S.optional(S.Unknown),
@@ -1326,7 +1322,7 @@ export const IoK8sApiResourceV1beta1AllocatedDeviceStatus = /*@__PURE__*/ S.susp
 /** devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers. */
 export type IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList =
   Array<IoK8sApiResourceV1beta1AllocatedDeviceStatus>;
-export const IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1AllocatedDeviceStatus,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList>;
 
@@ -1341,7 +1337,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimConsumerReference {
   /** uid identifies exactly one incarnation of the resource. */
   uid: string;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimConsumerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimConsumerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroup: S.optional(S.String),
     name: S.String,
@@ -1355,7 +1351,7 @@ export const IoK8sApiResourceV1beta1ResourceClaimConsumerReference = /*@__PURE__
 /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
 export type IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList =
   Array<IoK8sApiResourceV1beta1ResourceClaimConsumerReference>;
-export const IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1ResourceClaimConsumerReference,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList>;
 
@@ -1368,7 +1364,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimStatus {
   /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
   reservedFor?: IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocation: S.optional(IoK8sApiResourceV1beta1AllocationResult),
     devices: S.optional(IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList),
@@ -1400,7 +1396,7 @@ export interface CreateResourceV1beta1NamespacedResourceClaimRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta1ResourceClaimStatus;
 }
-export const CreateResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1436,7 +1432,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaim {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta1ResourceClaimStatus;
 }
-export const IoK8sApiResourceV1beta1ResourceClaim = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1455,7 +1451,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimTemplateSpec {
   /** spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here. */
   spec?: IoK8sApiResourceV1beta1ResourceClaimSpec;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimTemplateSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimTemplateSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
     spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimSpec),
@@ -1484,25 +1480,24 @@ export interface CreateResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1beta1ResourceClaimTemplateSpec;
 }
-export const CreateResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimTemplateSpec),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
+const CreateResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimTemplateSpec),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<CreateResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -1518,7 +1513,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimTemplate {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1beta1ResourceClaimTemplateSpec;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimTemplate = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1531,24 +1526,24 @@ export const IoK8sApiResourceV1beta1ResourceClaimTemplate = /*@__PURE__*/ S.susp
 
 /** bools is a non-empty list of true/false values. */
 export type IoK8sApiResourceV1beta1DeviceAttributeBoolsList = Array<boolean>;
-export const IoK8sApiResourceV1beta1DeviceAttributeBoolsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceAttributeBoolsList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeBoolsList>;
 
 /** ints is a non-empty list of numbers. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceAttributeIntsList = Array<number>;
-export const IoK8sApiResourceV1beta1DeviceAttributeIntsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceAttributeIntsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeIntsList>;
 
 /** strings is a non-empty list of strings. Each string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceAttributeStringsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceAttributeStringsList =
+const IoK8sApiResourceV1beta1DeviceAttributeStringsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeStringsList>;
 
 /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceAttributeVersionsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceAttributeVersionsList =
+const IoK8sApiResourceV1beta1DeviceAttributeVersionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeVersionsList>;
 
 /** DeviceAttribute must have exactly one field set. */
@@ -1570,7 +1565,7 @@ export interface IoK8sApiResourceV1beta1DeviceAttribute {
   /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
   versions?: IoK8sApiResourceV1beta1DeviceAttributeVersionsList;
 }
-export const IoK8sApiResourceV1beta1DeviceAttribute = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bool: S.optional(S.Boolean),
     bools: S.optional(IoK8sApiResourceV1beta1DeviceAttributeBoolsList),
@@ -1589,19 +1584,19 @@ export const IoK8sApiResourceV1beta1DeviceAttribute = /*@__PURE__*/ S.suspend(()
 export type IoK8sApiResourceV1beta1BasicDeviceAttributesMap = {
   [key: string]: IoK8sApiResourceV1beta1DeviceAttribute | undefined;
 };
-export const IoK8sApiResourceV1beta1BasicDeviceAttributesMap = /*@__PURE__*/ S.Record(
+const IoK8sApiResourceV1beta1BasicDeviceAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   IoK8sApiResourceV1beta1DeviceAttribute,
 ) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceAttributesMap>;
 
 /** bindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod. The maximum number of binding conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList =
+const IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList>;
 
 /** bindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is true, a binding failure occurred. The maximum number of binding failure conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList =
+const IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList>;
 
 /** CapacityRequestPolicyRange defines a valid range for consumable capacity values. If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value(). - If the requested amount is less than Min, it is rounded up to the Min value. - If Step is set and the requested amount is between Min and Max but not aligned with Step, it will be rounded up to the next value equal to Min + (n * Step). - If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set). - If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy, and the device cannot be allocated. */
@@ -1613,7 +1608,7 @@ export interface IoK8sApiResourceV1beta1CapacityRequestPolicyRange {
   /** step defines the step size between valid capacity amounts within the range. Max (if set) and requestPolicy.default must be a multiple of Step. Min + Step must be less than or equal to the capacity value. */
   step?: string;
 }
-export const IoK8sApiResourceV1beta1CapacityRequestPolicyRange = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1CapacityRequestPolicyRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max: S.optional(S.String),
     min: S.String,
@@ -1625,7 +1620,7 @@ export const IoK8sApiResourceV1beta1CapacityRequestPolicyRange = /*@__PURE__*/ S
 
 /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
 export type IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList = Array<string>;
-export const IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList =
+const IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList>;
 
 /** CapacityRequestPolicy defines how requests consume device capacity. Must not set more than one ValidRequestValues. */
@@ -1637,7 +1632,7 @@ export interface IoK8sApiResourceV1beta1CapacityRequestPolicy {
   /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
   validValues?: IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList;
 }
-export const IoK8sApiResourceV1beta1CapacityRequestPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1CapacityRequestPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.String),
     validRange: S.optional(IoK8sApiResourceV1beta1CapacityRequestPolicyRange),
@@ -1654,7 +1649,7 @@ export interface IoK8sApiResourceV1beta1DeviceCapacity {
   /** value defines how much of a certain capacity that device has. This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value. */
   value: string;
 }
-export const IoK8sApiResourceV1beta1DeviceCapacity = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestPolicy: S.optional(IoK8sApiResourceV1beta1CapacityRequestPolicy),
     value: S.String,
@@ -1667,14 +1662,14 @@ export const IoK8sApiResourceV1beta1DeviceCapacity = /*@__PURE__*/ S.suspend(() 
 export type IoK8sApiResourceV1beta1BasicDeviceCapacityMap = {
   [key: string]: IoK8sApiResourceV1beta1DeviceCapacity | undefined;
 };
-export const IoK8sApiResourceV1beta1BasicDeviceCapacityMap = /*@__PURE__*/ S.Record(
+const IoK8sApiResourceV1beta1BasicDeviceCapacityMap = /*@__PURE__*/ S.Record(
   S.String,
   IoK8sApiResourceV1beta1DeviceCapacity,
 ) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceCapacityMap>;
 
 /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
 export type IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList =
+const IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList>;
 
 /** Counter describes a quantity associated with a device. */
@@ -1682,7 +1677,7 @@ export interface IoK8sApiResourceV1beta1Counter {
   /** value defines how much of a certain device counter is available. */
   value: string;
 }
-export const IoK8sApiResourceV1beta1Counter = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1Counter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
   }),
@@ -1694,7 +1689,7 @@ export const IoK8sApiResourceV1beta1Counter = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap = /*@__PURE__*/ S.Record(
+const IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap = /*@__PURE__*/ S.Record(
   S.String,
   IoK8sApiResourceV1beta1Counter,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap>;
@@ -1708,7 +1703,7 @@ export interface IoK8sApiResourceV1beta1DeviceCounterConsumption {
   /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
   counters: IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap;
 }
-export const IoK8sApiResourceV1beta1DeviceCounterConsumption = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceCounterConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatibilityGroups: S.optional(
       IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList,
@@ -1723,7 +1718,7 @@ export const IoK8sApiResourceV1beta1DeviceCounterConsumption = /*@__PURE__*/ S.s
 /** consumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets. There can only be a single entry per counterSet. The maximum number of device counter consumptions per device is 2. */
 export type IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList =
   Array<IoK8sApiResourceV1beta1DeviceCounterConsumption>;
-export const IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceCounterConsumption,
 ) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList>;
 
@@ -1736,7 +1731,7 @@ export interface IoK8sApiResourceV1beta1NodeAllocatableMapping {
   /** deviceMultiplier is used as a multiplier for the allocated device count in the claim. The final node allocatable resource amount is `deviceCount` * `deviceMultiplier`. For example, a DRA driver representing each cache complex (CCX) as a device would have {ResourceName: "cpu", deviceMultiplier: "8"} in its `nodeAllocatableResources`. If 2 devices (CCX) are allocated to the claim, 2 * 8 = 16 CPUs would be considered as allocated. It is only valid when `capacityKey` and `capacityMultiplier` are not set. */
   deviceMultiplier?: string;
 }
-export const IoK8sApiResourceV1beta1NodeAllocatableMapping = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1NodeAllocatableMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacityKey: S.optional(S.String),
     capacityMultiplier: S.optional(S.String),
@@ -1753,7 +1748,7 @@ export interface IoK8sApiResourceV1beta1NodeAllocatableOverhead {
   /** perPod is overhead applied once per pod referencing the claim on this node. This is a flat overhead incurred for every pod referencing the claim. */
   perPod?: string;
 }
-export const IoK8sApiResourceV1beta1NodeAllocatableOverhead = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1NodeAllocatableOverhead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     perContainer: S.optional(S.String),
     perPod: S.optional(S.String),
@@ -1769,7 +1764,7 @@ export interface IoK8sApiResourceV1beta1NodeAllocatableResource {
   /** overhead contains fields for modeling auxiliary overhead incurred on node allocatable resources when allocating devices that are not themselves modeling a node allocatable resource (e.g., host memory overhead for GPUs). Sharing overhead-mapped claims across multiple pods is allowed. The node allocatable overhead is accounted for individually for each pod referencing the claim. Overhead is always subtracted from the node's allocatable capacity for the resource, even when mapping is specified for the same resource. Eg: If a device models memory capacity per socket as a consumable capacity pool via Mapping (with CapacityKey), any overhead specified for the same resource will be subtracted from the node's general allocatable capacity and not from the per-socket capacity pool in Mapping. */
   overhead?: IoK8sApiResourceV1beta1NodeAllocatableOverhead;
 }
-export const IoK8sApiResourceV1beta1NodeAllocatableResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1NodeAllocatableResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mapping: S.optional(IoK8sApiResourceV1beta1NodeAllocatableMapping),
     overhead: S.optional(IoK8sApiResourceV1beta1NodeAllocatableOverhead),
@@ -1782,19 +1777,17 @@ export const IoK8sApiResourceV1beta1NodeAllocatableResource = /*@__PURE__*/ S.su
 export type IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap = {
   [key: string]: IoK8sApiResourceV1beta1NodeAllocatableResource | undefined;
 };
-export const IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap = /*@__PURE__*/ S.Record(
+const IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   IoK8sApiResourceV1beta1NodeAllocatableResource,
 ) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap>;
 
 /** The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim. */
 export type IoK8sApiResourceV1beta1DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
-export const IoK8sApiResourceV1beta1DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
-
 /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta1BasicDeviceTaintsList =
   Array<IoK8sApiResourceV1alpha3DeviceTaint>;
-export const IoK8sApiResourceV1beta1BasicDeviceTaintsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1BasicDeviceTaintsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1alpha3DeviceTaint,
 ) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceTaintsList>;
 
@@ -1825,7 +1818,7 @@ export interface IoK8sApiResourceV1beta1BasicDevice {
   /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   taints?: IoK8sApiResourceV1beta1BasicDeviceTaintsList;
 }
-export const IoK8sApiResourceV1beta1BasicDevice = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1BasicDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allNodes: S.optional(S.Boolean),
     allowMultipleAllocations: S.optional(S.Boolean),
@@ -1855,7 +1848,7 @@ export interface IoK8sApiResourceV1beta1Device {
   /** name is unique identifier among all devices managed by the driver in the pool. It must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1beta1Device = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basic: S.optional(IoK8sApiResourceV1beta1BasicDevice),
     name: S.String,
@@ -1867,7 +1860,7 @@ export const IoK8sApiResourceV1beta1Device = /*@__PURE__*/ S.suspend(() =>
 /** devices lists some or all of the devices in this pool. Must not have more than 128 entries. If any device uses taints or consumes counters the limit is 64. Only one of Devices and SharedCounters can be set in a ResourceSlice. */
 export type IoK8sApiResourceV1beta1ResourceSliceSpecDevicesList =
   Array<IoK8sApiResourceV1beta1Device>;
-export const IoK8sApiResourceV1beta1ResourceSliceSpecDevicesList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceSliceSpecDevicesList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1Device,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceSliceSpecDevicesList>;
 
@@ -1880,7 +1873,7 @@ export interface IoK8sApiResourceV1beta1ResourcePool {
   /** resourceSliceCount is the total number of ResourceSlices in the pool at this generation number. Must be greater than zero. Consumers can use this to check whether they have seen all ResourceSlices belonging to the same pool. */
   resourceSliceCount: number;
 }
-export const IoK8sApiResourceV1beta1ResourcePool = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourcePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation: S.Number,
     name: S.String,
@@ -1894,7 +1887,7 @@ export const IoK8sApiResourceV1beta1ResourcePool = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiResourceV1beta1CounterSetCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta1CounterSetCountersMap =
+const IoK8sApiResourceV1beta1CounterSetCountersMap =
   IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1beta1CounterSetCountersMap>;
 
 /** CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool. The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices. */
@@ -1904,7 +1897,7 @@ export interface IoK8sApiResourceV1beta1CounterSet {
   /** name defines the name of the counter set. It must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1beta1CounterSet = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1CounterSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counters: IoK8sApiResourceV1beta1CounterSetCountersMap,
     name: S.String,
@@ -1916,13 +1909,13 @@ export const IoK8sApiResourceV1beta1CounterSet = /*@__PURE__*/ S.suspend(() =>
 /** sharedCounters defines a list of counter sets, each of which has a name and a list of counters available. The names of the counter sets must be unique in the ResourcePool. Only one of Devices and SharedCounters can be set in a ResourceSlice. The maximum number of counter sets is 8. */
 export type IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList =
   Array<IoK8sApiResourceV1beta1CounterSet>;
-export const IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1CounterSet,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
 export type IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList =
+const IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList>;
 
 /** ResourceSliceSpec contains the information published by the driver in one ResourceSlice. */
@@ -1948,7 +1941,7 @@ export interface IoK8sApiResourceV1beta1ResourceSliceSpec {
   /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
   skipNodeOperations?: IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList;
 }
-export const IoK8sApiResourceV1beta1ResourceSliceSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceSliceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allNodes: S.optional(S.Boolean),
     devices: S.optional(IoK8sApiResourceV1beta1ResourceSliceSpecDevicesList),
@@ -1983,7 +1976,7 @@ export interface CreateResourceV1beta1ResourceSliceRequest {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1beta1ResourceSliceSpec;
 }
-export const CreateResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -2011,7 +2004,7 @@ export interface IoK8sApiResourceV1beta1ResourceSlice {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1beta1ResourceSliceSpec;
 }
-export const IoK8sApiResourceV1beta1ResourceSlice = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceSlice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2025,35 +2018,19 @@ export const IoK8sApiResourceV1beta1ResourceSlice = /*@__PURE__*/ S.suspend(() =
 /** OpaqueDeviceConfiguration contains configuration parameters for a driver in a format defined by the driver vendor. */
 export type IoK8sApiResourceV1beta2OpaqueDeviceConfiguration =
   IoK8sApiResourceV1beta1OpaqueDeviceConfiguration;
-export const IoK8sApiResourceV1beta2OpaqueDeviceConfiguration =
-  IoK8sApiResourceV1beta1OpaqueDeviceConfiguration;
-
 /** DeviceClassConfiguration is used in DeviceClass. */
 export type IoK8sApiResourceV1beta2DeviceClassConfiguration =
   IoK8sApiResourceV1beta1DeviceClassConfiguration;
-export const IoK8sApiResourceV1beta2DeviceClassConfiguration =
-  IoK8sApiResourceV1beta1DeviceClassConfiguration;
-
 /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
 export type IoK8sApiResourceV1beta2DeviceClassSpecConfigList =
   Array<IoK8sApiResourceV1beta1DeviceClassConfiguration>;
-export const IoK8sApiResourceV1beta2DeviceClassSpecConfigList =
-  IoK8sApiResourceV1beta1DeviceClassSpecConfigList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpecConfigList>;
-
 /** CELDeviceSelector contains a CEL expression for selecting a device. */
 export type IoK8sApiResourceV1beta2CELDeviceSelector = IoK8sApiResourceV1beta1CELDeviceSelector;
-export const IoK8sApiResourceV1beta2CELDeviceSelector = IoK8sApiResourceV1beta1CELDeviceSelector;
-
 /** DeviceSelector must have exactly one field set. */
 export type IoK8sApiResourceV1beta2DeviceSelector = IoK8sApiResourceV1beta1DeviceSelector;
-export const IoK8sApiResourceV1beta2DeviceSelector = IoK8sApiResourceV1beta1DeviceSelector;
-
 /** selectors must be satisfied by a device which is claimed via this class. */
 export type IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList =
-  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList>;
-
 /** DeviceClassSpec is used in a [DeviceClass] to define what can be allocated and how to configure it. */
 export interface IoK8sApiResourceV1beta2DeviceClassSpec {
   /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
@@ -2063,7 +2040,7 @@ export interface IoK8sApiResourceV1beta2DeviceClassSpec {
   /** selectors must be satisfied by a device which is claimed via this class. */
   selectors?: IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList;
 }
-export const IoK8sApiResourceV1beta2DeviceClassSpec =
+const IoK8sApiResourceV1beta2DeviceClassSpec =
   IoK8sApiResourceV1beta1DeviceClassSpec as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpec>;
 
 export interface CreateResourceV1beta2DeviceClassRequest {
@@ -2084,7 +2061,7 @@ export interface CreateResourceV1beta2DeviceClassRequest {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta2DeviceClassSpec;
 }
-export const CreateResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -2112,7 +2089,7 @@ export interface IoK8sApiResourceV1beta2DeviceClass {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta2DeviceClassSpec;
 }
-export const IoK8sApiResourceV1beta2DeviceClass =
+const IoK8sApiResourceV1beta2DeviceClass =
   IoK8sApiResourceV1beta1DeviceClass as any as S.Schema<IoK8sApiResourceV1beta2DeviceClass>;
 
 /** DeviceTaintSelector defines which device(s) a DeviceTaintRule applies to. The empty selector matches all devices. Without a selector, no devices are matched. */
@@ -2124,13 +2101,8 @@ export interface IoK8sApiResourceV1beta2DeviceTaintSelector {
   /** pool is the pool name. If pool is set, only devices in that pool are selected. Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name. */
   pool?: string;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintSelector =
-  IoK8sApiResourceV1alpha3DeviceTaintSelector as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintSelector>;
-
 /** The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim. */
 export type IoK8sApiResourceV1beta2DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
-export const IoK8sApiResourceV1beta2DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
-
 /** DeviceTaintRuleSpec specifies the selector and one taint. */
 export interface IoK8sApiResourceV1beta2DeviceTaintRuleSpec {
   /** deviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches. */
@@ -2138,21 +2110,18 @@ export interface IoK8sApiResourceV1beta2DeviceTaintRuleSpec {
   /** taint is the taint that gets applied to matching devices. */
   taint: IoK8sApiResourceV1alpha3DeviceTaint;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRuleSpec =
+const IoK8sApiResourceV1beta2DeviceTaintRuleSpec =
   IoK8sApiResourceV1alpha3DeviceTaintRuleSpec as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleSpec>;
 
 /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
 export type IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList =
-  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList>;
-
 /** DeviceTaintRuleStatus provides information about an on-going pod eviction. */
 export interface IoK8sApiResourceV1beta2DeviceTaintRuleStatus {
   /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
   conditions?: IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRuleStatus =
+const IoK8sApiResourceV1beta2DeviceTaintRuleStatus =
   IoK8sApiResourceV1alpha3DeviceTaintRuleStatus as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleStatus>;
 
 export interface CreateResourceV1beta2DeviceTaintRuleRequest {
@@ -2175,7 +2144,7 @@ export interface CreateResourceV1beta2DeviceTaintRuleRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1beta2DeviceTaintRuleStatus;
 }
-export const CreateResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -2206,14 +2175,11 @@ export interface IoK8sApiResourceV1beta2DeviceTaintRule {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1beta2DeviceTaintRuleStatus;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRule =
+const IoK8sApiResourceV1beta2DeviceTaintRule =
   IoK8sApiResourceV1alpha3DeviceTaintRule as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRule>;
 
 /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList>;
-
 /** DeviceClaimConfiguration is used for configuration parameters in DeviceClaim. */
 export interface IoK8sApiResourceV1beta2DeviceClaimConfiguration {
   /** opaque provides driver-specific configuration parameters. */
@@ -2221,20 +2187,14 @@ export interface IoK8sApiResourceV1beta2DeviceClaimConfiguration {
   /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
   requests?: IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList;
 }
-export const IoK8sApiResourceV1beta2DeviceClaimConfiguration =
-  IoK8sApiResourceV1beta1DeviceClaimConfiguration as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfiguration>;
-
 /** config holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim. */
 export type IoK8sApiResourceV1beta2DeviceClaimConfigList =
   Array<IoK8sApiResourceV1beta2DeviceClaimConfiguration>;
-export const IoK8sApiResourceV1beta2DeviceClaimConfigList =
+const IoK8sApiResourceV1beta2DeviceClaimConfigList =
   IoK8sApiResourceV1beta1DeviceClaimConfigList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfigList>;
 
 /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
 export type IoK8sApiResourceV1beta2DeviceConstraintRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceConstraintRequestsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceConstraintRequestsList>;
-
 /** DeviceConstraint must have exactly one field set besides Requests. */
 export interface IoK8sApiResourceV1beta2DeviceConstraint {
   /** distinctAttribute requires that all devices in question have this attribute and that its type and value are unique across those devices. When the DRAListTypeAttributes feature gate is enabled, comparison uses set semantics (i.e., element order and duplicates are ignored): list-valued attributes must be pairwise disjoint across devices. Scalar values are treated as singleton sets for backward compatibility. This acts as the inverse of MatchAttribute. This constraint is used to avoid allocating multiple requests to the same device by ensuring attribute-level differentiation. This is useful for scenarios where resource requests must be fulfilled by separate physical devices. For example, a container requests two network interfaces that must be allocated from two different physical NICs. */
@@ -2244,56 +2204,45 @@ export interface IoK8sApiResourceV1beta2DeviceConstraint {
   /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
   requests?: IoK8sApiResourceV1beta2DeviceConstraintRequestsList;
 }
-export const IoK8sApiResourceV1beta2DeviceConstraint =
-  IoK8sApiResourceV1beta1DeviceConstraint as any as S.Schema<IoK8sApiResourceV1beta2DeviceConstraint>;
-
 /** constraints must be satisfied by the set of devices that get allocated for the claim. */
 export type IoK8sApiResourceV1beta2DeviceClaimConstraintsList =
   Array<IoK8sApiResourceV1beta2DeviceConstraint>;
-export const IoK8sApiResourceV1beta2DeviceClaimConstraintsList =
+const IoK8sApiResourceV1beta2DeviceClaimConstraintsList =
   IoK8sApiResourceV1beta1DeviceClaimConstraintsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConstraintsList>;
 
 /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
 export type IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap>;
-
 /** CapacityRequirements defines the capacity requirements for a specific device request. */
 export interface IoK8sApiResourceV1beta2CapacityRequirements {
   /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
   requests?: IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap;
 }
-export const IoK8sApiResourceV1beta2CapacityRequirements =
+const IoK8sApiResourceV1beta2CapacityRequirements =
   IoK8sApiResourceV1beta1CapacityRequirements as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequirements>;
 
 /** DeviceDerivedAttribute defines a derived attribute computed via CEL. */
 export type IoK8sApiResourceV1beta2DeviceDerivedAttribute =
   IoK8sApiResourceV1beta1DeviceDerivedAttribute;
-export const IoK8sApiResourceV1beta2DeviceDerivedAttribute =
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute;
-
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList =
+const IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList =
   IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList =
+const IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList =
   IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList>;
 
 /** The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export type IoK8sApiResourceV1beta2DeviceToleration = IoK8sApiResourceV1beta1DeviceToleration;
-export const IoK8sApiResourceV1beta2DeviceToleration = IoK8sApiResourceV1beta1DeviceToleration;
-
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList =
+const IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList =
   IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList>;
 
 /** ExactDeviceRequest is a request for one or more identical devices. */
@@ -2315,7 +2264,7 @@ export interface IoK8sApiResourceV1beta2ExactDeviceRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList;
 }
-export const IoK8sApiResourceV1beta2ExactDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ExactDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminAccess: S.optional(S.Boolean),
     allocationMode: S.optional(S.String),
@@ -2333,21 +2282,12 @@ export const IoK8sApiResourceV1beta2ExactDeviceRequest = /*@__PURE__*/ S.suspend
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList =
-  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList>;
-
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList =
-  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList>;
-
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList =
-  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList>;
-
 /** DeviceSubRequest describes a request for device provided in the claim.spec.devices.requests[].firstAvailable array. Each is typically a request for a single resource like a device, but can also ask for several identical devices. DeviceSubRequest is similar to ExactDeviceRequest, but doesn't expose the AdminAccess field as that one is only supported when requesting a specific device. */
 export interface IoK8sApiResourceV1beta2DeviceSubRequest {
   /** allocationMode and its related fields define how devices are allocated to satisfy this subrequest. Supported values are: - ExactCount: This request is for a specific number of devices. This is the default. The exact number is provided in the count field. - All: This subrequest is for all of the matching devices in a pool. Allocation will fail if some devices are already allocated, unless adminAccess is requested. If AllocationMode is not specified, the default mode is ExactCount. If the mode is ExactCount and count is not specified, the default count is one. Any other subrequests must specify this field. More modes may get added in the future. Clients must refuse to handle requests with unknown modes. */
@@ -2367,13 +2307,10 @@ export interface IoK8sApiResourceV1beta2DeviceSubRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList;
 }
-export const IoK8sApiResourceV1beta2DeviceSubRequest =
-  IoK8sApiResourceV1beta1DeviceSubRequest as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequest>;
-
 /** firstAvailable contains subrequests, of which exactly one will be selected by the scheduler. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one can not be used. DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later. */
 export type IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList =
   Array<IoK8sApiResourceV1beta2DeviceSubRequest>;
-export const IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList =
+const IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList =
   IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList>;
 
 /** DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. With FirstAvailable it is also possible to provide a prioritized list of requests. */
@@ -2385,7 +2322,7 @@ export interface IoK8sApiResourceV1beta2DeviceRequest {
   /** name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim. References using the name in the DeviceRequest will uniquely identify a request when the Exactly field is set. When the FirstAvailable field is set, a reference to the name of the DeviceRequest will match whatever subrequest is chosen by the scheduler. Must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1beta2DeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2DeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exactly: S.optional(IoK8sApiResourceV1beta2ExactDeviceRequest),
     firstAvailable: S.optional(IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList),
@@ -2398,7 +2335,7 @@ export const IoK8sApiResourceV1beta2DeviceRequest = /*@__PURE__*/ S.suspend(() =
 /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
 export type IoK8sApiResourceV1beta2DeviceClaimRequestsList =
   Array<IoK8sApiResourceV1beta2DeviceRequest>;
-export const IoK8sApiResourceV1beta2DeviceClaimRequestsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta2DeviceClaimRequestsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta2DeviceRequest,
 ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimRequestsList>;
 
@@ -2411,7 +2348,7 @@ export interface IoK8sApiResourceV1beta2DeviceClaim {
   /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
   requests?: IoK8sApiResourceV1beta2DeviceClaimRequestsList;
 }
-export const IoK8sApiResourceV1beta2DeviceClaim = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2DeviceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(IoK8sApiResourceV1beta2DeviceClaimConfigList),
     constraints: S.optional(IoK8sApiResourceV1beta2DeviceClaimConstraintsList),
@@ -2426,7 +2363,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaimSpec {
   /** devices defines how to request devices. */
   devices?: IoK8sApiResourceV1beta2DeviceClaim;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceClaimSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devices: S.optional(IoK8sApiResourceV1beta2DeviceClaim),
   }),
@@ -2436,9 +2373,6 @@ export const IoK8sApiResourceV1beta2ResourceClaimSpec = /*@__PURE__*/ S.suspend(
 
 /** requests lists the names of requests where the configuration applies. If empty, its applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList =
-  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList>;
-
 /** DeviceAllocationConfiguration gets embedded in an AllocationResult. */
 export interface IoK8sApiResourceV1beta2DeviceAllocationConfiguration {
   /** opaque provides driver-specific configuration parameters. */
@@ -2448,46 +2382,25 @@ export interface IoK8sApiResourceV1beta2DeviceAllocationConfiguration {
   /** source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim. */
   source: string;
 }
-export const IoK8sApiResourceV1beta2DeviceAllocationConfiguration =
-  IoK8sApiResourceV1beta1DeviceAllocationConfiguration as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationConfiguration>;
-
 /** config is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag. This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters. */
 export type IoK8sApiResourceV1beta2DeviceAllocationResultConfigList =
   Array<IoK8sApiResourceV1beta2DeviceAllocationConfiguration>;
-export const IoK8sApiResourceV1beta2DeviceAllocationResultConfigList =
-  IoK8sApiResourceV1beta1DeviceAllocationResultConfigList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResultConfigList>;
-
 /** bindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList =
   Array<string>;
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList =
-  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList>;
-
 /** bindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList =
   Array<string>;
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList =
-  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList>;
-
 /** consumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device's requestPolicy if applicable (i.e., may not be less than the requested amount). The total consumed capacity for each device must not exceed the DeviceCapacity's Value. This field is populated only for devices that allow multiple allocations. All capacity entries are included, even if the consumed amount is zero. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap =
-  IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap>;
-
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for this allocated device when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. It is a copy of the ResourceSlice.spec.skipNodeOperations value at the time when the device was allocated. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList =
   Array<string>;
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList =
-  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList>;
-
 /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList =
-  IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList>;
-
 /** DeviceRequestAllocationResult contains the allocation result for one request. */
 export interface IoK8sApiResourceV1beta2DeviceRequestAllocationResult {
   /** adminAccess indicates that this device was allocated for administrative access. See the corresponding request field for a definition of mode. This is an alpha field and requires enabling the DRAAdminAccess feature gate. Admin access is disabled if this field is unset or set to false, otherwise it is enabled. */
@@ -2513,15 +2426,9 @@ export interface IoK8sApiResourceV1beta2DeviceRequestAllocationResult {
   /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList;
 }
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResult =
-  IoK8sApiResourceV1beta1DeviceRequestAllocationResult as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResult>;
-
 /** results lists all allocated devices. */
 export type IoK8sApiResourceV1beta2DeviceAllocationResultResultsList =
   Array<IoK8sApiResourceV1beta2DeviceRequestAllocationResult>;
-export const IoK8sApiResourceV1beta2DeviceAllocationResultResultsList =
-  IoK8sApiResourceV1beta1DeviceAllocationResultResultsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResultResultsList>;
-
 /** DeviceAllocationResult is the result of allocating devices. */
 export interface IoK8sApiResourceV1beta2DeviceAllocationResult {
   /** config is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag. This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters. */
@@ -2529,9 +2436,6 @@ export interface IoK8sApiResourceV1beta2DeviceAllocationResult {
   /** results lists all allocated devices. */
   results?: IoK8sApiResourceV1beta2DeviceAllocationResultResultsList;
 }
-export const IoK8sApiResourceV1beta2DeviceAllocationResult =
-  IoK8sApiResourceV1beta1DeviceAllocationResult as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResult>;
-
 /** AllocationResult contains attributes of an allocated resource. */
 export interface IoK8sApiResourceV1beta2AllocationResult {
   /** allocationTimestamp stores the time when the resources were allocated. This field is not guaranteed to be set, in which case that time is unknown. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gate. */
@@ -2541,20 +2445,11 @@ export interface IoK8sApiResourceV1beta2AllocationResult {
   /** nodeSelector defines where the allocated resources are available. If unset, they are available everywhere. */
   nodeSelector?: IoK8sApiCoreV1NodeSelector;
 }
-export const IoK8sApiResourceV1beta2AllocationResult =
-  IoK8sApiResourceV1beta1AllocationResult as any as S.Schema<IoK8sApiResourceV1beta2AllocationResult>;
-
 /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
 export type IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList =
-  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList>;
-
 /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
 export type IoK8sApiResourceV1beta2NetworkDeviceDataIpsList = Array<string>;
-export const IoK8sApiResourceV1beta2NetworkDeviceDataIpsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2NetworkDeviceDataIpsList>;
-
 /** NetworkDeviceData provides network-related details for the allocated device. This information may be filled by drivers or other components to configure or identify the device within a network context. */
 export interface IoK8sApiResourceV1beta2NetworkDeviceData {
   /** hardwareAddress represents the hardware address (e.g. MAC Address) of the device's network interface. Must not be longer than 128 bytes. */
@@ -2564,9 +2459,6 @@ export interface IoK8sApiResourceV1beta2NetworkDeviceData {
   /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
   ips?: IoK8sApiResourceV1beta2NetworkDeviceDataIpsList;
 }
-export const IoK8sApiResourceV1beta2NetworkDeviceData =
-  IoK8sApiResourceV1beta1NetworkDeviceData as any as S.Schema<IoK8sApiResourceV1beta2NetworkDeviceData>;
-
 /** AllocatedDeviceStatus contains the status of an allocated device, if the driver chooses to report it. This may include driver-specific information. The combination of Driver, Pool, Device, and ShareID must match the corresponding key in Status.Allocation.Devices. */
 export interface IoK8sApiResourceV1beta2AllocatedDeviceStatus {
   /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
@@ -2584,27 +2476,15 @@ export interface IoK8sApiResourceV1beta2AllocatedDeviceStatus {
   /** ShareID uniquely identifies an individual allocation share of the device. */
   shareID?: string;
 }
-export const IoK8sApiResourceV1beta2AllocatedDeviceStatus =
-  IoK8sApiResourceV1beta1AllocatedDeviceStatus as any as S.Schema<IoK8sApiResourceV1beta2AllocatedDeviceStatus>;
-
 /** devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers. */
 export type IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList =
   Array<IoK8sApiResourceV1beta2AllocatedDeviceStatus>;
-export const IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList =
-  IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList>;
-
 /** ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim. */
 export type IoK8sApiResourceV1beta2ResourceClaimConsumerReference =
   IoK8sApiResourceV1beta1ResourceClaimConsumerReference;
-export const IoK8sApiResourceV1beta2ResourceClaimConsumerReference =
-  IoK8sApiResourceV1beta1ResourceClaimConsumerReference;
-
 /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
 export type IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList =
   Array<IoK8sApiResourceV1beta1ResourceClaimConsumerReference>;
-export const IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList =
-  IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList>;
-
 /** ResourceClaimStatus tracks whether the resource has been allocated and what the result of that was. */
 export interface IoK8sApiResourceV1beta2ResourceClaimStatus {
   /** allocation is set once the claim has been allocated successfully. */
@@ -2614,7 +2494,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaimStatus {
   /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
   reservedFor?: IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimStatus =
+const IoK8sApiResourceV1beta2ResourceClaimStatus =
   IoK8sApiResourceV1beta1ResourceClaimStatus as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatus>;
 
 export interface CreateResourceV1beta2NamespacedResourceClaimRequest {
@@ -2639,7 +2519,7 @@ export interface CreateResourceV1beta2NamespacedResourceClaimRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta2ResourceClaimStatus;
 }
-export const CreateResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2675,7 +2555,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaim {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta2ResourceClaimStatus;
 }
-export const IoK8sApiResourceV1beta2ResourceClaim = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2694,7 +2574,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaimTemplateSpec {
   /** spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here. */
   spec?: IoK8sApiResourceV1beta2ResourceClaimSpec;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimTemplateSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceClaimTemplateSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
     spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimSpec),
@@ -2723,25 +2603,24 @@ export interface CreateResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1beta2ResourceClaimTemplateSpec;
 }
-export const CreateResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimTemplateSpec),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
+const CreateResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimTemplateSpec),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<CreateResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -2757,7 +2636,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaimTemplate {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1beta2ResourceClaimTemplateSpec;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimTemplate = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceClaimTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2770,24 +2649,12 @@ export const IoK8sApiResourceV1beta2ResourceClaimTemplate = /*@__PURE__*/ S.susp
 
 /** bools is a non-empty list of true/false values. */
 export type IoK8sApiResourceV1beta2DeviceAttributeBoolsList = Array<boolean>;
-export const IoK8sApiResourceV1beta2DeviceAttributeBoolsList =
-  IoK8sApiResourceV1beta1DeviceAttributeBoolsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeBoolsList>;
-
 /** ints is a non-empty list of numbers. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceAttributeIntsList = Array<number>;
-export const IoK8sApiResourceV1beta2DeviceAttributeIntsList =
-  IoK8sApiResourceV1beta1DeviceAttributeIntsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeIntsList>;
-
 /** strings is a non-empty list of strings. Each string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceAttributeStringsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceAttributeStringsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeStringsList>;
-
 /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceAttributeVersionsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceAttributeVersionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeVersionsList>;
-
 /** DeviceAttribute must have exactly one field set. */
 export interface IoK8sApiResourceV1beta2DeviceAttribute {
   /** bool is a true/false value. */
@@ -2807,37 +2674,28 @@ export interface IoK8sApiResourceV1beta2DeviceAttribute {
   /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
   versions?: IoK8sApiResourceV1beta2DeviceAttributeVersionsList;
 }
-export const IoK8sApiResourceV1beta2DeviceAttribute =
-  IoK8sApiResourceV1beta1DeviceAttribute as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttribute>;
-
 /** attributes defines the set of attributes for this device. The name of each attribute must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1beta2DeviceAttributesMap = {
   [key: string]: IoK8sApiResourceV1beta2DeviceAttribute | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceAttributesMap =
+const IoK8sApiResourceV1beta2DeviceAttributesMap =
   IoK8sApiResourceV1beta1BasicDeviceAttributesMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributesMap>;
 
 /** bindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod. The maximum number of binding conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceBindingConditionsList =
+const IoK8sApiResourceV1beta2DeviceBindingConditionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceBindingConditionsList>;
 
 /** bindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is set to "True", a binding failure occurred. The maximum number of binding failure conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList =
+const IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList>;
 
 /** CapacityRequestPolicyRange defines a valid range for consumable capacity values. If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value(). - If the requested amount is less than Min, it is rounded up to the Min value. - If Step is set and the requested amount is between Min and Max but not aligned with Step, it will be rounded up to the next value equal to Min + (n * Step). - If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set). - If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy, and the device cannot be allocated. */
 export type IoK8sApiResourceV1beta2CapacityRequestPolicyRange =
   IoK8sApiResourceV1beta1CapacityRequestPolicyRange;
-export const IoK8sApiResourceV1beta2CapacityRequestPolicyRange =
-  IoK8sApiResourceV1beta1CapacityRequestPolicyRange;
-
 /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
 export type IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList = Array<string>;
-export const IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList>;
-
 /** CapacityRequestPolicy defines how requests consume device capacity. Must not set more than one ValidRequestValues. */
 export interface IoK8sApiResourceV1beta2CapacityRequestPolicy {
   /** default specifies how much of this capacity is consumed by a request that does not contain an entry for it in DeviceRequest's Capacity. */
@@ -2847,9 +2705,6 @@ export interface IoK8sApiResourceV1beta2CapacityRequestPolicy {
   /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
   validValues?: IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList;
 }
-export const IoK8sApiResourceV1beta2CapacityRequestPolicy =
-  IoK8sApiResourceV1beta1CapacityRequestPolicy as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequestPolicy>;
-
 /** DeviceCapacity describes a quantity associated with a device. */
 export interface IoK8sApiResourceV1beta2DeviceCapacity {
   /** requestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations. The Device must have allowMultipleAllocations set to true in order to set a requestPolicy. If unset, capacity requests are unconstrained: requests can consume any amount of capacity, as long as the total consumed across all allocations does not exceed the device's defined capacity. If request is also unset, default is the full capacity value. */
@@ -2857,32 +2712,21 @@ export interface IoK8sApiResourceV1beta2DeviceCapacity {
   /** value defines how much of a certain capacity that device has. This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value. */
   value: string;
 }
-export const IoK8sApiResourceV1beta2DeviceCapacity =
-  IoK8sApiResourceV1beta1DeviceCapacity as any as S.Schema<IoK8sApiResourceV1beta2DeviceCapacity>;
-
 /** capacity defines the set of capacities for this device. The name of each capacity must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1beta2DeviceCapacityMap = {
   [key: string]: IoK8sApiResourceV1beta2DeviceCapacity | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceCapacityMap =
+const IoK8sApiResourceV1beta2DeviceCapacityMap =
   IoK8sApiResourceV1beta1BasicDeviceCapacityMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceCapacityMap>;
 
 /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
 export type IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList =
-  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList>;
-
 /** Counter describes a quantity associated with a device. */
 export type IoK8sApiResourceV1beta2Counter = IoK8sApiResourceV1beta1Counter;
-export const IoK8sApiResourceV1beta2Counter = IoK8sApiResourceV1beta1Counter;
-
 /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
 export type IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap =
-  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap>;
-
 /** DeviceCounterConsumption defines a set of counters that a device will consume from a CounterSet. */
 export interface IoK8sApiResourceV1beta2DeviceCounterConsumption {
   /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
@@ -2892,43 +2736,31 @@ export interface IoK8sApiResourceV1beta2DeviceCounterConsumption {
   /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
   counters: IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap;
 }
-export const IoK8sApiResourceV1beta2DeviceCounterConsumption =
-  IoK8sApiResourceV1beta1DeviceCounterConsumption as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumption>;
-
 /** consumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets. There can only be a single entry per counterSet. The maximum number of device counter consumptions per device is 2. */
 export type IoK8sApiResourceV1beta2DeviceConsumesCountersList =
   Array<IoK8sApiResourceV1beta2DeviceCounterConsumption>;
-export const IoK8sApiResourceV1beta2DeviceConsumesCountersList =
+const IoK8sApiResourceV1beta2DeviceConsumesCountersList =
   IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceConsumesCountersList>;
 
 /** NodeAllocatableMapping defines how a DRA allocation directly translates into a node allocatable resource quantity. The mapping can be derived from either the count of allocated devices (via deviceMultiplier) or the specific capacity consumed (via capacityKey and capacityMultiplier). These options are mutually exclusive. Kubelet adds this mapped resource quantity from claim to both requests and limits at the pod-level cgroup, and to limits at the container-level cgroup for each container referencing the claim. */
 export type IoK8sApiResourceV1beta2NodeAllocatableMapping =
   IoK8sApiResourceV1beta1NodeAllocatableMapping;
-export const IoK8sApiResourceV1beta2NodeAllocatableMapping =
-  IoK8sApiResourceV1beta1NodeAllocatableMapping;
-
 /** NodeAllocatableOverhead defines auxiliary resource overheads incurred when allocating a device. Overheads can be specified as a fixed cost per pod referencing the claim, a variable cost per container reference, or both. Kubelet accounts for this overhead by adding it to both the pod-level and container-level cgroups of referencing containers. */
 export type IoK8sApiResourceV1beta2NodeAllocatableOverhead =
   IoK8sApiResourceV1beta1NodeAllocatableOverhead;
-export const IoK8sApiResourceV1beta2NodeAllocatableOverhead =
-  IoK8sApiResourceV1beta1NodeAllocatableOverhead;
-
 /** NodeAllocatableResource defines the translation between the DRA device/capacity units requested to the corresponding quantity of the node allocatable resource. At least one of Mapping or Overhead must be specified. Not specifying either is an invalid configuration. */
 export type IoK8sApiResourceV1beta2NodeAllocatableResource =
   IoK8sApiResourceV1beta1NodeAllocatableResource;
-export const IoK8sApiResourceV1beta2NodeAllocatableResource =
-  IoK8sApiResourceV1beta1NodeAllocatableResource;
-
 /** nodeAllocatableResources defines the mapping of node resources that are managed by the DRA driver exposing this device. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources). Examples include "cpu", "memory", "ephemeral-storage", and hugepages. In addition to standard requests made through the Pod `spec`, these resources can also be requested through claims and allocated by the DRA driver. For example, a CPU DRA driver might allocate exclusive CPUs or auxiliary node memory dependencies of an accelerator device. The keys of this map are the node-allocatable resource names (e.g., "cpu", "memory"). Extended resource names are not permitted as keys. */
 export type IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap = {
   [key: string]: IoK8sApiResourceV1beta1NodeAllocatableResource | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap =
+const IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap =
   IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap>;
 
 /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2DeviceTaintsList = Array<IoK8sApiResourceV1alpha3DeviceTaint>;
-export const IoK8sApiResourceV1beta2DeviceTaintsList =
+const IoK8sApiResourceV1beta2DeviceTaintsList =
   IoK8sApiResourceV1beta1BasicDeviceTaintsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintsList>;
 
 /** Device represents one individual hardware instance that can be selected based on its attributes. Besides the name, exactly one field must be set. */
@@ -2960,7 +2792,7 @@ export interface IoK8sApiResourceV1beta2Device {
   /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   taints?: IoK8sApiResourceV1beta2DeviceTaintsList;
 }
-export const IoK8sApiResourceV1beta2Device = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allNodes: S.optional(S.Boolean),
     allowMultipleAllocations: S.optional(S.Boolean),
@@ -2983,21 +2815,16 @@ export const IoK8sApiResourceV1beta2Device = /*@__PURE__*/ S.suspend(() =>
 /** devices lists some or all of the devices in this pool. Must not have more than 128 entries. If any device uses taints or consumes counters the limit is 64. Only one of Devices and SharedCounters can be set in a ResourceSlice. */
 export type IoK8sApiResourceV1beta2ResourceSliceSpecDevicesList =
   Array<IoK8sApiResourceV1beta2Device>;
-export const IoK8sApiResourceV1beta2ResourceSliceSpecDevicesList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta2ResourceSliceSpecDevicesList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta2Device,
 ) as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecDevicesList>;
 
 /** ResourcePool describes the pool that ResourceSlices belong to. */
 export type IoK8sApiResourceV1beta2ResourcePool = IoK8sApiResourceV1beta1ResourcePool;
-export const IoK8sApiResourceV1beta2ResourcePool = IoK8sApiResourceV1beta1ResourcePool;
-
 /** counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label. The maximum number of counters is 32. */
 export type IoK8sApiResourceV1beta2CounterSetCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta2CounterSetCountersMap =
-  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1beta2CounterSetCountersMap>;
-
 /** CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool. The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices. */
 export interface IoK8sApiResourceV1beta2CounterSet {
   /** counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label. The maximum number of counters is 32. */
@@ -3005,18 +2832,15 @@ export interface IoK8sApiResourceV1beta2CounterSet {
   /** name defines the name of the counter set. It must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1beta2CounterSet =
-  IoK8sApiResourceV1beta1CounterSet as any as S.Schema<IoK8sApiResourceV1beta2CounterSet>;
-
 /** sharedCounters defines a list of counter sets, each of which has a name and a list of counters available. The names of the counter sets must be unique in the ResourcePool. Only one of Devices and SharedCounters can be set in a ResourceSlice. The maximum number of counter sets is 8. */
 export type IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList =
   Array<IoK8sApiResourceV1beta2CounterSet>;
-export const IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList =
+const IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList =
   IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
 export type IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList =
+const IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList>;
 
 /** ResourceSliceSpec contains the information published by the driver in one ResourceSlice. */
@@ -3042,7 +2866,7 @@ export interface IoK8sApiResourceV1beta2ResourceSliceSpec {
   /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
   skipNodeOperations?: IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList;
 }
-export const IoK8sApiResourceV1beta2ResourceSliceSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceSliceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allNodes: S.optional(S.Boolean),
     devices: S.optional(IoK8sApiResourceV1beta2ResourceSliceSpecDevicesList),
@@ -3077,7 +2901,7 @@ export interface CreateResourceV1beta2ResourceSliceRequest {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1beta2ResourceSliceSpec;
 }
-export const CreateResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -3105,7 +2929,7 @@ export interface IoK8sApiResourceV1beta2ResourceSlice {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1beta2ResourceSliceSpec;
 }
-export const IoK8sApiResourceV1beta2ResourceSlice = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceSlice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -3119,35 +2943,19 @@ export const IoK8sApiResourceV1beta2ResourceSlice = /*@__PURE__*/ S.suspend(() =
 /** OpaqueDeviceConfiguration contains configuration parameters for a driver in a format defined by the driver vendor. */
 export type IoK8sApiResourceV1OpaqueDeviceConfiguration =
   IoK8sApiResourceV1beta1OpaqueDeviceConfiguration;
-export const IoK8sApiResourceV1OpaqueDeviceConfiguration =
-  IoK8sApiResourceV1beta1OpaqueDeviceConfiguration;
-
 /** DeviceClassConfiguration is used in DeviceClass. */
 export type IoK8sApiResourceV1DeviceClassConfiguration =
   IoK8sApiResourceV1beta1DeviceClassConfiguration;
-export const IoK8sApiResourceV1DeviceClassConfiguration =
-  IoK8sApiResourceV1beta1DeviceClassConfiguration;
-
 /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
 export type IoK8sApiResourceV1DeviceClassSpecConfigList =
   Array<IoK8sApiResourceV1beta1DeviceClassConfiguration>;
-export const IoK8sApiResourceV1DeviceClassSpecConfigList =
-  IoK8sApiResourceV1beta1DeviceClassSpecConfigList as any as S.Schema<IoK8sApiResourceV1DeviceClassSpecConfigList>;
-
 /** CELDeviceSelector contains a CEL expression for selecting a device. */
 export type IoK8sApiResourceV1CELDeviceSelector = IoK8sApiResourceV1beta1CELDeviceSelector;
-export const IoK8sApiResourceV1CELDeviceSelector = IoK8sApiResourceV1beta1CELDeviceSelector;
-
 /** DeviceSelector must have exactly one field set. */
 export type IoK8sApiResourceV1DeviceSelector = IoK8sApiResourceV1beta1DeviceSelector;
-export const IoK8sApiResourceV1DeviceSelector = IoK8sApiResourceV1beta1DeviceSelector;
-
 /** selectors is the list of device selectors. Each selector must be satisfied by a device which is claimed via this class. */
 export type IoK8sApiResourceV1DeviceClassSpecSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1DeviceClassSpecSelectorsList =
-  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1DeviceClassSpecSelectorsList>;
-
 /** DeviceClassSpec is used in a [DeviceClass] to define what can be allocated and how to configure it. */
 export interface IoK8sApiResourceV1DeviceClassSpec {
   /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
@@ -3157,7 +2965,7 @@ export interface IoK8sApiResourceV1DeviceClassSpec {
   /** selectors is the list of device selectors. Each selector must be satisfied by a device which is claimed via this class. */
   selectors?: IoK8sApiResourceV1DeviceClassSpecSelectorsList;
 }
-export const IoK8sApiResourceV1DeviceClassSpec =
+const IoK8sApiResourceV1DeviceClassSpec =
   IoK8sApiResourceV1beta1DeviceClassSpec as any as S.Schema<IoK8sApiResourceV1DeviceClassSpec>;
 
 export interface CreateResourceV1DeviceClassRequest {
@@ -3178,7 +2986,7 @@ export interface CreateResourceV1DeviceClassRequest {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1DeviceClassSpec;
 }
-export const CreateResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -3204,7 +3012,7 @@ export interface IoK8sApiResourceV1DeviceClass {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1DeviceClassSpec;
 }
-export const IoK8sApiResourceV1DeviceClass =
+const IoK8sApiResourceV1DeviceClass =
   IoK8sApiResourceV1beta1DeviceClass as any as S.Schema<IoK8sApiResourceV1DeviceClass>;
 
 /** DeviceTaintSelector defines which device(s) a DeviceTaintRule applies to. The empty selector matches all devices. Without a selector, no devices are matched. */
@@ -3216,13 +3024,8 @@ export interface IoK8sApiResourceV1DeviceTaintSelector {
   /** pool is the pool name. If pool is set, only devices in that pool are selected. Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name. */
   pool?: string;
 }
-export const IoK8sApiResourceV1DeviceTaintSelector =
-  IoK8sApiResourceV1alpha3DeviceTaintSelector as any as S.Schema<IoK8sApiResourceV1DeviceTaintSelector>;
-
 /** The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim. */
 export type IoK8sApiResourceV1DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
-export const IoK8sApiResourceV1DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
-
 /** DeviceTaintRuleSpec specifies the selector and one taint. */
 export interface IoK8sApiResourceV1DeviceTaintRuleSpec {
   /** deviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches. */
@@ -3230,21 +3033,18 @@ export interface IoK8sApiResourceV1DeviceTaintRuleSpec {
   /** taint is the taint that gets applied to matching devices. */
   taint: IoK8sApiResourceV1alpha3DeviceTaint;
 }
-export const IoK8sApiResourceV1DeviceTaintRuleSpec =
+const IoK8sApiResourceV1DeviceTaintRuleSpec =
   IoK8sApiResourceV1alpha3DeviceTaintRuleSpec as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleSpec>;
 
 /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
 export type IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList =
-  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList>;
-
 /** DeviceTaintRuleStatus provides information about an on-going pod eviction. */
 export interface IoK8sApiResourceV1DeviceTaintRuleStatus {
   /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
   conditions?: IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList;
 }
-export const IoK8sApiResourceV1DeviceTaintRuleStatus =
+const IoK8sApiResourceV1DeviceTaintRuleStatus =
   IoK8sApiResourceV1alpha3DeviceTaintRuleStatus as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleStatus>;
 
 export interface CreateResourceV1DeviceTaintRuleRequest {
@@ -3267,7 +3067,7 @@ export interface CreateResourceV1DeviceTaintRuleRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1DeviceTaintRuleStatus;
 }
-export const CreateResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -3296,14 +3096,11 @@ export interface IoK8sApiResourceV1DeviceTaintRule {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1DeviceTaintRuleStatus;
 }
-export const IoK8sApiResourceV1DeviceTaintRule =
+const IoK8sApiResourceV1DeviceTaintRule =
   IoK8sApiResourceV1alpha3DeviceTaintRule as any as S.Schema<IoK8sApiResourceV1DeviceTaintRule>;
 
 /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1DeviceClaimConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1DeviceClaimConfigurationRequestsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfigurationRequestsList>;
-
 /** DeviceClaimConfiguration is used for configuration parameters in DeviceClaim. */
 export interface IoK8sApiResourceV1DeviceClaimConfiguration {
   /** opaque provides driver-specific configuration parameters. */
@@ -3311,20 +3108,11 @@ export interface IoK8sApiResourceV1DeviceClaimConfiguration {
   /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
   requests?: IoK8sApiResourceV1DeviceClaimConfigurationRequestsList;
 }
-export const IoK8sApiResourceV1DeviceClaimConfiguration =
-  IoK8sApiResourceV1beta1DeviceClaimConfiguration as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfiguration>;
-
 /** config holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim. */
 export type IoK8sApiResourceV1DeviceClaimConfigList =
   Array<IoK8sApiResourceV1DeviceClaimConfiguration>;
-export const IoK8sApiResourceV1DeviceClaimConfigList =
-  IoK8sApiResourceV1beta1DeviceClaimConfigList as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfigList>;
-
 /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
 export type IoK8sApiResourceV1DeviceConstraintRequestsList = Array<string>;
-export const IoK8sApiResourceV1DeviceConstraintRequestsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceConstraintRequestsList>;
-
 /** DeviceConstraint must have exactly one field set besides Requests. */
 export interface IoK8sApiResourceV1DeviceConstraint {
   /** distinctAttribute requires that all devices in question have this attribute and that its type and value are unique across those devices. When the DRAListTypeAttributes feature gate is enabled, comparison uses set semantics (i.e., element order and duplicates are ignored): list-valued attributes must be pairwise disjoint across devices. Scalar values are treated as singleton sets for backward compatibility. This acts as the inverse of MatchAttribute. This constraint is used to avoid allocating multiple requests to the same device by ensuring attribute-level differentiation. This is useful for scenarios where resource requests must be fulfilled by separate physical devices. For example, a container requests two network interfaces that must be allocated from two different physical NICs. */
@@ -3334,58 +3122,32 @@ export interface IoK8sApiResourceV1DeviceConstraint {
   /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
   requests?: IoK8sApiResourceV1DeviceConstraintRequestsList;
 }
-export const IoK8sApiResourceV1DeviceConstraint =
-  IoK8sApiResourceV1beta1DeviceConstraint as any as S.Schema<IoK8sApiResourceV1DeviceConstraint>;
-
 /** constraints must be satisfied by the set of devices that get allocated for the claim. */
 export type IoK8sApiResourceV1DeviceClaimConstraintsList =
   Array<IoK8sApiResourceV1DeviceConstraint>;
-export const IoK8sApiResourceV1DeviceClaimConstraintsList =
-  IoK8sApiResourceV1beta1DeviceClaimConstraintsList as any as S.Schema<IoK8sApiResourceV1DeviceClaimConstraintsList>;
-
 /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
 export type IoK8sApiResourceV1CapacityRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1CapacityRequirementsRequestsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiResourceV1CapacityRequirementsRequestsMap>;
-
 /** CapacityRequirements defines the capacity requirements for a specific device request. */
 export interface IoK8sApiResourceV1CapacityRequirements {
   /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
   requests?: IoK8sApiResourceV1CapacityRequirementsRequestsMap;
 }
-export const IoK8sApiResourceV1CapacityRequirements =
-  IoK8sApiResourceV1beta1CapacityRequirements as any as S.Schema<IoK8sApiResourceV1CapacityRequirements>;
-
 /** DeviceDerivedAttribute defines a derived attribute computed via CEL. */
 export type IoK8sApiResourceV1DeviceDerivedAttribute =
   IoK8sApiResourceV1beta1DeviceDerivedAttribute;
-export const IoK8sApiResourceV1DeviceDerivedAttribute =
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute;
-
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList =
-  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList>;
-
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1ExactDeviceRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1ExactDeviceRequestSelectorsList =
-  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestSelectorsList>;
-
 /** The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export type IoK8sApiResourceV1DeviceToleration = IoK8sApiResourceV1beta1DeviceToleration;
-export const IoK8sApiResourceV1DeviceToleration = IoK8sApiResourceV1beta1DeviceToleration;
-
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1ExactDeviceRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1ExactDeviceRequestTolerationsList =
-  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestTolerationsList>;
-
 /** ExactDeviceRequest is a request for one or more identical devices. */
 export interface IoK8sApiResourceV1ExactDeviceRequest {
   /** adminAccess indicates that this is a claim for administrative access to the device(s). Claims with AdminAccess are expected to be used for monitoring or other management services for a device. They ignore all ordinary claims to the device with respect to access modes and any resource allocations. Admin access is disabled if this field is unset or set to false, otherwise it is enabled. */
@@ -3405,27 +3167,15 @@ export interface IoK8sApiResourceV1ExactDeviceRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1ExactDeviceRequestTolerationsList;
 }
-export const IoK8sApiResourceV1ExactDeviceRequest =
-  IoK8sApiResourceV1beta2ExactDeviceRequest as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequest>;
-
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList =
-  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList>;
-
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1DeviceSubRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1DeviceSubRequestSelectorsList =
-  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestSelectorsList>;
-
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1DeviceSubRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1DeviceSubRequestTolerationsList =
-  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestTolerationsList>;
-
 /** DeviceSubRequest describes a request for device provided in the claim.spec.devices.requests[].firstAvailable array. Each is typically a request for a single resource like a device, but can also ask for several identical devices. DeviceSubRequest is similar to ExactDeviceRequest, but doesn't expose the AdminAccess field as that one is only supported when requesting a specific device. */
 export interface IoK8sApiResourceV1DeviceSubRequest {
   /** allocationMode and its related fields define how devices are allocated to satisfy this subrequest. Supported values are: - ExactCount: This request is for a specific number of devices. This is the default. The exact number is provided in the count field. - All: This subrequest is for all of the matching devices in a pool. Allocation will fail if some devices are already allocated, unless adminAccess is requested. If AllocationMode is not specified, the default mode is ExactCount. If the mode is ExactCount and count is not specified, the default count is one. Any other subrequests must specify this field. More modes may get added in the future. Clients must refuse to handle requests with unknown modes. */
@@ -3445,15 +3195,9 @@ export interface IoK8sApiResourceV1DeviceSubRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1DeviceSubRequestTolerationsList;
 }
-export const IoK8sApiResourceV1DeviceSubRequest =
-  IoK8sApiResourceV1beta1DeviceSubRequest as any as S.Schema<IoK8sApiResourceV1DeviceSubRequest>;
-
 /** firstAvailable contains subrequests, of which exactly one will be selected by the scheduler. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one can not be used. DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later. */
 export type IoK8sApiResourceV1DeviceRequestFirstAvailableList =
   Array<IoK8sApiResourceV1DeviceSubRequest>;
-export const IoK8sApiResourceV1DeviceRequestFirstAvailableList =
-  IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList as any as S.Schema<IoK8sApiResourceV1DeviceRequestFirstAvailableList>;
-
 /** DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. With FirstAvailable it is also possible to provide a prioritized list of requests. */
 export interface IoK8sApiResourceV1DeviceRequest {
   /** exactly specifies the details for a single request that must be met exactly for the request to be satisfied. One of Exactly or FirstAvailable must be set. */
@@ -3463,14 +3207,8 @@ export interface IoK8sApiResourceV1DeviceRequest {
   /** name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim. References using the name in the DeviceRequest will uniquely identify a request when the Exactly field is set. When the FirstAvailable field is set, a reference to the name of the DeviceRequest will match whatever subrequest is chosen by the scheduler. Must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1DeviceRequest =
-  IoK8sApiResourceV1beta2DeviceRequest as any as S.Schema<IoK8sApiResourceV1DeviceRequest>;
-
 /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
 export type IoK8sApiResourceV1DeviceClaimRequestsList = Array<IoK8sApiResourceV1DeviceRequest>;
-export const IoK8sApiResourceV1DeviceClaimRequestsList =
-  IoK8sApiResourceV1beta2DeviceClaimRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceClaimRequestsList>;
-
 /** DeviceClaim defines how to request devices with a ResourceClaim. */
 export interface IoK8sApiResourceV1DeviceClaim {
   /** config holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim. */
@@ -3480,20 +3218,17 @@ export interface IoK8sApiResourceV1DeviceClaim {
   /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
   requests?: IoK8sApiResourceV1DeviceClaimRequestsList;
 }
-export const IoK8sApiResourceV1DeviceClaim =
-  IoK8sApiResourceV1beta2DeviceClaim as any as S.Schema<IoK8sApiResourceV1DeviceClaim>;
-
 /** ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it. */
 export interface IoK8sApiResourceV1ResourceClaimSpec {
   /** devices defines how to request devices. */
   devices?: IoK8sApiResourceV1DeviceClaim;
 }
-export const IoK8sApiResourceV1ResourceClaimSpec =
+const IoK8sApiResourceV1ResourceClaimSpec =
   IoK8sApiResourceV1beta2ResourceClaimSpec as any as S.Schema<IoK8sApiResourceV1ResourceClaimSpec>;
 
 /** requests lists the names of requests where the configuration applies. If empty, its applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList =
+const IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList>;
 
 /** DeviceAllocationConfiguration gets embedded in an AllocationResult. */
@@ -3505,7 +3240,7 @@ export interface IoK8sApiResourceV1DeviceAllocationConfiguration {
   /** source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim. */
   source: string;
 }
-export const IoK8sApiResourceV1DeviceAllocationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1DeviceAllocationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
     requests: S.optional(IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList),
@@ -3518,37 +3253,37 @@ export const IoK8sApiResourceV1DeviceAllocationConfiguration = /*@__PURE__*/ S.s
 /** config is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag. This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters. */
 export type IoK8sApiResourceV1DeviceAllocationResultConfigList =
   Array<IoK8sApiResourceV1DeviceAllocationConfiguration>;
-export const IoK8sApiResourceV1DeviceAllocationResultConfigList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1DeviceAllocationResultConfigList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1DeviceAllocationConfiguration,
 ) as any as S.Schema<IoK8sApiResourceV1DeviceAllocationResultConfigList>;
 
 /** bindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList =
+const IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList>;
 
 /** bindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList =
   Array<string>;
-export const IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList =
+const IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList>;
 
 /** consumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device's requestPolicy if applicable (i.e., may not be less than the requested amount). The total consumed capacity for each device must not exceed the DeviceCapacity's Value. This field is populated only for devices that allow multiple allocations. All capacity entries are included, even if the consumed amount is zero. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap =
+const IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap =
   IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for this allocated device when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. It is a copy of the ResourceSlice.spec.skipNodeOperations value at the time when the device was allocated. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList =
+const IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList =
   IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList>;
 
 /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList =
+const IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList =
   IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList>;
 
 /** DeviceRequestAllocationResult contains the allocation result for one request. */
@@ -3576,7 +3311,7 @@ export interface IoK8sApiResourceV1DeviceRequestAllocationResult {
   /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList;
 }
-export const IoK8sApiResourceV1DeviceRequestAllocationResult = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1DeviceRequestAllocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminAccess: S.optional(S.Boolean),
     bindingConditions: S.optional(
@@ -3605,7 +3340,7 @@ export const IoK8sApiResourceV1DeviceRequestAllocationResult = /*@__PURE__*/ S.s
 /** results lists all allocated devices. */
 export type IoK8sApiResourceV1DeviceAllocationResultResultsList =
   Array<IoK8sApiResourceV1DeviceRequestAllocationResult>;
-export const IoK8sApiResourceV1DeviceAllocationResultResultsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1DeviceAllocationResultResultsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1DeviceRequestAllocationResult,
 ) as any as S.Schema<IoK8sApiResourceV1DeviceAllocationResultResultsList>;
 
@@ -3616,7 +3351,7 @@ export interface IoK8sApiResourceV1DeviceAllocationResult {
   /** results lists all allocated devices. */
   results?: IoK8sApiResourceV1DeviceAllocationResultResultsList;
 }
-export const IoK8sApiResourceV1DeviceAllocationResult = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1DeviceAllocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(IoK8sApiResourceV1DeviceAllocationResultConfigList),
     results: S.optional(IoK8sApiResourceV1DeviceAllocationResultResultsList),
@@ -3634,7 +3369,7 @@ export interface IoK8sApiResourceV1AllocationResult {
   /** nodeSelector defines where the allocated resources are available. If unset, they are available everywhere. */
   nodeSelector?: IoK8sApiCoreV1NodeSelector;
 }
-export const IoK8sApiResourceV1AllocationResult = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1AllocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocationTimestamp: S.optional(S.String),
     devices: S.optional(IoK8sApiResourceV1DeviceAllocationResult),
@@ -3647,14 +3382,8 @@ export const IoK8sApiResourceV1AllocationResult = /*@__PURE__*/ S.suspend(() =>
 /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
 export type IoK8sApiResourceV1AllocatedDeviceStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1AllocatedDeviceStatusConditionsList =
-  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1AllocatedDeviceStatusConditionsList>;
-
 /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
 export type IoK8sApiResourceV1NetworkDeviceDataIpsList = Array<string>;
-export const IoK8sApiResourceV1NetworkDeviceDataIpsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1NetworkDeviceDataIpsList>;
-
 /** NetworkDeviceData provides network-related details for the allocated device. This information may be filled by drivers or other components to configure or identify the device within a network context. */
 export interface IoK8sApiResourceV1NetworkDeviceData {
   /** hardwareAddress represents the hardware address (e.g. MAC Address) of the device's network interface. Must not be longer than 128 bytes. */
@@ -3664,9 +3393,6 @@ export interface IoK8sApiResourceV1NetworkDeviceData {
   /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
   ips?: IoK8sApiResourceV1NetworkDeviceDataIpsList;
 }
-export const IoK8sApiResourceV1NetworkDeviceData =
-  IoK8sApiResourceV1beta1NetworkDeviceData as any as S.Schema<IoK8sApiResourceV1NetworkDeviceData>;
-
 /** AllocatedDeviceStatus contains the status of an allocated device, if the driver chooses to report it. This may include driver-specific information. The combination of Driver, Pool, Device, and ShareID must match the corresponding key in Status.Allocation.Devices. */
 export interface IoK8sApiResourceV1AllocatedDeviceStatus {
   /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
@@ -3684,25 +3410,19 @@ export interface IoK8sApiResourceV1AllocatedDeviceStatus {
   /** ShareID uniquely identifies an individual allocation share of the device. */
   shareID?: string;
 }
-export const IoK8sApiResourceV1AllocatedDeviceStatus =
-  IoK8sApiResourceV1beta1AllocatedDeviceStatus as any as S.Schema<IoK8sApiResourceV1AllocatedDeviceStatus>;
-
 /** devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers. */
 export type IoK8sApiResourceV1ResourceClaimStatusDevicesList =
   Array<IoK8sApiResourceV1AllocatedDeviceStatus>;
-export const IoK8sApiResourceV1ResourceClaimStatusDevicesList =
+const IoK8sApiResourceV1ResourceClaimStatusDevicesList =
   IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList as any as S.Schema<IoK8sApiResourceV1ResourceClaimStatusDevicesList>;
 
 /** ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim. */
 export type IoK8sApiResourceV1ResourceClaimConsumerReference =
   IoK8sApiResourceV1beta1ResourceClaimConsumerReference;
-export const IoK8sApiResourceV1ResourceClaimConsumerReference =
-  IoK8sApiResourceV1beta1ResourceClaimConsumerReference;
-
 /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
 export type IoK8sApiResourceV1ResourceClaimStatusReservedForList =
   Array<IoK8sApiResourceV1beta1ResourceClaimConsumerReference>;
-export const IoK8sApiResourceV1ResourceClaimStatusReservedForList =
+const IoK8sApiResourceV1ResourceClaimStatusReservedForList =
   IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList as any as S.Schema<IoK8sApiResourceV1ResourceClaimStatusReservedForList>;
 
 /** ResourceClaimStatus tracks whether the resource has been allocated and what the result of that was. */
@@ -3714,7 +3434,7 @@ export interface IoK8sApiResourceV1ResourceClaimStatus {
   /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
   reservedFor?: IoK8sApiResourceV1ResourceClaimStatusReservedForList;
 }
-export const IoK8sApiResourceV1ResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1ResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocation: S.optional(IoK8sApiResourceV1AllocationResult),
     devices: S.optional(IoK8sApiResourceV1ResourceClaimStatusDevicesList),
@@ -3746,7 +3466,7 @@ export interface CreateResourceV1NamespacedResourceClaimRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1ResourceClaimStatus;
 }
-export const CreateResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -3782,7 +3502,7 @@ export interface IoK8sApiResourceV1ResourceClaim {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1ResourceClaimStatus;
 }
-export const IoK8sApiResourceV1ResourceClaim = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1ResourceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -3801,7 +3521,7 @@ export interface IoK8sApiResourceV1ResourceClaimTemplateSpec {
   /** spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here. */
   spec?: IoK8sApiResourceV1ResourceClaimSpec;
 }
-export const IoK8sApiResourceV1ResourceClaimTemplateSpec =
+const IoK8sApiResourceV1ResourceClaimTemplateSpec =
   IoK8sApiResourceV1beta2ResourceClaimTemplateSpec as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateSpec>;
 
 export interface CreateResourceV1NamespacedResourceClaimTemplateRequest {
@@ -3824,7 +3544,7 @@ export interface CreateResourceV1NamespacedResourceClaimTemplateRequest {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1ResourceClaimTemplateSpec;
 }
-export const CreateResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -3857,29 +3577,17 @@ export interface IoK8sApiResourceV1ResourceClaimTemplate {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1ResourceClaimTemplateSpec;
 }
-export const IoK8sApiResourceV1ResourceClaimTemplate =
+const IoK8sApiResourceV1ResourceClaimTemplate =
   IoK8sApiResourceV1beta2ResourceClaimTemplate as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplate>;
 
 /** bools is a non-empty list of true/false values. */
 export type IoK8sApiResourceV1DeviceAttributeBoolsList = Array<boolean>;
-export const IoK8sApiResourceV1DeviceAttributeBoolsList =
-  IoK8sApiResourceV1beta1DeviceAttributeBoolsList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeBoolsList>;
-
 /** ints is a non-empty list of numbers. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceAttributeIntsList = Array<number>;
-export const IoK8sApiResourceV1DeviceAttributeIntsList =
-  IoK8sApiResourceV1beta1DeviceAttributeIntsList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeIntsList>;
-
 /** strings is a non-empty list of strings. Each string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceAttributeStringsList = Array<string>;
-export const IoK8sApiResourceV1DeviceAttributeStringsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeStringsList>;
-
 /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceAttributeVersionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceAttributeVersionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeVersionsList>;
-
 /** DeviceAttribute must have exactly one field set. */
 export interface IoK8sApiResourceV1DeviceAttribute {
   /** bool is a true/false value. */
@@ -3899,37 +3607,28 @@ export interface IoK8sApiResourceV1DeviceAttribute {
   /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
   versions?: IoK8sApiResourceV1DeviceAttributeVersionsList;
 }
-export const IoK8sApiResourceV1DeviceAttribute =
-  IoK8sApiResourceV1beta1DeviceAttribute as any as S.Schema<IoK8sApiResourceV1DeviceAttribute>;
-
 /** attributes defines the set of attributes for this device. The name of each attribute must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1DeviceAttributesMap = {
   [key: string]: IoK8sApiResourceV1DeviceAttribute | undefined;
 };
-export const IoK8sApiResourceV1DeviceAttributesMap =
+const IoK8sApiResourceV1DeviceAttributesMap =
   IoK8sApiResourceV1beta1BasicDeviceAttributesMap as any as S.Schema<IoK8sApiResourceV1DeviceAttributesMap>;
 
 /** bindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod. The maximum number of binding conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceBindingConditionsList =
+const IoK8sApiResourceV1DeviceBindingConditionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceBindingConditionsList>;
 
 /** bindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is set to "True", a binding failure occurred. The maximum number of binding failure conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceBindingFailureConditionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceBindingFailureConditionsList =
+const IoK8sApiResourceV1DeviceBindingFailureConditionsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceBindingFailureConditionsList>;
 
 /** CapacityRequestPolicyRange defines a valid range for consumable capacity values. If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value(). - If the requested amount is less than Min, it is rounded up to the Min value. - If Step is set and the requested amount is between Min and Max but not aligned with Step, it will be rounded up to the next value equal to Min + (n * Step). - If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set). - If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy, and the device cannot be allocated. */
 export type IoK8sApiResourceV1CapacityRequestPolicyRange =
   IoK8sApiResourceV1beta1CapacityRequestPolicyRange;
-export const IoK8sApiResourceV1CapacityRequestPolicyRange =
-  IoK8sApiResourceV1beta1CapacityRequestPolicyRange;
-
 /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
 export type IoK8sApiResourceV1CapacityRequestPolicyValidValuesList = Array<string>;
-export const IoK8sApiResourceV1CapacityRequestPolicyValidValuesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1CapacityRequestPolicyValidValuesList>;
-
 /** CapacityRequestPolicy defines how requests consume device capacity. Must not set more than one ValidRequestValues. */
 export interface IoK8sApiResourceV1CapacityRequestPolicy {
   /** default specifies how much of this capacity is consumed by a request that does not contain an entry for it in DeviceRequest's Capacity. */
@@ -3939,9 +3638,6 @@ export interface IoK8sApiResourceV1CapacityRequestPolicy {
   /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
   validValues?: IoK8sApiResourceV1CapacityRequestPolicyValidValuesList;
 }
-export const IoK8sApiResourceV1CapacityRequestPolicy =
-  IoK8sApiResourceV1beta1CapacityRequestPolicy as any as S.Schema<IoK8sApiResourceV1CapacityRequestPolicy>;
-
 /** DeviceCapacity describes a quantity associated with a device. */
 export interface IoK8sApiResourceV1DeviceCapacity {
   /** requestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations. The Device must have allowMultipleAllocations set to true in order to set a requestPolicy. If unset, capacity requests are unconstrained: requests can consume any amount of capacity, as long as the total consumed across all allocations does not exceed the device's defined capacity. If request is also unset, default is the full capacity value. */
@@ -3949,32 +3645,21 @@ export interface IoK8sApiResourceV1DeviceCapacity {
   /** value defines how much of a certain capacity that device has. This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value. */
   value: string;
 }
-export const IoK8sApiResourceV1DeviceCapacity =
-  IoK8sApiResourceV1beta1DeviceCapacity as any as S.Schema<IoK8sApiResourceV1DeviceCapacity>;
-
 /** capacity defines the set of capacities for this device. The name of each capacity must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1DeviceCapacityMap = {
   [key: string]: IoK8sApiResourceV1DeviceCapacity | undefined;
 };
-export const IoK8sApiResourceV1DeviceCapacityMap =
+const IoK8sApiResourceV1DeviceCapacityMap =
   IoK8sApiResourceV1beta1BasicDeviceCapacityMap as any as S.Schema<IoK8sApiResourceV1DeviceCapacityMap>;
 
 /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
 export type IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList = Array<string>;
-export const IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList =
-  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList>;
-
 /** Counter describes a quantity associated with a device. */
 export type IoK8sApiResourceV1Counter = IoK8sApiResourceV1beta1Counter;
-export const IoK8sApiResourceV1Counter = IoK8sApiResourceV1beta1Counter;
-
 /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
 export type IoK8sApiResourceV1DeviceCounterConsumptionCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1DeviceCounterConsumptionCountersMap =
-  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumptionCountersMap>;
-
 /** DeviceCounterConsumption defines a set of counters that a device will consume from a CounterSet. */
 export interface IoK8sApiResourceV1DeviceCounterConsumption {
   /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
@@ -3984,43 +3669,31 @@ export interface IoK8sApiResourceV1DeviceCounterConsumption {
   /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
   counters: IoK8sApiResourceV1DeviceCounterConsumptionCountersMap;
 }
-export const IoK8sApiResourceV1DeviceCounterConsumption =
-  IoK8sApiResourceV1beta1DeviceCounterConsumption as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumption>;
-
 /** consumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets. There can only be a single entry per counterSet. The maximum number of device counter consumptions per device is 2. */
 export type IoK8sApiResourceV1DeviceConsumesCountersList =
   Array<IoK8sApiResourceV1DeviceCounterConsumption>;
-export const IoK8sApiResourceV1DeviceConsumesCountersList =
+const IoK8sApiResourceV1DeviceConsumesCountersList =
   IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList as any as S.Schema<IoK8sApiResourceV1DeviceConsumesCountersList>;
 
 /** NodeAllocatableMapping defines how a DRA allocation directly translates into a node allocatable resource quantity. The mapping can be derived from either the count of allocated devices (via deviceMultiplier) or the specific capacity consumed (via capacityKey and capacityMultiplier). These options are mutually exclusive. Kubelet adds this mapped resource quantity from claim to both requests and limits at the pod-level cgroup, and to limits at the container-level cgroup for each container referencing the claim. */
 export type IoK8sApiResourceV1NodeAllocatableMapping =
   IoK8sApiResourceV1beta1NodeAllocatableMapping;
-export const IoK8sApiResourceV1NodeAllocatableMapping =
-  IoK8sApiResourceV1beta1NodeAllocatableMapping;
-
 /** NodeAllocatableOverhead defines auxiliary resource overheads incurred when allocating a device. Overheads can be specified as a fixed cost per pod referencing the claim, a variable cost per container reference, or both. Kubelet accounts for this overhead by adding it to both the pod-level and container-level cgroups of referencing containers. */
 export type IoK8sApiResourceV1NodeAllocatableOverhead =
   IoK8sApiResourceV1beta1NodeAllocatableOverhead;
-export const IoK8sApiResourceV1NodeAllocatableOverhead =
-  IoK8sApiResourceV1beta1NodeAllocatableOverhead;
-
 /** NodeAllocatableResource defines the translation between the DRA device/capacity units requested to the corresponding quantity of the node allocatable resource. At least one of Mapping or Overhead must be specified. Not specifying either is an invalid configuration. */
 export type IoK8sApiResourceV1NodeAllocatableResource =
   IoK8sApiResourceV1beta1NodeAllocatableResource;
-export const IoK8sApiResourceV1NodeAllocatableResource =
-  IoK8sApiResourceV1beta1NodeAllocatableResource;
-
 /** nodeAllocatableResources defines the mapping of node resources that are managed by the DRA driver exposing this device. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources). Examples include "cpu", "memory", "ephemeral-storage", and hugepages. In addition to standard requests made through the Pod `spec`, these resources can also be requested through claims and allocated by the DRA driver. For example, a CPU DRA driver might allocate exclusive CPUs or auxiliary node memory dependencies of an accelerator device. The keys of this map are the node-allocatable resource names (e.g., "cpu", "memory"). Extended resource names are not permitted as keys. */
 export type IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap = {
   [key: string]: IoK8sApiResourceV1beta1NodeAllocatableResource | undefined;
 };
-export const IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap =
+const IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap =
   IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap as any as S.Schema<IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap>;
 
 /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1DeviceTaintsList = Array<IoK8sApiResourceV1alpha3DeviceTaint>;
-export const IoK8sApiResourceV1DeviceTaintsList =
+const IoK8sApiResourceV1DeviceTaintsList =
   IoK8sApiResourceV1beta1BasicDeviceTaintsList as any as S.Schema<IoK8sApiResourceV1DeviceTaintsList>;
 
 /** Device represents one individual hardware instance that can be selected based on its attributes. Besides the name, exactly one field must be set. */
@@ -4052,7 +3725,7 @@ export interface IoK8sApiResourceV1Device {
   /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   taints?: IoK8sApiResourceV1DeviceTaintsList;
 }
-export const IoK8sApiResourceV1Device = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allNodes: S.optional(S.Boolean),
     allowMultipleAllocations: S.optional(S.Boolean),
@@ -4072,21 +3745,16 @@ export const IoK8sApiResourceV1Device = /*@__PURE__*/ S.suspend(() =>
 
 /** devices lists some or all of the devices in this pool. Must not have more than 128 entries. If any device uses taints or consumes counters the limit is 64. Only one of Devices and SharedCounters can be set in a ResourceSlice. */
 export type IoK8sApiResourceV1ResourceSliceSpecDevicesList = Array<IoK8sApiResourceV1Device>;
-export const IoK8sApiResourceV1ResourceSliceSpecDevicesList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1ResourceSliceSpecDevicesList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1Device,
 ) as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecDevicesList>;
 
 /** ResourcePool describes the pool that ResourceSlices belong to. */
 export type IoK8sApiResourceV1ResourcePool = IoK8sApiResourceV1beta1ResourcePool;
-export const IoK8sApiResourceV1ResourcePool = IoK8sApiResourceV1beta1ResourcePool;
-
 /** counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label. The maximum number of counters is 32. */
 export type IoK8sApiResourceV1CounterSetCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1CounterSetCountersMap =
-  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1CounterSetCountersMap>;
-
 /** CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool. The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices. */
 export interface IoK8sApiResourceV1CounterSet {
   /** counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label. The maximum number of counters is 32. */
@@ -4094,18 +3762,15 @@ export interface IoK8sApiResourceV1CounterSet {
   /** name defines the name of the counter set. It must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1CounterSet =
-  IoK8sApiResourceV1beta1CounterSet as any as S.Schema<IoK8sApiResourceV1CounterSet>;
-
 /** sharedCounters defines a list of counter sets, each of which has a name and a list of counters available. The names of the counter sets must be unique in the ResourcePool. Only one of Devices and SharedCounters can be set in a ResourceSlice. The maximum number of counter sets is 8. */
 export type IoK8sApiResourceV1ResourceSliceSpecSharedCountersList =
   Array<IoK8sApiResourceV1CounterSet>;
-export const IoK8sApiResourceV1ResourceSliceSpecSharedCountersList =
+const IoK8sApiResourceV1ResourceSliceSpecSharedCountersList =
   IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecSharedCountersList>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
 export type IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList =
+const IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList>;
 
 /** ResourceSliceSpec contains the information published by the driver in one ResourceSlice. */
@@ -4131,7 +3796,7 @@ export interface IoK8sApiResourceV1ResourceSliceSpec {
   /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
   skipNodeOperations?: IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList;
 }
-export const IoK8sApiResourceV1ResourceSliceSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1ResourceSliceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allNodes: S.optional(S.Boolean),
     devices: S.optional(IoK8sApiResourceV1ResourceSliceSpecDevicesList),
@@ -4166,7 +3831,7 @@ export interface CreateResourceV1ResourceSliceRequest {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1ResourceSliceSpec;
 }
-export const CreateResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -4192,7 +3857,7 @@ export interface IoK8sApiResourceV1ResourceSlice {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1ResourceSliceSpec;
 }
-export const IoK8sApiResourceV1ResourceSlice = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1ResourceSlice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -4210,7 +3875,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -4257,7 +3922,7 @@ export interface DeleteResourceV1alpha3CollectionDeviceTaintRuleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1alpha3CollectionDeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1alpha3CollectionDeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -4293,7 +3958,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -4306,7 +3971,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -4325,7 +3990,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -4343,7 +4008,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -4364,7 +4029,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -4395,7 +4060,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -4448,8 +4113,8 @@ export interface DeleteResourceV1alpha3CollectionResourcePoolStatusRequestReques
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -4476,9 +4141,9 @@ export const DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest",
-  }) as any as S.Schema<DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest>;
+).annotate({
+  identifier: "DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest",
+}) as any as S.Schema<DeleteResourceV1alpha3CollectionResourcePoolStatusRequestRequest>;
 
 export interface DeleteResourceV1alpha3DeviceTaintRuleRequest {
   /** name of the DeviceTaintRule */
@@ -4502,7 +4167,7 @@ export interface DeleteResourceV1alpha3DeviceTaintRuleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -4547,7 +4212,7 @@ export interface DeleteResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -4608,7 +4273,7 @@ export interface DeleteResourceV1beta1CollectionDeviceClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1CollectionDeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta1CollectionDeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -4675,38 +4340,37 @@ export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest",
-  }) as any as S.Schema<DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest>;
+const DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest",
+}) as any as S.Schema<DeleteResourceV1beta1CollectionNamespacedResourceClaimRequest>;
 
 export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -4748,7 +4412,7 @@ export interface DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateRequest =
+const DeleteResourceV1beta1CollectionNamespacedResourceClaimTemplateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
@@ -4819,7 +4483,7 @@ export interface DeleteResourceV1beta1CollectionResourceSliceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1CollectionResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta1CollectionResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -4868,7 +4532,7 @@ export interface DeleteResourceV1beta1DeviceClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -4915,7 +4579,7 @@ export interface DeleteResourceV1beta1NamespacedResourceClaimRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4963,27 +4627,26 @@ export interface DeleteResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<DeleteResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -5010,7 +4673,7 @@ export interface DeleteResourceV1beta1ResourceSliceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -5071,7 +4734,7 @@ export interface DeleteResourceV1beta2CollectionDeviceClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2CollectionDeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2CollectionDeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -5136,7 +4799,7 @@ export interface DeleteResourceV1beta2CollectionDeviceTaintRuleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2CollectionDeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2CollectionDeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -5203,38 +4866,37 @@ export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest",
-  }) as any as S.Schema<DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest>;
+const DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest",
+}) as any as S.Schema<DeleteResourceV1beta2CollectionNamespacedResourceClaimRequest>;
 
 export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -5276,7 +4938,7 @@ export interface DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateRequest =
+const DeleteResourceV1beta2CollectionNamespacedResourceClaimTemplateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
@@ -5347,7 +5009,7 @@ export interface DeleteResourceV1beta2CollectionResourceSliceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2CollectionResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2CollectionResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -5396,7 +5058,7 @@ export interface DeleteResourceV1beta2DeviceClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -5441,7 +5103,7 @@ export interface DeleteResourceV1beta2DeviceTaintRuleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -5488,7 +5150,7 @@ export interface DeleteResourceV1beta2NamespacedResourceClaimRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5536,27 +5198,26 @@ export interface DeleteResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<DeleteResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -5583,7 +5244,7 @@ export interface DeleteResourceV1beta2ResourceSliceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -5644,7 +5305,7 @@ export interface DeleteResourceV1CollectionDeviceClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1CollectionDeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1CollectionDeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -5707,7 +5368,7 @@ export interface DeleteResourceV1CollectionDeviceTaintRuleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1CollectionDeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1CollectionDeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -5774,35 +5435,34 @@ export interface DeleteResourceV1CollectionNamespacedResourceClaimRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1CollectionNamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims",
-        code: 200,
-      }),
-    ),
+const DeleteResourceV1CollectionNamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/resource.k8s.io/v1/namespaces/{namespace}/resourceclaims",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteResourceV1CollectionNamespacedResourceClaimRequest",
 }) as any as S.Schema<DeleteResourceV1CollectionNamespacedResourceClaimRequest>;
@@ -5847,8 +5507,8 @@ export interface DeleteResourceV1CollectionNamespacedResourceClaimTemplateReques
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -5876,9 +5536,9 @@ export const DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest",
-  }) as any as S.Schema<DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest>;
+).annotate({
+  identifier: "DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest",
+}) as any as S.Schema<DeleteResourceV1CollectionNamespacedResourceClaimTemplateRequest>;
 
 export interface DeleteResourceV1CollectionResourceSliceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -5918,7 +5578,7 @@ export interface DeleteResourceV1CollectionResourceSliceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1CollectionResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1CollectionResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -5965,7 +5625,7 @@ export interface DeleteResourceV1DeviceClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -6006,7 +5666,7 @@ export interface DeleteResourceV1DeviceTaintRuleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -6053,7 +5713,7 @@ export interface DeleteResourceV1NamespacedResourceClaimRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -6101,7 +5761,7 @@ export interface DeleteResourceV1NamespacedResourceClaimTemplateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -6147,7 +5807,7 @@ export interface DeleteResourceV1ResourceSliceRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -6167,7 +5827,7 @@ export const DeleteResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteResourceV1ResourceSliceRequest>;
 
 export interface GetResourceAPIGroupRequest {}
-export const GetResourceAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/resource.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetResourceAPIGroupRequest",
@@ -6180,7 +5840,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -6196,7 +5856,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -6208,15 +5868,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -6235,7 +5894,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6251,7 +5910,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetResourceV1alpha3APIResourcesRequest {}
-export const GetResourceV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/resource.k8s.io/v1alpha3/", code: 200 })),
 ).annotate({
   identifier: "GetResourceV1alpha3APIResourcesRequest",
@@ -6259,17 +5918,17 @@ export const GetResourceV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(()
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -6295,7 +5954,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -6315,7 +5974,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -6330,7 +5989,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -6342,21 +6001,21 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
 
 export interface GetResourceV1APIResourcesRequest {}
-export const GetResourceV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/resource.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetResourceV1APIResourcesRequest",
 }) as any as S.Schema<GetResourceV1APIResourcesRequest>;
 
 export interface GetResourceV1beta1APIResourcesRequest {}
-export const GetResourceV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/resource.k8s.io/v1beta1/", code: 200 })),
 ).annotate({
   identifier: "GetResourceV1beta1APIResourcesRequest",
 }) as any as S.Schema<GetResourceV1beta1APIResourcesRequest>;
 
 export interface GetResourceV1beta2APIResourcesRequest {}
-export const GetResourceV1beta2APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceV1beta2APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/resource.k8s.io/v1beta2/", code: 200 })),
 ).annotate({
   identifier: "GetResourceV1beta2APIResourcesRequest",
@@ -6388,7 +6047,7 @@ export interface ListResourceV1alpha3DeviceTaintRuleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6412,7 +6071,7 @@ export const ListResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspen
 /** Items is the list of DeviceTaintRules. */
 export type IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList =
   Array<IoK8sApiResourceV1alpha3DeviceTaintRule>;
-export const IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1alpha3DeviceTaintRule,
 ) as any as S.Schema<IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList>;
 
@@ -6427,7 +6086,7 @@ export interface IoK8sApiResourceV1alpha3DeviceTaintRuleList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1alpha3DeviceTaintRuleList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3DeviceTaintRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList,
@@ -6464,7 +6123,7 @@ export interface ListResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6492,7 +6151,7 @@ export const ListResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*
 /** Items is the list of ResourcePoolStatusRequests. */
 export type IoK8sApiResourceV1alpha3ResourcePoolStatusRequestListItemsList =
   Array<IoK8sApiResourceV1alpha3ResourcePoolStatusRequest>;
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1alpha3ResourcePoolStatusRequest,
 ) as any as S.Schema<IoK8sApiResourceV1alpha3ResourcePoolStatusRequestListItemsList>;
 
@@ -6507,7 +6166,7 @@ export interface IoK8sApiResourceV1alpha3ResourcePoolStatusRequestList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1alpha3ResourcePoolStatusRequestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestListItemsList,
@@ -6544,7 +6203,7 @@ export interface ListResourceV1beta1DeviceClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6566,7 +6225,7 @@ export const ListResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() 
 /** Items is the list of resource classes. */
 export type IoK8sApiResourceV1beta1DeviceClassListItemsList =
   Array<IoK8sApiResourceV1beta1DeviceClass>;
-export const IoK8sApiResourceV1beta1DeviceClassListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1DeviceClassListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1DeviceClass,
 ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClassListItemsList>;
 
@@ -6581,7 +6240,7 @@ export interface IoK8sApiResourceV1beta1DeviceClassList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta1DeviceClassList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1DeviceClassList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta1DeviceClassListItemsList,
@@ -6620,7 +6279,7 @@ export interface ListResourceV1beta1NamespacedResourceClaimRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -6649,7 +6308,7 @@ export const ListResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S
 /** Items is the list of resource claims. */
 export type IoK8sApiResourceV1beta1ResourceClaimListItemsList =
   Array<IoK8sApiResourceV1beta1ResourceClaim>;
-export const IoK8sApiResourceV1beta1ResourceClaimListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceClaimListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1ResourceClaim,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceClaimListItemsList>;
 
@@ -6664,7 +6323,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta1ResourceClaimListItemsList,
@@ -6703,29 +6362,28 @@ export interface ListResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
+const ListResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<ListResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -6733,7 +6391,7 @@ export const ListResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PU
 /** Items is the list of resource claim templates. */
 export type IoK8sApiResourceV1beta1ResourceClaimTemplateListItemsList =
   Array<IoK8sApiResourceV1beta1ResourceClaimTemplate>;
-export const IoK8sApiResourceV1beta1ResourceClaimTemplateListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceClaimTemplateListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1ResourceClaimTemplate,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceClaimTemplateListItemsList>;
 
@@ -6748,7 +6406,7 @@ export interface IoK8sApiResourceV1beta1ResourceClaimTemplateList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta1ResourceClaimTemplateList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceClaimTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta1ResourceClaimTemplateListItemsList,
@@ -6785,7 +6443,7 @@ export interface ListResourceV1beta1ResourceClaimForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta1ResourceClaimForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta1ResourceClaimForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -6832,8 +6490,8 @@ export interface ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -6854,9 +6512,9 @@ export const ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest",
-  }) as any as S.Schema<ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest>;
+).annotate({
+  identifier: "ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest",
+}) as any as S.Schema<ListResourceV1beta1ResourceClaimTemplateForAllNamespacesRequest>;
 
 export interface ListResourceV1beta1ResourceSliceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -6884,7 +6542,7 @@ export interface ListResourceV1beta1ResourceSliceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6908,7 +6566,7 @@ export const ListResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend((
 /** Items is the list of resource ResourceSlices. */
 export type IoK8sApiResourceV1beta1ResourceSliceListItemsList =
   Array<IoK8sApiResourceV1beta1ResourceSlice>;
-export const IoK8sApiResourceV1beta1ResourceSliceListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta1ResourceSliceListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta1ResourceSlice,
 ) as any as S.Schema<IoK8sApiResourceV1beta1ResourceSliceListItemsList>;
 
@@ -6923,7 +6581,7 @@ export interface IoK8sApiResourceV1beta1ResourceSliceList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta1ResourceSliceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta1ResourceSliceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta1ResourceSliceListItemsList,
@@ -6960,7 +6618,7 @@ export interface ListResourceV1beta2DeviceClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6982,9 +6640,6 @@ export const ListResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() 
 /** Items is the list of resource classes. */
 export type IoK8sApiResourceV1beta2DeviceClassListItemsList =
   Array<IoK8sApiResourceV1beta2DeviceClass>;
-export const IoK8sApiResourceV1beta2DeviceClassListItemsList =
-  IoK8sApiResourceV1beta1DeviceClassListItemsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassListItemsList>;
-
 /** DeviceClassList is a collection of classes. */
 export interface IoK8sApiResourceV1beta2DeviceClassList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -6996,7 +6651,7 @@ export interface IoK8sApiResourceV1beta2DeviceClassList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2DeviceClassList =
+const IoK8sApiResourceV1beta2DeviceClassList =
   IoK8sApiResourceV1beta1DeviceClassList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassList>;
 
 export interface ListResourceV1beta2DeviceTaintRuleRequest {
@@ -7025,7 +6680,7 @@ export interface ListResourceV1beta2DeviceTaintRuleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -7049,9 +6704,6 @@ export const ListResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend
 /** Items is the list of DeviceTaintRules. */
 export type IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList =
   Array<IoK8sApiResourceV1beta2DeviceTaintRule>;
-export const IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList =
-  IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList>;
-
 /** DeviceTaintRuleList is a collection of DeviceTaintRules. */
 export interface IoK8sApiResourceV1beta2DeviceTaintRuleList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -7063,7 +6715,7 @@ export interface IoK8sApiResourceV1beta2DeviceTaintRuleList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRuleList =
+const IoK8sApiResourceV1beta2DeviceTaintRuleList =
   IoK8sApiResourceV1alpha3DeviceTaintRuleList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleList>;
 
 export interface ListResourceV1beta2NamespacedResourceClaimRequest {
@@ -7094,7 +6746,7 @@ export interface ListResourceV1beta2NamespacedResourceClaimRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -7123,7 +6775,7 @@ export const ListResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S
 /** Items is the list of resource claims. */
 export type IoK8sApiResourceV1beta2ResourceClaimListItemsList =
   Array<IoK8sApiResourceV1beta2ResourceClaim>;
-export const IoK8sApiResourceV1beta2ResourceClaimListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta2ResourceClaimListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta2ResourceClaim,
 ) as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimListItemsList>;
 
@@ -7138,7 +6790,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaimList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceClaimList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta2ResourceClaimListItemsList,
@@ -7177,29 +6829,28 @@ export interface ListResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
+const ListResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<ListResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -7207,7 +6858,7 @@ export const ListResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PU
 /** Items is the list of resource claim templates. */
 export type IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList =
   Array<IoK8sApiResourceV1beta2ResourceClaimTemplate>;
-export const IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta2ResourceClaimTemplate,
 ) as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList>;
 
@@ -7222,7 +6873,7 @@ export interface IoK8sApiResourceV1beta2ResourceClaimTemplateList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimTemplateList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceClaimTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList,
@@ -7259,7 +6910,7 @@ export interface ListResourceV1beta2ResourceClaimForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2ResourceClaimForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta2ResourceClaimForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -7306,8 +6957,8 @@ export interface ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -7328,9 +6979,9 @@ export const ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest",
-  }) as any as S.Schema<ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest>;
+).annotate({
+  identifier: "ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest",
+}) as any as S.Schema<ListResourceV1beta2ResourceClaimTemplateForAllNamespacesRequest>;
 
 export interface ListResourceV1beta2ResourceSliceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -7358,7 +7009,7 @@ export interface ListResourceV1beta2ResourceSliceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -7382,7 +7033,7 @@ export const ListResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend((
 /** Items is the list of resource ResourceSlices. */
 export type IoK8sApiResourceV1beta2ResourceSliceListItemsList =
   Array<IoK8sApiResourceV1beta2ResourceSlice>;
-export const IoK8sApiResourceV1beta2ResourceSliceListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1beta2ResourceSliceListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1beta2ResourceSlice,
 ) as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceListItemsList>;
 
@@ -7397,7 +7048,7 @@ export interface IoK8sApiResourceV1beta2ResourceSliceList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2ResourceSliceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1beta2ResourceSliceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1beta2ResourceSliceListItemsList,
@@ -7434,7 +7085,7 @@ export interface ListResourceV1DeviceClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -7455,9 +7106,6 @@ export const ListResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Items is the list of resource classes. */
 export type IoK8sApiResourceV1DeviceClassListItemsList = Array<IoK8sApiResourceV1DeviceClass>;
-export const IoK8sApiResourceV1DeviceClassListItemsList =
-  IoK8sApiResourceV1beta1DeviceClassListItemsList as any as S.Schema<IoK8sApiResourceV1DeviceClassListItemsList>;
-
 /** DeviceClassList is a collection of classes. */
 export interface IoK8sApiResourceV1DeviceClassList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -7469,7 +7117,7 @@ export interface IoK8sApiResourceV1DeviceClassList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1DeviceClassList =
+const IoK8sApiResourceV1DeviceClassList =
   IoK8sApiResourceV1beta1DeviceClassList as any as S.Schema<IoK8sApiResourceV1DeviceClassList>;
 
 export interface ListResourceV1DeviceTaintRuleRequest {
@@ -7498,7 +7146,7 @@ export interface ListResourceV1DeviceTaintRuleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -7520,9 +7168,6 @@ export const ListResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =
 /** Items is the list of DeviceTaintRules. */
 export type IoK8sApiResourceV1DeviceTaintRuleListItemsList =
   Array<IoK8sApiResourceV1DeviceTaintRule>;
-export const IoK8sApiResourceV1DeviceTaintRuleListItemsList =
-  IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleListItemsList>;
-
 /** DeviceTaintRuleList is a collection of DeviceTaintRules. */
 export interface IoK8sApiResourceV1DeviceTaintRuleList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -7534,7 +7179,7 @@ export interface IoK8sApiResourceV1DeviceTaintRuleList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1DeviceTaintRuleList =
+const IoK8sApiResourceV1DeviceTaintRuleList =
   IoK8sApiResourceV1alpha3DeviceTaintRuleList as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleList>;
 
 export interface ListResourceV1NamespacedResourceClaimRequest {
@@ -7565,7 +7210,7 @@ export interface ListResourceV1NamespacedResourceClaimRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -7593,7 +7238,7 @@ export const ListResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.susp
 
 /** Items is the list of resource claims. */
 export type IoK8sApiResourceV1ResourceClaimListItemsList = Array<IoK8sApiResourceV1ResourceClaim>;
-export const IoK8sApiResourceV1ResourceClaimListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1ResourceClaimListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1ResourceClaim,
 ) as any as S.Schema<IoK8sApiResourceV1ResourceClaimListItemsList>;
 
@@ -7608,7 +7253,7 @@ export interface IoK8sApiResourceV1ResourceClaimList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1ResourceClaimList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1ResourceClaimList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1ResourceClaimListItemsList,
@@ -7647,7 +7292,7 @@ export interface ListResourceV1NamespacedResourceClaimTemplateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -7676,9 +7321,6 @@ export const ListResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*
 /** Items is the list of resource claim templates. */
 export type IoK8sApiResourceV1ResourceClaimTemplateListItemsList =
   Array<IoK8sApiResourceV1ResourceClaimTemplate>;
-export const IoK8sApiResourceV1ResourceClaimTemplateListItemsList =
-  IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateListItemsList>;
-
 /** ResourceClaimTemplateList is a collection of claim templates. */
 export interface IoK8sApiResourceV1ResourceClaimTemplateList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -7690,7 +7332,7 @@ export interface IoK8sApiResourceV1ResourceClaimTemplateList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1ResourceClaimTemplateList =
+const IoK8sApiResourceV1ResourceClaimTemplateList =
   IoK8sApiResourceV1beta2ResourceClaimTemplateList as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateList>;
 
 export interface ListResourceV1ResourceClaimForAllNamespacesRequest {
@@ -7719,7 +7361,7 @@ export interface ListResourceV1ResourceClaimForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1ResourceClaimForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1ResourceClaimForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -7764,24 +7406,23 @@ export interface ListResourceV1ResourceClaimTemplateForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1ResourceClaimTemplateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/resource.k8s.io/v1/resourceclaimtemplates", code: 200 }),
-    ),
+const ListResourceV1ResourceClaimTemplateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/resource.k8s.io/v1/resourceclaimtemplates", code: 200 }),
+  ),
 ).annotate({
   identifier: "ListResourceV1ResourceClaimTemplateForAllNamespacesRequest",
 }) as any as S.Schema<ListResourceV1ResourceClaimTemplateForAllNamespacesRequest>;
@@ -7812,7 +7453,7 @@ export interface ListResourceV1ResourceSliceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -7833,7 +7474,7 @@ export const ListResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Items is the list of resource ResourceSlices. */
 export type IoK8sApiResourceV1ResourceSliceListItemsList = Array<IoK8sApiResourceV1ResourceSlice>;
-export const IoK8sApiResourceV1ResourceSliceListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiResourceV1ResourceSliceListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiResourceV1ResourceSlice,
 ) as any as S.Schema<IoK8sApiResourceV1ResourceSliceListItemsList>;
 
@@ -7848,7 +7489,7 @@ export interface IoK8sApiResourceV1ResourceSliceList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1ResourceSliceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiResourceV1ResourceSliceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiResourceV1ResourceSliceListItemsList,
@@ -7873,7 +7514,7 @@ export interface PatchResourceV1alpha3DeviceTaintRuleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -7906,7 +7547,7 @@ export interface PatchResourceV1alpha3DeviceTaintRuleStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1alpha3DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1alpha3DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -7939,7 +7580,7 @@ export interface PatchResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -7972,22 +7613,21 @@ export interface PatchResourceV1alpha3ResourcePoolStatusRequestStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1alpha3ResourcePoolStatusRequestStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
-        code: 200,
-      }),
-    ),
+const PatchResourceV1alpha3ResourcePoolStatusRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchResourceV1alpha3ResourcePoolStatusRequestStatusRequest",
 }) as any as S.Schema<PatchResourceV1alpha3ResourcePoolStatusRequestStatusRequest>;
@@ -8006,7 +7646,7 @@ export interface PatchResourceV1beta1DeviceClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8041,7 +7681,7 @@ export interface PatchResourceV1beta1NamespacedResourceClaimRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8077,23 +7717,22 @@ export interface PatchResourceV1beta1NamespacedResourceClaimStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
-        code: 200,
-      }),
-    ),
+const PatchResourceV1beta1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchResourceV1beta1NamespacedResourceClaimStatusRequest",
 }) as any as S.Schema<PatchResourceV1beta1NamespacedResourceClaimStatusRequest>;
@@ -8114,23 +7753,22 @@ export interface PatchResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const PatchResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<PatchResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -8149,7 +7787,7 @@ export interface PatchResourceV1beta1ResourceSliceRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8182,7 +7820,7 @@ export interface PatchResourceV1beta2DeviceClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8215,7 +7853,7 @@ export interface PatchResourceV1beta2DeviceTaintRuleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8248,7 +7886,7 @@ export interface PatchResourceV1beta2DeviceTaintRuleStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta2DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8283,7 +7921,7 @@ export interface PatchResourceV1beta2NamespacedResourceClaimRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8319,23 +7957,22 @@ export interface PatchResourceV1beta2NamespacedResourceClaimStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
-        code: 200,
-      }),
-    ),
+const PatchResourceV1beta2NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchResourceV1beta2NamespacedResourceClaimStatusRequest",
 }) as any as S.Schema<PatchResourceV1beta2NamespacedResourceClaimStatusRequest>;
@@ -8356,23 +7993,22 @@ export interface PatchResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const PatchResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<PatchResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -8391,7 +8027,7 @@ export interface PatchResourceV1beta2ResourceSliceRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8424,7 +8060,7 @@ export interface PatchResourceV1DeviceClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8453,7 +8089,7 @@ export interface PatchResourceV1DeviceTaintRuleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8482,7 +8118,7 @@ export interface PatchResourceV1DeviceTaintRuleStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8517,7 +8153,7 @@ export interface PatchResourceV1NamespacedResourceClaimRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8553,7 +8189,7 @@ export interface PatchResourceV1NamespacedResourceClaimStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8589,7 +8225,7 @@ export interface PatchResourceV1NamespacedResourceClaimTemplateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8623,7 +8259,7 @@ export interface PatchResourceV1ResourceSliceRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8644,7 +8280,7 @@ export interface ReadResourceV1alpha3DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8665,7 +8301,7 @@ export interface ReadResourceV1alpha3DeviceTaintRuleStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1alpha3DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1alpha3DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8686,7 +8322,7 @@ export interface ReadResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8707,18 +8343,17 @@ export interface ReadResourceV1alpha3ResourcePoolStatusRequestStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1alpha3ResourcePoolStatusRequestStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
-        code: 200,
-      }),
-    ),
+const ReadResourceV1alpha3ResourcePoolStatusRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadResourceV1alpha3ResourcePoolStatusRequestStatusRequest",
 }) as any as S.Schema<ReadResourceV1alpha3ResourcePoolStatusRequestStatusRequest>;
@@ -8729,7 +8364,7 @@ export interface ReadResourceV1beta1DeviceClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8748,7 +8383,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8772,7 +8407,7 @@ export interface ReadResourceV1beta1NamespacedResourceClaimStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8796,19 +8431,18 @@ export interface ReadResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const ReadResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<ReadResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -8819,7 +8453,7 @@ export interface ReadResourceV1beta1ResourceSliceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8840,7 +8474,7 @@ export interface ReadResourceV1beta2DeviceClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8857,7 +8491,7 @@ export interface ReadResourceV1beta2DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8878,7 +8512,7 @@ export interface ReadResourceV1beta2DeviceTaintRuleStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta2DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8901,7 +8535,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8925,7 +8559,7 @@ export interface ReadResourceV1beta2NamespacedResourceClaimStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta2NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -8949,19 +8583,18 @@ export interface ReadResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const ReadResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<ReadResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -8972,7 +8605,7 @@ export interface ReadResourceV1beta2ResourceSliceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -8993,7 +8626,7 @@ export interface ReadResourceV1DeviceClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9010,7 +8643,7 @@ export interface ReadResourceV1DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9027,7 +8660,7 @@ export interface ReadResourceV1DeviceTaintRuleStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9050,7 +8683,7 @@ export interface ReadResourceV1NamespacedResourceClaimRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9074,7 +8707,7 @@ export interface ReadResourceV1NamespacedResourceClaimStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9098,7 +8731,7 @@ export interface ReadResourceV1NamespacedResourceClaimTemplateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9120,7 +8753,7 @@ export interface ReadResourceV1ResourceSliceRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9153,7 +8786,7 @@ export interface ReplaceResourceV1alpha3DeviceTaintRuleRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1alpha3DeviceTaintRuleStatus;
 }
-export const ReplaceResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9198,7 +8831,7 @@ export interface ReplaceResourceV1alpha3DeviceTaintRuleStatusRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1alpha3DeviceTaintRuleStatus;
 }
-export const ReplaceResourceV1alpha3DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1alpha3DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9243,7 +8876,7 @@ export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable. */
   status?: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus;
 }
-export const ReplaceResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9288,29 +8921,28 @@ export interface ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest {
   /** status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable. */
   status?: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus;
 }
-export const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta,
-      spec: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestSpec,
-      status: S.optional(IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest",
-  }) as any as S.Schema<ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest>;
+const ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta,
+    spec: IoK8sApiResourceV1alpha3ResourcePoolStatusRequestSpec,
+    status: S.optional(IoK8sApiResourceV1alpha3ResourcePoolStatusRequestStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/resource.k8s.io/v1alpha3/resourcepoolstatusrequests/{name}/status",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest",
+}) as any as S.Schema<ReplaceResourceV1alpha3ResourcePoolStatusRequestStatusRequest>;
 
 export interface ReplaceResourceV1beta1DeviceClassRequest {
   /** name of the DeviceClass */
@@ -9332,7 +8964,7 @@ export interface ReplaceResourceV1beta1DeviceClassRequest {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta1DeviceClassSpec;
 }
-export const ReplaceResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9374,7 +9006,7 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta1ResourceClaimStatus;
 }
-export const ReplaceResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9422,27 +9054,26 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimStatusRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta1ResourceClaimStatus;
 }
-export const ReplaceResourceV1beta1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimSpec),
-      status: S.optional(IoK8sApiResourceV1beta1ResourceClaimStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
-        code: 200,
-      }),
-    ),
+const ReplaceResourceV1beta1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimSpec),
+    status: S.optional(IoK8sApiResourceV1beta1ResourceClaimStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaims/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceResourceV1beta1NamespacedResourceClaimStatusRequest",
 }) as any as S.Schema<ReplaceResourceV1beta1NamespacedResourceClaimStatusRequest>;
@@ -9469,26 +9100,25 @@ export interface ReplaceResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1beta1ResourceClaimTemplateSpec;
 }
-export const ReplaceResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimTemplateSpec),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiResourceV1beta1ResourceClaimTemplateSpec),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/resource.k8s.io/v1beta1/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<ReplaceResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -9513,7 +9143,7 @@ export interface ReplaceResourceV1beta1ResourceSliceRequest {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1beta1ResourceSliceSpec;
 }
-export const ReplaceResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9555,7 +9185,7 @@ export interface ReplaceResourceV1beta2DeviceClassRequest {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta2DeviceClassSpec;
 }
-export const ReplaceResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9595,7 +9225,7 @@ export interface ReplaceResourceV1beta2DeviceTaintRuleRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1beta2DeviceTaintRuleStatus;
 }
-export const ReplaceResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9640,7 +9270,7 @@ export interface ReplaceResourceV1beta2DeviceTaintRuleStatusRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1beta2DeviceTaintRuleStatus;
 }
-export const ReplaceResourceV1beta2DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta2DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9687,7 +9317,7 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta2ResourceClaimStatus;
 }
-export const ReplaceResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9735,27 +9365,26 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimStatusRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1beta2ResourceClaimStatus;
 }
-export const ReplaceResourceV1beta2NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimSpec),
-      status: S.optional(IoK8sApiResourceV1beta2ResourceClaimStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
-        code: 200,
-      }),
-    ),
+const ReplaceResourceV1beta2NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimSpec),
+    status: S.optional(IoK8sApiResourceV1beta2ResourceClaimStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaims/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceResourceV1beta2NamespacedResourceClaimStatusRequest",
 }) as any as S.Schema<ReplaceResourceV1beta2NamespacedResourceClaimStatusRequest>;
@@ -9782,26 +9411,25 @@ export interface ReplaceResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1beta2ResourceClaimTemplateSpec;
 }
-export const ReplaceResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimTemplateSpec),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiResourceV1beta2ResourceClaimTemplateSpec),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/resource.k8s.io/v1beta2/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<ReplaceResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -9826,7 +9454,7 @@ export interface ReplaceResourceV1beta2ResourceSliceRequest {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1beta2ResourceSliceSpec;
 }
-export const ReplaceResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9868,7 +9496,7 @@ export interface ReplaceResourceV1DeviceClassRequest {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1DeviceClassSpec;
 }
-export const ReplaceResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9908,7 +9536,7 @@ export interface ReplaceResourceV1DeviceTaintRuleRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1DeviceTaintRuleStatus;
 }
-export const ReplaceResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9949,7 +9577,7 @@ export interface ReplaceResourceV1DeviceTaintRuleStatusRequest {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1DeviceTaintRuleStatus;
 }
-export const ReplaceResourceV1DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1DeviceTaintRuleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -9996,7 +9624,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1ResourceClaimStatus;
 }
-export const ReplaceResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -10044,7 +9672,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimStatusRequest {
   /** status describes whether the claim is ready to use and what has been allocated. */
   status?: IoK8sApiResourceV1ResourceClaimStatus;
 }
-export const ReplaceResourceV1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1NamespacedResourceClaimStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -10090,7 +9718,7 @@ export interface ReplaceResourceV1NamespacedResourceClaimTemplateRequest {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1ResourceClaimTemplateSpec;
 }
-export const ReplaceResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -10133,7 +9761,7 @@ export interface ReplaceResourceV1ResourceSliceRequest {
   /** spec contains the information published by the driver. Changing the spec automatically increments the metadata.generation number. */
   spec: IoK8sApiResourceV1ResourceSliceSpec;
 }
-export const ReplaceResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -10179,7 +9807,7 @@ export interface WatchResourceV1alpha3DeviceTaintRuleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1alpha3DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10211,7 +9839,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -10246,7 +9874,7 @@ export interface WatchResourceV1alpha3DeviceTaintRuleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1alpha3DeviceTaintRuleListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1alpha3DeviceTaintRuleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -10299,7 +9927,7 @@ export interface WatchResourceV1alpha3ResourcePoolStatusRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1alpha3ResourcePoolStatusRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10351,28 +9979,27 @@ export interface WatchResourceV1alpha3ResourcePoolStatusRequestListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1alpha3ResourcePoolStatusRequestListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests",
-        code: 200,
-      }),
-    ),
+const WatchResourceV1alpha3ResourcePoolStatusRequestListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1alpha3/watch/resourcepoolstatusrequests",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchResourceV1alpha3ResourcePoolStatusRequestListRequest",
 }) as any as S.Schema<WatchResourceV1alpha3ResourcePoolStatusRequestListRequest>;
@@ -10405,7 +10032,7 @@ export interface WatchResourceV1beta1DeviceClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10457,7 +10084,7 @@ export interface WatchResourceV1beta1DeviceClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1DeviceClassListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta1DeviceClassListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -10508,7 +10135,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -10563,7 +10190,7 @@ export interface WatchResourceV1beta1NamespacedResourceClaimListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1NamespacedResourceClaimListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta1NamespacedResourceClaimListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10619,30 +10246,29 @@ export interface WatchResourceV1beta1NamespacedResourceClaimTemplateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const WatchResourceV1beta1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchResourceV1beta1NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<WatchResourceV1beta1NamespacedResourceClaimTemplateRequest>;
@@ -10675,32 +10301,31 @@ export interface WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest",
-  }) as any as S.Schema<WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest>;
+const WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta1/watch/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest",
+}) as any as S.Schema<WatchResourceV1beta1NamespacedResourceClaimTemplateListRequest>;
 
 export interface WatchResourceV1beta1ResourceClaimListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -10728,28 +10353,27 @@ export interface WatchResourceV1beta1ResourceClaimListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1ResourceClaimListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta1/watch/resourceclaims",
-        code: 200,
-      }),
-    ),
+const WatchResourceV1beta1ResourceClaimListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta1/watch/resourceclaims",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchResourceV1beta1ResourceClaimListForAllNamespacesRequest",
 }) as any as S.Schema<WatchResourceV1beta1ResourceClaimListForAllNamespacesRequest>;
@@ -10780,7 +10404,7 @@ export interface WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesRequest =
+const WatchResourceV1beta1ResourceClaimTemplateListForAllNamespacesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10834,7 +10458,7 @@ export interface WatchResourceV1beta1ResourceSliceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10886,7 +10510,7 @@ export interface WatchResourceV1beta1ResourceSliceListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta1ResourceSliceListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta1ResourceSliceListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -10935,7 +10559,7 @@ export interface WatchResourceV1beta2DeviceClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -10987,7 +10611,7 @@ export interface WatchResourceV1beta2DeviceClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2DeviceClassListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2DeviceClassListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -11036,7 +10660,7 @@ export interface WatchResourceV1beta2DeviceTaintRuleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11088,7 +10712,7 @@ export interface WatchResourceV1beta2DeviceTaintRuleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2DeviceTaintRuleListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2DeviceTaintRuleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -11143,7 +10767,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -11198,7 +10822,7 @@ export interface WatchResourceV1beta2NamespacedResourceClaimListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2NamespacedResourceClaimListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2NamespacedResourceClaimListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11254,30 +10878,29 @@ export interface WatchResourceV1beta2NamespacedResourceClaimTemplateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
-        code: 200,
-      }),
-    ),
+const WatchResourceV1beta2NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchResourceV1beta2NamespacedResourceClaimTemplateRequest",
 }) as any as S.Schema<WatchResourceV1beta2NamespacedResourceClaimTemplateRequest>;
@@ -11310,32 +10933,31 @@ export interface WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest",
-  }) as any as S.Schema<WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest>;
+const WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta2/watch/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest",
+}) as any as S.Schema<WatchResourceV1beta2NamespacedResourceClaimTemplateListRequest>;
 
 export interface WatchResourceV1beta2ResourceClaimListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -11363,28 +10985,27 @@ export interface WatchResourceV1beta2ResourceClaimListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2ResourceClaimListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1beta2/watch/resourceclaims",
-        code: 200,
-      }),
-    ),
+const WatchResourceV1beta2ResourceClaimListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1beta2/watch/resourceclaims",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchResourceV1beta2ResourceClaimListForAllNamespacesRequest",
 }) as any as S.Schema<WatchResourceV1beta2ResourceClaimListForAllNamespacesRequest>;
@@ -11415,7 +11036,7 @@ export interface WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesRequest =
+const WatchResourceV1beta2ResourceClaimTemplateListForAllNamespacesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11469,7 +11090,7 @@ export interface WatchResourceV1beta2ResourceSliceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11521,7 +11142,7 @@ export interface WatchResourceV1beta2ResourceSliceListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1beta2ResourceSliceListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1beta2ResourceSliceListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -11570,7 +11191,7 @@ export interface WatchResourceV1DeviceClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11622,7 +11243,7 @@ export interface WatchResourceV1DeviceClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1DeviceClassListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1DeviceClassListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -11671,7 +11292,7 @@ export interface WatchResourceV1DeviceTaintRuleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11723,7 +11344,7 @@ export interface WatchResourceV1DeviceTaintRuleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1DeviceTaintRuleListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1DeviceTaintRuleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -11774,7 +11395,7 @@ export interface WatchResourceV1NamespacedResourceClaimRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1NamespacedResourceClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -11829,7 +11450,7 @@ export interface WatchResourceV1NamespacedResourceClaimListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1NamespacedResourceClaimListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1NamespacedResourceClaimListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -11885,7 +11506,7 @@ export interface WatchResourceV1NamespacedResourceClaimTemplateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -11940,29 +11561,28 @@ export interface WatchResourceV1NamespacedResourceClaimTemplateListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1NamespacedResourceClaimTemplateListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaimtemplates",
-        code: 200,
-      }),
-    ),
+const WatchResourceV1NamespacedResourceClaimTemplateListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/resource.k8s.io/v1/watch/namespaces/{namespace}/resourceclaimtemplates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchResourceV1NamespacedResourceClaimTemplateListRequest",
 }) as any as S.Schema<WatchResourceV1NamespacedResourceClaimTemplateListRequest>;
@@ -11993,7 +11613,7 @@ export interface WatchResourceV1ResourceClaimListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1ResourceClaimListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1ResourceClaimListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -12040,8 +11660,8 @@ export interface WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -12062,9 +11682,9 @@ export const WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest",
-  }) as any as S.Schema<WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest>;
+).annotate({
+  identifier: "WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest",
+}) as any as S.Schema<WatchResourceV1ResourceClaimTemplateListForAllNamespacesRequest>;
 
 export interface WatchResourceV1ResourceSliceRequest {
   /** name of the ResourceSlice */
@@ -12094,7 +11714,7 @@ export interface WatchResourceV1ResourceSliceRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1ResourceSliceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -12146,7 +11766,7 @@ export interface WatchResourceV1ResourceSliceListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchResourceV1ResourceSliceListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchResourceV1ResourceSliceListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),

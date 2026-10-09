@@ -12,7 +12,7 @@ import * as T from "../traits.ts";
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type ChangeReadStatusRequestReadStatus = "all" | "unread";
-export const ChangeReadStatusRequestReadStatus = S.String;
+const ChangeReadStatusRequestReadStatus = S.String;
 
 export type ChangeReadStatusRequestRepoType =
   | "dataset"
@@ -21,13 +21,13 @@ export type ChangeReadStatusRequestRepoType =
   | "bucket"
   | "kernel"
   | "container";
-export const ChangeReadStatusRequestRepoType = S.String;
+const ChangeReadStatusRequestRepoType = S.String;
 
 export type ChangeReadStatusRequestMention = "all" | "participating" | "mentions";
-export const ChangeReadStatusRequestMention = S.String;
+const ChangeReadStatusRequestMention = S.String;
 
 export type ChangeReadStatusRequestDiscussionIdsList = Array<string>;
-export const ChangeReadStatusRequestDiscussionIdsList = /*@__PURE__*/ S.Array(
+const ChangeReadStatusRequestDiscussionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChangeReadStatusRequestDiscussionIdsList>;
 
@@ -45,7 +45,7 @@ export interface ChangeReadStatusRequest {
   discussionIds?: ChangeReadStatusRequestDiscussionIdsList;
   read?: boolean;
 }
-export const ChangeReadStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeReadStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     p: S.optional(S.Number.pipe(T.Query())),
     readStatus: S.optional(ChangeReadStatusRequestReadStatus.pipe(T.Query())),
@@ -63,12 +63,12 @@ export const ChangeReadStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangeReadStatusRequest" }) as any as S.Schema<ChangeReadStatusRequest>;
 
 export interface ChangeReadStatusResponse {}
-export const ChangeReadStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ChangeReadStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ChangeReadStatusResponse",
 }) as any as S.Schema<ChangeReadStatusResponse>;
 
 export type DeleteNotificationsRequestReadStatus = "all" | "unread";
-export const DeleteNotificationsRequestReadStatus = S.String;
+const DeleteNotificationsRequestReadStatus = S.String;
 
 export type DeleteNotificationsRequestRepoType =
   | "dataset"
@@ -77,13 +77,13 @@ export type DeleteNotificationsRequestRepoType =
   | "bucket"
   | "kernel"
   | "container";
-export const DeleteNotificationsRequestRepoType = S.String;
+const DeleteNotificationsRequestRepoType = S.String;
 
 export type DeleteNotificationsRequestMention = "all" | "participating" | "mentions";
-export const DeleteNotificationsRequestMention = S.String;
+const DeleteNotificationsRequestMention = S.String;
 
 export type DeleteNotificationsRequestDiscussionIdsList = Array<string>;
-export const DeleteNotificationsRequestDiscussionIdsList =
+const DeleteNotificationsRequestDiscussionIdsList =
   ChangeReadStatusRequestDiscussionIdsList as any as S.Schema<DeleteNotificationsRequestDiscussionIdsList>;
 
 export interface DeleteNotificationsRequest {
@@ -99,7 +99,7 @@ export interface DeleteNotificationsRequest {
   applyToAll?: string;
   discussionIds?: DeleteNotificationsRequestDiscussionIdsList;
 }
-export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     p: S.optional(S.Number.pipe(T.Query())),
     readStatus: S.optional(DeleteNotificationsRequestReadStatus.pipe(T.Query())),
@@ -118,11 +118,11 @@ export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse =
+const DeleteNotificationsResponse =
   ChangeReadStatusResponse as any as S.Schema<DeleteNotificationsResponse>;
 
 export type ListNotificationsRequestReadStatus = "all" | "unread";
-export const ListNotificationsRequestReadStatus = S.String;
+const ListNotificationsRequestReadStatus = S.String;
 
 export type ListNotificationsRequestRepoType =
   | "dataset"
@@ -131,10 +131,10 @@ export type ListNotificationsRequestRepoType =
   | "bucket"
   | "kernel"
   | "container";
-export const ListNotificationsRequestRepoType = S.String;
+const ListNotificationsRequestRepoType = S.String;
 
 export type ListNotificationsRequestMention = "all" | "participating" | "mentions";
-export const ListNotificationsRequestMention = S.String;
+const ListNotificationsRequestMention = S.String;
 
 export interface ListNotificationsRequest {
   p?: number;
@@ -147,7 +147,7 @@ export interface ListNotificationsRequest {
   mention?: ListNotificationsRequestMention | (string & {});
   lastUpdate?: string;
 }
-export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     p: S.optional(S.Number.pipe(T.Query())),
     readStatus: S.optional(ListNotificationsRequestReadStatus.pipe(T.Query())),
@@ -166,57 +166,20 @@ export interface ListNotificationsResponseNotificationsItemCase0Paper {
   _id: string;
   title: string;
 }
-export const ListNotificationsResponseNotificationsItemCase0Paper = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    title: S.String,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase0Paper",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase0Paper>;
-
 export interface ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
   avatar: string;
   user: string;
 }
-export const ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatar: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem",
-  }) as any as S.Schema<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
-
 export type ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
-export const ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList =
-  /*@__PURE__*/ S.Array(
-    ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem,
-  ) as any as S.Schema<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList>;
-
 export interface ListNotificationsResponseNotificationsItemCase0PaperDiscussion {
   id: string;
   participating: ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList;
   /** A hex string of 24 characters representing an ObjectId. */
   paperId: string;
 }
-export const ListNotificationsResponseNotificationsItemCase0PaperDiscussion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      participating:
-        ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList,
-      paperId: S.String,
-    }),
-  ).annotate({
-    identifier: "ListNotificationsResponseNotificationsItemCase0PaperDiscussion",
-  }) as any as S.Schema<ListNotificationsResponseNotificationsItemCase0PaperDiscussion>;
-
 export interface ListNotificationsResponseNotificationsItemCase0 {
   type: string;
   updatedAt: string;
@@ -225,50 +188,20 @@ export interface ListNotificationsResponseNotificationsItemCase0 {
   paper: ListNotificationsResponseNotificationsItemCase0Paper;
   paperDiscussion: ListNotificationsResponseNotificationsItemCase0PaperDiscussion;
 }
-export const ListNotificationsResponseNotificationsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    updatedAt: S.String,
-    read: S.Boolean,
-    discussionEventId: S.optional(S.String),
-    paper: ListNotificationsResponseNotificationsItemCase0Paper,
-    paperDiscussion: ListNotificationsResponseNotificationsItemCase0PaperDiscussion,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase0",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase0>;
-
 export type RepoIdType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
-export const RepoIdType = S.String;
-
 export interface RepoId {
   name: string;
   type: RepoIdType;
 }
-export const RepoId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: RepoIdType,
-  }),
-).annotate({ identifier: "RepoId" }) as any as S.Schema<RepoId>;
-
 export type ListNotificationsResponseNotificationsItemCase1DiscussionStatus =
   | "draft"
   | "open"
   | "closed"
   | "merged";
-export const ListNotificationsResponseNotificationsItemCase1DiscussionStatus = S.String;
-
 export type ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingItem =
   ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem;
-export const ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingItem =
-  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem;
-
 export type ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
-export const ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList =
-  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList as any as S.Schema<ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList>;
-
 export interface ListNotificationsResponseNotificationsItemCase1Discussion {
   num: number;
   title: string;
@@ -278,20 +211,6 @@ export interface ListNotificationsResponseNotificationsItemCase1Discussion {
   isPullRequest: boolean;
   participating: ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList;
 }
-export const ListNotificationsResponseNotificationsItemCase1Discussion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      num: S.Number,
-      title: S.String,
-      status: ListNotificationsResponseNotificationsItemCase1DiscussionStatus,
-      id: S.String,
-      isPullRequest: S.Boolean,
-      participating: ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList,
-    }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase1Discussion",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase1Discussion>;
-
 export interface ListNotificationsResponseNotificationsItemCase1 {
   type: string;
   updatedAt: string;
@@ -300,29 +219,10 @@ export interface ListNotificationsResponseNotificationsItemCase1 {
   repo: RepoId;
   discussion: ListNotificationsResponseNotificationsItemCase1Discussion;
 }
-export const ListNotificationsResponseNotificationsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    updatedAt: S.String,
-    read: S.Boolean,
-    discussionEventId: S.optional(S.String),
-    repo: RepoId,
-    discussion: ListNotificationsResponseNotificationsItemCase1Discussion,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase1",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase1>;
-
 export type ListNotificationsResponseNotificationsItemCase2PostParticipatingItem =
   ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem;
-export const ListNotificationsResponseNotificationsItemCase2PostParticipatingItem =
-  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem;
-
 export type ListNotificationsResponseNotificationsItemCase2PostParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
-export const ListNotificationsResponseNotificationsItemCase2PostParticipatingList =
-  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList as any as S.Schema<ListNotificationsResponseNotificationsItemCase2PostParticipatingList>;
-
 export interface ListNotificationsResponseNotificationsItemCase2Post {
   id: string;
   slug: string;
@@ -330,18 +230,6 @@ export interface ListNotificationsResponseNotificationsItemCase2Post {
   title: string;
   participating: ListNotificationsResponseNotificationsItemCase2PostParticipatingList;
 }
-export const ListNotificationsResponseNotificationsItemCase2Post = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    authorName: S.String,
-    title: S.String,
-    participating: ListNotificationsResponseNotificationsItemCase2PostParticipatingList,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase2Post",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase2Post>;
-
 export interface ListNotificationsResponseNotificationsItemCase2 {
   type: string;
   updatedAt: string;
@@ -349,28 +237,10 @@ export interface ListNotificationsResponseNotificationsItemCase2 {
   discussionEventId?: string;
   post: ListNotificationsResponseNotificationsItemCase2Post;
 }
-export const ListNotificationsResponseNotificationsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    updatedAt: S.String,
-    read: S.Boolean,
-    discussionEventId: S.optional(S.String),
-    post: ListNotificationsResponseNotificationsItemCase2Post,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase2",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase2>;
-
 export type ListNotificationsResponseNotificationsItemCase3BlogParticipatingItem =
   ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem;
-export const ListNotificationsResponseNotificationsItemCase3BlogParticipatingItem =
-  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem;
-
 export type ListNotificationsResponseNotificationsItemCase3BlogParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
-export const ListNotificationsResponseNotificationsItemCase3BlogParticipatingList =
-  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList as any as S.Schema<ListNotificationsResponseNotificationsItemCase3BlogParticipatingList>;
-
 export interface ListNotificationsResponseNotificationsItemCase3Blog {
   id: string;
   slug: string;
@@ -379,19 +249,6 @@ export interface ListNotificationsResponseNotificationsItemCase3Blog {
   authorName?: string;
   participating: ListNotificationsResponseNotificationsItemCase3BlogParticipatingList;
 }
-export const ListNotificationsResponseNotificationsItemCase3Blog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    title: S.String,
-    canonical: S.Boolean,
-    authorName: S.optional(S.String),
-    participating: ListNotificationsResponseNotificationsItemCase3BlogParticipatingList,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase3Blog",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase3Blog>;
-
 export interface ListNotificationsResponseNotificationsItemCase3 {
   type: string;
   updatedAt: string;
@@ -399,29 +256,17 @@ export interface ListNotificationsResponseNotificationsItemCase3 {
   discussionEventId?: string;
   blog: ListNotificationsResponseNotificationsItemCase3Blog;
 }
-export const ListNotificationsResponseNotificationsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    updatedAt: S.String,
-    read: S.Boolean,
-    discussionEventId: S.optional(S.String),
-    blog: ListNotificationsResponseNotificationsItemCase3Blog,
-  }),
-).annotate({
-  identifier: "ListNotificationsResponseNotificationsItemCase3",
-}) as any as S.Schema<ListNotificationsResponseNotificationsItemCase3>;
-
 export type ListNotificationsResponseNotificationsItem =
   | ListNotificationsResponseNotificationsItemCase0
   | ListNotificationsResponseNotificationsItemCase1
   | ListNotificationsResponseNotificationsItemCase2
   | ListNotificationsResponseNotificationsItemCase3;
-export const ListNotificationsResponseNotificationsItem =
+const ListNotificationsResponseNotificationsItem =
   S.Unknown as any as S.Schema<ListNotificationsResponseNotificationsItem>;
 
 export type ListNotificationsResponseNotificationsList =
   Array<ListNotificationsResponseNotificationsItem>;
-export const ListNotificationsResponseNotificationsList = /*@__PURE__*/ S.Array(
+const ListNotificationsResponseNotificationsList = /*@__PURE__*/ S.Array(
   ListNotificationsResponseNotificationsItem,
 ) as any as S.Schema<ListNotificationsResponseNotificationsList>;
 
@@ -430,7 +275,7 @@ export interface ListNotificationsResponseCount {
   unread: number;
   all: number;
 }
-export const ListNotificationsResponseCount = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsResponseCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.Number,
     unread: S.Number,
@@ -445,7 +290,7 @@ export interface ListNotificationsResponse {
   count: ListNotificationsResponseCount;
   start: number;
 }
-export const ListNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifications: ListNotificationsResponseNotificationsList,
     count: ListNotificationsResponseCount,
@@ -484,7 +329,7 @@ export interface UpdateNotificationSettingsRequestNotifications {
   locked_out?: boolean;
   repo_release?: boolean;
 }
-export const UpdateNotificationSettingsRequestNotifications = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotificationSettingsRequestNotifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announcements: S.optional(S.Boolean),
     arxiv_paper_activity: S.optional(S.Boolean),
@@ -523,7 +368,7 @@ export interface UpdateNotificationSettingsRequest {
   /** To be provided when enabling launch_prepaid_credits */
   prepaidAmount?: string;
 }
-export const UpdateNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifications: UpdateNotificationSettingsRequestNotifications,
     prepaidAmount: S.optional(S.String),
@@ -533,20 +378,18 @@ export const UpdateNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateNotificationSettingsRequest>;
 
 export interface UpdateNotificationSettingsResponse {}
-export const UpdateNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const UpdateNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UpdateNotificationSettingsResponse",
 }) as any as S.Schema<UpdateNotificationSettingsResponse>;
 
 export type UpdateWatchSettingsRequestDeleteItemType = "org" | "user" | "repo";
-export const UpdateWatchSettingsRequestDeleteItemType = S.String;
+const UpdateWatchSettingsRequestDeleteItemType = S.String;
 
 export interface UpdateWatchSettingsRequestDeleteItem {
   id: string;
   type: UpdateWatchSettingsRequestDeleteItemType | (string & {});
 }
-export const UpdateWatchSettingsRequestDeleteItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateWatchSettingsRequestDeleteItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: UpdateWatchSettingsRequestDeleteItemType,
@@ -556,29 +399,24 @@ export const UpdateWatchSettingsRequestDeleteItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateWatchSettingsRequestDeleteItem>;
 
 export type UpdateWatchSettingsRequestDeleteList = Array<UpdateWatchSettingsRequestDeleteItem>;
-export const UpdateWatchSettingsRequestDeleteList = /*@__PURE__*/ S.Array(
+const UpdateWatchSettingsRequestDeleteList = /*@__PURE__*/ S.Array(
   UpdateWatchSettingsRequestDeleteItem,
 ) as any as S.Schema<UpdateWatchSettingsRequestDeleteList>;
 
 export type UpdateWatchSettingsRequestAddItemType = "org" | "user" | "repo";
-export const UpdateWatchSettingsRequestAddItemType = S.String;
-
 export interface UpdateWatchSettingsRequestAddItem {
   id: string;
   type: UpdateWatchSettingsRequestAddItemType | (string & {});
 }
-export const UpdateWatchSettingsRequestAddItem =
-  UpdateWatchSettingsRequestDeleteItem as any as S.Schema<UpdateWatchSettingsRequestAddItem>;
-
 export type UpdateWatchSettingsRequestAddList = Array<UpdateWatchSettingsRequestAddItem>;
-export const UpdateWatchSettingsRequestAddList =
+const UpdateWatchSettingsRequestAddList =
   UpdateWatchSettingsRequestDeleteList as any as S.Schema<UpdateWatchSettingsRequestAddList>;
 
 export interface UpdateWatchSettingsRequest {
   delete?: UpdateWatchSettingsRequestDeleteList;
   add?: UpdateWatchSettingsRequestAddList;
 }
-export const UpdateWatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.optional(UpdateWatchSettingsRequestDeleteList),
     add: S.optional(UpdateWatchSettingsRequestAddList),
@@ -588,7 +426,7 @@ export const UpdateWatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWatchSettingsRequest>;
 
 export interface UpdateWatchSettingsResponse {}
-export const UpdateWatchSettingsResponse =
+const UpdateWatchSettingsResponse =
   ChangeReadStatusResponse as any as S.Schema<UpdateWatchSettingsResponse>;
 
 export type ChangeReadStatusError = HuggingFaceOpError;

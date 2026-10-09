@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelOrganizationsLocationsGlobalOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const CancelOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -98,7 +98,7 @@ export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -114,35 +114,35 @@ export const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>;
 
 export type VpcFlowLogsConfigStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
-export const VpcFlowLogsConfigStateEnum = S.String;
+const VpcFlowLogsConfigStateEnum = S.String;
 
 export type VpcFlowLogsConfigMetadataEnum =
   | "METADATA_UNSPECIFIED"
   | "INCLUDE_ALL_METADATA"
   | "EXCLUDE_ALL_METADATA"
   | "CUSTOM_METADATA";
-export const VpcFlowLogsConfigMetadataEnum = S.String;
+const VpcFlowLogsConfigMetadataEnum = S.String;
 
 export type VpcFlowLogsConfigConnectionLoggingEnum =
   | "CONNECTION_LOGGING_UNSPECIFIED"
   | "CONNECTION_LOGGING_ENABLED"
   | "CONNECTION_LOGGING_DISABLED";
-export const VpcFlowLogsConfigConnectionLoggingEnum = S.String;
+const VpcFlowLogsConfigConnectionLoggingEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type VpcFlowLogsConfigTargetResourceStateEnum =
   | "TARGET_RESOURCE_STATE_UNSPECIFIED"
   | "TARGET_RESOURCE_EXISTS"
   | "TARGET_RESOURCE_DOES_NOT_EXIST";
-export const VpcFlowLogsConfigTargetResourceStateEnum = S.String;
+const VpcFlowLogsConfigTargetResourceStateEnum = S.String;
 
 export type VpcFlowLogsConfigCrossProjectMetadataEnum =
   | "CROSS_PROJECT_METADATA_UNSPECIFIED"
   | "CROSS_PROJECT_METADATA_ENABLED"
   | "CROSS_PROJECT_METADATA_DISABLED";
-export const VpcFlowLogsConfigCrossProjectMetadataEnum = S.String;
+const VpcFlowLogsConfigCrossProjectMetadataEnum = S.String;
 
 export type VpcFlowLogsConfigAggregationIntervalEnum =
   | "AGGREGATION_INTERVAL_UNSPECIFIED"
@@ -152,10 +152,10 @@ export type VpcFlowLogsConfigAggregationIntervalEnum =
   | "INTERVAL_5_MIN"
   | "INTERVAL_10_MIN"
   | "INTERVAL_15_MIN";
-export const VpcFlowLogsConfigAggregationIntervalEnum = S.String;
+const VpcFlowLogsConfigAggregationIntervalEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A configuration to generate VPC Flow Logs. */
 export interface VpcFlowLogsConfig {
@@ -196,7 +196,7 @@ export interface VpcFlowLogsConfig {
   /** Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name} */
   network?: string;
 }
-export const VpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
+const VpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interconnectAttachment: S.optional(S.String),
     state: S.optional(VpcFlowLogsConfigStateEnum),
@@ -227,7 +227,7 @@ export interface CreateOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcFlowLogsConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -244,15 +244,10 @@ export const CreateOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__
 }) as any as S.Schema<CreateOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -263,7 +258,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -284,7 +279,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     name: S.optional(S.String),
@@ -300,14 +295,14 @@ export type EndpointForwardingRuleTargetEnum =
   | "LOAD_BALANCER"
   | "VPN_GATEWAY"
   | "PSC";
-export const EndpointForwardingRuleTargetEnum = S.String;
+const EndpointForwardingRuleTargetEnum = S.String;
 
 /** Wrapper for the App Engine service version attributes. */
 export interface AppEngineVersionEndpoint {
   /** An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name. */
   uri?: string;
 }
-export const AppEngineVersionEndpoint = /*@__PURE__*/ S.suspend(() =>
+const AppEngineVersionEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -318,8 +313,7 @@ export interface CloudFunctionEndpoint {
   /** A [Cloud Function](https://cloud.google.com/functions) name. */
   uri?: string;
 }
-export const CloudFunctionEndpoint =
-  AppEngineVersionEndpoint as any as S.Schema<CloudFunctionEndpoint>;
+const CloudFunctionEndpoint = AppEngineVersionEndpoint as any as S.Schema<CloudFunctionEndpoint>;
 
 /** Wrapper for Cloud Run revision attributes. */
 export interface CloudRunRevisionEndpoint {
@@ -330,7 +324,7 @@ export interface CloudRunRevisionEndpoint {
   /** Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}. Mutually exclusive with worker_pool_uri. */
   serviceUri?: string;
 }
-export const CloudRunRevisionEndpoint = /*@__PURE__*/ S.suspend(() =>
+const CloudRunRevisionEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     workerPoolUri: S.optional(S.String),
@@ -350,14 +344,14 @@ export type EndpointLoadBalancerTypeEnum =
   | "NETWORK_LOAD_BALANCER"
   | "LEGACY_NETWORK_LOAD_BALANCER"
   | "TCP_UDP_INTERNAL_LOAD_BALANCER";
-export const EndpointLoadBalancerTypeEnum = S.String;
+const EndpointLoadBalancerTypeEnum = S.String;
 
 export type EndpointNetworkTypeEnum =
   | "NETWORK_TYPE_UNSPECIFIED"
   | "GCP_NETWORK"
   | "NON_GCP_NETWORK"
   | "INTERNET";
-export const EndpointNetworkTypeEnum = S.String;
+const EndpointNetworkTypeEnum = S.String;
 
 /** Source or destination of the Connectivity Test. */
 export interface Endpoint {
@@ -406,7 +400,7 @@ export interface Endpoint {
   /** DNS endpoint of [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires gke_master_cluster to be set, can't be used simultaneoulsly with ip_address or network. Applicable only to destination endpoint. */
   fqdn?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardingRuleTarget: S.optional(EndpointForwardingRuleTargetEnum),
     redisCluster: S.optional(S.String),
@@ -437,7 +431,7 @@ export type FirewallInfoTargetTypeEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "INSTANCES"
   | "INTERNAL_MANAGED_LB";
-export const FirewallInfoTargetTypeEnum = S.String;
+const FirewallInfoTargetTypeEnum = S.String;
 
 export type FirewallInfoFirewallRuleTypeEnum =
   | "FIREWALL_RULE_TYPE_UNSPECIFIED"
@@ -452,7 +446,7 @@ export type FirewallInfoFirewallRuleTypeEnum =
   | "UNSUPPORTED_FIREWALL_POLICY_RULE"
   | "TRACKING_STATE"
   | "ANALYSIS_SKIPPED";
-export const FirewallInfoFirewallRuleTypeEnum = S.String;
+const FirewallInfoFirewallRuleTypeEnum = S.String;
 
 /** For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a firewall policy rule. */
 export interface FirewallInfo {
@@ -483,7 +477,7 @@ export interface FirewallInfo {
   /** The URI of the firewall rule in format "projects/{project}/global/firewalls/{firewall}". This field is not applicable to implied VPC firewall rules. */
   uri?: string;
 }
-export const FirewallInfo = /*@__PURE__*/ S.suspend(() =>
+const FirewallInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.optional(S.Number),
     targetServiceAccounts: S.optional(StringList),
@@ -514,7 +508,7 @@ export interface DirectVpcEgressConnectionInfo {
   /** URI of the subnetwork for direct egress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   subnetworkUri?: string;
 }
-export const DirectVpcEgressConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const DirectVpcEgressConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     networkUri: S.optional(S.String),
@@ -532,7 +526,7 @@ export type ForwardingRuleInfoEnvoyHealthCheckFirewallsConfigStateEnum =
   | "FIREWALLS_PARTIALLY_CONFIGURED"
   | "FIREWALLS_NOT_CONFIGURED"
   | "FIREWALLS_UNSUPPORTED";
-export const ForwardingRuleInfoEnvoyHealthCheckFirewallsConfigStateEnum = S.String;
+const ForwardingRuleInfoEnvoyHealthCheckFirewallsConfigStateEnum = S.String;
 
 /** For display only. Metadata associated with a Compute Engine forwarding rule. */
 export interface ForwardingRuleInfo {
@@ -563,7 +557,7 @@ export interface ForwardingRuleInfo {
   /** Port range defined in the forwarding rule that matches the packet. */
   matchedPortRange?: string;
 }
-export const ForwardingRuleInfo = /*@__PURE__*/ S.suspend(() =>
+const ForwardingRuleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchedProtocol: S.optional(S.String),
     loadBalancerName: S.optional(S.String),
@@ -595,7 +589,7 @@ export interface NetworkInfo {
   /** The region of the subnet matching the source IP address of the test. */
   region?: string;
 }
-export const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
+const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchedIpRange: S.optional(S.String),
     matchedSubnetUri: S.optional(S.String),
@@ -614,7 +608,7 @@ export interface VpcConnectorInfo {
   /** Location in which the VPC connector is deployed. */
   location?: string;
 }
-export const VpcConnectorInfo = /*@__PURE__*/ S.suspend(() =>
+const VpcConnectorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     uri: S.optional(S.String),
@@ -629,7 +623,7 @@ export type NatInfoCloudNatGatewayTypeEnum =
   | "PRIVATE_NAT_NCC"
   | "PRIVATE_NAT_HYBRID"
   | "PRIVATE_NAT64";
-export const NatInfoCloudNatGatewayTypeEnum = S.String;
+const NatInfoCloudNatGatewayTypeEnum = S.String;
 
 export type NatInfoTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -638,7 +632,7 @@ export type NatInfoTypeEnum =
   | "CLOUD_NAT"
   | "PRIVATE_SERVICE_CONNECT"
   | "GKE_POD_IP_MASQUERADING";
-export const NatInfoTypeEnum = S.String;
+const NatInfoTypeEnum = S.String;
 
 /** For display only. Metadata associated with NAT. */
 export interface NatInfo {
@@ -673,7 +667,7 @@ export interface NatInfo {
   /** Destination port before NAT translation. Only valid when protocol is TCP or UDP. */
   oldDestinationPort?: number;
 }
-export const NatInfo = /*@__PURE__*/ S.suspend(() =>
+const NatInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleNumber: S.optional(S.Number),
     natGatewayName: S.optional(S.String),
@@ -806,7 +800,7 @@ export type DropInfoCauseEnum =
   | "GKE_NETWORK_POLICY"
   | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
   | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE";
-export const DropInfoCauseEnum = S.String;
+const DropInfoCauseEnum = S.String;
 
 /** Details of the final state "drop" and associated resource. */
 export interface DropInfo {
@@ -825,7 +819,7 @@ export interface DropInfo {
   /** Geolocation (region code) of the destination IP address (if relevant). */
   destinationGeolocationCode?: string;
 }
-export const DropInfo = /*@__PURE__*/ S.suspend(() =>
+const DropInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationIp: S.optional(S.String),
     cause: S.optional(DropInfoCauseEnum),
@@ -852,7 +846,7 @@ export interface RedisClusterInfo {
   /** URI of a Redis Cluster in format "projects/{project_id}/locations/{location}/clusters/{cluster_id}" */
   uri?: string;
 }
-export const RedisClusterInfo = /*@__PURE__*/ S.suspend(() =>
+const RedisClusterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondaryEndpointIpAddress: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -868,7 +862,7 @@ export type VpnTunnelInfoRoutingTypeEnum =
   | "ROUTE_BASED"
   | "POLICY_BASED"
   | "DYNAMIC";
-export const VpnTunnelInfoRoutingTypeEnum = S.String;
+const VpnTunnelInfoRoutingTypeEnum = S.String;
 
 /** For display only. Metadata associated with a Compute Engine VPN tunnel. */
 export interface VpnTunnelInfo {
@@ -891,7 +885,7 @@ export interface VpnTunnelInfo {
   /** URI of a VPN gateway at remote end of the tunnel. Format: * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (GCP HA VPN gateway) * `projects/{project_id}/global/peerVpnGateways/{peer_vpn_gateway_id}` (GCP peer VPN gateway) */
   remoteGateway?: string;
 }
-export const VpnTunnelInfo = /*@__PURE__*/ S.suspend(() =>
+const VpnTunnelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     remoteGatewayIp: S.optional(S.String),
@@ -920,7 +914,7 @@ export interface VpnGatewayInfo {
   /** URI of the VPN tunnel associated with the VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed. Format: `projects/{project_id}/regions/{region}/vpnTunnels/{vpn_tunnel_id}` */
   vpnTunnelUri?: string;
 }
-export const VpnGatewayInfo = /*@__PURE__*/ S.suspend(() =>
+const VpnGatewayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     networkUri: S.optional(S.String),
@@ -950,7 +944,7 @@ export interface EndpointInfo {
   /** URI of the source telemetry agent this packet originates from. */
   sourceAgentUri?: string;
 }
-export const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
+const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationNetworkUri: S.optional(S.String),
     sourceNetworkUri: S.optional(S.String),
@@ -968,7 +962,7 @@ export interface StorageBucketInfo {
   /** Cloud Storage Bucket name. */
   bucket?: string;
 }
-export const StorageBucketInfo = /*@__PURE__*/ S.suspend(() =>
+const StorageBucketInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
   }),
@@ -981,14 +975,14 @@ export type GkeNetworkPolicySkippedInfoReasonEnum =
   | "EGRESS_FROM_NODE_NETWORK_NAMESPACE_POD"
   | "NETWORK_POLICY_NOT_APPLIED_TO_RESPONSE_TRAFFIC"
   | "NETWORK_POLICY_ANALYSIS_UNSUPPORTED";
-export const GkeNetworkPolicySkippedInfoReasonEnum = S.String;
+const GkeNetworkPolicySkippedInfoReasonEnum = S.String;
 
 /** For display only. Contains information about why GKE Network Policy evaluation was skipped. */
 export interface GkeNetworkPolicySkippedInfo {
   /** Reason why Network Policy evaluation was skipped. */
   reason?: GkeNetworkPolicySkippedInfoReasonEnum | (string & {});
 }
-export const GkeNetworkPolicySkippedInfo = /*@__PURE__*/ S.suspend(() =>
+const GkeNetworkPolicySkippedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(GkeNetworkPolicySkippedInfoReasonEnum),
   }),
@@ -1008,7 +1002,7 @@ export type ForwardInfoTargetEnum =
   | "NCC_HUB"
   | "ROUTER_APPLIANCE"
   | "SECURE_WEB_PROXY_GATEWAY";
-export const ForwardInfoTargetEnum = S.String;
+const ForwardInfoTargetEnum = S.String;
 
 /** Details of the final state "forward" and associated resource. */
 export interface ForwardInfo {
@@ -1019,7 +1013,7 @@ export interface ForwardInfo {
   /** URI of the resource that the packet is forwarded to. Format: * `projects/{project_id}/global/networks/{network_id}` (VPC peering network) * `projects/{project_id}/regions/{region}/vpnGateways/{vpn_gateway_id}` (VPN gateway) */
   resourceUri?: string;
 }
-export const ForwardInfo = /*@__PURE__*/ S.suspend(() =>
+const ForwardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     target: S.optional(ForwardInfoTargetEnum),
@@ -1038,7 +1032,7 @@ export interface AppEngineVersionInfo {
   /** URI of the App Engine version. Format: `apps/{app_id}/services/{service_id}/versions/{version_id}` */
   uri?: string;
 }
-export const AppEngineVersionInfo = /*@__PURE__*/ S.suspend(() =>
+const AppEngineVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1052,7 +1046,7 @@ export interface ServerlessNegInfo {
   /** URI of the serverless network endpoint group in format "projects/{project}/regions/{region}/networkEndpointGroups/{network_endpoint_group}". */
   negUri?: string;
 }
-export const ServerlessNegInfo = /*@__PURE__*/ S.suspend(() =>
+const ServerlessNegInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negUri: S.optional(S.String),
   }),
@@ -1063,7 +1057,7 @@ export interface ServerlessExternalConnectionInfo {
   /** Selected starting IP address, from the Google dynamic address pool. */
   selectedIpAddress?: string;
 }
-export const ServerlessExternalConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const ServerlessExternalConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectedIpAddress: S.optional(S.String),
   }),
@@ -1086,10 +1080,10 @@ export type RouteInfoNextHopTypeEnum =
   | "NEXT_HOP_ROUTER_APPLIANCE"
   | "NEXT_HOP_NCC_HUB"
   | "SECURE_WEB_PROXY_GATEWAY";
-export const RouteInfoNextHopTypeEnum = S.String;
+const RouteInfoNextHopTypeEnum = S.String;
 
 export type RouteInfoRouteScopeEnum = "ROUTE_SCOPE_UNSPECIFIED" | "NETWORK" | "NCC_HUB";
-export const RouteInfoRouteScopeEnum = S.String;
+const RouteInfoRouteScopeEnum = S.String;
 
 export type RouteInfoRouteTypeEnum =
   | "ROUTE_TYPE_UNSPECIFIED"
@@ -1101,7 +1095,7 @@ export type RouteInfoRouteTypeEnum =
   | "PEERING_DYNAMIC"
   | "POLICY_BASED"
   | "ADVERTISED";
-export const RouteInfoRouteTypeEnum = S.String;
+const RouteInfoRouteTypeEnum = S.String;
 
 /** For display only. Metadata associated with a Compute Engine route. */
 export interface RouteInfo {
@@ -1154,7 +1148,7 @@ export interface RouteInfo {
   /** URI of a route in format "projects/{project}/global/routes/{route}". SUBNET, STATIC, PEERING_SUBNET (only for peering network) and POLICY_BASED routes only. */
   uri?: string;
 }
-export const RouteInfo = /*@__PURE__*/ S.suspend(() =>
+const RouteInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destPortRanges: S.optional(StringList),
     nextHopNetworkUri: S.optional(S.String),
@@ -1188,7 +1182,7 @@ export interface NgfwPacketInspectionInfo {
   /** URI of the security profile group associated with this firewall packet inspection. Format: `organizations/{organization_id}/locations/global/securityProfileGroups/{security_profile_group_id}` */
   securityProfileGroupUri?: string;
 }
-export const NgfwPacketInspectionInfo = /*@__PURE__*/ S.suspend(() =>
+const NgfwPacketInspectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityProfileGroupUri: S.optional(S.String),
   }),
@@ -1205,7 +1199,7 @@ export interface CloudFunctionInfo {
   /** Latest successfully deployed version id of the Cloud Function. */
   versionId?: string;
 }
-export const CloudFunctionInfo = /*@__PURE__*/ S.suspend(() =>
+const CloudFunctionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     uri: S.optional(S.String),
@@ -1219,8 +1213,7 @@ export interface PrivateConnectionInfo {
   /** URI of the Private Connection in format "projects/{project_id}/locations/{location}/privateConnections/{private_connection_id}" */
   uri?: string;
 }
-export const PrivateConnectionInfo =
-  AppEngineVersionEndpoint as any as S.Schema<PrivateConnectionInfo>;
+const PrivateConnectionInfo = AppEngineVersionEndpoint as any as S.Schema<PrivateConnectionInfo>;
 
 /** For display only. Metadata associated with a Google Kubernetes Engine (GKE) Pod. */
 export interface GkePodInfo {
@@ -1231,7 +1224,7 @@ export interface GkePodInfo {
   /** URI of the network containing the GKE Pod. Format: `projects/{project_id}/global/networks/{network_id}` */
   networkUri?: string;
 }
-export const GkePodInfo = /*@__PURE__*/ S.suspend(() =>
+const GkePodInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     podUri: S.optional(S.String),
@@ -1244,12 +1237,12 @@ export type ViewerPermissionMissingInfoResourceTypesItemEnum =
   | "FIREWALL"
   | "INSTANCE"
   | "FORWARDING_RULE";
-export const ViewerPermissionMissingInfoResourceTypesItemEnum = S.String;
+const ViewerPermissionMissingInfoResourceTypesItemEnum = S.String;
 
 export type ViewerPermissionMissingInfoResourceTypesItemEnumList = Array<
   ViewerPermissionMissingInfoResourceTypesItemEnum | (string & {})
 >;
-export const ViewerPermissionMissingInfoResourceTypesItemEnumList = /*@__PURE__*/ S.Array(
+const ViewerPermissionMissingInfoResourceTypesItemEnumList = /*@__PURE__*/ S.Array(
   ViewerPermissionMissingInfoResourceTypesItemEnum,
 ) as any as S.Schema<ViewerPermissionMissingInfoResourceTypesItemEnumList>;
 
@@ -1258,7 +1251,7 @@ export interface ViewerPermissionMissingInfo {
   /** Types of the resources that the user does not have permission to view. */
   resourceTypes?: ViewerPermissionMissingInfoResourceTypesItemEnumList;
 }
-export const ViewerPermissionMissingInfo = /*@__PURE__*/ S.suspend(() =>
+const ViewerPermissionMissingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceTypes: S.optional(ViewerPermissionMissingInfoResourceTypesItemEnumList),
   }),
@@ -1275,7 +1268,7 @@ export interface CloudRunJobInfo {
   /** Name of a Cloud Run job. */
   displayName?: string;
 }
-export const CloudRunJobInfo = /*@__PURE__*/ S.suspend(() =>
+const CloudRunJobInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     location: S.optional(S.String),
@@ -1298,7 +1291,7 @@ export interface CloudRunRevisionInfo {
   /** URI of Cloud Run worker pool this revision belongs to. Format: `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}` Mutually exclusive with `service_uri`. */
   workerPoolUri?: string;
 }
-export const CloudRunRevisionInfo = /*@__PURE__*/ S.suspend(() =>
+const CloudRunRevisionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     ipAddress: S.optional(S.String),
@@ -1324,7 +1317,7 @@ export interface CloudSQLInstanceInfo {
   /** External IP address of a Cloud SQL instance. */
   externalIp?: string;
 }
-export const CloudSQLInstanceInfo = /*@__PURE__*/ S.suspend(() =>
+const CloudSQLInstanceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalIp: S.optional(S.String),
     uri: S.optional(S.String),
@@ -1348,7 +1341,7 @@ export interface GKEMasterInfo {
   /** Internal IP address of a GKE cluster control plane. */
   internalIp?: string;
 }
-export const GKEMasterInfo = /*@__PURE__*/ S.suspend(() =>
+const GKEMasterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsEndpoint: S.optional(S.String),
     externalIp: S.optional(S.String),
@@ -1364,7 +1357,7 @@ export type InterconnectAttachmentInfoTypeEnum =
   | "PARTNER"
   | "PARTNER_PROVIDER"
   | "L2_DEDICATED";
-export const InterconnectAttachmentInfoTypeEnum = S.String;
+const InterconnectAttachmentInfoTypeEnum = S.String;
 
 /** For display only. Metadata associated with an Interconnect attachment. */
 export interface InterconnectAttachmentInfo {
@@ -1383,7 +1376,7 @@ export interface InterconnectAttachmentInfo {
   /** URI of the Interconnect attachment. Format: `projects/{project_id}/regions/{region}/interconnectAttachments/{attachment_id}` */
   uri?: string;
 }
-export const InterconnectAttachmentInfo = /*@__PURE__*/ S.suspend(() =>
+const InterconnectAttachmentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(InterconnectAttachmentInfoTypeEnum),
     region: S.optional(S.String),
@@ -1422,7 +1415,7 @@ export interface ProxyConnectionInfo {
   /** Source IP address of an original connection. */
   oldSourceIp?: string;
 }
-export const ProxyConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const ProxyConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oldSourcePort: S.optional(S.Number),
     newDestinationPort: S.optional(S.Number),
@@ -1439,7 +1432,7 @@ export const ProxyConnectionInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProxyConnectionInfo" }) as any as S.Schema<ProxyConnectionInfo>;
 
 export type InstanceInfoStatusEnum = "STATUS_UNSPECIFIED" | "RUNNING" | "NOT_RUNNING";
-export const InstanceInfoStatusEnum = S.String;
+const InstanceInfoStatusEnum = S.String;
 
 /** For display only. Metadata associated with a Compute Engine instance. */
 export interface InstanceInfo {
@@ -1466,7 +1459,7 @@ export interface InstanceInfo {
   /** Service account authorized for the instance. */
   serviceAccount?: string;
 }
-export const InstanceInfo = /*@__PURE__*/ S.suspend(() =>
+const InstanceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     running: S.optional(S.Boolean),
     internalIp: S.optional(S.String),
@@ -1531,7 +1524,7 @@ export type AbortInfoCauseEnum =
   | "DESTINATION_CLOUD_RUN_SERVICE_REVISION_UNSUPPORTED"
   | "DESTINATION_CLOUD_RUN_VPC_CONNECTOR_UNSUPPORTED"
   | "CLOUD_RUN_RESOURCE_NOT_CONNECTED_TO_VPC";
-export const AbortInfoCauseEnum = S.String;
+const AbortInfoCauseEnum = S.String;
 
 /** Details of the final state "abort" and associated resource. */
 export interface AbortInfo {
@@ -1544,7 +1537,7 @@ export interface AbortInfo {
   /** List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause. */
   projectsMissingPermission?: StringList;
 }
-export const AbortInfo = /*@__PURE__*/ S.suspend(() =>
+const AbortInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     resourceUri: S.optional(S.String),
@@ -1564,7 +1557,7 @@ export interface GkeNetworkPolicyInfo {
   /** The URI of the Network Policy. Format for a Network Policy in a zonal cluster: `projects//zones//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/` Format for a Network Policy in a regional cluster: `projects//locations//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/` */
   uri?: string;
 }
-export const GkeNetworkPolicyInfo = /*@__PURE__*/ S.suspend(() =>
+const GkeNetworkPolicyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     direction: S.optional(S.String),
@@ -1582,7 +1575,7 @@ export interface HybridSubnetInfo {
   /** URI of the hybrid subnet. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}` */
   uri?: string;
 }
-export const HybridSubnetInfo = /*@__PURE__*/ S.suspend(() =>
+const HybridSubnetInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     region: S.optional(S.String),
@@ -1605,7 +1598,7 @@ export interface RedisInstanceInfo {
   /** URI of a Cloud Redis Instance network in format "projects/{project}/global/networks/{network}". */
   networkUri?: string;
 }
-export const RedisInstanceInfo = /*@__PURE__*/ S.suspend(() =>
+const RedisInstanceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1666,7 +1659,7 @@ export type StepStateEnum =
   | "FORWARD"
   | "ABORT"
   | "VIEWER_PERMISSION_MISSING";
-export const StepStateEnum = S.String;
+const StepStateEnum = S.String;
 
 export type LoadBalancerInfoLoadBalancerTypeEnum =
   | "LOAD_BALANCER_TYPE_UNSPECIFIED"
@@ -1675,13 +1668,13 @@ export type LoadBalancerInfoLoadBalancerTypeEnum =
   | "HTTP_PROXY"
   | "TCP_PROXY"
   | "SSL_PROXY";
-export const LoadBalancerInfoLoadBalancerTypeEnum = S.String;
+const LoadBalancerInfoLoadBalancerTypeEnum = S.String;
 
 export type LoadBalancerBackendHealthCheckFirewallStateEnum =
   | "HEALTH_CHECK_FIREWALL_STATE_UNSPECIFIED"
   | "CONFIGURED"
   | "MISCONFIGURED";
-export const LoadBalancerBackendHealthCheckFirewallStateEnum = S.String;
+const LoadBalancerBackendHealthCheckFirewallStateEnum = S.String;
 
 /** For display only. Metadata associated with a specific load balancer backend. */
 export interface LoadBalancerBackend {
@@ -1696,7 +1689,7 @@ export interface LoadBalancerBackend {
   /** URI of the backend instance or network endpoint. Format: * `projects/{project_id}/zones/{zone}/instances/{instance_id}` (instance) * `projects/{project_id}/zones/{zone}/networkEndpointGroups/{neg_id}` (zonal NEG) * `projects/{project_id}/regions/{region}/networkEndpointGroups/{neg_id}` (regional NEG) * `projects/{project_id}/global/networkEndpointGroups/{neg_id}` (global NEG) */
   uri?: string;
 }
-export const LoadBalancerBackend = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerBackend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     healthCheckFirewallState: S.optional(LoadBalancerBackendHealthCheckFirewallStateEnum),
@@ -1707,7 +1700,7 @@ export const LoadBalancerBackend = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadBalancerBackend" }) as any as S.Schema<LoadBalancerBackend>;
 
 export type LoadBalancerBackendList = Array<LoadBalancerBackend>;
-export const LoadBalancerBackendList = /*@__PURE__*/ S.Array(
+const LoadBalancerBackendList = /*@__PURE__*/ S.Array(
   LoadBalancerBackend,
 ) as any as S.Schema<LoadBalancerBackendList>;
 
@@ -1716,7 +1709,7 @@ export type LoadBalancerInfoBackendTypeEnum =
   | "BACKEND_SERVICE"
   | "TARGET_POOL"
   | "TARGET_INSTANCE";
-export const LoadBalancerInfoBackendTypeEnum = S.String;
+const LoadBalancerInfoBackendTypeEnum = S.String;
 
 /** For display only. Metadata associated with a load balancer. */
 export interface LoadBalancerInfo {
@@ -1731,7 +1724,7 @@ export interface LoadBalancerInfo {
   /** URI of the backend associated with the load balancer. Format: * `projects/{project_id}/regions/{region}/backendServices/{backend_service_id}` * `projects/{project_id}/global/backendServices/{backend_service_id}` * `projects/{project_id}/regions/{region}/targetPools/{target_pool_id}` * `projects/{project_id}/zones/{zone}/targetInstances/{target_instance_id}` */
   backendUri?: string;
 }
-export const LoadBalancerInfo = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadBalancerType: S.optional(LoadBalancerInfoLoadBalancerTypeEnum),
     backends: S.optional(LoadBalancerBackendList),
@@ -1764,7 +1757,7 @@ export type DeliverInfoTargetEnum =
   | "CLOUD_RUN_JOB"
   | "DMS_PRIVATE_CONNECTION"
   | "DATASTREAM_PRIVATE_CONNECTION";
-export const DeliverInfoTargetEnum = S.String;
+const DeliverInfoTargetEnum = S.String;
 
 export type DeliverInfoGoogleServiceTypeEnum =
   | "GOOGLE_SERVICE_TYPE_UNSPECIFIED"
@@ -1773,7 +1766,7 @@ export type DeliverInfoGoogleServiceTypeEnum =
   | "CLOUD_DNS"
   | "PRIVATE_GOOGLE_ACCESS"
   | "SERVERLESS_VPC_ACCESS";
-export const DeliverInfoGoogleServiceTypeEnum = S.String;
+const DeliverInfoGoogleServiceTypeEnum = S.String;
 
 /** Details of the final state "deliver" and associated resource. */
 export interface DeliverInfo {
@@ -1790,7 +1783,7 @@ export interface DeliverInfo {
   /** Recognized type of a Google Service the packet is delivered to (if applicable). */
   googleServiceType?: DeliverInfoGoogleServiceTypeEnum | (string & {});
 }
-export const DeliverInfo = /*@__PURE__*/ S.suspend(() =>
+const DeliverInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     target: S.optional(DeliverInfoTargetEnum),
@@ -1810,7 +1803,7 @@ export type IpMasqueradingSkippedInfoReasonEnum =
   | "NO_MASQUERADING_FOR_IPV6"
   | "POD_USES_NODE_NETWORK_NAMESPACE"
   | "NO_MASQUERADING_FOR_RETURN_PACKET";
-export const IpMasqueradingSkippedInfoReasonEnum = S.String;
+const IpMasqueradingSkippedInfoReasonEnum = S.String;
 
 /** For display only. Contains information about why IP masquerading was skipped for the packet. */
 export interface IpMasqueradingSkippedInfo {
@@ -1819,7 +1812,7 @@ export interface IpMasqueradingSkippedInfo {
   /** The matched non-masquerade IP range. Only set if reason is DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE or DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE. */
   nonMasqueradeRange?: string;
 }
-export const IpMasqueradingSkippedInfo = /*@__PURE__*/ S.suspend(() =>
+const IpMasqueradingSkippedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(IpMasqueradingSkippedInfoReasonEnum),
     nonMasqueradeRange: S.optional(S.String),
@@ -1834,7 +1827,7 @@ export type LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum =
   | "FIREWALLS_PARTIALLY_CONFIGURED"
   | "FIREWALLS_NOT_CONFIGURED"
   | "FIREWALLS_UNSUPPORTED";
-export const LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum = S.String;
+const LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum = S.String;
 
 /** For display only. Metadata associated with the load balancer backend. */
 export interface LoadBalancerBackendInfo {
@@ -1861,7 +1854,7 @@ export interface LoadBalancerBackendInfo {
   /** URI of the backend instance (if applicable) in format "projects/{project}/zones/{zone}/instances/{instance}". Populated for instance group backends, and zonal NEG backends. */
   instanceUri?: string;
 }
-export const LoadBalancerBackendInfo = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerBackendInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backendServiceUri: S.optional(S.String),
     healthCheckFirewallsConfigState: S.optional(
@@ -1887,7 +1880,7 @@ export type GoogleServiceInfoGoogleServiceTypeEnum =
   | "GOOGLE_API_PSC"
   | "GOOGLE_API_VPC_SC"
   | "SERVERLESS_VPC_ACCESS";
-export const GoogleServiceInfoGoogleServiceTypeEnum = S.String;
+const GoogleServiceInfoGoogleServiceTypeEnum = S.String;
 
 /** For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths */
 export interface GoogleServiceInfo {
@@ -1896,7 +1889,7 @@ export interface GoogleServiceInfo {
   /** Recognized type of a Google Service. */
   googleServiceType?: GoogleServiceInfoGoogleServiceTypeEnum | (string & {});
 }
-export const GoogleServiceInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleServiceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceIp: S.optional(S.String),
     googleServiceType: S.optional(GoogleServiceInfoGoogleServiceTypeEnum),
@@ -1994,7 +1987,7 @@ export interface Step {
   /** Display information of a Google service */
   googleService?: GoogleServiceInfo;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewall: S.optional(FirewallInfo),
     directVpcEgressConnection: S.optional(DirectVpcEgressConnectionInfo),
@@ -2044,7 +2037,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export type StepList = Array<Step>;
-export const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
+const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
 
 /** Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ``` */
 export interface Trace {
@@ -2055,7 +2048,7 @@ export interface Trace {
   /** ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace. */
   forwardTraceId?: number;
 }
-export const Trace = /*@__PURE__*/ S.suspend(() =>
+const Trace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(StepList),
     endpointInfo: S.optional(EndpointInfo),
@@ -2064,7 +2057,7 @@ export const Trace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trace" }) as any as S.Schema<Trace>;
 
 export type TraceList = Array<Trace>;
-export const TraceList = /*@__PURE__*/ S.Array(Trace) as any as S.Schema<TraceList>;
+const TraceList = /*@__PURE__*/ S.Array(Trace) as any as S.Schema<TraceList>;
 
 export type ReachabilityDetailsResultEnum =
   | "RESULT_UNSPECIFIED"
@@ -2072,7 +2065,7 @@ export type ReachabilityDetailsResultEnum =
   | "UNREACHABLE"
   | "AMBIGUOUS"
   | "UNDETERMINED";
-export const ReachabilityDetailsResultEnum = S.String;
+const ReachabilityDetailsResultEnum = S.String;
 
 /** Results of the configuration analysis from the last run of the test. */
 export interface ReachabilityDetails {
@@ -2085,7 +2078,7 @@ export interface ReachabilityDetails {
   /** The time of the configuration analysis. */
   verifyTime?: string;
 }
-export const ReachabilityDetails = /*@__PURE__*/ S.suspend(() =>
+const ReachabilityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     traces: S.optional(TraceList),
@@ -2101,7 +2094,7 @@ export interface LatencyPercentile {
   /** percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field. */
   latencyMicros?: string;
 }
-export const LatencyPercentile = /*@__PURE__*/ S.suspend(() =>
+const LatencyPercentile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percent: S.optional(S.Number),
     latencyMicros: S.optional(S.String),
@@ -2109,7 +2102,7 @@ export const LatencyPercentile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LatencyPercentile" }) as any as S.Schema<LatencyPercentile>;
 
 export type LatencyPercentileList = Array<LatencyPercentile>;
-export const LatencyPercentileList = /*@__PURE__*/ S.Array(
+const LatencyPercentileList = /*@__PURE__*/ S.Array(
   LatencyPercentile,
 ) as any as S.Schema<LatencyPercentileList>;
 
@@ -2118,7 +2111,7 @@ export interface LatencyDistribution {
   /** Representative latency percentiles. */
   latencyPercentiles?: LatencyPercentileList;
 }
-export const LatencyDistribution = /*@__PURE__*/ S.suspend(() =>
+const LatencyDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latencyPercentiles: S.optional(LatencyPercentileList),
   }),
@@ -2130,14 +2123,14 @@ export type SingleEdgeResponseResultEnum =
   | "UNREACHABLE"
   | "REACHABILITY_INCONSISTENT"
   | "UNDETERMINED";
-export const SingleEdgeResponseResultEnum = S.String;
+const SingleEdgeResponseResultEnum = S.String;
 
 /** Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations. */
 export interface EdgeLocation {
   /** Name of the metropolitan area. */
   metropolitanArea?: string;
 }
-export const EdgeLocation = /*@__PURE__*/ S.suspend(() =>
+const EdgeLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metropolitanArea: S.optional(S.String),
   }),
@@ -2158,7 +2151,7 @@ export interface SingleEdgeResponse {
   /** The EdgeLocation from which a packet, destined to the internet, will egress the Google network. This will only be populated for a connectivity test which has an internet destination address. The absence of this field *must not* be used as an indication that the destination is part of the Google network. */
   destinationEgressLocation?: EdgeLocation;
 }
-export const SingleEdgeResponse = /*@__PURE__*/ S.suspend(() =>
+const SingleEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sentProbeCount: S.optional(S.Number),
     successfulProbeCount: S.optional(S.Number),
@@ -2170,7 +2163,7 @@ export const SingleEdgeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SingleEdgeResponse" }) as any as S.Schema<SingleEdgeResponse>;
 
 export type SingleEdgeResponseList = Array<SingleEdgeResponse>;
-export const SingleEdgeResponseList = /*@__PURE__*/ S.Array(
+const SingleEdgeResponseList = /*@__PURE__*/ S.Array(
   SingleEdgeResponse,
 ) as any as S.Schema<SingleEdgeResponseList>;
 
@@ -2180,13 +2173,13 @@ export type ProbingDetailsResultEnum =
   | "UNREACHABLE"
   | "REACHABILITY_INCONSISTENT"
   | "UNDETERMINED";
-export const ProbingDetailsResultEnum = S.String;
+const ProbingDetailsResultEnum = S.String;
 
 export type ProbingDetailsAbortCauseEnum =
   | "PROBING_ABORT_CAUSE_UNSPECIFIED"
   | "PERMISSION_DENIED"
   | "NO_SOURCE_LOCATION";
-export const ProbingDetailsAbortCauseEnum = S.String;
+const ProbingDetailsAbortCauseEnum = S.String;
 
 /** Results of active probing from the last run of the test. */
 export interface ProbingDetails {
@@ -2213,7 +2206,7 @@ export interface ProbingDetails {
   /** The EdgeLocation from which a packet, destined to the internet, will egress the Google network. This will only be populated for a connectivity test which has an internet destination address. The absence of this field *must not* be used as an indication that the destination is part of the Google network. */
   destinationEgressLocation?: EdgeLocation;
 }
-export const ProbingDetails = /*@__PURE__*/ S.suspend(() =>
+const ProbingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifyTime: S.optional(S.String),
     probingLatency: S.optional(LatencyDistribution),
@@ -2262,7 +2255,7 @@ export interface ConnectivityTest {
   /** Output only. The time the test's configuration was updated. */
   updateTime?: string;
 }
-export const ConnectivityTest = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roundTrip: S.optional(S.Boolean),
     createTime: S.optional(S.String),
@@ -2290,7 +2283,7 @@ export interface CreateProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: ConnectivityTest;
 }
-export const CreateProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     testId: S.optional(S.String.pipe(T.Query())),
@@ -2314,7 +2307,7 @@ export interface CreateProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const CreateProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcFlowLogsConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2334,7 +2327,7 @@ export interface DeleteOrganizationsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2352,7 +2345,7 @@ export interface DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a project-level resource: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an organization-level resource: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2370,7 +2363,7 @@ export interface DeleteProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2388,7 +2381,7 @@ export interface DeleteProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2406,7 +2399,7 @@ export interface DeleteProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a project-level resource: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an organization-level resource: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2432,7 +2425,7 @@ export interface GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsR
   /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
   pageToken?: string;
 }
-export const GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
+const GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.optional(S.String.pipe(T.Query())),
@@ -2456,13 +2449,13 @@ export type EffectiveVpcFlowLogsConfigMetadataEnum =
   | "INCLUDE_ALL_METADATA"
   | "EXCLUDE_ALL_METADATA"
   | "CUSTOM_METADATA";
-export const EffectiveVpcFlowLogsConfigMetadataEnum = S.String;
+const EffectiveVpcFlowLogsConfigMetadataEnum = S.String;
 
 export type EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
   | "CROSS_PROJECT_METADATA_UNSPECIFIED"
   | "CROSS_PROJECT_METADATA_ENABLED"
   | "CROSS_PROJECT_METADATA_DISABLED";
-export const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum = S.String;
+const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum = S.String;
 
 export type EffectiveVpcFlowLogsConfigScopeEnum =
   | "SCOPE_UNSPECIFIED"
@@ -2472,16 +2465,16 @@ export type EffectiveVpcFlowLogsConfigScopeEnum =
   | "VPN_TUNNEL"
   | "INTERCONNECT_ATTACHMENT"
   | "ORGANIZATION";
-export const EffectiveVpcFlowLogsConfigScopeEnum = S.String;
+const EffectiveVpcFlowLogsConfigScopeEnum = S.String;
 
 export type EffectiveVpcFlowLogsConfigStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
-export const EffectiveVpcFlowLogsConfigStateEnum = S.String;
+const EffectiveVpcFlowLogsConfigStateEnum = S.String;
 
 export type EffectiveVpcFlowLogsConfigConnectionLoggingEnum =
   | "CONNECTION_LOGGING_UNSPECIFIED"
   | "CONNECTION_LOGGING_ENABLED"
   | "CONNECTION_LOGGING_DISABLED";
-export const EffectiveVpcFlowLogsConfigConnectionLoggingEnum = S.String;
+const EffectiveVpcFlowLogsConfigConnectionLoggingEnum = S.String;
 
 export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
   | "AGGREGATION_INTERVAL_UNSPECIFIED"
@@ -2491,7 +2484,7 @@ export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
   | "INTERVAL_5_MIN"
   | "INTERVAL_10_MIN"
   | "INTERVAL_15_MIN";
-export const EffectiveVpcFlowLogsConfigAggregationIntervalEnum = S.String;
+const EffectiveVpcFlowLogsConfigAggregationIntervalEnum = S.String;
 
 /** A configuration to generate a response for GetEffectiveVpcFlowLogsConfig request. */
 export interface EffectiveVpcFlowLogsConfig {
@@ -2524,7 +2517,7 @@ export interface EffectiveVpcFlowLogsConfig {
   /** The aggregation interval for the logs. Default value is INTERVAL_5_SEC. */
   aggregationInterval?: EffectiveVpcFlowLogsConfigAggregationIntervalEnum;
 }
-export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
+const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metadataFields: S.optional(StringList),
@@ -2546,7 +2539,7 @@ export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
 
 export type EffectiveVpcFlowLogsConfigList = Array<EffectiveVpcFlowLogsConfig>;
-export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
+const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
   EffectiveVpcFlowLogsConfig,
 ) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;
 
@@ -2559,7 +2552,7 @@ export interface ShowEffectiveFlowLogsConfigsResponse {
   /** List of Effective Vpc Flow Logs configurations. */
   effectiveFlowLogsConfigs?: EffectiveVpcFlowLogsConfigList;
 }
-export const ShowEffectiveFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowEffectiveFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -2575,18 +2568,17 @@ export interface GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+resource}:getIamPolicy",
+      baseUrl: "https://networkmanagement.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
@@ -2602,7 +2594,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -2620,7 +2612,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -2629,14 +2621,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -2645,7 +2637,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -2653,7 +2645,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -2664,7 +2656,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -2672,9 +2664,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2687,7 +2677,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -2700,7 +2690,7 @@ export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2727,7 +2717,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     displayName: S.optional(S.String),
@@ -2741,7 +2731,7 @@ export interface GetOrganizationsLocationsGlobalOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2759,7 +2749,7 @@ export interface GetOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level resources: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const GetOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2777,7 +2767,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2795,7 +2785,7 @@ export interface GetProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. `ConnectivityTest` resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
   name: string;
 }
-export const GetProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2813,7 +2803,7 @@ export interface GetProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2831,7 +2821,7 @@ export interface GetProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level resources: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` */
   name: string;
 }
-export const GetProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2857,7 +2847,7 @@ export interface ListOrganizationsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -2876,7 +2866,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2885,7 +2875,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -2904,7 +2894,7 @@ export interface ListOrganizationsLocationsGlobalOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2923,7 +2913,7 @@ export const ListOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2934,7 +2924,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -2954,7 +2944,7 @@ export interface ListOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Number of `VpcFlowLogsConfigs` to return. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2973,7 +2963,7 @@ export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/
 }) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
 export type VpcFlowLogsConfigList = Array<VpcFlowLogsConfig>;
-export const VpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
+const VpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
   VpcFlowLogsConfig,
 ) as any as S.Schema<VpcFlowLogsConfigList>;
 
@@ -2986,7 +2976,7 @@ export interface ListVpcFlowLogsConfigsResponse {
   /** Locations that could not be reached (when querying all locations with `-`). */
   unreachable?: StringList;
 }
-export const ListVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     vpcFlowLogsConfigs: S.optional(VpcFlowLogsConfigList),
@@ -3008,7 +2998,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3038,7 +3028,7 @@ export interface ListProjectsLocationsGlobalConnectivityTestsRequest {
   /** Number of `ConnectivityTests` to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3057,7 +3047,7 @@ export const ListProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>;
 
 export type ConnectivityTestList = Array<ConnectivityTest>;
-export const ConnectivityTestList = /*@__PURE__*/ S.Array(
+const ConnectivityTestList = /*@__PURE__*/ S.Array(
   ConnectivityTest,
 ) as any as S.Schema<ConnectivityTestList>;
 
@@ -3070,7 +3060,7 @@ export interface ListConnectivityTestsResponse {
   /** List of Connectivity Tests. */
   resources?: ConnectivityTestList;
 }
-export const ListConnectivityTestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectivityTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -3092,7 +3082,7 @@ export interface ListProjectsLocationsGlobalOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3122,7 +3112,7 @@ export interface ListProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
   pageToken?: string;
 }
-export const ListProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -3148,7 +3138,7 @@ export interface PatchOrganizationsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const PatchOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3172,7 +3162,7 @@ export interface PatchProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: ConnectivityTest;
 }
-export const PatchProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3196,7 +3186,7 @@ export interface PatchProjectsLocationsVpcFlowLogsConfigsRequest {
   /** Request body */
   body?: VpcFlowLogsConfig;
 }
-export const PatchProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsVpcFlowLogsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3222,7 +3212,7 @@ export interface QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRe
   /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
   pageToken?: string;
 }
-export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
+const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
@@ -3249,7 +3239,7 @@ export interface QueryOrgVpcFlowLogsConfigsResponse {
   /** Locations that could not be reached (when querying all locations with `-`). */
   unreachable?: StringList;
 }
-export const QueryOrgVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryOrgVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcFlowLogsConfigs: S.optional(VpcFlowLogsConfigList),
     nextPageToken: S.optional(S.String),
@@ -3261,15 +3251,13 @@ export const QueryOrgVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for the `RerunConnectivityTest` method. */
 export type RerunConnectivityTestRequest = CancelOperationRequest;
-export const RerunConnectivityTestRequest = CancelOperationRequest;
-
 export interface RerunProjectsLocationsGlobalConnectivityTestsRequest {
   /** Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RerunProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const RerunProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -3291,7 +3279,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -3304,18 +3292,17 @@ export interface SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:setIamPolicy",
+      baseUrl: "https://networkmanagement.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
@@ -3325,7 +3312,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -3339,8 +3326,8 @@ export interface TestIamPermissionsProjectsLocationsGlobalConnectivityTestsReque
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -3351,16 +3338,16 @@ export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest =
         baseUrl: "https://networkmanagement.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type CancelOrganizationsLocationsGlobalOperationsError =

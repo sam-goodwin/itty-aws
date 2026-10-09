@@ -18,7 +18,7 @@ export interface CheckWorkspaceCollectionNameAvailabilityRequest {
   /** Resource type */
   type?: string;
 }
-export const CheckWorkspaceCollectionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckWorkspaceCollectionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -38,7 +38,7 @@ export const CheckWorkspaceCollectionNameAvailabilityRequest = /*@__PURE__*/ S.s
 
 /** Reason why the workspace collection name cannot be used. */
 export type CheckNameResponseReason = "Unavailable" | "Invalid";
-export const CheckNameResponseReason = S.String;
+const CheckNameResponseReason = S.String;
 
 export interface CheckNameResponse {
   /** Specifies a Boolean value that indicates whether the specified Power BI Workspace Collection name is available to use. */
@@ -48,7 +48,7 @@ export interface CheckNameResponse {
   /** Message indicating an unavailable name due to a conflict, or a description of the naming rules that are violated. */
   message?: string;
 }
-export const CheckNameResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(CheckNameResponseReason),
@@ -57,18 +57,18 @@ export const CheckNameResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckNameResponse" }) as any as S.Schema<CheckNameResponse>;
 
 export type CreateWorkspaceCollectionRequestTagsMap = { [key: string]: string | undefined };
-export const CreateWorkspaceCollectionRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateWorkspaceCollectionRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateWorkspaceCollectionRequestTagsMap>;
 
 /** SKU name */
 export type AzureSkuName = "S1";
-export const AzureSkuName = S.String;
+const AzureSkuName = S.String;
 
 /** SKU tier */
 export type AzureSkuTier = "Standard";
-export const AzureSkuTier = S.String;
+const AzureSkuTier = S.String;
 
 export interface AzureSku {
   /** SKU name */
@@ -76,7 +76,7 @@ export interface AzureSku {
   /** SKU tier */
   tier: AzureSkuTier | (string & {});
 }
-export const AzureSku = /*@__PURE__*/ S.suspend(() =>
+const AzureSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: AzureSkuName,
     tier: AzureSkuTier,
@@ -95,7 +95,7 @@ export interface CreateWorkspaceCollectionRequest {
   tags?: CreateWorkspaceCollectionRequestTagsMap;
   sku?: AzureSku;
 }
-export const CreateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -116,7 +116,7 @@ export const CreateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkspaceCollectionRequest>;
 
 export type WorkspaceCollectionTagsMap = { [key: string]: string | undefined };
-export const WorkspaceCollectionTagsMap =
+const WorkspaceCollectionTagsMap =
   CreateWorkspaceCollectionRequestTagsMap as any as S.Schema<WorkspaceCollectionTagsMap>;
 
 export interface WorkspaceCollection {
@@ -133,7 +133,7 @@ export interface WorkspaceCollection {
   /** Properties */
   properties?: unknown;
 }
-export const WorkspaceCollection = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -153,7 +153,7 @@ export interface DeleteWorkspaceCollectionRequest {
   /** Power BI Embedded Workspace Collection name */
   workspaceCollectionName: string;
 }
-export const DeleteWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -171,14 +171,12 @@ export const DeleteWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceCollectionRequest>;
 
 export interface DeleteWorkspaceCollectionResponse {}
-export const DeleteWorkspaceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteWorkspaceCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWorkspaceCollectionResponse",
 }) as any as S.Schema<DeleteWorkspaceCollectionResponse>;
 
 export interface GetAvailableOperationsRequest {}
-export const GetAvailableOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvailableOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -203,7 +201,7 @@ export interface Display {
   /** The intended executor of the operation; governs the display of the operation in the RBAC UX and the audit logs UX. Default value is 'user,system' */
   origin?: string;
 }
-export const Display = /*@__PURE__*/ S.suspend(() =>
+const Display = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -218,7 +216,7 @@ export interface Operation {
   name?: string;
   display?: Display;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(Display),
@@ -226,14 +224,14 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type OperationListValueList = Array<Operation>;
-export const OperationListValueList = /*@__PURE__*/ S.Array(
+const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
 
 export interface OperationList {
   value?: OperationListValueList;
 }
-export const OperationList = /*@__PURE__*/ S.suspend(() =>
+const OperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListValueList),
   }),
@@ -247,7 +245,7 @@ export interface GetWorkspaceCollectionAccessKeysRequest {
   /** Power BI Embedded Workspace Collection name */
   workspaceCollectionName: string;
 }
-export const GetWorkspaceCollectionAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceCollectionAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -270,7 +268,7 @@ export interface WorkspaceCollectionAccessKeys {
   /** Access key 2 */
   key2?: string;
 }
-export const WorkspaceCollectionAccessKeys = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceCollectionAccessKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key1: S.optional(S.String),
     key2: S.optional(S.String),
@@ -287,7 +285,7 @@ export interface GetWorkspaceCollectionByNameRequest {
   /** Power BI Embedded Workspace Collection name */
   workspaceCollectionName: string;
 }
-export const GetWorkspaceCollectionByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceCollectionByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -310,7 +308,7 @@ export interface ListWorkspaceCollectionByResourceGroupRequest {
   /** Azure resource group */
   resourceGroupName: string;
 }
-export const ListWorkspaceCollectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceCollectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -327,14 +325,14 @@ export const ListWorkspaceCollectionByResourceGroupRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListWorkspaceCollectionByResourceGroupRequest>;
 
 export type WorkspaceCollectionListValueList = Array<WorkspaceCollection>;
-export const WorkspaceCollectionListValueList = /*@__PURE__*/ S.Array(
+const WorkspaceCollectionListValueList = /*@__PURE__*/ S.Array(
   WorkspaceCollection,
 ) as any as S.Schema<WorkspaceCollectionListValueList>;
 
 export interface WorkspaceCollectionList {
   value?: WorkspaceCollectionListValueList;
 }
-export const WorkspaceCollectionList = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceCollectionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkspaceCollectionListValueList),
   }),
@@ -344,7 +342,7 @@ export interface ListWorkspaceCollectionBySubscriptionRequest {
   /** Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListWorkspaceCollectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceCollectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -367,7 +365,7 @@ export interface ListWorkspacesRequest {
   /** Power BI Embedded Workspace Collection name */
   workspaceCollectionName: string;
 }
-export const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -392,7 +390,7 @@ export interface Workspace {
   /** Property bag */
   properties?: unknown;
 }
-export const Workspace = /*@__PURE__*/ S.suspend(() =>
+const Workspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -402,21 +400,21 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 export type WorkspaceListValueList = Array<Workspace>;
-export const WorkspaceListValueList = /*@__PURE__*/ S.Array(
+const WorkspaceListValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListValueList>;
 
 export interface WorkspaceList {
   value?: WorkspaceListValueList;
 }
-export const WorkspaceList = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkspaceListValueList),
   }),
 ).annotate({ identifier: "WorkspaceList" }) as any as S.Schema<WorkspaceList>;
 
 export type MigrateWorkspaceCollectionRequestResourcesList = Array<string>;
-export const MigrateWorkspaceCollectionRequestResourcesList = /*@__PURE__*/ S.Array(
+const MigrateWorkspaceCollectionRequestResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrateWorkspaceCollectionRequestResourcesList>;
 
@@ -429,7 +427,7 @@ export interface MigrateWorkspaceCollectionRequest {
   targetResourceGroup?: string;
   resources?: MigrateWorkspaceCollectionRequestResourcesList;
 }
-export const MigrateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -448,12 +446,12 @@ export const MigrateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateWorkspaceCollectionRequest>;
 
 export interface MigrateWorkspaceCollectionResponse {}
-export const MigrateWorkspaceCollectionResponse =
+const MigrateWorkspaceCollectionResponse =
   DeleteWorkspaceCollectionResponse as any as S.Schema<MigrateWorkspaceCollectionResponse>;
 
 /** Key name */
 export type RegenerateWorkspaceCollectionKeyRequestKeyName = "key1" | "key2";
-export const RegenerateWorkspaceCollectionKeyRequestKeyName = S.String;
+const RegenerateWorkspaceCollectionKeyRequestKeyName = S.String;
 
 export interface RegenerateWorkspaceCollectionKeyRequest {
   /** Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -465,7 +463,7 @@ export interface RegenerateWorkspaceCollectionKeyRequest {
   /** Key name */
   keyName?: RegenerateWorkspaceCollectionKeyRequestKeyName | (string & {});
 }
-export const RegenerateWorkspaceCollectionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateWorkspaceCollectionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -484,7 +482,7 @@ export const RegenerateWorkspaceCollectionKeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RegenerateWorkspaceCollectionKeyRequest>;
 
 export type UpdateWorkspaceCollectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceCollectionRequestTagsMap =
+const UpdateWorkspaceCollectionRequestTagsMap =
   CreateWorkspaceCollectionRequestTagsMap as any as S.Schema<UpdateWorkspaceCollectionRequestTagsMap>;
 
 export interface UpdateWorkspaceCollectionRequest {
@@ -497,7 +495,7 @@ export interface UpdateWorkspaceCollectionRequest {
   tags?: UpdateWorkspaceCollectionRequestTagsMap;
   sku?: AzureSku;
 }
-export const UpdateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

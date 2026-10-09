@@ -15,7 +15,7 @@ export interface CancelSmsBatchRequest {
   /** Id */
   id: string;
 }
-export const CancelSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -29,7 +29,7 @@ export interface SmsBatchError {
   /** Receiver that triggered the error */
   receiver?: string;
 }
-export const SmsBatchError = /*@__PURE__*/ S.suspend(() =>
+const SmsBatchError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     receiver: S.optional(S.String),
@@ -38,13 +38,13 @@ export const SmsBatchError = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on error(s) on the batch, if any */
 export type SmsBatchErrorsList = Array<SmsBatchError>;
-export const SmsBatchErrorsList = /*@__PURE__*/ S.Array(
+const SmsBatchErrorsList = /*@__PURE__*/ S.Array(
   SmsBatchError,
 ) as any as S.Schema<SmsBatchErrorsList>;
 
 /** SMS receivers list */
 export type SmsBatchReceiversList = Array<string>;
-export const SmsBatchReceiversList = /*@__PURE__*/ S.Array(
+const SmsBatchReceiversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SmsBatchReceiversList>;
 
@@ -58,7 +58,7 @@ export type SmsBatchStatusEnum =
   | "INSERTING"
   | "PENDING"
   | "TO_CANCEL";
-export const SmsBatchStatusEnum = S.String;
+const SmsBatchStatusEnum = S.String;
 
 /** Batch of SMS to send */
 export interface SmsBatch {
@@ -97,7 +97,7 @@ export interface SmsBatch {
   /** Last update datetime */
   updatedAt?: string;
 }
-export const SmsBatch = /*@__PURE__*/ S.suspend(() =>
+const SmsBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountID: S.optional(S.Number),
     createdAt: S.optional(S.String),
@@ -121,11 +121,11 @@ export const SmsBatch = /*@__PURE__*/ S.suspend(() =>
 
 /** SMS classes */
 export type SmsBatchClassEnum = "FLASH" | "PHONE" | "SIM";
-export const SmsBatchClassEnum = S.String;
+const SmsBatchClassEnum = S.String;
 
 /** SMS receivers list. Either "to" or "slotID" must be passed */
 export type CreateSmsBatchRequestToList = Array<string>;
-export const CreateSmsBatchRequestToList =
+const CreateSmsBatchRequestToList =
   SmsBatchReceiversList as any as S.Schema<CreateSmsBatchRequestToList>;
 
 export interface CreateSmsBatchRequest {
@@ -152,7 +152,7 @@ export interface CreateSmsBatchRequest {
   /** SMS receivers list. Either "to" or "slotID" must be passed */
   to?: CreateSmsBatchRequestToList;
 }
-export const CreateSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     class: S.optional(SmsBatchClassEnum),
@@ -170,7 +170,7 @@ export const CreateSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All existing types for a given sender */
 export type SmsTypeSenderEnum = "alpha" | "numeric" | "shortcode" | "virtual";
-export const SmsTypeSenderEnum = S.String;
+const SmsTypeSenderEnum = S.String;
 
 export interface CreateSmsEstimateRequest {
   /** The message to send */
@@ -180,7 +180,7 @@ export interface CreateSmsEstimateRequest {
   /** Sender type that will be used to send the message */
   senderType: SmsTypeSenderEnum | (string & {});
 }
-export const CreateSmsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     noStopClause: S.Boolean,
@@ -190,7 +190,7 @@ export const CreateSmsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The SMS available characters class */
 export type SmsEncodingEnum = "7bits" | "unicode";
-export const SmsEncodingEnum = S.String;
+const SmsEncodingEnum = S.String;
 
 /** A structure describing the encoding, length and number of SMS parts of a text message */
 export interface SmsJobEstimate {
@@ -203,7 +203,7 @@ export interface SmsJobEstimate {
   /** The quantity of SMS parts the message will be split in */
   parts?: number;
 }
-export const SmsJobEstimate = /*@__PURE__*/ S.suspend(() =>
+const SmsJobEstimate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     characters: S.optional(S.Number),
     charactersClass: S.optional(SmsEncodingEnum),
@@ -214,7 +214,7 @@ export const SmsJobEstimate = /*@__PURE__*/ S.suspend(() =>
 
 /** The receivers */
 export type CreateSmsHlrRequestReceiversList = Array<string>;
-export const CreateSmsHlrRequestReceiversList =
+const CreateSmsHlrRequestReceiversList =
   SmsBatchReceiversList as any as S.Schema<CreateSmsHlrRequestReceiversList>;
 
 export interface CreateSmsHlrRequest {
@@ -225,7 +225,7 @@ export interface CreateSmsHlrRequest {
   /** The receivers document url link in csv format */
   receiversDocumentUrl?: string;
 }
-export const CreateSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     receivers: S.optional(CreateSmsHlrRequestReceiversList),
@@ -234,16 +234,16 @@ export const CreateSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSmsHlrRequest" }) as any as S.Schema<CreateSmsHlrRequest>;
 
 export type SmsSmsSendingReportIdsList = Array<number>;
-export const SmsSmsSendingReportIdsList = /*@__PURE__*/ S.Array(
+const SmsSmsSendingReportIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SmsSmsSendingReportIdsList>;
 
 export type SmsSmsSendingReportInvalidReceiversList = Array<string>;
-export const SmsSmsSendingReportInvalidReceiversList =
+const SmsSmsSendingReportInvalidReceiversList =
   SmsBatchReceiversList as any as S.Schema<SmsSmsSendingReportInvalidReceiversList>;
 
 export type SmsSmsSendingReportValidReceiversList = Array<string>;
-export const SmsSmsSendingReportValidReceiversList =
+const SmsSmsSendingReportValidReceiversList =
   SmsBatchReceiversList as any as S.Schema<SmsSmsSendingReportValidReceiversList>;
 
 /** A structure describing all information about quota informations */
@@ -254,7 +254,7 @@ export interface SmsSmsSendingReport {
   totalCreditsRemoved?: number;
   validReceivers?: SmsSmsSendingReportValidReceiversList;
 }
-export const SmsSmsSendingReport = /*@__PURE__*/ S.suspend(() =>
+const SmsSmsSendingReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.optional(SmsSmsSendingReportIdsList),
     invalidReceivers: S.optional(SmsSmsSendingReportInvalidReceiversList),
@@ -266,23 +266,23 @@ export const SmsSmsSendingReport = /*@__PURE__*/ S.suspend(() =>
 
 /** The charset format */
 export type SmsCharsetEnum = "UTF-8";
-export const SmsCharsetEnum = S.String;
+const SmsCharsetEnum = S.String;
 
 /** Deprecated: The sms class of sms sending job */
 export type SmsClassEnum = "flash" | "phoneDisplay" | "sim" | "toolkit";
-export const SmsClassEnum = S.String;
+const SmsClassEnum = S.String;
 
 /** The sms coding */
 export type SmsCodingEnum = "7bit" | "8bit";
-export const SmsCodingEnum = S.String;
+const SmsCodingEnum = S.String;
 
 /** The priority of an sms sending */
 export type SmsPriorityEnum = "high" | "low" | "medium" | "veryLow";
-export const SmsPriorityEnum = S.String;
+const SmsPriorityEnum = S.String;
 
 /** The receivers list */
 export type CreateSmsJobRequestReceiversList = Array<string>;
-export const CreateSmsJobRequestReceiversList =
+const CreateSmsJobRequestReceiversList =
   SmsBatchReceiversList as any as S.Schema<CreateSmsJobRequestReceiversList>;
 
 export interface CreateSmsJobRequest {
@@ -317,7 +317,7 @@ export interface CreateSmsJobRequest {
   /** The maximum time -in minute(s)- before the message is dropped */
   validityPeriod?: number;
 }
-export const CreateSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     charset: S.optional(SmsCharsetEnum),
@@ -343,7 +343,7 @@ export interface CreateSmsPhonebookRequest {
   /** Name of the wanted phonebook */
   name: string;
 }
-export const CreateSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String,
@@ -353,7 +353,7 @@ export const CreateSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSmsPhonebookRequest>;
 
 export type CreateSmsPhonebookResponse = string;
-export const CreateSmsPhonebookResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsPhonebookResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateSmsPhonebookResponse",
@@ -379,7 +379,7 @@ export interface CreateSmsPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string;
 }
-export const CreateSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -402,7 +402,7 @@ export const CreateSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateSmsPhonebookPhonebookContactRequest>;
 
 export type CreateSmsPhonebookPhonebookContactResponse = number;
-export const CreateSmsPhonebookPhonebookContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsPhonebookPhonebookContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateSmsPhonebookPhonebookContactResponse",
@@ -422,7 +422,7 @@ export interface CreateSmsReceiverRequest {
   /** Slot number id used to handle the document */
   slotId: number;
 }
-export const CreateSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     autoUpdate: S.Boolean,
@@ -448,7 +448,7 @@ export interface SmsReceiver {
   /** Slot number id */
   slotId?: number;
 }
-export const SmsReceiver = /*@__PURE__*/ S.suspend(() =>
+const SmsReceiver = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoUpdate: S.optional(S.Boolean),
     canAutoUpdate: S.optional(S.Boolean),
@@ -469,7 +469,7 @@ export interface CreateSmsReceiverCleanRequest {
   /** Only get action's price in credits without executing it */
   priceOnly: boolean;
 }
-export const CreateSmsReceiverCleanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsReceiverCleanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     slotId: S.Number.pipe(T.Label()),
@@ -487,7 +487,7 @@ export interface SmsReceiversAsynchronousCleanReport {
   taskId?: number;
   totalCreditsRemoved?: number;
 }
-export const SmsReceiversAsynchronousCleanReport = /*@__PURE__*/ S.suspend(() =>
+const SmsReceiversAsynchronousCleanReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.Number),
     totalCreditsRemoved: S.optional(S.Number),
@@ -506,7 +506,7 @@ export interface CreateSmsSenderRequest {
   /** The sender (alpha or phone number) */
   sender: string;
 }
-export const CreateSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -516,7 +516,7 @@ export const CreateSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSmsSenderRequest" }) as any as S.Schema<CreateSmsSenderRequest>;
 
 export type CreateSmsSenderResponse = string;
-export const CreateSmsSenderResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsSenderResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateSmsSenderResponse" }) as any as S.Schema<CreateSmsSenderResponse>;
 
@@ -530,7 +530,7 @@ export interface CreateSmsSenderDocumentRequest {
   /** Document name */
   name: string;
 }
-export const CreateSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -560,7 +560,7 @@ export interface SmsSenderDocument {
   /** Document size (in bytes) */
   size?: number;
 }
-export const SmsSenderDocument = /*@__PURE__*/ S.suspend(() =>
+const SmsSenderDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -576,7 +576,7 @@ export interface CreateSmsSmppPasswordRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const CreateSmsSmppPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsSmppPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/sms/{serviceName}/smpp/password", code: 200 })),
@@ -585,13 +585,13 @@ export const CreateSmsSmppPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSmsSmppPasswordRequest>;
 
 export interface CreateSmsSmppPasswordResponse {}
-export const CreateSmsSmppPasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateSmsSmppPasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateSmsSmppPasswordResponse",
 }) as any as S.Schema<CreateSmsSmppPasswordResponse>;
 
 /** All existing types for a given template */
 export type SmsTypeTemplateEnum = "alerting" | "authentification" | "transactional";
-export const SmsTypeTemplateEnum = S.String;
+const SmsTypeTemplateEnum = S.String;
 
 export interface CreateSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
@@ -607,7 +607,7 @@ export interface CreateSmsTemplatesControlRequest {
   /** Message seen by the moderator */
   reason?: string;
 }
-export const CreateSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     activity: SmsTypeTemplateEnum,
@@ -621,9 +621,7 @@ export const CreateSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSmsTemplatesControlRequest>;
 
 export interface CreateSmsTemplatesControlResponse {}
-export const CreateSmsTemplatesControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CreateSmsTemplatesControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateSmsTemplatesControlResponse",
 }) as any as S.Schema<CreateSmsTemplatesControlResponse>;
 
@@ -637,7 +635,7 @@ export interface CreateSmsTemplatesControlRelaunchValidationRequest {
   /** Message pattern to be moderated. Use "#VALUE#" format for dynamic text area */
   message: string;
 }
-export const CreateSmsTemplatesControlRelaunchValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsTemplatesControlRelaunchValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -655,7 +653,7 @@ export const CreateSmsTemplatesControlRelaunchValidationRequest = /*@__PURE__*/ 
 }) as any as S.Schema<CreateSmsTemplatesControlRelaunchValidationRequest>;
 
 export interface CreateSmsTemplatesControlRelaunchValidationResponse {}
-export const CreateSmsTemplatesControlRelaunchValidationResponse =
+const CreateSmsTemplatesControlRelaunchValidationResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<CreateSmsTemplatesControlRelaunchValidationResponse>;
 
 export interface CreateSmsUserRequest {
@@ -666,7 +664,7 @@ export interface CreateSmsUserRequest {
   /** The sms password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String,
@@ -675,12 +673,12 @@ export const CreateSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSmsUserRequest" }) as any as S.Schema<CreateSmsUserRequest>;
 
 export interface CreateSmsUserResponse {}
-export const CreateSmsUserResponse =
+const CreateSmsUserResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<CreateSmsUserResponse>;
 
 /** The receivers list */
 export type CreateSmsUserJobRequestReceiversList = Array<string>;
-export const CreateSmsUserJobRequestReceiversList =
+const CreateSmsUserJobRequestReceiversList =
   SmsBatchReceiversList as any as S.Schema<CreateSmsUserJobRequestReceiversList>;
 
 export interface CreateSmsUserJobRequest {
@@ -717,7 +715,7 @@ export interface CreateSmsUserJobRequest {
   /** The maximum time -in minute(s)- before the message is dropped */
   validityPeriod?: number;
 }
-export const CreateSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -754,7 +752,7 @@ export interface CreateSmsUserReceiverRequest {
   /** Slot number id used to handle the document */
   slotId: number;
 }
-export const CreateSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -780,7 +778,7 @@ export interface CreateSmsUserReceiverCleanRequest {
   /** Only get action's price in credits without executing it */
   priceOnly: boolean;
 }
-export const CreateSmsUserReceiverCleanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsUserReceiverCleanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -804,7 +802,7 @@ export interface CreateSmsVirtualNumberChatAccessRequest {
   /** The virtual number */
   number: string;
 }
-export const CreateSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -827,7 +825,7 @@ export interface SmsChatAccess {
   /** The url of the web access */
   url?: string;
 }
-export const SmsChatAccess = /*@__PURE__*/ S.suspend(() =>
+const SmsChatAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     id: S.optional(S.Number),
@@ -837,7 +835,7 @@ export const SmsChatAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** The receivers list */
 export type CreateSmsVirtualNumberJobRequestReceiversList = Array<string>;
-export const CreateSmsVirtualNumberJobRequestReceiversList =
+const CreateSmsVirtualNumberJobRequestReceiversList =
   SmsBatchReceiversList as any as S.Schema<CreateSmsVirtualNumberJobRequestReceiversList>;
 
 export interface CreateSmsVirtualNumberJobRequest {
@@ -868,7 +866,7 @@ export interface CreateSmsVirtualNumberJobRequest {
   /** The maximum time -in minute(s)- before the message is dropped */
   validityPeriod?: number;
 }
-export const CreateSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -896,7 +894,7 @@ export interface DeleteSmsBatchRequest {
   /** Id */
   id: string;
 }
-export const DeleteSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -904,7 +902,7 @@ export const DeleteSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsBatchRequest" }) as any as S.Schema<DeleteSmsBatchRequest>;
 
 export interface DeleteSmsBatchResponse {}
-export const DeleteSmsBatchResponse =
+const DeleteSmsBatchResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsBatchResponse>;
 
 export interface DeleteSmsBlacklistRequest {
@@ -913,7 +911,7 @@ export interface DeleteSmsBlacklistRequest {
   /** The sms number blacklisted */
   number: string;
 }
-export const DeleteSmsBlacklistRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsBlacklistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -923,7 +921,7 @@ export const DeleteSmsBlacklistRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsBlacklistRequest>;
 
 export interface DeleteSmsBlacklistResponse {}
-export const DeleteSmsBlacklistResponse =
+const DeleteSmsBlacklistResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsBlacklistResponse>;
 
 export interface DeleteSmsIncomingRequest {
@@ -932,7 +930,7 @@ export interface DeleteSmsIncomingRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -940,7 +938,7 @@ export const DeleteSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsIncomingRequest" }) as any as S.Schema<DeleteSmsIncomingRequest>;
 
 export interface DeleteSmsIncomingResponse {}
-export const DeleteSmsIncomingResponse =
+const DeleteSmsIncomingResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsIncomingResponse>;
 
 export interface DeleteSmsJobRequest {
@@ -949,7 +947,7 @@ export interface DeleteSmsJobRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -957,8 +955,7 @@ export const DeleteSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsJobRequest" }) as any as S.Schema<DeleteSmsJobRequest>;
 
 export interface DeleteSmsJobResponse {}
-export const DeleteSmsJobResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsJobResponse>;
+const DeleteSmsJobResponse = CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsJobResponse>;
 
 export interface DeleteSmsOutgoingRequest {
   /** The internal name of your SMS offer */
@@ -966,7 +963,7 @@ export interface DeleteSmsOutgoingRequest {
   /** Id */
   id: number;
 }
-export const DeleteSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -974,7 +971,7 @@ export const DeleteSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsOutgoingRequest" }) as any as S.Schema<DeleteSmsOutgoingRequest>;
 
 export interface DeleteSmsOutgoingResponse {}
-export const DeleteSmsOutgoingResponse =
+const DeleteSmsOutgoingResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsOutgoingResponse>;
 
 export interface DeleteSmsPhonebookRequest {
@@ -983,7 +980,7 @@ export interface DeleteSmsPhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const DeleteSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -993,7 +990,7 @@ export const DeleteSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsPhonebookRequest>;
 
 export interface DeleteSmsPhonebookResponse {}
-export const DeleteSmsPhonebookResponse =
+const DeleteSmsPhonebookResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsPhonebookResponse>;
 
 export interface DeleteSmsPhonebookPhonebookContactRequest {
@@ -1004,7 +1001,7 @@ export interface DeleteSmsPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-export const DeleteSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -1021,7 +1018,7 @@ export const DeleteSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteSmsPhonebookPhonebookContactRequest>;
 
 export interface DeleteSmsPhonebookPhonebookContactResponse {}
-export const DeleteSmsPhonebookPhonebookContactResponse =
+const DeleteSmsPhonebookPhonebookContactResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsPhonebookPhonebookContactResponse>;
 
 export interface DeleteSmsReceiverRequest {
@@ -1030,7 +1027,7 @@ export interface DeleteSmsReceiverRequest {
   /** Slot number id */
   slotId: number;
 }
-export const DeleteSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     slotId: S.Number.pipe(T.Label()),
@@ -1038,7 +1035,7 @@ export const DeleteSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsReceiverRequest" }) as any as S.Schema<DeleteSmsReceiverRequest>;
 
 export interface DeleteSmsReceiverResponse {}
-export const DeleteSmsReceiverResponse =
+const DeleteSmsReceiverResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsReceiverResponse>;
 
 export interface DeleteSmsSenderRequest {
@@ -1047,7 +1044,7 @@ export interface DeleteSmsSenderRequest {
   /** The sms sender */
   sender: string;
 }
-export const DeleteSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -1055,7 +1052,7 @@ export const DeleteSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsSenderRequest" }) as any as S.Schema<DeleteSmsSenderRequest>;
 
 export interface DeleteSmsSenderResponse {}
-export const DeleteSmsSenderResponse =
+const DeleteSmsSenderResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsSenderResponse>;
 
 export interface DeleteSmsTemplatesControlRequest {
@@ -1064,7 +1061,7 @@ export interface DeleteSmsTemplatesControlRequest {
   /** Name of the template */
   name: string;
 }
-export const DeleteSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1076,7 +1073,7 @@ export const DeleteSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsTemplatesControlRequest>;
 
 export interface DeleteSmsTemplatesControlResponse {}
-export const DeleteSmsTemplatesControlResponse =
+const DeleteSmsTemplatesControlResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsTemplatesControlResponse>;
 
 export interface DeleteSmsUserRequest {
@@ -1085,7 +1082,7 @@ export interface DeleteSmsUserRequest {
   /** The sms user login */
   login: string;
 }
-export const DeleteSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1093,7 +1090,7 @@ export const DeleteSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsUserRequest" }) as any as S.Schema<DeleteSmsUserRequest>;
 
 export interface DeleteSmsUserResponse {}
-export const DeleteSmsUserResponse =
+const DeleteSmsUserResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserResponse>;
 
 export interface DeleteSmsUserIncomingRequest {
@@ -1104,7 +1101,7 @@ export interface DeleteSmsUserIncomingRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1117,7 +1114,7 @@ export const DeleteSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsUserIncomingRequest>;
 
 export interface DeleteSmsUserIncomingResponse {}
-export const DeleteSmsUserIncomingResponse =
+const DeleteSmsUserIncomingResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserIncomingResponse>;
 
 export interface DeleteSmsUserJobRequest {
@@ -1128,7 +1125,7 @@ export interface DeleteSmsUserJobRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1139,7 +1136,7 @@ export const DeleteSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsUserJobRequest" }) as any as S.Schema<DeleteSmsUserJobRequest>;
 
 export interface DeleteSmsUserJobResponse {}
-export const DeleteSmsUserJobResponse =
+const DeleteSmsUserJobResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserJobResponse>;
 
 export interface DeleteSmsUserOutgoingRequest {
@@ -1150,7 +1147,7 @@ export interface DeleteSmsUserOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1163,7 +1160,7 @@ export const DeleteSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsUserOutgoingRequest>;
 
 export interface DeleteSmsUserOutgoingResponse {}
-export const DeleteSmsUserOutgoingResponse =
+const DeleteSmsUserOutgoingResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserOutgoingResponse>;
 
 export interface DeleteSmsUserReceiverRequest {
@@ -1174,7 +1171,7 @@ export interface DeleteSmsUserReceiverRequest {
   /** Slot number id */
   slotId: number;
 }
-export const DeleteSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1191,7 +1188,7 @@ export const DeleteSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsUserReceiverRequest>;
 
 export interface DeleteSmsUserReceiverResponse {}
-export const DeleteSmsUserReceiverResponse =
+const DeleteSmsUserReceiverResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserReceiverResponse>;
 
 export interface DeleteSmsVirtualNumberChatAccessRequest {
@@ -1200,7 +1197,7 @@ export interface DeleteSmsVirtualNumberChatAccessRequest {
   /** The virtual number */
   number: string;
 }
-export const DeleteSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -1216,7 +1213,7 @@ export const DeleteSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSmsVirtualNumberChatAccessRequest>;
 
 export interface DeleteSmsVirtualNumberChatAccessResponse {}
-export const DeleteSmsVirtualNumberChatAccessResponse =
+const DeleteSmsVirtualNumberChatAccessResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberChatAccessResponse>;
 
 export interface DeleteSmsVirtualNumberIncomingRequest {
@@ -1227,7 +1224,7 @@ export interface DeleteSmsVirtualNumberIncomingRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -1244,7 +1241,7 @@ export const DeleteSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteSmsVirtualNumberIncomingRequest>;
 
 export interface DeleteSmsVirtualNumberIncomingResponse {}
-export const DeleteSmsVirtualNumberIncomingResponse =
+const DeleteSmsVirtualNumberIncomingResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberIncomingResponse>;
 
 export interface DeleteSmsVirtualNumberJobRequest {
@@ -1255,7 +1252,7 @@ export interface DeleteSmsVirtualNumberJobRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -1272,7 +1269,7 @@ export const DeleteSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmsVirtualNumberJobRequest>;
 
 export interface DeleteSmsVirtualNumberJobResponse {}
-export const DeleteSmsVirtualNumberJobResponse =
+const DeleteSmsVirtualNumberJobResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberJobResponse>;
 
 export interface DeleteSmsVirtualNumberOutgoingRequest {
@@ -1283,7 +1280,7 @@ export interface DeleteSmsVirtualNumberOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -1300,14 +1297,14 @@ export const DeleteSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteSmsVirtualNumberOutgoingRequest>;
 
 export interface DeleteSmsVirtualNumberOutgoingResponse {}
-export const DeleteSmsVirtualNumberOutgoingResponse =
+const DeleteSmsVirtualNumberOutgoingResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberOutgoingResponse>;
 
 export interface GetSmsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const GetSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}", code: 200 })),
@@ -1315,15 +1312,15 @@ export const GetSmsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pack quantity automatic recredit possibilities */
 export type SmsPackQuantityAutomaticRecreditEnum = 100 | 200 | 250 | 500 | 1000 | 5000 | 10000;
-export const SmsPackQuantityAutomaticRecreditEnum = S.Number;
+const SmsPackQuantityAutomaticRecreditEnum = S.Number;
 
 /** In case of smpp the channel can not be "both" */
 export type SmsChannelEnum = "both" | "marketing" | "transactional";
-export const SmsChannelEnum = S.String;
+const SmsChannelEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -1339,7 +1336,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -1350,11 +1347,11 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Response type */
 export type SmsResponseTypeEnum = "cgi" | "none" | "text";
-export const SmsResponseTypeEnum = S.String;
+const SmsResponseTypeEnum = S.String;
 
 /** The tracking media response */
 export type SmsResponseTrackingMediaEnum = "email" | "sms" | "voice";
-export const SmsResponseTrackingMediaEnum = S.String;
+const SmsResponseTrackingMediaEnum = S.String;
 
 /** The tracking media response */
 export interface SmsResponseTrackingOptions {
@@ -1362,7 +1359,7 @@ export interface SmsResponseTrackingOptions {
   sender?: string;
   target?: string;
 }
-export const SmsResponseTrackingOptions = /*@__PURE__*/ S.suspend(() =>
+const SmsResponseTrackingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     media: S.optional(SmsResponseTrackingMediaEnum),
     sender: S.optional(S.String),
@@ -1373,7 +1370,7 @@ export const SmsResponseTrackingOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SmsResponseTrackingOptions>;
 
 export type SmsResponseTrackingOptionsList = Array<SmsResponseTrackingOptions>;
-export const SmsResponseTrackingOptionsList = /*@__PURE__*/ S.Array(
+const SmsResponseTrackingOptionsList = /*@__PURE__*/ S.Array(
   SmsResponseTrackingOptions,
 ) as any as S.Schema<SmsResponseTrackingOptionsList>;
 
@@ -1387,7 +1384,7 @@ export interface SmsResponse {
   trackingDefaultSmsSender?: string | null;
   trackingOptions?: SmsResponseTrackingOptionsList | null;
 }
-export const SmsResponse = /*@__PURE__*/ S.suspend(() =>
+const SmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cgiUrl: S.optional(S.NullOr(S.String)),
     responseType: S.optional(SmsResponseTypeEnum),
@@ -1399,7 +1396,7 @@ export const SmsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Account status */
 export type SmsStatusAccountEnum = "disable" | "enable";
-export const SmsStatusAccountEnum = S.String;
+const SmsStatusAccountEnum = S.String;
 
 /** A structure describing all information about templates informations */
 export interface SmsTemplates {
@@ -1411,7 +1408,7 @@ export interface SmsTemplates {
   smsBody?: string | null;
   time2chatAutomaticResponse?: string | null;
 }
-export const SmsTemplates = /*@__PURE__*/ S.suspend(() =>
+const SmsTemplates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customizedEmailMode: S.optional(S.Boolean),
     customizedSmsMode: S.optional(S.Boolean),
@@ -1447,7 +1444,7 @@ export interface SmsAccountWithIAM {
   templates?: SmsTemplates;
   userQuantityWithQuota?: number;
 }
-export const SmsAccountWithIAM = /*@__PURE__*/ S.suspend(() =>
+const SmsAccountWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automaticRecreditAmount: S.optional(S.NullOr(SmsPackQuantityAutomaticRecreditEnum)),
     callBack: S.optional(S.NullOr(S.String)),
@@ -1473,7 +1470,7 @@ export interface GetSmsBatchRequest {
   /** Id */
   id: string;
 }
-export const GetSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1486,7 +1483,7 @@ export interface GetSmsBatchStatisticsRequest {
   /** Id */
   id: string;
 }
-export const GetSmsBatchStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsBatchStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1514,7 +1511,7 @@ export interface SmsBatchStatistics {
   /** Number of SMS that received a STOP by the receiver */
   stoplisted?: number;
 }
-export const SmsBatchStatistics = /*@__PURE__*/ S.suspend(() =>
+const SmsBatchStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credits: S.optional(S.Number),
     delivered: S.optional(S.Number),
@@ -1533,7 +1530,7 @@ export interface GetSmsBlacklistRequest {
   /** The sms number blacklisted */
   number: string;
 }
-export const GetSmsBlacklistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsBlacklistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -1550,7 +1547,7 @@ export interface SmsBlacklist {
   /** ID of the outgoing SMS responsible of the blacklist */
   smsOutgoingID?: number | null;
 }
-export const SmsBlacklist = /*@__PURE__*/ S.suspend(() =>
+const SmsBlacklist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchID: S.optional(S.NullOr(S.String)),
     dateCreation: S.optional(S.String),
@@ -1561,7 +1558,7 @@ export const SmsBlacklist = /*@__PURE__*/ S.suspend(() =>
 
 /** Way type */
 export type SmsDocumentWayTypeEnum = "incoming" | "outgoing";
-export const SmsDocumentWayTypeEnum = S.String;
+const SmsDocumentWayTypeEnum = S.String;
 
 export interface GetSmsDocumentRequest {
   /** The internal name of your SMS offer */
@@ -1577,7 +1574,7 @@ export interface GetSmsDocumentRequest {
   /** specify outgoing or incoming sms */
   wayType: SmsDocumentWayTypeEnum | (string & {});
 }
-export const GetSmsDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     batchID: S.optional(S.String.pipe(T.Query())),
@@ -1589,8 +1586,7 @@ export const GetSmsDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSmsDocumentRequest" }) as any as S.Schema<GetSmsDocumentRequest>;
 
 export type GetSmsDocumentResponse = string;
-export const GetSmsDocumentResponse =
-  CreateSmsSenderResponse as any as S.Schema<GetSmsDocumentResponse>;
+const GetSmsDocumentResponse = CreateSmsSenderResponse as any as S.Schema<GetSmsDocumentResponse>;
 
 export interface GetSmsHlrRequest {
   /** The internal name of your SMS offer */
@@ -1598,7 +1594,7 @@ export interface GetSmsHlrRequest {
   /** HLR id */
   id: number;
 }
-export const GetSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1607,7 +1603,7 @@ export const GetSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The sms coding */
 export type SmsHlrStatuses = "doing" | "done" | "error" | "todo";
-export const SmsHlrStatuses = S.String;
+const SmsHlrStatuses = S.String;
 
 /** Home Location Register informations. Give informations about a given cellular phone. */
 export interface SmsHlrLookupNumber {
@@ -1630,7 +1626,7 @@ export interface SmsHlrLookupNumber {
   /** Is the MSISDN valid */
   valid?: boolean;
 }
-export const SmsHlrLookupNumber = /*@__PURE__*/ S.suspend(() =>
+const SmsHlrLookupNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datetime: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1650,7 +1646,7 @@ export interface GetSmsHlrOperatorRequest {
   /** HLR id */
   id: number;
 }
-export const GetSmsHlrOperatorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsHlrOperatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1670,7 +1666,7 @@ export interface SmsHlr {
   /** The region */
   region?: string;
 }
-export const SmsHlr = /*@__PURE__*/ S.suspend(() =>
+const SmsHlr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     countryCode: S.optional(S.String),
@@ -1686,7 +1682,7 @@ export interface GetSmsIncomingRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1702,7 +1698,7 @@ export interface SmsIncoming {
   sender?: string;
   tag?: string;
 }
-export const SmsIncoming = /*@__PURE__*/ S.suspend(() =>
+const SmsIncoming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDatetime: S.optional(S.String),
     credits: S.optional(S.Number),
@@ -1719,7 +1715,7 @@ export interface GetSmsJobRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1742,7 +1738,7 @@ export interface SmsJob {
   sender?: string;
   sentAt?: string | null;
 }
-export const SmsJob = /*@__PURE__*/ S.suspend(() =>
+const SmsJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDatetime: S.optional(S.String),
     credits: S.optional(S.Number),
@@ -1766,7 +1762,7 @@ export interface GetSmsOutgoingRequest {
   /** Id */
   id: number;
 }
-export const GetSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1810,7 +1806,7 @@ export interface SmsOutgoing {
   /** Tariff code applied on the sms */
   tariffCode?: string;
 }
-export const SmsOutgoing = /*@__PURE__*/ S.suspend(() =>
+const SmsOutgoing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchID: S.optional(S.NullOr(S.String)),
     creationDatetime: S.optional(S.String),
@@ -1838,7 +1834,7 @@ export interface GetSmsOutgoingHlrRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsOutgoingHlrRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsOutgoingHlrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1851,7 +1847,7 @@ export interface GetSmsPhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const GetSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -1867,7 +1863,7 @@ export interface SmsPhonebook {
   /** Phone key identifier between the phone and phonebooks */
   phoneKey?: string;
 }
-export const SmsPhonebook = /*@__PURE__*/ S.suspend(() =>
+const SmsPhonebook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookKey: S.optional(S.String),
     name: S.optional(S.String),
@@ -1877,7 +1873,7 @@ export const SmsPhonebook = /*@__PURE__*/ S.suspend(() =>
 
 /** Export file format */
 export type TelephonyContactsExportFormatsEnum = "csv";
-export const TelephonyContactsExportFormatsEnum = S.String;
+const TelephonyContactsExportFormatsEnum = S.String;
 
 export interface GetSmsPhonebookExportRequest {
   /** The internal name of your SMS offer */
@@ -1887,7 +1883,7 @@ export interface GetSmsPhonebookExportRequest {
   /** Format of the file */
   format: TelephonyContactsExportFormatsEnum | (string & {});
 }
-export const GetSmsPhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsPhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -1901,7 +1897,7 @@ export const GetSmsPhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** File providing task status */
 export type TelephonyPcsFileStatusEnum = "doing" | "done" | "error" | "todo";
-export const TelephonyPcsFileStatusEnum = S.String;
+const TelephonyPcsFileStatusEnum = S.String;
 
 /** Telephony API related file hosted */
 export interface TelephonyPcsFile {
@@ -1910,7 +1906,7 @@ export interface TelephonyPcsFile {
   url?: string;
   urlExpirationDatetime?: string;
 }
-export const TelephonyPcsFile = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPcsFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     status: S.optional(TelephonyPcsFileStatusEnum),
@@ -1927,7 +1923,7 @@ export interface GetSmsPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-export const GetSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -1962,7 +1958,7 @@ export interface SmsPhonebookContact {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-export const SmsPhonebookContact = /*@__PURE__*/ S.suspend(() =>
+const SmsPhonebookContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     homeMobile: S.optional(S.NullOr(S.String)),
@@ -1979,7 +1975,7 @@ export interface GetSmsPttsRequest {
   /** The premium transaction tracking code */
   ptt: number;
 }
-export const GetSmsPttsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsPttsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ptt: S.Number.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/ptts", code: 200 })),
@@ -1987,7 +1983,7 @@ export const GetSmsPttsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All typology of ptt duration */
 export type SmsPttDurationTypeEnum = "indeterminated" | "permanent" | "temporary";
-export const SmsPttDurationTypeEnum = S.String;
+const SmsPttDurationTypeEnum = S.String;
 
 /** A structure describing ptt details */
 export interface SmsPttDetails {
@@ -1998,7 +1994,7 @@ export interface SmsPttDetails {
   /** Ptt volatility type */
   duration?: SmsPttDurationTypeEnum;
 }
-export const SmsPttDetails = /*@__PURE__*/ S.suspend(() =>
+const SmsPttDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     description: S.optional(S.String),
@@ -2008,7 +2004,7 @@ export const SmsPttDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Countries where we sell SMS credits */
 export type SmsBillingCountryEnum = "es" | "fr" | "gb" | "ie" | "it" | "pl";
-export const SmsBillingCountryEnum = S.String;
+const SmsBillingCountryEnum = S.String;
 
 /** All country suffixes accessible for sms services and "all" available */
 export type SmsCountryEnum =
@@ -2220,7 +2216,7 @@ export type SmsCountryEnum =
   | "za"
   | "zm"
   | "zw";
-export const SmsCountryEnum = S.String;
+const SmsCountryEnum = S.String;
 
 export interface GetSmsRateDestinationsRequest {
   /** Country where you buy credits */
@@ -2228,7 +2224,7 @@ export interface GetSmsRateDestinationsRequest {
   /** Country where you send SMS */
   country: SmsCountryEnum | (string & {});
 }
-export const GetSmsRateDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsRateDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingCountry: S.optional(SmsBillingCountryEnum.pipe(T.Query())),
     country: SmsCountryEnum.pipe(T.Query()),
@@ -2253,7 +2249,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Price with it's currency and textual representation */
 export interface OrderPrice {
@@ -2261,7 +2257,7 @@ export interface OrderPrice {
   text?: string;
   value?: number;
 }
-export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     text: S.optional(S.String),
@@ -2280,7 +2276,7 @@ export interface SmsDestinationRates {
   /** Price of one SMS sent towards the given destination */
   price?: OrderPrice;
 }
-export const SmsDestinationRates = /*@__PURE__*/ S.suspend(() =>
+const SmsDestinationRates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     countryCode: S.optional(SmsCountryEnum),
@@ -2295,7 +2291,7 @@ export interface GetSmsReceiverRequest {
   /** Slot number id */
   slotId: number;
 }
-export const GetSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     slotId: S.Number.pipe(T.Label()),
@@ -2308,7 +2304,7 @@ export interface GetSmsReceiverCsvRequest {
   /** Slot number id */
   slotId: number;
 }
-export const GetSmsReceiverCsvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsReceiverCsvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     slotId: S.Number.pipe(T.Label()),
@@ -2316,7 +2312,7 @@ export const GetSmsReceiverCsvRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSmsReceiverCsvRequest" }) as any as S.Schema<GetSmsReceiverCsvRequest>;
 
 export type GetSmsReceiverCsvResponse = string;
-export const GetSmsReceiverCsvResponse =
+const GetSmsReceiverCsvResponse =
   CreateSmsPhonebookResponse as any as S.Schema<GetSmsReceiverCsvResponse>;
 
 export interface GetSmsSenderRequest {
@@ -2325,7 +2321,7 @@ export interface GetSmsSenderRequest {
   /** The sms sender */
   sender: string;
 }
-export const GetSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -2334,11 +2330,11 @@ export const GetSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All tyoplogy of senders */
 export type SmsRefererSenderEnum = "custom" | "domain" | "line" | "nic" | "owner" | "virtual";
-export const SmsRefererSenderEnum = S.String;
+const SmsRefererSenderEnum = S.String;
 
 /** All existing status for a given referer */
 export type SmsStatusSenderEnum = "disable" | "enable" | "refused" | "waitingValidation";
-export const SmsStatusSenderEnum = S.String;
+const SmsStatusSenderEnum = S.String;
 
 /** SMS senders */
 export interface SmsSender {
@@ -2357,7 +2353,7 @@ export interface SmsSender {
   /** Validation media identifier */
   validationMedia?: string | null;
 }
-export const SmsSender = /*@__PURE__*/ S.suspend(() =>
+const SmsSender = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
@@ -2377,7 +2373,7 @@ export interface GetSmsSenderDocumentRequest {
   /** Document ID */
   documentID: string;
 }
-export const GetSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -2397,7 +2393,7 @@ export interface GetSmsServiceInfosRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const GetSmsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/serviceInfos", code: 200 })),
@@ -2407,7 +2403,7 @@ export const GetSmsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   SmsSmsSendingReportIdsList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -2423,7 +2419,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -2443,7 +2439,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -2452,7 +2448,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -2473,7 +2469,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -2495,7 +2491,7 @@ export interface GetSmsSmppSettingsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const GetSmsSmppSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsSmppSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/smpp/settings", code: 200 })),
@@ -2510,7 +2506,7 @@ export interface SmsSettingsEndpoints {
   /** address of the non-TLS endpoint: domain:port */
   unsecured?: string;
 }
-export const SmsSettingsEndpoints = /*@__PURE__*/ S.suspend(() =>
+const SmsSettingsEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secured: S.optional(S.String),
     unsecured: S.optional(S.String),
@@ -2519,7 +2515,7 @@ export const SmsSettingsEndpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** Addresses of the TLS and non-TLS endpoints */
 export type SmsSettingsEndpointsList = Array<SmsSettingsEndpoints>;
-export const SmsSettingsEndpointsList = /*@__PURE__*/ S.Array(
+const SmsSettingsEndpointsList = /*@__PURE__*/ S.Array(
   SmsSettingsEndpoints,
 ) as any as S.Schema<SmsSettingsEndpointsList>;
 
@@ -2531,7 +2527,7 @@ export type SmsSettingsStatusEnum =
   | "UNKNOWN"
   | "UPDATING_IP"
   | "WAITING_IP";
-export const SmsSettingsStatusEnum = S.String;
+const SmsSettingsStatusEnum = S.String;
 
 /** SMPP settings */
 export interface SmsSettings {
@@ -2546,7 +2542,7 @@ export interface SmsSettings {
   /** Number of messages treated simultaneously */
   windowing?: number;
 }
-export const SmsSettings = /*@__PURE__*/ S.suspend(() =>
+const SmsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(SmsSettingsEndpointsList),
     status: S.optional(SmsSettingsStatusEnum),
@@ -2561,7 +2557,7 @@ export interface GetSmsTaskRequest {
   serviceName: string;
   taskId: number;
 }
-export const GetSmsTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -2570,11 +2566,11 @@ export const GetSmsTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The task function */
 export type SmsTodoGeneralPublicFunctionsEnum = "cleanSmsReceivers";
-export const SmsTodoGeneralPublicFunctionsEnum = S.String;
+const SmsTodoGeneralPublicFunctionsEnum = S.String;
 
 /** Task status */
 export type TelephonyTaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo";
-export const TelephonyTaskStatusEnum = S.String;
+const TelephonyTaskStatusEnum = S.String;
 
 /** The task step */
 export type SmsTodoGeneralPublicStepsEnum =
@@ -2584,7 +2580,7 @@ export type SmsTodoGeneralPublicStepsEnum =
   | "sendMailReport"
   | "starting"
   | "waitForHlrs";
-export const SmsTodoGeneralPublicStepsEnum = S.String;
+const SmsTodoGeneralPublicStepsEnum = S.String;
 
 /** Operation on a SMS service */
 export interface SmsTask {
@@ -2593,7 +2589,7 @@ export interface SmsTask {
   step?: SmsTodoGeneralPublicStepsEnum;
   taskId?: number;
 }
-export const SmsTask = /*@__PURE__*/ S.suspend(() =>
+const SmsTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(SmsTodoGeneralPublicFunctionsEnum),
     status: S.optional(TelephonyTaskStatusEnum),
@@ -2608,7 +2604,7 @@ export interface GetSmsTemplatesControlRequest {
   /** Name of the template */
   name: string;
 }
-export const GetSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2634,7 +2630,7 @@ export interface SmsTemplateControl {
   /** Template status */
   status?: SmsStatusSenderEnum;
 }
-export const SmsTemplateControl = /*@__PURE__*/ S.suspend(() =>
+const SmsTemplateControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activity: S.optional(SmsTypeTemplateEnum),
     comment: S.optional(S.String),
@@ -2652,7 +2648,7 @@ export interface GetSmsUserRequest {
   /** The sms user login */
   login: string;
 }
-export const GetSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2661,7 +2657,7 @@ export const GetSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The media support used to be contacted in case of alert */
 export type SmsSupportEnum = "both" | "mail" | "sms";
-export const SmsSupportEnum = S.String;
+const SmsSupportEnum = S.String;
 
 /** A structure describing all information about alert threshold informations */
 export interface SmsAlertThreshold {
@@ -2670,7 +2666,7 @@ export interface SmsAlertThreshold {
   alertThreshold?: number;
   support?: SmsSupportEnum | (string & {});
 }
-export const SmsAlertThreshold = /*@__PURE__*/ S.suspend(() =>
+const SmsAlertThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertEmail: S.optional(S.String),
     alertNumber: S.optional(S.String),
@@ -2680,19 +2676,19 @@ export const SmsAlertThreshold = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmsAlertThreshold" }) as any as S.Schema<SmsAlertThreshold>;
 
 export type SmsUserIpRestrictionsList = Array<string>;
-export const SmsUserIpRestrictionsList =
+const SmsUserIpRestrictionsList =
   SmsBatchReceiversList as any as S.Schema<SmsUserIpRestrictionsList>;
 
 /** Current quota status */
 export type SmsQuotaStatusUserEnum = "active" | "inactive";
-export const SmsQuotaStatusUserEnum = S.String;
+const SmsQuotaStatusUserEnum = S.String;
 
 /** A structure describing all information about quota informations */
 export interface SmsQuota {
   quotaLeft?: number;
   quotaStatus?: SmsQuotaStatusUserEnum | (string & {});
 }
-export const SmsQuota = /*@__PURE__*/ S.suspend(() =>
+const SmsQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaLeft: S.optional(S.Number),
     quotaStatus: S.optional(SmsQuotaStatusUserEnum),
@@ -2712,7 +2708,7 @@ export interface SmsUser {
   /** URL called when a STOP is received after a receiver replied stop to a SMS */
   stopCallBack?: string | null;
 }
-export const SmsUser = /*@__PURE__*/ S.suspend(() =>
+const SmsUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertThresholdInformations: S.optional(SmsAlertThreshold),
     callBack: S.optional(S.NullOr(S.String)),
@@ -2738,7 +2734,7 @@ export interface GetSmsUserDocumentRequest {
   /** specify outgoing or incoming sms */
   wayType: SmsDocumentWayTypeEnum | (string & {});
 }
-export const GetSmsUserDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2752,7 +2748,7 @@ export const GetSmsUserDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSmsUserDocumentRequest>;
 
 export type GetSmsUserDocumentResponse = string;
-export const GetSmsUserDocumentResponse =
+const GetSmsUserDocumentResponse =
   CreateSmsPhonebookResponse as any as S.Schema<GetSmsUserDocumentResponse>;
 
 export interface GetSmsUserIncomingRequest {
@@ -2763,7 +2759,7 @@ export interface GetSmsUserIncomingRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2783,7 +2779,7 @@ export interface GetSmsUserJobRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2799,7 +2795,7 @@ export interface GetSmsUserOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2819,7 +2815,7 @@ export interface GetSmsUserOutgoingHlrRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsUserOutgoingHlrRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserOutgoingHlrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2839,7 +2835,7 @@ export interface GetSmsUserReceiverRequest {
   /** Slot number id */
   slotId: number;
 }
-export const GetSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2863,7 +2859,7 @@ export interface GetSmsUserReceiverCsvRequest {
   /** Slot number id */
   slotId: number;
 }
-export const GetSmsUserReceiverCsvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsUserReceiverCsvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2880,14 +2876,14 @@ export const GetSmsUserReceiverCsvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSmsUserReceiverCsvRequest>;
 
 export type GetSmsUserReceiverCsvResponse = string;
-export const GetSmsUserReceiverCsvResponse =
+const GetSmsUserReceiverCsvResponse =
   CreateSmsPhonebookResponse as any as S.Schema<GetSmsUserReceiverCsvResponse>;
 
 export interface GetSmsVirtualNumberRequest {
   /** Your virtual number */
   number: string;
 }
-export const GetSmsVirtualNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/virtualNumbers/{number}", code: 200 })),
@@ -2897,7 +2893,7 @@ export const GetSmsVirtualNumberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ISO formated country code of the number */
 export type SmsVirtualNumberIsoCountryCodeEnum = "be" | "ch" | "de" | "es" | "fr" | "uk";
-export const SmsVirtualNumberIsoCountryCodeEnum = S.String;
+const SmsVirtualNumberIsoCountryCodeEnum = S.String;
 
 /** Virtual numbers */
 export interface SmsVirtualNumberGenericServiceWithIAM {
@@ -2908,7 +2904,7 @@ export interface SmsVirtualNumberGenericServiceWithIAM {
   /** The virtual number */
   number?: string;
 }
-export const SmsVirtualNumberGenericServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const SmsVirtualNumberGenericServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(SmsVirtualNumberIsoCountryCodeEnum),
     iam: S.optional(S.NullOr(IamResourceMetadata)),
@@ -2924,7 +2920,7 @@ export interface GetSmsVirtualNumberByNumberRequest {
   /** The virtual number */
   number: string;
 }
-export const GetSmsVirtualNumberByNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberByNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -2940,7 +2936,7 @@ export interface SmsVirtualNumber {
   /** The virtual number */
   number?: string;
 }
-export const SmsVirtualNumber = /*@__PURE__*/ S.suspend(() =>
+const SmsVirtualNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(SmsVirtualNumberIsoCountryCodeEnum),
     number: S.optional(S.String),
@@ -2953,7 +2949,7 @@ export interface GetSmsVirtualNumberChatAccessRequest {
   /** The virtual number */
   number: string;
 }
-export const GetSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -2976,7 +2972,7 @@ export interface GetSmsVirtualNumberIncomingRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3000,7 +2996,7 @@ export interface GetSmsVirtualNumberJobRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3029,7 +3025,7 @@ export interface SmsVirtualNumberJob {
   ptt?: number;
   receiver?: string;
 }
-export const SmsVirtualNumberJob = /*@__PURE__*/ S.suspend(() =>
+const SmsVirtualNumberJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDatetime: S.optional(S.String),
     credits: S.optional(S.Number),
@@ -3052,7 +3048,7 @@ export interface GetSmsVirtualNumberOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3076,7 +3072,7 @@ export interface GetSmsVirtualNumberOutgoingHlrRequest {
   /** Id of the object */
   id: number;
 }
-export const GetSmsVirtualNumberOutgoingHlrRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberOutgoingHlrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3096,7 +3092,7 @@ export interface GetSmsVirtualNumberServiceInfosRequest {
   /** Your virtual number */
   number: string;
 }
-export const GetSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/virtualNumbers/{number}/serviceInfos", code: 200 })),
@@ -3112,7 +3108,7 @@ export interface ImportSmsPhonebookRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-export const ImportSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -3137,7 +3133,7 @@ export interface TelephonyTask {
   status?: TelephonyTaskStatusEnum;
   taskId?: number;
 }
-export const TelephonyTask = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     message: S.optional(S.NullOr(S.String)),
@@ -3150,18 +3146,18 @@ export const TelephonyTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput =
+const IamResourceTagFilterInput =
   CreateSmsSmppPasswordResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListSmsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListSmsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListSmsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListSmsRequestIamTagsValueList>;
 
 export type ListSmsRequestIamTagsMap = {
   [key: string]: ListSmsRequestIamTagsValueList | undefined;
 };
-export const ListSmsRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListSmsRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListSmsRequestIamTagsValueList,
 ) as any as S.Schema<ListSmsRequestIamTagsMap>;
@@ -3170,18 +3166,17 @@ export interface ListSmsRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListSmsRequestIamTagsMap;
 }
-export const ListSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListSmsRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/sms", code: 200 })),
 ).annotate({ identifier: "ListSmsRequest" }) as any as S.Schema<ListSmsRequest>;
 
 export type ListSmsResponseBodyList = Array<string>;
-export const ListSmsResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsResponseBodyList>;
+const ListSmsResponseBodyList = SmsBatchReceiversList as any as S.Schema<ListSmsResponseBodyList>;
 
 export type ListSmsResponse = ListSmsResponseBodyList;
-export const ListSmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSmsResponse" }) as any as S.Schema<ListSmsResponse>;
 
@@ -3189,19 +3184,19 @@ export interface ListSmsBatchesRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/batches", code: 200 })),
 ).annotate({ identifier: "ListSmsBatchesRequest" }) as any as S.Schema<ListSmsBatchesRequest>;
 
 export type ListSmsBatchesResponseBodyList = Array<SmsBatch>;
-export const ListSmsBatchesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSmsBatchesResponseBodyList = /*@__PURE__*/ S.Array(
   SmsBatch,
 ) as any as S.Schema<ListSmsBatchesResponseBodyList>;
 
 export type ListSmsBatchesResponse = ListSmsBatchesResponseBodyList;
-export const ListSmsBatchesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsBatchesResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsBatchesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSmsBatchesResponse" }) as any as S.Schema<ListSmsBatchesResponse>;
 
@@ -3213,7 +3208,7 @@ export interface ListSmsBlacklistsRequest {
   /** Filter the value of smsOutgoingID property (=) */
   smsOutgoingID?: number;
 }
-export const ListSmsBlacklistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsBlacklistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     batchID: S.optional(S.String.pipe(T.Query())),
@@ -3222,11 +3217,11 @@ export const ListSmsBlacklistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSmsBlacklistsRequest" }) as any as S.Schema<ListSmsBlacklistsRequest>;
 
 export type ListSmsBlacklistsResponseBodyList = Array<string>;
-export const ListSmsBlacklistsResponseBodyList =
+const ListSmsBlacklistsResponseBodyList =
   SmsBatchReceiversList as any as S.Schema<ListSmsBlacklistsResponseBodyList>;
 
 export type ListSmsBlacklistsResponse = ListSmsBlacklistsResponseBodyList;
-export const ListSmsBlacklistsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsBlacklistsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsBlacklistsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSmsBlacklistsResponse",
@@ -3238,7 +3233,7 @@ export interface ListSmsExceptionsRequest {
   /** The receiver number to check */
   receiver: string;
 }
-export const ListSmsExceptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsExceptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     receiver: S.String.pipe(T.Query()),
@@ -3247,8 +3242,7 @@ export const ListSmsExceptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The exception message */
 export type SmsExceptionMessagesList = Array<string>;
-export const SmsExceptionMessagesList =
-  SmsBatchReceiversList as any as S.Schema<SmsExceptionMessagesList>;
+const SmsExceptionMessagesList = SmsBatchReceiversList as any as S.Schema<SmsExceptionMessagesList>;
 
 /** Restriction type used by the operator to filter sms. */
 export type SmsRestrictionCodeEnum =
@@ -3259,7 +3253,7 @@ export type SmsRestrictionCodeEnum =
   | "DLR"
   | "FLASHONLY"
   | "MSISDN";
-export const SmsRestrictionCodeEnum = S.String;
+const SmsRestrictionCodeEnum = S.String;
 
 /** Sms reach list */
 export interface SmsException {
@@ -3274,7 +3268,7 @@ export interface SmsException {
   /** The substitution sender used to bypass operator filter */
   substitution?: string | null;
 }
-export const SmsException = /*@__PURE__*/ S.suspend(() =>
+const SmsException = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countrySuffixe: S.optional(S.String),
     messages: S.optional(SmsExceptionMessagesList),
@@ -3285,12 +3279,12 @@ export const SmsException = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmsException" }) as any as S.Schema<SmsException>;
 
 export type ListSmsExceptionsResponseBodyList = Array<SmsException>;
-export const ListSmsExceptionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSmsExceptionsResponseBodyList = /*@__PURE__*/ S.Array(
   SmsException,
 ) as any as S.Schema<ListSmsExceptionsResponseBodyList>;
 
 export type ListSmsExceptionsResponse = ListSmsExceptionsResponseBodyList;
-export const ListSmsExceptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsExceptionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsExceptionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSmsExceptionsResponse",
@@ -3300,18 +3294,18 @@ export interface ListSmsHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsHlrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/hlr", code: 200 })),
 ).annotate({ identifier: "ListSmsHlrRequest" }) as any as S.Schema<ListSmsHlrRequest>;
 
 export type ListSmsHlrResponseBodyList = Array<number>;
-export const ListSmsHlrResponseBodyList =
+const ListSmsHlrResponseBodyList =
   SmsSmsSendingReportIdsList as any as S.Schema<ListSmsHlrResponseBodyList>;
 
 export type ListSmsHlrResponse = ListSmsHlrResponseBodyList;
-export const ListSmsHlrResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsHlrResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsHlrResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSmsHlrResponse" }) as any as S.Schema<ListSmsHlrResponse>;
 
@@ -3327,7 +3321,7 @@ export interface ListSmsIncomingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-export const ListSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     creationDatetime_from: S.optional(S.String.pipe(T.Query("creationDatetime.from"))),
@@ -3338,29 +3332,22 @@ export const ListSmsIncomingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSmsIncomingRequest" }) as any as S.Schema<ListSmsIncomingRequest>;
 
 export type ListSmsIncomingResponseBodyList = Array<number>;
-export const ListSmsIncomingResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsIncomingResponseBodyList>;
-
 export type ListSmsIncomingResponse = ListSmsIncomingResponseBodyList;
-export const ListSmsIncomingResponse =
-  ListSmsHlrResponse as any as S.Schema<ListSmsIncomingResponse>;
+const ListSmsIncomingResponse = ListSmsHlrResponse as any as S.Schema<ListSmsIncomingResponse>;
 
 export interface ListSmsJobsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/jobs", code: 200 })),
 ).annotate({ identifier: "ListSmsJobsRequest" }) as any as S.Schema<ListSmsJobsRequest>;
 
 export type ListSmsJobsResponseBodyList = Array<number>;
-export const ListSmsJobsResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsJobsResponseBodyList>;
-
 export type ListSmsJobsResponse = ListSmsJobsResponseBodyList;
-export const ListSmsJobsResponse = ListSmsHlrResponse as any as S.Schema<ListSmsJobsResponse>;
+const ListSmsJobsResponse = ListSmsHlrResponse as any as S.Schema<ListSmsJobsResponse>;
 
 export interface ListSmsOutgoingRequest {
   /** The internal name of your SMS offer */
@@ -3386,7 +3373,7 @@ export interface ListSmsOutgoingRequest {
   /** Filter on tag property (=) */
   tag?: string;
 }
-export const ListSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     batchID: S.optional(S.String.pipe(T.Query())),
@@ -3403,12 +3390,8 @@ export const ListSmsOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSmsOutgoingRequest" }) as any as S.Schema<ListSmsOutgoingRequest>;
 
 export type ListSmsOutgoingResponseBodyList = Array<number>;
-export const ListSmsOutgoingResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsOutgoingResponseBodyList>;
-
 export type ListSmsOutgoingResponse = ListSmsOutgoingResponseBodyList;
-export const ListSmsOutgoingResponse =
-  ListSmsHlrResponse as any as S.Schema<ListSmsOutgoingResponse>;
+const ListSmsOutgoingResponse = ListSmsHlrResponse as any as S.Schema<ListSmsOutgoingResponse>;
 
 export interface ListSmsPhonebookPhonebookContactRequest {
   /** The internal name of your SMS offer */
@@ -3416,7 +3399,7 @@ export interface ListSmsPhonebookPhonebookContactRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const ListSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -3432,12 +3415,12 @@ export const ListSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListSmsPhonebookPhonebookContactRequest>;
 
 export type ListSmsPhonebookPhonebookContactResponseBodyList = Array<number>;
-export const ListSmsPhonebookPhonebookContactResponseBodyList =
+const ListSmsPhonebookPhonebookContactResponseBodyList =
   SmsSmsSendingReportIdsList as any as S.Schema<ListSmsPhonebookPhonebookContactResponseBodyList>;
 
 export type ListSmsPhonebookPhonebookContactResponse =
   ListSmsPhonebookPhonebookContactResponseBodyList;
-export const ListSmsPhonebookPhonebookContactResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsPhonebookPhonebookContactResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsPhonebookPhonebookContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSmsPhonebookPhonebookContactResponse",
@@ -3447,18 +3430,15 @@ export interface ListSmsPhonebooksRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsPhonebooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsPhonebooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/phonebooks", code: 200 })),
 ).annotate({ identifier: "ListSmsPhonebooksRequest" }) as any as S.Schema<ListSmsPhonebooksRequest>;
 
 export type ListSmsPhonebooksResponseBodyList = Array<string>;
-export const ListSmsPhonebooksResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsPhonebooksResponseBodyList>;
-
 export type ListSmsPhonebooksResponse = ListSmsPhonebooksResponseBodyList;
-export const ListSmsPhonebooksResponse =
+const ListSmsPhonebooksResponse =
   ListSmsBlacklistsResponse as any as S.Schema<ListSmsPhonebooksResponse>;
 
 export interface ListSmsRatePacksRequest {
@@ -3467,7 +3447,7 @@ export interface ListSmsRatePacksRequest {
   /** Country where you send SMS */
   country: SmsCountryEnum | (string & {});
 }
-export const ListSmsRatePacksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsRatePacksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingCountry: S.optional(SmsBillingCountryEnum.pipe(T.Query())),
     country: SmsCountryEnum.pipe(T.Query()),
@@ -3499,7 +3479,7 @@ export interface SmsPackDetails {
   /** Minimum quantity (included) of SMS you can obtain with this pack */
   smsQuantityMin?: number;
 }
-export const SmsPackDetails = /*@__PURE__*/ S.suspend(() =>
+const SmsPackDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(SmsCountryEnum),
     credit: S.optional(S.Number),
@@ -3516,12 +3496,12 @@ export const SmsPackDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmsPackDetails" }) as any as S.Schema<SmsPackDetails>;
 
 export type ListSmsRatePacksResponseBodyList = Array<SmsPackDetails>;
-export const ListSmsRatePacksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSmsRatePacksResponseBodyList = /*@__PURE__*/ S.Array(
   SmsPackDetails,
 ) as any as S.Schema<ListSmsRatePacksResponseBodyList>;
 
 export type ListSmsRatePacksResponse = ListSmsRatePacksResponseBodyList;
-export const ListSmsRatePacksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsRatePacksResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsRatePacksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSmsRatePacksResponse" }) as any as S.Schema<ListSmsRatePacksResponse>;
 
@@ -3529,19 +3509,15 @@ export interface ListSmsReceiversRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsReceiversRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsReceiversRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/receivers", code: 200 })),
 ).annotate({ identifier: "ListSmsReceiversRequest" }) as any as S.Schema<ListSmsReceiversRequest>;
 
 export type ListSmsReceiversResponseBodyList = Array<number>;
-export const ListSmsReceiversResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsReceiversResponseBodyList>;
-
 export type ListSmsReceiversResponse = ListSmsReceiversResponseBodyList;
-export const ListSmsReceiversResponse =
-  ListSmsHlrResponse as any as S.Schema<ListSmsReceiversResponse>;
+const ListSmsReceiversResponse = ListSmsHlrResponse as any as S.Schema<ListSmsReceiversResponse>;
 
 /** All country prices accessible from a reference */
 export type ReferenceCountryEnum =
@@ -3568,7 +3544,7 @@ export type ReferenceCountryEnum =
   | "sn"
   | "tn"
   | "we";
-export const ReferenceCountryEnum = S.String;
+const ReferenceCountryEnum = S.String;
 
 /** Pack quantity levels */
 export type SmsPackQuantityEnum =
@@ -3584,7 +3560,7 @@ export type SmsPackQuantityEnum =
   | 50000
   | 100000
   | 1000000;
-export const SmsPackQuantityEnum = S.Number;
+const SmsPackQuantityEnum = S.Number;
 
 export interface ListSmsSeeOffersRequest {
   /** The internal name of your SMS offer */
@@ -3596,7 +3572,7 @@ export interface ListSmsSeeOffersRequest {
   /** Sms pack offer quantity */
   quantity: SmsPackQuantityEnum | (number & {});
 }
-export const ListSmsSeeOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSeeOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     countryCurrencyPrice: ReferenceCountryEnum.pipe(T.Query()),
@@ -3616,7 +3592,7 @@ export interface SmsPackOffer {
   smsQuantity?: number;
   totalPrice?: number | null;
 }
-export const SmsPackOffer = /*@__PURE__*/ S.suspend(() =>
+const SmsPackOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryDestination: S.optional(S.String),
     giftPrice: S.optional(S.NullOr(S.Number)),
@@ -3630,12 +3606,12 @@ export const SmsPackOffer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmsPackOffer" }) as any as S.Schema<SmsPackOffer>;
 
 export type ListSmsSeeOffersResponseBodyList = Array<SmsPackOffer>;
-export const ListSmsSeeOffersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSmsSeeOffersResponseBodyList = /*@__PURE__*/ S.Array(
   SmsPackOffer,
 ) as any as S.Schema<ListSmsSeeOffersResponseBodyList>;
 
 export type ListSmsSeeOffersResponse = ListSmsSeeOffersResponseBodyList;
-export const ListSmsSeeOffersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSeeOffersResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsSeeOffersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSmsSeeOffersResponse" }) as any as S.Schema<ListSmsSeeOffersResponse>;
 
@@ -3645,7 +3621,7 @@ export interface ListSmsSenderDocumentsRequest {
   /** The sms sender */
   sender: string;
 }
-export const ListSmsSenderDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSenderDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -3657,33 +3633,27 @@ export const ListSmsSenderDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsSenderDocumentsRequest>;
 
 export type ListSmsSenderDocumentsResponseBodyList = Array<string>;
-export const ListSmsSenderDocumentsResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsSenderDocumentsResponseBodyList>;
-
 export type ListSmsSenderDocumentsResponse = ListSmsSenderDocumentsResponseBodyList;
-export const ListSmsSenderDocumentsResponse =
+const ListSmsSenderDocumentsResponse =
   ListSmsBlacklistsResponse as any as S.Schema<ListSmsSenderDocumentsResponse>;
 
 export interface ListSmsSendersRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsSendersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/senders", code: 200 })),
 ).annotate({ identifier: "ListSmsSendersRequest" }) as any as S.Schema<ListSmsSendersRequest>;
 
 export type ListSmsSendersResponseBodyList = Array<string>;
-export const ListSmsSendersResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsSendersResponseBodyList>;
-
 export type ListSmsSendersResponse = ListSmsSendersResponseBodyList;
-export const ListSmsSendersResponse = ListSmsResponse as any as S.Schema<ListSmsSendersResponse>;
+const ListSmsSendersResponse = ListSmsResponse as any as S.Schema<ListSmsSendersResponse>;
 
 /** The referer of the available sender */
 export type SmsSenderRefererEnum = "domain" | "nichandle";
-export const SmsSenderRefererEnum = S.String;
+const SmsSenderRefererEnum = S.String;
 
 export interface ListSmsSendersAvailableForValidationRequest {
   /** The internal name of your SMS offer */
@@ -3691,7 +3661,7 @@ export interface ListSmsSendersAvailableForValidationRequest {
   /** Information type */
   referer?: SmsSenderRefererEnum | (string & {});
 }
-export const ListSmsSendersAvailableForValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSendersAvailableForValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     referer: S.optional(SmsSenderRefererEnum.pipe(T.Query())),
@@ -3707,7 +3677,7 @@ export interface SmsSenderAvailable {
   referer?: SmsSenderRefererEnum;
   sender?: string;
 }
-export const SmsSenderAvailable = /*@__PURE__*/ S.suspend(() =>
+const SmsSenderAvailable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(SmsSenderRefererEnum),
     sender: S.optional(S.String),
@@ -3715,13 +3685,13 @@ export const SmsSenderAvailable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmsSenderAvailable" }) as any as S.Schema<SmsSenderAvailable>;
 
 export type ListSmsSendersAvailableForValidationResponseBodyList = Array<SmsSenderAvailable>;
-export const ListSmsSendersAvailableForValidationResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSmsSendersAvailableForValidationResponseBodyList = /*@__PURE__*/ S.Array(
   SmsSenderAvailable,
 ) as any as S.Schema<ListSmsSendersAvailableForValidationResponseBodyList>;
 
 export type ListSmsSendersAvailableForValidationResponse =
   ListSmsSendersAvailableForValidationResponseBodyList;
-export const ListSmsSendersAvailableForValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSendersAvailableForValidationResponse = /*@__PURE__*/ S.suspend(() =>
   ListSmsSendersAvailableForValidationResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSmsSendersAvailableForValidationResponse",
@@ -3731,7 +3701,7 @@ export interface ListSmsSmppAllowedIPsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsSmppAllowedIPsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsSmppAllowedIPsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/smpp/allowedIPs", code: 200 })),
@@ -3740,11 +3710,8 @@ export const ListSmsSmppAllowedIPsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsSmppAllowedIPsRequest>;
 
 export type ListSmsSmppAllowedIPsResponseBodyList = Array<string>;
-export const ListSmsSmppAllowedIPsResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsSmppAllowedIPsResponseBodyList>;
-
 export type ListSmsSmppAllowedIPsResponse = ListSmsSmppAllowedIPsResponseBodyList;
-export const ListSmsSmppAllowedIPsResponse =
+const ListSmsSmppAllowedIPsResponse =
   ListSmsBlacklistsResponse as any as S.Schema<ListSmsSmppAllowedIPsResponse>;
 
 export interface ListSmsTaskRequest {
@@ -3753,7 +3720,7 @@ export interface ListSmsTaskRequest {
   /** Filter the value of status property (=) */
   status?: TelephonyTaskStatusEnum | (string & {});
 }
-export const ListSmsTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: S.optional(TelephonyTaskStatusEnum.pipe(T.Query())),
@@ -3761,17 +3728,14 @@ export const ListSmsTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSmsTaskRequest" }) as any as S.Schema<ListSmsTaskRequest>;
 
 export type ListSmsTaskResponseBodyList = Array<number>;
-export const ListSmsTaskResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsTaskResponseBodyList>;
-
 export type ListSmsTaskResponse = ListSmsTaskResponseBodyList;
-export const ListSmsTaskResponse = ListSmsHlrResponse as any as S.Schema<ListSmsTaskResponse>;
+const ListSmsTaskResponse = ListSmsHlrResponse as any as S.Schema<ListSmsTaskResponse>;
 
 export interface ListSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/templatesControl", code: 200 })),
@@ -3780,11 +3744,8 @@ export const ListSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsTemplatesControlRequest>;
 
 export type ListSmsTemplatesControlResponseBodyList = Array<string>;
-export const ListSmsTemplatesControlResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsTemplatesControlResponseBodyList>;
-
 export type ListSmsTemplatesControlResponse = ListSmsTemplatesControlResponseBodyList;
-export const ListSmsTemplatesControlResponse =
+const ListSmsTemplatesControlResponse =
   ListSmsBlacklistsResponse as any as S.Schema<ListSmsTemplatesControlResponse>;
 
 export interface ListSmsUserIncomingRequest {
@@ -3797,7 +3758,7 @@ export interface ListSmsUserIncomingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-export const ListSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -3809,11 +3770,8 @@ export const ListSmsUserIncomingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsUserIncomingRequest>;
 
 export type ListSmsUserIncomingResponseBodyList = Array<number>;
-export const ListSmsUserIncomingResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsUserIncomingResponseBodyList>;
-
 export type ListSmsUserIncomingResponse = ListSmsUserIncomingResponseBodyList;
-export const ListSmsUserIncomingResponse =
+const ListSmsUserIncomingResponse =
   ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsUserIncomingResponse>;
 
 export interface ListSmsUserJobsRequest {
@@ -3822,7 +3780,7 @@ export interface ListSmsUserJobsRequest {
   /** The sms user login */
   login: string;
 }
-export const ListSmsUserJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsUserJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -3830,12 +3788,8 @@ export const ListSmsUserJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSmsUserJobsRequest" }) as any as S.Schema<ListSmsUserJobsRequest>;
 
 export type ListSmsUserJobsResponseBodyList = Array<number>;
-export const ListSmsUserJobsResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsUserJobsResponseBodyList>;
-
 export type ListSmsUserJobsResponse = ListSmsUserJobsResponseBodyList;
-export const ListSmsUserJobsResponse =
-  ListSmsHlrResponse as any as S.Schema<ListSmsUserJobsResponse>;
+const ListSmsUserJobsResponse = ListSmsHlrResponse as any as S.Schema<ListSmsUserJobsResponse>;
 
 export interface ListSmsUserOutgoingRequest {
   /** The internal name of your SMS offer */
@@ -3855,7 +3809,7 @@ export interface ListSmsUserOutgoingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-export const ListSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -3871,11 +3825,8 @@ export const ListSmsUserOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsUserOutgoingRequest>;
 
 export type ListSmsUserOutgoingResponseBodyList = Array<number>;
-export const ListSmsUserOutgoingResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsUserOutgoingResponseBodyList>;
-
 export type ListSmsUserOutgoingResponse = ListSmsUserOutgoingResponseBodyList;
-export const ListSmsUserOutgoingResponse =
+const ListSmsUserOutgoingResponse =
   ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsUserOutgoingResponse>;
 
 export interface ListSmsUserReceiversRequest {
@@ -3884,7 +3835,7 @@ export interface ListSmsUserReceiversRequest {
   /** The sms user login */
   login: string;
 }
-export const ListSmsUserReceiversRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsUserReceiversRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -3894,29 +3845,23 @@ export const ListSmsUserReceiversRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsUserReceiversRequest>;
 
 export type ListSmsUserReceiversResponseBodyList = Array<number>;
-export const ListSmsUserReceiversResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsUserReceiversResponseBodyList>;
-
 export type ListSmsUserReceiversResponse = ListSmsUserReceiversResponseBodyList;
-export const ListSmsUserReceiversResponse =
+const ListSmsUserReceiversResponse =
   ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsUserReceiversResponse>;
 
 export interface ListSmsUsersRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/users", code: 200 })),
 ).annotate({ identifier: "ListSmsUsersRequest" }) as any as S.Schema<ListSmsUsersRequest>;
 
 export type ListSmsUsersResponseBodyList = Array<string>;
-export const ListSmsUsersResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsUsersResponseBodyList>;
-
 export type ListSmsUsersResponse = ListSmsUsersResponseBodyList;
-export const ListSmsUsersResponse = ListSmsResponse as any as S.Schema<ListSmsUsersResponse>;
+const ListSmsUsersResponse = ListSmsResponse as any as S.Schema<ListSmsUsersResponse>;
 
 export interface ListSmsVirtualNumberIncomingRequest {
   /** The internal name of your SMS offer */
@@ -3932,7 +3877,7 @@ export interface ListSmsVirtualNumberIncomingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-export const ListSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3952,11 +3897,8 @@ export const ListSmsVirtualNumberIncomingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsVirtualNumberIncomingRequest>;
 
 export type ListSmsVirtualNumberIncomingResponseBodyList = Array<number>;
-export const ListSmsVirtualNumberIncomingResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsVirtualNumberIncomingResponseBodyList>;
-
 export type ListSmsVirtualNumberIncomingResponse = ListSmsVirtualNumberIncomingResponseBodyList;
-export const ListSmsVirtualNumberIncomingResponse =
+const ListSmsVirtualNumberIncomingResponse =
   ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsVirtualNumberIncomingResponse>;
 
 export interface ListSmsVirtualNumberJobsRequest {
@@ -3965,7 +3907,7 @@ export interface ListSmsVirtualNumberJobsRequest {
   /** The virtual number */
   number: string;
 }
-export const ListSmsVirtualNumberJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsVirtualNumberJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3977,11 +3919,8 @@ export const ListSmsVirtualNumberJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsVirtualNumberJobsRequest>;
 
 export type ListSmsVirtualNumberJobsResponseBodyList = Array<number>;
-export const ListSmsVirtualNumberJobsResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsVirtualNumberJobsResponseBodyList>;
-
 export type ListSmsVirtualNumberJobsResponse = ListSmsVirtualNumberJobsResponseBodyList;
-export const ListSmsVirtualNumberJobsResponse =
+const ListSmsVirtualNumberJobsResponse =
   ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsVirtualNumberJobsResponse>;
 
 export interface ListSmsVirtualNumberOutgoingRequest {
@@ -4006,7 +3945,7 @@ export interface ListSmsVirtualNumberOutgoingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-export const ListSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -4030,28 +3969,22 @@ export const ListSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsVirtualNumberOutgoingRequest>;
 
 export type ListSmsVirtualNumberOutgoingResponseBodyList = Array<number>;
-export const ListSmsVirtualNumberOutgoingResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsVirtualNumberOutgoingResponseBodyList>;
-
 export type ListSmsVirtualNumberOutgoingResponse = ListSmsVirtualNumberOutgoingResponseBodyList;
-export const ListSmsVirtualNumberOutgoingResponse =
+const ListSmsVirtualNumberOutgoingResponse =
   ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsVirtualNumberOutgoingResponse>;
 
 export type ListSmsVirtualNumbersRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListSmsVirtualNumbersRequestIamTagsValueList =
-  ListSmsRequestIamTagsValueList as any as S.Schema<ListSmsVirtualNumbersRequestIamTagsValueList>;
-
 export type ListSmsVirtualNumbersRequestIamTagsMap = {
   [key: string]: ListSmsVirtualNumbersRequestIamTagsValueList | undefined;
 };
-export const ListSmsVirtualNumbersRequestIamTagsMap =
+const ListSmsVirtualNumbersRequestIamTagsMap =
   ListSmsRequestIamTagsMap as any as S.Schema<ListSmsVirtualNumbersRequestIamTagsMap>;
 
 export interface ListSmsVirtualNumbersRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListSmsVirtualNumbersRequestIamTagsMap;
 }
-export const ListSmsVirtualNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmsVirtualNumbersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListSmsVirtualNumbersRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/sms/virtualNumbers", code: 200 })),
@@ -4060,18 +3993,15 @@ export const ListSmsVirtualNumbersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsVirtualNumbersRequest>;
 
 export type ListSmsVirtualNumbersResponseBodyList = Array<string>;
-export const ListSmsVirtualNumbersResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsVirtualNumbersResponseBodyList>;
-
 export type ListSmsVirtualNumbersResponse = ListSmsVirtualNumbersResponseBodyList;
-export const ListSmsVirtualNumbersResponse =
+const ListSmsVirtualNumbersResponse =
   ListSmsBlacklistsResponse as any as S.Schema<ListSmsVirtualNumbersResponse>;
 
 export interface ListSmsVirtualNumbersRequest2 {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-export const ListSmsVirtualNumbersRequest2 = /*@__PURE__*/ S.suspend(() =>
+const ListSmsVirtualNumbersRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/virtualNumbers", code: 200 })),
@@ -4080,11 +4010,8 @@ export const ListSmsVirtualNumbersRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSmsVirtualNumbersRequest2>;
 
 export type ListSmsVirtualNumbersResponseBodyList2 = Array<string>;
-export const ListSmsVirtualNumbersResponseBodyList2 =
-  SmsBatchReceiversList as any as S.Schema<ListSmsVirtualNumbersResponseBodyList2>;
-
 export type ListSmsVirtualNumbersResponse2 = ListSmsVirtualNumbersResponseBodyList2;
-export const ListSmsVirtualNumbersResponse2 =
+const ListSmsVirtualNumbersResponse2 =
   ListSmsBlacklistsResponse as any as S.Schema<ListSmsVirtualNumbersResponse2>;
 
 export interface PutSmsRequest {
@@ -4101,7 +4028,7 @@ export interface PutSmsRequest {
   stopCallBack?: string | null;
   templates?: SmsTemplates;
 }
-export const PutSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     automaticRecreditAmount: S.optional(S.NullOr(SmsPackQuantityAutomaticRecreditEnum)),
@@ -4115,7 +4042,7 @@ export const PutSmsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSmsRequest" }) as any as S.Schema<PutSmsRequest>;
 
 export interface PutSmsResponse {}
-export const PutSmsResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsResponse>;
+const PutSmsResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsResponse>;
 
 export interface PutSmsBatchRequest {
   /** The internal name of your SMS offer */
@@ -4125,7 +4052,7 @@ export interface PutSmsBatchRequest {
   /** Batch name */
   name: string;
 }
-export const PutSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4141,7 +4068,7 @@ export interface PutSmsPhonebookRequest {
   /** Phonebook name */
   name?: string;
 }
-export const PutSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -4150,7 +4077,7 @@ export const PutSmsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSmsPhonebookRequest" }) as any as S.Schema<PutSmsPhonebookRequest>;
 
 export interface PutSmsPhonebookResponse {}
-export const PutSmsPhonebookResponse =
+const PutSmsPhonebookResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsPhonebookResponse>;
 
 export interface PutSmsPhonebookPhonebookContactRequest {
@@ -4175,7 +4102,7 @@ export interface PutSmsPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-export const PutSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -4199,7 +4126,7 @@ export const PutSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutSmsPhonebookPhonebookContactRequest>;
 
 export interface PutSmsPhonebookPhonebookContactResponse {}
-export const PutSmsPhonebookPhonebookContactResponse =
+const PutSmsPhonebookPhonebookContactResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<PutSmsPhonebookPhonebookContactResponse>;
 
 export interface PutSmsReceiverRequest {
@@ -4212,7 +4139,7 @@ export interface PutSmsReceiverRequest {
   /** Description name of the document */
   description?: string;
 }
-export const PutSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     slotId: S.Number.pipe(T.Label()),
@@ -4222,7 +4149,7 @@ export const PutSmsReceiverRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSmsReceiverRequest" }) as any as S.Schema<PutSmsReceiverRequest>;
 
 export interface PutSmsReceiverResponse {}
-export const PutSmsReceiverResponse =
+const PutSmsReceiverResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsReceiverResponse>;
 
 export interface PutSmsSenderRequest {
@@ -4235,7 +4162,7 @@ export interface PutSmsSenderRequest {
   /** Sender status */
   status?: SmsStatusSenderEnum | (string & {});
 }
-export const PutSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -4245,8 +4172,7 @@ export const PutSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSmsSenderRequest" }) as any as S.Schema<PutSmsSenderRequest>;
 
 export interface PutSmsSenderResponse {}
-export const PutSmsSenderResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsSenderResponse>;
+const PutSmsSenderResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsSenderResponse>;
 
 export interface PutSmsSenderDocumentRequest {
   /** The internal name of your SMS offer */
@@ -4260,7 +4186,7 @@ export interface PutSmsSenderDocumentRequest {
   /** Document name */
   name?: string;
 }
-export const PutSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -4279,7 +4205,7 @@ export const PutSmsSenderDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSmsSenderDocumentRequest>;
 
 export interface PutSmsSenderDocumentResponse {}
-export const PutSmsSenderDocumentResponse =
+const PutSmsSenderDocumentResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsSenderDocumentResponse>;
 
 export interface PutSmsServiceInfosRequest {
@@ -4288,7 +4214,7 @@ export interface PutSmsServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutSmsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4298,16 +4224,16 @@ export const PutSmsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSmsServiceInfosRequest>;
 
 export interface PutSmsServiceInfosResponse {}
-export const PutSmsServiceInfosResponse =
+const PutSmsServiceInfosResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsServiceInfosResponse>;
 
 /** Smpp allowed IPs action */
 export type SmsAllowedIPsActionEnum = "add" | "remove";
-export const SmsAllowedIPsActionEnum = S.String;
+const SmsAllowedIPsActionEnum = S.String;
 
 /** List of IPs to add or remove */
 export type PutSmsSmppAllowedIPsRequestIpsList = Array<string>;
-export const PutSmsSmppAllowedIPsRequestIpsList =
+const PutSmsSmppAllowedIPsRequestIpsList =
   SmsBatchReceiversList as any as S.Schema<PutSmsSmppAllowedIPsRequestIpsList>;
 
 export interface PutSmsSmppAllowedIPsRequest {
@@ -4318,7 +4244,7 @@ export interface PutSmsSmppAllowedIPsRequest {
   /** List of IPs to add or remove */
   ips: PutSmsSmppAllowedIPsRequestIpsList;
 }
-export const PutSmsSmppAllowedIPsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsSmppAllowedIPsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     action: SmsAllowedIPsActionEnum,
@@ -4329,11 +4255,8 @@ export const PutSmsSmppAllowedIPsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSmsSmppAllowedIPsRequest>;
 
 export type PutSmsSmppAllowedIPsResponseBodyList = Array<string>;
-export const PutSmsSmppAllowedIPsResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<PutSmsSmppAllowedIPsResponseBodyList>;
-
 export type PutSmsSmppAllowedIPsResponse = PutSmsSmppAllowedIPsResponseBodyList;
-export const PutSmsSmppAllowedIPsResponse =
+const PutSmsSmppAllowedIPsResponse =
   ListSmsBlacklistsResponse as any as S.Schema<PutSmsSmppAllowedIPsResponse>;
 
 export interface PutSmsTemplatesControlRequest {
@@ -4350,7 +4273,7 @@ export interface PutSmsTemplatesControlRequest {
   /** Template status */
   status?: SmsStatusSenderEnum | (string & {});
 }
-export const PutSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4364,11 +4287,11 @@ export const PutSmsTemplatesControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSmsTemplatesControlRequest>;
 
 export interface PutSmsTemplatesControlResponse {}
-export const PutSmsTemplatesControlResponse =
+const PutSmsTemplatesControlResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsTemplatesControlResponse>;
 
 export type PutSmsUserRequestIpRestrictionsList = Array<string>;
-export const PutSmsUserRequestIpRestrictionsList =
+const PutSmsUserRequestIpRestrictionsList =
   SmsBatchReceiversList as any as S.Schema<PutSmsUserRequestIpRestrictionsList>;
 
 export interface PutSmsUserRequest {
@@ -4385,7 +4308,7 @@ export interface PutSmsUserRequest {
   /** URL called when a STOP is received after a receiver replied stop to a SMS */
   stopCallBack?: string | null;
 }
-export const PutSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -4399,8 +4322,7 @@ export const PutSmsUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSmsUserRequest" }) as any as S.Schema<PutSmsUserRequest>;
 
 export interface PutSmsUserResponse {}
-export const PutSmsUserResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsUserResponse>;
+const PutSmsUserResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsUserResponse>;
 
 export interface PutSmsUserReceiverRequest {
   /** The internal name of your SMS offer */
@@ -4414,7 +4336,7 @@ export interface PutSmsUserReceiverRequest {
   /** Description name of the document */
   description?: string;
 }
-export const PutSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -4433,7 +4355,7 @@ export const PutSmsUserReceiverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSmsUserReceiverRequest>;
 
 export interface PutSmsUserReceiverResponse {}
-export const PutSmsUserReceiverResponse =
+const PutSmsUserReceiverResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsUserReceiverResponse>;
 
 export interface PutSmsVirtualNumberServiceInfosRequest {
@@ -4442,7 +4364,7 @@ export interface PutSmsVirtualNumberServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4452,7 +4374,7 @@ export const PutSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutSmsVirtualNumberServiceInfosRequest>;
 
 export interface PutSmsVirtualNumberServiceInfosResponse {}
-export const PutSmsVirtualNumberServiceInfosResponse =
+const PutSmsVirtualNumberServiceInfosResponse =
   CreateSmsTemplatesControlResponse as any as S.Schema<PutSmsVirtualNumberServiceInfosResponse>;
 
 export interface TransferSmsCreditsRequest {
@@ -4463,7 +4385,7 @@ export interface TransferSmsCreditsRequest {
   /** Sms account destination. */
   smsAccountTarget: string;
 }
-export const TransferSmsCreditsRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferSmsCreditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     credits: S.Number,
@@ -4474,7 +4396,7 @@ export const TransferSmsCreditsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferSmsCreditsRequest>;
 
 export interface TransferSmsCreditsResponse {}
-export const TransferSmsCreditsResponse =
+const TransferSmsCreditsResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<TransferSmsCreditsResponse>;
 
 export interface ValidateSmsSenderRequest {
@@ -4485,7 +4407,7 @@ export interface ValidateSmsSenderRequest {
   /** The validation code */
   code: string;
 }
-export const ValidateSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sender: S.String.pipe(T.Label()),
@@ -4496,7 +4418,7 @@ export const ValidateSmsSenderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateSmsSenderRequest" }) as any as S.Schema<ValidateSmsSenderRequest>;
 
 export interface ValidateSmsSenderResponse {}
-export const ValidateSmsSenderResponse =
+const ValidateSmsSenderResponse =
   CreateSmsSmppPasswordResponse as any as S.Schema<ValidateSmsSenderResponse>;
 
 export type CancelSmsBatchError = OvhOpError;

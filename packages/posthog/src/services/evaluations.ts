@@ -9,59 +9,33 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
 export type EvaluationTypeEnum = "llm_judge" | "hog" | "sentiment";
-export const EvaluationTypeEnum = S.String;
+const EvaluationTypeEnum = S.String;
 
 export interface CreateEvaluationRequestEvaluationConfigCase0 {
   /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
   prompt: string;
 }
-export const CreateEvaluationRequestEvaluationConfigCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.String,
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestEvaluationConfigCase0",
-}) as any as S.Schema<CreateEvaluationRequestEvaluationConfigCase0>;
-
 export interface CreateEvaluationRequestEvaluationConfigCase1 {
   /** Hog source code. Return a boolean, finite number, or category keys matching output_type. Categorical single selection accepts one key or a one-item list; multiple selection accepts a list, including []. Return null only for allowed N/A. Output settings determine which boolean counts as a failure. */
   source: string;
 }
-export const CreateEvaluationRequestEvaluationConfigCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.String,
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestEvaluationConfigCase1",
-}) as any as S.Schema<CreateEvaluationRequestEvaluationConfigCase1>;
-
 /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
 export type CreateEvaluationRequestEvaluationConfigCase2Source = "user_messages";
-export const CreateEvaluationRequestEvaluationConfigCase2Source = S.String;
-
 export interface CreateEvaluationRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: CreateEvaluationRequestEvaluationConfigCase2Source | (string & {});
 }
-export const CreateEvaluationRequestEvaluationConfigCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(CreateEvaluationRequestEvaluationConfigCase2Source),
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestEvaluationConfigCase2",
-}) as any as S.Schema<CreateEvaluationRequestEvaluationConfigCase2>;
-
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type CreateEvaluationRequestEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | CreateEvaluationRequestEvaluationConfigCase2;
-export const CreateEvaluationRequestEvaluationConfig =
+const CreateEvaluationRequestEvaluationConfig =
   S.Unknown as any as S.Schema<CreateEvaluationRequestEvaluationConfig>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `numeric` - Numeric * `categorical` - Categorical * `sentiment` - Sentiment */
 export type OutputTypeEnum = "boolean" | "numeric" | "categorical" | "sentiment";
-export const OutputTypeEnum = S.String;
+const OutputTypeEnum = S.String;
 
 export interface CreateEvaluationRequestOutputConfigOptionsItem {
   /** Stable category key. */
@@ -69,7 +43,7 @@ export interface CreateEvaluationRequestOutputConfigOptionsItem {
   /** Category display label. */
   label: string;
 }
-export const CreateEvaluationRequestOutputConfigOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationRequestOutputConfigOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     label: S.String,
@@ -81,57 +55,33 @@ export const CreateEvaluationRequestOutputConfigOptionsItem = /*@__PURE__*/ S.su
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type CreateEvaluationRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const CreateEvaluationRequestOutputConfigOptionsList = /*@__PURE__*/ S.Array(
+const CreateEvaluationRequestOutputConfigOptionsList = /*@__PURE__*/ S.Array(
   CreateEvaluationRequestOutputConfigOptionsItem,
 ) as any as S.Schema<CreateEvaluationRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type CreateEvaluationRequestOutputConfigSelectionMode = "single" | "multiple";
-export const CreateEvaluationRequestOutputConfigSelectionMode = S.String;
+const CreateEvaluationRequestOutputConfigSelectionMode = S.String;
 
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type CreateEvaluationRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
-export const CreateEvaluationRequestOutputConfigPassingRuleCase0Operator = S.String;
-
 export interface CreateEvaluationRequestOutputConfigPassingRuleCase0 {
   /** Pass at or above (gte), or at or below (lte), the threshold. */
   operator: CreateEvaluationRequestOutputConfigPassingRuleCase0Operator | (string & {});
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const CreateEvaluationRequestOutputConfigPassingRuleCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: CreateEvaluationRequestOutputConfigPassingRuleCase0Operator,
-    threshold: S.Number,
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestOutputConfigPassingRuleCase0",
-}) as any as S.Schema<CreateEvaluationRequestOutputConfigPassingRuleCase0>;
-
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList = Array<string>;
-export const CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList>;
-
 export interface CreateEvaluationRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList;
 }
-export const CreateEvaluationRequestOutputConfigPassingRuleCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList,
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestOutputConfigPassingRuleCase1",
-}) as any as S.Schema<CreateEvaluationRequestOutputConfigPassingRuleCase1>;
-
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type CreateEvaluationRequestOutputConfigPassingRule =
   | CreateEvaluationRequestOutputConfigPassingRuleCase0
   | CreateEvaluationRequestOutputConfigPassingRuleCase1;
-export const CreateEvaluationRequestOutputConfigPassingRule =
+const CreateEvaluationRequestOutputConfigPassingRule =
   S.Unknown as any as S.Schema<CreateEvaluationRequestOutputConfigPassingRule>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
@@ -153,7 +103,7 @@ export interface CreateEvaluationRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: CreateEvaluationRequestOutputConfigPassingRule | null;
 }
-export const CreateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allows_na: S.optional(S.Boolean),
     true_is_failure: S.optional(S.Boolean),
@@ -169,14 +119,14 @@ export const CreateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEvaluationRequestOutputConfig>;
 
 export type EvaluationConditionPropertiesItemMap = { [key: string]: unknown | undefined };
-export const EvaluationConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
+const EvaluationConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<EvaluationConditionPropertiesItemMap>;
 
 /** Property filters (event or person) that scope which generations match this condition set. */
 export type EvaluationConditionPropertiesList = Array<EvaluationConditionPropertiesItemMap>;
-export const EvaluationConditionPropertiesList = /*@__PURE__*/ S.Array(
+const EvaluationConditionPropertiesList = /*@__PURE__*/ S.Array(
   EvaluationConditionPropertiesItemMap,
 ) as any as S.Schema<EvaluationConditionPropertiesList>;
 
@@ -189,7 +139,7 @@ export interface EvaluationCondition {
   /** Property filters (event or person) that scope which generations match this condition set. */
   properties?: EvaluationConditionPropertiesList;
 }
-export const EvaluationCondition = /*@__PURE__*/ S.suspend(() =>
+const EvaluationCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     rollout_percentage: S.optional(S.Number),
@@ -199,37 +149,24 @@ export const EvaluationCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type CreateEvaluationRequestConditionsList = Array<EvaluationCondition>;
-export const CreateEvaluationRequestConditionsList = /*@__PURE__*/ S.Array(
+const CreateEvaluationRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<CreateEvaluationRequestConditionsList>;
 
 /** * `generation` - Generation * `trace` - Trace * `session` - Session */
 export type EvaluationTargetEnum = "generation" | "trace" | "session";
-export const EvaluationTargetEnum = S.String;
+const EvaluationTargetEnum = S.String;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type CreateEvaluationRequestTargetConfigCase0Strategy = "fixed_window";
-export const CreateEvaluationRequestTargetConfigCase0Strategy = S.String;
-
 export interface CreateEvaluationRequestTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: CreateEvaluationRequestTargetConfigCase0Strategy;
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const CreateEvaluationRequestTargetConfigCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: CreateEvaluationRequestTargetConfigCase0Strategy,
-    window_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestTargetConfigCase0",
-}) as any as S.Schema<CreateEvaluationRequestTargetConfigCase0>;
-
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type CreateEvaluationRequestTargetConfigCase1Strategy = "inactivity";
-export const CreateEvaluationRequestTargetConfigCase1Strategy = S.String;
-
 export interface CreateEvaluationRequestTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: CreateEvaluationRequestTargetConfigCase1Strategy;
@@ -238,21 +175,11 @@ export interface CreateEvaluationRequestTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const CreateEvaluationRequestTargetConfigCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: CreateEvaluationRequestTargetConfigCase1Strategy,
-    quiet_period_seconds: S.optional(S.Number),
-    max_age_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateEvaluationRequestTargetConfigCase1",
-}) as any as S.Schema<CreateEvaluationRequestTargetConfigCase1>;
-
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type CreateEvaluationRequestTargetConfig =
   | CreateEvaluationRequestTargetConfigCase0
   | CreateEvaluationRequestTargetConfigCase1;
-export const CreateEvaluationRequestTargetConfig =
+const CreateEvaluationRequestTargetConfig =
   S.Unknown as any as S.Schema<CreateEvaluationRequestTargetConfig>;
 
 /** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `system_one` - System One * `openai_compatible` - OpenAI-compatible */
@@ -268,7 +195,7 @@ export type LLMProviderEnum =
   | "zeabur"
   | "system_one"
   | "openai_compatible";
-export const LLMProviderEnum = S.String;
+const LLMProviderEnum = S.String;
 
 /** Nested serializer for model configuration. */
 export interface ModelConfigurationInput {
@@ -277,7 +204,7 @@ export interface ModelConfigurationInput {
   /** Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed. */
   provider_key_id?: string | null;
 }
-export const ModelConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const ModelConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(LLMProviderEnum),
     model: S.optional(S.String),
@@ -315,7 +242,7 @@ export interface CreateEvaluationRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-export const CreateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -336,7 +263,7 @@ export const CreateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `active` - Active * `paused` - Paused * `error` - Error */
 export type EvaluationStatusEnum = "active" | "paused" | "error";
-export const EvaluationStatusEnum = S.String;
+const EvaluationStatusEnum = S.String;
 
 /** * `provider_key_required` - No provider API key configured * `provider_key_deleted` - Provider API key was deleted * `no_default_model` - No default model available for the selected provider * `provider_key_invalid` - Provider API key is invalid * `provider_key_permission_denied` - Provider API key lacks model access * `provider_key_quota_exceeded` - Provider API key quota exceeded * `provider_key_rate_limited` - Provider API key is rate limited * `model_not_found` - Model not found * `model_not_supported` - Model does not support chat completions * `hog_error` - Hog evaluation code failed */
 export type EvaluationStatusReasonEnum =
@@ -350,61 +277,45 @@ export type EvaluationStatusReasonEnum =
   | "model_not_found"
   | "model_not_supported"
   | "hog_error";
-export const EvaluationStatusReasonEnum = S.String;
+const EvaluationStatusReasonEnum = S.String;
 
 export type EvaluationEvaluationConfigCase0 = CreateEvaluationRequestEvaluationConfigCase0;
-export const EvaluationEvaluationConfigCase0 = CreateEvaluationRequestEvaluationConfigCase0;
-
 export type EvaluationEvaluationConfigCase1 = CreateEvaluationRequestEvaluationConfigCase1;
-export const EvaluationEvaluationConfigCase1 = CreateEvaluationRequestEvaluationConfigCase1;
-
 /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
 export type EvaluationEvaluationConfigCase2Source = "user_messages";
-export const EvaluationEvaluationConfigCase2Source = S.String;
-
 export interface EvaluationEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: EvaluationEvaluationConfigCase2Source;
 }
-export const EvaluationEvaluationConfigCase2 =
-  CreateEvaluationRequestEvaluationConfigCase2 as any as S.Schema<EvaluationEvaluationConfigCase2>;
-
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type EvaluationEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | EvaluationEvaluationConfigCase2;
-export const EvaluationEvaluationConfig = S.Unknown as any as S.Schema<EvaluationEvaluationConfig>;
+const EvaluationEvaluationConfig = S.Unknown as any as S.Schema<EvaluationEvaluationConfig>;
 
 export type EvaluationOutputConfigOptionsItem = CreateEvaluationRequestOutputConfigOptionsItem;
-export const EvaluationOutputConfigOptionsItem = CreateEvaluationRequestOutputConfigOptionsItem;
-
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type EvaluationOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const EvaluationOutputConfigOptionsList =
+const EvaluationOutputConfigOptionsList =
   CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<EvaluationOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type EvaluationOutputConfigSelectionMode = "single" | "multiple";
-export const EvaluationOutputConfigSelectionMode = S.String;
+const EvaluationOutputConfigSelectionMode = S.String;
 
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type EvaluationOutputConfigPassingRuleCase0Operator = "gte" | "lte";
-export const EvaluationOutputConfigPassingRuleCase0Operator = S.String;
-
 export interface EvaluationOutputConfigPassingRuleCase0 {
   /** Pass at or above (gte), or at or below (lte), the threshold. */
   operator: EvaluationOutputConfigPassingRuleCase0Operator;
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const EvaluationOutputConfigPassingRuleCase0 =
-  CreateEvaluationRequestOutputConfigPassingRuleCase0 as any as S.Schema<EvaluationOutputConfigPassingRuleCase0>;
-
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type EvaluationOutputConfigPassingRuleCase1CategoriesList = Array<string>;
-export const EvaluationOutputConfigPassingRuleCase1CategoriesList = /*@__PURE__*/ S.Array(
+const EvaluationOutputConfigPassingRuleCase1CategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EvaluationOutputConfigPassingRuleCase1CategoriesList>;
 
@@ -412,19 +323,11 @@ export interface EvaluationOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: EvaluationOutputConfigPassingRuleCase1CategoriesList;
 }
-export const EvaluationOutputConfigPassingRuleCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: EvaluationOutputConfigPassingRuleCase1CategoriesList,
-  }),
-).annotate({
-  identifier: "EvaluationOutputConfigPassingRuleCase1",
-}) as any as S.Schema<EvaluationOutputConfigPassingRuleCase1>;
-
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type EvaluationOutputConfigPassingRule =
   | EvaluationOutputConfigPassingRuleCase0
   | EvaluationOutputConfigPassingRuleCase1;
-export const EvaluationOutputConfigPassingRule =
+const EvaluationOutputConfigPassingRule =
   S.Unknown as any as S.Schema<EvaluationOutputConfigPassingRule>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
@@ -446,7 +349,7 @@ export interface EvaluationOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: EvaluationOutputConfigPassingRule | null;
 }
-export const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allows_na: S.optional(S.Boolean),
     true_is_failure: S.optional(S.Boolean),
@@ -461,26 +364,19 @@ export const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationConditionsList = Array<EvaluationCondition>;
-export const EvaluationConditionsList =
+const EvaluationConditionsList =
   CreateEvaluationRequestConditionsList as any as S.Schema<EvaluationConditionsList>;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type EvaluationTargetConfigCase0Strategy = "fixed_window";
-export const EvaluationTargetConfigCase0Strategy = S.String;
-
 export interface EvaluationTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: EvaluationTargetConfigCase0Strategy;
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const EvaluationTargetConfigCase0 =
-  CreateEvaluationRequestTargetConfigCase0 as any as S.Schema<EvaluationTargetConfigCase0>;
-
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type EvaluationTargetConfigCase1Strategy = "inactivity";
-export const EvaluationTargetConfigCase1Strategy = S.String;
-
 export interface EvaluationTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: EvaluationTargetConfigCase1Strategy;
@@ -489,12 +385,9 @@ export interface EvaluationTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const EvaluationTargetConfigCase1 =
-  CreateEvaluationRequestTargetConfigCase1 as any as S.Schema<EvaluationTargetConfigCase1>;
-
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type EvaluationTargetConfig = EvaluationTargetConfigCase0 | EvaluationTargetConfigCase1;
-export const EvaluationTargetConfig = S.Unknown as any as S.Schema<EvaluationTargetConfig>;
+const EvaluationTargetConfig = S.Unknown as any as S.Schema<EvaluationTargetConfig>;
 
 /** Nested serializer for model configuration. */
 export interface ModelConfiguration {
@@ -504,7 +397,7 @@ export interface ModelConfiguration {
   provider_key_id?: string | null;
   provider_key_name?: string | null;
 }
-export const ModelConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ModelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(LLMProviderEnum),
     model: S.optional(S.String),
@@ -514,7 +407,7 @@ export const ModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelConfiguration" }) as any as S.Schema<ModelConfiguration>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   EvaluationConditionPropertiesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -528,14 +421,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -548,7 +436,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -602,7 +490,7 @@ export interface Evaluation {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const Evaluation = /*@__PURE__*/ S.suspend(() =>
+const Evaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -630,7 +518,7 @@ export const Evaluation = /*@__PURE__*/ S.suspend(() =>
 
 /** Condition sets to match. Defaults to the evaluation's own condition sets. */
 export type CreateEvaluationsBackfillRequestConditionsList = Array<EvaluationCondition>;
-export const CreateEvaluationsBackfillRequestConditionsList =
+const CreateEvaluationsBackfillRequestConditionsList =
   CreateEvaluationRequestConditionsList as any as S.Schema<CreateEvaluationsBackfillRequestConditionsList>;
 
 export interface CreateEvaluationsBackfillRequest {
@@ -646,7 +534,7 @@ export interface CreateEvaluationsBackfillRequest {
   /** Evaluate units again even when this evaluation already has a result for them. */
   rerun_existing?: boolean;
 }
-export const CreateEvaluationsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_id: S.String.pipe(T.Label()),
@@ -667,16 +555,13 @@ export const CreateEvaluationsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `running` - Running * `completed` - Completed * `cancelled` - Cancelled */
 export type EvaluationBackfillStatusEnum = "running" | "completed" | "cancelled";
-export const EvaluationBackfillStatusEnum = S.String;
+const EvaluationBackfillStatusEnum = S.String;
 
 export type EvaluationBackfillConditionPropertiesItemMap = { [key: string]: unknown | undefined };
-export const EvaluationBackfillConditionPropertiesItemMap =
-  EvaluationConditionPropertiesItemMap as any as S.Schema<EvaluationBackfillConditionPropertiesItemMap>;
-
 /** Property filters (event or person) that scope which units match this condition set. */
 export type EvaluationBackfillConditionPropertiesList =
   Array<EvaluationBackfillConditionPropertiesItemMap>;
-export const EvaluationBackfillConditionPropertiesList =
+const EvaluationBackfillConditionPropertiesList =
   EvaluationConditionPropertiesList as any as S.Schema<EvaluationBackfillConditionPropertiesList>;
 
 /** One condition set as it was frozen onto the backfill: no id, no compiled bytecode. */
@@ -686,7 +571,7 @@ export interface EvaluationBackfillCondition {
   /** Percentage (0-100) of matching units sampled for this condition set. */
   rollout_percentage?: number;
 }
-export const EvaluationBackfillCondition = /*@__PURE__*/ S.suspend(() =>
+const EvaluationBackfillCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(EvaluationBackfillConditionPropertiesList),
     rollout_percentage: S.optional(S.Number),
@@ -697,7 +582,7 @@ export const EvaluationBackfillCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** Condition sets frozen at creation, so an edit to the evaluation does not change this run. */
 export type EvaluationBackfillConditionsList = Array<EvaluationBackfillCondition>;
-export const EvaluationBackfillConditionsList = /*@__PURE__*/ S.Array(
+const EvaluationBackfillConditionsList = /*@__PURE__*/ S.Array(
   EvaluationBackfillCondition,
 ) as any as S.Schema<EvaluationBackfillConditionsList>;
 
@@ -733,7 +618,7 @@ export interface EvaluationBackfill {
   /** When the backfill reached a terminal status; null while it runs. */
   finished_at: string | null;
 }
-export const EvaluationBackfill = /*@__PURE__*/ S.suspend(() =>
+const EvaluationBackfill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: EvaluationBackfillStatusEnum,
@@ -755,7 +640,7 @@ export const EvaluationBackfill = /*@__PURE__*/ S.suspend(() =>
 
 /** Condition sets to match. Defaults to the evaluation's own condition sets. */
 export type CreateEvaluationsBackfillsEstimateRequestConditionsList = Array<EvaluationCondition>;
-export const CreateEvaluationsBackfillsEstimateRequestConditionsList =
+const CreateEvaluationsBackfillsEstimateRequestConditionsList =
   CreateEvaluationRequestConditionsList as any as S.Schema<CreateEvaluationsBackfillsEstimateRequestConditionsList>;
 
 export interface CreateEvaluationsBackfillsEstimateRequest {
@@ -771,7 +656,7 @@ export interface CreateEvaluationsBackfillsEstimateRequest {
   /** Evaluate units again even when this evaluation already has a result for them. */
   rerun_existing?: boolean;
 }
-export const CreateEvaluationsBackfillsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationsBackfillsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_id: S.String.pipe(T.Label()),
@@ -802,7 +687,7 @@ export interface EvaluationBackfillEstimate {
   /** Window end after clamping. */
   window_end: string;
 }
-export const EvaluationBackfillEstimate = /*@__PURE__*/ S.suspend(() =>
+const EvaluationBackfillEstimate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_units: S.Number,
     already_evaluated_units: S.Number,
@@ -816,67 +701,40 @@ export const EvaluationBackfillEstimate = /*@__PURE__*/ S.suspend(() =>
 
 /** * `boolean` - Boolean (Pass/Fail) * `numeric` - Numeric * `categorical` - Categorical */
 export type HogEvaluationOutputTypeEnum = "boolean" | "numeric" | "categorical";
-export const HogEvaluationOutputTypeEnum = S.String;
+const HogEvaluationOutputTypeEnum = S.String;
 
 export type CreateEvaluationsTestHogRequestOutputConfigOptionsItem =
   CreateEvaluationRequestOutputConfigOptionsItem;
-export const CreateEvaluationsTestHogRequestOutputConfigOptionsItem =
-  CreateEvaluationRequestOutputConfigOptionsItem;
-
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type CreateEvaluationsTestHogRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const CreateEvaluationsTestHogRequestOutputConfigOptionsList =
+const CreateEvaluationsTestHogRequestOutputConfigOptionsList =
   CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type CreateEvaluationsTestHogRequestOutputConfigSelectionMode = "single" | "multiple";
-export const CreateEvaluationsTestHogRequestOutputConfigSelectionMode = S.String;
+const CreateEvaluationsTestHogRequestOutputConfigSelectionMode = S.String;
 
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
-export const CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0Operator = S.String;
-
 export interface CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0 {
   /** Pass at or above (gte), or at or below (lte), the threshold. */
   operator: CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0Operator | (string & {});
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operator: CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0Operator,
-      threshold: S.Number,
-    }),
-).annotate({
-  identifier: "CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0",
-}) as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0>;
-
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList =
   Array<string>;
-export const CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList =
-  CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList>;
-
 export interface CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList;
 }
-export const CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      categories: CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList,
-    }),
-).annotate({
-  identifier: "CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1",
-}) as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1>;
-
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type CreateEvaluationsTestHogRequestOutputConfigPassingRule =
   | CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0
   | CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1;
-export const CreateEvaluationsTestHogRequestOutputConfigPassingRule =
+const CreateEvaluationsTestHogRequestOutputConfigPassingRule =
   S.Unknown as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRule>;
 
 /** Output settings used to validate the preview, including bounds, categories, and allows_na. */
@@ -898,7 +756,7 @@ export interface CreateEvaluationsTestHogRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: CreateEvaluationsTestHogRequestOutputConfigPassingRule | null;
 }
-export const CreateEvaluationsTestHogRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationsTestHogRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allows_na: S.optional(S.Boolean),
     true_is_failure: S.optional(S.Boolean),
@@ -916,13 +774,10 @@ export const CreateEvaluationsTestHogRequestOutputConfig = /*@__PURE__*/ S.suspe
 export type CreateEvaluationsTestHogRequestConditionsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateEvaluationsTestHogRequestConditionsItemMap =
-  EvaluationConditionPropertiesItemMap as any as S.Schema<CreateEvaluationsTestHogRequestConditionsItemMap>;
-
 /** Optional trigger conditions to filter which events are sampled. */
 export type CreateEvaluationsTestHogRequestConditionsList =
   Array<CreateEvaluationsTestHogRequestConditionsItemMap>;
-export const CreateEvaluationsTestHogRequestConditionsList =
+const CreateEvaluationsTestHogRequestConditionsList =
   EvaluationConditionPropertiesList as any as S.Schema<CreateEvaluationsTestHogRequestConditionsList>;
 
 export interface TestHogTargetConfig {
@@ -931,7 +786,7 @@ export interface TestHogTargetConfig {
   /** For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run. */
   quiet_period_seconds?: number;
 }
-export const TestHogTargetConfig = /*@__PURE__*/ S.suspend(() =>
+const TestHogTargetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_seconds: S.optional(S.Number),
     quiet_period_seconds: S.optional(S.Number),
@@ -958,7 +813,7 @@ export interface CreateEvaluationsTestHogRequest {
   /** Target-specific preview settings. For a trace target, set window_seconds between 10 and 7200. */
   target_config?: TestHogTargetConfig;
 }
-export const CreateEvaluationsTestHogRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationsTestHogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     output_type: S.optional(HogEvaluationOutputTypeEnum),
@@ -978,7 +833,7 @@ export const CreateEvaluationsTestHogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Selected category keys. An empty list is an applicable result; null means no categorical result was produced. */
 export type TestHogResultItemCategoriesList = Array<string>;
-export const TestHogResultItemCategoriesList =
+const TestHogResultItemCategoriesList =
   EvaluationOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<TestHogResultItemCategoriesList>;
 
 export interface TestHogResultItem {
@@ -1005,7 +860,7 @@ export interface TestHogResultItem {
   /** Error message if the Hog code raised an exception. */
   error?: string | null;
 }
-export const TestHogResultItem = /*@__PURE__*/ S.suspend(() =>
+const TestHogResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(S.NullOr(TestHogResultItemCategoriesList)),
     score: S.optional(S.NullOr(S.Number)),
@@ -1022,7 +877,7 @@ export const TestHogResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestHogResultItem" }) as any as S.Schema<TestHogResultItem>;
 
 export type TestHogResponseResultsList = Array<TestHogResultItem>;
-export const TestHogResponseResultsList = /*@__PURE__*/ S.Array(
+const TestHogResponseResultsList = /*@__PURE__*/ S.Array(
   TestHogResultItem,
 ) as any as S.Schema<TestHogResponseResultsList>;
 
@@ -1031,7 +886,7 @@ export interface TestHogResponse {
   /** Optional message, e.g. when no recent events were found. */
   message?: string;
 }
-export const TestHogResponse = /*@__PURE__*/ S.suspend(() =>
+const TestHogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(TestHogResponseResultsList),
     message: S.optional(S.String),
@@ -1045,7 +900,7 @@ export interface EvaluationsBackfillsCancelCreateRequest {
   /** A UUID string identifying this evaluation backfill. */
   id: string;
 }
-export const EvaluationsBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluationsBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_id: S.String.pipe(T.Label()),
@@ -1067,7 +922,7 @@ export interface EvaluationsDestroyRequest {
   /** A UUID string identifying this evaluation. */
   id: string;
 }
-export const EvaluationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1079,7 +934,7 @@ export const EvaluationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationsDestroyRequest>;
 
 export interface EvaluationsDestroyResponse {}
-export const EvaluationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const EvaluationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EvaluationsDestroyResponse",
 }) as any as S.Schema<EvaluationsDestroyResponse>;
 
@@ -1089,7 +944,7 @@ export interface GetEvaluationRequest {
   /** A UUID string identifying this evaluation. */
   id: string;
 }
-export const GetEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1105,7 +960,7 @@ export interface GetEvaluationsBackfillRequest {
   /** A UUID string identifying this evaluation backfill. */
   id: string;
 }
-export const GetEvaluationsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEvaluationsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_id: S.String.pipe(T.Label()),
@@ -1122,10 +977,10 @@ export const GetEvaluationsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEvaluationsBackfillRequest>;
 
 export type ListEvaluationsRequestEvaluationType = "hog" | "llm_judge" | "sentiment";
-export const ListEvaluationsRequestEvaluationType = S.String;
+const ListEvaluationsRequestEvaluationType = S.String;
 
 export type ListEvaluationsRequestIdInList = Array<string>;
-export const ListEvaluationsRequestIdInList =
+const ListEvaluationsRequestIdInList =
   EvaluationOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<ListEvaluationsRequestIdInList>;
 
 export type ListEvaluationsRequestOrderByItem =
@@ -1135,12 +990,12 @@ export type ListEvaluationsRequestOrderByItem =
   | "created_at"
   | "name"
   | "updated_at";
-export const ListEvaluationsRequestOrderByItem = S.String;
+const ListEvaluationsRequestOrderByItem = S.String;
 
 export type ListEvaluationsRequestOrderByList = Array<
   ListEvaluationsRequestOrderByItem | (string & {})
 >;
-export const ListEvaluationsRequestOrderByList = /*@__PURE__*/ S.Array(
+const ListEvaluationsRequestOrderByList = /*@__PURE__*/ S.Array(
   ListEvaluationsRequestOrderByItem,
 ) as any as S.Schema<ListEvaluationsRequestOrderByList>;
 
@@ -1166,7 +1021,7 @@ export interface ListEvaluationsRequest {
   /** Search in name or description */
   search?: string;
 }
-export const ListEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     directory_id: S.optional(S.String.pipe(T.Query())),
@@ -1182,7 +1037,7 @@ export const ListEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEvaluationsRequest" }) as any as S.Schema<ListEvaluationsRequest>;
 
 export type PaginatedEvaluationListResultsList = Array<Evaluation>;
-export const PaginatedEvaluationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEvaluationListResultsList = /*@__PURE__*/ S.Array(
   Evaluation,
 ) as any as S.Schema<PaginatedEvaluationListResultsList>;
 
@@ -1192,7 +1047,7 @@ export interface PaginatedEvaluationList {
   previous?: string | null;
   results?: PaginatedEvaluationListResultsList;
 }
-export const PaginatedEvaluationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEvaluationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1210,7 +1065,7 @@ export interface ListEvaluationsBackfillsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListEvaluationsBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationsBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_id: S.String.pipe(T.Label()),
@@ -1228,7 +1083,7 @@ export const ListEvaluationsBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEvaluationsBackfillsRequest>;
 
 export type PaginatedEvaluationBackfillListResultsList = Array<EvaluationBackfill>;
-export const PaginatedEvaluationBackfillListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEvaluationBackfillListResultsList = /*@__PURE__*/ S.Array(
   EvaluationBackfill,
 ) as any as S.Schema<PaginatedEvaluationBackfillListResultsList>;
 
@@ -1238,7 +1093,7 @@ export interface PaginatedEvaluationBackfillList {
   previous?: string | null;
   results: PaginatedEvaluationBackfillListResultsList;
 }
-export const PaginatedEvaluationBackfillList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEvaluationBackfillList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1251,78 +1106,53 @@ export const PaginatedEvaluationBackfillList = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateEvaluationRequestEvaluationConfigCase0 =
   CreateEvaluationRequestEvaluationConfigCase0;
-export const UpdateEvaluationRequestEvaluationConfigCase0 =
-  CreateEvaluationRequestEvaluationConfigCase0;
-
 export type UpdateEvaluationRequestEvaluationConfigCase1 =
   CreateEvaluationRequestEvaluationConfigCase1;
-export const UpdateEvaluationRequestEvaluationConfigCase1 =
-  CreateEvaluationRequestEvaluationConfigCase1;
-
 /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
 export type UpdateEvaluationRequestEvaluationConfigCase2Source = "user_messages";
-export const UpdateEvaluationRequestEvaluationConfigCase2Source = S.String;
-
 export interface UpdateEvaluationRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: UpdateEvaluationRequestEvaluationConfigCase2Source | (string & {});
 }
-export const UpdateEvaluationRequestEvaluationConfigCase2 =
-  CreateEvaluationRequestEvaluationConfigCase2 as any as S.Schema<UpdateEvaluationRequestEvaluationConfigCase2>;
-
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type UpdateEvaluationRequestEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | UpdateEvaluationRequestEvaluationConfigCase2;
-export const UpdateEvaluationRequestEvaluationConfig =
+const UpdateEvaluationRequestEvaluationConfig =
   S.Unknown as any as S.Schema<UpdateEvaluationRequestEvaluationConfig>;
 
 export type UpdateEvaluationRequestOutputConfigOptionsItem =
   CreateEvaluationRequestOutputConfigOptionsItem;
-export const UpdateEvaluationRequestOutputConfigOptionsItem =
-  CreateEvaluationRequestOutputConfigOptionsItem;
-
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type UpdateEvaluationRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const UpdateEvaluationRequestOutputConfigOptionsList =
+const UpdateEvaluationRequestOutputConfigOptionsList =
   CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<UpdateEvaluationRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type UpdateEvaluationRequestOutputConfigSelectionMode = "single" | "multiple";
-export const UpdateEvaluationRequestOutputConfigSelectionMode = S.String;
+const UpdateEvaluationRequestOutputConfigSelectionMode = S.String;
 
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type UpdateEvaluationRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
-export const UpdateEvaluationRequestOutputConfigPassingRuleCase0Operator = S.String;
-
 export interface UpdateEvaluationRequestOutputConfigPassingRuleCase0 {
   /** Pass at or above (gte), or at or below (lte), the threshold. */
   operator: UpdateEvaluationRequestOutputConfigPassingRuleCase0Operator | (string & {});
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const UpdateEvaluationRequestOutputConfigPassingRuleCase0 =
-  CreateEvaluationRequestOutputConfigPassingRuleCase0 as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase0>;
-
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList = Array<string>;
-export const UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList =
-  CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList>;
-
 export interface UpdateEvaluationRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList;
 }
-export const UpdateEvaluationRequestOutputConfigPassingRuleCase1 =
-  CreateEvaluationRequestOutputConfigPassingRuleCase1 as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase1>;
-
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type UpdateEvaluationRequestOutputConfigPassingRule =
   | UpdateEvaluationRequestOutputConfigPassingRuleCase0
   | UpdateEvaluationRequestOutputConfigPassingRuleCase1;
-export const UpdateEvaluationRequestOutputConfigPassingRule =
+const UpdateEvaluationRequestOutputConfigPassingRule =
   S.Unknown as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRule>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
@@ -1344,7 +1174,7 @@ export interface UpdateEvaluationRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: UpdateEvaluationRequestOutputConfigPassingRule | null;
 }
-export const UpdateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allows_na: S.optional(S.Boolean),
     true_is_failure: S.optional(S.Boolean),
@@ -1361,26 +1191,19 @@ export const UpdateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationRequestConditionsList = Array<EvaluationCondition>;
-export const UpdateEvaluationRequestConditionsList =
+const UpdateEvaluationRequestConditionsList =
   CreateEvaluationRequestConditionsList as any as S.Schema<UpdateEvaluationRequestConditionsList>;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type UpdateEvaluationRequestTargetConfigCase0Strategy = "fixed_window";
-export const UpdateEvaluationRequestTargetConfigCase0Strategy = S.String;
-
 export interface UpdateEvaluationRequestTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: UpdateEvaluationRequestTargetConfigCase0Strategy;
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const UpdateEvaluationRequestTargetConfigCase0 =
-  CreateEvaluationRequestTargetConfigCase0 as any as S.Schema<UpdateEvaluationRequestTargetConfigCase0>;
-
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type UpdateEvaluationRequestTargetConfigCase1Strategy = "inactivity";
-export const UpdateEvaluationRequestTargetConfigCase1Strategy = S.String;
-
 export interface UpdateEvaluationRequestTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: UpdateEvaluationRequestTargetConfigCase1Strategy;
@@ -1389,14 +1212,11 @@ export interface UpdateEvaluationRequestTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const UpdateEvaluationRequestTargetConfigCase1 =
-  CreateEvaluationRequestTargetConfigCase1 as any as S.Schema<UpdateEvaluationRequestTargetConfigCase1>;
-
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type UpdateEvaluationRequestTargetConfig =
   | UpdateEvaluationRequestTargetConfigCase0
   | UpdateEvaluationRequestTargetConfigCase1;
-export const UpdateEvaluationRequestTargetConfig =
+const UpdateEvaluationRequestTargetConfig =
   S.Unknown as any as S.Schema<UpdateEvaluationRequestTargetConfig>;
 
 export interface UpdateEvaluationRequest {
@@ -1431,7 +1251,7 @@ export interface UpdateEvaluationRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-export const UpdateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1455,79 +1275,54 @@ export const UpdateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateEvaluationsPartialRequestEvaluationConfigCase0 =
   CreateEvaluationRequestEvaluationConfigCase0;
-export const UpdateEvaluationsPartialRequestEvaluationConfigCase0 =
-  CreateEvaluationRequestEvaluationConfigCase0;
-
 export type UpdateEvaluationsPartialRequestEvaluationConfigCase1 =
   CreateEvaluationRequestEvaluationConfigCase1;
-export const UpdateEvaluationsPartialRequestEvaluationConfigCase1 =
-  CreateEvaluationRequestEvaluationConfigCase1;
-
 /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
 export type UpdateEvaluationsPartialRequestEvaluationConfigCase2Source = "user_messages";
-export const UpdateEvaluationsPartialRequestEvaluationConfigCase2Source = S.String;
-
 export interface UpdateEvaluationsPartialRequestEvaluationConfigCase2 {
   /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
   source?: UpdateEvaluationsPartialRequestEvaluationConfigCase2Source | (string & {});
 }
-export const UpdateEvaluationsPartialRequestEvaluationConfigCase2 =
-  CreateEvaluationRequestEvaluationConfigCase2 as any as S.Schema<UpdateEvaluationsPartialRequestEvaluationConfigCase2>;
-
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type UpdateEvaluationsPartialRequestEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | UpdateEvaluationsPartialRequestEvaluationConfigCase2;
-export const UpdateEvaluationsPartialRequestEvaluationConfig =
+const UpdateEvaluationsPartialRequestEvaluationConfig =
   S.Unknown as any as S.Schema<UpdateEvaluationsPartialRequestEvaluationConfig>;
 
 export type UpdateEvaluationsPartialRequestOutputConfigOptionsItem =
   CreateEvaluationRequestOutputConfigOptionsItem;
-export const UpdateEvaluationsPartialRequestOutputConfigOptionsItem =
-  CreateEvaluationRequestOutputConfigOptionsItem;
-
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type UpdateEvaluationsPartialRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const UpdateEvaluationsPartialRequestOutputConfigOptionsList =
+const UpdateEvaluationsPartialRequestOutputConfigOptionsList =
   CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type UpdateEvaluationsPartialRequestOutputConfigSelectionMode = "single" | "multiple";
-export const UpdateEvaluationsPartialRequestOutputConfigSelectionMode = S.String;
+const UpdateEvaluationsPartialRequestOutputConfigSelectionMode = S.String;
 
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0Operator = S.String;
-
 export interface UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 {
   /** Pass at or above (gte), or at or below (lte), the threshold. */
   operator: UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0Operator | (string & {});
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 =
-  CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0 as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0>;
-
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList =
   Array<string>;
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList =
-  CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList>;
-
 export interface UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList;
 }
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1 =
-  CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1 as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1>;
-
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRule =
   | UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0
   | UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1;
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRule =
+const UpdateEvaluationsPartialRequestOutputConfigPassingRule =
   S.Unknown as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRule>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
@@ -1549,7 +1344,7 @@ export interface UpdateEvaluationsPartialRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: UpdateEvaluationsPartialRequestOutputConfigPassingRule | null;
 }
-export const UpdateEvaluationsPartialRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateEvaluationsPartialRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allows_na: S.optional(S.Boolean),
     true_is_failure: S.optional(S.Boolean),
@@ -1566,26 +1361,19 @@ export const UpdateEvaluationsPartialRequestOutputConfig = /*@__PURE__*/ S.suspe
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationsPartialRequestConditionsList = Array<EvaluationCondition>;
-export const UpdateEvaluationsPartialRequestConditionsList =
+const UpdateEvaluationsPartialRequestConditionsList =
   CreateEvaluationRequestConditionsList as any as S.Schema<UpdateEvaluationsPartialRequestConditionsList>;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type UpdateEvaluationsPartialRequestTargetConfigCase0Strategy = "fixed_window";
-export const UpdateEvaluationsPartialRequestTargetConfigCase0Strategy = S.String;
-
 export interface UpdateEvaluationsPartialRequestTargetConfigCase0 {
   /** Wait a fixed window after the first matching generation, then evaluate. */
   strategy: UpdateEvaluationsPartialRequestTargetConfigCase0Strategy;
   /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled -- editing it does not change runs already in flight. The accepted range depends on `target`: 10-7200 for 'trace', 10-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   window_seconds?: number;
 }
-export const UpdateEvaluationsPartialRequestTargetConfigCase0 =
-  CreateEvaluationRequestTargetConfigCase0 as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfigCase0>;
-
 /** Evaluate once the unit has had no new activity for the quiet period. */
 export type UpdateEvaluationsPartialRequestTargetConfigCase1Strategy = "inactivity";
-export const UpdateEvaluationsPartialRequestTargetConfigCase1Strategy = S.String;
-
 export interface UpdateEvaluationsPartialRequestTargetConfigCase1 {
   /** Evaluate once the unit has had no new activity for the quiet period. */
   strategy: UpdateEvaluationsPartialRequestTargetConfigCase1Strategy;
@@ -1594,14 +1382,11 @@ export interface UpdateEvaluationsPartialRequestTargetConfigCase1 {
   /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60-7200 for 'trace', 60-604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
   max_age_seconds?: number;
 }
-export const UpdateEvaluationsPartialRequestTargetConfigCase1 =
-  CreateEvaluationRequestTargetConfigCase1 as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfigCase1>;
-
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type UpdateEvaluationsPartialRequestTargetConfig =
   | UpdateEvaluationsPartialRequestTargetConfigCase0
   | UpdateEvaluationsPartialRequestTargetConfigCase1;
-export const UpdateEvaluationsPartialRequestTargetConfig =
+const UpdateEvaluationsPartialRequestTargetConfig =
   S.Unknown as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfig>;
 
 export interface UpdateEvaluationsPartialRequest {
@@ -1636,7 +1421,7 @@ export interface UpdateEvaluationsPartialRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-export const UpdateEvaluationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEvaluationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

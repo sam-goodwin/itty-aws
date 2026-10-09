@@ -38,7 +38,7 @@ export interface CreateLlmPromptRequest {
   /** Optional note describing what changed in this version. Set when the version is published. */
   version_description?: string | null;
 }
-export const CreateLlmPromptRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmPromptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -49,7 +49,7 @@ export const CreateLlmPromptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLlmPromptRequest" }) as any as S.Schema<CreateLlmPromptRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -65,14 +65,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -85,7 +80,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -105,7 +100,7 @@ export interface LLMPromptOutlineEntry {
   /** Heading text with markdown link syntax preserved. */
   text?: string;
 }
-export const LLMPromptOutlineEntry = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptOutlineEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(S.Number),
     text: S.optional(S.String),
@@ -113,15 +108,13 @@ export const LLMPromptOutlineEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMPromptOutlineEntry" }) as any as S.Schema<LLMPromptOutlineEntry>;
 
 export type LLMPromptOutlineList = Array<LLMPromptOutlineEntry>;
-export const LLMPromptOutlineList = /*@__PURE__*/ S.Array(
+const LLMPromptOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptLabelsList = Array<string>;
-export const LLMPromptLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LLMPromptLabelsList>;
+const LLMPromptLabelsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<LLMPromptLabelsList>;
 
 export interface LLMPrompt {
   id?: string;
@@ -148,7 +141,7 @@ export interface LLMPrompt {
   /** Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters. */
   activity_item_id?: string;
 }
-export const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
+const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -171,7 +164,7 @@ export const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMPrompt" }) as any as S.Schema<LLMPrompt>;
 
 export type GetLlmPromptsNameRequestContent = "full" | "preview" | "none";
-export const GetLlmPromptsNameRequestContent = S.String;
+const GetLlmPromptsNameRequestContent = S.String;
 
 export interface GetLlmPromptsNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -186,7 +179,7 @@ export interface GetLlmPromptsNameRequest {
   /** Specific prompt version to fetch. If omitted, the latest version is returned. */
   version?: number;
 }
-export const GetLlmPromptsNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmPromptsNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
@@ -205,7 +198,7 @@ export const GetLlmPromptsNameRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Flat list of markdown headings parsed from the prompt. Useful as a lightweight table of contents. */
 export type LLMPromptPublicOutlineList = Array<LLMPromptOutlineEntry>;
-export const LLMPromptPublicOutlineList =
+const LLMPromptPublicOutlineList =
   LLMPromptOutlineList as any as S.Schema<LLMPromptPublicOutlineList>;
 
 export interface LLMPromptResolvedReference {
@@ -216,7 +209,7 @@ export interface LLMPromptResolvedReference {
   /** Label the reference used, or null when it pinned a version directly. */
   label: string | null;
 }
-export const LLMPromptResolvedReference = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptResolvedReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version: S.Number,
@@ -228,7 +221,7 @@ export const LLMPromptResolvedReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The exact prompt versions spliced into the returned content, in order of first appearance. Empty when the prompt has no references. Only present when references were resolved. */
 export type LLMPromptPublicResolvedReferencesList = Array<LLMPromptResolvedReference>;
-export const LLMPromptPublicResolvedReferencesList = /*@__PURE__*/ S.Array(
+const LLMPromptPublicResolvedReferencesList = /*@__PURE__*/ S.Array(
   LLMPromptResolvedReference,
 ) as any as S.Schema<LLMPromptPublicResolvedReferencesList>;
 
@@ -256,7 +249,7 @@ export interface LLMPromptPublic {
   version_count?: number;
   first_version_created_at?: string;
 }
-export const LLMPromptPublic = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptPublic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -292,7 +285,7 @@ export interface GetLlmPromptsResolveNameRequest {
   /** Exact prompt version UUID to resolve. Can be used together with version for extra safety. */
   version_id?: string;
 }
-export const GetLlmPromptsResolveNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmPromptsResolveNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
@@ -314,7 +307,7 @@ export const GetLlmPromptsResolveNameRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptVersionSummaryLabelsList = Array<string>;
-export const LLMPromptVersionSummaryLabelsList =
+const LLMPromptVersionSummaryLabelsList =
   LLMPromptLabelsList as any as S.Schema<LLMPromptVersionSummaryLabelsList>;
 
 export interface LLMPromptVersionSummary {
@@ -327,7 +320,7 @@ export interface LLMPromptVersionSummary {
   /** Names of the labels currently pointing at this version. */
   labels?: LLMPromptVersionSummaryLabelsList;
 }
-export const LLMPromptVersionSummary = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptVersionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.Number),
@@ -340,7 +333,7 @@ export const LLMPromptVersionSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMPromptVersionSummary" }) as any as S.Schema<LLMPromptVersionSummary>;
 
 export type LLMPromptResolveResponseVersionsList = Array<LLMPromptVersionSummary>;
-export const LLMPromptResolveResponseVersionsList = /*@__PURE__*/ S.Array(
+const LLMPromptResolveResponseVersionsList = /*@__PURE__*/ S.Array(
   LLMPromptVersionSummary,
 ) as any as S.Schema<LLMPromptResolveResponseVersionsList>;
 
@@ -355,7 +348,7 @@ export interface LLMPromptLabel {
   created_at: string;
   updated_at: string;
 }
-export const LLMPromptLabel = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -369,7 +362,7 @@ export const LLMPromptLabel = /*@__PURE__*/ S.suspend(() =>
 
 /** All labels on this prompt with the version each one currently points to, across all versions (not just the returned page). */
 export type LLMPromptResolveResponseLabelsList = Array<LLMPromptLabel>;
-export const LLMPromptResolveResponseLabelsList = /*@__PURE__*/ S.Array(
+const LLMPromptResolveResponseLabelsList = /*@__PURE__*/ S.Array(
   LLMPromptLabel,
 ) as any as S.Schema<LLMPromptResolveResponseLabelsList>;
 
@@ -381,7 +374,7 @@ export interface LLMPromptReferencedBy {
   /** Version of this prompt the reference pins, or null when it follows a label. */
   version: number | null;
 }
-export const LLMPromptReferencedBy = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptReferencedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     label: S.NullOr(S.String),
@@ -391,7 +384,7 @@ export const LLMPromptReferencedBy = /*@__PURE__*/ S.suspend(() =>
 
 /** Prompts whose latest or labeled version references this prompt, with the label or version each reference uses. Empty when nothing references this prompt. At most 100 entries, ordered by prompt name. */
 export type LLMPromptResolveResponseReferencedByList = Array<LLMPromptReferencedBy>;
-export const LLMPromptResolveResponseReferencedByList = /*@__PURE__*/ S.Array(
+const LLMPromptResolveResponseReferencedByList = /*@__PURE__*/ S.Array(
   LLMPromptReferencedBy,
 ) as any as S.Schema<LLMPromptResolveResponseReferencedByList>;
 
@@ -404,7 +397,7 @@ export interface LLMPromptResolveResponse {
   /** Prompts whose latest or labeled version references this prompt, with the label or version each reference uses. Empty when nothing references this prompt. At most 100 entries, ordered by prompt name. */
   referenced_by?: LLMPromptResolveResponseReferencedByList;
 }
-export const LLMPromptResolveResponse = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptResolveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(LLMPrompt),
     versions: S.optional(LLMPromptResolveResponseVersionsList),
@@ -415,7 +408,7 @@ export const LLMPromptResolveResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMPromptResolveResponse" }) as any as S.Schema<LLMPromptResolveResponse>;
 
 export type ListLlmPromptsRequestContent = "full" | "preview" | "none";
-export const ListLlmPromptsRequestContent = S.String;
+const ListLlmPromptsRequestContent = S.String;
 
 export type ListLlmPromptsRequestOrderBy =
   | "name"
@@ -434,7 +427,7 @@ export type ListLlmPromptsRequestOrderBy =
   | "-first_version_created_at"
   | "prompt_size_bytes"
   | "-prompt_size_bytes";
-export const ListLlmPromptsRequestOrderBy = S.String;
+const ListLlmPromptsRequestOrderBy = S.String;
 
 export interface ListLlmPromptsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -456,7 +449,7 @@ export interface ListLlmPromptsRequest {
   /** Optional substring filter applied to prompt names and prompt content. */
   search?: string;
 }
-export const ListLlmPromptsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmPromptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     content: S.optional(ListLlmPromptsRequestContent.pipe(T.Query())),
@@ -471,13 +464,11 @@ export const ListLlmPromptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLlmPromptsRequest" }) as any as S.Schema<ListLlmPromptsRequest>;
 
 export type LLMPromptListOutlineList = Array<LLMPromptOutlineEntry>;
-export const LLMPromptListOutlineList =
-  LLMPromptOutlineList as any as S.Schema<LLMPromptListOutlineList>;
+const LLMPromptListOutlineList = LLMPromptOutlineList as any as S.Schema<LLMPromptListOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptListLabelsList = Array<string>;
-export const LLMPromptListLabelsList =
-  LLMPromptLabelsList as any as S.Schema<LLMPromptListLabelsList>;
+const LLMPromptListLabelsList = LLMPromptLabelsList as any as S.Schema<LLMPromptListLabelsList>;
 
 export interface LLMPromptLabelSummary {
   /** Label name, e.g. 'production'. */
@@ -485,7 +476,7 @@ export interface LLMPromptLabelSummary {
   /** Prompt version this label currently points to. */
   version: number;
 }
-export const LLMPromptLabelSummary = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptLabelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version: S.Number,
@@ -493,12 +484,12 @@ export const LLMPromptLabelSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMPromptLabelSummary" }) as any as S.Schema<LLMPromptLabelSummary>;
 
 export type LLMPromptListAllLabelsList = Array<LLMPromptLabelSummary>;
-export const LLMPromptListAllLabelsList = /*@__PURE__*/ S.Array(
+const LLMPromptListAllLabelsList = /*@__PURE__*/ S.Array(
   LLMPromptLabelSummary,
 ) as any as S.Schema<LLMPromptListAllLabelsList>;
 
 export type LLMPromptListResolvedReferencesList = Array<LLMPromptResolvedReference>;
-export const LLMPromptListResolvedReferencesList =
+const LLMPromptListResolvedReferencesList =
   LLMPromptPublicResolvedReferencesList as any as S.Schema<LLMPromptListResolvedReferencesList>;
 
 export interface LLMPromptList {
@@ -530,7 +521,7 @@ export interface LLMPromptList {
   all_labels?: LLMPromptListAllLabelsList;
   resolved_references?: LLMPromptListResolvedReferencesList | null;
 }
-export const LLMPromptList = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -557,7 +548,7 @@ export const LLMPromptList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMPromptList" }) as any as S.Schema<LLMPromptList>;
 
 export type PaginatedLLMPromptListListResultsList = Array<LLMPromptList>;
-export const PaginatedLLMPromptListListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLLMPromptListListResultsList = /*@__PURE__*/ S.Array(
   LLMPromptList,
 ) as any as S.Schema<PaginatedLLMPromptListListResultsList>;
 
@@ -567,7 +558,7 @@ export interface PaginatedLLMPromptListList {
   previous?: string | null;
   results?: PaginatedLLMPromptListListResultsList;
 }
-export const PaginatedLLMPromptListList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLLMPromptListList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -583,7 +574,7 @@ export interface LlmPromptsNameArchiveCreateRequest {
   project_id: string;
   prompt_name: string;
 }
-export const LlmPromptsNameArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmPromptsNameArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
@@ -599,9 +590,7 @@ export const LlmPromptsNameArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmPromptsNameArchiveCreateRequest>;
 
 export interface LlmPromptsNameArchiveCreateResponse {}
-export const LlmPromptsNameArchiveCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const LlmPromptsNameArchiveCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "LlmPromptsNameArchiveCreateResponse",
 }) as any as S.Schema<LlmPromptsNameArchiveCreateResponse>;
 
@@ -612,7 +601,7 @@ export interface LlmPromptsNameDuplicateCreateRequest {
   /** Name for the duplicated prompt. Must be unique and use only letters, numbers, hyphens, and underscores. */
   new_name?: string;
 }
-export const LlmPromptsNameDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmPromptsNameDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
@@ -634,7 +623,7 @@ export interface LlmPromptsNameLabelsDestroyRequest {
   prompt_name: string;
   label_name: string;
 }
-export const LlmPromptsNameLabelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmPromptsNameLabelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
@@ -651,7 +640,7 @@ export const LlmPromptsNameLabelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmPromptsNameLabelsDestroyRequest>;
 
 export interface LlmPromptsNameLabelsDestroyResponse {}
-export const LlmPromptsNameLabelsDestroyResponse =
+const LlmPromptsNameLabelsDestroyResponse =
   LlmPromptsNameArchiveCreateResponse as any as S.Schema<LlmPromptsNameLabelsDestroyResponse>;
 
 export interface UpdateLlmPromptsNameLabelRequest {
@@ -662,7 +651,7 @@ export interface UpdateLlmPromptsNameLabelRequest {
   /** Prompt version this label should point to. If the label already exists on another version of the prompt, it is moved there. */
   version: number;
 }
-export const UpdateLlmPromptsNameLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmPromptsNameLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
@@ -685,7 +674,7 @@ export interface LLMPromptEditOperation {
   /** Replacement text. */
   new?: string;
 }
-export const LLMPromptEditOperation = /*@__PURE__*/ S.suspend(() =>
+const LLMPromptEditOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     old: S.optional(S.String),
     new: S.optional(S.String),
@@ -694,7 +683,7 @@ export const LLMPromptEditOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of find/replace operations to apply to the current prompt version. Each edit's 'old' text must match exactly once. Edits are applied sequentially. Mutually exclusive with prompt. */
 export type UpdateLlmPromptsNamePartialRequestEditsList = Array<LLMPromptEditOperation>;
-export const UpdateLlmPromptsNamePartialRequestEditsList = /*@__PURE__*/ S.Array(
+const UpdateLlmPromptsNamePartialRequestEditsList = /*@__PURE__*/ S.Array(
   LLMPromptEditOperation,
 ) as any as S.Schema<UpdateLlmPromptsNamePartialRequestEditsList>;
 
@@ -713,7 +702,7 @@ export interface UpdateLlmPromptsNamePartialRequest {
   /** Optional note describing what changed in this version. Shown in the version history. */
   version_description?: string;
 }
-export const UpdateLlmPromptsNamePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmPromptsNamePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),

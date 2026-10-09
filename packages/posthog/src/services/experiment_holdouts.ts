@@ -37,8 +37,6 @@ export class NotFound
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
-export const PropertyGroupTypeEnum = S.String;
-
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
 export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "exact"
@@ -55,8 +53,6 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gte"
   | "lt"
   | "lte";
-export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -71,23 +67,8 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
   operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
-export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.Unknown),
-    operator: S.optional(FeatureFlagFilterPropertyGenericSchemaOperatorEnum),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyGenericSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
-
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
 export type ExistenceOperatorEnum = "is_set" | "is_not_set";
-export const ExistenceOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -102,23 +83,8 @@ export interface FeatureFlagFilterPropertyExistsSchema {
   /** Optional value. Runtime behavior determines whether this is ignored. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(ExistenceOperatorEnum),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyExistsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyExistsSchema>;
-
 /** * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
 export type DateOperatorEnum = "is_date_exact" | "is_date_before" | "is_date_after";
-export const DateOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -133,19 +99,6 @@ export interface FeatureFlagFilterPropertyDateSchema {
   /** Date value in ISO format or relative date expression. */
   value?: string;
 }
-export const FeatureFlagFilterPropertyDateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(DateOperatorEnum),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyDateSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyDateSchema>;
-
 /** * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
 export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_gt"
@@ -157,8 +110,6 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_tilde"
   | "semver_caret"
   | "semver_wildcard";
-export const FeatureFlagFilterPropertySemverSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -173,21 +124,12 @@ export interface FeatureFlagFilterPropertySemverSchema {
   /** Semantic version string. */
   value?: string;
 }
-export const FeatureFlagFilterPropertySemverSchema =
-  FeatureFlagFilterPropertyDateSchema as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
-
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
   | "not_icontains_multi";
-export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum = S.String;
-
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList = Array<string>;
-export const FeatureFlagFilterPropertyMultiContainsSchemaValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
-
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -202,27 +144,10 @@ export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** List of strings to evaluate against. */
   value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
 }
-export const FeatureFlagFilterPropertyMultiContainsSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum),
-    value: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaValueList),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyMultiContainsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
-
 /** * `cohort` - cohort */
 export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
-export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum = S.String;
-
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum = "in" | "not_in";
-export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -237,17 +162,10 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Cohort comparison value (single or list, depending on usage). */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyCohortInSchema =
-  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
-
 /** * `flag` - flag */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = S.String;
-
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum = "flag_evaluates_to";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -262,9 +180,6 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Value to compare flag evaluation against. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
-  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
-
 export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyGenericSchema
   | FeatureFlagFilterPropertyExistsSchema
@@ -273,12 +188,12 @@ export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyMultiContainsSchema
   | FeatureFlagFilterPropertyCohortInSchema
   | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-export const FeatureFlagFilterPropertySchema =
+const FeatureFlagFilterPropertySchema =
   S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList = Array<FeatureFlagFilterPropertySchema>;
-export const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ S.Array(
+const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ S.Array(
   FeatureFlagFilterPropertySchema,
 ) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
 
@@ -292,7 +207,7 @@ export interface FeatureFlagConditionGroupSchema {
   /** Group type index for this condition set. None means person-level aggregation. */
   aggregation_group_type_index?: number | null;
 }
-export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
     rollout_percentage: S.optional(S.Number),
@@ -305,7 +220,7 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type CreateExperimentHoldoutRequestFiltersList = Array<FeatureFlagConditionGroupSchema>;
-export const CreateExperimentHoldoutRequestFiltersList = /*@__PURE__*/ S.Array(
+const CreateExperimentHoldoutRequestFiltersList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
 ) as any as S.Schema<CreateExperimentHoldoutRequestFiltersList>;
 
@@ -319,7 +234,7 @@ export interface CreateExperimentHoldoutRequest {
   /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
   filters?: CreateExperimentHoldoutRequestFiltersList;
 }
-export const CreateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -334,11 +249,11 @@ export const CreateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type ExperimentHoldoutFiltersList = Array<FeatureFlagConditionGroupSchema>;
-export const ExperimentHoldoutFiltersList =
+const ExperimentHoldoutFiltersList =
   CreateExperimentHoldoutRequestFiltersList as any as S.Schema<ExperimentHoldoutFiltersList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -354,14 +269,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -374,7 +284,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -403,7 +313,7 @@ export interface ExperimentHoldout {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
+const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -422,7 +332,7 @@ export interface ExperimentHoldoutsDestroyRequest {
   /** A unique integer value identifying this experiment holdout. */
   id: number;
 }
-export const ExperimentHoldoutsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentHoldoutsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -438,9 +348,7 @@ export const ExperimentHoldoutsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentHoldoutsDestroyRequest>;
 
 export interface ExperimentHoldoutsDestroyResponse {}
-export const ExperimentHoldoutsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ExperimentHoldoutsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExperimentHoldoutsDestroyResponse",
 }) as any as S.Schema<ExperimentHoldoutsDestroyResponse>;
 
@@ -450,7 +358,7 @@ export interface GetExperimentHoldoutRequest {
   /** A unique integer value identifying this experiment holdout. */
   id: number;
 }
-export const GetExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -473,7 +381,7 @@ export interface ListExperimentHoldoutsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListExperimentHoldoutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentHoldoutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -486,7 +394,7 @@ export const ListExperimentHoldoutsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExperimentHoldoutsRequest>;
 
 export type PaginatedExperimentHoldoutListResultsList = Array<ExperimentHoldout>;
-export const PaginatedExperimentHoldoutListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExperimentHoldoutListResultsList = /*@__PURE__*/ S.Array(
   ExperimentHoldout,
 ) as any as S.Schema<PaginatedExperimentHoldoutListResultsList>;
 
@@ -496,7 +404,7 @@ export interface PaginatedExperimentHoldoutList {
   previous?: string | null;
   results?: PaginatedExperimentHoldoutListResultsList;
 }
-export const PaginatedExperimentHoldoutList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExperimentHoldoutList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -509,7 +417,7 @@ export const PaginatedExperimentHoldoutList = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type UpdateExperimentHoldoutRequestFiltersList = Array<FeatureFlagConditionGroupSchema>;
-export const UpdateExperimentHoldoutRequestFiltersList =
+const UpdateExperimentHoldoutRequestFiltersList =
   CreateExperimentHoldoutRequestFiltersList as any as S.Schema<UpdateExperimentHoldoutRequestFiltersList>;
 
 export interface UpdateExperimentHoldoutRequest {
@@ -524,7 +432,7 @@ export interface UpdateExperimentHoldoutRequest {
   /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
   filters?: UpdateExperimentHoldoutRequestFiltersList;
 }
-export const UpdateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -545,7 +453,7 @@ export const UpdateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type UpdateExperimentHoldoutsPartialRequestFiltersList =
   Array<FeatureFlagConditionGroupSchema>;
-export const UpdateExperimentHoldoutsPartialRequestFiltersList =
+const UpdateExperimentHoldoutsPartialRequestFiltersList =
   CreateExperimentHoldoutRequestFiltersList as any as S.Schema<UpdateExperimentHoldoutsPartialRequestFiltersList>;
 
 export interface UpdateExperimentHoldoutsPartialRequest {
@@ -560,7 +468,7 @@ export interface UpdateExperimentHoldoutsPartialRequest {
   /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
   filters?: UpdateExperimentHoldoutsPartialRequestFiltersList;
 }
-export const UpdateExperimentHoldoutsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentHoldoutsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

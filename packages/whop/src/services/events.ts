@@ -56,7 +56,7 @@ export type CreateEventRequestActionSource =
   | "system_generated"
   | "business_messaging"
   | "other";
-export const CreateEventRequestActionSource = S.String;
+const CreateEventRequestActionSource = S.String;
 
 /** Tracking and attribution context. */
 export interface CreateEventRequestContext {
@@ -125,7 +125,7 @@ export interface CreateEventRequestContext {
   /** Google Ads wbraid click ID (iOS privacy). */
   wbraid?: string | null;
 }
-export const CreateEventRequestContext = /*@__PURE__*/ S.suspend(() =>
+const CreateEventRequestContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ad_campaign_id: S.optional(S.NullOr(S.String)),
     ad_id: S.optional(S.NullOr(S.String)),
@@ -256,11 +256,11 @@ export type CreateEventRequestCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-export const CreateEventRequestCurrency = S.String;
+const CreateEventRequestCurrency = S.String;
 
 /** Gender */
 export type CreateEventRequestUserGender = "male" | "female";
-export const CreateEventRequestUserGender = S.String;
+const CreateEventRequestUserGender = S.String;
 
 /** User identity and profile data. */
 export interface CreateEventRequestUser {
@@ -303,7 +303,7 @@ export interface CreateEventRequestUser {
   /** Username. */
   username?: string | null;
 }
-export const CreateEventRequestUser = /*@__PURE__*/ S.suspend(() =>
+const CreateEventRequestUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anonymous_id: S.optional(S.NullOr(S.String)),
     birthdate: S.optional(S.NullOr(S.String)),
@@ -371,7 +371,7 @@ export interface CreateEventRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     action_source: S.optional(S.NullOr(CreateEventRequestActionSource)),
@@ -400,7 +400,7 @@ export const CreateEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEventResponse {
   id: string;
 }
-export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -416,7 +416,7 @@ export interface GetPulseRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const GetPulseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPulseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(S.String.pipe(T.Query())),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -427,7 +427,7 @@ export const GetPulseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The underlying event recorded. Every movement on this feed is a ledger line, so switch on `type` rather than this. */
 export type GetPulseResponseDataItemEventName = "ledger_line.created";
-export const GetPulseResponseDataItemEventName = S.String;
+const GetPulseResponseDataItemEventName = S.String;
 
 /** What moved: a purchase, an affiliate commission, Whop card spend, ad spend, app revenue, an off-platform sale, a wallet deposit, a card load, a claimed drop, a transfer between accounts, or a referral bonus. */
 export type GetPulseResponseDataItemType =
@@ -442,7 +442,7 @@ export type GetPulseResponseDataItemType =
   | "airdrop_claim"
   | "transfer"
   | "referral_bonus";
-export const GetPulseResponseDataItemType = S.String;
+const GetPulseResponseDataItemType = S.String;
 
 /** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of -- the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
 export interface GetPulseResponseDataItemUser {
@@ -451,7 +451,7 @@ export interface GetPulseResponseDataItemUser {
   /** ISO 3166-1 alpha-2 country code. Omitted when unknown. */
   country?: string;
 }
-export const GetPulseResponseDataItemUser = /*@__PURE__*/ S.suspend(() =>
+const GetPulseResponseDataItemUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     country: S.optional(S.String),
@@ -472,7 +472,7 @@ export interface GetPulseResponseDataItem {
   /** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of -- the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
   user?: GetPulseResponseDataItemUser;
 }
-export const GetPulseResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const GetPulseResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_name: GetPulseResponseDataItemEventName,
     event_time: S.String,
@@ -484,7 +484,7 @@ export const GetPulseResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Recent anonymized money-movement events, newest first. */
 export type GetPulseResponseDataList = Array<GetPulseResponseDataItem>;
-export const GetPulseResponseDataList = /*@__PURE__*/ S.Array(
+const GetPulseResponseDataList = /*@__PURE__*/ S.Array(
   GetPulseResponseDataItem,
 ) as any as S.Schema<GetPulseResponseDataList>;
 
@@ -494,7 +494,7 @@ export interface GetPulseResponsePageInfo {
   has_previous_page: boolean;
   start_cursor?: string | null;
 }
-export const GetPulseResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const GetPulseResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.optional(S.NullOr(S.String)),
     has_next_page: S.Boolean,
@@ -508,7 +508,7 @@ export interface GetPulseResponse {
   data: GetPulseResponseDataList;
   page_info: GetPulseResponsePageInfo;
 }
-export const GetPulseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPulseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetPulseResponseDataList,
     page_info: GetPulseResponsePageInfo,
@@ -516,10 +516,10 @@ export const GetPulseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPulseResponse" }) as any as S.Schema<GetPulseResponse>;
 
 export type ListEventsRequestDirection = "asc" | "desc";
-export const ListEventsRequestDirection = S.String;
+const ListEventsRequestDirection = S.String;
 
 export type ListEventsRequestAttributionModel = "last_touch" | "first_touch";
-export const ListEventsRequestAttributionModel = S.String;
+const ListEventsRequestAttributionModel = S.String;
 
 export interface ListEventsRequest {
   /** Any hard identifier of the person: a person ID (prsn_*), user ID, email, phone number, or a tracking cookie value (wuid, anonymous ID, fbp/fbc/ttp/ga). Omit to list recent events for the account. */
@@ -561,7 +561,7 @@ export interface ListEventsRequest {
   /** Page paths to filter by, comma-separated. */
   page?: string;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String.pipe(T.Query())),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -591,7 +591,7 @@ export type ListEventsResponseDataItemContextSourceType =
   | "lead_form"
   | "external_ad_click"
   | "referrer";
-export const ListEventsResponseDataItemContextSourceType = S.String;
+const ListEventsResponseDataItemContextSourceType = S.String;
 
 export interface ListEventsResponseDataItemContext {
   ad_campaign_id?: string | null;
@@ -609,7 +609,7 @@ export interface ListEventsResponseDataItemContext {
   utm_source?: string | null;
   utm_term?: string | null;
 }
-export const ListEventsResponseDataItemContext = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ad_campaign_id: S.optional(S.NullOr(S.String)),
     ad_click_id: S.optional(S.NullOr(S.String)),
@@ -628,7 +628,7 @@ export const ListEventsResponseDataItemContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEventsResponseDataItemContext>;
 
 export type ListEventsResponseDataItemQuestionsItemOptionsList = Array<string>;
-export const ListEventsResponseDataItemQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
+const ListEventsResponseDataItemQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListEventsResponseDataItemQuestionsItemOptionsList>;
 
@@ -640,7 +640,7 @@ export interface ListEventsResponseDataItemQuestionsItem {
   question?: string | null;
   type?: string | null;
 }
-export const ListEventsResponseDataItemQuestionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemQuestionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.optional(S.NullOr(S.String)),
     id: S.optional(S.NullOr(S.String)),
@@ -655,7 +655,7 @@ export const ListEventsResponseDataItemQuestionsItem = /*@__PURE__*/ S.suspend((
 
 export type ListEventsResponseDataItemQuestionsList =
   Array<ListEventsResponseDataItemQuestionsItem>;
-export const ListEventsResponseDataItemQuestionsList = /*@__PURE__*/ S.Array(
+const ListEventsResponseDataItemQuestionsList = /*@__PURE__*/ S.Array(
   ListEventsResponseDataItemQuestionsItem,
 ) as any as S.Schema<ListEventsResponseDataItemQuestionsList>;
 
@@ -665,7 +665,7 @@ export interface ListEventsResponseDataItemRelatedAccount {
   route?: string | null;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedAccount = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     logo_url: S.optional(S.NullOr(S.String)),
@@ -682,7 +682,7 @@ export interface ListEventsResponseDataItemRelatedAd {
   thumbnail_url?: string | null;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedAd = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     thumbnail_url: S.optional(S.NullOr(S.String)),
@@ -698,7 +698,7 @@ export interface ListEventsResponseDataItemRelatedAdCampaign {
   platform?: string | null;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedAdCampaign = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedAdCampaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     platform: S.optional(S.NullOr(S.String)),
@@ -713,7 +713,7 @@ export interface ListEventsResponseDataItemRelatedAdGroup {
   id?: string;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedAdGroup = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedAdGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
@@ -728,7 +728,7 @@ export interface ListEventsResponseDataItemRelatedApp {
   id?: string;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedApp = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain_id: S.optional(S.NullOr(S.String)),
     icon_url: S.optional(S.NullOr(S.String)),
@@ -740,13 +740,13 @@ export const ListEventsResponseDataItemRelatedApp = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListEventsResponseDataItemRelatedApp>;
 
 export type ListEventsResponseDataItemRelatedAudienceAudienceType = "custom" | "lookalike";
-export const ListEventsResponseDataItemRelatedAudienceAudienceType = S.String;
+const ListEventsResponseDataItemRelatedAudienceAudienceType = S.String;
 
 export type ListEventsResponseDataItemRelatedAudienceSourceType =
   | "csv_upload"
   | "people_filter"
   | "engagement";
-export const ListEventsResponseDataItemRelatedAudienceSourceType = S.String;
+const ListEventsResponseDataItemRelatedAudienceSourceType = S.String;
 
 /** The saved audience this event came from. Present on the identify events an audience ingest writes for each of its members. */
 export interface ListEventsResponseDataItemRelatedAudience {
@@ -756,7 +756,7 @@ export interface ListEventsResponseDataItemRelatedAudience {
   source_type?: ListEventsResponseDataItemRelatedAudienceSourceType | null;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedAudience = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedAudience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience_type: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAudienceAudienceType)),
     file_name: S.optional(S.NullOr(S.String)),
@@ -778,7 +778,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -805,7 +805,7 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
-export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
+const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.NullOr(S.String),
     label: S.NullOr(S.String),
@@ -820,7 +820,7 @@ export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Everything this payment charged for, in purchase order, including quantities. Older payments fall back to their original plan. */
 export type ListEventsResponseDataItemRelatedPaymentLineItemsList = Array<ReceiptLineItem>;
-export const ListEventsResponseDataItemRelatedPaymentLineItemsList = /*@__PURE__*/ S.Array(
+const ListEventsResponseDataItemRelatedPaymentLineItemsList = /*@__PURE__*/ S.Array(
   ReceiptLineItem,
 ) as any as S.Schema<ListEventsResponseDataItemRelatedPaymentLineItemsList>;
 
@@ -832,7 +832,7 @@ export interface ListEventsResponseDataItemRelatedPayment {
   line_items?: ListEventsResponseDataItemRelatedPaymentLineItemsList;
   provider?: string | null;
 }
-export const ListEventsResponseDataItemRelatedPayment = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedPayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_brand: S.optional(S.NullOr(S.String)),
     card_last4: S.optional(S.NullOr(S.String)),
@@ -852,7 +852,7 @@ export interface ListEventsResponseDataItemRelatedPlan {
   renewal_price?: number | null;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedPlan = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_period: S.optional(S.NullOr(S.Number)),
     currency: S.optional(S.NullOr(S.String)),
@@ -870,7 +870,7 @@ export interface ListEventsResponseDataItemRelatedProduct {
   route?: string | null;
   title?: string | null;
 }
-export const ListEventsResponseDataItemRelatedProduct = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     route: S.optional(S.NullOr(S.String)),
@@ -886,7 +886,7 @@ export interface ListEventsResponseDataItemRelatedUser {
   name?: string | null;
   username?: string | null;
 }
-export const ListEventsResponseDataItemRelatedUser = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelatedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -914,7 +914,7 @@ export interface ListEventsResponseDataItemRelated {
   product?: ListEventsResponseDataItemRelatedProduct | null;
   user?: ListEventsResponseDataItemRelatedUser | null;
 }
-export const ListEventsResponseDataItemRelated = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemRelated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAccount)),
     ad: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAd)),
@@ -940,7 +940,7 @@ export interface ListEventsResponseDataItemUser {
   name?: string | null;
   phone?: string | null;
 }
-export const ListEventsResponseDataItemUser = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItemUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     country: S.optional(S.NullOr(S.String)),
@@ -973,7 +973,7 @@ export interface ListEventsResponseDataItem {
   user?: ListEventsResponseDataItemUser | null;
   value?: number | null;
 }
-export const ListEventsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.NullOr(ListEventsResponseDataItemContext)),
     currency: S.optional(S.NullOr(S.String)),
@@ -997,18 +997,16 @@ export const ListEventsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEventsResponseDataItem>;
 
 export type ListEventsResponseDataList = Array<ListEventsResponseDataItem>;
-export const ListEventsResponseDataList = /*@__PURE__*/ S.Array(
+const ListEventsResponseDataList = /*@__PURE__*/ S.Array(
   ListEventsResponseDataItem,
 ) as any as S.Schema<ListEventsResponseDataList>;
 
 export type ListEventsResponsePageInfo = GetPulseResponsePageInfo;
-export const ListEventsResponsePageInfo = GetPulseResponsePageInfo;
-
 export interface ListEventsResponse {
   data: ListEventsResponseDataList;
   page_info: GetPulseResponsePageInfo;
 }
-export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListEventsResponseDataList,
     page_info: GetPulseResponsePageInfo,
@@ -1023,7 +1021,7 @@ export interface ValidatePixelRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ValidatePixelRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidatePixelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     url: S.optional(S.String),
@@ -1032,11 +1030,11 @@ export const ValidatePixelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidatePixelRequest" }) as any as S.Schema<ValidatePixelRequest>;
 
 export type PixelValidationHostEventsList = Array<string>;
-export const PixelValidationHostEventsList =
+const PixelValidationHostEventsList =
   ListEventsResponseDataItemQuestionsItemOptionsList as any as S.Schema<PixelValidationHostEventsList>;
 
 export type PixelValidationPageEventsList = Array<string>;
-export const PixelValidationPageEventsList =
+const PixelValidationPageEventsList =
   ListEventsResponseDataItemQuestionsItemOptionsList as any as S.Schema<PixelValidationPageEventsList>;
 
 export interface PixelValidation {
@@ -1057,7 +1055,7 @@ export interface PixelValidation {
   /** The URL that was checked, after normalization. `null` when the request didn't include one. */
   url: string | null;
 }
-export const PixelValidation = /*@__PURE__*/ S.suspend(() =>
+const PixelValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firing_data_ok: S.Boolean,
     host_events: PixelValidationHostEventsList,

@@ -27,7 +27,7 @@ export interface DeletePackageRequest {
   /** version of the package */
   version: string;
 }
-export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -39,7 +39,7 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePackageRequest" }) as any as S.Schema<DeletePackageRequest>;
 
 export interface DeletePackageResponse {}
-export const DeletePackageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePackageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePackageResponse",
 }) as any as S.Schema<DeletePackageResponse>;
 
@@ -53,7 +53,7 @@ export interface GetPackageRequest {
   /** version of the package */
   version: string;
 }
-export const GetPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -106,7 +106,7 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     avatar_url: S.optional(S.String),
@@ -145,7 +145,7 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-export const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
+const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_tracker_format: S.optional(S.String),
     external_tracker_regexp_pattern: S.optional(S.String),
@@ -159,7 +159,7 @@ export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-export const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
+const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_wiki_url: S.optional(S.String),
   }),
@@ -174,7 +174,7 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
+const InternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_only_contributors_to_track_time: S.optional(S.Boolean),
     enable_issue_dependencies: S.optional(S.Boolean),
@@ -184,7 +184,7 @@ export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
 
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-export const RepositoryObjectFormatName = S.String;
+const RepositoryObjectFormatName = S.String;
 
 /** Permission represents a set of permissions */
 export interface Permission {
@@ -192,7 +192,7 @@ export interface Permission {
   pull?: boolean;
   push?: boolean;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     pull: S.optional(S.Boolean),
@@ -216,7 +216,7 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.String),
     created: S.optional(S.String),
@@ -234,13 +234,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-export const TeamPermission = S.String;
+const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
+const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TeamUnitsMapMap>;
@@ -257,7 +257,7 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_org_repo: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -272,9 +272,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type RepoTransferTeamsList = Array<Team>;
-export const RepoTransferTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RepoTransferTeamsList>;
+const RepoTransferTeamsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<RepoTransferTeamsList>;
 
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
@@ -282,7 +280,7 @@ export interface RepoTransfer {
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
+const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doer: S.optional(User),
     recipient: S.optional(User),
@@ -291,7 +289,7 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
+const RepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepositoryTopicsList>;
 
@@ -367,7 +365,7 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_fast_forward_only_merge: S.optional(S.Boolean),
     allow_merge_commits: S.optional(S.Boolean),
@@ -450,7 +448,7 @@ export interface Package {
   type?: string;
   version?: string;
 }
-export const Package = /*@__PURE__*/ S.suspend(() =>
+const Package = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     creator: S.optional(User),
@@ -474,7 +472,7 @@ export interface LinkPackageRequest {
   /** name of the repository to link. */
   repo_name: string;
 }
-export const LinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -490,7 +488,7 @@ export const LinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkPackageRequest" }) as any as S.Schema<LinkPackageRequest>;
 
 export interface LinkPackageResponse {}
-export const LinkPackageResponse = DeletePackageResponse as any as S.Schema<LinkPackageResponse>;
+const LinkPackageResponse = DeletePackageResponse as any as S.Schema<LinkPackageResponse>;
 
 export interface ListPackageFilesRequest {
   /** owner of the package */
@@ -502,7 +500,7 @@ export interface ListPackageFilesRequest {
   /** version of the package */
   version: string;
 }
-export const ListPackageFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackageFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -523,7 +521,7 @@ export interface PackageFile {
   sha256?: string;
   sha512?: string;
 }
-export const PackageFile = /*@__PURE__*/ S.suspend(() =>
+const PackageFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Size: S.optional(S.Number),
     id: S.optional(S.Number),
@@ -536,12 +534,12 @@ export const PackageFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackageFile" }) as any as S.Schema<PackageFile>;
 
 export type ListPackageFilesResponseBodyList = Array<PackageFile>;
-export const ListPackageFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackageFilesResponseBodyList = /*@__PURE__*/ S.Array(
   PackageFile,
 ) as any as S.Schema<ListPackageFilesResponseBodyList>;
 
 export type ListPackageFilesResponse = ListPackageFilesResponseBodyList;
-export const ListPackageFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackageFilesResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackageFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPackageFilesResponse" }) as any as S.Schema<ListPackageFilesResponse>;
 
@@ -567,7 +565,7 @@ export type ListPackagesRequestType =
   | "rubygems"
   | "swift"
   | "vagrant";
-export const ListPackagesRequestType = S.String;
+const ListPackagesRequestType = S.String;
 
 export interface ListPackagesRequest {
   /** owner of the packages */
@@ -581,7 +579,7 @@ export interface ListPackagesRequest {
   /** name filter */
   q?: string;
 }
-export const ListPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -592,12 +590,12 @@ export const ListPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPackagesRequest" }) as any as S.Schema<ListPackagesRequest>;
 
 export type ListPackagesResponseBodyList = Array<Package>;
-export const ListPackagesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPackagesResponseBodyList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<ListPackagesResponseBodyList>;
 
 export type ListPackagesResponse = ListPackagesResponseBodyList;
-export const ListPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   ListPackagesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPackagesResponse" }) as any as S.Schema<ListPackagesResponse>;
 
@@ -609,7 +607,7 @@ export interface UnlinkPackageRequest {
   /** name of the package */
   name: string;
 }
-export const UnlinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     type: S.String.pipe(T.Label()),
@@ -618,8 +616,7 @@ export const UnlinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlinkPackageRequest" }) as any as S.Schema<UnlinkPackageRequest>;
 
 export interface UnlinkPackageResponse {}
-export const UnlinkPackageResponse =
-  DeletePackageResponse as any as S.Schema<UnlinkPackageResponse>;
+const UnlinkPackageResponse = DeletePackageResponse as any as S.Schema<UnlinkPackageResponse>;
 
 export type DeletePackageError = NotFound | ForgejoOpError;
 /** Delete a package */

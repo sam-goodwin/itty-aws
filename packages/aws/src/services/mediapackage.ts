@@ -114,7 +114,7 @@ export class UnprocessableEntityException
 export interface EgressAccessLogs {
   LogGroupName?: string;
 }
-export const EgressAccessLogs = /*@__PURE__*/ S.suspend(() =>
+const EgressAccessLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LogGroupName: S.optional(S.String) }).pipe(
     S.encodeKeys({ LogGroupName: "logGroupName" }),
   ),
@@ -122,13 +122,13 @@ export const EgressAccessLogs = /*@__PURE__*/ S.suspend(() =>
 export interface IngressAccessLogs {
   LogGroupName?: string;
 }
-export const IngressAccessLogs = EgressAccessLogs as any as S.Schema<IngressAccessLogs>;
+const IngressAccessLogs = EgressAccessLogs as any as S.Schema<IngressAccessLogs>;
 export interface ConfigureLogsRequest {
   EgressAccessLogs?: EgressAccessLogs;
   Id: string;
   IngressAccessLogs?: IngressAccessLogs;
 }
-export const ConfigureLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigureLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EgressAccessLogs: S.optional(EgressAccessLogs),
     Id: S.String.pipe(T.HttpLabel("Id")),
@@ -158,7 +158,7 @@ export interface IngestEndpoint {
   Url?: string;
   Username?: string | redacted.Redacted<string>;
 }
-export const IngestEndpoint = /*@__PURE__*/ S.suspend(() =>
+const IngestEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Password: S.optional(SensitiveString),
@@ -167,17 +167,17 @@ export const IngestEndpoint = /*@__PURE__*/ S.suspend(() =>
   }).pipe(S.encodeKeys({ Id: "id", Password: "password", Url: "url", Username: "username" })),
 ).annotate({ identifier: "IngestEndpoint" }) as any as S.Schema<IngestEndpoint>;
 export type __listOfIngestEndpoint = IngestEndpoint[];
-export const __listOfIngestEndpoint = /*@__PURE__*/ S.Array(IngestEndpoint);
+const __listOfIngestEndpoint = /*@__PURE__*/ S.Array(IngestEndpoint);
 export interface HlsIngest {
   IngestEndpoints?: IngestEndpoint[];
 }
-export const HlsIngest = /*@__PURE__*/ S.suspend(() =>
+const HlsIngest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IngestEndpoints: S.optional(__listOfIngestEndpoint) }).pipe(
     S.encodeKeys({ IngestEndpoints: "ingestEndpoints" }),
   ),
 ).annotate({ identifier: "HlsIngest" }) as any as S.Schema<HlsIngest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ConfigureLogsResponse {
   Arn?: string;
   CreatedAt?: string;
@@ -188,7 +188,7 @@ export interface ConfigureLogsResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const ConfigureLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigureLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CreatedAt: S.optional(S.String),
@@ -216,7 +216,7 @@ export interface CreateChannelRequest {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Description: S.optional(S.String), Id: S.optional(S.String), Tags: S.optional(Tags) })
     .pipe(S.encodeKeys({ Description: "description", Id: "id", Tags: "tags" }))
     .pipe(T.all(T.Http({ method: "POST", uri: "/channels" }), svc, auth, proto, ver, rules)),
@@ -231,14 +231,13 @@ export interface CreateChannelResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateChannelResponse =
-  ConfigureLogsResponse as any as S.Schema<CreateChannelResponse>;
+const CreateChannelResponse = ConfigureLogsResponse as any as S.Schema<CreateChannelResponse>;
 export interface S3Destination {
   BucketName?: string;
   ManifestKey?: string;
   RoleArn?: string;
 }
-export const S3Destination = /*@__PURE__*/ S.suspend(() =>
+const S3Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketName: S.optional(S.String),
     ManifestKey: S.optional(S.String),
@@ -254,7 +253,7 @@ export interface CreateHarvestJobRequest {
   S3Destination?: S3Destination;
   StartTime?: string;
 }
-export const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndTime: S.optional(S.String),
     Id: S.optional(S.String),
@@ -274,7 +273,7 @@ export const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.all(T.Http({ method: "POST", uri: "/harvest_jobs" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateHarvestJobRequest" }) as any as S.Schema<CreateHarvestJobRequest>;
 export type Status = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export interface CreateHarvestJobResponse {
   Arn?: string;
@@ -287,7 +286,7 @@ export interface CreateHarvestJobResponse {
   StartTime?: string;
   Status?: Status;
 }
-export const CreateHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     ChannelId: S.optional(S.String),
@@ -316,7 +315,7 @@ export interface Authorization {
   CdnIdentifierSecret?: string;
   SecretsRoleArn?: string;
 }
-export const Authorization = /*@__PURE__*/ S.suspend(() =>
+const Authorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CdnIdentifierSecret: S.optional(S.String),
     SecretsRoleArn: S.optional(S.String),
@@ -325,7 +324,7 @@ export const Authorization = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 export type CmafEncryptionMethod = "SAMPLE_AES" | "AES_CTR" | (string & {});
-export const CmafEncryptionMethod = S.String;
+const CmafEncryptionMethod = S.String;
 
 export type PresetSpeke20Audio =
   | "PRESET-AUDIO-1"
@@ -334,7 +333,7 @@ export type PresetSpeke20Audio =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
-export const PresetSpeke20Audio = S.String;
+const PresetSpeke20Audio = S.String;
 
 export type PresetSpeke20Video =
   | "PRESET-VIDEO-1"
@@ -348,13 +347,13 @@ export type PresetSpeke20Video =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
-export const PresetSpeke20Video = S.String;
+const PresetSpeke20Video = S.String;
 
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio?: PresetSpeke20Audio;
   PresetSpeke20Video?: PresetSpeke20Video;
 }
-export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PresetSpeke20Audio: S.optional(PresetSpeke20Audio),
     PresetSpeke20Video: S.optional(PresetSpeke20Video),
@@ -368,7 +367,7 @@ export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptionContractConfiguration",
 }) as any as S.Schema<EncryptionContractConfiguration>;
 export type __listOf__string = string[];
-export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
+const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface SpekeKeyProvider {
   CertificateArn?: string;
   EncryptionContractConfiguration?: EncryptionContractConfiguration;
@@ -377,7 +376,7 @@ export interface SpekeKeyProvider {
   SystemIds?: string[];
   Url?: string;
 }
-export const SpekeKeyProvider = /*@__PURE__*/ S.suspend(() =>
+const SpekeKeyProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.optional(S.String),
     EncryptionContractConfiguration: S.optional(EncryptionContractConfiguration),
@@ -402,7 +401,7 @@ export interface CmafEncryption {
   KeyRotationIntervalSeconds?: number;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const CmafEncryption = /*@__PURE__*/ S.suspend(() =>
+const CmafEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantInitializationVector: S.optional(S.String),
     EncryptionMethod: S.optional(CmafEncryptionMethod),
@@ -418,7 +417,7 @@ export const CmafEncryption = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CmafEncryption" }) as any as S.Schema<CmafEncryption>;
 export type AdMarkers = "NONE" | "SCTE35_ENHANCED" | "PASSTHROUGH" | "DATERANGE" | (string & {});
-export const AdMarkers = S.String;
+const AdMarkers = S.String;
 
 export type __AdTriggersElement =
   | "SPLICE_INSERT"
@@ -430,20 +429,20 @@ export type __AdTriggersElement =
   | "PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"
   | "DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
   | (string & {});
-export const __AdTriggersElement = S.String;
+const __AdTriggersElement = S.String;
 
 export type AdTriggers = __AdTriggersElement[];
-export const AdTriggers = /*@__PURE__*/ S.Array(__AdTriggersElement);
+const AdTriggers = /*@__PURE__*/ S.Array(__AdTriggersElement);
 export type AdsOnDeliveryRestrictions =
   | "NONE"
   | "RESTRICTED"
   | "UNRESTRICTED"
   | "BOTH"
   | (string & {});
-export const AdsOnDeliveryRestrictions = S.String;
+const AdsOnDeliveryRestrictions = S.String;
 
 export type PlaylistType = "NONE" | "EVENT" | "VOD" | (string & {});
-export const PlaylistType = S.String;
+const PlaylistType = S.String;
 
 export interface HlsManifestCreateOrUpdateParameters {
   AdMarkers?: AdMarkers;
@@ -456,7 +455,7 @@ export interface HlsManifestCreateOrUpdateParameters {
   PlaylistWindowSeconds?: number;
   ProgramDateTimeIntervalSeconds?: number;
 }
-export const HlsManifestCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+const HlsManifestCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdMarkers: S.optional(AdMarkers),
     AdTriggers: S.optional(AdTriggers),
@@ -484,7 +483,7 @@ export const HlsManifestCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "HlsManifestCreateOrUpdateParameters",
 }) as any as S.Schema<HlsManifestCreateOrUpdateParameters>;
 export type __listOfHlsManifestCreateOrUpdateParameters = HlsManifestCreateOrUpdateParameters[];
-export const __listOfHlsManifestCreateOrUpdateParameters = /*@__PURE__*/ S.Array(
+const __listOfHlsManifestCreateOrUpdateParameters = /*@__PURE__*/ S.Array(
   HlsManifestCreateOrUpdateParameters,
 );
 export type StreamOrder =
@@ -492,14 +491,14 @@ export type StreamOrder =
   | "VIDEO_BITRATE_ASCENDING"
   | "VIDEO_BITRATE_DESCENDING"
   | (string & {});
-export const StreamOrder = S.String;
+const StreamOrder = S.String;
 
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
   StreamOrder?: StreamOrder;
 }
-export const StreamSelection = /*@__PURE__*/ S.suspend(() =>
+const StreamSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxVideoBitsPerSecond: S.optional(S.Number),
     MinVideoBitsPerSecond: S.optional(S.Number),
@@ -519,7 +518,7 @@ export interface CmafPackageCreateOrUpdateParameters {
   SegmentPrefix?: string;
   StreamSelection?: StreamSelection;
 }
-export const CmafPackageCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+const CmafPackageCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Encryption: S.optional(CmafEncryption),
     HlsManifests: S.optional(__listOfHlsManifestCreateOrUpdateParameters),
@@ -542,7 +541,7 @@ export interface DashEncryption {
   KeyRotationIntervalSeconds?: number;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
+const DashEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     KeyRotationIntervalSeconds: S.optional(S.Number),
     SpekeKeyProvider: S.optional(SpekeKeyProvider),
@@ -554,26 +553,24 @@ export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DashEncryption" }) as any as S.Schema<DashEncryption>;
 export type ManifestLayout = "FULL" | "COMPACT" | "DRM_TOP_LEVEL_COMPACT" | (string & {});
-export const ManifestLayout = S.String;
+const ManifestLayout = S.String;
 
 export type __PeriodTriggersElement = "ADS" | (string & {});
-export const __PeriodTriggersElement = S.String;
-
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
-export const __listOf__PeriodTriggersElement =
+const __listOf__PeriodTriggersElement =
   AdTriggers as any as S.Schema<__listOf__PeriodTriggersElement>;
 export type Profile = "NONE" | "HBBTV_1_5" | "HYBRIDCAST" | "DVB_DASH_2014" | (string & {});
-export const Profile = S.String;
+const Profile = S.String;
 
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
   | "NUMBER_WITH_DURATION"
   | (string & {});
-export const SegmentTemplateFormat = S.String;
+const SegmentTemplateFormat = S.String;
 
 export type UtcTiming = "NONE" | "HTTP-HEAD" | "HTTP-ISO" | "HTTP-XSDATE" | (string & {});
-export const UtcTiming = S.String;
+const UtcTiming = S.String;
 
 export interface DashPackage {
   AdTriggers?: __AdTriggersElement[];
@@ -593,7 +590,7 @@ export interface DashPackage {
   UtcTiming?: UtcTiming;
   UtcTimingUri?: string;
 }
-export const DashPackage = /*@__PURE__*/ S.suspend(() =>
+const DashPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdTriggers: S.optional(AdTriggers),
     AdsOnDeliveryRestrictions: S.optional(AdsOnDeliveryRestrictions),
@@ -633,7 +630,7 @@ export const DashPackage = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
-export const EncryptionMethod = S.String;
+const EncryptionMethod = S.String;
 
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
@@ -642,7 +639,7 @@ export interface HlsEncryption {
   RepeatExtXKey?: boolean;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const HlsEncryption = /*@__PURE__*/ S.suspend(() =>
+const HlsEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantInitializationVector: S.optional(S.String),
     EncryptionMethod: S.optional(EncryptionMethod),
@@ -673,7 +670,7 @@ export interface HlsPackage {
   StreamSelection?: StreamSelection;
   UseAudioRenditionGroup?: boolean;
 }
-export const HlsPackage = /*@__PURE__*/ S.suspend(() =>
+const HlsPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdMarkers: S.optional(AdMarkers),
     AdTriggers: S.optional(AdTriggers),
@@ -707,7 +704,7 @@ export const HlsPackage = /*@__PURE__*/ S.suspend(() =>
 export interface MssEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const MssEncryption = /*@__PURE__*/ S.suspend(() =>
+const MssEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SpekeKeyProvider: S.optional(SpekeKeyProvider) }).pipe(
     S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
   ),
@@ -718,7 +715,7 @@ export interface MssPackage {
   SegmentDurationSeconds?: number;
   StreamSelection?: StreamSelection;
 }
-export const MssPackage = /*@__PURE__*/ S.suspend(() =>
+const MssPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Encryption: S.optional(MssEncryption),
     ManifestWindowSeconds: S.optional(S.Number),
@@ -734,7 +731,7 @@ export const MssPackage = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "MssPackage" }) as any as S.Schema<MssPackage>;
 export type Origination = "ALLOW" | "DENY" | (string & {});
-export const Origination = S.String;
+const Origination = S.String;
 
 export interface CreateOriginEndpointRequest {
   Authorization?: Authorization;
@@ -752,7 +749,7 @@ export interface CreateOriginEndpointRequest {
   TimeDelaySeconds?: number;
   Whitelist?: string[];
 }
-export const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Authorization: S.optional(Authorization),
     ChannelId: S.optional(S.String),
@@ -805,7 +802,7 @@ export interface HlsManifest {
   AdTriggers?: __AdTriggersElement[];
   AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions;
 }
-export const HlsManifest = /*@__PURE__*/ S.suspend(() =>
+const HlsManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdMarkers: S.optional(AdMarkers),
     Id: S.optional(S.String),
@@ -833,7 +830,7 @@ export const HlsManifest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "HlsManifest" }) as any as S.Schema<HlsManifest>;
 export type __listOfHlsManifest = HlsManifest[];
-export const __listOfHlsManifest = /*@__PURE__*/ S.Array(HlsManifest);
+const __listOfHlsManifest = /*@__PURE__*/ S.Array(HlsManifest);
 export interface CmafPackage {
   Encryption?: CmafEncryption;
   HlsManifests?: HlsManifest[];
@@ -841,7 +838,7 @@ export interface CmafPackage {
   SegmentPrefix?: string;
   StreamSelection?: StreamSelection;
 }
-export const CmafPackage = /*@__PURE__*/ S.suspend(() =>
+const CmafPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Encryption: S.optional(CmafEncryption),
     HlsManifests: S.optional(__listOfHlsManifest),
@@ -930,7 +927,7 @@ export interface CreateOriginEndpointResponse {
   Url?: string;
   Whitelist?: string[];
 }
-export const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Authorization: S.optional(Authorization),
@@ -976,19 +973,19 @@ export const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteChannelRequest {
   Id: string;
 }
-export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(T.Http({ method: "DELETE", uri: "/channels/{Id}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteChannelResponse",
 }) as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteOriginEndpointRequest {
   Id: string;
 }
-export const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/origin_endpoints/{Id}" }),
@@ -1003,12 +1000,12 @@ export const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOriginEndpointRequest",
 }) as any as S.Schema<DeleteOriginEndpointRequest>;
 export interface DeleteOriginEndpointResponse {}
-export const DeleteOriginEndpointResponse =
+const DeleteOriginEndpointResponse =
   DeleteChannelResponse as any as S.Schema<DeleteOriginEndpointResponse>;
 export interface DescribeChannelRequest {
   Id: string;
 }
-export const DescribeChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/channels/{Id}" }), svc, auth, proto, ver, rules),
   ),
@@ -1023,12 +1020,11 @@ export interface DescribeChannelResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeChannelResponse =
-  ConfigureLogsResponse as any as S.Schema<DescribeChannelResponse>;
+const DescribeChannelResponse = ConfigureLogsResponse as any as S.Schema<DescribeChannelResponse>;
 export interface DescribeHarvestJobRequest {
   Id: string;
 }
-export const DescribeHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/harvest_jobs/{Id}" }), svc, auth, proto, ver, rules),
   ),
@@ -1046,7 +1042,7 @@ export interface DescribeHarvestJobResponse {
   StartTime?: string;
   Status?: Status;
 }
-export const DescribeHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     ChannelId: S.optional(S.String),
@@ -1076,7 +1072,7 @@ export const DescribeHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeOriginEndpointRequest {
   Id: string;
 }
-export const DescribeOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/origin_endpoints/{Id}" }), svc, auth, proto, ver, rules),
   ),
@@ -1155,14 +1151,14 @@ export interface DescribeOriginEndpointResponse {
   Url?: string;
   Whitelist?: string[];
 }
-export const DescribeOriginEndpointResponse =
+const DescribeOriginEndpointResponse =
   CreateOriginEndpointResponse as any as S.Schema<DescribeOriginEndpointResponse>;
 export type MaxResults = number;
 export interface ListChannelsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1178,14 +1174,14 @@ export interface Channel {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const Channel = ConfigureLogsResponse as any as S.Schema<Channel>;
+const Channel = ConfigureLogsResponse as any as S.Schema<Channel>;
 export type __listOfChannel = Channel[];
-export const __listOfChannel = /*@__PURE__*/ S.Array(Channel);
+const __listOfChannel = /*@__PURE__*/ S.Array(Channel);
 export interface ListChannelsResponse {
   Channels?: Channel[];
   NextToken?: string;
 }
-export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Channels: S.optional(__listOfChannel), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ Channels: "channels", NextToken: "nextToken" }),
   ),
@@ -1196,7 +1192,7 @@ export interface ListHarvestJobsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListHarvestJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHarvestJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IncludeChannelId: S.optional(S.String).pipe(T.HttpQuery("includeChannelId")),
     IncludeStatus: S.optional(S.String).pipe(T.HttpQuery("includeStatus")),
@@ -1215,16 +1211,16 @@ export interface HarvestJob {
   StartTime?: string;
   Status?: Status;
 }
-export const HarvestJob = CreateHarvestJobResponse as any as S.Schema<HarvestJob>;
+const HarvestJob = CreateHarvestJobResponse as any as S.Schema<HarvestJob>;
 export type __listOfHarvestJob = HarvestJob[];
-export const __listOfHarvestJob = /*@__PURE__*/ S.Array(HarvestJob);
+const __listOfHarvestJob = /*@__PURE__*/ S.Array(HarvestJob);
 export interface ListHarvestJobsResponse {
   HarvestJobs?: (HarvestJob & {
     S3Destination: S3Destination & { BucketName: string; ManifestKey: string; RoleArn: string };
   })[];
   NextToken?: string;
 }
-export const ListHarvestJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHarvestJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HarvestJobs: S.optional(__listOfHarvestJob), NextToken: S.optional(S.String) }).pipe(
     S.encodeKeys({ HarvestJobs: "harvestJobs", NextToken: "nextToken" }),
   ),
@@ -1234,7 +1230,7 @@ export interface ListOriginEndpointsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListOriginEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOriginEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelId: S.optional(S.String).pipe(T.HttpQuery("channelId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1262,7 +1258,7 @@ export interface OriginEndpoint {
   Url?: string;
   Whitelist?: string[];
 }
-export const OriginEndpoint = /*@__PURE__*/ S.suspend(() =>
+const OriginEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Authorization: S.optional(Authorization),
@@ -1304,7 +1300,7 @@ export const OriginEndpoint = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "OriginEndpoint" }) as any as S.Schema<OriginEndpoint>;
 export type __listOfOriginEndpoint = OriginEndpoint[];
-export const __listOfOriginEndpoint = /*@__PURE__*/ S.Array(OriginEndpoint);
+const __listOfOriginEndpoint = /*@__PURE__*/ S.Array(OriginEndpoint);
 export interface ListOriginEndpointsResponse {
   NextToken?: string;
   OriginEndpoints?: (OriginEndpoint & {
@@ -1368,7 +1364,7 @@ export interface ListOriginEndpointsResponse {
     };
   })[];
 }
-export const ListOriginEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOriginEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     OriginEndpoints: S.optional(__listOfOriginEndpoint),
@@ -1379,7 +1375,7 @@ export const ListOriginEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1387,14 +1383,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type __mapOf__string = { [key: string]: string | undefined };
-export const __mapOf__string = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const __mapOf__string = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1402,7 +1395,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RotateChannelCredentialsRequest {
   Id: string;
 }
-export const RotateChannelCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateChannelCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
     T.all(
       T.Http({ method: "PUT", uri: "/channels/{Id}/credentials" }),
@@ -1426,7 +1419,7 @@ export interface RotateChannelCredentialsResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const RotateChannelCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateChannelCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CreatedAt: S.optional(S.String),
@@ -1455,7 +1448,7 @@ export interface RotateIngestEndpointCredentialsRequest {
   Id: string;
   IngestEndpointId: string;
 }
-export const RotateIngestEndpointCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateIngestEndpointCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String.pipe(T.HttpLabel("Id")),
     IngestEndpointId: S.String.pipe(T.HttpLabel("IngestEndpointId")),
@@ -1485,13 +1478,13 @@ export interface RotateIngestEndpointCredentialsResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const RotateIngestEndpointCredentialsResponse =
+const RotateIngestEndpointCredentialsResponse =
   RotateChannelCredentialsResponse as any as S.Schema<RotateIngestEndpointCredentialsResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: S.optional(__mapOf__string),
@@ -1502,12 +1495,12 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteChannelResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteChannelResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: S.optional(__listOf__string).pipe(T.HttpQuery("tagKeys")),
@@ -1516,13 +1509,12 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  DeleteChannelResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteChannelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   Description?: string;
   Id: string;
 }
-export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Description: S.optional(S.String), Id: S.String.pipe(T.HttpLabel("Id")) })
     .pipe(S.encodeKeys({ Description: "description" }))
     .pipe(T.all(T.Http({ method: "PUT", uri: "/channels/{Id}" }), svc, auth, proto, ver, rules)),
@@ -1537,8 +1529,7 @@ export interface UpdateChannelResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateChannelResponse =
-  ConfigureLogsResponse as any as S.Schema<UpdateChannelResponse>;
+const UpdateChannelResponse = ConfigureLogsResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateOriginEndpointRequest {
   Authorization?: Authorization;
   CmafPackage?: CmafPackageCreateOrUpdateParameters;
@@ -1553,7 +1544,7 @@ export interface UpdateOriginEndpointRequest {
   TimeDelaySeconds?: number;
   Whitelist?: string[];
 }
-export const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Authorization: S.optional(Authorization),
     CmafPackage: S.optional(CmafPackageCreateOrUpdateParameters),
@@ -1661,7 +1652,7 @@ export interface UpdateOriginEndpointResponse {
   Url?: string;
   Whitelist?: string[];
 }
-export const UpdateOriginEndpointResponse =
+const UpdateOriginEndpointResponse =
   CreateOriginEndpointResponse as any as S.Schema<UpdateOriginEndpointResponse>;
 export type ConfigureLogsError =
   | ForbiddenException

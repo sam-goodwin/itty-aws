@@ -51,7 +51,7 @@ export type CreateProductRequestCustomCta =
   | "get_offer"
   | "apply_now"
   | "complete_order";
-export const CreateProductRequestCustomCta = S.String;
+const CreateProductRequestCustomCta = S.String;
 
 export interface CreateProductRequestGalleryImagesItem {
   /** The signed ID of a completed direct upload, as an alternative to id. */
@@ -59,7 +59,7 @@ export interface CreateProductRequestGalleryImagesItem {
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
-export const CreateProductRequestGalleryImagesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateProductRequestGalleryImagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct_upload_id: S.optional(S.String),
     id: S.optional(S.String),
@@ -70,23 +70,23 @@ export const CreateProductRequestGalleryImagesItem = /*@__PURE__*/ S.suspend(() 
 
 /** Images or videos displayed in the product gallery, in display order. Replaces the existing gallery. Send an empty array to clear it; omit or pass null to leave it unchanged. A banner image does not populate the gallery. */
 export type CreateProductRequestGalleryImagesList = Array<CreateProductRequestGalleryImagesItem>;
-export const CreateProductRequestGalleryImagesList = /*@__PURE__*/ S.Array(
+const CreateProductRequestGalleryImagesList = /*@__PURE__*/ S.Array(
   CreateProductRequestGalleryImagesItem,
 ) as any as S.Schema<CreateProductRequestGalleryImagesList>;
 
 /** The enrollment status in the global affiliate program. */
 export type CreateProductRequestGlobalAffiliateStatus = "enabled" | "disabled";
-export const CreateProductRequestGlobalAffiliateStatus = S.String;
+const CreateProductRequestGlobalAffiliateStatus = S.String;
 
 /** Labels used to group products into collections. Stored lowercased and de-duplicated. Maximum 20 labels, 50 characters each. */
 export type CreateProductRequestLabelsList = Array<string>;
-export const CreateProductRequestLabelsList = /*@__PURE__*/ S.Array(
+const CreateProductRequestLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateProductRequestLabelsList>;
 
 /** The enrollment status in the member affiliate program. */
 export type CreateProductRequestMemberAffiliateStatus = "enabled" | "disabled";
-export const CreateProductRequestMemberAffiliateStatus = S.String;
+const CreateProductRequestMemberAffiliateStatus = S.String;
 
 export interface CreateProductRequest {
   /** The unique identifier of the account to create this product for. */
@@ -132,7 +132,7 @@ export interface CreateProductRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     collect_shipping_address: S.optional(S.NullOr(S.Boolean)),
@@ -173,7 +173,7 @@ export type ProductCustomCta =
   | "get_offer"
   | "apply_now"
   | "complete_order";
-export const ProductCustomCta = S.String;
+const ProductCustomCta = S.String;
 
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
@@ -185,7 +185,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -196,11 +196,11 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 
 /** Billing model for this plan: `one_time` or `renewal`. */
 export type ProductPublicPlanPlanType = "renewal" | "one_time";
-export const ProductPublicPlanPlanType = S.String;
+const ProductPublicPlanPlanType = S.String;
 
 /** Where this plan can be seen. `visible` plans appear on the product page. */
 export type ProductPublicPlanVisibility = "visible" | "hidden" | "archived" | "quick_link";
-export const ProductPublicPlanVisibility = S.String;
+const ProductPublicPlanVisibility = S.String;
 
 export interface ProductPublicPlan {
   /** Number of days between recurring charges, such as 30 for monthly or 365 for annual. `null` for one-time plans. */
@@ -222,7 +222,7 @@ export interface ProductPublicPlan {
   /** Where this plan can be seen. `visible` plans appear on the product page. */
   visibility: ProductPublicPlanVisibility;
 }
-export const ProductPublicPlan = /*@__PURE__*/ S.suspend(() =>
+const ProductPublicPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_period: S.NullOr(S.Number),
     expiration_days: S.NullOr(S.Number),
@@ -244,7 +244,7 @@ export interface ProductGalleryImage {
   /** Pre-optimized URL for rendering this image on the client. */
   url: string | null;
 }
-export const ProductGalleryImage = /*@__PURE__*/ S.suspend(() =>
+const ProductGalleryImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     id: S.String,
@@ -253,25 +253,24 @@ export const ProductGalleryImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductGalleryImage" }) as any as S.Schema<ProductGalleryImage>;
 
 export type ProductGalleryImagesList = Array<ProductGalleryImage>;
-export const ProductGalleryImagesList = /*@__PURE__*/ S.Array(
+const ProductGalleryImagesList = /*@__PURE__*/ S.Array(
   ProductGalleryImage,
 ) as any as S.Schema<ProductGalleryImagesList>;
 
 /** Enrollment status in the global affiliate program. */
 export type ProductGlobalAffiliateStatus = "enabled" | "disabled";
-export const ProductGlobalAffiliateStatus = S.String;
+const ProductGlobalAffiliateStatus = S.String;
 
 export type ProductLabelsList = Array<string>;
-export const ProductLabelsList =
-  CreateProductRequestLabelsList as any as S.Schema<ProductLabelsList>;
+const ProductLabelsList = CreateProductRequestLabelsList as any as S.Schema<ProductLabelsList>;
 
 /** Listing state on the whop.com marketplace. `pending_review` means submitted and awaiting review; `live_marketplace` means approved and discoverable. */
 export type ProductMarketplaceStatus = "not_available" | "pending_review" | "live_marketplace";
-export const ProductMarketplaceStatus = S.String;
+const ProductMarketplaceStatus = S.String;
 
 /** Enrollment status in the member affiliate program. */
 export type ProductMemberAffiliateStatus = "enabled" | "disabled";
-export const ProductMemberAffiliateStatus = S.String;
+const ProductMemberAffiliateStatus = S.String;
 
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
@@ -279,7 +278,7 @@ export interface AccountSummary {
   /** Account display name. */
   title: string;
 }
-export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -288,14 +287,14 @@ export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
 export type PlanListItemAttributesMap = { [key: string]: string | undefined };
-export const PlanListItemAttributesMap = /*@__PURE__*/ S.Record(
+const PlanListItemAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<PlanListItemAttributesMap>;
 
 /** Custom field input type. */
 export type PlanCustomFieldFieldType = "text";
-export const PlanCustomFieldFieldType = S.String;
+const PlanCustomFieldFieldType = S.String;
 
 export interface PlanCustomField {
   /** Custom field input type. */
@@ -311,7 +310,7 @@ export interface PlanCustomField {
   /** Whether the customer must complete this field to check out. */
   required: boolean;
 }
-export const PlanCustomField = /*@__PURE__*/ S.suspend(() =>
+const PlanCustomField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_type: PlanCustomFieldFieldType,
     id: S.String,
@@ -323,28 +322,28 @@ export const PlanCustomField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanCustomField" }) as any as S.Schema<PlanCustomField>;
 
 export type PlanListItemCustomFieldsList = Array<PlanCustomField>;
-export const PlanListItemCustomFieldsList = /*@__PURE__*/ S.Array(
+const PlanListItemCustomFieldsList = /*@__PURE__*/ S.Array(
   PlanCustomField,
 ) as any as S.Schema<PlanListItemCustomFieldsList>;
 
 /** Billing model for this plan. */
 export type PlanListItemPlanType = "renewal" | "one_time";
-export const PlanListItemPlanType = S.String;
+const PlanListItemPlanType = S.String;
 
 /** Sales method for this plan. */
 export type PlanListItemReleaseMethod = "buy_now" | "waitlist";
-export const PlanListItemReleaseMethod = S.String;
+const PlanListItemReleaseMethod = S.String;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type PlanListItemThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const PlanListItemThreeDsLevel = S.String;
+const PlanListItemThreeDsLevel = S.String;
 
 /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
 export type PlanListItemVisibility = "visible" | "hidden" | "archived" | "quick_link";
-export const PlanListItemVisibility = S.String;
+const PlanListItemVisibility = S.String;
 
 export interface PlanListItem {
   /** Account that sells this plan; `null` for standalone invoice plans. */
@@ -425,7 +424,7 @@ export interface PlanListItem {
   /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
   visibility: PlanListItemVisibility;
 }
-export const PlanListItem = /*@__PURE__*/ S.suspend(() =>
+const PlanListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(AccountSummary),
     adaptive_pricing_enabled: S.Boolean,
@@ -470,7 +469,7 @@ export const PlanListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanListItem" }) as any as S.Schema<PlanListItem>;
 
 export type ProductVariantsList = Array<PlanListItem>;
-export const ProductVariantsList = /*@__PURE__*/ S.Array(
+const ProductVariantsList = /*@__PURE__*/ S.Array(
   PlanListItem,
 ) as any as S.Schema<ProductVariantsList>;
 
@@ -533,7 +532,7 @@ export interface Product {
   /** Whether the product is publicly visible, hidden, or archived. */
   visibility: string | null;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(S.Unknown),
     average_review_rating: S.Number,
@@ -572,7 +571,7 @@ export interface DeleteProductRequest {
   /** The unique identifier of the product. */
   id: string;
 }
-export const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/products/{id}", code: 200 })),
@@ -584,7 +583,7 @@ export interface DeleteProductResponse {
   /** ID of the deleted product. */
   id: string;
 }
-export const DeleteProductResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -595,36 +594,36 @@ export interface GetProductRequest {
   /** The unique identifier of the product. */
   id: string;
 }
-export const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/products/{id}", code: 200 })),
 ).annotate({ identifier: "GetProductRequest" }) as any as S.Schema<GetProductRequest>;
 
 export type ListProductsRequestPlanTypesItem = "renewal" | "one_time";
-export const ListProductsRequestPlanTypesItem = S.String;
+const ListProductsRequestPlanTypesItem = S.String;
 
 export type ListProductsRequestPlanTypesList = Array<
   ListProductsRequestPlanTypesItem | (string & {})
 >;
-export const ListProductsRequestPlanTypesList = /*@__PURE__*/ S.Array(
+const ListProductsRequestPlanTypesList = /*@__PURE__*/ S.Array(
   ListProductsRequestPlanTypesItem,
 ) as any as S.Schema<ListProductsRequestPlanTypesList>;
 
 export type ListProductsRequestVisibilitiesList = Array<string>;
-export const ListProductsRequestVisibilitiesList =
+const ListProductsRequestVisibilitiesList =
   CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestVisibilitiesList>;
 
 export type ListProductsRequestAccessPassTypesList = Array<string>;
-export const ListProductsRequestAccessPassTypesList =
+const ListProductsRequestAccessPassTypesList =
   CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestAccessPassTypesList>;
 
 export type ListProductsRequestLabelsList = Array<string>;
-export const ListProductsRequestLabelsList =
+const ListProductsRequestLabelsList =
   CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestLabelsList>;
 
 export type ListProductsRequestDirection = "asc" | "desc";
-export const ListProductsRequestDirection = S.String;
+const ListProductsRequestDirection = S.String;
 
 export interface ListProductsRequest {
   /** The unique identifier of the account to list products for. Omit to search the public marketplace. */
@@ -662,7 +661,7 @@ export interface ListProductsRequest {
   /** Only return products created before this ISO 8601 timestamp. */
   created_before?: string;
 }
-export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -685,11 +684,11 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductsRequest" }) as any as S.Schema<ListProductsRequest>;
 
 export type ProductListItemGalleryImagesList = Array<ProductGalleryImage>;
-export const ProductListItemGalleryImagesList =
+const ProductListItemGalleryImagesList =
   ProductGalleryImagesList as any as S.Schema<ProductListItemGalleryImagesList>;
 
 export type ProductListItemLabelsList = Array<string>;
-export const ProductListItemLabelsList =
+const ProductListItemLabelsList =
   CreateProductRequestLabelsList as any as S.Schema<ProductListItemLabelsList>;
 
 export interface ProductListItem {
@@ -730,7 +729,7 @@ export interface ProductListItem {
   /** Whether the product is publicly visible, hidden, or archived. */
   visibility: string | null;
 }
-export const ProductListItem = /*@__PURE__*/ S.suspend(() =>
+const ProductListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(S.Unknown),
     average_review_rating: S.Number,
@@ -755,7 +754,7 @@ export const ProductListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductListItem" }) as any as S.Schema<ProductListItem>;
 
 export type ListProductsResponseDataList = Array<ProductListItem>;
-export const ListProductsResponseDataList = /*@__PURE__*/ S.Array(
+const ListProductsResponseDataList = /*@__PURE__*/ S.Array(
   ProductListItem,
 ) as any as S.Schema<ListProductsResponseDataList>;
 
@@ -765,7 +764,7 @@ export interface ListProductsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListProductsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListProductsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -780,7 +779,7 @@ export interface ListProductsResponse {
   data: ListProductsResponseDataList;
   page_info: ListProductsResponsePageInfo;
 }
-export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListProductsResponseDataList,
     page_info: ListProductsResponsePageInfo,
@@ -793,7 +792,7 @@ export interface PublishProductRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const PublishProductRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -806,7 +805,7 @@ export interface UnpublishProductRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const UnpublishProductRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpublishProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -820,20 +819,18 @@ export interface UpdateProductRequestBannerImage {
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
-export const UpdateProductRequestBannerImage =
+const UpdateProductRequestBannerImage =
   CreateProductRequestGalleryImagesItem as any as S.Schema<UpdateProductRequestBannerImage>;
 
 export type UpdateProductRequestGalleryImagesItem = CreateProductRequestGalleryImagesItem;
-export const UpdateProductRequestGalleryImagesItem = CreateProductRequestGalleryImagesItem;
-
 /** Images or videos displayed in the product gallery, in display order. Replaces the existing gallery. Send an empty array to clear it; omit or pass null to leave it unchanged. A banner image does not populate the gallery. */
 export type UpdateProductRequestGalleryImagesList = Array<CreateProductRequestGalleryImagesItem>;
-export const UpdateProductRequestGalleryImagesList =
+const UpdateProductRequestGalleryImagesList =
   CreateProductRequestGalleryImagesList as any as S.Schema<UpdateProductRequestGalleryImagesList>;
 
 /** Labels used to group products into collections. Replaces the existing labels. Send an empty array to clear them. */
 export type UpdateProductRequestLabelsList = Array<string>;
-export const UpdateProductRequestLabelsList =
+const UpdateProductRequestLabelsList =
   CreateProductRequestLabelsList as any as S.Schema<UpdateProductRequestLabelsList>;
 
 export interface UpdateProductRequest {
@@ -860,7 +857,7 @@ export interface UpdateProductRequest {
   /** Whether the product is visible to customers. */
   visibility?: string;
 }
-export const UpdateProductRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     banner_image: S.optional(S.NullOr(UpdateProductRequestBannerImage)),

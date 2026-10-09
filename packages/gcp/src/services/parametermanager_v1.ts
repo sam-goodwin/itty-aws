@@ -68,7 +68,7 @@ export interface ResourcePolicyMember {
   /** Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource. Example: `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter` */
   iamPolicyNamePrincipal?: string;
 }
-export const ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
+const ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamPolicyUidPrincipal: S.optional(S.String),
     iamPolicyNamePrincipal: S.optional(S.String),
@@ -76,10 +76,10 @@ export const ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcePolicyMember" }) as any as S.Schema<ResourcePolicyMember>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ParameterFormatEnum = "PARAMETER_FORMAT_UNSPECIFIED" | "UNFORMATTED" | "YAML" | "JSON";
-export const ParameterFormatEnum = S.String;
+const ParameterFormatEnum = S.String;
 
 /** Message describing Parameter resource */
 export interface Parameter {
@@ -100,7 +100,7 @@ export interface Parameter {
   /** Optional. Customer managed encryption key (CMEK) to use for encrypting the Parameter Versions. If not set, the default Google-managed encryption key will be used. Cloud KMS CryptoKeys must reside in the same location as the Parameter. The expected format is `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*`. */
   kmsKey?: string;
 }
-export const Parameter = /*@__PURE__*/ S.suspend(() =>
+const Parameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -123,7 +123,7 @@ export interface CreateProjectsLocationsParametersRequest {
   /** Request body */
   body?: Parameter;
 }
-export const CreateProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parameterId: S.optional(S.String.pipe(T.Query())),
@@ -147,7 +147,7 @@ export interface ParameterVersionPayload {
   /** Required. bytes data for storing payload. */
   data?: string;
 }
-export const ParameterVersionPayload = /*@__PURE__*/ S.suspend(() =>
+const ParameterVersionPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataCrc32c: S.optional(S.String),
     data: S.optional(S.String),
@@ -158,7 +158,7 @@ export type ParameterVersionChecksumSourceEnum =
   | "CHECKSUM_SOURCE_UNSPECIFIED"
   | "SERVER_GENERATED"
   | "USER_SPECIFIED";
-export const ParameterVersionChecksumSourceEnum = S.String;
+const ParameterVersionChecksumSourceEnum = S.String;
 
 /** Message describing ParameterVersion resource */
 export interface ParameterVersion {
@@ -177,7 +177,7 @@ export interface ParameterVersion {
   /** Optional. Output only. The source of the checksum. */
   checksumSource?: ParameterVersionChecksumSourceEnum | (string & {});
 }
-export const ParameterVersion = /*@__PURE__*/ S.suspend(() =>
+const ParameterVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface CreateProjectsLocationsParametersVersionsRequest {
   /** Request body */
   body?: ParameterVersion;
 }
-export const CreateProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterVersionId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -220,7 +220,7 @@ export type TemplateFormatEnum =
   | "TEMPLATE_FORMAT_UNSPECIFIED"
   | "TEMPLATE_FORMAT_YAML"
   | "TEMPLATE_FORMAT_JSON";
-export const TemplateFormatEnum = S.String;
+const TemplateFormatEnum = S.String;
 
 /** Message describing Template resource */
 export interface Template {
@@ -235,7 +235,7 @@ export interface Template {
   /** Output only. Create time stamp */
   createTime?: string;
 }
-export const Template = /*@__PURE__*/ S.suspend(() =>
+const Template = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     updateTime: S.optional(S.String),
@@ -255,7 +255,7 @@ export interface CreateProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: Template;
 }
-export const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     templateId: S.optional(S.String.pipe(T.Query())),
@@ -277,7 +277,7 @@ export interface TemplateVersionPayload {
   /** Required. bytes data for storing payload. */
   data?: string;
 }
-export const TemplateVersionPayload = /*@__PURE__*/ S.suspend(() =>
+const TemplateVersionPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
   }),
@@ -296,7 +296,7 @@ export interface TemplateVersion {
   /** Optional. Disabled boolean to determine if a TemplateVersion acts as a metadata only resource (payload is never returned if disabled is true). */
   disabled?: boolean;
 }
-export const TemplateVersion = /*@__PURE__*/ S.suspend(() =>
+const TemplateVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -316,7 +316,7 @@ export interface CreateProjectsLocationsTemplatesVersionsRequest {
   /** Request body */
   body?: TemplateVersion;
 }
-export const CreateProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -339,7 +339,7 @@ export interface DeleteProjectsLocationsParametersRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -356,7 +356,7 @@ export const DeleteProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -366,7 +366,7 @@ export interface DeleteProjectsLocationsParametersVersionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -387,7 +387,7 @@ export interface DeleteProjectsLocationsTemplatesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -408,7 +408,7 @@ export interface DeleteProjectsLocationsTemplatesVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*\/versions/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -427,7 +427,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -442,10 +442,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -460,7 +457,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     locationId: S.optional(S.String),
@@ -474,7 +471,7 @@ export interface GetProjectsLocationsParametersRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*`. */
   name: string;
 }
-export const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -489,7 +486,7 @@ export const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetProjectsLocationsParametersRequest>;
 
 export type GetProjectsLocationsParametersVersionsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsParametersVersionsViewEnum = S.String;
+const GetProjectsLocationsParametersVersionsViewEnum = S.String;
 
 export interface GetProjectsLocationsParametersVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*\/versions/*`. */
@@ -497,7 +494,7 @@ export interface GetProjectsLocationsParametersVersionsRequest {
   /** Optional. View of the ParameterVersion. In the default FULL view, all metadata & payload associated with the ParameterVersion will be returned. */
   view?: GetProjectsLocationsParametersVersionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsParametersVersionsViewEnum.pipe(T.Query())),
@@ -516,7 +513,7 @@ export interface GetProjectsLocationsTemplatesRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*`. */
   name: string;
 }
-export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -531,7 +528,7 @@ export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetProjectsLocationsTemplatesRequest>;
 
 export type GetProjectsLocationsTemplatesVersionsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsTemplatesVersionsViewEnum = S.String;
+const GetProjectsLocationsTemplatesVersionsViewEnum = S.String;
 
 export interface GetProjectsLocationsTemplatesVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*\/versions/*`. */
@@ -539,7 +536,7 @@ export interface GetProjectsLocationsTemplatesVersionsRequest {
   /** Optional. Specifies the view of the TemplateVersion to return. In the default FULL view, all metadata & payload associated with the TemplateVersion will be returned. */
   view?: GetProjectsLocationsTemplatesVersionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsTemplatesVersionsViewEnum.pipe(T.Query())),
@@ -555,7 +552,7 @@ export const GetProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetProjectsLocationsTemplatesVersionsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -569,7 +566,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -588,7 +585,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -597,7 +594,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -616,7 +613,7 @@ export interface ListProjectsLocationsParametersRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-export const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -635,7 +632,7 @@ export const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsParametersRequest>;
 
 export type ParameterList = Array<Parameter>;
-export const ParameterList = /*@__PURE__*/ S.Array(Parameter) as any as S.Schema<ParameterList>;
+const ParameterList = /*@__PURE__*/ S.Array(Parameter) as any as S.Schema<ParameterList>;
 
 /** Message for response to listing Parameters */
 export interface ListParametersResponse {
@@ -646,7 +643,7 @@ export interface ListParametersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListParametersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListParametersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(ParameterList),
     unreachable: S.optional(StringList),
@@ -666,7 +663,7 @@ export interface ListProjectsLocationsParametersVersionsRequest {
   /** Optional. A page token, received from a previous `ListParameterVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListParameterVersions` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -685,7 +682,7 @@ export const ListProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsParametersVersionsRequest>;
 
 export type ParameterVersionList = Array<ParameterVersion>;
-export const ParameterVersionList = /*@__PURE__*/ S.Array(
+const ParameterVersionList = /*@__PURE__*/ S.Array(
   ParameterVersion,
 ) as any as S.Schema<ParameterVersionList>;
 
@@ -698,7 +695,7 @@ export interface ListParameterVersionsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListParameterVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListParameterVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     parameterVersions: S.optional(ParameterVersionList),
@@ -720,7 +717,7 @@ export interface ListProjectsLocationsTemplatesRequest {
   /** Optional. Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -739,7 +736,7 @@ export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsTemplatesRequest>;
 
 export type TemplateList = Array<Template>;
-export const TemplateList = /*@__PURE__*/ S.Array(Template) as any as S.Schema<TemplateList>;
+const TemplateList = /*@__PURE__*/ S.Array(Template) as any as S.Schema<TemplateList>;
 
 /** Message for response to listing Templates */
 export interface ListTemplatesResponse {
@@ -750,7 +747,7 @@ export interface ListTemplatesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     templates: S.optional(TemplateList),
@@ -770,7 +767,7 @@ export interface ListProjectsLocationsTemplatesVersionsRequest {
   /** Required. Parent value for ListTemplateVersionsRequest in the format `projects/*\/locations/*\/templates/*`. */
   parent: string;
 }
-export const ListProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -789,7 +786,7 @@ export const ListProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsTemplatesVersionsRequest>;
 
 export type TemplateVersionList = Array<TemplateVersion>;
-export const TemplateVersionList = /*@__PURE__*/ S.Array(
+const TemplateVersionList = /*@__PURE__*/ S.Array(
   TemplateVersion,
 ) as any as S.Schema<TemplateVersionList>;
 
@@ -802,7 +799,7 @@ export interface ListTemplateVersionsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListTemplateVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTemplateVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     templateVersions: S.optional(TemplateVersionList),
@@ -822,7 +819,7 @@ export interface PatchProjectsLocationsParametersRequest {
   /** Request body */
   body?: Parameter;
 }
-export const PatchProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -849,7 +846,7 @@ export interface PatchProjectsLocationsParametersVersionsRequest {
   /** Request body */
   body?: ParameterVersion;
 }
-export const PatchProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -876,7 +873,7 @@ export interface PatchProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: Template;
 }
-export const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -903,7 +900,7 @@ export interface PatchProjectsLocationsTemplatesVersionsRequest {
   /** Request body */
   body?: TemplateVersion;
 }
-export const PatchProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -924,7 +921,7 @@ export interface RenderProjectsLocationsParametersVersionsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const RenderProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -947,7 +944,7 @@ export interface RenderParameterVersionResponse {
   /** Resource identifier of a ParameterVersion in the format `projects/*\/locations/*\/parameters/*\/versions/*`. */
   parameterVersion?: string;
 }
-export const RenderParameterVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const RenderParameterVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(ParameterVersionPayload),
     renderedPayload: S.optional(S.String),
@@ -963,7 +960,7 @@ export interface RenderProjectsLocationsTemplatesVersionsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const RenderProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterVersion: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -982,7 +979,7 @@ export type RenderTemplateVersionResponseTemplateFormatEnum =
   | "TEMPLATE_FORMAT_UNSPECIFIED"
   | "TEMPLATE_FORMAT_YAML"
   | "TEMPLATE_FORMAT_JSON";
-export const RenderTemplateVersionResponseTemplateFormatEnum = S.String;
+const RenderTemplateVersionResponseTemplateFormatEnum = S.String;
 
 /** Message describing response for `RenderTemplateVersion` method */
 export interface RenderTemplateVersionResponse {
@@ -997,7 +994,7 @@ export interface RenderTemplateVersionResponse {
   /** Resource identifier of a TemplateVersion in the format `projects/*\/locations/*\/templates/*\/versions/*`. */
   templateVersion?: string;
 }
-export const RenderTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const RenderTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterVersion: S.optional(S.String),
     payload: S.optional(TemplateVersionPayload),

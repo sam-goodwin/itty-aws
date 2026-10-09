@@ -68,7 +68,7 @@ export interface RuntimeConfig {
   /** An optional description of the RuntimeConfig object. */
   description?: string;
 }
-export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
+const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -83,7 +83,7 @@ export interface CreateProjectsConfigsRequest {
   /** Request body */
   body?: RuntimeConfig;
 }
-export const CreateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -100,7 +100,7 @@ export const CreateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsConfigsRequest>;
 
 export type VariableStateEnum = "VARIABLE_STATE_UNSPECIFIED" | "UPDATED" | "DELETED";
-export const VariableStateEnum = S.String;
+const VariableStateEnum = S.String;
 
 /** Describes a single variable within a RuntimeConfig resource. The name denotes the hierarchical variable name. For example, `ports/serving_port` is a valid variable name. The variable value is an opaque string and only leaf variables can have values (that is, variables that do not have any child variables). */
 export interface Variable {
@@ -115,7 +115,7 @@ export interface Variable {
   /** Output only. The time of the last variable update. Timestamp will be UTC timestamp. */
   updateTime?: string;
 }
-export const Variable = /*@__PURE__*/ S.suspend(() =>
+const Variable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(VariableStateEnum),
     value: S.optional(S.String),
@@ -133,7 +133,7 @@ export interface CreateProjectsConfigsVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-export const CreateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -150,15 +150,10 @@ export const CreateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectsConfigsVariablesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -169,7 +164,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -184,7 +179,7 @@ export interface Cardinality {
   /** The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified. */
   number?: number;
 }
-export const Cardinality = /*@__PURE__*/ S.suspend(() =>
+const Cardinality = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     number: S.optional(S.Number),
@@ -196,7 +191,7 @@ export interface EndCondition {
   /** The cardinality of the `EndCondition`. */
   cardinality?: Cardinality;
 }
-export const EndCondition = /*@__PURE__*/ S.suspend(() =>
+const EndCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardinality: S.optional(Cardinality),
   }),
@@ -219,7 +214,7 @@ export interface Waiter {
   /** Output only. The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter. */
   createTime?: string;
 }
-export const Waiter = /*@__PURE__*/ S.suspend(() =>
+const Waiter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     error: S.optional(Status),
@@ -239,7 +234,7 @@ export interface CreateProjectsConfigsWaitersRequest {
   /** Request body */
   body?: Waiter;
 }
-export const CreateProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -268,7 +263,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -282,7 +277,7 @@ export interface DeleteProjectsConfigsRequest {
   /** The RuntimeConfig resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
 }
-export const DeleteProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -298,7 +293,7 @@ export const DeleteProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -308,7 +303,7 @@ export interface DeleteProjectsConfigsVariablesRequest {
   /** The name of the variable to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]` */
   name: string;
 }
-export const DeleteProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recursive: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -327,7 +322,7 @@ export interface DeleteProjectsConfigsWaitersRequest {
   /** The Waiter resource to delete, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
-export const DeleteProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -347,7 +342,7 @@ export interface GetIamPolicyProjectsConfigsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -373,7 +368,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     title: S.optional(S.String),
@@ -383,7 +378,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -394,7 +389,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -403,7 +398,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -414,7 +409,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -426,7 +421,7 @@ export interface GetProjectsConfigsRequest {
   /** The name of the RuntimeConfig resource to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]` */
   name: string;
 }
-export const GetProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -444,7 +439,7 @@ export interface GetProjectsConfigsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -462,7 +457,7 @@ export interface GetProjectsConfigsVariablesRequest {
   /** The name of the variable to return, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]` */
   name: string;
 }
-export const GetProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -480,7 +475,7 @@ export interface GetProjectsConfigsWaitersRequest {
   /** The fully-qualified name of the Waiter resource object to retrieve, in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]` */
   name: string;
 }
-export const GetProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -502,7 +497,7 @@ export interface ListProjectsConfigsRequest {
   /** The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`. */
   parent: string;
 }
-export const ListProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -519,7 +514,7 @@ export const ListProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsConfigsRequest>;
 
 export type RuntimeConfigList = Array<RuntimeConfig>;
-export const RuntimeConfigList = /*@__PURE__*/ S.Array(
+const RuntimeConfigList = /*@__PURE__*/ S.Array(
   RuntimeConfig,
 ) as any as S.Schema<RuntimeConfigList>;
 
@@ -530,7 +525,7 @@ export interface ListConfigsResponse {
   /** A list of the configurations in the project. The order of returned objects is arbitrary; that is, it is not ordered in any particular way. */
   configs?: RuntimeConfigList;
 }
-export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     configs: S.optional(RuntimeConfigList),
@@ -549,7 +544,7 @@ export interface ListProjectsConfigsVariablesRequest {
   /** The flag indicates whether the user wants to return values of variables. If true, then only those variables that user has IAM GetVariable permission will be returned along with their values. */
   returnValues?: boolean;
 }
-export const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -568,7 +563,7 @@ export const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsConfigsVariablesRequest>;
 
 export type VariableList = Array<Variable>;
-export const VariableList = /*@__PURE__*/ S.Array(Variable) as any as S.Schema<VariableList>;
+const VariableList = /*@__PURE__*/ S.Array(Variable) as any as S.Schema<VariableList>;
 
 /** Response for the `ListVariables()` method. */
 export interface ListVariablesResponse {
@@ -577,7 +572,7 @@ export interface ListVariablesResponse {
   /** A list of variables and their values. The order of returned variable objects is arbitrary. */
   variables?: VariableList;
 }
-export const ListVariablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     variables: S.optional(VariableList),
@@ -592,7 +587,7 @@ export interface ListProjectsConfigsWaitersRequest {
   /** Specifies the number of results to return per page. If there are fewer elements than the specified number, returns all elements. */
   pageSize?: number;
 }
-export const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -609,7 +604,7 @@ export const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsConfigsWaitersRequest>;
 
 export type WaiterList = Array<Waiter>;
-export const WaiterList = /*@__PURE__*/ S.Array(Waiter) as any as S.Schema<WaiterList>;
+const WaiterList = /*@__PURE__*/ S.Array(Waiter) as any as S.Schema<WaiterList>;
 
 /** Response for the `ListWaiters()` method. Order of returned waiter objects is arbitrary. */
 export interface ListWaitersResponse {
@@ -618,7 +613,7 @@ export interface ListWaitersResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
   nextPageToken?: string;
 }
-export const ListWaitersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWaitersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     waiters: S.optional(WaiterList),
     nextPageToken: S.optional(S.String),
@@ -630,7 +625,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -642,7 +637,7 @@ export interface SetIamPolicyProjectsConfigsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -662,7 +657,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -676,7 +671,7 @@ export interface TestIamPermissionsProjectsConfigsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -696,7 +691,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsConfigsOperationsRequest {
@@ -705,7 +700,7 @@ export interface TestIamPermissionsProjectsConfigsOperationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -726,7 +721,7 @@ export interface TestIamPermissionsProjectsConfigsVariablesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -747,7 +742,7 @@ export interface TestIamPermissionsProjectsConfigsWaitersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -768,7 +763,7 @@ export interface UpdateProjectsConfigsRequest {
   /** Request body */
   body?: RuntimeConfig;
 }
-export const UpdateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RuntimeConfig.pipe(T.HttpBody())),
@@ -789,7 +784,7 @@ export interface UpdateProjectsConfigsVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-export const UpdateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Variable.pipe(T.HttpBody())),
@@ -809,7 +804,7 @@ export interface WatchVariableRequest {
   /** If specified, checks the current timestamp of the variable and if the current timestamp is newer than `newerThan` timestamp, the method returns immediately. If not specified or the variable has an older timestamp, the watcher waits for a the value to change before returning. */
   newerThan?: string;
 }
-export const WatchVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newerThan: S.optional(S.String),
   }),
@@ -821,7 +816,7 @@ export interface WatchProjectsConfigsVariablesRequest {
   /** Request body */
   body?: WatchVariableRequest;
 }
-export const WatchProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(WatchVariableRequest.pipe(T.HttpBody())),

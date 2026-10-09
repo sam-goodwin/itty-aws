@@ -72,7 +72,7 @@ export interface Brand {
   /** Output only. Whether the brand is only intended for usage inside the G Suite organization only. */
   orgInternalOnly?: boolean;
 }
-export const Brand = /*@__PURE__*/ S.suspend(() =>
+const Brand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationTitle: S.optional(S.String),
     supportEmail: S.optional(S.String),
@@ -87,7 +87,7 @@ export interface CreateProjectsBrandsRequest {
   /** Request body */
   body?: Brand;
 }
-export const CreateProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Brand.pipe(T.HttpBody())),
@@ -107,7 +107,7 @@ export interface IdentityAwareProxyClient {
   /** Human-friendly name given to the OAuth client. */
   displayName?: string;
 }
-export const IdentityAwareProxyClient = /*@__PURE__*/ S.suspend(() =>
+const IdentityAwareProxyClient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.optional(S.String),
     name: S.optional(S.String),
@@ -121,7 +121,7 @@ export interface CreateProjectsBrandsIdentityAwareProxyClientsRequest {
   /** Request body */
   body?: IdentityAwareProxyClient;
 }
-export const CreateProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(IdentityAwareProxyClient.pipe(T.HttpBody())),
@@ -137,7 +137,7 @@ export const CreateProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*
 }) as any as S.Schema<CreateProjectsBrandsIdentityAwareProxyClientsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A TunnelDestGroup. */
 export interface TunnelDestGroup {
@@ -148,7 +148,7 @@ export interface TunnelDestGroup {
   /** Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). */
   name?: string;
 }
-export const TunnelDestGroup = /*@__PURE__*/ S.suspend(() =>
+const TunnelDestGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdns: S.optional(StringList),
     cidrs: S.optional(StringList),
@@ -164,7 +164,7 @@ export interface CreateProjectsIap_tunnelLocationsDestGroupsRequest {
   /** Request body */
   body?: TunnelDestGroup;
 }
-export const CreateProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelDestGroupId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -184,7 +184,7 @@ export interface DeleteProjectsBrandsIdentityAwareProxyClientsRequest {
   /** Required. Name of the Identity Aware Proxy client to be deleted. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. */
   name: string;
 }
-export const DeleteProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" })),
@@ -194,7 +194,7 @@ export const DeleteProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -202,7 +202,7 @@ export interface DeleteProjectsIap_tunnelLocationsDestGroupsRequest {
   /** Required. Name of the TunnelDestGroup to delete. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. */
   name: string;
 }
-export const DeleteProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" })),
@@ -215,7 +215,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -226,7 +226,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -238,7 +238,7 @@ export interface GetIamPolicyV1Request {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -262,7 +262,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -280,7 +280,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -289,7 +289,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -300,7 +300,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -312,7 +312,7 @@ export interface GetIapSettingsV1Request {
   /** Required. The resource name for which to retrieve the settings. Authorization: Requires the `getSettings` permission for the associated resource. */
   name: string;
 }
-export const GetIapSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetIapSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -333,7 +333,7 @@ export interface AccessDeniedPageSettings {
   /** Whether to generate a troubleshooting URL on access denied events to this application. */
   generateTroubleshootingUri?: boolean;
 }
-export const AccessDeniedPageSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessDeniedPageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remediationTokenGenerationEnabled: S.optional(S.Boolean),
     accessDeniedPageUri: S.optional(S.String),
@@ -346,12 +346,12 @@ export type AttributePropagationSettingsOutputCredentialsItemEnum =
   | "HEADER"
   | "JWT"
   | "RCTOKEN";
-export const AttributePropagationSettingsOutputCredentialsItemEnum = S.String;
+const AttributePropagationSettingsOutputCredentialsItemEnum = S.String;
 
 export type AttributePropagationSettingsOutputCredentialsItemEnumList = Array<
   AttributePropagationSettingsOutputCredentialsItemEnum | (string & {})
 >;
-export const AttributePropagationSettingsOutputCredentialsItemEnumList = /*@__PURE__*/ S.Array(
+const AttributePropagationSettingsOutputCredentialsItemEnumList = /*@__PURE__*/ S.Array(
   AttributePropagationSettingsOutputCredentialsItemEnum,
 ) as any as S.Schema<AttributePropagationSettingsOutputCredentialsItemEnumList>;
 
@@ -364,7 +364,7 @@ export interface AttributePropagationSettings {
   /** Optional. Which output credentials attributes selected by the CEL expression should be propagated in. All attributes will be fully duplicated in each selected output credential. */
   outputCredentials?: AttributePropagationSettingsOutputCredentialsItemEnumList;
 }
-export const AttributePropagationSettings = /*@__PURE__*/ S.suspend(() =>
+const AttributePropagationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     enable: S.optional(S.Boolean),
@@ -379,7 +379,7 @@ export interface CsmSettings {
   /** Audience claim set in the generated RCToken. This value is not validated by IAP. */
   rctokenAud?: string;
 }
-export const CsmSettings = /*@__PURE__*/ S.suspend(() =>
+const CsmSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rctokenAud: S.optional(S.String),
   }),
@@ -396,7 +396,7 @@ export interface ApplicationSettings {
   /** Optional. Settings to configure IAP's behavior for a service mesh. */
   csmSettings?: CsmSettings;
 }
-export const ApplicationSettings = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessDeniedPageSettings: S.optional(AccessDeniedPageSettings),
     cookieDomain: S.optional(S.String),
@@ -412,7 +412,7 @@ export interface AllowedDomainsSettings {
   /** Optional. Configuration for customers to opt in for the feature. */
   enable?: boolean;
 }
-export const AllowedDomainsSettings = /*@__PURE__*/ S.suspend(() =>
+const AllowedDomainsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(StringList),
     enable: S.optional(S.Boolean),
@@ -422,12 +422,10 @@ export const AllowedDomainsSettings = /*@__PURE__*/ S.suspend(() =>
 export type AccessSettingsIdentitySourcesItemEnum =
   | "IDENTITY_SOURCE_UNSPECIFIED"
   | "WORKFORCE_IDENTITY_FEDERATION";
-export const AccessSettingsIdentitySourcesItemEnum = S.String;
-
 export type AccessSettingsIdentitySourcesItemEnumList = Array<
   AccessSettingsIdentitySourcesItemEnum | (string & {})
 >;
-export const AccessSettingsIdentitySourcesItemEnumList =
+const AccessSettingsIdentitySourcesItemEnumList =
   AttributePropagationSettingsOutputCredentialsItemEnumList as any as S.Schema<AccessSettingsIdentitySourcesItemEnumList>;
 
 /** An internal name for an IAM policy, based on the resource to which the policy applies. Not to be confused with a resource's external full resource name. For more information on this distinction, see go/iam-full-resource-names. */
@@ -439,7 +437,7 @@ export interface PolicyName {
   /** Identifies an instance of the type. ID format varies by type. The ID format is defined in the IAM .service file that defines the type, either in path_mapping or in a comment. */
   id?: string;
 }
-export const PolicyName = /*@__PURE__*/ S.suspend(() =>
+const PolicyName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     region: S.optional(S.String),
@@ -448,7 +446,7 @@ export const PolicyName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyName" }) as any as S.Schema<PolicyName>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface TagsPartialState {
   /** Tags that'll be updated or added to the current state of tags for evaluation purposes. If a key exists in both "tags_to_upsert" and "tag_keys_to_remove", the one in "tag_keys_to_remove" is ignored. Only one type of tags reference (numeric or namespace) is required to be passed. */
@@ -456,7 +454,7 @@ export interface TagsPartialState {
   /** Keys of the tags that should be removed for evaluation purposes. IMPORTANT: Currently only numeric references are supported. Once support for namespace references is added, both the tag references (numeric and namespace) will be removed. */
   tagKeysToRemove?: StringList;
 }
-export const TagsPartialState = /*@__PURE__*/ S.suspend(() =>
+const TagsPartialState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagsToUpsert: S.optional(StringMap),
     tagKeysToRemove: S.optional(StringList),
@@ -467,7 +465,7 @@ export interface TagsFullStateForChildResource {
   /** If TagsFullStateForChildResource is initialized, the values in this field represent all the tags in the next state for the child resource. Only one type of tags reference (numeric or namespace) is required to be passed. IMPORTANT: This field should only be used when the target resource IAM policy name is UNKNOWN and the resource's parent IAM policy name is being passed in the request. */
   tags?: StringMap;
 }
-export const TagsFullStateForChildResource = /*@__PURE__*/ S.suspend(() =>
+const TagsFullStateForChildResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringMap),
   }),
@@ -479,7 +477,7 @@ export interface TagsFullState {
   /** If TagsFullState is initialized, the values in this field fully represent all the tags in the next state (the current tag values are not used). If tags.size() == 0, the next state of tags would be no tags for evaluation purposes. Only one type of tags reference (numeric or namespace) is required to be passed. */
   tags?: StringMap;
 }
-export const TagsFullState = /*@__PURE__*/ S.suspend(() =>
+const TagsFullState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringMap),
   }),
@@ -491,7 +489,7 @@ export interface NextStateOfTags {
   tagsFullStateForChildResource?: TagsFullStateForChildResource;
   tagsFullState?: TagsFullState;
 }
-export const NextStateOfTags = /*@__PURE__*/ S.suspend(() =>
+const NextStateOfTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagsPartialState: S.optional(TagsPartialState),
     tagsFullStateForChildResource: S.optional(TagsFullStateForChildResource),
@@ -500,10 +498,7 @@ export const NextStateOfTags = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NextStateOfTags" }) as any as S.Schema<NextStateOfTags>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export interface Resource {
   /** Used for calculating the next state of tags on the resource being passed for Custom Org Policy enforcement. NOTE: Only one of the tags representations (i.e. numeric or namespaced) should be populated. The input tags will be converted to the same representation before the calculation. This behavior intentionally may differ from other tags related fields in CheckPolicy request, which may require both formats to be passed in. IMPORTANT: If tags are unchanged, this field should not be set. */
@@ -521,7 +516,7 @@ export interface Resource {
   /** The locations of the resource. This field is used to determine whether the request is compliant with Trust Boundaries. Usage: - Must not be empty for services in-scope for Trust Boundaries. Once Trust Boundaries is GA, empty values will cause the request to be rejected if customers enforce Trust Boundaries on the parent CRM nodes. - For global resources: use a single value of "global". - For regional/multi-regional resources: use name of the GCP region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For multi-regional resources specify the name of each GCP region in the resource's multi-region. NOTE: Only GCP cloud region names are supported - go/cloud-region-names. - Constraints: - Individual location strings must be less than 1000 bytes. - The cumulative size of all locations must be less than 16KB. */
   locations?: StringList;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextStateOfTags: S.optional(NextStateOfTags),
     type: S.optional(S.String),
@@ -544,7 +539,7 @@ export interface PolicyDelegationSettings {
   /** IAM resource to check permission on */
   resource?: Resource;
 }
-export const PolicyDelegationSettings = /*@__PURE__*/ S.suspend(() =>
+const PolicyDelegationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamPermission: S.optional(S.String),
     policyName: S.optional(PolicyName),
@@ -560,7 +555,7 @@ export interface GcipSettings {
   /** Login page URI associated with the GCIP tenants. Typically, all resources within the same project share the same login page, though it could be overridden at the sub resource level. */
   loginPageUri?: string;
 }
-export const GcipSettings = /*@__PURE__*/ S.suspend(() =>
+const GcipSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantIds: S.optional(StringList),
     loginPageUri: S.optional(S.String),
@@ -572,7 +567,7 @@ export interface CorsSettings {
   /** Configuration to allow HTTP `OPTIONS` calls to skip authentication and authorization. If undefined, IAP will not apply any special logic to `OPTIONS` requests. */
   allowHttpOptions?: boolean;
 }
-export const CorsSettings = /*@__PURE__*/ S.suspend(() =>
+const CorsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowHttpOptions: S.optional(S.Boolean),
   }),
@@ -591,7 +586,7 @@ export interface OAuthSettings {
   /** Output only. OAuth secret SHA256 paired with client ID. */
   clientSecretSha256?: string;
 }
-export const OAuthSettings = /*@__PURE__*/ S.suspend(() =>
+const OAuthSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecret: S.optional(S.String),
@@ -610,7 +605,7 @@ export interface OAuth2 {
   /** Input only. The OAuth 2.0 client secret created while registering the client ID. */
   clientSecret?: string;
 }
-export const OAuth2 = /*@__PURE__*/ S.suspend(() =>
+const OAuth2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecretSha256: S.optional(S.String),
@@ -625,7 +620,7 @@ export interface WorkforceIdentitySettings {
   /** The workforce pool resources. Only one workforce pool is accepted. */
   workforcePools?: StringList;
 }
-export const WorkforceIdentitySettings = /*@__PURE__*/ S.suspend(() =>
+const WorkforceIdentitySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth2: S.optional(OAuth2),
     workforcePools: S.optional(StringList),
@@ -640,10 +635,10 @@ export type ReauthSettingsMethodEnum =
   | "PASSWORD"
   | "SECURE_KEY"
   | "ENROLLED_SECOND_FACTORS";
-export const ReauthSettingsMethodEnum = S.String;
+const ReauthSettingsMethodEnum = S.String;
 
 export type ReauthSettingsPolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "MINIMUM" | "DEFAULT";
-export const ReauthSettingsPolicyTypeEnum = S.String;
+const ReauthSettingsPolicyTypeEnum = S.String;
 
 /** Configuration for IAP reauthentication policies. */
 export interface ReauthSettings {
@@ -654,7 +649,7 @@ export interface ReauthSettings {
   /** Optional. How IAP determines the effective policy in cases of hierarchical policies. Policies are merged from higher in the hierarchy to lower in the hierarchy. */
   policyType?: ReauthSettingsPolicyTypeEnum | (string & {});
 }
-export const ReauthSettings = /*@__PURE__*/ S.suspend(() =>
+const ReauthSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(ReauthSettingsMethodEnum),
     maxAge: S.optional(S.String),
@@ -681,7 +676,7 @@ export interface AccessSettings {
   /** Optional. Settings to configure reauthentication policies in IAP. */
   reauthSettings?: ReauthSettings;
 }
-export const AccessSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedDomainsSettings: S.optional(AllowedDomainsSettings),
     identitySources: S.optional(AccessSettingsIdentitySourcesItemEnumList),
@@ -703,7 +698,7 @@ export interface IapSettings {
   /** Optional. Top level wrapper for all access related setting in IAP */
   accessSettings?: AccessSettings;
 }
-export const IapSettings = /*@__PURE__*/ S.suspend(() =>
+const IapSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     applicationSettings: S.optional(ApplicationSettings),
@@ -715,7 +710,7 @@ export interface GetProjectsBrandsRequest {
   /** Required. Name of the brand to be fetched. In the following format: projects/{project_number/id}/brands/{brand}. */
   name: string;
 }
-export const GetProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" })),
@@ -725,7 +720,7 @@ export interface GetProjectsBrandsIdentityAwareProxyClientsRequest {
   /** Required. Name of the Identity Aware Proxy client to be fetched. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. */
   name: string;
 }
-export const GetProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" })),
@@ -737,7 +732,7 @@ export interface GetProjectsIap_tunnelLocationsDestGroupsRequest {
   /** Required. Name of the TunnelDestGroup to be fetched. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. */
   name: string;
 }
-export const GetProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" })),
@@ -749,7 +744,7 @@ export interface ListProjectsBrandsRequest {
   /** Required. GCP Project number/id. In the following format: projects/{project_number/id}. */
   parent: string;
 }
-export const ListProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -760,14 +755,14 @@ export const ListProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsBrandsRequest>;
 
 export type BrandList = Array<Brand>;
-export const BrandList = /*@__PURE__*/ S.Array(Brand) as any as S.Schema<BrandList>;
+const BrandList = /*@__PURE__*/ S.Array(Brand) as any as S.Schema<BrandList>;
 
 /** Response message for ListBrands. */
 export interface ListBrandsResponse {
   /** Brands existing in the project. */
   brands?: BrandList;
 }
-export const ListBrandsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBrandsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brands: S.optional(BrandList),
   }),
@@ -781,7 +776,7 @@ export interface ListProjectsBrandsIdentityAwareProxyClientsRequest {
   /** The maximum number of clients to return. The service may return fewer than this value. If unspecified, at most 100 clients will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -798,7 +793,7 @@ export const ListProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsBrandsIdentityAwareProxyClientsRequest>;
 
 export type IdentityAwareProxyClientList = Array<IdentityAwareProxyClient>;
-export const IdentityAwareProxyClientList = /*@__PURE__*/ S.Array(
+const IdentityAwareProxyClientList = /*@__PURE__*/ S.Array(
   IdentityAwareProxyClient,
 ) as any as S.Schema<IdentityAwareProxyClientList>;
 
@@ -809,7 +804,7 @@ export interface ListIdentityAwareProxyClientsResponse {
   /** Clients existing in the brand. */
   identityAwareProxyClients?: IdentityAwareProxyClientList;
 }
-export const ListIdentityAwareProxyClientsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityAwareProxyClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     identityAwareProxyClients: S.optional(IdentityAwareProxyClientList),
@@ -826,7 +821,7 @@ export interface ListProjectsIap_tunnelLocationsDestGroupsRequest {
   /** The maximum number of groups to return. The service might return fewer than this value. If unspecified, at most 100 groups are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -843,7 +838,7 @@ export const ListProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>;
 
 export type TunnelDestGroupList = Array<TunnelDestGroup>;
-export const TunnelDestGroupList = /*@__PURE__*/ S.Array(
+const TunnelDestGroupList = /*@__PURE__*/ S.Array(
   TunnelDestGroup,
 ) as any as S.Schema<TunnelDestGroupList>;
 
@@ -854,7 +849,7 @@ export interface ListTunnelDestGroupsResponse {
   /** A token that you can send as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListTunnelDestGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTunnelDestGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelDestGroups: S.optional(TunnelDestGroupList),
     nextPageToken: S.optional(S.String),
@@ -871,7 +866,7 @@ export interface PatchProjectsIap_tunnelLocationsDestGroupsRequest {
   /** Request body */
   body?: TunnelDestGroup;
 }
-export const PatchProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -883,7 +878,7 @@ export const PatchProjectsIap_tunnelLocationsDestGroupsRequest = /*@__PURE__*/ S
 
 /** The request sent to ResetIdentityAwareProxyClientSecret. */
 export interface ResetIdentityAwareProxyClientSecretRequest {}
-export const ResetIdentityAwareProxyClientSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetIdentityAwareProxyClientSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ResetIdentityAwareProxyClientSecretRequest",
@@ -895,18 +890,17 @@ export interface ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest {
   /** Request body */
   body?: ResetIdentityAwareProxyClientSecretRequest;
 }
-export const ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ResetIdentityAwareProxyClientSecretRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:resetSecret",
-        baseUrl: "https://iap.googleapis.com/",
-      }),
-    ),
+const ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ResetIdentityAwareProxyClientSecretRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:resetSecret",
+      baseUrl: "https://iap.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest",
 }) as any as S.Schema<ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest>;
@@ -916,7 +910,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -928,7 +922,7 @@ export interface SetIamPolicyV1Request {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -946,7 +940,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -960,7 +954,7 @@ export interface TestIamPermissionsV1Request {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -980,7 +974,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateIapSettingsV1Request {
@@ -991,7 +985,7 @@ export interface UpdateIapSettingsV1Request {
   /** Request body */
   body?: IapSettings;
 }
-export const UpdateIapSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateIapSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1013,7 +1007,7 @@ export interface ValidateAttributeExpressionV1Request {
   /** Required. User input string expression. Should be of the form `attributes.saml_attributes.filter(attribute, attribute.name in ['{attribute_name}', '{attribute_name}'])` */
   expression?: string;
 }
-export const ValidateAttributeExpressionV1Request = /*@__PURE__*/ S.suspend(() =>
+const ValidateAttributeExpressionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     expression: S.optional(S.String.pipe(T.Query())),
@@ -1030,7 +1024,7 @@ export const ValidateAttributeExpressionV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** IAP Expression Linter endpoint returns empty response body. */
 export interface ValidateIapAttributeExpressionResponse {}
-export const ValidateIapAttributeExpressionResponse =
+const ValidateIapAttributeExpressionResponse =
   ResetIdentityAwareProxyClientSecretRequest as any as S.Schema<ValidateIapAttributeExpressionResponse>;
 
 export type CreateProjectsBrandsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;

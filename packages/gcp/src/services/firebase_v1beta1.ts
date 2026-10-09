@@ -80,7 +80,7 @@ export interface AddFirebaseRequest {
   /** **DEPRECATED.** _Instead, use product-specific REST APIs to work with the location of each resource in a Project. This field may be ignored, especially for newly provisioned projects after October 30, 2024._ The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location must be one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). */
   locationId?: string;
 }
-export const AddFirebaseRequest = /*@__PURE__*/ S.suspend(() =>
+const AddFirebaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
   }),
@@ -92,7 +92,7 @@ export interface AddFirebaseProjectsRequest {
   /** Request body */
   body?: AddFirebaseRequest;
 }
-export const AddFirebaseProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddFirebaseProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     body: S.optional(AddFirebaseRequest.pipe(T.HttpBody())),
@@ -108,15 +108,10 @@ export const AddFirebaseProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddFirebaseProjectsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -127,7 +122,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -148,7 +143,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     metadata: S.optional(DocumentMap),
@@ -164,7 +159,7 @@ export interface AddGoogleAnalyticsRequest {
   /** The ID for the existing Google Analytics property that you want to associate with the `FirebaseProject`. */
   analyticsPropertyId?: string;
 }
-export const AddGoogleAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddGoogleAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyticsAccountId: S.optional(S.String),
     analyticsPropertyId: S.optional(S.String),
@@ -179,7 +174,7 @@ export interface AddGoogleAnalyticsProjectsRequest {
   /** Request body */
   body?: AddGoogleAnalyticsRequest;
 }
-export const AddGoogleAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddGoogleAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AddGoogleAnalyticsRequest.pipe(T.HttpBody())),
@@ -195,10 +190,10 @@ export const AddGoogleAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>;
 
 export type AndroidAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-export const AndroidAppStateEnum = S.String;
+const AndroidAppStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Details of a Firebase App for Android. */
 export interface AndroidApp {
@@ -225,7 +220,7 @@ export interface AndroidApp {
   /** The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `AndroidApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.androidApps/getConfig). If `api_key_id` is not set in requests to [`androidApps.Create`](../../rest/v1beta1/projects.androidApps/create), then Firebase automatically associates an `api_key_id` with the `AndroidApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `AndroidApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys. */
   apiKeyId?: string;
 }
-export const AndroidApp = /*@__PURE__*/ S.suspend(() =>
+const AndroidApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -247,7 +242,7 @@ export interface CreateProjectsAndroidAppsRequest {
   /** Request body */
   body?: AndroidApp;
 }
-export const CreateProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AndroidApp.pipe(T.HttpBody())),
@@ -263,7 +258,7 @@ export const CreateProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsAndroidAppsRequest>;
 
 export type ShaCertificateCertTypeEnum = "SHA_CERTIFICATE_TYPE_UNSPECIFIED" | "SHA_1" | "SHA_256";
-export const ShaCertificateCertTypeEnum = S.String;
+const ShaCertificateCertTypeEnum = S.String;
 
 /** A SHA-1 or SHA-256 certificate associated with the AndroidApp. */
 export interface ShaCertificate {
@@ -274,7 +269,7 @@ export interface ShaCertificate {
   /** The type of SHA certificate encoded in the hash. */
   certType?: ShaCertificateCertTypeEnum | (string & {});
 }
-export const ShaCertificate = /*@__PURE__*/ S.suspend(() =>
+const ShaCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     shaHash: S.optional(S.String),
@@ -288,7 +283,7 @@ export interface CreateProjectsAndroidAppsShaRequest {
   /** Request body */
   body?: ShaCertificate;
 }
-export const CreateProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ShaCertificate.pipe(T.HttpBody())),
@@ -304,7 +299,7 @@ export const CreateProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsAndroidAppsShaRequest>;
 
 export type IosAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-export const IosAppStateEnum = S.String;
+const IosAppStateEnum = S.String;
 
 /** Details of a Firebase App for iOS. */
 export interface IosApp {
@@ -331,7 +326,7 @@ export interface IosApp {
   /** This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated. */
   etag?: string;
 }
-export const IosApp = /*@__PURE__*/ S.suspend(() =>
+const IosApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     teamId: S.optional(S.String),
@@ -353,7 +348,7 @@ export interface CreateProjectsIosAppsRequest {
   /** Request body */
   body?: IosApp;
 }
-export const CreateProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(IosApp.pipe(T.HttpBody())),
@@ -369,7 +364,7 @@ export const CreateProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsIosAppsRequest>;
 
 export type WebAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-export const WebAppStateEnum = S.String;
+const WebAppStateEnum = S.String;
 
 /** Details of a Firebase App for the web. */
 export interface WebApp {
@@ -394,7 +389,7 @@ export interface WebApp {
   /** This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated. */
   etag?: string;
 }
-export const WebApp = /*@__PURE__*/ S.suspend(() =>
+const WebApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     appId: S.optional(S.String),
@@ -415,7 +410,7 @@ export interface CreateProjectsWebAppsRequest {
   /** Request body */
   body?: WebApp;
 }
-export const CreateProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(WebApp.pipe(T.HttpBody())),
@@ -434,7 +429,7 @@ export interface DeleteProjectsAndroidAppsShaRequest {
   /** The resource name of the ShaCertificate to remove from the parent AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID /sha/SHA_HASH Refer to the `ShaCertificate` [`name`](../projects.androidApps.sha#ShaCertificate.FIELDS.name) field for details about PROJECT_IDENTIFIER, APP_ID, and SHA_HASH values. You can obtain the full resource name of the `ShaCertificate` from the response of [`ListShaCertificates`](../projects.androidApps.sha/list) or the original [`CreateShaCertificate`](../projects.androidApps.sha/create). */
   name: string;
 }
-export const DeleteProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -450,7 +445,7 @@ export const DeleteProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -458,7 +453,7 @@ export interface FinalizeDefaultLocationRequest {
   /** **DEPRECATED** The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location must be one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). */
   locationId?: string;
 }
-export const FinalizeDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
   }),
@@ -472,7 +467,7 @@ export interface FinalizeProjectsDefaultLocationRequest {
   /** Request body */
   body?: FinalizeDefaultLocationRequest;
 }
-export const FinalizeProjectsDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeProjectsDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(FinalizeDefaultLocationRequest.pipe(T.HttpBody())),
@@ -491,7 +486,7 @@ export interface GetAdminSdkConfigProjectsRequest {
   /** The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-export const GetAdminSdkConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdminSdkConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -511,7 +506,7 @@ export interface AdminSdkConfig {
   /** **DEPRECATED.** _Instead, find the URL of the default Realtime Database instance using the [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list) within the Firebase Realtime Database REST API. If the default instance for the Project has not yet been provisioned, the return might not contain a default instance. Note that the config that's generated for the Firebase console or the Firebase CLI uses the Realtime Database endpoint to populate this value for that config._ The URL of the default Firebase Realtime Database instance. */
   databaseURL?: string;
 }
-export const AdminSdkConfig = /*@__PURE__*/ S.suspend(() =>
+const AdminSdkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageBucket: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -524,7 +519,7 @@ export interface GetAnalyticsDetailsProjectsRequest {
   /** The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER/analyticsDetails Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-export const GetAnalyticsDetailsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticsDetailsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -543,7 +538,7 @@ export interface AnalyticsProperty {
   /** Output only. The ID of the [Google Analytics account](https://www.google.com/analytics/) for the Google Analytics property associated with the specified FirebaseProject. */
   analyticsAccountId?: string;
 }
-export const AnalyticsProperty = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     id: S.optional(S.String),
@@ -560,7 +555,7 @@ export interface StreamMapping {
   /** The resource name of the Firebase App associated with the Google Analytics data stream, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID or projects/PROJECT_IDENTIFIER/iosApps/APP_ID or projects/PROJECT_IDENTIFIER /webApps/APP_ID Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   app?: string;
 }
-export const StreamMapping = /*@__PURE__*/ S.suspend(() =>
+const StreamMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     measurementId: S.optional(S.String),
     streamId: S.optional(S.String),
@@ -569,7 +564,7 @@ export const StreamMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamMapping" }) as any as S.Schema<StreamMapping>;
 
 export type StreamMappingList = Array<StreamMapping>;
-export const StreamMappingList = /*@__PURE__*/ S.Array(
+const StreamMappingList = /*@__PURE__*/ S.Array(
   StreamMapping,
 ) as any as S.Schema<StreamMappingList>;
 
@@ -579,7 +574,7 @@ export interface AnalyticsDetails {
   /** - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the specified `FirebaseProject`. Each `app` and `streamId` appears only once. - For `WebApps`: a map of `app` to `streamId` and `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears only once. */
   streamMappings?: StreamMappingList;
 }
-export const AnalyticsDetails = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyticsProperty: S.optional(AnalyticsProperty),
     streamMappings: S.optional(StreamMappingList),
@@ -590,7 +585,7 @@ export interface GetConfigProjectsAndroidAppsRequest {
   /** The resource name of the AndroidApp configuration to download, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-export const GetConfigProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -607,7 +602,7 @@ export interface AndroidAppConfig {
   /** The filename that the configuration artifact for the `AndroidApp` is typically saved as. For example: `google-services.json` */
   configFilename?: string;
 }
-export const AndroidAppConfig = /*@__PURE__*/ S.suspend(() =>
+const AndroidAppConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configFileContents: S.optional(S.String),
     configFilename: S.optional(S.String),
@@ -618,7 +613,7 @@ export interface GetConfigProjectsIosAppsRequest {
   /** The resource name of the App configuration to download, in the format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-export const GetConfigProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -635,13 +630,13 @@ export interface IosAppConfig {
   /** The filename that the configuration artifact for the `IosApp` is typically saved as. For example: `GoogleService-Info.plist` */
   configFilename?: string;
 }
-export const IosAppConfig = AndroidAppConfig as any as S.Schema<IosAppConfig>;
+const IosAppConfig = AndroidAppConfig as any as S.Schema<IosAppConfig>;
 
 export interface GetConfigProjectsWebAppsRequest {
   /** The resource name of the WebApp configuration to download, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-export const GetConfigProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -680,7 +675,7 @@ export interface WebAppConfig {
   /** Version of the config specification. */
   version?: string;
 }
-export const WebAppConfig = /*@__PURE__*/ S.suspend(() =>
+const WebAppConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     apiKey: S.optional(S.String),
@@ -702,7 +697,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -714,7 +709,7 @@ export interface GetProjectsRequest {
   /** The resource name of the FirebaseProject, in the format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -723,10 +718,10 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectsRequest" }) as any as S.Schema<GetProjectsRequest>;
 
 export type FirebaseProjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-export const FirebaseProjectStateEnum = S.String;
+const FirebaseProjectStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** **DEPRECATED.** _Auto-provisioning of these resources is changing, so this object no longer reliably provides information about the resources within the Project. Instead, retrieve information about each resource directly from its resource-specific API._ The default auto-provisioned resources associated with the Project. */
 export interface DefaultResources {
@@ -739,7 +734,7 @@ export interface DefaultResources {
   /** Output only. **DEPRECATED.** _Instead, find the name of the default Cloud Storage for Firebase bucket using the [list endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list) within the Cloud Storage for Firebase REST API. If the default bucket for the Project has not yet been provisioned, the return might not contain a default bucket._ The name of the default Cloud Storage for Firebase bucket, in one of the following formats: * If provisioned _before_ October 30, 2024: PROJECT_ID.firebasestorage.app * If provisioned _on or after_ October 30, 2024: PROJECT_ID.firebasestorage.app */
   storageBucket?: string;
 }
-export const DefaultResources = /*@__PURE__*/ S.suspend(() =>
+const DefaultResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     realtimeDatabaseInstance: S.optional(S.String),
     hostingSite: S.optional(S.String),
@@ -767,7 +762,7 @@ export interface FirebaseProject {
   /** The user-assigned display name of the Project. */
   displayName?: string;
 }
-export const FirebaseProject = /*@__PURE__*/ S.suspend(() =>
+const FirebaseProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     projectNumber: S.optional(S.String),
@@ -784,7 +779,7 @@ export interface GetProjectsAndroidAppsRequest {
   /** The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-export const GetProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -798,7 +793,7 @@ export interface GetProjectsIosAppsRequest {
   /** The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-export const GetProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -812,7 +807,7 @@ export interface GetProjectsWebAppsRequest {
   /** The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   name: string;
 }
-export const GetProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -828,7 +823,7 @@ export interface ListAvailableProjectsRequest {
   /** The maximum number of Projects to return in the response. The server may return fewer than this value at its discretion. If no value is specified (or too large a value is specified), the server will impose its own limit. This value cannot be negative. */
   pageSize?: number;
 }
-export const ListAvailableProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -852,7 +847,7 @@ export interface ProjectInfo {
   /** The resource name of the Google Cloud `Project` to which Firebase resources can be added, in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   project?: string;
 }
-export const ProjectInfo = /*@__PURE__*/ S.suspend(() =>
+const ProjectInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -861,9 +856,7 @@ export const ProjectInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectInfo" }) as any as S.Schema<ProjectInfo>;
 
 export type ProjectInfoList = Array<ProjectInfo>;
-export const ProjectInfoList = /*@__PURE__*/ S.Array(
-  ProjectInfo,
-) as any as S.Schema<ProjectInfoList>;
+const ProjectInfoList = /*@__PURE__*/ S.Array(ProjectInfo) as any as S.Schema<ProjectInfoList>;
 
 export interface ListAvailableProjectsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent calls to `ListAvailableProjects` to find the next group of Projects. Page tokens are short-lived and should not be persisted. */
@@ -871,7 +864,7 @@ export interface ListAvailableProjectsResponse {
   /** The list of Google Cloud `Projects` which can have Firebase resources added to them. */
   projectInfo?: ProjectInfoList;
 }
-export const ListAvailableProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     projectInfo: S.optional(ProjectInfoList),
@@ -888,7 +881,7 @@ export interface ListProjectsRequest {
   /** Optional. Controls whether Projects in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Projects will be returned. */
   showDeleted?: boolean;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -899,7 +892,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type FirebaseProjectList = Array<FirebaseProject>;
-export const FirebaseProjectList = /*@__PURE__*/ S.Array(
+const FirebaseProjectList = /*@__PURE__*/ S.Array(
   FirebaseProject,
 ) as any as S.Schema<FirebaseProjectList>;
 
@@ -909,7 +902,7 @@ export interface ListFirebaseProjectsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent calls to `ListFirebaseProjects` to find the next group of Projects. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-export const ListFirebaseProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFirebaseProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(FirebaseProjectList),
     nextPageToken: S.optional(S.String),
@@ -928,7 +921,7 @@ export interface ListProjectsAndroidAppsRequest {
   /** Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned. */
   showDeleted?: boolean;
 }
-export const ListProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -946,7 +939,7 @@ export const ListProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAndroidAppsRequest>;
 
 export type AndroidAppList = Array<AndroidApp>;
-export const AndroidAppList = /*@__PURE__*/ S.Array(AndroidApp) as any as S.Schema<AndroidAppList>;
+const AndroidAppList = /*@__PURE__*/ S.Array(AndroidApp) as any as S.Schema<AndroidAppList>;
 
 export interface ListAndroidAppsResponse {
   /** List of each `AndroidApp` associated with the specified `FirebaseProject`. */
@@ -954,7 +947,7 @@ export interface ListAndroidAppsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListAndroidApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-export const ListAndroidAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAndroidAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: S.optional(AndroidAppList),
     nextPageToken: S.optional(S.String),
@@ -965,7 +958,7 @@ export interface ListProjectsAndroidAppsShaRequest {
   /** The resource name of the parent AndroidApp for which to list each associated ShaCertificate, in the format: projects/PROJECT_IDENTIFIER /androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/androidApps/APP_ID Refer to the `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */
   parent: string;
 }
-export const ListProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -980,7 +973,7 @@ export const ListProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAndroidAppsShaRequest>;
 
 export type ShaCertificateList = Array<ShaCertificate>;
-export const ShaCertificateList = /*@__PURE__*/ S.Array(
+const ShaCertificateList = /*@__PURE__*/ S.Array(
   ShaCertificate,
 ) as any as S.Schema<ShaCertificateList>;
 
@@ -988,7 +981,7 @@ export interface ListShaCertificatesResponse {
   /** The list of each `ShaCertificate` associated with the `AndroidApp`. */
   certificates?: ShaCertificateList;
 }
-export const ListShaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListShaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificates: S.optional(ShaCertificateList),
   }),
@@ -1004,7 +997,7 @@ export interface ListProjectsAvailableLocationsRequest {
   /** The FirebaseProject for which to list [locations for default Google Cloud resources](https://firebase.google.com/docs/projects/locations#default-cloud-location), in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values. If no unique project identifier is specified (that is, `projects/-`), the returned list does not take into account org-specific or project-specific location restrictions. */
   parent: string;
 }
-export const ListProjectsAvailableLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAvailableLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1021,17 +1014,17 @@ export const ListProjectsAvailableLocationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsAvailableLocationsRequest>;
 
 export type LocationTypeEnum = "LOCATION_TYPE_UNSPECIFIED" | "REGIONAL" | "MULTI_REGIONAL";
-export const LocationTypeEnum = S.String;
+const LocationTypeEnum = S.String;
 
 export type LocationFeaturesItemEnum =
   | "LOCATION_FEATURE_UNSPECIFIED"
   | "FIRESTORE"
   | "DEFAULT_STORAGE"
   | "FUNCTIONS";
-export const LocationFeaturesItemEnum = S.String;
+const LocationFeaturesItemEnum = S.String;
 
 export type LocationFeaturesItemEnumList = Array<LocationFeaturesItemEnum>;
-export const LocationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
+const LocationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   LocationFeaturesItemEnum,
 ) as any as S.Schema<LocationFeaturesItemEnumList>;
 
@@ -1044,7 +1037,7 @@ export interface Location {
   /** Products and services that are available in the location for default Google Cloud resources. */
   features?: LocationFeaturesItemEnumList;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(LocationTypeEnum),
     locationId: S.optional(S.String),
@@ -1053,7 +1046,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 export interface ListAvailableLocationsResponse {
   /** One page of results from a call to `ListAvailableLocations`. */
@@ -1061,7 +1054,7 @@ export interface ListAvailableLocationsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results and all available locations have been listed. This token can be used in a subsequent call to `ListAvailableLocations` to find more locations. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-export const ListAvailableLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1080,7 +1073,7 @@ export interface ListProjectsIosAppsRequest {
   /** Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned. */
   showDeleted?: boolean;
 }
-export const ListProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1098,7 +1091,7 @@ export const ListProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsIosAppsRequest>;
 
 export type IosAppList = Array<IosApp>;
-export const IosAppList = /*@__PURE__*/ S.Array(IosApp) as any as S.Schema<IosAppList>;
+const IosAppList = /*@__PURE__*/ S.Array(IosApp) as any as S.Schema<IosAppList>;
 
 export interface ListIosAppsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListIosApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
@@ -1106,7 +1099,7 @@ export interface ListIosAppsResponse {
   /** List of each `IosApp` associated with the specified `FirebaseProject`. */
   apps?: IosAppList;
 }
-export const ListIosAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIosAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     apps: S.optional(IosAppList),
@@ -1123,7 +1116,7 @@ export interface ListProjectsWebAppsRequest {
   /** Controls whether Apps in the DELETED state should be returned in the response. If not specified, only `ACTIVE` Apps will be returned. */
   showDeleted?: boolean;
 }
-export const ListProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1141,7 +1134,7 @@ export const ListProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsWebAppsRequest>;
 
 export type WebAppList = Array<WebApp>;
-export const WebAppList = /*@__PURE__*/ S.Array(WebApp) as any as S.Schema<WebAppList>;
+const WebAppList = /*@__PURE__*/ S.Array(WebApp) as any as S.Schema<WebAppList>;
 
 export interface ListWebAppsResponse {
   /** List of each `WebApp` associated with the specified `FirebaseProject`. */
@@ -1149,7 +1142,7 @@ export interface ListWebAppsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListWebApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-export const ListWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: S.optional(WebAppList),
     nextPageToken: S.optional(S.String),
@@ -1164,7 +1157,7 @@ export interface PatchProjectsRequest {
   /** Request body */
   body?: FirebaseProject;
 }
-export const PatchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1186,7 +1179,7 @@ export interface PatchProjectsAndroidAppsRequest {
   /** Request body */
   body?: AndroidApp;
 }
-export const PatchProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1210,7 +1203,7 @@ export interface PatchProjectsIosAppsRequest {
   /** Request body */
   body?: IosApp;
 }
-export const PatchProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1234,7 +1227,7 @@ export interface PatchProjectsWebAppsRequest {
   /** Request body */
   body?: WebApp;
 }
-export const PatchProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1254,7 +1247,7 @@ export interface RemoveAnalyticsRequest {
   /** Optional. The ID of the Google Analytics property associated with the specified `FirebaseProject`. - If not set, then the Google Analytics property that is currently associated with the specified `FirebaseProject` is removed. - If set, and the specified `FirebaseProject` is currently associated with a *different* Google Analytics property, then the response is a `412 Precondition Failed` error. */
   analyticsPropertyId?: string;
 }
-export const RemoveAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyticsPropertyId: S.optional(S.String),
   }),
@@ -1266,7 +1259,7 @@ export interface RemoveAnalyticsProjectsRequest {
   /** Request body */
   body?: RemoveAnalyticsRequest;
 }
-export const RemoveAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RemoveAnalyticsRequest.pipe(T.HttpBody())),
@@ -1291,7 +1284,7 @@ export interface RemoveAndroidAppRequest {
   /** Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const RemoveAndroidAppRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAndroidAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     allowMissing: S.optional(S.Boolean),
@@ -1306,7 +1299,7 @@ export interface RemoveProjectsAndroidAppsRequest {
   /** Request body */
   body?: RemoveAndroidAppRequest;
 }
-export const RemoveProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RemoveAndroidAppRequest.pipe(T.HttpBody())),
@@ -1331,7 +1324,7 @@ export interface RemoveIosAppRequest {
   /** Determines whether to _immediately_ delete the IosApp. If set to true, the App is immediately deleted from the Project and cannot be undeleted (that is, restored to the Project). If not set, defaults to false, which means the App will be set to expire in 30 days. Within the 30 days, the App may be restored to the Project using UndeleteIosApp */
   immediate?: boolean;
 }
-export const RemoveIosAppRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveIosAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     allowMissing: S.optional(S.Boolean),
@@ -1346,7 +1339,7 @@ export interface RemoveProjectsIosAppsRequest {
   /** Request body */
   body?: RemoveIosAppRequest;
 }
-export const RemoveProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RemoveIosAppRequest.pipe(T.HttpBody())),
@@ -1371,7 +1364,7 @@ export interface RemoveWebAppRequest {
   /** Checksum provided in the WebApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const RemoveWebAppRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveWebAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     immediate: S.optional(S.Boolean),
@@ -1386,7 +1379,7 @@ export interface RemoveProjectsWebAppsRequest {
   /** Request body */
   body?: RemoveWebAppRequest;
 }
-export const RemoveProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RemoveWebAppRequest.pipe(T.HttpBody())),
@@ -1413,7 +1406,7 @@ export interface SearchAppsProjectsRequest {
   /** Token returned from a previous call to `SearchFirebaseApps` indicating where in the set of Apps to resume listing. */
   pageToken?: string;
 }
-export const SearchAppsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAppsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1432,10 +1425,10 @@ export const SearchAppsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAppsProjectsRequest>;
 
 export type FirebaseAppInfoPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID" | "WEB";
-export const FirebaseAppInfoPlatformEnum = S.String;
+const FirebaseAppInfoPlatformEnum = S.String;
 
 export type FirebaseAppInfoStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
-export const FirebaseAppInfoStateEnum = S.String;
+const FirebaseAppInfoStateEnum = S.String;
 
 /** A high-level summary of an App. */
 export interface FirebaseAppInfo {
@@ -1456,7 +1449,7 @@ export interface FirebaseAppInfo {
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
   appId?: string;
 }
-export const FirebaseAppInfo = /*@__PURE__*/ S.suspend(() =>
+const FirebaseAppInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     platform: S.optional(FirebaseAppInfoPlatformEnum),
     namespace: S.optional(S.String),
@@ -1470,7 +1463,7 @@ export const FirebaseAppInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirebaseAppInfo" }) as any as S.Schema<FirebaseAppInfo>;
 
 export type FirebaseAppInfoList = Array<FirebaseAppInfo>;
-export const FirebaseAppInfoList = /*@__PURE__*/ S.Array(
+const FirebaseAppInfoList = /*@__PURE__*/ S.Array(
   FirebaseAppInfo,
 ) as any as S.Schema<FirebaseAppInfoList>;
 
@@ -1480,7 +1473,7 @@ export interface SearchFirebaseAppsResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. This token can be used in a subsequent calls to `SearchFirebaseApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-export const SearchFirebaseAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchFirebaseAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: S.optional(FirebaseAppInfoList),
     nextPageToken: S.optional(S.String),
@@ -1495,7 +1488,7 @@ export interface UndeleteAndroidAppRequest {
   /** Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const UndeleteAndroidAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteAndroidAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     etag: S.optional(S.String),
@@ -1510,7 +1503,7 @@ export interface UndeleteProjectsAndroidAppsRequest {
   /** Request body */
   body?: UndeleteAndroidAppRequest;
 }
-export const UndeleteProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteAndroidAppRequest.pipe(T.HttpBody())),
@@ -1531,7 +1524,7 @@ export interface UndeleteIosAppRequest {
   /** Checksum provided in the IosApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const UndeleteIosAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteIosAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     etag: S.optional(S.String),
@@ -1544,7 +1537,7 @@ export interface UndeleteProjectsIosAppsRequest {
   /** Request body */
   body?: UndeleteIosAppRequest;
 }
-export const UndeleteProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteIosAppRequest.pipe(T.HttpBody())),
@@ -1565,7 +1558,7 @@ export interface UndeleteWebAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be undeleted. */
   validateOnly?: boolean;
 }
-export const UndeleteWebAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteWebAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     validateOnly: S.optional(S.Boolean),
@@ -1578,7 +1571,7 @@ export interface UndeleteProjectsWebAppsRequest {
   /** Request body */
   body?: UndeleteWebAppRequest;
 }
-export const UndeleteProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeleteWebAppRequest.pipe(T.HttpBody())),

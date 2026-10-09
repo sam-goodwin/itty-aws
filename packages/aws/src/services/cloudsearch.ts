@@ -164,24 +164,24 @@ export type DomainName = string;
 export interface BuildSuggestersRequest {
   DomainName: string;
 }
-export const BuildSuggestersRequest = /*@__PURE__*/ S.suspend(() =>
+const BuildSuggestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "BuildSuggestersRequest" }) as any as S.Schema<BuildSuggestersRequest>;
 export type FieldName = string;
 export type FieldNameList = string[];
-export const FieldNameList = /*@__PURE__*/ S.Array(S.String);
+const FieldNameList = /*@__PURE__*/ S.Array(S.String);
 export interface BuildSuggestersResponse {
   FieldNames?: string[];
 }
-export const BuildSuggestersResponse = /*@__PURE__*/ S.suspend(() =>
+const BuildSuggestersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FieldNames: S.optional(FieldNameList) }).pipe(ns),
 ).annotate({ identifier: "BuildSuggestersResponse" }) as any as S.Schema<BuildSuggestersResponse>;
 export interface CreateDomainRequest {
   DomainName: string;
 }
-export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -192,7 +192,7 @@ export type ServiceUrl = string;
 export interface ServiceEndpoint {
   Endpoint?: string;
 }
-export const ServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoint: S.optional(S.String) }),
 ).annotate({ identifier: "ServiceEndpoint" }) as any as S.Schema<ServiceEndpoint>;
 export type SearchInstanceType = string;
@@ -204,7 +204,7 @@ export interface Limits {
   MaximumReplicationCount: number;
   MaximumPartitionCount: number;
 }
-export const Limits = /*@__PURE__*/ S.suspend(() =>
+const Limits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaximumReplicationCount: S.Number, MaximumPartitionCount: S.Number }),
 ).annotate({ identifier: "Limits" }) as any as S.Schema<Limits>;
 export interface DomainStatus {
@@ -222,7 +222,7 @@ export interface DomainStatus {
   SearchInstanceCount?: number;
   Limits?: Limits;
 }
-export const DomainStatus = /*@__PURE__*/ S.suspend(() =>
+const DomainStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     DomainName: S.String,
@@ -242,7 +242,7 @@ export const DomainStatus = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDomainResponse {
   DomainStatus?: DomainStatus;
 }
-export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainStatus: S.optional(DomainStatus) }).pipe(ns),
 ).annotate({ identifier: "CreateDomainResponse" }) as any as S.Schema<CreateDomainResponse>;
 export type StandardName = string;
@@ -283,10 +283,10 @@ export type AnalysisSchemeLanguage =
   | "zh-Hans"
   | "zh-Hant"
   | (string & {});
-export const AnalysisSchemeLanguage = S.String;
+const AnalysisSchemeLanguage = S.String;
 
 export type AlgorithmicStemming = "none" | "minimal" | "light" | "full" | (string & {});
-export const AlgorithmicStemming = S.String;
+const AlgorithmicStemming = S.String;
 
 export interface AnalysisOptions {
   Synonyms?: string;
@@ -295,7 +295,7 @@ export interface AnalysisOptions {
   JapaneseTokenizationDictionary?: string;
   AlgorithmicStemming?: AlgorithmicStemming;
 }
-export const AnalysisOptions = /*@__PURE__*/ S.suspend(() =>
+const AnalysisOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Synonyms: S.optional(S.String),
     Stopwords: S.optional(S.String),
@@ -309,7 +309,7 @@ export interface AnalysisScheme {
   AnalysisSchemeLanguage: AnalysisSchemeLanguage;
   AnalysisOptions?: AnalysisOptions;
 }
-export const AnalysisScheme = /*@__PURE__*/ S.suspend(() =>
+const AnalysisScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AnalysisSchemeName: S.String,
     AnalysisSchemeLanguage: AnalysisSchemeLanguage,
@@ -320,7 +320,7 @@ export interface DefineAnalysisSchemeRequest {
   DomainName: string;
   AnalysisScheme: AnalysisScheme;
 }
-export const DefineAnalysisSchemeRequest = /*@__PURE__*/ S.suspend(() =>
+const DefineAnalysisSchemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, AnalysisScheme: AnalysisScheme }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -335,7 +335,7 @@ export type OptionState =
   | "Active"
   | "FailedToValidate"
   | (string & {});
-export const OptionState = S.String;
+const OptionState = S.String;
 
 export interface OptionStatus {
   CreationDate: Date;
@@ -344,7 +344,7 @@ export interface OptionStatus {
   State: OptionState;
   PendingDeletion?: boolean;
 }
-export const OptionStatus = /*@__PURE__*/ S.suspend(() =>
+const OptionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     UpdateDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -357,13 +357,13 @@ export interface AnalysisSchemeStatus {
   Options: AnalysisScheme;
   Status: OptionStatus;
 }
-export const AnalysisSchemeStatus = /*@__PURE__*/ S.suspend(() =>
+const AnalysisSchemeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: AnalysisScheme, Status: OptionStatus }),
 ).annotate({ identifier: "AnalysisSchemeStatus" }) as any as S.Schema<AnalysisSchemeStatus>;
 export interface DefineAnalysisSchemeResponse {
   AnalysisScheme: AnalysisSchemeStatus;
 }
-export const DefineAnalysisSchemeResponse = /*@__PURE__*/ S.suspend(() =>
+const DefineAnalysisSchemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AnalysisScheme: AnalysisSchemeStatus }).pipe(ns),
 ).annotate({
   identifier: "DefineAnalysisSchemeResponse",
@@ -373,14 +373,14 @@ export interface Expression {
   ExpressionName: string;
   ExpressionValue: string;
 }
-export const Expression = /*@__PURE__*/ S.suspend(() =>
+const Expression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ExpressionName: S.String, ExpressionValue: S.String }),
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
 export interface DefineExpressionRequest {
   DomainName: string;
   Expression: Expression;
 }
-export const DefineExpressionRequest = /*@__PURE__*/ S.suspend(() =>
+const DefineExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, Expression: Expression }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -389,13 +389,13 @@ export interface ExpressionStatus {
   Options: Expression;
   Status: OptionStatus;
 }
-export const ExpressionStatus = /*@__PURE__*/ S.suspend(() =>
+const ExpressionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: Expression, Status: OptionStatus }),
 ).annotate({ identifier: "ExpressionStatus" }) as any as S.Schema<ExpressionStatus>;
 export interface DefineExpressionResponse {
   Expression: ExpressionStatus;
 }
-export const DefineExpressionResponse = /*@__PURE__*/ S.suspend(() =>
+const DefineExpressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Expression: ExpressionStatus }).pipe(ns),
 ).annotate({ identifier: "DefineExpressionResponse" }) as any as S.Schema<DefineExpressionResponse>;
 export type DynamicFieldName = string;
@@ -412,7 +412,7 @@ export type IndexFieldType =
   | "text-array"
   | "date-array"
   | (string & {});
-export const IndexFieldType = S.String;
+const IndexFieldType = S.String;
 
 export interface IntOptions {
   DefaultValue?: number;
@@ -422,7 +422,7 @@ export interface IntOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export const IntOptions = /*@__PURE__*/ S.suspend(() =>
+const IntOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.Number),
     SourceField: S.optional(S.String),
@@ -440,7 +440,7 @@ export interface DoubleOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export const DoubleOptions = /*@__PURE__*/ S.suspend(() =>
+const DoubleOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.Number),
     SourceField: S.optional(S.String),
@@ -459,7 +459,7 @@ export interface LiteralOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export const LiteralOptions = /*@__PURE__*/ S.suspend(() =>
+const LiteralOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceField: S.optional(S.String),
@@ -478,7 +478,7 @@ export interface TextOptions {
   HighlightEnabled?: boolean;
   AnalysisScheme?: string;
 }
-export const TextOptions = /*@__PURE__*/ S.suspend(() =>
+const TextOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceField: S.optional(S.String),
@@ -496,7 +496,7 @@ export interface DateOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export const DateOptions = /*@__PURE__*/ S.suspend(() =>
+const DateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceField: S.optional(S.String),
@@ -514,7 +514,7 @@ export interface LatLonOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
-export const LatLonOptions = /*@__PURE__*/ S.suspend(() =>
+const LatLonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceField: S.optional(S.String),
@@ -532,7 +532,7 @@ export interface IntArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
-export const IntArrayOptions = /*@__PURE__*/ S.suspend(() =>
+const IntArrayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.Number),
     SourceFields: S.optional(S.String),
@@ -548,7 +548,7 @@ export interface DoubleArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
-export const DoubleArrayOptions = /*@__PURE__*/ S.suspend(() =>
+const DoubleArrayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.Number),
     SourceFields: S.optional(S.String),
@@ -564,7 +564,7 @@ export interface LiteralArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
-export const LiteralArrayOptions = /*@__PURE__*/ S.suspend(() =>
+const LiteralArrayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceFields: S.optional(S.String),
@@ -580,7 +580,7 @@ export interface TextArrayOptions {
   HighlightEnabled?: boolean;
   AnalysisScheme?: string;
 }
-export const TextArrayOptions = /*@__PURE__*/ S.suspend(() =>
+const TextArrayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceFields: S.optional(S.String),
@@ -596,7 +596,7 @@ export interface DateArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
-export const DateArrayOptions = /*@__PURE__*/ S.suspend(() =>
+const DateArrayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultValue: S.optional(S.String),
     SourceFields: S.optional(S.String),
@@ -620,7 +620,7 @@ export interface IndexField {
   TextArrayOptions?: TextArrayOptions;
   DateArrayOptions?: DateArrayOptions;
 }
-export const IndexField = /*@__PURE__*/ S.suspend(() =>
+const IndexField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IndexFieldName: S.String,
     IndexFieldType: IndexFieldType,
@@ -641,7 +641,7 @@ export interface DefineIndexFieldRequest {
   DomainName: string;
   IndexField: IndexField;
 }
-export const DefineIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const DefineIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, IndexField: IndexField }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -650,24 +650,24 @@ export interface IndexFieldStatus {
   Options: IndexField;
   Status: OptionStatus;
 }
-export const IndexFieldStatus = /*@__PURE__*/ S.suspend(() =>
+const IndexFieldStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: IndexField, Status: OptionStatus }),
 ).annotate({ identifier: "IndexFieldStatus" }) as any as S.Schema<IndexFieldStatus>;
 export interface DefineIndexFieldResponse {
   IndexField: IndexFieldStatus;
 }
-export const DefineIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const DefineIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IndexField: IndexFieldStatus }).pipe(ns),
 ).annotate({ identifier: "DefineIndexFieldResponse" }) as any as S.Schema<DefineIndexFieldResponse>;
 export type SuggesterFuzzyMatching = "none" | "low" | "high" | (string & {});
-export const SuggesterFuzzyMatching = S.String;
+const SuggesterFuzzyMatching = S.String;
 
 export interface DocumentSuggesterOptions {
   SourceField: string;
   FuzzyMatching?: SuggesterFuzzyMatching;
   SortExpression?: string;
 }
-export const DocumentSuggesterOptions = /*@__PURE__*/ S.suspend(() =>
+const DocumentSuggesterOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceField: S.String,
     FuzzyMatching: S.optional(SuggesterFuzzyMatching),
@@ -678,14 +678,14 @@ export interface Suggester {
   SuggesterName: string;
   DocumentSuggesterOptions: DocumentSuggesterOptions;
 }
-export const Suggester = /*@__PURE__*/ S.suspend(() =>
+const Suggester = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SuggesterName: S.String, DocumentSuggesterOptions: DocumentSuggesterOptions }),
 ).annotate({ identifier: "Suggester" }) as any as S.Schema<Suggester>;
 export interface DefineSuggesterRequest {
   DomainName: string;
   Suggester: Suggester;
 }
-export const DefineSuggesterRequest = /*@__PURE__*/ S.suspend(() =>
+const DefineSuggesterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, Suggester: Suggester }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -694,20 +694,20 @@ export interface SuggesterStatus {
   Options: Suggester;
   Status: OptionStatus;
 }
-export const SuggesterStatus = /*@__PURE__*/ S.suspend(() =>
+const SuggesterStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: Suggester, Status: OptionStatus }),
 ).annotate({ identifier: "SuggesterStatus" }) as any as S.Schema<SuggesterStatus>;
 export interface DefineSuggesterResponse {
   Suggester: SuggesterStatus;
 }
-export const DefineSuggesterResponse = /*@__PURE__*/ S.suspend(() =>
+const DefineSuggesterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Suggester: SuggesterStatus }).pipe(ns),
 ).annotate({ identifier: "DefineSuggesterResponse" }) as any as S.Schema<DefineSuggesterResponse>;
 export interface DeleteAnalysisSchemeRequest {
   DomainName: string;
   AnalysisSchemeName: string;
 }
-export const DeleteAnalysisSchemeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnalysisSchemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, AnalysisSchemeName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -717,7 +717,7 @@ export const DeleteAnalysisSchemeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAnalysisSchemeResponse {
   AnalysisScheme: AnalysisSchemeStatus;
 }
-export const DeleteAnalysisSchemeResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnalysisSchemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AnalysisScheme: AnalysisSchemeStatus }).pipe(ns),
 ).annotate({
   identifier: "DeleteAnalysisSchemeResponse",
@@ -725,7 +725,7 @@ export const DeleteAnalysisSchemeResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainRequest {
   DomainName: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -733,14 +733,14 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainResponse {
   DomainStatus?: DomainStatus;
 }
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainStatus: S.optional(DomainStatus) }).pipe(ns),
 ).annotate({ identifier: "DeleteDomainResponse" }) as any as S.Schema<DeleteDomainResponse>;
 export interface DeleteExpressionRequest {
   DomainName: string;
   ExpressionName: string;
 }
-export const DeleteExpressionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, ExpressionName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -748,14 +748,14 @@ export const DeleteExpressionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteExpressionResponse {
   Expression: ExpressionStatus;
 }
-export const DeleteExpressionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteExpressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Expression: ExpressionStatus }).pipe(ns),
 ).annotate({ identifier: "DeleteExpressionResponse" }) as any as S.Schema<DeleteExpressionResponse>;
 export interface DeleteIndexFieldRequest {
   DomainName: string;
   IndexFieldName: string;
 }
-export const DeleteIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, IndexFieldName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -763,14 +763,14 @@ export const DeleteIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteIndexFieldResponse {
   IndexField: IndexFieldStatus;
 }
-export const DeleteIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IndexField: IndexFieldStatus }).pipe(ns),
 ).annotate({ identifier: "DeleteIndexFieldResponse" }) as any as S.Schema<DeleteIndexFieldResponse>;
 export interface DeleteSuggesterRequest {
   DomainName: string;
   SuggesterName: string;
 }
-export const DeleteSuggesterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSuggesterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, SuggesterName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -778,17 +778,17 @@ export const DeleteSuggesterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSuggesterResponse {
   Suggester: SuggesterStatus;
 }
-export const DeleteSuggesterResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSuggesterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Suggester: SuggesterStatus }).pipe(ns),
 ).annotate({ identifier: "DeleteSuggesterResponse" }) as any as S.Schema<DeleteSuggesterResponse>;
 export type StandardNameList = string[];
-export const StandardNameList = /*@__PURE__*/ S.Array(S.String);
+const StandardNameList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeAnalysisSchemesRequest {
   DomainName: string;
   AnalysisSchemeNames?: string[];
   Deployed?: boolean;
 }
-export const DescribeAnalysisSchemesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAnalysisSchemesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     AnalysisSchemeNames: S.optional(StandardNameList),
@@ -798,11 +798,11 @@ export const DescribeAnalysisSchemesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAnalysisSchemesRequest",
 }) as any as S.Schema<DescribeAnalysisSchemesRequest>;
 export type AnalysisSchemeStatusList = AnalysisSchemeStatus[];
-export const AnalysisSchemeStatusList = /*@__PURE__*/ S.Array(AnalysisSchemeStatus);
+const AnalysisSchemeStatusList = /*@__PURE__*/ S.Array(AnalysisSchemeStatus);
 export interface DescribeAnalysisSchemesResponse {
   AnalysisSchemes: AnalysisSchemeStatus[];
 }
-export const DescribeAnalysisSchemesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAnalysisSchemesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AnalysisSchemes: AnalysisSchemeStatusList }).pipe(ns),
 ).annotate({
   identifier: "DescribeAnalysisSchemesResponse",
@@ -811,7 +811,7 @@ export interface DescribeAvailabilityOptionsRequest {
   DomainName: string;
   Deployed?: boolean;
 }
-export const DescribeAvailabilityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAvailabilityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -823,7 +823,7 @@ export interface AvailabilityOptionsStatus {
   Options: boolean;
   Status: OptionStatus;
 }
-export const AvailabilityOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.Boolean, Status: OptionStatus }),
 ).annotate({
   identifier: "AvailabilityOptionsStatus",
@@ -831,7 +831,7 @@ export const AvailabilityOptionsStatus = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAvailabilityOptionsResponse {
   AvailabilityOptions?: AvailabilityOptionsStatus;
 }
-export const DescribeAvailabilityOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAvailabilityOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AvailabilityOptions: S.optional(AvailabilityOptionsStatus) }).pipe(ns),
 ).annotate({
   identifier: "DescribeAvailabilityOptionsResponse",
@@ -840,7 +840,7 @@ export interface DescribeDomainEndpointOptionsRequest {
   DomainName: string;
   Deployed?: boolean;
 }
-export const DescribeDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -851,13 +851,13 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
   | (string & {});
-export const TLSSecurityPolicy = S.String;
+const TLSSecurityPolicy = S.String;
 
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
   TLSSecurityPolicy?: TLSSecurityPolicy;
 }
-export const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
+const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnforceHTTPS: S.optional(S.Boolean),
     TLSSecurityPolicy: S.optional(TLSSecurityPolicy),
@@ -867,7 +867,7 @@ export interface DomainEndpointOptionsStatus {
   Options: DomainEndpointOptions;
   Status: OptionStatus;
 }
-export const DomainEndpointOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const DomainEndpointOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: DomainEndpointOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "DomainEndpointOptionsStatus",
@@ -875,27 +875,27 @@ export const DomainEndpointOptionsStatus = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDomainEndpointOptionsResponse {
   DomainEndpointOptions?: DomainEndpointOptionsStatus;
 }
-export const DescribeDomainEndpointOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainEndpointOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainEndpointOptions: S.optional(DomainEndpointOptionsStatus) }).pipe(ns),
 ).annotate({
   identifier: "DescribeDomainEndpointOptionsResponse",
 }) as any as S.Schema<DescribeDomainEndpointOptionsResponse>;
 export type DomainNameList = string[];
-export const DomainNameList = /*@__PURE__*/ S.Array(S.String);
+const DomainNameList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeDomainsRequest {
   DomainNames?: string[];
 }
-export const DescribeDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainNames: S.optional(DomainNameList) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DescribeDomainsRequest" }) as any as S.Schema<DescribeDomainsRequest>;
 export type DomainStatusList = DomainStatus[];
-export const DomainStatusList = /*@__PURE__*/ S.Array(DomainStatus);
+const DomainStatusList = /*@__PURE__*/ S.Array(DomainStatus);
 export interface DescribeDomainsResponse {
   DomainStatusList: DomainStatus[];
 }
-export const DescribeDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainStatusList: DomainStatusList }).pipe(ns),
 ).annotate({ identifier: "DescribeDomainsResponse" }) as any as S.Schema<DescribeDomainsResponse>;
 export interface DescribeExpressionsRequest {
@@ -903,7 +903,7 @@ export interface DescribeExpressionsRequest {
   ExpressionNames?: string[];
   Deployed?: boolean;
 }
-export const DescribeExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ExpressionNames: S.optional(StandardNameList),
@@ -913,23 +913,23 @@ export const DescribeExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeExpressionsRequest",
 }) as any as S.Schema<DescribeExpressionsRequest>;
 export type ExpressionStatusList = ExpressionStatus[];
-export const ExpressionStatusList = /*@__PURE__*/ S.Array(ExpressionStatus);
+const ExpressionStatusList = /*@__PURE__*/ S.Array(ExpressionStatus);
 export interface DescribeExpressionsResponse {
   Expressions: ExpressionStatus[];
 }
-export const DescribeExpressionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeExpressionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Expressions: ExpressionStatusList }).pipe(ns),
 ).annotate({
   identifier: "DescribeExpressionsResponse",
 }) as any as S.Schema<DescribeExpressionsResponse>;
 export type DynamicFieldNameList = string[];
-export const DynamicFieldNameList = /*@__PURE__*/ S.Array(S.String);
+const DynamicFieldNameList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeIndexFieldsRequest {
   DomainName: string;
   FieldNames?: string[];
   Deployed?: boolean;
 }
-export const DescribeIndexFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeIndexFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     FieldNames: S.optional(DynamicFieldNameList),
@@ -939,11 +939,11 @@ export const DescribeIndexFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeIndexFieldsRequest",
 }) as any as S.Schema<DescribeIndexFieldsRequest>;
 export type IndexFieldStatusList = IndexFieldStatus[];
-export const IndexFieldStatusList = /*@__PURE__*/ S.Array(IndexFieldStatus);
+const IndexFieldStatusList = /*@__PURE__*/ S.Array(IndexFieldStatus);
 export interface DescribeIndexFieldsResponse {
   IndexFields: IndexFieldStatus[];
 }
-export const DescribeIndexFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeIndexFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IndexFields: IndexFieldStatusList }).pipe(ns),
 ).annotate({
   identifier: "DescribeIndexFieldsResponse",
@@ -951,7 +951,7 @@ export const DescribeIndexFieldsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeScalingParametersRequest {
   DomainName: string;
 }
-export const DescribeScalingParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeScalingParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -977,14 +977,14 @@ export type PartitionInstanceType =
   | "search.previousgeneration.xlarge"
   | "search.previousgeneration.2xlarge"
   | (string & {});
-export const PartitionInstanceType = S.String;
+const PartitionInstanceType = S.String;
 
 export interface ScalingParameters {
   DesiredInstanceType?: PartitionInstanceType;
   DesiredReplicationCount?: number;
   DesiredPartitionCount?: number;
 }
-export const ScalingParameters = /*@__PURE__*/ S.suspend(() =>
+const ScalingParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DesiredInstanceType: S.optional(PartitionInstanceType),
     DesiredReplicationCount: S.optional(S.Number),
@@ -995,13 +995,13 @@ export interface ScalingParametersStatus {
   Options: ScalingParameters;
   Status: OptionStatus;
 }
-export const ScalingParametersStatus = /*@__PURE__*/ S.suspend(() =>
+const ScalingParametersStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: ScalingParameters, Status: OptionStatus }),
 ).annotate({ identifier: "ScalingParametersStatus" }) as any as S.Schema<ScalingParametersStatus>;
 export interface DescribeScalingParametersResponse {
   ScalingParameters: ScalingParametersStatus;
 }
-export const DescribeScalingParametersResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeScalingParametersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScalingParameters: ScalingParametersStatus }).pipe(ns),
 ).annotate({
   identifier: "DescribeScalingParametersResponse",
@@ -1010,7 +1010,7 @@ export interface DescribeServiceAccessPoliciesRequest {
   DomainName: string;
   Deployed?: boolean;
 }
-export const DescribeServiceAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeServiceAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1022,13 +1022,13 @@ export interface AccessPoliciesStatus {
   Options: string;
   Status: OptionStatus;
 }
-export const AccessPoliciesStatus = /*@__PURE__*/ S.suspend(() =>
+const AccessPoliciesStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.String, Status: OptionStatus }),
 ).annotate({ identifier: "AccessPoliciesStatus" }) as any as S.Schema<AccessPoliciesStatus>;
 export interface DescribeServiceAccessPoliciesResponse {
   AccessPolicies: AccessPoliciesStatus;
 }
-export const DescribeServiceAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeServiceAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccessPolicies: AccessPoliciesStatus }).pipe(ns),
 ).annotate({
   identifier: "DescribeServiceAccessPoliciesResponse",
@@ -1038,7 +1038,7 @@ export interface DescribeSuggestersRequest {
   SuggesterNames?: string[];
   Deployed?: boolean;
 }
-export const DescribeSuggestersRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSuggestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     SuggesterNames: S.optional(StandardNameList),
@@ -1048,11 +1048,11 @@ export const DescribeSuggestersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSuggestersRequest",
 }) as any as S.Schema<DescribeSuggestersRequest>;
 export type SuggesterStatusList = SuggesterStatus[];
-export const SuggesterStatusList = /*@__PURE__*/ S.Array(SuggesterStatus);
+const SuggesterStatusList = /*@__PURE__*/ S.Array(SuggesterStatus);
 export interface DescribeSuggestersResponse {
   Suggesters: SuggesterStatus[];
 }
-export const DescribeSuggestersResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSuggestersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Suggesters: SuggesterStatusList }).pipe(ns),
 ).annotate({
   identifier: "DescribeSuggestersResponse",
@@ -1060,7 +1060,7 @@ export const DescribeSuggestersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface IndexDocumentsRequest {
   DomainName: string;
 }
-export const IndexDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const IndexDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1068,30 +1068,27 @@ export const IndexDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IndexDocumentsResponse {
   FieldNames?: string[];
 }
-export const IndexDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const IndexDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FieldNames: S.optional(FieldNameList) }).pipe(ns),
 ).annotate({ identifier: "IndexDocumentsResponse" }) as any as S.Schema<IndexDocumentsResponse>;
 export interface ListDomainNamesRequest {}
-export const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListDomainNamesRequest" }) as any as S.Schema<ListDomainNamesRequest>;
 export type APIVersion = string;
 export type DomainNameMap = { [key: string]: string | undefined };
-export const DomainNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const DomainNameMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface ListDomainNamesResponse {
   DomainNames?: { [key: string]: string | undefined };
 }
-export const ListDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainNames: S.optional(DomainNameMap) }).pipe(ns),
 ).annotate({ identifier: "ListDomainNamesResponse" }) as any as S.Schema<ListDomainNamesResponse>;
 export interface UpdateAvailabilityOptionsRequest {
   DomainName: string;
   MultiAZ: boolean;
 }
-export const UpdateAvailabilityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAvailabilityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, MultiAZ: S.Boolean }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1101,7 +1098,7 @@ export const UpdateAvailabilityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAvailabilityOptionsResponse {
   AvailabilityOptions?: AvailabilityOptionsStatus;
 }
-export const UpdateAvailabilityOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAvailabilityOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AvailabilityOptions: S.optional(AvailabilityOptionsStatus) }).pipe(ns),
 ).annotate({
   identifier: "UpdateAvailabilityOptionsResponse",
@@ -1110,7 +1107,7 @@ export interface UpdateDomainEndpointOptionsRequest {
   DomainName: string;
   DomainEndpointOptions: DomainEndpointOptions;
 }
-export const UpdateDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, DomainEndpointOptions: DomainEndpointOptions }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1120,7 +1117,7 @@ export const UpdateDomainEndpointOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainEndpointOptionsResponse {
   DomainEndpointOptions?: DomainEndpointOptionsStatus;
 }
-export const UpdateDomainEndpointOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainEndpointOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainEndpointOptions: S.optional(DomainEndpointOptionsStatus) }).pipe(ns),
 ).annotate({
   identifier: "UpdateDomainEndpointOptionsResponse",
@@ -1129,7 +1126,7 @@ export interface UpdateScalingParametersRequest {
   DomainName: string;
   ScalingParameters: ScalingParameters;
 }
-export const UpdateScalingParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScalingParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, ScalingParameters: ScalingParameters }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1139,7 +1136,7 @@ export const UpdateScalingParametersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateScalingParametersResponse {
   ScalingParameters: ScalingParametersStatus;
 }
-export const UpdateScalingParametersResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateScalingParametersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScalingParameters: ScalingParametersStatus }).pipe(ns),
 ).annotate({
   identifier: "UpdateScalingParametersResponse",
@@ -1148,7 +1145,7 @@ export interface UpdateServiceAccessPoliciesRequest {
   DomainName: string;
   AccessPolicies: string;
 }
-export const UpdateServiceAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, AccessPolicies: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1158,7 +1155,7 @@ export const UpdateServiceAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServiceAccessPoliciesResponse {
   AccessPolicies: AccessPoliciesStatus;
 }
-export const UpdateServiceAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccessPolicies: AccessPoliciesStatus }).pipe(ns),
 ).annotate({
   identifier: "UpdateServiceAccessPoliciesResponse",

@@ -10,7 +10,7 @@ export type { DaytonaOpError, DaytonaOpContext };
 
 /** Allowed hosts this secret may be sent to */
 export type CreateSecretRequestHostsList = Array<string>;
-export const CreateSecretRequestHostsList = /*@__PURE__*/ S.Array(
+const CreateSecretRequestHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateSecretRequestHostsList>;
 
@@ -26,7 +26,7 @@ export interface CreateSecretRequest {
   /** Allowed hosts this secret may be sent to */
   hosts?: CreateSecretRequestHostsList;
 }
-export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
     name: S.String,
@@ -38,7 +38,7 @@ export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed hosts this secret may be sent to */
 export type SecretHostsList = Array<string>;
-export const SecretHostsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<SecretHostsList>;
+const SecretHostsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<SecretHostsList>;
 
 export interface Secret2 {
   /** Secret ID */
@@ -56,7 +56,7 @@ export interface Secret2 {
   /** Last update timestamp */
   updatedAt: string;
 }
-export const Secret2 = /*@__PURE__*/ S.suspend(() =>
+const Secret2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -74,7 +74,7 @@ export interface DeleteSecretRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -82,7 +82,7 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSecretResponse",
 }) as any as S.Schema<DeleteSecretResponse>;
 
@@ -92,7 +92,7 @@ export interface GetSecretRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -100,10 +100,10 @@ export const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSecretRequest" }) as any as S.Schema<GetSecretRequest>;
 
 export type ListSecretsPaginatedRequestSort = "name" | "createdAt" | "updatedAt";
-export const ListSecretsPaginatedRequestSort = S.String;
+const ListSecretsPaginatedRequestSort = S.String;
 
 export type ListSecretsPaginatedRequestOrder = "asc" | "desc";
-export const ListSecretsPaginatedRequestOrder = S.String;
+const ListSecretsPaginatedRequestOrder = S.String;
 
 export interface ListSecretsPaginatedRequest {
   /** Pagination cursor from a previous response */
@@ -119,7 +119,7 @@ export interface ListSecretsPaginatedRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const ListSecretsPaginatedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsPaginatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -134,7 +134,7 @@ export const ListSecretsPaginatedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of results for the current page */
 export type ListSecretsResponseItemsList = Array<Secret2>;
-export const ListSecretsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListSecretsResponseItemsList = /*@__PURE__*/ S.Array(
   Secret2,
 ) as any as S.Schema<ListSecretsResponseItemsList>;
 
@@ -146,7 +146,7 @@ export interface ListSecretsResponse {
   /** Cursor for the next page of results */
   nextCursor: string | null;
 }
-export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListSecretsResponseItemsList,
     total: S.Number,
@@ -156,7 +156,7 @@ export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed hosts this secret may be sent to */
 export type UpdateSecretRequestHostsList = Array<string>;
-export const UpdateSecretRequestHostsList =
+const UpdateSecretRequestHostsList =
   CreateSecretRequestHostsList as any as S.Schema<UpdateSecretRequestHostsList>;
 
 export interface UpdateSecretRequest {
@@ -171,7 +171,7 @@ export interface UpdateSecretRequest {
   /** Allowed hosts this secret may be sent to */
   hosts?: UpdateSecretRequestHostsList;
 }
-export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),

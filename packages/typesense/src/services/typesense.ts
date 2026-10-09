@@ -36,26 +36,26 @@ export class NotFound
   ) {}
 
 export interface ClearCacheRequest {}
-export const ClearCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/cache/clear", code: 200 })),
 ).annotate({ identifier: "ClearCacheRequest" }) as any as S.Schema<ClearCacheRequest>;
 
 export interface SuccessStatus {
   success: boolean;
 }
-export const SuccessStatus = /*@__PURE__*/ S.suspend(() =>
+const SuccessStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
 ).annotate({ identifier: "SuccessStatus" }) as any as S.Schema<SuccessStatus>;
 
 export interface CompactDbRequest {}
-export const CompactDbRequest = /*@__PURE__*/ S.suspend(() =>
+const CompactDbRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/db/compact", code: 200 })),
 ).annotate({ identifier: "CompactDbRequest" }) as any as S.Schema<CompactDbRequest>;
 
 export type CreateAnalyticsEventRequestDataDocIdsList = Array<string>;
-export const CreateAnalyticsEventRequestDataDocIdsList = /*@__PURE__*/ S.Array(
+const CreateAnalyticsEventRequestDataDocIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAnalyticsEventRequestDataDocIdsList>;
 
@@ -67,7 +67,7 @@ export interface CreateAnalyticsEventRequestData {
   q?: string;
   analytics_tag?: string;
 }
-export const CreateAnalyticsEventRequestData = /*@__PURE__*/ S.suspend(() =>
+const CreateAnalyticsEventRequestData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.optional(S.String),
     doc_id: S.optional(S.String),
@@ -87,7 +87,7 @@ export interface CreateAnalyticsEventRequest {
   /** Event payload */
   data: CreateAnalyticsEventRequestData;
 }
-export const CreateAnalyticsEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnalyticsEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     event_type: S.String,
@@ -100,7 +100,7 @@ export const CreateAnalyticsEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AnalyticsEventCreateResponse {
   ok: boolean;
 }
-export const AnalyticsEventCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -109,10 +109,10 @@ export const AnalyticsEventCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyticsEventCreateResponse>;
 
 export type AnalyticsRuleType = "popular_queries" | "nohits_queries" | "counter" | "log";
-export const AnalyticsRuleType = S.String;
+const AnalyticsRuleType = S.String;
 
 export type AnalyticsRuleCreateParamsMetaFieldsList = Array<string>;
-export const AnalyticsRuleCreateParamsMetaFieldsList =
+const AnalyticsRuleCreateParamsMetaFieldsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<AnalyticsRuleCreateParamsMetaFieldsList>;
 
 export interface AnalyticsRuleCreateParams {
@@ -124,7 +124,7 @@ export interface AnalyticsRuleCreateParams {
   counter_field?: string;
   weight?: number;
 }
-export const AnalyticsRuleCreateParams = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsRuleCreateParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination_collection: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -146,7 +146,7 @@ export interface AnalyticsRuleCreate {
   rule_tag?: string;
   params?: AnalyticsRuleCreateParams;
 }
-export const AnalyticsRuleCreate = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsRuleCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: AnalyticsRuleType,
@@ -158,14 +158,10 @@ export const AnalyticsRuleCreate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalyticsRuleCreate" }) as any as S.Schema<AnalyticsRuleCreate>;
 
 export type CreateAnalyticsRuleRequestBodyCase1List = Array<AnalyticsRuleCreate>;
-export const CreateAnalyticsRuleRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  AnalyticsRuleCreate,
-) as any as S.Schema<CreateAnalyticsRuleRequestBodyCase1List>;
-
 export type CreateAnalyticsRuleRequestBody =
   | AnalyticsRuleCreate
   | CreateAnalyticsRuleRequestBodyCase1List;
-export const CreateAnalyticsRuleRequestBody = /*@__PURE__*/ S.Unknown.pipe(
+const CreateAnalyticsRuleRequestBody = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["name", "type", "collection", "event_type", "rule_tag", "params"],
     [],
@@ -175,7 +171,7 @@ export const CreateAnalyticsRuleRequestBody = /*@__PURE__*/ S.Unknown.pipe(
 export interface CreateAnalyticsRuleRequest {
   body: CreateAnalyticsRuleRequestBody;
 }
-export const CreateAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: CreateAnalyticsRuleRequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/analytics/rules", code: 200 })),
@@ -184,7 +180,7 @@ export const CreateAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnalyticsRuleRequest>;
 
 export type AnalyticsRuleParamsMetaFieldsList = Array<string>;
-export const AnalyticsRuleParamsMetaFieldsList =
+const AnalyticsRuleParamsMetaFieldsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<AnalyticsRuleParamsMetaFieldsList>;
 
 export interface AnalyticsRuleParams {
@@ -196,7 +192,7 @@ export interface AnalyticsRuleParams {
   counter_field?: string;
   weight?: number;
 }
-export const AnalyticsRuleParams = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsRuleParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination_collection: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -216,7 +212,7 @@ export interface AnalyticsRule {
   rule_tag?: string;
   params?: AnalyticsRuleParams;
 }
-export const AnalyticsRule = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: AnalyticsRuleType,
@@ -230,34 +226,15 @@ export const AnalyticsRule = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAnalyticsRuleResponseBodyCase1ItemCase1 {
   error?: string;
 }
-export const CreateAnalyticsRuleResponseBodyCase1ItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateAnalyticsRuleResponseBodyCase1ItemCase1",
-}) as any as S.Schema<CreateAnalyticsRuleResponseBodyCase1ItemCase1>;
-
 export type CreateAnalyticsRuleResponseBodyCase1Item =
   | AnalyticsRule
   | CreateAnalyticsRuleResponseBodyCase1ItemCase1;
-export const CreateAnalyticsRuleResponseBodyCase1Item = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([
-    ["name", "type", "collection", "event_type", "rule_tag", "params"],
-    ["error"],
-  ]),
-);
-
 export type CreateAnalyticsRuleResponseBodyCase1List =
   Array<CreateAnalyticsRuleResponseBodyCase1Item>;
-export const CreateAnalyticsRuleResponseBodyCase1List = /*@__PURE__*/ S.Array(
-  CreateAnalyticsRuleResponseBodyCase1Item,
-) as any as S.Schema<CreateAnalyticsRuleResponseBodyCase1List>;
-
 export type CreateAnalyticsRuleResponseBody =
   | AnalyticsRule
   | CreateAnalyticsRuleResponseBodyCase1List;
-export const CreateAnalyticsRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
+const CreateAnalyticsRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["name", "type", "collection", "event_type", "rule_tag", "params"],
     [],
@@ -265,7 +242,7 @@ export const CreateAnalyticsRuleResponseBody = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type CreateAnalyticsRuleResponse = CreateAnalyticsRuleResponseBody;
-export const CreateAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
   CreateAnalyticsRuleResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateAnalyticsRuleResponse",
@@ -273,16 +250,16 @@ export const CreateAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type FieldTokenSeparatorsList = Array<string>;
-export const FieldTokenSeparatorsList =
+const FieldTokenSeparatorsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<FieldTokenSeparatorsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type FieldSymbolsToIndexList = Array<string>;
-export const FieldSymbolsToIndexList =
+const FieldSymbolsToIndexList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<FieldSymbolsToIndexList>;
 
 export type FieldEmbedFromList = Array<string>;
-export const FieldEmbedFromList =
+const FieldEmbedFromList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<FieldEmbedFromList>;
 
 export interface FieldEmbedModelConfig {
@@ -297,7 +274,7 @@ export interface FieldEmbedModelConfig {
   indexing_prefix?: string;
   query_prefix?: string;
 }
-export const FieldEmbedModelConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldEmbedModelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.String,
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -316,7 +293,7 @@ export interface FieldEmbed {
   from: FieldEmbedFromList;
   model_config: FieldEmbedModelConfig;
 }
-export const FieldEmbed = /*@__PURE__*/ S.suspend(() =>
+const FieldEmbed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: FieldEmbedFromList,
     model_config: FieldEmbedModelConfig,
@@ -354,7 +331,7 @@ export interface Field {
   symbols_to_index?: FieldSymbolsToIndexList;
   embed?: FieldEmbed;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -381,30 +358,30 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CreateCollectionRequestFieldsList = Array<Field>;
-export const CreateCollectionRequestFieldsList = /*@__PURE__*/ S.Array(
+const CreateCollectionRequestFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<CreateCollectionRequestFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type CreateCollectionRequestTokenSeparatorsList = Array<string>;
-export const CreateCollectionRequestTokenSeparatorsList =
+const CreateCollectionRequestTokenSeparatorsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionRequestTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CreateCollectionRequestSynonymSetsList = Array<string>;
-export const CreateCollectionRequestSynonymSetsList =
+const CreateCollectionRequestSynonymSetsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionRequestSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type CreateCollectionRequestSymbolsToIndexList = Array<string>;
-export const CreateCollectionRequestSymbolsToIndexList =
+const CreateCollectionRequestSymbolsToIndexList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionRequestSymbolsToIndexList>;
 
 /** Configuration for the voice query model */
 export interface VoiceQueryModelCollectionConfig {
   model_name?: string;
 }
-export const VoiceQueryModelCollectionConfig = /*@__PURE__*/ S.suspend(() =>
+const VoiceQueryModelCollectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
   }),
@@ -431,7 +408,7 @@ export interface CreateCollectionRequest {
   /** Optional details about the collection, e.g., when it was created, who created it etc. */
   metadata?: unknown;
 }
-export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     fields: CreateCollectionRequestFieldsList,
@@ -447,22 +424,22 @@ export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CreateCollectionResponseFieldsList = Array<Field>;
-export const CreateCollectionResponseFieldsList =
+const CreateCollectionResponseFieldsList =
   CreateCollectionRequestFieldsList as any as S.Schema<CreateCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type CreateCollectionResponseTokenSeparatorsList = Array<string>;
-export const CreateCollectionResponseTokenSeparatorsList =
+const CreateCollectionResponseTokenSeparatorsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CreateCollectionResponseSynonymSetsList = Array<string>;
-export const CreateCollectionResponseSynonymSetsList =
+const CreateCollectionResponseSynonymSetsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type CreateCollectionResponseSymbolsToIndexList = Array<string>;
-export const CreateCollectionResponseSymbolsToIndexList =
+const CreateCollectionResponseSymbolsToIndexList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionResponseSymbolsToIndexList>;
 
 export interface CreateCollectionResponse {
@@ -488,7 +465,7 @@ export interface CreateCollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const CreateCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCollectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     fields: CreateCollectionResponseFieldsList,
@@ -524,7 +501,7 @@ export interface CreateConversationModelRequest {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const CreateConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     model_name: S.String,
@@ -560,7 +537,7 @@ export interface CreateConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const CreateConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     model_name: S.String,
@@ -577,11 +554,11 @@ export const CreateConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConversationModelResponse>;
 
 export type CreateKeyRequestActionsList = Array<string>;
-export const CreateKeyRequestActionsList =
+const CreateKeyRequestActionsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyRequestActionsList>;
 
 export type CreateKeyRequestCollectionsList = Array<string>;
-export const CreateKeyRequestCollectionsList =
+const CreateKeyRequestCollectionsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyRequestCollectionsList>;
 
 export interface CreateKeyRequest {
@@ -591,7 +568,7 @@ export interface CreateKeyRequest {
   collections: CreateKeyRequestCollectionsList;
   expires_at?: number;
 }
-export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     description: S.String,
@@ -602,11 +579,11 @@ export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateKeyRequest" }) as any as S.Schema<CreateKeyRequest>;
 
 export type CreateKeyResponseActionsList = Array<string>;
-export const CreateKeyResponseActionsList =
+const CreateKeyResponseActionsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyResponseActionsList>;
 
 export type CreateKeyResponseCollectionsList = Array<string>;
-export const CreateKeyResponseCollectionsList =
+const CreateKeyResponseCollectionsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyResponseCollectionsList>;
 
 export interface CreateKeyResponse {
@@ -618,7 +595,7 @@ export interface CreateKeyResponse {
   id?: number;
   value_prefix?: string;
 }
-export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     description: S.String,
@@ -632,7 +609,7 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type CreateNLSearchModelRequestStopSequencesList = Array<string>;
-export const CreateNLSearchModelRequestStopSequencesList =
+const CreateNLSearchModelRequestStopSequencesList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateNLSearchModelRequestStopSequencesList>;
 
 export interface CreateNLSearchModelRequest {
@@ -675,7 +652,7 @@ export interface CreateNLSearchModelRequest {
   /** Optional ID for the NL search model */
   id?: string;
 }
-export const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -703,7 +680,7 @@ export const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type CreateNLSearchModelResponseStopSequencesList = Array<string>;
-export const CreateNLSearchModelResponseStopSequencesList =
+const CreateNLSearchModelResponseStopSequencesList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateNLSearchModelResponseStopSequencesList>;
 
 export interface CreateNLSearchModelResponse {
@@ -746,7 +723,7 @@ export interface CreateNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const CreateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -773,14 +750,14 @@ export const CreateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNLSearchModelResponse>;
 
 export interface DebugRequest {}
-export const DebugRequest = /*@__PURE__*/ S.suspend(() =>
+const DebugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/debug", code: 200 })),
 ).annotate({ identifier: "DebugRequest" }) as any as S.Schema<DebugRequest>;
 
 export interface DebugResponse {
   version?: string;
 }
-export const DebugResponse = /*@__PURE__*/ S.suspend(() =>
+const DebugResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
@@ -790,7 +767,7 @@ export interface DeleteAliasRequest {
   /** The name of the alias to delete */
   aliasName: string;
 }
-export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/aliases/{aliasName}", code: 200 })),
@@ -802,7 +779,7 @@ export interface CollectionAlias {
   /** Name of the collection the alias mapped to */
   collection_name: string;
 }
-export const CollectionAlias = /*@__PURE__*/ S.suspend(() =>
+const CollectionAlias = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     collection_name: S.String,
@@ -813,7 +790,7 @@ export interface DeleteAnalyticsRuleRequest {
   /** The name of the analytics rule to delete */
   ruleName: string;
 }
-export const DeleteAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/analytics/rules/{ruleName}", code: 200 })),
@@ -822,9 +799,6 @@ export const DeleteAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAnalyticsRuleRequest>;
 
 export type DeleteAnalyticsRuleResponseParamsMetaFieldsList = Array<string>;
-export const DeleteAnalyticsRuleResponseParamsMetaFieldsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteAnalyticsRuleResponseParamsMetaFieldsList>;
-
 export interface DeleteAnalyticsRuleResponseParams {
   destination_collection?: string;
   limit?: number;
@@ -834,7 +808,7 @@ export interface DeleteAnalyticsRuleResponseParams {
   counter_field?: string;
   weight?: number;
 }
-export const DeleteAnalyticsRuleResponseParams =
+const DeleteAnalyticsRuleResponseParams =
   AnalyticsRuleCreateParams as any as S.Schema<DeleteAnalyticsRuleResponseParams>;
 
 export interface DeleteAnalyticsRuleResponse {
@@ -845,7 +819,7 @@ export interface DeleteAnalyticsRuleResponse {
   rule_tag?: string;
   params?: DeleteAnalyticsRuleResponseParams;
 }
-export const DeleteAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: AnalyticsRuleType,
@@ -862,7 +836,7 @@ export interface DeleteCollectionRequest {
   /** The name of the collection to delete */
   collectionName: string;
 }
-export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/collections/{collectionName}", code: 200 })),
@@ -870,24 +844,12 @@ export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type DeleteCollectionResponseFieldsList = Array<Field>;
-export const DeleteCollectionResponseFieldsList =
-  CreateCollectionRequestFieldsList as any as S.Schema<DeleteCollectionResponseFieldsList>;
-
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type DeleteCollectionResponseTokenSeparatorsList = Array<string>;
-export const DeleteCollectionResponseTokenSeparatorsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteCollectionResponseTokenSeparatorsList>;
-
 /** List of synonym set names to associate with this collection */
 export type DeleteCollectionResponseSynonymSetsList = Array<string>;
-export const DeleteCollectionResponseSynonymSetsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteCollectionResponseSynonymSetsList>;
-
 /** List of symbols or special characters to be indexed. */
 export type DeleteCollectionResponseSymbolsToIndexList = Array<string>;
-export const DeleteCollectionResponseSymbolsToIndexList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteCollectionResponseSymbolsToIndexList>;
-
 export interface DeleteCollectionResponse {
   /** Name of the collection */
   name: string;
@@ -911,14 +873,14 @@ export interface DeleteCollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const DeleteCollectionResponse =
+const DeleteCollectionResponse =
   CreateCollectionResponse as any as S.Schema<DeleteCollectionResponse>;
 
 export interface DeleteConversationModelRequest {
   /** The id of the conversation model to delete */
   modelId: string;
 }
-export const DeleteConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/conversations/models/{modelId}", code: 200 })),
@@ -946,14 +908,14 @@ export interface DeleteConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const DeleteConversationModelResponse =
+const DeleteConversationModelResponse =
   CreateConversationModelResponse as any as S.Schema<DeleteConversationModelResponse>;
 
 export interface DeleteCurationSetRequest {
   /** The name of the curation set to delete */
   curationSetName: string;
 }
-export const DeleteCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/curation_sets/{curationSetName}", code: 200 })),
@@ -963,7 +925,7 @@ export interface CurationSetDeleteSchema {
   /** Name of the deleted curation set */
   name: string;
 }
-export const CurationSetDeleteSchema = /*@__PURE__*/ S.suspend(() =>
+const CurationSetDeleteSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -975,7 +937,7 @@ export interface DeleteCurationSetItemRequest {
   /** The id of the curation item to delete */
   itemId: string;
 }
-export const DeleteCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -990,7 +952,7 @@ export interface CurationItemDeleteSchema {
   /** ID of the deleted curation item */
   id: string;
 }
-export const CurationItemDeleteSchema = /*@__PURE__*/ S.suspend(() =>
+const CurationItemDeleteSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -1002,7 +964,7 @@ export interface DeleteDocumentRequest {
   /** The Document ID */
   documentId: string;
 }
-export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     documentId: S.String.pipe(T.Label()),
@@ -1016,7 +978,7 @@ export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 
 export type DeleteDocumentResponse = unknown;
-export const DeleteDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteDocumentResponse" }) as any as S.Schema<DeleteDocumentResponse>;
 
@@ -1028,7 +990,7 @@ export interface DeleteDocumentsRequestDeleteDocumentsParameters {
   /** When true, removes all documents from the collection while preserving the collection and its schema. */
   truncate?: boolean;
 }
-export const DeleteDocumentsRequestDeleteDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentsRequestDeleteDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter_by: S.String,
     batch_size: S.optional(S.Number),
@@ -1044,7 +1006,7 @@ export interface DeleteDocumentsRequest {
   collectionName: string;
   deleteDocumentsParameters?: DeleteDocumentsRequestDeleteDocumentsParameters;
 }
-export const DeleteDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     deleteDocumentsParameters: S.optional(
@@ -1056,7 +1018,7 @@ export const DeleteDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDocumentsResponse {
   num_deleted: number;
 }
-export const DeleteDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     num_deleted: S.Number,
   }),
@@ -1066,7 +1028,7 @@ export interface DeleteKeyRequest {
   /** The ID of the key to delete */
   keyId: number;
 }
-export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/keys/{keyId}", code: 200 })),
@@ -1076,7 +1038,7 @@ export interface ApiKeyDeleteResponse {
   /** The id of the API key that was deleted */
   id: number;
 }
-export const ApiKeyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }),
@@ -1086,7 +1048,7 @@ export interface DeleteNLSearchModelRequest {
   /** The ID of the NL search model to delete */
   modelId: string;
 }
-export const DeleteNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/nl_search_models/{modelId}", code: 200 })),
@@ -1098,7 +1060,7 @@ export interface NLSearchModelDeleteSchema {
   /** ID of the deleted NL search model */
   id: string;
 }
-export const NLSearchModelDeleteSchema = /*@__PURE__*/ S.suspend(() =>
+const NLSearchModelDeleteSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -1110,7 +1072,7 @@ export interface DeletePresetRequest {
   /** The ID of the preset to delete. */
   presetId: string;
 }
-export const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presetId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/presets/{presetId}", code: 200 })),
@@ -1119,13 +1081,13 @@ export const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PresetDeleteSchema {
   name: string;
 }
-export const PresetDeleteSchema = CurationSetDeleteSchema as any as S.Schema<PresetDeleteSchema>;
+const PresetDeleteSchema = CurationSetDeleteSchema as any as S.Schema<PresetDeleteSchema>;
 
 export interface DeleteStopwordsSetRequest {
   /** The ID of the stopwords set to delete. */
   setId: string;
 }
-export const DeleteStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/stopwords/{setId}", code: 200 })),
@@ -1136,14 +1098,14 @@ export const DeleteStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteStopwordsSetResponse {
   id: string;
 }
-export const DeleteStopwordsSetResponse =
+const DeleteStopwordsSetResponse =
   NLSearchModelDeleteSchema as any as S.Schema<DeleteStopwordsSetResponse>;
 
 export interface DeleteSynonymSetRequest {
   /** The name of the synonym set to delete */
   synonymSetName: string;
 }
-export const DeleteSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/synonym_sets/{synonymSetName}", code: 200 })),
@@ -1153,8 +1115,7 @@ export interface SynonymSetDeleteSchema {
   /** Name of the deleted synonym set */
   name: string;
 }
-export const SynonymSetDeleteSchema =
-  CurationSetDeleteSchema as any as S.Schema<SynonymSetDeleteSchema>;
+const SynonymSetDeleteSchema = CurationSetDeleteSchema as any as S.Schema<SynonymSetDeleteSchema>;
 
 export interface DeleteSynonymSetItemRequest {
   /** The name of the synonym set */
@@ -1162,7 +1123,7 @@ export interface DeleteSynonymSetItemRequest {
   /** The id of the synonym item to delete */
   itemId: string;
 }
-export const DeleteSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -1177,7 +1138,7 @@ export interface SynonymItemDeleteSchema {
   /** ID of the deleted synonym item */
   id: string;
 }
-export const SynonymItemDeleteSchema =
+const SynonymItemDeleteSchema =
   CurationItemDeleteSchema as any as S.Schema<SynonymItemDeleteSchema>;
 
 export interface ExportDocumentsRequestExportDocumentsParameters {
@@ -1188,7 +1149,7 @@ export interface ExportDocumentsRequestExportDocumentsParameters {
   /** List of fields from the document to exclude in the search result */
   exclude_fields?: string;
 }
-export const ExportDocumentsRequestExportDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
+const ExportDocumentsRequestExportDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter_by: S.optional(S.String),
     include_fields: S.optional(S.String),
@@ -1203,7 +1164,7 @@ export interface ExportDocumentsRequest {
   collectionName: string;
   exportDocumentsParameters?: ExportDocumentsRequestExportDocumentsParameters;
 }
-export const ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     exportDocumentsParameters: S.optional(
@@ -1215,12 +1176,12 @@ export const ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportDocumentsRequest" }) as any as S.Schema<ExportDocumentsRequest>;
 
 export interface ExportDocumentsResponse {}
-export const ExportDocumentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ExportDocumentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExportDocumentsResponse",
 }) as any as S.Schema<ExportDocumentsResponse>;
 
 export interface FlushAnalyticsRequest {}
-export const FlushAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
+const FlushAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/analytics/flush", code: 200 })),
 ).annotate({ identifier: "FlushAnalyticsRequest" }) as any as S.Schema<FlushAnalyticsRequest>;
 
@@ -1228,26 +1189,26 @@ export interface GetAliasRequest {
   /** The name of the alias to retrieve */
   aliasName: string;
 }
-export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/aliases/{aliasName}", code: 200 })),
 ).annotate({ identifier: "GetAliasRequest" }) as any as S.Schema<GetAliasRequest>;
 
 export interface GetAliasesRequest {}
-export const GetAliasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/aliases", code: 200 })),
 ).annotate({ identifier: "GetAliasesRequest" }) as any as S.Schema<GetAliasesRequest>;
 
 export type CollectionAliasesResponseAliasesList = Array<CollectionAlias>;
-export const CollectionAliasesResponseAliasesList = /*@__PURE__*/ S.Array(
+const CollectionAliasesResponseAliasesList = /*@__PURE__*/ S.Array(
   CollectionAlias,
 ) as any as S.Schema<CollectionAliasesResponseAliasesList>;
 
 export interface CollectionAliasesResponse {
   aliases: CollectionAliasesResponseAliasesList;
 }
-export const CollectionAliasesResponse = /*@__PURE__*/ S.suspend(() =>
+const CollectionAliasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliases: CollectionAliasesResponseAliasesList,
   }),
@@ -1256,7 +1217,7 @@ export const CollectionAliasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionAliasesResponse>;
 
 export interface GetAllConversationModelsRequest {}
-export const GetAllConversationModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllConversationModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/conversations/models", code: 200 })),
 ).annotate({
   identifier: "GetAllConversationModelsRequest",
@@ -1282,7 +1243,7 @@ export interface ConversationModelSchema {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const ConversationModelSchema = /*@__PURE__*/ S.suspend(() =>
+const ConversationModelSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     model_name: S.String,
@@ -1297,19 +1258,19 @@ export const ConversationModelSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversationModelSchema" }) as any as S.Schema<ConversationModelSchema>;
 
 export type GetAllConversationModelsResponseBodyList = Array<ConversationModelSchema>;
-export const GetAllConversationModelsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAllConversationModelsResponseBodyList = /*@__PURE__*/ S.Array(
   ConversationModelSchema,
 ) as any as S.Schema<GetAllConversationModelsResponseBodyList>;
 
 export type GetAllConversationModelsResponse = GetAllConversationModelsResponseBodyList;
-export const GetAllConversationModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllConversationModelsResponse = /*@__PURE__*/ S.suspend(() =>
   GetAllConversationModelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAllConversationModelsResponse",
 }) as any as S.Schema<GetAllConversationModelsResponse>;
 
 export interface GetAllNLSearchModelsRequest {}
-export const GetAllNLSearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllNLSearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/nl_search_models", code: 200 })),
 ).annotate({
   identifier: "GetAllNLSearchModelsRequest",
@@ -1317,7 +1278,7 @@ export const GetAllNLSearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type NLSearchModelSchemaStopSequencesList = Array<string>;
-export const NLSearchModelSchemaStopSequencesList =
+const NLSearchModelSchemaStopSequencesList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<NLSearchModelSchemaStopSequencesList>;
 
 export interface NLSearchModelSchema {
@@ -1360,7 +1321,7 @@ export interface NLSearchModelSchema {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const NLSearchModelSchema = /*@__PURE__*/ S.suspend(() =>
+const NLSearchModelSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1385,25 +1346,25 @@ export const NLSearchModelSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NLSearchModelSchema" }) as any as S.Schema<NLSearchModelSchema>;
 
 export type GetAllNLSearchModelsResponseBodyList = Array<NLSearchModelSchema>;
-export const GetAllNLSearchModelsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAllNLSearchModelsResponseBodyList = /*@__PURE__*/ S.Array(
   NLSearchModelSchema,
 ) as any as S.Schema<GetAllNLSearchModelsResponseBodyList>;
 
 export type GetAllNLSearchModelsResponse = GetAllNLSearchModelsResponseBodyList;
-export const GetAllNLSearchModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllNLSearchModelsResponse = /*@__PURE__*/ S.suspend(() =>
   GetAllNLSearchModelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAllNLSearchModelsResponse",
 }) as any as S.Schema<GetAllNLSearchModelsResponse>;
 
 export interface GetAllPresetsRequest {}
-export const GetAllPresetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllPresetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/presets", code: 200 })),
 ).annotate({ identifier: "GetAllPresetsRequest" }) as any as S.Schema<GetAllPresetsRequest>;
 
 /** Dictates the direction in which the words in the query must be dropped when the original words in the query do not appear in any document. Values: right_to_left (default), left_to_right, both_sides:3 A note on both_sides:3 - for queries up to 3 tokens (words) in length, this mode will drop tokens from both sides and exhaustively rank all matching results. If query length is greater than 3 words, Typesense will just fallback to default behavior of right_to_left */
 export type DropTokensMode = "right_to_left" | "left_to_right" | "both_sides:3";
-export const DropTokensMode = S.String;
+const DropTokensMode = S.String;
 
 export interface SearchParameters {
   /** The query text to search for in the collection. Use * as the search string to return all documents. This is typically useful when used in conjunction with filter_by. */
@@ -1568,7 +1529,7 @@ export interface SearchParameters {
   /** The Id of a previous conversation to continue, this tells Typesense to include prior context when communicating with the LLM. */
   conversation_id?: string;
 }
-export const SearchParameters = /*@__PURE__*/ S.suspend(() =>
+const SearchParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String),
     query_by: S.optional(S.String),
@@ -1809,7 +1770,7 @@ export interface MultiSearchCollectionParameters {
   /** A separate search API key for each search within a multi_search request */
   x_typesense_api_key?: string;
 }
-export const MultiSearchCollectionParameters = /*@__PURE__*/ S.suspend(() =>
+const MultiSearchCollectionParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String),
     query_by: S.optional(S.String),
@@ -1894,7 +1855,7 @@ export const MultiSearchCollectionParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiSearchCollectionParameters>;
 
 export type MultiSearchSearchesParameterSearchesList = Array<MultiSearchCollectionParameters>;
-export const MultiSearchSearchesParameterSearchesList = /*@__PURE__*/ S.Array(
+const MultiSearchSearchesParameterSearchesList = /*@__PURE__*/ S.Array(
   MultiSearchCollectionParameters,
 ) as any as S.Schema<MultiSearchSearchesParameterSearchesList>;
 
@@ -1903,17 +1864,8 @@ export interface MultiSearchSearchesParameter {
   union?: boolean;
   searches: MultiSearchSearchesParameterSearchesList;
 }
-export const MultiSearchSearchesParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    union: S.optional(S.Boolean),
-    searches: MultiSearchSearchesParameterSearchesList,
-  }),
-).annotate({
-  identifier: "MultiSearchSearchesParameter",
-}) as any as S.Schema<MultiSearchSearchesParameter>;
-
 export type PresetSchemaValue = SearchParameters | MultiSearchSearchesParameter;
-export const PresetSchemaValue = /*@__PURE__*/ S.Unknown.pipe(
+const PresetSchemaValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "q",
@@ -2006,7 +1958,7 @@ export interface PresetSchema {
   value: PresetSchemaValue;
   name: string;
 }
-export const PresetSchema = /*@__PURE__*/ S.suspend(() =>
+const PresetSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PresetSchemaValue,
     name: S.String,
@@ -2014,14 +1966,14 @@ export const PresetSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PresetSchema" }) as any as S.Schema<PresetSchema>;
 
 export type PresetsRetrieveSchemaPresetsList = Array<PresetSchema>;
-export const PresetsRetrieveSchemaPresetsList = /*@__PURE__*/ S.Array(
+const PresetsRetrieveSchemaPresetsList = /*@__PURE__*/ S.Array(
   PresetSchema,
 ) as any as S.Schema<PresetsRetrieveSchemaPresetsList>;
 
 export interface PresetsRetrieveSchema {
   presets: PresetsRetrieveSchemaPresetsList;
 }
-export const PresetsRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
+const PresetsRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presets: PresetsRetrieveSchemaPresetsList,
   }),
@@ -2034,7 +1986,7 @@ export interface GetAnalyticsEventsRequest {
   /** Number of events to return (max 1000) */
   n: number;
 }
-export const GetAnalyticsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Query()),
     name: S.String.pipe(T.Query()),
@@ -2045,7 +1997,7 @@ export const GetAnalyticsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticsEventsRequest>;
 
 export type AnalyticsEventsResponseEventsItemDocIdsList = Array<string>;
-export const AnalyticsEventsResponseEventsItemDocIdsList =
+const AnalyticsEventsResponseEventsItemDocIdsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<AnalyticsEventsResponseEventsItemDocIdsList>;
 
 export interface AnalyticsEventsResponseEventsItem {
@@ -2058,7 +2010,7 @@ export interface AnalyticsEventsResponseEventsItem {
   doc_ids?: AnalyticsEventsResponseEventsItemDocIdsList;
   query?: string;
 }
-export const AnalyticsEventsResponseEventsItem = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventsResponseEventsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     event_type: S.optional(S.String),
@@ -2074,14 +2026,14 @@ export const AnalyticsEventsResponseEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyticsEventsResponseEventsItem>;
 
 export type AnalyticsEventsResponseEventsList = Array<AnalyticsEventsResponseEventsItem>;
-export const AnalyticsEventsResponseEventsList = /*@__PURE__*/ S.Array(
+const AnalyticsEventsResponseEventsList = /*@__PURE__*/ S.Array(
   AnalyticsEventsResponseEventsItem,
 ) as any as S.Schema<AnalyticsEventsResponseEventsList>;
 
 export interface AnalyticsEventsResponse {
   events: AnalyticsEventsResponseEventsList;
 }
-export const AnalyticsEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: AnalyticsEventsResponseEventsList,
   }),
@@ -2091,16 +2043,13 @@ export interface GetAnalyticsRuleRequest {
   /** The name of the analytics rule to retrieve */
   ruleName: string;
 }
-export const GetAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/analytics/rules/{ruleName}", code: 200 })),
 ).annotate({ identifier: "GetAnalyticsRuleRequest" }) as any as S.Schema<GetAnalyticsRuleRequest>;
 
 export type GetAnalyticsRuleResponseParamsMetaFieldsList = Array<string>;
-export const GetAnalyticsRuleResponseParamsMetaFieldsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetAnalyticsRuleResponseParamsMetaFieldsList>;
-
 export interface GetAnalyticsRuleResponseParams {
   destination_collection?: string;
   limit?: number;
@@ -2110,9 +2059,6 @@ export interface GetAnalyticsRuleResponseParams {
   counter_field?: string;
   weight?: number;
 }
-export const GetAnalyticsRuleResponseParams =
-  AnalyticsRuleCreateParams as any as S.Schema<GetAnalyticsRuleResponseParams>;
-
 export interface GetAnalyticsRuleResponse {
   name: string;
   type: AnalyticsRuleType;
@@ -2121,33 +2067,32 @@ export interface GetAnalyticsRuleResponse {
   rule_tag?: string;
   params?: GetAnalyticsRuleResponseParams;
 }
-export const GetAnalyticsRuleResponse =
-  AnalyticsRuleCreate as any as S.Schema<GetAnalyticsRuleResponse>;
+const GetAnalyticsRuleResponse = AnalyticsRuleCreate as any as S.Schema<GetAnalyticsRuleResponse>;
 
 export interface GetAnalyticsRulesRequest {
   /** Filter rules by rule_tag */
   rule_tag?: string;
 }
-export const GetAnalyticsRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticsRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule_tag: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/analytics/rules", code: 200 })),
 ).annotate({ identifier: "GetAnalyticsRulesRequest" }) as any as S.Schema<GetAnalyticsRulesRequest>;
 
 export type GetAnalyticsRulesResponseBodyList = Array<AnalyticsRule>;
-export const GetAnalyticsRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAnalyticsRulesResponseBodyList = /*@__PURE__*/ S.Array(
   AnalyticsRule,
 ) as any as S.Schema<GetAnalyticsRulesResponseBodyList>;
 
 export type GetAnalyticsRulesResponse = GetAnalyticsRulesResponseBodyList;
-export const GetAnalyticsRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticsRulesResponse = /*@__PURE__*/ S.suspend(() =>
   GetAnalyticsRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAnalyticsRulesResponse",
 }) as any as S.Schema<GetAnalyticsRulesResponse>;
 
 export interface GetAnalyticsStatusRequest {}
-export const GetAnalyticsStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalyticsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/analytics/status", code: 200 })),
 ).annotate({
   identifier: "GetAnalyticsStatusRequest",
@@ -2162,7 +2107,7 @@ export interface AnalyticsStatus {
   doc_log_events?: number;
   doc_counter_events?: number;
 }
-export const AnalyticsStatus = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     popular_prefix_queries: S.optional(S.Number),
     nohits_prefix_queries: S.optional(S.Number),
@@ -2175,7 +2120,7 @@ export const AnalyticsStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalyticsStatus" }) as any as S.Schema<AnalyticsStatus>;
 
 export interface GetAPIStatsRequest {}
-export const GetAPIStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAPIStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stats.json", code: 200 })),
 ).annotate({ identifier: "GetAPIStatsRequest" }) as any as S.Schema<GetAPIStatsRequest>;
 
@@ -2194,7 +2139,7 @@ export interface APIStatsResponse {
   write_latency_ms?: number;
   write_requests_per_second?: number;
 }
-export const APIStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const APIStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete_latency_ms: S.optional(S.Number),
     delete_requests_per_second: S.optional(S.Number),
@@ -2216,7 +2161,7 @@ export interface GetCollectionRequest {
   /** The name of the collection to retrieve */
   collectionName: string;
 }
-export const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/collections/{collectionName}", code: 200 })),
@@ -2224,24 +2169,12 @@ export const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type GetCollectionResponseFieldsList = Array<Field>;
-export const GetCollectionResponseFieldsList =
-  CreateCollectionRequestFieldsList as any as S.Schema<GetCollectionResponseFieldsList>;
-
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type GetCollectionResponseTokenSeparatorsList = Array<string>;
-export const GetCollectionResponseTokenSeparatorsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetCollectionResponseTokenSeparatorsList>;
-
 /** List of synonym set names to associate with this collection */
 export type GetCollectionResponseSynonymSetsList = Array<string>;
-export const GetCollectionResponseSynonymSetsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetCollectionResponseSynonymSetsList>;
-
 /** List of symbols or special characters to be indexed. */
 export type GetCollectionResponseSymbolsToIndexList = Array<string>;
-export const GetCollectionResponseSymbolsToIndexList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetCollectionResponseSymbolsToIndexList>;
-
 export interface GetCollectionResponse {
   /** Name of the collection */
   name: string;
@@ -2265,8 +2198,7 @@ export interface GetCollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const GetCollectionResponse =
-  CreateCollectionResponse as any as S.Schema<GetCollectionResponse>;
+const GetCollectionResponse = CreateCollectionResponse as any as S.Schema<GetCollectionResponse>;
 
 export interface GetCollectionsRequestGetCollectionsParameters {
   /** Comma-separated list of fields from the collection to exclude from the response */
@@ -2276,7 +2208,7 @@ export interface GetCollectionsRequestGetCollectionsParameters {
   /** Identifies the starting point to return collections when paginating. */
   offset?: number;
 }
-export const GetCollectionsRequestGetCollectionsParameters = /*@__PURE__*/ S.suspend(() =>
+const GetCollectionsRequestGetCollectionsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude_fields: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -2289,7 +2221,7 @@ export const GetCollectionsRequestGetCollectionsParameters = /*@__PURE__*/ S.sus
 export interface GetCollectionsRequest {
   getCollectionsParameters?: GetCollectionsRequestGetCollectionsParameters;
 }
-export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     getCollectionsParameters: S.optional(
       GetCollectionsRequestGetCollectionsParameters.pipe(T.Query()),
@@ -2299,24 +2231,12 @@ export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CollectionResponseFieldsList = Array<Field>;
-export const CollectionResponseFieldsList =
-  CreateCollectionRequestFieldsList as any as S.Schema<CollectionResponseFieldsList>;
-
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type CollectionResponseTokenSeparatorsList = Array<string>;
-export const CollectionResponseTokenSeparatorsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionResponseTokenSeparatorsList>;
-
 /** List of synonym set names to associate with this collection */
 export type CollectionResponseSynonymSetsList = Array<string>;
-export const CollectionResponseSynonymSetsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionResponseSynonymSetsList>;
-
 /** List of symbols or special characters to be indexed. */
 export type CollectionResponseSymbolsToIndexList = Array<string>;
-export const CollectionResponseSymbolsToIndexList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionResponseSymbolsToIndexList>;
-
 export interface CollectionResponse {
   /** Name of the collection */
   name: string;
@@ -2340,15 +2260,15 @@ export interface CollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const CollectionResponse = CreateCollectionResponse as any as S.Schema<CollectionResponse>;
+const CollectionResponse = CreateCollectionResponse as any as S.Schema<CollectionResponse>;
 
 export type GetCollectionsResponseBodyList = Array<CollectionResponse>;
-export const GetCollectionsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCollectionsResponseBodyList = /*@__PURE__*/ S.Array(
   CollectionResponse,
 ) as any as S.Schema<GetCollectionsResponseBodyList>;
 
 export type GetCollectionsResponse = GetCollectionsResponseBodyList;
-export const GetCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetCollectionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCollectionsResponse" }) as any as S.Schema<GetCollectionsResponse>;
 
@@ -2356,7 +2276,7 @@ export interface GetConversationModelRequest {
   /** The id of the conversation model to retrieve */
   modelId: string;
 }
-export const GetConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/conversations/models/{modelId}", code: 200 })),
@@ -2384,14 +2304,14 @@ export interface GetConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const GetConversationModelResponse =
+const GetConversationModelResponse =
   CreateConversationModelResponse as any as S.Schema<GetConversationModelResponse>;
 
 export interface GetCurationSetRequest {
   /** The name of the curation set to retrieve */
   curationSetName: string;
 }
-export const GetCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/curation_sets/{curationSetName}", code: 200 })),
@@ -2399,12 +2319,12 @@ export const GetCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tag values to associate with this curation rule. */
 export type CurationRuleTagsList = Array<string>;
-export const CurationRuleTagsList =
+const CurationRuleTagsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CurationRuleTagsList>;
 
 /** Indicates whether the match on the query term should be `exact` or `contains`. If we want to match all queries that contained the word `apple`, we will use the `contains` match instead. */
 export type CurationRuleMatch = "exact" | "contains";
-export const CurationRuleMatch = S.String;
+const CurationRuleMatch = S.String;
 
 export interface CurationRule {
   /** List of tag values to associate with this curation rule. */
@@ -2416,7 +2336,7 @@ export interface CurationRule {
   /** Indicates that the curation should apply when the filter_by parameter in a search query exactly matches the string specified here (including backticks, spaces, brackets, etc). */
   filter_by?: string;
 }
-export const CurationRule = /*@__PURE__*/ S.suspend(() =>
+const CurationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(CurationRuleTagsList),
     query: S.optional(S.String),
@@ -2431,7 +2351,7 @@ export interface CurationInclude {
   /** position number where document should be included in the search results */
   position: number;
 }
-export const CurationInclude = /*@__PURE__*/ S.suspend(() =>
+const CurationInclude = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     position: S.Number,
@@ -2440,7 +2360,7 @@ export const CurationInclude = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type CurationItemCreateSchemaIncludesList = Array<CurationInclude>;
-export const CurationItemCreateSchemaIncludesList = /*@__PURE__*/ S.Array(
+const CurationItemCreateSchemaIncludesList = /*@__PURE__*/ S.Array(
   CurationInclude,
 ) as any as S.Schema<CurationItemCreateSchemaIncludesList>;
 
@@ -2448,11 +2368,11 @@ export interface CurationExclude {
   /** document id that should be excluded from the search results. */
   id: string;
 }
-export const CurationExclude = CurationItemDeleteSchema as any as S.Schema<CurationExclude>;
+const CurationExclude = CurationItemDeleteSchema as any as S.Schema<CurationExclude>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type CurationItemCreateSchemaExcludesList = Array<CurationExclude>;
-export const CurationItemCreateSchemaExcludesList = /*@__PURE__*/ S.Array(
+const CurationItemCreateSchemaExcludesList = /*@__PURE__*/ S.Array(
   CurationExclude,
 ) as any as S.Schema<CurationItemCreateSchemaExcludesList>;
 
@@ -2483,7 +2403,7 @@ export interface CurationItemCreateSchema {
   /** ID of the curation item */
   id?: string;
 }
-export const CurationItemCreateSchema = /*@__PURE__*/ S.suspend(() =>
+const CurationItemCreateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: CurationRule,
     includes: S.optional(CurationItemCreateSchemaIncludesList),
@@ -2503,7 +2423,7 @@ export const CurationItemCreateSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of curation items */
 export type GetCurationSetResponseItemsList = Array<CurationItemCreateSchema>;
-export const GetCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
+const GetCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
   CurationItemCreateSchema,
 ) as any as S.Schema<GetCurationSetResponseItemsList>;
 
@@ -2514,7 +2434,7 @@ export interface GetCurationSetResponse {
   description?: string;
   name: string;
 }
-export const GetCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: GetCurationSetResponseItemsList,
     description: S.optional(S.String),
@@ -2528,7 +2448,7 @@ export interface GetCurationSetItemRequest {
   /** The id of the curation item to retrieve */
   itemId: string;
 }
-export const GetCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -2541,12 +2461,12 @@ export const GetCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type GetCurationSetItemResponseIncludesList = Array<CurationInclude>;
-export const GetCurationSetItemResponseIncludesList =
+const GetCurationSetItemResponseIncludesList =
   CurationItemCreateSchemaIncludesList as any as S.Schema<GetCurationSetItemResponseIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type GetCurationSetItemResponseExcludesList = Array<CurationExclude>;
-export const GetCurationSetItemResponseExcludesList =
+const GetCurationSetItemResponseExcludesList =
   CurationItemCreateSchemaExcludesList as any as S.Schema<GetCurationSetItemResponseExcludesList>;
 
 export interface GetCurationSetItemResponse {
@@ -2576,7 +2496,7 @@ export interface GetCurationSetItemResponse {
   /** ID of the curation item */
   id: string;
 }
-export const GetCurationSetItemResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: CurationRule,
     includes: S.optional(GetCurationSetItemResponseIncludesList),
@@ -2600,7 +2520,7 @@ export interface GetCurationSetItemsRequest {
   /** The name of the curation set to retrieve items for */
   curationSetName: string;
 }
-export const GetCurationSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/curation_sets/{curationSetName}/items", code: 200 })),
@@ -2610,12 +2530,12 @@ export const GetCurationSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type CurationItemSchemaIncludesList = Array<CurationInclude>;
-export const CurationItemSchemaIncludesList =
+const CurationItemSchemaIncludesList =
   CurationItemCreateSchemaIncludesList as any as S.Schema<CurationItemSchemaIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type CurationItemSchemaExcludesList = Array<CurationExclude>;
-export const CurationItemSchemaExcludesList =
+const CurationItemSchemaExcludesList =
   CurationItemCreateSchemaExcludesList as any as S.Schema<CurationItemSchemaExcludesList>;
 
 export interface CurationItemSchema {
@@ -2645,7 +2565,7 @@ export interface CurationItemSchema {
   /** ID of the curation item */
   id: string;
 }
-export const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
+const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: CurationRule,
     includes: S.optional(CurationItemSchemaIncludesList),
@@ -2664,27 +2584,24 @@ export const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CurationItemSchema" }) as any as S.Schema<CurationItemSchema>;
 
 export type GetCurationSetItemsResponseBodyList = Array<CurationItemSchema>;
-export const GetCurationSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCurationSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
   CurationItemSchema,
 ) as any as S.Schema<GetCurationSetItemsResponseBodyList>;
 
 export type GetCurationSetItemsResponse = GetCurationSetItemsResponseBodyList;
-export const GetCurationSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
   GetCurationSetItemsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetCurationSetItemsResponse",
 }) as any as S.Schema<GetCurationSetItemsResponse>;
 
 export interface GetCurationSetsRequest {}
-export const GetCurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/curation_sets", code: 200 })),
 ).annotate({ identifier: "GetCurationSetsRequest" }) as any as S.Schema<GetCurationSetsRequest>;
 
 /** Array of curation items */
 export type CurationSetSchemaItemsList = Array<CurationItemCreateSchema>;
-export const CurationSetSchemaItemsList =
-  GetCurationSetResponseItemsList as any as S.Schema<CurationSetSchemaItemsList>;
-
 export interface CurationSetSchema {
   /** Array of curation items */
   items: CurationSetSchemaItemsList;
@@ -2692,15 +2609,15 @@ export interface CurationSetSchema {
   description?: string;
   name: string;
 }
-export const CurationSetSchema = GetCurationSetResponse as any as S.Schema<CurationSetSchema>;
+const CurationSetSchema = GetCurationSetResponse as any as S.Schema<CurationSetSchema>;
 
 export type GetCurationSetsResponseBodyList = Array<CurationSetSchema>;
-export const GetCurationSetsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCurationSetsResponseBodyList = /*@__PURE__*/ S.Array(
   CurationSetSchema,
 ) as any as S.Schema<GetCurationSetsResponseBodyList>;
 
 export type GetCurationSetsResponse = GetCurationSetsResponseBodyList;
-export const GetCurationSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCurationSetsResponse = /*@__PURE__*/ S.suspend(() =>
   GetCurationSetsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCurationSetsResponse" }) as any as S.Schema<GetCurationSetsResponse>;
 
@@ -2710,7 +2627,7 @@ export interface GetDocumentRequest {
   /** The Document ID */
   documentId: string;
 }
-export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     documentId: S.String.pipe(T.Label()),
@@ -2724,26 +2641,20 @@ export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocumentRequest" }) as any as S.Schema<GetDocumentRequest>;
 
 export type GetDocumentResponse = unknown;
-export const GetDocumentResponse = DeleteDocumentResponse as any as S.Schema<GetDocumentResponse>;
+const GetDocumentResponse = DeleteDocumentResponse as any as S.Schema<GetDocumentResponse>;
 
 export interface GetKeyRequest {
   /** The ID of the key to retrieve */
   keyId: number;
 }
-export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/keys/{keyId}", code: 200 })),
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
 
 export type GetKeyResponseActionsList = Array<string>;
-export const GetKeyResponseActionsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetKeyResponseActionsList>;
-
 export type GetKeyResponseCollectionsList = Array<string>;
-export const GetKeyResponseCollectionsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetKeyResponseCollectionsList>;
-
 export interface GetKeyResponse {
   value?: string;
   description: string;
@@ -2753,21 +2664,15 @@ export interface GetKeyResponse {
   id?: number;
   value_prefix?: string;
 }
-export const GetKeyResponse = CreateKeyResponse as any as S.Schema<GetKeyResponse>;
+const GetKeyResponse = CreateKeyResponse as any as S.Schema<GetKeyResponse>;
 
 export interface GetKeysRequest {}
-export const GetKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/keys", code: 200 })),
 ).annotate({ identifier: "GetKeysRequest" }) as any as S.Schema<GetKeysRequest>;
 
 export type ApiKeyActionsList = Array<string>;
-export const ApiKeyActionsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<ApiKeyActionsList>;
-
 export type ApiKeyCollectionsList = Array<string>;
-export const ApiKeyCollectionsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<ApiKeyCollectionsList>;
-
 export interface ApiKey {
   value?: string;
   description: string;
@@ -2777,35 +2682,35 @@ export interface ApiKey {
   id?: number;
   value_prefix?: string;
 }
-export const ApiKey = CreateKeyResponse as any as S.Schema<ApiKey>;
+const ApiKey = CreateKeyResponse as any as S.Schema<ApiKey>;
 
 export type ApiKeysResponseKeysList = Array<ApiKey>;
-export const ApiKeysResponseKeysList = /*@__PURE__*/ S.Array(
+const ApiKeysResponseKeysList = /*@__PURE__*/ S.Array(
   ApiKey,
 ) as any as S.Schema<ApiKeysResponseKeysList>;
 
 export interface ApiKeysResponse {
   keys: ApiKeysResponseKeysList;
 }
-export const ApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ApiKeysResponseKeysList,
   }),
 ).annotate({ identifier: "ApiKeysResponse" }) as any as S.Schema<ApiKeysResponse>;
 
 export interface GetMetricsRequest {}
-export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics.json", code: 200 })),
 ).annotate({ identifier: "GetMetricsRequest" }) as any as S.Schema<GetMetricsRequest>;
 
 export type GetMetricsResponse = unknown;
-export const GetMetricsResponse = DeleteDocumentResponse as any as S.Schema<GetMetricsResponse>;
+const GetMetricsResponse = DeleteDocumentResponse as any as S.Schema<GetMetricsResponse>;
 
 export interface GetNLSearchModelRequest {
   /** The ID of the NL search model to retrieve */
   modelId: string;
 }
-export const GetNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/nl_search_models/{modelId}", code: 200 })),
@@ -2813,9 +2718,6 @@ export const GetNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type GetNLSearchModelResponseStopSequencesList = Array<string>;
-export const GetNLSearchModelResponseStopSequencesList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetNLSearchModelResponseStopSequencesList>;
-
 export interface GetNLSearchModelResponse {
   /** Name of the NL model to use */
   model_name?: string;
@@ -2856,21 +2758,20 @@ export interface GetNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const GetNLSearchModelResponse =
-  NLSearchModelSchema as any as S.Schema<GetNLSearchModelResponse>;
+const GetNLSearchModelResponse = NLSearchModelSchema as any as S.Schema<GetNLSearchModelResponse>;
 
 export interface GetPresetRequest {
   /** The ID of the preset to retrieve. */
   presetId: string;
 }
-export const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presetId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/presets/{presetId}", code: 200 })),
 ).annotate({ identifier: "GetPresetRequest" }) as any as S.Schema<GetPresetRequest>;
 
 export type GetPresetResponseValue = SearchParameters | MultiSearchSearchesParameter;
-export const GetPresetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+const GetPresetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "q",
@@ -2963,7 +2864,7 @@ export interface GetPresetResponse {
   value: GetPresetResponseValue;
   name: string;
 }
-export const GetPresetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GetPresetResponseValue,
     name: S.String,
@@ -2971,7 +2872,7 @@ export const GetPresetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPresetResponse" }) as any as S.Schema<GetPresetResponse>;
 
 export interface GetSchemaChangesRequest {}
-export const GetSchemaChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchemaChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/operations/schema_changes", code: 200 })),
 ).annotate({ identifier: "GetSchemaChangesRequest" }) as any as S.Schema<GetSchemaChangesRequest>;
 
@@ -2983,7 +2884,7 @@ export interface SchemaChangeStatus {
   /** Number of documents that have been altered */
   altered_docs?: number;
 }
-export const SchemaChangeStatus = /*@__PURE__*/ S.suspend(() =>
+const SchemaChangeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collection: S.optional(S.String),
     validated_docs: S.optional(S.Number),
@@ -2992,12 +2893,12 @@ export const SchemaChangeStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaChangeStatus" }) as any as S.Schema<SchemaChangeStatus>;
 
 export type GetSchemaChangesResponseBodyList = Array<SchemaChangeStatus>;
-export const GetSchemaChangesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetSchemaChangesResponseBodyList = /*@__PURE__*/ S.Array(
   SchemaChangeStatus,
 ) as any as S.Schema<GetSchemaChangesResponseBodyList>;
 
 export type GetSchemaChangesResponse = GetSchemaChangesResponseBodyList;
-export const GetSchemaChangesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSchemaChangesResponse = /*@__PURE__*/ S.suspend(() =>
   GetSchemaChangesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSchemaChangesResponse" }) as any as S.Schema<GetSchemaChangesResponse>;
 
@@ -3005,7 +2906,7 @@ export interface GetStemmingDictionaryRequest {
   /** The ID of the dictionary to retrieve */
   dictionaryId: string;
 }
-export const GetStemmingDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStemmingDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictionaryId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/stemming/dictionaries/{dictionaryId}", code: 200 })),
@@ -3019,7 +2920,7 @@ export interface StemmingDictionaryWordsItem {
   /** The root form of the word */
   root: string;
 }
-export const StemmingDictionaryWordsItem = /*@__PURE__*/ S.suspend(() =>
+const StemmingDictionaryWordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     word: S.String,
     root: S.String,
@@ -3030,7 +2931,7 @@ export const StemmingDictionaryWordsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of word mappings in the dictionary */
 export type StemmingDictionaryWordsList = Array<StemmingDictionaryWordsItem>;
-export const StemmingDictionaryWordsList = /*@__PURE__*/ S.Array(
+const StemmingDictionaryWordsList = /*@__PURE__*/ S.Array(
   StemmingDictionaryWordsItem,
 ) as any as S.Schema<StemmingDictionaryWordsList>;
 
@@ -3040,7 +2941,7 @@ export interface StemmingDictionary {
   /** List of word mappings in the dictionary */
   words: StemmingDictionaryWordsList;
 }
-export const StemmingDictionary = /*@__PURE__*/ S.suspend(() =>
+const StemmingDictionary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     words: StemmingDictionaryWordsList,
@@ -3051,14 +2952,14 @@ export interface GetStopwordsSetRequest {
   /** The ID of the stopwords set to retrieve. */
   setId: string;
 }
-export const GetStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/stopwords/{setId}", code: 200 })),
 ).annotate({ identifier: "GetStopwordsSetRequest" }) as any as S.Schema<GetStopwordsSetRequest>;
 
 export type StopwordsSetSchemaStopwordsList = Array<string>;
-export const StopwordsSetSchemaStopwordsList =
+const StopwordsSetSchemaStopwordsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<StopwordsSetSchemaStopwordsList>;
 
 export interface StopwordsSetSchema {
@@ -3066,7 +2967,7 @@ export interface StopwordsSetSchema {
   stopwords: StopwordsSetSchemaStopwordsList;
   locale?: string;
 }
-export const StopwordsSetSchema = /*@__PURE__*/ S.suspend(() =>
+const StopwordsSetSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     stopwords: StopwordsSetSchemaStopwordsList,
@@ -3077,7 +2978,7 @@ export const StopwordsSetSchema = /*@__PURE__*/ S.suspend(() =>
 export interface StopwordsSetRetrieveSchema {
   stopwords: StopwordsSetSchema;
 }
-export const StopwordsSetRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
+const StopwordsSetRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopwords: StopwordsSetSchema,
   }),
@@ -3086,19 +2987,19 @@ export const StopwordsSetRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopwordsSetRetrieveSchema>;
 
 export interface GetStopwordsSetsRequest {}
-export const GetStopwordsSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStopwordsSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stopwords", code: 200 })),
 ).annotate({ identifier: "GetStopwordsSetsRequest" }) as any as S.Schema<GetStopwordsSetsRequest>;
 
 export type StopwordsSetsRetrieveAllSchemaStopwordsList = Array<StopwordsSetSchema>;
-export const StopwordsSetsRetrieveAllSchemaStopwordsList = /*@__PURE__*/ S.Array(
+const StopwordsSetsRetrieveAllSchemaStopwordsList = /*@__PURE__*/ S.Array(
   StopwordsSetSchema,
 ) as any as S.Schema<StopwordsSetsRetrieveAllSchemaStopwordsList>;
 
 export interface StopwordsSetsRetrieveAllSchema {
   stopwords: StopwordsSetsRetrieveAllSchemaStopwordsList;
 }
-export const StopwordsSetsRetrieveAllSchema = /*@__PURE__*/ S.suspend(() =>
+const StopwordsSetsRetrieveAllSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopwords: StopwordsSetsRetrieveAllSchemaStopwordsList,
   }),
@@ -3110,7 +3011,7 @@ export interface GetSynonymSetRequest {
   /** The name of the synonym set to retrieve */
   synonymSetName: string;
 }
-export const GetSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}", code: 200 })),
@@ -3118,12 +3019,12 @@ export const GetSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of words that should be considered as synonyms */
 export type SynonymItemSchemaSynonymsList = Array<string>;
-export const SynonymItemSchemaSynonymsList =
+const SynonymItemSchemaSynonymsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SynonymItemSchemaSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type SynonymItemSchemaSymbolsToIndexList = Array<string>;
-export const SynonymItemSchemaSymbolsToIndexList =
+const SynonymItemSchemaSymbolsToIndexList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SynonymItemSchemaSymbolsToIndexList>;
 
 export interface SynonymItemSchema {
@@ -3138,7 +3039,7 @@ export interface SynonymItemSchema {
   /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
   symbols_to_index?: SynonymItemSchemaSymbolsToIndexList;
 }
-export const SynonymItemSchema = /*@__PURE__*/ S.suspend(() =>
+const SynonymItemSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     synonyms: SynonymItemSchemaSynonymsList,
@@ -3150,7 +3051,7 @@ export const SynonymItemSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of synonym items */
 export type GetSynonymSetResponseItemsList = Array<SynonymItemSchema>;
-export const GetSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
+const GetSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
   SynonymItemSchema,
 ) as any as S.Schema<GetSynonymSetResponseItemsList>;
 
@@ -3160,7 +3061,7 @@ export interface GetSynonymSetResponse {
   /** Name of the synonym set */
   name: string;
 }
-export const GetSynonymSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: GetSynonymSetResponseItemsList,
     name: S.String,
@@ -3173,7 +3074,7 @@ export interface GetSynonymSetItemRequest {
   /** The id of the synonym item to retrieve */
   itemId: string;
 }
-export const GetSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -3184,12 +3085,12 @@ export const GetSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of words that should be considered as synonyms */
 export type GetSynonymSetItemResponseSynonymsList = Array<string>;
-export const GetSynonymSetItemResponseSynonymsList =
+const GetSynonymSetItemResponseSynonymsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetSynonymSetItemResponseSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type GetSynonymSetItemResponseSymbolsToIndexList = Array<string>;
-export const GetSynonymSetItemResponseSymbolsToIndexList =
+const GetSynonymSetItemResponseSymbolsToIndexList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetSynonymSetItemResponseSymbolsToIndexList>;
 
 export interface GetSynonymSetItemResponse {
@@ -3204,7 +3105,7 @@ export interface GetSynonymSetItemResponse {
   /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
   symbols_to_index?: GetSynonymSetItemResponseSymbolsToIndexList;
 }
-export const GetSynonymSetItemResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     synonyms: GetSynonymSetItemResponseSynonymsList,
@@ -3220,7 +3121,7 @@ export interface GetSynonymSetItemsRequest {
   /** The name of the synonym set to retrieve items for */
   synonymSetName: string;
 }
-export const GetSynonymSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}/items", code: 200 })),
@@ -3229,63 +3130,60 @@ export const GetSynonymSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSynonymSetItemsRequest>;
 
 export type GetSynonymSetItemsResponseBodyList = Array<SynonymItemSchema>;
-export const GetSynonymSetItemsResponseBodyList =
+const GetSynonymSetItemsResponseBodyList =
   GetSynonymSetResponseItemsList as any as S.Schema<GetSynonymSetItemsResponseBodyList>;
 
 export type GetSynonymSetItemsResponse = GetSynonymSetItemsResponseBodyList;
-export const GetSynonymSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
   GetSynonymSetItemsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSynonymSetItemsResponse",
 }) as any as S.Schema<GetSynonymSetItemsResponse>;
 
 export interface GetSynonymSetsRequest {}
-export const GetSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/synonym_sets", code: 200 })),
 ).annotate({ identifier: "GetSynonymSetsRequest" }) as any as S.Schema<GetSynonymSetsRequest>;
 
 /** Array of synonym items */
 export type SynonymSetSchemaItemsList = Array<SynonymItemSchema>;
-export const SynonymSetSchemaItemsList =
-  GetSynonymSetResponseItemsList as any as S.Schema<SynonymSetSchemaItemsList>;
-
 export interface SynonymSetSchema {
   /** Array of synonym items */
   items: SynonymSetSchemaItemsList;
   /** Name of the synonym set */
   name: string;
 }
-export const SynonymSetSchema = GetSynonymSetResponse as any as S.Schema<SynonymSetSchema>;
+const SynonymSetSchema = GetSynonymSetResponse as any as S.Schema<SynonymSetSchema>;
 
 export type GetSynonymSetsResponseBodyList = Array<SynonymSetSchema>;
-export const GetSynonymSetsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetSynonymSetsResponseBodyList = /*@__PURE__*/ S.Array(
   SynonymSetSchema,
 ) as any as S.Schema<GetSynonymSetsResponseBodyList>;
 
 export type GetSynonymSetsResponse = GetSynonymSetsResponseBodyList;
-export const GetSynonymSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSynonymSetsResponse = /*@__PURE__*/ S.suspend(() =>
   GetSynonymSetsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSynonymSetsResponse" }) as any as S.Schema<GetSynonymSetsResponse>;
 
 export interface HealthRequest {}
-export const HealthRequest = /*@__PURE__*/ S.suspend(() =>
+const HealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
 ).annotate({ identifier: "HealthRequest" }) as any as S.Schema<HealthRequest>;
 
 export interface HealthStatus {
   ok: boolean;
 }
-export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
+const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
 ).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
 
 export type IndexAction = "create" | "update" | "upsert" | "emplace";
-export const IndexAction = S.String;
+const IndexAction = S.String;
 
 export type DirtyValues = "coerce_or_reject" | "coerce_or_drop" | "drop" | "reject";
-export const DirtyValues = S.String;
+const DirtyValues = S.String;
 
 export interface ImportDocumentsRequestImportDocumentsParameters {
   batch_size?: number;
@@ -3296,7 +3194,7 @@ export interface ImportDocumentsRequestImportDocumentsParameters {
   action?: IndexAction | (string & {});
   dirty_values?: DirtyValues | (string & {});
 }
-export const ImportDocumentsRequestImportDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
+const ImportDocumentsRequestImportDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch_size: S.optional(S.Number),
     return_id: S.optional(S.Boolean),
@@ -3314,7 +3212,7 @@ export interface ImportDocumentsRequest {
   collectionName: string;
   importDocumentsParameters?: ImportDocumentsRequestImportDocumentsParameters;
 }
-export const ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     importDocumentsParameters: S.optional(
@@ -3326,15 +3224,14 @@ export const ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDocumentsRequest" }) as any as S.Schema<ImportDocumentsRequest>;
 
 export interface ImportDocumentsResponse {}
-export const ImportDocumentsResponse =
-  ExportDocumentsResponse as any as S.Schema<ImportDocumentsResponse>;
+const ImportDocumentsResponse = ExportDocumentsResponse as any as S.Schema<ImportDocumentsResponse>;
 
 export interface ImportStemmingDictionaryRequest {
   /** The ID to assign to the dictionary */
   id: string;
   body: string;
 }
-export const ImportStemmingDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportStemmingDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Query()),
     body: S.String.pipe(T.HttpBody()),
@@ -3344,9 +3241,7 @@ export const ImportStemmingDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportStemmingDictionaryRequest>;
 
 export interface ImportStemmingDictionaryResponse {}
-export const ImportStemmingDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ImportStemmingDictionaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ImportStemmingDictionaryResponse",
 }) as any as S.Schema<ImportStemmingDictionaryResponse>;
 
@@ -3358,7 +3253,7 @@ export interface IndexDocumentRequest {
   /** Dealing with Dirty Data */
   dirty_values?: DirtyValues | (string & {});
 }
-export const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     action: S.optional(IndexAction.pipe(T.Query())),
@@ -3367,24 +3262,23 @@ export const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexDocumentRequest" }) as any as S.Schema<IndexDocumentRequest>;
 
 export type IndexDocumentResponse = unknown;
-export const IndexDocumentResponse =
-  DeleteDocumentResponse as any as S.Schema<IndexDocumentResponse>;
+const IndexDocumentResponse = DeleteDocumentResponse as any as S.Schema<IndexDocumentResponse>;
 
 export interface ListStemmingDictionariesRequest {}
-export const ListStemmingDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStemmingDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stemming/dictionaries", code: 200 })),
 ).annotate({
   identifier: "ListStemmingDictionariesRequest",
 }) as any as S.Schema<ListStemmingDictionariesRequest>;
 
 export type ListStemmingDictionariesResponseDictionariesList = Array<string>;
-export const ListStemmingDictionariesResponseDictionariesList =
+const ListStemmingDictionariesResponseDictionariesList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<ListStemmingDictionariesResponseDictionariesList>;
 
 export interface ListStemmingDictionariesResponse {
   dictionaries?: ListStemmingDictionariesResponseDictionariesList;
 }
-export const ListStemmingDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStemmingDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictionaries: S.optional(ListStemmingDictionariesResponseDictionariesList),
   }),
@@ -3397,7 +3291,7 @@ export interface SearchCollectionRequest {
   collectionName: string;
   searchParameters: SearchParameters;
 }
-export const SearchCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     searchParameters: SearchParameters.pipe(T.Query()),
@@ -3412,7 +3306,7 @@ export interface FacetCountsCountsItem {
   value?: string;
   parent?: unknown;
 }
-export const FacetCountsCountsItem = /*@__PURE__*/ S.suspend(() =>
+const FacetCountsCountsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     highlighted: S.optional(S.String),
@@ -3422,7 +3316,7 @@ export const FacetCountsCountsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetCountsCountsItem" }) as any as S.Schema<FacetCountsCountsItem>;
 
 export type FacetCountsCountsList = Array<FacetCountsCountsItem>;
-export const FacetCountsCountsList = /*@__PURE__*/ S.Array(
+const FacetCountsCountsList = /*@__PURE__*/ S.Array(
   FacetCountsCountsItem,
 ) as any as S.Schema<FacetCountsCountsList>;
 
@@ -3433,7 +3327,7 @@ export interface FacetCountsStats {
   total_values?: number;
   avg?: number;
 }
-export const FacetCountsStats = /*@__PURE__*/ S.suspend(() =>
+const FacetCountsStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max: S.optional(S.Number),
     min: S.optional(S.Number),
@@ -3449,7 +3343,7 @@ export interface FacetCounts {
   sampled?: boolean;
   stats?: FacetCountsStats;
 }
-export const FacetCounts = /*@__PURE__*/ S.suspend(() =>
+const FacetCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counts: S.optional(FacetCountsCountsList),
     field_name: S.optional(S.String),
@@ -3459,33 +3353,33 @@ export const FacetCounts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetCounts" }) as any as S.Schema<FacetCounts>;
 
 export type SearchResultFacetCountsList = Array<FacetCounts>;
-export const SearchResultFacetCountsList = /*@__PURE__*/ S.Array(
+const SearchResultFacetCountsList = /*@__PURE__*/ S.Array(
   FacetCounts,
 ) as any as S.Schema<SearchResultFacetCountsList>;
 
 export type SearchGroupedHitGroupKeyList = Array<unknown>;
-export const SearchGroupedHitGroupKeyList = /*@__PURE__*/ S.Array(
+const SearchGroupedHitGroupKeyList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SearchGroupedHitGroupKeyList>;
 
 /** Present only for (array) string[] fields */
 export type SearchHighlightSnippetsList = Array<string>;
-export const SearchHighlightSnippetsList =
+const SearchHighlightSnippetsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SearchHighlightSnippetsList>;
 
 /** Full field value with highlighting, present only for (array) string[] fields */
 export type SearchHighlightValuesList = Array<string>;
-export const SearchHighlightValuesList =
+const SearchHighlightValuesList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SearchHighlightValuesList>;
 
 /** The indices property will be present only for string[] fields and will contain the corresponding indices of the snippets in the search field */
 export type SearchHighlightIndicesList = Array<number>;
-export const SearchHighlightIndicesList = /*@__PURE__*/ S.Array(
+const SearchHighlightIndicesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SearchHighlightIndicesList>;
 
 export type SearchHighlightMatchedTokensList = Array<unknown>;
-export const SearchHighlightMatchedTokensList =
+const SearchHighlightMatchedTokensList =
   SearchGroupedHitGroupKeyList as any as S.Schema<SearchHighlightMatchedTokensList>;
 
 export interface SearchHighlight {
@@ -3502,7 +3396,7 @@ export interface SearchHighlight {
   indices?: SearchHighlightIndicesList;
   matched_tokens?: SearchHighlightMatchedTokensList;
 }
-export const SearchHighlight = /*@__PURE__*/ S.suspend(() =>
+const SearchHighlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     snippet: S.optional(S.String),
@@ -3516,20 +3410,20 @@ export const SearchHighlight = /*@__PURE__*/ S.suspend(() =>
 
 /** (Deprecated) Contains highlighted portions of the search fields */
 export type SearchResultHitHighlightsList = Array<SearchHighlight>;
-export const SearchResultHitHighlightsList = /*@__PURE__*/ S.Array(
+const SearchResultHitHighlightsList = /*@__PURE__*/ S.Array(
   SearchHighlight,
 ) as any as S.Schema<SearchResultHitHighlightsList>;
 
 /** Highlighted version of the matching document */
 export type SearchResultHitHighlightMap = { [key: string]: unknown | undefined };
-export const SearchResultHitHighlightMap = /*@__PURE__*/ S.Record(
+const SearchResultHitHighlightMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SearchResultHitHighlightMap>;
 
 /** Can be any key-value pair */
 export type SearchResultHitDocumentMap = { [key: string]: unknown | undefined };
-export const SearchResultHitDocumentMap =
+const SearchResultHitDocumentMap =
   SearchResultHitHighlightMap as any as S.Schema<SearchResultHitDocumentMap>;
 
 export interface SearchResultHitTextMatchInfo {
@@ -3541,7 +3435,7 @@ export interface SearchResultHitTextMatchInfo {
   tokens_matched?: number;
   typo_prefix_score?: number;
 }
-export const SearchResultHitTextMatchInfo = /*@__PURE__*/ S.suspend(() =>
+const SearchResultHitTextMatchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     best_field_score: S.optional(S.String),
     best_field_weight: S.optional(S.Number),
@@ -3557,7 +3451,7 @@ export const SearchResultHitTextMatchInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Can be any key-value pair */
 export type SearchResultHitGeoDistanceMetersMap = { [key: string]: number | undefined };
-export const SearchResultHitGeoDistanceMetersMap = /*@__PURE__*/ S.Record(
+const SearchResultHitGeoDistanceMetersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<SearchResultHitGeoDistanceMetersMap>;
@@ -3567,7 +3461,7 @@ export interface SearchResultHitHybridSearchInfo {
   /** Combined score from rank fusion of text and vector search */
   rank_fusion_score?: number;
 }
-export const SearchResultHitHybridSearchInfo = /*@__PURE__*/ S.suspend(() =>
+const SearchResultHitHybridSearchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rank_fusion_score: S.optional(S.Number),
   }),
@@ -3593,7 +3487,7 @@ export interface SearchResultHit {
   /** Returned only for union query response. Indicates the index of the query which this document matched to. */
   search_index?: number;
 }
-export const SearchResultHit = /*@__PURE__*/ S.suspend(() =>
+const SearchResultHit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     highlights: S.optional(SearchResultHitHighlightsList),
     highlight: S.optional(SearchResultHitHighlightMap),
@@ -3609,7 +3503,7 @@ export const SearchResultHit = /*@__PURE__*/ S.suspend(() =>
 
 /** The documents that matched the search query */
 export type SearchGroupedHitHitsList = Array<SearchResultHit>;
-export const SearchGroupedHitHitsList = /*@__PURE__*/ S.Array(
+const SearchGroupedHitHitsList = /*@__PURE__*/ S.Array(
   SearchResultHit,
 ) as any as S.Schema<SearchGroupedHitHitsList>;
 
@@ -3619,7 +3513,7 @@ export interface SearchGroupedHit {
   /** The documents that matched the search query */
   hits: SearchGroupedHitHitsList;
 }
-export const SearchGroupedHit = /*@__PURE__*/ S.suspend(() =>
+const SearchGroupedHit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(S.Number),
     group_key: SearchGroupedHitGroupKeyList,
@@ -3628,19 +3522,18 @@ export const SearchGroupedHit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchGroupedHit" }) as any as S.Schema<SearchGroupedHit>;
 
 export type SearchResultGroupedHitsList = Array<SearchGroupedHit>;
-export const SearchResultGroupedHitsList = /*@__PURE__*/ S.Array(
+const SearchResultGroupedHitsList = /*@__PURE__*/ S.Array(
   SearchGroupedHit,
 ) as any as S.Schema<SearchResultGroupedHitsList>;
 
 /** The documents that matched the search query */
 export type SearchResultHitsList = Array<SearchResultHit>;
-export const SearchResultHitsList =
-  SearchGroupedHitHitsList as any as S.Schema<SearchResultHitsList>;
+const SearchResultHitsList = SearchGroupedHitHitsList as any as S.Schema<SearchResultHitsList>;
 
 export interface SearchRequestParamsVoiceQuery {
   transcribed_query?: string;
 }
-export const SearchRequestParamsVoiceQuery = /*@__PURE__*/ S.suspend(() =>
+const SearchRequestParamsVoiceQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transcribed_query: S.optional(S.String),
   }),
@@ -3655,7 +3548,7 @@ export interface SearchRequestParams {
   per_page: number;
   voice_query?: SearchRequestParamsVoiceQuery;
 }
-export const SearchRequestParams = /*@__PURE__*/ S.suspend(() =>
+const SearchRequestParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collection_name: S.String,
     first_q: S.optional(S.String),
@@ -3666,7 +3559,7 @@ export const SearchRequestParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRequestParams" }) as any as S.Schema<SearchRequestParams>;
 
 export type SearchResultConversationConversationHistoryList = Array<unknown>;
-export const SearchResultConversationConversationHistoryList =
+const SearchResultConversationConversationHistoryList =
   SearchGroupedHitGroupKeyList as any as S.Schema<SearchResultConversationConversationHistoryList>;
 
 export interface SearchResultConversation {
@@ -3675,7 +3568,7 @@ export interface SearchResultConversation {
   conversation_id: string;
   query: string;
 }
-export const SearchResultConversation = /*@__PURE__*/ S.suspend(() =>
+const SearchResultConversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.String,
     conversation_history: SearchResultConversationConversationHistoryList,
@@ -3686,13 +3579,13 @@ export const SearchResultConversation = /*@__PURE__*/ S.suspend(() =>
 
 /** Returned only for union query response. */
 export type SearchResultUnionRequestParamsList = Array<SearchRequestParams>;
-export const SearchResultUnionRequestParamsList = /*@__PURE__*/ S.Array(
+const SearchResultUnionRequestParamsList = /*@__PURE__*/ S.Array(
   SearchRequestParams,
 ) as any as S.Schema<SearchResultUnionRequestParamsList>;
 
 /** Custom JSON object that can be returned in the search response */
 export type SearchResultMetadataMap = { [key: string]: unknown | undefined };
-export const SearchResultMetadataMap =
+const SearchResultMetadataMap =
   SearchResultHitHighlightMap as any as S.Schema<SearchResultMetadataMap>;
 
 export interface SearchResult {
@@ -3718,7 +3611,7 @@ export interface SearchResult {
   /** Custom JSON object that can be returned in the search response */
   metadata?: SearchResultMetadataMap;
 }
-export const SearchResult = /*@__PURE__*/ S.suspend(() =>
+const SearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facet_counts: S.optional(SearchResultFacetCountsList),
     found: S.optional(S.Number),
@@ -3888,7 +3781,7 @@ export interface MultiSearchParameters {
   /** Controls whether Typesense should validate if the fields exist in the schema. When set to false, Typesense will not throw an error if a field is missing. This is useful for programmatic grouping where not all fields may exist. */
   validate_field_names?: boolean;
 }
-export const MultiSearchParameters = /*@__PURE__*/ S.suspend(() =>
+const MultiSearchParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String),
     query_by: S.optional(S.String),
@@ -3969,7 +3862,7 @@ export const MultiSearchParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MultiSearchParameters" }) as any as S.Schema<MultiSearchParameters>;
 
 export type SearchMultiRequestSearchesList = Array<MultiSearchCollectionParameters>;
-export const SearchMultiRequestSearchesList =
+const SearchMultiRequestSearchesList =
   MultiSearchSearchesParameterSearchesList as any as S.Schema<SearchMultiRequestSearchesList>;
 
 export interface SearchMultiRequest {
@@ -3978,7 +3871,7 @@ export interface SearchMultiRequest {
   union?: boolean;
   searches: SearchMultiRequestSearchesList;
 }
-export const SearchMultiRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchMultiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiSearchParameters: MultiSearchParameters.pipe(T.Query()),
     union: S.optional(S.Boolean),
@@ -3987,26 +3880,26 @@ export const SearchMultiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMultiRequest" }) as any as S.Schema<SearchMultiRequest>;
 
 export type MultiSearchResultItemFacetCountsList = Array<FacetCounts>;
-export const MultiSearchResultItemFacetCountsList =
+const MultiSearchResultItemFacetCountsList =
   SearchResultFacetCountsList as any as S.Schema<MultiSearchResultItemFacetCountsList>;
 
 export type MultiSearchResultItemGroupedHitsList = Array<SearchGroupedHit>;
-export const MultiSearchResultItemGroupedHitsList =
+const MultiSearchResultItemGroupedHitsList =
   SearchResultGroupedHitsList as any as S.Schema<MultiSearchResultItemGroupedHitsList>;
 
 /** The documents that matched the search query */
 export type MultiSearchResultItemHitsList = Array<SearchResultHit>;
-export const MultiSearchResultItemHitsList =
+const MultiSearchResultItemHitsList =
   SearchGroupedHitHitsList as any as S.Schema<MultiSearchResultItemHitsList>;
 
 /** Returned only for union query response. */
 export type MultiSearchResultItemUnionRequestParamsList = Array<SearchRequestParams>;
-export const MultiSearchResultItemUnionRequestParamsList =
+const MultiSearchResultItemUnionRequestParamsList =
   SearchResultUnionRequestParamsList as any as S.Schema<MultiSearchResultItemUnionRequestParamsList>;
 
 /** Custom JSON object that can be returned in the search response */
 export type MultiSearchResultItemMetadataMap = { [key: string]: unknown | undefined };
-export const MultiSearchResultItemMetadataMap =
+const MultiSearchResultItemMetadataMap =
   SearchResultHitHighlightMap as any as S.Schema<MultiSearchResultItemMetadataMap>;
 
 export interface MultiSearchResultItem {
@@ -4036,7 +3929,7 @@ export interface MultiSearchResultItem {
   /** Error description */
   error?: string;
 }
-export const MultiSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const MultiSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facet_counts: S.optional(MultiSearchResultItemFacetCountsList),
     found: S.optional(S.Number),
@@ -4057,7 +3950,7 @@ export const MultiSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MultiSearchResultItem" }) as any as S.Schema<MultiSearchResultItem>;
 
 export type MultiSearchResultResultsList = Array<MultiSearchResultItem>;
-export const MultiSearchResultResultsList = /*@__PURE__*/ S.Array(
+const MultiSearchResultResultsList = /*@__PURE__*/ S.Array(
   MultiSearchResultItem,
 ) as any as S.Schema<MultiSearchResultResultsList>;
 
@@ -4065,7 +3958,7 @@ export interface MultiSearchResult {
   results: MultiSearchResultResultsList;
   conversation?: SearchResultConversation;
 }
-export const MultiSearchResult = /*@__PURE__*/ S.suspend(() =>
+const MultiSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: MultiSearchResultResultsList,
     conversation: S.optional(SearchResultConversation),
@@ -4076,7 +3969,7 @@ export interface TakeSnapshotRequest {
   /** The directory on the server where the snapshot should be saved. */
   snapshot_path: string;
 }
-export const TakeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const TakeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot_path: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "POST", uri: "/operations/snapshot", code: 200 })),
@@ -4085,7 +3978,7 @@ export const TakeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ToggleSlowRequestLogRequest {
   log_slow_requests_time_ms: number;
 }
-export const ToggleSlowRequestLogRequest = /*@__PURE__*/ S.suspend(() =>
+const ToggleSlowRequestLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log_slow_requests_time_ms: S.Number.pipe(T.Body("log-slow-requests-time-ms")),
   }).pipe(T.Http({ method: "POST", uri: "/config", code: 200 })),
@@ -4095,12 +3988,12 @@ export const ToggleSlowRequestLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type UpdateCollectionRequestFieldsList = Array<Field>;
-export const UpdateCollectionRequestFieldsList =
+const UpdateCollectionRequestFieldsList =
   CreateCollectionRequestFieldsList as any as S.Schema<UpdateCollectionRequestFieldsList>;
 
 /** List of synonym set names to associate with this collection */
 export type UpdateCollectionRequestSynonymSetsList = Array<string>;
-export const UpdateCollectionRequestSynonymSetsList =
+const UpdateCollectionRequestSynonymSetsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpdateCollectionRequestSynonymSetsList>;
 
 export interface UpdateCollectionRequest {
@@ -4113,7 +4006,7 @@ export interface UpdateCollectionRequest {
   /** Optional details about the collection, e.g., when it was created, who created it etc. */
   metadata?: unknown;
 }
-export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     fields: S.optional(UpdateCollectionRequestFieldsList),
@@ -4124,12 +4017,12 @@ export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CollectionUpdateSchemaFieldsList = Array<Field>;
-export const CollectionUpdateSchemaFieldsList =
+const CollectionUpdateSchemaFieldsList =
   CreateCollectionRequestFieldsList as any as S.Schema<CollectionUpdateSchemaFieldsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CollectionUpdateSchemaSynonymSetsList = Array<string>;
-export const CollectionUpdateSchemaSynonymSetsList =
+const CollectionUpdateSchemaSynonymSetsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionUpdateSchemaSynonymSetsList>;
 
 export interface CollectionUpdateSchema {
@@ -4140,7 +4033,7 @@ export interface CollectionUpdateSchema {
   /** Optional details about the collection, e.g., when it was created, who created it etc. */
   metadata?: unknown;
 }
-export const CollectionUpdateSchema = /*@__PURE__*/ S.suspend(() =>
+const CollectionUpdateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(CollectionUpdateSchemaFieldsList),
     synonym_sets: S.optional(CollectionUpdateSchemaSynonymSetsList),
@@ -4170,7 +4063,7 @@ export interface UpdateConversationModelRequest {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const UpdateConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConversationModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -4207,7 +4100,7 @@ export interface UpdateConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const UpdateConversationModelResponse =
+const UpdateConversationModelResponse =
   CreateConversationModelResponse as any as S.Schema<UpdateConversationModelResponse>;
 
 export interface UpdateDocumentRequest {
@@ -4218,7 +4111,7 @@ export interface UpdateDocumentRequest {
   /** Dealing with Dirty Data */
   dirty_values?: DirtyValues | (string & {});
 }
-export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     documentId: S.String.pipe(T.Label()),
@@ -4233,13 +4126,12 @@ export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDocumentRequest" }) as any as S.Schema<UpdateDocumentRequest>;
 
 export type UpdateDocumentResponse = unknown;
-export const UpdateDocumentResponse =
-  DeleteDocumentResponse as any as S.Schema<UpdateDocumentResponse>;
+const UpdateDocumentResponse = DeleteDocumentResponse as any as S.Schema<UpdateDocumentResponse>;
 
 export interface UpdateDocumentsRequestUpdateDocumentsParameters {
   filter_by?: string;
 }
-export const UpdateDocumentsRequestUpdateDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentsRequestUpdateDocumentsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter_by: S.optional(S.String),
   }),
@@ -4252,7 +4144,7 @@ export interface UpdateDocumentsRequest {
   collectionName: string;
   updateDocumentsParameters?: UpdateDocumentsRequestUpdateDocumentsParameters;
 }
-export const UpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     updateDocumentsParameters: S.optional(
@@ -4265,7 +4157,7 @@ export interface UpdateDocumentsResponse {
   /** The number of documents that have been updated */
   num_updated: number;
 }
-export const UpdateDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     num_updated: S.Number,
   }),
@@ -4273,7 +4165,7 @@ export const UpdateDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type UpdateNLSearchModelRequestStopSequencesList = Array<string>;
-export const UpdateNLSearchModelRequestStopSequencesList =
+const UpdateNLSearchModelRequestStopSequencesList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpdateNLSearchModelRequestStopSequencesList>;
 
 export interface UpdateNLSearchModelRequest {
@@ -4318,7 +4210,7 @@ export interface UpdateNLSearchModelRequest {
   /** Optional ID for the NL search model */
   id?: string;
 }
-export const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
     model_name: S.optional(S.String),
@@ -4347,9 +4239,6 @@ export const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type UpdateNLSearchModelResponseStopSequencesList = Array<string>;
-export const UpdateNLSearchModelResponseStopSequencesList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpdateNLSearchModelResponseStopSequencesList>;
-
 export interface UpdateNLSearchModelResponse {
   /** Name of the NL model to use */
   model_name?: string;
@@ -4390,7 +4279,7 @@ export interface UpdateNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const UpdateNLSearchModelResponse =
+const UpdateNLSearchModelResponse =
   CreateNLSearchModelResponse as any as S.Schema<UpdateNLSearchModelResponse>;
 
 export interface UpsertAliasRequest {
@@ -4399,7 +4288,7 @@ export interface UpsertAliasRequest {
   /** Name of the collection you wish to map the alias to */
   collection_name: string;
 }
-export const UpsertAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
     collection_name: S.String,
@@ -4407,9 +4296,6 @@ export const UpsertAliasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertAliasRequest" }) as any as S.Schema<UpsertAliasRequest>;
 
 export type UpsertAnalyticsRuleRequestParamsMetaFieldsList = Array<string>;
-export const UpsertAnalyticsRuleRequestParamsMetaFieldsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertAnalyticsRuleRequestParamsMetaFieldsList>;
-
 export interface UpsertAnalyticsRuleRequestParams {
   destination_collection?: string;
   limit?: number;
@@ -4419,7 +4305,7 @@ export interface UpsertAnalyticsRuleRequestParams {
   counter_field?: string;
   weight?: number;
 }
-export const UpsertAnalyticsRuleRequestParams =
+const UpsertAnalyticsRuleRequestParams =
   AnalyticsRuleCreateParams as any as S.Schema<UpsertAnalyticsRuleRequestParams>;
 
 export interface UpsertAnalyticsRuleRequest {
@@ -4429,7 +4315,7 @@ export interface UpsertAnalyticsRuleRequest {
   rule_tag?: string;
   params?: UpsertAnalyticsRuleRequestParams;
 }
-export const UpsertAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleName: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -4441,9 +4327,6 @@ export const UpsertAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertAnalyticsRuleRequest>;
 
 export type UpsertAnalyticsRuleResponseParamsMetaFieldsList = Array<string>;
-export const UpsertAnalyticsRuleResponseParamsMetaFieldsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertAnalyticsRuleResponseParamsMetaFieldsList>;
-
 export interface UpsertAnalyticsRuleResponseParams {
   destination_collection?: string;
   limit?: number;
@@ -4453,9 +4336,6 @@ export interface UpsertAnalyticsRuleResponseParams {
   counter_field?: string;
   weight?: number;
 }
-export const UpsertAnalyticsRuleResponseParams =
-  AnalyticsRuleCreateParams as any as S.Schema<UpsertAnalyticsRuleResponseParams>;
-
 export interface UpsertAnalyticsRuleResponse {
   name: string;
   type: AnalyticsRuleType;
@@ -4464,12 +4344,12 @@ export interface UpsertAnalyticsRuleResponse {
   rule_tag?: string;
   params?: UpsertAnalyticsRuleResponseParams;
 }
-export const UpsertAnalyticsRuleResponse =
+const UpsertAnalyticsRuleResponse =
   DeleteAnalyticsRuleResponse as any as S.Schema<UpsertAnalyticsRuleResponse>;
 
 /** Array of curation items */
 export type UpsertCurationSetRequestItemsList = Array<CurationItemCreateSchema>;
-export const UpsertCurationSetRequestItemsList =
+const UpsertCurationSetRequestItemsList =
   GetCurationSetResponseItemsList as any as S.Schema<UpsertCurationSetRequestItemsList>;
 
 export interface UpsertCurationSetRequest {
@@ -4480,7 +4360,7 @@ export interface UpsertCurationSetRequest {
   /** Optional description for the curation set */
   description?: string;
 }
-export const UpsertCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
     items: UpsertCurationSetRequestItemsList,
@@ -4490,7 +4370,7 @@ export const UpsertCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of curation items */
 export type UpsertCurationSetResponseItemsList = Array<CurationItemCreateSchema>;
-export const UpsertCurationSetResponseItemsList =
+const UpsertCurationSetResponseItemsList =
   GetCurationSetResponseItemsList as any as S.Schema<UpsertCurationSetResponseItemsList>;
 
 export interface UpsertCurationSetResponse {
@@ -4500,7 +4380,7 @@ export interface UpsertCurationSetResponse {
   description?: string;
   name: string;
 }
-export const UpsertCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+const UpsertCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: UpsertCurationSetResponseItemsList,
     description: S.optional(S.String),
@@ -4512,12 +4392,12 @@ export const UpsertCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type UpsertCurationSetItemRequestIncludesList = Array<CurationInclude>;
-export const UpsertCurationSetItemRequestIncludesList =
+const UpsertCurationSetItemRequestIncludesList =
   CurationItemCreateSchemaIncludesList as any as S.Schema<UpsertCurationSetItemRequestIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type UpsertCurationSetItemRequestExcludesList = Array<CurationExclude>;
-export const UpsertCurationSetItemRequestExcludesList =
+const UpsertCurationSetItemRequestExcludesList =
   CurationItemCreateSchemaExcludesList as any as S.Schema<UpsertCurationSetItemRequestExcludesList>;
 
 export interface UpsertCurationSetItemRequest {
@@ -4551,7 +4431,7 @@ export interface UpsertCurationSetItemRequest {
   /** ID of the curation item */
   id?: string;
 }
-export const UpsertCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -4577,14 +4457,8 @@ export const UpsertCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type UpsertCurationSetItemResponseIncludesList = Array<CurationInclude>;
-export const UpsertCurationSetItemResponseIncludesList =
-  CurationItemCreateSchemaIncludesList as any as S.Schema<UpsertCurationSetItemResponseIncludesList>;
-
 /** List of document `id`s that should be excluded from the search results. */
 export type UpsertCurationSetItemResponseExcludesList = Array<CurationExclude>;
-export const UpsertCurationSetItemResponseExcludesList =
-  CurationItemCreateSchemaExcludesList as any as S.Schema<UpsertCurationSetItemResponseExcludesList>;
-
 export interface UpsertCurationSetItemResponse {
   rule: CurationRule;
   /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
@@ -4612,11 +4486,11 @@ export interface UpsertCurationSetItemResponse {
   /** ID of the curation item */
   id: string;
 }
-export const UpsertCurationSetItemResponse =
+const UpsertCurationSetItemResponse =
   GetCurationSetItemResponse as any as S.Schema<UpsertCurationSetItemResponse>;
 
 export type UpsertPresetRequestValue = SearchParameters | MultiSearchSearchesParameter;
-export const UpsertPresetRequestValue = /*@__PURE__*/ S.Unknown.pipe(
+const UpsertPresetRequestValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "q",
@@ -4710,7 +4584,7 @@ export interface UpsertPresetRequest {
   presetId: string;
   value: UpsertPresetRequestValue;
 }
-export const UpsertPresetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertPresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presetId: S.String.pipe(T.Label()),
     value: UpsertPresetRequestValue,
@@ -4718,7 +4592,7 @@ export const UpsertPresetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertPresetRequest" }) as any as S.Schema<UpsertPresetRequest>;
 
 export type UpsertPresetResponseValue = SearchParameters | MultiSearchSearchesParameter;
-export const UpsertPresetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+const UpsertPresetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "q",
@@ -4811,7 +4685,7 @@ export interface UpsertPresetResponse {
   value: UpsertPresetResponseValue;
   name: string;
 }
-export const UpsertPresetResponse = /*@__PURE__*/ S.suspend(() =>
+const UpsertPresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UpsertPresetResponseValue,
     name: S.String,
@@ -4819,7 +4693,7 @@ export const UpsertPresetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertPresetResponse" }) as any as S.Schema<UpsertPresetResponse>;
 
 export type UpsertStopwordsSetRequestStopwordsList = Array<string>;
-export const UpsertStopwordsSetRequestStopwordsList =
+const UpsertStopwordsSetRequestStopwordsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertStopwordsSetRequestStopwordsList>;
 
 export interface UpsertStopwordsSetRequest {
@@ -4828,7 +4702,7 @@ export interface UpsertStopwordsSetRequest {
   stopwords: UpsertStopwordsSetRequestStopwordsList;
   locale?: string;
 }
-export const UpsertStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setId: S.String.pipe(T.Label()),
     stopwords: UpsertStopwordsSetRequestStopwordsList,
@@ -4840,7 +4714,7 @@ export const UpsertStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of synonym items */
 export type UpsertSynonymSetRequestItemsList = Array<SynonymItemSchema>;
-export const UpsertSynonymSetRequestItemsList =
+const UpsertSynonymSetRequestItemsList =
   GetSynonymSetResponseItemsList as any as S.Schema<UpsertSynonymSetRequestItemsList>;
 
 export interface UpsertSynonymSetRequest {
@@ -4849,7 +4723,7 @@ export interface UpsertSynonymSetRequest {
   /** Array of synonym items */
   items: UpsertSynonymSetRequestItemsList;
 }
-export const UpsertSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
     items: UpsertSynonymSetRequestItemsList,
@@ -4858,26 +4732,22 @@ export const UpsertSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of synonym items */
 export type UpsertSynonymSetResponseItemsList = Array<SynonymItemSchema>;
-export const UpsertSynonymSetResponseItemsList =
-  GetSynonymSetResponseItemsList as any as S.Schema<UpsertSynonymSetResponseItemsList>;
-
 export interface UpsertSynonymSetResponse {
   /** Array of synonym items */
   items: UpsertSynonymSetResponseItemsList;
   /** Name of the synonym set */
   name: string;
 }
-export const UpsertSynonymSetResponse =
-  GetSynonymSetResponse as any as S.Schema<UpsertSynonymSetResponse>;
+const UpsertSynonymSetResponse = GetSynonymSetResponse as any as S.Schema<UpsertSynonymSetResponse>;
 
 /** Array of words that should be considered as synonyms */
 export type UpsertSynonymSetItemRequestSynonymsList = Array<string>;
-export const UpsertSynonymSetItemRequestSynonymsList =
+const UpsertSynonymSetItemRequestSynonymsList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemRequestSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type UpsertSynonymSetItemRequestSymbolsToIndexList = Array<string>;
-export const UpsertSynonymSetItemRequestSymbolsToIndexList =
+const UpsertSynonymSetItemRequestSymbolsToIndexList =
   CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemRequestSymbolsToIndexList>;
 
 export interface UpsertSynonymSetItemRequest {
@@ -4894,7 +4764,7 @@ export interface UpsertSynonymSetItemRequest {
   /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
   symbols_to_index?: UpsertSynonymSetItemRequestSymbolsToIndexList;
 }
-export const UpsertSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonymSetName: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -4911,14 +4781,8 @@ export const UpsertSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of words that should be considered as synonyms */
 export type UpsertSynonymSetItemResponseSynonymsList = Array<string>;
-export const UpsertSynonymSetItemResponseSynonymsList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemResponseSynonymsList>;
-
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type UpsertSynonymSetItemResponseSymbolsToIndexList = Array<string>;
-export const UpsertSynonymSetItemResponseSymbolsToIndexList =
-  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemResponseSymbolsToIndexList>;
-
 export interface UpsertSynonymSetItemResponse {
   /** Unique identifier for the synonym item */
   id: string;
@@ -4931,11 +4795,11 @@ export interface UpsertSynonymSetItemResponse {
   /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
   symbols_to_index?: UpsertSynonymSetItemResponseSymbolsToIndexList;
 }
-export const UpsertSynonymSetItemResponse =
+const UpsertSynonymSetItemResponse =
   GetSynonymSetItemResponse as any as S.Schema<UpsertSynonymSetItemResponse>;
 
 export interface VoteRequest {}
-export const VoteRequest = /*@__PURE__*/ S.suspend(() =>
+const VoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/vote", code: 200 })),
 ).annotate({ identifier: "VoteRequest" }) as any as S.Schema<VoteRequest>;
 

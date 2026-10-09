@@ -58,7 +58,7 @@ export interface ListNamespaceObjectsRequest {
   /** The number of objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
 }
-export const ListNamespaceObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -83,7 +83,7 @@ export interface NamespacesObjectsListResultItem {
   /** Whether the Durable Object has stored data. */
   hasStoredData?: boolean | null;
 }
-export const NamespacesObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     hasStoredData: S.optional(S.NullOr(S.Boolean)),
@@ -93,7 +93,7 @@ export const NamespacesObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesObjectsListResultItem>;
 
 export type NamespacesObjectsListResultList = Array<NamespacesObjectsListResultItem>;
-export const NamespacesObjectsListResultList = /*@__PURE__*/ S.Array(
+const NamespacesObjectsListResultList = /*@__PURE__*/ S.Array(
   NamespacesObjectsListResultItem,
 ) as any as S.Schema<NamespacesObjectsListResultList>;
 
@@ -103,7 +103,7 @@ export interface ListNamespaceObjectsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListNamespaceObjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesObjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -120,7 +120,7 @@ export interface ListNamespacesRequest {
   /** Items per-page. */
   perPage?: number;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -143,7 +143,7 @@ export interface NamespacesListResultItem {
   script?: string | null;
   useSqlite?: boolean | null;
 }
-export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     class: S.optional(S.NullOr(S.String)),
@@ -154,7 +154,7 @@ export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespacesListResultItem" }) as any as S.Schema<NamespacesListResultItem>;
 
 export type NamespacesListResultList = Array<NamespacesListResultItem>;
-export const NamespacesListResultList = /*@__PURE__*/ S.Array(
+const NamespacesListResultList = /*@__PURE__*/ S.Array(
   NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;
 
@@ -164,7 +164,7 @@ export interface ListNamespacesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

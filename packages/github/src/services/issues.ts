@@ -55,8 +55,6 @@ export class UnprocessableEntity
 
 /** The confidence level for this assignee choice. */
 export type AddAssigneesRequestAssigneesItemCase1Confidence = "low" | "medium" | "high";
-export const AddAssigneesRequestAssigneesItemCase1Confidence = S.String;
-
 export interface AddAssigneesRequestAssigneesItemCase1 {
   /** The login of the user to assign. */
   login: string;
@@ -67,24 +65,13 @@ export interface AddAssigneesRequestAssigneesItemCase1 {
   /** The confidence level for this assignee choice. */
   confidence?: AddAssigneesRequestAssigneesItemCase1Confidence | (string & {});
 }
-export const AddAssigneesRequestAssigneesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    login: S.String,
-    rationale: S.optional(S.String),
-    suggest: S.optional(S.Boolean),
-    confidence: S.optional(AddAssigneesRequestAssigneesItemCase1Confidence),
-  }),
-).annotate({
-  identifier: "AddAssigneesRequestAssigneesItemCase1",
-}) as any as S.Schema<AddAssigneesRequestAssigneesItemCase1>;
-
 export type AddAssigneesRequestAssigneesItem = string | AddAssigneesRequestAssigneesItemCase1;
-export const AddAssigneesRequestAssigneesItem =
+const AddAssigneesRequestAssigneesItem =
   S.Unknown as any as S.Schema<AddAssigneesRequestAssigneesItem>;
 
 /** Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._ */
 export type AddAssigneesRequestAssigneesList = Array<AddAssigneesRequestAssigneesItem>;
-export const AddAssigneesRequestAssigneesList = /*@__PURE__*/ S.Array(
+const AddAssigneesRequestAssigneesList = /*@__PURE__*/ S.Array(
   AddAssigneesRequestAssigneesItem,
 ) as any as S.Schema<AddAssigneesRequestAssigneesList>;
 
@@ -98,7 +85,7 @@ export interface AddAssigneesRequest {
   /** Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._ */
   assignees?: AddAssigneesRequestAssigneesList;
 }
-export const AddAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -115,7 +102,7 @@ export const AddAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason for the current state */
 export type IssueStateReason = "completed" | "reopened" | "not_planned" | "duplicate";
-export const IssueStateReason = S.String;
+const IssueStateReason = S.String;
 
 /** A GitHub user. */
 export interface NullableSimpleUser {
@@ -142,7 +129,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -171,8 +158,6 @@ export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 export interface IssueLabelsItemCase1 {
   id?: number;
   node_id?: string;
@@ -184,36 +169,21 @@ export interface IssueLabelsItemCase1 {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by?: NullableSimpleUser | null;
 }
-export const IssueLabelsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    node_id: S.optional(S.String),
-    url: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    color: S.optional(S.NullOr(S.String)),
-    default: S.optional(S.Boolean),
-    archived_by: S.optional(S.NullOr(NullableSimpleUser)),
-  }),
-).annotate({ identifier: "IssueLabelsItemCase1" }) as any as S.Schema<IssueLabelsItemCase1>;
-
 export type IssueLabelsItem = string | IssueLabelsItemCase1;
-export const IssueLabelsItem = S.Unknown as any as S.Schema<IssueLabelsItem>;
+const IssueLabelsItem = S.Unknown as any as S.Schema<IssueLabelsItem>;
 
 /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
 export type IssueLabelsList = Array<IssueLabelsItem>;
-export const IssueLabelsList = /*@__PURE__*/ S.Array(
-  IssueLabelsItem,
-) as any as S.Schema<IssueLabelsList>;
+const IssueLabelsList = /*@__PURE__*/ S.Array(IssueLabelsItem) as any as S.Schema<IssueLabelsList>;
 
 export type IssueAssigneesList = Array<NullableSimpleUser>;
-export const IssueAssigneesList = /*@__PURE__*/ S.Array(
+const IssueAssigneesList = /*@__PURE__*/ S.Array(
   NullableSimpleUser,
 ) as any as S.Schema<IssueAssigneesList>;
 
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-export const NullableMilestoneState = S.String;
+const NullableMilestoneState = S.String;
 
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
@@ -237,7 +207,7 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
+const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -265,7 +235,7 @@ export interface IssuePullRequest {
   patch_url: string | null;
   url: string | null;
 }
-export const IssuePullRequest = /*@__PURE__*/ S.suspend(() =>
+const IssuePullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merged_at: S.optional(S.NullOr(S.String)),
     diff_url: S.NullOr(S.String),
@@ -285,7 +255,7 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeColor = S.String;
+const IssueTypeColor = S.String;
 
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
@@ -306,7 +276,7 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-export const IssueType = /*@__PURE__*/ S.suspend(() =>
+const IssueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -328,7 +298,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -346,7 +316,7 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -357,36 +327,36 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
+const RepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -527,7 +497,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -648,23 +618,8 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type NullableIntegrationOwner = NullableSimpleUser | Enterprise;
-export const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
+const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
 
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
@@ -674,7 +629,7 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
+const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(S.String),
     checks: S.optional(S.String),
@@ -688,7 +643,7 @@ export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList =
+const NullableIntegrationEventsList =
   RepositoryTopicsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
@@ -714,7 +669,7 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
+const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.optional(S.String),
@@ -743,7 +698,7 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const AuthorAssociation = S.String;
+const AuthorAssociation = S.String;
 
 export interface ReactionRollup {
   url: string;
@@ -757,7 +712,7 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-export const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
+const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     total_count: S.Number,
@@ -777,7 +732,7 @@ export interface SubIssuesSummary {
   completed: number;
   percent_completed: number;
 }
-export const SubIssuesSummary = /*@__PURE__*/ S.suspend(() =>
+const SubIssuesSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     completed: S.Number,
@@ -790,7 +745,7 @@ export interface NullablePinnedIssueComment {
   pinned_at: string;
   pinned_by: NullableSimpleUser | null;
 }
-export const NullablePinnedIssueComment = /*@__PURE__*/ S.suspend(() =>
+const NullablePinnedIssueComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pinned_at: S.String,
     pinned_by: S.NullOr(NullableSimpleUser),
@@ -804,7 +759,7 @@ export interface NullableIssueCommentMinimized {
   /** The reason the comment was minimized. */
   reason: string | null;
 }
-export const NullableIssueCommentMinimized = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueCommentMinimized = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.NullOr(S.String),
   }),
@@ -834,7 +789,7 @@ export interface NullableIssueComment {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-export const NullableIssueComment = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -861,7 +816,7 @@ export interface IssueDependenciesSummary {
   total_blocked_by: number;
   total_blocking: number;
 }
-export const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
+const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_by: S.Number,
     blocking: S.Number,
@@ -872,11 +827,11 @@ export const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The data type of the issue field */
 export type IssueFieldValueDataType = "text" | "single_select" | "multi_select" | "number" | "date";
-export const IssueFieldValueDataType = S.String;
+const IssueFieldValueDataType = S.String;
 
 /** The value of the issue field */
 export type IssueFieldValueValue = string | number | number;
-export const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
+const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
 
 /** Details about the selected option (only present for single_select fields) */
 export interface IssueFieldValueSingleSelectOption {
@@ -887,7 +842,7 @@ export interface IssueFieldValueSingleSelectOption {
   /** The color of the option */
   color: string;
 }
-export const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
+const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -898,11 +853,9 @@ export const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueFieldValueSingleSelectOption>;
 
 export type IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-export const IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-
 /** Details about the selected options */
 export type IssueFieldValueMultiSelectOptionsList = Array<IssueFieldValueSingleSelectOption>;
-export const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ S.Array(
+const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ S.Array(
   IssueFieldValueSingleSelectOption,
 ) as any as S.Schema<IssueFieldValueMultiSelectOptionsList>;
 
@@ -922,7 +875,7 @@ export interface IssueFieldValue {
   /** Details about the selected options */
   multi_select_options?: IssueFieldValueMultiSelectOptionsList | null;
 }
-export const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
+const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issue_field_id: S.Number,
     issue_field_name: S.optional(S.String),
@@ -935,7 +888,7 @@ export const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueFieldValue" }) as any as S.Schema<IssueFieldValue>;
 
 export type IssueIssueFieldValuesList = Array<IssueFieldValue>;
-export const IssueIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const IssueIssueFieldValuesList = /*@__PURE__*/ S.Array(
   IssueFieldValue,
 ) as any as S.Schema<IssueIssueFieldValuesList>;
 
@@ -990,7 +943,7 @@ export interface Issue {
   issue_dependencies_summary?: IssueDependenciesSummary;
   issue_field_values?: IssueIssueFieldValuesList;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
+const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1045,7 +998,7 @@ export interface AddBlockedByDependencyRequest {
   /** The id of the issue that blocks the current issue */
   issue_id: number;
 }
-export const AddBlockedByDependencyRequest = /*@__PURE__*/ S.suspend(() =>
+const AddBlockedByDependencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1064,15 +1017,12 @@ export const AddBlockedByDependencyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The value to set for multi_select fields (array of option names) */
 export type AddIssueFieldValuesRequestIssueFieldValuesItemValueCase2List = Array<string>;
-export const AddIssueFieldValuesRequestIssueFieldValuesItemValueCase2List =
-  RepositoryTopicsList as any as S.Schema<AddIssueFieldValuesRequestIssueFieldValuesItemValueCase2List>;
-
 /** The value to set for the field. The type depends on the field's data type: - For text fields: provide a string value - For single_select fields: provide the option name as a string (must match an existing option) - For number fields: provide a numeric value - For multi_select fields: provide an array of option names (must match existing options) - For date fields: provide an ISO 8601 date string */
 export type AddIssueFieldValuesRequestIssueFieldValuesItemValue =
   | string
   | number
   | AddIssueFieldValuesRequestIssueFieldValuesItemValueCase2List;
-export const AddIssueFieldValuesRequestIssueFieldValuesItemValue =
+const AddIssueFieldValuesRequestIssueFieldValuesItemValue =
   S.Unknown as any as S.Schema<AddIssueFieldValuesRequestIssueFieldValuesItemValue>;
 
 export interface AddIssueFieldValuesRequestIssueFieldValuesItem {
@@ -1081,7 +1031,7 @@ export interface AddIssueFieldValuesRequestIssueFieldValuesItem {
   /** The value to set for the field. The type depends on the field's data type: - For text fields: provide a string value - For single_select fields: provide the option name as a string (must match an existing option) - For number fields: provide a numeric value - For multi_select fields: provide an array of option names (must match existing options) - For date fields: provide an ISO 8601 date string */
   value: AddIssueFieldValuesRequestIssueFieldValuesItemValue;
 }
-export const AddIssueFieldValuesRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
+const AddIssueFieldValuesRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.Number,
     value: AddIssueFieldValuesRequestIssueFieldValuesItemValue,
@@ -1093,7 +1043,7 @@ export const AddIssueFieldValuesRequestIssueFieldValuesItem = /*@__PURE__*/ S.su
 /** An array of issue field values to add to this issue. Each field value must include the field ID and the value to set. */
 export type AddIssueFieldValuesRequestIssueFieldValuesList =
   Array<AddIssueFieldValuesRequestIssueFieldValuesItem>;
-export const AddIssueFieldValuesRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const AddIssueFieldValuesRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
   AddIssueFieldValuesRequestIssueFieldValuesItem,
 ) as any as S.Schema<AddIssueFieldValuesRequestIssueFieldValuesList>;
 
@@ -1107,7 +1057,7 @@ export interface AddIssueFieldValuesRequest {
   /** An array of issue field values to add to this issue. Each field value must include the field ID and the value to set. */
   issue_field_values?: AddIssueFieldValuesRequestIssueFieldValuesList;
 }
-export const AddIssueFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddIssueFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1126,11 +1076,11 @@ export const AddIssueFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current issue field values for this issue after adding the new values */
 export type AddIssueFieldValuesResponseBodyList = Array<IssueFieldValue>;
-export const AddIssueFieldValuesResponseBodyList =
+const AddIssueFieldValuesResponseBodyList =
   IssueIssueFieldValuesList as any as S.Schema<AddIssueFieldValuesResponseBodyList>;
 
 export type AddIssueFieldValuesResponse = AddIssueFieldValuesResponseBodyList;
-export const AddIssueFieldValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const AddIssueFieldValuesResponse = /*@__PURE__*/ S.suspend(() =>
   AddIssueFieldValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AddIssueFieldValuesResponse",
@@ -1138,8 +1088,6 @@ export const AddIssueFieldValuesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The confidence level for this label choice. */
 export type AddLabelsRequestBodyCase0LabelsItemCase1Confidence = "low" | "medium" | "high";
-export const AddLabelsRequestBodyCase0LabelsItemCase1Confidence = S.String;
-
 export interface AddLabelsRequestBodyCase0LabelsItemCase1 {
   /** The name of the label to add. */
   name: string;
@@ -1150,47 +1098,16 @@ export interface AddLabelsRequestBodyCase0LabelsItemCase1 {
   /** The confidence level for this label choice. */
   confidence?: AddLabelsRequestBodyCase0LabelsItemCase1Confidence | (string & {});
 }
-export const AddLabelsRequestBodyCase0LabelsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    rationale: S.optional(S.String),
-    suggest: S.optional(S.Boolean),
-    confidence: S.optional(AddLabelsRequestBodyCase0LabelsItemCase1Confidence),
-  }),
-).annotate({
-  identifier: "AddLabelsRequestBodyCase0LabelsItemCase1",
-}) as any as S.Schema<AddLabelsRequestBodyCase0LabelsItemCase1>;
-
 export type AddLabelsRequestBodyCase0LabelsItem = string | AddLabelsRequestBodyCase0LabelsItemCase1;
-export const AddLabelsRequestBodyCase0LabelsItem =
-  S.Unknown as any as S.Schema<AddLabelsRequestBodyCase0LabelsItem>;
-
 /** The labels to add to the issue's existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)." */
 export type AddLabelsRequestBodyCase0LabelsList = Array<AddLabelsRequestBodyCase0LabelsItem>;
-export const AddLabelsRequestBodyCase0LabelsList = /*@__PURE__*/ S.Array(
-  AddLabelsRequestBodyCase0LabelsItem,
-) as any as S.Schema<AddLabelsRequestBodyCase0LabelsList>;
-
 export interface AddLabelsRequestBodyCase0 {
   /** The labels to add to the issue's existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)." */
   labels?: AddLabelsRequestBodyCase0LabelsList;
 }
-export const AddLabelsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(AddLabelsRequestBodyCase0LabelsList),
-  }),
-).annotate({
-  identifier: "AddLabelsRequestBodyCase0",
-}) as any as S.Schema<AddLabelsRequestBodyCase0>;
-
 export type AddLabelsRequestBodyCase1List = Array<string>;
-export const AddLabelsRequestBodyCase1List =
-  RepositoryTopicsList as any as S.Schema<AddLabelsRequestBodyCase1List>;
-
 /** The confidence level for this label choice. */
 export type AddLabelsRequestBodyCase2ItemConfidence = "low" | "medium" | "high";
-export const AddLabelsRequestBodyCase2ItemConfidence = S.String;
-
 export interface AddLabelsRequestBodyCase2Item {
   name: string;
   /** Optional reasoning for adding this label. */
@@ -1200,19 +1117,12 @@ export interface AddLabelsRequestBodyCase2Item {
   /** The confidence level for this label choice. */
   confidence?: AddLabelsRequestBodyCase2ItemConfidence | (string & {});
 }
-export const AddLabelsRequestBodyCase2Item =
-  AddLabelsRequestBodyCase0LabelsItemCase1 as any as S.Schema<AddLabelsRequestBodyCase2Item>;
-
 export type AddLabelsRequestBodyCase2List = Array<AddLabelsRequestBodyCase2Item>;
-export const AddLabelsRequestBodyCase2List = /*@__PURE__*/ S.Array(
-  AddLabelsRequestBodyCase2Item,
-) as any as S.Schema<AddLabelsRequestBodyCase2List>;
-
 export type AddLabelsRequestBody =
   | AddLabelsRequestBodyCase0
   | AddLabelsRequestBodyCase1List
   | AddLabelsRequestBodyCase2List;
-export const AddLabelsRequestBody = S.Unknown as any as S.Schema<AddLabelsRequestBody>;
+const AddLabelsRequestBody = S.Unknown as any as S.Schema<AddLabelsRequestBody>;
 
 export interface AddLabelsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1223,7 +1133,7 @@ export interface AddLabelsRequest {
   issue_number: number;
   body?: AddLabelsRequestBody;
 }
-export const AddLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1258,7 +1168,7 @@ export interface Label {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: NullableSimpleUser | null;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1273,12 +1183,12 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type AddLabelsResponseBodyList = Array<Label>;
-export const AddLabelsResponseBodyList = /*@__PURE__*/ S.Array(
+const AddLabelsResponseBodyList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<AddLabelsResponseBodyList>;
 
 export type AddLabelsResponse = AddLabelsResponseBodyList;
-export const AddLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   AddLabelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "AddLabelsResponse" }) as any as S.Schema<AddLabelsResponse>;
 
@@ -1292,7 +1202,7 @@ export interface AddRelatesToRequest {
   /** The id of the issue to mark as related to the current issue */
   issue_id: number;
 }
-export const AddRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1319,7 +1229,7 @@ export interface AddSubIssueRequest {
   /** Option that, when true, instructs the operation to replace the sub-issues current parent issue */
   replace_parent?: boolean;
 }
-export const AddSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1345,7 +1255,7 @@ export interface ApproveSuggestionRequest {
   /** The unique identifier of the suggestion. */
   suggestion_id: number;
 }
-export const ApproveSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1367,7 +1277,7 @@ export type IssueSuggestionAction =
   | "add_field"
   | "add_assignee"
   | "close_issue";
-export const IssueSuggestionAction = S.String;
+const IssueSuggestionAction = S.String;
 
 /** The suggestion's lifecycle state. */
 export type IssueSuggestionState =
@@ -1377,23 +1287,20 @@ export type IssueSuggestionState =
   | "dismissed"
   | "replaced"
   | "invalidated";
-export const IssueSuggestionState = S.String;
+const IssueSuggestionState = S.String;
 
 export type IssueSuggestionTargetValueCase3List = Array<string>;
-export const IssueSuggestionTargetValueCase3List =
-  RepositoryTopicsList as any as S.Schema<IssueSuggestionTargetValueCase3List>;
-
 /** The proposed value, when applicable. An array for multi-select field suggestions. */
 export type IssueSuggestionTargetValue =
   | string
   | number
   | boolean
   | IssueSuggestionTargetValueCase3List;
-export const IssueSuggestionTargetValue = S.Unknown as any as S.Schema<IssueSuggestionTargetValue>;
+const IssueSuggestionTargetValue = S.Unknown as any as S.Schema<IssueSuggestionTargetValue>;
 
 /** The actor's confidence level in the suggestion. */
 export type IssueSuggestionConfidence = "LOW" | "MEDIUM" | "HIGH";
-export const IssueSuggestionConfidence = S.String;
+const IssueSuggestionConfidence = S.String;
 
 /** An agent-proposed change to an issue that a maintainer can approve or dismiss. */
 export interface IssueSuggestion {
@@ -1424,7 +1331,7 @@ export interface IssueSuggestion {
   /** The time the suggestion was last updated. */
   updated_at: string;
 }
-export const IssueSuggestion = /*@__PURE__*/ S.suspend(() =>
+const IssueSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     issue_id: S.Number,
@@ -1449,7 +1356,7 @@ export interface CheckUserCanBeAssignedRequest {
   repo: string;
   assignee: string;
 }
-export const CheckUserCanBeAssignedRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUserCanBeAssignedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1460,7 +1367,7 @@ export const CheckUserCanBeAssignedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckUserCanBeAssignedRequest>;
 
 export interface CheckUserCanBeAssignedResponse {}
-export const CheckUserCanBeAssignedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CheckUserCanBeAssignedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CheckUserCanBeAssignedResponse",
 }) as any as S.Schema<CheckUserCanBeAssignedResponse>;
 
@@ -1473,7 +1380,7 @@ export interface CheckUserCanBeAssignedToIssueRequest {
   issue_number: number;
   assignee: string;
 }
-export const CheckUserCanBeAssignedToIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUserCanBeAssignedToIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1491,18 +1398,16 @@ export const CheckUserCanBeAssignedToIssueRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CheckUserCanBeAssignedToIssueRequest>;
 
 export interface CheckUserCanBeAssignedToIssueResponse {}
-export const CheckUserCanBeAssignedToIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CheckUserCanBeAssignedToIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CheckUserCanBeAssignedToIssueResponse",
 }) as any as S.Schema<CheckUserCanBeAssignedToIssueResponse>;
 
 /** The title of the issue. */
 export type CreateRequestTitle = string | number;
-export const CreateRequestTitle = S.Unknown as any as S.Schema<CreateRequestTitle>;
+const CreateRequestTitle = S.Unknown as any as S.Schema<CreateRequestTitle>;
 
 export type CreateRequestMilestone = string | number;
-export const CreateRequestMilestone = S.Unknown as any as S.Schema<CreateRequestMilestone>;
+const CreateRequestMilestone = S.Unknown as any as S.Schema<CreateRequestMilestone>;
 
 export interface CreateRequestLabelsItemCase1 {
   id?: number;
@@ -1510,41 +1415,27 @@ export interface CreateRequestLabelsItemCase1 {
   description?: string | null;
   color?: string | null;
 }
-export const CreateRequestLabelsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    color: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateRequestLabelsItemCase1",
-}) as any as S.Schema<CreateRequestLabelsItemCase1>;
-
 export type CreateRequestLabelsItem = string | CreateRequestLabelsItemCase1;
-export const CreateRequestLabelsItem = S.Unknown as any as S.Schema<CreateRequestLabelsItem>;
+const CreateRequestLabelsItem = S.Unknown as any as S.Schema<CreateRequestLabelsItem>;
 
 /** Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._ */
 export type CreateRequestLabelsList = Array<CreateRequestLabelsItem>;
-export const CreateRequestLabelsList = /*@__PURE__*/ S.Array(
+const CreateRequestLabelsList = /*@__PURE__*/ S.Array(
   CreateRequestLabelsItem,
 ) as any as S.Schema<CreateRequestLabelsList>;
 
 /** Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._ */
 export type CreateRequestAssigneesList = Array<string>;
-export const CreateRequestAssigneesList =
+const CreateRequestAssigneesList =
   RepositoryTopicsList as any as S.Schema<CreateRequestAssigneesList>;
 
 export type CreateRequestIssueFieldValuesItemValueCase2List = Array<string>;
-export const CreateRequestIssueFieldValuesItemValueCase2List =
-  RepositoryTopicsList as any as S.Schema<CreateRequestIssueFieldValuesItemValueCase2List>;
-
 /** The value to set for the field. For multi-select fields, provide an array of option names. */
 export type CreateRequestIssueFieldValuesItemValue =
   | string
   | number
   | CreateRequestIssueFieldValuesItemValueCase2List;
-export const CreateRequestIssueFieldValuesItemValue =
+const CreateRequestIssueFieldValuesItemValue =
   S.Unknown as any as S.Schema<CreateRequestIssueFieldValuesItemValue>;
 
 export interface CreateRequestIssueFieldValuesItem {
@@ -1553,7 +1444,7 @@ export interface CreateRequestIssueFieldValuesItem {
   /** The value to set for the field. For multi-select fields, provide an array of option names. */
   value: CreateRequestIssueFieldValuesItemValue;
 }
-export const CreateRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.Number,
     value: CreateRequestIssueFieldValuesItemValue,
@@ -1564,7 +1455,7 @@ export const CreateRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise. */
 export type CreateRequestIssueFieldValuesList = Array<CreateRequestIssueFieldValuesItem>;
-export const CreateRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const CreateRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
   CreateRequestIssueFieldValuesItem,
 ) as any as S.Schema<CreateRequestIssueFieldValuesList>;
 
@@ -1591,7 +1482,7 @@ export interface CreateRequest {
   /** The id of the parent issue to add this issue to as a sub-issue. _NOTE: Only users with triage access to both the parent issue's repository and this repository can set the parent issue._ */
   parent_issue_id?: number;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1617,7 +1508,7 @@ export interface CreateCommentRequest {
   /** The contents of the comment. */
   body: string;
 }
-export const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1654,7 +1545,7 @@ export interface IssueComment {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-export const IssueComment = NullableIssueComment as any as S.Schema<IssueComment>;
+const IssueComment = NullableIssueComment as any as S.Schema<IssueComment>;
 
 export interface CreateLabelRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1668,7 +1559,7 @@ export interface CreateLabelRequest {
   /** A short description of the label. Must be 100 characters or fewer. */
   description?: string;
 }
-export const CreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1680,7 +1571,7 @@ export const CreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the milestone. Either `open` or `closed`. */
 export type CreateMilestoneRequestState = "open" | "closed";
-export const CreateMilestoneRequestState = S.String;
+const CreateMilestoneRequestState = S.String;
 
 export interface CreateMilestoneRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1696,7 +1587,7 @@ export interface CreateMilestoneRequest {
   /** The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   due_on?: string;
 }
-export const CreateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1709,8 +1600,6 @@ export const CreateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the milestone. */
 export type MilestoneState = "open" | "closed";
-export const MilestoneState = S.String;
-
 /** A collection of related issues and pull requests. */
 export interface Milestone {
   url: string;
@@ -1733,7 +1622,7 @@ export interface Milestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const Milestone = NullableMilestone as any as S.Schema<Milestone>;
+const Milestone = NullableMilestone as any as S.Schema<Milestone>;
 
 export interface DeleteCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1743,7 +1632,7 @@ export interface DeleteCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1758,7 +1647,7 @@ export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentRequest" }) as any as S.Schema<DeleteCommentRequest>;
 
 export interface DeleteCommentResponse {}
-export const DeleteCommentResponse =
+const DeleteCommentResponse =
   CheckUserCanBeAssignedResponse as any as S.Schema<DeleteCommentResponse>;
 
 export interface DeleteIssueFieldValueRequest {
@@ -1771,7 +1660,7 @@ export interface DeleteIssueFieldValueRequest {
   /** The unique identifier of the issue field. */
   issue_field_id: number;
 }
-export const DeleteIssueFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1789,7 +1678,7 @@ export const DeleteIssueFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIssueFieldValueRequest>;
 
 export interface DeleteIssueFieldValueResponse {}
-export const DeleteIssueFieldValueResponse =
+const DeleteIssueFieldValueResponse =
   CheckUserCanBeAssignedResponse as any as S.Schema<DeleteIssueFieldValueResponse>;
 
 export interface DeleteLabelRequest {
@@ -1799,7 +1688,7 @@ export interface DeleteLabelRequest {
   repo: string;
   name: string;
 }
-export const DeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1808,8 +1697,7 @@ export const DeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLabelRequest" }) as any as S.Schema<DeleteLabelRequest>;
 
 export interface DeleteLabelResponse {}
-export const DeleteLabelResponse =
-  CheckUserCanBeAssignedResponse as any as S.Schema<DeleteLabelResponse>;
+const DeleteLabelResponse = CheckUserCanBeAssignedResponse as any as S.Schema<DeleteLabelResponse>;
 
 export interface DeleteMilestoneRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1819,7 +1707,7 @@ export interface DeleteMilestoneRequest {
   /** The number that identifies the milestone. */
   milestone_number: number;
 }
-export const DeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1834,7 +1722,7 @@ export const DeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMilestoneRequest" }) as any as S.Schema<DeleteMilestoneRequest>;
 
 export interface DeleteMilestoneResponse {}
-export const DeleteMilestoneResponse =
+const DeleteMilestoneResponse =
   CheckUserCanBeAssignedResponse as any as S.Schema<DeleteMilestoneResponse>;
 
 export interface DismissSuggestionRequest {
@@ -1847,7 +1735,7 @@ export interface DismissSuggestionRequest {
   /** The unique identifier of the suggestion. */
   suggestion_id: number;
 }
-export const DismissSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1870,7 +1758,7 @@ export interface GetRequest {
   /** The number that identifies the issue. */
   issue_number: number;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1886,7 +1774,7 @@ export interface GetCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-export const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1903,7 +1791,7 @@ export interface GetEventRequest {
   repo: string;
   event_id: number;
 }
-export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1915,29 +1803,25 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason for the current state */
 export type NullableIssueStateReason = "completed" | "reopened" | "not_planned" | "duplicate";
-export const NullableIssueStateReason = S.String;
+const NullableIssueStateReason = S.String;
 
 export type NullableIssueLabelsItemCase1 = IssueLabelsItemCase1;
-export const NullableIssueLabelsItemCase1 = IssueLabelsItemCase1;
-
 export type NullableIssueLabelsItem = string | IssueLabelsItemCase1;
-export const NullableIssueLabelsItem = S.Unknown as any as S.Schema<NullableIssueLabelsItem>;
+const NullableIssueLabelsItem = S.Unknown as any as S.Schema<NullableIssueLabelsItem>;
 
 /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
 export type NullableIssueLabelsList = Array<NullableIssueLabelsItem>;
-export const NullableIssueLabelsList = /*@__PURE__*/ S.Array(
+const NullableIssueLabelsList = /*@__PURE__*/ S.Array(
   NullableIssueLabelsItem,
 ) as any as S.Schema<NullableIssueLabelsList>;
 
 export type NullableIssueAssigneesList = Array<NullableSimpleUser>;
-export const NullableIssueAssigneesList =
+const NullableIssueAssigneesList =
   IssueAssigneesList as any as S.Schema<NullableIssueAssigneesList>;
 
 export type NullableIssuePullRequest = IssuePullRequest;
-export const NullableIssuePullRequest = IssuePullRequest;
-
 export type NullableIssueIssueFieldValuesList = Array<IssueFieldValue>;
-export const NullableIssueIssueFieldValuesList =
+const NullableIssueIssueFieldValuesList =
   IssueIssueFieldValuesList as any as S.Schema<NullableIssueIssueFieldValuesList>;
 
 /** Issues are a great way to keep track of tasks, enhancements, and bugs for your projects. */
@@ -1991,7 +1875,7 @@ export interface NullableIssue {
   issue_dependencies_summary?: IssueDependenciesSummary;
   issue_field_values?: NullableIssueIssueFieldValuesList;
 }
-export const NullableIssue = /*@__PURE__*/ S.suspend(() =>
+const NullableIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2041,7 +1925,7 @@ export interface IssueEventLabel {
   name: string | null;
   color: string | null;
 }
-export const IssueEventLabel = /*@__PURE__*/ S.suspend(() =>
+const IssueEventLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.NullOr(S.String),
     color: S.NullOr(S.String),
@@ -2055,7 +1939,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -2067,15 +1951,15 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -2107,7 +1991,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2153,7 +2037,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2182,7 +2066,7 @@ export interface IssueEventDismissedReview {
   dismissal_message: string | null;
   dismissal_commit_id?: string | null;
 }
-export const IssueEventDismissedReview = /*@__PURE__*/ S.suspend(() =>
+const IssueEventDismissedReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.String,
     review_id: S.Number,
@@ -2197,7 +2081,7 @@ export const IssueEventDismissedReview = /*@__PURE__*/ S.suspend(() =>
 export interface IssueEventMilestone {
   title: string;
 }
-export const IssueEventMilestone = /*@__PURE__*/ S.suspend(() =>
+const IssueEventMilestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
   }),
@@ -2212,7 +2096,7 @@ export interface IssueEventProjectCard {
   column_name: string;
   previous_column_name?: string;
 }
-export const IssueEventProjectCard = /*@__PURE__*/ S.suspend(() =>
+const IssueEventProjectCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     id: S.Number,
@@ -2228,7 +2112,7 @@ export interface IssueEventRename {
   from: string;
   to: string;
 }
-export const IssueEventRename = /*@__PURE__*/ S.suspend(() =>
+const IssueEventRename = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.String,
     to: S.String,
@@ -2245,7 +2129,7 @@ export type IssueTypeWebhookColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeWebhookColor = S.String;
+const IssueTypeWebhookColor = S.String;
 
 /** The type of issue. */
 export interface IssueTypeWebhook {
@@ -2256,7 +2140,7 @@ export interface IssueTypeWebhook {
   /** The color of the issue type. */
   color?: IssueTypeWebhookColor | null;
 }
-export const IssueTypeWebhook = /*@__PURE__*/ S.suspend(() =>
+const IssueTypeWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -2358,7 +2242,7 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
+const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2420,7 +2304,7 @@ export interface NullableIssueReferenceIssueType {
   /** The color of the issue type. */
   color?: string | null;
 }
-export const NullableIssueReferenceIssueType = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueReferenceIssueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2445,7 +2329,7 @@ export interface NullableIssueReference {
   /** The type of the referenced issue. */
   issue_type: NullableIssueReferenceIssueType | null;
 }
-export const NullableIssueReference = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     title: S.String,
@@ -2458,7 +2342,7 @@ export const NullableIssueReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The confidence level the agent had when performing this action. */
 export type NullableIssueEventIntentConfidence = "LOW" | "MEDIUM" | "HIGH";
-export const NullableIssueEventIntentConfidence = S.String;
+const NullableIssueEventIntentConfidence = S.String;
 
 /** The intent behind an agent's action on an issue, including the rationale and confidence. Present (and `null` when the event carried no agent intent) on supported event types while the issue suggestions feature is enabled for the repository; the property is omitted entirely when the feature is disabled or the event type does not support intent. */
 export interface NullableIssueEventIntent {
@@ -2467,7 +2351,7 @@ export interface NullableIssueEventIntent {
   /** The confidence level the agent had when performing this action. */
   confidence?: NullableIssueEventIntentConfidence | null;
 }
-export const NullableIssueEventIntent = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueEventIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rationale: S.optional(S.NullOr(S.String)),
     confidence: S.optional(S.NullOr(NullableIssueEventIntentConfidence)),
@@ -2506,7 +2390,7 @@ export interface IssueEvent {
   lock_reason?: string | null;
   performed_via_github_app?: NullableIntegration | null;
 }
-export const IssueEvent = /*@__PURE__*/ S.suspend(() =>
+const IssueEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2547,7 +2431,7 @@ export interface GetLabelRequest {
   repo: string;
   name: string;
 }
-export const GetLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2563,7 +2447,7 @@ export interface GetMilestoneRequest {
   /** The number that identifies the milestone. */
   milestone_number: number;
 }
-export const GetMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2585,7 +2469,7 @@ export interface GetParentRequest {
   /** The number that identifies the issue. */
   issue_number: number;
 }
-export const GetParentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2602,16 +2486,16 @@ export type ListRequestFilter =
   | "subscribed"
   | "repos"
   | "all";
-export const ListRequestFilter = S.String;
+const ListRequestFilter = S.String;
 
 export type ListRequestState = "open" | "closed" | "all";
-export const ListRequestState = S.String;
+const ListRequestState = S.String;
 
 export type ListRequestSort = "created" | "updated" | "comments";
-export const ListRequestSort = S.String;
+const ListRequestSort = S.String;
 
 export type ListRequestDirection = "asc" | "desc";
-export const ListRequestDirection = S.String;
+const ListRequestDirection = S.String;
 
 export interface ListRequest {
   /** Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation. */
@@ -2635,7 +2519,7 @@ export interface ListRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(ListRequestFilter.pipe(T.Query())),
     state: S.optional(ListRequestState.pipe(T.Query())),
@@ -2653,12 +2537,10 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export type ListResponseBodyList = Array<Issue>;
-export const ListResponseBodyList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<ListResponseBodyList>;
+const ListResponseBodyList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<ListResponseBodyList>;
 
 export type ListResponse = ListResponseBodyList;
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResponse = /*@__PURE__*/ S.suspend(() =>
   ListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
@@ -2672,7 +2554,7 @@ export interface ListAssigneesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2682,11 +2564,11 @@ export const ListAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAssigneesRequest" }) as any as S.Schema<ListAssigneesRequest>;
 
 export type ListAssigneesResponseBodyList = Array<NullableSimpleUser>;
-export const ListAssigneesResponseBodyList =
+const ListAssigneesResponseBodyList =
   IssueAssigneesList as any as S.Schema<ListAssigneesResponseBodyList>;
 
 export type ListAssigneesResponse = ListAssigneesResponseBodyList;
-export const ListAssigneesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssigneesResponse = /*@__PURE__*/ S.suspend(() =>
   ListAssigneesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAssigneesResponse" }) as any as S.Schema<ListAssigneesResponse>;
 
@@ -2704,7 +2586,7 @@ export interface ListCommentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2722,20 +2604,20 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommentsRequest" }) as any as S.Schema<ListCommentsRequest>;
 
 export type ListCommentsResponseBodyList = Array<IssueComment>;
-export const ListCommentsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCommentsResponseBodyList = /*@__PURE__*/ S.Array(
   IssueComment,
 ) as any as S.Schema<ListCommentsResponseBodyList>;
 
 export type ListCommentsResponse = ListCommentsResponseBodyList;
-export const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   ListCommentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListCommentsResponse" }) as any as S.Schema<ListCommentsResponse>;
 
 export type ListCommentsForRepoRequestSort = "created" | "updated";
-export const ListCommentsForRepoRequestSort = S.String;
+const ListCommentsForRepoRequestSort = S.String;
 
 export type ListCommentsForRepoRequestDirection = "asc" | "desc";
-export const ListCommentsForRepoRequestDirection = S.String;
+const ListCommentsForRepoRequestDirection = S.String;
 
 export interface ListCommentsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2753,7 +2635,7 @@ export interface ListCommentsForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2768,11 +2650,11 @@ export const ListCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommentsForRepoRequest>;
 
 export type ListCommentsForRepoResponseBodyList = Array<IssueComment>;
-export const ListCommentsForRepoResponseBodyList =
+const ListCommentsForRepoResponseBodyList =
   ListCommentsResponseBodyList as any as S.Schema<ListCommentsForRepoResponseBodyList>;
 
 export type ListCommentsForRepoResponse = ListCommentsForRepoResponseBodyList;
-export const ListCommentsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListCommentsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCommentsForRepoResponse",
@@ -2790,7 +2672,7 @@ export interface ListDependenciesBlockedByRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDependenciesBlockedByRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDependenciesBlockedByRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2809,11 +2691,11 @@ export const ListDependenciesBlockedByRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDependenciesBlockedByRequest>;
 
 export type ListDependenciesBlockedByResponseBodyList = Array<Issue>;
-export const ListDependenciesBlockedByResponseBodyList =
+const ListDependenciesBlockedByResponseBodyList =
   ListResponseBodyList as any as S.Schema<ListDependenciesBlockedByResponseBodyList>;
 
 export type ListDependenciesBlockedByResponse = ListDependenciesBlockedByResponseBodyList;
-export const ListDependenciesBlockedByResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDependenciesBlockedByResponse = /*@__PURE__*/ S.suspend(() =>
   ListDependenciesBlockedByResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDependenciesBlockedByResponse",
@@ -2831,7 +2713,7 @@ export interface ListDependenciesBlockingRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDependenciesBlockingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDependenciesBlockingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2850,11 +2732,8 @@ export const ListDependenciesBlockingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDependenciesBlockingRequest>;
 
 export type ListDependenciesBlockingResponseBodyList = Array<Issue>;
-export const ListDependenciesBlockingResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListDependenciesBlockingResponseBodyList>;
-
 export type ListDependenciesBlockingResponse = ListDependenciesBlockingResponseBodyList;
-export const ListDependenciesBlockingResponse =
+const ListDependenciesBlockingResponse =
   ListDependenciesBlockedByResponse as any as S.Schema<ListDependenciesBlockingResponse>;
 
 export interface ListEventsRequest {
@@ -2869,7 +2748,7 @@ export interface ListEventsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2885,13 +2764,6 @@ export interface LabeledIssueEventLabel {
   name: string;
   color: string;
 }
-export const LabeledIssueEventLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    color: S.String,
-  }),
-).annotate({ identifier: "LabeledIssueEventLabel" }) as any as S.Schema<LabeledIssueEventLabel>;
-
 /** Labeled Issue Event */
 export interface LabeledIssueEvent {
   id: number;
@@ -2906,40 +2778,14 @@ export interface LabeledIssueEvent {
   label: LabeledIssueEventLabel;
   intent?: NullableIssueEventIntent | null;
 }
-export const LabeledIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    label: LabeledIssueEventLabel,
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({ identifier: "LabeledIssueEvent" }) as any as S.Schema<LabeledIssueEvent>;
-
 export type UnlabeledIssueEventLabel = LabeledIssueEventLabel;
-export const UnlabeledIssueEventLabel = LabeledIssueEventLabel;
-
 /** Unlabeled Issue Event */
 export type UnlabeledIssueEvent = LabeledIssueEvent;
-export const UnlabeledIssueEvent = LabeledIssueEvent;
-
 export type IntegrationOwner = NullableSimpleUser | Enterprise;
-export const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export type IntegrationPermissions = NullableIntegrationPermissions;
-export const IntegrationPermissions = NullableIntegrationPermissions;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
-export const IntegrationEventsList = RepositoryTopicsList as any as S.Schema<IntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface Integration {
   /** Unique identifier of the GitHub app */
@@ -2963,25 +2809,6 @@ export interface Integration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const Integration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    slug: S.optional(S.String),
-    node_id: S.String,
-    client_id: S.optional(S.String),
-    owner: IntegrationOwner,
-    name: S.String,
-    description: S.NullOr(S.String),
-    external_url: S.String,
-    html_url: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    permissions: NullableIntegrationPermissions,
-    events: IntegrationEventsList,
-    installations_count: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
-
 /** Assigned Issue Event */
 export interface AssignedIssueEvent {
   id: number;
@@ -2997,23 +2824,6 @@ export interface AssignedIssueEvent {
   assigner: NullableSimpleUser;
   intent?: NullableIssueEventIntent | null;
 }
-export const AssignedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(Integration),
-    assignee: NullableSimpleUser,
-    assigner: NullableSimpleUser,
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({ identifier: "AssignedIssueEvent" }) as any as S.Schema<AssignedIssueEvent>;
-
 /** Unassigned Issue Event */
 export interface UnassignedIssueEvent {
   id: number;
@@ -3028,25 +2838,7 @@ export interface UnassignedIssueEvent {
   assignee: NullableSimpleUser;
   assigner: NullableSimpleUser;
 }
-export const UnassignedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    assignee: NullableSimpleUser,
-    assigner: NullableSimpleUser,
-  }),
-).annotate({ identifier: "UnassignedIssueEvent" }) as any as S.Schema<UnassignedIssueEvent>;
-
 export type MilestonedIssueEventMilestone = IssueEventMilestone;
-export const MilestonedIssueEventMilestone = IssueEventMilestone;
-
 /** Milestoned Issue Event */
 export interface MilestonedIssueEvent {
   id: number;
@@ -3060,31 +2852,10 @@ export interface MilestonedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   milestone: IssueEventMilestone;
 }
-export const MilestonedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    milestone: IssueEventMilestone,
-  }),
-).annotate({ identifier: "MilestonedIssueEvent" }) as any as S.Schema<MilestonedIssueEvent>;
-
 export type DemilestonedIssueEventMilestone = IssueEventMilestone;
-export const DemilestonedIssueEventMilestone = IssueEventMilestone;
-
 /** Demilestoned Issue Event */
 export type DemilestonedIssueEvent = MilestonedIssueEvent;
-export const DemilestonedIssueEvent = MilestonedIssueEvent;
-
 export type RenamedIssueEventRename = IssueEventRename;
-export const RenamedIssueEventRename = IssueEventRename;
-
 /** Renamed Issue Event */
 export interface RenamedIssueEvent {
   id: number;
@@ -3098,21 +2869,6 @@ export interface RenamedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   rename: IssueEventRename;
 }
-export const RenamedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    rename: IssueEventRename,
-  }),
-).annotate({ identifier: "RenamedIssueEvent" }) as any as S.Schema<RenamedIssueEvent>;
-
 /** Review Requested Issue Event */
 export interface ReviewRequestedIssueEvent {
   id: number;
@@ -3128,46 +2884,14 @@ export interface ReviewRequestedIssueEvent {
   requested_team?: Team;
   requested_reviewer?: NullableSimpleUser;
 }
-export const ReviewRequestedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    review_requester: NullableSimpleUser,
-    requested_team: S.optional(Team),
-    requested_reviewer: S.optional(NullableSimpleUser),
-  }),
-).annotate({
-  identifier: "ReviewRequestedIssueEvent",
-}) as any as S.Schema<ReviewRequestedIssueEvent>;
-
 /** Review Request Removed Issue Event */
 export type ReviewRequestRemovedIssueEvent = ReviewRequestedIssueEvent;
-export const ReviewRequestRemovedIssueEvent = ReviewRequestedIssueEvent;
-
 export interface ReviewDismissedIssueEventDismissedReview {
   state: string;
   review_id: number;
   dismissal_message: string | null;
   dismissal_commit_id?: string;
 }
-export const ReviewDismissedIssueEventDismissedReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.String,
-    review_id: S.Number,
-    dismissal_message: S.NullOr(S.String),
-    dismissal_commit_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReviewDismissedIssueEventDismissedReview",
-}) as any as S.Schema<ReviewDismissedIssueEventDismissedReview>;
-
 /** Review Dismissed Issue Event */
 export interface ReviewDismissedIssueEvent {
   id: number;
@@ -3181,23 +2905,6 @@ export interface ReviewDismissedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   dismissed_review: ReviewDismissedIssueEventDismissedReview;
 }
-export const ReviewDismissedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    dismissed_review: ReviewDismissedIssueEventDismissedReview,
-  }),
-).annotate({
-  identifier: "ReviewDismissedIssueEvent",
-}) as any as S.Schema<ReviewDismissedIssueEvent>;
-
 /** Locked Issue Event */
 export interface LockedIssueEvent {
   id: number;
@@ -3211,21 +2918,6 @@ export interface LockedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   lock_reason: string | null;
 }
-export const LockedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    lock_reason: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "LockedIssueEvent" }) as any as S.Schema<LockedIssueEvent>;
-
 export interface AddedToProjectIssueEventProjectCard {
   id: number;
   url: string;
@@ -3234,19 +2926,6 @@ export interface AddedToProjectIssueEventProjectCard {
   column_name: string;
   previous_column_name?: string;
 }
-export const AddedToProjectIssueEventProjectCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    url: S.String,
-    project_id: S.Number,
-    project_url: S.String,
-    column_name: S.String,
-    previous_column_name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddedToProjectIssueEventProjectCard",
-}) as any as S.Schema<AddedToProjectIssueEventProjectCard>;
-
 /** Added to Project Issue Event */
 export interface AddedToProjectIssueEvent {
   id: number;
@@ -3260,38 +2939,13 @@ export interface AddedToProjectIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   project_card?: AddedToProjectIssueEventProjectCard;
 }
-export const AddedToProjectIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    project_card: S.optional(AddedToProjectIssueEventProjectCard),
-  }),
-).annotate({ identifier: "AddedToProjectIssueEvent" }) as any as S.Schema<AddedToProjectIssueEvent>;
-
 export type MovedColumnInProjectIssueEventProjectCard = AddedToProjectIssueEventProjectCard;
-export const MovedColumnInProjectIssueEventProjectCard = AddedToProjectIssueEventProjectCard;
-
 /** Moved Column in Project Issue Event */
 export type MovedColumnInProjectIssueEvent = AddedToProjectIssueEvent;
-export const MovedColumnInProjectIssueEvent = AddedToProjectIssueEvent;
-
 export type RemovedFromProjectIssueEventProjectCard = AddedToProjectIssueEventProjectCard;
-export const RemovedFromProjectIssueEventProjectCard = AddedToProjectIssueEventProjectCard;
-
 /** Removed from Project Issue Event */
 export type RemovedFromProjectIssueEvent = AddedToProjectIssueEvent;
-export const RemovedFromProjectIssueEvent = AddedToProjectIssueEvent;
-
 export type ConvertedNoteToIssueIssueEventProjectCard = AddedToProjectIssueEventProjectCard;
-export const ConvertedNoteToIssueIssueEventProjectCard = AddedToProjectIssueEventProjectCard;
-
 /** Converted Note to Issue Issue Event */
 export interface ConvertedNoteToIssueIssueEvent {
   id: number;
@@ -3305,23 +2959,6 @@ export interface ConvertedNoteToIssueIssueEvent {
   performed_via_github_app: Integration | null;
   project_card?: AddedToProjectIssueEventProjectCard;
 }
-export const ConvertedNoteToIssueIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(Integration),
-    project_card: S.optional(AddedToProjectIssueEventProjectCard),
-  }),
-).annotate({
-  identifier: "ConvertedNoteToIssueIssueEvent",
-}) as any as S.Schema<ConvertedNoteToIssueIssueEvent>;
-
 /** Issue Type Added Issue Event */
 export interface IssueTypeAddedIssueEvent {
   id: number;
@@ -3336,22 +2973,6 @@ export interface IssueTypeAddedIssueEvent {
   issue_type: IssueTypeWebhook | null;
   intent?: NullableIssueEventIntent | null;
 }
-export const IssueTypeAddedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    issue_type: S.NullOr(IssueTypeWebhook),
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({ identifier: "IssueTypeAddedIssueEvent" }) as any as S.Schema<IssueTypeAddedIssueEvent>;
-
 /** Issue Type Removed Issue Event */
 export interface IssueTypeRemovedIssueEvent {
   id: number;
@@ -3366,24 +2987,6 @@ export interface IssueTypeRemovedIssueEvent {
   prev_issue_type: IssueTypeWebhook | null;
   intent?: NullableIssueEventIntent | null;
 }
-export const IssueTypeRemovedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    prev_issue_type: S.NullOr(IssueTypeWebhook),
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({
-  identifier: "IssueTypeRemovedIssueEvent",
-}) as any as S.Schema<IssueTypeRemovedIssueEvent>;
-
 /** Issue Type Changed Issue Event */
 export interface IssueTypeChangedIssueEvent {
   id: number;
@@ -3399,25 +3002,6 @@ export interface IssueTypeChangedIssueEvent {
   prev_issue_type: IssueTypeWebhook | null;
   intent?: NullableIssueEventIntent | null;
 }
-export const IssueTypeChangedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    issue_type: S.NullOr(IssueTypeWebhook),
-    prev_issue_type: S.NullOr(IssueTypeWebhook),
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({
-  identifier: "IssueTypeChangedIssueEvent",
-}) as any as S.Schema<IssueTypeChangedIssueEvent>;
-
 /** Sub-issue Added Issue Event */
 export interface SubIssueAddedIssueEvent {
   id: number;
@@ -3431,25 +3015,8 @@ export interface SubIssueAddedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   sub_issue: NullableIssueReference | null;
 }
-export const SubIssueAddedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    sub_issue: S.NullOr(NullableIssueReference),
-  }),
-).annotate({ identifier: "SubIssueAddedIssueEvent" }) as any as S.Schema<SubIssueAddedIssueEvent>;
-
 /** Sub-issue Removed Issue Event */
 export type SubIssueRemovedIssueEvent = SubIssueAddedIssueEvent;
-export const SubIssueRemovedIssueEvent = SubIssueAddedIssueEvent;
-
 /** Parent-issue Added Issue Event */
 export interface ParentIssueAddedIssueEvent {
   id: number;
@@ -3463,27 +3030,8 @@ export interface ParentIssueAddedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   parent_issue: NullableIssueReference | null;
 }
-export const ParentIssueAddedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    parent_issue: S.NullOr(NullableIssueReference),
-  }),
-).annotate({
-  identifier: "ParentIssueAddedIssueEvent",
-}) as any as S.Schema<ParentIssueAddedIssueEvent>;
-
 /** Parent-issue Removed Issue Event */
 export type ParentIssueRemovedIssueEvent = ParentIssueAddedIssueEvent;
-export const ParentIssueRemovedIssueEvent = ParentIssueAddedIssueEvent;
-
 /** Blocked-by Added Issue Event */
 export interface BlockedByAddedIssueEvent {
   id: number;
@@ -3497,25 +3045,8 @@ export interface BlockedByAddedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   blocked_by: NullableIssueReference | null;
 }
-export const BlockedByAddedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    blocked_by: S.NullOr(NullableIssueReference),
-  }),
-).annotate({ identifier: "BlockedByAddedIssueEvent" }) as any as S.Schema<BlockedByAddedIssueEvent>;
-
 /** Blocked-by Removed Issue Event */
 export type BlockedByRemovedIssueEvent = BlockedByAddedIssueEvent;
-export const BlockedByRemovedIssueEvent = BlockedByAddedIssueEvent;
-
 /** Blocking Added Issue Event */
 export interface BlockingAddedIssueEvent {
   id: number;
@@ -3529,25 +3060,8 @@ export interface BlockingAddedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   blocking: NullableIssueReference | null;
 }
-export const BlockingAddedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    blocking: S.NullOr(NullableIssueReference),
-  }),
-).annotate({ identifier: "BlockingAddedIssueEvent" }) as any as S.Schema<BlockingAddedIssueEvent>;
-
 /** Blocking Removed Issue Event */
 export type BlockingRemovedIssueEvent = BlockingAddedIssueEvent;
-export const BlockingRemovedIssueEvent = BlockingAddedIssueEvent;
-
 /** Issue Event for Issue */
 export type IssueEventForIssue =
   | LabeledIssueEvent
@@ -3576,15 +3090,15 @@ export type IssueEventForIssue =
   | BlockedByAddedIssueEvent
   | BlockingAddedIssueEvent
   | BlockingAddedIssueEvent;
-export const IssueEventForIssue = S.Unknown as any as S.Schema<IssueEventForIssue>;
+const IssueEventForIssue = S.Unknown as any as S.Schema<IssueEventForIssue>;
 
 export type ListEventsResponseBodyList = Array<IssueEventForIssue>;
-export const ListEventsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEventsResponseBodyList = /*@__PURE__*/ S.Array(
   IssueEventForIssue,
 ) as any as S.Schema<ListEventsResponseBodyList>;
 
 export type ListEventsResponse = ListEventsResponseBodyList;
-export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   ListEventsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListEventsResponse" }) as any as S.Schema<ListEventsResponse>;
 
@@ -3598,7 +3112,7 @@ export interface ListEventsForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListEventsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3608,12 +3122,12 @@ export const ListEventsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEventsForRepoRequest" }) as any as S.Schema<ListEventsForRepoRequest>;
 
 export type ListEventsForRepoResponseBodyList = Array<IssueEvent>;
-export const ListEventsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEventsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
   IssueEvent,
 ) as any as S.Schema<ListEventsForRepoResponseBodyList>;
 
 export type ListEventsForRepoResponse = ListEventsForRepoResponseBodyList;
-export const ListEventsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListEventsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEventsForRepoResponse",
@@ -3633,7 +3147,7 @@ export interface ListEventsForTimelineRequest {
   /** A comma-separated list of timeline event names to exclude from the response. */
   exclude?: string;
 }
-export const ListEventsForTimelineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsForTimelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3676,42 +3190,10 @@ export interface TimelineCommentEvent {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-export const TimelineCommentEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.String,
-    actor: NullableSimpleUser,
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    body: S.optional(S.String),
-    body_text: S.optional(S.String),
-    body_html: S.optional(S.String),
-    html_url: S.String,
-    user: NullableSimpleUser,
-    created_at: S.String,
-    updated_at: S.String,
-    issue_url: S.String,
-    author_association: AuthorAssociation,
-    performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-    reactions: S.optional(ReactionRollup),
-    pin: S.optional(S.NullOr(NullablePinnedIssueComment)),
-    minimized: S.optional(S.NullOr(NullableIssueCommentMinimized)),
-  }),
-).annotate({ identifier: "TimelineCommentEvent" }) as any as S.Schema<TimelineCommentEvent>;
-
 export interface TimelineCrossReferencedEventSource {
   type?: string;
   issue?: Issue;
 }
-export const TimelineCrossReferencedEventSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    issue: S.optional(Issue),
-  }),
-).annotate({
-  identifier: "TimelineCrossReferencedEventSource",
-}) as any as S.Schema<TimelineCrossReferencedEventSource>;
-
 /** Timeline Cross Referenced Event */
 export interface TimelineCrossReferencedEvent {
   event: string;
@@ -3720,18 +3202,6 @@ export interface TimelineCrossReferencedEvent {
   updated_at: string;
   source: TimelineCrossReferencedEventSource;
 }
-export const TimelineCrossReferencedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.String,
-    actor: S.optional(NullableSimpleUser),
-    created_at: S.String,
-    updated_at: S.String,
-    source: TimelineCrossReferencedEventSource,
-  }),
-).annotate({
-  identifier: "TimelineCrossReferencedEvent",
-}) as any as S.Schema<TimelineCrossReferencedEvent>;
-
 /** Identifying information for the git-user */
 export interface TimelineCommittedEventAuthor {
   /** Timestamp of the commit */
@@ -3741,55 +3211,20 @@ export interface TimelineCommittedEventAuthor {
   /** Name of the git user */
   name: string;
 }
-export const TimelineCommittedEventAuthor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.String,
-    email: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "TimelineCommittedEventAuthor",
-}) as any as S.Schema<TimelineCommittedEventAuthor>;
-
 /** Identifying information for the git-user */
 export type TimelineCommittedEventCommitter = TimelineCommittedEventAuthor;
-export const TimelineCommittedEventCommitter = TimelineCommittedEventAuthor;
-
 export interface TimelineCommittedEventTree {
   /** SHA for the commit */
   sha: string;
   url: string;
 }
-export const TimelineCommittedEventTree = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "TimelineCommittedEventTree",
-}) as any as S.Schema<TimelineCommittedEventTree>;
-
 export interface TimelineCommittedEventParentsItem {
   /** SHA for the commit */
   sha: string;
   url: string;
   html_url: string;
 }
-export const TimelineCommittedEventParentsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha: S.String,
-    url: S.String,
-    html_url: S.String,
-  }),
-).annotate({
-  identifier: "TimelineCommittedEventParentsItem",
-}) as any as S.Schema<TimelineCommittedEventParentsItem>;
-
 export type TimelineCommittedEventParentsList = Array<TimelineCommittedEventParentsItem>;
-export const TimelineCommittedEventParentsList = /*@__PURE__*/ S.Array(
-  TimelineCommittedEventParentsItem,
-) as any as S.Schema<TimelineCommittedEventParentsList>;
-
 export interface TimelineCommittedEventVerification {
   verified: boolean;
   reason: string;
@@ -3797,18 +3232,6 @@ export interface TimelineCommittedEventVerification {
   payload: string | null;
   verified_at: string | null;
 }
-export const TimelineCommittedEventVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verified: S.Boolean,
-    reason: S.String,
-    signature: S.NullOr(S.String),
-    payload: S.NullOr(S.String),
-    verified_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "TimelineCommittedEventVerification",
-}) as any as S.Schema<TimelineCommittedEventVerification>;
-
 /** Timeline Committed Event */
 export interface TimelineCommittedEvent {
   event?: string;
@@ -3827,49 +3250,14 @@ export interface TimelineCommittedEvent {
   verification: TimelineCommittedEventVerification;
   html_url: string;
 }
-export const TimelineCommittedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.optional(S.String),
-    sha: S.String,
-    node_id: S.String,
-    url: S.String,
-    author: TimelineCommittedEventAuthor,
-    committer: TimelineCommittedEventAuthor,
-    message: S.String,
-    tree: TimelineCommittedEventTree,
-    parents: TimelineCommittedEventParentsList,
-    verification: TimelineCommittedEventVerification,
-    html_url: S.String,
-  }),
-).annotate({ identifier: "TimelineCommittedEvent" }) as any as S.Schema<TimelineCommittedEvent>;
-
 export interface TimelineReviewedEventLinksHtml {
   href: string;
 }
-export const TimelineReviewedEventLinksHtml = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-  }),
-).annotate({
-  identifier: "TimelineReviewedEventLinksHtml",
-}) as any as S.Schema<TimelineReviewedEventLinksHtml>;
-
 export type TimelineReviewedEventLinksPullRequest = TimelineReviewedEventLinksHtml;
-export const TimelineReviewedEventLinksPullRequest = TimelineReviewedEventLinksHtml;
-
 export interface TimelineReviewedEventLinks {
   html: TimelineReviewedEventLinksHtml;
   pull_request: TimelineReviewedEventLinksHtml;
 }
-export const TimelineReviewedEventLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html: TimelineReviewedEventLinksHtml,
-    pull_request: TimelineReviewedEventLinksHtml,
-  }),
-).annotate({
-  identifier: "TimelineReviewedEventLinks",
-}) as any as S.Schema<TimelineReviewedEventLinks>;
-
 /** Timeline Reviewed Event */
 export interface TimelineReviewedEvent {
   event: string;
@@ -3891,62 +3279,20 @@ export interface TimelineReviewedEvent {
   body_text?: string;
   author_association: AuthorAssociation;
 }
-export const TimelineReviewedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.String,
-    id: S.Number,
-    node_id: S.String,
-    user: NullableSimpleUser,
-    body: S.NullOr(S.String),
-    state: S.String,
-    html_url: S.String,
-    pull_request_url: S.String,
-    _links: TimelineReviewedEventLinks,
-    submitted_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    commit_id: S.String,
-    body_html: S.optional(S.String),
-    body_text: S.optional(S.String),
-    author_association: AuthorAssociation,
-  }),
-).annotate({ identifier: "TimelineReviewedEvent" }) as any as S.Schema<TimelineReviewedEvent>;
-
 export type PullRequestReviewCommentLinksSelf = TimelineReviewedEventLinksHtml;
-export const PullRequestReviewCommentLinksSelf = TimelineReviewedEventLinksHtml;
-
 export type PullRequestReviewCommentLinksHtml = TimelineReviewedEventLinksHtml;
-export const PullRequestReviewCommentLinksHtml = TimelineReviewedEventLinksHtml;
-
 export type PullRequestReviewCommentLinksPullRequest = TimelineReviewedEventLinksHtml;
-export const PullRequestReviewCommentLinksPullRequest = TimelineReviewedEventLinksHtml;
-
 export interface PullRequestReviewCommentLinks {
   self: TimelineReviewedEventLinksHtml;
   html: TimelineReviewedEventLinksHtml;
   pull_request: TimelineReviewedEventLinksHtml;
 }
-export const PullRequestReviewCommentLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: TimelineReviewedEventLinksHtml,
-    html: TimelineReviewedEventLinksHtml,
-    pull_request: TimelineReviewedEventLinksHtml,
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentLinks",
-}) as any as S.Schema<PullRequestReviewCommentLinks>;
-
 /** The side of the first line of the range for a multi-line comment. */
 export type PullRequestReviewCommentStartSide = "LEFT" | "RIGHT";
-export const PullRequestReviewCommentStartSide = S.String;
-
 /** The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment */
 export type PullRequestReviewCommentSide = "LEFT" | "RIGHT";
-export const PullRequestReviewCommentSide = S.String;
-
 /** The level at which the comment is targeted, can be a diff line or a file. */
 export type PullRequestReviewCommentSubjectType = "line" | "file";
-export const PullRequestReviewCommentSubjectType = S.String;
-
 /** Pull Request Review Comments are comments on a portion of the Pull Request's diff. */
 export interface PullRequestReviewComment {
   /** URL for the pull request review comment */
@@ -4000,61 +3346,13 @@ export interface PullRequestReviewComment {
   body_html?: string;
   body_text?: string;
 }
-export const PullRequestReviewComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    pull_request_review_id: S.NullOr(S.Number),
-    id: S.Number,
-    node_id: S.String,
-    diff_hunk: S.String,
-    path: S.String,
-    position: S.optional(S.Number),
-    original_position: S.optional(S.Number),
-    commit_id: S.String,
-    original_commit_id: S.String,
-    in_reply_to_id: S.optional(S.Number),
-    user: S.NullOr(NullableSimpleUser),
-    body: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    html_url: S.String,
-    pull_request_url: S.String,
-    author_association: AuthorAssociation,
-    _links: PullRequestReviewCommentLinks,
-    start_line: S.optional(S.NullOr(S.Number)),
-    original_start_line: S.optional(S.NullOr(S.Number)),
-    start_side: S.optional(S.NullOr(PullRequestReviewCommentStartSide)),
-    line: S.optional(S.Number),
-    original_line: S.optional(S.Number),
-    side: S.optional(PullRequestReviewCommentSide),
-    subject_type: S.optional(PullRequestReviewCommentSubjectType),
-    reactions: S.optional(ReactionRollup),
-    body_html: S.optional(S.String),
-    body_text: S.optional(S.String),
-  }),
-).annotate({ identifier: "PullRequestReviewComment" }) as any as S.Schema<PullRequestReviewComment>;
-
 export type TimelineLineCommentedEventCommentsList = Array<PullRequestReviewComment>;
-export const TimelineLineCommentedEventCommentsList = /*@__PURE__*/ S.Array(
-  PullRequestReviewComment,
-) as any as S.Schema<TimelineLineCommentedEventCommentsList>;
-
 /** Timeline Line Commented Event */
 export interface TimelineLineCommentedEvent {
   event?: string;
   node_id?: string;
   comments?: TimelineLineCommentedEventCommentsList;
 }
-export const TimelineLineCommentedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.optional(S.String),
-    node_id: S.optional(S.String),
-    comments: S.optional(TimelineLineCommentedEventCommentsList),
-  }),
-).annotate({
-  identifier: "TimelineLineCommentedEvent",
-}) as any as S.Schema<TimelineLineCommentedEvent>;
-
 /** Commit Comment */
 export interface CommitComment {
   html_url: string;
@@ -4072,30 +3370,7 @@ export interface CommitComment {
   author_association: AuthorAssociation;
   reactions?: ReactionRollup;
 }
-export const CommitComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html_url: S.String,
-    url: S.String,
-    id: S.Number,
-    node_id: S.String,
-    body: S.String,
-    path: S.NullOr(S.String),
-    position: S.NullOr(S.Number),
-    line: S.NullOr(S.Number),
-    commit_id: S.String,
-    user: S.NullOr(NullableSimpleUser),
-    created_at: S.String,
-    updated_at: S.String,
-    author_association: AuthorAssociation,
-    reactions: S.optional(ReactionRollup),
-  }),
-).annotate({ identifier: "CommitComment" }) as any as S.Schema<CommitComment>;
-
 export type TimelineCommitCommentedEventCommentsList = Array<CommitComment>;
-export const TimelineCommitCommentedEventCommentsList = /*@__PURE__*/ S.Array(
-  CommitComment,
-) as any as S.Schema<TimelineCommitCommentedEventCommentsList>;
-
 /** Timeline Commit Commented Event */
 export interface TimelineCommitCommentedEvent {
   event?: string;
@@ -4103,17 +3378,6 @@ export interface TimelineCommitCommentedEvent {
   commit_id?: string;
   comments?: TimelineCommitCommentedEventCommentsList;
 }
-export const TimelineCommitCommentedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.optional(S.String),
-    node_id: S.optional(S.String),
-    commit_id: S.optional(S.String),
-    comments: S.optional(TimelineCommitCommentedEventCommentsList),
-  }),
-).annotate({
-  identifier: "TimelineCommitCommentedEvent",
-}) as any as S.Schema<TimelineCommitCommentedEvent>;
-
 /** Timeline Assigned Issue Event */
 export interface TimelineAssignedIssueEvent {
   id: number;
@@ -4128,24 +3392,6 @@ export interface TimelineAssignedIssueEvent {
   assignee: NullableSimpleUser;
   intent?: NullableIssueEventIntent | null;
 }
-export const TimelineAssignedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    assignee: NullableSimpleUser,
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({
-  identifier: "TimelineAssignedIssueEvent",
-}) as any as S.Schema<TimelineAssignedIssueEvent>;
-
 /** Timeline Unassigned Issue Event */
 export interface TimelineUnassignedIssueEvent {
   id: number;
@@ -4159,23 +3405,6 @@ export interface TimelineUnassignedIssueEvent {
   performed_via_github_app: NullableIntegration | null;
   assignee: NullableSimpleUser;
 }
-export const TimelineUnassignedIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    assignee: NullableSimpleUser,
-  }),
-).annotate({
-  identifier: "TimelineUnassignedIssueEvent",
-}) as any as S.Schema<TimelineUnassignedIssueEvent>;
-
 /** State Change Issue Event */
 export interface StateChangeIssueEvent {
   id: number;
@@ -4190,22 +3419,6 @@ export interface StateChangeIssueEvent {
   state_reason?: string | null;
   intent?: NullableIssueEventIntent | null;
 }
-export const StateChangeIssueEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-    state_reason: S.optional(S.NullOr(S.String)),
-    intent: S.optional(S.NullOr(NullableIssueEventIntent)),
-  }),
-).annotate({ identifier: "StateChangeIssueEvent" }) as any as S.Schema<StateChangeIssueEvent>;
-
 /** Timeline Connected Event */
 export interface TimelineConnectedEvent {
   id: number;
@@ -4218,24 +3431,8 @@ export interface TimelineConnectedEvent {
   created_at: string;
   performed_via_github_app: NullableIntegration | null;
 }
-export const TimelineConnectedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    actor: NullableSimpleUser,
-    event: S.String,
-    commit_id: S.NullOr(S.String),
-    commit_url: S.NullOr(S.String),
-    created_at: S.String,
-    performed_via_github_app: S.NullOr(NullableIntegration),
-  }),
-).annotate({ identifier: "TimelineConnectedEvent" }) as any as S.Schema<TimelineConnectedEvent>;
-
 /** Timeline Disconnected Event */
 export type TimelineDisconnectedEvent = TimelineConnectedEvent;
-export const TimelineDisconnectedEvent = TimelineConnectedEvent;
-
 /** Timeline Event */
 export type TimelineIssueEvents =
   | LabeledIssueEvent
@@ -4273,15 +3470,15 @@ export type TimelineIssueEvents =
   | BlockingAddedIssueEvent
   | TimelineConnectedEvent
   | TimelineConnectedEvent;
-export const TimelineIssueEvents = S.Unknown as any as S.Schema<TimelineIssueEvents>;
+const TimelineIssueEvents = S.Unknown as any as S.Schema<TimelineIssueEvents>;
 
 export type ListEventsForTimelineResponseBodyList = Array<TimelineIssueEvents>;
-export const ListEventsForTimelineResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEventsForTimelineResponseBodyList = /*@__PURE__*/ S.Array(
   TimelineIssueEvents,
 ) as any as S.Schema<ListEventsForTimelineResponseBodyList>;
 
 export type ListEventsForTimelineResponse = ListEventsForTimelineResponseBodyList;
-export const ListEventsForTimelineResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsForTimelineResponse = /*@__PURE__*/ S.suspend(() =>
   ListEventsForTimelineResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEventsForTimelineResponse",
@@ -4294,16 +3491,16 @@ export type ListForAuthenticatedUserRequestFilter =
   | "subscribed"
   | "repos"
   | "all";
-export const ListForAuthenticatedUserRequestFilter = S.String;
+const ListForAuthenticatedUserRequestFilter = S.String;
 
 export type ListForAuthenticatedUserRequestState = "open" | "closed" | "all";
-export const ListForAuthenticatedUserRequestState = S.String;
+const ListForAuthenticatedUserRequestState = S.String;
 
 export type ListForAuthenticatedUserRequestSort = "created" | "updated" | "comments";
-export const ListForAuthenticatedUserRequestSort = S.String;
+const ListForAuthenticatedUserRequestSort = S.String;
 
 export type ListForAuthenticatedUserRequestDirection = "asc" | "desc";
-export const ListForAuthenticatedUserRequestDirection = S.String;
+const ListForAuthenticatedUserRequestDirection = S.String;
 
 export interface ListForAuthenticatedUserRequest {
   /** Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation. */
@@ -4323,7 +3520,7 @@ export interface ListForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(ListForAuthenticatedUserRequestFilter.pipe(T.Query())),
     state: S.optional(ListForAuthenticatedUserRequestState.pipe(T.Query())),
@@ -4339,11 +3536,8 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseBodyList = Array<Issue>;
-export const ListForAuthenticatedUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
-
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-export const ListForAuthenticatedUserResponse =
+const ListForAuthenticatedUserResponse =
   ListDependenciesBlockedByResponse as any as S.Schema<ListForAuthenticatedUserResponse>;
 
 export type ListForOrgRequestFilter =
@@ -4353,16 +3547,16 @@ export type ListForOrgRequestFilter =
   | "subscribed"
   | "repos"
   | "all";
-export const ListForOrgRequestFilter = S.String;
+const ListForOrgRequestFilter = S.String;
 
 export type ListForOrgRequestState = "open" | "closed" | "all";
-export const ListForOrgRequestState = S.String;
+const ListForOrgRequestState = S.String;
 
 export type ListForOrgRequestSort = "created" | "updated" | "comments";
-export const ListForOrgRequestSort = S.String;
+const ListForOrgRequestSort = S.String;
 
 export type ListForOrgRequestDirection = "asc" | "desc";
-export const ListForOrgRequestDirection = S.String;
+const ListForOrgRequestDirection = S.String;
 
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -4386,7 +3580,7 @@ export interface ListForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     filter: S.optional(ListForOrgRequestFilter.pipe(T.Query())),
@@ -4402,20 +3596,17 @@ export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForOrgRequest" }) as any as S.Schema<ListForOrgRequest>;
 
 export type ListForOrgResponseBodyList = Array<Issue>;
-export const ListForOrgResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListForOrgResponseBodyList>;
-
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-export const ListForOrgResponse = ListResponse as any as S.Schema<ListForOrgResponse>;
+const ListForOrgResponse = ListResponse as any as S.Schema<ListForOrgResponse>;
 
 export type ListForRepoRequestState = "open" | "closed" | "all";
-export const ListForRepoRequestState = S.String;
+const ListForRepoRequestState = S.String;
 
 export type ListForRepoRequestSort = "created" | "updated" | "comments";
-export const ListForRepoRequestSort = S.String;
+const ListForRepoRequestSort = S.String;
 
 export type ListForRepoRequestDirection = "asc" | "desc";
-export const ListForRepoRequestDirection = S.String;
+const ListForRepoRequestDirection = S.String;
 
 export interface ListForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4449,7 +3640,7 @@ export interface ListForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4470,11 +3661,8 @@ export const ListForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForRepoRequest" }) as any as S.Schema<ListForRepoRequest>;
 
 export type ListForRepoResponseBodyList = Array<Issue>;
-export const ListForRepoResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListForRepoResponseBodyList>;
-
 export type ListForRepoResponse = ListForRepoResponseBodyList;
-export const ListForRepoResponse = ListResponse as any as S.Schema<ListForRepoResponse>;
+const ListForRepoResponse = ListResponse as any as S.Schema<ListForRepoResponse>;
 
 export interface ListIssueFieldValuesForIssueRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4488,7 +3676,7 @@ export interface ListIssueFieldValuesForIssueRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListIssueFieldValuesForIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueFieldValuesForIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4507,11 +3695,8 @@ export const ListIssueFieldValuesForIssueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueFieldValuesForIssueRequest>;
 
 export type ListIssueFieldValuesForIssueResponseBodyList = Array<IssueFieldValue>;
-export const ListIssueFieldValuesForIssueResponseBodyList =
-  IssueIssueFieldValuesList as any as S.Schema<ListIssueFieldValuesForIssueResponseBodyList>;
-
 export type ListIssueFieldValuesForIssueResponse = ListIssueFieldValuesForIssueResponseBodyList;
-export const ListIssueFieldValuesForIssueResponse =
+const ListIssueFieldValuesForIssueResponse =
   AddIssueFieldValuesResponse as any as S.Schema<ListIssueFieldValuesForIssueResponse>;
 
 export interface ListLabelsForMilestoneRequest {
@@ -4526,7 +3711,7 @@ export interface ListLabelsForMilestoneRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListLabelsForMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabelsForMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4545,11 +3730,11 @@ export const ListLabelsForMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLabelsForMilestoneRequest>;
 
 export type ListLabelsForMilestoneResponseBodyList = Array<Label>;
-export const ListLabelsForMilestoneResponseBodyList =
+const ListLabelsForMilestoneResponseBodyList =
   AddLabelsResponseBodyList as any as S.Schema<ListLabelsForMilestoneResponseBodyList>;
 
 export type ListLabelsForMilestoneResponse = ListLabelsForMilestoneResponseBodyList;
-export const ListLabelsForMilestoneResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLabelsForMilestoneResponse = /*@__PURE__*/ S.suspend(() =>
   ListLabelsForMilestoneResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListLabelsForMilestoneResponse",
@@ -4565,7 +3750,7 @@ export interface ListLabelsForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListLabelsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabelsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4575,11 +3760,8 @@ export const ListLabelsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLabelsForRepoRequest" }) as any as S.Schema<ListLabelsForRepoRequest>;
 
 export type ListLabelsForRepoResponseBodyList = Array<Label>;
-export const ListLabelsForRepoResponseBodyList =
-  AddLabelsResponseBodyList as any as S.Schema<ListLabelsForRepoResponseBodyList>;
-
 export type ListLabelsForRepoResponse = ListLabelsForRepoResponseBodyList;
-export const ListLabelsForRepoResponse =
+const ListLabelsForRepoResponse =
   ListLabelsForMilestoneResponse as any as S.Schema<ListLabelsForRepoResponse>;
 
 export interface ListLabelsOnIssueRequest {
@@ -4594,7 +3776,7 @@ export interface ListLabelsOnIssueRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListLabelsOnIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabelsOnIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4607,21 +3789,18 @@ export const ListLabelsOnIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLabelsOnIssueRequest" }) as any as S.Schema<ListLabelsOnIssueRequest>;
 
 export type ListLabelsOnIssueResponseBodyList = Array<Label>;
-export const ListLabelsOnIssueResponseBodyList =
-  AddLabelsResponseBodyList as any as S.Schema<ListLabelsOnIssueResponseBodyList>;
-
 export type ListLabelsOnIssueResponse = ListLabelsOnIssueResponseBodyList;
-export const ListLabelsOnIssueResponse =
+const ListLabelsOnIssueResponse =
   ListLabelsForMilestoneResponse as any as S.Schema<ListLabelsOnIssueResponse>;
 
 export type ListMilestonesRequestState = "open" | "closed" | "all";
-export const ListMilestonesRequestState = S.String;
+const ListMilestonesRequestState = S.String;
 
 export type ListMilestonesRequestSort = "due_on" | "completeness";
-export const ListMilestonesRequestSort = S.String;
+const ListMilestonesRequestSort = S.String;
 
 export type ListMilestonesRequestDirection = "asc" | "desc";
-export const ListMilestonesRequestDirection = S.String;
+const ListMilestonesRequestDirection = S.String;
 
 export interface ListMilestonesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4639,7 +3818,7 @@ export interface ListMilestonesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListMilestonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMilestonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4652,12 +3831,12 @@ export const ListMilestonesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMilestonesRequest" }) as any as S.Schema<ListMilestonesRequest>;
 
 export type ListMilestonesResponseBodyList = Array<Milestone>;
-export const ListMilestonesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMilestonesResponseBodyList = /*@__PURE__*/ S.Array(
   Milestone,
 ) as any as S.Schema<ListMilestonesResponseBodyList>;
 
 export type ListMilestonesResponse = ListMilestonesResponseBodyList;
-export const ListMilestonesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMilestonesResponse = /*@__PURE__*/ S.suspend(() =>
   ListMilestonesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMilestonesResponse" }) as any as S.Schema<ListMilestonesResponse>;
 
@@ -4673,7 +3852,7 @@ export interface ListRelatesToRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4690,11 +3869,8 @@ export const ListRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRelatesToRequest" }) as any as S.Schema<ListRelatesToRequest>;
 
 export type ListRelatesToResponseBodyList = Array<Issue>;
-export const ListRelatesToResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListRelatesToResponseBodyList>;
-
 export type ListRelatesToResponse = ListRelatesToResponseBodyList;
-export const ListRelatesToResponse = ListResponse as any as S.Schema<ListRelatesToResponse>;
+const ListRelatesToResponse = ListResponse as any as S.Schema<ListRelatesToResponse>;
 
 export interface ListSubIssuesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4708,7 +3884,7 @@ export interface ListSubIssuesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSubIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4725,11 +3901,8 @@ export const ListSubIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubIssuesRequest" }) as any as S.Schema<ListSubIssuesRequest>;
 
 export type ListSubIssuesResponseBodyList = Array<Issue>;
-export const ListSubIssuesResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListSubIssuesResponseBodyList>;
-
 export type ListSubIssuesResponse = ListSubIssuesResponseBodyList;
-export const ListSubIssuesResponse = ListResponse as any as S.Schema<ListSubIssuesResponse>;
+const ListSubIssuesResponse = ListResponse as any as S.Schema<ListSubIssuesResponse>;
 
 export type ListSuggestionsRequestState =
   | "pending"
@@ -4739,7 +3912,7 @@ export type ListSuggestionsRequestState =
   | "replaced"
   | "invalidated"
   | "all";
-export const ListSuggestionsRequestState = S.String;
+const ListSuggestionsRequestState = S.String;
 
 export type ListSuggestionsRequestAction =
   | "set_type"
@@ -4747,7 +3920,7 @@ export type ListSuggestionsRequestAction =
   | "add_field"
   | "add_assignee"
   | "close_issue";
-export const ListSuggestionsRequestAction = S.String;
+const ListSuggestionsRequestAction = S.String;
 
 export interface ListSuggestionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4765,7 +3938,7 @@ export interface ListSuggestionsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4784,18 +3957,18 @@ export const ListSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSuggestionsRequest" }) as any as S.Schema<ListSuggestionsRequest>;
 
 export type ListSuggestionsResponseBodyList = Array<IssueSuggestion>;
-export const ListSuggestionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSuggestionsResponseBodyList = /*@__PURE__*/ S.Array(
   IssueSuggestion,
 ) as any as S.Schema<ListSuggestionsResponseBodyList>;
 
 export type ListSuggestionsResponse = ListSuggestionsResponseBodyList;
-export const ListSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSuggestionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSuggestionsResponse" }) as any as S.Schema<ListSuggestionsResponse>;
 
 /** The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons: * `off-topic` * `too heated` * `resolved` * `spam` */
 export type LockRequestLockReason = "off-topic" | "too heated" | "resolved" | "spam";
-export const LockRequestLockReason = S.String;
+const LockRequestLockReason = S.String;
 
 export interface LockRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4807,7 +3980,7 @@ export interface LockRequest {
   /** The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons: * `off-topic` * `too heated` * `resolved` * `spam` */
   lock_reason?: LockRequestLockReason | (string & {});
 }
-export const LockRequest = /*@__PURE__*/ S.suspend(() =>
+const LockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4819,7 +3992,7 @@ export const LockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LockRequest" }) as any as S.Schema<LockRequest>;
 
 export interface LockResponse {}
-export const LockResponse = CheckUserCanBeAssignedResponse as any as S.Schema<LockResponse>;
+const LockResponse = CheckUserCanBeAssignedResponse as any as S.Schema<LockResponse>;
 
 export interface PinCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4829,7 +4002,7 @@ export interface PinCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-export const PinCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const PinCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4851,7 +4024,7 @@ export interface RemoveAllLabelsRequest {
   /** The number that identifies the issue. */
   issue_number: number;
 }
-export const RemoveAllLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAllLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4866,12 +4039,12 @@ export const RemoveAllLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveAllLabelsRequest" }) as any as S.Schema<RemoveAllLabelsRequest>;
 
 export interface RemoveAllLabelsResponse {}
-export const RemoveAllLabelsResponse =
+const RemoveAllLabelsResponse =
   CheckUserCanBeAssignedResponse as any as S.Schema<RemoveAllLabelsResponse>;
 
 /** Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._ */
 export type RemoveAssigneesRequestAssigneesList = Array<string>;
-export const RemoveAssigneesRequestAssigneesList =
+const RemoveAssigneesRequestAssigneesList =
   RepositoryTopicsList as any as S.Schema<RemoveAssigneesRequestAssigneesList>;
 
 export interface RemoveAssigneesRequest {
@@ -4884,7 +4057,7 @@ export interface RemoveAssigneesRequest {
   /** Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._ */
   assignees?: RemoveAssigneesRequestAssigneesList;
 }
-export const RemoveAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4909,7 +4082,7 @@ export interface RemoveDependencyBlockedByRequest {
   /** The id of the blocking issue to remove as a dependency */
   issue_id: number;
 }
-export const RemoveDependencyBlockedByRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveDependencyBlockedByRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4935,7 +4108,7 @@ export interface RemoveLabelRequest {
   issue_number: number;
   name: string;
 }
-export const RemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4951,11 +4124,8 @@ export const RemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveLabelRequest" }) as any as S.Schema<RemoveLabelRequest>;
 
 export type RemoveLabelResponseBodyList = Array<Label>;
-export const RemoveLabelResponseBodyList =
-  AddLabelsResponseBodyList as any as S.Schema<RemoveLabelResponseBodyList>;
-
 export type RemoveLabelResponse = RemoveLabelResponseBodyList;
-export const RemoveLabelResponse = AddLabelsResponse as any as S.Schema<RemoveLabelResponse>;
+const RemoveLabelResponse = AddLabelsResponse as any as S.Schema<RemoveLabelResponse>;
 
 export interface RemoveRelatesToRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -4967,7 +4137,7 @@ export interface RemoveRelatesToRequest {
   /** The id of the related issue to remove */
   issue_id: number;
 }
-export const RemoveRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRelatesToRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4992,7 +4162,7 @@ export interface RemoveSubIssueRequest {
   /** The id of the sub-issue to remove */
   sub_issue_id: number;
 }
-export const RemoveSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5021,7 +4191,7 @@ export interface ReprioritizeSubIssueRequest {
   /** The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified). */
   before_id?: number;
 }
-export const ReprioritizeSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const ReprioritizeSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5042,7 +4212,7 @@ export const ReprioritizeSubIssueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The value to set for the field. The type depends on the field's data type: - For text fields: provide a string value - For single_select fields: provide the option name as a string (must match an existing option) - For number fields: provide a numeric value - For date fields: provide an ISO 8601 date string */
 export type SetIssueFieldValuesRequestIssueFieldValuesItemValue = string | number;
-export const SetIssueFieldValuesRequestIssueFieldValuesItemValue =
+const SetIssueFieldValuesRequestIssueFieldValuesItemValue =
   S.Unknown as any as S.Schema<SetIssueFieldValuesRequestIssueFieldValuesItemValue>;
 
 export interface SetIssueFieldValuesRequestIssueFieldValuesItem {
@@ -5051,7 +4221,7 @@ export interface SetIssueFieldValuesRequestIssueFieldValuesItem {
   /** The value to set for the field. The type depends on the field's data type: - For text fields: provide a string value - For single_select fields: provide the option name as a string (must match an existing option) - For number fields: provide a numeric value - For date fields: provide an ISO 8601 date string */
   value: SetIssueFieldValuesRequestIssueFieldValuesItemValue;
 }
-export const SetIssueFieldValuesRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
+const SetIssueFieldValuesRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.Number,
     value: SetIssueFieldValuesRequestIssueFieldValuesItemValue,
@@ -5063,7 +4233,7 @@ export const SetIssueFieldValuesRequestIssueFieldValuesItem = /*@__PURE__*/ S.su
 /** An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced. */
 export type SetIssueFieldValuesRequestIssueFieldValuesList =
   Array<SetIssueFieldValuesRequestIssueFieldValuesItem>;
-export const SetIssueFieldValuesRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const SetIssueFieldValuesRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
   SetIssueFieldValuesRequestIssueFieldValuesItem,
 ) as any as S.Schema<SetIssueFieldValuesRequestIssueFieldValuesList>;
 
@@ -5077,7 +4247,7 @@ export interface SetIssueFieldValuesRequest {
   /** An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced. */
   issue_field_values?: SetIssueFieldValuesRequestIssueFieldValuesList;
 }
-export const SetIssueFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIssueFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5096,75 +4266,33 @@ export const SetIssueFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current issue field values for this issue after setting the new values */
 export type SetIssueFieldValuesResponseBodyList = Array<IssueFieldValue>;
-export const SetIssueFieldValuesResponseBodyList =
-  IssueIssueFieldValuesList as any as S.Schema<SetIssueFieldValuesResponseBodyList>;
-
 export type SetIssueFieldValuesResponse = SetIssueFieldValuesResponseBodyList;
-export const SetIssueFieldValuesResponse =
+const SetIssueFieldValuesResponse =
   AddIssueFieldValuesResponse as any as S.Schema<SetIssueFieldValuesResponse>;
 
 /** The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)." */
 export type SetLabelsRequestBodyCase0LabelsList = Array<string>;
-export const SetLabelsRequestBodyCase0LabelsList =
-  RepositoryTopicsList as any as S.Schema<SetLabelsRequestBodyCase0LabelsList>;
-
 export interface SetLabelsRequestBodyCase0 {
   /** The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)." */
   labels?: SetLabelsRequestBodyCase0LabelsList;
 }
-export const SetLabelsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(SetLabelsRequestBodyCase0LabelsList),
-  }),
-).annotate({
-  identifier: "SetLabelsRequestBodyCase0",
-}) as any as S.Schema<SetLabelsRequestBodyCase0>;
-
 export type SetLabelsRequestBodyCase1List = Array<string>;
-export const SetLabelsRequestBodyCase1List =
-  RepositoryTopicsList as any as S.Schema<SetLabelsRequestBodyCase1List>;
-
 export interface SetLabelsRequestBodyCase2LabelsItem {
   name: string;
 }
-export const SetLabelsRequestBodyCase2LabelsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "SetLabelsRequestBodyCase2LabelsItem",
-}) as any as S.Schema<SetLabelsRequestBodyCase2LabelsItem>;
-
 export type SetLabelsRequestBodyCase2LabelsList = Array<SetLabelsRequestBodyCase2LabelsItem>;
-export const SetLabelsRequestBodyCase2LabelsList = /*@__PURE__*/ S.Array(
-  SetLabelsRequestBodyCase2LabelsItem,
-) as any as S.Schema<SetLabelsRequestBodyCase2LabelsList>;
-
 export interface SetLabelsRequestBodyCase2 {
   labels?: SetLabelsRequestBodyCase2LabelsList;
 }
-export const SetLabelsRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(SetLabelsRequestBodyCase2LabelsList),
-  }),
-).annotate({
-  identifier: "SetLabelsRequestBodyCase2",
-}) as any as S.Schema<SetLabelsRequestBodyCase2>;
-
 export type SetLabelsRequestBodyCase3Item = SetLabelsRequestBodyCase2LabelsItem;
-export const SetLabelsRequestBodyCase3Item = SetLabelsRequestBodyCase2LabelsItem;
-
 export type SetLabelsRequestBodyCase3List = Array<SetLabelsRequestBodyCase2LabelsItem>;
-export const SetLabelsRequestBodyCase3List =
-  SetLabelsRequestBodyCase2LabelsList as any as S.Schema<SetLabelsRequestBodyCase3List>;
-
 export type SetLabelsRequestBody =
   | SetLabelsRequestBodyCase0
   | SetLabelsRequestBodyCase1List
   | SetLabelsRequestBodyCase2
   | SetLabelsRequestBodyCase3List
   | string;
-export const SetLabelsRequestBody = S.Unknown as any as S.Schema<SetLabelsRequestBody>;
+const SetLabelsRequestBody = S.Unknown as any as S.Schema<SetLabelsRequestBody>;
 
 export interface SetLabelsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5175,7 +4303,7 @@ export interface SetLabelsRequest {
   issue_number: number;
   body?: SetLabelsRequestBody;
 }
-export const SetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5187,11 +4315,8 @@ export const SetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetLabelsRequest" }) as any as S.Schema<SetLabelsRequest>;
 
 export type SetLabelsResponseBodyList = Array<Label>;
-export const SetLabelsResponseBodyList =
-  AddLabelsResponseBodyList as any as S.Schema<SetLabelsResponseBodyList>;
-
 export type SetLabelsResponse = SetLabelsResponseBodyList;
-export const SetLabelsResponse = AddLabelsResponse as any as S.Schema<SetLabelsResponse>;
+const SetLabelsResponse = AddLabelsResponse as any as S.Schema<SetLabelsResponse>;
 
 export interface UnlockRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5201,7 +4326,7 @@ export interface UnlockRequest {
   /** The number that identifies the issue. */
   issue_number: number;
 }
-export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5216,7 +4341,7 @@ export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlockRequest" }) as any as S.Schema<UnlockRequest>;
 
 export interface UnlockResponse {}
-export const UnlockResponse = CheckUserCanBeAssignedResponse as any as S.Schema<UnlockResponse>;
+const UnlockResponse = CheckUserCanBeAssignedResponse as any as S.Schema<UnlockResponse>;
 
 export interface UnpinCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5226,7 +4351,7 @@ export interface UnpinCommentRequest {
   /** The unique identifier of the comment. */
   comment_id: number;
 }
-export const UnpinCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpinCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5241,28 +4366,26 @@ export const UnpinCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnpinCommentRequest" }) as any as S.Schema<UnpinCommentRequest>;
 
 export interface UnpinCommentResponse {}
-export const UnpinCommentResponse =
+const UnpinCommentResponse =
   CheckUserCanBeAssignedResponse as any as S.Schema<UnpinCommentResponse>;
 
 /** The title of the issue. */
 export type UpdateRequestTitle = string | number;
-export const UpdateRequestTitle = S.Unknown as any as S.Schema<UpdateRequestTitle>;
+const UpdateRequestTitle = S.Unknown as any as S.Schema<UpdateRequestTitle>;
 
 /** The open or closed state of the issue. */
 export type UpdateRequestState = "open" | "closed";
-export const UpdateRequestState = S.String;
+const UpdateRequestState = S.String;
 
 /** The reason for the state change. Ignored unless `state` is changed. */
 export type UpdateRequestStateReason = "completed" | "not_planned" | "duplicate" | "reopened";
-export const UpdateRequestStateReason = S.String;
+const UpdateRequestStateReason = S.String;
 
 export type UpdateRequestMilestone = string | number;
-export const UpdateRequestMilestone = S.Unknown as any as S.Schema<UpdateRequestMilestone>;
+const UpdateRequestMilestone = S.Unknown as any as S.Schema<UpdateRequestMilestone>;
 
 /** The confidence level for this label choice. */
 export type UpdateRequestLabelsItemCase1Confidence = "low" | "medium" | "high";
-export const UpdateRequestLabelsItemCase1Confidence = S.String;
-
 export interface UpdateRequestLabelsItemCase1 {
   id?: number;
   name?: string;
@@ -5275,33 +4398,17 @@ export interface UpdateRequestLabelsItemCase1 {
   /** The confidence level for this label choice. */
   confidence?: UpdateRequestLabelsItemCase1Confidence | (string & {});
 }
-export const UpdateRequestLabelsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    color: S.optional(S.NullOr(S.String)),
-    rationale: S.optional(S.String),
-    suggest: S.optional(S.Boolean),
-    confidence: S.optional(UpdateRequestLabelsItemCase1Confidence),
-  }),
-).annotate({
-  identifier: "UpdateRequestLabelsItemCase1",
-}) as any as S.Schema<UpdateRequestLabelsItemCase1>;
-
 export type UpdateRequestLabelsItem = string | UpdateRequestLabelsItemCase1;
-export const UpdateRequestLabelsItem = S.Unknown as any as S.Schema<UpdateRequestLabelsItem>;
+const UpdateRequestLabelsItem = S.Unknown as any as S.Schema<UpdateRequestLabelsItem>;
 
 /** Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped. */
 export type UpdateRequestLabelsList = Array<UpdateRequestLabelsItem>;
-export const UpdateRequestLabelsList = /*@__PURE__*/ S.Array(
+const UpdateRequestLabelsList = /*@__PURE__*/ S.Array(
   UpdateRequestLabelsItem,
 ) as any as S.Schema<UpdateRequestLabelsList>;
 
 /** The confidence level for this assignee choice. */
 export type UpdateRequestAssigneesItemCase1Confidence = "low" | "medium" | "high";
-export const UpdateRequestAssigneesItemCase1Confidence = S.String;
-
 export interface UpdateRequestAssigneesItemCase1 {
   login?: string;
   /** Optional reasoning for selecting this assignee. */
@@ -5311,41 +4418,27 @@ export interface UpdateRequestAssigneesItemCase1 {
   /** The confidence level for this assignee choice. */
   confidence?: UpdateRequestAssigneesItemCase1Confidence | (string & {});
 }
-export const UpdateRequestAssigneesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    login: S.optional(S.String),
-    rationale: S.optional(S.String),
-    suggest: S.optional(S.Boolean),
-    confidence: S.optional(UpdateRequestAssigneesItemCase1Confidence),
-  }),
-).annotate({
-  identifier: "UpdateRequestAssigneesItemCase1",
-}) as any as S.Schema<UpdateRequestAssigneesItemCase1>;
-
 export type UpdateRequestAssigneesItem = string | UpdateRequestAssigneesItemCase1;
-export const UpdateRequestAssigneesItem = S.Unknown as any as S.Schema<UpdateRequestAssigneesItem>;
+const UpdateRequestAssigneesItem = S.Unknown as any as S.Schema<UpdateRequestAssigneesItem>;
 
 /** Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped. */
 export type UpdateRequestAssigneesList = Array<UpdateRequestAssigneesItem>;
-export const UpdateRequestAssigneesList = /*@__PURE__*/ S.Array(
+const UpdateRequestAssigneesList = /*@__PURE__*/ S.Array(
   UpdateRequestAssigneesItem,
 ) as any as S.Schema<UpdateRequestAssigneesList>;
 
 export type UpdateRequestIssueFieldValuesItemValueCase2List = Array<string>;
-export const UpdateRequestIssueFieldValuesItemValueCase2List =
-  RepositoryTopicsList as any as S.Schema<UpdateRequestIssueFieldValuesItemValueCase2List>;
-
 /** The value to set for the field. For multi-select fields, provide an array of option names. */
 export type UpdateRequestIssueFieldValuesItemValue =
   | string
   | number
   | UpdateRequestIssueFieldValuesItemValueCase2List;
-export const UpdateRequestIssueFieldValuesItemValue =
+const UpdateRequestIssueFieldValuesItemValue =
   S.Unknown as any as S.Schema<UpdateRequestIssueFieldValuesItemValue>;
 
 /** The confidence level for this field value choice. */
 export type UpdateRequestIssueFieldValuesItemConfidence = "low" | "medium" | "high";
-export const UpdateRequestIssueFieldValuesItemConfidence = S.String;
+const UpdateRequestIssueFieldValuesItemConfidence = S.String;
 
 export interface UpdateRequestIssueFieldValuesItem {
   /** The ID of the issue field to set */
@@ -5359,7 +4452,7 @@ export interface UpdateRequestIssueFieldValuesItem {
   /** The confidence level for this field value choice. */
   confidence?: UpdateRequestIssueFieldValuesItemConfidence | (string & {});
 }
-export const UpdateRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.Number,
     value: UpdateRequestIssueFieldValuesItemValue,
@@ -5373,14 +4466,12 @@ export const UpdateRequestIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues */
 export type UpdateRequestIssueFieldValuesList = Array<UpdateRequestIssueFieldValuesItem>;
-export const UpdateRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const UpdateRequestIssueFieldValuesList = /*@__PURE__*/ S.Array(
   UpdateRequestIssueFieldValuesItem,
 ) as any as S.Schema<UpdateRequestIssueFieldValuesList>;
 
 /** The confidence level for this type choice. */
 export type UpdateRequestTypeCase1Confidence = "low" | "medium" | "high";
-export const UpdateRequestTypeCase1Confidence = S.String;
-
 /** The issue type with optional metadata. */
 export interface UpdateRequestTypeCase1 {
   /** The name of the issue type to associate with this issue, or `null` to remove the current issue type. */
@@ -5392,18 +4483,9 @@ export interface UpdateRequestTypeCase1 {
   /** The confidence level for this type choice. */
   confidence?: UpdateRequestTypeCase1Confidence | (string & {});
 }
-export const UpdateRequestTypeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.NullOr(S.String)),
-    rationale: S.optional(S.String),
-    suggest: S.optional(S.Boolean),
-    confidence: S.optional(UpdateRequestTypeCase1Confidence),
-  }),
-).annotate({ identifier: "UpdateRequestTypeCase1" }) as any as S.Schema<UpdateRequestTypeCase1>;
-
 /** The issue type to associate with this issue. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped. */
 export type UpdateRequestType = string | UpdateRequestTypeCase1;
-export const UpdateRequestType = S.Unknown as any as S.Schema<UpdateRequestType>;
+const UpdateRequestType = S.Unknown as any as S.Schema<UpdateRequestType>;
 
 export interface UpdateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5434,7 +4516,7 @@ export interface UpdateRequest {
   /** The issue type to associate with this issue. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped. */
   type?: UpdateRequestType | null;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5457,38 +4539,34 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason for the current state */
 export type UpdateResponseStateReason = "completed" | "reopened" | "not_planned" | "duplicate";
-export const UpdateResponseStateReason = S.String;
+const UpdateResponseStateReason = S.String;
 
 export type UpdateResponseLabelsItemCase1 = IssueLabelsItemCase1;
-export const UpdateResponseLabelsItemCase1 = IssueLabelsItemCase1;
-
 export type UpdateResponseLabelsItem = string | IssueLabelsItemCase1;
-export const UpdateResponseLabelsItem = S.Unknown as any as S.Schema<UpdateResponseLabelsItem>;
+const UpdateResponseLabelsItem = S.Unknown as any as S.Schema<UpdateResponseLabelsItem>;
 
 /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
 export type UpdateResponseLabelsList = Array<UpdateResponseLabelsItem>;
-export const UpdateResponseLabelsList = /*@__PURE__*/ S.Array(
+const UpdateResponseLabelsList = /*@__PURE__*/ S.Array(
   UpdateResponseLabelsItem,
 ) as any as S.Schema<UpdateResponseLabelsList>;
 
 export type UpdateResponseAssigneesList = Array<NullableSimpleUser>;
-export const UpdateResponseAssigneesList =
+const UpdateResponseAssigneesList =
   IssueAssigneesList as any as S.Schema<UpdateResponseAssigneesList>;
 
 export type UpdateResponsePullRequest = IssuePullRequest;
-export const UpdateResponsePullRequest = IssuePullRequest;
-
 export type UpdateResponseIssueFieldValuesList = Array<IssueFieldValue>;
-export const UpdateResponseIssueFieldValuesList =
+const UpdateResponseIssueFieldValuesList =
   IssueIssueFieldValuesList as any as S.Schema<UpdateResponseIssueFieldValuesList>;
 
 export type UpdateResponseSuggestionsTypeItemConfidence = "low" | "medium" | "high";
-export const UpdateResponseSuggestionsTypeItemConfidence = S.String;
+const UpdateResponseSuggestionsTypeItemConfidence = S.String;
 
 export type UpdateResponseSuggestionsTypeItemIgnoredReason =
   | "already_applied"
   | "issue_already_closed";
-export const UpdateResponseSuggestionsTypeItemIgnoredReason = S.String;
+const UpdateResponseSuggestionsTypeItemIgnoredReason = S.String;
 
 export interface UpdateResponseSuggestionsTypeItem {
   value?: string;
@@ -5498,7 +4576,7 @@ export interface UpdateResponseSuggestionsTypeItem {
   ignored?: boolean;
   ignored_reason?: UpdateResponseSuggestionsTypeItemIgnoredReason;
 }
-export const UpdateResponseSuggestionsTypeItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseSuggestionsTypeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     rationale: S.optional(S.String),
@@ -5512,28 +4590,25 @@ export const UpdateResponseSuggestionsTypeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseSuggestionsTypeItem>;
 
 export type UpdateResponseSuggestionsTypeList = Array<UpdateResponseSuggestionsTypeItem>;
-export const UpdateResponseSuggestionsTypeList = /*@__PURE__*/ S.Array(
+const UpdateResponseSuggestionsTypeList = /*@__PURE__*/ S.Array(
   UpdateResponseSuggestionsTypeItem,
 ) as any as S.Schema<UpdateResponseSuggestionsTypeList>;
 
 export type UpdateResponseSuggestionsIssueFieldValuesItemValueCase2List = Array<string>;
-export const UpdateResponseSuggestionsIssueFieldValuesItemValueCase2List =
-  RepositoryTopicsList as any as S.Schema<UpdateResponseSuggestionsIssueFieldValuesItemValueCase2List>;
-
 export type UpdateResponseSuggestionsIssueFieldValuesItemValue =
   | string
   | number
   | UpdateResponseSuggestionsIssueFieldValuesItemValueCase2List;
-export const UpdateResponseSuggestionsIssueFieldValuesItemValue =
+const UpdateResponseSuggestionsIssueFieldValuesItemValue =
   S.Unknown as any as S.Schema<UpdateResponseSuggestionsIssueFieldValuesItemValue>;
 
 export type UpdateResponseSuggestionsIssueFieldValuesItemConfidence = "low" | "medium" | "high";
-export const UpdateResponseSuggestionsIssueFieldValuesItemConfidence = S.String;
+const UpdateResponseSuggestionsIssueFieldValuesItemConfidence = S.String;
 
 export type UpdateResponseSuggestionsIssueFieldValuesItemIgnoredReason =
   | "already_applied"
   | "issue_already_closed";
-export const UpdateResponseSuggestionsIssueFieldValuesItemIgnoredReason = S.String;
+const UpdateResponseSuggestionsIssueFieldValuesItemIgnoredReason = S.String;
 
 export interface UpdateResponseSuggestionsIssueFieldValuesItem {
   field_id?: number;
@@ -5544,7 +4619,7 @@ export interface UpdateResponseSuggestionsIssueFieldValuesItem {
   ignored?: boolean;
   ignored_reason?: UpdateResponseSuggestionsIssueFieldValuesItemIgnoredReason;
 }
-export const UpdateResponseSuggestionsIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseSuggestionsIssueFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.optional(S.Number),
     value: S.optional(UpdateResponseSuggestionsIssueFieldValuesItemValue),
@@ -5560,17 +4635,17 @@ export const UpdateResponseSuggestionsIssueFieldValuesItem = /*@__PURE__*/ S.sus
 
 export type UpdateResponseSuggestionsIssueFieldValuesList =
   Array<UpdateResponseSuggestionsIssueFieldValuesItem>;
-export const UpdateResponseSuggestionsIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const UpdateResponseSuggestionsIssueFieldValuesList = /*@__PURE__*/ S.Array(
   UpdateResponseSuggestionsIssueFieldValuesItem,
 ) as any as S.Schema<UpdateResponseSuggestionsIssueFieldValuesList>;
 
 export type UpdateResponseSuggestionsLabelsItemConfidence = "low" | "medium" | "high";
-export const UpdateResponseSuggestionsLabelsItemConfidence = S.String;
+const UpdateResponseSuggestionsLabelsItemConfidence = S.String;
 
 export type UpdateResponseSuggestionsLabelsItemIgnoredReason =
   | "already_applied"
   | "issue_already_closed";
-export const UpdateResponseSuggestionsLabelsItemIgnoredReason = S.String;
+const UpdateResponseSuggestionsLabelsItemIgnoredReason = S.String;
 
 export interface UpdateResponseSuggestionsLabelsItem {
   name?: string;
@@ -5580,7 +4655,7 @@ export interface UpdateResponseSuggestionsLabelsItem {
   ignored?: boolean;
   ignored_reason?: UpdateResponseSuggestionsLabelsItemIgnoredReason;
 }
-export const UpdateResponseSuggestionsLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseSuggestionsLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     rationale: S.optional(S.String),
@@ -5594,17 +4669,17 @@ export const UpdateResponseSuggestionsLabelsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseSuggestionsLabelsItem>;
 
 export type UpdateResponseSuggestionsLabelsList = Array<UpdateResponseSuggestionsLabelsItem>;
-export const UpdateResponseSuggestionsLabelsList = /*@__PURE__*/ S.Array(
+const UpdateResponseSuggestionsLabelsList = /*@__PURE__*/ S.Array(
   UpdateResponseSuggestionsLabelsItem,
 ) as any as S.Schema<UpdateResponseSuggestionsLabelsList>;
 
 export type UpdateResponseSuggestionsAssigneesItemConfidence = "low" | "medium" | "high";
-export const UpdateResponseSuggestionsAssigneesItemConfidence = S.String;
+const UpdateResponseSuggestionsAssigneesItemConfidence = S.String;
 
 export type UpdateResponseSuggestionsAssigneesItemIgnoredReason =
   | "already_applied"
   | "issue_already_closed";
-export const UpdateResponseSuggestionsAssigneesItemIgnoredReason = S.String;
+const UpdateResponseSuggestionsAssigneesItemIgnoredReason = S.String;
 
 export interface UpdateResponseSuggestionsAssigneesItem {
   login?: string;
@@ -5614,7 +4689,7 @@ export interface UpdateResponseSuggestionsAssigneesItem {
   ignored?: boolean;
   ignored_reason?: UpdateResponseSuggestionsAssigneesItemIgnoredReason;
 }
-export const UpdateResponseSuggestionsAssigneesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseSuggestionsAssigneesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.String),
     rationale: S.optional(S.String),
@@ -5628,17 +4703,17 @@ export const UpdateResponseSuggestionsAssigneesItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateResponseSuggestionsAssigneesItem>;
 
 export type UpdateResponseSuggestionsAssigneesList = Array<UpdateResponseSuggestionsAssigneesItem>;
-export const UpdateResponseSuggestionsAssigneesList = /*@__PURE__*/ S.Array(
+const UpdateResponseSuggestionsAssigneesList = /*@__PURE__*/ S.Array(
   UpdateResponseSuggestionsAssigneesItem,
 ) as any as S.Schema<UpdateResponseSuggestionsAssigneesList>;
 
 export type UpdateResponseSuggestionsStateItemConfidence = "low" | "medium" | "high";
-export const UpdateResponseSuggestionsStateItemConfidence = S.String;
+const UpdateResponseSuggestionsStateItemConfidence = S.String;
 
 export type UpdateResponseSuggestionsStateItemIgnoredReason =
   | "already_applied"
   | "issue_already_closed";
-export const UpdateResponseSuggestionsStateItemIgnoredReason = S.String;
+const UpdateResponseSuggestionsStateItemIgnoredReason = S.String;
 
 export interface UpdateResponseSuggestionsStateItem {
   value?: string;
@@ -5650,7 +4725,7 @@ export interface UpdateResponseSuggestionsStateItem {
   ignored?: boolean;
   ignored_reason?: UpdateResponseSuggestionsStateItemIgnoredReason;
 }
-export const UpdateResponseSuggestionsStateItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseSuggestionsStateItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     state_reason: S.optional(S.String),
@@ -5666,7 +4741,7 @@ export const UpdateResponseSuggestionsStateItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseSuggestionsStateItem>;
 
 export type UpdateResponseSuggestionsStateList = Array<UpdateResponseSuggestionsStateItem>;
-export const UpdateResponseSuggestionsStateList = /*@__PURE__*/ S.Array(
+const UpdateResponseSuggestionsStateList = /*@__PURE__*/ S.Array(
   UpdateResponseSuggestionsStateItem,
 ) as any as S.Schema<UpdateResponseSuggestionsStateList>;
 
@@ -5678,7 +4753,7 @@ export interface UpdateResponseSuggestions {
   assignees?: UpdateResponseSuggestionsAssigneesList;
   state?: UpdateResponseSuggestionsStateList;
 }
-export const UpdateResponseSuggestions = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponseSuggestions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(UpdateResponseSuggestionsTypeList),
     issue_field_values: S.optional(UpdateResponseSuggestionsIssueFieldValuesList),
@@ -5742,7 +4817,7 @@ export interface UpdateResponse {
   /** Pending suggestions for each suggestible field (`type`, `issue_field_values`, `labels`, `assignees`, `state`) the request touched. Omitted for fields not in the request or with no pending or ignored suggestions. Items tagged `ignored` are echoes of the current request's inputs that were not persisted as pending suggestions. */
   suggestions?: UpdateResponseSuggestions;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -5798,7 +4873,7 @@ export interface UpdateCommentRequest {
   /** The contents of the comment. */
   body: string;
 }
-export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5828,7 +4903,7 @@ export interface UpdateLabelRequest {
   /** Whether to archive or unarchive the label. Archived labels cannot be added to issues or pull requests. For more information, see "[Archiving labels](https://docs.github.com/issues/organizing-your-work-with-labels/managing-labels)." */
   archived?: boolean;
 }
-export const UpdateLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5842,7 +4917,7 @@ export const UpdateLabelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the milestone. Either `open` or `closed`. */
 export type UpdateMilestoneRequestState = "open" | "closed";
-export const UpdateMilestoneRequestState = S.String;
+const UpdateMilestoneRequestState = S.String;
 
 export interface UpdateMilestoneRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5860,7 +4935,7 @@ export interface UpdateMilestoneRequest {
   /** The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   due_on?: string;
 }
-export const UpdateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),

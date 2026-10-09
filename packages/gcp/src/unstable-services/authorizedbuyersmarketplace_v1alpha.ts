@@ -66,7 +66,7 @@ export interface AcceptProposalRequest {
   /** The last known client revision number of the proposal. */
   proposalRevision?: string;
 }
-export const AcceptProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalRevision: S.optional(S.String),
   }),
@@ -78,7 +78,7 @@ export interface AcceptBuyersProposalsRequest {
   /** Request body */
   body?: AcceptProposalRequest;
 }
-export const AcceptBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AcceptProposalRequest.pipe(T.HttpBody())),
@@ -94,7 +94,7 @@ export const AcceptBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptBuyersProposalsRequest>;
 
 export type ProposalOriginatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
-export const ProposalOriginatorRoleEnum = S.String;
+const ProposalOriginatorRoleEnum = S.String;
 
 /** Contains information on how a buyer or seller can be reached. */
 export interface Contact {
@@ -103,7 +103,7 @@ export interface Contact {
   /** The display_name of the contact. */
   displayName?: string;
 }
-export const Contact = /*@__PURE__*/ S.suspend(() =>
+const Contact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -111,10 +111,10 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 
 export type ContactList = Array<Contact>;
-export const ContactList = /*@__PURE__*/ S.Array(Contact) as any as S.Schema<ContactList>;
+const ContactList = /*@__PURE__*/ S.Array(Contact) as any as S.Schema<ContactList>;
 
 export type NoteCreatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
-export const NoteCreatorRoleEnum = S.String;
+const NoteCreatorRoleEnum = S.String;
 
 /** A text note attached to the proposal to facilitate the communication between buyers and sellers. */
 export interface Note {
@@ -125,7 +125,7 @@ export interface Note {
   /** Output only. When this note was created. */
   createTime?: string;
 }
-export const Note = /*@__PURE__*/ S.suspend(() =>
+const Note = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     note: S.optional(S.String),
     creatorRole: S.optional(NoteCreatorRoleEnum),
@@ -134,20 +134,20 @@ export const Note = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
 export type NoteList = Array<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
+const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
 export type ProposalLastUpdaterOrCommentorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
   | "SELLER";
-export const ProposalLastUpdaterOrCommentorRoleEnum = S.String;
+const ProposalLastUpdaterOrCommentorRoleEnum = S.String;
 
 /** Buyers are allowed to store certain types of private data in a proposal. */
 export interface PrivateData {
   /** A buyer specified reference ID. This can be queried in the list operations (max-length: 1024 unicode code units). */
   referenceId?: string;
 }
-export const PrivateData = /*@__PURE__*/ S.suspend(() =>
+const PrivateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceId: S.optional(S.String),
   }),
@@ -158,7 +158,7 @@ export type ProposalDealTypeEnum =
   | "PREFERRED_DEAL"
   | "PRIVATE_AUCTION"
   | "PROGRAMMATIC_GUARANTEED";
-export const ProposalDealTypeEnum = S.String;
+const ProposalDealTypeEnum = S.String;
 
 export type ProposalStateEnum =
   | "STATE_UNSPECIFIED"
@@ -167,7 +167,7 @@ export type ProposalStateEnum =
   | "BUYER_ACCEPTANCE_REQUESTED"
   | "FINALIZED"
   | "TERMINATED";
-export const ProposalStateEnum = S.String;
+const ProposalStateEnum = S.String;
 
 /** Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer. */
 export interface Proposal {
@@ -210,7 +210,7 @@ export interface Proposal {
   /** Output only. Indicates the state of the proposal. */
   state?: ProposalStateEnum | (string & {});
 }
-export const Proposal = /*@__PURE__*/ S.suspend(() =>
+const Proposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originatorRole: S.optional(ProposalOriginatorRoleEnum),
     sellerContacts: S.optional(ContactList),
@@ -236,7 +236,7 @@ export const Proposal = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for activating a client. */
 export interface ActivateClientRequest {}
-export const ActivateClientRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ActivateClientRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivateClientRequest",
 }) as any as S.Schema<ActivateClientRequest>;
 
@@ -246,7 +246,7 @@ export interface ActivateBuyersClientsRequest {
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const ActivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -262,14 +262,14 @@ export const ActivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateBuyersClientsRequest>;
 
 export type ClientStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-export const ClientStateEnum = S.String;
+const ClientStateEnum = S.String;
 
 export type ClientRoleEnum =
   | "CLIENT_ROLE_UNSPECIFIED"
   | "CLIENT_DEAL_VIEWER"
   | "CLIENT_DEAL_NEGOTIATOR"
   | "CLIENT_DEAL_APPROVER";
-export const ClientRoleEnum = S.String;
+const ClientRoleEnum = S.String;
 
 /** A client represents an agency, a brand, or an advertiser customer of the buyer. Based on the client's role, its client users will have varying levels of restricted access to the Marketplace and certain other sections of the Authorized Buyers UI. */
 export interface Client {
@@ -286,7 +286,7 @@ export interface Client {
   /** Required. The role assigned to the client. Each role implies a set of permissions granted to the client. */
   role?: ClientRoleEnum | (string & {});
 }
-export const Client = /*@__PURE__*/ S.suspend(() =>
+const Client = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerClientId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -299,15 +299,13 @@ export const Client = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for activating a client user. */
 export type ActivateClientUserRequest = ActivateClientRequest;
-export const ActivateClientUserRequest = ActivateClientRequest;
-
 export interface ActivateBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const ActivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -323,7 +321,7 @@ export const ActivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateBuyersClientsUsersRequest>;
 
 export type ClientUserStateEnum = "STATE_UNSPECIFIED" | "INVITED" | "ACTIVE" | "INACTIVE";
-export const ClientUserStateEnum = S.String;
+const ClientUserStateEnum = S.String;
 
 /** A user of a client who has restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the associated client. */
 export interface ClientUser {
@@ -334,7 +332,7 @@ export interface ClientUser {
   /** Required. The client user's email address that has to be unique across all users for the same client. */
   email?: string;
 }
-export const ClientUser = /*@__PURE__*/ S.suspend(() =>
+const ClientUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(ClientUserStateEnum),
@@ -344,15 +342,13 @@ export const ClientUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for activating a data segment */
 export type ActivateDataSegmentRequest = ActivateClientRequest;
-export const ActivateDataSegmentRequest = ActivateClientRequest;
-
 export interface ActivateBuyersDataSegmentsRequest {
   /** Required. Name of data segment to activate. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const ActivateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -368,7 +364,7 @@ export const ActivateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateBuyersDataSegmentsRequest>;
 
 export type DataSegmentStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "SUSPENDED";
-export const DataSegmentStateEnum = S.String;
+const DataSegmentStateEnum = S.String;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -379,7 +375,7 @@ export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -404,7 +400,7 @@ export interface DataSegment {
   /** Optional. The fee will be charged as a percentage of the impression cost, represented in millipercent. For example, 1% is represented as 1000. */
   millipercentOfMediaFee?: string;
 }
-export const DataSegment = /*@__PURE__*/ S.suspend(() =>
+const DataSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -418,15 +414,13 @@ export const DataSegment = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for ActivateCuratedPackage. */
 export type ActivateCuratedPackageRequest = ActivateClientRequest;
-export const ActivateCuratedPackageRequest = ActivateClientRequest;
-
 export interface ActivateCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to activate. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -445,36 +439,36 @@ export type CuratedPackageCurationFeeVisibilityEnum =
   | "CURATION_FEE_VISIBILITY_UNSPECIFIED"
   | "DISCLOSED"
   | "NON_DISCLOSED";
-export const CuratedPackageCurationFeeVisibilityEnum = S.String;
+const CuratedPackageCurationFeeVisibilityEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Settings for controlling access to a curated package. */
 export interface AccessControlSettings {
   /** Required. Immutable. The list of media planners that are explicitly granted access to the curated package. Eligible media planners can be found in the mediaPlanners.list method. Only a single media planner may be allowlisted at this time. Format: `mediaPlanners/{mediaPlannerAccountId}` */
   allowlistedMediaPlanners?: StringList;
 }
-export const AccessControlSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessControlSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowlistedMediaPlanners: S.optional(StringList),
   }),
 ).annotate({ identifier: "AccessControlSettings" }) as any as S.Schema<AccessControlSettings>;
 
 export type CuratedPackageStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-export const CuratedPackageStateEnum = S.String;
+const CuratedPackageStateEnum = S.String;
 
 export type PackageTargetingIncludedEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_SITE"
   | "ENVIRONMENT_APP";
-export const PackageTargetingIncludedEnvironmentEnum = S.String;
+const PackageTargetingIncludedEnvironmentEnum = S.String;
 
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
   | "REWARDED_TYPE_NON_REWARDED"
   | "REWARDED_TYPE_REWARDED";
-export const PackageTargetingIncludedRewardedTypeEnum = S.String;
+const PackageTargetingIncludedRewardedTypeEnum = S.String;
 
 /** Generic targeting used for targeting dimensions that contains a list of included and excluded numeric IDs. This cannot be filtered using list filter syntax. */
 export interface CriteriaTargeting {
@@ -483,7 +477,7 @@ export interface CriteriaTargeting {
   /** A list of numeric IDs to be excluded. */
   excludedCriteriaIds?: StringList;
 }
-export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
+const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedCriteriaIds: S.optional(StringList),
     excludedCriteriaIds: S.optional(StringList),
@@ -493,12 +487,12 @@ export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
   | "OPEN_MEASUREMENT_TYPE_OMID_V1";
-export const PackageTargetingIncludedOpenMeasurementTypesItemEnum = S.String;
+const PackageTargetingIncludedOpenMeasurementTypesItemEnum = S.String;
 
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnumList = Array<
   PackageTargetingIncludedOpenMeasurementTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedOpenMeasurementTypesItemEnumList = /*@__PURE__*/ S.Array(
+const PackageTargetingIncludedOpenMeasurementTypesItemEnumList = /*@__PURE__*/ S.Array(
   PackageTargetingIncludedOpenMeasurementTypesItemEnum,
 ) as any as S.Schema<PackageTargetingIncludedOpenMeasurementTypesItemEnumList>;
 
@@ -506,12 +500,10 @@ export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_DIRECT"
   | "AUTHORIZED_SELLER_STATUS_RESELLER";
-export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum = S.String;
-
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList = Array<
   PackageTargetingIncludedAuthorizedSellerStatusesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
+const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList>;
 
 export type PackageTargetingIncludedDeviceTypesItemEnum =
@@ -520,16 +512,14 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_PHONE"
   | "DEVICE_TYPE_TABLET";
-export const PackageTargetingIncludedDeviceTypesItemEnum = S.String;
-
 export type PackageTargetingIncludedDeviceTypesItemEnumList = Array<
   PackageTargetingIncludedDeviceTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedDeviceTypesItemEnumList =
+const PackageTargetingIncludedDeviceTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedDeviceTypesItemEnumList>;
 
 export type AdSizeTypeEnum = "TYPE_UNSPECIFIED" | "PIXEL" | "INTERSTITIAL" | "NATIVE" | "FLUID";
-export const AdSizeTypeEnum = S.String;
+const AdSizeTypeEnum = S.String;
 
 /** Represents size of a single ad slot, or a creative. */
 export interface AdSize {
@@ -540,7 +530,7 @@ export interface AdSize {
   /** The type of the ad slot size. */
   type?: AdSizeTypeEnum | (string & {});
 }
-export const AdSize = /*@__PURE__*/ S.suspend(() =>
+const AdSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.String),
     height: S.optional(S.String),
@@ -549,20 +539,20 @@ export const AdSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
 export type AdSizeList = Array<AdSize>;
-export const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
+const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
 
 export type PackageTargetingIncludedCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "CREATIVE_FORMAT_DISPLAY"
   | "CREATIVE_FORMAT_VIDEO"
   | "CREATIVE_FORMAT_AUDIO";
-export const PackageTargetingIncludedCreativeFormatEnum = S.String;
+const PackageTargetingIncludedCreativeFormatEnum = S.String;
 
 export type StringTargetingDimensionSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
   | "SELECTION_TYPE_EXCLUDE";
-export const StringTargetingDimensionSelectionTypeEnum = S.String;
+const StringTargetingDimensionSelectionTypeEnum = S.String;
 
 /** Generic targeting with string values. */
 export interface StringTargetingDimension {
@@ -571,7 +561,7 @@ export interface StringTargetingDimension {
   /** Required. The values specified. */
   values?: StringList;
 }
-export const StringTargetingDimension = /*@__PURE__*/ S.suspend(() =>
+const StringTargetingDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectionType: S.optional(StringTargetingDimensionSelectionTypeEnum),
     values: S.optional(StringList),
@@ -585,7 +575,7 @@ export interface TaxonomyTargeting {
   /** Optional. The list of targeted content taxonomy IDs. */
   targetedTaxonomyIds?: StringList;
 }
-export const TaxonomyTargeting = /*@__PURE__*/ S.suspend(() =>
+const TaxonomyTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedTaxonomyIds: S.optional(StringList),
     targetedTaxonomyIds: S.optional(StringList),
@@ -601,7 +591,7 @@ export interface PackagePublisherProvidedSignalsTargeting {
   /** Optional. The list of targeted and excluded video and audio signals IDs. These are additional signals supported by publisher provided signals. */
   videoAndAudioSignalsTargeting?: StringTargetingDimension;
 }
-export const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceTargeting: S.optional(TaxonomyTargeting),
     contentTargeting: S.optional(TaxonomyTargeting),
@@ -620,7 +610,7 @@ export interface PackagePlacementTargeting {
   /** Optional. The list of targeted or excluded mobile application IDs that publishers own. Currently, only Android and Apple apps are supported. Android App ID, for example, com.google.android.apps.maps, can be found in Google Play Store URL. iOS App ID (which is a number) can be found at the end of iTunes store URL. First party mobile applications is either included or excluded. */
   mobileAppTargeting?: StringTargetingDimension;
 }
-export const PackagePlacementTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackagePlacementTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriTargeting: S.optional(StringTargetingDimension),
     includedMobileAppCategoryTargeting: S.optional(StringList),
@@ -634,7 +624,7 @@ export type VideoPlcmtTargetingSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
   | "SELECTION_TYPE_EXCLUDE";
-export const VideoPlcmtTargetingSelectionTypeEnum = S.String;
+const VideoPlcmtTargetingSelectionTypeEnum = S.String;
 
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "VIDEO_PLCMT_TYPE_UNSPECIFIED"
@@ -642,12 +632,10 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "ACCOMPANYING_CONTENT"
   | "INTERSTITIAL"
   | "NO_CONTENT";
-export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum = S.String;
-
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList = Array<
   VideoPlcmtTargetingVideoPlcmtTypesItemEnum | (string & {})
 >;
-export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
+const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<VideoPlcmtTargetingVideoPlcmtTypesItemEnumList>;
 
 /** Defines targeting criteria based on the video placement type, often corresponding to the IAB OpenRTB 'plcmt' field. */
@@ -657,7 +645,7 @@ export interface VideoPlcmtTargeting {
   /** Required. The list of targeted video plcmts types. If empty, inventory will be targeted regardless of video plcmt type. */
   videoPlcmtTypes?: VideoPlcmtTargetingVideoPlcmtTypesItemEnumList;
 }
-export const VideoPlcmtTargeting = /*@__PURE__*/ S.suspend(() =>
+const VideoPlcmtTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectionType: S.optional(VideoPlcmtTargetingSelectionTypeEnum),
     videoPlcmtTypes: S.optional(VideoPlcmtTargetingVideoPlcmtTypesItemEnumList),
@@ -671,7 +659,7 @@ export interface VideoPlayerSizeTargeting {
   /** Required. The minimum width of the video player in pixels. */
   minimumWidth?: string;
 }
-export const VideoPlayerSizeTargeting = /*@__PURE__*/ S.suspend(() =>
+const VideoPlayerSizeTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumHeight: S.optional(S.String),
     minimumWidth: S.optional(S.String),
@@ -686,25 +674,23 @@ export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_SIXTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_NINETY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS";
-export const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum = S.String;
+const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum = S.String;
 
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
   | "CONTENT_DELIVERY_METHOD_STREAMING"
   | "CONTENT_DELIVERY_METHOD_PROGRESSIVE";
-export const PackageVideoTargetingIncludedContentDeliveryMethodEnum = S.String;
+const PackageVideoTargetingIncludedContentDeliveryMethodEnum = S.String;
 
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_UNSPECIFIED"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_OFF"
   | "PLAYBACK_METHOD_CLICK_TO_PLAY";
-export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum = S.String;
-
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList = Array<
   PackageVideoTargetingIncludedPlaybackMethodsItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
+const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPlaybackMethodsItemEnumList>;
 
 export type PackageVideoTargetingIncludedPositionTypesItemEnum =
@@ -712,12 +698,10 @@ export type PackageVideoTargetingIncludedPositionTypesItemEnum =
   | "POSITION_TYPE_MIDROLL"
   | "POSITION_TYPE_POSTROLL"
   | "POSITION_TYPE_PREROLL";
-export const PackageVideoTargetingIncludedPositionTypesItemEnum = S.String;
-
 export type PackageVideoTargetingIncludedPositionTypesItemEnumList = Array<
   PackageVideoTargetingIncludedPositionTypesItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedPositionTypesItemEnumList =
+const PackageVideoTargetingIncludedPositionTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPositionTypesItemEnumList>;
 
 export type PackageVideoTargetingIncludedMimeTypesItemEnum =
@@ -728,12 +712,10 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
   | "VIDEO_MIME_TYPE_APPLICATION_MPEGDASH"
   | "VIDEO_MIME_TYPE_APPLICATION_JAVASCRIPT"
   | "VIDEO_MIME_TYPE_WEBM";
-export const PackageVideoTargetingIncludedMimeTypesItemEnum = S.String;
-
 export type PackageVideoTargetingIncludedMimeTypesItemEnumList = Array<
   PackageVideoTargetingIncludedMimeTypesItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
+const PackageVideoTargetingIncludedMimeTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedMimeTypesItemEnumList>;
 
 /** Video specific targeting criteria. */
@@ -759,7 +741,7 @@ export interface PackageVideoTargeting {
   /** Optional. The list of targeted video mime types using the IANA published MIME type strings (https://www.iana.org/assignments/media-types/media-types.xhtml). If empty, inventory will be targeted regardless of video mime type. */
   includedMimeTypes?: PackageVideoTargetingIncludedMimeTypesItemEnumList;
 }
-export const PackageVideoTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackageVideoTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plcmtTargeting: S.optional(VideoPlcmtTargeting),
     includedPlayerSizeTargeting: S.optional(VideoPlayerSizeTargeting),
@@ -780,24 +762,20 @@ export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
   | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
   | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER";
-export const PackageTargetingIncludedNativeInventoryTypesItemEnum = S.String;
-
 export type PackageTargetingIncludedNativeInventoryTypesItemEnumList = Array<
   PackageTargetingIncludedNativeInventoryTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
+const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedNativeInventoryTypesItemEnumList>;
 
 export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "RESTRICTED_CATEGORY_ALCOHOL"
   | "RESTRICTED_CATEGORY_GAMBLING";
-export const PackageTargetingIncludedRestrictedCategoriesItemEnum = S.String;
-
 export type PackageTargetingIncludedRestrictedCategoriesItemEnumList = Array<
   PackageTargetingIncludedRestrictedCategoriesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
+const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedRestrictedCategoriesItemEnumList>;
 
 export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
@@ -805,7 +783,7 @@ export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_NON_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY";
-export const PackageTargetingIncludedAcceleratedMobilePageTypeEnum = S.String;
+const PackageTargetingIncludedAcceleratedMobilePageTypeEnum = S.String;
 
 /** Targeting criteria for curated and auction packages. */
 export interface PackageTargeting {
@@ -852,7 +830,7 @@ export interface PackageTargeting {
     | PackageTargetingIncludedAcceleratedMobilePageTypeEnum
     | (string & {});
 }
-export const PackageTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackageTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedEnvironment: S.optional(PackageTargetingIncludedEnvironmentEnum),
     includedRewardedType: S.optional(PackageTargetingIncludedRewardedTypeEnum),
@@ -914,7 +892,7 @@ export interface CuratedPackage {
   /** Optional. The fee will be charged as a percentage of the impression cost, represented in millipercent. For example, 1% is represented as 1000. */
   millipercentOfMediaFee?: string;
 }
-export const CuratedPackage = /*@__PURE__*/ S.suspend(() =>
+const CuratedPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -936,7 +914,7 @@ export interface AddCreativeRequest {
   /** Name of the creative to add to the finalized deal, in the format `buyers/{buyerAccountId}/creatives/{creativeId}`. See creative.name. */
   creative?: string;
 }
-export const AddCreativeRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCreativeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creative: S.optional(S.String),
   }),
@@ -948,7 +926,7 @@ export interface AddCreativeBuyersFinalizedDealsRequest {
   /** Request body */
   body?: AddCreativeRequest;
 }
-export const AddCreativeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCreativeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deal: S.String.pipe(T.Label()),
     body: S.optional(AddCreativeRequest.pipe(T.HttpBody())),
@@ -964,7 +942,7 @@ export const AddCreativeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AddCreativeBuyersFinalizedDealsRequest>;
 
 export type PriceTypeEnum = "TYPE_UNSPECIFIED" | "CPM" | "CPD";
-export const PriceTypeEnum = S.String;
+const PriceTypeEnum = S.String;
 
 /** Represents a price and a pricing type for a deal. */
 export interface Price {
@@ -973,7 +951,7 @@ export interface Price {
   /** The actual price with currency specified. */
   amount?: Money;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PriceTypeEnum),
     amount: S.optional(Money),
@@ -987,7 +965,7 @@ export interface PrivateAuctionTerms {
   /** The minimum price buyer has to bid to compete in the private auction. */
   floorPrice?: Price;
 }
-export const PrivateAuctionTerms = /*@__PURE__*/ S.suspend(() =>
+const PrivateAuctionTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     openAuctionAllowed: S.optional(S.Boolean),
     floorPrice: S.optional(Price),
@@ -1001,7 +979,7 @@ export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     id: S.optional(S.String),
@@ -1019,7 +997,7 @@ export interface MediaPlanner {
   /** Output only. The ancestor names of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}` Can be used to filter the response of the mediaPlanners.list method. */
   ancestorNames?: StringList;
 }
-export const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
+const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1032,19 +1010,17 @@ export type DealBuyerPermissionTypeEnum =
   | "BUYER_PERMISSION_TYPE_UNSPECIFIED"
   | "NEGOTIATOR_ONLY"
   | "BIDDER";
-export const DealBuyerPermissionTypeEnum = S.String;
+const DealBuyerPermissionTypeEnum = S.String;
 
 export type VideoTargetingTargetedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "PREROLL"
   | "MIDROLL"
   | "POSTROLL";
-export const VideoTargetingTargetedPositionTypesItemEnum = S.String;
-
 export type VideoTargetingTargetedPositionTypesItemEnumList = Array<
   VideoTargetingTargetedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingTargetedPositionTypesItemEnumList =
+const VideoTargetingTargetedPositionTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
 
 export type VideoTargetingExcludedPositionTypesItemEnum =
@@ -1052,12 +1028,10 @@ export type VideoTargetingExcludedPositionTypesItemEnum =
   | "PREROLL"
   | "MIDROLL"
   | "POSTROLL";
-export const VideoTargetingExcludedPositionTypesItemEnum = S.String;
-
 export type VideoTargetingExcludedPositionTypesItemEnumList = Array<
   VideoTargetingExcludedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingExcludedPositionTypesItemEnumList =
+const VideoTargetingExcludedPositionTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
 
 /** Represents targeting information about video. */
@@ -1067,7 +1041,7 @@ export interface VideoTargeting {
   /** A list of video positions to be excluded. When this field is populated, the targeted_position_types field must be empty. */
   excludedPositionTypes?: VideoTargetingExcludedPositionTypesItemEnumList;
 }
-export const VideoTargeting = /*@__PURE__*/ S.suspend(() =>
+const VideoTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedPositionTypes: S.optional(VideoTargetingTargetedPositionTypesItemEnumList),
     excludedPositionTypes: S.optional(VideoTargetingExcludedPositionTypesItemEnumList),
@@ -1081,7 +1055,7 @@ export interface InventorySizeTargeting {
   /** A list of inventory sizes to be excluded. */
   excludedInventorySizes?: AdSizeList;
 }
-export const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
+const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedInventorySizes: S.optional(AdSizeList),
     excludedInventorySizes: S.optional(AdSizeList),
@@ -1093,12 +1067,10 @@ export type InventoryTypeTargetingInventoryTypesItemEnum =
   | "BROWSER"
   | "MOBILE_APP"
   | "VIDEO_PLAYER";
-export const InventoryTypeTargetingInventoryTypesItemEnum = S.String;
-
 export type InventoryTypeTargetingInventoryTypesItemEnumList = Array<
   InventoryTypeTargetingInventoryTypesItemEnum | (string & {})
 >;
-export const InventoryTypeTargetingInventoryTypesItemEnumList =
+const InventoryTypeTargetingInventoryTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<InventoryTypeTargetingInventoryTypesItemEnumList>;
 
 /** Targeting of the inventory types a bid request can originate from. */
@@ -1106,7 +1078,7 @@ export interface InventoryTypeTargeting {
   /** The list of targeted inventory types for the bid request. */
   inventoryTypes?: InventoryTypeTargetingInventoryTypesItemEnumList;
 }
-export const InventoryTypeTargeting = /*@__PURE__*/ S.suspend(() =>
+const InventoryTypeTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryTypes: S.optional(InventoryTypeTargetingInventoryTypesItemEnumList),
   }),
@@ -1119,7 +1091,7 @@ export interface OperatingSystemTargeting {
   /** IDs of operating system versions to be included/excluded. */
   operatingSystemVersionCriteria?: CriteriaTargeting;
 }
-export const OperatingSystemTargeting = /*@__PURE__*/ S.suspend(() =>
+const OperatingSystemTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatingSystemCriteria: S.optional(CriteriaTargeting),
     operatingSystemVersionCriteria: S.optional(CriteriaTargeting),
@@ -1135,7 +1107,7 @@ export interface TechnologyTargeting {
   /** IDs of device categories to be included/excluded. */
   deviceCategoryTargeting?: CriteriaTargeting;
 }
-export const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
+const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceCapabilityTargeting: S.optional(CriteriaTargeting),
     operatingSystemTargeting: S.optional(OperatingSystemTargeting),
@@ -1150,7 +1122,7 @@ export interface UriTargeting {
   /** A list of URLs to be excluded. */
   excludedUris?: StringList;
 }
-export const UriTargeting = /*@__PURE__*/ S.suspend(() =>
+const UriTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedUris: S.optional(StringList),
     excludedUris: S.optional(StringList),
@@ -1164,7 +1136,7 @@ export interface FirstPartyMobileApplicationTargeting {
   /** A list of application IDs to be excluded. */
   excludedAppIds?: StringList;
 }
-export const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
+const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedAppIds: S.optional(StringList),
     excludedAppIds: S.optional(StringList),
@@ -1178,7 +1150,7 @@ export interface MobileApplicationTargeting {
   /** Publisher owned apps to be targeted or excluded by the publisher to display the ads in. */
   firstPartyTargeting?: FirstPartyMobileApplicationTargeting;
 }
-export const MobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
+const MobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstPartyTargeting: S.optional(FirstPartyMobileApplicationTargeting),
   }),
@@ -1193,7 +1165,7 @@ export interface PlacementTargeting {
   /** Mobile application targeting information in a deal. This doesn't apply to Auction Packages. */
   mobileApplicationTargeting?: MobileApplicationTargeting;
 }
-export const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
+const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriTargeting: S.optional(UriTargeting),
     mobileApplicationTargeting: S.optional(MobileApplicationTargeting),
@@ -1201,7 +1173,7 @@ export const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlacementTargeting" }) as any as S.Schema<PlacementTargeting>;
 
 export type DayPartTargetingTimeZoneTypeEnum = "TIME_ZONE_TYPE_UNSPECIFIED" | "SELLER" | "USER";
-export const DayPartTargetingTimeZoneTypeEnum = S.String;
+const DayPartTargetingTimeZoneTypeEnum = S.String;
 
 export type DayPartDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -1212,7 +1184,7 @@ export type DayPartDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const DayPartDayOfWeekEnum = S.String;
+const DayPartDayOfWeekEnum = S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -1225,7 +1197,7 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seconds: S.optional(S.Number),
     minutes: S.optional(S.Number),
@@ -1243,7 +1215,7 @@ export interface DayPart {
   /** Hours in 24 hour time between 0 and 24, inclusive. Note: 24 is logically equivalent to 0, but is supported since in some cases there may need to be differentiation made between midnight on one day and midnight on the next day. Accepted values for minutes are [0, 15, 30, 45]. 0 is the only acceptable minute value for hour 24. Seconds and nanos are ignored. */
   startTime?: TimeOfDay;
 }
-export const DayPart = /*@__PURE__*/ S.suspend(() =>
+const DayPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfWeek: S.optional(DayPartDayOfWeekEnum),
     endTime: S.optional(TimeOfDay),
@@ -1252,7 +1224,7 @@ export const DayPart = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DayPart" }) as any as S.Schema<DayPart>;
 
 export type DayPartList = Array<DayPart>;
-export const DayPartList = /*@__PURE__*/ S.Array(DayPart) as any as S.Schema<DayPartList>;
+const DayPartList = /*@__PURE__*/ S.Array(DayPart) as any as S.Schema<DayPartList>;
 
 /** Represents Daypart targeting. */
 export interface DayPartTargeting {
@@ -1261,7 +1233,7 @@ export interface DayPartTargeting {
   /** The targeted weekdays and times */
   dayParts?: DayPartList;
 }
-export const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
+const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZoneType: S.optional(DayPartTargetingTimeZoneTypeEnum),
     dayParts: S.optional(DayPartList),
@@ -1291,7 +1263,7 @@ export interface MarketplaceTargeting {
   /** Daypart targeting information. */
   daypartTargeting?: DayPartTargeting;
 }
-export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoTargeting: S.optional(CriteriaTargeting),
     videoTargeting: S.optional(VideoTargeting),
@@ -1310,7 +1282,7 @@ export type ProgrammaticGuaranteedTermsReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "STANDARD"
   | "SPONSORSHIP";
-export const ProgrammaticGuaranteedTermsReservationTypeEnum = S.String;
+const ProgrammaticGuaranteedTermsReservationTypeEnum = S.String;
 
 /** Pricing terms for Programmatic Guaranteed Deals. */
 export interface ProgrammaticGuaranteedTerms {
@@ -1327,7 +1299,7 @@ export interface ProgrammaticGuaranteedTerms {
   /** The reservation type for a Programmatic Guaranteed deal. This indicates whether the number of impressions is fixed, or a percent of available impressions. If not specified, the default reservation type is STANDARD. */
   reservationType?: ProgrammaticGuaranteedTermsReservationTypeEnum | (string & {});
 }
-export const ProgrammaticGuaranteedTerms = /*@__PURE__*/ S.suspend(() =>
+const ProgrammaticGuaranteedTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impressionCap: S.optional(S.String),
     fixedPrice: S.optional(Price),
@@ -1345,19 +1317,19 @@ export type CreativeRequirementsCreativeFormatEnum =
   | "DISPLAY"
   | "VIDEO"
   | "AUDIO";
-export const CreativeRequirementsCreativeFormatEnum = S.String;
+const CreativeRequirementsCreativeFormatEnum = S.String;
 
 export type CreativeRequirementsProgrammaticCreativeSourceEnum =
   | "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED"
   | "ADVERTISER"
   | "PUBLISHER";
-export const CreativeRequirementsProgrammaticCreativeSourceEnum = S.String;
+const CreativeRequirementsProgrammaticCreativeSourceEnum = S.String;
 
 export type CreativeRequirementsCreativePreApprovalPolicyEnum =
   | "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED"
   | "SELLER_PRE_APPROVAL_REQUIRED"
   | "SELLER_PRE_APPROVAL_NOT_REQUIRED";
-export const CreativeRequirementsCreativePreApprovalPolicyEnum = S.String;
+const CreativeRequirementsCreativePreApprovalPolicyEnum = S.String;
 
 export type CreativeRequirementsSkippableAdTypeEnum =
   | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
@@ -1365,13 +1337,13 @@ export type CreativeRequirementsSkippableAdTypeEnum =
   | "INSTREAM_SELECT"
   | "NOT_SKIPPABLE"
   | "ANY";
-export const CreativeRequirementsSkippableAdTypeEnum = S.String;
+const CreativeRequirementsSkippableAdTypeEnum = S.String;
 
 export type CreativeRequirementsCreativeSafeFrameCompatibilityEnum =
   | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
   | "COMPATIBLE"
   | "INCOMPATIBLE";
-export const CreativeRequirementsCreativeSafeFrameCompatibilityEnum = S.String;
+const CreativeRequirementsCreativeSafeFrameCompatibilityEnum = S.String;
 
 /** Message captures data about the creatives in the deal. */
 export interface CreativeRequirements {
@@ -1390,7 +1362,7 @@ export interface CreativeRequirements {
     | CreativeRequirementsCreativeSafeFrameCompatibilityEnum
     | (string & {});
 }
-export const CreativeRequirements = /*@__PURE__*/ S.suspend(() =>
+const CreativeRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeFormat: S.optional(CreativeRequirementsCreativeFormatEnum),
     maxAdDurationMs: S.optional(S.String),
@@ -1408,14 +1380,14 @@ export type DealDealTypeEnum =
   | "PREFERRED_DEAL"
   | "PRIVATE_AUCTION"
   | "PROGRAMMATIC_GUARANTEED";
-export const DealDealTypeEnum = S.String;
+const DealDealTypeEnum = S.String;
 
 /** Pricing terms for Preferred Deals. */
 export interface PreferredDealTerms {
   /** Fixed price for the deal. */
   fixedPrice?: Price;
 }
-export const PreferredDealTerms = /*@__PURE__*/ S.suspend(() =>
+const PreferredDealTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixedPrice: S.optional(Price),
   }),
@@ -1426,7 +1398,7 @@ export type DeliveryControlCompanionDeliveryTypeEnum =
   | "DELIVERY_OPTIONAL"
   | "DELIVERY_AT_LEAST_ONE"
   | "DELIVERY_ALL";
-export const DeliveryControlCompanionDeliveryTypeEnum = S.String;
+const DeliveryControlCompanionDeliveryTypeEnum = S.String;
 
 export type DeliveryControlRoadblockingTypeEnum =
   | "ROADBLOCKING_TYPE_UNSPECIFIED"
@@ -1435,7 +1407,7 @@ export type DeliveryControlRoadblockingTypeEnum =
   | "AS_MANY_AS_POSSIBLE"
   | "ALL_ROADBLOCK"
   | "CREATIVE_SET";
-export const DeliveryControlRoadblockingTypeEnum = S.String;
+const DeliveryControlRoadblockingTypeEnum = S.String;
 
 export type DeliveryControlCreativeRotationTypeEnum =
   | "CREATIVE_ROTATION_TYPE_UNSPECIFIED"
@@ -1443,14 +1415,14 @@ export type DeliveryControlCreativeRotationTypeEnum =
   | "ROTATION_OPTIMIZED"
   | "ROTATION_MANUAL"
   | "ROTATION_SEQUENTIAL";
-export const DeliveryControlCreativeRotationTypeEnum = S.String;
+const DeliveryControlCreativeRotationTypeEnum = S.String;
 
 export type DeliveryControlDeliveryRateTypeEnum =
   | "DELIVERY_RATE_TYPE_UNSPECIFIED"
   | "EVENLY"
   | "FRONT_LOADED"
   | "AS_FAST_AS_POSSIBLE";
-export const DeliveryControlDeliveryRateTypeEnum = S.String;
+const DeliveryControlDeliveryRateTypeEnum = S.String;
 
 export type FrequencyCapTimeUnitTypeEnum =
   | "TIME_UNIT_TYPE_UNSPECIFIED"
@@ -1462,7 +1434,7 @@ export type FrequencyCapTimeUnitTypeEnum =
   | "LIFETIME"
   | "POD"
   | "STREAM";
-export const FrequencyCapTimeUnitTypeEnum = S.String;
+const FrequencyCapTimeUnitTypeEnum = S.String;
 
 /** Message contains details about publisher-set frequency caps of the delivery. */
 export interface FrequencyCap {
@@ -1473,7 +1445,7 @@ export interface FrequencyCap {
   /** The amount of time, in the units specified by time_unit_type. Defines the amount of time over which impressions per user are counted and capped. */
   timeUnitsCount?: number;
 }
-export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
+const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxImpressions: S.optional(S.Number),
     timeUnitType: S.optional(FrequencyCapTimeUnitTypeEnum),
@@ -1482,9 +1454,7 @@ export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
 
 export type FrequencyCapList = Array<FrequencyCap>;
-export const FrequencyCapList = /*@__PURE__*/ S.Array(
-  FrequencyCap,
-) as any as S.Schema<FrequencyCapList>;
+const FrequencyCapList = /*@__PURE__*/ S.Array(FrequencyCap) as any as S.Schema<FrequencyCapList>;
 
 /** Message contains details about how the deal will be paced. */
 export interface DeliveryControl {
@@ -1499,7 +1469,7 @@ export interface DeliveryControl {
   /** Output only. Specifies any frequency caps. Cannot be filtered within ListDealsRequest. */
   frequencyCap?: FrequencyCapList;
 }
-export const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
+const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     companionDeliveryType: S.optional(DeliveryControlCompanionDeliveryTypeEnum),
     roadblockingType: S.optional(DeliveryControlRoadblockingTypeEnum),
@@ -1560,7 +1530,7 @@ export interface Deal {
   /** Output only. Specifies the pacing set by the publisher. */
   deliveryControl?: DeliveryControl;
 }
-export const Deal = /*@__PURE__*/ S.suspend(() =>
+const Deal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateAuctionTerms: S.optional(PrivateAuctionTerms),
     sellerTimeZone: S.optional(TimeZone),
@@ -1604,7 +1574,7 @@ export interface RtbMetrics {
   /** Must bid rate for current month. */
   mustBidRateCurrentMonth?: number;
 }
-export const RtbMetrics = /*@__PURE__*/ S.suspend(() =>
+const RtbMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidRequests7Days: S.optional(S.String),
     bidRate7Days: S.optional(S.Number),
@@ -1621,10 +1591,10 @@ export type FinalizedDealDealServingStatusEnum =
   | "ENDED"
   | "PAUSED_BY_BUYER"
   | "PAUSED_BY_SELLER";
-export const FinalizedDealDealServingStatusEnum = S.String;
+const FinalizedDealDealServingStatusEnum = S.String;
 
 export type DealPausingInfoPauseRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
-export const DealPausingInfoPauseRoleEnum = S.String;
+const DealPausingInfoPauseRoleEnum = S.String;
 
 /** Information related to deal pausing. */
 export interface DealPausingInfo {
@@ -1635,7 +1605,7 @@ export interface DealPausingInfo {
   /** The party that first paused the deal; unspecified for active deals. */
   pauseRole?: DealPausingInfoPauseRoleEnum;
 }
-export const DealPausingInfo = /*@__PURE__*/ S.suspend(() =>
+const DealPausingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pausingConsented: S.optional(S.Boolean),
     pauseReason: S.optional(S.String),
@@ -1658,7 +1628,7 @@ export interface FinalizedDeal {
   /** Whether the Programmatic Guaranteed deal is ready for serving. */
   readyToServe?: boolean;
 }
-export const FinalizedDeal = /*@__PURE__*/ S.suspend(() =>
+const FinalizedDeal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     deal: S.optional(Deal),
@@ -1674,7 +1644,7 @@ export interface AddNoteRequest {
   /** The note to add. */
   note?: Note;
 }
-export const AddNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     note: S.optional(Note),
   }),
@@ -1686,7 +1656,7 @@ export interface AddNoteBuyersProposalsRequest {
   /** Request body */
   body?: AddNoteRequest;
 }
-export const AddNoteBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNoteBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposal: S.String.pipe(T.Label()),
     body: S.optional(AddNoteRequest.pipe(T.HttpBody())),
@@ -1708,7 +1678,7 @@ export interface UpdateDealRequest {
   /** List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. */
   updateMask?: string;
 }
-export const UpdateDealRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDealRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deal: S.optional(Deal),
     updateMask: S.optional(S.String),
@@ -1716,7 +1686,7 @@ export const UpdateDealRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDealRequest" }) as any as S.Schema<UpdateDealRequest>;
 
 export type UpdateDealRequestList = Array<UpdateDealRequest>;
-export const UpdateDealRequestList = /*@__PURE__*/ S.Array(
+const UpdateDealRequestList = /*@__PURE__*/ S.Array(
   UpdateDealRequest,
 ) as any as S.Schema<UpdateDealRequestList>;
 
@@ -1725,7 +1695,7 @@ export interface BatchUpdateDealsRequest {
   /** Required. List of request messages to update deals. */
   requests?: UpdateDealRequestList;
 }
-export const BatchUpdateDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateDealRequestList),
   }),
@@ -1737,7 +1707,7 @@ export interface BatchUpdateBuyersProposalsDealsRequest {
   /** Request body */
   body?: BatchUpdateDealsRequest;
 }
-export const BatchUpdateBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdateDealsRequest.pipe(T.HttpBody())),
@@ -1753,14 +1723,14 @@ export const BatchUpdateBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<BatchUpdateBuyersProposalsDealsRequest>;
 
 export type DealList = Array<Deal>;
-export const DealList = /*@__PURE__*/ S.Array(Deal) as any as S.Schema<DealList>;
+const DealList = /*@__PURE__*/ S.Array(Deal) as any as S.Schema<DealList>;
 
 /** Response message for batch updating deals. */
 export interface BatchUpdateDealsResponse {
   /** Deals updated. */
   deals?: DealList;
 }
-export const BatchUpdateDealsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateDealsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deals: S.optional(DealList),
   }),
@@ -1768,15 +1738,13 @@ export const BatchUpdateDealsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to cancel an ongoing negotiation. */
 export type CancelNegotiationRequest = ActivateClientRequest;
-export const CancelNegotiationRequest = ActivateClientRequest;
-
 export interface CancelNegotiationBuyersProposalsRequest {
   /** Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` */
   proposal: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const CancelNegotiationBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelNegotiationBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposal: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -1797,7 +1765,7 @@ export interface CreateBuyersClientsRequest {
   /** Request body */
   body?: Client;
 }
-export const CreateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Client.pipe(T.HttpBody())),
@@ -1818,7 +1786,7 @@ export interface CreateBuyersClientsUsersRequest {
   /** Request body */
   body?: ClientUser;
 }
-export const CreateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ClientUser.pipe(T.HttpBody())),
@@ -1839,7 +1807,7 @@ export interface CreateBuyersDataSegmentsRequest {
   /** Request body */
   body?: DataSegment;
 }
-export const CreateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(DataSegment.pipe(T.HttpBody())),
@@ -1860,7 +1828,7 @@ export interface CreateCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: CuratedPackage;
 }
-export const CreateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CuratedPackage.pipe(T.HttpBody())),
@@ -1877,15 +1845,13 @@ export const CreateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Request message for disabling a client. */
 export type DeactivateClientRequest = ActivateClientRequest;
-export const DeactivateClientRequest = ActivateClientRequest;
-
 export interface DeactivateBuyersClientsRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const DeactivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -1902,15 +1868,13 @@ export const DeactivateBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for deactivating a client user. */
 export type DeactivateClientUserRequest = ActivateClientRequest;
-export const DeactivateClientUserRequest = ActivateClientRequest;
-
 export interface DeactivateBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const DeactivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -1927,15 +1891,13 @@ export const DeactivateBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for deactivating a data segment */
 export type DeactivateDataSegmentRequest = ActivateClientRequest;
-export const DeactivateDataSegmentRequest = ActivateClientRequest;
-
 export interface DeactivateBuyersDataSegmentsRequest {
   /** Required. Name of data segment to deactivate. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const DeactivateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -1952,15 +1914,13 @@ export const DeactivateBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for DeactivateCuratedPackage. */
 export type DeactivateCuratedPackageRequest = ActivateClientRequest;
-export const DeactivateCuratedPackageRequest = ActivateClientRequest;
-
 export interface DeactivateCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to deactivate. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const DeactivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -1979,7 +1939,7 @@ export interface DeleteBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
   name: string;
 }
-export const DeleteBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1995,13 +1955,13 @@ export const DeleteBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = ActivateClientRequest as any as S.Schema<Empty>;
+const Empty = ActivateClientRequest as any as S.Schema<Empty>;
 
 export interface GetBuyersAuctionPackagesRequest {
   /** Required. Name of auction package to get. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
   name: string;
 }
-export const GetBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2016,9 +1976,7 @@ export const GetBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBuyersAuctionPackagesRequest>;
 
 export type MediaPlannerList = Array<MediaPlanner>;
-export const MediaPlannerList = /*@__PURE__*/ S.Array(
-  MediaPlanner,
-) as any as S.Schema<MediaPlannerList>;
+const MediaPlannerList = /*@__PURE__*/ S.Array(MediaPlanner) as any as S.Schema<MediaPlannerList>;
 
 /** Defines a segment of inventory that buyer wants to buy. It's created by buyer and could be shared with multiple buyers. */
 export interface AuctionPackage {
@@ -2047,7 +2005,7 @@ export interface AuctionPackage {
   /** Output only. When calling as a buyer, the list of clients of the current buyer that are subscribed to the AuctionPackage. When calling as a bidder, the list of clients that are subscribed to the AuctionPackage owned by the bidder or its buyers. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` */
   subscribedClients?: StringList;
 }
-export const AuctionPackage = /*@__PURE__*/ S.suspend(() =>
+const AuctionPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     floorPriceCpm: S.optional(Money),
@@ -2068,7 +2026,7 @@ export interface GetBuyersClientsRequest {
   /** Required. Format: `buyers/{accountId}/clients/{clientAccountId}` */
   name: string;
 }
-export const GetBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2084,7 +2042,7 @@ export interface GetBuyersClientsUsersRequest {
   /** Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` */
   name: string;
 }
-export const GetBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2102,7 +2060,7 @@ export interface GetBuyersDataSegmentsRequest {
   /** Required. Name of data segment to get. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
 }
-export const GetBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2120,7 +2078,7 @@ export interface GetBuyersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` */
   name: string;
 }
-export const GetBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2138,7 +2096,7 @@ export interface GetBuyersProposalsRequest {
   /** Required. Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` */
   name: string;
 }
-export const GetBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2156,7 +2114,7 @@ export interface GetBuyersProposalsDealsRequest {
   /** Required. Format: buyers/{accountId}/proposals/{proposalId}/deals/{dealId} */
   name: string;
 }
-export const GetBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2174,7 +2132,7 @@ export interface GetBuyersPublisherProfilesRequest {
   /** Required. Name of the publisher profile. Format: `buyers/{buyerId}/publisherProfiles/{publisherProfileId}` */
   name: string;
 }
-export const GetBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2203,7 +2161,7 @@ export type PublisherProfileMobileApplicationAppStoreEnum =
   | "VIVO"
   | "XIAOMI"
   | "LG_TV";
-export const PublisherProfileMobileApplicationAppStoreEnum = S.String;
+const PublisherProfileMobileApplicationAppStoreEnum = S.String;
 
 /** A mobile application that contains a external app ID, name, and app store. */
 export interface PublisherProfileMobileApplication {
@@ -2214,7 +2172,7 @@ export interface PublisherProfileMobileApplication {
   /** The external ID for the app from its app store. Can be used to filter the response of the publisherProfiles.list method. */
   externalAppId?: string;
 }
-export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
+const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStore: S.optional(PublisherProfileMobileApplicationAppStoreEnum),
     name: S.optional(S.String),
@@ -2225,7 +2183,7 @@ export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublisherProfileMobileApplication>;
 
 export type PublisherProfileMobileApplicationList = Array<PublisherProfileMobileApplication>;
-export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
+const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
   PublisherProfileMobileApplication,
 ) as any as S.Schema<PublisherProfileMobileApplicationList>;
 
@@ -2262,7 +2220,7 @@ export interface PublisherProfile {
   /** Description on the publisher's audience. */
   audienceDescription?: string;
 }
-export const PublisherProfile = /*@__PURE__*/ S.suspend(() =>
+const PublisherProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaKitUrl: S.optional(S.String),
     programmaticDealsContact: S.optional(S.String),
@@ -2286,7 +2244,7 @@ export interface GetCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to retrieve. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
 }
-export const GetCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2312,7 +2270,7 @@ export interface ListBiddersAuctionPackagesRequest {
   /** Requested page size. The server may return fewer results than requested. Max allowed page size is 500. */
   pageSize?: number;
 }
-export const ListBiddersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2331,7 +2289,7 @@ export const ListBiddersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBiddersAuctionPackagesRequest>;
 
 export type AuctionPackageList = Array<AuctionPackage>;
-export const AuctionPackageList = /*@__PURE__*/ S.Array(
+const AuctionPackageList = /*@__PURE__*/ S.Array(
   AuctionPackage,
 ) as any as S.Schema<AuctionPackageList>;
 
@@ -2342,7 +2300,7 @@ export interface ListAuctionPackagesResponse {
   /** Continuation token for fetching the next page of results. Pass this value in the ListAuctionPackagesRequest.pageToken field in the subsequent call to the `ListAuctionPackages` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListAuctionPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuctionPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auctionPackages: S.optional(AuctionPackageList),
     nextPageToken: S.optional(S.String),
@@ -2363,7 +2321,7 @@ export interface ListBiddersFinalizedDealsRequest {
   /** Optional query string using the [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus * readyToServe */
   filter?: string;
 }
-export const ListBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2382,7 +2340,7 @@ export const ListBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBiddersFinalizedDealsRequest>;
 
 export type FinalizedDealList = Array<FinalizedDeal>;
-export const FinalizedDealList = /*@__PURE__*/ S.Array(
+const FinalizedDealList = /*@__PURE__*/ S.Array(
   FinalizedDeal,
 ) as any as S.Schema<FinalizedDealList>;
 
@@ -2393,7 +2351,7 @@ export interface ListFinalizedDealsResponse {
   /** The list of finalized deals. */
   finalizedDeals?: FinalizedDealList;
 }
-export const ListFinalizedDealsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFinalizedDealsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     finalizedDeals: S.optional(FinalizedDealList),
@@ -2414,7 +2372,7 @@ export interface ListBuyersAuctionPackagesRequest {
   /** Optional. Optional query string using the [Cloud API list filtering syntax](/authorized-buyers/apis/guides/list-filters). Only supported when parent is bidder. Supported columns for filtering are: * displayName * createTime * updateTime * eligibleSeatIds */
   filter?: string;
 }
-export const ListBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2442,7 +2400,7 @@ export interface ListBuyersClientsRequest {
   /** Query string using the [Filtering Syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported fields for filtering are: * partnerClientId Use this field to filter the clients by the partnerClientId. For example, if the partnerClientId of the client is "1234", the value of this field should be `partnerClientId = "1234"`, in order to get only the client whose partnerClientId is "1234" in the response. */
   filter?: string;
 }
-export const ListBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2458,7 +2416,7 @@ export const ListBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBuyersClientsRequest" }) as any as S.Schema<ListBuyersClientsRequest>;
 
 export type ClientList = Array<Client>;
-export const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
+const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
 
 /** Response message for the list method. */
 export interface ListClientsResponse {
@@ -2467,7 +2425,7 @@ export interface ListClientsResponse {
   /** The returned list of clients. */
   clients?: ClientList;
 }
-export const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     clients: S.optional(ClientList),
@@ -2482,7 +2440,7 @@ export interface ListBuyersClientsUsersRequest {
   /** Requested page size. If left blank, a default page size of 500 will be applied. */
   pageSize?: number;
 }
-export const ListBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2499,7 +2457,7 @@ export const ListBuyersClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuyersClientsUsersRequest>;
 
 export type ClientUserList = Array<ClientUser>;
-export const ClientUserList = /*@__PURE__*/ S.Array(ClientUser) as any as S.Schema<ClientUserList>;
+const ClientUserList = /*@__PURE__*/ S.Array(ClientUser) as any as S.Schema<ClientUserList>;
 
 /** Response message for the list method. */
 export interface ListClientUsersResponse {
@@ -2508,7 +2466,7 @@ export interface ListClientUsersResponse {
   /** The returned list of client users. */
   clientUsers?: ClientUserList;
 }
-export const ListClientUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     clientUsers: S.optional(ClientUserList),
@@ -2523,7 +2481,7 @@ export interface ListBuyersDataSegmentsRequest {
   /** Optional. The page token as returned. ListDataSegmentsResponse.nextPageToken */
   pageToken?: string;
 }
-export const ListBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2540,9 +2498,7 @@ export const ListBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuyersDataSegmentsRequest>;
 
 export type DataSegmentList = Array<DataSegment>;
-export const DataSegmentList = /*@__PURE__*/ S.Array(
-  DataSegment,
-) as any as S.Schema<DataSegmentList>;
+const DataSegmentList = /*@__PURE__*/ S.Array(DataSegment) as any as S.Schema<DataSegmentList>;
 
 /** Response message for listing data segments. */
 export interface ListDataSegmentsResponse {
@@ -2551,7 +2507,7 @@ export interface ListDataSegmentsResponse {
   /** Continuation token for fetching the next page of results. Pass this value in the ListDataSegmentsRequest.pageToken field in the subsequent call to the `ListDataSegments` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListDataSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSegments: S.optional(DataSegmentList),
     nextPageToken: S.optional(S.String),
@@ -2570,7 +2526,7 @@ export interface ListBuyersFinalizedDealsRequest {
   /** Optional query string using the [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus * readyToServe */
   filter?: string;
 }
-export const ListBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2598,7 +2554,7 @@ export interface ListBuyersProposalsRequest {
   /** Optional query string using the [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns for filtering are: * displayName * dealType * updateTime * state */
   filter?: string;
 }
-export const ListBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2616,7 +2572,7 @@ export const ListBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuyersProposalsRequest>;
 
 export type ProposalList = Array<Proposal>;
-export const ProposalList = /*@__PURE__*/ S.Array(Proposal) as any as S.Schema<ProposalList>;
+const ProposalList = /*@__PURE__*/ S.Array(Proposal) as any as S.Schema<ProposalList>;
 
 /** Response message for listing proposals. */
 export interface ListProposalsResponse {
@@ -2625,7 +2581,7 @@ export interface ListProposalsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
-export const ListProposalsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProposalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposals: S.optional(ProposalList),
     nextPageToken: S.optional(S.String),
@@ -2640,7 +2596,7 @@ export interface ListBuyersProposalsDealsRequest {
   /** Requested page size. The server may return fewer results than requested. If requested more than 500, the server will return 500 results per page. If unspecified, the server will pick a default page size of 100. */
   pageSize?: number;
 }
-export const ListBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2663,7 +2619,7 @@ export interface ListDealsResponse {
   /** The list of deals. */
   deals?: DealList;
 }
-export const ListDealsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDealsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     deals: S.optional(DealList),
@@ -2680,7 +2636,7 @@ export interface ListBuyersPublisherProfilesRequest {
   /** Required. Parent that owns the collection of publisher profiles Format: `buyers/{buyerId}` */
   parent: string;
 }
-export const ListBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2698,7 +2654,7 @@ export const ListBuyersPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuyersPublisherProfilesRequest>;
 
 export type PublisherProfileList = Array<PublisherProfile>;
-export const PublisherProfileList = /*@__PURE__*/ S.Array(
+const PublisherProfileList = /*@__PURE__*/ S.Array(
   PublisherProfile,
 ) as any as S.Schema<PublisherProfileList>;
 
@@ -2709,7 +2665,7 @@ export interface ListPublisherProfilesResponse {
   /** The list of matching publisher profiles. */
   publisherProfiles?: PublisherProfileList;
 }
-export const ListPublisherProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublisherProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     publisherProfiles: S.optional(PublisherProfileList),
@@ -2728,7 +2684,7 @@ export interface ListCuratorsCuratedPackagesRequest {
   /** Optional. A page token, received from a previous `ListCuratedPackages` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2746,7 +2702,7 @@ export const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCuratorsCuratedPackagesRequest>;
 
 export type CuratedPackageList = Array<CuratedPackage>;
-export const CuratedPackageList = /*@__PURE__*/ S.Array(
+const CuratedPackageList = /*@__PURE__*/ S.Array(
   CuratedPackage,
 ) as any as S.Schema<CuratedPackageList>;
 
@@ -2757,7 +2713,7 @@ export interface ListCuratedPackagesResponse {
   /** The list of curated packages. */
   curatedPackages?: CuratedPackageList;
 }
-export const ListCuratedPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCuratedPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     curatedPackages: S.optional(CuratedPackageList),
@@ -2774,7 +2730,7 @@ export interface ListMediaPlannersRequest {
   /** The maximum number of media planners to return. If unspecified, at most 100 media planners will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
 }
-export const ListMediaPlannersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMediaPlannersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2795,7 +2751,7 @@ export interface ListMediaPlannersResponse {
   /** List of media planners. */
   mediaPlanners?: MediaPlannerList;
 }
-export const ListMediaPlannersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMediaPlannersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     mediaPlanners: S.optional(MediaPlannerList),
@@ -2812,7 +2768,7 @@ export interface PatchBuyersClientsRequest {
   /** Request body */
   body?: Client;
 }
-export const PatchBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBuyersClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2836,7 +2792,7 @@ export interface PatchBuyersDataSegmentsRequest {
   /** Request body */
   body?: DataSegment;
 }
-export const PatchBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBuyersDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2860,7 +2816,7 @@ export interface PatchBuyersProposalsRequest {
   /** Request body */
   body?: Proposal;
 }
-export const PatchBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2884,7 +2840,7 @@ export interface PatchBuyersProposalsDealsRequest {
   /** Request body */
   body?: Deal;
 }
-export const PatchBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBuyersProposalsDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2908,7 +2864,7 @@ export interface PatchCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: CuratedPackage;
 }
-export const PatchCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2929,7 +2885,7 @@ export interface PauseFinalizedDealRequest {
   /** The reason to pause the finalized deal, will be displayed to the seller. Maximum length is 1000 characters. */
   reason?: string;
 }
-export const PauseFinalizedDealRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseFinalizedDealRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
   }),
@@ -2943,7 +2899,7 @@ export interface PauseBuyersFinalizedDealsRequest {
   /** Request body */
   body?: PauseFinalizedDealRequest;
 }
-export const PauseBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PauseFinalizedDealRequest.pipe(T.HttpBody())),
@@ -2960,15 +2916,13 @@ export const PauseBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for resuming a finalized deal. */
 export type ResumeFinalizedDealRequest = ActivateClientRequest;
-export const ResumeFinalizedDealRequest = ActivateClientRequest;
-
 export interface ResumeBuyersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const ResumeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -3010,7 +2964,7 @@ export interface SendRfpRequest {
   /** Required. Proposed flight start time of the RFP. A timestamp in RFC3339 UTC "Zulu" format. Note that the specified value will be truncated to a granularity of one second. */
   flightStartTime?: string;
 }
-export const SendRfpRequest = /*@__PURE__*/ S.suspend(() =>
+const SendRfpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client: S.optional(S.String),
     estimatedGrossSpend: S.optional(Money),
@@ -3033,7 +2987,7 @@ export interface SendRfpBuyersProposalsRequest {
   /** Request body */
   body?: SendRfpRequest;
 }
-export const SendRfpBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const SendRfpBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buyer: S.String.pipe(T.Label()),
     body: S.optional(SendRfpRequest.pipe(T.HttpBody())),
@@ -3050,15 +3004,13 @@ export const SendRfpBuyersProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for setting ready to serve for a finalized deal. */
 export type SetReadyToServeRequest = ActivateClientRequest;
-export const SetReadyToServeRequest = ActivateClientRequest;
-
 export interface SetReadyToServeBiddersFinalizedDealsRequest {
   /** Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` or `bidders/{accountId}/finalizedDeals/{dealId}` */
   deal: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const SetReadyToServeBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetReadyToServeBiddersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deal: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -3079,7 +3031,7 @@ export interface SetReadyToServeBuyersFinalizedDealsRequest {
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const SetReadyToServeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetReadyToServeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deal: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -3096,15 +3048,13 @@ export const SetReadyToServeBuyersFinalizedDealsRequest = /*@__PURE__*/ S.suspen
 
 /** Request message for SubscribeAuctionPackage. */
 export type SubscribeAuctionPackageRequest = ActivateClientRequest;
-export const SubscribeAuctionPackageRequest = ActivateClientRequest;
-
 export interface SubscribeBuyersAuctionPackagesRequest {
   /** Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const SubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -3124,7 +3074,7 @@ export interface SubscribeClientsRequest {
   /** Optional. A list of client buyers to subscribe to the auction package, with client buyer in the format `buyers/{accountId}/clients/{clientAccountId}`. The current buyer will be subscribed to the auction package regardless of the list contents if not already. */
   clients?: StringList;
 }
-export const SubscribeClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clients: S.optional(StringList),
   }),
@@ -3136,7 +3086,7 @@ export interface SubscribeClientsBuyersAuctionPackagesRequest {
   /** Request body */
   body?: SubscribeClientsRequest;
 }
-export const SubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auctionPackage: S.String.pipe(T.Label()),
     body: S.optional(SubscribeClientsRequest.pipe(T.HttpBody())),
@@ -3153,15 +3103,13 @@ export const SubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.susp
 
 /** Request message for UnsubscribeAuctionPackage. */
 export type UnsubscribeAuctionPackageRequest = ActivateClientRequest;
-export const UnsubscribeAuctionPackageRequest = ActivateClientRequest;
-
 export interface UnsubscribeBuyersAuctionPackagesRequest {
   /** Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` */
   name: string;
   /** Request body */
   body?: ActivateClientRequest;
 }
-export const UnsubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsubscribeBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateClientRequest.pipe(T.HttpBody())),
@@ -3181,7 +3129,7 @@ export interface UnsubscribeClientsRequest {
   /** Optional. A list of client buyers to unsubscribe from the auction package, with client buyer in the format `buyers/{accountId}/clients/{clientAccountId}`. */
   clients?: StringList;
 }
-export const UnsubscribeClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsubscribeClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clients: S.optional(StringList),
   }),
@@ -3195,7 +3143,7 @@ export interface UnsubscribeClientsBuyersAuctionPackagesRequest {
   /** Request body */
   body?: UnsubscribeClientsRequest;
 }
-export const UnsubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsubscribeClientsBuyersAuctionPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auctionPackage: S.String.pipe(T.Label()),
     body: S.optional(UnsubscribeClientsRequest.pipe(T.HttpBody())),

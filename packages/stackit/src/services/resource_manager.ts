@@ -47,7 +47,7 @@ export class NotFound
 
 /** Key-value string pairs attached to an existing resource container. Certain labels may be enforced via organizational policies. * **Key:** Must be between 1 and 63 characters long (excluding an optional domain prefix). Must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). May include an optional domain prefix up to 250 characters (a lowercase DNS subdomain containing `[a-z0-9]`, `-`, and `.`) followed by a slash (/). Total maximum key length is 314 characters. * **Value:** Must be 63 characters or less. May be empty (""). If non-empty, must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). > Note: Additional naming restrictions may apply depending on your specific organization.* */
 export type Labels = { [key: string]: string | undefined };
-export const Labels = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Labels>;
+const Labels = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Labels>;
 
 export interface Member {
   /** A valid role defined for the resource. */
@@ -55,7 +55,7 @@ export interface Member {
   /** Unique identifier of the user, service account or client. */
   subject: string;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String,
     subject: S.String,
@@ -64,7 +64,7 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
 
 /** The initial members assigned to the project. At least one subject needs to be a user, and not a client or service account. */
 export type CreateFolderRequestMembersList = Array<Member>;
-export const CreateFolderRequestMembersList = /*@__PURE__*/ S.Array(
+const CreateFolderRequestMembersList = /*@__PURE__*/ S.Array(
   Member,
 ) as any as S.Schema<CreateFolderRequestMembersList>;
 
@@ -77,7 +77,7 @@ export interface CreateFolderRequest {
   /** The name of the folder matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name: string;
 }
-export const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerParentId: S.String,
     labels: S.optional(Labels),
@@ -95,7 +95,7 @@ export const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Container type of parent container. */
 export type ParentType = "ORGANIZATION" | "FOLDER";
-export const ParentType = S.String;
+const ParentType = S.String;
 
 /** Parent container. */
 export interface Parent {
@@ -106,7 +106,7 @@ export interface Parent {
   /** Container type of parent container. */
   type: ParentType;
 }
-export const Parent = /*@__PURE__*/ S.suspend(() =>
+const Parent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     id: S.String,
@@ -128,7 +128,7 @@ export interface FolderResponse {
   /** Timestamp at which the folder was last modified. */
   updateTime: string;
 }
-export const FolderResponse = /*@__PURE__*/ S.suspend(() =>
+const FolderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -142,14 +142,14 @@ export const FolderResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value string pairs attached to a resource container during creation. Certain labels may be enforced via organizational policies. * **Key:** Must be between 1 and 63 characters long (excluding an optional domain prefix). Must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). May include an optional domain prefix up to 250 characters (a lowercase DNS subdomain containing `[a-z0-9]`, `-`, and `.`) followed by a slash (/). Total maximum key length is 314 characters. * **Value:** Must be 63 characters or less. May be empty (""). If non-empty, must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). * Either a `"scope": "PUBLIC"` label or a valid `networkArea` label must be provided for project creation. * To create a project within a STACKIT Network Area, you must set the label `"networkArea": "<networkAreaID>"`. > **Important:** The `networkArea` label is immutable and **cannot be changed** after project creation. */
 export type CreateProjectLabels = { [key: string]: string | undefined };
-export const CreateProjectLabels = /*@__PURE__*/ S.Record(
+const CreateProjectLabels = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateProjectLabels>;
 
 /** The initial members assigned to the project. At least one subject needs to be a user, and not a client or service account. */
 export type CreateProjectRequestMembersList = Array<Member>;
-export const CreateProjectRequestMembersList =
+const CreateProjectRequestMembersList =
   CreateFolderRequestMembersList as any as S.Schema<CreateProjectRequestMembersList>;
 
 export interface CreateProjectRequest {
@@ -161,7 +161,7 @@ export interface CreateProjectRequest {
   /** Project name matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name: string;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerParentId: S.String,
     labels: S.optional(CreateProjectLabels),
@@ -179,7 +179,7 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Lifecycle state of the resource container. | LIFECYCLE STATE | DESCRIPTION | |----------|--------------------| | CREATING | The creation process has been triggered. The state remains until resource manager gets notified about successful process completion. | | ACTIVE | Resource container can be fully used. | | INACTIVE | Resource container usage has been disabled. | | DELETING | The deletion process has been triggered. The state remains until resource manager gets notified about successful process completion. Afterwards, the record will be deleted. | */
 export type LifecycleState = "CREATING" | "ACTIVE" | "DELETING" | "INACTIVE";
-export const LifecycleState = S.String;
+const LifecycleState = S.String;
 
 export interface Project {
   /** Globally unique, user-friendly identifier. */
@@ -196,7 +196,7 @@ export interface Project {
   /** Timestamp at which the project was last modified. */
   updateTime: string;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -215,7 +215,7 @@ export interface DeleteFolderRequest {
   /** If true, all nested, empty folders are deleted recursively - if no project is attached! */
   force?: boolean;
 }
-export const DeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -230,12 +230,12 @@ export const DeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFolderRequest" }) as any as S.Schema<DeleteFolderRequest>;
 
 export interface DeleteFolderResponse {}
-export const DeleteFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteFolderResponse",
 }) as any as S.Schema<DeleteFolderResponse>;
 
 export type DeleteFolderLabelsRequestKeysList = Array<string>;
-export const DeleteFolderLabelsRequestKeysList = /*@__PURE__*/ S.Array(
+const DeleteFolderLabelsRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteFolderLabelsRequestKeysList>;
 
@@ -245,7 +245,7 @@ export interface DeleteFolderLabelsRequest {
   /** Label name. */
   keys?: DeleteFolderLabelsRequestKeysList;
 }
-export const DeleteFolderLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFolderLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String.pipe(T.Label()),
     keys: S.optional(DeleteFolderLabelsRequestKeysList.pipe(T.Query())),
@@ -262,11 +262,11 @@ export const DeleteFolderLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFolderLabelsRequest>;
 
 export interface DeleteFolderLabelsResponse {}
-export const DeleteFolderLabelsResponse =
+const DeleteFolderLabelsResponse =
   DeleteFolderResponse as any as S.Schema<DeleteFolderLabelsResponse>;
 
 export type DeleteOrganizationLabelsRequestKeysList = Array<string>;
-export const DeleteOrganizationLabelsRequestKeysList =
+const DeleteOrganizationLabelsRequestKeysList =
   DeleteFolderLabelsRequestKeysList as any as S.Schema<DeleteOrganizationLabelsRequestKeysList>;
 
 export interface DeleteOrganizationLabelsRequest {
@@ -275,7 +275,7 @@ export interface DeleteOrganizationLabelsRequest {
   /** Label name. */
   keys?: DeleteOrganizationLabelsRequestKeysList;
 }
-export const DeleteOrganizationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String.pipe(T.Label()),
     keys: S.optional(DeleteOrganizationLabelsRequestKeysList.pipe(T.Query())),
@@ -292,9 +292,7 @@ export const DeleteOrganizationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationLabelsRequest>;
 
 export interface DeleteOrganizationLabelsResponse {}
-export const DeleteOrganizationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteOrganizationLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteOrganizationLabelsResponse",
 }) as any as S.Schema<DeleteOrganizationLabelsResponse>;
 
@@ -302,7 +300,7 @@ export interface DeleteProjectRequest {
   /** Project identifier - containerId as well as UUID identifier is supported. */
   id: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -316,10 +314,10 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = DeleteFolderResponse as any as S.Schema<DeleteProjectResponse>;
+const DeleteProjectResponse = DeleteFolderResponse as any as S.Schema<DeleteProjectResponse>;
 
 export type DeleteProjectLabelsRequestKeysList = Array<string>;
-export const DeleteProjectLabelsRequestKeysList =
+const DeleteProjectLabelsRequestKeysList =
   DeleteFolderLabelsRequestKeysList as any as S.Schema<DeleteProjectLabelsRequestKeysList>;
 
 export interface DeleteProjectLabelsRequest {
@@ -328,7 +326,7 @@ export interface DeleteProjectLabelsRequest {
   /** Label name. */
   keys?: DeleteProjectLabelsRequestKeysList;
 }
-export const DeleteProjectLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String.pipe(T.Label()),
     keys: S.optional(DeleteProjectLabelsRequestKeysList.pipe(T.Query())),
@@ -345,7 +343,7 @@ export const DeleteProjectLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectLabelsRequest>;
 
 export interface DeleteProjectLabelsResponse {}
-export const DeleteProjectLabelsResponse =
+const DeleteProjectLabelsResponse =
   DeleteFolderResponse as any as S.Schema<DeleteProjectLabelsResponse>;
 
 export interface GetFolderDetailsRequest {
@@ -353,7 +351,7 @@ export interface GetFolderDetailsRequest {
   containerId: string;
   includeParents?: boolean;
 }
-export const GetFolderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFolderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String.pipe(T.Label()),
     includeParents: S.optional(S.Boolean.pipe(T.Query())),
@@ -369,7 +367,7 @@ export const GetFolderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Parent container type. */
 export type ParentListItemType = "FOLDER" | "ORGANIZATION";
-export const ParentListItemType = S.String;
+const ParentListItemType = S.String;
 
 export interface ParentListItem {
   /** User-friendly identifier of either organization or folder (will replace id). */
@@ -385,7 +383,7 @@ export interface ParentListItem {
   /** Parent container type. */
   type: ParentListItemType;
 }
-export const ParentListItem = /*@__PURE__*/ S.suspend(() =>
+const ParentListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     containerParentId: S.optional(S.String),
@@ -397,7 +395,7 @@ export const ParentListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParentListItem" }) as any as S.Schema<ParentListItem>;
 
 export type ParentList = Array<ParentListItem>;
-export const ParentList = /*@__PURE__*/ S.Array(ParentListItem) as any as S.Schema<ParentList>;
+const ParentList = /*@__PURE__*/ S.Array(ParentListItem) as any as S.Schema<ParentList>;
 
 export interface GetFolderDetailsResponse {
   /** Globally unique user-friendly identifier. */
@@ -414,7 +412,7 @@ export interface GetFolderDetailsResponse {
   /** Timestamp at which the folder was last modified. */
   updateTime: string;
 }
-export const GetFolderDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFolderDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -431,7 +429,7 @@ export interface GetOrganizationRequest {
   /** Organization identifier - containerId as well as UUID identifier is supported. */
   id: string;
 }
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -458,7 +456,7 @@ export interface OrganizationResponse {
   /** Timestamp at which the organization was last modified. */
   updateTime: string;
 }
-export const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -475,7 +473,7 @@ export interface GetProjectRequest {
   id: string;
   includeParents?: boolean;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     includeParents: S.optional(S.Boolean.pipe(T.Query())),
@@ -505,7 +503,7 @@ export interface GetProjectResponse {
   /** Timestamp at which the project was last modified. */
   updateTime: string;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -520,7 +518,7 @@ export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
 
 export type ListFoldersRequestContainerIdsList = Array<string>;
-export const ListFoldersRequestContainerIdsList =
+const ListFoldersRequestContainerIdsList =
   DeleteFolderLabelsRequestKeysList as any as S.Schema<ListFoldersRequestContainerIdsList>;
 
 export interface ListFoldersRequest {
@@ -537,7 +535,7 @@ export interface ListFoldersRequest {
   /** A timestamp to specify the beginning of the creationTime from which entries should be returned. If not given, defaults to the beginning of time. */
   creation_time_start?: string;
 }
-export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerParentId: S.optional(S.String.pipe(T.Query())),
     containerIds: S.optional(ListFoldersRequestContainerIdsList.pipe(T.Query())),
@@ -569,7 +567,7 @@ export interface ListFoldersResponseItemsItem {
   /** Timestamp at which the folder was created. */
   updateTime: string;
 }
-export const ListFoldersResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -584,7 +582,7 @@ export const ListFoldersResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersResponseItemsItem>;
 
 export type ListFoldersResponseItemsList = Array<ListFoldersResponseItemsItem>;
-export const ListFoldersResponseItemsList = /*@__PURE__*/ S.Array(
+const ListFoldersResponseItemsList = /*@__PURE__*/ S.Array(
   ListFoldersResponseItemsItem,
 ) as any as S.Schema<ListFoldersResponseItemsList>;
 
@@ -593,7 +591,7 @@ export interface ListFoldersResponse {
   limit: number;
   offset: number;
 }
-export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListFoldersResponseItemsList,
     limit: S.Number,
@@ -602,7 +600,7 @@ export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFoldersResponse" }) as any as S.Schema<ListFoldersResponse>;
 
 export type ListOrganizationsRequestContainerIdsList = Array<string>;
-export const ListOrganizationsRequestContainerIdsList =
+const ListOrganizationsRequestContainerIdsList =
   DeleteFolderLabelsRequestKeysList as any as S.Schema<ListOrganizationsRequestContainerIdsList>;
 
 export interface ListOrganizationsRequest {
@@ -617,7 +615,7 @@ export interface ListOrganizationsRequest {
   /** A timestamp to specify the beginning of the creationTime from which entries should be returned. If not given, defaults to the beginning of time. */
   creation_time_start?: string;
 }
-export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerIds: S.optional(ListOrganizationsRequestContainerIdsList.pipe(T.Query())),
     member: S.optional(S.String.pipe(T.Query())),
@@ -648,7 +646,7 @@ export interface ListOrganizationsResponseItemsItem {
   /** Timestamp at which the organization was last modified. */
   updateTime: string;
 }
-export const ListOrganizationsResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String,
     creationTime: S.String,
@@ -663,7 +661,7 @@ export const ListOrganizationsResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsResponseItemsItem>;
 
 export type ListOrganizationsResponseItemsList = Array<ListOrganizationsResponseItemsItem>;
-export const ListOrganizationsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListOrganizationsResponseItemsList = /*@__PURE__*/ S.Array(
   ListOrganizationsResponseItemsItem,
 ) as any as S.Schema<ListOrganizationsResponseItemsList>;
 
@@ -672,7 +670,7 @@ export interface ListOrganizationsResponse {
   limit: number;
   offset: number;
 }
-export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListOrganizationsResponseItemsList,
     limit: S.Number,
@@ -683,7 +681,7 @@ export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsResponse>;
 
 export type ListProjectsRequestContainerIdsList = Array<string>;
-export const ListProjectsRequestContainerIdsList =
+const ListProjectsRequestContainerIdsList =
   DeleteFolderLabelsRequestKeysList as any as S.Schema<ListProjectsRequestContainerIdsList>;
 
 export interface ListProjectsRequest {
@@ -700,7 +698,7 @@ export interface ListProjectsRequest {
   /** A timestamp to specify the beginning of the creationTime from which entries should be returned. If not given, defaults to the beginning of time. */
   creation_time_start?: string;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerParentId: S.optional(S.String.pipe(T.Query())),
     containerIds: S.optional(ListProjectsRequestContainerIdsList.pipe(T.Query())),
@@ -719,7 +717,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type ListProjectsResponseItemsList = Array<Project>;
-export const ListProjectsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListProjectsResponseItemsList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ListProjectsResponseItemsList>;
 
@@ -728,7 +726,7 @@ export interface ListProjectsResponse {
   limit: number;
   offset: number;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListProjectsResponseItemsList,
     limit: S.Number,
@@ -738,7 +736,7 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value string pairs attached to an existing resource container. Certain labels may be enforced via organizational policies. Setting an individual label's value to `null` removes/deletes that label from the resource. * **Key:** Must be between 1 and 63 characters long (excluding an optional domain prefix). Must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). May include an optional domain prefix up to 250 characters (a lowercase DNS subdomain containing `[a-z0-9]`, `-`, and `.`) followed by a slash (/). Total maximum key length is 314 characters. * **Value:** Must be 63 characters or less. May be empty (""). If non-empty, must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). > Note: Additional naming restrictions may apply depending on your specific organization.* */
 export type UpdateLabels = { [key: string]: string | null | undefined };
-export const UpdateLabels = /*@__PURE__*/ S.Record(
+const UpdateLabels = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateLabels>;
@@ -752,7 +750,7 @@ export interface PartialUpdateFolderRequest {
   /** New name for the resource container matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name?: string;
 }
-export const PartialUpdateFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.String.pipe(T.Label()),
     containerParentId: S.optional(S.String),
@@ -777,7 +775,7 @@ export interface PartialUpdateOrganizationRequest {
   /** The new name of the organization matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name?: string;
 }
-export const PartialUpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     labels: S.optional(UpdateLabels),
@@ -803,7 +801,7 @@ export interface PartialUpdateProjectRequest {
   /** New name for the resource container matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name?: string;
 }
-export const PartialUpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     containerParentId: S.optional(S.String),

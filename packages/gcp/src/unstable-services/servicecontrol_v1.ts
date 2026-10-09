@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type QuotaOperationQuotaModeEnum =
   | "UNSPECIFIED"
@@ -70,7 +70,7 @@ export type QuotaOperationQuotaModeEnum =
   | "BEST_EFFORT"
   | "CHECK_ONLY"
   | "ADJUST_ONLY";
-export const QuotaOperationQuotaModeEnum = S.String;
+const QuotaOperationQuotaModeEnum = S.String;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -81,7 +81,7 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -90,29 +90,24 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Describing buckets with arbitrary user-provided width. */
 export interface ExplicitBuckets {
   /** 'bound' is a list of strictly increasing boundaries between buckets. Note that a list of length N-1 defines N buckets because of fenceposting. See comments on `bucket_options` for details. The i'th finite bucket covers the interval [bound[i-1], bound[i]) where i ranges from 1 to bound_size() - 1. Note that there are no finite buckets at all if 'bound' only contains a single element; in that special case the single bound defines the boundary between the underflow and overflow buckets. bucket number lower bound upper bound i == 0 (underflow) -inf bound[i] 0 < i < bound_size() bound[i-1] bound[i] i == bound_size() (overflow) bound[i-1] +inf */
   bounds?: DoubleList;
 }
-export const ExplicitBuckets = /*@__PURE__*/ S.suspend(() =>
+const ExplicitBuckets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounds: S.optional(DoubleList),
   }),
 ).annotate({ identifier: "ExplicitBuckets" }) as any as S.Schema<ExplicitBuckets>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Exemplars are example points that may be used to annotate aggregated distribution values. They are metadata that gives information about a particular value added to a Distribution bucket, such as a trace ID that was active when a value was added. They may contain further information, such as a example values and timestamps, origin, etc. */
 export interface Exemplar {
@@ -123,7 +118,7 @@ export interface Exemplar {
   /** Value of the exemplar point. This value determines to which bucket the exemplar belongs. */
   value?: number;
 }
-export const Exemplar = /*@__PURE__*/ S.suspend(() =>
+const Exemplar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     attachments: S.optional(DocumentMapList),
@@ -132,7 +127,7 @@ export const Exemplar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Exemplar" }) as any as S.Schema<Exemplar>;
 
 export type ExemplarList = Array<Exemplar>;
-export const ExemplarList = /*@__PURE__*/ S.Array(Exemplar) as any as S.Schema<ExemplarList>;
+const ExemplarList = /*@__PURE__*/ S.Array(Exemplar) as any as S.Schema<ExemplarList>;
 
 /** Describing buckets with exponentially growing width. */
 export interface ExponentialBuckets {
@@ -143,7 +138,7 @@ export interface ExponentialBuckets {
   /** The i'th exponential bucket covers the interval [scale * growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to num_finite_buckets inclusive. Must be larger than 1.0. */
   growthFactor?: number;
 }
-export const ExponentialBuckets = /*@__PURE__*/ S.suspend(() =>
+const ExponentialBuckets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numFiniteBuckets: S.optional(S.Number),
     scale: S.optional(S.Number),
@@ -152,7 +147,7 @@ export const ExponentialBuckets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExponentialBuckets" }) as any as S.Schema<ExponentialBuckets>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Describing buckets with constant width. */
 export interface LinearBuckets {
@@ -163,7 +158,7 @@ export interface LinearBuckets {
   /** The i'th linear bucket covers the interval [offset + (i-1) * width, offset + i * width) where i ranges from 1 to num_finite_buckets, inclusive. */
   offset?: number;
 }
-export const LinearBuckets = /*@__PURE__*/ S.suspend(() =>
+const LinearBuckets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.Number),
     numFiniteBuckets: S.optional(S.Number),
@@ -194,7 +189,7 @@ export interface Distribution {
   /** Buckets with constant width. */
   linearBuckets?: LinearBuckets;
 }
-export const Distribution = /*@__PURE__*/ S.suspend(() =>
+const Distribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sumOfSquaredDeviation: S.optional(S.Number),
     explicitBuckets: S.optional(ExplicitBuckets),
@@ -230,7 +225,7 @@ export interface MetricValue {
   /** A text string value. */
   stringValue?: string;
 }
-export const MetricValue = /*@__PURE__*/ S.suspend(() =>
+const MetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     int64Value: S.optional(S.String),
@@ -245,9 +240,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 export type MetricValueList = Array<MetricValue>;
-export const MetricValueList = /*@__PURE__*/ S.Array(
-  MetricValue,
-) as any as S.Schema<MetricValueList>;
+const MetricValueList = /*@__PURE__*/ S.Array(MetricValue) as any as S.Schema<MetricValueList>;
 
 /** Represents a set of metric values in the same metric. Each metric value in the set should have a unique combination of start time, end time, and label values. */
 export interface MetricValueSet {
@@ -256,7 +249,7 @@ export interface MetricValueSet {
   /** The values in this metric. */
   metricValues?: MetricValueList;
 }
-export const MetricValueSet = /*@__PURE__*/ S.suspend(() =>
+const MetricValueSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.optional(S.String),
     metricValues: S.optional(MetricValueList),
@@ -264,7 +257,7 @@ export const MetricValueSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricValueSet" }) as any as S.Schema<MetricValueSet>;
 
 export type MetricValueSetList = Array<MetricValueSet>;
-export const MetricValueSetList = /*@__PURE__*/ S.Array(
+const MetricValueSetList = /*@__PURE__*/ S.Array(
   MetricValueSet,
 ) as any as S.Schema<MetricValueSetList>;
 
@@ -283,7 +276,7 @@ export interface QuotaOperation {
   /** Fully qualified name of the API method for which this quota operation is requested. This name is used for matching quota rules or metric rules and billing status rules defined in service configuration. This field should not be set if any of the following is true: (1) the quota operation is performed on non-API resources. (2) quota_metrics is set because the caller is doing quota override. Example of an RPC method name: google.example.library.v1.LibraryService.CreateShelf */
   methodName?: string;
 }
-export const QuotaOperation = /*@__PURE__*/ S.suspend(() =>
+const QuotaOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -301,7 +294,7 @@ export interface AllocateQuotaRequest {
   /** Operation that describes the quota allocation. */
   allocateOperation?: QuotaOperation;
 }
-export const AllocateQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const AllocateQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceConfigId: S.optional(S.String),
     allocateOperation: S.optional(QuotaOperation),
@@ -314,7 +307,7 @@ export interface AllocateQuotaServicesRequest {
   /** Request body */
   body?: AllocateQuotaRequest;
 }
-export const AllocateQuotaServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const AllocateQuotaServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(AllocateQuotaRequest.pipe(T.HttpBody())),
@@ -333,7 +326,7 @@ export interface AllocateInfo {
   /** A list of label keys that were unused by the server in processing the request. Thus, for similar requests repeated in a certain future time window, the caller can choose to ignore these labels in the requests to achieve better client-side cache hits and quota aggregation for rate quota. This field is not populated for allocation quota checks. */
   unusedArguments?: StringList;
 }
-export const AllocateInfo = /*@__PURE__*/ S.suspend(() =>
+const AllocateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unusedArguments: S.optional(StringList),
   }),
@@ -354,7 +347,7 @@ export type QuotaErrorCodeEnum =
   | "SERVICE_STATUS_UNAVAILABLE"
   | "BILLING_STATUS_UNAVAILABLE"
   | "QUOTA_SYSTEM_UNAVAILABLE";
-export const QuotaErrorCodeEnum = S.String;
+const QuotaErrorCodeEnum = S.String;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -365,7 +358,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -384,7 +377,7 @@ export interface QuotaError {
   /** Contains additional information about the quota error. If available, `status.code` will be non zero. */
   status?: Status;
 }
-export const QuotaError = /*@__PURE__*/ S.suspend(() =>
+const QuotaError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String),
     description: S.optional(S.String),
@@ -394,7 +387,7 @@ export const QuotaError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaError" }) as any as S.Schema<QuotaError>;
 
 export type QuotaErrorList = Array<QuotaError>;
-export const QuotaErrorList = /*@__PURE__*/ S.Array(QuotaError) as any as S.Schema<QuotaErrorList>;
+const QuotaErrorList = /*@__PURE__*/ S.Array(QuotaError) as any as S.Schema<QuotaErrorList>;
 
 /** Response message for the AllocateQuota method. */
 export interface AllocateQuotaResponse {
@@ -409,7 +402,7 @@ export interface AllocateQuotaResponse {
   /** ID of the actual config used to process the request. */
   serviceConfigId?: string;
 }
-export const AllocateQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const AllocateQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     allocateInfo: S.optional(AllocateInfo),
@@ -420,21 +413,21 @@ export const AllocateQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllocateQuotaResponse" }) as any as S.Schema<AllocateQuotaResponse>;
 
 export type QuotaPropertiesQuotaModeEnum = "ACQUIRE" | "ACQUIRE_BEST_EFFORT" | "CHECK";
-export const QuotaPropertiesQuotaModeEnum = S.String;
+const QuotaPropertiesQuotaModeEnum = S.String;
 
 /** Represents the properties needed for quota operations. */
 export interface QuotaProperties {
   /** Quota mode for this operation. */
   quotaMode?: QuotaPropertiesQuotaModeEnum | (string & {});
 }
-export const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
+const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaMode: S.optional(QuotaPropertiesQuotaModeEnum),
   }),
 ).annotate({ identifier: "QuotaProperties" }) as any as S.Schema<QuotaProperties>;
 
 export type OperationImportanceEnum = "LOW" | "HIGH" | "DEBUG" | "PROMOTED";
-export const OperationImportanceEnum = S.String;
+const OperationImportanceEnum = S.String;
 
 /** Represents a string that might be shortened to a specified length. */
 export interface TruncatableString {
@@ -443,7 +436,7 @@ export interface TruncatableString {
   /** The number of bytes removed from the original string. If this value is 0, then the string was not shortened. */
   truncatedByteCount?: number;
 }
-export const TruncatableString = /*@__PURE__*/ S.suspend(() =>
+const TruncatableString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     truncatedByteCount: S.optional(S.Number),
@@ -459,7 +452,7 @@ export interface AttributeValue {
   /** A Boolean value represented by `true` or `false`. */
   boolValue?: boolean;
 }
-export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
+const AttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intValue: S.optional(S.String),
     stringValue: S.optional(TruncatableString),
@@ -468,7 +461,7 @@ export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-export const AttributeValueMap = /*@__PURE__*/ S.Record(
+const AttributeValueMap = /*@__PURE__*/ S.Record(
   S.String,
   AttributeValue,
 ) as any as S.Schema<AttributeValueMap>;
@@ -480,7 +473,7 @@ export interface Attributes {
   /** The number of attributes that were discarded. Attributes can be discarded because their keys are too long or because there are too many attributes. If this value is 0 then all attributes are valid. */
   droppedAttributesCount?: number;
 }
-export const Attributes = /*@__PURE__*/ S.suspend(() =>
+const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeMap: S.optional(AttributeValueMap),
     droppedAttributesCount: S.optional(S.Number),
@@ -494,7 +487,7 @@ export type TraceSpanSpanKindEnum =
   | "CLIENT"
   | "PRODUCER"
   | "CONSUMER";
-export const TraceSpanSpanKindEnum = S.String;
+const TraceSpanSpanKindEnum = S.String;
 
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous--there may be gaps or overlaps between spans in a trace. */
 export interface TraceSpan {
@@ -521,7 +514,7 @@ export interface TraceSpan {
   /** Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call. */
   spanKind?: TraceSpanSpanKindEnum | (string & {});
 }
-export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
+const TraceSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     attributes: S.optional(Attributes),
@@ -538,7 +531,7 @@ export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
 export type TraceSpanList = Array<TraceSpan>;
-export const TraceSpanList = /*@__PURE__*/ S.Array(TraceSpan) as any as S.Schema<TraceSpanList>;
+const TraceSpanList = /*@__PURE__*/ S.Array(TraceSpan) as any as S.Schema<TraceSpanList>;
 
 /** Describes a resource associated with this operation. */
 export interface ResourceInfo {
@@ -551,7 +544,7 @@ export interface ResourceInfo {
   /** The resource permission required for this request. */
   permission?: string;
 }
-export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     resourceLocation: S.optional(S.String),
@@ -561,9 +554,7 @@ export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
 export type ResourceInfoList = Array<ResourceInfo>;
-export const ResourceInfoList = /*@__PURE__*/ S.Array(
-  ResourceInfo,
-) as any as S.Schema<ResourceInfoList>;
+const ResourceInfoList = /*@__PURE__*/ S.Array(ResourceInfo) as any as S.Schema<ResourceInfoList>;
 
 export type LogEntrySeverityEnum =
   | "DEFAULT"
@@ -575,7 +566,7 @@ export type LogEntrySeverityEnum =
   | "CRITICAL"
   | "ALERT"
   | "EMERGENCY";
-export const LogEntrySeverityEnum = S.String;
+const LogEntrySeverityEnum = S.String;
 
 /** A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message. */
 export interface HttpRequest {
@@ -610,7 +601,7 @@ export interface HttpRequest {
   /** The referer URL of the request, as defined in [HTTP/1.1 Header Field Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). */
   referer?: string;
 }
-export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
+const HttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestUrl: S.optional(S.String),
     userAgent: S.optional(S.String),
@@ -641,7 +632,7 @@ export interface LogEntryOperation {
   /** Optional. An arbitrary operation identifier. Log entries with the same identifier are assumed to be part of the same operation. */
   id?: string;
 }
-export const LogEntryOperation = /*@__PURE__*/ S.suspend(() =>
+const LogEntryOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last: S.optional(S.Boolean),
     producer: S.optional(S.String),
@@ -659,7 +650,7 @@ export interface LogEntrySourceLocation {
   /** Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name. */
   file?: string;
 }
-export const LogEntrySourceLocation = /*@__PURE__*/ S.suspend(() =>
+const LogEntrySourceLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.optional(S.String),
     function: S.optional(S.String),
@@ -694,7 +685,7 @@ export interface LogEntry {
   /** The time the event described by the log entry occurred. If omitted, defaults to operation start time. */
   timestamp?: string;
 }
-export const LogEntry = /*@__PURE__*/ S.suspend(() =>
+const LogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     severity: S.optional(LogEntrySeverityEnum),
@@ -712,7 +703,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
 export type LogEntryList = Array<LogEntry>;
-export const LogEntryList = /*@__PURE__*/ S.Array(LogEntry) as any as S.Schema<LogEntryList>;
+const LogEntryList = /*@__PURE__*/ S.Array(LogEntry) as any as S.Schema<LogEntryList>;
 
 /** Represents information regarding an operation. */
 export interface Operation {
@@ -743,7 +734,7 @@ export interface Operation {
   /** Represents information to be logged. */
   logEntries?: LogEntryList;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaProperties: S.optional(QuotaProperties),
     consumerId: S.optional(S.String),
@@ -772,7 +763,7 @@ export interface CheckRequest {
   /** Requests the project settings to be returned as part of the check response. */
   requestProjectSettings?: boolean;
 }
-export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(Operation),
     serviceConfigId: S.optional(S.String),
@@ -787,7 +778,7 @@ export interface CheckServicesRequest {
   /** Request body */
   body?: CheckRequest;
 }
-export const CheckServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(CheckRequest.pipe(T.HttpBody())),
@@ -806,7 +797,7 @@ export type ConsumerInfoTypeEnum =
   | "FOLDER"
   | "ORGANIZATION"
   | "SERVICE_SPECIFIC";
-export const ConsumerInfoTypeEnum = S.String;
+const ConsumerInfoTypeEnum = S.String;
 
 /** `ConsumerInfo` provides information about the consumer. */
 export interface ConsumerInfo {
@@ -817,7 +808,7 @@ export interface ConsumerInfo {
   /** The consumer identity number, can be Google cloud project number, folder number or organization number e.g. 1234567890. A value of 0 indicates no consumer number is found. */
   consumerNumber?: string;
 }
-export const ConsumerInfo = /*@__PURE__*/ S.suspend(() =>
+const ConsumerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ConsumerInfoTypeEnum),
     projectNumber: S.optional(S.String),
@@ -836,7 +827,7 @@ export interface CheckInfo {
   /** The unique id of the api key in the format of "apikey:". This field will be populated when the consumer passed to Chemist is an API key and all the API key related validations are successful. */
   apiKeyUid?: string;
 }
-export const CheckInfo = /*@__PURE__*/ S.suspend(() =>
+const CheckInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerInfo: S.optional(ConsumerInfo),
     unusedArguments: S.optional(StringList),
@@ -849,10 +840,10 @@ export type QuotaInfoQuotaExtractionStateEnum =
   | "QUOTA_EXTRACTION_STATE_UNSPECIFIED"
   | "QUOTA_EXTRACTION_STATE_DARK_LAUNCH"
   | "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION";
-export const QuotaInfoQuotaExtractionStateEnum = S.String;
+const QuotaInfoQuotaExtractionStateEnum = S.String;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
+const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
 
 /** Contains the quota information for a quota check response. */
 export interface QuotaInfo {
@@ -865,7 +856,7 @@ export interface QuotaInfo {
   /** Map of quota group name to the actual number of tokens consumed. If the quota check was not successful, then this will not be populated due to no quota consumption. We are not merging this field with 'quota_metrics' field because of the complexity of scaling in Chemist client code base. For simplicity, we will keep this field for Castor (that scales quota usage) and 'quota_metrics' for SuperQuota (that doesn't scale quota usage). */
   quotaConsumed?: IntegerMap;
 }
-export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
+const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaMetrics: S.optional(MetricValueSetList),
     limitExceeded: S.optional(StringList),
@@ -912,7 +903,7 @@ export type CheckErrorCodeEnum =
   | "SECURITY_POLICY_BACKEND_UNAVAILABLE"
   | "LOCATION_POLICY_BACKEND_UNAVAILABLE"
   | "INJECTED_ERROR";
-export const CheckErrorCodeEnum = S.String;
+const CheckErrorCodeEnum = S.String;
 
 /** Defines the errors to be returned in google.api.servicecontrol.v1.CheckResponse.check_errors. */
 export interface CheckError {
@@ -925,7 +916,7 @@ export interface CheckError {
   /** Subject to whom this error applies. See the specific code enum for more details on this field. For example: - "project:" - "folder:" - "organization:" */
   subject?: string;
 }
-export const CheckError = /*@__PURE__*/ S.suspend(() =>
+const CheckError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(CheckErrorCodeEnum),
     detail: S.optional(S.String),
@@ -935,7 +926,7 @@ export const CheckError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckError" }) as any as S.Schema<CheckError>;
 
 export type CheckErrorList = Array<CheckError>;
-export const CheckErrorList = /*@__PURE__*/ S.Array(CheckError) as any as S.Schema<CheckErrorList>;
+const CheckErrorList = /*@__PURE__*/ S.Array(CheckError) as any as S.Schema<CheckErrorList>;
 
 /** Response message for the Check method. */
 export interface CheckResponse {
@@ -952,7 +943,7 @@ export interface CheckResponse {
   /** Indicate the decision of the check. If no check errors are present, the service should process the operation. Otherwise the service should use the list of errors to determine the appropriate action. */
   checkErrors?: CheckErrorList;
 }
-export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkInfo: S.optional(CheckInfo),
     quotaInfo: S.optional(QuotaInfo),
@@ -964,7 +955,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** Request message for the Report method. */
 export interface ReportRequest {
@@ -973,7 +964,7 @@ export interface ReportRequest {
   /** Specifies which version of service config should be used to process the request. If unspecified or no matching version can be found, the latest one will be used. */
   serviceConfigId?: string;
 }
-export const ReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     serviceConfigId: S.optional(S.String),
@@ -986,7 +977,7 @@ export interface ReportServicesRequest {
   /** Request body */
   body?: ReportRequest;
 }
-export const ReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(ReportRequest.pipe(T.HttpBody())),
@@ -1006,7 +997,7 @@ export interface ReportError {
   /** Details of the error when processing the Operation. */
   status?: Status;
 }
-export const ReportError = /*@__PURE__*/ S.suspend(() =>
+const ReportError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     status: S.optional(Status),
@@ -1014,9 +1005,7 @@ export const ReportError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportError" }) as any as S.Schema<ReportError>;
 
 export type ReportErrorList = Array<ReportError>;
-export const ReportErrorList = /*@__PURE__*/ S.Array(
-  ReportError,
-) as any as S.Schema<ReportErrorList>;
+const ReportErrorList = /*@__PURE__*/ S.Array(ReportError) as any as S.Schema<ReportErrorList>;
 
 /** Response message for the Report method. */
 export interface ReportResponse {
@@ -1027,7 +1016,7 @@ export interface ReportResponse {
   /** The current service rollout id used to process the request. */
   serviceRolloutId?: string;
 }
-export const ReportResponse = /*@__PURE__*/ S.suspend(() =>
+const ReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportErrors: S.optional(ReportErrorList),
     serviceConfigId: S.optional(S.String),

@@ -620,7 +620,7 @@ export interface AddLayerVersionPermissionRequest {
   OrganizationId?: string;
   RevisionId?: string;
 }
-export const AddLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const AddLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.String.pipe(T.HttpLabel("LayerName")),
     VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
@@ -649,7 +649,7 @@ export interface AddLayerVersionPermissionResponse {
   Statement?: string;
   RevisionId?: string;
 }
-export const AddLayerVersionPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+const AddLayerVersionPermissionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Statement: S.optional(S.String), RevisionId: S.optional(S.String) }),
 ).annotate({
   identifier: "AddLayerVersionPermissionResponse",
@@ -659,7 +659,7 @@ export type Action = string;
 export type Principal = string;
 export type Arn = string;
 export type FunctionUrlAuthType = "NONE" | "AWS_IAM" | (string & {});
-export const FunctionUrlAuthType = S.String;
+const FunctionUrlAuthType = S.String;
 
 export type InvokedViaFunctionUrl = boolean;
 export type SourceOwner = string;
@@ -680,7 +680,7 @@ export interface AddPermissionRequest {
   RevisionId?: string;
   PrincipalOrgID?: string;
 }
-export const AddPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     StatementId: S.String,
@@ -708,7 +708,7 @@ export const AddPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AddPermissionResponse {
   Statement?: string;
 }
-export const AddPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+const AddPermissionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Statement: S.optional(S.String) }),
 ).annotate({ identifier: "AddPermissionResponse" }) as any as S.Schema<AddPermissionResponse>;
 export type DurableExecutionArn = string;
@@ -723,11 +723,11 @@ export type OperationType =
   | "CALLBACK"
   | "CHAINED_INVOKE"
   | (string & {});
-export const OperationType = S.String;
+const OperationType = S.String;
 
 export type OperationSubType = string;
 export type OperationAction = "START" | "SUCCEED" | "FAIL" | "RETRY" | "CANCEL" | (string & {});
-export const OperationAction = S.String;
+const OperationAction = S.String;
 
 export type OperationPayload = string | redacted.Redacted<string>;
 export type ErrorMessage = string | redacted.Redacted<string>;
@@ -735,14 +735,14 @@ export type ErrorType = string | redacted.Redacted<string>;
 export type ErrorData = string | redacted.Redacted<string>;
 export type StackTraceEntry = string | redacted.Redacted<string>;
 export type StackTraceEntries = (string | redacted.Redacted<string>)[];
-export const StackTraceEntries = /*@__PURE__*/ S.Array(SensitiveString);
+const StackTraceEntries = /*@__PURE__*/ S.Array(SensitiveString);
 export interface ErrorObject {
   ErrorMessage?: string | redacted.Redacted<string>;
   ErrorType?: string | redacted.Redacted<string>;
   ErrorData?: string | redacted.Redacted<string>;
   StackTrace?: (string | redacted.Redacted<string>)[];
 }
-export const ErrorObject = /*@__PURE__*/ S.suspend(() =>
+const ErrorObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ErrorMessage: S.optional(SensitiveString),
     ErrorType: S.optional(SensitiveString),
@@ -754,27 +754,27 @@ export type ReplayChildren = boolean;
 export interface ContextOptions {
   ReplayChildren?: boolean;
 }
-export const ContextOptions = /*@__PURE__*/ S.suspend(() =>
+const ContextOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReplayChildren: S.optional(S.Boolean) }),
 ).annotate({ identifier: "ContextOptions" }) as any as S.Schema<ContextOptions>;
 export type DurationSeconds = number;
 export interface StepOptions {
   NextAttemptDelaySeconds?: number;
 }
-export const StepOptions = /*@__PURE__*/ S.suspend(() =>
+const StepOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextAttemptDelaySeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "StepOptions" }) as any as S.Schema<StepOptions>;
 export interface WaitOptions {
   WaitSeconds?: number;
 }
-export const WaitOptions = /*@__PURE__*/ S.suspend(() =>
+const WaitOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ WaitSeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "WaitOptions" }) as any as S.Schema<WaitOptions>;
 export interface CallbackOptions {
   TimeoutSeconds?: number;
   HeartbeatTimeoutSeconds?: number;
 }
-export const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
+const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TimeoutSeconds: S.optional(S.Number), HeartbeatTimeoutSeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "CallbackOptions" }) as any as S.Schema<CallbackOptions>;
 export type TenantId = string;
@@ -782,7 +782,7 @@ export interface ChainedInvokeOptions {
   FunctionName: string;
   TenantId?: string;
 }
-export const ChainedInvokeOptions = /*@__PURE__*/ S.suspend(() =>
+const ChainedInvokeOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionName: S.String, TenantId: S.optional(S.String) }),
 ).annotate({ identifier: "ChainedInvokeOptions" }) as any as S.Schema<ChainedInvokeOptions>;
 export interface OperationUpdate {
@@ -800,7 +800,7 @@ export interface OperationUpdate {
   CallbackOptions?: CallbackOptions;
   ChainedInvokeOptions?: ChainedInvokeOptions;
 }
-export const OperationUpdate = /*@__PURE__*/ S.suspend(() =>
+const OperationUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     ParentId: S.optional(S.String),
@@ -818,7 +818,7 @@ export const OperationUpdate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationUpdate" }) as any as S.Schema<OperationUpdate>;
 export type OperationUpdates = OperationUpdate[];
-export const OperationUpdates = /*@__PURE__*/ S.Array(OperationUpdate);
+const OperationUpdates = /*@__PURE__*/ S.Array(OperationUpdate);
 export type ClientToken = string;
 export interface CheckpointDurableExecutionRequest {
   DurableExecutionArn: string;
@@ -826,7 +826,7 @@ export interface CheckpointDurableExecutionRequest {
   Updates?: OperationUpdate[];
   ClientToken?: string;
 }
-export const CheckpointDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckpointDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
     CheckpointToken: S.String,
@@ -859,13 +859,13 @@ export type OperationStatus =
   | "TIMED_OUT"
   | "STOPPED"
   | (string & {});
-export const OperationStatus = S.String;
+const OperationStatus = S.String;
 
 export type InputPayload = string | redacted.Redacted<string>;
 export interface ExecutionDetails {
   InputPayload?: string | redacted.Redacted<string>;
 }
-export const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InputPayload: S.optional(SensitiveString) }),
 ).annotate({ identifier: "ExecutionDetails" }) as any as S.Schema<ExecutionDetails>;
 export interface ContextDetails {
@@ -873,7 +873,7 @@ export interface ContextDetails {
   Result?: string | redacted.Redacted<string>;
   Error?: ErrorObject;
 }
-export const ContextDetails = /*@__PURE__*/ S.suspend(() =>
+const ContextDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReplayChildren: S.optional(S.Boolean),
     Result: S.optional(SensitiveString),
@@ -887,7 +887,7 @@ export interface StepDetails {
   Result?: string | redacted.Redacted<string>;
   Error?: ErrorObject;
 }
-export const StepDetails = /*@__PURE__*/ S.suspend(() =>
+const StepDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attempt: S.optional(S.Number),
     NextAttemptTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -898,7 +898,7 @@ export const StepDetails = /*@__PURE__*/ S.suspend(() =>
 export interface WaitDetails {
   ScheduledEndTimestamp?: Date;
 }
-export const WaitDetails = /*@__PURE__*/ S.suspend(() =>
+const WaitDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledEndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
 ).annotate({ identifier: "WaitDetails" }) as any as S.Schema<WaitDetails>;
 export type CallbackId = string;
@@ -907,7 +907,7 @@ export interface CallbackDetails {
   Result?: string | redacted.Redacted<string>;
   Error?: ErrorObject;
 }
-export const CallbackDetails = /*@__PURE__*/ S.suspend(() =>
+const CallbackDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CallbackId: S.optional(S.String),
     Result: S.optional(SensitiveString),
@@ -918,7 +918,7 @@ export interface ChainedInvokeDetails {
   Result?: string | redacted.Redacted<string>;
   Error?: ErrorObject;
 }
-export const ChainedInvokeDetails = /*@__PURE__*/ S.suspend(() =>
+const ChainedInvokeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Result: S.optional(SensitiveString), Error: S.optional(ErrorObject) }),
 ).annotate({ identifier: "ChainedInvokeDetails" }) as any as S.Schema<ChainedInvokeDetails>;
 export interface Operation {
@@ -937,7 +937,7 @@ export interface Operation {
   CallbackDetails?: CallbackDetails;
   ChainedInvokeDetails?: ChainedInvokeDetails;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.String,
     ParentId: S.optional(S.String),
@@ -956,12 +956,12 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 export type Operations = Operation[];
-export const Operations = /*@__PURE__*/ S.Array(Operation);
+const Operations = /*@__PURE__*/ S.Array(Operation);
 export interface CheckpointUpdatedExecutionState {
   Operations?: Operation[];
   NextMarker?: string;
 }
-export const CheckpointUpdatedExecutionState = /*@__PURE__*/ S.suspend(() =>
+const CheckpointUpdatedExecutionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Operations: S.optional(Operations), NextMarker: S.optional(S.String) }),
 ).annotate({
   identifier: "CheckpointUpdatedExecutionState",
@@ -970,7 +970,7 @@ export interface CheckpointDurableExecutionResponse {
   CheckpointToken?: string;
   NewExecutionState: CheckpointUpdatedExecutionState;
 }
-export const CheckpointDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckpointDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CheckpointToken: S.optional(S.String),
     NewExecutionState: CheckpointUpdatedExecutionState,
@@ -985,14 +985,14 @@ export type Description = string;
 export type AdditionalVersion = string;
 export type Weight = number;
 export type AdditionalVersionWeights = { [key: string]: number | undefined };
-export const AdditionalVersionWeights = /*@__PURE__*/ S.Record(
+const AdditionalVersionWeights = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export interface AliasRoutingConfiguration {
   AdditionalVersionWeights?: { [key: string]: number | undefined };
 }
-export const AliasRoutingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AliasRoutingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AdditionalVersionWeights: S.optional(AdditionalVersionWeights) }),
 ).annotate({
   identifier: "AliasRoutingConfiguration",
@@ -1004,7 +1004,7 @@ export interface CreateAliasRequest {
   Description?: string;
   RoutingConfig?: AliasRoutingConfiguration;
 }
-export const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Name: S.String,
@@ -1032,7 +1032,7 @@ export interface AliasConfiguration {
   RoutingConfig?: AliasRoutingConfiguration;
   RevisionId?: string;
 }
-export const AliasConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AliasConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AliasArn: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1045,16 +1045,16 @@ export const AliasConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type CapacityProviderName = string;
 export type SubnetId = string;
 export type CapacityProviderSubnetIds = string[];
-export const CapacityProviderSubnetIds = /*@__PURE__*/ S.Array(S.String);
+const CapacityProviderSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type CapacityProviderSecurityGroupIds = string[];
-export const CapacityProviderSecurityGroupIds =
+const CapacityProviderSecurityGroupIds =
   CapacityProviderSubnetIds as any as S.Schema<CapacityProviderSecurityGroupIds>;
 export interface CapacityProviderVpcConfig {
   SubnetIds: string[];
   SecurityGroupIds: string[];
 }
-export const CapacityProviderVpcConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityProviderVpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIds: CapacityProviderSubnetIds,
     SecurityGroupIds: CapacityProviderSecurityGroupIds,
@@ -1066,25 +1066,25 @@ export type RoleArn = string;
 export interface CapacityProviderPermissionsConfig {
   CapacityProviderOperatorRoleArn: string;
 }
-export const CapacityProviderPermissionsConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityProviderPermissionsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CapacityProviderOperatorRoleArn: S.String }),
 ).annotate({
   identifier: "CapacityProviderPermissionsConfig",
 }) as any as S.Schema<CapacityProviderPermissionsConfig>;
 export type Architecture = "x86_64" | "arm64" | (string & {});
-export const Architecture = S.String;
+const Architecture = S.String;
 
 export type ArchitecturesList = Architecture[];
-export const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
+const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
 export type InstanceType = string;
 export type InstanceTypeSet = string[];
-export const InstanceTypeSet = CapacityProviderSubnetIds as any as S.Schema<InstanceTypeSet>;
+const InstanceTypeSet = CapacityProviderSubnetIds as any as S.Schema<InstanceTypeSet>;
 export interface InstanceRequirements {
   Architectures?: Architecture[];
   AllowedInstanceTypes?: string[];
   ExcludedInstanceTypes?: string[];
 }
-export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
+const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Architectures: S.optional(ArchitecturesList),
     AllowedInstanceTypes: S.optional(InstanceTypeSet),
@@ -1093,33 +1093,31 @@ export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceRequirements" }) as any as S.Schema<InstanceRequirements>;
 export type CapacityProviderMaxVCpuCount = number;
 export type CapacityProviderScalingMode = "Auto" | "Manual" | (string & {});
-export const CapacityProviderScalingMode = S.String;
+const CapacityProviderScalingMode = S.String;
 
 export type CapacityProviderPredefinedMetricType =
   | "LambdaCapacityProviderAverageCPUUtilization"
   | (string & {});
-export const CapacityProviderPredefinedMetricType = S.String;
+const CapacityProviderPredefinedMetricType = S.String;
 
 export type MetricTargetValue = number;
 export interface TargetTrackingScalingPolicy {
   PredefinedMetricType: CapacityProviderPredefinedMetricType;
   TargetValue: number;
 }
-export const TargetTrackingScalingPolicy = /*@__PURE__*/ S.suspend(() =>
+const TargetTrackingScalingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PredefinedMetricType: CapacityProviderPredefinedMetricType, TargetValue: S.Number }),
 ).annotate({
   identifier: "TargetTrackingScalingPolicy",
 }) as any as S.Schema<TargetTrackingScalingPolicy>;
 export type CapacityProviderScalingPoliciesList = TargetTrackingScalingPolicy[];
-export const CapacityProviderScalingPoliciesList = /*@__PURE__*/ S.Array(
-  TargetTrackingScalingPolicy,
-);
+const CapacityProviderScalingPoliciesList = /*@__PURE__*/ S.Array(TargetTrackingScalingPolicy);
 export interface CapacityProviderScalingConfig {
   MaxVCpuCount?: number;
   ScalingMode?: CapacityProviderScalingMode;
   ScalingPolicies?: TargetTrackingScalingPolicy[];
 }
-export const CapacityProviderScalingConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityProviderScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxVCpuCount: S.optional(S.Number),
     ScalingMode: S.optional(CapacityProviderScalingMode),
@@ -1132,26 +1130,26 @@ export type KMSKeyArnNonEmpty = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type PropagateTagsMode = "None" | "Explicit" | (string & {});
-export const PropagateTagsMode = S.String;
+const PropagateTagsMode = S.String;
 
 export interface PropagateTags {
   Mode?: PropagateTagsMode;
   ExplicitTags?: { [key: string]: string | undefined };
 }
-export const PropagateTags = /*@__PURE__*/ S.suspend(() =>
+const PropagateTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: S.optional(PropagateTagsMode), ExplicitTags: S.optional(Tags) }),
 ).annotate({ identifier: "PropagateTags" }) as any as S.Schema<PropagateTags>;
 export type SystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
-export const SystemLogLevel = S.String;
+const SystemLogLevel = S.String;
 
 export type LogGroup = string;
 export interface CapacityProviderLoggingConfig {
   SystemLogLevel?: SystemLogLevel;
   LogGroup?: string;
 }
-export const CapacityProviderLoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityProviderLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SystemLogLevel: S.optional(SystemLogLevel), LogGroup: S.optional(S.String) }),
 ).annotate({
   identifier: "CapacityProviderLoggingConfig",
@@ -1159,7 +1157,7 @@ export const CapacityProviderLoggingConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CapacityProviderTelemetryConfig {
   LoggingConfig?: CapacityProviderLoggingConfig;
 }
-export const CapacityProviderTelemetryConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityProviderTelemetryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LoggingConfig: S.optional(CapacityProviderLoggingConfig) }),
 ).annotate({
   identifier: "CapacityProviderTelemetryConfig",
@@ -1175,7 +1173,7 @@ export interface CreateCapacityProviderRequest {
   PropagateTags?: PropagateTags;
   TelemetryConfig?: CapacityProviderTelemetryConfig;
 }
-export const CreateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityProviderName: S.String,
     VpcConfig: CapacityProviderVpcConfig,
@@ -1201,7 +1199,7 @@ export const CreateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCapacityProviderRequest>;
 export type CapacityProviderArn = string;
 export type CapacityProviderState = "Pending" | "Active" | "Failed" | "Deleting" | (string & {});
-export const CapacityProviderState = S.String;
+const CapacityProviderState = S.String;
 
 export type KMSKeyArn = string;
 export interface CapacityProvider {
@@ -1216,7 +1214,7 @@ export interface CapacityProvider {
   PropagateTags?: PropagateTags;
   TelemetryConfig?: CapacityProviderTelemetryConfig;
 }
-export const CapacityProvider = /*@__PURE__*/ S.suspend(() =>
+const CapacityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityProviderArn: S.String,
     State: CapacityProviderState,
@@ -1233,27 +1231,27 @@ export const CapacityProvider = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const CreateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CapacityProvider: CapacityProvider }),
 ).annotate({
   identifier: "CreateCapacityProviderResponse",
 }) as any as S.Schema<CreateCapacityProviderResponse>;
 export type SigningProfileVersionArns = string[];
-export const SigningProfileVersionArns =
+const SigningProfileVersionArns =
   CapacityProviderSubnetIds as any as S.Schema<SigningProfileVersionArns>;
 export interface AllowedPublishers {
   SigningProfileVersionArns: string[];
 }
-export const AllowedPublishers = /*@__PURE__*/ S.suspend(() =>
+const AllowedPublishers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SigningProfileVersionArns: SigningProfileVersionArns }),
 ).annotate({ identifier: "AllowedPublishers" }) as any as S.Schema<AllowedPublishers>;
 export type CodeSigningPolicy = "Warn" | "Enforce" | (string & {});
-export const CodeSigningPolicy = S.String;
+const CodeSigningPolicy = S.String;
 
 export interface CodeSigningPolicies {
   UntrustedArtifactOnDeployment?: CodeSigningPolicy;
 }
-export const CodeSigningPolicies = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UntrustedArtifactOnDeployment: S.optional(CodeSigningPolicy) }),
 ).annotate({ identifier: "CodeSigningPolicies" }) as any as S.Schema<CodeSigningPolicies>;
 export interface CreateCodeSigningConfigRequest {
@@ -1262,7 +1260,7 @@ export interface CreateCodeSigningConfigRequest {
   CodeSigningPolicies?: CodeSigningPolicies;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     AllowedPublishers: AllowedPublishers,
@@ -1291,7 +1289,7 @@ export interface CodeSigningConfig {
   CodeSigningPolicies: CodeSigningPolicies;
   LastModified: string;
 }
-export const CodeSigningConfig = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeSigningConfigId: S.String,
     CodeSigningConfigArn: S.String,
@@ -1304,7 +1302,7 @@ export const CodeSigningConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCodeSigningConfigResponse {
   CodeSigningConfig: CodeSigningConfig;
 }
-export const CreateCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeSigningConfig: CodeSigningConfig }),
 ).annotate({
   identifier: "CreateCodeSigningConfigResponse",
@@ -1315,38 +1313,36 @@ export type Pattern = string;
 export interface Filter {
   Pattern?: string;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pattern: S.optional(S.String) }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+const Filter = /*@__PURE__*/ S.suspend(() => S.Struct({ Pattern: S.optional(S.String) })).annotate({
+  identifier: "Filter",
+}) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ S.Array(Filter);
 export interface FilterCriteria {
   Filters?: Filter[];
 }
-export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
+const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Filters: S.optional(FilterList) }),
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
 export type EventSourceMappingMetric = "EventCount" | "ErrorCount" | "KafkaMetrics" | (string & {});
-export const EventSourceMappingMetric = S.String;
-
 export type EventSourceMappingMetricList = EventSourceMappingMetric[];
-export const EventSourceMappingMetricList =
+const EventSourceMappingMetricList =
   ArchitecturesList as any as S.Schema<EventSourceMappingMetricList>;
 export interface EventSourceMappingMetricsConfig {
   Metrics?: EventSourceMappingMetric[];
 }
-export const EventSourceMappingMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EventSourceMappingMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Metrics: S.optional(EventSourceMappingMetricList) }),
 ).annotate({
   identifier: "EventSourceMappingMetricsConfig",
 }) as any as S.Schema<EventSourceMappingMetricsConfig>;
 export type EventSourceMappingSystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
-export const EventSourceMappingSystemLogLevel = S.String;
+const EventSourceMappingSystemLogLevel = S.String;
 
 export interface EventSourceMappingLoggingConfig {
   SystemLogLevel?: EventSourceMappingSystemLogLevel;
 }
-export const EventSourceMappingLoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const EventSourceMappingLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SystemLogLevel: S.optional(EventSourceMappingSystemLogLevel) }),
 ).annotate({
   identifier: "EventSourceMappingLoggingConfig",
@@ -1355,30 +1351,30 @@ export type MaximumConcurrency = number;
 export interface ScalingConfig {
   MaximumConcurrency?: number;
 }
-export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
+const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaximumConcurrency: S.optional(S.Number) }),
 ).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
 export type MaximumBatchingWindowInSeconds = number;
 export type ParallelizationFactor = number;
 export type EventSourcePosition = "TRIM_HORIZON" | "LATEST" | "AT_TIMESTAMP" | (string & {});
-export const EventSourcePosition = S.String;
+const EventSourcePosition = S.String;
 
 export type DestinationArn = string;
 export interface OnSuccess {
   Destination?: string;
 }
-export const OnSuccess = /*@__PURE__*/ S.suspend(() =>
+const OnSuccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Destination: S.optional(S.String) }),
 ).annotate({ identifier: "OnSuccess" }) as any as S.Schema<OnSuccess>;
 export interface OnFailure {
   Destination?: string;
 }
-export const OnFailure = OnSuccess as any as S.Schema<OnFailure>;
+const OnFailure = OnSuccess as any as S.Schema<OnFailure>;
 export interface DestinationConfig {
   OnSuccess?: OnSuccess;
   OnFailure?: OnFailure;
 }
-export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OnSuccess: S.optional(OnSuccess), OnFailure: S.optional(OnFailure) }),
 ).annotate({ identifier: "DestinationConfig" }) as any as S.Schema<DestinationConfig>;
 export type MaximumRecordAgeInSeconds = number;
@@ -1387,10 +1383,10 @@ export type MaximumRetryAttemptsEventSourceMapping = number;
 export type TumblingWindowInSeconds = number;
 export type Topic = string;
 export type Topics = string[];
-export const Topics = CapacityProviderSubnetIds as any as S.Schema<Topics>;
+const Topics = CapacityProviderSubnetIds as any as S.Schema<Topics>;
 export type Queue = string;
 export type Queues = string[];
-export const Queues = CapacityProviderSubnetIds as any as S.Schema<Queues>;
+const Queues = CapacityProviderSubnetIds as any as S.Schema<Queues>;
 export type SourceAccessType =
   | "BASIC_AUTH"
   | "VPC_SUBNET"
@@ -1401,84 +1397,77 @@ export type SourceAccessType =
   | "CLIENT_CERTIFICATE_TLS_AUTH"
   | "SERVER_ROOT_CA_CERTIFICATE"
   | (string & {});
-export const SourceAccessType = S.String;
+const SourceAccessType = S.String;
 
 export type URI = string;
 export interface SourceAccessConfiguration {
   Type?: SourceAccessType;
   URI?: string;
 }
-export const SourceAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SourceAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(SourceAccessType), URI: S.optional(S.String) }),
 ).annotate({
   identifier: "SourceAccessConfiguration",
 }) as any as S.Schema<SourceAccessConfiguration>;
 export type SourceAccessConfigurations = SourceAccessConfiguration[];
-export const SourceAccessConfigurations = /*@__PURE__*/ S.Array(SourceAccessConfiguration);
+const SourceAccessConfigurations = /*@__PURE__*/ S.Array(SourceAccessConfiguration);
 export type EndPointType = "KAFKA_BOOTSTRAP_SERVERS" | (string & {});
-export const EndPointType = S.String;
+const EndPointType = S.String;
 
 export type Endpoint = string;
 export type EndpointLists = string[];
-export const EndpointLists = CapacityProviderSubnetIds as any as S.Schema<EndpointLists>;
+const EndpointLists = CapacityProviderSubnetIds as any as S.Schema<EndpointLists>;
 export type Endpoints = { [key in EndPointType]?: string[] };
-export const Endpoints = /*@__PURE__*/ S.Record(
+const Endpoints = /*@__PURE__*/ S.Record(
   EndPointType,
   /*@__PURE__*/ EndpointLists.pipe(S.optional),
 );
 export interface SelfManagedEventSource {
   Endpoints?: { [key: string]: string[] | undefined };
 }
-export const SelfManagedEventSource = /*@__PURE__*/ S.suspend(() =>
+const SelfManagedEventSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoints: S.optional(Endpoints) }),
 ).annotate({ identifier: "SelfManagedEventSource" }) as any as S.Schema<SelfManagedEventSource>;
 export type FunctionResponseType = "ReportBatchItemFailures" | (string & {});
-export const FunctionResponseType = S.String;
-
 export type FunctionResponseTypeList = FunctionResponseType[];
-export const FunctionResponseTypeList =
-  ArchitecturesList as any as S.Schema<FunctionResponseTypeList>;
+const FunctionResponseTypeList = ArchitecturesList as any as S.Schema<FunctionResponseTypeList>;
 export type SchemaRegistryUri = string;
 export type SchemaRegistryEventRecordFormat = "JSON" | "SOURCE" | (string & {});
-export const SchemaRegistryEventRecordFormat = S.String;
+const SchemaRegistryEventRecordFormat = S.String;
 
 export type KafkaSchemaRegistryAuthType =
   | "BASIC_AUTH"
   | "CLIENT_CERTIFICATE_TLS_AUTH"
   | "SERVER_ROOT_CA_CERTIFICATE"
   | (string & {});
-export const KafkaSchemaRegistryAuthType = S.String;
-
 export interface KafkaSchemaRegistryAccessConfig {
   Type?: KafkaSchemaRegistryAuthType;
   URI?: string;
 }
-export const KafkaSchemaRegistryAccessConfig =
+const KafkaSchemaRegistryAccessConfig =
   SourceAccessConfiguration as any as S.Schema<KafkaSchemaRegistryAccessConfig>;
 export type KafkaSchemaRegistryAccessConfigList = KafkaSchemaRegistryAccessConfig[];
-export const KafkaSchemaRegistryAccessConfigList = /*@__PURE__*/ S.Array(
-  KafkaSchemaRegistryAccessConfig,
-);
+const KafkaSchemaRegistryAccessConfigList = /*@__PURE__*/ S.Array(KafkaSchemaRegistryAccessConfig);
 export type KafkaSchemaValidationAttribute = "KEY" | "VALUE" | (string & {});
-export const KafkaSchemaValidationAttribute = S.String;
+const KafkaSchemaValidationAttribute = S.String;
 
 export interface KafkaSchemaValidationConfig {
   Attribute?: KafkaSchemaValidationAttribute;
 }
-export const KafkaSchemaValidationConfig = /*@__PURE__*/ S.suspend(() =>
+const KafkaSchemaValidationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attribute: S.optional(KafkaSchemaValidationAttribute) }),
 ).annotate({
   identifier: "KafkaSchemaValidationConfig",
 }) as any as S.Schema<KafkaSchemaValidationConfig>;
 export type KafkaSchemaValidationConfigList = KafkaSchemaValidationConfig[];
-export const KafkaSchemaValidationConfigList = /*@__PURE__*/ S.Array(KafkaSchemaValidationConfig);
+const KafkaSchemaValidationConfigList = /*@__PURE__*/ S.Array(KafkaSchemaValidationConfig);
 export interface KafkaSchemaRegistryConfig {
   SchemaRegistryURI?: string;
   EventRecordFormat?: SchemaRegistryEventRecordFormat;
   AccessConfigs?: KafkaSchemaRegistryAccessConfig[];
   SchemaValidationConfigs?: KafkaSchemaValidationConfig[];
 }
-export const KafkaSchemaRegistryConfig = /*@__PURE__*/ S.suspend(() =>
+const KafkaSchemaRegistryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SchemaRegistryURI: S.optional(S.String),
     EventRecordFormat: S.optional(SchemaRegistryEventRecordFormat),
@@ -1492,7 +1481,7 @@ export interface AmazonManagedKafkaEventSourceConfig {
   ConsumerGroupId?: string;
   SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
 }
-export const AmazonManagedKafkaEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const AmazonManagedKafkaEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConsumerGroupId: S.optional(S.String),
     SchemaRegistryConfig: S.optional(KafkaSchemaRegistryConfig),
@@ -1504,19 +1493,19 @@ export interface SelfManagedKafkaEventSourceConfig {
   ConsumerGroupId?: string;
   SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
 }
-export const SelfManagedKafkaEventSourceConfig =
+const SelfManagedKafkaEventSourceConfig =
   AmazonManagedKafkaEventSourceConfig as any as S.Schema<SelfManagedKafkaEventSourceConfig>;
 export type DatabaseName = string;
 export type CollectionName = string;
 export type FullDocument = "UpdateLookup" | "Default" | (string & {});
-export const FullDocument = S.String;
+const FullDocument = S.String;
 
 export interface DocumentDBEventSourceConfig {
   DatabaseName?: string;
   CollectionName?: string;
   FullDocument?: FullDocument;
 }
-export const DocumentDBEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const DocumentDBEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.optional(S.String),
     CollectionName: S.optional(S.String),
@@ -1533,7 +1522,7 @@ export interface ProvisionedPollerConfig {
   MaximumPollers?: number;
   PollerGroupName?: string;
 }
-export const ProvisionedPollerConfig = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedPollerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MinimumPollers: S.optional(S.Number),
     MaximumPollers: S.optional(S.Number),
@@ -1570,7 +1559,7 @@ export interface CreateEventSourceMappingRequest {
   DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
   ProvisionedPollerConfig?: ProvisionedPollerConfig;
 }
-export const CreateEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EventSourceArn: S.optional(S.String),
     FunctionName: S.String,
@@ -1620,7 +1609,7 @@ export interface FilterCriteriaError {
   ErrorCode?: string;
   Message?: string;
 }
-export const FilterCriteriaError = /*@__PURE__*/ S.suspend(() =>
+const FilterCriteriaError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
 ).annotate({ identifier: "FilterCriteriaError" }) as any as S.Schema<FilterCriteriaError>;
 export type EventSourceMappingArn = string;
@@ -1659,7 +1648,7 @@ export interface EventSourceMappingConfiguration {
   EventSourceMappingArn?: string;
   ProvisionedPollerConfig?: ProvisionedPollerConfig;
 }
-export const EventSourceMappingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EventSourceMappingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UUID: S.optional(S.String),
     StartingPosition: S.optional(EventSourcePosition),
@@ -1751,14 +1740,14 @@ export type Runtime =
   | "java11.al2023"
   | "java17.al2023"
   | (string & {});
-export const Runtime = S.String;
+const Runtime = S.String;
 
 export type Handler = string;
 export type S3Bucket = string;
 export type S3Key = string;
 export type S3ObjectVersion = string;
 export type S3ObjectStorageMode = "COPY" | "REFERENCE" | (string & {});
-export const S3ObjectStorageMode = S.String;
+const S3ObjectStorageMode = S.String;
 
 export interface FunctionCode {
   ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -1769,7 +1758,7 @@ export interface FunctionCode {
   ImageUri?: string;
   SourceKMSKeyArn?: string;
 }
-export const FunctionCode = /*@__PURE__*/ S.suspend(() =>
+const FunctionCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ZipFile: S.optional(SensitiveBlob),
     S3Bucket: S.optional(S.String),
@@ -1783,18 +1772,18 @@ export const FunctionCode = /*@__PURE__*/ S.suspend(() =>
 export type Timeout = number;
 export type MemorySize = number;
 export type FunctionVersionLatestPublished = "LATEST_PUBLISHED" | (string & {});
-export const FunctionVersionLatestPublished = S.String;
+const FunctionVersionLatestPublished = S.String;
 
 export type SubnetIds = string[];
-export const SubnetIds = CapacityProviderSubnetIds as any as S.Schema<SubnetIds>;
+const SubnetIds = CapacityProviderSubnetIds as any as S.Schema<SubnetIds>;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = CapacityProviderSubnetIds as any as S.Schema<SecurityGroupIds>;
+const SecurityGroupIds = CapacityProviderSubnetIds as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfig {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
   Ipv6AllowedForDualStack?: boolean;
 }
-export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
+const VpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIds: S.optional(SubnetIds),
     SecurityGroupIds: S.optional(SecurityGroupIds),
@@ -1802,13 +1791,13 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
 export type PackageType = "Zip" | "Image" | (string & {});
-export const PackageType = S.String;
+const PackageType = S.String;
 
 export type ResourceArn = string;
 export interface DeadLetterConfig {
   TargetArn?: string;
 }
-export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
+const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TargetArn: S.optional(S.String) }),
 ).annotate({ identifier: "DeadLetterConfig" }) as any as S.Schema<DeadLetterConfig>;
 export type EnvironmentVariableName = string | redacted.Redacted<string>;
@@ -1816,37 +1805,37 @@ export type EnvironmentVariableValue = string | redacted.Redacted<string>;
 export type EnvironmentVariables = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const EnvironmentVariables = /*@__PURE__*/ S.Record(
+const EnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export interface Environment {
   Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Variables: S.optional(EnvironmentVariables) }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 export type TracingMode = "Active" | "PassThrough" | (string & {});
-export const TracingMode = S.String;
+const TracingMode = S.String;
 
 export interface TracingConfig {
   Mode?: TracingMode;
 }
-export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
+const TracingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: S.optional(TracingMode) }),
 ).annotate({ identifier: "TracingConfig" }) as any as S.Schema<TracingConfig>;
 export type LayerVersionArn = string;
 export type LayerList = string[];
-export const LayerList = CapacityProviderSubnetIds as any as S.Schema<LayerList>;
+const LayerList = CapacityProviderSubnetIds as any as S.Schema<LayerList>;
 export type FileSystemArn = string;
 export type LocalMountPath = string;
 export type DirectS3Read = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
-export const DirectS3Read = S.String;
+const DirectS3Read = S.String;
 
 export interface S3FilesConfig {
   DirectS3Read?: DirectS3Read;
 }
-export const S3FilesConfig = /*@__PURE__*/ S.suspend(() =>
+const S3FilesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DirectS3Read: S.optional(DirectS3Read) }),
 ).annotate({ identifier: "S3FilesConfig" }) as any as S.Schema<S3FilesConfig>;
 export interface FileSystemConfig {
@@ -1854,20 +1843,20 @@ export interface FileSystemConfig {
   LocalMountPath: string;
   S3FilesConfig?: S3FilesConfig;
 }
-export const FileSystemConfig = /*@__PURE__*/ S.suspend(() =>
+const FileSystemConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String, LocalMountPath: S.String, S3FilesConfig: S.optional(S3FilesConfig) }),
 ).annotate({ identifier: "FileSystemConfig" }) as any as S.Schema<FileSystemConfig>;
 export type FileSystemConfigList = FileSystemConfig[];
-export const FileSystemConfigList = /*@__PURE__*/ S.Array(FileSystemConfig);
+const FileSystemConfigList = /*@__PURE__*/ S.Array(FileSystemConfig);
 export type StringList = string[];
-export const StringList = CapacityProviderSubnetIds as any as S.Schema<StringList>;
+const StringList = CapacityProviderSubnetIds as any as S.Schema<StringList>;
 export type WorkingDirectory = string;
 export interface ImageConfig {
   EntryPoint?: string[];
   Command?: string[];
   WorkingDirectory?: string;
 }
-export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
+const ImageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EntryPoint: S.optional(StringList),
     Command: S.optional(StringList),
@@ -1878,20 +1867,20 @@ export type EphemeralStorageSize = number;
 export interface EphemeralStorage {
   Size: number;
 }
-export const EphemeralStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Size: S.Number }),
-).annotate({ identifier: "EphemeralStorage" }) as any as S.Schema<EphemeralStorage>;
+const EphemeralStorage = /*@__PURE__*/ S.suspend(() => S.Struct({ Size: S.Number })).annotate({
+  identifier: "EphemeralStorage",
+}) as any as S.Schema<EphemeralStorage>;
 export type SnapStartApplyOn = "PublishedVersions" | "None" | (string & {});
-export const SnapStartApplyOn = S.String;
+const SnapStartApplyOn = S.String;
 
 export interface SnapStart {
   ApplyOn?: SnapStartApplyOn;
 }
-export const SnapStart = /*@__PURE__*/ S.suspend(() =>
+const SnapStart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplyOn: S.optional(SnapStartApplyOn) }),
 ).annotate({ identifier: "SnapStart" }) as any as S.Schema<SnapStart>;
 export type LogFormat = "JSON" | "Text" | (string & {});
-export const LogFormat = S.String;
+const LogFormat = S.String;
 
 export type ApplicationLogLevel =
   | "TRACE"
@@ -1901,7 +1890,7 @@ export type ApplicationLogLevel =
   | "ERROR"
   | "FATAL"
   | (string & {});
-export const ApplicationLogLevel = S.String;
+const ApplicationLogLevel = S.String;
 
 export interface LoggingConfig {
   LogFormat?: LogFormat;
@@ -1909,7 +1898,7 @@ export interface LoggingConfig {
   SystemLogLevel?: SystemLogLevel;
   LogGroup?: string;
 }
-export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LogFormat: S.optional(LogFormat),
     ApplicationLogLevel: S.optional(ApplicationLogLevel),
@@ -1918,12 +1907,12 @@ export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 export type TenantIsolationMode = "PER_TENANT" | (string & {});
-export const TenantIsolationMode = S.String;
+const TenantIsolationMode = S.String;
 
 export interface TenancyConfig {
   TenantIsolationMode: TenantIsolationMode;
 }
-export const TenancyConfig = /*@__PURE__*/ S.suspend(() =>
+const TenancyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TenantIsolationMode: TenantIsolationMode }),
 ).annotate({ identifier: "TenancyConfig" }) as any as S.Schema<TenancyConfig>;
 export type PerExecutionEnvironmentMaxConcurrency = number;
@@ -1933,7 +1922,7 @@ export interface LambdaManagedInstancesCapacityProviderConfig {
   PerExecutionEnvironmentMaxConcurrency?: number;
   ExecutionEnvironmentMemoryGiBPerVCpu?: number;
 }
-export const LambdaManagedInstancesCapacityProviderConfig = /*@__PURE__*/ S.suspend(() =>
+const LambdaManagedInstancesCapacityProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityProviderArn: S.String,
     PerExecutionEnvironmentMaxConcurrency: S.optional(S.Number),
@@ -1945,7 +1934,7 @@ export const LambdaManagedInstancesCapacityProviderConfig = /*@__PURE__*/ S.susp
 export interface CapacityProviderConfig {
   LambdaManagedInstancesCapacityProviderConfig: LambdaManagedInstancesCapacityProviderConfig;
 }
-export const CapacityProviderConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LambdaManagedInstancesCapacityProviderConfig: LambdaManagedInstancesCapacityProviderConfig,
   }),
@@ -1957,7 +1946,7 @@ export interface DurableConfig {
   RetentionPeriodInDays?: number;
   ExecutionTimeout?: number;
 }
-export const DurableConfig = /*@__PURE__*/ S.suspend(() =>
+const DurableConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     KMSKeyArn: S.optional(S.String),
     RetentionPeriodInDays: S.optional(S.Number),
@@ -1994,7 +1983,7 @@ export interface CreateFunctionRequest {
   CapacityProviderConfig?: CapacityProviderConfig;
   DurableConfig?: DurableConfig;
 }
-export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String,
     Runtime: S.optional(Runtime),
@@ -2036,7 +2025,7 @@ export interface VpcConfigResponse {
   VpcId?: string;
   Ipv6AllowedForDualStack?: boolean;
 }
-export const VpcConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const VpcConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIds: S.optional(SubnetIds),
     SecurityGroupIds: S.optional(SecurityGroupIds),
@@ -2049,27 +2038,27 @@ export interface EnvironmentError {
   ErrorCode?: string;
   Message?: string | redacted.Redacted<string>;
 }
-export const EnvironmentError = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(SensitiveString) }),
 ).annotate({ identifier: "EnvironmentError" }) as any as S.Schema<EnvironmentError>;
 export interface EnvironmentResponse {
   Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
   Error?: EnvironmentError;
 }
-export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Variables: S.optional(EnvironmentVariables), Error: S.optional(EnvironmentError) }),
 ).annotate({ identifier: "EnvironmentResponse" }) as any as S.Schema<EnvironmentResponse>;
 export interface TracingConfigResponse {
   Mode?: TracingMode;
 }
-export const TracingConfigResponse = TracingConfig as any as S.Schema<TracingConfigResponse>;
+const TracingConfigResponse = TracingConfig as any as S.Schema<TracingConfigResponse>;
 export interface Layer {
   Arn?: string;
   CodeSize?: number;
   SigningProfileVersionArn?: string;
   SigningJobArn?: string;
 }
-export const Layer = /*@__PURE__*/ S.suspend(() =>
+const Layer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     CodeSize: S.optional(S.Number),
@@ -2078,7 +2067,7 @@ export const Layer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
 export type LayersReferenceList = Layer[];
-export const LayersReferenceList = /*@__PURE__*/ S.Array(Layer);
+const LayersReferenceList = /*@__PURE__*/ S.Array(Layer);
 export type State =
   | "Pending"
   | "Active"
@@ -2089,7 +2078,7 @@ export type State =
   | "ActiveNonInvocable"
   | "Deleting"
   | (string & {});
-export const State = S.String;
+const State = S.String;
 
 export type StateReason = string;
 export type StateReasonCode =
@@ -2134,10 +2123,10 @@ export type StateReasonCode =
   | "DrainingDurableExecutions"
   | "DependencyError"
   | (string & {});
-export const StateReasonCode = S.String;
+const StateReasonCode = S.String;
 
 export type LastUpdateStatus = "Successful" | "Failed" | "InProgress" | (string & {});
-export const LastUpdateStatus = S.String;
+const LastUpdateStatus = S.String;
 
 export type LastUpdateStatusReason = string;
 export type LastUpdateStatusReasonCode =
@@ -2179,28 +2168,28 @@ export type LastUpdateStatusReasonCode =
   | "DependencyError"
   | "Creating"
   | (string & {});
-export const LastUpdateStatusReasonCode = S.String;
+const LastUpdateStatusReasonCode = S.String;
 
 export interface ImageConfigError {
   ErrorCode?: string;
   Message?: string | redacted.Redacted<string>;
 }
-export const ImageConfigError = EnvironmentError as any as S.Schema<ImageConfigError>;
+const ImageConfigError = EnvironmentError as any as S.Schema<ImageConfigError>;
 export interface ImageConfigResponse {
   ImageConfig?: ImageConfig;
   Error?: ImageConfigError;
 }
-export const ImageConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const ImageConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ImageConfig: S.optional(ImageConfig), Error: S.optional(ImageConfigError) }),
 ).annotate({ identifier: "ImageConfigResponse" }) as any as S.Schema<ImageConfigResponse>;
 export type SnapStartOptimizationStatus = "On" | "Off" | (string & {});
-export const SnapStartOptimizationStatus = S.String;
+const SnapStartOptimizationStatus = S.String;
 
 export interface SnapStartResponse {
   ApplyOn?: SnapStartApplyOn;
   OptimizationStatus?: SnapStartOptimizationStatus;
 }
-export const SnapStartResponse = /*@__PURE__*/ S.suspend(() =>
+const SnapStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplyOn: S.optional(SnapStartApplyOn),
     OptimizationStatus: S.optional(SnapStartOptimizationStatus),
@@ -2211,12 +2200,12 @@ export interface RuntimeVersionError {
   ErrorCode?: string;
   Message?: string | redacted.Redacted<string>;
 }
-export const RuntimeVersionError = EnvironmentError as any as S.Schema<RuntimeVersionError>;
+const RuntimeVersionError = EnvironmentError as any as S.Schema<RuntimeVersionError>;
 export interface RuntimeVersionConfig {
   RuntimeVersionArn?: string;
   Error?: RuntimeVersionError;
 }
-export const RuntimeVersionConfig = /*@__PURE__*/ S.suspend(() =>
+const RuntimeVersionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RuntimeVersionArn: S.optional(S.String), Error: S.optional(RuntimeVersionError) }),
 ).annotate({ identifier: "RuntimeVersionConfig" }) as any as S.Schema<RuntimeVersionConfig>;
 export interface FunctionConfiguration {
@@ -2261,7 +2250,7 @@ export interface FunctionConfiguration {
   ConfigSha256?: string;
   DurableConfig?: DurableConfig;
 }
-export const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.optional(S.String),
     FunctionArn: S.optional(S.String),
@@ -2310,13 +2299,13 @@ export type FunctionUrlQualifier = string;
 export type AllowCredentials = boolean;
 export type Header = string;
 export type HeadersList = string[];
-export const HeadersList = CapacityProviderSubnetIds as any as S.Schema<HeadersList>;
+const HeadersList = CapacityProviderSubnetIds as any as S.Schema<HeadersList>;
 export type Method = string;
 export type AllowMethodsList = string[];
-export const AllowMethodsList = CapacityProviderSubnetIds as any as S.Schema<AllowMethodsList>;
+const AllowMethodsList = CapacityProviderSubnetIds as any as S.Schema<AllowMethodsList>;
 export type Origin = string;
 export type AllowOriginsList = string[];
-export const AllowOriginsList = CapacityProviderSubnetIds as any as S.Schema<AllowOriginsList>;
+const AllowOriginsList = CapacityProviderSubnetIds as any as S.Schema<AllowOriginsList>;
 export type MaxAge = number;
 export interface Cors {
   AllowCredentials?: boolean;
@@ -2326,7 +2315,7 @@ export interface Cors {
   ExposeHeaders?: string[];
   MaxAge?: number;
 }
-export const Cors = /*@__PURE__*/ S.suspend(() =>
+const Cors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AllowCredentials: S.optional(S.Boolean),
     AllowHeaders: S.optional(HeadersList),
@@ -2337,7 +2326,7 @@ export const Cors = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cors" }) as any as S.Schema<Cors>;
 export type InvokeMode = "BUFFERED" | "RESPONSE_STREAM" | (string & {});
-export const InvokeMode = S.String;
+const InvokeMode = S.String;
 
 export interface CreateFunctionUrlConfigRequest {
   FunctionName: string;
@@ -2346,7 +2335,7 @@ export interface CreateFunctionUrlConfigRequest {
   Cors?: Cors;
   InvokeMode?: InvokeMode;
 }
-export const CreateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -2375,7 +2364,7 @@ export interface CreateFunctionUrlConfigResponse {
   CreationTime: string;
   InvokeMode?: InvokeMode;
 }
-export const CreateFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionUrl: S.String,
     FunctionArn: S.String,
@@ -2391,7 +2380,7 @@ export interface DeleteAliasRequest {
   FunctionName: string;
   Name: string;
 }
-export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Name: S.String.pipe(T.HttpLabel("Name")),
@@ -2407,13 +2396,13 @@ export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAliasRequest" }) as any as S.Schema<DeleteAliasRequest>;
 export interface DeleteAliasResponse {}
-export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAliasResponse",
 }) as any as S.Schema<DeleteAliasResponse>;
 export interface DeleteCapacityProviderRequest {
   CapacityProviderName: string;
 }
-export const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2025-11-30/capacity-providers/{CapacityProviderName}" }),
@@ -2430,12 +2419,12 @@ export const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const DeleteCapacityProviderResponse =
+const DeleteCapacityProviderResponse =
   CreateCapacityProviderResponse as any as S.Schema<DeleteCapacityProviderResponse>;
 export interface DeleteCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
 }
-export const DeleteCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}" }),
@@ -2450,13 +2439,13 @@ export const DeleteCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCodeSigningConfigRequest",
 }) as any as S.Schema<DeleteCodeSigningConfigRequest>;
 export interface DeleteCodeSigningConfigResponse {}
-export const DeleteCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteCodeSigningConfigResponse" },
-) as any as S.Schema<DeleteCodeSigningConfigResponse>;
+const DeleteCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteCodeSigningConfigResponse",
+}) as any as S.Schema<DeleteCodeSigningConfigResponse>;
 export interface DeleteEventSourceMappingRequest {
   UUID: string;
 }
-export const DeleteEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UUID: S.String.pipe(T.HttpLabel("UUID")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2015-03-31/event-source-mappings/{UUID}" }),
@@ -2474,7 +2463,7 @@ export interface DeleteFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -2492,13 +2481,13 @@ export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFunctionResponse {
   StatusCode?: number;
 }
-export const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()) }),
 ).annotate({ identifier: "DeleteFunctionResponse" }) as any as S.Schema<DeleteFunctionResponse>;
 export interface DeleteFunctionCodeSigningConfigRequest {
   FunctionName: string;
 }
-export const DeleteFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2020-06-30/functions/{FunctionName}/code-signing-config" }),
@@ -2513,7 +2502,7 @@ export const DeleteFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteFunctionCodeSigningConfigRequest",
 }) as any as S.Schema<DeleteFunctionCodeSigningConfigRequest>;
 export interface DeleteFunctionCodeSigningConfigResponse {}
-export const DeleteFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteFunctionCodeSigningConfigResponse",
@@ -2521,7 +2510,7 @@ export const DeleteFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend((
 export interface DeleteFunctionConcurrencyRequest {
   FunctionName: string;
 }
-export const DeleteFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2017-10-31/functions/{FunctionName}/concurrency" }),
@@ -2536,13 +2525,13 @@ export const DeleteFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFunctionConcurrencyRequest",
 }) as any as S.Schema<DeleteFunctionConcurrencyRequest>;
 export interface DeleteFunctionConcurrencyResponse {}
-export const DeleteFunctionConcurrencyResponse =
+const DeleteFunctionConcurrencyResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<DeleteFunctionConcurrencyResponse>;
 export interface DeleteFunctionEventInvokeConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const DeleteFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -2560,13 +2549,13 @@ export const DeleteFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteFunctionEventInvokeConfigRequest",
 }) as any as S.Schema<DeleteFunctionEventInvokeConfigRequest>;
 export interface DeleteFunctionEventInvokeConfigResponse {}
-export const DeleteFunctionEventInvokeConfigResponse =
+const DeleteFunctionEventInvokeConfigResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>;
 export interface DeleteFunctionUrlConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const DeleteFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -2584,13 +2573,13 @@ export const DeleteFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFunctionUrlConfigRequest",
 }) as any as S.Schema<DeleteFunctionUrlConfigRequest>;
 export interface DeleteFunctionUrlConfigResponse {}
-export const DeleteFunctionUrlConfigResponse =
+const DeleteFunctionUrlConfigResponse =
   DeleteCodeSigningConfigResponse as any as S.Schema<DeleteFunctionUrlConfigResponse>;
 export interface DeleteLayerVersionRequest {
   LayerName: string;
   VersionNumber: number;
 }
-export const DeleteLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.String.pipe(T.HttpLabel("LayerName")),
     VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
@@ -2608,14 +2597,14 @@ export const DeleteLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLayerVersionRequest",
 }) as any as S.Schema<DeleteLayerVersionRequest>;
 export interface DeleteLayerVersionResponse {}
-export const DeleteLayerVersionResponse =
+const DeleteLayerVersionResponse =
   DeleteAliasResponse as any as S.Schema<DeleteLayerVersionResponse>;
 export type Qualifier = string;
 export interface DeleteProvisionedConcurrencyConfigRequest {
   FunctionName: string;
   Qualifier: string;
 }
-export const DeleteProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
@@ -2636,7 +2625,7 @@ export const DeleteProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteProvisionedConcurrencyConfigRequest",
 }) as any as S.Schema<DeleteProvisionedConcurrencyConfigRequest>;
 export interface DeleteProvisionedConcurrencyConfigResponse {}
-export const DeleteProvisionedConcurrencyConfigResponse =
+const DeleteProvisionedConcurrencyConfigResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>;
 export type PolicyResourceArn = string;
 export type RevisionId = string;
@@ -2644,7 +2633,7 @@ export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
   RevisionId?: string;
 }
-export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     RevisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
@@ -2662,10 +2651,10 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
+const DeleteResourcePolicyResponse =
   DeleteAliasResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface GetAccountSettingsRequest {}
-export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2016-08-19/account-settings" }),
@@ -2687,7 +2676,7 @@ export interface AccountLimit {
   ConcurrentExecutions?: number;
   UnreservedConcurrentExecutions?: number;
 }
-export const AccountLimit = /*@__PURE__*/ S.suspend(() =>
+const AccountLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TotalCodeSize: S.optional(S.Number),
     CodeSizeUnzipped: S.optional(S.Number),
@@ -2700,14 +2689,14 @@ export interface AccountUsage {
   TotalCodeSize?: number;
   FunctionCount?: number;
 }
-export const AccountUsage = /*@__PURE__*/ S.suspend(() =>
+const AccountUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TotalCodeSize: S.optional(S.Number), FunctionCount: S.optional(S.Number) }),
 ).annotate({ identifier: "AccountUsage" }) as any as S.Schema<AccountUsage>;
 export interface GetAccountSettingsResponse {
   AccountLimit?: AccountLimit;
   AccountUsage?: AccountUsage;
 }
-export const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccountLimit: S.optional(AccountLimit), AccountUsage: S.optional(AccountUsage) }),
 ).annotate({
   identifier: "GetAccountSettingsResponse",
@@ -2716,7 +2705,7 @@ export interface GetAliasRequest {
   FunctionName: string;
   Name: string;
 }
-export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Name: S.String.pipe(T.HttpLabel("Name")),
@@ -2734,7 +2723,7 @@ export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCapacityProviderRequest {
   CapacityProviderName: string;
 }
-export const GetCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-11-30/capacity-providers/{CapacityProviderName}" }),
@@ -2751,12 +2740,12 @@ export const GetCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const GetCapacityProviderResponse =
+const GetCapacityProviderResponse =
   CreateCapacityProviderResponse as any as S.Schema<GetCapacityProviderResponse>;
 export interface GetCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
 }
-export const GetCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}" }),
@@ -2773,14 +2762,14 @@ export const GetCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCodeSigningConfigResponse {
   CodeSigningConfig: CodeSigningConfig;
 }
-export const GetCodeSigningConfigResponse =
+const GetCodeSigningConfigResponse =
   CreateCodeSigningConfigResponse as any as S.Schema<GetCodeSigningConfigResponse>;
 export type IncludeExecutionData = boolean;
 export interface GetDurableExecutionRequest {
   DurableExecutionArn: string;
   IncludeExecutionData?: boolean;
 }
-export const GetDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
     IncludeExecutionData: S.optional(S.Boolean).pipe(T.HttpQuery("IncludeExecutionData")),
@@ -2806,13 +2795,13 @@ export type ExecutionStatus =
   | "TIMED_OUT"
   | "STOPPED"
   | (string & {});
-export const ExecutionStatus = S.String;
+const ExecutionStatus = S.String;
 
 export type XAmznTraceId = string;
 export interface TraceHeader {
   XAmznTraceId?: string;
 }
-export const TraceHeader = /*@__PURE__*/ S.suspend(() =>
+const TraceHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ XAmznTraceId: S.optional(S.String) }),
 ).annotate({ identifier: "TraceHeader" }) as any as S.Schema<TraceHeader>;
 export type ExecutionDataIncluded = boolean;
@@ -2831,7 +2820,7 @@ export interface GetDurableExecutionResponse {
   ExecutionDataIncluded?: boolean;
   DurableConfig?: DurableConfig;
 }
-export const GetDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String,
     DurableExecutionName: S.String,
@@ -2859,7 +2848,7 @@ export interface GetDurableExecutionHistoryRequest {
   Marker?: string;
   ReverseOrder?: boolean;
 }
-export const GetDurableExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDurableExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
     IncludeExecutionData: S.optional(S.Boolean).pipe(T.HttpQuery("IncludeExecutionData")),
@@ -2908,7 +2897,7 @@ export type EventType =
   | "CallbackTimedOut"
   | "InvocationCompleted"
   | (string & {});
-export const EventType = S.String;
+const EventType = S.String;
 
 export type EventId = number;
 export type Truncated = boolean;
@@ -2916,25 +2905,25 @@ export interface EventInput {
   Payload?: string | redacted.Redacted<string>;
   Truncated?: boolean;
 }
-export const EventInput = /*@__PURE__*/ S.suspend(() =>
+const EventInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Payload: S.optional(SensitiveString), Truncated: S.optional(S.Boolean) }),
 ).annotate({ identifier: "EventInput" }) as any as S.Schema<EventInput>;
 export interface ExecutionStartedDetails {
   Input: EventInput;
   ExecutionTimeout: number;
 }
-export const ExecutionStartedDetails = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStartedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Input: EventInput, ExecutionTimeout: S.Number }),
 ).annotate({ identifier: "ExecutionStartedDetails" }) as any as S.Schema<ExecutionStartedDetails>;
 export interface EventResult {
   Payload?: string | redacted.Redacted<string>;
   Truncated?: boolean;
 }
-export const EventResult = EventInput as any as S.Schema<EventResult>;
+const EventResult = EventInput as any as S.Schema<EventResult>;
 export interface ExecutionSucceededDetails {
   Result: EventResult;
 }
-export const ExecutionSucceededDetails = /*@__PURE__*/ S.suspend(() =>
+const ExecutionSucceededDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Result: EventResult }),
 ).annotate({
   identifier: "ExecutionSucceededDetails",
@@ -2943,43 +2932,42 @@ export interface EventError {
   Payload?: ErrorObject;
   Truncated?: boolean;
 }
-export const EventError = /*@__PURE__*/ S.suspend(() =>
+const EventError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Payload: S.optional(ErrorObject), Truncated: S.optional(S.Boolean) }),
 ).annotate({ identifier: "EventError" }) as any as S.Schema<EventError>;
 export interface ExecutionFailedDetails {
   Error: EventError;
 }
-export const ExecutionFailedDetails = /*@__PURE__*/ S.suspend(() =>
+const ExecutionFailedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Error: EventError }),
 ).annotate({ identifier: "ExecutionFailedDetails" }) as any as S.Schema<ExecutionFailedDetails>;
 export interface ExecutionTimedOutDetails {
   Error?: EventError;
 }
-export const ExecutionTimedOutDetails = /*@__PURE__*/ S.suspend(() =>
+const ExecutionTimedOutDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Error: S.optional(EventError) }),
 ).annotate({ identifier: "ExecutionTimedOutDetails" }) as any as S.Schema<ExecutionTimedOutDetails>;
 export interface ExecutionStoppedDetails {
   Error: EventError;
 }
-export const ExecutionStoppedDetails =
-  ExecutionFailedDetails as any as S.Schema<ExecutionStoppedDetails>;
+const ExecutionStoppedDetails = ExecutionFailedDetails as any as S.Schema<ExecutionStoppedDetails>;
 export interface ContextStartedDetails {}
-export const ContextStartedDetails = DeleteAliasResponse as any as S.Schema<ContextStartedDetails>;
+const ContextStartedDetails = DeleteAliasResponse as any as S.Schema<ContextStartedDetails>;
 export interface ContextSucceededDetails {
   Result: EventResult;
 }
-export const ContextSucceededDetails = /*@__PURE__*/ S.suspend(() =>
+const ContextSucceededDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Result: EventResult }),
 ).annotate({ identifier: "ContextSucceededDetails" }) as any as S.Schema<ContextSucceededDetails>;
 export interface ContextFailedDetails {
   Error: EventError;
 }
-export const ContextFailedDetails = ExecutionFailedDetails as any as S.Schema<ContextFailedDetails>;
+const ContextFailedDetails = ExecutionFailedDetails as any as S.Schema<ContextFailedDetails>;
 export interface WaitStartedDetails {
   Duration: number;
   ScheduledEndTimestamp: Date;
 }
-export const WaitStartedDetails = /*@__PURE__*/ S.suspend(() =>
+const WaitStartedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Duration: S.Number,
     ScheduledEndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2988,35 +2976,34 @@ export const WaitStartedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface WaitSucceededDetails {
   Duration?: number;
 }
-export const WaitSucceededDetails = /*@__PURE__*/ S.suspend(() =>
+const WaitSucceededDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Duration: S.optional(S.Number) }),
 ).annotate({ identifier: "WaitSucceededDetails" }) as any as S.Schema<WaitSucceededDetails>;
 export interface WaitCancelledDetails {
   Error?: EventError;
 }
-export const WaitCancelledDetails =
-  ExecutionTimedOutDetails as any as S.Schema<WaitCancelledDetails>;
+const WaitCancelledDetails = ExecutionTimedOutDetails as any as S.Schema<WaitCancelledDetails>;
 export interface StepStartedDetails {}
-export const StepStartedDetails = DeleteAliasResponse as any as S.Schema<StepStartedDetails>;
+const StepStartedDetails = DeleteAliasResponse as any as S.Schema<StepStartedDetails>;
 export interface RetryDetails {
   CurrentAttempt?: number;
   NextAttemptDelaySeconds?: number;
 }
-export const RetryDetails = /*@__PURE__*/ S.suspend(() =>
+const RetryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CurrentAttempt: S.optional(S.Number), NextAttemptDelaySeconds: S.optional(S.Number) }),
 ).annotate({ identifier: "RetryDetails" }) as any as S.Schema<RetryDetails>;
 export interface StepSucceededDetails {
   Result: EventResult;
   RetryDetails: RetryDetails;
 }
-export const StepSucceededDetails = /*@__PURE__*/ S.suspend(() =>
+const StepSucceededDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Result: EventResult, RetryDetails: RetryDetails }),
 ).annotate({ identifier: "StepSucceededDetails" }) as any as S.Schema<StepSucceededDetails>;
 export interface StepFailedDetails {
   Error: EventError;
   RetryDetails: RetryDetails;
 }
-export const StepFailedDetails = /*@__PURE__*/ S.suspend(() =>
+const StepFailedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Error: EventError, RetryDetails: RetryDetails }),
 ).annotate({ identifier: "StepFailedDetails" }) as any as S.Schema<StepFailedDetails>;
 export interface ChainedInvokeStartedDetails {
@@ -3026,7 +3013,7 @@ export interface ChainedInvokeStartedDetails {
   ExecutedVersion?: string;
   DurableExecutionArn?: string;
 }
-export const ChainedInvokeStartedDetails = /*@__PURE__*/ S.suspend(() =>
+const ChainedInvokeStartedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String,
     TenantId: S.optional(S.String),
@@ -3040,12 +3027,12 @@ export const ChainedInvokeStartedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ChainedInvokeSucceededDetails {
   Result: EventResult;
 }
-export const ChainedInvokeSucceededDetails =
+const ChainedInvokeSucceededDetails =
   ExecutionSucceededDetails as any as S.Schema<ChainedInvokeSucceededDetails>;
 export interface ChainedInvokeFailedDetails {
   Error: EventError;
 }
-export const ChainedInvokeFailedDetails = /*@__PURE__*/ S.suspend(() =>
+const ChainedInvokeFailedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Error: EventError }),
 ).annotate({
   identifier: "ChainedInvokeFailedDetails",
@@ -3053,19 +3040,19 @@ export const ChainedInvokeFailedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ChainedInvokeTimedOutDetails {
   Error: EventError;
 }
-export const ChainedInvokeTimedOutDetails =
+const ChainedInvokeTimedOutDetails =
   ChainedInvokeFailedDetails as any as S.Schema<ChainedInvokeTimedOutDetails>;
 export interface ChainedInvokeStoppedDetails {
   Error: EventError;
 }
-export const ChainedInvokeStoppedDetails =
+const ChainedInvokeStoppedDetails =
   ChainedInvokeFailedDetails as any as S.Schema<ChainedInvokeStoppedDetails>;
 export interface CallbackStartedDetails {
   CallbackId: string;
   HeartbeatTimeout?: number;
   Timeout?: number;
 }
-export const CallbackStartedDetails = /*@__PURE__*/ S.suspend(() =>
+const CallbackStartedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CallbackId: S.String,
     HeartbeatTimeout: S.optional(S.Number),
@@ -3075,25 +3062,23 @@ export const CallbackStartedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface CallbackSucceededDetails {
   Result: EventResult;
 }
-export const CallbackSucceededDetails =
+const CallbackSucceededDetails =
   ContextSucceededDetails as any as S.Schema<CallbackSucceededDetails>;
 export interface CallbackFailedDetails {
   Error: EventError;
 }
-export const CallbackFailedDetails =
-  ExecutionFailedDetails as any as S.Schema<CallbackFailedDetails>;
+const CallbackFailedDetails = ExecutionFailedDetails as any as S.Schema<CallbackFailedDetails>;
 export interface CallbackTimedOutDetails {
   Error: EventError;
 }
-export const CallbackTimedOutDetails =
-  ExecutionFailedDetails as any as S.Schema<CallbackTimedOutDetails>;
+const CallbackTimedOutDetails = ExecutionFailedDetails as any as S.Schema<CallbackTimedOutDetails>;
 export interface InvocationCompletedDetails {
   StartTimestamp: Date;
   EndTimestamp: Date;
   RequestId: string;
   Error?: EventError;
 }
-export const InvocationCompletedDetails = /*@__PURE__*/ S.suspend(() =>
+const InvocationCompletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3136,7 +3121,7 @@ export interface Event {
   CallbackTimedOutDetails?: CallbackTimedOutDetails;
   InvocationCompletedDetails?: InvocationCompletedDetails;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EventType: S.optional(EventType),
     SubType: S.optional(S.String),
@@ -3172,12 +3157,12 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 export type Events = Event[];
-export const Events = /*@__PURE__*/ S.Array(Event);
+const Events = /*@__PURE__*/ S.Array(Event);
 export interface GetDurableExecutionHistoryResponse {
   Events: Event[];
   NextMarker?: string;
 }
-export const GetDurableExecutionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDurableExecutionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Events: Events, NextMarker: S.optional(S.String) }),
 ).annotate({
   identifier: "GetDurableExecutionHistoryResponse",
@@ -3188,7 +3173,7 @@ export interface GetDurableExecutionStateRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const GetDurableExecutionStateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDurableExecutionStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
     CheckpointToken: S.String.pipe(T.HttpQuery("CheckpointToken")),
@@ -3211,7 +3196,7 @@ export interface GetDurableExecutionStateResponse {
   Operations: Operation[];
   NextMarker?: string;
 }
-export const GetDurableExecutionStateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDurableExecutionStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Operations: Operations, NextMarker: S.optional(S.String) }),
 ).annotate({
   identifier: "GetDurableExecutionStateResponse",
@@ -3219,7 +3204,7 @@ export const GetDurableExecutionStateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetEventSourceMappingRequest {
   UUID: string;
 }
-export const GetEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UUID: S.String.pipe(T.HttpLabel("UUID")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2015-03-31/event-source-mappings/{UUID}" }),
@@ -3237,7 +3222,7 @@ export interface GetFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -3258,7 +3243,7 @@ export interface ResolvedS3Object {
   S3Key?: string;
   S3ObjectVersion?: string;
 }
-export const ResolvedS3Object = /*@__PURE__*/ S.suspend(() =>
+const ResolvedS3Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     S3Bucket: S.optional(S.String),
     S3Key: S.optional(S.String),
@@ -3269,7 +3254,7 @@ export interface FunctionCodeLocationError {
   ErrorCode?: string;
   Message?: string | redacted.Redacted<string>;
 }
-export const FunctionCodeLocationError = /*@__PURE__*/ S.suspend(() =>
+const FunctionCodeLocationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "FunctionCodeLocationError",
@@ -3283,7 +3268,7 @@ export interface FunctionCodeLocation {
   SourceKMSKeyArn?: string;
   Error?: FunctionCodeLocationError;
 }
-export const FunctionCodeLocation = /*@__PURE__*/ S.suspend(() =>
+const FunctionCodeLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RepositoryType: S.optional(S.String),
     Location: S.optional(S.String),
@@ -3300,14 +3285,14 @@ export interface TagsError {
   ErrorCode: string;
   Message: string;
 }
-export const TagsError = /*@__PURE__*/ S.suspend(() =>
+const TagsError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.String, Message: S.String }),
 ).annotate({ identifier: "TagsError" }) as any as S.Schema<TagsError>;
 export type ReservedConcurrentExecutions = number;
 export interface Concurrency {
   ReservedConcurrentExecutions?: number;
 }
-export const Concurrency = /*@__PURE__*/ S.suspend(() =>
+const Concurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
 ).annotate({ identifier: "Concurrency" }) as any as S.Schema<Concurrency>;
 export interface GetFunctionResponse {
@@ -3317,7 +3302,7 @@ export interface GetFunctionResponse {
   TagsError?: TagsError;
   Concurrency?: Concurrency;
 }
-export const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Configuration: S.optional(FunctionConfiguration),
     Code: S.optional(FunctionCodeLocation),
@@ -3329,7 +3314,7 @@ export const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetFunctionCodeSigningConfigRequest {
   FunctionName: string;
 }
-export const GetFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2020-06-30/functions/{FunctionName}/code-signing-config" }),
@@ -3347,7 +3332,7 @@ export interface GetFunctionCodeSigningConfigResponse {
   CodeSigningConfigArn: string;
   FunctionName: string;
 }
-export const GetFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
 ).annotate({
   identifier: "GetFunctionCodeSigningConfigResponse",
@@ -3355,7 +3340,7 @@ export const GetFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =
 export interface GetFunctionConcurrencyRequest {
   FunctionName: string;
 }
-export const GetFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2019-09-30/functions/{FunctionName}/concurrency" }),
@@ -3372,7 +3357,7 @@ export const GetFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFunctionConcurrencyResponse {
   ReservedConcurrentExecutions?: number;
 }
-export const GetFunctionConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
 ).annotate({
   identifier: "GetFunctionConcurrencyResponse",
@@ -3381,7 +3366,7 @@ export interface GetFunctionConfigurationRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetFunctionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -3402,7 +3387,7 @@ export interface GetFunctionEventInvokeConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -3428,7 +3413,7 @@ export interface FunctionEventInvokeConfig {
   MaximumEventAgeInSeconds?: number;
   DestinationConfig?: DestinationConfig;
 }
-export const FunctionEventInvokeConfig = /*@__PURE__*/ S.suspend(() =>
+const FunctionEventInvokeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     FunctionArn: S.optional(S.String),
@@ -3443,7 +3428,7 @@ export type UnqualifiedFunctionName = string;
 export interface GetFunctionRecursionConfigRequest {
   FunctionName: string;
 }
-export const GetFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2024-08-31/functions/{FunctionName}/recursion-config" }),
@@ -3458,12 +3443,12 @@ export const GetFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFunctionRecursionConfigRequest",
 }) as any as S.Schema<GetFunctionRecursionConfigRequest>;
 export type RecursiveLoop = "Allow" | "Terminate" | (string & {});
-export const RecursiveLoop = S.String;
+const RecursiveLoop = S.String;
 
 export interface GetFunctionRecursionConfigResponse {
   RecursiveLoop?: RecursiveLoop;
 }
-export const GetFunctionRecursionConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRecursionConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecursiveLoop: S.optional(RecursiveLoop) }),
 ).annotate({
   identifier: "GetFunctionRecursionConfigResponse",
@@ -3473,7 +3458,7 @@ export interface GetFunctionScalingConfigRequest {
   FunctionName: string;
   Qualifier: string;
 }
-export const GetFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
@@ -3498,7 +3483,7 @@ export interface FunctionScalingConfig {
   MinExecutionEnvironments?: number;
   MaxExecutionEnvironments?: number;
 }
-export const FunctionScalingConfig = /*@__PURE__*/ S.suspend(() =>
+const FunctionScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MinExecutionEnvironments: S.optional(S.Number),
     MaxExecutionEnvironments: S.optional(S.Number),
@@ -3509,7 +3494,7 @@ export interface GetFunctionScalingConfigResponse {
   AppliedFunctionScalingConfig?: FunctionScalingConfig;
   RequestedFunctionScalingConfig?: FunctionScalingConfig;
 }
-export const GetFunctionScalingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionScalingConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionArn: S.optional(S.String),
     AppliedFunctionScalingConfig: S.optional(FunctionScalingConfig),
@@ -3522,7 +3507,7 @@ export interface GetFunctionUrlConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -3548,7 +3533,7 @@ export interface GetFunctionUrlConfigResponse {
   LastModifiedTime: string;
   InvokeMode?: InvokeMode;
 }
-export const GetFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionUrl: S.String,
     FunctionArn: S.String,
@@ -3565,7 +3550,7 @@ export interface GetLayerVersionRequest {
   LayerName: string;
   VersionNumber: number;
 }
-export const GetLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.String.pipe(T.HttpLabel("LayerName")),
     VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
@@ -3588,7 +3573,7 @@ export interface LayerVersionContentOutput {
   SigningJobArn?: string;
   ResolvedS3Object?: ResolvedS3Object;
 }
-export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
+const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Location: S.optional(S.String),
     CodeSha256: S.optional(S.String),
@@ -3602,10 +3587,9 @@ export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LayerVersionContentOutput>;
 export type LayerArn = string;
 export type CompatibleArchitectures = Architecture[];
-export const CompatibleArchitectures =
-  ArchitecturesList as any as S.Schema<CompatibleArchitectures>;
+const CompatibleArchitectures = ArchitecturesList as any as S.Schema<CompatibleArchitectures>;
 export type CompatibleRuntimes = Runtime[];
-export const CompatibleRuntimes = ArchitecturesList as any as S.Schema<CompatibleRuntimes>;
+const CompatibleRuntimes = ArchitecturesList as any as S.Schema<CompatibleRuntimes>;
 export type LicenseInfo = string;
 export interface GetLayerVersionResponse {
   Content?: LayerVersionContentOutput;
@@ -3618,7 +3602,7 @@ export interface GetLayerVersionResponse {
   CompatibleRuntimes?: Runtime[];
   LicenseInfo?: string;
 }
-export const GetLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Content: S.optional(LayerVersionContentOutput),
     LayerArn: S.optional(S.String),
@@ -3634,7 +3618,7 @@ export const GetLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetLayerVersionByArnRequest {
   Arn: string;
 }
-export const GetLayerVersionByArnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayerVersionByArnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String.pipe(T.HttpQuery("Arn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2018-10-31/layers?find=LayerVersion" }),
@@ -3652,7 +3636,7 @@ export interface GetLayerVersionPolicyRequest {
   LayerName: string;
   VersionNumber: number;
 }
-export const GetLayerVersionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayerVersionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.String.pipe(T.HttpLabel("LayerName")),
     VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
@@ -3676,7 +3660,7 @@ export interface GetLayerVersionPolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const GetLayerVersionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLayerVersionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
 ).annotate({
   identifier: "GetLayerVersionPolicyResponse",
@@ -3685,7 +3669,7 @@ export interface GetPolicyRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -3704,14 +3688,14 @@ export interface GetPolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
 ).annotate({ identifier: "GetPolicyResponse" }) as any as S.Schema<GetPolicyResponse>;
 export interface GetProvisionedConcurrencyConfigRequest {
   FunctionName: string;
   Qualifier: string;
 }
-export const GetProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
@@ -3734,7 +3718,7 @@ export const GetProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(()
 export type PositiveInteger = number;
 export type NonNegativeInteger = number;
 export type ProvisionedConcurrencyStatusEnum = "IN_PROGRESS" | "READY" | "FAILED" | (string & {});
-export const ProvisionedConcurrencyStatusEnum = S.String;
+const ProvisionedConcurrencyStatusEnum = S.String;
 
 export interface GetProvisionedConcurrencyConfigResponse {
   RequestedProvisionedConcurrentExecutions?: number;
@@ -3744,7 +3728,7 @@ export interface GetProvisionedConcurrencyConfigResponse {
   StatusReason?: string;
   LastModified?: string;
 }
-export const GetProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
     AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
@@ -3759,7 +3743,7 @@ export const GetProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend((
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2026-07-09/resource-policy/{ResourceArn}" }),
@@ -3776,13 +3760,13 @@ export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const GetResourcePolicyResponse =
+const GetResourcePolicyResponse =
   GetLayerVersionPolicyResponse as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetRuntimeManagementConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -3803,14 +3787,14 @@ export const GetRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRuntimeManagementConfigRequest",
 }) as any as S.Schema<GetRuntimeManagementConfigRequest>;
 export type UpdateRuntimeOn = "Auto" | "Manual" | "FunctionUpdate" | (string & {});
-export const UpdateRuntimeOn = S.String;
+const UpdateRuntimeOn = S.String;
 
 export interface GetRuntimeManagementConfigResponse {
   UpdateRuntimeOn?: UpdateRuntimeOn;
   FunctionArn?: string;
   RuntimeVersionArn?: string;
 }
-export const GetRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpdateRuntimeOn: S.optional(UpdateRuntimeOn),
     FunctionArn: S.optional(S.String),
@@ -3820,10 +3804,10 @@ export const GetRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRuntimeManagementConfigResponse",
 }) as any as S.Schema<GetRuntimeManagementConfigResponse>;
 export type InvocationType = "Event" | "RequestResponse" | "DryRun" | (string & {});
-export const InvocationType = S.String;
+const InvocationType = S.String;
 
 export type LogType = "None" | "Tail" | (string & {});
-export const LogType = S.String;
+const LogType = S.String;
 
 export interface InvocationRequest {
   FunctionName: string;
@@ -3835,7 +3819,7 @@ export interface InvocationRequest {
   Qualifier?: string;
   TenantId?: string;
 }
-export const InvocationRequest = /*@__PURE__*/ S.suspend(() =>
+const InvocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     InvocationType: S.optional(InvocationType).pipe(T.HttpHeader("X-Amz-Invocation-Type")),
@@ -3864,7 +3848,7 @@ export interface InvocationResponse {
   ExecutedVersion?: string;
   DurableExecutionArn?: string;
 }
-export const InvocationResponse = /*@__PURE__*/ S.suspend(() =>
+const InvocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
     FunctionError: S.optional(S.String).pipe(T.HttpHeader("X-Amz-Function-Error")),
@@ -3878,7 +3862,7 @@ export interface InvokeAsyncRequest {
   FunctionName: string;
   InvokeArgs: T.StreamingInputBody;
 }
-export const InvokeAsyncRequest = /*@__PURE__*/ S.suspend(() =>
+const InvokeAsyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     InvokeArgs: T.StreamingInput.pipe(T.HttpPayload()),
@@ -3897,11 +3881,11 @@ export type HttpStatus = number;
 export interface InvokeAsyncResponse {
   Status?: number;
 }
-export const InvokeAsyncResponse = /*@__PURE__*/ S.suspend(() =>
+const InvokeAsyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(S.Number).pipe(T.HttpResponseCode()) }),
 ).annotate({ identifier: "InvokeAsyncResponse" }) as any as S.Schema<InvokeAsyncResponse>;
 export type ResponseStreamingInvocationType = "RequestResponse" | "DryRun" | (string & {});
-export const ResponseStreamingInvocationType = S.String;
+const ResponseStreamingInvocationType = S.String;
 
 export interface InvokeWithResponseStreamRequest {
   FunctionName: string;
@@ -3912,7 +3896,7 @@ export interface InvokeWithResponseStreamRequest {
   TenantId?: string;
   InvocationType?: ResponseStreamingInvocationType;
 }
-export const InvokeWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const InvokeWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     LogType: S.optional(LogType).pipe(T.HttpHeader("X-Amz-Log-Type")),
@@ -3942,7 +3926,7 @@ export const InvokeWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InvokeResponseStreamUpdate {
   Payload?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const InvokeResponseStreamUpdate = /*@__PURE__*/ S.suspend(() =>
+const InvokeResponseStreamUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Payload: S.optional(SensitiveBlob).pipe(T.EventPayload()) }),
 ).annotate({
   identifier: "InvokeResponseStreamUpdate",
@@ -3952,7 +3936,7 @@ export interface InvokeWithResponseStreamCompleteEvent {
   ErrorDetails?: string;
   LogResult?: string;
 }
-export const InvokeWithResponseStreamCompleteEvent = /*@__PURE__*/ S.suspend(() =>
+const InvokeWithResponseStreamCompleteEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ErrorCode: S.optional(S.String),
     ErrorDetails: S.optional(S.String),
@@ -3964,7 +3948,7 @@ export const InvokeWithResponseStreamCompleteEvent = /*@__PURE__*/ S.suspend(() 
 export type InvokeWithResponseStreamResponseEvent =
   | { PayloadChunk: InvokeResponseStreamUpdate; InvokeComplete?: never }
   | { PayloadChunk?: never; InvokeComplete: InvokeWithResponseStreamCompleteEvent };
-export const InvokeWithResponseStreamResponseEvent = /*@__PURE__*/ T.EventStream(
+const InvokeWithResponseStreamResponseEvent = /*@__PURE__*/ T.EventStream(
   /*@__PURE__*/ S.Union([
     /*@__PURE__*/ S.Struct({ PayloadChunk: InvokeResponseStreamUpdate }),
     /*@__PURE__*/ S.Struct({ InvokeComplete: InvokeWithResponseStreamCompleteEvent }),
@@ -3976,7 +3960,7 @@ export interface InvokeWithResponseStreamResponse {
   EventStream?: stream.Stream<InvokeWithResponseStreamResponseEvent, Error, never>;
   ResponseStreamContentType?: string;
 }
-export const InvokeWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const InvokeWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
     ExecutedVersion: S.optional(S.String).pipe(T.HttpHeader("X-Amz-Executed-Version")),
@@ -3993,7 +3977,7 @@ export interface ListAliasesRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListAliasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     FunctionVersion: S.optional(S.String).pipe(T.HttpQuery("FunctionVersion")),
@@ -4011,12 +3995,12 @@ export const ListAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListAliasesRequest" }) as any as S.Schema<ListAliasesRequest>;
 export type AliasList = AliasConfiguration[];
-export const AliasList = /*@__PURE__*/ S.Array(AliasConfiguration);
+const AliasList = /*@__PURE__*/ S.Array(AliasConfiguration);
 export interface ListAliasesResponse {
   NextMarker?: string;
   Aliases?: AliasConfiguration[];
 }
-export const ListAliasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAliasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextMarker: S.optional(S.String), Aliases: S.optional(AliasList) }),
 ).annotate({ identifier: "ListAliasesResponse" }) as any as S.Schema<ListAliasesResponse>;
 export type MaxFiftyListItems = number;
@@ -4025,7 +4009,7 @@ export interface ListCapacityProvidersRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListCapacityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapacityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     State: S.optional(CapacityProviderState).pipe(T.HttpQuery("State")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4044,12 +4028,12 @@ export const ListCapacityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCapacityProvidersRequest",
 }) as any as S.Schema<ListCapacityProvidersRequest>;
 export type CapacityProvidersList = CapacityProvider[];
-export const CapacityProvidersList = /*@__PURE__*/ S.Array(CapacityProvider);
+const CapacityProvidersList = /*@__PURE__*/ S.Array(CapacityProvider);
 export interface ListCapacityProvidersResponse {
   CapacityProviders: CapacityProvider[];
   NextMarker?: string;
 }
-export const ListCapacityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCapacityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CapacityProviders: CapacityProvidersList, NextMarker: S.optional(S.String) }),
 ).annotate({
   identifier: "ListCapacityProvidersResponse",
@@ -4058,7 +4042,7 @@ export interface ListCodeSigningConfigsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListCodeSigningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeSigningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
     MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
@@ -4076,12 +4060,12 @@ export const ListCodeSigningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCodeSigningConfigsRequest",
 }) as any as S.Schema<ListCodeSigningConfigsRequest>;
 export type CodeSigningConfigList = CodeSigningConfig[];
-export const CodeSigningConfigList = /*@__PURE__*/ S.Array(CodeSigningConfig);
+const CodeSigningConfigList = /*@__PURE__*/ S.Array(CodeSigningConfig);
 export interface ListCodeSigningConfigsResponse {
   NextMarker?: string;
   CodeSigningConfigs?: CodeSigningConfig[];
 }
-export const ListCodeSigningConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCodeSigningConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextMarker: S.optional(S.String),
     CodeSigningConfigs: S.optional(CodeSigningConfigList),
@@ -4090,7 +4074,7 @@ export const ListCodeSigningConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCodeSigningConfigsResponse",
 }) as any as S.Schema<ListCodeSigningConfigsResponse>;
 export type ExecutionStatusList = ExecutionStatus[];
-export const ExecutionStatusList = ArchitecturesList as any as S.Schema<ExecutionStatusList>;
+const ExecutionStatusList = ArchitecturesList as any as S.Schema<ExecutionStatusList>;
 export interface ListDurableExecutionsByFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -4102,7 +4086,7 @@ export interface ListDurableExecutionsByFunctionRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListDurableExecutionsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDurableExecutionsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -4139,7 +4123,7 @@ export interface Execution {
   EndTimestamp?: Date;
   KMSKeyArn?: string;
 }
-export const Execution = /*@__PURE__*/ S.suspend(() =>
+const Execution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String,
     DurableExecutionName: S.String,
@@ -4151,12 +4135,12 @@ export const Execution = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
 export type DurableExecutions = Execution[];
-export const DurableExecutions = /*@__PURE__*/ S.Array(Execution);
+const DurableExecutions = /*@__PURE__*/ S.Array(Execution);
 export interface ListDurableExecutionsByFunctionResponse {
   DurableExecutions?: Execution[];
   NextMarker?: string;
 }
-export const ListDurableExecutionsByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDurableExecutionsByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DurableExecutions: S.optional(DurableExecutions), NextMarker: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDurableExecutionsByFunctionResponse",
@@ -4167,7 +4151,7 @@ export interface ListEventSourceMappingsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListEventSourceMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSourceMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EventSourceArn: S.optional(S.String).pipe(T.HttpQuery("EventSourceArn")),
     FunctionName: S.optional(S.String).pipe(T.HttpQuery("FunctionName")),
@@ -4187,12 +4171,12 @@ export const ListEventSourceMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEventSourceMappingsRequest",
 }) as any as S.Schema<ListEventSourceMappingsRequest>;
 export type EventSourceMappingsList = EventSourceMappingConfiguration[];
-export const EventSourceMappingsList = /*@__PURE__*/ S.Array(EventSourceMappingConfiguration);
+const EventSourceMappingsList = /*@__PURE__*/ S.Array(EventSourceMappingConfiguration);
 export interface ListEventSourceMappingsResponse {
   NextMarker?: string;
   EventSourceMappings?: EventSourceMappingConfiguration[];
 }
-export const ListEventSourceMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventSourceMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextMarker: S.optional(S.String),
     EventSourceMappings: S.optional(EventSourceMappingsList),
@@ -4206,7 +4190,7 @@ export interface ListFunctionEventInvokeConfigsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListFunctionEventInvokeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionEventInvokeConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4228,12 +4212,12 @@ export const ListFunctionEventInvokeConfigsRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "ListFunctionEventInvokeConfigsRequest",
 }) as any as S.Schema<ListFunctionEventInvokeConfigsRequest>;
 export type FunctionEventInvokeConfigList = FunctionEventInvokeConfig[];
-export const FunctionEventInvokeConfigList = /*@__PURE__*/ S.Array(FunctionEventInvokeConfig);
+const FunctionEventInvokeConfigList = /*@__PURE__*/ S.Array(FunctionEventInvokeConfig);
 export interface ListFunctionEventInvokeConfigsResponse {
   FunctionEventInvokeConfigs?: FunctionEventInvokeConfig[];
   NextMarker?: string;
 }
-export const ListFunctionEventInvokeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionEventInvokeConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionEventInvokeConfigs: S.optional(FunctionEventInvokeConfigList),
     NextMarker: S.optional(S.String),
@@ -4243,7 +4227,7 @@ export const ListFunctionEventInvokeConfigsResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListFunctionEventInvokeConfigsResponse>;
 export type MasterRegion = string;
 export type FunctionVersion = "ALL" | (string & {});
-export const FunctionVersion = S.String;
+const FunctionVersion = S.String;
 
 export interface ListFunctionsRequest {
   MasterRegion?: string;
@@ -4251,7 +4235,7 @@ export interface ListFunctionsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MasterRegion: S.optional(S.String).pipe(T.HttpQuery("MasterRegion")),
     FunctionVersion: S.optional(FunctionVersion).pipe(T.HttpQuery("FunctionVersion")),
@@ -4262,12 +4246,12 @@ export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListFunctionsRequest" }) as any as S.Schema<ListFunctionsRequest>;
 export type FunctionList = FunctionConfiguration[];
-export const FunctionList = /*@__PURE__*/ S.Array(FunctionConfiguration);
+const FunctionList = /*@__PURE__*/ S.Array(FunctionConfiguration);
 export interface ListFunctionsResponse {
   NextMarker?: string;
   Functions?: FunctionConfiguration[];
 }
-export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextMarker: S.optional(S.String), Functions: S.optional(FunctionList) }),
 ).annotate({ identifier: "ListFunctionsResponse" }) as any as S.Schema<ListFunctionsResponse>;
 export interface ListFunctionsByCodeSigningConfigRequest {
@@ -4275,7 +4259,7 @@ export interface ListFunctionsByCodeSigningConfigRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListFunctionsByCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsByCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4297,12 +4281,12 @@ export const ListFunctionsByCodeSigningConfigRequest = /*@__PURE__*/ S.suspend((
   identifier: "ListFunctionsByCodeSigningConfigRequest",
 }) as any as S.Schema<ListFunctionsByCodeSigningConfigRequest>;
 export type FunctionArnList = string[];
-export const FunctionArnList = CapacityProviderSubnetIds as any as S.Schema<FunctionArnList>;
+const FunctionArnList = CapacityProviderSubnetIds as any as S.Schema<FunctionArnList>;
 export interface ListFunctionsByCodeSigningConfigResponse {
   NextMarker?: string;
   FunctionArns?: string[];
 }
-export const ListFunctionsByCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsByCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextMarker: S.optional(S.String), FunctionArns: S.optional(FunctionArnList) }),
 ).annotate({
   identifier: "ListFunctionsByCodeSigningConfigResponse",
@@ -4313,7 +4297,7 @@ export interface ListFunctionUrlConfigsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListFunctionUrlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionUrlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4340,7 +4324,7 @@ export interface FunctionUrlConfig {
   AuthType: FunctionUrlAuthType;
   InvokeMode?: InvokeMode;
 }
-export const FunctionUrlConfig = /*@__PURE__*/ S.suspend(() =>
+const FunctionUrlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionUrl: S.String,
     FunctionArn: S.String,
@@ -4352,12 +4336,12 @@ export const FunctionUrlConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunctionUrlConfig" }) as any as S.Schema<FunctionUrlConfig>;
 export type FunctionUrlConfigList = FunctionUrlConfig[];
-export const FunctionUrlConfigList = /*@__PURE__*/ S.Array(FunctionUrlConfig);
+const FunctionUrlConfigList = /*@__PURE__*/ S.Array(FunctionUrlConfig);
 export interface ListFunctionUrlConfigsResponse {
   FunctionUrlConfigs: FunctionUrlConfig[];
   NextMarker?: string;
 }
-export const ListFunctionUrlConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionUrlConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionUrlConfigs: FunctionUrlConfigList, NextMarker: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFunctionUrlConfigsResponse",
@@ -4367,7 +4351,7 @@ export interface ListFunctionVersionsByCapacityProviderRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListFunctionVersionsByCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionVersionsByCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4392,13 +4376,13 @@ export interface FunctionVersionsByCapacityProviderListItem {
   FunctionArn: string;
   State: State;
 }
-export const FunctionVersionsByCapacityProviderListItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionVersionsByCapacityProviderListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionArn: S.String, State: State }),
 ).annotate({
   identifier: "FunctionVersionsByCapacityProviderListItem",
 }) as any as S.Schema<FunctionVersionsByCapacityProviderListItem>;
 export type FunctionVersionsByCapacityProviderList = FunctionVersionsByCapacityProviderListItem[];
-export const FunctionVersionsByCapacityProviderList = /*@__PURE__*/ S.Array(
+const FunctionVersionsByCapacityProviderList = /*@__PURE__*/ S.Array(
   FunctionVersionsByCapacityProviderListItem,
 );
 export interface ListFunctionVersionsByCapacityProviderResponse {
@@ -4406,7 +4390,7 @@ export interface ListFunctionVersionsByCapacityProviderResponse {
   FunctionVersions: FunctionVersionsByCapacityProviderListItem[];
   NextMarker?: string;
 }
-export const ListFunctionVersionsByCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionVersionsByCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityProviderArn: S.String,
     FunctionVersions: FunctionVersionsByCapacityProviderList,
@@ -4422,7 +4406,7 @@ export interface ListLayersRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CompatibleArchitecture: S.optional(Architecture).pipe(T.HttpQuery("CompatibleArchitecture")),
     CompatibleRuntime: S.optional(Runtime).pipe(T.HttpQuery("CompatibleRuntime")),
@@ -4441,7 +4425,7 @@ export interface LayerVersionsListItem {
   CompatibleRuntimes?: Runtime[];
   LicenseInfo?: string;
 }
-export const LayerVersionsListItem = /*@__PURE__*/ S.suspend(() =>
+const LayerVersionsListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerVersionArn: S.optional(S.String),
     Version: S.optional(S.Number),
@@ -4457,7 +4441,7 @@ export interface LayersListItem {
   LayerArn?: string;
   LatestMatchingVersion?: LayerVersionsListItem;
 }
-export const LayersListItem = /*@__PURE__*/ S.suspend(() =>
+const LayersListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.optional(S.String),
     LayerArn: S.optional(S.String),
@@ -4465,12 +4449,12 @@ export const LayersListItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LayersListItem" }) as any as S.Schema<LayersListItem>;
 export type LayersList = LayersListItem[];
-export const LayersList = /*@__PURE__*/ S.Array(LayersListItem);
+const LayersList = /*@__PURE__*/ S.Array(LayersListItem);
 export interface ListLayersResponse {
   NextMarker?: string;
   Layers?: LayersListItem[];
 }
-export const ListLayersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLayersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextMarker: S.optional(S.String), Layers: S.optional(LayersList) }),
 ).annotate({ identifier: "ListLayersResponse" }) as any as S.Schema<ListLayersResponse>;
 export interface ListLayerVersionsRequest {
@@ -4480,7 +4464,7 @@ export interface ListLayerVersionsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListLayerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLayerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CompatibleArchitecture: S.optional(Architecture).pipe(T.HttpQuery("CompatibleArchitecture")),
     CompatibleRuntime: S.optional(Runtime).pipe(T.HttpQuery("CompatibleRuntime")),
@@ -4499,12 +4483,12 @@ export const ListLayerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListLayerVersionsRequest" }) as any as S.Schema<ListLayerVersionsRequest>;
 export type LayerVersionsList = LayerVersionsListItem[];
-export const LayerVersionsList = /*@__PURE__*/ S.Array(LayerVersionsListItem);
+const LayerVersionsList = /*@__PURE__*/ S.Array(LayerVersionsListItem);
 export interface ListLayerVersionsResponse {
   NextMarker?: string;
   LayerVersions?: LayerVersionsListItem[];
 }
-export const ListLayerVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLayerVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextMarker: S.optional(S.String), LayerVersions: S.optional(LayerVersionsList) }),
 ).annotate({
   identifier: "ListLayerVersionsResponse",
@@ -4515,7 +4499,7 @@ export interface ListProvisionedConcurrencyConfigsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListProvisionedConcurrencyConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedConcurrencyConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4545,7 +4529,7 @@ export interface ProvisionedConcurrencyConfigListItem {
   StatusReason?: string;
   LastModified?: string;
 }
-export const ProvisionedConcurrencyConfigListItem = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedConcurrencyConfigListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionArn: S.optional(S.String),
     RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
@@ -4559,14 +4543,14 @@ export const ProvisionedConcurrencyConfigListItem = /*@__PURE__*/ S.suspend(() =
   identifier: "ProvisionedConcurrencyConfigListItem",
 }) as any as S.Schema<ProvisionedConcurrencyConfigListItem>;
 export type ProvisionedConcurrencyConfigList = ProvisionedConcurrencyConfigListItem[];
-export const ProvisionedConcurrencyConfigList = /*@__PURE__*/ S.Array(
+const ProvisionedConcurrencyConfigList = /*@__PURE__*/ S.Array(
   ProvisionedConcurrencyConfigListItem,
 );
 export interface ListProvisionedConcurrencyConfigsResponse {
   ProvisionedConcurrencyConfigs?: ProvisionedConcurrencyConfigListItem[];
   NextMarker?: string;
 }
-export const ListProvisionedConcurrencyConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedConcurrencyConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProvisionedConcurrencyConfigs: S.optional(ProvisionedConcurrencyConfigList),
     NextMarker: S.optional(S.String),
@@ -4578,7 +4562,7 @@ export type TaggableResource = string;
 export interface ListTagsRequest {
   Resource: string;
 }
-export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resource: S.String.pipe(T.HttpLabel("Resource")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2017-03-31/tags/{Resource}" }),
@@ -4593,7 +4577,7 @@ export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(Tags) }),
 ).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 export interface ListVersionsByFunctionRequest {
@@ -4601,7 +4585,7 @@ export interface ListVersionsByFunctionRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListVersionsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -4623,7 +4607,7 @@ export interface ListVersionsByFunctionResponse {
   NextMarker?: string;
   Versions?: FunctionConfiguration[];
 }
-export const ListVersionsByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextMarker: S.optional(S.String), Versions: S.optional(FunctionList) }),
 ).annotate({
   identifier: "ListVersionsByFunctionResponse",
@@ -4635,7 +4619,7 @@ export interface LayerVersionContentInput {
   S3ObjectStorageMode?: S3ObjectStorageMode;
   ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const LayerVersionContentInput = /*@__PURE__*/ S.suspend(() =>
+const LayerVersionContentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     S3Bucket: S.optional(S.String),
     S3Key: S.optional(S.String),
@@ -4652,7 +4636,7 @@ export interface PublishLayerVersionRequest {
   CompatibleRuntimes?: Runtime[];
   LicenseInfo?: string;
 }
-export const PublishLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.String.pipe(T.HttpLabel("LayerName")),
     Description: S.optional(S.String),
@@ -4684,7 +4668,7 @@ export interface PublishLayerVersionResponse {
   CompatibleRuntimes?: Runtime[];
   LicenseInfo?: string;
 }
-export const PublishLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Content: S.optional(LayerVersionContentOutput),
     LayerArn: S.optional(S.String),
@@ -4706,7 +4690,7 @@ export interface PublishVersionRequest {
   RevisionId?: string;
   PublishTo?: FunctionVersionLatestPublished;
 }
-export const PublishVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     CodeSha256: S.optional(S.String),
@@ -4728,7 +4712,7 @@ export interface PutFunctionCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
   FunctionName: string;
 }
-export const PutFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeSigningConfigArn: S.String,
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
@@ -4749,13 +4733,13 @@ export interface PutFunctionCodeSigningConfigResponse {
   CodeSigningConfigArn: string;
   FunctionName: string;
 }
-export const PutFunctionCodeSigningConfigResponse =
+const PutFunctionCodeSigningConfigResponse =
   GetFunctionCodeSigningConfigResponse as any as S.Schema<PutFunctionCodeSigningConfigResponse>;
 export interface PutFunctionConcurrencyRequest {
   FunctionName: string;
   ReservedConcurrentExecutions: number;
 }
-export const PutFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     ReservedConcurrentExecutions: S.Number,
@@ -4779,7 +4763,7 @@ export interface PutFunctionEventInvokeConfigRequest {
   MaximumEventAgeInSeconds?: number;
   DestinationConfig?: DestinationConfig;
 }
-export const PutFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -4803,7 +4787,7 @@ export interface PutFunctionRecursionConfigRequest {
   FunctionName: string;
   RecursiveLoop: RecursiveLoop;
 }
-export const PutFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     RecursiveLoop: RecursiveLoop,
@@ -4823,14 +4807,14 @@ export const PutFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutFunctionRecursionConfigResponse {
   RecursiveLoop?: RecursiveLoop;
 }
-export const PutFunctionRecursionConfigResponse =
+const PutFunctionRecursionConfigResponse =
   GetFunctionRecursionConfigResponse as any as S.Schema<PutFunctionRecursionConfigResponse>;
 export interface PutFunctionScalingConfigRequest {
   FunctionName: string;
   Qualifier: string;
   FunctionScalingConfig?: FunctionScalingConfig;
 }
-export const PutFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
@@ -4854,7 +4838,7 @@ export const PutFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutFunctionScalingConfigResponse {
   FunctionState?: State;
 }
-export const PutFunctionScalingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const PutFunctionScalingConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FunctionState: S.optional(State) }),
 ).annotate({
   identifier: "PutFunctionScalingConfigResponse",
@@ -4864,7 +4848,7 @@ export interface PutProvisionedConcurrencyConfigRequest {
   Qualifier: string;
   ProvisionedConcurrentExecutions: number;
 }
-export const PutProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
@@ -4893,7 +4877,7 @@ export interface PutProvisionedConcurrencyConfigResponse {
   StatusReason?: string;
   LastModified?: string;
 }
-export const PutProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const PutProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
     AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
@@ -4910,7 +4894,7 @@ export interface PutResourcePolicyRequest {
   Policy: string;
   RevisionId?: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Policy: S.String,
@@ -4930,7 +4914,7 @@ export interface PutResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const PutResourcePolicyResponse =
+const PutResourcePolicyResponse =
   GetLayerVersionPolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface PutRuntimeManagementConfigRequest {
   FunctionName: string;
@@ -4938,7 +4922,7 @@ export interface PutRuntimeManagementConfigRequest {
   UpdateRuntimeOn: UpdateRuntimeOn;
   RuntimeVersionArn?: string;
 }
-export const PutRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -4965,7 +4949,7 @@ export interface PutRuntimeManagementConfigResponse {
   FunctionArn: string;
   RuntimeVersionArn?: string;
 }
-export const PutRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const PutRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpdateRuntimeOn: UpdateRuntimeOn,
     FunctionArn: S.String,
@@ -4980,7 +4964,7 @@ export interface RemoveLayerVersionPermissionRequest {
   StatementId: string;
   RevisionId?: string;
 }
-export const RemoveLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LayerName: S.String.pipe(T.HttpLabel("LayerName")),
     VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
@@ -5003,7 +4987,7 @@ export const RemoveLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveLayerVersionPermissionRequest",
 }) as any as S.Schema<RemoveLayerVersionPermissionRequest>;
 export interface RemoveLayerVersionPermissionResponse {}
-export const RemoveLayerVersionPermissionResponse =
+const RemoveLayerVersionPermissionResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<RemoveLayerVersionPermissionResponse>;
 export type NamespacedStatementId = string;
 export interface RemovePermissionRequest {
@@ -5012,7 +4996,7 @@ export interface RemovePermissionRequest {
   Qualifier?: string;
   RevisionId?: string;
 }
-export const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     StatementId: S.String.pipe(T.HttpLabel("StatementId")),
@@ -5033,13 +5017,12 @@ export const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemovePermissionRequest" }) as any as S.Schema<RemovePermissionRequest>;
 export interface RemovePermissionResponse {}
-export const RemovePermissionResponse =
-  DeleteAliasResponse as any as S.Schema<RemovePermissionResponse>;
+const RemovePermissionResponse = DeleteAliasResponse as any as S.Schema<RemovePermissionResponse>;
 export interface SendDurableExecutionCallbackFailureRequest {
   CallbackId: string;
   Error?: ErrorObject;
 }
-export const SendDurableExecutionCallbackFailureRequest = /*@__PURE__*/ S.suspend(() =>
+const SendDurableExecutionCallbackFailureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CallbackId: S.String.pipe(T.HttpLabel("CallbackId")),
     Error: S.optional(ErrorObject).pipe(T.HttpPayload()).annotate({ identifier: "ErrorObject" }),
@@ -5057,12 +5040,12 @@ export const SendDurableExecutionCallbackFailureRequest = /*@__PURE__*/ S.suspen
   identifier: "SendDurableExecutionCallbackFailureRequest",
 }) as any as S.Schema<SendDurableExecutionCallbackFailureRequest>;
 export interface SendDurableExecutionCallbackFailureResponse {}
-export const SendDurableExecutionCallbackFailureResponse =
+const SendDurableExecutionCallbackFailureResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<SendDurableExecutionCallbackFailureResponse>;
 export interface SendDurableExecutionCallbackHeartbeatRequest {
   CallbackId: string;
 }
-export const SendDurableExecutionCallbackHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const SendDurableExecutionCallbackHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CallbackId: S.String.pipe(T.HttpLabel("CallbackId")) }).pipe(
     T.all(
       T.Http({
@@ -5080,13 +5063,13 @@ export const SendDurableExecutionCallbackHeartbeatRequest = /*@__PURE__*/ S.susp
   identifier: "SendDurableExecutionCallbackHeartbeatRequest",
 }) as any as S.Schema<SendDurableExecutionCallbackHeartbeatRequest>;
 export interface SendDurableExecutionCallbackHeartbeatResponse {}
-export const SendDurableExecutionCallbackHeartbeatResponse =
+const SendDurableExecutionCallbackHeartbeatResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>;
 export interface SendDurableExecutionCallbackSuccessRequest {
   CallbackId: string;
   Result?: T.StreamingInputBody;
 }
-export const SendDurableExecutionCallbackSuccessRequest = /*@__PURE__*/ S.suspend(() =>
+const SendDurableExecutionCallbackSuccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CallbackId: S.String.pipe(T.HttpLabel("CallbackId")),
     Result: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
@@ -5107,13 +5090,13 @@ export const SendDurableExecutionCallbackSuccessRequest = /*@__PURE__*/ S.suspen
   identifier: "SendDurableExecutionCallbackSuccessRequest",
 }) as any as S.Schema<SendDurableExecutionCallbackSuccessRequest>;
 export interface SendDurableExecutionCallbackSuccessResponse {}
-export const SendDurableExecutionCallbackSuccessResponse =
+const SendDurableExecutionCallbackSuccessResponse =
   DeleteFunctionCodeSigningConfigResponse as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>;
 export interface StopDurableExecutionRequest {
   DurableExecutionArn: string;
   Error?: ErrorObject;
 }
-export const StopDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const StopDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
     Error: S.optional(ErrorObject).pipe(T.HttpPayload()).annotate({ identifier: "ErrorObject" }),
@@ -5133,7 +5116,7 @@ export const StopDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopDurableExecutionResponse {
   StopTimestamp: Date;
 }
-export const StopDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const StopDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StopTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
 ).annotate({
   identifier: "StopDurableExecutionResponse",
@@ -5142,7 +5125,7 @@ export interface TagResourceRequest {
   Resource: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resource: S.String.pipe(T.HttpLabel("Resource")), Tags: Tags }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2017-03-31/tags/{Resource}" }),
@@ -5155,16 +5138,16 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteAliasResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteAliasResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(
+const TagKeyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
 );
 export interface UntagResourceRequest {
   Resource: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resource: S.String.pipe(T.HttpLabel("Resource")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -5180,7 +5163,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = DeleteAliasResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteAliasResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAliasRequest {
   FunctionName: string;
   Name: string;
@@ -5189,7 +5172,7 @@ export interface UpdateAliasRequest {
   RoutingConfig?: AliasRoutingConfiguration;
   RevisionId?: string;
 }
-export const UpdateAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Name: S.String.pipe(T.HttpLabel("Name")),
@@ -5214,7 +5197,7 @@ export interface UpdateCapacityProviderRequest {
   PropagateTags?: PropagateTags;
   TelemetryConfig?: CapacityProviderTelemetryConfig;
 }
-export const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
     CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
@@ -5236,7 +5219,7 @@ export const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const UpdateCapacityProviderResponse =
+const UpdateCapacityProviderResponse =
   CreateCapacityProviderResponse as any as S.Schema<UpdateCapacityProviderResponse>;
 export interface UpdateCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
@@ -5244,7 +5227,7 @@ export interface UpdateCodeSigningConfigRequest {
   AllowedPublishers?: AllowedPublishers;
   CodeSigningPolicies?: CodeSigningPolicies;
 }
-export const UpdateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
     Description: S.optional(S.String),
@@ -5266,7 +5249,7 @@ export const UpdateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCodeSigningConfigResponse {
   CodeSigningConfig: CodeSigningConfig;
 }
-export const UpdateCodeSigningConfigResponse =
+const UpdateCodeSigningConfigResponse =
   CreateCodeSigningConfigResponse as any as S.Schema<UpdateCodeSigningConfigResponse>;
 export interface UpdateEventSourceMappingRequest {
   UUID: string;
@@ -5292,7 +5275,7 @@ export interface UpdateEventSourceMappingRequest {
   DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
   ProvisionedPollerConfig?: ProvisionedPollerConfig;
 }
-export const UpdateEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UUID: S.String.pipe(T.HttpLabel("UUID")),
     FunctionName: S.optional(S.String),
@@ -5344,7 +5327,7 @@ export interface UpdateFunctionCodeRequest {
   RevisionId?: string;
   SourceKMSKeyArn?: string;
 }
-export const UpdateFunctionCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     ZipFile: S.optional(SensitiveBlob),
@@ -5395,7 +5378,7 @@ export interface UpdateFunctionConfigurationRequest {
   CapacityProviderConfig?: CapacityProviderConfig;
   DurableConfig?: DurableConfig;
 }
-export const UpdateFunctionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Role: S.optional(S.String),
@@ -5438,7 +5421,7 @@ export interface UpdateFunctionEventInvokeConfigRequest {
   MaximumEventAgeInSeconds?: number;
   DestinationConfig?: DestinationConfig;
 }
-export const UpdateFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -5465,7 +5448,7 @@ export interface UpdateFunctionUrlConfigRequest {
   Cors?: Cors;
   InvokeMode?: InvokeMode;
 }
-export const UpdateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
     Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -5494,7 +5477,7 @@ export interface UpdateFunctionUrlConfigResponse {
   LastModifiedTime: string;
   InvokeMode?: InvokeMode;
 }
-export const UpdateFunctionUrlConfigResponse =
+const UpdateFunctionUrlConfigResponse =
   GetFunctionUrlConfigResponse as any as S.Schema<UpdateFunctionUrlConfigResponse>;
 export type ThrottleReason =
   | "ConcurrentInvocationLimitExceeded"
@@ -5504,7 +5487,7 @@ export type ThrottleReason =
   | "CallerRateLimitExceeded"
   | "ConcurrentSnapshotCreateLimitExceeded"
   | (string & {});
-export const ThrottleReason = S.String;
+const ThrottleReason = S.String;
 
 export type AddLayerVersionPermissionError =
   | InvalidParameterValueException

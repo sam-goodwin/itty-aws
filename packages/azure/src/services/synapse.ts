@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type BigDataPoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BigDataPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const BigDataPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<BigDataPoolsCreateOrUpdateRequestTagsMap>;
@@ -25,7 +25,7 @@ export interface AutoScaleProperties {
   /** The maximum number of nodes the Big Data pool can support. */
   maxNodeCount?: number;
 }
-export const AutoScaleProperties = /*@__PURE__*/ S.suspend(() =>
+const AutoScaleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minNodeCount: S.optional(S.Number),
     enabled: S.optional(S.Boolean),
@@ -40,7 +40,7 @@ export interface AutoPauseProperties {
   /** Whether auto-pausing is enabled for the Big Data pool. */
   enabled?: boolean;
 }
-export const AutoPauseProperties = /*@__PURE__*/ S.suspend(() =>
+const AutoPauseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delayInMinutes: S.optional(S.Number),
     enabled: S.optional(S.Boolean),
@@ -56,7 +56,7 @@ export interface DynamicExecutorAllocation {
   /** The maximum number of executors alloted */
   maxExecutors?: number;
 }
-export const DynamicExecutorAllocation = /*@__PURE__*/ S.suspend(() =>
+const DynamicExecutorAllocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     minExecutors: S.optional(S.Number),
@@ -73,7 +73,7 @@ export interface LibraryRequirementsInput {
   /** The filename of the library requirements file. */
   filename?: string;
 }
-export const LibraryRequirementsInput = /*@__PURE__*/ S.suspend(() =>
+const LibraryRequirementsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     filename: S.optional(S.String),
@@ -91,7 +91,7 @@ export interface BigDataPoolResourcePropertiesInputCustomLibrariesItem {
   /** Type of the library. */
   type?: string;
 }
-export const BigDataPoolResourcePropertiesInputCustomLibrariesItem = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolResourcePropertiesInputCustomLibrariesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     path: S.optional(S.String),
@@ -105,13 +105,13 @@ export const BigDataPoolResourcePropertiesInputCustomLibrariesItem = /*@__PURE__
 /** List of custom libraries/packages associated with the spark pool. */
 export type BigDataPoolResourcePropertiesInputCustomLibrariesList =
   Array<BigDataPoolResourcePropertiesInputCustomLibrariesItem>;
-export const BigDataPoolResourcePropertiesInputCustomLibrariesList = /*@__PURE__*/ S.Array(
+const BigDataPoolResourcePropertiesInputCustomLibrariesList = /*@__PURE__*/ S.Array(
   BigDataPoolResourcePropertiesInputCustomLibrariesItem,
 ) as any as S.Schema<BigDataPoolResourcePropertiesInputCustomLibrariesList>;
 
 /** The type of the spark config properties file. */
 export type SparkConfigPropertiesInputConfigurationType = "File" | "Artifact";
-export const SparkConfigPropertiesInputConfigurationType = S.String;
+const SparkConfigPropertiesInputConfigurationType = S.String;
 
 /** SparkConfig Properties for a Big Data pool powered by Apache Spark */
 export interface SparkConfigPropertiesInput {
@@ -122,7 +122,7 @@ export interface SparkConfigPropertiesInput {
   /** The type of the spark config properties file. */
   configurationType?: SparkConfigPropertiesInputConfigurationType | (string & {});
 }
-export const SparkConfigPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SparkConfigPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     filename: S.optional(S.String),
@@ -141,7 +141,7 @@ export type BigDataPoolResourcePropertiesInputNodeSize =
   | "XLarge"
   | "XXLarge"
   | "XXXLarge";
-export const BigDataPoolResourcePropertiesInputNodeSize = S.String;
+const BigDataPoolResourcePropertiesInputNodeSize = S.String;
 
 /** The kind of nodes that the Big Data pool provides. */
 export type BigDataPoolResourcePropertiesInputNodeSizeFamily =
@@ -149,7 +149,7 @@ export type BigDataPoolResourcePropertiesInputNodeSizeFamily =
   | "MemoryOptimized"
   | "HardwareAcceleratedFPGA"
   | "HardwareAcceleratedGPU";
-export const BigDataPoolResourcePropertiesInputNodeSizeFamily = S.String;
+const BigDataPoolResourcePropertiesInputNodeSizeFamily = S.String;
 
 /** Properties of a Big Data pool powered by Apache Spark */
 export interface BigDataPoolResourcePropertiesInput {
@@ -188,7 +188,7 @@ export interface BigDataPoolResourcePropertiesInput {
   /** The kind of nodes that the Big Data pool provides. */
   nodeSizeFamily?: BigDataPoolResourcePropertiesInputNodeSizeFamily | (string & {});
 }
-export const BigDataPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     autoScale: S.optional(AutoScaleProperties),
@@ -230,7 +230,7 @@ export interface BigDataPoolsCreateOrUpdateRequest {
   /** Big Data pool properties */
   properties?: BigDataPoolResourcePropertiesInput;
 }
-export const BigDataPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -254,7 +254,7 @@ export const BigDataPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BigDataPoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BigDataPoolsCreateOrUpdateResponseTagsMap =
+const BigDataPoolsCreateOrUpdateResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<BigDataPoolsCreateOrUpdateResponseTagsMap>;
 
 /** Library requirements for a Big Data pool powered by Apache Spark */
@@ -266,7 +266,7 @@ export interface LibraryRequirements {
   /** The filename of the library requirements file. */
   filename?: string;
 }
-export const LibraryRequirements = /*@__PURE__*/ S.suspend(() =>
+const LibraryRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     content: S.optional(S.String),
@@ -291,7 +291,7 @@ export interface BigDataPoolResourcePropertiesCustomLibrariesItem {
   /** Creator Id of the library/package. */
   creatorId?: string;
 }
-export const BigDataPoolResourcePropertiesCustomLibrariesItem = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolResourcePropertiesCustomLibrariesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     path: S.optional(S.String),
@@ -308,13 +308,13 @@ export const BigDataPoolResourcePropertiesCustomLibrariesItem = /*@__PURE__*/ S.
 /** List of custom libraries/packages associated with the spark pool. */
 export type BigDataPoolResourcePropertiesCustomLibrariesList =
   Array<BigDataPoolResourcePropertiesCustomLibrariesItem>;
-export const BigDataPoolResourcePropertiesCustomLibrariesList = /*@__PURE__*/ S.Array(
+const BigDataPoolResourcePropertiesCustomLibrariesList = /*@__PURE__*/ S.Array(
   BigDataPoolResourcePropertiesCustomLibrariesItem,
 ) as any as S.Schema<BigDataPoolResourcePropertiesCustomLibrariesList>;
 
 /** The type of the spark config properties file. */
 export type SparkConfigPropertiesConfigurationType = "File" | "Artifact";
-export const SparkConfigPropertiesConfigurationType = S.String;
+const SparkConfigPropertiesConfigurationType = S.String;
 
 /** SparkConfig Properties for a Big Data pool powered by Apache Spark */
 export interface SparkConfigProperties {
@@ -327,7 +327,7 @@ export interface SparkConfigProperties {
   /** The type of the spark config properties file. */
   configurationType?: SparkConfigPropertiesConfigurationType;
 }
-export const SparkConfigProperties = /*@__PURE__*/ S.suspend(() =>
+const SparkConfigProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     content: S.optional(S.String),
@@ -345,7 +345,7 @@ export type BigDataPoolResourcePropertiesNodeSize =
   | "XLarge"
   | "XXLarge"
   | "XXXLarge";
-export const BigDataPoolResourcePropertiesNodeSize = S.String;
+const BigDataPoolResourcePropertiesNodeSize = S.String;
 
 /** The kind of nodes that the Big Data pool provides. */
 export type BigDataPoolResourcePropertiesNodeSizeFamily =
@@ -353,7 +353,7 @@ export type BigDataPoolResourcePropertiesNodeSizeFamily =
   | "MemoryOptimized"
   | "HardwareAcceleratedFPGA"
   | "HardwareAcceleratedGPU";
-export const BigDataPoolResourcePropertiesNodeSizeFamily = S.String;
+const BigDataPoolResourcePropertiesNodeSizeFamily = S.String;
 
 /** Properties of a Big Data pool powered by Apache Spark */
 export interface BigDataPoolResourceProperties {
@@ -396,7 +396,7 @@ export interface BigDataPoolResourceProperties {
   /** The time when the Big Data pool was updated successfully. */
   lastSucceededTimestamp?: string;
 }
-export const BigDataPoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     autoScale: S.optional(AutoScaleProperties),
@@ -436,7 +436,7 @@ export interface BigDataPoolsCreateOrUpdateResponse {
   /** Big Data pool properties */
   properties?: BigDataPoolResourceProperties;
 }
-export const BigDataPoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -457,7 +457,7 @@ export interface CheckOperationNameAvailabilityRequest {
   /** Type: workspace */
   type?: string;
 }
-export const CheckOperationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckOperationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -485,7 +485,7 @@ export interface CheckNameAvailabilityResponse {
   /** Workspace name */
   name?: string;
 }
-export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     available: S.optional(S.Boolean),
@@ -497,14 +497,14 @@ export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityResponse>;
 
 export type CreateAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName = "default";
-export const CreateAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName = S.String;
+const CreateAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName = S.String;
 
 /** Properties of a active directory only authentication. */
 export interface AzureADOnlyAuthenticationPropertiesInput {
   /** Azure Active Directory only Authentication enabled. */
   azureADOnlyAuthentication: boolean;
 }
-export const AzureADOnlyAuthenticationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AzureADOnlyAuthenticationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureADOnlyAuthentication: S.Boolean,
   }),
@@ -526,7 +526,7 @@ export interface CreateAzureADOnlyAuthenticationRequest {
   /** azureADOnlyAuthentication resource properties */
   properties?: AzureADOnlyAuthenticationPropertiesInput;
 }
-export const CreateAzureADOnlyAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAzureADOnlyAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -548,7 +548,7 @@ export const CreateAzureADOnlyAuthenticationRequest = /*@__PURE__*/ S.suspend(()
 
 /** property configuration state */
 export type AzureADOnlyAuthenticationPropertiesState = "Consistent" | "InConsistent" | "Updating";
-export const AzureADOnlyAuthenticationPropertiesState = S.String;
+const AzureADOnlyAuthenticationPropertiesState = S.String;
 
 /** Properties of a active directory only authentication. */
 export interface AzureADOnlyAuthenticationProperties {
@@ -559,7 +559,7 @@ export interface AzureADOnlyAuthenticationProperties {
   /** property configuration date */
   creationDate?: string;
 }
-export const AzureADOnlyAuthenticationProperties = /*@__PURE__*/ S.suspend(() =>
+const AzureADOnlyAuthenticationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureADOnlyAuthentication: S.Boolean,
     state: S.optional(AzureADOnlyAuthenticationPropertiesState),
@@ -579,7 +579,7 @@ export interface CreateAzureADOnlyAuthenticationResponse {
   /** azureADOnlyAuthentication resource properties */
   properties?: AzureADOnlyAuthenticationProperties;
 }
-export const CreateAzureADOnlyAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAzureADOnlyAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -592,7 +592,7 @@ export const CreateAzureADOnlyAuthenticationResponse = /*@__PURE__*/ S.suspend((
 
 /** The type of integration runtime. */
 export type IntegrationRuntimeType = "Managed" | "SelfHosted";
-export const IntegrationRuntimeType = S.String;
+const IntegrationRuntimeType = S.String;
 
 /** Azure Synapse nested object which serves as a compute resource for activities. */
 export interface IntegrationRuntime {
@@ -607,7 +607,7 @@ export interface IntegrationRuntime {
   /** Integration runtime state (read-only, Managed integration runtimes). */
   state?: string;
 }
-export const IntegrationRuntime = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IntegrationRuntimeType,
     description: S.optional(S.String),
@@ -629,7 +629,7 @@ export interface CreateIntegrationRuntimeRequest {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const CreateIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -660,7 +660,7 @@ export interface CreateIntegrationRuntimeResponse {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const CreateIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -674,7 +674,7 @@ export const CreateIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint details */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PrivateEndpointInput",
 }) as any as S.Schema<PrivateEndpointInput>;
 
@@ -685,7 +685,7 @@ export interface PrivateLinkServiceConnectionStateInput {
   /** The private link service connection description. */
   description?: string;
 }
-export const PrivateLinkServiceConnectionStateInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionStateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -701,7 +701,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Connection state of the private endpoint connection. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateInput;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionStateInput),
@@ -722,7 +722,7 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -746,7 +746,7 @@ export interface PrivateEndpoint {
   /** Resource id of the private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -761,7 +761,7 @@ export interface PrivateLinkServiceConnectionState {
   /** The actions required for private link service connection. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -780,7 +780,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the private endpoint connection. */
   provisioningState?: string;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
@@ -800,7 +800,7 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -813,7 +813,7 @@ export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type CreateSqlPoolRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlPoolRequestTagsMap =
+const CreateSqlPoolRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateSqlPoolRequestTagsMap>;
 
 /** SQL pool SKU */
@@ -825,7 +825,7 @@ export interface Sku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tier: S.optional(S.String),
     name: S.optional(S.String),
@@ -839,11 +839,11 @@ export type SqlPoolResourcePropertiesInputCreateMode =
   | "PointInTimeRestore"
   | "Recovery"
   | "Restore";
-export const SqlPoolResourcePropertiesInputCreateMode = S.String;
+const SqlPoolResourcePropertiesInputCreateMode = S.String;
 
 /** The storage account type used to store backups for this sql pool. */
 export type SqlPoolResourcePropertiesInputStorageAccountType = "GRS" | "LRS";
-export const SqlPoolResourcePropertiesInputStorageAccountType = S.String;
+const SqlPoolResourcePropertiesInputStorageAccountType = S.String;
 
 /** Properties of a SQL Analytics pool */
 export interface SqlPoolResourcePropertiesInput {
@@ -866,7 +866,7 @@ export interface SqlPoolResourcePropertiesInput {
   /** Specifies the time that the sql pool was deleted */
   sourceDatabaseDeletionDate?: string;
 }
-export const SqlPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSizeBytes: S.optional(S.Number),
     collation: S.optional(S.String),
@@ -900,7 +900,7 @@ export interface CreateSqlPoolRequest {
   /** SQL pool properties */
   properties?: SqlPoolResourcePropertiesInput;
 }
-export const CreateSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -922,7 +922,7 @@ export const CreateSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlPoolResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlPoolResponseTagsMap =
+const CreateSqlPoolResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateSqlPoolResponseTagsMap>;
 
 /** Specifies the mode of sql pool creation. Default: regular sql pool creation. PointInTimeRestore: Creates a sql pool by restoring a point in time backup of an existing sql pool. sourceDatabaseId must be specified as the resource ID of the existing sql pool, and restorePointInTime must be specified. Recovery: Creates a sql pool by a geo-replicated backup. sourceDatabaseId must be specified as the recoverableDatabaseId to restore. Restore: Creates a sql pool by restoring a backup of a deleted sql pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified. */
@@ -931,11 +931,11 @@ export type SqlPoolResourcePropertiesCreateMode =
   | "PointInTimeRestore"
   | "Recovery"
   | "Restore";
-export const SqlPoolResourcePropertiesCreateMode = S.String;
+const SqlPoolResourcePropertiesCreateMode = S.String;
 
 /** The storage account type used to store backups for this sql pool. */
 export type SqlPoolResourcePropertiesStorageAccountType = "GRS" | "LRS";
-export const SqlPoolResourcePropertiesStorageAccountType = S.String;
+const SqlPoolResourcePropertiesStorageAccountType = S.String;
 
 /** Properties of a SQL Analytics pool */
 export interface SqlPoolResourceProperties {
@@ -962,7 +962,7 @@ export interface SqlPoolResourceProperties {
   /** Specifies the time that the sql pool was deleted */
   sourceDatabaseDeletionDate?: string;
 }
-export const SqlPoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSizeBytes: S.optional(S.Number),
     collation: S.optional(S.String),
@@ -996,7 +996,7 @@ export interface CreateSqlPoolResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const CreateSqlPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1020,7 +1020,7 @@ export interface CreateSqlPoolRestorePointRequest {
   /** The restore point label to apply */
   restorePointLabel: string;
 }
-export const CreateSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1041,7 +1041,7 @@ export const CreateSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of restore point */
 export type RestorePointPropertiesRestorePointType = "CONTINUOUS" | "DISCRETE";
-export const RestorePointPropertiesRestorePointType = S.String;
+const RestorePointPropertiesRestorePointType = S.String;
 
 /** Properties of a database restore point */
 export interface RestorePointProperties {
@@ -1054,7 +1054,7 @@ export interface RestorePointProperties {
   /** The label of restore point for backup request by user */
   restorePointLabel?: string;
 }
-export const RestorePointProperties = /*@__PURE__*/ S.suspend(() =>
+const RestorePointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restorePointType: S.optional(RestorePointPropertiesRestorePointType),
     earliestRestoreDate: S.optional(S.String),
@@ -1075,7 +1075,7 @@ export interface CreateSqlPoolRestorePointResponse {
   /** Resource properties. */
   properties?: RestorePointProperties;
 }
-export const CreateSqlPoolRestorePointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlPoolRestorePointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1088,11 +1088,11 @@ export const CreateSqlPoolRestorePointResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSqlPoolRestorePointResponse>;
 
 export type DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName = "Default";
-export const DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName = S.String;
+const DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName = S.String;
 
 /** The state of the data masking policy. */
 export type DataMaskingPolicyPropertiesInputDataMaskingState = "Disabled" | "Enabled";
-export const DataMaskingPolicyPropertiesInputDataMaskingState = S.String;
+const DataMaskingPolicyPropertiesInputDataMaskingState = S.String;
 
 /** The properties of a database data masking policy. */
 export interface DataMaskingPolicyPropertiesInput {
@@ -1101,7 +1101,7 @@ export interface DataMaskingPolicyPropertiesInput {
   /** The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries. */
   exemptPrincipals?: string;
 }
-export const DataMaskingPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataMaskingState: DataMaskingPolicyPropertiesInputDataMaskingState,
     exemptPrincipals: S.optional(S.String),
@@ -1126,7 +1126,7 @@ export interface DataMaskingPoliciesCreateOrUpdateRequest {
   /** The properties of the data masking policy. */
   properties?: DataMaskingPolicyPropertiesInput;
 }
-export const DataMaskingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1150,7 +1150,7 @@ export const DataMaskingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** The state of the data masking policy. */
 export type DataMaskingPolicyPropertiesDataMaskingState = "Disabled" | "Enabled";
-export const DataMaskingPolicyPropertiesDataMaskingState = S.String;
+const DataMaskingPolicyPropertiesDataMaskingState = S.String;
 
 /** The properties of a database data masking policy. */
 export interface DataMaskingPolicyProperties {
@@ -1163,7 +1163,7 @@ export interface DataMaskingPolicyProperties {
   /** The masking level. This is a legacy parameter and is no longer used. */
   maskingLevel?: string;
 }
-export const DataMaskingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataMaskingState: DataMaskingPolicyPropertiesDataMaskingState,
     exemptPrincipals: S.optional(S.String),
@@ -1190,7 +1190,7 @@ export interface DataMaskingPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID of the sql pool */
   managedBy?: string;
 }
-export const DataMaskingPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1205,11 +1205,11 @@ export const DataMaskingPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>;
 
 export type DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName = "Default";
-export const DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName = S.String;
+const DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName = S.String;
 
 /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
 export type DataMaskingRulePropertiesInputRuleState = "Disabled" | "Enabled";
-export const DataMaskingRulePropertiesInputRuleState = S.String;
+const DataMaskingRulePropertiesInputRuleState = S.String;
 
 /** The masking function that is used for the data masking rule. */
 export type DataMaskingRulePropertiesInputMaskingFunction =
@@ -1219,7 +1219,7 @@ export type DataMaskingRulePropertiesInputMaskingFunction =
   | "Number"
   | "SSN"
   | "Text";
-export const DataMaskingRulePropertiesInputMaskingFunction = S.String;
+const DataMaskingRulePropertiesInputMaskingFunction = S.String;
 
 /** The properties of a Sql pool data masking rule. */
 export interface DataMaskingRulePropertiesInput {
@@ -1246,7 +1246,7 @@ export interface DataMaskingRulePropertiesInput {
   /** If maskingFunction is set to Text, the character to use for masking the unexposed part of the string. Otherwise, this parameter will be ignored. */
   replacementString?: string;
 }
-export const DataMaskingRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.optional(S.String),
     ruleState: S.optional(DataMaskingRulePropertiesInputRuleState),
@@ -1280,7 +1280,7 @@ export interface DataMaskingRulesCreateOrUpdateRequest {
   /** The properties of the resource. */
   properties?: DataMaskingRulePropertiesInput;
 }
-export const DataMaskingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1305,7 +1305,7 @@ export const DataMaskingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState. */
 export type DataMaskingRulePropertiesRuleState = "Disabled" | "Enabled";
-export const DataMaskingRulePropertiesRuleState = S.String;
+const DataMaskingRulePropertiesRuleState = S.String;
 
 /** The masking function that is used for the data masking rule. */
 export type DataMaskingRulePropertiesMaskingFunction =
@@ -1315,7 +1315,7 @@ export type DataMaskingRulePropertiesMaskingFunction =
   | "Number"
   | "SSN"
   | "Text";
-export const DataMaskingRulePropertiesMaskingFunction = S.String;
+const DataMaskingRulePropertiesMaskingFunction = S.String;
 
 /** The properties of a Sql pool data masking rule. */
 export interface DataMaskingRuleProperties {
@@ -1344,7 +1344,7 @@ export interface DataMaskingRuleProperties {
   /** If maskingFunction is set to Text, the character to use for masking the unexposed part of the string. Otherwise, this parameter will be ignored. */
   replacementString?: string;
 }
-export const DataMaskingRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     aliasName: S.optional(S.String),
@@ -1377,7 +1377,7 @@ export interface DataMaskingRulesCreateOrUpdateResponse {
   /** The kind of Data Masking Rule. Metadata, used for Azure portal. */
   kind?: string;
 }
-export const DataMaskingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1400,7 +1400,7 @@ export interface DeleteBigDataPoolRequest {
   /** Big Data pool name */
   bigDataPoolName: string;
 }
-export const DeleteBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1418,9 +1418,6 @@ export const DeleteBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeleteBigDataPoolResponseTagsMap = { [key: string]: string | undefined };
-export const DeleteBigDataPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<DeleteBigDataPoolResponseTagsMap>;
-
 export interface DeleteBigDataPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1435,7 +1432,7 @@ export interface DeleteBigDataPoolResponse {
   /** Big Data pool properties */
   properties?: BigDataPoolResourceProperties;
 }
-export const DeleteBigDataPoolResponse =
+const DeleteBigDataPoolResponse =
   BigDataPoolsCreateOrUpdateResponse as any as S.Schema<DeleteBigDataPoolResponse>;
 
 export interface DeleteIntegrationRuntimeRequest {
@@ -1448,7 +1445,7 @@ export interface DeleteIntegrationRuntimeRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1467,9 +1464,7 @@ export const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationRuntimeRequest>;
 
 export interface DeleteIntegrationRuntimeResponse {}
-export const DeleteIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteIntegrationRuntimeResponse",
 }) as any as S.Schema<DeleteIntegrationRuntimeResponse>;
 
@@ -1485,7 +1480,7 @@ export interface DeleteIntegrationRuntimeNodeRequest {
   /** Integration runtime node name */
   nodeName: string;
 }
-export const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1505,7 +1500,7 @@ export const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>;
 
 export interface DeleteIntegrationRuntimeNodeResponse {}
-export const DeleteIntegrationRuntimeNodeResponse =
+const DeleteIntegrationRuntimeNodeResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>;
 
 export interface DeleteIpFirewallRuleRequest {
@@ -1518,7 +1513,7 @@ export interface DeleteIpFirewallRuleRequest {
   /** The IP firewall rule name */
   ruleName: string;
 }
-export const DeleteIpFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1543,7 +1538,7 @@ export type IpFirewallRulePropertiesProvisioningState =
   | "Deleting"
   | "Failed"
   | "DeleteError";
-export const IpFirewallRulePropertiesProvisioningState = S.String;
+const IpFirewallRulePropertiesProvisioningState = S.String;
 
 /** IP firewall rule properties */
 export interface IpFirewallRuleProperties {
@@ -1554,7 +1549,7 @@ export interface IpFirewallRuleProperties {
   /** The start IP address of the firewall rule. Must be IPv4 format */
   startIpAddress?: string;
 }
-export const IpFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const IpFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIpAddress: S.optional(S.String),
     provisioningState: S.optional(IpFirewallRulePropertiesProvisioningState),
@@ -1572,7 +1567,7 @@ export interface DeleteIpFirewallRuleResponse {
   /** IP firewall rule properties */
   properties?: IpFirewallRuleProperties;
 }
-export const DeleteIpFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1593,7 +1588,7 @@ export interface DeleteKeyRequest {
   /** The name of the workspace key */
   keyName: string;
 }
-export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1616,7 +1611,7 @@ export interface KeyProperties {
   /** The Key Vault Url of the workspace key. */
   keyVaultUrl?: string;
 }
-export const KeyProperties = /*@__PURE__*/ S.suspend(() =>
+const KeyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isActiveCMK: S.optional(S.Boolean),
     keyVaultUrl: S.optional(S.String),
@@ -1633,7 +1628,7 @@ export interface DeleteKeyResponse {
   /** Keys resource properties */
   properties?: KeyProperties;
 }
-export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1652,7 +1647,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1671,7 +1666,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeletePrivateLinkHubRequest {
@@ -1682,7 +1677,7 @@ export interface DeletePrivateLinkHubRequest {
   /** Name of the privateLinkHub */
   privateLinkHubName: string;
 }
-export const DeletePrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1700,7 +1695,7 @@ export const DeletePrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateLinkHubRequest>;
 
 export interface DeletePrivateLinkHubResponse {}
-export const DeletePrivateLinkHubResponse =
+const DeletePrivateLinkHubResponse =
   PrivateEndpointInput as any as S.Schema<DeletePrivateLinkHubResponse>;
 
 export interface DeleteSqlPoolRequest {
@@ -1713,7 +1708,7 @@ export interface DeleteSqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const DeleteSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1731,9 +1726,6 @@ export const DeleteSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeleteSqlPoolResponseTagsMap = { [key: string]: string | undefined };
-export const DeleteSqlPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<DeleteSqlPoolResponseTagsMap>;
-
 export interface DeleteSqlPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1750,8 +1742,7 @@ export interface DeleteSqlPoolResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const DeleteSqlPoolResponse =
-  CreateSqlPoolResponse as any as S.Schema<DeleteSqlPoolResponse>;
+const DeleteSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<DeleteSqlPoolResponse>;
 
 export interface DeleteSqlPoolRestorePointRequest {
   /** The ID of the target subscription. */
@@ -1765,7 +1756,7 @@ export interface DeleteSqlPoolRestorePointRequest {
   /** The name of the restore point. */
   restorePointName: string;
 }
-export const DeleteSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1785,11 +1776,11 @@ export const DeleteSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlPoolRestorePointRequest>;
 
 export interface DeleteSqlPoolRestorePointResponse {}
-export const DeleteSqlPoolRestorePointResponse =
+const DeleteSqlPoolRestorePointResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteSqlPoolRestorePointResponse>;
 
 export type DeleteSqlPoolSensitivityLabelRequestSensitivityLabelSource = "current";
-export const DeleteSqlPoolSensitivityLabelRequestSensitivityLabelSource = S.String;
+const DeleteSqlPoolSensitivityLabelRequestSensitivityLabelSource = S.String;
 
 export interface DeleteSqlPoolSensitivityLabelRequest {
   /** The ID of the target subscription. */
@@ -1811,7 +1802,7 @@ export interface DeleteSqlPoolSensitivityLabelRequest {
     | DeleteSqlPoolSensitivityLabelRequestSensitivityLabelSource
     | (string & {});
 }
-export const DeleteSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1836,11 +1827,11 @@ export const DeleteSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteSqlPoolSensitivityLabelRequest>;
 
 export interface DeleteSqlPoolSensitivityLabelResponse {}
-export const DeleteSqlPoolSensitivityLabelResponse =
+const DeleteSqlPoolSensitivityLabelResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteSqlPoolSensitivityLabelResponse>;
 
 export type DeleteSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName = "default";
-export const DeleteSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName = S.String;
+const DeleteSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName = S.String;
 
 export interface DeleteSqlPoolVulnerabilityAssessmentRequest {
   /** The ID of the target subscription. */
@@ -1856,7 +1847,7 @@ export interface DeleteSqlPoolVulnerabilityAssessmentRequest {
     | DeleteSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName
     | (string & {});
 }
-export const DeleteSqlPoolVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1877,18 +1868,17 @@ export const DeleteSqlPoolVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRequest>;
 
 export interface DeleteSqlPoolVulnerabilityAssessmentResponse {}
-export const DeleteSqlPoolVulnerabilityAssessmentResponse =
+const DeleteSqlPoolVulnerabilityAssessmentResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentResponse>;
 
 export type DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestVulnerabilityAssessmentName =
   "default";
-export const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestVulnerabilityAssessmentName =
-  S.String;
+const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestVulnerabilityAssessmentName = S.String;
 
 export type DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName =
   | "master"
   | "default";
-export const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName = S.String;
+const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName = S.String;
 
 export interface DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest {
   /** The ID of the target subscription. */
@@ -1908,7 +1898,7 @@ export interface DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest {
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule). */
   baselineName: DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName | (string & {});
 }
-export const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1935,8 +1925,8 @@ export const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest = /*@__PURE
 }) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest>;
 
 export interface DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse {}
-export const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse",
 }) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse>;
@@ -1955,7 +1945,7 @@ export interface DeleteSqlPoolWorkloadClassifierRequest {
   /** The name of the workload classifier. */
   workloadClassifierName: string;
 }
-export const DeleteSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1976,7 +1966,7 @@ export const DeleteSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteSqlPoolWorkloadClassifierRequest>;
 
 export interface DeleteSqlPoolWorkloadClassifierResponse {}
-export const DeleteSqlPoolWorkloadClassifierResponse =
+const DeleteSqlPoolWorkloadClassifierResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteSqlPoolWorkloadClassifierResponse>;
 
 export interface DeleteSqlPoolWorkloadGroupRequest {
@@ -1991,7 +1981,7 @@ export interface DeleteSqlPoolWorkloadGroupRequest {
   /** The name of the workload group. */
   workloadGroupName: string;
 }
-export const DeleteSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2011,7 +2001,7 @@ export const DeleteSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlPoolWorkloadGroupRequest>;
 
 export interface DeleteSqlPoolWorkloadGroupResponse {}
-export const DeleteSqlPoolWorkloadGroupResponse =
+const DeleteSqlPoolWorkloadGroupResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteSqlPoolWorkloadGroupResponse>;
 
 export interface DeleteWorkspaceRequest {
@@ -2022,7 +2012,7 @@ export interface DeleteWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2039,7 +2029,7 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeleteWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const DeleteWorkspaceResponseTagsMap =
+const DeleteWorkspaceResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<DeleteWorkspaceResponseTagsMap>;
 
 /** Details of the data lake storage account associated with the workspace */
@@ -2053,7 +2043,7 @@ export interface DataLakeStorageAccountDetails {
   /** Create managed private endpoint to this storage account or not */
   createManagedPrivateEndpoint?: boolean;
 }
-export const DataLakeStorageAccountDetails = /*@__PURE__*/ S.suspend(() =>
+const DataLakeStorageAccountDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountUrl: S.optional(S.String),
     filesystem: S.optional(S.String),
@@ -2069,7 +2059,7 @@ export interface VirtualNetworkProfile {
   /** Subnet ID used for computes in workspace */
   computeSubnetId?: string;
 }
-export const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeSubnetId: S.optional(S.String),
   }),
@@ -2077,7 +2067,7 @@ export const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Connectivity endpoints */
 export type WorkspacePropertiesConnectivityEndpointsMap = { [key: string]: string | undefined };
-export const WorkspacePropertiesConnectivityEndpointsMap =
+const WorkspacePropertiesConnectivityEndpointsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacePropertiesConnectivityEndpointsMap>;
 
 /** A private endpoint connection */
@@ -2091,13 +2081,13 @@ export interface WorkspacePropertiesPrivateEndpointConnectionsItem {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const WorkspacePropertiesPrivateEndpointConnectionsItem =
+const WorkspacePropertiesPrivateEndpointConnectionsItem =
   CreatePrivateEndpointConnectionResponse as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 
 /** Private endpoint connections to the workspace */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
   Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
-export const WorkspacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const WorkspacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   WorkspacePropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
@@ -2108,7 +2098,7 @@ export interface WorkspaceKeyDetails {
   /** Workspace Key sub-resource key vault url */
   keyVaultUrl?: string;
 }
-export const WorkspaceKeyDetails = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceKeyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     keyVaultUrl: S.optional(S.String),
@@ -2122,7 +2112,7 @@ export interface KekIdentityProperties {
   /** Boolean specifying whether to use system assigned identity or not */
   useSystemAssignedIdentity?: unknown;
 }
-export const KekIdentityProperties = /*@__PURE__*/ S.suspend(() =>
+const KekIdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentity: S.optional(S.String),
     useSystemAssignedIdentity: S.optional(S.Unknown),
@@ -2138,7 +2128,7 @@ export interface CustomerManagedKeyDetails {
   /** Key encryption key */
   kekIdentity?: KekIdentityProperties;
 }
-export const CustomerManagedKeyDetails = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKeyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     key: S.optional(WorkspaceKeyDetails),
@@ -2155,7 +2145,7 @@ export interface EncryptionDetails {
   /** Customer Managed Key Details */
   cmk?: CustomerManagedKeyDetails;
 }
-export const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
+const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleEncryptionEnabled: S.optional(S.Boolean),
     cmk: S.optional(CustomerManagedKeyDetails),
@@ -2164,7 +2154,7 @@ export const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed Aad Tenant Ids For Linking */
 export type ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList = Array<string>;
-export const ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList = /*@__PURE__*/ S.Array(
+const ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList>;
 
@@ -2177,7 +2167,7 @@ export interface ManagedVirtualNetworkSettings {
   /** Allowed Aad Tenant Ids For Linking */
   allowedAadTenantIdsForLinking?: ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList;
 }
-export const ManagedVirtualNetworkSettings = /*@__PURE__*/ S.suspend(() =>
+const ManagedVirtualNetworkSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preventDataExfiltration: S.optional(S.Boolean),
     linkedAccessCheckOnTargetResource: S.optional(S.Boolean),
@@ -2210,7 +2200,7 @@ export interface WorkspaceRepositoryConfiguration {
   /** The VSTS tenant ID */
   tenantId?: string;
 }
-export const WorkspaceRepositoryConfiguration = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceRepositoryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     hostName: S.optional(S.String),
@@ -2231,7 +2221,7 @@ export interface PurviewConfiguration {
   /** Purview Resource ID */
   purviewResourceId?: string;
 }
-export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purviewResourceId: S.optional(S.String),
   }),
@@ -2239,14 +2229,14 @@ export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Enable or Disable public network access to workspace */
 export type WorkspacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const WorkspacePropertiesPublicNetworkAccess = S.String;
+const WorkspacePropertiesPublicNetworkAccess = S.String;
 
 /** Initial workspace AAD admin properties for a CSP subscription */
 export interface CspWorkspaceAdminProperties {
   /** AAD object ID of initial workspace admin */
   initialWorkspaceAdminObjectId?: string;
 }
-export const CspWorkspaceAdminProperties = /*@__PURE__*/ S.suspend(() =>
+const CspWorkspaceAdminProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialWorkspaceAdminObjectId: S.optional(S.String),
   }),
@@ -2256,7 +2246,7 @@ export const CspWorkspaceAdminProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Workspace settings */
 export type WorkspacePropertiesSettingsMap = { [key: string]: unknown | undefined };
-export const WorkspacePropertiesSettingsMap = /*@__PURE__*/ S.Record(
+const WorkspacePropertiesSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<WorkspacePropertiesSettingsMap>;
@@ -2306,7 +2296,7 @@ export interface WorkspaceProperties {
   /** Is trustedServiceBypassEnabled for the workspace */
   trustedServiceBypassEnabled?: boolean;
 }
-export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultDataLakeStorage: S.optional(DataLakeStorageAccountDetails),
     sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2334,7 +2324,7 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of managed identity for the workspace */
 export type ManagedIdentityType = "None" | "SystemAssigned" | "SystemAssigned,UserAssigned";
-export const ManagedIdentityType = S.String;
+const ManagedIdentityType = S.String;
 
 /** User Assigned Managed Identity */
 export interface UserAssignedManagedIdentity {
@@ -2343,7 +2333,7 @@ export interface UserAssignedManagedIdentity {
   /** The principal ID. */
   principalId?: string | null;
 }
-export const UserAssignedManagedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedManagedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.NullOr(S.String)),
     principalId: S.optional(S.NullOr(S.String)),
@@ -2356,7 +2346,7 @@ export const UserAssignedManagedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedManagedIdentities = {
   [key: string]: UserAssignedManagedIdentity | undefined;
 };
-export const UserAssignedManagedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedManagedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedManagedIdentity,
 ) as any as S.Schema<UserAssignedManagedIdentities>;
@@ -2372,7 +2362,7 @@ export interface ManagedIdentity {
   /** The user assigned managed identities. */
   userAssignedIdentities?: UserAssignedManagedIdentities;
 }
-export const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
+const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2397,7 +2387,7 @@ export interface DeleteWorkspaceResponse {
   /** Identity of the workspace */
   identity?: ManagedIdentity;
 }
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2417,7 +2407,7 @@ export interface DeleteWorkspaceAadAdminRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const DeleteWorkspaceAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2435,13 +2425,13 @@ export const DeleteWorkspaceAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceAadAdminRequest>;
 
 export interface DeleteWorkspaceAadAdminResponse {}
-export const DeleteWorkspaceAadAdminResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteWorkspaceAadAdminResponse" },
-) as any as S.Schema<DeleteWorkspaceAadAdminResponse>;
+const DeleteWorkspaceAadAdminResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteWorkspaceAadAdminResponse",
+}) as any as S.Schema<DeleteWorkspaceAadAdminResponse>;
 
 export type DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
   "default";
-export const DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
+const DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
   S.String;
 
 export interface DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest {
@@ -2456,33 +2446,33 @@ export interface DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest {
     | DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName
     | (string & {});
 }
-export const DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      vulnerabilityAssessmentName:
-        DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName.pipe(
-          T.Label(),
-        ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
-        code: 200,
-        apiVersion: "2021-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
-  }) as any as S.Schema<DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest>;
+const DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    vulnerabilityAssessmentName:
+      DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName.pipe(
+        T.Label(),
+      ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      code: 200,
+      apiVersion: "2021-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
+}) as any as S.Schema<DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest>;
 
 export interface DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse {}
-export const DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
-  }) as any as S.Schema<DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse>;
+const DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
+}) as any as S.Schema<DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse>;
 
 export interface DeleteWorkspaceSqlAadAdminRequest {
   /** The ID of the target subscription. */
@@ -2492,7 +2482,7 @@ export interface DeleteWorkspaceSqlAadAdminRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const DeleteWorkspaceSqlAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceSqlAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2510,7 +2500,7 @@ export const DeleteWorkspaceSqlAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceSqlAadAdminRequest>;
 
 export interface DeleteWorkspaceSqlAadAdminResponse {}
-export const DeleteWorkspaceSqlAadAdminResponse =
+const DeleteWorkspaceSqlAadAdminResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DeleteWorkspaceSqlAadAdminResponse>;
 
 export interface DisableIntegrationRuntimeInteractiveQueryRequest {
@@ -2523,7 +2513,7 @@ export interface DisableIntegrationRuntimeInteractiveQueryRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const DisableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2542,12 +2532,12 @@ export const DisableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryRequest>;
 
 export interface DisableIntegrationRuntimeInteractiveQueryResponse {}
-export const DisableIntegrationRuntimeInteractiveQueryResponse =
+const DisableIntegrationRuntimeInteractiveQueryResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryResponse>;
 
 export type DisableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource =
   "recommended";
-export const DisableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource = S.String;
+const DisableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource = S.String;
 
 export interface DisableSqlPoolSensitivityLabelRecommendationRequest {
   /** The ID of the target subscription. */
@@ -2569,7 +2559,7 @@ export interface DisableSqlPoolSensitivityLabelRecommendationRequest {
     | DisableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource
     | (string & {});
 }
-export const DisableSqlPoolSensitivityLabelRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableSqlPoolSensitivityLabelRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2593,7 +2583,7 @@ export const DisableSqlPoolSensitivityLabelRecommendationRequest = /*@__PURE__*/
 }) as any as S.Schema<DisableSqlPoolSensitivityLabelRecommendationRequest>;
 
 export interface DisableSqlPoolSensitivityLabelRecommendationResponse {}
-export const DisableSqlPoolSensitivityLabelRecommendationResponse =
+const DisableSqlPoolSensitivityLabelRecommendationResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<DisableSqlPoolSensitivityLabelRecommendationResponse>;
 
 export interface EnableIntegrationRuntimeInteractiveQueryRequest {
@@ -2606,7 +2596,7 @@ export interface EnableIntegrationRuntimeInteractiveQueryRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const EnableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2625,12 +2615,12 @@ export const EnableIntegrationRuntimeInteractiveQueryRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryRequest>;
 
 export interface EnableIntegrationRuntimeInteractiveQueryResponse {}
-export const EnableIntegrationRuntimeInteractiveQueryResponse =
+const EnableIntegrationRuntimeInteractiveQueryResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>;
 
 export type EnableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource =
   "recommended";
-export const EnableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource = S.String;
+const EnableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource = S.String;
 
 export interface EnableSqlPoolSensitivityLabelRecommendationRequest {
   /** The ID of the target subscription. */
@@ -2652,7 +2642,7 @@ export interface EnableSqlPoolSensitivityLabelRecommendationRequest {
     | EnableSqlPoolSensitivityLabelRecommendationRequestSensitivityLabelSource
     | (string & {});
 }
-export const EnableSqlPoolSensitivityLabelRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableSqlPoolSensitivityLabelRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2676,11 +2666,11 @@ export const EnableSqlPoolSensitivityLabelRecommendationRequest = /*@__PURE__*/ 
 }) as any as S.Schema<EnableSqlPoolSensitivityLabelRecommendationRequest>;
 
 export interface EnableSqlPoolSensitivityLabelRecommendationResponse {}
-export const EnableSqlPoolSensitivityLabelRecommendationResponse =
+const EnableSqlPoolSensitivityLabelRecommendationResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<EnableSqlPoolSensitivityLabelRecommendationResponse>;
 
 export type ExportSqlPoolVulnerabilityAssessmentScanRequestVulnerabilityAssessmentName = "default";
-export const ExportSqlPoolVulnerabilityAssessmentScanRequestVulnerabilityAssessmentName = S.String;
+const ExportSqlPoolVulnerabilityAssessmentScanRequestVulnerabilityAssessmentName = S.String;
 
 export interface ExportSqlPoolVulnerabilityAssessmentScanRequest {
   /** The ID of the target subscription. */
@@ -2698,7 +2688,7 @@ export interface ExportSqlPoolVulnerabilityAssessmentScanRequest {
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
-export const ExportSqlPoolVulnerabilityAssessmentScanRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSqlPoolVulnerabilityAssessmentScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2724,7 +2714,7 @@ export interface SqlPoolVulnerabilityAssessmentScanExportProperties {
   /** Location of the exported report (e.g. https://myStorage.blob.core.windows.net/VaScans/scans/serverName/databaseName/scan_scanId.xlsx). */
   exportedReportLocation?: string;
 }
-export const SqlPoolVulnerabilityAssessmentScanExportProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentScanExportProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exportedReportLocation: S.optional(S.String),
   }),
@@ -2742,7 +2732,7 @@ export interface ExportSqlPoolVulnerabilityAssessmentScanResponse {
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentScanExportProperties;
 }
-export const ExportSqlPoolVulnerabilityAssessmentScanResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportSqlPoolVulnerabilityAssessmentScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2755,19 +2745,17 @@ export const ExportSqlPoolVulnerabilityAssessmentScanResponse = /*@__PURE__*/ S.
 
 export type ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   "default";
-export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
-  S.String;
+const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName = S.String;
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ExtendedSqlPoolBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
-export const ExtendedSqlPoolBlobAuditingPolicyPropertiesState = S.String;
+const ExtendedSqlPoolBlobAuditingPolicyPropertiesState = S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList = Array<string>;
-export const ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
+const ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
 
 /** Properties of an extended Sql pool blob auditing policy. */
 export interface ExtendedSqlPoolBlobAuditingPolicyProperties {
@@ -2792,7 +2780,7 @@ export interface ExtendedSqlPoolBlobAuditingPolicyProperties {
   /** Specifies the amount of time in milliseconds that can elapse before audit actions are forced to be processed. The default minimum value is 1000 (1 second). The maximum is 2,147,483,647. */
   queueDelayMs?: number;
 }
-export const ExtendedSqlPoolBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ExtendedSqlPoolBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predicateExpression: S.optional(S.String),
     state: ExtendedSqlPoolBlobAuditingPolicyPropertiesState,
@@ -2827,26 +2815,25 @@ export interface ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: ExtendedSqlPoolBlobAuditingPolicyProperties;
 }
-export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      sqlPoolName: S.String.pipe(T.Label()),
-      blobAuditingPolicyName:
-        ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName.pipe(
-          T.Label(),
-        ),
-      properties: S.optional(ExtendedSqlPoolBlobAuditingPolicyProperties),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
-        code: 200,
-        apiVersion: "2021-06-01",
-      }),
-    ),
+const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    sqlPoolName: S.String.pipe(T.Label()),
+    blobAuditingPolicyName:
+      ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName.pipe(
+        T.Label(),
+      ),
+    properties: S.optional(ExtendedSqlPoolBlobAuditingPolicyProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+      code: 200,
+      apiVersion: "2021-06-01",
+    }),
+  ),
 ).annotate({
   identifier: "ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest",
 }) as any as S.Schema<ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest>;
@@ -2861,20 +2848,19 @@ export interface ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: ExtendedSqlPoolBlobAuditingPolicyProperties;
 }
-export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ExtendedSqlPoolBlobAuditingPolicyProperties),
-    }),
+const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ExtendedSqlPoolBlobAuditingPolicyProperties),
+  }),
 ).annotate({
   identifier: "ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse",
 }) as any as S.Schema<ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type GetAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName = "default";
-export const GetAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName = S.String;
+const GetAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName = S.String;
 
 export interface GetAzureADOnlyAuthenticationRequest {
   /** The ID of the target subscription. */
@@ -2888,7 +2874,7 @@ export interface GetAzureADOnlyAuthenticationRequest {
     | GetAzureADOnlyAuthenticationRequestAzureADOnlyAuthenticationName
     | (string & {});
 }
-export const GetAzureADOnlyAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAzureADOnlyAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2917,7 +2903,7 @@ export interface GetAzureADOnlyAuthenticationResponse {
   /** azureADOnlyAuthentication resource properties */
   properties?: AzureADOnlyAuthenticationProperties;
 }
-export const GetAzureADOnlyAuthenticationResponse =
+const GetAzureADOnlyAuthenticationResponse =
   CreateAzureADOnlyAuthenticationResponse as any as S.Schema<GetAzureADOnlyAuthenticationResponse>;
 
 export interface GetBigDataPoolRequest {
@@ -2930,7 +2916,7 @@ export interface GetBigDataPoolRequest {
   /** Big Data pool name */
   bigDataPoolName: string;
 }
-export const GetBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2948,7 +2934,7 @@ export const GetBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBigDataPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetBigDataPoolResponseTagsMap =
+const GetBigDataPoolResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<GetBigDataPoolResponseTagsMap>;
 
 export interface GetBigDataPoolResponse {
@@ -2965,7 +2951,7 @@ export interface GetBigDataPoolResponse {
   /** Big Data pool properties */
   properties?: BigDataPoolResourceProperties;
 }
-export const GetBigDataPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBigDataPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2977,7 +2963,7 @@ export const GetBigDataPoolResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBigDataPoolResponse" }) as any as S.Schema<GetBigDataPoolResponse>;
 
 export type GetDataMaskingPolicyRequestDataMaskingPolicyName = "Default";
-export const GetDataMaskingPolicyRequestDataMaskingPolicyName = S.String;
+const GetDataMaskingPolicyRequestDataMaskingPolicyName = S.String;
 
 export interface GetDataMaskingPolicyRequest {
   /** The ID of the target subscription. */
@@ -2991,7 +2977,7 @@ export interface GetDataMaskingPolicyRequest {
   /** The name of the data masking policy for which the masking rule applies. */
   dataMaskingPolicyName: GetDataMaskingPolicyRequestDataMaskingPolicyName | (string & {});
 }
-export const GetDataMaskingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataMaskingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3026,11 +3012,11 @@ export interface GetDataMaskingPolicyResponse {
   /** Fully qualified resource ID of the sql pool */
   managedBy?: string;
 }
-export const GetDataMaskingPolicyResponse =
+const GetDataMaskingPolicyResponse =
   DataMaskingPoliciesCreateOrUpdateResponse as any as S.Schema<GetDataMaskingPolicyResponse>;
 
 export type GetDataMaskingRuleRequestDataMaskingPolicyName = "Default";
-export const GetDataMaskingRuleRequestDataMaskingPolicyName = S.String;
+const GetDataMaskingRuleRequestDataMaskingPolicyName = S.String;
 
 export interface GetDataMaskingRuleRequest {
   /** The ID of the target subscription. */
@@ -3046,7 +3032,7 @@ export interface GetDataMaskingRuleRequest {
   /** The name of the data masking rule. */
   dataMaskingRuleName: string;
 }
-export const GetDataMaskingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataMaskingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3080,11 +3066,11 @@ export interface GetDataMaskingRuleResponse {
   /** The kind of Data Masking Rule. Metadata, used for Azure portal. */
   kind?: string;
 }
-export const GetDataMaskingRuleResponse =
+const GetDataMaskingRuleResponse =
   DataMaskingRulesCreateOrUpdateResponse as any as S.Schema<GetDataMaskingRuleResponse>;
 
 export type GetExtendedSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName = "default";
-export const GetExtendedSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName = S.String;
+const GetExtendedSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName = S.String;
 
 export interface GetExtendedSqlPoolBlobAuditingPolicyRequest {
   /** The ID of the target subscription. */
@@ -3100,7 +3086,7 @@ export interface GetExtendedSqlPoolBlobAuditingPolicyRequest {
     | GetExtendedSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName
     | (string & {});
 }
-export const GetExtendedSqlPoolBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtendedSqlPoolBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3131,7 +3117,7 @@ export interface GetExtendedSqlPoolBlobAuditingPolicyResponse {
   /** Resource properties. */
   properties?: ExtendedSqlPoolBlobAuditingPolicyProperties;
 }
-export const GetExtendedSqlPoolBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExtendedSqlPoolBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3152,7 +3138,7 @@ export interface GetIntegrationRuntimeRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3182,7 +3168,7 @@ export interface GetIntegrationRuntimeResponse {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const GetIntegrationRuntimeResponse =
+const GetIntegrationRuntimeResponse =
   CreateIntegrationRuntimeResponse as any as S.Schema<GetIntegrationRuntimeResponse>;
 
 export interface GetIntegrationRuntimeConnectionInfosRequest {
@@ -3195,7 +3181,7 @@ export interface GetIntegrationRuntimeConnectionInfosRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeConnectionInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeConnectionInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3228,7 +3214,7 @@ export interface IntegrationRuntimeConnectionInfo {
   /** Whether the identity certificate is expired. */
   isIdentityCertExprired?: boolean;
 }
-export const IntegrationRuntimeConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceToken: S.optional(S.String),
     identityCertThumbprint: S.optional(S.String),
@@ -3253,7 +3239,7 @@ export interface GetIntegrationRuntimeNodeRequest {
   /** Integration runtime node name */
   nodeName: string;
 }
-export const GetIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3281,16 +3267,16 @@ export type SelfHostedIntegrationRuntimeNodeStatus =
   | "Upgrading"
   | "Initializing"
   | "InitializeFailed";
-export const SelfHostedIntegrationRuntimeNodeStatus = S.String;
+const SelfHostedIntegrationRuntimeNodeStatus = S.String;
 
 /** The integration runtime capabilities dictionary */
 export type SelfHostedIntegrationRuntimeNodeCapabilitiesMap = { [key: string]: string | undefined };
-export const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
+const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<SelfHostedIntegrationRuntimeNodeCapabilitiesMap>;
 
 /** The result of the last integration runtime node update. */
 export type SelfHostedIntegrationRuntimeNodeLastUpdateResult = "None" | "Succeed" | "Fail";
-export const SelfHostedIntegrationRuntimeNodeLastUpdateResult = S.String;
+const SelfHostedIntegrationRuntimeNodeLastUpdateResult = S.String;
 
 /** Properties of Self-hosted integration runtime node. */
 export interface SelfHostedIntegrationRuntimeNode {
@@ -3331,7 +3317,7 @@ export interface SelfHostedIntegrationRuntimeNode {
   /** The maximum concurrent jobs in this integration runtime. */
   maxConcurrentJobs?: number;
 }
-export const SelfHostedIntegrationRuntimeNode = /*@__PURE__*/ S.suspend(() =>
+const SelfHostedIntegrationRuntimeNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.optional(S.String),
     machineName: S.optional(S.String),
@@ -3368,7 +3354,7 @@ export interface GetIntegrationRuntimeNodeIpAddressRequest {
   /** Integration runtime node name */
   nodeName: string;
 }
-export const GetIntegrationRuntimeNodeIpAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeNodeIpAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3392,7 +3378,7 @@ export interface IntegrationRuntimeNodeIpAddress {
   /** The IP address of self-hosted integration runtime node. */
   ipAddress?: string;
 }
-export const IntegrationRuntimeNodeIpAddress = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeNodeIpAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
   }),
@@ -3410,7 +3396,7 @@ export interface GetIntegrationRuntimeStatusRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const GetIntegrationRuntimeStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRuntimeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3440,7 +3426,7 @@ export type IntegrationRuntimeState =
   | "Limited"
   | "Offline"
   | "AccessDenied";
-export const IntegrationRuntimeState = S.String;
+const IntegrationRuntimeState = S.String;
 
 /** Integration runtime status. */
 export interface IntegrationRuntimeStatus {
@@ -3451,7 +3437,7 @@ export interface IntegrationRuntimeStatus {
   /** The state of integration runtime. */
   state?: IntegrationRuntimeState;
 }
-export const IntegrationRuntimeStatus = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IntegrationRuntimeType,
     dataFactoryName: S.optional(S.String),
@@ -3466,7 +3452,7 @@ export interface IntegrationRuntimeStatusResponse {
   /** Integration runtime properties. */
   properties: IntegrationRuntimeStatus;
 }
-export const IntegrationRuntimeStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: IntegrationRuntimeStatus,
@@ -3485,7 +3471,7 @@ export interface GetIpFirewallRuleRequest {
   /** The IP firewall rule name */
   ruleName: string;
 }
-export const GetIpFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3511,7 +3497,7 @@ export interface GetIpFirewallRuleResponse {
   /** IP firewall rule properties */
   properties?: IpFirewallRuleProperties;
 }
-export const GetIpFirewallRuleResponse =
+const GetIpFirewallRuleResponse =
   DeleteIpFirewallRuleResponse as any as S.Schema<GetIpFirewallRuleResponse>;
 
 export interface GetKeyRequest {
@@ -3524,7 +3510,7 @@ export interface GetKeyRequest {
   /** The name of the workspace key */
   keyName: string;
 }
-export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3550,7 +3536,7 @@ export interface GetKeyResponse {
   /** Keys resource properties */
   properties?: KeyProperties;
 }
-export const GetKeyResponse = DeleteKeyResponse as any as S.Schema<GetKeyResponse>;
+const GetKeyResponse = DeleteKeyResponse as any as S.Schema<GetKeyResponse>;
 
 export interface GetLibraryRequest {
   /** The ID of the target subscription. */
@@ -3562,7 +3548,7 @@ export interface GetLibraryRequest {
   /** Library name */
   libraryName: string;
 }
-export const GetLibraryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLibraryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3580,8 +3566,6 @@ export const GetLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Library/package information of a Big Data pool powered by Apache Spark */
 export type GetLibraryResponseProperties = BigDataPoolResourcePropertiesCustomLibrariesItem;
-export const GetLibraryResponseProperties = BigDataPoolResourcePropertiesCustomLibrariesItem;
-
 export interface GetLibraryResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3594,7 +3578,7 @@ export interface GetLibraryResponse {
   /** Library/package information of a Big Data pool powered by Apache Spark */
   properties: BigDataPoolResourcePropertiesCustomLibrariesItem;
 }
-export const GetLibraryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLibraryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3614,7 +3598,7 @@ export interface GetOperationAzureAsyncHeaderResultRequest {
   /** Operation ID */
   operationId: string;
 }
-export const GetOperationAzureAsyncHeaderResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationAzureAsyncHeaderResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3638,11 +3622,11 @@ export type GetOperationAzureAsyncHeaderResultResponseStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-export const GetOperationAzureAsyncHeaderResultResponseStatus = S.String;
+const GetOperationAzureAsyncHeaderResultResponseStatus = S.String;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -3653,7 +3637,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -3662,7 +3646,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -3679,7 +3663,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -3691,17 +3675,16 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type GetOperationAzureAsyncHeaderResultResponseErrorDetailsList = Array<ErrorDetail>;
-export const GetOperationAzureAsyncHeaderResultResponseErrorDetailsList = /*@__PURE__*/ S.Array(
+const GetOperationAzureAsyncHeaderResultResponseErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<GetOperationAzureAsyncHeaderResultResponseErrorDetailsList>;
 
 /** The error additional info. */
 export type GetOperationAzureAsyncHeaderResultResponseErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-export const GetOperationAzureAsyncHeaderResultResponseErrorAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<GetOperationAzureAsyncHeaderResultResponseErrorAdditionalInfoList>;
+const GetOperationAzureAsyncHeaderResultResponseErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
+  ErrorAdditionalInfo,
+) as any as S.Schema<GetOperationAzureAsyncHeaderResultResponseErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface GetOperationAzureAsyncHeaderResultResponseError {
@@ -3716,7 +3699,7 @@ export interface GetOperationAzureAsyncHeaderResultResponseError {
   /** The error additional info. */
   additionalInfo?: GetOperationAzureAsyncHeaderResultResponseErrorAdditionalInfoList;
 }
-export const GetOperationAzureAsyncHeaderResultResponseError = /*@__PURE__*/ S.suspend(() =>
+const GetOperationAzureAsyncHeaderResultResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -3746,7 +3729,7 @@ export interface GetOperationAzureAsyncHeaderResultResponse {
   /** Completion percentage of the operation */
   percentComplete?: number;
 }
-export const GetOperationAzureAsyncHeaderResultResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOperationAzureAsyncHeaderResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3771,7 +3754,7 @@ export interface GetOperationLocationHeaderResultRequest {
   /** Operation ID */
   operationId: string;
 }
-export const GetOperationLocationHeaderResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationLocationHeaderResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3790,7 +3773,7 @@ export const GetOperationLocationHeaderResultRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetOperationLocationHeaderResultRequest>;
 
 export interface GetOperationLocationHeaderResultResponse {}
-export const GetOperationLocationHeaderResultResponse =
+const GetOperationLocationHeaderResultResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<GetOperationLocationHeaderResultResponse>;
 
 export interface GetPrivateEndpointConnectionRequest {
@@ -3803,7 +3786,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3831,7 +3814,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateEndpointConnectionsPrivateLinkHubRequest {
@@ -3844,7 +3827,7 @@ export interface GetPrivateEndpointConnectionsPrivateLinkHubRequest {
   /** Name of the privateEndpointConnection */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionsPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionsPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3865,9 +3848,6 @@ export const GetPrivateEndpointConnectionsPrivateLinkHubRequest = /*@__PURE__*/ 
 /** Properties of a private endpoint connection. */
 export type GetPrivateEndpointConnectionsPrivateLinkHubResponseProperties =
   PrivateEndpointConnectionProperties;
-export const GetPrivateEndpointConnectionsPrivateLinkHubResponseProperties =
-  PrivateEndpointConnectionProperties;
-
 export interface GetPrivateEndpointConnectionsPrivateLinkHubResponse {
   /** identifier */
   id?: string;
@@ -3876,7 +3856,7 @@ export interface GetPrivateEndpointConnectionsPrivateLinkHubResponse {
   name?: string;
   type?: string;
 }
-export const GetPrivateEndpointConnectionsPrivateLinkHubResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionsPrivateLinkHubResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(PrivateEndpointConnectionProperties),
@@ -3895,7 +3875,7 @@ export interface GetPrivateLinkHubRequest {
   /** Name of the privateLinkHub */
   privateLinkHubName: string;
 }
-export const GetPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3912,15 +3892,12 @@ export const GetPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPrivateLinkHubResponseTagsMap = { [key: string]: string | undefined };
-export const GetPrivateLinkHubResponseTagsMap =
+const GetPrivateLinkHubResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPrivateLinkHubResponseTagsMap>;
 
 /** Properties of a private endpoint connection. */
 export type PrivateEndpointConnectionForPrivateLinkHubBasicProperties =
   PrivateEndpointConnectionProperties;
-export const PrivateEndpointConnectionForPrivateLinkHubBasicProperties =
-  PrivateEndpointConnectionProperties;
-
 /** Private Endpoint Connection For Private Link Hub - Basic */
 export interface PrivateEndpointConnectionForPrivateLinkHubBasic {
   /** identifier */
@@ -3928,7 +3905,7 @@ export interface PrivateEndpointConnectionForPrivateLinkHubBasic {
   /** Properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionForPrivateLinkHubBasic = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionForPrivateLinkHubBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(PrivateEndpointConnectionProperties),
@@ -3940,7 +3917,7 @@ export const PrivateEndpointConnectionForPrivateLinkHubBasic = /*@__PURE__*/ S.s
 /** List of private endpoint connections */
 export type PrivateLinkHubPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionForPrivateLinkHubBasic>;
-export const PrivateLinkHubPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const PrivateLinkHubPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionForPrivateLinkHubBasic,
 ) as any as S.Schema<PrivateLinkHubPropertiesPrivateEndpointConnectionsList>;
 
@@ -3951,7 +3928,7 @@ export interface PrivateLinkHubProperties {
   /** List of private endpoint connections */
   privateEndpointConnections?: PrivateLinkHubPropertiesPrivateEndpointConnectionsList;
 }
-export const PrivateLinkHubProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkHubProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     privateEndpointConnections: S.optional(PrivateLinkHubPropertiesPrivateEndpointConnectionsList),
@@ -3972,7 +3949,7 @@ export interface GetPrivateLinkHubResponse {
   /** PrivateLinkHub resource properties */
   properties?: PrivateLinkHubProperties;
 }
-export const GetPrivateLinkHubResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkHubResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3995,7 +3972,7 @@ export interface GetPrivateLinkHubPrivateLinkResourceRequest {
   /** The name of the private link resource */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkHubPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkHubPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4015,12 +3992,12 @@ export const GetPrivateLinkHubPrivateLinkResourceRequest = /*@__PURE__*/ S.suspe
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names of the the private link resource. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -4032,7 +4009,7 @@ export interface PrivateLinkResourceProperties {
   /** Required DNS zone names of the the private link resource. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -4052,7 +4029,7 @@ export interface GetPrivateLinkHubPrivateLinkResourceResponse {
   /** The private link resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkHubPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkHubPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4073,7 +4050,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4101,7 +4078,7 @@ export interface GetPrivateLinkResourceResponse {
   /** The private link resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourceResponse =
+const GetPrivateLinkResourceResponse =
   GetPrivateLinkHubPrivateLinkResourceResponse as any as S.Schema<GetPrivateLinkResourceResponse>;
 
 export interface GetRestorableDroppedSqlPoolRequest {
@@ -4114,7 +4091,7 @@ export interface GetRestorableDroppedSqlPoolRequest {
   /** The id of the deleted Sql Pool in the form of sqlPoolName,deletionTimeInFileTimeFormat */
   restorableDroppedSqlPoolId: string;
 }
-export const GetRestorableDroppedSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRestorableDroppedSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4151,7 +4128,7 @@ export interface RestorableDroppedSqlPoolProperties {
   /** The earliest restore date of the database (ISO8601 format) */
   earliestRestoreDate?: string;
 }
-export const RestorableDroppedSqlPoolProperties = /*@__PURE__*/ S.suspend(() =>
+const RestorableDroppedSqlPoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     edition: S.optional(S.String),
@@ -4178,7 +4155,7 @@ export interface GetRestorableDroppedSqlPoolResponse {
   /** The properties of a restorable dropped Sql pool */
   properties?: RestorableDroppedSqlPoolProperties;
 }
-export const GetRestorableDroppedSqlPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRestorableDroppedSqlPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4200,7 +4177,7 @@ export interface GetSqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const GetSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4218,9 +4195,6 @@ export const GetSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<GetSqlPoolResponseTagsMap>;
-
 export interface GetSqlPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4237,10 +4211,10 @@ export interface GetSqlPoolResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const GetSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<GetSqlPoolResponse>;
+const GetSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<GetSqlPoolResponse>;
 
 export type GetSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName = "default";
-export const GetSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName = S.String;
+const GetSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName = S.String;
 
 export interface GetSqlPoolBlobAuditingPolicyRequest {
   /** The ID of the target subscription. */
@@ -4254,7 +4228,7 @@ export interface GetSqlPoolBlobAuditingPolicyRequest {
   /** The name of the blob auditing policy. */
   blobAuditingPolicyName: GetSqlPoolBlobAuditingPolicyRequestBlobAuditingPolicyName | (string & {});
 }
-export const GetSqlPoolBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4277,11 +4251,11 @@ export const GetSqlPoolBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type SqlPoolBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
-export const SqlPoolBlobAuditingPolicyPropertiesState = S.String;
+const SqlPoolBlobAuditingPolicyPropertiesState = S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList = Array<string>;
-export const SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
+const SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<SqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
 
 /** Properties of a Sql pool blob auditing policy. */
@@ -4303,7 +4277,7 @@ export interface SqlPoolBlobAuditingPolicyProperties {
   /** Specifies whether audit events are sent to Azure Monitor. In order to send the events to Azure Monitor, specify 'state' as 'Enabled' and 'isAzureMonitorTargetEnabled' as true. When using REST API to configure auditing, Diagnostic Settings with 'SQLSecurityAuditEvents' diagnostic logs category on the database should be also created. Note that for server level audit you should use the 'master' database as {databaseName}. Diagnostic Settings URI format: PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207) or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043) */
   isAzureMonitorTargetEnabled?: boolean;
 }
-export const SqlPoolBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: SqlPoolBlobAuditingPolicyPropertiesState,
     storageEndpoint: S.optional(S.String),
@@ -4330,7 +4304,7 @@ export interface GetSqlPoolBlobAuditingPolicyResponse {
   /** Resource properties. */
   properties?: SqlPoolBlobAuditingPolicyProperties;
 }
-export const GetSqlPoolBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4358,7 +4332,7 @@ export interface GetSqlPoolColumnRequest {
   /** The name of the column. */
   columnName: string;
 }
-export const GetSqlPoolColumnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolColumnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4413,7 +4387,7 @@ export type SqlPoolColumnPropertiesColumnType =
   | "nchar"
   | "xml"
   | "sysname";
-export const SqlPoolColumnPropertiesColumnType = S.String;
+const SqlPoolColumnPropertiesColumnType = S.String;
 
 /** Sql pool column properties. */
 export interface SqlPoolColumnProperties {
@@ -4422,7 +4396,7 @@ export interface SqlPoolColumnProperties {
   /** Indicates whether column value is computed or not */
   isComputed?: boolean;
 }
-export const SqlPoolColumnProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolColumnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnType: S.optional(SqlPoolColumnPropertiesColumnType),
     isComputed: S.optional(S.Boolean),
@@ -4439,7 +4413,7 @@ export interface GetSqlPoolColumnResponse {
   /** Resource properties. */
   properties?: SqlPoolColumnProperties;
 }
-export const GetSqlPoolColumnResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolColumnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4449,7 +4423,7 @@ export const GetSqlPoolColumnResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSqlPoolColumnResponse" }) as any as S.Schema<GetSqlPoolColumnResponse>;
 
 export type GetSqlPoolDataWarehouseUserActivityRequestDataWarehouseUserActivityName = "current";
-export const GetSqlPoolDataWarehouseUserActivityRequestDataWarehouseUserActivityName = S.String;
+const GetSqlPoolDataWarehouseUserActivityRequestDataWarehouseUserActivityName = S.String;
 
 export interface GetSqlPoolDataWarehouseUserActivityRequest {
   /** The ID of the target subscription. */
@@ -4465,7 +4439,7 @@ export interface GetSqlPoolDataWarehouseUserActivityRequest {
     | GetSqlPoolDataWarehouseUserActivityRequestDataWarehouseUserActivityName
     | (string & {});
 }
-export const GetSqlPoolDataWarehouseUserActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolDataWarehouseUserActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4490,7 +4464,7 @@ export interface DataWarehouseUserActivitiesProperties {
   /** Count of running and suspended queries. */
   activeQueriesCount?: number;
 }
-export const DataWarehouseUserActivitiesProperties = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseUserActivitiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeQueriesCount: S.optional(S.Number),
   }),
@@ -4508,7 +4482,7 @@ export interface GetSqlPoolDataWarehouseUserActivityResponse {
   /** Resource properties. */
   properties?: DataWarehouseUserActivitiesProperties;
 }
-export const GetSqlPoolDataWarehouseUserActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolDataWarehouseUserActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4520,7 +4494,7 @@ export const GetSqlPoolDataWarehouseUserActivityResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetSqlPoolDataWarehouseUserActivityResponse>;
 
 export type GetSqlPoolGeoBackupPolicyRequestGeoBackupPolicyName = "Default";
-export const GetSqlPoolGeoBackupPolicyRequestGeoBackupPolicyName = S.String;
+const GetSqlPoolGeoBackupPolicyRequestGeoBackupPolicyName = S.String;
 
 export interface GetSqlPoolGeoBackupPolicyRequest {
   /** The ID of the target subscription. */
@@ -4534,7 +4508,7 @@ export interface GetSqlPoolGeoBackupPolicyRequest {
   /** The name of the geo backup policy. */
   geoBackupPolicyName: GetSqlPoolGeoBackupPolicyRequestGeoBackupPolicyName | (string & {});
 }
-export const GetSqlPoolGeoBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolGeoBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4555,7 +4529,7 @@ export const GetSqlPoolGeoBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the geo backup policy. */
 export type GeoBackupPolicyPropertiesState = "Disabled" | "Enabled";
-export const GeoBackupPolicyPropertiesState = S.String;
+const GeoBackupPolicyPropertiesState = S.String;
 
 /** The properties of the geo backup policy. */
 export interface GeoBackupPolicyProperties {
@@ -4564,7 +4538,7 @@ export interface GeoBackupPolicyProperties {
   /** The storage type of the geo backup policy. */
   storageType?: string;
 }
-export const GeoBackupPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const GeoBackupPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: GeoBackupPolicyPropertiesState,
     storageType: S.optional(S.String),
@@ -4587,7 +4561,7 @@ export interface GetSqlPoolGeoBackupPolicyResponse {
   /** Backup policy location. */
   location?: string;
 }
-export const GetSqlPoolGeoBackupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolGeoBackupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4612,7 +4586,7 @@ export interface GetSqlPoolMaintenanceWindowOptionRequest {
   /** Maintenance window options name. */
   maintenanceWindowOptionsName: string;
 }
-export const GetSqlPoolMaintenanceWindowOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolMaintenanceWindowOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4640,7 +4614,7 @@ export type MaintenanceWindowTimeRangeDayOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday";
-export const MaintenanceWindowTimeRangeDayOfWeek = S.String;
+const MaintenanceWindowTimeRangeDayOfWeek = S.String;
 
 /** Maintenance window time range. */
 export interface MaintenanceWindowTimeRange {
@@ -4651,7 +4625,7 @@ export interface MaintenanceWindowTimeRange {
   /** Duration of maintenance window in minutes. */
   duration?: string;
 }
-export const MaintenanceWindowTimeRange = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindowTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfWeek: S.optional(MaintenanceWindowTimeRangeDayOfWeek),
     startTime: S.optional(S.String),
@@ -4664,7 +4638,7 @@ export const MaintenanceWindowTimeRange = /*@__PURE__*/ S.suspend(() =>
 /** Available maintenance cycles e.g. {Saturday, 0, 48*60}, {Wednesday, 0, 24*60}. */
 export type MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList =
   Array<MaintenanceWindowTimeRange>;
-export const MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList = /*@__PURE__*/ S.Array(
+const MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList = /*@__PURE__*/ S.Array(
   MaintenanceWindowTimeRange,
 ) as any as S.Schema<MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList>;
 
@@ -4685,7 +4659,7 @@ export interface MaintenanceWindowOptionsProperties {
   /** Whether we allow multiple maintenance windows per cycle. */
   allowMultipleMaintenanceWindowsPerCycle?: boolean;
 }
-export const MaintenanceWindowOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindowOptionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.optional(S.Boolean),
     maintenanceWindowCycles: S.optional(
@@ -4711,7 +4685,7 @@ export interface GetSqlPoolMaintenanceWindowOptionResponse {
   /** Resource properties. */
   properties?: MaintenanceWindowOptionsProperties;
 }
-export const GetSqlPoolMaintenanceWindowOptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolMaintenanceWindowOptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4734,7 +4708,7 @@ export interface GetSqlPoolMaintenanceWindowsRequest {
   /** Maintenance window name. */
   maintenanceWindowName: string;
 }
-export const GetSqlPoolMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4754,14 +4728,14 @@ export const GetSqlPoolMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSqlPoolMaintenanceWindowsRequest>;
 
 export type MaintenanceWindowsPropertiesTimeRangesList = Array<MaintenanceWindowTimeRange>;
-export const MaintenanceWindowsPropertiesTimeRangesList =
+const MaintenanceWindowsPropertiesTimeRangesList =
   MaintenanceWindowOptionsPropertiesMaintenanceWindowCyclesList as any as S.Schema<MaintenanceWindowsPropertiesTimeRangesList>;
 
 /** Maintenance windows resource properties. */
 export interface MaintenanceWindowsProperties {
   timeRanges?: MaintenanceWindowsPropertiesTimeRangesList;
 }
-export const MaintenanceWindowsProperties = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindowsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeRanges: S.optional(MaintenanceWindowsPropertiesTimeRangesList),
   }),
@@ -4779,7 +4753,7 @@ export interface GetSqlPoolMaintenanceWindowsResponse {
   /** Resource properties. */
   properties?: MaintenanceWindowsProperties;
 }
-export const GetSqlPoolMaintenanceWindowsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolMaintenanceWindowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4802,7 +4776,7 @@ export interface GetSqlPoolOperationResultLocationHeaderResultRequest {
   /** Operation ID */
   operationId: string;
 }
-export const GetSqlPoolOperationResultLocationHeaderResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolOperationResultLocationHeaderResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4825,7 +4799,7 @@ export const GetSqlPoolOperationResultLocationHeaderResultRequest = /*@__PURE__*
 export type GetSqlPoolOperationResultLocationHeaderResultResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetSqlPoolOperationResultLocationHeaderResultResponseTagsMap =
+const GetSqlPoolOperationResultLocationHeaderResultResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<GetSqlPoolOperationResultLocationHeaderResultResponseTagsMap>;
 
 export interface GetSqlPoolOperationResultLocationHeaderResultResponse {
@@ -4844,7 +4818,7 @@ export interface GetSqlPoolOperationResultLocationHeaderResultResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const GetSqlPoolOperationResultLocationHeaderResultResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolOperationResultLocationHeaderResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4870,7 +4844,7 @@ export interface GetSqlPoolReplicationLinkByNameRequest {
   /** The ID of the replication link. */
   linkId: string;
 }
-export const GetSqlPoolReplicationLinkByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolReplicationLinkByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4896,7 +4870,7 @@ export type ReplicationLinkPropertiesRole =
   | "NonReadableSecondary"
   | "Source"
   | "Copy";
-export const ReplicationLinkPropertiesRole = S.String;
+const ReplicationLinkPropertiesRole = S.String;
 
 /** The role of the partner Sql pool in the replication link. */
 export type ReplicationLinkPropertiesPartnerRole =
@@ -4905,7 +4879,7 @@ export type ReplicationLinkPropertiesPartnerRole =
   | "NonReadableSecondary"
   | "Source"
   | "Copy";
-export const ReplicationLinkPropertiesPartnerRole = S.String;
+const ReplicationLinkPropertiesPartnerRole = S.String;
 
 /** The replication state for the replication link. */
 export type ReplicationLinkPropertiesReplicationState =
@@ -4913,7 +4887,7 @@ export type ReplicationLinkPropertiesReplicationState =
   | "SEEDING"
   | "CATCH_UP"
   | "SUSPENDED";
-export const ReplicationLinkPropertiesReplicationState = S.String;
+const ReplicationLinkPropertiesReplicationState = S.String;
 
 /** Represents the properties of a Sql pool replication link. */
 export interface ReplicationLinkProperties {
@@ -4938,7 +4912,7 @@ export interface ReplicationLinkProperties {
   /** The replication state for the replication link. */
   replicationState?: ReplicationLinkPropertiesReplicationState;
 }
-export const ReplicationLinkProperties = /*@__PURE__*/ S.suspend(() =>
+const ReplicationLinkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isTerminationAllowed: S.optional(S.Boolean),
     replicationMode: S.optional(S.String),
@@ -4967,7 +4941,7 @@ export interface GetSqlPoolReplicationLinkByNameResponse {
   /** The properties representing the resource. */
   properties?: ReplicationLinkProperties;
 }
-export const GetSqlPoolReplicationLinkByNameResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolReplicationLinkByNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4991,7 +4965,7 @@ export interface GetSqlPoolRestorePointRequest {
   /** The name of the restore point. */
   restorePointName: string;
 }
-export const GetSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5022,7 +4996,7 @@ export interface GetSqlPoolRestorePointResponse {
   /** Resource properties. */
   properties?: RestorePointProperties;
 }
-export const GetSqlPoolRestorePointResponse =
+const GetSqlPoolRestorePointResponse =
   CreateSqlPoolRestorePointResponse as any as S.Schema<GetSqlPoolRestorePointResponse>;
 
 export interface GetSqlPoolSchemaRequest {
@@ -5037,7 +5011,7 @@ export interface GetSqlPoolSchemaRequest {
   /** The name of the schema. */
   schemaName: string;
 }
-export const GetSqlPoolSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5062,7 +5036,7 @@ export interface GetSqlPoolSchemaResponse {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
 }
-export const GetSqlPoolSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5071,7 +5045,7 @@ export const GetSqlPoolSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSqlPoolSchemaResponse" }) as any as S.Schema<GetSqlPoolSchemaResponse>;
 
 export type GetSqlPoolSecurityAlertPolicyRequestSecurityAlertPolicyName = "default";
-export const GetSqlPoolSecurityAlertPolicyRequestSecurityAlertPolicyName = S.String;
+const GetSqlPoolSecurityAlertPolicyRequestSecurityAlertPolicyName = S.String;
 
 export interface GetSqlPoolSecurityAlertPolicyRequest {
   /** The ID of the target subscription. */
@@ -5087,7 +5061,7 @@ export interface GetSqlPoolSecurityAlertPolicyRequest {
     | GetSqlPoolSecurityAlertPolicyRequestSecurityAlertPolicyName
     | (string & {});
 }
-export const GetSqlPoolSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5110,16 +5084,16 @@ export const GetSqlPoolSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific Sql pool. */
 export type SecurityAlertPolicyPropertiesState = "New" | "Enabled" | "Disabled";
-export const SecurityAlertPolicyPropertiesState = S.String;
+const SecurityAlertPolicyPropertiesState = S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type SecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
-export const SecurityAlertPolicyPropertiesDisabledAlertsList =
+const SecurityAlertPolicyPropertiesDisabledAlertsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<SecurityAlertPolicyPropertiesDisabledAlertsList>;
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type SecurityAlertPolicyPropertiesEmailAddressesList = Array<string>;
-export const SecurityAlertPolicyPropertiesEmailAddressesList =
+const SecurityAlertPolicyPropertiesEmailAddressesList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<SecurityAlertPolicyPropertiesEmailAddressesList>;
 
 /** Properties of a security alert policy. */
@@ -5141,7 +5115,7 @@ export interface SecurityAlertPolicyProperties {
   /** Specifies the UTC creation time of the policy. */
   creationTime?: string;
 }
-export const SecurityAlertPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const SecurityAlertPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: SecurityAlertPolicyPropertiesState,
     disabledAlerts: S.optional(SecurityAlertPolicyPropertiesDisabledAlertsList),
@@ -5166,7 +5140,7 @@ export interface GetSqlPoolSecurityAlertPolicyResponse {
   /** Resource properties. */
   properties?: SecurityAlertPolicyProperties;
 }
-export const GetSqlPoolSecurityAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolSecurityAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5178,7 +5152,7 @@ export const GetSqlPoolSecurityAlertPolicyResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetSqlPoolSecurityAlertPolicyResponse>;
 
 export type GetSqlPoolSensitivityLabelRequestSensitivityLabelSource = "current" | "recommended";
-export const GetSqlPoolSensitivityLabelRequestSensitivityLabelSource = S.String;
+const GetSqlPoolSensitivityLabelRequestSensitivityLabelSource = S.String;
 
 export interface GetSqlPoolSensitivityLabelRequest {
   /** The ID of the target subscription. */
@@ -5198,7 +5172,7 @@ export interface GetSqlPoolSensitivityLabelRequest {
   /** The source of the sensitivity label. */
   sensitivityLabelSource: GetSqlPoolSensitivityLabelRequestSensitivityLabelSource | (string & {});
 }
-export const GetSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5221,7 +5195,7 @@ export const GetSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSqlPoolSensitivityLabelRequest>;
 
 export type SensitivityLabelPropertiesRank = "None" | "Low" | "Medium" | "High" | "Critical";
-export const SensitivityLabelPropertiesRank = S.String;
+const SensitivityLabelPropertiesRank = S.String;
 
 /** Properties of a sensitivity label. */
 export interface SensitivityLabelProperties {
@@ -5243,7 +5217,7 @@ export interface SensitivityLabelProperties {
   isDisabled?: boolean;
   rank?: SensitivityLabelPropertiesRank;
 }
-export const SensitivityLabelProperties = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaName: S.optional(S.String),
     tableName: S.optional(S.String),
@@ -5271,7 +5245,7 @@ export interface GetSqlPoolSensitivityLabelResponse {
   /** managed by */
   managedBy?: string;
 }
-export const GetSqlPoolSensitivityLabelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolSensitivityLabelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5297,7 +5271,7 @@ export interface GetSqlPoolTableRequest {
   /** The name of the table. */
   tableName: string;
 }
-export const GetSqlPoolTableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5323,11 +5297,11 @@ export interface GetSqlPoolTableResponse {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
 }
-export const GetSqlPoolTableResponse =
+const GetSqlPoolTableResponse =
   GetSqlPoolSchemaResponse as any as S.Schema<GetSqlPoolTableResponse>;
 
 export type GetSqlPoolTransparentDataEncryptionRequestTransparentDataEncryptionName = "current";
-export const GetSqlPoolTransparentDataEncryptionRequestTransparentDataEncryptionName = S.String;
+const GetSqlPoolTransparentDataEncryptionRequestTransparentDataEncryptionName = S.String;
 
 export interface GetSqlPoolTransparentDataEncryptionRequest {
   /** The ID of the target subscription. */
@@ -5343,7 +5317,7 @@ export interface GetSqlPoolTransparentDataEncryptionRequest {
     | GetSqlPoolTransparentDataEncryptionRequestTransparentDataEncryptionName
     | (string & {});
 }
-export const GetSqlPoolTransparentDataEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolTransparentDataEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5365,14 +5339,14 @@ export const GetSqlPoolTransparentDataEncryptionRequest = /*@__PURE__*/ S.suspen
 
 /** The status of the database transparent data encryption. */
 export type TransparentDataEncryptionPropertiesStatus = "Enabled" | "Disabled";
-export const TransparentDataEncryptionPropertiesStatus = S.String;
+const TransparentDataEncryptionPropertiesStatus = S.String;
 
 /** Represents the properties of a database transparent data encryption. */
 export interface TransparentDataEncryptionProperties {
   /** The status of the database transparent data encryption. */
   status?: TransparentDataEncryptionPropertiesStatus | (string & {});
 }
-export const TransparentDataEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
+const TransparentDataEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TransparentDataEncryptionPropertiesStatus),
   }),
@@ -5392,7 +5366,7 @@ export interface GetSqlPoolTransparentDataEncryptionResponse {
   /** Represents the properties of the resource. */
   properties?: TransparentDataEncryptionProperties;
 }
-export const GetSqlPoolTransparentDataEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolTransparentDataEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5405,7 +5379,7 @@ export const GetSqlPoolTransparentDataEncryptionResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetSqlPoolTransparentDataEncryptionResponse>;
 
 export type GetSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName = "default";
-export const GetSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName = S.String;
+const GetSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName = S.String;
 
 export interface GetSqlPoolVulnerabilityAssessmentRequest {
   /** The ID of the target subscription. */
@@ -5421,7 +5395,7 @@ export interface GetSqlPoolVulnerabilityAssessmentRequest {
     | GetSqlPoolVulnerabilityAssessmentRequestVulnerabilityAssessmentName
     | (string & {});
 }
-export const GetSqlPoolVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5443,7 +5417,7 @@ export const GetSqlPoolVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(
 
 /** Specifies an array of e-mail addresses to which the scan notification is sent. */
 export type VulnerabilityAssessmentRecurringScansPropertiesEmailsList = Array<string>;
-export const VulnerabilityAssessmentRecurringScansPropertiesEmailsList =
+const VulnerabilityAssessmentRecurringScansPropertiesEmailsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<VulnerabilityAssessmentRecurringScansPropertiesEmailsList>;
 
 /** Properties of a Vulnerability Assessment recurring scans. */
@@ -5455,7 +5429,7 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
   /** Specifies an array of e-mail addresses to which the scan notification is sent. */
   emails?: VulnerabilityAssessmentRecurringScansPropertiesEmailsList;
 }
-export const VulnerabilityAssessmentRecurringScansProperties = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityAssessmentRecurringScansProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.optional(S.Boolean),
     emailSubscriptionAdmins: S.optional(S.Boolean),
@@ -5476,7 +5450,7 @@ export interface SqlPoolVulnerabilityAssessmentProperties {
   /** The recurring scans settings */
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
-export const SqlPoolVulnerabilityAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageContainerPath: S.optional(S.String),
     storageContainerSasKey: S.optional(S.String),
@@ -5497,7 +5471,7 @@ export interface GetSqlPoolVulnerabilityAssessmentResponse {
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentProperties;
 }
-export const GetSqlPoolVulnerabilityAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolVulnerabilityAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5510,11 +5484,10 @@ export const GetSqlPoolVulnerabilityAssessmentResponse = /*@__PURE__*/ S.suspend
 
 export type GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestVulnerabilityAssessmentName =
   "default";
-export const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestVulnerabilityAssessmentName =
-  S.String;
+const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestVulnerabilityAssessmentName = S.String;
 
 export type GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName = "master" | "default";
-export const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName = S.String;
+const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName = S.String;
 
 export interface GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest {
   /** The ID of the target subscription. */
@@ -5534,7 +5507,7 @@ export interface GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest {
   /** The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for server level rule). */
   baselineName: GetSqlPoolVulnerabilityAssessmentRuleBaselineRequestBaselineName | (string & {});
 }
-export const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5560,7 +5533,7 @@ export const GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest = /*@__PURE__*
 
 /** The rule baseline result */
 export type SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList = Array<string>;
-export const SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList =
+const SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList>;
 
 /** Properties for an Sql pool vulnerability assessment rule baseline's result. */
@@ -5568,7 +5541,7 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselineItem {
   /** The rule baseline result */
   result: SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList;
 }
-export const SqlPoolVulnerabilityAssessmentRuleBaselineItem = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentRuleBaselineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SqlPoolVulnerabilityAssessmentRuleBaselineItemResultList,
   }),
@@ -5579,7 +5552,7 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselineItem = /*@__PURE__*/ S.su
 /** The rule baseline result */
 export type SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
   Array<SqlPoolVulnerabilityAssessmentRuleBaselineItem>;
-export const SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
+const SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList =
   /*@__PURE__*/ S.Array(
     SqlPoolVulnerabilityAssessmentRuleBaselineItem,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList>;
@@ -5589,7 +5562,7 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselineProperties {
   /** The rule baseline result */
   baselineResults: SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList;
 }
-export const SqlPoolVulnerabilityAssessmentRuleBaselineProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentRuleBaselineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baselineResults: SqlPoolVulnerabilityAssessmentRuleBaselinePropertiesBaselineResultsList,
   }),
@@ -5607,7 +5580,7 @@ export interface GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse {
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentRuleBaselineProperties;
 }
-export const GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5619,7 +5592,7 @@ export const GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse = /*@__PURE__
 }) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse>;
 
 export type GetSqlPoolVulnerabilityAssessmentScanRequestVulnerabilityAssessmentName = "default";
-export const GetSqlPoolVulnerabilityAssessmentScanRequestVulnerabilityAssessmentName = S.String;
+const GetSqlPoolVulnerabilityAssessmentScanRequestVulnerabilityAssessmentName = S.String;
 
 export interface GetSqlPoolVulnerabilityAssessmentScanRequest {
   /** The ID of the target subscription. */
@@ -5637,7 +5610,7 @@ export interface GetSqlPoolVulnerabilityAssessmentScanRequest {
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
-export const GetSqlPoolVulnerabilityAssessmentScanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolVulnerabilityAssessmentScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5660,7 +5633,7 @@ export const GetSqlPoolVulnerabilityAssessmentScanRequest = /*@__PURE__*/ S.susp
 
 /** The scan trigger type. */
 export type VulnerabilityAssessmentScanRecordPropertiesTriggerType = "OnDemand" | "Recurring";
-export const VulnerabilityAssessmentScanRecordPropertiesTriggerType = S.String;
+const VulnerabilityAssessmentScanRecordPropertiesTriggerType = S.String;
 
 /** The scan status. */
 export type VulnerabilityAssessmentScanRecordPropertiesState =
@@ -5668,7 +5641,7 @@ export type VulnerabilityAssessmentScanRecordPropertiesState =
   | "Failed"
   | "FailedToRun"
   | "InProgress";
-export const VulnerabilityAssessmentScanRecordPropertiesState = S.String;
+const VulnerabilityAssessmentScanRecordPropertiesState = S.String;
 
 /** Properties of a vulnerability assessment scan error. */
 export interface VulnerabilityAssessmentScanError {
@@ -5677,7 +5650,7 @@ export interface VulnerabilityAssessmentScanError {
   /** The error message. */
   message?: string;
 }
-export const VulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -5689,7 +5662,7 @@ export const VulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
 /** The scan errors. */
 export type VulnerabilityAssessmentScanRecordPropertiesErrorsList =
   Array<VulnerabilityAssessmentScanError>;
-export const VulnerabilityAssessmentScanRecordPropertiesErrorsList = /*@__PURE__*/ S.Array(
+const VulnerabilityAssessmentScanRecordPropertiesErrorsList = /*@__PURE__*/ S.Array(
   VulnerabilityAssessmentScanError,
 ) as any as S.Schema<VulnerabilityAssessmentScanRecordPropertiesErrorsList>;
 
@@ -5712,7 +5685,7 @@ export interface VulnerabilityAssessmentScanRecordProperties {
   /** The number of failed security checks. */
   numberOfFailedSecurityChecks?: number;
 }
-export const VulnerabilityAssessmentScanRecordProperties = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityAssessmentScanRecordProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanId: S.optional(S.String),
     triggerType: S.optional(VulnerabilityAssessmentScanRecordPropertiesTriggerType),
@@ -5737,7 +5710,7 @@ export interface GetSqlPoolVulnerabilityAssessmentScanResponse {
   /** Resource properties. */
   properties?: VulnerabilityAssessmentScanRecordProperties;
 }
-export const GetSqlPoolVulnerabilityAssessmentScanResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolVulnerabilityAssessmentScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5762,7 +5735,7 @@ export interface GetSqlPoolWorkloadClassifierRequest {
   /** The name of the workload classifier. */
   workloadClassifierName: string;
 }
-export const GetSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5797,7 +5770,7 @@ export interface WorkloadClassifierProperties {
   /** The workload classifier importance. */
   importance?: string;
 }
-export const WorkloadClassifierProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadClassifierProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberName: S.String,
     label: S.optional(S.String),
@@ -5820,7 +5793,7 @@ export interface GetSqlPoolWorkloadClassifierResponse {
   /** Resource properties. */
   properties?: WorkloadClassifierProperties;
 }
-export const GetSqlPoolWorkloadClassifierResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolWorkloadClassifierResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5843,7 +5816,7 @@ export interface GetSqlPoolWorkloadGroupRequest {
   /** The name of the workload group. */
   workloadGroupName: string;
 }
-export const GetSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5877,7 +5850,7 @@ export interface WorkloadGroupProperties {
   /** The workload group query execution timeout. */
   queryExecutionTimeout?: number;
 }
-export const WorkloadGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minResourcePercent: S.Number,
     maxResourcePercent: S.Number,
@@ -5898,7 +5871,7 @@ export interface GetSqlPoolWorkloadGroupResponse {
   /** Resource properties. */
   properties?: WorkloadGroupProperties;
 }
-export const GetSqlPoolWorkloadGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlPoolWorkloadGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5917,7 +5890,7 @@ export interface GetWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5934,9 +5907,6 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkspaceResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
-
 export interface GetWorkspaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5953,8 +5923,7 @@ export interface GetWorkspaceResponse {
   /** Identity of the workspace */
   identity?: ManagedIdentity;
 }
-export const GetWorkspaceResponse =
-  DeleteWorkspaceResponse as any as S.Schema<GetWorkspaceResponse>;
+const GetWorkspaceResponse = DeleteWorkspaceResponse as any as S.Schema<GetWorkspaceResponse>;
 
 export interface GetWorkspaceAadAdminRequest {
   /** The ID of the target subscription. */
@@ -5964,7 +5933,7 @@ export interface GetWorkspaceAadAdminRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const GetWorkspaceAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5992,7 +5961,7 @@ export interface AadAdminProperties {
   /** Object ID of the workspace active directory administrator */
   sid?: string;
 }
-export const AadAdminProperties = /*@__PURE__*/ S.suspend(() =>
+const AadAdminProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     login: S.optional(S.String),
@@ -6011,7 +5980,7 @@ export interface GetWorkspaceAadAdminResponse {
   /** Workspace active directory administrator properties */
   properties?: AadAdminProperties;
 }
-export const GetWorkspaceAadAdminResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceAadAdminResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6030,7 +5999,7 @@ export interface GetWorkspaceManagedIdentitySqlControlSettingsRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const GetWorkspaceManagedIdentitySqlControlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedIdentitySqlControlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6051,7 +6020,7 @@ export const GetWorkspaceManagedIdentitySqlControlSettingsRequest = /*@__PURE__*
 export type GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   | "Enabled"
   | "Disabled";
-export const GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
+const GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   S.String;
 
 /** Actual state */
@@ -6061,7 +6030,7 @@ export type GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrant
   | "Disabling"
   | "Disabled"
   | "Unknown";
-export const GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentityActualState =
+const GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentityActualState =
   S.String;
 
 /** Grant sql control to managed identity */
@@ -6071,7 +6040,7 @@ export interface GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties
   /** Actual state */
   actualState?: GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentityActualState;
 }
-export const GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity =
+const GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       desiredState: S.optional(
@@ -6091,16 +6060,16 @@ export interface GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties
   /** Grant sql control to managed identity */
   grantSqlControlToManagedIdentity?: GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity;
 }
-export const GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       grantSqlControlToManagedIdentity: S.optional(
         GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity,
       ),
     }),
-  ).annotate({
-    identifier: "GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties",
-  }) as any as S.Schema<GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties>;
+).annotate({
+  identifier: "GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties",
+}) as any as S.Schema<GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties>;
 
 export interface GetWorkspaceManagedIdentitySqlControlSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6112,7 +6081,7 @@ export interface GetWorkspaceManagedIdentitySqlControlSettingsResponse {
   /** Sql Control Settings for workspace managed identity */
   properties?: GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties;
 }
-export const GetWorkspaceManagedIdentitySqlControlSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedIdentitySqlControlSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6124,7 +6093,7 @@ export const GetWorkspaceManagedIdentitySqlControlSettingsResponse = /*@__PURE__
 }) as any as S.Schema<GetWorkspaceManagedIdentitySqlControlSettingsResponse>;
 
 export type GetWorkspaceManagedSqlServerBlobAuditingPolicyRequestBlobAuditingPolicyName = "default";
-export const GetWorkspaceManagedSqlServerBlobAuditingPolicyRequestBlobAuditingPolicyName = S.String;
+const GetWorkspaceManagedSqlServerBlobAuditingPolicyRequestBlobAuditingPolicyName = S.String;
 
 export interface GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest {
   /** The ID of the target subscription. */
@@ -6138,7 +6107,7 @@ export interface GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest {
     | GetWorkspaceManagedSqlServerBlobAuditingPolicyRequestBlobAuditingPolicyName
     | (string & {});
 }
-export const GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6159,11 +6128,11 @@ export const GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest = /*@__PURE__
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ServerBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
-export const ServerBlobAuditingPolicyPropertiesState = S.String;
+const ServerBlobAuditingPolicyPropertiesState = S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList = Array<string>;
-export const ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
+const ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<ServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
 
 /** Properties of a server blob auditing policy. */
@@ -6189,7 +6158,7 @@ export interface ServerBlobAuditingPolicyProperties {
   /** Specifies the state of devops audit. If state is Enabled, devops logs will be sent to Azure Monitor. In order to send the events to Azure Monitor, specify 'State' as 'Enabled', 'IsAzureMonitorTargetEnabled' as true and 'IsDevopsAuditEnabled' as true When using REST API to configure auditing, Diagnostic Settings with 'DevOpsOperationsAudit' diagnostic logs category on the master database should also be created. Diagnostic Settings URI format: PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/master/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207) or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043) */
   isDevopsAuditEnabled?: boolean;
 }
-export const ServerBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: ServerBlobAuditingPolicyPropertiesState,
     storageEndpoint: S.optional(S.String),
@@ -6216,7 +6185,7 @@ export interface GetWorkspaceManagedSqlServerBlobAuditingPolicyResponse {
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
-export const GetWorkspaceManagedSqlServerBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6237,8 +6206,8 @@ export interface GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsReque
   /** The name of the dedicated sql minimal tls settings. */
   dedicatedSQLminimalTlsSettingsName: string;
 }
-export const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -6252,16 +6221,16 @@ export const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
-  }) as any as S.Schema<GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>;
+).annotate({
+  identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
+}) as any as S.Schema<GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>;
 
 /** Properties of a dedicated sql minimal tls settings. */
 export interface DedicatedSQLminimalTlsSettingsProperties {
   /** The minimal tls version of the sql server. */
   minimalTlsVersion?: string;
 }
-export const DedicatedSQLminimalTlsSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const DedicatedSQLminimalTlsSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimalTlsVersion: S.optional(S.String),
   }),
@@ -6281,8 +6250,8 @@ export interface GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRespo
   /** Resource properties. */
   properties?: DedicatedSQLminimalTlsSettingsProperties;
 }
-export const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
@@ -6290,14 +6259,13 @@ export const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse 
       location: S.optional(S.String),
       properties: S.optional(DedicatedSQLminimalTlsSettingsProperties),
     }),
-  ).annotate({
-    identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse",
-  }) as any as S.Schema<GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse>;
+).annotate({
+  identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse",
+}) as any as S.Schema<GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse>;
 
 export type GetWorkspaceManagedSqlServerEncryptionProtectorRequestEncryptionProtectorName =
   "current";
-export const GetWorkspaceManagedSqlServerEncryptionProtectorRequestEncryptionProtectorName =
-  S.String;
+const GetWorkspaceManagedSqlServerEncryptionProtectorRequestEncryptionProtectorName = S.String;
 
 export interface GetWorkspaceManagedSqlServerEncryptionProtectorRequest {
   /** The ID of the target subscription. */
@@ -6311,7 +6279,7 @@ export interface GetWorkspaceManagedSqlServerEncryptionProtectorRequest {
     | GetWorkspaceManagedSqlServerEncryptionProtectorRequestEncryptionProtectorName
     | (string & {});
 }
-export const GetWorkspaceManagedSqlServerEncryptionProtectorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerEncryptionProtectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6332,7 +6300,7 @@ export const GetWorkspaceManagedSqlServerEncryptionProtectorRequest = /*@__PURE_
 
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type EncryptionProtectorPropertiesServerKeyType = "ServiceManaged" | "AzureKeyVault";
-export const EncryptionProtectorPropertiesServerKeyType = S.String;
+const EncryptionProtectorPropertiesServerKeyType = S.String;
 
 /** Properties for an encryption protector execution. */
 export interface EncryptionProtectorProperties {
@@ -6347,7 +6315,7 @@ export interface EncryptionProtectorProperties {
   /** Thumbprint of the server key. */
   thumbprint?: string;
 }
-export const EncryptionProtectorProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionProtectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subregion: S.optional(S.String),
     serverKeyName: S.optional(S.String),
@@ -6373,7 +6341,7 @@ export interface GetWorkspaceManagedSqlServerEncryptionProtectorResponse {
   /** Resource properties. */
   properties?: EncryptionProtectorProperties;
 }
-export const GetWorkspaceManagedSqlServerEncryptionProtectorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerEncryptionProtectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6388,7 +6356,7 @@ export const GetWorkspaceManagedSqlServerEncryptionProtectorResponse = /*@__PURE
 
 export type GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequestBlobAuditingPolicyName =
   "default";
-export const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequestBlobAuditingPolicyName =
+const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequestBlobAuditingPolicyName =
   S.String;
 
 export interface GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest {
@@ -6403,35 +6371,34 @@ export interface GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest {
     | GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequestBlobAuditingPolicyName
     | (string & {});
 }
-export const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      blobAuditingPolicyName:
-        GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequestBlobAuditingPolicyName.pipe(
-          T.Label(),
-        ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
-        code: 200,
-        apiVersion: "2021-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest",
-  }) as any as S.Schema<GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest>;
+const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    blobAuditingPolicyName:
+      GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequestBlobAuditingPolicyName.pipe(
+        T.Label(),
+      ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+      code: 200,
+      apiVersion: "2021-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest",
+}) as any as S.Schema<GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest>;
 
 /** Specifies the state of the policy. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required. */
 export type ExtendedServerBlobAuditingPolicyPropertiesState = "Enabled" | "Disabled";
-export const ExtendedServerBlobAuditingPolicyPropertiesState = S.String;
+const ExtendedServerBlobAuditingPolicyPropertiesState = S.String;
 
 /** Specifies the Actions-Groups and Actions to audit. The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins: BATCH_COMPLETED_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP. This above combination is also the set that is configured by default when enabling auditing from the Azure portal. The supported action groups to audit are (note: choose only specific groups that cover your auditing needs. Using unnecessary groups could lead to very large quantities of audit records): APPLICATION_ROLE_CHANGE_PASSWORD_GROUP BACKUP_RESTORE_GROUP DATABASE_LOGOUT_GROUP DATABASE_OBJECT_CHANGE_GROUP DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP DATABASE_OBJECT_PERMISSION_CHANGE_GROUP DATABASE_OPERATION_GROUP DATABASE_PERMISSION_CHANGE_GROUP DATABASE_PRINCIPAL_CHANGE_GROUP DATABASE_PRINCIPAL_IMPERSONATION_GROUP DATABASE_ROLE_MEMBER_CHANGE_GROUP FAILED_DATABASE_AUTHENTICATION_GROUP SCHEMA_OBJECT_ACCESS_GROUP SCHEMA_OBJECT_CHANGE_GROUP SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP USER_CHANGE_PASSWORD_GROUP BATCH_STARTED_GROUP BATCH_COMPLETED_GROUP These are groups that cover all sql statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see [Database-Level Audit Action Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups). For Database auditing policy, specific Actions can also be specified (note that Actions cannot be specified for Server auditing policy). The supported actions to audit are: SELECT UPDATE INSERT DELETE EXECUTE RECEIVE REFERENCES The general form for defining an action to be audited is: {action} ON {object} BY {principal} Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively. For example: SELECT on dbo.myTable by public SELECT on DATABASE::myDatabase by public SELECT on SCHEMA::mySchema by public For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions) */
 export type ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList = Array<string>;
-export const ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
+const ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList =
   ExtendedSqlPoolBlobAuditingPolicyPropertiesAuditActionsAndGroupsList as any as S.Schema<ExtendedServerBlobAuditingPolicyPropertiesAuditActionsAndGroupsList>;
 
 /** Properties of an extended server blob auditing policy. */
@@ -6459,7 +6426,7 @@ export interface ExtendedServerBlobAuditingPolicyProperties {
   /** Specifies the state of devops audit. If state is Enabled, devops logs will be sent to Azure Monitor. In order to send the events to Azure Monitor, specify 'State' as 'Enabled', 'IsAzureMonitorTargetEnabled' as true and 'IsDevopsAuditEnabled' as true When using REST API to configure auditing, Diagnostic Settings with 'DevOpsOperationsAudit' diagnostic logs category on the master database should also be created. Diagnostic Settings URI format: PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/master/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207) or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043) */
   isDevopsAuditEnabled?: boolean;
 }
-export const ExtendedServerBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ExtendedServerBlobAuditingPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predicateExpression: S.optional(S.String),
     state: ExtendedServerBlobAuditingPolicyPropertiesState,
@@ -6489,17 +6456,16 @@ export interface GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse 
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
-export const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ExtendedServerBlobAuditingPolicyProperties),
-    }),
-  ).annotate({
-    identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse",
-  }) as any as S.Schema<GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse>;
+const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ExtendedServerBlobAuditingPolicyProperties),
+  }),
+).annotate({
+  identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse",
+}) as any as S.Schema<GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse>;
 
 export interface GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest {
   /** The ID of the target subscription. */
@@ -6511,7 +6477,7 @@ export interface GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest {
   /** The name of the sql pool */
   sqlPoolName: string;
 }
-export const GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6540,7 +6506,7 @@ export interface RecoverableSqlPoolProperties {
   /** The last available backup date of the database (ISO8601 format) */
   lastAvailableBackupDate?: string;
 }
-export const RecoverableSqlPoolProperties = /*@__PURE__*/ S.suspend(() =>
+const RecoverableSqlPoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edition: S.optional(S.String),
     serviceLevelObjective: S.optional(S.String),
@@ -6561,7 +6527,7 @@ export interface GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse {
   /** The properties of a recoverable sql pool */
   properties?: RecoverableSqlPoolProperties;
 }
-export const GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6574,8 +6540,7 @@ export const GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse = /*@__PURE_
 
 export type GetWorkspaceManagedSqlServerSecurityAlertPolicyRequestSecurityAlertPolicyName =
   "Default";
-export const GetWorkspaceManagedSqlServerSecurityAlertPolicyRequestSecurityAlertPolicyName =
-  S.String;
+const GetWorkspaceManagedSqlServerSecurityAlertPolicyRequestSecurityAlertPolicyName = S.String;
 
 export interface GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest {
   /** The ID of the target subscription. */
@@ -6589,7 +6554,7 @@ export interface GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest {
     | GetWorkspaceManagedSqlServerSecurityAlertPolicyRequestSecurityAlertPolicyName
     | (string & {});
 }
-export const GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6610,16 +6575,16 @@ export const GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest = /*@__PURE_
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific server */
 export type ServerSecurityAlertPolicyPropertiesState = "New" | "Enabled" | "Disabled";
-export const ServerSecurityAlertPolicyPropertiesState = S.String;
+const ServerSecurityAlertPolicyPropertiesState = S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type ServerSecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
-export const ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
+const ServerSecurityAlertPolicyPropertiesDisabledAlertsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<ServerSecurityAlertPolicyPropertiesDisabledAlertsList>;
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPolicyPropertiesEmailAddressesList = Array<string>;
-export const ServerSecurityAlertPolicyPropertiesEmailAddressesList =
+const ServerSecurityAlertPolicyPropertiesEmailAddressesList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<ServerSecurityAlertPolicyPropertiesEmailAddressesList>;
 
 /** Properties of a security alert policy. */
@@ -6641,7 +6606,7 @@ export interface ServerSecurityAlertPolicyProperties {
   /** Specifies the UTC creation time of the policy. */
   creationTime?: string;
 }
-export const ServerSecurityAlertPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerSecurityAlertPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: ServerSecurityAlertPolicyPropertiesState,
     disabledAlerts: S.optional(ServerSecurityAlertPolicyPropertiesDisabledAlertsList),
@@ -6666,7 +6631,7 @@ export interface GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse {
   /** Resource properties. */
   properties?: ServerSecurityAlertPolicyProperties;
 }
-export const GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6679,7 +6644,7 @@ export const GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse = /*@__PURE
 
 export type GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
   "default";
-export const GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
+const GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName =
   S.String;
 
 export interface GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest {
@@ -6694,24 +6659,23 @@ export interface GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest {
     | GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName
     | (string & {});
 }
-export const GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      vulnerabilityAssessmentName:
-        GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName.pipe(
-          T.Label(),
-        ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
-        code: 200,
-        apiVersion: "2021-06-01",
-      }),
-    ),
+const GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    vulnerabilityAssessmentName:
+      GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequestVulnerabilityAssessmentName.pipe(
+        T.Label(),
+      ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+      code: 200,
+      apiVersion: "2021-06-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
 }) as any as S.Schema<GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest>;
@@ -6727,7 +6691,7 @@ export interface ServerVulnerabilityAssessmentProperties {
   /** The recurring scans settings */
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
-export const ServerVulnerabilityAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerVulnerabilityAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageContainerPath: S.String,
     storageContainerSasKey: S.optional(S.String),
@@ -6748,14 +6712,13 @@ export interface GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse {
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
-export const GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(ServerVulnerabilityAssessmentProperties),
-    }),
+const GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(ServerVulnerabilityAssessmentProperties),
+  }),
 ).annotate({
   identifier: "GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
 }) as any as S.Schema<GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse>;
@@ -6768,7 +6731,7 @@ export interface GetWorkspaceSqlAadAdminRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const GetWorkspaceSqlAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceSqlAadAdminRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6795,7 +6758,7 @@ export interface GetWorkspaceSqlAadAdminResponse {
   /** Workspace active directory administrator properties */
   properties?: AadAdminProperties;
 }
-export const GetWorkspaceSqlAadAdminResponse =
+const GetWorkspaceSqlAadAdminResponse =
   GetWorkspaceAadAdminResponse as any as S.Schema<GetWorkspaceSqlAadAdminResponse>;
 
 export interface IntegrationRuntimesUpgradeRequest {
@@ -6808,7 +6771,7 @@ export interface IntegrationRuntimesUpgradeRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6827,7 +6790,7 @@ export const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationRuntimesUpgradeRequest>;
 
 export interface IntegrationRuntimesUpgradeResponse {}
-export const IntegrationRuntimesUpgradeResponse =
+const IntegrationRuntimesUpgradeResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<IntegrationRuntimesUpgradeResponse>;
 
 /** IP firewall rule properties */
@@ -6837,7 +6800,7 @@ export interface IpFirewallRulePropertiesInput {
   /** The start IP address of the firewall rule. Must be IPv4 format */
   startIpAddress?: string;
 }
-export const IpFirewallRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IpFirewallRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIpAddress: S.optional(S.String),
     startIpAddress: S.optional(S.String),
@@ -6858,7 +6821,7 @@ export interface IpFirewallRulesCreateOrUpdateRequest {
   /** IP firewall rule properties */
   properties?: IpFirewallRulePropertiesInput;
 }
-export const IpFirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IpFirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6887,7 +6850,7 @@ export interface IpFirewallRulesCreateOrUpdateResponse {
   /** IP firewall rule properties */
   properties?: IpFirewallRuleProperties;
 }
-export const IpFirewallRulesCreateOrUpdateResponse =
+const IpFirewallRulesCreateOrUpdateResponse =
   DeleteIpFirewallRuleResponse as any as S.Schema<IpFirewallRulesCreateOrUpdateResponse>;
 
 export interface KeysCreateOrUpdateRequest {
@@ -6902,7 +6865,7 @@ export interface KeysCreateOrUpdateRequest {
   /** Keys resource properties */
   properties?: KeyProperties;
 }
-export const KeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const KeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6931,7 +6894,7 @@ export interface KeysCreateOrUpdateResponse {
   /** Keys resource properties */
   properties?: KeyProperties;
 }
-export const KeysCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const KeysCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6950,7 +6913,7 @@ export interface ListAzureADOnlyAuthenticationsRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListAzureADOnlyAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureADOnlyAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6978,12 +6941,12 @@ export interface AzureADOnlyAuthentication {
   /** azureADOnlyAuthentication resource properties */
   properties?: AzureADOnlyAuthenticationProperties;
 }
-export const AzureADOnlyAuthentication =
+const AzureADOnlyAuthentication =
   CreateAzureADOnlyAuthenticationResponse as any as S.Schema<AzureADOnlyAuthentication>;
 
 /** Array of results. */
 export type AzureADOnlyAuthenticationListResultValueList = Array<AzureADOnlyAuthentication>;
-export const AzureADOnlyAuthenticationListResultValueList = /*@__PURE__*/ S.Array(
+const AzureADOnlyAuthenticationListResultValueList = /*@__PURE__*/ S.Array(
   AzureADOnlyAuthentication,
 ) as any as S.Schema<AzureADOnlyAuthenticationListResultValueList>;
 
@@ -6994,7 +6957,7 @@ export interface AzureADOnlyAuthenticationListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const AzureADOnlyAuthenticationListResult = /*@__PURE__*/ S.suspend(() =>
+const AzureADOnlyAuthenticationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AzureADOnlyAuthenticationListResultValueList),
     nextLink: S.optional(S.String),
@@ -7011,7 +6974,7 @@ export interface ListBigDataPoolByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListBigDataPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBigDataPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7030,9 +6993,6 @@ export const ListBigDataPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BigDataPoolResourceInfoTagsMap = { [key: string]: string | undefined };
-export const BigDataPoolResourceInfoTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<BigDataPoolResourceInfoTagsMap>;
-
 /** A Big Data pool */
 export interface BigDataPoolResourceInfo {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7048,12 +7008,11 @@ export interface BigDataPoolResourceInfo {
   /** Big Data pool properties */
   properties?: BigDataPoolResourceProperties;
 }
-export const BigDataPoolResourceInfo =
-  GetBigDataPoolResponse as any as S.Schema<BigDataPoolResourceInfo>;
+const BigDataPoolResourceInfo = GetBigDataPoolResponse as any as S.Schema<BigDataPoolResourceInfo>;
 
 /** List of Big Data pools */
 export type BigDataPoolResourceInfoListResultValueList = Array<BigDataPoolResourceInfo>;
-export const BigDataPoolResourceInfoListResultValueList = /*@__PURE__*/ S.Array(
+const BigDataPoolResourceInfoListResultValueList = /*@__PURE__*/ S.Array(
   BigDataPoolResourceInfo,
 ) as any as S.Schema<BigDataPoolResourceInfoListResultValueList>;
 
@@ -7064,7 +7023,7 @@ export interface BigDataPoolResourceInfoListResult {
   /** List of Big Data pools */
   value?: BigDataPoolResourceInfoListResultValueList;
 }
-export const BigDataPoolResourceInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const BigDataPoolResourceInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(BigDataPoolResourceInfoListResultValueList),
@@ -7074,7 +7033,7 @@ export const BigDataPoolResourceInfoListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BigDataPoolResourceInfoListResult>;
 
 export type ListDataMaskingRuleBySqlPoolRequestDataMaskingPolicyName = "Default";
-export const ListDataMaskingRuleBySqlPoolRequestDataMaskingPolicyName = S.String;
+const ListDataMaskingRuleBySqlPoolRequestDataMaskingPolicyName = S.String;
 
 export interface ListDataMaskingRuleBySqlPoolRequest {
   /** The ID of the target subscription. */
@@ -7088,7 +7047,7 @@ export interface ListDataMaskingRuleBySqlPoolRequest {
   /** The name of the data masking policy for which the masking rule applies. */
   dataMaskingPolicyName: ListDataMaskingRuleBySqlPoolRequestDataMaskingPolicyName | (string & {});
 }
-export const ListDataMaskingRuleBySqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataMaskingRuleBySqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7122,7 +7081,7 @@ export interface DataMaskingRule {
   /** The kind of Data Masking Rule. Metadata, used for Azure portal. */
   kind?: string;
 }
-export const DataMaskingRule = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7135,7 +7094,7 @@ export const DataMaskingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Sql pool data masking rules. */
 export type DataMaskingRuleListResultValueList = Array<DataMaskingRule>;
-export const DataMaskingRuleListResultValueList = /*@__PURE__*/ S.Array(
+const DataMaskingRuleListResultValueList = /*@__PURE__*/ S.Array(
   DataMaskingRule,
 ) as any as S.Schema<DataMaskingRuleListResultValueList>;
 
@@ -7144,7 +7103,7 @@ export interface DataMaskingRuleListResult {
   /** The list of Sql pool data masking rules. */
   value?: DataMaskingRuleListResultValueList;
 }
-export const DataMaskingRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DataMaskingRuleListResultValueList),
   }),
@@ -7162,7 +7121,7 @@ export interface ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7191,13 +7150,13 @@ export interface ExtendedSqlPoolBlobAuditingPolicy {
   /** Resource properties. */
   properties?: ExtendedSqlPoolBlobAuditingPolicyProperties;
 }
-export const ExtendedSqlPoolBlobAuditingPolicy =
+const ExtendedSqlPoolBlobAuditingPolicy =
   GetExtendedSqlPoolBlobAuditingPolicyResponse as any as S.Schema<ExtendedSqlPoolBlobAuditingPolicy>;
 
 /** Array of results. */
 export type ExtendedSqlPoolBlobAuditingPolicyListResultValueList =
   Array<ExtendedSqlPoolBlobAuditingPolicy>;
-export const ExtendedSqlPoolBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const ExtendedSqlPoolBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ExtendedSqlPoolBlobAuditingPolicy,
 ) as any as S.Schema<ExtendedSqlPoolBlobAuditingPolicyListResultValueList>;
 
@@ -7208,7 +7167,7 @@ export interface ExtendedSqlPoolBlobAuditingPolicyListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ExtendedSqlPoolBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const ExtendedSqlPoolBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ExtendedSqlPoolBlobAuditingPolicyListResultValueList),
     nextLink: S.optional(S.String),
@@ -7227,7 +7186,7 @@ export interface ListIntegrationRuntimeAuthKeysRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const ListIntegrationRuntimeAuthKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeAuthKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7252,7 +7211,7 @@ export interface IntegrationRuntimeAuthKeys {
   /** The secondary integration runtime authentication key. */
   authKey2?: string;
 }
-export const IntegrationRuntimeAuthKeys = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeAuthKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authKey1: S.optional(S.String),
     authKey2: S.optional(S.String),
@@ -7269,7 +7228,7 @@ export interface ListIntegrationRuntimeByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListIntegrationRuntimeByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7299,12 +7258,12 @@ export interface IntegrationRuntimeResource {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const IntegrationRuntimeResource =
+const IntegrationRuntimeResource =
   CreateIntegrationRuntimeResponse as any as S.Schema<IntegrationRuntimeResource>;
 
 /** List of integration runtimes. */
 export type IntegrationRuntimeListResponseValueList = Array<IntegrationRuntimeResource>;
-export const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
+const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeResource,
 ) as any as S.Schema<IntegrationRuntimeListResponseValueList>;
 
@@ -7315,7 +7274,7 @@ export interface IntegrationRuntimeListResponse {
   /** The link to the next page of results, if any remaining results exist. */
   nextLink?: string;
 }
-export const IntegrationRuntimeListResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IntegrationRuntimeListResponseValueList,
     nextLink: S.optional(S.String),
@@ -7334,7 +7293,7 @@ export interface ListIntegrationRuntimeMonitoringDataRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const ListIntegrationRuntimeMonitoringDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeMonitoringDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7371,7 +7330,7 @@ export interface IntegrationRuntimeNodeMonitoringData {
   /** Received bytes on the integration runtime node. */
   receivedBytes?: number;
 }
-export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeName: S.optional(S.String),
     availableMemoryInMB: S.optional(S.Number),
@@ -7388,7 +7347,7 @@ export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(() =
 
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList = Array<IntegrationRuntimeNodeMonitoringData>;
-export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
+const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeNodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
 
@@ -7399,7 +7358,7 @@ export interface IntegrationRuntimeMonitoringData {
   /** Integration runtime node monitoring data. */
   nodes?: IntegrationRuntimeMonitoringDataNodesList;
 }
-export const IntegrationRuntimeMonitoringData = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeMonitoringData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nodes: S.optional(IntegrationRuntimeMonitoringDataNodesList),
@@ -7420,7 +7379,7 @@ export interface ListIntegrationRuntimeObjectMetadataRequest {
   /** Metadata path. */
   metadataPath?: string;
 }
-export const ListIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7441,7 +7400,7 @@ export const ListIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspe
 
 /** The type of SSIS object metadata. */
 export type SsisObjectMetadataType = "Folder" | "Project" | "Package" | "Environment";
-export const SsisObjectMetadataType = S.String;
+const SsisObjectMetadataType = S.String;
 
 /** SSIS object metadata. */
 export interface SsisObjectMetadata {
@@ -7454,7 +7413,7 @@ export interface SsisObjectMetadata {
   /** Metadata description. */
   description?: string;
 }
-export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
+const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SsisObjectMetadataType,
     id: S.optional(S.Number),
@@ -7465,7 +7424,7 @@ export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SSIS object metadata. */
 export type SsisObjectMetadataListResponseValueList = Array<SsisObjectMetadata>;
-export const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
+const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
   SsisObjectMetadata,
 ) as any as S.Schema<SsisObjectMetadataListResponseValueList>;
 
@@ -7476,7 +7435,7 @@ export interface SsisObjectMetadataListResponse {
   /** The link to the next page of results, if any remaining results exist. */
   nextLink?: string;
 }
-export const SsisObjectMetadataListResponse = /*@__PURE__*/ S.suspend(() =>
+const SsisObjectMetadataListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SsisObjectMetadataListResponseValueList),
     nextLink: S.optional(S.String),
@@ -7495,8 +7454,8 @@ export interface ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsReque
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -7510,20 +7469,19 @@ export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest",
-  }) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>;
+).annotate({
+  identifier: "ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest",
+}) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>;
 
 /** The details of Azure-SSIS integration runtime outbound network dependency endpoint. */
 export interface IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails {
   /** The port of endpoint. */
   port?: number;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      port: S.optional(S.Number),
-    }),
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    port: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails",
 }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
@@ -7531,7 +7489,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails = /*@_
 /** The details of endpoint. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList>;
@@ -7543,7 +7501,7 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesEndpoint {
   /** The details of endpoint. */
   endpointDetails?: IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
+const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     endpointDetails: S.optional(
@@ -7557,7 +7515,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint = /*@__PURE__
 /** The endpoints for outbound network dependency. */
 export type IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
-export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
+const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpoint,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList>;
@@ -7569,22 +7527,21 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint {
   /** The endpoints for outbound network dependency. */
   endpoints?: IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.optional(S.String),
-      endpoints: S.optional(
-        IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
-  }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
+const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: S.optional(S.String),
+    endpoints: S.optional(
+      IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList,
+    ),
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
+}) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
 
 /** The list of outbound network dependency endpoints. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   Array<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList>;
@@ -7594,14 +7551,13 @@ export interface IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse 
   /** The list of outbound network dependency endpoints. */
   value?: IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList;
 }
-export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList),
-    }),
-  ).annotate({
-    identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
-  }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>;
+const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList),
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
+}) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>;
 
 export interface ListIpFirewallRuleByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -7611,7 +7567,7 @@ export interface ListIpFirewallRuleByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListIpFirewallRuleByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpFirewallRuleByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7639,7 +7595,7 @@ export interface IpFirewallRuleInfo {
   /** IP firewall rule properties */
   properties?: IpFirewallRuleProperties;
 }
-export const IpFirewallRuleInfo = /*@__PURE__*/ S.suspend(() =>
+const IpFirewallRuleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7650,7 +7606,7 @@ export const IpFirewallRuleInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP firewall rules */
 export type IpFirewallRuleInfoListResultValueList = Array<IpFirewallRuleInfo>;
-export const IpFirewallRuleInfoListResultValueList = /*@__PURE__*/ S.Array(
+const IpFirewallRuleInfoListResultValueList = /*@__PURE__*/ S.Array(
   IpFirewallRuleInfo,
 ) as any as S.Schema<IpFirewallRuleInfoListResultValueList>;
 
@@ -7661,7 +7617,7 @@ export interface IpFirewallRuleInfoListResult {
   /** List of IP firewall rules */
   value?: IpFirewallRuleInfoListResultValueList;
 }
-export const IpFirewallRuleInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const IpFirewallRuleInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(IpFirewallRuleInfoListResultValueList),
@@ -7678,7 +7634,7 @@ export interface ListKeyByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListKeyByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeyByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7706,11 +7662,11 @@ export interface Key {
   /** Keys resource properties */
   properties?: KeyProperties;
 }
-export const Key = DeleteKeyResponse as any as S.Schema<Key>;
+const Key = DeleteKeyResponse as any as S.Schema<Key>;
 
 /** List of keys */
 export type KeyInfoListResultValueList = Array<Key>;
-export const KeyInfoListResultValueList = /*@__PURE__*/ S.Array(
+const KeyInfoListResultValueList = /*@__PURE__*/ S.Array(
   Key,
 ) as any as S.Schema<KeyInfoListResultValueList>;
 
@@ -7721,7 +7677,7 @@ export interface KeyInfoListResult {
   /** List of keys */
   value?: KeyInfoListResultValueList;
 }
-export const KeyInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const KeyInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(KeyInfoListResultValueList),
@@ -7736,7 +7692,7 @@ export interface ListLibraryByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListLibraryByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLibraryByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7755,8 +7711,6 @@ export const ListLibraryByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Library/package information of a Big Data pool powered by Apache Spark */
 export type LibraryResourceProperties = BigDataPoolResourcePropertiesCustomLibrariesItem;
-export const LibraryResourceProperties = BigDataPoolResourcePropertiesCustomLibrariesItem;
-
 /** Library response details */
 export interface LibraryResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7770,11 +7724,11 @@ export interface LibraryResource {
   /** Library/package information of a Big Data pool powered by Apache Spark */
   properties: BigDataPoolResourcePropertiesCustomLibrariesItem;
 }
-export const LibraryResource = GetLibraryResponse as any as S.Schema<LibraryResource>;
+const LibraryResource = GetLibraryResponse as any as S.Schema<LibraryResource>;
 
 /** List of Library. */
 export type LibraryListResponseValueList = Array<LibraryResource>;
-export const LibraryListResponseValueList = /*@__PURE__*/ S.Array(
+const LibraryListResponseValueList = /*@__PURE__*/ S.Array(
   LibraryResource,
 ) as any as S.Schema<LibraryListResponseValueList>;
 
@@ -7785,7 +7739,7 @@ export interface LibraryListResponse {
   /** The link to the next page of results, if any remaining results exist. */
   nextLink?: string;
 }
-export const LibraryListResponse = /*@__PURE__*/ S.suspend(() =>
+const LibraryListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LibraryListResponseValueList,
     nextLink: S.optional(S.String),
@@ -7793,7 +7747,7 @@ export const LibraryListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LibraryListResponse" }) as any as S.Schema<LibraryListResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -7815,7 +7769,7 @@ export interface AvailableRpOperationDisplayInfo {
   /** Operation name */
   operation?: string;
 }
-export const AvailableRpOperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const AvailableRpOperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     resource: S.optional(S.String),
@@ -7835,7 +7789,7 @@ export interface OperationMetaMetricDimensionSpecification {
   /** Whether this metric should be exported for Shoebox */
   toBeExportedForShoebox?: boolean;
 }
-export const OperationMetaMetricDimensionSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationMetaMetricDimensionSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -7848,7 +7802,7 @@ export const OperationMetaMetricDimensionSpecification = /*@__PURE__*/ S.suspend
 /** Metric dimensions */
 export type OperationMetaMetricSpecificationDimensionsList =
   Array<OperationMetaMetricDimensionSpecification>;
-export const OperationMetaMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const OperationMetaMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   OperationMetaMetricDimensionSpecification,
 ) as any as S.Schema<OperationMetaMetricSpecificationDimensionsList>;
 
@@ -7877,7 +7831,7 @@ export interface OperationMetaMetricSpecification {
   /** Metric filter */
   metricFilterPattern?: string;
 }
-export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceMdmNamespace: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -7898,7 +7852,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 /** Service metric specifications */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
   Array<OperationMetaMetricSpecification>;
-export const OperationMetaServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const OperationMetaServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   OperationMetaMetricSpecification,
 ) as any as S.Schema<OperationMetaServiceSpecificationMetricSpecificationsList>;
 
@@ -7911,7 +7865,7 @@ export interface OperationMetaLogSpecification {
   /** Log unique name */
   name?: string;
 }
-export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     blobDuration: S.optional(S.String),
@@ -7924,7 +7878,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 /** Service log specifications */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
   Array<OperationMetaLogSpecification>;
-export const OperationMetaServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+const OperationMetaServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   OperationMetaLogSpecification,
 ) as any as S.Schema<OperationMetaServiceSpecificationLogSpecificationsList>;
 
@@ -7935,7 +7889,7 @@ export interface OperationMetaServiceSpecification {
   /** Service log specifications */
   logSpecifications?: OperationMetaServiceSpecificationLogSpecificationsList;
 }
-export const OperationMetaServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationMetaServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(OperationMetaServiceSpecificationMetricSpecificationsList),
     logSpecifications: S.optional(OperationMetaServiceSpecificationLogSpecificationsList),
@@ -7949,7 +7903,7 @@ export interface OperationMetaPropertyInfo {
   /** Operation service specification */
   serviceSpecification?: OperationMetaServiceSpecification;
 }
-export const OperationMetaPropertyInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationMetaPropertyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(OperationMetaServiceSpecification),
   }),
@@ -7970,7 +7924,7 @@ export interface AvailableRpOperation {
   /** Operation origin */
   origin?: string;
 }
-export const AvailableRpOperation = /*@__PURE__*/ S.suspend(() =>
+const AvailableRpOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.optional(AvailableRpOperationDisplayInfo),
     isDataAction: S.optional(S.String),
@@ -7981,12 +7935,12 @@ export const AvailableRpOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailableRpOperation" }) as any as S.Schema<AvailableRpOperation>;
 
 export type ListOperationsResponseBodyList = Array<AvailableRpOperation>;
-export const ListOperationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseBodyList = /*@__PURE__*/ S.Array(
   AvailableRpOperation,
 ) as any as S.Schema<ListOperationsResponseBodyList>;
 
 export type ListOperationsResponse = ListOperationsResponseBodyList;
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOperationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
@@ -7998,7 +7952,7 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8017,12 +7971,10 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** A private endpoint connection */
 export type PrivateEndpointConnection = WorkspacePropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnection = WorkspacePropertiesPrivateEndpointConnectionsItem;
-
 /** Array of results. */
 export type ListPrivateEndpointConnectionsResponseValueList =
   Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
-export const ListPrivateEndpointConnectionsResponseValueList =
+const ListPrivateEndpointConnectionsResponseValueList =
   WorkspacePropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsResponse {
@@ -8031,7 +7983,7 @@ export interface ListPrivateEndpointConnectionsResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListPrivateEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListPrivateEndpointConnectionsResponseValueList),
     nextLink: S.optional(S.String),
@@ -8048,7 +8000,7 @@ export interface ListPrivateEndpointConnectionsPrivateLinkHubRequest {
   /** Name of the privateLinkHub */
   privateLinkHubName: string;
 }
-export const ListPrivateEndpointConnectionsPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsPrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8068,9 +8020,6 @@ export const ListPrivateEndpointConnectionsPrivateLinkHubRequest = /*@__PURE__*/
 /** Properties of a private endpoint connection. */
 export type PrivateEndpointConnectionForPrivateLinkHubProperties =
   PrivateEndpointConnectionProperties;
-export const PrivateEndpointConnectionForPrivateLinkHubProperties =
-  PrivateEndpointConnectionProperties;
-
 export interface PrivateEndpointConnectionForPrivateLinkHub {
   /** identifier */
   id?: string;
@@ -8079,12 +8028,12 @@ export interface PrivateEndpointConnectionForPrivateLinkHub {
   name?: string;
   type?: string;
 }
-export const PrivateEndpointConnectionForPrivateLinkHub =
+const PrivateEndpointConnectionForPrivateLinkHub =
   GetPrivateEndpointConnectionsPrivateLinkHubResponse as any as S.Schema<PrivateEndpointConnectionForPrivateLinkHub>;
 
 export type ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList =
   Array<PrivateEndpointConnectionForPrivateLinkHub>;
-export const ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList = /*@__PURE__*/ S.Array(
+const ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionForPrivateLinkHub,
 ) as any as S.Schema<ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList>;
 
@@ -8092,7 +8041,7 @@ export interface ListPrivateEndpointConnectionsPrivateLinkHubResponse {
   value?: ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList;
   nextLink?: string;
 }
-export const ListPrivateEndpointConnectionsPrivateLinkHubResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsPrivateLinkHubResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList),
     nextLink: S.optional(S.String),
@@ -8107,7 +8056,7 @@ export interface ListPrivateLinkHubByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPrivateLinkHubByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkHubByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8125,7 +8074,7 @@ export const ListPrivateLinkHubByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type PrivateLinkHubTagsMap = { [key: string]: string | undefined };
-export const PrivateLinkHubTagsMap =
+const PrivateLinkHubTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<PrivateLinkHubTagsMap>;
 
 /** A privateLinkHub */
@@ -8143,7 +8092,7 @@ export interface PrivateLinkHub {
   /** PrivateLinkHub resource properties */
   properties?: PrivateLinkHubProperties;
 }
-export const PrivateLinkHub = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkHub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8156,7 +8105,7 @@ export const PrivateLinkHub = /*@__PURE__*/ S.suspend(() =>
 
 /** List of privateLinkHubs */
 export type PrivateLinkHubInfoListResultValueList = Array<PrivateLinkHub>;
-export const PrivateLinkHubInfoListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkHubInfoListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkHub,
 ) as any as S.Schema<PrivateLinkHubInfoListResultValueList>;
 
@@ -8167,7 +8116,7 @@ export interface PrivateLinkHubInfoListResult {
   /** List of privateLinkHubs */
   value?: PrivateLinkHubInfoListResultValueList;
 }
-export const PrivateLinkHubInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkHubInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(PrivateLinkHubInfoListResultValueList),
@@ -8184,7 +8133,7 @@ export interface ListPrivateLinkHubPrivateLinkResourcesRequest {
   /** The name of the private link hub */
   privateLinkHubName: string;
 }
-export const ListPrivateLinkHubPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkHubPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8212,7 +8161,7 @@ export interface PrivateLinkResource {
   /** The private link resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8223,7 +8172,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -8234,7 +8183,7 @@ export interface PrivateLinkResourceListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceListResultValueList),
     nextLink: S.optional(S.String),
@@ -8247,7 +8196,7 @@ export interface ListPrivateLinkHubsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPrivateLinkHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8270,7 +8219,7 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8295,7 +8244,7 @@ export interface ListRestorableDroppedSqlPoolByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListRestorableDroppedSqlPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRestorableDroppedSqlPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8325,7 +8274,7 @@ export interface RestorableDroppedSqlPool {
   /** The properties of a restorable dropped Sql pool */
   properties?: RestorableDroppedSqlPoolProperties;
 }
-export const RestorableDroppedSqlPool = /*@__PURE__*/ S.suspend(() =>
+const RestorableDroppedSqlPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8337,7 +8286,7 @@ export const RestorableDroppedSqlPool = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of restorable dropped Sql pools */
 export type RestorableDroppedSqlPoolListResultValueList = Array<RestorableDroppedSqlPool>;
-export const RestorableDroppedSqlPoolListResultValueList = /*@__PURE__*/ S.Array(
+const RestorableDroppedSqlPoolListResultValueList = /*@__PURE__*/ S.Array(
   RestorableDroppedSqlPool,
 ) as any as S.Schema<RestorableDroppedSqlPoolListResultValueList>;
 
@@ -8346,7 +8295,7 @@ export interface RestorableDroppedSqlPoolListResult {
   /** A list of restorable dropped Sql pools */
   value: RestorableDroppedSqlPoolListResultValueList;
 }
-export const RestorableDroppedSqlPoolListResult = /*@__PURE__*/ S.suspend(() =>
+const RestorableDroppedSqlPoolListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RestorableDroppedSqlPoolListResultValueList,
   }),
@@ -8364,7 +8313,7 @@ export interface ListSqlPoolBlobAuditingPolicyBySqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolBlobAuditingPolicyBySqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolBlobAuditingPolicyBySqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8395,12 +8344,12 @@ export interface SqlPoolBlobAuditingPolicy {
   /** Resource properties. */
   properties?: SqlPoolBlobAuditingPolicyProperties;
 }
-export const SqlPoolBlobAuditingPolicy =
+const SqlPoolBlobAuditingPolicy =
   GetSqlPoolBlobAuditingPolicyResponse as any as S.Schema<SqlPoolBlobAuditingPolicy>;
 
 /** Array of results. */
 export type SqlPoolBlobAuditingPolicyListResultValueList = Array<SqlPoolBlobAuditingPolicy>;
-export const SqlPoolBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolBlobAuditingPolicy,
 ) as any as S.Schema<SqlPoolBlobAuditingPolicyListResultValueList>;
 
@@ -8411,7 +8360,7 @@ export interface SqlPoolBlobAuditingPolicyListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SqlPoolBlobAuditingPolicyListResultValueList),
     nextLink: S.optional(S.String),
@@ -8428,7 +8377,7 @@ export interface ListSqlPoolByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListSqlPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8447,9 +8396,6 @@ export const ListSqlPoolByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SqlPoolTagsMap = { [key: string]: string | undefined };
-export const SqlPoolTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<SqlPoolTagsMap>;
-
 /** A SQL Analytics pool */
 export interface SqlPool {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8467,11 +8413,11 @@ export interface SqlPool {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const SqlPool = CreateSqlPoolResponse as any as S.Schema<SqlPool>;
+const SqlPool = CreateSqlPoolResponse as any as S.Schema<SqlPool>;
 
 /** List of SQL pools */
 export type SqlPoolInfoListResultValueList = Array<SqlPool>;
-export const SqlPoolInfoListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolInfoListResultValueList = /*@__PURE__*/ S.Array(
   SqlPool,
 ) as any as S.Schema<SqlPoolInfoListResultValueList>;
 
@@ -8482,7 +8428,7 @@ export interface SqlPoolInfoListResult {
   /** List of SQL pools */
   value?: SqlPoolInfoListResultValueList;
 }
-export const SqlPoolInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(SqlPoolInfoListResultValueList),
@@ -8499,7 +8445,7 @@ export interface ListSqlPoolGeoBackupPoliciesRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolGeoBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolGeoBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8532,7 +8478,7 @@ export interface GeoBackupPolicy {
   /** Backup policy location. */
   location?: string;
 }
-export const GeoBackupPolicy = /*@__PURE__*/ S.suspend(() =>
+const GeoBackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8545,7 +8491,7 @@ export const GeoBackupPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of geo backup policies. */
 export type GeoBackupPolicyListResultValueList = Array<GeoBackupPolicy>;
-export const GeoBackupPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const GeoBackupPolicyListResultValueList = /*@__PURE__*/ S.Array(
   GeoBackupPolicy,
 ) as any as S.Schema<GeoBackupPolicyListResultValueList>;
 
@@ -8554,7 +8500,7 @@ export interface GeoBackupPolicyListResult {
   /** The list of geo backup policies. */
   value?: GeoBackupPolicyListResultValueList;
 }
-export const GeoBackupPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const GeoBackupPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GeoBackupPolicyListResultValueList),
   }),
@@ -8572,7 +8518,7 @@ export interface ListSqlPoolOperationsRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8598,7 +8544,7 @@ export type SqlPoolOperationPropertiesState =
   | "Failed"
   | "CancelInProgress"
   | "Cancelled";
-export const SqlPoolOperationPropertiesState = S.String;
+const SqlPoolOperationPropertiesState = S.String;
 
 /** The properties of a Sql pool operation. */
 export interface SqlPoolOperationProperties {
@@ -8631,7 +8577,7 @@ export interface SqlPoolOperationProperties {
   /** Whether the operation can be cancelled. */
   isCancellable?: boolean;
 }
-export const SqlPoolOperationProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolOperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     operation: S.optional(S.String),
@@ -8663,7 +8609,7 @@ export interface SqlPoolOperation {
   /** Resource properties. */
   properties?: SqlPoolOperationProperties;
 }
-export const SqlPoolOperation = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8674,7 +8620,7 @@ export const SqlPoolOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList = Array<SqlPoolOperation>;
-export const SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolOperation,
 ) as any as S.Schema<SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList>;
 
@@ -8685,7 +8631,7 @@ export interface SqlPoolBlobAuditingPolicySqlPoolOperationListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolBlobAuditingPolicySqlPoolOperationListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolBlobAuditingPolicySqlPoolOperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -8704,7 +8650,7 @@ export interface ListSqlPoolReplicationLinksRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolReplicationLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolReplicationLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8735,7 +8681,7 @@ export interface ReplicationLink {
   /** The properties representing the resource. */
   properties?: ReplicationLinkProperties;
 }
-export const ReplicationLink = /*@__PURE__*/ S.suspend(() =>
+const ReplicationLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8747,7 +8693,7 @@ export const ReplicationLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Sql pool replication links housed in the Sql pool. */
 export type ReplicationLinkListResultValueList = Array<ReplicationLink>;
-export const ReplicationLinkListResultValueList = /*@__PURE__*/ S.Array(
+const ReplicationLinkListResultValueList = /*@__PURE__*/ S.Array(
   ReplicationLink,
 ) as any as S.Schema<ReplicationLinkListResultValueList>;
 
@@ -8758,7 +8704,7 @@ export interface ReplicationLinkListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ReplicationLinkListResult = /*@__PURE__*/ S.suspend(() =>
+const ReplicationLinkListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReplicationLinkListResultValueList),
     nextLink: S.optional(S.String),
@@ -8777,7 +8723,7 @@ export interface ListSqlPoolRestorePointsRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8808,7 +8754,7 @@ export interface RestorePoint {
   /** Resource properties. */
   properties?: RestorePointProperties;
 }
-export const RestorePoint = /*@__PURE__*/ S.suspend(() =>
+const RestorePoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8820,7 +8766,7 @@ export const RestorePoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type RestorePointListResultValueList = Array<RestorePoint>;
-export const RestorePointListResultValueList = /*@__PURE__*/ S.Array(
+const RestorePointListResultValueList = /*@__PURE__*/ S.Array(
   RestorePoint,
 ) as any as S.Schema<RestorePointListResultValueList>;
 
@@ -8831,7 +8777,7 @@ export interface RestorePointListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const RestorePointListResult = /*@__PURE__*/ S.suspend(() =>
+const RestorePointListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RestorePointListResultValueList),
     nextLink: S.optional(S.String),
@@ -8850,7 +8796,7 @@ export interface ListSqlPoolSchemasRequest {
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
 }
-export const ListSqlPoolSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8878,11 +8824,11 @@ export interface Resource {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
 }
-export const Resource = GetSqlPoolSchemaResponse as any as S.Schema<Resource>;
+const Resource = GetSqlPoolSchemaResponse as any as S.Schema<Resource>;
 
 /** Array of results. */
 export type SqlPoolSchemaListResultValueList = Array<Resource>;
-export const SqlPoolSchemaListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolSchemaListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<SqlPoolSchemaListResultValueList>;
 
@@ -8893,7 +8839,7 @@ export interface SqlPoolSchemaListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolSchemaListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolSchemaListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SqlPoolSchemaListResultValueList),
     nextLink: S.optional(S.String),
@@ -8910,7 +8856,7 @@ export interface ListSqlPoolSecurityAlertPoliciesRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolSecurityAlertPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolSecurityAlertPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8939,12 +8885,12 @@ export interface SqlPoolSecurityAlertPolicy {
   /** Resource properties. */
   properties?: SecurityAlertPolicyProperties;
 }
-export const SqlPoolSecurityAlertPolicy =
+const SqlPoolSecurityAlertPolicy =
   GetSqlPoolSecurityAlertPolicyResponse as any as S.Schema<SqlPoolSecurityAlertPolicy>;
 
 /** Array of results. */
 export type ListSqlPoolSecurityAlertPoliciesValueList = Array<SqlPoolSecurityAlertPolicy>;
-export const ListSqlPoolSecurityAlertPoliciesValueList = /*@__PURE__*/ S.Array(
+const ListSqlPoolSecurityAlertPoliciesValueList = /*@__PURE__*/ S.Array(
   SqlPoolSecurityAlertPolicy,
 ) as any as S.Schema<ListSqlPoolSecurityAlertPoliciesValueList>;
 
@@ -8955,7 +8901,7 @@ export interface ListSqlPoolSecurityAlertPolicies {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListSqlPoolSecurityAlertPolicies = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolSecurityAlertPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListSqlPoolSecurityAlertPoliciesValueList),
     nextLink: S.optional(S.String),
@@ -8976,7 +8922,7 @@ export interface ListSqlPoolSensitivityLabelCurrentRequest {
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
 }
-export const ListSqlPoolSensitivityLabelCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolSensitivityLabelCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9008,7 +8954,7 @@ export interface SensitivityLabel {
   /** managed by */
   managedBy?: string;
 }
-export const SensitivityLabel = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9020,7 +8966,7 @@ export const SensitivityLabel = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SensitivityLabelListResultValueList = Array<SensitivityLabel>;
-export const SensitivityLabelListResultValueList = /*@__PURE__*/ S.Array(
+const SensitivityLabelListResultValueList = /*@__PURE__*/ S.Array(
   SensitivityLabel,
 ) as any as S.Schema<SensitivityLabelListResultValueList>;
 
@@ -9031,7 +8977,7 @@ export interface SensitivityLabelListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SensitivityLabelListResult = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabelListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SensitivityLabelListResultValueList),
     nextLink: S.optional(S.String),
@@ -9056,7 +9002,7 @@ export interface ListSqlPoolSensitivityLabelRecommendedRequest {
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
 }
-export const ListSqlPoolSensitivityLabelRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolSensitivityLabelRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9091,7 +9037,7 @@ export interface ListSqlPoolTableBySchemaRequest {
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
 }
-export const ListSqlPoolTableBySchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolTableBySchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9113,9 +9059,6 @@ export const ListSqlPoolTableBySchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type SqlPoolTableListResultValueList = Array<Resource>;
-export const SqlPoolTableListResultValueList =
-  SqlPoolSchemaListResultValueList as any as S.Schema<SqlPoolTableListResultValueList>;
-
 /** A list of Sql pool tables. */
 export interface SqlPoolTableListResult {
   /** Array of results. */
@@ -9123,8 +9066,7 @@ export interface SqlPoolTableListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolTableListResult =
-  SqlPoolSchemaListResult as any as S.Schema<SqlPoolTableListResult>;
+const SqlPoolTableListResult = SqlPoolSchemaListResult as any as S.Schema<SqlPoolTableListResult>;
 
 export interface ListSqlPoolTableColumnByTableNameRequest {
   /** The ID of the target subscription. */
@@ -9142,7 +9084,7 @@ export interface ListSqlPoolTableColumnByTableNameRequest {
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
 }
-export const ListSqlPoolTableColumnByTableNameRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolTableColumnByTableNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9174,11 +9116,11 @@ export interface SqlPoolColumn {
   /** Resource properties. */
   properties?: SqlPoolColumnProperties;
 }
-export const SqlPoolColumn = GetSqlPoolColumnResponse as any as S.Schema<SqlPoolColumn>;
+const SqlPoolColumn = GetSqlPoolColumnResponse as any as S.Schema<SqlPoolColumn>;
 
 /** Array of results. */
 export type SqlPoolColumnListResultValueList = Array<SqlPoolColumn>;
-export const SqlPoolColumnListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolColumnListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolColumn,
 ) as any as S.Schema<SqlPoolColumnListResultValueList>;
 
@@ -9189,7 +9131,7 @@ export interface SqlPoolColumnListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolColumnListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolColumnListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SqlPoolColumnListResultValueList),
     nextLink: S.optional(S.String),
@@ -9206,7 +9148,7 @@ export interface ListSqlPoolTransparentDataEncryptionsRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolTransparentDataEncryptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolTransparentDataEncryptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9237,12 +9179,12 @@ export interface TransparentDataEncryption {
   /** Represents the properties of the resource. */
   properties?: TransparentDataEncryptionProperties;
 }
-export const TransparentDataEncryption =
+const TransparentDataEncryption =
   GetSqlPoolTransparentDataEncryptionResponse as any as S.Schema<TransparentDataEncryption>;
 
 /** Array of results. */
 export type TransparentDataEncryptionListResultValueList = Array<TransparentDataEncryption>;
-export const TransparentDataEncryptionListResultValueList = /*@__PURE__*/ S.Array(
+const TransparentDataEncryptionListResultValueList = /*@__PURE__*/ S.Array(
   TransparentDataEncryption,
 ) as any as S.Schema<TransparentDataEncryptionListResultValueList>;
 
@@ -9253,7 +9195,7 @@ export interface TransparentDataEncryptionListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const TransparentDataEncryptionListResult = /*@__PURE__*/ S.suspend(() =>
+const TransparentDataEncryptionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TransparentDataEncryptionListResultValueList),
     nextLink: S.optional(S.String),
@@ -9272,7 +9214,7 @@ export interface ListSqlPoolUsagesRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9305,7 +9247,7 @@ export interface SqlPoolUsage {
   /** The next reset time for the usage metric (ISO8601 format). */
   nextResetTime?: string;
 }
-export const SqlPoolUsage = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -9319,7 +9261,7 @@ export const SqlPoolUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of usages for the Sql pool. */
 export type SqlPoolUsageListResultValueList = Array<SqlPoolUsage>;
-export const SqlPoolUsageListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolUsageListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolUsage,
 ) as any as S.Schema<SqlPoolUsageListResultValueList>;
 
@@ -9330,7 +9272,7 @@ export interface SqlPoolUsageListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolUsageListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolUsageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlPoolUsageListResultValueList,
     nextLink: S.optional(S.String),
@@ -9347,7 +9289,7 @@ export interface ListSqlPoolVulnerabilityAssessmentsRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolVulnerabilityAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolVulnerabilityAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9376,13 +9318,13 @@ export interface SqlPoolVulnerabilityAssessment {
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentProperties;
 }
-export const SqlPoolVulnerabilityAssessment =
+const SqlPoolVulnerabilityAssessment =
   GetSqlPoolVulnerabilityAssessmentResponse as any as S.Schema<SqlPoolVulnerabilityAssessment>;
 
 /** Array of results. */
 export type SqlPoolVulnerabilityAssessmentListResultValueList =
   Array<SqlPoolVulnerabilityAssessment>;
-export const SqlPoolVulnerabilityAssessmentListResultValueList = /*@__PURE__*/ S.Array(
+const SqlPoolVulnerabilityAssessmentListResultValueList = /*@__PURE__*/ S.Array(
   SqlPoolVulnerabilityAssessment,
 ) as any as S.Schema<SqlPoolVulnerabilityAssessmentListResultValueList>;
 
@@ -9393,7 +9335,7 @@ export interface SqlPoolVulnerabilityAssessmentListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const SqlPoolVulnerabilityAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SqlPoolVulnerabilityAssessmentListResultValueList),
     nextLink: S.optional(S.String),
@@ -9403,7 +9345,7 @@ export const SqlPoolVulnerabilityAssessmentListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SqlPoolVulnerabilityAssessmentListResult>;
 
 export type ListSqlPoolVulnerabilityAssessmentScansRequestVulnerabilityAssessmentName = "default";
-export const ListSqlPoolVulnerabilityAssessmentScansRequestVulnerabilityAssessmentName = S.String;
+const ListSqlPoolVulnerabilityAssessmentScansRequestVulnerabilityAssessmentName = S.String;
 
 export interface ListSqlPoolVulnerabilityAssessmentScansRequest {
   /** The ID of the target subscription. */
@@ -9419,7 +9361,7 @@ export interface ListSqlPoolVulnerabilityAssessmentScansRequest {
     | ListSqlPoolVulnerabilityAssessmentScansRequestVulnerabilityAssessmentName
     | (string & {});
 }
-export const ListSqlPoolVulnerabilityAssessmentScansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolVulnerabilityAssessmentScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9450,13 +9392,13 @@ export interface VulnerabilityAssessmentScanRecord {
   /** Resource properties. */
   properties?: VulnerabilityAssessmentScanRecordProperties;
 }
-export const VulnerabilityAssessmentScanRecord =
+const VulnerabilityAssessmentScanRecord =
   GetSqlPoolVulnerabilityAssessmentScanResponse as any as S.Schema<VulnerabilityAssessmentScanRecord>;
 
 /** Array of results. */
 export type VulnerabilityAssessmentScanRecordListResultValueList =
   Array<VulnerabilityAssessmentScanRecord>;
-export const VulnerabilityAssessmentScanRecordListResultValueList = /*@__PURE__*/ S.Array(
+const VulnerabilityAssessmentScanRecordListResultValueList = /*@__PURE__*/ S.Array(
   VulnerabilityAssessmentScanRecord,
 ) as any as S.Schema<VulnerabilityAssessmentScanRecordListResultValueList>;
 
@@ -9467,7 +9409,7 @@ export interface VulnerabilityAssessmentScanRecordListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const VulnerabilityAssessmentScanRecordListResult = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityAssessmentScanRecordListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VulnerabilityAssessmentScanRecordListResultValueList),
     nextLink: S.optional(S.String),
@@ -9488,7 +9430,7 @@ export interface ListSqlPoolWorkloadClassifierRequest {
   /** The name of the workload group. */
   workloadGroupName: string;
 }
-export const ListSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolWorkloadClassifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9518,7 +9460,7 @@ export interface WorkloadClassifier {
   /** Resource properties. */
   properties?: WorkloadClassifierProperties;
 }
-export const WorkloadClassifier = /*@__PURE__*/ S.suspend(() =>
+const WorkloadClassifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9529,7 +9471,7 @@ export const WorkloadClassifier = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type WorkloadClassifierListResultValueList = Array<WorkloadClassifier>;
-export const WorkloadClassifierListResultValueList = /*@__PURE__*/ S.Array(
+const WorkloadClassifierListResultValueList = /*@__PURE__*/ S.Array(
   WorkloadClassifier,
 ) as any as S.Schema<WorkloadClassifierListResultValueList>;
 
@@ -9540,7 +9482,7 @@ export interface WorkloadClassifierListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const WorkloadClassifierListResult = /*@__PURE__*/ S.suspend(() =>
+const WorkloadClassifierListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkloadClassifierListResultValueList),
     nextLink: S.optional(S.String),
@@ -9559,7 +9501,7 @@ export interface ListSqlPoolWorkloadGroupRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ListSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlPoolWorkloadGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9588,7 +9530,7 @@ export interface WorkloadGroup {
   /** Resource properties. */
   properties?: WorkloadGroupProperties;
 }
-export const WorkloadGroup = /*@__PURE__*/ S.suspend(() =>
+const WorkloadGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9599,7 +9541,7 @@ export const WorkloadGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type WorkloadGroupListResultValueList = Array<WorkloadGroup>;
-export const WorkloadGroupListResultValueList = /*@__PURE__*/ S.Array(
+const WorkloadGroupListResultValueList = /*@__PURE__*/ S.Array(
   WorkloadGroup,
 ) as any as S.Schema<WorkloadGroupListResultValueList>;
 
@@ -9610,7 +9552,7 @@ export interface WorkloadGroupListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const WorkloadGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const WorkloadGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkloadGroupListResultValueList),
     nextLink: S.optional(S.String),
@@ -9623,7 +9565,7 @@ export interface ListWorkspaceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9641,9 +9583,6 @@ export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
-export const WorkspaceTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspaceTagsMap>;
-
 /** A workspace */
 export interface Workspace {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9661,11 +9600,11 @@ export interface Workspace {
   /** Identity of the workspace */
   identity?: ManagedIdentity;
 }
-export const Workspace = DeleteWorkspaceResponse as any as S.Schema<Workspace>;
+const Workspace = DeleteWorkspaceResponse as any as S.Schema<Workspace>;
 
 /** List of workspaces */
 export type WorkspaceInfoListResultValueList = Array<Workspace>;
-export const WorkspaceInfoListResultValueList = /*@__PURE__*/ S.Array(
+const WorkspaceInfoListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceInfoListResultValueList>;
 
@@ -9676,7 +9615,7 @@ export interface WorkspaceInfoListResult {
   /** List of workspaces */
   value?: WorkspaceInfoListResultValueList;
 }
-export const WorkspaceInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(WorkspaceInfoListResultValueList),
@@ -9691,8 +9630,8 @@ export interface ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceReque
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -9705,9 +9644,9 @@ export const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest",
-  }) as any as S.Schema<ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest>;
+).annotate({
+  identifier: "ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest",
+}) as any as S.Schema<ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest>;
 
 /** A server blob auditing policy. */
 export interface ServerBlobAuditingPolicy {
@@ -9720,7 +9659,7 @@ export interface ServerBlobAuditingPolicy {
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
-export const ServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
+const ServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9731,7 +9670,7 @@ export const ServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerBlobAuditingPolicyListResultValueList = Array<ServerBlobAuditingPolicy>;
-export const ServerBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const ServerBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ServerBlobAuditingPolicy,
 ) as any as S.Schema<ServerBlobAuditingPolicyListResultValueList>;
 
@@ -9742,7 +9681,7 @@ export interface ServerBlobAuditingPolicyListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ServerBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const ServerBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ServerBlobAuditingPolicyListResultValueList),
     nextLink: S.optional(S.String),
@@ -9759,8 +9698,8 @@ export interface ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequ
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -9773,9 +9712,9 @@ export const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest 
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
-  }) as any as S.Schema<ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>;
+).annotate({
+  identifier: "ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
+}) as any as S.Schema<ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>;
 
 /** Dedicated Sql Minimal Tls Settings Info */
 export interface DedicatedSQLminimalTlsSettings {
@@ -9790,7 +9729,7 @@ export interface DedicatedSQLminimalTlsSettings {
   /** Resource properties. */
   properties?: DedicatedSQLminimalTlsSettingsProperties;
 }
-export const DedicatedSQLminimalTlsSettings = /*@__PURE__*/ S.suspend(() =>
+const DedicatedSQLminimalTlsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9805,7 +9744,7 @@ export const DedicatedSQLminimalTlsSettings = /*@__PURE__*/ S.suspend(() =>
 /** Array of results. */
 export type DedicatedSQLminimalTlsSettingsListResultValueList =
   Array<DedicatedSQLminimalTlsSettings>;
-export const DedicatedSQLminimalTlsSettingsListResultValueList = /*@__PURE__*/ S.Array(
+const DedicatedSQLminimalTlsSettingsListResultValueList = /*@__PURE__*/ S.Array(
   DedicatedSQLminimalTlsSettings,
 ) as any as S.Schema<DedicatedSQLminimalTlsSettingsListResultValueList>;
 
@@ -9816,7 +9755,7 @@ export interface DedicatedSQLminimalTlsSettingsListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const DedicatedSQLminimalTlsSettingsListResult = /*@__PURE__*/ S.suspend(() =>
+const DedicatedSQLminimalTlsSettingsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DedicatedSQLminimalTlsSettingsListResultValueList),
     nextLink: S.optional(S.String),
@@ -9833,7 +9772,7 @@ export interface ListWorkspaceManagedSqlServerEncryptionProtectorRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerEncryptionProtectorRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceManagedSqlServerEncryptionProtectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9865,7 +9804,7 @@ export interface EncryptionProtector {
   /** Resource properties. */
   properties?: EncryptionProtectorProperties;
 }
-export const EncryptionProtector = /*@__PURE__*/ S.suspend(() =>
+const EncryptionProtector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9878,7 +9817,7 @@ export const EncryptionProtector = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type EncryptionProtectorListResultValueList = Array<EncryptionProtector>;
-export const EncryptionProtectorListResultValueList = /*@__PURE__*/ S.Array(
+const EncryptionProtectorListResultValueList = /*@__PURE__*/ S.Array(
   EncryptionProtector,
 ) as any as S.Schema<EncryptionProtectorListResultValueList>;
 
@@ -9889,7 +9828,7 @@ export interface EncryptionProtectorListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const EncryptionProtectorListResult = /*@__PURE__*/ S.suspend(() =>
+const EncryptionProtectorListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EncryptionProtectorListResultValueList),
     nextLink: S.optional(S.String),
@@ -9906,7 +9845,7 @@ export interface ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorksp
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceRequest =
+const ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -9935,7 +9874,7 @@ export interface ExtendedServerBlobAuditingPolicy {
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
-export const ExtendedServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
+const ExtendedServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9949,7 +9888,7 @@ export const ExtendedServerBlobAuditingPolicy = /*@__PURE__*/ S.suspend(() =>
 /** Array of results. */
 export type ExtendedServerBlobAuditingPolicyListResultValueList =
   Array<ExtendedServerBlobAuditingPolicy>;
-export const ExtendedServerBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const ExtendedServerBlobAuditingPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ExtendedServerBlobAuditingPolicy,
 ) as any as S.Schema<ExtendedServerBlobAuditingPolicyListResultValueList>;
 
@@ -9960,7 +9899,7 @@ export interface ExtendedServerBlobAuditingPolicyListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ExtendedServerBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const ExtendedServerBlobAuditingPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ExtendedServerBlobAuditingPolicyListResultValueList),
     nextLink: S.optional(S.String),
@@ -9977,7 +9916,7 @@ export interface ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10005,7 +9944,7 @@ export interface RecoverableSqlPool {
   /** The properties of a recoverable sql pool */
   properties?: RecoverableSqlPoolProperties;
 }
-export const RecoverableSqlPool = /*@__PURE__*/ S.suspend(() =>
+const RecoverableSqlPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10016,7 +9955,7 @@ export const RecoverableSqlPool = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of recoverable sql pool */
 export type RecoverableSqlPoolListResultValueList = Array<RecoverableSqlPool>;
-export const RecoverableSqlPoolListResultValueList = /*@__PURE__*/ S.Array(
+const RecoverableSqlPoolListResultValueList = /*@__PURE__*/ S.Array(
   RecoverableSqlPool,
 ) as any as S.Schema<RecoverableSqlPoolListResultValueList>;
 
@@ -10027,7 +9966,7 @@ export interface RecoverableSqlPoolListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const RecoverableSqlPoolListResult = /*@__PURE__*/ S.suspend(() =>
+const RecoverableSqlPoolListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RecoverableSqlPoolListResultValueList),
     nextLink: S.optional(S.String),
@@ -10044,7 +9983,7 @@ export interface ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10072,12 +10011,12 @@ export interface ServerSecurityAlertPolicy {
   /** Resource properties. */
   properties?: ServerSecurityAlertPolicyProperties;
 }
-export const ServerSecurityAlertPolicy =
+const ServerSecurityAlertPolicy =
   GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse as any as S.Schema<ServerSecurityAlertPolicy>;
 
 /** Array of results. */
 export type ServerSecurityAlertPolicyListResultValueList = Array<ServerSecurityAlertPolicy>;
-export const ServerSecurityAlertPolicyListResultValueList = /*@__PURE__*/ S.Array(
+const ServerSecurityAlertPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ServerSecurityAlertPolicy,
 ) as any as S.Schema<ServerSecurityAlertPolicyListResultValueList>;
 
@@ -10088,7 +10027,7 @@ export interface ServerSecurityAlertPolicyListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ServerSecurityAlertPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const ServerSecurityAlertPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ServerSecurityAlertPolicyListResultValueList),
     nextLink: S.optional(S.String),
@@ -10105,7 +10044,7 @@ export interface ListWorkspaceManagedSqlServerUsagesRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceManagedSqlServerUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10139,13 +10078,8 @@ export interface ServerUsage {
   /** The next reset time for the metric (ISO8601 format). */
   nextResetTime?: string;
 }
-export const ServerUsage = SqlPoolUsage as any as S.Schema<ServerUsage>;
-
 /** The list of server metrics for the server. */
 export type ServerUsageListResultValueList = Array<ServerUsage>;
-export const ServerUsageListResultValueList =
-  SqlPoolUsageListResultValueList as any as S.Schema<ServerUsageListResultValueList>;
-
 /** Represents the response to a list server metrics request. */
 export interface ServerUsageListResult {
   /** The list of server metrics for the server. */
@@ -10153,8 +10087,7 @@ export interface ServerUsageListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ServerUsageListResult =
-  SqlPoolUsageListResult as any as S.Schema<ServerUsageListResult>;
+const ServerUsageListResult = SqlPoolUsageListResult as any as S.Schema<ServerUsageListResult>;
 
 export interface ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest {
   /** The ID of the target subscription. */
@@ -10164,20 +10097,19 @@ export interface ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments",
-        code: 200,
-        apiVersion: "2021-06-01",
-      }),
-    ),
+const ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments",
+      code: 200,
+      apiVersion: "2021-06-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest",
 }) as any as S.Schema<ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest>;
@@ -10193,7 +10125,7 @@ export interface ServerVulnerabilityAssessment {
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
-export const ServerVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
+const ServerVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10206,7 +10138,7 @@ export const ServerVulnerabilityAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ServerVulnerabilityAssessmentListResultValueList = Array<ServerVulnerabilityAssessment>;
-export const ServerVulnerabilityAssessmentListResultValueList = /*@__PURE__*/ S.Array(
+const ServerVulnerabilityAssessmentListResultValueList = /*@__PURE__*/ S.Array(
   ServerVulnerabilityAssessment,
 ) as any as S.Schema<ServerVulnerabilityAssessmentListResultValueList>;
 
@@ -10217,7 +10149,7 @@ export interface ServerVulnerabilityAssessmentListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ServerVulnerabilityAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
+const ServerVulnerabilityAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ServerVulnerabilityAssessmentListResultValueList),
     nextLink: S.optional(S.String),
@@ -10230,7 +10162,7 @@ export interface ListWorkspacesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -10253,7 +10185,7 @@ export interface PauseSqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const PauseSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10271,9 +10203,6 @@ export const PauseSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PauseSqlPoolResponseTagsMap = { [key: string]: string | undefined };
-export const PauseSqlPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<PauseSqlPoolResponseTagsMap>;
-
 export interface PauseSqlPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10290,11 +10219,11 @@ export interface PauseSqlPoolResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const PauseSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<PauseSqlPoolResponse>;
+const PauseSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<PauseSqlPoolResponse>;
 
 /** Resource tags. */
 export type PrivateLinkHubsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PrivateLinkHubsCreateOrUpdateRequestTagsMap =
+const PrivateLinkHubsCreateOrUpdateRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<PrivateLinkHubsCreateOrUpdateRequestTagsMap>;
 
 /** PrivateLinkHub properties */
@@ -10302,7 +10231,7 @@ export interface PrivateLinkHubPropertiesInput {
   /** PrivateLinkHub provisioning state */
   provisioningState?: string;
 }
-export const PrivateLinkHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
   }),
@@ -10324,7 +10253,7 @@ export interface PrivateLinkHubsCreateOrUpdateRequest {
   /** PrivateLinkHub resource properties */
   properties?: PrivateLinkHubPropertiesInput;
 }
-export const PrivateLinkHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10346,9 +10275,6 @@ export const PrivateLinkHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type PrivateLinkHubsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PrivateLinkHubsCreateOrUpdateResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<PrivateLinkHubsCreateOrUpdateResponseTagsMap>;
-
 export interface PrivateLinkHubsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10363,7 +10289,7 @@ export interface PrivateLinkHubsCreateOrUpdateResponse {
   /** PrivateLinkHub resource properties */
   properties?: PrivateLinkHubProperties;
 }
-export const PrivateLinkHubsCreateOrUpdateResponse =
+const PrivateLinkHubsCreateOrUpdateResponse =
   GetPrivateLinkHubResponse as any as S.Schema<PrivateLinkHubsCreateOrUpdateResponse>;
 
 export interface RefreshIntegrationRuntimeObjectMetadataRequest {
@@ -10376,7 +10302,7 @@ export interface RefreshIntegrationRuntimeObjectMetadataRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const RefreshIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshIntegrationRuntimeObjectMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10405,7 +10331,7 @@ export interface SsisObjectMetadataStatusResponse {
   /** The operation error message. */
   error?: string;
 }
-export const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     name: S.optional(S.String),
@@ -10418,7 +10344,7 @@ export const SsisObjectMetadataStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the authentication key to regenerate. */
 export type RegenerateIntegrationRuntimeAuthKeyRequestKeyName = "authKey1" | "authKey2";
-export const RegenerateIntegrationRuntimeAuthKeyRequestKeyName = S.String;
+const RegenerateIntegrationRuntimeAuthKeyRequestKeyName = S.String;
 
 export interface RegenerateIntegrationRuntimeAuthKeyRequest {
   /** The ID of the target subscription. */
@@ -10432,7 +10358,7 @@ export interface RegenerateIntegrationRuntimeAuthKeyRequest {
   /** The name of the authentication key to regenerate. */
   keyName?: RegenerateIntegrationRuntimeAuthKeyRequestKeyName | (string & {});
 }
-export const RegenerateIntegrationRuntimeAuthKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateIntegrationRuntimeAuthKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10455,7 +10381,7 @@ export const RegenerateIntegrationRuntimeAuthKeyRequest = /*@__PURE__*/ S.suspen
 export type ReplaceIpFirewallRuleAllRequestIpFirewallRulesMap = {
   [key: string]: IpFirewallRulePropertiesInput | undefined;
 };
-export const ReplaceIpFirewallRuleAllRequestIpFirewallRulesMap = /*@__PURE__*/ S.Record(
+const ReplaceIpFirewallRuleAllRequestIpFirewallRulesMap = /*@__PURE__*/ S.Record(
   S.String,
   IpFirewallRulePropertiesInput,
 ) as any as S.Schema<ReplaceIpFirewallRuleAllRequestIpFirewallRulesMap>;
@@ -10470,7 +10396,7 @@ export interface ReplaceIpFirewallRuleAllRequest {
   /** IP firewall rule properties */
   ipFirewallRules?: ReplaceIpFirewallRuleAllRequestIpFirewallRulesMap;
 }
-export const ReplaceIpFirewallRuleAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceIpFirewallRuleAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10493,7 +10419,7 @@ export interface ReplaceAllFirewallRulesOperationResponse {
   /** The operation ID */
   operationId?: string;
 }
-export const ReplaceAllFirewallRulesOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllFirewallRulesOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
   }),
@@ -10511,7 +10437,7 @@ export interface ResumeSqlPoolRequest {
   /** SQL pool name */
   sqlPoolName: string;
 }
-export const ResumeSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10529,9 +10455,6 @@ export const ResumeSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ResumeSqlPoolResponseTagsMap = { [key: string]: string | undefined };
-export const ResumeSqlPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<ResumeSqlPoolResponseTagsMap>;
-
 export interface ResumeSqlPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -10548,11 +10471,10 @@ export interface ResumeSqlPoolResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const ResumeSqlPoolResponse =
-  CreateSqlPoolResponse as any as S.Schema<ResumeSqlPoolResponse>;
+const ResumeSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<ResumeSqlPoolResponse>;
 
 export type SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName = "default";
-export const SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName = S.String;
+const SqlPoolBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName = S.String;
 
 export interface SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -10570,7 +10492,7 @@ export interface SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: SqlPoolBlobAuditingPolicyProperties;
 }
-export const SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10603,22 +10525,22 @@ export interface SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SqlPoolBlobAuditingPolicyProperties;
 }
-export const SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse =
+const SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse =
   GetSqlPoolBlobAuditingPolicyResponse as any as S.Schema<SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName = "Default";
-export const SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName = S.String;
+const SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName = S.String;
 
 /** The state of the geo backup policy. */
 export type GeoBackupPolicyPropertiesInputState = "Disabled" | "Enabled";
-export const GeoBackupPolicyPropertiesInputState = S.String;
+const GeoBackupPolicyPropertiesInputState = S.String;
 
 /** The properties of the geo backup policy. */
 export interface GeoBackupPolicyPropertiesInput {
   /** The state of the geo backup policy. */
   state: GeoBackupPolicyPropertiesInputState | (string & {});
 }
-export const GeoBackupPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GeoBackupPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: GeoBackupPolicyPropertiesInputState,
   }),
@@ -10642,7 +10564,7 @@ export interface SqlPoolGeoBackupPoliciesCreateOrUpdateRequest {
   /** The properties of the geo backup policy. */
   properties: GeoBackupPolicyPropertiesInput;
 }
-export const SqlPoolGeoBackupPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolGeoBackupPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10678,7 +10600,7 @@ export interface SqlPoolGeoBackupPoliciesCreateOrUpdateResponse {
   /** Backup policy location. */
   location?: string;
 }
-export const SqlPoolGeoBackupPoliciesCreateOrUpdateResponse =
+const SqlPoolGeoBackupPoliciesCreateOrUpdateResponse =
   GetSqlPoolGeoBackupPolicyResponse as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateResponse>;
 
 export interface SqlPoolMaintenanceWindowsCreateOrUpdateRequest {
@@ -10695,7 +10617,7 @@ export interface SqlPoolMaintenanceWindowsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: MaintenanceWindowsProperties;
 }
-export const SqlPoolMaintenanceWindowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolMaintenanceWindowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10716,24 +10638,24 @@ export const SqlPoolMaintenanceWindowsCreateOrUpdateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<SqlPoolMaintenanceWindowsCreateOrUpdateRequest>;
 
 export interface SqlPoolMaintenanceWindowsCreateOrUpdateResponse {}
-export const SqlPoolMaintenanceWindowsCreateOrUpdateResponse =
+const SqlPoolMaintenanceWindowsCreateOrUpdateResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<SqlPoolMaintenanceWindowsCreateOrUpdateResponse>;
 
 export type SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName = "default";
-export const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName = S.String;
+const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName = S.String;
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific Sql pool. */
 export type SecurityAlertPolicyPropertiesInputState = "New" | "Enabled" | "Disabled";
-export const SecurityAlertPolicyPropertiesInputState = S.String;
+const SecurityAlertPolicyPropertiesInputState = S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type SecurityAlertPolicyPropertiesInputDisabledAlertsList = Array<string>;
-export const SecurityAlertPolicyPropertiesInputDisabledAlertsList =
+const SecurityAlertPolicyPropertiesInputDisabledAlertsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<SecurityAlertPolicyPropertiesInputDisabledAlertsList>;
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type SecurityAlertPolicyPropertiesInputEmailAddressesList = Array<string>;
-export const SecurityAlertPolicyPropertiesInputEmailAddressesList =
+const SecurityAlertPolicyPropertiesInputEmailAddressesList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<SecurityAlertPolicyPropertiesInputEmailAddressesList>;
 
 /** Properties of a security alert policy. */
@@ -10753,7 +10675,7 @@ export interface SecurityAlertPolicyPropertiesInput {
   /** Specifies the number of days to keep in the Threat Detection audit logs. */
   retentionDays?: number;
 }
-export const SecurityAlertPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SecurityAlertPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: SecurityAlertPolicyPropertiesInputState,
     disabledAlerts: S.optional(SecurityAlertPolicyPropertiesInputDisabledAlertsList),
@@ -10783,7 +10705,7 @@ export interface SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: SecurityAlertPolicyPropertiesInput;
 }
-export const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10814,14 +10736,14 @@ export interface SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SecurityAlertPolicyProperties;
 }
-export const SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse =
+const SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse =
   GetSqlPoolSecurityAlertPolicyResponse as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse>;
 
 export type SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource = "current";
-export const SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource = S.String;
+const SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource = S.String;
 
 export type SensitivityLabelPropertiesInputRank = "None" | "Low" | "Medium" | "High" | "Critical";
-export const SensitivityLabelPropertiesInputRank = S.String;
+const SensitivityLabelPropertiesInputRank = S.String;
 
 /** Properties of a sensitivity label. */
 export interface SensitivityLabelPropertiesInput {
@@ -10835,7 +10757,7 @@ export interface SensitivityLabelPropertiesInput {
   informationTypeId?: string;
   rank?: SensitivityLabelPropertiesInputRank | (string & {});
 }
-export const SensitivityLabelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelName: S.optional(S.String),
     labelId: S.optional(S.String),
@@ -10869,7 +10791,7 @@ export interface SqlPoolSensitivityLabelsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: SensitivityLabelPropertiesInput;
 }
-export const SqlPoolSensitivityLabelsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolSensitivityLabelsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10905,12 +10827,12 @@ export interface SqlPoolSensitivityLabelsCreateOrUpdateResponse {
   /** managed by */
   managedBy?: string;
 }
-export const SqlPoolSensitivityLabelsCreateOrUpdateResponse =
+const SqlPoolSensitivityLabelsCreateOrUpdateResponse =
   GetSqlPoolSensitivityLabelResponse as any as S.Schema<SqlPoolSensitivityLabelsCreateOrUpdateResponse>;
 
 export type SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName =
   "current";
-export const SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName =
+const SqlPoolTransparentDataEncryptionsCreateOrUpdateRequestTransparentDataEncryptionName =
   S.String;
 
 export interface SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest {
@@ -10929,7 +10851,7 @@ export interface SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest {
   /** Represents the properties of the resource. */
   properties?: TransparentDataEncryptionProperties;
 }
-export const SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10964,19 +10886,18 @@ export interface SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse {
   /** Represents the properties of the resource. */
   properties?: TransparentDataEncryptionProperties;
 }
-export const SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse =
+const SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse =
   GetSqlPoolTransparentDataEncryptionResponse as any as S.Schema<SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse>;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   "default";
-export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
+const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestVulnerabilityAssessmentName =
   S.String;
 
 export type SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
   | "master"
   | "default";
-export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName =
-  S.String;
+const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequestBaselineName = S.String;
 
 export interface SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11000,8 +10921,8 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateReques
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentRuleBaselineProperties;
 }
-export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -11025,9 +10946,9 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest",
-  }) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest>;
+).annotate({
+  identifier: "SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest",
+}) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest>;
 
 export interface SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11039,22 +10960,21 @@ export interface SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRespon
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentRuleBaselineProperties;
 }
-export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
       properties: S.optional(SqlPoolVulnerabilityAssessmentRuleBaselineProperties),
     }),
-  ).annotate({
-    identifier: "SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse",
-  }) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>;
+).annotate({
+  identifier: "SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse",
+}) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>;
 
 export type SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
   "default";
-export const SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName =
-  S.String;
+const SqlPoolVulnerabilityAssessmentScansInitiateScanRequestVulnerabilityAssessmentName = S.String;
 
 export interface SqlPoolVulnerabilityAssessmentScansInitiateScanRequest {
   /** The ID of the target subscription. */
@@ -11072,7 +10992,7 @@ export interface SqlPoolVulnerabilityAssessmentScansInitiateScanRequest {
   /** The vulnerability assessment scan Id of the scan to retrieve. */
   scanId: string;
 }
-export const SqlPoolVulnerabilityAssessmentScansInitiateScanRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentScansInitiateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11096,13 +11016,12 @@ export const SqlPoolVulnerabilityAssessmentScansInitiateScanRequest = /*@__PURE_
 }) as any as S.Schema<SqlPoolVulnerabilityAssessmentScansInitiateScanRequest>;
 
 export interface SqlPoolVulnerabilityAssessmentScansInitiateScanResponse {}
-export const SqlPoolVulnerabilityAssessmentScansInitiateScanResponse =
+const SqlPoolVulnerabilityAssessmentScansInitiateScanResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<SqlPoolVulnerabilityAssessmentScansInitiateScanResponse>;
 
 export type SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   "default";
-export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
-  S.String;
+const SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName = S.String;
 
 export interface SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11120,7 +11039,7 @@ export interface SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentProperties;
 }
-export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11153,7 +11072,7 @@ export interface SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SqlPoolVulnerabilityAssessmentProperties;
 }
-export const SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse =
+const SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse =
   GetSqlPoolVulnerabilityAssessmentResponse as any as S.Schema<SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse>;
 
 export interface SqlPoolWorkloadClassifierCreateOrUpdateRequest {
@@ -11172,7 +11091,7 @@ export interface SqlPoolWorkloadClassifierCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: WorkloadClassifierProperties;
 }
-export const SqlPoolWorkloadClassifierCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolWorkloadClassifierCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11203,7 +11122,7 @@ export interface SqlPoolWorkloadClassifierCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: WorkloadClassifierProperties;
 }
-export const SqlPoolWorkloadClassifierCreateOrUpdateResponse =
+const SqlPoolWorkloadClassifierCreateOrUpdateResponse =
   GetSqlPoolWorkloadClassifierResponse as any as S.Schema<SqlPoolWorkloadClassifierCreateOrUpdateResponse>;
 
 export interface SqlPoolWorkloadGroupCreateOrUpdateRequest {
@@ -11220,7 +11139,7 @@ export interface SqlPoolWorkloadGroupCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: WorkloadGroupProperties;
 }
-export const SqlPoolWorkloadGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlPoolWorkloadGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11250,7 +11169,7 @@ export interface SqlPoolWorkloadGroupCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: WorkloadGroupProperties;
 }
-export const SqlPoolWorkloadGroupCreateOrUpdateResponse =
+const SqlPoolWorkloadGroupCreateOrUpdateResponse =
   GetSqlPoolWorkloadGroupResponse as any as S.Schema<SqlPoolWorkloadGroupCreateOrUpdateResponse>;
 
 export interface StartIntegrationRuntimeRequest {
@@ -11263,7 +11182,7 @@ export interface StartIntegrationRuntimeRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const StartIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const StartIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11291,7 +11210,7 @@ export interface StopIntegrationRuntimeRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11310,7 +11229,7 @@ export const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopIntegrationRuntimeRequest>;
 
 export interface StopIntegrationRuntimeResponse {}
-export const StopIntegrationRuntimeResponse =
+const StopIntegrationRuntimeResponse =
   PrivateEndpointInput as any as S.Schema<StopIntegrationRuntimeResponse>;
 
 export interface SyncIntegrationRuntimeCredentialsRequest {
@@ -11323,7 +11242,7 @@ export interface SyncIntegrationRuntimeCredentialsRequest {
   /** Integration runtime name */
   integrationRuntimeName: string;
 }
-export const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11342,12 +11261,12 @@ export const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>;
 
 export interface SyncIntegrationRuntimeCredentialsResponse {}
-export const SyncIntegrationRuntimeCredentialsResponse =
+const SyncIntegrationRuntimeCredentialsResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>;
 
 /** Updated tags for the Big Data pool */
 export type UpdateBigDataPoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBigDataPoolRequestTagsMap =
+const UpdateBigDataPoolRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBigDataPoolRequestTagsMap>;
 
 export interface UpdateBigDataPoolRequest {
@@ -11362,7 +11281,7 @@ export interface UpdateBigDataPoolRequest {
   /** Updated tags for the Big Data pool */
   tags?: UpdateBigDataPoolRequestTagsMap;
 }
-export const UpdateBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11381,9 +11300,6 @@ export const UpdateBigDataPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBigDataPoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBigDataPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBigDataPoolResponseTagsMap>;
-
 export interface UpdateBigDataPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11398,12 +11314,12 @@ export interface UpdateBigDataPoolResponse {
   /** Big Data pool properties */
   properties?: BigDataPoolResourceProperties;
 }
-export const UpdateBigDataPoolResponse =
+const UpdateBigDataPoolResponse =
   BigDataPoolsCreateOrUpdateResponse as any as S.Schema<UpdateBigDataPoolResponse>;
 
 /** The state of integration runtime auto update. */
 export type IntegrationRuntimeAutoUpdate = "On" | "Off";
-export const IntegrationRuntimeAutoUpdate = S.String;
+const IntegrationRuntimeAutoUpdate = S.String;
 
 export interface UpdateIntegrationRuntimeRequest {
   /** The ID of the target subscription. */
@@ -11419,7 +11335,7 @@ export interface UpdateIntegrationRuntimeRequest {
   /** The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time. */
   updateDelayOffset?: string;
 }
-export const UpdateIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11451,7 +11367,7 @@ export interface UpdateIntegrationRuntimeResponse {
   /** Integration runtime properties. */
   properties: IntegrationRuntime;
 }
-export const UpdateIntegrationRuntimeResponse =
+const UpdateIntegrationRuntimeResponse =
   CreateIntegrationRuntimeResponse as any as S.Schema<UpdateIntegrationRuntimeResponse>;
 
 export interface UpdateIntegrationRuntimeNodeRequest {
@@ -11468,7 +11384,7 @@ export interface UpdateIntegrationRuntimeNodeRequest {
   /** The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs(inclusive) are allowed. */
   concurrentJobsLimit?: number;
 }
-export const UpdateIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11490,7 +11406,7 @@ export const UpdateIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdatePrivateLinkHubRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateLinkHubRequestTagsMap =
+const UpdatePrivateLinkHubRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePrivateLinkHubRequestTagsMap>;
 
 export interface UpdatePrivateLinkHubRequest {
@@ -11503,7 +11419,7 @@ export interface UpdatePrivateLinkHubRequest {
   /** Resource tags */
   tags?: UpdatePrivateLinkHubRequestTagsMap;
 }
-export const UpdatePrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11523,9 +11439,6 @@ export const UpdatePrivateLinkHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePrivateLinkHubResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateLinkHubResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePrivateLinkHubResponseTagsMap>;
-
 export interface UpdatePrivateLinkHubResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11540,12 +11453,12 @@ export interface UpdatePrivateLinkHubResponse {
   /** PrivateLinkHub resource properties */
   properties?: PrivateLinkHubProperties;
 }
-export const UpdatePrivateLinkHubResponse =
+const UpdatePrivateLinkHubResponse =
   GetPrivateLinkHubResponse as any as S.Schema<UpdatePrivateLinkHubResponse>;
 
 /** Resource tags. */
 export type UpdateSqlPoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlPoolRequestTagsMap =
+const UpdateSqlPoolRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSqlPoolRequestTagsMap>;
 
 export interface UpdateSqlPoolRequest {
@@ -11566,7 +11479,7 @@ export interface UpdateSqlPoolRequest {
   /** SQL pool properties */
   properties?: SqlPoolResourcePropertiesInput;
 }
-export const UpdateSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11588,9 +11501,6 @@ export const UpdateSqlPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlPoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlPoolResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSqlPoolResponseTagsMap>;
-
 export interface UpdateSqlPoolResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11607,11 +11517,10 @@ export interface UpdateSqlPoolResponse {
   /** SQL pool properties */
   properties?: SqlPoolResourceProperties;
 }
-export const UpdateSqlPoolResponse =
-  CreateSqlPoolResponse as any as S.Schema<UpdateSqlPoolResponse>;
+const UpdateSqlPoolResponse = CreateSqlPoolResponse as any as S.Schema<UpdateSqlPoolResponse>;
 
 export type RecommendedSensitivityLabelUpdatePropertiesOp = "enable" | "disable";
-export const RecommendedSensitivityLabelUpdatePropertiesOp = S.String;
+const RecommendedSensitivityLabelUpdatePropertiesOp = S.String;
 
 /** Properties of an operation executed on a recommended sensitivity label. */
 export interface RecommendedSensitivityLabelUpdateProperties {
@@ -11623,7 +11532,7 @@ export interface RecommendedSensitivityLabelUpdateProperties {
   /** Column name to update. */
   column: string;
 }
-export const RecommendedSensitivityLabelUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const RecommendedSensitivityLabelUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: RecommendedSensitivityLabelUpdatePropertiesOp,
     schema: S.String,
@@ -11639,7 +11548,7 @@ export interface RecommendedSensitivityLabelUpdateInput {
   /** Resource properties. */
   properties?: RecommendedSensitivityLabelUpdateProperties;
 }
-export const RecommendedSensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const RecommendedSensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(RecommendedSensitivityLabelUpdateProperties),
   }),
@@ -11649,7 +11558,7 @@ export const RecommendedSensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(()
 
 export type UpdateSqlPoolRecommendedSensitivityLabelRequestOperationsList =
   Array<RecommendedSensitivityLabelUpdateInput>;
-export const UpdateSqlPoolRecommendedSensitivityLabelRequestOperationsList = /*@__PURE__*/ S.Array(
+const UpdateSqlPoolRecommendedSensitivityLabelRequestOperationsList = /*@__PURE__*/ S.Array(
   RecommendedSensitivityLabelUpdateInput,
 ) as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelRequestOperationsList>;
 
@@ -11664,7 +11573,7 @@ export interface UpdateSqlPoolRecommendedSensitivityLabelRequest {
   sqlPoolName: string;
   operations?: UpdateSqlPoolRecommendedSensitivityLabelRequestOperationsList;
 }
-export const UpdateSqlPoolRecommendedSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSqlPoolRecommendedSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11684,18 +11593,18 @@ export const UpdateSqlPoolRecommendedSensitivityLabelRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelRequest>;
 
 export interface UpdateSqlPoolRecommendedSensitivityLabelResponse {}
-export const UpdateSqlPoolRecommendedSensitivityLabelResponse =
+const UpdateSqlPoolRecommendedSensitivityLabelResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelResponse>;
 
 export type SensitivityLabelUpdatePropertiesInputOp = "set" | "remove";
-export const SensitivityLabelUpdatePropertiesInputOp = S.String;
+const SensitivityLabelUpdatePropertiesInputOp = S.String;
 
 /** A sensitivity label. */
 export interface SensitivityLabelInput {
   /** Resource properties. */
   properties?: SensitivityLabelPropertiesInput;
 }
-export const SensitivityLabelInput = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SensitivityLabelPropertiesInput),
   }),
@@ -11713,7 +11622,7 @@ export interface SensitivityLabelUpdatePropertiesInput {
   /** The sensitivity label information to apply on a column. */
   sensitivityLabel?: SensitivityLabelInput;
 }
-export const SensitivityLabelUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabelUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: SensitivityLabelUpdatePropertiesInputOp,
     schema: S.String,
@@ -11730,7 +11639,7 @@ export interface SensitivityLabelUpdateInput {
   /** Resource properties. */
   properties?: SensitivityLabelUpdatePropertiesInput;
 }
-export const SensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const SensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SensitivityLabelUpdatePropertiesInput),
   }),
@@ -11739,7 +11648,7 @@ export const SensitivityLabelUpdateInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SensitivityLabelUpdateInput>;
 
 export type UpdateSqlPoolSensitivityLabelRequestOperationsList = Array<SensitivityLabelUpdateInput>;
-export const UpdateSqlPoolSensitivityLabelRequestOperationsList = /*@__PURE__*/ S.Array(
+const UpdateSqlPoolSensitivityLabelRequestOperationsList = /*@__PURE__*/ S.Array(
   SensitivityLabelUpdateInput,
 ) as any as S.Schema<UpdateSqlPoolSensitivityLabelRequestOperationsList>;
 
@@ -11754,7 +11663,7 @@ export interface UpdateSqlPoolSensitivityLabelRequest {
   sqlPoolName: string;
   operations?: UpdateSqlPoolSensitivityLabelRequestOperationsList;
 }
-export const UpdateSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11774,27 +11683,25 @@ export const UpdateSqlPoolSensitivityLabelRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateSqlPoolSensitivityLabelRequest>;
 
 export interface UpdateSqlPoolSensitivityLabelResponse {}
-export const UpdateSqlPoolSensitivityLabelResponse =
+const UpdateSqlPoolSensitivityLabelResponse =
   DeleteIntegrationRuntimeResponse as any as S.Schema<UpdateSqlPoolSensitivityLabelResponse>;
 
 /** Resource tags */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceRequestTagsMap =
+const UpdateWorkspaceRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
 
 /** The type of managed identity for the workspace */
 export type ManagedIdentityInputType = "None" | "SystemAssigned" | "SystemAssigned,UserAssigned";
-export const ManagedIdentityInputType = S.String;
+const ManagedIdentityInputType = S.String;
 
 /** User Assigned Managed Identity */
 export type UserAssignedManagedIdentityInput = PrivateEndpointInput;
-export const UserAssignedManagedIdentityInput = PrivateEndpointInput;
-
 /** The User Assigned Managed Identities. */
 export type UserAssignedManagedIdentitiesInput = {
   [key: string]: PrivateEndpointInput | undefined;
 };
-export const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   PrivateEndpointInput,
 ) as any as S.Schema<UserAssignedManagedIdentitiesInput>;
@@ -11806,7 +11713,7 @@ export interface ManagedIdentityInput {
   /** The user assigned managed identities. */
   userAssignedIdentities?: UserAssignedManagedIdentitiesInput;
 }
-export const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ManagedIdentityInputType),
     userAssignedIdentities: S.optional(UserAssignedManagedIdentitiesInput),
@@ -11820,7 +11727,7 @@ export interface CustomerManagedKeyDetailsInput {
   /** Key encryption key */
   kekIdentity?: KekIdentityProperties;
 }
-export const CustomerManagedKeyDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKeyDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(WorkspaceKeyDetails),
     kekIdentity: S.optional(KekIdentityProperties),
@@ -11834,7 +11741,7 @@ export interface EncryptionDetailsInput {
   /** Customer Managed Key Details */
   cmk?: CustomerManagedKeyDetailsInput;
 }
-export const EncryptionDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmk: S.optional(CustomerManagedKeyDetailsInput),
   }),
@@ -11842,7 +11749,7 @@ export const EncryptionDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Enable or Disable public network access to workspace */
 export type WorkspacePatchPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const WorkspacePatchPropertiesInputPublicNetworkAccess = S.String;
+const WorkspacePatchPropertiesInputPublicNetworkAccess = S.String;
 
 /** Workspace patch properties */
 export interface WorkspacePatchPropertiesInput {
@@ -11859,7 +11766,7 @@ export interface WorkspacePatchPropertiesInput {
   /** Enable or Disable public network access to workspace */
   publicNetworkAccess?: WorkspacePatchPropertiesInputPublicNetworkAccess | (string & {});
 }
-export const WorkspacePatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkspacePatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     managedVirtualNetworkSettings: S.optional(ManagedVirtualNetworkSettings),
@@ -11886,7 +11793,7 @@ export interface UpdateWorkspaceRequest {
   /** Workspace patch properties */
   properties?: WorkspacePatchPropertiesInput;
 }
-export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11906,9 +11813,6 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceResponseTagsMap =
-  BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
-
 export interface UpdateWorkspaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -11925,12 +11829,11 @@ export interface UpdateWorkspaceResponse {
   /** Identity of the workspace */
   identity?: ManagedIdentity;
 }
-export const UpdateWorkspaceResponse =
-  DeleteWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
+const UpdateWorkspaceResponse = DeleteWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
 
 export type UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequestDedicatedSQLminimalTlsSettingsName =
   "default";
-export const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequestDedicatedSQLminimalTlsSettingsName =
+const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequestDedicatedSQLminimalTlsSettingsName =
   S.String;
 
 export interface UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest {
@@ -11947,7 +11850,7 @@ export interface UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRe
   /** Resource properties. */
   properties?: DedicatedSQLminimalTlsSettingsProperties;
 }
-export const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest =
+const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -11982,7 +11885,7 @@ export interface UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRe
   /** Resource properties. */
   properties?: DedicatedSQLminimalTlsSettingsProperties;
 }
-export const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse =
+const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse =
   GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse as any as S.Schema<UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse>;
 
 export interface WorkspaceAadAdminsCreateOrUpdateRequest {
@@ -11995,7 +11898,7 @@ export interface WorkspaceAadAdminsCreateOrUpdateRequest {
   /** Workspace active directory administrator properties */
   properties?: AadAdminProperties;
 }
-export const WorkspaceAadAdminsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceAadAdminsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12023,14 +11926,14 @@ export interface WorkspaceAadAdminsCreateOrUpdateResponse {
   /** Workspace active directory administrator properties */
   properties?: AadAdminProperties;
 }
-export const WorkspaceAadAdminsCreateOrUpdateResponse =
+const WorkspaceAadAdminsCreateOrUpdateResponse =
   GetWorkspaceAadAdminResponse as any as S.Schema<WorkspaceAadAdminsCreateOrUpdateResponse>;
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
   | "Enabled"
   | "Disabled";
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
+const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState =
   S.String;
 
 /** Grant sql control to managed identity */
@@ -12040,7 +11943,7 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest
     | WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState
     | (string & {});
 }
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity =
+const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       desiredState: S.optional(
@@ -12057,7 +11960,7 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest
   /** Grant sql control to managed identity */
   grantSqlControlToManagedIdentity?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity;
 }
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestProperties =
+const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       grantSqlControlToManagedIdentity: S.optional(
@@ -12078,8 +11981,8 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest
   /** Sql Control Settings for workspace managed identity */
   properties?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestProperties;
 }
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -12095,17 +11998,14 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest",
-  }) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest>;
+).annotate({
+  identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest",
+}) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest>;
 
 /** Desired state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
   | "Enabled"
   | "Disabled";
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityDesiredState =
-  S.String;
-
 /** Actual state */
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState =
   | "Enabling"
@@ -12113,9 +12013,6 @@ export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProp
   | "Disabling"
   | "Disabled"
   | "Unknown";
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState =
-  S.String;
-
 /** Grant sql control to managed identity */
 export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity {
   /** Desired state */
@@ -12123,15 +12020,12 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRespons
   /** Actual state */
   actualState?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentityActualState;
 }
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity =
-  GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity>;
-
 /** Sql Control Settings for workspace managed identity */
 export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties {
   /** Grant sql control to managed identity */
   grantSqlControlToManagedIdentity?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponsePropertiesGrantSqlControlToManagedIdentity;
 }
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties =
+const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties =
   GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties>;
 
 export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse {
@@ -12144,8 +12038,8 @@ export interface WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRespons
   /** Sql Control Settings for workspace managed identity */
   properties?: WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties;
 }
-export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
@@ -12154,13 +12048,13 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse =
         WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponseProperties,
       ),
     }),
-  ).annotate({
-    identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse",
-  }) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse>;
+).annotate({
+  identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse",
+}) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   "default";
-export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
+const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   S.String;
 
 export interface WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest {
@@ -12177,8 +12071,8 @@ export interface WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequ
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
-export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -12196,9 +12090,9 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest 
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest",
-  }) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest>;
+).annotate({
+  identifier: "WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest",
+}) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest>;
 
 export interface WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12210,26 +12104,26 @@ export interface WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResp
   /** Resource properties. */
   properties?: ServerBlobAuditingPolicyProperties;
 }
-export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
       properties: S.optional(ServerBlobAuditingPolicyProperties),
     }),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse",
-  }) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse>;
+).annotate({
+  identifier: "WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse",
+}) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName =
   "current";
-export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName =
+const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName =
   S.String;
 
 /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
 export type EncryptionProtectorPropertiesInputServerKeyType = "ServiceManaged" | "AzureKeyVault";
-export const EncryptionProtectorPropertiesInputServerKeyType = S.String;
+const EncryptionProtectorPropertiesInputServerKeyType = S.String;
 
 /** Properties for an encryption protector execution. */
 export interface EncryptionProtectorPropertiesInput {
@@ -12238,7 +12132,7 @@ export interface EncryptionProtectorPropertiesInput {
   /** The encryption protector type like 'ServiceManaged', 'AzureKeyVault'. */
   serverKeyType: EncryptionProtectorPropertiesInputServerKeyType | (string & {});
 }
-export const EncryptionProtectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionProtectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverKeyName: S.optional(S.String),
     serverKeyType: EncryptionProtectorPropertiesInputServerKeyType,
@@ -12261,8 +12155,8 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateReque
   /** Resource properties. */
   properties?: EncryptionProtectorPropertiesInput;
 }
-export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -12280,9 +12174,9 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest",
-  }) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest>;
+).annotate({
+  identifier: "WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest",
+}) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest>;
 
 export interface WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12298,8 +12192,8 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRespo
   /** Resource properties. */
   properties?: EncryptionProtectorProperties;
 }
-export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
@@ -12308,13 +12202,13 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse 
       location: S.optional(S.String),
       properties: S.optional(EncryptionProtectorProperties),
     }),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse",
-  }) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse>;
+).annotate({
+  identifier: "WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse",
+}) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName =
   "current";
-export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName =
+const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName =
   S.String;
 
 export interface WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest {
@@ -12329,35 +12223,34 @@ export interface WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest {
     | WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName
     | (string & {});
 }
-export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      encryptionProtectorName:
-        WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName.pipe(
-          T.Label(),
-        ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}/revalidate",
-        code: 200,
-        apiVersion: "2021-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest",
-  }) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest>;
+const WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    encryptionProtectorName:
+      WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequestEncryptionProtectorName.pipe(
+        T.Label(),
+      ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}/revalidate",
+      code: 200,
+      apiVersion: "2021-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest",
+}) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest>;
 
 export interface WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse {}
-export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse =
+const WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse =
   DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse>;
 
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   "default";
-export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
+const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequestBlobAuditingPolicyName =
   S.String;
 
 export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequest {
@@ -12374,7 +12267,7 @@ export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUp
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
-export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequest =
+const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -12407,26 +12300,26 @@ export interface WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUp
   /** Resource properties. */
   properties?: ExtendedServerBlobAuditingPolicyProperties;
 }
-export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateResponse =
+const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateResponse =
   GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse as any as S.Schema<WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName =
   "Default";
-export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName =
+const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName =
   S.String;
 
 /** Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific server */
 export type ServerSecurityAlertPolicyPropertiesInputState = "New" | "Enabled" | "Disabled";
-export const ServerSecurityAlertPolicyPropertiesInputState = S.String;
+const ServerSecurityAlertPolicyPropertiesInputState = S.String;
 
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action */
 export type ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList = Array<string>;
-export const ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList =
+const ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList>;
 
 /** Specifies an array of e-mail addresses to which the alert is sent. */
 export type ServerSecurityAlertPolicyPropertiesInputEmailAddressesList = Array<string>;
-export const ServerSecurityAlertPolicyPropertiesInputEmailAddressesList =
+const ServerSecurityAlertPolicyPropertiesInputEmailAddressesList =
   ManagedVirtualNetworkSettingsAllowedAadTenantIdsForLinkingList as any as S.Schema<ServerSecurityAlertPolicyPropertiesInputEmailAddressesList>;
 
 /** Properties of a security alert policy. */
@@ -12446,7 +12339,7 @@ export interface ServerSecurityAlertPolicyPropertiesInput {
   /** Specifies the number of days to keep in the Threat Detection audit logs. */
   retentionDays?: number;
 }
-export const ServerSecurityAlertPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ServerSecurityAlertPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: ServerSecurityAlertPolicyPropertiesInputState,
     disabledAlerts: S.optional(ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList),
@@ -12474,8 +12367,8 @@ export interface WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateReque
   /** Resource properties. */
   properties?: ServerSecurityAlertPolicyPropertiesInput;
 }
-export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -12493,9 +12386,9 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest =
         apiVersion: "2021-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest",
-  }) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest>;
+).annotate({
+  identifier: "WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest",
+}) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest>;
 
 export interface WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12507,21 +12400,21 @@ export interface WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRespo
   /** Resource properties. */
   properties?: ServerSecurityAlertPolicyProperties;
 }
-export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
       properties: S.optional(ServerSecurityAlertPolicyProperties),
     }),
-  ).annotate({
-    identifier: "WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse",
-  }) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse>;
+).annotate({
+  identifier: "WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse",
+}) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse>;
 
 export type WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   "default";
-export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
+const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequestVulnerabilityAssessmentName =
   S.String;
 
 export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequest {
@@ -12538,7 +12431,7 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
-export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequest =
+const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -12571,7 +12464,7 @@ export interface WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate
   /** Resource properties. */
   properties?: ServerVulnerabilityAssessmentProperties;
 }
-export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResponse =
+const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -12585,7 +12478,7 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResp
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateRequestTagsMap =
+const WorkspacesCreateOrUpdateRequestTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** A private endpoint connection */
@@ -12593,7 +12486,7 @@ export interface WorkspacePropertiesInputPrivateEndpointConnectionsItem {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const WorkspacePropertiesInputPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+const WorkspacePropertiesInputPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateEndpointConnectionPropertiesInput),
   }),
@@ -12604,13 +12497,13 @@ export const WorkspacePropertiesInputPrivateEndpointConnectionsItem = /*@__PURE_
 /** Private endpoint connections to the workspace */
 export type WorkspacePropertiesInputPrivateEndpointConnectionsList =
   Array<WorkspacePropertiesInputPrivateEndpointConnectionsItem>;
-export const WorkspacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const WorkspacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   WorkspacePropertiesInputPrivateEndpointConnectionsItem,
 ) as any as S.Schema<WorkspacePropertiesInputPrivateEndpointConnectionsList>;
 
 /** Enable or Disable public network access to workspace */
 export type WorkspacePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const WorkspacePropertiesInputPublicNetworkAccess = S.String;
+const WorkspacePropertiesInputPublicNetworkAccess = S.String;
 
 /** Workspace properties */
 export interface WorkspacePropertiesInput {
@@ -12645,7 +12538,7 @@ export interface WorkspacePropertiesInput {
   /** Is trustedServiceBypassEnabled for the workspace */
   trustedServiceBypassEnabled?: boolean;
 }
-export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultDataLakeStorage: S.optional(DataLakeStorageAccountDetails),
     sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -12681,7 +12574,7 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** Identity of the workspace */
   identity?: ManagedIdentityInput;
 }
-export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12704,7 +12597,7 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateResponseTagsMap =
+const WorkspacesCreateOrUpdateResponseTagsMap =
   BigDataPoolsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 export interface WorkspacesCreateOrUpdateResponse {
@@ -12723,7 +12616,7 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** Identity of the workspace */
   identity?: ManagedIdentity;
 }
-export const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12747,7 +12640,7 @@ export interface WorkspaceSqlAadAdminsCreateOrUpdateRequest {
   /** Workspace active directory administrator properties */
   properties?: AadAdminProperties;
 }
-export const WorkspaceSqlAadAdminsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSqlAadAdminsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12775,7 +12668,7 @@ export interface WorkspaceSqlAadAdminsCreateOrUpdateResponse {
   /** Workspace active directory administrator properties */
   properties?: AadAdminProperties;
 }
-export const WorkspaceSqlAadAdminsCreateOrUpdateResponse =
+const WorkspaceSqlAadAdminsCreateOrUpdateResponse =
   GetWorkspaceAadAdminResponse as any as S.Schema<WorkspaceSqlAadAdminsCreateOrUpdateResponse>;
 
 export type BigDataPoolsCreateOrUpdateError = AzureOpError;

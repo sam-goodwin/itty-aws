@@ -12,7 +12,7 @@ export type { NotionOpError, NotionOpContext };
 export interface CompleteFileUploadRequest {
   file_upload_id: string;
 }
-export const CompleteFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_upload_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/file_uploads/{file_upload_id}/complete", code: 200 })),
@@ -22,14 +22,14 @@ export const CompleteFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** One of: `person`, `bot`, `agent` */
 export type FileUploadObjectResponseCreatedByType = "person" | "bot" | "agent";
-export const FileUploadObjectResponseCreatedByType = S.String;
+const FileUploadObjectResponseCreatedByType = S.String;
 
 export interface FileUploadObjectResponseCreatedBy {
   id: string;
   /** One of: `person`, `bot`, `agent` */
   type: FileUploadObjectResponseCreatedByType;
 }
-export const FileUploadObjectResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
+const FileUploadObjectResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: FileUploadObjectResponseCreatedByType,
@@ -40,7 +40,7 @@ export const FileUploadObjectResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
 
 /** One of: `pending`, `uploaded`, `expired`, `failed` */
 export type FileUploadObjectResponseStatus = "pending" | "uploaded" | "expired" | "failed";
-export const FileUploadObjectResponseStatus = S.String;
+const FileUploadObjectResponseStatus = S.String;
 
 /** The type of error that occurred during file import. */
 export type FileUploadObjectResponseFileImportResultErrorType =
@@ -48,7 +48,7 @@ export type FileUploadObjectResponseFileImportResultErrorType =
   | "internal_system_error"
   | "download_error"
   | "upload_error";
-export const FileUploadObjectResponseFileImportResultErrorType = S.String;
+const FileUploadObjectResponseFileImportResultErrorType = S.String;
 
 /** Details about the error that occurred during file import. */
 export interface FileUploadObjectResponseFileImportResultError {
@@ -63,7 +63,7 @@ export interface FileUploadObjectResponseFileImportResultError {
   /** The HTTP status code associated with the error, if available. Null if not applicable. */
   status_code: number | null;
 }
-export const FileUploadObjectResponseFileImportResultError = /*@__PURE__*/ S.suspend(() =>
+const FileUploadObjectResponseFileImportResultError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: FileUploadObjectResponseFileImportResultErrorType,
     code: S.String,
@@ -85,7 +85,7 @@ export interface FileUploadObjectResponseFileImportResult {
   /** Details about the error that occurred during file import. */
   error?: FileUploadObjectResponseFileImportResultError;
 }
-export const FileUploadObjectResponseFileImportResult = /*@__PURE__*/ S.suspend(() =>
+const FileUploadObjectResponseFileImportResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imported_time: S.String,
     type: S.optional(S.String),
@@ -100,7 +100,7 @@ export interface FileUploadObjectResponseNumberOfParts {
   total: number;
   sent: number;
 }
-export const FileUploadObjectResponseNumberOfParts = /*@__PURE__*/ S.suspend(() =>
+const FileUploadObjectResponseNumberOfParts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     sent: S.Number,
@@ -128,7 +128,7 @@ export interface FileUploadObjectResponse {
   file_import_result?: FileUploadObjectResponseFileImportResult;
   number_of_parts?: FileUploadObjectResponseNumberOfParts;
 }
-export const FileUploadObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const FileUploadObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -150,7 +150,7 @@ export const FileUploadObjectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** How the file is sent. Defaults to single_part. Use multi_part for files larger than 20 MiB or external_url for a temporary public HTTPS URL. */
 export type CreateFileUploadRequestMode = "single_part" | "multi_part" | "external_url";
-export const CreateFileUploadRequestMode = S.String;
+const CreateFileUploadRequestMode = S.String;
 
 export interface CreateFileUploadRequest {
   /** How the file is sent. Defaults to single_part. Use multi_part for files larger than 20 MiB or external_url for a temporary public HTTPS URL. */
@@ -164,7 +164,7 @@ export interface CreateFileUploadRequest {
   /** A public HTTPS URL to import. Required only for external_url uploads. */
   external_url?: string;
 }
-export const CreateFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(CreateFileUploadRequestMode),
     filename: S.optional(S.String),
@@ -177,7 +177,7 @@ export const CreateFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFileUploadRequest {
   file_upload_id: string;
 }
-export const GetFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_upload_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/file_uploads/{file_upload_id}", code: 200 })),
@@ -185,14 +185,14 @@ export const GetFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If supplied, the endpoint will return file uploads with the specified status. */
 export type ListFileUploadsRequestStatus = "pending" | "uploaded" | "expired" | "failed";
-export const ListFileUploadsRequestStatus = S.String;
+const ListFileUploadsRequestStatus = S.String;
 
 export interface ListFileUploadsRequest {
   status?: ListFileUploadsRequestStatus | (string & {});
   start_cursor?: string;
   page_size?: number;
 }
-export const ListFileUploadsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileUploadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ListFileUploadsRequestStatus.pipe(T.Query())),
     start_cursor: S.optional(S.String.pipe(T.Query())),
@@ -201,13 +201,13 @@ export const ListFileUploadsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFileUploadsRequest" }) as any as S.Schema<ListFileUploadsRequest>;
 
 export type ListFileUploadsResponseResultsList = Array<FileUploadObjectResponse>;
-export const ListFileUploadsResponseResultsList = /*@__PURE__*/ S.Array(
+const ListFileUploadsResponseResultsList = /*@__PURE__*/ S.Array(
   FileUploadObjectResponse,
 ) as any as S.Schema<ListFileUploadsResponseResultsList>;
 
 /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
 export type RequestStatusResponseType = "complete" | "incomplete";
-export const RequestStatusResponseType = S.String;
+const RequestStatusResponseType = S.String;
 
 export interface RequestStatusResponse {
   /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
@@ -215,7 +215,7 @@ export interface RequestStatusResponse {
   /** Why the result set is incomplete. Only present when `type` is `incomplete`. */
   incomplete_reason?: string;
 }
-export const RequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RequestStatusResponseType,
     incomplete_reason: S.optional(S.String),
@@ -233,7 +233,7 @@ export interface ListFileUploadsResponse {
   file_upload: unknown;
   request_status?: RequestStatusResponse;
 }
-export const ListFileUploadsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFileUploadsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     next_cursor: S.NullOr(S.String),
@@ -252,7 +252,7 @@ export interface SendFileUploadRequest {
   /** When uploading files greater than 20MB in parts, this is the current part number. Must be an integer between 1 and 1,000. */
   part_number?: string;
 }
-export const SendFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const SendFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_upload_id: S.String.pipe(T.Label()),
     file: S.Unknown,

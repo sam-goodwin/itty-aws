@@ -37,7 +37,7 @@ export class NotFound
 
 /** The project role of the member that will be added. */
 export type AddProjectMemberRequestRole = "ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER";
-export const AddProjectMemberRequestRole = S.String;
+const AddProjectMemberRequestRole = S.String;
 
 export interface AddProjectMemberRequest {
   /** The ID or name of the Project. */
@@ -55,7 +55,7 @@ export interface AddProjectMemberRequest {
   /** The project role of the member that will be added. */
   role: AddProjectMemberRequestRole | (string & {});
 }
-export const AddProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const AddProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -70,7 +70,7 @@ export const AddProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AddProjectMemberResponse {
   id: string;
 }
-export const AddProjectMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const AddProjectMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -92,7 +92,7 @@ export interface GetProjectMembersRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetProjectMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -110,16 +110,12 @@ export type GetProjectMembersResponseBodyCase1MembersItemComputedProjectRole =
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-export const GetProjectMembersResponseBodyCase1MembersItemComputedProjectRole = S.String;
-
 /** Role of this user in the project. */
 export type GetProjectMembersResponseBodyCase1MembersItemRole =
   | "ADMIN"
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-export const GetProjectMembersResponseBodyCase1MembersItemRole = S.String;
-
 /** The role of this user in the team. */
 export type GetProjectMembersResponseBodyCase1MembersItemTeamRole =
   | "BILLING"
@@ -130,8 +126,6 @@ export type GetProjectMembersResponseBodyCase1MembersItemTeamRole =
   | "SECURITY"
   | "VIEWER"
   | "VIEWER_FOR_PLUS";
-export const GetProjectMembersResponseBodyCase1MembersItemTeamRole = S.String;
-
 export interface GetProjectMembersResponseBodyCase1MembersItem {
   /** ID of the file for the Avatar of this member. */
   avatar?: string;
@@ -152,28 +146,8 @@ export interface GetProjectMembersResponseBodyCase1MembersItem {
   /** The unique username of this user. */
   username: string;
 }
-export const GetProjectMembersResponseBodyCase1MembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.optional(S.String),
-    computedProjectRole: GetProjectMembersResponseBodyCase1MembersItemComputedProjectRole,
-    createdAt: S.Number,
-    email: S.String,
-    name: S.optional(S.String),
-    role: GetProjectMembersResponseBodyCase1MembersItemRole,
-    teamRole: GetProjectMembersResponseBodyCase1MembersItemTeamRole,
-    uid: S.String,
-    username: S.String,
-  }),
-).annotate({
-  identifier: "GetProjectMembersResponseBodyCase1MembersItem",
-}) as any as S.Schema<GetProjectMembersResponseBodyCase1MembersItem>;
-
 export type GetProjectMembersResponseBodyCase1MembersList =
   Array<GetProjectMembersResponseBodyCase1MembersItem>;
-export const GetProjectMembersResponseBodyCase1MembersList = /*@__PURE__*/ S.Array(
-  GetProjectMembersResponseBodyCase1MembersItem,
-) as any as S.Schema<GetProjectMembersResponseBodyCase1MembersList>;
-
 export interface GetProjectMembersResponseBodyCase1Pagination {
   /** Amount of items in the current page. */
   count: number;
@@ -183,37 +157,16 @@ export interface GetProjectMembersResponseBodyCase1Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-export const GetProjectMembersResponseBodyCase1Pagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    hasNext: S.Boolean,
-    next: S.NullOr(S.Number),
-    prev: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "GetProjectMembersResponseBodyCase1Pagination",
-}) as any as S.Schema<GetProjectMembersResponseBodyCase1Pagination>;
-
 /** Paginated list of members for the project. */
 export interface GetProjectMembersResponseBodyCase1 {
   members: GetProjectMembersResponseBodyCase1MembersList;
   pagination: GetProjectMembersResponseBodyCase1Pagination;
 }
-export const GetProjectMembersResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: GetProjectMembersResponseBodyCase1MembersList,
-    pagination: GetProjectMembersResponseBodyCase1Pagination,
-  }),
-).annotate({
-  identifier: "GetProjectMembersResponseBodyCase1",
-}) as any as S.Schema<GetProjectMembersResponseBodyCase1>;
-
 export type GetProjectMembersResponseBody = unknown | GetProjectMembersResponseBodyCase1;
-export const GetProjectMembersResponseBody =
-  S.Unknown as any as S.Schema<GetProjectMembersResponseBody>;
+const GetProjectMembersResponseBody = S.Unknown as any as S.Schema<GetProjectMembersResponseBody>;
 
 export type GetProjectMembersResponse = GetProjectMembersResponseBody;
-export const GetProjectMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectMembersResponse = /*@__PURE__*/ S.suspend(() =>
   GetProjectMembersResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetProjectMembersResponse",
@@ -229,7 +182,7 @@ export interface RemoveProjectMemberRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const RemoveProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     uid: S.String.pipe(T.Label()),
@@ -243,7 +196,7 @@ export const RemoveProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveProjectMemberResponse {
   id: string;
 }
-export const RemoveProjectMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
